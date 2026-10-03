@@ -530,9 +530,109 @@ void planes(RetailOracle& o) {
     }
 }
 
+C2DVector randomVec2() {
+    if (cancellingMode()) {
+        return {cancelling(), cancelling()};
+    }
+    return {sample(), sample()};
+}
+
+C2DLineF randomLine() {
+    C2DLineF l{randomVec2(), randomVec2()};
+    if (randomU32() % 16 == 0) {
+        l.Point2 = l.Point1;  // degenerate
+    }
+    return l;
+}
+
+double retailSt0(const CallResult& r) {
+    CHECK(r.st0Valid);
+    return r.st0;
+}
+
+bool sameDouble(double a, double b) {
+    return (std::isnan(a) && std::isnan(b)) || std::bit_cast<std::uint64_t>(a) == std::bit_cast<std::uint64_t>(b);
+}
+
+void lines(RetailOracle& o) {
+    for (int i = 0; i < kRounds; ++i) {
+        const auto l = randomLine();
+        auto m = randomLine();
+        if (i % 7 == 0) {
+            m.Point1 = l.Point2;  // shared endpoint
+            m.Point1.X += randomFloat(-2e-4f, 2e-4f);
+        }
+        const auto p = randomVec2();
+        const auto pl = place(o, l), pm = place(o, m), pp = place(o, p);
+
+        CHECK(sameDouble(l.GetLowestX(), retailSt0(o.call(0x00A56B80, CallingConvention::Thiscall, {}, pl))));
+        CHECK(sameDouble(l.GetHighestX(), retailSt0(o.call(0x00A56BB0, CallingConvention::Thiscall, {}, pl))));
+        CHECK(sameDouble(l.GetLowestY(), retailSt0(o.call(0x00A56BE0, CallingConvention::Thiscall, {}, pl))));
+        CHECK(sameDouble(l.GetHighestY(), retailSt0(o.call(0x00A56C10, CallingConvention::Thiscall, {}, pl))));
+
+        const auto pd = o.alloc(8);
+        const std::uint32_t argsD[] = {pd};
+        o.call(0x00A56C60, CallingConvention::Thiscall, argsD, pl);
+        CHECK(sameFloats(l.GetDirection(), o.get<C2DVector>(pd)));
+
+        const std::uint32_t argsP[] = {pp};
+        CHECK_EQ(o.call(0x00A56FF0, CallingConvention::Thiscall, argsP, pl).eax & 0xFFU,
+                 static_cast<std::uint32_t>(l.OnLeft(p)));
+
+        const std::uint32_t argsM[] = {pm};
+        CHECK_EQ(o.call(0x00A57030, CallingConvention::Thiscall, argsM, pl).eax & 0xFFU,
+                 static_cast<std::uint32_t>(l.Intersects2D(m)));
+
+        const auto pr = o.alloc(8);
+        const std::uint32_t argsI[] = {pr, pp};
+        o.call(0x00A57140, CallingConvention::Thiscall, argsI, pl);
+        if (!sameFloats(l.GetPointOnInfiniteLine(p), o.get<C2DVector>(pr))) {
+            std::cerr << "    GetPointOnInfiniteLine\n";
+            CHECK(false);
+            return;
+        }
+
+        C2DVector inter{3, 3};
+        o.put(pr, inter);
+        const bool hit = l.GetInfiniteLineLineIntersection(m, inter);
+        const std::uint32_t argsX[] = {pm, pr};
+        CHECK_EQ(o.call(0x00A57960, CallingConvention::Thiscall, argsX, pl).eax & 0xFFU, static_cast<std::uint32_t>(hit));
+        if (!sameFloats(inter, o.get<C2DVector>(pr))) {
+            std::cerr << "    GetInfiniteLineLineIntersection\n";
+            CHECK(false);
+            return;
+        }
+
+        const float radius = std::fabs(sample());
+        const std::uint32_t argsW[] = {pp, RetailOracle::bits(radius)};
+        CHECK_EQ(o.call(0x00A57A40, CallingConvention::Thiscall, argsW, pl).eax, static_cast<std::uint32_t>(l.IsWithinDist(p, radius)));
+
+        // GetDistanceToPoint with every optional-output combination.
+        for (int opts = 0; opts < 4; ++opts) {
+            C2DVector contact{9, 9}, projected{8, 8};
+            bool behind = true;
+            const auto pc = place(o, contact), pj = place(o, projected), pb = o.alloc(4);
+            o.put<std::uint8_t>(pb, 1);
+            const double d = l.GetDistanceToPoint(p, contact, radius, (opts & 1) ? &projected : nullptr,
+                                                  (opts & 2) ? &behind : nullptr);
+            const std::uint32_t argsG[] = {pp, pc, RetailOracle::bits(radius), (opts & 1) ? pj : 0U, (opts & 2) ? pb : 0U};
+            const auto r = o.call(0x00A571A0, CallingConvention::Thiscall, argsG, pl);
+            const bool ok = sameDouble(d, retailSt0(r)) && sameFloats(contact, o.get<C2DVector>(pc)) &&
+                            sameFloats(projected, o.get<C2DVector>(pj)) &&
+                            (!(opts & 2) || behind == (o.get<std::uint8_t>(pb) != 0));
+            if (!ok) {
+                std::cerr << "    GetDistanceToPoint opts=" << opts << " port " << d << " retail " << r.st0 << '\n';
+                CHECK(false);
+                return;
+            }
+        }
+    }
+}
+
 } // namespace
 
 void registerCoreMathTests(TestList& tests) {
+    tests.push_back({"C2DLineF 0x00A56B80..0x00A57A40 (+2 uncatalogued)", lines});
     tests.push_back({"C2DVector/C3DVector normalise 0x00A14440/80/0x00A14510/40", vectorNormalise});
     tests.push_back({"Matrix_RotationAroundAxis/C3DVector::Rotate 0x00A55F90/0x00A13C60", rotation});
     tests.push_back({"CPlane 0x00A42140..0x00A42470 (+3 uncatalogued)", planes});

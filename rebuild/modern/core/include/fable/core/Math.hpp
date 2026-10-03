@@ -157,6 +157,40 @@ struct CPreTransposedBoneMatrix {
     void ScaleColumns(const C3DVector& s) noexcept;
 };
 
+/// 2D segment Point1 -> Point2.
+struct C2DLineF {
+    C2DVector Point1;
+    C2DVector Point2;
+
+    /// 0x00A56C40 (not in the upstream catalogue)
+    void Set(float x1, float y1, float x2, float y2) noexcept;
+    /// 0x00A56C60 (not in the upstream catalogue) — Point2 - Point1.
+    [[nodiscard]] C2DVector GetDirection() const noexcept;
+    /// 0x00A56B80
+    [[nodiscard]] float GetLowestX() const noexcept;
+    /// 0x00A56BB0
+    [[nodiscard]] float GetHighestX() const noexcept;
+    /// 0x00A56BE0 (catalogued upstream as GetHighestY)
+    [[nodiscard]] float GetLowestY() const noexcept;
+    /// 0x00A56C10
+    [[nodiscard]] float GetHighestY() const noexcept;
+    /// 0x00A56FF0 — strictly left of Point1->Point2.
+    [[nodiscard]] bool OnLeft(const C2DVector& p) const noexcept;
+    /// 0x00A57030 — segments touch (shared endpoint within 1e-4) or cross.
+    [[nodiscard]] bool Intersects2D(const C2DLineF& other) const noexcept;
+    /// 0x00A57140 — projection of p onto the infinite line.
+    [[nodiscard]] C2DVector GetPointOnInfiniteLine(const C2DVector& p) const noexcept;
+    /// 0x00A571A0 — distance of a disc (centre p, `radius`) to the segment along
+    /// its axis; writes the contact point, optionally the projected point and
+    /// whether p lies behind Point1. Returns at register precision.
+    [[nodiscard]] double GetDistanceToPoint(const C2DVector& p, C2DVector& contact, float radius,
+                                            C2DVector* projected, bool* behind) const noexcept;
+    /// 0x00A57960 — false only for an exactly zero determinant.
+    bool GetInfiniteLineLineIntersection(const C2DLineF& other, C2DVector& out) const noexcept;
+    /// 0x00A57A40 — p within `radius` of the segment's bounding circle.
+    [[nodiscard]] bool IsWithinDist(const C2DVector& p, float radius) const noexcept;
+};
+
 namespace math {
 
 /// Number of entries in the engine cosine table (one full turn).

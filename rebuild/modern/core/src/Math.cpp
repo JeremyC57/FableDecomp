@@ -433,6 +433,140 @@ bool CPlane::GetIntersectionWithTriangle(const C3DVector& a, const C3DVector& b,
     return true;
 }
 
+// ---- C2DLineF -----------------------------------------------------------------
+
+void C2DLineF::Set(float x1, float y1, float x2, float y2) noexcept {
+    Point1 = {x1, y1};
+    Point2 = {x2, y2};
+}
+
+C2DVector C2DLineF::GetDirection() const noexcept {
+    return {store(static_cast<double>(Point2.X) - Point1.X), store(static_cast<double>(Point2.Y) - Point1.Y)};
+}
+
+float C2DLineF::GetLowestX() const noexcept { return Point2.X < Point1.X ? Point2.X : Point1.X; }
+float C2DLineF::GetHighestX() const noexcept { return Point1.X < Point2.X ? Point2.X : Point1.X; }
+float C2DLineF::GetLowestY() const noexcept { return Point2.Y < Point1.Y ? Point2.Y : Point1.Y; }
+float C2DLineF::GetHighestY() const noexcept { return Point1.Y < Point2.Y ? Point2.Y : Point1.Y; }
+
+bool C2DLineF::OnLeft(const C2DVector& p) const noexcept {
+    const double dx = static_cast<double>(Point2.X) - Point1.X;
+    const double ndy = -(static_cast<double>(Point2.Y) - Point1.Y);
+    const double px = static_cast<double>(p.X) - Point1.X;
+    const double py = static_cast<double>(p.Y) - Point1.Y;
+    return px * ndy + py * dx > 0.0;
+}
+
+bool C2DLineF::Intersects2D(const C2DLineF& other) const noexcept {
+    auto close = [](const C2DVector& a, const C2DVector& b) {
+        // `test ah,0x41; jp`: passes for |d| <= eps (and fails for NaN).
+        auto le = [](double d) { return std::fabs(d) <= kEpsilon; };
+        return le(static_cast<double>(a.X) - b.X) && le(static_cast<double>(a.Y) - b.Y);
+    };
+    if (close(Point1, other.Point1) || close(Point1, other.Point2) || close(Point2, other.Point1) ||
+        close(Point2, other.Point2)) {
+        return true;
+    }
+    if (OnLeft(other.Point1) == OnLeft(other.Point2)) {
+        return false;
+    }
+    return other.OnLeft(Point1) != other.OnLeft(Point2);
+}
+
+C2DVector C2DLineF::GetPointOnInfiniteLine(const C2DVector& p) const noexcept {
+    const double dx = static_cast<double>(Point2.X) - Point1.X;
+    const double dy = static_cast<double>(Point2.Y) - Point1.Y;
+    const double qx = store(static_cast<double>(p.X) - Point1.X);
+    const double qy = static_cast<double>(p.Y) - Point1.Y;
+    const double t = (qy * dy + qx * dx) / (dy * dy + dx * dx);
+    const double tdx = store(t * dx);
+    const double tdy = dy * t;
+    return {store(tdx + Point1.X), store(tdy + Point1.Y)};
+}
+
+double C2DLineF::GetDistanceToPoint(const C2DVector& p, C2DVector& contact, float radius, C2DVector* projected,
+                                    bool* behind) const noexcept {
+    const double dx = static_cast<double>(Point2.X) - Point1.X;
+    const double dy = static_cast<double>(Point2.Y) - Point1.Y;
+    const float len = store(std::sqrt(dx * dx + dy * dy));
+    if (len == 0.0f) {
+        contact = Point1;
+        if (projected != nullptr) {
+            *projected = Point1;
+        }
+        if (behind != nullptr) {
+            *behind = false;
+        }
+        return 0.0;
+    }
+    const double inv = 1.0 / static_cast<double>(len);
+    const double ux = store(inv * dx);
+    const double uy = store(inv * dy);
+    const double proj = store((static_cast<double>(p.X) - Point1.X) * ux + (static_cast<double>(p.Y) - Point1.Y) * uy);
+    if (behind != nullptr) {
+        *behind = proj < 0.0;
+    }
+    const double r = radius;
+    auto projectOntoSegment = [&] {
+        if (projected != nullptr) {
+            *projected = {store(ux * proj + Point1.X), store(uy * proj + Point1.Y)};
+        }
+    };
+    if (r + r > static_cast<double>(len)) {  // `test ah,0x41; jne`: only an ordered 2r > len
+        contact = {store((static_cast<double>(Point2.X) + Point1.X) * 0.5),
+                   store((static_cast<double>(Point2.Y) + Point1.Y) * 0.5)};
+        if (projected != nullptr) {
+            *projected = GetPointOnInfiniteLine(p);
+        }
+        return r - len;
+    }
+    if (proj < r) {
+        contact = {store(ux * r + Point1.X), store(uy * r + Point1.Y)};
+        projectOntoSegment();
+        return r - proj;
+    }
+    if (static_cast<double>(len) - r < proj) {
+        contact = {store(Point2.X - ux * r), store(Point2.Y - uy * r)};
+        projectOntoSegment();
+        return proj - (static_cast<double>(len) + r);
+    }
+    contact = {store(ux * proj + Point1.X), store(uy * proj + Point1.Y)};
+    if (projected != nullptr) {
+        *projected = contact;
+    }
+    return 0.0;
+}
+
+bool C2DLineF::GetInfiniteLineLineIntersection(const C2DLineF& other, C2DVector& out) const noexcept {
+    const double Ax = Point1.X, Ay = Point1.Y, Bx = Point2.X, By = Point2.Y;
+    const double Cx = other.Point1.X, Cy = other.Point1.Y, Dx = other.Point2.X, Dy = other.Point2.Y;
+    const double c1 = store(By * Ax - Ay * Bx);
+    const double c2 = store(Dy * Cx - Cy * Dx);
+    const double e = store(Cy - Dy);
+    const double f = store(Ax - Bx);
+    const double g = store(Cx - Dx);
+    const double h = Ay - By;  // kept in a register
+    const double det = f * e - h * g;
+    if (det == 0.0) {
+        return false;
+    }
+    const double inv = 1.0 / det;
+    out.X = store((g * c1 - f * c2) * inv);
+    out.Y = store((e * c1 - h * c2) * inv);
+    return true;
+}
+
+bool C2DLineF::IsWithinDist(const C2DVector& p, float radius) const noexcept {
+    const double mx = store((static_cast<double>(Point2.X) + Point1.X) * 0.5);
+    const double my = (static_cast<double>(Point2.Y) + Point1.Y) * 0.5;
+    const double dx = static_cast<double>(Point1.X) - Point2.X;
+    const double dy = static_cast<double>(Point1.Y) - Point2.Y;
+    const double qx = p.X - mx;
+    const double qy = p.Y - my;
+    const double limit = (dy * dy + dx * dx) * 0.25 + static_cast<double>(radius) * radius;
+    return qy * qy + qx * qx < limit;
+}
+
 // ---- CQuaternion -------------------------------------------------------------
 
 CQuaternion CQuaternion::operator*(const CQuaternion& p) const noexcept {

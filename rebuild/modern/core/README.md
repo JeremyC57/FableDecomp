@@ -45,6 +45,16 @@ power-of-two values chosen to cancel, so a reordered sum is detected (verified b
 | `0x00A42370` | `CPlane::GetIntersectionWithLineOffset` | **not in upstream catalogue** |
 | `0x00A42430` | `CPlane::IsWithinDistance` | **not in upstream catalogue** |
 | `0x00A42470` | `CPlane::GetIntersectionWithTriangle` | |
+| `0x00A56C40` | `C2DLineF::Set` | **not in upstream catalogue** |
+| `0x00A56C60` | `C2DLineF::GetDirection` | **not in upstream catalogue** |
+| `0x00A56B80` / `0x00A56BB0` | `C2DLineF::GetLowestX` / `GetHighestX` | return in ST0 |
+| `0x00A56BE0` / `0x00A56C10` | `C2DLineF::GetLowestY` / `GetHighestY` | first catalogued upstream as `GetHighestY` |
+| `0x00A56FF0` | `C2DLineF::OnLeft` | strict |
+| `0x00A57030` | `C2DLineF::Intersects2D` | shared endpoints within 1e-4 (inclusive) count |
+| `0x00A57140` | `C2DLineF::GetPointOnInfiniteLine` | |
+| `0x00A571A0` | `C2DLineF::GetDistanceToPoint` | 4 branches; all optional-output combinations verified |
+| `0x00A57960` | `C2DLineF::GetInfiniteLineLineIntersection` | |
+| `0x00A57A40` | `C2DLineF::IsWithinDist` | returns int 0/1 in EAX |
 | `0x00A88B60` | `CQuaternion::operator*` | |
 | `0x00A88C10` | `CQuaternion::operator*=` | |
 | `0x00A88C50` | `CQuaternion::Equals` | per-component tolerance 1e-4 |
@@ -74,5 +84,6 @@ are expected to be vanishingly rare. Everything else is plain IEEE arithmetic an
   `0x00A14510` (`C2DVector::Dot`) normalises; `0x00A14540` (`C2DVector::Normalise`) is the fast variant.
 - `0x006AD220` (`C3DVector::GetAccurateMagnitude`) reads a vector at `this+0x1B4` of a larger object
   and calls game logic — not a `C3DVector` method (not ported here).
-- Missing from the catalogue: `0x00A42280`, `0x00A42370`, `0x00A42430` (CPlane), `0x00A144C0`
-  (2D clamp helper).
+- Missing from the catalogue: `0x00A42280`, `0x00A42370`, `0x00A42430` (CPlane), `0x00A56C40`,
+  `0x00A56C60` (C2DLineF), `0x00A144C0` (2D clamp helper).
+- `0x00A56BE0` (`C2DLineF::GetHighestY`) returns the lowest Y.
