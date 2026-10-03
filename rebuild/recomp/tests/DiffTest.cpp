@@ -34,7 +34,7 @@ using fable::oracle::RetailOracle;
 
 namespace {
 
-constexpr uint32_t kImageBase = 0x00400000, kImageEnd = 0x0143F000;
+constexpr uint32_t kImageBase = 0x00400000, kImageEnd = 0x0146C000;  // whole SizeOfImage incl. .idata (IAT)
 constexpr uint32_t kDataLo = 0x01374000, kDataHi = 0x0143F000;
 constexpr uint32_t kHeap = 0x10000000, kHeapSize = 0x40000;
 constexpr uint32_t kStackTop = 0x0F000000 + 0x00100000 - 0x1000;  // oracle's initial ESP region

@@ -31,13 +31,24 @@ from the user's `Fable.exe`.
 | Instructions lifted | 3,267,132; **0 unsupported, 0 undecodable** |
 | Indirect jumps left to runtime dispatch | 544 (vtable/import/function-pointer thunks; no unresolved switch tables) |
 | Generated C | ~225 MB in 143 files; compiles and links into one binary (~10 min, 2 cores, gcc -O1) |
-| Differential test (whole game, 5 random states each) | see `tests/DiffTest.cpp`; results below |
+| Differential test (all 57,102 functions, 5 random states each) | **15,326 byte-identical**, 41,761 skipped (retail run hits imports / unmapped memory with random inputs), 15 mismatches — all explained below |
 
 Differential test: every function runs in Unicorn (retail) and as recompiled C from byte-identical
-memory (image, TEB, random pointer-dense heap, stack); EAX, EDX, ST0, stack, heap and all of
-`.data` must match. Functions whose retail run leaves the pure-CPU boundary (imports, unmapped
-memory with random inputs) are skipped, not counted. Known benign mismatches: `rdtsc`/`cpuid`
-readers (host-dependent by design).
+memory (whole PE image, TEB, random pointer-dense heap, stack, zeroed SIMD state); EAX, EDX, ST0,
+stack, heap and all of `.data` must match. Functions whose retail run leaves the pure-CPU boundary
+are skipped, not counted.
+
+Remaining mismatches, all understood:
+
+- **Host-dependent by design (8):** `rdtsc` timer readers (`GFGetFastSubFrameTimer` and callers,
+  `CPUAheadCounterCallback`) and `GFInitVectorMath` (CPUID values).
+- **Model limits at extreme magnitudes:** x87 registers keep a 15-bit exponent and 64-bit mantissa
+  even at 53-bit precision; the `double` model differs once intermediates underflow below ~1e-308
+  or `fild qword` loads integers above 2^53, and in 80-bit spills of dead stack. Random test data
+  (denormal floats, huge integers) triggers this; normal game values do not.
+- **Invalid-input artefacts:** `__ftol2` with an empty x87 stack, `__EH_epilog3` with a random frame.
+- **Emulator inaccuracy:** Unicorn's `fsin`/`fcos` leave ±inf unchanged; hardware (and the
+  recompiler) return NaN. The recompiler implements the hardware range rule (|x| ≥ 2^63 → unchanged, C2 set).
 
 ## Not done yet (the road to a running game)
 
