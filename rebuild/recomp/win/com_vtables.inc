@@ -546,6 +546,41 @@ template <> host::com::Class& host::com::classOf<IDirectInputDevice8W>() {
     });
     return c;
 }
+template <> host::com::Class& host::com::classOf<IDirectDraw7>() {
+    static host::com::Class c = host::com::makeClass("IDirectDraw7", {
+        {"IDirectDraw7::QueryInterface", host::com::comQueryInterface},
+        {"IDirectDraw7::AddRef", host::com::comAddRef},
+        {"IDirectDraw7::Release", host::com::comRelease},
+        {"IDirectDraw7::Compact", &host::com::comThunk<&IDirectDraw7::Compact>},
+        {"IDirectDraw7::CreateClipper", nullptr},
+        {"IDirectDraw7::CreatePalette", nullptr},
+        {"IDirectDraw7::CreateSurface", nullptr},
+        {"IDirectDraw7::DuplicateSurface", nullptr},
+        {"IDirectDraw7::EnumDisplayModes", nullptr},
+        {"IDirectDraw7::EnumSurfaces", nullptr},
+        {"IDirectDraw7::FlipToGDISurface", &host::com::comThunk<&IDirectDraw7::FlipToGDISurface>},
+        {"IDirectDraw7::GetCaps", &host::com::comThunk<&IDirectDraw7::GetCaps>},
+        {"IDirectDraw7::GetDisplayMode", nullptr},
+        {"IDirectDraw7::GetFourCCCodes", &host::com::comThunk<&IDirectDraw7::GetFourCCCodes>},
+        {"IDirectDraw7::GetGDISurface", nullptr},
+        {"IDirectDraw7::GetMonitorFrequency", &host::com::comThunk<&IDirectDraw7::GetMonitorFrequency>},
+        {"IDirectDraw7::GetScanLine", &host::com::comThunk<&IDirectDraw7::GetScanLine>},
+        {"IDirectDraw7::GetVerticalBlankStatus", &host::com::comThunk<&IDirectDraw7::GetVerticalBlankStatus>},
+        {"IDirectDraw7::Initialize", &host::com::comThunk<&IDirectDraw7::Initialize>},
+        {"IDirectDraw7::RestoreDisplayMode", &host::com::comThunk<&IDirectDraw7::RestoreDisplayMode>},
+        {"IDirectDraw7::SetCooperativeLevel", &host::com::comThunk<&IDirectDraw7::SetCooperativeLevel>},
+        {"IDirectDraw7::SetDisplayMode", &host::com::comThunk<&IDirectDraw7::SetDisplayMode>},
+        {"IDirectDraw7::WaitForVerticalBlank", &host::com::comThunk<&IDirectDraw7::WaitForVerticalBlank>},
+        {"IDirectDraw7::GetAvailableVidMem", &host::com::comThunk<&IDirectDraw7::GetAvailableVidMem>},
+        {"IDirectDraw7::GetSurfaceFromDC", nullptr},
+        {"IDirectDraw7::RestoreAllSurfaces", &host::com::comThunk<&IDirectDraw7::RestoreAllSurfaces>},
+        {"IDirectDraw7::TestCooperativeLevel", &host::com::comThunk<&IDirectDraw7::TestCooperativeLevel>},
+        {"IDirectDraw7::GetDeviceIdentifier", &host::com::comThunk<&IDirectDraw7::GetDeviceIdentifier>},
+        {"IDirectDraw7::StartModeTest", &host::com::comThunk<&IDirectDraw7::StartModeTest>},
+        {"IDirectDraw7::EvaluateMode", &host::com::comThunk<&IDirectDraw7::EvaluateMode>},
+    });
+    return c;
+}
 
 static const host::com::IidEntry kIids[] = {
     {&IID_IDirect3D9, [] { return &host::com::classOf<IDirect3D9>(); }},
@@ -569,4 +604,5 @@ static const host::com::IidEntry kIids[] = {
     {&IID_IDirectInput8W, [] { return &host::com::classOf<IDirectInput8W>(); }},
     {&IID_IDirectInputDevice8A, [] { return &host::com::classOf<IDirectInputDevice8A>(); }},
     {&IID_IDirectInputDevice8W, [] { return &host::com::classOf<IDirectInputDevice8W>(); }},
+    {&IID_IDirectDraw7, [] { return &host::com::classOf<IDirectDraw7>(); }},
 };

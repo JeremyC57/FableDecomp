@@ -4,6 +4,7 @@
 
 #include <d3d9.h>
 #include <dinput.h>
+#include <ddraw.h>
 
 #include <mutex>
 #include <unordered_map>

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generates com_vtables.inc: guest-side vtables for the COM interfaces the game
-uses (Direct3D 9, DirectInput 8), from the mingw-w64 SDK headers.
+uses (Direct3D 9, DirectInput 8, DirectDraw 7), from the mingw-w64 SDK headers.
 
 Each vtable slot is a trap. Methods whose arguments convert mechanically use
 com::comThunk<&I::M>; methods listed in OVERRIDES are hand-written
@@ -21,6 +21,7 @@ INTERFACES = {
         "IDirect3DVertexShader9", "IDirect3DPixelShader9", "IDirect3DStateBlock9", "IDirect3DQuery9",
     ],
     "dinput.h": ["IDirectInput8A", "IDirectInput8W", "IDirectInputDevice8A", "IDirectInputDevice8W"],
+    "ddraw.h": ["IDirectDraw7"],
 }
 
 OVERRIDES = {
@@ -46,7 +47,8 @@ OVERRIDES = {
 UNSAFE = re.compile(
     r"CALLBACK|LPDIENUM|LPDICONFIGURE|DIACTIONFORMAT|DIEFFECT\b|LPCDIEFFECT|DIFILEEFFECT|DIDEVICEOBJECTDATA|"
     r"DIDATAFORMAT|D3DLOCKED_|D3DPRESENT_PARAMETERS|D3DDEVICE_CREATION_PARAMETERS|DIEFFESCAPE|"
-    r"DIDEVICEIMAGEINFOHEADER|void\s*\*\*\s*ppContainer|LPDIRECTINPUTEFFECT|pInitializeFunction"
+    r"DIDEVICEIMAGEINFOHEADER|void\s*\*\*\s*ppContainer|LPDIRECTINPUTEFFECT|pInitializeFunction|"
+    r"DDSURFACEDESC|LPDIRECTDRAWSURFACE|LPDIRECTDRAWCLIPPER|LPDIRECTDRAWPALETTE"
 )
 GENERIC = {"QueryInterface": "host::com::comQueryInterface", "AddRef": "host::com::comAddRef", "Release": "host::com::comRelease"}
 

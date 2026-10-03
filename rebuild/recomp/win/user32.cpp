@@ -552,8 +552,14 @@ FWD_STD(U, GetCapture);
 FWD_STD(U, GetParent);
 FWD_STD(U, EnableWindow);
 FWD_STD(U, GetDlgItem);
-FWD_STD(U, SetDlgItemTextA);
-FWD_STD(U, SetWindowTextA);
+IMPORT(U, SetDlgItemTextA) {
+    HLOG(1, "SetDlgItemTextA(%d): %s", static_cast<int32_t>(arg(c, 1)), arg(c, 2) ? argp(c, 2) : "");
+    retStd(c, SetDlgItemTextA(static_cast<HWND>(hh(arg(c, 0))), static_cast<int32_t>(arg(c, 1)), argp(c, 2)), 3);
+}
+IMPORT(U, SetWindowTextA) {
+    HLOG(1, "SetWindowTextA: %s", arg(c, 1) ? argp(c, 1) : "");
+    retStd(c, SetWindowTextA(static_cast<HWND>(hh(arg(c, 0))), argp(c, 1)), 2);
+}
 FWD_STD(U, MoveWindow);
 FWD_STD(U, GetClientRect);
 FWD_STD(U, GetDesktopWindow);

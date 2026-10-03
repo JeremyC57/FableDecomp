@@ -357,6 +357,9 @@ public:
              << "    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;\n"
              << "    int fop = FOP(FK_EXPLICIT, 4); uint32_t fr = 0, fa = 0, fb = 0; /* flags undefined at entry */\n"
              << "    (void)fop; (void)fr; (void)fa; (void)fb;\n";
+        // Blocks are emitted in address order; a backward jump can pull in code that sits
+        // below the entry (e.g. __security_check_cookie's failure path), so start at the entry.
+        if (!f.insns.empty() && *f.insns.begin() != f.entry) out_ << "    goto " << lname(f.entry) << ";\n";
         uint32_t expected = 0;
         bool first = true;
         for (uint32_t a : f.insns) {
