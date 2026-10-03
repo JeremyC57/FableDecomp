@@ -112,21 +112,44 @@ IMPORT(K, InterlockedDecrement) { retStd(c, __atomic_sub_fetch(argp<uint32_t>(c,
 IMPORT(K, InterlockedExchange) { retStd(c, __atomic_exchange_n(argp<uint32_t>(c, 0), arg(c, 1), __ATOMIC_SEQ_CST), 2); }
 
 // ---------------------------------------------------------------------------
-// critical sections: guest CRITICAL_SECTION (24 bytes) carries a host pointer
-// in its first 8 bytes (DebugInfo/LockCount); RecursionCount/OwningThread are
-// kept up to date for guest code that inspects them.
+// critical sections: the first 4 bytes of a guest CRITICAL_SECTION (24 bytes, DebugInfo)
+// hold the index of its host critical section in g_cs. A 32-bit index rather than a host
+// pointer: the field is only 4-byte aligned, and ARM64 faults on unaligned 64-bit atomics.
+// RecursionCount/OwningThread are kept up to date for guest code that inspects them.
 // ---------------------------------------------------------------------------
+constexpr uint32_t kMaxCs = 1u << 18;
+std::atomic<CRITICAL_SECTION*> g_cs[kMaxCs];
+std::mutex g_csLock;
+std::vector<uint32_t> g_csFree;
+uint32_t g_csNext = 1;
+
+uint32_t csAlloc(CRITICAL_SECTION* cs) {
+    std::lock_guard<std::mutex> l(g_csLock);
+    uint32_t id;
+    if (!g_csFree.empty()) id = g_csFree.back(), g_csFree.pop_back();
+    else if (g_csNext < kMaxCs) id = g_csNext++;
+    else die("too many critical sections");
+    g_cs[id].store(cs, std::memory_order_release);
+    return id;
+}
+void csFree(uint32_t id) {
+    std::lock_guard<std::mutex> l(g_csLock);
+    g_cs[id].store(nullptr, std::memory_order_release);
+    g_csFree.push_back(id);
+}
 CRITICAL_SECTION* csGet(uint32_t g) {
-    auto* slot = gp<uint64_t>(g);
-    uint64_t v = __atomic_load_n(slot, __ATOMIC_ACQUIRE);
-    if (v) return reinterpret_cast<CRITICAL_SECTION*>(v);
+    auto* slot = gp<uint32_t>(g);
+    uint32_t id = __atomic_load_n(slot, __ATOMIC_ACQUIRE);
+    if (id && id < kMaxCs) return g_cs[id].load(std::memory_order_acquire);
     auto* cs = new CRITICAL_SECTION;
     InitializeCriticalSection(cs);
-    uint64_t expected = 0;
-    if (__atomic_compare_exchange_n(slot, &expected, reinterpret_cast<uint64_t>(cs), false, __ATOMIC_ACQ_REL, __ATOMIC_ACQUIRE)) return cs;
+    id = csAlloc(cs);
+    uint32_t expected = 0;
+    if (__atomic_compare_exchange_n(slot, &expected, id, false, __ATOMIC_ACQ_REL, __ATOMIC_ACQUIRE)) return cs;
+    csFree(id);
     DeleteCriticalSection(cs);
     delete cs;
-    return reinterpret_cast<CRITICAL_SECTION*>(expected);
+    return g_cs[expected].load(std::memory_order_acquire);
 }
 void csEntered(uint32_t g) {
     wr32(g + 8, rd32(g + 8) + 1);
@@ -140,8 +163,13 @@ IMPORT(K, InitializeCriticalSection) {
 }
 IMPORT(K, DeleteCriticalSection) {
     const uint32_t g = arg(c, 0);
-    auto* cs = reinterpret_cast<CRITICAL_SECTION*>(rd64(g));
-    if (cs) { DeleteCriticalSection(cs); delete cs; }
+    if (const uint32_t id = rd32(g); id && id < kMaxCs) {
+        if (CRITICAL_SECTION* cs = g_cs[id].load(std::memory_order_acquire)) {
+            DeleteCriticalSection(cs);
+            delete cs;
+        }
+        csFree(id);
+    }
     std::memset(gp(g), 0, 24);
     retStd(c, 0, 1);
 }

@@ -8,6 +8,18 @@
 namespace w32 {
 void registerHostModule(const char* dll, const char* fn, void* addr);
 
+// On-screen touch controls (Android): a virtual pad merged into controller 0.
+namespace {
+std::mutex g_virtLock;
+bool g_virtActive;
+XINPUT_GAMEPAD g_virt;
+}  // namespace
+void setVirtualPad(bool active, const XINPUT_GAMEPAD& g) {
+    std::lock_guard<std::mutex> l(g_virtLock);
+    g_virtActive = active;
+    g_virt = g;
+}
+
 namespace {
 std::mutex g_lock;
 SDL_GameController* g_pads[XUSER_MAX_COUNT];
@@ -47,9 +59,20 @@ DWORD WINAPI getState(DWORD user, XINPUT_STATE* s) {
     SDL_GameControllerUpdate();
     std::lock_guard<std::mutex> l(g_lock);
     SDL_GameController* p = user < XUSER_MAX_COUNT ? g_pads[user] : nullptr;
-    if (!p) return ERROR_DEVICE_NOT_CONNECTED;
     XINPUT_GAMEPAD& g = s->Gamepad;
     std::memset(&g, 0, sizeof g);
+    bool virt;
+    {
+        std::lock_guard<std::mutex> vl(g_virtLock);
+        virt = user == 0 && g_virtActive;
+        if (virt) g = g_virt;
+    }
+    if (!p && !virt) return ERROR_DEVICE_NOT_CONNECTED;
+    if (!p) {
+        s->dwPacketNumber = ++g_packet[user];
+        return ERROR_SUCCESS;
+    }
+    const XINPUT_GAMEPAD touch = g;
     const struct { SDL_GameControllerButton b; WORD x; } map[] = {
         {SDL_CONTROLLER_BUTTON_DPAD_UP, XINPUT_GAMEPAD_DPAD_UP}, {SDL_CONTROLLER_BUTTON_DPAD_DOWN, XINPUT_GAMEPAD_DPAD_DOWN},
         {SDL_CONTROLLER_BUTTON_DPAD_LEFT, XINPUT_GAMEPAD_DPAD_LEFT}, {SDL_CONTROLLER_BUTTON_DPAD_RIGHT, XINPUT_GAMEPAD_DPAD_RIGHT},
@@ -67,6 +90,16 @@ DWORD WINAPI getState(DWORD user, XINPUT_STATE* s) {
     g.sThumbLY = axis(p, SDL_CONTROLLER_AXIS_LEFTY, true);  // XInput: up is positive
     g.sThumbRX = axis(p, SDL_CONTROLLER_AXIS_RIGHTX, false);
     g.sThumbRY = axis(p, SDL_CONTROLLER_AXIS_RIGHTY, true);
+    if (virt) {  // touch and a physical pad together: buttons add up, the stronger stick wins
+        g.wButtons |= touch.wButtons;
+        g.bLeftTrigger = std::max(g.bLeftTrigger, touch.bLeftTrigger);
+        g.bRightTrigger = std::max(g.bRightTrigger, touch.bRightTrigger);
+        auto pick = [](SHORT& x, SHORT& y, SHORT tx, SHORT ty) {
+            if (int(tx) * tx + int(ty) * ty > int(x) * x + int(y) * y) x = tx, y = ty;
+        };
+        pick(g.sThumbLX, g.sThumbLY, touch.sThumbLX, touch.sThumbLY);
+        pick(g.sThumbRX, g.sThumbRY, touch.sThumbRX, touch.sThumbRY);
+    }
     s->dwPacketNumber = ++g_packet[user];
     return ERROR_SUCCESS;
 }

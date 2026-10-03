@@ -154,7 +154,5 @@ Under Wine you must create `Documents\My Games\Fable` in the prefix.
 6. waveOut/mixer report no devices.
 7. Testing: session 2 ran the full Steam install under Wine (2.8 GB, never committed).
    Real testing on the Windows PC with the full install is still the next check.
-8. Android:
-   - Needs a non-identity memory layout, or a guest region reserved below 4 GB in the
-     ARM64 process.
-   - The Win32/D3D9 layer must be re-targeted to SDL/GLES or Vulkan.
+8. Android: built (arm64 APK, `posix/android/`, see its README) but not yet run on a
+   device. The ARM64 code paths are checked on Linux under qemu-aarch64.

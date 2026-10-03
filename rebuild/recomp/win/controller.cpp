@@ -318,6 +318,19 @@ void injectMouseState(uint8_t* state, DWORD size) {
     for (DWORD i = 0; i < 8 && 12 + i < size; ++i)
         if (g.mouseHeld[i] > 0) state[12 + i] |= 0x80;
 }
+void touchMotion(int dx, int dy) {
+    std::lock_guard<std::mutex> l(g.m);
+    if (dx) event(g.mouseEvents, DIMOFS_X, static_cast<DWORD>(dx));
+    if (dy) event(g.mouseEvents, DIMOFS_Y, static_cast<DWORD>(dy));
+    g.stateDx += dx, g.stateDy += dy;
+}
+void touchButton(int button, bool down) {
+    std::lock_guard<std::mutex> l(g.m);
+    Target t;
+    t.kind = Target::MouseButton;
+    t.code = button & 7;
+    press(t, down);
+}
 void flush() {
     std::lock_guard<std::mutex> l(g.m);
     g.kbEvents.clear();

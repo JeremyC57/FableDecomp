@@ -26,7 +26,7 @@ file(GLOB GEN_SOURCES "${FABLE_GEN_DIR}/recomp_*.c")
 add_library(fable_gen OBJECT ${GEN_SOURCES} ${RUNTIME_DIR}/runtime.c)
 target_include_directories(fable_gen PRIVATE ${RUNTIME_DIR} ${FABLE_GEN_DIR})
 target_compile_definitions(fable_gen PRIVATE RECOMP_IDENTITY_MEMORY=1)
-target_compile_options(fable_gen PRIVATE -O1 -ffp-contract=off -fno-strict-aliasing -w)
+target_compile_options(fable_gen PRIVATE -O1 -fsigned-char -ffp-contract=off -fno-strict-aliasing -w)
 
 set(FABLE_GUEST_DLLS "" CACHE STRING "prefix|file|dir;... for recompiled DLLs")
 set(GUEST_DLL_DECLS "")
@@ -62,8 +62,21 @@ pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET libavformat libavcodec libavut
 
 file(GLOB HOST_SOURCES ${WIN_DIR}/*.cpp)
 file(GLOB W32_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.c ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.S)
-add_executable(FableRecomp ${HOST_SOURCES} ${W32_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/main_posix.cpp
+set(HOST_ALL ${HOST_SOURCES} ${W32_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/main_posix.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/movie_ffmpeg.cpp $<TARGET_OBJECTS:fable_gen>)
+if(ANDROID)
+  # SDLActivity loads libmain.so and calls SDL_main on its own thread.
+  set(ADRENOTOOLS_DIR "" CACHE PATH "libadrenotools checkout (custom Vulkan drivers)")
+  set(ADRENOTOOLS_BUILD "" CACHE PATH "libadrenotools build directory")
+  add_library(FableRecomp SHARED ${HOST_ALL} ${CMAKE_CURRENT_SOURCE_DIR}/android/android_host.cpp)
+  set_target_properties(FableRecomp PROPERTIES OUTPUT_NAME main)
+  target_include_directories(FableRecomp PRIVATE ${ADRENOTOOLS_DIR}/include)
+  target_link_libraries(FableRecomp PRIVATE ${ADRENOTOOLS_BUILD}/libadrenotools.a
+    ${ADRENOTOOLS_BUILD}/lib/linkernsbypass/liblinkernsbypass.a android log)
+  target_link_options(FableRecomp PRIVATE -Wl,-z,max-page-size=16384 -static-libstdc++)
+else()
+  add_executable(FableRecomp ${HOST_ALL})
+endif()
 target_include_directories(FableRecomp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include ${RUNTIME_DIR} ${WIN_DIR})
 # Windows API declarations come after the system headers, so the C library stays the system one.
 target_compile_options(FableRecomp PRIVATE $<$<COMPILE_LANGUAGE:C,CXX>:-idirafter ${MINGW_HEADERS}>)
@@ -73,5 +86,10 @@ target_compile_options(FableRecomp PRIVATE
   $<$<COMPILE_LANGUAGE:C,CXX>:-fshort-wchar -fdeclspec -ffp-contract=off -fno-strict-aliasing>
   $<$<COMPILE_LANGUAGE:C,CXX>:-Wall -Wno-unused-function -Wno-ignored-attributes -Wno-unknown-pragmas -Wno-builtin-requires-header>
   $<$<COMPILE_LANGUAGE:C,CXX>:-Wno-nonportable-include-path -Wno-pragma-pack -Wno-microsoft-anon-tag -Wno-int-to-pointer-cast -Wno-microsoft-exception-spec>)
-target_link_libraries(FableRecomp PRIVATE PkgConfig::SDL2 PkgConfig::FFMPEG ${DXVK_D3D9} dl pthread)
+target_link_libraries(FableRecomp PRIVATE PkgConfig::SDL2 PkgConfig::FFMPEG ${DXVK_D3D9} dl)
+if(NOT ANDROID)
+  target_link_libraries(FableRecomp PRIVATE pthread)
+endif()
+# MSVC's char is signed; so is the guest's.
+target_compile_options(FableRecomp PRIVATE $<$<COMPILE_LANGUAGE:C,CXX>:-fsigned-char>)
 set_target_properties(FableRecomp PROPERTIES BUILD_RPATH "$ORIGIN" INSTALL_RPATH "$ORIGIN")

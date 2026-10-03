@@ -26,7 +26,14 @@ namespace w32 {
 // page by page (4 KiB, the Windows page size), so VirtualQuery is exact.
 // ============================================================================
 namespace vm {
+#ifdef __ANDROID__
+// ART keeps its Java heap and boot image in the low 4 GiB of every app process, so the window
+// has holes; it runs up to 3 GiB to make up for them (allocations fill from the bottom, so the
+// game only sees addresses above 2 GiB once the lower part is full).
+constexpr uintptr_t kLow = 0x00010000, kHigh = 0xC0000000, kPage = 0x1000;
+#else
 constexpr uintptr_t kLow = 0x00010000, kHigh = 0x80000000, kPage = 0x1000;
+#endif
 constexpr size_t kPages = (kHigh - kLow) / kPage;
 enum : uint8_t { FREE = 0, RESERVED = 1, COMMITTED = 2 };
 std::mutex lock;

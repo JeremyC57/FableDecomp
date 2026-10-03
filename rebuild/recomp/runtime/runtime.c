@@ -9,6 +9,7 @@
 #include <intrin.h>
 #else
 #include <sys/mman.h>
+#include <time.h>
 #endif
 
 #if !defined(RECOMP_IDENTITY_MEMORY)
@@ -96,6 +97,11 @@ uint64_t recomp_rdtsc(void) {
 #if defined(RECOMP_IDENTITY_MEMORY) && (defined(__x86_64__) || defined(_M_X64))
     /* The game host: a real cycle counter (ConfigDetect times it against QPC for the CPU speed). */
     return __rdtsc();
+#elif defined(RECOMP_IDENTITY_MEMORY) && defined(__aarch64__)
+    /* The game host on ARM64: a 3 GHz counter from the monotonic clock. */
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return ((uint64_t)ts.tv_sec * 1000000000u + (uint64_t)ts.tv_nsec) * 3u;
 #else
     /* Tests: deterministic. */
     static uint64_t t;

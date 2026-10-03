@@ -75,8 +75,18 @@ void recomp_fatal(Ctx* c, uint32_t eip, const char* what);
  * innermost such function whose frame holds the catching EH registration node and
  * continues it at the catch continuation `target`. One chain per thread (the host
  * swaps it when switching guest coroutine fibers). */
+#if defined(__aarch64__)
+/* Clang has no __builtin_setjmp on AArch64: the landing pads use the C library's _setjmp
+ * (which does not save the signal mask, so it costs about the same). */
+#include <setjmp.h>
+#define __builtin_setjmp(b) _setjmp(b)
+#define __builtin_longjmp(b, v) _longjmp(b, v)
+typedef jmp_buf RecompJmpBuf;
+#else
+typedef void* RecompJmpBuf[5];   /* __builtin_setjmp buffer */
+#endif
 typedef struct RecompLanding {
-    void* jb[5];                  /* __builtin_setjmp buffer */
+    RecompJmpBuf jb;
     uint32_t entry_esp;           /* guest esp on entry (the frame lies below it) */
     uint32_t target;              /* continuation address after a longjmp */
     struct RecompLanding* prev;

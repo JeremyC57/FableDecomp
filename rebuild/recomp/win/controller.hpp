@@ -15,4 +15,7 @@ void injectMouseData(std::vector<DIDEVICEOBJECTDATA>& out, DWORD capacity);
 void injectKeyboardState(uint8_t* keys, DWORD size);
 void injectMouseState(uint8_t* state, DWORD size);  // DIMOUSESTATE / DIMOUSESTATE2
 void flush();
+// Touchpad-style mouse input (the Android on-screen controls): relative motion and buttons.
+void touchMotion(int dx, int dy);
+void touchButton(int button, bool down);
 }  // namespace host::pad

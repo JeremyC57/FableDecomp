@@ -14,6 +14,7 @@ struct KeyInfo {
 inline KeyInfo keyInfo(SDL_Scancode s) {
     switch (s) {
         case SDL_SCANCODE_ESCAPE: return {0x1B, 0x01, false};
+        case SDL_SCANCODE_AC_BACK: return {0x1B, 0x01, false};  // Android back button
         case SDL_SCANCODE_1: return {'1', 0x02, false};
         case SDL_SCANCODE_2: return {'2', 0x03, false};
         case SDL_SCANCODE_3: return {'3', 0x04, false};
