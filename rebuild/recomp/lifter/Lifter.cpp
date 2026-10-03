@@ -96,6 +96,60 @@ public:
         }
     }
 
+    // Code reached only through pointers (vtables, callback and CRT initializer
+    // tables in .data/.rdata, `push offset fn` immediates) is not in the catalogue.
+    // A referenced address becomes an entry if it starts an already-decoded
+    // instruction, or lies in undiscovered code at a plausible function boundary.
+    // Returns the number of entries added; call discoverAll() afterwards.
+    size_t addReferencedEntries() {
+        std::set<uint32_t> starts;
+        std::map<uint32_t, uint32_t> covered;  // start -> end of decoded instruction
+        std::set<uint32_t> cands;
+        for (auto& [e, f] : funcs_)
+            for (uint32_t a : f.insns) {
+                const Insn* ins = decode(a);
+                if (!ins) continue;
+                starts.insert(a);
+                covered[a] = ins->next();
+                for (int i = 0; i < ins->in.operand_count_visible; ++i) {
+                    const auto& o = ins->op[i];
+                    if (o.type == ZYDIS_OPERAND_TYPE_IMMEDIATE && ins->in.mnemonic != ZYDIS_MNEMONIC_CALL &&
+                        !(ins->in.meta.category == ZYDIS_CATEGORY_COND_BR || ins->in.meta.category == ZYDIS_CATEGORY_UNCOND_BR))
+                        cands.insert(static_cast<uint32_t>(o.imm.value.u));
+                }
+            }
+        for (uint32_t v : img_.relocTargets()) cands.insert(v);
+        for (const auto& s : img_.sections()) {
+            const uint32_t lo = img_.base() + s.va, hi = lo + s.vsize;
+            if (img_.isCode(lo)) continue;
+            for (uint32_t a = lo; a + 4 <= hi; a += 4)
+                if (img_.contains(a, 4)) cands.insert(img_.r32(a));
+        }
+        auto isCovered = [&](uint32_t a) {
+            auto it = covered.upper_bound(a);
+            if (it == covered.begin()) return false;
+            --it;
+            return a >= it->first && a < it->second;
+        };
+        auto boundary = [&](uint32_t a) {
+            if ((a & 15) == 0) return true;
+            const uint8_t p = *img_.at(a - 1);
+            if (p == 0xCC || p == 0x90 || p == 0xC3) return true;
+            if (a >= 3 && *img_.at(a - 3) == 0xC2) return true;  // ret imm16
+            if (*img_.at(a - 5) == 0xE9 || *img_.at(a - 2) == 0xEB) return true;
+            if (*img_.at(a - 6) == 0xFF && *img_.at(a - 5) == 0x25) return true;  // jmp [import]
+            return false;
+        };
+        size_t added = 0;
+        for (uint32_t v : cands) {
+            if (!img_.isCode(v) || !img_.contains(v, 1) || isEntry(v)) continue;
+            bool ok = starts.count(v) != 0;
+            if (!ok && !isCovered(v) && boundary(v) && decode(v)) ok = true;
+            if (ok) { addEntry(v); ++added; }
+        }
+        return added;
+    }
+
     std::map<uint32_t, Function>& functions() { return funcs_; }
     const Image& image() const { return img_; }
 
@@ -332,7 +386,7 @@ public:
         for (uint32_t l : f.labels) {
             if (!f.insns.count(l)) {
                 out_ << lname(l) << ":;\n";
-                if (p_.isEntry(l))
+                if (p_.isEntry(l) && p_.functions().count(l))
                     out_ << "    SPILL; " << fname(l) << "(c); return;\n";
                 else
                     out_ << "    SPILL; recomp_fatal(c, " << hex(l) << ", \"jump outside lifted code\"); return;\n";
@@ -441,6 +495,10 @@ private:
 
     void callDirect(const Insn& ins, uint32_t t) {
         line("esp -= 4; wr32(esp, " + hex(ins.next()) + "u);");
+        if (!p_.functions().count(t)) {  // target is not code we lifted (garbage decode)
+            line("SPILL; recomp_dispatch(c, " + hex(t) + "u); RELOAD;");
+            return;
+        }
         line("SPILL; " + fname(t) + "(c); RELOAD;");
         called.insert(t);
     }
@@ -839,7 +897,7 @@ private:
             return line("while (ecx != 0) { " + one + " --ecx; if (" + stop + ") break; }");
         }
         if (kind == "movs" && w == 32)
-            return line("if (!c->df && ecx && (edi + ecx * 4u <= esi || esi + ecx * 4u <= edi)) { memcpy(g_mem + edi, g_mem + esi, (size_t)ecx * 4u); esi += ecx * 4u; edi += ecx * 4u; ecx = 0; } while (ecx != 0) { " + one + " --ecx; }");
+            return line("if (!c->df && ecx && (edi + ecx * 4u <= esi || esi + ecx * 4u <= edi)) { memcpy(GP(edi), GP(esi), (size_t)ecx * 4u); esi += ecx * 4u; edi += ecx * 4u; ecx = 0; } while (ecx != 0) { " + one + " --ecx; }");
         return line("while (ecx != 0) { " + one + " --ecx; }");
     }
 
@@ -1028,19 +1086,25 @@ int main(int argc, char** argv) {
     const std::filesystem::path outDir = argv[3];
     std::set<uint32_t> only;
     size_t perFile = 400;
+    bool noRefs = false;
+    std::string prefix = "recomp";
     for (int i = 4; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--only" && i + 1 < argc) {
             std::stringstream ss(argv[++i]);
             std::string t;
             while (std::getline(ss, t, ',')) only.insert(static_cast<uint32_t>(std::stoul(t, nullptr, 16)));
+        } else if (a == "--prefix" && i + 1 < argc) {
+            prefix = argv[++i];
+        } else if (a == "--no-refs") {
+            noRefs = true;
         } else if (a == "--per-file" && i + 1 < argc) {
             perFile = std::stoul(argv[++i]);
         }
     }
 
     Program prog(img);
-    {
+    if (std::string(argv[2]) != "-") {
         std::ifstream tsv(argv[2]);
         std::string row;
         std::getline(tsv, row);
@@ -1048,9 +1112,19 @@ int main(int argc, char** argv) {
             const auto tab = row.find('\t');
             prog.addEntry(static_cast<uint32_t>(std::stoul(row.substr(0, tab), nullptr, 16)));
         }
-        prog.addEntry(img.entry());
     }
+    prog.addEntry(img.entry());
+    for (uint32_t e : img.exports()) prog.addEntry(e);
     prog.discoverAll();
+    std::cerr << "exports: " << img.exports().size() << ", relocations into the image: " << img.relocTargets().size() << "\n";
+    if (!noRefs) {
+        for (int round = 0; round < 8; ++round) {
+            const size_t n = prog.addReferencedEntries();
+            std::cerr << "pointer-referenced entries added: " << n << "\n";
+            if (!n) break;
+            prog.discoverAll();
+        }
+    }
     auto& funcs = prog.functions();
 
     // Restrict to the closure of --only (direct calls and tail calls).
@@ -1077,14 +1151,15 @@ int main(int argc, char** argv) {
     }
 
     std::filesystem::create_directories(outDir);
+    const std::string tableSym = prefix == "recomp" ? "recomp_table" : "recomp_table_" + prefix;
     {
-        std::ofstream h(outDir / "recomp_funcs.h");
+        std::ofstream h(outDir / (prefix + "_funcs.h"));
         h << "/* Generated by fable_recomp. */\n#pragma once\n#include \"recomp.h\"\n"
           << "#define SPILL (c->eax = eax, c->ecx = ecx, c->edx = edx, c->ebx = ebx, c->esp = esp, c->ebp = ebp, c->esi = esi, c->edi = edi)\n"
           << "#define RELOAD (eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx, esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi)\n";
         for (uint32_t a : selected) h << "void " << fname(a) << "(Ctx* c);\n";
         h << "typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;\n"
-          << "extern const RecompEntry recomp_table[];\nextern const uint32_t recomp_table_size;\n";
+          << "extern const RecompEntry " << tableSym << "[];\nextern const uint32_t " << tableSym << "_size;\n";
     }
     size_t fileIndex = 0, inFile = 0;
     std::ofstream cf;
@@ -1092,9 +1167,9 @@ int main(int argc, char** argv) {
         if (!cf.is_open() || inFile >= perFile) {
             if (cf.is_open()) cf.close();
             char name[32];
-            std::snprintf(name, sizeof name, "recomp_%04zu.c", fileIndex++);
-            cf.open(outDir / name);
-            cf << "/* Generated by fable_recomp. */\n#include \"recomp_funcs.h\"\n\n";
+            std::snprintf(name, sizeof name, "_%04zu.c", fileIndex++);
+            cf.open(outDir / (prefix + name));
+            cf << "/* Generated by fable_recomp. */\n#include \"" << prefix << "_funcs.h\"\n\n";
             inFile = 0;
         }
         cf << src;
@@ -1102,14 +1177,14 @@ int main(int argc, char** argv) {
     }
     cf.close();
     {
-        std::ofstream t(outDir / "recomp_table.c");
-        t << "#include \"recomp_funcs.h\"\nconst RecompEntry recomp_table[] = {\n";
+        std::ofstream t(outDir / (prefix + "_table.c"));
+        t << "#include \"" << prefix << "_funcs.h\"\nconst RecompEntry " << tableSym << "[] = {\n";
         for (uint32_t a : selected) t << "    {" << hex(a) << "u, " << fname(a) << "},\n";
-        t << "};\nconst uint32_t recomp_table_size = " << selected.size() << ";\n";
+        t << "};\nconst uint32_t " << tableSym << "_size = " << selected.size() << ";\n";
     }
 
     {
-        std::ofstream l(outDir / "recomp_functions.txt");
+        std::ofstream l(outDir / (prefix + "_functions.txt"));
         for (auto& [a, r] : retOf) l << std::hex << a << ' ' << std::dec << r << '\n';
     }
     uint64_t decodeErr = 0;

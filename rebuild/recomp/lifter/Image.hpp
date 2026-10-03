@@ -42,6 +42,26 @@ public:
             if (copy) std::memcpy(&mem_[sec.va], &file[ptr], copy);
             sections_.push_back(sec);
         }
+        // Exports (DLLs) and base relocations: precise pointers into code.
+        const uint32_t exportRva = le32(file, opt + 96), exportSize = le32(file, opt + 100);
+        if (exportRva) {
+            const uint32_t n = r32(base_ + exportRva + 20), funcs = r32(base_ + exportRva + 28);
+            for (uint32_t i = 0; i < n; ++i) {
+                const uint32_t rva = r32(base_ + funcs + 4 * i);
+                if (rva && !(rva >= exportRva && rva < exportRva + exportSize)) exports_.push_back(base_ + rva);  // skip forwarders
+            }
+        }
+        const uint32_t relocRva = le32(file, opt + 96 + 40), relocSize = le32(file, opt + 96 + 44);
+        for (uint32_t b = relocRva; relocRva && b < relocRva + relocSize;) {
+            const uint32_t page = r32(base_ + b), blockSize = r32(base_ + b + 4);
+            if (blockSize < 8) break;
+            for (uint32_t e = 8; e + 2 <= blockSize; e += 2) {
+                uint16_t v;
+                std::memcpy(&v, at(base_ + b + e), 2);
+                if ((v >> 12) == 3) relocTargets_.push_back(r32(base_ + page + (v & 0xFFF)));  // IMAGE_REL_BASED_HIGHLOW
+            }
+            b += blockSize;
+        }
         // Imports: IAT slot address -> "DLL!name".
         const uint32_t importRva = le32(file, opt + 96 + 8);
         for (uint32_t d = importRva; importRva; d += 20) {
@@ -74,9 +94,12 @@ public:
         return false;
     }
     const std::map<uint32_t, std::string>& imports() const { return imports_; }
+    const std::vector<uint32_t>& exports() const { return exports_; }
+    const std::vector<uint32_t>& relocTargets() const { return relocTargets_; }
+    struct Section { std::string name; uint32_t va = 0, vsize = 0, flags = 0; };  // va is an RVA
+    const std::vector<Section>& sections() const { return sections_; }
 
 private:
-    struct Section { std::string name; uint32_t va = 0, vsize = 0, flags = 0; };
     static uint32_t le32(const std::vector<uint8_t>& f, size_t o) { uint32_t v; std::memcpy(&v, &f[o], 4); return v; }
     static uint16_t le16(const std::vector<uint8_t>& f, size_t o) { uint16_t v; std::memcpy(&v, &f[o], 2); return v; }
 
@@ -84,6 +107,7 @@ private:
     std::vector<uint8_t> mem_;
     std::vector<Section> sections_;
     std::map<uint32_t, std::string> imports_;
+    std::vector<uint32_t> exports_, relocTargets_;
 };
 
 } // namespace recomp

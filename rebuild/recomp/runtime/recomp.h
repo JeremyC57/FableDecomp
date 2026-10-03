@@ -51,8 +51,16 @@ typedef struct Ctx {
     uint32_t mxcsr;
 } Ctx;
 
-/* Base of the 4 GiB guest address space. */
+/* Guest memory. Default: a flat 4 GiB reservation at `g_mem`. With
+ * RECOMP_IDENTITY_MEMORY (Windows host) guest address == host address: the
+ * guest image, heap and stacks live in the host's low 4 GiB, so guest
+ * pointers can be passed straight to host APIs. */
+#if defined(RECOMP_IDENTITY_MEMORY)
+#define GP(a) ((uint8_t*)(uintptr_t)(uint32_t)(a))
+#else
 extern uint8_t* g_mem;
+#define GP(a) (g_mem + (uint32_t)(a))
+#endif
 
 typedef void (*GuestFn)(Ctx*);
 
@@ -67,20 +75,20 @@ uint64_t recomp_rdtsc(void);
 
 /* ---- guest memory ---------------------------------------------------------- */
 
-static inline uint8_t rd8(uint32_t a) { return g_mem[a]; }
-static inline uint16_t rd16(uint32_t a) { uint16_t v; memcpy(&v, g_mem + a, 2); return v; }
-static inline uint32_t rd32(uint32_t a) { uint32_t v; memcpy(&v, g_mem + a, 4); return v; }
-static inline uint64_t rd64(uint32_t a) { uint64_t v; memcpy(&v, g_mem + a, 8); return v; }
-static inline float rdf32(uint32_t a) { float v; memcpy(&v, g_mem + a, 4); return v; }
-static inline double rdf64(uint32_t a) { double v; memcpy(&v, g_mem + a, 8); return v; }
-static inline void wr8(uint32_t a, uint8_t v) { g_mem[a] = v; }
-static inline void wr16(uint32_t a, uint16_t v) { memcpy(g_mem + a, &v, 2); }
-static inline void wr32(uint32_t a, uint32_t v) { memcpy(g_mem + a, &v, 4); }
-static inline void wr64(uint32_t a, uint64_t v) { memcpy(g_mem + a, &v, 8); }
-static inline void wrf32(uint32_t a, float v) { memcpy(g_mem + a, &v, 4); }
-static inline void wrf64(uint32_t a, double v) { memcpy(g_mem + a, &v, 8); }
-static inline void rdxmm(Xmm* x, uint32_t a) { memcpy(x->b, g_mem + a, 16); }
-static inline void wrxmm(uint32_t a, const Xmm* x) { memcpy(g_mem + a, x->b, 16); }
+static inline uint8_t rd8(uint32_t a) { return *GP(a); }
+static inline uint16_t rd16(uint32_t a) { uint16_t v; memcpy(&v, GP(a), 2); return v; }
+static inline uint32_t rd32(uint32_t a) { uint32_t v; memcpy(&v, GP(a), 4); return v; }
+static inline uint64_t rd64(uint32_t a) { uint64_t v; memcpy(&v, GP(a), 8); return v; }
+static inline float rdf32(uint32_t a) { float v; memcpy(&v, GP(a), 4); return v; }
+static inline double rdf64(uint32_t a) { double v; memcpy(&v, GP(a), 8); return v; }
+static inline void wr8(uint32_t a, uint8_t v) { *GP(a) = v; }
+static inline void wr16(uint32_t a, uint16_t v) { memcpy(GP(a), &v, 2); }
+static inline void wr32(uint32_t a, uint32_t v) { memcpy(GP(a), &v, 4); }
+static inline void wr64(uint32_t a, uint64_t v) { memcpy(GP(a), &v, 8); }
+static inline void wrf32(uint32_t a, float v) { memcpy(GP(a), &v, 4); }
+static inline void wrf64(uint32_t a, double v) { memcpy(GP(a), &v, 8); }
+static inline void rdxmm(Xmm* x, uint32_t a) { memcpy(x->b, GP(a), 16); }
+static inline void wrxmm(uint32_t a, const Xmm* x) { memcpy(GP(a), x->b, 16); }
 
 /* ---- lazy integer flags -----------------------------------------------------
  * A flag-setting instruction records (op, result, a, b); consumers derive the
@@ -305,8 +313,8 @@ static inline uint16_t fnstsw(Ctx* c) { return (uint16_t)((c->fpu.sw & ~0x3800u)
 static inline double f80_load(uint32_t a) {
     uint64_t m;
     uint16_t se;
-    memcpy(&m, g_mem + a, 8);
-    memcpy(&se, g_mem + a + 8, 2);
+    memcpy(&m, GP(a), 8);
+    memcpy(&se, GP(a + 8), 2);
     const int e = se & 0x7FFF;
     double v;
     if (e == 0 && m == 0) v = 0.0;
@@ -326,8 +334,8 @@ static inline void f80_store(uint32_t a, double v) {
         m = (uint64_t)ldexp(f, 64);
         se |= (uint16_t)(e - 1 + 16383);
     }
-    memcpy(g_mem + a, &m, 8);
-    memcpy(g_mem + a + 8, &se, 2);
+    memcpy(GP(a), &m, 8);
+    memcpy(GP(a + 8), &se, 2);
 }
 
 /* ---- misc helpers --------------------------------------------------------------- */

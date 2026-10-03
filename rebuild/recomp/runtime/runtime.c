@@ -10,7 +10,9 @@
 #include <sys/mman.h>
 #endif
 
+#if !defined(RECOMP_IDENTITY_MEMORY)
 uint8_t* g_mem;
+#endif
 
 typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;
 extern const RecompEntry recomp_table[];
@@ -21,23 +23,46 @@ void (*recomp_on_fatal)(Ctx* c, uint32_t eip, const char* what);
 int (*recomp_on_unknown_target)(Ctx* c, uint32_t target); /* imports, traps; return 1 if handled */
 
 int recomp_init_memory(void) {
-#if defined(_WIN32)
+#if defined(RECOMP_IDENTITY_MEMORY)
+    return 1; /* the host platform layer reserves the guest regions itself */
+#elif defined(_WIN32)
     g_mem = (uint8_t*)VirtualAlloc(NULL, 0x100000000ull, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 #else
     void* p = mmap(NULL, 0x100000000ull, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE, -1, 0);
     g_mem = p == MAP_FAILED ? NULL : (uint8_t*)p;
 #endif
+#if !defined(RECOMP_IDENTITY_MEMORY)
     return g_mem != NULL;
+#endif
+}
+
+/* Additional images (recompiled DLLs from the game folder), each with its own sorted table. */
+#define RECOMP_MAX_TABLES 8
+static struct { const RecompEntry* table; uint32_t size; } g_tables[RECOMP_MAX_TABLES];
+static int g_numTables;
+
+void recomp_register_table(const RecompEntry* table, uint32_t size) {
+    if (g_numTables < RECOMP_MAX_TABLES) {
+        g_tables[g_numTables].table = table;
+        g_tables[g_numTables].size = size;
+        ++g_numTables;
+    }
+}
+
+static GuestFn lookupIn(const RecompEntry* t, uint32_t n, uint32_t target) {
+    uint32_t lo = 0, hi = n;
+    while (lo < hi) {
+        const uint32_t mid = (lo + hi) / 2;
+        if (t[mid].addr < target) lo = mid + 1;
+        else hi = mid;
+    }
+    return (lo < n && t[lo].addr == target) ? t[lo].fn : NULL;
 }
 
 GuestFn recomp_lookup(uint32_t target) {
-    uint32_t lo = 0, hi = recomp_table_size;
-    while (lo < hi) {
-        const uint32_t mid = (lo + hi) / 2;
-        if (recomp_table[mid].addr < target) lo = mid + 1;
-        else hi = mid;
-    }
-    return (lo < recomp_table_size && recomp_table[lo].addr == target) ? recomp_table[lo].fn : NULL;
+    GuestFn f = lookupIn(recomp_table, recomp_table_size, target);
+    for (int i = 0; !f && i < g_numTables; ++i) f = lookupIn(g_tables[i].table, g_tables[i].size, target);
+    return f;
 }
 
 void recomp_dispatch(Ctx* c, uint32_t target) {
