@@ -4,4 +4,5 @@ project(FableTLCModern LANGUAGES CXX)
 
 include(CTest)
 
+add_subdirectory(assets)
 add_subdirectory(multiplayer)

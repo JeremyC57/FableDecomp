@@ -120,6 +120,17 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - Co-op revival — RE audits done (`CUT_COOP_MULTIPLAYER.md`); implementation moved to FableForge docs; no active work
 - Installer / settings UI / x64 / broad C++23 modernization — deferred until the reconstructed process reaches the game loop
 
+## (h) Portable port (x64 Windows / Linux / Android) — `rebuild/modern/assets/README.md`
+
+Modern-lane only; never counted toward retail-match coverage. Every asset is read from the user's install.
+
+- [x] 2026-10-02 `rebuild/modern/assets`: install validation + case-insensitive paths, BIGB reader, LZO1X + chunked frame, texture mip 0 (DXT1/DXT3/ARGB) — 394/394 frontend.big mips byte-identical to `tools/lionhead_lz.py`
+- [ ] Remaining texture mips, multi-frame sprites, `textures.big` corpus run (6,324 entries)
+- [ ] Text (`text.big`) and font decoders → frontend strings without D3D9
+- [ ] Platform layer: SDL3 window/input/audio, GL ES 3 / Vulkan renderer backend, WMV video via a portable decoder
+- [ ] Port the recovered frontend (`docs/formats/FRONTEND_FORMAT.md`) onto the platform layer as the first x64 executable
+- [ ] Android packaging (install picked via Storage Access Framework, ARM64 build)
+
 ## Definitions (grade ladder, lowest to highest)
 
 - `candidate` — generated/reviewed source exists; not compile-verified (1,066 rows)
