@@ -62,3 +62,18 @@ IMPORT("ddraw.dll", DirectDrawCreateEx) {
 }
 
 }  // namespace
+
+void ovr_IDirectDraw7_GetAvailableVidMem(Ctx* c) {
+    IDirectDraw7* self = com::unwrap<IDirectDraw7>(arg(c, 0));
+    DWORD total = 0, avail = 0;
+    const HRESULT hr = self->GetAvailableVidMem(arg(c, 1) ? gp<DDSCAPS2>(arg(c, 1)) : nullptr, &total, &avail);
+    // Modern drivers (and Wine) report ~4 GB; ConfigDetect rounds up to 64 MB in 32 bits,
+    // which wraps to 0 and fails the minimum-video-memory check. 1 GiB also stays positive
+    // if anything treats it as signed.
+    constexpr DWORD kMax = 0x40000000;
+    if (arg(c, 2)) wr32(arg(c, 2), total < kMax ? total : kMax);
+    if (arg(c, 3)) wr32(arg(c, 3), avail < kMax ? avail : kMax);
+    HLOG(1, "IDirectDraw7::GetAvailableVidMem(caps 0x%X) -> 0x%08lX total %lu free %lu", arg(c, 1) ? rd32(arg(c, 1)) : 0,
+         static_cast<unsigned long>(hr), static_cast<unsigned long>(total), static_cast<unsigned long>(avail));
+    retStd(c, static_cast<uint32_t>(hr), 4);
+}

@@ -21,6 +21,7 @@ void ovr_IDirect3DVolume9_LockBox(Ctx* c);
 void ovr_IDirect3DVolume9_UnlockBox(Ctx* c);
 void ovr_IDirect3DVolumeTexture9_LockBox(Ctx* c);
 void ovr_IDirect3DVolumeTexture9_UnlockBox(Ctx* c);
+void ovr_IDirectDraw7_GetAvailableVidMem(Ctx* c);
 void ovr_IDirectInput8A_EnumDevices(Ctx* c);
 void ovr_IDirectInput8W_EnumDevices(Ctx* c);
 void ovr_IDirectInputDevice8A_EnumObjects(Ctx* c);
@@ -571,7 +572,7 @@ template <> host::com::Class& host::com::classOf<IDirectDraw7>() {
         {"IDirectDraw7::SetCooperativeLevel", &host::com::comThunk<&IDirectDraw7::SetCooperativeLevel>},
         {"IDirectDraw7::SetDisplayMode", &host::com::comThunk<&IDirectDraw7::SetDisplayMode>},
         {"IDirectDraw7::WaitForVerticalBlank", &host::com::comThunk<&IDirectDraw7::WaitForVerticalBlank>},
-        {"IDirectDraw7::GetAvailableVidMem", &host::com::comThunk<&IDirectDraw7::GetAvailableVidMem>},
+        {"IDirectDraw7::GetAvailableVidMem", ovr_IDirectDraw7_GetAvailableVidMem},
         {"IDirectDraw7::GetSurfaceFromDC", nullptr},
         {"IDirectDraw7::RestoreAllSurfaces", &host::com::comThunk<&IDirectDraw7::RestoreAllSurfaces>},
         {"IDirectDraw7::TestCooperativeLevel", &host::com::comThunk<&IDirectDraw7::TestCooperativeLevel>},

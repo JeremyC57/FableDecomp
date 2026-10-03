@@ -6,6 +6,7 @@
 
 #if defined(_WIN32)
 #include <windows.h>
+#include <intrin.h>
 #else
 #include <sys/mman.h>
 #endif
@@ -91,6 +92,12 @@ void recomp_cpuid(Ctx* c) {
 }
 
 uint64_t recomp_rdtsc(void) {
+#if defined(RECOMP_IDENTITY_MEMORY) && (defined(__x86_64__) || defined(_M_X64))
+    /* The game host: a real cycle counter (ConfigDetect times it against QPC for the CPU speed). */
+    return __rdtsc();
+#else
+    /* Tests: deterministic. */
     static uint64_t t;
     return t += 1000;
+#endif
 }

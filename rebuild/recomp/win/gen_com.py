@@ -41,6 +41,7 @@ OVERRIDES = {
     "IDirectInputDevice8A::SetDataFormat", "IDirectInputDevice8W::SetDataFormat",
     "IDirectInputDevice8A::GetDeviceData", "IDirectInputDevice8W::GetDeviceData",
     "IDirectInputDevice8A::EnumObjects", "IDirectInputDevice8W::EnumObjects",
+    "IDirectDraw7::GetAvailableVidMem",
 }
 
 # Argument types the automatic thunk cannot convert.
