@@ -30,12 +30,31 @@ struct C4DVector {
     float W = 0.0f;
 };
 
-/// Rows E1x..E3x are the rotation/scale basis, E4x the translation.
+/// Rows E1x..E3x are the rotation/scale basis, E4x the translation
+/// (row-vector convention: p' = p * M).
 struct CMatrix3x4 {
     float E11 = 0.0f, E12 = 0.0f, E13 = 0.0f;
     float E21 = 0.0f, E22 = 0.0f, E23 = 0.0f;
     float E31 = 0.0f, E32 = 0.0f, E33 = 0.0f;
     float E41 = 0.0f, E42 = 0.0f, E43 = 0.0f;
+
+    /// 0x00A55D80 — cross-product matrix of v; translation zeroed.
+    void InitialiseSkewedSymmetric(const C3DVector& v) noexcept;
+    /// 0x00A55DF0 — affine product this * rhs (rhs translation added).
+    [[nodiscard]] CMatrix3x4 operator*(const CMatrix3x4& rhs) const noexcept;
+    /// 0x00C1CF20 — in-place product (retail passes rhs in EDX; catalogued
+    /// upstream as an operator* returning C3DVector).
+    CMatrix3x4& operator*=(const CMatrix3x4& rhs) noexcept;
+    /// 0x00A560A0 — each row's squared deviation from identity <= (1e-4)^2.
+    /// NaN rows count as identical (retail flag test).
+    [[nodiscard]] bool IsIdentity() const noexcept;
+    /// 0x00A56180 — IsIdentity(rhs - this + I).
+    [[nodiscard]] bool Equals(const CMatrix3x4& rhs) const noexcept;
+    /// 0x00A56270 — Gram-Schmidt via cross products with the engine's fast
+    /// inverse square root; zeroes the translation.
+    void Orthonormalise() noexcept;
+    /// 0x00A56530 — basis rows dotted with v (no translation).
+    [[nodiscard]] C3DVector operator*(const C3DVector& v) const noexcept;
 };
 
 /// Direct3D-compatible row-major 4x4 matrix.
@@ -84,6 +103,11 @@ struct CPreTransposedBoneMatrix {
     void Transform(const C4DVector& in, C4DVector& out, float w) const noexcept;
     /// 0x00ADDFE0 — in-place variant of Transform.
     void TransformInPlace(C4DVector& v, float w) const noexcept;
+    /// 0x00A9D480 — Data[r][0..2] *= s[r] (catalogued upstream as
+    /// CMatrix3x4::PostScale; indices prove a 3x4 row-of-four layout).
+    void ScaleRows(const C3DVector& s) noexcept;
+    /// 0x00A9D580 — Data[r][c] *= s[c] for c < 3 (also catalogued as PostScale).
+    void ScaleColumns(const C3DVector& s) noexcept;
 };
 
 namespace math {
@@ -95,6 +119,17 @@ inline constexpr int kCosineTableSize = 1024;
 /// wrap-around copy of entry 0 at index 1024 (retail 0x013CD550, filled by
 /// Math_InitializeCosineLookup @ 0x00A0DB60).
 [[nodiscard]] const std::array<float, kCosineTableSize + 1>& CosineTable() noexcept;
+
+/// 128-entry mantissa table for the fast inverse square root (retail
+/// 0x013CE558, first loop of Math_InitializeCosineLookup).
+[[nodiscard]] const std::array<std::uint32_t, 128>& InvSqrtTable() noexcept;
+
+/// Table estimate of 1/sqrt(x): exponent arithmetic + 7 mantissa bits.
+[[nodiscard]] float InvSqrtEstimate(float x) noexcept;
+
+/// The engine's inlined fast 1/sqrt(x): estimate plus one Newton step,
+/// returned at register precision.
+[[nodiscard]] double FastInvSqrt(float x) noexcept;
 
 /// Interpolated table cosine of `x` table steps, kept at register precision
 /// (the inlined lookup sequence used throughout the engine).

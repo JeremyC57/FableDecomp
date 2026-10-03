@@ -21,6 +21,17 @@ power-of-two values chosen to cancel, so a reordered sum is detected (verified b
 |---|---|---|
 | `0x00A0DB60` cosine loop | `math::CosineTable` | `Math_InitializeCosineLookup`; 1024 entries + wrap |
 | inlined lookup | `math::TableCos` / `TableSin` | fistp floor + linear interpolation |
+| `0x00A0DB60` rsqrt loop | `math::InvSqrtTable` | 128 buckets; bucket 64 forced to 0xFF by retail |
+| inlined | `math::InvSqrtEstimate` / `FastInvSqrt` | exponent trick + table + one Newton step |
+| `0x00A55D80` | `CMatrix3x4::InitialiseSkewedSymmetric` | |
+| `0x00A55DF0` | `CMatrix3x4::operator*` | |
+| `0x00C1CF20` | `CMatrix3x4::operator*=` | rhs in EDX; catalogued upstream as `operator*` → C3DVector |
+| `0x00A560A0` | `CMatrix3x4::IsIdentity` | NaN rows pass (retail flag test) |
+| `0x00A56180` | `CMatrix3x4::Equals` | |
+| `0x00A56270` | `CMatrix3x4::Orthonormalise` | |
+| `0x00A56530` | `CMatrix3x4::operator*(C3DVector)` | |
+| `0x00A9D480` | `CPreTransposedBoneMatrix::ScaleRows` | catalogued upstream as `CMatrix3x4::PostScale`; x87 and SSE paths both verified |
+| `0x00A9D580` | `CPreTransposedBoneMatrix::ScaleColumns` | catalogued upstream as `CMatrix3x4::PostScale`; x87 and SSE paths both verified |
 | `0x00A88B60` | `CQuaternion::operator*` | |
 | `0x00A88C10` | `CQuaternion::operator*=` | |
 | `0x00A88C50` | `CQuaternion::Equals` | per-component tolerance 1e-4 |
@@ -37,3 +48,7 @@ power-of-two values chosen to cancel, so a reordered sum is detected (verified b
   Scaling +0x20), not `CQuaternion`.
 - `0x00987BF0`, `0x00ADDFE0`: receiver is a 3×4 row-major `CPreTransposedBoneMatrix`, not a
   quaternion multiply.
+- `0x00A9D480`, `0x00A9D580` (`CMatrix3x4::PostScale`): element indices 0-2/4-6/8-10 and the
+  preserved column 3 show a 3×4 rows-of-four matrix, not the rows-of-three `CMatrix3x4`.
+- `0x00C1CF20` (`CMatrix3x4::operator*` → `C3DVector`): in-place matrix product, rhs in EDX,
+  no stack arguments.

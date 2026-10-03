@@ -5,6 +5,7 @@
 #include "fable/core/Math.hpp"
 
 #include <bit>
+#include <array>
 #include <cmath>
 #include <cstring>
 
@@ -247,9 +248,158 @@ void boneMatrixTransform(RetailOracle& o) {
     }
 }
 
+CMatrix3x4 randomMatrix() {
+    std::array<float, 12> e{};
+    const bool cancel = cancellingMode();
+    for (auto& v : e) {
+        v = cancel ? cancelling() : sample();
+    }
+    return std::bit_cast<CMatrix3x4>(e);
+}
+
+CMatrix3x4 nearIdentity(float spread) {
+    std::array<float, 12> e{1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0};
+    for (auto& v : e) {
+        if (randomU32() % 3 == 0) {
+            v += randomFloat(-spread, spread);
+        }
+    }
+    return std::bit_cast<CMatrix3x4>(e);
+}
+
+void invSqrtTable(RetailOracle& o) {
+    fillRetailCosineTable(o);
+    const auto& table = math::InvSqrtTable();
+    for (std::size_t i = 0; i < table.size(); ++i) {
+        CHECK_EQ(table[i], o.get<std::uint32_t>(0x013CE558 + static_cast<std::uint32_t>(i) * 4));
+    }
+}
+
+void matrixSkew(RetailOracle& o) {
+    for (int i = 0; i < kRounds; ++i) {
+        const auto v = randomVec3();
+        CMatrix3x4 port = randomMatrix();
+        port.InitialiseSkewedSymmetric(v);
+        const auto pm = place(o, randomMatrix()), pv = place(o, v);
+        const std::uint32_t args[] = {pv};
+        o.call(0x00A55D80, CallingConvention::Thiscall, args, pm);
+        if (!sameFloats(port, o.get<CMatrix3x4>(pm))) {
+            CHECK(false);
+            return;
+        }
+    }
+}
+
+void matrixMultiply(RetailOracle& o) {
+    for (int i = 0; i < kRounds; ++i) {
+        const auto a = randomMatrix(), b = randomMatrix();
+        const auto pa = place(o, a), pb = place(o, b), pr = o.alloc(48);
+        const std::uint32_t args[] = {pr, pb};
+        o.call(0x00A55DF0, CallingConvention::Thiscall, args, pa);
+        if (!sameFloats(a * b, o.get<CMatrix3x4>(pr))) {
+            CHECK(false);
+            return;
+        }
+        CMatrix3x4 c = a;
+        c *= b;
+        o.call(0x00C1CF20, CallingConvention::Fastcall, {}, pa, pb);  // this=ECX, rhs=EDX
+        if (!sameFloats(c, o.get<CMatrix3x4>(pa))) {
+            CHECK(false);
+            return;
+        }
+    }
+}
+
+void matrixIdentityEquals(RetailOracle& o) {
+    for (int i = 0; i < kRounds; ++i) {
+        const auto a = (i % 4 == 0) ? randomMatrix() : nearIdentity(2e-4f);
+        auto b = a;
+        if (i % 2 == 0) {
+            std::array<float, 12> e = std::bit_cast<std::array<float, 12>>(b);
+            e[randomU32() % 12] += randomFloat(-2e-4f, 2e-4f);
+            b = std::bit_cast<CMatrix3x4>(e);
+        }
+        const auto pa = place(o, a), pb = place(o, b);
+        const auto id = o.call(0x00A560A0, CallingConvention::Thiscall, {}, pa);
+        CHECK_EQ(id.eax & 0xFFU, static_cast<std::uint32_t>(a.IsIdentity()));
+        const std::uint32_t args[] = {pb};
+        const auto eq = o.call(0x00A56180, CallingConvention::Thiscall, args, pa);
+        CHECK_EQ(eq.eax & 0xFFU, static_cast<std::uint32_t>(a.Equals(b)));
+    }
+}
+
+void matrixOrthonormalise(RetailOracle& o) {
+    fillRetailCosineTable(o);  // also fills the inverse-sqrt table
+    for (int i = 0; i < kRounds; ++i) {
+        auto m = (i % 3 == 0) ? nearIdentity(0.5f) : randomMatrix();
+        const auto pm = place(o, m);
+        o.call(0x00A56270, CallingConvention::Thiscall, {}, pm);
+        m.Orthonormalise();
+        if (!sameFloats(m, o.get<CMatrix3x4>(pm))) {
+            CHECK(false);
+            return;
+        }
+    }
+}
+
+void matrixTimesVector(RetailOracle& o) {
+    for (int i = 0; i < kRounds; ++i) {
+        const auto m = randomMatrix();
+        const auto v = randomVec3();
+        const auto pm = place(o, m), pv = place(o, v), pr = o.alloc(12);
+        const std::uint32_t args[] = {pr, pv};
+        o.call(0x00A56530, CallingConvention::Thiscall, args, pm);
+        if (!sameFloats(m * v, o.get<C3DVector>(pr))) {
+            CHECK(false);
+            return;
+        }
+    }
+}
+
+void boneMatrixScale(RetailOracle& o) {
+    for (const std::uint8_t sse : {0, 1}) {
+        o.put<std::uint8_t>(0x013D2880, sse);  // retail CPU-feature flag selecting the SSE path
+        for (int i = 0; i < kRounds; ++i) {
+            CPreTransposedBoneMatrix m;
+            for (auto& row : m.Data) {
+                for (auto& v : row) {
+                    v = sample();
+                }
+            }
+            const auto s = randomVec3();
+            const auto pm = o.alloc(48, 16), pv = place(o, s);
+            o.put(pm, m);
+            const std::uint32_t args[] = {pv};
+            auto rows = m;
+            rows.ScaleRows(s);
+            o.call(0x00A9D480, CallingConvention::Thiscall, args, pm);
+            if (!sameFloats(rows, o.get<CPreTransposedBoneMatrix>(pm))) {
+                std::cerr << "    ScaleRows sse=" << int{sse} << '\n';
+                CHECK(false);
+                return;
+            }
+            auto cols = rows;
+            cols.ScaleColumns(s);
+            o.call(0x00A9D580, CallingConvention::Thiscall, args, pm);
+            if (!sameFloats(cols, o.get<CPreTransposedBoneMatrix>(pm))) {
+                std::cerr << "    ScaleColumns sse=" << int{sse} << '\n';
+                CHECK(false);
+                return;
+            }
+        }
+    }
+}
+
 } // namespace
 
 void registerCoreMathTests(TestList& tests) {
+    tests.push_back({"math.InvSqrtTable", invSqrtTable});
+    tests.push_back({"CMatrix3x4::InitialiseSkewedSymmetric 0x00A55D80", matrixSkew});
+    tests.push_back({"CMatrix3x4::operator*/*= 0x00A55DF0/0x00C1CF20", matrixMultiply});
+    tests.push_back({"CMatrix3x4::IsIdentity/Equals 0x00A560A0/0x00A56180", matrixIdentityEquals});
+    tests.push_back({"CMatrix3x4::Orthonormalise 0x00A56270", matrixOrthonormalise});
+    tests.push_back({"CMatrix3x4::operator*(C3DVector) 0x00A56530", matrixTimesVector});
+    tests.push_back({"CPreTransposedBoneMatrix::ScaleRows/Columns 0x00A9D480/0x00A9D580", boneMatrixScale});
     tests.push_back({"math.CosineTable", cosineTable});
     tests.push_back({"CQuaternion::operator* 0x00A88B60", quatMultiply});
     tests.push_back({"CQuaternion::operator*= 0x00A88C10", quatMultiplyAssign});
