@@ -78,7 +78,7 @@ double x87ToDouble(const std::uint8_t raw[10]) {
 
 } // namespace
 
-RetailOracle::RetailOracle(const std::filesystem::path& exe) {
+RetailOracle::RetailOracle(const std::filesystem::path& exe, const Config& config) : config_(config) {
     std::ifstream in(exe, std::ios::binary);
     if (!in) {
         throw OracleError("cannot open " + exe.string());
@@ -93,8 +93,10 @@ RetailOracle::RetailOracle(const std::filesystem::path& exe) {
     bindImports(file);
     setupSegments();
 
-    check(uc_mem_map(uc_, kStackBase, kStackSize, UC_PROT_READ | UC_PROT_WRITE), "map stack");
-    check(uc_mem_map(uc_, kHeapBase, kHeapSize, UC_PROT_READ | UC_PROT_WRITE), "map heap");
+    const std::uint32_t stackSize = (config_.stackSize + 0xFFFU) & ~0xFFFU;
+    const std::uint32_t heapSize = (config_.heapSize + 0xFFFU) & ~0xFFFU;
+    check(uc_mem_map(uc_, kStackBase + kStackSize - stackSize, stackSize, UC_PROT_READ | UC_PROT_WRITE), "map stack");
+    check(uc_mem_map(uc_, kHeapBase, heapSize, UC_PROT_READ | UC_PROT_WRITE), "map heap");
     heapNext_ = kHeapBase;
 
     // Prologue: fninit; fldcw [kPrologueData]; jmp dword [kPrologueData + 4]
@@ -120,6 +122,9 @@ RetailOracle::RetailOracle(const std::filesystem::path& exe) {
         if (s.writable) {
             s.pristine.resize(s.size);
             read(s.va, s.pristine.data(), s.size);
+        } else if (config_.protectSections) {
+            const std::uint32_t size = (s.size + 0xFFFU) & ~0xFFFU;
+            uc_mem_protect(uc_, s.va, size, UC_PROT_READ | UC_PROT_EXEC);
         }
     }
     installDefaultStubs();
@@ -261,7 +266,7 @@ void RetailOracle::reset() {
 
 std::uint32_t RetailOracle::alloc(std::size_t size, std::uint32_t align) {
     const std::uint32_t at = (heapNext_ + align - 1) & ~(align - 1);
-    if (at + size > kHeapBase + kHeapSize) {
+    if (at + size > kHeapBase + config_.heapSize) {
         throw OracleError("oracle scratch heap exhausted");
     }
     heapNext_ = at + static_cast<std::uint32_t>(size);
@@ -329,6 +334,13 @@ CallResult RetailOracle::call(std::uint32_t function, CallingConvention cc,
     check(uc_reg_write(uc_, UC_X86_REG_ESP, &esp), "esp");
     const std::uint32_t eflags = 0x202;
     check(uc_reg_write(uc_, UC_X86_REG_EFLAGS, &eflags), "eflags");
+    // Deterministic SIMD state: XMM/MMX registers start zeroed for every call.
+    std::uint8_t zero16[16] = {};
+    for (int r = UC_X86_REG_XMM0; r <= UC_X86_REG_XMM7; ++r) {
+        uc_reg_write(uc_, r, zero16);
+    }
+    const std::uint32_t mxcsr = 0x1F80;
+    uc_reg_write(uc_, UC_X86_REG_MXCSR, &mxcsr);
     put(kPrologueData + 4, function);
 
     const uc_err err = uc_emu_start(uc_, kPrologue, kSentinel, 0, budget_);
@@ -418,8 +430,17 @@ void RetailOracle::onCode(std::uint64_t address) {
     if (current_ != nullptr) {
         current_->importsCalled.push_back(name->second);
     }
-    const std::uint32_t eax = stub->second.handler(*this);
-    const std::uint32_t ret = get<std::uint32_t>(stubEsp_);
+    // Never let a C++ exception unwind through Unicorn's C frames.
+    std::uint32_t eax = 0;
+    std::uint32_t ret = 0;
+    try {
+        eax = stub->second.handler(*this);
+        ret = get<std::uint32_t>(stubEsp_);
+    } catch (const std::exception& e) {
+        pendingError_ = std::string("import stub ") + name->second + " failed: " + e.what();
+        uc_emu_stop(uc_);
+        return;
+    }
     const std::uint32_t esp = stubEsp_ + 4 + stub->second.popBytes;
     uc_reg_write(uc_, UC_X86_REG_EAX, &eax);
     uc_reg_write(uc_, UC_X86_REG_ESP, &esp);

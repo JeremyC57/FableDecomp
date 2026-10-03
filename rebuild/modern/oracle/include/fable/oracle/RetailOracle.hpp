@@ -52,7 +52,14 @@ public:
         std::uint32_t popBytes = 0;
     };
 
-    explicit RetailOracle(const std::filesystem::path& exe);
+    struct Config {
+        std::uint32_t stackSize = 0x00100000;  ///< mapped just below 0x0F100000
+        std::uint32_t heapSize = 0x04000000;   ///< mapped at 0x10000000
+        bool protectSections = true;           ///< read-only code/rodata, like Windows
+    };
+
+    explicit RetailOracle(const std::filesystem::path& exe) : RetailOracle(exe, Config{}) {}
+    RetailOracle(const std::filesystem::path& exe, const Config& config);
     ~RetailOracle();
     RetailOracle(const RetailOracle&) = delete;
     RetailOracle& operator=(const RetailOracle&) = delete;
@@ -128,6 +135,7 @@ private:
     std::map<std::uint32_t, std::string> thunkNames_;  ///< trap address -> DLL!name
     std::map<std::string, ImportStub> stubs_;
     std::uint32_t heapNext_ = 0;
+    Config config_{};
     std::uint64_t budget_ = 50'000'000;
 
     // per-call state
