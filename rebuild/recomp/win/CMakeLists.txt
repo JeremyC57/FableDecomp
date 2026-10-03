@@ -60,4 +60,4 @@ target_compile_options(FableRecomp PRIVATE -ffp-contract=off -fno-strict-aliasin
 target_link_options(FableRecomp PRIVATE -municode -static -Wl,--high-entropy-va -Wl,--dynamicbase
                     -Wl,--image-base=0x140000000 -Wl,--stack,0x10000000)
 target_link_libraries(FableRecomp PRIVATE bcrypt shell32 user32 gdi32 advapi32 winmm imm32 ole32 oleaut32 version ws2_32
-                      d3d9 dinput8 ddraw dsound dxguid uuid)
+                      d3d9 dinput8 ddraw dsound mfplat mfreadwrite mfuuid strmiids dxguid uuid)
