@@ -32,6 +32,19 @@ power-of-two values chosen to cancel, so a reordered sum is detected (verified b
 | `0x00A56530` | `CMatrix3x4::operator*(C3DVector)` | |
 | `0x00A9D480` | `CPreTransposedBoneMatrix::ScaleRows` | catalogued upstream as `CMatrix3x4::PostScale`; x87 and SSE paths both verified |
 | `0x00A9D580` | `CPreTransposedBoneMatrix::ScaleColumns` | catalogued upstream as `CMatrix3x4::PostScale`; x87 and SSE paths both verified |
+| `0x00A14440` | `C3DVector::Normalise` | catalogued upstream as `GetScaled` |
+| `0x00A14480` | `C3DVector::NormaliseAndGetLength` | catalogued upstream as `GetScaled`; returns length in ST0 |
+| `0x00A14510` | `C2DVector::Normalise` | catalogued upstream as `C2DVector::Dot` |
+| `0x00A14540` | `C2DVector::FastNormalise` | catalogued upstream as `Normalise`; table estimate |
+| `0x00A55F90` | `CMatrix3x4::InitialiseRotation` | `Matrix_RotationAroundAxis`; x87 fsin/fcos → libm (see caveat) |
+| `0x00A13C60` | `C3DVector::Rotate` | |
+| `0x00A42140` | `CPlane::Initialise(normal, d)` | |
+| `0x00A42170` | `CPlane::Initialise(p0, p1, p2)` | |
+| `0x00A42280` | `CPlane::InitialiseFromPointAndNormal` | **not in upstream catalogue** |
+| `0x00A422C0` | `CPlane::GetIntersectionWithLine` | |
+| `0x00A42370` | `CPlane::GetIntersectionWithLineOffset` | **not in upstream catalogue** |
+| `0x00A42430` | `CPlane::IsWithinDistance` | **not in upstream catalogue** |
+| `0x00A42470` | `CPlane::GetIntersectionWithTriangle` | |
 | `0x00A88B60` | `CQuaternion::operator*` | |
 | `0x00A88C10` | `CQuaternion::operator*=` | |
 | `0x00A88C50` | `CQuaternion::Equals` | per-component tolerance 1e-4 |
@@ -41,6 +54,11 @@ power-of-two values chosen to cancel, so a reordered sum is detected (verified b
 | `0x00AA39A0` | `C3DKeyframe::ToMatrix(CMatrix4x4&)` | catalogued upstream as `CQuaternion::ToMatrix`; 2nd retail arg unused |
 | `0x00987BF0` | `CPreTransposedBoneMatrix::Transform` | catalogued upstream as `CQuaternion::operator*` |
 | `0x00ADDFE0` | `CPreTransposedBoneMatrix::TransformInPlace` | catalogued upstream as `CQuaternion::operator*` |
+
+**Caveat — x87 transcendentals:** `fsin`/`fcos` (used by `Matrix_RotationAroundAxis`) are ported
+with libm `sin`/`cos`. Unicorn also emulates them with the host libm, so the oracle cannot certify the
+last bit against real x87 hardware for those two instructions; after rounding to float, differences
+are expected to be vanishingly rare. Everything else is plain IEEE arithmetic and verified exactly.
 
 ## Catalogue corrections found while porting
 
@@ -52,3 +70,9 @@ power-of-two values chosen to cancel, so a reordered sum is detected (verified b
   preserved column 3 show a 3×4 rows-of-four matrix, not the rows-of-three `CMatrix3x4`.
 - `0x00C1CF20` (`CMatrix3x4::operator*` → `C3DVector`): in-place matrix product, rhs in EDX,
   no stack arguments.
+- `0x00A14440`/`0x00A14480` (`C3DVector::GetScaled`) are in-place normalisations;
+  `0x00A14510` (`C2DVector::Dot`) normalises; `0x00A14540` (`C2DVector::Normalise`) is the fast variant.
+- `0x006AD220` (`C3DVector::GetAccurateMagnitude`) reads a vector at `this+0x1B4` of a larger object
+  and calls game logic — not a `C3DVector` method (not ported here).
+- Missing from the catalogue: `0x00A42280`, `0x00A42370`, `0x00A42430` (CPlane), `0x00A144C0`
+  (2D clamp helper).

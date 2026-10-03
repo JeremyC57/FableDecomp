@@ -15,12 +15,28 @@ namespace fable {
 struct C2DVector {
     float X = 0.0f;
     float Y = 0.0f;
+
+    /// 0x00A14510 — exact normalise (catalogued upstream as C2DVector::Dot).
+    void Normalise() noexcept;
+    /// 0x00A14540 — table-estimate normalise; returns this.
+    C2DVector& FastNormalise() noexcept;
 };
+
+struct CMatrix3x4;
 
 struct C3DVector {
     float X = 0.0f;
     float Y = 0.0f;
     float Z = 0.0f;
+
+    /// 0x00A14440 — exact normalise (catalogued upstream as GetScaled).
+    void Normalise() noexcept;
+    /// 0x00A14480 — exact normalise returning the previous length at register
+    /// precision (catalogued upstream as GetScaled).
+    double NormaliseAndGetLength() noexcept;
+    /// 0x00A13C60 — rotate about `axis` by `angle` turns (via
+    /// Matrix_RotationAroundAxis, which uses x87 fsin/fcos).
+    void Rotate(const C3DVector& axis, float angle) noexcept;
 };
 
 struct C4DVector {
@@ -55,6 +71,37 @@ struct CMatrix3x4 {
     void Orthonormalise() noexcept;
     /// 0x00A56530 — basis rows dotted with v (no translation).
     [[nodiscard]] C3DVector operator*(const C3DVector& v) const noexcept;
+    /// 0x00A55F90 Matrix_RotationAroundAxis — rotation of `angle` turns about
+    /// a unit axis; translation zeroed. Uses libm sin/cos for the retail x87
+    /// fsin/fcos (identical except in rare last-bit cases).
+    void InitialiseRotation(const C3DVector& axis, float angle) noexcept;
+};
+
+/// Plane n.p = Distance.
+struct CPlane {
+    C3DVector Normal;
+    float Distance = 0.0f;
+
+    /// 0x00A42140
+    bool Initialise(const C3DVector& normal, float distance) noexcept;
+    /// 0x00A42170 — plane through three points (edges normalised first).
+    bool Initialise(const C3DVector& p0, const C3DVector& p1, const C3DVector& p2) noexcept;
+    /// 0x00A42280 (not in the upstream catalogue) — plane through `point`
+    /// with `normal` (normalised).
+    bool InitialiseFromPointAndNormal(const C3DVector& point, const C3DVector& normal) noexcept;
+    /// 0x00A422C0 — intersection of the line point + t*dir; false if parallel.
+    bool GetIntersectionWithLine(const C3DVector& point, const C3DVector& dir, C3DVector& out) const noexcept;
+    /// 0x00A42370 (not in the upstream catalogue) — as above against the
+    /// plane shifted by `offset`, then pulled back by 1e-4.
+    bool GetIntersectionWithLineOffset(const C3DVector& point, const C3DVector& dir, float offset,
+                                       C3DVector& out) const noexcept;
+    /// 0x00A42430 (not in the upstream catalogue) — |n.p - d| < maxDistance;
+    /// writes the distance.
+    bool IsWithinDistance(const C3DVector& point, float maxDistance, float& distance) const noexcept;
+    /// 0x00A42470 — the two points where the triangle's edges cross the plane.
+    /// Returns false only if no pair of vertices lies strictly on one side.
+    bool GetIntersectionWithTriangle(const C3DVector& a, const C3DVector& b, const C3DVector& c, C3DVector& out1,
+                                     C3DVector& out2) const noexcept;
 };
 
 /// Direct3D-compatible row-major 4x4 matrix.

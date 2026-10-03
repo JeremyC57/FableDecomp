@@ -390,9 +390,152 @@ void boneMatrixScale(RetailOracle& o) {
     }
 }
 
+void vectorNormalise(RetailOracle& o) {
+    fillRetailCosineTable(o);
+    for (int i = 0; i < kRounds; ++i) {
+        const auto v3 = randomVec3();
+        const auto p3 = place(o, v3);
+        auto port3 = v3;
+        port3.Normalise();
+        o.call(0x00A14440, CallingConvention::Thiscall, {}, p3);
+        CHECK(sameFloats(port3, o.get<C3DVector>(p3)));
+
+        o.put(p3, v3);
+        auto len3 = v3;
+        const double len = len3.NormaliseAndGetLength();
+        const auto r = o.call(0x00A14480, CallingConvention::Thiscall, {}, p3);
+        CHECK(sameFloats(len3, o.get<C3DVector>(p3)));
+        CHECK(r.st0Valid && (r.st0 == len || (std::isnan(r.st0) && std::isnan(len))));
+
+        const C2DVector v2{sample(), sample()};
+        const auto p2 = place(o, v2);
+        auto exact = v2;
+        exact.Normalise();
+        o.call(0x00A14510, CallingConvention::Thiscall, {}, p2);
+        CHECK(sameFloats(exact, o.get<C2DVector>(p2)));
+
+        o.put(p2, v2);
+        auto fast = v2;
+        fast.FastNormalise();
+        const auto rf = o.call(0x00A14540, CallingConvention::Thiscall, {}, p2);
+        CHECK_EQ(rf.eax, p2);
+        if (!sameFloats(fast, o.get<C2DVector>(p2))) {
+            CHECK(false);
+            return;
+        }
+    }
+}
+
+void rotation(RetailOracle& o) {
+    for (int i = 0; i < kRounds; ++i) {
+        auto axis = randomVec3();
+        if (i % 2 == 0) {
+            axis.Normalise();
+        }
+        const float angle = (i % 5 == 0) ? sample(100.0f) : randomFloat(-1.0f, 1.0f);
+        CMatrix3x4 port;
+        port.InitialiseRotation(axis, angle);
+        const auto pm = o.alloc(48), pa = place(o, axis);
+        const std::uint32_t args[] = {pa, RetailOracle::bits(angle)};
+        o.call(0x00A55F90, CallingConvention::Thiscall, args, pm);
+        if (!sameFloats(port, o.get<CMatrix3x4>(pm))) {
+            CHECK(false);
+            return;
+        }
+        auto v = randomVec3();
+        const auto pv = place(o, v);
+        o.call(0x00A13C60, CallingConvention::Thiscall, args, pv);
+        v.Rotate(axis, angle);
+        if (!sameFloats(v, o.get<C3DVector>(pv))) {
+            CHECK(false);
+            return;
+        }
+    }
+}
+
+void planes(RetailOracle& o) {
+    for (int i = 0; i < kRounds; ++i) {
+        const auto p0 = randomVec3(), p1 = randomVec3(), p2 = randomVec3(), dir = randomVec3();
+        const float d = sample();
+
+        CPlane a;
+        a.Initialise(p0, d);
+        const auto pa = o.alloc(16), pp0 = place(o, p0), pp1 = place(o, p1), pp2 = place(o, p2);
+        const std::uint32_t args1[] = {pp0, RetailOracle::bits(d)};
+        CHECK_EQ(o.call(0x00A42140, CallingConvention::Thiscall, args1, pa).eax & 0xFFU, 1U);
+        CHECK(sameFloats(a, o.get<CPlane>(pa)));
+
+        CPlane b;
+        b.Initialise(p0, p1, p2);
+        const std::uint32_t args3[] = {pp0, pp1, pp2};
+        CHECK_EQ(o.call(0x00A42170, CallingConvention::Thiscall, args3, pa).eax & 0xFFU, 1U);
+        if (!sameFloats(b, o.get<CPlane>(pa))) {
+            CHECK(false);
+            return;
+        }
+
+        CPlane c;
+        c.InitialiseFromPointAndNormal(p0, p1);
+        const std::uint32_t args2[] = {pp0, pp1};
+        o.call(0x00A42280, CallingConvention::Thiscall, args2, pa);
+        if (!sameFloats(c, o.get<CPlane>(pa))) {
+            CHECK(false);
+            return;
+        }
+
+        // Intersections against a normalised random plane (and occasionally a parallel line).
+        const auto& plane = c;
+        const auto pdir = place(o, (i % 20 == 0) ? C3DVector{0, 0, 0} : dir);
+        const C3DVector useDir = (i % 20 == 0) ? C3DVector{0, 0, 0} : dir;
+        const auto pout = o.alloc(16);
+        o.put(pout, C3DVector{7, 7, 7});
+        C3DVector out{7, 7, 7};
+        const bool hit = plane.GetIntersectionWithLine(p2, useDir, out);
+        const auto pp2b = place(o, p2);
+        const std::uint32_t argsL[] = {pp2b, pdir, pout};
+        CHECK_EQ(o.call(0x00A422C0, CallingConvention::Thiscall, argsL, pa).eax & 0xFFU, static_cast<std::uint32_t>(hit));
+        if (!sameFloats(out, o.get<C3DVector>(pout))) {
+            CHECK(false);
+            return;
+        }
+
+        const float offset = sample();
+        C3DVector outO{7, 7, 7};
+        o.put(pout, outO);
+        const bool hitO = plane.GetIntersectionWithLineOffset(p2, useDir, offset, outO);
+        const std::uint32_t argsO[] = {pp2b, pdir, RetailOracle::bits(offset), pout};
+        CHECK_EQ(o.call(0x00A42370, CallingConvention::Thiscall, argsO, pa).eax & 0xFFU, static_cast<std::uint32_t>(hitO));
+        if (!sameFloats(outO, o.get<C3DVector>(pout))) {
+            CHECK(false);
+            return;
+        }
+
+        const float maxDist = std::fabs(sample());
+        float dist = 0;
+        const bool within = plane.IsWithinDistance(p1, maxDist, dist);
+        const auto pdist = o.alloc(4);
+        const std::uint32_t argsW[] = {pp1, RetailOracle::bits(maxDist), pdist};
+        CHECK_EQ(o.call(0x00A42430, CallingConvention::Thiscall, argsW, pa).eax & 0xFFU, static_cast<std::uint32_t>(within));
+        CHECK(sameBits(dist, o.get<float>(pdist)));
+
+        C3DVector o1{5, 5, 5}, o2{6, 6, 6};
+        const auto po1 = place(o, o1), po2 = place(o, o2);
+        const bool tri = plane.GetIntersectionWithTriangle(p0, p1, p2, o1, o2);
+        const std::uint32_t argsT[] = {pp0, pp1, pp2, po1, po2};
+        CHECK_EQ(o.call(0x00A42470, CallingConvention::Thiscall, argsT, pa).eax & 0xFFU, static_cast<std::uint32_t>(tri));
+        if (!sameFloats(o1, o.get<C3DVector>(po1)) || !sameFloats(o2, o.get<C3DVector>(po2))) {
+            CHECK(false);
+            return;
+        }
+    }
+}
+
 } // namespace
 
 void registerCoreMathTests(TestList& tests) {
+    tests.push_back({"C2DVector/C3DVector normalise 0x00A14440/80/0x00A14510/40", vectorNormalise});
+    tests.push_back({"Matrix_RotationAroundAxis/C3DVector::Rotate 0x00A55F90/0x00A13C60", rotation});
+    tests.push_back({"CPlane 0x00A42140..0x00A42470 (+3 uncatalogued)", planes});
     tests.push_back({"math.InvSqrtTable", invSqrtTable});
     tests.push_back({"CMatrix3x4::InitialiseSkewedSymmetric 0x00A55D80", matrixSkew});
     tests.push_back({"CMatrix3x4::operator*/*= 0x00A55DF0/0x00C1CF20", matrixMultiply});

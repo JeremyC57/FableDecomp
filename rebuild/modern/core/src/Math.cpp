@@ -115,6 +115,48 @@ double math::FastInvSqrt(float x) noexcept {
 double math::TableCos(float x) noexcept { return tableLookup(x, 0); }
 double math::TableSin(float x) noexcept { return tableLookup(x, 256); }
 
+// ---- C2DVector / C3DVector ---------------------------------------------------------
+
+void C2DVector::Normalise() noexcept {
+    const double inv = 1.0 / std::sqrt(static_cast<double>(Y) * Y + static_cast<double>(X) * X);
+    X = store(inv * X);
+    Y = store(inv * Y);
+}
+
+C2DVector& C2DVector::FastNormalise() noexcept {
+    const float n = store(static_cast<double>(Y) * Y + static_cast<double>(X) * X);
+    const double inv = math::FastInvSqrt(n);
+    X = store(inv * X);
+    Y = store(inv * Y);
+    return *this;
+}
+
+void C3DVector::Normalise() noexcept {
+    const double len = std::sqrt((static_cast<double>(Z) * Z + static_cast<double>(Y) * Y) + static_cast<double>(X) * X);
+    const double inv = 1.0 / len;
+    X = store(inv * X);
+    Y = store(inv * Y);
+    Z = store(inv * Z);
+}
+
+double C3DVector::NormaliseAndGetLength() noexcept {
+    const double len = std::sqrt((static_cast<double>(Z) * Z + static_cast<double>(Y) * Y) + static_cast<double>(X) * X);
+    const double inv = 1.0 / len;
+    X = store(inv * X);
+    Y = store(inv * Y);
+    Z = store(inv * Z);
+    return len;
+}
+
+void C3DVector::Rotate(const C3DVector& axis, float angle) noexcept {
+    CMatrix3x4 m;
+    m.InitialiseRotation(axis, angle);
+    const double x = X, y = Y, z = Z;
+    X = store((m.E31 * z + m.E21 * y) + m.E11 * x);
+    Y = store((m.E32 * z + m.E22 * y) + m.E12 * x);
+    Z = store((m.E33 * z + m.E23 * y) + m.E13 * x);
+}
+
 // ---- CMatrix3x4 ----------------------------------------------------------------
 
 namespace {
@@ -249,6 +291,146 @@ C3DVector CMatrix3x4::operator*(const C3DVector& v) const noexcept {
     return {store((E12 * y + E13 * z) + x * E11),  //
             store((E22 * y + E21 * x) + E23 * z),  //
             store((E32 * y + E31 * x) + E33 * z)};
+}
+
+void CMatrix3x4::InitialiseRotation(const C3DVector& axis, float angle) noexcept {
+    const double theta = static_cast<double>(angle) * 6.2831854820251465;  // retail double 0x0124F2B8
+    const double c = std::cos(theta);
+    const double s = std::sin(theta);
+    const double X = axis.X, Y = axis.Y, Z = axis.Z;
+    const double xx = X * X;  // kept in a register
+    const double yy = store(Y * Y);
+    const double zz = store(Z * Z);
+    const double xy = store(Y * X);
+    const double xz = store(Z * X);
+    const double yz = store(Z * Y);
+    const double sx = store(s * X);
+    const double sy = store(s * Y);
+    const double sz = store(s * Z);
+
+    E11 = store((xx + c) - xx * c);
+    const double t = xy - xy * c;
+    E21 = store(sz + t);
+    const double u = xz - xz * c;
+    E31 = store(u - sy);
+    E12 = store(t - sz);
+    E22 = store((yy + c) - yy * c);
+    const double v = yz - yz * c;
+    const double vf = store(v);
+    E32 = store(v + sx);
+    E13 = store(u + sy);
+    E23 = store(vf - sx);
+    E33 = store((zz + c) - zz * c);
+    E41 = E42 = E43 = 0.0f;
+}
+
+// ---- CPlane -----------------------------------------------------------------
+
+bool CPlane::Initialise(const C3DVector& normal, float distance) noexcept {
+    Normal = normal;
+    Distance = distance;
+    return true;
+}
+
+bool CPlane::Initialise(const C3DVector& p0, const C3DVector& p1, const C3DVector& p2) noexcept {
+    C3DVector e1{store(static_cast<double>(p1.X) - p0.X), store(static_cast<double>(p1.Y) - p0.Y),
+                 store(static_cast<double>(p1.Z) - p0.Z)};
+    C3DVector e2{store(static_cast<double>(p2.X) - p0.X), store(static_cast<double>(p2.Y) - p0.Y),
+                 store(static_cast<double>(p2.Z) - p0.Z)};
+    e1.Normalise();
+    e2.Normalise();
+    Normal.X = store(static_cast<double>(e2.Z) * e1.Y - static_cast<double>(e1.Z) * e2.Y);
+    Normal.Y = store(static_cast<double>(e1.Z) * e2.X - static_cast<double>(e2.Z) * e1.X);
+    Normal.Z = store(static_cast<double>(e2.Y) * e1.X - static_cast<double>(e1.Y) * e2.X);
+    Normal.Normalise();
+    Distance = store((static_cast<double>(Normal.Z) * p0.Z + static_cast<double>(Normal.Y) * p0.Y) +
+                     static_cast<double>(p0.X) * Normal.X);
+    return true;
+}
+
+bool CPlane::InitialiseFromPointAndNormal(const C3DVector& point, const C3DVector& normal) noexcept {
+    Normal = normal;
+    Normal.Normalise();
+    Distance = store((static_cast<double>(point.Z) * Normal.Z + static_cast<double>(point.Y) * Normal.Y) +
+                     static_cast<double>(point.X) * Normal.X);
+    return true;
+}
+
+namespace {
+
+double planeDotDir(const C3DVector& n, const C3DVector& dir) noexcept {
+    return (static_cast<double>(dir.Y) * n.Y + static_cast<double>(dir.X) * n.X) + static_cast<double>(n.Z) * dir.Z;
+}
+
+double planeDotPoint(const C3DVector& n, const C3DVector& p) noexcept {
+    return (static_cast<double>(p.Z) * n.Z + static_cast<double>(p.X) * n.X) + static_cast<double>(p.Y) * n.Y;
+}
+
+void pointAlong(const C3DVector& point, const C3DVector& dir, double t, C3DVector& out) noexcept {
+    const double tx = t * dir.X;  // kept in a register
+    const double ty = store(t * dir.Y);
+    const double tz = store(t * dir.Z);
+    out = {store(tx + point.X), store(ty + point.Y), store(tz + point.Z)};
+}
+
+} // namespace
+
+bool CPlane::GetIntersectionWithLine(const C3DVector& point, const C3DVector& dir, C3DVector& out) const noexcept {
+    const double denom = planeDotDir(Normal, dir);
+    if (denom == 0.0) {
+        return false;
+    }
+    const double t = (static_cast<double>(Distance) - planeDotPoint(Normal, point)) / denom;
+    pointAlong(point, dir, t, out);
+    return true;
+}
+
+bool CPlane::GetIntersectionWithLineOffset(const C3DVector& point, const C3DVector& dir, float offset,
+                                           C3DVector& out) const noexcept {
+    const double denom = planeDotDir(Normal, dir);
+    if (denom == 0.0) {
+        return false;
+    }
+    const double inv = 1.0 / denom;
+    const double t = ((static_cast<double>(Distance) - planeDotPoint(Normal, point)) * inv - inv * offset) - kEpsilon;
+    pointAlong(point, dir, t, out);
+    return true;
+}
+
+bool CPlane::IsWithinDistance(const C3DVector& point, float maxDistance, float& distance) const noexcept {
+    const double d = std::fabs(((static_cast<double>(point.Z) * Normal.Z + static_cast<double>(point.Y) * Normal.Y) +
+                                static_cast<double>(point.X) * Normal.X) -
+                               Distance);
+    distance = store(d);
+    return d < maxDistance;
+}
+
+bool CPlane::GetIntersectionWithTriangle(const C3DVector& a, const C3DVector& b, const C3DVector& c, C3DVector& out1,
+                                         C3DVector& out2) const noexcept {
+    const double N0 = Normal.X, N1 = Normal.Y, N2 = Normal.Z, D = Distance;
+    const float da = store(((a.Y * N1 + N2 * a.Z) + a.X * N0) - D);
+    const float db = store(((b.X * N0 + b.Y * N1) + b.Z * N2) - D);
+    const float dc = store(((c.Z * N2 + c.X * N0) + c.Y * N1) - D);
+    auto sameSide = [](float p, float q) { return (p > 0.0f && q > 0.0f) || (p < 0.0f && q < 0.0f); };
+    auto edge = [](const C3DVector& to, const C3DVector& from) {
+        return C3DVector{store(static_cast<double>(to.X) - from.X), store(static_cast<double>(to.Y) - from.Y),
+                         store(static_cast<double>(to.Z) - from.Z)};
+    };
+    const C3DVector* base = nullptr;
+    C3DVector e1, e2;
+    if (sameSide(da, db)) {
+        base = &c, e1 = edge(a, c), e2 = edge(b, c);
+    } else if (sameSide(da, dc)) {
+        base = &b, e1 = edge(a, b), e2 = edge(c, b);
+    } else if (sameSide(db, dc)) {
+        base = &a, e1 = edge(b, a), e2 = edge(c, a);
+    } else {
+        return false;
+    }
+    const C3DVector origin = *base;
+    GetIntersectionWithLine(origin, e1, out1);
+    GetIntersectionWithLine(origin, e2, out2);
+    return true;
 }
 
 // ---- CQuaternion -------------------------------------------------------------
