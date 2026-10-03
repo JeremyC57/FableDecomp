@@ -2,6 +2,7 @@ add_library(fable_assets
     src/BigArchive.cpp
     src/GameInstall.cpp
     src/Lzo.cpp
+    src/TextBank.cpp
     src/Texture.cpp
 )
 

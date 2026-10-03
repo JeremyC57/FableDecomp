@@ -5,6 +5,7 @@
 #include "fable/assets/ByteReader.hpp"
 #include "fable/assets/GameInstall.hpp"
 #include "fable/assets/Lzo.hpp"
+#include "fable/assets/TextBank.hpp"
 #include "fable/assets/Texture.hpp"
 
 #include <cstdlib>
@@ -208,6 +209,22 @@ void testTextureInfoAndDecode() {
     CHECK(throwsAssetError([] { (void)TextureInfo::parse(bytes({1, 2, 3})); }));
 }
 
+void testTextString() {
+    Writer w;
+    for (const unsigned u : {0x48U, 0xE9U, 0x20ACU, 0xD83DU, 0xDE00U, 0U}) w.u16(u);  // "Hé€😀"
+    w.lpstr("ScriptDialogue.lug");
+    w.lpstr("FARMER");
+    w.lpstr("TEXT_TEST");
+    w.u32(1);
+    w.u32(2); w.raw("ANIM:SCRIPT_CHEER_1"); w.u8(0);
+    const auto s = TextBank::parseString(w.buf);
+    CHECK(s.content == "H\xC3\xA9\xE2\x82\xAC\xF0\x9F\x98\x80");
+    CHECK(s.speechBank == "ScriptDialogue.lug" && s.speaker == "FARMER" && s.name == "TEXT_TEST");
+    CHECK(s.tags.size() == 1 && s.tags[0].position == 2 && s.tags[0].name == "ANIM:SCRIPT_CHEER_1");
+    w.u8(0);  // trailing junk must be rejected
+    CHECK(throwsAssetError([&] { (void)TextBank::parseString(w.buf); }));
+}
+
 void testCaseInsensitiveInstall(const fs::path& tmp) {
     const auto root = tmp / "FakeInstall";
     for (const auto rel : GameInstall::requiredFiles()) {
@@ -267,6 +284,7 @@ int main() {
     testChunkedLzo();
     testBigArchive(tmp);
     testTextureInfoAndDecode();
+    testTextString();
     testCaseInsensitiveInstall(tmp);
     if (const char* dir = std::getenv("FABLE_INSTALL_DIR"); dir != nullptr && *dir != '\0') {
         testRetailInstall(dir);

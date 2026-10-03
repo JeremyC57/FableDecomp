@@ -126,7 +126,8 @@ Modern-lane only; never counted toward retail-match coverage. Every asset is rea
 
 - [x] 2026-10-02 `rebuild/modern/assets`: install validation + case-insensitive paths, BIGB reader, LZO1X + chunked frame, texture mip 0 (DXT1/DXT3/ARGB) — 394/394 frontend.big mips byte-identical to `tools/lionhead_lz.py`
 - [ ] Remaining texture mips, multi-frame sprites, `textures.big` corpus run (6,324 entries)
-- [ ] Text (`text.big`) and font decoders → frontend strings without D3D9
+- [x] 2026-10-02 `TextBank`: text.big strings/groups/narrators (26,807 / 2,105 / 379, zero trailing bytes)
+- [ ] Font decoder → frontend strings without D3D9
 - [ ] Platform layer: SDL3 window/input/audio, GL ES 3 / Vulkan renderer backend, WMV video via a portable decoder
 - [ ] Port the recovered frontend (`docs/formats/FRONTEND_FORMAT.md`) onto the platform layer as the first x64 executable
 - [ ] Android packaging (install picked via Storage Access Framework, ARM64 build)

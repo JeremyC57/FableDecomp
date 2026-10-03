@@ -5,12 +5,14 @@
 //   fable_assets verify  <file.big>                 decode every texture mip 0
 //   fable_assets texture <file.big> <ENTRY> <out.tga>
 //   fable_assets payload <file.big> <ENTRY> <out.bin>
+//   fable_assets text    <text.big> [ID|NAME]          summary, or one string
 //
 // Exports are written for local inspection only; never redistribute them.
 
 #include "fable/assets/BigArchive.hpp"
 #include "fable/assets/ByteReader.hpp"
 #include "fable/assets/GameInstall.hpp"
+#include "fable/assets/TextBank.hpp"
 #include "fable/assets/Texture.hpp"
 
 #include <cstdio>
@@ -29,7 +31,8 @@ int usage() {
                  "  fable_assets list    <file.big> [--entries]\n"
                  "  fable_assets verify  <file.big>\n"
                  "  fable_assets texture <file.big> <ENTRY> <out.tga>\n"
-                 "  fable_assets payload <file.big> <ENTRY> <out.bin>\n";
+                 "  fable_assets payload <file.big> <ENTRY> <out.bin>\n"
+                 "  fable_assets text    <text.big> [ID|NAME]\n";
     return 2;
 }
 
@@ -174,6 +177,38 @@ int cmdPayload(const std::string& file, const std::string& name, const std::stri
     return out ? 0 : 1;
 }
 
+int cmdText(const std::string& file, const char* key) {
+    const auto big = BigArchive::open(file);
+    const auto bank = TextBank::load(big);
+    if (key == nullptr) {
+        std::cout << bank.stringCount() << " strings, " << bank.groupCount() << " groups, "
+                  << bank.narrators().size() << " narrators\n";
+        return 0;
+    }
+    const std::string k = key;
+    const bool numeric = !k.empty() && k.find_first_not_of("0123456789") == std::string::npos;
+    const auto* s = numeric ? bank.string(static_cast<std::uint32_t>(std::stoul(k))) : bank.string(k);
+    if (s != nullptr) {
+        std::cout << s->id << ' ' << s->name << "\n  speaker: " << s->speaker << "\n  bank: " << s->speechBank
+                  << "\n  text: " << s->content << '\n';
+        for (const auto& t : s->tags) {
+            std::cout << "  tag @" << t.position << ": " << t.name << '\n';
+        }
+        return 0;
+    }
+    const auto* g = numeric ? bank.group(static_cast<std::uint32_t>(std::stoul(k))) : bank.group(k);
+    if (g != nullptr) {
+        std::cout << g->id << ' ' << g->name << " (group)\n";
+        for (const auto m : g->members) {
+            const auto* ms = bank.string(m);
+            std::cout << "  " << m << ": " << (ms != nullptr ? ms->content : "<missing>") << '\n';
+        }
+        return 0;
+    }
+    std::cerr << "no text entry " << k << '\n';
+    return 1;
+}
+
 } // namespace
 
 int main(int argc, char** argv) {
@@ -187,6 +222,9 @@ int main(int argc, char** argv) {
         }
         if (cmd == "list") {
             return cmdList(argv[2], argc > 3 && std::string_view(argv[3]) == "--entries");
+        }
+        if (cmd == "text") {
+            return cmdText(argv[2], argc > 3 ? argv[3] : nullptr);
         }
         if (cmd == "verify") {
             return cmdVerify(argv[2]);
