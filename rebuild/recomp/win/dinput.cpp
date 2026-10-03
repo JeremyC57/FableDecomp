@@ -50,6 +50,9 @@ template <class Dev> void getDeviceData(Ctx* c) {
         }
     }
     wr32(inout, n);
+    if (n && out) HLOG(1, "IDirectInputDevice8::GetDeviceData -> %lu events (first ofs 0x%lX data 0x%lX)", n, buf[0].dwOfs, buf[0].dwData);
+    static thread_local HRESULT lastHr = S_OK;
+    if (hr != lastHr) { HLOG(1, "IDirectInputDevice8::GetDeviceData -> 0x%08lX", static_cast<unsigned long>(hr)); lastHr = hr; }
     retStd(c, static_cast<uint32_t>(hr), 5);
 }
 

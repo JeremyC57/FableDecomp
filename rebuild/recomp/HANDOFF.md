@@ -1,33 +1,70 @@
-# Recompiler handoff: where the Windows x64 build stopped (2026-10-03)
+# Recompiler handoff: where the Windows x64 build stopped (2026-10-03, session 2)
 
 Goal: Fable TLC running as a native x64 Windows exe (then Android). The exe needs the
 user's original game folder; no retail bytes or generated code are in git.
 
 ## Where things stand
 
-- **Lifter** (`lifter/`): turns Fable.exe (x86) into C.
-  - Now also adds entries for code that is only reached through pointers: relocations,
-    data dwords, and `push offset` immediates. That gives 62,888 functions.
-  - New options: `-` in place of `functions.tsv`, `--prefix NAME` (to lift a DLL) and
+- **The recompiled game reaches the frontend and renders it** (Wine 9, Xvfb, llvm-mingw):
+  - ConfigDetect passes.
+  - D3D9 CreateDevice/Reset succeed.
+  - `frontend.bin`, `frontend.big` and the shaders load.
+  - The animated frontend background draws, with the game's "error during video
+    playback" panel over it.
+- **Fixed this session:**
+  - **Lifter: functions started at the wrong block.** Blocks are emitted in address
+    order. When a backward jump pulls in code below the entry, the C function began
+    executing that code. This made every `__security_check_cookie` run its failure path,
+    which caused the old "Buffer overrun detected!" blocker. 270 functions in Fable.exe and
+    142 in ConfigDetect were affected. Any earlier whole-game differential results predate
+    this fix.
+  - **ddraw.dll:** `DirectDrawEnumerateExA`, `DirectDrawCreateEx` and an `IDirectDraw7`
+    proxy, which ConfigDetect uses to size video memory. `GetAvailableVidMem` is clamped to
+    1 GiB, because ConfigDetect's 64 MB round-up wraps ~4 GB to 0.
+  - **dsound.dll:** `GetDeviceID`, plus `DllGetClassObject(CLSID_DirectSoundPrivate)`
+    returning a host-implemented `IClassFactory`/`IKsPropertySet` that answers
+    `DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A` from the real dsound. Fable.exe uses these
+    without checking the results.
+  - **Runtime:** the game host now uses the real TSC; it was a fake counter, so
+    ConfigDetect measured 0 MHz. Tests keep the deterministic counter.
+- **Current blockers:**
+  1. **Intro video.** `CoCreateInstance(CLSID_FilterGraph)` returns 0x80040154 (class not
+     registered), and the game shows an in-engine "unable to play video" panel.
+     - It needs DirectShow proxies: IGraphBuilder, IMediaControl, IMediaEventEx,
+       IVideoWindow, IBasicAudio and friends.
+     - Note: `OAHWND` is `LONG_PTR`, so it is 8 bytes on x64.
+     - Alternatively, skip the movies.
+  2. **Input under headless Xvfb.** Buffered DirectInput delivers Return, space, mouse
+     motion and button 0 to the game (logged in `GetDeviceData`). Even so, the panel's OK
+     does not trigger, and absolute mouse placement is off.
+     - Check whether the frontend wants events with matching `dwTimeStamp`/`timeGetTime`,
+       or reads `GetDeviceState`.
+     - Then check on a real Windows desktop before going deeper.
+  3. **Audio.** No audio devices under this Wine. `OpenAL32.dll`/`wrap_oal.dll` are not in
+     the Steam folder, and `CoCreateInstance(CLSID_DirectSound)` fails, so it needs a
+     DirectSound proxy.
+- **Lifter:** adds entries for code only reached through pointers (relocations, data
+  dwords, `push offset` immediates), giving 62,888 functions.
+  - Options: `-` in place of `functions.tsv`, `--prefix NAME` (to lift a DLL), and
     `--no-refs`.
-  - Direct calls to addresses that are not lifted go through `recomp_dispatch`.
-- **Runtime** (`runtime/`):
-  - `RECOMP_IDENTITY_MEMORY` mode: guest address == host address, accessed via `GP()`.
-  - `recomp_register_table()` registers extra function tables, one per recompiled DLL.
-- **Windows host** (`win/`): **builds, links (52 MB) and boots under Wine.** What runs so far:
-  - The CRT starts up, and static constructors run.
-  - The game creates threads, checks the EULA and opens files from the game folder.
-  - It loads `strings.dll` as a data file.
-  - It loads the **recompiled ConfigDetect.dll** at 0x10000000 and runs its DllMain.
-- **Current blocker:** inside ConfigDetect.dll's CRT init, the MSVC `/GS` check fails with
-  "Buffer overrun detected!" and shows a MessageBox that blocks under headless Wine.
-  - Likely cause: a host import writes past a 32-bit guest struct, or a guest DLL CRT
-    import is wrong.
-  - Suspects: `GetVersionExA`, `GetStartupInfoA`, `GetCPInfo`, `GetModuleFileNameA`,
-    `GetEnvironmentStrings*`, `LCMapString*`, `GetStringType*`, and the TLS functions.
-  - **Next step:** run with `FABLE_RECOMP_LOG=2` and read the import calls just before
-    `user32!MessageBoxA`. Also check `__security_init_cookie` and whether its stack frames
-    agree.
+- **Runtime:** `RECOMP_IDENTITY_MEMORY` (guest address == host address) and
+  `recomp_register_table()` for recompiled DLLs.
+
+## Headless test loop (Linux)
+
+```sh
+# Wine 9 (apt wine64), Xvfb, xdotool, imagemagick, llvm-mingw, libzydis-dev
+# Kill stray wineservers first. A `wine reg ...` run outside the X server starts a desktop
+# with no display driver, and the game then fails to create windows or a GL context.
+wine reg delete 'HKCU\Software\Microsoft\Microsoft Games\Fable TLC' /v GFX_RESET /f; wineserver -k; wineserver -w
+Xvfb :77 -screen 0 1280x1024x24 &  DISPLAY=:77 FABLE_RECOMP_LOG=1 FABLE_RECOMP_HEADLESS=1 wine FableRecomp.exe --game '<game dir>'
+xwd -root -silent | convert xwd:- shot.png      # screenshot
+```
+
+- `GFX_RESET=1` is left behind after a crash, and on the next start ConfigDetect asks
+  about safe mode.
+- Fatal or warning dialogs drawn by ConfigDetect show up in the log as
+  `SetWindowTextA`/`SetDlgItemTextA`.
 
 ## Files in `win/`
 
@@ -75,15 +112,16 @@ Under Wine you must create `Documents\My Games\Fable` in the prefix.
 
 ## Known gaps, in rough order
 
-1. The ConfigDetect `/GS` failure (above).
+1. DirectShow video and headless input (above).
 2. **C++ exceptions and SEH are not implemented.** `_CxxThrowException`, `__CxxFrameHandler`
    and `_except_handler3` all end in a fatal error.
    - The game throws `CBBBFileException` when a file is missing, so the full data folder
      is needed. It will also need real unwinding: a longjmp-style resume into the catch
      funclet's continuation, which needs lifter support.
 3. Audio:
-   - dsound.dll, OpenAL32.dll and wrap_oal.dll are reported as missing, and
-     `CoCreateInstance` fails.
+   - dsound.dll is only partly provided (GetDeviceID and the private device enumeration).
+     OpenAL32.dll and wrap_oal.dll are missing, and `CoCreateInstance(CLSID_DirectSound)`
+     fails.
    - The game needs a DirectSound proxy (COM, like D3D9) or an OpenAL proxy.
    - WMV video (DirectShow via `CoCreateInstance`) is not supported either.
 4. `mgspid.dll` / `PidGen.dll` (product ID) are reported as missing. This has not been
@@ -91,10 +129,8 @@ Under Wine you must create `Documents\My Games\Fable` in the prefix.
 5. The registry key `HKLM\Software\Microsoft\Microsoft Games\Fable\1.0` is missing under
    Wine. Steam creates it on a real install.
 6. waveOut/mixer report no devices.
-7. Testing:
-   - The game data was only partly staged into the Linux session; the big `.big`, `.lut`,
-     `.stb` and `.wad` files were not.
-   - Real testing should now happen on the Windows PC with the full install.
+7. Testing: session 2 ran the full Steam install under Wine (2.8 GB, never committed).
+   Real testing on the Windows PC with the full install is still the next check.
 8. Android:
    - Needs a non-identity memory layout, or a guest region reserved below 4 GB in the
      ARM64 process.
