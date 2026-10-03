@@ -226,8 +226,10 @@ private:
         }
         if (count == 0 && !byteTable) {
             // Fallback: entries pointing into this function's neighbourhood.
+            // Null entries are holes (indices the switch never takes) and do not end the table.
             for (uint32_t i = 0; i < 256 && img_.contains(table + i * 4, 4); ++i) {
                 const uint32_t t = img_.r32(table + i * 4);
+                if (t == 0 && i + 1 < 256) continue;
                 if (!img_.isCode(t) || t < f.entry || t >= f.entry + 0x10000 || (t != f.entry && isEntry(t))) break;
                 count = i + 1;
             }
@@ -245,6 +247,7 @@ private:
         for (uint32_t i = 0; i < count; ++i) {
             if (!img_.contains(table + i * 4, 4)) return false;
             const uint32_t t = img_.r32(table + i * 4);
+            if (t == 0) continue;  // hole
             if (!img_.isCode(t)) return false;
             jt.targets.push_back(t);
         }

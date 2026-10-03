@@ -145,6 +145,31 @@ std::string sha256(const std::vector<uint8_t>& data) {
     return s;
 }
 
+// Crash report for faults in the recompiled code: the host address, and the likely guest
+// call chain (return addresses into Fable.exe found on the guest stack).
+LONG CALLBACK crashHandler(EXCEPTION_POINTERS* e) {
+    const DWORD code = e->ExceptionRecord->ExceptionCode;
+    if (code != EXCEPTION_ACCESS_VIOLATION && code != EXCEPTION_ILLEGAL_INSTRUCTION && code != EXCEPTION_INT_DIVIDE_BY_ZERO &&
+        code != EXCEPTION_STACK_OVERFLOW)
+        return EXCEPTION_CONTINUE_SEARCH;
+    static LONG once = 0;
+    if (InterlockedExchange(&once, 1)) return EXCEPTION_CONTINUE_SEARCH;
+    const auto addr = reinterpret_cast<uintptr_t>(e->ExceptionRecord->ExceptionAddress);
+    const auto self = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
+    log("CRASH: exception 0x%08lX at host %p (FableRecomp.exe+0x%llX), %s address 0x%llX", code, e->ExceptionRecord->ExceptionAddress,
+        static_cast<unsigned long long>(addr - self), e->ExceptionRecord->ExceptionInformation[0] ? "writing" : "reading",
+        static_cast<unsigned long long>(e->ExceptionRecord->ExceptionInformation[1]));
+    const GuestThread* t = currentThread();
+    const uint32_t esp = t->ctx.esp;
+    log("  guest esp 0x%08X ebp 0x%08X; return addresses on the guest stack:", esp, t->ctx.ebp);
+    int shown = 0;
+    for (uint32_t a = esp; a + 4 <= t->stackHi && a < esp + 0x2000 && shown < 24; a += 4) {
+        const uint32_t v = rd32(a);
+        if (v >= 0x401000 && v < 0x1200000) { log("    [esp+0x%04X] 0x%08X", a - esp, v); ++shown; }
+    }
+    return EXCEPTION_CONTINUE_SEARCH;
+}
+
 DWORD WINAPI guestMain(void*) {
     bindThread(newGuestThread(0x100000));
     log("starting guest at entry point 0x%08X", kEntryPoint);
@@ -179,6 +204,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR, int) {
     saveGameDir(g_gameDir);
 
     threadsInit();
+    AddVectoredExceptionHandler(1, crashHandler);
     std::string cmd = "\"" + narrow(g_exePath.c_str()) + "\"";
     crtInit(cmd);
     {

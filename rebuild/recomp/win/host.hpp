@@ -110,7 +110,10 @@ template <class T> T fetch(Ctx* c, uint32_t& off) {
     const uint32_t a = c->esp + 4 + off;
     if constexpr (std::is_same_v<T, double>) { off += 8; return rdf64(a); }
     else if constexpr (std::is_same_v<T, float>) { off += 4; return rdf32(a); }
-    else if constexpr (std::is_integral_v<T> && sizeof(T) == 8) { off += 8; return (T)rd64(a); }
+    // 8-byte integers here are pointer-sized Win32 types (SIZE_T, ULONG_PTR, WPARAM, LPARAM,
+    // LONG_PTR): 4 bytes on the x86 stack. No forwarded API takes a true 64-bit integer by value.
+    else if constexpr (std::is_integral_v<T> && sizeof(T) == 8 && std::is_signed_v<T>) { off += 4; return static_cast<T>(static_cast<int32_t>(rd32(a))); }
+    else if constexpr (std::is_integral_v<T> && sizeof(T) == 8) { off += 4; return static_cast<T>(rd32(a)); }
     else if constexpr (std::is_pointer_v<T>) { off += 4; return reinterpret_cast<T>(static_cast<intptr_t>(static_cast<int32_t>(rd32(a)))); }
     else if constexpr (std::is_enum_v<T>) { off += 4; return static_cast<T>(rd32(a)); }
     else if constexpr (std::is_integral_v<T> && std::is_signed_v<T>) { off += 4; return static_cast<T>(static_cast<int32_t>(rd32(a))); }
