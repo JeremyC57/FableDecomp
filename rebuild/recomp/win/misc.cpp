@@ -1,5 +1,5 @@
 // GDI32, ADVAPI32 (registry), WINMM, VERSION, SHELL32, OLE32/OLEAUT32, IMM32, WSOCK32.
-#include "host.hpp"
+#include "com.hpp"
 
 #include <imm.h>
 #include <mmsystem.h>
@@ -136,11 +136,32 @@ FWD_STD(O, CoUninitialize);
 FWD_STD(O, CoFreeUnusedLibraries);
 IMPORT(O, CoTaskMemAlloc) { retStd(c, gmalloc(arg(c, 0)), 1); }
 IMPORT(O, CoTaskMemFree) { gfree(arg(c, 0)); retStd(c, 0, 1); }
+// Classes the host implements itself (e.g. the DirectShow filter graph) register here;
+// everything else is created by the real 64-bit COM and handed out through a proxy when
+// the requested interface has one.
 IMPORT(O, CoCreateInstance) {
-    const GUID* g = argp<GUID>(c, 0);
-    log("CoCreateInstance({%08lX-%04X-%04X-...}) -> class not available", g->Data1, g->Data2, g->Data3);
-    if (arg(c, 4)) wr32(arg(c, 4), 0);
-    retStd(c, static_cast<uint32_t>(REGDB_E_CLASSNOTREG), 5);
+    const GUID& clsid = *argp<GUID>(c, 0);
+    const GUID& iid = *argp<GUID>(c, 3);
+    const uint32_t out = arg(c, 4);
+    if (out) wr32(out, 0);
+    if (com::HostClassFactory f = com::hostClass(clsid)) {
+        const HRESULT hr = f(iid, out);
+        HLOG(1, "CoCreateInstance({%08lX-...}, {%08lX-...}) -> host class 0x%08lX", clsid.Data1, iid.Data1, static_cast<unsigned long>(hr));
+        retStd(c, static_cast<uint32_t>(hr), 5);
+        return;
+    }
+    com::Class* cls = com::classForIid(iid);
+    if (!cls || arg(c, 1)) {
+        log("CoCreateInstance({%08lX-%04X-%04X-...}, {%08lX-...}) -> class not available", clsid.Data1, clsid.Data2, clsid.Data3, iid.Data1);
+        retStd(c, static_cast<uint32_t>(REGDB_E_CLASSNOTREG), 5);
+        return;
+    }
+    CoInitializeEx(nullptr, COINIT_MULTITHREADED);  // no-op (S_FALSE / RPC_E_CHANGED_MODE) if the guest already did
+    void* p = nullptr;
+    const HRESULT hr = CoCreateInstance(clsid, nullptr, arg(c, 2), iid, &p);
+    if (SUCCEEDED(hr) && out) wr32(out, com::wrapRaw(static_cast<IUnknown*>(p), *cls));
+    log("CoCreateInstance({%08lX-%04X-%04X-...}, %s) -> 0x%08lX", clsid.Data1, clsid.Data2, clsid.Data3, cls->name, static_cast<unsigned long>(hr));
+    retStd(c, static_cast<uint32_t>(hr), 5);
 }
 constexpr const char* OA = "oleaut32.dll";
 IMPORTN(OA, "#2", SysAllocString) {

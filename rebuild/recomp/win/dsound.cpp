@@ -1,4 +1,8 @@
 // DirectSound.
+// - Fable.exe creates CLSID_DirectSound (IDirectSound) through CoCreateInstance: the real
+//   64-bit DirectSound behind the generated proxies, with hand-written CreateSoundBuffer
+//   (DSBUFFERDESC holds a pointer), Lock/Unlock (host pointers go through low guest
+//   staging memory) and SetNotificationPositions (DSBPOSITIONNOTIFY holds a HANDLE).
 // - ConfigDetect.dll needs dsound.dll to be present and resolves GetDeviceID.
 // - Fable.exe calls dsound!DllGetClassObject(CLSID_DirectSoundPrivate) and uses the
 //   IKsPropertySet it yields to enumerate devices (DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A),
@@ -11,7 +15,9 @@
 #include <dsound.h>
 #include <dsconf.h>
 
+#include <mutex>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 using namespace host;
@@ -62,6 +68,20 @@ std::vector<DsDevice> enumerateHostDevices() {
     }
     if (ps) ps->Release();
     if (cf) cf->Release();
+    // Wine leaves DataFlow unset: take it from the public render/capture lists.
+    std::vector<GUID> render;
+    DirectSoundEnumerateW(
+        [](GUID* g, LPCWSTR, LPCWSTR, LPVOID p) -> BOOL {
+            if (g) static_cast<std::vector<GUID>*>(p)->push_back(*g);
+            return TRUE;
+        },
+        &render);
+    for (DsDevice& d : out) {
+        if (d.flow == DIRECTSOUNDDEVICE_DATAFLOW_RENDER || d.flow == DIRECTSOUNDDEVICE_DATAFLOW_CAPTURE) continue;
+        bool isRender = false;
+        for (const GUID& g : render) isRender |= IsEqualGUID(g, d.id) != 0;
+        d.flow = isRender ? DIRECTSOUNDDEVICE_DATAFLOW_RENDER : DIRECTSOUNDDEVICE_DATAFLOW_CAPTURE;
+    }
     if (out.empty()) {  // fall back to the public enumerators (no interface path)
         DirectSoundEnumerateA(
             [](GUID* g, LPCSTR desc, LPCSTR mod, LPVOID p) -> BOOL {
@@ -179,3 +199,121 @@ IMPORT("dsound.dll", DllGetClassObject) {
 }
 
 }  // namespace
+
+// ---------------------------------------------------------------------------
+// Generated-proxy overrides
+// ---------------------------------------------------------------------------
+namespace {
+
+// x86 DSBUFFERDESC: dwSize, dwFlags, dwBufferBytes, dwReserved, lpwfxFormat (32-bit),
+// guid3DAlgorithm (DX7+ only: dwSize 36; the DX3 DSBUFFERDESC1 is 20 bytes).
+template <class DS> void createSoundBuffer(Ctx* c) {
+    DS* self = com::unwrap<DS>(arg(c, 0));
+    const uint32_t g = arg(c, 1), out = arg(c, 2);
+    DSBUFFERDESC d{};
+    d.dwSize = sizeof d;
+    d.dwFlags = rd32(g + 4);
+    d.dwBufferBytes = rd32(g + 8);
+    d.dwReserved = rd32(g + 12);
+    d.lpwfxFormat = rd32(g + 16) ? gp<WAVEFORMATEX>(rd32(g + 16)) : nullptr;
+    if (rd32(g) >= 36) std::memcpy(&d.guid3DAlgorithm, gp(g + 20), 16);
+    IDirectSoundBuffer* b = nullptr;
+    const HRESULT hr = self->CreateSoundBuffer(&d, &b, nullptr);
+    if (out) wr32(out, SUCCEEDED(hr) ? com::wrap(b) : 0);
+    HLOG(2, "IDirectSound::CreateSoundBuffer(flags 0x%lX, %lu bytes, %u Hz) -> 0x%08lX", d.dwFlags, d.dwBufferBytes,
+         d.lpwfxFormat ? static_cast<unsigned>(d.lpwfxFormat->nSamplesPerSec) : 0u, static_cast<unsigned long>(hr));
+    retStd(c, static_cast<uint32_t>(hr), 4);
+}
+
+// Lock staging: one low guest block per buffer, reused across locks.
+struct Staging {
+    uint32_t mem = 0, cap = 0;
+    void* host1 = nullptr;
+    void* host2 = nullptr;
+    DWORD n1 = 0, n2 = 0;
+};
+std::mutex g_stageLock;
+std::unordered_map<IUnknown*, Staging> g_stage;
+
+void freeStaging(IUnknown* p) {
+    std::lock_guard<std::mutex> l(g_stageLock);
+    auto it = g_stage.find(p);
+    if (it == g_stage.end()) return;
+    if (it->second.mem) gfree(it->second.mem);
+    g_stage.erase(it);
+}
+
+// Lock(this, offset, bytes, ppv1, pn1, ppv2, pn2, flags)
+template <class B> void lockBuffer(Ctx* c) {
+    B* self = com::unwrap<B>(arg(c, 0));
+    void* p1 = nullptr;
+    void* p2 = nullptr;
+    DWORD n1 = 0, n2 = 0;
+    const HRESULT hr = self->Lock(arg(c, 1), arg(c, 2), &p1, &n1, arg(c, 5) ? &p2 : nullptr, arg(c, 5) ? &n2 : nullptr, arg(c, 7));
+    uint32_t g1 = 0, g2 = 0;
+    if (SUCCEEDED(hr)) {
+        com::onRelease(reinterpret_cast<IUnknown*>(self), freeStaging);
+        std::lock_guard<std::mutex> l(g_stageLock);
+        Staging& s = g_stage[reinterpret_cast<IUnknown*>(self)];
+        if (s.cap < n1 + n2) {
+            if (s.mem) gfree(s.mem);
+            s.cap = (n1 + n2 + 0xFFF) & ~0xFFFu;
+            s.mem = gmalloc(s.cap);
+        }
+        s.host1 = p1, s.host2 = p2, s.n1 = n1, s.n2 = n2;
+        g1 = s.mem;
+        g2 = p2 ? s.mem + n1 : 0;
+        if (n1) std::memcpy(gp(g1), p1, n1);  // the guest may read back (and Unlock may write less)
+        if (n2) std::memcpy(gp(g2), p2, n2);
+    }
+    if (arg(c, 3)) wr32(arg(c, 3), g1);
+    if (arg(c, 4)) wr32(arg(c, 4), n1);
+    if (arg(c, 5)) wr32(arg(c, 5), g2);
+    if (arg(c, 6)) wr32(arg(c, 6), n2);
+    retStd(c, static_cast<uint32_t>(hr), 8);
+}
+
+// Unlock(this, pv1, n1, pv2, n2)
+template <class B> void unlockBuffer(Ctx* c) {
+    B* self = com::unwrap<B>(arg(c, 0));
+    void* h1 = nullptr;
+    void* h2 = nullptr;
+    DWORD w1 = arg(c, 2), w2 = arg(c, 4);
+    {
+        std::lock_guard<std::mutex> l(g_stageLock);
+        auto it = g_stage.find(reinterpret_cast<IUnknown*>(self));
+        if (it != g_stage.end()) {
+            Staging& s = it->second;
+            h1 = s.host1, h2 = s.host2;
+            if (w1 > s.n1) w1 = s.n1;
+            if (w2 > s.n2) w2 = s.n2;
+            if (h1 && w1 && arg(c, 1)) std::memcpy(h1, gp(arg(c, 1)), w1);
+            if (h2 && w2 && arg(c, 3)) std::memcpy(h2, gp(arg(c, 3)), w2);
+            s.host1 = s.host2 = nullptr;
+        }
+    }
+    const HRESULT hr = self->Unlock(h1, w1, h2, w2);
+    retStd(c, static_cast<uint32_t>(hr), 5);
+}
+
+}  // namespace
+
+void ovr_IDirectSound_CreateSoundBuffer(Ctx* c) { createSoundBuffer<IDirectSound>(c); }
+void ovr_IDirectSound8_CreateSoundBuffer(Ctx* c) { createSoundBuffer<IDirectSound8>(c); }
+void ovr_IDirectSoundBuffer_Lock(Ctx* c) { lockBuffer<IDirectSoundBuffer>(c); }
+void ovr_IDirectSoundBuffer_Unlock(Ctx* c) { unlockBuffer<IDirectSoundBuffer>(c); }
+void ovr_IDirectSoundBuffer8_Lock(Ctx* c) { lockBuffer<IDirectSoundBuffer8>(c); }
+void ovr_IDirectSoundBuffer8_Unlock(Ctx* c) { unlockBuffer<IDirectSoundBuffer8>(c); }
+
+// SetNotificationPositions(this, count, positions): x86 DSBPOSITIONNOTIFY is {offset, HANDLE} (8 bytes).
+void ovr_IDirectSoundNotify_SetNotificationPositions(Ctx* c) {
+    IDirectSoundNotify* self = com::unwrap<IDirectSoundNotify>(arg(c, 0));
+    const uint32_t n = arg(c, 1), g = arg(c, 2);
+    std::vector<DSBPOSITIONNOTIFY> v(n);
+    for (uint32_t i = 0; i < n; ++i) {
+        v[i].dwOffset = rd32(g + 8 * i);
+        v[i].hEventNotify = hh(rd32(g + 8 * i + 4));
+    }
+    retStd(c, static_cast<uint32_t>(self->SetNotificationPositions(n, n ? v.data() : nullptr)), 3);
+}
+

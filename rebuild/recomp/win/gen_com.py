@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generates com_vtables.inc: guest-side vtables for the COM interfaces the game
-uses (Direct3D 9, DirectInput 8, DirectDraw 7), from the mingw-w64 SDK headers.
+uses (Direct3D 9, DirectInput 8, DirectDraw 7, DirectSound), from the mingw-w64 SDK headers.
 
 Each vtable slot is a trap. Methods whose arguments convert mechanically use
 com::comThunk<&I::M>; methods listed in OVERRIDES are hand-written
@@ -22,6 +22,10 @@ INTERFACES = {
     ],
     "dinput.h": ["IDirectInput8A", "IDirectInput8W", "IDirectInputDevice8A", "IDirectInputDevice8W"],
     "ddraw.h": ["IDirectDraw7"],
+    "dsound.h": [
+        "IDirectSound", "IDirectSound8", "IDirectSoundBuffer", "IDirectSoundBuffer8", "IDirectSound3DBuffer",
+        "IDirectSound3DListener", "IDirectSoundNotify", "IKsPropertySet",
+    ],
 }
 
 OVERRIDES = {
@@ -42,6 +46,9 @@ OVERRIDES = {
     "IDirectInputDevice8A::GetDeviceData", "IDirectInputDevice8W::GetDeviceData",
     "IDirectInputDevice8A::EnumObjects", "IDirectInputDevice8W::EnumObjects",
     "IDirectDraw7::GetAvailableVidMem",
+    "IDirectSound::CreateSoundBuffer", "IDirectSound8::CreateSoundBuffer",
+    "IDirectSoundBuffer::Lock", "IDirectSoundBuffer::Unlock", "IDirectSoundBuffer8::Lock", "IDirectSoundBuffer8::Unlock",
+    "IDirectSoundNotify::SetNotificationPositions",
 }
 
 # Argument types the automatic thunk cannot convert.
@@ -49,7 +56,8 @@ UNSAFE = re.compile(
     r"CALLBACK|LPDIENUM|LPDICONFIGURE|DIACTIONFORMAT|DIEFFECT\b|LPCDIEFFECT|DIFILEEFFECT|DIDEVICEOBJECTDATA|"
     r"DIDATAFORMAT|D3DLOCKED_|D3DPRESENT_PARAMETERS|D3DDEVICE_CREATION_PARAMETERS|DIEFFESCAPE|"
     r"DIDEVICEIMAGEINFOHEADER|void\s*\*\*\s*ppContainer|LPDIRECTINPUTEFFECT|pInitializeFunction|"
-    r"DDSURFACEDESC|LPDIRECTDRAWSURFACE|LPDIRECTDRAWCLIPPER|LPDIRECTDRAWPALETTE"
+    r"DDSURFACEDESC|LPDIRECTDRAWSURFACE|LPDIRECTDRAWCLIPPER|LPDIRECTDRAWPALETTE|"
+    r"LPCDSBUFFERDESC|LPDSEFFECTDESC|LPVOID\s*\*\s*ppObject"
 )
 GENERIC = {"QueryInterface": "host::com::comQueryInterface", "AddRef": "host::com::comAddRef", "Release": "host::com::comRelease"}
 

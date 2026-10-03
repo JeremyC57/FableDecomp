@@ -37,6 +37,15 @@ template <class I> I* unwrap(uint32_t g) { return reinterpret_cast<I*>(unwrapRaw
 // Per-object cleanup hook (staging buffers etc.), run when the host object is released.
 void onRelease(IUnknown* p, void (*fn)(IUnknown*));
 
+// COM classes implemented by the host itself (CoCreateInstance consults these first).
+// The factory writes the new guest object for `iid` to guest address `out`.
+using HostClassFactory = HRESULT (*)(REFIID iid, uint32_t out);
+void registerHostClass(const CLSID& clsid, HostClassFactory f);
+HostClassFactory hostClass(REFCLSID clsid);
+struct HostClassReg {
+    HostClassReg(const CLSID& clsid, HostClassFactory f) { registerHostClass(clsid, f); }
+};
+
 void comQueryInterface(Ctx* c);
 void comAddRef(Ctx* c);
 void comRelease(Ctx* c);

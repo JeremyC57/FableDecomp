@@ -30,6 +30,13 @@ void ovr_IDirectInputDevice8A_SetDataFormat(Ctx* c);
 void ovr_IDirectInputDevice8W_EnumObjects(Ctx* c);
 void ovr_IDirectInputDevice8W_GetDeviceData(Ctx* c);
 void ovr_IDirectInputDevice8W_SetDataFormat(Ctx* c);
+void ovr_IDirectSound8_CreateSoundBuffer(Ctx* c);
+void ovr_IDirectSound_CreateSoundBuffer(Ctx* c);
+void ovr_IDirectSoundBuffer8_Lock(Ctx* c);
+void ovr_IDirectSoundBuffer8_Unlock(Ctx* c);
+void ovr_IDirectSoundBuffer_Lock(Ctx* c);
+void ovr_IDirectSoundBuffer_Unlock(Ctx* c);
+void ovr_IDirectSoundNotify_SetNotificationPositions(Ctx* c);
 
 template <> host::com::Class& host::com::classOf<IDirect3D9>() {
     static host::com::Class c = host::com::makeClass("IDirect3D9", {
@@ -582,6 +589,163 @@ template <> host::com::Class& host::com::classOf<IDirectDraw7>() {
     });
     return c;
 }
+template <> host::com::Class& host::com::classOf<IDirectSound>() {
+    static host::com::Class c = host::com::makeClass("IDirectSound", {
+        {"IDirectSound::QueryInterface", host::com::comQueryInterface},
+        {"IDirectSound::AddRef", host::com::comAddRef},
+        {"IDirectSound::Release", host::com::comRelease},
+        {"IDirectSound::CreateSoundBuffer", ovr_IDirectSound_CreateSoundBuffer},
+        {"IDirectSound::GetCaps", &host::com::comThunk<&IDirectSound::GetCaps>},
+        {"IDirectSound::DuplicateSoundBuffer", &host::com::comThunk<&IDirectSound::DuplicateSoundBuffer>},
+        {"IDirectSound::SetCooperativeLevel", &host::com::comThunk<&IDirectSound::SetCooperativeLevel>},
+        {"IDirectSound::Compact", &host::com::comThunk<&IDirectSound::Compact>},
+        {"IDirectSound::GetSpeakerConfig", &host::com::comThunk<&IDirectSound::GetSpeakerConfig>},
+        {"IDirectSound::SetSpeakerConfig", &host::com::comThunk<&IDirectSound::SetSpeakerConfig>},
+        {"IDirectSound::Initialize", &host::com::comThunk<&IDirectSound::Initialize>},
+    });
+    return c;
+}
+template <> host::com::Class& host::com::classOf<IDirectSound8>() {
+    static host::com::Class c = host::com::makeClass("IDirectSound8", {
+        {"IDirectSound8::QueryInterface", host::com::comQueryInterface},
+        {"IDirectSound8::AddRef", host::com::comAddRef},
+        {"IDirectSound8::Release", host::com::comRelease},
+        {"IDirectSound8::CreateSoundBuffer", ovr_IDirectSound8_CreateSoundBuffer},
+        {"IDirectSound8::GetCaps", &host::com::comThunk<&IDirectSound8::GetCaps>},
+        {"IDirectSound8::DuplicateSoundBuffer", &host::com::comThunk<&IDirectSound8::DuplicateSoundBuffer>},
+        {"IDirectSound8::SetCooperativeLevel", &host::com::comThunk<&IDirectSound8::SetCooperativeLevel>},
+        {"IDirectSound8::Compact", &host::com::comThunk<&IDirectSound8::Compact>},
+        {"IDirectSound8::GetSpeakerConfig", &host::com::comThunk<&IDirectSound8::GetSpeakerConfig>},
+        {"IDirectSound8::SetSpeakerConfig", &host::com::comThunk<&IDirectSound8::SetSpeakerConfig>},
+        {"IDirectSound8::Initialize", &host::com::comThunk<&IDirectSound8::Initialize>},
+        {"IDirectSound8::VerifyCertification", &host::com::comThunk<&IDirectSound8::VerifyCertification>},
+    });
+    return c;
+}
+template <> host::com::Class& host::com::classOf<IDirectSoundBuffer>() {
+    static host::com::Class c = host::com::makeClass("IDirectSoundBuffer", {
+        {"IDirectSoundBuffer::QueryInterface", host::com::comQueryInterface},
+        {"IDirectSoundBuffer::AddRef", host::com::comAddRef},
+        {"IDirectSoundBuffer::Release", host::com::comRelease},
+        {"IDirectSoundBuffer::GetCaps", &host::com::comThunk<&IDirectSoundBuffer::GetCaps>},
+        {"IDirectSoundBuffer::GetCurrentPosition", &host::com::comThunk<&IDirectSoundBuffer::GetCurrentPosition>},
+        {"IDirectSoundBuffer::GetFormat", &host::com::comThunk<&IDirectSoundBuffer::GetFormat>},
+        {"IDirectSoundBuffer::GetVolume", &host::com::comThunk<&IDirectSoundBuffer::GetVolume>},
+        {"IDirectSoundBuffer::GetPan", &host::com::comThunk<&IDirectSoundBuffer::GetPan>},
+        {"IDirectSoundBuffer::GetFrequency", &host::com::comThunk<&IDirectSoundBuffer::GetFrequency>},
+        {"IDirectSoundBuffer::GetStatus", &host::com::comThunk<&IDirectSoundBuffer::GetStatus>},
+        {"IDirectSoundBuffer::Initialize", nullptr},
+        {"IDirectSoundBuffer::Lock", ovr_IDirectSoundBuffer_Lock},
+        {"IDirectSoundBuffer::Play", &host::com::comThunk<&IDirectSoundBuffer::Play>},
+        {"IDirectSoundBuffer::SetCurrentPosition", &host::com::comThunk<&IDirectSoundBuffer::SetCurrentPosition>},
+        {"IDirectSoundBuffer::SetFormat", &host::com::comThunk<&IDirectSoundBuffer::SetFormat>},
+        {"IDirectSoundBuffer::SetVolume", &host::com::comThunk<&IDirectSoundBuffer::SetVolume>},
+        {"IDirectSoundBuffer::SetPan", &host::com::comThunk<&IDirectSoundBuffer::SetPan>},
+        {"IDirectSoundBuffer::SetFrequency", &host::com::comThunk<&IDirectSoundBuffer::SetFrequency>},
+        {"IDirectSoundBuffer::Stop", &host::com::comThunk<&IDirectSoundBuffer::Stop>},
+        {"IDirectSoundBuffer::Unlock", ovr_IDirectSoundBuffer_Unlock},
+        {"IDirectSoundBuffer::Restore", &host::com::comThunk<&IDirectSoundBuffer::Restore>},
+    });
+    return c;
+}
+template <> host::com::Class& host::com::classOf<IDirectSoundBuffer8>() {
+    static host::com::Class c = host::com::makeClass("IDirectSoundBuffer8", {
+        {"IDirectSoundBuffer8::QueryInterface", host::com::comQueryInterface},
+        {"IDirectSoundBuffer8::AddRef", host::com::comAddRef},
+        {"IDirectSoundBuffer8::Release", host::com::comRelease},
+        {"IDirectSoundBuffer8::GetCaps", &host::com::comThunk<&IDirectSoundBuffer8::GetCaps>},
+        {"IDirectSoundBuffer8::GetCurrentPosition", &host::com::comThunk<&IDirectSoundBuffer8::GetCurrentPosition>},
+        {"IDirectSoundBuffer8::GetFormat", &host::com::comThunk<&IDirectSoundBuffer8::GetFormat>},
+        {"IDirectSoundBuffer8::GetVolume", &host::com::comThunk<&IDirectSoundBuffer8::GetVolume>},
+        {"IDirectSoundBuffer8::GetPan", &host::com::comThunk<&IDirectSoundBuffer8::GetPan>},
+        {"IDirectSoundBuffer8::GetFrequency", &host::com::comThunk<&IDirectSoundBuffer8::GetFrequency>},
+        {"IDirectSoundBuffer8::GetStatus", &host::com::comThunk<&IDirectSoundBuffer8::GetStatus>},
+        {"IDirectSoundBuffer8::Initialize", nullptr},
+        {"IDirectSoundBuffer8::Lock", ovr_IDirectSoundBuffer8_Lock},
+        {"IDirectSoundBuffer8::Play", &host::com::comThunk<&IDirectSoundBuffer8::Play>},
+        {"IDirectSoundBuffer8::SetCurrentPosition", &host::com::comThunk<&IDirectSoundBuffer8::SetCurrentPosition>},
+        {"IDirectSoundBuffer8::SetFormat", &host::com::comThunk<&IDirectSoundBuffer8::SetFormat>},
+        {"IDirectSoundBuffer8::SetVolume", &host::com::comThunk<&IDirectSoundBuffer8::SetVolume>},
+        {"IDirectSoundBuffer8::SetPan", &host::com::comThunk<&IDirectSoundBuffer8::SetPan>},
+        {"IDirectSoundBuffer8::SetFrequency", &host::com::comThunk<&IDirectSoundBuffer8::SetFrequency>},
+        {"IDirectSoundBuffer8::Stop", &host::com::comThunk<&IDirectSoundBuffer8::Stop>},
+        {"IDirectSoundBuffer8::Unlock", ovr_IDirectSoundBuffer8_Unlock},
+        {"IDirectSoundBuffer8::Restore", &host::com::comThunk<&IDirectSoundBuffer8::Restore>},
+        {"IDirectSoundBuffer8::SetFX", nullptr},
+        {"IDirectSoundBuffer8::AcquireResources", &host::com::comThunk<&IDirectSoundBuffer8::AcquireResources>},
+        {"IDirectSoundBuffer8::GetObjectInPath", nullptr},
+    });
+    return c;
+}
+template <> host::com::Class& host::com::classOf<IDirectSound3DBuffer>() {
+    static host::com::Class c = host::com::makeClass("IDirectSound3DBuffer", {
+        {"IDirectSound3DBuffer::QueryInterface", host::com::comQueryInterface},
+        {"IDirectSound3DBuffer::AddRef", host::com::comAddRef},
+        {"IDirectSound3DBuffer::Release", host::com::comRelease},
+        {"IDirectSound3DBuffer::GetAllParameters", &host::com::comThunk<&IDirectSound3DBuffer::GetAllParameters>},
+        {"IDirectSound3DBuffer::GetConeAngles", &host::com::comThunk<&IDirectSound3DBuffer::GetConeAngles>},
+        {"IDirectSound3DBuffer::GetConeOrientation", &host::com::comThunk<&IDirectSound3DBuffer::GetConeOrientation>},
+        {"IDirectSound3DBuffer::GetConeOutsideVolume", &host::com::comThunk<&IDirectSound3DBuffer::GetConeOutsideVolume>},
+        {"IDirectSound3DBuffer::GetMaxDistance", &host::com::comThunk<&IDirectSound3DBuffer::GetMaxDistance>},
+        {"IDirectSound3DBuffer::GetMinDistance", &host::com::comThunk<&IDirectSound3DBuffer::GetMinDistance>},
+        {"IDirectSound3DBuffer::GetMode", &host::com::comThunk<&IDirectSound3DBuffer::GetMode>},
+        {"IDirectSound3DBuffer::GetPosition", &host::com::comThunk<&IDirectSound3DBuffer::GetPosition>},
+        {"IDirectSound3DBuffer::GetVelocity", &host::com::comThunk<&IDirectSound3DBuffer::GetVelocity>},
+        {"IDirectSound3DBuffer::SetAllParameters", &host::com::comThunk<&IDirectSound3DBuffer::SetAllParameters>},
+        {"IDirectSound3DBuffer::SetConeAngles", &host::com::comThunk<&IDirectSound3DBuffer::SetConeAngles>},
+        {"IDirectSound3DBuffer::SetConeOrientation", &host::com::comThunk<&IDirectSound3DBuffer::SetConeOrientation>},
+        {"IDirectSound3DBuffer::SetConeOutsideVolume", &host::com::comThunk<&IDirectSound3DBuffer::SetConeOutsideVolume>},
+        {"IDirectSound3DBuffer::SetMaxDistance", &host::com::comThunk<&IDirectSound3DBuffer::SetMaxDistance>},
+        {"IDirectSound3DBuffer::SetMinDistance", &host::com::comThunk<&IDirectSound3DBuffer::SetMinDistance>},
+        {"IDirectSound3DBuffer::SetMode", &host::com::comThunk<&IDirectSound3DBuffer::SetMode>},
+        {"IDirectSound3DBuffer::SetPosition", &host::com::comThunk<&IDirectSound3DBuffer::SetPosition>},
+        {"IDirectSound3DBuffer::SetVelocity", &host::com::comThunk<&IDirectSound3DBuffer::SetVelocity>},
+    });
+    return c;
+}
+template <> host::com::Class& host::com::classOf<IDirectSound3DListener>() {
+    static host::com::Class c = host::com::makeClass("IDirectSound3DListener", {
+        {"IDirectSound3DListener::QueryInterface", host::com::comQueryInterface},
+        {"IDirectSound3DListener::AddRef", host::com::comAddRef},
+        {"IDirectSound3DListener::Release", host::com::comRelease},
+        {"IDirectSound3DListener::GetAllParameters", &host::com::comThunk<&IDirectSound3DListener::GetAllParameters>},
+        {"IDirectSound3DListener::GetDistanceFactor", &host::com::comThunk<&IDirectSound3DListener::GetDistanceFactor>},
+        {"IDirectSound3DListener::GetDopplerFactor", &host::com::comThunk<&IDirectSound3DListener::GetDopplerFactor>},
+        {"IDirectSound3DListener::GetOrientation", &host::com::comThunk<&IDirectSound3DListener::GetOrientation>},
+        {"IDirectSound3DListener::GetPosition", &host::com::comThunk<&IDirectSound3DListener::GetPosition>},
+        {"IDirectSound3DListener::GetRolloffFactor", &host::com::comThunk<&IDirectSound3DListener::GetRolloffFactor>},
+        {"IDirectSound3DListener::GetVelocity", &host::com::comThunk<&IDirectSound3DListener::GetVelocity>},
+        {"IDirectSound3DListener::SetAllParameters", &host::com::comThunk<&IDirectSound3DListener::SetAllParameters>},
+        {"IDirectSound3DListener::SetDistanceFactor", &host::com::comThunk<&IDirectSound3DListener::SetDistanceFactor>},
+        {"IDirectSound3DListener::SetDopplerFactor", &host::com::comThunk<&IDirectSound3DListener::SetDopplerFactor>},
+        {"IDirectSound3DListener::SetOrientation", &host::com::comThunk<&IDirectSound3DListener::SetOrientation>},
+        {"IDirectSound3DListener::SetPosition", &host::com::comThunk<&IDirectSound3DListener::SetPosition>},
+        {"IDirectSound3DListener::SetRolloffFactor", &host::com::comThunk<&IDirectSound3DListener::SetRolloffFactor>},
+        {"IDirectSound3DListener::SetVelocity", &host::com::comThunk<&IDirectSound3DListener::SetVelocity>},
+        {"IDirectSound3DListener::CommitDeferredSettings", &host::com::comThunk<&IDirectSound3DListener::CommitDeferredSettings>},
+    });
+    return c;
+}
+template <> host::com::Class& host::com::classOf<IDirectSoundNotify>() {
+    static host::com::Class c = host::com::makeClass("IDirectSoundNotify", {
+        {"IDirectSoundNotify::QueryInterface", host::com::comQueryInterface},
+        {"IDirectSoundNotify::AddRef", host::com::comAddRef},
+        {"IDirectSoundNotify::Release", host::com::comRelease},
+        {"IDirectSoundNotify::SetNotificationPositions", ovr_IDirectSoundNotify_SetNotificationPositions},
+    });
+    return c;
+}
+template <> host::com::Class& host::com::classOf<IKsPropertySet>() {
+    static host::com::Class c = host::com::makeClass("IKsPropertySet", {
+        {"IKsPropertySet::QueryInterface", host::com::comQueryInterface},
+        {"IKsPropertySet::AddRef", host::com::comAddRef},
+        {"IKsPropertySet::Release", host::com::comRelease},
+        {"IKsPropertySet::Get", &host::com::comThunk<&IKsPropertySet::Get>},
+        {"IKsPropertySet::Set", &host::com::comThunk<&IKsPropertySet::Set>},
+        {"IKsPropertySet::QuerySupport", &host::com::comThunk<&IKsPropertySet::QuerySupport>},
+    });
+    return c;
+}
 
 static const host::com::IidEntry kIids[] = {
     {&IID_IDirect3D9, [] { return &host::com::classOf<IDirect3D9>(); }},
@@ -606,4 +770,12 @@ static const host::com::IidEntry kIids[] = {
     {&IID_IDirectInputDevice8A, [] { return &host::com::classOf<IDirectInputDevice8A>(); }},
     {&IID_IDirectInputDevice8W, [] { return &host::com::classOf<IDirectInputDevice8W>(); }},
     {&IID_IDirectDraw7, [] { return &host::com::classOf<IDirectDraw7>(); }},
+    {&IID_IDirectSound, [] { return &host::com::classOf<IDirectSound>(); }},
+    {&IID_IDirectSound8, [] { return &host::com::classOf<IDirectSound8>(); }},
+    {&IID_IDirectSoundBuffer, [] { return &host::com::classOf<IDirectSoundBuffer>(); }},
+    {&IID_IDirectSoundBuffer8, [] { return &host::com::classOf<IDirectSoundBuffer8>(); }},
+    {&IID_IDirectSound3DBuffer, [] { return &host::com::classOf<IDirectSound3DBuffer>(); }},
+    {&IID_IDirectSound3DListener, [] { return &host::com::classOf<IDirectSound3DListener>(); }},
+    {&IID_IDirectSoundNotify, [] { return &host::com::classOf<IDirectSoundNotify>(); }},
+    {&IID_IKsPropertySet, [] { return &host::com::classOf<IKsPropertySet>(); }},
 };

@@ -5,6 +5,8 @@
 #include <d3d9.h>
 #include <dinput.h>
 #include <ddraw.h>
+#include <mmreg.h>
+#include <dsound.h>
 
 #include <mutex>
 #include <unordered_map>
@@ -99,6 +101,19 @@ void comRelease(Ctx* c) {
 #include "com_vtables.inc"
 
 namespace host::com {
+
+namespace {
+std::vector<std::pair<CLSID, HostClassFactory>>& hostClasses() {
+    static std::vector<std::pair<CLSID, HostClassFactory>> v;
+    return v;
+}
+}  // namespace
+void registerHostClass(const CLSID& clsid, HostClassFactory f) { hostClasses().emplace_back(clsid, f); }
+HostClassFactory hostClass(REFCLSID clsid) {
+    for (const auto& [id, f] : hostClasses())
+        if (IsEqualGUID(id, clsid)) return f;
+    return nullptr;
+}
 
 Class* classForIid(REFIID iid) {
     for (const auto& e : kIids)
