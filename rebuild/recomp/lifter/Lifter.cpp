@@ -410,6 +410,11 @@ struct Stats {
     uint64_t insns = 0, unsupportedInsns = 0, unresolvedIndirectJumps = 0, decodeErrors = 0;
 };
 
+std::set<uint32_t>& traceAddrs() {
+    static std::set<uint32_t> s;
+    return s;
+}
+
 class Emitter {
 public:
     Emitter(Program& p, Stats& st) : p_(p), st_(st) {}
@@ -422,6 +427,7 @@ public:
              << "    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;\n"
              << "    int fop = FOP(FK_EXPLICIT, 4); uint32_t fr = 0, fa = 0, fb = 0; /* flags undefined at entry */\n"
              << "    (void)fop; (void)fr; (void)fa; (void)fb;\n";
+        if (traceAddrs().count(f.entry)) out_ << "    SPILL; recomp_trace(c, " << hex(f.entry) << "u);\n";
         if (f.eh) {
             // Landing pad: the host's C++ exception dispatch longjmps here to continue
             // at a catch continuation (any label of this function).
@@ -1161,7 +1167,7 @@ private:
 int main(int argc, char** argv) {
     using namespace recomp;
     if (argc < 4) {
-        std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N] [--prefix NAME] [--no-refs] [--hook ADDR=host_fn]...\n";
+        std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N] [--prefix NAME] [--no-refs] [--hook ADDR=host_fn]... [--trace ADDR]...\n";
         return 2;
     }
     const Image img(argv[1]);
@@ -1177,6 +1183,8 @@ int main(int argc, char** argv) {
             std::stringstream ss(argv[++i]);
             std::string t;
             while (std::getline(ss, t, ',')) only.insert(static_cast<uint32_t>(std::stoul(t, nullptr, 16)));
+        } else if (a == "--trace" && i + 1 < argc) {  // --trace 0x434F60: call recomp_trace at entry
+            traceAddrs().insert(static_cast<uint32_t>(std::stoul(argv[++i], nullptr, 16)));
         } else if (a == "--hook" && i + 1 < argc) {  // --hook 0x9D8650=host_coswitch
             const std::string h = argv[++i];
             const auto eq = h.find('=');

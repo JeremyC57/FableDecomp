@@ -5,50 +5,45 @@ user's original game folder; no retail bytes or generated code are in git.
 
 ## Where things stand
 
-- **The recompiled game reaches the frontend and renders it** (Wine 9, Xvfb, llvm-mingw):
-  - ConfigDetect passes.
-  - D3D9 CreateDevice/Reset succeed.
-  - `frontend.bin`, `frontend.big` and the shaders load.
-  - The animated frontend background draws, with the game's "error during video
-    playback" panel over it.
-- **Fixed this session:**
-  - **Lifter: functions started at the wrong block.** Blocks are emitted in address
-    order. When a backward jump pulls in code below the entry, the C function began
-    executing that code. This made every `__security_check_cookie` run its failure path,
-    which caused the old "Buffer overrun detected!" blocker. 270 functions in Fable.exe and
-    142 in ConfigDetect were affected. Any earlier whole-game differential results predate
-    this fix.
-  - **ddraw.dll:** `DirectDrawEnumerateExA`, `DirectDrawCreateEx` and an `IDirectDraw7`
-    proxy, which ConfigDetect uses to size video memory. `GetAvailableVidMem` is clamped to
-    1 GiB, because ConfigDetect's 64 MB round-up wraps ~4 GB to 0.
-  - **dsound.dll:** `GetDeviceID`, plus `DllGetClassObject(CLSID_DirectSoundPrivate)`
-    returning a host-implemented `IClassFactory`/`IKsPropertySet` that answers
-    `DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A` from the real dsound. Fable.exe uses these
-    without checking the results.
-  - **Runtime:** the game host now uses the real TSC; it was a fake counter, so
-    ConfigDetect measured 0 MHz. Tests keep the deterministic counter.
-- **Current blockers:**
-  1. **Intro video.** `CoCreateInstance(CLSID_FilterGraph)` returns 0x80040154 (class not
-     registered), and the game shows an in-engine "unable to play video" panel.
-     - It needs DirectShow proxies: IGraphBuilder, IMediaControl, IMediaEventEx,
-       IVideoWindow, IBasicAudio and friends.
-     - Note: `OAHWND` is `LONG_PTR`, so it is 8 bytes on x64.
-     - Alternatively, skip the movies.
-  2. **Input under headless Xvfb.** Buffered DirectInput delivers Return, space, mouse
-     motion and button 0 to the game (logged in `GetDeviceData`). Even so, the panel's OK
-     does not trigger, and absolute mouse placement is off.
-     - Check whether the frontend wants events with matching `dwTimeStamp`/`timeGetTime`,
-       or reads `GetDeviceState`.
-     - Then check on a real Windows desktop before going deeper.
-  3. **Audio.** No audio devices under this Wine. `OpenAL32.dll`/`wrap_oal.dll` are not in
-     the Steam folder, and `CoCreateInstance(CLSID_DirectSound)` fails, so it needs a
-     DirectSound proxy.
-- **Lifter:** adds entries for code only reached through pointers (relocations, data
-  dwords, `push offset` immediates), giving 62,888 functions.
-  - Options: `-` in place of `functions.tsv`, `--prefix NAME` (to lift a DLL), and
-    `--no-refs`.
-- **Runtime:** `RECOMP_IDENTITY_MEMORY` (guest address == host address) and
-  `recomp_register_table()` for recompiled DLLs.
+- **The recompiled game is playable into the world** (tested under Wine 9 + Xvfb, with
+  software rendering at about 6 fps there):
+  - intro movies with sound;
+  - the frontend and menus;
+  - new game: the opening cutscene, then control of the hero in Oakvale;
+  - loading a save; autosave.
+  - On the user's Windows PC the menus already worked before the in-game fixes below.
+- **Fixed this session**, in the order they blocked:
+  1. **Lifter: functions started at the wrong block.** Blocks are emitted in address
+     order, so a backward jump below the entry made the C function begin there. This
+     caused the old "Buffer overrun detected!" blocker.
+  2. **ddraw.dll** for ConfigDetect, with video memory clamped to 1 GiB.
+  3. **dsound.dll** device enumeration; the real TSC (the CPU speed read 0 MHz).
+  4. **DirectSound** proxies, created through `CoCreateInstance`, which now builds real
+     64-bit COM objects behind generated proxies.
+  5. **Movies:** a host-implemented DirectShow graph (`video.cpp`).
+  6. **Thunk argument size:** 8-byte integers (`SIZE_T`, `WPARAM`...) are 4 guest bytes.
+     `VirtualFree` popped 4 bytes too many, corrupting registers when starting a game.
+  7. **Jump tables with null holes** lost their targets in the lifter.
+  8. **Coroutines:** the game's coroutine switch (0x9D8650, used by world loading and
+     every quest script) runs on host fibers, via `--hook`.
+  9. **C++ exceptions:** landing pads in the 829 EH functions, plus a host
+     `_CxxThrowException` (`eh.cpp`).
+  10. **Missed function entries:** code right after an indirect `jmp`/`ret` now counts as
+      a possible entry (vtable targets).
+  11. **Refresh rate 0** (Wine on Xvfb, and some drivers) now reads as 60 Hz. The game
+      divides by it for its frame period; an infinite period meant the world ticked
+      unthrottled and it never rendered in game.
+- **Debug aids:**
+  - `CRASH:` log lines give the likely guest call chain for any fault.
+  - `FABLE_RECOMP_SAMPLE=<ms>` samples the main thread's guest stack.
+  - The lifter's `--trace ADDR` logs calls to chosen functions.
+  - `ghidra_out/coverage.tsv` names retail addresses.
+  - `Present` logs the frame rate.
+- **Next:**
+  - Real-Windows testing of gameplay (input, performance, saving, area transitions,
+    combat).
+  - Audio and video on a machine with real devices.
+  - SEH `__try` frames are passed over by the C++ exception dispatch.
 
 ## Headless test loop (Linux)
 
@@ -117,7 +112,7 @@ Under Wine you must create `Documents\My Games\Fable` in the prefix.
 
 ## Known gaps, in rough order
 
-1. DirectShow video and headless input (above).
+1. Gameplay beyond Oakvale is untested (see "Next" above).
 2. **C++ exceptions and SEH are not implemented.** `_CxxThrowException`, `__CxxFrameHandler`
    and `_except_handler3` all end in a fatal error.
    - The game throws `CBBBFileException` when a file is missing, so the full data folder

@@ -239,6 +239,18 @@ void ovr_IDirect3DDevice9_Present(Ctx* c) {
     retStd(c, static_cast<uint32_t>(hr), 5);
 }
 
+// Logs device-lost transitions (the game stops drawing while the device is lost).
+void ovr_IDirect3DDevice9_TestCooperativeLevel(Ctx* c) {
+    const HRESULT hr = unwrap<IDirect3DDevice9>(arg(c, 0))->TestCooperativeLevel();
+    static HRESULT last = D3D_OK;
+    if (hr != last) {
+        log("TestCooperativeLevel -> 0x%08lX%s", static_cast<unsigned long>(hr),
+            hr == D3DERR_DEVICELOST ? " (device lost)" : hr == D3DERR_DEVICENOTRESET ? " (needs Reset)" : "");
+        last = hr;
+    }
+    retStd(c, static_cast<uint32_t>(hr), 1);
+}
+
 void ovr_IDirect3DDevice9_Reset(Ctx* c) {
     auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
     D3DPRESENT_PARAMETERS pp = ppIn(arg(c, 1));

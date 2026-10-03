@@ -7,6 +7,8 @@
 #include <shobjidl.h>
 
 #include <cstdio>
+#include <map>
+#include <string>
 #include <vector>
 
 namespace host {
@@ -170,8 +172,42 @@ LONG CALLBACK crashHandler(EXCEPTION_POINTERS* e) {
     return EXCEPTION_CONTINUE_SEARCH;
 }
 
+// FABLE_RECOMP_SAMPLE=<ms>: log the main guest thread's return-address chain every <ms>
+// (a poor man's profiler for "where is it stuck"; the guest esp is the one last spilled
+// at a call boundary, so the chain is approximate).
+GuestThread* g_mainGuest;
+DWORD WINAPI samplerMain(void* p) {
+    const DWORD ms = static_cast<DWORD>(reinterpret_cast<uintptr_t>(p));
+    for (;;) {
+        Sleep(ms);
+        const GuestThread* t = g_mainGuest;
+        if (!t) continue;
+        const uint32_t esp = t->ctx.esp;
+        char line[512];
+        int n = std::snprintf(line, sizeof line, "sample esp %08X:", esp);
+        for (uint32_t a = esp, k = 0; a + 4 <= t->stackHi && a < esp + 0x4000 && k < 24 && n < 480; a += 4)
+            if (const uint32_t v = rd32(a); v >= 0x401000 && v < 0x1200000) { n += std::snprintf(line + n, sizeof line - n, " %X", v); ++k; }
+        log("%s", line);
+    }
+}
+
+// Functions lifted with --trace: log ecx/arguments and a few words at ecx.
+// Functions lifted with --trace ADDR: log each call with ecx and the first stack arguments
+// (rate-limited per function).
+void onTrace(Ctx* c, uint32_t fn) {
+    static std::map<uint32_t, uint32_t> counts;
+    const uint32_t n = ++counts[fn];
+    if (n > 20 && (n & (n - 1))) return;  // the first 20 calls, then powers of two
+    log("trace %08X #%u from %08X ecx=%08X edx=%08X args %08X %08X %08X", fn, n, rd32(c->esp), c->ecx, c->edx, rd32(c->esp + 4),
+        rd32(c->esp + 8), rd32(c->esp + 12));
+}
+
 DWORD WINAPI guestMain(void*) {
     bindThread(newGuestThread(0x100000));
+    g_mainGuest = currentThread();
+    wchar_t buf[16];
+    if (GetEnvironmentVariableW(L"FABLE_RECOMP_SAMPLE", buf, 16))
+        CloseHandle(CreateThread(nullptr, 0, samplerMain, reinterpret_cast<void*>(static_cast<uintptr_t>(_wtoi(buf))), 0, nullptr));
     log("starting guest at entry point 0x%08X", kEntryPoint);
     guestCall(kEntryPoint, {});
     log("guest entry point returned");
@@ -205,6 +241,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR, int) {
 
     threadsInit();
     AddVectoredExceptionHandler(1, crashHandler);
+    recomp_on_trace = onTrace;
     std::string cmd = "\"" + narrow(g_exePath.c_str()) + "\"";
     crtInit(cmd);
     {

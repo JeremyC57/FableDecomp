@@ -88,6 +88,10 @@ void recomp_landing_chain_set(void* chain);
 /* Returns only if no landing covers `frame` (then the caller reports the error). */
 void recomp_resume_at(Ctx* c, uint32_t frame, uint32_t target);
 
+/* Debug hook: functions lifted with --trace call this on entry (no-op unless set). */
+extern void (*recomp_on_trace)(Ctx* c, uint32_t fn);
+static inline void recomp_trace(Ctx* c, uint32_t fn) { if (recomp_on_trace) recomp_on_trace(c, fn); }
+
 /* Optional host services used by a few instructions. */
 void recomp_cpuid(Ctx* c);
 uint64_t recomp_rdtsc(void);

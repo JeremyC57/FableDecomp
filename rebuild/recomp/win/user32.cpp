@@ -568,7 +568,17 @@ FWD_STD(U, IsDlgButtonChecked);
 FWD_STD(U, ShowCursor);
 FWD_STD(U, ShowWindow);
 FWD_STD(U, GetSysColor);
-FWD_STD(U, GetForegroundWindow);
+IMPORT(U, GetForegroundWindow) {
+    const HWND h = GetForegroundWindow();
+    static HWND last = reinterpret_cast<HWND>(-1);
+    if (h != last) {
+        char title[128] = "";
+        if (h) GetWindowTextA(h, title, sizeof title);
+        HLOG(1, "GetForegroundWindow -> %p \"%s\"", static_cast<void*>(h), title);
+        last = h;
+    }
+    retStd(c, gh(h), 0);
+}
 FWD_STD(U, WaitMessage);
 FWD_STD(U, UpdateWindow);
 FWD_STD(U, GetSystemMetrics);

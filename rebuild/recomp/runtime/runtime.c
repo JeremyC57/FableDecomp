@@ -22,6 +22,7 @@ extern const uint32_t recomp_table_size;
 /* Host hooks (set by the platform layer / tests). */
 void (*recomp_on_fatal)(Ctx* c, uint32_t eip, const char* what);
 int (*recomp_on_unknown_target)(Ctx* c, uint32_t target); /* imports, traps; return 1 if handled */
+void (*recomp_on_trace)(Ctx* c, uint32_t fn);
 
 int recomp_init_memory(void) {
 #if defined(RECOMP_IDENTITY_MEMORY)

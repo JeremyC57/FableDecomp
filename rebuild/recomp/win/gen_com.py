@@ -30,7 +30,7 @@ INTERFACES = {
 
 OVERRIDES = {
     "IDirect3D9::CreateDevice",
-    "IDirect3DDevice9::Reset", "IDirect3DDevice9::Present",
+    "IDirect3DDevice9::Reset", "IDirect3DDevice9::Present", "IDirect3DDevice9::TestCooperativeLevel",
     "IDirect3DDevice9::CreateAdditionalSwapChain",
     "IDirect3DDevice9::GetCreationParameters",
     "IDirect3DSwapChain9::GetPresentParameters",

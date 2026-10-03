@@ -7,6 +7,7 @@ void ovr_IDirect3DDevice9_CreateAdditionalSwapChain(Ctx* c);
 void ovr_IDirect3DDevice9_GetCreationParameters(Ctx* c);
 void ovr_IDirect3DDevice9_Present(Ctx* c);
 void ovr_IDirect3DDevice9_Reset(Ctx* c);
+void ovr_IDirect3DDevice9_TestCooperativeLevel(Ctx* c);
 void ovr_IDirect3DIndexBuffer9_Lock(Ctx* c);
 void ovr_IDirect3DIndexBuffer9_Unlock(Ctx* c);
 void ovr_IDirect3DSurface9_GetContainer(Ctx* c);
@@ -66,7 +67,7 @@ template <> host::com::Class& host::com::classOf<IDirect3DDevice9>() {
         {"IDirect3DDevice9::QueryInterface", host::com::comQueryInterface},
         {"IDirect3DDevice9::AddRef", host::com::comAddRef},
         {"IDirect3DDevice9::Release", host::com::comRelease},
-        {"IDirect3DDevice9::TestCooperativeLevel", &host::com::comThunk<&IDirect3DDevice9::TestCooperativeLevel>},
+        {"IDirect3DDevice9::TestCooperativeLevel", ovr_IDirect3DDevice9_TestCooperativeLevel},
         {"IDirect3DDevice9::GetAvailableTextureMem", &host::com::comThunk<&IDirect3DDevice9::GetAvailableTextureMem>},
         {"IDirect3DDevice9::EvictManagedResources", &host::com::comThunk<&IDirect3DDevice9::EvictManagedResources>},
         {"IDirect3DDevice9::GetDirect3D", &host::com::comThunk<&IDirect3DDevice9::GetDirect3D>},

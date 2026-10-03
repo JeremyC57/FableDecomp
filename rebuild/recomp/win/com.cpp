@@ -98,6 +98,19 @@ void comRelease(Ctx* c) {
 
 }  // namespace host::com
 
+namespace host {
+// D3DDISPLAYMODE out-parameters (GetDisplayMode, GetAdapterDisplayMode, EnumAdapterModes):
+// a refresh rate of 0 ("default", reported by some drivers and by Wine on Xvfb) becomes
+// 60 Hz. The game divides by it to get its frame period, and an infinite period stops it
+// from ever rendering in-game.
+template <> struct Arg<D3DDISPLAYMODE*, void> {
+    D3DDISPLAYMODE* p = nullptr;
+    void in(Ctx* c, uint32_t& off) { p = rd32(c->esp + 4 + off) ? gp<D3DDISPLAYMODE>(rd32(c->esp + 4 + off)) : nullptr; off += 4; }
+    D3DDISPLAYMODE* host() { return p; }
+    void post() { if (p && p->RefreshRate == 0) p->RefreshRate = 60; }
+};
+}  // namespace host
+
 #include "com_vtables.inc"
 
 namespace host::com {
