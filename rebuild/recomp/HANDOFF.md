@@ -73,7 +73,7 @@ xwd -root -silent | convert xwd:- shot.png      # screenshot
 | `host.hpp` | Core API: guest memory helpers, traps/import registry, `Arg<T>` converters, `stdThunk`/`cdeclThunk`, `FWD_STD` / `IMPORT` / `IMPORTN` macros, guest threads, `guestCall` |
 | `core.cpp` | Logging, low-memory allocator (guest heap: boundary tags over 64 MB segments below 2 GB), traps, import table, guest threads/TEB/PEB, host→guest calls, module handles |
 | `loader.cpp` | Maps PE images at their base, binds imports to traps, loads recompiled DLLs (calls DllMain), export lookup |
-| `main.cpp` | Finds the game folder (`--game`, `FABLE_DIR`, or the exe's own folder), verifies the Fable.exe SHA-256, maps it, runs entry 0x401067 on a 256 MB-stack thread |
+| `main.cpp` | Finds the game folder (`--game`, `FABLE_DIR`, the exe's own folder, the remembered `HKCU\Software\FableRecomp\GameDir`, the default Steam library, then a folder picker), verifies the Fable.exe SHA-256, maps it, runs entry 0x401067 on a 256 MB-stack thread |
 | `crt.cpp` | msvcr71/msvcp71 (startup, heap, strings, printf family, math incl. `_CI*`, a VC7.1-exact qsort, `std::exception`, VC7.1 `std::string`) |
 | `format.cpp/.hpp` | printf/scanf over guest varargs with MSVC semantics |
 | `kernel32.cpp` | kernel32: critical sections (host pointer kept in the guest CS), async I/O (`ReadFileEx`), resources, `LoadLibrary`/`GetProcAddress`, TLS, etc. |

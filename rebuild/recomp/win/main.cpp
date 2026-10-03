@@ -4,6 +4,7 @@
 #include "host.hpp"
 
 #include <bcrypt.h>
+#include <shobjidl.h>
 
 #include <cstdio>
 #include <vector>
@@ -31,6 +32,70 @@ std::wstring withSlash(std::wstring d) {
     return d;
 }
 
+bool isGameDir(const std::wstring& d) { return !d.empty() && fileExists(withSlash(d) + L"Fable.exe"); }
+
+// The folder chosen last time (HKCU\Software\FableRecomp, GameDir).
+constexpr const wchar_t* kSettingsKey = L"Software\\FableRecomp";
+std::wstring savedGameDir() {
+    wchar_t buf[MAX_PATH * 2] = {};
+    DWORD size = sizeof buf - sizeof(wchar_t);
+    if (RegGetValueW(HKEY_CURRENT_USER, kSettingsKey, L"GameDir", RRF_RT_REG_SZ, nullptr, buf, &size) != ERROR_SUCCESS) return {};
+    return buf;
+}
+void saveGameDir(const std::wstring& d) {
+    RegSetKeyValueW(HKEY_CURRENT_USER, kSettingsKey, L"GameDir", REG_SZ, d.c_str(), static_cast<DWORD>((d.size() + 1) * sizeof(wchar_t)));
+}
+
+// The default Steam library: <Steam>\steamapps\common\Fable The Lost Chapters.
+std::wstring steamGameDir() {
+    wchar_t buf[MAX_PATH * 2] = {};
+    DWORD size = sizeof buf - sizeof(wchar_t);
+    if (RegGetValueW(HKEY_CURRENT_USER, L"Software\\Valve\\Steam", L"SteamPath", RRF_RT_REG_SZ, nullptr, buf, &size) != ERROR_SUCCESS) {
+        size = sizeof buf - sizeof(wchar_t);
+        if (RegGetValueW(HKEY_LOCAL_MACHINE, L"SOFTWARE\\WOW6432Node\\Valve\\Steam", L"InstallPath", RRF_RT_REG_SZ, nullptr, buf, &size) !=
+            ERROR_SUCCESS)
+            return {};
+    }
+    return withSlash(buf) + L"steamapps\\common\\Fable The Lost Chapters";
+}
+
+// Asks the user for the folder that holds their original Fable.exe.
+std::wstring pickGameDir() {
+    const HRESULT init = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
+    std::wstring result;
+    for (;;) {
+        IFileOpenDialog* dlg = nullptr;
+        if (FAILED(CoCreateInstance(CLSID_FileOpenDialog, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&dlg)))) break;
+        DWORD opts = 0;
+        dlg->GetOptions(&opts);
+        dlg->SetOptions(opts | FOS_PICKFOLDERS | FOS_FORCEFILESYSTEM | FOS_PATHMUSTEXIST);
+        dlg->SetTitle(L"Select your Fable: The Lost Chapters folder (the one containing Fable.exe)");
+        std::wstring picked;
+        if (SUCCEEDED(dlg->Show(nullptr))) {
+            IShellItem* item = nullptr;
+            if (SUCCEEDED(dlg->GetResult(&item))) {
+                PWSTR path = nullptr;
+                if (SUCCEEDED(item->GetDisplayName(SIGDN_FILESYSPATH, &path))) {
+                    picked = path;
+                    CoTaskMemFree(path);
+                }
+                item->Release();
+            }
+        }
+        dlg->Release();
+        if (picked.empty()) break;  // cancelled
+        if (isGameDir(picked)) { result = withSlash(picked); break; }
+        if (MessageBoxW(nullptr, (L"There is no Fable.exe in\n\n" + picked + L"\n\nPick the game folder, for example\n"
+                                  L"...\\steamapps\\common\\Fable The Lost Chapters").c_str(),
+                        L"Fable: The Lost Chapters", MB_RETRYCANCEL | MB_ICONWARNING) != IDRETRY)
+            break;
+    }
+    if (SUCCEEDED(init)) CoUninitialize();
+    return result;
+}
+
+// --game, FABLE_DIR, the exe's own folder, the folder chosen last time, the default
+// Steam library, and finally a folder picker.
 std::wstring findGameDir() {
     int n = 0;
     LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &n);
@@ -38,14 +103,16 @@ std::wstring findGameDir() {
     for (int i = 1; i + 1 < n; ++i)
         if (_wcsicmp(argv[i], L"--game") == 0) dir = argv[i + 1];
     LocalFree(argv);
-    if (!dir.empty() && fileExists(withSlash(dir) + L"Fable.exe")) return withSlash(dir);
+    if (isGameDir(dir)) return withSlash(dir);
     wchar_t buf[MAX_PATH * 2];
-    if (GetEnvironmentVariableW(L"FABLE_DIR", buf, MAX_PATH * 2) && fileExists(withSlash(buf) + L"Fable.exe")) return withSlash(buf);
+    if (GetEnvironmentVariableW(L"FABLE_DIR", buf, MAX_PATH * 2) && isGameDir(buf)) return withSlash(buf);
     GetModuleFileNameW(nullptr, buf, MAX_PATH * 2);
     std::wstring self = buf;
     self = self.substr(0, self.find_last_of(L"\\/") + 1);
-    if (fileExists(self + L"Fable.exe")) return self;
-    return {};
+    if (isGameDir(self)) return self;
+    if (const std::wstring saved = savedGameDir(); isGameDir(saved)) return withSlash(saved);
+    if (const std::wstring steam = steamGameDir(); isGameDir(steam)) return withSlash(steam);
+    return pickGameDir();
 }
 
 std::vector<uint8_t> readFile(const std::wstring& p) {
@@ -98,8 +165,8 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR, int) {
     log("Fable: The Lost Chapters - recompiled x64 host");
     if (!memOk) die("could not reserve guest memory at 0x00400000; another program may be injecting into this process");
     if (g_gameDir.empty())
-        die("Could not find your Fable: The Lost Chapters install.\n\nPut FableRecomp.exe in the game folder (next to Fable.exe), "
-            "or start it with --game \"<folder>\".");
+        die("No Fable: The Lost Chapters folder was selected.\n\nRun FableRecomp.exe again and pick the folder that contains "
+            "Fable.exe, or start it with --game \"<folder>\".");
     g_exePath = g_gameDir + L"Fable.exe";
     log("game folder: %s", narrow(g_gameDir.c_str()).c_str());
 
@@ -109,6 +176,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR, int) {
     if (hash != kFableSha256)
         die("This build was recompiled from the Steam Fable.exe (SHA-256 %s), but the Fable.exe found has SHA-256 %s.", kFableSha256,
             hash.c_str());
+    saveGameDir(g_gameDir);
 
     threadsInit();
     std::string cmd = "\"" + narrow(g_exePath.c_str()) + "\"";
