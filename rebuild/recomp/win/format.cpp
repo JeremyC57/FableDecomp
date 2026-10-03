@@ -7,32 +7,35 @@ namespace host {
 
 namespace {
 
+// The host's string type for a character type (host::wstring is UTF-16 on every platform).
+template <class C> using Str = std::conditional_t<std::is_same_v<C, wchar_t>, wstring, std::string>;
+
 template <class C> size_t slen(const C* s) {
     size_t n = 0;
     while (s[n]) ++n;
     return n;
 }
 
-template <class C> std::basic_string<C> fromAscii(const char* s) {
-    std::basic_string<C> r;
+template <class C> Str<C> fromAscii(const char* s) {
+    Str<C> r;
     for (; *s; ++s) r.push_back(static_cast<C>(static_cast<unsigned char>(*s)));
     return r;
 }
 
 // Converts a string of the other width for output.
 std::string toOut(const wchar_t* s, size_t n, char*) {
-    std::wstring w(s, n);
+    wstring w(s, n);
     return narrow(w.c_str());
 }
-std::wstring toOut(const char* s, size_t n, wchar_t*) {
+wstring toOut(const char* s, size_t n, wchar_t*) {
     std::string a(s, n);
     return widen(a.c_str());
 }
 std::string toOut(const char* s, size_t n, char*) { return std::string(s, n); }
-std::wstring toOut(const wchar_t* s, size_t n, wchar_t*) { return std::wstring(s, n); }
+wstring toOut(const wchar_t* s, size_t n, wchar_t*) { return wstring(s, n); }
 
-template <class C> std::basic_string<C> format(const C* f, uint32_t& ap) {
-    std::basic_string<C> out;
+template <class C> Str<C> format(const C* f, uint32_t& ap) {
+    Str<C> out;
     const bool wide = sizeof(C) == 2;
     while (*f) {
         if (*f != '%') { out.push_back(*f++); continue; }
@@ -107,7 +110,7 @@ template <class C> std::basic_string<C> format(const C* f, uint32_t& ap) {
             if (conv == 'C') argWide = !wide;
             if (sz == SZ_H) argWide = false;
             if (sz == SZ_L || sz == SZ_W) argWide = true;
-            std::basic_string<C> s;
+            Str<C> s;
             if (argWide) { wchar_t w = static_cast<wchar_t>(v); s = toOut(&w, 1, (C*)nullptr); }
             else { char a = static_cast<char>(v); s = toOut(&a, 1, (C*)nullptr); }
             if (width > 0 && static_cast<int>(s.size()) < width) {
@@ -123,7 +126,7 @@ template <class C> std::basic_string<C> format(const C* f, uint32_t& ap) {
             if (conv == 'S') argWide = !wide;
             if (sz == SZ_H) argWide = false;
             if (sz == SZ_L || sz == SZ_W) argWide = true;
-            std::basic_string<C> s;
+            Str<C> s;
             if (!v) s = fromAscii<C>("(null)");
             else if (argWide) {
                 const wchar_t* w = gp<wchar_t>(v);
@@ -159,7 +162,7 @@ template <class C> std::basic_string<C> format(const C* f, uint32_t& ap) {
 }  // namespace
 
 std::string formatA(const char* fmt, uint32_t& ap) { return format<char>(fmt, ap); }
-std::wstring formatW(const wchar_t* fmt, uint32_t& ap) { return format<wchar_t>(fmt, ap); }
+wstring formatW(const wchar_t* fmt, uint32_t& ap) { return format<wchar_t>(fmt, ap); }
 
 int scanA(const char* input, const char* fmt, uint32_t ap) {
     void* p[24] = {};
@@ -186,7 +189,7 @@ int copyTruncA(char* dst, uint32_t n, const std::string& s) {
     std::memcpy(dst, s.data(), n);
     return -1;
 }
-int copyTruncW(wchar_t* dst, uint32_t n, const std::wstring& s) {
+int copyTruncW(wchar_t* dst, uint32_t n, const wstring& s) {
     if (s.size() < n) { std::memcpy(dst, s.c_str(), (s.size() + 1) * 2); return static_cast<int>(s.size()); }
     if (s.size() == n) { std::memcpy(dst, s.data(), n * 2); return static_cast<int>(n); }
     std::memcpy(dst, s.data(), n * 2);

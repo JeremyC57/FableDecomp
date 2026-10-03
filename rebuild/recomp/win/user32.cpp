@@ -507,7 +507,7 @@ IMPORT(U, wsprintfA) {
 }
 IMPORT(U, wsprintfW) {
     uint32_t ap = c->esp + 12;
-    const std::wstring s = formatW(argp<wchar_t>(c, 1), ap);
+    const wstring s = formatW(argp<wchar_t>(c, 1), ap);
     const size_t n = s.size() < 1024 ? s.size() : 1023;
     std::memcpy(argp(c, 0), s.c_str(), n * 2);
     wr16(arg(c, 0) + static_cast<uint32_t>(n * 2), 0);
@@ -515,7 +515,7 @@ IMPORT(U, wsprintfW) {
 }
 IMPORT(U, wvsprintfW) {
     uint32_t ap = arg(c, 2);
-    const std::wstring s = formatW(argp<wchar_t>(c, 1), ap);
+    const wstring s = formatW(argp<wchar_t>(c, 1), ap);
     const size_t n = s.size() < 1024 ? s.size() : 1023;
     std::memcpy(argp(c, 0), s.c_str(), n * 2);
     wr16(arg(c, 0) + static_cast<uint32_t>(n * 2), 0);

@@ -14,7 +14,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstring>
-#include <filesystem>
+#include <cstdio>
 #include <fstream>
 #include <map>
 #include <mutex>
@@ -166,15 +166,19 @@ void load() {
             g.getState = reinterpret_cast<GetStateFn>(GetProcAddress(h, "XInputGetState"));
             if (g.getState) break;
         }
-    const std::wstring path = g_gameDir + L"FableRecomp_controller.ini";
+    const wstring path = g_gameDir + L"FableRecomp_controller.ini";
     std::string text;
-    {
-        std::ifstream f(std::filesystem::path(path), std::ios::binary);
-        if (f) text.assign(std::istreambuf_iterator<char>(f), {});
+    if (FILE* f = _wfopen(path.c_str(), L"rb")) {
+        char buf[4096];
+        for (size_t n; (n = std::fread(buf, 1, sizeof buf, f)) > 0;) text.append(buf, n);
+        std::fclose(f);
     }
     if (text.empty()) {
         text = kDefaultConfig;
-        std::ofstream(std::filesystem::path(path), std::ios::binary) << text;
+        if (FILE* f = _wfopen(path.c_str(), L"wb")) {
+            std::fwrite(text.data(), 1, text.size(), f);
+            std::fclose(f);
+        }
     }
     parseConfig(g.cfg, text);
     QueryPerformanceCounter(&g.last);

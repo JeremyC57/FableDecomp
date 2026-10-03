@@ -1,0 +1,91 @@
+// XInput on SDL game controllers: "xinput1_4.dll" (and the older names) as a host module,
+// so the host's controller mapping (controller.cpp) works unchanged.
+#include <SDL.h>
+
+#include "w32sdl.hpp"
+#include <xinput.h>
+
+namespace w32 {
+void registerHostModule(const char* dll, const char* fn, void* addr);
+
+namespace {
+std::mutex g_lock;
+SDL_GameController* g_pads[XUSER_MAX_COUNT];
+DWORD g_packet[XUSER_MAX_COUNT];
+bool g_init;
+
+void ensure() {
+    if (g_init) return;
+    g_init = true;
+    SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS, "1");
+    if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) != 0) std::fprintf(stderr, "SDL game controller init failed: %s\n", SDL_GetError());
+    addSdlEventHook([](const SDL_Event& e) {
+        if (e.type != SDL_CONTROLLERDEVICEADDED && e.type != SDL_CONTROLLERDEVICEREMOVED) return;
+        std::lock_guard<std::mutex> l(g_lock);
+        for (auto& p : g_pads)
+            if (p && !SDL_GameControllerGetAttached(p)) SDL_GameControllerClose(p), p = nullptr;
+        if (e.type == SDL_CONTROLLERDEVICEADDED) {
+            for (auto& p : g_pads)
+                if (p && SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(p)) == SDL_JoystickGetDeviceInstanceID(e.cdevice.which)) return;
+            for (auto& p : g_pads)
+                if (!p) { p = SDL_GameControllerOpen(e.cdevice.which); break; }
+        }
+    });
+    std::lock_guard<std::mutex> l(g_lock);
+    for (int i = 0, slot = 0; i < SDL_NumJoysticks() && slot < XUSER_MAX_COUNT; ++i)
+        if (SDL_IsGameController(i)) g_pads[slot++] = SDL_GameControllerOpen(i);
+}
+
+SHORT axis(SDL_GameController* p, SDL_GameControllerAxis a, bool invert) {
+    const int v = SDL_GameControllerGetAxis(p, a);
+    return static_cast<SHORT>(invert ? std::clamp(-v - 1, -32768, 32767) : v);
+}
+
+DWORD WINAPI getState(DWORD user, XINPUT_STATE* s) {
+    ensure();
+    pumpSdlEvents();
+    SDL_GameControllerUpdate();
+    std::lock_guard<std::mutex> l(g_lock);
+    SDL_GameController* p = user < XUSER_MAX_COUNT ? g_pads[user] : nullptr;
+    if (!p) return ERROR_DEVICE_NOT_CONNECTED;
+    XINPUT_GAMEPAD& g = s->Gamepad;
+    std::memset(&g, 0, sizeof g);
+    const struct { SDL_GameControllerButton b; WORD x; } map[] = {
+        {SDL_CONTROLLER_BUTTON_DPAD_UP, XINPUT_GAMEPAD_DPAD_UP}, {SDL_CONTROLLER_BUTTON_DPAD_DOWN, XINPUT_GAMEPAD_DPAD_DOWN},
+        {SDL_CONTROLLER_BUTTON_DPAD_LEFT, XINPUT_GAMEPAD_DPAD_LEFT}, {SDL_CONTROLLER_BUTTON_DPAD_RIGHT, XINPUT_GAMEPAD_DPAD_RIGHT},
+        {SDL_CONTROLLER_BUTTON_START, XINPUT_GAMEPAD_START}, {SDL_CONTROLLER_BUTTON_BACK, XINPUT_GAMEPAD_BACK},
+        {SDL_CONTROLLER_BUTTON_LEFTSTICK, XINPUT_GAMEPAD_LEFT_THUMB}, {SDL_CONTROLLER_BUTTON_RIGHTSTICK, XINPUT_GAMEPAD_RIGHT_THUMB},
+        {SDL_CONTROLLER_BUTTON_LEFTSHOULDER, XINPUT_GAMEPAD_LEFT_SHOULDER}, {SDL_CONTROLLER_BUTTON_RIGHTSHOULDER, XINPUT_GAMEPAD_RIGHT_SHOULDER},
+        {SDL_CONTROLLER_BUTTON_A, XINPUT_GAMEPAD_A}, {SDL_CONTROLLER_BUTTON_B, XINPUT_GAMEPAD_B},
+        {SDL_CONTROLLER_BUTTON_X, XINPUT_GAMEPAD_X}, {SDL_CONTROLLER_BUTTON_Y, XINPUT_GAMEPAD_Y},
+    };
+    for (auto& m : map)
+        if (SDL_GameControllerGetButton(p, m.b)) g.wButtons |= m.x;
+    g.bLeftTrigger = static_cast<BYTE>(SDL_GameControllerGetAxis(p, SDL_CONTROLLER_AXIS_TRIGGERLEFT) >> 7);
+    g.bRightTrigger = static_cast<BYTE>(SDL_GameControllerGetAxis(p, SDL_CONTROLLER_AXIS_TRIGGERRIGHT) >> 7);
+    g.sThumbLX = axis(p, SDL_CONTROLLER_AXIS_LEFTX, false);
+    g.sThumbLY = axis(p, SDL_CONTROLLER_AXIS_LEFTY, true);  // XInput: up is positive
+    g.sThumbRX = axis(p, SDL_CONTROLLER_AXIS_RIGHTX, false);
+    g.sThumbRY = axis(p, SDL_CONTROLLER_AXIS_RIGHTY, true);
+    s->dwPacketNumber = ++g_packet[user];
+    return ERROR_SUCCESS;
+}
+DWORD WINAPI setState(DWORD user, XINPUT_VIBRATION* v) {
+    ensure();
+    std::lock_guard<std::mutex> l(g_lock);
+    SDL_GameController* p = user < XUSER_MAX_COUNT ? g_pads[user] : nullptr;
+    if (!p) return ERROR_DEVICE_NOT_CONNECTED;
+    SDL_GameControllerRumble(p, v->wLeftMotorSpeed, v->wRightMotorSpeed, 200);
+    return ERROR_SUCCESS;
+}
+
+struct Registrar {
+    Registrar() {
+        for (const char* dll : {"xinput1_4.dll", "xinput9_1_0.dll", "xinput1_3.dll"}) {
+            registerHostModule(dll, "XInputGetState", reinterpret_cast<void*>(&getState));
+            registerHostModule(dll, "XInputSetState", reinterpret_cast<void*>(&setState));
+        }
+    }
+} g_registrar;
+}  // namespace
+}  // namespace w32

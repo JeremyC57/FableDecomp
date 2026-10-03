@@ -406,7 +406,7 @@ IMPORT(K, OutputDebugStringW) {
 IMPORT(K, GetCommandLineW) {
     static uint32_t s = 0;
     if (!s) {
-        std::wstring cmd = L"\"" + g_exePath + L"\"";
+        wstring cmd = L"\"" + g_exePath + L"\"";
         int n = 0;
         LPWSTR* w = CommandLineToArgvW(GetCommandLineW(), &n);
         for (int i = 1; i < n; ++i) {
@@ -441,7 +441,7 @@ IMPORT(K, GetModuleHandleW) {
 }
 IMPORT(K, GetModuleFileNameW) {
     const uint32_t m = arg(c, 0), n = arg(c, 2);
-    std::wstring path;
+    wstring path;
     if (!m || m == kImageBase) path = g_exePath;
     else if (HMODULE h = moduleFromGuest(m)) { wchar_t b[MAX_PATH]; GetModuleFileNameW(h, b, MAX_PATH); path = b; }
     else if (const char* nm = moduleName(m)) path = g_gameDir + widen(nm);
@@ -463,8 +463,8 @@ uint32_t loadLibrary(const std::string& name) {
     // A helper DLL we recompiled: map it and run its DllMain.
     if (const uint32_t g = loadGuestDll(base)) return g;
     // Resource-only use: load from the game folder as a data file.
-    std::wstring path = widen(name.c_str());
-    if (path.find(L':') == std::wstring::npos) path = g_gameDir + widen(base.c_str());
+    wstring path = widen(name.c_str());
+    if (path.find(L':') == wstring::npos) path = g_gameDir + widen(base.c_str());
     HMODULE h = LoadLibraryExW(path.c_str(), nullptr, LOAD_LIBRARY_AS_DATAFILE | LOAD_LIBRARY_AS_IMAGE_RESOURCE);
     if (h) {
         const uint32_t g = moduleToGuest(h, base.c_str());

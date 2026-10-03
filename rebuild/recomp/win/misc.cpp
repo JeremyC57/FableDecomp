@@ -51,8 +51,8 @@ HKEY hk(uint32_t v) { return static_cast<HKEY>(hh(v)); }
 std::mutex g_regLock;
 std::unordered_map<HKEY, HKEY> g_regFallback;  // virtual-store key -> real HKLM key (or null)
 
-std::wstring virtualPath(const std::wstring& sub) {
-    static const std::wstring kSoftware = L"software\\";
+wstring virtualPath(const wstring& sub) {
+    static const wstring kSoftware = L"software\\";
     if (sub.size() <= kSoftware.size() || _wcsnicmp(sub.c_str(), kSoftware.c_str(), kSoftware.size()) != 0) return {};
     return L"Software\\Classes\\VirtualStore\\MACHINE\\SOFTWARE\\WOW6432Node\\" + sub.substr(kSoftware.size());
 }
@@ -60,9 +60,9 @@ bool isHklm(uint32_t root) { return root == 0x80000002u; }
 
 // Opens (create=false) or creates the key, virtualizing HKLM\Software. Returns the
 // handle the guest gets.
-LONG regOpen(uint32_t root, const std::wstring& sub, REGSAM sam, bool create, HKEY* out, DWORD* disp) {
+LONG regOpen(uint32_t root, const wstring& sub, REGSAM sam, bool create, HKEY* out, DWORD* disp) {
     sam |= KEY_WOW64_32KEY;
-    const std::wstring vpath = isHklm(root) ? virtualPath(sub) : std::wstring();
+    const wstring vpath = isHklm(root) ? virtualPath(sub) : wstring();
     if (vpath.empty()) {
         return create ? RegCreateKeyExW(hk(root), sub.c_str(), 0, nullptr, 0, sam, nullptr, out, disp)
                       : RegOpenKeyExW(hk(root), sub.c_str(), 0, sam, out);

@@ -12,7 +12,7 @@
 #include <vector>
 
 namespace host {
-std::wstring g_gameDir, g_exePath;
+wstring g_gameDir, g_exePath;
 HMODULE g_fableRes;
 HINSTANCE g_hinst;
 void crtInit(const std::string& cmdline);
@@ -24,32 +24,32 @@ namespace {
 
 constexpr const char* kFableSha256 = "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10";
 
-bool fileExists(const std::wstring& p) {
+bool fileExists(const wstring& p) {
     const DWORD a = GetFileAttributesW(p.c_str());
     return a != INVALID_FILE_ATTRIBUTES && !(a & FILE_ATTRIBUTE_DIRECTORY);
 }
 
-std::wstring withSlash(std::wstring d) {
+wstring withSlash(wstring d) {
     if (!d.empty() && d.back() != L'\\' && d.back() != L'/') d += L'\\';
     return d;
 }
 
-bool isGameDir(const std::wstring& d) { return !d.empty() && fileExists(withSlash(d) + L"Fable.exe"); }
+bool isGameDir(const wstring& d) { return !d.empty() && fileExists(withSlash(d) + L"Fable.exe"); }
 
 // The folder chosen last time (HKCU\Software\FableRecomp, GameDir).
 constexpr const wchar_t* kSettingsKey = L"Software\\FableRecomp";
-std::wstring savedGameDir() {
+wstring savedGameDir() {
     wchar_t buf[MAX_PATH * 2] = {};
     DWORD size = sizeof buf - sizeof(wchar_t);
     if (RegGetValueW(HKEY_CURRENT_USER, kSettingsKey, L"GameDir", RRF_RT_REG_SZ, nullptr, buf, &size) != ERROR_SUCCESS) return {};
     return buf;
 }
-void saveGameDir(const std::wstring& d) {
+void saveGameDir(const wstring& d) {
     RegSetKeyValueW(HKEY_CURRENT_USER, kSettingsKey, L"GameDir", REG_SZ, d.c_str(), static_cast<DWORD>((d.size() + 1) * sizeof(wchar_t)));
 }
 
 // The default Steam library: <Steam>\steamapps\common\Fable The Lost Chapters.
-std::wstring steamGameDir() {
+wstring steamGameDir() {
     wchar_t buf[MAX_PATH * 2] = {};
     DWORD size = sizeof buf - sizeof(wchar_t);
     if (RegGetValueW(HKEY_CURRENT_USER, L"Software\\Valve\\Steam", L"SteamPath", RRF_RT_REG_SZ, nullptr, buf, &size) != ERROR_SUCCESS) {
@@ -62,9 +62,9 @@ std::wstring steamGameDir() {
 }
 
 // Asks the user for the folder that holds their original Fable.exe.
-std::wstring pickGameDir() {
+wstring pickGameDir() {
     const HRESULT init = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
-    std::wstring result;
+    wstring result;
     for (;;) {
         IFileOpenDialog* dlg = nullptr;
         if (FAILED(CoCreateInstance(CLSID_FileOpenDialog, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&dlg)))) break;
@@ -72,7 +72,7 @@ std::wstring pickGameDir() {
         dlg->GetOptions(&opts);
         dlg->SetOptions(opts | FOS_PICKFOLDERS | FOS_FORCEFILESYSTEM | FOS_PATHMUSTEXIST);
         dlg->SetTitle(L"Select your Fable: The Lost Chapters folder (the one containing Fable.exe)");
-        std::wstring picked;
+        wstring picked;
         if (SUCCEEDED(dlg->Show(nullptr))) {
             IShellItem* item = nullptr;
             if (SUCCEEDED(dlg->GetResult(&item))) {
@@ -98,10 +98,10 @@ std::wstring pickGameDir() {
 
 // --game, FABLE_DIR, the exe's own folder, the folder chosen last time, the default
 // Steam library, and finally a folder picker.
-std::wstring findGameDir() {
+wstring findGameDir() {
     int n = 0;
     LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &n);
-    std::wstring dir;
+    wstring dir;
     for (int i = 1; i + 1 < n; ++i)
         if (_wcsicmp(argv[i], L"--game") == 0) dir = argv[i + 1];
     LocalFree(argv);
@@ -109,15 +109,15 @@ std::wstring findGameDir() {
     wchar_t buf[MAX_PATH * 2];
     if (GetEnvironmentVariableW(L"FABLE_DIR", buf, MAX_PATH * 2) && isGameDir(buf)) return withSlash(buf);
     GetModuleFileNameW(nullptr, buf, MAX_PATH * 2);
-    std::wstring self = buf;
+    wstring self = buf;
     self = self.substr(0, self.find_last_of(L"\\/") + 1);
     if (isGameDir(self)) return self;
-    if (const std::wstring saved = savedGameDir(); isGameDir(saved)) return withSlash(saved);
-    if (const std::wstring steam = steamGameDir(); isGameDir(steam)) return withSlash(steam);
+    if (const wstring saved = savedGameDir(); isGameDir(saved)) return withSlash(saved);
+    if (const wstring steam = steamGameDir(); isGameDir(steam)) return withSlash(steam);
     return pickGameDir();
 }
 
-std::vector<uint8_t> readFile(const std::wstring& p) {
+std::vector<uint8_t> readFile(const wstring& p) {
     std::vector<uint8_t> v;
     HANDLE h = CreateFileW(p.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, 0, nullptr);
     if (h == INVALID_HANDLE_VALUE) return v;

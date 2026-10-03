@@ -345,12 +345,12 @@ IMPORT(R, _vsnprintf) {
 }
 IMPORT(R, _snwprintf) {
     uint32_t ap = c->esp + 16;
-    const std::wstring s = formatW(argp<wchar_t>(c, 2), ap);
+    const wstring s = formatW(argp<wchar_t>(c, 2), ap);
     retCdecl(c, static_cast<uint32_t>(copyTruncW(argp<wchar_t>(c, 0), arg(c, 1), s)));
 }
 IMPORT(R, _vsnwprintf) {
     uint32_t ap = arg(c, 3);
-    const std::wstring s = formatW(argp<wchar_t>(c, 2), ap);
+    const wstring s = formatW(argp<wchar_t>(c, 2), ap);
     retCdecl(c, static_cast<uint32_t>(copyTruncW(argp<wchar_t>(c, 0), arg(c, 1), s)));
 }
 IMPORT(R, printf) {

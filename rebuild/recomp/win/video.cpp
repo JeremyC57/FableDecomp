@@ -7,18 +7,16 @@
 // sample into a D3D texture.
 //
 // Instead of bridging 64-bit DirectShow to 32-bit filters, the filter graph here is a
-// host object: Media Foundation decodes the file, video frames go to the guest renderer
+// host object: a movie::Source decodes the file (Media Foundation on Windows, FFmpeg on
+// Linux/Android; movie_source.hpp), video frames go to the guest renderer
 // through its own x86 interfaces (IPin::ReceiveConnection, IMemInputPin::Receive,
 // IPin::EndOfStream, IBaseFilter::Pause/Run/Stop) and the audio plays through waveOut.
 // The renderer has no reference clock, so it draws each sample as it arrives; this
 // file paces delivery against the movie's timestamps.
 #include "com.hpp"
+#include "movie_source.hpp"
 
 #include <dshow.h>
-#include <mfapi.h>
-#include <mferror.h>
-#include <mfidl.h>
-#include <mfreadwrite.h>
 #include <mmsystem.h>
 
 #include <atomic>
@@ -88,15 +86,14 @@ struct Graph {
     std::atomic<long> refs{1};
 
     // filters added by the game (AddRef'd), and the connection to its renderer
-    std::vector<std::pair<uint32_t, std::wstring>> filters;
+    std::vector<std::pair<uint32_t, wstring>> filters;
     uint32_t rendererFilter = 0, rendererPin = 0, memInput = 0;
     uint32_t mediaType = 0, videoInfo = 0, sampleBuf = 0;  // guest AM_MEDIA_TYPE, VIDEOINFOHEADER, sample data
 
     // source
-    IMFSourceReader* reader = nullptr;
+    std::unique_ptr<movie::Source> src;
     bool hasVideo = false, hasAudio = false;
     UINT32 width = 0, height = 0, stride = 0;
-    enum { SRC_RGB32, SRC_NV12, SRC_YUY2 } srcFormat = SRC_RGB32;
     LONGLONG duration = 0;
     WAVEFORMATEX wfx{};
 
@@ -202,125 +199,28 @@ void waveFlush(Graph* g) {
 }
 
 // ---------------------------------------------------------------------------
-// Media Foundation source
+// source
 // ---------------------------------------------------------------------------
-bool configureVideo(Graph* g) {
-    const GUID tries[] = {MFVideoFormat_RGB32, MFVideoFormat_NV12, MFVideoFormat_YUY2};
-    for (const GUID& sub : tries) {
-        IMFMediaType* t = nullptr;
-        MFCreateMediaType(&t);
-        t->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Video);
-        t->SetGUID(MF_MT_SUBTYPE, sub);
-        const HRESULT hr = g->reader->SetCurrentMediaType(MF_SOURCE_READER_FIRST_VIDEO_STREAM, nullptr, t);
-        t->Release();
-        if (SUCCEEDED(hr)) {
-            g->srcFormat = sub == MFVideoFormat_RGB32 ? Graph::SRC_RGB32 : sub == MFVideoFormat_NV12 ? Graph::SRC_NV12 : Graph::SRC_YUY2;
-            IMFMediaType* cur = nullptr;
-            g->reader->GetCurrentMediaType(MF_SOURCE_READER_FIRST_VIDEO_STREAM, &cur);
-            MFGetAttributeSize(cur, MF_MT_FRAME_SIZE, &g->width, &g->height);
-            cur->Release();
-            return g->width && g->height;
-        }
-    }
-    return false;
-}
-bool configureAudio(Graph* g) {
-    IMFMediaType* t = nullptr;
-    MFCreateMediaType(&t);
-    t->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Audio);
-    t->SetGUID(MF_MT_SUBTYPE, MFAudioFormat_PCM);
-    t->SetUINT32(MF_MT_AUDIO_BITS_PER_SAMPLE, 16);
-    HRESULT hr = g->reader->SetCurrentMediaType(MF_SOURCE_READER_FIRST_AUDIO_STREAM, nullptr, t);
-    t->Release();
-    if (FAILED(hr)) return false;
-    IMFMediaType* cur = nullptr;
-    g->reader->GetCurrentMediaType(MF_SOURCE_READER_FIRST_AUDIO_STREAM, &cur);
-    WAVEFORMATEX* w = nullptr;
-    UINT32 size = 0;
-    hr = MFCreateWaveFormatExFromMFMediaType(cur, &w, &size);
-    cur->Release();
-    if (FAILED(hr)) return false;
-    g->wfx = *w;
-    g->wfx.wFormatTag = WAVE_FORMAT_PCM;
-    g->wfx.cbSize = 0;
-    CoTaskMemFree(w);
-    return waveOutOpen(&g->wave, WAVE_MAPPER, &g->wfx, 0, 0, CALLBACK_NULL) == MMSYSERR_NOERROR;
-}
-
-uint8_t clamp8(int v) { return static_cast<uint8_t>(v < 0 ? 0 : v > 255 ? 255 : v); }
-void yuvToBgr(int y, int u, int v, uint8_t* o) {
-    const int c = y - 16, d = u - 128, e = v - 128;
-    o[2] = clamp8((298 * c + 409 * e + 128) >> 8);
-    o[1] = clamp8((298 * c - 100 * d - 208 * e + 128) >> 8);
-    o[0] = clamp8((298 * c + 516 * d + 128) >> 8);
-}
-
-// Decoded frame -> RGB24 bottom-up DIB (what DirectShow hands an RGB24 renderer).
-void convertFrame(Graph* g, IMFSample* s, std::vector<uint8_t>& out) {
-    IMFMediaBuffer* b = nullptr;
-    if (FAILED(s->ConvertToContiguousBuffer(&b))) return;
-    BYTE* p = nullptr;
-    DWORD len = 0;
-    b->Lock(&p, nullptr, &len);
-    const UINT32 w = g->width, h = g->height;
-    out.assign(static_cast<size_t>(g->stride) * h, 0);
-    if (g->srcFormat == Graph::SRC_RGB32) {
-        const DWORD pitch = len / h >= w * 4 ? len / h : w * 4;
-        for (UINT32 y = 0; y < h && (y + 1) * pitch <= len; ++y) {
-            const uint8_t* src = p + y * pitch;
-            uint8_t* dst = out.data() + static_cast<size_t>(h - 1 - y) * g->stride;
-            for (UINT32 x = 0; x < w; ++x) std::memcpy(dst + 3 * x, src + 4 * x, 3);
-        }
-    } else if (g->srcFormat == Graph::SRC_NV12) {
-        const DWORD pitch = w;  // contiguous NV12: Y plane then interleaved UV
-        if (len >= pitch * h * 3 / 2)
-            for (UINT32 y = 0; y < h; ++y) {
-                const uint8_t* yr = p + y * pitch;
-                const uint8_t* uv = p + pitch * h + (y / 2) * pitch;
-                uint8_t* dst = out.data() + static_cast<size_t>(h - 1 - y) * g->stride;
-                for (UINT32 x = 0; x < w; ++x) yuvToBgr(yr[x], uv[x & ~1u], uv[x | 1u], dst + 3 * x);
-            }
-    } else {
-        const DWORD pitch = w * 2;
-        if (len >= pitch * h)
-            for (UINT32 y = 0; y < h; ++y) {
-                const uint8_t* r = p + y * pitch;
-                uint8_t* dst = out.data() + static_cast<size_t>(h - 1 - y) * g->stride;
-                for (UINT32 x = 0; x < w; ++x) yuvToBgr(r[2 * x], r[(4 * (x / 2)) + 1], r[(4 * (x / 2)) + 3], dst + 3 * x);
-            }
-    }
-    b->Unlock();
-    b->Release();
-}
-
 HRESULT openSource(Graph* g, const wchar_t* file) {
-    static std::once_flag once;
-    std::call_once(once, [] { MFStartup(MF_VERSION, MFSTARTUP_FULL); });
-    wchar_t full[MAX_PATH * 2];
-    GetFullPathNameW(file, MAX_PATH * 2, full, nullptr);
-    IMFAttributes* a = nullptr;
-    MFCreateAttributes(&a, 2);
-    a->SetUINT32(MF_SOURCE_READER_ENABLE_VIDEO_PROCESSING, TRUE);
-    const HRESULT hr = MFCreateSourceReaderFromURL(full, a, &g->reader);
-    a->Release();
-    if (FAILED(hr)) {
-        log("movie: cannot open %s (0x%08lX)", narrow(full).c_str(), static_cast<unsigned long>(hr));
+    g->src = movie::open(file);
+    if (!g->src) {
+        log("movie: cannot open %s", narrow(file).c_str());
         return VFW_E_NOT_FOUND;
     }
-    g->reader->SetStreamSelection(MF_SOURCE_READER_ALL_STREAMS, FALSE);
-    g->reader->SetStreamSelection(MF_SOURCE_READER_FIRST_VIDEO_STREAM, TRUE);
-    g->reader->SetStreamSelection(MF_SOURCE_READER_FIRST_AUDIO_STREAM, TRUE);
-    g->hasVideo = configureVideo(g);
-    g->hasAudio = configureAudio(g);
-    if (!g->hasVideo) g->reader->SetStreamSelection(MF_SOURCE_READER_FIRST_VIDEO_STREAM, FALSE);
-    if (!g->hasAudio) g->reader->SetStreamSelection(MF_SOURCE_READER_FIRST_AUDIO_STREAM, FALSE);
-    PROPVARIANT v;
-    PropVariantInit(&v);
-    if (SUCCEEDED(g->reader->GetPresentationAttribute(MF_SOURCE_READER_MEDIASOURCE, MF_PD_DURATION, &v))) g->duration = v.uhVal.QuadPart;
-    PropVariantClear(&v);
-    g->stride = (g->width * 3 + 3) & ~3u;
-    log("movie: %s %ux%u (%s) %s, %.2f s", narrow(full).c_str(), g->width, g->height,
-        g->srcFormat == Graph::SRC_RGB32 ? "RGB32" : g->srcFormat == Graph::SRC_NV12 ? "NV12" : "YUY2", g->hasAudio ? "with audio" : "no audio",
+    movie::Source& s = *g->src;
+    g->hasVideo = s.hasVideo, g->hasAudio = s.hasAudio;
+    g->width = s.width, g->height = s.height, g->stride = s.stride();
+    g->duration = s.duration;
+    if (g->hasAudio) {
+        g->wfx.wFormatTag = WAVE_FORMAT_PCM;
+        g->wfx.nChannels = static_cast<WORD>(s.audioChannels);
+        g->wfx.nSamplesPerSec = s.audioRate;
+        g->wfx.wBitsPerSample = 16;
+        g->wfx.nBlockAlign = static_cast<WORD>(2 * s.audioChannels);
+        g->wfx.nAvgBytesPerSec = s.audioRate * g->wfx.nBlockAlign;
+        g->hasAudio = waveOutOpen(&g->wave, WAVE_MAPPER, &g->wfx, 0, 0, CALLBACK_NULL) == MMSYSERR_NOERROR;
+    }
+    log("movie: %s %ux%u (%s) %s, %.2f s", narrow(file).c_str(), g->width, g->height, s.videoFormat, g->hasAudio ? "with audio" : "no audio",
         g->duration / 1e7);
     return g->hasVideo || g->hasAudio ? S_OK : VFW_E_CANNOT_RENDER;
 }
@@ -386,11 +286,7 @@ void streamThread(Graph* g) {
             g->seekPending = false, g->complete = false, g->videoEos = !g->hasVideo, g->audioEos = !g->hasAudio;
             g->frames.clear();
             waveFlush(g);
-            PROPVARIANT v;
-            PropVariantInit(&v);
-            v.vt = VT_I8;
-            v.hVal.QuadPart = to;
-            g->reader->SetCurrentPosition(GUID_NULL, v);
+            g->src->seek(to);
             g->setClockLocked(to);
             if (g->wave) { waveOutPause(g->wave); if (g->state == Graph::Running) waveOutRestart(g->wave); }
         }
@@ -405,43 +301,15 @@ void streamThread(Graph* g) {
                                           ? static_cast<double>(g->waveBytesWritten - wavePlayedBytes(g)) / g->wfx.nAvgBytesPerSec
                                           : 1.0;
             if ((g->videoEos || g->frames.size() >= 4) && (audioAhead >= 0.5 || g->audioEos)) break;
-            DWORD stream = 0, flags = 0;
-            LONGLONG ts = 0;
-            IMFSample* s = nullptr;
+            int64_t ts = 0;
+            std::vector<uint8_t> data;
             l.unlock();
-            const HRESULT hr = g->reader->ReadSample(MF_SOURCE_READER_ANY_STREAM, 0, &stream, &flags, &ts, &s);
+            const movie::Source::Kind k = g->src->read(ts, data);
             l.lock();
-            if (g->seekPending || g->quit) { if (s) s->Release(); break; }
-            if (FAILED(hr)) { g->videoEos = g->audioEos = true; break; }
-            // map the actual stream index to video/audio by its major type
-            IMFMediaType* t = nullptr;
-            bool isVideo = false;
-            if (SUCCEEDED(g->reader->GetCurrentMediaType(stream, &t))) {
-                GUID major{};
-                t->GetGUID(MF_MT_MAJOR_TYPE, &major);
-                isVideo = major == MFMediaType_Video;
-                t->Release();
-            }
-            if (flags & MF_SOURCE_READERF_ERROR) g->videoEos = g->audioEos = true;
-            if (flags & MF_SOURCE_READERF_ENDOFSTREAM) (isVideo ? g->videoEos : g->audioEos) = true;
-            if (s) {
-                if (isVideo) {
-                    VideoFrame f{ts, {}};
-                    convertFrame(g, s, f.rgb24);
-                    g->frames.push_back(std::move(f));
-                } else {
-                    IMFMediaBuffer* b = nullptr;
-                    if (SUCCEEDED(s->ConvertToContiguousBuffer(&b))) {
-                        BYTE* p = nullptr;
-                        DWORD n = 0;
-                        b->Lock(&p, nullptr, &n);
-                        waveWrite(g, p, n);
-                        b->Unlock();
-                        b->Release();
-                    }
-                }
-                s->Release();
-            }
+            if (g->seekPending || g->quit) break;
+            if (k == movie::Source::End) { g->videoEos = g->audioEos = true; break; }
+            if (k == movie::Source::Video) g->frames.push_back(VideoFrame{ts, std::move(data)});
+            else waveWrite(g, data.data(), static_cast<DWORD>(data.size()));
         }
         if (g->wave) waveReclaim(g, false);
         if (g->seekPending || g->quit) continue;
@@ -500,7 +368,7 @@ HRESULT doRun(Graph* g) {
         g->setClockLocked(g->clockPos);
         g->state = Graph::Running;
         if (g->wave) waveOutRestart(g->wave);
-        if (!g->worker.joinable() && g->reader) g->worker = std::thread(streamThread, g);
+        if (!g->worker.joinable() && g->src) g->worker = std::thread(streamThread, g);
     }
     g->cv.notify_all();
     return S_OK;
@@ -555,12 +423,11 @@ void destroy(Graph* g) {
     }
     g->filters.clear();
     if (g->wave) { waveFlush(g); waveOutClose(g->wave); }
-    if (g->reader) g->reader->Release();
     CloseHandle(g->eventHandle);
     HLOG(1, "movie graph %u destroyed", g->id);
     // The guest block and the Graph record stay allocated: stale guest pointers then hit
     // a harmless object rather than reused memory.
-    g->reader = nullptr;
+    g->src.reset();
 }
 
 // ---------------------------------------------------------------------------
@@ -620,7 +487,7 @@ void dispTypeInfoCount(Ctx* c) { if (arg(c, 1)) wr32(arg(c, 1), 0); ret(c, S_OK,
 void gbAddFilter(Ctx* c) {
     Graph* g = graphOf(c);
     const uint32_t f = arg(c, 1);
-    const std::wstring name = arg(c, 2) ? argp<wchar_t>(c, 2) : L"";
+    const wstring name = arg(c, 2) ? argp<wchar_t>(c, 2) : L"";
     gAddRef(f);
     g->filters.emplace_back(f, name);
     const uint32_t gname = gwstr(name.c_str());
@@ -647,14 +514,14 @@ void gbRemoveFilter(Ctx* c) {
 }
 void gbFindFilterByName(Ctx* c) {
     Graph* g = graphOf(c);
-    const std::wstring n = argp<wchar_t>(c, 1);
+    const wstring n = argp<wchar_t>(c, 1);
     for (auto& f : g->filters)
         if (f.second == n) { gAddRef(f.first); wr32(arg(c, 2), f.first); ret(c, S_OK, 3); return; }
     wr32(arg(c, 2), 0);
     ret(c, VFW_E_NOT_FOUND, 3);
 }
 HRESULT renderFile(Graph* g, const wchar_t* file) {
-    if (g->reader) return VFW_E_ALREADY_CONNECTED;
+    if (g->src) return VFW_E_ALREADY_CONNECTED;
     HRESULT hr = openSource(g, file);
     if (FAILED(hr)) return hr;
     hr = connectRenderer(g);

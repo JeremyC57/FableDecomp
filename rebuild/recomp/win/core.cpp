@@ -21,7 +21,7 @@ int g_logLevel = 1;
 static FILE* g_log;
 static SRWLOCK g_logLock = SRWLOCK_INIT;
 
-void logInit(const std::wstring& path) {
+void logInit(const wstring& path) {
     g_log = _wfopen(path.c_str(), L"w");
     if (const char* l = std::getenv("FABLE_RECOMP_LOG")) g_logLevel = std::atoi(l);
 }
@@ -63,10 +63,10 @@ std::string narrow(const wchar_t* w) {
     if (n > 1) WideCharToMultiByte(CP_ACP, 0, w, -1, s.data(), n, nullptr, nullptr);
     return s;
 }
-std::wstring widen(const char* s) {
+wstring widen(const char* s) {
     if (!s) return {};
     const int n = MultiByteToWideChar(CP_ACP, 0, s, -1, nullptr, 0);
-    std::wstring w(n > 0 ? n - 1 : 0, L'\0');
+    wstring w(n > 0 ? n - 1 : 0, L'\0');
     if (n > 1) MultiByteToWideChar(CP_ACP, 0, s, -1, w.data(), n);
     return w;
 }

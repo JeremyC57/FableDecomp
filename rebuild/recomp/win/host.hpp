@@ -33,6 +33,14 @@ extern void (*recomp_on_fatal)(Ctx* c, uint32_t eip, const char* what);
 extern int (*recomp_on_unknown_target)(Ctx* c, uint32_t target);
 }
 
+#ifdef FABLE_POSIX
+#include "wstring16.h"  // host::wstring (UTF-16) and the 16-bit wide-string functions
+#else
+namespace host {
+using wstring = std::wstring;
+}
+#endif
+
 namespace host {
 
 // ---- constants --------------------------------------------------------------------
@@ -45,7 +53,7 @@ constexpr uint32_t kGuestLimit = 0x7FFF0000; // guest allocations stay below 2 G
 constexpr uint32_t kReturnSentinel = 0xFFFF1000; // return address for host->guest calls
 
 // ---- logging ----------------------------------------------------------------------
-void logInit(const std::wstring& path);
+void logInit(const wstring& path);
 void log(const char* fmt, ...);
 [[noreturn]] void die(const char* fmt, ...);
 extern int g_logLevel;  // 0 = errors, 1 = info, 2 = every import call
@@ -220,8 +228,8 @@ HANDLE startGuestThread(uint32_t fn, uint32_t param, uint32_t stackSize, DWORD f
 uint32_t pebAddr();
 
 // ---- process-wide state ----------------------------------------------------------------------
-extern std::wstring g_gameDir;   // with trailing backslash
-extern std::wstring g_exePath;   // <game>\Fable.exe
+extern wstring g_gameDir;   // with trailing backslash
+extern wstring g_exePath;   // <game>\Fable.exe
 extern HMODULE g_fableRes;       // Fable.exe loaded as a data file (resources)
 extern HINSTANCE g_hinst;        // this executable
 void runAtExit();                // guest atexit/_onexit list
@@ -251,6 +259,6 @@ uint32_t uiSize(uint32_t real);  // a back-buffer dimension as the game sees it
 
 // Strings
 std::string narrow(const wchar_t* w);
-std::wstring widen(const char* s);
+wstring widen(const char* s);
 
 }  // namespace host

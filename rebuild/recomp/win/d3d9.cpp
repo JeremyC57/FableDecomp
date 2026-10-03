@@ -20,6 +20,42 @@ using host::com::wrap;
 namespace {
 
 // ---------------------------------------------------------------------------
+// Window handles at the Direct3D boundary. On Windows they pass through. On POSIX the
+// game's windows are emulated (posix/w32/user.cpp) and DXVK Native wants the SDL_Window*.
+// ---------------------------------------------------------------------------
+#ifdef FABLE_POSIX
+}  // namespace
+namespace w32 {
+void* sdlWindow(HWND h);
+HWND hwndForSdl(void* w);
+}  // namespace w32
+namespace {
+HWND nativeWindow(HWND h) {
+    void* s = h ? w32::sdlWindow(h) : nullptr;
+    return s ? static_cast<HWND>(s) : h;
+}
+HWND emulatedWindow(HWND h) {
+    HWND g = h ? w32::hwndForSdl(h) : nullptr;
+    return g ? g : h;
+}
+#else
+HWND nativeWindow(HWND h) { return h; }
+HWND emulatedWindow(HWND h) { return h; }
+#endif
+// Present parameters with the native device window, for calls into the runtime.
+D3DPRESENT_PARAMETERS nativePP(const D3DPRESENT_PARAMETERS& p) {
+    D3DPRESENT_PARAMETERS n = p;
+    n.hDeviceWindow = nativeWindow(p.hDeviceWindow);
+    return n;
+}
+// Copies the runtime's results back, keeping the caller's window handle.
+void takeResults(D3DPRESENT_PARAMETERS& p, const D3DPRESENT_PARAMETERS& n) {
+    const HWND w = p.hDeviceWindow;
+    p = n;
+    p.hDeviceWindow = w;
+}
+
+// ---------------------------------------------------------------------------
 // D3DPRESENT_PARAMETERS (x86: 14 dwords, hDeviceWindow at +28)
 // ---------------------------------------------------------------------------
 D3DPRESENT_PARAMETERS ppIn(uint32_t g) {
@@ -227,8 +263,22 @@ constexpr const wchar_t* kSettingsKey = L"Software\\FableRecomp";
 
 bool g_windowStyled = false;  // the host changed the window for windowed mode
 
+#ifdef FABLE_POSIX
+// Linux / Android: no exclusive display modes. "Fullscreen" is a borderless window over the
+// whole display and DXVK scales the game's back buffer to it.
+namespace w32 {
+void setFullscreenDesktop(HWND h, bool on);
+}  // namespace w32
+#endif
+
 // Present parameters for the current mode (before CreateDevice/Reset).
 void applyDisplayMode(D3DPRESENT_PARAMETERS& pp) {
+#ifdef FABLE_POSIX
+    pp.Windowed = TRUE;
+    pp.FullScreen_RefreshRateInHz = 0;
+    if (pp.BackBufferFormat != D3DFMT_A8R8G8B8) pp.BackBufferFormat = D3DFMT_X8R8G8B8;
+    return;
+#endif
     if (g_windowed) {
         pp.Windowed = TRUE;
         pp.FullScreen_RefreshRateInHz = 0;
@@ -241,6 +291,10 @@ void applyDisplayMode(D3DPRESENT_PARAMETERS& pp) {
 void applyWindow(const D3DPRESENT_PARAMETERS& pp) {
     HWND w = pp.hDeviceWindow ? pp.hDeviceWindow : g_deviceWindow;
     if (!w) return;
+#ifdef FABLE_POSIX
+    w32::setFullscreenDesktop(w, !g_windowed);
+    if (!g_windowed) return;
+#endif
     if (g_windowed) {
         const DWORD style = WS_OVERLAPPEDWINDOW & ~(WS_THICKFRAME | WS_MAXIMIZEBOX);
         SetWindowLongW(w, GWL_STYLE, style | WS_VISIBLE);
@@ -265,6 +319,58 @@ namespace {
 void trackBackBuffer(IDirect3DDevice9* dev, const D3DPRESENT_PARAMETERS& pp);
 }
 
+// Display modes. On POSIX the list is synthesised (common sizes up to the display's), as
+// there are no mode switches; on Windows it is the adapter's, with refresh 0 shown as 60.
+#ifdef FABLE_POSIX
+std::vector<D3DDISPLAYMODE> modeList(D3DFORMAT fmt) {
+    std::vector<D3DDISPLAYMODE> out;
+    if (fmt != D3DFMT_X8R8G8B8 && fmt != D3DFMT_A8R8G8B8 && fmt != D3DFMT_R5G6B5 && fmt != D3DFMT_X1R5G5B5) return out;
+    const UINT dw = static_cast<UINT>(GetSystemMetrics(SM_CXSCREEN)), dh = static_cast<UINT>(GetSystemMetrics(SM_CYSCREEN));
+    static const UINT sizes[][2] = {{640, 480},   {800, 600},   {1024, 768},  {1152, 864},  {1280, 720},  {1280, 768},  {1280, 800},
+                                    {1280, 960},  {1280, 1024}, {1360, 768},  {1366, 768},  {1440, 900},  {1600, 900},  {1600, 1200},
+                                    {1680, 1050}, {1920, 1080}, {1920, 1200}, {2560, 1080}, {2560, 1440}, {2560, 1600}, {3440, 1440},
+                                    {3840, 2160}};
+    for (auto& s : sizes)
+        if (s[0] <= dw && s[1] <= dh) out.push_back({s[0], s[1], 60, fmt});
+    if (std::none_of(out.begin(), out.end(), [&](const D3DDISPLAYMODE& m) { return m.Width == dw && m.Height == dh; }))
+        out.push_back({dw, dh, 60, fmt});
+    std::sort(out.begin(), out.end(), [](const D3DDISPLAYMODE& a, const D3DDISPLAYMODE& b) { return a.Width != b.Width ? a.Width < b.Width : a.Height < b.Height; });
+    return out;
+}
+#endif
+void ovr_IDirect3D9_GetAdapterModeCount(Ctx* c) {
+#ifdef FABLE_POSIX
+    retStd(c, static_cast<uint32_t>(modeList(static_cast<D3DFORMAT>(arg(c, 2))).size()), 3);
+#else
+    retStd(c, unwrap<IDirect3D9>(arg(c, 0))->GetAdapterModeCount(arg(c, 1), static_cast<D3DFORMAT>(arg(c, 2))), 3);
+#endif
+}
+void ovr_IDirect3D9_EnumAdapterModes(Ctx* c) {
+    D3DDISPLAYMODE m{};
+#ifdef FABLE_POSIX
+    const auto list = modeList(static_cast<D3DFORMAT>(arg(c, 2)));
+    const HRESULT hr = arg(c, 3) < list.size() ? D3D_OK : D3DERR_INVALIDCALL;
+    if (SUCCEEDED(hr)) m = list[arg(c, 3)];
+#else
+    const HRESULT hr = unwrap<IDirect3D9>(arg(c, 0))->EnumAdapterModes(arg(c, 1), static_cast<D3DFORMAT>(arg(c, 2)), arg(c, 3), &m);
+    if (!m.RefreshRate) m.RefreshRate = 60;
+#endif
+    if (SUCCEEDED(hr) && arg(c, 4)) *gp<D3DDISPLAYMODE>(arg(c, 4)) = m;
+    retStd(c, static_cast<uint32_t>(hr), 5);
+}
+void ovr_IDirect3D9_GetAdapterDisplayMode(Ctx* c) {
+    D3DDISPLAYMODE m{};
+#ifdef FABLE_POSIX
+    m = {static_cast<UINT>(GetSystemMetrics(SM_CXSCREEN)), static_cast<UINT>(GetSystemMetrics(SM_CYSCREEN)), 60, D3DFMT_X8R8G8B8};
+    const HRESULT hr = D3D_OK;
+#else
+    const HRESULT hr = unwrap<IDirect3D9>(arg(c, 0))->GetAdapterDisplayMode(arg(c, 1), &m);
+    if (!m.RefreshRate) m.RefreshRate = 60;
+#endif
+    if (SUCCEEDED(hr) && arg(c, 2)) *gp<D3DDISPLAYMODE>(arg(c, 2)) = m;
+    retStd(c, static_cast<uint32_t>(hr), 3);
+}
+
 void ovr_IDirect3D9_CreateDevice(Ctx* c) {
     auto* self = unwrap<IDirect3D9>(arg(c, 0));
     D3DPRESENT_PARAMETERS pp = ppIn(arg(c, 5));
@@ -272,7 +378,9 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
     g_deviceWindow = pp.hDeviceWindow ? pp.hDeviceWindow : static_cast<HWND>(hh(arg(c, 3)));
     applyDisplayMode(pp);
     IDirect3DDevice9* dev = nullptr;
-    const HRESULT hr = self->CreateDevice(arg(c, 1), static_cast<D3DDEVTYPE>(arg(c, 2)), static_cast<HWND>(hh(arg(c, 3))), flags, &pp, &dev);
+    D3DPRESENT_PARAMETERS np = nativePP(pp);
+    const HRESULT hr = self->CreateDevice(arg(c, 1), static_cast<D3DDEVTYPE>(arg(c, 2)), nativeWindow(static_cast<HWND>(hh(arg(c, 3)))), flags, &np, &dev);
+    takeResults(pp, np);
     logPP("CreateDevice", pp, hr);
     ppOut(arg(c, 5), pp);
     if (arg(c, 6)) wr32(arg(c, 6), SUCCEEDED(hr) ? wrap(dev) : 0);
@@ -283,7 +391,7 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
 void ovr_IDirect3DDevice9_Present(Ctx* c) {
     auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
     const HRESULT hr = self->Present(arg(c, 1) ? gp<RECT>(arg(c, 1)) : nullptr, arg(c, 2) ? gp<RECT>(arg(c, 2)) : nullptr,
-                                     static_cast<HWND>(hh(arg(c, 3))), arg(c, 4) ? gp<RGNDATA>(arg(c, 4)) : nullptr);
+                                     nativeWindow(static_cast<HWND>(hh(arg(c, 3)))), arg(c, 4) ? gp<RGNDATA>(arg(c, 4)) : nullptr);
     static uint32_t frames = 0;
     static DWORD since = GetTickCount();
     ++frames;
@@ -311,7 +419,9 @@ void ovr_IDirect3DDevice9_Reset(Ctx* c) {
     auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
     D3DPRESENT_PARAMETERS pp = ppIn(arg(c, 1));
     applyDisplayMode(pp);
-    const HRESULT hr = self->Reset(&pp);
+    D3DPRESENT_PARAMETERS np = nativePP(pp);
+    const HRESULT hr = self->Reset(&np);
+    takeResults(pp, np);
     if (SUCCEEDED(hr)) g_resetPending = false, trackBackBuffer(self, pp), applyWindow(pp);
     logPP("Reset", pp, hr);
     ppOut(arg(c, 1), pp);
@@ -321,7 +431,9 @@ void ovr_IDirect3DDevice9_CreateAdditionalSwapChain(Ctx* c) {
     auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
     D3DPRESENT_PARAMETERS pp = ppIn(arg(c, 1));
     IDirect3DSwapChain9* sc = nullptr;
-    const HRESULT hr = self->CreateAdditionalSwapChain(&pp, &sc);
+    D3DPRESENT_PARAMETERS np = nativePP(pp);
+    const HRESULT hr = self->CreateAdditionalSwapChain(&np, &sc);
+    takeResults(pp, np);
     ppOut(arg(c, 1), pp);
     if (arg(c, 2)) wr32(arg(c, 2), SUCCEEDED(hr) ? wrap(sc) : 0);
     retStd(c, static_cast<uint32_t>(hr), 3);
@@ -333,7 +445,7 @@ void ovr_IDirect3DDevice9_GetCreationParameters(Ctx* c) {
     const uint32_t g = arg(c, 1);
     wr32(g, p.AdapterOrdinal);
     wr32(g + 4, p.DeviceType);
-    wr32(g + 8, gh(p.hFocusWindow));
+    wr32(g + 8, gh(emulatedWindow(p.hFocusWindow)));
     wr32(g + 12, p.BehaviorFlags);
     retStd(c, static_cast<uint32_t>(hr), 2);
 }
@@ -341,6 +453,7 @@ void ovr_IDirect3DSwapChain9_GetPresentParameters(Ctx* c) {
     auto* self = unwrap<IDirect3DSwapChain9>(arg(c, 0));
     D3DPRESENT_PARAMETERS pp{};
     const HRESULT hr = self->GetPresentParameters(&pp);
+    pp.hDeviceWindow = emulatedWindow(pp.hDeviceWindow);
     ppOut(arg(c, 1), pp);
     retStd(c, static_cast<uint32_t>(hr), 2);
 }
