@@ -224,6 +224,21 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
     if (SUCCEEDED(hr)) applyFpuMode(c, flags);
     retStd(c, static_cast<uint32_t>(hr), 7);
 }
+// Present(this, srcRect, dstRect, hwnd, dirtyRegion); also logs the frame rate every 5 s.
+void ovr_IDirect3DDevice9_Present(Ctx* c) {
+    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
+    const HRESULT hr = self->Present(arg(c, 1) ? gp<RECT>(arg(c, 1)) : nullptr, arg(c, 2) ? gp<RECT>(arg(c, 2)) : nullptr,
+                                     static_cast<HWND>(hh(arg(c, 3))), arg(c, 4) ? gp<RGNDATA>(arg(c, 4)) : nullptr);
+    static uint32_t frames = 0;
+    static DWORD since = GetTickCount();
+    ++frames;
+    if (const DWORD now = GetTickCount(); now - since >= 5000) {
+        HLOG(1, "Present: %.1f fps", frames * 1000.0 / (now - since));
+        frames = 0, since = now;
+    }
+    retStd(c, static_cast<uint32_t>(hr), 5);
+}
+
 void ovr_IDirect3DDevice9_Reset(Ctx* c) {
     auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
     D3DPRESENT_PARAMETERS pp = ppIn(arg(c, 1));

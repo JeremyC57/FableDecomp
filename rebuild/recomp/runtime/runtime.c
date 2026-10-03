@@ -101,3 +101,32 @@ uint64_t recomp_rdtsc(void) {
     return t += 1000;
 #endif
 }
+
+/* ---- C++ exception landing pads -------------------------------------------- */
+static _Thread_local RecompLanding* t_landings;
+
+void recomp_landing_push(RecompLanding* l, uint32_t entry_esp) {
+    l->entry_esp = entry_esp;
+    l->target = 0;
+    l->prev = t_landings;
+    t_landings = l;
+}
+void recomp_landing_pop(RecompLanding* l) {
+    /* Normally the top; frames skipped by a longjmp were already dropped. */
+    RecompLanding** p = &t_landings;
+    while (*p && *p != l) p = &(*p)->prev;
+    if (*p) *p = l->prev;
+}
+void* recomp_landing_chain_get(void) { return t_landings; }
+void recomp_landing_chain_set(void* chain) { t_landings = (RecompLanding*)chain; }
+
+void recomp_resume_at(Ctx* c, uint32_t frame, uint32_t target) {
+    (void)c;
+    for (RecompLanding* l = t_landings; l; l = l->prev)
+        if (l->entry_esp > frame) {
+            t_landings = l;
+            l->target = target;
+            __builtin_longjmp(l->jb, 1);
+        }
+}
+

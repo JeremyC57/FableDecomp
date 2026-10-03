@@ -79,9 +79,14 @@ xwd -root -silent | convert xwd:- shot.png      # screenshot
 | `kernel32.cpp` | kernel32: critical sections (host pointer kept in the guest CS), async I/O (`ReadFileEx`), resources, `LoadLibrary`/`GetProcAddress`, TLS, etc. |
 | `user32.cpp` | Window classes/procs (guest WndProc called through a host proc), MSG and `lParam` struct conversion, dialogs |
 | `misc.cpp` | gdi32, advapi32 (registry in the 32-bit view), winmm, version, shell32, ole32/oleaut32, imm32, wsock32 (network reported as unavailable) |
-| `com.hpp/.cpp`, `com_vtables.inc`, `gen_com.py` | COM proxies. Guest vtables of traps for D3D9 and DInput8 are generated from mingw headers. `OVERRIDES` in `gen_com.py` lists the hand-written methods |
+| `com.hpp/.cpp`, `com_vtables.inc`, `gen_com.py` | COM proxies. Guest vtables of traps for D3D9, DInput8, DirectDraw 7 and DirectSound are generated from mingw headers. `OVERRIDES` in `gen_com.py` lists the hand-written methods. Host-implemented COM classes register with `HostClassReg`; `CoCreateInstance` (misc.cpp) tries those, then the real 64-bit class behind a proxy |
 | `d3d9.cpp` | Direct3DCreate9, CreateDevice/Reset (converts D3DPRESENT_PARAMETERS, applies the 24-bit FPU mode), all Lock/Unlock through guest staging buffers. D3DX math is native; D3DX texture helpers load any x64 `d3dx9_XX.dll` at run time |
 | `dinput.cpp` | DirectInput8Create, SetDataFormat, GetDeviceData, EnumDevices, EnumObjects |
+| `ddraw.cpp` | DirectDrawEnumerateExA, DirectDrawCreateEx; `GetAvailableVidMem` clamped to 1 GiB (ConfigDetect's 32-bit rounding wraps larger values to 0) |
+| `dsound.cpp` | DirectSound: CreateSoundBuffer (DSBUFFERDESC), Lock/Unlock through guest staging, SetNotificationPositions; `GetDeviceID`; `DllGetClassObject(CLSID_DirectSoundPrivate)` device enumeration |
+| `video.cpp` | Host-implemented DirectShow filter graph for the movies: Media Foundation decode, waveOut audio, frames fed to the game's own `CBaseVideoRenderer` through its x86 interfaces |
+| `coroutine.cpp` | `host_coswitch`: the game's stack-switching coroutine routine (0x9D8650, hooked by the lifter) run on host fibers |
+| `eh.cpp` | MSVC C++ exceptions: `_CxxThrowException` walks the guest fs:[0] chain, matches catch types, runs unwind and catch funclets, and resumes through the lifter's landing pads (`recomp_resume_at`) |
 | `gamedlls.cpp` | Stand-ins for 32-bit game-folder DLLs (`eula.dll!EBUEula` returns accepted) |
 | `CMakeLists.txt`, `cmake/llvm-mingw-x64.cmake` | Cross build. `FABLE_GEN_DIR` = lifter output. `FABLE_GUEST_DLLS="cfgdetect\|ConfigDetect.dll\|<dir>"` |
 
@@ -92,7 +97,7 @@ use llvm-mingw directly, or clang-cl after small tweaks.
 
 ```sh
 # Lifter (needs Zydis): build rebuild/recomp, then
-fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/
+fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch   # coroutine switch -> host fibers
 fable_recomp ConfigDetect.dll - gen_cfg/ --prefix cfgdetect
 python3 rebuild/recomp/win/gen_com.py <llvm-mingw>/generic-w64-mingw32/include rebuild/recomp/win/com_vtables.inc
 cmake -S rebuild/recomp/win -B build/win -G Ninja \

@@ -145,22 +145,7 @@ IMPORTN(R, "?terminate@@YAXXZ", mangled_1) { die("std::terminate() from 0x%08X",
 IMPORT(R, __security_error_handler) { die("buffer overrun detected (code %u)", arg(c, 0)); }
 IMPORT(R, _XcptFilter) { retCdecl(c, 0); /* EXCEPTION_CONTINUE_SEARCH */ }
 IMPORT(R, _except_handler3) { die("SEH exception dispatch reached _except_handler3 (unsupported)"); }
-IMPORT(R, __CxxFrameHandler) { die("C++ exception dispatch reached __CxxFrameHandler (unsupported)"); }
-IMPORT(R, _CxxThrowException) {
-    const uint32_t obj = arg(c, 0), info = arg(c, 1);
-    std::string type = "?";
-    // ThrowInfo -> CatchableTypeArray -> first CatchableType -> TypeDescriptor name
-    if (info) {
-        const uint32_t cta = rd32(info + 12);
-        if (cta && rd32(cta) > 0) {
-            const uint32_t ct = rd32(cta + 4);
-            const uint32_t td = rd32(ct + 4);
-            if (td) type = gp<char>(td + 8);
-        }
-    }
-    die("C++ exception thrown (type %s, object 0x%08X) from 0x%08X; exception unwinding is not implemented yet", type.c_str(), obj,
-        rd32(c->esp));
-}
+// __CxxFrameHandler and _CxxThrowException: see eh.cpp.
 IMPORT(R, _onexit) {
     std::lock_guard<std::mutex> l(g_atexitLock);
     g_atexit.push_back(arg(c, 0));

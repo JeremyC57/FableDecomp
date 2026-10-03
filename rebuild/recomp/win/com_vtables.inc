@@ -5,6 +5,7 @@ void ovr_IDirect3DCubeTexture9_LockRect(Ctx* c);
 void ovr_IDirect3DCubeTexture9_UnlockRect(Ctx* c);
 void ovr_IDirect3DDevice9_CreateAdditionalSwapChain(Ctx* c);
 void ovr_IDirect3DDevice9_GetCreationParameters(Ctx* c);
+void ovr_IDirect3DDevice9_Present(Ctx* c);
 void ovr_IDirect3DDevice9_Reset(Ctx* c);
 void ovr_IDirect3DIndexBuffer9_Lock(Ctx* c);
 void ovr_IDirect3DIndexBuffer9_Unlock(Ctx* c);
@@ -79,7 +80,7 @@ template <> host::com::Class& host::com::classOf<IDirect3DDevice9>() {
         {"IDirect3DDevice9::GetSwapChain", &host::com::comThunk<&IDirect3DDevice9::GetSwapChain>},
         {"IDirect3DDevice9::GetNumberOfSwapChains", &host::com::comThunk<&IDirect3DDevice9::GetNumberOfSwapChains>},
         {"IDirect3DDevice9::Reset", ovr_IDirect3DDevice9_Reset},
-        {"IDirect3DDevice9::Present", &host::com::comThunk<&IDirect3DDevice9::Present>},
+        {"IDirect3DDevice9::Present", ovr_IDirect3DDevice9_Present},
         {"IDirect3DDevice9::GetBackBuffer", &host::com::comThunk<&IDirect3DDevice9::GetBackBuffer>},
         {"IDirect3DDevice9::GetRasterStatus", &host::com::comThunk<&IDirect3DDevice9::GetRasterStatus>},
         {"IDirect3DDevice9::SetDialogBoxMode", &host::com::comThunk<&IDirect3DDevice9::SetDialogBoxMode>},

@@ -41,6 +41,7 @@ struct Function {
     std::set<uint32_t> labels;       // block starts needing a label
     std::map<uint32_t, JumpTable> tables;  // keyed by the jmp instruction
     bool decodeError = false;
+    bool eh = false;  // registers an MSVC C++ EH frame: gets a landing pad for catch continuations
 };
 
 std::string hex(uint32_t v) {
@@ -68,6 +69,53 @@ class Program {
 public:
     explicit Program(const Image& img) : img_(img) {
         ZydisDecoderInit(&dec_, ZYDIS_MACHINE_MODE_LEGACY_32, ZYDIS_STACK_WIDTH_32);
+        findEhStubs();
+    }
+
+    // MSVC C++ EH: each function with an EH frame registers a handler stub
+    //     mov eax, offset FuncInfo ; jmp __CxxFrameHandler (via the `jmp [IAT]` thunk)
+    // Map stub address -> FuncInfo.
+    void findEhStubs() {
+        uint32_t iat = 0;
+        for (const auto& [a, name] : img_.imports())
+            if (name.size() > 18 && name.compare(name.size() - 18, 18, "!__CxxFrameHandler") == 0) iat = a;
+        if (!iat) return;
+        std::set<uint32_t> thunks;
+        for (const auto& sec : img_.sections()) {
+            if (!(sec.flags & 0x20000000u)) continue;
+            const uint32_t lo = img_.base() + sec.va, hi = lo + sec.vsize;
+            for (uint32_t a = lo; a + 6 <= hi && img_.contains(a, 6); ++a)
+                if (img_.r8(a) == 0xFF && img_.r8(a + 1) == 0x25 && img_.r32(a + 2) == iat) thunks.insert(a);
+            for (uint32_t a = lo; a + 10 <= hi && img_.contains(a, 10); ++a)
+                if (img_.r8(a) == 0xB8 && img_.r8(a + 5) == 0xE9 && thunks.count(a + 10 + img_.r32(a + 6))) ehStubs_[a] = img_.r32(a + 1);
+        }
+        std::cerr << "C++ EH handler stubs: " << ehStubs_.size() << "\n";
+    }
+
+    // Catch funclets return their continuation (`mov eax, offset cont ; ret`); those
+    // addresses are in the parent function and only reached that way.
+    void ehFrame(Function& f, uint32_t funcInfo, std::deque<uint32_t>& todo) {
+        f.eh = true;
+        if (!img_.contains(funcInfo, 20) || (img_.r32(funcInfo) & ~0xFu) != 0x19930520u) return;
+        const uint32_t maxState = img_.r32(funcInfo + 4), unwind = img_.r32(funcInfo + 8);
+        const uint32_t nTry = img_.r32(funcInfo + 12), tries = img_.r32(funcInfo + 16);
+        for (uint32_t i = 0; i < maxState && img_.contains(unwind + 8 * i, 8); ++i)
+            if (const uint32_t act = img_.r32(unwind + 8 * i + 4)) addEntry(act);
+        for (uint32_t t = 0; t < nTry && img_.contains(tries + 20 * t, 20); ++t) {
+            const uint32_t n = img_.r32(tries + 20 * t + 12), handlers = img_.r32(tries + 20 * t + 16);
+            for (uint32_t h = 0; h < n && img_.contains(handlers + 16 * h, 16); ++h) {
+                const uint32_t funclet = img_.r32(handlers + 16 * h + 12);
+                addEntry(funclet);
+                for (uint32_t a = funclet; a < funclet + 0x400 && img_.contains(a, 6); ++a)
+                    if (img_.r8(a) == 0xB8 && img_.r8(a + 5) == 0xC3) {
+                        const uint32_t cont = img_.r32(a + 1);
+                        if (cont > f.entry && cont < f.entry + 0x20000 && img_.isCode(cont) && !isEntry(cont)) {
+                            f.labels.insert(cont);
+                            todo.push_back(cont);
+                        }
+                    }
+            }
+        }
     }
 
     const Insn* decode(uint32_t a) {
@@ -138,6 +186,13 @@ public:
             if (a >= 3 && *img_.at(a - 3) == 0xC2) return true;  // ret imm16
             if (*img_.at(a - 5) == 0xE9 || *img_.at(a - 2) == 0xEB) return true;
             if (*img_.at(a - 6) == 0xFF && *img_.at(a - 5) == 0x25) return true;  // jmp [import]
+            // any unconditional jmp/ret (e.g. jmp [eax+24h]) that ends exactly here
+            for (uint32_t k = 2; k <= 7; ++k) {
+                const Insn* q = decode(a - k);
+                if (q && q->next() == a &&
+                    (q->in.mnemonic == ZYDIS_MNEMONIC_JMP || q->in.mnemonic == ZYDIS_MNEMONIC_RET))
+                    return true;
+            }
             return false;
         };
         size_t added = 0;
@@ -279,6 +334,12 @@ private:
                 f.insns.insert(a);
                 const auto& in = ins->in;
                 const auto m = in.mnemonic;
+                if ((m == ZYDIS_MNEMONIC_PUSH || m == ZYDIS_MNEMONIC_MOV) && !ehStubs_.empty())
+                    for (int i = 0; i < in.operand_count_visible; ++i)
+                        if (ins->op[i].type == ZYDIS_OPERAND_TYPE_IMMEDIATE) {
+                            auto st = ehStubs_.find(static_cast<uint32_t>(ins->op[i].imm.value.u));
+                            if (st != ehStubs_.end()) ehFrame(f, st->second, todo);
+                        }
                 if (in.meta.category == ZYDIS_CATEGORY_COND_BR) {
                     uint64_t t = 0;
                     ZydisCalcAbsoluteAddress(&in, &ins->op[0], a, &t);
@@ -334,6 +395,7 @@ private:
     std::set<uint32_t> entries_;
     std::deque<uint32_t> work_;
     std::map<uint32_t, Function> funcs_;
+    std::map<uint32_t, uint32_t> ehStubs_;  // handler stub -> FuncInfo
 
 public:
     uint64_t fallbackTables_ = 0;
@@ -360,6 +422,20 @@ public:
              << "    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;\n"
              << "    int fop = FOP(FK_EXPLICIT, 4); uint32_t fr = 0, fa = 0, fb = 0; /* flags undefined at entry */\n"
              << "    (void)fop; (void)fr; (void)fa; (void)fb;\n";
+        if (f.eh) {
+            // Landing pad: the host's C++ exception dispatch longjmps here to continue
+            // at a catch continuation (any label of this function).
+            out_ << "    RecompLanding land_ __attribute__((cleanup(recomp_landing_pop)));\n"
+                 << "    recomp_landing_push(&land_, esp);\n"
+                 << "    if (__builtin_setjmp(land_.jb)) {\n"
+                 << "        RELOAD; fop = FOP(FK_EXPLICIT, 4);\n"
+                 << "        switch (land_.target) {\n";
+            for (uint32_t l : f.labels)
+                if (f.insns.count(l)) out_ << "        case " << hex(l) << "u: goto " << lname(l) << ";\n";
+            out_ << "        }\n"
+                 << "        SPILL; recomp_fatal(c, land_.target, \"catch continuation outside the function\"); return;\n"
+                 << "    }\n";
+        }
         // Blocks are emitted in address order; a backward jump can pull in code that sits
         // below the entry (e.g. __security_check_cookie's failure path), so start at the entry.
         if (!f.insns.empty() && *f.insns.begin() != f.entry) out_ << "    goto " << lname(f.entry) << ";\n";
@@ -1085,7 +1161,7 @@ private:
 int main(int argc, char** argv) {
     using namespace recomp;
     if (argc < 4) {
-        std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N]\n";
+        std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N] [--prefix NAME] [--no-refs] [--hook ADDR=host_fn]...\n";
         return 2;
     }
     const Image img(argv[1]);
@@ -1094,12 +1170,17 @@ int main(int argc, char** argv) {
     size_t perFile = 400;
     bool noRefs = false;
     std::string prefix = "recomp";
+    std::map<uint32_t, std::string> hooks;  // guest functions replaced by host code
     for (int i = 4; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--only" && i + 1 < argc) {
             std::stringstream ss(argv[++i]);
             std::string t;
             while (std::getline(ss, t, ',')) only.insert(static_cast<uint32_t>(std::stoul(t, nullptr, 16)));
+        } else if (a == "--hook" && i + 1 < argc) {  // --hook 0x9D8650=host_coswitch
+            const std::string h = argv[++i];
+            const auto eq = h.find('=');
+            if (eq != std::string::npos) hooks[static_cast<uint32_t>(std::stoul(h.substr(0, eq), nullptr, 16))] = h.substr(eq + 1);
         } else if (a == "--prefix" && i + 1 < argc) {
             prefix = argv[++i];
         } else if (a == "--no-refs") {
@@ -1156,6 +1237,14 @@ int main(int argc, char** argv) {
         }
     }
 
+    // Hooked functions: the body becomes a call to the host implementation, which follows
+    // the lifted-function contract ([esp] = return address on entry; pops it on return).
+    for (const auto& [a, name] : hooks)
+        if (code.count(a)) {
+            code[a] = "void " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
+            std::cerr << "hooked " << fname(a) << " -> " << name << "\n";
+        }
+
     std::filesystem::create_directories(outDir);
     const std::string tableSym = prefix == "recomp" ? "recomp_table" : "recomp_table_" + prefix;
     {
@@ -1164,6 +1253,7 @@ int main(int argc, char** argv) {
           << "#define SPILL (c->eax = eax, c->ecx = ecx, c->edx = edx, c->ebx = ebx, c->esp = esp, c->ebp = ebp, c->esi = esi, c->edi = edi)\n"
           << "#define RELOAD (eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx, esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi)\n";
         for (uint32_t a : selected) h << "void " << fname(a) << "(Ctx* c);\n";
+        for (const auto& hk : hooks) h << "void " << hk.second << "(Ctx* c);\n";
         h << "typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;\n"
           << "extern const RecompEntry " << tableSym << "[];\nextern const uint32_t " << tableSym << "_size;\n";
     }

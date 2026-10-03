@@ -69,6 +69,25 @@ typedef void (*GuestFn)(Ctx*);
 void recomp_dispatch(Ctx* c, uint32_t target);
 /* Reached code the lifter could not translate, or a guest fault. */
 void recomp_fatal(Ctx* c, uint32_t eip, const char* what);
+/* C++ exception landing pads. Every lifted function that registers an MSVC EH frame
+ * pushes one on entry (popped on return by a cleanup attribute). When the host's
+ * _CxxThrowException has run a catch block, recomp_resume_at() longjmps to the
+ * innermost such function whose frame holds the catching EH registration node and
+ * continues it at the catch continuation `target`. One chain per thread (the host
+ * swaps it when switching guest coroutine fibers). */
+typedef struct RecompLanding {
+    void* jb[5];                  /* __builtin_setjmp buffer */
+    uint32_t entry_esp;           /* guest esp on entry (the frame lies below it) */
+    uint32_t target;              /* continuation address after a longjmp */
+    struct RecompLanding* prev;
+} RecompLanding;
+void recomp_landing_push(RecompLanding* l, uint32_t entry_esp);
+void recomp_landing_pop(RecompLanding* l);
+void* recomp_landing_chain_get(void);
+void recomp_landing_chain_set(void* chain);
+/* Returns only if no landing covers `frame` (then the caller reports the error). */
+void recomp_resume_at(Ctx* c, uint32_t frame, uint32_t target);
+
 /* Optional host services used by a few instructions. */
 void recomp_cpuid(Ctx* c);
 uint64_t recomp_rdtsc(void);
