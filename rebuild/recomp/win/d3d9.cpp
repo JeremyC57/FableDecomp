@@ -268,6 +268,7 @@ bool g_windowStyled = false;  // the host changed the window for windowed mode
 // whole display and DXVK scales the game's back buffer to it.
 namespace w32 {
 void setFullscreenDesktop(HWND h, bool on);
+void setStartFullscreen(bool on);
 }  // namespace w32
 #endif
 
@@ -850,6 +851,9 @@ void displayInit() {
         if (_wcsicmp(argv[i], L"--fullscreen") == 0) g_windowed = false;
     }
     LocalFree(argv);
+#ifdef FABLE_POSIX
+    w32::setStartFullscreen(!g_windowed);
+#endif
     log("display: %s (Alt+Enter toggles)", g_windowed ? "windowed" : "fullscreen");
 }
 void displayToggleRequest() {

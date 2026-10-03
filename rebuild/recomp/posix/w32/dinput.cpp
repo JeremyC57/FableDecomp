@@ -91,6 +91,34 @@ void onEvent(const SDL_Event& e) {
     }
 }
 
+// Key names as Windows reports them (GetKeyNameText style); the game puts them into its
+// on-screen prompts ("Press 'Tab' to ...").
+const char* keyName(int dik) {
+    static const char* names[256] = {};
+    static bool init = false;
+    if (!init) {
+        init = true;
+        const struct { int k; const char* n; } t[] = {
+            {0x01, "Esc"}, {0x02, "1"}, {0x03, "2"}, {0x04, "3"}, {0x05, "4"}, {0x06, "5"}, {0x07, "6"}, {0x08, "7"}, {0x09, "8"}, {0x0A, "9"},
+            {0x0B, "0"}, {0x0C, "-"}, {0x0D, "="}, {0x0E, "Backspace"}, {0x0F, "Tab"}, {0x10, "Q"}, {0x11, "W"}, {0x12, "E"}, {0x13, "R"},
+            {0x14, "T"}, {0x15, "Y"}, {0x16, "U"}, {0x17, "I"}, {0x18, "O"}, {0x19, "P"}, {0x1A, "["}, {0x1B, "]"}, {0x1C, "Enter"},
+            {0x1D, "Ctrl"}, {0x1E, "A"}, {0x1F, "S"}, {0x20, "D"}, {0x21, "F"}, {0x22, "G"}, {0x23, "H"}, {0x24, "J"}, {0x25, "K"},
+            {0x26, "L"}, {0x27, ";"}, {0x28, "'"}, {0x29, "`"}, {0x2A, "Shift"}, {0x2B, "\\"}, {0x2C, "Z"}, {0x2D, "X"}, {0x2E, "C"},
+            {0x2F, "V"}, {0x30, "B"}, {0x31, "N"}, {0x32, "M"}, {0x33, ","}, {0x34, "."}, {0x35, "/"}, {0x36, "Right Shift"},
+            {0x37, "Num *"}, {0x38, "Alt"}, {0x39, "Space"}, {0x3A, "Caps Lock"}, {0x3B, "F1"}, {0x3C, "F2"}, {0x3D, "F3"}, {0x3E, "F4"},
+            {0x3F, "F5"}, {0x40, "F6"}, {0x41, "F7"}, {0x42, "F8"}, {0x43, "F9"}, {0x44, "F10"}, {0x45, "Pause"}, {0x46, "Scroll Lock"},
+            {0x47, "Num 7"}, {0x48, "Num 8"}, {0x49, "Num 9"}, {0x4A, "Num -"}, {0x4B, "Num 4"}, {0x4C, "Num 5"}, {0x4D, "Num 6"},
+            {0x4E, "Num +"}, {0x4F, "Num 1"}, {0x50, "Num 2"}, {0x51, "Num 3"}, {0x52, "Num 0"}, {0x53, "Num Del"}, {0x56, "\\"},
+            {0x57, "F11"}, {0x58, "F12"}, {0x9C, "Num Enter"}, {0x9D, "Right Ctrl"}, {0xB5, "Num /"}, {0xB7, "Prnt Scrn"},
+            {0xB8, "Right Alt"}, {0xC5, "Num Lock"}, {0xC7, "Home"}, {0xC8, "Up"}, {0xC9, "Page Up"}, {0xCB, "Left"}, {0xCD, "Right"},
+            {0xCF, "End"}, {0xD0, "Down"}, {0xD1, "Page Down"}, {0xD2, "Insert"}, {0xD3, "Delete"}, {0xDB, "Left Windows"},
+            {0xDC, "Right Windows"}, {0xDD, "Application"},
+        };
+        for (auto& e : t) names[e.k] = e.n;
+    }
+    return dik >= 0 && dik < 256 ? names[dik] : nullptr;
+}
+
 template <bool W> struct Traits;
 template <> struct Traits<true> {
     using Dev = IDirectInputDevice8W;
@@ -194,13 +222,13 @@ template <bool W> struct Device final : ComObject<typename Traits<W>::Dev> {
             }
         } else {
             for (int dik = 1; dik < 256; ++dik) {
+                const char* n = keyName(dik);
+                if (!n) continue;
                 std::memset(&o, 0, sizeof o);
                 o.dwSize = sizeof o;
                 o.guidType = GUID_Key;
                 o.dwOfs = static_cast<DWORD>(dik);
                 o.dwType = DIDFT_PSHBUTTON | DIDFT_MAKEINSTANCE(dik);
-                char n[16];
-                std::snprintf(n, sizeof n, "Key %d", dik);
                 T::objName(o, n);
                 if (cb(&o, ref) == DIENUM_STOP) break;
             }
@@ -210,6 +238,14 @@ template <bool W> struct Device final : ComObject<typename Traits<W>::Dev> {
     HRESULT STDMETHODCALLTYPE GetProperty(REFGUID prop, LPDIPROPHEADER h) override {
         if (&prop == &DIPROP_BUFFERSIZE) {
             reinterpret_cast<LPDIPROPDWORD>(h)->dwData = st.bufferSize;
+            return DI_OK;
+        }
+        if (&prop == &DIPROP_KEYNAME && st.kind == Kind::Keyboard) {
+            auto* p = reinterpret_cast<LPDIPROPSTRING>(h);
+            const char* n = keyName(static_cast<int>(h->dwHow == DIPH_BYID ? DIDFT_GETINSTANCE(h->dwObj) : h->dwObj));
+            if (!n) return DIERR_OBJECTNOTFOUND;
+            std::memset(p->wsz, 0, sizeof p->wsz);
+            for (int i = 0; n[i] && i < MAX_PATH - 1; ++i) p->wsz[i] = static_cast<unsigned char>(n[i]);
             return DI_OK;
         }
         if (&prop == &DIPROP_AXISMODE) {
@@ -284,7 +320,42 @@ template <bool W> struct Device final : ComObject<typename Traits<W>::Dev> {
         st.exclusive = (flags & DISCL_EXCLUSIVE) && st.kind == Kind::Mouse;
         return DI_OK;
     }
-    HRESULT STDMETHODCALLTYPE GetObjectInfo(typename T::ObjInst*, DWORD, DWORD) override { return DIERR_OBJECTNOTFOUND; }
+    // Objects by offset (DIPH_BYOFFSET) or by id (DIPH_BYID: instance in bits 8..23).
+    HRESULT STDMETHODCALLTYPE GetObjectInfo(typename T::ObjInst* o, DWORD obj, DWORD how) override {
+        const DWORD size = o->dwSize;
+        std::memset(o, 0, size);
+        o->dwSize = size;
+        const DWORD ofs = how == DIPH_BYID ? DIDFT_GETINSTANCE(obj) : obj;
+        if (st.kind == Kind::Keyboard) {
+            const char* n = keyName(static_cast<int>(ofs));
+            if (how != DIPH_BYOFFSET && how != DIPH_BYID) return DIERR_UNSUPPORTED;
+            if (!n) return DIERR_OBJECTNOTFOUND;
+            o->guidType = GUID_Key;
+            o->dwOfs = ofs;
+            o->dwType = DIDFT_PSHBUTTON | DIDFT_MAKEINSTANCE(ofs);
+            T::objName(*o, n);
+            return DI_OK;
+        }
+        static const struct { DWORD ofs; const GUID* g; DWORD type; const char* n; } mouse[] = {
+            {DIMOFS_X, &GUID_XAxis, DIDFT_RELAXIS | DIDFT_MAKEINSTANCE(0), "X-axis"},
+            {DIMOFS_Y, &GUID_YAxis, DIDFT_RELAXIS | DIDFT_MAKEINSTANCE(1), "Y-axis"},
+            {DIMOFS_Z, &GUID_ZAxis, DIDFT_RELAXIS | DIDFT_MAKEINSTANCE(2), "Wheel"},
+            {DIMOFS_BUTTON0, &GUID_Button, DIDFT_PSHBUTTON | DIDFT_MAKEINSTANCE(3), "Left Button"},
+            {DIMOFS_BUTTON1, &GUID_Button, DIDFT_PSHBUTTON | DIDFT_MAKEINSTANCE(4), "Right Button"},
+            {DIMOFS_BUTTON2, &GUID_Button, DIDFT_PSHBUTTON | DIDFT_MAKEINSTANCE(5), "Middle Button"},
+            {DIMOFS_BUTTON3, &GUID_Button, DIDFT_PSHBUTTON | DIDFT_MAKEINSTANCE(6), "Button 4"},
+            {DIMOFS_BUTTON4, &GUID_Button, DIDFT_PSHBUTTON | DIDFT_MAKEINSTANCE(7), "Button 5"},
+        };
+        for (auto& m : mouse)
+            if ((how == DIPH_BYOFFSET && m.ofs == obj) || (how == DIPH_BYID && (m.type & 0xFFFFFF) == (obj & 0xFFFFFF))) {
+                o->guidType = *m.g;
+                o->dwOfs = m.ofs;
+                o->dwType = m.type;
+                T::objName(*o, m.n);
+                return DI_OK;
+            }
+        return DIERR_OBJECTNOTFOUND;
+    }
     HRESULT STDMETHODCALLTYPE GetDeviceInfo(typename T::Inst* i) override { describe<W>(st.kind, *i); return DI_OK; }
     HRESULT STDMETHODCALLTYPE RunControlPanel(HWND, DWORD) override { return DI_OK; }
     HRESULT STDMETHODCALLTYPE Initialize(HINSTANCE, DWORD, REFGUID) override { return DI_OK; }

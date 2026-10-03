@@ -69,6 +69,7 @@ std::map<std::string, UINT> g_messages;  // RegisterWindowMessage
 UINT g_nextMessage = 0xC000;
 
 DWORD g_sdlThread;  // thread that owns SDL video
+bool g_fullscreen = true;  // top-level windows start covering the display (set by the host)
 HWND g_focus, g_active, g_capture;
 int g_cursorCount = 0;
 uint8_t g_keys[256];         // GetKeyState: high bit down, low bit toggled
@@ -346,11 +347,20 @@ HWND createWindow(DWORD exStyle, const std::string& cls, ATOM clsAtom, const std
         RECT r = win->rect;
         RECT frame{0, 0, 0, 0};
         AdjustWindowRectEx(&frame, style, FALSE, exStyle);
-        const int cw = std::max<int>(1, (r.right - r.left) - (frame.right - frame.left));
-        const int ch = std::max<int>(1, (r.bottom - r.top) - (frame.bottom - frame.top));
-        win->sdl = SDL_CreateWindow(title.empty() ? "Fable" : title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, cw, ch, flags);
+        int cw = std::max<int>(1, (r.right - r.left) - (frame.right - frame.left));
+        int ch = std::max<int>(1, (r.bottom - r.top) - (frame.bottom - frame.top));
+        // Fullscreen is a borderless window over the display from the start, so the Direct3D
+        // swap chain never has to follow a later resize.
+        int x0 = SDL_WINDOWPOS_CENTERED, y0 = SDL_WINDOWPOS_CENTERED, w0 = cw, h0 = ch;
+        SDL_Rect b;
+        if (g_fullscreen && SDL_GetDisplayBounds(0, &b) == 0) {
+            flags |= SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP;
+            x0 = b.x, y0 = b.y, w0 = b.w, h0 = b.h;
+        }
+        win->sdl = SDL_CreateWindow(title.empty() ? "Fable" : title.c_str(), x0, y0, w0, h0, flags);
         if (!win->sdl) std::fprintf(stderr, "SDL_CreateWindow failed: %s\n", SDL_GetError());
         else {
+            SDL_GetWindowSize(win->sdl, &cw, &ch);
             int wx, wy;
             SDL_GetWindowPosition(win->sdl, &wx, &wy);
             win->rect = {wx, wy, wx + cw, wy + ch};
@@ -406,9 +416,23 @@ void* sdlWindow(HWND h) {
     while (w && !w->sdl && w->parent) w = wnd(w->parent);
     return w ? w->sdl : nullptr;
 }
+void setStartFullscreen(bool on) { g_fullscreen = on; }
 void setFullscreenDesktop(HWND h, bool on) {
     WndPtr w = wnd(h);
-    if (w && w->sdl) SDL_SetWindowFullscreen(w->sdl, on ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+    if (!w || !w->sdl) return;
+    if (((SDL_GetWindowFlags(w->sdl) & SDL_WINDOW_FULLSCREEN_DESKTOP) == SDL_WINDOW_FULLSCREEN_DESKTOP) == on) return;  // already there
+    SDL_SetWindowFullscreen(w->sdl, on ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+    if (!on) return;
+    // Without a window manager (e.g. a bare X server) the request has no effect: cover the
+    // display with a borderless window instead.
+    SDL_Rect b;
+    int cw = 0, ch = 0;
+    SDL_GetWindowSize(w->sdl, &cw, &ch);
+    if (SDL_GetDisplayBounds(SDL_GetWindowDisplayIndex(w->sdl), &b) == 0 && (cw != b.w || ch != b.h)) {
+        SDL_SetWindowBordered(w->sdl, SDL_FALSE);
+        SDL_SetWindowPosition(w->sdl, b.x, b.y);
+        SDL_SetWindowSize(w->sdl, b.w, b.h);
+    }
 }
 HWND hwndForSdl(void* sdl) {
     std::lock_guard<std::recursive_mutex> l(g_lock);

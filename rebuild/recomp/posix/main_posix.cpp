@@ -29,9 +29,16 @@ int main(int argc, char** argv) {
     w32::setCDrive(data + "/drive_c");
     w32::setRegistryFile(data + "/registry.txt");
 
+    // Paths given in POSIX form (--game, FABLE_DIR) become Windows paths on drive Z:, which is
+    // what the game expects of absolute paths.
+    if (const char* d = std::getenv("FABLE_DIR"); d && d[0] == '/') {
+        const std::string w = w32::toUtf8(w32::toWindowsPath(d).c_str());
+        setenv("FABLE_DIR", w.c_str(), 1);
+    }
     w32::wstr cmd;
     for (int i = 0; i < argc; ++i) {
-        const w32::wstr a = w32::fromUtf8(argv[i]);
+        const bool path = i > 0 && argv[i][0] == '/' && std::string(argv[i - 1]) == "--game";
+        const w32::wstr a = path ? w32::toWindowsPath(argv[i]) : w32::fromUtf8(argv[i]);
         if (i) cmd += L' ';
         const bool quote = a.empty() || a.find_first_of(L" \t\"") != w32::wstr::npos;
         if (quote) cmd += L'"';
