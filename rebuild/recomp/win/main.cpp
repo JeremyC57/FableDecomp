@@ -241,6 +241,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR, int) {
 
     threadsInit();
     displayInit();
+    uiScaleInit();
     AddVectoredExceptionHandler(1, crashHandler);
     recomp_on_trace = onTrace;
     std::string cmd = "\"" + narrow(g_exePath.c_str()) + "\"";

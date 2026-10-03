@@ -244,6 +244,10 @@ HINSTANCE instFromGuest(uint32_t g);  // 0x400000 -> this exe's HINSTANCE (windo
 // Display mode (d3d9.cpp): windowed/fullscreen setting, Alt+Enter toggle.
 void displayInit();            // reads the setting (HKCU\Software\FableRecomp, --windowed/--fullscreen)
 void displayToggleRequest();   // Alt+Enter: switch at the game's next device reset
+// UI scale (ui_scale.cpp): HKCU\Software\FableRecomp UIScale (percent), --ui-scale=N.
+void uiScaleInit();
+double uiScale();                // 1.0 = off
+uint32_t uiSize(uint32_t real);  // a back-buffer dimension as the game sees it
 
 // Strings
 std::string narrow(const wchar_t* w);
