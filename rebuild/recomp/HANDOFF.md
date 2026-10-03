@@ -39,6 +39,21 @@ user's original game folder; no retail bytes or generated code are in git.
   - The lifter's `--trace ADDR` logs calls to chosen functions.
   - `ghidra_out/coverage.tsv` names retail addresses.
   - `Present` logs the frame rate.
+- **Session 2b, after the first real-Windows test:** menus ran at 40 fps and the game at
+  60 fps on the user's PC.
+  - **Settings now persist.** The game writes its video settings to HKLM, which a
+    non-admin 64-bit process may not do. `misc.cpp` virtualizes writes to
+    `HKCU\Software\Classes\VirtualStore\MACHINE\SOFTWARE\WOW6432Node`, as Windows
+    does for the retail exe.
+  - **Windowed mode** comes from the host (the game has none). It is set by
+    `HKCU\Software\FableRecomp\Windowed`, `--windowed`, `--fullscreen` or Alt+Enter.
+    Alt+Enter takes effect through the game's own device-reset path.
+  - **Controllers** are supported through XInput (`controller.cpp`): buttons and sticks
+    become the game's DirectInput keyboard and mouse input. The mapping is in
+    `<game>\FableRecomp_controller.ini`, which defaults to an Xbox-like layout.
+  - Native Xbox pad support would be better: the PC exe still has
+    `CInputTypeXboxPad*`, data-driven control schemes and `CJoystickDX`. It is not
+    reverse-engineered yet.
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).
@@ -81,6 +96,7 @@ xwd -root -silent | convert xwd:- shot.png      # screenshot
 | `dsound.cpp` | DirectSound: CreateSoundBuffer (DSBUFFERDESC), Lock/Unlock through guest staging, SetNotificationPositions; `GetDeviceID`; `DllGetClassObject(CLSID_DirectSoundPrivate)` device enumeration |
 | `video.cpp` | Host-implemented DirectShow filter graph for the movies: Media Foundation decode, waveOut audio, frames fed to the game's own `CBaseVideoRenderer` through its x86 interfaces |
 | `coroutine.cpp` | `host_coswitch`: the game's stack-switching coroutine routine (0x9D8650, hooked by the lifter) run on host fibers |
+| `controller.cpp/.hpp` | XInput controller -> synthetic DirectInput keyboard/mouse events and state; mapping file `FableRecomp_controller.ini` |
 | `eh.cpp` | MSVC C++ exceptions: `_CxxThrowException` walks the guest fs:[0] chain, matches catch types, runs unwind and catch funclets, and resumes through the lifter's landing pads (`recomp_resume_at`) |
 | `gamedlls.cpp` | Stand-ins for 32-bit game-folder DLLs (`eula.dll!EBUEula` returns accepted) |
 | `CMakeLists.txt`, `cmake/llvm-mingw-x64.cmake` | Cross build. `FABLE_GEN_DIR` = lifter output. `FABLE_GUEST_DLLS="cfgdetect\|ConfigDetect.dll\|<dir>"` |

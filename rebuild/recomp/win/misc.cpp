@@ -6,6 +6,8 @@
 #include <shlobj.h>
 
 #include <mutex>
+#include <string>
+#include <unordered_map>
 
 namespace host {
 namespace {
@@ -38,9 +40,65 @@ IMPORT(G, GetObjectA) {
 // ============================================================================
 constexpr const char* A = "advapi32.dll";
 HKEY hk(uint32_t v) { return static_cast<HKEY>(hh(v)); }
+
+// Registry virtualization. The game keeps its settings (resolution, ...) under
+// HKLM\Software\Microsoft\Microsoft Games\Fable. Windows silently redirects such writes
+// for the 32-bit retail Fable.exe to a per-user store; this 64-bit host does not get
+// that, so it does the same itself: writes that HKLM refuses go to
+//     HKCU\Software\Classes\VirtualStore\MACHINE\SOFTWARE\WOW6432Node\<rest>
+// (the path Windows used for the retail game, so its saved settings carry over), and
+// keys opened through the store fall back to the real HKLM key for values it lacks.
+std::mutex g_regLock;
+std::unordered_map<HKEY, HKEY> g_regFallback;  // virtual-store key -> real HKLM key (or null)
+
+std::wstring virtualPath(const std::wstring& sub) {
+    static const std::wstring kSoftware = L"software\\";
+    if (sub.size() <= kSoftware.size() || _wcsnicmp(sub.c_str(), kSoftware.c_str(), kSoftware.size()) != 0) return {};
+    return L"Software\\Classes\\VirtualStore\\MACHINE\\SOFTWARE\\WOW6432Node\\" + sub.substr(kSoftware.size());
+}
+bool isHklm(uint32_t root) { return root == 0x80000002u; }
+
+// Opens (create=false) or creates the key, virtualizing HKLM\Software. Returns the
+// handle the guest gets.
+LONG regOpen(uint32_t root, const std::wstring& sub, REGSAM sam, bool create, HKEY* out, DWORD* disp) {
+    sam |= KEY_WOW64_32KEY;
+    const std::wstring vpath = isHklm(root) ? virtualPath(sub) : std::wstring();
+    if (vpath.empty()) {
+        return create ? RegCreateKeyExW(hk(root), sub.c_str(), 0, nullptr, 0, sam, nullptr, out, disp)
+                      : RegOpenKeyExW(hk(root), sub.c_str(), 0, sam, out);
+    }
+    HKEY real = nullptr, virt = nullptr;
+    LONG r = create ? RegCreateKeyExW(HKEY_LOCAL_MACHINE, sub.c_str(), 0, nullptr, 0, sam, nullptr, &real, disp)
+                    : RegOpenKeyExW(HKEY_LOCAL_MACHINE, sub.c_str(), 0, sam, &real);
+    if (r == ERROR_ACCESS_DENIED || r == ERROR_FILE_NOT_FOUND) {
+        // read-only view of the real key for fallback values
+        if (RegOpenKeyExW(HKEY_LOCAL_MACHINE, sub.c_str(), 0, KEY_READ | KEY_WOW64_32KEY, &real) != ERROR_SUCCESS) real = nullptr;
+    } else if (r != ERROR_SUCCESS) {
+        return r;
+    }
+    // Prefer the virtual store when it exists (Windows' merged view), or when HKLM refused a write.
+    const bool wantWrite = (sam & (KEY_SET_VALUE | KEY_CREATE_SUB_KEY)) != 0 || create;
+    LONG v = RegOpenKeyExW(HKEY_CURRENT_USER, vpath.c_str(), 0, KEY_ALL_ACCESS, &virt);
+    if (v != ERROR_SUCCESS && (r == ERROR_ACCESS_DENIED || (create && r != ERROR_SUCCESS)) && wantWrite)
+        v = RegCreateKeyExW(HKEY_CURRENT_USER, vpath.c_str(), 0, nullptr, 0, KEY_ALL_ACCESS, nullptr, &virt, disp);
+    if (v == ERROR_SUCCESS) {
+        std::lock_guard<std::mutex> l(g_regLock);
+        g_regFallback[virt] = real;
+        *out = virt;
+        return ERROR_SUCCESS;
+    }
+    if (real) { *out = real; return ERROR_SUCCESS; }  // HKLM itself (read-only if a write was refused)
+    return r;
+}
+HKEY regFallback(HKEY h) {
+    std::lock_guard<std::mutex> l(g_regLock);
+    auto it = g_regFallback.find(h);
+    return it == g_regFallback.end() ? nullptr : it->second;
+}
+
 IMPORT(A, RegOpenKeyExA) {
     HKEY out = nullptr;
-    const LONG r = RegOpenKeyExA(hk(arg(c, 0)), argp(c, 1), arg(c, 2), arg(c, 3) | KEY_WOW64_32KEY, &out);
+    const LONG r = regOpen(arg(c, 0), widen(arg(c, 1) ? argp(c, 1) : ""), arg(c, 3), false, &out, nullptr);
     if (r == ERROR_SUCCESS) wr32(arg(c, 4), gh(out));
     HLOG(1, "RegOpenKeyExA(%08X, %s) -> %ld", arg(c, 0), arg(c, 1) ? argp(c, 1) : "", r);
     retStd(c, static_cast<uint32_t>(r), 5);
@@ -48,8 +106,7 @@ IMPORT(A, RegOpenKeyExA) {
 IMPORT(A, RegCreateKeyExA) {
     HKEY out = nullptr;
     DWORD disp = 0;
-    const LONG r = RegCreateKeyExA(hk(arg(c, 0)), argp(c, 1), 0, arg(c, 3) ? argp(c, 3) : nullptr, arg(c, 4), arg(c, 5) | KEY_WOW64_32KEY,
-                                   nullptr, &out, &disp);
+    const LONG r = regOpen(arg(c, 0), widen(argp(c, 1)), arg(c, 5), true, &out, &disp);
     if (r == ERROR_SUCCESS) wr32(arg(c, 7), gh(out));
     if (arg(c, 8)) wr32(arg(c, 8), disp);
     HLOG(1, "RegCreateKeyExA(%08X, %s) -> %ld", arg(c, 0), argp(c, 1), r);
@@ -58,18 +115,41 @@ IMPORT(A, RegCreateKeyExA) {
 IMPORT(A, RegCreateKeyExW) {
     HKEY out = nullptr;
     DWORD disp = 0;
-    const LONG r = RegCreateKeyExW(hk(arg(c, 0)), argp<wchar_t>(c, 1), 0, arg(c, 3) ? argp<wchar_t>(c, 3) : nullptr, arg(c, 4),
-                                   arg(c, 5) | KEY_WOW64_32KEY, nullptr, &out, &disp);
+    const LONG r = regOpen(arg(c, 0), argp<wchar_t>(c, 1), arg(c, 5), true, &out, &disp);
     if (r == ERROR_SUCCESS) wr32(arg(c, 7), gh(out));
     if (arg(c, 8)) wr32(arg(c, 8), disp);
     HLOG(1, "RegCreateKeyExW(%08X, %s) -> %ld", arg(c, 0), narrow(argp<wchar_t>(c, 1)).c_str(), r);
     retStd(c, static_cast<uint32_t>(r), 9);
 }
+// RegQueryValueEx(key, name, reserved, type, data, cbData): falls back to HKLM for virtualized keys.
+template <class Ch> void regQuery(Ctx* c) {
+    const HKEY h = hk(arg(c, 0));
+    auto q = [&](HKEY k) {
+        if constexpr (sizeof(Ch) == 1)
+            return RegQueryValueExA(k, argp(c, 1), nullptr, argp<DWORD>(c, 3), argp<BYTE>(c, 4), argp<DWORD>(c, 5));
+        else
+            return RegQueryValueExW(k, argp<wchar_t>(c, 1), nullptr, argp<DWORD>(c, 3), argp<BYTE>(c, 4), argp<DWORD>(c, 5));
+    };
+    LONG r = q(h);
+    if (r == ERROR_FILE_NOT_FOUND)
+        if (HKEY f = regFallback(h)) r = q(f);
+    retStd(c, static_cast<uint32_t>(r), 6);
+}
+IMPORT(A, RegQueryValueExA) { regQuery<char>(c); }
+IMPORT(A, RegQueryValueExW) { regQuery<wchar_t>(c); }
+IMPORT(A, RegCloseKey) {
+    const HKEY h = hk(arg(c, 0));
+    HKEY f = nullptr;
+    {
+        std::lock_guard<std::mutex> l(g_regLock);
+        auto it = g_regFallback.find(h);
+        if (it != g_regFallback.end()) { f = it->second; g_regFallback.erase(it); }
+    }
+    if (f) RegCloseKey(f);
+    retStd(c, static_cast<uint32_t>(RegCloseKey(h)), 1);
+}
 FWD_STD(A, RegSetValueExW);
-FWD_STD(A, RegQueryValueExA);
 FWD_STD(A, RegSetValueExA);
-FWD_STD(A, RegCloseKey);
-FWD_STD(A, RegQueryValueExW);
 FWD_STD(A, RegDeleteValueW);
 
 // ============================================================================

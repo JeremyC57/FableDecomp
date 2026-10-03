@@ -200,6 +200,10 @@ void callHostProc(Ctx* c, uintptr_t data) {
 }
 
 LRESULT CALLBACK hostWndProcImpl(HWND h, UINT msg, WPARAM wp, LPARAM lp, bool wide) {
+    if (msg == WM_SYSKEYDOWN && wp == VK_RETURN && (lp & (1 << 29)) && !(lp & (1 << 30))) {  // Alt+Enter (not repeats)
+        displayToggleRequest();
+        return 0;
+    }
     uint32_t proc = guestProcFor(h);
     if (!proc && !t_pendingClassProc.empty()) proc = t_pendingClassProc.back();  // messages before the atom is queryable
     if (!proc) return wide ? DefWindowProcW(h, msg, wp, lp) : DefWindowProcA(h, msg, wp, lp);

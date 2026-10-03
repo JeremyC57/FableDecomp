@@ -6,6 +6,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
+#include <algorithm>
 #include <cmath>
 #include <map>
 #include <mutex>
@@ -212,16 +213,64 @@ template <class R, class... A> struct DynCall<R(A...)> {
 // ---------------------------------------------------------------------------
 // overrides referenced from com_vtables.inc
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Windowed / fullscreen. The game itself only does fullscreen; the host can run it in a
+// window (setting HKCU\Software\FableRecomp "Windowed", --windowed / --fullscreen, or
+// Alt+Enter, which takes effect through the game's own device-reset path).
+// ---------------------------------------------------------------------------
+bool g_windowed = false;
+bool g_resetPending = false;
+HWND g_deviceWindow = nullptr;
+constexpr const wchar_t* kSettingsKey = L"Software\\FableRecomp";
+
+bool g_windowStyled = false;  // the host changed the window for windowed mode
+
+// Present parameters for the current mode (before CreateDevice/Reset).
+void applyDisplayMode(D3DPRESENT_PARAMETERS& pp) {
+    if (g_windowed) {
+        pp.Windowed = TRUE;
+        pp.FullScreen_RefreshRateInHz = 0;
+        pp.BackBufferFormat = D3DFMT_UNKNOWN;  // the desktop format
+    }
+}
+
+// The window for the current mode (after CreateDevice/Reset succeeded: the game's
+// WM_ACTIVATE handler touches the device, so nothing here may activate the window earlier).
+void applyWindow(const D3DPRESENT_PARAMETERS& pp) {
+    HWND w = pp.hDeviceWindow ? pp.hDeviceWindow : g_deviceWindow;
+    if (!w) return;
+    if (g_windowed) {
+        const DWORD style = WS_OVERLAPPEDWINDOW & ~(WS_THICKFRAME | WS_MAXIMIZEBOX);
+        SetWindowLongW(w, GWL_STYLE, style | WS_VISIBLE);
+        RECT r{0, 0, static_cast<LONG>(pp.BackBufferWidth), static_cast<LONG>(pp.BackBufferHeight)};
+        AdjustWindowRect(&r, style, FALSE);
+        MONITORINFO mi{sizeof mi};
+        GetMonitorInfoW(MonitorFromWindow(w, MONITOR_DEFAULTTOPRIMARY), &mi);
+        const int ww = r.right - r.left, wh = r.bottom - r.top;
+        const int x = mi.rcWork.left + std::max(0, static_cast<int>((mi.rcWork.right - mi.rcWork.left - ww) / 2));
+        const int y = mi.rcWork.top + std::max(0, static_cast<int>((mi.rcWork.bottom - mi.rcWork.top - wh) / 2));
+        SetWindowPos(w, HWND_NOTOPMOST, x, y, ww, wh, SWP_FRAMECHANGED | SWP_NOACTIVATE);
+        g_windowStyled = true;
+    } else if (g_windowStyled) {
+        SetWindowLongW(w, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+        SetWindowPos(w, HWND_TOP, 0, 0, static_cast<int>(pp.BackBufferWidth), static_cast<int>(pp.BackBufferHeight),
+                     SWP_FRAMECHANGED | SWP_NOACTIVATE);
+        g_windowStyled = false;
+    }
+}
+
 void ovr_IDirect3D9_CreateDevice(Ctx* c) {
     auto* self = unwrap<IDirect3D9>(arg(c, 0));
     D3DPRESENT_PARAMETERS pp = ppIn(arg(c, 5));
     const DWORD flags = arg(c, 4);
+    g_deviceWindow = pp.hDeviceWindow ? pp.hDeviceWindow : static_cast<HWND>(hh(arg(c, 3)));
+    applyDisplayMode(pp);
     IDirect3DDevice9* dev = nullptr;
     const HRESULT hr = self->CreateDevice(arg(c, 1), static_cast<D3DDEVTYPE>(arg(c, 2)), static_cast<HWND>(hh(arg(c, 3))), flags, &pp, &dev);
     logPP("CreateDevice", pp, hr);
     ppOut(arg(c, 5), pp);
     if (arg(c, 6)) wr32(arg(c, 6), SUCCEEDED(hr) ? wrap(dev) : 0);
-    if (SUCCEEDED(hr)) applyFpuMode(c, flags);
+    if (SUCCEEDED(hr)) applyFpuMode(c, flags), applyWindow(pp);
     retStd(c, static_cast<uint32_t>(hr), 7);
 }
 // Present(this, srcRect, dstRect, hwnd, dirtyRegion); also logs the frame rate every 5 s.
@@ -241,7 +290,8 @@ void ovr_IDirect3DDevice9_Present(Ctx* c) {
 
 // Logs device-lost transitions (the game stops drawing while the device is lost).
 void ovr_IDirect3DDevice9_TestCooperativeLevel(Ctx* c) {
-    const HRESULT hr = unwrap<IDirect3DDevice9>(arg(c, 0))->TestCooperativeLevel();
+    HRESULT hr = unwrap<IDirect3DDevice9>(arg(c, 0))->TestCooperativeLevel();
+    if (hr == D3D_OK && g_resetPending) hr = D3DERR_DEVICENOTRESET;  // let the game reset into the new display mode
     static HRESULT last = D3D_OK;
     if (hr != last) {
         log("TestCooperativeLevel -> 0x%08lX%s", static_cast<unsigned long>(hr),
@@ -254,7 +304,9 @@ void ovr_IDirect3DDevice9_TestCooperativeLevel(Ctx* c) {
 void ovr_IDirect3DDevice9_Reset(Ctx* c) {
     auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
     D3DPRESENT_PARAMETERS pp = ppIn(arg(c, 1));
+    applyDisplayMode(pp);
     const HRESULT hr = self->Reset(&pp);
+    if (SUCCEEDED(hr)) g_resetPending = false, applyWindow(pp);
     logPP("Reset", pp, hr);
     ppOut(arg(c, 1), pp);
     retStd(c, static_cast<uint32_t>(hr), 2);
@@ -461,3 +513,26 @@ IMPORT("d3dx9_25.dll", D3DXMatrixInverse) {
 }
 
 }  // namespace
+
+namespace host {
+void displayInit() {
+    DWORD v = 0, size = sizeof v;
+    if (RegGetValueW(HKEY_CURRENT_USER, kSettingsKey, L"Windowed", RRF_RT_REG_DWORD, nullptr, &v, &size) == ERROR_SUCCESS) g_windowed = v != 0;
+    int n = 0;
+    LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &n);
+    for (int i = 1; i < n; ++i) {
+        if (_wcsicmp(argv[i], L"--windowed") == 0) g_windowed = true;
+        if (_wcsicmp(argv[i], L"--fullscreen") == 0) g_windowed = false;
+    }
+    LocalFree(argv);
+    log("display: %s (Alt+Enter toggles)", g_windowed ? "windowed" : "fullscreen");
+}
+void displayToggleRequest() {
+    g_windowed = !g_windowed;
+    g_resetPending = true;
+    const DWORD v = g_windowed;
+    RegSetKeyValueW(HKEY_CURRENT_USER, kSettingsKey, L"Windowed", REG_DWORD, &v, sizeof v);
+    log("display: switching to %s", g_windowed ? "windowed" : "fullscreen");
+}
+}  // namespace host
+

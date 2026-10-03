@@ -3,15 +3,29 @@
 // run enumeration callbacks in guest code.
 #define DIRECTINPUT_VERSION 0x0800
 #include "com.hpp"
+#include "controller.hpp"
 
 #include <dinput.h>
 
+#include <mutex>
+#include <unordered_map>
 #include <vector>
 
 using namespace host;
 using host::com::unwrap;
 
 namespace {
+
+// Which proxied devices are the keyboard and the mouse (from their data formats), so
+// controller input can be added to them.
+enum class Kind { Other, Keyboard, Mouse };
+std::mutex g_kindLock;
+std::unordered_map<IUnknown*, Kind> g_kind;
+Kind kindOf(void* dev) {
+    std::lock_guard<std::mutex> l(g_kindLock);
+    auto it = g_kind.find(static_cast<IUnknown*>(dev));
+    return it == g_kind.end() ? Kind::Other : it->second;
+}
 
 template <class Dev> void setDataFormat(Ctx* c) {
     auto* self = unwrap<Dev>(arg(c, 0));
@@ -29,6 +43,11 @@ template <class Dev> void setDataFormat(Ctx* c) {
     }
     DIDATAFORMAT f{sizeof(DIDATAFORMAT), sizeof(DIOBJECTDATAFORMAT), rd32(g + 8), rd32(g + 12), n, o.data()};
     const HRESULT hr = self->SetDataFormat(&f);
+    {
+        std::lock_guard<std::mutex> l(g_kindLock);
+        const uint32_t size = rd32(g + 12);
+        g_kind[reinterpret_cast<IUnknown*>(self)] = size == 256 ? Kind::Keyboard : (size == 16 || size == 20) && n <= 11 ? Kind::Mouse : Kind::Other;
+    }
     HLOG(1, "IDirectInputDevice8::SetDataFormat(%u objects, %u bytes) -> 0x%08lX", n, rd32(g + 12), static_cast<unsigned long>(hr));
     retStd(c, static_cast<uint32_t>(hr), 2);
 }
@@ -38,7 +57,17 @@ template <class Dev> void getDeviceData(Ctx* c) {
     const uint32_t cb = arg(c, 1), out = arg(c, 2), inout = arg(c, 3), flags = arg(c, 4);
     DWORD n = rd32(inout);
     std::vector<DIDEVICEOBJECTDATA> buf(out ? n : 0);
-    const HRESULT hr = self->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), out ? buf.data() : nullptr, &n, flags);
+    const DWORD capacity = n;
+    HRESULT hr = self->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), out ? buf.data() : nullptr, &n, flags);
+    if (SUCCEEDED(hr) && out && !(flags & DIGDD_PEEK)) {  // add controller input
+        buf.resize(n);
+        const Kind k = kindOf(self);
+        if (k == Kind::Keyboard) pad::injectKeyboardData(buf, capacity);
+        else if (k == Kind::Mouse) pad::injectMouseData(buf, capacity);
+        n = static_cast<DWORD>(buf.size());
+    } else if (SUCCEEDED(hr) && !out && kindOf(self) != Kind::Other) {
+        pad::flush();
+    }
     if (SUCCEEDED(hr) && out) {
         for (DWORD i = 0; i < n; ++i) {
             const uint32_t e = out + cb * i;  // guest stride (20 for DIDEVICEOBJECTDATA, 16 for the DX3 variant)
@@ -95,8 +124,23 @@ template <class Dev, class Inst> void enumObjects(Ctx* c) {
     retStd(c, static_cast<uint32_t>(hr), 4);
 }
 
+template <class Dev> void getDeviceState(Ctx* c) {
+    auto* self = unwrap<Dev>(arg(c, 0));
+    const DWORD size = arg(c, 1);
+    uint8_t* data = arg(c, 2) ? gp<uint8_t>(arg(c, 2)) : nullptr;
+    const HRESULT hr = self->GetDeviceState(size, data);
+    if (SUCCEEDED(hr) && data) {
+        const Kind k = kindOf(self);
+        if (k == Kind::Keyboard) pad::injectKeyboardState(data, size);
+        else if (k == Kind::Mouse) pad::injectMouseState(data, size);
+    }
+    retStd(c, static_cast<uint32_t>(hr), 3);
+}
+
 }  // namespace
 
+void ovr_IDirectInputDevice8A_GetDeviceState(Ctx* c) { getDeviceState<IDirectInputDevice8A>(c); }
+void ovr_IDirectInputDevice8W_GetDeviceState(Ctx* c) { getDeviceState<IDirectInputDevice8W>(c); }
 void ovr_IDirectInput8A_EnumDevices(Ctx* c) { enumDevices<IDirectInput8A, DIDEVICEINSTANCEA>(c); }
 void ovr_IDirectInput8W_EnumDevices(Ctx* c) { enumDevices<IDirectInput8W, DIDEVICEINSTANCEW>(c); }
 void ovr_IDirectInputDevice8A_SetDataFormat(Ctx* c) { setDataFormat<IDirectInputDevice8A>(c); }

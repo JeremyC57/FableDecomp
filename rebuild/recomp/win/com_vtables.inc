@@ -28,9 +28,11 @@ void ovr_IDirectInput8A_EnumDevices(Ctx* c);
 void ovr_IDirectInput8W_EnumDevices(Ctx* c);
 void ovr_IDirectInputDevice8A_EnumObjects(Ctx* c);
 void ovr_IDirectInputDevice8A_GetDeviceData(Ctx* c);
+void ovr_IDirectInputDevice8A_GetDeviceState(Ctx* c);
 void ovr_IDirectInputDevice8A_SetDataFormat(Ctx* c);
 void ovr_IDirectInputDevice8W_EnumObjects(Ctx* c);
 void ovr_IDirectInputDevice8W_GetDeviceData(Ctx* c);
+void ovr_IDirectInputDevice8W_GetDeviceState(Ctx* c);
 void ovr_IDirectInputDevice8W_SetDataFormat(Ctx* c);
 void ovr_IDirectSound8_CreateSoundBuffer(Ctx* c);
 void ovr_IDirectSound_CreateSoundBuffer(Ctx* c);
@@ -493,7 +495,7 @@ template <> host::com::Class& host::com::classOf<IDirectInputDevice8A>() {
         {"IDirectInputDevice8A::SetProperty", &host::com::comThunk<&IDirectInputDevice8A::SetProperty>},
         {"IDirectInputDevice8A::Acquire", &host::com::comThunk<&IDirectInputDevice8A::Acquire>},
         {"IDirectInputDevice8A::Unacquire", &host::com::comThunk<&IDirectInputDevice8A::Unacquire>},
-        {"IDirectInputDevice8A::GetDeviceState", &host::com::comThunk<&IDirectInputDevice8A::GetDeviceState>},
+        {"IDirectInputDevice8A::GetDeviceState", ovr_IDirectInputDevice8A_GetDeviceState},
         {"IDirectInputDevice8A::GetDeviceData", ovr_IDirectInputDevice8A_GetDeviceData},
         {"IDirectInputDevice8A::SetDataFormat", ovr_IDirectInputDevice8A_SetDataFormat},
         {"IDirectInputDevice8A::SetEventNotification", &host::com::comThunk<&IDirectInputDevice8A::SetEventNotification>},
@@ -530,7 +532,7 @@ template <> host::com::Class& host::com::classOf<IDirectInputDevice8W>() {
         {"IDirectInputDevice8W::SetProperty", &host::com::comThunk<&IDirectInputDevice8W::SetProperty>},
         {"IDirectInputDevice8W::Acquire", &host::com::comThunk<&IDirectInputDevice8W::Acquire>},
         {"IDirectInputDevice8W::Unacquire", &host::com::comThunk<&IDirectInputDevice8W::Unacquire>},
-        {"IDirectInputDevice8W::GetDeviceState", &host::com::comThunk<&IDirectInputDevice8W::GetDeviceState>},
+        {"IDirectInputDevice8W::GetDeviceState", ovr_IDirectInputDevice8W_GetDeviceState},
         {"IDirectInputDevice8W::GetDeviceData", ovr_IDirectInputDevice8W_GetDeviceData},
         {"IDirectInputDevice8W::SetDataFormat", ovr_IDirectInputDevice8W_SetDataFormat},
         {"IDirectInputDevice8W::SetEventNotification", &host::com::comThunk<&IDirectInputDevice8W::SetEventNotification>},
