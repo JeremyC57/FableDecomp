@@ -1177,6 +1177,7 @@ int main(int argc, char** argv) {
     bool noRefs = false;
     std::string prefix = "recomp";
     std::map<uint32_t, std::string> hooks;  // guest functions replaced by host code
+    std::map<uint32_t, std::string> wraps;  // guest functions routed through host code, original kept
     for (int i = 4; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--only" && i + 1 < argc) {
@@ -1189,6 +1190,10 @@ int main(int argc, char** argv) {
             const std::string h = argv[++i];
             const auto eq = h.find('=');
             if (eq != std::string::npos) hooks[static_cast<uint32_t>(std::stoul(h.substr(0, eq), nullptr, 16))] = h.substr(eq + 1);
+        } else if (a == "--wrap" && i + 1 < argc) {  // --wrap 0x55CB10=host_fe_event: original stays as F_0055CB10_orig
+            const std::string h = argv[++i];
+            const auto eq = h.find('=');
+            if (eq != std::string::npos) wraps[static_cast<uint32_t>(std::stoul(h.substr(0, eq), nullptr, 16))] = h.substr(eq + 1);
         } else if (a == "--prefix" && i + 1 < argc) {
             prefix = argv[++i];
         } else if (a == "--no-refs") {
@@ -1252,6 +1257,17 @@ int main(int argc, char** argv) {
             code[a] = "void " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
             std::cerr << "hooked " << fname(a) << " -> " << name << "\n";
         }
+    // Wrapped functions: the lifted body is renamed <name>_orig (callable from the host) and
+    // the entry calls the host implementation.
+    for (const auto& [a, name] : wraps)
+        if (code.count(a)) {
+            std::string body = code[a];
+            const std::string sig = "void " + fname(a) + "(Ctx* c) {";
+            if (const auto at = body.find(sig); at != std::string::npos)
+                body.replace(at, sig.size(), "void " + fname(a) + "_orig(Ctx* c) {");
+            code[a] = body + "void " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
+            std::cerr << "wrapped " << fname(a) << " -> " << name << "\n";
+        }
 
     std::filesystem::create_directories(outDir);
     const std::string tableSym = prefix == "recomp" ? "recomp_table" : "recomp_table_" + prefix;
@@ -1262,6 +1278,7 @@ int main(int argc, char** argv) {
           << "#define RELOAD (eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx, esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi)\n";
         for (uint32_t a : selected) h << "void " << fname(a) << "(Ctx* c);\n";
         for (const auto& hk : hooks) h << "void " << hk.second << "(Ctx* c);\n";
+        for (const auto& w : wraps) h << "void " << w.second << "(Ctx* c);\nvoid " << fname(w.first) << "_orig(Ctx* c);\n";
         h << "typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;\n"
           << "extern const RecompEntry " << tableSym << "[];\nextern const uint32_t " << tableSym << "_size;\n";
     }

@@ -543,12 +543,6 @@ extern "C" void host_joystick_update(Ctx* c) {
         ldz = g.cfg.leftDeadzone, rdz = g.cfg.rightDeadzone, swap = g.cfg.swapBumpers;
         if (native) ok = readPad(st);
     }
-    {
-        static int lastGui = -2;
-        const uint32_t gui = rd32(0x13B8790);
-        const int now = gui ? rd8(gui + 0x2BE) : -1;
-        if (now != lastGui) lastGui = now, host::log("controller: gui object 0x%08X live gui %d", gui, now);
-    }
     if (native) {
         const XINPUT_GAMEPAD& p = st.Gamepad;
         float lx = 0, ly = 0, rx = 0, ry = 0;
@@ -594,6 +588,7 @@ extern "C" void host_joystick_update(Ctx* c) {
         }
         guestCallThis(kUpdateMaintainedPositions, self, {});
         guestCallThis(kAddMaintainedEvents, self, {});
+        if (ok) host::menu::poll(ev + 0x34);
     }
     c->esp = savedEsp;
     retCdecl(c, 1);

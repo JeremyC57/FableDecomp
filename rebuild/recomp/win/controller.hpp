@@ -19,3 +19,8 @@ void flush();
 void touchMotion(int dx, int dy);
 void touchButton(int button, bool down);
 }  // namespace host::pad
+
+namespace host::menu {
+// Pad focus for the menus (menu_nav.cpp), once per input update while a pad is connected.
+void poll(uint32_t scratch);
+}  // namespace host::menu
