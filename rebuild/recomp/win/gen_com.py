@@ -34,12 +34,6 @@ OVERRIDES = {
     "IDirect3DDevice9::Reset", "IDirect3DDevice9::Present", "IDirect3DDevice9::TestCooperativeLevel",
     "IDirect3DDevice9::CreateAdditionalSwapChain",
     "IDirect3DDevice9::GetCreationParameters",
-    # UI scaling (ui_scale.cpp): pixel-space state on the back buffer is scaled up
-    "IDirect3DDevice9::SetRenderTarget", "IDirect3DDevice9::SetViewport", "IDirect3DDevice9::GetViewport",
-    "IDirect3DDevice9::SetScissorRect", "IDirect3DDevice9::GetScissorRect", "IDirect3DDevice9::Clear",
-    "IDirect3DDevice9::StretchRect", "IDirect3DDevice9::SetFVF", "IDirect3DDevice9::CreateVertexDeclaration",
-    "IDirect3DDevice9::SetVertexDeclaration", "IDirect3DDevice9::DrawPrimitive", "IDirect3DDevice9::DrawIndexedPrimitive",
-    "IDirect3DDevice9::DrawPrimitiveUP", "IDirect3DDevice9::DrawIndexedPrimitiveUP",
     "IDirect3DSwapChain9::GetPresentParameters",
     "IDirect3DSurface9::LockRect", "IDirect3DSurface9::UnlockRect", "IDirect3DSurface9::GetContainer",
     "IDirect3DVolume9::LockBox", "IDirect3DVolume9::UnlockBox", "IDirect3DVolume9::GetContainer",

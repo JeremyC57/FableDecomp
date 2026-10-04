@@ -35,7 +35,6 @@ All libraries are linked for 16 KiB pages. The APK is signed with a local key
 - **Launcher** (`LauncherActivity`) has these settings:
   - **Game folder.** Typed in, or chosen with the system folder picker. A picked folder
     must map to a file path.
-  - **Interface scale.** 1-3×, passed as `--ui-scale=N`.
   - **On-screen controls.** Whether they start shown.
   - **Vulkan driver.** The system driver, or a custom driver installed from a `.zip`.
   - On Android 11+, reading the game folder in place needs "All files access". The launcher

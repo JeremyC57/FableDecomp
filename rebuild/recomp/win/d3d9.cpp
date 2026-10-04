@@ -14,9 +14,7 @@
 #include <algorithm>
 #include <cmath>
 #include <map>
-#include <bit>
 #include <mutex>
-#include <vector>
 
 using namespace host;
 using host::com::unwrap;
@@ -325,10 +323,6 @@ void applyWindow(const D3DPRESENT_PARAMETERS& pp) {
     }
 }
 
-namespace {
-void trackBackBuffer(IDirect3DDevice9* dev, const D3DPRESENT_PARAMETERS& pp);
-}
-
 // Display modes. On POSIX the list is synthesised (common sizes up to the display's), as
 // there are no mode switches; on Windows it is the adapter's, with refresh 0 shown as 60.
 #ifdef FABLE_POSIX
@@ -397,7 +391,7 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
 #endif
     ppOut(arg(c, 5), pp);
     if (arg(c, 6)) wr32(arg(c, 6), SUCCEEDED(hr) ? wrap(dev) : 0);
-    if (SUCCEEDED(hr)) applyFpuMode(c, flags), trackBackBuffer(dev, pp), applyWindow(pp);
+    if (SUCCEEDED(hr)) applyFpuMode(c, flags), applyWindow(pp);
     retStd(c, static_cast<uint32_t>(hr), 7);
 }
 // Present(this, srcRect, dstRect, hwnd, dirtyRegion); also logs the frame rate every 5 s.
@@ -435,7 +429,7 @@ void ovr_IDirect3DDevice9_Reset(Ctx* c) {
     D3DPRESENT_PARAMETERS np = nativePP(pp);
     const HRESULT hr = self->Reset(&np);
     takeResults(pp, np);
-    if (SUCCEEDED(hr)) g_resetPending = false, trackBackBuffer(self, pp), applyWindow(pp);
+    if (SUCCEEDED(hr)) g_resetPending = false, applyWindow(pp);
     logPP("Reset", pp, hr);
     ppOut(arg(c, 1), pp);
     retStd(c, static_cast<uint32_t>(hr), 2);
@@ -584,212 +578,6 @@ void ovr_IDirect3DVertexBuffer9_Lock(Ctx* c) { bufferLock<IDirect3DVertexBuffer9
 void ovr_IDirect3DVertexBuffer9_Unlock(Ctx* c) { bufferUnlock<IDirect3DVertexBuffer9>(c); }
 void ovr_IDirect3DIndexBuffer9_Lock(Ctx* c) { bufferLock<IDirect3DIndexBuffer9, D3DINDEXBUFFER_DESC>(c); }
 void ovr_IDirect3DIndexBuffer9_Unlock(Ctx* c) { bufferUnlock<IDirect3DIndexBuffer9>(c); }
-
-// ---------------------------------------------------------------------------
-// UI scaling (ui_scale.cpp). With a UI scale s the game is told the screen is
-// (width/s x height/s), so its 2D layout, fonts and sprites cover a larger part of the
-// screen. Everything it sets in pixels on the back buffer (viewports, scissor and clear
-// rectangles, StretchRect rectangles, pre-transformed vertices) is scaled up by s here, so
-// the picture fills the real back buffer and the 3D scene still renders at full resolution.
-// The game reads back its own (unscaled) viewport and scissor rectangle.
-// ---------------------------------------------------------------------------
-namespace {
-
-IDirect3DSurface9* g_backBuffer = nullptr;  // not referenced; compared only
-UINT g_bbWidth = 0, g_bbHeight = 0;
-bool g_onBackBuffer = true;
-D3DVIEWPORT9 g_gameViewport{};
-RECT g_gameScissor{};
-bool g_rhw = false;  // current vertex format is pre-transformed (screen pixels)
-std::map<IUnknown*, bool> g_rhwDecls;
-std::mutex g_declLock;
-
-bool uiScaling() { return g_onBackBuffer && uiScale() != 1.0; }
-LONG upX(double v) { return std::clamp<LONG>(std::lround(v * uiScale()), 0, static_cast<LONG>(g_bbWidth)); }
-LONG upY(double v) { return std::clamp<LONG>(std::lround(v * uiScale()), 0, static_cast<LONG>(g_bbHeight)); }
-RECT upRect(const RECT& r) { return {upX(r.left), upY(r.top), upX(r.right), upY(r.bottom)}; }
-D3DVIEWPORT9 fullViewport(UINT w, UINT h) { return {0, 0, w, h, 0.0f, 1.0f}; }
-
-void trackBackBuffer(IDirect3DDevice9* dev, const D3DPRESENT_PARAMETERS& pp) {
-    IDirect3DSurface9* s = nullptr;
-    g_backBuffer = SUCCEEDED(dev->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &s)) ? s : nullptr;
-    if (s) s->Release();
-    g_bbWidth = pp.BackBufferWidth, g_bbHeight = pp.BackBufferHeight;
-    g_onBackBuffer = true;
-    g_gameViewport = fullViewport(uiSize(g_bbWidth), uiSize(g_bbHeight));
-    g_gameScissor = {0, 0, static_cast<LONG>(g_gameViewport.Width), static_cast<LONG>(g_gameViewport.Height)};
-    if (uiScale() != 1.0)
-        log("UI scale: game sees %lux%lu, back buffer %ux%u", g_gameViewport.Width, g_gameViewport.Height, g_bbWidth, g_bbHeight);
-}
-
-// Pre-transformed vertices: scale x and y (the first two floats) of each vertex.
-std::vector<uint8_t> scaledVertices(const uint8_t* src, uint32_t count, uint32_t stride) {
-    std::vector<uint8_t> v(src, src + static_cast<size_t>(count) * stride);
-    const float s = static_cast<float>(uiScale());
-    for (uint32_t i = 0; i < count; ++i) {
-        float* p = reinterpret_cast<float*>(v.data() + static_cast<size_t>(i) * stride);
-        p[0] = (p[0] + 0.5f) * s - 0.5f;
-        p[1] = (p[1] + 0.5f) * s - 0.5f;
-    }
-    return v;
-}
-uint32_t vertexCount(D3DPRIMITIVETYPE t, uint32_t prims) {
-    switch (t) {
-        case D3DPT_POINTLIST: return prims;
-        case D3DPT_LINELIST: return prims * 2;
-        case D3DPT_LINESTRIP: return prims + 1;
-        case D3DPT_TRIANGLELIST: return prims * 3;
-        default: return prims + 2;  // strips and fans
-    }
-}
-void rhwFromBuffer(const char* what) {
-    static bool once = false;
-    if (!once) once = true, log("UI scale: %s draws pre-transformed vertices from a vertex buffer (not scaled)", what);
-}
-
-}  // namespace
-
-void ovr_IDirect3DDevice9_SetRenderTarget(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    auto* surf = unwrap<IDirect3DSurface9>(arg(c, 2));
-    const HRESULT hr = self->SetRenderTarget(arg(c, 1), surf);
-    if (SUCCEEDED(hr) && arg(c, 1) == 0 && surf) {
-        g_onBackBuffer = surf == g_backBuffer;
-        D3DSURFACE_DESC d{};
-        surf->GetDesc(&d);
-        g_gameViewport = g_onBackBuffer ? fullViewport(uiSize(d.Width), uiSize(d.Height)) : fullViewport(d.Width, d.Height);
-        g_gameScissor = {0, 0, static_cast<LONG>(g_gameViewport.Width), static_cast<LONG>(g_gameViewport.Height)};
-    }
-    retStd(c, static_cast<uint32_t>(hr), 3);
-}
-void ovr_IDirect3DDevice9_SetViewport(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    D3DVIEWPORT9 v = *gp<D3DVIEWPORT9>(arg(c, 1));
-    g_gameViewport = v;
-    if (uiScaling()) {
-        const LONG x0 = upX(v.X), y0 = upY(v.Y), x1 = upX(static_cast<double>(v.X) + v.Width), y1 = upY(static_cast<double>(v.Y) + v.Height);
-        v.X = static_cast<DWORD>(x0), v.Y = static_cast<DWORD>(y0);
-        v.Width = static_cast<DWORD>(std::max<LONG>(1, x1 - x0)), v.Height = static_cast<DWORD>(std::max<LONG>(1, y1 - y0));
-    }
-    retStd(c, static_cast<uint32_t>(self->SetViewport(&v)), 2);
-}
-void ovr_IDirect3DDevice9_GetViewport(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    if (uiScale() == 1.0) {
-        D3DVIEWPORT9 v{};
-        const HRESULT hr = self->GetViewport(&v);
-        *gp<D3DVIEWPORT9>(arg(c, 1)) = v;
-        retStd(c, static_cast<uint32_t>(hr), 2);
-        return;
-    }
-    *gp<D3DVIEWPORT9>(arg(c, 1)) = g_gameViewport;
-    retStd(c, D3D_OK, 2);
-}
-void ovr_IDirect3DDevice9_SetScissorRect(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    RECT r = *gp<RECT>(arg(c, 1));
-    g_gameScissor = r;
-    if (uiScaling()) r = upRect(r);
-    retStd(c, static_cast<uint32_t>(self->SetScissorRect(&r)), 2);
-}
-void ovr_IDirect3DDevice9_GetScissorRect(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    if (uiScale() == 1.0) {
-        RECT r{};
-        const HRESULT hr = self->GetScissorRect(&r);
-        *gp<RECT>(arg(c, 1)) = r;
-        retStd(c, static_cast<uint32_t>(hr), 2);
-        return;
-    }
-    *gp<RECT>(arg(c, 1)) = g_gameScissor;
-    retStd(c, D3D_OK, 2);
-}
-// Clear(this, count, rects, flags, color, z, stencil)
-void ovr_IDirect3DDevice9_Clear(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    const DWORD count = arg(c, 1);
-    const D3DRECT* rects = count && arg(c, 2) ? gp<D3DRECT>(arg(c, 2)) : nullptr;
-    std::vector<D3DRECT> scaled;
-    if (rects && uiScaling()) {
-        for (DWORD i = 0; i < count; ++i)
-            scaled.push_back({upX(rects[i].x1), upY(rects[i].y1), upX(rects[i].x2), upY(rects[i].y2)});
-        rects = scaled.data();
-    }
-    const HRESULT hr = self->Clear(rects ? count : 0, rects, arg(c, 3), arg(c, 4), std::bit_cast<float>(arg(c, 5)), arg(c, 6));
-    retStd(c, static_cast<uint32_t>(hr), 7);
-}
-// StretchRect(this, src, srcRect, dst, dstRect, filter)
-void ovr_IDirect3DDevice9_StretchRect(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    auto* src = unwrap<IDirect3DSurface9>(arg(c, 1));
-    auto* dst = unwrap<IDirect3DSurface9>(arg(c, 3));
-    RECT sr{}, dr{};
-    const RECT* srp = guestRect(arg(c, 2));
-    const RECT* drp = guestRect(arg(c, 4));
-    if (uiScale() != 1.0) {
-        if (srp && src == g_backBuffer) sr = upRect(*srp), srp = &sr;
-        if (drp && dst == g_backBuffer) dr = upRect(*drp), drp = &dr;
-    }
-    retStd(c, static_cast<uint32_t>(self->StretchRect(src, srp, dst, drp, static_cast<D3DTEXTUREFILTERTYPE>(arg(c, 5)))), 6);
-}
-void ovr_IDirect3DDevice9_SetFVF(Ctx* c) {
-    g_rhw = (arg(c, 1) & D3DFVF_POSITION_MASK) == D3DFVF_XYZRHW;
-    retStd(c, static_cast<uint32_t>(unwrap<IDirect3DDevice9>(arg(c, 0))->SetFVF(arg(c, 1))), 2);
-}
-void ovr_IDirect3DDevice9_CreateVertexDeclaration(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    const auto* el = gp<D3DVERTEXELEMENT9>(arg(c, 1));
-    bool rhw = false;
-    for (const D3DVERTEXELEMENT9* e = el; e->Stream != 0xFF; ++e) rhw |= e->Usage == D3DDECLUSAGE_POSITIONT;
-    IDirect3DVertexDeclaration9* decl = nullptr;
-    const HRESULT hr = self->CreateVertexDeclaration(el, &decl);
-    if (SUCCEEDED(hr)) {
-        std::lock_guard<std::mutex> l(g_declLock);
-        g_rhwDecls[decl] = rhw;
-    }
-    if (arg(c, 2)) wr32(arg(c, 2), SUCCEEDED(hr) ? wrap(decl) : 0);
-    retStd(c, static_cast<uint32_t>(hr), 3);
-}
-void ovr_IDirect3DDevice9_SetVertexDeclaration(Ctx* c) {
-    auto* decl = unwrap<IDirect3DVertexDeclaration9>(arg(c, 1));
-    {
-        std::lock_guard<std::mutex> l(g_declLock);
-        const auto it = g_rhwDecls.find(decl);
-        g_rhw = it != g_rhwDecls.end() && it->second;
-    }
-    retStd(c, static_cast<uint32_t>(unwrap<IDirect3DDevice9>(arg(c, 0))->SetVertexDeclaration(decl)), 2);
-}
-void ovr_IDirect3DDevice9_DrawPrimitive(Ctx* c) {
-    if (g_rhw && uiScaling()) rhwFromBuffer("DrawPrimitive");
-    retStd(c, static_cast<uint32_t>(unwrap<IDirect3DDevice9>(arg(c, 0))->DrawPrimitive(static_cast<D3DPRIMITIVETYPE>(arg(c, 1)), arg(c, 2), arg(c, 3))), 4);
-}
-void ovr_IDirect3DDevice9_DrawIndexedPrimitive(Ctx* c) {
-    if (g_rhw && uiScaling()) rhwFromBuffer("DrawIndexedPrimitive");
-    const HRESULT hr = unwrap<IDirect3DDevice9>(arg(c, 0))->DrawIndexedPrimitive(
-        static_cast<D3DPRIMITIVETYPE>(arg(c, 1)), static_cast<INT>(arg(c, 2)), arg(c, 3), arg(c, 4), arg(c, 5), arg(c, 6));
-    retStd(c, static_cast<uint32_t>(hr), 7);
-}
-// DrawPrimitiveUP(this, type, primCount, data, stride)
-void ovr_IDirect3DDevice9_DrawPrimitiveUP(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    const auto type = static_cast<D3DPRIMITIVETYPE>(arg(c, 1));
-    const uint32_t prims = arg(c, 2), stride = arg(c, 4);
-    const void* data = gp(arg(c, 3));
-    std::vector<uint8_t> scaled;
-    if (g_rhw && uiScaling()) scaled = scaledVertices(static_cast<const uint8_t*>(data), vertexCount(type, prims), stride), data = scaled.data();
-    retStd(c, static_cast<uint32_t>(self->DrawPrimitiveUP(type, prims, data, stride)), 5);
-}
-// DrawIndexedPrimitiveUP(this, type, minIndex, numVertices, primCount, indices, indexFormat, vertices, stride)
-void ovr_IDirect3DDevice9_DrawIndexedPrimitiveUP(Ctx* c) {
-    auto* self = unwrap<IDirect3DDevice9>(arg(c, 0));
-    const auto type = static_cast<D3DPRIMITIVETYPE>(arg(c, 1));
-    const uint32_t minIndex = arg(c, 2), numVerts = arg(c, 3), prims = arg(c, 4), stride = arg(c, 8);
-    const void* verts = gp(arg(c, 7));
-    std::vector<uint8_t> scaled;
-    if (g_rhw && uiScaling()) scaled = scaledVertices(static_cast<const uint8_t*>(verts), minIndex + numVerts, stride), verts = scaled.data();
-    const HRESULT hr = self->DrawIndexedPrimitiveUP(type, minIndex, numVerts, prims, gp(arg(c, 5)), static_cast<D3DFORMAT>(arg(c, 6)), verts, stride);
-    retStd(c, static_cast<uint32_t>(hr), 9);
-}
 
 namespace {
 

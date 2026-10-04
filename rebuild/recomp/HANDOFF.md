@@ -48,12 +48,6 @@ user's original game folder; no retail bytes or generated code are in git.
   - **Windowed mode** comes from the host (the game has none). It is set by
     `HKCU\Software\FableRecomp\Windowed`, `--windowed`, `--fullscreen` or Alt+Enter.
     Alt+Enter takes effect through the game's own device-reset path.
-  - **UI scale** (`ui_scale.cpp`, `--ui-scale=N` or `HKCU\Software\FableRecomp\UIScale`,
-    100-300 %). The game's 2D layer is pixel-sized, so the HUD is tiny at 1080p and up.
-    The lifter hooks the render-target-size getter (0x9BEDC0) so the game sees
-    width/s x height/s. `d3d9.cpp` scales back-buffer viewports, scissor/clear/StretchRect
-    rectangles and pre-transformed UP vertices by s, so 3D still renders at full
-    resolution. Only the new-profile default-resolution code sees the real size.
   - **Controllers** are supported through XInput (`controller.cpp`): buttons and sticks
     become the game's DirectInput keyboard and mouse input. The mapping is in
     `<game>\FableRecomp_controller.ini`, which defaults to an Xbox-like layout.
@@ -102,7 +96,6 @@ xwd -root -silent | convert xwd:- shot.png      # screenshot
 | `dsound.cpp` | DirectSound: CreateSoundBuffer (DSBUFFERDESC), Lock/Unlock through guest staging, SetNotificationPositions; `GetDeviceID`; `DllGetClassObject(CLSID_DirectSoundPrivate)` device enumeration |
 | `video.cpp` | Host-implemented DirectShow filter graph for the movies: Media Foundation decode, waveOut audio, frames fed to the game's own `CBaseVideoRenderer` through its x86 interfaces |
 | `coroutine.cpp` | `host_coswitch`: the game's stack-switching coroutine routine (0x9D8650, hooked by the lifter) run on host fibers |
-| `ui_scale.cpp` | UI scale: `host_rtdims` (0x9BEDC0, hooked by the lifter) reports the screen size divided by the scale; the D3D side is in `d3d9.cpp` |
 | `controller.cpp/.hpp` | XInput controller -> synthetic DirectInput keyboard/mouse events and state; mapping file `FableRecomp_controller.ini` |
 | `eh.cpp` | MSVC C++ exceptions: `_CxxThrowException` walks the guest fs:[0] chain, matches catch types, runs unwind and catch funclets, and resumes through the lifter's landing pads (`recomp_resume_at`) |
 | `gamedlls.cpp` | Stand-ins for 32-bit game-folder DLLs (`eula.dll!EBUEula` returns accepted) |
@@ -115,7 +108,7 @@ use llvm-mingw directly, or clang-cl after small tweaks.
 
 ```sh
 # Lifter (needs Zydis): build rebuild/recomp, then
-fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch --hook 0x9BEDC0=host_rtdims   # coroutine switch -> host fibers; UI scale
+fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch   # coroutine switch -> host fibers
 fable_recomp ConfigDetect.dll - gen_cfg/ --prefix cfgdetect
 python3 rebuild/recomp/win/gen_com.py <llvm-mingw>/generic-w64-mingw32/include rebuild/recomp/win/com_vtables.inc
 cmake -S rebuild/recomp/win -B build/win -G Ninja \

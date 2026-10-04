@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -31,17 +30,15 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.List;
-import java.util.Locale;
 
-/** Settings screen: game folder, UI scale, touch controls and the Vulkan driver; then starts the game. */
+/** Settings screen: game folder, touch controls and the Vulkan driver; then starts the game. */
 public class LauncherActivity extends Activity {
     static final String PREFS = "launcher";
     private static final int PICK_FOLDER = 1, PICK_DRIVER = 2, PERMISSION = 3;
 
     private SharedPreferences prefs;
     private EditText folder;
-    private TextView scaleLabel, status;
-    private SeekBar scale;
+    private TextView status;
     private Switch touch;
     private Spinner driver, dxvk;
     private static final String[] DXVK_IDS = {"auto", "3", "2"};
@@ -76,19 +73,6 @@ public class LauncherActivity extends Activity {
             startActivityForResult(i, PICK_FOLDER);
         });
         col.addView(browse);
-
-        scaleLabel = heading("");
-        col.addView(scaleLabel);
-        scale = new SeekBar(this);
-        scale.setMax(8);  // 1.0 .. 3.0 in steps of 0.25
-        scale.setProgress(Math.round((prefs.getFloat("uiScale", 1.5f) - 1f) * 4f));
-        scale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            public void onProgressChanged(SeekBar s, int p, boolean user) { updateScaleLabel(); }
-            public void onStartTrackingTouch(SeekBar s) {}
-            public void onStopTrackingTouch(SeekBar s) {}
-        });
-        col.addView(scale);
-        updateScaleLabel();
 
         touch = new Switch(this);
         touch.setText("On-screen touch controls (can also be toggled in game)");
@@ -175,12 +159,6 @@ public class LauncherActivity extends Activity {
 
     private int dp(int v) { return Math.round(v * getResources().getDisplayMetrics().density); }
 
-    private float uiScale() { return 1f + scale.getProgress() / 4f; }
-
-    private void updateScaleLabel() {
-        scaleLabel.setText(String.format(Locale.US, "Interface scale: %.2f×", uiScale()));
-    }
-
     private void refreshDrivers(String select) {
         drivers = Drivers.list(this);
         drivers.add(0, "");
@@ -221,7 +199,6 @@ public class LauncherActivity extends Activity {
     private void save() {
         prefs.edit()
             .putString("gameDir", folder.getText().toString().trim())
-            .putFloat("uiScale", uiScale())
             .putBoolean("touch", touch.isChecked())
             .putString("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)))
             .putString("dxvk", DXVK_IDS[Math.max(dxvk.getSelectedItemPosition(), 0)])
@@ -251,7 +228,6 @@ public class LauncherActivity extends Activity {
         }
         Intent i = new Intent(this, GameActivity.class);
         i.putExtra("gameDir", dir);
-        i.putExtra("uiScale", uiScale());
         i.putExtra("touch", touch.isChecked());
         i.putExtra("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)));
         i.putExtra("dxvk", DXVK_IDS[Math.max(dxvk.getSelectedItemPosition(), 0)]);

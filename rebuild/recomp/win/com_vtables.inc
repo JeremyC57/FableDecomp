@@ -6,24 +6,10 @@ void ovr_IDirect3D9_GetAdapterDisplayMode(Ctx* c);
 void ovr_IDirect3D9_GetAdapterModeCount(Ctx* c);
 void ovr_IDirect3DCubeTexture9_LockRect(Ctx* c);
 void ovr_IDirect3DCubeTexture9_UnlockRect(Ctx* c);
-void ovr_IDirect3DDevice9_Clear(Ctx* c);
 void ovr_IDirect3DDevice9_CreateAdditionalSwapChain(Ctx* c);
-void ovr_IDirect3DDevice9_CreateVertexDeclaration(Ctx* c);
-void ovr_IDirect3DDevice9_DrawIndexedPrimitive(Ctx* c);
-void ovr_IDirect3DDevice9_DrawIndexedPrimitiveUP(Ctx* c);
-void ovr_IDirect3DDevice9_DrawPrimitive(Ctx* c);
-void ovr_IDirect3DDevice9_DrawPrimitiveUP(Ctx* c);
 void ovr_IDirect3DDevice9_GetCreationParameters(Ctx* c);
-void ovr_IDirect3DDevice9_GetScissorRect(Ctx* c);
-void ovr_IDirect3DDevice9_GetViewport(Ctx* c);
 void ovr_IDirect3DDevice9_Present(Ctx* c);
 void ovr_IDirect3DDevice9_Reset(Ctx* c);
-void ovr_IDirect3DDevice9_SetFVF(Ctx* c);
-void ovr_IDirect3DDevice9_SetRenderTarget(Ctx* c);
-void ovr_IDirect3DDevice9_SetScissorRect(Ctx* c);
-void ovr_IDirect3DDevice9_SetVertexDeclaration(Ctx* c);
-void ovr_IDirect3DDevice9_SetViewport(Ctx* c);
-void ovr_IDirect3DDevice9_StretchRect(Ctx* c);
 void ovr_IDirect3DDevice9_TestCooperativeLevel(Ctx* c);
 void ovr_IDirect3DIndexBuffer9_Lock(Ctx* c);
 void ovr_IDirect3DIndexBuffer9_Unlock(Ctx* c);
@@ -117,21 +103,21 @@ template <> host::com::Class& host::com::classOf<IDirect3DDevice9>() {
         {"IDirect3DDevice9::UpdateTexture", &host::com::comThunk<&IDirect3DDevice9::UpdateTexture>},
         {"IDirect3DDevice9::GetRenderTargetData", &host::com::comThunk<&IDirect3DDevice9::GetRenderTargetData>},
         {"IDirect3DDevice9::GetFrontBufferData", &host::com::comThunk<&IDirect3DDevice9::GetFrontBufferData>},
-        {"IDirect3DDevice9::StretchRect", ovr_IDirect3DDevice9_StretchRect},
+        {"IDirect3DDevice9::StretchRect", &host::com::comThunk<&IDirect3DDevice9::StretchRect>},
         {"IDirect3DDevice9::ColorFill", &host::com::comThunk<&IDirect3DDevice9::ColorFill>},
         {"IDirect3DDevice9::CreateOffscreenPlainSurface", &host::com::comThunk<&IDirect3DDevice9::CreateOffscreenPlainSurface>},
-        {"IDirect3DDevice9::SetRenderTarget", ovr_IDirect3DDevice9_SetRenderTarget},
+        {"IDirect3DDevice9::SetRenderTarget", &host::com::comThunk<&IDirect3DDevice9::SetRenderTarget>},
         {"IDirect3DDevice9::GetRenderTarget", &host::com::comThunk<&IDirect3DDevice9::GetRenderTarget>},
         {"IDirect3DDevice9::SetDepthStencilSurface", &host::com::comThunk<&IDirect3DDevice9::SetDepthStencilSurface>},
         {"IDirect3DDevice9::GetDepthStencilSurface", &host::com::comThunk<&IDirect3DDevice9::GetDepthStencilSurface>},
         {"IDirect3DDevice9::BeginScene", &host::com::comThunk<&IDirect3DDevice9::BeginScene>},
         {"IDirect3DDevice9::EndScene", &host::com::comThunk<&IDirect3DDevice9::EndScene>},
-        {"IDirect3DDevice9::Clear", ovr_IDirect3DDevice9_Clear},
+        {"IDirect3DDevice9::Clear", &host::com::comThunk<&IDirect3DDevice9::Clear>},
         {"IDirect3DDevice9::SetTransform", &host::com::comThunk<&IDirect3DDevice9::SetTransform>},
         {"IDirect3DDevice9::GetTransform", &host::com::comThunk<&IDirect3DDevice9::GetTransform>},
         {"IDirect3DDevice9::MultiplyTransform", &host::com::comThunk<&IDirect3DDevice9::MultiplyTransform>},
-        {"IDirect3DDevice9::SetViewport", ovr_IDirect3DDevice9_SetViewport},
-        {"IDirect3DDevice9::GetViewport", ovr_IDirect3DDevice9_GetViewport},
+        {"IDirect3DDevice9::SetViewport", &host::com::comThunk<&IDirect3DDevice9::SetViewport>},
+        {"IDirect3DDevice9::GetViewport", &host::com::comThunk<&IDirect3DDevice9::GetViewport>},
         {"IDirect3DDevice9::SetMaterial", &host::com::comThunk<&IDirect3DDevice9::SetMaterial>},
         {"IDirect3DDevice9::GetMaterial", &host::com::comThunk<&IDirect3DDevice9::GetMaterial>},
         {"IDirect3DDevice9::SetLight", &host::com::comThunk<&IDirect3DDevice9::SetLight>},
@@ -158,21 +144,21 @@ template <> host::com::Class& host::com::classOf<IDirect3DDevice9>() {
         {"IDirect3DDevice9::GetPaletteEntries", &host::com::comThunk<&IDirect3DDevice9::GetPaletteEntries>},
         {"IDirect3DDevice9::SetCurrentTexturePalette", &host::com::comThunk<&IDirect3DDevice9::SetCurrentTexturePalette>},
         {"IDirect3DDevice9::GetCurrentTexturePalette", &host::com::comThunk<&IDirect3DDevice9::GetCurrentTexturePalette>},
-        {"IDirect3DDevice9::SetScissorRect", ovr_IDirect3DDevice9_SetScissorRect},
-        {"IDirect3DDevice9::GetScissorRect", ovr_IDirect3DDevice9_GetScissorRect},
+        {"IDirect3DDevice9::SetScissorRect", &host::com::comThunk<&IDirect3DDevice9::SetScissorRect>},
+        {"IDirect3DDevice9::GetScissorRect", &host::com::comThunk<&IDirect3DDevice9::GetScissorRect>},
         {"IDirect3DDevice9::SetSoftwareVertexProcessing", &host::com::comThunk<&IDirect3DDevice9::SetSoftwareVertexProcessing>},
         {"IDirect3DDevice9::GetSoftwareVertexProcessing", &host::com::comThunk<&IDirect3DDevice9::GetSoftwareVertexProcessing>},
         {"IDirect3DDevice9::SetNPatchMode", &host::com::comThunk<&IDirect3DDevice9::SetNPatchMode>},
         {"IDirect3DDevice9::GetNPatchMode", &host::com::comThunk<&IDirect3DDevice9::GetNPatchMode>},
-        {"IDirect3DDevice9::DrawPrimitive", ovr_IDirect3DDevice9_DrawPrimitive},
-        {"IDirect3DDevice9::DrawIndexedPrimitive", ovr_IDirect3DDevice9_DrawIndexedPrimitive},
-        {"IDirect3DDevice9::DrawPrimitiveUP", ovr_IDirect3DDevice9_DrawPrimitiveUP},
-        {"IDirect3DDevice9::DrawIndexedPrimitiveUP", ovr_IDirect3DDevice9_DrawIndexedPrimitiveUP},
+        {"IDirect3DDevice9::DrawPrimitive", &host::com::comThunk<&IDirect3DDevice9::DrawPrimitive>},
+        {"IDirect3DDevice9::DrawIndexedPrimitive", &host::com::comThunk<&IDirect3DDevice9::DrawIndexedPrimitive>},
+        {"IDirect3DDevice9::DrawPrimitiveUP", &host::com::comThunk<&IDirect3DDevice9::DrawPrimitiveUP>},
+        {"IDirect3DDevice9::DrawIndexedPrimitiveUP", &host::com::comThunk<&IDirect3DDevice9::DrawIndexedPrimitiveUP>},
         {"IDirect3DDevice9::ProcessVertices", &host::com::comThunk<&IDirect3DDevice9::ProcessVertices>},
-        {"IDirect3DDevice9::CreateVertexDeclaration", ovr_IDirect3DDevice9_CreateVertexDeclaration},
-        {"IDirect3DDevice9::SetVertexDeclaration", ovr_IDirect3DDevice9_SetVertexDeclaration},
+        {"IDirect3DDevice9::CreateVertexDeclaration", &host::com::comThunk<&IDirect3DDevice9::CreateVertexDeclaration>},
+        {"IDirect3DDevice9::SetVertexDeclaration", &host::com::comThunk<&IDirect3DDevice9::SetVertexDeclaration>},
         {"IDirect3DDevice9::GetVertexDeclaration", &host::com::comThunk<&IDirect3DDevice9::GetVertexDeclaration>},
-        {"IDirect3DDevice9::SetFVF", ovr_IDirect3DDevice9_SetFVF},
+        {"IDirect3DDevice9::SetFVF", &host::com::comThunk<&IDirect3DDevice9::SetFVF>},
         {"IDirect3DDevice9::GetFVF", &host::com::comThunk<&IDirect3DDevice9::GetFVF>},
         {"IDirect3DDevice9::CreateVertexShader", &host::com::comThunk<&IDirect3DDevice9::CreateVertexShader>},
         {"IDirect3DDevice9::SetVertexShader", &host::com::comThunk<&IDirect3DDevice9::SetVertexShader>},
