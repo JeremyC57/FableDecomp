@@ -270,7 +270,7 @@ extern "C" void host_ui_event(Ctx* c) {
     // CInputProcessInventory sends INVENTORY_SELECT (A) to the menus as a mouse press (0x1A)
     // for the PC screens; the Xbox screens take the select event.
     if (xboxMenus() && ev == EV_LEFT_PRESS && rd32(c->esp) == 0x68A291) wr32(c->esp + 4, EV_SELECT);
-    if (ev <= EV_BACK) HLOG(2, "menu: ui event %u to 0x%08X from 0x%08X", ev, mgr, rd32(c->esp));
+    if (ev <= 0x30) HLOG(2, "menu: ui event %u to 0x%08X from 0x%08X", ev, mgr, rd32(c->esp));
     if (ev <= EV_BACK && !liveGui() && mgr == guestCall(kGetUiManager, {})) {
         const uint32_t savedEsp = c->esp;
         c->esp = (c->esp - 0x80) & ~0xFu;
