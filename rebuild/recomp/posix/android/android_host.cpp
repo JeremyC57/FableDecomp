@@ -12,11 +12,14 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
+#include <vector>
 #include <string>
 #include <thread>
 
 #include <SDL.h>
 #include <adrenotools/driver.h>
+#include <vulkan/vulkan.h>
 
 #include <atomic>
 #include <functional>
@@ -53,13 +56,13 @@ void redirectOutput(const std::string& data) {
 // A custom driver (e.g. Mesa Turnip) imported by the launcher: loaded through adrenotools,
 // which gets it past the linker namespace that hides vendor libraries from apps. DXVK then
 // takes its vkGetInstanceProcAddr instead of opening the system libvulkan.so.
-void loadVulkanDriver() {
+PFN_vkGetInstanceProcAddr loadVulkanDriver() {
     const char* dir = std::getenv("FABLE_VK_DRIVER_DIR");
     const char* lib = std::getenv("FABLE_VK_DRIVER_LIB");
     const char* hooks = std::getenv("FABLE_NATIVE_LIB_DIR");
     if (!dir || !*dir || !lib || !*lib || !hooks) {
         std::printf("Vulkan: system driver\n");
-        return;
+        return nullptr;
     }
     const char* tmp = std::getenv("FABLE_TMP_DIR");
     std::string driverDir = dir, hookDir = hooks;
@@ -70,17 +73,54 @@ void loadVulkanDriver() {
     if (!h) {
         std::printf("Vulkan: custom driver %s%s failed to load (%s); using the system driver\n", driverDir.c_str(), lib,
                     dlerror());
-        return;
+        return nullptr;
     }
     void* gipa = dlsym(h, "vkGetInstanceProcAddr");
     if (!gipa) {
         std::printf("Vulkan: custom driver %s has no vkGetInstanceProcAddr; using the system driver\n", lib);
-        return;
+        return nullptr;
     }
     char hex[32];
     std::snprintf(hex, sizeof hex, "%llx", static_cast<unsigned long long>(reinterpret_cast<uintptr_t>(gipa)));
     setenv("DXVK_VK_GET_INSTANCE_PROC_ADDR", hex, 1);
     std::printf("Vulkan: custom driver %s%s\n", driverDir.c_str(), lib);
+    return reinterpret_cast<PFN_vkGetInstanceProcAddr>(gipa);
+}
+
+// Whether the GPU has shaderInt64, which DXVK 3.x requires. Qualcomm's own Adreno driver
+// lacks it; DXVK 2.6 (shipped as libdxvk_d3d9_v2.so) runs without it.
+bool hasShaderInt64(PFN_vkGetInstanceProcAddr gipa) {
+    if (!gipa) {
+        void* vk = dlopen("libvulkan.so", RTLD_NOW | RTLD_LOCAL);
+        if (vk) gipa = reinterpret_cast<PFN_vkGetInstanceProcAddr>(dlsym(vk, "vkGetInstanceProcAddr"));
+        if (!gipa) return true;  // let DXVK report the problem
+    }
+    auto createInstance = reinterpret_cast<PFN_vkCreateInstance>(gipa(nullptr, "vkCreateInstance"));
+    if (!createInstance) return true;
+    VkApplicationInfo app{VK_STRUCTURE_TYPE_APPLICATION_INFO};
+    app.apiVersion = VK_API_VERSION_1_1;
+    VkInstanceCreateInfo ci{VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO};
+    ci.pApplicationInfo = &app;
+    VkInstance inst = VK_NULL_HANDLE;
+    if (createInstance(&ci, nullptr, &inst) != VK_SUCCESS) return true;
+    auto enumerate = reinterpret_cast<PFN_vkEnumeratePhysicalDevices>(gipa(inst, "vkEnumeratePhysicalDevices"));
+    auto features = reinterpret_cast<PFN_vkGetPhysicalDeviceFeatures>(gipa(inst, "vkGetPhysicalDeviceFeatures"));
+    auto destroy = reinterpret_cast<PFN_vkDestroyInstance>(gipa(inst, "vkDestroyInstance"));
+    bool any = false;
+    uint32_t n = 0;
+    if (enumerate && features && enumerate(inst, &n, nullptr) == VK_SUCCESS && n) {
+        std::vector<VkPhysicalDevice> devs(n);
+        enumerate(inst, &n, devs.data());
+        for (VkPhysicalDevice d : devs) {
+            VkPhysicalDeviceFeatures f{};
+            features(d, &f);
+            any |= f.shaderInt64 == VK_TRUE;
+        }
+    } else {
+        any = true;
+    }
+    if (destroy) destroy(inst, nullptr);
+    return any;
 }
 
 }  // namespace
@@ -101,7 +141,14 @@ void androidInit(const std::string& data) {
     }
     setenv("DXVK_WSI_DRIVER", "SDL2", 0);
     setenv("DXVK_LOG_PATH", data.c_str(), 0);
-    loadVulkanDriver();
+    PFN_vkGetInstanceProcAddr gipa = loadVulkanDriver();
+    // FABLE_DXVK (launcher setting): "3" or "2" forces a DXVK build, anything else picks one.
+    const char* pick = std::getenv("FABLE_DXVK");
+    const bool v2 = pick && !std::strcmp(pick, "2") ? true
+                  : pick && !std::strcmp(pick, "3") ? false
+                  : !hasShaderInt64(gipa);
+    setenv("FABLE_D3D9_LIBRARY", v2 ? "libdxvk_d3d9_v2.so" : "libdxvk_d3d9.so", 1);
+    std::printf("Direct3D 9: DXVK %s\n", v2 ? "2.6 (driver without shaderInt64)" : "3.x");
 }
 
 // org.fablerecomp.TouchControls.nativeSetPad: the overlay's state, sent on every change.

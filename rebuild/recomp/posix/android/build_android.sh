@@ -3,10 +3,12 @@
 #
 #   build_android.sh <work dir> <lifter output (gen_win)> <ConfigDetect lifter output (gen_cfg)>
 #
-# Needs: Android NDK (ANDROID_NDK, default <work>/android-ndk-r27c), SDK (ANDROID_HOME, default
+# Needs: patchelf, Android NDK (ANDROID_NDK, default <work>/android-ndk-r27c), SDK (ANDROID_HOME, default
 # <work>/sdk, with platforms;android-34 and build-tools;35.0.0), a JDK, cmake, ninja, meson,
 # glslang, pkg-config and the MinGW-w64 headers (MINGW_HEADERS). Sources it downloads or
-# expects: SDL2, FFmpeg, libadrenotools, and a DXVK checkout (DXVK_SRC) with dxvk-android.patch.
+# expects: SDL2, FFmpeg, libadrenotools, a DXVK checkout (DXVK_SRC, tested at d30be2ba) for
+# dxvk-android.patch, and DXVK 2.6.2 (DXVK2_SRC, a checkout of tag v2.6.2 with submodules) for
+# dxvk2-android.patch: the fallback for drivers without shaderInt64 (Qualcomm's Adreno driver).
 # Output: <work>/FableRecomp.apk
 set -euo pipefail
 WORK=$(realpath "$1"); GEN=$(realpath "$2"); CFG=$(realpath "$3")
@@ -17,6 +19,7 @@ BT=$SDK/build-tools/35.0.0
 PLATFORM=$SDK/platforms/android-34/android.jar
 MINGW_HEADERS=${MINGW_HEADERS:?set MINGW_HEADERS to a MinGW-w64 include directory}
 DXVK_SRC=${DXVK_SRC:?set DXVK_SRC to a DXVK checkout}
+DXVK2_SRC=${DXVK2_SRC:?set DXVK2_SRC to a DXVK v2.6.2 checkout}
 API=26
 PREFIX=$WORK/prefix
 TC=$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin
@@ -55,9 +58,7 @@ if [ ! -f build-adreno/libadrenotools.a ]; then
 fi
 
 # ---- DXVK Native (Direct3D 9 on Vulkan) ----------------------------------------------------------
-if [ ! -f build-dxvk/src/d3d9/libdxvk_d3d9.so ]; then
-  git -C "$DXVK_SRC" apply --check "$HERE/dxvk-android.patch" 2>/dev/null && git -C "$DXVK_SRC" apply "$HERE/dxvk-android.patch"
-  cat > android-aarch64.ini <<INI
+cat > android-aarch64.ini <<INI
 [binaries]
 c = '$TC/aarch64-linux-android$API-clang'
 cpp = '$TC/aarch64-linux-android$API-clang++'
@@ -78,11 +79,19 @@ cpu_family = 'aarch64'
 cpu = 'armv8-a'
 endian = 'little'
 INI
-  meson setup build-dxvk "$DXVK_SRC" --cross-file android-aarch64.ini --buildtype release -Denable_dxgi=false \
-    -Denable_d3d8=false -Denable_d3d10=false -Denable_d3d11=false -Dnative_sdl2=enabled -Dnative_glfw=disabled \
-    -Dnative_sdl3=disabled
-  ninja -C build-dxvk
-fi
+build_dxvk() {  # <source> <patch> <build dir>
+  if [ ! -f $3/src/d3d9/libdxvk_d3d9.so ]; then
+    git -C "$1" apply --check "$HERE/$2" 2>/dev/null && git -C "$1" apply "$HERE/$2"
+    meson setup $3 "$1" --cross-file android-aarch64.ini --buildtype release -Denable_dxgi=false \
+      -Denable_d3d8=false -Denable_d3d10=false -Denable_d3d11=false -Dnative_sdl2=enabled -Dnative_glfw=disabled \
+      -Dnative_sdl3=disabled
+  fi
+  ninja -C $3
+}
+build_dxvk "$DXVK_SRC" dxvk-android.patch build-dxvk
+build_dxvk "$DXVK2_SRC" dxvk2-android.patch build-dxvk26
+# Its own soname, or Android's linker would take it for the 3.x library.
+patchelf --set-soname libdxvk_d3d9_v2.so --output build-dxvk26/libdxvk_d3d9_v2.so build-dxvk26/src/d3d9/libdxvk_d3d9.so
 
 # ---- the game: libmain.so ------------------------------------------------------------------------
 PKG_CONFIG_LIBDIR=$PREFIX/lib/pkgconfig cmake -S "$HERE/.." -B build-host "${CMAKE_ANDROID[@]}" -DANDROID_STL=c++_static \
@@ -103,7 +112,7 @@ jar cf "$APK/classes.jar" -C "$APK/classes" .
 "$BT/aapt2" compile --dir "$HERE/app/res" -o "$APK/res.zip"
 "$BT/aapt2" link -I "$PLATFORM" --manifest "$HERE/app/AndroidManifest.xml" --min-sdk-version $API \
   --target-sdk-version 34 -o "$APK/base.apk" "$APK/res.zip"
-LIBS=(build-host/libmain.so $PREFIX/lib/libSDL2.so build-dxvk/src/d3d9/libdxvk_d3d9.so
+LIBS=(build-host/libmain.so $PREFIX/lib/libSDL2.so build-dxvk/src/d3d9/libdxvk_d3d9.so build-dxvk26/libdxvk_d3d9_v2.so
       $PREFIX/lib/libavcodec.so $PREFIX/lib/libavformat.so $PREFIX/lib/libavutil.so $PREFIX/lib/libswscale.so
       $PREFIX/lib/libswresample.so build-adreno/src/hook/*.so)
 for l in "${LIBS[@]}"; do "$TC/llvm-strip" --strip-unneeded -o "$APK/root/lib/arm64-v8a/$(basename "$l")" "$l"; done

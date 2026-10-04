@@ -6,6 +6,11 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
+#ifdef FABLE_POSIX
+#include <dlfcn.h>
+#endif
+#include <cstdlib>
+
 #include <algorithm>
 #include <cmath>
 #include <map>
@@ -30,6 +35,10 @@ void* sdlWindow(HWND h);
 HWND hwndForSdl(void* w);
 }  // namespace w32
 namespace {
+const char* kNoVulkan =
+    "Direct3D 9 (DXVK on Vulkan) could not start: the Vulkan driver lacks features DXVK needs.\n\n"
+    "On Snapdragon (Adreno) devices, install a Mesa Turnip driver in the launcher (Vulkan driver).\n"
+    "The details are in the d3d9 log next to FableRecomp.log.";
 HWND nativeWindow(HWND h) {
     void* s = h ? w32::sdlWindow(h) : nullptr;
     return s ? static_cast<HWND>(s) : h;
@@ -383,6 +392,9 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
     const HRESULT hr = self->CreateDevice(arg(c, 1), static_cast<D3DDEVTYPE>(arg(c, 2)), nativeWindow(static_cast<HWND>(hh(arg(c, 3)))), flags, &np, &dev);
     takeResults(pp, np);
     logPP("CreateDevice", pp, hr);
+#ifdef FABLE_POSIX
+    if (hr == D3DERR_NOTAVAILABLE) die("%s", kNoVulkan);  // DXVK could not create a Vulkan device
+#endif
     ppOut(arg(c, 5), pp);
     if (arg(c, 6)) wr32(arg(c, 6), SUCCEEDED(hr) ? wrap(dev) : 0);
     if (SUCCEEDED(hr)) applyFpuMode(c, flags), trackBackBuffer(dev, pp), applyWindow(pp);
@@ -781,8 +793,30 @@ void ovr_IDirect3DDevice9_DrawIndexedPrimitiveUP(Ctx* c) {
 
 namespace {
 
+#ifdef FABLE_POSIX
+// DXVK Native, opened at run time: FABLE_D3D9_LIBRARY picks the build (Android ships a
+// second, older DXVK for drivers without shaderInt64; android_host.cpp chooses).
+IDirect3D9* createD3D9(UINT sdk) {
+    const char* lib = std::getenv("FABLE_D3D9_LIBRARY");
+    if (!lib || !*lib) lib = "libdxvk_d3d9.so";
+    void* h = dlopen(lib, RTLD_NOW | RTLD_LOCAL);
+    if (!h) die("cannot load %s: %s", lib, dlerror());
+    using Create = IDirect3D9* (*)(UINT);
+    auto create = reinterpret_cast<Create>(dlsym(h, "Direct3DCreate9"));
+    if (!create) die("%s has no Direct3DCreate9", lib);
+    log("Direct3D 9: %s", lib);
+    IDirect3D9* d = create(sdk);
+    if (!d) die("%s", kNoVulkan);
+    return d;
+}
+#endif
+
 IMPORT("d3d9.dll", Direct3DCreate9) {
+#ifdef FABLE_POSIX
+    IDirect3D9* d = createD3D9(arg(c, 0));
+#else
     IDirect3D9* d = Direct3DCreate9(arg(c, 0));
+#endif
     log("Direct3DCreate9(%u) -> %p", arg(c, 0), static_cast<void*>(d));
     retStd(c, wrap(d), 1);
 }

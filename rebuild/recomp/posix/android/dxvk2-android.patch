@@ -1,16 +1,16 @@
 diff --git a/src/d3d9/d3d9_main.cpp b/src/d3d9/d3d9_main.cpp
-index 3fe778a3..f633932e 100644
+index 9e7aaa24..dc80b040 100644
 --- a/src/d3d9/d3d9_main.cpp
 +++ b/src/d3d9/d3d9_main.cpp
-@@ -20,7 +20,15 @@ namespace dxvk {
+@@ -18,7 +18,15 @@ namespace dxvk {
      if (!ppDirect3D9Ex)
        return D3DERR_INVALIDCALL;
  
--    *ppDirect3D9Ex = ref(new D3D9InterfaceEx(Extended, pOverrideList, OverrideCount));
+-    *ppDirect3D9Ex = ref(new D3D9InterfaceEx( Extended ));
 +    // Report an unusable Vulkan setup as a failed call (as D3D9 does), not an exception the
 +    // host cannot catch across the library boundary.
 +    try {
-+      *ppDirect3D9Ex = ref(new D3D9InterfaceEx(Extended, pOverrideList, OverrideCount));
++      *ppDirect3D9Ex = ref(new D3D9InterfaceEx( Extended ));
 +    } catch (const DxvkError& e) {
 +      Logger::err(e.message());
 +      *ppDirect3D9Ex = nullptr;
@@ -19,39 +19,8 @@ index 3fe778a3..f633932e 100644
      return D3D_OK;
    }
  }
-diff --git a/src/dxvk/dxvk_device_info.cpp b/src/dxvk/dxvk_device_info.cpp
-index ab1f5634..39d8c54c 100644
---- a/src/dxvk/dxvk_device_info.cpp
-+++ b/src/dxvk/dxvk_device_info.cpp
-@@ -773,17 +773,22 @@ namespace dxvk {
-     if (m_queueMapping.graphics.family == VK_QUEUE_FAMILY_IGNORED)
-       return std::string("Device does not have a graphics queue");
- 
-+    // List every missing feature, so one log shows whether a driver can be made to work.
-+    std::string missing;
-+
-     for (const auto& f : getFeatureList()) {
-       if (f.featureRequired && !(*f.featureEnabled)) {
--        std::string message = str::format("Device does not support required feature '", f.readableName, "'");
-+        missing += missing.empty() ? "Device does not support required features: " : ", ";
-+        missing += f.readableName;
- 
-         if (f.extensionEnabled)
--          message += str::format(" (extension: ", f.extensionEnabled->extensionName, ")");
--
--        return message;
-+          missing += str::format(" (", f.extensionEnabled->extensionName, ")");
-       }
-     }
- 
-+    if (!missing.empty())
-+      return missing;
-+
-     if (!m_featuresEnabled.extDescriptorHeap.descriptorHeap && m_properties.core.properties.limits.maxPushConstantsSize < MaxTotalPushDataSize)
-       return str::format("Device does not support ", MaxTotalPushDataSize, " of push data");
- 
 diff --git a/src/vulkan/vulkan_loader.cpp b/src/vulkan/vulkan_loader.cpp
-index f9d1e98d..1d3ef732 100644
+index 17e9b629..991a02c5 100644
 --- a/src/vulkan/vulkan_loader.cpp
 +++ b/src/vulkan/vulkan_loader.cpp
 @@ -10,6 +10,17 @@
@@ -86,7 +55,7 @@ index 203cb6d9..d8c02558 100644
          "libSDL2-2.0.so.0"
  #endif
 diff --git a/src/wsi/sdl2/wsi_platform_sdl2.h b/src/wsi/sdl2/wsi_platform_sdl2.h
-index 49bcd789..b9afe888 100644
+index 44f8836e..b1c1a995 100644
 --- a/src/wsi/sdl2/wsi_platform_sdl2.h
 +++ b/src/wsi/sdl2/wsi_platform_sdl2.h
 @@ -1,6 +1,9 @@
@@ -112,7 +81,7 @@ index 4396a6bb..66af04f3 100644
 +#endif
  #undef SDL_PROC
 diff --git a/src/wsi/sdl2/wsi_window_sdl2.cpp b/src/wsi/sdl2/wsi_window_sdl2.cpp
-index 85413da5..7a7db756 100644
+index e0c48fdc..d7f0f995 100644
 --- a/src/wsi/sdl2/wsi_window_sdl2.cpp
 +++ b/src/wsi/sdl2/wsi_window_sdl2.cpp
 @@ -10,6 +10,9 @@
@@ -125,7 +94,7 @@ index 85413da5..7a7db756 100644
  
  namespace dxvk::wsi {
  
-@@ -176,6 +179,22 @@ namespace dxvk::wsi {
+@@ -163,6 +166,22 @@ namespace dxvk::wsi {
            VkSurfaceKHR*             pSurface) {
      SDL_Window* window = fromHwnd(hWindow);
  

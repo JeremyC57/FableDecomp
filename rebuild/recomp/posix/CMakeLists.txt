@@ -86,7 +86,12 @@ target_compile_options(FableRecomp PRIVATE
   $<$<COMPILE_LANGUAGE:C,CXX>:-fshort-wchar -fdeclspec -ffp-contract=off -fno-strict-aliasing>
   $<$<COMPILE_LANGUAGE:C,CXX>:-Wall -Wno-unused-function -Wno-ignored-attributes -Wno-unknown-pragmas -Wno-builtin-requires-header>
   $<$<COMPILE_LANGUAGE:C,CXX>:-Wno-nonportable-include-path -Wno-pragma-pack -Wno-microsoft-anon-tag -Wno-int-to-pointer-cast -Wno-microsoft-exception-spec>)
-target_link_libraries(FableRecomp PRIVATE PkgConfig::SDL2 PkgConfig::FFMPEG ${DXVK_D3D9} dl)
+target_link_libraries(FableRecomp PRIVATE PkgConfig::SDL2 PkgConfig::FFMPEG dl)
+# d3d9.cpp opens DXVK at run time. Linux also links it, so the build directory's copy is found;
+# the APK carries two DXVK builds and android_host.cpp picks one.
+if(NOT ANDROID)
+  target_link_libraries(FableRecomp PRIVATE ${DXVK_D3D9})
+endif()
 if(NOT ANDROID)
   target_link_libraries(FableRecomp PRIVATE pthread)
 endif()

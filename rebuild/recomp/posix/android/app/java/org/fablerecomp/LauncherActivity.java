@@ -43,7 +43,8 @@ public class LauncherActivity extends Activity {
     private TextView scaleLabel, status;
     private SeekBar scale;
     private Switch touch;
-    private Spinner driver;
+    private Spinner driver, dxvk;
+    private static final String[] DXVK_IDS = {"auto", "3", "2"};
     private List<String> drivers;
 
     @Override
@@ -120,6 +121,21 @@ public class LauncherActivity extends Activity {
         row.addView(remove);
         col.addView(row);
         refreshDrivers(prefs.getString("driver", ""));
+        TextView hint = new TextView(this);
+        hint.setText("Snapdragon (Adreno) phones: Qualcomm's own driver lacks Vulkan features the game's renderer (DXVK) "
+            + "needs. If the game shows a driver error or a black screen, install a Mesa Turnip driver .zip "
+            + "(for example from github.com/K11MCH1/AdrenoToolsDrivers/releases) and select it here.");
+        hint.setTextSize(12);
+        col.addView(hint);
+
+        col.addView(heading("Renderer"));
+        dxvk = new Spinner(this);
+        ArrayAdapter<String> dx = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+            new String[] {"Automatic", "DXVK 3.x (newer drivers, e.g. Turnip)", "DXVK 2.6 (drivers without shaderInt64)"});
+        dx.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dxvk.setAdapter(dx);
+        dxvk.setSelection(Math.max(0, java.util.Arrays.asList(DXVK_IDS).indexOf(prefs.getString("dxvk", "auto"))));
+        col.addView(dxvk);
 
         Button start = new Button(this);
         start.setText("Start game");
@@ -208,6 +224,7 @@ public class LauncherActivity extends Activity {
             .putFloat("uiScale", uiScale())
             .putBoolean("touch", touch.isChecked())
             .putString("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)))
+            .putString("dxvk", DXVK_IDS[Math.max(dxvk.getSelectedItemPosition(), 0)])
             .apply();
     }
 
@@ -237,6 +254,7 @@ public class LauncherActivity extends Activity {
         i.putExtra("uiScale", uiScale());
         i.putExtra("touch", touch.isChecked());
         i.putExtra("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)));
+        i.putExtra("dxvk", DXVK_IDS[Math.max(dxvk.getSelectedItemPosition(), 0)]);
         startActivity(i);
     }
 

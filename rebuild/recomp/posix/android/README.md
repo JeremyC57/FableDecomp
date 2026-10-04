@@ -13,7 +13,8 @@ with `Fable.exe`) to the device and picks it in the launcher.
 ```sh
 # NDK r27c, SDK (platforms;android-34, build-tools;35.0.0), JDK 17+, cmake, ninja, meson,
 # glslang-tools, pkg-config; lifter output for Fable.exe and ConfigDetect.dll (see ../../README.md)
-export MINGW_HEADERS=<llvm-mingw>/generic-w64-mingw32/include DXVK_SRC=<dxvk checkout>
+export MINGW_HEADERS=<llvm-mingw>/generic-w64-mingw32/include DXVK_SRC=<dxvk checkout> \
+       DXVK2_SRC=<dxvk v2.6.2 checkout>
 rebuild/recomp/posix/android/build_android.sh <work dir> <gen_win> <gen_cfg>
 # -> <work dir>/FableRecomp.apk
 ```
@@ -61,6 +62,16 @@ All libraries are linked for 16 KiB pages. The APK is signed with a local key
   - The package is unpacked into the app's private files directory.
   - libadrenotools then loads the driver past the linker-namespace restriction, and DXVK uses
     it in place of the system `libvulkan.so`.
+
+- **Two DXVK builds.** The APK carries DXVK 3.x (`libdxvk_d3d9.so`) and DXVK 2.6.2
+  (`libdxvk_d3d9_v2.so`, `dxvk2-android.patch`).
+  - DXVK 3.0 started requiring `shaderInt64`, which Qualcomm's own Adreno driver lacks (seen on
+    an Adreno 740).
+  - `android_host.cpp` checks the driver for `shaderInt64` and picks 2.6 when it is missing. The
+    launcher's "Renderer" setting can force either one.
+  - `d3d9.cpp` opens the chosen library at run time (`FABLE_D3D9_LIBRARY`).
+- **When neither renderer can start**, the game shows a message pointing to custom drivers
+  instead of crashing. The patched DXVK also logs every missing feature, not only the first.
 
 DXVK needs Vulkan 1.3 with the extensions and features it lists for D3D9. Many stock mobile
 drivers fall short, which is what custom drivers are for: Mesa Turnip on Adreno.

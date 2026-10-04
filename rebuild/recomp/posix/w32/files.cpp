@@ -530,10 +530,11 @@ static BOOL diskFree(const std::string& p, PULARGE_INTEGER avail, PULARGE_INTEGE
     return TRUE;
 }
 BOOL WINAPI GetDiskFreeSpaceExW(LPCWSTR dir, PULARGE_INTEGER a, PULARGE_INTEGER t, PULARGE_INTEGER f) {
-    return diskFree(dir ? toPosixPath(dir) : ".", a, t, f);
+    // No directory: the (emulated) current directory's disk, not the process's cwd ("/" on Android).
+    return diskFree(toPosixPath((dir ? wstr(dir) : fullWindowsPath(L".")).c_str()), a, t, f);
 }
 BOOL WINAPI GetDiskFreeSpaceExA(LPCSTR dir, PULARGE_INTEGER a, PULARGE_INTEGER t, PULARGE_INTEGER f) {
-    return diskFree(dir ? toPosixPathA(dir) : ".", a, t, f);
+    return dir ? diskFree(toPosixPathA(dir), a, t, f) : GetDiskFreeSpaceExW(nullptr, a, t, f);
 }
 
 DWORD WINAPI GetFullPathNameW(LPCWSTR name, DWORD n, LPWSTR buf, LPWSTR* filePart) {

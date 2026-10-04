@@ -23,6 +23,8 @@ public class GameActivity extends SDLActivity {
             Os.setenv("FABLE_RECOMP_DATA", data.getAbsolutePath(), true);
             Os.setenv("FABLE_NATIVE_LIB_DIR", getApplicationInfo().nativeLibraryDir, true);
             Os.setenv("FABLE_TMP_DIR", getCacheDir().getAbsolutePath(), true);
+            String dxvk = getIntent().getStringExtra("dxvk");
+            Os.setenv("FABLE_DXVK", dxvk != null ? dxvk : "auto", true);
             if (lib != null) {
                 Os.setenv("FABLE_VK_DRIVER_DIR", new File(Drivers.root(this), driver).getAbsolutePath() + "/", true);
                 Os.setenv("FABLE_VK_DRIVER_LIB", lib, true);
