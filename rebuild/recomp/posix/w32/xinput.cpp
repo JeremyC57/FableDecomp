@@ -3,6 +3,10 @@
 #include <SDL.h>
 
 #include "w32sdl.hpp"
+
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
 #include <xinput.h>
 
 namespace w32 {
@@ -53,8 +57,30 @@ SHORT axis(SDL_GameController* p, SDL_GameControllerAxis a, bool invert) {
     return static_cast<SHORT>(invert ? std::clamp(-v - 1, -32768, 32767) : v);
 }
 
+// Testing without a controller: FABLE_TEST_PAD names a file holding
+// "<buttons hex> <lx> <ly> <rx> <ry> <lt> <rt>" (sticks -1..1, triggers 0..1); it acts as the
+// on-screen pad does.
+void testPad() {
+    static const char* path = std::getenv("FABLE_TEST_PAD");
+    if (!path) return;
+    if (FILE* f = std::fopen(path, "r")) {
+        unsigned b = 0;
+        float v[6] = {};
+        const int n = std::fscanf(f, "%x %f %f %f %f %f %f", &b, &v[0], &v[1], &v[2], &v[3], &v[4], &v[5]);
+        std::fclose(f);
+        XINPUT_GAMEPAD g{};
+        auto ax = [](float x) { return static_cast<SHORT>(std::clamp(x, -1.0f, 1.0f) * 32767); };
+        g.wButtons = static_cast<WORD>(b);
+        g.sThumbLX = ax(v[0]), g.sThumbLY = ax(v[1]), g.sThumbRX = ax(v[2]), g.sThumbRY = ax(v[3]);
+        g.bLeftTrigger = static_cast<BYTE>(std::clamp(v[4], 0.0f, 1.0f) * 255);
+        g.bRightTrigger = static_cast<BYTE>(std::clamp(v[5], 0.0f, 1.0f) * 255);
+        setVirtualPad(n >= 1, g);
+    }
+}
+
 DWORD WINAPI getState(DWORD user, XINPUT_STATE* s) {
     ensure();
+    testPad();
     pumpSdlEvents();
     SDL_GameControllerUpdate();
     std::lock_guard<std::mutex> l(g_lock);

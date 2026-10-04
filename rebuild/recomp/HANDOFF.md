@@ -108,7 +108,9 @@ use llvm-mingw directly, or clang-cl after small tweaks.
 
 ```sh
 # Lifter (needs Zydis): build rebuild/recomp, then
-fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch   # coroutine switch -> host fibers
+fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch \
+    --hook 0xAB6E40=host_joystick_update --hook 0x4088E0=host_primary_inputs
+# coroutine switch -> host fibers; native Xbox pad (controller.cpp)
 fable_recomp ConfigDetect.dll - gen_cfg/ --prefix cfgdetect
 python3 rebuild/recomp/win/gen_com.py <llvm-mingw>/generic-w64-mingw32/include rebuild/recomp/win/com_vtables.inc
 cmake -S rebuild/recomp/win -B build/win -G Ninja \

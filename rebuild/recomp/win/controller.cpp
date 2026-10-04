@@ -1,12 +1,23 @@
-// Game controller support. The PC game only reads a DirectInput keyboard and mouse, so an
-// XInput controller is translated into the game's own key and mouse input: buttons
-// press the keys they are mapped to, the left stick drives the movement keys and the
-// right stick moves the mouse (camera, and the menu cursor). The events are added to
-// what the real devices report (dinput.cpp), so keyboard and mouse keep working.
+// Game controller support, two ways:
 //
-// The mapping lives in <game>\FableRecomp_controller.ini (written with the defaults on
-// first run). The defaults follow the Xbox version's layout on top of the PC game's
-// default key bindings (Redefine Keys, "Reset to WASD").
+// Native (the default): the game's own Xbox-pad input, dormant in the PC build. The PC
+// engine still has the Xbox pad input types (analog left/right stick, the 16 pad buttons)
+// and ships the original FABLE_XBOX_CONTROL_SCHEME bindings in game.bin; only the device
+// side (CJoystickDX, a DirectInput joystick with 12 buttons and no d-pad) and the
+// scheme selection were PC-specific. Two lifter hooks bring it back:
+//   - 0xAB6E40 CJoystickDX::UpdateEvents -> host_joystick_update: reads XInput and feeds
+//     button and stick events to the game exactly as the DirectInput code did, for all
+//     16 buttons (d-pad included);
+//   - 0x4088E0 GetPrimaryInputVector -> host_primary_inputs: when SetControlScheme builds
+//     the active controls, the Xbox scheme's pad bindings are added to the profile's
+//     keyboard/mouse bindings, so pad, keyboard and mouse all work at once.
+//
+// Legacy (NATIVE_PAD = 0): the controller is translated into the PC key and mouse input:
+// buttons press the keys they are mapped to, the left stick drives the movement keys and
+// the right stick moves the mouse. The events are added to what the real devices report
+// (dinput.cpp).
+//
+// Settings live in <game>\FableRecomp_controller.ini (written with the defaults on first run).
 #include "controller.hpp"
 
 #include <xinput.h>
@@ -78,8 +89,17 @@ const char* const kInputNames[InputCount] = {"A", "B", "X", "Y", "LB", "RB", "LT
                                              "LSTICK_LEFT", "LSTICK_RIGHT"};
 
 const char* const kDefaultConfig =
-    "; Fable: The Lost Chapters (recompiled) - controller mapping\n"
-    "; Each line binds an Xbox/XInput control to one of the game's keys (as set in\n"
+    "; Fable: The Lost Chapters (recompiled) - controller settings\n"
+    ";\n"
+    "; NATIVE_PAD = 1 uses the game's own Xbox controls: analog movement and camera and the\n"
+    "; original Xbox button layout. Xbox 360/One pads: LB = White button, RB = Black button.\n"
+    "NATIVE_PAD = 1\n"
+    "SWAP_BUMPERS = 0       ; 1: LB = Black, RB = White\n"
+    "LEFT_DEADZONE = 0.24\n"
+    "RIGHT_DEADZONE = 0.24\n"
+    ";\n"
+    "; With NATIVE_PAD = 0 the pad is translated into keyboard and mouse input instead.\n"
+    "; Each line below binds an Xbox/XInput control to one of the game's keys (as set in\n"
     "; Options > Redefine Keys). Values: a key name (A-Z, 0-9, F1-F12, TAB, SPACE, RETURN,\n"
     "; ESCAPE, LSHIFT, RSHIFT, LCTRL, CAPSLOCK, UP, DOWN, LEFT, RIGHT, PRINT, ...),\n"
     "; LMB / RMB / MMB (mouse buttons), WHEELUP / WHEELDOWN, or NONE.\n"
@@ -115,6 +135,8 @@ struct Config {
     Target bind[InputCount];
     double cameraSpeed = 900, moveThreshold = 0.35;
     bool invertY = false;
+    bool native = true, swapBumpers = false;
+    double leftDeadzone = 0.24, rightDeadzone = 0.24;
 };
 
 void parseConfig(Config& cfg, const std::string& text) {
@@ -133,6 +155,10 @@ void parseConfig(Config& cfg, const std::string& text) {
         if (key == "CAMERA_SPEED") cfg.cameraSpeed = std::atof(val.c_str());
         else if (key == "MOVE_THRESHOLD") cfg.moveThreshold = std::atof(val.c_str());
         else if (key == "INVERT_Y") cfg.invertY = std::atoi(val.c_str()) != 0;
+        else if (key == "NATIVE_PAD") cfg.native = std::atoi(val.c_str()) != 0;
+        else if (key == "SWAP_BUMPERS") cfg.swapBumpers = std::atoi(val.c_str()) != 0;
+        else if (key == "LEFT_DEADZONE") cfg.leftDeadzone = std::atof(val.c_str());
+        else if (key == "RIGHT_DEADZONE") cfg.rightDeadzone = std::atof(val.c_str());
         else
             for (int i = 0; i < InputCount; ++i)
                 if (key == kInputNames[i]) cfg.bind[i] = parseTarget(val);
@@ -182,7 +208,8 @@ void load() {
     }
     parseConfig(g.cfg, text);
     QueryPerformanceCounter(&g.last);
-    log("controller: XInput %s, mapping %s", g.getState ? "available" : "not found", narrow(path.c_str()).c_str());
+    log("controller: XInput %s, %s, settings %s", g.getState ? "available" : "not found",
+        g.cfg.native ? "native Xbox controls" : "keyboard/mouse translation", narrow(path.c_str()).c_str());
 }
 
 void event(std::vector<DIDEVICEOBJECTDATA>& q, DWORD ofs, DWORD data) {
@@ -231,20 +258,12 @@ double stick(SHORT v, SHORT dead) {
     return v < 0 ? -std::min(1.0, s) : std::min(1.0, s);
 }
 
-void poll() {
+// The connected pad's state (the first XInput slot with a controller, rechecked once a second).
+bool readPad(XINPUT_STATE& st) {
     if (!g.init) load();
-    if (!g.getState) return;
-    LARGE_INTEGER now, f;
-    QueryPerformanceCounter(&now);
-    QueryPerformanceFrequency(&f);
-    const double dt = std::min(0.1, double(now.QuadPart - g.last.QuadPart) / double(f.QuadPart));
-    if (dt < 0.002) return;
-    g.last = now;
-
-    XINPUT_STATE st{};
-    bool ok = false;
-    if (g.pad >= 0) ok = g.getState(static_cast<DWORD>(g.pad), &st) == ERROR_SUCCESS;
-    if (!ok && GetTickCount() - g.lastConnectCheck > 1000) {  // look for a controller once a second
+    if (!g.getState) return false;
+    bool ok = g.pad >= 0 && g.getState(static_cast<DWORD>(g.pad), &st) == ERROR_SUCCESS;
+    if (!ok && GetTickCount() - g.lastConnectCheck > 1000) {
         g.lastConnectCheck = GetTickCount();
         for (DWORD i = 0; i < 4 && !ok; ++i)
             if (g.getState(i, &st) == ERROR_SUCCESS) {
@@ -253,6 +272,21 @@ void poll() {
                 g.pad = static_cast<int>(i);
             }
     }
+    return ok;
+}
+
+void poll() {
+    if (!g.init) load();
+    if (!g.getState || g.cfg.native) return;
+    LARGE_INTEGER now, f;
+    QueryPerformanceCounter(&now);
+    QueryPerformanceFrequency(&f);
+    const double dt = std::min(0.1, double(now.QuadPart - g.last.QuadPart) / double(f.QuadPart));
+    if (dt < 0.002) return;
+    g.last = now;
+
+    XINPUT_STATE st{};
+    const bool ok = readPad(st);
     bool now_[InputCount] = {};
     if (ok) {
         const XINPUT_GAMEPAD& p = st.Gamepad;
@@ -338,3 +372,229 @@ void flush() {
 }
 
 }  // namespace host::pad
+
+// ============================================================================
+// Native pad: the game's own Xbox controls
+// ============================================================================
+namespace host::pad {
+namespace {
+
+// Retail addresses (Steam Fable.exe).
+constexpr uint32_t kClear = 0x9E41D0;                     // CJoystick::Clear (event store)
+constexpr uint32_t kAddEventToStore = 0x9E41E0;           // CJoystick::AddEventToStore(const CInputEvent*)
+constexpr uint32_t kProcessMaintainedEvents = 0x9E4470;   // tracks held buttons (press/release)
+constexpr uint32_t kUpdateMaintainedPositions = 0x9E42E0; // held-button events follow the sticks
+constexpr uint32_t kAddMaintainedEvents = 0x9E4360;       // ... and are re-sent every frame
+constexpr uint32_t kStickEventTime = 0x122ED70;           // double the DirectInput code stamps stick events with
+constexpr uint32_t kCallerSetControlScheme = 0x447060;    // return address of SetControlScheme's GetPrimaryInputVector call
+constexpr uint32_t kResetAssignedInputs = 0x4085F0;       // CUserProfileManager::ResetAssignedInputs
+// def lookup by name, as ResetAssignedInputs does it
+constexpr uint32_t kDefManagerA = 0x13B86A0, kDefManagerB = 0x13B8760;
+constexpr uint32_t kGetDefManagerA = 0x44C6B0, kGetDefManagerB = 0x43368D, kLookupDef = 0x410820;
+constexpr uint32_t kWideStringCtor = 0x99EBF0, kWideStringDtor = 0x99EAE0;
+constexpr uint32_t kRecordSize = 28;  // CActionInputControl
+
+// CJoystick member offsets
+constexpr uint32_t kAxes = 0xD18;  // float X, Y (left stick), X2, Y2 (right stick); -1..1, Y down
+
+// CInputEvent (0x34 bytes)
+enum : uint32_t { EV_BUTTON_PRESSED = 0x13, EV_BUTTON_RELEASED = 0x15, EV_LEFT_STICK = 0x11, EV_RIGHT_STICK = 0x12 };
+
+// EXboxControllerButton (FableWin.pdb)
+enum : uint8_t {
+    XB_X = 1, XB_Y = 2, XB_BLACK = 3, XB_A = 4, XB_B = 5, XB_WHITE = 6, XB_LT = 7, XB_RT = 8, XB_LS = 9, XB_RS = 10,
+    XB_START = 11, XB_BACK = 12, XB_DUP = 13, XB_DDOWN = 14, XB_DLEFT = 15, XB_DRIGHT = 16, XB_COUNT = 17
+};
+
+bool g_held[XB_COUNT];
+uint32_t rd32le(const uint8_t* p) { uint32_t v; std::memcpy(&v, p, 4); return v; }
+std::vector<uint8_t> g_xboxRecords;  // FABLE_XBOX_CONTROL_SCHEME's CActionInputControl records
+bool g_xboxLoaded = false;
+uint32_t g_merged = 0, g_mergedCap = 0;  // guest vector {begin, end, capacity} + records
+
+// Radial dead zone, rescaled so the stick still reaches 1 at full deflection.
+void deadzone(float& x, float& y, double dz) {
+    const double m = std::sqrt(double(x) * x + double(y) * y);
+    if (m <= dz || dz >= 1) {
+        x = y = 0;
+        return;
+    }
+    const double k = std::min(1.0, (m - dz) / (1 - dz)) / m;
+    x = static_cast<float>(x * k);
+    y = static_cast<float>(y * k);
+}
+
+void writeEvent(uint32_t ev, uint32_t type, float x, float y, uint8_t button, float time) {
+    std::memset(gp(ev), 0, 0x34);
+    wrf32(ev, x);
+    wrf32(ev + 4, y);
+    wr8(ev + 8, button);
+    wr32(ev + 0x20, 1);  // device class: joystick
+    wr32(ev + 0x28, type);
+    wrf32(ev + 0x2C, time);
+    wrf32(ev + 0x30, time);
+}
+
+void loadXboxScheme() {
+    g_xboxLoaded = true;
+    static const char kName[] = "FABLE_XBOX_CONTROL_SCHEME";
+    const uint32_t mem = gcalloc(1, 64 + sizeof kName);
+    const uint32_t str = mem, out = mem + 16, name = mem + 32;
+    std::memcpy(gp(name), kName, sizeof kName);
+    guestCallThis(kWideStringCtor, str, {name, 0xFFFFFFFFu});
+    uint32_t mgr = 0;
+    if (rd32(kDefManagerA)) mgr = guestCall(kGetDefManagerA, {});
+    else if (rd32(kDefManagerB)) mgr = guestCall(kGetDefManagerB, {});
+    if (mgr) guestCallThis(kLookupDef, mgr, {str, out});
+    guestCallThis(kWideStringDtor, str, {});
+    const uint32_t def = rd32(out);
+    if (!def) {
+        log("controller: FABLE_XBOX_CONTROL_SCHEME not found; pad buttons are not bound");
+        return;
+    }
+    const uint32_t begin = rd32(def + 0x3C), end = rd32(def + 0x40);
+    if (end > begin && (end - begin) % kRecordSize == 0 && end - begin < 0x10000)
+        g_xboxRecords.assign(gp<uint8_t>(begin), gp<uint8_t>(end));
+    log("controller: %u pad bindings from FABLE_XBOX_CONTROL_SCHEME", static_cast<unsigned>(g_xboxRecords.size() / kRecordSize));
+    // The reference the lookup took is kept: the def stays loaded for the whole session.
+}
+
+// The profile's bindings plus the Xbox scheme's pad bindings (ControllerType 1), as a
+// guest std::vector the game reads begin/end from.
+uint32_t mergedBindings(uint32_t vec) {
+    if (!g_xboxLoaded) loadXboxScheme();
+    const uint32_t begin = rd32(vec), end = rd32(vec + 4);
+    if (g_xboxRecords.empty() || end < begin) return vec;
+    std::vector<uint8_t> all(gp<uint8_t>(begin), gp<uint8_t>(end));
+    // Profiles that already carry pad bindings keep their own.
+    bool hasPad = false;
+    for (size_t i = 0; i + kRecordSize <= all.size(); i += kRecordSize)
+        if (rd32le(&all[i + 4]) == 1) hasPad = true;
+    if (!hasPad) {
+        // The Xbox scheme opens the Xbox pause menu with Start (actions 3 and 5); that screen
+        // is not laid out for the PC build. Start opens the PC in-game menu instead (action
+        // 72, Return/Escape on the keyboard).
+        for (size_t i = 0; i + kRecordSize <= g_xboxRecords.size(); i += kRecordSize) {
+            const uint32_t action = rd32le(&g_xboxRecords[i]);
+            if ((action == 3 || action == 5) && !std::getenv("FABLE_XBOX_MENUS")) continue;
+            all.insert(all.end(), g_xboxRecords.begin() + i, g_xboxRecords.begin() + i + kRecordSize);
+        }
+        auto add = [&](uint32_t action, uint32_t button) {
+            uint8_t rec[kRecordSize] = {};
+            const uint32_t fields[] = {action, 1, 0, button, 0};
+            std::memcpy(rec, fields, sizeof fields);
+            all.insert(all.end(), rec, rec + kRecordSize);
+        };
+        if (!std::getenv("FABLE_XBOX_MENUS")) add(72, XB_START);
+    }
+    const uint32_t need = static_cast<uint32_t>(all.size());
+    if (need + 12 > g_mergedCap) {
+        g_mergedCap = need + 12 + 64 * kRecordSize;
+        g_merged = gcalloc(1, g_mergedCap);  // the previous block stays valid for anyone still reading it
+    }
+    std::memcpy(gp(g_merged + 12), all.data(), need);
+    wr32(g_merged, g_merged + 12);
+    wr32(g_merged + 4, g_merged + 12 + need);
+    wr32(g_merged + 8, g_merged + 12 + need);
+    return g_merged;
+}
+
+}  // namespace
+
+bool nativeEnabled() {
+    std::lock_guard<std::mutex> l(g.m);
+    if (!g.init) load();
+    return g.cfg.native;
+}
+
+}  // namespace host::pad
+
+using host::guestCallThis;
+using host::retCdecl;
+
+// 0x4088E0: CActionInputControlVector* __thiscall CUserProfileManager::GetPrimaryInputVector()
+extern "C" void host_primary_inputs(Ctx* c) {
+    const uint32_t self = c->ecx, ret = rd32(c->esp);
+    HLOG(1, "controller: GetPrimaryInputVector from 0x%08X", ret);
+    if (rd32(self + 0x54) == rd32(self + 0x58)) guestCallThis(host::pad::kResetAssignedInputs, self, {});
+    uint32_t vec = self + 0x54;
+    if (ret == host::pad::kCallerSetControlScheme && host::pad::nativeEnabled()) vec = host::pad::mergedBindings(vec);
+    retCdecl(c, vec);
+}
+
+// 0xAB6E40: bool __thiscall CJoystickDX::UpdateEvents()
+extern "C" void host_joystick_update(Ctx* c) {
+    using namespace host::pad;
+    const uint32_t self = c->ecx, savedEsp = c->esp;
+    static bool once;
+    if (!once) once = true, host::log("controller: joystick device 0x%08X polled by the game", self);
+    c->esp = (c->esp - 0x80) & ~0xFu;  // scratch below the guest stack for the event
+    const uint32_t ev = c->esp + 0x20;
+    guestCallThis(kClear, self, {});
+
+    XINPUT_STATE st{};
+    bool ok = false, native = false;
+    double ldz = 0.24, rdz = 0.24;
+    bool swap = false;
+    {
+        std::lock_guard<std::mutex> l(g.m);
+        if (!g.init) load();
+        native = g.cfg.native;
+        ldz = g.cfg.leftDeadzone, rdz = g.cfg.rightDeadzone, swap = g.cfg.swapBumpers;
+        if (native) ok = readPad(st);
+    }
+    {
+        static int lastGui = -2;
+        const uint32_t gui = rd32(0x13B8790);
+        const int now = gui ? rd8(gui + 0x2BE) : -1;
+        if (now != lastGui) lastGui = now, host::log("controller: gui object 0x%08X live gui %d", gui, now);
+    }
+    if (native) {
+        const XINPUT_GAMEPAD& p = st.Gamepad;
+        float lx = 0, ly = 0, rx = 0, ry = 0;
+        if (ok) {
+            lx = p.sThumbLX / 32767.0f, ly = -p.sThumbLY / 32767.0f;  // the game's Y points down (DirectInput)
+            rx = p.sThumbRX / 32767.0f, ry = -p.sThumbRY / 32767.0f;
+            deadzone(lx, ly, ldz);
+            deadzone(rx, ry, rdz);
+        }
+        wrf32(self + kAxes, lx);
+        wrf32(self + kAxes + 4, ly);
+        wrf32(self + kAxes + 8, rx);
+        wrf32(self + kAxes + 12, ry);
+
+        bool now[XB_COUNT] = {};
+        if (ok) {
+            const WORD b = p.wButtons;
+            now[XB_A] = b & XINPUT_GAMEPAD_A, now[XB_B] = b & XINPUT_GAMEPAD_B;
+            now[XB_X] = b & XINPUT_GAMEPAD_X, now[XB_Y] = b & XINPUT_GAMEPAD_Y;
+            now[swap ? XB_BLACK : XB_WHITE] = b & XINPUT_GAMEPAD_LEFT_SHOULDER;
+            now[swap ? XB_WHITE : XB_BLACK] = b & XINPUT_GAMEPAD_RIGHT_SHOULDER;
+            now[XB_LT] = p.bLeftTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD;
+            now[XB_RT] = p.bRightTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD;
+            now[XB_LS] = b & XINPUT_GAMEPAD_LEFT_THUMB, now[XB_RS] = b & XINPUT_GAMEPAD_RIGHT_THUMB;
+            now[XB_START] = b & XINPUT_GAMEPAD_START, now[XB_BACK] = b & XINPUT_GAMEPAD_BACK;
+            now[XB_DUP] = b & XINPUT_GAMEPAD_DPAD_UP, now[XB_DDOWN] = b & XINPUT_GAMEPAD_DPAD_DOWN;
+            now[XB_DLEFT] = b & XINPUT_GAMEPAD_DPAD_LEFT, now[XB_DRIGHT] = b & XINPUT_GAMEPAD_DPAD_RIGHT;
+        }
+        const float t = static_cast<float>(GetTickCount());
+        for (uint8_t i = 1; i < XB_COUNT; ++i)
+            if (now[i] != g_held[i]) {
+                g_held[i] = now[i];
+                writeEvent(ev, now[i] ? EV_BUTTON_PRESSED : EV_BUTTON_RELEASED, lx, ly, i, t);
+                guestCallThis(kAddEventToStore, self, {ev});
+                guestCallThis(kProcessMaintainedEvents, self, {ev});
+            }
+        if (ok) {
+            const float stickTime = static_cast<float>(rdf64(kStickEventTime));
+            writeEvent(ev, EV_LEFT_STICK, lx, ly, 0, stickTime);
+            guestCallThis(kAddEventToStore, self, {ev});
+            writeEvent(ev, EV_RIGHT_STICK, rx, ry, 0, stickTime);
+            guestCallThis(kAddEventToStore, self, {ev});
+        }
+        guestCallThis(kUpdateMaintainedPositions, self, {});
+        guestCallThis(kAddMaintainedEvents, self, {});
+    }
+    c->esp = savedEsp;
+    retCdecl(c, 1);
+}

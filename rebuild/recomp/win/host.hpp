@@ -49,7 +49,11 @@ constexpr uint32_t kImageEnd = 0x0146C000;
 constexpr uint32_t kEntryPoint = 0x00401067;
 constexpr uint32_t kTrapBase = 0xFFC00000;  // never mapped: import / COM method traps
 constexpr uint32_t kTrapEnd = 0xFFFF0000;
+#ifdef __ANDROID__
+constexpr uint32_t kGuestLimit = 0xBFFF0000; // Android: the guest window runs to 3 GiB around ART (posix/w32/kernel.cpp)
+#else
 constexpr uint32_t kGuestLimit = 0x7FFF0000; // guest allocations stay below 2 GiB
+#endif
 constexpr uint32_t kReturnSentinel = 0xFFFF1000; // return address for host->guest calls
 
 // ---- logging ----------------------------------------------------------------------
