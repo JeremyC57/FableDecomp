@@ -24,6 +24,7 @@
 // reaches them as the Xbox select event. The navigator stays out of the in-game menus.
 #include "controller.hpp"
 
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
@@ -127,23 +128,27 @@ const Button* find(const std::vector<Button>& v, uint32_t widget) {
     return nullptr;
 }
 
-// Nearest button in a direction (within a cone around it): mostly along the axis,
-// penalising sideways offset.
+// Nearest button in a direction: the distance along it between centres, plus the sideways
+// gap between the rectangles (0 when they overlap), within a cone. Rectangles rather than
+// centres sideways, because buttons of one column differ in width (the main menu's are as
+// wide as their text).
 const Button* step(const std::vector<Button>& v, const Button& from, uint32_t dir) {
     const Button* best = nullptr;
     float bestScore = 0;
+    auto gap = [](float a0, float a1, float b0, float b1) { return std::max(0.0f, std::max(b0 - a1, a0 - b1)); };
     for (const Button& b : v) {
         if (b.widget == from.widget) continue;
         const float dx = b.cx() - from.cx(), dy = b.cy() - from.cy();
         float along, across;
         switch (dir) {
-            case EV_UP: along = -dy, across = dx; break;
-            case EV_DOWN: along = dy, across = dx; break;
-            case EV_LEFT: along = -dx, across = dy; break;
-            default: along = dx, across = dy; break;
+            case EV_UP: along = -dy, across = gap(from.l, from.r, b.l, b.r); break;
+            case EV_DOWN: along = dy, across = gap(from.l, from.r, b.l, b.r); break;
+            case EV_LEFT: along = -dx, across = gap(from.t, from.b, b.t, b.b); break;
+            default: along = dx, across = gap(from.t, from.b, b.t, b.b); break;
         }
-        if (along <= 1.0f || std::fabs(across) > 2.0f * along) continue;  // not that way
-        const float score = along + 2.5f * std::fabs(across);
+        if (along <= 1.0f || across > along) continue;  // not that way (outside 45 degrees)
+        const float centres = std::fabs(dir == EV_UP || dir == EV_DOWN ? dx : dy);  // tie-break
+        const float score = along + 2.5f * across + 0.1f * centres;
         if (!best || score < bestScore) best = &b, bestScore = score;
     }
     return best;
@@ -218,6 +223,25 @@ bool navigate(uint32_t mgr, uint32_t ev, uint32_t scratch) {
         focusOn(buttons, defaultButton(buttons));
         return true;
     }
+    // Left/right on an options row work its arrow buttons, the way the Xbox sliders and
+    // choices change with the pad, and the focus stays where it is. A row is the focused
+    // button and the small (arrow) buttons level with it.
+    if (ev == EV_LEFT || ev == EV_RIGHT) {
+        auto arrow = [](const Button& b) { return b.r - b.l < 2.0f * (b.b - b.t); };
+        const Button* target = nullptr;
+        for (const Button& b : buttons) {
+            if (!arrow(b) || !(b.t < cur->b && cur->t < b.b)) continue;
+            if (!arrow(*cur) && (ev == EV_LEFT ? b.cx() > cur->cx() : b.cx() < cur->cx())) continue;
+            if (!target || (ev == EV_LEFT ? b.cx() < target->cx() : b.cx() > target->cx())) target = &b;
+        }
+        if (target && (arrow(*cur) || std::fabs(target->cx() - cur->cx()) > 1)) {
+            HLOG(1, "menu: event %u presses 0x%08X on the row of 0x%08X", ev, target->widget, cur->widget);
+            const uint32_t keep = cur->widget;
+            press(mgr, buttons, *target);
+            if (const Button* row = find(buttons, keep)) focusOn(buttons, *row);
+            return true;
+        }
+    }
     const Button* next = step(buttons, *cur, ev);
     HLOG(1, "menu: event %u from 0x%08X (%.0f,%.0f) to 0x%08X", ev, cur->widget, cur->cx(), cur->cy(), next ? next->widget : 0);
     if (!next) return false;  // nothing that way: let lists scroll
@@ -270,7 +294,24 @@ extern "C" void host_ui_event(Ctx* c) {
     // CInputProcessInventory sends INVENTORY_SELECT (A) to the menus as a mouse press (0x1A)
     // for the PC screens; the Xbox screens take the select event.
     if (xboxMenus() && ev == EV_LEFT_PRESS && rd32(c->esp) == 0x68A291) wr32(c->esp + 4, EV_SELECT);
-    if (ev <= 0x30) HLOG(2, "menu: ui event %u to 0x%08X from 0x%08X", ev, mgr, rd32(c->esp));
+    // It also sends a direction on every "held" pad event (its second branch, 0x68A95D to
+    // 0x68ABC6), i.e. every frame, which the Xbox screens take as one step each. They get
+    // one step per press here and then a steady repeat while the direction is held.
+    if (xboxMenus() && ev <= EV_RIGHT) {
+        static double pressedAt[4], lastStep[4];
+        const uint32_t from = rd32(c->esp);
+        const double now = GetTickCount() / 1000.0;
+        if (from >= 0x68A95D && from < 0x68ABC6) {
+            if (now - pressedAt[ev] < 0.4 || now - lastStep[ev] < 0.15) {
+                retStd(c, 0, 1);
+                return;
+            }
+            lastStep[ev] = now;
+        } else if (from >= 0x68A266 && from < 0x68A95D) {
+            pressedAt[ev] = lastStep[ev] = now;
+        }
+    }
+    if (ev != 0x19) HLOG(2, "menu: ui event %u to 0x%08X from 0x%08X", ev, mgr, rd32(c->esp));
     if (ev <= EV_BACK && !liveGui() && mgr == guestCall(kGetUiManager, {})) {
         const uint32_t savedEsp = c->esp;
         c->esp = (c->esp - 0x80) & ~0xFu;

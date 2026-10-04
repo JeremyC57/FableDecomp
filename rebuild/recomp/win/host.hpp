@@ -59,6 +59,8 @@ constexpr uint32_t kReturnSentinel = 0xFFFF1000; // return address for host->gue
 // ---- logging ----------------------------------------------------------------------
 void logInit(const wstring& path);
 void log(const char* fmt, ...);
+// A movie is loaded in a DirectShow graph (video.cpp).
+bool moviePlaying();
 [[noreturn]] void die(const char* fmt, ...);
 extern int g_logLevel;  // 0 = errors, 1 = info, 2 = every import call
 #define HLOG(level, ...) do { if (::host::g_logLevel >= (level)) ::host::log(__VA_ARGS__); } while (0)

@@ -279,9 +279,27 @@ bool readPad(XINPUT_STATE& st) {
     return ok;
 }
 
+// Native pad: the movies (intro clips, in-game videos) skip on the keyboard's Escape. On Xbox
+// Start, A, B, X and Y skip them, so while a movie is loaded those buttons hold Escape.
+void movieSkip() {
+    static bool down;
+    XINPUT_STATE st{};
+    const WORD skip = XINPUT_GAMEPAD_START | XINPUT_GAMEPAD_BACK | XINPUT_GAMEPAD_A | XINPUT_GAMEPAD_B |
+                      XINPUT_GAMEPAD_X | XINPUT_GAMEPAD_Y;
+    const bool now = host::moviePlaying() && readPad(st) && (st.Gamepad.wButtons & skip);
+    if (now == down) return;
+    down = now;
+    if (now) HLOG(1, "controller: pad skips the movie");
+    press(Target{Target::Key, DIK_ESCAPE}, now);
+}
+
 void poll() {
     if (!g.init) load();
-    if (!g.getState || g.cfg.native) return;
+    if (!g.getState) return;
+    if (g.cfg.native) {
+        movieSkip();
+        return;
+    }
     LARGE_INTEGER now, f;
     QueryPerformanceCounter(&now);
     QueryPerformanceFrequency(&f);

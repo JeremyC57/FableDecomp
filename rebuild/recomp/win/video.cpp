@@ -404,6 +404,8 @@ LONGLONG position(Graph* g) {
     return g->duration && p > g->duration ? g->duration : p;
 }
 
+std::atomic<int> g_openMovies;  // graphs with a movie loaded (host::moviePlaying)
+
 void destroy(Graph* g) {
     doStop(g);
     {
@@ -427,6 +429,7 @@ void destroy(Graph* g) {
     HLOG(1, "movie graph %u destroyed", g->id);
     // The guest block and the Graph record stay allocated: stale guest pointers then hit
     // a harmless object rather than reused memory.
+    if (g->src) --g_openMovies;
     g->src.reset();
 }
 
@@ -524,6 +527,7 @@ HRESULT renderFile(Graph* g, const wchar_t* file) {
     if (g->src) return VFW_E_ALREADY_CONNECTED;
     HRESULT hr = openSource(g, file);
     if (FAILED(hr)) return hr;
+    ++g_openMovies;
     hr = connectRenderer(g);
     return hr;
 }
@@ -854,3 +858,5 @@ HRESULT createGraph(REFIID iid, uint32_t out) {
 com::HostClassReg reg_FilterGraph(CLSID_FilterGraph, createGraph);
 
 }  // namespace
+
+bool host::moviePlaying() { return g_openMovies.load() > 0; }

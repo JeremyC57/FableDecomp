@@ -91,6 +91,14 @@ Contents
     component's zoom by it. The Xbox screens need ×1.6 (1024/640 = 768/480).
   - The Xbox pause screen (Start, `CTCInGameMenu`) shows one list entry at a time and
     includes Xbox-only entries ("Xbox Live").
+  - `CInputProcessInventory` sends a direction on every held pad event (second branch,
+    0x68A95D–0x68ABC6), i.e. every frame; the recomp keeps the press and adds its own repeat.
+  - Open: on the inventory list, moving onto the last entry (Statistics) scrolls the whole
+    list up out of its frame, scaled or not. `CList::CanMove` 0x537776 mixes `GetUIScale`
+    pixels with the 640×480 conversions (`ConvertX` 0x52E580, 0x52E4D0).
+- **Movies:** the intro and in-game .wmv movies skip on keyboard Escape only. With the native
+  pad, Start/A/B/X/Y/Back hold Escape while a movie is loaded (`controller.cpp` movieSkip,
+  `host::moviePlaying` in `video.cpp`).
 
 ---
 
