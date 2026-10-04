@@ -42,6 +42,34 @@ Contents
 
 ---
 
+- **2026-10-04 — native pad revived in the recompiled host** (`rebuild/recomp/win/controller.cpp`):
+  - The game always creates `CJoystickDX`, because the startup code sets `UseJoystick`.
+    `CJoystickDX::UpdateEvents` 0xAB6E40 reads a DirectInput `c_dfDIJoystick`: X/Y = left stick,
+    Z/Rz = right stick, buttons 0..11 → `EXboxControllerButton` 1..12, no POV/d-pad.
+  - The host hooks 0xAB6E40 and writes `CInputEvent`s (0x34 bytes) directly from XInput:
+    - button id at +8, device class 1 at +0x20;
+    - type 0x13/0x15 = press/release, 0x11/0x12 = left/right stick;
+    - all 16 buttons, through `AddEventToStore` 0x9E41E0 / `ProcessMaintainedEvents` 0x9E4470.
+  - `GetPrimaryInputVector` 0x4088E0 is hooked so that `SetControlScheme` 0x446EF0 sees the
+    profile bindings plus `FABLE_XBOX_CONTROL_SCHEME`'s 77 pad records. It turns ControllerType 1
+    records into `CInputTypeXboxPad*` objects, so analog movement, camera and buttons all work in
+    game.
+  - Start → actions 3/5 opens the Xbox pause screen (`CInputProcessInGameMenu`). On PC that
+    screen draws at the Xbox's 640×480 size in the top-left with only "Options", so Start is
+    rebound to action 72 (PC live GUI).
+- **2026-10-04 — frontend pad path (PC exe):**
+  - `CNewFrontendGameComponent::Input` 0x42E3EE already turns pad events into manager events:
+    - A/Start → 4 (select), B/Back → 5 (back);
+    - stick/d-pad → 0..3 (up/down/left/right), with repeat bits in `this+0xFC`.
+  - It is gated by `this+0x28` (set to 1 in the constructor) and by
+    `CGameJoystickManager` (0x13B89A0, +4 device, +8 assigned) matching the event's +0x24.
+  - The events reach `CManager::ProcessEvent` 0x55CB10. The PC main-menu widgets are mouse
+    clickables (0x1A/0x1C), and nothing on those screens consumes 0/1/4.
+  - The Xbox TLC disc's `xfrontend.bin` (580 entries vs PC `frontend.bin` 810) holds the
+    pad-navigable screen definitions; comparing those is the next step.
+
+---
+
 ## Controller enum tables
 
 *Originally `CONTROLLER_ENUMS.md` (2026-07-19). Task: recover the integer→name mapping for
