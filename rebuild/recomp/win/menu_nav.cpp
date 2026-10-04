@@ -82,6 +82,9 @@ std::vector<Button> activeButtons(uint32_t mgr, uint32_t scratch) {
         if (process != kClickableProcess && process != kFrontEndButtonProcess) continue;
         if (!(guestCallThis(rd32(cvt + 8), comp, {EV_MOUSE_MOVE}) & 0xFF)) continue;  // inactive / hidden
         const uint32_t widget = comp - 4, wvt = rd32(widget);
+        // Fully transparent (colour +0x84, ARGB): e.g. a list's scroll arrows while the list
+        // fits. They still answer the mouse, but nothing shows where they are.
+        if (!(rd32(widget + 0x84) >> 24)) continue;
         const uint32_t pos = scratch, size = scratch + 8, off = scratch + 16;
         std::memset(gp(scratch), 0, 32);
         guestCallThis(rd32(wvt + 0x1E8), widget, {pos});
@@ -108,7 +111,8 @@ const Button* find(const std::vector<Button>& v, uint32_t widget) {
     return nullptr;
 }
 
-// Nearest button in a direction: mostly along the axis, penalising sideways offset.
+// Nearest button in a direction (within a cone around it): mostly along the axis,
+// penalising sideways offset.
 const Button* step(const std::vector<Button>& v, const Button& from, uint32_t dir) {
     const Button* best = nullptr;
     float bestScore = 0;
@@ -122,7 +126,7 @@ const Button* step(const std::vector<Button>& v, const Button& from, uint32_t di
             case EV_LEFT: along = -dx, across = dy; break;
             default: along = dx, across = dy; break;
         }
-        if (along <= 1.0f) continue;
+        if (along <= 1.0f || std::fabs(across) > 2.0f * along) continue;  // not that way
         const float score = along + 2.5f * std::fabs(across);
         if (!best || score < bestScore) best = &b, bestScore = score;
     }
@@ -237,6 +241,8 @@ void poll(uint32_t scratch) {
     const Button* f = find(buttons, g_focus);
     if (!f) f = &defaultButton(buttons);
     HLOG(1, "menu: %zu buttons, focus 0x%08X", buttons.size(), f->widget);
+    for (const Button& b : buttons)
+        HLOG(2, "menu:   0x%08X vt 0x%08X action %u rect %.0f,%.0f-%.0f,%.0f", b.widget, rd32(b.widget), b.action, b.l, b.t, b.r, b.b);
     focusOn(buttons, *f);
 }
 
