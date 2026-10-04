@@ -65,8 +65,32 @@ Contents
     `CGameJoystickManager` (0x13B89A0, +4 device, +8 assigned) matching the event's +0x24.
   - The events reach `CManager::ProcessEvent` 0x55CB10. The PC main-menu widgets are mouse
     clickables (0x1A/0x1C), and nothing on those screens consumes 0/1/4.
-  - The Xbox TLC disc's `xfrontend.bin` (580 entries vs PC `frontend.bin` 810) holds the
-    pad-navigable screen definitions; comparing those is the next step.
+  - The Xbox TLC disc's `xfrontend.bin` (580 entries vs PC `frontend.bin` 810) covers only the
+    front end; its screens match the PC ones. The recomp gives the PC clickables the pad
+    events instead (`rebuild/recomp/win/menu_nav.cpp`): focus = the widgets' own hover
+    state (vtable +0x23C/+0x240, flag +0x160, refresh +0x214); B presses the button whose
+    def `Action` is 86. In retail `CUIDef::Action` is at +228, 4 bytes past the Ego_r PDB's
+    224. Buttons with colour alpha 0 (+0x84) are hidden (the load list's scroll arrows).
+- **2026-10-04 — Xbox in-game menus in the PC exe:**
+  - PC `game.bin` keeps the Xbox in-game UI defs (2,537 of the Xbox disc's 2,541 `UI`
+    entries) next to the PC ones (`PC_*`, 1,128). It also keeps both HUD defs:
+    `PLAYER_GUI_DEFAULT` (Xbox, d-pad/ABXY rings) and `PLAYER_GUI_PC` (the only one the exe
+    looks up).
+  - The PC in-game menu is the Xbox inventory flow: `CPlayerGui::ToggleLiveGui` 0x438310 →
+    player inventory mode (0x6368D0) → `CTCInventory::OpenPCInventory` 0x58F649
+    (`PC_TOP_LEVEL_LIST`). The Xbox build of that screen is still `CTCInventory` virtual 30
+    (0x58578B, `UI_TOP_LEVEL_MENU_SCREEN`), same signature; calling it instead brings up the
+    Xbox inventory/hero screens with their A/B prompts.
+  - `CInputProcessInventory::ProcessInput` 0x689DF0 was changed for the PC:
+    `INVENTORY_SELECT` (25) sends a mouse press (0x1A, return address 0x68A291) instead of
+    select (4); `INVENTORY_UNSELECT` (76) sends back (5) but has no pad binding;
+    `OPEN_INVENTORY` (2) is no longer handled at all (`CInputProcessControlCreature` 0x688360
+    only checks 3, 72, 4, 90...).
+  - The Xbox screens are laid out in 640×480. The NUI scale is `CManager::GetUIScale`
+    0x41CF47 = window / 1024×768; `CComponent::UpdateZoom` 0x52F5C0 multiplies each
+    component's zoom by it. The Xbox screens need ×1.6 (1024/640 = 768/480).
+  - The Xbox pause screen (Start, `CTCInGameMenu`) shows one list entry at a time and
+    includes Xbox-only entries ("Xbox Live").
 
 ---
 

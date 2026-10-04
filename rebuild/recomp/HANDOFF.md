@@ -110,9 +110,9 @@ use llvm-mingw directly, or clang-cl after small tweaks.
 # Lifter (needs Zydis): build rebuild/recomp, then
 fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch \
     --hook 0xAB6E40=host_joystick_update --hook 0x4088E0=host_primary_inputs \
-    --wrap 0x55CB10=host_ui_event
-# coroutine switch -> host fibers; native Xbox pad (controller.cpp); pad menu navigation
-# (menu_nav.cpp; --wrap keeps the original body as F_<addr>_orig)
+    --wrap 0x55CB10=host_ui_event --wrap 0x58F649=host_open_inventory --wrap 0x41CF47=host_ui_scale
+# coroutine switch -> host fibers; native Xbox pad (controller.cpp); pad menu navigation and
+# the Xbox in-game menus (menu_nav.cpp; --wrap keeps the original body as F_<addr>_orig)
 fable_recomp ConfigDetect.dll - gen_cfg/ --prefix cfgdetect
 python3 rebuild/recomp/win/gen_com.py <llvm-mingw>/generic-w64-mingw32/include rebuild/recomp/win/com_vtables.inc
 cmake -S rebuild/recomp/win -B build/win -G Ninja \

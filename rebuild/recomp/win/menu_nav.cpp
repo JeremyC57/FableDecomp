@@ -17,9 +17,15 @@
 // button when it opens and returns to the remembered one when going back to a screen.
 // Events the navigator does not take (no button in that direction, mouse events) go to the
 // original dispatcher, so scrolling lists and the mouse work as before.
+//
+// In game, XBOX_MENUS (controller.cpp) brings back the Xbox in-game menus, which the PC build
+// still contains: the inventory opens the Xbox screens instead of the PC menu
+// (host_open_inventory), they are scaled from their 640x480 layout (host_ui_scale), and A
+// reaches them as the Xbox select event. The navigator stays out of the in-game menus.
 #include "controller.hpp"
 
 #include <cmath>
+#include <cstdlib>
 #include <cstring>
 #include <map>
 #include <vector>
@@ -51,6 +57,16 @@ struct Button {
 };
 
 uint32_t g_focus = 0;  // widget the pad last focused
+
+bool xboxMenus() {
+    static const bool on = host::pad::xboxMenusEnabled();
+    return on;
+}
+// The in-game menu (CPlayerGui's live GUI flag) is open.
+bool liveGui() {
+    const uint32_t gui = rd32(0x13B8790);
+    return gui && rd8(gui + 0x2BE);
+}
 
 // The button's def (vtable +0x1B0 returns a counted pointer through an out parameter, as
 // CFrontEndButton::ProcessEvent 0x54DBC0 uses it): its Action, then the reference is dropped
@@ -251,8 +267,11 @@ void poll(uint32_t scratch) {
 // 0x55CB10: void __thiscall CManager::ProcessEvent(int event)
 extern "C" void host_ui_event(Ctx* c) {
     const uint32_t mgr = c->ecx, ev = rd32(c->esp + 4);
+    // CInputProcessInventory sends INVENTORY_SELECT (A) to the menus as a mouse press (0x1A)
+    // for the PC screens; the Xbox screens take the select event.
+    if (xboxMenus() && ev == EV_LEFT_PRESS && rd32(c->esp) == 0x68A291) wr32(c->esp + 4, EV_SELECT);
     if (ev <= EV_BACK) HLOG(2, "menu: ui event %u to 0x%08X from 0x%08X", ev, mgr, rd32(c->esp));
-    if (ev <= EV_BACK && mgr == guestCall(kGetUiManager, {})) {
+    if (ev <= EV_BACK && !liveGui() && mgr == guestCall(kGetUiManager, {})) {
         const uint32_t savedEsp = c->esp;
         c->esp = (c->esp - 0x80) & ~0xFu;
         const bool done = navigate(mgr, ev, c->esp + 0x20);
@@ -263,4 +282,32 @@ extern "C" void host_ui_event(Ctx* c) {
         }
     }
     F_0055CB10_orig(c);
+}
+
+extern "C" void F_0041CF47_orig(Ctx* c);
+// 0x41CF47 CManager::GetUIScale(C2DVector* out): window / 1024x768. The Xbox screens are laid
+// out for 640x480, so they need 1.6 times that.
+extern "C" void host_ui_scale(Ctx* c) {
+    const uint32_t out = rd32(c->esp + 4), ret = rd32(c->esp);
+    F_0041CF47_orig(c);
+    const bool zoom = ret == 0x52F88C || ret == 0x52F8AB || ret == 0x52F8CB || ret == 0x52F8E4;  // CComponent::UpdateZoom
+    if (xboxMenus() && rd32(0x13B8790) && zoom) {
+        wrf32(out, rdf32(out) * 1.6f);
+        wrf32(out + 4, rdf32(out + 4) * 1.6f);
+    }
+}
+
+// 0x58F649 CTCInventory::OpenPCInventory, from the player's inventory mode. The Xbox build of
+// the screen is still there, as CTCInventory's virtual 30 (0x58578B: UI_TOP_LEVEL_MENU_SCREEN,
+// the Xbox inventory/hero screens; OpenPCInventory builds PC_TOP_LEVEL_LIST).
+extern "C" void F_0058F649_orig(Ctx* c);
+extern "C" void host_open_inventory(Ctx* c) {
+    const uint32_t inv = c->ecx, xbox = rd32(rd32(inv) + 0x78);
+    HLOG(1, "menu: inventory 0x%08X opens %s", inv, xboxMenus() ? "the Xbox screens" : "the PC menu");
+    if (xboxMenus()) {
+        guestCallThis(xbox, inv, {});
+        c->esp += 4;
+        return;
+    }
+    F_0058F649_orig(c);
 }

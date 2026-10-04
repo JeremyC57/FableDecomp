@@ -18,6 +18,8 @@ void flush();
 // Touchpad-style mouse input (the Android on-screen controls): relative motion and buttons.
 void touchMotion(int dx, int dy);
 void touchButton(int button, bool down);
+// XBOX_MENUS: the Xbox in-game menus instead of the PC ones (menu_nav.cpp).
+bool xboxMenusEnabled();
 }  // namespace host::pad
 
 namespace host::menu {

@@ -95,6 +95,9 @@ const char* const kDefaultConfig =
     "; original Xbox button layout. Xbox 360/One pads: LB = White button, RB = Black button.\n"
     "NATIVE_PAD = 1\n"
     "SWAP_BUMPERS = 0       ; 1: LB = Black, RB = White\n"
+    "; XBOX_MENUS = 1 uses the Xbox in-game menus: Back opens the inventory/hero screens,\n"
+    "; Start the pause menu. 0: the PC in-game menu (Start).\n"
+    "XBOX_MENUS = 1\n"
     "LEFT_DEADZONE = 0.24\n"
     "RIGHT_DEADZONE = 0.24\n"
     ";\n"
@@ -135,7 +138,7 @@ struct Config {
     Target bind[InputCount];
     double cameraSpeed = 900, moveThreshold = 0.35;
     bool invertY = false;
-    bool native = true, swapBumpers = false;
+    bool native = true, swapBumpers = false, xboxMenus = true;
     double leftDeadzone = 0.24, rightDeadzone = 0.24;
 };
 
@@ -156,6 +159,7 @@ void parseConfig(Config& cfg, const std::string& text) {
         else if (key == "MOVE_THRESHOLD") cfg.moveThreshold = std::atof(val.c_str());
         else if (key == "INVERT_Y") cfg.invertY = std::atoi(val.c_str()) != 0;
         else if (key == "NATIVE_PAD") cfg.native = std::atoi(val.c_str()) != 0;
+        else if (key == "XBOX_MENUS") cfg.xboxMenus = std::atoi(val.c_str()) != 0;
         else if (key == "SWAP_BUMPERS") cfg.swapBumpers = std::atoi(val.c_str()) != 0;
         else if (key == "LEFT_DEADZONE") cfg.leftDeadzone = std::atof(val.c_str());
         else if (key == "RIGHT_DEADZONE") cfg.rightDeadzone = std::atof(val.c_str());
@@ -471,12 +475,12 @@ uint32_t mergedBindings(uint32_t vec) {
     for (size_t i = 0; i + kRecordSize <= all.size(); i += kRecordSize)
         if (rd32le(&all[i + 4]) == 1) hasPad = true;
     if (!hasPad) {
-        // The Xbox scheme opens the Xbox pause menu with Start (actions 3 and 5); that screen
-        // is not laid out for the PC build. Start opens the PC in-game menu instead (action
-        // 72, Return/Escape on the keyboard).
+        // The Xbox scheme opens the Xbox pause menu with Start (actions 3 and 5). With the PC
+        // menus, Start opens the PC in-game menu instead (action 72, Escape on the keyboard).
+        const bool xbox = xboxMenusEnabled();
         for (size_t i = 0; i + kRecordSize <= g_xboxRecords.size(); i += kRecordSize) {
             const uint32_t action = rd32le(&g_xboxRecords[i]);
-            if ((action == 3 || action == 5) && !std::getenv("FABLE_XBOX_MENUS")) continue;
+            if ((action == 3 || action == 5) && !xbox) continue;
             all.insert(all.end(), g_xboxRecords.begin() + i, g_xboxRecords.begin() + i + kRecordSize);
         }
         auto add = [&](uint32_t action, uint32_t button) {
@@ -485,7 +489,12 @@ uint32_t mergedBindings(uint32_t vec) {
             std::memcpy(rec, fields, sizeof fields);
             all.insert(all.end(), rec, rec + kRecordSize);
         };
-        if (!std::getenv("FABLE_XBOX_MENUS")) add(72, XB_START);
+        if (!xbox) {
+            add(72, XB_START);
+        } else {
+            add(72, XB_BACK);  // the in-game menu, as Back opened the inventory on Xbox
+            add(76, XB_B);     // INVENTORY_UNSELECT: back out of the menu screens
+        }
     }
     const uint32_t need = static_cast<uint32_t>(all.size());
     if (need + 12 > g_mergedCap) {
@@ -505,6 +514,12 @@ bool nativeEnabled() {
     std::lock_guard<std::mutex> l(g.m);
     if (!g.init) load();
     return g.cfg.native;
+}
+
+bool xboxMenusEnabled() {
+    std::lock_guard<std::mutex> l(g.m);
+    if (!g.init) load();
+    return g.cfg.native && g.cfg.xboxMenus;
 }
 
 }  // namespace host::pad
@@ -575,6 +590,10 @@ extern "C" void host_joystick_update(Ctx* c) {
         for (uint8_t i = 1; i < XB_COUNT; ++i)
             if (now[i] != g_held[i]) {
                 g_held[i] = now[i];
+                if (i == XB_BACK && now[i] && std::getenv("FABLE_TEST_OPEN") && rd32(0x13B8790)) {  // TEMP experiment
+                    host::log("test: CPlayerGui::Open");
+                    guestCallThis(0x4374B0, rd32(0x13B8790), {});
+                }
                 writeEvent(ev, now[i] ? EV_BUTTON_PRESSED : EV_BUTTON_RELEASED, lx, ly, i, t);
                 guestCallThis(kAddEventToStore, self, {ev});
                 guestCallThis(kProcessMaintainedEvents, self, {ev});
