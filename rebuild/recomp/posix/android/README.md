@@ -73,6 +73,14 @@ All libraries are linked for 16 KiB pages. The APK is signed with a local key
 - **When neither renderer can start**, the game shows a message pointing to custom drivers
   instead of crashing. The patched DXVK also logs every missing feature, not only the first.
 
+- **Swapchain.** In landscape, Android reports every present as `VK_SUBOPTIMAL_KHR`, because the
+  display transform differs from the swapchain's. The compositor rotates the image anyway, so the
+  patches treat it as success. Before this, DXVK recreated the swapchain every frame.
+
+**Device tests.** On an Adreno 740 (Snapdragon 8 Gen 2) with Mr. Purple's Turnip T30 driver and
+DXVK 3.x, the game ran through the intro movies, the menus and profile, and into the world
+(Oakvale), with an autosave. It ran mostly at 60 fps. Qualcomm's own driver lacks `shaderInt64`.
+
 DXVK needs Vulkan 1.3 with the extensions and features it lists for D3D9. Many stock mobile
 drivers fall short, which is what custom drivers are for: Mesa Turnip on Adreno.
 
