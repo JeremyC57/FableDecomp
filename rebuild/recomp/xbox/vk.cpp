@@ -43,6 +43,7 @@ struct Swap {
     uint32_t frame = 0;
     bool dirty = true;
     bool surfaceLost = false;  // the window's surface went away (Android: background, rotation)
+    bool rotated = false;      // IDENTITY swapchain on a rotated display: SUBOPTIMAL is expected
     int failures = 0;          // swapchain creations failed in a row (logged, then rate-limited)
 } g_swap;
 
@@ -155,11 +156,10 @@ bool createSwapchain() {
         SDL_GetWindowSize(g_window, &w, &h);
         ext = {static_cast<uint32_t>(w), static_cast<uint32_t>(h)};
     }
-    // Android reports the extent in the display's natural orientation; without pre-rotation
-    // (IDENTITY) the buffers must be in the window's orientation: swap for 90/270 degrees.
+    // Android reports currentExtent in the window's current orientation (1920x1080 on a phone
+    // held sideways, with currentTransform ROTATE_90): with an IDENTITY swapchain that is the
+    // size to use, and the compositor rotates. (Its presents then report SUBOPTIMAL, see present().)
     const bool identity = caps.supportedTransforms & VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
-    if (identity && (caps.currentTransform & (VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR | VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR)))
-        std::swap(ext.width, ext.height);
     ext.width = std::clamp(ext.width, caps.minImageExtent.width, std::max(caps.maxImageExtent.width, caps.minImageExtent.width));
     ext.height = std::clamp(ext.height, caps.minImageExtent.height, std::max(caps.maxImageExtent.height, caps.minImageExtent.height));
     if (!ext.width || !ext.height) return false;  // minimised
@@ -207,6 +207,7 @@ bool createSwapchain() {
     g_swap.images.resize(count);
     vkGetSwapchainImagesKHR(g_ctx.device, chain, &count, g_swap.images.data());
     g_swap.dirty = false;
+    g_swap.rotated = identity && caps.currentTransform != VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
     XLOG(1, "Vulkan: swapchain %ux%u, %u images, format %d, transform 0x%X, %s", ext.width, ext.height, count, static_cast<int>(g_swap.format),
          static_cast<unsigned>(caps.currentTransform), mode == VK_PRESENT_MODE_FIFO_KHR ? "vsync" : "no vsync");
     return true;
@@ -436,7 +437,8 @@ void present(VkImage image, uint32_t w, uint32_t h, float aspect, VkSemaphore wa
         std::lock_guard<std::mutex> l(g_ctx.queueLock);
         r = vkQueuePresentKHR(g_ctx.queue, &pi);
     }
-    if (r == VK_ERROR_OUT_OF_DATE_KHR || r == VK_SUBOPTIMAL_KHR) g_swap.dirty = true;
+    if (r == VK_ERROR_OUT_OF_DATE_KHR || (r == VK_SUBOPTIMAL_KHR && !g_swap.rotated)) g_swap.dirty = true;
+    else if (r == VK_SUBOPTIMAL_KHR) {}  // Android's hint to pre-rotate; recreating would not change it
     else if (r != VK_SUCCESS) {
         g_swap.dirty = true;
         swapchainFailed("vkQueuePresentKHR", r);

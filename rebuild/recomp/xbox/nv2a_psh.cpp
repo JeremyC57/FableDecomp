@@ -123,6 +123,7 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
     for (int i = 0; i < 4; ++i) {
         const uint32_t mode = (prog >> (5 * i)) & 0x1F;
         const std::string t = "t" + std::to_string(i), tc = "vTex" + std::to_string(i), smp = "tex" + std::to_string(i);
+        const std::string tc2 = "sTex" + std::to_string(i);  // for 2D lookups: rect textures scaled to 0..1
         if (info) info->texMode[i] = mode;
         if (((shadowMask >> i) & 1) && (mode == 1 || mode == 2)) {
             // Shadow map (as xemu): the depth (24-bit) against z/w, with the shadow depth func.
@@ -131,7 +132,7 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
             if (func == 0 || func == 7) {
                 code += "  vec4 " + t + " = vec4(" + (func ? "1.0" : "0.0") + ");\n";
             } else {
-                code += "  float " + t + "d = textureProj(" + smp + ", " + tc + ".xyw).r * 16777215.0;\n";
+                code += "  float " + t + "d = textureProj(" + smp + ", " + tc2 + ".xyw).r * 16777215.0;\n";
                 const std::string z = mode == 2 ? "clamp(" + tc + ".z / " + tc + ".w, 0.0, 16777215.0)" : "0.0";
                 code += "  vec4 " + t + " = vec4(" + t + "d " + kCmp[func] + " " + z + " ? 1.0 : 0.0);\n";
             }
@@ -139,7 +140,7 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
         }
         switch (mode) {
         case 0: code += "  vec4 " + t + " = vec4(0.0);\n"; break;
-        case 1: code += "  vec4 " + t + " = textureProj(" + smp + ", " + tc + ".xyw);\n"; break;
+        case 1: code += "  vec4 " + t + " = textureProj(" + smp + ", " + tc2 + ".xyw);\n"; break;
         case 2: code += "  vec4 " + t + " = texture(" + smp + "3d, " + tc + ".xyz / " + tc + ".w);\n"; break;
         case 3: code += "  vec4 " + t + " = texture(" + smp + "cube, " + tc + ".xyz);\n"; break;
         case 4: code += "  vec4 " + t + " = clamp(" + tc + ", 0.0, 1.0);\n"; break;
@@ -149,13 +150,13 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
         case 6: case 7: {  // bump environment map from the previous stage
             const std::string prev = "t" + std::to_string(i - 1), m = "bump[" + std::to_string(i) + "]";
             code += "  vec2 dsdt" + std::to_string(i) + " = mat2(" + m + ".xy, " + m + ".zw) * (" + prev + ".rg * 2.0 - 1.0);\n";
-            code += "  vec4 " + t + " = texture(" + smp + ", " + tc + ".xy / " + tc + ".w + dsdt" + std::to_string(i) + ");\n";
+            code += "  vec4 " + t + " = texture(" + smp + ", " + tc2 + ".xy / " + tc2 + ".w + dsdt" + std::to_string(i) + ");\n";
             if (mode == 7) code += "  " + t + ".rgb *= clamp(" + prev + ".b * bumpLum[" + std::to_string(i) + "].x + bumpLum[" +
                                    std::to_string(i) + "].y, 0.0, 1.0);\n";
             break;
         }
         default:  // dot-product modes: approximate with a plain 2D lookup for now
-            code += "  vec4 " + t + " = texture(" + smp + ", " + tc + ".xy);\n";
+            code += "  vec4 " + t + " = texture(" + smp + ", " + tc2 + ".xy);\n";
             break;
         }
     }

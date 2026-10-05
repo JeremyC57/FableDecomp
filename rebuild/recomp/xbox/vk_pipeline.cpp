@@ -600,7 +600,7 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
         "layout(location=3) in vec4 vB1; layout(location=4) in float vFog;\n"
         "layout(location=5) in vec4 vTex0; layout(location=6) in vec4 vTex1; layout(location=7) in vec4 vTex2;\n"
         "layout(location=8) in vec4 vTex3;\n"
-        "layout(set=0, binding=1) uniform FC { vec4 c0[9]; vec4 c1[9]; vec4 fogColor; vec4 alphaRef; vec4 bump[4]; vec4 bumpLum[4]; } cf;\n"
+        "layout(set=0, binding=1) uniform FC { vec4 c0[9]; vec4 c1[9]; vec4 fogColor; vec4 alphaRef; vec4 bump[4]; vec4 bumpLum[4]; vec4 texScale[4]; } cf;\n"
         "#define bump cf.bump\n#define bumpLum cf.bumpLum\n";
     for (int i = 0; i < 4; ++i) {
         src += "layout(set=0, binding=" + std::to_string(2 + i) + ") uniform sampler2D tex" + std::to_string(i) + ";\n";
@@ -610,6 +610,10 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
     src += "layout(location=0) out vec4 fragColor;\nvoid main() {\n"
            "  vec4 v0 = gl_FrontFacing ? vD0 : vB0, v1 = gl_FrontFacing ? vD1 : vB1;\n"
            "  vec4 pFog = vec4(cf.fogColor.rgb, clamp(vFog, 0.0, 1.0));\n";
+    // 2D lookups use sTexN: linear (rect) textures take texel coordinates, scaled to 0..1 here.
+    for (int i = 0; i < 4; ++i)
+        src += "  vec4 sTex" + std::to_string(i) + " = vec4(vTex" + std::to_string(i) + ".xy * cf.texScale[" + std::to_string(i) + "].xy, vTex" +
+               std::to_string(i) + ".zw);\n";
     src += translateCombiners(state(), nullptr, shadowMask);
     if (alphaTest) {
         const uint32_t func = R[NV097_SET_ALPHA_FUNC / 4] & 7;
@@ -1065,7 +1069,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // frame to 16:9, so the world shows a wider view and 2D/HUD draws keep their layout.
     vc.clip[2] = (settings().widescreen && target_.w == 640 && target_.h == 480) ? 0.75f : 1.0f;
     const VkDeviceSize vcOff = upload(&vc, sizeof vc, ctx().props.limits.minUniformBufferOffsetAlignment);
-    struct FC { float c0[9][4]; float c1[9][4]; float fog[4]; float aref[4]; float bump[4][4]; float lum[4][4]; } fc{};
+    struct FC { float c0[9][4]; float c1[9][4]; float fog[4]; float aref[4]; float bump[4][4]; float lum[4][4]; float texScale[4][4]; } fc{};
     auto unpack = [](uint32_t v, float* o) {
         o[0] = ((v >> 16) & 0xFF) / 255.0f;
         o[1] = ((v >> 8) & 0xFF) / 255.0f;
@@ -1089,6 +1093,11 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     for (int i = 0; i < 4; ++i) {
         std::memcpy(fc.bump[i], &R[NV097_SET_TEXTURE_SET_BUMP_ENV_MAT / 4 + i * 16], 16);
         std::memcpy(&fc.lum[i][0], &R[NV097_SET_TEXTURE_SET_BUMP_ENV_SCALE / 4 + i * 16], 8);
+        // Linear (rect) textures are addressed in texels (as xemu's texScale).
+        const uint32_t base = NV097_SET_TEXTURE_OFFSET / 4 + i * 16, rect = R[base + 7];
+        const bool linear = isLinear((R[base + 1] >> 8) & 0xFF) && (rect >> 16) && (rect & 0xFFFF);
+        fc.texScale[i][0] = linear ? 1.0f / static_cast<float>(rect >> 16) : 1.0f;
+        fc.texScale[i][1] = linear ? 1.0f / static_cast<float>(rect & 0xFFFF) : 1.0f;
     }
     const VkDeviceSize fcOff = upload(&fc, sizeof fc, ctx().props.limits.minUniformBufferOffsetAlignment);
 
