@@ -26,7 +26,7 @@ FABLE_HEADLESS=1 FABLE_AUTOPRESS=1 XBOX_LOG=1 bx/FableXbox --game work/xbox/iso 
 - `FABLE_DUMP_FRAMES=N` (software renderer) writes every Nth scanout frame to a PNG.
 - Settings file: `<hdd>/../fable_xbox.ini` (see `settings.hpp`).
 
-## State (2026-10-05)
+## State (2026-10-05, later)
 - The lifter reads XBEs. It handles the ring-0 instructions, memmove's jump tables,
   `--mmio` (checked device-register accessors for the D3D section), `--safepoints`
   (preemption checks on loop back edges) and `--hook` (HLE).
@@ -36,22 +36,24 @@ FABLE_HEADLESS=1 FABLE_AUTOPRESS=1 XBOX_LOG=1 bx/FableXbox --game work/xbox/iso 
 - Fable's own demand paging is disabled through a `T:\xboot.ini` override.
 - NV2A (`nv2a.cpp`) covers the registers, the DMA pusher, RAMHT, interrupts and vblank,
   semaphores, flips, NOP callbacks, the clear-value mirrors and the 2D blit.
-- Input HLE (`hle.cpp`, `input.cpp`) is written. The rebuild with the hooks was running
-  when this note was written; next is to see how far the game gets.
-- Vulkan: `vk.cpp` (loader, custom driver, swapchain, present) and `video.cpp` (window,
-  scanout upload) are in the build.
-- The renderer `vk_renderer.cpp` and `vk_pipeline.cpp` are written but **not yet in
-  CMake**. To add them: append the files plus `nv2a_vsh.cpp`, `nv2a_psh.cpp` and
-  `nv2a_texture.cpp` to HOST_SOURCES, add glslang (FetchContent tag 15.4.0, ENABLE_OPT
-  OFF, link `glslang SPIRV glslang-default-resource-limits`), set
-  `gpu::g_renderer = new VkRenderer` after `vk::init` in video.cpp, present through
-  `scanoutImage()`, and fix the compile errors.
+- Input HLE (`hle.cpp`, `input.cpp`) works: XInitDevices/XInput are replaced.
+- Audio: `audio.cpp` hooks DSOUND's 46 public entry points (list in `lift.sh`). Buffers and
+  streams (XMediaObject vtable via `hostTrap()`) are host voices mixed through SDL (PCM,
+  Xbox ADPCM). Stream packets are captured at Process (callers pass them on the stack)
+  and completed on the kernel worker (`workerAddService`). `FABLE_NO_AUDIO=1` mixes silently.
+- Lifter fixes: `xlat`, and lazy flags carried into fall-through/tail-jump targets
+  (thread-local `recomp_lf_*`, 1,520 entries).
+- The game reaches its ADPCM streams (music/movie start). No 3D frame flipped yet when
+  last run; the run after the flag fix was building when this note was written.
+- Vulkan: `vk.cpp`, `video.cpp`, `vk_renderer.cpp`, `vk_pipeline.cpp`, shader translators
+  and glslang are all in the build (it compiles and links); not yet tested on a display.
+- Use `timeout -s KILL` for unattended runs (SDL signal handlers are now disabled too).
 
 ## Next
-1. Get the renderer compiling, then see the first frames (Xvfb + lavapipe:
+1. See the first frames (Xvfb + lavapipe:
    `vulkan_driver = /usr/lib/x86_64-linux-gnu/libvulkan_lvp.so`).
 2. Fixed-function T&L (lighting, texgen) if Fable uses it; check which execution mode
    its draws use.
-3. Audio: DSOUND HLE (151 symbols found). Movies: XMV.
+3. Movies: check how XMV presents (overlay or textures); listener 3D and effects.
 4. Launcher settings: 60 fps (presentation interval), widescreen, PC textures, anisotropy.
 5. Android: reuse `rebuild/recomp/posix/android` (SDL, adrenotools for custom drivers).
