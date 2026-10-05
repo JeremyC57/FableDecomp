@@ -39,7 +39,9 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
 - Audio: DSOUND HLE (`audio.cpp`), SDL mixer, Xbox ADPCM, streams (movies, music).
 - Input: XInput HLE; `FABLE_AUTOPRESS=1` taps A (and Start for 50 s) for unattended runs.
 - NV2A + Vulkan: pusher (wrap fix), PATT_COLOR0 fence, vertex programs, register combiners,
-  fog unit, surfaces alias by address, frame readback (`FABLE_DUMP_FRAMES=N`).
+  fog unit, surfaces alias by address, shadow-map compares, frame readback
+  (`FABLE_DUMP_FRAMES=N`). Occlusion queries are stubbed: GET_REPORT returns 0x10000 pixels
+  (`gpu.hpp` zpassCount). With 0, Fable culls every house and character.
 - Debugging: `XBOX_LOG=0..4`, `FABLE_DRAWLOG=<flip>`, `FABLE_DUMP_SHADERS=1`,
   `FABLE_WATCH=<guest addr>` (logs writers of a word), `lift.sh ... --trace ADDR`.
 - Run unattended: `Xvfb :98 &` then `DISPLAY=:98 FABLE_AUTOPRESS=1 FABLE_NO_AUDIO=1
@@ -47,8 +49,8 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
   `run/fable_xbox.ini` holding `vulkan_driver = /usr/lib/x86_64-linux-gnu/libvulkan_lvp.so`.
 
 ## Next
-1. Renderer: PROJECT3D on a 2D depth texture is a shadow-map compare (now a dummy 3D
-   lookup); dot-product texture modes; fixed-function T&L; check hero/NPC rendering in play.
+1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
+   Vulkan queries); dot-product texture modes; fixed-function T&L.
 2. Launcher settings. Done: resolution scale, anisotropy, widescreen (anamorphic 3D
    squeeze + 16:9 present; `vk_pipeline.cpp`), custom Vulkan driver, volume. To do:
    - 60 fps: the game already presents with ONE_OR_IMMEDIATE (0x80000001; the wrap of
@@ -57,6 +59,6 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
      60 fps means halving that step consistently and finding the limiter.
    - PC textures: replace textures at upload by name (needs the game's texture/bank
      name at load time).
-3. Android: build script for this target (SDL2, adrenotools -> `vk::Settings::driverHandle`),
-   reuse `rebuild/recomp/posix/android` (launcher activity, touch controls).
+3. Android: `android/build_android.sh` builds the APK (launcher, touch controls, custom
+   drivers). Not yet tested on a device.
 4. Movies: frame presentation through the renderer works; check A/V sync.

@@ -37,7 +37,9 @@ public:
     virtual void inlineArray(const uint32_t* words, uint32_t n) = 0;
     virtual void arrayElements(const uint32_t* words, uint32_t n, bool sixteenBit) = 0;
     virtual void vertexAttribute(uint32_t method, uint32_t value) = 0;
-    virtual uint32_t zpassCount() { return 0; }
+    // Pixels that passed the depth test since the last CLEAR_REPORT_VALUE (occlusion queries:
+    // Fable culls objects whose bounding box reports 0). Until real queries exist: "visible".
+    virtual uint32_t zpassCount() { return 0x10000; }
 };
 Renderer& renderer();
 
