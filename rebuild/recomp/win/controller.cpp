@@ -98,6 +98,9 @@ const char* const kDefaultConfig =
     "; XBOX_MENUS = 1 uses the Xbox in-game menus: Back opens the inventory/hero screens,\n"
     "; Start the pause menu. 0: the PC in-game menu (Start).\n"
     "XBOX_MENUS = 1\n"
+    "; RIGHT_STICK_CAMERA = 1 turns the camera freely with the right stick, as the mouse does\n"
+    "; (CAMERA_SPEED and INVERT_Y below). 0: the Xbox camera (a flick turns it one step).\n"
+    "RIGHT_STICK_CAMERA = 0     ; experimental, not working yet\n"
     "LEFT_DEADZONE = 0.24\n"
     "RIGHT_DEADZONE = 0.24\n"
     ";\n"
@@ -138,7 +141,7 @@ struct Config {
     Target bind[InputCount];
     double cameraSpeed = 900, moveThreshold = 0.35;
     bool invertY = false;
-    bool native = true, swapBumpers = false, xboxMenus = true;
+    bool native = true, swapBumpers = false, xboxMenus = true, stickCamera = false;
     double leftDeadzone = 0.24, rightDeadzone = 0.24;
 };
 
@@ -159,6 +162,7 @@ void parseConfig(Config& cfg, const std::string& text) {
         else if (key == "MOVE_THRESHOLD") cfg.moveThreshold = std::atof(val.c_str());
         else if (key == "INVERT_Y") cfg.invertY = std::atoi(val.c_str()) != 0;
         else if (key == "NATIVE_PAD") cfg.native = std::atoi(val.c_str()) != 0;
+        else if (key == "RIGHT_STICK_CAMERA") cfg.stickCamera = std::atoi(val.c_str()) != 0;
         else if (key == "XBOX_MENUS") cfg.xboxMenus = std::atoi(val.c_str()) != 0;
         else if (key == "SWAP_BUMPERS") cfg.swapBumpers = std::atoi(val.c_str()) != 0;
         else if (key == "LEFT_DEADZONE") cfg.leftDeadzone = std::atof(val.c_str());
@@ -279,6 +283,31 @@ bool readPad(XINPUT_STATE& st) {
     return ok;
 }
 
+void deadzone(float& x, float& y, double dz);
+
+// In game (a player GUI exists) and no menu open: the right stick turns the camera.
+bool inGameplay() {
+    const uint32_t gui = rd32(0x13B8790);
+    return gui && !rd8(gui + 0x2BE);
+}
+
+// Native pad, RIGHT_STICK_CAMERA: the right stick moves the mouse during gameplay, which turns
+// the PC camera freely (the Xbox stick camera turns in steps and swings back).
+void stickCamera(double dt) {
+    XINPUT_STATE st{};
+    if (!g.cfg.stickCamera || !inGameplay() || !readPad(st)) return;
+    float rx = st.Gamepad.sThumbRX / 32767.0f, ry = -st.Gamepad.sThumbRY / 32767.0f;
+    deadzone(rx, ry, g.cfg.rightDeadzone);
+    g.fx += rx * std::abs(rx) * g.cfg.cameraSpeed * dt;
+    g.fy += (g.cfg.invertY ? -ry : ry) * std::abs(ry) * g.cfg.cameraSpeed * dt;
+    const LONG dx = static_cast<LONG>(g.fx), dy = static_cast<LONG>(g.fy);
+    g.fx -= dx, g.fy -= dy;
+    if (dx) event(g.mouseEvents, DIMOFS_X, static_cast<DWORD>(dx));
+    if (dy) event(g.mouseEvents, DIMOFS_Y, static_cast<DWORD>(dy));
+    g.stateDx += dx, g.stateDy += dy;
+    HLOG(1, "TEMP stick camera %ld %ld", dx, dy);
+}
+
 // Native pad: the movies (intro clips, in-game videos) skip on the keyboard's Escape. On Xbox
 // Start, A, B, X and Y skip them, so while a movie is loaded those buttons hold Escape.
 void movieSkip() {
@@ -296,14 +325,15 @@ void movieSkip() {
 void poll() {
     if (!g.init) load();
     if (!g.getState) return;
-    if (g.cfg.native) {
-        movieSkip();
-        return;
-    }
     LARGE_INTEGER now, f;
     QueryPerformanceCounter(&now);
     QueryPerformanceFrequency(&f);
     const double dt = std::min(0.1, double(now.QuadPart - g.last.QuadPart) / double(f.QuadPart));
+    if (g.cfg.native) {
+        movieSkip();
+        if (dt >= 0.002) g.last = now, stickCamera(dt);
+        return;
+    }
     if (dt < 0.002) return;
     g.last = now;
 
@@ -568,12 +598,12 @@ extern "C" void host_joystick_update(Ctx* c) {
     XINPUT_STATE st{};
     bool ok = false, native = false;
     double ldz = 0.24, rdz = 0.24;
-    bool swap = false;
+    bool swap = false, stickCam = false;
     {
         std::lock_guard<std::mutex> l(g.m);
         if (!g.init) load();
         native = g.cfg.native;
-        ldz = g.cfg.leftDeadzone, rdz = g.cfg.rightDeadzone, swap = g.cfg.swapBumpers;
+        ldz = g.cfg.leftDeadzone, rdz = g.cfg.rightDeadzone, swap = g.cfg.swapBumpers, stickCam = g.cfg.stickCamera;
         if (native) ok = readPad(st);
     }
     if (native) {
@@ -587,8 +617,9 @@ extern "C" void host_joystick_update(Ctx* c) {
         }
         wrf32(self + kAxes, lx);
         wrf32(self + kAxes + 4, ly);
-        wrf32(self + kAxes + 8, rx);
-        wrf32(self + kAxes + 12, ry);
+        const bool mouseCam = stickCam && inGameplay();
+        wrf32(self + kAxes + 8, mouseCam ? 0.0f : rx);
+        wrf32(self + kAxes + 12, mouseCam ? 0.0f : ry);
 
         bool now[XB_COUNT] = {};
         if (ok) {
@@ -620,7 +651,8 @@ extern "C" void host_joystick_update(Ctx* c) {
             const float stickTime = static_cast<float>(rdf64(kStickEventTime));
             writeEvent(ev, EV_LEFT_STICK, lx, ly, 0, stickTime);
             guestCallThis(kAddEventToStore, self, {ev});
-            writeEvent(ev, EV_RIGHT_STICK, rx, ry, 0, stickTime);
+            // With RIGHT_STICK_CAMERA the stick turns the camera through the mouse instead.
+            writeEvent(ev, EV_RIGHT_STICK, mouseCam ? 0.0f : rx, mouseCam ? 0.0f : ry, 0, stickTime);
             guestCallThis(kAddEventToStore, self, {ev});
         }
         guestCallThis(kUpdateMaintainedPositions, self, {});

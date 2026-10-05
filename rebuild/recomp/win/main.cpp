@@ -216,6 +216,24 @@ DWORD WINAPI guestMain(void*) {
 
 }  // namespace
 
+// Fable sets GFX_RESET when it starts and clears it when it exits cleanly; a set flag at
+// start means the last run died and the game falls back to safe graphics (low resolution
+// list, detail options locked). The recompiled game is rarely exited cleanly (an Android
+// app gets swiped away), which left it in safe mode for good, so the flag is cleared here.
+static void clearGfxReset() {
+    HKEY k = nullptr;
+    if (RegOpenKeyExW(HKEY_CURRENT_USER, L"Software\\Microsoft\\Microsoft Games\\Fable TLC", 0, KEY_QUERY_VALUE | KEY_SET_VALUE, &k) !=
+        ERROR_SUCCESS)
+        return;
+    DWORD v = 0, size = sizeof v, type = 0;
+    if (RegQueryValueExW(k, L"GFX_RESET", nullptr, &type, reinterpret_cast<BYTE*>(&v), &size) == ERROR_SUCCESS && type == REG_DWORD && v) {
+        v = 0;
+        RegSetValueExW(k, L"GFX_RESET", 0, REG_DWORD, reinterpret_cast<const BYTE*>(&v), sizeof v);
+        log("GFX_RESET was set (the last run did not exit cleanly); cleared so the graphics settings stay as chosen");
+    }
+    RegCloseKey(k);
+}
+
 int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR, int) {
     g_hinst = inst;
     // Guest memory first, before anything else can land in the low 2 GiB.
@@ -238,6 +256,7 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR, int) {
         die("This build was recompiled from the Steam Fable.exe (SHA-256 %s), but the Fable.exe found has SHA-256 %s.", kFableSha256,
             hash.c_str());
     saveGameDir(g_gameDir);
+    clearGfxReset();
 
     threadsInit();
     displayInit();
