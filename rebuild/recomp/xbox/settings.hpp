@@ -8,6 +8,7 @@
 //   anisotropy       = 1 | 2 | 4 | 8 | 16
 //   fullscreen       = 0 | 1
 //   vsync            = 0 | 1
+//   volume           = 0..100        master audio volume
 #pragma once
 
 #include <string>
@@ -23,6 +24,7 @@ struct Settings {
     int anisotropy = 1;
     bool fullscreen = false;
     bool vsync = true;
+    int volume = 100;
 };
 
 Settings& settings();

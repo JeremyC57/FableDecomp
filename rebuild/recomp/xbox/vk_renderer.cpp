@@ -137,7 +137,6 @@ void VkRenderer::endFrame() {
     ++frames_done_;
 }
 
-void VkRenderer::vblank() { ++g_vblanksRef(); }
 
 // ============================================================================================
 // surfaces

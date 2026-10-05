@@ -765,6 +765,8 @@ private:
             return line(writeReg(ZYDIS_REGISTER_AH, "f_pack(fop, fr, fa, fb) | 2u"));
         case ZYDIS_MNEMONIC_SAHF:
             return line("{ uint32_t v = (eax >> 8) & 0xD5u; fr = v | (f_of(fop, fr, fa, fb) ? EF_OF : 0u); fop = FOP(FK_EXPLICIT, 4); }");
+        case ZYDIS_MNEMONIC_XLAT:  // al = [ebx + al]
+            return line(writeReg(ZYDIS_REGISTER_AL, "(uint32_t)" + mem("rd8(") + "(uint32_t)(ebx + (eax & 0xFFu)))"));
         case ZYDIS_MNEMONIC_CLD: return line("c->df = 0;");
         case ZYDIS_MNEMONIC_STD: return line("c->df = 1;");
         case ZYDIS_MNEMONIC_CLC: return line("fr = f_pack(fop, fr, fa, fb) & ~EF_CF; fop = FOP(FK_EXPLICIT, 4);");

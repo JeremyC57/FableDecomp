@@ -39,6 +39,7 @@ void loadSettings(const std::string& path) {
         else if (k == "fps") s.fps = n >= 60 ? 60 : 30;
         else if (k == "pc_textures") s.pcTextures = v;
         else if (k == "anisotropy") s.anisotropy = std::clamp(n, 1, 16);
+        else if (k == "volume") s.volume = std::clamp(n, 0, 100);
         else if (k == "fullscreen") s.fullscreen = n != 0;
         else if (k == "vsync") s.vsync = n != 0;
     }

@@ -221,6 +221,12 @@ bool dpcQueue(uint32_t dpc, uint32_t arg1, uint32_t arg2);
 bool dpcRemove(uint32_t dpc);
 void interruptConnect(uint32_t vector, uint32_t kinterrupt);
 void interruptRaise(uint32_t vector);  // runs the connected ISR on the worker (GPU vblank etc.)
+void workerAddService(void (*fn)());   // (GIL held) fn runs on the worker, GIL held, every few ms
+void workerKick();                     // wakes the worker early
+
+// Guest-callable address for a host function (stdcall, `args` stack words), for vtables of
+// HLE objects. The function receives the guest Ctx; its return value goes to eax.
+uint32_t hostTrap(KFn fn, int args, const char* name);
 
 // ---- files ---------------------------------------------------------------------------------
 void filesInit(const std::string& gameDir, const std::string& hddDir);

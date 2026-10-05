@@ -10,7 +10,11 @@
 
 #include <glslang/Public/ResourceLimits.h>
 #include <glslang/Public/ShaderLang.h>
+#if __has_include(<glslang/SPIRV/GlslangToSpv.h>)
 #include <glslang/SPIRV/GlslangToSpv.h>
+#else
+#include <SPIRV/GlslangToSpv.h>  // glslang built in-tree
+#endif
 
 #include <algorithm>
 #include <atomic>

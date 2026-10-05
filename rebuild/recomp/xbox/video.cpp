@@ -7,6 +7,7 @@
 #include "input.hpp"
 #include "settings.hpp"
 #include "vk.hpp"
+#include "vk_renderer.hpp"
 #include "xhost.hpp"
 
 #include <SDL.h>
@@ -165,6 +166,10 @@ void videoMain() {
         headlessLoop();
         return;
     }
+    if (!getenv("FABLE_SOFT_RENDER")) {
+        static gpu::VkRenderer* vr = new gpu::VkRenderer();
+        gpu::g_renderer = vr;
+    }
     input::init();
     uint32_t seen = 0;
     for (;;) {
@@ -185,8 +190,17 @@ void videoMain() {
             continue;
         }
         seen = v;
-        uploadScanout();
-        vk::present(g_scan.image, g_scan.w, g_scan.h, s.widescreen ? 16.0f / 9.0f : 4.0f / 3.0f, VK_NULL_HANDLE);
+        const float aspect = s.widescreen ? 16.0f / 9.0f : 4.0f / 3.0f;
+        VkImage img;
+        uint32_t iw, ih;
+        auto* vr = dynamic_cast<gpu::VkRenderer*>(gpu::g_renderer);
+        const uint32_t scan = gpu::state().scanout ? gpu::state().scanout : physOf(g_avFramebuffer);
+        if (vr && vr->scanoutImage(scan, &img, &iw, &ih)) {
+            vk::present(img, iw, ih, aspect, VK_NULL_HANDLE);
+        } else {
+            uploadScanout();
+            vk::present(g_scan.image, g_scan.w, g_scan.h, aspect, VK_NULL_HANDLE);
+        }
     }
 }
 

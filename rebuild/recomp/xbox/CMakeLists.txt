@@ -18,16 +18,34 @@ add_library(fable_xbox_gen STATIC ${GEN_SOURCES} ${RUNTIME_DIR}/runtime.c)
 target_include_directories(fable_xbox_gen PRIVATE ${RUNTIME_DIR} ${FABLE_GEN_DIR})
 target_compile_options(fable_xbox_gen PRIVATE -O1 -fsigned-char -ffp-contract=off -fno-strict-aliasing -w)
 
-set(HOST_SOURCES core.cpp memory.cpp kernel.cpp files.cpp xc.cpp main.cpp hle.cpp settings.cpp
-    nv2a.cpp soft_renderer.cpp video.cpp vk.cpp input.cpp)
+set(HOST_SOURCES core.cpp memory.cpp kernel.cpp files.cpp xc.cpp main.cpp hle.cpp audio.cpp settings.cpp
+    nv2a.cpp soft_renderer.cpp video.cpp vk.cpp input.cpp
+    vk_renderer.cpp vk_pipeline.cpp nv2a_vsh.cpp nv2a_psh.cpp nv2a_texture.cpp)
 list(TRANSFORM HOST_SOURCES PREPEND ${CMAKE_CURRENT_SOURCE_DIR}/)
 add_executable(FableXbox ${HOST_SOURCES})
 target_include_directories(FableXbox PRIVATE ${RUNTIME_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 target_compile_features(FableXbox PRIVATE cxx_std_20)
 target_compile_options(FableXbox PRIVATE -Wall -Wno-unused-parameter -fno-strict-aliasing)
+# glslang compiles the generated NV2A shaders (GLSL) to SPIR-V at run time.
+include(FetchContent)
+set(ENABLE_OPT OFF CACHE BOOL "" FORCE)
+set(ENABLE_GLSLANG_BINARIES OFF CACHE BOOL "" FORCE)
+set(ENABLE_HLSL OFF CACHE BOOL "" FORCE)
+set(GLSLANG_TESTS OFF CACHE BOOL "" FORCE)
+set(BUILD_EXTERNAL OFF CACHE BOOL "" FORCE)
+set(GLSLANG_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+set(FABLE_GLSLANG_DIR "" CACHE PATH "Local glslang checkout (default: fetch tag 15.4.0)")
+if(FABLE_GLSLANG_DIR)
+  add_subdirectory(${FABLE_GLSLANG_DIR} glslang EXCLUDE_FROM_ALL)
+else()
+  FetchContent_Declare(glslang GIT_REPOSITORY https://github.com/KhronosGroup/glslang.git GIT_TAG 15.4.0 GIT_SHALLOW TRUE)
+  FetchContent_MakeAvailable(glslang)
+endif()
+
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SDL2 REQUIRED IMPORTED_TARGET sdl2)
 target_include_directories(FableXbox PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../posix/third_party)
-target_link_libraries(FableXbox PRIVATE fable_xbox_gen Threads::Threads PkgConfig::SDL2 ${CMAKE_DL_LIBS})
+target_link_libraries(FableXbox PRIVATE fable_xbox_gen Threads::Threads PkgConfig::SDL2 ${CMAKE_DL_LIBS}
+  glslang SPIRV glslang-default-resource-limits)
 target_link_options(FableXbox PRIVATE -rdynamic)

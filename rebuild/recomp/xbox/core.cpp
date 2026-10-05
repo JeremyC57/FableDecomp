@@ -114,7 +114,25 @@ uint32_t kernelResolve(int ord) {
     return kTrapBase + 16u * static_cast<uint32_t>(ord);  // unimplemented functions trap with a message
 }
 
+namespace {
+constexpr uint32_t kHostTrapBase = kTrapBase + 0x10000u;
+struct HostTrap { KFn fn; int args; const char* name; };
+std::vector<HostTrap>& hostTraps() { static std::vector<HostTrap> v; return v; }
+}
+
+uint32_t hostTrap(KFn fn, int args, const char* name) {
+    hostTraps().push_back({fn, args, name});
+    return kHostTrapBase + 16u * static_cast<uint32_t>(hostTraps().size() - 1);
+}
+
 static int onUnknownTarget(Ctx* c, uint32_t target) {
+    if (target >= kHostTrapBase && target < kHostTrapBase + 16u * hostTraps().size()) {
+        const HostTrap& t = hostTraps()[(target - kHostTrapBase) / 16u];
+        XLOG(3, "host trap %s from %08X", t.name, rd32(c->esp));
+        c->eax = t.fn(c);
+        c->esp += 4 + 4u * static_cast<uint32_t>(t.args);
+        return 1;
+    }
     if (target < kTrapBase || target >= kTrapBase + 16u * 400u) return 0;
     const int ord = static_cast<int>((target - kTrapBase) / 16u);
     const KExport& e = exports()[ord];
@@ -482,6 +500,9 @@ void interruptConnect(uint32_t vector, uint32_t kint) { g_interrupts[vector] = k
 // drains the mask (it wakes at least every 2 ms, so a missed notify costs that much).
 static std::atomic<uint32_t> g_irqMask{0};
 void (*g_irqEoi)(uint32_t vector);
+static std::vector<void (*)()> g_services;
+void workerAddService(void (*fn)()) { g_services.push_back(fn); }  // GIL held
+void workerKick() { g_workerCv.notify_all(); }
 void interruptRaise(uint32_t vector) {
     g_irqMask.fetch_or(1u << vector);
     g_workerCv.notify_all();
@@ -534,6 +555,7 @@ static void workerMain() {
             guestCall(rd32(d.dpc + 0x0C), {d.dpc, rd32(d.dpc + 0x10), d.a1, d.a2});
             wr8(t_cur->pcr + 0x24, 0);
         }
+        for (auto fn : g_services) fn();
         if (g_irqMask.load() || !g_dpcs.empty()) continue;
         const uint64_t now2 = monoTime100ns();
         if (next > now2) g_workerCv.wait_for(lk, std::chrono::nanoseconds(std::min<uint64_t>(next - now2, 20000) * 100));

@@ -6,6 +6,8 @@
 #include "settings.hpp"
 #include "xhost.hpp"
 
+#include <SDL.h>
+
 #include <chrono>
 #include <fstream>
 #include <thread>
@@ -95,6 +97,7 @@ static uint32_t tlsSize() {
 using namespace xb;
 
 int main(int argc, char** argv) {
+    SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");  // SIGINT/SIGTERM keep their default action
     std::string game, hdd, config;
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
