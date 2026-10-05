@@ -6,6 +6,8 @@ statically recompiled and running natively on Linux and Android, rendering throu
 PC HD textures, anisotropic filtering).
 
 ## Inputs (never committed)
+- The game takes the disc image itself: `--game Fable.iso` extracts it once (`disc.cpp`,
+  XDVDFS; Android: `DiscExtractor.java` in the launcher) and runs from the folder.
 - Disc extracted to `work/xbox/iso/` (gitignored). It was fetched with HTTP range reads
   from the user's Google Drive xiso.
 - Symbols for statically linked XDK functions: build Cxbx-Reloaded's XbSymbolDatabase CLI

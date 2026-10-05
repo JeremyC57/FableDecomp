@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -11,7 +12,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract;
+import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.text.InputType;
 import android.view.ViewGroup;
@@ -19,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -27,17 +31,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.util.List;
 
 /**
- * Settings screen for the recompiled Xbox Fable: the extracted disc folder, the Vulkan driver,
- * and the graphics/audio options (written to fable_xbox.ini in the data folder); then starts
- * the game.
+ * Settings screen for the recompiled Xbox Fable: installs the game from the user's disc image
+ * (the files are extracted once into the app's storage), the Vulkan driver, and the
+ * graphics/audio options (written to fable_xbox.ini in the data folder); then starts the game.
  */
 public class LauncherActivity extends Activity {
     static final String PREFS = "launcher";
-    private static final int PICK_FOLDER = 1, PICK_DRIVER = 2, PERMISSION = 3, PICK_PC = 4;
+    private static final int PICK_ISO = 1, PICK_DRIVER = 2, PERMISSION = 3, PICK_PC = 4;
 
     private static final String[] SCALES = {"1", "2", "3", "4"};
     private static final String[] SCALE_NAMES = {"1x (640x480, original)", "2x (1280x960)", "3x (1920x1440)", "4x (2560x1920)"};
@@ -49,7 +54,8 @@ public class LauncherActivity extends Activity {
     private static final String[] ANISO_NAMES = {"Off", "2x", "4x", "8x", "16x"};
 
     private SharedPreferences prefs;
-    private EditText folder, pcFolder;
+    private EditText pcFolder;
+    private TextView gameStatus;
     private Switch touch;
     private Spinner driver, scale, aspect, fps, aniso;
     private SeekBar volume;
@@ -71,10 +77,16 @@ public class LauncherActivity extends Activity {
         title.setTypeface(Typeface.DEFAULT_BOLD);
         col.addView(title);
 
-        col.addView(heading("Game folder (the extracted Xbox disc, contains default.xbe)"));
-        folder = textField(prefs.getString("gameDir", defaultGameDir()));
-        col.addView(folder);
-        col.addView(button("Choose folder…", () -> startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), PICK_FOLDER)));
+        col.addView(heading("Game"));
+        gameStatus = new TextView(this);
+        col.addView(gameStatus);
+        refreshGameStatus();
+        col.addView(button("Install from disc image (.iso)…", () -> {
+            Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            i.addCategory(Intent.CATEGORY_OPENABLE);
+            i.setType("*/*");
+            startActivityForResult(i, PICK_ISO);
+        }));
 
         col.addView(heading("Graphics"));
         scale = spinner(SCALE_NAMES, SCALES, prefs.getString("scale", "1"));
@@ -155,8 +167,109 @@ public class LauncherActivity extends Activity {
         return ext != null ? ext : new File(a.getFilesDir(), "data");
     }
 
-    private String defaultGameDir() {
-        return new File(Environment.getExternalStorageDirectory(), "Fable Xbox").getAbsolutePath();
+    /** Where the game files extracted from the disc image live. */
+    static File gameDir(Activity a) { return new File(dataDir(a), "game"); }
+
+    private boolean gameInstalled() { return findFile(gameDir(this), "default.xbe") != null; }
+
+    private void refreshGameStatus() {
+        String from = prefs.getString("gameImage", "");
+        gameStatus.setText(gameInstalled()
+            ? "Installed" + (from.isEmpty() ? "" : " from " + from) + ". The disc image is no longer needed."
+            : "Not installed. Choose your disc image of Fable: The Lost Chapters (Xbox, .iso); the game files "
+              + "are extracted from it once (about 3.3 GB).");
+    }
+
+    private String displayName(Uri uri) {
+        try (Cursor c = getContentResolver().query(uri, new String[] {OpenableColumns.DISPLAY_NAME}, null, null, null)) {
+            if (c != null && c.moveToFirst() && !c.isNull(0)) return c.getString(0);
+        } catch (Exception ignored) {
+        }
+        return uri.getLastPathSegment();
+    }
+
+    /** Extracts the game files from the chosen image into gameDir(), with a progress dialog. */
+    private void installDisc(Uri uri) {
+        final String name = displayName(uri);
+        final File dest = gameDir(this), tmp = new File(dataDir(this), "game.partial");
+        final ProgressBar bar = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
+        bar.setMax(1000);
+        final TextView file = new TextView(this);
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setPadding(dp(20), dp(12), dp(20), 0);
+        box.addView(bar);
+        box.addView(file);
+        final boolean[] cancel = {false};
+        final AlertDialog dlg = new AlertDialog.Builder(this)
+            .setTitle("Extracting " + name)
+            .setView(box)
+            .setCancelable(false)
+            .setNegativeButton("Cancel", (d, w) -> cancel[0] = true)
+            .show();
+        getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        new Thread(() -> {
+            String error = null;
+            boolean done = false;
+            try (ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(uri, "r");
+                 FileInputStream in = new FileInputStream(pfd.getFileDescriptor())) {
+                DiscExtractor disc = new DiscExtractor(in.getChannel());
+                long need = disc.totalSize();
+                dataDir(this).mkdirs();
+                deleteTree(tmp);
+                long free = dataDir(this).getUsableSpace() + (gameInstalled() ? treeSize(dest) : 0);
+                if (free < need + (64L << 20))
+                    throw new Exception(String.format("Not enough free space: the game needs %.1f GB, %.1f GB are free.", need / 1e9, free / 1e9));
+                if (!tmp.mkdirs()) throw new Exception("Cannot create " + tmp);
+                final long[] last = {0};
+                done = disc.extract(tmp, (d, total, f) -> {
+                    long now = System.currentTimeMillis();
+                    if (now - last[0] > 100 || d == total) {
+                        last[0] = now;
+                        runOnUiThread(() -> {
+                            bar.setProgress((int) (total > 0 ? d * 1000 / total : 1000));
+                            file.setText(String.format("%s\n%.2f / %.2f GB", f, d / 1e9, total / 1e9));
+                        });
+                    }
+                    return !cancel[0];
+                });
+                if (done) {
+                    deleteTree(dest);
+                    if (!tmp.renameTo(dest)) throw new Exception("Cannot rename " + tmp + " to " + dest);
+                    if (findFile(dest, "default.xbe") == null) throw new Exception("The image has no default.xbe: is it the Xbox disc of Fable: The Lost Chapters?");
+                }
+            } catch (Exception e) {
+                error = e.getMessage() != null ? e.getMessage() : e.toString();
+            }
+            if (!done) deleteTree(tmp);
+            final String err = error;
+            final boolean ok = done && err == null;
+            runOnUiThread(() -> {
+                dlg.dismiss();
+                getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                if (ok) prefs.edit().putString("gameImage", name).apply();
+                refreshGameStatus();
+                if (err != null)
+                    new AlertDialog.Builder(this).setTitle("Installation failed").setMessage(err).setPositiveButton("OK", null).show();
+                else if (ok)
+                    Toast.makeText(this, "Game installed. You can delete the disc image now if you like.", Toast.LENGTH_LONG).show();
+            });
+        }, "extract").start();
+    }
+
+    static void deleteTree(File f) {
+        File[] kids = f.listFiles();
+        if (kids != null)
+            for (File k : kids) deleteTree(k);
+        f.delete();
+    }
+
+    static long treeSize(File f) {
+        File[] kids = f.listFiles();
+        if (kids == null) return f.length();
+        long n = 0;
+        for (File k : kids) n += treeSize(k);
+        return n;
     }
 
     private TextView heading(String s) {
@@ -223,7 +336,7 @@ public class LauncherActivity extends Activity {
         if (Build.VERSION.SDK_INT >= 30) {
             new AlertDialog.Builder(this)
                 .setTitle("Storage access")
-                .setMessage("The game reads its files from the folder you chose. Allow \"All files access\" on the next screen, then come back and press Start.")
+                .setMessage("The PC textures are read from the folder you chose. Allow \"All files access\" on the next screen, then come back and press Start.")
                 .setPositiveButton("Open settings", (d, w) -> {
                     try {
                         startActivity(new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, Uri.parse("package:" + getPackageName())));
@@ -240,7 +353,6 @@ public class LauncherActivity extends Activity {
 
     private void save() {
         prefs.edit()
-            .putString("gameDir", folder.getText().toString().trim())
             .putString("pcDir", pcFolder.getText().toString().trim())
             .putBoolean("touch", touch.isChecked())
             .putString("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)))
@@ -277,19 +389,20 @@ public class LauncherActivity extends Activity {
 
     private void start() {
         save();
-        String dir = folder.getText().toString().trim();
-        if (!hasStorageAccess() && !dir.startsWith(dataDir(this).getAbsolutePath())) {
-            requestStorageAccess();
-            return;
-        }
-        if (findFile(new File(dir), "default.xbe") == null) {
+        if (!gameInstalled()) {
             new AlertDialog.Builder(this)
-                .setTitle("Game files not found")
-                .setMessage("default.xbe is not in\n" + dir + "\n\nExtract your Xbox disc image of Fable: The Lost Chapters (for example with extract-xiso) to a folder on your device and choose it here.")
+                .setTitle("Game not installed")
+                .setMessage("Choose your disc image of Fable: The Lost Chapters (Xbox, .iso) with \"Install from disc image\" first.")
                 .setPositiveButton("OK", null)
                 .show();
             return;
         }
+        // Only the optional PC texture folder is read in place, from shared storage.
+        if (!pcFolder.getText().toString().trim().isEmpty() && !hasStorageAccess()) {
+            requestStorageAccess();
+            return;
+        }
+        String dir = gameDir(this).getAbsolutePath();
         File ini;
         try {
             dataDir(this).mkdirs();
@@ -319,13 +432,15 @@ public class LauncherActivity extends Activity {
         super.onActivityResult(request, result, data);
         if (result != RESULT_OK || data == null || data.getData() == null) return;
         Uri uri = data.getData();
-        if (request == PICK_FOLDER || request == PICK_PC) {
+        if (request == PICK_ISO) {
+            installDisc(uri);
+        } else if (request == PICK_PC) {
             String path = treeToPath(uri);
             if (path == null) {
                 Toast.makeText(this, "That location has no file path; pick a folder on the device storage or an SD card.", Toast.LENGTH_LONG).show();
                 return;
             }
-            (request == PICK_FOLDER ? folder : pcFolder).setText(path);
+            pcFolder.setText(path);
             save();
             if (!hasStorageAccess()) requestStorageAccess();
         } else if (request == PICK_DRIVER) {

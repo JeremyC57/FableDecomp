@@ -1,7 +1,9 @@
 // Entry point of the recompiled original-Xbox game: maps default.xbe into guest memory,
 // binds the kernel thunk table, and runs the XBE entry point on a guest thread.
 //
-//   FableXbox --game <folder with default.xbe and Data/> [--hdd <folder>]
+//   FableXbox --game <disc image (.iso) | folder with default.xbe and Data/> [--hdd <folder>]
+//             [--extract-to <folder>]   (a disc image is extracted there once; default <hdd>/../game)
+#include "disc.hpp"
 #include "gpu.hpp"
 #include "settings.hpp"
 #include "xhost.hpp"
@@ -106,27 +108,44 @@ int main(int argc, char** argv) {
     xb::androidInit();
 #endif
     SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");  // SIGINT/SIGTERM keep their default action
-    std::string game, hdd, config;
+    std::string game, hdd, config, extractTo;
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--game" && i + 1 < argc) game = argv[++i];
         else if (a == "--hdd" && i + 1 < argc) hdd = argv[++i];
         else if (a == "--config" && i + 1 < argc) config = argv[++i];
+        else if (a == "--extract-to" && i + 1 < argc) extractTo = argv[++i];
     }
     if (const char* e = getenv("XBOX_LOG")) g_logLevel = atoi(e);
     if (game.empty()) {
-        fprintf(stderr, "usage: %s --game <folder with default.xbe> [--hdd <folder>]\n", argv[0]);
+        fprintf(stderr, "usage: %s --game <disc image (.iso) | extracted disc folder> [--hdd <folder>]\n", argv[0]);
         return 2;
     }
     if (hdd.empty()) hdd = game + "/../xbox_hdd";
     // <hdd>/../fable_xbox.ini, computed lexically: the hdd folder may not exist yet.
     loadSettings(config.empty() ? (std::filesystem::path(hdd).lexically_normal().parent_path() / "fable_xbox.ini").string() : config);
+    if (!std::filesystem::is_directory(game)) {
+        // A disc image: extract the game files once (to --extract-to, default <hdd>/../game), run from there.
+        if (extractTo.empty()) extractTo = (std::filesystem::path(hdd).lexically_normal().parent_path() / "game").string();
+        if (!disc::extracted(game, extractTo)) {
+            if (!disc::open(game)) die("%s is not an Xbox disc image (or a folder with default.xbe)", game.c_str());
+            printf("extracting %s to %s\n", game.c_str(), extractTo.c_str());
+            int lastPct = -1;
+            if (!disc::extract(game, extractTo, [&](uint64_t done, uint64_t total, const std::string&) {
+                    const int pct = total ? static_cast<int>(done * 100 / total) : 100;
+                    if (pct != lastPct) printf("\r  %d%%", lastPct = pct), fflush(stdout);
+                }))
+                die("extracting %s failed", game.c_str());
+            printf("\n");
+        }
+        game = extractTo;
+    }
     {
         std::ifstream in(game + "/default.xbe", std::ios::binary);
         if (!in) die("cannot open %s/default.xbe", game.c_str());
         g_xbe.assign(std::istreambuf_iterator<char>(in), {});
-        if (g_xbe.size() < 0x180 || std::memcmp(g_xbe.data(), "XBEH", 4) != 0) die("default.xbe is not an XBE");
     }
+    if (g_xbe.size() < 0x180 || std::memcmp(g_xbe.data(), "XBEH", 4) != 0) die("default.xbe is not an XBE");
     memInit();
     coreInit();
     reserveXbe();

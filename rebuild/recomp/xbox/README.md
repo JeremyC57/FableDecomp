@@ -6,8 +6,9 @@ the hard disk. It runs on Linux (x86-64) and Android (arm64). No game data is in
 you need your own copy of the Xbox disc.
 
 ## What you need
-- The disc image, extracted to a folder (for example with `extract-xiso -x Fable.iso`).
-  The folder contains `default.xbe` and `Data/`.
+- Your disc image of the game (`.iso`: an xiso or a full dump). The game files are extracted
+  from it once (about 3.3 GB; the dashboard updaters are left out), and the game runs from
+  those. An already extracted folder (with `default.xbe` and `Data/`) works too.
 - Linux: clang, cmake, ninja, SDL2 (dev package), a Vulkan driver.
 - Android: a 64-bit ARM phone with Vulkan 1.1. A custom Vulkan driver (for example Mesa
   Turnip for Adreno GPUs, in the adrenotools `.zip` format) can be selected in the launcher.
@@ -19,16 +20,21 @@ rebuild/recomp/xbox/lift.sh build/lifter/fable_recomp <disc>/default.xbe build/g
 cmake -S rebuild/recomp/xbox -B build/xbox -G Ninja -DCMAKE_BUILD_TYPE=Release -DFABLE_GEN_DIR=build/gen_xbox \
       -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 cmake --build build/xbox
-build/xbox/FableXbox --game <disc> --hdd <saves folder>/hdd
+build/xbox/FableXbox --game Fable.iso --hdd <saves folder>/hdd
 ```
+The first run extracts the image to `<saves folder>/game` (`--extract-to <folder>` to choose);
+later runs find it there and start straight away. `--game <folder>` runs an extracted disc.
+The lifter needs `default.xbe` itself at build time: take it from the extracted folder.
 
 ## Building (Android)
 ```sh
 # NDK r27c, SDK (platforms;android-34, build-tools;35.0.0), JDK 17+, cmake, ninja, git
 rebuild/recomp/xbox/android/build_android.sh <work dir> build/gen_xbox   # -> <work dir>/FableXbox.apk
 ```
-Install the APK, extract the disc to the phone's storage, and choose that folder in the
-launcher. Saves, settings and `FableXbox.log` go to `Android/data/org.fablexbox/files/`.
+Install the APK, press "Install from disc image" in the launcher and choose your `.iso`: the
+game files are extracted into the app's storage (`Android/data/org.fablexbox/files/game`),
+after which the image can be deleted. Saves, settings and `FableXbox.log` go to
+`Android/data/org.fablexbox/files/`.
 
 ## Settings
 The Android launcher writes them; on Linux, put them in `<hdd folder>/../fable_xbox.ini`
