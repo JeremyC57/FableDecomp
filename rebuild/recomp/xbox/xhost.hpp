@@ -229,6 +229,10 @@ void workerKick();                     // wakes the worker early
 // HLE objects. The function receives the guest Ctx; its return value goes to eax.
 uint32_t hostTrap(KFn fn, int args, const char* name);
 
+// Debugging: log the host backtrace of writes to one guest word (core.cpp).
+void debugWatch(uint32_t guestAddr);
+void debugWatchRearm();  // the ticker calls it
+
 // ---- files ---------------------------------------------------------------------------------
 void filesInit(const std::string& gameDir, const std::string& hddDir);
 std::string resolveObjectName(uint32_t objectAttributes);  // full object path ("\Device\CdRom0\...")

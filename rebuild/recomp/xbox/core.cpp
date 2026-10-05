@@ -10,6 +10,7 @@
 #include <thread>
 #include <unordered_map>
 #include <execinfo.h>
+#include <sys/mman.h>
 #include <signal.h>
 #include <unistd.h>
 
@@ -595,8 +596,41 @@ static void onFatal(Ctx* c, uint32_t eip, const char* what) {
         what, eip, c->eax, c->ecx, c->edx, c->ebx, c->esp, c->ebp, c->esi, c->edi, chain.c_str());
 }
 
+// Debug write watch on one guest word (debugWatch): its page is write-protected; a write
+// fault there logs the writer's backtrace, unprotects, and the ticker re-arms it.
+static std::atomic<uint32_t> g_watchAddr{0};
+static std::atomic<bool> g_watchArmed{false};
+void debugWatch(uint32_t addr) {
+    g_watchAddr = addr;
+    debugWatchRearm();
+}
+void debugWatchRearm() {
+    // FABLE_WATCH=<guest address>: starts once the word first becomes non-zero.
+    static const uint32_t envAddr = getenv("FABLE_WATCH") ? static_cast<uint32_t>(strtoul(getenv("FABLE_WATCH"), nullptr, 0)) : 0;
+    if (envAddr && !g_watchAddr.load() && g_mem && rd32(envAddr)) {
+        XLOG(1, "watching %08X (= %08X)", envAddr, rd32(envAddr));
+        g_watchAddr = envAddr;
+    }
+    const uint32_t a = g_watchAddr.load();
+    if (!a || g_watchArmed.exchange(true)) return;
+    mprotect(gp(a & ~0xFFFu), 0x1000, PROT_READ);
+}
+
 static void onSignal(int sig, siginfo_t* si, void*) {
     const uintptr_t a = reinterpret_cast<uintptr_t>(si->si_addr), base = reinterpret_cast<uintptr_t>(g_mem);
+    if (sig == SIGSEGV && g_watchArmed.load() && a >= base && ((static_cast<uint32_t>(a - base) ^ g_watchAddr.load()) & ~0xFFFu) == 0) {
+        const uint32_t ga = static_cast<uint32_t>(a - base);
+        if ((ga & ~3u) == (g_watchAddr.load() & ~3u)) {
+            char m[96];
+            const int n = snprintf(m, sizeof m, "\nwatch: write to 0x%08X (old %08X, thread %u)\n", ga, rd32(g_watchAddr.load()), t_cur ? t_cur->id : 0);
+            if (write(2, m, static_cast<size_t>(n)) < 0) {}
+            void* frames[12];
+            backtrace_symbols_fd(frames, backtrace(frames, 12), 2);
+        }
+        mprotect(gp(g_watchAddr.load() & ~0xFFFu), 0x1000, PROT_READ | PROT_WRITE);
+        g_watchArmed = false;
+        return;
+    }
     char msg[256];
     int n;
     if (a >= base && a < base + 0x100000000ull)
@@ -624,6 +658,48 @@ extern "C" void recomp_safepoint(void) {
 void coreInit() {
     recomp_on_unknown_target = onUnknownTarget;
     recomp_on_trace = [](Ctx* c, uint32_t fn) {  // lift.sh ... --trace ADDR
+        if (fn == 0x20EE00) {
+            static int n = 0;
+            if (n++ < 3) XLOG(1, "manager esi=%08X [+0x228]=%08X [+0x1a0]=%08X", c->esi, rd32(c->esi + 0x228), rd32(c->esi + 0x1a0));
+            return;
+        }
+        if (fn == 0x31EE43) {  // debugging: the owner of the bad graphic id
+            static bool armed = false;
+            if (!armed && rd32(c->ecx + 0x28) != 0x574F4441) {
+                armed = true;
+                XLOG(1, "watching %08X (+0x28 = %08X)", c->ecx + 0x28, rd32(c->ecx + 0x28));
+                debugWatch(c->ecx + 0x28);
+            }
+            if (rd32(c->ecx + 0x28) != 0x574F4441) return;
+            std::string d, a;
+            for (uint32_t o = 0; o < 0x60; o += 4) {
+                char b[16];
+                snprintf(b, sizeof b, " %08X", rd32(c->ecx + o));
+                d += b;
+                for (int i = 0; i < 4; ++i) { const uint8_t ch = rd8(c->ecx + o + i); a += ch >= 32 && ch < 127 ? static_cast<char>(ch) : '.'; }
+            }
+            XLOG(1, "owner %08X from %08X:%s |%s|", c->ecx, rd32(c->esp), d.c_str(), a.c_str());
+            return;
+        }
+        if (fn == 0x82130) {  // debugging: only the null-this calls
+            if (c->ecx) return;
+            std::string d;
+            for (uint32_t o = 0; o < 0x90; o += 4) {
+                char b[16];
+                snprintf(b, sizeof b, " %08X", rd32(c->ebp + o));
+                d += b;
+            }
+            XLOG(1, "obj %08X:%s", c->ebp, d.c_str());
+            for (uint32_t a = (c->ebp & ~15u) - 0x100; a < (c->ebp & ~15u) + 0x100; a += 32) {
+                char line[80];
+                for (int i = 0; i < 32; ++i) {
+                    const uint8_t ch = rd8(a + i);
+                    line[i] = ch >= 32 && ch < 127 ? static_cast<char>(ch) : '.';
+                }
+                line[32] = 0;
+                XLOG(1, "  %08X %s", a, line);
+            }
+        }
         XLOG(1, "trace %08X from %08X: eax=%08X ecx=%08X edx=%08X ebx=%08X esp=%08X ebp=%08X esi=%08X edi=%08X", fn, rd32(c->esp), c->eax,
              c->ecx, c->edx, c->ebx, c->esp, c->ebp, c->esi, c->edi);
     };

@@ -170,7 +170,7 @@ extern "C" void hle_CoroSwitch(Ctx* c) {
         if (!f || f->resumeAddr != target) {
             // A fresh image returns into its entry (0x4B470 or a coroutine function); one we
             // didn't see yield (a reused holder) starts over the same way.
-            if (f) XLOG(2, "coroutine %08X: restarting at 0x%08X (last yield 0x%08X)", key, target, f->resumeAddr);
+            if (f) XLOG(1, "coroutine %08X: restarting at 0x%08X (last yield 0x%08X)", key, target, f->resumeAddr);
             if (f) destroy(f);
             f = create(key);
             t_startCtx = c;
