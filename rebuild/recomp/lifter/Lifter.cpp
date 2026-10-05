@@ -271,9 +271,37 @@ private:
             }
             return -1;
         };
+        // `neg idx` right before the jump: MSVC memmove indexes its tail tables with -count,
+        // so the entries lie *below* the table address (idx in -N..0).
+        for (size_t bi = 0; bi < before.size() && bi < 3; ++bi) {
+            const Insn* p = before[bi];
+            if (!p) break;
+            if (p->in.mnemonic == ZYDIS_MNEMONIC_NEG && p->op[0].type == ZYDIS_OPERAND_TYPE_REGISTER && full(p->op[0].reg.value) == full(idx)) {
+                JumpTable jt;
+                jt.table = table;
+                for (uint32_t i = 0; i < 64 && img_.contains(table - 4 * i, 4); ++i) {
+                    const uint32_t t = img_.r32(table - 4 * i);
+                    if (!img_.isCode(t) || t < f.entry || t >= f.entry + 0x10000) break;
+                    jt.targets.push_back(t);
+                }
+                if (jt.targets.empty()) return false;
+                f.tables[jmp.addr] = std::move(jt);
+                return true;
+            }
+            if (p->op[0].type == ZYDIS_OPERAND_TYPE_REGISTER && full(p->op[0].reg.value) == full(idx)) break;
+        }
         for (size_t bi = 0; bi < before.size(); ++bi) {
             const Insn* p = before[bi];
             if (!p) break;
+            // `and idx, 2^k-1` bounds the index too (memcpy's alignment/tail dispatch).
+            if (p->in.mnemonic == ZYDIS_MNEMONIC_AND && p->op[0].type == ZYDIS_OPERAND_TYPE_REGISTER &&
+                full(p->op[0].reg.value) == bounded && p->op[1].type == ZYDIS_OPERAND_TYPE_IMMEDIATE && !byteTable) {
+                const uint64_t m = p->op[1].imm.value.u & 0xFFFFFFFFu;
+                if (m < 256 && ((m + 1) & m) == 0) {
+                    count = static_cast<uint32_t>(m) + 1;
+                    break;
+                }
+            }
             if (p->in.mnemonic == ZYDIS_MNEMONIC_MOVZX && full(p->op[0].reg.value) == full(idx) &&
                 p->op[1].type == ZYDIS_OPERAND_TYPE_MEMORY && p->op[1].size == 8 && p->op[1].mem.base != ZYDIS_REGISTER_NONE &&
                 p->op[1].mem.index == ZYDIS_REGISTER_NONE && !byteTable) {
@@ -303,7 +331,30 @@ private:
             }
             if (count) ++fallbackTables_;
         }
-        if (count == 0 || count > 4096) return false;
+        // Neighbourhood scan: the code addresses on both sides of the table base (negative
+        // indices from `sub idx, k; jb`, entries the bound excludes). A loaded target that is not
+        // a case still goes to runtime dispatch, so extra cases are harmless.
+        auto neighbourhood = [&]() {
+            auto plausible = [&](uint32_t t) { return img_.isCode(t) && t >= f.entry && t < f.entry + 0x10000; };
+            JumpTable jt;
+            jt.table = table;
+            bool seen = false;
+            for (uint32_t i = 0; i < 64 && img_.contains(table + 4 * i, 4); ++i) {
+                const uint32_t t = img_.r32(table + 4 * i);
+                if (plausible(t)) { jt.targets.push_back(t); seen = true; }
+                else if (seen || i > 0) break;
+            }
+            for (uint32_t i = 1; i < 64 && img_.contains(table - 4 * i, 4); ++i) {
+                const uint32_t t = img_.r32(table - 4 * i);
+                if (!plausible(t)) break;
+                jt.targets.push_back(t);
+            }
+            if (jt.targets.size() < 2) return false;
+            ++fallbackTables_;
+            f.tables[jmp.addr] = std::move(jt);
+            return true;
+        };
+        if (count == 0 || count > 4096) return neighbourhood();
         if (byteTable) {
             if (!img_.contains(byteTable, count)) return false;
             uint32_t maxIndex = 0;
@@ -316,9 +367,13 @@ private:
             if (!img_.contains(table + i * 4, 4)) return false;
             const uint32_t t = img_.r32(table + i * 4);
             if (t == 0) continue;  // hole
-            if (!img_.isCode(t)) return false;
+            if (!img_.isCode(t)) {
+                if (i == 0) continue;  // an index the code never produces (memcpy: dst & 3 != 0)
+                return neighbourhood();
+            }
             jt.targets.push_back(t);
         }
+        if (jt.targets.empty()) return neighbourhood();
         f.tables[jmp.addr] = std::move(jt);
         return true;
     }
@@ -625,6 +680,11 @@ private:
         case ZYDIS_MNEMONIC_CLI: case ZYDIS_MNEMONIC_STI: case ZYDIS_MNEMONIC_WBINVD: case ZYDIS_MNEMONIC_INVD:
         case ZYDIS_MNEMONIC_INVLPG: case ZYDIS_MNEMONIC_SFENCE: case ZYDIS_MNEMONIC_LFENCE: case ZYDIS_MNEMONIC_MFENCE:
             return;
+        // Descriptor tables (Fable patches its page-fault vector): a dummy IDT at 0xFFFF0000 and
+        // GDT at 0xFFFF0800 in guest memory, so the patch lands somewhere harmless.
+        case ZYDIS_MNEMONIC_SIDT: case ZYDIS_MNEMONIC_SGDT:
+            return line("wr16(" + addr(o[0]) + ", 0x7FFu); wr32(" + addr(o[0]) + " + 2u, " +
+                        (m == ZYDIS_MNEMONIC_SIDT ? "0xFFFF0000u" : "0xFFFF0800u") + ");");
         case ZYDIS_MNEMONIC_IN: {
             const std::string port = o[1].type == ZYDIS_OPERAND_TYPE_IMMEDIATE ? hexu(o[1].imm.value.u & 0xFF) : "(edx & 0xFFFFu)";
             const int iw = ZydisRegisterGetWidth(ZYDIS_MACHINE_MODE_LEGACY_32, o[0].reg.value);
@@ -635,7 +695,15 @@ private:
             const int ow = ZydisRegisterGetWidth(ZYDIS_MACHINE_MODE_LEGACY_32, o[1].reg.value);
             return line("SPILL; recomp_port_out(c, " + port + ", " + rd(o[1], ow) + ", " + bytes(ow) + "); RELOAD;");
         }
-        case ZYDIS_MNEMONIC_MOV:
+        case ZYDIS_MNEMONIC_MOV: {
+            // Control/debug registers (ring-0 XBE code): writes ignored, reads give 0.
+            auto sys = [](const ZydisDecodedOperand& x) {
+                return x.type == ZYDIS_OPERAND_TYPE_REGISTER && (ZydisRegisterGetClass(x.reg.value) == ZYDIS_REGCLASS_CONTROL ||
+                                                                 ZydisRegisterGetClass(x.reg.value) == ZYDIS_REGCLASS_DEBUG);
+            };
+            if (sys(o[0])) return;
+            if (sys(o[1])) return line(writeReg(o[0].reg.value, "0u"));
+        }
             if (o[0].type == ZYDIS_OPERAND_TYPE_REGISTER && ZydisRegisterGetClass(o[0].reg.value) == ZYDIS_REGCLASS_SEGMENT) return unsupported(ins);
             if (o[1].type == ZYDIS_OPERAND_TYPE_REGISTER && ZydisRegisterGetClass(o[1].reg.value) == ZYDIS_REGCLASS_SEGMENT)
                 return line(wr(o[0], w, "0x23u"));  // reading a segment selector: harmless constant
@@ -1191,6 +1259,20 @@ private:
 } // namespace
 } // namespace recomp
 
+namespace {
+// Writes `path` only when its content changes, so a rebuild recompiles just the changed files.
+void writeIfChanged(const std::filesystem::path& path, const std::string& text) {
+    {
+        std::ifstream in(path, std::ios::binary);
+        if (in) {
+            std::string old((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+            if (old == text) return;
+        }
+    }
+    std::ofstream(path, std::ios::binary) << text;
+}
+}  // namespace
+
 int main(int argc, char** argv) {
     using namespace recomp;
     if (argc < 4) {
@@ -1299,7 +1381,7 @@ int main(int argc, char** argv) {
     std::filesystem::create_directories(outDir);
     const std::string tableSym = prefix == "recomp" ? "recomp_table" : "recomp_table_" + prefix;
     {
-        std::ofstream h(outDir / (prefix + "_funcs.h"));
+        std::ostringstream h;
         h << "/* Generated by fable_recomp. */\n#pragma once\n#include \"recomp.h\"\n"
           << "#define SPILL (c->eax = eax, c->ecx = ecx, c->edx = edx, c->ebx = ebx, c->esp = esp, c->ebp = ebp, c->esi = esi, c->edi = edi)\n"
           << "#define RELOAD (eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx, esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi)\n";
@@ -1308,27 +1390,31 @@ int main(int argc, char** argv) {
         for (const auto& w : wraps) h << "void " << w.second << "(Ctx* c);\nvoid " << fname(w.first) << "_orig(Ctx* c);\n";
         h << "typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;\n"
           << "extern const RecompEntry " << tableSym << "[];\nextern const uint32_t " << tableSym << "_size;\n";
+        writeIfChanged(outDir / (prefix + "_funcs.h"), h.str());
     }
     size_t fileIndex = 0, inFile = 0;
-    std::ofstream cf;
+    std::ostringstream cf;
+    std::filesystem::path cfPath;
     for (auto& [a, src] : code) {
-        if (!cf.is_open() || inFile >= perFile) {
-            if (cf.is_open()) cf.close();
+        if (cfPath.empty() || inFile >= perFile) {
+            if (!cfPath.empty()) writeIfChanged(cfPath, cf.str());
             char name[32];
             std::snprintf(name, sizeof name, "_%04zu.c", fileIndex++);
-            cf.open(outDir / (prefix + name));
+            cfPath = outDir / (prefix + name);
+            cf.str("");
             cf << "/* Generated by fable_recomp. */\n#include \"" << prefix << "_funcs.h\"\n\n";
             inFile = 0;
         }
         cf << src;
         ++inFile;
     }
-    cf.close();
+    if (!cfPath.empty()) writeIfChanged(cfPath, cf.str());
     {
-        std::ofstream t(outDir / (prefix + "_table.c"));
+        std::ostringstream t;
         t << "#include \"" << prefix << "_funcs.h\"\nconst RecompEntry " << tableSym << "[] = {\n";
         for (uint32_t a : selected) t << "    {" << hex(a) << "u, " << fname(a) << "},\n";
         t << "};\nconst uint32_t " << tableSym << "_size = " << selected.size() << ";\n";
+        writeIfChanged(outDir / (prefix + "_table.c"), t.str());
     }
 
     {
