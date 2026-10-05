@@ -658,6 +658,17 @@ extern "C" void recomp_safepoint(void) {
 void coreInit() {
     recomp_on_unknown_target = onUnknownTarget;
     recomp_on_trace = [](Ctx* c, uint32_t fn) {  // lift.sh ... --trace ADDR
+        if (getenv("FABLE_TRACE_HIST")) {  // caller histogram, logged every 10 s
+            static std::map<std::pair<uint32_t, uint32_t>, uint32_t> hist;
+            static auto t0 = std::chrono::steady_clock::now();
+            ++hist[{fn, rd32(c->esp)}];
+            if (std::chrono::steady_clock::now() - t0 > std::chrono::seconds(10)) {
+                t0 = std::chrono::steady_clock::now();
+                for (auto& [k, n] : hist) XLOG(1, "trace hist %08X from %08X: %u", k.first, k.second, n);
+                hist.clear();
+            }
+            return;
+        }
         XLOG(1, "trace %08X from %08X: eax=%08X ecx=%08X edx=%08X ebx=%08X esp=%08X ebp=%08X esi=%08X edi=%08X", fn, rd32(c->esp), c->eax,
              c->ecx, c->edx, c->ebx, c->esp, c->ebp, c->esi, c->edi);
     };

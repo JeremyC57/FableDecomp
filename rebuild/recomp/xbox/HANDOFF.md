@@ -49,8 +49,14 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
 ## Next
 1. Renderer: PROJECT3D on a 2D depth texture is a shadow-map compare (now a dummy 3D
    lookup); dot-product texture modes; fixed-function T&L; check hero/NPC rendering in play.
-2. Launcher settings: 60 fps (presentation interval), widescreen, PC textures, anisotropy
-   (sampler path exists), resolution scale (surfaces support `scale_`).
+2. Launcher settings. Done: resolution scale, anisotropy, widescreen (anamorphic 3D
+   squeeze + 16:9 present; `vk_pipeline.cpp`), custom Vulkan driver, volume. To do:
+   - 60 fps: the game already presents with ONE_OR_IMMEDIATE (0x80000001; the wrap of
+     Direct3D_CreateDevice forces ONE), yet runs a measured 30.0 flips/s: Fable is a 30 Hz
+     game (a fixed 1/30 s step at 0x910EC4/0x9190DC, ~10 users, plus its own limiter).
+     60 fps means halving that step consistently and finding the limiter.
+   - PC textures: replace textures at upload by name (needs the game's texture/bank
+     name at load time).
 3. Android: build script for this target (SDL2, adrenotools -> `vk::Settings::driverHandle`),
    reuse `rebuild/recomp/posix/android` (launcher activity, touch controls).
 4. Movies: frame presentation through the renderer works; check A/V sync.

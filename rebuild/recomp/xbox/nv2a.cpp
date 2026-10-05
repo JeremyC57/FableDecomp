@@ -355,6 +355,17 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
     case NV097_FLIP_STALL:
         renderer().flush();
         renderer().endFrame();
+        {  // flips per second (XBOX_LOG >= 1), every 5 s
+            static auto t0 = std::chrono::steady_clock::now();
+            static uint32_t n = 0;
+            ++n;
+            const auto now = std::chrono::steady_clock::now();
+            if (now - t0 >= std::chrono::seconds(5)) {
+                XLOG(1, "NV2A: %.1f flips/s", n / std::chrono::duration<double>(now - t0).count());
+                t0 = now;
+                n = 0;
+            }
+        }
         g_waitFlip = true;
         break;
     case NV097_SET_CONTEXT_DMA_NOTIFIES: case NV097_SET_CONTEXT_DMA_A: case NV097_SET_CONTEXT_DMA_B:
@@ -376,6 +387,8 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
         wr64(a, ptimerTicks());
         wr32(a + 8, renderer().zpassCount());
         wr32(a + 12, 0);
+        static int n = 0;
+        if (n++ < 5) XLOG(1, "NV2A report: param %08X dma %08X -> base %08X, write %08X", param, s.regs[NV097_SET_CONTEXT_DMA_REPORT / 4], base, a);
         break;
     }
     case NV097_CLEAR_SURFACE: renderer().clear(param); break;

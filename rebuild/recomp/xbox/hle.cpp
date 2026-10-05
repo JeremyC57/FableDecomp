@@ -4,6 +4,7 @@
 // Input: XAPI's USB stack (XInitDevices, the XID driver) is replaced; XInput reads the host
 // controller state (input.cpp). One gamepad is reported in port 1.
 #include "input.hpp"
+#include "settings.hpp"
 #include "xhost.hpp"
 
 namespace xb {
@@ -28,6 +29,21 @@ uint32_t arg(Ctx* c, int i) { return rd32(c->esp + 4 + 4 * i); }
 using namespace xb;
 
 extern "C" {
+
+// HRESULT Direct3D_CreateDevice(UINT, D3DDEVTYPE, HWND, DWORD, D3DPRESENT_PARAMETERS*, IDirect3DDevice8**)
+// fps = 60: FullScreen_PresentationInterval (+0x30) becomes D3DPRESENT_INTERVAL_ONE, so the
+// game flips every vblank instead of every other one.
+void F_00851360_orig(Ctx* c);
+void hle_Direct3D_CreateDevice(Ctx* c) {
+    const uint32_t pp = arg(c, 4);
+    if (pp) {
+        const uint32_t interval = rd32(pp + 0x30);
+        XLOG(1, "Direct3D_CreateDevice: %ux%u, presentation interval 0x%X%s", rd32(pp), rd32(pp + 4), interval,
+             settings().fps >= 60 ? " -> 1 (60 fps)" : "");
+        if (settings().fps >= 60) wr32(pp + 0x30, 1);
+    }
+    F_00851360_orig(c);
+}
 
 // The game's operator new (0x1FBF0, cdecl: size) zero-fills: Fable relies on fresh blocks
 // reading as zero in places (a HUD element's graphic pointer at +0x28 is only ever tested

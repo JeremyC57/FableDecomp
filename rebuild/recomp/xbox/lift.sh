@@ -9,6 +9,7 @@ exec "$LIFTER" "$XBE" - "$OUT" "$@" \
   --bucket 14 \
   --hook 0x4B440=hle_CoroSwitch \
   --wrap 0x1FBF0=hle_operator_new \
+  --wrap 0x851360=hle_Direct3D_CreateDevice \
   --hook 0x86ED4B=hle_XInitDevices \
   --hook 0x86FFFF=hle_XGetDevices \
   --hook 0x870021=hle_XGetDeviceChanges \
