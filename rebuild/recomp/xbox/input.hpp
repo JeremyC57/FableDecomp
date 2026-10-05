@@ -23,4 +23,10 @@ uint32_t connectedMask();     // bit per port with a pad (port 1 is always conne
 Pad pad(int port);
 void rumble(int port, uint16_t left, uint16_t right);
 
+// Android on-screen controls: an XInput-layout virtual pad merged into port 1 (buttons as
+// XINPUT_GAMEPAD wButtons: A 0x1000, B 0x2000, X 0x4000, Y 0x8000, LB 0x100, RB 0x200),
+// and touchpad drags turned into right-stick (camera) movement.
+void setVirtualPad(bool active, uint32_t buttons, float lx, float ly, float rx, float ry, float lt, float rt);
+void touchLook(int dx, int dy);
+
 } // namespace xb::input

@@ -97,7 +97,14 @@ static uint32_t tlsSize() {
 
 using namespace xb;
 
+#if defined(__ANDROID__)
+namespace xb { void androidInit(); }
+#endif
+
 int main(int argc, char** argv) {
+#if defined(__ANDROID__)
+    xb::androidInit();
+#endif
     SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");  // SIGINT/SIGTERM keep their default action
     std::string game, hdd, config;
     for (int i = 1; i < argc; ++i) {

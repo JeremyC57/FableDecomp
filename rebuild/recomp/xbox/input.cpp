@@ -12,6 +12,8 @@
 #include <algorithm>
 #include <atomic>
 #include <chrono>
+#include <cmath>
+#include <mutex>
 #include <cstdlib>
 
 namespace xb::input {
@@ -22,6 +24,11 @@ Pad g_pads[4];
 SDL_GameController* g_ctrl[4];
 uint32_t g_packet = 1;
 bool g_autopress = false;
+std::mutex g_virtLock;
+bool g_virtActive = false;
+uint32_t g_virtButtons = 0;
+float g_virt[6] = {};
+float g_lookX = 0, g_lookY = 0;
 
 int16_t axis(SDL_GameController* c, SDL_GameControllerAxis a, bool invert) {
     int v = SDL_GameControllerGetAxis(c, a);
@@ -108,6 +115,35 @@ void update() {
         if (k[SDL_SCANCODE_J]) s.buttons |= 0x04;
         if (k[SDL_SCANCODE_L]) s.buttons |= 0x08;
     }
+    {  // on-screen controls (Android)
+        std::lock_guard<std::mutex> l(g_virtLock);
+        Pad& s = next[0];
+        if (g_virtActive) {
+            const uint32_t b = g_virtButtons;
+            s.buttons |= static_cast<uint16_t>(b & 0xFF);  // d-pad, Start, Back, thumbs
+            auto press = [&](uint32_t bit, int analog) { if (b & bit) s.analog[analog] = 255; };
+            press(0x1000, 0);  // A
+            press(0x2000, 1);  // B
+            press(0x4000, 2);  // X
+            press(0x8000, 3);  // Y
+            press(0x0200, 4);  // RB -> Black
+            press(0x0100, 5);  // LB -> White
+            auto stick = [](float v) { return static_cast<int16_t>(std::clamp(v, -1.0f, 1.0f) * 32767.0f); };
+            if (!s.lx && !s.ly) { s.lx = stick(g_virt[0]); s.ly = stick(g_virt[1]); }
+            if (!s.rx && !s.ry) { s.rx = stick(g_virt[2]); s.ry = stick(g_virt[3]); }
+            s.analog[6] = std::max<uint8_t>(s.analog[6], static_cast<uint8_t>(std::clamp(g_virt[4], 0.0f, 1.0f) * 255.0f));
+            s.analog[7] = std::max<uint8_t>(s.analog[7], static_cast<uint8_t>(std::clamp(g_virt[5], 0.0f, 1.0f) * 255.0f));
+        }
+        // Touchpad drags: a right-stick deflection that decays over a few frames.
+        if (g_lookX != 0.0f || g_lookY != 0.0f) {
+            if (!s.rx) s.rx = static_cast<int16_t>(std::clamp(g_lookX, -1.0f, 1.0f) * 32767.0f);
+            if (!s.ry) s.ry = static_cast<int16_t>(std::clamp(-g_lookY, -1.0f, 1.0f) * 32767.0f);
+            g_lookX *= 0.6f;
+            g_lookY *= 0.6f;
+            if (std::fabs(g_lookX) < 0.02f) g_lookX = 0;
+            if (std::fabs(g_lookY) < 0.02f) g_lookY = 0;
+        }
+    }
     if (g_autopress) {
         const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
         const int phase = static_cast<int>((ms / 250) % 16);
@@ -136,6 +172,20 @@ uint32_t connectedMask() {
 Pad pad(int port) {
     std::lock_guard<std::mutex> l(g_lock);
     return g_pads[port];
+}
+
+void setVirtualPad(bool active, uint32_t buttons, float lx, float ly, float rx, float ry, float lt, float rt) {
+    std::lock_guard<std::mutex> l(g_virtLock);
+    g_virtActive = active;
+    g_virtButtons = buttons;
+    const float v[6] = {lx, ly, rx, ry, lt, rt};
+    std::copy(v, v + 6, g_virt);
+}
+
+void touchLook(int dx, int dy) {
+    std::lock_guard<std::mutex> l(g_virtLock);
+    g_lookX = std::clamp(g_lookX + dx / 40.0f, -1.0f, 1.0f);
+    g_lookY = std::clamp(g_lookY + dy / 40.0f, -1.0f, 1.0f);
 }
 
 void rumble(int port, uint16_t left, uint16_t right) {

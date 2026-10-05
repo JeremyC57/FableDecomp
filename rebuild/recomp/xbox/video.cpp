@@ -20,6 +20,9 @@
 #include <vector>
 
 namespace xb {
+#if defined(__ANDROID__)
+void* androidVulkanDriver();
+#endif
 extern uint32_t g_avFramebuffer, g_avPitch, g_avFormat;
 
 namespace gpu {
@@ -270,6 +273,9 @@ void videoMain() {
                                 SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI | (s.fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0));
     vk::Settings vs;
     vs.driverPath = s.vulkanDriver;
+#if defined(__ANDROID__)
+    vs.driverHandle = androidVulkanDriver();  // the launcher's custom driver, via adrenotools
+#endif
     vs.vsync = s.vsync;
     if (!g_window || !vk::init(g_window, vs)) {
         XLOG(0, "video: Vulkan unavailable, running headless");

@@ -9,7 +9,12 @@
 #include <map>
 #include <thread>
 #include <unordered_map>
+#if __has_include(<execinfo.h>)
 #include <execinfo.h>
+#else  // bionic (Android): no backtrace()
+static int backtrace(void**, int) { return 0; }
+static void backtrace_symbols_fd(void* const*, int, int) {}
+#endif
 #include <sys/mman.h>
 #include <signal.h>
 #include <unistd.h>
