@@ -6,6 +6,7 @@ LIFTER="$1"; XBE="$2"; OUT="$3"; shift 3   # further arguments go to the lifter 
 exec "$LIFTER" "$XBE" - "$OUT" "$@" \
   --mmio 0x84E460-0x863200 \
   --safepoints \
+  --bucket 14 \
   --hook 0x4B440=hle_CoroSwitch \
   --hook 0x86ED4B=hle_XInitDevices \
   --hook 0x86FFFF=hle_XGetDevices \

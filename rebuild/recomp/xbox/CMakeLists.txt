@@ -13,7 +13,7 @@ if(NOT EXISTS "${FABLE_GEN_DIR}/recomp_table.c")
 endif()
 set(RUNTIME_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../runtime)
 
-file(GLOB GEN_SOURCES "${FABLE_GEN_DIR}/recomp_*.c")
+file(GLOB GEN_SOURCES CONFIGURE_DEPENDS "${FABLE_GEN_DIR}/recomp_*.c")
 add_library(fable_xbox_gen STATIC ${GEN_SOURCES} ${RUNTIME_DIR}/runtime.c)
 target_include_directories(fable_xbox_gen PRIVATE ${RUNTIME_DIR} ${FABLE_GEN_DIR})
 target_compile_options(fable_xbox_gen PRIVATE -O1 -fsigned-char -ffp-contract=off -fno-strict-aliasing -w)
