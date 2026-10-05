@@ -658,54 +658,6 @@ extern "C" void recomp_safepoint(void) {
 void coreInit() {
     recomp_on_unknown_target = onUnknownTarget;
     recomp_on_trace = [](Ctx* c, uint32_t fn) {  // lift.sh ... --trace ADDR
-        if (fn == 0x31E3E2) {
-            static int n = 0;
-            if (n++ < 40) XLOG(1, "setter %08X(this=%08X, %08X, %08X, %08X) from %08X", fn, c->ecx, rd32(c->esp + 4), rd32(c->esp + 8), rd32(c->esp + 12), rd32(c->esp));
-            return;
-        }
-        if (fn == 0x20EE00) {
-            static int n = 0;
-            if (n++ < 3) XLOG(1, "manager esi=%08X [+0x228]=%08X [+0x1a0]=%08X", c->esi, rd32(c->esi + 0x228), rd32(c->esi + 0x1a0));
-            return;
-        }
-        if (fn == 0x31EE43) {  // debugging: the owner of the bad graphic id
-            XLOG(1, "draw this=%08X +0x24=%08X +0x28=%08X", c->ecx, rd32(c->ecx + 0x24), rd32(c->ecx + 0x28));
-            static bool armed = false;
-            if (!armed && rd32(c->ecx + 0x28) != 0x574F4441) {
-                armed = true;
-                XLOG(1, "watching %08X (+0x28 = %08X)", c->ecx + 0x28, rd32(c->ecx + 0x28));
-                debugWatch(c->ecx + 0x28);
-            }
-            if (rd32(c->ecx + 0x28) != 0x574F4441) return;
-            std::string d, a;
-            for (uint32_t o = 0; o < 0x60; o += 4) {
-                char b[16];
-                snprintf(b, sizeof b, " %08X", rd32(c->ecx + o));
-                d += b;
-                for (int i = 0; i < 4; ++i) { const uint8_t ch = rd8(c->ecx + o + i); a += ch >= 32 && ch < 127 ? static_cast<char>(ch) : '.'; }
-            }
-            XLOG(1, "owner %08X from %08X:%s |%s|", c->ecx, rd32(c->esp), d.c_str(), a.c_str());
-            return;
-        }
-        if (fn == 0x82130) {  // debugging: only the null-this calls
-            if (c->ecx) return;
-            std::string d;
-            for (uint32_t o = 0; o < 0x90; o += 4) {
-                char b[16];
-                snprintf(b, sizeof b, " %08X", rd32(c->ebp + o));
-                d += b;
-            }
-            XLOG(1, "obj %08X:%s", c->ebp, d.c_str());
-            for (uint32_t a = (c->ebp & ~15u) - 0x100; a < (c->ebp & ~15u) + 0x100; a += 32) {
-                char line[80];
-                for (int i = 0; i < 32; ++i) {
-                    const uint8_t ch = rd8(a + i);
-                    line[i] = ch >= 32 && ch < 127 ? static_cast<char>(ch) : '.';
-                }
-                line[32] = 0;
-                XLOG(1, "  %08X %s", a, line);
-            }
-        }
         XLOG(1, "trace %08X from %08X: eax=%08X ecx=%08X edx=%08X ebx=%08X esp=%08X ebp=%08X esi=%08X edi=%08X", fn, rd32(c->esp), c->eax,
              c->ecx, c->edx, c->ebx, c->esp, c->ebp, c->esi, c->edi);
     };
