@@ -501,6 +501,7 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
            "  if (p.w == 0.0 || isinf(p.w)) p.w = 1.0;\n"
            "  p.xy = (2.0 * p.xy - cst.surface.xy) / cst.surface.xy;\n"
            "  p.z = p.z / cst.clip.y;\n"
+           "  if (abs(oPos.w - 1.0) > 1e-5) p.x *= cst.clip.z;  // widescreen: perspective (3D) vertices squeezed into the 4:3 buffer\n"
            "  gl_Position = vec4(p.xyz * p.w, p.w);\n"
            "  vD0 = clamp(oD0, 0.0, 1.0); vD1 = clamp(oD1, 0.0, 1.0); vB0 = clamp(oB0, 0.0, 1.0); vB1 = clamp(oB1, 0.0, 1.0);\n"
            "  vFog = oFog.x; vTex0 = oT0; vTex1 = oT1; vTex2 = oT2; vTex3 = oT3;\n"
@@ -979,6 +980,10 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     vc.clip[0] = cmin;
     vc.clip[1] = cmax > 0 ? cmax : 16777215.0f;
     std::memcpy(vc.fog, &R[NV097_SET_FOG_PARAMS / 4], 12);
+    // Widescreen (aspect = 16:9): the game only renders 4:3; 3D draws into the back buffer
+    // (scanout-sized, perspective vertices: screen-space 2D has w = 1) get a 3/4 horizontal squeeze, the presenter stretches the
+    // frame to 16:9, so the world shows a wider view and 2D/HUD draws keep their layout.
+    vc.clip[2] = (settings().widescreen && target_.w == 640 && target_.h == 480) ? 0.75f : 1.0f;
     const VkDeviceSize vcOff = upload(&vc, sizeof vc, ctx().props.limits.minUniformBufferOffsetAlignment);
     struct FC { float c0[9][4]; float c1[9][4]; float fog[4]; float aref[4]; float bump[4][4]; float lum[4][4]; } fc{};
     auto unpack = [](uint32_t v, float* o) {

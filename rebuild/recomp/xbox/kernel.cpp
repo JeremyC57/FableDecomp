@@ -1,5 +1,6 @@
 // xboxkrnl.exe exports used by Fable: memory, synchronisation, threads, strings, time,
 // hardware queries, crypto. Files and symbolic links are in files.cpp.
+#include "settings.hpp"
 #include "xhost.hpp"
 
 #include <chrono>
@@ -640,7 +641,7 @@ KFUNC(ExQueryNonVolatileSetting, 5) {
     uint32_t v = 0;
     switch (idx) {
     case 7: v = 1; break;                 // XC_LANGUAGE: English
-    case 8: v = 0; break;                 // XC_VIDEO flags (no widescreen/480p preference)
+    case 8: v = settings().widescreen ? 0x00010000u : 0u; break;  // XC_VIDEO flags: WIDESCREEN (aspect = 16:9)
     case 9: v = 0; break;                 // XC_AUDIO: stereo
     case 0x103: v = 0x00400100; break;    // XC_FACTORY_AV_REGION: NTSC-M
     case 0x104: v = 1; break;             // XC_FACTORY_GAME_REGION: North America
