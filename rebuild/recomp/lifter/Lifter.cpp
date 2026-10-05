@@ -1466,7 +1466,8 @@ int main(int argc, char** argv) {
         if (!bucketBits)
             for (uint32_t a : selected) h << "void " << fname(a) << "(Ctx* c);\n";
         // Hook/wrap declarations sit next to the functions (adding one recompiles one file).
-        for (const auto& w : wraps) h << "void " << fname(w.first) << "_orig(Ctx* c);\n";
+        if (!bucketBits)  // bucket mode: declared next to the wrapped function
+            for (const auto& w : wraps) h << "void " << fname(w.first) << "_orig(Ctx* c);\n";
         h << "typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;\n"
           << "extern const RecompEntry " << tableSym << "[];\nextern const uint32_t " << tableSym << "_size;\n";
         writeIfChanged(outDir / (prefix + "_funcs.h"), h.str());

@@ -658,12 +658,18 @@ extern "C" void recomp_safepoint(void) {
 void coreInit() {
     recomp_on_unknown_target = onUnknownTarget;
     recomp_on_trace = [](Ctx* c, uint32_t fn) {  // lift.sh ... --trace ADDR
+        if (fn == 0x31E3E2) {
+            static int n = 0;
+            if (n++ < 40) XLOG(1, "setter %08X(this=%08X, %08X, %08X, %08X) from %08X", fn, c->ecx, rd32(c->esp + 4), rd32(c->esp + 8), rd32(c->esp + 12), rd32(c->esp));
+            return;
+        }
         if (fn == 0x20EE00) {
             static int n = 0;
             if (n++ < 3) XLOG(1, "manager esi=%08X [+0x228]=%08X [+0x1a0]=%08X", c->esi, rd32(c->esi + 0x228), rd32(c->esi + 0x1a0));
             return;
         }
         if (fn == 0x31EE43) {  // debugging: the owner of the bad graphic id
+            XLOG(1, "draw this=%08X +0x24=%08X +0x28=%08X", c->ecx, rd32(c->ecx + 0x24), rd32(c->ecx + 0x28));
             static bool armed = false;
             if (!armed && rd32(c->ecx + 0x28) != 0x574F4441) {
                 armed = true;

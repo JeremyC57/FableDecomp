@@ -29,6 +29,16 @@ using namespace xb;
 
 extern "C" {
 
+// The game's operator new (0x1FBF0, cdecl: size) zero-fills: Fable relies on fresh blocks
+// reading as zero in places (a HUD element's graphic pointer at +0x28 is only ever tested
+// for null), which held on the console's heap layout but not when a block is reused here.
+void F_0001FBF0_orig(Ctx* c);
+void hle_operator_new(Ctx* c) {
+    const uint32_t size = arg(c, 0);
+    F_0001FBF0_orig(c);
+    if (c->eax && size) std::memset(gp(c->eax), 0, size);
+}
+
 // VOID XInitDevices(DWORD dwPreallocTypeCount, PXDEVICE_PREALLOC_TYPE PreallocTypes)
 void hle_XInitDevices(Ctx* c) {
     XLOG(1, "HLE XInitDevices: host input replaces the USB stack");
