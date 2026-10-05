@@ -12,9 +12,12 @@
 
 #include <SDL.h>
 
+#include "../posix/third_party/stb_image_write.h"
+
 #include <atomic>
 #include <chrono>
 #include <thread>
+#include <vector>
 
 namespace xb {
 extern uint32_t g_avFramebuffer, g_avPitch, g_avFormat;
@@ -139,6 +142,113 @@ void uploadScanout() {
     submit(si, g_scan.fence);
 }
 
+// FABLE_DUMP_FRAMES=N: every Nth presented frame is read back and written to vkframe_*.png.
+void dumpImage(VkImage src, uint32_t w, uint32_t h, uint64_t n) {
+    using namespace vk;
+    VkDevice dev = ctx().device;
+    static VkImage img = VK_NULL_HANDLE;
+    static VkDeviceMemory imgMem, bufMem;
+    static VkBuffer buf;
+    static void* mapped;
+    static uint32_t cw, ch;
+    static VkCommandPool pool;
+    static VkCommandBuffer cb;
+    static VkFence fence;
+    if (!pool) {
+        VkCommandPoolCreateInfo pci{VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO};
+        pci.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
+        pci.queueFamilyIndex = ctx().queueFamily;
+        vkCreateCommandPool(dev, &pci, nullptr, &pool);
+        VkCommandBufferAllocateInfo ai{VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO};
+        ai.commandPool = pool;
+        ai.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+        ai.commandBufferCount = 1;
+        vkAllocateCommandBuffers(dev, &ai, &cb);
+        VkFenceCreateInfo fci{VK_STRUCTURE_TYPE_FENCE_CREATE_INFO};
+        vkCreateFence(dev, &fci, nullptr, &fence);
+    }
+    if (w != cw || h != ch) {
+        vkDeviceWaitIdle(dev);
+        if (img) {
+            vkDestroyImage(dev, img, nullptr);
+            vkFreeMemory(dev, imgMem, nullptr);
+            vkDestroyBuffer(dev, buf, nullptr);
+            vkFreeMemory(dev, bufMem, nullptr);
+        }
+        cw = w;
+        ch = h;
+        VkImageCreateInfo ici{VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO};
+        ici.imageType = VK_IMAGE_TYPE_2D;
+        ici.format = VK_FORMAT_B8G8R8A8_UNORM;
+        ici.extent = {w, h, 1};
+        ici.mipLevels = ici.arrayLayers = 1;
+        ici.samples = VK_SAMPLE_COUNT_1_BIT;
+        ici.tiling = VK_IMAGE_TILING_OPTIMAL;
+        ici.usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
+        vkCreateImage(dev, &ici, nullptr, &img);
+        VkMemoryRequirements req;
+        vkGetImageMemoryRequirements(dev, img, &req);
+        VkMemoryAllocateInfo mai{VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO};
+        mai.allocationSize = req.size;
+        mai.memoryTypeIndex = memoryType(req.memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
+        vkAllocateMemory(dev, &mai, nullptr, &imgMem);
+        vkBindImageMemory(dev, img, imgMem, 0);
+        VkBufferCreateInfo bci{VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO};
+        bci.size = static_cast<VkDeviceSize>(w) * h * 4;
+        bci.usage = VK_BUFFER_USAGE_TRANSFER_DST_BIT;
+        vkCreateBuffer(dev, &bci, nullptr, &buf);
+        vkGetBufferMemoryRequirements(dev, buf, &req);
+        mai.allocationSize = req.size;
+        mai.memoryTypeIndex = memoryType(req.memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
+        vkAllocateMemory(dev, &mai, nullptr, &bufMem);
+        vkBindBufferMemory(dev, buf, bufMem, 0);
+        vkMapMemory(dev, bufMem, 0, VK_WHOLE_SIZE, 0, &mapped);
+    }
+    vkResetCommandBuffer(cb, 0);
+    VkCommandBufferBeginInfo bi{VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};
+    bi.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+    vkBeginCommandBuffer(cb, &bi);
+    VkImageMemoryBarrier b{VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER};
+    b.srcAccessMask = 0;
+    b.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+    b.oldLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    b.newLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
+    b.srcQueueFamilyIndex = b.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+    b.image = img;
+    b.subresourceRange = {VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1};
+    vkCmdPipelineBarrier(cb, VK_PIPELINE_STAGE_ALL_COMMANDS_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr, 1, &b);
+    VkImageBlit blit{};
+    blit.srcSubresource = blit.dstSubresource = {VK_IMAGE_ASPECT_COLOR_BIT, 0, 0, 1};
+    blit.srcOffsets[1] = blit.dstOffsets[1] = {static_cast<int32_t>(w), static_cast<int32_t>(h), 1};
+    vkCmdBlitImage(cb, src, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, img, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &blit, VK_FILTER_NEAREST);
+    b.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+    b.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+    b.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
+    b.newLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
+    vkCmdPipelineBarrier(cb, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr, 1, &b);
+    VkBufferImageCopy copy{};
+    copy.imageSubresource = {VK_IMAGE_ASPECT_COLOR_BIT, 0, 0, 1};
+    copy.imageExtent = {w, h, 1};
+    vkCmdCopyImageToBuffer(cb, img, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, buf, 1, &copy);
+    vkEndCommandBuffer(cb);
+    VkSubmitInfo si{VK_STRUCTURE_TYPE_SUBMIT_INFO};
+    si.commandBufferCount = 1;
+    si.pCommandBuffers = &cb;
+    submit(si, fence);
+    vkWaitForFences(dev, 1, &fence, VK_TRUE, UINT64_MAX);
+    vkResetFences(dev, 1, &fence);
+    std::vector<uint8_t> rgb(static_cast<size_t>(w) * h * 3);
+    const auto* p = static_cast<const uint8_t*>(mapped);
+    for (size_t i = 0; i < static_cast<size_t>(w) * h; ++i) {
+        rgb[3 * i] = p[4 * i + 2];
+        rgb[3 * i + 1] = p[4 * i + 1];
+        rgb[3 * i + 2] = p[4 * i];
+    }
+    char name[64];
+    snprintf(name, sizeof name, "vkframe_%05llu.png", static_cast<unsigned long long>(n));
+    stbi_write_png(name, static_cast<int>(w), static_cast<int>(h), 3, rgb.data(), static_cast<int>(w * 3));
+}
+
 void headlessLoop() {
     input::init();
     for (;;) {
@@ -196,6 +306,9 @@ void videoMain() {
         auto* vr = dynamic_cast<gpu::VkRenderer*>(gpu::g_renderer);
         const uint32_t scan = gpu::state().scanout ? gpu::state().scanout : physOf(g_avFramebuffer);
         if (vr && vr->scanoutImage(scan, &img, &iw, &ih)) {
+            static const int every = getenv("FABLE_DUMP_FRAMES") ? atoi(getenv("FABLE_DUMP_FRAMES")) : 0;
+            static uint64_t presented = 0;
+            if (every > 0 && ++presented % static_cast<uint64_t>(every) == 0) dumpImage(img, iw, ih, presented);
             vk::present(img, iw, ih, aspect, VK_NULL_HANDLE);
         } else {
             uploadScanout();

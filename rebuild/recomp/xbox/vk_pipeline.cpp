@@ -109,6 +109,24 @@ uint32_t attribBytes(uint32_t fmt) {
 
 bool g_glslangReady = false;
 
+// Per-60-frame draw statistics (XBOX_LOG >= 1), logged from endFrame.
+struct DrawStats {
+    uint64_t draws = 0, verts = 0, garbage = 0, oob = 0, nopass = 0, nopipe = 0, noset = 0, textured = 0, program = 0;
+    uint32_t target = 0, w = 0, h = 0, fmt = 0;
+} g_ds;
+}  // namespace
+
+void logDrawStats(uint64_t frame) {
+    XLOG(1, "Vulkan: frame %llu: %llu draws (%llu verts, %llu textured, %llu programmable); skipped: garbage %llu, "
+            "out of range %llu, no pass %llu, no pipeline %llu, no set %llu; target 0x%08X %ux%u fmt 0x%X",
+         static_cast<unsigned long long>(frame), static_cast<unsigned long long>(g_ds.draws), static_cast<unsigned long long>(g_ds.verts),
+         static_cast<unsigned long long>(g_ds.textured), static_cast<unsigned long long>(g_ds.program),
+         static_cast<unsigned long long>(g_ds.garbage), static_cast<unsigned long long>(g_ds.oob), static_cast<unsigned long long>(g_ds.nopass),
+         static_cast<unsigned long long>(g_ds.nopipe), static_cast<unsigned long long>(g_ds.noset), g_ds.target, g_ds.w, g_ds.h, g_ds.fmt);
+    g_ds = {};
+}
+namespace {
+
 std::vector<uint32_t> compileGlsl(EShLanguage stage, const std::string& src) {
     if (!g_glslangReady) {
         glslang::InitializeProcess();
@@ -834,7 +852,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         minIdx = *std::min_element(seq.begin(), seq.end());
         maxIdx = *std::max_element(seq.begin(), seq.end());
     }
-    if (maxIdx - minIdx > 0x100000) return;  // garbage indices
+    if (maxIdx - minIdx > 0x100000) { ++g_ds.garbage; return; }  // garbage indices
     const uint32_t nverts = maxIdx - minIdx + 1;
 
     // Vertex attributes.
@@ -871,7 +889,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         const uint32_t base = ((off & 0x80000000u) ? dmaB : dmaA) + (off & 0x7FFFFFFFu);
         const uint64_t lo = static_cast<uint64_t>(base) + static_cast<uint64_t>(minIdx) * stride;
         const uint64_t bytes = static_cast<uint64_t>(nverts - 1) * stride + attribBytes(fmts[i]);
-        if (lo + bytes > kPhysSize) return;
+        if (lo + bytes > kPhysSize) { ++g_ds.oob; return; }
         offs[i] = upload(gp(kContigBase + static_cast<uint32_t>(lo)), bytes, 4);
     }
     if (inl) {
@@ -881,9 +899,18 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         minIdx = 0;
     }
     beginPass();
-    if (!pass_) return;
+    if (!pass_) { ++g_ds.nopass; return; }
     VkPipeline p = pipeline(0, pass_, mask, fmts, kTop[prim]);
-    if (!p) return;
+    if (!p) { ++g_ds.nopipe; return; }
+    ++g_ds.draws;
+    g_ds.verts += needIndex ? seq.size() : count;
+    if ((R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) ++g_ds.program;
+    for (int i = 0; i < 4; ++i)
+        if (R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30)) { ++g_ds.textured; break; }
+    g_ds.target = target_.color;
+    g_ds.w = target_.w;
+    g_ds.h = target_.h;
+    g_ds.fmt = R[NV097_SET_SURFACE_FORMAT / 4];
 
     // Uniforms.
     struct VC { float c[192][4]; float surface[4]; float clip[4]; } vc;
@@ -925,6 +952,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     dai.pSetLayouts = &setLayout_;
     VkDescriptorSet set;
     if (vkAllocateDescriptorSets(ctx().device, &dai, &set) != VK_SUCCESS) {
+        ++g_ds.noset;
         submitFrame(false);
         return;
     }

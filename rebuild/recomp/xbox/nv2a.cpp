@@ -317,6 +317,10 @@ uint32_t pgraphMethod(uint32_t sub, uint32_t method, uint32_t param, const uint3
     case NV_CONTEXT_SURFACES_2D: surfaces2d(method, param); break;
     case NV_IMAGE_BLIT: imageBlit(method, param); break;
     case NV_BETA: break;
+    case 0x44:  // NV044 image pattern: D3D_SetFence's progress marker (BlockOnTime polls it)
+        if (method == 0x310) R(PGRAPH + 0xB10) = param;       // MONOCHROME_COLOR0 -> PATT_COLOR0
+        else if (method == 0x314) R(PGRAPH + 0xB14) = param;  // MONOCHROME_COLOR1 -> PATT_COLOR1
+        break;
     default:
         XLOG(2, "NV2A: method 0x%X on class 0x%02X ignored", method, g_subClass[sub]);
         break;

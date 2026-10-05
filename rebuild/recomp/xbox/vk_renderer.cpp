@@ -131,10 +131,12 @@ void VkRenderer::flush() {
     // GPU work only needs to be in order on the queue.
 }
 
+void logDrawStats(uint64_t frame);
+
 void VkRenderer::endFrame() {
     std::lock_guard<std::mutex> l(surfLock_);
     submitFrame(false);
-    ++frames_done_;
+    if (++frames_done_ % 60 == 0) logDrawStats(frames_done_);
 }
 
 

@@ -9,6 +9,7 @@
 #include <SDL.h>
 
 #include <chrono>
+#include <filesystem>
 #include <fstream>
 #include <thread>
 #include <sys/stat.h>
@@ -111,7 +112,8 @@ int main(int argc, char** argv) {
         return 2;
     }
     if (hdd.empty()) hdd = game + "/../xbox_hdd";
-    loadSettings(config.empty() ? hdd + "/../fable_xbox.ini" : config);
+    // <hdd>/../fable_xbox.ini, computed lexically: the hdd folder may not exist yet.
+    loadSettings(config.empty() ? (std::filesystem::path(hdd).lexically_normal().parent_path() / "fable_xbox.ini").string() : config);
     {
         std::ifstream in(game + "/default.xbe", std::ios::binary);
         if (!in) die("cannot open %s/default.xbe", game.c_str());
