@@ -660,7 +660,30 @@ KFUNC(NtQuerySymbolicLinkObject, 3) {
     return ST_SUCCESS;
 }
 
-KFUNC(IoQueryVolumeInformation, 5) { return ST_NOT_IMPLEMENTED; }
+// A guest FILE_OBJECT for a file handle (ObReferenceObjectByHandle). XAPI's physical sort
+// key reads FileObject->FsContext (+8)[0], the start sector on a GDFX disc: a stable value
+// per file keeps the game's load ordering meaningful.
+uint32_t fileObjectFor(Handle* h) {
+    if (h->object) return h->object;
+    const uint32_t fo = poolAllocZero(0x40), fcb = poolAllocZero(0x20);
+    uint32_t key = 2166136261u;
+    for (char ch : h->file ? h->file->host : std::string()) key = (key ^ static_cast<uint8_t>(ch)) * 16777619u;
+    wr32(fcb, key & 0x7FFFFFFF);
+    wr32(fo + 8, fcb);
+    return h->object = fo;
+}
+
+// IoQueryVolumeInformation(FileObject, FsInformationClass, Length, FsInformation, ReturnedLength)
+KFUNC(IoQueryVolumeInformation, 5) {
+    const uint32_t cls = ARG(c, 1), len = ARG(c, 2), out = ARG(c, 3);
+    if (cls != 5 || len < 16) return ST_NOT_IMPLEMENTED;  // FileFsAttributeInformation only
+    wr32(out, 0);        // FileSystemAttributes
+    wr32(out + 4, 255);  // MaximumComponentNameLength
+    wr32(out + 8, 4);    // FileSystemNameLength
+    std::memcpy(gp(out + 12), "GDFX", 4);
+    if (ARG(c, 4)) wr32(ARG(c, 4), 16);
+    return ST_SUCCESS;
+}
 
 // XAPI passes this as the ApcRoutine of ReadFileEx/WriteFileEx: ApcContext is the caller's
 // completion routine, the IO_STATUS_BLOCK is the start of its OVERLAPPED.

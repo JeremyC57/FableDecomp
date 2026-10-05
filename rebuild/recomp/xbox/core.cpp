@@ -640,9 +640,13 @@ void coreInit() {
 } // namespace xb
 
 // Port I/O from ring-0 XBE code (PCI config, SMBus, the PIC): nothing behind it yet.
+namespace xb::gpu { extern std::atomic<uint32_t> g_vblanks; }
 extern "C" uint32_t recomp_port_in(Ctx* c, uint32_t port, int size) {
     XLOG(2, "port in 0x%X (%d) at esp %08X", port, size, c->esp);
     if (port == 0x8008) return static_cast<uint32_t>(xb::monoTime100ns() * 3375000 / 10000000);  // ACPI timer
+    // GPIO status: bit 5 is the video encoder's field (D3D's vblank ISR reads it; the movie
+    // player waits for it to change). It alternates every vblank, as on interlaced output.
+    if (port == 0x80C0) return (xb::gpu::g_vblanks.load() & 1) ? 0x20u : 0u;
     return 0;
 }
 extern "C" void recomp_port_out(Ctx* c, uint32_t port, uint32_t value, int size) {

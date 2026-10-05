@@ -451,7 +451,7 @@ KFUNC(ObReferenceObjectByHandle, 3) {
     if (!o) {
         Handle* x = handleGet(h);
         if (!x) return ST_INVALID_HANDLE;
-        o = x->object;
+        o = x->kind == Handle::File ? fileObjectFor(x) : x->object;
     }
     wr32(out, o);
     return ST_SUCCESS;

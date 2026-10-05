@@ -310,6 +310,7 @@ void service() {
             }
         }
     }
+    for (const Done& d : done) XLOG(1, "DSStream packet done (%zu bytes, callback %08X)", d.p.data.size(), d.cb);
     for (const Done& d : done) completePacket(d.p, d.cb, d.ctx, static_cast<uint32_t>(d.p.data.size()), XMP_SUCCESS);
 }
 
@@ -496,7 +497,10 @@ void hle_DirectSoundUseLightHRTF(Ctx* c) { ret(c, 0, 0); }
 // ---- IDirectSound ----
 void hle_IDirectSound_Release(Ctx* c) { ret(c, 1, 1); }
 void hle_IDirectSound_CommitDeferredSettings(Ctx* c) { ret(c, DS_OK, 1); }
-void hle_IDirectSound_SynchPlayback(Ctx* c) { ret(c, DS_OK, 1); }
+void hle_IDirectSound_SynchPlayback(Ctx* c) {
+    XLOG(1, "HLE IDirectSound_SynchPlayback");
+    ret(c, DS_OK, 1);
+}
 void hle_IDirectSound_EnableHeadphones(Ctx* c) { ret(c, DS_OK, 2); }
 void hle_IDirectSound_SetDistanceFactor(Ctx* c) { ret(c, DS_OK, 3); }
 void hle_IDirectSound_SetDopplerFactor(Ctx* c) { ret(c, DS_OK, 3); }
@@ -718,6 +722,7 @@ void hle_IDirectSoundStream_SetVolume(Ctx* c) {
 // HRESULT Pause(this, DWORD dwPause): 0 resume, 1 pause
 void hle_IDirectSoundStream_Pause(Ctx* c) {
     BUF(2);
+    XLOG(1, "DSStream %08X Pause(%u)", arg(c, 0), arg(c, 1));
     v->paused = arg(c, 1) == 1;
     ret(c, DS_OK, 2);
 }

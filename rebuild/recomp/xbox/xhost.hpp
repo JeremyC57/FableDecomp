@@ -198,6 +198,7 @@ struct Handle {
 uint32_t handleNew(const Handle& h);
 Handle* handleGet(uint32_t h);
 bool handleClose(uint32_t h);
+uint32_t fileObjectFor(Handle* h);  // guest FILE_OBJECT of a file handle (files.cpp)
 uint32_t handleDup(uint32_t h);
 uint32_t namedObjectFind(const std::string& name);
 void namedObjectAdd(const std::string& name, uint32_t handle);
