@@ -19,6 +19,8 @@
 #include <algorithm>
 #include <atomic>
 #include <cmath>
+#include <unordered_map>
+#include <vector>
 
 namespace xb::gpu {
 
@@ -105,6 +107,54 @@ uint32_t attribBytes(uint32_t fmt) {
     case 6: return 4;
     default: return 4 * size;
     }
+}
+
+// Vertex formats: 3-component 8/16-bit and scaled formats are optional in Vulkan and most
+// phone GPUs lack them. Attributes in a format the device cannot fetch are converted to
+// 32-bit floats (always supported) on upload. FABLE_VERTEX_FLOAT=1 forces that, for testing.
+bool vertexFormatSupported(VkFormat f) {
+    static const bool force = getenv("FABLE_VERTEX_FLOAT") != nullptr;
+    static std::unordered_map<int, bool> cache;
+    const bool isFloat = f == VK_FORMAT_R32_SFLOAT || f == VK_FORMAT_R32G32_SFLOAT || f == VK_FORMAT_R32G32B32_SFLOAT ||
+                         f == VK_FORMAT_R32G32B32A32_SFLOAT || f == VK_FORMAT_R32_UINT;
+    if (isFloat) return true;
+    if (force) return false;
+    auto it = cache.find(f);
+    if (it != cache.end()) return it->second;
+    VkFormatProperties fp;
+    vkGetPhysicalDeviceFormatProperties(ctx().phys, f, &fp);
+    const bool ok = (fp.bufferFeatures & VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT) != 0;
+    return cache[f] = ok;
+}
+
+// n vertices of a Kelvin attribute (UB_D3D, UB_OGL, S1 or S32K) as floats, same component count.
+void attribToFloat(const uint8_t* src, uint32_t stride, uint32_t n, uint32_t fmt, std::vector<float>& out) {
+    const uint32_t type = fmt & 0xF, size = (fmt >> 4) & 0xF;
+    out.resize(static_cast<size_t>(n) * size);
+    float* o = out.data();
+    for (uint32_t v = 0; v < n; ++v, src += stride)
+        for (uint32_t c = 0; c < size; ++c) {
+            switch (type) {
+            case 0: {  // D3DCOLOR: BGRA bytes, x = red (size 1, 2: R8, R8G8 order)
+                const uint32_t b = size >= 3 ? (c < 3 ? 2 - c : 3) : c;
+                *o++ = src[b] / 255.0f;
+                break;
+            }
+            case 4: *o++ = src[c] / 255.0f; break;
+            case 1: {
+                int16_t x;
+                std::memcpy(&x, src + 2 * c, 2);
+                *o++ = std::max(x / 32767.0f, -1.0f);
+                break;
+            }
+            default: {  // 5: S32K
+                int16_t x;
+                std::memcpy(&x, src + 2 * c, 2);
+                *o++ = static_cast<float>(x);
+                break;
+            }
+            }
+        }
 }
 
 bool g_glslangReady = false;
@@ -903,6 +953,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
 
     // Vertex attributes.
     uint32_t mask = 0, fmts[16];
+    const uint8_t* src[16]{};  // where each attribute's data starts (for the float fallback)
     VkDeviceSize offs[16];
     VkBuffer bufs[16];
     const VkBuffer ring = frames_[frame_].upload.buf;
@@ -926,6 +977,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         mask |= 1u << i;
         if (inl) {  // interleaved inline data
             fmts[i] = (fmts[i] & 0xFF) | (inlStride << 8);
+            src[i] = inl + inlOff;
             offs[i] = inlOff;
             inlOff += attribBytes(fmts[i]);
             continue;
@@ -936,7 +988,8 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         const uint64_t lo = static_cast<uint64_t>(base) + static_cast<uint64_t>(minIdx) * stride;
         const uint64_t bytes = static_cast<uint64_t>(nverts - 1) * stride + attribBytes(fmts[i]);
         if (lo + bytes > kPhysSize) { ++g_ds.oob; return; }
-        offs[i] = upload(gp(kContigBase + static_cast<uint32_t>(lo)), bytes, 4);
+        src[i] = gp(kContigBase + static_cast<uint32_t>(lo));
+        offs[i] = upload(src[i], bytes, 4);
     }
     if (inl) {
         const VkDeviceSize o = upload(inl, static_cast<VkDeviceSize>(count) * (inlStride == 0xFFFFFFFF ? 256 : inlStride), 16);
@@ -944,6 +997,23 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             if ((mask >> i) & 1) offs[i] += o + (inlStride == 0xFFFFFFFF ? 16u * i : 0);
         minIdx = 0;
     }
+    if (inlStride != 0xFFFFFFFF)
+        for (int i = 0; i < 16; ++i) {
+            const uint32_t type = fmts[i] & 0xF;
+            if (!((mask >> i) & 1) || !src[i] || (type != 0 && type != 1 && type != 4 && type != 5)) continue;
+            if (vertexFormatSupported(attribFormat(fmts[i]))) continue;
+            static uint32_t logged[16];  // once per Kelvin type/size
+            if (!(logged[type] & (1u << ((fmts[i] >> 4) & 0xF)))) {
+                logged[type] |= 1u << ((fmts[i] >> 4) & 0xF);
+                XLOG(1, "Vulkan: vertex format %d (Kelvin type %u, %u components) not supported: converting to floats",
+                     static_cast<int>(attribFormat(fmts[i])), type, (fmts[i] >> 4) & 0xF);
+            }
+            static std::vector<float> conv;
+            attribToFloat(src[i], fmts[i] >> 8, inl ? count : nverts, fmts[i], conv);
+            const uint32_t size = (fmts[i] >> 4) & 0xF;
+            offs[i] = upload(conv.data(), conv.size() * sizeof(float), 4);
+            fmts[i] = 0x2 | (size << 4) | ((size * 4) << 8);
+        }
     beginPass();
     if (!pass_) { ++g_ds.nopass; return; }
     VkPipeline p = pipeline(0, pass_, mask, fmts, kTop[prim]);

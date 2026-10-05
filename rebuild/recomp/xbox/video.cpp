@@ -269,8 +269,13 @@ void videoMain() {
         return;
     }
     const int ww = s.widescreen ? 1280 : 960, wh = s.widescreen ? 720 : 720;
-    g_window = SDL_CreateWindow("Fable: The Lost Chapters (Xbox)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, ww, wh,
-                                SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI | (s.fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0));
+    Uint32 flags = SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI | (s.fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+#if defined(__ANDROID__)
+    // Without a graphics flag SDL gives an Android window an EGL surface, which takes the
+    // native window: vkCreateAndroidSurfaceKHR then fails (NATIVE_WINDOW_IN_USE) and nothing shows.
+    flags |= SDL_WINDOW_VULKAN;
+#endif
+    g_window = SDL_CreateWindow("Fable: The Lost Chapters (Xbox)", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, ww, wh, flags);
     vk::Settings vs;
     vs.driverPath = s.vulkanDriver;
 #if defined(__ANDROID__)
@@ -278,7 +283,7 @@ void videoMain() {
 #endif
     vs.vsync = s.vsync;
     if (!g_window || !vk::init(g_window, vs)) {
-        XLOG(0, "video: Vulkan unavailable, running headless");
+        XLOG(0, "video: Vulkan unavailable, running headless (%s)", g_window ? "see the Vulkan messages above" : SDL_GetError());
         headlessLoop();
         return;
     }
@@ -298,6 +303,9 @@ void videoMain() {
                 _exit(0);
             }
             if (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_SIZE_CHANGED) vk::resize();
+#if defined(__ANDROID__)
+            if (e.type == SDL_APP_DIDENTERFOREGROUND) vk::surfaceChanged();  // SDL made a new native window
+#endif
         }
         input::update();
         const uint32_t v = gpu::g_vblanks.load();

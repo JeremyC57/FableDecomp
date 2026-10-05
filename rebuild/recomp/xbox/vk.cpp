@@ -42,6 +42,8 @@ struct Swap {
     VkSemaphore acquired[3]{}, done[3]{};
     uint32_t frame = 0;
     bool dirty = true;
+    bool surfaceLost = false;  // the window's surface went away (Android: background, rotation)
+    int failures = 0;          // swapchain creations failed in a row (logged, then rate-limited)
 } g_swap;
 
 bool loadLoader() {
@@ -73,7 +75,10 @@ bool createSurface() {
     auto create = reinterpret_cast<PFN_vkCreateAndroidSurfaceKHR>(g_gipa(g_ctx.instance, "vkCreateAndroidSurfaceKHR"));
     VkAndroidSurfaceCreateInfoKHR ci{VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR};
     ci.window = wm.info.android.window;
-    return create && create(g_ctx.instance, &ci, nullptr, &g_surface) == VK_SUCCESS;
+    if (!ci.window || !create) return false;
+    const VkResult r = create(g_ctx.instance, &ci, nullptr, &g_surface);
+    if (r != VK_SUCCESS) XLOG(0, "Vulkan: vkCreateAndroidSurfaceKHR failed (%d)", static_cast<int>(r));
+    return r == VK_SUCCESS;
 #else
     if (wm.subsystem == SDL_SYSWM_WAYLAND) {
         auto create = reinterpret_cast<PFN_vkCreateWaylandSurfaceKHR>(g_gipa(g_ctx.instance, "vkCreateWaylandSurfaceKHR"));
@@ -98,9 +103,40 @@ void destroySwapchain() {
     g_swap.images.clear();
 }
 
+bool createSurface();
+
+bool swapchainFailed(const char* what, VkResult r) {
+    if (r == VK_ERROR_SURFACE_LOST_KHR || r == VK_ERROR_NATIVE_WINDOW_IN_USE_KHR) g_swap.surfaceLost = true;
+    if (g_swap.failures++ < 5 || g_swap.failures % 300 == 0) XLOG(0, "Vulkan: %s failed (%d)", what, static_cast<int>(r));
+    return false;
+}
+
+// A new VkSurfaceKHR for the window's current native window (the old one is dead).
+bool recreateSurface() {
+    vkDeviceWaitIdle(g_ctx.device);
+    if (g_swap.chain) {
+        vkDestroySwapchainKHR(g_ctx.device, g_swap.chain, nullptr);
+        g_swap.chain = VK_NULL_HANDLE;
+        g_swap.images.clear();
+    }
+    if (g_surface) vkDestroySurfaceKHR(g_ctx.instance, g_surface, nullptr);
+    g_surface = VK_NULL_HANDLE;
+    g_swap.surfaceLost = false;
+    if (!createSurface()) {
+        g_swap.surfaceLost = true;
+        return swapchainFailed("recreating the window surface", VK_ERROR_SURFACE_LOST_KHR);
+    }
+    VkBool32 present = VK_FALSE;
+    vkGetPhysicalDeviceSurfaceSupportKHR(g_ctx.phys, g_ctx.queueFamily, g_surface, &present);
+    XLOG(1, "Vulkan: window surface recreated");
+    return true;
+}
+
 bool createSwapchain() {
+    if (g_swap.surfaceLost && !recreateSurface()) return false;
     VkSurfaceCapabilitiesKHR caps;
-    vkGetPhysicalDeviceSurfaceCapabilitiesKHR(g_ctx.phys, g_surface, &caps);
+    if (VkResult r = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(g_ctx.phys, g_surface, &caps); r != VK_SUCCESS)
+        return swapchainFailed("vkGetPhysicalDeviceSurfaceCapabilitiesKHR", r);
     uint32_t n = 0;
     vkGetPhysicalDeviceSurfaceFormatsKHR(g_ctx.phys, g_surface, &n, nullptr);
     std::vector<VkSurfaceFormatKHR> formats(n);
@@ -119,7 +155,14 @@ bool createSwapchain() {
         SDL_GetWindowSize(g_window, &w, &h);
         ext = {static_cast<uint32_t>(w), static_cast<uint32_t>(h)};
     }
-    if (!ext.width || !ext.height) return false;
+    // Android reports the extent in the display's natural orientation; without pre-rotation
+    // (IDENTITY) the buffers must be in the window's orientation: swap for 90/270 degrees.
+    const bool identity = caps.supportedTransforms & VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
+    if (identity && (caps.currentTransform & (VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR | VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR)))
+        std::swap(ext.width, ext.height);
+    ext.width = std::clamp(ext.width, caps.minImageExtent.width, std::max(caps.maxImageExtent.width, caps.minImageExtent.width));
+    ext.height = std::clamp(ext.height, caps.minImageExtent.height, std::max(caps.maxImageExtent.height, caps.minImageExtent.height));
+    if (!ext.width || !ext.height) return false;  // minimised
     uint32_t pm = 0;
     vkGetPhysicalDeviceSurfacePresentModesKHR(g_ctx.phys, g_surface, &pm, nullptr);
     std::vector<VkPresentModeKHR> modes(pm);
@@ -136,16 +179,23 @@ bool createSwapchain() {
     ci.imageColorSpace = space;
     ci.imageExtent = ext;
     ci.imageArrayLayers = 1;
-    ci.imageUsage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+    ci.imageUsage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | (caps.supportedUsageFlags & VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT);
+    if (!(caps.supportedUsageFlags & VK_IMAGE_USAGE_TRANSFER_DST_BIT)) XLOG(0, "Vulkan: the swapchain does not allow transfers (blits)");
     ci.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
-    ci.preTransform = (caps.supportedTransforms & VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR) ? VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR : caps.currentTransform;
-    ci.compositeAlpha = (caps.supportedCompositeAlpha & VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR) ? VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR
-                                                                                            : VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR;
+    ci.preTransform = identity ? VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR : caps.currentTransform;
+    ci.compositeAlpha = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR;
+    for (VkCompositeAlphaFlagBitsKHR a : {VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR, VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR, VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR,
+                                          VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR})
+        if (caps.supportedCompositeAlpha & a) {
+            ci.compositeAlpha = a;
+            break;
+        }
     ci.presentMode = mode;
     ci.clipped = VK_TRUE;
     ci.oldSwapchain = g_swap.chain;
     VkSwapchainKHR chain;
-    if (vkCreateSwapchainKHR(g_ctx.device, &ci, nullptr, &chain) != VK_SUCCESS) return false;
+    if (VkResult r = vkCreateSwapchainKHR(g_ctx.device, &ci, nullptr, &chain); r != VK_SUCCESS) return swapchainFailed("vkCreateSwapchainKHR", r);
+    g_swap.failures = 0;
     if (g_swap.chain) {
         vkDeviceWaitIdle(g_ctx.device);
         vkDestroySwapchainKHR(g_ctx.device, g_swap.chain, nullptr);
@@ -157,7 +207,8 @@ bool createSwapchain() {
     g_swap.images.resize(count);
     vkGetSwapchainImagesKHR(g_ctx.device, chain, &count, g_swap.images.data());
     g_swap.dirty = false;
-    XLOG(1, "Vulkan: swapchain %ux%u, %u images, %s", ext.width, ext.height, count, mode == VK_PRESENT_MODE_FIFO_KHR ? "vsync" : "no vsync");
+    XLOG(1, "Vulkan: swapchain %ux%u, %u images, format %d, transform 0x%X, %s", ext.width, ext.height, count, static_cast<int>(g_swap.format),
+         static_cast<unsigned>(caps.currentTransform), mode == VK_PRESENT_MODE_FIFO_KHR ? "vsync" : "no vsync");
     return true;
 }
 }  // namespace
@@ -306,6 +357,10 @@ bool init(SDL_Window* window, const Settings& s) {
 }
 
 void resize() { g_swap.dirty = true; }
+void surfaceChanged() {
+    g_swap.dirty = true;
+    g_swap.surfaceLost = true;
+}
 
 static void barrier(VkCommandBuffer cb, VkImage img, VkImageLayout from, VkImageLayout to) {
     VkImageMemoryBarrier b{VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER};
@@ -327,8 +382,9 @@ void present(VkImage image, uint32_t w, uint32_t h, float aspect, VkSemaphore wa
     vkWaitForFences(g_ctx.device, 1, &g_swap.fence[f], VK_TRUE, UINT64_MAX);
     uint32_t idx = 0;
     VkResult r = vkAcquireNextImageKHR(g_ctx.device, g_swap.chain, UINT64_MAX, g_swap.acquired[f], VK_NULL_HANDLE, &idx);
-    if (r == VK_ERROR_OUT_OF_DATE_KHR) {
+    if (r != VK_SUCCESS && r != VK_SUBOPTIMAL_KHR) {  // nothing acquired: the semaphore stays unsignalled
         g_swap.dirty = true;
+        if (r != VK_ERROR_OUT_OF_DATE_KHR) swapchainFailed("vkAcquireNextImageKHR", r);
         return;
     }
     vkResetFences(g_ctx.device, 1, &g_swap.fence[f]);
@@ -381,6 +437,10 @@ void present(VkImage image, uint32_t w, uint32_t h, float aspect, VkSemaphore wa
         r = vkQueuePresentKHR(g_ctx.queue, &pi);
     }
     if (r == VK_ERROR_OUT_OF_DATE_KHR || r == VK_SUBOPTIMAL_KHR) g_swap.dirty = true;
+    else if (r != VK_SUCCESS) {
+        g_swap.dirty = true;
+        swapchainFailed("vkQueuePresentKHR", r);
+    }
 }
 
 } // namespace xb::vk

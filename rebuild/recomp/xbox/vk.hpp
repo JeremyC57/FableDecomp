@@ -80,5 +80,6 @@ VkResult submit(const VkSubmitInfo& si, VkFence fence);
 // the image must be in TRANSFER_SRC_OPTIMAL. Blocks for vsync when enabled.
 void present(VkImage image, uint32_t width, uint32_t height, float aspect, VkSemaphore waitRendered);
 void resize();  // window changed size
+void surfaceChanged();  // the native window was replaced (Android: back from the background)
 
 } // namespace xb::vk
