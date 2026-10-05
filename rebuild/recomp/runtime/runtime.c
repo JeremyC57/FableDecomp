@@ -21,6 +21,9 @@ extern const RecompEntry recomp_table[];
 extern const uint32_t recomp_table_size;
 
 volatile int recomp_preempt_flag;
+/* Lazy flags carried across a fall-through/jump into another lifted function. */
+__thread int recomp_lf_op;
+__thread uint32_t recomp_lf_r, recomp_lf_a, recomp_lf_b;
 __attribute__((weak)) void recomp_safepoint(void) { recomp_preempt_flag = 0; }
 
 /* Host hooks (set by the platform layer / tests). */

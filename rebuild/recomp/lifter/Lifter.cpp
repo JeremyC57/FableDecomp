@@ -497,6 +497,19 @@ class Emitter {
 public:
     Emitter(Program& p, Stats& st) : p_(p), st_(st) {}
 
+    // Functions entered by fall-through or a jump from another function: the lazy flags
+    // travel with the transfer (thread-local recomp_lf_*), since code like
+    // `test esi, esi` / fall into the next function / `je` depends on them.
+    const std::set<uint32_t>& tailTargets() {
+        if (!tailTargetsBuilt_) {
+            tailTargetsBuilt_ = true;
+            for (auto& [e, fn] : p_.functions())
+                for (uint32_t l : fn.labels)
+                    if (!fn.insns.count(l) && p_.isEntry(l) && p_.functions().count(l)) tailTargets_.insert(l);
+        }
+        return tailTargets_;
+    }
+
     std::string function(Function& f) {
         out_.str("");
         f_ = &f;
@@ -506,7 +519,11 @@ public:
         out_ << "void " << fname(f.entry) << "(Ctx* c) {\n"
              << "    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;\n"
              << "    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;\n"
-             << "    int fop = FOP(FK_EXPLICIT, 4); uint32_t fr = 0, fa = 0, fb = 0; /* flags undefined at entry */\n"
+             << (tailTargets().count(f.entry)
+                     ? "    extern __thread int recomp_lf_op; extern __thread uint32_t recomp_lf_r, recomp_lf_a, recomp_lf_b;\n"
+                       "    int fop = recomp_lf_op ? recomp_lf_op : FOP(FK_EXPLICIT, 4); uint32_t fr = recomp_lf_r, fa = recomp_lf_a, fb = recomp_lf_b; /* flags from a fall-through */\n"
+                       "    recomp_lf_op = 0;\n"
+                     : "    int fop = FOP(FK_EXPLICIT, 4); uint32_t fr = 0, fa = 0, fb = 0; /* flags undefined at entry */\n")
              << "    (void)fop; (void)fr; (void)fa; (void)fb;\n";
         if (traceAddrs().count(f.entry)) out_ << "    SPILL; recomp_trace(c, " << hex(f.entry) << "u);\n";
         if (f.eh) {
@@ -556,7 +573,9 @@ public:
             if (!f.insns.count(l)) {
                 out_ << lname(l) << ":;\n";
                 if (p_.isEntry(l) && p_.functions().count(l))
-                    out_ << "    SPILL; " << fname(l) << "(c); return;\n";
+                    out_ << "    { extern __thread int recomp_lf_op; extern __thread uint32_t recomp_lf_r, recomp_lf_a, recomp_lf_b;\n"
+                         << "      recomp_lf_op = fop; recomp_lf_r = fr; recomp_lf_a = fa; recomp_lf_b = fb; }\n"
+                         << "    SPILL; " << fname(l) << "(c); return;\n";
                 else
                     out_ << "    SPILL; recomp_fatal(c, " << hex(l) << ", \"jump outside lifted code\"); return;\n";
             }
@@ -1273,6 +1292,8 @@ private:
 #include "Simd.inc"
 
     Program& p_;
+    std::set<uint32_t> tailTargets_;
+    bool tailTargetsBuilt_ = false;
     Stats& st_;
     Function* f_ = nullptr;
     std::ostringstream out_;
