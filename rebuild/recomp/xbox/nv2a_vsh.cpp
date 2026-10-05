@@ -6,6 +6,8 @@
 // MAC+ILU instructions execute concurrently: the ILU result can only go to R1.
 #include "nv2a_shaders.hpp"
 
+#include <cstdlib>
+
 #include <cstdio>
 #include <string>
 
@@ -136,8 +138,9 @@ std::string translateVertexProgram(const uint32_t (*prog)[4], uint32_t start) {
             } else if (!(get(t, F_OUT_MUX) ? iluExpr : macExpr).empty()) {
                 const uint32_t o = get(t, F_OUT_ADDRESS) & 0xF;
                 const std::string ms = mask(om);
-                if (o == 5) {  // oFog: a write of any mask lands in x, taking the result's x (as xemu)
-                    body += "    oFog.x = " + src + ".x;\n";
+                if (o == 5) {  // oFog: a write lands in x; which result component is under test
+                    static const bool first = getenv("FABLE_OFOG_FIRST") != nullptr;
+                    body += "    oFog.x = " + src + "." + (first ? ms.substr(0, 1) : std::string("x")) + ";\n";
                 } else {
                     body += "    " + std::string(kOut[o]) + "." + ms + " = " + src + "." + ms + ";\n";
                 }

@@ -9,9 +9,9 @@
 #include <map>
 #include <thread>
 #include <unordered_map>
-#if __has_include(<execinfo.h>)
+#if !defined(__ANDROID__) || __ANDROID_API__ >= 33
 #include <execinfo.h>
-#else  // bionic (Android): no backtrace()
+#else  // bionic before API 33: no backtrace()
 static int backtrace(void**, int) { return 0; }
 static void backtrace_symbols_fd(void* const*, int, int) {}
 #endif
