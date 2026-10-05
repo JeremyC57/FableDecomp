@@ -86,6 +86,10 @@ void hle_XInputGetState(Ctx* c) {
         return;
     }
     const input::Pad p = input::pad(static_cast<int>(port));
+    static uint32_t calls = 0, lastPacket = 0;
+    if (++calls % 300 == 1 || (p.packet != lastPacket && (p.buttons || p.analog[0])))
+        XLOG(1, "HLE XInputGetState(port %u): call %u, packet %u, buttons 0x%04X, A %u", port, calls, p.packet, p.buttons, p.analog[0]);
+    lastPacket = p.packet;
     wr32(out, p.packet);
     wr16(out + 4, p.buttons);
     for (int i = 0; i < 8; ++i) wr8(out + 6 + i, p.analog[i]);

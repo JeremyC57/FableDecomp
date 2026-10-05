@@ -180,11 +180,15 @@ public:
                 }
             }
         for (uint32_t v : img_.relocTargets()) cands.insert(v);
+        // Without relocations (XBE) packed structs hide pointers at unaligned offsets (the CRT's
+        // x87 dispatch tables); those count at decoded instructions or clean code boundaries.
+        std::set<uint32_t> unaligned;
+        const bool noRelocs = img_.relocTargets().empty();
         for (const auto& s : img_.sections()) {
             const uint32_t lo = img_.base() + s.va, hi = lo + s.vsize;
             if (img_.isCode(lo)) continue;
-            for (uint32_t a = lo; a + 4 <= hi; a += 4)
-                if (img_.contains(a, 4)) cands.insert(img_.r32(a));
+            for (uint32_t a = lo; a + 4 <= hi; a += noRelocs ? 1 : 4)
+                if (img_.contains(a, 4)) ((a & 3) ? unaligned : cands).insert(img_.r32(a));
         }
         auto isCovered = [&](uint32_t a) {
             auto it = covered.upper_bound(a);
@@ -209,6 +213,10 @@ public:
             return false;
         };
         size_t added = 0;
+        for (uint32_t v : unaligned) {
+            if (cands.count(v) || isEntry(v) || !img_.isCode(v) || !img_.contains(v, 1)) continue;
+            if (starts.count(v) || (!isCovered(v) && boundary(v) && decode(v))) { addEntry(v); ++added; }
+        }
         for (uint32_t v : cands) {
             if (!img_.isCode(v) || !img_.contains(v, 1) || isEntry(v)) continue;
             bool ok = starts.count(v) != 0;

@@ -125,6 +125,14 @@ uint32_t hostTrap(KFn fn, int args, const char* name) {
     return kHostTrapBase + 16u * static_cast<uint32_t>(hostTraps().size() - 1);
 }
 
+// RDTSC: the Xbox's 733.33 MHz Pentium III clock (titles time with it), from the monotonic clock.
+extern "C" uint64_t recomp_rdtsc(void) {
+    timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    const uint64_t ns = static_cast<uint64_t>(ts.tv_sec) * 1000000000ull + static_cast<uint64_t>(ts.tv_nsec);
+    return ns / 15 * 11 + ns % 15 * 11 / 15;  // ns * 0.7333...
+}
+
 static int onUnknownTarget(Ctx* c, uint32_t target) {
     if (target >= kHostTrapBase && target < kHostTrapBase + 16u * hostTraps().size()) {
         const HostTrap& t = hostTraps()[(target - kHostTrapBase) / 16u];
@@ -615,6 +623,10 @@ extern "C" void recomp_safepoint(void) {
 
 void coreInit() {
     recomp_on_unknown_target = onUnknownTarget;
+    recomp_on_trace = [](Ctx* c, uint32_t fn) {  // lift.sh ... --trace ADDR
+        XLOG(1, "trace %08X from %08X: eax=%08X ecx=%08X edx=%08X ebx=%08X esp=%08X ebp=%08X esi=%08X edi=%08X", fn, rd32(c->esp), c->eax,
+             c->ecx, c->edx, c->ebx, c->esp, c->ebp, c->esi, c->edi);
+    };
     recomp_on_fatal = onFatal;
     struct sigaction sa{};
     sa.sa_sigaction = onSignal;

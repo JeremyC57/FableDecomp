@@ -116,7 +116,10 @@ void update() {
     }
     std::lock_guard<std::mutex> l(g_lock);
     for (int p = 0; p < 4; ++p) {
-        if (std::memcmp(&next[p].buttons, &g_pads[p].buttons, sizeof(Pad) - sizeof(uint32_t)) != 0) next[p].packet = ++g_packet;
+        const Pad &a = next[p], &b = g_pads[p];
+        const bool changed = a.buttons != b.buttons || std::memcmp(a.analog, b.analog, sizeof a.analog) != 0 || a.lx != b.lx ||
+                             a.ly != b.ly || a.rx != b.rx || a.ry != b.ry;
+        if (changed) next[p].packet = ++g_packet;
         else next[p].packet = g_pads[p].packet;
         g_pads[p] = next[p];
     }

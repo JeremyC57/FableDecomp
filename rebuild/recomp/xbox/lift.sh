@@ -1,11 +1,12 @@
 #!/bin/sh
 # Lifts the Xbox default.xbe with the options the Xbox host expects.
-#   lift.sh <fable_recomp> <iso folder>/default.xbe <output folder>
+#   lift.sh <fable_recomp> <iso folder>/default.xbe <output folder> [lifter options]
 set -e
-LIFTER="$1"; XBE="$2"; OUT="$3"
-exec "$LIFTER" "$XBE" - "$OUT" \
+LIFTER="$1"; XBE="$2"; OUT="$3"; shift 3   # further arguments go to the lifter (--trace ADDR ...)
+exec "$LIFTER" "$XBE" - "$OUT" "$@" \
   --mmio 0x84E460-0x863200 \
   --safepoints \
+  --hook 0x4B440=hle_CoroSwitch \
   --hook 0x86ED4B=hle_XInitDevices \
   --hook 0x86FFFF=hle_XGetDevices \
   --hook 0x870021=hle_XGetDeviceChanges \
