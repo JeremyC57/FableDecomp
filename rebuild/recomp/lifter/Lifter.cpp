@@ -1,6 +1,6 @@
 // fable_recomp: statically recompile Fable.exe x86-32 code to portable C.
 //
-//   fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only addr,addr,...] [--per-file N]
+//   fable_recomp <Fable.exe | default.xbe> <functions.tsv | -> <out-dir> [--only addr,addr,...] [--per-file N]
 //
 // Discovers functions by recursive descent from every catalogued entry (and
 // every direct call target), resolves MSVC jump tables, and emits one C
@@ -79,7 +79,20 @@ public:
         uint32_t iat = 0;
         for (const auto& [a, name] : img_.imports())
             if (name.size() > 18 && name.compare(name.size() - 18, 18, "!__CxxFrameHandler") == 0) iat = a;
-        if (!iat) return;
+        if (!iat) {
+            // Statically linked CRT (XBE): stubs jump straight to __CxxFrameHandler.
+            for (const auto& sec : img_.sections()) {
+                if (!(sec.flags & 0x20000000u)) continue;
+                const uint32_t lo = img_.base() + sec.va, hi = lo + sec.vsize;
+                for (uint32_t a = lo; a + 10 <= hi && img_.contains(a, 10); ++a)
+                    if (img_.r8(a) == 0xB8 && img_.r8(a + 5) == 0xE9) {
+                        const uint32_t fi = img_.r32(a + 1);
+                        if (img_.contains(fi, 4) && !img_.isCode(fi) && (img_.r32(fi) & ~0xFu) == 0x19930520u) ehStubs_[a] = fi;
+                    }
+            }
+            std::cerr << "C++ EH handler stubs: " << ehStubs_.size() << "\n";
+            return;
+        }
         std::set<uint32_t> thunks;
         for (const auto& sec : img_.sections()) {
             if (!(sec.flags & 0x20000000u)) continue;
@@ -607,8 +620,21 @@ private:
         switch (m) {
         case ZYDIS_MNEMONIC_NOP: case ZYDIS_MNEMONIC_PAUSE: case ZYDIS_MNEMONIC_PREFETCHT0:
         case ZYDIS_MNEMONIC_PREFETCHT1: case ZYDIS_MNEMONIC_PREFETCHT2: case ZYDIS_MNEMONIC_PREFETCHNTA:
-        case ZYDIS_MNEMONIC_FWAIT:
+        case ZYDIS_MNEMONIC_FWAIT: case ZYDIS_MNEMONIC_PREFETCH: case ZYDIS_MNEMONIC_PREFETCHW:
+        // Ring-0 instructions in XBE code (the Xbox runs games in kernel mode): no host effect.
+        case ZYDIS_MNEMONIC_CLI: case ZYDIS_MNEMONIC_STI: case ZYDIS_MNEMONIC_WBINVD: case ZYDIS_MNEMONIC_INVD:
+        case ZYDIS_MNEMONIC_INVLPG: case ZYDIS_MNEMONIC_SFENCE: case ZYDIS_MNEMONIC_LFENCE: case ZYDIS_MNEMONIC_MFENCE:
             return;
+        case ZYDIS_MNEMONIC_IN: {
+            const std::string port = o[1].type == ZYDIS_OPERAND_TYPE_IMMEDIATE ? hexu(o[1].imm.value.u & 0xFF) : "(edx & 0xFFFFu)";
+            const int iw = ZydisRegisterGetWidth(ZYDIS_MACHINE_MODE_LEGACY_32, o[0].reg.value);
+            return line("SPILL; { uint32_t v = recomp_port_in(c, " + port + ", " + bytes(iw) + "); RELOAD; " + wr(o[0], iw, "v") + " }");
+        }
+        case ZYDIS_MNEMONIC_OUT: {
+            const std::string port = o[0].type == ZYDIS_OPERAND_TYPE_IMMEDIATE ? hexu(o[0].imm.value.u & 0xFF) : "(edx & 0xFFFFu)";
+            const int ow = ZydisRegisterGetWidth(ZYDIS_MACHINE_MODE_LEGACY_32, o[1].reg.value);
+            return line("SPILL; recomp_port_out(c, " + port + ", " + rd(o[1], ow) + ", " + bytes(ow) + "); RELOAD;");
+        }
         case ZYDIS_MNEMONIC_MOV:
             if (o[0].type == ZYDIS_OPERAND_TYPE_REGISTER && ZydisRegisterGetClass(o[0].reg.value) == ZYDIS_REGCLASS_SEGMENT) return unsupported(ins);
             if (o[1].type == ZYDIS_OPERAND_TYPE_REGISTER && ZydisRegisterGetClass(o[1].reg.value) == ZYDIS_REGCLASS_SEGMENT)
@@ -1132,6 +1158,7 @@ private:
         case ZYDIS_MNEMONIC_FNINIT: return line("c->fpu.top = 0; c->fpu.sw = 0; c->fpu.cw = 0x037F;");
         case ZYDIS_MNEMONIC_FNCLEX: return line("c->fpu.sw &= 0x7F00u;");
         case ZYDIS_MNEMONIC_FFREE: case ZYDIS_MNEMONIC_FNOP: case ZYDIS_MNEMONIC_FWAIT: return;
+        case ZYDIS_MNEMONIC_FFREEP: return line("fpop(c);");
         case ZYDIS_MNEMONIC_FINCSTP: return line("c->fpu.top = (c->fpu.top + 1u) & 7u;");
         case ZYDIS_MNEMONIC_FDECSTP: return line("c->fpu.top = (c->fpu.top - 1u) & 7u;");
         case ZYDIS_MNEMONIC_FCMOVB: case ZYDIS_MNEMONIC_FCMOVE: case ZYDIS_MNEMONIC_FCMOVBE: case ZYDIS_MNEMONIC_FCMOVU:

@@ -104,6 +104,9 @@ static inline void recomp_trace(Ctx* c, uint32_t fn) { if (recomp_on_trace) reco
 
 /* Optional host services used by a few instructions. */
 void recomp_cpuid(Ctx* c);
+/* Port I/O (`in`/`out`, XBE code runs in ring 0): `size` is 1, 2 or 4 bytes. */
+uint32_t recomp_port_in(Ctx* c, uint32_t port, int size);
+void recomp_port_out(Ctx* c, uint32_t port, uint32_t value, int size);
 uint64_t recomp_rdtsc(void);
 
 /* ---- guest memory ---------------------------------------------------------- */

@@ -11,7 +11,8 @@
 
 namespace recomp {
 
-/// The retail PE image as the loader would map it (sections at their RVAs).
+/// The retail image as the loader would map it (sections at their RVAs): a PE (Fable.exe,
+/// DLLs) or an original Xbox XBE (default.xbe).
 class Image {
 public:
     explicit Image(const std::filesystem::path& exe) {
@@ -19,6 +20,10 @@ public:
         if (!in) throw std::runtime_error("cannot open " + exe.string());
         std::vector<uint8_t> file(std::filesystem::file_size(exe));
         in.read(reinterpret_cast<char*>(file.data()), static_cast<std::streamsize>(file.size()));
+        if (file.size() > 0x180 && le32(file, 0) == 0x48454258) {  // "XBEH"
+            loadXbe(file);
+            return;
+        }
         const uint32_t pe = le32(file, 0x3C);
         if (le32(file, pe) != 0x00004550) throw std::runtime_error("not a PE");
         const uint16_t sections = le16(file, pe + 6);
@@ -79,6 +84,7 @@ public:
         }
     }
 
+    bool xbe() const { return xbe_; }
     uint32_t base() const { return base_; }
     uint32_t entry() const { return entry_; }
     uint32_t end() const { return base_ + static_cast<uint32_t>(mem_.size()); }
@@ -100,9 +106,42 @@ public:
     const std::vector<Section>& sections() const { return sections_; }
 
 private:
+    // XBE: sections at absolute addresses from base 0x10000; entry point and kernel thunk
+    // table are XOR-encoded (retail keys). Kernel imports become "xboxkrnl.exe!#ordinal".
+    void loadXbe(const std::vector<uint8_t>& file) {
+        xbe_ = true;
+        base_ = le32(file, 0x104);
+        const uint32_t headers = le32(file, 0x108), imageSize = le32(file, 0x10C);
+        entry_ = le32(file, 0x128) ^ 0xA8FC57ABu;
+        mem_.assign(imageSize, 0);
+        std::memcpy(mem_.data(), file.data(), std::min<size_t>(headers, file.size()));
+        const uint32_t n = le32(file, 0x11C), hdrs = le32(file, 0x120) - base_;
+        for (uint32_t i = 0; i < n; ++i) {
+            const size_t s = hdrs + size_t{i} * 56;
+            const uint32_t fl = le32(file, s), va = le32(file, s + 4), vs = le32(file, s + 8);
+            const uint32_t raw = le32(file, s + 12), rs = le32(file, s + 16), name = le32(file, s + 20) - base_;
+            Section sec;
+            sec.name = std::string(reinterpret_cast<const char*>(&file[name]), strnlen(reinterpret_cast<const char*>(&file[name]), 16));
+            sec.va = va - base_;
+            sec.vsize = vs;
+            // The XDK linker sets the executable flag (0x4) on data too (.rdata, .data). Data
+            // sections are known by name; DOLBY and DSKERDAT are DSP code/data for the audio APU.
+            static const char* const data[] = {".rdata", ".data", "XON_RD", "DOLBY", "DSKERDAT", "$$XTIMAGE", ".XTLID"};
+            bool x86 = (fl & 0x4) != 0;
+            for (const char* d : data) x86 = x86 && sec.name != d;
+            sec.flags = (x86 ? 0x20000000u : 0u) | 0x40000000u | ((fl & 1) ? 0x80000000u : 0u);
+            if (rs && sec.va + std::min(rs, vs) <= mem_.size()) std::memcpy(&mem_[sec.va], &file[raw], std::min(rs, vs));
+            sections_.push_back(sec);
+        }
+        const uint32_t thunk = le32(file, 0x158) ^ 0x5B6D40B6u;
+        for (uint32_t a = thunk; contains(a, 4) && r32(a); a += 4)
+            imports_[a] = "xboxkrnl.exe!#" + std::to_string(r32(a) & 0x7FFFFFFFu);
+    }
+
     static uint32_t le32(const std::vector<uint8_t>& f, size_t o) { uint32_t v; std::memcpy(&v, &f[o], 4); return v; }
     static uint16_t le16(const std::vector<uint8_t>& f, size_t o) { uint16_t v; std::memcpy(&v, &f[o], 2); return v; }
 
+    bool xbe_ = false;
     uint32_t base_ = 0, entry_ = 0;
     std::vector<uint8_t> mem_;
     std::vector<Section> sections_;

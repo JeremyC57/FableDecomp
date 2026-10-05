@@ -59,8 +59,14 @@ bool simd(const Insn& ins) {
     case ZYDIS_MNEMONIC_EMMS: return true;
     case ZYDIS_MNEMONIC_MOVAPS: case ZYDIS_MNEMONIC_MOVUPS: case ZYDIS_MNEMONIC_MOVDQA: case ZYDIS_MNEMONIC_MOVDQU:
     case ZYDIS_MNEMONIC_MOVAPD: case ZYDIS_MNEMONIC_MOVUPD:
+    case ZYDIS_MNEMONIC_MOVNTPS: case ZYDIS_MNEMONIC_MOVNTPD: case ZYDIS_MNEMONIC_MOVNTDQ:  // non-temporal hint only
         line("{ Xmm T; " + vload("T", o[1]) + " " + vstore(o[0], "T") + " }");
         return true;
+    case ZYDIS_MNEMONIC_MOVNTQ:
+        line("{ Xmm T; " + vload("T", o[1]) + " wr64(" + addr(o[0]) + ", T.q[0]); }");
+        return true;
+    case ZYDIS_MNEMONIC_PAVGB: return binop(ins, "b", 1, "(uint8_t)(((uint32_t)A.b[i] + B.b[i] + 1u) >> 1)");
+    case ZYDIS_MNEMONIC_PAVGW: return binop(ins, "w", 2, "(uint16_t)(((uint32_t)A.w[i] + B.w[i] + 1u) >> 1)");
     case ZYDIS_MNEMONIC_MOVQ:
         if (isXmm(o[0]) || isMm(o[0])) line("{ Xmm T; " + vload("T", o[1]) + " T.q[1] = 0; " + vstore(o[0], "T") + " }");
         else line("{ Xmm T; " + vload("T", o[1]) + " wr64(" + addr(o[0]) + ", T.q[0]); }");
