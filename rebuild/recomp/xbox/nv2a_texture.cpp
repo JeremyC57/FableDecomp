@@ -43,8 +43,8 @@ uint32_t texel(uint32_t fmt, const uint8_t* p, const uint32_t* palette) {
         return bgra(255, p[0], p[0], p[0]);
     case 0x01: case 0x1B:  // AY8: luminance replicated to alpha
         return bgra(p[0], p[0], p[0], p[0]);
-    case 0x19: case 0x1F:  // A8
-        return bgra(p[0], 0, 0, 0);
+    case 0x19: case 0x1F:  // A8: colour reads as white (as xemu: swizzle 1,1,1,A)
+        return bgra(p[0], 255, 255, 255);
     case 0x1A: case 0x20:  // A8Y8
         return bgra(p[1], p[0], p[0], p[0]);
     case 0x02: case 0x10:  // A1R5G5B5

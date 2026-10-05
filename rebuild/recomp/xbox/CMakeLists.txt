@@ -16,9 +16,10 @@ set(RUNTIME_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../runtime)
 file(GLOB GEN_SOURCES CONFIGURE_DEPENDS "${FABLE_GEN_DIR}/recomp_*.c")
 add_library(fable_xbox_gen STATIC ${GEN_SOURCES} ${RUNTIME_DIR}/runtime.c)
 target_include_directories(fable_xbox_gen PRIVATE ${RUNTIME_DIR} ${FABLE_GEN_DIR})
-target_compile_options(fable_xbox_gen PRIVATE -O1 -fsigned-char -ffp-contract=off -fno-strict-aliasing -w)
+# -O2: the lifted game code is most of the CPU time (-O1 costs ~25% less build time, not worth it).
+target_compile_options(fable_xbox_gen PRIVATE -O2 -fsigned-char -ffp-contract=off -fno-strict-aliasing -w)
 
-set(HOST_SOURCES core.cpp memory.cpp kernel.cpp files.cpp disc.cpp xc.cpp main.cpp hle.cpp audio.cpp coro.cpp settings.cpp
+set(HOST_SOURCES core.cpp memory.cpp kernel.cpp files.cpp disc.cpp profiler.cpp xc.cpp main.cpp hle.cpp audio.cpp coro.cpp settings.cpp
     nv2a.cpp soft_renderer.cpp video.cpp vk.cpp input.cpp
     vk_renderer.cpp vk_pipeline.cpp nv2a_vsh.cpp nv2a_psh.cpp nv2a_texture.cpp)
 list(TRANSFORM HOST_SOURCES PREPEND ${CMAKE_CURRENT_SOURCE_DIR}/)

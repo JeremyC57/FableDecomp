@@ -44,7 +44,8 @@ namespace xb::vk {
     X(vkCmdBeginRenderPass) X(vkCmdEndRenderPass) X(vkCmdBindPipeline) X(vkCmdBindVertexBuffers)  \
     X(vkCmdBindIndexBuffer) X(vkCmdBindDescriptorSets) X(vkCmdPushConstants) X(vkCmdDraw)         \
     X(vkCmdDrawIndexed) X(vkCmdSetViewport) X(vkCmdSetScissor) X(vkCmdClearAttachments)          \
-    X(vkCmdSetStencilReference) X(vkCmdSetBlendConstants) X(vkCmdSetDepthBias)
+    X(vkCmdSetStencilReference) X(vkCmdSetBlendConstants) X(vkCmdSetDepthBias)                   \
+    X(vkCreatePipelineCache) X(vkDestroyPipelineCache) X(vkGetPipelineCacheData)
 
 #define XB_VK_DECL(f) extern PFN_##f f;
 XB_VK_INSTANCE_FNS(XB_VK_DECL)

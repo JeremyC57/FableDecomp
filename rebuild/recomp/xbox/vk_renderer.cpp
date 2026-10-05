@@ -5,6 +5,10 @@
 // asks for the scanout image at vblank. Both share the queue through vk::submit().
 #include "vk_renderer.hpp"
 
+#include <chrono>
+#include <cstring>
+#include <vector>
+
 #include "gpu.hpp"
 #include "nv2a_methods.h"
 #include "settings.hpp"
@@ -136,7 +140,43 @@ void logDrawStats(uint64_t frame);
 void VkRenderer::endFrame() {
     std::lock_guard<std::mutex> l(surfLock_);
     submitFrame(false);
-    if (++frames_done_ % 60 == 0) logDrawStats(frames_done_);
+    if (++frames_done_ % 60 == 0) {
+        logDrawStats(frames_done_);
+        if (frames_done_ % 1800 == 0) savePipelineCache();  // each minute, when it grew
+        // Textures not used for 600 frames (~20 s) are freed (streaming reuses addresses
+        // with other formats, which would otherwise pile up).
+        VkDevice dev = ctx().device;
+        for (auto it = textures_.begin(); it != textures_.end();) {
+            if (it->second.image && frames_done_ - it->second.lastUse > 600) {
+                Texture old = it->second;
+                frames_[frame_].garbage.push_back([dev, old] {
+                    vkDestroyImageView(dev, old.view, nullptr);
+                    vkDestroyImage(dev, old.image, nullptr);
+                    vkFreeMemory(dev, old.mem, nullptr);
+                });
+                it = textures_.erase(it);
+            } else {
+                ++it;
+            }
+        }
+    }
+    // FABLE_CAPTURE_SEC=T1,T2,...: capture the first frame after each time (see captureDraw).
+    static std::vector<double> capTimes = [] {
+        std::vector<double> v;
+        for (const char* p = getenv("FABLE_CAPTURE_SEC"); p && *p; p = strchr(p, ',') ? strchr(p, ',') + 1 : "") v.push_back(atof(p));
+        return v;
+    }();
+    static const auto t0 = std::chrono::steady_clock::now();
+    static size_t nextCap = 0;
+    if (capturing_) {
+        capturing_ = false;
+        XLOG(0, "capture %zu: frame %llu, %u draws", nextCap - 1, static_cast<unsigned long long>(frames_done_), captureN_);
+    } else if (nextCap < capTimes.size() &&
+               std::chrono::duration<double>(std::chrono::steady_clock::now() - t0).count() >= capTimes[nextCap]) {
+        capturing_ = true;
+        captureN_ = 0;
+        ++nextCap;
+    }
 }
 
 

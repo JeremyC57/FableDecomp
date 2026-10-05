@@ -160,6 +160,14 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
             break;
         }
     }
+    // Per-stage alpha kill (TEXTURE_CONTROL0 bit 2, D3DTSS_ALPHAKILL): texels with alpha 0 are
+    // discarded (foliage, grass cut-outs).
+    for (int i = 0; i < 4; ++i) {
+        const uint32_t ctl0 = R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16];
+        const uint32_t mode = (prog >> (5 * i)) & 0x1F;
+        if ((ctl0 & (1u << 30)) && (ctl0 & (1u << 2)) && mode != 0 && mode != 4 && mode != 5)
+            code += "  if (t" + std::to_string(i) + ".a == 0.0) discard;\n";
+    }
     code += "  vec4 r0 = vec4(0.0, 0.0, 0.0, t0.a), r1 = vec4(0.0);\n";
     code += "  vec4 nr0, nr1, nt0, nt1, nt2, nt3, nv0, nv1;\n";
     for (int i = 0; i < stages && i < 8; ++i) {

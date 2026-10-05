@@ -79,7 +79,9 @@ std::string translateVertexProgram(const uint32_t (*prog)[4], uint32_t start) {
         const std::string b = operand(t, F_B_MUX, F_B_NEG, F_B_SWZ, get(t, F_B_R), false);
         const std::string c = operand(t, F_C_MUX, F_C_NEG, F_C_SWZ, (get(t, F_C_R_HI) << 2) | get(t, F_C_R_LO), false);
         const std::string cs = operand(t, F_C_MUX, F_C_NEG, F_C_SWZ, (get(t, F_C_R_HI) << 2) | get(t, F_C_R_LO), scalarIlu);
-        snprintf(buf, sizeof buf, "  // %u: %08X %08X %08X %08X\n", slot, t[0], t[1], t[2], t[3]);
+        // Relative index, not the slot: the game loads the same program at different slots, and
+        // identical programs must give identical text (one shader, one cache entry).
+        snprintf(buf, sizeof buf, "  // %u: %08X %08X %08X %08X\n", slot - start, t[0], t[1], t[2], t[3]);
         body += buf;
         // Both units read their inputs before either writes.
         std::string macExpr, iluExpr;

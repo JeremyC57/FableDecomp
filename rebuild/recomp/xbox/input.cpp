@@ -15,6 +15,8 @@
 #include <cmath>
 #include <mutex>
 #include <cstdlib>
+#include <cstdio>
+#include <cstring>
 
 namespace xb::input {
 
@@ -142,6 +144,43 @@ void update() {
             g_lookY *= 0.6f;
             if (std::fabs(g_lookX) < 0.02f) g_lookX = 0;
             if (std::fabs(g_lookY) < 0.02f) g_lookY = 0;
+        }
+    }
+    // FABLE_INPUT_SCRIPT="200:ly=32767;215:rx=-20000;220:" (seconds since start: stick values or
+    // buttons a/b/x/y/start=1, held until the next entry) drives port 1 for unattended testing.
+    static const char* script = getenv("FABLE_INPUT_SCRIPT");
+    if (script) {
+        static const auto start = std::chrono::steady_clock::now();
+        const double t = std::chrono::duration<double>(std::chrono::steady_clock::now() - start).count();
+        const char* cur = nullptr;
+        for (const char* p = script; *p;) {
+            if (std::atof(p) > t) break;
+            cur = p;
+            p = std::strchr(p, ';');
+            if (!p) break;
+            ++p;
+        }
+        if (cur) {
+            const char* p = std::strchr(cur, ':');
+            const char* end = std::strchr(cur, ';');
+            while (p && (!end || p < end)) {
+                ++p;
+                char key[8] = {};
+                int v = 0;
+                if (std::sscanf(p, "%7[a-z]=%d", key, &v) == 2) {
+                    Pad& d = next[0];
+                    if (!std::strcmp(key, "lx")) d.lx = static_cast<int16_t>(v);
+                    else if (!std::strcmp(key, "ly")) d.ly = static_cast<int16_t>(v);
+                    else if (!std::strcmp(key, "rx")) d.rx = static_cast<int16_t>(v);
+                    else if (!std::strcmp(key, "ry")) d.ry = static_cast<int16_t>(v);
+                    else if (!std::strcmp(key, "a")) d.analog[0] = v ? 255 : 0;
+                    else if (!std::strcmp(key, "b")) d.analog[1] = v ? 255 : 0;
+                    else if (!std::strcmp(key, "x")) d.analog[2] = v ? 255 : 0;
+                    else if (!std::strcmp(key, "y")) d.analog[3] = v ? 255 : 0;
+                    else if (!std::strcmp(key, "start")) d.buttons |= v ? 0x10 : 0;
+                }
+                p = std::strchr(p, ',');
+            }
         }
     }
     if (g_autopress) {

@@ -322,7 +322,12 @@ void videoMain() {
         if (vr && vr->scanoutImage(scan, &img, &iw, &ih)) {
             static const int every = getenv("FABLE_DUMP_FRAMES") ? atoi(getenv("FABLE_DUMP_FRAMES")) : 0;
             static uint64_t presented = 0;
-            if (every > 0 && ++presented % static_cast<uint64_t>(every) == 0) dumpImage(img, iw, ih, presented);
+            if (every > 0 && ++presented % static_cast<uint64_t>(every) == 0) {
+                static const auto t0 = std::chrono::steady_clock::now();
+                dumpImage(img, iw, ih, presented);
+                XLOG(1, "dumped vkframe_%05llu at %.0f s", static_cast<unsigned long long>(presented),
+                     std::chrono::duration<double>(std::chrono::steady_clock::now() - t0).count());
+            }
             vk::present(img, iw, ih, aspect, VK_NULL_HANDLE);
         } else {
             uploadScanout();

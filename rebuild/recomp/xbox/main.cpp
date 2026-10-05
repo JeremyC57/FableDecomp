@@ -146,8 +146,15 @@ int main(int argc, char** argv) {
         g_xbe.assign(std::istreambuf_iterator<char>(in), {});
     }
     if (g_xbe.size() < 0x180 || std::memcmp(g_xbe.data(), "XBEH", 4) != 0) die("default.xbe is not an XBE");
+    {  // Shader and pipeline caches next to the saves (<hdd>/../cache), unless set by the caller.
+        const auto cache = std::filesystem::path(hdd).lexically_normal().parent_path() / "cache";
+        std::error_code ec;
+        std::filesystem::create_directories(cache, ec);
+        if (!getenv("FABLE_CACHE_DIR") && !ec) setenv("FABLE_CACHE_DIR", cache.string().c_str(), 1);
+    }
     memInit();
     coreInit();
+    profilerStart();
     reserveXbe();
     kernelInit();
     mapXbe();

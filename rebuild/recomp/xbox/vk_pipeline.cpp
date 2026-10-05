@@ -8,6 +8,8 @@
 #include "settings.hpp"
 #include "xhost.hpp"
 
+#include "../posix/third_party/stb_image_write.h"
+
 #include <glslang/Public/ResourceLimits.h>
 #include <glslang/Public/ShaderLang.h>
 #if __has_include(<glslang/SPIRV/GlslangToSpv.h>)
@@ -35,6 +37,22 @@ uint64_t fnv(const void* p, size_t n, uint64_t h = 1469598103934665603ull) {
     return h;
 }
 uint64_t mix(uint64_t h, uint64_t v) { return fnv(&v, 8, h); }
+
+// Content hash for texture change detection: 8 bytes per step (FNV byte by byte was the
+// renderer's top CPU cost).
+uint64_t fastHash(const uint8_t* p, size_t n) {
+    uint64_t h = 0x9E3779B97F4A7C15ull ^ n, h2 = 0xC2B2AE3D27D4EB4Full;
+    size_t i = 0;
+    for (; i + 16 <= n; i += 16) {
+        uint64_t a, b;
+        std::memcpy(&a, p + i, 8);
+        std::memcpy(&b, p + i + 8, 8);
+        h = (h ^ a) * 0x100000001B3ull;
+        h2 = (h2 ^ b) * 0x9FB21C651E98DF25ull;
+    }
+    for (; i < n; ++i) h = (h ^ p[i]) * 0x100000001B3ull;
+    return h ^ (h2 >> 1) ^ (h2 << 31);
+}
 
 // GL enums the Kelvin class uses for blend/depth/stencil state.
 VkBlendFactor blendFactor(uint32_t gl) {
@@ -159,6 +177,11 @@ void attribToFloat(const uint8_t* src, uint32_t stride, uint32_t n, uint32_t fmt
 
 bool g_glslangReady = false;
 
+// Debugging (FABLE_CAPTURE_SEC): shader sources by module, modules by pipeline.
+std::unordered_map<VkShaderModule, std::string> g_shaderSrc;
+std::unordered_map<VkPipeline, std::pair<VkShaderModule, VkShaderModule>> g_pipeShaders;
+const bool g_keepSrc = getenv("FABLE_CAPTURE_SEC") != nullptr;
+
 // Per-60-frame draw statistics (XBOX_LOG >= 1), logged from endFrame.
 struct DrawStats {
     uint64_t draws = 0, verts = 0, garbage = 0, oob = 0, nopass = 0, nopipe = 0, noset = 0, textured = 0, program = 0;
@@ -187,6 +210,22 @@ std::vector<uint32_t> compileGlsl(EShLanguage stage, const std::string& src) {
             fclose(f);
         }
     }
+    // SPIR-V cache on disk (FABLE_CACHE_DIR): glslang is slow, a shader seen before loads instantly.
+    static const char* cacheDir = getenv("FABLE_CACHE_DIR");
+    std::string cacheFile;
+    if (cacheDir && *cacheDir) {
+        char name[40];
+        snprintf(name, sizeof name, "/%016llx.%s.spv", static_cast<unsigned long long>(fastHash(reinterpret_cast<const uint8_t*>(src.data()), src.size())),
+                 stage == EShLangVertex ? "v" : "f");
+        cacheFile = std::string(cacheDir) + name;
+        if (FILE* f = fopen(cacheFile.c_str(), "rb")) {
+            std::vector<uint32_t> spv;
+            uint32_t w[1024];
+            for (size_t n; (n = fread(w, 4, 1024, f)) > 0;) spv.insert(spv.end(), w, w + n);
+            fclose(f);
+            if (spv.size() > 5 && spv[0] == 0x07230203u) return spv;
+        }
+    }
     if (!g_glslangReady) {
         glslang::InitializeProcess();
         g_glslangReady = true;
@@ -209,6 +248,14 @@ std::vector<uint32_t> compileGlsl(EShLanguage stage, const std::string& src) {
     }
     std::vector<uint32_t> spv;
     glslang::GlslangToSpv(*prog.getIntermediate(stage), spv);
+    if (!cacheFile.empty()) {
+        const std::string tmp = cacheFile + ".tmp";
+        if (FILE* f = fopen(tmp.c_str(), "wb")) {
+            const bool ok = fwrite(spv.data(), 4, spv.size(), f) == spv.size();
+            fclose(f);
+            if (ok) rename(tmp.c_str(), cacheFile.c_str());
+        }
+    }
     return spv;
 }
 
@@ -216,11 +263,44 @@ std::vector<uint32_t> compileGlsl(EShLanguage stage, const std::string& src) {
 
 void VkRenderer::vblank() { ++g_vblanks; }
 
+void VkRenderer::savePipelineCache() {
+    const char* dir = getenv("FABLE_CACHE_DIR");
+    if (!dir || !pipeCache_ || !pipeCacheDirty_) return;
+    pipeCacheDirty_ = false;
+    size_t n = 0;
+    if (vkGetPipelineCacheData(ctx().device, pipeCache_, &n, nullptr) != VK_SUCCESS || !n) return;
+    std::vector<char> data(n);
+    if (vkGetPipelineCacheData(ctx().device, pipeCache_, &n, data.data()) != VK_SUCCESS) return;
+    const std::string path = std::string(dir) + "/pipelines.bin", tmp = path + ".tmp";
+    if (FILE* f = fopen(tmp.c_str(), "wb")) {
+        const bool ok = fwrite(data.data(), 1, n, f) == n;
+        fclose(f);
+        if (ok) rename(tmp.c_str(), path.c_str());
+    }
+}
+
 // ============================================================================================
 // pipeline objects
 // ============================================================================================
 void VkRenderer::initPipelineObjects() {
     VkDevice dev = ctx().device;
+    {  // The driver's pipeline cache, kept across runs in FABLE_CACHE_DIR (see savePipelineCache).
+        std::vector<char> data;
+        if (const char* dir = getenv("FABLE_CACHE_DIR"))
+            if (FILE* f = fopen((std::string(dir) + "/pipelines.bin").c_str(), "rb")) {
+                char buf[65536];
+                for (size_t n; (n = fread(buf, 1, sizeof buf, f)) > 0;) data.insert(data.end(), buf, buf + n);
+                fclose(f);
+            }
+        VkPipelineCacheCreateInfo ci{VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO};
+        ci.initialDataSize = data.size();
+        ci.pInitialData = data.empty() ? nullptr : data.data();
+        if (vkCreatePipelineCache(dev, &ci, nullptr, &pipeCache_) != VK_SUCCESS) {
+            ci.initialDataSize = 0;  // stale data from another driver
+            ci.pInitialData = nullptr;
+            vkCreatePipelineCache(dev, &ci, nullptr, &pipeCache_);
+        }
+    }
     std::vector<VkDescriptorSetLayoutBinding> b(14);
     for (uint32_t i = 0; i < 14; ++i) {
         b[i].binding = i;
@@ -481,8 +561,21 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
     const State& st = state();
     const uint32_t* R = st.regs;
     const bool program = (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2;
-    uint64_t key = mix(1, program ? st.programGeneration * 2 + 1 : 0);
-    key = mix(key, R[NV097_SET_TRANSFORM_PROGRAM_START / 4]);
+    // Keyed by the program's contents (from its start slot to the END flag), so re-uploads of
+    // the same program reuse the shader instead of compiling it again.
+    static uint64_t hashGen = 0, progHash = 0;
+    static uint32_t hashStart = ~0u;
+    const uint32_t start = R[NV097_SET_TRANSFORM_PROGRAM_START / 4];
+    if (program && (hashGen != st.programGeneration || hashStart != start)) {
+        hashGen = st.programGeneration;
+        hashStart = start;
+        progHash = 0x9E3779B97F4A7C15ull;
+        for (uint32_t i = start; i < 136; ++i) {
+            progHash = fnv(st.program[i], 16, progHash);
+            if (st.program[i][3] & 1) break;  // FINAL
+        }
+    }
+    uint64_t key = mix(1, program ? progHash : 0);  // not the start slot: the code does not depend on it
     for (int i = 0; i < 16; ++i) key = mix(key, (attribMask >> i) & 1 ? (fmts[i] & 0xF) == 6 : 2);
     if (!program) key = fnv(&R[NV097_SET_TEXTURE_MATRIX_ENABLE / 4], 16, mix(key, R[NV097_SET_LIGHTING_ENABLE / 4]));
     const bool fog = R[NV097_SET_FOG_ENABLE / 4] & 1;
@@ -564,6 +657,7 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
         ci.pCode = spv.data();
         vkCreateShaderModule(ctx().device, &ci, nullptr, &m);
     }
+    if (g_keepSrc) g_shaderSrc[m] = src;
     shaders_[key] = m;
     return m;
 }
@@ -582,6 +676,8 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
     const bool alphaTest = R[NV097_SET_ALPHA_TEST_ENABLE / 4] & 1;
     key = mix(key, alphaTest ? R[NV097_SET_ALPHA_FUNC / 4] : 0);
     key = mix(key, R[NV097_SET_FOG_ENABLE / 4] & 1);
+    for (int i = 0; i < 4; ++i)  // alpha kill per enabled stage
+        key = mix(key, R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & ((1u << 30) | (1u << 2)));
     // Stages sampling a depth surface (a shadow map rendered earlier): depth compare.
     uint32_t shadowMask = 0;
     for (int i = 0; i < 4; ++i) {
@@ -629,6 +725,7 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
         ci.pCode = spv.data();
         vkCreateShaderModule(ctx().device, &ci, nullptr, &m);
     }
+    if (g_keepSrc) g_shaderSrc[m] = src;
     shaders_[key] = m;
     return m;
 }
@@ -649,11 +746,13 @@ VkPipeline VkRenderer::pipeline(uint64_t key, VkRenderPass pass, uint32_t attrib
                                             NV097_SET_FRONT_POLYGON_MODE, NV097_SET_POLY_OFFSET_FILL_ENABLE};
     for (uint32_t m : stateMethods) key = mix(key, R[m / 4]);
     for (int i = 0; i < 16; ++i) key = mix(key, (attribMask >> i) & 1 ? fmts[i] : 0);
-    auto it = pipelines_.find(key);
-    if (it != pipelines_.end()) return it->second;
-
+    // The shaders are part of the pipeline: their keys (vertex program, combiners, texture
+    // modes, alpha test...) go into the pipeline key.
     uint64_t vk, fk;
     VkShaderModule vs = vertexShader(attribMask, fmts, &vk), fs = fragmentShader(&fk);
+    key = mix(mix(key, vk), fk);
+    auto it = pipelines_.find(key);
+    if (it != pipelines_.end()) return it->second;
     if (!vs || !fs) return pipelines_[key] = VK_NULL_HANDLE;
     VkPipelineShaderStageCreateInfo stages[2]{};
     stages[0].sType = stages[1].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
@@ -737,7 +836,9 @@ VkPipeline VkRenderer::pipeline(uint64_t key, VkRenderPass pass, uint32_t attrib
     pci.layout = pipeLayout_;
     pci.renderPass = pass;
     VkPipeline p = VK_NULL_HANDLE;
-    if (vkCreateGraphicsPipelines(ctx().device, VK_NULL_HANDLE, 1, &pci, nullptr, &p) != VK_SUCCESS) p = VK_NULL_HANDLE;
+    if (vkCreateGraphicsPipelines(ctx().device, pipeCache_, 1, &pci, nullptr, &p) != VK_SUCCESS) p = VK_NULL_HANDLE;
+    pipeCacheDirty_ = true;
+    if (g_keepSrc) g_pipeShaders[p] = {vs, fs};
     XLOG(2, "Vulkan: pipeline %zu created", pipelines_.size() + 1);
     return pipelines_[key] = p;
 }
@@ -826,8 +927,11 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     const uint8_t* src = gp(kContigBase + addr);
     const uint64_t key = mix(mix(addr, format), rect);
     Texture& t = textures_[key];
-    const uint64_t hash = fnv(src, bytes);
+    // Contents are checked at most once per frame (CPU writes to a texture land between frames).
+    if (t.image && t.lastUse == frames_done_ && t.checked) return t.view;
+    const uint64_t hash = fastHash(src, bytes);
     t.lastUse = frames_done_;
+    t.checked = true;
     if (t.image && t.hash == hash) return t.view;
     VkDevice dev = ctx().device;
     if (t.image) {
@@ -846,6 +950,8 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     t.d = d;
     t.levels = levels;
     t.hash = hash;
+    t.lastUse = frames_done_;
+    t.checked = true;
     VkImageCreateInfo ici{VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO};
     ici.flags = cube ? VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT : 0;
     ici.imageType = d > 1 ? VK_IMAGE_TYPE_3D : VK_IMAGE_TYPE_2D;
@@ -1044,6 +1150,24 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         XLOG(0, "   fog params %g %g %g, gen %u, color %08X, specfog c0 %08X c1 %08X", fp[0], fp[1], fp[2], R[NV097_SET_FOG_GEN_MODE / 4],
              R[NV097_SET_FOG_COLOR / 4], R[NV097_SET_SPECULAR_FOG_FACTOR / 4], R[NV097_SET_SPECULAR_FOG_FACTOR / 4 + 1]);
     }
+    static const bool sigLog = getenv("FABLE_DRAWSIGS") != nullptr;  // debugging: each distinct draw setup once
+    if (sigLog) {
+        std::string sig;
+        char b[64];
+        for (int i = 0; i < 16; ++i)
+            if ((mask >> i) & 1) { snprintf(b, sizeof b, "a%d:%02X ", i, fmts[i] & 0xFF); sig += b; }
+        for (int i = 0; i < 4; ++i)
+            if (R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30)) {
+                snprintf(b, sizeof b, "t%d:%02X/%X ", i, (R[NV097_SET_TEXTURE_FORMAT / 4 + i * 16] >> 8) & 0xFF,
+                         (R[NV097_SET_SHADER_STAGE_PROGRAM / 4] >> (5 * i)) & 0x1F);
+                sig += b;
+            }
+        snprintf(b, sizeof b, "comb %08X prog %u light %08X", R[NV097_SET_COMBINER_CONTROL / 4],
+                 (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2, R[0x3B8 / 4]);
+        sig += b;
+        static std::unordered_map<std::string, int> seen;
+        if (seen[sig]++ == 0) XLOG(0, "drawsig %s", sig.c_str());
+    }
     if ((R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) ++g_ds.program;
     for (int i = 0; i < 4; ++i)
         if (R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30)) { ++g_ds.textured; break; }
@@ -1162,6 +1286,31 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     std::memcpy(&slope, &R[NV097_SET_POLYGON_OFFSET_SCALE_FACTOR / 4], 4);
     std::memcpy(&bias, &R[NV097_SET_POLYGON_OFFSET_BIAS / 4], 4);
     vkCmdSetDepthBias(cb, bias, 0.0f, slope);
+    std::string capInfo;
+    if (capturing_) {
+        char b[256];
+        snprintf(b, sizeof b, "prim %u n %u target %08X %ux%u comb %08X prog %08X blend %u %X/%X", prim,
+                 needIndex ? static_cast<uint32_t>(seq.size()) : count, target_.color, target_.w, target_.h, R[NV097_SET_COMBINER_CONTROL / 4],
+                 R[NV097_SET_SHADER_STAGE_PROGRAM / 4], R[NV097_SET_BLEND_ENABLE / 4] & 1, R[NV097_SET_BLEND_FUNC_SFACTOR / 4],
+                 R[NV097_SET_BLEND_FUNC_DFACTOR / 4]);
+        capInfo = b;
+        snprintf(b, sizeof b, " atest %u func %X ref %u eq %X cmask %08X zfunc %X zen %u zmask %u", R[NV097_SET_ALPHA_TEST_ENABLE / 4] & 1,
+                 R[NV097_SET_ALPHA_FUNC / 4], R[NV097_SET_ALPHA_REF / 4], R[NV097_SET_BLEND_EQUATION / 4], R[NV097_SET_COLOR_MASK / 4],
+                 R[NV097_SET_DEPTH_FUNC / 4], R[NV097_SET_DEPTH_TEST_ENABLE / 4], R[NV097_SET_DEPTH_MASK / 4]);
+        capInfo += b;
+        for (int ci : {0, 3, 4, 21, 23, 24, 39, 96}) {
+            snprintf(b, sizeof b, " c%d=(%g %g %g %g)", ci, st.constants[ci][0], st.constants[ci][1], st.constants[ci][2], st.constants[ci][3]);
+            capInfo += b;
+        }
+        for (int i = 0; i < 16; ++i)
+            if ((mask >> i) & 1) { snprintf(b, sizeof b, " a%d:%02X", i, fmts[i] & 0xFF); capInfo += b; }
+        for (int i = 0; i < 4; ++i)
+            if (R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30)) {
+                snprintf(b, sizeof b, " t%d:%08X@%08X ctl0 %08X ck %08X", i, R[NV097_SET_TEXTURE_FORMAT / 4 + i * 16],
+                         R[NV097_SET_TEXTURE_OFFSET / 4 + i * 16], R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16], R[0x1AE0 / 4 + i]);
+                capInfo += b;
+            }
+    }
     if (needIndex) {
         for (auto& v : seq) v -= minIdx;
         const VkDeviceSize io = upload(seq.data(), seq.size() * 4, 4);
@@ -1170,6 +1319,94 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     } else {
         vkCmdDraw(cb, count, 1, inl ? 0 : first - minIdx, 0);
     }
+    if (capturing_) {
+        capPipe_ = p;
+        captureDraw(capInfo);
+    }
+}
+
+// Debugging aid: FABLE_CAPTURE_SEC=T captures the first frame after T seconds: the colour
+// target after every draw goes to cap_NNNN.png, the draw's state to cap.txt.
+void VkRenderer::captureDraw(const std::string& info) {
+    static FILE* txt = fopen("cap.txt", "w");
+    static uint32_t frameCaps = 0;
+    if (captureN_ == 0) ++frameCaps;
+    const uint32_t n = captureN_++;
+    if (txt) fprintf(txt, "%u/%04u %s\n", frameCaps, n, info.c_str()), fflush(txt);
+    Surface* c = target_.color ? findSurface(target_.color, false) : nullptr;
+    const bool c16 = c && c->format == VK_FORMAT_A1R5G5B5_UNORM_PACK16;
+    if (!c || (c->format != VK_FORMAT_B8G8R8A8_UNORM && !c16) || n >= 4000) return;
+    const uint32_t w = c->w * static_cast<uint32_t>(scale_), h = c->h * static_cast<uint32_t>(scale_);
+    static Buffer buf;
+    static void* mapped = nullptr;
+    if (!buf.buf) {
+        buf = createBuffer(2560ull * 1920 * 4, VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
+        vkMapMemory(ctx().device, buf.mem, 0, VK_WHOLE_SIZE, 0, &mapped);
+    }
+    if (static_cast<VkDeviceSize>(w) * h * 4 > buf.size) return;
+    endPass();
+    transition(*c, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
+    VkBufferImageCopy copy{};
+    copy.imageSubresource = {VK_IMAGE_ASPECT_COLOR_BIT, 0, 0, 1};
+    copy.imageExtent = {w, h, 1};
+    vkCmdCopyImageToBuffer(cmd(), c->image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, buf.buf, 1, &copy);
+    submitFrame(true);
+    const uint8_t* p = static_cast<const uint8_t*>(mapped);
+    std::vector<uint8_t> expanded;
+    if (c16) {  // A1R5G5B5 -> BGRA8
+        expanded.resize(static_cast<size_t>(w) * h * 4);
+        for (size_t i = 0; i < static_cast<size_t>(w) * h; ++i) {
+            uint16_t v;
+            std::memcpy(&v, p + 2 * i, 2);
+            expanded[4 * i] = static_cast<uint8_t>((v & 31) << 3);
+            expanded[4 * i + 1] = static_cast<uint8_t>(((v >> 5) & 31) << 3);
+            expanded[4 * i + 2] = static_cast<uint8_t>(((v >> 10) & 31) << 3);
+            expanded[4 * i + 3] = (v & 0x8000) ? 255 : 0;
+        }
+        p = expanded.data();
+    }
+    // Only draws that add strongly blue pixels (FABLE_CAPTURE_ALL=1: every draw) are saved.
+    // FABLE_CAPTURE_DETECT=black: draws that turn pixels near-black instead.
+    static const bool detectBlack = getenv("FABLE_CAPTURE_DETECT") && !strcmp(getenv("FABLE_CAPTURE_DETECT"), "black");
+    static std::vector<uint8_t> prev;
+    if (n == 0 || prev.size() != static_cast<size_t>(w) * h * 4) prev.assign(static_cast<size_t>(w) * h * 4, 255);
+    static uint32_t lastBlue = 0;
+    uint32_t blue = 0;
+    for (size_t i = 0; i < static_cast<size_t>(w) * h; ++i) {
+        const uint8_t* q = p + 4 * i;
+        if (detectBlack) {
+            const uint8_t* o = prev.data() + 4 * i;
+            if (q[0] < 24 && q[1] < 24 && q[2] < 24 && (o[0] > 40 || o[1] > 40 || o[2] > 40)) ++blue;
+        } else if (q[0] > 90 && q[0] > 2 * q[1] && q[0] > 2 * q[2]) {
+            ++blue;
+        }
+    }
+    if (detectBlack) {
+        std::memcpy(prev.data(), p, prev.size());
+        lastBlue = 0;
+    }
+    if (n == 0) lastBlue = 0;
+    const bool more = blue > lastBlue + 200;
+    if (txt) fprintf(txt, "      blue %u%s\n", blue, more ? "  <==" : ""), fflush(txt);
+    lastBlue = blue;
+    if (!more && !getenv("FABLE_CAPTURE_ALL")) return;
+    std::vector<uint8_t> rgb(static_cast<size_t>(w) * h * 3);
+    for (size_t i = 0; i < static_cast<size_t>(w) * h; ++i) {
+        rgb[3 * i] = p[4 * i + 2];
+        rgb[3 * i + 1] = p[4 * i + 1];
+        rgb[3 * i + 2] = p[4 * i];
+    }
+    char name[64];
+    snprintf(name, sizeof name, "cap%u_%04u.png", frameCaps, n);
+    auto ps = g_pipeShaders.find(capPipe_);
+    if (ps != g_pipeShaders.end()) {
+        char sn[64];
+        snprintf(sn, sizeof sn, "cap%u_%04u.vert", frameCaps, n);
+        if (FILE* f = fopen(sn, "w")) fputs(g_shaderSrc[ps->second.first].c_str(), f), fclose(f);
+        snprintf(sn, sizeof sn, "cap%u_%04u.frag", frameCaps, n);
+        if (FILE* f = fopen(sn, "w")) fputs(g_shaderSrc[ps->second.second].c_str(), f), fclose(f);
+    }
+    stbi_write_png(name, static_cast<int>(w), static_cast<int>(h), 3, rgb.data(), static_cast<int>(w * 3));
 }
 
 } // namespace xb::gpu

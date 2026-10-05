@@ -67,6 +67,7 @@ private:
     struct Texture {
         uint32_t addr = 0, format = 0, w = 0, h = 0, d = 0, levels = 0, pitch = 0, kind = 0;
         uint64_t hash = 0, lastUse = 0;
+        bool checked = false;
         VkImage image = VK_NULL_HANDLE;
         VkDeviceMemory mem = VK_NULL_HANDLE;
         VkImageView view = VK_NULL_HANDLE;
@@ -92,6 +93,13 @@ private:
     VkShaderModule fragmentShader(uint64_t* key);
     VkImageView texture(int stage, uint32_t* kind);
     VkSampler sampler(int stage);
+    void captureDraw(const std::string& info);  // FABLE_CAPTURE_SEC (debugging)
+    bool capturing_ = false;
+    uint32_t captureN_ = 0;
+    VkPipeline capPipe_ = VK_NULL_HANDLE;
+    VkPipelineCache pipeCache_ = VK_NULL_HANDLE;
+    bool pipeCacheDirty_ = false;
+    void savePipelineCache();
 
     int scale_ = 1;
     VkFormat depthFormat_ = VK_FORMAT_D24_UNORM_S8_UINT;
