@@ -532,6 +532,16 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
     const bool alphaTest = R[NV097_SET_ALPHA_TEST_ENABLE / 4] & 1;
     key = mix(key, alphaTest ? R[NV097_SET_ALPHA_FUNC / 4] : 0);
     key = mix(key, R[NV097_SET_FOG_ENABLE / 4] & 1);
+    // Stages sampling a depth surface (a shadow map rendered earlier): depth compare.
+    uint32_t shadowMask = 0;
+    for (int i = 0; i < 4; ++i) {
+        if (!(R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30))) continue;
+        const uint32_t base = NV097_SET_TEXTURE_OFFSET / 4 + i * 16, format = R[base + 1];
+        const uint32_t dma = (format & 3) == 2 ? R[NV097_SET_CONTEXT_DMA_B / 4] : R[NV097_SET_CONTEXT_DMA_A / 4];
+        const uint32_t addr = dmaAddress(dma, nullptr) + R[base];
+        if (findSurface(addr, true) && !findSurface(addr, false)) shadowMask |= 1u << i;
+    }
+    if (shadowMask) key = mix(mix(key, shadowMask), R[NV097_SET_SHADOW_DEPTH_FUNC / 4] & 7);
     *keyOut = key;
     auto it = shaders_.find(key);
     if (it != shaders_.end()) return it->second;
@@ -550,7 +560,7 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
     src += "layout(location=0) out vec4 fragColor;\nvoid main() {\n"
            "  vec4 v0 = gl_FrontFacing ? vD0 : vB0, v1 = gl_FrontFacing ? vD1 : vB1;\n"
            "  vec4 pFog = vec4(cf.fogColor.rgb, clamp(vFog, 0.0, 1.0));\n";
-    src += translateCombiners(state(), nullptr);
+    src += translateCombiners(state(), nullptr, shadowMask);
     if (alphaTest) {
         const uint32_t func = R[NV097_SET_ALPHA_FUNC / 4] & 7;
         static const char* cmp[] = {"false", "a < r", "a == r", "a <= r", "a > r", "a != r", "a >= r", "true"};

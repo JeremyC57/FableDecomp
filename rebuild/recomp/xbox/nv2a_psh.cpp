@@ -111,7 +111,7 @@ void stageHalf(Ctx& c, std::string& code, uint32_t inputs, uint32_t outputs, boo
 }
 }  // namespace
 
-std::string translateCombiners(const State& s, CombinerInfo* info) {
+std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shadowMask) {
     const uint32_t* R = s.regs;
     Ctx c;
     const uint32_t control = R[NV097_SET_COMBINER_CONTROL / 4];
@@ -124,6 +124,19 @@ std::string translateCombiners(const State& s, CombinerInfo* info) {
         const uint32_t mode = (prog >> (5 * i)) & 0x1F;
         const std::string t = "t" + std::to_string(i), tc = "vTex" + std::to_string(i), smp = "tex" + std::to_string(i);
         if (info) info->texMode[i] = mode;
+        if (((shadowMask >> i) & 1) && (mode == 1 || mode == 2)) {
+            // Shadow map (as xemu): the depth (24-bit) against z/w, with the shadow depth func.
+            static const char* kCmp[8] = {"", "<", "==", "<=", ">", "!=", ">=", ""};
+            const uint32_t func = R[NV097_SET_SHADOW_DEPTH_FUNC / 4] & 7;
+            if (func == 0 || func == 7) {
+                code += "  vec4 " + t + " = vec4(" + (func ? "1.0" : "0.0") + ");\n";
+            } else {
+                code += "  float " + t + "d = textureProj(" + smp + ", " + tc + ".xyw).r * 16777215.0;\n";
+                const std::string z = mode == 2 ? "clamp(" + tc + ".z / " + tc + ".w, 0.0, 16777215.0)" : "0.0";
+                code += "  vec4 " + t + " = vec4(" + t + "d " + kCmp[func] + " " + z + " ? 1.0 : 0.0);\n";
+            }
+            continue;
+        }
         switch (mode) {
         case 0: code += "  vec4 " + t + " = vec4(0.0);\n"; break;
         case 1: code += "  vec4 " + t + " = textureProj(" + smp + ", " + tc + ".xyw);\n"; break;

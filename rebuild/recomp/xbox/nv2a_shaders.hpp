@@ -16,6 +16,7 @@ struct CombinerInfo {
     uint32_t texMode[4] = {};
 };
 // GLSL statements computing fragColor from v0, v1, pFog, vTex0..3 and samplers tex0..3.
-std::string translateCombiners(const State& s, CombinerInfo* info);
+// shadowMask: stages whose texture is a depth surface (PROJECT2D/3D become depth compares).
+std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shadowMask = 0);
 
 } // namespace xb::gpu
