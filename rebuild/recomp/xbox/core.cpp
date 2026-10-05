@@ -139,7 +139,7 @@ static int onUnknownTarget(Ctx* c, uint32_t target) {
 // ============================================================================================
 // threads
 // ============================================================================================
-std::mutex g_gil;
+FairLock g_gil;
 std::condition_variable_any g_dispatchCv;
 static thread_local XThread* t_cur;
 static thread_local sigjmp_buf* t_exitJmp;
@@ -233,7 +233,7 @@ static void threadMain(XThread* t, uint32_t start, uint32_t ctx, uint32_t system
     t_exitJmp = &jb;
     if (sigsetjmp(jb, 0) == 0) {
         {
-            std::unique_lock<std::mutex> lk(g_gil, std::adopt_lock);
+            std::unique_lock<FairLock> lk(g_gil, std::adopt_lock);
             g_dispatchCv.wait(lk, [&] { return t->suspend <= 0; });
             lk.release();
         }
@@ -386,7 +386,7 @@ uint32_t waitObjects(Ctx* c, const uint32_t* objs, int n, bool waitAll, bool ale
             deadline = now + (static_cast<uint64_t>(v) > sys ? static_cast<uint64_t>(v) - sys : 0);
         }
     }
-    std::unique_lock<std::mutex> lk(g_gil, std::adopt_lock);
+    std::unique_lock<FairLock> lk(g_gil, std::adopt_lock);
     uint32_t result = ST_TIMEOUT;
     for (;;) {
         if (alertable && !t->userApcs.empty()) {
@@ -433,7 +433,6 @@ std::map<uint32_t, Timer> g_timers;  // KTIMER -> state
 struct Dpc { uint32_t dpc, a1, a2; };
 std::vector<Dpc> g_dpcs;
 std::map<uint32_t, uint32_t> g_interrupts;  // vector -> KINTERRUPT
-std::vector<uint32_t> g_pendingIrq;
 std::condition_variable_any g_workerCv;
 XThread* g_worker;
 }
@@ -479,29 +478,32 @@ bool dpcRemove(uint32_t dpc) {
 
 void interruptConnect(uint32_t vector, uint32_t kint) { g_interrupts[vector] = kint; }
 
+// Lock-free: device threads raise interrupts while holding their own locks; the worker
+// drains the mask (it wakes at least every 2 ms, so a missed notify costs that much).
+static std::atomic<uint32_t> g_irqMask{0};
+void (*g_irqEoi)(uint32_t vector);
 void interruptRaise(uint32_t vector) {
-    // May be called without the GIL (GPU thread): take it briefly.
-    std::lock_guard<std::mutex> l(g_gil);
-    g_pendingIrq.push_back(vector);
+    g_irqMask.fetch_or(1u << vector);
     g_workerCv.notify_all();
 }
 
 static void workerMain() {
     g_gil.lock();
     t_cur = g_worker;
-    std::unique_lock<std::mutex> lk(g_gil, std::adopt_lock);
+    std::unique_lock<FairLock> lk(g_gil, std::adopt_lock);
     for (;;) {
         // Interrupts first (ISRs queue DPCs), then expired timers, then DPCs.
-        while (!g_pendingIrq.empty()) {
-            const uint32_t v = g_pendingIrq.front();
-            g_pendingIrq.erase(g_pendingIrq.begin());
+        for (uint32_t mask = g_irqMask.exchange(0); mask; mask &= mask - 1) {
+            const uint32_t v = static_cast<uint32_t>(__builtin_ctz(mask));
             auto it = g_interrupts.find(v);
             if (it != g_interrupts.end()) {
                 const uint32_t ki = it->second;
+                XLOG(3, "ISR for interrupt %u", v);
                 wr8(t_cur->pcr + 0x24, static_cast<uint8_t>(rd32(ki + 0x0C)));
                 guestCall(rd32(ki + 0x00), {ki, rd32(ki + 0x04)});
                 wr8(t_cur->pcr + 0x24, 0);
             }
+            if (g_irqEoi) g_irqEoi(v);
         }
         const uint64_t now = monoTime100ns();
         uint64_t next = now + 100000;  // 10 ms
@@ -532,9 +534,9 @@ static void workerMain() {
             guestCall(rd32(d.dpc + 0x0C), {d.dpc, rd32(d.dpc + 0x10), d.a1, d.a2});
             wr8(t_cur->pcr + 0x24, 0);
         }
-        if (!g_pendingIrq.empty() || !g_dpcs.empty()) continue;
+        if (g_irqMask.load() || !g_dpcs.empty()) continue;
         const uint64_t now2 = monoTime100ns();
-        if (next > now2) g_workerCv.wait_for(lk, std::chrono::nanoseconds((next - now2) * 100));
+        if (next > now2) g_workerCv.wait_for(lk, std::chrono::nanoseconds(std::min<uint64_t>(next - now2, 20000) * 100));
     }
 }
 
@@ -577,6 +579,16 @@ static void onSignal(int sig, siginfo_t* si, void*) {
     const int k = backtrace(frames, 48);
     backtrace_symbols_fd(frames, k, 2);
     _exit(3);
+}
+
+// Lifted loops call this when recomp_preempt_flag is set (every millisecond, by the ticker):
+// if another thread waits for the guest lock, hand it over, as the console's timer interrupt
+// would switch threads.
+extern "C" void recomp_safepoint(void) {
+    recomp_preempt_flag = 0;
+    if (!t_cur || !g_gil.contended()) return;
+    g_gil.unlock();
+    g_gil.lock();
 }
 
 void coreInit() {

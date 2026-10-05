@@ -2,6 +2,8 @@
 // binds the kernel thunk table, and runs the XBE entry point on a guest thread.
 //
 //   FableXbox --game <folder with default.xbe and Data/> [--hdd <folder>]
+#include "gpu.hpp"
+#include "settings.hpp"
 #include "xhost.hpp"
 
 #include <chrono>
@@ -93,11 +95,12 @@ static uint32_t tlsSize() {
 using namespace xb;
 
 int main(int argc, char** argv) {
-    std::string game, hdd;
+    std::string game, hdd, config;
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
         if (a == "--game" && i + 1 < argc) game = argv[++i];
         else if (a == "--hdd" && i + 1 < argc) hdd = argv[++i];
+        else if (a == "--config" && i + 1 < argc) config = argv[++i];
     }
     if (const char* e = getenv("XBOX_LOG")) g_logLevel = atoi(e);
     if (game.empty()) {
@@ -105,6 +108,7 @@ int main(int argc, char** argv) {
         return 2;
     }
     if (hdd.empty()) hdd = game + "/../xbox_hdd";
+    loadSettings(config.empty() ? hdd + "/../fable_xbox.ini" : config);
     {
         std::ifstream in(game + "/default.xbe", std::ios::binary);
         if (!in) die("cannot open %s/default.xbe", game.c_str());
@@ -136,9 +140,11 @@ int main(int argc, char** argv) {
     }
     symlinkCreate("\\??\\D:", "\\Device\\CdRom0");
     hleInstall();
+    gpu::init();
     std::thread([] {
         for (;;) {
             kernelTick();
+            recomp_preempt_flag = 1;
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     }).detach();

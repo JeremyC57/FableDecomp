@@ -15,6 +15,7 @@
 
 #include "recomp.h"
 
+#include <atomic>
 #include <condition_variable>
 #include <cstdarg>
 #include <cstdint>
@@ -80,7 +81,25 @@ std::string readAnsiString(uint32_t pstr);
 uint32_t newAnsiString(const std::string& s);  // allocates the STRING and its buffer in the pool
 
 // ---- threads and the global lock -----------------------------------------------------------
-extern std::mutex g_gil;
+// Ticket lock: FIFO hand-over, so a thread giving the lock up at a safepoint really lets the
+// next waiter in (std::mutex makes no such promise).
+class FairLock {
+public:
+    void lock() {
+        const uint32_t t = next_.fetch_add(1, std::memory_order_relaxed);
+        for (uint32_t s = serving_.load(std::memory_order_acquire); s != t; s = serving_.load(std::memory_order_acquire))
+            serving_.wait(s, std::memory_order_acquire);
+    }
+    void unlock() {
+        serving_.fetch_add(1, std::memory_order_release);
+        serving_.notify_all();
+    }
+    bool contended() const { return next_.load(std::memory_order_relaxed) - serving_.load(std::memory_order_relaxed) > 1; }
+
+private:
+    std::atomic<uint32_t> next_{0}, serving_{0};
+};
+extern FairLock g_gil;
 extern std::condition_variable_any g_dispatchCv;  // notified whenever a dispatcher object changes
 
 struct XThread {

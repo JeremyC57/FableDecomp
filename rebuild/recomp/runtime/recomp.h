@@ -102,6 +102,13 @@ void recomp_resume_at(Ctx* c, uint32_t frame, uint32_t target);
 extern void (*recomp_on_trace)(Ctx* c, uint32_t fn);
 static inline void recomp_trace(Ctx* c, uint32_t fn) { if (recomp_on_trace) recomp_on_trace(c, fn); }
 
+/* Preemption: lifted loops check this flag at their back edges. A host that runs several
+ * guest threads under one lock sets it periodically; recomp_safepoint() then lets another
+ * thread run (the default does nothing). */
+extern volatile int recomp_preempt_flag;
+void recomp_safepoint(void);
+#define RECOMP_SAFEPOINT do { if (__builtin_expect(recomp_preempt_flag, 0)) recomp_safepoint(); } while (0)
+
 /* Optional host services used by a few instructions. */
 void recomp_cpuid(Ctx* c);
 /* Port I/O (`in`/`out`, XBE code runs in ring 0): `size` is 1, 2 or 4 bytes. */
@@ -125,6 +132,18 @@ static inline void wrf32(uint32_t a, float v) { memcpy(GP(a), &v, 4); }
 static inline void wrf64(uint32_t a, double v) { memcpy(GP(a), &v, 8); }
 static inline void rdxmm(Xmm* x, uint32_t a) { memcpy(x->b, GP(a), 16); }
 static inline void wrxmm(uint32_t a, const Xmm* x) { memcpy(GP(a), x->b, 16); }
+
+/* Device-register accessors, emitted for functions lifted with --mmio (the XBE's Direct3D
+ * library): addresses in 0xFD000000..0xFEFFFFFF (NV2A, MCPX) go to the host. */
+uint32_t recomp_mmio_read(uint32_t a, int size);
+void recomp_mmio_write(uint32_t a, uint32_t v, int size);
+#define RECOMP_IS_MMIO(a) ((uint32_t)((a) - 0xFD000000u) < 0x02000000u)
+static inline uint8_t rdm8(uint32_t a) { return RECOMP_IS_MMIO(a) ? (uint8_t)recomp_mmio_read(a, 1) : rd8(a); }
+static inline uint16_t rdm16(uint32_t a) { return RECOMP_IS_MMIO(a) ? (uint16_t)recomp_mmio_read(a, 2) : rd16(a); }
+static inline uint32_t rdm32(uint32_t a) { return RECOMP_IS_MMIO(a) ? recomp_mmio_read(a, 4) : rd32(a); }
+static inline void wrm8(uint32_t a, uint8_t v) { if (RECOMP_IS_MMIO(a)) recomp_mmio_write(a, v, 1); else wr8(a, v); }
+static inline void wrm16(uint32_t a, uint16_t v) { if (RECOMP_IS_MMIO(a)) recomp_mmio_write(a, v, 2); else wr16(a, v); }
+static inline void wrm32(uint32_t a, uint32_t v) { if (RECOMP_IS_MMIO(a)) recomp_mmio_write(a, v, 4); else wr32(a, v); }
 
 /* ---- lazy integer flags -----------------------------------------------------
  * A flag-setting instruction records (op, result, a, b); consumers derive the

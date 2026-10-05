@@ -674,9 +674,11 @@ KFUNC(AvSendTVEncoderOption, 4) {
     if (res) wr32(res, opt == 6 ? 0x00400106 : 0);  // AV_QUERY_AV_CAPABILITIES: standard pack, NTSC
     return 0;
 }
-uint32_t g_avFramebuffer;  // the scanout address the game last set
+uint32_t g_avFramebuffer, g_avPitch, g_avFormat;  // the scanout the game last set
 KFUNC(AvSetDisplayMode, 6) {
     g_avFramebuffer = ARG(c, 5);
+    g_avPitch = ARG(c, 4);
+    g_avFormat = ARG(c, 3);
     XLOG(1, "AvSetDisplayMode(mode 0x%X, format 0x%X, pitch %u, fb 0x%08X)", ARG(c, 2), ARG(c, 3), ARG(c, 4), ARG(c, 5));
     return ST_SUCCESS;
 }

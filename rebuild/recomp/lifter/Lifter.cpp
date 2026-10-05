@@ -478,6 +478,16 @@ struct Stats {
     uint64_t insns = 0, unsupportedInsns = 0, unresolvedIndirectJumps = 0, decodeErrors = 0;
 };
 
+std::vector<std::pair<uint32_t, uint32_t>>& mmioRanges() {
+    static std::vector<std::pair<uint32_t, uint32_t>> v;
+    return v;
+}
+
+bool& safepoints() {
+    static bool v = false;
+    return v;
+}
+
 std::set<uint32_t>& traceAddrs() {
     static std::set<uint32_t> s;
     return s;
@@ -490,6 +500,9 @@ public:
     std::string function(Function& f) {
         out_.str("");
         f_ = &f;
+        mmio_ = false;
+        for (const auto& [lo, hi] : mmioRanges())
+            if (f.entry >= lo && f.entry < hi) mmio_ = true;
         out_ << "void " << fname(f.entry) << "(Ctx* c) {\n"
              << "    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;\n"
              << "    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;\n"
@@ -630,9 +643,9 @@ private:
         switch (o.type) {
         case ZYDIS_OPERAND_TYPE_REGISTER: return readReg(o.reg.value);
         case ZYDIS_OPERAND_TYPE_MEMORY:
-            if (bits == 8) return "(uint32_t)rd8(" + addr(o) + ")";
-            if (bits == 16) return "(uint32_t)rd16(" + addr(o) + ")";
-            return "rd32(" + addr(o) + ")";
+            if (bits == 8) return "(uint32_t)" + mem("rd8(") + addr(o) + ")";
+            if (bits == 16) return "(uint32_t)" + mem("rd16(") + addr(o) + ")";
+            return mem("rd32(") + addr(o) + ")";
         case ZYDIS_OPERAND_TYPE_IMMEDIATE:
             return hexu(static_cast<uint32_t>(o.imm.value.s) & mask(bits));
         default: return "0u";
@@ -640,10 +653,17 @@ private:
     }
     std::string wr(const ZydisDecodedOperand& o, int bits, const std::string& v) {
         if (o.type == ZYDIS_OPERAND_TYPE_REGISTER) return writeReg(o.reg.value, v);
-        if (bits == 8) return "wr8(" + addr(o) + ", (uint8_t)(" + v + "));";
-        if (bits == 16) return "wr16(" + addr(o) + ", (uint16_t)(" + v + "));";
-        return "wr32(" + addr(o) + ", (uint32_t)(" + v + "));";
+        if (bits == 8) return mem("wr8(") + addr(o) + ", (uint8_t)(" + v + "));";
+        if (bits == 16) return mem("wr16(") + addr(o) + ", (uint16_t)(" + v + "));";
+        return mem("wr32(") + addr(o) + ", (uint32_t)(" + v + "));";
     }
+    // --safepoints: a preemption check on every backward branch (loop back edge).
+    std::string safepoint(uint32_t target, uint32_t at) const {
+        return safepoints() && target <= at ? "RECOMP_SAFEPOINT; " : "";
+    }
+    // Functions in an --mmio range use accessors that route device-register addresses to the
+    // host (rdm32/wrm32...): their register reads and writes take effect immediately.
+    std::string mem(const char* acc) const { return mmio_ ? std::string(acc, 2) + "m" + (acc + 2) : std::string(acc); }
 
     static std::string bytes(int bits) { return std::to_string(bits / 8); }
 
@@ -879,7 +899,8 @@ private:
         case ZYDIS_MNEMONIC_JL: case ZYDIS_MNEMONIC_JNL: case ZYDIS_MNEMONIC_JLE: case ZYDIS_MNEMONIC_JNLE: {
             uint64_t t = 0;
             ZydisCalcAbsoluteAddress(&in, &o[0], ins.addr, &t);
-            return line("if (f_cond(" + std::to_string(cc(m)) + ", fop, fr, fa, fb)) goto " + target(static_cast<uint32_t>(t)) + ";");
+            return line("if (f_cond(" + std::to_string(cc(m)) + ", fop, fr, fa, fb)) { " + safepoint(static_cast<uint32_t>(t), ins.addr) +
+                        "goto " + target(static_cast<uint32_t>(t)) + "; }");
         }
         case ZYDIS_MNEMONIC_JECXZ: case ZYDIS_MNEMONIC_JCXZ: {
             uint64_t t = 0;
@@ -893,14 +914,14 @@ private:
             std::string cond = "--ecx != 0";
             if (m == ZYDIS_MNEMONIC_LOOPE) cond = "--ecx != 0 && f_zf(fop, fr)";
             if (m == ZYDIS_MNEMONIC_LOOPNE) cond = "--ecx != 0 && !f_zf(fop, fr)";
-            return line("if (" + cond + ") goto " + target(static_cast<uint32_t>(t)) + ";");
+            return line("if (" + cond + ") { " + safepoint(static_cast<uint32_t>(t), ins.addr) + "goto " + target(static_cast<uint32_t>(t)) + "; }");
         }
         case ZYDIS_MNEMONIC_JMP: {
             terminated_ = true;
             if (o[0].type == ZYDIS_OPERAND_TYPE_IMMEDIATE) {
                 uint64_t t = 0;
                 ZydisCalcAbsoluteAddress(&in, &o[0], ins.addr, &t);
-                return line("goto " + target(static_cast<uint32_t>(t)) + ";");
+                return line(safepoint(static_cast<uint32_t>(t), ins.addr) + "goto " + target(static_cast<uint32_t>(t)) + ";");
             }
             auto jt = f_->tables.find(ins.addr);
             if (jt != f_->tables.end()) {
@@ -1254,6 +1275,7 @@ private:
     Function* f_ = nullptr;
     std::ostringstream out_;
     bool terminated_ = false;
+    bool mmio_ = false;
 };
 
 } // namespace
@@ -1303,6 +1325,14 @@ int main(int argc, char** argv) {
             const std::string h = argv[++i];
             const auto eq = h.find('=');
             if (eq != std::string::npos) wraps[static_cast<uint32_t>(std::stoul(h.substr(0, eq), nullptr, 16))] = h.substr(eq + 1);
+        } else if (a == "--mmio" && i + 1 < argc) {  // --mmio 0x84E460-0x863200
+            const std::string r = argv[++i];
+            const auto dash = r.find('-');
+            if (dash != std::string::npos)
+                mmioRanges().emplace_back(static_cast<uint32_t>(std::stoul(r.substr(0, dash), nullptr, 16)),
+                                          static_cast<uint32_t>(std::stoul(r.substr(dash + 1), nullptr, 16)));
+        } else if (a == "--safepoints") {
+            safepoints() = true;
         } else if (a == "--prefix" && i + 1 < argc) {
             prefix = argv[++i];
         } else if (a == "--no-refs") {
@@ -1324,6 +1354,8 @@ int main(int argc, char** argv) {
     }
     prog.addEntry(img.entry());
     for (uint32_t e : img.exports()) prog.addEntry(e);
+    for (const auto& h : hooks) prog.addEntry(h.first);  // hooked code may only be reached through data
+    for (const auto& w : wraps) prog.addEntry(w.first);
     prog.discoverAll();
     std::cerr << "exports: " << img.exports().size() << ", relocations into the image: " << img.relocTargets().size() << "\n";
     if (!noRefs) {
@@ -1363,7 +1395,7 @@ int main(int argc, char** argv) {
     // the lifted-function contract ([esp] = return address on entry; pops it on return).
     for (const auto& [a, name] : hooks)
         if (code.count(a)) {
-            code[a] = "void " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
+            code[a] = "void " + name + "(Ctx* c);\nvoid " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
             std::cerr << "hooked " << fname(a) << " -> " << name << "\n";
         }
     // Wrapped functions: the lifted body is renamed <name>_orig (callable from the host) and
@@ -1374,7 +1406,7 @@ int main(int argc, char** argv) {
             const std::string sig = "void " + fname(a) + "(Ctx* c) {";
             if (const auto at = body.find(sig); at != std::string::npos)
                 body.replace(at, sig.size(), "void " + fname(a) + "_orig(Ctx* c) {");
-            code[a] = body + "void " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
+            code[a] = "void " + name + "(Ctx* c);\nvoid " + fname(a) + "_orig(Ctx* c);\n" + body + "void " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
             std::cerr << "wrapped " << fname(a) << " -> " << name << "\n";
         }
 
@@ -1386,8 +1418,8 @@ int main(int argc, char** argv) {
           << "#define SPILL (c->eax = eax, c->ecx = ecx, c->edx = edx, c->ebx = ebx, c->esp = esp, c->ebp = ebp, c->esi = esi, c->edi = edi)\n"
           << "#define RELOAD (eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx, esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi)\n";
         for (uint32_t a : selected) h << "void " << fname(a) << "(Ctx* c);\n";
-        for (const auto& hk : hooks) h << "void " << hk.second << "(Ctx* c);\n";
-        for (const auto& w : wraps) h << "void " << w.second << "(Ctx* c);\nvoid " << fname(w.first) << "_orig(Ctx* c);\n";
+        // Hook/wrap declarations sit next to the functions (adding one recompiles one file).
+        for (const auto& w : wraps) h << "void " << fname(w.first) << "_orig(Ctx* c);\n";
         h << "typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;\n"
           << "extern const RecompEntry " << tableSym << "[];\nextern const uint32_t " << tableSym << "_size;\n";
         writeIfChanged(outDir / (prefix + "_funcs.h"), h.str());

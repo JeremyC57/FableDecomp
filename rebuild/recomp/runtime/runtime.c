@@ -20,6 +20,9 @@ typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;
 extern const RecompEntry recomp_table[];
 extern const uint32_t recomp_table_size;
 
+volatile int recomp_preempt_flag;
+__attribute__((weak)) void recomp_safepoint(void) { recomp_preempt_flag = 0; }
+
 /* Host hooks (set by the platform layer / tests). */
 void (*recomp_on_fatal)(Ctx* c, uint32_t eip, const char* what);
 int (*recomp_on_unknown_target)(Ctx* c, uint32_t target); /* imports, traps; return 1 if handled */
