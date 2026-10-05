@@ -3,7 +3,7 @@
 // Controller: A/B/X/Y as labelled, RB = Black, LB = White, triggers, sticks (clicks = thumb
 // buttons), d-pad, Start, Back. Keyboard: WASD left stick, arrows right stick, Space A,
 // LShift B, E X, Q Y, R Black, F White, Mouse buttons triggers... (see kKeys), Enter Start,
-// Escape Back. FABLE_AUTOPRESS=1 taps A and Start in turn (unattended testing).
+// Escape Back. FABLE_AUTOPRESS=1 taps A, and Start for the first 50 s (unattended testing).
 #include "input.hpp"
 #include "xhost.hpp"
 
@@ -112,7 +112,8 @@ void update() {
         const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
         const int phase = static_cast<int>((ms / 250) % 16);
         if (phase == 0) next[0].analog[0] = 255;  // A
-        if (phase == 8) next[0].buttons |= 0x10;  // Start
+        static const auto t0 = ms;
+        if (phase == 8 && ms - t0 < 50000) next[0].buttons |= 0x10;  // Start (title and menus only)
     }
     std::lock_guard<std::mutex> l(g_lock);
     for (int p = 0; p < 4; ++p) {

@@ -143,20 +143,30 @@ void VkRenderer::endFrame() {
 // ============================================================================================
 // surfaces
 // ============================================================================================
+// Several surfaces can share an address (the game renders a 320x240 pass into its back
+// buffer's memory, then the 640x480 scene again): lookups by address get the one bound as a
+// render target most recently.
 VkRenderer::Surface* VkRenderer::findSurface(uint32_t addr, bool depth) {
+    Surface* best = nullptr;
     for (auto& s : surfaces_)
-        if (s.addr == addr && s.depth == depth) return &s;
-    return nullptr;
+        if (s.image && s.addr == addr && s.depth == depth && (!best || s.written > best->written)) best = &s;
+    return best;
 }
 
 VkRenderer::Surface* VkRenderer::getSurface(uint32_t addr, uint32_t w, uint32_t h, uint32_t pitch, VkFormat fmt, bool depth) {
-    Surface* s = findSurface(addr, depth);
-    if (s && s->w == w && s->h == h && s->format == fmt) return s;
-    if (s) destroySurface(*s);
-    else {
+    Surface* s = nullptr;
+    for (auto& x : surfaces_)
+        if (x.image && x.addr == addr && x.depth == depth && x.w == w && x.h == h && x.format == fmt) {
+            x.written = ++surfaceStamp_;
+            return &x;
+        }
+    for (auto& x : surfaces_)  // reuse a destroyed slot
+        if (!x.image) { s = &x; break; }
+    if (!s) {
         surfaces_.push_back({});
         s = &surfaces_.back();
     }
+    s->written = ++surfaceStamp_;
     VkDevice dev = ctx().device;
     s->addr = addr;
     s->w = w;

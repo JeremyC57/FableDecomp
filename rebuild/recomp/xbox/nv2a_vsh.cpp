@@ -136,8 +136,8 @@ std::string translateVertexProgram(const uint32_t (*prog)[4], uint32_t start) {
             } else if (!(get(t, F_OUT_MUX) ? iluExpr : macExpr).empty()) {
                 const uint32_t o = get(t, F_OUT_ADDRESS) & 0xF;
                 const std::string ms = mask(om);
-                if (o == 5) {  // oFog: the most significant written component lands in x
-                    body += "    oFog.x = " + src + "." + ms.substr(0, 1) + ";\n";
+                if (o == 5) {  // oFog: a write of any mask lands in x, taking the result's x (as xemu)
+                    body += "    oFog.x = " + src + ".x;\n";
                 } else {
                     body += "    " + std::string(kOut[o]) + "." + ms + " = " + src + "." + ms + ";\n";
                 }

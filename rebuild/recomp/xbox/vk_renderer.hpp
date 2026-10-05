@@ -5,6 +5,7 @@
 #include "vk.hpp"
 
 #include <array>
+#include <deque>
 #include <functional>
 #include <map>
 #include <mutex>
@@ -57,6 +58,7 @@ private:
         VkDeviceMemory mem = VK_NULL_HANDLE;
         VkImageView view = VK_NULL_HANDLE, sampleView = VK_NULL_HANDLE;
         VkImageLayout layout = VK_IMAGE_LAYOUT_UNDEFINED;
+        uint64_t written = 0;  // surfaceStamp_ when last bound as a render target
     };
     struct FbKey {
         VkImage color, depth;
@@ -99,7 +101,8 @@ private:
     bool recording_ = false;
     uint64_t frames_done_ = 0;
     std::mutex surfLock_;
-    std::vector<Surface> surfaces_;
+    std::deque<Surface> surfaces_;  // stable references
+    uint64_t surfaceStamp_ = 0;
     std::map<FbKey, VkFramebuffer> framebuffers_;
     std::map<uint64_t, VkRenderPass> renderPasses_;
     struct Target { uint32_t color = 0, depth = 0, w = 0, h = 0; } target_;

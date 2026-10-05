@@ -128,6 +128,15 @@ void logDrawStats(uint64_t frame) {
 namespace {
 
 std::vector<uint32_t> compileGlsl(EShLanguage stage, const std::string& src) {
+    if (getenv("FABLE_DUMP_SHADERS")) {  // each generated shader to shader_NNNN.{vert,frag}
+        static int n = 0;
+        char name[64];
+        snprintf(name, sizeof name, "shader_%04d.%s", n++, stage == EShLangVertex ? "vert" : "frag");
+        if (FILE* f = fopen(name, "w")) {
+            fputs(src.c_str(), f);
+            fclose(f);
+        }
+    }
     if (!g_glslangReady) {
         glslang::InitializeProcess();
         g_glslangReady = true;
@@ -426,6 +435,9 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
     key = mix(key, R[NV097_SET_TRANSFORM_PROGRAM_START / 4]);
     for (int i = 0; i < 16; ++i) key = mix(key, (attribMask >> i) & 1 ? (fmts[i] & 0xF) == 6 : 2);
     if (!program) key = fnv(&R[NV097_SET_TEXTURE_MATRIX_ENABLE / 4], 16, mix(key, R[NV097_SET_LIGHTING_ENABLE / 4]));
+    const bool fog = R[NV097_SET_FOG_ENABLE / 4] & 1;
+    const uint32_t fogMode = R[NV097_SET_FOG_MODE / 4];
+    key = mix(key, fog ? fogMode : 0);
     *keyOut = key;
     auto it = shaders_.find(key);
     if (it != shaders_.end()) return it->second;
@@ -435,7 +447,7 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
         src += cmp ? "layout(location=" + std::to_string(i) + ") in uint vin" + std::to_string(i) + ";\n"
                    : "layout(location=" + std::to_string(i) + ") in vec4 vin" + std::to_string(i) + ";\n";
     }
-    src += "layout(set=0, binding=0) uniform VC { vec4 c[192]; vec4 surface; vec4 clip; } cst;\n";
+    src += "layout(set=0, binding=0) uniform VC { vec4 c[192]; vec4 surface; vec4 clip; vec4 fog; } cst;\n";
     src += "layout(location=0) out vec4 vD0; layout(location=1) out vec4 vD1; layout(location=2) out vec4 vB0;\n"
            "layout(location=3) out vec4 vB1; layout(location=4) out float vFog;\n"
            "layout(location=5) out vec4 vTex0; layout(location=6) out vec4 vTex1; layout(location=7) out vec4 vTex2;\n"
@@ -460,6 +472,29 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
                "  if (oPos.w != 0.0) { oPos.xyz /= oPos.w; oPos.w = 1.0 / oPos.w; }\n"
                "  oD0 = v3; oD1 = v4; oB0 = v3; oB1 = v4; oFog = vec4(v5.x);\n"
                "  oT0 = v9; oT1 = v10; oT2 = v11; oT3 = v12;\n";
+    }
+    // Fog unit: the fog coordinate (oFog.x) becomes the fog factor, with the fog params
+    // (NV097_SET_FOG_PARAMS x, y) per mode; 1 is no fog. Equations as in xemu (reference).
+    if (getenv("FABLE_NOFOG")) {  // debugging
+        src += "  oFog = vec4(0.0);\n";
+    } else if (!fog) {
+        src += "  oFog = vec4(1.0);\n";
+    } else {
+        src += "  float fogDistance = oFog.x, fogFactor;\n";
+        switch (fogMode) {
+        case NV097_SET_FOG_MODE_V_EXP: case NV097_SET_FOG_MODE_V_EXP_ABS:
+            src += "  fogFactor = cst.fog.x + exp2(fogDistance * cst.fog.y * 16.0) - 1.5;\n";
+            break;
+        case NV097_SET_FOG_MODE_V_EXP2: case NV097_SET_FOG_MODE_V_EXP2_ABS:
+            src += "  fogFactor = cst.fog.x + exp2(-fogDistance * fogDistance * cst.fog.y * cst.fog.y * 32.0) - 1.5;\n";
+            break;
+        default:  // linear
+            src += "  fogFactor = cst.fog.x + fogDistance * cst.fog.y - 1.0;\n";
+            break;
+        }
+        if (fogMode == NV097_SET_FOG_MODE_V_EXP_ABS || fogMode == NV097_SET_FOG_MODE_V_EXP2_ABS || fogMode == NV097_SET_FOG_MODE_V_LINEAR_ABS)
+            src += "  fogFactor = abs(fogFactor);\n";
+        src += "  oFog = vec4(isinf(fogDistance) ? 1.0 : (isnan(fogFactor) ? 1.0 : fogFactor));\n";
     }
     // Screen space -> Vulkan clip space.
     src += "  vec4 p = oPos;\n"
@@ -902,8 +937,28 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     if (!pass_) { ++g_ds.nopass; return; }
     VkPipeline p = pipeline(0, pass_, mask, fmts, kTop[prim]);
     if (!p) { ++g_ds.nopipe; return; }
+    static const int skipClass = getenv("FABLE_SKIP") ? atoi(getenv("FABLE_SKIP")) : 0;  // debugging
+    if (skipClass == 1 && (R[NV097_SET_BLEND_ENABLE / 4] & 1) && R[NV097_SET_BLEND_FUNC_DFACTOR / 4] == 1) return;
+    if (skipClass == 2 && target_.w == 320) return;
+    if (skipClass == 3 && (R[NV097_SET_COMBINER_CONTROL / 4] & 0xFF) == 2) return;
     ++g_ds.draws;
     g_ds.verts += needIndex ? seq.size() : count;
+    static const long logFrame = getenv("FABLE_DRAWLOG") ? atol(getenv("FABLE_DRAWLOG")) : -1;
+    if (logFrame >= 0 && static_cast<long>(frames_done_) == logFrame) {
+        const uint32_t tex0 = (R[NV097_SET_TEXTURE_CONTROL0 / 4] >> 30) & 1;
+        XLOG(0, "draw %llu: prim %u, %u verts, target %08X %ux%u fmt %X, blend %u (%X,%X eq %X), zfunc %X en %u, "
+                "tex0 %u @%08X fmt %08X, prog %u, fog %u mode %X, comb %08X, final %08X/%08X, colormask %08X",
+             static_cast<unsigned long long>(g_ds.draws), prim, needIndex ? static_cast<uint32_t>(seq.size()) : count, target_.color, target_.w,
+             target_.h, R[NV097_SET_SURFACE_FORMAT / 4], R[NV097_SET_BLEND_ENABLE / 4], R[NV097_SET_BLEND_FUNC_SFACTOR / 4],
+             R[NV097_SET_BLEND_FUNC_DFACTOR / 4], R[NV097_SET_BLEND_EQUATION / 4], R[0x354 / 4], R[0x30C / 4], tex0,
+             R[NV097_SET_TEXTURE_OFFSET / 4], R[NV097_SET_TEXTURE_FORMAT / 4], (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2,
+             R[NV097_SET_FOG_ENABLE / 4], R[NV097_SET_FOG_MODE / 4], R[NV097_SET_COMBINER_CONTROL / 4],
+             R[NV097_SET_COMBINER_SPECULAR_FOG_CW0 / 4], R[NV097_SET_COMBINER_SPECULAR_FOG_CW1 / 4], R[0x358 / 4]);
+        float fp[3];
+        std::memcpy(fp, &R[NV097_SET_FOG_PARAMS / 4], 12);
+        XLOG(0, "   fog params %g %g %g, gen %u, color %08X, specfog c0 %08X c1 %08X", fp[0], fp[1], fp[2], R[NV097_SET_FOG_GEN_MODE / 4],
+             R[NV097_SET_FOG_COLOR / 4], R[NV097_SET_SPECULAR_FOG_FACTOR / 4], R[NV097_SET_SPECULAR_FOG_FACTOR / 4 + 1]);
+    }
     if ((R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) ++g_ds.program;
     for (int i = 0; i < 4; ++i)
         if (R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30)) { ++g_ds.textured; break; }
@@ -913,7 +968,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     g_ds.fmt = R[NV097_SET_SURFACE_FORMAT / 4];
 
     // Uniforms.
-    struct VC { float c[192][4]; float surface[4]; float clip[4]; } vc;
+    struct VC { float c[192][4]; float surface[4]; float clip[4]; float fog[4]; } vc{};
     std::memcpy(vc.c, st.constants, sizeof vc.c);
     if ((R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) != 2) std::memcpy(vc.c, &R[NV097_SET_COMPOSITE_MATRIX / 4], 64);
     vc.surface[0] = static_cast<float>(target_.w);
@@ -923,6 +978,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     std::memcpy(&cmax, &R[NV097_SET_CLIP_MAX / 4], 4);
     vc.clip[0] = cmin;
     vc.clip[1] = cmax > 0 ? cmax : 16777215.0f;
+    std::memcpy(vc.fog, &R[NV097_SET_FOG_PARAMS / 4], 12);
     const VkDeviceSize vcOff = upload(&vc, sizeof vc, ctx().props.limits.minUniformBufferOffsetAlignment);
     struct FC { float c0[9][4]; float c1[9][4]; float fog[4]; float aref[4]; float bump[4][4]; float lum[4][4]; } fc{};
     auto unpack = [](uint32_t v, float* o) {
@@ -935,9 +991,15 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         unpack(R[NV097_SET_COMBINER_FACTOR0 / 4 + i], fc.c0[i]);
         unpack(R[NV097_SET_COMBINER_FACTOR1 / 4 + i], fc.c1[i]);
     }
-    unpack(R[NV097_SET_COMBINER_FACTOR0 / 4], fc.c0[8]);  // final combiner constants (simplified)
-    unpack(R[NV097_SET_COMBINER_FACTOR1 / 4], fc.c1[8]);
-    unpack(R[NV097_SET_FOG_COLOR / 4], fc.fog);
+    unpack(R[NV097_SET_SPECULAR_FOG_FACTOR / 4], fc.c0[8]);      // the final combiner's own constants
+    unpack(R[NV097_SET_SPECULAR_FOG_FACTOR / 4 + 1], fc.c1[8]);
+    {  // fog colour is ABGR (red in the low byte)
+        const uint32_t v = R[NV097_SET_FOG_COLOR / 4];
+        fc.fog[0] = (v & 0xFF) / 255.0f;
+        fc.fog[1] = ((v >> 8) & 0xFF) / 255.0f;
+        fc.fog[2] = ((v >> 16) & 0xFF) / 255.0f;
+        fc.fog[3] = (v >> 24) / 255.0f;
+    }
     fc.aref[0] = static_cast<float>(R[NV097_SET_ALPHA_REF / 4] & 0xFF);
     for (int i = 0; i < 4; ++i) {
         std::memcpy(fc.bump[i], &R[NV097_SET_TEXTURE_SET_BUMP_ENV_MAT / 4 + i * 16], 16);
