@@ -459,7 +459,8 @@ void runPusher() {
         const uint32_t* words = reinterpret_cast<const uint32_t*>(gp(kContigBase + base + get));
         const uint32_t word = words[0];
         if (g_cmd.count) {
-            const uint32_t avail = (put > get ? put - get : 0) / 4;
+            // get > put: the buffer wrapped (a jump back to the start follows these words)
+            const uint32_t avail = put > get ? (put - get) / 4 : g_cmd.count;
             const uint32_t n = std::min(g_cmd.count, avail);
             uint32_t done = 0;
             while (done < n && !shouldStall()) {
@@ -504,6 +505,21 @@ void pusherMain() {
         g_kick.wait_until(l, std::min(nextVblank, clock::now() + std::chrono::milliseconds(2)), [] { return g_kicked.load(); });
         g_kicked = false;
         runPusher();
+        // Diagnostics: work queued but no progress for a second.
+        static uint32_t lastGet = 0;
+        static clock::time_point since = clock::now();
+        static bool reported = false;
+        const uint32_t get = R(PFIFO + 0x1244), put = R(PFIFO + 0x1240);
+        if (get == put || get != lastGet) {
+            lastGet = get;
+            since = clock::now();
+            reported = false;
+        } else if (!reported && clock::now() - since > std::chrono::seconds(1)) {
+            reported = true;
+            XLOG(1, "NV2A: pusher stalled at get 0x%X put 0x%X (push0 %u, dma_push %u, fifo access %u, wait nop %d ctx %d flip %d)",
+                 get, put, R(PFIFO + 0x1200) & 1, R(PFIFO + 0x1220) & 1, R(PGRAPH + 0x720) & 1, g_waitNop ? 1 : 0, g_waitCtx ? 1 : 0,
+                 g_waitFlip ? 1 : 0);
+        }
         if (clock::now() >= nextVblank) {
             nextVblank += std::chrono::microseconds(16683);
             if (clock::now() > nextVblank) nextVblank = clock::now() + std::chrono::microseconds(16683);
