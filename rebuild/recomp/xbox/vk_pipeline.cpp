@@ -32,6 +32,10 @@ using namespace vk;
 extern std::atomic<uint32_t> g_vblanks;
 
 namespace {
+// Texture formats that read a depth surface (Z24: 0x2A/0x2B swizzled, 0x2E/0x2F linear;
+// Z16: 0x2C/0x2D, 0x30/0x31).
+bool isDepthFormat(uint32_t color) { return color >= 0x2A && color <= 0x31; }
+
 
 uint64_t fnv(const void* p, size_t n, uint64_t h = 1469598103934665603ull) {
     const uint8_t* b = static_cast<const uint8_t*>(p);
@@ -691,7 +695,8 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
         const uint32_t base = NV097_SET_TEXTURE_OFFSET / 4 + i * 16, format = R[base + 1];
         const uint32_t dma = (format & 3) == 2 ? R[NV097_SET_CONTEXT_DMA_B / 4] : R[NV097_SET_CONTEXT_DMA_A / 4];
         const uint32_t addr = dmaAddress(dma, nullptr) + R[base];
-        if (findSurface(addr, true) && !findSurface(addr, false)) {
+        const uint32_t color = (format >> 8) & 0xFF;
+        if (findSurface(addr, true) && (isDepthFormat(color) || !findSurface(addr, false))) {
             shadowMask |= 1u << i;
             key = mix(key, (format >> 8) & 0xFF);  // Z16 vs Z24 compare range
         }
@@ -914,13 +919,16 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     }
     *kind = cube ? 1 : dims == 3 ? 2 : 0;
     if (!w || !h || w > 4096 || h > 4096) return VK_NULL_HANDLE;
-    // Render-to-texture: a surface rendered at this address.
-    if (Surface* s = findSurface(addr, false)) {
+    // Render-to-texture: a surface rendered at this address. Depth texture formats read the
+    // depth surface, others the colour one (both can exist at an address: a buffer used as
+    // colour in the front end can later be the gameplay depth buffer).
+    const bool depthFmt = isDepthFormat(color);
+    if (Surface* s = findSurface(addr, depthFmt)) {
         transition(*s, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
         *kind = 0;
         return s->sampleView;
     }
-    if (Surface* s = findSurface(addr, true)) {
+    if (Surface* s = findSurface(addr, !depthFmt)) {
         transition(*s, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
         *kind = 0;
         return s->sampleView;
