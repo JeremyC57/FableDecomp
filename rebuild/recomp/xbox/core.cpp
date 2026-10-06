@@ -136,7 +136,7 @@ namespace gpu { extern uint64_t g_frameCount; }
 
 // Game-visible clock in ns. FABLE_FLIPTIME=1 (testing): 1/30 s per flip plus 1 us per read,
 // so game logic advances the same way per frame however fast the host renders (repeatable
-// scripted runs). Waits and timers keep real time.
+// scripted runs), and at least at 1/10 real speed. Waits and timers keep real time.
 uint64_t gameClockNs() {
     static const bool flipTime = getenv("FABLE_FLIPTIME") != nullptr;
     if (!flipTime) {
@@ -145,7 +145,10 @@ uint64_t gameClockNs() {
         return static_cast<uint64_t>(ts.tv_sec) * 1000000000ull + static_cast<uint64_t>(ts.tv_nsec);
     }
     static std::atomic<uint64_t> last{0};
-    const uint64_t base = gpu::g_frameCount * 33333333ull;
+    // Never slower than a tenth of real time: loading screens wait for time before flipping.
+    static const auto t0 = std::chrono::steady_clock::now();
+    const uint64_t real = static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - t0).count());
+    const uint64_t base = std::max(gpu::g_frameCount * 33333333ull, real / 10);
     uint64_t prev = last.load(), next;
     do next = std::max(prev + 1000, base);
     while (!last.compare_exchange_weak(prev, next));
