@@ -23,6 +23,7 @@
 #include <vector>
 
 namespace xb::gpu {
+extern uint64_t g_frameCount;
 
 using namespace vk;
 extern std::atomic<uint32_t> g_vblanks;
@@ -1266,6 +1267,34 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     std::memcpy(&slope, &R[NV097_SET_POLYGON_OFFSET_SCALE_FACTOR / 4], 4);
     std::memcpy(&bias, &R[NV097_SET_POLYGON_OFFSET_BIAS / 4], 4);
     vkCmdSetDepthBias(cb, bias, 0.0f, slope);
+    // FABLE_CAPTURE_FLIP=N1,N2: every draw of those frames to cap.txt (debugging).
+    static const std::vector<uint64_t> capFlips = [] {
+        std::vector<uint64_t> v;
+        for (const char* p = getenv("FABLE_CAPTURE_FLIP"); p && *p; p = strchr(p, ',') ? strchr(p, ',') + 1 : "") v.push_back(strtoull(p, nullptr, 10));
+        return v;
+    }();
+    if (!capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end()) {
+        static FILE* cap = fopen("cap.txt", "w");
+        static uint64_t lastFlip = ~0ull;
+        static uint32_t n = 0;
+        if (lastFlip != g_frameCount) lastFlip = g_frameCount, n = 0;
+        if (cap) {
+            fprintf(cap, "%llu/%04u prim %u n %u tgt %08X %ux%u zt %08X blend %u %X/%X eq %X atest %u %X/%u z %u/%X/%u cull %u/%X cmask %08X comb %08X prog %08X stencil %u",
+                    static_cast<unsigned long long>(g_frameCount), n++, prim, needIndex ? static_cast<uint32_t>(seq.size()) : count, target_.color, target_.w,
+                    target_.h, target_.depth, R[NV097_SET_BLEND_ENABLE / 4] & 1, R[NV097_SET_BLEND_FUNC_SFACTOR / 4], R[NV097_SET_BLEND_FUNC_DFACTOR / 4],
+                    R[NV097_SET_BLEND_EQUATION / 4], R[NV097_SET_ALPHA_TEST_ENABLE / 4] & 1, R[NV097_SET_ALPHA_FUNC / 4], R[NV097_SET_ALPHA_REF / 4],
+                    R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1, R[NV097_SET_DEPTH_FUNC / 4], R[NV097_SET_DEPTH_MASK / 4] & 1, R[NV097_SET_CULL_FACE_ENABLE / 4] & 1,
+                    R[NV097_SET_CULL_FACE / 4], R[NV097_SET_COLOR_MASK / 4], R[NV097_SET_COMBINER_CONTROL / 4], R[NV097_SET_SHADER_STAGE_PROGRAM / 4],
+                    R[NV097_SET_STENCIL_TEST_ENABLE / 4] & 1);
+            for (int i = 0; i < 16; ++i)
+                if ((mask >> i) & 1) fprintf(cap, " a%d:%02X", i, fmts[i] & 0xFF);
+            for (int i = 0; i < 4; ++i)
+                if (R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30))
+                    fprintf(cap, " t%d:%08X@%08X", i, R[NV097_SET_TEXTURE_FORMAT / 4 + i * 16], R[NV097_SET_TEXTURE_OFFSET / 4 + i * 16]);
+            fputc('\n', cap);
+            fflush(cap);
+        }
+    }
     if (needIndex) {
         for (auto& v : seq) v -= minIdx;
         const VkDeviceSize io = upload(seq.data(), seq.size() * 4, 4);
