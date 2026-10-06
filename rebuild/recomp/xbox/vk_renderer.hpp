@@ -94,6 +94,7 @@ private:
     VkImageView texture(int stage, uint32_t* kind);
     VkSampler sampler(int stage);
     void captureImage();  // FABLE_CAPTURE_IMAGES (debugging)
+    uint64_t drawsThisFrame_ = 0, lastFrameDraws_ = 0;
     VkPipelineCache pipeCache_ = VK_NULL_HANDLE;
     bool pipeCacheDirty_ = false;
     void savePipelineCache();

@@ -136,6 +136,8 @@ void logDrawStats(uint64_t frame);
 void VkRenderer::endFrame() {
     std::lock_guard<std::mutex> l(surfLock_);
     submitFrame(false);
+    lastFrameDraws_ = drawsThisFrame_;
+    drawsThisFrame_ = 0;
     if (++frames_done_ % 60 == 0) {
         logDrawStats(frames_done_);
         if (frames_done_ % 1800 == 0) savePipelineCache();  // each minute, when it grew
@@ -335,6 +337,12 @@ void VkRenderer::clear(uint32_t flags) {
         att[n].clearValue.depthStencil.depth = static_cast<float>(v >> 8) / 16777215.0f;
         att[n].clearValue.depthStencil.stencil = v & 0xFF;
         ++n;
+    }
+    if (getenv("FABLE_CAPTURE_IMAGES") || getenv("FABLE_CAPTURE_FLIP")) {
+        static FILE* f = fopen("clears.txt", "w");
+        if (f) fprintf(f, "frame %llu clear %X color %08X z %08X tgt %08X zt %08X %ux%u rect %d,%d-%d,%d sfmt %08X\n",
+                       static_cast<unsigned long long>(frames_done_), flags, R[NV097_SET_COLOR_CLEAR_VALUE / 4], R[NV097_SET_ZSTENCIL_CLEAR_VALUE / 4],
+                       target_.color, target_.depth, target_.w, target_.h, x0, y0, x1, y1, R[NV097_SET_SURFACE_FORMAT / 4]), fflush(f);
     }
     if (!n) return;
     VkClearRect rect{};

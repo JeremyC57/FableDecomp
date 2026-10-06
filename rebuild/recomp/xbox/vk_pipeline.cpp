@@ -1279,12 +1279,21 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         for (const char* p = getenv("FABLE_CAPTURE_FLIP"); p && *p; p = strchr(p, ',') ? strchr(p, ',') + 1 : "") v.push_back(strtoull(p, nullptr, 10));
         return v;
     }();
-    if (!capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end()) {
+    static const long capAuto = getenv("FABLE_CAPTURE_IMAGES") ? atol(getenv("FABLE_CAPTURE_IMAGES")) : 0;
+    static uint64_t textFrame = ~0ull;
+    if (capAuto > 0 && textFrame == ~0ull && lastFrameDraws_ > static_cast<uint64_t>(capAuto)) textFrame = frames_done_;
+    if ((!capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end()) || frames_done_ == textFrame) {
         static FILE* cap = fopen("cap.txt", "w");
         static uint64_t lastFlip = ~0ull;
         static uint32_t n = 0;
         if (lastFlip != g_frameCount) lastFlip = g_frameCount, n = 0;
         if (cap) {
+            float cmn, cmx;
+            std::memcpy(&cmn, &R[NV097_SET_CLIP_MIN / 4], 4);
+            std::memcpy(&cmx, &R[NV097_SET_CLIP_MAX / 4], 4);
+            fprintf(cap, "sfmt %08X clip %g..%g zclr %08X c58 %g %g %g %g c59 %g %g %g %g | ", R[NV097_SET_SURFACE_FORMAT / 4], cmn, cmx,
+                    R[NV097_SET_ZSTENCIL_CLEAR_VALUE / 4], st.constants[58][0], st.constants[58][1], st.constants[58][2], st.constants[58][3],
+                    st.constants[59][0], st.constants[59][1], st.constants[59][2], st.constants[59][3]);
             fprintf(cap, "%llu/%04u prim %u n %u tgt %08X %ux%u zt %08X blend %u %X/%X eq %X atest %u %X/%u z %u/%X/%u cull %u/%X cmask %08X comb %08X prog %08X stencil %u",
                     static_cast<unsigned long long>(g_frameCount), n++, prim, needIndex ? static_cast<uint32_t>(seq.size()) : count, target_.color, target_.w,
                     target_.h, target_.depth, R[NV097_SET_BLEND_ENABLE / 4] & 1, R[NV097_SET_BLEND_FUNC_SFACTOR / 4], R[NV097_SET_BLEND_FUNC_DFACTOR / 4],
@@ -1311,10 +1320,14 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     }
     // FABLE_CAPTURE_IMAGES=1 with FABLE_CAPTURE_FLIP: the target after each draw to the main
     // 640x480 target goes to capF_NNNN.png (debugging).
-    static const bool capImages = getenv("FABLE_CAPTURE_IMAGES") != nullptr;
-    if (capImages && !capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end() &&
-        target_.w == 640 && target_.h == 480)
-        captureImage();
+    // FABLE_CAPTURE_IMAGES=<draws>: instead, the first frame after one with more draws than that.
+    static const long capImages = getenv("FABLE_CAPTURE_IMAGES") ? atol(getenv("FABLE_CAPTURE_IMAGES")) : -1;
+    static uint64_t imageFrame = ~0ull;
+    ++drawsThisFrame_;
+    if (capImages > 0 && imageFrame == ~0ull && lastFrameDraws_ > static_cast<uint64_t>(capImages)) imageFrame = frames_done_;
+    const bool imageThis = capImages == 0 ? (!capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end())
+                                          : frames_done_ == imageFrame;
+    if (imageThis && target_.w == 640 && target_.h == 480) captureImage();
 }
 
 void VkRenderer::captureImage() {
