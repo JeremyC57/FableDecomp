@@ -311,7 +311,17 @@ static inline double fpop(Ctx* c) { double v = c->fpu.st[c->fpu.top]; c->fpu.top
 /* Precision control: 24-bit mode rounds every result to float (Direct3D sets
  * it unless D3DCREATE_FPU_PRESERVE); 53/64-bit modes are modelled as double. */
 static inline double fprec(Ctx* c, double v) {
-    return ((c->fpu.cw >> 8) & 3u) == 0 ? (double)(float)v : v;
+    if (((c->fpu.cw >> 8) & 3u) != 0) return v;
+    /* 24-bit mode rounds the significand only: the exponent keeps its full range, so values
+     * beyond FLT_MAX (or below FLT_MIN) stay finite/normal as on the x87, where a cast to float
+     * would make them inf (then inf-inf or inf*0 -> NaN) or flush them. Round to nearest even. */
+    uint64_t b;
+    memcpy(&b, &v, 8);
+    if (((b >> 52) & 0x7FFu) == 0x7FFu) return v; /* inf, NaN */
+    b += 0x0FFFFFFFull + ((b >> 29) & 1u);
+    b &= ~0x1FFFFFFFull;
+    memcpy(&v, &b, 8);
+    return v;
 }
 
 static inline double fround_rc(Ctx* c, double v) {

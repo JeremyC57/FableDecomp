@@ -1286,6 +1286,27 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     if (capAuto > 0 && textFrame == ~0ull && lastFrameDraws_ > static_cast<uint64_t>(capAuto)) textFrame = frames_done_;
     if ((!capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end()) || frames_done_ == textFrame) {
         static FILE* cap = fopen("cap.txt", "w");
+        // Once, on an auto-triggered frame: guest RAM addresses holding runs of NaN floats (where a
+        // NaN matrix lives).
+        static bool scanned = false;
+        if (frames_done_ == textFrame && !scanned && cap) {
+            scanned = true;
+            int found = 0;
+            for (uint32_t a = 0; a + 64 <= kPhysSize && found < 60; a += 4) {
+                uint32_t run = 0;
+                while (run < 16 && a + 4 * run < kPhysSize) {
+                    uint32_t v;
+                    std::memcpy(&v, gp(kContigBase + a + 4 * run), 4);
+                    if ((v & 0x7F800000u) != 0x7F800000u || !(v & 0x7FFFFFu)) break;
+                    ++run;
+                }
+                if (run >= 4) {
+                    fprintf(cap, "NaN run of %u floats at phys %08X\n", run, a);
+                    ++found;
+                    a += 4 * run;
+                }
+            }
+        }
         static uint64_t lastFlip = ~0ull;
         static uint32_t n = 0;
         if (lastFlip != g_frameCount) lastFlip = g_frameCount, n = 0;
