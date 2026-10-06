@@ -691,7 +691,10 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
         const uint32_t base = NV097_SET_TEXTURE_OFFSET / 4 + i * 16, format = R[base + 1];
         const uint32_t dma = (format & 3) == 2 ? R[NV097_SET_CONTEXT_DMA_B / 4] : R[NV097_SET_CONTEXT_DMA_A / 4];
         const uint32_t addr = dmaAddress(dma, nullptr) + R[base];
-        if (findSurface(addr, true) && !findSurface(addr, false)) shadowMask |= 1u << i;
+        if (findSurface(addr, true) && !findSurface(addr, false)) {
+            shadowMask |= 1u << i;
+            key = mix(key, (format >> 8) & 0xFF);  // Z16 vs Z24 compare range
+        }
     }
     if (shadowMask) key = mix(mix(key, shadowMask), R[NV097_SET_SHADOW_DEPTH_FUNC / 4] & 7);
     *keyOut = key;

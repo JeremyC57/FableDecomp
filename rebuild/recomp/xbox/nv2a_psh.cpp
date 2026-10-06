@@ -133,8 +133,13 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
             if (func == 0 || func == 7) {
                 code += "  vec4 " + t + " = vec4(" + (func ? "1.0" : "0.0") + ");\n";
             } else {
-                code += "  float " + t + "d = textureProj(" + smp + ", " + tc2 + ".xyw).r * 16777215.0;\n";
-                const std::string z = mode == 2 ? "clamp(" + tc + ".z / " + tc + ".w, 0.0, 16777215.0)" : "0.0";
+                // The texture format says how deep the surface is: Z16 shadow maps (0x2C/0x30) hold
+                // 0..65535, Z24 (0x2A/0x2E, e.g. the main depth buffer) 0..16777215.
+                const uint32_t color = (R[NV097_SET_TEXTURE_FORMAT / 4 + i * 16] >> 8) & 0xFF;
+                const bool z16 = color == 0x2C || color == 0x2D || color == 0x30 || color == 0x31;
+                const std::string maxZ = z16 ? "65535.0" : "16777215.0";
+                code += "  float " + t + "d = textureProj(" + smp + ", " + tc2 + ".xyw).r * " + maxZ + ";\n";
+                const std::string z = mode == 2 ? "clamp(" + tc + ".z / " + tc + ".w, 0.0, " + maxZ + ")" : "0.0";
                 code += "  vec4 " + t + " = vec4(" + t + "d " + kCmp[func] + " " + z + " ? 1.0 : 0.0);\n";
             }
             continue;
