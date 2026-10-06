@@ -1352,14 +1352,12 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     if (capImages > 0 && imageFrame == ~0ull && lastFrameDraws_ > static_cast<uint64_t>(capImages)) imageFrame = frames_done_;
     const bool imageThis = capImages == 0 ? (!capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end())
                                           : frames_done_ == imageFrame;
-    if (imageThis && target_.w == 640 && target_.h == 480) captureImage();
+    static const bool capAll = getenv("FABLE_CAPTURE_ALL") != nullptr;  // offscreen targets too, with alpha
+    if (imageThis && (capAll || (target_.w == 640 && target_.h == 480))) captureImage();
 }
 
 void VkRenderer::captureImage() {
-    static uint64_t lastFlip = ~0ull;
-    static uint32_t n = 0;
-    if (lastFlip != g_frameCount) lastFlip = g_frameCount, n = 0;
-    const uint32_t idx = n++;
+    const auto idx = static_cast<uint32_t>(drawsThisFrame_ - 1);  // matches the cap.txt draw number
     Surface* c = target_.color ? findSurface(target_.color, false) : nullptr;
     if (!c) return;
     const bool c16 = c->format == VK_FORMAT_A1R5G5B5_UNORM_PACK16;
@@ -1378,24 +1376,28 @@ void VkRenderer::captureImage() {
     copy.imageExtent = {w, h, 1};
     vkCmdCopyImageToBuffer(cmd(), c->image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, buf.buf, 1, &copy);
     submitFrame(true);
-    std::vector<uint8_t> rgb(static_cast<size_t>(w) * h * 3);
+    static const int ch = getenv("FABLE_CAPTURE_ALL") ? 4 : 3;
+    std::vector<uint8_t> rgb(static_cast<size_t>(w) * h * ch);
     const auto* p = static_cast<const uint8_t*>(mapped);
     for (size_t i = 0; i < static_cast<size_t>(w) * h; ++i) {
+        uint8_t* o = &rgb[ch * i];
         if (c16) {
             uint16_t v;
             std::memcpy(&v, p + 2 * i, 2);
-            rgb[3 * i] = static_cast<uint8_t>(((v >> 10) & 31) << 3);
-            rgb[3 * i + 1] = static_cast<uint8_t>(((v >> 5) & 31) << 3);
-            rgb[3 * i + 2] = static_cast<uint8_t>((v & 31) << 3);
+            o[0] = static_cast<uint8_t>(((v >> 10) & 31) << 3);
+            o[1] = static_cast<uint8_t>(((v >> 5) & 31) << 3);
+            o[2] = static_cast<uint8_t>((v & 31) << 3);
+            if (ch == 4) o[3] = (v & 0x8000) ? 255 : 0;
         } else {
-            rgb[3 * i] = p[4 * i + 2];
-            rgb[3 * i + 1] = p[4 * i + 1];
-            rgb[3 * i + 2] = p[4 * i];
+            o[0] = p[4 * i + 2];
+            o[1] = p[4 * i + 1];
+            o[2] = p[4 * i];
+            if (ch == 4) o[3] = p[4 * i + 3];
         }
     }
-    char name[64];
-    snprintf(name, sizeof name, "cap%llu_%04u.png", static_cast<unsigned long long>(g_frameCount), idx);
-    stbi_write_png(name, static_cast<int>(w), static_cast<int>(h), 3, rgb.data(), static_cast<int>(w * 3));
+    char name[96];
+    snprintf(name, sizeof name, "cap%llu_%04u_%08X.png", static_cast<unsigned long long>(g_frameCount), idx, target_.color);
+    stbi_write_png(name, static_cast<int>(w), static_cast<int>(h), ch, rgb.data(), static_cast<int>(w * ch));
 }
 
 } // namespace xb::gpu

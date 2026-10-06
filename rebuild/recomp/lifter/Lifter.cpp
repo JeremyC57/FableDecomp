@@ -534,8 +534,85 @@ public:
         return tailTargets_;
     }
 
+    // Status flags live at `a` (read before written along the straight-line path)?
+    bool flagsLiveAt(const Function& f0, uint32_t a, int depth = 0) {
+        constexpr uint32_t kStatus = ZYDIS_CPUFLAG_CF | ZYDIS_CPUFLAG_PF | ZYDIS_CPUFLAG_ZF | ZYDIS_CPUFLAG_SF | ZYDIS_CPUFLAG_OF;
+        uint32_t written = 0;
+        const Function* fp = &f0;
+        for (int n = 0; n < 24; ++n) {
+            if (!fp->insns.count(a)) {  // jumped / fell into another function's entry
+                auto it = p_.functions().find(a);
+                if (it == p_.functions().end()) return false;
+                fp = &it->second;
+            }
+            const Insn* ins = p_.decode(a);
+            if (!ins) return false;
+            const auto* fl = ins->in.cpu_flags;
+            if (fl && (fl->tested & kStatus & ~written)) return true;
+            if (fl) written |= (fl->modified | fl->set_0 | fl->set_1 | fl->undefined) & kStatus;
+            if (written == kStatus) return false;
+            const auto m = ins->in.mnemonic;
+            if (m == ZYDIS_MNEMONIC_JMP) {
+                if (ins->op[0].type != ZYDIS_OPERAND_TYPE_IMMEDIATE) return false;
+                uint64_t t = 0;
+                ZydisCalcAbsoluteAddress(&ins->in, &ins->op[0], ins->addr, &t);
+                a = static_cast<uint32_t>(t);
+                continue;
+            }
+            if (m == ZYDIS_MNEMONIC_CALL) {  // flags flowing into a callee that branches on them at entry
+                if (ins->op[0].type != ZYDIS_OPERAND_TYPE_IMMEDIATE || depth > 2) return false;
+                uint64_t t = 0;
+                ZydisCalcAbsoluteAddress(&ins->in, &ins->op[0], ins->addr, &t);
+                auto it = p_.functions().find(static_cast<uint32_t>(t));
+                return it != p_.functions().end() && written != kStatus && flagsLiveAt(it->second, it->first, depth + 1);
+            }
+            if (m == ZYDIS_MNEMONIC_RET || ins->in.meta.category == ZYDIS_CATEGORY_COND_BR) return false;
+            a = ins->next();
+        }
+        return false;
+    }
+
+    // Functions whose callers branch on the flags they return with (CRT helpers such as
+    // _trandisp: `call helper` / `jz`): their `ret`s hand the lazy flags back through
+    // recomp_lf_*, and those call sites pick them up.
+    const std::set<uint32_t>& flagsOut() {
+        if (!flagsOutBuilt_) {
+            flagsOutBuilt_ = true;
+            std::deque<uint32_t> todo;
+            for (auto& [e, fn] : p_.functions()) {
+                if (flagsLiveAt(fn, e)) flagsIn_.insert(e);
+                for (uint32_t a : fn.insns) {
+                    const Insn* ins = p_.decode(a);
+                    if (!ins || ins->in.mnemonic != ZYDIS_MNEMONIC_CALL || ins->op[0].type != ZYDIS_OPERAND_TYPE_IMMEDIATE) continue;
+                    uint64_t t = 0;
+                    ZydisCalcAbsoluteAddress(&ins->in, &ins->op[0], ins->addr, &t);
+                    const auto tgt = static_cast<uint32_t>(t);
+                    if (tgt == ins->next() || !p_.functions().count(tgt)) continue;
+                    if (flagsLiveAt(fn, ins->next())) {
+                        flagsInCalls_.insert(a);
+                        todo.push_back(tgt);
+                    }
+                }
+            }
+            while (!todo.empty()) {  // tail calls out of such a function return for it
+                const uint32_t e = todo.front();
+                todo.pop_front();
+                if (!flagsOut_.insert(e).second) continue;
+                for (uint32_t l : p_.functions().at(e).labels)
+                    if (!p_.functions().at(e).insns.count(l) && p_.isEntry(l) && p_.functions().count(l)) todo.push_back(l);
+            }
+        }
+        return flagsOut_;
+    }
+
+    bool readsFlagsAtEntry(uint32_t e) {
+        flagsOut();
+        return tailTargets().count(e) || flagsIn_.count(e);
+    }
+
     std::string function(Function& f) {
         out_.str("");
+        flagsOut();
         f_ = &f;
         mmio_ = false;
         for (const auto& [lo, hi] : mmioRanges())
@@ -543,7 +620,7 @@ public:
         out_ << "void " << fname(f.entry) << "(Ctx* c) {\n"
              << "    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;\n"
              << "    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;\n"
-             << (tailTargets().count(f.entry)
+             << (readsFlagsAtEntry(f.entry)
                      ? "    extern __thread int recomp_lf_op; extern __thread uint32_t recomp_lf_r, recomp_lf_a, recomp_lf_b;\n"
                        "    int fop = recomp_lf_op ? recomp_lf_op : FOP(FK_EXPLICIT, 4); uint32_t fr = recomp_lf_r, fa = recomp_lf_a, fb = recomp_lf_b; /* flags from a fall-through */\n"
                        "    recomp_lf_op = 0;\n"
@@ -609,6 +686,7 @@ public:
     }
 
     std::set<uint32_t> called;  // direct call / tail targets referenced
+    std::set<uint32_t> flagsInCalls_;  // call sites whose continuation reads the callee's flags
     uint32_t retBytes = 0;      // largest `ret N` in the last emitted function
 
 private:
@@ -718,7 +796,13 @@ private:
             line("SPILL; recomp_dispatch(c, " + hex(t) + "u); RELOAD;");
             return;
         }
+        if (readsFlagsAtEntry(t))  // entry reads the lazy flags (entered by fall-through, or branches on them first)
+            line("{ extern __thread int recomp_lf_op; extern __thread uint32_t recomp_lf_r, recomp_lf_a, recomp_lf_b; "
+                 "recomp_lf_op = fop; recomp_lf_r = fr; recomp_lf_a = fa; recomp_lf_b = fb; }");
         line("SPILL; " + fname(t) + "(c); RELOAD;");
+        if (flagsInCalls_.count(ins.addr))  // the continuation branches on the flags the callee returned with
+            line("{ extern __thread int recomp_lf_op; extern __thread uint32_t recomp_lf_r, recomp_lf_a, recomp_lf_b; "
+                 "if (recomp_lf_op) { fop = recomp_lf_op; fr = recomp_lf_r; fa = recomp_lf_a; fb = recomp_lf_b; } recomp_lf_op = 0; }");
         called.insert(t);
     }
 
@@ -994,6 +1078,9 @@ private:
         case ZYDIS_MNEMONIC_RET:
             terminated_ = true;
             retBytes = std::max<uint32_t>(retBytes, in.operand_count_visible ? static_cast<uint32_t>(o[0].imm.value.u) : 0u);
+            if (flagsOut_.count(f_->entry))
+                line("{ extern __thread int recomp_lf_op; extern __thread uint32_t recomp_lf_r, recomp_lf_a, recomp_lf_b; "
+                     "recomp_lf_op = fop; recomp_lf_r = fr; recomp_lf_a = fa; recomp_lf_b = fb; }");
             return line("esp += " + std::to_string(4 + (in.operand_count_visible ? o[0].imm.value.u : 0)) + "; SPILL; return;");
         case ZYDIS_MNEMONIC_INT3: case ZYDIS_MNEMONIC_HLT: case ZYDIS_MNEMONIC_UD2: case ZYDIS_MNEMONIC_INT:
             terminated_ = true;
@@ -1320,6 +1407,9 @@ private:
     Program& p_;
     std::set<uint32_t> tailTargets_;
     bool tailTargetsBuilt_ = false;
+    bool flagsOutBuilt_ = false;
+    std::set<uint32_t> flagsOut_;
+    std::set<uint32_t> flagsIn_;  // entries whose first instructions read the status flags
     Stats& st_;
     Function* f_ = nullptr;
     std::ostringstream out_;

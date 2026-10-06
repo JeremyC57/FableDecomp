@@ -696,6 +696,9 @@ void coreInit() {
     recomp_on_nanload = [](Ctx* c, uint32_t eip, uint32_t a) {
         static std::mutex m;
         static std::unordered_map<uint32_t, uint32_t> seen;
+        if (a - (c->esp - 0x4000) < 0x14000) return;  // stack temporaries (e.g. normalize of a zero vector) are benign
+        static const uint64_t from = getenv("FABLE_NANLOG_FROM") ? strtoull(getenv("FABLE_NANLOG_FROM"), nullptr, 0) : 0;
+        if (gpu::g_frameCount < from) return;
         std::lock_guard<std::mutex> l(m);
         if (seen[eip]++ == 0 && seen.size() <= 100)
             XLOG(0, "NaN load at %08X from %08X = %08X (flip %llu, caller %08X)", eip, a, rd32(a), static_cast<unsigned long long>(gpu::g_frameCount),
