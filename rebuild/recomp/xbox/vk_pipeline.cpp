@@ -787,7 +787,8 @@ VkPipeline VkRenderer::pipeline(uint64_t key, VkRenderPass pass, uint32_t attrib
     vp.viewportCount = vp.scissorCount = 1;
     VkPipelineRasterizationStateCreateInfo rs{VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO};
     rs.polygonMode = (R[NV097_SET_FRONT_POLYGON_MODE / 4] == 0x1B01 && ctx().features.fillModeNonSolid) ? VK_POLYGON_MODE_LINE : VK_POLYGON_MODE_FILL;
-    if (R[NV097_SET_CULL_FACE_ENABLE / 4] & 1) {
+    static const bool noCull = featureOff("cull"), noDepth = featureOff("depthtest");  // debugging
+    if ((R[NV097_SET_CULL_FACE_ENABLE / 4] & 1) && !noCull) {
         const uint32_t cf = R[NV097_SET_CULL_FACE / 4];
         rs.cullMode = cf == 0x404 ? VK_CULL_MODE_FRONT_BIT : cf == 0x408 ? VK_CULL_MODE_FRONT_AND_BACK : VK_CULL_MODE_BACK_BIT;
     }
@@ -801,6 +802,7 @@ VkPipeline VkRenderer::pipeline(uint64_t key, VkRenderPass pass, uint32_t attrib
     VkPipelineDepthStencilStateCreateInfo ds{VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO};
     ds.depthTestEnable = R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1;
     ds.depthWriteEnable = ds.depthTestEnable && (R[NV097_SET_DEPTH_MASK / 4] & 1);
+    if (noDepth) ds.depthTestEnable = ds.depthWriteEnable = VK_FALSE;
     ds.depthCompareOp = compareOp(R[NV097_SET_DEPTH_FUNC / 4]);
     ds.stencilTestEnable = R[NV097_SET_STENCIL_TEST_ENABLE / 4] & 1;
     VkStencilOpState so{};
