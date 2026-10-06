@@ -132,10 +132,28 @@ uint32_t hostTrap(KFn fn, int args, const char* name) {
 }
 
 // RDTSC: the Xbox's 733.33 MHz Pentium III clock (titles time with it), from the monotonic clock.
+namespace gpu { extern uint64_t g_frameCount; }
+
+// Game-visible clock in ns. FABLE_FLIPTIME=1 (testing): 1/30 s per flip plus 1 us per read,
+// so game logic advances the same way per frame however fast the host renders (repeatable
+// scripted runs). Waits and timers keep real time.
+uint64_t gameClockNs() {
+    static const bool flipTime = getenv("FABLE_FLIPTIME") != nullptr;
+    if (!flipTime) {
+        timespec ts;
+        clock_gettime(CLOCK_MONOTONIC, &ts);
+        return static_cast<uint64_t>(ts.tv_sec) * 1000000000ull + static_cast<uint64_t>(ts.tv_nsec);
+    }
+    static std::atomic<uint64_t> last{0};
+    const uint64_t base = gpu::g_frameCount * 33333333ull;
+    uint64_t prev = last.load(), next;
+    do next = std::max(prev + 1000, base);
+    while (!last.compare_exchange_weak(prev, next));
+    return next;
+}
+
 extern "C" uint64_t recomp_rdtsc(void) {
-    timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    const uint64_t ns = static_cast<uint64_t>(ts.tv_sec) * 1000000000ull + static_cast<uint64_t>(ts.tv_nsec);
+    const uint64_t ns = gameClockNs();
     return ns / 15 * 11 + ns % 15 * 11 / 15;  // ns * 0.7333...
 }
 

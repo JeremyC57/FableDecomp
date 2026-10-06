@@ -237,6 +237,7 @@ void debugWatchRearm();  // the ticker calls it
 void filesInit(const std::string& gameDir, const std::string& hddDir);
 // FABLE_DISABLE=name1,name2: turns individual emulation fixes off (bisecting regressions).
 bool featureOff(const char* name);
+uint64_t gameClockNs();  // RDTSC / performance counter clock (FABLE_FLIPTIME: per flip)
 std::string resolveObjectName(uint32_t objectAttributes);  // full object path ("\Device\CdRom0\...")
 void symlinkCreate(const std::string& link, const std::string& target);
 bool symlinkDelete(const std::string& link);

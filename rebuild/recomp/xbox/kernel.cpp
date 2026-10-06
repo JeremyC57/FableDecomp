@@ -614,7 +614,7 @@ KFUNC(KeQuerySystemTime, 1) { wr64(ARG(c, 0), systemTime100ns()); return 0; }
 KFUNC(NtSetSystemTime, 2) { return ST_SUCCESS; }
 constexpr uint64_t kPerfFreq = 3375000;  // the ACPI timer
 KFUNC(KeQueryPerformanceCounter, 0) {
-    const uint64_t v = monoTime100ns() * kPerfFreq / 10000000;
+    const uint64_t v = gameClockNs() / 100 * kPerfFreq / 10000000;
     c->edx = static_cast<uint32_t>(v >> 32);
     return static_cast<uint32_t>(v);
 }
