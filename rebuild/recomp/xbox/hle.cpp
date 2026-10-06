@@ -7,6 +7,8 @@
 #include "settings.hpp"
 #include "xhost.hpp"
 
+#include <cmath>
+
 namespace xb {
 
 void hleInstall() {}
@@ -34,6 +36,20 @@ extern "C" {
 // fps = 60: FullScreen_PresentationInterval (+0x30) becomes D3DPRESENT_INTERVAL_ONE, so the
 // game flips every vblank instead of every other one.
 void F_00851360_orig(Ctx* c);
+// _CIfmod (x in ST(1), y in ST(0); result fmod(x, y) in ST(0), one pop) through the CRT's
+// _trandisp2 path. Debug check: log when it returns NaN where the C library does not.
+extern "C" void F_005806FE_orig(Ctx* c);
+void hle_CIfmod(Ctx* c) {
+    const double y = c->fpu.st[c->fpu.top & 7], x = c->fpu.st[(c->fpu.top + 1) & 7];
+    F_005806FE_orig(c);
+    const double r = c->fpu.st[c->fpu.top & 7];
+    static int logged = 0;
+    if (std::isnan(r) && !std::isnan(std::fmod(x, y)) && logged < 20) {
+        ++logged;
+        XLOG(0, "_CIfmod(%g, %g) = NaN (libc %g), cw %04X sw %04X", x, y, std::fmod(x, y), c->fpu.cw, c->fpu.sw);
+    }
+}
+
 void hle_Direct3D_CreateDevice(Ctx* c) {
     const uint32_t pp = arg(c, 4);
     if (pp) {

@@ -693,6 +693,14 @@ void coreInit() {
     recomp_on_unknown_target = onUnknownTarget;
     // Code lifted with --nancheck: each guest instruction that stores a NaN, in the order first
     // seen, with the flip it happened at (finds where a NaN is born).
+    recomp_on_nanload = [](Ctx* c, uint32_t eip, uint32_t a) {
+        static std::mutex m;
+        static std::unordered_map<uint32_t, uint32_t> seen;
+        std::lock_guard<std::mutex> l(m);
+        if (seen[eip]++ == 0 && seen.size() <= 100)
+            XLOG(0, "NaN load at %08X from %08X = %08X (flip %llu, caller %08X)", eip, a, rd32(a), static_cast<unsigned long long>(gpu::g_frameCount),
+                 rd32(c->esp));
+    };
     recomp_on_nan = [](Ctx* c, uint32_t eip) {
         static std::mutex m;
         static std::unordered_map<uint32_t, uint32_t> seen;

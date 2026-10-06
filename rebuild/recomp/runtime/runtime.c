@@ -31,6 +31,7 @@ void (*recomp_on_fatal)(Ctx* c, uint32_t eip, const char* what);
 int (*recomp_on_unknown_target)(Ctx* c, uint32_t target); /* imports, traps; return 1 if handled */
 void (*recomp_on_trace)(Ctx* c, uint32_t fn);
 void (*recomp_on_nan)(Ctx* c, uint32_t eip);
+void (*recomp_on_nanload)(Ctx* c, uint32_t eip, uint32_t a);
 
 int recomp_init_memory(void) {
 #if defined(RECOMP_IDENTITY_MEMORY)

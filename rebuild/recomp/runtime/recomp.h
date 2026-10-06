@@ -104,6 +104,9 @@ static inline void recomp_trace(Ctx* c, uint32_t fn) { if (recomp_on_trace) reco
 /* Debug hook: code lifted with --nancheck calls this when an FPU/SSE store writes a NaN. */
 extern void (*recomp_on_nan)(Ctx* c, uint32_t eip);
 static inline void recomp_nan(Ctx* c, uint32_t eip) { if (recomp_on_nan) recomp_on_nan(c, eip); }
+/* --nancheck: a float load (fld/movss) read a NaN from guest address `a`. */
+extern void (*recomp_on_nanload)(Ctx* c, uint32_t eip, uint32_t a);
+static inline void recomp_nanload(Ctx* c, uint32_t eip, uint32_t a) { if (recomp_on_nanload) recomp_on_nanload(c, eip, a); }
 
 /* Preemption: lifted loops check this flag at their back edges. A host that runs several
  * guest threads under one lock sets it periodically; recomp_safepoint() then lets another

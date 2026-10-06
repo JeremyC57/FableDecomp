@@ -1202,7 +1202,8 @@ private:
         };
         switch (m) {
         case ZYDIS_MNEMONIC_FLD:
-            if (mem) return line("fpush(c, " + fmemLoad(*mem, false) + ");");
+            if (mem) return line("fpush(c, " + fmemLoad(*mem, false) + ");" +
+                                 (nanCheck() ? " if (isnan(ST(0))) recomp_nanload(c, " + hex(ins.addr) + "u, " + addr(*mem) + ");" : ""));
             return line("{ double v = ST(" + std::to_string(sts.empty() ? 0 : sts[0]) + "); fpush(c, v); }");
         case ZYDIS_MNEMONIC_FILD: return line("fpush(c, " + fmemLoad(*mem, true) + ");");
         case ZYDIS_MNEMONIC_FLD1: return line("fpush(c, 1.0);");

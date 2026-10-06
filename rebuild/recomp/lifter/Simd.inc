@@ -77,7 +77,8 @@ bool simd(const Insn& ins) {
         return true;
     case ZYDIS_MNEMONIC_MOVSS:
         if (isXmm(o[0]) && isXmm(o[1])) line("{ Xmm A, B; " + vload("A", o[0]) + " " + vload("B", o[1]) + " A.f[0] = B.f[0]; " + vstore(o[0], "A") + " }");
-        else if (isXmm(o[0])) line("{ Xmm T; " + vload("T", o[1]) + " " + vstore(o[0], "T") + " }");
+        else if (isXmm(o[0])) line("{ Xmm T; " + vload("T", o[1]) + " " + vstore(o[0], "T") +
+                                   (nanCheck() ? " if (isnan(T.f[0])) recomp_nanload(c, " + hex(ins.addr) + "u, " + addr(o[1]) + ");" : "") + " }");
         else line("{ Xmm T; " + vload("T", o[1]) + " wr32(" + addr(o[0]) + ", T.d[0]);" +
                   (nanCheck() ? " if (isnan(T.f[0])) recomp_nan(c, " + hex(ins.addr) + "u);" : "") + " }");
         return true;
