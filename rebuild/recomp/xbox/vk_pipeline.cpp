@@ -676,6 +676,10 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
     const bool alphaTest = R[NV097_SET_ALPHA_TEST_ENABLE / 4] & 1;
     key = mix(key, alphaTest ? R[NV097_SET_ALPHA_FUNC / 4] : 0);
     key = mix(key, R[NV097_SET_FOG_ENABLE / 4] & 1);
+    // Back-face colours (oB0/oB1) only with two-sided lighting; otherwise both faces use the
+    // front colours (vertex programs usually never write oB0: back faces came out black).
+    const bool twoSide = R[0x17C4 / 4] & 1;  // NV097_SET_TWO_SIDE_LIGHT_EN
+    key = mix(key, twoSide);
     for (int i = 0; i < 4; ++i)  // alpha kill per enabled stage
         key = mix(key, R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & ((1u << 30) | (1u << 2)));
     // Stages sampling a depth surface (a shadow map rendered earlier): depth compare.
@@ -704,7 +708,8 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
         src += "layout(set=0, binding=" + std::to_string(10 + i) + ") uniform sampler3D tex" + std::to_string(i) + "3d;\n";
     }
     src += "layout(location=0) out vec4 fragColor;\nvoid main() {\n"
-           "  vec4 v0 = gl_FrontFacing ? vD0 : vB0, v1 = gl_FrontFacing ? vD1 : vB1;\n"
+           + std::string(twoSide ? "  vec4 v0 = gl_FrontFacing ? vD0 : vB0, v1 = gl_FrontFacing ? vD1 : vB1;\n"
+                                 : "  vec4 v0 = vD0, v1 = vD1;\n") +
            "  vec4 pFog = vec4(cf.fogColor.rgb, clamp(vFog, 0.0, 1.0));\n";
     // 2D lookups use sTexN: linear (rect) textures take texel coordinates, scaled to 0..1 here.
     for (int i = 0; i < 4; ++i)
