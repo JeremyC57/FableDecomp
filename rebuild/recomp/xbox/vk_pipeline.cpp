@@ -1291,9 +1291,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             float cmn, cmx;
             std::memcpy(&cmn, &R[NV097_SET_CLIP_MIN / 4], 4);
             std::memcpy(&cmx, &R[NV097_SET_CLIP_MAX / 4], 4);
-            fprintf(cap, "sfmt %08X clip %g..%g zclr %08X c58 %g %g %g %g c59 %g %g %g %g | ", R[NV097_SET_SURFACE_FORMAT / 4], cmn, cmx,
-                    R[NV097_SET_ZSTENCIL_CLEAR_VALUE / 4], st.constants[58][0], st.constants[58][1], st.constants[58][2], st.constants[58][3],
-                    st.constants[59][0], st.constants[59][1], st.constants[59][2], st.constants[59][3]);
+            fprintf(cap, "sfmt %08X clip %g..%g c21 %g %g %g %g c22 %g %g %g %g c58 %g %g %g %g | ", R[NV097_SET_SURFACE_FORMAT / 4], cmn, cmx,
+                    st.constants[21][0], st.constants[21][1], st.constants[21][2], st.constants[21][3], st.constants[22][0], st.constants[22][1],
+                    st.constants[22][2], st.constants[22][3], st.constants[58][0], st.constants[58][1], st.constants[58][2], st.constants[58][3]);
             fprintf(cap, "%llu/%04u prim %u n %u tgt %08X %ux%u zt %08X blend %u %X/%X eq %X atest %u %X/%u z %u/%X/%u cull %u/%X cmask %08X comb %08X prog %08X stencil %u",
                     static_cast<unsigned long long>(g_frameCount), n++, prim, needIndex ? static_cast<uint32_t>(seq.size()) : count, target_.color, target_.w,
                     target_.h, target_.depth, R[NV097_SET_BLEND_ENABLE / 4] & 1, R[NV097_SET_BLEND_FUNC_SFACTOR / 4], R[NV097_SET_BLEND_FUNC_DFACTOR / 4],
