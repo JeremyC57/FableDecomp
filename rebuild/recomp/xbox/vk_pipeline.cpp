@@ -1340,6 +1340,10 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
                     R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1, R[NV097_SET_DEPTH_FUNC / 4], R[NV097_SET_DEPTH_MASK / 4] & 1, R[NV097_SET_CULL_FACE_ENABLE / 4] & 1,
                     R[NV097_SET_CULL_FACE / 4], R[NV097_SET_COLOR_MASK / 4], R[NV097_SET_COMBINER_CONTROL / 4], R[NV097_SET_SHADER_STAGE_PROGRAM / 4],
                     R[NV097_SET_STENCIL_TEST_ENABLE / 4] & 1);
+            if (R[NV097_SET_STENCIL_TEST_ENABLE / 4] & 1)
+                fprintf(cap, " [func %X ref %X mask %X/%X ops %X/%X/%X]", R[NV097_SET_STENCIL_FUNC / 4], R[NV097_SET_STENCIL_FUNC_REF / 4],
+                        R[NV097_SET_STENCIL_FUNC_MASK / 4], R[NV097_SET_STENCIL_MASK / 4], R[NV097_SET_STENCIL_OP_FAIL / 4],
+                        R[NV097_SET_STENCIL_OP_ZFAIL / 4], R[NV097_SET_STENCIL_OP_ZPASS / 4]);
             for (int i = 0; i < 16; ++i)
                 if ((mask >> i) & 1) fprintf(cap, " a%d:%02X", i, fmts[i] & 0xFF);
             for (int i = 0; i < 4; ++i)
