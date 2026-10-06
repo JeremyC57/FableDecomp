@@ -30,6 +30,7 @@ __attribute__((weak)) void recomp_safepoint(void) { recomp_preempt_flag = 0; }
 void (*recomp_on_fatal)(Ctx* c, uint32_t eip, const char* what);
 int (*recomp_on_unknown_target)(Ctx* c, uint32_t target); /* imports, traps; return 1 if handled */
 void (*recomp_on_trace)(Ctx* c, uint32_t fn);
+void (*recomp_on_nan)(Ctx* c, uint32_t eip);
 
 int recomp_init_memory(void) {
 #if defined(RECOMP_IDENTITY_MEMORY)

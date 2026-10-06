@@ -508,6 +508,10 @@ bool& safepoints() {
     return v;
 }
 
+bool& nanCheck() {  // --nancheck: report NaN stores (debugging)
+    static bool on = false;
+    return on;
+}
 std::set<uint32_t>& traceAddrs() {
     static std::set<uint32_t> s;
     return s;
@@ -1210,7 +1214,8 @@ private:
         case ZYDIS_MNEMONIC_FLDL2T: return line("fpush(c, 3.32192809488736234787);");
         case ZYDIS_MNEMONIC_FST: case ZYDIS_MNEMONIC_FSTP: {
             const bool pop = m == ZYDIS_MNEMONIC_FSTP;
-            if (mem) return line(fmemStore(*mem, "ST(0)") + (pop ? " fpop(c);" : ""));
+            if (mem) return line(fmemStore(*mem, "ST(0)") + (nanCheck() ? " if (isnan(ST(0))) recomp_nan(c, " + hex(ins.addr) + "u);" : "") +
+                                 (pop ? " fpop(c);" : ""));
             return line("ST(" + std::to_string(sts.empty() ? 1 : sts[0]) + ") = ST(0);" + (pop ? " fpop(c);" : ""));
         }
         case ZYDIS_MNEMONIC_FIST: case ZYDIS_MNEMONIC_FISTP: {
@@ -1359,6 +1364,8 @@ int main(int argc, char** argv) {
             std::stringstream ss(argv[++i]);
             std::string t;
             while (std::getline(ss, t, ',')) only.insert(static_cast<uint32_t>(std::stoul(t, nullptr, 16)));
+        } else if (a == "--nancheck") {
+            nanCheck() = true;
         } else if (a == "--trace" && i + 1 < argc) {  // --trace 0x434F60: call recomp_trace at entry
             traceAddrs().insert(static_cast<uint32_t>(std::stoul(argv[++i], nullptr, 16)));
         } else if (a == "--hook" && i + 1 < argc) {  // --hook 0x9D8650=host_coswitch

@@ -691,6 +691,16 @@ bool featureOff(const char* name) {
 
 void coreInit() {
     recomp_on_unknown_target = onUnknownTarget;
+    // Code lifted with --nancheck: each guest instruction that stores a NaN, in the order first
+    // seen, with the flip it happened at (finds where a NaN is born).
+    recomp_on_nan = [](Ctx* c, uint32_t eip) {
+        static std::mutex m;
+        static std::unordered_map<uint32_t, uint32_t> seen;
+        std::lock_guard<std::mutex> l(m);
+        if (seen[eip]++ == 0 && seen.size() <= 200)
+            XLOG(0, "NaN store at %08X (flip %llu, thread esp %08X, caller %08X)", eip, static_cast<unsigned long long>(gpu::g_frameCount), c->esp,
+                 rd32(c->esp));
+    };
     recomp_on_trace = [](Ctx* c, uint32_t fn) {  // lift.sh ... --trace ADDR
         if (getenv("FABLE_TRACE_HIST")) {  // caller histogram, logged every 10 s
             static std::map<std::pair<uint32_t, uint32_t>, uint32_t> hist;

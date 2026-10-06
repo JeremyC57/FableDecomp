@@ -101,6 +101,9 @@ void recomp_resume_at(Ctx* c, uint32_t frame, uint32_t target);
 /* Debug hook: functions lifted with --trace call this on entry (no-op unless set). */
 extern void (*recomp_on_trace)(Ctx* c, uint32_t fn);
 static inline void recomp_trace(Ctx* c, uint32_t fn) { if (recomp_on_trace) recomp_on_trace(c, fn); }
+/* Debug hook: code lifted with --nancheck calls this when an FPU/SSE store writes a NaN. */
+extern void (*recomp_on_nan)(Ctx* c, uint32_t eip);
+static inline void recomp_nan(Ctx* c, uint32_t eip) { if (recomp_on_nan) recomp_on_nan(c, eip); }
 
 /* Preemption: lifted loops check this flag at their back edges. A host that runs several
  * guest threads under one lock sets it periodically; recomp_safepoint() then lets another
