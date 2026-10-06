@@ -1293,6 +1293,8 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             float cmn, cmx;
             std::memcpy(&cmn, &R[NV097_SET_CLIP_MIN / 4], 4);
             std::memcpy(&cmx, &R[NV097_SET_CLIP_MAX / 4], 4);
+            fprintf(cap, "vp@%u c5 %g %g %g %g c8 %g %g %g %g ", R[NV097_SET_TRANSFORM_PROGRAM_START / 4], st.constants[5][0], st.constants[5][1],
+                    st.constants[5][2], st.constants[5][3], st.constants[8][0], st.constants[8][1], st.constants[8][2], st.constants[8][3]);
             fprintf(cap, "sfmt %08X clip %g..%g c21 %g %g %g %g c22 %g %g %g %g c58 %g %g %g %g | ", R[NV097_SET_SURFACE_FORMAT / 4], cmn, cmx,
                     st.constants[21][0], st.constants[21][1], st.constants[21][2], st.constants[21][3], st.constants[22][0], st.constants[22][1],
                     st.constants[22][2], st.constants[22][3], st.constants[58][0], st.constants[58][1], st.constants[58][2], st.constants[58][3]);
