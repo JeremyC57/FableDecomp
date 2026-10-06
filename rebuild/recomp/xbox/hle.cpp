@@ -52,7 +52,8 @@ void F_0001FBF0_orig(Ctx* c);
 void hle_operator_new(Ctx* c) {
     const uint32_t size = arg(c, 0);
     F_0001FBF0_orig(c);
-    if (c->eax && size) std::memset(gp(c->eax), 0, size);
+    static const bool off = featureOff("zerofill");
+    if (c->eax && size && !off) std::memset(gp(c->eax), 0, size);
 }
 
 // VOID XInitDevices(DWORD dwPreallocTypeCount, PXDEVICE_PREALLOC_TYPE PreallocTypes)

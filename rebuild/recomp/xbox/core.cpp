@@ -696,10 +696,20 @@ void coreInit() {
     recomp_on_nan = [](Ctx* c, uint32_t eip) {
         static std::mutex m;
         static std::unordered_map<uint32_t, uint32_t> seen;
+        static const uint64_t from = getenv("FABLE_NANLOG_FROM") ? strtoull(getenv("FABLE_NANLOG_FROM"), nullptr, 0) : 0;
+        if (gpu::g_frameCount < from) return;
         std::lock_guard<std::mutex> l(m);
-        if (seen[eip]++ == 0 && seen.size() <= 200)
-            XLOG(0, "NaN store at %08X (flip %llu, thread esp %08X, caller %08X)", eip, static_cast<unsigned long long>(gpu::g_frameCount), c->esp,
-                 rd32(c->esp));
+        if (seen[eip]++ == 0 && seen.size() <= 300) {
+            // Likely return addresses on the stack (a rough call chain).
+            char chain[160];
+            int n = 0;
+            for (uint32_t a = c->esp; a < c->esp + 256 && n < 140; a += 4) {
+                const uint32_t v = rd32(a);
+                if (v >= 0x11000 && v < 0x700000) n += snprintf(chain + n, sizeof chain - static_cast<size_t>(n), " %X", v);
+            }
+            chain[std::min(n, 159)] = 0;
+            XLOG(0, "NaN store at %08X (flip %llu) stack:%s", eip, static_cast<unsigned long long>(gpu::g_frameCount), chain);
+        }
     };
     recomp_on_trace = [](Ctx* c, uint32_t fn) {  // lift.sh ... --trace ADDR
         if (getenv("FABLE_TRACE_HIST")) {  // caller histogram, logged every 10 s
