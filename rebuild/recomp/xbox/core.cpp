@@ -148,7 +148,7 @@ uint64_t gameClockNs() {
     // Never slower than a tenth of real time: loading screens wait for time before flipping.
     static const auto t0 = std::chrono::steady_clock::now();
     const uint64_t real = static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - t0).count());
-    const uint64_t base = std::max(gpu::g_frameCount * 33333333ull, real / 10);
+    const uint64_t base = std::max<uint64_t>(gpu::g_frameCount * 33333333ull, real / 10);
     uint64_t prev = last.load(), next;
     do next = std::max(prev + 1000, base);
     while (!last.compare_exchange_weak(prev, next));
