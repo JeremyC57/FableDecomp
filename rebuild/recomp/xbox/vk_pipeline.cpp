@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <atomic>
 #include <cmath>
+#include <unistd.h>
 #include <unordered_map>
 #include <vector>
 
@@ -1298,6 +1299,22 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     static const long capAuto = getenv("FABLE_CAPTURE_IMAGES") ? atol(getenv("FABLE_CAPTURE_IMAGES")) : 0;
     static uint64_t textFrame = ~0ull;
     if (capAuto > 0 && textFrame == ~0ull && lastFrameDraws_ > static_cast<uint64_t>(capAuto)) textFrame = frames_done_;
+    // FABLE_CAPTURE_HIGHLIGHT=1: capture (text + images) the frame after the first highlight pass
+    // (an object drawn into a 256x256 colour-only target with a stage-1 PROJECT3D depth compare),
+    // then exit.
+    static const bool capHi = getenv("FABLE_CAPTURE_HIGHLIGHT") != nullptr;
+    static uint64_t hiFrame = ~0ull;
+    if (capHi) {
+        if (hiFrame == ~0ull && target_.w == 256 && !target_.depth && ((R[NV097_SET_SHADER_STAGE_PROGRAM / 4] >> 5) & 0x1F) == 2) {
+            hiFrame = frames_done_ + 1;
+            XLOG(0, "highlight pass at flip %llu", static_cast<unsigned long long>(g_frameCount));
+        }
+        if (hiFrame != ~0ull && frames_done_ > hiFrame) {
+            fflush(nullptr);
+            _exit(0);
+        }
+        textFrame = hiFrame;
+    }
     if ((!capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end()) || frames_done_ == textFrame) {
         static FILE* cap = fopen("cap.txt", "w");
         // Once, on an auto-triggered frame: guest RAM addresses holding runs of NaN floats (where a
@@ -1368,6 +1385,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     static uint64_t imageFrame = ~0ull;
     ++drawsThisFrame_;
     if (capImages > 0 && imageFrame == ~0ull && lastFrameDraws_ > static_cast<uint64_t>(capImages)) imageFrame = frames_done_;
+    if (capHi) imageFrame = hiFrame;
     const bool imageThis = capImages == 0 ? (!capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end())
                                           : frames_done_ == imageFrame;
     static const bool capAll = getenv("FABLE_CAPTURE_ALL") != nullptr;  // offscreen targets too, with alpha
