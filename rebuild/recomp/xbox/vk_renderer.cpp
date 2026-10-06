@@ -12,10 +12,14 @@
 #include "xhost.hpp"
 
 #include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <unistd.h>
 #include <mutex>
 #include <vector>
 
 namespace xb::gpu {
+extern uint64_t g_frameCount;
 
 using namespace vk;
 
@@ -138,6 +142,18 @@ void VkRenderer::endFrame() {
     submitFrame(false);
     lastFrameDraws_ = drawsThisFrame_;
     drawsThisFrame_ = 0;
+    // Test harness: FABLE_HEAVY_DRAWS=N logs frames with more draws than N (the targeting void
+    // drew ~4200); FABLE_EXIT_FLIP=F ends the run at flip F.
+    static const uint64_t heavy = getenv("FABLE_HEAVY_DRAWS") ? strtoull(getenv("FABLE_HEAVY_DRAWS"), nullptr, 0) : 0;
+    static const uint64_t exitFlip = getenv("FABLE_EXIT_FLIP") ? strtoull(getenv("FABLE_EXIT_FLIP"), nullptr, 0) : 0;
+    static uint32_t heavyCount = 0;
+    if (heavy && lastFrameDraws_ > heavy && heavyCount++ < 20)
+        XLOG(0, "heavy frame: %llu draws at flip %llu", static_cast<unsigned long long>(lastFrameDraws_), static_cast<unsigned long long>(g_frameCount));
+    if (exitFlip && g_frameCount >= exitFlip) {
+        XLOG(0, "exit at flip %llu (%u heavy frames)", static_cast<unsigned long long>(g_frameCount), heavyCount);
+        fflush(nullptr);
+        _exit(0);
+    }
     if (++frames_done_ % 60 == 0) {
         logDrawStats(frames_done_);
         if (frames_done_ % 1800 == 0) savePipelineCache();  // each minute, when it grew

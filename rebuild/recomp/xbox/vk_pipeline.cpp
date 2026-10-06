@@ -1171,6 +1171,20 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     if ((R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) != 2) std::memcpy(vc.c, &R[NV097_SET_COMPOSITE_MATRIX / 4], 64);
     vc.surface[0] = static_cast<float>(target_.w);
     vc.surface[1] = static_cast<float>(target_.h);
+    // Test harness (FABLE_HEAVY_DRAWS): count main-target draws with a NaN vertex constant
+    // (a NaN camera or bone matrix: the targeting void, vanishing NPCs), logged once a second.
+    static const bool nanStats = getenv("FABLE_HEAVY_DRAWS") != nullptr;
+    if (nanStats) {
+        static uint64_t nanDraws = 0, lastFlip = 0;
+        bool bad = false;
+        for (int i = 0; i < 192 * 4 && !bad; ++i) bad = std::isnan(vc.c[i / 4][i % 4]);
+        if (bad && target_.w >= 320) ++nanDraws;
+        if (g_frameCount / 30 != lastFlip / 30) {
+            if (nanDraws) XLOG(0, "NaN-constant draws: %llu by flip %llu", static_cast<unsigned long long>(nanDraws), static_cast<unsigned long long>(g_frameCount));
+            nanDraws = 0;
+        }
+        lastFlip = g_frameCount;
+    }
     float cmin, cmax;
     std::memcpy(&cmin, &R[NV097_SET_CLIP_MIN / 4], 4);
     std::memcpy(&cmax, &R[NV097_SET_CLIP_MAX / 4], 4);
