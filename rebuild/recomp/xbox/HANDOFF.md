@@ -50,6 +50,21 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
   FABLE_DUMP_FRAMES=1500 timeout -s KILL 300 bx/FableXbox --game ... --hdd run/hdd`, with
   `run/fable_xbox.ini` holding `vulkan_driver = /usr/lib/x86_64-linux-gnu/libvulkan_lvp.so`.
 
+## 2026-10-06: targeting void / invisible NPCs
+- Root cause: the CRT `_trandisp` helpers (0x5855AD, 0x5855F0, behind acos/asin/exp/pow/log)
+  return with ZF set and the caller branches on it right away. The lifter dropped flags across
+  `ret`, so those functions took random branches and sometimes returned NaN (acos from
+  0x85070, quaternion → angle), which tainted camera and bone matrices. The lifter now hands
+  flags back through `recomp_lf_*` where the continuation reads them (8 call sites).
+- Check: `FABLE_HEAVY_DRAWS=3000 FABLE_EXIT_FLIP=4450` + the LT input script (scratch
+  `trun.sh`). Old lifter: ~16k NaN-constant draws/s from flip 2070, 21 void frames.
+  New: 0 and 0 in 3 complete runs.
+- The intro NaN at 0x73579 (normalising a zero vector in 0x3D70A0) is benign: same on x86.
+- Known: the intro movie sometimes stalls under FABLE_NO_AUDIO in parallel test runs (pre-existing).
+- Highlight outline (in progress): targets go to 071E0080 256x256 (t1 = main depth
+  072C0000, PROJECT3D depth compare), stencil mark on screen, blur to 07220080 128x128,
+  composite with stencil. `FABLE_CAPTURE_ALL=1` saves offscreen targets with alpha.
+
 ## Next
 1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
    Vulkan queries); dot-product texture modes; fixed-function T&L.

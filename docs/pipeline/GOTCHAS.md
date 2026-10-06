@@ -102,3 +102,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Mario rig (`work/mario_hero/stage_bindaxis4`): parent-relative ANIM translations stretch the
   segments; mesh-only rest/inverse-bind edits are insufficient. Parked.
 - ForgeFSE canonical fork is `D:\Code\ForgeFSE-retail-shadow`; `D:\Code\ForgeFSE` is stale.
+- Lifter: callee flags matter — CRT `_trandisp` (Xbox 0x5855AD/0x5855F0) returns in ZF and callers `jz` right after the call; dropping flags across `ret` made acos/pow randomly return NaN.
