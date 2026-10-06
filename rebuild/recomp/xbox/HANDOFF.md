@@ -61,9 +61,14 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
   New: 0 and 0 in 3 complete runs.
 - The intro NaN at 0x73579 (normalising a zero vector in 0x3D70A0) is benign: same on x86.
 - Known: the intro movie sometimes stalls under FABLE_NO_AUDIO in parallel test runs (pre-existing).
-- Highlight outline (in progress): targets go to 071E0080 256x256 (t1 = main depth
-  072C0000, PROJECT3D depth compare), stencil mark on screen, blur to 07220080 128x128,
-  composite with stencil. `FABLE_CAPTURE_ALL=1` saves offscreen targets with alpha.
+- Highlight outline: FIXED. The pass draws the target into 071E0080 256x256 with a stage-1
+  PROJECT3D depth compare against the main depth buffer 072C0000 (texture format 0x2E), marks a
+  shell in stencil bit 2, blurs to 07220080 128x128, and composites where bit 2 is set. A stale
+  colour surface at 072C0000 won the address lookup, so the compare never ran; depth texture
+  formats (0x2A-0x31) now pick the depth surface. Verified with `FABLE_CAPTURE_HIGHLIGHT=1`
+  (green glow around an Oakvale NPC at flip ~2335).
+- Shadow compares now use the texture's depth range: Fable's shadow maps are Z16 (format 0x30,
+  clip max 65535) and were scaled as Z24, so character shadow tests passed almost everywhere.
 
 ## Next
 1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
