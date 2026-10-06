@@ -7,6 +7,7 @@
 // Texture stages are sampled first according to the per-stage shader mode.
 #include "nv2a_shaders.hpp"
 #include "nv2a_methods.h"
+#include "xhost.hpp"
 
 #include <string>
 
@@ -160,9 +161,9 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
             break;
         }
     }
-    // Per-stage alpha kill (TEXTURE_CONTROL0 bit 2, D3DTSS_ALPHAKILL): texels with alpha 0 are
-    // discarded (foliage, grass cut-outs).
-    for (int i = 0; i < 4; ++i) {
+    // Per-stage alpha kill (TEXTURE_CONTROL0 bit 2, D3DTSS_ALPHAKILL): texels with alpha 0 are discarded.
+    static const bool noAlphaKill = featureOff("alphakill");
+    for (int i = 0; i < 4 && !noAlphaKill; ++i) {
         const uint32_t ctl0 = R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16];
         const uint32_t mode = (prog >> (5 * i)) & 0x1F;
         if ((ctl0 & (1u << 30)) && (ctl0 & (1u << 2)) && mode != 0 && mode != 4 && mode != 5)

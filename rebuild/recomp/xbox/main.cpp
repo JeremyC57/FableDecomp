@@ -154,7 +154,6 @@ int main(int argc, char** argv) {
     }
     memInit();
     coreInit();
-    profilerStart();
     reserveXbe();
     kernelInit();
     mapXbe();

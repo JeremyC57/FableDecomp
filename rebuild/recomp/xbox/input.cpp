@@ -18,6 +18,7 @@
 #include <cstdio>
 #include <cstring>
 
+namespace xb::gpu { extern uint64_t g_frameCount; }
 namespace xb::input {
 
 namespace {
@@ -147,11 +148,14 @@ void update() {
         }
     }
     // FABLE_INPUT_SCRIPT="200:ly=32767;215:rx=-20000;220:" (seconds since start: stick values or
-    // buttons a/b/x/y/start=1, held until the next entry) drives port 1 for unattended testing.
+    // buttons a/b/x/y/start/lt/rt=1, held until the next entry) drives port 1 for unattended testing.
+    // FABLE_INPUT_FRAMES=1: the times are flip counts instead (repeatable on slow renderers).
     static const char* script = getenv("FABLE_INPUT_SCRIPT");
     if (script) {
         static const auto start = std::chrono::steady_clock::now();
-        const double t = std::chrono::duration<double>(std::chrono::steady_clock::now() - start).count();
+        static const bool byFrames = getenv("FABLE_INPUT_FRAMES") != nullptr;
+        const double t = byFrames ? static_cast<double>(gpu::g_frameCount)
+                                  : std::chrono::duration<double>(std::chrono::steady_clock::now() - start).count();
         const char* cur = nullptr;
         for (const char* p = script; *p;) {
             if (std::atof(p) > t) break;
@@ -178,11 +182,18 @@ void update() {
                     else if (!std::strcmp(key, "x")) d.analog[2] = v ? 255 : 0;
                     else if (!std::strcmp(key, "y")) d.analog[3] = v ? 255 : 0;
                     else if (!std::strcmp(key, "start")) d.buttons |= v ? 0x10 : 0;
+                    else if (!std::strcmp(key, "lt")) d.analog[6] = v ? 255 : 0;
+                    else if (!std::strcmp(key, "rt")) d.analog[7] = v ? 255 : 0;
                 }
                 p = std::strchr(p, ',');
             }
         }
     }
+    static const double autoUntil = getenv("FABLE_AUTOPRESS_UNTIL") ? atof(getenv("FABLE_AUTOPRESS_UNTIL")) : 1e18;  // seconds
+    static const auto autoStart = std::chrono::steady_clock::now();
+    const double autoClock = getenv("FABLE_INPUT_FRAMES") ? static_cast<double>(gpu::g_frameCount)
+                                                          : std::chrono::duration<double>(std::chrono::steady_clock::now() - autoStart).count();
+    if (g_autopress && autoClock > autoUntil) g_autopress = false;
     if (g_autopress) {
         const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
         const int phase = static_cast<int>((ms / 250) % 16);

@@ -45,21 +45,12 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
   (`FABLE_DUMP_FRAMES=N`). Occlusion queries are stubbed: GET_REPORT returns 0x10000 pixels
   (`gpu.hpp` zpassCount). With 0, Fable culls every house and character.
 - Debugging: `XBOX_LOG=0..4`, `FABLE_DRAWLOG=<flip>`, `FABLE_DUMP_SHADERS=1`,
-  `FABLE_WATCH=<guest addr>` (logs writers of a word), `lift.sh ... --trace ADDR`,
-  `FABLE_INPUT_SCRIPT="330:ly=32767;350:rx=20000;360:"` (scripted pad, seconds),
-  `FABLE_CAPTURE_SEC=T1,T2` (+`FABLE_CAPTURE_DETECT=black`, `FABLE_CAPTURE_ALL=1`): per-draw
-  captures of a frame (cap.txt with state and constants, capN_DDDD.png/.vert/.frag for draws
-  that add blue/black pixels), `FABLE_DRAWSIGS=1` (each distinct draw setup once),
-  `FABLE_PROFILE=<s>` (sampling profiler -> profile.txt; resolve with `nm -n`).
+  `FABLE_WATCH=<guest addr>` (logs writers of a word), `lift.sh ... --trace ADDR`.
 - Run unattended: `Xvfb :98 &` then `DISPLAY=:98 FABLE_AUTOPRESS=1 FABLE_NO_AUDIO=1
   FABLE_DUMP_FRAMES=1500 timeout -s KILL 300 bx/FableXbox --game ... --hdd run/hdd`, with
   `run/fable_xbox.ini` holding `vulkan_driver = /usr/lib/x86_64-linux-gnu/libvulkan_lvp.so`.
 
 ## Next
-0. Known rendering issues: distant-grass impostors (strips, S32K positions, SRC_ALPHA/ZERO,
-   vertex alpha = dist/16 - 3) paint black near the camera; check the attribute w default
-   and what covers them on hardware. Interactable highlights and interior "shadows": retest
-   after the pipeline-key fix (pipelines used to reuse the first shader for a state).
 1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
    Vulkan queries); dot-product texture modes; fixed-function T&L.
 2. Launcher settings. Done: resolution scale, anisotropy, widescreen (anamorphic 3D

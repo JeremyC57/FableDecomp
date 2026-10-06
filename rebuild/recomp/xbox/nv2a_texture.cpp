@@ -1,6 +1,7 @@
 // NV2A texture decoding to BGRA8 (VK_FORMAT_B8G8R8A8_UNORM): swizzled and linear colour
 // formats, DXT1/3/5, palettes.
 #include "nv2a_texture.hpp"
+#include "xhost.hpp"
 
 #include <cstring>
 
@@ -43,8 +44,10 @@ uint32_t texel(uint32_t fmt, const uint8_t* p, const uint32_t* palette) {
         return bgra(255, p[0], p[0], p[0]);
     case 0x01: case 0x1B:  // AY8: luminance replicated to alpha
         return bgra(p[0], p[0], p[0], p[0]);
-    case 0x19: case 0x1F:  // A8: colour reads as white (as xemu: swizzle 1,1,1,A)
-        return bgra(p[0], 255, 255, 255);
+    case 0x19: case 0x1F: {  // A8: colour reads as white (as xemu: swizzle 1,1,1,A)
+        static const bool black = featureOff("a8");
+        return black ? bgra(p[0], 0, 0, 0) : bgra(p[0], 255, 255, 255);
+    }
     case 0x1A: case 0x20:  // A8Y8
         return bgra(p[1], p[0], p[0], p[0]);
     case 0x02: case 0x10:  // A1R5G5B5

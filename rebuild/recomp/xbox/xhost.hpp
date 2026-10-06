@@ -235,7 +235,8 @@ void debugWatchRearm();  // the ticker calls it
 
 // ---- files ---------------------------------------------------------------------------------
 void filesInit(const std::string& gameDir, const std::string& hddDir);
-void profilerStart();  // FABLE_PROFILE=<seconds> (profiler.cpp)
+// FABLE_DISABLE=name1,name2: turns individual emulation fixes off (bisecting regressions).
+bool featureOff(const char* name);
 std::string resolveObjectName(uint32_t objectAttributes);  // full object path ("\Device\CdRom0\...")
 void symlinkCreate(const std::string& link, const std::string& target);
 bool symlinkDelete(const std::string& link);

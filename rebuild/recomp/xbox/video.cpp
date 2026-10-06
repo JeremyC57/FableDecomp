@@ -26,6 +26,7 @@ void* androidVulkanDriver();
 extern uint32_t g_avFramebuffer, g_avPitch, g_avFormat;
 
 namespace gpu {
+extern uint64_t g_frameCount;
 Renderer& softRenderer();
 Renderer* g_renderer;
 Renderer& renderer() { return g_renderer ? *g_renderer : softRenderer(); }
@@ -325,8 +326,9 @@ void videoMain() {
             if (every > 0 && ++presented % static_cast<uint64_t>(every) == 0) {
                 static const auto t0 = std::chrono::steady_clock::now();
                 dumpImage(img, iw, ih, presented);
-                XLOG(1, "dumped vkframe_%05llu at %.0f s", static_cast<unsigned long long>(presented),
-                     std::chrono::duration<double>(std::chrono::steady_clock::now() - t0).count());
+                XLOG(1, "dumped vkframe_%05llu at %.0f s (flip %llu)", static_cast<unsigned long long>(presented),
+                     std::chrono::duration<double>(std::chrono::steady_clock::now() - t0).count(),
+                     static_cast<unsigned long long>(gpu::g_frameCount));
             }
             vk::present(img, iw, ih, aspect, VK_NULL_HANDLE);
         } else {

@@ -42,7 +42,9 @@ bool g_irqLine = false;
 bool g_waitNop = false, g_waitCtx = false, g_waitFlip = false;
 uint32_t g_coreClockHz = 233333324;
 uint32_t g_ptNum = 1, g_ptDen = 1;
-uint64_t g_frameCount = 0;
+}  // namespace
+uint64_t g_frameCount = 0;  // flips (also the input script clock, FABLE_INPUT_FRAMES)
+namespace {
 
 // PGRAPH: subchannel -> object instance and class.
 uint32_t g_subInst[8], g_subClass[8];

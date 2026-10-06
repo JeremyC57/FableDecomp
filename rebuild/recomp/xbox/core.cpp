@@ -660,6 +660,14 @@ extern "C" void recomp_safepoint(void) {
     g_gil.lock();
 }
 
+bool featureOff(const char* name) {
+    static const std::string list = [] {
+        const char* e = getenv("FABLE_DISABLE");
+        return e ? "," + std::string(e) + "," : std::string();
+    }();
+    return !list.empty() && list.find("," + std::string(name) + ",") != std::string::npos;
+}
+
 void coreInit() {
     recomp_on_unknown_target = onUnknownTarget;
     recomp_on_trace = [](Ctx* c, uint32_t fn) {  // lift.sh ... --trace ADDR
