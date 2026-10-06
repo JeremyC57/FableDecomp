@@ -93,6 +93,7 @@ private:
     VkShaderModule fragmentShader(uint64_t* key);
     VkImageView texture(int stage, uint32_t* kind);
     VkSampler sampler(int stage);
+    void captureImage();  // FABLE_CAPTURE_IMAGES (debugging)
     VkPipelineCache pipeCache_ = VK_NULL_HANDLE;
     bool pipeCacheDirty_ = false;
     void savePipelineCache();

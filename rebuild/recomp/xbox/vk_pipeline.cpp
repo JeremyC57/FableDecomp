@@ -8,6 +8,8 @@
 #include "settings.hpp"
 #include "xhost.hpp"
 
+#include "../posix/third_party/stb_image_write.h"
+
 #include <glslang/Public/ResourceLimits.h>
 #include <glslang/Public/ShaderLang.h>
 #if __has_include(<glslang/SPIRV/GlslangToSpv.h>)
@@ -579,7 +581,11 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
     *keyOut = key;
     auto it = shaders_.find(key);
     if (it != shaders_.end()) return it->second;
-    std::string src = "#version 450\n";
+    // invariant: a depth pre-pass and the colour pass after it use different vertex programs
+    // with the same position math; without it the compiler may fuse/reorder differently per
+    // shader, the depths differ slightly and the LEQUAL colour pass fails (targeting turned the
+    // world into a white void). The NV2A computes them bit-identically.
+    std::string src = "#version 450\ninvariant gl_Position;\n";
     for (int i = 0; i < 16; ++i) {
         const bool cmp = ((attribMask >> i) & 1) && (fmts[i] & 0xF) == 6;
         src += cmp ? "layout(location=" + std::to_string(i) + ") in uint vin" + std::to_string(i) + ";\n"
@@ -1303,6 +1309,55 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     } else {
         vkCmdDraw(cb, count, 1, inl ? 0 : first - minIdx, 0);
     }
+    // FABLE_CAPTURE_IMAGES=1 with FABLE_CAPTURE_FLIP: the target after each draw to the main
+    // 640x480 target goes to capF_NNNN.png (debugging).
+    static const bool capImages = getenv("FABLE_CAPTURE_IMAGES") != nullptr;
+    if (capImages && !capFlips.empty() && std::find(capFlips.begin(), capFlips.end(), g_frameCount) != capFlips.end() &&
+        target_.w == 640 && target_.h == 480)
+        captureImage();
+}
+
+void VkRenderer::captureImage() {
+    static uint64_t lastFlip = ~0ull;
+    static uint32_t n = 0;
+    if (lastFlip != g_frameCount) lastFlip = g_frameCount, n = 0;
+    const uint32_t idx = n++;
+    Surface* c = target_.color ? findSurface(target_.color, false) : nullptr;
+    if (!c) return;
+    const bool c16 = c->format == VK_FORMAT_A1R5G5B5_UNORM_PACK16;
+    if (!c16 && c->format != VK_FORMAT_B8G8R8A8_UNORM) return;
+    const uint32_t w = c->w * static_cast<uint32_t>(scale_), h = c->h * static_cast<uint32_t>(scale_);
+    static Buffer buf;
+    static void* mapped = nullptr;
+    if (!buf.buf) {
+        buf = createBuffer(2560ull * 1920 * 4, VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
+        vkMapMemory(ctx().device, buf.mem, 0, VK_WHOLE_SIZE, 0, &mapped);
+    }
+    endPass();
+    transition(*c, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
+    VkBufferImageCopy copy{};
+    copy.imageSubresource = {VK_IMAGE_ASPECT_COLOR_BIT, 0, 0, 1};
+    copy.imageExtent = {w, h, 1};
+    vkCmdCopyImageToBuffer(cmd(), c->image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, buf.buf, 1, &copy);
+    submitFrame(true);
+    std::vector<uint8_t> rgb(static_cast<size_t>(w) * h * 3);
+    const auto* p = static_cast<const uint8_t*>(mapped);
+    for (size_t i = 0; i < static_cast<size_t>(w) * h; ++i) {
+        if (c16) {
+            uint16_t v;
+            std::memcpy(&v, p + 2 * i, 2);
+            rgb[3 * i] = static_cast<uint8_t>(((v >> 10) & 31) << 3);
+            rgb[3 * i + 1] = static_cast<uint8_t>(((v >> 5) & 31) << 3);
+            rgb[3 * i + 2] = static_cast<uint8_t>((v & 31) << 3);
+        } else {
+            rgb[3 * i] = p[4 * i + 2];
+            rgb[3 * i + 1] = p[4 * i + 1];
+            rgb[3 * i + 2] = p[4 * i];
+        }
+    }
+    char name[64];
+    snprintf(name, sizeof name, "cap%llu_%04u.png", static_cast<unsigned long long>(g_frameCount), idx);
+    stbi_write_png(name, static_cast<int>(w), static_cast<int>(h), 3, rgb.data(), static_cast<int>(w * 3));
 }
 
 } // namespace xb::gpu
