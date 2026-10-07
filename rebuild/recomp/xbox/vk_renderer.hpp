@@ -124,7 +124,7 @@ private:
     uint64_t surfaceStamp_ = 0;
     std::map<FbKey, VkFramebuffer> framebuffers_;
     std::map<uint64_t, VkRenderPass> renderPasses_;
-    struct Target { uint32_t color = 0, depth = 0, w = 0, h = 0; } target_;
+    struct Target { uint32_t color = 0, depth = 0, w = 0, h = 0, aaX = 1, aaY = 1; } target_;
     VkRenderPass pass_ = VK_NULL_HANDLE;   // active render pass (null outside one)
     VkFramebuffer passFb_ = VK_NULL_HANDLE;
     VkRenderPass passRp_ = VK_NULL_HANDLE;

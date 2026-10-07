@@ -1234,7 +1234,18 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // element about its own centre split menus built from several quads); full-screen 4:3 images
     // become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
     // decides whether a draw is screen-space at all). FABLE_DISABLE=uifix.
-    float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f;
+    float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f, hudSqueeze = 1.0f;
+    // The HUD's 3D pieces (rings, heart, minimap frame) go through the game's own fixed HUD camera:
+    // a rotation-free 45-degree perspective (c5 = (2.414, 0, 0, x), c8 = (0, 0, 1, 0)) with the
+    // depth test off, not the world camera hle_SetupGamut widens. At 16:9 they are squeezed into
+    // the centred 4:3 area like the rest of the interface.
+    if (wide_ && target_.w == 640 && target_.h == 480 && !featureOff("uifix") && !(R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1) &&
+        (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
+        const float* c5 = st.constants[5];
+        const float* c8 = st.constants[8];
+        if (c8[0] == 0.0f && c8[1] == 0.0f && c8[2] == 1.0f && c8[3] == 0.0f && c5[1] == 0.0f && c5[2] == 0.0f && c5[0] > 0.5f)
+            hudSqueeze = 0.75f;
+    }
     static const bool noUiFix = featureOff("uifix");
     if ((wide_ || outH_ > 480) && !noUiFix && target_.w == 640 && target_.h == 480 &&
         (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
@@ -1357,8 +1368,8 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     struct VC { float c[192][4]; float surface[4]; float clip[4]; float fog[4]; float ui[4]; } vc{};
     std::memcpy(vc.c, st.constants, sizeof vc.c);
     if ((R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) != 2) std::memcpy(vc.c, &R[NV097_SET_COMPOSITE_MATRIX / 4], 64);
-    vc.surface[0] = static_cast<float>(target_.w);
-    vc.surface[1] = static_cast<float>(target_.h);
+    vc.surface[0] = static_cast<float>(target_.w / target_.aaX);  // the clip size (AA surfaces are larger in memory)
+    vc.surface[1] = static_cast<float>(target_.h / target_.aaY);
     // Test harness (FABLE_HEAVY_DRAWS): count main-target draws with a NaN vertex constant
     // (a NaN camera or bone matrix: the targeting void, vanishing NPCs), logged once a second.
     static const bool nanStats = getenv("FABLE_HEAVY_DRAWS") != nullptr;
@@ -1386,7 +1397,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // squeezed perspective draws into the back buffer instead, which shows the game's 4:3 culling at
     // the edges and misplaces effects drawn through offscreen targets.
     static const bool squeeze = featureOff("hor+");
-    vc.clip[2] = (squeeze && settings().widescreen && target_.w == 640 && target_.h == 480) ? 0.75f : 1.0f;
+    vc.clip[2] = (squeeze && settings().widescreen && target_.w == 640 && target_.h == 480) ? 0.75f : hudSqueeze;
     const VkDeviceSize vcOff = upload(&vc, sizeof vc, ctx().props.limits.minUniformBufferOffsetAlignment);
     struct FC { float c0[9][4]; float c1[9][4]; float fog[4]; float aref[4]; float bump[4][4]; float lum[4][4]; float texScale[4][4]; float text[4]; } fc{};
     auto unpack = [](uint32_t v, float* o) {

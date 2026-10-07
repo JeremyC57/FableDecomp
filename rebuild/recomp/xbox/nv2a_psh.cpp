@@ -134,12 +134,13 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
             if (func == 0 || func == 7) {
                 code += "  vec4 " + t + " = vec4(" + (func ? "1.0" : "0.0") + ");\n";
             } else {
-                // Compared on the 24-bit scale for every depth format: scaling Z16 shadow maps
-                // (format 0x30) by 65535 instead put most sunlit ground in shadow (checked side by
-                // side in Oakvale). FABLE_SHADOW_Z16=1 brings that variant back for comparison.
+                // The texture format says how deep the surface is: Z16 shadow maps (0x2C/0x30) hold
+                // 0..65535, Z24 (0x2A/0x2E, e.g. the main depth buffer) 0..16777215. (An earlier
+                // side-by-side that favoured the 24-bit scale ran on a shadow map cleared to ~0 by a
+                // Z16 clear decoded as Z24S8.) FABLE_SHADOW_Z24=1 forces the 24-bit scale.
                 const uint32_t color = (R[NV097_SET_TEXTURE_FORMAT / 4 + i * 16] >> 8) & 0xFF;
-                static const bool tryZ16 = getenv("FABLE_SHADOW_Z16") != nullptr;
-                const bool z16 = tryZ16 && (color == 0x2C || color == 0x2D || color == 0x30 || color == 0x31);
+                static const bool forceZ24 = getenv("FABLE_SHADOW_Z24") != nullptr;
+                const bool z16 = !forceZ24 && (color == 0x2C || color == 0x2D || color == 0x30 || color == 0x31);
                 const std::string maxZ = z16 ? "65535.0" : "16777215.0";
                 code += "  float " + t + "d = textureProj(" + smp + ", " + tc2 + ".xyw).r * " + maxZ + ";\n";
                 const std::string z = mode == 2 ? "clamp(" + tc + ".z / " + tc + ".w, 0.0, " + maxZ + ")" : "0.0";

@@ -64,6 +64,22 @@ void phoneVibrate(uint16_t left, uint16_t right) {
 #endif
 }
 
+// Pads without SDL rumble support (Bluetooth pads on Android go through SDL's ANDROID joystick
+// backend, whose rumble is unsupported) vibrate through the haptic API instead.
+SDL_Haptic* g_haptic[4];
+std::atomic<bool> g_background{false};  // app in the background: motors off
+
+void openHaptic(int p) {
+    if (!g_ctrl[p] || SDL_GameControllerHasRumble(g_ctrl[p])) return;
+    SDL_Haptic* h = SDL_HapticOpenFromJoystick(SDL_GameControllerGetJoystick(g_ctrl[p]));
+    if (h && SDL_HapticRumbleInit(h) == 0) {
+        g_haptic[p] = h;
+        XLOG(1, "input: port %d rumbles through the haptic API", p + 1);
+    } else if (h) {
+        SDL_HapticClose(h);
+    }
+}
+
 }  // namespace
 
 void applyRumble();
@@ -79,11 +95,18 @@ void handleEvent(const SDL_Event& e) {
             if (!g_ctrl[p]) {
                 g_ctrl[p] = SDL_GameControllerOpen(e.cdevice.which);
                 XLOG(1, "input: controller \"%s\" on port %d", SDL_GameControllerName(g_ctrl[p]), p + 1);
+                openHaptic(p);
                 break;
             }
+    } else if (e.type == SDL_APP_WILLENTERBACKGROUND || (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_FOCUS_LOST)) {
+        g_background = true;
+    } else if (e.type == SDL_APP_DIDENTERFOREGROUND || (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)) {
+        g_background = false;
     } else if (e.type == SDL_CONTROLLERDEVICEREMOVED) {
         for (int p = 0; p < 4; ++p)
             if (g_ctrl[p] && SDL_JoystickInstanceID(SDL_GameControllerGetJoystick(g_ctrl[p])) == e.cdevice.which) {
+                if (g_haptic[p]) SDL_HapticClose(g_haptic[p]);
+                g_haptic[p] = nullptr;
                 SDL_GameControllerClose(g_ctrl[p]);
                 g_ctrl[p] = nullptr;
             }
@@ -277,13 +300,20 @@ void applyRumble() {
     static uint32_t renewedAt[4];
     const uint32_t now = SDL_GetTicks();
     for (int p = 0; p < 4; ++p) {
-        const uint32_t v = settings().vibration ? g_rumble[p].load() : 0;
+        const uint32_t v = settings().vibration && !g_background ? g_rumble[p].load() : 0;
         if (v == applied[p] && (v == 0 || now - renewedAt[p] < 500)) continue;
         applied[p] = v;
         renewedAt[p] = now;
         const uint16_t left = static_cast<uint16_t>(v >> 16), right = static_cast<uint16_t>(v);
-        if (g_ctrl[p]) SDL_GameControllerRumble(g_ctrl[p], left, right, v ? 1000 : 0);
-        else if (p == 0) phoneVibrate(left, right);
+        const bool padRumble = g_ctrl[p] && SDL_GameControllerHasRumble(g_ctrl[p]);
+        if (padRumble) {
+            SDL_GameControllerRumble(g_ctrl[p], left, right, v ? 1000 : 0);
+        } else if (g_haptic[p]) {
+            if (v) SDL_HapticRumblePlay(g_haptic[p], std::max(left, right) / 65535.0f, 1000);
+            else SDL_HapticRumbleStop(g_haptic[p]);
+        } else if (p == 0) {
+            phoneVibrate(left, right);  // touch controls, or a pad that cannot rumble
+        }
     }
 }
 

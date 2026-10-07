@@ -310,6 +310,14 @@ void VkRenderer::bindTargets() {
         h = 1u << ((fmt >> 24) & 0xFF);
     }
     if (!w || !h) { w = 640; h = 480; }
+    // Anti-aliased surfaces (SURFACE_FORMAT bits 12-15: 1 CENTER_CORNER_2, 2 SQUARE_OFFSET_4) are
+    // 2x1 / 2x2 their clip size in memory. Fable draws shadow casters into its 768x768 shadow map
+    // both ways (384x384 with 4x AA, 768x768 without): one image of the memory size serves both,
+    // the vertex shader maps the clip size onto it.
+    const uint32_t aa = (fmt >> 12) & 0xF;
+    const uint32_t aaX = aa == 1 || aa == 2 ? 2 : 1, aaY = aa == 2 ? 2 : 1;
+    w *= aaX;
+    h *= aaY;
     const uint32_t pitch = R[NV097_SET_SURFACE_PITCH / 4];
     const uint32_t colorDma = R[NV097_SET_CONTEXT_DMA_COLOR / 4], zetaDma = R[NV097_SET_CONTEXT_DMA_ZETA / 4];
     const uint32_t colorAddr = colorDma ? dmaAddress(colorDma, nullptr) + R[NV097_SET_SURFACE_COLOR_OFFSET / 4] : 0;
@@ -321,6 +329,8 @@ void VkRenderer::bindTargets() {
     target_.depth = z ? z->addr : 0;
     target_.w = w;
     target_.h = h;
+    target_.aaX = aaX;
+    target_.aaY = aaY;
 }
 
 // ============================================================================================
@@ -355,8 +365,10 @@ void VkRenderer::clear(uint32_t flags) {
         const uint32_t v = R[NV097_SET_ZSTENCIL_CLEAR_VALUE / 4];
         att[n] = {};
         att[n].aspectMask = ((flags & 1) ? VK_IMAGE_ASPECT_DEPTH_BIT : 0) | ((flags & 2) ? VK_IMAGE_ASPECT_STENCIL_BIT : 0);
-        att[n].clearValue.depthStencil.depth = static_cast<float>(v >> 8) / 16777215.0f;
-        att[n].clearValue.depthStencil.stencil = v & 0xFF;
+        // Z16 surfaces (Fable's shadow map) keep the depth in the low 16 bits; Z24S8 in the top 24.
+        const bool z16 = ((R[NV097_SET_SURFACE_FORMAT / 4] >> 4) & 0xF) == 1;
+        att[n].clearValue.depthStencil.depth = z16 ? static_cast<float>(v & 0xFFFF) / 65535.0f : static_cast<float>(v >> 8) / 16777215.0f;
+        att[n].clearValue.depthStencil.stencil = z16 ? 0 : v & 0xFF;
         ++n;
     }
     if (getenv("FABLE_CAPTURE_IMAGES") || getenv("FABLE_CAPTURE_FLIP")) {
@@ -368,9 +380,9 @@ void VkRenderer::clear(uint32_t flags) {
     if (!n) return;
     VkClearRect rect{};
     const uint32_t fw = hostW(target_.w, target_.h), fh = hostH(target_.h);
-    const double sx = target_.w ? static_cast<double>(fw) / target_.w : 1.0;
+    const double sx = target_.w ? static_cast<double>(fw) * target_.aaX / target_.w : 1.0;  // clear rects are in clip units
     const int hx0 = static_cast<int>(x0 * sx), hx1 = static_cast<int>((x1 + 1) * sx);
-    const double sy = target_.h ? static_cast<double>(fh) / target_.h : 1.0;
+    const double sy = target_.h ? static_cast<double>(fh) * target_.aaY / target_.h : 1.0;
     const int hy0 = static_cast<int>(y0 * sy), hy1 = static_cast<int>((y1 + 1) * sy);
     rect.rect.offset = {hx0, hy0};
     rect.rect.extent = {static_cast<uint32_t>(std::max(0, hx1 - hx0)), static_cast<uint32_t>(std::max(0, hy1 - hy0))};

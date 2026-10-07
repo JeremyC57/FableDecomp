@@ -9,6 +9,8 @@
 
 #include <algorithm>
 #include <cmath>
+#include <unordered_map>
+#include <mutex>
 
 namespace xb {
 
@@ -71,6 +73,9 @@ void hle_Direct3D_CreateDevice(Ctx* c) {
 // horizontal one, so the game projects and culls a widescreen view into its 640x480 buffer and
 // the presenter stretches that to 16:9 (anamorphic, as Xbox widescreen games do).
 void F_00132D00_orig(Ctx* c);
+// Widened cameras: camera object -> (horizontal, vertical) FOV given to SetupGamut.
+std::mutex g_wideLock;
+std::unordered_map<uint32_t, std::pair<float, float>> g_wideFov;
 void hle_SetupGamut(Ctx* c) {
     const uint32_t desc = arg(c, 0);
     float x0, y0, x1, y1, fov;
@@ -104,6 +109,10 @@ void hle_SetupGamut(Ctx* c) {
     std::memcpy(gp(desc + 0x50), &fovY, 4);
     wr8(desc + 0x54, 1);
     F_00132D00_orig(c);
+    {
+        std::lock_guard<std::mutex> l(g_wideLock);
+        g_wideFov[c->ebx] = {fovX, fovY};
+    }
     std::memcpy(gp(desc + 0x4C), saved, 12);
     std::memcpy(gp(c->ebx + 0x14 + 0x4C), saved, 12);  // the camera's copy of the description
     static float logged[8];  // each distinct FOV once (cutscenes alternate cameras every frame)
@@ -112,6 +121,33 @@ void hle_SetupGamut(Ctx* c) {
         logged[nLogged++] = fov;
         XLOG(1, "SetupGamut: %gx%g window, fov %g -> widescreen %g x %g", w, h, fov, fovX, fovY);
     }
+}
+
+// The sky/horizon band (0x161830) maps the screen's width onto the panorama from the main camera's
+// stored FOV (camera +0x60, or +0x64 for the vertical with the explicit-FOV flag +0x68). The camera
+// keeps the 4:3 description (other code copies it), so for a widened camera the band would be
+// 4:3-narrow and slide against the terrain; it is shown the widened FOVs for the call.
+void F_00161830_orig(Ctx* c);
+void hle_SkyBand(Ctx* c) {
+    const uint32_t cam = rd32(0x994BC4);
+    std::pair<float, float> fov{0, 0};
+    bool wide = false;
+    if (cam && !rd8(cam + 0x68)) {
+        std::lock_guard<std::mutex> l(g_wideLock);
+        const auto it = g_wideFov.find(cam);
+        if (it != g_wideFov.end()) { fov = it->second; wide = true; }
+    }
+    if (!wide) {
+        F_00161830_orig(c);
+        return;
+    }
+    uint8_t saved[12];
+    std::memcpy(saved, gp(cam + 0x60), 12);
+    std::memcpy(gp(cam + 0x60), &fov.first, 4);
+    std::memcpy(gp(cam + 0x64), &fov.second, 4);
+    wr8(cam + 0x68, 1);
+    F_00161830_orig(c);
+    std::memcpy(gp(cam + 0x60), saved, 12);
 }
 
 // The game's operator new (0x1FBF0, cdecl: size) zero-fills: Fable relies on fresh blocks
