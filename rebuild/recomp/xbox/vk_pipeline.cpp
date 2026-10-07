@@ -479,12 +479,16 @@ float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel) {
     uiCur_.push_back({x0, x1, y0, y1, 0.0f});
     // Menus (a full-screen panel) and cinematics (letterbox bars: screen-wide strips at the top or
     // bottom edge) keep their whole interface centred: subtitles and prompts stay together.
-    const bool letterbox = x1 - x0 >= 560.0f && y1 - y0 >= 8.0f && (y0 <= 4.0f || y1 >= 476.0f);
+    // (Bars slid off screen after a conversation are still drawn: only visible ones count.)
+    const bool letterbox = x1 - x0 >= 560.0f && std::min(y1, 480.0f) - std::max(y0, 0.0f) >= 8.0f && (y0 <= 4.0f || y1 >= 476.0f);
     if (panel || letterbox) uiMenuCur_ = true;
-    if (uiMenuCur_ || uiMenuPrev_) return 0.0f;
+    if (uiMenuCur_) return 0.0f;
+    // Pieces seen last frame keep last frame's placement (centred if it was a menu or cinematic
+    // frame: the panel or bars may come later in this frame); new pieces, such as the HUD coming
+    // back after a conversation, are placed by their own extent.
     const float cx = (x0 + x1) * 0.5f, cy = (y0 + y1) * 0.5f;
     for (const UiRect& r : uiPrev_)
-        if (cx >= r.x0 && cx <= r.x1 && cy >= r.y0 && cy <= r.y1) return r.anchor;
+        if (cx >= r.x0 && cx <= r.x1 && cy >= r.y0 && cy <= r.y1) return uiMenuPrev_ ? 0.0f : r.anchor;
     return anchorOfExtent(x0, x1);
 }
 
@@ -1049,11 +1053,21 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     // Contents are checked at most once per frame (FABLE_DISABLE=texcheck: every use, FNV).
     static const bool oldCheck = featureOff("texcheck");
     if (!oldCheck && t.image && t.lastUse == frames_done_ && t.checked) return t.view;
+    const bool dxt = color == 0x0C || color == 0x0E;
+    // Compressed textures are loaded, not drawn into: once unchanged for a few checks, they are
+    // checked every 16th frame (staggered), which saves hashing most texture memory each frame.
+    if (!oldCheck && dxt && t.image && t.checked && t.stable >= 4 && t.pcGen == pctex::generation() &&
+        ((frames_done_ + (key >> 7)) & 15) != 0) {
+        t.lastUse = frames_done_;
+        return t.view;
+    }
     const uint64_t hash = oldCheck ? fnv(src, bytes) : fastHash(src, bytes);
     t.lastUse = frames_done_;
     t.checked = true;
-    const bool dxt = color == 0x0C || color == 0x0E;
-    if (t.image && t.hash == hash && (!dxt || t.pcGen == pctex::generation())) return t.view;
+    if (t.image && t.hash == hash && (!dxt || t.pcGen == pctex::generation())) {
+        ++t.stable;
+        return t.view;
+    }
     VkDevice dev = ctx().device;
     if (t.image) {
         Texture old = t;

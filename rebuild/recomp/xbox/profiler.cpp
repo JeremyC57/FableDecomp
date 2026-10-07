@@ -10,6 +10,9 @@
 #include <cstring>
 #include <dlfcn.h>
 #include <map>
+#include <pthread.h>
+#include <sys/syscall.h>
+#include <unistd.h>
 #include <string>
 #include <signal.h>
 #include <sys/time.h>
@@ -20,6 +23,7 @@ namespace xb {
 namespace {
 constexpr size_t kMax = 1 << 22;
 uintptr_t* g_samples;
+uint32_t* g_tids;
 std::atomic<size_t> g_count{0};
 
 void onProf(int, siginfo_t*, void* uc) {
@@ -32,7 +36,10 @@ void onProf(int, siginfo_t*, void* uc) {
     const uintptr_t pc = 0;
 #endif
     const size_t i = g_count.fetch_add(1, std::memory_order_relaxed);
-    if (i < kMax) g_samples[i] = pc;
+    if (i < kMax) {
+        g_samples[i] = pc;
+        g_tids[i] = static_cast<uint32_t>(syscall(SYS_gettid));
+    }
 }
 }  // namespace
 
@@ -41,7 +48,7 @@ void onProf(int, siginfo_t*, void* uc) {
 bool profilerCapture(double delay, double secs, const std::string& path) {
     static std::atomic<bool> busy{false};
     if (busy.exchange(true)) return false;
-    if (!g_samples) g_samples = new uintptr_t[kMax];
+    if (!g_samples) g_samples = new uintptr_t[kMax], g_tids = new uint32_t[kMax];
     g_count = 0;
     struct sigaction sa{};
     sa.sa_sigaction = onProf;
@@ -58,18 +65,42 @@ bool profilerCapture(double delay, double secs, const std::string& path) {
         dladdr(reinterpret_cast<void*>(&profilerStart), &self);
         const uintptr_t base = reinterpret_cast<uintptr_t>(self.dli_fbase);
         std::map<uintptr_t, size_t> hist;  // offset (or absolute address outside the executable)
+        std::map<uint32_t, size_t> perThread;
+        std::map<std::string, size_t> libs;  // "library!symbol" for addresses outside the executable
         const size_t n = std::min(g_count.load(), kMax);
         for (size_t i = 0; i < n; ++i) {
             Dl_info d{};
             const uintptr_t pc = g_samples[i];
-            if (dladdr(reinterpret_cast<void*>(pc), &d) && d.dli_fbase == self.dli_fbase) ++hist[pc - base];
-            else ++hist[pc | (uintptr_t{1} << 63)];  // shared libraries (driver, libc): marked
+            ++perThread[g_tids[i]];
+            if (dladdr(reinterpret_cast<void*>(pc), &d) && d.dli_fbase == self.dli_fbase) {
+                ++hist[pc - base];
+                continue;
+            }
+            ++hist[pc | (uintptr_t{1} << 63)];  // shared libraries (driver, libc): marked
+            std::string lib = d.dli_fname ? d.dli_fname : "?";
+            const size_t slash = lib.rfind('/');
+            if (slash != std::string::npos) lib.erase(0, slash + 1);
+            char off[32];
+            std::snprintf(off, sizeof off, "+%llx", static_cast<unsigned long long>(pc - reinterpret_cast<uintptr_t>(d.dli_fbase)) & ~0xFFFull);
+            ++libs[lib + "!" + (d.dli_sname ? d.dli_sname : off)];
         }
         if (FILE* f = std::fopen(path.c_str(), "w")) {
             float fps = 0, worst = 0;
             perfStats(&fps, &worst);
             std::fprintf(f, "# %zu samples over %.0f s; profilerStart at %llx; %.1f fps\n", n, secs,
                          static_cast<unsigned long long>(reinterpret_cast<uintptr_t>(&profilerStart) - base), fps);
+            for (auto& [tid, v] : perThread) {
+                char comm[64] = "?";
+                char p[64];
+                std::snprintf(p, sizeof p, "/proc/self/task/%u/comm", tid);
+                if (FILE* c = std::fopen(p, "r")) {
+                    if (std::fgets(comm, sizeof comm, c)) comm[std::strcspn(comm, "\n")] = 0;
+                    std::fclose(c);
+                }
+                std::fprintf(f, "# thread %u %s: %zu\n", tid, comm, v);
+            }
+            for (auto& [k, v] : libs)
+                if (v >= 5) std::fprintf(f, "# lib %s: %zu\n", k.c_str(), v);
             for (auto& [k, v] : hist) std::fprintf(f, "%llx %zu\n", static_cast<unsigned long long>(k), v);
             std::fclose(f);
         }
@@ -84,6 +115,12 @@ void profilerStart() {
     if (!e) return;
     const char* comma = std::strchr(e, ',');
     profilerCapture(comma ? std::atof(e) : 0.0, std::atof(comma ? comma + 1 : e), "profile.txt");
+}
+
+void setThreadName(const char* name) {
+#if defined(__linux__) || defined(__ANDROID__)
+    pthread_setname_np(pthread_self(), name);
+#endif
 }
 
 }  // namespace xb

@@ -182,6 +182,7 @@ int main(int argc, char** argv) {
     hleInstall();
     gpu::init();
     std::thread([] {
+        setThreadName("kernel tick");
         for (;;) {
             kernelTick();
             debugWatchRearm();

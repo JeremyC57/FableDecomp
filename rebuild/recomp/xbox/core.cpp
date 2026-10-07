@@ -280,6 +280,9 @@ uint32_t guestCall(uint32_t fn, std::initializer_list<uint32_t> args) {
 }
 
 static void threadMain(XThread* t, uint32_t start, uint32_t ctx, uint32_t system) {
+    char name[16];
+    std::snprintf(name, sizeof name, "guest %06X", start);
+    setThreadName(name);
     g_gil.lock();
     t_cur = t;
     sigjmp_buf jb;
@@ -544,6 +547,7 @@ void interruptRaise(uint32_t vector) {
 }
 
 static void workerMain() {
+    setThreadName("xbox worker");
     g_gil.lock();
     t_cur = g_worker;
     std::unique_lock<FairLock> lk(g_gil, std::adopt_lock);

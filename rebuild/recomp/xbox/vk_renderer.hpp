@@ -68,6 +68,7 @@ private:
         uint32_t pcGen = 0;  // pctex::generation() when uploaded
         uint32_t addr = 0, format = 0, w = 0, h = 0, d = 0, levels = 0, pitch = 0, kind = 0;
         uint64_t hash = 0, lastUse = 0;
+        uint32_t stable = 0;  // consecutive content checks without a change
         bool checked = false;
         VkImage image = VK_NULL_HANDLE;
         VkDeviceMemory mem = VK_NULL_HANDLE;

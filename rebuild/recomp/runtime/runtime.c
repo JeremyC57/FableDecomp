@@ -70,8 +70,47 @@ static GuestFn lookupIn(const RecompEntry* t, uint32_t n, uint32_t target) {
     return (lo < n && t[lo].addr == target) ? t[lo].fn : NULL;
 }
 
+/* Page index of the main table: the first entry of every 4 KB guest page, so a lookup searches
+ * the few entries of one page instead of the whole table (indirect calls are frequent). Built
+ * once on first use; read-only afterwards. */
+#define RECOMP_PAGE_SHIFT 12
+static uint32_t* g_pageFirst; /* [page] -> first table index with addr >= page base; [pages] = size */
+static uint32_t g_pages;
+
+static void buildPageIndex(void) {
+    const uint32_t n = recomp_table_size;
+    const uint32_t pages = n ? (recomp_table[n - 1].addr >> RECOMP_PAGE_SHIFT) + 1 : 0;
+    uint32_t* first = (uint32_t*)malloc(((size_t)pages + 1) * sizeof(uint32_t));
+    if (!first) return;
+    uint32_t i = 0;
+    for (uint32_t p = 0; p <= pages; ++p) {
+        while (i < n && (recomp_table[i].addr >> RECOMP_PAGE_SHIFT) < p) ++i;
+        first[p] = i;
+    }
+    g_pages = pages;
+    g_pageFirst = first;
+}
+
+#if defined(_WIN32)
+static INIT_ONCE g_pageOnce = INIT_ONCE_STATIC_INIT;
+static BOOL CALLBACK pageOnce(PINIT_ONCE o, PVOID a, PVOID* c) { (void)o; (void)a; (void)c; buildPageIndex(); return TRUE; }
+#define RECOMP_PAGE_INDEX_ONCE() InitOnceExecuteOnce(&g_pageOnce, pageOnce, NULL, NULL)
+#else
+#include <pthread.h>
+static pthread_once_t g_pageOnce = PTHREAD_ONCE_INIT;
+#define RECOMP_PAGE_INDEX_ONCE() pthread_once(&g_pageOnce, buildPageIndex)
+#endif
+
 GuestFn recomp_lookup(uint32_t target) {
-    GuestFn f = lookupIn(recomp_table, recomp_table_size, target);
+    RECOMP_PAGE_INDEX_ONCE();
+    GuestFn f = NULL;
+    const uint32_t page = target >> RECOMP_PAGE_SHIFT;
+    if (g_pageFirst && page < g_pages) {
+        const uint32_t lo = g_pageFirst[page], hi = g_pageFirst[page + 1];
+        f = lookupIn(recomp_table + lo, hi - lo, target);
+    } else if (!g_pageFirst) {
+        f = lookupIn(recomp_table, recomp_table_size, target);
+    }
     for (int i = 0; !f && i < g_numTables; ++i) f = lookupIn(g_tables[i].table, g_tables[i].size, target);
     return f;
 }

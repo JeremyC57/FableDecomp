@@ -623,6 +623,7 @@ void runPusher() {
 
 
 void pusherMain() {
+    setThreadName("nv2a pusher");
     using clock = std::chrono::steady_clock;
     auto nextVblank = clock::now() + std::chrono::microseconds(16683);
     std::unique_lock<std::mutex> l(g_dev);
