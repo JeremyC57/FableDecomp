@@ -79,7 +79,12 @@ VkRenderer::VkRenderer() {
         dpi.poolSizeCount = 2;
         dpi.pPoolSizes = sizes;
         vkCreateDescriptorPool(dev, &dpi, nullptr, &f.descPool);
+        VkQueryPoolCreateInfo qpi{VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO};
+        qpi.queryType = VK_QUERY_TYPE_OCCLUSION;
+        qpi.queryCount = kMaxQueries;
+        if (!featureOff("occlusion")) vkCreateQueryPool(dev, &qpi, nullptr, &f.queries);
     }
+    queryPrecise_ = ctx().features.occlusionQueryPrecise;
     initPipelineObjects();
     beginFrame();
     XLOG(1, "Vulkan renderer: %ux%u, depth %s", outW_, outH_, depthFormat_ == VK_FORMAT_D24_UNORM_S8_UINT ? "D24S8" : "D32S8");
@@ -109,6 +114,7 @@ VkRenderer::Buffer VkRenderer::createBuffer(VkDeviceSize size, VkBufferUsageFlag
 void VkRenderer::beginFrame() {
     Frame& f = frames_[frame_];
     vkWaitForFences(ctx().device, 1, &f.fence, VK_TRUE, UINT64_MAX);
+    resolveReports(f);
     vkResetFences(ctx().device, 1, &f.fence);
     vkResetDescriptorPool(ctx().device, f.descPool, 0);
     for (auto& t : f.garbage) t();
@@ -118,7 +124,68 @@ void VkRenderer::beginFrame() {
     VkCommandBufferBeginInfo bi{VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};
     bi.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
     vkBeginCommandBuffer(f.cmd, &bi);
+    if (f.queries) vkCmdResetQueryPool(f.cmd, f.queries, 0, kMaxQueries);
+    f.queryCount = 0;
+    f.queryScale.clear();
+    f.submitted = false;
+    reportFirst_ = 0;
     recording_ = true;
+}
+
+// Occlusion queries -----------------------------------------------------------------------------
+// Each draw made while the zpass count is enabled gets its own query (no render-pass boundary
+// issues); a report sums the queries since CLEAR_REPORT_VALUE, scaled from host samples to the
+// guest resolution, and is written to guest memory once the frame's fence has signalled. Until
+// then the report's status word says "incomplete", as on the Xbox while the GPU is behind.
+// FABLE_DISABLE=occlusion: every report "visible" at once (the old behaviour).
+void VkRenderer::clearReport() { reportFirst_ = frames_[frame_].queryCount; }
+
+void VkRenderer::report(uint32_t addr) {
+    Frame& f = frames_[frame_];
+    if (!f.queries) return Renderer::report(addr);
+    const uint32_t first = std::min(reportFirst_, f.queryCount);
+    wr32(addr + 8, 0);
+    if (f.queryCount == first) {  // nothing drawn while counting
+        wr32(addr + 12, 0);
+        return;
+    }
+    wr32(addr + 12, 0xFFFFFFFFu);
+    if (f.reports.empty()) f.firstReport = std::chrono::steady_clock::now();
+    f.reports.push_back({addr, first, f.queryCount - first});
+    reportFirst_ = f.queryCount;
+}
+
+void VkRenderer::resolveReports(Frame& f) {
+    if (f.reports.empty()) return;
+    std::vector<uint64_t> counts(f.queryCount);
+    if (f.queryCount && vkGetQueryPoolResults(ctx().device, f.queries, 0, f.queryCount, counts.size() * 8, counts.data(), 8, VK_QUERY_RESULT_64_BIT) != VK_SUCCESS)
+        std::fill(counts.begin(), counts.end(), 0x10000);
+    for (const Frame::Report& r : f.reports) {
+        double sum = 0;
+        for (uint32_t i = r.first; i < r.first + r.count && i < f.queryCount; ++i) sum += static_cast<double>(counts[i]) * f.queryScale[i];
+        wr32(r.addr + 8, static_cast<uint32_t>(std::min(sum + 0.5, 4294967295.0)));
+        wr32(r.addr + 12, 0);
+    }
+    f.reports.clear();
+}
+
+void VkRenderer::pollReports() {
+    std::lock_guard<std::mutex> l(surfLock_);
+    for (size_t i = 0; i < frames_.size(); ++i) {
+        Frame& f = frames_[i];
+        if (f.reports.empty()) continue;
+        if (i == frame_) {
+            // Reports are normally resolved a frame or two later, after the flip's submission. A
+            // guest waiting for one inside a frame would never flip: submit after 50 ms.
+            if (std::chrono::steady_clock::now() - f.firstReport > std::chrono::milliseconds(50)) {
+                static int logged = 0;
+                if (logged++ < 5) XLOG(1, "occlusion: reports pending 50 ms without a flip; submitting");
+                submitFrame(false);
+            }
+        } else if (f.submitted && vkGetFenceStatus(ctx().device, f.fence) == VK_SUCCESS) {
+            resolveReports(f);
+        }
+    }
 }
 
 void VkRenderer::submitFrame(bool wait) {
@@ -129,6 +196,7 @@ void VkRenderer::submitFrame(bool wait) {
     si.commandBufferCount = 1;
     si.pCommandBuffers = &f.cmd;
     submit(si, f.fence);
+    f.submitted = true;
     if (wait) vkWaitForFences(ctx().device, 1, &f.fence, VK_TRUE, UINT64_MAX);
     recording_ = false;
     frame_ = (frame_ + 1) % kFrames;

@@ -5,6 +5,7 @@
 #include "vk.hpp"
 
 #include <array>
+#include <chrono>
 #include <deque>
 #include <functional>
 #include <map>
@@ -28,6 +29,9 @@ public:
     void inlineArray(const uint32_t* words, uint32_t n) override;
     void arrayElements(const uint32_t* words, uint32_t n, bool sixteenBit) override;
     void vertexAttribute(uint32_t method, uint32_t value) override;
+    void clearReport() override;
+    void report(uint32_t addr) override;
+    void pollReports() override;
 
     // Video thread: the host image rendered at guest address `addr`, if any (left in
     // TRANSFER_SRC layout, its rendering submitted).
@@ -49,7 +53,19 @@ private:
         VkDeviceSize uploadPos = 0;
         VkDescriptorPool descPool = VK_NULL_HANDLE;
         std::vector<std::function<void()>> garbage;  // destroyed when the frame's fence signals
+        // Occlusion queries: one per draw while the zpass count is enabled; a report sums a range.
+        VkQueryPool queries = VK_NULL_HANDLE;
+        uint32_t queryCount = 0;
+        std::vector<float> queryScale;  // guest samples per host sample of the query's target
+        struct Report { uint32_t addr, first, count; };
+        std::vector<Report> reports;
+        std::chrono::steady_clock::time_point firstReport;  // when `reports` became non-empty
+        bool submitted = false;
     };
+    static constexpr uint32_t kMaxQueries = 4096;
+    uint32_t reportFirst_ = 0;  // first query of the count being accumulated (current frame)
+    bool queryPrecise_ = false;
+    void resolveReports(Frame& f);
     struct Surface {
         uint32_t addr = 0, w = 0, h = 0, pitch = 0;
         VkFormat format = VK_FORMAT_UNDEFINED;
@@ -103,7 +119,7 @@ private:
     // or letterbox bars (cutscenes, conversations) keeps the whole interface centred.
     struct UiRect { float x0, x1, y0, y1, anchor; };
     std::vector<UiRect> uiCur_, uiPrev_;
-    bool uiMenuCur_ = false, uiMenuPrev_ = false;
+    bool uiMenuCur_ = false, uiMenuPrev_ = false, uiBarTop_ = false, uiBarBottom_ = false;
     float uiAnchor(float x0, float x1, float y0, float y1, bool panel);
     void uiEndFrame();
     VkPipelineCache pipeCache_ = VK_NULL_HANDLE;

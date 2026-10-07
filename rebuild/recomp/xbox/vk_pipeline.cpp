@@ -480,7 +480,19 @@ float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel) {
     // Menus (a full-screen panel) and cinematics (letterbox bars: screen-wide strips at the top or
     // bottom edge) keep their whole interface centred: subtitles and prompts stay together.
     // (Bars slid off screen after a conversation are still drawn: only visible ones count.)
-    const bool letterbox = x1 - x0 >= 560.0f && std::min(y1, 480.0f) - std::max(y0, 0.0f) >= 8.0f && (y0 <= 4.0f || y1 >= 476.0f);
+    // Letterboxing is a pair of bars (a single screen-wide strip at one edge is a banner, such as
+    // the location name at a region exit).
+    if (x1 - x0 >= 560.0f && std::min(y1, 480.0f) - std::max(y0, 0.0f) >= 8.0f) {
+        if (y0 <= 4.0f) uiBarTop_ = true;
+        if (y1 >= 476.0f) uiBarBottom_ = true;
+    }
+    const bool letterbox = uiBarTop_ && uiBarBottom_;
+    if ((panel || letterbox) && !uiMenuCur_ && !uiMenuPrev_) {
+        static int logged = 0;  // what switches the interface to its centred 4:3 layout
+        if (logged++ < 40)
+            XLOG(1, "UI: %s (x %.0f..%.0f, y %.0f..%.0f) at flip %llu: interface centred", panel ? "full-screen panel" : "letterbox bars", x0, x1, y0, y1,
+                 static_cast<unsigned long long>(g_frameCount));
+    }
     if (panel || letterbox) uiMenuCur_ = true;
     if (uiMenuCur_) return 0.0f;
     // Pieces seen last frame keep last frame's placement (centred if it was a menu or cinematic
@@ -495,7 +507,7 @@ float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel) {
 void VkRenderer::uiEndFrame() {
     // Union of overlapping / nearly touching rectangles (a few hundred per frame at most).
     if (uiCur_.empty()) {  // a frame without interface draws (repeated presents): keep the layout
-        uiMenuCur_ = false;
+        uiMenuCur_ = uiBarTop_ = uiBarBottom_ = false;
         return;
     }
     std::vector<UiRect> cl;
@@ -542,7 +554,7 @@ void VkRenderer::uiEndFrame() {
     }
     uiPrev_ = std::move(cl);
     uiMenuPrev_ = uiMenuCur_;
-    uiMenuCur_ = false;
+    uiMenuCur_ = uiBarTop_ = uiBarBottom_ = false;
     uiCur_.clear();
 }
 
@@ -1395,7 +1407,10 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             uiScale = 0.75f;
             static const bool noCornersEnv = featureOff("uicorners");
             const bool noCorners = noCornersEnv || !settings().hudCorners;
-            const bool panel = textured && fullWidth && minY <= 16.0f && maxY >= 464.0f;
+            // A menu background covers the screen; additive sprites (light glare, flares) that
+            // happen to cover it are not one.
+            const bool additive = (R[NV097_SET_BLEND_ENABLE / 4] & 1) && (R[NV097_SET_BLEND_FUNC_DFACTOR / 4] & 0xFFFF) == NV097_SET_BLEND_FUNC_SFACTOR_V_ONE;
+            const bool panel = textured && !additive && fullWidth && minY <= 16.0f && maxY >= 464.0f;
             uiCenter = noCorners ? 0.0f : uiAnchor(minX, maxX, minY, maxY, panel);  // -1 left edge, 0 centre, 1 right edge
         }
         // Text (the glyph cache is an AY8 texture) above 480p: glyph edges are sharpened in the shader.
@@ -1681,14 +1696,27 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             fflush(cap);
         }
     }
+    VkDeviceSize io = 0;
     if (needIndex) {
         for (auto& v : seq) v -= minIdx;
-        const VkDeviceSize io = upload(seq.data(), seq.size() * 4, 4);
+        io = upload(seq.data(), seq.size() * 4, 4);
+    }
+    // Occlusion query around the draw while the zpass pixel count is enabled (see report()).
+    Frame& qf = frames_[frame_];
+    uint32_t query = ~0u;
+    if ((R[NV097_SET_ZPASS_PIXEL_COUNT_ENABLE / 4] & 1) && qf.queries && qf.queryCount < kMaxQueries && cb == qf.cmd) {
+        query = qf.queryCount++;
+        const double hostSamples = static_cast<double>(hostW(target_.w, target_.h)) * hostH(target_.h);
+        qf.queryScale.push_back(hostSamples > 0 ? static_cast<float>(static_cast<double>(target_.w) * target_.h / hostSamples) : 1.0f);
+        vkCmdBeginQuery(cb, qf.queries, query, queryPrecise_ ? VK_QUERY_CONTROL_PRECISE_BIT : 0);
+    }
+    if (needIndex) {
         vkCmdBindIndexBuffer(cb, ring, io, VK_INDEX_TYPE_UINT32);
         vkCmdDrawIndexed(cb, static_cast<uint32_t>(seq.size()), 1, 0, 0, 0);
     } else {
         vkCmdDraw(cb, count, 1, inl ? 0 : first - minIdx, 0);
     }
+    if (query != ~0u) vkCmdEndQuery(cb, qf.queries, query);
     // FABLE_CAPTURE_IMAGES=1 with FABLE_CAPTURE_FLIP: the target after each draw to the main
     // 640x480 target goes to capF_NNNN.png (debugging).
     // FABLE_CAPTURE_IMAGES=<draws>: instead, the first frame after one with more draws than that.

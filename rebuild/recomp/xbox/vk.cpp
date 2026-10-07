@@ -318,6 +318,7 @@ bool init(SDL_Window* window, const Settings& s) {
     want.depthBiasClamp = g_ctx.features.depthBiasClamp;
     want.wideLines = g_ctx.features.wideLines;
     want.textureCompressionBC = g_ctx.features.textureCompressionBC;
+    want.occlusionQueryPrecise = g_ctx.features.occlusionQueryPrecise;
     const char* dext[] = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
     VkDeviceCreateInfo dci{VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO};
     dci.queueCreateInfoCount = 1;

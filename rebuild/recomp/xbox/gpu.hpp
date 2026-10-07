@@ -37,9 +37,13 @@ public:
     virtual void inlineArray(const uint32_t* words, uint32_t n) = 0;
     virtual void arrayElements(const uint32_t* words, uint32_t n, bool sixteenBit) = 0;
     virtual void vertexAttribute(uint32_t method, uint32_t value) = 0;
-    // Pixels that passed the depth test since the last CLEAR_REPORT_VALUE (occlusion queries:
-    // Fable culls objects whose bounding box reports 0). Until real queries exist: "visible".
-    virtual uint32_t zpassCount() { return 0x10000; }
+    // Occlusion queries (ZPASS_PIXEL_CNT reports). CLEAR_REPORT_VALUE starts a count; GET_REPORT
+    // writes the 16-byte report {timestamp, count, status} at guest address `addr`. The status
+    // stays 0xFFFFFFFF (D3D's "test incomplete") until the count is known; a renderer without
+    // queries reports everything visible at once.
+    virtual void clearReport() {}
+    virtual void report(uint32_t addr);  // default (nv2a.cpp): 0x10000 pixels, complete
+    virtual void pollReports() {}  // pusher idle: finish pending reports (a guest may wait for one)
 };
 Renderer& renderer();
 

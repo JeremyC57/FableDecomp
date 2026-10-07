@@ -493,12 +493,16 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
         const uint32_t base = dmaAddress(s.regs[NV097_SET_CONTEXT_DMA_REPORT / 4], nullptr);
         const uint32_t a = kContigBase + base + (param & 0x00FFFFFF);
         wr64(a, ptimerTicks());
-        wr32(a + 8, renderer().zpassCount());
-        wr32(a + 12, 0);
+        renderer().report(a);
+        static const bool reportLog = getenv("FABLE_REPORT_LOG") != nullptr;  // debugging: report slots per flip
+        if (reportLog) XLOG(0, "report %08X flip %llu", param, static_cast<unsigned long long>(g_frameCount));
         static int n = 0;
         if (n++ < 5) XLOG(1, "NV2A report: param %08X dma %08X -> base %08X, write %08X", param, s.regs[NV097_SET_CONTEXT_DMA_REPORT / 4], base, a);
         break;
     }
+    case NV097_CLEAR_REPORT_VALUE:
+        if (param == NV097_CLEAR_REPORT_VALUE_TYPE_ZPASS_PIXEL_CNT) renderer().clearReport();
+        break;
     case NV097_CLEAR_SURFACE: renderer().clear(param); break;
     case NV097_SET_BEGIN_END:
         if (param) renderer().begin(param);
@@ -631,6 +635,7 @@ void pusherMain() {
         g_kick.wait_until(l, std::min(nextVblank, clock::now() + std::chrono::milliseconds(2)), [] { return g_kicked.load(); });
         g_kicked = false;
         runPusher();
+        if (!g_kicked) renderer().pollReports();
         // Diagnostics: work queued but no progress for a second.
         static uint32_t lastGet = 0;
         static clock::time_point since = clock::now();
@@ -656,6 +661,11 @@ void pusherMain() {
     }
 }
 }  // namespace
+
+void Renderer::report(uint32_t addr) {
+    wr32(addr + 8, 0x10000);
+    wr32(addr + 12, 0);
+}
 
 void init() {
     g_irqEoi = eoi;
