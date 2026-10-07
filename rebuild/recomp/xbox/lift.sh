@@ -11,6 +11,7 @@ exec "$LIFTER" "$XBE" - "$OUT" "$@" \
   --wrap 0x1FBF0=hle_operator_new \
   --wrap 0x851360=hle_Direct3D_CreateDevice \
   --wrap 0x5806FE=hle_CIfmod \
+  --wrap 0x132D00=hle_SetupGamut \
   --hook 0x86ED4B=hle_XInitDevices \
   --hook 0x86FFFF=hle_XGetDevices \
   --hook 0x870021=hle_XGetDeviceChanges \

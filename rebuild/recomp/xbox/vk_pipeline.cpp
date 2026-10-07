@@ -1203,10 +1203,12 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     vc.clip[0] = cmin;
     vc.clip[1] = cmax > 0 ? cmax : 16777215.0f;
     std::memcpy(vc.fog, &R[NV097_SET_FOG_PARAMS / 4], 12);
-    // Widescreen (aspect = 16:9): the game only renders 4:3; 3D draws into the back buffer
-    // (scanout-sized, perspective vertices: screen-space 2D has w = 1) get a 3/4 horizontal squeeze, the presenter stretches the
-    // frame to 16:9, so the world shows a wider view and 2D/HUD draws keep their layout.
-    vc.clip[2] = (settings().widescreen && target_.w == 640 && target_.h == 480) ? 0.75f : 1.0f;
+    // Widescreen (aspect = 16:9): the game's camera projects a 16:9 view into the 640x480 buffer
+    // (hle_SetupGamut) and the presenter stretches the frame. The old fallback (FABLE_DISABLE=hor+)
+    // squeezed perspective draws into the back buffer instead, which shows the game's 4:3 culling at
+    // the edges and misplaces effects drawn through offscreen targets.
+    static const bool squeeze = featureOff("hor+");
+    vc.clip[2] = (squeeze && settings().widescreen && target_.w == 640 && target_.h == 480) ? 0.75f : 1.0f;
     const VkDeviceSize vcOff = upload(&vc, sizeof vc, ctx().props.limits.minUniformBufferOffsetAlignment);
     struct FC { float c0[9][4]; float c1[9][4]; float fog[4]; float aref[4]; float bump[4][4]; float lum[4][4]; float texScale[4][4]; } fc{};
     auto unpack = [](uint32_t v, float* o) {
