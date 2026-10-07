@@ -9,6 +9,7 @@
 //   fullscreen       = 0 | 1
 //   vsync            = 0 | 1
 //   volume           = 0..100        master audio volume
+//   vibration        = 0 | 1         controller rumble (on Android: the phone vibrates when no pad is connected)
 #pragma once
 
 #include <string>
@@ -25,6 +26,7 @@ struct Settings {
     bool fullscreen = false;
     bool vsync = true;
     int volume = 100;
+    bool vibration = true;
 };
 
 Settings& settings();

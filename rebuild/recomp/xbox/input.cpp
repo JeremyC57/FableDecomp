@@ -5,9 +5,14 @@
 // LShift B, E X, Q Y, R Black, F White, Mouse buttons triggers... (see kKeys), Enter Start,
 // Escape Back. FABLE_AUTOPRESS=1 taps A, and Start for the first 50 s (unattended testing).
 #include "input.hpp"
+#include "settings.hpp"
 #include "xhost.hpp"
 
 #include <SDL.h>
+#ifdef __ANDROID__
+#include <SDL_system.h>
+#include <jni.h>
+#endif
 
 #include <algorithm>
 #include <atomic>
@@ -41,7 +46,27 @@ int16_t axis(SDL_GameController* c, SDL_GameControllerAxis a, bool invert) {
 uint8_t trigger(SDL_GameController* c, SDL_GameControllerAxis a) {
     return static_cast<uint8_t>(std::clamp(SDL_GameControllerGetAxis(c, a) / 128, 0, 255));
 }
+
+// The phone's own vibrator (Android, touch controls): GameActivity.vibrate(left, right).
+void phoneVibrate(uint16_t left, uint16_t right) {
+#ifdef __ANDROID__
+    JNIEnv* env = static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    jobject activity = static_cast<jobject>(SDL_AndroidGetActivity());
+    if (!env || !activity) return;
+    jclass cls = env->GetObjectClass(activity);
+    if (jmethodID m = env->GetMethodID(cls, "vibrate", "(II)V")) env->CallVoidMethod(activity, m, static_cast<jint>(left), static_cast<jint>(right));
+    if (env->ExceptionCheck()) env->ExceptionClear();
+    env->DeleteLocalRef(cls);
+    env->DeleteLocalRef(activity);
+#else
+    (void)left;
+    (void)right;
+#endif
+}
+
 }  // namespace
+
+void applyRumble();
 
 void init() {
     SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER | SDL_INIT_HAPTIC);
@@ -66,6 +91,7 @@ void handleEvent(const SDL_Event& e) {
 }
 
 void update() {
+    applyRumble();
     Pad next[4];
     for (int p = 0; p < 4; ++p) {
         SDL_GameController* c = g_ctrl[p];
@@ -238,8 +264,27 @@ void touchLook(int dx, int dy) {
     g_lookY = std::clamp(g_lookY + dy / 40.0f, -1.0f, 1.0f);
 }
 
+// XInputSetState sets motor speeds that hold until the next call; SDL rumble has a duration,
+// so the video thread (applyRumble, from update) renews it while the motors run.
+std::atomic<uint32_t> g_rumble[4];  // left << 16 | right
+
 void rumble(int port, uint16_t left, uint16_t right) {
-    if (port >= 0 && port < 4 && g_ctrl[port]) SDL_GameControllerRumble(g_ctrl[port], left, right, 250);
+    if (port >= 0 && port < 4) g_rumble[port] = static_cast<uint32_t>(left) << 16 | right;
+}
+
+void applyRumble() {
+    static uint32_t applied[4];
+    static uint32_t renewedAt[4];
+    const uint32_t now = SDL_GetTicks();
+    for (int p = 0; p < 4; ++p) {
+        const uint32_t v = settings().vibration ? g_rumble[p].load() : 0;
+        if (v == applied[p] && (v == 0 || now - renewedAt[p] < 500)) continue;
+        applied[p] = v;
+        renewedAt[p] = now;
+        const uint16_t left = static_cast<uint16_t>(v >> 16), right = static_cast<uint16_t>(v);
+        if (g_ctrl[p]) SDL_GameControllerRumble(g_ctrl[p], left, right, v ? 1000 : 0);
+        else if (p == 0) phoneVibrate(left, right);
+    }
 }
 
 } // namespace xb::input

@@ -1,6 +1,9 @@
 package org.fablexbox;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.system.Os;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -38,6 +41,22 @@ public class GameActivity extends SDLActivity {
             touch = new TouchControls(this, getIntent().getBooleanExtra("touch", true));
             mLayout.addView(touch, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         }
+    }
+
+    /**
+     * Called from native code (input.cpp) with the game's XInput motor speeds (0..65535) when no
+     * game controller is connected; renewed about every 500 ms while the motors run, 0/0 stops.
+     */
+    public void vibrate(int left, int right) {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (v == null || !v.hasVibrator()) return;
+        int speed = Math.max(left, right);
+        if (speed == 0) {
+            v.cancel();
+            return;
+        }
+        int amplitude = v.hasAmplitudeControl() ? Math.max(1, Math.min(255, speed / 257)) : VibrationEffect.DEFAULT_AMPLITUDE;
+        v.vibrate(VibrationEffect.createOneShot(700, amplitude));
     }
 
     @Override

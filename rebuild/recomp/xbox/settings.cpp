@@ -42,6 +42,7 @@ void loadSettings(const std::string& path) {
         else if (k == "volume") s.volume = std::clamp(n, 0, 100);
         else if (k == "fullscreen") s.fullscreen = n != 0;
         else if (k == "vsync") s.vsync = n != 0;
+        else if (k == "vibration") s.vibration = n != 0;
     }
     XLOG(1, "settings: scale %dx, %s, %d fps, anisotropy %dx%s%s", s.resolutionScale, s.widescreen ? "16:9" : "4:3", s.fps, s.anisotropy,
          s.pcTextures.empty() ? "" : ", PC textures", s.vulkanDriver.empty() ? "" : ", custom Vulkan driver");

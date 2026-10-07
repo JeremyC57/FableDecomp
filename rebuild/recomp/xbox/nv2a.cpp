@@ -355,12 +355,24 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
         ++g_frameCount;
         // FABLE_SCAN=<hex word>@<flip>: log every guest RAM address holding that word (debug).
         if (static const char* scan = getenv("FABLE_SCAN"); scan) {
-            const uint32_t want = static_cast<uint32_t>(strtoul(scan, nullptr, 16));
+            // A comma-separated list matches consecutive words.
+            uint32_t want[8];
+            int nw = 0;
+            for (const char* q = scan; nw < 8;) {
+                want[nw++] = static_cast<uint32_t>(strtoul(q, nullptr, 16));
+                const char* comma = strchr(q, ',');
+                const char* at0 = strchr(q, '@');
+                if (!comma || (at0 && comma > at0)) break;
+                q = comma + 1;
+            }
             const char* at = strchr(scan, '@');
             if (at && g_frameCount == strtoull(at + 1, nullptr, 10)) {
                 int n = 0;
-                for (uint32_t a = 0x10000; a < 0x4000000 && n < 200; a += 4)
-                    if (rd32(a) == want) { XLOG(0, "scan %08X at %08X", want, a); ++n; }
+                for (uint32_t a = 0x10000; a < 0x4000000 - 32 && n < 200; a += 4) {
+                    int k = 0;
+                    while (k < nw && rd32(a + 4 * k) == want[k]) ++k;
+                    if (k == nw) { XLOG(0, "scan %08X at %08X", want[0], a); ++n; }
+                }
             }
         }
         // FABLE_DUMP=<hex addr>,<words>@<flip>: log guest words as hex and float (debug).

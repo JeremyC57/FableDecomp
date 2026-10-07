@@ -56,7 +56,7 @@ public class LauncherActivity extends Activity {
     private SharedPreferences prefs;
     private EditText pcFolder;
     private TextView gameStatus;
-    private Switch touch;
+    private Switch touch, vibration;
     private Spinner driver, scale, aspect, fps, aniso;
     private SeekBar volume;
     private List<String> drivers;
@@ -144,6 +144,11 @@ public class LauncherActivity extends Activity {
         touch.setChecked(prefs.getBoolean("touch", true));
         touch.setPadding(0, dp(12), 0, 0);
         col.addView(touch);
+        vibration = new Switch(this);
+        vibration.setText("Vibration (controller rumble, or the phone when using touch controls)");
+        vibration.setChecked(prefs.getBoolean("vibration", true));
+        vibration.setPadding(0, dp(12), 0, 0);
+        col.addView(vibration);
 
         Button start = button("Start game", this::start);
         start.setTextSize(20);
@@ -355,6 +360,7 @@ public class LauncherActivity extends Activity {
         prefs.edit()
             .putString("pcDir", pcFolder.getText().toString().trim())
             .putBoolean("touch", touch.isChecked())
+            .putBoolean("vibration", vibration.isChecked())
             .putString("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)))
             .putString("scale", selected(scale, SCALES))
             .putString("aspect", selected(aspect, ASPECTS))
@@ -375,6 +381,7 @@ public class LauncherActivity extends Activity {
             w.write("anisotropy = " + selected(aniso, ANISO) + "\n");
             w.write("pc_textures = " + pcFolder.getText().toString().trim() + "\n");
             w.write("volume = " + volume.getProgress() + "\n");
+            w.write("vibration = " + (vibration.isChecked() ? 1 : 0) + "\n");
             w.write("fullscreen = 1\n");
             w.write("vsync = 1\n");
         }

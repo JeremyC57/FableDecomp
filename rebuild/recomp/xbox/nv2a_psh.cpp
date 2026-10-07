@@ -9,6 +9,7 @@
 #include "nv2a_methods.h"
 #include "xhost.hpp"
 
+#include <cstdlib>
 #include <string>
 
 namespace xb::gpu {
@@ -136,7 +137,8 @@ std::string translateCombiners(const State& s, CombinerInfo* info, uint32_t shad
                 // The texture format says how deep the surface is: Z16 shadow maps (0x2C/0x30) hold
                 // 0..65535, Z24 (0x2A/0x2E, e.g. the main depth buffer) 0..16777215.
                 const uint32_t color = (R[NV097_SET_TEXTURE_FORMAT / 4 + i * 16] >> 8) & 0xFF;
-                const bool z16 = color == 0x2C || color == 0x2D || color == 0x30 || color == 0x31;
+                static const bool forceZ24 = getenv("FABLE_SHADOW_Z24") != nullptr;  // A/B: the old (always Z24) compare
+                const bool z16 = !forceZ24 && (color == 0x2C || color == 0x2D || color == 0x30 || color == 0x31);
                 const std::string maxZ = z16 ? "65535.0" : "16777215.0";
                 code += "  float " + t + "d = textureProj(" + smp + ", " + tc2 + ".xyw).r * " + maxZ + ";\n";
                 const std::string z = mode == 2 ? "clamp(" + tc + ".z / " + tc + ".w, 0.0, " + maxZ + ")" : "0.0";
