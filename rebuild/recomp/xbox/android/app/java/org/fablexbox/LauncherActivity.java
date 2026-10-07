@@ -45,10 +45,12 @@ public class LauncherActivity extends Activity {
     static final String PREFS = "launcher";
     private static final int PICK_ISO = 1, PICK_DRIVER = 2, PERMISSION = 3, PICK_PC = 4;
 
-    private static final String[] SCALES = {"1", "2", "3", "4"};
-    private static final String[] SCALE_NAMES = {"1x (640x480, original)", "2x (1280x960)", "3x (1920x1440)", "4x (2560x1920)"};
-    // 16:9 renders natively wider (rebuild/recomp/xbox/vk_renderer.hpp hostW).
-    private static final String[] SCALE_NAMES_WIDE = {"1x (853x480)", "2x (1707x960)", "3x (2560x1440)", "4x (3413x1920)"};
+    // Render height (settings.hpp: resolution); the width follows the aspect ratio.
+    private static final String[] RES = {"480", "720", "900", "1080", "1440", "2160"};
+    private static final String[] RES_NAMES = {"640x480 (original)", "960x720", "1200x900", "1440x1080", "1920x1440", "2880x2160"};
+    private static final String[] RES_NAMES_WIDE = {"854x480", "1280x720 (720p)", "1600x900", "1920x1080 (1080p)", "2560x1440 (1440p)", "3840x2160 (4K)"};
+    private static final String[] DRAW = {"1", "2", "3", "4"};
+    private static final String[] DRAW_NAMES = {"Original (objects pop in close)", "Far (2x)", "Very far (3x)", "Maximum (4x, slowest)"};
     private static final String[] ASPECTS = {"4:3", "16:9"};
     private static final String[] ASPECT_NAMES = {"4:3 (original)", "16:9 widescreen"};
     private static final String[] FPS = {"30", "60"};
@@ -59,8 +61,8 @@ public class LauncherActivity extends Activity {
     private SharedPreferences prefs;
     private EditText pcFolder;
     private TextView gameStatus;
-    private Switch touch, vibration;
-    private Spinner driver, scale, aspect, fps, aniso;
+    private Switch touch, vibration, usePc;
+    private Spinner driver, scale, aspect, fps, aniso, draw;
     private SeekBar volume;
     private List<String> drivers;
 
@@ -92,7 +94,10 @@ public class LauncherActivity extends Activity {
         }));
 
         col.addView(heading("Graphics"));
-        scale = spinner(SCALE_NAMES, SCALES, prefs.getString("scale", "1"));
+        String res = prefs.getString("res", null);
+        if (res == null) res = String.valueOf(480 * Integer.parseInt(prefs.getString("scale", "1")));  // older launchers kept a scale
+        if (java.util.Arrays.asList(RES).indexOf(res) < 0) res = "960".equals(res) ? "900" : res.equals("1920") ? "1440" : "480";
+        scale = spinner("16:9".equals(prefs.getString("aspect", "4:3")) ? RES_NAMES_WIDE : RES_NAMES, RES, res);
         col.addView(label("Render resolution"));
         col.addView(scale);
         aspect = spinner(ASPECT_NAMES, ASPECTS, prefs.getString("aspect", "4:3"));
@@ -103,7 +108,7 @@ public class LauncherActivity extends Activity {
             public void onItemSelected(android.widget.AdapterView<?> parent, View view, int pos, long id) {
                 int keep = scale.getSelectedItemPosition();
                 ArrayAdapter<String> ad = new ArrayAdapter<>(LauncherActivity.this, android.R.layout.simple_spinner_item,
-                    "16:9".equals(ASPECTS[pos]) ? SCALE_NAMES_WIDE : SCALE_NAMES);
+                    "16:9".equals(ASPECTS[pos]) ? RES_NAMES_WIDE : RES_NAMES);
                 ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 scale.setAdapter(ad);
                 scale.setSelection(Math.max(0, keep));
@@ -118,8 +123,15 @@ public class LauncherActivity extends Activity {
         aniso = spinner(ANISO_NAMES, ANISO, prefs.getString("aniso", "1"));
         col.addView(label("Anisotropic filtering"));
         col.addView(aniso);
+        draw = spinner(DRAW_NAMES, DRAW, prefs.getString("draw", "2"));
+        col.addView(label("Draw distance"));
+        col.addView(draw);
 
         col.addView(heading("High-quality textures from the PC version (optional)"));
+        usePc = new Switch(this);
+        usePc.setText("Use PC textures from the folder below");
+        usePc.setChecked(prefs.getBoolean("usePc", true));
+        col.addView(usePc);
         pcFolder = textField(prefs.getString("pcDir", ""));
         pcFolder.setHint("PC install folder (contains Fable.exe); empty: Xbox textures");
         col.addView(pcFolder);
@@ -379,7 +391,9 @@ public class LauncherActivity extends Activity {
             .putBoolean("touch", touch.isChecked())
             .putBoolean("vibration", vibration.isChecked())
             .putString("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)))
-            .putString("scale", selected(scale, SCALES))
+            .putString("res", selected(scale, RES))
+            .putString("draw", selected(draw, DRAW))
+            .putBoolean("usePc", usePc.isChecked())
             .putString("aspect", selected(aspect, ASPECTS))
             .putString("fps", selected(fps, FPS))
             .putString("aniso", selected(aniso, ANISO))
@@ -392,11 +406,12 @@ public class LauncherActivity extends Activity {
         File ini = new File(dataDir(this), "fable_xbox.ini");
         try (FileWriter w = new FileWriter(ini)) {
             w.write("# written by the launcher\n");
-            w.write("resolution_scale = " + selected(scale, SCALES) + "\n");
+            w.write("resolution = " + selected(scale, RES) + "\n");
+            w.write("draw_distance = " + selected(draw, DRAW) + "\n");
             w.write("aspect = " + selected(aspect, ASPECTS) + "\n");
             w.write("fps = " + selected(fps, FPS) + "\n");
             w.write("anisotropy = " + selected(aniso, ANISO) + "\n");
-            w.write("pc_textures = " + pcFolder.getText().toString().trim() + "\n");
+            w.write("pc_textures = " + (usePc.isChecked() ? pcFolder.getText().toString().trim() : "") + "\n");
             w.write("volume = " + volume.getProgress() + "\n");
             w.write("vibration = " + (vibration.isChecked() ? 1 : 0) + "\n");
             w.write("fullscreen = 1\n");
@@ -422,7 +437,7 @@ public class LauncherActivity extends Activity {
             return;
         }
         // Only the optional PC texture folder is read in place, from shared storage.
-        if (!pcFolder.getText().toString().trim().isEmpty() && !hasStorageAccess()) {
+        if (usePc.isChecked() && !pcFolder.getText().toString().trim().isEmpty() && !hasStorageAccess()) {
             requestStorageAccess();
             return;
         }

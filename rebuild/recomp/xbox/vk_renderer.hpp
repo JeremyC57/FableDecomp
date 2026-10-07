@@ -99,15 +99,19 @@ private:
     bool pipeCacheDirty_ = false;
     void savePipelineCache();
 
-    int scale_ = 1;
-    bool wide_ = false;  // aspect = 16:9: screen-sized (640x480) surfaces get a 4:3-wider host image
-    // Host size of a guest surface: resolution scale, and native 16:9 width for 640x480 surfaces
-    // (the game draws in 640x480 coordinates; the viewport maps them onto the wider image).
+    // Render resolution: the screen-sized (640x480) surfaces become outW_ x outH_ (e.g. 1920x1080
+    // at 16:9, 1440x1080 at 4:3); every other surface is scaled by outH_ / 480.
+    uint32_t outW_ = 640, outH_ = 480;
+    double scaleY_ = 1.0;
+    bool wide_ = false;
     uint32_t hostW(uint32_t w, uint32_t h) const {
-        const uint32_t s = static_cast<uint32_t>(scale_);
-        return wide_ && w == 640 && h == 480 ? (w * s * 4 + 1) / 3 : w * s;
+        if (w == 640 && h == 480) return outW_;
+        return std::max(1u, static_cast<uint32_t>(w * scaleY_ + 0.5));
     }
-    uint32_t hostH(uint32_t h) const { return h * static_cast<uint32_t>(scale_); }
+    uint32_t hostH(uint32_t h) const {
+        if (h == 480) return outH_;
+        return std::max(1u, static_cast<uint32_t>(h * scaleY_ + 0.5));
+    }
     VkFormat depthFormat_ = VK_FORMAT_D24_UNORM_S8_UINT;
     VkCommandPool pool_ = VK_NULL_HANDLE;
     std::array<Frame, 2> frames_;

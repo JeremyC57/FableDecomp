@@ -46,8 +46,10 @@ VkFormat colorFormatOf(uint32_t surfaceFormat) {
 // ============================================================================================
 VkRenderer::VkRenderer() {
     VkDevice dev = ctx().device;
-    scale_ = std::clamp(settings().resolutionScale, 1, 4);
     wide_ = settings().widescreen;
+    outH_ = static_cast<uint32_t>(settings().resolution ? settings().resolution : 480 * std::clamp(settings().resolutionScale, 1, 4));
+    outW_ = wide_ ? (((outH_ * 16 + 8) / 9) + 1) & ~1u : outH_ * 4 / 3;  // 854x480, 1280x720, 1920x1080 / 960x720, 1440x1080
+    scaleY_ = outH_ / 480.0;
     // Depth format: D24S8 where supported (most desktop), else D32S8 (some mobile).
     depthFormat_ = VK_FORMAT_D24_UNORM_S8_UINT;
     VkFormatProperties fp;
@@ -80,7 +82,7 @@ VkRenderer::VkRenderer() {
     }
     initPipelineObjects();
     beginFrame();
-    XLOG(1, "Vulkan renderer: %dx resolution, depth %s", scale_, depthFormat_ == VK_FORMAT_D24_UNORM_S8_UINT ? "D24S8" : "D32S8");
+    XLOG(1, "Vulkan renderer: %ux%u, depth %s", outW_, outH_, depthFormat_ == VK_FORMAT_D24_UNORM_S8_UINT ? "D24S8" : "D32S8");
 }
 
 VkRenderer::Buffer VkRenderer::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags props) {
@@ -368,8 +370,10 @@ void VkRenderer::clear(uint32_t flags) {
     const uint32_t fw = hostW(target_.w, target_.h), fh = hostH(target_.h);
     const double sx = target_.w ? static_cast<double>(fw) / target_.w : 1.0;
     const int hx0 = static_cast<int>(x0 * sx), hx1 = static_cast<int>((x1 + 1) * sx);
-    rect.rect.offset = {hx0, y0 * scale_};
-    rect.rect.extent = {static_cast<uint32_t>(std::max(0, hx1 - hx0)), static_cast<uint32_t>((y1 - y0 + 1) * scale_)};
+    const double sy = target_.h ? static_cast<double>(fh) / target_.h : 1.0;
+    const int hy0 = static_cast<int>(y0 * sy), hy1 = static_cast<int>((y1 + 1) * sy);
+    rect.rect.offset = {hx0, hy0};
+    rect.rect.extent = {static_cast<uint32_t>(std::max(0, hx1 - hx0)), static_cast<uint32_t>(std::max(0, hy1 - hy0))};
     rect.layerCount = 1;
     if (rect.rect.offset.x + rect.rect.extent.width > fw) rect.rect.extent.width = fw - std::min<uint32_t>(fw, rect.rect.offset.x);
     if (rect.rect.offset.y + rect.rect.extent.height > fh) rect.rect.extent.height = fh - std::min<uint32_t>(fh, rect.rect.offset.y);

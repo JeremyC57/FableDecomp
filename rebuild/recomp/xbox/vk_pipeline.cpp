@@ -1207,16 +1207,18 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         minIdx = 0;
     }
     // 16:9 (native width): the game lays out screen-space elements (HUD, menus, text, movies) in
-    // 640x480, which the wider image would stretch. Small screen-space draws (every vertex at w = 1,
-    // depth test off, not sampling a render target, not a full-screen untextured fade) are narrowed
-    // by 3/4 about their own centre: same place on screen, true proportions; full-screen 4:3 images
-    // become pillarboxed. Classified by running the vertex program on the CPU. FABLE_DISABLE=uifix.
+    // 640x480, which the wider image would stretch. Screen-space draws (every vertex at w = 1, depth
+    // test off, not sampling a render target, not a full-screen untextured fade) are drawn into the
+    // centred 4:3 area: the whole interface keeps its 4:3 layout and proportions (narrowing each
+    // element about its own centre split menus built from several quads); full-screen 4:3 images
+    // become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
+    // decides whether a draw is screen-space at all). FABLE_DISABLE=uifix.
     float uiScale = 1.0f, uiCenter = 0.0f;
     static const bool noUiFix = featureOff("uifix");
-    if (wide_ && !noUiFix && target_.w == 640 && target_.h == 480 && inlStride != 0xFFFFFFFF &&
+    if (wide_ && !noUiFix && target_.w == 640 && target_.h == 480 &&
         (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2 && !(R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1)) {
         const uint32_t nv = needIndex ? static_cast<uint32_t>(seq.size()) : count;
-        bool flat = nv > 0 && nv <= 64, textured = false, effect = false;
+        bool flat = nv > 0 && nv <= 4096, textured = false, effect = false;
         for (int i = 0; i < 4 && flat; ++i) {
             if (!(R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30))) continue;
             textured = true;
@@ -1229,7 +1231,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         for (uint32_t k = 0; k < nv && flat && !effect; ++k) {
             const uint32_t rel = (needIndex ? seq[k] : first + k) - minIdx;
             float v[16][4];
-            for (int i = 0; i < 16; ++i) {
+            if (inlStride == 0xFFFFFFFF) {  // immediate mode: 16 float vec4s per vertex, in order
+                std::memcpy(v, inl + static_cast<size_t>(needIndex ? seq[k] : k) * 256, sizeof v);
+            } else for (int i = 0; i < 16; ++i) {
                 std::memcpy(v[i], attrib_[i], 16);
                 if (!((mask >> i) & 1) || !src[i]) continue;
                 const uint32_t type = fmts[i] & 0xF, size = (fmts[i] >> 4) & 0xF;
@@ -1256,7 +1260,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         const bool fullWidth = minX <= 4.0f && maxX >= 636.0f;
         if (flat && !effect && !(fullWidth && !textured)) {
             uiScale = 0.75f;
-            uiCenter = (minX + maxX) / 640.0f - 1.0f;  // the element's centre in clip space
+            uiCenter = 0.0f;  // the screen centre
         }
     }
     if (inlStride != 0xFFFFFFFF)

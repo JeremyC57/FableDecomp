@@ -3,6 +3,7 @@
 //   \Device\Harddisk0\PartitionN   -> <hdd>/PartitionN (1 = E: user data, 3-5 = cache)
 //   \??\X:  (or \DosDevices\X:)    -> symbolic links created by XAPI / the kernel
 // FATX names are case-insensitive: each path component is matched without case.
+#include "settings.hpp"
 #include "xhost.hpp"
 
 #include <algorithm>
@@ -58,6 +59,50 @@ std::string applyLinks(std::string p) {
         if (!changed) break;
     }
     return p;
+}
+
+// The disc's xuser.ini sets the draw distances (SetMaxAnimatedMeshDist(64),
+// SetMaxStaticMeshDist(128), MaxThingDrawDist 128: meshes pop in and out at those ranges). With
+// draw_distance > 1 the game reads a copy (in the cache folder) with the numbers multiplied.
+std::string patchedUserIni(const std::string& orig) {
+    const float k = settings().drawDistance;
+    const char* cache = getenv("FABLE_CACHE_DIR");
+    if (k <= 1.0f || !cache) return orig;
+    FILE* in = fopen(orig.c_str(), "rb");
+    if (!in) return orig;
+    std::string text;
+    char buf[4096];
+    size_t n;
+    while ((n = fread(buf, 1, sizeof buf, in)) > 0) text.append(buf, n);
+    fclose(in);
+    std::string out;
+    size_t pos = 0;
+    while (pos < text.size()) {
+        size_t eol = text.find('\n', pos);
+        if (eol == std::string::npos) eol = text.size(); else ++eol;
+        std::string line = text.substr(pos, eol - pos);
+        pos = eol;
+        if (line.find("MaxAnimatedMeshDist") != std::string::npos || line.find("MaxStaticMeshDist") != std::string::npos ||
+            line.find("MaxThingDrawDist") != std::string::npos) {
+            const size_t d = line.find_first_of("0123456789");
+            if (d != std::string::npos) {
+                size_t e = d;
+                while (e < line.size() && (isdigit(static_cast<unsigned char>(line[e])) || line[e] == '.')) ++e;
+                const int v = static_cast<int>(atof(line.substr(d, e - d).c_str()) * k + 0.5f);
+                line = line.substr(0, d) + std::to_string(v) + line.substr(e);
+            }
+        }
+        out += line;
+    }
+    const std::string path = std::string(cache) + "/xuser.ini";
+    if (FILE* f = fopen(path.c_str(), "wb")) {
+        fwrite(out.data(), 1, out.size(), f);
+        fclose(f);
+        static bool logged = false;
+        if (!logged) { logged = true; XLOG(1, "files: xuser.ini draw distances x%g", k); }
+        return path;
+    }
+    return orig;
 }
 
 // Object path -> host path (or empty if no device matches). `ro` set for the disc.
@@ -124,6 +169,10 @@ std::string toHost(const std::string& object, bool& ro, int* volume = nullptr) {
             }
         }
         cur = cand;
+    }
+    if (ro) {
+        const size_t slash = cur.rfind('/');
+        if (strcasecmp(cur.c_str() + (slash == std::string::npos ? 0 : slash + 1), "xuser.ini") == 0) return patchedUserIni(cur);
     }
     return cur;
 }
