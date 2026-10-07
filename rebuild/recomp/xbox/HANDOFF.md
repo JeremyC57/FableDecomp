@@ -89,15 +89,21 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
 - Shadow maps: Z16 clears decode as Z16, AA shadow targets are not split; A/B against
   `FABLE_SHADOW_Z24=1` shows no brightness change.
 
+- 60 fps: the game sets its own present interval from the region's LockToFrameRate via
+  SetTargetFrameRate (0x3F700, n = ceil(refresh / fps), D3D state 0x862494, frame period
+  +0x1C4); 0x3F820 forces n in some modes. Both wrapped (hle.cpp). The game loop
+  (CMainGameComponent::Run 0x1F4F90) renders every pass, simulation = 15 server turns/s on real
+  time with render interpolation, so 60 fps keeps game speed. The Sleep(1) loop at 0x3C420 is
+  the XMV movie player (30 fps content). `FABLE_WAIT_LOG=1` profiles kernel waits by call site.
+- Android quick menu (`QuickMenu.java`, swipe from the left edge): FPS counter (`perfStats`),
+  runtime toggles (vibration, `hud_corners`, `text_sharpen`), 15 s profile to `<data>/profile.txt`
+  (offsets into libmain.so; resolve with `llvm-nm -n` on the unstripped build-xbox/libmain.so).
+
 ## Next
 1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
    Vulkan queries); dot-product texture modes; fixed-function T&L.
 2. Launcher settings. Done: resolution scale, anisotropy, widescreen (anamorphic 3D
    squeeze + 16:9 present; `vk_pipeline.cpp`), custom Vulkan driver, volume. To do:
-   - 60 fps: the game already presents with ONE_OR_IMMEDIATE (0x80000001; the wrap of
-     Direct3D_CreateDevice forces ONE), yet runs a measured 30.0 flips/s: Fable is a 30 Hz
-     game (a fixed 1/30 s step at 0x910EC4/0x9190DC, ~10 users, plus its own limiter).
-     60 fps means halving that step consistently and finding the limiter.
 3. Android: `android/build_android.sh` builds the APK (launcher, touch controls, custom
    drivers). Not yet tested on a device.
 4. Movies: frame presentation through the renderer works; check A/V sync.
