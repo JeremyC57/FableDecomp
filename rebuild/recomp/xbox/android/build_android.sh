@@ -7,6 +7,7 @@
 # <work>/sdk, with platforms;android-34 and build-tools;35.0.0), a JDK, cmake, ninja, git, curl.
 # It downloads SDL2 2.30.9 and libadrenotools into the work directory. No game data goes into the
 # APK: the user extracts their own disc and picks the folder in the launcher.
+# The lifted code is built at -O2 (FABLE_GEN_OPT overrides): movies decode ~5x faster than at -O1.
 # Output: <work>/FableXbox.apk
 set -euo pipefail
 WORK=$(realpath "$1"); GEN=$(realpath "$2")
@@ -42,7 +43,8 @@ fi
 
 # ---- the game: libmain.so ------------------------------------------------------------------------
 PKG_CONFIG_LIBDIR=$PREFIX/lib/pkgconfig cmake -S "$HERE/.." -B build-xbox "${CMAKE_ANDROID[@]}" -DANDROID_STL=c++_static \
-  -DFABLE_GEN_DIR="$GEN" -DADRENOTOOLS_DIR=$WORK/libadrenotools -DADRENOTOOLS_BUILD=$WORK/build-adreno \
+  -DFABLE_GEN_DIR="$GEN" -DFABLE_GEN_OPT="${FABLE_GEN_OPT:--O2}" \
+  -DADRENOTOOLS_DIR=$WORK/libadrenotools -DADRENOTOOLS_BUILD=$WORK/build-adreno \
   -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=BOTH -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
   ${FABLE_GLSLANG_DIR:+-DFABLE_GLSLANG_DIR=$FABLE_GLSLANG_DIR}
 ninja -C build-xbox
