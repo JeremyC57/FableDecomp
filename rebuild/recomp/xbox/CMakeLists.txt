@@ -21,7 +21,7 @@ target_include_directories(fable_xbox_gen PRIVATE ${RUNTIME_DIR} ${FABLE_GEN_DIR
 set(FABLE_GEN_OPT "-O1" CACHE STRING "Optimisation flag for the lifted code")
 target_compile_options(fable_xbox_gen PRIVATE ${FABLE_GEN_OPT} -fsigned-char -ffp-contract=off -fno-strict-aliasing -w)
 
-set(HOST_SOURCES core.cpp memory.cpp kernel.cpp files.cpp disc.cpp profiler.cpp xc.cpp main.cpp hle.cpp audio.cpp coro.cpp settings.cpp
+set(HOST_SOURCES core.cpp memory.cpp kernel.cpp files.cpp disc.cpp profiler.cpp xc.cpp main.cpp hle.cpp xmv.cpp audio.cpp coro.cpp settings.cpp
     nv2a.cpp soft_renderer.cpp video.cpp vk.cpp input.cpp
     vk_renderer.cpp vk_pipeline.cpp nv2a_vsh.cpp nv2a_psh.cpp nv2a_texture.cpp)
 list(TRANSFORM HOST_SOURCES PREPEND ${CMAKE_CURRENT_SOURCE_DIR}/)
