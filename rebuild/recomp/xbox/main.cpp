@@ -124,6 +124,7 @@ int main(int argc, char** argv) {
     if (hdd.empty()) hdd = game + "/../xbox_hdd";
     // <hdd>/../fable_xbox.ini, computed lexically: the hdd folder may not exist yet.
     loadSettings(config.empty() ? (std::filesystem::path(hdd).lexically_normal().parent_path() / "fable_xbox.ini").string() : config);
+    profilerStart();
     if (!std::filesystem::is_directory(game)) {
         // A disc image: extract the game files once (to --extract-to, default <hdd>/../game), run from there.
         if (extractTo.empty()) extractTo = (std::filesystem::path(hdd).lexically_normal().parent_path() / "game").string();

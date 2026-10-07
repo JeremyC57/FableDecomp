@@ -43,6 +43,15 @@ public:
 };
 Renderer& renderer();
 
+// The video DAC's colour lookup table (the gamma ramp D3DDevice_SetGammaRamp loads through the
+// VGA DAC ports PRMDIO 0x3C8/0x3C9): [entry][r, g, b]. The presenter applies it to the scanout.
+struct Gamma {
+    uint8_t lut[256][3];
+    uint32_t generation = 0;  // bumped when an entry changes
+    bool identity = true;
+};
+const Gamma& gamma();
+
 void init();
 uint32_t mmioRead(uint32_t a, int size);
 void mmioWrite(uint32_t a, uint32_t v, int size);

@@ -42,6 +42,12 @@ bool g_irqLine = false;
 
 bool g_waitNop = false, g_waitCtx = false, g_waitFlip = false;
 uint32_t g_coreClockHz = 233333324;
+Gamma g_gamma = [] {
+    Gamma g;
+    for (int i = 0; i < 256; ++i) g.lut[i][0] = g.lut[i][1] = g.lut[i][2] = static_cast<uint8_t>(i);
+    return g;
+}();
+uint32_t g_dacIndex = 0;  // entry * 3 + component
 uint32_t g_ptNum = 1, g_ptDen = 1;
 }  // namespace
 uint64_t g_frameCount = 0;  // flips (also the input script clock, FABLE_INPUT_FRAMES)
@@ -112,6 +118,7 @@ void kick() {
 }  // namespace
 
 State& state() { return g_state; }
+const Gamma& gamma() { return g_gamma; }
 
 void surfaces2d(uint32_t method, uint32_t param) {
     switch (method) {
@@ -204,6 +211,25 @@ uint32_t mmioRead(uint32_t a, int size) {
 void mmioWrite(uint32_t a, uint32_t v, int size) {
     const uint32_t off = a - kMmio;
     std::lock_guard<std::mutex> l(g_dev);
+    if (off >= 0x6813C8 && off <= 0x6813C9 && (size == 1 || size == 2)) {  // PRMDIO: VGA DAC write index / data
+        for (int b = 0; b < size; ++b) {
+            const uint32_t port = off + b, byte = (v >> (8 * b)) & 0xFF;
+            if (port == 0x6813C8) g_dacIndex = byte * 3;
+            else if (port == 0x6813C9) {
+                uint8_t& e = g_gamma.lut[(g_dacIndex / 3) & 0xFF][g_dacIndex % 3];
+                if (e != byte) {
+                    e = static_cast<uint8_t>(byte);
+                    ++g_gamma.generation;
+                    bool id = true;
+                    for (int i = 0; i < 256 && id; ++i) id = g_gamma.lut[i][0] == i && g_gamma.lut[i][1] == i && g_gamma.lut[i][2] == i;
+                    if (g_gamma.identity != id || g_gamma.generation == 1) XLOG(1, "NV2A: gamma ramp %s", id ? "identity" : "set");
+                    g_gamma.identity = id;
+                }
+                g_dacIndex = (g_dacIndex + 1) % (256 * 3);
+            }
+        }
+        return;
+    }
     if (size != 4) {  // sub-word writes: merge into the register
         const uint32_t shift = (off & 3) * 8, m = (size == 1 ? 0xFFu : 0xFFFFu) << shift;
         v = (R(off & ~3u) & ~m) | ((v << shift) & m);
@@ -374,6 +400,17 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
                     if (k == nw) { XLOG(0, "scan %08X at %08X", want[0], a); ++n; }
                 }
             }
+        }
+        // FABLE_GAMMA_PROBE: log the D3D device's gamma ramp every 300 flips (debug).
+        if (getenv("FABLE_GAMMA_PROBE") && g_frameCount % 300 == 0) {
+            const uint32_t dev = rd32(0x862288), base = dev + 0x1C28;
+            const uint32_t idx = rd32(base + 0x7E4) & 1, ramp = base + 0x1DC + idx * 0x300;
+            char line[256];
+            int n = 0;
+            for (int i = 0; i < 256; i += 32)
+                n += snprintf(line + n, sizeof line - n, " %d:%u/%u/%u", i, rd8(ramp + i), rd8(ramp + 256 + i), rd8(ramp + 512 + i));
+            XLOG(0, "gamma probe flip %llu dev %08X idx %u pending %u/%u%s", static_cast<unsigned long long>(g_frameCount), dev, idx,
+                 rd32(base + 0x7DC), rd32(base + 0x7E0), line);
         }
         // FABLE_DUMP=<hex addr>,<words>@<flip>: log guest words as hex and float (debug).
         if (static const char* dump = getenv("FABLE_DUMP"); dump) {
