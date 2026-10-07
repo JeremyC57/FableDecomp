@@ -1448,6 +1448,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             if (i == 0 && (findSurface(taddr, false) || findSurface(taddr, true))) effect = true;
         }
         float minX = 1e30f, maxX = -1e30f, maxZ = -1e30f, minY = 1e30f, maxY = -1e30f;
+        float minA = 1e30f, maxA = -1e30f;  // vertex diffuse alpha (input register 3)
         for (uint32_t k = 0; k < nv && flat && !effect; ++k) {
             const uint32_t rel = (needIndex ? seq[k] : first + k) - minIdx;
             float v[16][4];
@@ -1473,6 +1474,8 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             }
             float pos[4];
             evalVertexPosition(st.program, R[NV097_SET_TRANSFORM_PROGRAM_START / 4], st.constants, v, pos);
+            minA = std::min(minA, v[3][3]);
+            maxA = std::max(maxA, v[3][3]);
             if (!(std::fabs(pos[3] - 1.0f) <= 1e-5f) || !std::isfinite(pos[0])) flat = false;
             maxZ = std::max(maxZ, pos[2]);
             minX = std::min(minX, pos[0]);
@@ -1509,6 +1512,10 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             // bars like the menus that draw their own. FABLE_DISABLE=sidebars.
             static const bool noBars = featureOff("sidebars");
             if (panel && uiCenter == 0.0f && !noBars) sideBars = (R[NV097_SET_BLEND_ENABLE / 4] & 1) ? 2 : 1;
+            if (panel && getenv("FABLE_UI_LOG"))  // debugging: what each full-screen panel is
+                XLOG(0, "UI panel flip %llu: tex %08X fmt %08X rect %08X blend %u %04X/%04X alpha %.3f..%.3f comb %08X", static_cast<unsigned long long>(g_frameCount),
+                     static_cast<uint32_t>(tex0 >> 32), R[NV097_SET_TEXTURE_FORMAT / 4], R[NV097_SET_TEXTURE_IMAGE_RECT / 4], R[NV097_SET_BLEND_ENABLE / 4] & 1,
+                     R[NV097_SET_BLEND_FUNC_SFACTOR / 4] & 0xFFFF, R[NV097_SET_BLEND_FUNC_DFACTOR / 4] & 0xFFFF, minA, maxA, R[NV097_SET_COMBINER_CONTROL / 4]);
         }
         // Text (the glyph cache is an AY8 texture) above 480p: glyph edges are sharpened in the shader.
         static const bool noSharp = featureOff("textsharp");
