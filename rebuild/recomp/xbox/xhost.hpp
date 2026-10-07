@@ -232,6 +232,7 @@ uint32_t hostTrap(KFn fn, int args, const char* name);
 // Debugging: log the host backtrace of writes to one guest word (core.cpp).
 void debugWatch(uint32_t guestAddr);
 void debugWatchRearm();  // the ticker calls it
+void debugReadWatchRearm();  // FABLE_RWATCH (core.cpp)
 void profilerStart();     // FABLE_PROFILE=[<delay>,]<seconds> (profiler.cpp)
 
 // ---- files ---------------------------------------------------------------------------------

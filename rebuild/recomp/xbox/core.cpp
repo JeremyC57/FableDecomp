@@ -639,12 +639,44 @@ void debugWatchRearm() {
         g_watchAddr = envAddr;
     }
     const uint32_t a = g_watchAddr.load();
-    if (!a || g_watchArmed.exchange(true)) return;
-    mprotect(gp(a & ~0xFFFu), 0x1000, PROT_READ);
+    if (a && !g_watchArmed.exchange(true)) mprotect(gp(a & ~0xFFFu), 0x1000, PROT_READ);
+    debugReadWatchRearm();
+}
+
+// FABLE_RWATCH=<guest address>[@<flip>]: logs every access (read or write) to the page holding
+// the address, through any of its three mappings (identity, 0x80000000, 0xF0000000), with a
+// backtrace (at most 40); armed from that flip on (default 0). Debugging only.
+static std::atomic<uint32_t> g_rwatchPhys{0};
+static std::atomic<bool> g_rwatchArmed{false};
+static std::atomic<int> g_rwatchLogs{0};
+static void rwatchProtect(int prot) {
+    const uint32_t page = g_rwatchPhys.load() & ~0xFFFu;
+    for (uint32_t base : {0u, kContigBase, kWcBase}) mprotect(gp(base + page), 0x1000, prot);
+}
+void debugReadWatchRearm() {
+    static const char* env = getenv("FABLE_RWATCH");
+    if (!env || !g_mem || g_rwatchLogs.load() >= 40) return;
+    static const uint64_t from = strchr(env, '@') ? strtoull(strchr(env, '@') + 1, nullptr, 10) : 0;
+    if (gpu::g_frameCount < from) return;
+    if (!g_rwatchPhys.load()) g_rwatchPhys = physOf(static_cast<uint32_t>(strtoul(env, nullptr, 0))) | 1u;
+    if (!g_rwatchArmed.exchange(true)) rwatchProtect(PROT_NONE);
 }
 
 static void onSignal(int sig, siginfo_t* si, void*) {
     const uintptr_t a = reinterpret_cast<uintptr_t>(si->si_addr), base = reinterpret_cast<uintptr_t>(g_mem);
+    if (sig == SIGSEGV && g_rwatchArmed.load() && a >= base && a < base + 0x100000000ull &&
+        (physOf(static_cast<uint32_t>(a - base)) & ~0xFFFu) == (g_rwatchPhys.load() & ~0xFFFu)) {
+        char m[128];
+        const int n = snprintf(m, sizeof m, "\nrwatch: access to 0x%08X (flip %llu, thread %u)\n", static_cast<uint32_t>(a - base),
+                               static_cast<unsigned long long>(gpu::g_frameCount), t_cur ? t_cur->id : 0);
+        if (write(2, m, static_cast<size_t>(n)) < 0) {}
+        void* frames[10];
+        backtrace_symbols_fd(frames, backtrace(frames, 10), 2);
+        ++g_rwatchLogs;
+        rwatchProtect(PROT_READ | PROT_WRITE);
+        g_rwatchArmed = false;
+        return;
+    }
     if (sig == SIGSEGV && g_watchArmed.load() && a >= base && ((static_cast<uint32_t>(a - base) ^ g_watchAddr.load()) & ~0xFFFu) == 0) {
         const uint32_t ga = static_cast<uint32_t>(a - base);
         if ((ga & ~3u) == (g_watchAddr.load() & ~3u)) {
