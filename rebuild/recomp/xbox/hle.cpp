@@ -7,6 +7,7 @@
 #include "settings.hpp"
 #include "xhost.hpp"
 
+#include <algorithm>
 #include <cmath>
 
 namespace xb {
@@ -105,9 +106,10 @@ void hle_SetupGamut(Ctx* c) {
     F_00132D00_orig(c);
     std::memcpy(gp(desc + 0x4C), saved, 12);
     std::memcpy(gp(c->ebx + 0x14 + 0x4C), saved, 12);  // the camera's copy of the description
-    static float logged = -1;
-    if (logged != fov) {
-        logged = fov;
+    static float logged[8];  // each distinct FOV once (cutscenes alternate cameras every frame)
+    static int nLogged = 0;
+    if (nLogged < 8 && std::find(logged, logged + nLogged, fov) == logged + nLogged) {
+        logged[nLogged++] = fov;
         XLOG(1, "SetupGamut: %gx%g window, fov %g -> widescreen %g x %g", w, h, fov, fovX, fovY);
     }
 }
