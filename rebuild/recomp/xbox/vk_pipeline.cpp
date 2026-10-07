@@ -477,7 +477,10 @@ float anchorOfExtent(float x0, float x1) {
 
 float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel) {
     uiCur_.push_back({x0, x1, y0, y1, 0.0f});
-    if (panel) uiMenuCur_ = true;
+    // Menus (a full-screen panel) and cinematics (letterbox bars: screen-wide strips at the top or
+    // bottom edge) keep their whole interface centred: subtitles and prompts stay together.
+    const bool letterbox = x1 - x0 >= 560.0f && y1 - y0 >= 8.0f && (y0 <= 4.0f || y1 >= 476.0f);
+    if (panel || letterbox) uiMenuCur_ = true;
     if (uiMenuCur_ || uiMenuPrev_) return 0.0f;
     const float cx = (x0 + x1) * 0.5f, cy = (y0 + y1) * 0.5f;
     for (const UiRect& r : uiPrev_)
@@ -487,9 +490,16 @@ float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel) {
 
 void VkRenderer::uiEndFrame() {
     // Union of overlapping / nearly touching rectangles (a few hundred per frame at most).
+    if (uiCur_.empty()) {  // a frame without interface draws (repeated presents): keep the layout
+        uiMenuCur_ = false;
+        return;
+    }
     std::vector<UiRect> cl;
     for (const UiRect& r : uiCur_) {
         if (r.x1 < 0.0f || r.x0 > 640.0f) continue;  // parked off screen
+        // Screen-wide strips (cutscene / conversation letterbox bars, banners) are centred on
+        // their own and must not pull the HUD pieces they touch into one centred cluster.
+        if (r.x1 - r.x0 >= 560.0f) continue;
         cl.push_back(r);
     }
     for (bool merged = true; merged;) {
@@ -507,6 +517,25 @@ void VkRenderer::uiEndFrame() {
             }
     }
     for (UiRect& r : cl) r.anchor = anchorOfExtent(r.x0, r.x1);
+    if (getenv("FABLE_UI_LOG")) {  // debugging: layout changes
+        static std::string last;
+        std::string cur = uiMenuCur_ ? "menu" : "hud";
+        char b[64];
+        for (const UiRect& r : cl) {
+            std::snprintf(b, sizeof b, " %.0f..%.0f:%+.0f", r.x0, r.x1, r.anchor);
+            cur += b;
+        }
+        if (cur != last) {
+            XLOG(0, "UI layout (frame %llu): %s", static_cast<unsigned long long>(g_frameCount), cur.c_str());
+            std::string raw;
+            for (const UiRect& r : uiCur_) {
+                std::snprintf(b, sizeof b, " [%.0f..%.0f,%.0f..%.0f]", r.x0, r.x1, r.y0, r.y1);
+                raw += b;
+            }
+            XLOG(0, "UI rects: %s", raw.c_str());
+        }
+        last = cur;
+    }
     uiPrev_ = std::move(cl);
     uiMenuPrev_ = uiMenuCur_;
     uiMenuCur_ = false;
