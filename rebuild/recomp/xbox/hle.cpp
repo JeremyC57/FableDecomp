@@ -64,8 +64,9 @@ void hle_Direct3D_CreateDevice(Ctx* c) {
 // CEngineCamera::SetupGamut (0x132D00; this in ebx, CEngineCameraDesc* on the stack). It sets
 // AspectRatio (+0xD0) = window width / height and the homogeneous view scales (+0xD4/+0xD8)
 // from the description's FOV (+0x4C), or from separate X/Y FOVs (+0x4C/+0x50) when the
-// description's flag at +0x54 is set; the frustum planes and projection follow from them.
-// aspect = 16:9: a 4:3 window gets explicit FOVs for the same vertical view and a 16:9-wide
+// description's flag at +0x54 is set (nothing is computed while the flag at +0x68 is clear);
+// the frustum planes and projection follow from them.
+// aspect = 16:9: a 4:3 screen-sized window (some cameras use tiny normalised ones) gets explicit FOVs for the same vertical view and a 16:9-wide
 // horizontal one, so the game projects and culls a widescreen view into its 640x480 buffer and
 // the presenter stretches that to 16:9 (anamorphic, as Xbox widescreen games do).
 void F_00132D00_orig(Ctx* c);
@@ -79,8 +80,16 @@ void hle_SetupGamut(Ctx* c) {
     std::memcpy(&fov, gp(desc + 0x4C), 4);
     const float w = x1 - x0, h = y1 - y0;
     static const bool off = featureOff("hor+");
-    const bool widen = settings().widescreen && !off && !rd8(desc + 0x68) && !rd8(desc + 0x54) && w > 0 && h > 0 &&
+    const bool widen = settings().widescreen && !off && rd8(desc + 0x68) && !rd8(desc + 0x54) && w >= 320 && h > 0 &&
                        std::fabs(h / w - 0.75f) < 0.01f && fov > 0.0f && fov < 3.1f && !rd32(0x9A1188);
+    if (getenv("FABLE_GAMUT_LOG")) {
+        static int n = 0;
+        float fy;
+        std::memcpy(&fy, gp(desc + 0x50), 4);
+        if (n++ < 40)
+            XLOG(0, "SetupGamut in: window %g,%g-%g,%g fov %g/%g flags %u/%u override %08X -> %s", x0, y0, x1, y1, fov, fy, rd8(desc + 0x54),
+                 rd8(desc + 0x68), rd32(0x9A1188), widen ? "widen" : "as is");
+    }
     if (!widen) {
         F_00132D00_orig(c);
         return;
