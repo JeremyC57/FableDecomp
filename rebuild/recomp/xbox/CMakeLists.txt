@@ -21,7 +21,7 @@ target_include_directories(fable_xbox_gen PRIVATE ${RUNTIME_DIR} ${FABLE_GEN_DIR
 set(FABLE_GEN_OPT "-O1" CACHE STRING "Optimisation flag for the lifted code")
 target_compile_options(fable_xbox_gen PRIVATE ${FABLE_GEN_OPT} -fsigned-char -ffp-contract=off -fno-strict-aliasing -w)
 
-set(HOST_SOURCES core.cpp memory.cpp kernel.cpp files.cpp disc.cpp profiler.cpp xc.cpp main.cpp hle.cpp xmv.cpp audio.cpp coro.cpp settings.cpp
+set(HOST_SOURCES core.cpp memory.cpp kernel.cpp files.cpp disc.cpp profiler.cpp xc.cpp main.cpp hle.cpp xmv.cpp pc_textures.cpp audio.cpp coro.cpp settings.cpp
     nv2a.cpp soft_renderer.cpp video.cpp vk.cpp input.cpp
     vk_renderer.cpp vk_pipeline.cpp nv2a_vsh.cpp nv2a_psh.cpp nv2a_texture.cpp)
 list(TRANSFORM HOST_SOURCES PREPEND ${CMAKE_CURRENT_SOURCE_DIR}/)
@@ -52,11 +52,17 @@ else()
   FetchContent_MakeAvailable(glslang)
 endif()
 
+# PC texture banks (pc_textures.cpp): the asset readers of rebuild/modern/assets and zlib (.biz).
+set(ASSETS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../modern/assets)
+add_library(fable_assets_min STATIC ${ASSETS_DIR}/src/BigArchive.cpp ${ASSETS_DIR}/src/Texture.cpp ${ASSETS_DIR}/src/Lzo.cpp)
+target_include_directories(fable_assets_min PUBLIC ${ASSETS_DIR}/include)
+target_compile_features(fable_assets_min PUBLIC cxx_std_20)
+find_package(ZLIB REQUIRED)
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SDL2 REQUIRED IMPORTED_TARGET sdl2)
 target_include_directories(FableXbox PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../posix/third_party)
-target_link_libraries(FableXbox PRIVATE fable_xbox_gen Threads::Threads PkgConfig::SDL2 ${CMAKE_DL_LIBS}
+target_link_libraries(FableXbox PRIVATE fable_xbox_gen fable_assets_min ZLIB::ZLIB Threads::Threads PkgConfig::SDL2 ${CMAKE_DL_LIBS}
   glslang SPIRV glslang-default-resource-limits)
 if(ANDROID)
   set(ADRENOTOOLS_DIR "" CACHE PATH "libadrenotools checkout")

@@ -4,6 +4,7 @@
 
 #include "nv2a_methods.h"
 #include "nv2a_shaders.hpp"
+#include "pc_textures.hpp"
 #include "nv2a_texture.hpp"
 #include "settings.hpp"
 #include "xhost.hpp"
@@ -981,6 +982,75 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     t.hash = hash;
     t.lastUse = frames_done_;
     t.checked = true;
+    // pc_textures: a DXT1/DXT3 texture whose mip 0 matches a known Xbox bank entry is replaced by
+    // the PC version of that entry when it is larger (mips generated here by blits).
+    if ((color == 0x0C || color == 0x0E) && !cube && d == 1 && faces == 1 && !settings().pcTextures.empty()) {
+        const uint32_t m0 = levelBytes(color, w, h, 1);
+        pctex::Replacement rep;
+        if (m0 <= bytes && pctex::lookup(pctex::hashBytes(src, m0), m0, w, h, rep)) {
+            uint32_t mips = 1;
+            while ((std::max(rep.w, rep.h) >> mips) > 0) ++mips;
+            VkImageCreateInfo ici{VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO};
+            ici.imageType = VK_IMAGE_TYPE_2D;
+            ici.format = VK_FORMAT_B8G8R8A8_UNORM;
+            ici.extent = {rep.w, rep.h, 1};
+            ici.mipLevels = mips;
+            ici.arrayLayers = 1;
+            ici.samples = VK_SAMPLE_COUNT_1_BIT;
+            ici.tiling = VK_IMAGE_TILING_OPTIMAL;
+            ici.usage = VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
+            vkCreateImage(dev, &ici, nullptr, &t.image);
+            VkMemoryRequirements req;
+            vkGetImageMemoryRequirements(dev, t.image, &req);
+            VkMemoryAllocateInfo mai{VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO};
+            mai.allocationSize = req.size;
+            mai.memoryTypeIndex = memoryType(req.memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
+            vkAllocateMemory(dev, &mai, nullptr, &t.mem);
+            vkBindImageMemory(dev, t.image, t.mem, 0);
+            endPass();
+            VkCommandBuffer cb = cmd();
+            auto barrier = [&](uint32_t level, VkImageLayout from, VkImageLayout to, VkAccessFlags sa, VkAccessFlags da) {
+                VkImageMemoryBarrier b{VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER};
+                b.srcAccessMask = sa;
+                b.dstAccessMask = da;
+                b.oldLayout = from;
+                b.newLayout = to;
+                b.srcQueueFamilyIndex = b.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+                b.image = t.image;
+                b.subresourceRange = {VK_IMAGE_ASPECT_COLOR_BIT, level, 1, 0, 1};
+                vkCmdPipelineBarrier(cb, VK_PIPELINE_STAGE_TRANSFER_BIT | VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT |
+                                     VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0, 0, nullptr, 0, nullptr, 1, &b);
+            };
+            for (uint32_t l = 0; l < mips; ++l)
+                barrier(l, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 0, VK_ACCESS_TRANSFER_WRITE_BIT);
+            VkBufferImageCopy c{};
+            c.bufferOffset = upload(rep.bgra.data(), rep.bgra.size(), 16);
+            c.imageSubresource = {VK_IMAGE_ASPECT_COLOR_BIT, 0, 0, 1};
+            c.imageExtent = {rep.w, rep.h, 1};
+            vkCmdCopyBufferToImage(cb, frames_[frame_].upload.buf, t.image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &c);
+            for (uint32_t l = 1; l < mips; ++l) {
+                barrier(l - 1, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_ACCESS_TRANSFER_WRITE_BIT,
+                        VK_ACCESS_TRANSFER_READ_BIT);
+                VkImageBlit bl{};
+                bl.srcSubresource = {VK_IMAGE_ASPECT_COLOR_BIT, l - 1, 0, 1};
+                bl.srcOffsets[1] = {static_cast<int32_t>(std::max(1u, rep.w >> (l - 1))), static_cast<int32_t>(std::max(1u, rep.h >> (l - 1))), 1};
+                bl.dstSubresource = {VK_IMAGE_ASPECT_COLOR_BIT, l, 0, 1};
+                bl.dstOffsets[1] = {static_cast<int32_t>(std::max(1u, rep.w >> l)), static_cast<int32_t>(std::max(1u, rep.h >> l)), 1};
+                vkCmdBlitImage(cb, t.image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, t.image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &bl, VK_FILTER_LINEAR);
+                barrier(l - 1, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, VK_ACCESS_TRANSFER_READ_BIT,
+                        VK_ACCESS_SHADER_READ_BIT);
+            }
+            barrier(mips - 1, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, VK_ACCESS_TRANSFER_WRITE_BIT,
+                    VK_ACCESS_SHADER_READ_BIT);
+            VkImageViewCreateInfo vci{VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO};
+            vci.image = t.image;
+            vci.viewType = VK_IMAGE_VIEW_TYPE_2D;
+            vci.format = VK_FORMAT_B8G8R8A8_UNORM;
+            vci.subresourceRange = {VK_IMAGE_ASPECT_COLOR_BIT, 0, mips, 0, 1};
+            vkCreateImageView(dev, &vci, nullptr, &t.view);
+            return t.view;
+        }
+    }
     VkImageCreateInfo ici{VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO};
     ici.flags = cube ? VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT : 0;
     ici.imageType = d > 1 ? VK_IMAGE_TYPE_3D : VK_IMAGE_TYPE_2D;

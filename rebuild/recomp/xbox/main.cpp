@@ -6,6 +6,7 @@
 #include "disc.hpp"
 #include "gpu.hpp"
 #include "settings.hpp"
+#include "pc_textures.hpp"
 #include "xhost.hpp"
 
 #include <SDL.h>
@@ -153,6 +154,7 @@ int main(int argc, char** argv) {
         std::filesystem::create_directories(cache, ec);
         if (!getenv("FABLE_CACHE_DIR") && !ec) setenv("FABLE_CACHE_DIR", cache.string().c_str(), 1);
     }
+    pctex::init(game.c_str(), getenv("FABLE_CACHE_DIR"));
     memInit();
     coreInit();
     reserveXbe();
