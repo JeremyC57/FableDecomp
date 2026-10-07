@@ -414,6 +414,8 @@ public class LauncherActivity extends Activity {
             w.write("pc_textures = " + (usePc.isChecked() ? pcFolder.getText().toString().trim() : "") + "\n");
             w.write("volume = " + volume.getProgress() + "\n");
             w.write("vibration = " + (vibration.isChecked() ? 1 : 0) + "\n");
+            w.write("hud_corners = " + (prefs.getBoolean("hudCorners", true) ? 1 : 0) + "\n");
+            w.write("text_sharpen = " + (prefs.getBoolean("textSharpen", true) ? 1 : 0) + "\n");
             w.write("fullscreen = 1\n");
             w.write("vsync = 1\n");
         }

@@ -22,6 +22,7 @@
 #include <cstring>
 #include <mutex>
 #include <utility>
+#include <chrono>
 #include <string>
 #include <vector>
 
@@ -240,6 +241,9 @@ void profilerStart();     // FABLE_PROFILE=[<delay>,]<seconds> (profiler.cpp)
 void filesInit(const std::string& gameDir, const std::string& hddDir);
 // FABLE_DISABLE=name1,name2: turns individual emulation fixes off (bisecting regressions).
 bool featureOff(const char* name);
+void perfFlip(std::chrono::steady_clock::time_point now);  // nv2a.cpp: a flip happened
+void perfStats(float* fps, float* worstMs);
+bool profilerCapture(double delay, double secs, const std::string& path);  // profiler.cpp                   // frames/s and slowest frame (ms), last 0.5 s
 uint64_t gameClockNs();  // RDTSC / performance counter clock (FABLE_FLIPTIME: per flip)
 std::string resolveObjectName(uint32_t objectAttributes);  // full object path ("\Device\CdRom0\...")
 void symlinkCreate(const std::string& link, const std::string& target);

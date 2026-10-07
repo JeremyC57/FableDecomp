@@ -9,6 +9,7 @@
 #include "nv2a_methods.h"
 #include "xhost.hpp"
 
+#include <algorithm>
 #include <atomic>
 #include <cstring>
 #include <chrono>
@@ -17,6 +18,36 @@
 namespace xb {
 extern void (*g_irqEoi)(uint32_t vector);
 }
+
+namespace xb {
+// Frame statistics for the Android quick menu (frames per second and the slowest frame, over
+// half-second windows).
+namespace {
+std::atomic<float> g_perfFps{0.0f}, g_perfWorstMs{0.0f};
+}  // namespace
+
+void perfFlip(std::chrono::steady_clock::time_point now) {
+    static auto start = now, last = now;
+    static uint32_t frames = 0;
+    static double worst = 0.0;
+    worst = std::max(worst, std::chrono::duration<double, std::milli>(now - last).count());
+    last = now;
+    ++frames;
+    const double span = std::chrono::duration<double>(now - start).count();
+    if (span >= 0.5) {
+        g_perfFps = static_cast<float>(frames / span);
+        g_perfWorstMs = static_cast<float>(worst);
+        start = now;
+        frames = 0;
+        worst = 0.0;
+    }
+}
+
+void perfStats(float* fps, float* worstMs) {
+    *fps = g_perfFps;
+    *worstMs = g_perfWorstMs;
+}
+}  // namespace xb
 
 namespace xb::gpu {
 
@@ -436,6 +467,7 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
             static uint32_t n = 0;
             ++n;
             const auto now = std::chrono::steady_clock::now();
+            perfFlip(now);
             if (now - t0 >= std::chrono::seconds(5)) {
                 XLOG(1, "NV2A: %.1f flips/s", n / std::chrono::duration<double>(now - t0).count());
                 t0 = now;

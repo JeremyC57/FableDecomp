@@ -6,7 +6,10 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.system.Os;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import org.libsdl.app.SDLActivity;
 
@@ -14,7 +17,12 @@ import java.io.File;
 
 /** Runs the game (libmain.so, via SDL) with the launcher's settings, plus the touch overlay. */
 public class GameActivity extends SDLActivity {
+    static native float[] nativeStats();
+    static native void nativeSetOption(String name, boolean on);
+    static native String nativeProfile(int seconds);
+
     private TouchControls touch;
+    private QuickMenu menu;
 
     @Override
     protected void onCreate(Bundle saved) {
@@ -40,7 +48,30 @@ public class GameActivity extends SDLActivity {
         if (mLayout != null) {
             touch = new TouchControls(this, getIntent().getBooleanExtra("touch", true));
             mLayout.addView(touch, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            FrameLayout overlay = new FrameLayout(this);
+            mLayout.addView(overlay, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            menu = new QuickMenu(this, overlay, touch, new QuickMenu.Natives() {
+                @Override public float[] stats() { return nativeStats(); }
+                @Override public void setOption(String name, boolean on) { nativeSetOption(name, on); }
+                @Override public String profile(int seconds) { return nativeProfile(seconds); }
+            });
         }
+    }
+
+    /** A swipe from the left edge opens the quick menu (before the game and the controls see it). */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent e) {
+        if (menu != null && menu.onTouch(e)) return true;
+        return super.dispatchTouchEvent(e);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent e) {
+        if (menu != null && menu.isOpen() && e.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            if (e.getAction() == KeyEvent.ACTION_UP) menu.close();
+            return true;
+        }
+        return super.dispatchKeyEvent(e);
     }
 
     /**

@@ -3,7 +3,13 @@
 #include "settings.hpp"
 #include "xhost.hpp"
 
+#include <algorithm>
 #include <chrono>
+#include <map>
+#include <mutex>
+#include <string>
+#include <tuple>
+#include <vector>
 #include <ctime>
 #include <thread>
 
@@ -324,19 +330,65 @@ static uint32_t waitHandle(Ctx* c, uint32_t h, bool alertable, uint32_t timeout)
     }
     return waitObjects(c, &o, 1, false, alertable, timeout);
 }
-KFUNC(NtWaitForSingleObject, 3) { return waitHandle(c, ARG(c, 0), ARG(c, 1) & 0xFF, ARG(c, 2)); }
-KFUNC(NtWaitForSingleObjectEx, 4) { return waitHandle(c, ARG(c, 0), ARG(c, 2) & 0xFF, ARG(c, 3)); }
+// FABLE_WAIT_LOG=1 (debugging): where guest threads block, by call site, every 5 s.
+// First game-code return address on the stack above the XAPI wrappers (heuristic: a .text
+// address preceded by a call instruction).
+uint32_t stackCaller(Ctx* c) {
+    for (uint32_t a = c->esp + 4; a < c->esp + 0x200; a += 4) {
+        const uint32_t v = rd32(a);
+        if (v < 0x13005 || v >= 0x612000 || (v >= 0x1EB000 && v < 0x1EC000)) continue;
+        if (rd8(v - 5) == 0xE8 || rd8(v - 6) == 0xFF || rd8(v - 2) == 0xFF || rd8(v - 3) == 0xFF) return v;
+    }
+    return 0;
+}
+
+struct WaitProbe {
+    const char* name;
+    uint32_t r1, r2, tid;
+    std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
+    WaitProbe(Ctx* c, const char* n) : name(n), r1(rd32(c->esp)), r2(stackCaller(c)), tid(static_cast<uint32_t>(reinterpret_cast<uintptr_t>(curThread()))) {}
+    ~WaitProbe() {
+        static const bool on = getenv("FABLE_WAIT_LOG") != nullptr;
+        if (!on) return;
+        static std::mutex m;
+        static std::map<std::tuple<std::string, uint32_t, uint32_t, uint32_t>, std::pair<double, uint64_t>> h;
+        static auto last = std::chrono::steady_clock::now();
+        const auto now = std::chrono::steady_clock::now();
+        std::lock_guard<std::mutex> l(m);
+        auto& e = h[{name, r1, r2, tid}];
+        e.first += std::chrono::duration<double, std::milli>(now - t0).count();
+        ++e.second;
+        if (now - last < std::chrono::seconds(5)) return;
+        last = now;
+        std::vector<std::pair<double, std::string>> v;
+        for (auto& [k, x] : h) {
+            char b[160];
+            std::snprintf(b, sizeof b, "%s ret %08X/%08X thread %08X: %.0f ms in %llu calls", std::get<0>(k).c_str(), std::get<1>(k), std::get<2>(k), std::get<3>(k), x.first,
+                          static_cast<unsigned long long>(x.second));
+            v.push_back({x.first, b});
+        }
+        std::sort(v.rbegin(), v.rend());
+        for (size_t i = 0; i < v.size() && i < 8; ++i) XLOG(0, "wait: %s", v[i].second.c_str());
+        h.clear();
+    }
+};
+
+KFUNC(NtWaitForSingleObject, 3) { WaitProbe p(c, "NtWaitForSingleObject"); return waitHandle(c, ARG(c, 0), ARG(c, 1) & 0xFF, ARG(c, 2)); }
+KFUNC(NtWaitForSingleObjectEx, 4) { WaitProbe p(c, "NtWaitForSingleObjectEx"); return waitHandle(c, ARG(c, 0), ARG(c, 2) & 0xFF, ARG(c, 3)); }
 KFUNC(KeWaitForSingleObject, 5) {
+    WaitProbe p(c, "KeWaitForSingleObject");
     const uint32_t o = ARG(c, 0);
     return waitObjects(c, &o, 1, false, ARG(c, 3) & 0xFF, ARG(c, 4));
 }
 KFUNC(KeWaitForMultipleObjects, 8) {
+    WaitProbe p(c, "KeWaitForMultipleObjects");
     const uint32_t n = ARG(c, 0), arr = ARG(c, 1);
     std::vector<uint32_t> objs(n);
     for (uint32_t i = 0; i < n; ++i) objs[i] = rd32(arr + 4 * i);
     return waitObjects(c, objs.data(), static_cast<int>(n), ARG(c, 2) == 0, ARG(c, 5) & 0xFF, ARG(c, 6));
 }
 KFUNC(KeDelayExecutionThread, 3) {
+    WaitProbe p(c, "KeDelayExecutionThread");
     const bool alertable = ARG(c, 1) & 0xFF;
     const int64_t v = static_cast<int64_t>(rd64(ARG(c, 2)));
     XThread* t = curThread();

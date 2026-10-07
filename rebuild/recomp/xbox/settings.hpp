@@ -12,6 +12,9 @@
 //   volume           = 0..100        master audio volume
 //   draw_distance    = 1..4          multiplier for the game's mesh/thing draw distances (xuser.ini)
 //   vibration        = 0 | 1         controller rumble (on Android: the phone vibrates when no pad is connected)
+//   hud_corners      = 0 | 1         16:9: HUD at the screen edges (0: the centred 4:3 area)
+//   text_sharpen     = 0 | 1         sharpen text above 480p
+// vibration, hud_corners and text_sharpen can change while the game runs (Android quick menu).
 #pragma once
 
 #include <string>
@@ -31,6 +34,8 @@ struct Settings {
     int volume = 100;
     bool vibration = true;
     float drawDistance = 2.0f;
+    bool hudCorners = true;
+    bool textSharpen = true;
 };
 
 Settings& settings();

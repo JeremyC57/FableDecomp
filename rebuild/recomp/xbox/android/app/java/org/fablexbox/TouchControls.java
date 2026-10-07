@@ -265,6 +265,11 @@ public class TouchControls extends View {
         }
     }
 
+    /** Shows or hides the controls (the quick menu's switch). */
+    public void setControlsShown(boolean on) {
+        if (on != visible) setShown(on);
+    }
+
     private void setShown(boolean on) {
         for (int i = 0; i < touches.size(); ++i) release(touches.valueAt(i), false);
         touches.clear();

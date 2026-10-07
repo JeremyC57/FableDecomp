@@ -2,6 +2,8 @@
 // Vulkan driver (adrenotools), and the JNI entries of the on-screen controls.
 // The launcher (Java) passes its choices as environment variables before the game starts.
 #include "../input.hpp"
+#include "../settings.hpp"
+#include "../xhost.hpp"
 
 #include <android/log.h>
 #include <dlfcn.h>
@@ -69,3 +71,26 @@ extern "C" JNIEXPORT void JNICALL Java_org_fablexbox_TouchControls_nativeMouseMo
 }
 extern "C" JNIEXPORT void JNICALL Java_org_fablexbox_TouchControls_nativeMouseButton(JNIEnv*, jclass, jint, jboolean) {}
 extern "C" JNIEXPORT void JNICALL Java_org_fablexbox_TouchControls_nativeToggleKeyboard(JNIEnv*, jclass) {}
+
+// Quick menu (GameActivity): frame statistics, options that apply while the game runs, and an
+// on-demand profile (<data>/profile.txt).
+extern "C" JNIEXPORT jfloatArray JNICALL Java_org_fablexbox_GameActivity_nativeStats(JNIEnv* env, jclass) {
+    float v[2];
+    xb::perfStats(&v[0], &v[1]);
+    jfloatArray a = env->NewFloatArray(2);
+    if (a) env->SetFloatArrayRegion(a, 0, 2, v);
+    return a;
+}
+extern "C" JNIEXPORT void JNICALL Java_org_fablexbox_GameActivity_nativeSetOption(JNIEnv* env, jclass, jstring name, jboolean on) {
+    const char* n = env->GetStringUTFChars(name, nullptr);
+    const std::string key = n ? n : "";
+    if (n) env->ReleaseStringUTFChars(name, n);
+    if (key == "vibration") xb::settings().vibration = on;
+    else if (key == "hud_corners") xb::settings().hudCorners = on;
+    else if (key == "text_sharpen") xb::settings().textSharpen = on;
+}
+extern "C" JNIEXPORT jstring JNICALL Java_org_fablexbox_GameActivity_nativeProfile(JNIEnv* env, jclass, jint seconds) {
+    const char* data = std::getenv("FABLE_XBOX_DATA");
+    const std::string path = std::string(data ? data : ".") + "/profile.txt";
+    return xb::profilerCapture(0.0, seconds, path) ? env->NewStringUTF(path.c_str()) : nullptr;
+}

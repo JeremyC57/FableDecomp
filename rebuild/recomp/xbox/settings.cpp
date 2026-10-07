@@ -44,6 +44,8 @@ void loadSettings(const std::string& path) {
         else if (k == "fullscreen") s.fullscreen = n != 0;
         else if (k == "vsync") s.vsync = n != 0;
         else if (k == "vibration") s.vibration = n != 0;
+        else if (k == "hud_corners") s.hudCorners = n != 0;
+        else if (k == "text_sharpen") s.textSharpen = n != 0;
         else if (k == "draw_distance") s.drawDistance = std::clamp(static_cast<float>(atof(v.c_str())), 1.0f, 4.0f);
     }
     XLOG(1, "settings: %dp (scale %dx), %s, %d fps, anisotropy %dx%s%s", s.resolution, s.resolutionScale, s.widescreen ? "16:9" : "4:3", s.fps, s.anisotropy,

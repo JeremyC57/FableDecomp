@@ -1379,13 +1379,14 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         const bool screenSpace = flat && !effect && (!depthTest || maxZ <= 1.0f);
         if (wide_ && screenSpace && !(fullWidth && !textured)) {
             uiScale = 0.75f;
-            static const bool noCorners = featureOff("uicorners");
+            static const bool noCornersEnv = featureOff("uicorners");
+            const bool noCorners = noCornersEnv || !settings().hudCorners;
             const bool panel = textured && fullWidth && minY <= 16.0f && maxY >= 464.0f;
             uiCenter = noCorners ? 0.0f : uiAnchor(minX, maxX, minY, maxY, panel);  // -1 left edge, 0 centre, 1 right edge
         }
         // Text (the glyph cache is an AY8 texture) above 480p: glyph edges are sharpened in the shader.
         static const bool noSharp = featureOff("textsharp");
-        if (screenSpace && outH_ > 480 && !noSharp && (R[NV097_SET_TEXTURE_CONTROL0 / 4] & (1u << 30)) &&
+        if (screenSpace && outH_ > 480 && !noSharp && settings().textSharpen && (R[NV097_SET_TEXTURE_CONTROL0 / 4] & (1u << 30)) &&
             ((R[NV097_SET_TEXTURE_FORMAT / 4] >> 8) & 0xFF) == 0x01)
             textSharp = 1.0f;
     }
