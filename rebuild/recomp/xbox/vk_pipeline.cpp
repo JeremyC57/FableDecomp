@@ -464,6 +464,55 @@ void VkRenderer::beginPass() {
     passFb_ = fb;
 }
 
+// 16:9 interface anchoring (see vk_renderer.hpp). A draw takes the anchor of last frame's cluster
+// it lies in (HUD layouts persist from frame to frame), else one from its own extent.
+namespace {
+constexpr float kUiMargin = 12.0f;  // pieces this close belong to the same element
+float anchorOfExtent(float x0, float x1) {
+    if (x1 <= 330.0f && x0 < 213.0f) return -1.0f;
+    if (x0 >= 310.0f && x1 > 427.0f) return 1.0f;
+    return 0.0f;
+}
+}  // namespace
+
+float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel) {
+    uiCur_.push_back({x0, x1, y0, y1, 0.0f});
+    if (panel) uiMenuCur_ = true;
+    if (uiMenuCur_ || uiMenuPrev_) return 0.0f;
+    const float cx = (x0 + x1) * 0.5f, cy = (y0 + y1) * 0.5f;
+    for (const UiRect& r : uiPrev_)
+        if (cx >= r.x0 && cx <= r.x1 && cy >= r.y0 && cy <= r.y1) return r.anchor;
+    return anchorOfExtent(x0, x1);
+}
+
+void VkRenderer::uiEndFrame() {
+    // Union of overlapping / nearly touching rectangles (a few hundred per frame at most).
+    std::vector<UiRect> cl;
+    for (const UiRect& r : uiCur_) {
+        if (r.x1 < 0.0f || r.x0 > 640.0f) continue;  // parked off screen
+        cl.push_back(r);
+    }
+    for (bool merged = true; merged;) {
+        merged = false;
+        for (size_t i = 0; i < cl.size(); ++i)
+            for (size_t j = i + 1; j < cl.size(); ++j) {
+                UiRect& a = cl[i];
+                const UiRect& b = cl[j];
+                if (b.x0 > a.x1 + kUiMargin || a.x0 > b.x1 + kUiMargin || b.y0 > a.y1 + kUiMargin || a.y0 > b.y1 + kUiMargin) continue;
+                a = {std::min(a.x0, b.x0), std::max(a.x1, b.x1), std::min(a.y0, b.y0), std::max(a.y1, b.y1), 0.0f};
+                cl[j] = cl.back();
+                cl.pop_back();
+                --j;
+                merged = true;
+            }
+    }
+    for (UiRect& r : cl) r.anchor = anchorOfExtent(r.x0, r.x1);
+    uiPrev_ = std::move(cl);
+    uiMenuPrev_ = uiMenuCur_;
+    uiMenuCur_ = false;
+    uiCur_.clear();
+}
+
 VkDeviceSize VkRenderer::upload(const void* data, VkDeviceSize bytes, VkDeviceSize align) {
     Frame& f = frames_[frame_];
     VkDeviceSize off = (f.uploadPos + align - 1) / align * align;
@@ -660,7 +709,7 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
            "  p.xy = (2.0 * p.xy - cst.surface.xy) / cst.surface.xy;\n"
            "  p.z = p.z / cst.clip.y;\n"
            "  if (abs(oPos.w - 1.0) > 1e-5) p.x *= cst.clip.z;  // widescreen: perspective (3D) vertices squeezed into the 4:3 buffer\n"
-           "  else p.x = cst.ui.y + (p.x - cst.ui.y) * cst.ui.x;  // 16:9: a screen-space element narrowed about its centre\n"
+           "  else p.x = cst.ui.y + (p.x - cst.ui.y) * cst.ui.x;  // 16:9: a screen-space element narrowed into the 4:3 area at an edge or the centre\n"
            "  gl_Position = vec4(p.xyz * p.w, p.w);\n"
            "  vD0 = clamp(oD0, 0.0, 1.0); vD1 = clamp(oD1, 0.0, 1.0); vB0 = clamp(oB0, 0.0, 1.0); vB1 = clamp(oB1, 0.0, 1.0);\n"
            "  vFog = oFog.x; vTex0 = oT0; vTex1 = oT1; vTex2 = oT2; vTex3 = oT3;\n"
@@ -1231,9 +1280,10 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // 16:9 (native width): the game lays out screen-space elements (HUD, menus, text, movies) in
     // 640x480, which the wider image would stretch. Screen-space draws (every vertex at w = 1, depth
     // test off, not sampling a render target, not a full-screen untextured fade) are drawn into the
-    // centred 4:3 area: the whole interface keeps its 4:3 layout and proportions (narrowing each
-    // element about its own centre split menus built from several quads); full-screen 4:3 images
-    // become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
+    // 4:3 proportions: menus (frames with a full-screen panel) and centre elements in the centred 4:3
+    // area, HUD clusters at the left / right screen edges (uiAnchor; FABLE_DISABLE=uicorners keeps
+    // everything centred). Narrowing each quad about its own centre split menus built from several
+    // quads; full-screen 4:3 images become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
     // decides whether a draw is screen-space at all). FABLE_DISABLE=uifix.
     float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f, hudSqueeze = 1.0f;
     static const bool noUiFix = featureOff("uifix");
@@ -1251,7 +1301,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             // leave later stages enabled on the bloom buffers without using them.
             if (i == 0 && (findSurface(taddr, false) || findSurface(taddr, true))) effect = true;
         }
-        float minX = 1e30f, maxX = -1e30f, maxZ = -1e30f;
+        float minX = 1e30f, maxX = -1e30f, maxZ = -1e30f, minY = 1e30f, maxY = -1e30f;
         for (uint32_t k = 0; k < nv && flat && !effect; ++k) {
             const uint32_t rel = (needIndex ? seq[k] : first + k) - minIdx;
             float v[16][4];
@@ -1281,6 +1331,8 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             maxZ = std::max(maxZ, pos[2]);
             minX = std::min(minX, pos[0]);
             maxX = std::max(maxX, pos[0]);
+            minY = std::min(minY, pos[1]);
+            maxY = std::max(maxY, pos[1]);
         }
         const bool fullWidth = minX <= 4.0f && maxX >= 636.0f;
         if (getenv("FABLE_UI_LOG") && flat && !effect) {  // debugging: texture formats of screen-space draws
@@ -1298,7 +1350,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         const bool screenSpace = flat && !effect && (!depthTest || maxZ <= 1.0f);
         if (wide_ && screenSpace && !(fullWidth && !textured)) {
             uiScale = 0.75f;
-            uiCenter = 0.0f;  // the screen centre
+            static const bool noCorners = featureOff("uicorners");
+            const bool panel = textured && fullWidth && minY <= 16.0f && maxY >= 464.0f;
+            uiCenter = noCorners ? 0.0f : uiAnchor(minX, maxX, minY, maxY, panel);  // -1 left edge, 0 centre, 1 right edge
         }
         // Text (the glyph cache is an AY8 texture) above 480p: glyph edges are sharpened in the shader.
         static const bool noSharp = featureOff("textsharp");

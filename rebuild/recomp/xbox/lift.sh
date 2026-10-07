@@ -14,6 +14,10 @@ exec "$LIFTER" "$XBE" - "$OUT" "$@" \
   --wrap 0x132D00=hle_SetupGamut \
   --wrap 0x644A5A=hle_XmvYuvToRgb \
   --wrap 0x161830=hle_SkyBand \
+  --wrap 0x5E1D70=hle_MusicOpen \
+  --wrap 0x5E1B20=hle_MusicClose \
+  --wrap 0x5E19B0=hle_MusicRead \
+  --wrap 0x5E17E0=hle_MusicSeek \
   --hook 0x86ED4B=hle_XInitDevices \
   --hook 0x86FFFF=hle_XGetDevices \
   --hook 0x870021=hle_XGetDeviceChanges \

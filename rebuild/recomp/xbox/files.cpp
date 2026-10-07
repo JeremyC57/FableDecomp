@@ -222,7 +222,16 @@ HostFile* fileOf(uint32_t h) {
     Handle* x = handleGet(h);
     return x && x->kind == Handle::File ? x->file : nullptr;
 }
+
+std::mutex g_wmaLock;
+std::map<const void*, std::string> g_lastWma;  // guest thread -> host path of the last .wma it opened
 }  // namespace
+
+std::string lastWmaOpened() {
+    std::lock_guard<std::mutex> l(g_wmaLock);
+    const auto it = g_lastWma.find(curThread());
+    return it == g_lastWma.end() ? std::string() : it->second;
+}
 
 void hostFileClose(HostFile* f) {
     if (--f->refs > 0) return;
@@ -338,6 +347,10 @@ static uint32_t openCommon(Ctx* c, uint32_t pHandle, uint32_t access, uint32_t o
         }
     }
     if (options & 0x1000) f->deleteOnClose = true;  // FILE_DELETE_ON_CLOSE
+    if (host.size() > 4 && strncasecmp(host.c_str() + host.size() - 4, ".wma", 4) == 0) {
+        std::lock_guard<std::mutex> l(g_wmaLock);
+        g_lastWma[curThread()] = host;
+    }
     Handle h;
     h.kind = Handle::File;
     h.file = f;

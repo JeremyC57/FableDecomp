@@ -70,6 +70,25 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
 - Shadow compares now use the texture's depth range: Fable's shadow maps are Z16 (format 0x30,
   clip max 65535) and were scaled as Z24, so character shadow tests passed almost everywhere.
 
+## 2026-10-07: 16:9, resolutions, PC files
+- Resolution = output height (480..2160); 640x480 surfaces render at outW_ x outH_ (16:9:
+  1280x720, 1920x1080, ...), others scale by outH_/480. 16:9 widens the game camera
+  (`hle_SetupGamut` 0x132D00, `hle_SkyBand` 0x161830); `FABLE_DISABLE=hor+` is the old squeeze.
+- Interface at 16:9: screen-space draws (CPU-evaluated vertex program, w = 1, stage 0 not a
+  render target) keep 4:3 proportions. A frame with a full-screen panel (menus, movies,
+  loading screens) stays in the centred 4:3 area; otherwise touching HUD pieces are clustered
+  per frame (`uiEndFrame`) and pinned to the left/right screen edge or the centre.
+  `FABLE_DISABLE=uifix|uicorners|textsharp`.
+- PC files (`pc_textures = <TLC folder>`, launcher switch): textures by mip-0 hash -> Xbox
+  bank entry name -> larger PC entry (`pc_textures.cpp`); music: the WMA music source
+  (0x5E1D70 ctor, 0x5E19B0 read, 0x5E17E0 seek, 0x5E1B20 dtor) reads `data/Sound/<name>.ogg`
+  instead (stb_vorbis, resampled 48 -> 44.1 kHz; `music.cpp`, `FABLE_DISABLE=pcmusic`,
+  `FABLE_MUSIC_DUMP=<file>`). Speech/SFX banks are identical on PC.
+- Lifter quirk: a relift with a changed `--wrap` list shifts junk entries; add new wraps to an
+  existing generated tree by hand (rename `F_x` -> `F_x_orig`, append the forwarder).
+- Shadow maps: Z16 clears decode as Z16, AA shadow targets are not split; A/B against
+  `FABLE_SHADOW_Z24=1` shows no brightness change.
+
 ## Next
 1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
    Vulkan queries); dot-product texture modes; fixed-function T&L.
@@ -79,8 +98,6 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
      Direct3D_CreateDevice forces ONE), yet runs a measured 30.0 flips/s: Fable is a 30 Hz
      game (a fixed 1/30 s step at 0x910EC4/0x9190DC, ~10 users, plus its own limiter).
      60 fps means halving that step consistently and finding the limiter.
-   - PC textures: replace textures at upload by name (needs the game's texture/bank
-     name at load time).
 3. Android: `android/build_android.sh` builds the APK (launcher, touch controls, custom
    drivers). Not yet tested on a device.
 4. Movies: frame presentation through the renderer works; check A/V sync.

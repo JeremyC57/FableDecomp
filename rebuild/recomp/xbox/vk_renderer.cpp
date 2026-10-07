@@ -146,6 +146,7 @@ void VkRenderer::endFrame() {
     std::lock_guard<std::mutex> l(surfLock_);
     submitFrame(false);
     lastFrameDraws_ = drawsThisFrame_;
+    uiEndFrame();
     drawsThisFrame_ = 0;
     // Test harness: FABLE_HEAVY_DRAWS=N logs frames with more draws than N (the targeting void
     // drew ~4200); FABLE_EXIT_FLIP=F ends the run at flip F.

@@ -96,6 +96,15 @@ private:
     VkSampler sampler(int stage);
     void captureImage();  // FABLE_CAPTURE_IMAGES (debugging)
     uint64_t drawsThisFrame_ = 0, lastFrameDraws_ = 0;
+    // 16:9 interface anchoring: screen-space draws (640x480 coordinates) of this frame, grouped at
+    // endFrame into touching clusters; each cluster keeps its 4:3 proportions and is pinned to the
+    // left edge, right edge or centre of the wide screen. A frame with a full-screen panel (menus)
+    // keeps the whole interface centred.
+    struct UiRect { float x0, x1, y0, y1, anchor; };
+    std::vector<UiRect> uiCur_, uiPrev_;
+    bool uiMenuCur_ = false, uiMenuPrev_ = false;
+    float uiAnchor(float x0, float x1, float y0, float y1, bool panel);
+    void uiEndFrame();
     VkPipelineCache pipeCache_ = VK_NULL_HANDLE;
     bool pipeCacheDirty_ = false;
     void savePipelineCache();

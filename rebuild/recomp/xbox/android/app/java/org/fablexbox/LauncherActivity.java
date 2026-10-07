@@ -127,13 +127,13 @@ public class LauncherActivity extends Activity {
         col.addView(label("Draw distance"));
         col.addView(draw);
 
-        col.addView(heading("High-quality textures from the PC version (optional)"));
+        col.addView(heading("Higher-quality PC files (optional)"));
         usePc = new Switch(this);
-        usePc.setText("Use PC textures from the folder below");
+        usePc.setText("Use PC textures and music from the folder below");
         usePc.setChecked(prefs.getBoolean("usePc", true));
         col.addView(usePc);
         pcFolder = textField(prefs.getString("pcDir", ""));
-        pcFolder.setHint("PC install folder (contains Fable.exe); empty: Xbox textures");
+        pcFolder.setHint("PC install folder (contains Fable.exe); empty: Xbox files");
         col.addView(pcFolder);
         col.addView(button("Choose PC folder…", () -> startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), PICK_PC)));
 
@@ -370,7 +370,7 @@ public class LauncherActivity extends Activity {
         if (Build.VERSION.SDK_INT >= 30) {
             new AlertDialog.Builder(this)
                 .setTitle("Storage access")
-                .setMessage("The PC textures are read from the folder you chose. Allow \"All files access\" on the next screen, then come back and press Start.")
+                .setMessage("The PC textures and music are read from the folder you chose. Allow \"All files access\" on the next screen, then come back and press Start.")
                 .setPositiveButton("Open settings", (d, w) -> {
                     try {
                         startActivity(new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, Uri.parse("package:" + getPackageName())));
