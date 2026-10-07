@@ -9,6 +9,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <unordered_map>
 #include <mutex>
 
@@ -62,6 +63,33 @@ void hle_Direct3D_CreateDevice(Ctx* c) {
         if (settings().fps >= 60) wr32(pp + 0x30, 1);
     }
     F_00851360_orig(c);
+}
+
+// The game picks its present interval itself: CGraphics::SetTargetFrameRate (0x3F700, this in
+// ecx; float fps, bool orImmediate; ret 8) turns the region's LockToFrameRate (30) into
+// n = ceil(refresh / fps) vblanks per frame, stores the D3D present interval
+// (D3D__RenderState[PRESENTATIONINTERVAL], 0x862494) and the frame period n / refresh (+0x1C4) that
+// the render interpolation predicts present times with. 0x3F820 (bool, int n, bool) sets n
+// directly (some modes force 2). The simulation runs on real time (15 server turns per second,
+// rendering interpolates), so fps = 60 asks for 60 here and turns forced 2s into 1s.
+void F_0003F700_orig(Ctx* c);
+void F_0003F820_orig(Ctx* c);
+void hle_SetTargetFrameRate(Ctx* c) {
+    float fps;
+    std::memcpy(&fps, gp(c->esp + 4), 4);
+    if (settings().fps >= 60 && fps > 0.0f && fps < 60.0f) {
+        static int logged = 0;
+        if (logged++ < 4) XLOG(1, "frame rate: the game asks for %.0f fps, using 60", fps);
+        const float sixty = 60.0f;
+        std::memcpy(gp(c->esp + 4), &sixty, 4);
+    }
+    const uint32_t self = c->ecx;
+    F_0003F700_orig(c);
+    XLOG(2, "frame rate: present interval 0x%X, frame period %g s", rd32(0x862494), static_cast<double>(*reinterpret_cast<const float*>(gp(self + 0x1C4))));
+}
+void hle_SetPresentInterval(Ctx* c) {
+    if (settings().fps >= 60 && rd32(c->esp + 8) == 2) wr32(c->esp + 8, 1);
+    F_0003F820_orig(c);
 }
 
 // CEngineCamera::SetupGamut (0x132D00; this in ebx, CEngineCameraDesc* on the stack). It sets

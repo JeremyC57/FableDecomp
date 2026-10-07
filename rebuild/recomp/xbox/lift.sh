@@ -15,6 +15,8 @@ exec "$LIFTER" "$XBE" - "$OUT" "$@" \
   --wrap 0x644A5A=hle_XmvYuvToRgb \
   --wrap 0x161830=hle_SkyBand \
   --wrap 0x5E1D70=hle_MusicOpen \
+  --wrap 0x3F700=hle_SetTargetFrameRate \
+  --wrap 0x3F820=hle_SetPresentInterval \
   --wrap 0x5E1B20=hle_MusicClose \
   --wrap 0x5E19B0=hle_MusicRead \
   --wrap 0x5E17E0=hle_MusicSeek \
