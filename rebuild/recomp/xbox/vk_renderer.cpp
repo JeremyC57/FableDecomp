@@ -111,9 +111,17 @@ VkRenderer::Buffer VkRenderer::createBuffer(VkDeviceSize size, VkBufferUsageFlag
 // ============================================================================================
 // frames and submission
 // ============================================================================================
+// Waits for a frame's GPU work; the time goes to the GPU-wait statistic (quick menu).
+void VkRenderer::waitFence(VkFence fence) {
+    if (vkGetFenceStatus(ctx().device, fence) == VK_SUCCESS) return;
+    const auto t0 = std::chrono::steady_clock::now();
+    vkWaitForFences(ctx().device, 1, &fence, VK_TRUE, UINT64_MAX);
+    g_perfGpuWaitNs += static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - t0).count());
+}
+
 void VkRenderer::beginFrame() {
     Frame& f = frames_[frame_];
-    vkWaitForFences(ctx().device, 1, &f.fence, VK_TRUE, UINT64_MAX);
+    waitFence(f.fence);
     resolveReports(f);
     vkResetFences(ctx().device, 1, &f.fence);
     vkResetDescriptorPool(ctx().device, f.descPool, 0);
@@ -197,7 +205,7 @@ void VkRenderer::submitFrame(bool wait) {
     si.pCommandBuffers = &f.cmd;
     submit(si, f.fence);
     f.submitted = true;
-    if (wait) vkWaitForFences(ctx().device, 1, &f.fence, VK_TRUE, UINT64_MAX);
+    if (wait) waitFence(f.fence);
     recording_ = false;
     frame_ = (frame_ + 1) % kFrames;
     beginFrame();

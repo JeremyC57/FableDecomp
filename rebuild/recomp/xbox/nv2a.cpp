@@ -23,8 +23,9 @@ namespace xb {
 // Frame statistics for the Android quick menu (frames per second and the slowest frame, over
 // half-second windows).
 namespace {
-std::atomic<float> g_perfFps{0.0f}, g_perfWorstMs{0.0f};
+std::atomic<float> g_perfFps{0.0f}, g_perfWorstMs{0.0f}, g_perfPassesPerFrame{0.0f}, g_perfGpuWait{0.0f};
 }  // namespace
+std::atomic<uint64_t> g_perfPasses{0}, g_perfGpuWaitNs{0};
 
 void perfFlip(std::chrono::steady_clock::time_point now) {
     static auto start = now, last = now;
@@ -35,6 +36,12 @@ void perfFlip(std::chrono::steady_clock::time_point now) {
     ++frames;
     const double span = std::chrono::duration<double>(now - start).count();
     if (span >= 0.5) {
+        static uint64_t lastPasses = 0, lastWait = 0;
+        const uint64_t passes = g_perfPasses.load(), wait = g_perfGpuWaitNs.load();
+        g_perfPassesPerFrame = static_cast<float>(static_cast<double>(passes - lastPasses) / frames);
+        g_perfGpuWait = static_cast<float>(static_cast<double>(wait - lastWait) * 1e-9 / span);
+        lastPasses = passes;
+        lastWait = wait;
         g_perfFps = static_cast<float>(frames / span);
         g_perfWorstMs = static_cast<float>(worst);
         start = now;
@@ -46,6 +53,13 @@ void perfFlip(std::chrono::steady_clock::time_point now) {
 void perfStats(float* fps, float* worstMs) {
     *fps = g_perfFps;
     *worstMs = g_perfWorstMs;
+}
+
+void perfStatsEx(float* out) {
+    out[0] = g_perfFps;
+    out[1] = g_perfWorstMs;
+    out[2] = g_perfPassesPerFrame;
+    out[3] = g_perfGpuWait;
 }
 }  // namespace xb
 
@@ -469,7 +483,9 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
             const auto now = std::chrono::steady_clock::now();
             perfFlip(now);
             if (now - t0 >= std::chrono::seconds(5)) {
-                XLOG(1, "NV2A: %.1f flips/s", n / std::chrono::duration<double>(now - t0).count());
+                float st[4];
+                perfStatsEx(st);
+                XLOG(1, "NV2A: %.1f flips/s (%.0f render passes per frame, GPU wait %.0f%%)", n / std::chrono::duration<double>(now - t0).count(), st[2], st[3] * 100.0f);
                 t0 = now;
                 n = 0;
             }

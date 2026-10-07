@@ -147,7 +147,9 @@ public final class QuickMenu {
             @Override public void run() {
                 if (fps.getVisibility() != View.VISIBLE) return;
                 float[] s = natives.stats();
-                if (s != null && s.length >= 2) fps.setText(String.format(java.util.Locale.US, "%.0f fps  ·  slowest %.0f ms", s[0], s[1]));
+                if (s != null && s.length >= 4)
+                    fps.setText(String.format(java.util.Locale.US, "%.0f fps  ·  slowest %.0f ms  ·  %.0f passes  ·  GPU wait %.0f%%", s[0], s[1], s[2], s[3] * 100));
+                else if (s != null && s.length >= 2) fps.setText(String.format(java.util.Locale.US, "%.0f fps  ·  slowest %.0f ms", s[0], s[1]));
                 handler.postDelayed(this, 500);
             }
         });

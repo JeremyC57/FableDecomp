@@ -66,6 +66,7 @@ private:
     uint32_t reportFirst_ = 0;  // first query of the count being accumulated (current frame)
     bool queryPrecise_ = false;
     void resolveReports(Frame& f);
+    void waitFence(VkFence fence);
     struct Surface {
         uint32_t addr = 0, w = 0, h = 0, pitch = 0;
         VkFormat format = VK_FORMAT_UNDEFINED;
@@ -117,10 +118,16 @@ private:
     // endFrame into touching clusters; each cluster keeps its 4:3 proportions and is pinned to the
     // left edge, right edge or centre of the wide screen. A frame with a full-screen panel (menus)
     // or letterbox bars (cutscenes, conversations) keeps the whole interface centred.
-    struct UiRect { float x0, x1, y0, y1, anchor; };
+    struct UiRect { float x0, x1, y0, y1, anchor; uint64_t piece = 0; };
     std::vector<UiRect> uiCur_, uiPrev_;
+    // Learned HUD pieces (texture + place), which keep their edge regardless of the frame's mode.
+    struct HudPiece { float anchor = 0.0f; uint32_t sightings = 0; };
+    static constexpr uint32_t kHudSightings = 20;
+    std::unordered_map<uint64_t, HudPiece> uiHud_;
+    static uint64_t uiPieceKey(uint64_t tex, float x0, float x1, float y0, float y1);
+    float uiAnchorLayout(float x0, float x1, float y0, float y1, bool panel);
     bool uiMenuCur_ = false, uiMenuPrev_ = false, uiBarTop_ = false, uiBarBottom_ = false;
-    float uiAnchor(float x0, float x1, float y0, float y1, bool panel);
+    float uiAnchor(float x0, float x1, float y0, float y1, bool panel, uint64_t tex);
     void uiEndFrame();
     VkPipelineCache pipeCache_ = VK_NULL_HANDLE;
     bool pipeCacheDirty_ = false;

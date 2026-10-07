@@ -75,10 +75,10 @@ extern "C" JNIEXPORT void JNICALL Java_org_fablexbox_TouchControls_nativeToggleK
 // Quick menu (GameActivity): frame statistics, options that apply while the game runs, and an
 // on-demand profile (<data>/profile.txt).
 extern "C" JNIEXPORT jfloatArray JNICALL Java_org_fablexbox_GameActivity_nativeStats(JNIEnv* env, jclass) {
-    float v[2];
-    xb::perfStats(&v[0], &v[1]);
-    jfloatArray a = env->NewFloatArray(2);
-    if (a) env->SetFloatArrayRegion(a, 0, 2, v);
+    float v[4];
+    xb::perfStatsEx(v);
+    jfloatArray a = env->NewFloatArray(4);
+    if (a) env->SetFloatArrayRegion(a, 0, 4, v);
     return a;
 }
 extern "C" JNIEXPORT void JNICALL Java_org_fablexbox_GameActivity_nativeSetOption(JNIEnv* env, jclass, jstring name, jboolean on) {

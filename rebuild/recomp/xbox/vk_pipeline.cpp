@@ -459,6 +459,7 @@ void VkRenderer::beginPass() {
     bi.framebuffer = fb;
     bi.renderArea.extent = {c ? hostW(c->w, c->h) : hostW(z->w, z->h), hostH(c ? c->h : z->h)};
     vkCmdBeginRenderPass(cmd(), &bi, VK_SUBPASS_CONTENTS_INLINE);
+    ++g_perfPasses;
     pass_ = rp;
     passRp_ = rp;
     passFb_ = fb;
@@ -475,8 +476,26 @@ float anchorOfExtent(float x0, float x1) {
 }
 }  // namespace
 
-float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel) {
-    uiCur_.push_back({x0, x1, y0, y1, 0.0f});
+// A HUD piece: the same texture at the same place (4-pixel grid) frame after frame.
+uint64_t VkRenderer::uiPieceKey(uint64_t tex, float x0, float x1, float y0, float y1) {
+    auto q = [](float v) { return static_cast<uint64_t>(static_cast<int64_t>(std::floor(v / 4.0f)) & 0xFFF); };
+    return (tex * 0x9E3779B97F4A7C15ull) ^ (q(x0) | q(x1) << 12 | q(y0) << 24 | q(y1) << 36);
+}
+
+float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel, uint64_t tex) {
+    const uint64_t piece = uiPieceKey(tex, x0, x1, y0, y1);
+    // Learned HUD pieces stay at their screen edge whatever else the frame draws (location
+    // banners, glare, fades, menus over the HUD): see uiEndFrame.
+    if (const auto it = uiHud_.find(piece); it != uiHud_.end() && it->second.sightings >= kHudSightings) {
+        uiCur_.push_back({x0, x1, y0, y1, it->second.anchor, piece});
+        return it->second.anchor;
+    }
+    const float a = uiAnchorLayout(x0, x1, y0, y1, panel);
+    uiCur_.push_back({x0, x1, y0, y1, a, piece});
+    return a;
+}
+
+float VkRenderer::uiAnchorLayout(float x0, float x1, float y0, float y1, bool panel) {
     // Menus (a full-screen panel) and cinematics (letterbox bars: screen-wide strips at the top or
     // bottom edge) keep their whole interface centred: subtitles and prompts stay together.
     // (Bars slid off screen after a conversation are still drawn: only visible ones count.)
@@ -486,6 +505,9 @@ float VkRenderer::uiAnchor(float x0, float x1, float y0, float y1, bool panel) {
         if (y0 <= 4.0f) uiBarTop_ = true;
         if (y1 >= 476.0f) uiBarBottom_ = true;
     }
+    // FABLE_UI_FORCE_MENU=<flip> (debugging): every frame from that flip on is a menu frame.
+    static const uint64_t forceMenu = getenv("FABLE_UI_FORCE_MENU") ? strtoull(getenv("FABLE_UI_FORCE_MENU"), nullptr, 10) : ~0ull;
+    if (g_frameCount >= forceMenu) panel = true;
     const bool letterbox = uiBarTop_ && uiBarBottom_;
     if ((panel || letterbox) && !uiMenuCur_ && !uiMenuPrev_) {
         static int logged = 0;  // what switches the interface to its centred 4:3 layout
@@ -533,6 +555,19 @@ void VkRenderer::uiEndFrame() {
             }
     }
     for (UiRect& r : cl) r.anchor = anchorOfExtent(r.x0, r.x1);
+    // HUD learning: in plain gameplay frames (no menu panel or letterboxing, this frame or the
+    // last), a piece placed at a screen edge counts a sighting; after kHudSightings it is a HUD
+    // piece and keeps that edge from then on.
+    if (!uiMenuCur_ && !uiMenuPrev_) {
+        if (uiHud_.size() > 8192) uiHud_.clear();
+        for (const UiRect& r : uiCur_) {
+            if (r.anchor == 0.0f || r.x1 - r.x0 >= 560.0f) continue;
+            HudPiece& h = uiHud_[r.piece];
+            if (h.sightings > 0 && h.anchor != r.anchor) h.sightings = 0;
+            h.anchor = r.anchor;
+            if (h.sightings < kHudSightings) ++h.sightings;
+        }
+    }
     if (getenv("FABLE_UI_LOG")) {  // debugging: layout changes
         static std::string last;
         std::string cur = uiMenuCur_ ? "menu" : "hud";
@@ -1346,12 +1381,14 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
         const uint32_t nv = needIndex ? static_cast<uint32_t>(seq.size()) : count;
         bool flat = nv > 0 && nv <= 4096, textured = false, effect = false;
+        uint64_t tex0 = 0;  // stage 0 texture (address, format): identifies HUD pieces
         for (int i = 0; i < 4 && flat; ++i) {
             if (!(R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30))) continue;
             textured = true;
             const uint32_t tb = NV097_SET_TEXTURE_OFFSET / 4 + i * 16;
             const uint32_t tdma = (R[tb + 1] & 3) == 2 ? R[NV097_SET_CONTEXT_DMA_B / 4] : R[NV097_SET_CONTEXT_DMA_A / 4];
             const uint32_t taddr = dmaAddress(tdma, nullptr) + R[tb];
+            if (i == 0) tex0 = (static_cast<uint64_t>(taddr) << 32) | R[NV097_SET_TEXTURE_FORMAT / 4];
             // Effect passes (bloom, outline composites) sample a render target on stage 0; HUD draws
             // leave later stages enabled on the bloom buffers without using them.
             if (i == 0 && (findSurface(taddr, false) || findSurface(taddr, true))) effect = true;
@@ -1411,7 +1448,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             // happen to cover it are not one.
             const bool additive = (R[NV097_SET_BLEND_ENABLE / 4] & 1) && (R[NV097_SET_BLEND_FUNC_DFACTOR / 4] & 0xFFFF) == NV097_SET_BLEND_FUNC_SFACTOR_V_ONE;
             const bool panel = textured && !additive && fullWidth && minY <= 16.0f && maxY >= 464.0f;
-            uiCenter = noCorners ? 0.0f : uiAnchor(minX, maxX, minY, maxY, panel);  // -1 left edge, 0 centre, 1 right edge
+            uiCenter = noCorners ? 0.0f : uiAnchor(minX, maxX, minY, maxY, panel, tex0);  // -1 left edge, 0 centre, 1 right edge
         }
         // Text (the glyph cache is an AY8 texture) above 480p: glyph edges are sharpened in the shader.
         static const bool noSharp = featureOff("textsharp");
@@ -1557,7 +1594,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         img[8 + i] = {sampler(i), dummy3D_, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL};
         if (R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30)) {
             uint32_t kind = 0;
-            endPass();
+            // texture() ends the render pass itself when it has to (uploads, layout transitions
+            // of sampled render targets); ending it for every textured draw cost a render pass
+            // per draw, each a full tile store and load on mobile GPUs.
             if (VkImageView v = texture(i, &kind)) img[4 * kind + i].imageView = v;
         }
     }

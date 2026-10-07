@@ -85,10 +85,10 @@ bool profilerCapture(double delay, double secs, const std::string& path) {
             ++libs[lib + "!" + (d.dli_sname ? d.dli_sname : off)];
         }
         if (FILE* f = std::fopen(path.c_str(), "w")) {
-            float fps = 0, worst = 0;
-            perfStats(&fps, &worst);
-            std::fprintf(f, "# %zu samples over %.0f s; profilerStart at %llx; %.1f fps\n", n, secs,
-                         static_cast<unsigned long long>(reinterpret_cast<uintptr_t>(&profilerStart) - base), fps);
+            float st[4];
+            perfStatsEx(st);
+            std::fprintf(f, "# %zu samples over %.0f s; profilerStart at %llx; %.1f fps, slowest %.0f ms, %.0f render passes per frame, GPU wait %.0f%%\n", n, secs,
+                         static_cast<unsigned long long>(reinterpret_cast<uintptr_t>(&profilerStart) - base), st[0], st[1], st[2], st[3] * 100.0f);
             for (auto& [tid, v] : perThread) {
                 char comm[64] = "?";
                 char p[64];
