@@ -147,17 +147,26 @@ void VkRenderer::beginFrame() {
 // then the report's status word says "incomplete", as on the Xbox while the GPU is behind.
 // FABLE_DISABLE=occlusion: every report "visible" at once (the old behaviour).
 void VkRenderer::clearReport() {
+    std::lock_guard<std::mutex> l(surfLock_);  // the presenter thread submits (and swaps frames) at vblank
     openCount_ = std::make_shared<ReportCount>();
     reportFirst_ = frames_[frame_].queryCount;
 }
 
 void VkRenderer::finishCount(ReportCount& c) {
     const uint32_t v = c.unknown ? 0x10000u : static_cast<uint32_t>(std::min(c.sum + 0.5, 4294967295.0));
+    static const bool stats = getenv("FABLE_REPORT_LOG") != nullptr;  // debugging: real objects counted 0
+    if (stats && v == 0 && c.colorDraws) {
+        static int n = 0;
+        if (n++ < 400)
+            XLOG(0, "occlusion: 0 for %u draws (%u with colour) depth funcs 0x%x target 0x%08x report 0x%08x flip %llu", c.draws, c.colorDraws, c.depthFuncs,
+                 c.target, c.addr, static_cast<unsigned long long>(g_frameCount));
+    }
     wr32(c.addr + 8, v);
     wr32(c.addr + 12, 0);
 }
 
 void VkRenderer::report(uint32_t addr) {
+    std::lock_guard<std::mutex> l(surfLock_);
     Frame& f = frames_[frame_];
     if (!f.queries || !settings().occlusion) {
         openCount_.reset();

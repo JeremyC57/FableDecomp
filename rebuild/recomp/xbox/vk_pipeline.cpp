@@ -1814,6 +1814,10 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     }
     if (counting && qf.queryCount < kMaxQueries && cb == qf.cmd) {
         query = qf.queryCount++;
+        ++openCount_->draws;
+        if (R[NV097_SET_COLOR_MASK / 4]) ++openCount_->colorDraws;
+        openCount_->depthFuncs |= (R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1) ? 1u << (R[NV097_SET_DEPTH_FUNC / 4] & 7) : 0x100u;
+        openCount_->target = target_.color;
         const double hostSamples = static_cast<double>(hostW(target_.w, target_.h)) * hostH(target_.h);
         qf.queryScale.push_back(hostSamples > 0 ? static_cast<float>(static_cast<double>(target_.w) * target_.h / hostSamples) : 1.0f);
         vkCmdBeginQuery(cb, qf.queries, query, queryPrecise_ ? VK_QUERY_CONTROL_PRECISE_BIT : 0);

@@ -74,6 +74,7 @@ private:
         int pending = 0;       // ranges not yet read back
         bool closed = false;   // GET_REPORT seen
         bool unknown = false;  // a counted draw got no query: report it visible
+        uint32_t draws = 0, colorDraws = 0, depthFuncs = 0, target = 0;  // FABLE_REPORT_LOG
     };
     std::shared_ptr<ReportCount> openCount_;  // the count being accumulated
     uint32_t reportFirst_ = 0;                // its first query in the current submission

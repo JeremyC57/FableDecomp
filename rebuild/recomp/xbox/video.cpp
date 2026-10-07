@@ -321,6 +321,22 @@ void videoMain() {
         auto* vr = dynamic_cast<gpu::VkRenderer*>(gpu::g_renderer);
         const uint32_t scan = gpu::state().scanout ? gpu::state().scanout : physOf(g_avFramebuffer);
         if (vr && vr->scanoutImage(scan, &img, &iw, &ih)) {
+            // FABLE_DUMP_FLIPS=<first>,<last> (debugging): every new game frame in that range, as
+            // vkframe_<flip + 1000000>.png (flicker hunting).
+            static uint64_t dumpFirst = ~0ull, dumpLast = 0, lastDumped = ~0ull;
+            static const bool dumpFlips = [] {
+                const char* e = getenv("FABLE_DUMP_FLIPS");
+                if (!e) return false;
+                dumpFirst = strtoull(e, nullptr, 10);
+                const char* c = strchr(e, ',');
+                dumpLast = c ? strtoull(c + 1, nullptr, 10) : dumpFirst;
+                return true;
+            }();
+            const uint64_t flip = gpu::g_frameCount;
+            if (dumpFlips && flip >= dumpFirst && flip <= dumpLast && flip != lastDumped) {
+                lastDumped = flip;
+                dumpImage(img, iw, ih, 1000000 + flip);
+            }
             static const int every = getenv("FABLE_DUMP_FRAMES") ? atoi(getenv("FABLE_DUMP_FRAMES")) : 0;
             static uint64_t presented = 0;
             if (every > 0 && ++presented % static_cast<uint64_t>(every) == 0) {
