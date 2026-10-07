@@ -100,6 +100,14 @@ private:
     void savePipelineCache();
 
     int scale_ = 1;
+    bool wide_ = false;  // aspect = 16:9: screen-sized (640x480) surfaces get a 4:3-wider host image
+    // Host size of a guest surface: resolution scale, and native 16:9 width for 640x480 surfaces
+    // (the game draws in 640x480 coordinates; the viewport maps them onto the wider image).
+    uint32_t hostW(uint32_t w, uint32_t h) const {
+        const uint32_t s = static_cast<uint32_t>(scale_);
+        return wide_ && w == 640 && h == 480 ? (w * s * 4 + 1) / 3 : w * s;
+    }
+    uint32_t hostH(uint32_t h) const { return h * static_cast<uint32_t>(scale_); }
     VkFormat depthFormat_ = VK_FORMAT_D24_UNORM_S8_UINT;
     VkCommandPool pool_ = VK_NULL_HANDLE;
     std::array<Frame, 2> frames_;

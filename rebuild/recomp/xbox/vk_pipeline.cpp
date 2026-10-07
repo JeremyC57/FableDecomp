@@ -447,15 +447,15 @@ void VkRenderer::beginPass() {
         fci.renderPass = rp;
         fci.attachmentCount = n;
         fci.pAttachments = views;
-        fci.width = (c ? c->w : z->w) * static_cast<uint32_t>(scale_);
-        fci.height = (c ? c->h : z->h) * static_cast<uint32_t>(scale_);
+        fci.width = c ? hostW(c->w, c->h) : hostW(z->w, z->h);
+        fci.height = hostH(c ? c->h : z->h);
         fci.layers = 1;
         vkCreateFramebuffer(dev, &fci, nullptr, &fb);
     }
     VkRenderPassBeginInfo bi{VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
     bi.renderPass = rp;
     bi.framebuffer = fb;
-    bi.renderArea.extent = {(c ? c->w : z->w) * static_cast<uint32_t>(scale_), (c ? c->h : z->h) * static_cast<uint32_t>(scale_)};
+    bi.renderArea.extent = {c ? hostW(c->w, c->h) : hostW(z->w, z->h), hostH(c ? c->h : z->h)};
     vkCmdBeginRenderPass(cmd(), &bi, VK_SUBPASS_CONTENTS_INLINE);
     pass_ = rp;
     passRp_ = rp;
@@ -603,7 +603,7 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
         src += cmp ? "layout(location=" + std::to_string(i) + ") in uint vin" + std::to_string(i) + ";\n"
                    : "layout(location=" + std::to_string(i) + ") in vec4 vin" + std::to_string(i) + ";\n";
     }
-    src += "layout(set=0, binding=0) uniform VC { vec4 c[192]; vec4 surface; vec4 clip; vec4 fog; } cst;\n";
+    src += "layout(set=0, binding=0) uniform VC { vec4 c[192]; vec4 surface; vec4 clip; vec4 fog; vec4 ui; } cst;\n";
     src += "layout(location=0) out vec4 vD0; layout(location=1) out vec4 vD1; layout(location=2) out vec4 vB0;\n"
            "layout(location=3) out vec4 vB1; layout(location=4) out float vFog;\n"
            "layout(location=5) out vec4 vTex0; layout(location=6) out vec4 vTex1; layout(location=7) out vec4 vTex2;\n"
@@ -658,6 +658,7 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
            "  p.xy = (2.0 * p.xy - cst.surface.xy) / cst.surface.xy;\n"
            "  p.z = p.z / cst.clip.y;\n"
            "  if (abs(oPos.w - 1.0) > 1e-5) p.x *= cst.clip.z;  // widescreen: perspective (3D) vertices squeezed into the 4:3 buffer\n"
+           "  else p.x = cst.ui.y + (p.x - cst.ui.y) * cst.ui.x;  // 16:9: a screen-space element narrowed about its centre\n"
            "  gl_Position = vec4(p.xyz * p.w, p.w);\n"
            "  vD0 = clamp(oD0, 0.0, 1.0); vD1 = clamp(oD1, 0.0, 1.0); vB0 = clamp(oB0, 0.0, 1.0); vB1 = clamp(oB1, 0.0, 1.0);\n"
            "  vFog = oFog.x; vTex0 = oT0; vTex1 = oT1; vTex2 = oT2; vTex3 = oT3;\n"
@@ -1135,6 +1136,59 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             if ((mask >> i) & 1) offs[i] += o + (inlStride == 0xFFFFFFFF ? 16u * i : 0);
         minIdx = 0;
     }
+    // 16:9 (native width): the game lays out screen-space elements (HUD, menus, text, movies) in
+    // 640x480, which the wider image would stretch. Small screen-space draws (every vertex at w = 1,
+    // depth test off, not sampling a render target, not a full-screen untextured fade) are narrowed
+    // by 3/4 about their own centre: same place on screen, true proportions; full-screen 4:3 images
+    // become pillarboxed. Classified by running the vertex program on the CPU. FABLE_DISABLE=uifix.
+    float uiScale = 1.0f, uiCenter = 0.0f;
+    static const bool noUiFix = featureOff("uifix");
+    if (wide_ && !noUiFix && target_.w == 640 && target_.h == 480 && inlStride != 0xFFFFFFFF &&
+        (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2 && !(R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1)) {
+        const uint32_t nv = needIndex ? static_cast<uint32_t>(seq.size()) : count;
+        bool flat = nv > 0 && nv <= 64, textured = false, effect = false;
+        for (int i = 0; i < 4 && flat; ++i) {
+            if (!(R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30))) continue;
+            textured = true;
+            const uint32_t tb = NV097_SET_TEXTURE_OFFSET / 4 + i * 16;
+            const uint32_t tdma = (R[tb + 1] & 3) == 2 ? R[NV097_SET_CONTEXT_DMA_B / 4] : R[NV097_SET_CONTEXT_DMA_A / 4];
+            const uint32_t taddr = dmaAddress(tdma, nullptr) + R[tb];
+            if (findSurface(taddr, false) || findSurface(taddr, true)) effect = true;
+        }
+        float minX = 1e30f, maxX = -1e30f;
+        for (uint32_t k = 0; k < nv && flat && !effect; ++k) {
+            const uint32_t rel = (needIndex ? seq[k] : first + k) - minIdx;
+            float v[16][4];
+            for (int i = 0; i < 16; ++i) {
+                std::memcpy(v[i], attrib_[i], 16);
+                if (!((mask >> i) & 1) || !src[i]) continue;
+                const uint32_t type = fmts[i] & 0xF, size = (fmts[i] >> 4) & 0xF;
+                const uint8_t* p = src[i] + static_cast<size_t>(rel) * (fmts[i] >> 8);
+                float d[4] = {0, 0, 0, 1};
+                for (uint32_t c = 0; c < size && c < 4; ++c) {
+                    if (type == 2) std::memcpy(&d[c], p + 4 * c, 4);
+                    else if (type == 0) d[c] = p[size >= 3 ? (c < 3 ? 2 - c : 3) : c] / 255.0f;
+                    else if (type == 4) d[c] = p[c] / 255.0f;
+                    else if (type == 1 || type == 5) {
+                        int16_t x;
+                        std::memcpy(&x, p + 2 * c, 2);
+                        d[c] = type == 1 ? std::max(x / 32767.0f, -1.0f) : static_cast<float>(x);
+                    }
+                }
+                std::memcpy(v[i], d, 16);
+            }
+            float pos[4];
+            evalVertexPosition(st.program, R[NV097_SET_TRANSFORM_PROGRAM_START / 4], st.constants, v, pos);
+            if (!(std::fabs(pos[3] - 1.0f) <= 1e-5f) || !std::isfinite(pos[0])) flat = false;
+            minX = std::min(minX, pos[0]);
+            maxX = std::max(maxX, pos[0]);
+        }
+        const bool fullWidth = minX <= 4.0f && maxX >= 636.0f;
+        if (flat && !effect && !(fullWidth && !textured)) {
+            uiScale = 0.75f;
+            uiCenter = (minX + maxX) / 640.0f - 1.0f;  // the element's centre in clip space
+        }
+    }
     if (inlStride != 0xFFFFFFFF)
         for (int i = 0; i < 16; ++i) {
             const uint32_t type = fmts[i] & 0xF;
@@ -1187,7 +1241,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     g_ds.fmt = R[NV097_SET_SURFACE_FORMAT / 4];
 
     // Uniforms.
-    struct VC { float c[192][4]; float surface[4]; float clip[4]; float fog[4]; } vc{};
+    struct VC { float c[192][4]; float surface[4]; float clip[4]; float fog[4]; float ui[4]; } vc{};
     std::memcpy(vc.c, st.constants, sizeof vc.c);
     if ((R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) != 2) std::memcpy(vc.c, &R[NV097_SET_COMPOSITE_MATRIX / 4], 64);
     vc.surface[0] = static_cast<float>(target_.w);
@@ -1212,6 +1266,8 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     vc.clip[0] = cmin;
     vc.clip[1] = cmax > 0 ? cmax : 16777215.0f;
     std::memcpy(vc.fog, &R[NV097_SET_FOG_PARAMS / 4], 12);
+    vc.ui[0] = uiScale;
+    vc.ui[1] = uiCenter;
     // Widescreen (aspect = 16:9): the game's camera projects a 16:9 view into the 640x480 buffer
     // (hle_SetupGamut) and the presenter stretches the frame. The old fallback (FABLE_DISABLE=hor+)
     // squeezed perspective draws into the back buffer instead, which shows the game's 4:3 culling at
@@ -1296,9 +1352,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     const uint32_t dynOff[2] = {static_cast<uint32_t>(vcOff), static_cast<uint32_t>(fcOff)};
     vkCmdBindDescriptorSets(cb, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeLayout_, 0, 1, &set, 2, dynOff);
     vkCmdBindVertexBuffers(cb, 0, 16, bufs, offs);
-    VkViewport vp{0, 0, static_cast<float>(target_.w * static_cast<uint32_t>(scale_)), static_cast<float>(target_.h * static_cast<uint32_t>(scale_)), 0.0f, 1.0f};
+    VkViewport vp{0, 0, static_cast<float>(hostW(target_.w, target_.h)), static_cast<float>(hostH(target_.h)), 0.0f, 1.0f};
     vkCmdSetViewport(cb, 0, 1, &vp);
-    VkRect2D sc{{0, 0}, {target_.w * static_cast<uint32_t>(scale_), target_.h * static_cast<uint32_t>(scale_)}};
+    VkRect2D sc{{0, 0}, {hostW(target_.w, target_.h), hostH(target_.h)}};
     vkCmdSetScissor(cb, 0, 1, &sc);
     float bc[4];
     const uint32_t bcol = R[NV097_SET_BLEND_COLOR / 4];
@@ -1434,7 +1490,7 @@ void VkRenderer::captureImage() {
     if (!c) return;
     const bool c16 = c->format == VK_FORMAT_A1R5G5B5_UNORM_PACK16;
     if (!c16 && c->format != VK_FORMAT_B8G8R8A8_UNORM) return;
-    const uint32_t w = c->w * static_cast<uint32_t>(scale_), h = c->h * static_cast<uint32_t>(scale_);
+    const uint32_t w = hostW(c->w, c->h), h = hostH(c->h);
     static Buffer buf;
     static void* mapped = nullptr;
     if (!buf.buf) {

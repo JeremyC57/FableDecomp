@@ -12,6 +12,11 @@ namespace xb::gpu {
 std::string translateVertexProgram(const uint32_t (*program)[4], uint32_t start);
 const char* vertexProgramPrelude();
 
+// Runs the vertex program on the CPU for one vertex (inputs v[16], constants c[192]) and returns
+// oPos, with the same semantics as the GLSL translation. Used to classify small draws (screen-
+// space UI vs world) for the 16:9 layout.
+void evalVertexPosition(const uint32_t (*program)[4], uint32_t start, const float (*c)[4], const float (*v)[4], float oPos[4]);
+
 struct CombinerInfo {
     uint32_t texMode[4] = {};
 };

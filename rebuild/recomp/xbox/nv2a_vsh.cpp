@@ -8,6 +8,9 @@
 
 #include <cstdlib>
 
+#include <algorithm>
+#include <cmath>
+#include <cstring>
 #include <cstdio>
 #include <string>
 
@@ -151,6 +154,98 @@ std::string translateVertexProgram(const uint32_t (*prog)[4], uint32_t start) {
         if (get(t, F_FINAL)) break;
     }
     return body;
+}
+
+void evalVertexPosition(const uint32_t (*prog)[4], uint32_t start, const float (*cst)[4], const float (*v)[4], float oPos[4]) {
+    struct V { float x[4]; };
+    V R[13] = {};  // R12 = oPos
+    V out[16] = {};
+    out[0].x[3] = 1.0f;  // oPos starts as (0, 0, 0, 1), as in the GLSL
+    int a0 = 0;
+    auto C = [&](int i) { V r{}; if (i >= 0 && i < 192) std::memcpy(r.x, cst[i], 16); return r; };
+    auto src = [&](const uint32_t* t, Field mux, Field neg, Field swz, uint32_t reg, bool scalar) {
+        V b{};
+        switch (get(t, mux)) {
+        case 1: b = reg == 12 ? out[0] : R[reg < 13 ? reg : 0]; break;
+        case 2: std::memcpy(b.x, v[get(t, F_V)], 16); break;
+        case 3: b = C(static_cast<int>(get(t, F_CONST)) + (get(t, F_A0X) ? a0 : 0)); break;
+        default: break;
+        }
+        const uint32_t s = get(t, swz);
+        V r;
+        for (int k = 0; k < 4; ++k) r.x[k] = b.x[(s >> (6 - 2 * (scalar ? 0 : k))) & 3];
+        if (get(t, neg)) for (float& f : r.x) f = -f;
+        return r;
+    };
+    auto mul = [](const V& a, const V& b) { V r; for (int k = 0; k < 4; ++k) r.x[k] = (a.x[k] == 0.0f || b.x[k] == 0.0f) ? 0.0f : a.x[k] * b.x[k]; return r; };
+    auto splat = [](float f) { V r; for (float& x : r.x) x = f; return r; };
+    for (uint32_t slot = start; slot < 136; ++slot) {
+        const uint32_t* t = prog[slot];
+        const uint32_t mac = get(t, F_MAC), ilu = get(t, F_ILU);
+        const bool scalarIlu = ilu == ILU_RCP || ilu == ILU_RCC || ilu == ILU_RSQ || ilu == ILU_EXP || ilu == ILU_LOG;
+        const uint32_t cr = (get(t, F_C_R_HI) << 2) | get(t, F_C_R_LO);
+        const V a = src(t, F_A_MUX, F_A_NEG, F_A_SWZ, get(t, F_A_R), false), b = src(t, F_B_MUX, F_B_NEG, F_B_SWZ, get(t, F_B_R), false);
+        const V c = src(t, F_C_MUX, F_C_NEG, F_C_SWZ, cr, false), cs = src(t, F_C_MUX, F_C_NEG, F_C_SWZ, cr, scalarIlu);
+        V m{}, i{};
+        bool hasM = true, hasI = true;
+        switch (mac) {
+        case MAC_MOV: case MAC_ARL: m = a; break;
+        case MAC_MUL: m = mul(a, b); break;
+        case MAC_ADD: for (int k = 0; k < 4; ++k) m.x[k] = a.x[k] + c.x[k]; break;
+        case MAC_MAD: m = mul(a, b); for (int k = 0; k < 4; ++k) m.x[k] += c.x[k]; break;
+        case MAC_DP3: m = splat(a.x[0] * b.x[0] + a.x[1] * b.x[1] + a.x[2] * b.x[2]); break;
+        case MAC_DPH: m = splat(a.x[0] * b.x[0] + a.x[1] * b.x[1] + a.x[2] * b.x[2] + b.x[3]); break;
+        case MAC_DP4: m = splat(a.x[0] * b.x[0] + a.x[1] * b.x[1] + a.x[2] * b.x[2] + a.x[3] * b.x[3]); break;
+        case MAC_DST: m = {{1.0f, a.x[1] * b.x[1], a.x[2], b.x[3]}}; break;
+        case MAC_MIN: for (int k = 0; k < 4; ++k) m.x[k] = std::min(a.x[k], b.x[k]); break;
+        case MAC_MAX: for (int k = 0; k < 4; ++k) m.x[k] = std::max(a.x[k], b.x[k]); break;
+        case MAC_SLT: for (int k = 0; k < 4; ++k) m.x[k] = a.x[k] < b.x[k] ? 1.0f : 0.0f; break;
+        case MAC_SGE: for (int k = 0; k < 4; ++k) m.x[k] = a.x[k] >= b.x[k] ? 1.0f : 0.0f; break;
+        default: hasM = false; break;
+        }
+        const float x = cs.x[0];
+        switch (ilu) {
+        case ILU_MOV: i = c; break;
+        case ILU_RCP: i = splat(x == 0.0f ? INFINITY : 1.0f / x); break;
+        case ILU_RCC: {
+            float r = 1.0f / x;
+            r = r >= 0.0f ? std::clamp(r, 5.42101e-20f, 1.84467e19f) : std::clamp(r, -1.84467e19f, -5.42101e-20f);
+            i = splat(r);
+            break;
+        }
+        case ILU_RSQ: i = splat(std::fabs(x) == 0.0f ? INFINITY : 1.0f / std::sqrt(std::fabs(x))); break;
+        case ILU_EXP: { const float f = std::floor(x); i = {{std::exp2(f), x - f, std::exp2(x), 1.0f}}; break; }
+        case ILU_LOG: {
+            const float ax = std::fabs(x);
+            if (ax == 0.0f) i = {{-INFINITY, 1.0f, -INFINITY, 1.0f}};
+            else { const float e = std::floor(std::log2(ax)); i = {{e, ax / std::exp2(e), std::log2(ax), 1.0f}}; }
+            break;
+        }
+        case ILU_LIT: {
+            const float d = std::max(c.x[0], 0.0f), s = std::max(c.x[1], 0.0f), p = std::clamp(c.x[3], -127.9961f, 127.9961f);
+            i = {{1.0f, d, c.x[0] > 0.0f ? std::pow(s, p) : 0.0f, 1.0f}};
+            break;
+        }
+        default: hasI = false; break;
+        }
+        const uint32_t r = get(t, F_OUT_R);
+        auto writeMasked = [](V& dst, const V& val, uint32_t msk) { for (int k = 0; k < 4; ++k) if (msk & (8u >> k)) dst.x[k] = val.x[k]; };
+        auto reg = [&](uint32_t n) -> V& { return n == 12 ? out[0] : R[n < 13 ? n : 0]; };
+        if (mac == MAC_ARL) {
+            a0 = static_cast<int>(std::floor(m.x[0] + 0.001f));
+        } else if (hasM) {
+            const uint32_t mm = get(t, F_OUT_MAC_MASK);
+            if (mm && !(ilu != ILU_NOP && r == 1)) writeMasked(reg(r), m, mm);
+        }
+        if (hasI) {
+            const uint32_t im = get(t, F_OUT_ILU_MASK);
+            if (im) writeMasked(reg(mac != MAC_NOP ? 1u : r), i, im);
+        }
+        const uint32_t om = get(t, F_OUT_O_MASK);
+        if (om && get(t, F_OUT_ORB) && (get(t, F_OUT_MUX) ? hasI : hasM)) writeMasked(out[get(t, F_OUT_ADDRESS) & 0xF], get(t, F_OUT_MUX) ? i : m, om);
+        if (get(t, F_FINAL)) break;
+    }
+    std::memcpy(oPos, out[0].x, 16);
 }
 
 // Helper functions with the hardware's special cases (anything * 0 = 0, 1/0 = inf...).

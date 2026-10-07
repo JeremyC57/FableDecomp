@@ -29,8 +29,10 @@ constexpr int kFrames = 2;
 
 VkFormat colorFormatOf(uint32_t surfaceFormat) {
     switch (surfaceFormat & 0xF) {
-    case 0x1: case 0x2: return VK_FORMAT_A1R5G5B5_UNORM_PACK16;
-    case 0x3: return VK_FORMAT_R5G6B5_UNORM_PACK16;
+    // 16-bit surfaces (Fable's back buffer is X1R5G5B5) are stored with 8 bits per channel: the
+    // console dithers its 5-bit output, plain 5-bit storage bands visibly. The game never blends
+    // with destination alpha on them.
+    case 0x1: case 0x2: case 0x3: return VK_FORMAT_B8G8R8A8_UNORM;
     case 0x9: return VK_FORMAT_R8_UNORM;
     case 0xA: return VK_FORMAT_R8G8_UNORM;
     default: return VK_FORMAT_B8G8R8A8_UNORM;
@@ -45,6 +47,7 @@ VkFormat colorFormatOf(uint32_t surfaceFormat) {
 VkRenderer::VkRenderer() {
     VkDevice dev = ctx().device;
     scale_ = std::clamp(settings().resolutionScale, 1, 4);
+    wide_ = settings().widescreen;
     // Depth format: D24S8 where supported (most desktop), else D32S8 (some mobile).
     depthFormat_ = VK_FORMAT_D24_UNORM_S8_UINT;
     VkFormatProperties fp;
@@ -215,7 +218,7 @@ VkRenderer::Surface* VkRenderer::getSurface(uint32_t addr, uint32_t w, uint32_t 
     VkImageCreateInfo ici{VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO};
     ici.imageType = VK_IMAGE_TYPE_2D;
     ici.format = fmt;
-    ici.extent = {w * static_cast<uint32_t>(scale_), h * static_cast<uint32_t>(scale_), 1};
+    ici.extent = {hostW(w, h), hostH(h), 1};
     ici.mipLevels = 1;
     ici.arrayLayers = 1;
     ici.samples = VK_SAMPLE_COUNT_1_BIT;
@@ -362,10 +365,12 @@ void VkRenderer::clear(uint32_t flags) {
     }
     if (!n) return;
     VkClearRect rect{};
-    rect.rect.offset = {x0 * scale_, y0 * scale_};
-    rect.rect.extent = {static_cast<uint32_t>((x1 - x0 + 1) * scale_), static_cast<uint32_t>((y1 - y0 + 1) * scale_)};
+    const uint32_t fw = hostW(target_.w, target_.h), fh = hostH(target_.h);
+    const double sx = target_.w ? static_cast<double>(fw) / target_.w : 1.0;
+    const int hx0 = static_cast<int>(x0 * sx), hx1 = static_cast<int>((x1 + 1) * sx);
+    rect.rect.offset = {hx0, y0 * scale_};
+    rect.rect.extent = {static_cast<uint32_t>(std::max(0, hx1 - hx0)), static_cast<uint32_t>((y1 - y0 + 1) * scale_)};
     rect.layerCount = 1;
-    const uint32_t fw = target_.w * static_cast<uint32_t>(scale_), fh = target_.h * static_cast<uint32_t>(scale_);
     if (rect.rect.offset.x + rect.rect.extent.width > fw) rect.rect.extent.width = fw - std::min<uint32_t>(fw, rect.rect.offset.x);
     if (rect.rect.offset.y + rect.rect.extent.height > fh) rect.rect.extent.height = fh - std::min<uint32_t>(fh, rect.rect.offset.y);
     if (!rect.rect.extent.width || !rect.rect.extent.height) return;
@@ -383,8 +388,8 @@ bool VkRenderer::scanoutImage(uint32_t addr, VkImage* image, uint32_t* w, uint32
     transition(*s, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
     submitFrame(false);
     *image = s->image;
-    *w = s->w * static_cast<uint32_t>(scale_);
-    *h = s->h * static_cast<uint32_t>(scale_);
+    *w = hostW(s->w, s->h);
+    *h = hostH(s->h);
     return true;
 }
 
