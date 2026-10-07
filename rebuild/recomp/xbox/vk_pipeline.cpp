@@ -38,7 +38,8 @@ namespace {
 bool isDepthFormat(uint32_t color) { return color >= 0x2A && color <= 0x31; }
 
 // Generated fragment shader sources by key (captures write the ones they use to psh_<key>.frag).
-uint64_t g_lastFragKey = 0;  // the fragment shader of the draw being recorded
+uint64_t g_lastFragKey = 0;
+float g_uiClass[5];  // last draw's screen-space classification (flat, effect, max z, min x, max x) for captures  // the fragment shader of the draw being recorded
 std::unordered_map<uint64_t, std::string>& fragSources() {
     static std::unordered_map<uint64_t, std::string> m;
     return m;
@@ -1235,17 +1236,6 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
     // decides whether a draw is screen-space at all). FABLE_DISABLE=uifix.
     float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f, hudSqueeze = 1.0f;
-    // The HUD's 3D pieces (rings, heart, minimap frame) go through the game's own fixed HUD camera:
-    // a rotation-free 45-degree perspective (c5 = (2.414, 0, 0, x), c8 = (0, 0, 1, 0)) with the
-    // depth test off, not the world camera hle_SetupGamut widens. At 16:9 they are squeezed into
-    // the centred 4:3 area like the rest of the interface.
-    if (wide_ && target_.w == 640 && target_.h == 480 && !featureOff("uifix") && !(R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1) &&
-        (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
-        const float* c5 = st.constants[5];
-        const float* c8 = st.constants[8];
-        if (c8[0] == 0.0f && c8[1] == 0.0f && c8[2] == 1.0f && c8[3] == 0.0f && c5[1] == 0.0f && c5[2] == 0.0f && c5[0] > 0.5f)
-            hudSqueeze = 0.75f;
-    }
     static const bool noUiFix = featureOff("uifix");
     if ((wide_ || outH_ > 480) && !noUiFix && target_.w == 640 && target_.h == 480 &&
         (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
@@ -1257,7 +1247,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             const uint32_t tb = NV097_SET_TEXTURE_OFFSET / 4 + i * 16;
             const uint32_t tdma = (R[tb + 1] & 3) == 2 ? R[NV097_SET_CONTEXT_DMA_B / 4] : R[NV097_SET_CONTEXT_DMA_A / 4];
             const uint32_t taddr = dmaAddress(tdma, nullptr) + R[tb];
-            if (findSurface(taddr, false) || findSurface(taddr, true)) effect = true;
+            // Effect passes (bloom, outline composites) sample a render target on stage 0; HUD draws
+            // leave later stages enabled on the bloom buffers without using them.
+            if (i == 0 && (findSurface(taddr, false) || findSurface(taddr, true))) effect = true;
         }
         float minX = 1e30f, maxX = -1e30f, maxZ = -1e30f;
         for (uint32_t k = 0; k < nv && flat && !effect; ++k) {
@@ -1302,6 +1294,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         // Depth-tested screen-space draws are interface too when they sit on the near plane (HUD
         // icons and menus: z = 0); sprites the game projects onto the world have a real depth.
         const bool depthTest = R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1;
+        g_uiClass[0] = flat; g_uiClass[1] = effect; g_uiClass[2] = maxZ; g_uiClass[3] = minX; g_uiClass[4] = maxX;
         const bool screenSpace = flat && !effect && (!depthTest || maxZ <= 1.0f);
         if (wide_ && screenSpace && !(fullWidth && !textured)) {
             uiScale = 0.75f;
@@ -1564,6 +1557,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
                 fprintf(cap, " [func %X ref %X mask %X/%X ops %X/%X/%X]", R[NV097_SET_STENCIL_FUNC / 4], R[NV097_SET_STENCIL_FUNC_REF / 4],
                         R[NV097_SET_STENCIL_FUNC_MASK / 4], R[NV097_SET_STENCIL_MASK / 4], R[NV097_SET_STENCIL_OP_FAIL / 4],
                         R[NV097_SET_STENCIL_OP_ZFAIL / 4], R[NV097_SET_STENCIL_OP_ZPASS / 4]);
+            fprintf(cap, " ui %g/%g hud %g text %g class %g/%g/z%g/x%g..%g", vc.ui[0], vc.ui[1], vc.clip[2], fc.text[0], g_uiClass[0], g_uiClass[1],
+                    g_uiClass[2], g_uiClass[3], g_uiClass[4]);
+            std::fill(g_uiClass, g_uiClass + 5, -1.0f);
             fprintf(cap, " fs %016llx c0 %08X c1 %08X final %08X/%08X", static_cast<unsigned long long>(g_lastFragKey), R[NV097_SET_COMBINER_FACTOR0 / 4],
                     R[NV097_SET_COMBINER_FACTOR1 / 4], R[NV097_SET_SPECULAR_FOG_FACTOR / 4], R[NV097_SET_SPECULAR_FOG_FACTOR / 4 + 1]);
             {
