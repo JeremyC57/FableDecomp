@@ -323,7 +323,11 @@ void start() {
     want.freq = kRate;
     want.format = AUDIO_S16SYS;
     want.channels = 2;
+#ifdef __ANDROID__
+    want.samples = 1024;  // ~21 ms: phones underrun (crackle, skips) with shorter device buffers
+#else
     want.samples = 512;
+#endif
     want.callback = sdlCallback;
     if (!getenv("FABLE_NO_AUDIO") && SDL_InitSubSystem(SDL_INIT_AUDIO) == 0) {
         const SDL_AudioDeviceID dev = SDL_OpenAudioDevice(nullptr, 0, &want, &have, 0);

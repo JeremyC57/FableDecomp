@@ -36,6 +36,13 @@ namespace {
 // Z16: 0x2C/0x2D, 0x30/0x31).
 bool isDepthFormat(uint32_t color) { return color >= 0x2A && color <= 0x31; }
 
+// Generated fragment shader sources by key (captures write the ones they use to psh_<key>.frag).
+uint64_t g_lastFragKey = 0;  // the fragment shader of the draw being recorded
+std::unordered_map<uint64_t, std::string>& fragSources() {
+    static std::unordered_map<uint64_t, std::string> m;
+    return m;
+}
+
 
 uint64_t fnv(const void* p, size_t n, uint64_t h = 1469598103934665603ull) {
     const uint8_t* b = static_cast<const uint8_t*>(p);
@@ -670,6 +677,7 @@ VkShaderModule VkRenderer::vertexShader(uint32_t attribMask, const uint32_t* fmt
 VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
     const uint32_t* R = state().regs;
     uint64_t key = 7;
+    struct Last { uint64_t* k; ~Last() { g_lastFragKey = *k; } } last{keyOut};
     const uint32_t stages = R[NV097_SET_COMBINER_CONTROL / 4] & 0xFF;
     key = fnv(&R[NV097_SET_COMBINER_CONTROL / 4], 4, key);
     key = fnv(&R[NV097_SET_SHADER_STAGE_PROGRAM / 4], 4, key);
@@ -732,6 +740,7 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
         src += "  { float a = round(fragColor.a * 255.0), r = cf.alphaRef.x; if (!(" + std::string(cmp[func]) + ")) discard; }\n";
     }
     src += "}\n";
+    fragSources()[key] = src;  // for the capture log (psh_<key>.frag)
     const std::vector<uint32_t> spv = compileGlsl(EShLangFragment, src);
     VkShaderModule m = VK_NULL_HANDLE;
     if (!spv.empty()) {
@@ -1374,6 +1383,20 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
                 fprintf(cap, " [func %X ref %X mask %X/%X ops %X/%X/%X]", R[NV097_SET_STENCIL_FUNC / 4], R[NV097_SET_STENCIL_FUNC_REF / 4],
                         R[NV097_SET_STENCIL_FUNC_MASK / 4], R[NV097_SET_STENCIL_MASK / 4], R[NV097_SET_STENCIL_OP_FAIL / 4],
                         R[NV097_SET_STENCIL_OP_ZFAIL / 4], R[NV097_SET_STENCIL_OP_ZPASS / 4]);
+            fprintf(cap, " fs %016llx c0 %08X c1 %08X final %08X/%08X", static_cast<unsigned long long>(g_lastFragKey), R[NV097_SET_COMBINER_FACTOR0 / 4],
+                    R[NV097_SET_COMBINER_FACTOR1 / 4], R[NV097_SET_SPECULAR_FOG_FACTOR / 4], R[NV097_SET_SPECULAR_FOG_FACTOR / 4 + 1]);
+            {
+                static std::unordered_map<uint64_t, bool> written;
+                if (!written[g_lastFragKey]) {
+                    written[g_lastFragKey] = true;
+                    char name[64];
+                    snprintf(name, sizeof name, "psh_%016llx.frag", static_cast<unsigned long long>(g_lastFragKey));
+                    if (FILE* f = fopen(name, "w")) {
+                        fputs(fragSources()[g_lastFragKey].c_str(), f);
+                        fclose(f);
+                    }
+                }
+            }
             for (int i = 0; i < 16; ++i)
                 if ((mask >> i) & 1) fprintf(cap, " a%d:%02X", i, fmts[i] & 0xFF);
             for (int i = 0; i < 4; ++i)
