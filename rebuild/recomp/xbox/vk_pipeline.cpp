@@ -935,6 +935,9 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
         static const char* cmp[] = {"false", "a < r", "a == r", "a <= r", "a > r", "a != r", "a >= r", "true"};
         src += "  { float a = round(fragColor.a * 255.0), r = cf.alphaRef.x; if (!(" + std::string(cmp[func]) + ")) discard; }\n";
     }
+    // Side bars beside a blended full-screen panel (cf.text.y, see drawSideBarShade): the panel's
+    // own coverage in black.
+    src += "  if (cf.text.y > 0.5) fragColor.rgb = vec3(0.0);\n";
     src += "}\n";
     fragSources()[key] = src;  // for the capture log (psh_<key>.frag)
     const std::vector<uint32_t> spv = compileGlsl(EShLangFragment, src);
@@ -1429,7 +1432,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // quads; full-screen 4:3 images become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
     // decides whether a draw is screen-space at all). FABLE_DISABLE=uifix.
     float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f, hudSqueeze = 1.0f;
-    int sideBars = 0;  // a full-screen 4:3 panel at 16:9: 1 extend its edges into the side bars, 2 black bars
+    int sideBars = 0;  // a full-screen 4:3 panel at 16:9: 1 extend its edges into the side bars, 2 shade them by its alpha
     static const bool noUiFix = featureOff("uifix");
     if ((wide_ || outH_ > 480) && !noUiFix && target_.w == 640 && target_.h == 480 &&
         (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
@@ -1508,8 +1511,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             uiCenter = noCorners ? 0.0f : uiAnchor(minX, maxX, minY, maxY, panel, tex0);  // -1 left edge, 0 centre, 1 right edge
             // The side bars beside a full-screen 4:3 panel would show whatever is behind it (the
             // world, or the clear colour beside the intro movie): an opaque panel (movies, loading
-            // screens) gives them its corner colour, one laid over the game (quest cards) black
-            // bars like the menus that draw their own. FABLE_DISABLE=sidebars.
+            // screens) gives them its corner colour; one blended over the game (the fade at scene
+            // cuts and skips, quest cards) darkens them by its own alpha, so they fade in and out
+            // with it instead of turning black while the fade is still clear. FABLE_DISABLE=sidebars.
             static const bool noBars = featureOff("sidebars");
             if (panel && uiCenter == 0.0f && !noBars) sideBars = (R[NV097_SET_BLEND_ENABLE / 4] & 1) ? 2 : 1;
             if (panel && getenv("FABLE_UI_LOG"))  // debugging: what each full-screen panel is
@@ -1836,7 +1840,29 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         vkCmdDraw(cb, count, 1, inl ? 0 : first - minIdx, 0);
     }
     if (query != ~0u) vkCmdEndQuery(cb, qf.queries, query);
-    if (sideBars) fillSideBars(sideBars == 1);
+    if (sideBars == 2) {
+        // The same quad at full width (no 4:3 narrowing), drawn only into the side bars with its
+        // colour forced to black: the bars take the panel's alpha at its edge.
+        VC vb = vc;
+        vb.ui[0] = 1.0f;
+        FC fb = fc;
+        fb.text[1] = 1.0f;
+        const uint32_t barOff[2] = {static_cast<uint32_t>(upload(&vb, sizeof vb, ctx().props.limits.minUniformBufferOffsetAlignment)),
+                                    static_cast<uint32_t>(upload(&fb, sizeof fb, ctx().props.limits.minUniformBufferOffsetAlignment))};
+        if (cb == cmd()) {  // (an upload that filled the ring started a new command buffer)
+            vkCmdBindDescriptorSets(cb, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeLayout_, 0, 1, &set, 2, barOff);
+            const uint32_t w = hostW(target_.w, target_.h), h = hostH(target_.h), bar = w / 8;
+            for (int side = 0; side < 2; ++side) {
+                const VkRect2D r{{side ? static_cast<int32_t>(w - bar) : 0, 0}, {bar, h}};
+                vkCmdSetScissor(cb, 0, 1, &r);
+                if (needIndex) vkCmdDrawIndexed(cb, static_cast<uint32_t>(seq.size()), 1, 0, 0, 0);
+                else vkCmdDraw(cb, count, 1, inl ? 0 : first - minIdx, 0);
+            }
+            vkCmdSetScissor(cb, 0, 1, &sc);
+        }
+    } else if (sideBars) {
+        fillSideBars(true);
+    }
     // FABLE_CAPTURE_IMAGES=1 with FABLE_CAPTURE_FLIP: the target after each draw to the main
     // 640x480 target goes to capF_NNNN.png (debugging).
     // FABLE_CAPTURE_IMAGES=<draws>: instead, the first frame after one with more draws than that.
