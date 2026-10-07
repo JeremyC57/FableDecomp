@@ -633,7 +633,8 @@ void debugWatch(uint32_t addr) {
 void debugWatchRearm() {
     // FABLE_WATCH=<guest address>: starts once the word first becomes non-zero.
     static const uint32_t envAddr = getenv("FABLE_WATCH") ? static_cast<uint32_t>(strtoul(getenv("FABLE_WATCH"), nullptr, 0)) : 0;
-    if (envAddr && !g_watchAddr.load() && g_mem && rd32(envAddr)) {
+    static const bool early = getenv("FABLE_WATCH_EARLY") != nullptr;  // arm before the word is set
+    if (envAddr && !g_watchAddr.load() && g_mem && (early || rd32(envAddr))) {
         XLOG(1, "watching %08X (= %08X)", envAddr, rd32(envAddr));
         g_watchAddr = envAddr;
     }

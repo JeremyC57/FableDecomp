@@ -10,6 +10,7 @@
 #include "xhost.hpp"
 
 #include <atomic>
+#include <cstring>
 #include <chrono>
 #include <thread>
 
@@ -352,6 +353,30 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
         const uint32_t mod = surfaceField(28);
         setSurfaceField(20, mod ? (surfaceField(20) + 1) % mod : 0);
         ++g_frameCount;
+        // FABLE_SCAN=<hex word>@<flip>: log every guest RAM address holding that word (debug).
+        if (static const char* scan = getenv("FABLE_SCAN"); scan) {
+            const uint32_t want = static_cast<uint32_t>(strtoul(scan, nullptr, 16));
+            const char* at = strchr(scan, '@');
+            if (at && g_frameCount == strtoull(at + 1, nullptr, 10)) {
+                int n = 0;
+                for (uint32_t a = 0x10000; a < 0x4000000 && n < 200; a += 4)
+                    if (rd32(a) == want) { XLOG(0, "scan %08X at %08X", want, a); ++n; }
+            }
+        }
+        // FABLE_DUMP=<hex addr>,<words>@<flip>: log guest words as hex and float (debug).
+        if (static const char* dump = getenv("FABLE_DUMP"); dump) {
+            const char* at = strchr(dump, '@');
+            if (at && g_frameCount == strtoull(at + 1, nullptr, 10)) {
+                const uint32_t a0 = static_cast<uint32_t>(strtoul(dump, nullptr, 16));
+                const uint32_t n = static_cast<uint32_t>(strtoul(strchr(dump, ',') + 1, nullptr, 0));
+                for (uint32_t i = 0; i < n; ++i) {
+                    const uint32_t v = rd32(a0 + 4 * i);
+                    float f;
+                    std::memcpy(&f, &v, 4);
+                    XLOG(0, "dump %08X +%03X: %08X %g", a0 + 4 * i, 4 * i, v, f);
+                }
+            }
+        }
         break;
     }
     case NV097_FLIP_STALL:
