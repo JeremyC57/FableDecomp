@@ -65,6 +65,7 @@ private:
         bool operator<(const FbKey& o) const { return color != o.color ? color < o.color : depth < o.depth; }
     };
     struct Texture {
+        uint32_t pcGen = 0;  // pctex::generation() when uploaded
         uint32_t addr = 0, format = 0, w = 0, h = 0, d = 0, levels = 0, pitch = 0, kind = 0;
         uint64_t hash = 0, lastUse = 0;
         bool checked = false;

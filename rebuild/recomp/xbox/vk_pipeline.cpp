@@ -720,7 +720,7 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
         "layout(location=3) in vec4 vB1; layout(location=4) in float vFog;\n"
         "layout(location=5) in vec4 vTex0; layout(location=6) in vec4 vTex1; layout(location=7) in vec4 vTex2;\n"
         "layout(location=8) in vec4 vTex3;\n"
-        "layout(set=0, binding=1) uniform FC { vec4 c0[9]; vec4 c1[9]; vec4 fogColor; vec4 alphaRef; vec4 bump[4]; vec4 bumpLum[4]; vec4 texScale[4]; } cf;\n"
+        "layout(set=0, binding=1) uniform FC { vec4 c0[9]; vec4 c1[9]; vec4 fogColor; vec4 alphaRef; vec4 bump[4]; vec4 bumpLum[4]; vec4 texScale[4]; vec4 text; } cf;\n"
         "#define bump cf.bump\n#define bumpLum cf.bumpLum\n";
     for (int i = 0; i < 4; ++i) {
         src += "layout(set=0, binding=" + std::to_string(2 + i) + ") uniform sampler2D tex" + std::to_string(i) + ";\n";
@@ -735,7 +735,18 @@ VkShaderModule VkRenderer::fragmentShader(uint64_t* keyOut) {
     for (int i = 0; i < 4; ++i)
         src += "  vec4 sTex" + std::to_string(i) + " = vec4(vTex" + std::to_string(i) + ".xy * cf.texScale[" + std::to_string(i) + "].xy, vTex" +
                std::to_string(i) + ".zw);\n";
-    src += translateCombiners(state(), nullptr, shadowMask);
+    {
+        // Magnified text (cf.text.x, set per draw for AY8 glyph textures above 480p): the bilinear
+        // glyph coverage goes through a narrow, screen-space-wide threshold, so letters stay crisp
+        // and anti-aliased instead of blurring at 2-4x magnification.
+        std::string comb = translateCombiners(state(), nullptr, shadowMask);
+        const std::string t0 = "  vec4 t0 = textureProj(tex0, sTex0.xyw);\n";
+        const size_t at = comb.find(t0);
+        if (at != std::string::npos)
+            comb.insert(at + t0.size(), "  if (cf.text.x > 0.5) { float a = t0.a, w = max(fwidth(a), 0.02) * 0.6; "
+                                        "float s = smoothstep(0.42 - w, 0.42 + w, a); t0 = vec4(max(t0.rgb, vec3(s)), s); }\n");
+        src += comb;
+    }
     if (alphaTest) {
         const uint32_t func = R[NV097_SET_ALPHA_FUNC / 4] & 7;
         static const char* cmp[] = {"false", "a < r", "a == r", "a <= r", "a > r", "a != r", "a >= r", "true"};
@@ -962,7 +973,8 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     const uint64_t hash = oldCheck ? fnv(src, bytes) : fastHash(src, bytes);
     t.lastUse = frames_done_;
     t.checked = true;
-    if (t.image && t.hash == hash) return t.view;
+    const bool dxt = color == 0x0C || color == 0x0E;
+    if (t.image && t.hash == hash && (!dxt || t.pcGen == pctex::generation())) return t.view;
     VkDevice dev = ctx().device;
     if (t.image) {
         Texture old = t;
@@ -980,6 +992,7 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     t.d = d;
     t.levels = levels;
     t.hash = hash;
+    t.pcGen = pctex::generation();
     t.lastUse = frames_done_;
     t.checked = true;
     // pc_textures: a DXT1/DXT3 texture whose mip 0 matches a known Xbox bank entry is replaced by
@@ -987,7 +1000,15 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     if ((color == 0x0C || color == 0x0E) && !cube && d == 1 && faces == 1 && !settings().pcTextures.empty()) {
         const uint32_t m0 = levelBytes(color, w, h, 1);
         pctex::Replacement rep;
-        if (m0 <= bytes && pctex::lookup(pctex::hashBytes(src, m0), m0, w, h, rep)) {
+        const bool found = m0 <= bytes && pctex::lookup(pctex::hashBytes(src, m0), m0, w, h, rep);
+        static const bool dumpMiss = getenv("FABLE_PCTEX_DUMP") != nullptr;  // debugging: unmatched textures to files
+        static int nDump = 0;
+        if (!found && dumpMiss && m0 <= bytes && nDump < 40) {
+            char name[64];
+            snprintf(name, sizeof name, "miss_%02d_%ux%u_%08X.bin", nDump++, w, h, addr);
+            if (FILE* f = fopen(name, "wb")) { fwrite(src, 1, m0, f); fclose(f); }
+        }
+        if (found) {
             uint32_t mips = 1;
             while ((std::max(rep.w, rep.h) >> mips) > 0) ++mips;
             VkImageCreateInfo ici{VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO};
@@ -1213,10 +1234,10 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // element about its own centre split menus built from several quads); full-screen 4:3 images
     // become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
     // decides whether a draw is screen-space at all). FABLE_DISABLE=uifix.
-    float uiScale = 1.0f, uiCenter = 0.0f;
+    float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f;
     static const bool noUiFix = featureOff("uifix");
-    if (wide_ && !noUiFix && target_.w == 640 && target_.h == 480 &&
-        (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2 && !(R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1)) {
+    if ((wide_ || outH_ > 480) && !noUiFix && target_.w == 640 && target_.h == 480 &&
+        (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
         const uint32_t nv = needIndex ? static_cast<uint32_t>(seq.size()) : count;
         bool flat = nv > 0 && nv <= 4096, textured = false, effect = false;
         for (int i = 0; i < 4 && flat; ++i) {
@@ -1227,7 +1248,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             const uint32_t taddr = dmaAddress(tdma, nullptr) + R[tb];
             if (findSurface(taddr, false) || findSurface(taddr, true)) effect = true;
         }
-        float minX = 1e30f, maxX = -1e30f;
+        float minX = 1e30f, maxX = -1e30f, maxZ = -1e30f;
         for (uint32_t k = 0; k < nv && flat && !effect; ++k) {
             const uint32_t rel = (needIndex ? seq[k] : first + k) - minIdx;
             float v[16][4];
@@ -1254,14 +1275,32 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             float pos[4];
             evalVertexPosition(st.program, R[NV097_SET_TRANSFORM_PROGRAM_START / 4], st.constants, v, pos);
             if (!(std::fabs(pos[3] - 1.0f) <= 1e-5f) || !std::isfinite(pos[0])) flat = false;
+            maxZ = std::max(maxZ, pos[2]);
             minX = std::min(minX, pos[0]);
             maxX = std::max(maxX, pos[0]);
         }
         const bool fullWidth = minX <= 4.0f && maxX >= 636.0f;
-        if (flat && !effect && !(fullWidth && !textured)) {
+        if (getenv("FABLE_UI_LOG") && flat && !effect) {  // debugging: texture formats of screen-space draws
+            static std::unordered_map<uint64_t, int> seen;
+            const uint32_t tf = R[NV097_SET_TEXTURE_FORMAT / 4], tr = R[NV097_SET_TEXTURE_IMAGE_RECT / 4];
+            const uint64_t k = (static_cast<uint64_t>(tf) << 32) | tr;
+            if (seen[k]++ == 0 && seen.size() < 200)
+                XLOG(0, "UI draw: tex0 fmt %08X rect %08X @%08X, %u verts, x %g..%g, zmax %g ztest %u, comb %08X", tf, tr, R[NV097_SET_TEXTURE_OFFSET / 4], nv,
+                     minX, maxX, maxZ, R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1, R[NV097_SET_COMBINER_CONTROL / 4]);
+        }
+        // Depth-tested screen-space draws are interface too when they sit on the near plane (HUD
+        // icons and menus: z = 0); sprites the game projects onto the world have a real depth.
+        const bool depthTest = R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1;
+        const bool screenSpace = flat && !effect && (!depthTest || maxZ <= 1.0f);
+        if (wide_ && screenSpace && !(fullWidth && !textured)) {
             uiScale = 0.75f;
             uiCenter = 0.0f;  // the screen centre
         }
+        // Text (the glyph cache is an AY8 texture) above 480p: glyph edges are sharpened in the shader.
+        static const bool noSharp = featureOff("textsharp");
+        if (screenSpace && outH_ > 480 && !noSharp && (R[NV097_SET_TEXTURE_CONTROL0 / 4] & (1u << 30)) &&
+            ((R[NV097_SET_TEXTURE_FORMAT / 4] >> 8) & 0xFF) == 0x01)
+            textSharp = 1.0f;
     }
     if (inlStride != 0xFFFFFFFF)
         for (int i = 0; i < 16; ++i) {
@@ -1349,7 +1388,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     static const bool squeeze = featureOff("hor+");
     vc.clip[2] = (squeeze && settings().widescreen && target_.w == 640 && target_.h == 480) ? 0.75f : 1.0f;
     const VkDeviceSize vcOff = upload(&vc, sizeof vc, ctx().props.limits.minUniformBufferOffsetAlignment);
-    struct FC { float c0[9][4]; float c1[9][4]; float fog[4]; float aref[4]; float bump[4][4]; float lum[4][4]; float texScale[4][4]; } fc{};
+    struct FC { float c0[9][4]; float c1[9][4]; float fog[4]; float aref[4]; float bump[4][4]; float lum[4][4]; float texScale[4][4]; float text[4]; } fc{};
     auto unpack = [](uint32_t v, float* o) {
         o[0] = ((v >> 16) & 0xFF) / 255.0f;
         o[1] = ((v >> 8) & 0xFF) / 255.0f;
@@ -1379,6 +1418,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         fc.texScale[i][0] = linear ? 1.0f / static_cast<float>(rect >> 16) : 1.0f;
         fc.texScale[i][1] = linear ? 1.0f / static_cast<float>(rect & 0xFFFF) : 1.0f;
     }
+    fc.text[0] = textSharp;
     const VkDeviceSize fcOff = upload(&fc, sizeof fc, ctx().props.limits.minUniformBufferOffsetAlignment);
 
     // Descriptors.

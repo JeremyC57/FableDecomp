@@ -30,6 +30,7 @@ namespace xb::pctex {
 namespace {
 
 std::atomic<bool> g_ready{false};
+std::atomic<uint32_t> g_gen{0};
 std::unordered_map<uint64_t, std::string> g_names;  // key(hash, size) -> Xbox entry name
 std::vector<std::unique_ptr<fa::BigArchive>> g_pc;   // PC banks (textures.big, frontend.big)
 std::unordered_map<std::string, const fa::BigEntry*> g_pcByBase;  // upper-case file name -> entry
@@ -139,7 +140,7 @@ void worker(std::string game, std::string cacheDir, std::string pcDir) {
             return;
         }
         // Xbox name index, cached across runs.
-        const fs::path cachePath = fs::path(cacheDir) / "pc_texture_names.txt";
+        const fs::path cachePath = fs::path(cacheDir) / "pc_texture_names_v2.txt";
         size_t n = 0;
         if (std::FILE* f = std::fopen(cachePath.string().c_str(), "r")) {
             char line[1024];
@@ -175,6 +176,7 @@ void worker(std::string game, std::string cacheDir, std::string pcDir) {
         }
         XLOG(0, "PC textures: %zu Xbox textures indexed, %zu PC textures available", n, g_pcByName.size());
         g_ready = true;
+        ++g_gen;
     } catch (const std::exception& e) {
         XLOG(0, "PC textures: disabled (%s)", e.what());
     }
@@ -195,6 +197,8 @@ uint64_t hashBytes(const uint8_t* p, size_t n) {
     return h;
 }
 
+uint32_t generation() { return g_gen.load(std::memory_order_acquire); }
+
 void init(const char* gameDir, const char* cacheDir) {
     const std::string pc = settings().pcTextures;
     if (pc.empty() || !gameDir || !cacheDir) return;
@@ -209,7 +213,15 @@ bool lookup(uint64_t hash, uint32_t mip0Bytes, uint32_t w, uint32_t h, Replaceme
     if (it != g_names.end()) ++named;
     if (asked % 500 == 0) XLOG(1, "PC textures: %llu DXT uploads looked up, %llu matched a bank entry", static_cast<unsigned long long>(asked.load()),
                                static_cast<unsigned long long>(named.load()));
-    if (it == g_names.end()) return false;
+    if (it == g_names.end()) {
+        static const bool logMiss = getenv("FABLE_PCTEX_MISS") != nullptr;  // debugging: what is not matched
+        static int nMiss = 0;
+        if (logMiss && nMiss < 200) {
+            ++nMiss;
+            XLOG(0, "PC textures: no match for %ux%u (%u bytes, hash %016llx)", w, h, mip0Bytes, static_cast<unsigned long long>(hash));
+        }
+        return false;
+    }
     auto pe = g_pcByName.find(upper(it->second));
     const fa::BigEntry* e = pe != g_pcByName.end() ? pe->second : nullptr;
     if (!e) {

@@ -197,8 +197,10 @@ LzoResult decodeChunkedLzo(std::span<const std::byte> input, std::size_t rawSize
         }
         const auto block = r.bytes(clen);
         const std::size_t room = compressedTarget - result.output.size();
-        if (clen == 0) {
-            throw AssetError("chunked lzo: empty block before output was complete");
+        if (clen == 0) {  // stored chunk (docs/formats/TEXTURE.md): the rest of the mip, raw
+            const auto raw = r.bytes(room);
+            result.output.insert(result.output.end(), raw.begin(), raw.end());
+            break;
         }
         auto decoded = lzo1xDecompress(block, room);
         if (decoded.consumed != clen) {
