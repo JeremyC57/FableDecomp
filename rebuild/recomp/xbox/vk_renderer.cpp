@@ -156,8 +156,10 @@ void VkRenderer::finishCount(ReportCount& c) {
     const uint32_t v = c.unknown ? 0x10000u : static_cast<uint32_t>(std::min(c.sum + 0.5, 4294967295.0));
     static const bool stats = getenv("FABLE_REPORT_LOG") != nullptr;  // debugging: real objects counted 0
     if (stats && v == 0 && c.colorDraws) {
+        static uint64_t flip = ~0ull;
         static int n = 0;
-        if (n++ < 400)
+        if (flip != g_frameCount) flip = g_frameCount, n = 0;
+        if (n++ < 6)
             XLOG(0, "occlusion: 0 for %u draws (%u with colour) depth funcs 0x%x target 0x%08x report 0x%08x flip %llu", c.draws, c.colorDraws, c.depthFuncs,
                  c.target, c.addr, static_cast<unsigned long long>(g_frameCount));
     }
