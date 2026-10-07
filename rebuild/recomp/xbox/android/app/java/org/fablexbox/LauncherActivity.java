@@ -17,6 +17,7 @@ import android.provider.DocumentsContract;
 import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.text.InputType;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,6 +47,8 @@ public class LauncherActivity extends Activity {
 
     private static final String[] SCALES = {"1", "2", "3", "4"};
     private static final String[] SCALE_NAMES = {"1x (640x480, original)", "2x (1280x960)", "3x (1920x1440)", "4x (2560x1920)"};
+    // 16:9 renders natively wider (rebuild/recomp/xbox/vk_renderer.hpp hostW).
+    private static final String[] SCALE_NAMES_WIDE = {"1x (853x480)", "2x (1707x960)", "3x (2560x1440)", "4x (3413x1920)"};
     private static final String[] ASPECTS = {"4:3", "16:9"};
     private static final String[] ASPECT_NAMES = {"4:3 (original)", "16:9 widescreen"};
     private static final String[] FPS = {"30", "60"};
@@ -95,6 +98,20 @@ public class LauncherActivity extends Activity {
         aspect = spinner(ASPECT_NAMES, ASPECTS, prefs.getString("aspect", "4:3"));
         col.addView(label("Aspect ratio"));
         col.addView(aspect);
+        aspect.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(android.widget.AdapterView<?> parent, View view, int pos, long id) {
+                int keep = scale.getSelectedItemPosition();
+                ArrayAdapter<String> ad = new ArrayAdapter<>(LauncherActivity.this, android.R.layout.simple_spinner_item,
+                    "16:9".equals(ASPECTS[pos]) ? SCALE_NAMES_WIDE : SCALE_NAMES);
+                ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                scale.setAdapter(ad);
+                scale.setSelection(Math.max(0, keep));
+            }
+
+            @Override
+            public void onNothingSelected(android.widget.AdapterView<?> parent) {}
+        });
         fps = spinner(FPS_NAMES, FPS, prefs.getString("fps", "30"));
         col.addView(label("Frame rate"));
         col.addView(fps);
