@@ -90,6 +90,7 @@ public final class QuickMenu {
         col.addView(toggle("Vibration", "vibration", true, on -> natives.setOption("vibration", on)));
         col.addView(toggle("HUD at the screen edges (16:9)", "hudCorners", true, on -> natives.setOption("hud_corners", on)));
         col.addView(toggle("Sharpen text", "textSharpen", true, on -> natives.setOption("text_sharpen", on)));
+        col.addView(toggle("Occlusion culling (faster; off if objects flicker)", "occlusion", true, on -> natives.setOption("occlusion", on)));
 
         Button profile = button("Record performance profile (15 s)");
         profile.setOnClickListener(v -> {
@@ -112,6 +113,7 @@ public final class QuickMenu {
         // The native side starts from the settings file; bring the live options in line with the menu.
         natives.setOption("hud_corners", prefs.getBoolean("hudCorners", true));
         natives.setOption("text_sharpen", prefs.getBoolean("textSharpen", true));
+        natives.setOption("occlusion", prefs.getBoolean("occlusion", true));
         if (fps.getVisibility() == View.VISIBLE) poll();
     }
 

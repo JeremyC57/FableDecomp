@@ -99,6 +99,17 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
   runtime toggles (vibration, `hud_corners`, `text_sharpen`), 15 s profile to `<data>/profile.txt`
   (offsets into libmain.so; resolve with `llvm-nm -n` on the unstripped build-xbox/libmain.so).
 
+- Occlusion: real Vulkan queries per draw while ZPASS counting is on (vk_renderer.cpp report()).
+  Fable counts both test boxes (colour writes off) and real objects (temporal culling: an object
+  counted 0 is skipped next frame until its box test passes). A count can span submissions (the
+  presenter submits at every vblank): ranges are summed per count (ReportCount). Quick-menu /
+  ini switch `occlusion`. Open: user video shows a wall section missing for seconds near the
+  Guild (panorama shows through) - reproduce with their save.
+- 16:9 side bars: a full-screen 4:3 panel fills the bars (opaque: its top-corner colour, so
+  white beside the intro and black beside movies; blended over the game: black).
+  FABLE_DISABLE=sidebars. HUD pieces are learned (texture + place) and keep their edge.
+- Render passes: texture lookups no longer end the pass (was ~950 passes per frame).
+
 ## Next
 1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
    Vulkan queries); dot-product texture modes; fixed-function T&L.

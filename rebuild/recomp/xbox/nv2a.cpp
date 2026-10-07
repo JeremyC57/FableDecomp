@@ -511,7 +511,7 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
         wr64(a, ptimerTicks());
         renderer().report(a);
         static const bool reportLog = getenv("FABLE_REPORT_LOG") != nullptr;  // debugging: report slots per flip
-        if (reportLog) XLOG(0, "report %08X flip %llu", param, static_cast<unsigned long long>(g_frameCount));
+        if (reportLog && g_frameCount % 600 == 0) XLOG(0, "report %08X flip %llu", param, static_cast<unsigned long long>(g_frameCount));
         static int n = 0;
         if (n++ < 5) XLOG(1, "NV2A report: param %08X dma %08X -> base %08X, write %08X", param, s.regs[NV097_SET_CONTEXT_DMA_REPORT / 4], base, a);
         break;

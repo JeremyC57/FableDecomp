@@ -593,6 +593,59 @@ void VkRenderer::uiEndFrame() {
     uiCur_.clear();
 }
 
+// Side bars of a 16:9 frame beside a full-screen panel drawn into the centred 4:3 area.
+void VkRenderer::fillSideBars(bool extendEdges) {
+    Surface* s = target_.color ? findSurface(target_.color, false) : nullptr;
+    if (!s) return;
+    const int32_t w = static_cast<int32_t>(hostW(s->w, s->h)), h = static_cast<int32_t>(hostH(s->h));
+    const int32_t bar = w / 8;  // (16:9 width - 4:3 width) / 2
+    if (bar < 2) return;
+    if (!extendEdges) {
+        beginPass();
+        if (!pass_) return;
+        VkClearAttachment ca{VK_IMAGE_ASPECT_COLOR_BIT, 0, {}};
+        ca.clearValue.color = {{0.0f, 0.0f, 0.0f, 1.0f}};
+        VkClearRect rects[2] = {{{{0, 0}, {static_cast<uint32_t>(bar), static_cast<uint32_t>(h)}}, 0, 1},
+                                {{{w - bar, 0}, {static_cast<uint32_t>(bar), static_cast<uint32_t>(h)}}, 0, 1}};
+        vkCmdClearAttachments(cmd(), 1, &ca, 2, rects);
+        return;
+    }
+    // Opaque panels: the bars take the panel's own colour (black bars where the format cannot be
+    // blitted).
+    VkFormatProperties fp;
+    vkGetPhysicalDeviceFormatProperties(ctx().phys, s->format, &fp);
+    if ((fp.optimalTilingFeatures & (VK_FORMAT_FEATURE_BLIT_SRC_BIT | VK_FORMAT_FEATURE_BLIT_DST_BIT)) != (VK_FORMAT_FEATURE_BLIT_SRC_BIT | VK_FORMAT_FEATURE_BLIT_DST_BIT))
+        return fillSideBars(false);
+    endPass();
+    transition(*s, VK_IMAGE_LAYOUT_GENERAL);
+    // The game's full-screen quads start a pixel in (x and y from 1): the uncovered first
+    // row and the columns at the panel's edge are filled the same way.
+    const int32_t inset = 2 * std::max(2, (w + 639) / 640), insetY = 2 * std::max(1, (h + 479) / 480);
+    VkImageBlit blits[3]{};
+    for (int i = 0; i < 3; ++i) blits[i].srcSubresource = blits[i].dstSubresource = {VK_IMAGE_ASPECT_COLOR_BIT, 0, 0, 1};
+    // One colour per bar, the panel's top corner on that side: the intro's white background,
+    // the black letterbox of the story movies (their pictures reach the edges further down, so
+    // stretching whole edge columns would smear them into the bars).
+    for (int i = 0; i < 2; ++i) {
+        VkImageBlit& b = blits[i];
+        const int32_t col = i == 0 ? bar + inset : w - bar - inset - 1;
+        b.srcOffsets[0] = {col, insetY, 0};
+        b.srcOffsets[1] = {col + 1, insetY + 1, 1};
+        b.dstOffsets[0] = {i == 0 ? 0 : col + 1, 0, 0};
+        b.dstOffsets[1] = {i == 0 ? col : w, h, 1};
+    }
+    blits[2].srcOffsets[0] = {0, insetY, 0};
+    blits[2].srcOffsets[1] = {w, insetY + 1, 1};
+    blits[2].dstOffsets[0] = {0, 0, 0};
+    blits[2].dstOffsets[1] = {w, insetY, 1};
+    vkCmdBlitImage(cmd(), s->image, VK_IMAGE_LAYOUT_GENERAL, s->image, VK_IMAGE_LAYOUT_GENERAL, 2, blits, VK_FILTER_NEAREST);
+    VkMemoryBarrier mb{VK_STRUCTURE_TYPE_MEMORY_BARRIER};
+    mb.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+    mb.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT | VK_ACCESS_TRANSFER_WRITE_BIT;
+    vkCmdPipelineBarrier(cmd(), VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 1, &mb, 0, nullptr, 0, nullptr);
+    vkCmdBlitImage(cmd(), s->image, VK_IMAGE_LAYOUT_GENERAL, s->image, VK_IMAGE_LAYOUT_GENERAL, 1, &blits[2], VK_FILTER_NEAREST);
+}
+
 VkDeviceSize VkRenderer::upload(const void* data, VkDeviceSize bytes, VkDeviceSize align) {
     Frame& f = frames_[frame_];
     VkDeviceSize off = (f.uploadPos + align - 1) / align * align;
@@ -1376,6 +1429,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // quads; full-screen 4:3 images become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
     // decides whether a draw is screen-space at all). FABLE_DISABLE=uifix.
     float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f, hudSqueeze = 1.0f;
+    int sideBars = 0;  // a full-screen 4:3 panel at 16:9: 1 extend its edges into the side bars, 2 black bars
     static const bool noUiFix = featureOff("uifix");
     if ((wide_ || outH_ > 480) && !noUiFix && target_.w == 640 && target_.h == 480 &&
         (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
@@ -1449,6 +1503,12 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             const bool additive = (R[NV097_SET_BLEND_ENABLE / 4] & 1) && (R[NV097_SET_BLEND_FUNC_DFACTOR / 4] & 0xFFFF) == NV097_SET_BLEND_FUNC_SFACTOR_V_ONE;
             const bool panel = textured && !additive && fullWidth && minY <= 16.0f && maxY >= 464.0f;
             uiCenter = noCorners ? 0.0f : uiAnchor(minX, maxX, minY, maxY, panel, tex0);  // -1 left edge, 0 centre, 1 right edge
+            // The side bars beside a full-screen 4:3 panel would show whatever is behind it (the
+            // world, or the clear colour beside the intro movie): an opaque panel (movies, loading
+            // screens) gives them its corner colour, one laid over the game (quest cards) black
+            // bars like the menus that draw their own. FABLE_DISABLE=sidebars.
+            static const bool noBars = featureOff("sidebars");
+            if (panel && uiCenter == 0.0f && !noBars) sideBars = (R[NV097_SET_BLEND_ENABLE / 4] & 1) ? 2 : 1;
         }
         // Text (the glyph cache is an AY8 texture) above 480p: glyph edges are sharpened in the shader.
         static const bool noSharp = featureOff("textsharp");
@@ -1709,6 +1769,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
                 fprintf(cap, " [func %X ref %X mask %X/%X ops %X/%X/%X]", R[NV097_SET_STENCIL_FUNC / 4], R[NV097_SET_STENCIL_FUNC_REF / 4],
                         R[NV097_SET_STENCIL_FUNC_MASK / 4], R[NV097_SET_STENCIL_MASK / 4], R[NV097_SET_STENCIL_OP_FAIL / 4],
                         R[NV097_SET_STENCIL_OP_ZFAIL / 4], R[NV097_SET_STENCIL_OP_ZPASS / 4]);
+            if (R[NV097_SET_ZPASS_PIXEL_COUNT_ENABLE / 4] & 1) fprintf(cap, " ZPASS");
             fprintf(cap, " ui %g/%g hud %g text %g class %g/%g/z%g/x%g..%g", vc.ui[0], vc.ui[1], vc.clip[2], fc.text[0], g_uiClass[0], g_uiClass[1],
                     g_uiClass[2], g_uiClass[3], g_uiClass[4]);
             std::fill(g_uiClass, g_uiClass + 5, -1.0f);
@@ -1743,7 +1804,15 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // Occlusion query around the draw while the zpass pixel count is enabled (see report()).
     Frame& qf = frames_[frame_];
     uint32_t query = ~0u;
-    if ((R[NV097_SET_ZPASS_PIXEL_COUNT_ENABLE / 4] & 1) && qf.queries && qf.queryCount < kMaxQueries && cb == qf.cmd) {
+    const bool counting = (R[NV097_SET_ZPASS_PIXEL_COUNT_ENABLE / 4] & 1) && qf.queries && settings().occlusion;
+    if (counting) {
+        if (!openCount_) {  // counting without a CLEAR_REPORT_VALUE: since the last report
+            openCount_ = std::make_shared<ReportCount>();
+            reportFirst_ = qf.queryCount;
+        }
+        if (qf.queryCount >= kMaxQueries || cb != qf.cmd) openCount_->unknown = true;
+    }
+    if (counting && qf.queryCount < kMaxQueries && cb == qf.cmd) {
         query = qf.queryCount++;
         const double hostSamples = static_cast<double>(hostW(target_.w, target_.h)) * hostH(target_.h);
         qf.queryScale.push_back(hostSamples > 0 ? static_cast<float>(static_cast<double>(target_.w) * target_.h / hostSamples) : 1.0f);
@@ -1756,6 +1825,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
         vkCmdDraw(cb, count, 1, inl ? 0 : first - minIdx, 0);
     }
     if (query != ~0u) vkCmdEndQuery(cb, qf.queries, query);
+    if (sideBars) fillSideBars(sideBars == 1);
     // FABLE_CAPTURE_IMAGES=1 with FABLE_CAPTURE_FLIP: the target after each draw to the main
     // 640x480 target goes to capF_NNNN.png (debugging).
     // FABLE_CAPTURE_IMAGES=<draws>: instead, the first frame after one with more draws than that.

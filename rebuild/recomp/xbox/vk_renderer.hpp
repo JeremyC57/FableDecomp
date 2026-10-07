@@ -9,6 +9,7 @@
 #include <deque>
 #include <functional>
 #include <map>
+#include <memory>
 #include <mutex>
 #include <unordered_map>
 #include <vector>
@@ -45,6 +46,7 @@ private:
         VkDeviceMemory mem = VK_NULL_HANDLE;
         VkDeviceSize size = 0;
     };
+    struct ReportCount;
     struct Frame {
         VkCommandBuffer cmd = VK_NULL_HANDLE;
         VkFence fence = VK_NULL_HANDLE;
@@ -57,16 +59,29 @@ private:
         VkQueryPool queries = VK_NULL_HANDLE;
         uint32_t queryCount = 0;
         std::vector<float> queryScale;  // guest samples per host sample of the query's target
-        struct Report { uint32_t addr, first, count; };
-        std::vector<Report> reports;
+        struct Report { std::shared_ptr<ReportCount> count; uint32_t first, queries; };
+        std::vector<Report> reports;  // query ranges of this submission, each part of a count
         std::chrono::steady_clock::time_point firstReport;  // when `reports` became non-empty
         bool submitted = false;
     };
     static constexpr uint32_t kMaxQueries = 4096;
-    uint32_t reportFirst_ = 0;  // first query of the count being accumulated (current frame)
+    // A zpass count (CLEAR_REPORT_VALUE .. GET_REPORT) can span submissions: the presenter submits
+    // at every vblank. Its query ranges in each submission add up here; the report is written
+    // once GET_REPORT has named its address and every range has been read back.
+    struct ReportCount {
+        uint32_t addr = 0;
+        double sum = 0;
+        int pending = 0;       // ranges not yet read back
+        bool closed = false;   // GET_REPORT seen
+        bool unknown = false;  // a counted draw got no query: report it visible
+    };
+    std::shared_ptr<ReportCount> openCount_;  // the count being accumulated
+    uint32_t reportFirst_ = 0;                // its first query in the current submission
+    void finishCount(ReportCount& c);
     bool queryPrecise_ = false;
     void resolveReports(Frame& f);
     void waitFence(VkFence fence);
+    void fillSideBars(bool extendEdges);
     struct Surface {
         uint32_t addr = 0, w = 0, h = 0, pitch = 0;
         VkFormat format = VK_FORMAT_UNDEFINED;

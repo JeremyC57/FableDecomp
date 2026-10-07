@@ -88,6 +88,7 @@ extern "C" JNIEXPORT void JNICALL Java_org_fablexbox_GameActivity_nativeSetOptio
     if (key == "vibration") xb::settings().vibration = on;
     else if (key == "hud_corners") xb::settings().hudCorners = on;
     else if (key == "text_sharpen") xb::settings().textSharpen = on;
+    else if (key == "occlusion") xb::settings().occlusion = on;
 }
 extern "C" JNIEXPORT jstring JNICALL Java_org_fablexbox_GameActivity_nativeProfile(JNIEnv* env, jclass, jint seconds) {
     const char* data = std::getenv("FABLE_XBOX_DATA");

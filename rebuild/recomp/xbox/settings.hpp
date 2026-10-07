@@ -14,7 +14,9 @@
 //   vibration        = 0 | 1         controller rumble (on Android: the phone vibrates when no pad is connected)
 //   hud_corners      = 0 | 1         16:9: HUD at the screen edges (0: the centred 4:3 area)
 //   text_sharpen     = 0 | 1         sharpen text above 480p
-// vibration, hud_corners and text_sharpen can change while the game runs (Android quick menu).
+//   occlusion        = 0 | 1         real GPU occlusion queries (0: every visibility test passes)
+// vibration, hud_corners, text_sharpen and occlusion can change while the game runs (Android
+// quick menu).
 #pragma once
 
 #include <string>
@@ -36,6 +38,7 @@ struct Settings {
     float drawDistance = 2.0f;
     bool hudCorners = true;
     bool textSharpen = true;
+    bool occlusion = true;
 };
 
 Settings& settings();

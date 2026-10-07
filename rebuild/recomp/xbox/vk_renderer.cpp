@@ -146,33 +146,62 @@ void VkRenderer::beginFrame() {
 // guest resolution, and is written to guest memory once the frame's fence has signalled. Until
 // then the report's status word says "incomplete", as on the Xbox while the GPU is behind.
 // FABLE_DISABLE=occlusion: every report "visible" at once (the old behaviour).
-void VkRenderer::clearReport() { reportFirst_ = frames_[frame_].queryCount; }
+void VkRenderer::clearReport() {
+    openCount_ = std::make_shared<ReportCount>();
+    reportFirst_ = frames_[frame_].queryCount;
+}
+
+void VkRenderer::finishCount(ReportCount& c) {
+    const uint32_t v = c.unknown ? 0x10000u : static_cast<uint32_t>(std::min(c.sum + 0.5, 4294967295.0));
+    wr32(c.addr + 8, v);
+    wr32(c.addr + 12, 0);
+}
 
 void VkRenderer::report(uint32_t addr) {
     Frame& f = frames_[frame_];
-    if (!f.queries) return Renderer::report(addr);
+    if (!f.queries || !settings().occlusion) {
+        openCount_.reset();
+        reportFirst_ = f.queryCount;
+        return Renderer::report(addr);
+    }
+    std::shared_ptr<ReportCount> c = openCount_ ? openCount_ : std::make_shared<ReportCount>();
+    openCount_.reset();
+    c->addr = addr;
+    c->closed = true;
     const uint32_t first = std::min(reportFirst_, f.queryCount);
-    wr32(addr + 8, 0);
-    if (f.queryCount == first) {  // nothing drawn while counting
-        wr32(addr + 12, 0);
+    if (f.queryCount > first) {
+        if (f.reports.empty()) f.firstReport = std::chrono::steady_clock::now();
+        f.reports.push_back({c, first, f.queryCount - first});
+        ++c->pending;
+    }
+    reportFirst_ = f.queryCount;
+    static const bool stats = getenv("FABLE_REPORT_LOG") != nullptr;  // debugging
+    if (stats) {
+        static uint64_t total = 0, split = 0, zero = 0;
+        ++total;
+        if (c->pending > 1 || (c->pending == 1 && f.queryCount == first)) ++split;
+        if (c->pending == 0) ++zero;
+        if (total % 5000 == 0) XLOG(0, "occlusion: %llu reports, %llu spanning a submission, %llu with no draws", static_cast<unsigned long long>(total),
+                                    static_cast<unsigned long long>(split), static_cast<unsigned long long>(zero));
+    }
+    if (c->pending == 0) {  // nothing (left) to read back: complete now
+        finishCount(*c);
         return;
     }
+    wr32(addr + 8, 0);
     wr32(addr + 12, 0xFFFFFFFFu);
-    if (f.reports.empty()) f.firstReport = std::chrono::steady_clock::now();
-    f.reports.push_back({addr, first, f.queryCount - first});
-    reportFirst_ = f.queryCount;
 }
 
 void VkRenderer::resolveReports(Frame& f) {
     if (f.reports.empty()) return;
     std::vector<uint64_t> counts(f.queryCount);
-    if (f.queryCount && vkGetQueryPoolResults(ctx().device, f.queries, 0, f.queryCount, counts.size() * 8, counts.data(), 8, VK_QUERY_RESULT_64_BIT) != VK_SUCCESS)
-        std::fill(counts.begin(), counts.end(), 0x10000);
+    const bool ok = f.queryCount &&
+                    vkGetQueryPoolResults(ctx().device, f.queries, 0, f.queryCount, counts.size() * 8, counts.data(), 8, VK_QUERY_RESULT_64_BIT) == VK_SUCCESS;
     for (const Frame::Report& r : f.reports) {
-        double sum = 0;
-        for (uint32_t i = r.first; i < r.first + r.count && i < f.queryCount; ++i) sum += static_cast<double>(counts[i]) * f.queryScale[i];
-        wr32(r.addr + 8, static_cast<uint32_t>(std::min(sum + 0.5, 4294967295.0)));
-        wr32(r.addr + 12, 0);
+        ReportCount& c = *r.count;
+        if (!ok) c.unknown = true;
+        for (uint32_t i = r.first; ok && i < r.first + r.queries && i < f.queryCount; ++i) c.sum += static_cast<double>(counts[i]) * f.queryScale[i];
+        if (--c.pending == 0 && c.closed) finishCount(c);
     }
     f.reports.clear();
 }
@@ -199,6 +228,11 @@ void VkRenderer::pollReports() {
 void VkRenderer::submitFrame(bool wait) {
     endPass();
     Frame& f = frames_[frame_];
+    if (openCount_ && f.queryCount > reportFirst_) {  // a count in progress: its queries so far
+        if (f.reports.empty()) f.firstReport = std::chrono::steady_clock::now();
+        f.reports.push_back({openCount_, reportFirst_, f.queryCount - reportFirst_});
+        ++openCount_->pending;
+    }
     vkEndCommandBuffer(f.cmd);
     VkSubmitInfo si{VK_STRUCTURE_TYPE_SUBMIT_INFO};
     si.commandBufferCount = 1;
