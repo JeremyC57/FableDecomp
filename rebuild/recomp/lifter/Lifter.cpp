@@ -167,6 +167,11 @@ public:
         std::set<uint32_t> starts;
         std::map<uint32_t, uint32_t> covered;  // start -> end of decoded instruction
         std::set<uint32_t> cands;
+        // Immediates a function pushes or stores to memory (`push offset fn`, `mov [x], offset fn`):
+        // registrations of callbacks and factories, e.g. the cutscene classes in overlay sections
+        // (Fable's 0x6BDB48, registered at 0x5CD7E3, follows a jump table and sits at no aligned
+        // or padded boundary). These need no boundary evidence.
+        std::set<uint32_t> stored;
         for (auto& [e, f] : funcs_)
             for (uint32_t a : f.insns) {
                 const Insn* ins = decode(a);
@@ -177,7 +182,12 @@ public:
                     const auto& o = ins->op[i];
                     if (o.type == ZYDIS_OPERAND_TYPE_IMMEDIATE && ins->in.mnemonic != ZYDIS_MNEMONIC_CALL &&
                         !(ins->in.meta.category == ZYDIS_CATEGORY_COND_BR || ins->in.meta.category == ZYDIS_CATEGORY_UNCOND_BR))
+                    {
                         cands.insert(static_cast<uint32_t>(o.imm.value.u));
+                        if (ins->in.mnemonic == ZYDIS_MNEMONIC_PUSH ||
+                            (ins->in.mnemonic == ZYDIS_MNEMONIC_MOV && ins->op[0].type == ZYDIS_OPERAND_TYPE_MEMORY))
+                            stored.insert(static_cast<uint32_t>(o.imm.value.u));
+                    }
                 }
             }
         for (uint32_t v : img_.relocTargets()) cands.insert(v);
@@ -232,7 +242,16 @@ public:
         for (uint32_t v : cands) {
             if (!img_.isCode(v) || !img_.contains(v, 1) || isEntry(v)) continue;
             bool ok = starts.count(v) != 0;
-            if (!ok && !isCovered(v) && boundary(v) && decode(v)) ok = true;
+            // A stored pointer without boundary evidence must also open like a function:
+            // push of a callee-saved register or ecx, sub esp, or the SEH frame push -1/push handler
+            // (mixed code/data sections otherwise turn pushed string addresses into entries).
+            auto prologue = [&](uint32_t a) {
+                if (!img_.contains(a, 3)) return false;
+                const uint8_t* b = img_.at(a);
+                return b[0] == 0x55 || b[0] == 0x56 || b[0] == 0x57 || b[0] == 0x53 || b[0] == 0x51 ||
+                       ((b[0] == 0x83 || b[0] == 0x81) && b[1] == 0xEC) || (b[0] == 0x6A && b[1] == 0xFF && b[2] == 0x68);
+            };
+            if (!ok && !isCovered(v) && (boundary(v) || (stored.count(v) && prologue(v))) && decode(v)) ok = true;
             if (ok) { addEntry(v); ++added; }
         }
         return added;
