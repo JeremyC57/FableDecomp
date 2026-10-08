@@ -1716,6 +1716,17 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     float slope, bias;
     std::memcpy(&slope, &R[NV097_SET_POLYGON_OFFSET_SCALE_FACTOR / 4], 4);
     std::memcpy(&bias, &R[NV097_SET_POLYGON_OFFSET_BIAS / 4], 4);
+    const float guestBias = bias, guestSlope = slope;
+    // The NV2A adds the bias in the depth surface's own units (1/65535 for Z16, xemu: zvalue +=
+    // depthOffset, then floor) and the slope term per guest pixel. Our depth images are 24-bit
+    // (Vulkan counts the constant in 1/2^24) and upscaled (slope per host pixel), so a Z16 shadow
+    // map got 1/256 of the game's bias: surfaces that both cast and receive (the deck beside an
+    // NPC) shadowed themselves on alternate frames. Under test: FABLE_ZBIAS_UNITS=1 enables it.
+    static const bool rawBias = !getenv("FABLE_ZBIAS_UNITS");
+    if (!rawBias && target_.depth && target_.h) {
+        if (((R[NV097_SET_SURFACE_FORMAT / 4] >> 4) & 0xF) == 1) bias *= 256.0f;  // Z16 in a 24-bit image
+        slope *= static_cast<float>(hostH(target_.h)) / static_cast<float>(target_.h);
+    }
     vkCmdSetDepthBias(cb, bias, 0.0f, slope);
     // FABLE_CAPTURE_FLIP=N1,N2: every draw of those frames to cap.txt (debugging).
     static const std::vector<uint64_t> capFlips = [] {
@@ -1789,6 +1800,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
                         R[NV097_SET_STENCIL_FUNC_MASK / 4], R[NV097_SET_STENCIL_MASK / 4], R[NV097_SET_STENCIL_OP_FAIL / 4],
                         R[NV097_SET_STENCIL_OP_ZFAIL / 4], R[NV097_SET_STENCIL_OP_ZPASS / 4]);
             if (R[NV097_SET_ZPASS_PIXEL_COUNT_ENABLE / 4] & 1) fprintf(cap, " ZPASS");
+            fprintf(cap, " poff %u bias %g slope %g", R[NV097_SET_POLY_OFFSET_FILL_ENABLE / 4] & 1, guestBias, guestSlope);
             fprintf(cap, " ui %g/%g hud %g text %g class %g/%g/z%g/x%g..%g", vc.ui[0], vc.ui[1], vc.clip[2], fc.text[0], g_uiClass[0], g_uiClass[1],
                     g_uiClass[2], g_uiClass[3], g_uiClass[4]);
             std::fill(g_uiClass, g_uiClass + 5, -1.0f);
