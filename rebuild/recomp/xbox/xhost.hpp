@@ -48,6 +48,11 @@ constexpr uint32_t kTrapBase = 0xFFFC0000u;       // kernel export i -> kTrapBas
 constexpr uint32_t kGpuInstanceSize = 0x100000u;  // top of RAM: NV2A instance memory (RAMIN)
 
 inline uint8_t* gp(uint32_t a) { return GP(a); }
+
+// The folder holding the hdd, settings and logs (main.cpp), and a restart of the whole host for
+// the game's reboots (HalReturnToFirmware with a launch data page: loading a save in game).
+extern const char* g_dataDir;
+[[noreturn]] void hostRelaunch();
 inline char* gstr(uint32_t a) { return reinterpret_cast<char*>(GP(a)); }
 inline uint32_t physOf(uint32_t a) {
     if (a >= kWcBase && a < kWcBase + kPhysSize) return a - kWcBase;

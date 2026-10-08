@@ -1,6 +1,7 @@
 package org.fablexbox;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -88,6 +89,21 @@ public class GameActivity extends SDLActivity {
         }
         int amplitude = v.hasAmplitudeControl() ? Math.max(1, Math.min(255, speed / 257)) : VibrationEffect.DEFAULT_AMPLITUDE;
         v.vibrate(VibrationEffect.createOneShot(700, amplitude));
+    }
+
+    /**
+     * Called from native code when the game reboots itself with launch data (loading a save from
+     * the pause menu): RestartActivity, in the app's main process, starts a new game process with
+     * the same settings once this one has gone (the native side cannot restart in place).
+     */
+    public void relaunch() {
+        Intent game = new Intent(getIntent());
+        game.setClass(this, GameActivity.class);
+        Intent restart = new Intent(this, RestartActivity.class);
+        restart.putExtra("game", game);
+        restart.putExtra("pid", android.os.Process.myPid());
+        restart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(restart);
     }
 
     @Override

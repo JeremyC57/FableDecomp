@@ -33,7 +33,30 @@ KVAR(XboxKrnlVersion) {
     wr16(a, 1); wr16(a + 2, 0); wr16(a + 4, 5838); wr16(a + 6, 1);
     return a;
 }
-KVAR(LaunchDataPage) { return poolAllocZero(4); }  // PLAUNCH_DATA_PAGE: none (cold boot)
+// PLAUNCH_DATA_PAGE: none on a cold boot. A reboot with launch data (XLaunchNewImage: loading a
+// save from the pause menu reboots the title with the save to load) left it in
+// <data>/launch_data.bin: restored here into a fresh contiguous page.
+static uint32_t g_launchDataVar;
+static std::string launchDataFile() { return std::string(g_dataDir) + "/launch_data.bin"; }
+static uint32_t contig(uint32_t size, uint32_t lo, uint32_t hi, uint32_t align);
+KVAR(LaunchDataPage) {
+    g_launchDataVar = poolAllocZero(4);
+    if (FILE* f = fopen(launchDataFile().c_str(), "rb")) {
+        uint8_t page[0x1000];
+        const size_t n = fread(page, 1, sizeof page, f);
+        fclose(f);
+        remove(launchDataFile().c_str());
+        if (n == sizeof page) {
+            const uint32_t p = contig(0x1000, 0, kPhysSize - 1, 0x1000);
+            if (p) {
+                std::memcpy(gp(p), page, sizeof page);
+                wr32(g_launchDataVar, p);
+                XLOG(0, "launch data restored (type %u, title %08X, path %.64s)", rd32(p), rd32(p + 4), reinterpret_cast<const char*>(page + 8));
+            }
+        }
+    }
+    return g_launchDataVar;
+}
 KVAR(XeImageFileName) { return newAnsiString("\\Device\\CdRom0\\default.xbe"); }
 KVAR(HalDiskCachePartitionCount) { const uint32_t a = poolAllocZero(4); wr32(a, 3); return a; }
 KVAR(HalDiskModelNumber) { return newAnsiString("FableRecomp HDD"); }
@@ -738,6 +761,18 @@ KFUNC(AvSetDisplayMode, 6) {
 KFUNC(HalRegisterShutdownNotification, 2) { return 0; }
 KFUNC(HalIsResetOrShutdownPending, 0) { return 0; }
 KFUNC(HalReturnToFirmware, 1) {
+    // A reboot with a launch data page (XLaunchNewImage) restarts the title with that page
+    // (loading a save from the pause menu); anything else leaves.
+    const uint32_t page = g_launchDataVar ? rd32(g_launchDataVar) : 0;
+    if ((ARG(c, 0) == 1 || ARG(c, 0) == 2) && page) {
+        XLOG(0, "HalReturnToFirmware(%u): reboot with launch data (type %u): restarting", ARG(c, 0), rd32(page));
+        if (FILE* f = fopen(launchDataFile().c_str(), "wb")) {
+            fwrite(gp(page), 1, 0x1000, f);
+            fclose(f);
+            hostRelaunch();
+        }
+        XLOG(0, "launch data could not be saved to %s", launchDataFile().c_str());
+    }
     XLOG(0, "HalReturnToFirmware(%u): the game asked to leave", ARG(c, 0));
     fflush(stderr);
     _exit(0);

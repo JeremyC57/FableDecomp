@@ -8,6 +8,8 @@
 #include <android/log.h>
 #include <dlfcn.h>
 #include <jni.h>
+#include <SDL.h>
+#include <SDL_system.h>
 #include <unistd.h>
 
 #include <cstdio>
@@ -18,6 +20,19 @@
 #include <adrenotools/driver.h>
 
 namespace xb {
+
+// The game rebooted itself with launch data (loading a save from the pause menu): the activity
+// arranges a new game process (GameActivity.relaunch), this one then exits.
+void androidRelaunch() {
+    JNIEnv* env = static_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+    jobject activity = static_cast<jobject>(SDL_AndroidGetActivity());
+    if (!env || !activity) return;
+    jclass cls = env->GetObjectClass(activity);
+    if (jmethodID m = env->GetMethodID(cls, "relaunch", "()V")) env->CallVoidMethod(activity, m);
+    if (env->ExceptionCheck()) env->ExceptionClear();
+    env->DeleteLocalRef(cls);
+    env->DeleteLocalRef(activity);
+}
 
 // stdout/stderr go nowhere on Android: copy them into logcat and <data>/FableXbox.log.
 void androidInit() {

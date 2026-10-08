@@ -105,7 +105,26 @@ using namespace xb;
 namespace xb { void androidInit(); }
 #endif
 
+namespace xb {
+const char* g_dataDir = ".";
+static char** g_argv;
+#if defined(__ANDROID__)
+void androidRelaunch();
+#endif
+void hostRelaunch() {
+    fflush(nullptr);
+#if defined(__ANDROID__)
+    androidRelaunch();  // a new game process, started from the app's main one
+    _exit(0);
+#else
+    execv("/proc/self/exe", g_argv);
+    die("relaunch failed");
+#endif
+}
+}  // namespace xb
+
 int main(int argc, char** argv) {
+    xb::g_argv = argv;
 #if defined(__ANDROID__)
     xb::androidInit();
 #endif
@@ -125,6 +144,10 @@ int main(int argc, char** argv) {
     }
     if (hdd.empty()) hdd = game + "/../xbox_hdd";
     // <hdd>/../fable_xbox.ini, computed lexically: the hdd folder may not exist yet.
+    {
+        static const std::string data = std::filesystem::path(hdd).lexically_normal().parent_path().string();
+        g_dataDir = data.empty() ? "." : data.c_str();
+    }
     loadSettings(config.empty() ? (std::filesystem::path(hdd).lexically_normal().parent_path() / "fable_xbox.ini").string() : config);
     {
         static const std::string rec = (std::filesystem::path(hdd).lexically_normal().parent_path() / "FableXbox_input.txt").string();
