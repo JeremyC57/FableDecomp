@@ -1439,6 +1439,50 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // everything centred). Narrowing each quad about its own centre split menus built from several
     // quads; full-screen 4:3 images become pillarboxed. Classified by running the vertex program on the CPU (the first vertex
     // decides whether a draw is screen-space at all). FABLE_DISABLE=uifix.
+    // FABLE_ZRANGE_FLIP=<flip> (debugging): each draw's depth range as a fraction of the clip
+    // range (> 1: beyond the far plane, clamped to it) and w range, from up to 512 vertices.
+    static const uint64_t zrangeFlip = getenv("FABLE_ZRANGE_FLIP") ? strtoull(getenv("FABLE_ZRANGE_FLIP"), nullptr, 10) : ~0ull;
+    if (g_frameCount == zrangeFlip && inlStride != 0xFFFFFFFF && (R[NV097_SET_TRANSFORM_EXECUTION_MODE / 4] & 3) == 2) {
+        const uint32_t nv = needIndex ? static_cast<uint32_t>(seq.size()) : count;
+        float zlo = 1e30f, zhi = -1e30f, wlo = 1e30f, whi = -1e30f;
+        uint32_t beyond = 0, tested = 0;
+        float cmx;
+        std::memcpy(&cmx, &R[NV097_SET_CLIP_MAX / 4], 4);
+        if (cmx <= 0) cmx = 16777215.0f;
+        for (uint32_t k = 0; k < nv; k += std::max<uint32_t>(1, nv / 512)) {
+            const uint32_t rel = (needIndex ? seq[k] : first + k) - minIdx;
+            float v[16][4];
+            for (int i = 0; i < 16; ++i) {
+                std::memcpy(v[i], attrib_[i], 16);
+                if (!((mask >> i) & 1) || !src[i]) continue;
+                const uint32_t type = fmts[i] & 0xF, size = (fmts[i] >> 4) & 0xF;
+                const uint8_t* p = src[i] + static_cast<size_t>(rel) * (fmts[i] >> 8);
+                float d[4] = {0, 0, 0, 1};
+                for (uint32_t c = 0; c < size && c < 4; ++c) {
+                    if (type == 2) std::memcpy(&d[c], p + 4 * c, 4);
+                    else if (type == 0) d[c] = p[size >= 3 ? (c < 3 ? 2 - c : 3) : c] / 255.0f;
+                    else if (type == 4) d[c] = p[c] / 255.0f;
+                    else if (type == 1 || type == 5) {
+                        int16_t x;
+                        std::memcpy(&x, p + 2 * c, 2);
+                        d[c] = type == 1 ? std::max(x / 32767.0f, -1.0f) : static_cast<float>(x);
+                    }
+                }
+                std::memcpy(v[i], d, 16);
+            }
+            float pos[4];
+            evalVertexPosition(st.program, R[NV097_SET_TRANSFORM_PROGRAM_START / 4], st.constants, v, pos);
+            if (!std::isfinite(pos[2]) || pos[3] <= 0) continue;
+            ++tested;
+            const float z = pos[2] / cmx;
+            if (z > 1.0f) ++beyond;
+            zlo = std::min(zlo, z), zhi = std::max(zhi, z), wlo = std::min(wlo, pos[3]), whi = std::max(whi, pos[3]);
+        }
+        if (tested)
+            XLOG(0, "zrange flip %llu draw %u: tgt %08X %ux%u n %u z %.5f..%.5f (%u/%u beyond far) w %g..%g clip max %g ztest %u zwrite %u blend %u",
+                 static_cast<unsigned long long>(g_frameCount), static_cast<unsigned>(drawsThisFrame_), target_.color, target_.w, target_.h, nv, zlo, zhi,
+                 beyond, tested, wlo, whi, cmx, R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1, R[NV097_SET_DEPTH_MASK / 4] & 1, R[NV097_SET_BLEND_ENABLE / 4] & 1);
+    }
     float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f, hudSqueeze = 1.0f;
     int sideBars = 0;  // a full-screen 4:3 panel at 16:9: 1 extend its edges into the side bars, 2 shade them by its alpha
     static const bool noUiFix = featureOff("uifix");
