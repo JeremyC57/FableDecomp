@@ -106,9 +106,29 @@ Oakvale**, rendered through Vulkan (tested on lavapipe under Xvfb, ~7 fps in sof
   ini switch `occlusion`. Open: user video shows a wall section missing for seconds near the
   Guild (panorama shows through) - reproduce with their save.
 - 16:9 side bars: a full-screen 4:3 panel fills the bars (opaque: its top-corner colour, so
-  white beside the intro and black beside movies; blended over the game: black).
+  white beside the intro and black beside movies; blended over the game, such as the fade at
+  scene cuts and skips: the same quad at full width in black, so the bars darken by its alpha).
   FABLE_DISABLE=sidebars. HUD pieces are learned (texture + place) and keep their edge.
 - Render passes: texture lookups no longer end the pass (was ~950 passes per frame).
+
+## 2026-10-08: deck lighting flicker (Oakvale), Vulkan validation
+- User video (1920x1080 phone, any fps / draw distance / occlusion setting): with an NPC beside
+  the deck left of the player's house, the deck alone switches frame to frame between lit,
+  partly dark (hard diagonal edge) and dark. Not reproduced on desktop yet: the only save here
+  is the Guild AutoSave; an Oakvale save at that spot is needed.
+- Ruled out: occlusion (user toggled it), the shadow map's border colour (Fable samples it with
+  clamp-to-edge, `addr 00030303`). Capture at Guild night (flips 950-953): the 768x768 Z16
+  shadow map at 06878000 is cleared once per frame (FFFF), 122 4x-AA caster draws + 9 plain, then
+  ~107 receiver draws sample it (stages 1-3); identical every frame.
+- Vulkan validation (apt `vulkan-validationlayers`, run with `VK_INSTANCE_LAYERS=
+  VK_LAYER_KHRONOS_validation VK_LAYER_ENABLES=VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_
+  VALIDATION_EXT`; `FABLE_SYNC_TRACE=<flip>,<flip>` interleaves our transitions / passes /
+  samples / submits). Real errors: no barrier between the presenter's clear and blit
+  (vk.cpp present()); vertex attributes at unaligned addresses (stride 14, R32_SFLOAT:
+  VUID-vkCmdDrawIndexed-None-02721, ~88k draws); placeholder images cleared before the first
+  vkBeginCommandBuffer (initPipelineObjects). A reported read-after-write on the shadow map
+  does not match the trace: the full barrier (3 -> 5) sits between the last caster pass and
+  every sample, so it is not proof of a race.
 
 ## Next
 1. Renderer: real occlusion queries (count passed fragments per CLEAR/GET_REPORT pair with
