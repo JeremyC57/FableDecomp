@@ -267,7 +267,7 @@ void update() {
     // FABLE_INPUT_REPLAY=<recording>,<ms>,<flip> (testing): port 1 plays a FableXbox_input.txt
     // recording from its time <ms> on, in real time, starting when the run reaches <flip>.
     // FABLE_INPUT_REPLAY_AFTER_CUTSCENE=1: and no cutscene letterbox for 15 flips (gameplay has
-    // control); FABLE_AUTOPRESS stops there.
+    // control); FABLE_AUTOPRESS stops at the first frame without letterbox.
     static const auto replay = [] {
         struct Entry { long long ms; Pad pad; };
         std::vector<Entry> v;
@@ -301,6 +301,10 @@ void update() {
     }();
     static const bool afterCutscene = getenv("FABLE_INPUT_REPLAY_AFTER_CUTSCENE") != nullptr;
     static bool replayOn = false;
+    // Auto-press ends at the first frame without letterbox (a stray A would start a conversation
+    // that turns the camera; cutscenes play on by themselves).
+    if (afterCutscene && !std::get<0>(replay).empty() && gpu::g_frameCount >= std::get<2>(replay) && gpu::g_frameCount > gpu::g_lastLetterboxFlip + 1)
+        g_autopress = false;
     if (!replayOn && !std::get<0>(replay).empty() && gpu::g_frameCount >= std::get<2>(replay) &&
         (!afterCutscene || gpu::g_frameCount >= gpu::g_lastLetterboxFlip + 15)) {
         replayOn = true;
