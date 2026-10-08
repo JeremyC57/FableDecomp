@@ -61,6 +61,8 @@ void logInit(const wstring& path);
 void log(const char* fmt, ...);
 // A movie is loaded in a DirectShow graph (video.cpp).
 bool moviePlaying();
+// The game window has the mouse (Windows: after a click in it; user32.cpp).
+bool mouseCaptured();
 [[noreturn]] void die(const char* fmt, ...);
 extern int g_logLevel;  // 0 = errors, 1 = info, 2 = every import call
 #define HLOG(level, ...) do { if (::host::g_logLevel >= (level)) ::host::log(__VA_ARGS__); } while (0)

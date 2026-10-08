@@ -47,6 +47,7 @@ OVERRIDES = {
     "IDirectInputDevice8A::GetDeviceData", "IDirectInputDevice8W::GetDeviceData",
     "IDirectInputDevice8A::EnumObjects", "IDirectInputDevice8W::EnumObjects",
     "IDirectInputDevice8A::GetDeviceState", "IDirectInputDevice8W::GetDeviceState",
+    "IDirectInputDevice8A::SetCooperativeLevel", "IDirectInputDevice8W::SetCooperativeLevel",
     "IDirectDraw7::GetAvailableVidMem",
     "IDirectSound::CreateSoundBuffer", "IDirectSound8::CreateSoundBuffer",
     "IDirectSoundBuffer::Lock", "IDirectSoundBuffer::Unlock", "IDirectSoundBuffer8::Lock", "IDirectSoundBuffer8::Unlock",

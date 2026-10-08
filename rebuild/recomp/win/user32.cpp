@@ -199,7 +199,50 @@ void callHostProc(Ctx* c, uintptr_t data) {
     retStd(c, static_cast<uint32_t>(r), 4);
 }
 
+// Mouse capture (Windows). DirectInput opens the mouse non-exclusively (dinput.cpp), so the
+// game no longer takes the pointer as soon as its window is active: the pointer is confined
+// to the window and hidden after a click inside it, and freed again when the window loses
+// focus. Until then the game's own cursor moves are ignored.
+#ifndef FABLE_POSIX
+bool g_mouseCaptured = false;
+void captureMouse(HWND h, bool on) {
+    if (on) {
+        RECT r;
+        GetClientRect(h, &r);
+        MapWindowPoints(h, nullptr, reinterpret_cast<POINT*>(&r), 2);
+        ClipCursor(&r);
+        if (!g_mouseCaptured)
+            while (ShowCursor(FALSE) >= 0) {}
+    } else if (g_mouseCaptured) {
+        ClipCursor(nullptr);
+        while (ShowCursor(TRUE) < 0) {}
+    }
+    if (on != g_mouseCaptured) HLOG(1, "mouse %s", on ? "captured" : "released");
+    g_mouseCaptured = on;
+}
+void trackMouseCapture(HWND h, UINT msg, WPARAM wp) {
+    if (GetParent(h)) return;  // the game's top-level window only
+    switch (msg) {
+    case WM_LBUTTONDOWN: case WM_RBUTTONDOWN: case WM_MBUTTONDOWN:
+        if (!g_mouseCaptured) captureMouse(h, true);
+        break;
+    case WM_ACTIVATE:
+        if (LOWORD(wp) == WA_INACTIVE) captureMouse(h, false);
+        break;
+    case WM_KILLFOCUS: case WM_CANCELMODE:
+        captureMouse(h, false);
+        break;
+    case WM_SIZE: case WM_MOVE:
+        if (g_mouseCaptured) captureMouse(h, true);
+        break;
+    }
+}
+#endif
+
 LRESULT CALLBACK hostWndProcImpl(HWND h, UINT msg, WPARAM wp, LPARAM lp, bool wide) {
+#ifndef FABLE_POSIX
+    trackMouseCapture(h, msg, wp);
+#endif
     if (msg == WM_SYSKEYDOWN && wp == VK_RETURN && (lp & (1 << 29)) && !(lp & (1 << 30))) {  // Alt+Enter (not repeats)
         displayToggleRequest();
         return 0;
@@ -569,7 +612,15 @@ FWD_STD(U, GetClientRect);
 FWD_STD(U, GetDesktopWindow);
 FWD_STD(U, DestroyWindow);
 FWD_STD(U, IsDlgButtonChecked);
+#ifdef FABLE_POSIX
 FWD_STD(U, ShowCursor);
+#else
+IMPORT(U, ShowCursor) {  // the host decides visibility while it manages the capture
+    static int count = 0;
+    count += arg(c, 0) ? 1 : -1;
+    retStd(c, static_cast<uint32_t>(count), 1);
+}
+#endif
 FWD_STD(U, ShowWindow);
 FWD_STD(U, GetSysColor);
 IMPORT(U, GetForegroundWindow) {
@@ -587,7 +638,13 @@ FWD_STD(U, WaitMessage);
 FWD_STD(U, UpdateWindow);
 FWD_STD(U, GetSystemMetrics);
 FWD_STD(U, CharNextExA);
+#ifdef FABLE_POSIX
 FWD_STD(U, SetCursorPos);
+#else
+IMPORT(U, SetCursorPos) {  // only while the pointer is captured (see captureMouse)
+    retStd(c, g_mouseCaptured ? SetCursorPos(static_cast<int>(arg(c, 0)), static_cast<int>(arg(c, 1))) : TRUE, 2);
+}
+#endif
 FWD_STD(U, OffsetRect);
 FWD_STD(U, GetCursorPos);
 FWD_STD(U, GetQueueStatus);
@@ -596,4 +653,10 @@ FWD_STD(U, PostQuitMessage);
 FWD_STD(U, GetKeyboardLayout);
 
 }  // namespace
+
+#ifndef FABLE_POSIX
+bool mouseCaptured() { return g_mouseCaptured; }
+#else
+bool mouseCaptured() { return true; }
+#endif
 }  // namespace host

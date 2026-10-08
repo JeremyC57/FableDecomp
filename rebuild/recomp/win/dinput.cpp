@@ -62,6 +62,7 @@ template <class Dev> void getDeviceData(Ctx* c) {
     if (SUCCEEDED(hr) && out && !(flags & DIGDD_PEEK)) {  // add controller input
         buf.resize(n);
         const Kind k = kindOf(self);
+        if (k == Kind::Mouse && !mouseCaptured()) buf.clear();  // the game gets the mouse after a click in its window
         if (k == Kind::Keyboard) pad::injectKeyboardData(buf, capacity);
         else if (k == Kind::Mouse) pad::injectMouseData(buf, capacity);
         n = static_cast<DWORD>(buf.size());
@@ -131,6 +132,7 @@ template <class Dev> void getDeviceState(Ctx* c) {
     const HRESULT hr = self->GetDeviceState(size, data);
     if (SUCCEEDED(hr) && data) {
         const Kind k = kindOf(self);
+        if (k == Kind::Mouse && !mouseCaptured()) std::memset(data, 0, size);
         if (k == Kind::Keyboard) pad::injectKeyboardState(data, size);
         else if (k == Kind::Mouse) pad::injectMouseState(data, size);
     }
@@ -139,6 +141,21 @@ template <class Dev> void getDeviceState(Ctx* c) {
 
 }  // namespace
 
+// The game opens the mouse exclusively, which hides and locks the pointer whenever its window
+// is active. On Windows the host captures the pointer itself after a click in the game window
+// (user32.cpp), so the devices are opened non-exclusively.
+template <class Dev> void setCooperativeLevel(Ctx* c) {
+    auto* self = unwrap<Dev>(arg(c, 0));
+    DWORD flags = arg(c, 2);
+#ifndef FABLE_POSIX
+    if (flags & DISCL_EXCLUSIVE) flags = (flags & ~DISCL_EXCLUSIVE) | DISCL_NONEXCLUSIVE;
+#endif
+    const HRESULT hr = self->SetCooperativeLevel(static_cast<HWND>(hh(arg(c, 1))), flags);
+    HLOG(1, "IDirectInputDevice8::SetCooperativeLevel(0x%X -> 0x%lX) -> 0x%08lX", arg(c, 2), flags, static_cast<unsigned long>(hr));
+    retStd(c, static_cast<uint32_t>(hr), 3);
+}
+void ovr_IDirectInputDevice8A_SetCooperativeLevel(Ctx* c) { setCooperativeLevel<IDirectInputDevice8A>(c); }
+void ovr_IDirectInputDevice8W_SetCooperativeLevel(Ctx* c) { setCooperativeLevel<IDirectInputDevice8W>(c); }
 void ovr_IDirectInputDevice8A_GetDeviceState(Ctx* c) { getDeviceState<IDirectInputDevice8A>(c); }
 void ovr_IDirectInputDevice8W_GetDeviceState(Ctx* c) { getDeviceState<IDirectInputDevice8W>(c); }
 void ovr_IDirectInput8A_EnumDevices(Ctx* c) { enumDevices<IDirectInput8A, DIDEVICEINSTANCEA>(c); }

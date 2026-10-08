@@ -32,10 +32,12 @@ void ovr_IDirectInput8W_EnumDevices(Ctx* c);
 void ovr_IDirectInputDevice8A_EnumObjects(Ctx* c);
 void ovr_IDirectInputDevice8A_GetDeviceData(Ctx* c);
 void ovr_IDirectInputDevice8A_GetDeviceState(Ctx* c);
+void ovr_IDirectInputDevice8A_SetCooperativeLevel(Ctx* c);
 void ovr_IDirectInputDevice8A_SetDataFormat(Ctx* c);
 void ovr_IDirectInputDevice8W_EnumObjects(Ctx* c);
 void ovr_IDirectInputDevice8W_GetDeviceData(Ctx* c);
 void ovr_IDirectInputDevice8W_GetDeviceState(Ctx* c);
+void ovr_IDirectInputDevice8W_SetCooperativeLevel(Ctx* c);
 void ovr_IDirectInputDevice8W_SetDataFormat(Ctx* c);
 void ovr_IDirectSound8_CreateSoundBuffer(Ctx* c);
 void ovr_IDirectSound_CreateSoundBuffer(Ctx* c);
@@ -502,7 +504,7 @@ template <> host::com::Class& host::com::classOf<IDirectInputDevice8A>() {
         {"IDirectInputDevice8A::GetDeviceData", ovr_IDirectInputDevice8A_GetDeviceData},
         {"IDirectInputDevice8A::SetDataFormat", ovr_IDirectInputDevice8A_SetDataFormat},
         {"IDirectInputDevice8A::SetEventNotification", &host::com::comThunk<&IDirectInputDevice8A::SetEventNotification>},
-        {"IDirectInputDevice8A::SetCooperativeLevel", &host::com::comThunk<&IDirectInputDevice8A::SetCooperativeLevel>},
+        {"IDirectInputDevice8A::SetCooperativeLevel", ovr_IDirectInputDevice8A_SetCooperativeLevel},
         {"IDirectInputDevice8A::GetObjectInfo", &host::com::comThunk<&IDirectInputDevice8A::GetObjectInfo>},
         {"IDirectInputDevice8A::GetDeviceInfo", &host::com::comThunk<&IDirectInputDevice8A::GetDeviceInfo>},
         {"IDirectInputDevice8A::RunControlPanel", &host::com::comThunk<&IDirectInputDevice8A::RunControlPanel>},
@@ -539,7 +541,7 @@ template <> host::com::Class& host::com::classOf<IDirectInputDevice8W>() {
         {"IDirectInputDevice8W::GetDeviceData", ovr_IDirectInputDevice8W_GetDeviceData},
         {"IDirectInputDevice8W::SetDataFormat", ovr_IDirectInputDevice8W_SetDataFormat},
         {"IDirectInputDevice8W::SetEventNotification", &host::com::comThunk<&IDirectInputDevice8W::SetEventNotification>},
-        {"IDirectInputDevice8W::SetCooperativeLevel", &host::com::comThunk<&IDirectInputDevice8W::SetCooperativeLevel>},
+        {"IDirectInputDevice8W::SetCooperativeLevel", ovr_IDirectInputDevice8W_SetCooperativeLevel},
         {"IDirectInputDevice8W::GetObjectInfo", &host::com::comThunk<&IDirectInputDevice8W::GetObjectInfo>},
         {"IDirectInputDevice8W::GetDeviceInfo", &host::com::comThunk<&IDirectInputDevice8W::GetDeviceInfo>},
         {"IDirectInputDevice8W::RunControlPanel", &host::com::comThunk<&IDirectInputDevice8W::RunControlPanel>},

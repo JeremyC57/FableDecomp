@@ -567,6 +567,7 @@ bool nativeEnabled() {
 bool xboxMenusEnabled() {
     std::lock_guard<std::mutex> l(g.m);
     if (!g.init) load();
+    if (const char* e = std::getenv("FABLE_XBOX_MENUS")) return g.cfg.native && std::atoi(e) != 0;  // overrides the ini
     return g.cfg.native && g.cfg.xboxMenus;
 }
 
