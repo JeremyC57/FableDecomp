@@ -1721,9 +1721,10 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
     // depthOffset, then floor) and the slope term per guest pixel. Our depth images are 24-bit
     // (Vulkan counts the constant in 1/2^24) and upscaled (slope per host pixel), so a Z16 shadow
     // map got 1/256 of the game's bias: surfaces that both cast and receive (the deck beside an
-    // NPC) shadowed themselves on alternate frames. Under test: FABLE_ZBIAS_UNITS=1 enables it.
-    static const bool rawBias = !getenv("FABLE_ZBIAS_UNITS");
-    if (!rawBias && target_.depth && target_.h) {
+    // NPC) shadowed themselves on alternate frames. Under test: the quick menu / ini switch
+    // shadow_bias_fix, or FABLE_ZBIAS_UNITS=1.
+    static const bool forceFix = getenv("FABLE_ZBIAS_UNITS") != nullptr;
+    if ((forceFix || settings().shadowBiasFix) && target_.depth && target_.h) {
         if (((R[NV097_SET_SURFACE_FORMAT / 4] >> 4) & 0xF) == 1) bias *= 256.0f;  // Z16 in a 24-bit image
         slope *= static_cast<float>(hostH(target_.h)) / static_cast<float>(target_.h);
     }
