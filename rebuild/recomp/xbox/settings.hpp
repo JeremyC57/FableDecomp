@@ -39,7 +39,7 @@ struct Settings {
     bool hudCorners = true;
     bool textSharpen = true;
     bool occlusion = true;
-    bool shadowBiasFix = false;  // depth bias in Z16 / upscaled units (under test: deck flicker)
+    bool shadowBiasFix = true;  // depth bias in Z16 / upscaled units (off: the old units, for comparison)
 };
 
 Settings& settings();

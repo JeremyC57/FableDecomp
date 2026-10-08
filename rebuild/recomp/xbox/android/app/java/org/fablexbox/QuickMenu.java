@@ -91,7 +91,7 @@ public final class QuickMenu {
         col.addView(toggle("HUD at the screen edges (16:9)", "hudCorners", true, on -> natives.setOption("hud_corners", on)));
         col.addView(toggle("Sharpen text", "textSharpen", true, on -> natives.setOption("text_sharpen", on)));
         col.addView(toggle("Occlusion culling (faster; off if objects flicker)", "occlusion", true, on -> natives.setOption("occlusion", on)));
-        col.addView(toggle("Shadow depth fix (test: flickering shadows)", "shadowBiasFix", false, on -> natives.setOption("shadow_bias_fix", on)));
+        col.addView(toggle("Shadow depth fix (off: flickering shadows)", "shadowBiasFix", true, on -> natives.setOption("shadow_bias_fix", on)));
 
         Button profile = button("Record performance profile (15 s)");
         profile.setOnClickListener(v -> {
@@ -115,7 +115,7 @@ public final class QuickMenu {
         natives.setOption("hud_corners", prefs.getBoolean("hudCorners", true));
         natives.setOption("text_sharpen", prefs.getBoolean("textSharpen", true));
         natives.setOption("occlusion", prefs.getBoolean("occlusion", true));
-        natives.setOption("shadow_bias_fix", prefs.getBoolean("shadowBiasFix", false));
+        natives.setOption("shadow_bias_fix", prefs.getBoolean("shadowBiasFix", true));
         if (fps.getVisibility() == View.VISIBLE) poll();
     }
 
