@@ -1870,8 +1870,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
                 if ((mask >> i) & 1) fprintf(cap, " a%d:%02X", i, fmts[i] & 0xFF);
             for (int i = 0; i < 4; ++i)
                 if (R[NV097_SET_TEXTURE_CONTROL0 / 4 + i * 16] & (1u << 30))
-                    fprintf(cap, " t%d:%08X@%08X addr %08X border %08X", i, R[NV097_SET_TEXTURE_FORMAT / 4 + i * 16], R[NV097_SET_TEXTURE_OFFSET / 4 + i * 16],
-                            R[NV097_SET_TEXTURE_ADDRESS / 4 + i * 16], R[NV097_SET_TEXTURE_BORDER_COLOR / 4 + i * 16]);
+                    fprintf(cap, " t%d:%08X@%08X addr %08X border %08X filt %08X", i, R[NV097_SET_TEXTURE_FORMAT / 4 + i * 16],
+                            R[NV097_SET_TEXTURE_OFFSET / 4 + i * 16], R[NV097_SET_TEXTURE_ADDRESS / 4 + i * 16], R[NV097_SET_TEXTURE_BORDER_COLOR / 4 + i * 16],
+                            R[NV097_SET_TEXTURE_FILTER / 4 + i * 16]);
             fputc('\n', cap);
             fflush(cap);
         }
