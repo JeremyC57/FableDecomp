@@ -119,8 +119,21 @@ void VkRenderer::waitFence(VkFence fence) {
     g_perfGpuWaitNs += static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - t0).count());
 }
 
+// FABLE_SYNC_TRACE=<first flip>,<last flip> (debugging): layout transitions, render passes, surface
+// samples and submissions on stdout, in order with the Vulkan validation layer's messages.
+bool syncTrace() {
+    static const std::pair<uint64_t, uint64_t> range = [] {
+        const char* e = getenv("FABLE_SYNC_TRACE");
+        if (!e) return std::pair<uint64_t, uint64_t>{1, 0};
+        const char* c = strchr(e, ',');
+        return std::pair<uint64_t, uint64_t>{strtoull(e, nullptr, 10), c ? strtoull(c + 1, nullptr, 10) : ~0ull};
+    }();
+    return g_frameCount >= range.first && g_frameCount <= range.second;
+}
+
 void VkRenderer::beginFrame() {
     Frame& f = frames_[frame_];
+    if (syncTrace()) printf("SYNC begin cb %p flip %llu\n", static_cast<void*>(f.cmd), static_cast<unsigned long long>(g_frameCount)), fflush(stdout);
     waitFence(f.fence);
     resolveReports(f);
     vkResetFences(ctx().device, 1, &f.fence);
@@ -245,6 +258,7 @@ void VkRenderer::submitFrame(bool wait) {
         ++openCount_->pending;
     }
     vkEndCommandBuffer(f.cmd);
+    if (syncTrace()) printf("SYNC submit cb %p%s\n", static_cast<void*>(f.cmd), wait ? " (wait)" : ""), fflush(stdout);
     VkSubmitInfo si{VK_STRUCTURE_TYPE_SUBMIT_INFO};
     si.commandBufferCount = 1;
     si.pCommandBuffers = &f.cmd;
@@ -408,6 +422,8 @@ void VkRenderer::destroySurface(Surface& s) {
 void VkRenderer::transition(Surface& s, VkImageLayout to) {
     if (s.layout == to) return;
     endPass();
+    if (syncTrace())
+        printf("SYNC transition %s %08X %ux%u %d -> %d cb %p\n", s.depth ? "Z" : "C", s.addr, s.w, s.h, s.layout, to, static_cast<void*>(cmd())), fflush(stdout);
     VkImageMemoryBarrier b{VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER};
     b.srcAccessMask = VK_ACCESS_MEMORY_WRITE_BIT | VK_ACCESS_MEMORY_READ_BIT;
     b.dstAccessMask = VK_ACCESS_MEMORY_WRITE_BIT | VK_ACCESS_MEMORY_READ_BIT;

@@ -386,8 +386,11 @@ void VkRenderer::initPipelineObjects() {
 // ============================================================================================
 // render passes
 // ============================================================================================
+bool syncTrace();
+
 void VkRenderer::endPass() {
     if (!pass_) return;
+    if (syncTrace()) printf("SYNC end pass cb %p\n", static_cast<void*>(cmd())), fflush(stdout);
     vkCmdEndRenderPass(cmd());
     pass_ = VK_NULL_HANDLE;
 }
@@ -459,6 +462,9 @@ void VkRenderer::beginPass() {
     bi.framebuffer = fb;
     bi.renderArea.extent = {c ? hostW(c->w, c->h) : hostW(z->w, z->h), hostH(c ? c->h : z->h)};
     vkCmdBeginRenderPass(cmd(), &bi, VK_SUBPASS_CONTENTS_INLINE);
+    if (syncTrace())
+        printf("SYNC pass C %08X Z %08X %ux%u cb %p\n", c ? c->addr : 0, z ? z->addr : 0, bi.renderArea.extent.width, bi.renderArea.extent.height,
+               static_cast<void*>(cmd())), fflush(stdout);
     ++g_perfPasses;
     pass_ = rp;
     passRp_ = rp;
@@ -1133,11 +1139,13 @@ VkImageView VkRenderer::texture(int stage, uint32_t* kind) {
     const bool depthFmt = isDepthFormat(color);
     if (Surface* s = findSurface(addr, depthFmt)) {
         transition(*s, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+        if (syncTrace()) printf("SYNC sample %s %08X %ux%u stage %d cb %p\n", s->depth ? "Z" : "C", addr, s->w, s->h, stage, static_cast<void*>(cmd())), fflush(stdout);
         *kind = 0;
         return s->sampleView;
     }
     if (Surface* s = findSurface(addr, !depthFmt)) {
         transition(*s, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+        if (syncTrace()) printf("SYNC sample %s %08X %ux%u stage %d cb %p (other kind)\n", s->depth ? "Z" : "C", addr, s->w, s->h, stage, static_cast<void*>(cmd())), fflush(stdout);
         *kind = 0;
         return s->sampleView;
     }
