@@ -23,6 +23,11 @@ uint32_t connectedMask();     // bit per port with a pad (port 1 is always conne
 Pad pad(int port);
 void rumble(int port, uint16_t left, uint16_t right);
 
+// Input recording: every change of port 1 is appended to this file (main.cpp: <data>/
+// FableXbox_input.txt, new each launch) as "<flip> <ms> <buttons> <A B X Y black white LT RT>
+// <lx ly rx ry>", so a route played on a device can be replayed (FABLE_INPUT_SCRIPT_FILE).
+void setRecordFile(const char* path);
+
 // Android on-screen controls: an XInput-layout virtual pad merged into port 1 (buttons as
 // XINPUT_GAMEPAD wButtons: A 0x1000, B 0x2000, X 0x4000, Y 0x8000, LB 0x100, RB 0x200),
 // and touchpad drags turned into right-stick (camera) movement.

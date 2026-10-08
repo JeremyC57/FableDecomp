@@ -5,6 +5,7 @@
 //             [--extract-to <folder>]   (a disc image is extracted there once; default <hdd>/../game)
 #include "disc.hpp"
 #include "gpu.hpp"
+#include "input.hpp"
 #include "settings.hpp"
 #include "pc_textures.hpp"
 #include "xhost.hpp"
@@ -125,6 +126,10 @@ int main(int argc, char** argv) {
     if (hdd.empty()) hdd = game + "/../xbox_hdd";
     // <hdd>/../fable_xbox.ini, computed lexically: the hdd folder may not exist yet.
     loadSettings(config.empty() ? (std::filesystem::path(hdd).lexically_normal().parent_path() / "fable_xbox.ini").string() : config);
+    {
+        static const std::string rec = (std::filesystem::path(hdd).lexically_normal().parent_path() / "FableXbox_input.txt").string();
+        input::setRecordFile(rec.c_str());
+    }
     profilerStart();
     if (!std::filesystem::is_directory(game)) {
         // A disc image: extract the game files once (to --extract-to, default <hdd>/../game), run from there.

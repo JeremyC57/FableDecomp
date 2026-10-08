@@ -19,6 +19,9 @@
 #include <chrono>
 #include <cmath>
 #include <mutex>
+#include <string>
+#include <tuple>
+#include <vector>
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
@@ -112,6 +115,29 @@ void handleEvent(const SDL_Event& e) {
             }
     }
 }
+
+namespace {
+std::string g_recordPath;
+FILE* g_record = nullptr;
+size_t g_recordBytes = 0;
+const auto g_recordStart = std::chrono::steady_clock::now();
+
+void record(const Pad& d) {
+    if (g_recordPath.empty() || g_recordBytes > (64u << 20)) return;
+    if (!g_record && !(g_record = std::fopen(g_recordPath.c_str(), "w"))) {
+        g_recordPath.clear();
+        return;
+    }
+    const long long ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - g_recordStart).count();
+    const int n = std::fprintf(g_record, "%llu %lld %u %u %u %u %u %u %u %u %u %d %d %d %d\n", static_cast<unsigned long long>(gpu::g_frameCount), ms,
+                               d.buttons, d.analog[0], d.analog[1], d.analog[2], d.analog[3], d.analog[4], d.analog[5], d.analog[6], d.analog[7], d.lx,
+                               d.ly, d.rx, d.ry);
+    std::fflush(g_record);  // the app can be closed at any time
+    if (n > 0) g_recordBytes += static_cast<size_t>(n);
+}
+}  // namespace
+
+void setRecordFile(const char* path) { g_recordPath = path ? path : ""; }
 
 void update() {
     applyRumble();
@@ -238,6 +264,51 @@ void update() {
             }
         }
     }
+    // FABLE_INPUT_REPLAY=<recording>,<ms>,<flip> (testing): port 1 plays a FableXbox_input.txt
+    // recording from its time <ms> on, in real time, starting when the run reaches <flip>.
+    static const auto replay = [] {
+        struct Entry { long long ms; Pad pad; };
+        std::vector<Entry> v;
+        long long fromMs = 0;
+        uint64_t atFlip = 0;
+        if (const char* e = getenv("FABLE_INPUT_REPLAY")) {
+            std::string path(e);
+            const size_t c1 = path.find(','), c2 = c1 == std::string::npos ? c1 : path.find(',', c1 + 1);
+            if (c2 != std::string::npos) {
+                fromMs = std::atoll(path.c_str() + c1 + 1);
+                atFlip = std::strtoull(path.c_str() + c2 + 1, nullptr, 10);
+                path.resize(c1);
+            }
+            if (FILE* f = std::fopen(path.c_str(), "r")) {
+                unsigned long long flip;
+                Entry x{};
+                unsigned b, a[8];
+                int lx, ly, rx, ry;
+                while (std::fscanf(f, "%llu %lld %u %u %u %u %u %u %u %u %u %d %d %d %d", &flip, &x.ms, &b, &a[0], &a[1], &a[2], &a[3], &a[4], &a[5],
+                                   &a[6], &a[7], &lx, &ly, &rx, &ry) == 15) {
+                    x.pad.buttons = static_cast<uint16_t>(b);
+                    for (int i = 0; i < 8; ++i) x.pad.analog[i] = static_cast<uint8_t>(a[i]);
+                    x.pad.lx = static_cast<int16_t>(lx), x.pad.ly = static_cast<int16_t>(ly), x.pad.rx = static_cast<int16_t>(rx), x.pad.ry = static_cast<int16_t>(ry);
+                    v.push_back(x);
+                }
+                std::fclose(f);
+            }
+            XLOG(0, "input: replaying %zu recorded changes from %lld ms at flip %llu", v.size(), fromMs, static_cast<unsigned long long>(atFlip));
+        }
+        return std::make_tuple(v, fromMs, atFlip);
+    }();
+    if (!std::get<0>(replay).empty() && gpu::g_frameCount >= std::get<2>(replay)) {
+        static const auto t0 = std::chrono::steady_clock::now();
+        const long long now = std::get<1>(replay) + std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - t0).count();
+        const auto& v = std::get<0>(replay);
+        static size_t i = 0;
+        while (i + 1 < v.size() && v[i + 1].ms <= now) ++i;
+        if (v[i].ms <= now) {
+            const uint32_t packet = next[0].packet;
+            next[0] = v[i].pad;
+            next[0].packet = packet;
+        }
+    }
     static const double autoUntil = getenv("FABLE_AUTOPRESS_UNTIL") ? atof(getenv("FABLE_AUTOPRESS_UNTIL")) : 1e18;  // seconds
     static const auto autoStart = std::chrono::steady_clock::now();
     const double autoClock = getenv("FABLE_INPUT_FRAMES") ? static_cast<double>(gpu::g_frameCount)
@@ -257,9 +328,11 @@ void update() {
                              a.ly != b.ly || a.rx != b.rx || a.ry != b.ry;
         if (changed) next[p].packet = ++g_packet;
         else next[p].packet = g_pads[p].packet;
+        if (changed && p == 0) record(next[p]);
         g_pads[p] = next[p];
     }
 }
+
 
 uint32_t connectedMask() {
     uint32_t m = 1;  // port 1: a controller or the keyboard
