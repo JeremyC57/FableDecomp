@@ -1479,9 +1479,9 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
             zlo = std::min(zlo, z), zhi = std::max(zhi, z), wlo = std::min(wlo, pos[3]), whi = std::max(whi, pos[3]);
         }
         if (tested)
-            XLOG(0, "zrange flip %llu draw %u: tgt %08X %ux%u n %u z %.5f..%.5f (%u/%u beyond far) w %g..%g clip max %g ztest %u zwrite %u blend %u",
+            XLOG(0, "zrange flip %llu draw %u: tgt %08X %ux%u n %u z %.5f..%.5f (%u/%u beyond far) w %g..%g clip max %g ztest %u zwrite %u blend %u control0 %08X",
                  static_cast<unsigned long long>(g_frameCount), static_cast<unsigned>(drawsThisFrame_), target_.color, target_.w, target_.h, nv, zlo, zhi,
-                 beyond, tested, wlo, whi, cmx, R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1, R[NV097_SET_DEPTH_MASK / 4] & 1, R[NV097_SET_BLEND_ENABLE / 4] & 1);
+                 beyond, tested, wlo, whi, cmx, R[NV097_SET_DEPTH_TEST_ENABLE / 4] & 1, R[NV097_SET_DEPTH_MASK / 4] & 1, R[NV097_SET_BLEND_ENABLE / 4] & 1, R[NV097_SET_CONTROL0 / 4]);
     }
     float uiScale = 1.0f, uiCenter = 0.0f, textSharp = 0.0f, hudSqueeze = 1.0f;
     int sideBars = 0;  // a full-screen 4:3 panel at 16:9: 1 extend its edges into the side bars, 2 shade them by its alpha
@@ -1845,6 +1845,7 @@ void VkRenderer::draw(const std::vector<uint32_t>* indices, uint32_t first, uint
                         R[NV097_SET_STENCIL_FUNC_MASK / 4], R[NV097_SET_STENCIL_MASK / 4], R[NV097_SET_STENCIL_OP_FAIL / 4],
                         R[NV097_SET_STENCIL_OP_ZFAIL / 4], R[NV097_SET_STENCIL_OP_ZPASS / 4]);
             if (R[NV097_SET_ZPASS_PIXEL_COUNT_ENABLE / 4] & 1) fprintf(cap, " ZPASS");
+            fprintf(cap, " control0 %08X", R[NV097_SET_CONTROL0 / 4]);
             fprintf(cap, " poff %u bias %g slope %g", R[NV097_SET_POLY_OFFSET_FILL_ENABLE / 4] & 1, guestBias, guestSlope);
             fprintf(cap, " ui %g/%g hud %g text %g class %g/%g/z%g/x%g..%g", vc.ui[0], vc.ui[1], vc.clip[2], fc.text[0], g_uiClass[0], g_uiClass[1],
                     g_uiClass[2], g_uiClass[3], g_uiClass[4]);
