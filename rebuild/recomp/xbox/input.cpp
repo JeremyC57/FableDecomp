@@ -26,7 +26,7 @@
 #include <cstdio>
 #include <cstring>
 
-namespace xb::gpu { extern uint64_t g_frameCount; }
+namespace xb::gpu { extern uint64_t g_frameCount, g_lastLetterboxFlip; }
 namespace xb::input {
 
 namespace {
@@ -266,6 +266,8 @@ void update() {
     }
     // FABLE_INPUT_REPLAY=<recording>,<ms>,<flip> (testing): port 1 plays a FableXbox_input.txt
     // recording from its time <ms> on, in real time, starting when the run reaches <flip>.
+    // FABLE_INPUT_REPLAY_AFTER_CUTSCENE=1: and no cutscene letterbox for 15 flips (gameplay has
+    // control); FABLE_AUTOPRESS stops there.
     static const auto replay = [] {
         struct Entry { long long ms; Pad pad; };
         std::vector<Entry> v;
@@ -297,7 +299,15 @@ void update() {
         }
         return std::make_tuple(v, fromMs, atFlip);
     }();
-    if (!std::get<0>(replay).empty() && gpu::g_frameCount >= std::get<2>(replay)) {
+    static const bool afterCutscene = getenv("FABLE_INPUT_REPLAY_AFTER_CUTSCENE") != nullptr;
+    static bool replayOn = false;
+    if (!replayOn && !std::get<0>(replay).empty() && gpu::g_frameCount >= std::get<2>(replay) &&
+        (!afterCutscene || gpu::g_frameCount >= gpu::g_lastLetterboxFlip + 15)) {
+        replayOn = true;
+        g_autopress = false;
+        XLOG(0, "input: replay starts at flip %llu", static_cast<unsigned long long>(gpu::g_frameCount));
+    }
+    if (replayOn) {
         static const auto t0 = std::chrono::steady_clock::now();
         const long long now = std::get<1>(replay) + std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - t0).count();
         const auto& v = std::get<0>(replay);

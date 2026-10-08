@@ -96,6 +96,7 @@ uint32_t g_dacIndex = 0;  // entry * 3 + component
 uint32_t g_ptNum = 1, g_ptDen = 1;
 }  // namespace
 uint64_t g_frameCount = 0;  // flips (also the input script clock, FABLE_INPUT_FRAMES)
+uint64_t g_lastLetterboxFlip = 0;  // last flip with cutscene letterbox bars (16:9 interface layout; input replay)
 namespace {
 
 // PGRAPH: subchannel -> object instance and class.

@@ -594,6 +594,8 @@ void VkRenderer::uiEndFrame() {
         last = cur;
     }
     uiPrev_ = std::move(cl);
+    extern uint64_t g_lastLetterboxFlip;
+    if (uiBarTop_ && uiBarBottom_) g_lastLetterboxFlip = g_frameCount;
     uiMenuPrev_ = uiMenuCur_;
     uiMenuCur_ = uiBarTop_ = uiBarBottom_ = false;
     uiCur_.clear();
