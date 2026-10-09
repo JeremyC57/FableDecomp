@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 
 import java.io.File;
 
@@ -20,6 +21,11 @@ public class RestartActivity extends Activity {
     @Override
     protected void onCreate(Bundle saved) {
         super.onCreate(saved);
+        overridePendingTransition(0, 0);
+        View black = new View(this);  // black from the game's reboot until the new game process draws
+        black.setBackgroundColor(0xFF000000);
+        black.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        setContentView(black);
         handler.postDelayed(this::check, 200);
     }
 
@@ -33,7 +39,9 @@ public class RestartActivity extends Activity {
         if (game != null) {
             game.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(game);
+            overridePendingTransition(0, 0);
         }
         finish();
+        overridePendingTransition(0, 0);
     }
 }

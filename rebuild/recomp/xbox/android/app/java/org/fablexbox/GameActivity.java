@@ -102,8 +102,9 @@ public class GameActivity extends SDLActivity {
         Intent restart = new Intent(this, RestartActivity.class);
         restart.putExtra("game", game);
         restart.putExtra("pid", android.os.Process.myPid());
-        restart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        restart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(restart);
+        overridePendingTransition(0, 0);
     }
 
     @Override

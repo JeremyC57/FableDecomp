@@ -43,7 +43,8 @@
         <!-- Starts a new game process after the game rebooted itself (loading a save in game). -->
         <activity android:name=".RestartActivity"
             android:exported="false"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 
         <!-- The game runs in its own process: the native code cannot be started twice in one. -->
         <activity android:name=".GameActivity"
