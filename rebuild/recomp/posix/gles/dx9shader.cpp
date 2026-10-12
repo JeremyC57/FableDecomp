@@ -149,8 +149,8 @@ struct Translator {
         if (d.dstMod() & 1) expr = "clamp(" + expr + ", 0.0, 1.0)";
         const int mask = d.writeMask();
         std::string name = regName(d, true);
-        if (!pixel && d.type() == R_ADDR) {  // mov a0.x, ...: integer part
-            body += "  a0 = floor((" + expr + ").x);\n";
+        if (!pixel && d.type() == R_ADDR) {  // mov a0.x, ...: round to nearest (D3D9: vs_1_1 mov and mova both round)
+            body += "  a0 = floor((" + expr + ").x + 0.5);\n";
             return;
         }
         if (!pixel) {
