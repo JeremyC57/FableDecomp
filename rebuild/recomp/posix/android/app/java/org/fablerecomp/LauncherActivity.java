@@ -81,8 +81,8 @@ public class LauncherActivity extends Activity {
         col.addView(scaleLabel);
         scale = new SeekBar(this);
         scale.setMax(9);  // auto, then 1.0 .. 3.0 in steps of 0.25
-        float saved = prefs.getFloat("uiScale", 0f);
-        scale.setProgress(saved == 0f ? 0 : 1 + Math.round((saved - 1f) * 4f));
+        float savedScale = prefs.getFloat("uiScale", 0f);
+        scale.setProgress(savedScale == 0f ? 0 : 1 + Math.round((savedScale - 1f) * 4f));
         scale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar s, int p, boolean user) { updateScaleLabel(); }
             public void onStartTrackingTouch(SeekBar s) {}
