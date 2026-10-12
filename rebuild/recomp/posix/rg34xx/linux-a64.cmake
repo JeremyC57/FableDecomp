@@ -7,3 +7,6 @@ set(CMAKE_C_COMPILER_TARGET aarch64-linux-gnu)
 set(CMAKE_CXX_COMPILER_TARGET aarch64-linux-gnu)
 set(CMAKE_ASM_COMPILER_TARGET aarch64-linux-gnu)
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+# The RG34XX SP's Allwinner H700: in-order Cortex-A53 cores
+set(CMAKE_C_FLAGS_INIT "-mcpu=cortex-a53 -fomit-frame-pointer")
+set(CMAKE_CXX_FLAGS_INIT "-mcpu=cortex-a53 -fomit-frame-pointer")

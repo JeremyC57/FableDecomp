@@ -24,6 +24,10 @@ OUT="$DIR/diag.txt"
   echo "--- environment"; env | sort
   echo "--- ports launcher libs (PortMaster/stock)"
   ls -la /usr/lib/libSDL2* /roms/ports/PortMaster/libs* /mnt/sdcard/Roms/PORTS/PortMaster/libs* 2>&1 | head -40
+  echo "--- clocks (cpufreq / devfreq governors and frequencies)"
+  for f in /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq; do printf '%s: ' "$f"; cat "$f" 2>&1; done
+  for d in /sys/class/devfreq/*; do [ -d "$d" ] && for f in governor available_governors cur_freq max_freq available_frequencies; do printf '%s/%s: ' "$d" "$f"; cat "$d/$f" 2>&1; done; done
+  cat /sys/kernel/debug/mali*/gpu_freq 2>/dev/null; ls /sys/devices/platform/*gpu*/ 2>/dev/null | head; cat /proc/meminfo | head -3
   echo "--- input devices"
   for d in /sys/class/input/event*; do printf '%s: ' "$(basename "$d")"; cat "$d/device/name" 2>/dev/null; done
   echo "--- pad probe: for 30 seconds press, in this order: A B X Y L1 R1 L2 R2 Select Start, D-pad up down left right, L3 R3, the menu key, volume up, volume down; then move the left stick right/down and the right stick right/down"

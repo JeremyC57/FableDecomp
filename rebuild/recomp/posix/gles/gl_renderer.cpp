@@ -24,6 +24,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
+#include <ctime>
 #include <cstdlib>
 #include <cstring>
 #include <map>
@@ -123,6 +124,7 @@ PFNGLUNIFORM4FPROC glUniform4f;
 PFNGLUNIFORM4FVPROC glUniform4fv;
 PFNGLUNIFORM2FPROC glUniform2f;
 PFNGLUSEPROGRAMPROC glUseProgram;
+PFNGLINVALIDATEFRAMEBUFFERPROC glInvalidateFramebuffer;
 PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
 PFNGLVIEWPORTPROC glViewport;
 void* getProc(const char* n) { return w32::fbdevGl() ? fb::proc(n) : SDL_GL_GetProcAddress(n); }
@@ -212,6 +214,7 @@ bool loadGl() {
     glUniform4fv = reinterpret_cast<PFNGLUNIFORM4FVPROC>(getProc("glUniform4fv"));
     glUniform2f = reinterpret_cast<PFNGLUNIFORM2FPROC>(getProc("glUniform2f"));
     glUseProgram = reinterpret_cast<PFNGLUSEPROGRAMPROC>(getProc("glUseProgram"));
+    glInvalidateFramebuffer = reinterpret_cast<PFNGLINVALIDATEFRAMEBUFFERPROC>(getProc("glInvalidateFramebuffer"));
     glVertexAttribPointer = reinterpret_cast<PFNGLVERTEXATTRIBPOINTERPROC>(getProc("glVertexAttribPointer"));
     glViewport = reinterpret_cast<PFNGLVIEWPORTPROC>(getProc("glViewport"));
     return glActiveTexture && glAttachShader && glBeginQuery && glBindBuffer && glBindFramebuffer && glBindRenderbuffer && glBindSampler && glBindTexture && glBindVertexArray && glBlendColor && glBlendEquation && glBlendFunc && glBlitFramebuffer && glBufferData && glBufferSubData && glCheckFramebufferStatus && glClear && glClearColor && glClearDepthf && glClearStencil && glColorMask && glCompileShader && glCreateProgram && glCreateShader && glCullFace && glDeleteBuffers && glDeleteFramebuffers && glDeleteProgram && glDeleteQueries && glDeleteRenderbuffers && glDeleteSamplers && glDeleteShader && glDeleteTextures && glDeleteVertexArrays && glDepthFunc && glDepthMask && glDepthRangef && glDisable && glDisableVertexAttribArray && glDrawArrays && glDrawElements && glEnable && glEnableVertexAttribArray && glEndQuery && glFramebufferRenderbuffer && glFramebufferTexture2D && glFrontFace && glGenBuffers && glGenFramebuffers && glGenQueries && glGenRenderbuffers && glGenSamplers && glGenTextures && glGenVertexArrays && glGenerateMipmap && glGetError && glGetIntegerv && glGetProgramInfoLog && glGetProgramiv && glGetQueryObjectuiv && glGetShaderInfoLog && glGetShaderiv && glGetString && glGetUniformLocation && glLinkProgram && glPixelStorei && glPolygonOffset && glReadPixels && glRenderbufferStorage && glSamplerParameteri && glScissor && glShaderSource && glStencilFunc && glStencilMask && glStencilOp && glTexParameteri && glTexParameteriv && glTexStorage2D && glTexSubImage2D && glUniform1f && glUniform1i && glUniform4f && glUniform4fv && glUseProgram && glVertexAttribPointer && glViewport;
@@ -226,6 +229,11 @@ Device* g_device = nullptr;
     do { \
         if (host::g_logLevel >= 2) { GLenum e = glGetError(); if (e) log("gles: GL error 0x%X at %s", e, what); } \
     } while (0)
+
+// ---- timing: nanoseconds spent inside the renderer, per frame (the overlay statistics) ----
+inline uint64_t nowNs() { timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return static_cast<uint64_t>(t.tv_sec) * 1000000000ull + t.tv_nsec; }
+uint64_t g_nsGl = 0;
+struct GlTime { uint64_t t0 = nowNs(); ~GlTime() { g_nsGl += nowNs() - t0; } };
 
 // ---- COM base ------------------------------------------------------------------------------
 template <class I, const IID* ID> struct Unknown : I {
@@ -480,9 +488,10 @@ struct Buffer {  // vertex / index buffer storage
     UINT lockOff = 0, lockSize = 0;
     DWORD lockFlags = 0;
     bool dirtyAll = true;
+    bool dynamic = false;
     GLenum target;
     void create(GLenum t, UINT n, DWORD usage) {
-        target = t, size = n;
+        target = t, size = n, dynamic = (usage & D3DUSAGE_DYNAMIC) != 0;
         cpu.assign(n, 0);
         glGenBuffers(1, &gl);
         glBindBuffer(target, gl);
@@ -497,8 +506,12 @@ struct Buffer {  // vertex / index buffer storage
         if (!locked) return;
         locked = false;
         if (lockFlags & D3DLOCK_READONLY) return;
+        GlTime t;
         glBindBuffer(target, gl);
-        if (lockFlags & D3DLOCK_DISCARD) glBufferData(target, size, cpu.data(), GL_DYNAMIC_DRAW);  // orphan
+        // A dynamic buffer still in use by queued draws must not be written in place (the
+        // driver would wait or copy): orphan it and upload the whole mirror, unless the game
+        // promises NOOVERWRITE. Static buffers are filled before use.
+        if ((lockFlags & D3DLOCK_DISCARD) || (dynamic && !(lockFlags & D3DLOCK_NOOVERWRITE))) glBufferData(target, size, cpu.data(), GL_DYNAMIC_DRAW);
         else glBufferSubData(target, lockOff, lockSize, cpu.data() + lockOff);
     }
     ~Buffer() { if (gl) glDeleteBuffers(1, &gl); }
@@ -603,6 +616,7 @@ struct Query : Unknown<IDirect3DQuery9, &IID_IDirect3DQuery9> {
     D3DQUERYTYPE type;
     GLuint gl = 0;
     bool issued = false, active = false;
+    DWORD lastResult = 256;  // the last answer; "visible" before the first one
     Query(Device* d, D3DQUERYTYPE t) : dev(d), type(t) { if (t == D3DQUERYTYPE_OCCLUSION) glGenQueries(1, &gl); }
     ~Query() override { if (gl) glDeleteQueries(1, &gl); }
     HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
@@ -619,11 +633,16 @@ struct Query : Unknown<IDirect3DQuery9, &IID_IDirect3DQuery9> {
         if (!issued) return S_FALSE;
         GLuint avail = 0;
         glGetQueryObjectuiv(gl, GL_QUERY_RESULT_AVAILABLE, &avail);
-        if (!avail && !(flags & D3DGETDATA_FLUSH)) return S_FALSE;
-        GLuint r = 0;
-        glGetQueryObjectuiv(gl, GL_QUERY_RESULT, &r);
-        // Direct3D reports the pixel count; the boolean query stands in with a plausible one.
-        if (out && size >= 4) *static_cast<DWORD*>(out) = r ? 256 : 0;
+        if (avail) {
+            GLuint r = 0;
+            glGetQueryObjectuiv(gl, GL_QUERY_RESULT, &r);
+            // Direct3D reports the pixel count; the boolean query stands in with a plausible one.
+            lastResult = r ? 256 : 0;
+        }
+        // Waiting for the GPU here (D3DGETDATA_FLUSH, polled every frame for the sun's lens
+        // flare) would serialise the CPU and the GPU; the previous frame's answer is returned
+        // instead, which a flare cannot tell apart.
+        if (out && size >= 4) *static_cast<DWORD*>(out) = lastResult;
         return S_OK;
     }
 };
@@ -654,6 +673,8 @@ struct Program {
     GLuint gl = 0;
     GLint uC = -1, uColorBgra = -1, uPc = -1, uBump = -1, uProjMask = -1, uFogColor = -1, uFogEnable = -1, uAlphaFunc = -1, uAlphaRef = -1, uViewport = -1, uTFactor = -1, uHalfPixel = -1;
     GLint uS[6] = {-1, -1, -1, -1, -1, -1};
+    GLint uCElem[128] = {};  // locations of c[k] / pc[k] (ranges of constants upload from them)
+    GLint uPcElem[8] = {};
 };
 
 struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
@@ -688,6 +709,20 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     float vsConst[128][4] = {};
     float psConst[8][4] = {};
     bool vsConstDirty = true, psConstDirty = true;
+    int vsDirtyLo = 0, vsDirtyHi = 128, psDirtyLo = 0, psDirtyHi = 8;  // constants changed since the last upload
+    Program* constProgram = nullptr;  // the program the constants were last uploaded to
+    bool miscDirty = true;            // render states the uniforms mirror changed
+    GLuint lastProgramGl = 0;
+    GLuint boundTexGl[8] = {};        // texture bound to each unit
+    bool samplersBound = false, anySamplerDirty = true;
+    struct LayoutKey {
+        const VertexDecl* decl = nullptr; const VertexShader* vs = nullptr; GLuint program = 0;
+        bool up = false; UINT upStride = 0; INT baseVertex = 0;
+        GLuint vb[8] = {}; UINT off[8] = {}, stride[8] = {};
+    } lastLayout;
+    bool layoutValid = false;
+    uint64_t lastPresentNs = 0;
+    double frameMs = 0, glMs = 0;
     Ref<VertexShader> vs;
     Ref<PixelShader> ps;
     Ref<VertexDecl> decl;
@@ -773,7 +808,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE SetTransform(D3DTRANSFORMSTATETYPE s, const D3DMATRIX* m) override { if (m && s < 8) transforms[s] = *m; return S_OK; }
     HRESULT STDMETHODCALLTYPE GetTransform(D3DTRANSFORMSTATETYPE s, D3DMATRIX* m) override { if (m && s < 8) *m = transforms[s]; return S_OK; }
     HRESULT STDMETHODCALLTYPE MultiplyTransform(D3DTRANSFORMSTATETYPE, const D3DMATRIX*) override { return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetViewport(const D3DVIEWPORT9* v) override { if (v) viewport = *v; rsDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetViewport(const D3DVIEWPORT9* v) override { if (v) viewport = *v; rsDirty = true; miscDirty = true; return S_OK; }
     HRESULT STDMETHODCALLTYPE GetViewport(D3DVIEWPORT9* v) override { if (v) *v = viewport; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetMaterial(const D3DMATERIAL9* m) override { if (m) material = *m; return S_OK; }
     HRESULT STDMETHODCALLTYPE GetMaterial(D3DMATERIAL9* m) override { if (m) *m = material; return S_OK; }
@@ -783,7 +818,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE GetLightEnable(DWORD, WINBOOL* e) override { if (e) *e = FALSE; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetClipPlane(DWORD, const float*) override { return S_OK; }
     HRESULT STDMETHODCALLTYPE GetClipPlane(DWORD, float*) override { return D3DERR_INVALIDCALL; }
-    HRESULT STDMETHODCALLTYPE SetRenderState(D3DRENDERSTATETYPE s, DWORD v) override { if (s < 256) { if (rs[s] != v) rsDirty = true; rs[s] = v; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetRenderState(D3DRENDERSTATETYPE s, DWORD v) override { if (s < 256 && rs[s] != v) { rs[s] = v; rsDirty = true; miscDirty = true; } return S_OK; }
     HRESULT STDMETHODCALLTYPE GetRenderState(D3DRENDERSTATETYPE s, DWORD* v) override { if (!v) return E_POINTER; *v = s < 256 ? rs[s] : 0; return S_OK; }
     HRESULT STDMETHODCALLTYPE CreateStateBlock(D3DSTATEBLOCKTYPE, IDirect3DStateBlock9**) override { return D3DERR_NOTAVAILABLE; }
     HRESULT STDMETHODCALLTYPE BeginStateBlock() override { return D3DERR_NOTAVAILABLE; }
@@ -793,9 +828,9 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE GetTexture(DWORD st, IDirect3DBaseTexture9** out) override { if (!out || st >= 8) return D3DERR_INVALIDCALL; if (textures[st]) textures[st]->AddRef(); *out = textures[st]; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetTexture(DWORD st, IDirect3DBaseTexture9* t) override;
     HRESULT STDMETHODCALLTYPE GetTextureStageState(DWORD st, D3DTEXTURESTAGESTATETYPE t, DWORD* v) override { if (!v || st >= 8 || t > 32) return D3DERR_INVALIDCALL; *v = tss[st][t]; return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetTextureStageState(DWORD st, D3DTEXTURESTAGESTATETYPE t, DWORD v) override { if (st < 8 && t <= 32) tss[st][t] = v; rsDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetTextureStageState(DWORD st, D3DTEXTURESTAGESTATETYPE t, DWORD v) override { if (st < 8 && t <= 32 && tss[st][t] != v) { tss[st][t] = v; miscDirty = true; } return S_OK; }
     HRESULT STDMETHODCALLTYPE GetSamplerState(DWORD s, D3DSAMPLERSTATETYPE t, DWORD* v) override { if (!v || s >= 8 || t > 13) return D3DERR_INVALIDCALL; *v = samplers[s].v[t]; return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetSamplerState(DWORD s, D3DSAMPLERSTATETYPE t, DWORD v) override { if (s < 8 && t <= 13) { samplers[s].v[t] = v; samplers[s].dirty = true; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetSamplerState(DWORD s, D3DSAMPLERSTATETYPE t, DWORD v) override { if (s < 8 && t <= 13 && samplers[s].v[t] != v) { samplers[s].v[t] = v; samplers[s].dirty = true; anySamplerDirty = true; } return S_OK; }
     HRESULT STDMETHODCALLTYPE ValidateDevice(DWORD* n) override { if (n) *n = 1; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetPaletteEntries(UINT, const PALETTEENTRY*) override { return S_OK; }
     HRESULT STDMETHODCALLTYPE GetPaletteEntries(UINT, PALETTEENTRY*) override { return D3DERR_INVALIDCALL; }
@@ -820,7 +855,13 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE CreateVertexShader(const DWORD* code, IDirect3DVertexShader9** out) override;
     HRESULT STDMETHODCALLTYPE SetVertexShader(IDirect3DVertexShader9* s) override { vs = static_cast<VertexShader*>(s); return S_OK; }
     HRESULT STDMETHODCALLTYPE GetVertexShader(IDirect3DVertexShader9** out) override { if (!out) return E_POINTER; if (vs) vs->AddRef(); *out = vs; return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetVertexShaderConstantF(UINT r, const float* d, UINT n) override { if (r + n > 128) return D3DERR_INVALIDCALL; std::memcpy(vsConst[r], d, n * 16); vsConstDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetVertexShaderConstantF(UINT r, const float* d, UINT n) override {
+        if (r + n > 128) return D3DERR_INVALIDCALL;
+        std::memcpy(vsConst[r], d, n * 16);
+        vsConstDirty = true;
+        vsDirtyLo = std::min<int>(vsDirtyLo, static_cast<int>(r)), vsDirtyHi = std::max<int>(vsDirtyHi, static_cast<int>(r + n));
+        return S_OK;
+    }
     HRESULT STDMETHODCALLTYPE GetVertexShaderConstantF(UINT r, float* d, UINT n) override { if (r + n > 128) return D3DERR_INVALIDCALL; std::memcpy(d, vsConst[r], n * 16); return S_OK; }
     HRESULT STDMETHODCALLTYPE SetVertexShaderConstantI(UINT, const int*, UINT) override { return S_OK; }
     HRESULT STDMETHODCALLTYPE GetVertexShaderConstantI(UINT, int*, UINT) override { return D3DERR_INVALIDCALL; }
@@ -835,7 +876,13 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE CreatePixelShader(const DWORD* code, IDirect3DPixelShader9** out) override;
     HRESULT STDMETHODCALLTYPE SetPixelShader(IDirect3DPixelShader9* s) override { ps = static_cast<PixelShader*>(s); return S_OK; }
     HRESULT STDMETHODCALLTYPE GetPixelShader(IDirect3DPixelShader9** out) override { if (!out) return E_POINTER; if (ps) ps->AddRef(); *out = ps; return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetPixelShaderConstantF(UINT r, const float* d, UINT n) override { if (r + n > 8) return D3DERR_INVALIDCALL; std::memcpy(psConst[r], d, n * 16); psConstDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetPixelShaderConstantF(UINT r, const float* d, UINT n) override {
+        if (r + n > 8) return D3DERR_INVALIDCALL;
+        std::memcpy(psConst[r], d, n * 16);
+        psConstDirty = true;
+        psDirtyLo = std::min<int>(psDirtyLo, static_cast<int>(r)), psDirtyHi = std::max<int>(psDirtyHi, static_cast<int>(r + n));
+        return S_OK;
+    }
     HRESULT STDMETHODCALLTYPE GetPixelShaderConstantF(UINT r, float* d, UINT n) override { if (r + n > 8) return D3DERR_INVALIDCALL; std::memcpy(d, psConst[r], n * 16); return S_OK; }
     HRESULT STDMETHODCALLTYPE SetPixelShaderConstantI(UINT, const int*, UINT) override { return S_OK; }
     HRESULT STDMETHODCALLTYPE GetPixelShaderConstantI(UINT, int*, UINT) override { return D3DERR_INVALIDCALL; }
@@ -904,6 +951,7 @@ Texture::Texture(Device* d, UINT w, UINT h, UINT l, DWORD u, D3DFORMAT f, D3DPOO
     }
 }
 Texture::~Texture() {
+    for (GLuint& b : dev->boundTexGl) if (b == gl && gl) b = ~0u;
     for (Surface* s : surfaces)
         if (s) { s->texture = nullptr; s->Release(); }
     if (gl) glDeleteTextures(1, &gl);
@@ -1088,6 +1136,7 @@ HRESULT STDMETHODCALLTYPE Device::SetRenderTarget(DWORD i, IDirect3DSurface9* s)
     viewport = {0, 0, surf->level.width, surf->level.height, 0.0f, 1.0f};
     scissor = {0, 0, static_cast<LONG>(surf->level.width), static_cast<LONG>(surf->level.height)};
     rsDirty = true;
+    miscDirty = true;
     return S_OK;
 }
 HRESULT STDMETHODCALLTYPE Device::SetDepthStencilSurface(IDirect3DSurface9* s) {
@@ -1194,6 +1243,7 @@ HRESULT STDMETHODCALLTYPE Device::ColorFill(IDirect3DSurface9* s, const RECT* r,
 }
 
 HRESULT STDMETHODCALLTYPE Device::Clear(DWORD n, const D3DRECT* rects, DWORD flags, D3DCOLOR color, float z, DWORD stencil) {
+    GlTime timer;
     bindTarget();
     GLbitfield bits = 0;
     if (flags & D3DCLEAR_TARGET) { bits |= GL_COLOR_BUFFER_BIT; glClearColor(((color >> 16) & 255) / 255.0f, ((color >> 8) & 255) / 255.0f, (color & 255) / 255.0f, ((color >> 24) & 255) / 255.0f); glColorMask(1, 1, 1, 1); }
@@ -1360,11 +1410,15 @@ Program* Device::program() {
         p.uTFactor = glGetUniformLocation(p.gl, "uTFactor");
         p.uHalfPixel = glGetUniformLocation(p.gl, "uHalfPixel");
         glUseProgram(p.gl);
+        lastProgramGl = p.gl;
+        layoutValid = false;
         for (int i = 0; i < 6; ++i) {
             const std::string n = "s" + std::to_string(i);
             p.uS[i] = glGetUniformLocation(p.gl, n.c_str());
             if (p.uS[i] >= 0) glUniform1i(p.uS[i], i);
         }
+        for (int k = 0; k < 128; ++k) p.uCElem[k] = p.uC >= 0 ? glGetUniformLocation(p.gl, ("c[" + std::to_string(k) + "]").c_str()) : -1;
+        for (int k = 0; k < 8; ++k) p.uPcElem[k] = p.uPc >= 0 ? glGetUniformLocation(p.gl, ("pc[" + std::to_string(k) + "]").c_str()) : -1;
     }
     auto& slot = programs[key];
     slot = p;
@@ -1372,8 +1426,21 @@ Program* Device::program() {
 }
 
 void Device::setConstants(Program* p) {
-    if (p->uC >= 0) glUniform4fv(p->uC, 128, &vsConst[0][0]);
-    if (p->uPc >= 0) glUniform4fv(p->uPc, 8, &psConst[0][0]);
+    // Uniforms live per program: a program seen again gets everything; the same program gets
+    // only the constants changed since its last draw.
+    const bool fresh = p != constProgram;
+    if (p->uC >= 0) {
+        const int lo = fresh ? 0 : vsDirtyLo, hi = fresh ? 128 : vsDirtyHi;
+        if (hi > lo && p->uCElem[lo] >= 0) glUniform4fv(p->uCElem[lo], hi - lo, &vsConst[lo][0]);
+    }
+    if (p->uPc >= 0) {
+        const int lo = fresh ? 0 : psDirtyLo, hi = fresh ? 8 : psDirtyHi;
+        if (hi > lo && p->uPcElem[lo] >= 0) glUniform4fv(p->uPcElem[lo], hi - lo, &psConst[lo][0]);
+    }
+    vsDirtyLo = 128, vsDirtyHi = 0, psDirtyLo = 8, psDirtyHi = 0;
+    constProgram = p;
+    if (!fresh && !miscDirty) return;
+    miscDirty = false;
     if (p->uBump >= 0) {
         float b[6][4];
         for (int s = 0; s < 6; ++s)
@@ -1510,11 +1577,16 @@ GLenum wrapMode(DWORD a) {
     }
 }
 void Device::applySamplers() {
+    if (!texDirty && !anySamplerDirty && samplersBound) return;
     for (int i = 0; i < 8; ++i) {
-        glActiveTexture(GL_TEXTURE0 + i);
-        glBindTexture(GL_TEXTURE_2D, textures[i] ? textures[i]->gl : 0);
+        const GLuint want = textures[i] ? textures[i]->gl : 0;
+        if (want != boundTexGl[i]) {
+            glActiveTexture(GL_TEXTURE0 + i);
+            glBindTexture(GL_TEXTURE_2D, want);
+            boundTexGl[i] = want;
+        }
         SamplerState& s = samplers[i];
-        glBindSampler(static_cast<GLuint>(i), s.gl);
+        if (!samplersBound) glBindSampler(static_cast<GLuint>(i), s.gl);  // the sampler objects stay on their units
         if (!s.dirty) continue;
         s.dirty = false;
         glSamplerParameteri(s.gl, GL_TEXTURE_WRAP_S, wrapMode(s.v[D3DSAMP_ADDRESSU]));
@@ -1534,7 +1606,9 @@ void Device::applySamplers() {
         (void)bias;
         glSamplerParameteri(s.gl, GL_TEXTURE_COMPARE_MODE, GL_NONE);
     }
+    samplersBound = true;
     texDirty = false;
+    anySamplerDirty = false;
 }
 
 GLenum declType(BYTE t, GLint& size, GLboolean& norm, bool& isColor) {
@@ -1560,6 +1634,13 @@ GLenum declType(BYTE t, GLint& size, GLboolean& norm, bool& isColor) {
 // Binds the vertex attributes for the current declaration. `baseVertex` shifts every stream.
 bool Device::bindVertexLayout(const VertexDecl* d, bool up, const void* upData, UINT upStride, UINT, INT baseVertex) {
     if (!d) return false;
+    LayoutKey key;
+    key.decl = d, key.vs = d->preTransformed ? nullptr : vs.p, key.program = lastProgramGl, key.up = up, key.upStride = up ? upStride : 0, key.baseVertex = up ? 0 : baseVertex;
+    if (!up)
+        for (int i = 0; i < 8; ++i) key.vb[i] = streams[i].vb ? streams[i].vb->buf.gl : 0, key.off[i] = streams[i].offset, key.stride[i] = streams[i].stride;
+    if (layoutValid && std::memcmp(&key, &lastLayout, sizeof key) == 0) return true;  // same pointers as the last draw
+    lastLayout = key;
+    layoutValid = true;
     for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
     int colorMask = 0;
     for (const D3DVERTEXELEMENT9& e : d->elements) {
@@ -1602,7 +1683,7 @@ void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVert
     Program* p = program();
     current = p;
     if (!p) return;
-    glUseProgram(p->gl);
+    if (p->gl != lastProgramGl) { glUseProgram(p->gl); lastProgramGl = p->gl; }
     setConstants(p);
     if (up) {
         glBindBuffer(GL_ARRAY_BUFFER, scratchVbo);
@@ -1645,6 +1726,7 @@ GLenum primMode(D3DPRIMITIVETYPE t, UINT prims, GLsizei& count) {
 }
 
 HRESULT STDMETHODCALLTYPE Device::DrawPrimitive(D3DPRIMITIVETYPE t, UINT start, UINT n) {
+    GlTime timer;
     prepareDraw(false, nullptr, 0, 0, 0);
     if (!current) return S_OK;
     GLsizei count;
@@ -1656,6 +1738,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawPrimitive(D3DPRIMITIVETYPE t, UINT start, 
     return S_OK;
 }
 HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT base, UINT, UINT, UINT start, UINT n) {
+    GlTime timer;
     if (!indices) return D3DERR_INVALIDCALL;
     prepareDraw(false, nullptr, 0, 0, base);
     if (!current) return S_OK;
@@ -1670,6 +1753,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT b
     return S_OK;
 }
 HRESULT STDMETHODCALLTYPE Device::DrawPrimitiveUP(D3DPRIMITIVETYPE t, UINT n, const void* data, UINT stride) {
+    GlTime timer;
     GLsizei count;
     const GLenum mode = primMode(t, n, count);
     prepareDraw(true, data, stride, static_cast<UINT>(count), 0);
@@ -1681,6 +1765,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawPrimitiveUP(D3DPRIMITIVETYPE t, UINT n, co
     return S_OK;
 }
 HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UINT minIdx, UINT numV, UINT n, const void* idx, D3DFORMAT fmt, const void* data, UINT stride) {
+    GlTime timer;
     GLsizei count;
     const GLenum mode = primMode(t, n, count);
     prepareDraw(true, data, stride, minIdx + numV, 0);
@@ -1703,7 +1788,7 @@ void Device::drawOverlay() {
     if (takeScreenshot()) saveScreenshot();
     if (showStats()) {
         char buf[160];
-        std::snprintf(buf, sizeof buf, "%u draws %u clears %u programs %ux%u", statDraws, statClears, static_cast<unsigned>(programs.size()), pp.BackBufferWidth, pp.BackBufferHeight);
+        std::snprintf(buf, sizeof buf, "%.0f ms frame, %.0f ms in GL, %u draws, %u clears, %ux%u", frameMs, glMs, statDraws, statClears, pp.BackBufferWidth, pp.BackBufferHeight);
         setStats(buf);
     }
     if (host::overlay::vsync() != overlayVsync) { overlayVsync = host::overlay::vsync(); setSwapInterval(overlayVsync ? 1 : 0); }
@@ -1794,8 +1879,11 @@ void Device::drawOverlay() {
     // the game's state is re-applied on the next draw
     rsDirty = true;
     texDirty = true;
-    for (auto& smp : samplers) smp.dirty = true;
+    boundTexGl[0] = ~0u;
     current = nullptr;
+    constProgram = nullptr;
+    layoutValid = false;
+    lastProgramGl = 0;
     glUseProgram(0);
     GLCHECK("overlay");
 }
@@ -1880,21 +1968,37 @@ void Device::saveScreenshot() {
 }
 
 HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const RGNDATA*) {
+    const uint64_t t0 = nowNs();
     int ww = fbWidth, wh = fbHeight;
     if (!w32::fbdevGl()) SDL_GL_GetDrawableSize(window, &ww, &wh);
     dumpFrameWanted();  // FABLE_GLES_DRAWDUMP=purple scans the finished frame
     drawOverlay();
+    // the depth/stencil of the frame is not needed after this: tell the tiler not to write it
+    // back (the next frame clears it)
+    if (glInvalidateFramebuffer) {
+        static const GLenum ds[] = {GL_DEPTH_ATTACHMENT, GL_STENCIL_ATTACHMENT};
+        glBindFramebuffer(GL_FRAMEBUFFER, mainFbo);
+        glInvalidateFramebuffer(GL_FRAMEBUFFER, 2, ds);
+    }
     glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
     glDisable(GL_SCISSOR_TEST);
     glBlitFramebuffer(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), 0, wh, ww, 0, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     if (w32::fbdevGl()) fb::swap(); else SDL_GL_SwapWindow(window);
     ++frames;
+    {
+        const uint64_t t1 = nowNs();
+        g_nsGl += t1 - t0;
+        frameMs = lastPresentNs ? (t1 - lastPresentNs) / 1e6 : 0;
+        glMs = g_nsGl / 1e6;
+        g_nsGl = 0;
+        lastPresentNs = t1;
+    }
     if (host::g_logLevel >= 1 && (frames % 120 == 1 || getenv("FABLE_GLES_DUMP"))) {
         unsigned char px[4] = {0, 0, 0, 0};
         glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
         glReadPixels(static_cast<GLint>(pp.BackBufferWidth / 2), static_cast<GLint>(pp.BackBufferHeight / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
-        log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d", frames, statDraws, statClears, static_cast<unsigned>(programs.size()), px[0], px[1], px[2], px[3], ww, wh);
+        log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms of which gl %.1f", frames, statDraws, statClears, static_cast<unsigned>(programs.size()), px[0], px[1], px[2], px[3], ww, wh, frameMs, glMs);
         if (const char* dir = getenv("FABLE_GLES_DUMP")) {
             std::vector<unsigned char> buf(static_cast<size_t>(pp.BackBufferWidth) * pp.BackBufferHeight * 4);
             glReadPixels(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
