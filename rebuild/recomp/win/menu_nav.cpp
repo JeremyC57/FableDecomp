@@ -497,17 +497,20 @@ extern "C" void host_open_inventory(Ctx* c) {
 }
 
 // 0x47E196 CTCInGameMenu::SaveGame(int slot): after writing the files it re-registers the PC
-// menu object at this+0xEC (set only by OpenInGameMenuPC, 0x4804DE) with the UI manager as an
-// observer (its part at +4: CObservable::RemoveObserver / AddObserver, 0x55C9C0 / 0x55CA90)
-// and notifies it through the part's virtual 3, with no null check. The PC build never saves
-// from the Xbox pause menu, which leaves that member null (device crash on Hero Save). A
-// stand-in observer whose virtuals are host no-ops takes the calls; afterwards it is removed
-// from the manager again and the member is null as before.
+// mouse pointer component at this+0xEC (UI_MOUSE_POINTER, set only by OpenInGameMenuPC,
+// 0x4804DE) with the UI manager as an observer (its CObserver part at +4:
+// CObservable::RemoveObserver / AddObserver, 0x55C9C0 / 0x55CA90) and sends it ObserveEvent
+// (the part's virtual 3) with the slot, with no null check. The PC build never saves from the
+// Xbox pause menu, which leaves that member null (device crash on Hero Save). A stand-in
+// observer whose virtuals are host no-ops with the interface's argument counts takes the
+// calls (the manager notifies it while the save runs); afterwards it is removed from the
+// manager again and the member is null as before.
 namespace {
 uint32_t g_saveStandIn = 0;
-void standInNotify(Ctx* c) { retStd(c, 0, 1); }  // virtual 3: __thiscall (int)
-void standInDetach(Ctx* c) { retStd(c, 0, 0); }  // virtual 5, from RemoveObserver: __thiscall ()
-void standInOther(Ctx* c) { HLOG(0, "menu: the save stand-in's virtual was called unexpectedly"); retStd(c, 0, 0); }
+// NUISystem::CObserver (vtable 0x1245DBC): 0 notify(CObservable*, EEvent), 1 deleting dtor(flags),
+// 2/4/7 one argument, 3 ObserveEvent(EEvent), 5 detach (from RemoveObserver), 6 ObserveAllEvents
+constexpr uint32_t kObserverArgs[8] = {2, 1, 1, 1, 1, 0, 0, 1};
+void standInVirtual(Ctx* c, uintptr_t nargs) { retStd(c, 0, static_cast<int>(nargs)); }
 }  // namespace
 extern "C" void F_0047E196_orig(Ctx* c);
 extern "C" void host_save_game(Ctx* c) {
@@ -516,8 +519,7 @@ extern "C" void host_save_game(Ctx* c) {
     if (standIn) {
         if (!g_saveStandIn) {
             const uint32_t vt = gcalloc(8, 4), obj = gcalloc(2, 4);
-            for (int i = 0; i < 8; ++i)
-                wr32(vt + 4 * i, addTrap("CTCInGameMenu PC menu stand-in", i == 3 ? standInNotify : i == 5 ? standInDetach : standInOther));
+            for (int i = 0; i < 8; ++i) wr32(vt + 4 * i, addTrap("CTCInGameMenu PC menu stand-in", standInVirtual, kObserverArgs[i]));
             wr32(obj + 4, vt);  // the observer part at +4 holds the vtable
             g_saveStandIn = obj;
         }

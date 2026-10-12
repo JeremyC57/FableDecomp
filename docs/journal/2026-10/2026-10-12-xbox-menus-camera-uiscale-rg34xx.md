@@ -161,8 +161,23 @@ now lists them.
 - **Hero save crash** (device and local, under gdb): `CTCInGameMenu::SaveGame` (0x47E196)
   dereferences the PC menu object at this+0xEC after writing the files (re-registers its
   observer part with the UI manager, then its virtual 3 with the slot number). Only
-  `OpenInGameMenuPC` sets that member; the Xbox pause menu leaves it null. Wrapped
-  (`host_save_game`, menu_nav.cpp): a stand-in observer with host no-op virtuals takes the
-  calls and is removed from the manager afterwards.
+  `OpenInGameMenuPC` sets that member (it is the UI_MOUSE_POINTER component the PC menu
+  creates); the Xbox pause menu leaves it null. Wrapped (`host_save_game`, menu_nav.cpp): a
+  stand-in observer takes the calls and is removed from the manager afterwards. Its virtuals
+  need the real CObserver argument counts (vtable 0x1245DBC: notify(CObservable*, EEvent) is
+  slot 0 with two arguments; the manager notifies the stand-in while the save runs): with
+  plain `ret` stubs the stack was corrupted and the game crashed after "saved successfully".
+  Verified: Hero Save from the Xbox pause list writes the .hs and shows the success box.
+- Verified: with `FABLE_HOST_GFX=1` the front end's Options list skips Video Options for the
+  pad (Gameplay -> Audio) and Audio Options still opens.
+- **Front-end text sits low in its highlight bars** (user report, main menu and Options):
+  identical under DXVK and GLES, and the UI scale is 1.0 at 480 lines, so it is neither
+  renderer nor host_rtdims; the game lays text out from its own fonts.big metrics (no GDI
+  metrics are used). The Xbox lists centre their text. Next: find the PC front-end button's
+  text placement (CNewFrontendGameComponent) and compare with retail.
+- Harness gotcha: a single entry in `FABLE_RECOMP_MODES` (640x480 or 1280x720 alone)
+  crashes `CUserProfileManager::SetDefaultValues` (0x40C790, a mode-table index) at start;
+  always offer two modes. Stale manual saves in the test data dir change the load list and
+  the route's timing (delete `Manual - Save*` before a run).
 - Known cosmetic: the Xbox save confirm screen ("Are you sure?") shows two blank list rows
   under the question (user report).
