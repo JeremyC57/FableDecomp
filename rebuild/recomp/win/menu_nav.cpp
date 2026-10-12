@@ -288,9 +288,117 @@ void poll(uint32_t scratch) {
 
 }  // namespace host::menu
 
+// FABLE_UI_DUMP: on a pad direction in the in-game menus, log every component of the manager
+// (class vtable, def, position, colour, state), to see how a screen is built.
+static void dumpComponents(uint32_t mgr, uint32_t scratch) {
+    const uint32_t head = rd32(mgr + 4);
+    uint32_t n = rd32(head);
+    int i = 0;
+    for (int guard = 0; n != head && guard < 2048; ++guard, n = rd32(n)) {
+        const uint32_t comp = rd32(n + 8);
+        if (!comp) continue;
+        const uint32_t widget = comp - 4, wvt = rd32(widget);
+        const uint32_t pos = scratch;
+        std::memset(gp(scratch), 0, 32);
+        guestCallThis(rd32(wvt + 0x1E8), widget, {pos});
+        wr32(scratch + 16, 0);
+        guestCallThis(rd32(wvt + 0x1B0), widget, {scratch + 16});
+        const uint32_t def = rd32(scratch + 16);
+        std::string name;
+        if (def) {
+            const uint32_t refs = rd32(def + 4) - 1;
+            wr32(def + 4, refs);
+            if (!refs) guestCallThis(rd32(rd32(def) + 4), def, {});
+        }
+        if (wvt == 0x012462E4) {  // CList: its def's ViewArea (retail +0x14C..+0x158) and its position
+            uint32_t d = 0;
+            wr32(scratch + 16, 0);
+            guestCallThis(rd32(wvt + 0x1B0), widget, {scratch + 16});
+            d = rd32(scratch + 16);
+            std::memset(gp(scratch), 0, 32);
+            guestCallThis(rd32(wvt + 0x1E8), widget, {scratch});
+            if (d) {
+                const uint32_t refs = rd32(d + 4) - 1;
+                wr32(d + 4, refs);
+                if (!refs) guestCallThis(rd32(rd32(d) + 4), d, {});
+            }
+            host::log("ui: #%d LIST comp 0x%08X def 0x%08X viewarea %d,%d %d,%d pos %.0f,%.0f size %.0f,%.0f colour 0x%08X", i, comp, d,
+                      d ? (int)rd32(d + 0x14C) : 0, d ? (int)rd32(d + 0x150) : 0, d ? (int)rd32(d + 0x154) : 0, d ? (int)rd32(d + 0x158) : 0,
+                      rdf32(scratch), rdf32(scratch + 4), rdf32(widget + 0x5C), rdf32(widget + 0x60), rd32(widget + 0x84));
+        }
+        if (wvt != 0x0124662C) { ++i; continue; }  // CMenuEntry only
+        const uint32_t stateIdx = rd32(widget + 0x148);
+        const uint32_t state = guestCallThis(rd32(wvt + 0x21C), widget, {stateIdx});
+        if (def && i < 14) {  // the def's CUIStateDef vector (retail +64; CUIState::CUIState 0x52F440 reads the
+            // def at +0x40 flags, +0x44 type, +0x48 pos, +0x50 zoom, +0x58 colour floats, +0x68 time, +0x78 linear)
+            const uint32_t b = rd32(def + 64), e = rd32(def + 68);
+            for (uint32_t size = 120; size <= 136 && b && e > b; size += 4) {
+                if ((e - b) % size || (e - b) / size > 12) continue;
+                std::string st;
+                for (uint32_t p = b; p < e; p += size) {
+                    char buf[200];
+                    std::snprintf(buf, sizeof buf, " [fl %u ty %u pos %.1f,%.1f col %.2f,%.2f,%.2f,%.2f t %.2f lin %u]", rd32(p + 0x40), rd32(p + 0x44),
+                                  rdf32(p + 0x48), rdf32(p + 0x4C), rdf32(p + 0x58), rdf32(p + 0x5C), rdf32(p + 0x60), rdf32(p + 0x64), rdf32(p + 0x68),
+                                  rd8(p + 0x78));
+                    st += buf;
+                }
+                host::log("ui:   def 0x%08X states (size %u):%s", def, size, st.c_str());
+            }
+        }
+        if (def && i < 14) {
+            std::string st;
+            for (uint32_t k = 0; k < 6; ++k) {
+                const uint32_t sp = guestCallThis(rd32(wvt + 0x21C), widget, {k});
+                char buf[64];
+                std::snprintf(buf, sizeof buf, " %u:0x%08X", k, sp ? rd32(sp + 24) : 0xDEADBEEF);
+                st += buf;
+            }
+            host::log("ui:   states:%s  cur 0x%08X target 0x%08X start 0x%08X c90 0x%08X t %.2f/%.2f", st.c_str(), rd32(widget + 0x84), rd32(widget + 0x88), rd32(widget + 0x8C), rd32(widget + 0x90), rdf32(widget + 0xA8), rdf32(widget + 0xAC));
+        }
+        std::memset(gp(scratch), 0, 32);
+        guestCallThis(rd32(wvt + 0x5C), widget, {scratch});
+        host::log("ui:   entry size %.1f,%.1f zoom %.2f,%.2f", rdf32(scratch), rdf32(scratch + 4), rdf32(widget + 0x74), rdf32(widget + 0x78));
+        if (i < 14) {  // the entry's children: vector of 8-byte {component, ?} at +0xB0..+0xB4
+            for (uint32_t p = rd32(widget + 0xB0); p < rd32(widget + 0xB4) && p; p += 8) {
+                const uint32_t ch = rd32(p), chvt = ch ? rd32(ch) : 0;
+                if (!ch) continue;
+                std::memset(gp(scratch), 0, 64);
+                guestCallThis(rd32(chvt + 0x1E8), ch, {scratch});
+                guestCallThis(rd32(chvt + 0x5C), ch, {scratch + 8});
+                wr32(scratch + 16, 0);
+                guestCallThis(rd32(chvt + 0x1B0), ch, {scratch + 16});
+                const uint32_t cd = rd32(scratch + 16);
+                if (cd) {
+                    const uint32_t refs = rd32(cd + 4) - 1;
+                    wr32(cd + 4, refs);
+                    if (!refs) guestCallThis(rd32(rd32(cd) + 4), cd, {});
+                }
+                host::log("ui:     child 0x%08X vt 0x%08X def 0x%08X type %u pos %.0f,%.0f size %.0f,%.0f colour 0x%08X flag %u", ch, chvt, cd,
+                          cd ? rd32(cd + 0x40) : 0, rdf32(scratch), rdf32(scratch + 4), rdf32(scratch + 8), rdf32(scratch + 12), rd32(ch + 0x84), rd32(p + 4));
+            }
+        }
+        std::memset(gp(scratch), 0, 32);
+        guestCallThis(rd32(wvt + 0x1E8), widget, {pos});
+        host::log("ui: #%d comp 0x%08X def 0x%08X(+221=%u) pos %.0f,%.0f colour 0x%08X c90 0x%08X state %u/%u trans %u sflags 0x%08X s+4 %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f", i++,
+                  comp, def, def ? rd8(def + 0x221) : 0, rdf32(pos), rdf32(pos + 4), rd32(widget + 0x84), rd32(widget + 0x90), stateIdx,
+                  rd32(widget + 0x14C), rd8(widget + 0x154), state ? rd32(state) : 0, state ? rdf32(state + 4) : 0, state ? rdf32(state + 8) : 0,
+                  state ? rdf32(state + 12) : 0, state ? rdf32(state + 16) : 0, state ? rdf32(state + 20) : 0, state ? rdf32(state + 24) : 0,
+                  state ? rdf32(state + 28) : 0, state ? rdf32(state + 32) : 0);
+    }
+}
+
 // 0x55CB10: void __thiscall CManager::ProcessEvent(int event)
 extern "C" void host_ui_event(Ctx* c) {
     const uint32_t mgr = c->ecx, ev = rd32(c->esp + 4);
+    if (ev <= EV_RIGHT && xboxMenus() && std::getenv("FABLE_UI_DUMP")) {
+        static int dumps;
+        if (dumps++ < 6) {
+            const uint32_t savedEsp = c->esp;
+            c->esp = (c->esp - 0x200) & ~0xFu;
+            dumpComponents(mgr, c->esp + 0x20);  // needs 0x100 of scratch
+            c->esp = savedEsp;
+        }
+    }
     // CInputProcessInventory sends INVENTORY_SELECT (A) to the menus as a mouse press (0x1A)
     // for the PC screens; the Xbox screens take the select event.
     if (xboxMenus() && ev == EV_LEFT_PRESS && rd32(c->esp) == 0x68A291) wr32(c->esp + 4, EV_SELECT);
@@ -351,4 +459,77 @@ extern "C" void host_open_inventory(Ctx* c) {
         return;
     }
     F_0058F649_orig(c);
+}
+
+// 0x533D30 CComponent::GetSize(C2DVector* out): the bounding box of the children. The Xbox
+// pause list's entries carry their whole sub-screen as children (the description picture,
+// the options sub-list, 770x400 and more), so CList's view-area test (the loop at
+// 0x537A1E in vfunc 185: both corners of each child must lie inside the list's 640x480
+// ViewArea) fails for every entry but the selected one and hides them (0x537E74..0x537EC3
+// sets their alpha to 0 at once). For that test a menu entry's extent is its label (the
+// text child), which is what the player sees of it in the list.
+extern "C" void F_00533D30_orig(Ctx* c);
+extern "C" void host_component_size(Ctx* c) {
+    const uint32_t self = c->ecx, ret = rd32(c->esp), out = rd32(c->esp + 4);
+    constexpr uint32_t kMenuEntryVt = 0x0124662C, kTextVt = 0x01245DE4;
+    constexpr uint32_t kListVt = 0x012462E4;
+    if (xboxMenus() && rd32(self) == kMenuEntryVt && (ret == 0x537A81 || ret == 0x537A92)) {
+        // The list shows UpLimit entries above and DownLimit below the selected one (its def,
+        // retail +0x138/+0x13C); the ones further out are outside, whatever their label's box.
+        // (CList: scrolling children array +0x164..+0x168, selected child index +0x15C.)
+        const uint32_t list = rd32(self + 0xC8);
+        bool outside = false;
+        if (list && rd32(list) == kListVt) {
+            const uint32_t scratch = (c->esp - 0x40) & ~0xFu;
+            wr32(scratch, 0);
+            guestCallThis(rd32(kListVt + 0x1B0), list, {scratch});
+            const uint32_t d = rd32(scratch);
+            if (d) {
+                // The pass runs before the list's selected index (+0x15C) moves, but the
+                // children's target positions (vtable +0x1E8) are already laid out: the
+                // selected entry sits at the list's position, the others one row apart.
+                const int up = (int)rd32(d + 0x138), down = (int)rd32(d + 0x13C);
+                guestCallThis(rd32(kListVt + 0x1E8), list, {scratch + 8});
+                const float ly = rdf32(scratch + 12);
+                float spacing = 0;
+                for (uint32_t p = rd32(list + 0x164), end = rd32(list + 0x168); p < end && p; p += 4) {
+                    const uint32_t ch = rd32(p);
+                    if (!ch || rd32(ch) != kMenuEntryVt) continue;
+                    guestCallThis(rd32(kMenuEntryVt + 0x1E8), ch, {scratch + 16});
+                    const float dy = std::fabs(rdf32(scratch + 20) - ly);
+                    if (dy > 0.5f && (spacing == 0 || dy < spacing)) spacing = dy;
+                }
+                guestCallThis(rd32(kMenuEntryVt + 0x1E8), self, {scratch + 16});
+                const float rows = spacing > 0 ? (rdf32(scratch + 20) - ly) / spacing : 0;
+                // The limit-th row is the wheel's alpha-0 one; beyond it the wheel's alpha
+                // bounces back up, so those rows are hidden outright: their wheel states
+                // (3/4/5, CUIState colour +0x18) get alpha 0 too, as the states are applied
+                // after this pass.
+                if (up > 0 && down > 0 && (rows < -up + 0.5f || rows > down - 0.5f)) {
+                    outside = true;
+                    for (uint32_t k = 3; k <= 5; ++k) {
+                        const uint32_t st = guestCallThis(rd32(kMenuEntryVt + 0x21C), self, {k});
+                        if (st) wr8(st + 0x1B, 0);
+                    }
+                }
+                const uint32_t refs = rd32(d + 4) - 1;
+                wr32(d + 4, refs);
+                if (!refs) guestCallThis(rd32(rd32(d) + 4), d, {});
+            }
+        }
+        if (outside) {
+            wrf32(out, 100000.0f), wrf32(out + 4, 100000.0f);
+            retStd(c, out, 1);
+            return;
+        }
+        for (uint32_t p = rd32(self + 0xB0); p < rd32(self + 0xB4) && p; p += 8) {
+            const uint32_t ch = rd32(p);
+            if (ch && rd32(ch) == kTextVt) {
+                guestCallThis(rd32(rd32(ch) + 0x5C), ch, {out});
+                retStd(c, out, 1);
+                return;
+            }
+        }
+    }
+    F_00533D30_orig(c);
 }

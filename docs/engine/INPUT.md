@@ -89,8 +89,19 @@ Contents
   - The Xbox screens are laid out in 640×480. The NUI scale is `CManager::GetUIScale`
     0x41CF47 = window / 1024×768; `CComponent::UpdateZoom` 0x52F5C0 multiplies each
     component's zoom by it. The Xbox screens need ×1.6 (1024/640 = 768/480).
-  - The Xbox pause screen (Start, `CTCInGameMenu`) shows one list entry at a time and
-    includes Xbox-only entries ("Xbox Live").
+  - The Xbox pause screen (Start; `CTCInGameMenu::OpenInGameMenuPC` 0x4830A1 builds
+    `UI_LIST_PAUSE_MENU` with the `UI_*_DESC` descriptions) showed one list entry at a time:
+    `CList`'s view test (vfunc 185, loop at 0x537A1E: both corners of a child, position
+    +0x1E8 and `CComponent::GetSize` 0x533D30 scaled by `GetUIScale`, must lie inside the
+    list's ViewArea, retail def +0x14C; 0x537E74..0x537EC3 sets the alpha of the others to
+    0 at once) fails because each `CMenuEntry` carries its sub-screen as children (the
+    256x256 picture, a 770x400 options sub-list), so its size is 600-770 wide. The wheel
+    itself is right: `CList::DoRecomputeOffsets` 0x53C332 writes the children's states
+    3/4/5 (position offset, alpha 1/.67/.33/0 from the list's PositionOffset/AlphaOffset).
+    `menu_nav.cpp` wraps GetSize for that caller: a menu entry's extent is its label
+    (`CText` child, vtable 0x01245DE4), and entries more than UpLimit/DownLimit (def
+    +0x138/+0x13C) indices from the selected one (`CList` +0x15C; children +0x164) are
+    outside. Xbox-only entries ("Xbox Live") remain, greyed like unavailable ones.
   - `CInputProcessInventory` sends a direction on every held pad event (second branch,
     0x68A95D–0x68ABC6), i.e. every frame; the recomp keeps the press and adds its own repeat.
   - Open: on the inventory list, moving onto the last entry (Statistics) scrolls the whole
