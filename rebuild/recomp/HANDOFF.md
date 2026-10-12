@@ -73,6 +73,12 @@ user's original game folder; no retail bytes or generated code are in git.
     `FABLE_GLES_TRACE=N` / `FABLE_GLES_DUMP=<dir>` / `FABLE_GLES_DRAWDUMP=<frame>|<file>|purple[:min]`
     for diagnosis. Runs on the RG34XX SP's stock OS through EGL on /dev/fb0 (`egl_fbdev.cpp`,
     SDL dummy video). The vertex epilogue applies the D3D9 half-pixel shift (`uHalfPixel`).
+  - **RG34XX SP performance**: device log had gameplay at 7-8 fps (~1300 draws) and menus at
+    60; the renderer now tracks dirty state per draw, never waits on queries, orphans dynamic
+    buffers, discards depth per frame; lifted code at -O2 for the A53 (`FABLE_GEN_OPT`,
+    build dir `build/linux-a64-o2`); `Fable.sh` sets performance governors. The overlay's
+    statistics line gives frame vs in-GL ms: the next device log decides whether the game's
+    own CPU time (lifted code) or the renderer is the remaining cost.
   - **Handheld host overlay** (`posix/overlay/`, `FABLE_OVERLAY=1`): guide button menu
     (volume, FPS, stats, log level, vsync, screenshot, exit); `volkeys.cpp` volume rocker;
     `--pad-probe` and `rg34xx/gamecontrollerdb.txt` for the stock pad; `HOLD_TARGET`.
