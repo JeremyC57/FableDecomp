@@ -19,6 +19,7 @@
 //
 // Settings live in <game>\FableRecomp_controller.ini (written with the defaults on first run).
 #include "controller.hpp"
+#include "gfx_options.hpp"
 
 #include <xinput.h>
 
@@ -618,6 +619,7 @@ extern "C" void host_joystick_update(Ctx* c) {
     const uint32_t self = c->ecx, savedEsp = c->esp;
     static bool once;
     if (!once) once = true, host::log("controller: joystick device 0x%08X polled by the game", self);
+    host::gfx::applyPending();  // graphics settings changed in the overlay: on the game thread, outside rendering
     c->esp = (c->esp - 0x80) & ~0xFu;  // scratch below the guest stack for the event
     const uint32_t ev = c->esp + 0x20;
     guestCallThis(kClear, self, {});

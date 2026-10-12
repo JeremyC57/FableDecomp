@@ -141,7 +141,7 @@ use llvm-mingw directly, or clang-cl after small tweaks.
 fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch \
     --hook 0xAB6E40=host_joystick_update --hook 0x4088E0=host_primary_inputs --hook 0x9BEDC0=host_rtdims \
     --wrap 0x55CB10=host_ui_event --wrap 0x58F649=host_open_inventory --wrap 0x41CF47=host_ui_scale \
-    --wrap 0x69AC90=host_camera_set --wrap 0x533D30=host_component_size
+    --wrap 0x69AC90=host_camera_set --wrap 0x533D30=host_component_size --wrap 0xB24690=host_video_options
 # coroutine switch -> host fibers; native Xbox pad (controller.cpp); UI scale (ui_scale.cpp);
 # pad menu navigation and the Xbox in-game menus (menu_nav.cpp); the Xbox chase camera
 # (camera.cpp). --wrap keeps the original body as F_<addr>_orig

@@ -19,6 +19,7 @@
 #include "../w32/w32.hpp"
 #include "egl_fbdev.hpp"
 #include "../overlay/overlay.hpp"
+#include "gfx_options.hpp"
 #include "../overlay/overlay_font.inc"
 
 #include <algorithm>
@@ -688,6 +689,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     bool overlayVsync = true;
     void drawOverlay();
     void afterDraw();
+    bool skipDraw();
     bool dumpFrameWanted();
     void saveScreenshot();
     void setSwapInterval(int i) { if (w32::fbdevGl()) fb::setSwapInterval(i); else SDL_GL_SetSwapInterval(i); }
@@ -1683,6 +1685,21 @@ bool Device::bindVertexLayout(const VertexDecl* d, bool up, const void* upData, 
 }
 
 static bool key_trace_once(uint32_t id) { static std::vector<uint32_t> seen; if (std::find(seen.begin(), seen.end(), id) != seen.end()) return false; seen.push_back(id); return true; }
+// Host graphics settings: draws into the shadow buffer (a render target of the def's
+// ShadowBufferSize) are skipped with shadows off, so the cleared buffer shadows nothing;
+// draws into the small glow chain (<= 256 square, not the shadow size) with glow off.
+bool Device::skipDraw() {
+    if (!renderTarget || renderTarget->isBackBuffer) return false;
+    const host::gfx::Settings& s = host::gfx::get();
+    if (s.shadows && s.glow) return false;
+    const UINT w = renderTarget->level.width, h = renderTarget->level.height;
+    if (w != h) return false;
+    const uint32_t shadow = host::gfx::shadowBufferSize();
+    if (!s.shadows && shadow && w == shadow) return true;
+    if (!s.glow && w <= 256 && w != shadow) return true;
+    return false;
+}
+
 void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVertices, INT baseVertex) {
     bindTarget();
     applyRenderStates();
@@ -1734,6 +1751,7 @@ GLenum primMode(D3DPRIMITIVETYPE t, UINT prims, GLsizei& count) {
 
 HRESULT STDMETHODCALLTYPE Device::DrawPrimitive(D3DPRIMITIVETYPE t, UINT start, UINT n) {
     GlTime timer;
+    if (skipDraw()) return S_OK;
     prepareDraw(false, nullptr, 0, 0, 0);
     if (!current) return S_OK;
     GLsizei count;
@@ -1746,6 +1764,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawPrimitive(D3DPRIMITIVETYPE t, UINT start, 
 }
 HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT base, UINT, UINT, UINT start, UINT n) {
     GlTime timer;
+    if (skipDraw()) return S_OK;
     if (!indices) return D3DERR_INVALIDCALL;
     prepareDraw(false, nullptr, 0, 0, base);
     if (!current) return S_OK;
@@ -1761,6 +1780,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT b
 }
 HRESULT STDMETHODCALLTYPE Device::DrawPrimitiveUP(D3DPRIMITIVETYPE t, UINT n, const void* data, UINT stride) {
     GlTime timer;
+    if (skipDraw()) return S_OK;
     GLsizei count;
     const GLenum mode = primMode(t, n, count);
     prepareDraw(true, data, stride, static_cast<UINT>(count), 0);
@@ -1773,6 +1793,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawPrimitiveUP(D3DPRIMITIVETYPE t, UINT n, co
 }
 HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UINT minIdx, UINT numV, UINT n, const void* idx, D3DFORMAT fmt, const void* data, UINT stride) {
     GlTime timer;
+    if (skipDraw()) return S_OK;
     GLsizei count;
     const GLenum mode = primMode(t, n, count);
     prepareDraw(true, data, stride, minIdx + numV, 0);
