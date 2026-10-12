@@ -26,14 +26,20 @@ cp "$DXVK/src/d3d9/libdxvk_d3d9.so" "$OUT/lib/libdxvk_d3d9.so.0"
 aarch64-linux-gnu-strip --strip-unneeded "$OUT/FableRecomp" "$OUT/lib/libdxvk_d3d9.so.0"
 
 if [ -n "$FFMPEG_PREFIX" ]; then  # the minimal FFmpeg first, so the sysroot's is not pulled in
-  for l in "$FFMPEG_PREFIX"/lib/lib*.so.*; do cp -L "$l" "$OUT/lib/"; done
+  for l in "$FFMPEG_PREFIX"/lib/lib*.so.*; do [ -L "$l" ] && cp -L "$l" "$OUT/lib/"; done  # the soname links only
 fi
 # every shared library the binary and DXVK need, recursively, from the arm64 sysroot
 needed() { aarch64-linux-gnu-readelf -d "$1" 2>/dev/null | awk '/NEEDED/ {gsub(/[\[\]]/, "", $5); print $5}'; }
 queue=("$OUT/FableRecomp" "$OUT/lib/libdxvk_d3d9.so.0")
 # libraries SDL2 and the Vulkan loader open at run time rather than link
-for extra in libgbm.so.1 libdrm.so.2 libasound.so.2 libvulkan.so.1 libudev.so.1 libdbus-1.so.3; do
+for extra in libdrm.so.2 libasound.so.2 libvulkan.so.1 libudev.so.1 libdbus-1.so.3; do
   [ -f "$LIBDIR/$extra" ] && { cp -L "$LIBDIR/$extra" "$OUT/lib/"; queue+=("$OUT/lib/$extra"); }
+done
+# the GPU side (GBM, EGL, GLES) must come from the device's own driver; Mesa's copies are a
+# fallback (software rendering at best) for an OS that has none
+mkdir -p "$OUT/lib/fallback"
+for extra in libgbm.so.1 libEGL.so.1 libGLESv2.so.2; do
+  [ -f "$LIBDIR/$extra" ] && { cp -L "$LIBDIR/$extra" "$OUT/lib/fallback/"; queue+=("$OUT/lib/fallback/$extra"); }
 done
 declare -A seen
 while [ ${#queue[@]} -gt 0 ]; do
@@ -41,7 +47,9 @@ while [ ${#queue[@]} -gt 0 ]; do
   for n in $(needed "$f"); do
     [ -n "${seen[$n]}" ] && continue; seen[$n]=1
     [ -f "$OUT/lib/$n" ] && { queue+=("$OUT/lib/$n"); continue; }
-    src=$(find "$LIBDIR" /lib/aarch64-linux-gnu -maxdepth 1 -name "$n" 2>/dev/null | head -1)
+    [ -f "$OUT/lib/fallback/$n" ] && { queue+=("$OUT/lib/fallback/$n"); continue; }
+    case "$n" in libgbm.so.1|libEGL.so.1|libGLESv2.so.2|libGLESv1_CM.so.1|libGL.so.1) continue ;; esac  # device's
+    src=$(find "$LIBDIR" "$LIBDIR/pulseaudio" /lib/aarch64-linux-gnu -maxdepth 1 -name "$n" 2>/dev/null | head -1)
     [ -z "$src" ] && { echo "warning: $n not found"; continue; }
     cp -L "$src" "$OUT/lib/$n"; queue+=("$OUT/lib/$n")
   done

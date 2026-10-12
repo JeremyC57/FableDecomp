@@ -340,7 +340,18 @@ HWND createWindow(DWORD exStyle, const std::string& cls, ATOM clsAtom, const std
     const bool topLevel = !(style & WS_CHILD) && parent != HWND_MESSAGE;
     if (topLevel) {
         ensureSdl();
-        Uint32 flags = SDL_WINDOW_HIDDEN | SDL_WINDOW_VULKAN | SDL_WINDOW_ALLOW_HIGHDPI;
+        Uint32 flags = SDL_WINDOW_HIDDEN | SDL_WINDOW_ALLOW_HIGHDPI;
+        if (glesRenderer()) {  // the OpenGL ES renderer (gles/): an ES 3.0 context on the window
+            SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+            SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+            SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+            SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 0);
+            SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 0);
+            SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+            flags |= SDL_WINDOW_OPENGL;
+        } else {
+            flags |= SDL_WINDOW_VULKAN;
+        }
         if (!(style & WS_CAPTION)) flags |= SDL_WINDOW_BORDERLESS;
         if (style & WS_THICKFRAME) flags |= SDL_WINDOW_RESIZABLE;
         // The client area: Windows sizes include the frame; SDL sizes are the client.
@@ -410,6 +421,11 @@ ATOM registerClass(const std::string& name, WNDPROC proc, bool unicode, UINT sty
 }
 
 }  // namespace
+
+bool glesRenderer() {
+    static const bool on = [] { const char* r = std::getenv("FABLE_RENDERER"); return r && std::strcmp(r, "gles") == 0; }();
+    return on;
+}
 
 void* sdlWindow(HWND h) {
     WndPtr w = wnd(h);

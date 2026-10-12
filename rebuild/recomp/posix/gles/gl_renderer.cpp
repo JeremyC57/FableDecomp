@@ -1,0 +1,1823 @@
+// Direct3D 9 on OpenGL ES 3.0 (see gl_renderer.hpp). Scope: what Fable TLC uses, from the
+// census (census.cpp): vs_1_1/ps_1_x shaders (dx9shader.cpp), the pre-transformed vertex
+// path for the 2D layer, the fixed-function pixel pipeline for a few passes, textures in
+// A8R8G8B8/X8R8G8B8/R5G6B5/A4R4G4B4/A8/L8/A8L8/V8U8/DXT1-5 (DXT decoded on the CPU: Mali has
+// no S3TC), render-target textures, D16 depth textures and D24S8 depth-stencil surfaces,
+// dynamic vertex/index buffers, occlusion queries.
+//
+// Conventions: everything renders into an FBO whose rows are in Direct3D order (the vertex
+// epilogue negates clip y), so render-target textures sample as on Direct3D; Present blits
+// the FBO to the window with a vertical flip. Clip z is remapped from [0,1] to [-1,1].
+#include <SDL.h>  // before the Windows headers: SDL keys its intrinsics on MinGW macros
+#define GL_GLES_PROTOTYPES 0  // entry points come from SDL_GL_GetProcAddress (loadGl): no link-time libGLESv2
+#include <GLES3/gl3.h>
+
+#include "gl_renderer.hpp"
+
+#include "dx9shader.hpp"
+#include "../w32/w32.hpp"
+
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <map>
+#include <memory>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+using namespace host;
+
+namespace host::gles {
+
+// ---- GL entry points, resolved from the context's driver (the device's own libGLESv2) ----
+namespace {
+PFNGLACTIVETEXTUREPROC glActiveTexture;
+PFNGLATTACHSHADERPROC glAttachShader;
+PFNGLBEGINQUERYPROC glBeginQuery;
+PFNGLBINDBUFFERPROC glBindBuffer;
+PFNGLBINDFRAMEBUFFERPROC glBindFramebuffer;
+PFNGLBINDRENDERBUFFERPROC glBindRenderbuffer;
+PFNGLBINDSAMPLERPROC glBindSampler;
+PFNGLBINDTEXTUREPROC glBindTexture;
+PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
+PFNGLBLENDCOLORPROC glBlendColor;
+PFNGLBLENDEQUATIONPROC glBlendEquation;
+PFNGLBLENDFUNCPROC glBlendFunc;
+PFNGLBLITFRAMEBUFFERPROC glBlitFramebuffer;
+PFNGLBUFFERDATAPROC glBufferData;
+PFNGLBUFFERSUBDATAPROC glBufferSubData;
+PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
+PFNGLCLEARPROC glClear;
+PFNGLCLEARCOLORPROC glClearColor;
+PFNGLCLEARDEPTHFPROC glClearDepthf;
+PFNGLCLEARSTENCILPROC glClearStencil;
+PFNGLCOLORMASKPROC glColorMask;
+PFNGLCOMPILESHADERPROC glCompileShader;
+PFNGLCREATEPROGRAMPROC glCreateProgram;
+PFNGLCREATESHADERPROC glCreateShader;
+PFNGLCULLFACEPROC glCullFace;
+PFNGLDELETEBUFFERSPROC glDeleteBuffers;
+PFNGLDELETEFRAMEBUFFERSPROC glDeleteFramebuffers;
+PFNGLDELETEPROGRAMPROC glDeleteProgram;
+PFNGLDELETEQUERIESPROC glDeleteQueries;
+PFNGLDELETERENDERBUFFERSPROC glDeleteRenderbuffers;
+PFNGLDELETESAMPLERSPROC glDeleteSamplers;
+PFNGLDELETESHADERPROC glDeleteShader;
+PFNGLDELETETEXTURESPROC glDeleteTextures;
+PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
+PFNGLDEPTHFUNCPROC glDepthFunc;
+PFNGLDEPTHMASKPROC glDepthMask;
+PFNGLDEPTHRANGEFPROC glDepthRangef;
+PFNGLDISABLEPROC glDisable;
+PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
+PFNGLDRAWARRAYSPROC glDrawArrays;
+PFNGLDRAWELEMENTSPROC glDrawElements;
+PFNGLENABLEPROC glEnable;
+PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
+PFNGLENDQUERYPROC glEndQuery;
+PFNGLFRAMEBUFFERRENDERBUFFERPROC glFramebufferRenderbuffer;
+PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
+PFNGLFRONTFACEPROC glFrontFace;
+PFNGLGENBUFFERSPROC glGenBuffers;
+PFNGLGENFRAMEBUFFERSPROC glGenFramebuffers;
+PFNGLGENQUERIESPROC glGenQueries;
+PFNGLGENRENDERBUFFERSPROC glGenRenderbuffers;
+PFNGLGENSAMPLERSPROC glGenSamplers;
+PFNGLGENTEXTURESPROC glGenTextures;
+PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
+PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
+PFNGLGETERRORPROC glGetError;
+PFNGLGETINTEGERVPROC glGetIntegerv;
+PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
+PFNGLGETPROGRAMIVPROC glGetProgramiv;
+PFNGLGETQUERYOBJECTUIVPROC glGetQueryObjectuiv;
+PFNGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
+PFNGLGETSHADERIVPROC glGetShaderiv;
+PFNGLGETSTRINGPROC glGetString;
+PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
+PFNGLLINKPROGRAMPROC glLinkProgram;
+PFNGLPIXELSTOREIPROC glPixelStorei;
+PFNGLPOLYGONOFFSETPROC glPolygonOffset;
+PFNGLREADPIXELSPROC glReadPixels;
+PFNGLRENDERBUFFERSTORAGEPROC glRenderbufferStorage;
+PFNGLSAMPLERPARAMETERIPROC glSamplerParameteri;
+PFNGLSCISSORPROC glScissor;
+PFNGLSHADERSOURCEPROC glShaderSource;
+PFNGLSTENCILFUNCPROC glStencilFunc;
+PFNGLSTENCILMASKPROC glStencilMask;
+PFNGLSTENCILOPPROC glStencilOp;
+PFNGLTEXPARAMETERIPROC glTexParameteri;
+PFNGLTEXPARAMETERIVPROC glTexParameteriv;
+PFNGLTEXSTORAGE2DPROC glTexStorage2D;
+PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D;
+PFNGLUNIFORM1FPROC glUniform1f;
+PFNGLUNIFORM1IPROC glUniform1i;
+PFNGLUNIFORM4FPROC glUniform4f;
+PFNGLUNIFORM4FVPROC glUniform4fv;
+PFNGLUSEPROGRAMPROC glUseProgram;
+PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
+PFNGLVIEWPORTPROC glViewport;
+bool loadGl() {
+    glActiveTexture = reinterpret_cast<PFNGLACTIVETEXTUREPROC>(SDL_GL_GetProcAddress("glActiveTexture"));
+    glAttachShader = reinterpret_cast<PFNGLATTACHSHADERPROC>(SDL_GL_GetProcAddress("glAttachShader"));
+    glBeginQuery = reinterpret_cast<PFNGLBEGINQUERYPROC>(SDL_GL_GetProcAddress("glBeginQuery"));
+    glBindBuffer = reinterpret_cast<PFNGLBINDBUFFERPROC>(SDL_GL_GetProcAddress("glBindBuffer"));
+    glBindFramebuffer = reinterpret_cast<PFNGLBINDFRAMEBUFFERPROC>(SDL_GL_GetProcAddress("glBindFramebuffer"));
+    glBindRenderbuffer = reinterpret_cast<PFNGLBINDRENDERBUFFERPROC>(SDL_GL_GetProcAddress("glBindRenderbuffer"));
+    glBindSampler = reinterpret_cast<PFNGLBINDSAMPLERPROC>(SDL_GL_GetProcAddress("glBindSampler"));
+    glBindTexture = reinterpret_cast<PFNGLBINDTEXTUREPROC>(SDL_GL_GetProcAddress("glBindTexture"));
+    glBindVertexArray = reinterpret_cast<PFNGLBINDVERTEXARRAYPROC>(SDL_GL_GetProcAddress("glBindVertexArray"));
+    glBlendColor = reinterpret_cast<PFNGLBLENDCOLORPROC>(SDL_GL_GetProcAddress("glBlendColor"));
+    glBlendEquation = reinterpret_cast<PFNGLBLENDEQUATIONPROC>(SDL_GL_GetProcAddress("glBlendEquation"));
+    glBlendFunc = reinterpret_cast<PFNGLBLENDFUNCPROC>(SDL_GL_GetProcAddress("glBlendFunc"));
+    glBlitFramebuffer = reinterpret_cast<PFNGLBLITFRAMEBUFFERPROC>(SDL_GL_GetProcAddress("glBlitFramebuffer"));
+    glBufferData = reinterpret_cast<PFNGLBUFFERDATAPROC>(SDL_GL_GetProcAddress("glBufferData"));
+    glBufferSubData = reinterpret_cast<PFNGLBUFFERSUBDATAPROC>(SDL_GL_GetProcAddress("glBufferSubData"));
+    glCheckFramebufferStatus = reinterpret_cast<PFNGLCHECKFRAMEBUFFERSTATUSPROC>(SDL_GL_GetProcAddress("glCheckFramebufferStatus"));
+    glClear = reinterpret_cast<PFNGLCLEARPROC>(SDL_GL_GetProcAddress("glClear"));
+    glClearColor = reinterpret_cast<PFNGLCLEARCOLORPROC>(SDL_GL_GetProcAddress("glClearColor"));
+    glClearDepthf = reinterpret_cast<PFNGLCLEARDEPTHFPROC>(SDL_GL_GetProcAddress("glClearDepthf"));
+    glClearStencil = reinterpret_cast<PFNGLCLEARSTENCILPROC>(SDL_GL_GetProcAddress("glClearStencil"));
+    glColorMask = reinterpret_cast<PFNGLCOLORMASKPROC>(SDL_GL_GetProcAddress("glColorMask"));
+    glCompileShader = reinterpret_cast<PFNGLCOMPILESHADERPROC>(SDL_GL_GetProcAddress("glCompileShader"));
+    glCreateProgram = reinterpret_cast<PFNGLCREATEPROGRAMPROC>(SDL_GL_GetProcAddress("glCreateProgram"));
+    glCreateShader = reinterpret_cast<PFNGLCREATESHADERPROC>(SDL_GL_GetProcAddress("glCreateShader"));
+    glCullFace = reinterpret_cast<PFNGLCULLFACEPROC>(SDL_GL_GetProcAddress("glCullFace"));
+    glDeleteBuffers = reinterpret_cast<PFNGLDELETEBUFFERSPROC>(SDL_GL_GetProcAddress("glDeleteBuffers"));
+    glDeleteFramebuffers = reinterpret_cast<PFNGLDELETEFRAMEBUFFERSPROC>(SDL_GL_GetProcAddress("glDeleteFramebuffers"));
+    glDeleteProgram = reinterpret_cast<PFNGLDELETEPROGRAMPROC>(SDL_GL_GetProcAddress("glDeleteProgram"));
+    glDeleteQueries = reinterpret_cast<PFNGLDELETEQUERIESPROC>(SDL_GL_GetProcAddress("glDeleteQueries"));
+    glDeleteRenderbuffers = reinterpret_cast<PFNGLDELETERENDERBUFFERSPROC>(SDL_GL_GetProcAddress("glDeleteRenderbuffers"));
+    glDeleteSamplers = reinterpret_cast<PFNGLDELETESAMPLERSPROC>(SDL_GL_GetProcAddress("glDeleteSamplers"));
+    glDeleteShader = reinterpret_cast<PFNGLDELETESHADERPROC>(SDL_GL_GetProcAddress("glDeleteShader"));
+    glDeleteTextures = reinterpret_cast<PFNGLDELETETEXTURESPROC>(SDL_GL_GetProcAddress("glDeleteTextures"));
+    glDeleteVertexArrays = reinterpret_cast<PFNGLDELETEVERTEXARRAYSPROC>(SDL_GL_GetProcAddress("glDeleteVertexArrays"));
+    glDepthFunc = reinterpret_cast<PFNGLDEPTHFUNCPROC>(SDL_GL_GetProcAddress("glDepthFunc"));
+    glDepthMask = reinterpret_cast<PFNGLDEPTHMASKPROC>(SDL_GL_GetProcAddress("glDepthMask"));
+    glDepthRangef = reinterpret_cast<PFNGLDEPTHRANGEFPROC>(SDL_GL_GetProcAddress("glDepthRangef"));
+    glDisable = reinterpret_cast<PFNGLDISABLEPROC>(SDL_GL_GetProcAddress("glDisable"));
+    glDisableVertexAttribArray = reinterpret_cast<PFNGLDISABLEVERTEXATTRIBARRAYPROC>(SDL_GL_GetProcAddress("glDisableVertexAttribArray"));
+    glDrawArrays = reinterpret_cast<PFNGLDRAWARRAYSPROC>(SDL_GL_GetProcAddress("glDrawArrays"));
+    glDrawElements = reinterpret_cast<PFNGLDRAWELEMENTSPROC>(SDL_GL_GetProcAddress("glDrawElements"));
+    glEnable = reinterpret_cast<PFNGLENABLEPROC>(SDL_GL_GetProcAddress("glEnable"));
+    glEnableVertexAttribArray = reinterpret_cast<PFNGLENABLEVERTEXATTRIBARRAYPROC>(SDL_GL_GetProcAddress("glEnableVertexAttribArray"));
+    glEndQuery = reinterpret_cast<PFNGLENDQUERYPROC>(SDL_GL_GetProcAddress("glEndQuery"));
+    glFramebufferRenderbuffer = reinterpret_cast<PFNGLFRAMEBUFFERRENDERBUFFERPROC>(SDL_GL_GetProcAddress("glFramebufferRenderbuffer"));
+    glFramebufferTexture2D = reinterpret_cast<PFNGLFRAMEBUFFERTEXTURE2DPROC>(SDL_GL_GetProcAddress("glFramebufferTexture2D"));
+    glFrontFace = reinterpret_cast<PFNGLFRONTFACEPROC>(SDL_GL_GetProcAddress("glFrontFace"));
+    glGenBuffers = reinterpret_cast<PFNGLGENBUFFERSPROC>(SDL_GL_GetProcAddress("glGenBuffers"));
+    glGenFramebuffers = reinterpret_cast<PFNGLGENFRAMEBUFFERSPROC>(SDL_GL_GetProcAddress("glGenFramebuffers"));
+    glGenQueries = reinterpret_cast<PFNGLGENQUERIESPROC>(SDL_GL_GetProcAddress("glGenQueries"));
+    glGenRenderbuffers = reinterpret_cast<PFNGLGENRENDERBUFFERSPROC>(SDL_GL_GetProcAddress("glGenRenderbuffers"));
+    glGenSamplers = reinterpret_cast<PFNGLGENSAMPLERSPROC>(SDL_GL_GetProcAddress("glGenSamplers"));
+    glGenTextures = reinterpret_cast<PFNGLGENTEXTURESPROC>(SDL_GL_GetProcAddress("glGenTextures"));
+    glGenVertexArrays = reinterpret_cast<PFNGLGENVERTEXARRAYSPROC>(SDL_GL_GetProcAddress("glGenVertexArrays"));
+    glGenerateMipmap = reinterpret_cast<PFNGLGENERATEMIPMAPPROC>(SDL_GL_GetProcAddress("glGenerateMipmap"));
+    glGetError = reinterpret_cast<PFNGLGETERRORPROC>(SDL_GL_GetProcAddress("glGetError"));
+    glGetIntegerv = reinterpret_cast<PFNGLGETINTEGERVPROC>(SDL_GL_GetProcAddress("glGetIntegerv"));
+    glGetProgramInfoLog = reinterpret_cast<PFNGLGETPROGRAMINFOLOGPROC>(SDL_GL_GetProcAddress("glGetProgramInfoLog"));
+    glGetProgramiv = reinterpret_cast<PFNGLGETPROGRAMIVPROC>(SDL_GL_GetProcAddress("glGetProgramiv"));
+    glGetQueryObjectuiv = reinterpret_cast<PFNGLGETQUERYOBJECTUIVPROC>(SDL_GL_GetProcAddress("glGetQueryObjectuiv"));
+    glGetShaderInfoLog = reinterpret_cast<PFNGLGETSHADERINFOLOGPROC>(SDL_GL_GetProcAddress("glGetShaderInfoLog"));
+    glGetShaderiv = reinterpret_cast<PFNGLGETSHADERIVPROC>(SDL_GL_GetProcAddress("glGetShaderiv"));
+    glGetString = reinterpret_cast<PFNGLGETSTRINGPROC>(SDL_GL_GetProcAddress("glGetString"));
+    glGetUniformLocation = reinterpret_cast<PFNGLGETUNIFORMLOCATIONPROC>(SDL_GL_GetProcAddress("glGetUniformLocation"));
+    glLinkProgram = reinterpret_cast<PFNGLLINKPROGRAMPROC>(SDL_GL_GetProcAddress("glLinkProgram"));
+    glPixelStorei = reinterpret_cast<PFNGLPIXELSTOREIPROC>(SDL_GL_GetProcAddress("glPixelStorei"));
+    glPolygonOffset = reinterpret_cast<PFNGLPOLYGONOFFSETPROC>(SDL_GL_GetProcAddress("glPolygonOffset"));
+    glReadPixels = reinterpret_cast<PFNGLREADPIXELSPROC>(SDL_GL_GetProcAddress("glReadPixels"));
+    glRenderbufferStorage = reinterpret_cast<PFNGLRENDERBUFFERSTORAGEPROC>(SDL_GL_GetProcAddress("glRenderbufferStorage"));
+    glSamplerParameteri = reinterpret_cast<PFNGLSAMPLERPARAMETERIPROC>(SDL_GL_GetProcAddress("glSamplerParameteri"));
+    glScissor = reinterpret_cast<PFNGLSCISSORPROC>(SDL_GL_GetProcAddress("glScissor"));
+    glShaderSource = reinterpret_cast<PFNGLSHADERSOURCEPROC>(SDL_GL_GetProcAddress("glShaderSource"));
+    glStencilFunc = reinterpret_cast<PFNGLSTENCILFUNCPROC>(SDL_GL_GetProcAddress("glStencilFunc"));
+    glStencilMask = reinterpret_cast<PFNGLSTENCILMASKPROC>(SDL_GL_GetProcAddress("glStencilMask"));
+    glStencilOp = reinterpret_cast<PFNGLSTENCILOPPROC>(SDL_GL_GetProcAddress("glStencilOp"));
+    glTexParameteri = reinterpret_cast<PFNGLTEXPARAMETERIPROC>(SDL_GL_GetProcAddress("glTexParameteri"));
+    glTexParameteriv = reinterpret_cast<PFNGLTEXPARAMETERIVPROC>(SDL_GL_GetProcAddress("glTexParameteriv"));
+    glTexStorage2D = reinterpret_cast<PFNGLTEXSTORAGE2DPROC>(SDL_GL_GetProcAddress("glTexStorage2D"));
+    glTexSubImage2D = reinterpret_cast<PFNGLTEXSUBIMAGE2DPROC>(SDL_GL_GetProcAddress("glTexSubImage2D"));
+    glUniform1f = reinterpret_cast<PFNGLUNIFORM1FPROC>(SDL_GL_GetProcAddress("glUniform1f"));
+    glUniform1i = reinterpret_cast<PFNGLUNIFORM1IPROC>(SDL_GL_GetProcAddress("glUniform1i"));
+    glUniform4f = reinterpret_cast<PFNGLUNIFORM4FPROC>(SDL_GL_GetProcAddress("glUniform4f"));
+    glUniform4fv = reinterpret_cast<PFNGLUNIFORM4FVPROC>(SDL_GL_GetProcAddress("glUniform4fv"));
+    glUseProgram = reinterpret_cast<PFNGLUSEPROGRAMPROC>(SDL_GL_GetProcAddress("glUseProgram"));
+    glVertexAttribPointer = reinterpret_cast<PFNGLVERTEXATTRIBPOINTERPROC>(SDL_GL_GetProcAddress("glVertexAttribPointer"));
+    glViewport = reinterpret_cast<PFNGLVIEWPORTPROC>(SDL_GL_GetProcAddress("glViewport"));
+    return glActiveTexture && glAttachShader && glBeginQuery && glBindBuffer && glBindFramebuffer && glBindRenderbuffer && glBindSampler && glBindTexture && glBindVertexArray && glBlendColor && glBlendEquation && glBlendFunc && glBlitFramebuffer && glBufferData && glBufferSubData && glCheckFramebufferStatus && glClear && glClearColor && glClearDepthf && glClearStencil && glColorMask && glCompileShader && glCreateProgram && glCreateShader && glCullFace && glDeleteBuffers && glDeleteFramebuffers && glDeleteProgram && glDeleteQueries && glDeleteRenderbuffers && glDeleteSamplers && glDeleteShader && glDeleteTextures && glDeleteVertexArrays && glDepthFunc && glDepthMask && glDepthRangef && glDisable && glDisableVertexAttribArray && glDrawArrays && glDrawElements && glEnable && glEnableVertexAttribArray && glEndQuery && glFramebufferRenderbuffer && glFramebufferTexture2D && glFrontFace && glGenBuffers && glGenFramebuffers && glGenQueries && glGenRenderbuffers && glGenSamplers && glGenTextures && glGenVertexArrays && glGenerateMipmap && glGetError && glGetIntegerv && glGetProgramInfoLog && glGetProgramiv && glGetQueryObjectuiv && glGetShaderInfoLog && glGetShaderiv && glGetString && glGetUniformLocation && glLinkProgram && glPixelStorei && glPolygonOffset && glReadPixels && glRenderbufferStorage && glSamplerParameteri && glScissor && glShaderSource && glStencilFunc && glStencilMask && glStencilOp && glTexParameteri && glTexParameteriv && glTexStorage2D && glTexSubImage2D && glUniform1f && glUniform1i && glUniform4f && glUniform4fv && glUseProgram && glVertexAttribPointer && glViewport;
+}
+}  // namespace
+namespace {
+
+struct Device;
+Device* g_device = nullptr;
+
+#define GLCHECK(what) \
+    do { \
+        if (host::g_logLevel >= 2) { GLenum e = glGetError(); if (e) log("gles: GL error 0x%X at %s", e, what); } \
+    } while (0)
+
+// ---- COM base ------------------------------------------------------------------------------
+template <class I, const IID* ID> struct Unknown : I {
+    LONG refs = 1;
+    HRESULT STDMETHODCALLTYPE QueryInterface(REFIID riid, void** out) override {
+        if (!out) return E_POINTER;
+        if (IsEqualGUID(riid, *ID) || IsEqualGUID(riid, IID_IUnknown)) { *out = this; AddRef(); return S_OK; }
+        *out = nullptr;
+        return E_NOINTERFACE;
+    }
+    ULONG STDMETHODCALLTYPE AddRef() override { return ++refs; }
+    ULONG STDMETHODCALLTYPE Release() override {
+        const LONG n = --refs;
+        if (n == 0) delete this;
+        return n;
+    }
+    virtual ~Unknown() = default;
+};
+template <class T> struct Ref {
+    T* p = nullptr;
+    Ref() = default;
+    Ref(T* q) : p(q) { if (p) p->AddRef(); }
+    Ref(const Ref& o) : p(o.p) { if (p) p->AddRef(); }
+    Ref& operator=(T* q) { if (q) q->AddRef(); if (p) p->Release(); p = q; return *this; }
+    Ref& operator=(const Ref& o) { return *this = o.p; }
+    ~Ref() { if (p) p->Release(); }
+    T* operator->() const { return p; }
+    operator T*() const { return p; }
+};
+
+// ---- formats ------------------------------------------------------------------------------
+struct FormatInfo {
+    GLenum internal = 0, format = 0, type = 0;
+    int bytesPerPixel = 0;  // 0: block compressed (DXT)
+    int blockBytes = 0;     // DXT: bytes per 4x4 block
+    bool depth = false;
+    GLint swizzle[4] = {GL_RED, GL_GREEN, GL_BLUE, GL_ALPHA};
+    bool valid = false;
+};
+FormatInfo formatInfo(D3DFORMAT f) {
+    FormatInfo i;
+    i.valid = true;
+    switch (static_cast<uint32_t>(f)) {
+        case D3DFMT_A8R8G8B8: i = {GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, 4, 0, false, {GL_BLUE, GL_GREEN, GL_RED, GL_ALPHA}, true}; break;
+        case D3DFMT_X8R8G8B8: i = {GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, 4, 0, false, {GL_BLUE, GL_GREEN, GL_RED, GL_ONE}, true}; break;
+        case D3DFMT_A8B8G8R8: i = {GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, 4, 0, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ALPHA}, true}; break;
+        case D3DFMT_X8B8G8R8: i = {GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, 4, 0, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ONE}, true}; break;
+        case D3DFMT_R5G6B5: i = {GL_RGB565, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, 2, 0, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ONE}, true}; break;
+        case D3DFMT_A4R4G4B4: i = {GL_RGBA4, GL_RGBA, GL_UNSIGNED_SHORT_4_4_4_4, 2, 0, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ALPHA}, true}; break;  // converted on upload
+        case D3DFMT_A1R5G5B5: i = {GL_RGB5_A1, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, 2, 0, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ALPHA}, true}; break;  // converted
+        case D3DFMT_X1R5G5B5: i = {GL_RGB5_A1, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, 2, 0, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ONE}, true}; break;
+        case D3DFMT_A8: i = {GL_R8, GL_RED, GL_UNSIGNED_BYTE, 1, 0, false, {GL_ZERO, GL_ZERO, GL_ZERO, GL_RED}, true}; break;
+        case D3DFMT_L8: i = {GL_R8, GL_RED, GL_UNSIGNED_BYTE, 1, 0, false, {GL_RED, GL_RED, GL_RED, GL_ONE}, true}; break;
+        case D3DFMT_A8L8: i = {GL_RG8, GL_RG, GL_UNSIGNED_BYTE, 2, 0, false, {GL_RED, GL_RED, GL_RED, GL_GREEN}, true}; break;
+        case D3DFMT_V8U8: i = {GL_RG8_SNORM, GL_RG, GL_BYTE, 2, 0, false, {GL_RED, GL_GREEN, GL_ONE, GL_ONE}, true}; break;
+        case D3DFMT_DXT1: i = {GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, 0, 8, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ALPHA}, true}; break;
+        case D3DFMT_DXT2: case D3DFMT_DXT3: i = {GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, 0, 16, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ALPHA}, true}; break;
+        case D3DFMT_DXT4: case D3DFMT_DXT5: i = {GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, 0, 16, false, {GL_RED, GL_GREEN, GL_BLUE, GL_ALPHA}, true}; break;
+        case D3DFMT_D16: case D3DFMT_D16_LOCKABLE: i = {GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT, GL_UNSIGNED_SHORT, 2, 0, true, {GL_RED, GL_RED, GL_RED, GL_ONE}, true}; break;
+        case D3DFMT_D24S8: case D3DFMT_D24X8: i = {GL_DEPTH24_STENCIL8, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, 4, 0, true, {GL_RED, GL_RED, GL_RED, GL_ONE}, true}; break;
+        case D3DFMT_D32: case D3DFMT_D24FS8: i = {GL_DEPTH_COMPONENT24, GL_DEPTH_COMPONENT, GL_UNSIGNED_INT, 4, 0, true, {GL_RED, GL_RED, GL_RED, GL_ONE}, true}; break;
+        default: i.valid = false; break;
+    }
+    return i;
+}
+bool isDxt(D3DFORMAT f) { return f == D3DFMT_DXT1 || f == D3DFMT_DXT2 || f == D3DFMT_DXT3 || f == D3DFMT_DXT4 || f == D3DFMT_DXT5; }
+// The pitch Direct3D reports for a locked level, and the bytes of the level.
+UINT levelPitch(D3DFORMAT f, UINT w) {
+    const FormatInfo i = formatInfo(f);
+    if (i.blockBytes) return ((w + 3) / 4) * i.blockBytes;
+    return w * std::max(1, i.bytesPerPixel);
+}
+UINT levelBytes(D3DFORMAT f, UINT w, UINT h) {
+    const FormatInfo i = formatInfo(f);
+    if (i.blockBytes) return ((w + 3) / 4) * ((h + 3) / 4) * i.blockBytes;
+    return w * h * std::max(1, i.bytesPerPixel);
+}
+
+// DXT decoding to RGBA8.
+void decodeColor565(uint16_t c, uint8_t* out) {
+    out[0] = static_cast<uint8_t>(((c >> 11) & 31) * 255 / 31);
+    out[1] = static_cast<uint8_t>(((c >> 5) & 63) * 255 / 63);
+    out[2] = static_cast<uint8_t>((c & 31) * 255 / 31);
+    out[3] = 255;
+}
+void decodeDxtBlock(const uint8_t* block, bool dxt1, int alphaKind, uint8_t rgba[16][4]) {
+    // alphaKind: 0 none (DXT1), 3 explicit (DXT3), 5 interpolated (DXT5)
+    const uint8_t* cb = block + (dxt1 ? 0 : 8);
+    uint16_t c0, c1;
+    std::memcpy(&c0, cb, 2);
+    std::memcpy(&c1, cb + 2, 2);
+    uint8_t col[4][4];
+    decodeColor565(c0, col[0]);
+    decodeColor565(c1, col[1]);
+    if (c0 > c1 || !dxt1) {
+        for (int k = 0; k < 3; ++k) col[2][k] = static_cast<uint8_t>((2 * col[0][k] + col[1][k]) / 3), col[3][k] = static_cast<uint8_t>((col[0][k] + 2 * col[1][k]) / 3);
+        col[2][3] = col[3][3] = 255;
+    } else {
+        for (int k = 0; k < 3; ++k) col[2][k] = static_cast<uint8_t>((col[0][k] + col[1][k]) / 2), col[3][k] = 0;
+        col[2][3] = 255, col[3][3] = 0;
+    }
+    uint32_t idx;
+    std::memcpy(&idx, cb + 4, 4);
+    for (int p = 0; p < 16; ++p) std::memcpy(rgba[p], col[(idx >> (2 * p)) & 3], 4);
+    if (alphaKind == 3) {
+        uint64_t a;
+        std::memcpy(&a, block, 8);
+        for (int p = 0; p < 16; ++p) rgba[p][3] = static_cast<uint8_t>(((a >> (4 * p)) & 15) * 17);
+    } else if (alphaKind == 5) {
+        const uint8_t a0 = block[0], a1 = block[1];
+        uint8_t a[8] = {a0, a1};
+        if (a0 > a1) for (int k = 1; k < 7; ++k) a[1 + k] = static_cast<uint8_t>(((7 - k) * a0 + k * a1) / 7);
+        else { for (int k = 1; k < 5; ++k) a[1 + k] = static_cast<uint8_t>(((5 - k) * a0 + k * a1) / 5); a[6] = 0; a[7] = 255; }
+        uint64_t bits = 0;
+        std::memcpy(&bits, block + 2, 6);
+        for (int p = 0; p < 16; ++p) rgba[p][3] = a[(bits >> (3 * p)) & 7];
+    }
+}
+std::vector<uint8_t> decodeDxt(D3DFORMAT f, const uint8_t* src, UINT w, UINT h) {
+    std::vector<uint8_t> out(static_cast<size_t>(w) * h * 4);
+    const bool dxt1 = f == D3DFMT_DXT1;
+    const int alphaKind = dxt1 ? 0 : (f == D3DFMT_DXT2 || f == D3DFMT_DXT3) ? 3 : 5;
+    const int bw = (w + 3) / 4, bh = (h + 3) / 4, bs = dxt1 ? 8 : 16;
+    uint8_t rgba[16][4];
+    for (int by = 0; by < bh; ++by)
+        for (int bx = 0; bx < bw; ++bx) {
+            decodeDxtBlock(src + (by * bw + bx) * bs, dxt1, alphaKind, rgba);
+            for (int py = 0; py < 4; ++py) {
+                const UINT y = by * 4 + py;
+                if (y >= h) break;
+                for (int px = 0; px < 4; ++px) {
+                    const UINT x = bx * 4 + px;
+                    if (x >= w) break;
+                    std::memcpy(&out[(static_cast<size_t>(y) * w + x) * 4], rgba[py * 4 + px], 4);
+                }
+            }
+        }
+    return out;
+}
+// Repacks the 16-bit formats whose bit order differs between the APIs.
+void convert16(D3DFORMAT f, const uint8_t* src, uint8_t* dst, size_t n) {
+    const uint16_t* s = reinterpret_cast<const uint16_t*>(src);
+    uint16_t* d = reinterpret_cast<uint16_t*>(dst);
+    if (f == D3DFMT_A4R4G4B4) {
+        for (size_t i = 0; i < n; ++i) { const uint16_t v = s[i]; d[i] = static_cast<uint16_t>(((v >> 8) & 0xF) << 12 | ((v >> 4) & 0xF) << 8 | (v & 0xF) << 4 | (v >> 12)); }  // ARGB -> RGBA
+    } else if (f == D3DFMT_A1R5G5B5 || f == D3DFMT_X1R5G5B5) {
+        for (size_t i = 0; i < n; ++i) { const uint16_t v = s[i]; d[i] = static_cast<uint16_t>(((v >> 10) & 31) << 11 | ((v >> 5) & 31) << 6 | (v & 31) << 1 | (v >> 15)); }  // ARGB1555 -> RGBA5551
+    } else {
+        std::memcpy(dst, src, n * 2);
+    }
+}
+
+// ---- resources ----------------------------------------------------------------------------
+struct Surface;
+struct Texture;
+
+struct Level {  // one mip level (or the only level) of a texture / a standalone surface
+    UINT width = 0, height = 0;
+    std::vector<uint8_t> cpu;  // system-memory copy (allocated at the first Lock)
+    bool locked = false;
+    RECT lockRect{};
+    bool wholeLock = true;
+};
+
+struct Surface : Unknown<IDirect3DSurface9, &IID_IDirect3DSurface9> {
+    Device* dev;
+    D3DFORMAT format;
+    D3DPOOL pool = D3DPOOL_DEFAULT;
+    DWORD usage = 0;
+    Level level;
+    Texture* texture = nullptr;  // owner (not referenced: the texture outlives its surfaces through the device's bookkeeping)
+    UINT mip = 0;
+    GLuint rbo = 0;   // standalone render target / depth-stencil: a renderbuffer
+    GLuint tex = 0;   // standalone render target as a texture (for StretchRect sources) - unused
+    bool isBackBuffer = false, isMainDepth = false;
+    Surface(Device* d, D3DFORMAT f, UINT w, UINT h) : dev(d), format(f) { level.width = w, level.height = h; }
+    ~Surface() override;
+    // IDirect3DResource9
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    HRESULT STDMETHODCALLTYPE SetPrivateData(REFGUID, const void*, DWORD, DWORD) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPrivateData(REFGUID, void*, DWORD*) override { return D3DERR_NOTFOUND; }
+    HRESULT STDMETHODCALLTYPE FreePrivateData(REFGUID) override { return S_OK; }
+    DWORD STDMETHODCALLTYPE SetPriority(DWORD) override { return 0; }
+    DWORD STDMETHODCALLTYPE GetPriority() override { return 0; }
+    void STDMETHODCALLTYPE PreLoad() override {}
+    D3DRESOURCETYPE STDMETHODCALLTYPE GetType() override { return D3DRTYPE_SURFACE; }
+    // IDirect3DSurface9
+    HRESULT STDMETHODCALLTYPE GetContainer(REFIID, void** out) override;
+    HRESULT STDMETHODCALLTYPE GetDesc(D3DSURFACE_DESC* d) override {
+        if (!d) return E_POINTER;
+        *d = {};
+        d->Format = format, d->Type = D3DRTYPE_SURFACE, d->Usage = usage, d->Pool = pool, d->MultiSampleType = D3DMULTISAMPLE_NONE;
+        d->Width = level.width, d->Height = level.height;
+        return S_OK;
+    }
+    HRESULT STDMETHODCALLTYPE LockRect(D3DLOCKED_RECT* out, const RECT* rect, DWORD flags) override;
+    HRESULT STDMETHODCALLTYPE UnlockRect() override;
+    HRESULT STDMETHODCALLTYPE GetDC(HDC*) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE ReleaseDC(HDC) override { return D3DERR_INVALIDCALL; }
+};
+
+struct Texture : Unknown<IDirect3DTexture9, &IID_IDirect3DTexture9> {
+    Device* dev;
+    D3DFORMAT format;
+    D3DPOOL pool;
+    DWORD usage;
+    UINT width, height, levels;
+    FormatInfo info;
+    GLuint gl = 0;
+    std::vector<Surface*> surfaces;  // one per level, created on demand (referenced by us)
+    DWORD lod = 0;
+    D3DTEXTUREFILTERTYPE autogen = D3DTEXF_LINEAR;
+    Texture(Device* d, UINT w, UINT h, UINT l, DWORD u, D3DFORMAT f, D3DPOOL p);
+    ~Texture() override;
+    Surface* surface(UINT level);
+    void upload(UINT level, const RECT* rect);
+    // IDirect3DResource9
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    HRESULT STDMETHODCALLTYPE SetPrivateData(REFGUID, const void*, DWORD, DWORD) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPrivateData(REFGUID, void*, DWORD*) override { return D3DERR_NOTFOUND; }
+    HRESULT STDMETHODCALLTYPE FreePrivateData(REFGUID) override { return S_OK; }
+    DWORD STDMETHODCALLTYPE SetPriority(DWORD) override { return 0; }
+    DWORD STDMETHODCALLTYPE GetPriority() override { return 0; }
+    void STDMETHODCALLTYPE PreLoad() override {}
+    D3DRESOURCETYPE STDMETHODCALLTYPE GetType() override { return D3DRTYPE_TEXTURE; }
+    // IDirect3DBaseTexture9
+    DWORD STDMETHODCALLTYPE SetLOD(DWORD l) override { const DWORD o = lod; lod = l; return o; }
+    DWORD STDMETHODCALLTYPE GetLOD() override { return lod; }
+    DWORD STDMETHODCALLTYPE GetLevelCount() override { return levels; }
+    HRESULT STDMETHODCALLTYPE SetAutoGenFilterType(D3DTEXTUREFILTERTYPE t) override { autogen = t; return S_OK; }
+    D3DTEXTUREFILTERTYPE STDMETHODCALLTYPE GetAutoGenFilterType() override { return autogen; }
+    void STDMETHODCALLTYPE GenerateMipSubLevels() override;
+    // IDirect3DTexture9
+    HRESULT STDMETHODCALLTYPE GetLevelDesc(UINT level, D3DSURFACE_DESC* d) override { return level < levels ? surface(level)->GetDesc(d) : D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE GetSurfaceLevel(UINT level, IDirect3DSurface9** out) override {
+        if (level >= levels || !out) return D3DERR_INVALIDCALL;
+        Surface* s = surface(level);
+        s->AddRef();
+        *out = s;
+        return S_OK;
+    }
+    HRESULT STDMETHODCALLTYPE LockRect(UINT level, D3DLOCKED_RECT* out, const RECT* rect, DWORD flags) override { return level < levels ? surface(level)->LockRect(out, rect, flags) : D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE UnlockRect(UINT level) override { return level < levels ? surface(level)->UnlockRect() : D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE AddDirtyRect(const RECT*) override { return S_OK; }
+};
+
+struct Buffer {  // vertex / index buffer storage
+    GLuint gl = 0;
+    UINT size = 0;
+    std::vector<uint8_t> cpu;
+    bool locked = false;
+    UINT lockOff = 0, lockSize = 0;
+    DWORD lockFlags = 0;
+    bool dirtyAll = true;
+    GLenum target;
+    void create(GLenum t, UINT n, DWORD usage) {
+        target = t, size = n;
+        cpu.assign(n, 0);
+        glGenBuffers(1, &gl);
+        glBindBuffer(target, gl);
+        glBufferData(target, n, nullptr, (usage & D3DUSAGE_DYNAMIC) ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
+    }
+    void* lock(UINT off, UINT n, DWORD flags) {
+        if (n == 0 || off + n > size) n = size - off;
+        locked = true, lockOff = off, lockSize = n, lockFlags = flags;
+        return cpu.data() + off;
+    }
+    void unlock() {
+        if (!locked) return;
+        locked = false;
+        if (lockFlags & D3DLOCK_READONLY) return;
+        glBindBuffer(target, gl);
+        if (lockFlags & D3DLOCK_DISCARD) glBufferData(target, size, cpu.data(), GL_DYNAMIC_DRAW);  // orphan
+        else glBufferSubData(target, lockOff, lockSize, cpu.data() + lockOff);
+    }
+    ~Buffer() { if (gl) glDeleteBuffers(1, &gl); }
+};
+
+struct VertexBuffer : Unknown<IDirect3DVertexBuffer9, &IID_IDirect3DVertexBuffer9> {
+    Device* dev;
+    Buffer buf;
+    DWORD usage, fvf;
+    D3DPOOL pool;
+    VertexBuffer(Device* d, UINT n, DWORD u, DWORD f, D3DPOOL p) : dev(d), usage(u), fvf(f), pool(p) { buf.create(GL_ARRAY_BUFFER, n, u); }
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    HRESULT STDMETHODCALLTYPE SetPrivateData(REFGUID, const void*, DWORD, DWORD) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPrivateData(REFGUID, void*, DWORD*) override { return D3DERR_NOTFOUND; }
+    HRESULT STDMETHODCALLTYPE FreePrivateData(REFGUID) override { return S_OK; }
+    DWORD STDMETHODCALLTYPE SetPriority(DWORD) override { return 0; }
+    DWORD STDMETHODCALLTYPE GetPriority() override { return 0; }
+    void STDMETHODCALLTYPE PreLoad() override {}
+    D3DRESOURCETYPE STDMETHODCALLTYPE GetType() override { return D3DRTYPE_VERTEXBUFFER; }
+    HRESULT STDMETHODCALLTYPE Lock(UINT off, UINT n, void** out, DWORD flags) override { if (!out) return E_POINTER; *out = buf.lock(off, n, flags); return S_OK; }
+    HRESULT STDMETHODCALLTYPE Unlock() override { buf.unlock(); return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetDesc(D3DVERTEXBUFFER_DESC* d) override { if (!d) return E_POINTER; *d = {D3DFMT_VERTEXDATA, D3DRTYPE_VERTEXBUFFER, usage, pool, buf.size, fvf}; return S_OK; }
+};
+struct IndexBuffer : Unknown<IDirect3DIndexBuffer9, &IID_IDirect3DIndexBuffer9> {
+    Device* dev;
+    Buffer buf;
+    DWORD usage;
+    D3DFORMAT format;
+    D3DPOOL pool;
+    IndexBuffer(Device* d, UINT n, DWORD u, D3DFORMAT f, D3DPOOL p) : dev(d), usage(u), format(f), pool(p) { buf.create(GL_ELEMENT_ARRAY_BUFFER, n, u); }
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    HRESULT STDMETHODCALLTYPE SetPrivateData(REFGUID, const void*, DWORD, DWORD) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPrivateData(REFGUID, void*, DWORD*) override { return D3DERR_NOTFOUND; }
+    HRESULT STDMETHODCALLTYPE FreePrivateData(REFGUID) override { return S_OK; }
+    DWORD STDMETHODCALLTYPE SetPriority(DWORD) override { return 0; }
+    DWORD STDMETHODCALLTYPE GetPriority() override { return 0; }
+    void STDMETHODCALLTYPE PreLoad() override {}
+    D3DRESOURCETYPE STDMETHODCALLTYPE GetType() override { return D3DRTYPE_INDEXBUFFER; }
+    HRESULT STDMETHODCALLTYPE Lock(UINT off, UINT n, void** out, DWORD flags) override { if (!out) return E_POINTER; *out = buf.lock(off, n, flags); return S_OK; }
+    HRESULT STDMETHODCALLTYPE Unlock() override { buf.unlock(); return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetDesc(D3DINDEXBUFFER_DESC* d) override { if (!d) return E_POINTER; *d = {format, D3DRTYPE_INDEXBUFFER, usage, pool, buf.size}; return S_OK; }
+};
+
+struct VertexDecl : Unknown<IDirect3DVertexDeclaration9, &IID_IDirect3DVertexDeclaration9> {
+    Device* dev;
+    std::vector<D3DVERTEXELEMENT9> elements;  // without the terminator
+    bool preTransformed = false;
+    VertexDecl(Device* d, const D3DVERTEXELEMENT9* el) : dev(d) {
+        for (const D3DVERTEXELEMENT9* e = el; e->Stream != 0xFF; ++e) {
+            elements.push_back(*e);
+            if (e->Usage == D3DDECLUSAGE_POSITIONT) preTransformed = true;
+        }
+    }
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    HRESULT STDMETHODCALLTYPE GetDeclaration(D3DVERTEXELEMENT9* out, UINT* n) override {
+        if (!n) return E_POINTER;
+        if (out) {
+            for (size_t i = 0; i < elements.size(); ++i) out[i] = elements[i];
+            out[elements.size()] = D3DDECL_END();
+        }
+        *n = static_cast<UINT>(elements.size() + 1);
+        return S_OK;
+    }
+};
+
+struct Shader {
+    Dx9Shader info;
+    GLuint gl = 0;
+    bool ok = false;
+};
+struct VertexShader : Unknown<IDirect3DVertexShader9, &IID_IDirect3DVertexShader9> {
+    Device* dev;
+    Shader sh;
+    std::vector<uint32_t> code;
+    uint32_t id;
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    HRESULT STDMETHODCALLTYPE GetFunction(void* out, UINT* n) override {
+        if (!n) return E_POINTER;
+        if (out) std::memcpy(out, code.data(), code.size() * 4);
+        *n = static_cast<UINT>(code.size() * 4);
+        return S_OK;
+    }
+    ~VertexShader() override { if (sh.gl) glDeleteShader(sh.gl); }
+};
+struct PixelShader : Unknown<IDirect3DPixelShader9, &IID_IDirect3DPixelShader9> {
+    Device* dev;
+    Shader sh;
+    std::vector<uint32_t> code;
+    uint32_t id;
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    HRESULT STDMETHODCALLTYPE GetFunction(void* out, UINT* n) override {
+        if (!n) return E_POINTER;
+        if (out) std::memcpy(out, code.data(), code.size() * 4);
+        *n = static_cast<UINT>(code.size() * 4);
+        return S_OK;
+    }
+    ~PixelShader() override { if (sh.gl) glDeleteShader(sh.gl); }
+};
+
+struct Query : Unknown<IDirect3DQuery9, &IID_IDirect3DQuery9> {
+    Device* dev;
+    D3DQUERYTYPE type;
+    GLuint gl = 0;
+    bool issued = false, active = false;
+    Query(Device* d, D3DQUERYTYPE t) : dev(d), type(t) { if (t == D3DQUERYTYPE_OCCLUSION) glGenQueries(1, &gl); }
+    ~Query() override { if (gl) glDeleteQueries(1, &gl); }
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    D3DQUERYTYPE STDMETHODCALLTYPE GetType() override { return type; }
+    DWORD STDMETHODCALLTYPE GetDataSize() override { return 4; }
+    HRESULT STDMETHODCALLTYPE Issue(DWORD flags) override {
+        if (!gl) return S_OK;
+        if (flags & D3DISSUE_BEGIN) { glBeginQuery(GL_ANY_SAMPLES_PASSED, gl); active = true; issued = false; }
+        if (flags & D3DISSUE_END) { if (active) glEndQuery(GL_ANY_SAMPLES_PASSED); active = false; issued = true; }
+        return S_OK;
+    }
+    HRESULT STDMETHODCALLTYPE GetData(void* out, DWORD size, DWORD flags) override {
+        if (!gl) { if (out && size >= 4) *static_cast<DWORD*>(out) = 0; return S_OK; }
+        if (!issued) return S_FALSE;
+        GLuint avail = 0;
+        glGetQueryObjectuiv(gl, GL_QUERY_RESULT_AVAILABLE, &avail);
+        if (!avail && !(flags & D3DGETDATA_FLUSH)) return S_FALSE;
+        GLuint r = 0;
+        glGetQueryObjectuiv(gl, GL_QUERY_RESULT, &r);
+        // Direct3D reports the pixel count; the boolean query stands in with a plausible one.
+        if (out && size >= 4) *static_cast<DWORD*>(out) = r ? 256 : 0;
+        return S_OK;
+    }
+};
+
+struct SwapChain : Unknown<IDirect3DSwapChain9, &IID_IDirect3DSwapChain9> {
+    Device* dev;
+    explicit SwapChain(Device* d) : dev(d) {}
+    HRESULT STDMETHODCALLTYPE Present(const RECT*, const RECT*, HWND, const RGNDATA*, DWORD) override;
+    HRESULT STDMETHODCALLTYPE GetFrontBufferData(IDirect3DSurface9*) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE GetBackBuffer(UINT, D3DBACKBUFFER_TYPE, IDirect3DSurface9** out) override;
+    HRESULT STDMETHODCALLTYPE GetRasterStatus(D3DRASTER_STATUS* s) override { if (s) *s = {FALSE, 0}; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetDisplayMode(D3DDISPLAYMODE* m) override;
+    HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
+    HRESULT STDMETHODCALLTYPE GetPresentParameters(D3DPRESENT_PARAMETERS* pp) override;
+};
+
+// ---- the device ---------------------------------------------------------------------------
+struct StreamSource { Ref<VertexBuffer> vb; UINT offset = 0, stride = 0; };
+struct SamplerState { DWORD v[14] = {0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0}; GLuint gl = 0; bool dirty = true; };
+struct ProgramKey {
+    uint32_t vs = 0;   // 0: fixed function (pre-transformed)
+    uint32_t ps = 0;   // 0: fixed function
+    FfpPixelKey ffp;
+    bool operator==(const ProgramKey&) const = default;
+};
+struct ProgramKeyHash { size_t operator()(const ProgramKey& k) const { return (static_cast<size_t>(k.vs) * 131) ^ k.ps ^ (k.ffp.stage[0].colorOp << 8) ^ (k.ffp.stage[0].colorArg2 << 12) ^ (k.ffp.stage[0].alphaOp << 16) ^ (k.ffp.specular << 20) ^ (k.ffp.stage[1].colorOp << 22); } };
+struct Program {
+    GLuint gl = 0;
+    GLint uC = -1, uColorBgra = -1, uPc = -1, uBump = -1, uProjMask = -1, uFogColor = -1, uFogEnable = -1, uAlphaFunc = -1, uAlphaRef = -1, uViewport = -1, uTFactor = -1;
+    GLint uS[6] = {-1, -1, -1, -1, -1, -1};
+};
+
+struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
+    IDirect3D9* d3d;
+    D3DPRESENT_PARAMETERS pp{};
+    SDL_Window* window = nullptr;
+    SDL_GLContext context = nullptr;
+    bool es32 = false;
+    // the back buffer
+    GLuint mainFbo = 0, mainColor = 0, mainDepth = 0;
+    Ref<Surface> backBuffer, mainDepthSurface;
+    Ref<SwapChain> swapChain;
+    // render targets
+    Ref<Surface> renderTarget, depthStencil;
+    std::map<std::pair<Surface*, Surface*>, GLuint> fbos;
+    GLuint boundFbo = ~0u;
+    // state
+    DWORD rs[256] = {};
+    DWORD tss[8][33] = {};
+    SamplerState samplers[8];
+    Ref<Texture> textures[8];
+    bool texDirty = true;
+    float vsConst[128][4] = {};
+    float psConst[8][4] = {};
+    bool vsConstDirty = true, psConstDirty = true;
+    Ref<VertexShader> vs;
+    Ref<PixelShader> ps;
+    Ref<VertexDecl> decl;
+    DWORD fvf = 0;
+    Ref<VertexDecl> fvfDecl;  // the declaration built from the FVF
+    StreamSource streams[8];
+    Ref<IndexBuffer> indices;
+    D3DVIEWPORT9 viewport{};
+    RECT scissor{};
+    D3DMATERIAL9 material{};
+    D3DMATRIX transforms[8]{};
+    bool rsDirty = true;
+    // programs
+    std::unordered_map<ProgramKey, Program, ProgramKeyHash> programs;
+    Program* current = nullptr;
+    uint32_t nextShaderId = 1;
+    GLuint ffpVs = 0;
+    GLuint scratchVbo = 0, scratchIbo = 0, vao = 0;
+    uint32_t frames = 0;
+    uint32_t statDraws = 0, statClears = 0;
+    bool inScene = false;
+
+    Device(IDirect3D9* d, const D3DPRESENT_PARAMETERS& p) : d3d(d), pp(p) { d3d->AddRef(); }
+    ~Device() override;
+    bool init(HWND hwnd);
+    bool createBackBuffer();
+    void destroyBackBuffer();
+    GLuint fboFor(Surface* rt, Surface* ds);
+    void bindTarget();
+    void applyRenderStates();
+    void applySamplers();
+    Program* program();
+    bool bindVertexLayout(const VertexDecl* d, bool up, const void* upData, UINT upStride, UINT baseVertex, INT baseVertexOffset);
+    void prepareDraw(bool up, const void* upData, UINT upStride, UINT upVertices, INT baseVertex);
+    VertexDecl* fvfDeclaration();
+    GLuint compileShader(GLenum type, const std::string& src, const char* what);
+    GLuint linkProgram(GLuint v, GLuint f);
+    void setConstants(Program* p);
+
+    // IDirect3DDevice9 (the methods are grouped below; declarations generated by gen_fwd.py would
+    // match these signatures)
+    HRESULT STDMETHODCALLTYPE TestCooperativeLevel() override { return S_OK; }
+    UINT STDMETHODCALLTYPE GetAvailableTextureMem() override { return 512u << 20; }
+    HRESULT STDMETHODCALLTYPE EvictManagedResources() override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetDirect3D(IDirect3D9** out) override { if (!out) return E_POINTER; d3d->AddRef(); *out = d3d; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetDeviceCaps(D3DCAPS9* caps) override;
+    HRESULT STDMETHODCALLTYPE GetDisplayMode(UINT, D3DDISPLAYMODE* m) override { if (!m) return E_POINTER; *m = {pp.BackBufferWidth, pp.BackBufferHeight, 60, D3DFMT_X8R8G8B8}; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetCreationParameters(D3DDEVICE_CREATION_PARAMETERS* p) override { if (!p) return E_POINTER; *p = {0, D3DDEVTYPE_HAL, pp.hDeviceWindow, D3DCREATE_HARDWARE_VERTEXPROCESSING}; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetCursorProperties(UINT, UINT, IDirect3DSurface9*) override { return S_OK; }
+    void STDMETHODCALLTYPE SetCursorPosition(int, int, DWORD) override {}
+    WINBOOL STDMETHODCALLTYPE ShowCursor(WINBOOL) override { return FALSE; }
+    HRESULT STDMETHODCALLTYPE CreateAdditionalSwapChain(D3DPRESENT_PARAMETERS*, IDirect3DSwapChain9**) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE GetSwapChain(UINT i, IDirect3DSwapChain9** out) override { if (i || !out) return D3DERR_INVALIDCALL; swapChain->AddRef(); *out = swapChain; return S_OK; }
+    UINT STDMETHODCALLTYPE GetNumberOfSwapChains() override { return 1; }
+    HRESULT STDMETHODCALLTYPE Reset(D3DPRESENT_PARAMETERS* p) override;
+    HRESULT STDMETHODCALLTYPE Present(const RECT*, const RECT*, HWND, const RGNDATA*) override;
+    HRESULT STDMETHODCALLTYPE GetBackBuffer(UINT, UINT, D3DBACKBUFFER_TYPE, IDirect3DSurface9** out) override { if (!out) return E_POINTER; backBuffer->AddRef(); *out = backBuffer; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetRasterStatus(UINT, D3DRASTER_STATUS* s) override { if (s) *s = {FALSE, 0}; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetDialogBoxMode(WINBOOL) override { return S_OK; }
+    void STDMETHODCALLTYPE SetGammaRamp(UINT, DWORD, const D3DGAMMARAMP*) override {}
+    void STDMETHODCALLTYPE GetGammaRamp(UINT, D3DGAMMARAMP* r) override { if (r) for (int i = 0; i < 256; ++i) r->red[i] = r->green[i] = r->blue[i] = static_cast<WORD>(i * 257); }
+    HRESULT STDMETHODCALLTYPE CreateTexture(UINT w, UINT h, UINT levels, DWORD usage, D3DFORMAT f, D3DPOOL pool, IDirect3DTexture9** out, HANDLE*) override;
+    HRESULT STDMETHODCALLTYPE CreateVolumeTexture(UINT, UINT, UINT, UINT, DWORD, D3DFORMAT, D3DPOOL, IDirect3DVolumeTexture9**, HANDLE*) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE CreateCubeTexture(UINT, UINT, DWORD, D3DFORMAT, D3DPOOL, IDirect3DCubeTexture9**, HANDLE*) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE CreateVertexBuffer(UINT n, DWORD usage, DWORD f, D3DPOOL pool, IDirect3DVertexBuffer9** out, HANDLE*) override { if (!out) return E_POINTER; *out = new VertexBuffer(this, n, usage, f, pool); return S_OK; }
+    HRESULT STDMETHODCALLTYPE CreateIndexBuffer(UINT n, DWORD usage, D3DFORMAT f, D3DPOOL pool, IDirect3DIndexBuffer9** out, HANDLE*) override { if (!out) return E_POINTER; *out = new IndexBuffer(this, n, usage, f, pool); return S_OK; }
+    HRESULT STDMETHODCALLTYPE CreateRenderTarget(UINT w, UINT h, D3DFORMAT f, D3DMULTISAMPLE_TYPE, DWORD, WINBOOL, IDirect3DSurface9** out, HANDLE*) override;
+    HRESULT STDMETHODCALLTYPE CreateDepthStencilSurface(UINT w, UINT h, D3DFORMAT f, D3DMULTISAMPLE_TYPE, DWORD, WINBOOL, IDirect3DSurface9** out, HANDLE*) override;
+    HRESULT STDMETHODCALLTYPE UpdateSurface(IDirect3DSurface9*, const RECT*, IDirect3DSurface9*, const POINT*) override;
+    HRESULT STDMETHODCALLTYPE UpdateTexture(IDirect3DBaseTexture9*, IDirect3DBaseTexture9*) override;
+    HRESULT STDMETHODCALLTYPE GetRenderTargetData(IDirect3DSurface9*, IDirect3DSurface9*) override;
+    HRESULT STDMETHODCALLTYPE GetFrontBufferData(UINT, IDirect3DSurface9*) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE StretchRect(IDirect3DSurface9*, const RECT*, IDirect3DSurface9*, const RECT*, D3DTEXTUREFILTERTYPE) override;
+    HRESULT STDMETHODCALLTYPE ColorFill(IDirect3DSurface9*, const RECT*, D3DCOLOR) override;
+    HRESULT STDMETHODCALLTYPE CreateOffscreenPlainSurface(UINT w, UINT h, D3DFORMAT f, D3DPOOL pool, IDirect3DSurface9** out, HANDLE*) override;
+    HRESULT STDMETHODCALLTYPE SetRenderTarget(DWORD i, IDirect3DSurface9* s) override;
+    HRESULT STDMETHODCALLTYPE GetRenderTarget(DWORD i, IDirect3DSurface9** out) override { if (i || !out) return D3DERR_INVALIDCALL; if (renderTarget) renderTarget->AddRef(); *out = renderTarget; return renderTarget ? S_OK : D3DERR_NOTFOUND; }
+    HRESULT STDMETHODCALLTYPE SetDepthStencilSurface(IDirect3DSurface9* s) override;
+    HRESULT STDMETHODCALLTYPE GetDepthStencilSurface(IDirect3DSurface9** out) override { if (!out) return E_POINTER; if (depthStencil) depthStencil->AddRef(); *out = depthStencil; return depthStencil ? S_OK : D3DERR_NOTFOUND; }
+    HRESULT STDMETHODCALLTYPE BeginScene() override { inScene = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE EndScene() override { inScene = false; return S_OK; }
+    HRESULT STDMETHODCALLTYPE Clear(DWORD n, const D3DRECT* rects, DWORD flags, D3DCOLOR color, float z, DWORD stencil) override;
+    HRESULT STDMETHODCALLTYPE SetTransform(D3DTRANSFORMSTATETYPE s, const D3DMATRIX* m) override { if (m && s < 8) transforms[s] = *m; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetTransform(D3DTRANSFORMSTATETYPE s, D3DMATRIX* m) override { if (m && s < 8) *m = transforms[s]; return S_OK; }
+    HRESULT STDMETHODCALLTYPE MultiplyTransform(D3DTRANSFORMSTATETYPE, const D3DMATRIX*) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetViewport(const D3DVIEWPORT9* v) override { if (v) viewport = *v; rsDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetViewport(D3DVIEWPORT9* v) override { if (v) *v = viewport; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetMaterial(const D3DMATERIAL9* m) override { if (m) material = *m; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetMaterial(D3DMATERIAL9* m) override { if (m) *m = material; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetLight(DWORD, const D3DLIGHT9*) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetLight(DWORD, D3DLIGHT9*) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE LightEnable(DWORD, WINBOOL) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetLightEnable(DWORD, WINBOOL* e) override { if (e) *e = FALSE; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetClipPlane(DWORD, const float*) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetClipPlane(DWORD, float*) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE SetRenderState(D3DRENDERSTATETYPE s, DWORD v) override { if (s < 256) { if (rs[s] != v) rsDirty = true; rs[s] = v; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetRenderState(D3DRENDERSTATETYPE s, DWORD* v) override { if (!v) return E_POINTER; *v = s < 256 ? rs[s] : 0; return S_OK; }
+    HRESULT STDMETHODCALLTYPE CreateStateBlock(D3DSTATEBLOCKTYPE, IDirect3DStateBlock9**) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE BeginStateBlock() override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE EndStateBlock(IDirect3DStateBlock9**) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE SetClipStatus(const D3DCLIPSTATUS9*) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetClipStatus(D3DCLIPSTATUS9* s) override { if (s) *s = {0, 0}; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetTexture(DWORD st, IDirect3DBaseTexture9** out) override { if (!out || st >= 8) return D3DERR_INVALIDCALL; if (textures[st]) textures[st]->AddRef(); *out = textures[st]; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetTexture(DWORD st, IDirect3DBaseTexture9* t) override;
+    HRESULT STDMETHODCALLTYPE GetTextureStageState(DWORD st, D3DTEXTURESTAGESTATETYPE t, DWORD* v) override { if (!v || st >= 8 || t > 32) return D3DERR_INVALIDCALL; *v = tss[st][t]; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetTextureStageState(DWORD st, D3DTEXTURESTAGESTATETYPE t, DWORD v) override { if (st < 8 && t <= 32) tss[st][t] = v; rsDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetSamplerState(DWORD s, D3DSAMPLERSTATETYPE t, DWORD* v) override { if (!v || s >= 8 || t > 13) return D3DERR_INVALIDCALL; *v = samplers[s].v[t]; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetSamplerState(DWORD s, D3DSAMPLERSTATETYPE t, DWORD v) override { if (s < 8 && t <= 13) { samplers[s].v[t] = v; samplers[s].dirty = true; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE ValidateDevice(DWORD* n) override { if (n) *n = 1; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetPaletteEntries(UINT, const PALETTEENTRY*) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPaletteEntries(UINT, PALETTEENTRY*) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE SetCurrentTexturePalette(UINT) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetCurrentTexturePalette(UINT* n) override { if (n) *n = 0; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetScissorRect(const RECT* r) override { if (r) scissor = *r; rsDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetScissorRect(RECT* r) override { if (r) *r = scissor; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetSoftwareVertexProcessing(WINBOOL) override { return S_OK; }
+    WINBOOL STDMETHODCALLTYPE GetSoftwareVertexProcessing() override { return FALSE; }
+    HRESULT STDMETHODCALLTYPE SetNPatchMode(float) override { return S_OK; }
+    float STDMETHODCALLTYPE GetNPatchMode() override { return 0; }
+    HRESULT STDMETHODCALLTYPE DrawPrimitive(D3DPRIMITIVETYPE t, UINT start, UINT n) override;
+    HRESULT STDMETHODCALLTYPE DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT base, UINT minIdx, UINT numV, UINT start, UINT n) override;
+    HRESULT STDMETHODCALLTYPE DrawPrimitiveUP(D3DPRIMITIVETYPE t, UINT n, const void* data, UINT stride) override;
+    HRESULT STDMETHODCALLTYPE DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UINT minIdx, UINT numV, UINT n, const void* idx, D3DFORMAT fmt, const void* data, UINT stride) override;
+    HRESULT STDMETHODCALLTYPE ProcessVertices(UINT, UINT, UINT, IDirect3DVertexBuffer9*, IDirect3DVertexDeclaration9*, DWORD) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE CreateVertexDeclaration(const D3DVERTEXELEMENT9* el, IDirect3DVertexDeclaration9** out) override { if (!out || !el) return E_POINTER; *out = new VertexDecl(this, el); return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetVertexDeclaration(IDirect3DVertexDeclaration9* d) override { decl = static_cast<VertexDecl*>(d); if (d) fvf = 0; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetVertexDeclaration(IDirect3DVertexDeclaration9** out) override { if (!out) return E_POINTER; if (decl) decl->AddRef(); *out = decl; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetFVF(DWORD f) override { if (f) { fvf = f; decl = nullptr; fvfDecl = nullptr; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetFVF(DWORD* f) override { if (f) *f = fvf; return S_OK; }
+    HRESULT STDMETHODCALLTYPE CreateVertexShader(const DWORD* code, IDirect3DVertexShader9** out) override;
+    HRESULT STDMETHODCALLTYPE SetVertexShader(IDirect3DVertexShader9* s) override { vs = static_cast<VertexShader*>(s); return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetVertexShader(IDirect3DVertexShader9** out) override { if (!out) return E_POINTER; if (vs) vs->AddRef(); *out = vs; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetVertexShaderConstantF(UINT r, const float* d, UINT n) override { if (r + n > 128) return D3DERR_INVALIDCALL; std::memcpy(vsConst[r], d, n * 16); vsConstDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetVertexShaderConstantF(UINT r, float* d, UINT n) override { if (r + n > 128) return D3DERR_INVALIDCALL; std::memcpy(d, vsConst[r], n * 16); return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetVertexShaderConstantI(UINT, const int*, UINT) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetVertexShaderConstantI(UINT, int*, UINT) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE SetVertexShaderConstantB(UINT, const WINBOOL*, UINT) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetVertexShaderConstantB(UINT, WINBOOL*, UINT) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE SetStreamSource(UINT i, IDirect3DVertexBuffer9* vb, UINT off, UINT stride) override { if (i >= 8) return D3DERR_INVALIDCALL; streams[i].vb = static_cast<VertexBuffer*>(vb); streams[i].offset = off; streams[i].stride = stride; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetStreamSource(UINT i, IDirect3DVertexBuffer9** vb, UINT* off, UINT* stride) override { if (i >= 8) return D3DERR_INVALIDCALL; if (vb) { if (streams[i].vb) streams[i].vb->AddRef(); *vb = streams[i].vb; } if (off) *off = streams[i].offset; if (stride) *stride = streams[i].stride; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetStreamSourceFreq(UINT, UINT) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetStreamSourceFreq(UINT, UINT* f) override { if (f) *f = 1; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetIndices(IDirect3DIndexBuffer9* ib) override { indices = static_cast<IndexBuffer*>(ib); return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetIndices(IDirect3DIndexBuffer9** out) override { if (!out) return E_POINTER; if (indices) indices->AddRef(); *out = indices; return S_OK; }
+    HRESULT STDMETHODCALLTYPE CreatePixelShader(const DWORD* code, IDirect3DPixelShader9** out) override;
+    HRESULT STDMETHODCALLTYPE SetPixelShader(IDirect3DPixelShader9* s) override { ps = static_cast<PixelShader*>(s); return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPixelShader(IDirect3DPixelShader9** out) override { if (!out) return E_POINTER; if (ps) ps->AddRef(); *out = ps; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetPixelShaderConstantF(UINT r, const float* d, UINT n) override { if (r + n > 8) return D3DERR_INVALIDCALL; std::memcpy(psConst[r], d, n * 16); psConstDirty = true; return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPixelShaderConstantF(UINT r, float* d, UINT n) override { if (r + n > 8) return D3DERR_INVALIDCALL; std::memcpy(d, psConst[r], n * 16); return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetPixelShaderConstantI(UINT, const int*, UINT) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPixelShaderConstantI(UINT, int*, UINT) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE SetPixelShaderConstantB(UINT, const WINBOOL*, UINT) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetPixelShaderConstantB(UINT, WINBOOL*, UINT) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE DrawRectPatch(UINT, const float*, const D3DRECTPATCH_INFO*) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE DrawTriPatch(UINT, const float*, const D3DTRIPATCH_INFO*) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE DeletePatch(UINT) override { return D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE CreateQuery(D3DQUERYTYPE t, IDirect3DQuery9** out) override {
+        if (t != D3DQUERYTYPE_OCCLUSION && t != D3DQUERYTYPE_EVENT) return D3DERR_NOTAVAILABLE;
+        if (out) *out = new Query(this, t);
+        return S_OK;
+    }
+};
+
+// ---- GetDevice for the resources ----
+#define GETDEVICE(T) HRESULT STDMETHODCALLTYPE T::GetDevice(IDirect3DDevice9** out) { if (!out) return E_POINTER; dev->AddRef(); *out = dev; return S_OK; }
+GETDEVICE(Surface) GETDEVICE(Texture) GETDEVICE(VertexBuffer) GETDEVICE(IndexBuffer) GETDEVICE(VertexDecl) GETDEVICE(VertexShader) GETDEVICE(PixelShader) GETDEVICE(Query) GETDEVICE(SwapChain)
+
+// ---- Surface / Texture ----
+Surface::~Surface() { if (rbo) glDeleteRenderbuffers(1, &rbo); if (tex) glDeleteTextures(1, &tex); }
+HRESULT STDMETHODCALLTYPE Surface::GetContainer(REFIID riid, void** out) {
+    if (!out) return E_POINTER;
+    if (texture) return texture->QueryInterface(riid, out);
+    return dev->QueryInterface(riid, out);
+}
+HRESULT STDMETHODCALLTYPE Surface::LockRect(D3DLOCKED_RECT* out, const RECT* rect, DWORD flags) {
+    if (!out) return E_POINTER;
+    if (level.locked) return D3DERR_INVALIDCALL;
+    if (level.cpu.empty()) level.cpu.assign(levelBytes(format, level.width, level.height), 0);
+    const UINT pitch = levelPitch(format, level.width);
+    level.locked = true;
+    level.wholeLock = !rect;
+    if (rect) level.lockRect = *rect;
+    out->Pitch = static_cast<INT>(pitch);
+    const FormatInfo i = formatInfo(format);
+    const UINT bx = rect && !i.blockBytes ? rect->left * i.bytesPerPixel : rect ? (rect->left / 4) * i.blockBytes : 0;
+    const UINT by = rect ? (i.blockBytes ? rect->top / 4 : rect->top) : 0;
+    out->pBits = level.cpu.data() + by * pitch + bx;
+    (void)flags;
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Surface::UnlockRect() {
+    if (!level.locked) return D3DERR_INVALIDCALL;
+    level.locked = false;
+    if (texture) texture->upload(mip, level.wholeLock ? nullptr : &level.lockRect);
+    return S_OK;
+}
+
+Texture::Texture(Device* d, UINT w, UINT h, UINT l, DWORD u, D3DFORMAT f, D3DPOOL p) : dev(d), format(f), pool(p), usage(u), width(w), height(h) {
+    if (l == 0) { l = 1; UINT s = std::max(w, h); while (s > 1) s >>= 1, ++l; }
+    levels = l;
+    info = formatInfo(f);
+    surfaces.assign(levels, nullptr);
+    if (pool != D3DPOOL_SYSTEMMEM && pool != D3DPOOL_SCRATCH) {
+        glGenTextures(1, &gl);
+        glBindTexture(GL_TEXTURE_2D, gl);
+        glTexStorage2D(GL_TEXTURE_2D, static_cast<GLsizei>(levels), info.internal, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
+        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, &info.swizzle[0]);
+        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, &info.swizzle[1]);
+        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, &info.swizzle[2]);
+        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, &info.swizzle[3]);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, static_cast<GLint>(levels - 1));
+        if (info.depth) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_NONE);
+        GLCHECK("CreateTexture");
+    }
+}
+Texture::~Texture() {
+    for (Surface* s : surfaces)
+        if (s) { s->texture = nullptr; s->Release(); }
+    if (gl) glDeleteTextures(1, &gl);
+}
+Surface* Texture::surface(UINT level) {
+    if (!surfaces[level]) {
+        Surface* s = new Surface(dev, format, std::max(1u, width >> level), std::max(1u, height >> level));
+        s->texture = this, s->mip = level, s->pool = pool, s->usage = usage;
+        surfaces[level] = s;
+    }
+    return surfaces[level];
+}
+void Texture::upload(UINT level, const RECT* rect) {
+    if (!gl) return;
+    Surface* s = surfaces[level];
+    if (!s || s->level.cpu.empty()) return;
+    const UINT w = s->level.width, h = s->level.height;
+    glBindTexture(GL_TEXTURE_2D, gl);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    if (isDxt(format)) {
+        std::vector<uint8_t> rgba = decodeDxt(format, s->level.cpu.data(), w, h);
+        glTexSubImage2D(GL_TEXTURE_2D, static_cast<GLint>(level), 0, 0, static_cast<GLsizei>(w), static_cast<GLsizei>(h), GL_RGBA, GL_UNSIGNED_BYTE, rgba.data());
+    } else if (info.bytesPerPixel == 2 && (format == D3DFMT_A4R4G4B4 || format == D3DFMT_A1R5G5B5 || format == D3DFMT_X1R5G5B5)) {
+        std::vector<uint8_t> conv(s->level.cpu.size());
+        convert16(format, s->level.cpu.data(), conv.data(), static_cast<size_t>(w) * h);
+        glTexSubImage2D(GL_TEXTURE_2D, static_cast<GLint>(level), 0, 0, static_cast<GLsizei>(w), static_cast<GLsizei>(h), info.format, info.type, conv.data());
+    } else if (!info.depth) {
+        glTexSubImage2D(GL_TEXTURE_2D, static_cast<GLint>(level), 0, 0, static_cast<GLsizei>(w), static_cast<GLsizei>(h), info.format, info.type, s->level.cpu.data());
+    }
+    (void)rect;
+    GLCHECK("upload");
+}
+void STDMETHODCALLTYPE Texture::GenerateMipSubLevels() { if (gl) { glBindTexture(GL_TEXTURE_2D, gl); glGenerateMipmap(GL_TEXTURE_2D); } }
+
+// ---- SwapChain ----
+HRESULT STDMETHODCALLTYPE SwapChain::Present(const RECT* a, const RECT* b, HWND h, const RGNDATA* d, DWORD) { return dev->Present(a, b, h, d); }
+HRESULT STDMETHODCALLTYPE SwapChain::GetBackBuffer(UINT i, D3DBACKBUFFER_TYPE t, IDirect3DSurface9** out) { return dev->GetBackBuffer(0, i, t, out); }
+HRESULT STDMETHODCALLTYPE SwapChain::GetDisplayMode(D3DDISPLAYMODE* m) { return dev->GetDisplayMode(0, m); }
+HRESULT STDMETHODCALLTYPE SwapChain::GetPresentParameters(D3DPRESENT_PARAMETERS* p) { if (!p) return E_POINTER; *p = dev->pp; return S_OK; }
+
+// ---- Device: setup ----
+Device::~Device() {
+    for (auto& [k, f] : fbos) glDeleteFramebuffers(1, &f);
+    for (auto& [k, p] : programs) glDeleteProgram(p.gl);
+    destroyBackBuffer();
+    if (vao) glDeleteVertexArrays(1, &vao);
+    if (scratchVbo) glDeleteBuffers(1, &scratchVbo);
+    if (scratchIbo) glDeleteBuffers(1, &scratchIbo);
+    if (ffpVs) glDeleteShader(ffpVs);
+    for (auto& s : samplers) if (s.gl) glDeleteSamplers(1, &s.gl);
+    if (context) SDL_GL_DeleteContext(context);
+    d3d->Release();
+    if (g_device == this) g_device = nullptr;
+}
+
+bool Device::init(HWND hwnd) {
+    // win/d3d9.cpp passes the native window (the SDL_Window*), as it does to DXVK.
+    window = reinterpret_cast<SDL_Window*>(hwnd ? hwnd : pp.hDeviceWindow);
+    if (!window) { log("gles: no SDL window for the device"); return false; }
+    context = SDL_GL_CreateContext(window);
+    if (!context) { log("gles: SDL_GL_CreateContext: %s", SDL_GetError()); return false; }
+    SDL_GL_MakeCurrent(window, context);
+    if (!loadGl()) { log("gles: the driver lacks an OpenGL ES 3.0 entry point"); return false; }
+    SDL_GL_SetSwapInterval(pp.PresentationInterval == D3DPRESENT_INTERVAL_IMMEDIATE ? 0 : 1);
+    const char* ver = reinterpret_cast<const char*>(glGetString(GL_VERSION));
+    log("gles: %s | %s", ver ? ver : "?", reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
+    GLint maj = 0, min = 0;
+    glGetIntegerv(GL_MAJOR_VERSION, &maj);
+    glGetIntegerv(GL_MINOR_VERSION, &min);
+    es32 = maj > 3 || (maj == 3 && min >= 2);
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+    glGenBuffers(1, &scratchVbo);
+    glGenBuffers(1, &scratchIbo);
+    for (int i = 0; i < 8; ++i) glGenSamplers(1, &samplers[i].gl);
+    ffpVs = compileShader(GL_VERTEX_SHADER, ffpVertexShaderRhw(4), "fixed-function vertex shader");
+    swapChain = new SwapChain(this);
+    swapChain->Release();  // Ref holds it
+    // Direct3D defaults
+    rs[D3DRS_ZENABLE] = pp.EnableAutoDepthStencil ? D3DZB_TRUE : D3DZB_FALSE;
+    rs[D3DRS_FILLMODE] = D3DFILL_SOLID, rs[D3DRS_SHADEMODE] = D3DSHADE_GOURAUD, rs[D3DRS_ZWRITEENABLE] = TRUE;
+    rs[D3DRS_SRCBLEND] = D3DBLEND_ONE, rs[D3DRS_DESTBLEND] = D3DBLEND_ZERO, rs[D3DRS_CULLMODE] = D3DCULL_CCW, rs[D3DRS_ZFUNC] = D3DCMP_LESSEQUAL;
+    rs[D3DRS_ALPHAFUNC] = D3DCMP_ALWAYS, rs[D3DRS_STENCILFUNC] = D3DCMP_ALWAYS, rs[D3DRS_STENCILMASK] = 0xFFFFFFFF, rs[D3DRS_STENCILWRITEMASK] = 0xFFFFFFFF;
+    rs[D3DRS_STENCILFAIL] = rs[D3DRS_STENCILZFAIL] = rs[D3DRS_STENCILPASS] = D3DSTENCILOP_KEEP;
+    rs[D3DRS_COLORWRITEENABLE] = 0xF, rs[D3DRS_BLENDOP] = D3DBLENDOP_ADD, rs[D3DRS_LIGHTING] = TRUE, rs[D3DRS_FOGCOLOR] = 0;
+    rs[D3DRS_TEXTUREFACTOR] = 0xFFFFFFFF;
+    for (int s = 0; s < 8; ++s) {
+        tss[s][D3DTSS_COLOROP] = s == 0 ? D3DTOP_MODULATE : D3DTOP_DISABLE;
+        tss[s][D3DTSS_COLORARG1] = D3DTA_TEXTURE, tss[s][D3DTSS_COLORARG2] = D3DTA_CURRENT;
+        tss[s][D3DTSS_ALPHAOP] = s == 0 ? D3DTOP_SELECTARG1 : D3DTOP_DISABLE;
+        tss[s][D3DTSS_ALPHAARG1] = D3DTA_TEXTURE, tss[s][D3DTSS_ALPHAARG2] = D3DTA_CURRENT;
+        tss[s][D3DTSS_TEXCOORDINDEX] = static_cast<DWORD>(s);
+        tss[s][D3DTSS_BUMPENVLSCALE] = 0, tss[s][D3DTSS_BUMPENVLOFFSET] = 0;
+    }
+    return createBackBuffer();
+}
+
+bool Device::createBackBuffer() {
+    const UINT w = std::max(1u, pp.BackBufferWidth), h = std::max(1u, pp.BackBufferHeight);
+    glGenTextures(1, &mainColor);
+    glBindTexture(GL_TEXTURE_2D, mainColor);
+    glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA8, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glGenRenderbuffers(1, &mainDepth);
+    glBindRenderbuffer(GL_RENDERBUFFER, mainDepth);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
+    glGenFramebuffers(1, &mainFbo);
+    glBindFramebuffer(GL_FRAMEBUFFER, mainFbo);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mainColor, 0);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mainDepth);
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) { log("gles: back buffer framebuffer incomplete"); return false; }
+    backBuffer = new Surface(this, D3DFMT_X8R8G8B8, w, h);
+    backBuffer->Release();
+    backBuffer->isBackBuffer = true, backBuffer->usage = D3DUSAGE_RENDERTARGET;
+    mainDepthSurface = new Surface(this, pp.AutoDepthStencilFormat ? pp.AutoDepthStencilFormat : D3DFMT_D24S8, w, h);
+    mainDepthSurface->Release();
+    mainDepthSurface->isMainDepth = true, mainDepthSurface->usage = D3DUSAGE_DEPTHSTENCIL;
+    renderTarget = backBuffer;
+    depthStencil = pp.EnableAutoDepthStencil ? mainDepthSurface : Ref<Surface>();
+    viewport = {0, 0, w, h, 0.0f, 1.0f};
+    scissor = {0, 0, static_cast<LONG>(w), static_cast<LONG>(h)};
+    boundFbo = ~0u;
+    rsDirty = true;
+    return true;
+}
+void Device::destroyBackBuffer() {
+    for (auto& [k, f] : fbos) glDeleteFramebuffers(1, &f);
+    fbos.clear();
+    if (mainFbo) glDeleteFramebuffers(1, &mainFbo), mainFbo = 0;
+    if (mainColor) glDeleteTextures(1, &mainColor), mainColor = 0;
+    if (mainDepth) glDeleteRenderbuffers(1, &mainDepth), mainDepth = 0;
+}
+
+HRESULT STDMETHODCALLTYPE Device::Reset(D3DPRESENT_PARAMETERS* p) {
+    if (!p) return E_POINTER;
+    renderTarget = nullptr, depthStencil = nullptr;
+    destroyBackBuffer();
+    pp = *p;
+    SDL_GL_SetSwapInterval(pp.PresentationInterval == D3DPRESENT_INTERVAL_IMMEDIATE ? 0 : 1);
+    return createBackBuffer() ? S_OK : D3DERR_INVALIDCALL;
+}
+
+GLuint Device::fboFor(Surface* rt, Surface* ds) {
+    if (rt && rt->isBackBuffer && (!ds || ds->isMainDepth)) return mainFbo;
+    const auto key = std::make_pair(rt, ds);
+    auto it = fbos.find(key);
+    if (it != fbos.end()) return it->second;
+    GLuint f = 0;
+    glGenFramebuffers(1, &f);
+    glBindFramebuffer(GL_FRAMEBUFFER, f);
+    if (rt) {
+        if (rt->isBackBuffer) glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mainColor, 0);
+        else if (rt->texture) glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, rt->texture->gl, static_cast<GLint>(rt->mip));
+        else if (rt->rbo) glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, rt->rbo);
+    }
+    if (ds) {
+        if (ds->isMainDepth) glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mainDepth);
+        else if (ds->texture) glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, ds->texture->gl, 0);
+        else if (ds->rbo) glFramebufferRenderbuffer(GL_FRAMEBUFFER, ds->format == D3DFMT_D16 || ds->format == D3DFMT_D32 ? GL_DEPTH_ATTACHMENT : GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, ds->rbo);
+    }
+    const GLenum st = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    if (st != GL_FRAMEBUFFER_COMPLETE) log("gles: framebuffer (rt %p, ds %p) incomplete: 0x%X", static_cast<void*>(rt), static_cast<void*>(ds), st);
+    fbos[key] = f;
+    return f;
+}
+void Device::bindTarget() {
+    const GLuint f = fboFor(renderTarget, depthStencil);
+    if (f != boundFbo) { glBindFramebuffer(GL_FRAMEBUFFER, f); boundFbo = f; }
+}
+
+HRESULT STDMETHODCALLTYPE Device::SetRenderTarget(DWORD i, IDirect3DSurface9* s) {
+    if (i) return D3DERR_INVALIDCALL;
+    if (!s) return D3DERR_INVALIDCALL;
+    Surface* surf = static_cast<Surface*>(s);
+    renderTarget = surf;
+    viewport = {0, 0, surf->level.width, surf->level.height, 0.0f, 1.0f};
+    scissor = {0, 0, static_cast<LONG>(surf->level.width), static_cast<LONG>(surf->level.height)};
+    rsDirty = true;
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::SetDepthStencilSurface(IDirect3DSurface9* s) {
+    depthStencil = static_cast<Surface*>(s);
+    rsDirty = true;
+    return S_OK;
+}
+
+HRESULT STDMETHODCALLTYPE Device::CreateTexture(UINT w, UINT h, UINT levels, DWORD usage, D3DFORMAT f, D3DPOOL pool, IDirect3DTexture9** out, HANDLE*) {
+    if (!out) return E_POINTER;
+    if (!formatInfo(f).valid) { log("gles: CreateTexture: unsupported format %u", f); return D3DERR_INVALIDCALL; }
+    *out = new Texture(this, w, h, levels, usage, f, pool);
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::CreateRenderTarget(UINT w, UINT h, D3DFORMAT f, D3DMULTISAMPLE_TYPE, DWORD, WINBOOL, IDirect3DSurface9** out, HANDLE*) {
+    if (!out) return E_POINTER;
+    Surface* s = new Surface(this, f, w, h);
+    s->usage = D3DUSAGE_RENDERTARGET;
+    glGenRenderbuffers(1, &s->rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER, s->rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA8, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
+    *out = s;
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::CreateDepthStencilSurface(UINT w, UINT h, D3DFORMAT f, D3DMULTISAMPLE_TYPE, DWORD, WINBOOL, IDirect3DSurface9** out, HANDLE*) {
+    if (!out) return E_POINTER;
+    Surface* s = new Surface(this, f, w, h);
+    s->usage = D3DUSAGE_DEPTHSTENCIL;
+    glGenRenderbuffers(1, &s->rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER, s->rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER, f == D3DFMT_D16 ? GL_DEPTH_COMPONENT16 : GL_DEPTH24_STENCIL8, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
+    *out = s;
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::CreateOffscreenPlainSurface(UINT w, UINT h, D3DFORMAT f, D3DPOOL pool, IDirect3DSurface9** out, HANDLE*) {
+    if (!out) return E_POINTER;
+    Surface* s = new Surface(this, f, w, h);
+    s->pool = pool;
+    *out = s;
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::UpdateSurface(IDirect3DSurface9* src, const RECT*, IDirect3DSurface9* dst, const POINT*) {
+    Surface* a = static_cast<Surface*>(src);
+    Surface* b = static_cast<Surface*>(dst);
+    if (!a || !b || a->format != b->format || a->level.cpu.empty()) return D3DERR_INVALIDCALL;
+    b->level.cpu = a->level.cpu;
+    if (b->texture) b->texture->upload(b->mip, nullptr);
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::UpdateTexture(IDirect3DBaseTexture9* src, IDirect3DBaseTexture9* dst) {
+    Texture* a = static_cast<Texture*>(src);
+    Texture* b = static_cast<Texture*>(dst);
+    if (!a || !b) return D3DERR_INVALIDCALL;
+    for (UINT l = 0; l < std::min(a->levels, b->levels); ++l) {
+        Surface* sa = a->surfaces[l];
+        if (!sa || sa->level.cpu.empty()) continue;
+        b->surface(l)->level.cpu = sa->level.cpu;
+        b->upload(l, nullptr);
+    }
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::GetRenderTargetData(IDirect3DSurface9* src, IDirect3DSurface9* dst) {
+    Surface* a = static_cast<Surface*>(src);
+    Surface* b = static_cast<Surface*>(dst);
+    if (!a || !b) return D3DERR_INVALIDCALL;
+    const GLuint f = fboFor(a, nullptr);
+    glBindFramebuffer(GL_FRAMEBUFFER, f);
+    boundFbo = f;
+    std::vector<uint8_t> px(static_cast<size_t>(a->level.width) * a->level.height * 4);
+    glReadPixels(0, 0, static_cast<GLsizei>(a->level.width), static_cast<GLsizei>(a->level.height), GL_RGBA, GL_UNSIGNED_BYTE, px.data());
+    b->level.cpu.resize(px.size());
+    for (size_t i = 0; i < px.size(); i += 4) { b->level.cpu[i] = px[i + 2]; b->level.cpu[i + 1] = px[i + 1]; b->level.cpu[i + 2] = px[i]; b->level.cpu[i + 3] = px[i + 3]; }  // to BGRA
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::StretchRect(IDirect3DSurface9* src, const RECT* sr, IDirect3DSurface9* dst, const RECT* dr, D3DTEXTUREFILTERTYPE filter) {
+    Surface* a = static_cast<Surface*>(src);
+    Surface* b = static_cast<Surface*>(dst);
+    if (!a || !b) return D3DERR_INVALIDCALL;
+    const GLuint fa = fboFor(a, nullptr), fb = fboFor(b, nullptr);
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, fa);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fb);
+    boundFbo = ~0u;
+    const RECT s = sr ? *sr : RECT{0, 0, static_cast<LONG>(a->level.width), static_cast<LONG>(a->level.height)};
+    const RECT d = dr ? *dr : RECT{0, 0, static_cast<LONG>(b->level.width), static_cast<LONG>(b->level.height)};
+    glDisable(GL_SCISSOR_TEST);
+    glBlitFramebuffer(s.left, s.top, s.right, s.bottom, d.left, d.top, d.right, d.bottom, GL_COLOR_BUFFER_BIT, filter == D3DTEXF_POINT ? GL_NEAREST : GL_LINEAR);
+    rsDirty = true;
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::ColorFill(IDirect3DSurface9* s, const RECT* r, D3DCOLOR c) {
+    Surface* surf = static_cast<Surface*>(s);
+    if (!surf) return D3DERR_INVALIDCALL;
+    const GLuint f = fboFor(surf, nullptr);
+    glBindFramebuffer(GL_FRAMEBUFFER, f);
+    boundFbo = f;
+    glEnable(GL_SCISSOR_TEST);
+    if (r) glScissor(r->left, r->top, r->right - r->left, r->bottom - r->top);
+    else glScissor(0, 0, static_cast<GLsizei>(surf->level.width), static_cast<GLsizei>(surf->level.height));
+    glColorMask(1, 1, 1, 1);
+    glClearColor(((c >> 16) & 255) / 255.0f, ((c >> 8) & 255) / 255.0f, (c & 255) / 255.0f, ((c >> 24) & 255) / 255.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    rsDirty = true;
+    return S_OK;
+}
+
+HRESULT STDMETHODCALLTYPE Device::Clear(DWORD n, const D3DRECT* rects, DWORD flags, D3DCOLOR color, float z, DWORD stencil) {
+    bindTarget();
+    GLbitfield bits = 0;
+    if (flags & D3DCLEAR_TARGET) { bits |= GL_COLOR_BUFFER_BIT; glClearColor(((color >> 16) & 255) / 255.0f, ((color >> 8) & 255) / 255.0f, (color & 255) / 255.0f, ((color >> 24) & 255) / 255.0f); glColorMask(1, 1, 1, 1); }
+    if (flags & D3DCLEAR_ZBUFFER) { bits |= GL_DEPTH_BUFFER_BIT; glClearDepthf(z); glDepthMask(GL_TRUE); }
+    if (flags & D3DCLEAR_STENCIL) { bits |= GL_STENCIL_BUFFER_BIT; glClearStencil(static_cast<GLint>(stencil)); glStencilMask(0xFF); }
+    glEnable(GL_SCISSOR_TEST);
+    if (n && rects) {
+        for (DWORD i = 0; i < n; ++i) {
+            glScissor(rects[i].x1, rects[i].y1, rects[i].x2 - rects[i].x1, rects[i].y2 - rects[i].y1);
+            glClear(bits);
+        }
+    } else {
+        glScissor(static_cast<GLint>(viewport.X), static_cast<GLint>(viewport.Y), static_cast<GLsizei>(viewport.Width), static_cast<GLsizei>(viewport.Height));
+        glClear(bits);
+    }
+    ++statClears;
+    rsDirty = true;
+    GLCHECK("Clear");
+    return S_OK;
+}
+
+HRESULT STDMETHODCALLTYPE Device::SetTexture(DWORD st, IDirect3DBaseTexture9* t) {
+    if (st >= 8) return D3DERR_INVALIDCALL;
+    if (t && t->GetType() != D3DRTYPE_TEXTURE) return D3DERR_INVALIDCALL;
+    textures[st] = static_cast<Texture*>(t);
+    texDirty = true;
+    return S_OK;
+}
+
+// ---- shaders / programs ----
+GLuint Device::compileShader(GLenum type, const std::string& src, const char* what) {
+    GLuint s = glCreateShader(type);
+    const char* p = src.c_str();
+    glShaderSource(s, 1, &p, nullptr);
+    glCompileShader(s);
+    GLint ok = 0;
+    glGetShaderiv(s, GL_COMPILE_STATUS, &ok);
+    if (!ok) {
+        char buf[2048] = {};
+        glGetShaderInfoLog(s, sizeof buf, nullptr, buf);
+        log("gles: %s failed to compile:\n%s", what, buf);
+        if (host::g_logLevel >= 2) log("%s", src.c_str());
+        glDeleteShader(s);
+        return 0;
+    }
+    return s;
+}
+GLuint Device::linkProgram(GLuint v, GLuint f) {
+    if (!v || !f) return 0;
+    GLuint p = glCreateProgram();
+    glAttachShader(p, v);
+    glAttachShader(p, f);
+    glLinkProgram(p);
+    GLint ok = 0;
+    glGetProgramiv(p, GL_LINK_STATUS, &ok);
+    if (!ok) {
+        char buf[2048] = {};
+        glGetProgramInfoLog(p, sizeof buf, nullptr, buf);
+        log("gles: program link failed:\n%s", buf);
+        glDeleteProgram(p);
+        return 0;
+    }
+    return p;
+}
+HRESULT STDMETHODCALLTYPE Device::CreateVertexShader(const DWORD* code, IDirect3DVertexShader9** out) {
+    if (!out || !code) return E_POINTER;
+    VertexShader* s = new VertexShader();
+    s->dev = this, s->id = nextShaderId++;
+    size_t n = 0;
+    while (code[n] != 0x0000FFFF) ++n;
+    s->code.assign(code, code + n + 1);
+    std::string err;
+    if (translateDx9Shader(code, s->sh.info, err)) {
+        s->sh.gl = compileShader(GL_VERTEX_SHADER, s->sh.info.glsl, "vertex shader");
+        s->sh.ok = s->sh.gl != 0;
+    } else {
+        log("gles: vertex shader not translated: %s", err.c_str());
+    }
+    *out = s;
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::CreatePixelShader(const DWORD* code, IDirect3DPixelShader9** out) {
+    if (!out || !code) return E_POINTER;
+    PixelShader* s = new PixelShader();
+    s->dev = this, s->id = nextShaderId++;
+    size_t n = 0;
+    while (code[n] != 0x0000FFFF) ++n;
+    s->code.assign(code, code + n + 1);
+    std::string err;
+    if (translateDx9Shader(code, s->sh.info, err)) {
+        s->sh.gl = compileShader(GL_FRAGMENT_SHADER, s->sh.info.glsl, "pixel shader");
+        s->sh.ok = s->sh.gl != 0;
+    } else {
+        log("gles: pixel shader not translated: %s", err.c_str());
+    }
+    *out = s;
+    return S_OK;
+}
+
+VertexDecl* Device::fvfDeclaration() {
+    if (fvfDecl) return fvfDecl;
+    std::vector<D3DVERTEXELEMENT9> el;
+    WORD off = 0;
+    const DWORD pos = fvf & D3DFVF_POSITION_MASK;
+    if (pos == D3DFVF_XYZRHW) el.push_back({0, off, D3DDECLTYPE_FLOAT4, 0, D3DDECLUSAGE_POSITIONT, 0}), off += 16;
+    else if (pos == D3DFVF_XYZ) el.push_back({0, off, D3DDECLTYPE_FLOAT3, 0, D3DDECLUSAGE_POSITION, 0}), off += 12;
+    else if (pos == D3DFVF_XYZW) el.push_back({0, off, D3DDECLTYPE_FLOAT4, 0, D3DDECLUSAGE_POSITION, 0}), off += 16;
+    else if (pos >= D3DFVF_XYZB1) { const int nb = static_cast<int>((pos - D3DFVF_XYZB1) / 2) + 1; el.push_back({0, off, D3DDECLTYPE_FLOAT3, 0, D3DDECLUSAGE_POSITION, 0}); off += 12; el.push_back({0, off, static_cast<BYTE>(D3DDECLTYPE_FLOAT1 + nb - 1), 0, D3DDECLUSAGE_BLENDWEIGHT, 0}); off += static_cast<WORD>(4 * nb); }
+    if (fvf & D3DFVF_NORMAL) el.push_back({0, off, D3DDECLTYPE_FLOAT3, 0, D3DDECLUSAGE_NORMAL, 0}), off += 12;
+    if (fvf & D3DFVF_PSIZE) el.push_back({0, off, D3DDECLTYPE_FLOAT1, 0, D3DDECLUSAGE_PSIZE, 0}), off += 4;
+    if (fvf & D3DFVF_DIFFUSE) el.push_back({0, off, D3DDECLTYPE_D3DCOLOR, 0, D3DDECLUSAGE_COLOR, 0}), off += 4;
+    if (fvf & D3DFVF_SPECULAR) el.push_back({0, off, D3DDECLTYPE_D3DCOLOR, 0, D3DDECLUSAGE_COLOR, 1}), off += 4;
+    const int ntex = static_cast<int>((fvf & D3DFVF_TEXCOUNT_MASK) >> D3DFVF_TEXCOUNT_SHIFT);
+    for (int i = 0; i < ntex; ++i) {
+        const int size = static_cast<int>((fvf >> (16 + i * 2)) & 3);  // D3DFVF_TEXCOORDSIZE: 0 = 2, 3 = 1, 1 = 3, 2 = 4
+        const BYTE type = size == 0 ? D3DDECLTYPE_FLOAT2 : size == 3 ? D3DDECLTYPE_FLOAT1 : size == 1 ? D3DDECLTYPE_FLOAT3 : D3DDECLTYPE_FLOAT4;
+        el.push_back({0, off, type, 0, D3DDECLUSAGE_TEXCOORD, static_cast<BYTE>(i)});
+        off += size == 0 ? 8 : size == 3 ? 4 : size == 1 ? 12 : 16;
+    }
+    el.push_back(D3DDECL_END());
+    fvfDecl = new VertexDecl(this, el.data());
+    fvfDecl->Release();
+    return fvfDecl;
+}
+
+Program* Device::program() {
+    const VertexDecl* d = decl ? decl.p : fvf ? fvfDeclaration() : nullptr;
+    const bool rhw = d && d->preTransformed;
+    ProgramKey key;
+    key.vs = rhw || !vs || !vs->sh.ok ? 0 : vs->id;
+    key.ps = ps && ps->sh.ok ? ps->id : 0;
+    if (!key.ps) {
+        for (int i = 0; i < 2; ++i) {
+            FfpStage& st = key.ffp.stage[i];
+            st.colorOp = tss[i][D3DTSS_COLOROP], st.colorArg1 = tss[i][D3DTSS_COLORARG1], st.colorArg2 = tss[i][D3DTSS_COLORARG2];
+            st.alphaOp = tss[i][D3DTSS_ALPHAOP], st.alphaArg1 = tss[i][D3DTSS_ALPHAARG1], st.alphaArg2 = tss[i][D3DTSS_ALPHAARG2];
+            st.texCoordIndex = tss[i][D3DTSS_TEXCOORDINDEX] & 7;
+            st.projected = (tss[i][D3DTSS_TEXTURETRANSFORMFLAGS] & D3DTTFF_PROJECTED) != 0;
+            if (!textures[i]) st.colorArg1 = st.colorArg1 == D3DTA_TEXTURE ? D3DTA_CURRENT : st.colorArg1;  // no texture: white? Direct3D disables the stage
+        }
+        key.ffp.specular = rs[D3DRS_SPECULARENABLE] != 0;
+    }
+    auto it = programs.find(key);
+    if (it != programs.end()) return it->second.gl ? &it->second : nullptr;
+    Program p;
+    const GLuint v = key.vs ? vs->sh.gl : ffpVs;
+    GLuint f = 0;
+    bool ownF = false;
+    if (key.ps) f = ps->sh.gl;
+    else f = compileShader(GL_FRAGMENT_SHADER, ffpPixelShader(key.ffp), "fixed-function pixel shader"), ownF = true;
+    p.gl = linkProgram(v, f);
+    if (ownF && f) glDeleteShader(f);
+    if (p.gl) {
+        p.uC = glGetUniformLocation(p.gl, "c");
+        p.uColorBgra = glGetUniformLocation(p.gl, "uColorBgra");
+        p.uPc = glGetUniformLocation(p.gl, "pc");
+        p.uBump = glGetUniformLocation(p.gl, "uBump");
+        p.uProjMask = glGetUniformLocation(p.gl, "uProjMask");
+        p.uFogColor = glGetUniformLocation(p.gl, "uFogColor");
+        p.uFogEnable = glGetUniformLocation(p.gl, "uFogEnable");
+        p.uAlphaFunc = glGetUniformLocation(p.gl, "uAlphaFunc");
+        p.uAlphaRef = glGetUniformLocation(p.gl, "uAlphaRef");
+        p.uViewport = glGetUniformLocation(p.gl, "uViewport");
+        p.uTFactor = glGetUniformLocation(p.gl, "uTFactor");
+        glUseProgram(p.gl);
+        for (int i = 0; i < 6; ++i) {
+            const std::string n = "s" + std::to_string(i);
+            p.uS[i] = glGetUniformLocation(p.gl, n.c_str());
+            if (p.uS[i] >= 0) glUniform1i(p.uS[i], i);
+        }
+    }
+    auto& slot = programs[key];
+    slot = p;
+    return slot.gl ? &slot : nullptr;
+}
+
+void Device::setConstants(Program* p) {
+    if (p->uC >= 0) glUniform4fv(p->uC, 128, &vsConst[0][0]);
+    if (p->uPc >= 0) glUniform4fv(p->uPc, 8, &psConst[0][0]);
+    if (p->uBump >= 0) {
+        float b[6][4];
+        for (int s = 0; s < 6; ++s)
+            for (int k = 0; k < 4; ++k) std::memcpy(&b[s][k], &tss[s][D3DTSS_BUMPENVMAT00 + k], 4);
+        glUniform4fv(p->uBump, 6, &b[0][0]);
+    }
+    if (p->uProjMask >= 0) {
+        int mask = 0;
+        for (int s = 0; s < 8; ++s) if (tss[s][D3DTSS_TEXTURETRANSFORMFLAGS] & D3DTTFF_PROJECTED) mask |= 1 << s;
+        glUniform1i(p->uProjMask, mask);
+    }
+    if (p->uFogColor >= 0) {
+        const DWORD c = rs[D3DRS_FOGCOLOR];
+        glUniform4f(p->uFogColor, ((c >> 16) & 255) / 255.0f, ((c >> 8) & 255) / 255.0f, (c & 255) / 255.0f, ((c >> 24) & 255) / 255.0f);
+    }
+    if (p->uFogEnable >= 0) glUniform1i(p->uFogEnable, rs[D3DRS_FOGENABLE] ? 1 : 0);
+    if (p->uAlphaFunc >= 0) glUniform1i(p->uAlphaFunc, rs[D3DRS_ALPHATESTENABLE] ? static_cast<int>(rs[D3DRS_ALPHAFUNC]) : 8);
+    if (p->uAlphaRef >= 0) glUniform1f(p->uAlphaRef, (rs[D3DRS_ALPHAREF] & 255) / 255.0f);
+    if (p->uViewport >= 0) glUniform4f(p->uViewport, static_cast<float>(viewport.X), static_cast<float>(viewport.Y), static_cast<float>(std::max(1u, viewport.Width)), static_cast<float>(std::max(1u, viewport.Height)));
+    if (p->uTFactor >= 0) {
+        const DWORD c = rs[D3DRS_TEXTUREFACTOR];
+        glUniform4f(p->uTFactor, ((c >> 16) & 255) / 255.0f, ((c >> 8) & 255) / 255.0f, (c & 255) / 255.0f, ((c >> 24) & 255) / 255.0f);
+    }
+}
+
+GLenum blendFactor(DWORD b) {
+    switch (b) {
+        case D3DBLEND_ZERO: return GL_ZERO;
+        case D3DBLEND_ONE: return GL_ONE;
+        case D3DBLEND_SRCCOLOR: return GL_SRC_COLOR;
+        case D3DBLEND_INVSRCCOLOR: return GL_ONE_MINUS_SRC_COLOR;
+        case D3DBLEND_SRCALPHA: return GL_SRC_ALPHA;
+        case D3DBLEND_INVSRCALPHA: return GL_ONE_MINUS_SRC_ALPHA;
+        case D3DBLEND_DESTALPHA: return GL_DST_ALPHA;
+        case D3DBLEND_INVDESTALPHA: return GL_ONE_MINUS_DST_ALPHA;
+        case D3DBLEND_DESTCOLOR: return GL_DST_COLOR;
+        case D3DBLEND_INVDESTCOLOR: return GL_ONE_MINUS_DST_COLOR;
+        case D3DBLEND_SRCALPHASAT: return GL_SRC_ALPHA_SATURATE;
+        case D3DBLEND_BLENDFACTOR: return GL_CONSTANT_COLOR;
+        case D3DBLEND_INVBLENDFACTOR: return GL_ONE_MINUS_CONSTANT_COLOR;
+        default: return GL_ONE;
+    }
+}
+GLenum cmpFunc(DWORD f) {
+    switch (f) {
+        case D3DCMP_NEVER: return GL_NEVER;
+        case D3DCMP_LESS: return GL_LESS;
+        case D3DCMP_EQUAL: return GL_EQUAL;
+        case D3DCMP_LESSEQUAL: return GL_LEQUAL;
+        case D3DCMP_GREATER: return GL_GREATER;
+        case D3DCMP_NOTEQUAL: return GL_NOTEQUAL;
+        case D3DCMP_GREATEREQUAL: return GL_GEQUAL;
+        default: return GL_ALWAYS;
+    }
+}
+GLenum stencilOp(DWORD o) {
+    switch (o) {
+        case D3DSTENCILOP_ZERO: return GL_ZERO;
+        case D3DSTENCILOP_REPLACE: return GL_REPLACE;
+        case D3DSTENCILOP_INCRSAT: return GL_INCR;
+        case D3DSTENCILOP_DECRSAT: return GL_DECR;
+        case D3DSTENCILOP_INVERT: return GL_INVERT;
+        case D3DSTENCILOP_INCR: return GL_INCR_WRAP;
+        case D3DSTENCILOP_DECR: return GL_DECR_WRAP;
+        default: return GL_KEEP;
+    }
+}
+GLenum blendOp(DWORD o) {
+    switch (o) {
+        case D3DBLENDOP_SUBTRACT: return GL_FUNC_SUBTRACT;
+        case D3DBLENDOP_REVSUBTRACT: return GL_FUNC_REVERSE_SUBTRACT;
+        case D3DBLENDOP_MIN: return GL_MIN;
+        case D3DBLENDOP_MAX: return GL_MAX;
+        default: return GL_FUNC_ADD;
+    }
+}
+
+void Device::applyRenderStates() {
+    if (!rsDirty) return;
+    rsDirty = false;
+    // viewport & scissor (rows are in Direct3D order in our framebuffers: no flip)
+    glViewport(static_cast<GLint>(viewport.X), static_cast<GLint>(viewport.Y), static_cast<GLsizei>(std::max(1u, viewport.Width)), static_cast<GLsizei>(std::max(1u, viewport.Height)));
+    glDepthRangef(viewport.MinZ, viewport.MaxZ);
+    if (rs[D3DRS_SCISSORTESTENABLE]) { glEnable(GL_SCISSOR_TEST); glScissor(scissor.left, scissor.top, std::max<LONG>(0, scissor.right - scissor.left), std::max<LONG>(0, scissor.bottom - scissor.top)); }
+    else glDisable(GL_SCISSOR_TEST);
+    // depth
+    if (rs[D3DRS_ZENABLE] && depthStencil) { glEnable(GL_DEPTH_TEST); glDepthFunc(cmpFunc(rs[D3DRS_ZFUNC])); } else glDisable(GL_DEPTH_TEST);
+    glDepthMask(rs[D3DRS_ZWRITEENABLE] ? GL_TRUE : GL_FALSE);
+    // blend
+    if (rs[D3DRS_ALPHABLENDENABLE]) {
+        glEnable(GL_BLEND);
+        glBlendFunc(blendFactor(rs[D3DRS_SRCBLEND]), blendFactor(rs[D3DRS_DESTBLEND]));
+        glBlendEquation(blendOp(rs[D3DRS_BLENDOP]));
+        const DWORD c = rs[D3DRS_BLENDFACTOR];
+        glBlendColor(((c >> 16) & 255) / 255.0f, ((c >> 8) & 255) / 255.0f, (c & 255) / 255.0f, ((c >> 24) & 255) / 255.0f);
+    } else {
+        glDisable(GL_BLEND);
+    }
+    const DWORD cw = rs[D3DRS_COLORWRITEENABLE];
+    glColorMask((cw & 1) != 0, (cw & 2) != 0, (cw & 4) != 0, (cw & 8) != 0);
+    // cull: clip y is negated in the vertex epilogue, which mirrors the winding, so a Direct3D
+    // clockwise triangle comes out counter-clockwise in GL (D3DCULL_CCW culls what GL calls CW).
+    switch (rs[D3DRS_CULLMODE]) {
+        case D3DCULL_CW: glEnable(GL_CULL_FACE); glCullFace(GL_BACK); glFrontFace(GL_CW); break;
+        case D3DCULL_CCW: glEnable(GL_CULL_FACE); glCullFace(GL_BACK); glFrontFace(GL_CCW); break;
+        default: glDisable(GL_CULL_FACE); break;
+    }
+    // stencil
+    if (rs[D3DRS_STENCILENABLE] && depthStencil) {
+        glEnable(GL_STENCIL_TEST);
+        glStencilFunc(cmpFunc(rs[D3DRS_STENCILFUNC]), static_cast<GLint>(rs[D3DRS_STENCILREF]), rs[D3DRS_STENCILMASK]);
+        glStencilOp(stencilOp(rs[D3DRS_STENCILFAIL]), stencilOp(rs[D3DRS_STENCILZFAIL]), stencilOp(rs[D3DRS_STENCILPASS]));
+        glStencilMask(rs[D3DRS_STENCILWRITEMASK]);
+    } else {
+        glDisable(GL_STENCIL_TEST);
+    }
+    if (rs[D3DRS_SLOPESCALEDEPTHBIAS] || rs[D3DRS_DEPTHBIAS]) {
+        float slope, bias;
+        std::memcpy(&slope, &rs[D3DRS_SLOPESCALEDEPTHBIAS], 4);
+        std::memcpy(&bias, &rs[D3DRS_DEPTHBIAS], 4);
+        glEnable(GL_POLYGON_OFFSET_FILL);
+        glPolygonOffset(slope, bias * (1 << 24));
+    } else {
+        glDisable(GL_POLYGON_OFFSET_FILL);
+    }
+}
+
+GLenum wrapMode(DWORD a) {
+    switch (a) {
+        case D3DTADDRESS_MIRROR: return GL_MIRRORED_REPEAT;
+        case D3DTADDRESS_CLAMP: case D3DTADDRESS_BORDER: return GL_CLAMP_TO_EDGE;
+        default: return GL_REPEAT;
+    }
+}
+void Device::applySamplers() {
+    for (int i = 0; i < 8; ++i) {
+        glActiveTexture(GL_TEXTURE0 + i);
+        glBindTexture(GL_TEXTURE_2D, textures[i] ? textures[i]->gl : 0);
+        SamplerState& s = samplers[i];
+        glBindSampler(static_cast<GLuint>(i), s.gl);
+        if (!s.dirty) continue;
+        s.dirty = false;
+        glSamplerParameteri(s.gl, GL_TEXTURE_WRAP_S, wrapMode(s.v[D3DSAMP_ADDRESSU]));
+        glSamplerParameteri(s.gl, GL_TEXTURE_WRAP_T, wrapMode(s.v[D3DSAMP_ADDRESSV]));
+        const bool mag = s.v[D3DSAMP_MAGFILTER] >= D3DTEXF_LINEAR, min = s.v[D3DSAMP_MINFILTER] >= D3DTEXF_LINEAR;
+        const DWORD mip = s.v[D3DSAMP_MIPFILTER];
+        glSamplerParameteri(s.gl, GL_TEXTURE_MAG_FILTER, mag ? GL_LINEAR : GL_NEAREST);
+        GLenum minf;
+        if (mip == D3DTEXF_NONE) minf = min ? GL_LINEAR : GL_NEAREST;
+        else if (mip == D3DTEXF_POINT) minf = min ? GL_LINEAR_MIPMAP_NEAREST : GL_NEAREST_MIPMAP_NEAREST;
+        else minf = min ? GL_LINEAR_MIPMAP_LINEAR : GL_NEAREST_MIPMAP_LINEAR;
+        glSamplerParameteri(s.gl, GL_TEXTURE_MIN_FILTER, minf);
+        float bias;
+        std::memcpy(&bias, &s.v[D3DSAMP_MIPMAPLODBIAS], 4);
+        // the game asks for a -4 bias on some stages to force the top level: the device
+        // honours it within the levels that exist
+        (void)bias;
+        glSamplerParameteri(s.gl, GL_TEXTURE_COMPARE_MODE, GL_NONE);
+    }
+    texDirty = false;
+}
+
+GLenum declType(BYTE t, GLint& size, GLboolean& norm, bool& isColor) {
+    isColor = false;
+    switch (t) {
+        case D3DDECLTYPE_FLOAT1: size = 1; norm = GL_FALSE; return GL_FLOAT;
+        case D3DDECLTYPE_FLOAT2: size = 2; norm = GL_FALSE; return GL_FLOAT;
+        case D3DDECLTYPE_FLOAT3: size = 3; norm = GL_FALSE; return GL_FLOAT;
+        case D3DDECLTYPE_FLOAT4: size = 4; norm = GL_FALSE; return GL_FLOAT;
+        case D3DDECLTYPE_D3DCOLOR: size = 4; norm = GL_TRUE; isColor = true; return GL_UNSIGNED_BYTE;
+        case D3DDECLTYPE_UBYTE4: size = 4; norm = GL_FALSE; return GL_UNSIGNED_BYTE;
+        case D3DDECLTYPE_UBYTE4N: size = 4; norm = GL_TRUE; return GL_UNSIGNED_BYTE;
+        case D3DDECLTYPE_SHORT2: size = 2; norm = GL_FALSE; return GL_SHORT;
+        case D3DDECLTYPE_SHORT4: size = 4; norm = GL_FALSE; return GL_SHORT;
+        case D3DDECLTYPE_SHORT2N: size = 2; norm = GL_TRUE; return GL_SHORT;
+        case D3DDECLTYPE_SHORT4N: size = 4; norm = GL_TRUE; return GL_SHORT;
+        case D3DDECLTYPE_USHORT2N: size = 2; norm = GL_TRUE; return GL_UNSIGNED_SHORT;
+        case D3DDECLTYPE_USHORT4N: size = 4; norm = GL_TRUE; return GL_UNSIGNED_SHORT;
+        default: size = 4; norm = GL_FALSE; return GL_FLOAT;
+    }
+}
+
+// Binds the vertex attributes for the current declaration. `baseVertex` shifts every stream.
+bool Device::bindVertexLayout(const VertexDecl* d, bool up, const void* upData, UINT upStride, UINT, INT baseVertex) {
+    if (!d) return false;
+    for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
+    int colorMask = 0;
+    for (const D3DVERTEXELEMENT9& e : d->elements) {
+        int loc = -1;
+        if (d->preTransformed) {
+            if (e.Usage == D3DDECLUSAGE_POSITIONT || e.Usage == D3DDECLUSAGE_POSITION) loc = 0;
+            else if (e.Usage == D3DDECLUSAGE_COLOR) loc = 1 + std::min<int>(e.UsageIndex, 1);
+            else if (e.Usage == D3DDECLUSAGE_TEXCOORD && e.UsageIndex < 4) loc = 3 + e.UsageIndex;
+        } else if (vs) {
+            for (const Dx9Input& in : vs->sh.info.inputs)
+                if (in.usage == e.Usage && in.index == e.UsageIndex) loc = in.reg;
+        }
+        if (loc < 0) continue;
+        GLint size;
+        GLboolean norm;
+        bool isColor;
+        const GLenum type = declType(e.Type, size, norm, isColor);
+        if (isColor) colorMask |= 1 << loc;
+        if (up) {
+            glBindBuffer(GL_ARRAY_BUFFER, scratchVbo);
+            glVertexAttribPointer(static_cast<GLuint>(loc), size, type, norm, static_cast<GLsizei>(upStride), reinterpret_cast<const void*>(static_cast<uintptr_t>(e.Offset)));
+        } else {
+            const StreamSource& s = streams[e.Stream < 8 ? e.Stream : 0];
+            if (!s.vb) continue;
+            glBindBuffer(GL_ARRAY_BUFFER, s.vb->buf.gl);
+            glVertexAttribPointer(static_cast<GLuint>(loc), size, type, norm, static_cast<GLsizei>(s.stride), reinterpret_cast<const void*>(static_cast<uintptr_t>(s.offset + e.Offset + static_cast<INT>(s.stride) * baseVertex)));
+        }
+        glEnableVertexAttribArray(static_cast<GLuint>(loc));
+    }
+    if (current && current->uColorBgra >= 0) glUniform1i(current->uColorBgra, colorMask);
+    (void)upData;
+    return true;
+}
+
+static bool key_trace_once(uint32_t id) { static std::vector<uint32_t> seen; if (std::find(seen.begin(), seen.end(), id) != seen.end()) return false; seen.push_back(id); return true; }
+void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVertices, INT baseVertex) {
+    bindTarget();
+    applyRenderStates();
+    applySamplers();
+    Program* p = program();
+    current = p;
+    if (!p) return;
+    glUseProgram(p->gl);
+    setConstants(p);
+    if (up) {
+        glBindBuffer(GL_ARRAY_BUFFER, scratchVbo);
+        glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(upStride) * upVertices, upData, GL_STREAM_DRAW);
+    }
+    bindVertexLayout(decl ? decl.p : fvf ? fvfDeclaration() : nullptr, up, upData, upStride, upVertices, baseVertex);
+    static int traceLeft = [] { const char* t = getenv("FABLE_GLES_TRACE"); return t ? atoi(t) : 0; }();
+    if (traceLeft > 0) {
+        --traceLeft;
+        const VertexDecl* d = decl ? decl.p : fvf ? fvfDeclaration() : nullptr;
+        std::string el;
+        if (d) for (const auto& e : d->elements) el += " s" + std::to_string(e.Stream) + ":" + std::to_string(e.Offset) + ":t" + std::to_string(e.Type) + ":u" + std::to_string(e.Usage) + "." + std::to_string(e.UsageIndex);
+        log("gles trace: draw up=%d prog=%u vs=%u ps=%u rhw=%d fvf=0x%X decl[%s] vp=%u,%u %ux%u rt=%p ds=%p blend=%u(%u,%u) z=%u/%u zw=%u cull=%u cw=%X atest=%u fog=%u tex0=%p(%u %ux%u gl%u) tss0=%u/%u,%u a%u/%u,%u",
+            up, p->gl, vs ? vs->id : 0, ps ? ps->id : 0, d && d->preTransformed, fvf, el.c_str(), viewport.X, viewport.Y, viewport.Width, viewport.Height,
+            static_cast<void*>(renderTarget.p), static_cast<void*>(depthStencil.p), rs[D3DRS_ALPHABLENDENABLE], rs[D3DRS_SRCBLEND], rs[D3DRS_DESTBLEND],
+            rs[D3DRS_ZENABLE], rs[D3DRS_ZFUNC], rs[D3DRS_ZWRITEENABLE], rs[D3DRS_CULLMODE], rs[D3DRS_COLORWRITEENABLE], rs[D3DRS_ALPHATESTENABLE], rs[D3DRS_FOGENABLE],
+            static_cast<void*>(textures[0].p), textures[0] ? textures[0]->format : 0, textures[0] ? textures[0]->width : 0, textures[0] ? textures[0]->height : 0, textures[0] ? textures[0]->gl : 0,
+            tss[0][D3DTSS_COLOROP], tss[0][D3DTSS_COLORARG1], tss[0][D3DTSS_COLORARG2], tss[0][D3DTSS_ALPHAOP], tss[0][D3DTSS_ALPHAARG1], tss[0][D3DTSS_ALPHAARG2]);
+        if (vs && key_trace_once(vs->id)) log("gles trace: vs %u glsl:\n%s", vs->id, vs->sh.info.glsl.c_str());
+        if (up && upData && d) {
+            for (UINT v = 0; v < std::min<UINT>(upVertices, 4); ++v) {
+                const float* f = reinterpret_cast<const float*>(static_cast<const char*>(upData) + static_cast<size_t>(v) * upStride);
+                log("gles trace:   v%u pos %.1f %.1f %.3f %.3f", v, f[0], f[1], f[2], f[3]);
+            }
+        }
+    }
+}
+
+GLenum primMode(D3DPRIMITIVETYPE t, UINT prims, GLsizei& count) {
+    switch (t) {
+        case D3DPT_POINTLIST: count = prims; return GL_POINTS;
+        case D3DPT_LINELIST: count = prims * 2; return GL_LINES;
+        case D3DPT_LINESTRIP: count = prims + 1; return GL_LINE_STRIP;
+        case D3DPT_TRIANGLELIST: count = prims * 3; return GL_TRIANGLES;
+        case D3DPT_TRIANGLESTRIP: count = prims + 2; return GL_TRIANGLE_STRIP;
+        case D3DPT_TRIANGLEFAN: count = prims + 2; return GL_TRIANGLE_FAN;
+        default: count = 0; return GL_TRIANGLES;
+    }
+}
+
+HRESULT STDMETHODCALLTYPE Device::DrawPrimitive(D3DPRIMITIVETYPE t, UINT start, UINT n) {
+    prepareDraw(false, nullptr, 0, 0, 0);
+    if (!current) return S_OK;
+    GLsizei count;
+    const GLenum mode = primMode(t, n, count);
+    glDrawArrays(mode, static_cast<GLint>(start), count);
+    ++statDraws;
+    GLCHECK("DrawPrimitive");
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT base, UINT, UINT, UINT start, UINT n) {
+    if (!indices) return D3DERR_INVALIDCALL;
+    prepareDraw(false, nullptr, 0, 0, base);
+    if (!current) return S_OK;
+    GLsizei count;
+    const GLenum mode = primMode(t, n, count);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices->buf.gl);
+    const bool i32 = indices->format == D3DFMT_INDEX32;
+    glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, reinterpret_cast<const void*>(static_cast<uintptr_t>(start) * (i32 ? 4 : 2)));
+    ++statDraws;
+    GLCHECK("DrawIndexedPrimitive");
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::DrawPrimitiveUP(D3DPRIMITIVETYPE t, UINT n, const void* data, UINT stride) {
+    GLsizei count;
+    const GLenum mode = primMode(t, n, count);
+    prepareDraw(true, data, stride, static_cast<UINT>(count), 0);
+    if (!current) return S_OK;
+    glDrawArrays(mode, 0, count);
+    ++statDraws;
+    GLCHECK("DrawPrimitiveUP");
+    return S_OK;
+}
+HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UINT minIdx, UINT numV, UINT n, const void* idx, D3DFORMAT fmt, const void* data, UINT stride) {
+    GLsizei count;
+    const GLenum mode = primMode(t, n, count);
+    prepareDraw(true, data, stride, minIdx + numV, 0);
+    if (!current) return S_OK;
+    const bool i32 = fmt == D3DFMT_INDEX32;
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scratchIbo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, static_cast<GLsizeiptr>(count) * (i32 ? 4 : 2), idx, GL_STREAM_DRAW);
+    glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, nullptr);
+    ++statDraws;
+    GLCHECK("DrawIndexedPrimitiveUP");
+    return S_OK;
+}
+
+HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const RGNDATA*) {
+    int ww = 0, wh = 0;
+    SDL_GL_GetDrawableSize(window, &ww, &wh);
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+    glDisable(GL_SCISSOR_TEST);
+    glBlitFramebuffer(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), 0, wh, ww, 0, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+    SDL_GL_SwapWindow(window);
+    ++frames;
+    if (host::g_logLevel >= 1 && (frames % 120 == 1 || getenv("FABLE_GLES_DUMP"))) {
+        unsigned char px[4] = {0, 0, 0, 0};
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
+        glReadPixels(static_cast<GLint>(pp.BackBufferWidth / 2), static_cast<GLint>(pp.BackBufferHeight / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
+        log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d", frames, statDraws, statClears, static_cast<unsigned>(programs.size()), px[0], px[1], px[2], px[3], ww, wh);
+        if (const char* dir = getenv("FABLE_GLES_DUMP")) {
+            std::vector<unsigned char> buf(static_cast<size_t>(pp.BackBufferWidth) * pp.BackBufferHeight * 4);
+            glReadPixels(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
+            char name[512];
+            snprintf(name, sizeof name, "%s/frame_%05u.ppm", dir, frames);
+            if (FILE* f = fopen(name, "wb")) {
+                fprintf(f, "P6\n%u %u\n255\n", pp.BackBufferWidth, pp.BackBufferHeight);
+                for (UINT y = 0; y < pp.BackBufferHeight; ++y)
+                    for (UINT x = 0; x < pp.BackBufferWidth; ++x) fwrite(&buf[(static_cast<size_t>(y) * pp.BackBufferWidth + x) * 4], 1, 3, f);
+                fclose(f);
+            }
+        }
+    }
+    statDraws = statClears = 0;
+    boundFbo = ~0u;
+    rsDirty = true;
+    GLCHECK("Present");
+    return S_OK;
+}
+
+HRESULT STDMETHODCALLTYPE Device::GetDeviceCaps(D3DCAPS9* c) {
+    if (!c) return E_POINTER;
+    std::memset(c, 0, sizeof *c);
+    c->DeviceType = D3DDEVTYPE_HAL;
+    c->Caps2 = D3DCAPS2_FULLSCREENGAMMA | D3DCAPS2_DYNAMICTEXTURES;
+    c->Caps3 = D3DCAPS3_ALPHA_FULLSCREEN_FLIP_OR_DISCARD;
+    c->PresentationIntervals = D3DPRESENT_INTERVAL_IMMEDIATE | D3DPRESENT_INTERVAL_ONE;
+    c->DevCaps = D3DDEVCAPS_HWTRANSFORMANDLIGHT | D3DDEVCAPS_HWRASTERIZATION | D3DDEVCAPS_DRAWPRIMTLVERTEX | D3DDEVCAPS_TEXTUREVIDEOMEMORY | D3DDEVCAPS_TLVERTEXVIDEOMEMORY |
+                 D3DDEVCAPS_EXECUTESYSTEMMEMORY | D3DDEVCAPS_EXECUTEVIDEOMEMORY | D3DDEVCAPS_CANRENDERAFTERFLIP | D3DDEVCAPS_DRAWPRIMITIVES2 | D3DDEVCAPS_DRAWPRIMITIVES2EX | D3DDEVCAPS_PUREDEVICE;
+    c->PrimitiveMiscCaps = D3DPMISCCAPS_CULLNONE | D3DPMISCCAPS_CULLCW | D3DPMISCCAPS_CULLCCW | D3DPMISCCAPS_COLORWRITEENABLE | D3DPMISCCAPS_MASKZ | D3DPMISCCAPS_BLENDOP | D3DPMISCCAPS_TSSARGTEMP;
+    c->RasterCaps = D3DPRASTERCAPS_ZTEST | D3DPRASTERCAPS_FOGVERTEX | D3DPRASTERCAPS_FOGTABLE | D3DPRASTERCAPS_MIPMAPLODBIAS | D3DPRASTERCAPS_SCISSORTEST | D3DPRASTERCAPS_DEPTHBIAS | D3DPRASTERCAPS_SLOPESCALEDEPTHBIAS | D3DPRASTERCAPS_ANISOTROPY;
+    c->ZCmpCaps = c->AlphaCmpCaps = 0xFF;
+    c->SrcBlendCaps = c->DestBlendCaps = 0x1FFF;
+    c->ShadeCaps = D3DPSHADECAPS_COLORGOURAUDRGB | D3DPSHADECAPS_SPECULARGOURAUDRGB | D3DPSHADECAPS_ALPHAGOURAUDBLEND | D3DPSHADECAPS_FOGGOURAUD;
+    c->TextureCaps = D3DPTEXTURECAPS_ALPHA | D3DPTEXTURECAPS_MIPMAP | D3DPTEXTURECAPS_PROJECTED | D3DPTEXTURECAPS_PERSPECTIVE | D3DPTEXTURECAPS_CUBEMAP;
+    c->TextureFilterCaps = c->CubeTextureFilterCaps = D3DPTFILTERCAPS_MINFPOINT | D3DPTFILTERCAPS_MINFLINEAR | D3DPTFILTERCAPS_MINFANISOTROPIC | D3DPTFILTERCAPS_MIPFPOINT | D3DPTFILTERCAPS_MIPFLINEAR | D3DPTFILTERCAPS_MAGFPOINT | D3DPTFILTERCAPS_MAGFLINEAR;
+    c->TextureAddressCaps = D3DPTADDRESSCAPS_WRAP | D3DPTADDRESSCAPS_MIRROR | D3DPTADDRESSCAPS_CLAMP | D3DPTADDRESSCAPS_BORDER | D3DPTADDRESSCAPS_INDEPENDENTUV;
+    c->LineCaps = D3DLINECAPS_TEXTURE | D3DLINECAPS_ZTEST | D3DLINECAPS_BLEND | D3DLINECAPS_ALPHACMP | D3DLINECAPS_FOG;
+    c->MaxTextureWidth = c->MaxTextureHeight = 4096;
+    c->MaxVolumeExtent = 256;
+    c->MaxTextureRepeat = 8192;
+    c->MaxTextureAspectRatio = 4096;
+    c->MaxAnisotropy = 4;
+    c->MaxVertexW = 1e10f;
+    c->GuardBandLeft = c->GuardBandTop = -32768.0f;
+    c->GuardBandRight = c->GuardBandBottom = 32768.0f;
+    c->StencilCaps = 0x1FF;
+    c->FVFCaps = 8 | D3DFVFCAPS_PSIZE;
+    c->TextureOpCaps = 0x3FFFFFF;
+    c->MaxTextureBlendStages = 8;
+    c->MaxSimultaneousTextures = 8;
+    c->VertexProcessingCaps = D3DVTXPCAPS_TEXGEN | D3DVTXPCAPS_MATERIALSOURCE7 | D3DVTXPCAPS_DIRECTIONALLIGHTS | D3DVTXPCAPS_POSITIONALLIGHTS | D3DVTXPCAPS_LOCALVIEWER;
+    c->MaxActiveLights = 8;
+    c->MaxUserClipPlanes = 0;
+    c->MaxVertexBlendMatrices = 4;
+    c->MaxVertexBlendMatrixIndex = 0;
+    c->MaxPointSize = 64.0f;
+    c->MaxPrimitiveCount = 0xFFFFF;
+    c->MaxVertexIndex = 0xFFFFF;
+    c->MaxStreams = 8;
+    c->MaxStreamStride = 256;
+    c->VertexShaderVersion = D3DVS_VERSION(1, 1);
+    c->MaxVertexShaderConst = 128;
+    c->PixelShaderVersion = D3DPS_VERSION(1, 4);
+    c->PixelShader1xMaxValue = 8.0f;
+    c->DevCaps2 = D3DDEVCAPS2_STREAMOFFSET;
+    c->MaxNpatchTessellationLevel = 0;
+    c->MasterAdapterOrdinal = 0;
+    c->NumberOfAdaptersInGroup = 1;
+    c->DeclTypes = D3DDTCAPS_UBYTE4 | D3DDTCAPS_UBYTE4N | D3DDTCAPS_SHORT2N | D3DDTCAPS_SHORT4N | D3DDTCAPS_USHORT2N | D3DDTCAPS_USHORT4N;
+    c->NumSimultaneousRTs = 1;
+    c->StretchRectFilterCaps = D3DPTFILTERCAPS_MINFPOINT | D3DPTFILTERCAPS_MINFLINEAR | D3DPTFILTERCAPS_MAGFPOINT | D3DPTFILTERCAPS_MAGFLINEAR;
+    c->VS20Caps = {};
+    c->PS20Caps = {};
+    c->VertexTextureFilterCaps = 0;
+    c->MaxVShaderInstructionsExecuted = 65535;
+    c->MaxPShaderInstructionsExecuted = 65535;
+    c->MaxVertexShader30InstructionSlots = 0;
+    c->MaxPixelShader30InstructionSlots = 0;
+    return S_OK;
+}
+
+// ---- IDirect3D9 ---------------------------------------------------------------------------
+struct D3D9 : Unknown<IDirect3D9, &IID_IDirect3D9> {
+    HRESULT STDMETHODCALLTYPE RegisterSoftwareDevice(void*) override { return S_OK; }
+    UINT STDMETHODCALLTYPE GetAdapterCount() override { return 1; }
+    HRESULT STDMETHODCALLTYPE GetAdapterIdentifier(UINT, DWORD, D3DADAPTER_IDENTIFIER9* id) override {
+        if (!id) return E_POINTER;
+        std::memset(id, 0, sizeof *id);
+        std::strcpy(id->Driver, "gles");
+        std::strcpy(id->Description, "OpenGL ES (Direct3D 9 on GLES)");
+        std::strcpy(id->DeviceName, "\\\\.\\DISPLAY1");
+        id->VendorId = 0x10DE;  // the game has vendor-specific paths; NVIDIA's are the ones it tested most
+        id->DeviceId = 0x0100;
+        id->DriverVersion.QuadPart = 0x0006000E00000000ll;
+        return S_OK;
+    }
+    UINT STDMETHODCALLTYPE GetAdapterModeCount(UINT, D3DFORMAT) override { return 0; }      // handled by win/d3d9.cpp on POSIX
+    HRESULT STDMETHODCALLTYPE EnumAdapterModes(UINT, D3DFORMAT, UINT, D3DDISPLAYMODE*) override { return D3DERR_INVALIDCALL; }
+    HRESULT STDMETHODCALLTYPE GetAdapterDisplayMode(UINT, D3DDISPLAYMODE* m) override { if (m) *m = {1024, 768, 60, D3DFMT_X8R8G8B8}; return S_OK; }
+    HRESULT STDMETHODCALLTYPE CheckDeviceType(UINT, D3DDEVTYPE, D3DFORMAT, D3DFORMAT, WINBOOL) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE CheckDeviceFormat(UINT, D3DDEVTYPE, D3DFORMAT, DWORD usage, D3DRESOURCETYPE rtype, D3DFORMAT f) override {
+        const FormatInfo i = formatInfo(f);
+        if (!i.valid) return D3DERR_NOTAVAILABLE;
+        if (rtype == D3DRTYPE_VOLUMETEXTURE || rtype == D3DRTYPE_CUBETEXTURE) return D3DERR_NOTAVAILABLE;
+        if ((usage & D3DUSAGE_RENDERTARGET) && (i.depth || i.blockBytes || i.bytesPerPixel < 2)) return D3DERR_NOTAVAILABLE;
+        if ((usage & D3DUSAGE_DEPTHSTENCIL) && !i.depth) return D3DERR_NOTAVAILABLE;
+        if (usage & D3DUSAGE_QUERY_SRGBREAD) return D3DERR_NOTAVAILABLE;
+        return S_OK;
+    }
+    HRESULT STDMETHODCALLTYPE CheckDeviceMultiSampleType(UINT, D3DDEVTYPE, D3DFORMAT, WINBOOL, D3DMULTISAMPLE_TYPE t, DWORD* q) override { if (q) *q = 1; return t == D3DMULTISAMPLE_NONE ? S_OK : D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE CheckDepthStencilMatch(UINT, D3DDEVTYPE, D3DFORMAT, D3DFORMAT, D3DFORMAT ds) override { return formatInfo(ds).depth ? S_OK : D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE CheckDeviceFormatConversion(UINT, D3DDEVTYPE, D3DFORMAT, D3DFORMAT) override { return S_OK; }
+    HRESULT STDMETHODCALLTYPE GetDeviceCaps(UINT, D3DDEVTYPE, D3DCAPS9* c) override { Device tmp(this, D3DPRESENT_PARAMETERS{}); return tmp.GetDeviceCaps(c); }
+    HMONITOR STDMETHODCALLTYPE GetAdapterMonitor(UINT) override { return nullptr; }
+    HRESULT STDMETHODCALLTYPE CreateDevice(UINT, D3DDEVTYPE, HWND hwnd, DWORD, D3DPRESENT_PARAMETERS* p, IDirect3DDevice9** out) override {
+        if (!p || !out) return E_POINTER;
+        if (!p->BackBufferWidth || !p->BackBufferHeight) {
+            SDL_Window* w = reinterpret_cast<SDL_Window*>(hwnd ? hwnd : p->hDeviceWindow);
+            int ww = 1024, wh = 768;
+            if (w) SDL_GetWindowSize(w, &ww, &wh);
+            p->BackBufferWidth = static_cast<UINT>(ww), p->BackBufferHeight = static_cast<UINT>(wh);
+        }
+        if (p->BackBufferFormat == D3DFMT_UNKNOWN) p->BackBufferFormat = D3DFMT_X8R8G8B8;
+        Device* d = new Device(this, *p);
+        if (!d->init(hwnd)) { d->Release(); *out = nullptr; return D3DERR_NOTAVAILABLE; }
+        g_device = d;
+        *out = d;
+        return S_OK;
+    }
+};
+
+}  // namespace
+
+IDirect3D9* createD3D9() {
+    log("Direct3D 9: OpenGL ES renderer");
+    return new D3D9();
+}
+
+}  // namespace host::gles

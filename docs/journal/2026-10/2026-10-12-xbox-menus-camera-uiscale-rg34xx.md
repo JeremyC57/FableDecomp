@@ -32,3 +32,35 @@ Recompiled game (`rebuild/recomp`), branch `port/modern-assets`. Android is the 
 ## Open
 - Verify the Xbox menus and HUD at 1920x1080 (auto scale 1.5) in the harness.
 - Android APK and Windows build with all of the above; user tests on the phone and RG34XX SP.
+
+## Direct3D 9 on OpenGL ES (later the same day)
+The device test failed twice: `libpulsecommon-16.1.so` missing (Ubuntu's SDL2 links libpulse,
+whose private half lives in `pulseaudio/`; the packager now searches that directory) and no
+Vulkan on the RG34XX SP. The user asked for a Direct3D 9 → OpenGL ES renderer, for that device
+only (Android and PC stay on DXVK).
+
+- **Census first** (`posix/gles/census.cpp`, `FABLE_D3D_CENSUS=<dir>`): a proxy around the
+  DXVK device counts every call and value and dumps the shader bytecode. 8000 frames of
+  menus and gameplay: vs_1_1 only (always bound), ps_1_1/ps_1_4 (SetPixelShader(NULL) for
+  the 2D layer), FVF XYZRHW UP draws, A8R8G8B8/X8R8G8B8/R5G6B5/A4R4G4B4/A8/V8U8/D16/DXT1-5
+  textures, render-target textures, 256x256 D24S8 depth-stencil surfaces, 16-bit dynamic
+  index buffers, occlusion queries. No lighting, state blocks, cube or volume textures.
+- **Translator** (`dx9shader.cpp`): vs_1_1/ps_1_x bytecode → GLSL ES 3.00, incl. relative
+  `c[a0.x]`, `_dw` projective texld, texbem, texm3x2pad/tex, cnd/cmp, phase. All 635
+  census shaders translate and compile under Mesa.
+- **Renderer** (`gl_renderer.cpp`, `FABLE_RENDERER=gles`): the COM interfaces implemented
+  directly; the guest proxies and Lock staging in `win/d3d9.cpp` work unchanged on top.
+  Everything renders into an FBO in Direct3D row order (the vertex epilogue negates clip y,
+  `z' = 2z - w`), Present blits with a vertical flip. GL entry points come from
+  `SDL_GL_GetProcAddress` so the binary links no GL library and uses the device's driver.
+- Verified under Xvfb with Mesa llvmpipe: intro movies, front end, Load Game, the opening
+  cutscene, gameplay with the HUD, and the Xbox inventory menu all match the DXVK output.
+- Bugs on the way: the device creation took the native SDL_Window* for a guest HWND (black
+  screen); cull winding was backwards (the mirrored clip y flips it: D3DCULL_CCW keeps GL's
+  CCW), which culled every front face — the whole frame was black until fixed.
+- `FABLE_GLES_TRACE=N` logs the first N draws (state, declaration, vertex data, GLSL);
+  `FABLE_GLES_DUMP=<dir>` writes every frame as PPM; `gles: frame` stats every 120 frames.
+- The RG34XX package now runs the GLES backend (`Fable.sh` sets `FABLE_RENDERER=gles`),
+  bundles the pulse libraries, and keeps Mesa's GBM/EGL/GLES only as `lib/fallback`
+  (the device's Mali blob must supply the real ones). Smoke-tested under qemu-aarch64 with
+  the fallback libraries: intro movies render.

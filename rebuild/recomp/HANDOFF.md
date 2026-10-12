@@ -65,6 +65,12 @@ user's original game folder; no retail bytes or generated code are in git.
   - Native Xbox pad support would be better: the PC exe still has
     `CInputTypeXboxPad*`, data-driven control schemes and `CJoystickDX`. It is not
     reverse-engineered yet.
+- **Direct3D 9 on OpenGL ES** (`posix/gles/`, `FABLE_RENDERER=gles`; RG34XX SP only, where
+    there is no Vulkan): a census of the game's Direct3D use (`census.cpp`), a vs_1_1/ps_1_x
+    → GLSL ES translator (`dx9shader.cpp`) and the device (`gl_renderer.cpp`). Renders
+    into an FBO in Direct3D row order; the vertex epilogue negates clip y (so cull winding
+    swaps: D3DCULL_CCW → GL front CCW). Verified through gameplay under Mesa llvmpipe.
+    `FABLE_GLES_TRACE=N` / `FABLE_GLES_DUMP=<dir>` for diagnosis.
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).

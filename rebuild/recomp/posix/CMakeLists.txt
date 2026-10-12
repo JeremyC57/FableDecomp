@@ -62,7 +62,8 @@ pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET libavformat libavcodec libavut
 
 file(GLOB HOST_SOURCES ${WIN_DIR}/*.cpp)
 file(GLOB W32_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.c ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.S)
-set(HOST_ALL ${HOST_SOURCES} ${W32_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/main_posix.cpp
+file(GLOB GLES_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/gles/*.cpp)  # Direct3D 9 census and the OpenGL ES renderer
+set(HOST_ALL ${HOST_SOURCES} ${W32_SOURCES} ${GLES_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/main_posix.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/movie_ffmpeg.cpp $<TARGET_OBJECTS:fable_gen>)
 if(ANDROID)
   # SDLActivity loads libmain.so and calls SDL_main on its own thread.
@@ -77,7 +78,7 @@ if(ANDROID)
 else()
   add_executable(FableRecomp ${HOST_ALL})
 endif()
-target_include_directories(FableRecomp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include ${RUNTIME_DIR} ${WIN_DIR})
+target_include_directories(FableRecomp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include ${RUNTIME_DIR} ${WIN_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/gles)
 # Windows API declarations come after the system headers, so the C library stays the system one.
 target_compile_options(FableRecomp PRIVATE $<$<COMPILE_LANGUAGE:C,CXX>:-idirafter ${MINGW_HEADERS}>)
 target_compile_definitions(FableRecomp PRIVATE FABLE_POSIX=1 RECOMP_IDENTITY_MEMORY=1)

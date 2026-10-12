@@ -8,11 +8,18 @@ DIR="$HERE/$NAME"
 cd "$DIR" || exit 1
 export FABLE_RECOMP_DATA="$DIR/save"          # saves, profile and settings live here
 export SDL_VIDEODRIVER="${SDL_VIDEODRIVER:-KMSDRM}"
+export FABLE_RENDERER="${FABLE_RENDERER:-gles}"     # Direct3D 9 on OpenGL ES (the Mali-G31 has no Vulkan driver here)
 export SDL_AUDIODRIVER="${SDL_AUDIODRIVER:-alsa}"
 export DXVK_WSI_DRIVER=SDL2
 export DXVK_LOG_LEVEL="${DXVK_LOG_LEVEL:-warn}"
 export FABLE_RECOMP_LOG="${FABLE_RECOMP_LOG:-1}"
 mkdir -p "$DIR/save"
+# GBM/EGL/GLES come from the OS's GPU driver; Mesa's copies in lib/fallback are used only when
+# the OS has none at all (FABLE_GL_FALLBACK=1 forces them)
+LIBS="$DIR/lib"
+if [ "$FABLE_GL_FALLBACK" = 1 ] || ! ls /usr/lib/libEGL.so.1 /usr/lib/aarch64-linux-gnu/libEGL.so.1 /usr/lib64/libEGL.so.1 /lib/libEGL.so.1 /usr/lib/mali/libEGL.so.1 >/dev/null 2>&1; then
+  LIBS="$LIBS:$DIR/lib/fallback"
+fi
 [ -f "$DIR/game/FableRecomp_controller.ini" ] || cp "$DIR/FableRecomp_controller.ini.default" "$DIR/game/FableRecomp_controller.ini" 2>/dev/null
-exec "$DIR/lib/ld-linux-aarch64.so.1" --library-path "$DIR/lib" "$DIR/FableRecomp" \
+exec "$DIR/lib/ld-linux-aarch64.so.1" --library-path "$LIBS" "$DIR/FableRecomp" \
   --game "$DIR/game" --fullscreen --ui-scale=0 "$@" > "$DIR/log.txt" 2>&1

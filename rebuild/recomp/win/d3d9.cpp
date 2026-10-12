@@ -8,6 +8,8 @@
 
 #ifdef FABLE_POSIX
 #include <dlfcn.h>
+#include "census.hpp"
+#include "gl_renderer.hpp"
 #endif
 #include <cstdlib>
 
@@ -408,6 +410,9 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
 #endif
     ppOut(arg(c, 5), pp);
     if (arg(c, 6)) wr32(arg(c, 6), SUCCEEDED(hr) ? wrap(dev) : 0);
+#ifdef FABLE_POSIX
+    if (SUCCEEDED(hr)) dev = host::census::wrap(dev), wr32(arg(c, 6), wrap(dev));
+#endif
     if (SUCCEEDED(hr)) applyFpuMode(c, flags), trackBackBuffer(dev, pp), applyWindow(pp);
     retStd(c, static_cast<uint32_t>(hr), 7);
 }
@@ -809,6 +814,7 @@ namespace {
 // DXVK Native, opened at run time: FABLE_D3D9_LIBRARY picks the build (Android ships a
 // second, older DXVK for drivers without shaderInt64; android_host.cpp chooses).
 IDirect3D9* createD3D9(UINT sdk) {
+    if (w32::glesRenderer()) return host::gles::createD3D9();
     const char* lib = std::getenv("FABLE_D3D9_LIBRARY");
     if (!lib || !*lib) lib = "libdxvk_d3d9.so";
     void* h = dlopen(lib, RTLD_NOW | RTLD_LOCAL);

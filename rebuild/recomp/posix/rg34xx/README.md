@@ -6,10 +6,17 @@ screen, the stock (fan-modified) Linux OS that launches `.sh` files.
 ## What the package is
 An aarch64 Linux build of the recompiled game (`rebuild/recomp/posix`), cross-compiled with clang
 (`linux-a64.cmake`, target aarch64-linux-gnu) against Ubuntu's arm64 packages, bundled with everything it loads:
-glibc and its dynamic loader, libstdc++, SDL2 (KMSDRM video, ALSA audio, evdev pads), DXVK
-Native (Direct3D 9 on Vulkan), FFmpeg (movies) and the Vulkan loader. `Fable.sh` starts the
-game through the bundled loader (`lib/ld-linux-aarch64.so.1 --library-path lib`), so the
-device's own glibc version does not matter.
+glibc and its dynamic loader, libstdc++, SDL2 (KMSDRM video, ALSA audio, evdev pads), FFmpeg
+(movies), plus DXVK Native and the Vulkan loader for devices that do have Vulkan. `Fable.sh`
+starts the game through the bundled loader (`lib/ld-linux-aarch64.so.1 --library-path lib`),
+so the device's own glibc version does not matter.
+
+Rendering is Direct3D 9 on **OpenGL ES 3.0** (`rebuild/recomp/posix/gles/`, selected by
+`FABLE_RENDERER=gles` in `Fable.sh`): the Mali-G31 has no Vulkan driver on the stock OS. The
+GL entry points are resolved at run time through SDL from the OS's own EGL/GLES libraries
+(the Mali blob); the package does not bring a GPU driver. Mesa's `libgbm`/`libEGL`/`libGLESv2`
+sit in `lib/fallback` and are used only when the OS has no `libEGL.so.1` at all (software
+rendering at best; `FABLE_GL_FALLBACK=1` forces them).
 
 ## Layout on the device
 ```
@@ -23,11 +30,16 @@ Fable/            its files, in the folder of the same name next to it
 ```
 
 ## Known requirements and limits
-- **Vulkan.** DXVK renders through Vulkan. The package carries the loader (`libvulkan.so.1`)
-  but not a driver: the OS must provide a Mali-G31 Vulkan ICD (Arm's blob with Vulkan, or
-  Mesa PanVK on the panfrost kernel driver). Anbernic's stock OS ships only OpenGL ES, so
-  on an unmodified stock OS the game will start and then fail at device creation; the log
-  says so. There is no OpenGL ES renderer in this project.
+- **GPU driver.** SDL's KMSDRM backend needs the OS's GBM + EGL + GLES (the Mali blob
+  with GBM support, as the ports/PortMaster builds for the H700 use). If the OS's SDL2 is
+  needed instead of the bundled one (a fbdev-only Mali blob), put it first in the library
+  path in `Fable.sh`. `FABLE_RENDERER=dxvk` switches back to DXVK on Vulkan where a Vulkan
+  ICD exists. The log (`log.txt`) names the GL driver and version on start.
+- **GLES scope.** What the game uses on the PC, per a Direct3D call census: vs_1_1 and
+  ps_1_1/1_4 shaders (translated to GLSL ES 3.00), the fixed-function pixel pipeline,
+  pre-transformed UI quads, DXT1/3/5 textures (decoded on the CPU; Mali has no S3TC),
+  render-target and depth textures, occlusion queries. No state blocks, cube/volume
+  textures or multisampling.
 - **Speed.** The x86 game runs as lifted C on four A53 cores at 1.5 GHz; expect a fraction
   of the Android frame rate. 720x480 keeps the GPU load low.
 - **Memory.** 2 GB is tight; keep other apps closed.
@@ -54,6 +66,8 @@ ninja -C build/linux-a64
   --enable-demuxer=asf,avi --enable-parser=vc1,mpegaudio --enable-protocol=file --enable-swscale --enable-swresample \
   && make -j4 install)
 # configure the game build with PKG_CONFIG_LIBDIR=build/ffmpeg-a64/lib/pkgconfig:/usr/lib/aarch64-linux-gnu/pkgconfig
+# (the GLES renderer needs only the GLES3/gl3.h header; it links no GL library)
 FFMPEG_PREFIX=build/ffmpeg-a64 rebuild/recomp/posix/rg34xx/package_rg34xx.sh build/linux-a64 build/dxvk-a64 out/rg34xx
 ```
-Smoke test on x86-64: `qemu-aarch64 -L / build/linux-a64/FableRecomp ...` (see `a64shot.sh`).
+Smoke test on x86-64 (qemu-user, Mesa llvmpipe through `lib/fallback`, SDL on X11):
+`SDL_VIDEODRIVER=x11 FABLE_RENDERER=gles LIBGL_ALWAYS_SOFTWARE=1 qemu-aarch64 Fable/lib/ld-linux-aarch64.so.1 --library-path Fable/lib:Fable/lib/fallback Fable/FableRecomp --game <game>`.
