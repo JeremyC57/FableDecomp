@@ -11,6 +11,7 @@
 #include <SDL.h>  // before the Windows headers: SDL keys its intrinsics on MinGW macros
 #define GL_GLES_PROTOTYPES 0  // entry points come from SDL_GL_GetProcAddress (loadGl): no link-time libGLESv2
 #include <GLES3/gl3.h>
+#include <unistd.h>
 
 #include "gl_renderer.hpp"
 
@@ -666,6 +667,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     bool overlayVsync = true;
     void drawOverlay();
     void afterDraw();
+    bool dumpFrameWanted();
     void saveScreenshot();
     void setSwapInterval(int i) { if (w32::fbdevGl()) fb::setSwapInterval(i); else SDL_GL_SetSwapInterval(i); }
     bool es32 = false;
@@ -1606,8 +1608,7 @@ void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVert
     }
     bindVertexLayout(decl ? decl.p : fvf ? fvfDeclaration() : nullptr, up, upData, upStride, upVertices, baseVertex);
     static int traceLeft = [] { const char* t = getenv("FABLE_GLES_TRACE"); return t ? atoi(t) : 0; }();
-    static const uint32_t dumpFrame = [] { const char* t = getenv("FABLE_GLES_DRAWDUMP"); return t ? static_cast<uint32_t>(atoi(t)) : 0u; }();
-    if (dumpFrame && frames + 1 == dumpFrame) traceLeft = 1;  // every draw of that frame is traced
+    if (dumpFrameWanted()) traceLeft = 1;  // every draw of that frame is traced
     if (traceLeft > 0) {
         --traceLeft;
         const VertexDecl* d = decl ? decl.p : fvf ? fvfDeclaration() : nullptr;
@@ -1799,9 +1800,22 @@ void Device::drawOverlay() {
 
 // FABLE_GLES_DRAWDUMP=<frame>: after each draw of that frame, the bound render target goes to
 // FABLE_GLES_DUMP/draw_<n>.ppm (with the trace line logged by prepareDraw).
+// FABLE_GLES_DRAWDUMP: a frame number, or a path: that frame (or the frame after the file
+// appears; the file is removed) has every draw dumped.
+bool Device::dumpFrameWanted() {
+    static const char* spec = getenv("FABLE_GLES_DRAWDUMP");
+    static uint32_t target = 0;
+    if (!spec) return false;
+    if (spec[0] == '/') {
+        if (!target && access(spec, F_OK) == 0) { target = frames + 1; unlink(spec); log("gles trace: dumping frame %u", target); }
+    } else if (!target) {
+        target = static_cast<uint32_t>(atoi(spec));
+    }
+    return target && frames + 1 == target;
+}
+
 void Device::afterDraw() {
-    static const uint32_t dumpFrame = [] { const char* t = getenv("FABLE_GLES_DRAWDUMP"); return t ? static_cast<uint32_t>(atoi(t)) : 0u; }();
-    if (!dumpFrame || frames + 1 != dumpFrame) return;
+    if (!dumpFrameWanted()) return;
     const char* dir = getenv("FABLE_GLES_DUMP");
     if (!dir) return;
     UINT w = pp.BackBufferWidth, h = pp.BackBufferHeight;
