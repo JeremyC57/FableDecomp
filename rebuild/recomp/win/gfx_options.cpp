@@ -24,6 +24,7 @@ bool g_loaded = false, g_seeded = false, g_pending = false;
 uint32_t g_engine = 0;       // the CEngine the game configured
 uint32_t g_optsCopy = 0;     // a guest copy of the last CVideoOptions passed in (13 dwords)
 uint32_t g_shadowSize = 0;
+uint32_t g_gameW = 0, g_gameH = 0;  // the resolution the game itself asked for (the scale's base)
 
 // CEngineVideoOptions (what SetVideoOptions receives), dword offsets
 constexpr uint32_t kWidth = 0, kHeight = 4, kLandscape = 28, kMesh = 32, kTexture = 36, kShadow = 40, kEffects = 44, kAntialias = 48;
@@ -175,7 +176,7 @@ extern "C" void host_video_options(Ctx* c) {
         load();
         g_engine = engine;
         if (!g_optsCopy) g_optsCopy = gcalloc(1, 64);
-        if (opts != g_optsCopy) std::memcpy(gp(g_optsCopy), gp(opts), 52);
+        if (opts != g_optsCopy) std::memcpy(gp(g_optsCopy), gp(opts), 52), g_gameW = rd32(opts + kWidth), g_gameH = rd32(opts + kHeight);
         if (!g_seeded) {  // first run without a file or preset: start from the game's own choice
             g_settings.landscape = clampQ(static_cast<int>(rd32(opts + kLandscape)));
             g_settings.model = clampQ(static_cast<int>(rd32(opts + kMesh)));
@@ -193,7 +194,7 @@ extern "C" void host_video_options(Ctx* c) {
     if (hostGfx) {
         // the host's values replace the game's (its Video Options page is inert); the game's
         // resolution is the window, the host renders a 3:2-preserving fraction of it
-        const uint32_t w = rd32(opts + kWidth), h = rd32(opts + kHeight);
+        const uint32_t w = g_gameW, h = g_gameH;  // not the copy: a re-apply would compound the scale
         const uint32_t sw = std::max(320u, (w * static_cast<uint32_t>(s.resolutionScale) / 100) & ~3u);
         const uint32_t sh = std::max(200u, (h * static_cast<uint32_t>(s.resolutionScale) / 100) & ~3u);
         wr32(g_optsCopy + kWidth, sw), wr32(g_optsCopy + kHeight, sh);

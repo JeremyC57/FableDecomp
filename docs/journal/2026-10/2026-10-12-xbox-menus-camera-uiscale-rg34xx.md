@@ -175,6 +175,9 @@ now lists them.
   renderer nor host_rtdims; the game lays text out from its own fonts.big metrics (no GDI
   metrics are used). The Xbox lists centre their text. Next: find the PC front-end button's
   text placement (CNewFrontendGameComponent) and compare with retail.
+- Render resolution verified in the harness (83 %, 75 %: the engine resets the device, the
+  GLES back buffer shrinks and is blitted up); the first version scaled the already scaled
+  copy on every re-apply (640x480 -> 320x224), now the game's own request is the base.
 - Harness gotcha: a single entry in `FABLE_RECOMP_MODES` (640x480 or 1280x720 alone)
   crashes `CUserProfileManager::SetDefaultValues` (0x40C790, a mode-table index) at start;
   always offer two modes. Stale manual saves in the test data dir change the load list and
