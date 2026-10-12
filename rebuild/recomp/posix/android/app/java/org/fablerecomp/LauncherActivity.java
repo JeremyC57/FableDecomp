@@ -26,6 +26,7 @@ import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,9 @@ public class LauncherActivity extends Activity {
     private TextView scaleLabel, status;
     private SeekBar scale;
     private Switch touch;
+    private SeekBar drawDistance, modelDetail;
+    private TextView drawLabel, detailLabel;
+    private Switch shadows, glow;
     private Spinner driver, dxvk;
     private static final String[] DXVK_IDS = {"auto", "3", "2"};
     private List<String> drivers;
@@ -96,6 +100,41 @@ public class LauncherActivity extends Activity {
         touch.setChecked(prefs.getBoolean("touch", true));
         touch.setPadding(0, dp(16), 0, 0);
         col.addView(touch);
+
+        // Graphics: the host owns these (the game's own Video Options page is not used); they go
+        // to graphics.txt in the data directory, which the game reads at start.
+        col.addView(heading("Graphics"));
+        drawLabel = heading("");
+        col.addView(drawLabel);
+        drawDistance = new SeekBar(this);
+        drawDistance.setMax(12);  // 30 .. 150 % in steps of 10
+        drawDistance.setProgress((prefs.getInt("drawDistance", 100) - 30) / 10);
+        drawDistance.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar s, int p, boolean user) { updateGfxLabels(); }
+            public void onStartTrackingTouch(SeekBar s) {}
+            public void onStopTrackingTouch(SeekBar s) {}
+        });
+        col.addView(drawDistance);
+        detailLabel = heading("");
+        col.addView(detailLabel);
+        modelDetail = new SeekBar(this);
+        modelDetail.setMax(3);  // 25, 50, 75, 100 %
+        modelDetail.setProgress(prefs.getInt("modelDetail", 100) / 25 - 1);
+        modelDetail.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar s, int p, boolean user) { updateGfxLabels(); }
+            public void onStartTrackingTouch(SeekBar s) {}
+            public void onStopTrackingTouch(SeekBar s) {}
+        });
+        col.addView(modelDetail);
+        updateGfxLabels();
+        shadows = new Switch(this);
+        shadows.setText("Shadows");
+        shadows.setChecked(prefs.getBoolean("shadows", true));
+        col.addView(shadows);
+        glow = new Switch(this);
+        glow.setText("Glow / bloom effects");
+        glow.setChecked(prefs.getBoolean("glow", true));
+        col.addView(glow);
 
         col.addView(heading("Vulkan driver"));
         driver = new Spinner(this);
@@ -177,6 +216,25 @@ public class LauncherActivity extends Activity {
     private int dp(int v) { return Math.round(v * getResources().getDisplayMetrics().density); }
 
     /** 0 = automatic (the game lays out about 720 lines), else 1.0 .. 3.0. */
+    private int drawDistancePercent() { return 30 + drawDistance.getProgress() * 10; }
+    private int modelDetailPercent() { return (modelDetail.getProgress() + 1) * 25; }
+    private void updateGfxLabels() {
+        drawLabel.setText(String.format(Locale.US, "Draw distance: %d%%", drawDistancePercent()));
+        detailLabel.setText(String.format(Locale.US, "Model detail: %d%%", modelDetailPercent()));
+    }
+    private void writeGraphicsFile() {
+        try {
+            File data = dataDir(this);
+            data.mkdirs();
+            java.io.FileWriter w = new java.io.FileWriter(new File(data, "graphics.txt"));
+            w.write(String.format(Locale.US, "draw_distance=%d\nmodel_detail=%d\nshadow_size=0\nshadows=%d\nglow=%d\n", drawDistancePercent(), modelDetailPercent(),
+                                  shadows.isChecked() ? 1 : 0, glow.isChecked() ? 1 : 0));
+            w.close();
+        } catch (java.io.IOException e) {
+            Log.e("FableRecomp", "graphics.txt", e);
+        }
+    }
+
     private float uiScale() { return scale.getProgress() == 0 ? 0f : 1f + (scale.getProgress() - 1) / 4f; }
 
     private void updateScaleLabel() {
@@ -221,10 +279,15 @@ public class LauncherActivity extends Activity {
     }
 
     private void save() {
+        writeGraphicsFile();
         prefs.edit()
             .putString("gameDir", folder.getText().toString().trim())
             .putFloat("uiScale", uiScale())
             .putBoolean("touch", touch.isChecked())
+            .putInt("drawDistance", drawDistancePercent())
+            .putInt("modelDetail", modelDetailPercent())
+            .putBoolean("shadows", shadows.isChecked())
+            .putBoolean("glow", glow.isChecked())
             .putString("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)))
             .putString("dxvk", DXVK_IDS[Math.max(dxvk.getSelectedItemPosition(), 0)])
             .apply();
