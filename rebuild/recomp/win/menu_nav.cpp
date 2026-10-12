@@ -29,6 +29,8 @@
 #include <cstdlib>
 #include <cstring>
 #include <map>
+#include <string>
+#include <set>
 #include <vector>
 
 using namespace host;
@@ -544,6 +546,42 @@ void host::pad::menuAfterSaveTick() {
     g_closeMenuAfterSave = 0;
     HLOG(1, "menu: closing the pause menu after the hero save");
     guestCallThis(0x47D78B, menu, {});
+}
+
+// 0x54EF00 NUISystem::CText's draw (virtual 2). The front end's labels are anchored a fixed
+// (unscaled) 9-10 px below the top edge of their 29-px (design, 640x480) bars while the bars
+// scale with the screen height and the glyphs do not (20 px lines at any size): measured
+// 720x480: bar 257..286, caps 267..283 (3.5 px low); 1024x768: bar 411..458, caps 420..441
+// (4 px high). The label is moved to the bar's centre: dy = (29 sy - 16) / 2 - 10, sy = the
+// front end's screen height / 480. Front end only (0x13B8790, the in-game GUI, is null);
+// FABLE_TEXT_CENTER=0 keeps the game's placement; FABLE_UI_TRACE=1 dumps the components.
+bool uiTrace() { static const bool on = std::getenv("FABLE_UI_TRACE") != nullptr; return on; }
+extern "C" void F_0054EF00_orig(Ctx* c);
+extern "C" void host_text_draw(Ctx* c) {
+    static const bool centre = [] { const char* e = std::getenv("FABLE_TEXT_CENTER"); return !e || std::atoi(e) != 0; }();
+    const uint32_t self = c->ecx;
+    if (uiTrace() && self) {
+        static std::set<uint32_t> seen;
+        if (seen.size() < 80 && seen.insert(self).second) {
+            std::string f;
+            for (uint32_t off = 0x30; off <= 0x110; off += 4) {
+                char b[40];
+                std::snprintf(b, sizeof b, " %X:%.3g", off, rdf32(self + off));
+                f += b;
+            }
+            HLOG(1, "text: 0x%08X%s", self, f.c_str());
+        }
+    }
+    if (!centre || !self || rd32(0x13B8790) != 0) { F_0054EF00_orig(c); return; }
+    const float sy = rd8(0x13B8768) ? rdf32(0x13B8770) / 480.0f : 1.0f;
+    const float dy = (29.0f * sy - 16.0f) * 0.5f - 10.0f;
+    static bool once;
+    if (!once) { once = true; HLOG(1, "text: front-end labels moved by %.1f px (screen height %.0f)", dy, sy * 480.0f); }
+    // the draw anchors the glyphs at this+0xF8/+0xFC (the component's screen position)
+    const uint32_t y0 = rd32(self + 0xFC);
+    wrf32(self + 0xFC, rdf32(self + 0xFC) + dy);
+    F_0054EF00_orig(c);
+    wr32(self + 0xFC, y0);
 }
 
 // 0x533D30 CComponent::GetSize(C2DVector* out): the bounding box of the children. The Xbox

@@ -231,3 +231,25 @@ path sets a gamma ramp on the native device (DXVK applies it in its presenter). 
 overlay's old VSync item moved onto the page. The Android launcher has the same controls.
 Fixed on the way: the overlay (and now the present pass) left the default sampler on
 texture unit 0 and the sampler tracking never rebound the game's.
+
+### Cosmetic fixes: front-end text in its bars, blank rows on the save confirm lists
+- **Text low in the highlight bars** (main menu, Options, the header bars). Measured with
+  the game's own pointer hover (so not the navigator): 720x480: bar 257..286 (29 px), caps
+  267..283 (3.5 px low); 1024x768: bar 411..458 (47 px), caps 420..441 (4 px high). The
+  front end's layout is 640x480 design units scaled by the screen (positions x1.6 at
+  1024x768), the bars scale with it, but the glyphs are drawn at the font's pixel size
+  (20 px lines at both sizes; fonts.big holds fixed sizes) and the label is anchored a
+  fixed 9-10 px below the bar's top edge, so it is centred at no size. `NUISystem::CText`'s
+  draw (0x54EF00, wrapped as `host_text_draw`) takes its anchor from this+0xF8/+0xFC (the
+  component's screen position; +0xCC is the glyph scale, not an alignment factor); the wrap
+  moves the anchor by (29 sy - 16) / 2 - 10 px, sy = the front end's screen height / 480
+  (-3.5 at 480 lines, +5.2 at 768): verified centred at both sizes. Front end only
+  (0x13B8790, the in-game GUI, is null there); `FABLE_TEXT_CENTER=0` keeps the game's
+  placement; `FABLE_UI_TRACE=1` dumps the text components and the list labels.
+- **Blank rows around "Are you sure?" / "Overwrite?"**: still open. The confirm lists reuse
+  the five-row list; its spare rows are entries of the same class as the labelled ones.
+  Hiding them through the view-area test crashes when the list then touches their (absent)
+  wheel states, and no field found so far tells a blank label from a labelled one (CText
+  +0x15C is null for labelled rows too: the pause list lost Load / Audio Options when it was
+  used). Next: find where SetToSave builds the confirm list and what it puts in the spare
+  rows.
