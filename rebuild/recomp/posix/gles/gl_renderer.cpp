@@ -1689,15 +1689,11 @@ static bool key_trace_once(uint32_t id) { static std::vector<uint32_t> seen; if 
 // ShadowBufferSize) are skipped with shadows off, so the cleared buffer shadows nothing;
 // draws into the small glow chain (<= 256 square, not the shadow size) with glow off.
 bool Device::skipDraw() {
+    // glow off: the engine still runs its bloom chain into small square targets; skip those draws
     if (!renderTarget || renderTarget->isBackBuffer) return false;
-    const host::gfx::Settings& s = host::gfx::get();
-    if (s.shadows && s.glow) return false;
+    if (host::gfx::get().glow) return false;
     const UINT w = renderTarget->level.width, h = renderTarget->level.height;
-    if (w != h) return false;
-    const uint32_t shadow = host::gfx::shadowBufferSize();
-    if (!s.shadows && shadow && w == shadow) return true;
-    if (!s.glow && w <= 256 && w != shadow) return true;
-    return false;
+    return w == h && w <= 256 && w != host::gfx::shadowBufferSize();
 }
 
 void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVertices, INT baseVertex) {

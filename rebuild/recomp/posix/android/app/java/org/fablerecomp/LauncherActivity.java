@@ -44,9 +44,10 @@ public class LauncherActivity extends Activity {
     private TextView scaleLabel, status;
     private SeekBar scale;
     private Switch touch;
-    private SeekBar drawDistance, modelDetail;
-    private TextView drawLabel, detailLabel;
-    private Switch shadows, glow;
+    private SeekBar drawDistance, resolution;
+    private Spinner landscape, model, texture, shadow, effects;
+    private TextView drawLabel, resLabel;
+    private Switch glow, water, weather;
     private Spinner driver, dxvk;
     private static final String[] DXVK_IDS = {"auto", "3", "2"};
     private List<String> drivers;
@@ -101,9 +102,26 @@ public class LauncherActivity extends Activity {
         touch.setPadding(0, dp(16), 0, 0);
         col.addView(touch);
 
-        // Graphics: the host owns these (the game's own Video Options page is not used); they go
-        // to graphics.txt in the data directory, which the game reads at start.
+        // Graphics: the host owns these (the game's own Video Options page is inert); they go
+        // to graphics.txt in the data directory, which the game reads at start. The in-game
+        // overlay (gamepad guide button) changes the same settings while playing.
         col.addView(heading("Graphics"));
+        resLabel = heading("");
+        col.addView(resLabel);
+        resolution = new SeekBar(this);
+        resolution.setMax(4);  // 50, 67, 75, 83, 100 % of the screen
+        resolution.setProgress(scaleIndex(prefs.getInt("resolutionScale", 100)));
+        resolution.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar s, int p, boolean user) { updateGfxLabels(); }
+            public void onStartTrackingTouch(SeekBar s) {}
+            public void onStopTrackingTouch(SeekBar s) {}
+        });
+        col.addView(resolution);
+        landscape = qualitySpinner(col, "Landscape detail", prefs.getInt("landscape", 1));
+        model = qualitySpinner(col, "Model detail", prefs.getInt("model", 1));
+        texture = qualitySpinner(col, "Texture detail", prefs.getInt("texture", 1));
+        shadow = qualitySpinner(col, "Shadow quality (Low = off)", prefs.getInt("shadow", 1));
+        effects = qualitySpinner(col, "Effects quality", prefs.getInt("effects", 1));
         drawLabel = heading("");
         col.addView(drawLabel);
         drawDistance = new SeekBar(this);
@@ -115,26 +133,19 @@ public class LauncherActivity extends Activity {
             public void onStopTrackingTouch(SeekBar s) {}
         });
         col.addView(drawDistance);
-        detailLabel = heading("");
-        col.addView(detailLabel);
-        modelDetail = new SeekBar(this);
-        modelDetail.setMax(3);  // 25, 50, 75, 100 %
-        modelDetail.setProgress(prefs.getInt("modelDetail", 100) / 25 - 1);
-        modelDetail.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            public void onProgressChanged(SeekBar s, int p, boolean user) { updateGfxLabels(); }
-            public void onStartTrackingTouch(SeekBar s) {}
-            public void onStopTrackingTouch(SeekBar s) {}
-        });
-        col.addView(modelDetail);
         updateGfxLabels();
-        shadows = new Switch(this);
-        shadows.setText("Shadows");
-        shadows.setChecked(prefs.getBoolean("shadows", true));
-        col.addView(shadows);
         glow = new Switch(this);
         glow.setText("Glow / bloom effects");
         glow.setChecked(prefs.getBoolean("glow", true));
         col.addView(glow);
+        water = new Switch(this);
+        water.setText("Water reflections");
+        water.setChecked(prefs.getBoolean("water", true));
+        col.addView(water);
+        weather = new Switch(this);
+        weather.setText("Weather effects");
+        weather.setChecked(prefs.getBoolean("weather", true));
+        col.addView(weather);
 
         col.addView(heading("Vulkan driver"));
         driver = new Spinner(this);
@@ -216,19 +227,36 @@ public class LauncherActivity extends Activity {
     private int dp(int v) { return Math.round(v * getResources().getDisplayMetrics().density); }
 
     /** 0 = automatic (the game lays out about 720 lines), else 1.0 .. 3.0. */
+    private static final int[] SCALES = {50, 67, 75, 83, 100};
+    private static final String[] QUALITY = {"Low", "Normal", "High", "Highest"};
+    private static int scaleIndex(int percent) {
+        for (int i = 0; i < SCALES.length; ++i) if (SCALES[i] == percent) return i;
+        return 4;
+    }
+    private Spinner qualitySpinner(LinearLayout col, String title, int value) {
+        col.addView(heading(title));
+        Spinner sp = new Spinner(this);
+        sp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, QUALITY));
+        sp.setSelection(Math.max(0, Math.min(3, value)));
+        col.addView(sp);
+        return sp;
+    }
     private int drawDistancePercent() { return 30 + drawDistance.getProgress() * 10; }
-    private int modelDetailPercent() { return (modelDetail.getProgress() + 1) * 25; }
+    private int resolutionPercent() { return SCALES[Math.max(0, Math.min(4, resolution.getProgress()))]; }
     private void updateGfxLabels() {
         drawLabel.setText(String.format(Locale.US, "Draw distance: %d%%", drawDistancePercent()));
-        detailLabel.setText(String.format(Locale.US, "Model detail: %d%%", modelDetailPercent()));
+        resLabel.setText(resolutionPercent() == 100 ? "Render resolution: native" : String.format(Locale.US, "Render resolution: %d%% of the screen", resolutionPercent()));
     }
     private void writeGraphicsFile() {
         try {
             File data = dataDir(this);
             data.mkdirs();
             java.io.FileWriter w = new java.io.FileWriter(new File(data, "graphics.txt"));
-            w.write(String.format(Locale.US, "draw_distance=%d\nmodel_detail=%d\nshadow_size=0\nshadows=%d\nglow=%d\n", drawDistancePercent(), modelDetailPercent(),
-                                  shadows.isChecked() ? 1 : 0, glow.isChecked() ? 1 : 0));
+            w.write(String.format(Locale.US, "resolution_scale=%d\nlandscape_detail=%d\nmodel_detail=%d\ntexture_detail=%d\nshadow_quality=%d\neffects_quality=%d\n"
+                                              + "draw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\n",
+                                  resolutionPercent(), landscape.getSelectedItemPosition(), model.getSelectedItemPosition(), texture.getSelectedItemPosition(),
+                                  shadow.getSelectedItemPosition(), effects.getSelectedItemPosition(), drawDistancePercent(), glow.isChecked() ? 1 : 0,
+                                  water.isChecked() ? 1 : 0, weather.isChecked() ? 1 : 0));
             w.close();
         } catch (java.io.IOException e) {
             Log.e("FableRecomp", "graphics.txt", e);
@@ -285,9 +313,15 @@ public class LauncherActivity extends Activity {
             .putFloat("uiScale", uiScale())
             .putBoolean("touch", touch.isChecked())
             .putInt("drawDistance", drawDistancePercent())
-            .putInt("modelDetail", modelDetailPercent())
-            .putBoolean("shadows", shadows.isChecked())
+            .putInt("resolutionScale", resolutionPercent())
+            .putInt("landscape", landscape.getSelectedItemPosition())
+            .putInt("model", model.getSelectedItemPosition())
+            .putInt("texture", texture.getSelectedItemPosition())
+            .putInt("shadow", shadow.getSelectedItemPosition())
+            .putInt("effects", effects.getSelectedItemPosition())
             .putBoolean("glow", glow.isChecked())
+            .putBoolean("water", water.isChecked())
+            .putBoolean("weather", weather.isChecked())
             .putString("driver", drivers.get(Math.max(driver.getSelectedItemPosition(), 0)))
             .putString("dxvk", DXVK_IDS[Math.max(dxvk.getSelectedItemPosition(), 0)])
             .apply();

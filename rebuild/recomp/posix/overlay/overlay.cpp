@@ -40,36 +40,50 @@ uint32_t ticks() {
 }
 
 enum Item { RESUME, GRAPHICS, VOLUME, FPS, STATS, LOGLEVEL, VSYNC, SCREENSHOT, EXIT, COUNT };
-// the graphics page
-enum GfxItem { G_DRAW, G_LOD, G_SHADOWSIZE, G_SHADOWS, G_GLOW, G_BACK, G_COUNT };
+// the graphics page: the game's own Video Options (quality levels, resolution) plus direct levers
+enum GfxItem { G_RES, G_LANDSCAPE, G_MODEL, G_TEXTURE, G_SHADOW, G_EFFECTS, G_DRAW, G_GLOW, G_WATER, G_WEATHER, G_BACK, G_COUNT };
 int g_page = 0;  // 0: main, 1: graphics
+std::string onOff(bool b) { return b ? "on" : "off"; }
 std::string gfxLabel(int i) {
     const host::gfx::Settings& s = host::gfx::get();
+    using host::gfx::qualityName;
     switch (i) {
+        case G_RES: return "Render resolution: " + (s.resolutionScale == 100 ? std::string("native") : std::to_string(s.resolutionScale) + "%") + "  (left/right)";
+        case G_LANDSCAPE: return std::string("Landscape detail: ") + qualityName(s.landscape) + "  (left/right)";
+        case G_MODEL: return std::string("Model detail: ") + qualityName(s.model) + "  (left/right)";
+        case G_TEXTURE: return std::string("Texture detail: ") + qualityName(s.texture) + "  (left/right)";
+        case G_SHADOW: return std::string("Shadow quality: ") + (s.shadow == 0 ? "Low (off)" : qualityName(s.shadow)) + "  (left/right)";
+        case G_EFFECTS: return std::string("Effects quality: ") + qualityName(s.effects) + "  (left/right)";
         case G_DRAW: return "Draw distance: " + std::to_string(s.drawDistance) + "%  (left/right)";
-        case G_LOD: return "Model detail: " + std::to_string(s.modelDetail) + "%  (left/right)";
-        case G_SHADOWSIZE: return std::string("Shadow map: ") + (s.shadowSize ? std::to_string(s.shadowSize) : "game default") + "  (left/right)";
-        case G_SHADOWS: return std::string("Shadows: ") + (s.shadows ? "on" : "off");
-        case G_GLOW: return std::string("Glow / bloom: ") + (s.glow ? "on" : "off");
+        case G_GLOW: return "Glow / bloom: " + onOff(s.glow);
+        case G_WATER: return "Water reflections: " + onOff(s.water);
+        case G_WEATHER: return "Weather effects: " + onOff(s.weather);
         case G_BACK: return "Back";
         default: return "";
     }
 }
+int cycleQ(int q, int dir) { return dir ? std::clamp(q + dir, 0, 3) : (q + 1) % 4; }  // select cycles, left/right step
 void gfxChange(int i, int dir) {  // dir: -1 left, +1 right, 0 select
     host::gfx::Settings s = host::gfx::get();
-    static const int sizes[] = {0, 128, 256, 512, 1024};
+    static const int scales[] = {50, 67, 75, 83, 100};
     switch (i) {
-        case G_DRAW: s.drawDistance = std::clamp(s.drawDistance + (dir ? dir : 1) * 10, 30, 150); break;
-        case G_LOD: s.modelDetail = std::clamp(s.modelDetail + (dir ? dir : -1) * 25, 25, 100); break;
-        case G_SHADOWSIZE: {
-            int k = 0;
-            for (int j = 0; j < 5; ++j) if (sizes[j] == s.shadowSize) k = j;
-            k = (k + (dir < 0 ? 4 : 1)) % 5;
-            s.shadowSize = sizes[k];
+        case G_RES: {
+            int k = 4;
+            for (int j = 0; j < 5; ++j) if (scales[j] == s.resolutionScale) k = j;
+            k = std::clamp(k + (dir ? dir : -1), 0, 4);
+            if (!dir && k == 0 && s.resolutionScale == 50) k = 4;
+            s.resolutionScale = scales[k];
             break;
         }
-        case G_SHADOWS: s.shadows = !s.shadows; break;
+        case G_LANDSCAPE: s.landscape = cycleQ(s.landscape, dir); break;
+        case G_MODEL: s.model = cycleQ(s.model, dir); break;
+        case G_TEXTURE: s.texture = cycleQ(s.texture, dir); break;
+        case G_SHADOW: s.shadow = cycleQ(s.shadow, dir); break;
+        case G_EFFECTS: s.effects = cycleQ(s.effects, dir); break;
+        case G_DRAW: s.drawDistance = std::clamp(s.drawDistance + (dir ? dir : 1) * 10, 30, 150); break;
         case G_GLOW: s.glow = !s.glow; break;
+        case G_WATER: s.water = !s.water; break;
+        case G_WEATHER: s.weather = !s.weather; break;
         case G_BACK: g_page = 0; g_sel = GRAPHICS; return;
         default: return;
     }
@@ -189,7 +203,7 @@ std::vector<Line> lines(int width, int height) {
     const int lineCount = count + 3;
     int y = (height - lineCount * ch) / 2;
     const int x = std::max(8, (width - 40 * cw) / 2);
-    out.push_back({x, y, g_page == 1 ? "GRAPHICS  (changes apply at once and are saved)" : "FABLE RECOMP", 0xFFFFD040});
+    out.push_back({x, y, g_page == 1 ? "GRAPHICS  (applied at once and saved; the game's own Video Options are off)" : "FABLE RECOMP", 0xFFFFD040});
     y += ch;
     out.push_back({x, y, "D-pad: move / change   A: select   B: back", 0xFFA0A0A0});
     y += ch * 2;

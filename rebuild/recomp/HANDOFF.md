@@ -80,8 +80,21 @@ user's original game folder; no retail bytes or generated code are in git.
     statistics line gives frame vs in-GL ms: the next device log decides whether the game's
     own CPU time (lifted code) or the renderer is the remaining cost.
   - **Handheld host overlay** (`posix/overlay/`, `FABLE_OVERLAY=1`): guide button menu
-    (volume, FPS, stats, log level, vsync, screenshot, exit); `volkeys.cpp` volume rocker;
-    `--pad-probe` and `rg34xx/gamecontrollerdb.txt` for the stock pad; `HOLD_TARGET`.
+    (graphics page, volume, FPS, stats, log level, vsync, screenshot, exit); `volkeys.cpp`
+    volume rocker; `--pad-probe` and `rg34xx/gamecontrollerdb.txt` for the stock pad;
+    `HOLD_TARGET`.
+  - **Host-owned graphics settings** (`win/gfx_options.cpp`, `FABLE_HOST_GFX=1`): the
+    game's Video Options entry is inert (`menu_nav.cpp`); the overlay page / Android
+    launcher set the game's own quality levels (landscape, model, texture, shadow,
+    effects: Low..Highest), a render-resolution scale (50-100 % of the window, blitted up),
+    draw distance %, glow, water reflection and weather, saved in `<data>/graphics.txt`
+    (`FABLE_GFX_DEFAULTS` seeds a first run). They are rewritten into the options at
+    `CEngine::SetVideoOptions` (0xB24690, wrapped) and into the four
+    `CEngineVideoOptionsDef`s (retail layout = Ego_r minus 4 bytes).
+  - **Device profile (v9 log)**: `recomp_lookup` (binary search per indirect call) was ~9 %
+    of all samples: now an open-addressing hash (`runtime.c`); the profiler had not seen the
+    main table (lifted functions showed as `FableRecomp+0x...`), fixed. Next device log
+    gives the real guest hot spots. Frame ~105 ms of which ~40 ms in GL at ~950 draws.
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).
@@ -141,8 +154,11 @@ use llvm-mingw directly, or clang-cl after small tweaks.
 fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch \
     --hook 0xAB6E40=host_joystick_update --hook 0x4088E0=host_primary_inputs --hook 0x9BEDC0=host_rtdims \
     --wrap 0x55CB10=host_ui_event --wrap 0x58F649=host_open_inventory --wrap 0x41CF47=host_ui_scale \
-    --wrap 0x69AC90=host_camera_set --wrap 0x533D30=host_component_size --wrap 0xB24690=host_video_options
+    --wrap 0x69AC90=host_camera_set --wrap 0x533D30=host_component_size --wrap 0xB24690=host_video_options \
+    --wrap 0x47E196=host_save_game
 # coroutine switch -> host fibers; native Xbox pad (controller.cpp); UI scale (ui_scale.cpp);
+# host graphics settings (gfx_options.cpp, --wrap 0xB24690=host_video_options); the Xbox
+# pause menu's Hero Save (menu_nav.cpp, host_save_game: a stand-in for the PC menu object);
 # pad menu navigation and the Xbox in-game menus (menu_nav.cpp); the Xbox chase camera
 # (camera.cpp). --wrap keeps the original body as F_<addr>_orig
 fable_recomp ConfigDetect.dll - gen_cfg/ --prefix cfgdetect

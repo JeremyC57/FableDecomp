@@ -21,6 +21,7 @@ public class GameActivity extends SDLActivity {
         String lib = Drivers.library(this, driver);
         try {
             Os.setenv("FABLE_RECOMP_DATA", data.getAbsolutePath(), true);
+            Os.setenv("FABLE_HOST_GFX", "1", true);  // graphics settings come from the launcher; the game's Video Options entry is inert
             Os.setenv("FABLE_NATIVE_LIB_DIR", getApplicationInfo().nativeLibraryDir, true);
             Os.setenv("FABLE_TMP_DIR", getCacheDir().getAbsolutePath(), true);
             String dxvk = getIntent().getStringExtra("dxvk");

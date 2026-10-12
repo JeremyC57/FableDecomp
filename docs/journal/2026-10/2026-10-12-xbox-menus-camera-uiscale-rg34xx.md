@@ -135,3 +135,34 @@ cpufreq/devfreq governors to performance for the session. Research: Arm's Mali g
 (discard framebuffer contents, avoid mid-frame FBO switches) and Panfrost's dirty-state
 tracking gains back the direction; the H700 governor paths are unverified, `Fable-diag.sh`
 now lists them.
+
+### Host-owned graphics settings + profile of the v9 device log
+- User: graphics settings belong in the handheld overlay / Android launcher, with what the
+  game's Video Options had (model, texture, effects detail, resolution). `win/gfx_options.cpp`
+  wraps `CEngine::SetVideoOptions` (0xB24690): with `FABLE_HOST_GFX=1` the quality dwords
+  (CEngineVideoOptions +28..+44: landscape, mesh, texture, shadow, effects; +48 AA forced 0)
+  and the resolution (+0/+4, a 50-100 % scale of the window; the GLES renderer blits the
+  back buffer up) are replaced by the host's; the Video Options button in the front end is
+  swallowed (`menu_nav.cpp`, action 13). Draw distance %, glow, water reflection and weather
+  act on the four `CEngineVideoOptionsDef`s at CEngine+0x120..0x12C.
+- **Def layout**: a raw dump showed retail is Ego_r's layout minus four bytes
+  (HiresTextureMemory +0x3C = 0/6/10/16 MB, LODErrorTolerance +0x40 = 3/2/1/0,
+  DrawDistanceMultiplier +0x48 = 0.75/1/1.25/1.5, DrawDistanceMaximum +0x50 = 250/1000,
+  ShadowBufferSize +0x64 = 0/1024/2048/4096, bools from +0x6C). CEngine's quality indices
+  are its CEngineVideoOptions copy at +0xC0 (texture +0xE4 -> ResizeHiresTextureMemory,
+  effects +0xEC -> CShaderBankStateBlock::Set), also Ego_r minus 8, like the def slots.
+- **Profile (v9, `FABLE_PROFILE=60`)**: the profiler never saw the main table
+  (`recomp_table_entries` only listed the DLLs), so lifted code appeared as thousands of
+  `FableRecomp+0x...` lines; resolved with the unstripped binary: `recomp_lookup` alone was
+  5017 of 58954 samples (8.5 %, ~14 % in gameplay windows) - a binary search per indirect
+  call. Replaced by an open-addressing hash of every table (`runtime.c`), rebuilt when a
+  DLL registers (old table kept for readers). Other visible host costs: D3DX texture
+  resample/encode (~3 %), Mali driver threads (ioctl, cond/rwlock), log writes.
+- **Hero save crash** (device and local, under gdb): `CTCInGameMenu::SaveGame` (0x47E196)
+  dereferences the PC menu object at this+0xEC after writing the files (re-registers its
+  observer part with the UI manager, then its virtual 3 with the slot number). Only
+  `OpenInGameMenuPC` sets that member; the Xbox pause menu leaves it null. Wrapped
+  (`host_save_game`, menu_nav.cpp): a stand-in observer with host no-op virtuals takes the
+  calls and is removed from the manager afterwards.
+- Known cosmetic: the Xbox save confirm screen ("Are you sure?") shows two blank list rows
+  under the question (user report).

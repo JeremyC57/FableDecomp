@@ -20,20 +20,25 @@ namespace {
 
 std::mutex g_lock;
 Settings g_settings;
-bool g_loaded = false, g_pending = false;
+bool g_loaded = false, g_seeded = false, g_pending = false;
 uint32_t g_engine = 0;       // the CEngine the game configured
 uint32_t g_optsCopy = 0;     // a guest copy of the last CVideoOptions passed in (13 dwords)
 uint32_t g_shadowSize = 0;
 
-// CEngineVideoOptionsDef fields (Ego_r layout; the def object the engine holds)
-constexpr uint32_t kLODErrorTolerance = 68, kCharacterLODErrorTolerance = 72, kDrawDistanceMultiplier = 76, kDrawDistanceMinimum = 80,
-                   kDrawDistanceMaximum = 84, kRepeatedMeshDrawDistanceFactor = 88, kZSpriteDrawDistanceMultiplier = 100, kShadowBufferSize = 104,
-                   kShadowDistanceScale = 108;
+// CEngineVideoOptions (what SetVideoOptions receives), dword offsets
+constexpr uint32_t kWidth = 0, kHeight = 4, kLandscape = 28, kMesh = 32, kTexture = 36, kShadow = 40, kEffects = 44, kAntialias = 48;
+
+// CEngineVideoOptionsDef fields. Retail is the Ego_r layout shifted down by four bytes
+// (confirmed from a raw dump: HiresTextureMemory 0/6/10/16 MB, LODErrorTolerance 3/2/1/0,
+// DrawDistanceMultiplier 0.75/1/1.25/1.5, ShadowBufferSize 0/1024/2048/4096 for Low..Highest).
+constexpr uint32_t kLODErrorTolerance = 64, kCharacterLODErrorTolerance = 68, kDrawDistanceMultiplier = 72, kDrawDistanceMinimum = 76,
+                   kDrawDistanceMaximum = 80, kRepeatedMeshDrawDistanceFactor = 84, kZSpriteDrawDistanceMultiplier = 96, kShadowBufferSize = 100,
+                   kEnableGlow = 0x6E, kEnableWaterReflection = 0x70, kEnableWeatherEffects = 0x71;
 constexpr uint32_t kDefSlots[4] = {0x120, 0x124, 0x128, 0x12C};  // CEngine: LOW, NORMAL, HIGH, HIGHEST
 
 struct Original {  // a def's values before the host touched them
-    float lod, charLod, ddMul, ddMin, ddMax, repeated, zsprite, shadowScale;
-    uint32_t shadowSize;
+    float lod, charLod, ddMul, ddMin, ddMax, repeated, zsprite;
+    uint8_t glow, water, weather;
 };
 std::map<uint32_t, Original> g_originals;
 
@@ -42,10 +47,28 @@ std::string path() {
     return std::string(d ? d : ".") + "/graphics.txt";
 }
 
+int clampQ(int v) { return std::clamp(v, 0, 3); }
+
+void parseLine(const char* line, Settings& s) {
+    int v = 0;
+    if (std::sscanf(line, "resolution_scale=%d", &v) == 1) s.resolutionScale = std::clamp(v, 50, 100);
+    else if (std::sscanf(line, "landscape_detail=%d", &v) == 1) s.landscape = clampQ(v);
+    else if (std::sscanf(line, "model_detail=%d", &v) == 1) s.model = clampQ(v);
+    else if (std::sscanf(line, "texture_detail=%d", &v) == 1) s.texture = clampQ(v);
+    else if (std::sscanf(line, "shadow_quality=%d", &v) == 1) s.shadow = clampQ(v);
+    else if (std::sscanf(line, "effects_quality=%d", &v) == 1) s.effects = clampQ(v);
+    else if (std::sscanf(line, "draw_distance=%d", &v) == 1) s.drawDistance = std::clamp(v, 30, 150);
+    else if (std::sscanf(line, "glow=%d", &v) == 1) s.glow = v != 0;
+    else if (std::sscanf(line, "water_reflection=%d", &v) == 1) s.water = v != 0;
+    else if (std::sscanf(line, "weather=%d", &v) == 1) s.weather = v != 0;
+}
+
 void save() {
     if (FILE* f = std::fopen(path().c_str(), "w")) {
-        std::fprintf(f, "draw_distance=%d\nmodel_detail=%d\nshadow_size=%d\nshadows=%d\nglow=%d\n", g_settings.drawDistance, g_settings.modelDetail,
-                     g_settings.shadowSize, g_settings.shadows ? 1 : 0, g_settings.glow ? 1 : 0);
+        const Settings& s = g_settings;
+        std::fprintf(f, "resolution_scale=%d\nlandscape_detail=%d\nmodel_detail=%d\ntexture_detail=%d\nshadow_quality=%d\neffects_quality=%d\n"
+                        "draw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\n",
+                     s.resolutionScale, s.landscape, s.model, s.texture, s.shadow, s.effects, s.drawDistance, s.glow ? 1 : 0, s.water ? 1 : 0, s.weather ? 1 : 0);
         std::fclose(f);
     }
 }
@@ -56,39 +79,55 @@ void applyToDef(uint32_t def, const Settings& s) {
     if (it == g_originals.end()) {
         Original o{rdf32(def + kLODErrorTolerance), rdf32(def + kCharacterLODErrorTolerance), rdf32(def + kDrawDistanceMultiplier),
                    rdf32(def + kDrawDistanceMinimum), rdf32(def + kDrawDistanceMaximum), rdf32(def + kRepeatedMeshDrawDistanceFactor),
-                   rdf32(def + kZSpriteDrawDistanceMultiplier), rdf32(def + kShadowDistanceScale), rd32(def + kShadowBufferSize)};
+                   rdf32(def + kZSpriteDrawDistanceMultiplier), rd8(def + kEnableGlow), rd8(def + kEnableWaterReflection), rd8(def + kEnableWeatherEffects)};
         it = g_originals.emplace(def, o).first;
-        log("gfx: def 0x%08X: lod %.3f charlod %.3f dd x%.2f [%.0f..%.0f] repeated %.2f zsprite %.2f shadow %u scale %.2f", def, o.lod, o.charLod, o.ddMul, o.ddMin,
-            o.ddMax, o.repeated, o.zsprite, o.shadowSize, o.shadowScale);
+        log("gfx: def 0x%08X: lod %.2f/%.2f draw x%.2f [%.0f..%.0f] repeated %.2f zsprite %.2f shadow %u glow %u water %u weather %u", def, o.lod, o.charLod,
+            o.ddMul, o.ddMin, o.ddMax, o.repeated, o.zsprite, rd32(def + kShadowBufferSize), o.glow, o.water, o.weather);
     }
     const Original& o = it->second;
-    const float dd = s.drawDistance / 100.0f, lod = 100.0f / static_cast<float>(std::max(10, s.modelDetail));
+    const float dd = s.drawDistance / 100.0f;
     wrf32(def + kDrawDistanceMultiplier, o.ddMul * dd);
     wrf32(def + kDrawDistanceMaximum, o.ddMax * dd);
     wrf32(def + kDrawDistanceMinimum, o.ddMin * dd);
     wrf32(def + kRepeatedMeshDrawDistanceFactor, o.repeated * dd);
     wrf32(def + kZSpriteDrawDistanceMultiplier, o.zsprite * dd);
-    wrf32(def + kLODErrorTolerance, o.lod * lod);
-    wrf32(def + kCharacterLODErrorTolerance, o.charLod * lod);
-    wr32(def + kShadowBufferSize, s.shadowSize ? static_cast<uint32_t>(s.shadowSize) : o.shadowSize);
+    wr8(def + kEnableGlow, o.glow && s.glow ? 1 : 0);
+    wr8(def + kEnableWaterReflection, o.water && s.water ? 1 : 0);
+    wr8(def + kEnableWeatherEffects, o.weather && s.weather ? 1 : 0);
+}
+
+// FABLE_GFX_DEFAULTS="key=value,key=value" (graphics.txt keys) seeds the settings when no file exists
+void seedFromEnv() {
+    const char* d = std::getenv("FABLE_GFX_DEFAULTS");
+    if (!d || !*d) return;
+    std::string all(d);
+    size_t p = 0;
+    while (p < all.size()) {
+        size_t q = all.find(',', p);
+        if (q == std::string::npos) q = all.size();
+        parseLine(all.substr(p, q - p).c_str(), g_settings);
+        p = q + 1;
+    }
+    g_seeded = true;
 }
 
 }  // namespace
+
+const char* qualityName(int q) {
+    static const char* names[] = {"Low", "Normal", "High", "Highest"};
+    return names[clampQ(q)];
+}
 
 void load() {
     if (g_loaded) return;
     g_loaded = true;
     if (FILE* f = std::fopen(path().c_str(), "r")) {
         char line[128];
-        while (std::fgets(line, sizeof line, f)) {
-            int v = 0;
-            if (std::sscanf(line, "draw_distance=%d", &v) == 1) g_settings.drawDistance = std::clamp(v, 30, 150);
-            else if (std::sscanf(line, "model_detail=%d", &v) == 1) g_settings.modelDetail = std::clamp(v, 25, 100);
-            else if (std::sscanf(line, "shadow_size=%d", &v) == 1) g_settings.shadowSize = v;
-            else if (std::sscanf(line, "shadows=%d", &v) == 1) g_settings.shadows = v != 0;
-            else if (std::sscanf(line, "glow=%d", &v) == 1) g_settings.glow = v != 0;
-        }
+        while (std::fgets(line, sizeof line, f)) parseLine(line, g_settings);
         std::fclose(f);
+        g_seeded = true;
+    } else {
+        seedFromEnv();
     }
 }
 
@@ -102,9 +141,12 @@ void set(const Settings& s) {
     std::lock_guard<std::mutex> l(g_lock);
     load();
     g_settings = s;
+    g_seeded = true;
     g_pending = true;
     save();
 }
+
+bool seeded() { std::lock_guard<std::mutex> l(g_lock); load(); return g_seeded; }
 
 uint32_t shadowBufferSize() { return g_shadowSize; }
 
@@ -123,7 +165,7 @@ bool applyPending() {
 
 }  // namespace host::gfx
 
-// 0xB24690: bool __thiscall CEngine::SetVideoOptions(const CVideoOptions* o)
+// 0xB24690: bool __thiscall CEngine::SetVideoOptions(const CEngineVideoOptions* o)
 extern "C" void host_video_options(Ctx* c) {
     using namespace host::gfx;
     const uint32_t engine = c->ecx, opts = rd32(c->esp + 4);
@@ -131,19 +173,46 @@ extern "C" void host_video_options(Ctx* c) {
     {
         std::lock_guard<std::mutex> l(g_lock);
         load();
-        s = g_settings;
         g_engine = engine;
         if (!g_optsCopy) g_optsCopy = gcalloc(1, 64);
         if (opts != g_optsCopy) std::memcpy(gp(g_optsCopy), gp(opts), 52);
+        if (!g_seeded) {  // first run without a file or preset: start from the game's own choice
+            g_settings.landscape = clampQ(static_cast<int>(rd32(opts + kLandscape)));
+            g_settings.model = clampQ(static_cast<int>(rd32(opts + kMesh)));
+            g_settings.texture = clampQ(static_cast<int>(rd32(opts + kTexture)));
+            g_settings.shadow = clampQ(static_cast<int>(rd32(opts + kShadow)));
+            g_settings.effects = clampQ(static_cast<int>(rd32(opts + kEffects)));
+            g_seeded = true;
+            save();
+        }
+        s = g_settings;
     }
-    HLOG(1, "gfx: SetVideoOptions(engine 0x%08X): %ux%u, dwords %08X %08X %08X %08X %08X %08X %08X %08X %08X %08X %08X", engine, rd32(opts), rd32(opts + 4),
-         rd32(opts + 8), rd32(opts + 12), rd32(opts + 16), rd32(opts + 20), rd32(opts + 24), rd32(opts + 28), rd32(opts + 32), rd32(opts + 36),
-         rd32(opts + 40), rd32(opts + 44), rd32(opts + 48));
+    HLOG(1, "gfx: SetVideoOptions(engine 0x%08X): game asks %ux%u, quality %u %u %u %u %u, aa %u", engine, rd32(opts), rd32(opts + 4), rd32(opts + kLandscape),
+         rd32(opts + kMesh), rd32(opts + kTexture), rd32(opts + kShadow), rd32(opts + kEffects), rd32(opts + kAntialias));
+    const bool hostGfx = std::getenv("FABLE_HOST_GFX") != nullptr;
+    if (hostGfx) {
+        // the host's values replace the game's (its Video Options page is inert); the game's
+        // resolution is the window, the host renders a 3:2-preserving fraction of it
+        const uint32_t w = rd32(opts + kWidth), h = rd32(opts + kHeight);
+        const uint32_t sw = std::max(320u, (w * static_cast<uint32_t>(s.resolutionScale) / 100) & ~3u);
+        const uint32_t sh = std::max(200u, (h * static_cast<uint32_t>(s.resolutionScale) / 100) & ~3u);
+        wr32(g_optsCopy + kWidth, sw), wr32(g_optsCopy + kHeight, sh);
+        wr32(g_optsCopy + kLandscape, static_cast<uint32_t>(s.landscape));
+        wr32(g_optsCopy + kMesh, static_cast<uint32_t>(s.model));
+        wr32(g_optsCopy + kTexture, static_cast<uint32_t>(s.texture));
+        wr32(g_optsCopy + kShadow, static_cast<uint32_t>(s.shadow));
+        wr32(g_optsCopy + kEffects, static_cast<uint32_t>(s.effects));
+        wr32(g_optsCopy + kAntialias, 0);
+        if (s.resolutionScale == 100) wr32(g_optsCopy + kWidth, w), wr32(g_optsCopy + kHeight, h);
+        HLOG(1, "gfx: host settings: %ux%u (%d%%), landscape %s, model %s, texture %s, shadow %s, effects %s, draw %d%%, glow %d, water %d, weather %d",
+             rd32(g_optsCopy), rd32(g_optsCopy + 4), s.resolutionScale, qualityName(s.landscape), qualityName(s.model), qualityName(s.texture),
+             qualityName(s.shadow), qualityName(s.effects), s.drawDistance, s.glow, s.water, s.weather);
+        wr32(c->esp + 4, g_optsCopy);
+    }
     for (uint32_t slot : kDefSlots) applyToDef(rd32(engine + slot), s);
-    // the renderer identifies shadow passes by the buffer size the active defs name
-    uint32_t size = 0;
-    for (uint32_t slot : kDefSlots)
-        if (const uint32_t def = rd32(engine + slot)) size = rd32(def + kShadowBufferSize);
-    g_shadowSize = size;
+    // the renderer identifies shadow passes by the buffer size the shadow-quality def names
+    const uint32_t used = hostGfx ? g_optsCopy : opts;
+    const uint32_t shadowDef = rd32(engine + kDefSlots[clampQ(static_cast<int>(rd32(used + kShadow)))]);
+    g_shadowSize = shadowDef ? rd32(shadowDef + kShadowBufferSize) : 0;
     F_00B24690_orig(c);
 }

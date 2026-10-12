@@ -45,6 +45,13 @@ constexpr uint32_t kFrontEndButtonProcess = 0x54DBC0;
 constexpr uint32_t kUiManager = 0x13B8710;      // its instance (0 before the first GetInstance)
 constexpr uint32_t kDefAction = 228;             // CUIDef::Action (the Ego_r PDB has it at 224)
 constexpr uint32_t kActionBack = 86;             // the action of Back / Cancel / No buttons
+constexpr uint32_t kActionVideoOptions = 13;     // the Options screen's Video Options button
+// FABLE_HOST_GFX=1: the host (overlay / launcher) owns the graphics settings and the game's
+// Video Options page is kept out of reach (the pad skips it, a click on it does nothing).
+bool hostGfx() {
+    static const bool on = [] { const char* e = std::getenv("FABLE_HOST_GFX"); return e && std::atoi(e) != 0; }();
+    return on;
+}
 
 enum : uint32_t { EV_UP = 0, EV_DOWN = 1, EV_LEFT = 2, EV_RIGHT = 3, EV_SELECT = 4, EV_BACK = 5, EV_MOUSE_MOVE = 0x19,
                   EV_LEFT_PRESS = 0x1A, EV_LEFT_RELEASE = 0x1C };
@@ -117,6 +124,7 @@ std::vector<Button> activeButtons(uint32_t mgr, uint32_t scratch) {
         bt.r = rdf32(size) * rdf32(off + 8) + rdf32(pos);
         bt.b = rdf32(size + 4) * rdf32(off + 12) + rdf32(pos + 4);
         if (!(bt.r > bt.l && bt.b > bt.t) || !std::isfinite(bt.l + bt.r + bt.t + bt.b)) continue;
+        if (hostGfx() && bt.action == kActionVideoOptions) continue;
         out.push_back(bt);
     }
     return out;
@@ -431,6 +439,22 @@ extern "C" void host_ui_event(Ctx* c) {
     // screens) send the Xbox screens their own select/back events, which must reach them
     // untouched (the navigator used to turn the pause menu's select into a mouse click).
     const uint32_t from = rd32(c->esp);
+    // a mouse / touch press on the Video Options button: dropped when the host owns graphics
+    if (hostGfx() && ev == EV_LEFT_PRESS && from >= 0x42E3EE && from < 0x42E98F && !liveGui()) {
+        const uint32_t savedEsp = c->esp;
+        c->esp = (c->esp - 0x80) & ~0xFu;
+        bool block = false;
+        {
+            const uint32_t head = rd32(mgr + 4);
+            uint32_t n = rd32(head);
+            for (int guard = 0; n != head && guard < 1024; ++guard, n = rd32(n)) {
+                const uint32_t widget = rd32(n + 8);
+                if (widget && rd8(widget + 0x160) && defAction(widget, c->esp + 0x20) == kActionVideoOptions) block = true;
+            }
+        }
+        c->esp = savedEsp;
+        if (block) { HLOG(1, "menu: Video Options is host-owned; click ignored"); retStd(c, 0, 1); return; }
+    }
     if (ev <= EV_BACK && from >= 0x42E3EE && from < 0x42E98F && mgr == guestCall(kGetUiManager, {})) {
         const uint32_t savedEsp = c->esp;
         c->esp = (c->esp - 0x80) & ~0xFu;
@@ -470,6 +494,41 @@ extern "C" void host_open_inventory(Ctx* c) {
         return;
     }
     F_0058F649_orig(c);
+}
+
+// 0x47E196 CTCInGameMenu::SaveGame(int slot): after writing the files it re-registers the PC
+// menu object at this+0xEC (set only by OpenInGameMenuPC, 0x4804DE) with the UI manager as an
+// observer (its part at +4: CObservable::RemoveObserver / AddObserver, 0x55C9C0 / 0x55CA90)
+// and notifies it through the part's virtual 3, with no null check. The PC build never saves
+// from the Xbox pause menu, which leaves that member null (device crash on Hero Save). A
+// stand-in observer whose virtuals are host no-ops takes the calls; afterwards it is removed
+// from the manager again and the member is null as before.
+namespace {
+uint32_t g_saveStandIn = 0;
+void standInNotify(Ctx* c) { retStd(c, 0, 1); }  // virtual 3: __thiscall (int)
+void standInDetach(Ctx* c) { retStd(c, 0, 0); }  // virtual 5, from RemoveObserver: __thiscall ()
+void standInOther(Ctx* c) { HLOG(0, "menu: the save stand-in's virtual was called unexpectedly"); retStd(c, 0, 0); }
+}  // namespace
+extern "C" void F_0047E196_orig(Ctx* c);
+extern "C" void host_save_game(Ctx* c) {
+    const uint32_t menu = c->ecx;
+    const bool standIn = menu && rd32(menu + 0xEC) == 0;
+    if (standIn) {
+        if (!g_saveStandIn) {
+            const uint32_t vt = gcalloc(8, 4), obj = gcalloc(2, 4);
+            for (int i = 0; i < 8; ++i)
+                wr32(vt + 4 * i, addTrap("CTCInGameMenu PC menu stand-in", i == 3 ? standInNotify : i == 5 ? standInDetach : standInOther));
+            wr32(obj + 4, vt);  // the observer part at +4 holds the vtable
+            g_saveStandIn = obj;
+        }
+        wr32(menu + 0xEC, g_saveStandIn);
+        HLOG(1, "menu: SaveGame(%d) from the Xbox pause menu: PC menu stand-in installed", static_cast<int>(rd32(c->esp + 4)));
+    }
+    F_0047E196_orig(c);
+    if (standIn && rd32(menu + 0xEC) == g_saveStandIn) {
+        if (const uint32_t manager = rd32(0x13B8710)) guestCallThis(0x55C9C0, manager, {g_saveStandIn + 4});  // CObservable::RemoveObserver
+        wr32(menu + 0xEC, 0);
+    }
 }
 
 // 0x533D30 CComponent::GetSize(C2DVector* out): the bounding box of the children. The Xbox

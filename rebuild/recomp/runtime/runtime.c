@@ -44,20 +44,53 @@ int recomp_init_memory(void) {
 static struct { const RecompEntry* table; uint32_t size; } g_tables[RECOMP_MAX_TABLES];
 static int g_numTables;
 
+/* Indirect branches resolve through an open-addressing hash of every table (the sorted
+   tables stay the fallback and the source): a binary search over ~40k entries per virtual
+   call was the single hottest host function on the handheld. Built once the tables are
+   registered (before the guest starts), rebuilt when another image registers. */
+typedef struct HashEntry { uint32_t addr; GuestFn fn; } HashEntry;
+typedef struct Hash { uint32_t mask; HashEntry e[1]; } Hash;
+static Hash* volatile g_hash;  /* swapped whole; a superseded table is kept (guest threads may still read it) */
+
+static void hashInsert(Hash* h, uint32_t addr, GuestFn fn) {
+    uint32_t i = (addr * 2654435761u) >> 7;
+    for (;; ++i) {
+        i &= h->mask;
+        if (!h->e[i].fn) { h->e[i].addr = addr; h->e[i].fn = fn; return; }
+        if (h->e[i].addr == addr) return;
+    }
+}
+
+static void buildHash(void) {
+    uint32_t total = recomp_table_size, cap = 1024, i;
+    int t;
+    Hash* h;
+    for (t = 0; t < g_numTables; ++t) total += g_tables[t].size;
+    while (cap < total * 2) cap <<= 1;
+    h = calloc(1, sizeof(Hash) + (size_t)cap * sizeof(HashEntry));
+    h->mask = cap - 1;
+    for (i = 0; i < recomp_table_size; ++i) hashInsert(h, recomp_table[i].addr, recomp_table[i].fn);
+    for (t = 0; t < g_numTables; ++t)
+        for (i = 0; i < g_tables[t].size; ++i) hashInsert(h, g_tables[t].table[i].addr, g_tables[t].table[i].fn);
+    g_hash = h;
+}
+
 void recomp_register_table(const RecompEntry* table, uint32_t size) {
     if (g_numTables < RECOMP_MAX_TABLES) {
         g_tables[g_numTables].table = table;
         g_tables[g_numTables].size = size;
         ++g_numTables;
     }
+    buildHash();
 }
 
-/* For the host's sampling profiler: the registered tables. */
-uint32_t recomp_num_tables(void) { return (uint32_t)g_numTables; }
+/* For the host's sampling profiler: the main table (index 0) and the registered ones. */
+uint32_t recomp_num_tables(void) { return (uint32_t)g_numTables + 1; }
 const RecompEntry* recomp_table_entries(uint32_t i, uint32_t* n) {
-    if (i >= (uint32_t)g_numTables) { *n = 0; return 0; }
-    *n = g_tables[i].size;
-    return g_tables[i].table;
+    if (i == 0) { *n = recomp_table_size; return recomp_table; }
+    if (i > (uint32_t)g_numTables) { *n = 0; return 0; }
+    *n = g_tables[i - 1].size;
+    return g_tables[i - 1].table;
 }
 
 static GuestFn lookupIn(const RecompEntry* t, uint32_t n, uint32_t target) {
@@ -71,8 +104,19 @@ static GuestFn lookupIn(const RecompEntry* t, uint32_t n, uint32_t target) {
 }
 
 GuestFn recomp_lookup(uint32_t target) {
-    GuestFn f = lookupIn(recomp_table, recomp_table_size, target);
+    GuestFn f;
+    const Hash* h = g_hash;
+    if (h) {
+        uint32_t i = (target * 2654435761u) >> 7;
+        for (;; ++i) {
+            i &= h->mask;
+            if (!h->e[i].fn) return NULL;
+            if (h->e[i].addr == target) return h->e[i].fn;
+        }
+    }
+    f = lookupIn(recomp_table, recomp_table_size, target);
     for (int i = 0; !f && i < g_numTables; ++i) f = lookupIn(g_tables[i].table, g_tables[i].size, target);
+    if (!g_hash) buildHash();  /* no image registered itself: build on the first indirect branch */
     return f;
 }
 

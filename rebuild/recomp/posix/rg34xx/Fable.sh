@@ -15,6 +15,10 @@ export DXVK_LOG_LEVEL="${DXVK_LOG_LEVEL:-warn}"
 export FABLE_RECOMP_LOG="${FABLE_RECOMP_LOG:-1}"
 export FABLE_PAD_MAPPINGS="$DIR/gamecontrollerdb.txt"   # the built-in pad's SDL mapping
 export FABLE_OVERLAY=1          # the pad's menu/function key (or Back+Start held) opens the host menu
+export FABLE_HOST_GFX=1         # graphics settings live in the host menu; the game's Video Options entry is inert
+# first-run graphics preset for this device (save/graphics.txt keeps what the host menu sets afterwards):
+# shadows and water reflections are whole extra scene passes, the biggest cost on the Mali-G31
+export FABLE_GFX_DEFAULTS="${FABLE_GFX_DEFAULTS:-resolution_scale=100,landscape_detail=1,model_detail=1,texture_detail=1,shadow_quality=0,effects_quality=1,draw_distance=100,glow=1,water_reflection=0,weather=1}"
 export FABLE_PAD_QUIT=1         # Back+Start held for two seconds exits
 export FABLE_VOLUME_KEYS=1      # the volume rocker sets the game's master volume
 export FABLE_PROFILE="${FABLE_PROFILE:-60}"  # sampling profiler: the hottest functions every 60 s in log.txt (0 = off)

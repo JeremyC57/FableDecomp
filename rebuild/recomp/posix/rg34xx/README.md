@@ -73,9 +73,18 @@ Fable/            its files, in the folder of the same name next to it
   for two seconds exits (`FABLE_PAD_QUIT=1`).
 - **Host menu** (`FABLE_OVERLAY=1`, `posix/overlay/`): the pad's menu/function key (SDL's
   guide button; Back + Start held 1.5 s also works) opens a menu over the game: resume,
-  volume, FPS counter, renderer statistics, log level, vsync, screenshot (`save/screenshot_NNN.bmp`),
-  exit (closes the game's window; a hard exit follows after four seconds). The GLES renderer
-  draws it in Present with an embedded 8x16 font (`overlay/gen_font.py`).
+  graphics settings, volume, FPS counter, renderer statistics, log level, vsync, screenshot
+  (`save/screenshot_NNN.bmp`), exit (closes the game's window; a hard exit follows after
+  four seconds). The GLES renderer draws it in Present with an embedded 8x16 font
+  (`overlay/gen_font.py`).
+- **Graphics settings** (`FABLE_HOST_GFX=1`): the game's own Video Options entry is inert;
+  the host menu's Graphics page holds what it had (landscape, model, texture, shadow and
+  effects detail, each Low..Highest; shadow Low = no shadows) plus a render resolution
+  (50-100 % of the screen, scaled up on present), draw distance, glow, water reflections
+  and weather. Changes apply at once and are saved in `save/graphics.txt`; `Fable.sh`'s
+  `FABLE_GFX_DEFAULTS` is the first-run preset (shadows and water reflections off: each is
+  an extra scene pass). Lower the render resolution first if the GPU is the limit, the
+  draw distance and model detail if the CPU is (the statistics line shows the split).
 - **Volume.** The OS's rocker does not reach the game's mixer, so with `FABLE_VOLUME_KEYS=1`
   a thread reads KEY_VOLUMEUP/DOWN from the evdev devices that have them and steps the host's
   master volume (`save/volume.txt`; also in the host menu).
