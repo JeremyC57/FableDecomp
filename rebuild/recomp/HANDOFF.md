@@ -70,7 +70,12 @@ user's original game folder; no retail bytes or generated code are in git.
     → GLSL ES translator (`dx9shader.cpp`) and the device (`gl_renderer.cpp`). Renders
     into an FBO in Direct3D row order; the vertex epilogue negates clip y (so cull winding
     swaps: D3DCULL_CCW → GL front CCW). Verified through gameplay under Mesa llvmpipe.
-    `FABLE_GLES_TRACE=N` / `FABLE_GLES_DUMP=<dir>` for diagnosis.
+    `FABLE_GLES_TRACE=N` / `FABLE_GLES_DUMP=<dir>` / `FABLE_GLES_DRAWDUMP=<frame>|<file>|purple[:min]`
+    for diagnosis. Runs on the RG34XX SP's stock OS through EGL on /dev/fb0 (`egl_fbdev.cpp`,
+    SDL dummy video). The vertex epilogue applies the D3D9 half-pixel shift (`uHalfPixel`).
+  - **Handheld host overlay** (`posix/overlay/`, `FABLE_OVERLAY=1`): guide button menu
+    (volume, FPS, stats, log level, vsync, screenshot, exit); `volkeys.cpp` volume rocker;
+    `--pad-probe` and `rg34xx/gamecontrollerdb.txt` for the stock pad; `HOLD_TARGET`.
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).

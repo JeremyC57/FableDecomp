@@ -86,3 +86,27 @@ surface to a pbuffer whose frames are copied into `/dev/fb0` (`swap()` handles 3
 `Fable.sh` no longer puts Mesa's fallback libraries on the path unless asked (they could have
 shadowed the OS's EGL). `FableRecomp --gl-probe` and `Fable-diag.sh` collect what the device
 has. Next step depends on `diag.txt` from the device.
+
+### Device tests 4-6: it runs; pad, volume, overlay, glow
+The GLES build ran on the RG34XX SP (menus ~28 fps). Follow-ups from the user's report:
+- **Pad**: the stock pad is "ANBERNIC-keys" (GUID 19002cb4…); SDL's automatic mapping had
+  Y on L1, the guide on R3 and the sticks as triggers. `FableRecomp --pad-probe` (run by
+  `Fable-diag.sh`) prints raw events; the mapping in `rg34xx/gamecontrollerdb.txt` is from
+  the user's probe (A b0, B b1, X b3, Y b2, L1 b4, R1 b5, L2 b10, R2 b11, Select b6, Start b7,
+  hat, L3 b9, R3 b12, menu b8, sticks a0-a3). Loaded through `FABLE_PAD_MAPPINGS`.
+- **Host overlay** (`posix/overlay/`): guide key or Back+Start held opens a menu drawn by
+  the GLES renderer (8x16 font from `gen_font.py`): resume, volume, FPS, renderer stats, log
+  level, vsync, screenshot (BMP), exit. `FABLE_PAD_QUIT=1`: Back+Start 2 s exits.
+- **Volume**: the OS rocker never reached the game's mixer; `volkeys.cpp` reads
+  KEY_VOLUMEUP/DOWN from evdev and steps a master volume in `audio.cpp` (`save/volume.txt`).
+- **Hold-to-target** (`HOLD_TARGET`, controller.cpp): the profile's CControlsDef sits at
+  CUserProfileManager+0x20, `ToggleZTarget` at +0x68; cleared in the GetPrimaryInputVector
+  hook so LT locks only while held. (Only the patch is verified: no NPC was in range in the
+  harness runs to see the lock release.)
+- **NPC glow offset**: `FABLE_GLES_DRAWDUMP=purple:<frame>` dumps every draw of the frame
+  after a purple patch appears. The glow is drawn into a 256x256 RT (draws 483-490: correct
+  position), downsampled to 128x128, blurred twice (vs 269: texcoords + c[92..95]) and
+  composited full-screen (alpha blend). Each pass shifted it half a source texel: the game's
+  offsets assume Direct3D 9's integer pixel centres. The vertex epilogue now adds half a
+  viewport pixel (`uHalfPixel`), as the RHW path did; DXVK does the same.
+- Translator: `mov a0.x` rounds to nearest (Microsoft's vs_1_1 docs), not floor.
