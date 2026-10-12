@@ -1808,6 +1808,22 @@ bool Device::dumpFrameWanted() {
     if (!spec) return false;
     if (spec[0] == '/') {
         if (!target && access(spec, F_OK) == 0) { target = frames + 1; unlink(spec); log("gles trace: dumping frame %u", target); }
+    } else if (std::strcmp(spec, "purple") == 0) {
+        // dump the frame after one whose back buffer shows a patch of purple (the NPC glow)
+        static bool done = false;
+        if (!target && !done && frames > 100 && mainFbo) {
+            const UINT w = pp.BackBufferWidth, h = pp.BackBufferHeight;
+            std::vector<unsigned char> buf(static_cast<size_t>(w) * h * 4);
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
+            glReadPixels(0, 0, static_cast<GLsizei>(w), static_cast<GLsizei>(h), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
+            int c = 0;
+            for (UINT y = 0; y < h; y += 3)
+                for (UINT x = 0; x < w; x += 3) {
+                    const unsigned char* q = &buf[(static_cast<size_t>(y) * w + x) * 4];
+                    if (q[2] > q[0] + 15 && q[2] > q[1] + 40 && q[0] > 90 && q[1] < 150) ++c;
+                }
+            if (c > 60) { target = frames + 2; done = true; log("gles trace: purple (%d) in frame %u: dumping frame %u", c, frames + 1, target); }
+        }
     } else if (!target) {
         target = static_cast<uint32_t>(atoi(spec));
     }
@@ -1862,6 +1878,7 @@ void Device::saveScreenshot() {
 HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const RGNDATA*) {
     int ww = fbWidth, wh = fbHeight;
     if (!w32::fbdevGl()) SDL_GL_GetDrawableSize(window, &ww, &wh);
+    dumpFrameWanted();  // FABLE_GLES_DRAWDUMP=purple scans the finished frame
     drawOverlay();
     glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
