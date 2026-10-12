@@ -20,6 +20,8 @@ void touchMotion(int dx, int dy);
 void touchButton(int button, bool down);
 // XBOX_MENUS: the Xbox in-game menus instead of the PC ones (menu_nav.cpp).
 bool xboxMenusEnabled();
+// XBOX_CAMERA: the Xbox chase camera instead of the PC mouse camera (camera.cpp).
+bool xboxCameraEnabled();
 }  // namespace host::pad
 
 namespace host::menu {

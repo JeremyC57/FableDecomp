@@ -50,7 +50,8 @@ public class GameActivity extends SDLActivity {
     @Override
     protected String[] getArguments() {
         String dir = getIntent().getStringExtra("gameDir");
-        return new String[] {"--game", dir != null ? dir : ""};
+        float scale = getIntent().getFloatExtra("uiScale", 0f);
+        return new String[] {"--game", dir != null ? dir : "", "--ui-scale=" + Math.round(scale * 100f)};
     }
 
     @Override

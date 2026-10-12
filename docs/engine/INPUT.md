@@ -96,6 +96,19 @@ Contents
   - Open: on the inventory list, moving onto the last entry (Statistics) scrolls the whole
     list up out of its frame, scaled or not. `CList::CanMove` 0x537776 mixes `GetUIScale`
     pixels with the 640×480 conversions (`ConvertX` 0x52E580, 0x52E4D0).
+- **2026-10-12 — Xbox camera:** the PC camera is the mouse orbit mode (`CAMERA_PC_NORMAL`,
+  class 17) chosen because `CGameCameraManager::SetCameraManagerSetDef` 0x69AC90 (called from
+  `CWorld::UpdateRegionLoad` 0x4A539B with the region's `CCameraManagerSetDef`) reads
+  `CameraManagerPCMain` at def +0x44. Retail fields sit 4 bytes before the Ego_r PDB's:
+  +0x3C Main (856 `CAMERA_MANAGER_MAIN`), +0x40 Combat (858), +0x44 PCMain (857
+  `CAMERA_MANAGER_PC_MAIN`), +0x48 PCCombat. The Xbox managers (`CAMERA_NORMAL` class 3, the
+  string/cage chase camera) are still in the PC exe and data; `camera.cpp` patches the def
+  to name them when `XBOX_CAMERA = 1`. The right-stick processor
+  `CInputProcessControlCreatureRightStick::ProcessInput` 0x68D890 is shared: left/right
+  `PushLookAround` 0x699970, release `PushCurrentManualMode` 0x6988B0; with the Xbox
+  managers that keeps the new angle instead of snapping back, and the camera turns to follow
+  the hero's movement (`CamAutoGoBehind`). `SetUpMainCameraManagerSetDef` 0x69ADC0 (+0x44
+  too) is only called from `RemoveBuildingCameraMode` 0x69B610.
 - **Movies:** the intro and in-game .wmv movies skip on keyboard Escape only. With the native
   pad, Start/A/B/X/Y/Back hold Escape while a movie is loaded (`controller.cpp` movieSkip,
   `host::moviePlaying` in `video.cpp`).

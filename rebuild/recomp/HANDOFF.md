@@ -48,6 +48,17 @@ user's original game folder; no retail bytes or generated code are in git.
   - **Windowed mode** comes from the host (the game has none). It is set by
     `HKCU\Software\FableRecomp\Windowed`, `--windowed`, `--fullscreen` or Alt+Enter.
     Alt+Enter takes effect through the game's own device-reset path.
+  - **UI scale** (`ui_scale.cpp`, `--ui-scale=N` or `HKCU\Software\FableRecomp\UIScale`,
+    0 = automatic, else 100-300 %). The game's 2D layer is pixel-sized, so the HUD is tiny at
+    1080p and up. The lifter hooks the render-target-size getter (0x9BEDC0) so the game sees
+    width/s x height/s; automatic picks s so that it sees about 720 lines. `d3d9.cpp` scales
+    back-buffer viewports, scissor/clear/StretchRect rectangles and pre-transformed UP
+    vertices by s, so 3D still renders at full resolution. Only the new-profile
+    default-resolution code sees the real size.
+  - **Xbox chase camera** (`camera.cpp`, `XBOX_CAMERA` in the controller ini): the region's
+    camera set def is patched to name the Xbox camera managers (CameraManagerMain/Combat,
+    retail def +0x3C/+0x40) instead of the PC pair (+0x44/+0x48), so the right stick looks
+    around without snapping back and the camera follows the hero's movement.
   - **Controllers** are supported through XInput (`controller.cpp`): buttons and sticks
     become the game's DirectInput keyboard and mouse input. The mapping is in
     `<game>\FableRecomp_controller.ini`, which defaults to an Xbox-like layout.
@@ -96,6 +107,8 @@ xwd -root -silent | convert xwd:- shot.png      # screenshot
 | `dsound.cpp` | DirectSound: CreateSoundBuffer (DSBUFFERDESC), Lock/Unlock through guest staging, SetNotificationPositions; `GetDeviceID`; `DllGetClassObject(CLSID_DirectSoundPrivate)` device enumeration |
 | `video.cpp` | Host-implemented DirectShow filter graph for the movies: Media Foundation decode, waveOut audio, frames fed to the game's own `CBaseVideoRenderer` through its x86 interfaces |
 | `coroutine.cpp` | `host_coswitch`: the game's stack-switching coroutine routine (0x9D8650, hooked by the lifter) run on host fibers |
+| `ui_scale.cpp` | UI scale: `host_rtdims` (0x9BEDC0, hooked by the lifter) reports the screen size divided by the scale; the D3D side is in `d3d9.cpp` |
+| `camera.cpp` | `host_camera_set` (wraps `CGameCameraManager::SetCameraManagerSetDef` 0x69AC90): Xbox camera managers on the native pad |
 | `controller.cpp/.hpp` | XInput controller -> synthetic DirectInput keyboard/mouse events and state; mapping file `FableRecomp_controller.ini` |
 | `eh.cpp` | MSVC C++ exceptions: `_CxxThrowException` walks the guest fs:[0] chain, matches catch types, runs unwind and catch funclets, and resumes through the lifter's landing pads (`recomp_resume_at`) |
 | `gamedlls.cpp` | Stand-ins for 32-bit game-folder DLLs (`eula.dll!EBUEula` returns accepted) |
@@ -109,10 +122,12 @@ use llvm-mingw directly, or clang-cl after small tweaks.
 ```sh
 # Lifter (needs Zydis): build rebuild/recomp, then
 fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=host_coswitch \
-    --hook 0xAB6E40=host_joystick_update --hook 0x4088E0=host_primary_inputs \
-    --wrap 0x55CB10=host_ui_event --wrap 0x58F649=host_open_inventory --wrap 0x41CF47=host_ui_scale
-# coroutine switch -> host fibers; native Xbox pad (controller.cpp); pad menu navigation and
-# the Xbox in-game menus (menu_nav.cpp; --wrap keeps the original body as F_<addr>_orig)
+    --hook 0xAB6E40=host_joystick_update --hook 0x4088E0=host_primary_inputs --hook 0x9BEDC0=host_rtdims \
+    --wrap 0x55CB10=host_ui_event --wrap 0x58F649=host_open_inventory --wrap 0x41CF47=host_ui_scale \
+    --wrap 0x69AC90=host_camera_set
+# coroutine switch -> host fibers; native Xbox pad (controller.cpp); UI scale (ui_scale.cpp);
+# pad menu navigation and the Xbox in-game menus (menu_nav.cpp); the Xbox chase camera
+# (camera.cpp). --wrap keeps the original body as F_<addr>_orig
 fable_recomp ConfigDetect.dll - gen_cfg/ --prefix cfgdetect
 python3 rebuild/recomp/win/gen_com.py <llvm-mingw>/generic-w64-mingw32/include rebuild/recomp/win/com_vtables.inc
 cmake -S rebuild/recomp/win -B build/win -G Ninja \
