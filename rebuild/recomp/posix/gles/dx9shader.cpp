@@ -9,7 +9,7 @@ namespace host::gles {
 const char* kVertexPrologue =
     "#version 300 es\n"
     "precision highp float;\nprecision highp int;\n"
-    "uniform vec4 c[128];\nuniform int uColorBgra;\n"
+    "uniform vec4 c[128];\nuniform int uColorBgra;\nuniform vec2 uHalfPixel;\n"
     "out vec4 vColor0;\nout vec4 vColor1;\nout vec4 vTex0;\nout vec4 vTex1;\nout vec4 vTex2;\nout vec4 vTex3;\n"
     "out vec4 vTex4;\nout vec4 vTex5;\nout vec4 vTex6;\nout vec4 vTex7;\nout float vFog;\n";
 
@@ -323,7 +323,9 @@ std::string vertexShaderText(Translator& t) {
     s += t.body;
     s += "  vColor0 = oD0; vColor1 = oD1; vTex0 = oT0; vTex1 = oT1; vTex2 = oT2; vTex3 = oT3; vTex4 = oT4; vTex5 = oT5; vTex6 = oT6; vTex7 = oT7;\n"
          "  vFog = oFog; gl_PointSize = oPts;\n"
-         "  gl_Position = vec4(oPos.x, -oPos.y, 2.0 * oPos.z - oPos.w, oPos.w);\n"
+         // Direct3D 9 samples pixels at integer coordinates, GL at half-integers: shift by half a
+         // pixel (uHalfPixel = 1/viewport size) so texture-space tricks line up as on Direct3D
+         "  gl_Position = vec4(oPos.x + oPos.w * uHalfPixel.x, -oPos.y + oPos.w * uHalfPixel.y, 2.0 * oPos.z - oPos.w, oPos.w);\n"
          "}\n";
     return s;
 }

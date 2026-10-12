@@ -652,7 +652,7 @@ struct ProgramKey {
 struct ProgramKeyHash { size_t operator()(const ProgramKey& k) const { return (static_cast<size_t>(k.vs) * 131) ^ k.ps ^ (k.ffp.stage[0].colorOp << 8) ^ (k.ffp.stage[0].colorArg2 << 12) ^ (k.ffp.stage[0].alphaOp << 16) ^ (k.ffp.specular << 20) ^ (k.ffp.stage[1].colorOp << 22); } };
 struct Program {
     GLuint gl = 0;
-    GLint uC = -1, uColorBgra = -1, uPc = -1, uBump = -1, uProjMask = -1, uFogColor = -1, uFogEnable = -1, uAlphaFunc = -1, uAlphaRef = -1, uViewport = -1, uTFactor = -1;
+    GLint uC = -1, uColorBgra = -1, uPc = -1, uBump = -1, uProjMask = -1, uFogColor = -1, uFogEnable = -1, uAlphaFunc = -1, uAlphaRef = -1, uViewport = -1, uTFactor = -1, uHalfPixel = -1;
     GLint uS[6] = {-1, -1, -1, -1, -1, -1};
 };
 
@@ -1358,6 +1358,7 @@ Program* Device::program() {
         p.uAlphaRef = glGetUniformLocation(p.gl, "uAlphaRef");
         p.uViewport = glGetUniformLocation(p.gl, "uViewport");
         p.uTFactor = glGetUniformLocation(p.gl, "uTFactor");
+        p.uHalfPixel = glGetUniformLocation(p.gl, "uHalfPixel");
         glUseProgram(p.gl);
         for (int i = 0; i < 6; ++i) {
             const std::string n = "s" + std::to_string(i);
@@ -1391,6 +1392,7 @@ void Device::setConstants(Program* p) {
     if (p->uFogEnable >= 0) glUniform1i(p->uFogEnable, rs[D3DRS_FOGENABLE] ? 1 : 0);
     if (p->uAlphaFunc >= 0) glUniform1i(p->uAlphaFunc, rs[D3DRS_ALPHATESTENABLE] ? static_cast<int>(rs[D3DRS_ALPHAFUNC]) : 8);
     if (p->uAlphaRef >= 0) glUniform1f(p->uAlphaRef, (rs[D3DRS_ALPHAREF] & 255) / 255.0f);
+    if (p->uHalfPixel >= 0) glUniform2f(p->uHalfPixel, 1.0f / static_cast<float>(std::max(1u, viewport.Width)), 1.0f / static_cast<float>(std::max(1u, viewport.Height)));
     if (p->uViewport >= 0) glUniform4f(p->uViewport, static_cast<float>(viewport.X), static_cast<float>(viewport.Y), static_cast<float>(std::max(1u, viewport.Width)), static_cast<float>(std::max(1u, viewport.Height)));
     if (p->uTFactor >= 0) {
         const DWORD c = rs[D3DRS_TEXTUREFACTOR];
