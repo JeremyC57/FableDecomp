@@ -1,0 +1,5 @@
+# SDL game controller mappings loaded by Fable.sh (FABLE_PAD_MAPPINGS). One line per pad:
+# <guid>,<name>,<mappings>,platform:Linux  (the guid and the raw numbers come from
+# "FableRecomp --pad-probe", which Fable-diag.sh runs). Later lines override earlier ones.
+# Anbernic H700 stock OS built-in pad (RG35XX H/Plus/2024, RG40XX, RG34XX SP)
+19000000010000000100000001000000,Deeplay-keys,a:b3,b:b4,x:b5,y:b6,back:b10,guide:b12,start:b11,leftstick:b15,rightstick:b16,leftshoulder:b7,rightshoulder:b8,lefttrigger:b13,righttrigger:b14,dpup:b0,dpdown:b1,dpleft:b2,dpright:b9,leftx:a0,lefty:a1,rightx:a2,righty:a3,platform:Linux,

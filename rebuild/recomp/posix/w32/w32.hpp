@@ -71,6 +71,11 @@ void setCDrive(const std::string& dir);
 // ---- SDL / windows (user.cpp) ---------------------------------------------------------------
 void* sdlWindow(HWND h);  // SDL_Window* for a top-level window, nullptr otherwise
 bool glesRenderer();      // FABLE_RENDERER=gles: Direct3D 9 on OpenGL ES (gles/) instead of DXVK
+HWND mainHwnd();          // the game's top-level window, or nullptr
+float masterVolume();     // 0..1, audio.cpp (persisted in the data dir)
+void setMasterVolume(float v);
+void startVolumeKeys();   // volkeys.cpp: FABLE_VOLUME_KEYS=1
+int padProbe();           // --pad-probe diagnostics (xinput.cpp)
 bool fbdevGl();           // SDL video could not start (no KMS/DRM): dummy video, EGL on the framebuffer
 bool displayBounds(SDL_Rect& b);  // the display, or the framebuffer when fbdevGl()
 

@@ -62,7 +62,7 @@ pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET libavformat libavcodec libavut
 
 file(GLOB HOST_SOURCES ${WIN_DIR}/*.cpp)
 file(GLOB W32_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.c ${CMAKE_CURRENT_SOURCE_DIR}/w32/*.S)
-file(GLOB GLES_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/gles/*.cpp)  # Direct3D 9 census and the OpenGL ES renderer
+file(GLOB GLES_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/gles/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/overlay/*.cpp)  # Direct3D 9 census, the OpenGL ES renderer, the host overlay menu
 set(HOST_ALL ${HOST_SOURCES} ${W32_SOURCES} ${GLES_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/main_posix.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/movie_ffmpeg.cpp $<TARGET_OBJECTS:fable_gen>)
 if(ANDROID)

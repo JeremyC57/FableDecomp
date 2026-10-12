@@ -103,6 +103,9 @@ WndPtr mainWindow() {
         if (w->sdl) return w;
     return nullptr;
 }
+}  // namespace
+HWND mainHwnd() { WndPtr w = mainWindow(); return w ? w->h : nullptr; }
+namespace {
 
 bool g_fbdevGl = false;
 int g_fbW = 0, g_fbH = 0;

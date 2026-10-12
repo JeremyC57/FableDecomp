@@ -58,6 +58,7 @@ cp -L "$LIBDIR/ld-linux-aarch64.so.1" "$OUT/lib/"
 # vulkan loader + layers config dir is not needed; the ICD comes from the device
 chmod +x "$OUT/FableRecomp"
 cp "$HERE/README.md" "$OUT/README.txt"
+cp "$HERE/gamecontrollerdb.txt" "$OUT/gamecontrollerdb.txt"
 cat > "$OUT/FableRecomp_controller.ini.default" <<INI
 ; copied into game/ on first start if no FableRecomp_controller.ini exists there
 NATIVE_PAD = 1

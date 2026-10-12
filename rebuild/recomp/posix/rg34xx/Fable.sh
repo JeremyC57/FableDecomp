@@ -13,6 +13,10 @@ export SDL_AUDIODRIVER="${SDL_AUDIODRIVER:-alsa}"
 export DXVK_WSI_DRIVER=SDL2
 export DXVK_LOG_LEVEL="${DXVK_LOG_LEVEL:-warn}"
 export FABLE_RECOMP_LOG="${FABLE_RECOMP_LOG:-1}"
+export FABLE_PAD_MAPPINGS="$DIR/gamecontrollerdb.txt"   # the built-in pad's SDL mapping
+export FABLE_OVERLAY=1          # the pad's menu/function key (or Back+Start held) opens the host menu
+export FABLE_PAD_QUIT=1         # Back+Start held for two seconds exits
+export FABLE_VOLUME_KEYS=1      # the volume rocker sets the game's master volume
 mkdir -p "$DIR/save"
 # GBM/EGL/GLES come from the OS's GPU driver (the game looks for them itself); Mesa's copies
 # in lib/fallback (software rendering) are used only with FABLE_GL_FALLBACK=1

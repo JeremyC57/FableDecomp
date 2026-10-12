@@ -57,7 +57,19 @@ Fable/            its files, in the folder of the same name next to it
 - **Screen.** 720x480 is offered as a resolution; a new profile defaults to it. The UI
   scale is automatic (1x at 480 lines, so the HUD is laid out as on the Xbox).
 - **Controls.** The built-in pad is an SDL game controller: the Xbox control scheme with the
-  Xbox menus and camera (settings in `game/FableRecomp_controller.ini`).
+  Xbox menus and camera (settings in `game/FableRecomp_controller.ini`). The stock pad has
+  no mapping in SDL's database, so `gamecontrollerdb.txt` next to `Fable.sh` supplies one
+  (`FABLE_PAD_MAPPINGS`); its raw button and axis numbers come from `FableRecomp --pad-probe`,
+  which `Fable-diag.sh` runs (press the buttons in the order it names). Back + Start held
+  for two seconds exits (`FABLE_PAD_QUIT=1`).
+- **Host menu** (`FABLE_OVERLAY=1`, `posix/overlay/`): the pad's menu/function key (SDL's
+  guide button; Back + Start held 1.5 s also works) opens a menu over the game: resume,
+  volume, FPS counter, renderer statistics, log level, vsync, screenshot (`save/screenshot_NNN.bmp`),
+  exit (closes the game's window; a hard exit follows after four seconds). The GLES renderer
+  draws it in Present with an embedded 8x16 font (`overlay/gen_font.py`).
+- **Volume.** The OS's rocker does not reach the game's mixer, so with `FABLE_VOLUME_KEYS=1`
+  a thread reads KEY_VOLUMEUP/DOWN from the evdev devices that have them and steps the host's
+  master volume (`save/volume.txt`; also in the host menu).
 
 ## Building
 ```sh

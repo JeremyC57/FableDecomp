@@ -38,6 +38,7 @@ static int gameMain(int argc, char** argv) {
     w32::setDataDir(data);
     w32::setCDrive(data + "/drive_c");
     w32::setRegistryFile(data + "/registry.txt");
+    w32::startVolumeKeys();
 
     // Paths given in POSIX form (--game, FABLE_DIR) become Windows paths on drive Z:, which is
     // what the game expects of absolute paths.
@@ -47,6 +48,7 @@ static int gameMain(int argc, char** argv) {
     }
     for (int i = 1; i < argc; ++i)
         if (std::string(argv[i]) == "--gl-probe") return host::gles::fb::probe();  // diagnostics: EGL on the framebuffer, then exit
+        else if (std::string(argv[i]) == "--pad-probe") return w32::padProbe();
     w32::wstr cmd;
     for (int i = 0; i < argc; ++i) {
         const bool path = i > 0 && argv[i][0] == '/' && std::string(argv[i - 1]) == "--game";

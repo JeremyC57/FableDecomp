@@ -24,6 +24,10 @@ OUT="$DIR/diag.txt"
   echo "--- environment"; env | sort
   echo "--- ports launcher libs (PortMaster/stock)"
   ls -la /usr/lib/libSDL2* /roms/ports/PortMaster/libs* /mnt/sdcard/Roms/PORTS/PortMaster/libs* 2>&1 | head -40
+  echo "--- input devices"
+  for d in /sys/class/input/event*; do printf '%s: ' "$(basename "$d")"; cat "$d/device/name" 2>/dev/null; done
+  echo "--- pad probe: for 30 seconds press, in this order: A B X Y L1 R1 L2 R2 Select Start, D-pad up down left right, L3 R3, the menu key, volume up, volume down; then move the left stick right/down and the right stick right/down"
+  FABLE_PAD_MAPPINGS="$DIR/gamecontrollerdb.txt" "$DIR/lib/ld-linux-aarch64.so.1" --library-path "$DIR/lib" "$DIR/FableRecomp" --pad-probe 2>&1
   echo "--- EGL probe (window surface on the framebuffer; the screen should flash red, green, blue)"
   FABLE_RECOMP_LOG=1 FABLE_GL_WINDOW=window "$DIR/lib/ld-linux-aarch64.so.1" --library-path "$DIR/lib" "$DIR/FableRecomp" --gl-probe 2>&1
   echo "--- EGL probe (pbuffer + copy into /dev/fb0)"

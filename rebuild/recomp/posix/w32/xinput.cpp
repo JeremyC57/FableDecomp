@@ -3,10 +3,13 @@
 #include <SDL.h>
 
 #include "w32sdl.hpp"
+#include "../overlay/overlay.hpp"
 
 #include <algorithm>
 #include <cstdio>
 #include <cstdlib>
+#include <unistd.h>
+#include <vector>
 #include <xinput.h>
 
 namespace w32 {
@@ -35,6 +38,19 @@ void ensure() {
     g_init = true;
     SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS, "1");
     if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) != 0) std::fprintf(stderr, "SDL game controller init failed: %s\n", SDL_GetError());
+    // Extra mappings (SDL gamecontrollerdb.txt lines): FABLE_PAD_MAPPINGS names a file; the
+    // stock handheld pads need one (the launcher ships gamecontrollerdb.txt).
+    if (const char* f = std::getenv("FABLE_PAD_MAPPINGS")) {
+        const int n = SDL_GameControllerAddMappingsFromFile(f);
+        std::fprintf(stderr, "controller: %d mappings from %s\n", n, f);
+    }
+    for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+        char guid[64];
+        SDL_JoystickGetGUIDString(SDL_JoystickGetDeviceGUID(i), guid, sizeof guid);
+        char* m = SDL_GameControllerMappingForDeviceIndex(i);
+        std::fprintf(stderr, "controller: joystick %d \"%s\" guid %s: %s\n", i, SDL_JoystickNameForIndex(i), guid, m ? m : "no game controller mapping");
+        SDL_free(m);
+    }
     addSdlEventHook([](const SDL_Event& e) {
         if (e.type != SDL_CONTROLLERDEVICEADDED && e.type != SDL_CONTROLLERDEVICEREMOVED) return;
         std::lock_guard<std::mutex> l(g_lock);
@@ -95,10 +111,22 @@ DWORD WINAPI getState(DWORD user, XINPUT_STATE* s) {
     }
     if (!p && !virt) return ERROR_DEVICE_NOT_CONNECTED;
     if (!p) {
+        if (user == 0) host::overlay::filterPad(g, false);
         s->dwPacketNumber = ++g_packet[user];
         return ERROR_SUCCESS;
     }
     const XINPUT_GAMEPAD touch = g;
+    // FABLE_PAD_QUIT=1 (handhelds without a desktop): Back + Start held for two seconds exits
+    static const bool quitCombo = std::getenv("FABLE_PAD_QUIT") && std::atoi(std::getenv("FABLE_PAD_QUIT")) != 0;
+    if (quitCombo) {
+        static Uint32 since = 0;
+        if (SDL_GameControllerGetButton(p, SDL_CONTROLLER_BUTTON_BACK) && SDL_GameControllerGetButton(p, SDL_CONTROLLER_BUTTON_START)) {
+            if (!since) since = SDL_GetTicks();
+            else if (SDL_GetTicks() - since > 2000) { std::fprintf(stderr, "controller: Back+Start held: exiting\n"); std::fflush(nullptr); _exit(0); }
+        } else {
+            since = 0;
+        }
+    }
     const struct { SDL_GameControllerButton b; WORD x; } map[] = {
         {SDL_CONTROLLER_BUTTON_DPAD_UP, XINPUT_GAMEPAD_DPAD_UP}, {SDL_CONTROLLER_BUTTON_DPAD_DOWN, XINPUT_GAMEPAD_DPAD_DOWN},
         {SDL_CONTROLLER_BUTTON_DPAD_LEFT, XINPUT_GAMEPAD_DPAD_LEFT}, {SDL_CONTROLLER_BUTTON_DPAD_RIGHT, XINPUT_GAMEPAD_DPAD_RIGHT},
@@ -126,6 +154,7 @@ DWORD WINAPI getState(DWORD user, XINPUT_STATE* s) {
         pick(g.sThumbLX, g.sThumbLY, touch.sThumbLX, touch.sThumbLY);
         pick(g.sThumbRX, g.sThumbRY, touch.sThumbRX, touch.sThumbRY);
     }
+    if (user == 0) host::overlay::filterPad(g, SDL_GameControllerGetButton(p, SDL_CONTROLLER_BUTTON_GUIDE) != 0);
     s->dwPacketNumber = ++g_packet[user];
     return ERROR_SUCCESS;
 }
@@ -148,3 +177,41 @@ struct Registrar {
 } g_registrar;
 }  // namespace
 }  // namespace w32
+
+// --pad-probe: lists the joysticks and prints raw button/axis/hat events for 30 seconds, to
+// write a game controller mapping for an unknown pad.
+int w32::padProbe() {
+    if (SDL_Init(SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER | SDL_INIT_EVENTS) != 0) { std::fprintf(stderr, "pad probe: SDL_Init: %s\n", SDL_GetError()); return 1; }
+    if (const char* f = std::getenv("FABLE_PAD_MAPPINGS")) std::fprintf(stderr, "pad probe: %d mappings from %s\n", SDL_GameControllerAddMappingsFromFile(f), f);
+    std::fprintf(stderr, "pad probe: %d joysticks\n", SDL_NumJoysticks());
+    std::vector<SDL_Joystick*> opened;
+    for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+        char guid[64];
+        SDL_JoystickGetGUIDString(SDL_JoystickGetDeviceGUID(i), guid, sizeof guid);
+        SDL_Joystick* j = SDL_JoystickOpen(i);
+        if (!j) continue;
+        opened.push_back(j);
+        char* m = SDL_GameControllerMappingForDeviceIndex(i);
+        std::fprintf(stderr, "pad probe: joystick %d \"%s\" guid %s: %d axes, %d buttons, %d hats; path %s; mapping: %s\n", i, SDL_JoystickName(j), guid,
+                     SDL_JoystickNumAxes(j), SDL_JoystickNumButtons(j), SDL_JoystickNumHats(j), SDL_JoystickPath(j) ? SDL_JoystickPath(j) : "?", m ? m : "none");
+        SDL_free(m);
+    }
+    std::fprintf(stderr, "pad probe: press each button and move each stick (30 seconds)...\n");
+    const Uint32 end = SDL_GetTicks() + 30000;
+    std::vector<Sint16> last(64, 0);
+    while (SDL_GetTicks() < end) {
+        SDL_Event e;
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_JOYBUTTONDOWN || e.type == SDL_JOYBUTTONUP) std::fprintf(stderr, "pad probe: joy %d button %d %s\n", e.jbutton.which, e.jbutton.button, e.type == SDL_JOYBUTTONDOWN ? "down" : "up");
+            else if (e.type == SDL_JOYHATMOTION) std::fprintf(stderr, "pad probe: joy %d hat %d value %d\n", e.jhat.which, e.jhat.hat, e.jhat.value);
+            else if (e.type == SDL_JOYAXISMOTION) {
+                const int a = e.jaxis.axis;
+                if (a < 64 && std::abs(e.jaxis.value - last[a]) > 8000) { last[a] = e.jaxis.value; std::fprintf(stderr, "pad probe: joy %d axis %d value %d\n", e.jaxis.which, a, e.jaxis.value); }
+            } else if (e.type == SDL_KEYDOWN || e.type == SDL_KEYUP) std::fprintf(stderr, "pad probe: key %s %s\n", SDL_GetKeyName(e.key.keysym.sym), e.type == SDL_KEYDOWN ? "down" : "up");
+        }
+        SDL_Delay(5);
+    }
+    for (SDL_Joystick* j : opened) SDL_JoystickClose(j);
+    std::fprintf(stderr, "pad probe: done\n");
+    return 0;
+}

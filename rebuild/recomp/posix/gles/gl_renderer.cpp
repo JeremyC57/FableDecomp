@@ -17,6 +17,8 @@
 #include "dx9shader.hpp"
 #include "../w32/w32.hpp"
 #include "egl_fbdev.hpp"
+#include "../overlay/overlay.hpp"
+#include "../overlay/overlay_font.inc"
 
 #include <algorithm>
 #include <cmath>
@@ -118,6 +120,7 @@ PFNGLUNIFORM1FPROC glUniform1f;
 PFNGLUNIFORM1IPROC glUniform1i;
 PFNGLUNIFORM4FPROC glUniform4f;
 PFNGLUNIFORM4FVPROC glUniform4fv;
+PFNGLUNIFORM2FPROC glUniform2f;
 PFNGLUSEPROGRAMPROC glUseProgram;
 PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
 PFNGLVIEWPORTPROC glViewport;
@@ -206,6 +209,7 @@ bool loadGl() {
     glUniform1i = reinterpret_cast<PFNGLUNIFORM1IPROC>(getProc("glUniform1i"));
     glUniform4f = reinterpret_cast<PFNGLUNIFORM4FPROC>(getProc("glUniform4f"));
     glUniform4fv = reinterpret_cast<PFNGLUNIFORM4FVPROC>(getProc("glUniform4fv"));
+    glUniform2f = reinterpret_cast<PFNGLUNIFORM2FPROC>(getProc("glUniform2f"));
     glUseProgram = reinterpret_cast<PFNGLUSEPROGRAMPROC>(getProc("glUseProgram"));
     glVertexAttribPointer = reinterpret_cast<PFNGLVERTEXATTRIBPOINTERPROC>(getProc("glVertexAttribPointer"));
     glViewport = reinterpret_cast<PFNGLVIEWPORTPROC>(getProc("glViewport"));
@@ -657,6 +661,11 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     SDL_Window* window = nullptr;
     SDL_GLContext context = nullptr;
     int fbWidth = 0, fbHeight = 0;  // the framebuffer EGL surface (w32::fbdevGl())
+    GLuint overlayProgram = 0, overlayTexture = 0, overlayVbo = 0;
+    GLint overlayUSize = -1;
+    bool overlayVsync = true;
+    void drawOverlay();
+    void saveScreenshot();
     void setSwapInterval(int i) { if (w32::fbdevGl()) fb::setSwapInterval(i); else SDL_GL_SetSwapInterval(i); }
     bool es32 = false;
     // the back buffer
@@ -1676,9 +1685,141 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UIN
     return S_OK;
 }
 
+// ---- the host overlay (overlay/): text over the back buffer before it is presented ----
+void Device::drawOverlay() {
+    using namespace host::overlay;
+    if (!enabled()) return;
+    notePresent();
+    if (takeScreenshot()) saveScreenshot();
+    if (showStats()) {
+        char buf[160];
+        std::snprintf(buf, sizeof buf, "%u draws %u clears %u programs %ux%u", statDraws, statClears, static_cast<unsigned>(programs.size()), pp.BackBufferWidth, pp.BackBufferHeight);
+        setStats(buf);
+    }
+    if (host::overlay::vsync() != overlayVsync) { overlayVsync = host::overlay::vsync(); setSwapInterval(overlayVsync ? 1 : 0); }
+    const auto ls = lines(static_cast<int>(pp.BackBufferWidth), static_cast<int>(pp.BackBufferHeight));
+    if (ls.empty()) return;
+    if (!overlayProgram) {
+        const char* vs =
+            "#version 300 es\nprecision highp float;\nlayout(location = 0) in vec4 aPosUv;\nlayout(location = 1) in vec4 aColor;\n"
+            "uniform vec2 uSize;\nout vec2 vUv;\nout vec4 vColor;\nvoid main() {\n"
+            "  vec2 p = aPosUv.xy / uSize * 2.0 - 1.0;\n  gl_Position = vec4(p.x, p.y, 0.0, 1.0);\n  vUv = aPosUv.zw; vColor = aColor;\n}\n";
+        const char* fs =
+            "#version 300 es\nprecision mediump float;\nuniform sampler2D uTex;\nin vec2 vUv;\nin vec4 vColor;\nout vec4 o;\n"
+            "void main() { o = vec4(vColor.rgb, vColor.a * texture(uTex, vUv).r); }\n";
+        const GLuint v = compileShader(GL_VERTEX_SHADER, vs, "overlay vertex shader"), f = compileShader(GL_FRAGMENT_SHADER, fs, "overlay fragment shader");
+        overlayProgram = linkProgram(v, f);
+        if (v) glDeleteShader(v);
+        if (f) glDeleteShader(f);
+        if (!overlayProgram) return;
+        overlayUSize = glGetUniformLocation(overlayProgram, "uSize");
+        glUseProgram(overlayProgram);
+        glUniform1i(glGetUniformLocation(overlayProgram, "uTex"), 0);
+        // the atlas: 96 cells of 8x16 (95 glyphs + a solid block), one byte per pixel
+        std::vector<unsigned char> atlas(96 * 8 * 16, 0);
+        for (int g = 0; g < 96; ++g)
+            for (int y = 0; y < 16; ++y)
+                for (int x = 0; x < 8; ++x) atlas[static_cast<size_t>(y) * 96 * 8 + g * 8 + x] = g == 95 ? 255 : (kOverlayFont[g][y] & (0x80 >> x)) ? 255 : 0;
+        glGenTextures(1, &overlayTexture);
+        glBindTexture(GL_TEXTURE_2D, overlayTexture);
+        glTexStorage2D(GL_TEXTURE_2D, 1, GL_R8, 96 * 8, 16);
+        glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 96 * 8, 16, GL_RED, GL_UNSIGNED_BYTE, atlas.data());
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glGenBuffers(1, &overlayVbo);
+    }
+    // vertices: x, y (back-buffer pixels, y down), u, v, then colour
+    std::vector<float> verts;
+    const int sc = textScale(static_cast<int>(pp.BackBufferHeight));
+    auto quad = [&](float x0, float y0, float x1, float y1, int glyph, uint32_t argb) {
+        const float u0 = glyph / 96.0f, u1 = (glyph + 1) / 96.0f;
+        const float r = ((argb >> 16) & 255) / 255.0f, g = ((argb >> 8) & 255) / 255.0f, b = (argb & 255) / 255.0f, a = ((argb >> 24) & 255) / 255.0f;
+        // rows are in Direct3D order in the back buffer: y down maps to NDC bottom-up without a flip
+        const float p[6][4] = {{x0, y0, u0, 0}, {x1, y0, u1, 0}, {x1, y1, u1, 1}, {x0, y0, u0, 0}, {x1, y1, u1, 1}, {x0, y1, u0, 1}};
+        for (auto& v : p) { verts.insert(verts.end(), {v[0], v[1], v[2], v[3], r, g, b, a}); }
+    };
+    if (host::overlay::open()) {  // a dark panel behind the menu
+        int minX = 1 << 30, minY = 1 << 30, maxX = 0, maxY = 0;
+        for (const Line& l : ls) {
+            minX = std::min(minX, l.x), minY = std::min(minY, l.y);
+            maxX = std::max(maxX, l.x + static_cast<int>(l.text.size()) * 8 * sc), maxY = std::max(maxY, l.y + 16 * sc);
+        }
+        quad(static_cast<float>(minX - 12), static_cast<float>(minY - 12), static_cast<float>(maxX + 12), static_cast<float>(maxY + 12), 95, 0xD0101018);
+    }
+    for (const Line& l : ls) {
+        float x = static_cast<float>(l.x);
+        for (char c : l.text) {
+            const int g = (c >= 32 && c < 127) ? c - 32 : 0;
+            quad(x + 1, static_cast<float>(l.y) + 1, x + 8 * sc + 1, static_cast<float>(l.y + 16 * sc) + 1, g, 0xFF000000);  // shadow
+            quad(x, static_cast<float>(l.y), x + 8 * sc, static_cast<float>(l.y + 16 * sc), g, l.color);
+            x += 8 * sc;
+        }
+    }
+    glBindFramebuffer(GL_FRAMEBUFFER, mainFbo);
+    glViewport(0, 0, static_cast<GLsizei>(pp.BackBufferWidth), static_cast<GLsizei>(pp.BackBufferHeight));
+    glDisable(GL_SCISSOR_TEST);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_STENCIL_TEST);
+    glDisable(GL_CULL_FACE);
+    glColorMask(1, 1, 1, 1);
+    glEnable(GL_BLEND);
+    glBlendEquation(GL_FUNC_ADD);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glUseProgram(overlayProgram);
+    glUniform2f(overlayUSize, static_cast<float>(pp.BackBufferWidth), static_cast<float>(pp.BackBufferHeight));
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, overlayTexture);
+    glBindSampler(0, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, overlayVbo);
+    glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(verts.size() * sizeof(float)), verts.data(), GL_STREAM_DRAW);
+    for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 32, nullptr);
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 32, reinterpret_cast<const void*>(16));
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(verts.size() / 8));
+    // the game's state is re-applied on the next draw
+    rsDirty = true;
+    texDirty = true;
+    for (auto& smp : samplers) smp.dirty = true;
+    current = nullptr;
+    glUseProgram(0);
+    GLCHECK("overlay");
+}
+
+void Device::saveScreenshot() {
+    const UINT w = pp.BackBufferWidth, h = pp.BackBufferHeight;
+    std::vector<unsigned char> px(static_cast<size_t>(w) * h * 4);
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
+    glReadPixels(0, 0, static_cast<GLsizei>(w), static_cast<GLsizei>(h), GL_RGBA, GL_UNSIGNED_BYTE, px.data());
+    const char* dir = getenv("FABLE_RECOMP_DATA");
+    static int n = 0;
+    char name[512];
+    std::snprintf(name, sizeof name, "%s/screenshot_%03d.bmp", dir ? dir : ".", ++n);
+    FILE* f = fopen(name, "wb");
+    if (!f) { log("overlay: cannot write %s", name); return; }
+    // BMP, 24-bit, bottom-up rows: our rows are in Direct3D order (row 0 = top), so write them last-first
+    const uint32_t rowBytes = (w * 3 + 3) & ~3u, size = 54 + rowBytes * h;
+    unsigned char hdr[54] = {'B', 'M'};
+    auto put32 = [&](int at, uint32_t v) { hdr[at] = v & 255, hdr[at + 1] = (v >> 8) & 255, hdr[at + 2] = (v >> 16) & 255, hdr[at + 3] = v >> 24; };
+    put32(2, size), put32(10, 54), put32(14, 40), put32(18, w), put32(22, h), hdr[26] = 1, hdr[28] = 24, put32(34, rowBytes * h);
+    fwrite(hdr, 1, 54, f);
+    std::vector<unsigned char> row(rowBytes, 0);
+    for (UINT y = h; y-- > 0;) {
+        for (UINT x = 0; x < w; ++x) { const unsigned char* s = &px[(static_cast<size_t>(y) * w + x) * 4]; row[x * 3] = s[2], row[x * 3 + 1] = s[1], row[x * 3 + 2] = s[0]; }
+        fwrite(row.data(), 1, rowBytes, f);
+    }
+    fclose(f);
+    log("overlay: wrote %s", name);
+}
+
 HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const RGNDATA*) {
     int ww = fbWidth, wh = fbHeight;
     if (!w32::fbdevGl()) SDL_GL_GetDrawableSize(window, &ww, &wh);
+    drawOverlay();
     glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
     glDisable(GL_SCISSOR_TEST);
