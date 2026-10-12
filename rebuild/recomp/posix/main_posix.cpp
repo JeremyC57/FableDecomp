@@ -39,6 +39,7 @@ static int gameMain(int argc, char** argv) {
     w32::setCDrive(data + "/drive_c");
     w32::setRegistryFile(data + "/registry.txt");
     w32::startVolumeKeys();
+    w32::startProfiler();
 
     // Paths given in POSIX form (--game, FABLE_DIR) become Windows paths on drive Z:, which is
     // what the game expects of absolute paths.

@@ -17,6 +17,7 @@ export FABLE_PAD_MAPPINGS="$DIR/gamecontrollerdb.txt"   # the built-in pad's SDL
 export FABLE_OVERLAY=1          # the pad's menu/function key (or Back+Start held) opens the host menu
 export FABLE_PAD_QUIT=1         # Back+Start held for two seconds exits
 export FABLE_VOLUME_KEYS=1      # the volume rocker sets the game's master volume
+export FABLE_PROFILE="${FABLE_PROFILE:-60}"  # sampling profiler: the hottest functions every 60 s in log.txt (0 = off)
 mkdir -p "$DIR/save"
 # Clocks: the stock OS idles the H700 down; run the CPU and the GPU at their performance
 # governors for the session (restored on exit). FABLE_NO_PERF=1 leaves them alone.

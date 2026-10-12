@@ -75,6 +75,7 @@ HWND mainHwnd();          // the game's top-level window, or nullptr
 float masterVolume();     // 0..1, audio.cpp (persisted in the data dir)
 void setMasterVolume(float v);
 void startVolumeKeys();   // volkeys.cpp: FABLE_VOLUME_KEYS=1
+void startProfiler();     // profiler.cpp: FABLE_PROFILE=1 (or a report interval in seconds)
 int padProbe();           // --pad-probe diagnostics (xinput.cpp)
 bool fbdevGl();           // SDL video could not start (no KMS/DRM): dummy video, EGL on the framebuffer
 bool displayBounds(SDL_Rect& b);  // the display, or the framebuffer when fbdevGl()

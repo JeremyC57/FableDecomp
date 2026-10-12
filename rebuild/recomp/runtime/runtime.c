@@ -52,6 +52,14 @@ void recomp_register_table(const RecompEntry* table, uint32_t size) {
     }
 }
 
+/* For the host's sampling profiler: the registered tables. */
+uint32_t recomp_num_tables(void) { return (uint32_t)g_numTables; }
+const RecompEntry* recomp_table_entries(uint32_t i, uint32_t* n) {
+    if (i >= (uint32_t)g_numTables) { *n = 0; return 0; }
+    *n = g_tables[i].size;
+    return g_tables[i].table;
+}
+
 static GuestFn lookupIn(const RecompEntry* t, uint32_t n, uint32_t target) {
     uint32_t lo = 0, hi = n;
     while (lo < hi) {

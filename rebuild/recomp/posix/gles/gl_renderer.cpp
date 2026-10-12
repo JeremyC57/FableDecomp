@@ -723,6 +723,9 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     bool layoutValid = false;
     uint64_t lastPresentNs = 0;
     double frameMs = 0, glMs = 0;
+    Surface* lastFboRt = nullptr; Surface* lastFboDs = nullptr; GLuint lastFboId = 0; bool lastFboValid = false;
+    bool programDirty = true;  // vs/ps/stage states changed since program() last ran
+    GLuint boundIbo = ~0u;
     Ref<VertexShader> vs;
     Ref<PixelShader> ps;
     Ref<VertexDecl> decl;
@@ -818,7 +821,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE GetLightEnable(DWORD, WINBOOL* e) override { if (e) *e = FALSE; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetClipPlane(DWORD, const float*) override { return S_OK; }
     HRESULT STDMETHODCALLTYPE GetClipPlane(DWORD, float*) override { return D3DERR_INVALIDCALL; }
-    HRESULT STDMETHODCALLTYPE SetRenderState(D3DRENDERSTATETYPE s, DWORD v) override { if (s < 256 && rs[s] != v) { rs[s] = v; rsDirty = true; miscDirty = true; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetRenderState(D3DRENDERSTATETYPE s, DWORD v) override { if (s < 256 && rs[s] != v) { rs[s] = v; rsDirty = true; miscDirty = true; if (s == D3DRS_SPECULARENABLE) programDirty = true; } return S_OK; }
     HRESULT STDMETHODCALLTYPE GetRenderState(D3DRENDERSTATETYPE s, DWORD* v) override { if (!v) return E_POINTER; *v = s < 256 ? rs[s] : 0; return S_OK; }
     HRESULT STDMETHODCALLTYPE CreateStateBlock(D3DSTATEBLOCKTYPE, IDirect3DStateBlock9**) override { return D3DERR_NOTAVAILABLE; }
     HRESULT STDMETHODCALLTYPE BeginStateBlock() override { return D3DERR_NOTAVAILABLE; }
@@ -828,7 +831,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE GetTexture(DWORD st, IDirect3DBaseTexture9** out) override { if (!out || st >= 8) return D3DERR_INVALIDCALL; if (textures[st]) textures[st]->AddRef(); *out = textures[st]; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetTexture(DWORD st, IDirect3DBaseTexture9* t) override;
     HRESULT STDMETHODCALLTYPE GetTextureStageState(DWORD st, D3DTEXTURESTAGESTATETYPE t, DWORD* v) override { if (!v || st >= 8 || t > 32) return D3DERR_INVALIDCALL; *v = tss[st][t]; return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetTextureStageState(DWORD st, D3DTEXTURESTAGESTATETYPE t, DWORD v) override { if (st < 8 && t <= 32 && tss[st][t] != v) { tss[st][t] = v; miscDirty = true; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetTextureStageState(DWORD st, D3DTEXTURESTAGESTATETYPE t, DWORD v) override { if (st < 8 && t <= 32 && tss[st][t] != v) { tss[st][t] = v; miscDirty = true; programDirty = true; } return S_OK; }
     HRESULT STDMETHODCALLTYPE GetSamplerState(DWORD s, D3DSAMPLERSTATETYPE t, DWORD* v) override { if (!v || s >= 8 || t > 13) return D3DERR_INVALIDCALL; *v = samplers[s].v[t]; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetSamplerState(DWORD s, D3DSAMPLERSTATETYPE t, DWORD v) override { if (s < 8 && t <= 13 && samplers[s].v[t] != v) { samplers[s].v[t] = v; samplers[s].dirty = true; anySamplerDirty = true; } return S_OK; }
     HRESULT STDMETHODCALLTYPE ValidateDevice(DWORD* n) override { if (n) *n = 1; return S_OK; }
@@ -848,12 +851,12 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UINT minIdx, UINT numV, UINT n, const void* idx, D3DFORMAT fmt, const void* data, UINT stride) override;
     HRESULT STDMETHODCALLTYPE ProcessVertices(UINT, UINT, UINT, IDirect3DVertexBuffer9*, IDirect3DVertexDeclaration9*, DWORD) override { return D3DERR_NOTAVAILABLE; }
     HRESULT STDMETHODCALLTYPE CreateVertexDeclaration(const D3DVERTEXELEMENT9* el, IDirect3DVertexDeclaration9** out) override { if (!out || !el) return E_POINTER; *out = new VertexDecl(this, el); return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetVertexDeclaration(IDirect3DVertexDeclaration9* d) override { decl = static_cast<VertexDecl*>(d); if (d) fvf = 0; return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetVertexDeclaration(IDirect3DVertexDeclaration9* d) override { decl = static_cast<VertexDecl*>(d); if (d) fvf = 0; programDirty = true; return S_OK; }
     HRESULT STDMETHODCALLTYPE GetVertexDeclaration(IDirect3DVertexDeclaration9** out) override { if (!out) return E_POINTER; if (decl) decl->AddRef(); *out = decl; return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetFVF(DWORD f) override { if (f) { fvf = f; decl = nullptr; fvfDecl = nullptr; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetFVF(DWORD f) override { if (f) { fvf = f; decl = nullptr; fvfDecl = nullptr; programDirty = true; } return S_OK; }
     HRESULT STDMETHODCALLTYPE GetFVF(DWORD* f) override { if (f) *f = fvf; return S_OK; }
     HRESULT STDMETHODCALLTYPE CreateVertexShader(const DWORD* code, IDirect3DVertexShader9** out) override;
-    HRESULT STDMETHODCALLTYPE SetVertexShader(IDirect3DVertexShader9* s) override { vs = static_cast<VertexShader*>(s); return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetVertexShader(IDirect3DVertexShader9* s) override { if (vs.p != s) programDirty = true; vs = static_cast<VertexShader*>(s); return S_OK; }
     HRESULT STDMETHODCALLTYPE GetVertexShader(IDirect3DVertexShader9** out) override { if (!out) return E_POINTER; if (vs) vs->AddRef(); *out = vs; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetVertexShaderConstantF(UINT r, const float* d, UINT n) override {
         if (r + n > 128) return D3DERR_INVALIDCALL;
@@ -874,7 +877,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE SetIndices(IDirect3DIndexBuffer9* ib) override { indices = static_cast<IndexBuffer*>(ib); return S_OK; }
     HRESULT STDMETHODCALLTYPE GetIndices(IDirect3DIndexBuffer9** out) override { if (!out) return E_POINTER; if (indices) indices->AddRef(); *out = indices; return S_OK; }
     HRESULT STDMETHODCALLTYPE CreatePixelShader(const DWORD* code, IDirect3DPixelShader9** out) override;
-    HRESULT STDMETHODCALLTYPE SetPixelShader(IDirect3DPixelShader9* s) override { ps = static_cast<PixelShader*>(s); return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetPixelShader(IDirect3DPixelShader9* s) override { if (ps.p != s) programDirty = true; ps = static_cast<PixelShader*>(s); return S_OK; }
     HRESULT STDMETHODCALLTYPE GetPixelShader(IDirect3DPixelShader9** out) override { if (!out) return E_POINTER; if (ps) ps->AddRef(); *out = ps; return S_OK; }
     HRESULT STDMETHODCALLTYPE SetPixelShaderConstantF(UINT r, const float* d, UINT n) override {
         if (r + n > 8) return D3DERR_INVALIDCALL;
@@ -1102,9 +1105,10 @@ HRESULT STDMETHODCALLTYPE Device::Reset(D3DPRESENT_PARAMETERS* p) {
 
 GLuint Device::fboFor(Surface* rt, Surface* ds) {
     if (rt && rt->isBackBuffer && (!ds || ds->isMainDepth)) return mainFbo;
+    if (lastFboValid && rt == lastFboRt && ds == lastFboDs) return lastFboId;
     const auto key = std::make_pair(rt, ds);
     auto it = fbos.find(key);
-    if (it != fbos.end()) return it->second;
+    if (it != fbos.end()) { lastFboRt = rt, lastFboDs = ds, lastFboId = it->second, lastFboValid = true; return it->second; }
     GLuint f = 0;
     glGenFramebuffers(1, &f);
     glBindFramebuffer(GL_FRAMEBUFFER, f);
@@ -1266,6 +1270,7 @@ HRESULT STDMETHODCALLTYPE Device::Clear(DWORD n, const D3DRECT* rects, DWORD fla
 }
 
 HRESULT STDMETHODCALLTYPE Device::SetTexture(DWORD st, IDirect3DBaseTexture9* t) {
+    if (st < 2) programDirty = true;  // the fixed-function key reads whether stages 0-1 have a texture
     if (st >= 8) return D3DERR_INVALIDCALL;
     if (t && t->GetType() != D3DRTYPE_TEXTURE) return D3DERR_INVALIDCALL;
     textures[st] = static_cast<Texture*>(t);
@@ -1370,6 +1375,8 @@ VertexDecl* Device::fvfDeclaration() {
 }
 
 Program* Device::program() {
+    if (!programDirty && current) return current;
+    programDirty = false;
     const VertexDecl* d = decl ? decl.p : fvf ? fvfDeclaration() : nullptr;
     const bool rhw = d && d->preTransformed;
     ProgramKey key;
@@ -1744,7 +1751,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT b
     if (!current) return S_OK;
     GLsizei count;
     const GLenum mode = primMode(t, n, count);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices->buf.gl);
+    if (boundIbo != indices->buf.gl) { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices->buf.gl); boundIbo = indices->buf.gl; }
     const bool i32 = indices->format == D3DFMT_INDEX32;
     glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, reinterpret_cast<const void*>(static_cast<uintptr_t>(start) * (i32 ? 4 : 2)));
     ++statDraws;
@@ -1772,6 +1779,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UIN
     if (!current) return S_OK;
     const bool i32 = fmt == D3DFMT_INDEX32;
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scratchIbo);
+    boundIbo = scratchIbo;
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, static_cast<GLsizeiptr>(count) * (i32 ? 4 : 2), idx, GL_STREAM_DRAW);
     glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, nullptr);
     ++statDraws;
@@ -1883,6 +1891,8 @@ void Device::drawOverlay() {
     current = nullptr;
     constProgram = nullptr;
     layoutValid = false;
+    programDirty = true;
+    boundIbo = ~0u;
     lastProgramGl = 0;
     glUseProgram(0);
     GLCHECK("overlay");
