@@ -476,7 +476,17 @@ extern "C" void F_0041CF47_orig(Ctx* c);
 extern "C" void host_ui_scale(Ctx* c) {
     const uint32_t out = rd32(c->esp + 4), ret = rd32(c->esp);
     F_0041CF47_orig(c);
-    const bool zoom = ret == 0x52F88C || ret == 0x52F8AB || ret == 0x52F8CB || ret == 0x52F8E4;  // CComponent::UpdateZoom
+    // CComponent::UpdateZoom, CComponent::ChangePositionDelta (both, 0x52EA30 / 0x52EAF0: a
+    // delta is scaled by the UI scale before it moves a component: the picture inside the
+    // pause panel's ring was short of its ring by the unzoomed part) and CSprite's size
+    // (0x52ECC0): the same 1.6 everywhere the Xbox screens are laid out
+    // and CList's own layout (CanMove 0x537776, the view-area pass 0x5379F5: the list's
+    // position offsets and view box, FABLE_XBOX_ZOOM_SITES=2)
+    static const uint32_t kSites[] = {0x52F88C, 0x52F8AB, 0x52F8CB, 0x52F8E4, 0x52EA8E, 0x52EAA9, 0x52EB4E, 0x52EB69, 0x52ECFE, 0x52ED19,
+                                      0x5377D7, 0x5377ED, 0x537872, 0x5378E6, 0x537AA7, 0x537ABF};
+    static const int tier = [] { const char* e = std::getenv("FABLE_XBOX_ZOOM_SITES"); return e ? std::atoi(e) : 2; }();
+    bool zoom = false;
+    for (size_t i = 0; i < (tier >= 2 ? 16u : tier == 1 ? 10u : 4u); ++i) zoom = zoom || ret == kSites[i];
     if (xboxMenus() && rd32(0x13B8790) && zoom) {
         wrf32(out, rdf32(out) * 1.6f);
         wrf32(out + 4, rdf32(out + 4) * 1.6f);
@@ -584,6 +594,27 @@ extern "C" void host_text_draw(Ctx* c) {
     wr32(self + 0xFC, y0);
 }
 
+// 0x52FFD0 CComponent::UpdatePosition(float dt): its tail computes the render position and
+// the draw anchor: for a component whose virtual at +0x198 says it is absolutely placed,
+// render = position as given (the list roots, the pictures inside the pause panel's ring),
+// otherwise parent position + position x parent zoom. The Xbox screens are 640x480 designs
+// zoomed by the screen (1.125 x 1.0 at 720x480, 1.6 at 1024x768) and their absolute
+// components must scale from the origin too, or the picture sits where the 640x480 layout
+// put it while its ring moved with the zoom (verified: aligned at 640x480 only).
+extern "C" void F_0052FFD0_orig(Ctx* c);
+extern "C" void host_update_position(Ctx* c) {
+    const uint32_t self = c->ecx;
+    F_0052FFD0_orig(c);
+    static const bool on = [] { const char* e = std::getenv("FABLE_XBOX_ABSOLUTE_ZOOM"); return !e || std::atoi(e) != 0; }();
+    if (!on || !self || !xboxMenus() || !rd32(0x13B8790)) return;
+    const uint32_t vt = rd32(self);
+    if (!(guestCallThis(rd32(vt + 0x198), self, {}) & 0xFF)) return;  // parented: already zoomed
+    const float zx = rdf32(self + 0x7C), zy = rdf32(self + 0x80);  // the component's render zoom
+    if (!(zx > 0.01f && zx < 100.0f && zy > 0.01f && zy < 100.0f) || (zx == 1.0f && zy == 1.0f)) return;
+    wrf32(self + 0x54, rdf32(self + 0x54) * zx), wrf32(self + 0x58, rdf32(self + 0x58) * zy);
+    wrf32(self + 0xF8, rdf32(self + 0xF8) * zx), wrf32(self + 0xFC, rdf32(self + 0xFC) * zy);
+}
+
 // 0x533D30 CComponent::GetSize(C2DVector* out): the bounding box of the children. The Xbox
 // pause list's entries carry their whole sub-screen as children (the description picture,
 // the options sub-list, 770x400 and more), so CList's view-area test (the loop at
@@ -591,12 +622,38 @@ extern "C" void host_text_draw(Ctx* c) {
 // ViewArea) fails for every entry but the selected one and hides them (0x537E74..0x537EC3
 // sets their alpha to 0 at once). For that test a menu entry's extent is its label (the
 // text child), which is what the player sees of it in the list.
+// FABLE_UI_DUMP=<seconds>: once, after that long, the component tree the Xbox list belongs
+// to (class vtable, position, render position, draw anchor, size, render zoom, def), from
+// its root, to see which part is laid out with which zoom.
+void dumpTree(uint32_t node, int depth, int& count) {
+    if (!node || depth > 12 || count > 3000) return;
+    ++count;
+    HLOG(1, "ui: %*s0x%08X vt 0x%08X pos %.1f,%.1f render %.1f,%.1f anchor %.1f,%.1f size %.1f,%.1f zoom %.3f,%.3f def %d", depth * 2, "", node, rd32(node),
+         rdf32(node + 0x34), rdf32(node + 0x38), rdf32(node + 0x54), rdf32(node + 0x58), rdf32(node + 0xF8), rdf32(node + 0xFC), rdf32(node + 0xD4),
+         rdf32(node + 0xD8), rdf32(node + 0x7C), rdf32(node + 0x80), static_cast<int>(rd32(node + 0x150)));
+    const uint32_t b = rd32(node + 0xB0), e = rd32(node + 0xB4);
+    if (b < e && e - b < 0x4000)
+        for (uint32_t p = b; p < e; p += 8) dumpTree(rd32(p), depth + 1, count);
+}
+void maybeDumpTree(uint32_t entry) {
+    static const int dumpAt = [] { const char* e = std::getenv("FABLE_UI_DUMP"); return e ? std::atoi(e) : 0; }();
+    static bool dumped = false;
+    if (!dumpAt || dumped || GetTickCount() < static_cast<DWORD>(dumpAt) * 1000u) return;
+    dumped = true;
+    uint32_t root = entry;
+    for (int i = 0; i < 16; ++i) { const uint32_t p = rd32(root + 0xC8); if (!p || p >= kGuestLimit) break; root = p; }
+    int count = 0;
+    dumpTree(root, 0, count);
+    HLOG(1, "ui: %d components from root 0x%08X", count, root);
+}
+
 extern "C" void F_00533D30_orig(Ctx* c);
 extern "C" void host_component_size(Ctx* c) {
     const uint32_t self = c->ecx, ret = rd32(c->esp), out = rd32(c->esp + 4);
     constexpr uint32_t kMenuEntryVt = 0x0124662C, kTextVt = 0x01245DE4;
     constexpr uint32_t kListVt = 0x012462E4;
     if (xboxMenus() && rd32(self) == kMenuEntryVt && (ret == 0x537A81 || ret == 0x537A92)) {
+        maybeDumpTree(self);
         // The list shows UpLimit entries above and DownLimit below the selected one (its def,
         // retail +0x138/+0x13C); the ones further out are outside, whatever their label's box.
         // (CList: scrolling children array +0x164..+0x168, selected child index +0x15C.)

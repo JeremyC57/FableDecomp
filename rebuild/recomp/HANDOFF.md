@@ -159,11 +159,13 @@ fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=h
     --hook 0xAB6E40=host_joystick_update --hook 0x4088E0=host_primary_inputs --hook 0x9BEDC0=host_rtdims \
     --wrap 0x55CB10=host_ui_event --wrap 0x58F649=host_open_inventory --wrap 0x41CF47=host_ui_scale \
     --wrap 0x69AC90=host_camera_set --wrap 0x533D30=host_component_size --wrap 0xB24690=host_video_options \
-    --wrap 0x47E196=host_save_game --wrap 0x54EF00=host_text_draw
+    --wrap 0x47E196=host_save_game --wrap 0x54EF00=host_text_draw \
+    --wrap 0x52FFD0=host_update_position
 # coroutine switch -> host fibers; native Xbox pad (controller.cpp); UI scale (ui_scale.cpp);
 # host graphics settings (gfx_options.cpp, --wrap 0xB24690=host_video_options); the Xbox
 # pause menu's Hero Save (menu_nav.cpp, host_save_game: a stand-in for the PC menu object);
-# front-end labels centred in their bars (menu_nav.cpp, host_text_draw);
+# front-end labels centred in their bars (menu_nav.cpp, host_text_draw); the Xbox screens'
+# absolute components zoomed with the rest (host_update_position);
 # pad menu navigation and the Xbox in-game menus (menu_nav.cpp); the Xbox chase camera
 # (camera.cpp). --wrap keeps the original body as F_<addr>_orig
 fable_recomp ConfigDetect.dll - gen_cfg/ --prefix cfgdetect

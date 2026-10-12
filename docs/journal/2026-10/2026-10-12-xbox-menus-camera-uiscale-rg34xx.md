@@ -253,3 +253,16 @@ texture unit 0 and the sampler tracking never rebound the game's.
   +0x15C is null for labelled rows too: the pause list lost Load / Audio Options when it was
   used). Next: find where SetToSave builds the confirm list and what it puts in the spare
   rows.
+- **The pause panel's picture sat up-left of its ring** (user report). Aligned at 640x480
+  (the Xbox zoom is exactly 1 there), far off at 1024x768 (zoom 1.6): a component tree
+  dump (`FABLE_UI_DUMP=<s>`, from the pause list's root) showed every component zoomed
+  1.125 x 1.0 at 720x480 but the picture sprites (vtable 0x122F5D4, children of the list
+  entries) with render position == position, 442,165 unscaled. `CComponent::UpdatePosition`
+  (0x52FFD0) ends by computing the render position and draw anchor: a component whose
+  virtual +0x198 says it is absolutely placed keeps its position as given, the others get
+  parent position + position x parent zoom; on the Xbox at zoom 1 both agree. Wrapped
+  (`host_update_position`): in the Xbox screens an absolute component's render position
+  and anchor are multiplied by its own render zoom (`FABLE_XBOX_ABSOLUTE_ZOOM=0` restores).
+  The GetUIScale call sites in ChangePositionDelta, CSprite's size and the list's own
+  layout were given the 1.6 as well (no visible effect, kept for consistency;
+  `FABLE_XBOX_ZOOM_SITES=0/1/2`).
