@@ -6,6 +6,7 @@
 #include "keymap.hpp"
 #include "w32.hpp"
 #include "w32sdl.hpp"
+#include "../gles/egl_fbdev.hpp"
 
 #include <chrono>
 #include <cstring>
@@ -113,12 +114,7 @@ bool displayBounds(SDL_Rect& b) {
     if (g_fbdevGl) {
         if (!g_fbW) {
             g_fbW = 720, g_fbH = 480;  // the RG34XX SP's panel
-            if (const char* s = std::getenv("FABLE_SCREEN")) std::sscanf(s, "%dx%d", &g_fbW, &g_fbH);
-            else if (FILE* f = std::fopen("/sys/class/graphics/fb0/virtual_size", "r")) {
-                int w = 0, h = 0;
-                if (std::fscanf(f, "%d,%d", &w, &h) == 2 && w > 0 && h > 0) g_fbW = w, g_fbH = h;
-                std::fclose(f);
-            }
+            host::gles::fb::screenSize(g_fbW, g_fbH);
         }
         b = {0, 0, g_fbW, g_fbH};
         return true;

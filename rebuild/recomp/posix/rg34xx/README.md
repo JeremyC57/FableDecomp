@@ -36,7 +36,14 @@ Fable/            its files, in the folder of the same name next to it
   itself (`gles/egl_fbdev.cpp`): `libEGL.so.1` + `libGLESv2.so.2` (or `libmali.so`) from
   the OS, Arm's fbdev native window (a width/height struct), an ES 3.x context. The
   framebuffer size is the display size (`FABLE_SCREEN=WxH` overrides, `FABLE_FBDEV` names
-  another device). On an OS with KMS/DRM the bundled SDL2's KMSDRM path is used instead.
+  another device). Candidate libraries are probed in turn (`libEGL.so.1`, `libmali.so`,
+  the usual Mali directories; `FABLE_EGL_LIB=<libEGL>:<libGLESv2>` names one), and when no
+  window surface can be made on the framebuffer the renderer falls back to a pbuffer whose
+  frames are copied into `/dev/fb0` (`FABLE_GL_WINDOW=window|copy|pbuffer` forces one).
+  On an OS with KMS/DRM the bundled SDL2's KMSDRM path is used instead.
+- **Diagnostics.** `Fable-diag.sh` (next to `Fable.sh`) writes `Fable/diag.txt`: the
+  device's framebuffer, GPU libraries and kernel modules, then runs `FableRecomp --gl-probe`,
+  which opens EGL the way the game does and flashes red, green and blue on the screen.
   `FABLE_RENDERER=dxvk` switches back to DXVK on Vulkan where a Vulkan ICD exists. The
   log (`log.txt`) names the EGL and GL driver and version on start.
 - **GLES scope.** What the game uses on the PC, per a Direct3D call census: vs_1_1 and

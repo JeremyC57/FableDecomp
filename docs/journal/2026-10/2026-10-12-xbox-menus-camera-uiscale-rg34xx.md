@@ -75,3 +75,14 @@ libEGL/libGLESv2 (or libmali) with dlopen. `w32::displayBounds` reports the fram
 in that mode, so the game offers and defaults to 720x480. Tested on the PC with
 `SDL_VIDEODRIVER=nonexistent EGL_PLATFORM=surfaceless FABLE_GL_WINDOW=pbuffer`: the whole
 route to gameplay renders at 720x480 (frames via `FABLE_GLES_DUMP`).
+
+### Device test 3: eglInitialize fails
+`libEGL.so.1`/`libGLESv2.so.2` load on the device but `eglInitialize` returns
+EGL_NOT_INITIALIZED (0x3001), and the framebuffer size read 720x960 (sysfs `virtual_size` is
+the double-buffered height). Changes: `egl_fbdev.cpp` now probes candidate libraries in turn
+(soname, then the Mali directories, `FABLE_EGL_LIB` override), tries the platform displays the
+driver advertises (surfaceless, device) after the default one, and falls back from a window
+surface to a pbuffer whose frames are copied into `/dev/fb0` (`swap()` handles 32/24/16 bpp).
+`Fable.sh` no longer puts Mesa's fallback libraries on the path unless asked (they could have
+shadowed the OS's EGL). `FableRecomp --gl-probe` and `Fable-diag.sh` collect what the device
+has. Next step depends on `diag.txt` from the device.

@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 
 #include "w32/w32.hpp"
+#include "gles/egl_fbdev.hpp"
 
 #ifdef __ANDROID__
 #include <SDL_main.h>  // main becomes SDL_main, which SDLActivity calls
@@ -44,6 +45,8 @@ static int gameMain(int argc, char** argv) {
         const std::string w = w32::toUtf8(w32::toWindowsPath(d).c_str());
         setenv("FABLE_DIR", w.c_str(), 1);
     }
+    for (int i = 1; i < argc; ++i)
+        if (std::string(argv[i]) == "--gl-probe") return host::gles::fb::probe();  // diagnostics: EGL on the framebuffer, then exit
     w32::wstr cmd;
     for (int i = 0; i < argc; ++i) {
         const bool path = i > 0 && argv[i][0] == '/' && std::string(argv[i - 1]) == "--game";

@@ -19,7 +19,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 # layout: <out>/Fable.sh next to <out>/Fable/ (the launcher looks for its files in the folder
 # of its own name)
 rm -rf "$OUT"; mkdir -p "$OUT/Fable/lib" "$OUT/Fable/game" "$OUT/Fable/save"
-cp "$HERE/Fable.sh" "$OUT/Fable.sh"; chmod +x "$OUT/Fable.sh"
+cp "$HERE/Fable.sh" "$OUT/Fable.sh"; cp "$HERE/Fable-diag.sh" "$OUT/Fable-diag.sh"; chmod +x "$OUT/Fable.sh" "$OUT/Fable-diag.sh"
 OUT="$OUT/Fable"
 cp "$BUILD/FableRecomp" "$OUT/FableRecomp"
 cp "$DXVK/src/d3d9/libdxvk_d3d9.so" "$OUT/lib/libdxvk_d3d9.so.0"
