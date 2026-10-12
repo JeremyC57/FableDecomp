@@ -110,3 +110,12 @@ The GLES build ran on the RG34XX SP (menus ~28 fps). Follow-ups from the user's 
   offsets assume Direct3D 9's integer pixel centres. The vertex epilogue now adds half a
   viewport pixel (`uHalfPixel`), as the RHW path did; DXVK does the same.
 - Translator: `mov a0.x` rounds to nearest (Microsoft's vs_1_1 docs), not floor.
+- **A in the Xbox pause menu did nothing** (user report). `CInputProcessInGameMenu`
+  (0x690480) sends the Xbox list the select event (4) itself on action 33, but the pause
+  screen leaves the live-GUI flag clear, so the front-end navigator took the event and,
+  finding no clickables, turned it into a mouse click. The navigator now acts only on events
+  whose return address lies in `CNewFrontendGameComponent::Input` (0x42E3EE..0x42E98F).
+  The inventory sub-screen processors (map 0x68AEA5, experience 0x68B355, trade 0x68B83A,
+  quests 0x68BF88) send A as a mouse press like the top-level list; converted to select too.
+  Verified: Audio Options opens from the pause list, Current Quests from Quests.
+  `FABLE_MENU_TRACE=1` logs the UI events with their return addresses at log level 1.
