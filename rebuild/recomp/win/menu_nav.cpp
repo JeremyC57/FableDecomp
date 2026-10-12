@@ -419,7 +419,8 @@ extern "C" void host_ui_event(Ctx* c) {
             pressedAt[ev] = lastStep[ev] = now;
         }
     }
-    if (ev != 0x19) HLOG(2, "menu: ui event %u to 0x%08X from 0x%08X", ev, mgr, rd32(c->esp));
+    static const bool menuTrace = std::getenv("FABLE_MENU_TRACE") != nullptr;
+    if (ev != 0x19) HLOG(menuTrace ? 1 : 2, "menu: ui event %u to 0x%08X from 0x%08X (live gui %d)", ev, mgr, rd32(c->esp), liveGui() ? 1 : 0);
     if (ev <= EV_BACK && !liveGui() && mgr == guestCall(kGetUiManager, {})) {
         const uint32_t savedEsp = c->esp;
         c->esp = (c->esp - 0x80) & ~0xFu;
