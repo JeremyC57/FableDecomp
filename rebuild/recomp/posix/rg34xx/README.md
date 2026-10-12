@@ -52,7 +52,16 @@ Fable/            its files, in the folder of the same name next to it
   render-target and depth textures, occlusion queries. No state blocks, cube/volume
   textures or multisampling.
 - **Speed.** The x86 game runs as lifted C on four A53 cores at 1.5 GHz; expect a fraction
-  of the Android frame rate. 720x480 keeps the GPU load low.
+  of the Android frame rate. 720x480 keeps the GPU load low. The first device log showed
+  gameplay at 7-8 fps with ~1300 draws a frame and menus at the 60 fps cap, so the cost is
+  per draw: the renderer keeps GL state and uniform traffic to what changed (per-program
+  constant ranges, cached vertex layouts and texture bindings), never waits for occlusion
+  query results, orphans dynamic buffers rather than writing them in place (a Mali stall),
+  and discards the depth buffer at the end of each frame. The host menu's statistics line
+  shows the frame time and the part spent in GL, which tells the game's own CPU time from
+  the renderer's. The lifted code is built at -O2 for the Cortex-A53 (`FABLE_GEN_OPT`,
+  `linux-a64.cmake`), and `Fable.sh` puts the CPU and GPU governors into performance mode
+  for the session (`FABLE_NO_PERF=1` leaves them).
 - **Memory.** 2 GB is tight; keep other apps closed.
 - **Screen.** 720x480 is offered as a resolution; a new profile defaults to it. The UI
   scale is automatic (1x at 480 lines, so the HUD is laid out as on the Xbox).
@@ -78,7 +87,7 @@ meson setup build/dxvk-a64 <dxvk 2.x> --cross-file android/linux-aarch64.ini --b
   -Denable_dxgi=false -Denable_d3d8=false -Denable_d3d10=false -Denable_d3d11=false -Dnative_sdl2=enabled
 ninja -C build/dxvk-a64
 cmake -S rebuild/recomp/posix -B build/linux-a64 -G Ninja -DCMAKE_TOOLCHAIN_FILE=rebuild/recomp/posix/rg34xx/linux-a64.cmake \
-  -DFABLE_GEN_DIR=gen_win "-DFABLE_GUEST_DLLS=cfgdetect|ConfigDetect.dll|gen_cfg" \
+  -DFABLE_GEN_DIR=gen_win "-DFABLE_GUEST_DLLS=cfgdetect|ConfigDetect.dll|gen_cfg" "-DFABLE_GEN_OPT=-O2" \
   -DMINGW_HEADERS=<llvm-mingw>/generic-w64-mingw32/include -DDXVK_D3D9=build/dxvk-a64/src/d3d9/libdxvk_d3d9.so
 ninja -C build/linux-a64
 # a minimal FFmpeg (movie codecs only) keeps the package small; Ubuntu's would pull in ~150 libraries

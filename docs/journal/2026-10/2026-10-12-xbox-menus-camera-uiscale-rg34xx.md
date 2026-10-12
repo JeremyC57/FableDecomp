@@ -119,3 +119,19 @@ The GLES build ran on the RG34XX SP (menus ~28 fps). Follow-ups from the user's 
   quests 0x68BF88) send A as a mouse press like the top-level list; converted to select too.
   Verified: Audio Options opens from the pause list, Current Quests from Quests.
   `FABLE_MENU_TRACE=1` logs the UI events with their return addresses at log level 1.
+
+### Performance pass (device log: gameplay 7-8 fps at ~1300 draws, menus 60 fps)
+Per-draw cost dominates. Renderer (`gl_renderer.cpp`): constants upload as the dirty range
+since the same program's last draw (full set on a program change; element locations
+queried at link), `glUseProgram`/vertex layout/texture binds only when they change, sampler
+objects bound once, the state-mirroring uniforms (fog, alpha test, bump, viewport, half
+pixel) only when a mirrored state changed, occlusion `GetData` returns the previous answer
+instead of waiting for the GPU (the sun query polled with FLUSH serialised CPU and GPU),
+dynamic buffers orphan + full upload unless NOOVERWRITE (in-place writes stall on Mali),
+depth/stencil invalidated before Present. `frame X ms, gl Y ms` in the overlay statistics
+splits the game's CPU time from the renderer's. Build: `FABLE_GEN_OPT=-O2` for the lifted
+code, `-mcpu=cortex-a53 -fomit-frame-pointer` in the aarch64 toolchain. `Fable.sh` sets the
+cpufreq/devfreq governors to performance for the session. Research: Arm's Mali guidance
+(discard framebuffer contents, avoid mid-frame FBO switches) and Panfrost's dirty-state
+tracking gains back the direction; the H700 governor paths are unverified, `Fable-diag.sh`
+now lists them.
