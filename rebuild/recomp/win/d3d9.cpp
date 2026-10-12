@@ -15,6 +15,8 @@
 
 #include <algorithm>
 #include <cmath>
+
+namespace host { void d3d9ApplyGamma(float exponent); }  // gfx_options.cpp calls it (brightness)
 #include <map>
 #include <bit>
 #include <mutex>
@@ -274,6 +276,7 @@ template <class R, class... A> struct DynCall<R(A...)> {
 bool g_windowed = false;
 bool g_resetPending = false;
 HWND g_deviceWindow = nullptr;
+IDirect3DDevice9* g_gammaDevice = nullptr;  // the native device, for the host brightness setting (not owned)
 constexpr const wchar_t* kSettingsKey = L"Software\\FableRecomp";
 
 bool g_windowStyled = false;  // the host changed the window for windowed mode
@@ -409,6 +412,7 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
     const HRESULT hr = self->CreateDevice(arg(c, 1), static_cast<D3DDEVTYPE>(arg(c, 2)), nativeWindow(static_cast<HWND>(hh(arg(c, 3)))), flags, &np, &dev);
     takeResults(pp, np);
     logPP("CreateDevice", pp, hr);
+    if (SUCCEEDED(hr)) g_gammaDevice = dev;
 #ifdef FABLE_POSIX
     if (hr == D3DERR_NOTAVAILABLE) die("%s", w32::glesRenderer() ? kNoGles : kNoVulkan);  // no usable GPU device
 #endif
@@ -921,3 +925,15 @@ void displayToggleRequest() {
 }
 }  // namespace host
 
+
+// Host brightness: a gamma ramp on the native device (DXVK applies it in its presenter; the
+// GLES device ignores it and applies the exponent in its own present pass).
+void host::d3d9ApplyGamma(float exponent) {
+    if (!g_gammaDevice) return;
+    D3DGAMMARAMP ramp;
+    for (int i = 0; i < 256; ++i) {
+        const float v = std::pow(i / 255.0f, exponent);
+        ramp.red[i] = ramp.green[i] = ramp.blue[i] = static_cast<WORD>(std::lround(std::clamp(v, 0.0f, 1.0f) * 65535.0f));
+    }
+    g_gammaDevice->SetGammaRamp(0, D3DSGR_NO_CALIBRATION, &ramp);
+}

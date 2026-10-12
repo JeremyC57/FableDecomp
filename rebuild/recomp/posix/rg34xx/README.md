@@ -62,9 +62,9 @@ Fable/            its files, in the folder of the same name next to it
   the renderer's. The lifted code is built at -O2 for the Cortex-A53 (`FABLE_GEN_OPT`,
   `linux-a64.cmake`), and `Fable.sh` puts the CPU and GPU governors into performance mode
   for the session (`FABLE_NO_PERF=1` leaves them).
-- **Vsync.** Off by default (`FABLE_VSYNC=0` in `Fable.sh`): a frame shows as soon as it is
-  done instead of waiting for the next 60 Hz refresh. The host menu cycles off / on / half;
-  "half" locks to 30 fps and is the smoothest choice once frames fit in 33 ms.
+- **Vsync.** Off in the first-run preset: a frame shows as soon as it is done instead of
+  waiting for the next 60 Hz refresh. "Half" locks to 30 fps and is the smoothest choice
+  once frames fit in 33 ms.
 - **Memory.** 2 GB is tight; keep other apps closed.
 - **Screen.** 720x480 is offered as a resolution; a new profile defaults to it. The UI
   scale is automatic (1x at 480 lines, so the HUD is laid out as on the Xbox).
@@ -81,10 +81,11 @@ Fable/            its files, in the folder of the same name next to it
   four seconds). The GLES renderer draws it in Present with an embedded 8x16 font
   (`overlay/gen_font.py`).
 - **Graphics settings** (`FABLE_HOST_GFX=1`): the game's own Video Options entry is inert;
-  the host menu's Graphics page holds what it had (landscape, model, texture, shadow and
-  effects detail, each Low..Highest; shadow Low = no shadows) plus a render resolution
-  (50-100 % of the screen, scaled up on present), draw distance, glow, water reflections
-  and weather. Changes apply at once and are saved in `save/graphics.txt`; `Fable.sh`'s
+  the host menu's Graphics page holds what it had: resolution (fractions of the 720x480
+  panel, scaled up on present), refresh rate, anti-aliasing (2x/4x multisampling), screen
+  aspect ratio (auto = 3:2 here), landscape / mesh / texture / shadow / effects detail
+  (each Low..Highest; shadow Low = no shadows), brightness, vertical sync (off / on / half
+  = a 30 fps lock), plus draw distance, glow, water reflections and weather. Changes apply at once and are saved in `save/graphics.txt`; `Fable.sh`'s
   `FABLE_GFX_DEFAULTS` is the first-run preset (shadows and water reflections off: each is
   an extra scene pass). Lower the render resolution first if the GPU is the limit, the
   draw distance and model detail if the CPU is (the statistics line shows the split).

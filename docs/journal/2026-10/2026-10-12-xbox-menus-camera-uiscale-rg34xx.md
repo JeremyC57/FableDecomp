@@ -214,3 +214,20 @@ natively. What the profile did single out, and what changed:
 - **Native resolution = the window**: the device profile asked 640x480 (an older profile)
   and was stretched over the 3:2 panel; with host-owned graphics the scale's base is the
   window (`w32::screenSize`).
+
+### The full Video Options set in the host menu (user request)
+Resolution (as pixel sizes), refresh rate, anti-aliasing, screen aspect ratio, landscape /
+mesh / texture / shadow / effects detail, brightness, vertical sync, plus the direct levers.
+Each one acts: resolution, refresh rate, aspect ratio (CEngineVideoOptions +8/+12 as the
+float pair the engine keeps, auto = the window's reduced ratio, 720x480 -> 3:2), vsync (+24)
+and anti-aliasing (+48, the D3DMULTISAMPLE value) are written into the options at
+SetVideoOptions; the GLES renderer now has a multisampled back buffer (ES 3.0 renderbuffers,
+resolved into the single-sample colour texture whenever the back buffer is read:
+StretchRect, GetRenderTargetData, Present, screenshots; a StretchRect into the back buffer
+lands in the resolved buffer since a blit cannot write a multisampled one) and reports 2x
+and 4x in CheckDeviceMultiSampleType; brightness is a gamma exponent (2^((50-b)/50)):
+the GLES present pass draws the frame through it (a plain blit at neutral), the Direct3D
+path sets a gamma ramp on the native device (DXVK applies it in its presenter). The
+overlay's old VSync item moved onto the page. The Android launcher has the same controls.
+Fixed on the way: the overlay (and now the present pass) left the default sampler on
+texture unit 0 and the sampler tracking never rebound the game's.

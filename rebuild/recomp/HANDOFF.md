@@ -85,9 +85,9 @@ user's original game folder; no retail bytes or generated code are in git.
     `HOLD_TARGET`.
   - **Host-owned graphics settings** (`win/gfx_options.cpp`, `FABLE_HOST_GFX=1`): the
     game's Video Options entry is inert (`menu_nav.cpp`); the overlay page / Android
-    launcher set the game's own quality levels (landscape, model, texture, shadow,
-    effects: Low..Highest), a render-resolution scale (50-100 % of the window, blitted up),
-    draw distance %, glow, water reflection and weather, saved in `<data>/graphics.txt`
+    launcher set the game's own Video Options (resolution scale, refresh rate, MSAA,
+    aspect ratio, landscape / mesh / texture / shadow / effects detail, brightness, vsync)
+    plus draw distance %, glow, water reflection and weather, saved in `<data>/graphics.txt`
     (`FABLE_GFX_DEFAULTS` seeds a first run). They are rewritten into the options at
     `CEngine::SetVideoOptions` (0xB24690, wrapped) and into the four
     `CEngineVideoOptionsDef`s (retail layout = Ego_r minus 4 bytes).

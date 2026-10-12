@@ -4,6 +4,8 @@
 #include "host.hpp"
 
 #include <algorithm>
+#include <cmath>
+#include <numeric>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -14,6 +16,7 @@
 using namespace host;
 
 namespace w32 { bool screenSize(int& w, int& h); }  // posix/w32/user.cpp: the window / framebuffer size
+namespace host { void d3d9ApplyGamma(float exponent); }  // win/d3d9.cpp: SetGammaRamp on the native device (DXVK); GLES applies it in Present
 
 extern "C" void F_00B24690_orig(Ctx* c);
 
@@ -29,7 +32,7 @@ uint32_t g_shadowSize = 0;
 uint32_t g_gameW = 0, g_gameH = 0;  // the resolution the game itself asked for (the scale's base)
 
 // CEngineVideoOptions (what SetVideoOptions receives), dword offsets
-constexpr uint32_t kWidth = 0, kHeight = 4, kLandscape = 28, kMesh = 32, kTexture = 36, kShadow = 40, kEffects = 44, kAntialias = 48;
+constexpr uint32_t kWidth = 0, kHeight = 4, kAspectX = 8, kAspectY = 12, kRefresh = 20, kVsync = 24, kLandscape = 28, kMesh = 32, kTexture = 36, kShadow = 40, kEffects = 44, kAntialias = 48;
 
 // CEngineVideoOptionsDef fields. Retail is the Ego_r layout shifted down by four bytes
 // (confirmed from a raw dump: HiresTextureMemory 0/6/10/16 MB, LODErrorTolerance 3/2/1/0,
@@ -55,6 +58,11 @@ int clampQ(int v) { return std::clamp(v, 0, 3); }
 void parseLine(const char* line, Settings& s) {
     int v = 0;
     if (std::sscanf(line, "resolution_scale=%d", &v) == 1) s.resolutionScale = std::clamp(v, 50, 100);
+    else if (std::sscanf(line, "refresh_rate=%d", &v) == 1) s.refreshRate = v > 0 ? std::clamp(v, 30, 240) : 0;
+    else if (std::sscanf(line, "antialiasing=%d", &v) == 1) s.antialiasing = v >= 4 ? 4 : v >= 2 ? 2 : 0;
+    else if (std::sscanf(line, "aspect_ratio=%d", &v) == 1) s.aspect = std::clamp(v, 0, ASPECT_COUNT - 1);
+    else if (std::sscanf(line, "brightness=%d", &v) == 1) s.brightness = std::clamp(v, 0, 100);
+    else if (std::sscanf(line, "vsync=%d", &v) == 1) s.vsync = std::clamp(v, 0, 2);
     else if (std::sscanf(line, "landscape_detail=%d", &v) == 1) s.landscape = clampQ(v);
     else if (std::sscanf(line, "model_detail=%d", &v) == 1) s.model = clampQ(v);
     else if (std::sscanf(line, "texture_detail=%d", &v) == 1) s.texture = clampQ(v);
@@ -69,9 +77,10 @@ void parseLine(const char* line, Settings& s) {
 void save() {
     if (FILE* f = std::fopen(path().c_str(), "w")) {
         const Settings& s = g_settings;
-        std::fprintf(f, "resolution_scale=%d\nlandscape_detail=%d\nmodel_detail=%d\ntexture_detail=%d\nshadow_quality=%d\neffects_quality=%d\n"
-                        "draw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\n",
-                     s.resolutionScale, s.landscape, s.model, s.texture, s.shadow, s.effects, s.drawDistance, s.glow ? 1 : 0, s.water ? 1 : 0, s.weather ? 1 : 0);
+        std::fprintf(f, "resolution_scale=%d\nrefresh_rate=%d\nantialiasing=%d\naspect_ratio=%d\nlandscape_detail=%d\nmodel_detail=%d\ntexture_detail=%d\n"
+                        "shadow_quality=%d\neffects_quality=%d\nbrightness=%d\nvsync=%d\ndraw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\n",
+                     s.resolutionScale, s.refreshRate, s.antialiasing, s.aspect, s.landscape, s.model, s.texture, s.shadow, s.effects, s.brightness, s.vsync,
+                     s.drawDistance, s.glow ? 1 : 0, s.water ? 1 : 0, s.weather ? 1 : 0);
         std::fclose(f);
     }
 }
@@ -121,6 +130,21 @@ const char* qualityName(int q) {
     return names[clampQ(q)];
 }
 
+const char* aspectName(int a) {
+    static const char* names[] = {"auto", "4:3", "16:9", "16:10", "3:2", "5:4"};
+    return names[std::clamp(a, 0, ASPECT_COUNT - 1)];
+}
+
+void aspectValue(int a, int w, int h, float& x, float& y) {
+    static const float pairs[][2] = {{0, 0}, {4, 3}, {16, 9}, {16, 10}, {3, 2}, {5, 4}};
+    a = std::clamp(a, 0, ASPECT_COUNT - 1);
+    if (a != ASPECT_AUTO) { x = pairs[a][0], y = pairs[a][1]; return; }
+    int g = w > 0 && h > 0 ? std::gcd(w, h) : 0;  // the window's own ratio, reduced (720x480 -> 3:2)
+    x = g ? static_cast<float>(w / g) : 4.0f, y = g ? static_cast<float>(h / g) : 3.0f;
+}
+
+float gammaExponent(int brightness) { return std::exp2((50 - std::clamp(brightness, 0, 100)) / 50.0f); }  // 100: 0.5 (brighter), 0: 2 (darker)
+
 void load() {
     if (g_loaded) return;
     g_loaded = true;
@@ -130,6 +154,7 @@ void load() {
         std::fclose(f);
         g_seeded = true;
     } else {
+        if (const char* e = std::getenv("FABLE_VSYNC")) g_settings.vsync = std::clamp(std::atoi(e), 0, 2);
         seedFromEnv();
     }
 }
@@ -209,11 +234,16 @@ extern "C" void host_video_options(Ctx* c) {
         wr32(g_optsCopy + kTexture, static_cast<uint32_t>(s.texture));
         wr32(g_optsCopy + kShadow, static_cast<uint32_t>(s.shadow));
         wr32(g_optsCopy + kEffects, static_cast<uint32_t>(s.effects));
-        wr32(g_optsCopy + kAntialias, 0);
+        wr32(g_optsCopy + kAntialias, static_cast<uint32_t>(s.antialiasing));  // ESurfaceMultisampleType = D3DMULTISAMPLE_TYPE
         if (s.resolutionScale == 100) wr32(g_optsCopy + kWidth, w), wr32(g_optsCopy + kHeight, h);
-        HLOG(1, "gfx: host settings: %ux%u (%d%%), landscape %s, model %s, texture %s, shadow %s, effects %s, draw %d%%, glow %d, water %d, weather %d",
-             rd32(g_optsCopy), rd32(g_optsCopy + 4), s.resolutionScale, qualityName(s.landscape), qualityName(s.model), qualityName(s.texture),
-             qualityName(s.shadow), qualityName(s.effects), s.drawDistance, s.glow, s.water, s.weather);
+        float ax = 0, ay = 0;
+        aspectValue(s.aspect, static_cast<int>(w), static_cast<int>(h), ax, ay);
+        wrf32(g_optsCopy + kAspectX, ax), wrf32(g_optsCopy + kAspectY, ay);
+        if (s.refreshRate) wr32(g_optsCopy + kRefresh, static_cast<uint32_t>(s.refreshRate));
+        wr32(g_optsCopy + kVsync, s.vsync ? 1 : 0);
+        HLOG(1, "gfx: host settings: %ux%u (%d%%) %.0f:%.0f %u Hz aa %d vsync %d, landscape %s, model %s, texture %s, shadow %s, effects %s, brightness %d, draw %d%%, glow %d, water %d, weather %d",
+             rd32(g_optsCopy), rd32(g_optsCopy + 4), s.resolutionScale, ax, ay, rd32(g_optsCopy + kRefresh), s.antialiasing, s.vsync, qualityName(s.landscape),
+             qualityName(s.model), qualityName(s.texture), qualityName(s.shadow), qualityName(s.effects), s.brightness, s.drawDistance, s.glow, s.water, s.weather);
         wr32(c->esp + 4, g_optsCopy);
     }
     for (uint32_t slot : kDefSlots) applyToDef(rd32(engine + slot), s);
@@ -222,4 +252,5 @@ extern "C" void host_video_options(Ctx* c) {
     const uint32_t shadowDef = rd32(engine + kDefSlots[clampQ(static_cast<int>(rd32(used + kShadow)))]);
     g_shadowSize = shadowDef ? rd32(shadowDef + kShadowBufferSize) : 0;
     F_00B24690_orig(c);
+    if (hostGfx) d3d9ApplyGamma(gammaExponent(s.brightness));  // the device exists (or was reset) now
 }

@@ -45,7 +45,9 @@ public class LauncherActivity extends Activity {
     private SeekBar scale;
     private Switch touch;
     private SeekBar drawDistance, resolution;
-    private Spinner landscape, model, texture, shadow, effects;
+    private Spinner landscape, model, texture, shadow, effects, antialiasing, aspect, vsync, refresh;
+    private SeekBar brightness;
+    private TextView brightLabel;
     private TextView drawLabel, resLabel;
     private Switch glow, water, weather;
     private Spinner driver, dxvk;
@@ -117,11 +119,14 @@ public class LauncherActivity extends Activity {
             public void onStopTrackingTouch(SeekBar s) {}
         });
         col.addView(resolution);
+        refresh = choiceSpinner(col, "Refresh rate", REFRESH_NAMES, prefs.getInt("refresh", 0));
+        antialiasing = choiceSpinner(col, "Anti-aliasing", AA_NAMES, prefs.getInt("antialiasing", 0));
+        aspect = choiceSpinner(col, "Screen aspect ratio", ASPECT_NAMES, prefs.getInt("aspect", 0));
         landscape = qualitySpinner(col, "Landscape detail", prefs.getInt("landscape", 1));
-        model = qualitySpinner(col, "Model detail", prefs.getInt("model", 1));
+        model = qualitySpinner(col, "Mesh detail", prefs.getInt("model", 1));
         texture = qualitySpinner(col, "Texture detail", prefs.getInt("texture", 1));
-        shadow = qualitySpinner(col, "Shadow quality (Low = off)", prefs.getInt("shadow", 1));
-        effects = qualitySpinner(col, "Effects quality", prefs.getInt("effects", 1));
+        shadow = qualitySpinner(col, "Shadow detail (Low = off)", prefs.getInt("shadow", 1));
+        effects = qualitySpinner(col, "Effects detail", prefs.getInt("effects", 1));
         drawLabel = heading("");
         col.addView(drawLabel);
         drawDistance = new SeekBar(this);
@@ -229,6 +234,20 @@ public class LauncherActivity extends Activity {
     /** 0 = automatic (the game lays out about 720 lines), else 1.0 .. 3.0. */
     private static final int[] SCALES = {50, 67, 75, 83, 100};
     private static final String[] QUALITY = {"Low", "Normal", "High", "Highest"};
+    private static final String[] REFRESH_NAMES = {"Display default", "60 Hz", "90 Hz", "120 Hz"};
+    private static final int[] REFRESH_VALUES = {0, 60, 90, 120};
+    private static final String[] AA_NAMES = {"Off", "2x MSAA", "4x MSAA"};
+    private static final int[] AA_VALUES = {0, 2, 4};
+    private static final String[] ASPECT_NAMES = {"Auto (the screen's)", "4:3", "16:9", "16:10", "3:2", "5:4"};
+    private static final String[] VSYNC_NAMES = {"Off", "On", "Half (30 fps lock)"};
+    private Spinner choiceSpinner(LinearLayout col, String title, String[] names, int value) {
+        col.addView(heading(title));
+        Spinner sp = new Spinner(this);
+        sp.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, names));
+        sp.setSelection(Math.max(0, Math.min(names.length - 1, value)));
+        col.addView(sp);
+        return sp;
+    }
     private static int scaleIndex(int percent) {
         for (int i = 0; i < SCALES.length; ++i) if (SCALES[i] == percent) return i;
         return 4;
@@ -245,18 +264,21 @@ public class LauncherActivity extends Activity {
     private int resolutionPercent() { return SCALES[Math.max(0, Math.min(4, resolution.getProgress()))]; }
     private void updateGfxLabels() {
         drawLabel.setText(String.format(Locale.US, "Draw distance: %d%%", drawDistancePercent()));
-        resLabel.setText(resolutionPercent() == 100 ? "Render resolution: native" : String.format(Locale.US, "Render resolution: %d%% of the screen", resolutionPercent()));
+        resLabel.setText(resolutionPercent() == 100 ? "Resolution: native" : String.format(Locale.US, "Resolution: %d%% of the screen", resolutionPercent()));
+        brightLabel.setText(String.format(Locale.US, "Brightness: %d", brightness.getProgress() * 10));
     }
     private void writeGraphicsFile() {
         try {
             File data = dataDir(this);
             data.mkdirs();
             java.io.FileWriter w = new java.io.FileWriter(new File(data, "graphics.txt"));
-            w.write(String.format(Locale.US, "resolution_scale=%d\nlandscape_detail=%d\nmodel_detail=%d\ntexture_detail=%d\nshadow_quality=%d\neffects_quality=%d\n"
+            w.write(String.format(Locale.US, "resolution_scale=%d\nrefresh_rate=%d\nantialiasing=%d\naspect_ratio=%d\nlandscape_detail=%d\nmodel_detail=%d\n"
+                                              + "texture_detail=%d\nshadow_quality=%d\neffects_quality=%d\nbrightness=%d\nvsync=%d\n"
                                               + "draw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\n",
-                                  resolutionPercent(), landscape.getSelectedItemPosition(), model.getSelectedItemPosition(), texture.getSelectedItemPosition(),
-                                  shadow.getSelectedItemPosition(), effects.getSelectedItemPosition(), drawDistancePercent(), glow.isChecked() ? 1 : 0,
-                                  water.isChecked() ? 1 : 0, weather.isChecked() ? 1 : 0));
+                                  resolutionPercent(), REFRESH_VALUES[Math.max(0, refresh.getSelectedItemPosition())], AA_VALUES[Math.max(0, antialiasing.getSelectedItemPosition())],
+                                  aspect.getSelectedItemPosition(), landscape.getSelectedItemPosition(), model.getSelectedItemPosition(), texture.getSelectedItemPosition(),
+                                  shadow.getSelectedItemPosition(), effects.getSelectedItemPosition(), brightness.getProgress() * 10, vsync.getSelectedItemPosition(),
+                                  drawDistancePercent(), glow.isChecked() ? 1 : 0, water.isChecked() ? 1 : 0, weather.isChecked() ? 1 : 0));
             w.close();
         } catch (java.io.IOException e) {
             Log.e("FableRecomp", "graphics.txt", e);
@@ -319,6 +341,11 @@ public class LauncherActivity extends Activity {
             .putInt("texture", texture.getSelectedItemPosition())
             .putInt("shadow", shadow.getSelectedItemPosition())
             .putInt("effects", effects.getSelectedItemPosition())
+            .putInt("refresh", refresh.getSelectedItemPosition())
+            .putInt("antialiasing", antialiasing.getSelectedItemPosition())
+            .putInt("aspect", aspect.getSelectedItemPosition())
+            .putInt("brightness", brightness.getProgress() * 10)
+            .putInt("vsync", vsync.getSelectedItemPosition())
             .putBoolean("glow", glow.isChecked())
             .putBoolean("water", water.isChecked())
             .putBoolean("weather", weather.isChecked())

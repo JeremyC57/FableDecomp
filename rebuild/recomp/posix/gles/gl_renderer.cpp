@@ -53,6 +53,7 @@ PFNGLBLENDCOLORPROC glBlendColor;
 PFNGLBLENDEQUATIONPROC glBlendEquation;
 PFNGLBLENDFUNCPROC glBlendFunc;
 PFNGLBLITFRAMEBUFFERPROC glBlitFramebuffer;
+PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC glRenderbufferStorageMultisample;  // ES 3.0; optional (MSAA)
 PFNGLBUFFERDATAPROC glBufferData;
 PFNGLBUFFERSUBDATAPROC glBufferSubData;
 PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
@@ -143,6 +144,7 @@ bool loadGl() {
     glBlendEquation = reinterpret_cast<PFNGLBLENDEQUATIONPROC>(getProc("glBlendEquation"));
     glBlendFunc = reinterpret_cast<PFNGLBLENDFUNCPROC>(getProc("glBlendFunc"));
     glBlitFramebuffer = reinterpret_cast<PFNGLBLITFRAMEBUFFERPROC>(getProc("glBlitFramebuffer"));
+    glRenderbufferStorageMultisample = reinterpret_cast<PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC>(getProc("glRenderbufferStorageMultisample"));
     glBufferData = reinterpret_cast<PFNGLBUFFERDATAPROC>(getProc("glBufferData"));
     glBufferSubData = reinterpret_cast<PFNGLBUFFERSUBDATAPROC>(getProc("glBufferSubData"));
     glCheckFramebufferStatus = reinterpret_cast<PFNGLCHECKFRAMEBUFFERSTATUSPROC>(getProc("glCheckFramebufferStatus"));
@@ -698,6 +700,17 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     bool es32 = false;
     // the back buffer
     GLuint mainFbo = 0, mainColor = 0, mainDepth = 0;
+    // anti-aliasing: the scene is drawn into multisampled renderbuffers and resolved into
+    // mainColor when something reads the back buffer (StretchRect, readback, Present)
+    GLuint msaaFbo = 0, msaaColor = 0, msaaDepth = 0;
+    int msaaSamples = 0;
+    bool msaaDirty = false;
+    void resolveMain();
+    GLuint readFboFor(Surface* src);
+    // brightness: the present pass applies a gamma exponent instead of the plain blit
+    GLuint presentProgram = 0;
+    GLint presentUGamma = -1, presentUSize = -1;
+    bool presentPass(int ww, int wh, float gamma);
     Ref<Surface> backBuffer, mainDepthSurface;
     Ref<SwapChain> swapChain;
     // render targets
@@ -1084,6 +1097,35 @@ bool Device::createBackBuffer() {
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mainColor, 0);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mainDepth);
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) { log("gles: back buffer framebuffer incomplete"); return false; }
+    msaaSamples = 0, msaaDirty = false;
+    if (pp.MultiSampleType >= 2 && glRenderbufferStorageMultisample) {
+        GLint maxSamples = 0;
+        glGetIntegerv(GL_MAX_SAMPLES, &maxSamples);
+        const int want = std::min<int>(static_cast<int>(pp.MultiSampleType), maxSamples);
+        if (want >= 2) {
+            glGenRenderbuffers(1, &msaaColor);
+            glBindRenderbuffer(GL_RENDERBUFFER, msaaColor);
+            glRenderbufferStorageMultisample(GL_RENDERBUFFER, want, GL_RGBA8, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
+            glGenRenderbuffers(1, &msaaDepth);
+            glBindRenderbuffer(GL_RENDERBUFFER, msaaDepth);
+            glRenderbufferStorageMultisample(GL_RENDERBUFFER, want, GL_DEPTH24_STENCIL8, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
+            glGenFramebuffers(1, &msaaFbo);
+            glBindFramebuffer(GL_FRAMEBUFFER, msaaFbo);
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, msaaColor);
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, msaaDepth);
+            if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE) {
+                msaaSamples = want;
+                log("gles: %dx multisampled back buffer (device max %d)", want, maxSamples);
+            } else {
+                log("gles: multisampled back buffer incomplete, anti-aliasing off");
+                glDeleteFramebuffers(1, &msaaFbo), glDeleteRenderbuffers(1, &msaaColor), glDeleteRenderbuffers(1, &msaaDepth);
+                msaaFbo = msaaColor = msaaDepth = 0;
+            }
+            GLCHECK("msaa back buffer");
+        }
+    } else if (pp.MultiSampleType >= 2) {
+        log("gles: no glRenderbufferStorageMultisample, anti-aliasing off");
+    }
     backBuffer = new Surface(this, D3DFMT_X8R8G8B8, w, h);
     backBuffer->Release();
     backBuffer->isBackBuffer = true, backBuffer->usage = D3DUSAGE_RENDERTARGET;
@@ -1104,6 +1146,27 @@ void Device::destroyBackBuffer() {
     if (mainFbo) glDeleteFramebuffers(1, &mainFbo), mainFbo = 0;
     if (mainColor) glDeleteTextures(1, &mainColor), mainColor = 0;
     if (mainDepth) glDeleteRenderbuffers(1, &mainDepth), mainDepth = 0;
+    if (msaaFbo) glDeleteFramebuffers(1, &msaaFbo), msaaFbo = 0;
+    if (msaaColor) glDeleteRenderbuffers(1, &msaaColor), msaaColor = 0;
+    if (msaaDepth) glDeleteRenderbuffers(1, &msaaDepth), msaaDepth = 0;
+    msaaSamples = 0, msaaDirty = false;
+}
+
+void Device::resolveMain() {
+    if (!msaaSamples || !msaaDirty) return;
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, msaaFbo);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, mainFbo);
+    glDisable(GL_SCISSOR_TEST);
+    glBlitFramebuffer(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), 0, 0, static_cast<GLint>(pp.BackBufferWidth),
+                      static_cast<GLint>(pp.BackBufferHeight), GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    msaaDirty = false;
+    boundFbo = ~0u;
+    rsDirty = true;
+}
+
+GLuint Device::readFboFor(Surface* src) {  // a framebuffer to read `src` from (the back buffer: resolved)
+    if (src && src->isBackBuffer && msaaSamples) { resolveMain(); return mainFbo; }
+    return fboFor(src, nullptr);
 }
 
 HRESULT STDMETHODCALLTYPE Device::Reset(D3DPRESENT_PARAMETERS* p) {
@@ -1116,7 +1179,7 @@ HRESULT STDMETHODCALLTYPE Device::Reset(D3DPRESENT_PARAMETERS* p) {
 }
 
 GLuint Device::fboFor(Surface* rt, Surface* ds) {
-    if (rt && rt->isBackBuffer && (!ds || ds->isMainDepth)) return mainFbo;
+    if (rt && rt->isBackBuffer && (!ds || ds->isMainDepth)) return msaaSamples ? msaaFbo : mainFbo;
     if (lastFboValid && rt == lastFboRt && ds == lastFboDs) return lastFboId;
     const auto key = std::make_pair(rt, ds);
     auto it = fbos.find(key);
@@ -1141,6 +1204,7 @@ GLuint Device::fboFor(Surface* rt, Surface* ds) {
 }
 void Device::bindTarget() {
     const GLuint f = fboFor(renderTarget, depthStencil);
+    if (msaaSamples && f == msaaFbo) msaaDirty = true;
     if (f != boundFbo) { glBindFramebuffer(GL_FRAMEBUFFER, f); boundFbo = f; }
 }
 
@@ -1218,7 +1282,7 @@ HRESULT STDMETHODCALLTYPE Device::GetRenderTargetData(IDirect3DSurface9* src, ID
     Surface* a = static_cast<Surface*>(src);
     Surface* b = static_cast<Surface*>(dst);
     if (!a || !b) return D3DERR_INVALIDCALL;
-    const GLuint f = fboFor(a, nullptr);
+    const GLuint f = readFboFor(a);
     glBindFramebuffer(GL_FRAMEBUFFER, f);
     boundFbo = f;
     std::vector<uint8_t> px(static_cast<size_t>(a->level.width) * a->level.height * 4);
@@ -1231,7 +1295,14 @@ HRESULT STDMETHODCALLTYPE Device::StretchRect(IDirect3DSurface9* src, const RECT
     Surface* a = static_cast<Surface*>(src);
     Surface* b = static_cast<Surface*>(dst);
     if (!a || !b) return D3DERR_INVALIDCALL;
-    const GLuint fa = fboFor(a, nullptr), fb = fboFor(b, nullptr);
+    const GLuint fa = readFboFor(a);
+    GLuint fb = fboFor(b, nullptr);
+    if (msaaSamples && fb == msaaFbo) {  // a blit cannot write a multisampled buffer: into the resolved one (the next draw overwrites it)
+        static bool once;
+        if (!once) once = true, log("gles: StretchRect into the multisampled back buffer: written to the resolved buffer");
+        resolveMain();
+        fb = mainFbo;
+    }
     glBindFramebuffer(GL_READ_FRAMEBUFFER, fa);
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fb);
     boundFbo = ~0u;
@@ -1246,6 +1317,7 @@ HRESULT STDMETHODCALLTYPE Device::ColorFill(IDirect3DSurface9* s, const RECT* r,
     Surface* surf = static_cast<Surface*>(s);
     if (!surf) return D3DERR_INVALIDCALL;
     const GLuint f = fboFor(surf, nullptr);
+    if (msaaSamples && f == msaaFbo) msaaDirty = true;
     glBindFramebuffer(GL_FRAMEBUFFER, f);
     boundFbo = f;
     glEnable(GL_SCISSOR_TEST);
@@ -1915,6 +1987,7 @@ void Device::drawOverlay() {
     rsDirty = true;
     texDirty = true;
     boundTexGl[0] = ~0u;
+    samplersBound = false;  // unit 0 got the default sampler
     current = nullptr;
     constProgram = nullptr;
     layoutValid = false;
@@ -1978,7 +2051,64 @@ void Device::afterDraw() {
     log("gles trace:   -> draw %u on %s %ux%u", statDraws, renderTarget && !renderTarget->isBackBuffer ? "render target" : "back buffer", w, h);
 }
 
+// Brightness: the resolved frame to the window through a gamma exponent (a plain blit when
+// neutral). A full-screen triangle from gl_VertexID, no vertex buffer.
+bool Device::presentPass(int ww, int wh, float gamma) {
+    if (!presentProgram) {
+        const char* vs =
+            "#version 300 es\nvoid main() {\n  vec2 p = vec2(gl_VertexID == 1 ? 3.0 : -1.0, gl_VertexID == 2 ? 3.0 : -1.0);\n  gl_Position = vec4(p, 0.0, 1.0);\n}\n";
+        const char* fs =
+            "#version 300 es\nprecision mediump float;\nuniform sampler2D uTex;\nuniform float uGamma;\nuniform vec2 uSize;\nout vec4 o;\n"
+            "void main() {\n  vec2 uv = gl_FragCoord.xy / uSize;\n  vec3 c = texture(uTex, vec2(uv.x, 1.0 - uv.y)).rgb;\n"
+            "  o = vec4(pow(max(c, vec3(0.0)), vec3(uGamma)), 1.0);\n}\n";
+        const GLuint v = compileShader(GL_VERTEX_SHADER, vs, "present vertex shader"), f = compileShader(GL_FRAGMENT_SHADER, fs, "present fragment shader");
+        presentProgram = linkProgram(v, f);
+        if (v) glDeleteShader(v);
+        if (f) glDeleteShader(f);
+        if (!presentProgram) { log("gles: no present program: brightness ignored"); presentProgram = ~0u; }
+        else {
+            presentUGamma = glGetUniformLocation(presentProgram, "uGamma");
+            presentUSize = glGetUniformLocation(presentProgram, "uSize");
+            glUseProgram(presentProgram);
+            glUniform1i(glGetUniformLocation(presentProgram, "uTex"), 0);
+        }
+    }
+    if (presentProgram == ~0u) return false;
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glViewport(0, 0, ww, wh);
+    glDisable(GL_SCISSOR_TEST);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_STENCIL_TEST);
+    glDisable(GL_CULL_FACE);
+    glDisable(GL_BLEND);
+    glColorMask(1, 1, 1, 1);
+    glUseProgram(presentProgram);
+    glUniform1f(presentUGamma, gamma);
+    glUniform2f(presentUSize, static_cast<float>(ww), static_cast<float>(wh));
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, mainColor);
+    glBindSampler(0, 0);
+    for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    // the game's state is re-applied on the next draw
+    rsDirty = true;
+    texDirty = true;
+    boundTexGl[0] = ~0u;
+    samplersBound = false;  // unit 0 got the default sampler
+    current = nullptr;
+    constProgram = nullptr;
+    layoutValid = false;
+    programDirty = true;
+    boundIbo = ~0u;
+    boundFbo = ~0u;
+    lastProgramGl = 0;
+    glUseProgram(0);
+    GLCHECK("present pass");
+    return true;
+}
+
 void Device::saveScreenshot() {
+    resolveMain();
     const UINT w = pp.BackBufferWidth, h = pp.BackBufferHeight;
     std::vector<unsigned char> px(static_cast<size_t>(w) * h * 4);
     glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
@@ -2008,19 +2138,23 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
     const uint64_t t0 = nowNs();
     int ww = fbWidth, wh = fbHeight;
     if (!w32::fbdevGl()) SDL_GL_GetDrawableSize(window, &ww, &wh);
+    resolveMain();      // anti-aliasing: the frame into mainColor
     dumpFrameWanted();  // FABLE_GLES_DRAWDUMP=purple scans the finished frame
     drawOverlay();
     // the depth/stencil of the frame is not needed after this: tell the tiler not to write it
     // back (the next frame clears it)
     if (glInvalidateFramebuffer) {
         static const GLenum ds[] = {GL_DEPTH_ATTACHMENT, GL_STENCIL_ATTACHMENT};
-        glBindFramebuffer(GL_FRAMEBUFFER, mainFbo);
+        glBindFramebuffer(GL_FRAMEBUFFER, msaaSamples ? msaaFbo : mainFbo);
         glInvalidateFramebuffer(GL_FRAMEBUFFER, 2, ds);
     }
-    glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
-    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
-    glDisable(GL_SCISSOR_TEST);
-    glBlitFramebuffer(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), 0, wh, ww, 0, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+    const int brightness = host::gfx::get().brightness;
+    if (brightness == 50 || !presentPass(ww, wh, host::gfx::gammaExponent(brightness))) {
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+        glDisable(GL_SCISSOR_TEST);
+        glBlitFramebuffer(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), 0, wh, ww, 0, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+    }
     {
         const uint64_t ts = nowNs();
         if (w32::fbdevGl()) fb::swap(); else SDL_GL_SwapWindow(window);
@@ -2151,7 +2285,7 @@ struct D3D9 : Unknown<IDirect3D9, &IID_IDirect3D9> {
         if (usage & D3DUSAGE_QUERY_SRGBREAD) return D3DERR_NOTAVAILABLE;
         return S_OK;
     }
-    HRESULT STDMETHODCALLTYPE CheckDeviceMultiSampleType(UINT, D3DDEVTYPE, D3DFORMAT, WINBOOL, D3DMULTISAMPLE_TYPE t, DWORD* q) override { if (q) *q = 1; return t == D3DMULTISAMPLE_NONE ? S_OK : D3DERR_NOTAVAILABLE; }
+    HRESULT STDMETHODCALLTYPE CheckDeviceMultiSampleType(UINT, D3DDEVTYPE, D3DFORMAT, WINBOOL, D3DMULTISAMPLE_TYPE t, DWORD* q) override { if (q) *q = 1; return t == D3DMULTISAMPLE_NONE || t == D3DMULTISAMPLE_2_SAMPLES || t == D3DMULTISAMPLE_4_SAMPLES ? S_OK : D3DERR_NOTAVAILABLE; }
     HRESULT STDMETHODCALLTYPE CheckDepthStencilMatch(UINT, D3DDEVTYPE, D3DFORMAT, D3DFORMAT, D3DFORMAT ds) override { return formatInfo(ds).depth ? S_OK : D3DERR_NOTAVAILABLE; }
     HRESULT STDMETHODCALLTYPE CheckDeviceFormatConversion(UINT, D3DDEVTYPE, D3DFORMAT, D3DFORMAT) override { return S_OK; }
     HRESULT STDMETHODCALLTYPE GetDeviceCaps(UINT, D3DDEVTYPE, D3DCAPS9* c) override { Device tmp(this, D3DPRESENT_PARAMETERS{}); return tmp.GetDeviceCaps(c); }

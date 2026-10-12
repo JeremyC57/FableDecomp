@@ -78,7 +78,8 @@ void startVolumeKeys();   // volkeys.cpp: FABLE_VOLUME_KEYS=1
 void startProfiler();     // profiler.cpp: FABLE_PROFILE=1 (or a report interval in seconds)
 int padProbe();           // --pad-probe diagnostics (xinput.cpp)
 bool fbdevGl();           // SDL video could not start (no KMS/DRM): dummy video, EGL on the framebuffer
-bool displayBounds(SDL_Rect& b);  // the display, or the framebuffer when fbdevGl()
+bool displayBounds(SDL_Rect& b);
+bool screenSize(int& w, int& h);  // the window / framebuffer size  // the display, or the framebuffer when fbdevGl()
 
 // ---- time -----------------------------------------------------------------------------------
 uint64_t nowFileTime();  // 100 ns since 1601 (UTC)

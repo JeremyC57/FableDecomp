@@ -23,7 +23,6 @@ std::mutex g_lock;
 bool g_open = false;
 int g_sel = 0;
 bool g_fps = false, g_stats = false, g_shot = false;
-int g_vsync = -1;  // -1: not read yet (FABLE_VSYNC, default 1)
 WORD g_lastButtons = 0;
 bool g_lastGuide = false;
 uint32_t g_guideDown = 0;
@@ -40,21 +39,33 @@ uint32_t ticks() {
     return static_cast<uint32_t>(duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count());
 }
 
-enum Item { RESUME, GRAPHICS, VOLUME, FPS, STATS, LOGLEVEL, VSYNC, SCREENSHOT, EXIT, COUNT };
-// the graphics page: the game's own Video Options (quality levels, resolution) plus direct levers
-enum GfxItem { G_RES, G_LANDSCAPE, G_MODEL, G_TEXTURE, G_SHADOW, G_EFFECTS, G_DRAW, G_GLOW, G_WATER, G_WEATHER, G_BACK, G_COUNT };
+enum Item { RESUME, GRAPHICS, VOLUME, FPS, STATS, LOGLEVEL, SCREENSHOT, EXIT, COUNT };
+// the graphics page: the game's own Video Options (resolution, refresh rate, anti-aliasing,
+// aspect ratio, the detail levels, brightness, vsync) plus direct levers on the engine
+enum GfxItem { G_RES, G_REFRESH, G_AA, G_ASPECT, G_LANDSCAPE, G_MODEL, G_TEXTURE, G_SHADOW, G_EFFECTS, G_BRIGHT, G_VSYNC, G_DRAW, G_GLOW, G_WATER, G_WEATHER, G_BACK, G_COUNT };
 int g_page = 0;  // 0: main, 1: graphics
 std::string onOff(bool b) { return b ? "on" : "off"; }
+std::string resolutionText(int scale) {
+    int w = 0, h = 0;
+    if (!w32::screenSize(w, h) || w <= 0) return scale == 100 ? "native" : std::to_string(scale) + "%";
+    const int rw = std::max(320, (w * scale / 100) & ~3), rh = std::max(200, (h * scale / 100) & ~3);
+    return std::to_string(rw) + "x" + std::to_string(rh) + (scale == 100 ? " (native)" : " (" + std::to_string(scale) + "%)");
+}
 std::string gfxLabel(int i) {
     const host::gfx::Settings& s = host::gfx::get();
     using host::gfx::qualityName;
     switch (i) {
-        case G_RES: return "Render resolution: " + (s.resolutionScale == 100 ? std::string("native") : std::to_string(s.resolutionScale) + "%") + "  (left/right)";
+        case G_RES: return "Resolution: " + resolutionText(s.resolutionScale) + "  (left/right)";
+        case G_REFRESH: return "Refresh rate: " + (s.refreshRate ? std::to_string(s.refreshRate) + " Hz" : std::string("display default")) + "  (left/right)";
+        case G_AA: return std::string("Anti-aliasing: ") + (s.antialiasing ? std::to_string(s.antialiasing) + "x MSAA" : "off") + "  (left/right)";
+        case G_ASPECT: return std::string("Screen aspect ratio: ") + host::gfx::aspectName(s.aspect) + "  (left/right)";
         case G_LANDSCAPE: return std::string("Landscape detail: ") + qualityName(s.landscape) + "  (left/right)";
-        case G_MODEL: return std::string("Model detail: ") + qualityName(s.model) + "  (left/right)";
+        case G_MODEL: return std::string("Mesh detail: ") + qualityName(s.model) + "  (left/right)";
         case G_TEXTURE: return std::string("Texture detail: ") + qualityName(s.texture) + "  (left/right)";
-        case G_SHADOW: return std::string("Shadow quality: ") + (s.shadow == 0 ? "Low (off)" : qualityName(s.shadow)) + "  (left/right)";
-        case G_EFFECTS: return std::string("Effects quality: ") + qualityName(s.effects) + "  (left/right)";
+        case G_SHADOW: return std::string("Shadow detail: ") + (s.shadow == 0 ? "Low (off)" : qualityName(s.shadow)) + "  (left/right)";
+        case G_EFFECTS: return std::string("Effects detail: ") + qualityName(s.effects) + "  (left/right)";
+        case G_BRIGHT: return "Brightness: " + std::to_string(s.brightness) + "  (left/right)";
+        case G_VSYNC: return std::string("Vertical sync: ") + (s.vsync == 0 ? "off" : s.vsync == 1 ? "on" : "half (30 fps lock)");
         case G_DRAW: return "Draw distance: " + std::to_string(s.drawDistance) + "%  (left/right)";
         case G_GLOW: return "Glow / bloom: " + onOff(s.glow);
         case G_WATER: return "Water reflections: " + onOff(s.water);
@@ -64,23 +75,27 @@ std::string gfxLabel(int i) {
     }
 }
 int cycleQ(int q, int dir) { return dir ? std::clamp(q + dir, 0, 3) : (q + 1) % 4; }  // select cycles, left/right step
+template <size_t N> int stepList(const int (&list)[N], int cur, int dir) {  // left/right along a list, select cycles
+    int k = 0;
+    for (size_t j = 0; j < N; ++j) if (list[j] == cur) k = static_cast<int>(j);
+    if (!dir) return list[(k + 1) % N];
+    return list[std::clamp(k + dir, 0, static_cast<int>(N) - 1)];
+}
 void gfxChange(int i, int dir) {  // dir: -1 left, +1 right, 0 select
     host::gfx::Settings s = host::gfx::get();
-    static const int scales[] = {50, 67, 75, 83, 100};
+    static const int scales[] = {50, 67, 75, 83, 100}, refreshes[] = {0, 50, 60, 75, 90, 120}, aas[] = {0, 2, 4}, aspects[] = {0, 1, 2, 3, 4, 5}, vsyncs[] = {0, 1, 2};
     switch (i) {
-        case G_RES: {
-            int k = 4;
-            for (int j = 0; j < 5; ++j) if (scales[j] == s.resolutionScale) k = j;
-            k = std::clamp(k + (dir ? dir : -1), 0, 4);
-            if (!dir && k == 0 && s.resolutionScale == 50) k = 4;
-            s.resolutionScale = scales[k];
-            break;
-        }
+        case G_RES: s.resolutionScale = stepList(scales, s.resolutionScale, dir); break;
+        case G_REFRESH: s.refreshRate = stepList(refreshes, s.refreshRate, dir); break;
+        case G_AA: s.antialiasing = stepList(aas, s.antialiasing, dir); break;
+        case G_ASPECT: s.aspect = stepList(aspects, s.aspect, dir); break;
         case G_LANDSCAPE: s.landscape = cycleQ(s.landscape, dir); break;
         case G_MODEL: s.model = cycleQ(s.model, dir); break;
         case G_TEXTURE: s.texture = cycleQ(s.texture, dir); break;
         case G_SHADOW: s.shadow = cycleQ(s.shadow, dir); break;
         case G_EFFECTS: s.effects = cycleQ(s.effects, dir); break;
+        case G_BRIGHT: s.brightness = std::clamp(s.brightness + (dir ? dir : 1) * 10, 0, 100); break;
+        case G_VSYNC: s.vsync = stepList(vsyncs, s.vsync, dir); break;
         case G_DRAW: s.drawDistance = std::clamp(s.drawDistance + (dir ? dir : 1) * 10, 30, 150); break;
         case G_GLOW: s.glow = !s.glow; break;
         case G_WATER: s.water = !s.water; break;
@@ -99,7 +114,6 @@ std::string label(int i) {
         case FPS: return std::string("Show FPS: ") + (g_fps ? "on" : "off");
         case STATS: return std::string("Renderer statistics: ") + (g_stats ? "on" : "off");
         case LOGLEVEL: return "Log level: " + std::to_string(host::g_logLevel) + (host::g_logLevel == 0 ? " (errors)" : host::g_logLevel == 1 ? " (info)" : " (every call, slow)");
-        case VSYNC: return std::string("VSync: ") + (vsync() == 0 ? "off" : vsync() == 1 ? "on (60 Hz)" : "half (30 fps lock)");
         case SCREENSHOT: return "Save a screenshot (Fable/save/)";
         case EXIT: return g_exiting ? "Exiting..." : "Exit the game";
         default: return "";
@@ -114,7 +128,6 @@ void activate(int i) {
         case STATS: g_stats = !g_stats; break;
         case LOGLEVEL: host::g_logLevel = (host::g_logLevel + 1) % 3; break;
         case VOLUME: w32::setMasterVolume(w32::masterVolume() >= 0.99f ? 0.0f : w32::masterVolume() + 0.1f); break;
-        case VSYNC: g_vsync = (vsync() + 1) % 3; break;
         case SCREENSHOT: g_shot = true; g_open = false; break;
         case EXIT:
             if (g_exiting) break;
@@ -137,13 +150,7 @@ bool enabled() {
 bool open() { std::lock_guard<std::mutex> l(g_lock); return g_open; }
 bool showFps() { return g_fps; }
 bool showStats() { return g_stats; }
-int vsync() {
-    if (g_vsync < 0) {
-        const char* e = std::getenv("FABLE_VSYNC");
-        g_vsync = e ? std::clamp(std::atoi(e), 0, 2) : 1;
-    }
-    return g_vsync;
-}
+int vsync() { return host::gfx::get().vsync; }
 void setStats(const char* t) { std::lock_guard<std::mutex> l(g_lock); g_statsText = t; }
 bool takeScreenshot() { std::lock_guard<std::mutex> l(g_lock); const bool s = g_shot; g_shot = false; return s; }
 void notePresent() {
