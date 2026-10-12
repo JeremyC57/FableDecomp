@@ -463,6 +463,14 @@ void VkRenderer::bindTargets() {
     const bool zeta = ((fmt >> 4) & 0xF) != 0 && zetaDma;
     Surface* c = colorAddr ? getSurface(colorAddr, w, h, pitch & 0xFFFF, colorFormatOf(fmt), false) : nullptr;
     Surface* z = zeta ? getSurface(zetaAddr, w, h, pitch >> 16, depthFormat_, true) : nullptr;
+    // FABLE_FRONT_TRACE (debugging): log flips that draw into the surface being scanned out.
+    if (static const bool frontTrace = getenv("FABLE_FRONT_TRACE") != nullptr; frontTrace && colorAddr && colorAddr == st.scanout) {
+        static uint64_t lastFlip = ~0ull;
+        if (g_frameCount != lastFlip) {
+            lastFlip = g_frameCount;
+            XLOG(0, "front draw: flip %llu target %08X is the scanout", static_cast<unsigned long long>(g_frameCount), colorAddr);
+        }
+    }
     target_.color = c ? c->addr : 0;
     target_.depth = z ? z->addr : 0;
     target_.w = w;

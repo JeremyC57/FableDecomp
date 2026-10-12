@@ -425,6 +425,14 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
         const uint32_t mod = surfaceField(28);
         setSurfaceField(20, mod ? (surfaceField(20) + 1) % mod : 0);
         ++g_frameCount;
+        // FABLE_FLIP_TIMES (debugging): log flips that took over 50 ms.
+        if (static const bool flipTimes = getenv("FABLE_FLIP_TIMES") != nullptr; flipTimes) {
+            static auto last = std::chrono::steady_clock::now();
+            const auto now = std::chrono::steady_clock::now();
+            const double ms = std::chrono::duration<double, std::milli>(now - last).count();
+            last = now;
+            if (ms > 50) XLOG(0, "slow flip %llu: %.0f ms, scanout %08X", static_cast<unsigned long long>(g_frameCount), ms, g_state.scanout);
+        }
         // FABLE_SCAN=<hex word>@<flip>: log every guest RAM address holding that word (debug).
         if (static const char* scan = getenv("FABLE_SCAN"); scan) {
             // A comma-separated list matches consecutive words.
