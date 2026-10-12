@@ -401,7 +401,12 @@ extern "C" void host_ui_event(Ctx* c) {
     }
     // CInputProcessInventory sends INVENTORY_SELECT (A) to the menus as a mouse press (0x1A)
     // for the PC screens; the Xbox screens take the select event.
-    if (xboxMenus() && ev == EV_LEFT_PRESS && rd32(c->esp) == 0x68A291) wr32(c->esp + 4, EV_SELECT);
+    // The same for the inventory sub-screens' processors (map 0x68AEA5, experience 0x68B355,
+    // trade 0x68B83A, quests 0x68BF88).
+    if (xboxMenus() && ev == EV_LEFT_PRESS) {
+        const uint32_t from = rd32(c->esp);
+        if (from == 0x68A291 || from == 0x68AEA5 || from == 0x68B355 || from == 0x68B83A || from == 0x68BF88) wr32(c->esp + 4, EV_SELECT);
+    }
     // It also sends a direction on every "held" pad event (its second branch, 0x68A95D to
     // 0x68ABC6), i.e. every frame, which the Xbox screens take as one step each. They get
     // one step per press here and then a steady repeat while the direction is held.
@@ -421,7 +426,12 @@ extern "C" void host_ui_event(Ctx* c) {
     }
     static const bool menuTrace = std::getenv("FABLE_MENU_TRACE") != nullptr;
     if (ev != 0x19) HLOG(menuTrace ? 1 : 2, "menu: ui event %u to 0x%08X from 0x%08X (live gui %d)", ev, mgr, rd32(c->esp), liveGui() ? 1 : 0);
-    if (ev <= EV_BACK && !liveGui() && mgr == guestCall(kGetUiManager, {})) {
+    // The navigator serves the front end only: events from CNewFrontendGameComponent::Input
+    // (0x42E3EE..0x42E98F). The in-game processors (CInputProcessInGameMenu, the inventory
+    // screens) send the Xbox screens their own select/back events, which must reach them
+    // untouched (the navigator used to turn the pause menu's select into a mouse click).
+    const uint32_t from = rd32(c->esp);
+    if (ev <= EV_BACK && from >= 0x42E3EE && from < 0x42E98F && mgr == guestCall(kGetUiManager, {})) {
         const uint32_t savedEsp = c->esp;
         c->esp = (c->esp - 0x80) & ~0xFu;
         const bool done = navigate(mgr, ev, c->esp + 0x20);
