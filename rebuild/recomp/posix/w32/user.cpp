@@ -103,11 +103,48 @@ WndPtr mainWindow() {
     return nullptr;
 }
 
+bool g_fbdevGl = false;
+int g_fbW = 0, g_fbH = 0;
+}  // namespace
+bool fbdevGl() { return g_fbdevGl; }
+bool displayBounds(SDL_Rect& b) {
+    if (!SDL_WasInit(SDL_INIT_VIDEO)) return false;
+    const bool ok = SDL_GetDisplayBounds(0, &b) == 0;
+    if (g_fbdevGl) {
+        if (!g_fbW) {
+            g_fbW = 720, g_fbH = 480;  // the RG34XX SP's panel
+            if (const char* s = std::getenv("FABLE_SCREEN")) std::sscanf(s, "%dx%d", &g_fbW, &g_fbH);
+            else if (FILE* f = std::fopen("/sys/class/graphics/fb0/virtual_size", "r")) {
+                int w = 0, h = 0;
+                if (std::fscanf(f, "%d,%d", &w, &h) == 2 && w > 0 && h > 0) g_fbW = w, g_fbH = h;
+                std::fclose(f);
+            }
+        }
+        b = {0, 0, g_fbW, g_fbH};
+        return true;
+    }
+    return ok;
+}
+namespace {
+
 void ensureSdl() {
     if (SDL_WasInit(SDL_INIT_VIDEO)) return;
     SDL_SetHint(SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS, "0");
     SDL_SetHint(SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, "1");
-    if (SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) std::fprintf(stderr, "SDL_Init(video) failed: %s\n", SDL_GetError());
+    if (SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
+        std::fprintf(stderr, "SDL_Init(video) failed: %s\n", SDL_GetError());
+        if (glesRenderer()) {
+            // No display SDL knows (a framebuffer-only OS): SDL's dummy video keeps the window
+            // and input machinery going, and the GLES renderer opens EGL on /dev/fb0 itself.
+            setenv("SDL_VIDEODRIVER", "dummy", 1);
+            if (SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_EVENTS) == 0) {
+                g_fbdevGl = true;
+                std::fprintf(stderr, "display: no SDL video driver; OpenGL ES on the framebuffer (SDL dummy video)\n");
+            } else {
+                std::fprintf(stderr, "SDL_Init(dummy video) failed: %s\n", SDL_GetError());
+            }
+        }
+    }
     g_sdlThread = currentTid();
 }
 
@@ -341,7 +378,7 @@ HWND createWindow(DWORD exStyle, const std::string& cls, ATOM clsAtom, const std
     if (topLevel) {
         ensureSdl();
         Uint32 flags = SDL_WINDOW_HIDDEN | SDL_WINDOW_ALLOW_HIGHDPI;
-        if (glesRenderer()) {  // the OpenGL ES renderer (gles/): an ES 3.0 context on the window
+        if (glesRenderer() && !g_fbdevGl) {  // the OpenGL ES renderer (gles/): an ES 3.0 context on the window
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
@@ -349,7 +386,7 @@ HWND createWindow(DWORD exStyle, const std::string& cls, ATOM clsAtom, const std
             SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 0);
             SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
             flags |= SDL_WINDOW_OPENGL;
-        } else {
+        } else if (!g_fbdevGl) {
             flags |= SDL_WINDOW_VULKAN;
         }
         if (!(style & WS_CAPTION)) flags |= SDL_WINDOW_BORDERLESS;
@@ -364,7 +401,7 @@ HWND createWindow(DWORD exStyle, const std::string& cls, ATOM clsAtom, const std
         // swap chain never has to follow a later resize.
         int x0 = SDL_WINDOWPOS_CENTERED, y0 = SDL_WINDOWPOS_CENTERED, w0 = cw, h0 = ch;
         SDL_Rect b;
-        if (g_fullscreen && SDL_GetDisplayBounds(0, &b) == 0) {
+        if (g_fullscreen && displayBounds(b)) {
             flags |= SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN_DESKTOP;
             x0 = b.x, y0 = b.y, w0 = b.w, h0 = b.h;
         }
@@ -444,7 +481,7 @@ void setFullscreenDesktop(HWND h, bool on) {
     SDL_Rect b;
     int cw = 0, ch = 0;
     SDL_GetWindowSize(w->sdl, &cw, &ch);
-    if (SDL_GetDisplayBounds(SDL_GetWindowDisplayIndex(w->sdl), &b) == 0 && (cw != b.w || ch != b.h)) {
+    if (displayBounds(b) && (cw != b.w || ch != b.h)) {
         SDL_SetWindowBordered(w->sdl, SDL_FALSE);
         SDL_SetWindowPosition(w->sdl, b.x, b.y);
         SDL_SetWindowSize(w->sdl, b.w, b.h);
@@ -594,7 +631,7 @@ HWND WINAPI GetDesktopWindow(void) { return kDesktop; }
 BOOL WINAPI GetWindowRect(HWND h, LPRECT r) {
     if (h == kDesktop || !h) {
         SDL_Rect b{0, 0, 1920, 1080};
-        if (SDL_WasInit(SDL_INIT_VIDEO)) SDL_GetDisplayBounds(0, &b);
+        displayBounds(b);
         *r = {b.x, b.y, b.x + b.w, b.y + b.h};
         return TRUE;
     }
@@ -846,7 +883,7 @@ UINT WINAPI GetCaretBlinkTime(void) { return 530; }
 DWORD WINAPI GetSysColor(int) { return 0x00C0C0C0; }
 int WINAPI GetSystemMetrics(int i) {
     SDL_Rect b{0, 0, 1920, 1080};
-    if (SDL_WasInit(SDL_INIT_VIDEO)) SDL_GetDisplayBounds(0, &b);
+    displayBounds(b);
     switch (i) {
         case SM_CXSCREEN: case SM_CXVIRTUALSCREEN: case SM_CXFULLSCREEN: return b.w;
         case SM_CYSCREEN: case SM_CYVIRTUALSCREEN: case SM_CYFULLSCREEN: return b.h;
@@ -866,7 +903,8 @@ HMONITOR WINAPI MonitorFromWindow(HWND, DWORD) { return reinterpret_cast<HMONITO
 HMONITOR WINAPI MonitorFromPoint(POINT, DWORD) { return reinterpret_cast<HMONITOR>(static_cast<uintptr_t>(0x10020)); }
 BOOL WINAPI GetMonitorInfoW(HMONITOR, LPMONITORINFO mi) {
     SDL_Rect b{0, 0, 1920, 1080}, u = b;
-    if (SDL_WasInit(SDL_INIT_VIDEO)) SDL_GetDisplayBounds(0, &b), SDL_GetDisplayUsableBounds(0, &u);
+    if (displayBounds(b)) u = b;
+    if (SDL_WasInit(SDL_INIT_VIDEO) && !g_fbdevGl) SDL_GetDisplayUsableBounds(0, &u);
     mi->rcMonitor = {b.x, b.y, b.x + b.w, b.y + b.h};
     mi->rcWork = {u.x, u.y, u.x + u.w, u.y + u.h};
     mi->dwFlags = MONITORINFOF_PRIMARY;

@@ -30,7 +30,8 @@ struct DirectDraw final : ComObject<IDirectDraw7> {
     }
     HRESULT STDMETHODCALLTYPE GetDisplayMode(LPDDSURFACEDESC2 d) override {
         SDL_DisplayMode m{0, 1920, 1080, 60, nullptr};
-        if (SDL_WasInit(SDL_INIT_VIDEO)) SDL_GetDesktopDisplayMode(0, &m);
+        SDL_Rect b;
+        if (w32::displayBounds(b)) m.w = b.w, m.h = b.h;
         const DWORD size = d->dwSize;
         std::memset(d, 0, size);
         d->dwSize = size;

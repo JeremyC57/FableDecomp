@@ -35,12 +35,16 @@ namespace {
 namespace w32 {
 void* sdlWindow(HWND h);
 HWND hwndForSdl(void* w);
+bool glesRenderer();
 }  // namespace w32
 namespace {
 const char* kNoVulkan =
     "Direct3D 9 (DXVK on Vulkan) could not start: the Vulkan driver lacks features DXVK needs.\n\n"
     "On Snapdragon (Adreno) devices, install a Mesa Turnip driver in the launcher (Vulkan driver).\n"
     "The details are in the d3d9 log next to FableRecomp.log.";
+const char* kNoGles =
+    "Direct3D 9 on OpenGL ES could not start: no usable EGL/OpenGL ES 3.0 driver was found.\n\n"
+    "The log (log.txt) says which step failed.";
 HWND nativeWindow(HWND h) {
     void* s = h ? w32::sdlWindow(h) : nullptr;
     return s ? static_cast<HWND>(s) : h;
@@ -406,7 +410,7 @@ void ovr_IDirect3D9_CreateDevice(Ctx* c) {
     takeResults(pp, np);
     logPP("CreateDevice", pp, hr);
 #ifdef FABLE_POSIX
-    if (hr == D3DERR_NOTAVAILABLE) die("%s", kNoVulkan);  // DXVK could not create a Vulkan device
+    if (hr == D3DERR_NOTAVAILABLE) die("%s", w32::glesRenderer() ? kNoGles : kNoVulkan);  // no usable GPU device
 #endif
     ppOut(arg(c, 5), pp);
     if (arg(c, 6)) wr32(arg(c, 6), SUCCEEDED(hr) ? wrap(dev) : 0);

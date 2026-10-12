@@ -11,4 +11,5 @@ IDirect3D9* createD3D9();
 }
 namespace w32 {
 bool glesRenderer();  // w32/user.cpp: FABLE_RENDERER=gles
+bool fbdevGl();       // w32/user.cpp: SDL has no display; the GLES renderer opens EGL on /dev/fb0
 }

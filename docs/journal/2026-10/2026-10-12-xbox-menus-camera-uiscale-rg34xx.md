@@ -64,3 +64,14 @@ only (Android and PC stay on DXVK).
   bundles the pulse libraries, and keeps Mesa's GBM/EGL/GLES only as `lib/fallback`
   (the device's Mali blob must supply the real ones). Smoke-tested under qemu-aarch64 with
   the fallback libraries: intro movies render.
+
+### Device test 2: no KMS/DRM
+The GLES package started on the RG34XX SP but SDL's KMSDRM video was "not available" (the
+stock OS is framebuffer + fbdev Mali blob, no DRM), so there was no window for the context.
+Added `gles/egl_fbdev.cpp`: when SDL video fails under `FABLE_RENDERER=gles`, SDL is
+re-initialised on its dummy driver (the pad and the window machinery still work) and the
+renderer opens EGL directly on `/dev/fb0` with Arm's fbdev native window, loading
+libEGL/libGLESv2 (or libmali) with dlopen. `w32::displayBounds` reports the framebuffer size
+in that mode, so the game offers and defaults to 720x480. Tested on the PC with
+`SDL_VIDEODRIVER=nonexistent EGL_PLATFORM=surfaceless FABLE_GL_WINDOW=pbuffer`: the whole
+route to gameplay renders at 720x480 (frames via `FABLE_GLES_DUMP`).

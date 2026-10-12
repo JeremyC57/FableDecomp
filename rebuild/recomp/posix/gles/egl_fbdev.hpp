@@ -1,0 +1,15 @@
+// An EGL window on the Linux framebuffer, for devices whose OS has no KMS/DRM (the Anbernic
+// stock OS on the RG34XX SP: /dev/fb0 and Arm's fbdev Mali blob). SDL then runs on its dummy
+// video driver for the window bookkeeping and input, and the GLES renderer presents here.
+// The native window is the Mali fbdev convention: a struct with the surface's width and
+// height. FABLE_GL_WINDOW=pbuffer makes it a pbuffer surface instead (tests on a PC without a
+// framebuffer: nothing is shown, FABLE_GLES_DUMP captures the frames).
+#pragma once
+
+namespace host::gles::fb {
+bool open(int& width, int& height);  // libEGL + libGLESv2 from the OS, a current ES 3.x context
+void* proc(const char* name);         // GL entry point
+void swap();
+void setSwapInterval(int interval);
+void close();
+}

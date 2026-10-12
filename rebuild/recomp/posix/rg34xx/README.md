@@ -30,11 +30,15 @@ Fable/            its files, in the folder of the same name next to it
 ```
 
 ## Known requirements and limits
-- **GPU driver.** SDL's KMSDRM backend needs the OS's GBM + EGL + GLES (the Mali blob
-  with GBM support, as the ports/PortMaster builds for the H700 use). If the OS's SDL2 is
-  needed instead of the bundled one (a fbdev-only Mali blob), put it first in the library
-  path in `Fable.sh`. `FABLE_RENDERER=dxvk` switches back to DXVK on Vulkan where a Vulkan
-  ICD exists. The log (`log.txt`) names the GL driver and version on start.
+- **GPU driver.** The stock OS has no KMS/DRM, so SDL's KMSDRM video cannot start
+  (`SDL_Init(video) failed: KMSDRM not available` in the log). The game then runs SDL on
+  its dummy video driver (window bookkeeping and the pad) and opens EGL on `/dev/fb0`
+  itself (`gles/egl_fbdev.cpp`): `libEGL.so.1` + `libGLESv2.so.2` (or `libmali.so`) from
+  the OS, Arm's fbdev native window (a width/height struct), an ES 3.x context. The
+  framebuffer size is the display size (`FABLE_SCREEN=WxH` overrides, `FABLE_FBDEV` names
+  another device). On an OS with KMS/DRM the bundled SDL2's KMSDRM path is used instead.
+  `FABLE_RENDERER=dxvk` switches back to DXVK on Vulkan where a Vulkan ICD exists. The
+  log (`log.txt`) names the EGL and GL driver and version on start.
 - **GLES scope.** What the game uses on the PC, per a Direct3D call census: vs_1_1 and
   ps_1_1/1_4 shaders (translated to GLSL ES 3.00), the fixed-function pixel pipeline,
   pre-transformed UI quads, DXT1/3/5 textures (decoded on the CPU; Mali has no S3TC),
