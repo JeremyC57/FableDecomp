@@ -1808,10 +1808,12 @@ bool Device::dumpFrameWanted() {
     if (!spec) return false;
     if (spec[0] == '/') {
         if (!target && access(spec, F_OK) == 0) { target = frames + 1; unlink(spec); log("gles trace: dumping frame %u", target); }
-    } else if (std::strcmp(spec, "purple") == 0) {
-        // dump the frame after one whose back buffer shows a patch of purple (the NPC glow)
+    } else if (std::strncmp(spec, "purple", 6) == 0) {
+        // purple[:minframe]: dump the frame after one whose back buffer shows a patch of purple
+        // (the NPC glow), from frame minframe on (the front end has purple too)
         static bool done = false;
-        if (!target && !done && frames > 100 && mainFbo) {
+        static const uint32_t minFrame = spec[6] == ':' ? static_cast<uint32_t>(atoi(spec + 7)) : 100u;
+        if (!target && !done && frames > minFrame && mainFbo) {
             const UINT w = pp.BackBufferWidth, h = pp.BackBufferHeight;
             std::vector<unsigned char> buf(static_cast<size_t>(w) * h * 4);
             glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
