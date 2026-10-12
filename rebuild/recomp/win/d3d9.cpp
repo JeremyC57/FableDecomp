@@ -340,6 +340,17 @@ std::vector<D3DDISPLAYMODE> modeList(D3DFORMAT fmt) {
                                     {1280, 960},  {1280, 1024}, {1360, 768},  {1366, 768},  {1440, 900},  {1600, 900},  {1600, 1200},
                                     {1680, 1050}, {1920, 1080}, {1920, 1200}, {2560, 1080}, {2560, 1440}, {2560, 1600}, {3440, 1440},
                                     {3840, 2160}};
+    if (const char* only = std::getenv("FABLE_RECOMP_MODES")) {  // testing: "1920x1080,1280x720" is the whole list
+        if (fmt != D3DFMT_X8R8G8B8) return out;
+        for (const char* p = only; *p;) {
+            unsigned w = 0, h = 0;
+            if (std::sscanf(p, "%ux%u", &w, &h) == 2 && w && h) out.push_back({w, h, 60, fmt});
+            p = std::strchr(p, ',');
+            if (!p) break;
+            ++p;
+        }
+        return out;
+    }
     for (auto& s : sizes)
         if (s[0] <= dw && s[1] <= dh) out.push_back({s[0], s[1], 60, fmt});
     if (std::none_of(out.begin(), out.end(), [&](const D3DDISPLAYMODE& m) { return m.Width == dw && m.Height == dh; }))
