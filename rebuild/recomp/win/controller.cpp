@@ -104,6 +104,9 @@ const char* const kDefaultConfig =
     "; XBOX_CAMERA = 1 uses the Xbox chase camera (right stick looks around, the camera follows\n"
     "; the hero's movement) instead of the PC mouse camera.\n"
     "XBOX_CAMERA = 1\n"
+    "; HOLD_TARGET = 1 makes the left trigger lock a target only while it is held (the game's own\n"
+    "; setting is a toggle: press to lock, press again to unlock).\n"
+    "HOLD_TARGET = 1\n"
     "LEFT_DEADZONE = 0.24\n"
     "RIGHT_DEADZONE = 0.24\n"
     ";\n"
@@ -144,7 +147,7 @@ struct Config {
     Target bind[InputCount];
     double cameraSpeed = 900, moveThreshold = 0.35;
     bool invertY = false;
-    bool native = true, swapBumpers = false, xboxMenus = true, stickCamera = false, xboxCamera = true;
+    bool native = true, swapBumpers = false, xboxMenus = true, stickCamera = false, xboxCamera = true, holdTarget = true;
     double leftDeadzone = 0.24, rightDeadzone = 0.24;
 };
 
@@ -167,6 +170,7 @@ void parseConfig(Config& cfg, const std::string& text) {
         else if (key == "NATIVE_PAD") cfg.native = std::atoi(val.c_str()) != 0;
         else if (key == "RIGHT_STICK_CAMERA") cfg.stickCamera = std::atoi(val.c_str()) != 0;
         else if (key == "XBOX_CAMERA") cfg.xboxCamera = std::atoi(val.c_str()) != 0;
+        else if (key == "HOLD_TARGET") cfg.holdTarget = std::atoi(val.c_str()) != 0;
         else if (key == "XBOX_MENUS") cfg.xboxMenus = std::atoi(val.c_str()) != 0;
         else if (key == "SWAP_BUMPERS") cfg.swapBumpers = std::atoi(val.c_str()) != 0;
         else if (key == "LEFT_DEADZONE") cfg.leftDeadzone = std::atof(val.c_str());
@@ -568,6 +572,13 @@ bool nativeEnabled() {
     return g.cfg.native;
 }
 
+bool holdTargetEnabled() {
+    std::lock_guard<std::mutex> l(g.m);
+    if (!g.init) load();
+    if (const char* e = std::getenv("FABLE_HOLD_TARGET")) return g.cfg.native && std::atoi(e) != 0;
+    return g.cfg.native && g.cfg.holdTarget;
+}
+
 bool xboxCameraEnabled() {
     std::lock_guard<std::mutex> l(g.m);
     if (!g.init) load();
@@ -593,6 +604,10 @@ extern "C" void host_primary_inputs(Ctx* c) {
     HLOG(1, "controller: GetPrimaryInputVector from 0x%08X", ret);
     if (rd32(self + 0x54) == rd32(self + 0x58)) guestCallThis(host::pad::kResetAssignedInputs, self, {});
     uint32_t vec = self + 0x54;
+    // The profile's CControlsDef sits at self+0x20 (its Controls vector is +0x34 in the def);
+    // ToggleZTarget (+0x48 in the def) makes the target lock a toggle. HOLD_TARGET clears it so
+    // the trigger locks only while held.
+    if (host::pad::holdTargetEnabled() && rd8(self + 0x68)) { wr8(self + 0x68, 0); HLOG(1, "controller: target lock set to hold (ToggleZTarget off)"); }
     if (ret == host::pad::kCallerSetControlScheme && host::pad::nativeEnabled()) vec = host::pad::mergedBindings(vec);
     retCdecl(c, vec);
 }

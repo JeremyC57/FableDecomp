@@ -665,6 +665,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     GLint overlayUSize = -1;
     bool overlayVsync = true;
     void drawOverlay();
+    void afterDraw();
     void saveScreenshot();
     void setSwapInterval(int i) { if (w32::fbdevGl()) fb::setSwapInterval(i); else SDL_GL_SetSwapInterval(i); }
     bool es32 = false;
@@ -1605,6 +1606,8 @@ void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVert
     }
     bindVertexLayout(decl ? decl.p : fvf ? fvfDeclaration() : nullptr, up, upData, upStride, upVertices, baseVertex);
     static int traceLeft = [] { const char* t = getenv("FABLE_GLES_TRACE"); return t ? atoi(t) : 0; }();
+    static const uint32_t dumpFrame = [] { const char* t = getenv("FABLE_GLES_DRAWDUMP"); return t ? static_cast<uint32_t>(atoi(t)) : 0u; }();
+    if (dumpFrame && frames + 1 == dumpFrame) traceLeft = 1;  // every draw of that frame is traced
     if (traceLeft > 0) {
         --traceLeft;
         const VertexDecl* d = decl ? decl.p : fvf ? fvfDeclaration() : nullptr;
@@ -1645,6 +1648,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawPrimitive(D3DPRIMITIVETYPE t, UINT start, 
     const GLenum mode = primMode(t, n, count);
     glDrawArrays(mode, static_cast<GLint>(start), count);
     ++statDraws;
+    afterDraw();
     GLCHECK("DrawPrimitive");
     return S_OK;
 }
@@ -1658,6 +1662,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT b
     const bool i32 = indices->format == D3DFMT_INDEX32;
     glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, reinterpret_cast<const void*>(static_cast<uintptr_t>(start) * (i32 ? 4 : 2)));
     ++statDraws;
+    afterDraw();
     GLCHECK("DrawIndexedPrimitive");
     return S_OK;
 }
@@ -1668,6 +1673,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawPrimitiveUP(D3DPRIMITIVETYPE t, UINT n, co
     if (!current) return S_OK;
     glDrawArrays(mode, 0, count);
     ++statDraws;
+    afterDraw();
     GLCHECK("DrawPrimitiveUP");
     return S_OK;
 }
@@ -1681,6 +1687,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UIN
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, static_cast<GLsizeiptr>(count) * (i32 ? 4 : 2), idx, GL_STREAM_DRAW);
     glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, nullptr);
     ++statDraws;
+    afterDraw();
     GLCHECK("DrawIndexedPrimitiveUP");
     return S_OK;
 }
@@ -1788,6 +1795,28 @@ void Device::drawOverlay() {
     current = nullptr;
     glUseProgram(0);
     GLCHECK("overlay");
+}
+
+// FABLE_GLES_DRAWDUMP=<frame>: after each draw of that frame, the bound render target goes to
+// FABLE_GLES_DUMP/draw_<n>.ppm (with the trace line logged by prepareDraw).
+void Device::afterDraw() {
+    static const uint32_t dumpFrame = [] { const char* t = getenv("FABLE_GLES_DRAWDUMP"); return t ? static_cast<uint32_t>(atoi(t)) : 0u; }();
+    if (!dumpFrame || frames + 1 != dumpFrame) return;
+    const char* dir = getenv("FABLE_GLES_DUMP");
+    if (!dir) return;
+    UINT w = pp.BackBufferWidth, h = pp.BackBufferHeight;
+    if (renderTarget && !renderTarget->isBackBuffer) w = renderTarget->level.width, h = renderTarget->level.height;
+    std::vector<unsigned char> buf(static_cast<size_t>(w) * h * 4);
+    glReadPixels(0, 0, static_cast<GLsizei>(w), static_cast<GLsizei>(h), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
+    char name[512];
+    std::snprintf(name, sizeof name, "%s/draw_%04u.ppm", dir, statDraws);
+    if (FILE* f = fopen(name, "wb")) {
+        fprintf(f, "P6\n%u %u\n255\n", w, h);
+        for (UINT y = 0; y < h; ++y)
+            for (UINT x = 0; x < w; ++x) fwrite(&buf[(static_cast<size_t>(y) * w + x) * 4], 1, 3, f);
+        fclose(f);
+    }
+    log("gles trace:   -> draw %u on %s %ux%u", statDraws, renderTarget && !renderTarget->isBackBuffer ? "render target" : "back buffer", w, h);
 }
 
 void Device::saveScreenshot() {

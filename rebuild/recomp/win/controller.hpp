@@ -22,6 +22,7 @@ void touchButton(int button, bool down);
 bool xboxMenusEnabled();
 // XBOX_CAMERA: the Xbox chase camera instead of the PC mouse camera (camera.cpp).
 bool xboxCameraEnabled();
+bool holdTargetEnabled();  // HOLD_TARGET: the trigger locks a target only while held
 }  // namespace host::pad
 
 namespace host::menu {
