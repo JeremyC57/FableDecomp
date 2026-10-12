@@ -111,6 +111,14 @@ bool g_fbdevGl = false;
 int g_fbW = 0, g_fbH = 0;
 }  // namespace
 bool fbdevGl() { return g_fbdevGl; }
+bool displayBounds(SDL_Rect& b);
+bool screenSize(int& w, int& h) {
+    SDL_Rect b{};
+    if (!displayBounds(b)) return false;
+    w = b.w, h = b.h;
+    return true;
+}
+
 bool displayBounds(SDL_Rect& b) {
     if (!SDL_WasInit(SDL_INIT_VIDEO)) return false;
     const bool ok = SDL_GetDisplayBounds(0, &b) == 0;

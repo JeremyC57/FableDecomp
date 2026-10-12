@@ -67,6 +67,18 @@ typedef void (*GuestFn)(Ctx*);
 /* Indirect call/jump: run the guest code at `target` (function, import thunk
  * or other entry). Implemented by the runtime. */
 void recomp_dispatch(Ctx* c, uint32_t target);
+/* Indirect calls from lifted code go through a per-site inline cache: (index << 32) | address
+ * of the last target, index into recomp_fns (1-based, 0 = empty). A 64-bit store/load is
+ * single-copy atomic on the hosts, so guest threads race on it benignly. */
+extern GuestFn* recomp_fns;
+void recomp_dispatch_ic(Ctx* c, uint32_t target, uint64_t* ic);
+#if defined(__GNUC__) || defined(__clang__)
+#define RECOMP_IC_LOAD(p) __atomic_load_n((p), __ATOMIC_RELAXED)
+#else
+#define RECOMP_IC_LOAD(p) (*(volatile uint64_t*)(p))
+#endif
+#define RECOMP_ICALL(c, t) do { static uint64_t _ic; uint64_t _v = RECOMP_IC_LOAD(&_ic); \
+    if ((uint32_t)_v == (uint32_t)(t) && _v) recomp_fns[(uint32_t)(_v >> 32)](c); else recomp_dispatch_ic((c), (t), &_ic); } while (0)
 /* Reached code the lifter could not translate, or a guest fault. */
 void recomp_fatal(Ctx* c, uint32_t eip, const char* what);
 /* C++ exception landing pads. Every lifted function that registers an MSVC EH frame

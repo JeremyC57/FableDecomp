@@ -235,6 +235,7 @@ Device* g_device = nullptr;
 inline uint64_t nowNs() { timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return static_cast<uint64_t>(t.tv_sec) * 1000000000ull + t.tv_nsec; }
 uint64_t g_nsGl = 0;
 struct GlTime { uint64_t t0 = nowNs(); ~GlTime() { g_nsGl += nowNs() - t0; } };
+uint64_t g_nsSwap = 0, g_nsUpload = 0;  // parts of g_nsGl: the swap (vsync wait) and texture uploads
 
 // ---- COM base ------------------------------------------------------------------------------
 template <class I, const IID* ID> struct Unknown : I {
@@ -397,6 +398,7 @@ struct Level {  // one mip level (or the only level) of a texture / a standalone
     bool locked = false;
     RECT lockRect{};
     bool wholeLock = true;
+    uint64_t hash = 0;  // of the last upload (small levels only): the HUD re-locks unchanged text each frame
 };
 
 struct Surface : Unknown<IDirect3DSurface9, &IID_IDirect3DSurface9> {
@@ -686,7 +688,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     int fbWidth = 0, fbHeight = 0;  // the framebuffer EGL surface (w32::fbdevGl())
     GLuint overlayProgram = 0, overlayTexture = 0, overlayVbo = 0;
     GLint overlayUSize = -1;
-    bool overlayVsync = true;
+    int overlayVsync = -1;
     void drawOverlay();
     void afterDraw();
     bool skipDraw();
@@ -724,7 +726,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     } lastLayout;
     bool layoutValid = false;
     uint64_t lastPresentNs = 0;
-    double frameMs = 0, glMs = 0;
+    double frameMs = 0, glMs = 0, swapMs = 0, uploadMs = 0;
     Surface* lastFboRt = nullptr; Surface* lastFboDs = nullptr; GLuint lastFboId = 0; bool lastFboValid = false;
     bool programDirty = true;  // vs/ps/stage states changed since program() last ran
     GLuint boundIbo = ~0u;
@@ -973,6 +975,14 @@ void Texture::upload(UINT level, const RECT* rect) {
     if (!gl) return;
     Surface* s = surfaces[level];
     if (!s || s->level.cpu.empty()) return;
+    const uint64_t t0 = nowNs();
+    if (s->level.cpu.size() <= 65536) {  // skip an identical re-upload of a small level
+        uint64_t h = 1469598103934665603ull;
+        for (uint8_t b : s->level.cpu) h = (h ^ b) * 1099511628211ull;
+        if (h == s->level.hash) return;
+        s->level.hash = h;
+    }
+    struct UploadTime { uint64_t t0; ~UploadTime() { const uint64_t d = nowNs() - t0; g_nsUpload += d; g_nsGl += d; } } timing{t0};
     const UINT w = s->level.width, h = s->level.height;
     glBindTexture(GL_TEXTURE_2D, gl);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -1813,10 +1823,10 @@ void Device::drawOverlay() {
     if (takeScreenshot()) saveScreenshot();
     if (showStats()) {
         char buf[160];
-        std::snprintf(buf, sizeof buf, "%.0f ms frame, %.0f ms in GL, %u draws, %u clears, %ux%u", frameMs, glMs, statDraws, statClears, pp.BackBufferWidth, pp.BackBufferHeight);
+        std::snprintf(buf, sizeof buf, "%.0f ms frame, %.0f ms in GL (swap %.0f, uploads %.0f), %u draws, %u clears, %ux%u", frameMs, glMs, swapMs, uploadMs, statDraws, statClears, pp.BackBufferWidth, pp.BackBufferHeight);
         setStats(buf);
     }
-    if (host::overlay::vsync() != overlayVsync) { overlayVsync = host::overlay::vsync(); setSwapInterval(overlayVsync ? 1 : 0); }
+    if (host::overlay::vsync() != overlayVsync) { overlayVsync = host::overlay::vsync(); setSwapInterval(overlayVsync); }
     const auto ls = lines(static_cast<int>(pp.BackBufferWidth), static_cast<int>(pp.BackBufferHeight));
     if (ls.empty()) return;
     if (!overlayProgram) {
@@ -2011,21 +2021,26 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
     glDisable(GL_SCISSOR_TEST);
     glBlitFramebuffer(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), 0, wh, ww, 0, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-    if (w32::fbdevGl()) fb::swap(); else SDL_GL_SwapWindow(window);
+    {
+        const uint64_t ts = nowNs();
+        if (w32::fbdevGl()) fb::swap(); else SDL_GL_SwapWindow(window);
+        g_nsSwap += nowNs() - ts;
+    }
     ++frames;
     {
         const uint64_t t1 = nowNs();
         g_nsGl += t1 - t0;
         frameMs = lastPresentNs ? (t1 - lastPresentNs) / 1e6 : 0;
         glMs = g_nsGl / 1e6;
-        g_nsGl = 0;
+        swapMs = g_nsSwap / 1e6, uploadMs = g_nsUpload / 1e6;
+        g_nsGl = g_nsSwap = g_nsUpload = 0;
         lastPresentNs = t1;
     }
     if (host::g_logLevel >= 1 && (frames % 120 == 1 || getenv("FABLE_GLES_DUMP"))) {
         unsigned char px[4] = {0, 0, 0, 0};
         glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
         glReadPixels(static_cast<GLint>(pp.BackBufferWidth / 2), static_cast<GLint>(pp.BackBufferHeight / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
-        log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms of which gl %.1f", frames, statDraws, statClears, static_cast<unsigned>(programs.size()), px[0], px[1], px[2], px[3], ww, wh, frameMs, glMs);
+        log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms of which gl %.1f (swap %.1f, uploads %.1f)", frames, statDraws, statClears, static_cast<unsigned>(programs.size()), px[0], px[1], px[2], px[3], ww, wh, frameMs, glMs, swapMs, uploadMs);
         if (const char* dir = getenv("FABLE_GLES_DUMP")) {
             std::vector<unsigned char> buf(static_cast<size_t>(pp.BackBufferWidth) * pp.BackBufferHeight * 4);
             glReadPixels(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());

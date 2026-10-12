@@ -29,7 +29,7 @@ std::vector<Line> lines(int width, int height);
 int textScale(int height);  // 1 at <= 600 lines, 2 above
 bool showFps();
 bool showStats();
-bool vsync();
+int vsync();  // swap interval: 0 off, 1 every refresh, 2 every second (a 30 fps lock on a 60 Hz panel)
 void setStats(const char* text);  // the renderer's per-frame statistics line
 bool takeScreenshot();            // true once when the user asked for one (the renderer saves it)
 void notePresent();               // called once per presented frame (FPS counter)

@@ -21,6 +21,7 @@ export FABLE_HOST_GFX=1         # graphics settings live in the host menu; the g
 export FABLE_GFX_DEFAULTS="${FABLE_GFX_DEFAULTS:-resolution_scale=100,landscape_detail=1,model_detail=1,texture_detail=1,shadow_quality=0,effects_quality=1,draw_distance=100,glow=1,water_reflection=0,weather=1}"
 export FABLE_PAD_QUIT=1         # Back+Start held for two seconds exits
 export FABLE_VOLUME_KEYS=1      # the volume rocker sets the game's master volume
+export FABLE_VSYNC="${FABLE_VSYNC:-0}"   # 0 off (a frame shows as soon as it is done), 1 on, 2 a 30 fps lock; also in the host menu
 export FABLE_PROFILE="${FABLE_PROFILE:-60}"  # sampling profiler: the hottest functions every 60 s in log.txt (0 = off)
 mkdir -p "$DIR/save"
 # Clocks: the stock OS idles the H700 down; run the CPU and the GPU at their performance

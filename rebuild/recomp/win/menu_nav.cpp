@@ -507,6 +507,7 @@ extern "C" void host_open_inventory(Ctx* c) {
 // manager again and the member is null as before.
 namespace {
 uint32_t g_saveStandIn = 0;
+uint32_t g_closeMenuAfterSave = 0;  // the CTCInGameMenu to close at the next input update
 // NUISystem::CObserver (vtable 0x1245DBC): 0 notify(CObservable*, EEvent), 1 deleting dtor(flags),
 // 2/4/7 one argument, 3 ObserveEvent(EEvent), 5 detach (from RemoveObserver), 6 ObserveAllEvents
 constexpr uint32_t kObserverArgs[8] = {2, 1, 1, 1, 1, 0, 0, 1};
@@ -530,7 +531,19 @@ extern "C" void host_save_game(Ctx* c) {
     if (standIn && rd32(menu + 0xEC) == g_saveStandIn) {
         if (const uint32_t manager = rd32(0x13B8710)) guestCallThis(0x55C9C0, manager, {g_saveStandIn + 4});  // CObservable::RemoveObserver
         wr32(menu + 0xEC, 0);
+        // the PC flow leaves the save screen through its mouse-pointer notification; without
+        // it the Xbox list stays open but dead (only Start left it): close the menu as Start
+        // does (CloseInGameMenu, 0x47D78B), on the next input update, outside the UI update
+        g_closeMenuAfterSave = menu;
     }
+}
+
+void host::pad::menuAfterSaveTick() {
+    const uint32_t menu = g_closeMenuAfterSave;
+    if (!menu) return;
+    g_closeMenuAfterSave = 0;
+    HLOG(1, "menu: closing the pause menu after the hero save");
+    guestCallThis(0x47D78B, menu, {});
 }
 
 // 0x533D30 CComponent::GetSize(C2DVector* out): the bounding box of the children. The Xbox

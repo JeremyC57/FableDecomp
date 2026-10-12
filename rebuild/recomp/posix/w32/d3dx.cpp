@@ -694,6 +694,11 @@ HRESULT WINAPI D3DXCreateTextureFromFileExW(LPDIRECT3DDEVICE9 dev, LPCWSTR file,
             }
             cur = fi.mips[l];
         } else {
+            static int logged = 0;
+            if (logged < 20 && ++logged)
+                std::fprintf(stderr, "d3dx: texture fill converts level %u: file %dx%d fmt %d (%zu raw levels) -> %ux%u fmt %d%s\n", static_cast<unsigned>(l), fi.mips[0].w,
+                             fi.mips[0].h, static_cast<int>(fi.format), fi.raw.size(), static_cast<unsigned>(d.Width), static_cast<unsigned>(d.Height), static_cast<int>(fmt),
+                             key ? " (colour key)" : "");
             if (l == 0) {
                 cur = fi.mips[0];
                 colourKey(cur, key);

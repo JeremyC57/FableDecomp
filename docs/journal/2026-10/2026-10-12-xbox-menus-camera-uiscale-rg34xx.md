@@ -184,3 +184,33 @@ now lists them.
   the route's timing (delete `Manual - Save*` before a run).
 - Known cosmetic: the Xbox save confirm screen ("Are you sure?") shows two blank list rows
   under the question (user report).
+
+### Second device profile (v10: lifted functions named) and the next performance round
+Gameplay at everything Low: frame 55-100 ms, 20-30 ms in GL, 500-1000 draws. The guest
+half is flat (the top game function, CGuiComponent::Update, is 2.5 %; scene traversal,
+LOD, animation, text, particles each 1-2 %), so there is no single function to replace
+natively. What the profile did single out, and what changed:
+- **COM/D3D call layer** (the bucket after the last ConfigDetect function: host_camera_set,
+  host::com, the ovr_* D3D methods, 2.5-3.8 %): every D3D call from the guest went through
+  `onUnknownTarget` with an SRW lock acquire/release (`__pthread_rwlock_*` were 700 samples
+  on their own). The trap table is a fixed array with a published count: no lock.
+- **Indirect calls** (the bucket after the last Fable function: recomp_lookup/dispatch,
+  3.3 % even with the hash): the lifter now emits a per-site inline cache
+  (`RECOMP_ICALL`: a 64-bit (index, address) word per call site, `recomp_fns[]` indexed);
+  the hash maps to indices and is half the size.
+- **Vsync**: the game presented with interval 1, so a 45 ms frame waited for the next
+  refresh. `FABLE_VSYNC=0` is the handheld default; the host menu cycles off / on / half
+  (interval 2 = a 30 fps lock once frames fit in 33 ms). The statistics line and the
+  `gles: frame` log line now split GL time into swap and texture uploads.
+- **Texture uploads**: the HUD re-locks small textures every frame (text); an identical
+  level is not re-uploaded (FNV hash, levels up to 64 KB).
+- **D3DX fills**: resample/decode/encode were ~2 % (runtime texture streaming through the
+  generic conversion path); the first 20 converting fills are logged with formats and
+  sizes to see why the raw copy is not taken. DXT is still decoded on the CPU to RGBA8 (no
+  S3TC on the Mali blob): an ETC2/ASTC transcode cache is the next big GPU-side lever.
+- **Hero save left the Xbox save screen dead** (user report; Start still left): the PC
+  flow leaves through the mouse-pointer notification. `menuAfterSaveTick` closes the menu
+  with `CloseInGameMenu` (0x47D78B, what Start calls) at the next input update.
+- **Native resolution = the window**: the device profile asked 640x480 (an older profile)
+  and was stretched over the 3:2 panel; with host-owned graphics the scale's base is the
+  window (`w32::screenSize`).

@@ -62,6 +62,9 @@ Fable/            its files, in the folder of the same name next to it
   the renderer's. The lifted code is built at -O2 for the Cortex-A53 (`FABLE_GEN_OPT`,
   `linux-a64.cmake`), and `Fable.sh` puts the CPU and GPU governors into performance mode
   for the session (`FABLE_NO_PERF=1` leaves them).
+- **Vsync.** Off by default (`FABLE_VSYNC=0` in `Fable.sh`): a frame shows as soon as it is
+  done instead of waiting for the next 60 Hz refresh. The host menu cycles off / on / half;
+  "half" locks to 30 fps and is the smoothest choice once frames fit in 33 ms.
 - **Memory.** 2 GB is tight; keep other apps closed.
 - **Screen.** 720x480 is offered as a resolution; a new profile defaults to it. The UI
   scale is automatic (1x at 480 lines, so the HUD is laid out as on the Xbox).

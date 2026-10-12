@@ -22,7 +22,8 @@ namespace {
 std::mutex g_lock;
 bool g_open = false;
 int g_sel = 0;
-bool g_fps = false, g_stats = false, g_vsync = true, g_shot = false;
+bool g_fps = false, g_stats = false, g_shot = false;
+int g_vsync = -1;  // -1: not read yet (FABLE_VSYNC, default 1)
 WORD g_lastButtons = 0;
 bool g_lastGuide = false;
 uint32_t g_guideDown = 0;
@@ -98,7 +99,7 @@ std::string label(int i) {
         case FPS: return std::string("Show FPS: ") + (g_fps ? "on" : "off");
         case STATS: return std::string("Renderer statistics: ") + (g_stats ? "on" : "off");
         case LOGLEVEL: return "Log level: " + std::to_string(host::g_logLevel) + (host::g_logLevel == 0 ? " (errors)" : host::g_logLevel == 1 ? " (info)" : " (every call, slow)");
-        case VSYNC: return std::string("VSync: ") + (g_vsync ? "on" : "off");
+        case VSYNC: return std::string("VSync: ") + (vsync() == 0 ? "off" : vsync() == 1 ? "on (60 Hz)" : "half (30 fps lock)");
         case SCREENSHOT: return "Save a screenshot (Fable/save/)";
         case EXIT: return g_exiting ? "Exiting..." : "Exit the game";
         default: return "";
@@ -113,7 +114,7 @@ void activate(int i) {
         case STATS: g_stats = !g_stats; break;
         case LOGLEVEL: host::g_logLevel = (host::g_logLevel + 1) % 3; break;
         case VOLUME: w32::setMasterVolume(w32::masterVolume() >= 0.99f ? 0.0f : w32::masterVolume() + 0.1f); break;
-        case VSYNC: g_vsync = !g_vsync; break;
+        case VSYNC: g_vsync = (vsync() + 1) % 3; break;
         case SCREENSHOT: g_shot = true; g_open = false; break;
         case EXIT:
             if (g_exiting) break;
@@ -136,7 +137,13 @@ bool enabled() {
 bool open() { std::lock_guard<std::mutex> l(g_lock); return g_open; }
 bool showFps() { return g_fps; }
 bool showStats() { return g_stats; }
-bool vsync() { return g_vsync; }
+int vsync() {
+    if (g_vsync < 0) {
+        const char* e = std::getenv("FABLE_VSYNC");
+        g_vsync = e ? std::clamp(std::atoi(e), 0, 2) : 1;
+    }
+    return g_vsync;
+}
 void setStats(const char* t) { std::lock_guard<std::mutex> l(g_lock); g_statsText = t; }
 bool takeScreenshot() { std::lock_guard<std::mutex> l(g_lock); const bool s = g_shot; g_shot = false; return s; }
 void notePresent() {

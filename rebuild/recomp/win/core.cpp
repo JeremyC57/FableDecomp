@@ -334,15 +334,21 @@ struct Trap {
     DataHandler dfn = nullptr;
     uintptr_t data = 0;
 };
-static std::vector<Trap>* g_traps;
+// Append-only, fixed capacity: a COM call or import dispatches through here, so the reader
+// takes no lock (the count is published after the entry is written).
+constexpr uint32_t kMaxTraps = 65536;
+static Trap* g_traps;
+static std::atomic<uint32_t> g_trapCount{0};
 static SRWLOCK g_trapLock = SRWLOCK_INIT;
 
 static uint32_t addTrapImpl(Trap t) {
     AcquireSRWLockExclusive(&g_trapLock);
-    if (!g_traps) { g_traps = new std::vector<Trap>; g_traps->reserve(65536); }
-    const uint32_t a = kTrapBase + 16u * static_cast<uint32_t>(g_traps->size());
-    if (a >= kTrapEnd) die("out of trap addresses");
-    g_traps->push_back(std::move(t));
+    if (!g_traps) g_traps = new Trap[kMaxTraps];
+    const uint32_t n = g_trapCount.load(std::memory_order_relaxed);
+    const uint32_t a = kTrapBase + 16u * n;
+    if (a >= kTrapEnd || n >= kMaxTraps) die("out of trap addresses");
+    g_traps[n] = std::move(t);
+    g_trapCount.store(n + 1, std::memory_order_release);
     ReleaseSRWLockExclusive(&g_trapLock);
     return a;
 }
@@ -351,7 +357,7 @@ uint32_t addTrap(const char* name, DataHandler h, uintptr_t data) { return addTr
 const char* trapName(uint32_t a) {
     if (a < kTrapBase || !g_traps) return nullptr;
     const uint32_t i = (a - kTrapBase) / 16;
-    return i < g_traps->size() ? (*g_traps)[i].name.c_str() : nullptr;
+    return i < g_trapCount.load(std::memory_order_acquire) ? g_traps[i].name.c_str() : nullptr;
 }
 
 static std::string lowerDll(const char* dll) {
@@ -394,12 +400,9 @@ uint32_t resolveImportOrStub(const char* dll, const char* name) {
 static int onUnknownTarget(Ctx* c, uint32_t target) {
     if (target >= kTrapBase && target < kTrapEnd && g_traps) {
         const uint32_t i = (target - kTrapBase) / 16;
-        AcquireSRWLockShared(&g_trapLock);
-        const bool ok = i < g_traps->size();
-        Trap* t = ok ? &(*g_traps)[i] : nullptr;
-        ReleaseSRWLockShared(&g_trapLock);
-        if (!t) return 0;
-        HLOG(2, "-> %s (ret 0x%08X)", t->name.c_str(), rd32(c->esp));
+        if (i >= g_trapCount.load(std::memory_order_acquire)) return 0;
+        Trap* t = &g_traps[i];
+        if (host::g_logLevel >= 2) HLOG(2, "-> %s (ret 0x%08X)", t->name.c_str(), rd32(c->esp));
         if (t->fn) t->fn(c);
         else t->dfn(c, t->data);
         return 1;

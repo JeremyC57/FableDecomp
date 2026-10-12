@@ -91,10 +91,14 @@ user's original game folder; no retail bytes or generated code are in git.
     (`FABLE_GFX_DEFAULTS` seeds a first run). They are rewritten into the options at
     `CEngine::SetVideoOptions` (0xB24690, wrapped) and into the four
     `CEngineVideoOptionsDef`s (retail layout = Ego_r minus 4 bytes).
-  - **Device profile (v9 log)**: `recomp_lookup` (binary search per indirect call) was ~9 %
-    of all samples: now an open-addressing hash (`runtime.c`); the profiler had not seen the
-    main table (lifted functions showed as `FableRecomp+0x...`), fixed. Next device log
-    gives the real guest hot spots. Frame ~105 ms of which ~40 ms in GL at ~950 draws.
+  - **Device profiles (v9, v10 logs)**: indirect calls were ~9 % (binary search), then
+    3.3 % (hash): now a per-site inline cache emitted by the lifter (`RECOMP_ICALL`,
+    `recomp_fns[]`). The D3D COM call layer took an SRW lock per call: lock-free trap
+    table. Vsync off by default on the handheld (`FABLE_VSYNC`, menu: off/on/half).
+    Guest time is flat across the engine (no single hot function); GL time is the Mali
+    driver's per-draw cost (~20-30 ms at 500-1000 draws) plus DXT decoded to RGBA8 on the
+    CPU. Next levers: ETC2/ASTC transcode cache for textures, fewer draws (the game's
+    own LOD/draw distance), the x87 emulation (`fprec` per op).
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).

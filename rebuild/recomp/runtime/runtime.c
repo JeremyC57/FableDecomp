@@ -48,31 +48,49 @@ static int g_numTables;
    tables stay the fallback and the source): a binary search over ~40k entries per virtual
    call was the single hottest host function on the handheld. Built once the tables are
    registered (before the guest starts), rebuilt when another image registers. */
-typedef struct HashEntry { uint32_t addr; GuestFn fn; } HashEntry;
+typedef struct HashEntry { uint32_t addr; uint32_t idx; } HashEntry;  /* idx: 1-based into recomp_fns */
 typedef struct Hash { uint32_t mask; HashEntry e[1]; } Hash;
 static Hash* volatile g_hash;  /* swapped whole; a superseded table is kept (guest threads may still read it) */
+GuestFn* recomp_fns;           /* every lifted function, in table order; [0] unused */
+static uint32_t g_numFns;
 
-static void hashInsert(Hash* h, uint32_t addr, GuestFn fn) {
+static void hashInsert(Hash* h, uint32_t addr, uint32_t idx) {
     uint32_t i = (addr * 2654435761u) >> 7;
     for (;; ++i) {
         i &= h->mask;
-        if (!h->e[i].fn) { h->e[i].addr = addr; h->e[i].fn = fn; return; }
+        if (!h->e[i].idx) { h->e[i].addr = addr; h->e[i].idx = idx; return; }
         if (h->e[i].addr == addr) return;
     }
 }
 
 static void buildHash(void) {
-    uint32_t total = recomp_table_size, cap = 1024, i;
+    uint32_t total = recomp_table_size, cap = 1024, i, n = 1;
     int t;
     Hash* h;
+    GuestFn* fns;
     for (t = 0; t < g_numTables; ++t) total += g_tables[t].size;
     while (cap < total * 2) cap <<= 1;
     h = calloc(1, sizeof(Hash) + (size_t)cap * sizeof(HashEntry));
+    fns = calloc(total + 1, sizeof *fns);
     h->mask = cap - 1;
-    for (i = 0; i < recomp_table_size; ++i) hashInsert(h, recomp_table[i].addr, recomp_table[i].fn);
+    for (i = 0; i < recomp_table_size; ++i) { fns[n] = recomp_table[i].fn; hashInsert(h, recomp_table[i].addr, n++); }
     for (t = 0; t < g_numTables; ++t)
-        for (i = 0; i < g_tables[t].size; ++i) hashInsert(h, g_tables[t].table[i].addr, g_tables[t].table[i].fn);
+        for (i = 0; i < g_tables[t].size; ++i) { fns[n] = g_tables[t].table[i].fn; hashInsert(h, g_tables[t].table[i].addr, n++); }
+    g_numFns = n;
+    recomp_fns = fns;  /* published before the hash that indexes it (the old array is kept) */
     g_hash = h;
+}
+
+static uint32_t lookupIdx(uint32_t target) {
+    const Hash* h = g_hash;
+    uint32_t i;
+    if (!h) return 0;
+    i = (target * 2654435761u) >> 7;
+    for (;; ++i) {
+        i &= h->mask;
+        if (!h->e[i].idx) return 0;
+        if (h->e[i].addr == target) return h->e[i].idx;
+    }
 }
 
 void recomp_register_table(const RecompEntry* table, uint32_t size) {
@@ -105,18 +123,12 @@ static GuestFn lookupIn(const RecompEntry* t, uint32_t n, uint32_t target) {
 
 GuestFn recomp_lookup(uint32_t target) {
     GuestFn f;
-    const Hash* h = g_hash;
-    if (h) {
-        uint32_t i = (target * 2654435761u) >> 7;
-        for (;; ++i) {
-            i &= h->mask;
-            if (!h->e[i].fn) return NULL;
-            if (h->e[i].addr == target) return h->e[i].fn;
-        }
-    }
+    uint32_t idx;
+    if (!g_hash) buildHash();  /* no image registered itself: build on the first indirect branch */
+    idx = lookupIdx(target);
+    if (idx) return recomp_fns[idx];
     f = lookupIn(recomp_table, recomp_table_size, target);
     for (int i = 0; !f && i < g_numTables; ++i) f = lookupIn(g_tables[i].table, g_tables[i].size, target);
-    if (!g_hash) buildHash();  /* no image registered itself: build on the first indirect branch */
     return f;
 }
 
@@ -128,6 +140,23 @@ void recomp_dispatch(Ctx* c, uint32_t target) {
     }
     if (recomp_on_unknown_target && recomp_on_unknown_target(c, target)) return;
     recomp_fatal(c, target, "indirect branch to unknown target");
+}
+
+void recomp_dispatch_ic(Ctx* c, uint32_t target, uint64_t* ic) {
+    uint32_t idx;
+    if (!g_hash) buildHash();
+    idx = lookupIdx(target);
+    if (idx) {
+        const uint64_t v = ((uint64_t)idx << 32) | target;
+#if defined(__GNUC__) || defined(__clang__)
+        __atomic_store_n(ic, v, __ATOMIC_RELAXED);
+#else
+        *(volatile uint64_t*)ic = v;
+#endif
+        recomp_fns[idx](c);
+        return;
+    }
+    recomp_dispatch(c, target);
 }
 
 void recomp_fatal(Ctx* c, uint32_t eip, const char* what) {

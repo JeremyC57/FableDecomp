@@ -829,7 +829,7 @@ private:
                 return callDirect(ins, tgt);
             }
             return line("{ uint32_t t = " + rd(o[0], 32) + "; esp -= 4; wr32(esp, " + hex(ins.next()) +
-                        "u); SPILL; recomp_dispatch(c, t); RELOAD; }");
+                        "u); SPILL; RECOMP_ICALL(c, t); RELOAD; }");
         }
         case ZYDIS_MNEMONIC_RET:
             terminated_ = true;

@@ -13,6 +13,8 @@
 
 using namespace host;
 
+namespace w32 { bool screenSize(int& w, int& h); }  // posix/w32/user.cpp: the window / framebuffer size
+
 extern "C" void F_00B24690_orig(Ctx* c);
 
 namespace host::gfx {
@@ -194,7 +196,11 @@ extern "C" void host_video_options(Ctx* c) {
     if (hostGfx) {
         // the host's values replace the game's (its Video Options page is inert); the game's
         // resolution is the window, the host renders a 3:2-preserving fraction of it
-        const uint32_t w = g_gameW, h = g_gameH;  // not the copy: a re-apply would compound the scale
+        // native = the window (the game's own choice may be an older profile's 640x480, which
+        // would be stretched over a 3:2 screen); a re-apply must not compound the scale
+        uint32_t w = g_gameW, h = g_gameH;
+        int sw0 = 0, sh0 = 0;
+        if (w32::screenSize(sw0, sh0) && sw0 > 0 && sh0 > 0) w = static_cast<uint32_t>(sw0), h = static_cast<uint32_t>(sh0);
         const uint32_t sw = std::max(320u, (w * static_cast<uint32_t>(s.resolutionScale) / 100) & ~3u);
         const uint32_t sh = std::max(200u, (h * static_cast<uint32_t>(s.resolutionScale) / 100) & ~3u);
         wr32(g_optsCopy + kWidth, sw), wr32(g_optsCopy + kHeight, sh);
