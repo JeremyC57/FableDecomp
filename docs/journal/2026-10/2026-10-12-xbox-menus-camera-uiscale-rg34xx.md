@@ -360,3 +360,10 @@ is visible). Levers taken, all visually neutral:
   game thread's own share of a gameplay frame = frame time minus the wait for the render
   thread): 16.2 ms plain, 8.4 ms with `Ctx* restrict c` on every lifted function. The lifter
   emits it now (v16 is a full re-lift and rebuild).
+- **v16** = the re-lift with `restrict` (158 of 161 lifted files change) plus the inline
+  caches on the formerly uncached dispatch sites; verified on the harness (gameplay,
+  clean exit; the game thread's own share 11.6 ms per gameplay frame). Open: one run in
+  six stalled after the dream-sequence movie completed (the completion event was logged
+  but the game never destroyed the graph, no further frames, and SIGTERM did not end the
+  process). Not reproduced since; `stall.sh` in the scratch area attaches gdb to a stalled
+  run to capture every thread's backtrace next time.
