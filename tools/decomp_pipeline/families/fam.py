@@ -1830,23 +1830,23 @@ int main()
 {
     I::node a = {1,{0},0,0,0}, b = {1,{0},&a,0,0}; a.l = &b; I i; i.c = &b; i.Inc(); if (i.c != &a) '''+FAIL(a)+'''
 '''),b)
-    elif TPL in ("w26",):   # iterator CRetailTree::find(const long& key)  (signed long keys at +0x10)
-        cls="CRetailTree_longkey"
-        add(a,cls,"find",HDRF(a,f"{cls}::find(const long&) -- lower-bound walk, then end() unless the key matches",len(b))+f'''//
-// Retail bytes:  mov ecx,[ecx] ; mov eax,[ecx+4] ; test eax,eax ; push esi ; push edi ; mov edi,[esp+10h] ; mov edx,ecx ; je E ; mov esi,[edi] ; L: cmp [eax+10h],esi ; jl R ; mov edx,eax ; mov eax,[eax+8] ; jmp T ; R: mov eax,[eax+0Ch] ; T: test eax,eax ; jne L ; E: cmp edx,ecx ; je H ; mov eax,[edi] ; cmp eax,[edx+10h] ; jge F ; H: (result = head) ; ret 8 ; F: (result = node) ; ret 8
-// std::map/set::find on the retail tree with a signed 32-bit key at +0x10: lower_bound descends
+    elif TPL in ("w26",):   # iterator CRetailTree::find(const long& key)  (signed or unsigned 32-bit keys at +0x10)
+        uns=any(i.mnemonic in ("jb","jae") for i in ins); kt="unsigned long" if uns else "long"; cls="CRetailTree_ulongkey" if uns else "CRetailTree_longkey"
+        add(a,cls,"find",HDRF(a,f"{cls}::find(const {kt}&) -- lower-bound walk, then end() unless the key matches",len(b))+f'''//
+// Retail bytes:  mov ecx,[ecx] ; mov eax,[ecx+4] ; test eax,eax ; push esi ; push edi ; mov edi,[esp+10h] ; mov edx,ecx ; je E ; mov esi,[edi] ; L: cmp [eax+10h],esi ; {'jb' if uns else 'jl'} R ; mov edx,eax ; mov eax,[eax+8] ; jmp T ; R: mov eax,[eax+0Ch] ; T: test eax,eax ; jne L ; E: cmp edx,ecx ; je H ; mov eax,[edi] ; cmp eax,[edx+10h] ; {'jae' if uns else 'jge'} F ; H: (result = head) ; ret 8 ; F: (result = node) ; ret 8
+// std::map/set::find on the retail tree with {'an unsigned' if uns else 'a signed'} 32-bit key at +0x10: lower_bound descends
 // from head->parent (right when node->key < key, else remember the node and go left), then the
 // result is end() (the head) when nothing was found or key < found->key. The iterator is returned
 // through the hidden pointer (`ret 8`: result pointer + key reference). One of {len(members)} bodies.
 struct {cls} {{
-    struct node {{ unsigned char flag; unsigned char _pad[3]; node* parent; node* left; node* right; long key; }};
+    struct node {{ unsigned char flag; unsigned char _pad[3]; node* parent; node* left; node* right; {kt} key; }};
     struct iterator {{ node* current; iterator(node* n) : current(n) {{ }} }};
     node* head;
     unsigned long size;
-    iterator find(const long& key);
+    iterator find(const {kt}& key);
 }};
 
-{cls}::iterator {cls}::find(const long& key)
+{cls}::iterator {cls}::find(const {kt}& key)
 {{
     node* result = head;
     node* n = head->parent;
@@ -1863,11 +1863,11 @@ struct {cls} {{
         found = head;                      // end(): a single return through one pointer keeps retail's block order
     return iterator(found);
 }}
-''',T(a,'''struct T { struct node { unsigned char f, p[3]; node* parent; node* l; node* r; long k; }; struct it { node* c; it(node* n) : c(n) {} }; node* h; unsigned long n;
-  it find(const long& k) { node* res = h; node* x = h->parent; while (x) { if (!(x->k < k)) { res = x; x = x->l; } else x = x->r; } node* f = res; if (f == h || k < f->k) f = h; return it(f); } };
+''',T(a,'''struct T { struct node { unsigned char f, p[3]; node* parent; node* l; node* r; '''+kt+''' k; }; struct it { node* c; it(node* n) : c(n) {} }; node* h; unsigned long n;
+  it find(const '''+kt+'''& k) { node* res = h; node* x = h->parent; while (x) { if (!(x->k < k)) { res = x; x = x->l; } else x = x->r; } node* f = res; if (f == h || k < f->k) f = h; return it(f); } };
 int main()
 {
-    T::node h = {0,{0},0,0,0,0}, a = {1,{0},&h,0,0,5}; h.parent = &a; T t; t.h = &h; t.n = 1; long k = 5, m = 6; if (t.find(k).c != &a || t.find(m).c != &h) '''+FAIL(a)+'''
+    T::node h = {0,{0},0,0,0,0}, a = {1,{0},&h,0,0,5}; h.parent = &a; T t; t.h = &h; t.n = 1; '''+kt+''' k = 5, m = 6; if (t.find(k).c != &a || t.find(m).c != &h) '''+FAIL(a)+'''
 '''),b)
     elif TPL in ("w43",):   # ~CX() {} for three consecutive CWideString-like members (reverse order, last by tail call)
         dt=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea"]; dtor=calls[0]; tail=[i.operands[0].imm for i in ins if i.mnemonic=="jmp" and i.operands[0].type==X86_OP_IMM][0]
@@ -4384,6 +4384,533 @@ int main()
 {
     unsigned char data[8] = { 1, 0, 0, 0, 2, 0, 0, 0 }; S s; s.pos = 0; s.p = data; s.rem = 8; long v = 0; T(&s, &v); if (v != 1 || s.pos != 4 || s.rem != 4 || s.p != data + 4) '''+FAIL(a)+'''
     s.rem = 2; T(&s, &v); if (S::g_o != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_55",):   # void __stdcall PushBackConstant(CRetailVector_dword* vector) { long value = K; vector->push_back(value); }  (push_back inlined)
+        if len(calls)!=1: continue
+        grow=calls[0]; ks=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM]
+        if len(ks)!=2 or ks[0]!=ks[1]: continue
+        k=ks[0]
+        add(a,"_unattributed",f"PushBackConstant_{a}",HDRF(a,f"PushBackConstant_{a}(CRetailVector_dword*) -- vector->push_back({k:#x}) with the retail push_back inlined (InsertGrow @ 0x{grow:08X} when full)",len(b))+f'''//
+// Retail bytes:  push ecx ; mov ecx,[esp+8] ; mov eax,[ecx+4] ; cmp eax,[ecx+8] ; mov dword ptr [esp],{k:#x} ; je G ; test eax,eax ; je S ; mov dword ptr [eax],{k:#x} ; S: add dword ptr [ecx+4],4 ; pop ecx ; ret 4 ; G: push 1 ; push 1 ; lea edx,[esp+10h] ; push edx ; lea edx,[esp+0Ch] ; push edx ; push eax ; call InsertGrow ; pop ecx ; ret 4
+// Pushes the constant {k:#x} onto the 4-byte-element retail vector passed on the stack (`ret 4`, no
+// `this`): the value is a named stack local (it must be addressable for the reallocating
+// insert's reference argument), stored in place when there is room, else handed to the insert
+// @ 0x{grow:08X} with the empty-tag temporary homed in the dead argument slot. The manifest label
+// is propagated from an unrelated body; the function is named by its effect. One of {len(members)} bodies.
+#include <new>
+
+struct SScalarTag {{ SScalarTag() {{ }} }};
+
+struct CRetailVector_dword {{
+    long* first;
+    long* last;
+    long* end;
+    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x{grow:08X}
+    void push_back(const long& value)
+    {{
+        if (last != end) {{
+            new (last) long(value);
+            ++last;
+        }}
+        else
+            InsertGrow(last, value, SScalarTag(), 1, true);
+    }}
+}};
+
+void __stdcall PushBackConstant_{a}(CRetailVector_dword* vector)
+{{
+    long value = {k:#x};
+    vector->push_back(value);
+}}
+''',T(a,'''#include <new>
+static int g_g = 0; struct Tg { Tg() {} };
+struct V { long* f; long* l; long* e; void G(long*, const long&, const Tg&, unsigned long, bool) { ++g_g; } void P(const long& v) { if (l != e) { new (l) long(v); ++l; } else G(l, v, Tg(), 1, true); } };
+static void __stdcall PC(V* v) { long value = 0x24; v->P(value); }
+int main()
+{
+    long buf[1]; V v; v.f = buf; v.l = buf; v.e = buf + 1; PC(&v); PC(&v); if (g_g != 1 || buf[0] != 0x24 || v.l != buf + 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_61",):   # CX& CX::operator=(const CX& other) { CBase::operator=(other); m_a = other.m_a; ... return *this; }
+        if len(calls)!=1: continue
+        base=calls[0]; bm,bn,_=label(base); bcls=bm.split("::")[-1] if (bn.split("::")[-1]=="operator=" and re.match(r"^C[A-Za-z0-9_]+$",bm.split("::")[-1]) and (bm,bn) in uniq) else f"CBase_{base:08x}"
+        lds=[(i.operands[1].mem.disp, 1 if "byte ptr" in i.op_str else 4) for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "edi +" in i.op_str]
+        sts=[i.operands[0].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "esi +" in i.op_str]
+        if not lds or [o for o,_ in lds]!=sts: continue
+        cls=f"{bcls}_Derived_{a}"; mem=""; prev=lds[0][0]
+        for j,(o,sz) in enumerate(lds):
+            if o>prev: mem+=f"    unsigned char _gap{j}[{o-prev:#x}];\n"
+            mem+=(f"    long m_{o:02x};" if sz==4 else f"    unsigned char m_{o:02x};").ljust(40)+f"// +{o:#x}\n"; prev=o+sz
+        assigns="".join(f"    m_{o:02x} = other.m_{o:02x};\n" for o,_ in lds)
+        add(a,"_unattributed",f"operator=",HDRF(a,f"{cls}::operator=(const {cls}&) -- {bcls}::operator= @ 0x{base:08X}, then {len(lds)} members copied in declaration order",len(b))+f'''//
+// Retail bytes:  push esi ; push edi ; mov edi,[esp+0Ch] ; push edi ; mov esi,ecx ; call {bcls}::operator= ; {" ; ".join(("mov eax,[edi+%#x] ; mov [esi+%#x],eax" % (o,o)) if sz==4 else ("mov al,[edi+%#x] ; mov [esi+%#x],al" % (o,o)) for o,sz in lds)} ; pop edi ; mov eax,esi ; pop esi ; ret 4
+// Copy-assignment of a class derived from {bcls} (whose own operator= @ 0x{base:08X} is out of
+// line): the base assignment runs first, then this class's {len(lds)} trailing members are copied in
+// declaration order and `this` is returned. Member types are not recoverable beyond their sizes
+// (`long` / `unsigned char`). The manifest label (`CThingBuildingDef::operator=`) is propagated;
+// the class is named by its base. One of {len(members)} bodies of this shape.
+struct {bcls} {{
+    unsigned char _body[{lds[0][0]:#x}];
+    {bcls}& operator=(const {bcls}& other);   // 0x{base:08X}
+}};
+
+struct {cls} : {bcls} {{
+{mem}    {cls}& operator=(const {cls}& other);
+}};
+
+{cls}& {cls}::operator=(const {cls}& other)
+{{
+    {bcls}::operator=(other);
+{assigns}    return *this;
+}}
+''',T(a,'''static int g_b = 0; struct B { long x; B& operator=(const B& o) { x = o.x; ++g_b; return *this; } };
+struct D : B { long a; unsigned char c; long d; D& operator=(const D& o); }; D& D::operator=(const D& o) { B::operator=(o); a = o.a; c = o.c; d = o.d; return *this; }
+int main()
+{
+    D s, t; s.x = 1; s.a = 2; s.c = 3; s.d = 4; t = s; if (g_b != 1 || t.x != 1 || t.a != 2 || t.c != 3 || t.d != 4) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_30",):   # void CX::Fire() { m_pfnCallback(m_pCallbackObject, m_thing); m_bFired = true; }  (CScriptThing copy built in the argument slot)
+        loads=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str]
+        pf=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM and "esi" in i.op_str]
+        fl=[i.operands[0].mem.disp for i in ins if i.mnemonic=="mov" and "byte ptr [esi" in i.op_str]
+        if len(loads)!=3 or len(pf)!=1 or len(fl)!=1 or len(vts)!=2: continue
+        thing,count,obj=loads; pfn=pf[0]; flag=fl[0]
+        if count!=thing+4 or obj+4!=pfn+8 and obj!=pfn+4: continue
+        cls=f"CScriptCallbackOwner_{a}"
+        add(a,"_unattributed",f"Fire_{cls}",HDRF(a,f"{cls}::Fire() -- calls the stored callback with a by-value CScriptThing copy of the member at +{thing-4:#x}, then sets the byte flag at +{flag:#x}",len(b))+f'''//
+// Retail bytes:  push esi ; sub esp,0Ch ; mov eax,esp ; mov dword ptr [eax],offset CBaseClass::`vftable' ; mov dword ptr [eax],offset CScriptThing::`vftable' ; mov esi,ecx ; mov ecx,[esi+{thing:#x}] ; mov [eax+4],ecx ; mov ecx,[esi+{count:#x}] ; test ecx,ecx ; mov [eax+8],ecx ; je I ; inc dword ptr [ecx] ; I: mov ecx,[esi+{obj:#x}] ; call [esi+{pfn:#x}] ; mov byte ptr [esi+{flag:#x}],1 ; pop esi ; ret
+// The stored __fastcall callback (+{pfn:#x}, called with the object at +{obj:#x} in ecx) receives a
+// by-value copy of the CScriptThing member at +{thing-4:#x}: the copy is built in the argument slot
+// with the CBaseClass and CScriptThing vtables (0x{vts[0][1]:08X}, 0x{vts[1][1]:08X}; both stores are
+// kept), the thing pointer and the shared count block whose counter is incremented when present;
+// then the byte flag at +{flag:#x} is set. No-RTTI module: the owning class is named descriptively.
+// One of {len(members)} bodies of this shape.
+struct CThing;
+struct SCount {{ long m_references; }};
+
+struct CBaseClass {{
+    virtual void v00();
+    CBaseClass() {{ }}
+}};
+
+struct CScriptThing : CBaseClass {{
+    virtual void v00();
+    CThing* m_pThing;                      // +4
+    SCount* m_pCount;                      // +8
+    CScriptThing(const CScriptThing& other) : CBaseClass(), m_pThing(other.m_pThing), m_pCount(other.m_pCount) {{ if (m_pCount) ++m_pCount->m_references; }}
+}};
+
+struct {cls} {{
+    virtual void v00();
+    unsigned char _pad0[{flag-4:#x}];
+    bool m_bFired;                         // +{flag:#x}
+    unsigned char _pad1[{pfn-flag-1:#x}];
+    void (__fastcall* m_pfnCallback)(void* object, CScriptThing thing);   // +{pfn:#x}
+    void* m_pCallbackObject;               // +{obj:#x}
+{"    unsigned char _pad2[%#x];" % (thing-4-obj-4) + chr(10) if thing-4-obj-4>0 else ""}    CScriptThing m_thing;                  // +{thing-4:#x}
+    void Fire();
+}};
+
+void {cls}::Fire()
+{{
+    m_pfnCallback(m_pCallbackObject, m_thing);
+    m_bFired = true;
+}}
+''',T(a,'''static int g_c = 0; struct Cnt { long r; }; struct B { virtual void v00() {} B() {} };
+struct ST : B { virtual void v00() {} void* t; Cnt* c; ST() : t(0), c(0) {} ST(const ST& o) : B(), t(o.t), c(o.c) { if (c) ++c->r; } };
+static void __fastcall CB(void*, ST s) { g_c += (int)s.c->r; }
+struct X { virtual void v00() {} bool f; void (__fastcall* pfn)(void*, ST); void* obj; ST th; void Fire() { pfn(obj, th); f = true; } };
+int main()
+{
+    Cnt c = { 1 }; X x; x.th.c = &c; x.pfn = CB; x.obj = 0; x.f = false; x.Fire(); if (!x.f || g_c != 2) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_59",):   # void list<CCountedPointer>::clear(): destroy each node's counted pointer, free the node, reset the head links
+        if len(calls)!=2: continue
+        deleter,freer=calls
+        voff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str][0]
+        nm="CRetailList_CountedPointer"
+        add(a,nm,"clear",HDRF(a,f"{nm}::clear() -- release every node's CCountedPointer (count block destroy + delete at zero), free the node, re-link the head to itself",len(b))+f'''//
+// Retail bytes:  push ebx ; mov ebx,ecx ; mov eax,[ebx] ; push edi ; mov edi,[eax] ; cmp edi,eax ; je E ; push ebp ; push esi ; xor ebp,ebp ; L: mov esi,edi ; mov eax,[esi+{voff:#x}] ; cmp eax,ebp ; mov edi,[edi] ; je F ; dec dword ptr [eax] ; mov eax,[esi+{voff:#x}] ; cmp [eax],ebp ; jne F ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[esi+{voff:#x}] ; push eax ; call operator delete ; add esp,4 ; F: push esi ; mov [esi+{voff-4:#x}],ebp ; mov [esi+{voff:#x}],ebp ; call free ; mov eax,[ebx] ; add esp,4 ; cmp edi,eax ; jne L ; pop esi ; pop ebp ; E: mov eax,[ebx] ; mov [eax],eax ; mov ebx,[ebx] ; mov [ebx+4],ebx ; pop ebx ; ret
+// Retail std::list::clear for CCountedPointer values: walks from head->next to the head,
+// remembering each node's successor, runs the inlined CCountedPointer destructor (decrement the
+// count block; at zero call its destroy function @ slot +4 with the object in ecx and delete the
+// block through the flag-tested operator delete @ 0x{deleter:08X}; then null both fields), frees
+// the node (free @ 0x{freer:08X}) and finally links the head to itself. The head is re-read from
+// `this` on every iteration (retail reloads [ebx]). One of {len(members)} bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct SCountBlock {{
+    long m_references;                     // +0
+    void (__fastcall* m_pfnDestroy)(void*);// +4
+    void* m_pObject;                       // +8
+}};
+
+struct CCountedPointer {{
+    void* m_pObject;                       // +0
+    SCountBlock* m_pCount;                 // +4
+    ~CCountedPointer()
+    {{
+        if (m_pCount) {{
+            --m_pCount->m_references;
+            if (m_pCount->m_references == 0) {{
+                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
+                delete m_pCount;
+            }}
+        }}
+        m_pObject = 0;
+        m_pCount = 0;
+    }}
+}};
+
+struct {nm} {{
+    struct node {{
+        node* next;                        // +0
+        node* prev;                        // +4
+        CCountedPointer value;             // +{voff-4:#x}
+    }};
+    node* head;
+    void clear();
+}};
+
+void {nm}::clear()
+{{
+    node* n = head->next;
+    while (n != head) {{
+        node* victim = n;                  // retail advances the cursor first, then destroys the old node
+        n = n->next;
+        victim->value.~CCountedPointer();
+        free(victim);
+    }}
+    head->next = head;
+    head->prev = head;
+}}
+''',T(a,'''#include <cstdlib>
+static int g_d = 0; static void __fastcall Destroy(void*) { ++g_d; }
+struct B { long r; void (__fastcall* f)(void*); void* o; };
+struct P { void* o; B* c; ~P() { if (c) { --c->r; if (c->r == 0) { c->f(c->o); delete c; } } o = 0; c = 0; } };
+struct L { struct N { N* n; N* p; P v; }; N* h; void clear() { N* x = h->n; while (x != h) { N* v = x; x = x->n; v->v.~P(); std::free(v); } h->n = h; h->p = h; } };
+int main()
+{
+    L l; L::N head; head.v.o = 0; head.v.c = 0; l.h = &head; L::N* a = (L::N*)std::malloc(sizeof(L::N)); B* b = new B; b->r = 1; b->f = Destroy; b->o = 0; a->v.o = 0; a->v.c = b; head.n = a; a->n = &head; a->p = &head; head.p = a;
+    l.clear(); if (g_d != 1 || head.n != &head || head.p != &head) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_60",):   # CCountedPointer* __fastcall Move(first, last, dest, tag, tag): copy-assign a range of counted pointers, return the advanced dest
+        if len(calls)!=1 or retn!=12: continue
+        deleter=calls[0]
+        nm="CRetailMove_CountedPointer"
+        add(a,"_global",f"Move_CountedPointer_{a}",HDRF(a,f"_Move<CCountedPointer*> -- copy-assign [first, last) onto dest (count-block release/adopt inlined), return the advanced dest",len(b))+f'''//
+// Retail bytes:  push ecx ; push ebx ; mov ebx,ecx ; sub edx,ebx ; sar edx,3 ; test edx,edx ; jle Z ; push ebp ; push esi ; mov esi,[dest] ; push edi ; mov [esp+10h],edx ; L: mov edi,[ebx+4] ; mov eax,[esi+4] ; cmp eax,edi ; mov ebp,[ebx] ; je N ; test eax,eax ; je A ; dec dword ptr [eax] ; mov eax,[esi+4] ; cmp dword ptr [eax],0 ; jne A ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[esi+4] ; push eax ; call operator delete ; add esp,4 ; A: test edi,edi ; mov [esi],ebp ; mov [esi+4],edi ; je N ; inc dword ptr [edi] ; N: mov eax,[esp+10h] ; add ebx,8 ; add esi,8 ; dec eax ; mov [esp+10h],eax ; jne L ; mov eax,esi ; ... ret 0Ch ; Z: mov eax,[dest] ; ... ret 0Ch
+// Retail std::copy back end for CCountedPointer elements (`__fastcall`: first in ecx, last in edx,
+// dest and two empty tag arguments on the stack, `ret 0Ch`): the signed element count is kept in
+// a stack local and counted down; each assignment is the inlined CCountedPointer::operator= --
+// when the count blocks differ, release the destination's block (destroy function @ slot +4
+// with the object in ecx, flag-tested operator delete @ 0x{deleter:08X} at zero), adopt the source's
+// object and block, and bump its counter. Returns the advanced destination (the untouched dest
+// for an empty range). One of {len(members)} bodies of this shape.
+struct SCountBlock {{
+    long m_references;                     // +0
+    void (__fastcall* m_pfnDestroy)(void*);// +4
+    void* m_pObject;                       // +8
+}};
+
+struct CCountedPointer {{
+    void* m_pObject;                       // +0
+    SCountBlock* m_pCount;                 // +4
+    CCountedPointer& operator=(const CCountedPointer& other)
+    {{
+        SCountBlock* count = other.m_pCount;   // the source's fields are read first (retail keeps them in edi/ebp across the release)
+        void* object = other.m_pObject;
+        if (m_pCount != count) {{
+            if (m_pCount) {{
+                --m_pCount->m_references;
+                if (m_pCount->m_references == 0) {{
+                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
+                    delete m_pCount;
+                }}
+            }}
+            m_pObject = object;
+            m_pCount = count;
+            if (count)
+                ++count->m_references;
+        }}
+        return *this;
+    }}
+}};
+
+struct SIteratorTag {{ SIteratorTag() {{ }} }};
+
+CCountedPointer* __fastcall Move_CountedPointer_{a}(CCountedPointer* first, CCountedPointer* last, CCountedPointer* dest, SIteratorTag category, SIteratorTag range)
+{{
+    for (long count = last - first; 0 < count; --count, ++first, ++dest)
+        *dest = *first;
+    return dest;
+}}
+''',T(a,'''static int g_d = 0; static void __fastcall Destroy(void*) { ++g_d; }
+struct B { long r; void (__fastcall* f)(void*); void* o; };
+struct P { void* o; B* c; P& operator=(const P& x) { B* cc = x.c; void* oo = x.o; if (c != cc) { if (c) { --c->r; if (c->r == 0) { c->f(c->o); delete c; } } o = oo; c = cc; if (cc) ++cc->r; } return *this; } };
+struct Tg { Tg() {} };
+static P* __fastcall M(P* f, P* l, P* d, Tg, Tg) { for (long n = l - f; 0 < n; --n, ++f, ++d) *d = *f; return d; }
+int main()
+{
+    B* b = new B; b->r = 1; b->f = Destroy; b->o = 0; P src[2]; src[0].o = 0; src[0].c = b; src[1].o = 0; src[1].c = 0; P dst[2]; dst[0].o = 0; dst[0].c = 0; dst[1].o = 0; dst[1].c = 0;
+    P* e = M(src, src + 2, dst, Tg(), Tg()); if (e != dst + 2 || dst[0].c != b || b->r != 2 || g_d != 0) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_20",):   # node* CRetailTree::Copy(node* src, node* parent): clone a subtree (left spine iteratively, right subtrees recursively); frame-pointer/size TU
+        if len(calls)!=4 or calls[1]!=va or calls[3]!=va or calls[0]!=calls[2]: continue
+        buy=calls[0]; nm=f"CRetailTree_{buy:08x}"
+        add(a,nm,"Copy",HDRF(a,f"{nm}::Copy(node*, node*) -- clone a subtree: Buynode @ 0x{buy:08X} per node, right subtrees by recursion, the left spine iteratively with `parent` re-used as the running predecessor",len(b))+f'''//
+// Retail bytes:  push ebp ; mov ebp,esp ; push ecx ; push ebx ; push esi ; mov esi,[ebp+8] ; push edi ; lea eax,[esi+10h] ; push eax ; mov [ebp-4],ecx ; call Buynode ; mov ebx,eax ; mov al,[esi] ; and dword ptr [ebx+8],0 ; and dword ptr [ebx+0Ch],0 ; mov [ebx],al ; mov eax,[ebp+0Ch] ; mov [ebx+4],eax ; mov eax,[esi+0Ch] ; test eax,eax ; je A ; mov ecx,[ebp-4] ; push ebx ; push eax ; call Copy ; mov [ebx+0Ch],eax ; A: mov edi,[esi+8] ; mov [ebp+0Ch],ebx ; jmp T ; L: mov ecx,[ebp-4] ; lea eax,[edi+10h] ; push eax ; call Buynode ; mov esi,eax ; mov al,[edi] ; and dword ptr [esi+8],0 ; and dword ptr [esi+0Ch],0 ; mov [esi],al ; mov eax,[ebp+0Ch] ; mov [eax+8],esi ; mov [esi+4],eax ; mov eax,[edi+0Ch] ; test eax,eax ; je B ; mov ecx,[ebp-4] ; push esi ; push eax ; call Copy ; mov [esi+0Ch],eax ; B: mov edi,[edi+8] ; mov [ebp+0Ch],esi ; T: test edi,edi ; jne L ; pop edi ; pop esi ; mov eax,ebx ; pop ebx ; leave ; ret 8
+// VC6-era Dinkumware `_Tree::_Copy(_X, _P)`: the first node is bought from the source value at
+// +0x10 (Buynode @ 0x{buy:08X}, an out-of-line member taking the value by reference), its links
+// zeroed, colour copied and parent set; its right subtree is cloned recursively; then the left
+// spine is walked iteratively, each new node hung under the previous one through the `parent`
+// parameter (retail keeps the running predecessor in the parameter's own slot) with its right
+// subtree cloned recursively. `this` is only needed for the calls (spilled to [ebp-4]). The TU
+// keeps frame pointers and optimises for size (`and dword ptr [..],0` stores). The manifest label
+// (`CTCCarryable_CloneTree`) is propagated. One of {len(members)} bodies of this shape.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+struct {nm} {{
+    struct node {{
+        unsigned char color;               // +0
+        unsigned char _pad[3];
+        node* parent;                      // +4
+        node* left;                        // +8
+        node* right;                       // +0xC
+        unsigned char value[4];            // +0x10 (size not recoverable from this body)
+    }};
+    node* head;
+    unsigned long size;
+    node* Buynode(const unsigned char (&value)[4]);   // 0x{buy:08X}
+    node* Copy(node* src, node* parent);
+}};
+
+{nm}::node* {nm}::Copy(node* src, node* parent)
+{{
+    node* first = Buynode(src->value);
+    first->left = 0;
+    first->right = 0;
+    first->color = src->color;
+    first->parent = parent;
+    if (src->right)
+        first->right = Copy(src->right, first);
+    parent = first;
+    for (node* s = src->left; s; s = s->left) {{
+        node* n = Buynode(s->value);
+        n->left = 0;
+        n->right = 0;
+        n->color = s->color;
+        parent->left = n;
+        n->parent = parent;
+        if (s->right)
+            n->right = Copy(s->right, n);
+        parent = n;
+    }}
+    return first;
+}}
+''',T(a,'''#include <cstdlib>
+#include <cstring>
+struct T { struct node { unsigned char c, p[3]; node* parent; node* l; node* r; unsigned char v[4]; }; node* h; unsigned long n;
+  node* B(const unsigned char (&v)[4]) { node* x = (node*)std::malloc(sizeof(node)); std::memcpy(x->v, v, 4); return x; }
+  node* C(node* s, node* parent) { node* f = B(s->v); f->l = 0; f->r = 0; f->c = s->c; f->parent = parent; if (s->r) f->r = C(s->r, f); parent = f; for (node* q = s->l; q; q = q->l) { node* x = B(q->v); x->l = 0; x->r = 0; x->c = q->c; parent->l = x; x->parent = parent; if (q->r) x->r = C(q->r, x); parent = x; } return f; } };
+int main()
+{
+    T::node a = {1,{0},0,0,0,{7,0,0,0}}, b = {0,{0},&a,0,0,{8,0,0,0}}, c = {1,{0},&a,0,0,{9,0,0,0}}; a.l = &b; a.r = &c; T t; T::node* d = t.C(&a, 0);
+    if (!d || d->v[0] != 7 || !d->l || d->l->v[0] != 8 || d->l->parent != d || !d->r || d->r->v[0] != 9 || d->r->parent != d || d->c != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_19",):   # CRetailTree& operator=(const CRetailTree&): clear, copy the subtree, re-derive the leftmost/rightmost links, copy the size
+        if len(calls)!=2: continue
+        clear,copy=calls; nm=f"CRetailTree_{copy:08x}"
+        add(a,nm,"operator=",HDRF(a,f"{nm}::operator=(const {nm}&) -- Clear @ 0x{clear:08X}, Copy @ 0x{copy:08X} of the source root under the head, leftmost/rightmost walks, size copied; self-assignment guarded",len(b))+f'''//
+// Retail bytes:  push ebx ; mov ebx,[esp+8] ; push esi ; mov esi,ecx ; cmp esi,ebx ; je R ; call Clear ; and dword ptr [esi+4],0 ; mov eax,[ebx] ; mov eax,[eax+4] ; test eax,eax ; jne C ; mov eax,[esi] ; and dword ptr [eax+4],0 ; mov eax,[esi] ; mov [eax+8],eax ; mov eax,[esi] ; mov [eax+0Ch],eax ; jmp R ; C: push edi ; mov edi,[esi] ; push edi ; push eax ; mov ecx,esi ; call Copy ; mov [edi+4],eax ; mov ecx,[esi] ; mov eax,[ecx+4] ; pop edi ; jmp T1 ; L1: mov eax,edx ; T1: mov edx,[eax+8] ; test edx,edx ; jne L1 ; mov [ecx+8],eax ; mov ecx,[esi] ; mov eax,[ecx+4] ; jmp T2 ; L2: mov eax,edx ; T2: mov edx,[eax+0Ch] ; test edx,edx ; jne L2 ; mov [ecx+0Ch],eax ; mov eax,[ebx+4] ; mov [esi+4],eax ; R: mov eax,esi ; pop esi ; pop ebx ; ret 4
+// VC6-era Dinkumware `_Tree::operator=`: unless self-assigned, erase everything (Clear @
+// 0x{clear:08X}), zero the count, and either reset the head to an empty tree (null root, head
+// linked to itself; the head pointer is re-read from `this` for each store) or clone the source's
+// root under the head (Copy @ 0x{copy:08X}), re-derive the leftmost/rightmost links by walking
+// the new root, and copy the count. Size TU (`and dword ptr [..],0`). The manifest label
+// (`CTCCarryable::operator=`) is propagated. One of {len(members)} bodies of this shape.
+#pragma optimize("s", on)
+struct {nm} {{
+    struct node {{
+        unsigned char color;               // +0
+        unsigned char _pad[3];
+        node* parent;                      // +4
+        node* left;                        // +8
+        node* right;                       // +0xC
+    }};
+    node* head;                            // +0
+    unsigned long size;                    // +4
+    void Clear();                          // 0x{clear:08X}: erase(begin(), end())
+    node* Copy(node* src, node* parent);   // 0x{copy:08X}
+    {nm}& operator=(const {nm}& other);
+}};
+
+{nm}& {nm}::operator=(const {nm}& other)
+{{
+    if (this != &other) {{
+        Clear();
+        size = 0;
+        if (other.head->parent == 0) {{
+            head->parent = 0;
+            head->left = head;
+            head->right = head;
+        }}
+        else {{
+            node* h = head;                // named: retail keeps the head in edi across the Copy call
+            h->parent = Copy(other.head->parent, h);
+            node* n = head->parent;
+            while (n->left)
+                n = n->left;
+            head->left = n;
+            n = head->parent;
+            while (n->right)
+                n = n->right;
+            head->right = n;
+            size = other.size;
+        }}
+    }}
+    return *this;
+}}
+''',T(a,'''static int g_c = 0;
+struct T { struct node { unsigned char c, p[3]; node* parent; node* l; node* r; }; node* h; unsigned long n; void Cl() { ++g_c; } node* Cp(node* s, node* p) { s->parent = p; return s; }
+  T& operator=(const T& o) { if (this != &o) { Cl(); n = 0; if (o.h->parent == 0) { h->parent = 0; h->l = h; h->r = h; } else { node* hh = h; hh->parent = Cp(o.h->parent, hh); node* x = h->parent; while (x->l) x = x->l; h->l = x; x = h->parent; while (x->r) x = x->r; h->r = x; n = o.n; } } return *this; } };
+int main()
+{
+    T::node ha = {0,{0},0,0,0}, hb = {0,{0},0,0,0}, root = {0,{0},0,0,0}; T a, b; a.h = &ha; a.n = 0; b.h = &hb; hb.parent = &root; b.n = 1; a = b; if (g_c != 1 || ha.parent != &root || ha.l != &root || ha.r != &root || a.n != 1) '''+FAIL(a)+'''
+    T e; T::node he = {0,{0},0,0,0}; e.h = &he; a = e; if (ha.parent || ha.l != &ha || a.n != 0) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_13",):   # CDerived::CDerived(CThing*) : CBase(thing), m_name(CCharString("LIT", -1)) {}  -- hashed-name member constructed inline from a temporary
+        if len(calls)!=6 or len(vts)!=2: continue
+        base,sctor,sdef,sassign,crc,sdtor=calls; litva=[p for p in pushes if p>0x1200000][0]; s=lit(litva)
+        empty=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[1].type==X86_OP_IMM and i.operands[1].imm>0x1200000][0]
+        own=vts[0][1]; moff,mvt=vts[1]; cls=rtti.get(own) or f"CVtable_{own:08x}"; basecls=tctor_class(base) or f"CBase_{base:08x}"
+        if cls==basecls: cls=f"{basecls}_Derived_{own:08x}"
+        mcls=rtti.get(mvt) or f"CHashedName_{mvt:08x}"
+        add(a,cls,cls,HDRF(a,f"{cls}::{cls}(CThing*) -- base {basecls}(thing), own vtable, {mcls} member at +{moff:#x} built from CCharString({s}, -1): string assigned, CRC of the name stored",len(b))+f'''//
+// Retail bytes:  mov eax,[esp+4] ; push esi ; push edi ; push eax ; mov esi,ecx ; call {basecls}::{basecls} ; push -1 ; push offset "{s}" ; lea ecx,[esp+14h] ; mov dword ptr [esi],offset {cls}::`vftable' ; call CCharString::CCharString(const char*, long) ; lea edi,[esi+{moff+4:#x}] ; mov ecx,edi ; mov dword ptr [esi+{moff:#x}],offset {mcls}::`vftable' ; call CCharString::CCharString() ; lea ecx,[esp+0Ch] ; push ecx ; mov ecx,edi ; call CCharString::operator= ; mov eax,[esp+0Ch] ; test eax,eax ; jne C ; xor ecx,ecx ; mov eax,offset "" ; jmp D ; C: mov ecx,[eax+4] ; mov eax,[eax] ; D: push ecx ; mov edx,eax ; xor ecx,ecx ; call Calc ; lea ecx,[esp+0Ch] ; mov [esi+{moff+8:#x}],eax ; call CCharString::~CCharString ; pop edi ; mov eax,esi ; pop esi ; ret 4
+// One-argument constructor of a {basecls}-derived class: the base constructor @ 0x{base:08X}
+// runs with the owner, this class's vtable (0x{own:08X}) is installed, then the {mcls} member at
+// +{moff:#x} (vtable 0x{mvt:08X}) is constructed from a CCharString temporary built from the
+// literal: the member's own constructor is inlined -- default-construct its string
+// (@ 0x{sdef:08X}), assign the name (@ 0x{sassign:08X}) and store the name's CRC
+// (Calc @ 0x{crc:08X}, `__fastcall(seed, data, length)`, run over the empty literal when the
+// string has no data block). The temporary is destroyed (@ 0x{sdtor:08X}) before returning
+// `this`. Names come from rtti-vtables.tsv. One of {len(members)} bodies of this shape.
+struct CThing;
+
+struct CCharStringData {{
+    const char* m_pData;                   // +0  (CBasicString<char>::PData)
+    unsigned long m_length;                // +4  (StringLength)
+}};
+
+struct CCharString {{
+    CCharStringData* m_pData;
+    CCharString();                         // 0x{sdef:08X}
+    CCharString(const char* text, long length = -1);   // 0x{sctor:08X}; the default argument makes the literal convert implicitly
+    ~CCharString();                        // 0x{sdtor:08X}
+    CCharString& operator=(const CCharString& other);   // 0x{sassign:08X}
+}};
+
+unsigned long __fastcall Calc_{crc:08x}(unsigned long seed, const void* data, unsigned long length);   // 0x{crc:08X}: CRC
+
+struct {mcls} {{
+    virtual void v00();
+    CCharString m_string;                  // +4
+    unsigned long m_hash;                  // +8
+    {mcls}(const CCharString& name)
+        : m_string()
+    {{
+        m_string = name;
+        const char* data;
+        unsigned long length;
+        if (name.m_pData == 0) {{
+            length = 0;
+            data = "";
+        }}
+        else {{
+            length = name.m_pData->m_length;
+            data = name.m_pData->m_pData;
+        }}
+        m_hash = Calc_{crc:08x}(0, data, length);
+    }}
+}};
+
+struct {basecls} {{
+    virtual void v00();
+    unsigned char _body[{moff-4:#x}];
+    {basecls}(CThing* thing);              // 0x{base:08X}
+}};
+
+struct {cls} : {basecls} {{
+    {mcls} m_name;                         // +{moff:#x}
+    virtual void v00();
+    {cls}(CThing* thing);
+}};
+
+{cls}::{cls}(CThing* thing)
+    : {basecls}(thing)
+    , m_name("{s}")                        // implicit CCharString conversion: the temporary is re-addressed with lea (an explicit CCharString("..", -1) would reuse the constructor's returned pointer)
+{{
+}}
+''',T(a,'''static int g_b = 0, g_h = 0; struct Th;
+struct SD { const char* p; unsigned long n; }; struct Str { SD* d; Str() : d(0) {} Str(const char* t, long = -1) { d = new SD; d->p = t; d->n = 3; } ~Str() { delete d; } Str& operator=(const Str& o) { if (o.d) { if (!d) d = new SD; *d = *o.d; } return *this; } };
+static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long n) { ++g_h; return n * 7; }
+struct HN { virtual void v00() {} Str s; unsigned long h; HN(const Str& nm) : s() { s = nm; const char* p; unsigned long n; if (nm.d == 0) { n = 0; p = ""; } else { n = nm.d->n; p = nm.d->p; } h = Calc(0, p, n); } };
+struct B { virtual void v00() {} unsigned char body[8]; B(Th*) { ++g_b; } };
+struct D : B { HN m; virtual void v00() {} D(Th* t) : B(t), m("ABC") {} };
+int main()
+{
+    D d(0); if (g_b != 1 || g_h != 1 || d.m.h != 21 || !d.m.s.d) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_14",):   # void CX::TransferAllFrom(CSource* src): reserve count+count on the target, then move every item across through virtual slots
+        if calls or len([i for i in ins if i.mnemonic=="call"])!=7: continue
+        slots=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM]
+        sCount,tCount,tReserve,sFirst,sRemove,xAdd,sFirst2=slots
+        if sFirst!=sFirst2: continue
+        toff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "ebx +" in i.op_str][0]
+        cls=f"CItemCollectionOwner_{a}"
+        def vt(name,slot,sig): return "".join(f"    virtual void _slot{j:02x}();\n" for j in range(0,0)) 
+        def vtbl(slotsig):   # list of (slot, decl) -> virtual function list with placeholders
+            out=""; mx=max(s for s,_ in slotsig)
+            for j in range(0,mx+4,4):
+                d=[d for s,d in slotsig if s==j]
+                out+=f"    virtual {d[0]};\n" if d else f"    virtual void _slot{j:02x}();\n"
+            return out
+        add(a,"_unattributed",f"TransferAllFrom_{cls}",HDRF(a,f"{cls}::TransferAllFrom(CItemSource*) -- target(+{toff:#x})->Reserve(src->GetCount() + target->GetCount()), then detach each item from the source and Add it here",len(b))+f'''//
+// Retail bytes:  push ebx ; push ebp ; push esi ; mov esi,[esp+10h] ; mov edx,[esi] ; mov ebx,ecx ; push edi ; mov edi,[ebx+{toff:#x}] ; mov eax,edi ; mov ebp,[eax] ; mov ecx,esi ; call [edx+{sCount:#x}] ; mov edx,[edi] ; mov ecx,edi ; mov [esp+14h],eax ; call [edx+{tCount:#x}] ; mov ecx,[esp+14h] ; add ecx,eax ; push ecx ; mov ecx,[ebx+{toff:#x}] ; call [ebp+{tReserve:#x}] ; mov eax,[esi] ; mov ecx,esi ; call [eax+{sFirst:#x}] ; mov edi,eax ; test edi,edi ; je E ; L: mov edx,[esi] ; push edi ; mov ecx,esi ; call [edx+{sRemove:#x}] ; mov eax,[ebx] ; push edi ; mov ecx,ebx ; call [eax+{xAdd:#x}] ; mov edx,[esi] ; mov ecx,esi ; call [edx+{sFirst:#x}] ; mov edi,eax ; test edi,edi ; jne L ; E: pop edi ; pop esi ; pop ebp ; pop ebx ; ret 4
+// EH-module collection transfer (no frame: nothing to unwind): the target collection at +{toff:#x}
+// is grown by the source's count plus its own (virtual slots +{sCount:#x} / +{tCount:#x} / +{tReserve:#x}; the
+// target's vtable is read once up front and reused for the reserve call, the object pointer is
+// re-read -- the retail TU assumes no aliasing), then every item the source hands out
+// (slot +{sFirst:#x}) is detached from it (slot +{sRemove:#x}) and added here (slot +{xAdd:#x}). The
+// manifest label is propagated; the classes are named by role. One of {len(members)} bodies.
+struct CItem;
+
+struct CItemSource {{
+{vtbl([(sCount,"long GetCount()"),(sFirst,"CItem* GetFirst()"),(sRemove,"void Remove(CItem* item)")])}}};
+
+struct CItemTarget {{
+{vtbl([(tCount,"long GetCount()"),(tReserve,"void Reserve(long count)")])}}};
+
+struct {cls} {{
+{vtbl([(xAdd,"void Add(CItem* item)")])}{"    unsigned char _pad[%#x];" % (toff-4) + chr(10) if toff>4 else ""}    CItemTarget* m_pTarget;                // +{toff:#x}
+    void TransferAllFrom_{cls}(CItemSource* source);
+}};
+
+void {cls}::TransferAllFrom_{cls}(CItemSource* source)
+{{
+    m_pTarget->Reserve(source->GetCount() + m_pTarget->GetCount());
+    for (CItem* item = source->GetFirst(); item; item = source->GetFirst()) {{
+        source->Remove(item);
+        Add(item);
+    }}
+}}
+''',T(a,'''static int g_r = 0, g_a = 0, g_n = 2; struct It;
+struct Src { virtual void a() {} virtual long GetCount() { return 3; } virtual It* First() { return g_n-- > 0 ? (It*)1 : 0; } virtual void Remove(It*) { ++g_r; } };
+struct Tgt { virtual long GetCount() { return 4; } virtual void Reserve(long n) { if (n == 7) g_a += 100; } };
+struct X { virtual void Add(It*) { ++g_a; } Tgt* t; void T(Src* s) { t->Reserve(s->GetCount() + t->GetCount()); for (It* i = s->First(); i; i = s->First()) { s->Remove(i); Add(i); } } };
+int main()
+{
+    Src s; Tgt t; X x; x.t = &t; x.T(&s); if (g_r != 2 || g_a != 102) '''+FAIL(a)+'''
 '''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)

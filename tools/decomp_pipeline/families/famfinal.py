@@ -131,6 +131,17 @@ DESC={
  "h48":"persist hooks `context->Transfer<long>(\"Name\", m_value, 0)` with a dword default temporary",
  "h122":"retail `list::Buynode(const long&)`: malloc a 12-byte node, placement-copy the dword value, return malloc's result",
  "h9":"`CPersistTraits<T>::TransferBinaryIn(stream, out)`: inlined CMemoryDataInputStream::Read with the __int64 position range check, memcpy fast path (movsd for struct values), ReadWithSrcChunkOverflow fallback; frame-pointer/size TU",
+ "h64":"retail tree iterator increment on a node-pointer reference (template w13)",
+ "h66":"retail `_Tree::find` with unsigned 32-bit keys (template w26, signedness detected from the compare)",
+ "h89":"retail vector `push_back` in a frame-pointer/size TU (template h44)",
+ "h55":"`PushBackConstant(vector*)`: `long value = K; vector->push_back(value)` with the retail push_back inlined",
+ "h61":"`CX::operator=`: the base class's operator= out of line, then the trailing members copied in declaration order",
+ "h59":"retail `list<CCountedPointer>::clear()`: destroy each value inline, free the node, re-link the head",
+ "h60":"`_Move<CCountedPointer*>`: range copy-assignment with the counted-pointer operator= inlined (source fields read first), signed count in a stack local",
+ "h20":"VC6-era `_Tree::_Copy(src, parent)`: Buynode per node, right subtrees recursively, the left spine iteratively through the `parent` parameter; frame-pointer/size TU",
+ "h19":"VC6-era `_Tree::operator=`: Clear, Copy under a named head local, leftmost/rightmost walks, size copied; size TU",
+ "h13":"`CDerived::CDerived(CThing*) : CBase(thing), m_name(\"LIT\") {}` -- hashed-name member built inline from an implicitly converted CCharString temporary (string assigned, CRC of the name)",
+ "h14":"EH-module collection transfer: reserve count+count through virtual slots, then detach each item from the source and add it here",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
