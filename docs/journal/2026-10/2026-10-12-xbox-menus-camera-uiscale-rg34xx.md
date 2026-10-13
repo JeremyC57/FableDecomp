@@ -417,3 +417,15 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   animation name pointer). First seen with v17 (the restrict re-lift, the inline caches on
   all dispatch sites, the hold-target handler on the on-press object). Open; the next log
   decides whether it is the target-lock handler (lock a target, then wait) or streaming.
+- **Target lock still a toggle (user report, v17-v19)**: both activation handlers
+  (0x688260 hold, 0x6882F0 on-press) only ever queue the activate action; the lock ends in
+  `CInputProcessZTarget::Update` (0x688C40), which every frame reads the controls def's
+  ToggleZTarget byte through `CGamePlayerInterface::GetToggleZTarget` (0x445B80: byte +0x48
+  of the def at this+0x7A0) and, when it is clear, deactivates as soon as the activate
+  action is no longer held. The earlier override wrote the profile manager's +0x68 (the def
+  taken as embedded), the wrong object. `host_ztarget_toggle` (wrap 0x445B80) now returns
+  clear with HOLD_TARGET; the on-press wrap is gone.
+- **Open (user report)**: Guild guards present during the childhood and teenage sections;
+  Will mode (right trigger held plus a face button) does not cast. The Xbox scheme's
+  binding records are now logged once at load to see how the scheme binds the spell
+  actions. The dialogue-scene crash did not recur in this run.

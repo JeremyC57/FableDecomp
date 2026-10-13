@@ -517,6 +517,9 @@ void loadXboxScheme() {
     if (end > begin && (end - begin) % kRecordSize == 0 && end - begin < 0x10000)
         g_xboxRecords.assign(gp<uint8_t>(begin), gp<uint8_t>(end));
     log("controller: %u pad bindings from FABLE_XBOX_CONTROL_SCHEME", static_cast<unsigned>(g_xboxRecords.size() / kRecordSize));
+    for (size_t i = 0; i + kRecordSize <= g_xboxRecords.size(); i += kRecordSize)
+        HLOG(1, "controller:   action %u type %u f2 %u button %u f4 %u f5 %u f6 %u", rd32le(&g_xboxRecords[i]), rd32le(&g_xboxRecords[i + 4]), rd32le(&g_xboxRecords[i + 8]),
+             rd32le(&g_xboxRecords[i + 12]), rd32le(&g_xboxRecords[i + 16]), rd32le(&g_xboxRecords[i + 20]), rd32le(&g_xboxRecords[i + 24]));
     // The reference the lookup took is kept: the def stays loaded for the whole session.
 }
 
@@ -693,15 +696,13 @@ extern "C" void host_joystick_update(Ctx* c) {
     retCdecl(c, 1);
 }
 
-// 0x6882F0 CInputProcessControlCreatureActivateZTargetOnPress::ProcessInput(const CInputEvent&,
-// CProcessedInput&): the toggle variant of the target lock. The game builds both variants
-// (0x4895CB / 0x489607) and registers the toggle one from the profile's ToggleZTarget, which a
-// loaded profile can set again after host_primary_inputs cleared it. With HOLD_TARGET the
-// toggle object's handler is the hold variant's (0x688260, same layout: both are
-// CInputProcessGameBase of 0x28 bytes), so the lock holds only while the trigger is down.
-extern "C" void F_006882F0_orig(Ctx* c);
-extern "C" void F_00688260(Ctx* c);
-extern "C" void host_ztarget_press(Ctx* c) {
-    if (host::pad::holdTargetEnabled()) F_00688260(c);
-    else F_006882F0_orig(c);
+// 0x445B80 CGamePlayerInterface::GetToggleZTarget(): the controls def's ToggleZTarget byte
+// (+0x48 of the def at this+0x7A0). CInputProcessZTarget::Update (0x688C40) reads it every
+// frame: when it is clear the lock ends as soon as the activate action is no longer held
+// (0x687D50 / IsGameActionEventInQueue), the Xbox hold behaviour; the on-press variant of the
+// activation process is also chosen from it. With HOLD_TARGET it reads as clear.
+extern "C" void F_00445B80_orig(Ctx* c);
+extern "C" void host_ztarget_toggle(Ctx* c) {
+    if (host::pad::holdTargetEnabled()) { retStd(c, 0, 0); return; }
+    F_00445B80_orig(c);
 }
