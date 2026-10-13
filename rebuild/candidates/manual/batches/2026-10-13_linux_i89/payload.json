@@ -1,0 +1,86 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "006131e0",
+    "module": "_global",
+    "name": "Fill_SElement40_006131e0",
+    "source_cpp": "// _Fill<SElement40*> -- assign value to every element of [first, last) (40-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x006131E0, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 40 bytes from [eax] to [ecx]) ; add ecx,0x28 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 40-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement40 {\n    unsigned char _body[0x28];\n};\n\nvoid __fastcall Fill_SElement40_006131e0(SElement40* first, SElement40* last, const SElement40& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[40]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"006131e0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"006131e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "006131e0_TEST PASS"
+   },
+   {
+    "address": "00819280",
+    "module": "_global",
+    "name": "Fill_SElement40_00819280",
+    "source_cpp": "// _Fill<SElement40*> -- assign value to every element of [first, last) (40-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00819280, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 40 bytes from [eax] to [ecx]) ; add ecx,0x28 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 40-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement40 {\n    unsigned char _body[0x28];\n};\n\nvoid __fastcall Fill_SElement40_00819280(SElement40* first, SElement40* last, const SElement40& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[40]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"00819280_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00819280_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00819280_TEST PASS"
+   },
+   {
+    "address": "00819360",
+    "module": "_global",
+    "name": "Fill_SElement36_00819360",
+    "source_cpp": "// _Fill<SElement36*> -- assign value to every element of [first, last) (36-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00819360, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 36 bytes from [eax] to [ecx]) ; add ecx,0x24 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 36-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement36 {\n    unsigned char _body[0x24];\n};\n\nvoid __fastcall Fill_SElement36_00819360(SElement36* first, SElement36* last, const SElement36& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[36]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"00819360_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00819360_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00819360_TEST PASS"
+   },
+   {
+    "address": "009fff90",
+    "module": "_global",
+    "name": "Fill_SElement44_009fff90",
+    "source_cpp": "// _Fill<SElement44*> -- assign value to every element of [first, last) (44-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x009FFF90, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 44 bytes from [eax] to [ecx]) ; add ecx,0x2c ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 44-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement44 {\n    unsigned char _body[0x2c];\n};\n\nvoid __fastcall Fill_SElement44_009fff90(SElement44* first, SElement44* last, const SElement44& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[44]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"009fff90_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"009fff90_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "009fff90_TEST PASS"
+   },
+   {
+    "address": "00a94600",
+    "module": "_global",
+    "name": "Fill_SElement32_00a94600",
+    "source_cpp": "// _Fill<SElement32*> -- assign value to every element of [first, last) (32-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A94600, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 32 bytes from [eax] to [ecx]) ; add ecx,0x20 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 32-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement32 {\n    unsigned char _body[0x20];\n};\n\nvoid __fastcall Fill_SElement32_00a94600(SElement32* first, SElement32* last, const SElement32& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[32]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"00a94600_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00a94600_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00a94600_TEST PASS"
+   },
+   {
+    "address": "00ab10f0",
+    "module": "_global",
+    "name": "Fill_SElement52_00ab10f0",
+    "source_cpp": "// _Fill<SElement52*> -- assign value to every element of [first, last) (52-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB10F0, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 52 bytes from [eax] to [ecx]) ; add ecx,0x34 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 52-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement52 {\n    unsigned char _body[0x34];\n};\n\nvoid __fastcall Fill_SElement52_00ab10f0(SElement52* first, SElement52* last, const SElement52& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[52]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"00ab10f0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00ab10f0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00ab10f0_TEST PASS"
+   },
+   {
+    "address": "00b48ef0",
+    "module": "_global",
+    "name": "Fill_SElement112_00b48ef0",
+    "source_cpp": "// _Fill<SElement112*> -- assign value to every element of [first, last) (112-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B48EF0, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 112 bytes from [eax] to [ecx]) ; add ecx,0x70 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 112-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement112 {\n    unsigned char _body[0x70];\n};\n\nvoid __fastcall Fill_SElement112_00b48ef0(SElement112* first, SElement112* last, const SElement112& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[112]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"00b48ef0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00b48ef0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00b48ef0_TEST PASS"
+   },
+   {
+    "address": "00b6b580",
+    "module": "_global",
+    "name": "Fill_SElement56_00b6b580",
+    "source_cpp": "// _Fill<SElement56*> -- assign value to every element of [first, last) (56-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6B580, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 56 bytes from [eax] to [ecx]) ; add ecx,0x38 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 56-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement56 {\n    unsigned char _body[0x38];\n};\n\nvoid __fastcall Fill_SElement56_00b6b580(SElement56* first, SElement56* last, const SElement56& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[56]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"00b6b580_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00b6b580_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00b6b580_TEST PASS"
+   },
+   {
+    "address": "00b7aac0",
+    "module": "_global",
+    "name": "Fill_SElement48_00b7aac0",
+    "source_cpp": "// _Fill<SElement48*> -- assign value to every element of [first, last) (48-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B7AAC0, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 48 bytes from [eax] to [ecx]) ; add ecx,0x30 ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 48-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement48 {\n    unsigned char _body[0x30];\n};\n\nvoid __fastcall Fill_SElement48_00b7aac0(SElement48* first, SElement48* last, const SElement48& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[48]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"00b7aac0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00b7aac0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00b7aac0_TEST PASS"
+   },
+   {
+    "address": "00f37a00",
+    "module": "_global",
+    "name": "Fill_SElement44_00f37a00",
+    "source_cpp": "// _Fill<SElement44*> -- assign value to every element of [first, last) (44-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00F37A00, oracle length 40 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je E ; mov eax,[value] ; push esi ; L: (copy 44 bytes from [eax] to [ecx]) ; add ecx,0x2c ; cmp ecx,edx ; jne L ; pop esi ; E: ret 4\n// Dinkumware `_Fill` (`__fastcall`: first in ecx, last in edx, the value reference on the\n// stack) for 44-byte trivially-copyable elements. One of 10 bodies of this shape.\nstruct SElement44 {\n    unsigned char _body[0x2c];\n};\n\nvoid __fastcall Fill_SElement44_00f37a00(SElement44* first, SElement44* last, const SElement44& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[44]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E a[2], v; v.b[0] = 7; F(a, a + 2, v); if (a[1].b[0] != 7) { std::printf(\"00f37a00_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00f37a00_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00f37a00_TEST PASS"
+   }
+  ]
+ }
+}
