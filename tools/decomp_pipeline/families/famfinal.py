@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""Post-landing pass for the family batches: fix headers of landed rows (batch + compiled copy),
+mark the rest, ledger DIFFERs in crawl/gen_tried.txt, write one README per batch."""
+import csv, re, os, sys, glob
+from pathlib import Path
+ROOT=Path(sys.argv[1]); S=Path(os.environ["S"]); LOGS=[S/"wine/land_fams.log", S/"wine/land_fams2.log"]+[Path(x) for x in sys.argv[2:]]
+cat={r["address"].lower() for r in csv.DictReader(open(ROOT/"rebuild/oracles/auto-re-candidates.tsv"),delimiter="\t")}
+# latest verdict per address from the logs (later lines win)
+verdict={}
+for L in LOGS:
+    if not L.exists(): continue
+    for line in open(L):
+        m=re.match(r"^([0-9a-f]{8})\s+(\S+)\s+(\S+)\s+(.*)$", line.strip())
+        if m and m.group(2) not in ("WARN",): verdict[m.group(1)]=(m.group(2),m.group(3))
+DESC={
+ "2":"`__fastcall Create_<Class>(owner)` factories: `return new CX(owner);` with the one-argument constructor out of line",
+ "57":"`__fastcall Create_<Class>(owner)` factories (the `add esp,4` scheduling of family 2; same template)",
+ "3":"`CDerived::CDerived() : CBase() {}` for two polymorphic classes (base constructor out of line, own vtable)",
+ "22":"`CDerived::CDerived() : CBase() {}` (family 3 with a different scheduling; same template)",
+ "19":"`CDerived::CDerived(T a) : CBase(a) {}` one-argument forwarding constructors",
+ "10":"`Clone()` through an out-of-line copy constructor",
+ "5":"`Clone()` with the implicit copy constructor inlined (base copy constructor + own vtable)",
+ "32":"`Clone()` with the implicit copy constructor inlined (family 5 shape; same template)",
+ "29":"`Clone()` with the implicit copy constructor inlined plus one extra member copied after the base",
+ "6":"retail `std::list` sentinel-node constructors (`CRetailList_node<N>`), allocator by value",
+ "11":"retail block constructors: one malloc'd block of N bytes, allocator by value",
+ "9":"retail `std::map`/`std::set` head-node constructors (`CRetailTree_node<N>`), no argument",
+ "14":"retail `std::map`/`std::set` head-node constructors with comparator + allocator by value (`ret 8`)",
+ "31":"retail `std::map`/`std::set` head-node constructors with comparator + allocator by value (`ret 8`)",
+ "12":"scalar deleting destructors `??_G` of classes with an empty inline virtual destructor",
+ "18":"scalar deleting destructors `??_G` (family 12 shape; same template)",
+ "62":"scalar deleting destructors `??_G` with the `pop ecx` cleanup (`#pragma optimize(\"s\")`; same template)",
+ "16":"`__fastcall Alloc_<Class>(a, b)`: `new CX(a, b)` with the two-argument constructor inlined",
+ "17":"`CDerived::CDerived() : CBase(), m_member() {}` with a polymorphic member whose own constructor is inlined",
+ "20":"`void CX::Initialise()`: a scoped `CCharString name(\"<animation>\", -1)` handed to the base setter, then the base `Initialise()`",
+ "26":"persist hooks: `context->Transfer<signed char>(\"<Key>\", m_b<Key>, defaultValue)` on one byte member",
+ "35":"`CDerived::CDerived(T a) : CBase() { Setter(a); }`",
+ "7":"dynamic initialisers `??__E` of static-storage `CCharString` objects built from a literal, plus atexit registration",
+ "25":"dynamic initialisers `??__E` of static-storage `CCharString` objects built from a literal (family 7 shape)",
+ "27":"dynamic initialisers `??__E` that only register an atexit destructor (object with a trivial constructor)",
+ "28":"dynamic initialisers `??__E` of static-storage objects with an out-of-line default constructor, plus atexit registration",
+ "21":"`__fastcall Alloc_<Class>(a, b)`: `new CX(a, b)` with `CX(a, b) : CBase(a, b) {}` inlined over an out-of-line base constructor",
+ "44":"`CIntelligentPointer<T>::CIntelligentPointer(const CIntelligentPointer&)`: base default constructor, own vtable, `SetPItem(other.GetPItem())`",
+ "63":"`CIntelligentPointer<T>` copy constructors (family 44 shape; same template)",
+ "34":"`CDerived::CDerived() : CBase() { m_a = m_b = m_c = 0; }` (vtable store first) -- open DIFFER",
+ "59":"`CDerived::CDerived() : CBase(), m_member() {}` with the member constructor out of line",
+ "69":"`CDerived::CDerived(T a) : CBase(), m_a(a) {}`",
+ "49":"non-polymorphic default constructors whose only work is one CCharString-like member at +0 (owner class not identifiable)",
+ "54":"non-polymorphic default constructors whose only work is one CCharString-like member at +8 (owner class not identifiable)",
+ "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
+}
+tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
+summary=[]
+for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))):
+    D=Path(D); fam=re.search(r"_f(\d+)$",D.name).group(1)
+    rows=list(csv.DictReader(open(D/"oracle.tsv"),delimiter="\t"))
+    landed=[r for r in rows if r["address"].lower() in cat]; rest=[r for r in rows if r["address"].lower() not in cat]
+    for r in rows:
+        a=r["address"].lower(); files=list(D.glob(f"*_{a}.cpp"))
+        comp=list((ROOT/"rebuild/src/compiled"/a[:2]/a[2:4]).glob(f"*_{a}.cpp"))
+        for f in files+(comp if a in cat else []):
+            t=f.read_text()
+            if a in cat:
+                t=re.sub(r"// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane \(Wine \+ DDK\n//        13\.10\.4035 cl\.exe\); the batch README records the lane verdict\.",
+                         "// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.", t)
+            else:
+                v=verdict.get(a,("UNGRADED","-"))
+                t=re.sub(r"// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane \(Wine \+ DDK\n//        13\.10\.4035 cl\.exe\); the batch README records the lane verdict\.",
+                         f"// Grade: candidate -- still {v[0]} in the Linux lane (Wine + DDK 13.10.4035 cl.exe); generated for a\n//        repeated body shape, see the batch README for the open question.", t)
+            f.write_text(t)
+        if a not in cat and verdict.get(a,("",))[0].startswith("DIFFER") and a not in have: newtried.append(a); have.add(a)
+    vc={}
+    for r in rest: vc.setdefault(verdict.get(r["address"].lower(),("UNGRADED","-"))[0],[]).append(r["address"].lower())
+    mods=len({r["name"].split("::")[0] for r in landed})
+    rd=[f"# Batch `{D.name}` — family {fam}: {len(rows)} bodies ({len(landed)} landed)\n",
+        f"\n{DESC.get(fam,'repeated body shape')}.\n",
+        "\nEvery un-landed body of this opcode skeleton in the manifest (bodies ≤ 64 bytes grouped by instruction\n"
+        "skeleton with scratch `famscan.py`; sources generated by scratch `gen/fam.py` from the retail bytes, the\n"
+        "manifest labels, `rebuild/manifest/rtti-vtables.tsv` and the literal/`.rdata` operands), graded with the\n"
+        "lander sweep in the Wine lane and landed with `verify_and_land.py --land`.\n",
+        f"\n## Lane grading result\n\n- Rows: {len(rows)}; landed byte-exact (RELOCATION_MATCH + PASS): {len(landed)}; modules: {mods}.\n"]
+    for k,v in sorted(vc.items()): rd.append(f"- {k}: {len(v)} — " + ", ".join(v[:12]) + (" …" if len(v)>12 else "") + "\n")
+    rd.append("\n## Naming and trust\n\n- Class names come from `rtti-vtables.tsv` (the vtable the body stores) where there is one; bodies in the\n"
+              "  no-RTTI region (vtables without a complete-object locator, e.g. 0x012C2F64) are named `CVtable_<va>`.\n"
+              "- Base/member constructor names are taken from the manifest only when the (module, name) label is unique in\n"
+              "  the manifest (`label_trust.py` rule); otherwise they are named by address (`CBase_<va>`).\n"
+              "- Argument types follow the callee's manifest prototype when it is a plain pointer; template or enum\n"
+              "  arguments are modelled as `void*` / `long` (same codegen) and say so in the file.\n"
+              "- Each file carries the retail instruction sequence and the reasoning in its header comment.\n")
+    (D/"README.md").write_text("".join(rd))
+    summary.append((fam,len(rows),len(landed),{k:len(v) for k,v in vc.items()}))
+if newtried:
+    with open(tried,"a") as f: f.write("".join(a+"\n" for a in newtried))
+for s in summary: print(s)
+print("ledgered DIFFER:",len(newtried))

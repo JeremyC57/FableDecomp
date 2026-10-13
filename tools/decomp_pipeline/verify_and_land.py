@@ -46,11 +46,16 @@ def vc71(s):
     s = s.replace("__thiscall", "__fastcall")
     return "\n".join(l for l in s.splitlines() if "static_assert" not in l)
 
+# Code sections: plain `.text` COMDATs plus the `.text$yc` / `.text$yd` groups VC7.1 uses for
+# dynamic initialisers of static-storage objects (`$E<n>`) and their atexit destructor thunks.
+TEXTSEC_H = re.compile(r"^\s*\d+\s+\.text(?:\$\w+)?\s+")
+TEXTSEC_D = re.compile(r"^Disassembly of section \.text(?:\$\w+)?:")
+TEXTSEC_R = re.compile(r"^RELOCATION RECORDS FOR \[\.text(?:\$\w+)?\]:")
 def obj_text(path, leaf):
     pr = subprocess.run([OBJDUMP,"-d",str(path)],capture_output=True,text=True,check=True)
     fns,sec,cur=[],-1,None
     for line in pr.stdout.splitlines():
-        if line.startswith("Disassembly of section .text:"): sec+=1;cur=None;continue
+        if TEXTSEC_D.match(line): sec+=1;cur=None;continue   # .text and .text$yc/.text$yd (dynamic initialisers + atexit thunks)
         s=DS.match(line)
         if s:
             # COFF objdump prints basic-block labels (for example `$L779`) with
@@ -73,14 +78,14 @@ def obj_relocs(path, sel):
     hp=subprocess.run([OBJDUMP,"-h",str(path)],capture_output=True,text=True,check=True)
     flags=[];hl=hp.stdout.splitlines()
     for i,l in enumerate(hl):
-        if re.match(r"^\s*\d+\s+\.text\s+",l): flags.append("RELOC" in (hl[i+1] if i+1<len(hl) else ""))
+        if TEXTSEC_H.match(l): flags.append("RELOC" in (hl[i+1] if i+1<len(hl) else ""))
     if sel>=len(flags) or not flags[sel]: return []
     bi=sum(flags[:sel+1])-1
     rp=subprocess.run([OBJDUMP,"-r",str(path)],capture_output=True,text=True,check=True)
     blocks=[];intext=False;ts=-1
     for l in rp.stdout.splitlines():
         if l.startswith("RELOCATION RECORDS FOR ["):
-            intext="[.text]" in l
+            intext=bool(TEXTSEC_R.match(l))
             if intext: ts+=1;blocks.append([])
             continue
         if intext:
