@@ -11,6 +11,8 @@ bool screenSize(int& width, int& height);  // /dev/fb0 (FABLE_SCREEN=WxH overrid
 bool open(int& width, int& height);  // libEGL + libGLESv2 from the OS, a current ES 3.x context
 void* proc(const char* name);         // GL entry point
 void swap();
+void releaseCurrent();  // the creating thread gives the context up ...
+bool makeCurrent();     // ... and the render thread takes it
 void setSwapInterval(int interval);
 void close();
 int probe();  // --gl-probe: open, paint red/green/blue for a few seconds, report, exit code 0 on success

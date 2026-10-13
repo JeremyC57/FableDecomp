@@ -584,7 +584,7 @@ private:
     void callDirect(const Insn& ins, uint32_t t) {
         line("esp -= 4; wr32(esp, " + hex(ins.next()) + "u);");
         if (!p_.functions().count(t)) {  // target is not code we lifted (garbage decode)
-            line("SPILL; recomp_dispatch(c, " + hex(t) + "u); RELOAD;");
+            line("SPILL; RECOMP_ICALL(c, " + hex(t) + "u); RELOAD;");  // resolved once through the inline cache, not a hash lookup per call
             return;
         }
         line("SPILL; " + fname(t) + "(c); RELOAD;");
@@ -814,10 +814,10 @@ private:
                 std::set<uint32_t> done;
                 for (uint32_t t : jt->second.targets)
                     if (done.insert(t).second) s += " case " + hexu(t) + ": goto " + target(t) + ";";
-                return line(s + " default: SPILL; recomp_dispatch(c, " + rd(o[0], 32) + "); return; }");
+                return line(s + " default: { uint32_t t = " + rd(o[0], 32) + "; SPILL; RECOMP_ICALL(c, t); return; } }");
             }
             ++st_.unresolvedIndirectJumps;
-            return line("{ uint32_t t = " + rd(o[0], 32) + "; SPILL; recomp_dispatch(c, t); return; }");
+            return line("{ uint32_t t = " + rd(o[0], 32) + "; SPILL; RECOMP_ICALL(c, t); return; }");
         }
         case ZYDIS_MNEMONIC_CALL: {
             if (o[0].type == ZYDIS_OPERAND_TYPE_IMMEDIATE) {

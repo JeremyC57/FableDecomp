@@ -18,11 +18,13 @@
 #include "dx9shader.hpp"
 #include "../w32/w32.hpp"
 #include "egl_fbdev.hpp"
+#include "gl_queue_gen.hpp"
 #include "../overlay/overlay.hpp"
 #include "gfx_options.hpp"
 #include "../overlay/overlay_font.inc"
 
 #include <algorithm>
+#include <atomic>
 #include <cmath>
 #include <cstdio>
 #include <ctime>
@@ -40,188 +42,8 @@ namespace host::gles {
 
 // ---- GL entry points, resolved from the context's driver (the device's own libGLESv2) ----
 namespace {
-PFNGLACTIVETEXTUREPROC glActiveTexture;
-PFNGLATTACHSHADERPROC glAttachShader;
-PFNGLBEGINQUERYPROC glBeginQuery;
-PFNGLBINDBUFFERPROC glBindBuffer;
-PFNGLBINDFRAMEBUFFERPROC glBindFramebuffer;
-PFNGLBINDRENDERBUFFERPROC glBindRenderbuffer;
-PFNGLBINDSAMPLERPROC glBindSampler;
-PFNGLBINDTEXTUREPROC glBindTexture;
-PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
-PFNGLBLENDCOLORPROC glBlendColor;
-PFNGLBLENDEQUATIONPROC glBlendEquation;
-PFNGLBLENDFUNCPROC glBlendFunc;
-PFNGLBLITFRAMEBUFFERPROC glBlitFramebuffer;
-PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC glRenderbufferStorageMultisample;  // ES 3.0; optional (MSAA)
-PFNGLBUFFERDATAPROC glBufferData;
-PFNGLBUFFERSUBDATAPROC glBufferSubData;
-PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
-PFNGLCLEARPROC glClear;
-PFNGLCLEARCOLORPROC glClearColor;
-PFNGLCLEARDEPTHFPROC glClearDepthf;
-PFNGLCLEARSTENCILPROC glClearStencil;
-PFNGLCOLORMASKPROC glColorMask;
-PFNGLCOMPILESHADERPROC glCompileShader;
-PFNGLCREATEPROGRAMPROC glCreateProgram;
-PFNGLCREATESHADERPROC glCreateShader;
-PFNGLCULLFACEPROC glCullFace;
-PFNGLDELETEBUFFERSPROC glDeleteBuffers;
-PFNGLDELETEFRAMEBUFFERSPROC glDeleteFramebuffers;
-PFNGLDELETEPROGRAMPROC glDeleteProgram;
-PFNGLDELETEQUERIESPROC glDeleteQueries;
-PFNGLDELETERENDERBUFFERSPROC glDeleteRenderbuffers;
-PFNGLDELETESAMPLERSPROC glDeleteSamplers;
-PFNGLDELETESHADERPROC glDeleteShader;
-PFNGLDELETETEXTURESPROC glDeleteTextures;
-PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
-PFNGLDEPTHFUNCPROC glDepthFunc;
-PFNGLDEPTHMASKPROC glDepthMask;
-PFNGLDEPTHRANGEFPROC glDepthRangef;
-PFNGLDISABLEPROC glDisable;
-PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
-PFNGLDRAWARRAYSPROC glDrawArrays;
-PFNGLDRAWELEMENTSPROC glDrawElements;
-PFNGLENABLEPROC glEnable;
-PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
-PFNGLENDQUERYPROC glEndQuery;
-PFNGLFRAMEBUFFERRENDERBUFFERPROC glFramebufferRenderbuffer;
-PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
-PFNGLFRONTFACEPROC glFrontFace;
-PFNGLGENBUFFERSPROC glGenBuffers;
-PFNGLGENFRAMEBUFFERSPROC glGenFramebuffers;
-PFNGLGENQUERIESPROC glGenQueries;
-PFNGLGENRENDERBUFFERSPROC glGenRenderbuffers;
-PFNGLGENSAMPLERSPROC glGenSamplers;
-PFNGLGENTEXTURESPROC glGenTextures;
-PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
-PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
-PFNGLGETERRORPROC glGetError;
-PFNGLGETINTEGERVPROC glGetIntegerv;
-PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
-PFNGLGETPROGRAMIVPROC glGetProgramiv;
-PFNGLGETQUERYOBJECTUIVPROC glGetQueryObjectuiv;
-PFNGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
-PFNGLGETSHADERIVPROC glGetShaderiv;
-PFNGLGETSTRINGPROC glGetString;
-PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
-PFNGLLINKPROGRAMPROC glLinkProgram;
-PFNGLPIXELSTOREIPROC glPixelStorei;
-PFNGLPOLYGONOFFSETPROC glPolygonOffset;
-PFNGLREADPIXELSPROC glReadPixels;
-PFNGLRENDERBUFFERSTORAGEPROC glRenderbufferStorage;
-PFNGLSAMPLERPARAMETERIPROC glSamplerParameteri;
-PFNGLSCISSORPROC glScissor;
-PFNGLSHADERSOURCEPROC glShaderSource;
-PFNGLSTENCILFUNCPROC glStencilFunc;
-PFNGLSTENCILMASKPROC glStencilMask;
-PFNGLSTENCILOPPROC glStencilOp;
-PFNGLTEXPARAMETERIPROC glTexParameteri;
-PFNGLTEXPARAMETERIVPROC glTexParameteriv;
-PFNGLTEXSTORAGE2DPROC glTexStorage2D;
-PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D;
-PFNGLUNIFORM1FPROC glUniform1f;
-PFNGLUNIFORM1IPROC glUniform1i;
-PFNGLUNIFORM4FPROC glUniform4f;
-PFNGLUNIFORM4FVPROC glUniform4fv;
-PFNGLUNIFORM2FPROC glUniform2f;
-PFNGLUSEPROGRAMPROC glUseProgram;
-PFNGLINVALIDATEFRAMEBUFFERPROC glInvalidateFramebuffer;
-PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
-PFNGLVIEWPORTPROC glViewport;
 void* getProc(const char* n) { return w32::fbdevGl() ? fb::proc(n) : SDL_GL_GetProcAddress(n); }
-bool loadGl() {
-    glActiveTexture = reinterpret_cast<PFNGLACTIVETEXTUREPROC>(getProc("glActiveTexture"));
-    glAttachShader = reinterpret_cast<PFNGLATTACHSHADERPROC>(getProc("glAttachShader"));
-    glBeginQuery = reinterpret_cast<PFNGLBEGINQUERYPROC>(getProc("glBeginQuery"));
-    glBindBuffer = reinterpret_cast<PFNGLBINDBUFFERPROC>(getProc("glBindBuffer"));
-    glBindFramebuffer = reinterpret_cast<PFNGLBINDFRAMEBUFFERPROC>(getProc("glBindFramebuffer"));
-    glBindRenderbuffer = reinterpret_cast<PFNGLBINDRENDERBUFFERPROC>(getProc("glBindRenderbuffer"));
-    glBindSampler = reinterpret_cast<PFNGLBINDSAMPLERPROC>(getProc("glBindSampler"));
-    glBindTexture = reinterpret_cast<PFNGLBINDTEXTUREPROC>(getProc("glBindTexture"));
-    glBindVertexArray = reinterpret_cast<PFNGLBINDVERTEXARRAYPROC>(getProc("glBindVertexArray"));
-    glBlendColor = reinterpret_cast<PFNGLBLENDCOLORPROC>(getProc("glBlendColor"));
-    glBlendEquation = reinterpret_cast<PFNGLBLENDEQUATIONPROC>(getProc("glBlendEquation"));
-    glBlendFunc = reinterpret_cast<PFNGLBLENDFUNCPROC>(getProc("glBlendFunc"));
-    glBlitFramebuffer = reinterpret_cast<PFNGLBLITFRAMEBUFFERPROC>(getProc("glBlitFramebuffer"));
-    glRenderbufferStorageMultisample = reinterpret_cast<PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC>(getProc("glRenderbufferStorageMultisample"));
-    glBufferData = reinterpret_cast<PFNGLBUFFERDATAPROC>(getProc("glBufferData"));
-    glBufferSubData = reinterpret_cast<PFNGLBUFFERSUBDATAPROC>(getProc("glBufferSubData"));
-    glCheckFramebufferStatus = reinterpret_cast<PFNGLCHECKFRAMEBUFFERSTATUSPROC>(getProc("glCheckFramebufferStatus"));
-    glClear = reinterpret_cast<PFNGLCLEARPROC>(getProc("glClear"));
-    glClearColor = reinterpret_cast<PFNGLCLEARCOLORPROC>(getProc("glClearColor"));
-    glClearDepthf = reinterpret_cast<PFNGLCLEARDEPTHFPROC>(getProc("glClearDepthf"));
-    glClearStencil = reinterpret_cast<PFNGLCLEARSTENCILPROC>(getProc("glClearStencil"));
-    glColorMask = reinterpret_cast<PFNGLCOLORMASKPROC>(getProc("glColorMask"));
-    glCompileShader = reinterpret_cast<PFNGLCOMPILESHADERPROC>(getProc("glCompileShader"));
-    glCreateProgram = reinterpret_cast<PFNGLCREATEPROGRAMPROC>(getProc("glCreateProgram"));
-    glCreateShader = reinterpret_cast<PFNGLCREATESHADERPROC>(getProc("glCreateShader"));
-    glCullFace = reinterpret_cast<PFNGLCULLFACEPROC>(getProc("glCullFace"));
-    glDeleteBuffers = reinterpret_cast<PFNGLDELETEBUFFERSPROC>(getProc("glDeleteBuffers"));
-    glDeleteFramebuffers = reinterpret_cast<PFNGLDELETEFRAMEBUFFERSPROC>(getProc("glDeleteFramebuffers"));
-    glDeleteProgram = reinterpret_cast<PFNGLDELETEPROGRAMPROC>(getProc("glDeleteProgram"));
-    glDeleteQueries = reinterpret_cast<PFNGLDELETEQUERIESPROC>(getProc("glDeleteQueries"));
-    glDeleteRenderbuffers = reinterpret_cast<PFNGLDELETERENDERBUFFERSPROC>(getProc("glDeleteRenderbuffers"));
-    glDeleteSamplers = reinterpret_cast<PFNGLDELETESAMPLERSPROC>(getProc("glDeleteSamplers"));
-    glDeleteShader = reinterpret_cast<PFNGLDELETESHADERPROC>(getProc("glDeleteShader"));
-    glDeleteTextures = reinterpret_cast<PFNGLDELETETEXTURESPROC>(getProc("glDeleteTextures"));
-    glDeleteVertexArrays = reinterpret_cast<PFNGLDELETEVERTEXARRAYSPROC>(getProc("glDeleteVertexArrays"));
-    glDepthFunc = reinterpret_cast<PFNGLDEPTHFUNCPROC>(getProc("glDepthFunc"));
-    glDepthMask = reinterpret_cast<PFNGLDEPTHMASKPROC>(getProc("glDepthMask"));
-    glDepthRangef = reinterpret_cast<PFNGLDEPTHRANGEFPROC>(getProc("glDepthRangef"));
-    glDisable = reinterpret_cast<PFNGLDISABLEPROC>(getProc("glDisable"));
-    glDisableVertexAttribArray = reinterpret_cast<PFNGLDISABLEVERTEXATTRIBARRAYPROC>(getProc("glDisableVertexAttribArray"));
-    glDrawArrays = reinterpret_cast<PFNGLDRAWARRAYSPROC>(getProc("glDrawArrays"));
-    glDrawElements = reinterpret_cast<PFNGLDRAWELEMENTSPROC>(getProc("glDrawElements"));
-    glEnable = reinterpret_cast<PFNGLENABLEPROC>(getProc("glEnable"));
-    glEnableVertexAttribArray = reinterpret_cast<PFNGLENABLEVERTEXATTRIBARRAYPROC>(getProc("glEnableVertexAttribArray"));
-    glEndQuery = reinterpret_cast<PFNGLENDQUERYPROC>(getProc("glEndQuery"));
-    glFramebufferRenderbuffer = reinterpret_cast<PFNGLFRAMEBUFFERRENDERBUFFERPROC>(getProc("glFramebufferRenderbuffer"));
-    glFramebufferTexture2D = reinterpret_cast<PFNGLFRAMEBUFFERTEXTURE2DPROC>(getProc("glFramebufferTexture2D"));
-    glFrontFace = reinterpret_cast<PFNGLFRONTFACEPROC>(getProc("glFrontFace"));
-    glGenBuffers = reinterpret_cast<PFNGLGENBUFFERSPROC>(getProc("glGenBuffers"));
-    glGenFramebuffers = reinterpret_cast<PFNGLGENFRAMEBUFFERSPROC>(getProc("glGenFramebuffers"));
-    glGenQueries = reinterpret_cast<PFNGLGENQUERIESPROC>(getProc("glGenQueries"));
-    glGenRenderbuffers = reinterpret_cast<PFNGLGENRENDERBUFFERSPROC>(getProc("glGenRenderbuffers"));
-    glGenSamplers = reinterpret_cast<PFNGLGENSAMPLERSPROC>(getProc("glGenSamplers"));
-    glGenTextures = reinterpret_cast<PFNGLGENTEXTURESPROC>(getProc("glGenTextures"));
-    glGenVertexArrays = reinterpret_cast<PFNGLGENVERTEXARRAYSPROC>(getProc("glGenVertexArrays"));
-    glGenerateMipmap = reinterpret_cast<PFNGLGENERATEMIPMAPPROC>(getProc("glGenerateMipmap"));
-    glGetError = reinterpret_cast<PFNGLGETERRORPROC>(getProc("glGetError"));
-    glGetIntegerv = reinterpret_cast<PFNGLGETINTEGERVPROC>(getProc("glGetIntegerv"));
-    glGetProgramInfoLog = reinterpret_cast<PFNGLGETPROGRAMINFOLOGPROC>(getProc("glGetProgramInfoLog"));
-    glGetProgramiv = reinterpret_cast<PFNGLGETPROGRAMIVPROC>(getProc("glGetProgramiv"));
-    glGetQueryObjectuiv = reinterpret_cast<PFNGLGETQUERYOBJECTUIVPROC>(getProc("glGetQueryObjectuiv"));
-    glGetShaderInfoLog = reinterpret_cast<PFNGLGETSHADERINFOLOGPROC>(getProc("glGetShaderInfoLog"));
-    glGetShaderiv = reinterpret_cast<PFNGLGETSHADERIVPROC>(getProc("glGetShaderiv"));
-    glGetString = reinterpret_cast<PFNGLGETSTRINGPROC>(getProc("glGetString"));
-    glGetUniformLocation = reinterpret_cast<PFNGLGETUNIFORMLOCATIONPROC>(getProc("glGetUniformLocation"));
-    glLinkProgram = reinterpret_cast<PFNGLLINKPROGRAMPROC>(getProc("glLinkProgram"));
-    glPixelStorei = reinterpret_cast<PFNGLPIXELSTOREIPROC>(getProc("glPixelStorei"));
-    glPolygonOffset = reinterpret_cast<PFNGLPOLYGONOFFSETPROC>(getProc("glPolygonOffset"));
-    glReadPixels = reinterpret_cast<PFNGLREADPIXELSPROC>(getProc("glReadPixels"));
-    glRenderbufferStorage = reinterpret_cast<PFNGLRENDERBUFFERSTORAGEPROC>(getProc("glRenderbufferStorage"));
-    glSamplerParameteri = reinterpret_cast<PFNGLSAMPLERPARAMETERIPROC>(getProc("glSamplerParameteri"));
-    glScissor = reinterpret_cast<PFNGLSCISSORPROC>(getProc("glScissor"));
-    glShaderSource = reinterpret_cast<PFNGLSHADERSOURCEPROC>(getProc("glShaderSource"));
-    glStencilFunc = reinterpret_cast<PFNGLSTENCILFUNCPROC>(getProc("glStencilFunc"));
-    glStencilMask = reinterpret_cast<PFNGLSTENCILMASKPROC>(getProc("glStencilMask"));
-    glStencilOp = reinterpret_cast<PFNGLSTENCILOPPROC>(getProc("glStencilOp"));
-    glTexParameteri = reinterpret_cast<PFNGLTEXPARAMETERIPROC>(getProc("glTexParameteri"));
-    glTexParameteriv = reinterpret_cast<PFNGLTEXPARAMETERIVPROC>(getProc("glTexParameteriv"));
-    glTexStorage2D = reinterpret_cast<PFNGLTEXSTORAGE2DPROC>(getProc("glTexStorage2D"));
-    glTexSubImage2D = reinterpret_cast<PFNGLTEXSUBIMAGE2DPROC>(getProc("glTexSubImage2D"));
-    glUniform1f = reinterpret_cast<PFNGLUNIFORM1FPROC>(getProc("glUniform1f"));
-    glUniform1i = reinterpret_cast<PFNGLUNIFORM1IPROC>(getProc("glUniform1i"));
-    glUniform4f = reinterpret_cast<PFNGLUNIFORM4FPROC>(getProc("glUniform4f"));
-    glUniform4fv = reinterpret_cast<PFNGLUNIFORM4FVPROC>(getProc("glUniform4fv"));
-    glUniform2f = reinterpret_cast<PFNGLUNIFORM2FPROC>(getProc("glUniform2f"));
-    glUseProgram = reinterpret_cast<PFNGLUSEPROGRAMPROC>(getProc("glUseProgram"));
-    glInvalidateFramebuffer = reinterpret_cast<PFNGLINVALIDATEFRAMEBUFFERPROC>(getProc("glInvalidateFramebuffer"));
-    glVertexAttribPointer = reinterpret_cast<PFNGLVERTEXATTRIBPOINTERPROC>(getProc("glVertexAttribPointer"));
-    glViewport = reinterpret_cast<PFNGLVIEWPORTPROC>(getProc("glViewport"));
-    return glActiveTexture && glAttachShader && glBeginQuery && glBindBuffer && glBindFramebuffer && glBindRenderbuffer && glBindSampler && glBindTexture && glBindVertexArray && glBlendColor && glBlendEquation && glBlendFunc && glBlitFramebuffer && glBufferData && glBufferSubData && glCheckFramebufferStatus && glClear && glClearColor && glClearDepthf && glClearStencil && glColorMask && glCompileShader && glCreateProgram && glCreateShader && glCullFace && glDeleteBuffers && glDeleteFramebuffers && glDeleteProgram && glDeleteQueries && glDeleteRenderbuffers && glDeleteSamplers && glDeleteShader && glDeleteTextures && glDeleteVertexArrays && glDepthFunc && glDepthMask && glDepthRangef && glDisable && glDisableVertexAttribArray && glDrawArrays && glDrawElements && glEnable && glEnableVertexAttribArray && glEndQuery && glFramebufferRenderbuffer && glFramebufferTexture2D && glFrontFace && glGenBuffers && glGenFramebuffers && glGenQueries && glGenRenderbuffers && glGenSamplers && glGenTextures && glGenVertexArrays && glGenerateMipmap && glGetError && glGetIntegerv && glGetProgramInfoLog && glGetProgramiv && glGetQueryObjectuiv && glGetShaderInfoLog && glGetShaderiv && glGetString && glGetUniformLocation && glLinkProgram && glPixelStorei && glPolygonOffset && glReadPixels && glRenderbufferStorage && glSamplerParameteri && glScissor && glShaderSource && glStencilFunc && glStencilMask && glStencilOp && glTexParameteri && glTexParameteriv && glTexStorage2D && glTexSubImage2D && glUniform1f && glUniform1i && glUniform4f && glUniform4fv && glUseProgram && glVertexAttribPointer && glViewport;
-}
+bool loadGl() { return gq::loadReal(getProc); }
 }  // namespace
 namespace {
 
@@ -238,6 +60,7 @@ inline uint64_t nowNs() { timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return
 uint64_t g_nsGl = 0;
 struct GlTime { uint64_t t0 = nowNs(); ~GlTime() { g_nsGl += nowNs() - t0; } };
 uint64_t g_nsSwap = 0, g_nsUpload = 0;  // parts of g_nsGl: the swap (vsync wait) and texture uploads
+std::atomic<uint64_t> g_nsSwapRender{0};  // the swap as timed on the render thread
 
 // ---- COM base ------------------------------------------------------------------------------
 template <class I, const IID* ID> struct Unknown : I {
@@ -628,7 +451,8 @@ struct Query : Unknown<IDirect3DQuery9, &IID_IDirect3DQuery9> {
     D3DQUERYTYPE type;
     GLuint gl = 0;
     bool issued = false, active = false;
-    DWORD lastResult = 256;  // the last answer; "visible" before the first one
+    struct State { std::atomic<DWORD> lastResult{256}; std::atomic<bool> checking{false}; };  // shared with the render thread's check
+    std::shared_ptr<State> st = std::make_shared<State>();  // the last answer; "visible" before the first one
     Query(Device* d, D3DQUERYTYPE t) : dev(d), type(t) { if (t == D3DQUERYTYPE_OCCLUSION) glGenQueries(1, &gl); }
     ~Query() override { if (gl) glDeleteQueries(1, &gl); }
     HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
@@ -643,18 +467,25 @@ struct Query : Unknown<IDirect3DQuery9, &IID_IDirect3DQuery9> {
     HRESULT STDMETHODCALLTYPE GetData(void* out, DWORD size, DWORD flags) override {
         if (!gl) { if (out && size >= 4) *static_cast<DWORD*>(out) = 0; return S_OK; }
         if (!issued) return S_FALSE;
-        GLuint avail = 0;
-        glGetQueryObjectuiv(gl, GL_QUERY_RESULT_AVAILABLE, &avail);
-        if (avail) {
-            GLuint r = 0;
-            glGetQueryObjectuiv(gl, GL_QUERY_RESULT, &r);
-            // Direct3D reports the pixel count; the boolean query stands in with a plausible one.
-            lastResult = r ? 256 : 0;
-        }
         // Waiting for the GPU here (D3DGETDATA_FLUSH, polled every frame for the sun's lens
-        // flare) would serialise the CPU and the GPU; the previous frame's answer is returned
-        // instead, which a flare cannot tell apart.
-        if (out && size >= 4) *static_cast<DWORD*>(out) = lastResult;
+        // flare) would serialise the CPU and the GPU, and asking the driver from this thread
+        // would be a round trip through the render thread's queue: the check runs there, without
+        // blocking, and the previous answer is returned meanwhile, which a flare cannot tell apart.
+        if (!st->checking.exchange(true)) {
+            const GLuint q = gl;
+            std::shared_ptr<State> state = st;
+            gq::call([q, state] {
+                GLuint avail = 0;
+                glGetQueryObjectuiv(q, GL_QUERY_RESULT_AVAILABLE, &avail);
+                if (avail) {
+                    GLuint r = 0;
+                    glGetQueryObjectuiv(q, GL_QUERY_RESULT, &r);
+                    state->lastResult.store(r ? 256 : 0);  // Direct3D reports a pixel count; the boolean query stands in
+                }
+                state->checking.store(false);
+            });
+        }
+        if (out && size >= 4) *static_cast<DWORD*>(out) = st->lastResult.load();
         return S_OK;
     }
 };
@@ -703,7 +534,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     bool skipDraw();
     bool dumpFrameWanted();
     void saveScreenshot();
-    void setSwapInterval(int i) { if (w32::fbdevGl()) fb::setSwapInterval(i); else SDL_GL_SetSwapInterval(i); }
+    void setSwapInterval(int i) { gq::call([i] { if (w32::fbdevGl()) fb::setSwapInterval(i); else SDL_GL_SetSwapInterval(i); }); }
     bool es32 = false;
     // the back buffer
     GLuint mainFbo = 0, mainColor = 0, mainDepth = 0;
@@ -1061,6 +892,10 @@ HRESULT STDMETHODCALLTYPE SwapChain::GetPresentParameters(D3DPRESENT_PARAMETERS*
 
 // ---- Device: setup ----
 Device::~Device() {
+    if (gq::enabled()) {
+        gq::stop();
+        if (w32::fbdevGl()) fb::makeCurrent(); else SDL_GL_MakeCurrent(window, context);
+    }
     for (auto& [k, f] : fbos) glDeleteFramebuffers(1, &f);
     for (auto& [k, p] : programs) glDeleteProgram(p.gl);
     destroyBackBuffer();
@@ -1089,6 +924,14 @@ bool Device::init(HWND hwnd) {
         SDL_GL_MakeCurrent(window, context);
     }
     if (!loadGl()) { log("gles: the driver lacks an OpenGL ES 3.0 entry point"); return false; }
+    {   // the render thread owns the context from here on (every gl* below is a queued wrapper)
+        const bool fbdev = w32::fbdevGl();
+        if (fbdev) fb::releaseCurrent(); else SDL_GL_MakeCurrent(window, nullptr);
+        const bool threaded = gq::start(
+            [this, fbdev] { return fbdev ? fb::makeCurrent() : SDL_GL_MakeCurrent(window, context) == 0; },
+            [this, fbdev] { if (fbdev) fb::releaseCurrent(); else SDL_GL_MakeCurrent(window, nullptr); });
+        if (!threaded) { if (fbdev) fb::makeCurrent(); else SDL_GL_MakeCurrent(window, context); }
+    }
     setSwapInterval(pp.PresentationInterval == D3DPRESENT_INTERVAL_IMMEDIATE ? 0 : 1);
     const char* ver = reinterpret_cast<const char*>(glGetString(GL_VERSION));
     log("gles: %s | %s", ver ? ver : "?", reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
@@ -1139,7 +982,7 @@ bool Device::createBackBuffer() {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mainDepth);
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) { log("gles: back buffer framebuffer incomplete"); return false; }
     msaaSamples = 0, msaaDirty = false;
-    if (pp.MultiSampleType >= 2 && glRenderbufferStorageMultisample) {
+    if (pp.MultiSampleType >= 2 && real::glRenderbufferStorageMultisample) {
         GLint maxSamples = 0;
         glGetIntegerv(GL_MAX_SAMPLES, &maxSamples);
         const int want = std::min<int>(static_cast<int>(pp.MultiSampleType), maxSamples);
@@ -2259,7 +2102,7 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
     drawOverlay();
     // the depth/stencil of the frame is not needed after this: tell the tiler not to write it
     // back (the next frame clears it)
-    if (glInvalidateFramebuffer) {
+    if (real::glInvalidateFramebuffer) {
         static const GLenum ds[] = {GL_DEPTH_ATTACHMENT, GL_STENCIL_ATTACHMENT};
         glBindFramebuffer(GL_FRAMEBUFFER, msaaSamples ? msaaFbo : mainFbo);
         glInvalidateFramebuffer(GL_FRAMEBUFFER, 2, ds);
@@ -2271,39 +2114,47 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         glDisable(GL_SCISSOR_TEST);
         glBlitFramebuffer(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), 0, wh, ww, 0, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     }
-    {
+    gq::call([this] {  // on the render thread: the swap (vsync wait, if any) is its time, not the game's
         const uint64_t ts = nowNs();
         if (w32::fbdevGl()) fb::swap(); else SDL_GL_SwapWindow(window);
-        g_nsSwap += nowNs() - ts;
-    }
+        g_nsSwapRender.store(nowNs() - ts);
+    });
     ++frames;
     {
         const uint64_t t1 = nowNs();
         g_nsGl += t1 - t0;
         frameMs = lastPresentNs ? (t1 - lastPresentNs) / 1e6 : 0;
         glMs = g_nsGl / 1e6;
-        swapMs = g_nsSwap / 1e6, uploadMs = g_nsUpload / 1e6;
+        swapMs = (gq::enabled() ? g_nsSwapRender.load() : g_nsSwap) / 1e6, uploadMs = g_nsUpload / 1e6;
         g_nsGl = g_nsSwap = g_nsUpload = 0;
         lastPresentNs = t1;
     }
     if (host::g_logLevel >= 1 && (frames % 120 == 1 || getenv("FABLE_GLES_DUMP"))) {
-        unsigned char px[4] = {0, 0, 0, 0};
-        glBindFramebuffer(GL_READ_FRAMEBUFFER, mainFbo);
-        glReadPixels(static_cast<GLint>(pp.BackBufferWidth / 2), static_cast<GLint>(pp.BackBufferHeight / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
-        log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms of which gl %.1f (swap %.1f, uploads %.1f)", frames, statDraws, statClears, static_cast<unsigned>(programs.size()), px[0], px[1], px[2], px[3], ww, wh, frameMs, glMs, swapMs, uploadMs);
-        if (const char* dir = getenv("FABLE_GLES_DUMP")) {
-            std::vector<unsigned char> buf(static_cast<size_t>(pp.BackBufferWidth) * pp.BackBufferHeight * 4);
-            glReadPixels(0, 0, static_cast<GLint>(pp.BackBufferWidth), static_cast<GLint>(pp.BackBufferHeight), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
-            char name[512];
-            snprintf(name, sizeof name, "%s/frame_%05u.ppm", dir, frames);
-            if (FILE* f = fopen(name, "wb")) {
-                fprintf(f, "P6\n%u %u\n255\n", pp.BackBufferWidth, pp.BackBufferHeight);
-                for (UINT y = 0; y < pp.BackBufferHeight; ++y)
-                    for (UINT x = 0; x < pp.BackBufferWidth; ++x) fwrite(&buf[(static_cast<size_t>(y) * pp.BackBufferWidth + x) * 4], 1, 3, f);
-                fclose(f);
+        // the readback runs on the render thread (a round trip here would stall the overlap)
+        const unsigned fr = frames, draws = statDraws, clears = statClears, progs = static_cast<unsigned>(programs.size());
+        const double fMs = frameMs, gMs = glMs, sMs = swapMs, uMs = uploadMs, rMs = gq::renderMs(), wMs = gq::waitMs();
+        const UINT bw = pp.BackBufferWidth, bh = pp.BackBufferHeight;
+        const GLuint fbo = mainFbo;
+        gq::call([=] {
+            unsigned char px[4] = {0, 0, 0, 0};
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo);
+            glReadPixels(static_cast<GLint>(bw / 2), static_cast<GLint>(bh / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
+            log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f", fr, draws, clears, progs, px[0], px[1], px[2], px[3], ww, wh, fMs, gMs, sMs, uMs, rMs, wMs);
+            if (const char* dir = getenv("FABLE_GLES_DUMP")) {
+                std::vector<unsigned char> buf(static_cast<size_t>(bw) * bh * 4);
+                glReadPixels(0, 0, static_cast<GLint>(bw), static_cast<GLint>(bh), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
+                char name[512];
+                snprintf(name, sizeof name, "%s/frame_%05u.ppm", dir, fr);
+                if (FILE* f = fopen(name, "wb")) {
+                    fprintf(f, "P6\n%u %u\n255\n", bw, bh);
+                    for (UINT y = 0; y < bh; ++y)
+                        for (UINT x = 0; x < bw; ++x) fwrite(&buf[(static_cast<size_t>(y) * bw + x) * 4], 1, 3, f);
+                    fclose(f);
+                }
             }
-        }
+        });
     }
+    gq::frameEnd();  // at most one frame unreplayed: this frame's replay overlaps the next frame's game work
     statDraws = statClears = 0;
     boundFbo = ~0u;
     glStateUnknown();

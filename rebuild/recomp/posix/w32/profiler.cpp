@@ -125,6 +125,20 @@ void report() {
     for (auto& [k, v] : hist) top.push_back({v, k});
     std::sort(top.begin(), top.end(), [](auto& a, auto& b) { return a.first > b.first; });
     host::log("profile: %zu samples (%u guest, %u host) over the last window, %llu in all", n, guest, host, static_cast<unsigned long long>(g_total.load()));
+    {   // per-module totals: a stripped library's samples are spread over its addresses and never reach the top list
+        std::map<std::string, unsigned> mod;
+        for (auto& [k, v] : hist) {
+            std::string m = k.substr(0, k.find_first_of("!+"));
+            if (m.rfind("guest", 0) == 0) m = "guest";
+            mod[m] += v;
+        }
+        std::vector<std::pair<unsigned, std::string>> ms;
+        for (auto& [k, v] : mod) ms.push_back({v, k});
+        std::sort(ms.begin(), ms.end(), [](auto& a, auto& b) { return a.first > b.first; });
+        std::string line;
+        for (size_t i = 0; i < ms.size() && i < 10; ++i) { char b[96]; std::snprintf(b, sizeof b, "%s%s %.1f%%", i ? ", " : "", ms[i].second.c_str(), 100.0 * ms[i].first / n); line += b; }
+        host::log("profile: by module: %s", line.c_str());
+    }
     for (size_t i = 0; i < top.size() && i < 60; ++i)
         host::log("profile: %5.1f%% %s (%u)", 100.0 * top[i].first / n, top[i].second.c_str(), top[i].first);
     g_head.store(0);

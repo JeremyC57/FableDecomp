@@ -321,6 +321,13 @@ void swap() {
     if (g_var.yres_virtual >= g_var.yres * 2 && std::getenv("FABLE_FB_PAN")) ioctl(g_fbFd, FBIOPAN_DISPLAY, &g_var);
 }
 
+// The render thread takes the context over: the creating thread releases it first.
+void releaseCurrent() { if (g_display != EGL_NO_DISPLAY) p_eglMakeCurrent(g_display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT); }
+bool makeCurrent() {
+    if (g_display == EGL_NO_DISPLAY || g_context == EGL_NO_CONTEXT) return false;
+    if (!p_eglMakeCurrent(g_display, g_surface, g_surface, g_context)) { log("gles: eglMakeCurrent on the render thread failed (0x%X)", p_eglGetError()); return false; }
+    return true;
+}
 void setSwapInterval(int interval) {
     if (g_display != EGL_NO_DISPLAY && !g_copy) p_eglSwapInterval(g_display, interval);
 }

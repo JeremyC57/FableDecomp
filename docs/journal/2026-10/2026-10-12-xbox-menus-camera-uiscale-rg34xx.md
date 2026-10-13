@@ -319,3 +319,34 @@ submission in the Mali driver), ~27 ms game. The pause menu itself costs ~22 ms 
   declaration is cached per FVF value instead of being rebuilt (and its VAOs dropped) on
   every SetFVF. Diagnostics: `FABLE_GLES_NOVAO=1`, `FABLE_GLES_NOSHADOW=1`. Verified on
   the harness with both on: the Oakvale grass is back (v14 package and APK).
+
+### Fourth device log (v14) and the render thread
+Gameplay in Oakvale: 680-820 draws per frame at 47-70 ms, 1220 draws at 115 ms. GL time
+is linear in the draw count at ~35 us per draw whatever the scene (the Mali blob's CPU
+cost per draw call on the A53, not the GPU), the game's own share 30-70 ms. The profile is
+flat: half the samples in the guest spread over hundreds of functions (animation, the GUI,
+the landscape, the audio DSP's FFT and convolution run on the main thread), the hash
+lookup 4.8-7.5 %, the COM trap layer 2-3 %, memcpy ~3 %, Mali's own code appears only as
+a per-address tail (the profiler now prints per-module totals so a stripped library's cost
+is visible). Levers taken, all visually neutral:
+- **Render thread** (`gles/gl_queue.*`, `gen_gl_queue.py`): every gl* the renderer calls is
+  a generated wrapper that records the call (arguments, and a copy of any data it reads)
+  into a ring the render thread replays on the context it owns. Calls whose result the
+  game thread needs (glGet*, glCreate*, glCheckFramebufferStatus, glReadPixels) round-trip
+  with a Sync; glGen* names come from a pool refilled 64 at a time; host work that must
+  run on the context (the swap, the frame readback and log line, eglSwapInterval, the
+  occlusion-query check) is queued as a function. Present records a frame boundary and
+  the game thread waits until at most one frame is unreplayed, so a frame costs
+  max(game, driver) instead of their sum (4 cores on the H700; one was busy before).
+  `FABLE_GLES_THREAD=0` turns it off, `FABLE_GLES_QUEUE_FRAMES` sets the frames in flight,
+  the frame log line shows "render thread N ms, waited M ms".
+- **Hash lookups**: `callImpl` (host -> guest calls, the menu wraps) caches the lookup per
+  target; the lifter gives the 522 direct calls to unlifted targets and the unresolved
+  indirect jumps an inline cache (`RECOMP_ICALL`) instead of `recomp_dispatch`.
+- **Profile creation error** (user report, screenshot): the game only probes
+  `Documents\My Games\Fable\Saves\Default` (the installer creates it on Windows) and
+  reports "error creating the profile, check your disk space" when it is missing; the host
+  creates the tree when the Documents folder is resolved, and Fable.sh too.
+- **`restrict` on the lifted functions' context pointer**: lets the compiler keep the
+  emulated x87 stack and control word in registers across guest memory writes (a guest
+  store can alias nothing in the Ctx). Measured on the harness; see below.

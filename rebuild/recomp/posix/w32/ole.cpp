@@ -120,6 +120,12 @@ HRESULT WINAPI SHGetFolderPathW(HWND, int csidl, HANDLE, DWORD, LPWSTR out) {
     mkdir(dataDir().c_str(), 0755);
     path += "/" + sub;
     mkdir(path.c_str(), 0755);
+    if ((csidl & 0xFF) == CSIDL_PERSONAL) {
+        // The game only probes "My Games\Fable\Saves\Default" (the installer makes it on
+        // Windows) and reports "error creating the profile" when it is missing: make it here.
+        std::string p = path;
+        for (const char* part : {"My Games", "Fable", "Saves", "Default"}) { p += "/"; p += part; mkdir(p.c_str(), 0755); }
+    }
     const wstr w = toWindowsPath(path);
     const size_t n = std::min<size_t>(w.size(), MAX_PATH - 1);
     for (size_t i = 0; i < n; ++i) out[i] = w[i];

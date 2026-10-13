@@ -482,7 +482,13 @@ static uint32_t callImpl(uint32_t fn, bool hasThis, uint32_t thisPtr, std::initi
     wr32(esp, kReturnSentinel);
     c->esp = esp;
     if (hasThis) c->ecx = thisPtr;
-    recomp_dispatch(c, fn);
+    {   // the same few targets are called over and over (menu wraps): a small direct-mapped cache in front of the hash
+        struct Slot { uint32_t addr; GuestFn f; };
+        static Slot cache[256];
+        Slot& s = cache[(fn >> 4) & 255];
+        if (s.addr != fn || !s.f) { s.f = recomp_lookup(fn); s.addr = fn; }
+        if (s.f) s.f(c); else recomp_dispatch(c, fn);
+    }
     const uint32_t result = c->eax;
     const X87 fpu = c->fpu;
     *c = saved;
