@@ -97,8 +97,16 @@ user's original game folder; no retail bytes or generated code are in git.
     table. Vsync off by default on the handheld (`FABLE_VSYNC`, menu: off/on/half).
     Guest time is flat across the engine (no single hot function); GL time is the Mali
     driver's per-draw cost (~20-30 ms at 500-1000 draws) plus DXT decoded to RGBA8 on the
-    CPU. Next levers: ETC2/ASTC transcode cache for textures, fewer draws (the game's
-    own LOD/draw distance), the x87 emulation (`fprec` per op).
+    CPU. **30 fps round (v14)**: `_ftol2` hooked on the host (`host_ftol2`, 2004 call
+    sites); the renderer caches one vertex array object per layout (declaration, shader,
+    program, buffers, offsets) and shadows the GL state it last issued, so a draw costs a
+    VAO bind plus the states that differ instead of ~40 calls. Buffer uploads go through
+    GL_COPY_WRITE_BUFFER (binding an index buffer to the element target would replace the
+    bound VAO's element buffer: that was the white-terrain regression). Diagnostics
+    `FABLE_GLES_NOVAO=1` / `FABLE_GLES_NOSHADOW=1`. ThinLTO for the lifted code
+    (`FABLE_GEN_LTO`) measured no gain and stays off. Next levers: ETC2/ASTC transcode
+    cache for textures, fewer draws (the game's own LOD/draw distance), the x87 emulation
+    (`fprec` per op), the GUI component update cost in menus (~22 ms CPU).
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).
