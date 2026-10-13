@@ -350,3 +350,9 @@ is visible). Levers taken, all visually neutral:
 - **`restrict` on the lifted functions' context pointer**: lets the compiler keep the
   emulated x87 stack and control word in registers across guest memory writes (a guest
   store can alias nothing in the Ctx). Measured on the harness; see below.
+- Verified on the harness (v15 package and APK): the threaded renderer draws the front end
+  and Oakvale exactly as before; under llvmpipe the render thread is the bottleneck
+  (80-90 ms per gameplay frame of software rasterising) and the game thread's own share
+  is 14 ms, so the overlap is visible there as the game thread waiting. The first build
+  crashed at exit (exit() with the thread alive destroyed its statics under it; now an
+  exit hook stops it).
