@@ -42,7 +42,7 @@ uint32_t ticks() {
 enum Item { RESUME, GRAPHICS, VOLUME, FPS, STATS, LOGLEVEL, SCREENSHOT, EXIT, COUNT };
 // the graphics page: the game's own Video Options (resolution, refresh rate, anti-aliasing,
 // aspect ratio, the detail levels, brightness, vsync) plus direct levers on the engine
-enum GfxItem { G_RES, G_REFRESH, G_AA, G_ASPECT, G_LANDSCAPE, G_MODEL, G_TEXTURE, G_SHADOW, G_EFFECTS, G_BRIGHT, G_VSYNC, G_DRAW, G_GLOW, G_WATER, G_WEATHER, G_BACK, G_COUNT };
+enum GfxItem { G_RES, G_REFRESH, G_AA, G_ASPECT, G_LANDSCAPE, G_MODEL, G_TEXTURE, G_SHADOW, G_EFFECTS, G_BRIGHT, G_VSYNC, G_FPS, G_DRAW, G_GLOW, G_WATER, G_WEATHER, G_BACK, G_COUNT };
 int g_page = 0;  // 0: main, 1: graphics
 std::string onOff(bool b) { return b ? "on" : "off"; }
 std::string resolutionText(int scale) {
@@ -66,6 +66,7 @@ std::string gfxLabel(int i) {
         case G_EFFECTS: return std::string("Effects detail: ") + qualityName(s.effects) + "  (left/right)";
         case G_BRIGHT: return "Brightness: " + std::to_string(s.brightness) + "  (left/right)";
         case G_VSYNC: return std::string("Vertical sync: ") + (s.vsync == 0 ? "off" : s.vsync == 1 ? "on" : "half (30 fps lock)");
+        case G_FPS: return std::string("Frame rate cap: ") + (s.fpsCap ? std::to_string(s.fpsCap) + " fps" : "off") + "  (left/right)";
         case G_DRAW: return "Draw distance: " + std::to_string(s.drawDistance) + "%  (left/right)";
         case G_GLOW: return "Glow / bloom: " + onOff(s.glow);
         case G_WATER: return "Water reflections: " + onOff(s.water);
@@ -96,6 +97,7 @@ void gfxChange(int i, int dir) {  // dir: -1 left, +1 right, 0 select
         case G_EFFECTS: s.effects = cycleQ(s.effects, dir); break;
         case G_BRIGHT: s.brightness = std::clamp(s.brightness + (dir ? dir : 1) * 10, 0, 100); break;
         case G_VSYNC: s.vsync = stepList(vsyncs, s.vsync, dir); break;
+        case G_FPS: { static const int caps[] = {0, 20, 25, 30, 40, 60}; s.fpsCap = stepList(caps, s.fpsCap, dir); break; }
         case G_DRAW: s.drawDistance = std::clamp(s.drawDistance + (dir ? dir : 1) * 10, 30, 150); break;
         case G_GLOW: s.glow = !s.glow; break;
         case G_WATER: s.water = !s.water; break;

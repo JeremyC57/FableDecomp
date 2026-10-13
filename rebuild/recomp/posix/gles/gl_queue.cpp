@@ -79,8 +79,11 @@ void threadMain() {
         if (tail == head) {
             if (g_stop.load()) break;
             // spin briefly (the producer is usually about to add more), then sleep
+            // a short spin (the producer is usually about to add more), then sleep: sched_yield in
+            // a loop burned a core (15 % of the device's samples) and the battery
             bool got = false;
-            for (int i = 0; i < 2000 && !got; ++i) { got = g_head.load(std::memory_order_acquire) != tail; if (!got) std::this_thread::yield(); }
+            const uint64_t spinUntil = nowNs() + 50000;
+            while (!got && nowNs() < spinUntil) got = g_head.load(std::memory_order_acquire) != tail;
             if (!got) {
                 g_consumerIdle.store(true, std::memory_order_release);
                 std::unique_lock<std::mutex> lk(g_mutex);
@@ -139,7 +142,8 @@ void signal(Sync& s) {
 }
 
 void wait(Sync& s) {
-    for (int i = 0; i < 20000; ++i) { if (s.done.load(std::memory_order_acquire)) return; std::this_thread::yield(); }
+    const uint64_t spinUntil = nowNs() + 100000;
+    while (nowNs() < spinUntil) if (s.done.load(std::memory_order_acquire)) return;
     std::unique_lock<std::mutex> lk(g_mutex);
     g_cvSync.wait(lk, [&] { return s.done.load(std::memory_order_acquire) != 0; });
 }

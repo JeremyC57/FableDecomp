@@ -497,15 +497,34 @@ extern "C" void host_ui_scale(Ctx* c) {
 // the screen is still there, as CTCInventory's virtual 30 (0x58578B: UI_TOP_LEVEL_MENU_SCREEN,
 // the Xbox inventory/hero screens; OpenPCInventory builds PC_TOP_LEVEL_LIST).
 extern "C" void F_0058F649_orig(Ctx* c);
+namespace { uint32_t g_xboxInventory = 0; }  // the CTCInventory whose Xbox screens are up
 extern "C" void host_open_inventory(Ctx* c) {
     const uint32_t inv = c->ecx, xbox = rd32(rd32(inv) + 0x78);
     HLOG(1, "menu: inventory 0x%08X opens %s", inv, xboxMenus() ? "the Xbox screens" : "the PC menu");
+    g_xboxInventory = xboxMenus() ? inv : 0;
     if (xboxMenus()) {
         guestCallThis(xbox, inv, {});
         c->esp += 4;
         return;
     }
     F_0058F649_orig(c);
+}
+
+// 0x591E5E CTCInventory::ConstructScreenPC(CComponent* category): the UI manager's select
+// handler (0x4200AB) calls this PC virtual when the player GUI's byte +0x2BE is set, and the
+// Xbox one (virtual +0x134, 0x5907A6 -> CTCInventory::GetItemsListUIComponent, 0x590235)
+// otherwise. With the Xbox screens up the PC version gets the Xbox category component and
+// crashes building the PC list (device log: A on a category); the Xbox builder takes it.
+extern "C" void F_00591E5E_orig(Ctx* c);
+extern "C" void host_inventory_screen(Ctx* c) {
+    const uint32_t inv = c->ecx, category = rd32(c->esp + 4);
+    if (g_xboxInventory && inv == g_xboxInventory) {
+        HLOG(1, "menu: category 0x%08X selected in the Xbox inventory: the Xbox items list", category);
+        guestCallThis(0x590235, inv, {category});
+        c->esp += 8;  // ret 4
+        return;
+    }
+    F_00591E5E_orig(c);
 }
 
 // 0x47E196 CTCInGameMenu::SaveGame(int slot): after writing the files it re-registers the PC

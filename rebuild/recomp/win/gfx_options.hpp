@@ -29,6 +29,7 @@ struct Settings {
     int landscape = NORMAL, model = NORMAL, texture = NORMAL, shadow = NORMAL, effects = NORMAL;  // Quality
     int brightness = 50;        // 0..100, 50 = neutral (a gamma ramp: the GLES present pass, SetGammaRamp on Direct3D)
     int vsync = 1;              // swap interval: 0 off, 1 every refresh, 2 every second (a 30 fps lock at 60 Hz)
+    int fpsCap = 0;             // frames per second the game thread is held to (0 = none): steadier pacing, less heat and battery on the handheld
     // direct levers on the engine's video option defs
     int drawDistance = 100;     // percent of the def's draw distance (30..150)
     bool glow = true;           // false: the glow/bloom chain is off (def EnableGlow) and its passes are skipped

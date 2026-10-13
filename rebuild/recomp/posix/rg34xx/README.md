@@ -50,7 +50,9 @@ Fable/            its files, in the folder of the same name next to it
   `FABLE_GLES_NOVAO=1` (one vertex array object, attributes re-specified every draw) and
   `FABLE_GLES_NOSHADOW=1` (every render state re-issued whenever one changes). The GL
   calls are replayed by a render thread (`FABLE_GLES_THREAD=0` runs them on the game
-  thread; `FABLE_GLES_QUEUE_FRAMES=N` allows N frames in flight, default 1).
+  thread; `FABLE_GLES_QUEUE_FRAMES=N` allows N frames in flight, default 1). The graphics
+  page's "Frame rate cap" (`fps_cap`, 30 by default here) holds the game to that rate: a
+  steadier pace and less heat and battery than running the menus at 60.
 - **GLES scope.** What the game uses on the PC, per a Direct3D call census: vs_1_1 and
   ps_1_1/1_4 shaders (translated to GLSL ES 3.00), the fixed-function pixel pipeline,
   pre-transformed UI quads, DXT1/3/5 textures (decoded on the CPU; Mali has no S3TC),

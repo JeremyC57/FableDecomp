@@ -692,3 +692,16 @@ extern "C" void host_joystick_update(Ctx* c) {
     c->esp = savedEsp;
     retCdecl(c, 1);
 }
+
+// 0x6882F0 CInputProcessControlCreatureActivateZTargetOnPress::ProcessInput(const CInputEvent&,
+// CProcessedInput&): the toggle variant of the target lock. The game builds both variants
+// (0x4895CB / 0x489607) and registers the toggle one from the profile's ToggleZTarget, which a
+// loaded profile can set again after host_primary_inputs cleared it. With HOLD_TARGET the
+// toggle object's handler is the hold variant's (0x688260, same layout: both are
+// CInputProcessGameBase of 0x28 bytes), so the lock holds only while the trigger is down.
+extern "C" void F_006882F0_orig(Ctx* c);
+extern "C" void F_00688260(Ctx* c);
+extern "C" void host_ztarget_press(Ctx* c) {
+    if (host::pad::holdTargetEnabled()) F_00688260(c);
+    else F_006882F0_orig(c);
+}

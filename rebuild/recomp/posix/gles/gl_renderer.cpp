@@ -2156,6 +2156,13 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         });
     }
     gq::frameEnd();  // at most one frame unreplayed: this frame's replay overlaps the next frame's game work
+    if (const int cap = host::gfx::get().fpsCap) {  // hold the game thread to the cap: steadier pacing, idle cores sleep
+        static uint64_t next = 0;
+        const uint64_t now = nowNs(), period = 1000000000ull / static_cast<uint64_t>(cap);
+        if (!next || now > next + period) next = now;
+        next += period;
+        if (next > now) { const timespec ts = {static_cast<time_t>(next / 1000000000ull), static_cast<long>(next % 1000000000ull)}; clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &ts, nullptr); }
+    }
     statDraws = statClears = 0;
     boundFbo = ~0u;
     glStateUnknown();

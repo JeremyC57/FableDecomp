@@ -173,7 +173,8 @@ fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=h
     --wrap 0x55CB10=host_ui_event --wrap 0x58F649=host_open_inventory --wrap 0x41CF47=host_ui_scale \
     --wrap 0x69AC90=host_camera_set --wrap 0x533D30=host_component_size --wrap 0xB24690=host_video_options \
     --wrap 0x47E196=host_save_game --wrap 0x54EF00=host_text_draw \
-    --wrap 0x52FFD0=host_update_position --hook 0xBFEA70=host_ftol2
+    --wrap 0x52FFD0=host_update_position --hook 0xBFEA70=host_ftol2 \
+    --wrap 0x6882F0=host_ztarget_press --wrap 0x591E5E=host_inventory_screen
 # coroutine switch -> host fibers; native Xbox pad (controller.cpp); UI scale (ui_scale.cpp);
 # host graphics settings (gfx_options.cpp, --wrap 0xB24690=host_video_options); the Xbox
 # pause menu's Hero Save (menu_nav.cpp, host_save_game: a stand-in for the PC menu object);

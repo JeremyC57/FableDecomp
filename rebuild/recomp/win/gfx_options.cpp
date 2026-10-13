@@ -63,6 +63,7 @@ void parseLine(const char* line, Settings& s) {
     else if (std::sscanf(line, "aspect_ratio=%d", &v) == 1) s.aspect = std::clamp(v, 0, ASPECT_COUNT - 1);
     else if (std::sscanf(line, "brightness=%d", &v) == 1) s.brightness = std::clamp(v, 0, 100);
     else if (std::sscanf(line, "vsync=%d", &v) == 1) s.vsync = std::clamp(v, 0, 2);
+    else if (std::sscanf(line, "fps_cap=%d", &v) == 1) s.fpsCap = v > 0 ? std::clamp(v, 15, 240) : 0;
     else if (std::sscanf(line, "landscape_detail=%d", &v) == 1) s.landscape = clampQ(v);
     else if (std::sscanf(line, "model_detail=%d", &v) == 1) s.model = clampQ(v);
     else if (std::sscanf(line, "texture_detail=%d", &v) == 1) s.texture = clampQ(v);
@@ -78,9 +79,9 @@ void save() {
     if (FILE* f = std::fopen(path().c_str(), "w")) {
         const Settings& s = g_settings;
         std::fprintf(f, "resolution_scale=%d\nrefresh_rate=%d\nantialiasing=%d\naspect_ratio=%d\nlandscape_detail=%d\nmodel_detail=%d\ntexture_detail=%d\n"
-                        "shadow_quality=%d\neffects_quality=%d\nbrightness=%d\nvsync=%d\ndraw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\n",
+                        "shadow_quality=%d\neffects_quality=%d\nbrightness=%d\nvsync=%d\ndraw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\nfps_cap=%d\n",
                      s.resolutionScale, s.refreshRate, s.antialiasing, s.aspect, s.landscape, s.model, s.texture, s.shadow, s.effects, s.brightness, s.vsync,
-                     s.drawDistance, s.glow ? 1 : 0, s.water ? 1 : 0, s.weather ? 1 : 0);
+                     s.drawDistance, s.glow ? 1 : 0, s.water ? 1 : 0, s.weather ? 1 : 0, s.fpsCap);
         std::fclose(f);
     }
 }

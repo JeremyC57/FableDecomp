@@ -367,3 +367,31 @@ is visible). Levers taken, all visually neutral:
   but the game never destroyed the graph, no further frames, and SIGTERM did not end the
   process). Not reproduced since; `stall.sh` in the scratch area attaches gdb to a stalled
   run to capture every thread's backtrace next time.
+
+### Fifth device log (v15) and the user's Guild test
+Gameplay in the Guild: 41 ms frames, the render thread 27 ms of it hidden (waited 0): the
+game thread is now the whole frame. Module totals: guest 36-40 %, Mali 23-30 % (the render
+thread), libc 18-25 % (15 % of that `sched_yield`: the render thread's idle spin and the
+sync waits yielded in a loop; both now spin for 50-100 us on the clock and then sleep),
+runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the report:
+- **Inventory crash on A over a category** (crash log: `CTCInventory::ConstructScreenPC`
+  -> `GetItemsListUIComponentPC` -> `CDataBankGroupEntry::BuildGroup` -> a bad string).
+  The UI manager's select handler (0x4200AB) picks the PC virtual (+0x15C) when the player
+  GUI's byte +0x2BE is set and the Xbox one (+0x134 -> `CTCInventory::GetItemsListUIComponent`,
+  0x590235, still present) otherwise; with the Xbox screens up the PC builder got the Xbox
+  category component. `host_inventory_screen` (wrap 0x591E5E) calls the Xbox builder when
+  the Xbox inventory is open.
+- **Target lock toggling with HOLD_TARGET**: the game constructs both input processes
+  (hold: vtable 0x12375DC, on-press: 0x1237604) and registers the on-press one from the
+  profile's ToggleZTarget, which a loaded profile sets again after host_primary_inputs
+  cleared it. `host_ztarget_press` (wrap 0x6882F0) runs the hold variant's ProcessInput
+  (0x688260, same object layout) on the on-press object when HOLD_TARGET is on.
+- **Frame rate cap** (`fps_cap` in graphics.txt, "Frame rate cap" on the graphics page,
+  off/20/25/30/40/60; the handheld defaults to 30): the game thread sleeps out the rest of
+  the period after Present, so idle cores sleep instead of running 45-60 fps menus, for
+  steadier pacing, less heat and battery.
+- **Quest start / completion screens in PC format**: not fixable the way the inventory
+  was. `CTCQuestCompletionUI::ActivateReal` (0x5E5F30) builds the screen from PC_ components
+  only (PC_QUEST_COMPLETION_MENU_START/COMPLETE/FAIL/DEATH, PC_UI_QUEST_*_FRAME, ...); the
+  Xbox code for those screens is not in the PC executable, so an Xbox-style version would
+  be a new screen written in host code against the UI component system.
