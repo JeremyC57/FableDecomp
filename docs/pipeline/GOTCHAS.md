@@ -106,3 +106,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Ghidra 12.1 release asset is `ghidra_12.1_PUBLIC_20260513.zip`; the GitHub API is blocked from cloud sessions, so probe the download URL directly.
 - `LabelApply.java` accepts the whole manifest at once (57k rows, names with `::` and `<>`): 0 failures; it creates functions Ghidra's auto-analysis missed (12,660 on a fresh import).
 - A Linux cloud session can author and self-check candidates (g++ syntax, purity, header policy) but cannot grade parity: keep such batches under `rebuild/candidates/manual/batches/` until the VC7.1 box runs `verify_and_land.py`.
+- Wine lane: `cl.exe` 13.10.4035 (DDK 3790.1830) runs under wine32 and reproduces catalog MATCH rows; the DDK `<cXXX>` headers have no `namespace std` using-declarations (overlay shims), its CRT libs need `bufferoverflowu.lib` (`export LINK=bufferoverflowu.lib`), and the whole `lib/wnet/i386` tree is too big to sparse-checkout wholesale — name the four `.lib` files.
+- `pgrep -f '<pattern>'` inside a bash `until` loop matches the loop's own command line; use `pgrep -x <name>` when waiting for a process to exit.

@@ -42,6 +42,25 @@ Point Ghidra's Script Manager at this dir (Script Directories → add). Key scri
 - `ParsePdataInBlobs.java` / `DumpAllPdata.java` — exploit the `_PDATA` section for function bounds.
 - Probes: `WhatIs.java`, `NameAt.java`, `ReadStr.java`, `ReadMem.java`, `ListSyms.java`, `FindValueInData.java`.
 
+## Linux verification lane (Wine + DDK 3790.1830 compiler) — added 2026-10-13
+The parity oracle can run on a Linux host that has the retail `Fable.exe`: the VC7.1-family
+compiler build 13.10.4035 ships inside the Windows Server 2003 SP1 DDK (community mirror
+`github.com/9176324/WinDDK`, tree `3790.1830`), and `docs/pipeline/QFE4035_COMPILER_GATE.md`
+records that its code generation equals the RTM 13.10.3077 used for the landed catalog. Proven on
+2026-10-13: eight catalog `MATCH` functions re-graded `MATCH`/`PASS` through this lane.
+```
+apt-get install wine32:i386 wine binutils          # objdump must list pe-i386 (`objdump -i`)
+bash tools/decomp_pipeline/linux_lane/setup_vc71_wine.sh /path/to/lane   # ~700 MB sparse checkout
+source /path/to/lane/env.sh                        # FABLE_ROOT/FABLE_VC71/FABLE_OBJDUMP/FABLE_WINE, LINK=
+FABLE_EXE=/path/to/Fable.exe python tools/decomp_pipeline/crawl/next_smallest.py 16 batch
+python tools/decomp_pipeline/verify_and_land.py payload.json oracle.tsv [--land] [--recheck-landed]
+```
+Notes: the DDK's `<cstdio>`-style headers lack the `namespace std` using-declarations, so the
+setup overlays thin shims (`write_std_shims.py`); the DDK CRT libraries need
+`bufferoverflowu.lib` (set via the linker's `LINK` variable); Wine path spelling (`Z:\...`) is
+handled inside `verify_and_land.py` when `FABLE_WINE` is set. The toolset lives only in the lane
+directory and must never be committed.
+
 ## Live analysis (native — no cdb guest math needed)
 - **x64dbg** (32-bit `x32dbg`) or WinDbg to breakpoint engine functions and confirm signatures live.
 - **FSE Lua probes** — fastest dynamic check: write a small quest/entity Lua (via FSE or FQT) that
