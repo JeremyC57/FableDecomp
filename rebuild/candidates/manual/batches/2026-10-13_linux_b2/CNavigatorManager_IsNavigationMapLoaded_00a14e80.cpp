@@ -7,7 +7,8 @@
 // Walks the std::list<CNavQuadTreeMap> (PDB: CNavQuadTreeMap = {CCountedPointer<CNavQuadTree>
 // PQuadTree (8 bytes), long Index}) looking for a loaded quad tree with the requested map index.
 // Retail keeps the list head pointer at +0x24 where engine/CNavigatorManager.h (Ego_r.pdb) has the
-// list at +0x30: the shipped manager is 0xC bytes smaller before it, hence the retail-offset view.
+// list at +0x30: three std containers precede it and each is 4 bytes smaller in the shipped
+// build, hence the retail-offset view.
 
 struct CNavQuadTreeMapNode {
     CNavQuadTreeMapNode* Next;          // +0x00

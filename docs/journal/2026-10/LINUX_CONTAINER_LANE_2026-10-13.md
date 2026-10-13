@@ -28,6 +28,9 @@ Session on branch `FullDecomp` (head `8d6ce97c` at start) in a cloud Linux conta
   CTCInventory, CLandscapeBackgroundTreeNode, CNavigatorManager, CQuestManager) that the generated
   headers do not yet reflect, and one relabel (0x00CACBE0 is a `__stdcall` COM AddRef helper).
 
+- `rebuild/candidates/manual/batches/2026-10-13_linux_b3/` — 23 more (same selection rule); 46 TUs
+  pass the three checks.
+
 ## Findings worth keeping
 
 - Seven of the smallest unlanded "families" are not what their labels say. The 747 bodies labelled
@@ -44,10 +47,14 @@ Session on branch `FullDecomp` (head `8d6ce97c` at start) in a cloud Linux conta
   TotalCountValid, RenderMaskValid) up the `Parent` chain, stopping at the first already-invalid cell.
 - `CThing` +0x48 is `CVectorMap<ETCInterfaceType,CTCBase*> Components` (PDB), so the body labelled
   `CThing::GetPBaseDef` at 0x007334B0 (reads +0x48 as a ref-counted pointer) is mislabelled; skipped.
-- Retail `CBankFile` lacks the editor-only `UpdateData` CArray (+0x38) and `SymbolCRCIndices`
-  (+0xEC) of Ego_r.pdb: Alignment is at +0x98, HeaderSize/FileInformationSize/FileSize at
-  +0xA0/+0xA4/+0xA8, ProgressCallback/WarningFlag at +0xEC/+0xF4. `engine/CBankFile.h` is therefore
-  wrong for the shipped binary from +0x38 on; `gen_class_headers.py` needs a retail override.
+- **Container-size rule.** Every std container (`std::vector`, `CArray`, `std::map`, `CVectorMap`,
+  `std::list`) is 4 bytes smaller in retail than in Ego_r.pdb, and a retail `std::vector` is
+  `{first, last, end}` with `first` at +0. Members move 4 bytes earlier per preceding container:
+  CBankFile (-0x10 from +0x48, -0x24 from +0x110), CTCHeroStats (-8), CTCInventory (-0x28),
+  CTCInventoryTrade (-0x2C), CNavigatorManager (-0xC), CQuestManager (-8), CTCCombat (-8 by
+  CurrentAbilityIndex), CTCTurncoat (-4), CTCCreatureGroupBoastingCrowd (-4). `gen_class_headers.py`
+  can derive retail layouts mechanically from this; until then the batch TUs carry `<Class>_Retail`
+  views. (Earlier wording in b2 blamed editor-only members; the rule above replaces it.)
 - Retail `CTCHeroStats` is 8 bytes smaller than the PDB from the money block on (Stamina +0x58,
   MaxStamina +0x5C, ExtraMaxStamina +0x90); `SetMaxStamina` clamps MaxStamina to
   ExtraMaxStamina+1 and Stamina to MaxStamina.

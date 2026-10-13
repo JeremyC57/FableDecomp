@@ -9,19 +9,24 @@ policy check.
 
 ## Retail-vs-PDB layout findings used here (each is stated in the file that relies on it)
 
-| Class | Retail offset evidence | Conclusion |
+Rule (confirmed across all seven classes, see `../2026-10-13_linux_b3/README.md`): every std
+container (`std::vector`, `CArray`, `std::map`, `CVectorMap`, `std::list`) is 4 bytes smaller in
+the shipped binary than in Ego_r.pdb, and a retail `std::vector` is `{first, last, end}` with
+`first` at +0. A member therefore sits 4 bytes earlier per container that precedes it.
+
+| Class | Retail offset evidence | Containers before it |
 |---|---|---|
-| `CBankFile` | Alignment +0x98, HeaderSize/FileInformationSize/FileSize +0xA0/+0xA4/+0xA8, BankFile_Data +0x7C, ProgressCallback/WarningFlag +0xEC/+0xF4 | shipped build lacks the editor-only `UpdateData` CArray (+0x38, 0x10 bytes) and `SymbolCRCIndices` (0x14 bytes before +0x110) |
-| `CTCHeroStats` | Stamina/MaxStamina/ExtraMaxStamina at +0x58/+0x5C/+0x90 | 8 bytes smaller than the PDB from the money block on |
-| `CTCInventoryTrade` | CategoryIdent +0x170 (PDB +0x19C) | 0x2C bytes smaller before it |
-| `CTCInventory` | ContextSensitiveFadeTimes vector at +0x160 (PDB +0x188) | 0x28 bytes smaller before it |
-| `CLandscapeBackgroundTreeNode` | SubNode +0xA0 (PDB +0xA8) | 8 bytes smaller before it |
-| `CNavigatorManager` | QuadTrees list +0x24 (PDB +0x30) | 0xC bytes smaller before it |
-| `CQuestManager` | RegisteredQuestNames vector +0x28 (PDB +0x34) | 0xC bytes smaller before it |
+| `CBankFile` | Alignment +0x98, HeaderSize/FileInformationSize/FileSize +0xA0/+0xA4/+0xA8, BankFile_Data +0x7C, ProgressCallback/WarningFlag +0xEC/+0xF4 | 4 CArrays before +0x48 (-0x10); 3 maps + CVectorMap + CArray before +0x110 (-0x24) |
+| `CTCHeroStats` | Stamina/MaxStamina/ExtraMaxStamina at +0x58/+0x5C/+0x90 | OutstandingCrimes map, ExperienceSpentOn vector (-8) |
+| `CTCInventoryTrade` | CategoryIdent +0x170 (PDB +0x19C) | eleven (-0x2C) |
+| `CTCInventory` | ContextSensitiveFadeTimes vector at +0x160 (PDB +0x188) | ten (-0x28) |
+| `CLandscapeBackgroundTreeNode` | SubNode +0xA0 (PDB +0xA8) | two inside LODLoadInfo (-8) |
+| `CNavigatorManager` | QuadTrees list +0x24 (PDB +0x30) | three (-0xC) |
+| `CQuestManager` | RegisteredQuestNames vector +0x2C (PDB +0x34) | two inside RuntimeQuestPersistence (-8) |
 
 Where a retail layout disagrees with the generated header the TU declares a `<Class>_Retail`
-view at the retail offsets instead of including the header; `gen_class_headers.py` should pick
-these up as reconciliation evidence once the batch lands.
+view at the retail offsets instead of including the header; `gen_class_headers.py` should apply
+the rule above as a retail override once the batch lands.
 
 ## Relabelled
 

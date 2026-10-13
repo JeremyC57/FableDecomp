@@ -7,8 +7,8 @@
 // Returns the sub-node when it is a split branch (virtual slot 4 answers false), else null.
 
 // Retail CLandscapeBackgroundTreeNode keeps SubNode at +0xA0 where engine/CLandscapeBackgroundTreeNode.h
-// (Ego_r.pdb) has AsyncLoadTask (+0xA0) / SubNode (+0xA8): the shipped node is 8 bytes smaller
-// before that member, so a retail-offset view is declared here.
+// (Ego_r.pdb) has AsyncLoadTask (+0xA0) / SubNode (+0xA8): two std containers inside the preceding
+// members are each 4 bytes smaller in the shipped build, so a retail-offset view is declared here.
 struct CLandscapeBackgroundSubNodeVirtuals {
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
     virtual bool IsPatch();            // slot 4 (+0x10): true for a leaf patch, false for a split branch

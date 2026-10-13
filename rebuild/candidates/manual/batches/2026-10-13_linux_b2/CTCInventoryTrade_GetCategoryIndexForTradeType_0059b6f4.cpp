@@ -6,8 +6,8 @@
 // Retail bytes:  mov ecx,[ecx+170h] ; xor eax,eax ; L: cmp [eax*8+0137CCDCh],ecx ; je F ; inc eax ; cmp eax,2 ; jl L ; or eax,-1 ; ret ; F: mov eax,[eax*8+0137CCE0h] ; ret
 // Looks the inventory screen's CategoryIdent up in a two-row {ident, index} table in .data at
 // 0x0137CCDC: {11 -> 0, 12 -> 1}; anything else yields -1. Retail keeps CategoryIdent at +0x170
-// where engine/CTCInventoryTrade.h (Ego_r.pdb) has it at +0x19C: the shipped class is 0x2C bytes
-// smaller before that member, so a retail-offset view of `this` is declared here.
+// where engine/CTCInventoryTrade.h (Ego_r.pdb) has it at +0x19C: eleven std containers precede
+// it and each is 4 bytes smaller in the shipped build, so a retail-offset view is declared here.
 
 struct CTradeTypeCategory {
     long Ident;          // EInventoryCategoryIdentifier value

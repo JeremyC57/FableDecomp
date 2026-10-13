@@ -5,8 +5,8 @@
 //
 // Retail bytes:  mov eax,[esp+4] ; mov ecx,[ecx+160h] ; imul eax,eax,1Ch ; add ecx,eax ; cmp byte ptr [ecx],0 ; jne C ; fld [__real@1.0] ; jmp R ; C: call CFadeInFadeOutBase::GetAlpha ; R: ret 4
 // The 0x1C-byte elements are CFadeInFadeOutBase (engine header: +0x00 Active). Retail keeps the
-// ContextSensitiveFadeTimes vector's begin pointer at +0x160 (PDB +0x188: the shipped CTCInventory
-// is 0x28 bytes smaller before it). An inactive fader reads as fully opaque (1.0f, .rdata
+// ContextSensitiveFadeTimes vector (`first` at +0) at +0x160 (PDB +0x188: ten std containers
+// precede it and each is 4 bytes smaller in the shipped build). An inactive fader reads as fully opaque (1.0f, .rdata
 // 0x0122DED8); otherwise its current alpha comes from the fader (0x004348D0, __thiscall).
 
 struct CFadeInFadeOutBaseCalls {

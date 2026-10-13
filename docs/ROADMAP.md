@@ -7,7 +7,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
-- [ ] 2026-10-13 Grade batches `rebuild/candidates/manual/batches/2026-10-13_linux_b1/` and `_b2/` (29 + 42 commented candidates authored without a compiler) with `verify_and_land.py`; land the wins, ledger the DIFFERs — `docs/journal/2026-10/LINUX_CONTAINER_LANE_2026-10-13.md`
+- [ ] 2026-10-13 Grade batches `rebuild/candidates/manual/batches/2026-10-13_linux_b1/` `_b2/` and `_b3/` (29 + 42 + 23 commented candidates authored without a compiler) with `verify_and_land.py`; land the wins, ledger the DIFFERs — `docs/journal/2026-10/LINUX_CONTAINER_LANE_2026-10-13.md`
 - [ ] Typed shared headers: 2026-09-07 `--all-trusted --compile-check` = 957 compiling headers (257 quarantined); automatic passes plus the parity-gated manual tail have retyped 651 landed TUs onto PDB-named headers (162 manual conversions across thirty-three checkpoints). `VTABLE_TYPED` (37→0), `VIRTUAL_THIS` (54→0), non-source-failure `PARITY_CHANGED` (7→0), `BEHAV_FAIL` (8→0), source-failure `PARITY_CHANGED` (43→0), and `AMBIG_ALIGN` (10→0) are closed. The final source-failure pass recovered eleven byte-parity-preserving interface, creature-action, layout-access, and state-wrapper functions; the ambiguous-alignment review recovered four and reclassified six — `tools/decomp_pipeline/`
 - [x] 2026-09-07 Aeon's 12 new Lua ports ingested (20 packages, 71 scripts; foundation audit 15/18) — `docs/scripts/AEON_LUA_PORTS.md`
 - [ ] Port the 12 FSE 6.9.26 bindings LUAGameflow needs into ForgeFSE-retail-shadow; add package→native-name aliases so the new seeds correlate (8/20 today) — `docs/scripts/AEON_LUA_PORTS.md`
@@ -42,7 +42,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - [x] 2026-09-07 typed shared headers `rebuild/include/engine/`: 957 compiling headers from the PDB layouts, per-header compile check, quarantine on donor/retail conflict
 - [x] 2026-09-07 automatic and manual parity-gated retyping applied to 638 landed TUs; `VTABLE_TYPED`, `VIRTUAL_THIS`, non-source-failure `PARITY_CHANGED`, and `BEHAV_FAIL` tails closed (see Current focus for the active source-failure parity lane)
 - [ ] Bulk `.gdt` import of donor struct layouts into the Ghidra DB (open)
-- [ ] Retail layout overrides for `gen_class_headers.py`: CBankFile (-0x10 from +0x38, -0x24 from +0xEC), CTCHeroStats (-8), CTCInventoryTrade (-0x2C), CTCInventory (-0x28), CLandscapeBackgroundTreeNode (-8), CNavigatorManager (-0xC), CQuestManager (-0xC), CUserProfileManager NewProfile block (-4) — evidence in `rebuild/candidates/manual/batches/2026-10-13_linux_b2/README.md`
+- [ ] Retail layout rule for `gen_class_headers.py`: every std container (vector/CArray/map/CVectorMap/list) is 4 bytes smaller in retail than in Ego_r.pdb and a retail vector is `{first,last,end}`; subtract 4 per container preceding a member (verified on CBankFile, CTCHeroStats, CTCInventory, CTCInventoryTrade, CNavigatorManager, CQuestManager, CTCCombat, CTCTurncoat, CTCCreatureGroupBoastingCrowd) — `rebuild/candidates/manual/batches/2026-10-13_linux_b3/README.md`
 - [ ] Calling convention known 77.7% -> close the 11,031 unknown-CC functions
 - [ ] Complete prototypes 69.2% -> close the 15,280 incomplete ones
 - [ ] Apply the 63 FSE-vs-BSim name clashes as manifest corrections (FSE ASLR address wins in `0x00CBxxxx`)

@@ -6,18 +6,20 @@
 // Retail bytes:  mov ecx,[ecx+98h] ; mov eax,[esp+4] ; lea eax,[ecx+eax-1] ; xor edx,edx ; div ecx ; imul eax,ecx ; ret 4
 // Rounds `size` up to the bank's alignment (unsigned arithmetic: div/imul).
 
-// Retail CBankFile layout. Ego_r.pdb (engine/CBankFile.h) is an editor build: it carries
-// `CArray UpdateData` at +0x38 (0x10 bytes) and `CVectorMap SymbolCRCIndices` at +0xEC (0x14 bytes)
-// that the shipped executable does not have, so every retail offset from +0x38 is PDB-0x10 and
-// from +0xEC is PDB-0x24. The members below are the PDB names at their retail offsets.
+// Retail CBankFile layout. In the shipped binary every std::vector / CArray / map / CVectorMap is
+// 4 bytes smaller than in Ego_r.pdb (engine/CBankFile.h), so each container before a member moves
+// it 4 bytes earlier: the four CArrays before +0x48 give PDB-0x10 from there on, and the three
+// maps + CVectorMap + CArray between +0xAC and +0x110 give PDB-0x24 for ProgressCallback and
+// WarningFlag. The members below are the PDB names at their retail offsets.
 struct CDiskFileWin32Calls;
 struct CProgressCallbackCalls;
 struct CBankFile_Retail {
     void*                   __vftable;                 // +0x00
     unsigned long           Size;                      // +0x04
-    unsigned char           Symbols[0x10];             // +0x08 CArray<CCharString>
-    unsigned char           Checksums[0x10];           // +0x18 CArray<unsigned long>
-    unsigned char           RuntimeData[0x10];         // +0x28 CArray<CRuntimeData>
+    unsigned char           Symbols[0x0C];             // +0x08 CArray<CCharString>        (retail 12 bytes)
+    unsigned char           Checksums[0x0C];           // +0x14 CArray<unsigned long>      (retail 12 bytes)
+    unsigned char           RuntimeData[0x0C];         // +0x20 CArray<CRuntimeData>       (retail 12 bytes)
+    unsigned char           UpdateData[0x0C];          // +0x2C CArray<CBankFileEntryUpdateData*> (retail 12 bytes)
     unsigned char           PackedDataOffset[0x10];    // +0x38 CPackedUIntArray   (PDB +0x48)
     unsigned char           PackedDataSize[0x10];      // +0x48 CPackedUIntArray   (PDB +0x58)
     unsigned char           PackedDataType[0x10];      // +0x58 CPackedUIntArray   (PDB +0x68)
@@ -40,10 +42,11 @@ struct CBankFile_Retail {
     unsigned long           HeaderSize;                // +0xA0                    (PDB +0xB0)
     unsigned long           FileInformationSize;       // +0xA4                    (PDB +0xB4)
     unsigned long           FileSize;                  // +0xA8                    (PDB +0xB8)
-    unsigned char           SymbolIndices[0x10];       // +0xAC map<CCharString,ulong>
-    unsigned char           OldSymbolIndices[0x10];    // +0xBC map<CCharString,ulong>
-    unsigned char           FilenameIndices[0x10];     // +0xCC multimap<CCharString,ulong>
-    unsigned char           BlockOrder[0x10];          // +0xDC CArray<unsigned long>
+    unsigned char           SymbolIndices[0x0C];       // +0xAC map<CCharString,ulong>      (retail 12 bytes)
+    unsigned char           OldSymbolIndices[0x0C];    // +0xB8 map<CCharString,ulong>      (retail 12 bytes)
+    unsigned char           FilenameIndices[0x0C];     // +0xC4 multimap<CCharString,ulong> (retail 12 bytes)
+    unsigned char           SymbolCRCIndices[0x10];    // +0xD0 CVectorMap<ulong,ulong>     (retail 16 bytes)
+    unsigned char           BlockOrder[0x0C];          // +0xE0 CArray<unsigned long>       (retail 12 bytes)
     CProgressCallbackCalls* ProgressCallback;          // +0xEC                    (PDB +0x110)
     void*                   HeaderEnumerationType_PStringData; // +0xF0 CCharString
     bool                    WarningFlag;               // +0xF4                    (PDB +0x118)
