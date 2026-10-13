@@ -1,0 +1,26 @@
+// CPersistable_00e05330::PersistTransfer_BrainState_00e05330(CPersistContext* context) -- persists the BrainState dword at +0x20 with a zero default
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00E05330, oracle length 35 bytes.
+// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
+//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
+//
+// Retail bytes:  push ecx ; lea eax,[esp] ; push eax ; add ecx,0x20 ; push ecx ; mov ecx,[esp+10h] ; push offset "BrainState" ; mov dword ptr [esp+0Ch],0 ; call CPersistContext::Transfer<long> ; pop ecx ; ret 4
+// Virtual persist hook (slot 1 of this class's vtable): transfers the dword member at +0x20
+// through CPersistContext::Transfer<long>(name, value, default) @ 0x00410BE0, with a zero
+// default built in a dword stack temporary. The member name is taken from the
+// persisted key; the member type is any 4-byte scalar (`long` models it). One of 16 bodies.
+struct CPersistContext {
+    void Transfer(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x00410BE0
+};
+
+struct CPersistable_00e05330 {
+    unsigned char _pad[0x1c];        // after the vptr; members not touched here
+    long m_BrainState;                        // +0x20
+    virtual void v00();
+    virtual void PersistTransfer_BrainState_00e05330(CPersistContext* context);
+};
+
+void CPersistable_00e05330::PersistTransfer_BrainState_00e05330(CPersistContext* context)
+{
+    long defaultValue = 0;
+    context->Transfer("BrainState", m_BrainState, defaultValue);
+}
