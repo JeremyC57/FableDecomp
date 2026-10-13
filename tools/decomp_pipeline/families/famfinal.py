@@ -151,12 +151,36 @@ DESC={
  "h49":"SGI `sort` with `__final_insertion_sort` out of line; 12-byte elements",
  "h129":"SGI `sort` with `__final_insertion_sort` out of line; 20..44-byte elements (same template as h49)",
  "h31":"SGI `__final_insertion_sort(first, last, comp)`: `__insertion_sort` of the first 16, `__unguarded_insertion_sort_aux` of the rest",
+ "i41":"Dinkumware `_Uninit_copy` for 8-byte POD elements (placement copy under the null test, `__fastcall`)",
+ "i55":"Dinkumware `_Uninit_copy` for 16-byte POD elements (same template as i41)",
+ "i79":"Dinkumware `_Uninit_copy` for 8-byte POD elements (same template as i41)",
+ "i43":"Dinkumware `_Fill` for 8-byte POD elements",
+ "i89":"Dinkumware `_Fill` for 40-byte POD elements (`rep movsd`; same template as i43)",
+ "i44":"Dinkumware `_Destroy_range` over CCountedPointer elements (inlined release, fields nulled)",
+ "i52":"Dinkumware `_Destroy_range` over CCountedPointer elements (same template as i44)",
+ "i53":"`~CRetailVector<SBufferEntry>`: free each element's buffer, then the array (`last` cached)",
+ "i58":"`~CX() {}` releasing a CCountedPointer member (function-pointer block) before the base destructor tail call",
+ "i103":"non-virtual `??_G` of {member, CCountedPointer} pairs: counted pointer released inline, member destructor out of line, flag-tested delete",
+ "i59":"`fill(first, last, value)` through an out-of-line operator=",
+ "i60":"`distance(first, last)` over retail tree iterators with the successor walk inlined",
+ "i86":"`distance` over retail tree iterators (same template as i60)",
+ "i61":"retail `_Tree::find` with unsigned keys, hidden-pointer iterator result (template w26)",
+ "i83":"retail `_Tree::find` with signed keys returning the node pointer directly (template w26)",
+ "i62":"retail vector `erase(first, last)` for 8-byte PODs with the SGI counted copy inlined",
+ "i96":"retail vector `erase(first, last)` for 8-byte PODs (same template as i62)",
+ "i84":"`CRetailVector_dword(n, allocator)`: pointers nulled, malloc(n*4), first/last/end set",
+ "i102":"`IS_THING_ALIVE(CIntelligentPointer&)`: target resolved twice, flag byte bit 0 clear",
+ "i100":"retail vector `resize` for 12-byte elements with Erase/Insert out of line (signed size through idiv)",
+ "i107":"retail tree constructor with a 0x1c-byte head node (template 9)",
+ "i108":"STLport `__insertion_sort(first, last, comp)`: `__linear_insert(first, i, T(*i), comp)` per element",
+ "i110":"Dinkumware `_Uninit_fill_n` through an out-of-line copy constructor (template h28)",
+ "i23":"`CPersistContext::TransferBinary(T*)`: CheckCRC, then the `__fastcall` reader on the load stream in mode 2, else the writer on the save stream (size TU)",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
 summary=[]
-for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_g*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_h*"))):
-    D=Path(D); fam=re.search(r"_([fgh]\w+)$",D.name).group(1); fam=fam[1:] if fam[0]=="f" else fam
+for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_g*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_h*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_i*"))):
+    D=Path(D); fam=re.search(r"_([fghi]\w+)$",D.name).group(1); fam=fam[1:] if fam[0]=="f" else fam
     rows=list(csv.DictReader(open(D/"oracle.tsv"),delimiter="\t"))
     landed=[r for r in rows if r["address"].lower() in cat]; rest=[r for r in rows if r["address"].lower() not in cat]
     for r in rows:
