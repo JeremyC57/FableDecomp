@@ -502,8 +502,11 @@ struct Buffer {  // vertex / index buffer storage
         target = t, size = n, dynamic = (usage & D3DUSAGE_DYNAMIC) != 0;
         cpu.assign(n, 0);
         glGenBuffers(1, &gl);
-        glBindBuffer(target, gl);
-        glBufferData(target, n, nullptr, (usage & D3DUSAGE_DYNAMIC) ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
+        // Uploads go through the copy-write binding point: binding an index buffer to
+        // GL_ELEMENT_ARRAY_BUFFER here would silently replace the element buffer of whichever
+        // cached vertex array object is bound, behind the device's tracking.
+        glBindBuffer(GL_COPY_WRITE_BUFFER, gl);
+        glBufferData(GL_COPY_WRITE_BUFFER, n, nullptr, (usage & D3DUSAGE_DYNAMIC) ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
     }
     void* lock(UINT off, UINT n, DWORD flags) {
         if (n == 0 || off + n > size) n = size - off;
@@ -515,12 +518,12 @@ struct Buffer {  // vertex / index buffer storage
         locked = false;
         if (lockFlags & D3DLOCK_READONLY) return;
         GlTime t;
-        glBindBuffer(target, gl);
+        glBindBuffer(GL_COPY_WRITE_BUFFER, gl);  // never the element target (see create)
         // A dynamic buffer still in use by queued draws must not be written in place (the
         // driver would wait or copy): orphan it and upload the whole mirror, unless the game
         // promises NOOVERWRITE. Static buffers are filled before use.
-        if ((lockFlags & D3DLOCK_DISCARD) || (dynamic && !(lockFlags & D3DLOCK_NOOVERWRITE))) glBufferData(target, size, cpu.data(), GL_DYNAMIC_DRAW);
-        else glBufferSubData(target, lockOff, lockSize, cpu.data() + lockOff);
+        if ((lockFlags & D3DLOCK_DISCARD) || (dynamic && !(lockFlags & D3DLOCK_NOOVERWRITE))) glBufferData(GL_COPY_WRITE_BUFFER, size, cpu.data(), GL_DYNAMIC_DRAW);
+        else glBufferSubData(GL_COPY_WRITE_BUFFER, lockOff, lockSize, cpu.data() + lockOff);
     }
     ~Buffer() { if (gl) { dropVaosForBuffer(gl); glDeleteBuffers(1, &gl); } }
 };
@@ -1657,8 +1660,7 @@ void Device::applyRenderStates() {
     if (!rsDirty) return;
     rsDirty = false;
     GlShadow& g = glShadow;
-    // FABLE_GLES_STATESHADOW=1 keeps the shadow across draws; off (every state re-issued when dirty) until verified
-    static const bool noShadow = [] { const char* e = getenv("FABLE_GLES_STATESHADOW"); return !(e && atoi(e) != 0); }();
+    static const bool noShadow = [] { const char* e = getenv("FABLE_GLES_NOSHADOW"); return e && atoi(e) != 0; }();  // diagnostic: re-issue every state
     if (!g.valid || noShadow) g.reset();  // a pass set GL state directly: nothing is known, every field is re-issued
     // viewport & scissor (rows are in Direct3D order in our framebuffers: no flip)
     const GLint vx = static_cast<GLint>(viewport.X), vy = static_cast<GLint>(viewport.Y);
@@ -1827,9 +1829,8 @@ bool Device::bindVertexLayout(const VertexDecl* d, bool up, const void* upData, 
     if (layoutValid && std::memcmp(&key, &lastLayout, sizeof key) == 0) return true;  // same pointers as the last draw
     lastLayout = key;
     layoutValid = true;
-    // FABLE_GLES_VAO=1 enables the cache; off until the white-terrain regression seen with it is understood
-    static const bool noVao = [] { const char* e = getenv("FABLE_GLES_VAO"); return !(e && atoi(e) != 0); }();
-    if (noVao) {  // one object, attributes re-specified every draw (the pre-cache behaviour)
+    static const bool noVao = [] { const char* e = getenv("FABLE_GLES_NOVAO"); return e && atoi(e) != 0; }();
+    if (noVao) {  // diagnostic: one object, attributes re-specified every draw (the pre-cache behaviour)
         static VaoEntry plain;
         if (!plain.vao) glGenVertexArrays(1, &plain.vao);
         glBindVertexArray(plain.vao);

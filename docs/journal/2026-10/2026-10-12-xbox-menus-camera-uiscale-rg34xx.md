@@ -298,13 +298,19 @@ submission in the Mali driver), ~27 ms game. The pause menu itself costs ~22 ms 
   small lifted functions inline, which keeps the guest registers in host registers across
   them instead of spilling to the Ctx at every call. Measured below.
 - **White terrain regression** (user report on the harness screenshots): the landscape
-  renders flat white since the build that added the VAO cache and the state shadow; trees,
-  grass and meshes are fine. One real bug found on reading: after a pass that sets GL state
-  directly the shadow re-issued only the enables, while the dependent values (blend
-  function, depth function, stencil parameters, scissor box, polygon offset) kept their
-  "known" values although the overlay had changed them (SRC_ALPHA blending) -> a later draw
-  with the same values as the shadow skipped the call. The shadow now resets every field
-  to "unknown". That alone did not bring the terrain back, so both mechanisms are behind
-  opt-in switches (`FABLE_GLES_VAO=1`, `FABLE_GLES_STATESHADOW=1`, default off) while the
-  harness bisects them (runs with each one off). The FVF declaration is now cached per
-  FVF value instead of being rebuilt (and its VAOs dropped) on every SetFVF.
+  rendered flat white since the build that added the VAO cache and the state shadow; trees,
+  grass and meshes were fine. Bisected on the harness with each mechanism off: the cache was
+  the cause (`FABLE_GLES_NOVAO=1` brought the grass back with the shadow on). Root cause:
+  `Buffer::unlock()` uploaded an index buffer by binding it to GL_ELEMENT_ARRAY_BUFFER,
+  which in GL is state *of the bound vertex array object*: every Lock/Unlock of an index
+  buffer silently replaced the element buffer of whichever cached object was bound, while
+  the object's recorded binding (and `boundIbo`) still named the old one, so a later cache
+  hit skipped the bind and drew the terrain with someone else's indices. Buffer uploads
+  (create and unlock) now go through GL_COPY_WRITE_BUFFER, which is plain context state.
+  A second bug found on reading the shadow: after a pass that sets GL state directly it
+  re-issued only the enables, while the dependent values (blend function, depth function,
+  stencil parameters, scissor box, polygon offset) kept their "known" values although the
+  overlay had changed them (SRC_ALPHA blending) -> a draw with the same values as the
+  shadow skipped the call. The shadow now resets every field to "unknown". The FVF
+  declaration is cached per FVF value instead of being rebuilt (and its VAOs dropped) on
+  every SetFVF. Diagnostics: `FABLE_GLES_NOVAO=1`, `FABLE_GLES_NOSHADOW=1`.

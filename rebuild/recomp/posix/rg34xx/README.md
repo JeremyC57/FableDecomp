@@ -45,7 +45,10 @@ Fable/            its files, in the folder of the same name next to it
   device's framebuffer, GPU libraries and kernel modules, then runs `FableRecomp --gl-probe`,
   which opens EGL the way the game does and flashes red, green and blue on the screen.
   `FABLE_RENDERER=dxvk` switches back to DXVK on Vulkan where a Vulkan ICD exists. The
-  log (`log.txt`) names the EGL and GL driver and version on start.
+  log (`log.txt`) names the EGL and GL driver and version on start. Two renderer
+  shortcuts can be switched off to rule them out when something renders wrongly:
+  `FABLE_GLES_NOVAO=1` (one vertex array object, attributes re-specified every draw) and
+  `FABLE_GLES_NOSHADOW=1` (every render state re-issued whenever one changes).
 - **GLES scope.** What the game uses on the PC, per a Direct3D call census: vs_1_1 and
   ps_1_1/1_4 shaders (translated to GLSL ES 3.00), the fixed-function pixel pipeline,
   pre-transformed UI quads, DXT1/3/5 textures (decoded on the CPU; Mali has no S3TC),
