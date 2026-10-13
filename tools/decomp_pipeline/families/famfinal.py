@@ -142,6 +142,15 @@ DESC={
  "h19":"VC6-era `_Tree::operator=`: Clear, Copy under a named head local, leftmost/rightmost walks, size copied; size TU",
  "h13":"`CDerived::CDerived(CThing*) : CBase(thing), m_name(\"LIT\") {}` -- hashed-name member built inline from an implicitly converted CCharString temporary (string assigned, CRC of the name)",
  "h14":"EH-module collection transfer: reserve count+count through virtual slots, then detach each item from the source and add it here",
+ "h69":"SGI `__copy(first, last, result, random_access_iterator_tag, Distance*)` for 12-byte POD elements (counted loop, /Gr fastcall TU)",
+ "h86":"SGI `__copy` for 28-byte POD elements (`rep movsd`; same template as h69)",
+ "h114":"SGI `__copy` for 36..48-byte POD elements (`rep movsd`; same template as h69)",
+ "h95":"SGI `__copy` with an out-of-line element operator=",
+ "h36":"SGI `sort(first, last, comp)`: `__introsort_loop` to depth 2*lg(n), `__final_insertion_sort` inlined (threshold 16); 8-byte elements",
+ "h98":"SGI `sort` with the final insertion sort inlined; 4/8-byte elements (same template as h36)",
+ "h49":"SGI `sort` with `__final_insertion_sort` out of line; 12-byte elements",
+ "h129":"SGI `sort` with `__final_insertion_sort` out of line; 20..44-byte elements (same template as h49)",
+ "h31":"SGI `__final_insertion_sort(first, last, comp)`: `__insertion_sort` of the first 16, `__unguarded_insertion_sort_aux` of the rest",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]

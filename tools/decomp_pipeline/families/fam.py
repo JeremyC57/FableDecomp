@@ -4912,6 +4912,370 @@ int main()
 {
     Src s; Tgt t; X x; x.t = &t; x.T(&s); if (g_r != 2 || g_a != 102) '''+FAIL(a)+'''
 '''),b)
+    elif TPL in ("w256_69","w256_95","w256_52","w256_36","w256_49","w256_31"):   # SGI-STL algorithm instantiations (fastcall TU): __copy, __copy_backward, sort, __final_insertion_sort
+        def elem_size(ins):
+            magic=None; shift=None; prev=None
+            for i in ins:
+                if i.mnemonic=="imul" and prev is not None and prev.mnemonic=="mov" and prev.operands[0].type==X86_OP_REG and prev.operands[1].type==X86_OP_IMM: magic=prev.operands[1].imm
+                if magic is not None and shift is None and i.mnemonic=="sar" and i.operands[1].type==X86_OP_IMM and i.op_str.startswith("edx"): shift=i.operands[1].imm
+                prev=i
+            if magic is not None and shift is not None: return int(round(2**(32+shift)/magic))
+            for i in ins:
+                if i.mnemonic=="sar" and i.operands[1].type==X86_OP_IMM: return 1<<i.operands[1].imm
+            return None
+        esz=elem_size(ins)
+        if not esz: continue
+        if TPL=="w256_69":
+            if len(calls) or retn!=12: continue
+            ecls=f"SElement{esz}"; nm=f"Copy_{ecls}_{a}"
+            add(a,"_global",nm,HDRF(a,f"SGI __copy<{ecls}*> (random-access, {esz}-byte POD elements) -- counted forward copy, returns the advanced result",len(b))+f'''//
+// Retail bytes:  sub edx,ecx ; (divide by {esz}) ; test eax,eax ; jle Z ; push ebx ; push esi ; mov edx,eax ; mov eax,[result] ; push edi ; L: (copy {esz} bytes from [ecx] to [eax]) ; add ecx,{esz:#x} ; add eax,{esz:#x} ; dec edx ; jne L ; pop edi ; pop esi ; pop ebx ; ret 0Ch ; Z: mov eax,[result] ; ret 0Ch
+// SGI-STL `__copy(first, last, result, random_access_iterator_tag, Distance*)` for {esz}-byte
+// trivially-copyable elements: the signed element count is computed once (the compiler's
+// reciprocal multiply for the division by {esz}), the loop copies one element per iteration
+// (`*result = *first; ++first; ++result;`) and the advanced result is returned (the untouched
+// result for an empty range). The TU is compiled with /Gr (all free functions __fastcall):
+// first in ecx, last in edx, result + the two tag arguments on the stack (`ret 0Ch`). The
+// manifest label (`_Copy_impl<...>`) is propagated from Dinkumware; the body is SGI's.
+// One of {len(members)} bodies of this shape.
+struct {ecls} {{
+    unsigned char _body[{esz:#x}];
+}};
+
+struct SRandomAccessIteratorTag {{ SRandomAccessIteratorTag() {{ }} }};
+
+{ecls}* __fastcall {nm}({ecls}* first, {ecls}* last, {ecls}* result, SRandomAccessIteratorTag category, long* distance)
+{{
+    for (long n = last - first; n > 0; --n) {{
+        *result = *first;
+        ++first;
+        ++result;
+    }}
+    return result;
+}}
+''',T(a,'''struct E { unsigned char b['''+str(esz)+''']; }; struct Tg { Tg() {} };
+static E* __fastcall C(E* f, E* l, E* r, Tg, long*) { for (long n = l - f; n > 0; --n) { *r = *f; ++f; ++r; } return r; }
+int main()
+{
+    E s[2], d[2]; s[0].b[0] = 1; s[1].b[0] = 2; d[0].b[0] = 0; d[1].b[0] = 0; E* e = C(s, s + 2, d, Tg(), 0); if (e != d + 2 || d[0].b[0] != 1 || d[1].b[0] != 2) '''+FAIL(a)+'''
+'''),b)
+        elif TPL=="w256_95":
+            if len(calls)!=1 or retn!=12: continue
+            asg=calls[0]; ecls=f"CElement{esz}_{asg:08x}"; nm=f"Copy_{ecls}_{a}"
+            add(a,"_global",nm,HDRF(a,f"SGI __copy<{ecls}*> (random-access, {esz}-byte elements assigned through operator= @ 0x{asg:08X}) -- counted forward copy, returns the advanced result",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; sub edx,esi ; (divide by {esz}) ; test eax,eax ; jle Z ; push ebx ; push edi ; mov edi,[result] ; mov ebx,eax ; L: push esi ; mov ecx,edi ; call {ecls}::operator= ; add esi,{esz:#x} ; add edi,{esz:#x} ; dec ebx ; jne L ; mov eax,edi ; pop edi ; pop ebx ; pop esi ; ret 0Ch ; Z: mov eax,[result] ; pop esi ; ret 0Ch
+// SGI-STL `__copy(first, last, result, random_access_iterator_tag, Distance*)` for {esz}-byte
+// elements with an out-of-line copy-assignment operator @ 0x{asg:08X}: the signed element count
+// is computed once, each element is assigned (`*result = *first`) and the advanced result is
+// returned. /Gr TU (__fastcall: first in ecx, last in edx, result + two tags on the stack).
+// The manifest label (`_Copy_impl<...>`) is propagated from Dinkumware. One of {len(members)} bodies.
+struct {ecls} {{
+    unsigned char _body[{esz:#x}];
+    {ecls}& operator=(const {ecls}& other);   // 0x{asg:08X}
+}};
+
+struct SRandomAccessIteratorTag {{ SRandomAccessIteratorTag() {{ }} }};
+
+{ecls}* __fastcall {nm}({ecls}* first, {ecls}* last, {ecls}* result, SRandomAccessIteratorTag category, long* distance)
+{{
+    for (long n = last - first; n > 0; --n) {{
+        *result = *first;
+        ++first;
+        ++result;
+    }}
+    return result;
+}}
+''',T(a,'''static int g_a = 0; struct E { unsigned char b['''+str(esz)+''']; E& operator=(const E& o) { ++g_a; b[0] = o.b[0]; return *this; } }; struct Tg { Tg() {} };
+static E* __fastcall C(E* f, E* l, E* r, Tg, long*) { for (long n = l - f; n > 0; --n) { *r = *f; ++f; ++r; } return r; }
+int main()
+{
+    E s[2], d[2]; s[0].b[0] = 1; s[1].b[0] = 2; d[0].b[0] = 0; d[1].b[0] = 0; E* e = C(s, s + 2, d, Tg(), 0); if (e != d + 2 || g_a != 2 || d[1].b[0] != 2) '''+FAIL(a)+'''
+'''),b)
+        elif TPL=="w256_52":
+            if len(calls) or retn!=8: continue
+            ecls=f"SElement{esz}"; nm=f"CopyBackward_{ecls}_{a}"
+            add(a,"_global",nm,HDRF(a,f"SGI __copy_backward<{ecls}*> ({esz}-byte POD elements) -- counted backward copy, returns the moved-back result",len(b))+f'''//
+// Retail bytes:  mov eax,[result] ; push esi ; mov esi,edx ; sub esi,ecx ; (divide by {esz}) ; test esi,esi ; jle E ; mov ecx,edx ; sub ecx,eax ; L: (copy {esz} bytes from [ecx+eax-{esz:#x}] to [eax-{esz:#x}]) ; sub eax,{esz:#x} ; dec esi ; jne L ; E: pop esi ; ret 8
+// SGI-STL `__copy_backward(first, last, result, tag)` for {esz}-byte trivially-copyable elements:
+// `for (n = last - first; n > 0; --n) *--result = *--last;` (the compiler strength-reduces `last`
+// to an offset from `result`) and the moved-back result is returned. /Gr TU (__fastcall: first
+// in ecx, last in edx, result + one tag on the stack). The manifest label (`_Copy_impl`) is
+// propagated from Dinkumware. One of {len(members)} bodies of this shape.
+struct {ecls} {{
+    unsigned char _body[{esz:#x}];
+}};
+
+struct SBidirectionalIteratorTag {{ SBidirectionalIteratorTag() {{ }} }};
+
+{ecls}* __fastcall {nm}({ecls}* first, {ecls}* last, {ecls}* result, SBidirectionalIteratorTag category)
+{{
+    for (long n = last - first; n > 0; --n)
+        *--result = *--last;
+    return result;
+}}
+''',T(a,'''struct E { unsigned char b['''+str(esz)+''']; }; struct Tg { Tg() {} };
+static E* __fastcall C(E* f, E* l, E* r, Tg) { for (long n = l - f; n > 0; --n) *--r = *--l; return r; }
+int main()
+{
+    E s[3]; s[0].b[0] = 1; s[1].b[0] = 2; s[2].b[0] = 9; E* e = C(s, s + 2, s + 3, Tg()); if (e != s + 1 || s[1].b[0] != 1 || s[2].b[0] != 2) '''+FAIL(a)+'''
+'''),b)
+        elif TPL in ("w256_36","w256_49"):
+            inl=(TPL=="w256_36"); ecls=f"SElement{esz}"; nm=f"Sort_{ecls}_{a}"
+            if retn!=4 or len(calls)!=(4 if inl else 2): continue
+            if inl:
+                intro,ins_,unguarded,ins2=calls; fin=None
+                if ins2!=ins_: continue
+            else: intro,fin=calls; ins_=unguarded=None
+            add(a,"_global",nm,HDRF(a,f"SGI sort<{ecls}*, Compare>({esz}-byte elements) -- introsort loop @ 0x{intro:08X} to depth 2*lg(n), then the final insertion sort{' (inlined: threshold 16)' if inl else ' @ 0x%08X' % fin}",len(b))+f'''//
+// Retail bytes:  push ebx ; push edi ; mov ebx,edx ; mov edi,ecx ; cmp edi,ebx ; je E ; (n = (last - first) / {esz}) ; xor ecx,ecx ; cmp eax,1 ; je K ; L: sar eax,1 ; inc ecx ; cmp eax,1 ; jne L ; K: push ebp ; mov ebp,[comp] ; push ebp ; lea eax,[ecx+ecx] ; push eax ; push 0 ; mov edx,ebx ; mov ecx,edi ; call __introsort_loop ; {"cmp esi,10h ; mov ecx,edi ; push ebp ; jle S ; lea esi,[edi+%#x] ; mov edx,esi ; call __insertion_sort ; push ebp ; push 0 ; mov edx,ebx ; mov ecx,esi ; call __unguarded_insertion_sort_aux ; ... ret 4 ; S: mov edx,ebx ; call __insertion_sort ; ... ret 4" % (16*esz) if inl else "push ebx ; mov edx,esi ; mov ecx,edi ; call __final_insertion_sort ; pop ebx ; E: pop edi ; pop esi ; ret 4"}
+// SGI-STL `sort(first, last, comp)`: for a non-empty range run `__introsort_loop(first, last,
+// (T*)0, __lg(last - first) * 2, comp)` (`__lg` is the shift-count loop) and then
+// `__final_insertion_sort`{": inlined here -- ranges longer than __stl_threshold (16) get `__insertion_sort(first, first + 16, comp)` followed by `__unguarded_insertion_sort_aux(first + 16, last, (T*)0, comp)`, shorter ones a single `__insertion_sort`" if inl else " out of line @ 0x%08X" % fin}.
+// The comparator is a 4-byte functor passed by value. /Gr TU (__fastcall: first in ecx, last
+// in edx, comp on the stack). Labels (`make_heap`, `HeapSort`, `Introsort_TripletPartition`) are
+// propagated; the body is SGI's `sort`. One of {len(members)} bodies of this shape.
+struct {ecls} {{
+    unsigned char _body[{esz:#x}];
+}};
+
+struct SCompare {{                        // 4-byte comparison functor passed by value
+    void* m_context;
+}};
+
+template<class Size> inline Size Lg(Size n)
+{{
+    Size k;
+    for (k = 0; n != 1; n >>= 1)
+        ++k;
+    return k;
+}}
+
+void __fastcall IntrosortLoop_{intro:08x}({ecls}* first, {ecls}* last, {ecls}* valueType, long depthLimit, SCompare comp);   // 0x{intro:08X}
+{"void __fastcall InsertionSort_%08x(%s* first, %s* last, SCompare comp);   // 0x%08X" % (ins_,ecls,ecls,ins_) if inl else ""}
+{"void __fastcall UnguardedInsertionSortAux_%08x(%s* first, %s* last, %s* valueType, SCompare comp);   // 0x%08X" % (unguarded,ecls,ecls,ecls,unguarded) if inl else ""}
+{"__forceinline void FinalInsertionSort(%s* first, %s* last, SCompare comp)" % (ecls,ecls) if inl else "void __fastcall FinalInsertionSort_%08x(%s* first, %s* last, SCompare comp);   // 0x%08X" % (fin,ecls,ecls,fin)}
+{"{" + chr(10) + "    if (last - first > 16) {" + chr(10) + "        InsertionSort_%08x(first, first + 16, comp);" % ins_ + chr(10) + "        UnguardedInsertionSortAux_%08x(first + 16, last, (%s*)0, comp);" % (unguarded,ecls) + chr(10) + "    }" + chr(10) + "    else" + chr(10) + "        InsertionSort_%08x(first, last, comp);" % ins_ + chr(10) + "}" if inl else ""}
+void __fastcall {nm}({ecls}* first, {ecls}* last, SCompare comp)
+{{
+    if (first != last) {{
+        IntrosortLoop_{intro:08x}(first, last, ({ecls}*)0, Lg(last - first) * 2, comp);
+        {"FinalInsertionSort(first, last, comp);" if inl else "FinalInsertionSort_%08x(first, last, comp);" % fin}
+    }}
+}}
+''',T(a,'''static int g_i = 0, g_f = 0; struct E { unsigned char b['''+str(esz)+''']; }; struct Cmp { void* c; };
+template<class S> inline S Lg(S n) { S k; for (k = 0; n != 1; n >>= 1) ++k; return k; }
+static void __fastcall IL(E*, E*, E*, long d, Cmp) { g_i += d; }
+static void __fastcall IS(E*, E*, Cmp) { ++g_f; }
+static void __fastcall UA(E*, E*, E*, Cmp) { g_f += 10; }
+static void __fastcall FS(E* f, E* l, Cmp c) { if (l - f > 16) { IS(f, f + 16, c); UA(f + 16, l, (E*)0, c); } else IS(f, l, c); }
+static void __fastcall So(E* f, E* l, Cmp c) { if (f != l) { IL(f, l, (E*)0, Lg(l - f) * 2, c); FS(f, l, c); } }
+int main()
+{
+    E a[20]; Cmp c = { 0 }; So(a, a + 20, c); if (g_i != 8 || g_f != 11) '''+FAIL(a)+'''
+    So(a, a + 3, c); if (g_i != 10 || g_f != 12) '''+FAIL(a)+'''
+'''),b)
+        elif TPL=="w256_31":
+            if len(calls)!=3 or retn!=4 or calls[0]!=calls[2]: continue
+            ins_,unguarded,_=calls; ecls=f"SElement{esz}"; nm=f"FinalInsertionSort_{ecls}_{a}"
+            add(a,"_global",nm,HDRF(a,f"SGI __final_insertion_sort<{ecls}*, Compare>({esz}-byte elements) -- insertion sort of the first 16, unguarded insertion sort of the rest",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,edx ; sub edx,ecx ; (divide by {esz}) ; cmp eax,10h ; jle S ; push ebx ; mov ebx,[comp] ; push edi ; lea edi,[ecx+{16*esz:#x}] ; push ebx ; mov edx,edi ; call __insertion_sort ; push ebx ; push 0 ; mov edx,esi ; mov ecx,edi ; call __unguarded_insertion_sort_aux ; pop edi ; pop ebx ; pop esi ; ret 4 ; S: mov edx,[comp] ; push edx ; mov edx,esi ; call __insertion_sort ; pop esi ; ret 4
+// SGI-STL `__final_insertion_sort(first, last, comp)`: ranges longer than __stl_threshold (16)
+// get `__insertion_sort(first, first + 16, comp)` @ 0x{ins_:08X} followed by
+// `__unguarded_insertion_sort_aux(first + 16, last, (T*)0, comp)` @ 0x{unguarded:08X}; shorter
+// ones a single `__insertion_sort`. The comparator is a 4-byte functor passed by value. /Gr TU
+// (__fastcall: first in ecx, last in edx, comp on the stack). The manifest label (`make_heap`)
+// is propagated; the body is SGI's. One of {len(members)} bodies of this shape.
+struct {ecls} {{
+    unsigned char _body[{esz:#x}];
+}};
+
+struct SCompare {{                        // 4-byte comparison functor passed by value
+    void* m_context;
+}};
+
+void __fastcall InsertionSort_{ins_:08x}({ecls}* first, {ecls}* last, SCompare comp);   // 0x{ins_:08X}
+void __fastcall UnguardedInsertionSortAux_{unguarded:08x}({ecls}* first, {ecls}* last, {ecls}* valueType, SCompare comp);   // 0x{unguarded:08X}
+
+void __fastcall {nm}({ecls}* first, {ecls}* last, SCompare comp)
+{{
+    if (last - first > 16) {{
+        InsertionSort_{ins_:08x}(first, first + 16, comp);
+        UnguardedInsertionSortAux_{unguarded:08x}(first + 16, last, ({ecls}*)0, comp);
+    }}
+    else
+        InsertionSort_{ins_:08x}(first, last, comp);
+}}
+''',T(a,'''static int g_f = 0; struct E { unsigned char b['''+str(esz)+''']; }; struct Cmp { void* c; };
+static void __fastcall IS(E*, E*, Cmp) { ++g_f; }
+static void __fastcall UA(E*, E*, E*, Cmp) { g_f += 10; }
+static void __fastcall FS(E* f, E* l, Cmp c) { if (l - f > 16) { IS(f, f + 16, c); UA(f + 16, l, (E*)0, c); } else IS(f, l, c); }
+int main()
+{
+    E a[20]; Cmp c = { 0 }; FS(a, a + 20, c); FS(a, a + 3, c); if (g_f != 12) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_42",):   # void vector<long>::resize(n, const long& value): erase the tail (memmove copy inlined) or insert n - size copies at the end
+        if len(calls)!=2 or retn!=8: continue
+        mm,ins_=calls; nm="CRetailVector_dword"
+        add(a,nm,"resize",HDRF(a,f"{nm}::resize(unsigned long, const long&) -- shrink through the inlined erase (memmove copy @ 0x{mm:08X}) or grow through Insert @ 0x{ins_:08X}",len(b))+f'''//
+// Retail bytes:  mov edx,[esp+4] ; push esi ; push edi ; mov edi,ecx ; mov eax,[edi+4] ; mov esi,[edi] ; mov ecx,eax ; sub ecx,esi ; sar ecx,2 ; cmp edx,ecx ; jae G ; cmp eax,eax ; lea ecx,[esi+edx*4] ; jne C ; mov eax,ecx ; mov [edi+4],eax ; pop edi ; pop esi ; ret 8 ; C: mov esi,eax ; sub esi,eax ; push esi ; push eax ; push ecx ; call memmove ; add esp,0Ch ; add eax,esi ; mov [edi+4],eax ; pop edi ; pop esi ; ret 8 ; G: mov esi,[value] ; push esi ; sub edx,ecx ; push edx ; push eax ; mov ecx,edi ; call Insert ; pop edi ; pop esi ; ret 8
+// Retail vector resize for 4-byte elements: when `n < size()` the tail is erased through the
+// inlined `erase(first + n, last)` -- `last = copy(last, last, first + n)` with the memmove
+// copy (the compiler keeps the `cmp eax,eax` of the empty-range test and the dead memmove
+// branch); otherwise `Insert(last, n - size(), value)` @ 0x{ins_:08X} appends the missing
+// elements. The manifest label (`vector<unsigned_int>::resize`) is propagated. One of {len(members)} bodies.
+extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);
+
+struct {nm} {{
+    long* first;
+    long* last;
+    long* end;
+    void Insert(long* where, unsigned long count, const long& value);   // 0x{ins_:08X}
+    static long* Copy(long* f, long* l, long* result)
+    {{
+        if (f != l) {{
+            unsigned long bytes = (char*)l - (char*)f;
+            result = (long*)((char*)memmove(result, f, bytes) + bytes);
+        }}
+        return result;
+    }}
+    long* Erase(long* f, long* l)
+    {{
+        long* s = Copy(l, last, f);
+        last = s;
+        return f;
+    }}
+    void resize(unsigned long n, const long& value);
+}};
+
+void {nm}::resize(unsigned long n, const long& value)
+{{
+    if (n < (unsigned long)(last - first))
+        Erase(first + n, last);
+    else
+        Insert(last, n - (last - first), value);
+}}
+''',T(a,'''#include <cstring>
+static int g_i = 0;
+struct V { long* f; long* l; long* e; void I(long*, unsigned long c, const long&) { g_i += (int)c; }
+  static long* C(long* a, long* b, long* r) { if (a != b) { unsigned long n = (char*)b - (char*)a; r = (long*)((char*)std::memmove(r, a, n) + n); } return r; }
+  long* E(long* a, long* b) { long* s = C(b, l, a); l = s; return a; }
+  void R(unsigned long n, const long& v) { if (n < (unsigned long)(l - f)) E(f + n, l); else I(l, n - (l - f), v); } };
+int main()
+{
+    long buf[4]; V v; v.f = buf; v.l = buf + 4; v.e = buf + 4; long x = 0; v.R(2, x); if (v.l != buf + 2) '''+FAIL(a)+'''
+    v.R(5, x); if (g_i != 3) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_56",):   # atexit destructor of a static retail tree: erase the subtree, reset the head, zero the count, free the head
+        if len(calls)!=2: continue
+        erase,freer=calls
+        gl=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[1].type==X86_OP_IMM and i.operands[1].imm>0x1300000]
+        if not gl: continue
+        gaddr=gl[0]; cls=f"CRetailTree_erase{erase:08x}"; gname=f"g_tree_{gaddr:08x}"
+        add(a,"_static_init",gname,HDRF(a,f"atexit destructor for {cls} {gname} @ 0x{gaddr:08X} -- erase all nodes through 0x{erase:08X}, reset the head, free it",len(b))+f'''//
+// Retail bytes:  mov eax,[{gname}.size] ; test eax,eax ; je F ; mov eax,[{gname}.head] ; mov ecx,[eax+4] ; push ecx ; mov ecx,offset {gname} ; call Erase ; mov eax,[head] ; mov [eax+8],eax ; mov edx,[head] ; mov dword ptr [edx+4],0 ; mov eax,[head] ; mov [eax+0Ch],eax ; mov dword ptr [size],0 ; F: mov eax,[head] ; test eax,eax ; je R ; push eax ; call free ; pop ecx ; R: ret
+// The `atexit` thunk (`??__F`, section .text$yd) of a static retail red-black tree {{head, size}}
+// at 0x{gaddr:08X}: its inlined destructor erases the nodes through the __thiscall Erase
+// @ 0x{erase:08X} when the tree holds any, resets the head's left/parent/right (the head
+// pointer re-read per store) and the count, then releases the head node with free
+// @ 0x{freer:08X}. The object is a translation-unit static with a trivial inline constructor
+// (only the destructor thunk is graded). The manifest label is propagated; the object is
+// named by its address. One of {len(members)} bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct {cls} {{
+    struct node {{ unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; }};
+    node* head;
+    unsigned long size;
+    void Erase(node* root);                // 0x{erase:08X}
+    {cls}() : head(0), size(0) {{ }}
+    ~{cls}()
+    {{
+        if (size) {{
+            Erase(head->parent);
+            head->left = head;
+            head->parent = 0;
+            head->right = head;
+            size = 0;
+        }}
+        if (head)
+            free(head);
+    }}
+}};
+
+static {cls} {gname};                   // 0x{gaddr:08X}: head at +0, size at +4
+
+{cls}* Get_{gname}()
+{{
+    return &{gname};
+}}
+''',T(a,'''#include <cstdlib>
+static int g_e = 0; struct T { struct node { unsigned char c, p[3]; node* parent; node* l; node* r; }; node* h; unsigned long n; void Erase(node*) { ++g_e; } T() : h(0), n(0) {}
+  ~T() { if (n) { Erase(h->parent); h->l = h; h->parent = 0; h->r = h; n = 0; } if (h) std::free(h); } };
+static T g_t;
+int main()
+{
+    g_t.h = (T::node*)std::malloc(sizeof(T::node)); g_t.h->parent = 0; g_t.n = 1; if (g_t.n != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_45",):   # node* CRetailTree<CCharString key>::find(const CCharString&): lower-bound walk with the null-aware string compare, then end() unless the key matches
+        if len(calls)!=2 or calls[0]!=calls[1] or retn!=4: continue
+        less=calls[0]; cls=f"CRetailTree_stringkey"
+        add(a,cls,"find",HDRF(a,f"{cls}::find(const CCharString&) -- lower-bound walk with the inlined CCharString::operator< (null data blocks ordered first, CBasicString::operator< @ 0x{less:08X} otherwise), then end() unless the key matches",len(b))+f'''//
+// Retail bytes:  push ebx ; push ebp ; mov ebp,[ecx] ; push esi ; mov esi,[ebp+4] ; test esi,esi ; mov ebx,ebp ; je E ; mov eax,[key] ; push edi ; mov edi,[eax] ; L: mov ecx,[esi+10h] ; cmp edi,ecx ; je Lf ; test ecx,ecx ; je Rt ; test edi,edi ; je Lf ; push edi ; call CBasicString::operator< ; test al,al ; jne Rt ; Lf: mov ebx,esi ; mov esi,[esi+8] ; jmp T ; Rt: mov esi,[esi+0Ch] ; T: test esi,esi ; jne L ; pop edi ; E: cmp ebx,ebp ; je H ; mov ecx,[key] ; mov eax,[ebx+10h] ; mov ecx,[ecx] ; cmp eax,ecx ; je F ; test ecx,ecx ; je H ; test eax,eax ; je F ; push eax ; call CBasicString::operator< ; test al,al ; je F ; H: (return head) ; F: (return node)
+// std::map/set::find on the retail tree keyed by CCharString (the key's data-block pointer at
+// +0x10 of the node): lower_bound descends from head->parent (right when node.key < key, else
+// remember the node and go left), then the result is end() (the head) when nothing was found or
+// key < found.key. The string `operator<` is inlined: equal data blocks are not less, a null
+// block sorts first, otherwise CBasicString<char>::operator< @ 0x{less:08X} decides. The node
+// pointer is returned directly (`ret 4`). One of {len(members)} bodies of this shape.
+struct CBasicString {{
+    bool operator<(const CBasicString& other);   // 0x{less:08X} (__thiscall, takes the other data block)
+}};
+
+struct CCharString {{
+    CBasicString* m_pData;
+    bool operator<(const CCharString& other) const
+    {{
+        if (m_pData == other.m_pData)
+            return false;
+        if (m_pData == 0)
+            return true;
+        if (other.m_pData == 0)
+            return false;
+        return m_pData->operator<(*other.m_pData);
+    }}
+}};
+
+struct {cls} {{
+    struct node {{ unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; CCharString key; }};
+    node* head;
+    unsigned long size;
+    node* find(const CCharString& key);
+}};
+
+{cls}::node* {cls}::find(const CCharString& key)
+{{
+    node* result = head;
+    node* n = head->parent;
+    while (n) {{
+        if (!(n->key < key)) {{            // Dinkumware _Lbound: `if (!comp(key(node), k))`
+            result = n;
+            n = n->left;
+        }}
+        else
+            n = n->right;
+    }}
+    if (result == head || key < result->key)
+        return head;                       // end()
+    return result;
+}}
+''',T(a,'''struct BS { int v; bool operator<(const BS& o) { return v < o.v; } };
+struct CS { BS* d; bool operator<(const CS& o) const { if (d == o.d) return false; if (d == 0) return true; if (o.d == 0) return false; return d->operator<(*o.d); } };
+struct T { struct node { unsigned char c, p[3]; node* parent; node* l; node* r; CS k; }; node* h; unsigned long n;
+  node* find(const CS& k) { node* res = h; node* x = h->parent; while (x) { if (!(x->k < k)) { res = x; x = x->l; } else x = x->r; } if (res == h || k < res->k) return h; return res; } };
+int main()
+{
+    BS b5 = { 5 }, b6 = { 6 }; T::node h = {0,{0},0,0,0,{0}}, a = {1,{0},&h,0,0,{&b5}}; h.parent = &a; T t; t.h = &h; t.n = 1; CS k5 = { &b5 }, k6 = { &b6 }; if (t.find(k5) != &a || t.find(k6) != &h) '''+FAIL(a)+'''
+'''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
 OUT.mkdir(parents=True, exist_ok=True)
