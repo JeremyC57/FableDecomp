@@ -198,6 +198,30 @@ Running total for the rescans: 2271/2282 rows from 59 families; catalog 24,042 (
 Parked with evidence in FINDINGS_LOG: the script `Main` shape (163, temporary slot order), the
 default-optimisation `insert` (56, one extra local), `GetSubDef<T>` (151, the release sequence).
 
+### Wave 10 (256-byte rescan, small STL/engine shapes)
+
+Twenty-six more families of the 256-byte scan, 428 rows: the Dinkumware `_Uninit_fill_n`
+family (`__fastcall`, placement copies through out-of-line copy constructors, pair variants with
+one scalar member, the 8-byte trivially-copyable pair: 78), retail vector `push_back` (60: the
+reallocating insert's third argument is a const reference to an EMPTY TAG object — give the tag a
+user constructor so the 1-byte temporary is not zero-stored; VC7.1 homes it in the dead argument
+slot, which is the address retail pushes), `pair<unsigned long, X>` copy constructors (13),
+implicit destructors of non-polymorphic aggregates (31: declare the destructor out of line, a
+`p->~T()` helper inlines it), shared-pointer-member destructors (12), non-virtual `??_G` with a
+base destructor (15), persist read/write hooks (31) and the by-value `CIntelligentPointer` setter
+(13), `LessByKeyThenAddress` (10), recursive tree frees (61), zeroed-member constructors (37),
+list `Buynode` for scalars (10), and `CPersistTraits<T>::TransferBinaryIn` (70: the inlined
+`CMemoryDataInputStream::Read` with its `__int64` range check — `m_position += size` keeps the
+old position live and yields retail's `lea`; a struct-typed local makes the 4-byte memcpy a
+`movsd`, a scalar one forwards straight into the output; frame-pointer + size TU).
+Running total for the rescans: 2699/2714 rows from 84 families; catalog 24,470 (49.4%).
+
+Parked with evidence in FINDINGS_LOG: the vector grow-and-insert F17/F23 (72 rows; every source
+form reproduces the body except which of `count`/`buffer` gets the callee-saved register), the
+persist forwarder F33 (24; retail re-reads the returned argument instead of caching it), and the
+non-frame-pointer `TransferBinaryIn` F24 (31; identical instructions, two range-check jumps target
+the other duplicated tail).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
