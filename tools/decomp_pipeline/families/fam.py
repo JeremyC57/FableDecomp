@@ -7321,6 +7321,582 @@ int main()
 {
     Kill(new X); if (g_d != 1) '''+FAIL(a)+'''
 '''),b)
+    elif TPL in ("w512_87",):   # void CRetailVector::InsertN(T* where, unsigned long count, const T& value) -- VC7.1-style _Insert_n for 8-byte POD elements with out-of-line UninitCopy / CopyBackward / Fill / UninitFillN helpers and a tagged InsertGrow
+        if len(calls)!=7 or retn!=0xc: continue
+        ucopy,cback,fill,ufill,ucopy2,fill2,grow=calls
+        if ucopy!=ucopy2 or fill!=fill2: continue
+        step=[i.operands[1].mem.scale for i in ins if i.mnemonic=="lea" and i.operands[1].mem.scale==8]
+        if not step: continue
+        nm=f"CRetailVector_{a}"
+        add(a,"_global",f"InsertN_{nm}",HDRF(a,f"{nm}::InsertN(T*, unsigned long, const T&) -- insert `count` copies of an 8-byte POD at `where`: InsertGrow @ 0x{grow:08X} when the capacity is short, else the two Dinkumware cases (suffix moved up through UninitCopy @ 0x{ucopy:08X} / CopyBackward @ 0x{cback:08X} / Fill @ 0x{fill:08X}, or UninitFillN @ 0x{ufill:08X} past the end)",len(b))+f'''//
+// Retail bytes:  sub esp,8 ; push esi ; mov esi,ecx ; mov ecx,[count] ; test ecx,ecx ; je R ; mov eax,[esi+4] ; mov edx,[esi+8] ; sub edx,eax ; sar edx,3 ; cmp edx,ecx ; jb G ; mov edx,[value] ; push ebx ; mov ebx,[where] ; push ebp ; sub eax,ebx ; push edi ; mov edi,[edx] ; mov edx,[edx+4] ; sar eax,3 ; cmp eax,ecx ; mov [tmp],edi ; mov edi,[esi+4] ; mov [tmp+4],edx ; mov [tail],eax ; jbe S ; lea ebp,[ecx*8] ; lea eax,[tag] ; mov ecx,edi ; push eax ; sub ecx,ebp ; push edi ; mov edx,edi ; mov [hole],ecx ; call UninitCopy ; mov eax,[esi+4] ; mov edx,[hole] ; lea ecx,[tag] ; push ecx ; add eax,ebp ; push edi ; mov ecx,ebx ; mov [esi+4],eax ; call CopyBackward ; lea edx,[tmp] ; push edx ; lea edx,[ebx+ebp] ; mov ecx,ebx ; call Fill ; pop edi ; pop ebp ; pop ebx ; R: pop esi ; add esp,8 ; ret 0Ch ; S: mov ebp,ecx ; sub ebp,eax ; lea eax,[tmp] ; push eax ; mov edx,ebp ; mov ecx,edi ; call UninitFillN ; mov edx,[esi+4] ; lea ecx,[ebp*8] ; add edx,ecx ; mov eax,edx ; mov [esi+4],edx ; lea edx,[tag] ; push edx ; push eax ; mov edx,edi ; mov ecx,ebx ; call UninitCopy ; mov eax,[tail] ; mov edx,[esi+4] ; lea ecx,[eax*8] ; add edx,ecx ; mov [esi+4],edx ; lea edx,[tmp] ; push edx ; mov edx,edi ; mov ecx,ebx ; call Fill ; pop edi ; pop ebp ; pop ebx ; pop esi ; add esp,8 ; ret 0Ch ; G: mov edx,[where] ; push 0 ; push ecx ; mov ecx,[value] ; lea eax,[tag] ; push eax ; push ecx ; push edx ; mov ecx,esi ; call InsertGrow ; pop esi ; add esp,8 ; ret 0Ch
+// Retail vector `_Insert_n` for 8-byte trivially-copyable elements (the value is copied into a
+// frame temporary first, VC7.1 Dinkumware style): with spare capacity the Dinkumware two-case
+// split applies -- when more elements follow `where` than are inserted, the last `count` are
+// placement-moved past the end (UninitCopy, __fastcall with a tag), the hole is closed by
+// CopyBackward and filled; otherwise the overflow is placement-filled past the end (UninitFillN),
+// the suffix moved up and the old range filled -- else InsertGrow reallocates (the empty tag and
+// the spilled locals share dead argument slots). The manifest label is propagated; names are
+// descriptive. One of {len(members)} bodies of this shape.
+struct SElement {{                           // 8-byte POD element
+    long m_first;
+    long m_second;
+}};
+
+struct SScalarTag {{ SScalarTag() {{ }} }};   // user constructor: no zero-initialisation of the 1-byte temporary
+
+SElement* __fastcall UninitCopy_{ucopy:08x}(SElement* first, SElement* last, SElement* dest, const SScalarTag& tag);     // 0x{ucopy:08X}
+SElement* __fastcall CopyBackward_{cback:08x}(SElement* first, SElement* last, SElement* result, const SScalarTag& tag); // 0x{cback:08X}
+void __fastcall Fill_{fill:08x}(SElement* first, SElement* last, const SElement& value);                                  // 0x{fill:08X}
+SElement* __fastcall UninitFillN_{ufill:08x}(SElement* first, unsigned long count, const SElement& value);               // 0x{ufill:08X}
+
+struct {nm} {{
+    SElement* first;                       // +0
+    SElement* last;                        // +4
+    SElement* end;                         // +8
+    void InsertGrow(SElement* where, const SElement& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x{grow:08X}
+    void InsertN_{nm}(SElement* where, unsigned long count, const SElement& value);
+}};
+
+void {nm}::InsertN_{nm}(SElement* where, unsigned long count, const SElement& value)
+{{
+    if (count != 0) {{
+        if ((unsigned long)(end - last) < count)
+            InsertGrow(where, value, SScalarTag(), count, false);
+        else {{
+            SElement tmp = value;              // in case the value lives in the sequence
+            unsigned long tail = last - where;
+            SElement* oldLast = last;
+            if (count < tail) {{
+                SElement* hole = oldLast - count;
+                UninitCopy_{ucopy:08x}(hole, oldLast, oldLast, SScalarTag());
+                last += count;
+                CopyBackward_{cback:08x}(where, hole, oldLast, SScalarTag());
+                Fill_{fill:08x}(where, where + count, tmp);
+            }}
+            else {{
+                UninitFillN_{ufill:08x}(oldLast, count - tail, tmp);
+                last += count - tail;
+                UninitCopy_{ucopy:08x}(where, oldLast, last, SScalarTag());
+                last += tail;
+                Fill_{fill:08x}(where, oldLast, tmp);
+            }}
+        }}
+    }}
+}}
+''',T(a,'''struct E { long a, b; }; struct Tg { Tg() {} }; static int g_g = 0;
+static E* __fastcall UC(E* f, E* l, E* d, const Tg&) { while (f != l) *d++ = *f++; return d; }
+static E* __fastcall CB(E* f, E* l, E* r, const Tg&) { while (l != f) *--r = *--l; return r; }
+static void __fastcall FL(E* f, E* l, const E& v) { while (f != l) *f++ = v; }
+static E* __fastcall UF(E* f, unsigned long n, const E& v) { while (n--) *f++ = v; return f; }
+struct V { E* f; E* l; E* e; void G(E*, const E&, const Tg&, unsigned long, bool) { ++g_g; }
+    void I(E* w, unsigned long n, const E& v) { if (n != 0) { if ((unsigned long)(e - l) < n) G(w, v, Tg(), n, false); else { E t = v; unsigned long tl = l - w; E* ol = l;
+        if (n < tl) { E* h = ol - n; UC(h, ol, ol, Tg()); l += n; CB(w, h, ol, Tg()); FL(w, w + n, t); } else { UF(ol, n - tl, t); l += n - tl; UC(w, ol, l, Tg()); l += tl; FL(w, ol, t); } } } } };
+int main()
+{
+    E buf[8]; for (int i = 0; i < 8; ++i) { buf[i].a = i; buf[i].b = 0; } V v; v.f = buf; v.l = buf + 4; v.e = buf + 8; E x; x.a = 9; x.b = 9;
+    v.I(buf + 1, 1, x); if (v.l != buf + 5 || buf[1].a != 9 || buf[2].a != 1 || buf[4].a != 3) '''+FAIL(a)+'''
+    v.I(buf + 4, 3, x); if (v.l != buf + 8 || buf[7].a != 4 || buf[5].a != 9 || g_g != 0) '''+FAIL(a)+'''
+    v.I(buf + 4, 3, x); if (g_g != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_5",):   # CCountedPointer<X> CFactory::CreateActiveEntity(CScriptThing* thing, __int64 key) -- cached lookup through a function pointer when enabled, new X(...) with the derived constructor inlined, counted result
+        if len(calls)!=9 or retn!=0x10: continue
+        dtor,newer,bctor,share,resctor,dtor2,newer2,bctor2,resctor2=calls
+        if dtor!=dtor2 or newer!=newer2 or bctor!=bctor2 or resctor!=resctor2: continue
+        vts2=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and 0x1200000<=i.operands[1].imm<0x1300000]
+        if len(vts2)!=2 or vts2[0]!=vts2[1]: continue
+        vt=vts2[0]; size=[p for p in pushes if p==0x60]
+        if len(size)!=2: continue
+        # tail: the second CActiveEntityScriptBase ctor call and the result ctor
+        tail=[c for c in calls[7:]] if len(calls)>7 else []
+        cls=rtti.get(vt) or f"CActiveEntity_{vt:08x}"
+        fname=f"CreateActiveEntity_{a}"
+        add(a,"_global",fname,HDRF(a,f"CCountedPointer<{cls}> CScriptFactory::{fname}(CScriptThing*, __int64) -- with the cache enabled: lookup through the function pointer at +0x10, counted copy, virtual slot 2, new {cls} (0x60 bytes, base ctor @ 0x{bctor:08X}, ShareData @ 0x{share:08X}); else new {cls} over the cache fields; result built @ 0x{resctor:08X}",len(b))+f'''//
+// Retail bytes:  sub esp,10h ; push ebx ; push ebp ; push esi ; mov esi,ecx ; mov al,[esi+14h] ; test al,al ; push edi ; je N ; mov edx,[esi+8] ; mov eax,[thing] ; mov ecx,[edx+44h] ; push eax ; push ecx ; lea ecx,[tmp] ; call [esi+10h] ; mov ebx,[eax+4] ; test ebx,ebx ; mov ebp,[eax] ; mov [cp],ebp ; mov [cp+4],ebx ; je K ; inc dword ptr [ebx] ; K: lea ecx,[tmp] ; call ~CCountedPointer ; mov edx,[ebp] ; mov ecx,ebp ; call [edx+8] ; push 60h ; call operator new ; mov edi,eax ; add esp,4 ; test edi,edi ; je Z ; (base ctor over thing, key, m_18 with m_8 spilled) ; mov [edi],vtable ; mov [edi+5Ch],cache ; lea ecx,[edi+34h] ; push ebx ; push ebp ; call ShareData ; jmp J ; Z: xor edi,edi ; J: mov esi,[result] ; push edi ; mov ecx,esi ; call CCountedPointer(X*) ; lea ecx,[cp] ; call ~CCountedPointer ; pop edi ; mov eax,esi ; pop esi ; pop ebp ; pop ebx ; add esp,10h ; ret 10h ; N: push 60h ; call operator new ; ... base ctor ; mov [edi],vtable ; mov [edi+58h],m_c ; mov [edi+5Ch],m_8 ; ... ; ret 10h
+// Script-entity factory returning a counted pointer through the hidden result pointer: when the
+// cache flag at +0x14 is set, the lookup function pointer at +0x10 is called (hidden result in
+// ecx, the cache table at +0x44 of the cache object at +8 and the thing on the stack), the
+// returned counted pointer is converted into a local copy (count incremented) and the temporary
+// destroyed (@ 0x{dtor:08X}), virtual slot 2 of the pointee runs, and a new {cls} (0x60 bytes) is
+// built: base constructor @ 0x{bctor:08X} over (thing, key, +0x18), vtable 0x{vt:08X}, the
+// counted member at +0x34 shared from the copy (@ 0x{share:08X}), the cache stored at +0x5C.
+// Without the cache the entity is built over the +0xC and +0x8 fields instead. The result is
+// constructed from the raw pointer @ 0x{resctor:08X} and the copy destroyed. Manifest labels are
+// propagated across the script modules; names are descriptive. One of {len(members)} bodies.
+struct CScriptThing;
+struct CScriptCache;
+
+struct SCountBlock {{
+    long m_references;                     // +0
+    void (__fastcall* m_pfnDestroy)(void*);// +4
+    void* m_pObject;                       // +8
+}};
+
+struct CCachedEntity {{
+    virtual void v00();
+    virtual void v01();
+    virtual void Touch();                  // slot 2
+}};
+
+struct CCountedPointerBase {{             // the lookup's return type
+    CCachedEntity* m_pData;                // +0
+    SCountBlock* m_pInfo;                  // +4
+    ~CCountedPointerBase();                // 0x{dtor:08X}
+}};
+
+struct CCountedPointerCached {{           // the local copy (converting constructor inlined)
+    CCachedEntity* m_pData;                // +0
+    SCountBlock* m_pInfo;                  // +4
+    CCountedPointerCached(const CCountedPointerBase& other) : m_pData(other.m_pData), m_pInfo(other.m_pInfo)
+    {{
+        if (m_pInfo)
+            ++m_pInfo->m_references;
+    }}
+    ~CCountedPointerCached();              // 0x{dtor:08X} (same body as the base's)
+}};
+
+struct CCountedPointerShared {{
+    unsigned char _body[8];
+    void ShareData(CCachedEntity* data, SCountBlock* info);   // 0x{share:08X}
+}};
+
+struct CActiveEntityScriptBase {{
+    virtual void v00();
+    unsigned char _body[0x30];
+    CActiveEntityScriptBase(CScriptThing* thing, __int64 key, unsigned long id);   // 0x{bctor:08X}
+}};
+
+struct {cls} : CActiveEntityScriptBase {{  // sizeof = 0x60
+    CCountedPointerShared m_34;            // +0x34
+    unsigned char _pad[0x1c];
+    void* m_58;                            // +0x58
+    CScriptCache* m_5c;                    // +0x5C
+    {cls}(CScriptThing* thing, __int64 key, unsigned long id, const CCountedPointerCached& cached, CScriptCache* cache)
+        : CActiveEntityScriptBase(thing, key, id)
+    {{
+        m_34.ShareData(cached.m_pData, cached.m_pInfo);
+        m_5c = cache;
+    }}
+    {cls}(CScriptThing* thing, __int64 key, unsigned long id, void* owner, CScriptCache* cache)
+        : CActiveEntityScriptBase(thing, key, id)
+    {{
+        m_58 = owner;
+        m_5c = cache;
+    }}
+}};
+
+struct CCountedPointerResult {{
+    {cls}* m_pData;                        // +0
+    SCountBlock* m_pInfo;                  // +4
+    CCountedPointerResult({cls}* data);    // 0x{resctor:08X}
+}};
+
+struct SCacheTable {{
+    unsigned char _pad[0x44];
+    void* m_44;                            // +0x44
+}};
+
+typedef CCountedPointerBase (__fastcall* PFNLookup)(void* table, CScriptThing* thing);
+
+struct CScriptFactory {{
+    void* m_00;
+    void* m_04;
+    SCacheTable* m_08;                     // +8 cache object
+    void* m_0c;                            // +0xC
+    PFNLookup m_10;                        // +0x10 lookup
+    unsigned char m_14;                    // +0x14 cache enabled
+    unsigned char _pad[3];
+    unsigned long m_18;                    // +0x18
+    CCountedPointerResult {fname}(CScriptThing* thing, __int64 key);
+}};
+
+CCountedPointerResult CScriptFactory::{fname}(CScriptThing* thing, __int64 key)
+{{
+    if (m_14) {{
+        CCountedPointerCached cached = m_10(m_08->m_44, thing);
+        cached.m_pData->Touch();
+        return CCountedPointerResult(new {cls}(thing, key, m_18, cached, (CScriptCache*)m_08));
+    }}
+    return CCountedPointerResult(new {cls}(thing, key, m_18, m_0c, (CScriptCache*)m_08));
+}}
+''',T(a,'''static int g_t = 0; struct Blk { long r; }; struct Ent { virtual void a() {} virtual void b() {} virtual void T() { ++g_t; } };
+struct PB { Ent* d; Blk* i; ~PB() {} }; struct PC { Ent* d; Blk* i; PC(const PB& o) : d(o.d), i(o.i) { if (i) ++i->r; } ~PC() {} };
+struct Sh { unsigned char b[8]; void S(Ent*, Blk*) { ++g_t; } };
+struct Base { virtual void v() {} unsigned char b[0x30]; Base(void*, __int64, unsigned long) {} };
+struct X : Base { Sh m; unsigned char p[0x1c]; void* o; void* c; X(void* t, __int64 k, unsigned long id, const PC& pc, void* cc) : Base(t, k, id) { m.S(pc.d, pc.i); c = cc; } X(void* t, __int64 k, unsigned long id, void* ow, void* cc) : Base(t, k, id) { o = ow; c = cc; } };
+struct R { X* d; Blk* i; R(X* x) : d(x), i(0) {} }; struct Tb { unsigned char p[0x44]; void* t; };
+static Ent g_e; static Blk g_b = { 1 };
+static PB __fastcall LK(void*, void*) { PB p; p.d = &g_e; p.i = &g_b; return p; }
+struct F { void* a; void* b; Tb* t; void* c; PB (__fastcall* fn)(void*, void*); unsigned char en; unsigned char pad[3]; unsigned long id;
+    R C(void* th, __int64 k) { if (en) { PC pc = fn(t->t, th); pc.d->T(); return R(new X(th, k, id, pc, t)); } return R(new X(th, k, id, c, t)); } };
+int main()
+{
+    Tb tb; F f; f.t = &tb; f.fn = LK; f.en = 1; f.id = 3; f.c = 0; R r = f.C(0, 5); if (!r.d || g_t != 2 || g_b.r != 2) '''+FAIL(a)+'''
+    delete r.d; f.en = 0; R r2 = f.C(0, 5); if (!r2.d || g_t != 2) '''+FAIL(a)+'''
+    delete r2.d;
+'''),b)
+    elif TPL in ("w512_113",):   # CX* CX::Construct(SIter first, SIter last, void* a) { return RangeInitialize(STag(), first, last, a); }  -- frame-pointer TU, by-value 4-byte iterator classes with user copy constructors (slot reserved by push, then stored), __fastcall helper with the tag in edx
+        if len(calls)!=1 or retn!=0xc or b[:3]!=b"\x55\x8b\xec": continue
+        helper=calls[0]
+        if not any(i.mnemonic=="lea" and "ebp + 0x13" in i.op_str for i in ins): continue
+        nm=f"CRangeString_{a}"
+        add(a,"_unattributed",f"Construct_{nm}",HDRF(a,f"{nm}::Construct(SIterator, SIterator, void*) -- forwards to the __fastcall range initialiser @ 0x{helper:08X} with an empty tag in edx, the two 4-byte iterator classes copied by value into reserved slots; returns this",len(b))+f'''//
+// Retail bytes:  push ebp ; mov ebp,esp ; push esi ; push [ebp+10h] ; mov esi,ecx ; push ecx ; mov ecx,[ebp+0Ch] ; mov eax,esp ; mov [eax],ecx ; push ecx ; mov ecx,[ebp+8] ; mov eax,esp ; mov [eax],ecx ; lea edx,[ebp+13h] ; mov ecx,esi ; call RangeInitialize ; mov eax,esi ; pop esi ; pop ebp ; ret 0Ch
+// STLport-style string range constructor forwarder: the two iterators are 4-byte classes with a
+// user copy constructor, so each by-value argument is passed by reserving its slot (`push ecx`)
+// and constructing the copy in place (`mov eax,esp ; mov [eax],ecx`); the helper @ 0x{helper:08X}
+// is a __fastcall member taking the empty dispatch tag by reference in edx (homed in the high
+// byte of a dead argument slot) and returning nothing used -- `this` is returned. The frame
+// pointer comes from this translation unit's `optimize("y", off)`. The manifest label
+// (`CPersistTraits<C2DVector>::TransferIn`) is propagated across the family. One of {len(members)} bodies.
+#pragma optimize("y", off)              // frame pointer kept in this TU
+
+struct SScalarTag {{ SScalarTag() {{ }} }};   // user constructor: no zero-initialisation of the 1-byte temporary
+
+struct SIterator {{                          // 4-byte iterator class with a user copy constructor
+    const unsigned short* m_pCurrent;    // wide character (wchar_t is a typedef under VC7.1 defaults)
+    SIterator(const SIterator& other) : m_pCurrent(other.m_pCurrent) {{ }}
+}};
+
+struct {nm} {{
+    void* m_pData;
+    void __fastcall RangeInitialize(const SScalarTag& tag, SIterator first, SIterator last, void* allocator);   // 0x{helper:08X}
+    {nm}* Construct_{nm}(SIterator first, SIterator last, void* allocator);
+}};
+
+{nm}* {nm}::Construct_{nm}(SIterator first, SIterator last, void* allocator)
+{{
+    RangeInitialize(SScalarTag(), first, last, allocator);
+    return this;
+}}
+''',T(a,'''static int g_n = 0; struct Tg { Tg() {} }; struct It { const unsigned short* p; It(const It& o) : p(o.p) {} It(const unsigned short* x) : p(x) {} };
+struct Str { void* d; void __fastcall RI(const Tg&, It f, It l, void*) { g_n = (int)(l.p - f.p); } Str* C(It f, It l, void* a) { RI(Tg(), f, l, a); return this; } };
+int main()
+{
+    static const unsigned short w[] = { 97, 98, 99, 0 }; Str s; It f(w), l(w + 3); if (s.C(f, l, 0) != &s || g_n != 3) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_82",):   # CX::CX(owner, thing) : CCombatActionBase(owner, thing, K, GetSoundPair(owner, "LIT")) { [CCharString name("LIT2", -1); SetPDef(name);] }
+        if retn!=8 or len(vts)!=1 or len(calls) not in (4,7): continue
+        sctor,sound,base,sdtor=calls[:4]
+        if sctor!=0x99ebf0 or sdtor!=0x99eae0: continue
+        lits=[p for p in pushes if 0x1200000<=p<0x1300000]
+        if len(lits)!=(1 if len(calls)==4 else 2): continue
+        s=lit(lits[0]); k=[p for p in pushes if 0<=p<0x10000][0]; vt=vts[0][1]; cls=rtti.get(vt) or f"CVtable_{vt:08x}"
+        bm,bn,_=label(base); basecls=bm.split("::")[-1] if (bm,bn) in uniq or bm=="CCombatActionBase" else f"CBase_{base:08x}"
+        setter=calls[5] if len(calls)==7 else 0; s2=lit(lits[1]) if setter else None
+        if setter and (calls[4]!=0x99ebf0 or calls[6]!=0x99eae0): continue
+        body=(f'''    {{
+        CCharString name("{s2}", -1);      // scoped named local (a bare temporary would reuse eax, GOTCHAS)
+        SetName(name);                     // 0x{setter:08X}
+    }}
+''' if setter else "")
+        add(a,cls,cls,HDRF(a,f"{cls}::{cls}(CThingCreatureBase*, CThing*) -- base {basecls}(owner, thing, {k}, GetSoundPair(owner, {s}))" + (f', then the name {s2} through the setter @ 0x{setter:08X}' if setter else ""),len(b))+f'''//
+// Retail bytes:  sub esp,0Ch ; push esi ; push edi ; push -1 ; mov esi,ecx ; push offset "{s}" ; lea ecx,[esp+10h] ; call CCharString::CCharString ; mov edi,[owner] ; lea eax,[esp+8] ; push eax ; mov edx,edi ; lea ecx,[esp+10h] ; call GetSoundPair ; mov ecx,[thing] ; push eax ; push {k:#x} ; push ecx ; push edi ; mov ecx,esi ; call {basecls}::{basecls} ; lea ecx,[esp+8] ; call CCharString::~CCharString ; {"push -1 ; push offset lit2 ; lea ecx,[esp+20h] ; mov dword ptr [esi],offset vftable ; call CCharString::CCharString ; lea edx,[esp+18h] ; push edx ; mov ecx,esi ; call setter ; lea ecx,[esp+18h] ; call CCharString::~CCharString ; pop edi" if setter else "pop edi ; mov dword ptr [esi],offset vftable"} ; mov eax,esi ; pop esi ; add esp,0Ch ; ret 8
+// Two-argument combat-action constructor whose sound pair comes from the __fastcall
+// GetSoundPair @ 0x{sound:08X}: the name literal converts implicitly to a CCharString temporary
+// (re-addressed with `lea`, GOTCHAS), the 8-byte CSoundPair result lands in a frame temporary
+// through the hidden pointer in ecx and is handed by reference to the base constructor
+// @ 0x{base:08X} with the action code {k} ({k:#x}); the string temporary dies after the base
+// constructor, then this class's vtable (0x{vt:08X}, rtti-vtables.tsv) is stored{" and a scoped CCharString passed to the setter @ 0x%08X (its manifest label is propagated)" % setter if setter else ""}.
+// One of {len(members)} bodies of this shape.
+struct CThingCreatureBase;
+struct CThing;
+
+struct CCharString {{                     // one pointer; the default length makes the literal convert implicitly
+    void* m_pData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                        // 0x0099EAE0
+}};
+
+struct CSoundPair {{                       // a user constructor makes the 8-byte result return through the hidden pointer (a POD would ride in edx:eax)
+    long m_first;
+    long m_second;
+    CSoundPair() : m_first(0), m_second(0) {{ }}
+}};
+
+CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x{sound:08X}
+
+struct {basecls} {{
+    virtual void v00();
+    {basecls}(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x{base:08X}
+{"    void SetName(const CCharString& name);   // 0x%08X" % setter + chr(10) if setter else ""}}};
+
+struct {cls} : {basecls} {{
+    virtual void v00();
+    {cls}(CThingCreatureBase* owner, CThing* thing);
+}};
+
+{cls}::{cls}(CThingCreatureBase* owner, CThing* thing)
+    : {basecls}(owner, thing, {k}, GetSoundPair(owner, "{s}"))
+{{
+{body}}}
+''',T(a,'''static long g_k = 0, g_s = 0; struct Str { const char* s; Str(const char* x, long = -1) : s(x) {} ~Str() { ++g_s; } }; struct SP { long a, b; SP() : a(0), b(0) {} };
+static SP __fastcall GSP(void*, const Str& n) { SP p; p.a = n.s[0]; p.b = 1; return p; }
+struct Base { virtual void v00() {} Base(void*, void*, long k, const SP& p) { g_k = k + p.a + p.b; } };
+struct D : Base { virtual void v00() {} D(void* o, void* t) : Base(o, t, 0x96, GSP(o, "A")) {} };
+int main()
+{
+    D d(0, 0); if (g_k != 0x96 + 'A' + 1 || g_s != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_74",):   # unsigned long CRetailTree::EraseKey(const K& key) { SRange r = EqualRange(key); unsigned long n = Distance(r.first, r.second, STag()); Erase(r.first, r.second); return n; }
+        if len(calls)!=3 or retn!=4: continue
+        eq,dist,erase=calls
+        if not any(i.mnemonic=="add" and i.op_str=="esp, 8" for i in ins): continue
+        nm=f"CRetailTree_{a}"
+        add(a,"_unattributed",f"EraseKey_{nm}",HDRF(a,f"{nm}::EraseKey(const void*&) -- EqualRange @ 0x{eq:08X} (pair of iterators through the hidden pointer), count through the __cdecl Distance @ 0x{dist:08X} with a tag homed in the dead key slot, Erase(first, last) @ 0x{erase:08X} by value, count returned",len(b))+f'''//
+// Retail bytes:  mov eax,[key] ; sub esp,8 ; push esi ; push edi ; mov esi,ecx ; push eax ; lea ecx,[range] ; push ecx ; mov ecx,esi ; call EqualRange ; lea edx,[tag] ; push edx ; lea eax,[range.second] ; push eax ; lea ecx,[range.first] ; push ecx ; call Distance ; mov edx,[range.second] ; add esp,8 ; mov edi,eax ; mov eax,esp ; push ecx ; mov ecx,[range.first] ; mov [eax],edx ; mov eax,esp ; mov [eax],ecx ; mov ecx,esi ; call Erase ; mov eax,edi ; pop edi ; pop esi ; add esp,8 ; ret 4
+// Dinkumware-style `erase(const key_type&)`: the equal range comes back as a pair of 4-byte
+// iterator classes through the hidden result pointer (the pair is not trivially copyable: the
+// iterator has a user copy constructor), the __cdecl Distance helper counts it (its tag temporary
+// is homed in the now-dead key argument slot, and VC pops only two of its three slots, reusing
+// the third for the next call), and the range is erased with both iterators passed by value
+// (slot reserved by `push`, then stored). Manifest labels are propagated; names are descriptive.
+// One of {len(members)} bodies of this shape.
+struct SNode;
+
+struct SScalarTag {{ SScalarTag() {{ }} }};   // user constructor: no zero-initialisation of the 1-byte temporary
+
+struct SIterator {{                          // 4-byte iterator class with a user copy constructor
+    SNode* m_pNode;
+    SIterator(const SIterator& other) : m_pNode(other.m_pNode) {{ }}
+}};
+
+struct SRange {{                             // returned through the hidden pointer
+    SIterator first;
+    SIterator second;
+}};
+
+unsigned long __cdecl Distance_{dist:08x}(const SIterator& first, const SIterator& last, const SScalarTag& tag);   // 0x{dist:08X}
+
+struct {nm} {{
+    SNode* head;                           // +0
+    unsigned long size;                    // +4
+    SRange EqualRange(const void* const& key);          // 0x{eq:08X}
+    void Erase(SIterator first, SIterator last);        // 0x{erase:08X}
+    unsigned long EraseKey_{nm}(const void* const& key);
+}};
+
+unsigned long {nm}::EraseKey_{nm}(const void* const& key)
+{{
+    SRange range = EqualRange(key);
+    unsigned long count = Distance_{dist:08x}(range.first, range.second, SScalarTag());
+    Erase(range.first, range.second);
+    return count;
+}}
+''',T(a,'''static int g_e = 0; struct Tg { Tg() {} }; struct It { long* p; It(const It& o) : p(o.p) {} It(long* x) : p(x) {} }; struct R { It f; It s; R(long* a, long* b) : f(a), s(b) {} };
+static unsigned long __cdecl D(const It& f, const It& l, const Tg&) { return (unsigned long)(l.p - f.p); }
+struct Tr { long* h; unsigned long sz; R EQ(const void* const&) { return R(h, h + 3); } void E(It, It) { ++g_e; } unsigned long EK(const void* const& k) { R r = EQ(k); unsigned long n = D(r.f, r.s, Tg()); E(r.f, r.s); return n; } };
+int main()
+{
+    long buf[4]; Tr t; t.h = buf; t.sz = 3; const void* k = 0; if (t.EK(k) != 3 || g_e != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_10",):   # frame-pointer forwarder: void* CX::F(void* a, void* unused) { return Helper(a, STag(), 0); }  (tag homed in the high byte of the dead second slot)
+        if len(calls)!=1 or retn!=8 or b[:3]!=b"\x55\x8b\xec": continue
+        helper=calls[0]
+        if not any(i.mnemonic=="lea" and "ebp + 0xb" in i.op_str for i in ins): continue
+        nm=f"CForwarder_{a}"
+        add(a,"_unattributed",f"Forward_{nm}",HDRF(a,f"{nm}::Forward(void*, void*) -- frame-pointer forwarder to the __thiscall helper @ 0x{helper:08X} with an empty tag (homed in the dead second slot) and a zero; the second argument is unused",len(b))+f'''//
+// Retail bytes:  push ebp ; mov ebp,esp ; push 0 ; lea eax,[ebp+0Bh] ; push eax ; push [ebp+8] ; call Helper ; pop ebp ; ret 8
+// A two-argument forwarder in a frame-pointer translation unit: the first argument and a zero
+// are passed to the __thiscall helper @ 0x{helper:08X} together with a 1-byte empty tag
+// temporary that VC homes in the high byte of the (dead) second argument's slot; the helper's
+// result rides through eax. The manifest label (`_Copy_impl<CArray<...>>`) is propagated.
+// One of {len(members)} bodies of this shape.
+#pragma optimize("y", off)              // frame pointer kept in this TU
+
+struct SScalarTag {{ SScalarTag() {{ }} }};   // user constructor: no zero-initialisation of the 1-byte temporary
+
+struct {nm} {{
+    void* Helper(void* first, const SScalarTag& tag, long zero);   // 0x{helper:08X}
+    void* Forward_{nm}(void* first, void* unused);
+}};
+
+void* {nm}::Forward_{nm}(void* first, void* unused)
+{{
+    return Helper(first, SScalarTag(), 0);
+}}
+''',T(a,'''struct Tg { Tg() {} }; struct X { void* H(void* f, const Tg&, long z) { return (char*)f + z; } void* F(void* f, void*) { return H(f, Tg(), 0); } };
+int main()
+{
+    X x; int v; if (x.F(&v, 0) != &v) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_22",):   # SResult CX::F(SHandle b, void* c) { return Helper(b, c); }  -- hidden result pointer forwarded, 4-byte class copied by value into a reserved slot
+        if len(calls)!=1 or retn!=0xc or b[0]!=0xff: continue
+        helper=calls[0]; nm=f"CForwarder_{a}"
+        add(a,"_unattributed",f"Forward_{nm}",HDRF(a,f"{nm}::Forward(SHandle, void*) -- forwards the hidden result pointer, the by-value 4-byte handle (copied into a reserved slot) and the pointer to the __thiscall helper @ 0x{helper:08X}",len(b))+f'''//
+// Retail bytes:  push [c] ; mov edx,[handle] ; push ecx ; mov eax,esp ; push [result] ; mov [eax],edx ; call Helper ; mov eax,[result] ; ret 0Ch
+// A forwarder returning a class through the hidden pointer: `return Helper(handle, c)` passes
+// its own result pointer straight through, copies the 4-byte handle class (user copy
+// constructor, so the slot is reserved by `push ecx` and the copy stored in place) and the
+// trailing pointer, and returns the result pointer. The manifest label
+// (`CPersistTraits<C2DVector>::TransferIn`) is propagated. One of {len(members)} bodies of this shape.
+struct SHandle {{                            // 4-byte class with a user copy constructor
+    void* m_pObject;
+    SHandle(const SHandle& other) : m_pObject(other.m_pObject) {{ }}
+}};
+
+struct SResult {{                            // returned through the hidden pointer
+    void* m_pValue;
+    SResult(const SResult& other) : m_pValue(other.m_pValue) {{ }}
+}};
+
+struct {nm} {{
+    SResult Helper(SHandle handle, void* context);   // 0x{helper:08X}
+    SResult Forward_{nm}(SHandle handle, void* context);
+}};
+
+SResult {nm}::Forward_{nm}(SHandle handle, void* context)
+{{
+    return Helper(handle, context);
+}}
+''',T(a,'''struct H { void* p; H(const H& o) : p(o.p) {} H(void* x) : p(x) {} }; struct R { void* v; R(const R& o) : v(o.v) {} R(void* x) : v(x) {} };
+struct X { R Hp(H h, void* c) { return R(c ? c : h.p); } R F(H h, void* c) { return Hp(h, c); } };
+int main()
+{
+    X x; int a, b; H h(&a); R r = x.F(h, &b); if (r.v != &b) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_56","w512_98"):   # void __fastcall WriteState(CDataOutputStream* out, STree* tree): write the count, then each node's two fields walking the tree with the successor helper
+        if len(calls)!=4 or retn!=0 or calls[0]!=calls[1]: continue
+        w1,w2,w3,nxt=calls; isf=(TPL=="w512_98")
+        if (not isf and w3!=w1) or (isf and w3==w1): continue
+        add(a,"_global",f"WriteState_{a}",HDRF(a,f"WriteState(CDataOutputStream*, STree*) -- writes the count at +4 and, for every node from the leftmost to the head, the {'long and float' if isf else 'two dword'} fields at +0x10/+0x14 through the stream writers @ 0x{w1:08X}{' / 0x%08X' % w3 if isf else ''}; successor through the __cdecl helper @ 0x{nxt:08X}",len(b))+f'''//
+// Retail bytes:  push ebx ; push esi ; push edi ; mov edi,edx ; push [edi+4] ; mov ebx,ecx ; call Write ; mov eax,[edi] ; mov esi,[eax+8] ; cmp esi,eax ; je E ; L: push [esi+10h] ; mov ecx,ebx ; call Write ; {"fld dword ptr [esi+14h] ; push ecx ; mov ecx,ebx ; fstp dword ptr [esp] ; call WriteFloat" if isf else "push [esi+14h] ; mov ecx,ebx ; call Write"} ; push esi ; call Next ; mov esi,eax ; cmp esi,[edi] ; pop ecx ; jne L ; E: pop edi ; pop esi ; pop ebx ; ret
+// __fastcall serialiser of a tree-backed container: the element count at +4 is written first,
+// then every node from the leftmost (+8 of the head) until the head is reached again writes its
+// fields at +0x10 and +0x14 ({'the second as a float through the float writer' if isf else 'both as dwords'}); the successor comes from the __cdecl
+// helper @ 0x{nxt:08X} (its argument popped into ecx: a size TU) and the head is re-read from the
+// tree each iteration. Labels are propagated (`CDataOutputStream::WriteCBYTE`, `GetNoAllocatedAreas`);
+// names are descriptive. One of {len(members)} bodies of this shape.
+struct SNode {{
+    unsigned char _pad[0x10];
+    long m_10;                             // +0x10
+    {"float" if isf else "long"} m_14;{" "*(26 if isf else 27)}// +0x14
+}};
+
+struct STree {{
+    SNode* m_head;                         // +0 (leftmost at +8 of the head)
+    long m_count;                          // +4
+}};
+
+struct SHead {{
+    unsigned char _pad[8];
+    SNode* m_leftmost;                     // +8
+}};
+
+struct CDataOutputStream {{
+    void Write(long value);                // 0x{w1:08X}
+{"    void WriteFloat(float value);          // 0x%08X" % w3 + chr(10) if isf else ""}}};
+
+SNode* __cdecl TreeNext_{nxt:08x}(SNode* node);   // 0x{nxt:08X}
+
+void __fastcall WriteState_{a}(CDataOutputStream* out, STree* tree)
+{{
+    out->Write(tree->m_count);
+    for (SNode* node = ((SHead*)tree->m_head)->m_leftmost; node != (SNode*)tree->m_head; node = TreeNext_{nxt:08x}(node)) {{
+        out->Write(node->m_10);
+        out->{"WriteFloat" if isf else "Write"}(node->m_14);
+    }}
+}}
+''',T(a,'''static long g_s = 0; struct N { unsigned char p[0x10]; long a; '''+("float" if isf else "long")+''' b; N* next; };
+struct Hd { unsigned char p[8]; N* lm; }; struct T { N* h; long c; };
+struct O { void W(long v) { g_s += v; } void WF(float v) { g_s += (long)v; } };
+static N* __cdecl NX(N* n) { return n->next; }
+static void __fastcall WS(O* o, T* t) { o->W(t->c); for (N* n = ((Hd*)t->h)->lm; n != (N*)t->h; n = NX(n)) { o->W(n->a); o->'''+("WF" if isf else "W")+'''(n->b); } }
+int main()
+{
+    Hd hd; N n1; n1.a = 1; n1.b = 2; n1.next = (N*)&hd; hd.lm = &n1; T t; t.h = (N*)&hd; t.c = 10; O o; WS(&o, &t); if (g_s != 13) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_64",):   # void CPersistContext::TransferFloat(float* value) { CheckCRC(""); switch (m_mode) { case 2: CPersistTraits<float>().TransferBinaryIn(m_pLoadStream, value); break; case 3: m_pSaveStream->Write(*value); break; } }
+        if len(calls)!=3 or retn!=4: continue
+        crc,wr,rd=calls; litva=[p for p in pushes if p>0x1200000][0]; s=lit(litva)
+        if not any(i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "esp" in i.op_str and i.operands[1].type==X86_OP_IMM and i.operands[1].imm==0 for i in ins): continue
+        add(a,"CPersistContext",f"TransferFloat_{a}",HDRF(a,f"CPersistContext::TransferFloat(float*) -- CheckCRC({s!r}), then mode 2 reads through a zeroed CPersistTraits<float> temporary (TransferBinaryIn @ 0x{rd:08X}, load stream +0x24), mode 3 writes the value to the save stream (+0x28, @ 0x{wr:08X})",len(b))+f'''//
+// Retail bytes:  push ecx ; push esi ; push offset "" ; mov esi,ecx ; call CPersistContext::CheckCRC ; mov eax,[esi+18h] ; sub eax,2 ; mov dword ptr [esp+4],0 ; je L ; dec eax ; jne R ; mov eax,[value] ; mov ecx,[eax] ; push ecx ; mov ecx,[esi+28h] ; call Write ; pop esi ; pop ecx ; ret 4 ; L: mov edx,[value] ; mov eax,[esi+24h] ; push edx ; push eax ; lea ecx,[esp+0Ch] ; call CPersistTraits<float>::TransferBinaryIn ; R: pop esi ; pop ecx ; ret 4
+// Persist transfer of one float: after the CRC check with the empty key, the mode at +0x18 is
+// switched -- 2 (load) runs TransferBinaryIn @ 0x{rd:08X} on a value-initialised (zeroed) 4-byte
+// CPersistTraits<float> temporary with the load stream (+0x24) and the value, 3 (save) writes the
+// value's bits through the save stream's writer @ 0x{wr:08X} (label `WriteCBYTE` propagated); other
+// modes do nothing. The `sub/dec` chain is the size-optimised two-case switch. One of {len(members)} bodies.
+struct CDataOutputStream {{
+    void Write(long bits);                 // 0x{wr:08X}
+}};
+
+struct CMemoryDataInputStream;
+
+struct CPersistTraits_float {{             // 4-byte POD: `CPersistTraits_float()` zero-initialises the temporary
+    long m_reserved;
+    void TransferBinaryIn(CMemoryDataInputStream* stream, float* value);   // 0x{rd:08X}
+}};
+
+struct CPersistContext {{
+    unsigned char _pad0[0x18];
+    long m_mode;                           // +0x18
+    unsigned char _pad1[8];
+    CMemoryDataInputStream* m_pLoadStream; // +0x24
+    CDataOutputStream* m_pSaveStream;      // +0x28
+    void CheckCRC(const char* name);       // 0x{crc:08X}
+    void TransferFloat_{a}(float* value);
+}};
+
+void CPersistContext::TransferFloat_{a}(float* value)
+{{
+    CheckCRC("{s}");
+    switch (m_mode) {{
+    case 2:
+        CPersistTraits_float().TransferBinaryIn(m_pLoadStream, value);
+        break;
+    case 3:
+        m_pSaveStream->Write(*(long*)value);
+        break;
+    }}
+}}
+''',T(a,'''static long g_w = 0, g_r = 0; struct O { void W(long v) { g_w = v; } }; struct I; struct Tr { long r; void TB(I*, float* v) { g_r = (long)*v; } };
+struct C { unsigned char p[0x18]; long m; unsigned char q[8]; I* ls; O* ss; void CC(const char*) {} void T(float* v) { CC(""); switch (m) { case 2: Tr().TB(ls, v); break; case 3: ss->W(*(long*)v); break; } } };
+int main()
+{
+    O o; C c; c.ls = 0; c.ss = &o; float f = 3.0f; c.m = 2; c.T(&f); c.m = 3; c.T(&f); if (g_r != 3 || g_w != *(long*)&f) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_40",):   # `??_G` of a class with a list member cleared out of line and a single vtable store after it, flag-tested delete
+        if len(calls)!=2 or retn!=4 or len(vts)!=1: continue
+        clear,deleter=calls; off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]; vt=vts[0][1]
+        bcls=rtti.get(vt) or f"CVtable_{vt:08x}"; cls=f"{bcls}_Derived_{a}"
+        add(a,"_unattributed",f"ScalarDeletingDestructor_{cls}",HDRF(a,f"{cls}::`scalar deleting destructor'(unsigned int) -- the list member at +{off:#x} cleared out of line (@ 0x{clear:08X}), the {bcls} vtable stored by the inlined base destructor, flag-tested delete",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; lea ecx,[esi+{off:#x}] ; call Clear ; test byte ptr [esp+8],1 ; mov dword ptr [esi],offset {bcls}::`vftable' ; je K ; push esi ; call operator delete ; add esp,4 ; K: mov eax,esi ; pop esi ; ret 4
+// Scalar deleting destructor of a {bcls}-derived class that adds one list member: the member's
+// out-of-line destructor @ 0x{clear:08X} runs, the inlined base destructor stores the base vtable
+// (0x{vt:08X}, rtti-vtables.tsv), and bit 0 of the flag argument selects the flag-tested operator
+// delete @ 0x{deleter:08X}. The manifest label is propagated across the family; the derived class
+// is named by its base. One of {len(members)} bodies of this shape.
+struct CListMember_{clear:08x} {{
+    void* m_head;
+    ~CListMember_{clear:08x}();            // 0x{clear:08X}
+}};
+
+struct {bcls} {{
+    virtual ~{bcls}() {{ }}
+{"    unsigned char _body[%#x];" % (off-4) + chr(10) if off>4 else ""}}};
+
+struct {cls} : {bcls} {{
+    CListMember_{clear:08x} m_{off:02x};        // +{off:#x}
+}};
+
+// Constructing the class emits its vtable (and with it the scalar deleting destructor); the
+// delete-expression then calls it through the vtable.
+{cls}* Create_{cls}()
+{{
+    return new {cls};
+}}
+
+void Destroy_{cls}({cls}* object)
+{{
+    delete object;
+}}
+''',T(a,'''static int g_d = 0; struct L { void* h; ~L() { ++g_d; } }; struct B { virtual ~B() { g_d += 10; } }; struct X : B { L l; };
+static void Kill(X* x) { delete x; }
+int main()
+{
+    Kill(new X); if (g_d != 11) '''+FAIL(a)+'''
+'''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
 OUT.mkdir(parents=True, exist_ok=True)

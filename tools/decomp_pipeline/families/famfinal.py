@@ -212,6 +212,14 @@ DESC={
  "i104":"STLport-style list clear with the value's virtual destructor called through slot 0 (flag 0) and free",
  "i46":"Dinkumware `_Uninit_fill_n` of CCountedPointer elements with the copy constructor inlined (allocator by value)",
  "i85":"non-virtual `scalar deleting destructor` with one out-of-line member destructor (delete-expression)",
+ "i113":"STLport-style string range-constructor forwarder in a frame-pointer TU: by-value 4-byte iterator classes stored into reserved slots, __fastcall helper with the tag in edx",
+ "i82":"two-argument combat-action constructors whose CSoundPair comes from the __fastcall GetSoundPair over an implicitly converted CCharString literal",
+ "i92":"same as i82 plus a scoped CCharString passed to a setter",
+ "i10":"frame-pointer forwarders: first argument, an empty tag homed in the dead second slot and a zero to a __thiscall helper",
+ "i22":"forwarders returning a class through the hidden pointer with a 4-byte handle copied by value into a reserved slot",
+ "i56":"__fastcall tree serialisers: count, then two dword fields per node from the leftmost to the head through the __cdecl successor",
+ "i98":"same as i56 with a float second field",
+ "i40":"scalar deleting destructors of one-list-member classes: member cleared out of line, base vtable stored by the inlined base destructor, flag-tested delete",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
