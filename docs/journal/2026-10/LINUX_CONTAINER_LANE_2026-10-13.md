@@ -188,6 +188,16 @@ the 128-byte rescan: 1598/1609 rows from 53 families; catalog 23,369 (47.1%). Tw
 parked with their evidence in FINDINGS_LOG: F467/F624 (`this` survives a call in edx — a custom
 convention, probably /GL) and `GetDef<T>` (the temporary's release sequence).
 
+### Wave 9 (256-byte rescan)
+
+`famscan.py 256` surfaced one huge family: the script module's `CCountedPointer<CX>` factories
+(557 + 33 bodies, `__fastcall`, hidden result in ecx) — `return CCountedPointer(new CX(owner,
+thing, arg));` with a three-level constructor chain inlined — all landed. The VC6-era Dinkumware
+`_Tree::insert` / `_Insert` pairs (signed and unsigned keys, frame-pointer TUs) landed 98 more.
+Running total for the rescans: 2271/2282 rows from 59 families; catalog 24,042 (48.5%).
+Parked with evidence in FINDINGS_LOG: the script `Main` shape (163, temporary slot order), the
+default-optimisation `insert` (56, one extra local), `GetSubDef<T>` (151, the release sequence).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
