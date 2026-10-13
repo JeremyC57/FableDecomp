@@ -262,6 +262,20 @@ constructor), and `CPersistContext::TransferBinary` (mode 2 = load; the two-way 
 `dec/dec` under the size pragma). Running total for the rescans: 3332/3354 rows from 128
 families; catalog 25,103 (50.6%).
 
+### Wave 14 (512-byte rescan, second pass)
+
+Twenty-one more families, 218 rows: four through older templates (`_Move`, `_Uninit_copy`
+with a copy constructor, `__copy` through operator=, derived operator=), SGI `__copy_backward`
+for 12-byte elements (POD block copy and operator= forms, two tags), vector destructors whose
+elements hold two out-of-line-destructor members, list clear with an out-of-line value
+destructor, derived copy constructors with trailing dword members, two-argument `__fastcall`
+factories, the two-argument combat-action constructors (zeroed CSoundPair temporary, optional
+scoped CCharString setter), persist `Transfer` hooks that hand each member to a typed context
+helper, `_Tree::operator=` with the clear inlined, resize for reciprocal-multiply element sizes,
+smart-pointer copy constructors and AssignTarget through old templates, and `_Uninit_copy` of
+{long, X} / {X, long} pairs. Running total for the rescans: 3550/3585 rows from 150
+families; catalog 25,321 (51.1%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
