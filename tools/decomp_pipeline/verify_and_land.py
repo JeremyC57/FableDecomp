@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Verify authored candidates (byte-match + behaviour) and auto-land the wins.
 Usage: python verify_and_land.py <workflow_output.json> <oracle.tsv>
-       [--land] [--prune-outside-manifest]
+       [--land] [--prune-outside-manifest] [--recheck-landed]
+Env:   FABLE_ROOT, FABLE_VC71, FABLE_OBJDUMP override the Windows paths; FABLE_WINE=wine runs the
+       VC7.1 tools through Wine (FABLE_VC71_LIB adds library directories, os.pathsep-separated).
        python verify_and_land.py --prune-fragment-report <report.md>
 Without --land: dry-run report only. With --land: writes src/tests/catalog/oracle for wins.
 Candidates without an authoritative manifest function start are always rejected. The prune
@@ -10,8 +12,11 @@ report mode strictly validates and prunes a saved mid-function-fragment audit.""
 import csv, json, re, subprocess, os, sys
 from pathlib import Path
 
-ROOT = Path(r"D:\Documents\FableTLC")
-VC = Path(r"D:\Tools\vc71")
+ROOT = Path(os.environ.get("FABLE_ROOT", r"D:\Documents\FableTLC"))
+VC = Path(os.environ.get("FABLE_VC71", r"D:\Tools\vc71"))
+# FABLE_WINE=wine runs cl.exe/link.exe and the behaviour executables through Wine (the Linux
+# lane); paths handed to the Windows tools are then spelled Z:\... (see wpath/tool_args).
+WINE = os.environ.get("FABLE_WINE")
 # Alternate 13.10.4035 QFE toolset (WinDDK 3790.1830 c1xx.dll+c2.dll). --qfe swaps the
 # compiler binaries only; headers/libs stay RTM. See docs/pipeline/QFE4035_COMPILER_GATE.md.
 QFE = Path(os.environ.get("VC71_QFE", r"D:\Tools\vc71-qfe4035"))
@@ -27,7 +32,7 @@ from crawl import purity
 GENERIC_STRUCT_NAMES = {"T", "Sub", "Owner", "Slot", "Info", "Obj", "S", "Self", "This", "Inner",
                         "Foo", "Holder", "Mid", "MidObj"}
 
-OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
+OBJDUMP = os.environ.get("FABLE_OBJDUMP", r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe")  # any binutils objdump that reads pe-i386 COFF
 DS = re.compile(r"^\s*([0-9a-fA-F]+)\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
 RL = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
 
@@ -100,11 +105,45 @@ def use_qfe():
             f"See docs/pipeline/QFE4035_COMPILER_GATE.md")
     CL_EXE, CC_BIN = clexe, QFE / "bin"
 
-def env():
-    e=dict(os.environ);e["PATH"]=str(CC_BIN)+";"+str(VC/"bin")+";"+e["PATH"]
-    e["INCLUDE"]=f"{VC/'include'};{ROOT/'rebuild'/'include'}";e["LIB"]=str(VC/"lib");return e
+def wpath(p):
+    """A path as the VC7.1 tools must see it: unchanged on Windows, Z:\\... under Wine."""
+    s = str(p)
+    if WINE and s.startswith("/"):
+        return "Z:" + s.replace("/", "\\")
+    return s
 
-def cl(args,e): return subprocess.run([str(CL_EXE)]+args,capture_output=True,text=True,env=e)
+def tool_args(args):
+    """Translate the path-bearing arguments of a cl.exe/link.exe command for the Wine lane.
+    Switches (/O2, /nologo, /GS ...) never contain a second slash; Unix paths always do."""
+    if not WINE:
+        return list(args)
+    out = []
+    for a in args:
+        for pre in ("/Fo", "/Fe", "/Fa", "/out:"):
+            if a.startswith(pre) and a[len(pre):].startswith("/"):
+                a = pre + wpath(a[len(pre):]); break
+        else:
+            if a.startswith("/") and "/" in a[1:]:
+                a = wpath(a)
+        out.append(a)
+    return out
+
+def run_tool(exe, args, e):
+    cmd = ([WINE] if WINE else []) + [str(exe)] + tool_args(args)
+    return subprocess.run(cmd, capture_output=True, text=True, errors="replace", env=e)
+
+def env():
+    e=dict(os.environ)
+    inc=[VC/"include", ROOT/"rebuild"/"include"]
+    lib=[VC/"lib"]+[Path(x) for x in os.environ.get("FABLE_VC71_LIB","").split(os.pathsep) if x]
+    if WINE:
+        e["INCLUDE"]=";".join(wpath(x) for x in inc); e["LIB"]=";".join(wpath(x) for x in lib)
+        e.setdefault("WINEDEBUG","-all")
+        return e
+    e["PATH"]=str(CC_BIN)+";"+str(VC/"bin")+";"+e["PATH"]
+    e["INCLUDE"]=";".join(str(x) for x in inc);e["LIB"]=";".join(str(x) for x in lib);return e
+
+def cl(args,e): return run_tool(CL_EXE, args, e)
 
 def sanitize(s): return re.sub(r"[^A-Za-z0-9]","",s)
 
@@ -303,14 +342,14 @@ def behaviour_of(test_text, addr, patt, work, e, sobj=None):
     if tc.returncode!=0 or not tobj.exists():
         return "TCC_FAIL"
     def _run_exe():
-        rn=subprocess.run([str(exe)],capture_output=True,text=True,env=e)
+        rn=subprocess.run(([WINE] if WINE else [])+[str(exe)],capture_output=True,text=True,errors="replace",env=e)
         return "PASS" if (rn.returncode==0 and re.search(re.escape(patt),rn.stdout or "")) else "FAIL"
-    lk=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(tobj)],capture_output=True,text=True,env=e)
+    lk=run_tool(VC/"bin"/"link.exe",["/nologo",f"/out:{exe}",str(tobj)],e)
     if lk.returncode==0 and exe.exists():
         return _run_exe()
     if sobj is not None and Path(sobj).exists():
         exe.unlink(missing_ok=True)
-        lk2=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(sobj),str(tobj)],capture_output=True,text=True,env=e)
+        lk2=run_tool(VC/"bin"/"link.exe",["/nologo",f"/out:{exe}",str(sobj),str(tobj)],e)
         if lk2.returncode==0 and exe.exists():
             return _run_exe()
     return "LINK_FAIL"
@@ -328,6 +367,7 @@ def main():
     outf=Path(sys.argv[1]); oraclef=Path(sys.argv[2]); land="--land" in sys.argv
     prune="--prune-outside-manifest" in sys.argv
     qfe="--qfe" in sys.argv
+    recheck="--recheck-landed" in sys.argv   # dry-run already-landed rows again (lane control)
     if qfe:
         use_qfe(); print(f"[toolset] QFE-4035 compiler: {CL_EXE}")
     data=json.loads(outf.read_text(encoding="utf-8"))["result"]["authored"]
@@ -374,7 +414,7 @@ def main():
         if addr in outside_manifest:
             print(f"{addr:10} {'OUTSIDE_MANIFEST':16} {'-':6} {name}")
             continue
-        if addr in landed_addrs: continue  # skip already-landed
+        if addr in landed_addrs and not recheck: continue  # skip already-landed
         o=orc.get(addr)
         if not o: print(f"{addr:10} {'NO_ORACLE':16} {'-':6} {name}"); continue
         work=shard_directory(WORK_ROOT, addr, leaf=True); work.mkdir(parents=True, exist_ok=True)
