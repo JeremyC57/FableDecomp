@@ -164146,6 +164146,4717 @@ $catalog = @(
         TestSource = '00/b8/global_UninitFillNCPairCountedRef800b82d00_00b82d00_test.cpp'
         PassPattern = '00b82d00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cdee10'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c32a4_00cdee10.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c32a4_00cdee10_test.cpp'
+        PassPattern = '00cdee10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdefb0'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c32c0_00cdefb0.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c32c0_00cdefb0_test.cpp'
+        PassPattern = '00cdefb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf190'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c32fc_00cdf190.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c32fc_00cdf190_test.cpp'
+        PassPattern = '00cdf190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf360'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c3340_00cdf360.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c3340_00cdf360_test.cpp'
+        PassPattern = '00cdf360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf490'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c335c_00cdf490.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c335c_00cdf490_test.cpp'
+        PassPattern = '00cdf490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf570'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c3378_00cdf570.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c3378_00cdf570_test.cpp'
+        PassPattern = '00cdf570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf750'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c33a4_00cdf750.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c33a4_00cdf750_test.cpp'
+        PassPattern = '00cdf750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf930'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c33e0_00cdf930.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c33e0_00cdf930_test.cpp'
+        PassPattern = '00cdf930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdfa10'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c33fc_00cdfa10.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c33fc_00cdfa10_test.cpp'
+        PassPattern = '00cdfa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdfd40'
+        Module = '_global'
+        Source = '00/cd/global_CreateCVtable012c3418_00cdfd40.cpp'
+        TestSource = '00/cd/global_CreateCVtable012c3418_00cdfd40_test.cpp'
+        PassPattern = '00cdfd40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0090'
+        Module = '_global'
+        Source = '00/ce/global_CreateCVtable012c3490_00ce0090.cpp'
+        TestSource = '00/ce/global_CreateCVtable012c3490_00ce0090_test.cpp'
+        PassPattern = '00ce0090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0280'
+        Module = '_global'
+        Source = '00/ce/global_CreateCVtable012c34c0_00ce0280.cpp'
+        TestSource = '00/ce/global_CreateCVtable012c34c0_00ce0280_test.cpp'
+        PassPattern = '00ce0280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0390'
+        Module = '_global'
+        Source = '00/ce/global_CreateCVtable012c34dc_00ce0390.cpp'
+        TestSource = '00/ce/global_CreateCVtable012c34dc_00ce0390_test.cpp'
+        PassPattern = '00ce0390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0460'
+        Module = '_global'
+        Source = '00/ce/global_CreateCVtable012c34f8_00ce0460.cpp'
+        TestSource = '00/ce/global_CreateCVtable012c34f8_00ce0460_test.cpp'
+        PassPattern = '00ce0460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0530'
+        Module = '_global'
+        Source = '00/ce/global_CreateCVtable012c3514_00ce0530.cpp'
+        TestSource = '00/ce/global_CreateCVtable012c3514_00ce0530_test.cpp'
+        PassPattern = '00ce0530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf0b60'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c6158_00cf0b60.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c6158_00cf0b60_test.cpp'
+        PassPattern = '00cf0b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf0c40'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c6174_00cf0c40.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c6174_00cf0c40_test.cpp'
+        PassPattern = '00cf0c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf17f0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c6260_00cf17f0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c6260_00cf17f0_test.cpp'
+        PassPattern = '00cf17f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf2a90'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c6384_00cf2a90.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c6384_00cf2a90_test.cpp'
+        PassPattern = '00cf2a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf3c40'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c6480_00cf3c40.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c6480_00cf3c40_test.cpp'
+        PassPattern = '00cf3c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf4df0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c657c_00cf4df0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c657c_00cf4df0_test.cpp'
+        PassPattern = '00cf4df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfbb20'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7b6c_00cfbb20.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7b6c_00cfbb20_test.cpp'
+        PassPattern = '00cfbb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfbc00'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7b88_00cfbc00.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7b88_00cfbc00_test.cpp'
+        PassPattern = '00cfbc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfbce0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7ba4_00cfbce0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7ba4_00cfbce0_test.cpp'
+        PassPattern = '00cfbce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfc700'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7c40_00cfc700.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7c40_00cfc700_test.cpp'
+        PassPattern = '00cfc700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfc7d0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7c5c_00cfc7d0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7c5c_00cfc7d0_test.cpp'
+        PassPattern = '00cfc7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfc8a0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7c78_00cfc8a0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7c78_00cfc8a0_test.cpp'
+        PassPattern = '00cfc8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfca60'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7c94_00cfca60.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7c94_00cfca60_test.cpp'
+        PassPattern = '00cfca60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfcbd0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7cb0_00cfcbd0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7cb0_00cfcbd0_test.cpp'
+        PassPattern = '00cfcbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfcdc0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7ccc_00cfcdc0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7ccc_00cfcdc0_test.cpp'
+        PassPattern = '00cfcdc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfd5d0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7d38_00cfd5d0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7d38_00cfd5d0_test.cpp'
+        PassPattern = '00cfd5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfdca0'
+        Module = '_global'
+        Source = '00/cf/global_CreateCVtable012c7d84_00cfdca0.cpp'
+        TestSource = '00/cf/global_CreateCVtable012c7d84_00cfdca0_test.cpp'
+        PassPattern = '00cfdca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d014c0'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8604_00d014c0.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8604_00d014c0_test.cpp'
+        PassPattern = '00d014c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d02a70'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8850_00d02a70.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8850_00d02a70_test.cpp'
+        PassPattern = '00d02a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d048c0'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8b80_00d048c0.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8b80_00d048c0_test.cpp'
+        PassPattern = '00d048c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d04990'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8b9c_00d04990.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8b9c_00d04990_test.cpp'
+        PassPattern = '00d04990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d05910'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8d28_00d05910.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8d28_00d05910_test.cpp'
+        PassPattern = '00d05910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d05fe0'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8d84_00d05fe0.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8d84_00d05fe0_test.cpp'
+        PassPattern = '00d05fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d066b0'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8de0_00d066b0.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8de0_00d066b0_test.cpp'
+        PassPattern = '00d066b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d071f0'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8e80_00d071f0.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8e80_00d071f0_test.cpp'
+        PassPattern = '00d071f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d07340'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8e9c_00d07340.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8e9c_00d07340_test.cpp'
+        PassPattern = '00d07340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d07d20'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c8f88_00d07d20.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c8f88_00d07d20_test.cpp'
+        PassPattern = '00d07d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d08670'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c9080_00d08670.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c9080_00d08670_test.cpp'
+        PassPattern = '00d08670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d08a70'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c90fc_00d08a70.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c90fc_00d08a70_test.cpp'
+        PassPattern = '00d08a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d08e50'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c9130_00d08e50.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c9130_00d08e50_test.cpp'
+        PassPattern = '00d08e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d0a700'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c9474_00d0a700.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c9474_00d0a700_test.cpp'
+        PassPattern = '00d0a700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d0c2c0'
+        Module = '_global'
+        Source = '00/d0/global_CreateCVtable012c9700_00d0c2c0.cpp'
+        TestSource = '00/d0/global_CreateCVtable012c9700_00d0c2c0_test.cpp'
+        PassPattern = '00d0c2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d15940'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012ca524_00d15940.cpp'
+        TestSource = '00/d1/global_CreateCVtable012ca524_00d15940_test.cpp'
+        PassPattern = '00d15940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d15fc0'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012ca554_00d15fc0.cpp'
+        TestSource = '00/d1/global_CreateCVtable012ca554_00d15fc0_test.cpp'
+        PassPattern = '00d15fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d160b0'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012ca570_00d160b0.cpp'
+        TestSource = '00/d1/global_CreateCVtable012ca570_00d160b0_test.cpp'
+        PassPattern = '00d160b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d161a0'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012ca58c_00d161a0.cpp'
+        TestSource = '00/d1/global_CreateCVtable012ca58c_00d161a0_test.cpp'
+        PassPattern = '00d161a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d16290'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012ca5a8_00d16290.cpp'
+        TestSource = '00/d1/global_CreateCVtable012ca5a8_00d16290_test.cpp'
+        PassPattern = '00d16290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d16380'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012ca5c4_00d16380.cpp'
+        TestSource = '00/d1/global_CreateCVtable012ca5c4_00d16380_test.cpp'
+        PassPattern = '00d16380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1dcc0'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012caee4_00d1dcc0.cpp'
+        TestSource = '00/d1/global_CreateCVtable012caee4_00d1dcc0_test.cpp'
+        PassPattern = '00d1dcc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1dde0'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012caf00_00d1dde0.cpp'
+        TestSource = '00/d1/global_CreateCVtable012caf00_00d1dde0_test.cpp'
+        PassPattern = '00d1dde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1df20'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012caf1c_00d1df20.cpp'
+        TestSource = '00/d1/global_CreateCVtable012caf1c_00d1df20_test.cpp'
+        PassPattern = '00d1df20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1e090'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012caf38_00d1e090.cpp'
+        TestSource = '00/d1/global_CreateCVtable012caf38_00d1e090_test.cpp'
+        PassPattern = '00d1e090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1e230'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012caf54_00d1e230.cpp'
+        TestSource = '00/d1/global_CreateCVtable012caf54_00d1e230_test.cpp'
+        PassPattern = '00d1e230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1ea10'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012cafa4_00d1ea10.cpp'
+        TestSource = '00/d1/global_CreateCVtable012cafa4_00d1ea10_test.cpp'
+        PassPattern = '00d1ea10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1f510'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012cb024_00d1f510.cpp'
+        TestSource = '00/d1/global_CreateCVtable012cb024_00d1f510_test.cpp'
+        PassPattern = '00d1f510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1f910'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012cb054_00d1f910.cpp'
+        TestSource = '00/d1/global_CreateCVtable012cb054_00d1f910_test.cpp'
+        PassPattern = '00d1f910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d24210'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cb5c4_00d24210.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cb5c4_00d24210_test.cpp'
+        PassPattern = '00d24210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d24330'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cb5e0_00d24330.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cb5e0_00d24330_test.cpp'
+        PassPattern = '00d24330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d257d0'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cb770_00d257d0.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cb770_00d257d0_test.cpp'
+        PassPattern = '00d257d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d25c60'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cb78c_00d25c60.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cb78c_00d25c60_test.cpp'
+        PassPattern = '00d25c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d25e30'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cb7a8_00d25e30.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cb7a8_00d25e30_test.cpp'
+        PassPattern = '00d25e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d28f70'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cbc3c_00d28f70.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cbc3c_00d28f70_test.cpp'
+        PassPattern = '00d28f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d290a0'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cbc58_00d290a0.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cbc58_00d290a0_test.cpp'
+        PassPattern = '00d290a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d29230'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cbc74_00d29230.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cbc74_00d29230_test.cpp'
+        PassPattern = '00d29230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d29460'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cbc90_00d29460.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cbc90_00d29460_test.cpp'
+        PassPattern = '00d29460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d29570'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cbcac_00d29570.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cbcac_00d29570_test.cpp'
+        PassPattern = '00d29570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2c140'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc2cc_00d2c140.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc2cc_00d2c140_test.cpp'
+        PassPattern = '00d2c140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2c260'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc2e8_00d2c260.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc2e8_00d2c260_test.cpp'
+        PassPattern = '00d2c260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2c340'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc304_00d2c340.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc304_00d2c340_test.cpp'
+        PassPattern = '00d2c340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2c430'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc320_00d2c430.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc320_00d2c430_test.cpp'
+        PassPattern = '00d2c430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2c650'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc33c_00d2c650.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc33c_00d2c650_test.cpp'
+        PassPattern = '00d2c650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2c730'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc358_00d2c730.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc358_00d2c730_test.cpp'
+        PassPattern = '00d2c730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2cf80'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc428_00d2cf80.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc428_00d2cf80_test.cpp'
+        PassPattern = '00d2cf80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2fa40'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc6b4_00d2fa40.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc6b4_00d2fa40_test.cpp'
+        PassPattern = '00d2fa40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2fc00'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc6d0_00d2fc00.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc6d0_00d2fc00_test.cpp'
+        PassPattern = '00d2fc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2fce0'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc6ec_00d2fce0.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc6ec_00d2fce0_test.cpp'
+        PassPattern = '00d2fce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2fdc0'
+        Module = '_global'
+        Source = '00/d2/global_CreateCVtable012cc708_00d2fdc0.cpp'
+        TestSource = '00/d2/global_CreateCVtable012cc708_00d2fdc0_test.cpp'
+        PassPattern = '00d2fdc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d362b0'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012ccebc_00d362b0.cpp'
+        TestSource = '00/d3/global_CreateCVtable012ccebc_00d362b0_test.cpp'
+        PassPattern = '00d362b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d363a0'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012cced8_00d363a0.cpp'
+        TestSource = '00/d3/global_CreateCVtable012cced8_00d363a0_test.cpp'
+        PassPattern = '00d363a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d36470'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012ccef4_00d36470.cpp'
+        TestSource = '00/d3/global_CreateCVtable012ccef4_00d36470_test.cpp'
+        PassPattern = '00d36470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d36540'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012ccf10_00d36540.cpp'
+        TestSource = '00/d3/global_CreateCVtable012ccf10_00d36540_test.cpp'
+        PassPattern = '00d36540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d36680'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012ccf2c_00d36680.cpp'
+        TestSource = '00/d3/global_CreateCVtable012ccf2c_00d36680_test.cpp'
+        PassPattern = '00d36680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d36790'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012ccf48_00d36790.cpp'
+        TestSource = '00/d3/global_CreateCVtable012ccf48_00d36790_test.cpp'
+        PassPattern = '00d36790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d37140'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012ccfe4_00d37140.cpp'
+        TestSource = '00/d3/global_CreateCVtable012ccfe4_00d37140_test.cpp'
+        PassPattern = '00d37140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d37240'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012cd000_00d37240.cpp'
+        TestSource = '00/d3/global_CreateCVtable012cd000_00d37240_test.cpp'
+        PassPattern = '00d37240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d373d0'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012cd01c_00d373d0.cpp'
+        TestSource = '00/d3/global_CreateCVtable012cd01c_00d373d0_test.cpp'
+        PassPattern = '00d373d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d37c30'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012cd06c_00d37c30.cpp'
+        TestSource = '00/d3/global_CreateCVtable012cd06c_00d37c30_test.cpp'
+        PassPattern = '00d37c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3d060'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012cd7e8_00d3d060.cpp'
+        TestSource = '00/d3/global_CreateCVtable012cd7e8_00d3d060_test.cpp'
+        PassPattern = '00d3d060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3e1f0'
+        Module = '_global'
+        Source = '00/d3/global_CreateCVtable012cda40_00d3e1f0.cpp'
+        TestSource = '00/d3/global_CreateCVtable012cda40_00d3e1f0_test.cpp'
+        PassPattern = '00d3e1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d409e0'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012cdf44_00d409e0.cpp'
+        TestSource = '00/d4/global_CreateCVtable012cdf44_00d409e0_test.cpp'
+        PassPattern = '00d409e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d40b30'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012cdf60_00d40b30.cpp'
+        TestSource = '00/d4/global_CreateCVtable012cdf60_00d40b30_test.cpp'
+        PassPattern = '00d40b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d40c10'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012cdf7c_00d40c10.cpp'
+        TestSource = '00/d4/global_CreateCVtable012cdf7c_00d40c10_test.cpp'
+        PassPattern = '00d40c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d41a30'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012ce094_00d41a30.cpp'
+        TestSource = '00/d4/global_CreateCVtable012ce094_00d41a30_test.cpp'
+        PassPattern = '00d41a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d41b10'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012ce0b0_00d41b10.cpp'
+        TestSource = '00/d4/global_CreateCVtable012ce0b0_00d41b10_test.cpp'
+        PassPattern = '00d41b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d41bf0'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012ce0cc_00d41bf0.cpp'
+        TestSource = '00/d4/global_CreateCVtable012ce0cc_00d41bf0_test.cpp'
+        PassPattern = '00d41bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d42f40'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012ce310_00d42f40.cpp'
+        TestSource = '00/d4/global_CreateCVtable012ce310_00d42f40_test.cpp'
+        PassPattern = '00d42f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d43040'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012ce32c_00d43040.cpp'
+        TestSource = '00/d4/global_CreateCVtable012ce32c_00d43040_test.cpp'
+        PassPattern = '00d43040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d43280'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012ce348_00d43280.cpp'
+        TestSource = '00/d4/global_CreateCVtable012ce348_00d43280_test.cpp'
+        PassPattern = '00d43280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d43360'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012ce364_00d43360.cpp'
+        TestSource = '00/d4/global_CreateCVtable012ce364_00d43360_test.cpp'
+        PassPattern = '00d43360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d43cd0'
+        Module = '_global'
+        Source = '00/d4/global_CreateCVtable012ce420_00d43cd0.cpp'
+        TestSource = '00/d4/global_CreateCVtable012ce420_00d43cd0_test.cpp'
+        PassPattern = '00d43cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d509d0'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012cf6c4_00d509d0.cpp'
+        TestSource = '00/d5/global_CreateCVtable012cf6c4_00d509d0_test.cpp'
+        PassPattern = '00d509d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d51e20'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012cf83c_00d51e20.cpp'
+        TestSource = '00/d5/global_CreateCVtable012cf83c_00d51e20_test.cpp'
+        PassPattern = '00d51e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d51f00'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012cf858_00d51f00.cpp'
+        TestSource = '00/d5/global_CreateCVtable012cf858_00d51f00_test.cpp'
+        PassPattern = '00d51f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d52230'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012cf874_00d52230.cpp'
+        TestSource = '00/d5/global_CreateCVtable012cf874_00d52230_test.cpp'
+        PassPattern = '00d52230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d565c0'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012d030c_00d565c0.cpp'
+        TestSource = '00/d5/global_CreateCVtable012d030c_00d565c0_test.cpp'
+        PassPattern = '00d565c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d566a0'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012d0328_00d566a0.cpp'
+        TestSource = '00/d5/global_CreateCVtable012d0328_00d566a0_test.cpp'
+        PassPattern = '00d566a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d57fa0'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012d0564_00d57fa0.cpp'
+        TestSource = '00/d5/global_CreateCVtable012d0564_00d57fa0_test.cpp'
+        PassPattern = '00d57fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d5abe0'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012d09d8_00d5abe0.cpp'
+        TestSource = '00/d5/global_CreateCVtable012d09d8_00d5abe0_test.cpp'
+        PassPattern = '00d5abe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d5dde0'
+        Module = '_global'
+        Source = '00/d5/global_CreateCVtable012d1070_00d5dde0.cpp'
+        TestSource = '00/d5/global_CreateCVtable012d1070_00d5dde0_test.cpp'
+        PassPattern = '00d5dde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d62270'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d16c0_00d62270.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d16c0_00d62270_test.cpp'
+        PassPattern = '00d62270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d62360'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d16dc_00d62360.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d16dc_00d62360_test.cpp'
+        PassPattern = '00d62360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d63cc0'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d19c0_00d63cc0.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d19c0_00d63cc0_test.cpp'
+        PassPattern = '00d63cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d66ba0'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d1da0_00d66ba0.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d1da0_00d66ba0_test.cpp'
+        PassPattern = '00d66ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d68720'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d1f60_00d68720.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d1f60_00d68720_test.cpp'
+        PassPattern = '00d68720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d69d50'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d20bc_00d69d50.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d20bc_00d69d50_test.cpp'
+        PassPattern = '00d69d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d69e30'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d20d8_00d69e30.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d20d8_00d69e30_test.cpp'
+        PassPattern = '00d69e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d69fd0'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d211c_00d69fd0.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d211c_00d69fd0_test.cpp'
+        PassPattern = '00d69fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6a150'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d2138_00d6a150.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d2138_00d6a150_test.cpp'
+        PassPattern = '00d6a150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6a290'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d2154_00d6a290.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d2154_00d6a290_test.cpp'
+        PassPattern = '00d6a290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6a3d0'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d2170_00d6a3d0.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d2170_00d6a3d0_test.cpp'
+        PassPattern = '00d6a3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6ad70'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d223c_00d6ad70.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d223c_00d6ad70_test.cpp'
+        PassPattern = '00d6ad70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6fd70'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d271c_00d6fd70.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d271c_00d6fd70_test.cpp'
+        PassPattern = '00d6fd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6fe50'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d2738_00d6fe50.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d2738_00d6fe50_test.cpp'
+        PassPattern = '00d6fe50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6ff30'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d2754_00d6ff30.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d2754_00d6ff30_test.cpp'
+        PassPattern = '00d6ff30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d70010'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d2770_00d70010.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d2770_00d70010_test.cpp'
+        PassPattern = '00d70010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d700e0'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d278c_00d700e0.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d278c_00d700e0_test.cpp'
+        PassPattern = '00d700e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d70520'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d27a8_00d70520.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d27a8_00d70520_test.cpp'
+        PassPattern = '00d70520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d79b90'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d33a8_00d79b90.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d33a8_00d79b90_test.cpp'
+        PassPattern = '00d79b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d79c80'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d33c4_00d79c80.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d33c4_00d79c80_test.cpp'
+        PassPattern = '00d79c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7a290'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3418_00d7a290.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3418_00d7a290_test.cpp'
+        PassPattern = '00d7a290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7b400'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3660_00d7b400.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3660_00d7b400_test.cpp'
+        PassPattern = '00d7b400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7dba0'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3c50_00d7dba0.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3c50_00d7dba0_test.cpp'
+        PassPattern = '00d7dba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7dc90'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3c6c_00d7dc90.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3c6c_00d7dc90_test.cpp'
+        PassPattern = '00d7dc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7de80'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3c88_00d7de80.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3c88_00d7de80_test.cpp'
+        PassPattern = '00d7de80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7dff0'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3ca4_00d7dff0.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3ca4_00d7dff0_test.cpp'
+        PassPattern = '00d7dff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7ebe0'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3eb0_00d7ebe0.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3eb0_00d7ebe0_test.cpp'
+        PassPattern = '00d7ebe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7ee00'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3ecc_00d7ee00.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3ecc_00d7ee00_test.cpp'
+        PassPattern = '00d7ee00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7f020'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3ee8_00d7f020.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3ee8_00d7f020_test.cpp'
+        PassPattern = '00d7f020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7f1a0'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3f04_00d7f1a0.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3f04_00d7f1a0_test.cpp'
+        PassPattern = '00d7f1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7f380'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3f44_00d7f380.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3f44_00d7f380_test.cpp'
+        PassPattern = '00d7f380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7f7b0'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d3fb4_00d7f7b0.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d3fb4_00d7f7b0_test.cpp'
+        PassPattern = '00d7f7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d81630'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d42f8_00d81630.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d42f8_00d81630_test.cpp'
+        PassPattern = '00d81630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d81750'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4314_00d81750.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4314_00d81750_test.cpp'
+        PassPattern = '00d81750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d81b60'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4370_00d81b60.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4370_00d81b60_test.cpp'
+        PassPattern = '00d81b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d83cf0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4760_00d83cf0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4760_00d83cf0_test.cpp'
+        PassPattern = '00d83cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d85a30'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4a98_00d85a30.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4a98_00d85a30_test.cpp'
+        PassPattern = '00d85a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d85fa0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4b80_00d85fa0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4b80_00d85fa0_test.cpp'
+        PassPattern = '00d85fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86080'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4b9c_00d86080.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4b9c_00d86080_test.cpp'
+        PassPattern = '00d86080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86390'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4bb8_00d86390.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4bb8_00d86390_test.cpp'
+        PassPattern = '00d86390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86560'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4bd4_00d86560.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4bd4_00d86560_test.cpp'
+        PassPattern = '00d86560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86980'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4c04_00d86980.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4c04_00d86980_test.cpp'
+        PassPattern = '00d86980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86b60'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4c20_00d86b60.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4c20_00d86b60_test.cpp'
+        PassPattern = '00d86b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d88420'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4e8c_00d88420.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4e8c_00d88420_test.cpp'
+        PassPattern = '00d88420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d885e0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4ea8_00d885e0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4ea8_00d885e0_test.cpp'
+        PassPattern = '00d885e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d88ec0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4f00_00d88ec0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4f00_00d88ec0_test.cpp'
+        PassPattern = '00d88ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d890a0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4f34_00d890a0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4f34_00d890a0_test.cpp'
+        PassPattern = '00d890a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d892a0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d4f50_00d892a0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d4f50_00d892a0_test.cpp'
+        PassPattern = '00d892a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8a4b0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d50c0_00d8a4b0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d50c0_00d8a4b0_test.cpp'
+        PassPattern = '00d8a4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8a650'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d50dc_00d8a650.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d50dc_00d8a650_test.cpp'
+        PassPattern = '00d8a650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8a7f0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d50f8_00d8a7f0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d50f8_00d8a7f0_test.cpp'
+        PassPattern = '00d8a7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8f310'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d5944_00d8f310.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d5944_00d8f310_test.cpp'
+        PassPattern = '00d8f310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8f3f0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d5960_00d8f3f0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d5960_00d8f3f0_test.cpp'
+        PassPattern = '00d8f3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8f4f0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d597c_00d8f4f0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d597c_00d8f4f0_test.cpp'
+        PassPattern = '00d8f4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8f5e0'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d5998_00d8f5e0.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d5998_00d8f5e0_test.cpp'
+        PassPattern = '00d8f5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8f950'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d59b4_00d8f950.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d59b4_00d8f950_test.cpp'
+        PassPattern = '00d8f950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8fc70'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d59e4_00d8fc70.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d59e4_00d8fc70_test.cpp'
+        PassPattern = '00d8fc70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8fe30'
+        Module = '_global'
+        Source = '00/d8/global_CreateCVtable012d5a00_00d8fe30.cpp'
+        TestSource = '00/d8/global_CreateCVtable012d5a00_00d8fe30_test.cpp'
+        PassPattern = '00d8fe30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d901b0'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d5a40_00d901b0.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d5a40_00d901b0_test.cpp'
+        PassPattern = '00d901b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d906d0'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d5a5c_00d906d0.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d5a5c_00d906d0_test.cpp'
+        PassPattern = '00d906d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d90a50'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d5a78_00d90a50.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d5a78_00d90a50_test.cpp'
+        PassPattern = '00d90a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d90ff0'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d5ab8_00d90ff0.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d5ab8_00d90ff0_test.cpp'
+        PassPattern = '00d90ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d91250'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d5afc_00d91250.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d5afc_00d91250_test.cpp'
+        PassPattern = '00d91250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d91470'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d5b54_00d91470.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d5b54_00d91470_test.cpp'
+        PassPattern = '00d91470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9b7c0'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6834_00d9b7c0.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6834_00d9b7c0_test.cpp'
+        PassPattern = '00d9b7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9be30'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6b10_00d9be30.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6b10_00d9be30_test.cpp'
+        PassPattern = '00d9be30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9c1d0'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6b2c_00d9c1d0.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6b2c_00d9c1d0_test.cpp'
+        PassPattern = '00d9c1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9c3c0'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6b48_00d9c3c0.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6b48_00d9c3c0_test.cpp'
+        PassPattern = '00d9c3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9c560'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6b64_00d9c560.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6b64_00d9c560_test.cpp'
+        PassPattern = '00d9c560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9ce80'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6bb8_00d9ce80.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6bb8_00d9ce80_test.cpp'
+        PassPattern = '00d9ce80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9cf60'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6bd4_00d9cf60.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6bd4_00d9cf60_test.cpp'
+        PassPattern = '00d9cf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9ed50'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6d44_00d9ed50.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6d44_00d9ed50_test.cpp'
+        PassPattern = '00d9ed50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9f0b0'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6dac_00d9f0b0.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6dac_00d9f0b0_test.cpp'
+        PassPattern = '00d9f0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9f5b0'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6dc8_00d9f5b0.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6dc8_00d9f5b0_test.cpp'
+        PassPattern = '00d9f5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da4490'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7420_00da4490.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7420_00da4490_test.cpp'
+        PassPattern = '00da4490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da4690'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d743c_00da4690.cpp'
+        TestSource = '00/da/global_CreateCVtable012d743c_00da4690_test.cpp'
+        PassPattern = '00da4690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da4920'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7458_00da4920.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7458_00da4920_test.cpp'
+        PassPattern = '00da4920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da4a30'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7474_00da4a30.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7474_00da4a30_test.cpp'
+        PassPattern = '00da4a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da4b80'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7490_00da4b80.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7490_00da4b80_test.cpp'
+        PassPattern = '00da4b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da4d40'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d74c8_00da4d40.cpp'
+        TestSource = '00/da/global_CreateCVtable012d74c8_00da4d40_test.cpp'
+        PassPattern = '00da4d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da53a0'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7510_00da53a0.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7510_00da53a0_test.cpp'
+        PassPattern = '00da53a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da57a0'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d752c_00da57a0.cpp'
+        TestSource = '00/da/global_CreateCVtable012d752c_00da57a0_test.cpp'
+        PassPattern = '00da57a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da58b0'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7548_00da58b0.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7548_00da58b0_test.cpp'
+        PassPattern = '00da58b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da5b40'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7564_00da5b40.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7564_00da5b40_test.cpp'
+        PassPattern = '00da5b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da5c90'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7580_00da5c90.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7580_00da5c90_test.cpp'
+        PassPattern = '00da5c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da5da0'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d759c_00da5da0.cpp'
+        TestSource = '00/da/global_CreateCVtable012d759c_00da5da0_test.cpp'
+        PassPattern = '00da5da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da5e70'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d75b8_00da5e70.cpp'
+        TestSource = '00/da/global_CreateCVtable012d75b8_00da5e70_test.cpp'
+        PassPattern = '00da5e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da60a0'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d75f0_00da60a0.cpp'
+        TestSource = '00/da/global_CreateCVtable012d75f0_00da60a0_test.cpp'
+        PassPattern = '00da60a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da6170'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d760c_00da6170.cpp'
+        TestSource = '00/da/global_CreateCVtable012d760c_00da6170_test.cpp'
+        PassPattern = '00da6170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da6320'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7628_00da6320.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7628_00da6320_test.cpp'
+        PassPattern = '00da6320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da6560'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7654_00da6560.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7654_00da6560_test.cpp'
+        PassPattern = '00da6560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da6670'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d7670_00da6670.cpp'
+        TestSource = '00/da/global_CreateCVtable012d7670_00da6670_test.cpp'
+        PassPattern = '00da6670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da6810'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d768c_00da6810.cpp'
+        TestSource = '00/da/global_CreateCVtable012d768c_00da6810_test.cpp'
+        PassPattern = '00da6810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dac2c0'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d8388_00dac2c0.cpp'
+        TestSource = '00/da/global_CreateCVtable012d8388_00dac2c0_test.cpp'
+        PassPattern = '00dac2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dac420'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d83a4_00dac420.cpp'
+        TestSource = '00/da/global_CreateCVtable012d83a4_00dac420_test.cpp'
+        PassPattern = '00dac420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dac580'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d83c0_00dac580.cpp'
+        TestSource = '00/da/global_CreateCVtable012d83c0_00dac580_test.cpp'
+        PassPattern = '00dac580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dade50'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d8678_00dade50.cpp'
+        TestSource = '00/da/global_CreateCVtable012d8678_00dade50_test.cpp'
+        PassPattern = '00dade50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daec60'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d879c_00daec60.cpp'
+        TestSource = '00/da/global_CreateCVtable012d879c_00daec60_test.cpp'
+        PassPattern = '00daec60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daede0'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d87b8_00daede0.cpp'
+        TestSource = '00/da/global_CreateCVtable012d87b8_00daede0_test.cpp'
+        PassPattern = '00daede0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daef50'
+        Module = '_global'
+        Source = '00/da/global_CreateCVtable012d87d4_00daef50.cpp'
+        TestSource = '00/da/global_CreateCVtable012d87d4_00daef50_test.cpp'
+        PassPattern = '00daef50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db0880'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d89ec_00db0880.cpp'
+        TestSource = '00/db/global_CreateCVtable012d89ec_00db0880_test.cpp'
+        PassPattern = '00db0880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db1db0'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d8c08_00db1db0.cpp'
+        TestSource = '00/db/global_CreateCVtable012d8c08_00db1db0_test.cpp'
+        PassPattern = '00db1db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db29a0'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d8c98_00db29a0.cpp'
+        TestSource = '00/db/global_CreateCVtable012d8c98_00db29a0_test.cpp'
+        PassPattern = '00db29a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db3e30'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d8e80_00db3e30.cpp'
+        TestSource = '00/db/global_CreateCVtable012d8e80_00db3e30_test.cpp'
+        PassPattern = '00db3e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db51b0'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d9014_00db51b0.cpp'
+        TestSource = '00/db/global_CreateCVtable012d9014_00db51b0_test.cpp'
+        PassPattern = '00db51b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db6b40'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d9234_00db6b40.cpp'
+        TestSource = '00/db/global_CreateCVtable012d9234_00db6b40_test.cpp'
+        PassPattern = '00db6b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db7d00'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d94f0_00db7d00.cpp'
+        TestSource = '00/db/global_CreateCVtable012d94f0_00db7d00_test.cpp'
+        PassPattern = '00db7d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db7ff0'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d9560_00db7ff0.cpp'
+        TestSource = '00/db/global_CreateCVtable012d9560_00db7ff0_test.cpp'
+        PassPattern = '00db7ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db81b0'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d957c_00db81b0.cpp'
+        TestSource = '00/db/global_CreateCVtable012d957c_00db81b0_test.cpp'
+        PassPattern = '00db81b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dbfdd0'
+        Module = '_global'
+        Source = '00/db/global_CreateCVtable012d9f64_00dbfdd0.cpp'
+        TestSource = '00/db/global_CreateCVtable012d9f64_00dbfdd0_test.cpp'
+        PassPattern = '00dbfdd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc0090'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012d9f80_00dc0090.cpp'
+        TestSource = '00/dc/global_CreateCVtable012d9f80_00dc0090_test.cpp'
+        PassPattern = '00dc0090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc3ee0'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da540_00dc3ee0.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da540_00dc3ee0_test.cpp'
+        PassPattern = '00dc3ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc4420'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da5d4_00dc4420.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da5d4_00dc4420_test.cpp'
+        PassPattern = '00dc4420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc4520'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da5f0_00dc4520.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da5f0_00dc4520_test.cpp'
+        PassPattern = '00dc4520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc4aa0'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da658_00dc4aa0.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da658_00dc4aa0_test.cpp'
+        PassPattern = '00dc4aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc4c40'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da6a8_00dc4c40.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da6a8_00dc4c40_test.cpp'
+        PassPattern = '00dc4c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc5e50'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da7a4_00dc5e50.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da7a4_00dc5e50_test.cpp'
+        PassPattern = '00dc5e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc7020'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da890_00dc7020.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da890_00dc7020_test.cpp'
+        PassPattern = '00dc7020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc71c0'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da8ac_00dc71c0.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da8ac_00dc71c0_test.cpp'
+        PassPattern = '00dc71c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc7360'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da8c8_00dc7360.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da8c8_00dc7360_test.cpp'
+        PassPattern = '00dc7360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc7f50'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da9ac_00dc7f50.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da9ac_00dc7f50_test.cpp'
+        PassPattern = '00dc7f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc83e0'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012da9e4_00dc83e0.cpp'
+        TestSource = '00/dc/global_CreateCVtable012da9e4_00dc83e0_test.cpp'
+        PassPattern = '00dc83e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc84e0'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012daa00_00dc84e0.cpp'
+        TestSource = '00/dc/global_CreateCVtable012daa00_00dc84e0_test.cpp'
+        PassPattern = '00dc84e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc85c0'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012daa1c_00dc85c0.cpp'
+        TestSource = '00/dc/global_CreateCVtable012daa1c_00dc85c0_test.cpp'
+        PassPattern = '00dc85c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcdb80'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012db348_00dcdb80.cpp'
+        TestSource = '00/dc/global_CreateCVtable012db348_00dcdb80_test.cpp'
+        PassPattern = '00dcdb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcef50'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012db3e0_00dcef50.cpp'
+        TestSource = '00/dc/global_CreateCVtable012db3e0_00dcef50_test.cpp'
+        PassPattern = '00dcef50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcf3d0'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012db4b8_00dcf3d0.cpp'
+        TestSource = '00/dc/global_CreateCVtable012db4b8_00dcf3d0_test.cpp'
+        PassPattern = '00dcf3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcf540'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012db4d4_00dcf540.cpp'
+        TestSource = '00/dc/global_CreateCVtable012db4d4_00dcf540_test.cpp'
+        PassPattern = '00dcf540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcf610'
+        Module = '_global'
+        Source = '00/dc/global_CreateCVtable012db4f0_00dcf610.cpp'
+        TestSource = '00/dc/global_CreateCVtable012db4f0_00dcf610_test.cpp'
+        PassPattern = '00dcf610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd49a0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dbef0_00dd49a0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dbef0_00dd49a0_test.cpp'
+        PassPattern = '00dd49a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd5940'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc02c_00dd5940.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc02c_00dd5940_test.cpp'
+        PassPattern = '00dd5940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd6330'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc074_00dd6330.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc074_00dd6330_test.cpp'
+        PassPattern = '00dd6330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd68a0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc108_00dd68a0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc108_00dd68a0_test.cpp'
+        PassPattern = '00dd68a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd83c0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc3e0_00dd83c0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc3e0_00dd83c0_test.cpp'
+        PassPattern = '00dd83c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd8790'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc44c_00dd8790.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc44c_00dd8790_test.cpp'
+        PassPattern = '00dd8790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd88d0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc468_00dd88d0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc468_00dd88d0_test.cpp'
+        PassPattern = '00dd88d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd8ae0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc4ac_00dd8ae0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc4ac_00dd8ae0_test.cpp'
+        PassPattern = '00dd8ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd8d20'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc4f4_00dd8d20.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc4f4_00dd8d20_test.cpp'
+        PassPattern = '00dd8d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd8f10'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc528_00dd8f10.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc528_00dd8f10_test.cpp'
+        PassPattern = '00dd8f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd90c0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc544_00dd90c0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc544_00dd90c0_test.cpp'
+        PassPattern = '00dd90c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddb4a0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc97c_00ddb4a0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc97c_00ddb4a0_test.cpp'
+        PassPattern = '00ddb4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddbf90'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dc9e8_00ddbf90.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dc9e8_00ddbf90_test.cpp'
+        PassPattern = '00ddbf90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddc2d0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dca10_00ddc2d0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dca10_00ddc2d0_test.cpp'
+        PassPattern = '00ddc2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddc3e0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dca2c_00ddc3e0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dca2c_00ddc3e0_test.cpp'
+        PassPattern = '00ddc3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddc500'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dca48_00ddc500.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dca48_00ddc500_test.cpp'
+        PassPattern = '00ddc500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddc5e0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dca64_00ddc5e0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dca64_00ddc5e0_test.cpp'
+        PassPattern = '00ddc5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dde630'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dcc50_00dde630.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dcc50_00dde630_test.cpp'
+        PassPattern = '00dde630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dde720'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dcc6c_00dde720.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dcc6c_00dde720_test.cpp'
+        PassPattern = '00dde720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddec30'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dccf4_00ddec30.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dccf4_00ddec30_test.cpp'
+        PassPattern = '00ddec30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddedf0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dcd10_00ddedf0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dcd10_00ddedf0_test.cpp'
+        PassPattern = '00ddedf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de18e0'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd190_00de18e0.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd190_00de18e0_test.cpp'
+        PassPattern = '00de18e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de1a50'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd1ac_00de1a50.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd1ac_00de1a50_test.cpp'
+        PassPattern = '00de1a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de1ba0'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd1c8_00de1ba0.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd1c8_00de1ba0_test.cpp'
+        PassPattern = '00de1ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de1d00'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd1e4_00de1d00.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd1e4_00de1d00_test.cpp'
+        PassPattern = '00de1d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de1e60'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd200_00de1e60.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd200_00de1e60_test.cpp'
+        PassPattern = '00de1e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de1fb0'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd21c_00de1fb0.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd21c_00de1fb0_test.cpp'
+        PassPattern = '00de1fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de2100'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd238_00de2100.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd238_00de2100_test.cpp'
+        PassPattern = '00de2100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de2500'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd260_00de2500.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd260_00de2500_test.cpp'
+        PassPattern = '00de2500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de3760'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd3d8_00de3760.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd3d8_00de3760_test.cpp'
+        PassPattern = '00de3760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de3c00'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dd448_00de3c00.cpp'
+        TestSource = '00/de/global_CreateCVtable012dd448_00de3c00_test.cpp'
+        PassPattern = '00de3c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dec4c0'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012ddbe8_00dec4c0.cpp'
+        TestSource = '00/de/global_CreateCVtable012ddbe8_00dec4c0_test.cpp'
+        PassPattern = '00dec4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ded1a0'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012ddd44_00ded1a0.cpp'
+        TestSource = '00/de/global_CreateCVtable012ddd44_00ded1a0_test.cpp'
+        PassPattern = '00ded1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ded290'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012ddd60_00ded290.cpp'
+        TestSource = '00/de/global_CreateCVtable012ddd60_00ded290_test.cpp'
+        PassPattern = '00ded290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ded450'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dddac_00ded450.cpp'
+        TestSource = '00/de/global_CreateCVtable012dddac_00ded450_test.cpp'
+        PassPattern = '00ded450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ded720'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dddc8_00ded720.cpp'
+        TestSource = '00/de/global_CreateCVtable012dddc8_00ded720_test.cpp'
+        PassPattern = '00ded720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00deda90'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012ddde4_00deda90.cpp'
+        TestSource = '00/de/global_CreateCVtable012ddde4_00deda90_test.cpp'
+        PassPattern = '00deda90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dede40'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dde28_00dede40.cpp'
+        TestSource = '00/de/global_CreateCVtable012dde28_00dede40_test.cpp'
+        PassPattern = '00dede40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dee1a0'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dde6c_00dee1a0.cpp'
+        TestSource = '00/de/global_CreateCVtable012dde6c_00dee1a0_test.cpp'
+        PassPattern = '00dee1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00deef00'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012dded0_00deef00.cpp'
+        TestSource = '00/de/global_CreateCVtable012dded0_00deef00_test.cpp'
+        PassPattern = '00deef00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00def0f0'
+        Module = '_global'
+        Source = '00/de/global_CreateCVtable012ddeec_00def0f0.cpp'
+        TestSource = '00/de/global_CreateCVtable012ddeec_00def0f0_test.cpp'
+        PassPattern = '00def0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df16b0'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de1ac_00df16b0.cpp'
+        TestSource = '00/df/global_CreateCVtable012de1ac_00df16b0_test.cpp'
+        PassPattern = '00df16b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df21f0'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de274_00df21f0.cpp'
+        TestSource = '00/df/global_CreateCVtable012de274_00df21f0_test.cpp'
+        PassPattern = '00df21f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df2960'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de2b8_00df2960.cpp'
+        TestSource = '00/df/global_CreateCVtable012de2b8_00df2960_test.cpp'
+        PassPattern = '00df2960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df2c20'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de2d4_00df2c20.cpp'
+        TestSource = '00/df/global_CreateCVtable012de2d4_00df2c20_test.cpp'
+        PassPattern = '00df2c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df2e90'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de2f0_00df2e90.cpp'
+        TestSource = '00/df/global_CreateCVtable012de2f0_00df2e90_test.cpp'
+        PassPattern = '00df2e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df3460'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de334_00df3460.cpp'
+        TestSource = '00/df/global_CreateCVtable012de334_00df3460_test.cpp'
+        PassPattern = '00df3460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df4520'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de590_00df4520.cpp'
+        TestSource = '00/df/global_CreateCVtable012de590_00df4520_test.cpp'
+        PassPattern = '00df4520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df4730'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de5ac_00df4730.cpp'
+        TestSource = '00/df/global_CreateCVtable012de5ac_00df4730_test.cpp'
+        PassPattern = '00df4730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df4820'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de5c8_00df4820.cpp'
+        TestSource = '00/df/global_CreateCVtable012de5c8_00df4820_test.cpp'
+        PassPattern = '00df4820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df7b20'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de894_00df7b20.cpp'
+        TestSource = '00/df/global_CreateCVtable012de894_00df7b20_test.cpp'
+        PassPattern = '00df7b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df7f90'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de92c_00df7f90.cpp'
+        TestSource = '00/df/global_CreateCVtable012de92c_00df7f90_test.cpp'
+        PassPattern = '00df7f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df8890'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012de9c8_00df8890.cpp'
+        TestSource = '00/df/global_CreateCVtable012de9c8_00df8890_test.cpp'
+        PassPattern = '00df8890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df90b0'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012dea2c_00df90b0.cpp'
+        TestSource = '00/df/global_CreateCVtable012dea2c_00df90b0_test.cpp'
+        PassPattern = '00df90b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df9640'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012dea90_00df9640.cpp'
+        TestSource = '00/df/global_CreateCVtable012dea90_00df9640_test.cpp'
+        PassPattern = '00df9640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfb050'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012dec68_00dfb050.cpp'
+        TestSource = '00/df/global_CreateCVtable012dec68_00dfb050_test.cpp'
+        PassPattern = '00dfb050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfb250'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012decd8_00dfb250.cpp'
+        TestSource = '00/df/global_CreateCVtable012decd8_00dfb250_test.cpp'
+        PassPattern = '00dfb250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfb990'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012dedc0_00dfb990.cpp'
+        TestSource = '00/df/global_CreateCVtable012dedc0_00dfb990_test.cpp'
+        PassPattern = '00dfb990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfbcf0'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012deddc_00dfbcf0.cpp'
+        TestSource = '00/df/global_CreateCVtable012deddc_00dfbcf0_test.cpp'
+        PassPattern = '00dfbcf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfbde0'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012dedf8_00dfbde0.cpp'
+        TestSource = '00/df/global_CreateCVtable012dedf8_00dfbde0_test.cpp'
+        PassPattern = '00dfbde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfbed0'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012dee14_00dfbed0.cpp'
+        TestSource = '00/df/global_CreateCVtable012dee14_00dfbed0_test.cpp'
+        PassPattern = '00dfbed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfbfa0'
+        Module = '_global'
+        Source = '00/df/global_CreateCVtable012dee30_00dfbfa0.cpp'
+        TestSource = '00/df/global_CreateCVtable012dee30_00dfbfa0_test.cpp'
+        PassPattern = '00dfbfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e02390'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df4fc_00e02390.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df4fc_00e02390_test.cpp'
+        PassPattern = '00e02390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e02870'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df55c_00e02870.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df55c_00e02870_test.cpp'
+        PassPattern = '00e02870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e02c90'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df578_00e02c90.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df578_00e02c90_test.cpp'
+        PassPattern = '00e02c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e02d70'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df594_00e02d70.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df594_00e02d70_test.cpp'
+        PassPattern = '00e02d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e033a0'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df5c4_00e033a0.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df5c4_00e033a0_test.cpp'
+        PassPattern = '00e033a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e03500'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df5e0_00e03500.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df5e0_00e03500_test.cpp'
+        PassPattern = '00e03500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e03730'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df618_00e03730.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df618_00e03730_test.cpp'
+        PassPattern = '00e03730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e03970'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df634_00e03970.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df634_00e03970_test.cpp'
+        PassPattern = '00e03970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e03a50'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df650_00e03a50.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df650_00e03a50_test.cpp'
+        PassPattern = '00e03a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e03e80'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df6e8_00e03e80.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df6e8_00e03e80_test.cpp'
+        PassPattern = '00e03e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e046f0'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df710_00e046f0.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df710_00e046f0_test.cpp'
+        PassPattern = '00e046f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e04890'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df72c_00e04890.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df72c_00e04890_test.cpp'
+        PassPattern = '00e04890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e04a30'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012df748_00e04a30.cpp'
+        TestSource = '00/e0/global_CreateCVtable012df748_00e04a30_test.cpp'
+        PassPattern = '00e04a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0c970'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012dff34_00e0c970.cpp'
+        TestSource = '00/e0/global_CreateCVtable012dff34_00e0c970_test.cpp'
+        PassPattern = '00e0c970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0cf20'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012dff64_00e0cf20.cpp'
+        TestSource = '00/e0/global_CreateCVtable012dff64_00e0cf20_test.cpp'
+        PassPattern = '00e0cf20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0d130'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012dff80_00e0d130.cpp'
+        TestSource = '00/e0/global_CreateCVtable012dff80_00e0d130_test.cpp'
+        PassPattern = '00e0d130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0d590'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012dffdc_00e0d590.cpp'
+        TestSource = '00/e0/global_CreateCVtable012dffdc_00e0d590_test.cpp'
+        PassPattern = '00e0d590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0d760'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012e000c_00e0d760.cpp'
+        TestSource = '00/e0/global_CreateCVtable012e000c_00e0d760_test.cpp'
+        PassPattern = '00e0d760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0f400'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012e0234_00e0f400.cpp'
+        TestSource = '00/e0/global_CreateCVtable012e0234_00e0f400_test.cpp'
+        PassPattern = '00e0f400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0f7c0'
+        Module = '_global'
+        Source = '00/e0/global_CreateCVtable012e0284_00e0f7c0.cpp'
+        TestSource = '00/e0/global_CreateCVtable012e0284_00e0f7c0_test.cpp'
+        PassPattern = '00e0f7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e109d0'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e03b8_00e109d0.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e03b8_00e109d0_test.cpp'
+        PassPattern = '00e109d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e10b20'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e03ec_00e10b20.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e03ec_00e10b20_test.cpp'
+        PassPattern = '00e10b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e10d70'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0408_00e10d70.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0408_00e10d70_test.cpp'
+        PassPattern = '00e10d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e11380'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0474_00e11380.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0474_00e11380_test.cpp'
+        PassPattern = '00e11380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e11580'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0490_00e11580.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0490_00e11580_test.cpp'
+        PassPattern = '00e11580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e11ad0'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e04fc_00e11ad0.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e04fc_00e11ad0_test.cpp'
+        PassPattern = '00e11ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e11cd0'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0518_00e11cd0.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0518_00e11cd0_test.cpp'
+        PassPattern = '00e11cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e15750'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0a50_00e15750.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0a50_00e15750_test.cpp'
+        PassPattern = '00e15750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e16990'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0b28_00e16990.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0b28_00e16990_test.cpp'
+        PassPattern = '00e16990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e16b50'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0b44_00e16b50.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0b44_00e16b50_test.cpp'
+        PassPattern = '00e16b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e16d10'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0b60_00e16d10.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0b60_00e16d10_test.cpp'
+        PassPattern = '00e16d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e17230'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0b7c_00e17230.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0b7c_00e17230_test.cpp'
+        PassPattern = '00e17230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e17750'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0b98_00e17750.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0b98_00e17750_test.cpp'
+        PassPattern = '00e17750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e190a0'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0e30_00e190a0.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0e30_00e190a0_test.cpp'
+        PassPattern = '00e190a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e191e0'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0e4c_00e191e0.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0e4c_00e191e0_test.cpp'
+        PassPattern = '00e191e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e192e0'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0e68_00e192e0.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0e68_00e192e0_test.cpp'
+        PassPattern = '00e192e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1ae50'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e0fec_00e1ae50.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e0fec_00e1ae50_test.cpp'
+        PassPattern = '00e1ae50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1b100'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e1018_00e1b100.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e1018_00e1b100_test.cpp'
+        PassPattern = '00e1b100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1b660'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e1078_00e1b660.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e1078_00e1b660_test.cpp'
+        PassPattern = '00e1b660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1b950'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e1094_00e1b950.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e1094_00e1b950_test.cpp'
+        PassPattern = '00e1b950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1ba60'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e10b0_00e1ba60.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e10b0_00e1ba60_test.cpp'
+        PassPattern = '00e1ba60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1bb80'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e10cc_00e1bb80.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e10cc_00e1bb80_test.cpp'
+        PassPattern = '00e1bb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1e7a0'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e151c_00e1e7a0.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e151c_00e1e7a0_test.cpp'
+        PassPattern = '00e1e7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1e880'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e1538_00e1e880.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e1538_00e1e880_test.cpp'
+        PassPattern = '00e1e880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1ed50'
+        Module = '_global'
+        Source = '00/e1/global_CreateCVtable012e1554_00e1ed50.cpp'
+        TestSource = '00/e1/global_CreateCVtable012e1554_00e1ed50_test.cpp'
+        PassPattern = '00e1ed50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e25c70'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e1e28_00e25c70.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e1e28_00e25c70_test.cpp'
+        PassPattern = '00e25c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e26af0'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e1f74_00e26af0.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e1f74_00e26af0_test.cpp'
+        PassPattern = '00e26af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e27bb0'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e20a4_00e27bb0.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e20a4_00e27bb0_test.cpp'
+        PassPattern = '00e27bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e28f70'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e2230_00e28f70.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e2230_00e28f70_test.cpp'
+        PassPattern = '00e28f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e29040'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e224c_00e29040.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e224c_00e29040_test.cpp'
+        PassPattern = '00e29040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e29e80'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e2380_00e29e80.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e2380_00e29e80_test.cpp'
+        PassPattern = '00e29e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2a020'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e23b8_00e2a020.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e23b8_00e2a020_test.cpp'
+        PassPattern = '00e2a020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2bb60'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e2834_00e2bb60.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e2834_00e2bb60_test.cpp'
+        PassPattern = '00e2bb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2bc90'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e2850_00e2bc90.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e2850_00e2bc90_test.cpp'
+        PassPattern = '00e2bc90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2bec0'
+        Module = '_global'
+        Source = '00/e2/global_CreateCVtable012e286c_00e2bec0.cpp'
+        TestSource = '00/e2/global_CreateCVtable012e286c_00e2bec0_test.cpp'
+        PassPattern = '00e2bec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e335b0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e30f8_00e335b0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e30f8_00e335b0_test.cpp'
+        PassPattern = '00e335b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e33800'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3114_00e33800.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3114_00e33800_test.cpp'
+        PassPattern = '00e33800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e33a20'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3140_00e33a20.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3140_00e33a20_test.cpp'
+        PassPattern = '00e33a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e33bc0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e315c_00e33bc0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e315c_00e33bc0_test.cpp'
+        PassPattern = '00e33bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e33d30'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3178_00e33d30.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3178_00e33d30_test.cpp'
+        PassPattern = '00e33d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e382c0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e36e8_00e382c0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e36e8_00e382c0_test.cpp'
+        PassPattern = '00e382c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e385d0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3704_00e385d0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3704_00e385d0_test.cpp'
+        PassPattern = '00e385d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e388f0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3738_00e388f0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3738_00e388f0_test.cpp'
+        PassPattern = '00e388f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3aab0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3aac_00e3aab0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3aac_00e3aab0_test.cpp'
+        PassPattern = '00e3aab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3ae60'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3b10_00e3ae60.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3b10_00e3ae60_test.cpp'
+        PassPattern = '00e3ae60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3af90'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3b2c_00e3af90.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3b2c_00e3af90_test.cpp'
+        PassPattern = '00e3af90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3b0f0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3b48_00e3b0f0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3b48_00e3b0f0_test.cpp'
+        PassPattern = '00e3b0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3b270'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3b64_00e3b270.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3b64_00e3b270_test.cpp'
+        PassPattern = '00e3b270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3b3d0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e3b80_00e3b3d0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e3b80_00e3b3d0_test.cpp'
+        PassPattern = '00e3b3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e47500'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e4b44_00e47500.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e4b44_00e47500_test.cpp'
+        PassPattern = '00e47500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e48950'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e4d6c_00e48950.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e4d6c_00e48950_test.cpp'
+        PassPattern = '00e48950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e48d00'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e4db8_00e48d00.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e4db8_00e48d00_test.cpp'
+        PassPattern = '00e48d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e48de0'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e4dd4_00e48de0.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e4dd4_00e48de0_test.cpp'
+        PassPattern = '00e48de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e49850'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e4edc_00e49850.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e4edc_00e49850_test.cpp'
+        PassPattern = '00e49850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e49f10'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e4ef8_00e49f10.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e4ef8_00e49f10_test.cpp'
+        PassPattern = '00e49f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4a190'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e4f14_00e4a190.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e4f14_00e4a190_test.cpp'
+        PassPattern = '00e4a190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4a660'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e4f94_00e4a660.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e4f94_00e4a660_test.cpp'
+        PassPattern = '00e4a660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4af50'
+        Module = '_global'
+        Source = '00/e4/global_CreateCVtable012e508c_00e4af50.cpp'
+        TestSource = '00/e4/global_CreateCVtable012e508c_00e4af50_test.cpp'
+        PassPattern = '00e4af50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e507e0'
+        Module = '_global'
+        Source = '00/e5/global_CreateCVtable012e5aec_00e507e0.cpp'
+        TestSource = '00/e5/global_CreateCVtable012e5aec_00e507e0_test.cpp'
+        PassPattern = '00e507e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e58c60'
+        Module = '_global'
+        Source = '00/e5/global_CreateCVtable012e68c4_00e58c60.cpp'
+        TestSource = '00/e5/global_CreateCVtable012e68c4_00e58c60_test.cpp'
+        PassPattern = '00e58c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5dff0'
+        Module = '_global'
+        Source = '00/e5/global_CreateCVtable012e7038_00e5dff0.cpp'
+        TestSource = '00/e5/global_CreateCVtable012e7038_00e5dff0_test.cpp'
+        PassPattern = '00e5dff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e634b0'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e747c_00e634b0.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e747c_00e634b0_test.cpp'
+        PassPattern = '00e634b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e63590'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e7498_00e63590.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e7498_00e63590_test.cpp'
+        PassPattern = '00e63590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e63660'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e74b4_00e63660.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e74b4_00e63660_test.cpp'
+        PassPattern = '00e63660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6a600'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e8484_00e6a600.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e8484_00e6a600_test.cpp'
+        PassPattern = '00e6a600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6a6e0'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e84a0_00e6a6e0.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e84a0_00e6a6e0_test.cpp'
+        PassPattern = '00e6a6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6e960'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e8c20_00e6e960.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e8c20_00e6e960_test.cpp'
+        PassPattern = '00e6e960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6f0f0'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e8cb4_00e6f0f0.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e8cb4_00e6f0f0_test.cpp'
+        PassPattern = '00e6f0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6f640'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e8d44_00e6f640.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e8d44_00e6f640_test.cpp'
+        PassPattern = '00e6f640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6fb70'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e8db4_00e6fb70.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e8db4_00e6fb70_test.cpp'
+        PassPattern = '00e6fb70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e70390'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e8e9c_00e70390.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e8e9c_00e70390_test.cpp'
+        PassPattern = '00e70390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e70af0'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e8f2c_00e70af0.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e8f2c_00e70af0_test.cpp'
+        PassPattern = '00e70af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e71380'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e8fdc_00e71380.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e8fdc_00e71380_test.cpp'
+        PassPattern = '00e71380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e718b0'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e9040_00e718b0.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e9040_00e718b0_test.cpp'
+        PassPattern = '00e718b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e71e40'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e90a8_00e71e40.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e90a8_00e71e40_test.cpp'
+        PassPattern = '00e71e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e72560'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e9124_00e72560.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e9124_00e72560_test.cpp'
+        PassPattern = '00e72560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e73340'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e9388_00e73340.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e9388_00e73340_test.cpp'
+        PassPattern = '00e73340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e73860'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e9404_00e73860.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e9404_00e73860_test.cpp'
+        PassPattern = '00e73860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e73ff0'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e94bc_00e73ff0.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e94bc_00e73ff0_test.cpp'
+        PassPattern = '00e73ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e76360'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e9898_00e76360.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e9898_00e76360_test.cpp'
+        PassPattern = '00e76360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e76470'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e98b4_00e76470.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e98b4_00e76470_test.cpp'
+        PassPattern = '00e76470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e765d0'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e98d0_00e765d0.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e98d0_00e765d0_test.cpp'
+        PassPattern = '00e765d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e76730'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e98ec_00e76730.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e98ec_00e76730_test.cpp'
+        PassPattern = '00e76730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e76800'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012e9908_00e76800.cpp'
+        TestSource = '00/e7/global_CreateCVtable012e9908_00e76800_test.cpp'
+        PassPattern = '00e76800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7b890'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012ea0d0_00e7b890.cpp'
+        TestSource = '00/e7/global_CreateCVtable012ea0d0_00e7b890_test.cpp'
+        PassPattern = '00e7b890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7ba40'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012ea0ec_00e7ba40.cpp'
+        TestSource = '00/e7/global_CreateCVtable012ea0ec_00e7ba40_test.cpp'
+        PassPattern = '00e7ba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7bbe0'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012ea108_00e7bbe0.cpp'
+        TestSource = '00/e7/global_CreateCVtable012ea108_00e7bbe0_test.cpp'
+        PassPattern = '00e7bbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7e570'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012ea5a0_00e7e570.cpp'
+        TestSource = '00/e7/global_CreateCVtable012ea5a0_00e7e570_test.cpp'
+        PassPattern = '00e7e570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7ec90'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012ea5e8_00e7ec90.cpp'
+        TestSource = '00/e7/global_CreateCVtable012ea5e8_00e7ec90_test.cpp'
+        PassPattern = '00e7ec90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e82870'
+        Module = '_global'
+        Source = '00/e8/global_CreateCVtable012eb02c_00e82870.cpp'
+        TestSource = '00/e8/global_CreateCVtable012eb02c_00e82870_test.cpp'
+        PassPattern = '00e82870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e83780'
+        Module = '_global'
+        Source = '00/e8/global_CreateCVtable012eb0dc_00e83780.cpp'
+        TestSource = '00/e8/global_CreateCVtable012eb0dc_00e83780_test.cpp'
+        PassPattern = '00e83780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8bd30'
+        Module = '_global'
+        Source = '00/e8/global_CreateCVtable012ebb14_00e8bd30.cpp'
+        TestSource = '00/e8/global_CreateCVtable012ebb14_00e8bd30_test.cpp'
+        PassPattern = '00e8bd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8be10'
+        Module = '_global'
+        Source = '00/e8/global_CreateCVtable012ebb30_00e8be10.cpp'
+        TestSource = '00/e8/global_CreateCVtable012ebb30_00e8be10_test.cpp'
+        PassPattern = '00e8be10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8ca60'
+        Module = '_global'
+        Source = '00/e8/global_CreateCVtable012ebc34_00e8ca60.cpp'
+        TestSource = '00/e8/global_CreateCVtable012ebc34_00e8ca60_test.cpp'
+        PassPattern = '00e8ca60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e908d0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ec184_00e908d0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ec184_00e908d0_test.cpp'
+        PassPattern = '00e908d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e955b0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ecca0_00e955b0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ecca0_00e955b0_test.cpp'
+        PassPattern = '00e955b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e95690'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012eccbc_00e95690.cpp'
+        TestSource = '00/e9/global_CreateCVtable012eccbc_00e95690_test.cpp'
+        PassPattern = '00e95690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e95bf0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ecd20_00e95bf0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ecd20_00e95bf0_test.cpp'
+        PassPattern = '00e95bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e95cd0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ecd3c_00e95cd0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ecd3c_00e95cd0_test.cpp'
+        PassPattern = '00e95cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e996b0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ed1ac_00e996b0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ed1ac_00e996b0_test.cpp'
+        PassPattern = '00e996b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e997e0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ed1c8_00e997e0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ed1c8_00e997e0_test.cpp'
+        PassPattern = '00e997e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9d700'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ed644_00e9d700.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ed644_00e9d700_test.cpp'
+        PassPattern = '00e9d700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9d8e0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ed660_00e9d8e0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ed660_00e9d8e0_test.cpp'
+        PassPattern = '00e9d8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9ff70'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012eda38_00e9ff70.cpp'
+        TestSource = '00/e9/global_CreateCVtable012eda38_00e9ff70_test.cpp'
+        PassPattern = '00e9ff70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea09f0'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012edb5c_00ea09f0.cpp'
+        TestSource = '00/ea/global_CreateCVtable012edb5c_00ea09f0_test.cpp'
+        PassPattern = '00ea09f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea34f0'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012edda8_00ea34f0.cpp'
+        TestSource = '00/ea/global_CreateCVtable012edda8_00ea34f0_test.cpp'
+        PassPattern = '00ea34f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea5150'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ee050_00ea5150.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ee050_00ea5150_test.cpp'
+        PassPattern = '00ea5150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7990'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ee4c0_00ea7990.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ee4c0_00ea7990_test.cpp'
+        PassPattern = '00ea7990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7a60'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ee4dc_00ea7a60.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ee4dc_00ea7a60_test.cpp'
+        PassPattern = '00ea7a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea8e50'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ee758_00ea8e50.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ee758_00ea8e50_test.cpp'
+        PassPattern = '00ea8e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eaae40'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ef2c0_00eaae40.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ef2c0_00eaae40_test.cpp'
+        PassPattern = '00eaae40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eaaf10'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ef2dc_00eaaf10.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ef2dc_00eaaf10_test.cpp'
+        PassPattern = '00eaaf10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eaba10'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ef4d4_00eaba10.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ef4d4_00eaba10_test.cpp'
+        PassPattern = '00eaba10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eac4e0'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ef604_00eac4e0.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ef604_00eac4e0_test.cpp'
+        PassPattern = '00eac4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eacde0'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ef6c4_00eacde0.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ef6c4_00eacde0_test.cpp'
+        PassPattern = '00eacde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ead730'
+        Module = '_global'
+        Source = '00/ea/global_CreateCVtable012ef7c8_00ead730.cpp'
+        TestSource = '00/ea/global_CreateCVtable012ef7c8_00ead730_test.cpp'
+        PassPattern = '00ead730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb78b0'
+        Module = '_global'
+        Source = '00/eb/global_CreateCVtable012f05f4_00eb78b0.cpp'
+        TestSource = '00/eb/global_CreateCVtable012f05f4_00eb78b0_test.cpp'
+        PassPattern = '00eb78b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb79f0'
+        Module = '_global'
+        Source = '00/eb/global_CreateCVtable012f0610_00eb79f0.cpp'
+        TestSource = '00/eb/global_CreateCVtable012f0610_00eb79f0_test.cpp'
+        PassPattern = '00eb79f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb8810'
+        Module = '_global'
+        Source = '00/eb/global_CreateCVtable012f0720_00eb8810.cpp'
+        TestSource = '00/eb/global_CreateCVtable012f0720_00eb8810_test.cpp'
+        PassPattern = '00eb8810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebce80'
+        Module = '_global'
+        Source = '00/eb/global_CreateCVtable012f0cd8_00ebce80.cpp'
+        TestSource = '00/eb/global_CreateCVtable012f0cd8_00ebce80_test.cpp'
+        PassPattern = '00ebce80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebe540'
+        Module = '_global'
+        Source = '00/eb/global_CreateCVtable012f0e50_00ebe540.cpp'
+        TestSource = '00/eb/global_CreateCVtable012f0e50_00ebe540_test.cpp'
+        PassPattern = '00ebe540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebfb00'
+        Module = '_global'
+        Source = '00/eb/global_CreateCVtable012f1010_00ebfb00.cpp'
+        TestSource = '00/eb/global_CreateCVtable012f1010_00ebfb00_test.cpp'
+        PassPattern = '00ebfb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec0900'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f11dc_00ec0900.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f11dc_00ec0900_test.cpp'
+        PassPattern = '00ec0900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec0a50'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f11f8_00ec0a50.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f11f8_00ec0a50_test.cpp'
+        PassPattern = '00ec0a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec13f0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f1284_00ec13f0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f1284_00ec13f0_test.cpp'
+        PassPattern = '00ec13f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec14e0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f12a0_00ec14e0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f12a0_00ec14e0_test.cpp'
+        PassPattern = '00ec14e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec41f0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f166c_00ec41f0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f166c_00ec41f0_test.cpp'
+        PassPattern = '00ec41f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec4490'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f16c4_00ec4490.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f16c4_00ec4490_test.cpp'
+        PassPattern = '00ec4490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec45c0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f16e0_00ec45c0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f16e0_00ec45c0_test.cpp'
+        PassPattern = '00ec45c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec5bc0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f18c0_00ec5bc0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f18c0_00ec5bc0_test.cpp'
+        PassPattern = '00ec5bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec5cd0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f18dc_00ec5cd0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f18dc_00ec5cd0_test.cpp'
+        PassPattern = '00ec5cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec67b0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f1964_00ec67b0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f1964_00ec67b0_test.cpp'
+        PassPattern = '00ec67b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec7ff0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f1a78_00ec7ff0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f1a78_00ec7ff0_test.cpp'
+        PassPattern = '00ec7ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec8160'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f1a94_00ec8160.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f1a94_00ec8160_test.cpp'
+        PassPattern = '00ec8160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec9c00'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f1d74_00ec9c00.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f1d74_00ec9c00_test.cpp'
+        PassPattern = '00ec9c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecafa0'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f2000_00ecafa0.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f2000_00ecafa0_test.cpp'
+        PassPattern = '00ecafa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecbc80'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f216c_00ecbc80.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f216c_00ecbc80_test.cpp'
+        PassPattern = '00ecbc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecd450'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f2420_00ecd450.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f2420_00ecd450_test.cpp'
+        PassPattern = '00ecd450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed40c0'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f2f28_00ed40c0.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f2f28_00ed40c0_test.cpp'
+        PassPattern = '00ed40c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed44c0'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f2fac_00ed44c0.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f2fac_00ed44c0_test.cpp'
+        PassPattern = '00ed44c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4770'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f2fe4_00ed4770.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f2fe4_00ed4770_test.cpp'
+        PassPattern = '00ed4770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed5130'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f3158_00ed5130.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f3158_00ed5130_test.cpp'
+        PassPattern = '00ed5130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed5260'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f3174_00ed5260.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f3174_00ed5260_test.cpp'
+        PassPattern = '00ed5260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed8050'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f34bc_00ed8050.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f34bc_00ed8050_test.cpp'
+        PassPattern = '00ed8050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edc2d0'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f3eb0_00edc2d0.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f3eb0_00edc2d0_test.cpp'
+        PassPattern = '00edc2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edf2b0'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f41a8_00edf2b0.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f41a8_00edf2b0_test.cpp'
+        PassPattern = '00edf2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edf910'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f4208_00edf910.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f4208_00edf910_test.cpp'
+        PassPattern = '00edf910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edff70'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f425c_00edff70.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f425c_00edff70_test.cpp'
+        PassPattern = '00edff70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee0060'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f4278_00ee0060.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f4278_00ee0060_test.cpp'
+        PassPattern = '00ee0060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee0150'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f4294_00ee0150.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f4294_00ee0150_test.cpp'
+        PassPattern = '00ee0150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee03e0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f42cc_00ee03e0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f42cc_00ee03e0_test.cpp'
+        PassPattern = '00ee03e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee04d0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f42e8_00ee04d0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f42e8_00ee04d0_test.cpp'
+        PassPattern = '00ee04d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee05c0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f4304_00ee05c0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f4304_00ee05c0_test.cpp'
+        PassPattern = '00ee05c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee0930'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f4364_00ee0930.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f4364_00ee0930_test.cpp'
+        PassPattern = '00ee0930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee0b60'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f439c_00ee0b60.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f439c_00ee0b60_test.cpp'
+        PassPattern = '00ee0b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee1400'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f440c_00ee1400.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f440c_00ee1400_test.cpp'
+        PassPattern = '00ee1400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee1af0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f4438_00ee1af0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f4438_00ee1af0_test.cpp'
+        PassPattern = '00ee1af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee4bb0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f511c_00ee4bb0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f511c_00ee4bb0_test.cpp'
+        PassPattern = '00ee4bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee4cf0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f5160_00ee4cf0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f5160_00ee4cf0_test.cpp'
+        PassPattern = '00ee4cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee7340'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f52c0_00ee7340.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f52c0_00ee7340_test.cpp'
+        PassPattern = '00ee7340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee7430'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f52dc_00ee7430.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f52dc_00ee7430_test.cpp'
+        PassPattern = '00ee7430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed4d0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f5874_00eed4d0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f5874_00eed4d0_test.cpp'
+        PassPattern = '00eed4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed5d0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f5890_00eed5d0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f5890_00eed5d0_test.cpp'
+        PassPattern = '00eed5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eed7d0'
+        Module = '_global'
+        Source = '00/ee/global_CreateCVtable012f58ac_00eed7d0.cpp'
+        TestSource = '00/ee/global_CreateCVtable012f58ac_00eed7d0_test.cpp'
+        PassPattern = '00eed7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1050'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f5f90_00ef1050.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f5f90_00ef1050_test.cpp'
+        PassPattern = '00ef1050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1130'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f5fac_00ef1130.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f5fac_00ef1130_test.cpp'
+        PassPattern = '00ef1130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1210'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f5fc8_00ef1210.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f5fc8_00ef1210_test.cpp'
+        PassPattern = '00ef1210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef15b0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f5fe4_00ef15b0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f5fe4_00ef15b0_test.cpp'
+        PassPattern = '00ef15b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1b70'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f60f0_00ef1b70.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f60f0_00ef1b70_test.cpp'
+        PassPattern = '00ef1b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1c50'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f610c_00ef1c50.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f610c_00ef1c50_test.cpp'
+        PassPattern = '00ef1c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1d30'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6128_00ef1d30.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6128_00ef1d30_test.cpp'
+        PassPattern = '00ef1d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1f90'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6188_00ef1f90.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6188_00ef1f90_test.cpp'
+        PassPattern = '00ef1f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2070'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f61a4_00ef2070.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f61a4_00ef2070_test.cpp'
+        PassPattern = '00ef2070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef21b0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f61c0_00ef21b0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f61c0_00ef21b0_test.cpp'
+        PassPattern = '00ef21b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2420'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f61ec_00ef2420.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f61ec_00ef2420_test.cpp'
+        PassPattern = '00ef2420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2500'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6208_00ef2500.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6208_00ef2500_test.cpp'
+        PassPattern = '00ef2500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2820'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6238_00ef2820.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6238_00ef2820_test.cpp'
+        PassPattern = '00ef2820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2900'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6254_00ef2900.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6254_00ef2900_test.cpp'
+        PassPattern = '00ef2900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2ac0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6270_00ef2ac0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6270_00ef2ac0_test.cpp'
+        PassPattern = '00ef2ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2f20'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6350_00ef2f20.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6350_00ef2f20_test.cpp'
+        PassPattern = '00ef2f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3120'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f636c_00ef3120.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f636c_00ef3120_test.cpp'
+        PassPattern = '00ef3120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef33c0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6388_00ef33c0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6388_00ef33c0_test.cpp'
+        PassPattern = '00ef33c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3660'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f63b4_00ef3660.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f63b4_00ef3660_test.cpp'
+        PassPattern = '00ef3660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3740'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f63d0_00ef3740.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f63d0_00ef3740_test.cpp'
+        PassPattern = '00ef3740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef39c0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f63ec_00ef39c0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f63ec_00ef39c0_test.cpp'
+        PassPattern = '00ef39c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3c60'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6418_00ef3c60.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6418_00ef3c60_test.cpp'
+        PassPattern = '00ef3c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3d40'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6434_00ef3d40.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6434_00ef3d40_test.cpp'
+        PassPattern = '00ef3d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3e20'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6450_00ef3e20.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6450_00ef3e20_test.cpp'
+        PassPattern = '00ef3e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef4130'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f646c_00ef4130.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f646c_00ef4130_test.cpp'
+        PassPattern = '00ef4130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef4210'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6488_00ef4210.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6488_00ef4210_test.cpp'
+        PassPattern = '00ef4210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef44d0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f64a4_00ef44d0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f64a4_00ef44d0_test.cpp'
+        PassPattern = '00ef44d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef47c0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f64fc_00ef47c0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f64fc_00ef47c0_test.cpp'
+        PassPattern = '00ef47c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef4a60'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6534_00ef4a60.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6534_00ef4a60_test.cpp'
+        PassPattern = '00ef4a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efa0b0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f69b0_00efa0b0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f69b0_00efa0b0_test.cpp'
+        PassPattern = '00efa0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efaa60'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6a70_00efaa60.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6a70_00efaa60_test.cpp'
+        PassPattern = '00efaa60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb280'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6b20_00efb280.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6b20_00efb280_test.cpp'
+        PassPattern = '00efb280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb7e0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6b9c_00efb7e0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6b9c_00efb7e0_test.cpp'
+        PassPattern = '00efb7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efbd40'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6c20_00efbd40.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6c20_00efbd40_test.cpp'
+        PassPattern = '00efbd40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efcb70'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6d54_00efcb70.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6d54_00efcb70_test.cpp'
+        PassPattern = '00efcb70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efd680'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6de8_00efd680.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6de8_00efd680_test.cpp'
+        PassPattern = '00efd680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efd9c0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6e44_00efd9c0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6e44_00efd9c0_test.cpp'
+        PassPattern = '00efd9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efe620'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6f14_00efe620.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6f14_00efe620_test.cpp'
+        PassPattern = '00efe620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efe7f0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6f30_00efe7f0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6f30_00efe7f0_test.cpp'
+        PassPattern = '00efe7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efea80'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6f4c_00efea80.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6f4c_00efea80_test.cpp'
+        PassPattern = '00efea80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff3f0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f701c_00eff3f0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f701c_00eff3f0_test.cpp'
+        PassPattern = '00eff3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f00000'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7100_00f00000.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7100_00f00000_test.cpp'
+        PassPattern = '00f00000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f00a10'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7238_00f00a10.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7238_00f00a10_test.cpp'
+        PassPattern = '00f00a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f00bb0'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7274_00f00bb0.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7274_00f00bb0_test.cpp'
+        PassPattern = '00f00bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01b60'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7338_00f01b60.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7338_00f01b60_test.cpp'
+        PassPattern = '00f01b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f038a0'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7da4_00f038a0.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7da4_00f038a0_test.cpp'
+        PassPattern = '00f038a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f03f20'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7ddc_00f03f20.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7ddc_00f03f20_test.cpp'
+        PassPattern = '00f03f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f04280'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7df8_00f04280.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7df8_00f04280_test.cpp'
+        PassPattern = '00f04280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f04360'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7e14_00f04360.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7e14_00f04360_test.cpp'
+        PassPattern = '00f04360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f04510'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7e30_00f04510.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7e30_00f04510_test.cpp'
+        PassPattern = '00f04510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f04bd0'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7e4c_00f04bd0.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7e4c_00f04bd0_test.cpp'
+        PassPattern = '00f04bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f050e0'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7e68_00f050e0.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7e68_00f050e0_test.cpp'
+        PassPattern = '00f050e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f056a0'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7e84_00f056a0.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7e84_00f056a0_test.cpp'
+        PassPattern = '00f056a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f057e0'
+        Module = '_global'
+        Source = '00/f0/global_CreateCVtable012f7ea0_00f057e0.cpp'
+        TestSource = '00/f0/global_CreateCVtable012f7ea0_00f057e0_test.cpp'
+        PassPattern = '00f057e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f14560'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f8f98_00f14560.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f8f98_00f14560_test.cpp'
+        PassPattern = '00f14560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f14670'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f8fb4_00f14670.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f8fb4_00f14670_test.cpp'
+        PassPattern = '00f14670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f14980'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f8fe8_00f14980.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f8fe8_00f14980_test.cpp'
+        PassPattern = '00f14980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f15550'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f911c_00f15550.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f911c_00f15550_test.cpp'
+        PassPattern = '00f15550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f161a0'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f927c_00f161a0.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f927c_00f161a0_test.cpp'
+        PassPattern = '00f161a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f16fe0'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f9458_00f16fe0.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f9458_00f16fe0_test.cpp'
+        PassPattern = '00f16fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f17b70'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f95a8_00f17b70.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f95a8_00f17b70_test.cpp'
+        PassPattern = '00f17b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f19ab0'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f9b5c_00f19ab0.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f9b5c_00f19ab0_test.cpp'
+        PassPattern = '00f19ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1a810'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f9c50_00f1a810.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f9c50_00f1a810_test.cpp'
+        PassPattern = '00f1a810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1b0f0'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f9cc8_00f1b0f0.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f9cc8_00f1b0f0_test.cpp'
+        PassPattern = '00f1b0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1b5b0'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f9ce4_00f1b5b0.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f9ce4_00f1b5b0_test.cpp'
+        PassPattern = '00f1b5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1b800'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f9d10_00f1b800.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f9d10_00f1b800_test.cpp'
+        PassPattern = '00f1b800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1b8e0'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f9d2c_00f1b8e0.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f9d2c_00f1b8e0_test.cpp'
+        PassPattern = '00f1b8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1ca30'
+        Module = '_global'
+        Source = '00/f1/global_CreateCVtable012f9ea4_00f1ca30.cpp'
+        TestSource = '00/f1/global_CreateCVtable012f9ea4_00f1ca30_test.cpp'
+        PassPattern = '00f1ca30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042bb21'
+        Module = 'CRetailTree_longkey_ins0042ba99'
+        Source = '00/42/CRetailTreelongkeyins0042ba99_insert_0042bb21.cpp'
+        TestSource = '00/42/CRetailTreelongkeyins0042ba99_insert_0042bb21_test.cpp'
+        PassPattern = '0042bb21_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042bc2f'
+        Module = 'CRetailTree_longkey_ins0042bba7'
+        Source = '00/42/CRetailTreelongkeyins0042bba7_insert_0042bc2f.cpp'
+        TestSource = '00/42/CRetailTreelongkeyins0042bba7_insert_0042bc2f_test.cpp'
+        PassPattern = '0042bc2f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045dbf2'
+        Module = 'CRetailTree_longkey_ins0045dc78'
+        Source = '00/45/CRetailTreelongkeyins0045dc78_insert_0045dbf2.cpp'
+        TestSource = '00/45/CRetailTreelongkeyins0045dc78_insert_0045dbf2_test.cpp'
+        PassPattern = '0045dbf2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045e074'
+        Module = 'CRetailTree_longkey_ins0045e0fa'
+        Source = '00/45/CRetailTreelongkeyins0045e0fa_insert_0045e074.cpp'
+        TestSource = '00/45/CRetailTreelongkeyins0045e0fa_insert_0045e074_test.cpp'
+        PassPattern = '0045e074_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045e42e'
+        Module = 'CRetailTree_longkey_ins0045e4b4'
+        Source = '00/45/CRetailTreelongkeyins0045e4b4_insert_0045e42e.cpp'
+        TestSource = '00/45/CRetailTreelongkeyins0045e4b4_insert_0045e42e_test.cpp'
+        PassPattern = '0045e42e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045ed88'
+        Module = 'CRetailTree_longkey_ins0045ee0e'
+        Source = '00/45/CRetailTreelongkeyins0045ee0e_insert_0045ed88.cpp'
+        TestSource = '00/45/CRetailTreelongkeyins0045ee0e_insert_0045ed88_test.cpp'
+        PassPattern = '0045ed88_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045f477'
+        Module = 'CRetailTree_longkey_ins0045f4fd'
+        Source = '00/45/CRetailTreelongkeyins0045f4fd_insert_0045f477.cpp'
+        TestSource = '00/45/CRetailTreelongkeyins0045f4fd_insert_0045f477_test.cpp'
+        PassPattern = '0045f477_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00461786'
+        Module = 'CRetailTree_longkey_ins0046180c'
+        Source = '00/46/CRetailTreelongkeyins0046180c_insert_00461786.cpp'
+        TestSource = '00/46/CRetailTreelongkeyins0046180c_insert_00461786_test.cpp'
+        PassPattern = '00461786_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004619ba'
+        Module = 'CRetailTree_longkey_ins00461a40'
+        Source = '00/46/CRetailTreelongkeyins00461a40_insert_004619ba.cpp'
+        TestSource = '00/46/CRetailTreelongkeyins00461a40_insert_004619ba_test.cpp'
+        PassPattern = '004619ba_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00463e2e'
+        Module = 'CRetailTree_longkey_ins00463eb4'
+        Source = '00/46/CRetailTreelongkeyins00463eb4_insert_00463e2e.cpp'
+        TestSource = '00/46/CRetailTreelongkeyins00463eb4_insert_00463e2e_test.cpp'
+        PassPattern = '00463e2e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00464733'
+        Module = 'CRetailTree_longkey_ins004647b9'
+        Source = '00/46/CRetailTreelongkeyins004647b9_insert_00464733.cpp'
+        TestSource = '00/46/CRetailTreelongkeyins004647b9_insert_00464733_test.cpp'
+        PassPattern = '00464733_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00465d36'
+        Module = 'CRetailTree_longkey_ins00465dbc'
+        Source = '00/46/CRetailTreelongkeyins00465dbc_insert_00465d36.cpp'
+        TestSource = '00/46/CRetailTreelongkeyins00465dbc_insert_00465d36_test.cpp'
+        PassPattern = '00465d36_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00466939'
+        Module = 'CRetailTree_longkey_ins004669bf'
+        Source = '00/46/CRetailTreelongkeyins004669bf_insert_00466939.cpp'
+        TestSource = '00/46/CRetailTreelongkeyins004669bf_insert_00466939_test.cpp'
+        PassPattern = '00466939_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004695b3'
+        Module = 'CRetailTree_longkey_ins00469639'
+        Source = '00/46/CRetailTreelongkeyins00469639_insert_004695b3.cpp'
+        TestSource = '00/46/CRetailTreelongkeyins00469639_insert_004695b3_test.cpp'
+        PassPattern = '004695b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046fb43'
+        Module = 'CRetailTree_longkey_ins0046fbc9'
+        Source = '00/46/CRetailTreelongkeyins0046fbc9_insert_0046fb43.cpp'
+        TestSource = '00/46/CRetailTreelongkeyins0046fbc9_insert_0046fb43_test.cpp'
+        PassPattern = '0046fb43_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047297f'
+        Module = 'CRetailTree_longkey_ins00472a05'
+        Source = '00/47/CRetailTreelongkeyins00472a05_insert_0047297f.cpp'
+        TestSource = '00/47/CRetailTreelongkeyins00472a05_insert_0047297f_test.cpp'
+        PassPattern = '0047297f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e5170'
+        Module = 'CRetailTree_longkey_ins004e51f6'
+        Source = '00/4e/CRetailTreelongkeyins004e51f6_insert_004e5170.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e51f6_insert_004e5170_test.cpp'
+        PassPattern = '004e5170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e539f'
+        Module = 'CRetailTree_longkey_ins004e5425'
+        Source = '00/4e/CRetailTreelongkeyins004e5425_insert_004e539f.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e5425_insert_004e539f_test.cpp'
+        PassPattern = '004e539f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e5726'
+        Module = 'CRetailTree_longkey_ins004e57ac'
+        Source = '00/4e/CRetailTreelongkeyins004e57ac_insert_004e5726.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e57ac_insert_004e5726_test.cpp'
+        PassPattern = '004e5726_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e5b21'
+        Module = 'CRetailTree_longkey_ins004e5ba7'
+        Source = '00/4e/CRetailTreelongkeyins004e5ba7_insert_004e5b21.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e5ba7_insert_004e5b21_test.cpp'
+        PassPattern = '004e5b21_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e63e0'
+        Module = 'CRetailTree_longkey_ins004e6466'
+        Source = '00/4e/CRetailTreelongkeyins004e6466_insert_004e63e0.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e6466_insert_004e63e0_test.cpp'
+        PassPattern = '004e63e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6918'
+        Module = 'CRetailTree_longkey_ins004e699e'
+        Source = '00/4e/CRetailTreelongkeyins004e699e_insert_004e6918.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e699e_insert_004e6918_test.cpp'
+        PassPattern = '004e6918_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6bb3'
+        Module = 'CRetailTree_longkey_ins004e6c39'
+        Source = '00/4e/CRetailTreelongkeyins004e6c39_insert_004e6bb3.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e6c39_insert_004e6bb3_test.cpp'
+        PassPattern = '004e6bb3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e7bb5'
+        Module = 'CRetailTree_longkey_ins004e7c3b'
+        Source = '00/4e/CRetailTreelongkeyins004e7c3b_insert_004e7bb5.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e7c3b_insert_004e7bb5_test.cpp'
+        PassPattern = '004e7bb5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9213'
+        Module = 'CRetailTree_longkey_ins004e9299'
+        Source = '00/4e/CRetailTreelongkeyins004e9299_insert_004e9213.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e9299_insert_004e9213_test.cpp'
+        PassPattern = '004e9213_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9442'
+        Module = 'CRetailTree_longkey_ins004e94c8'
+        Source = '00/4e/CRetailTreelongkeyins004e94c8_insert_004e9442.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004e94c8_insert_004e9442_test.cpp'
+        PassPattern = '004e9442_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec717'
+        Module = 'CRetailTree_longkey_ins004ec79d'
+        Source = '00/4e/CRetailTreelongkeyins004ec79d_insert_004ec717.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004ec79d_insert_004ec717_test.cpp'
+        PassPattern = '004ec717_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec9d3'
+        Module = 'CRetailTree_longkey_ins004eca59'
+        Source = '00/4e/CRetailTreelongkeyins004eca59_insert_004ec9d3.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004eca59_insert_004ec9d3_test.cpp'
+        PassPattern = '004ec9d3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ece60'
+        Module = 'CRetailTree_longkey_ins004ecee6'
+        Source = '00/4e/CRetailTreelongkeyins004ecee6_insert_004ece60.cpp'
+        TestSource = '00/4e/CRetailTreelongkeyins004ecee6_insert_004ece60_test.cpp'
+        PassPattern = '004ece60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579958'
+        Module = 'CRetailTree_longkey_ins005796fe'
+        Source = '00/57/CRetailTreelongkeyins005796fe_insert_00579958.cpp'
+        TestSource = '00/57/CRetailTreelongkeyins005796fe_insert_00579958_test.cpp'
+        PassPattern = '00579958_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057a124'
+        Module = 'CRetailTree_longkey_ins00579fd8'
+        Source = '00/57/CRetailTreelongkeyins00579fd8_insert_0057a124.cpp'
+        TestSource = '00/57/CRetailTreelongkeyins00579fd8_insert_0057a124_test.cpp'
+        PassPattern = '0057a124_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057a1aa'
+        Module = 'CRetailTree_longkey_ins0057a060'
+        Source = '00/57/CRetailTreelongkeyins0057a060_insert_0057a1aa.cpp'
+        TestSource = '00/57/CRetailTreelongkeyins0057a060_insert_0057a1aa_test.cpp'
+        PassPattern = '0057a1aa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593c5e'
+        Module = 'CRetailTree_longkey_ins00593bd6'
+        Source = '00/59/CRetailTreelongkeyins00593bd6_insert_00593c5e.cpp'
+        TestSource = '00/59/CRetailTreelongkeyins00593bd6_insert_00593c5e_test.cpp'
+        PassPattern = '00593c5e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059b246'
+        Module = 'CRetailTree_longkey_ins0059b1be'
+        Source = '00/59/CRetailTreelongkeyins0059b1be_insert_0059b246.cpp'
+        TestSource = '00/59/CRetailTreelongkeyins0059b1be_insert_0059b246_test.cpp'
+        PassPattern = '0059b246_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bad5b'
+        Module = 'CRetailTree_longkey_ins005ba8cf'
+        Source = '00/5b/CRetailTreelongkeyins005ba8cf_insert_005bad5b.cpp'
+        TestSource = '00/5b/CRetailTreelongkeyins005ba8cf_insert_005bad5b_test.cpp'
+        PassPattern = '005bad5b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bb2a8'
+        Module = 'CRetailTree_longkey_ins005bb220'
+        Source = '00/5b/CRetailTreelongkeyins005bb220_insert_005bb2a8.cpp'
+        TestSource = '00/5b/CRetailTreelongkeyins005bb220_insert_005bb2a8_test.cpp'
+        PassPattern = '005bb2a8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bbd46'
+        Module = 'CRetailTree_longkey_ins005bbcbe'
+        Source = '00/5b/CRetailTreelongkeyins005bbcbe_insert_005bbd46.cpp'
+        TestSource = '00/5b/CRetailTreelongkeyins005bbcbe_insert_005bbd46_test.cpp'
+        PassPattern = '005bbd46_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f91e5'
+        Module = 'CRetailTree_longkey_ins005f915d'
+        Source = '00/5f/CRetailTreelongkeyins005f915d_insert_005f91e5.cpp'
+        TestSource = '00/5f/CRetailTreelongkeyins005f915d_insert_005f91e5_test.cpp'
+        PassPattern = '005f91e5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f92f3'
+        Module = 'CRetailTree_longkey_ins005f926b'
+        Source = '00/5f/CRetailTreelongkeyins005f926b_insert_005f92f3.cpp'
+        TestSource = '00/5f/CRetailTreelongkeyins005f926b_insert_005f92f3_test.cpp'
+        PassPattern = '005f92f3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd3093'
+        Module = 'CRetailTree_longkey_ins00cd300b'
+        Source = '00/cd/CRetailTreelongkeyins00cd300b_insert_00cd3093.cpp'
+        TestSource = '00/cd/CRetailTreelongkeyins00cd300b_insert_00cd3093_test.cpp'
+        PassPattern = '00cd3093_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ba13'
+        Module = 'CRetailTree_ulongkey_ins0042b98b'
+        Source = '00/42/CRetailTreeulongkeyins0042b98b_insert_0042ba13.cpp'
+        TestSource = '00/42/CRetailTreeulongkeyins0042b98b_insert_0042ba13_test.cpp'
+        PassPattern = '0042ba13_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042cee3'
+        Module = 'CRetailTree_ulongkey_ins0042cb08'
+        Source = '00/42/CRetailTreeulongkeyins0042cb08_insert_0042cee3.cpp'
+        TestSource = '00/42/CRetailTreeulongkeyins0042cb08_insert_0042cee3_test.cpp'
+        PassPattern = '0042cee3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00431363'
+        Module = 'CRetailTree_ulongkey_ins004313e9'
+        Source = '00/43/CRetailTreeulongkeyins004313e9_insert_00431363.cpp'
+        TestSource = '00/43/CRetailTreeulongkeyins004313e9_insert_00431363_test.cpp'
+        PassPattern = '00431363_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045ca09'
+        Module = 'CRetailTree_ulongkey_ins0045ca8f'
+        Source = '00/45/CRetailTreeulongkeyins0045ca8f_insert_0045ca09.cpp'
+        TestSource = '00/45/CRetailTreeulongkeyins0045ca8f_insert_0045ca09_test.cpp'
+        PassPattern = '0045ca09_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00580d21'
+        Module = 'CRetailTree_ulongkey_ins005808a0'
+        Source = '00/58/CRetailTreeulongkeyins005808a0_insert_00580d21.cpp'
+        TestSource = '00/58/CRetailTreeulongkeyins005808a0_insert_00580d21_test.cpp'
+        PassPattern = '00580d21_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b2447'
+        Module = 'CRetailTree_ulongkey_ins005b23bf'
+        Source = '00/5b/CRetailTreeulongkeyins005b23bf_insert_005b2447.cpp'
+        TestSource = '00/5b/CRetailTreeulongkeyins005b23bf_insert_005b2447_test.cpp'
+        PassPattern = '005b2447_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b2555'
+        Module = 'CRetailTree_ulongkey_ins005b24cd'
+        Source = '00/5b/CRetailTreeulongkeyins005b24cd_insert_005b2555.cpp'
+        TestSource = '00/5b/CRetailTreeulongkeyins005b24cd_insert_005b2555_test.cpp'
+        PassPattern = '005b2555_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b2663'
+        Module = 'CRetailTree_ulongkey_ins005b25db'
+        Source = '00/5b/CRetailTreeulongkeyins005b25db_insert_005b2663.cpp'
+        TestSource = '00/5b/CRetailTreeulongkeyins005b25db_insert_005b2663_test.cpp'
+        PassPattern = '005b2663_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b2872'
+        Module = 'CRetailTree_ulongkey_ins005b2337'
+        Source = '00/5b/CRetailTreeulongkeyins005b2337_insert_005b2872.cpp'
+        TestSource = '00/5b/CRetailTreeulongkeyins005b2337_insert_005b2872_test.cpp'
+        PassPattern = '005b2872_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ba99'
+        Module = 'CRetailTree_longkey_buy0042b5ca'
+        Source = '00/42/CRetailTreelongkeybuy0042b5ca_Insert_0042ba99.cpp'
+        TestSource = '00/42/CRetailTreelongkeybuy0042b5ca_Insert_0042ba99_test.cpp'
+        PassPattern = '0042ba99_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042bba7'
+        Module = 'CRetailTree_longkey_buy0042b5ec'
+        Source = '00/42/CRetailTreelongkeybuy0042b5ec_Insert_0042bba7.cpp'
+        TestSource = '00/42/CRetailTreelongkeybuy0042b5ec_Insert_0042bba7_test.cpp'
+        PassPattern = '0042bba7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045dc78'
+        Module = 'CRetailTree_longkey_buy0045d901'
+        Source = '00/45/CRetailTreelongkeybuy0045d901_Insert_0045dc78.cpp'
+        TestSource = '00/45/CRetailTreelongkeybuy0045d901_Insert_0045dc78_test.cpp'
+        PassPattern = '0045dc78_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045e0fa'
+        Module = 'CRetailTree_longkey_buy0045de2f'
+        Source = '00/45/CRetailTreelongkeybuy0045de2f_Insert_0045e0fa.cpp'
+        TestSource = '00/45/CRetailTreelongkeybuy0045de2f_Insert_0045e0fa_test.cpp'
+        PassPattern = '0045e0fa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045e4b4'
+        Module = 'CRetailTree_longkey_buy0045e2b1'
+        Source = '00/45/CRetailTreelongkeybuy0045e2b1_Insert_0045e4b4.cpp'
+        TestSource = '00/45/CRetailTreelongkeybuy0045e2b1_Insert_0045e4b4_test.cpp'
+        PassPattern = '0045e4b4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045ee0e'
+        Module = 'CRetailTree_longkey_buy0045e797'
+        Source = '00/45/CRetailTreelongkeybuy0045e797_Insert_0045ee0e.cpp'
+        TestSource = '00/45/CRetailTreelongkeybuy0045e797_Insert_0045ee0e_test.cpp'
+        PassPattern = '0045ee0e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045f4fd'
+        Module = 'CRetailTree_longkey_buy0045f13d'
+        Source = '00/45/CRetailTreelongkeybuy0045f13d_Insert_0045f4fd.cpp'
+        TestSource = '00/45/CRetailTreelongkeybuy0045f13d_Insert_0045f4fd_test.cpp'
+        PassPattern = '0045f4fd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046180c'
+        Module = 'CRetailTree_longkey_buy0046149e'
+        Source = '00/46/CRetailTreelongkeybuy0046149e_Insert_0046180c.cpp'
+        TestSource = '00/46/CRetailTreelongkeybuy0046149e_Insert_0046180c_test.cpp'
+        PassPattern = '0046180c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00461a40'
+        Module = 'CRetailTree_longkey_buy004615c3'
+        Source = '00/46/CRetailTreelongkeybuy004615c3_Insert_00461a40.cpp'
+        TestSource = '00/46/CRetailTreelongkeybuy004615c3_Insert_00461a40_test.cpp'
+        PassPattern = '00461a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00463eb4'
+        Module = 'CRetailTree_longkey_buy004622ec'
+        Source = '00/46/CRetailTreelongkeybuy004622ec_Insert_00463eb4.cpp'
+        TestSource = '00/46/CRetailTreelongkeybuy004622ec_Insert_00463eb4_test.cpp'
+        PassPattern = '00463eb4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004647b9'
+        Module = 'CRetailTree_longkey_buy004630e7'
+        Source = '00/46/CRetailTreelongkeybuy004630e7_Insert_004647b9.cpp'
+        TestSource = '00/46/CRetailTreelongkeybuy004630e7_Insert_004647b9_test.cpp'
+        PassPattern = '004647b9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00465dbc'
+        Module = 'CRetailTree_longkey_buy00461cf3'
+        Source = '00/46/CRetailTreelongkeybuy00461cf3_Insert_00465dbc.cpp'
+        TestSource = '00/46/CRetailTreelongkeybuy00461cf3_Insert_00465dbc_test.cpp'
+        PassPattern = '00465dbc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004669bf'
+        Module = 'CRetailTree_longkey_buy00462411'
+        Source = '00/46/CRetailTreelongkeybuy00462411_Insert_004669bf.cpp'
+        TestSource = '00/46/CRetailTreelongkeybuy00462411_Insert_004669bf_test.cpp'
+        PassPattern = '004669bf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00469639'
+        Module = 'CRetailTree_longkey_buy0045c2a2'
+        Source = '00/46/CRetailTreelongkeybuy0045c2a2_Insert_00469639.cpp'
+        TestSource = '00/46/CRetailTreelongkeybuy0045c2a2_Insert_00469639_test.cpp'
+        PassPattern = '00469639_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046fbc9'
+        Module = 'CRetailTree_longkey_buy0045c4d2'
+        Source = '00/46/CRetailTreelongkeybuy0045c4d2_Insert_0046fbc9.cpp'
+        TestSource = '00/46/CRetailTreelongkeybuy0045c4d2_Insert_0046fbc9_test.cpp'
+        PassPattern = '0046fbc9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00472a05'
+        Module = 'CRetailTree_longkey_buy00466255'
+        Source = '00/47/CRetailTreelongkeybuy00466255_Insert_00472a05.cpp'
+        TestSource = '00/47/CRetailTreelongkeybuy00466255_Insert_00472a05_test.cpp'
+        PassPattern = '00472a05_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e51f6'
+        Module = 'CRetailTree_longkey_buy004e4fef'
+        Source = '00/4e/CRetailTreelongkeybuy004e4fef_Insert_004e51f6.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e4fef_Insert_004e51f6_test.cpp'
+        PassPattern = '004e51f6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e5425'
+        Module = 'CRetailTree_longkey_buy004e4eca'
+        Source = '00/4e/CRetailTreelongkeybuy004e4eca_Insert_004e5425.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e4eca_Insert_004e5425_test.cpp'
+        PassPattern = '004e5425_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e57ac'
+        Module = 'CRetailTree_longkey_buy004e55cf'
+        Source = '00/4e/CRetailTreelongkeybuy004e55cf_Insert_004e57ac.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e55cf_Insert_004e57ac_test.cpp'
+        PassPattern = '004e57ac_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e5ba7'
+        Module = 'CRetailTree_longkey_buy004e597b'
+        Source = '00/4e/CRetailTreelongkeybuy004e597b_Insert_004e5ba7.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e597b_Insert_004e5ba7_test.cpp'
+        PassPattern = '004e5ba7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6466'
+        Module = 'CRetailTree_longkey_buy004e6210'
+        Source = '00/4e/CRetailTreelongkeybuy004e6210_Insert_004e6466.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e6210_Insert_004e6466_test.cpp'
+        PassPattern = '004e6466_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e699e'
+        Module = 'CRetailTree_longkey_buy004e6623'
+        Source = '00/4e/CRetailTreelongkeybuy004e6623_Insert_004e699e.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e6623_Insert_004e699e_test.cpp'
+        PassPattern = '004e699e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e6c39'
+        Module = 'CRetailTree_longkey_buy004e6748'
+        Source = '00/4e/CRetailTreelongkeybuy004e6748_Insert_004e6c39.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e6748_Insert_004e6c39_test.cpp'
+        PassPattern = '004e6c39_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e7c3b'
+        Module = 'CRetailTree_longkey_buy004e4429'
+        Source = '00/4e/CRetailTreelongkeybuy004e4429_Insert_004e7c3b.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e4429_Insert_004e7c3b_test.cpp'
+        PassPattern = '004e7c3b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9299'
+        Module = 'CRetailTree_longkey_buy004e4bee'
+        Source = '00/4e/CRetailTreelongkeybuy004e4bee_Insert_004e9299.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e4bee_Insert_004e9299_test.cpp'
+        PassPattern = '004e9299_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e94c8'
+        Module = 'CRetailTree_longkey_buy004e4d19'
+        Source = '00/4e/CRetailTreelongkeybuy004e4d19_Insert_004e94c8.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e4d19_Insert_004e94c8_test.cpp'
+        PassPattern = '004e94c8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec79d'
+        Module = 'CRetailTree_longkey_buy004ec31c'
+        Source = '00/4e/CRetailTreelongkeybuy004ec31c_Insert_004ec79d.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004ec31c_Insert_004ec79d_test.cpp'
+        PassPattern = '004ec79d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004eca59'
+        Module = 'CRetailTree_longkey_buy004ec441'
+        Source = '00/4e/CRetailTreelongkeybuy004ec441_Insert_004eca59.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004ec441_Insert_004eca59_test.cpp'
+        PassPattern = '004eca59_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ecee6'
+        Module = 'CRetailTree_longkey_buy004e9ab1'
+        Source = '00/4e/CRetailTreelongkeybuy004e9ab1_Insert_004ecee6.cpp'
+        TestSource = '00/4e/CRetailTreelongkeybuy004e9ab1_Insert_004ecee6_test.cpp'
+        PassPattern = '004ecee6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005796fe'
+        Module = 'CRetailTree_longkey_buy005794a1'
+        Source = '00/57/CRetailTreelongkeybuy005794a1_Insert_005796fe.cpp'
+        TestSource = '00/57/CRetailTreelongkeybuy005794a1_Insert_005796fe_test.cpp'
+        PassPattern = '005796fe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00579fd8'
+        Module = 'CRetailTree_longkey_buy00579f3e'
+        Source = '00/57/CRetailTreelongkeybuy00579f3e_Insert_00579fd8.cpp'
+        TestSource = '00/57/CRetailTreelongkeybuy00579f3e_Insert_00579fd8_test.cpp'
+        PassPattern = '00579fd8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057a060'
+        Module = 'CRetailTree_longkey_buy00579f5f'
+        Source = '00/57/CRetailTreelongkeybuy00579f5f_Insert_0057a060.cpp'
+        TestSource = '00/57/CRetailTreelongkeybuy00579f5f_Insert_0057a060_test.cpp'
+        PassPattern = '0057a060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00593bd6'
+        Module = 'CRetailTree_longkey_buy0059388f'
+        Source = '00/59/CRetailTreelongkeybuy0059388f_Insert_00593bd6.cpp'
+        TestSource = '00/59/CRetailTreelongkeybuy0059388f_Insert_00593bd6_test.cpp'
+        PassPattern = '00593bd6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059b1be'
+        Module = 'CRetailTree_longkey_buy0059afab'
+        Source = '00/59/CRetailTreelongkeybuy0059afab_Insert_0059b1be.cpp'
+        TestSource = '00/59/CRetailTreelongkeybuy0059afab_Insert_0059b1be_test.cpp'
+        PassPattern = '0059b1be_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba8cf'
+        Module = 'CRetailTree_longkey_buy005ba3ac'
+        Source = '00/5b/CRetailTreelongkeybuy005ba3ac_Insert_005ba8cf.cpp'
+        TestSource = '00/5b/CRetailTreelongkeybuy005ba3ac_Insert_005ba8cf_test.cpp'
+        PassPattern = '005ba8cf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bb220'
+        Module = 'CRetailTree_longkey_buy005baf06'
+        Source = '00/5b/CRetailTreelongkeybuy005baf06_Insert_005bb220.cpp'
+        TestSource = '00/5b/CRetailTreelongkeybuy005baf06_Insert_005bb220_test.cpp'
+        PassPattern = '005bb220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bbcbe'
+        Module = 'CRetailTree_longkey_buy005bbba5'
+        Source = '00/5b/CRetailTreelongkeybuy005bbba5_Insert_005bbcbe.cpp'
+        TestSource = '00/5b/CRetailTreelongkeybuy005bbba5_Insert_005bbcbe_test.cpp'
+        PassPattern = '005bbcbe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f915d'
+        Module = 'CRetailTree_longkey_buy005f8c1f'
+        Source = '00/5f/CRetailTreelongkeybuy005f8c1f_Insert_005f915d.cpp'
+        TestSource = '00/5f/CRetailTreelongkeybuy005f8c1f_Insert_005f915d_test.cpp'
+        PassPattern = '005f915d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f926b'
+        Module = 'CRetailTree_longkey_buy005f8c41'
+        Source = '00/5f/CRetailTreelongkeybuy005f8c41_Insert_005f926b.cpp'
+        TestSource = '00/5f/CRetailTreelongkeybuy005f8c41_Insert_005f926b_test.cpp'
+        PassPattern = '005f926b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd300b'
+        Module = 'CRetailTree_longkey_buy00cd2c5b'
+        Source = '00/cd/CRetailTreelongkeybuy00cd2c5b_Insert_00cd300b.cpp'
+        TestSource = '00/cd/CRetailTreelongkeybuy00cd2c5b_Insert_00cd300b_test.cpp'
+        PassPattern = '00cd300b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b98b'
+        Module = 'CRetailTree_ulongkey_buy0042b5a8'
+        Source = '00/42/CRetailTreeulongkeybuy0042b5a8_Insert_0042b98b.cpp'
+        TestSource = '00/42/CRetailTreeulongkeybuy0042b5a8_Insert_0042b98b_test.cpp'
+        PassPattern = '0042b98b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042cb08'
+        Module = 'CRetailTree_ulongkey_buy0042bdf0'
+        Source = '00/42/CRetailTreeulongkeybuy0042bdf0_Insert_0042cb08.cpp'
+        TestSource = '00/42/CRetailTreeulongkeybuy0042bdf0_Insert_0042cb08_test.cpp'
+        PassPattern = '0042cb08_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004313e9'
+        Module = 'CRetailTree_ulongkey_buy00431471'
+        Source = '00/43/CRetailTreeulongkeybuy00431471_Insert_004313e9.cpp'
+        TestSource = '00/43/CRetailTreeulongkeybuy00431471_Insert_004313e9_test.cpp'
+        PassPattern = '004313e9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045ca8f'
+        Module = 'CRetailTree_ulongkey_buy0045c8a1'
+        Source = '00/45/CRetailTreeulongkeybuy0045c8a1_Insert_0045ca8f.cpp'
+        TestSource = '00/45/CRetailTreeulongkeybuy0045c8a1_Insert_0045ca8f_test.cpp'
+        PassPattern = '0045ca8f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005808a0'
+        Module = 'CRetailTree_ulongkey_buy00580428'
+        Source = '00/58/CRetailTreeulongkeybuy00580428_Insert_005808a0.cpp'
+        TestSource = '00/58/CRetailTreeulongkeybuy00580428_Insert_005808a0_test.cpp'
+        PassPattern = '005808a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b2337'
+        Module = 'CRetailTree_ulongkey_buy005b200c'
+        Source = '00/5b/CRetailTreeulongkeybuy005b200c_Insert_005b2337.cpp'
+        TestSource = '00/5b/CRetailTreeulongkeybuy005b200c_Insert_005b2337_test.cpp'
+        PassPattern = '005b2337_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b23bf'
+        Module = 'CRetailTree_ulongkey_buy005b2029'
+        Source = '00/5b/CRetailTreeulongkeybuy005b2029_Insert_005b23bf.cpp'
+        TestSource = '00/5b/CRetailTreeulongkeybuy005b2029_Insert_005b23bf_test.cpp'
+        PassPattern = '005b23bf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b24cd'
+        Module = 'CRetailTree_ulongkey_buy005b204b'
+        Source = '00/5b/CRetailTreeulongkeybuy005b204b_Insert_005b24cd.cpp'
+        TestSource = '00/5b/CRetailTreeulongkeybuy005b204b_Insert_005b24cd_test.cpp'
+        PassPattern = '005b24cd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b25db'
+        Module = 'CRetailTree_ulongkey_buy005b206c'
+        Source = '00/5b/CRetailTreeulongkeybuy005b206c_Insert_005b25db.cpp'
+        TestSource = '00/5b/CRetailTreeulongkeybuy005b206c_Insert_005b25db_test.cpp'
+        PassPattern = '005b25db_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d153f0'
+        Module = '_global'
+        Source = '00/d1/global_CreateCVtable012ca4f4_00d153f0.cpp'
+        TestSource = '00/d1/global_CreateCVtable012ca4f4_00d153f0_test.cpp'
+        PassPattern = '00d153f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6b180'
+        Module = '_global'
+        Source = '00/d6/global_CreateCVtable012d2258_00d6b180.cpp'
+        TestSource = '00/d6/global_CreateCVtable012d2258_00d6b180_test.cpp'
+        PassPattern = '00d6b180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d71980'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d28a0_00d71980.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d28a0_00d71980_test.cpp'
+        PassPattern = '00d71980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d724d0'
+        Module = '_global'
+        Source = '00/d7/global_CreateCVtable012d296c_00d724d0.cpp'
+        TestSource = '00/d7/global_CreateCVtable012d296c_00d724d0_test.cpp'
+        PassPattern = '00d724d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9ea80'
+        Module = '_global'
+        Source = '00/d9/global_CreateCVtable012d6d28_00d9ea80.cpp'
+        TestSource = '00/d9/global_CreateCVtable012d6d28_00d9ea80_test.cpp'
+        PassPattern = '00d9ea80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd43d0'
+        Module = '_global'
+        Source = '00/dd/global_CreateCVtable012dbe68_00dd43d0.cpp'
+        TestSource = '00/dd/global_CreateCVtable012dbe68_00dd43d0_test.cpp'
+        PassPattern = '00dd43d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e334c0'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e30dc_00e334c0.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e30dc_00e334c0_test.cpp'
+        PassPattern = '00e334c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e37d50'
+        Module = '_global'
+        Source = '00/e3/global_CreateCVtable012e36b8_00e37d50.cpp'
+        TestSource = '00/e3/global_CreateCVtable012e36b8_00e37d50_test.cpp'
+        PassPattern = '00e37d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6a500'
+        Module = '_global'
+        Source = '00/e6/global_CreateCVtable012e8468_00e6a500.cpp'
+        TestSource = '00/e6/global_CreateCVtable012e8468_00e6a500_test.cpp'
+        PassPattern = '00e6a500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7b7b0'
+        Module = '_global'
+        Source = '00/e7/global_CreateCVtable012ea0b4_00e7b7b0.cpp'
+        TestSource = '00/e7/global_CreateCVtable012ea0b4_00e7b7b0_test.cpp'
+        PassPattern = '00e7b7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e96fb0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012eceb4_00e96fb0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012eceb4_00e96fb0_test.cpp'
+        PassPattern = '00e96fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9cee0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ed614_00e9cee0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ed614_00e9cee0_test.cpp'
+        PassPattern = '00e9cee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9d9d0'
+        Module = '_global'
+        Source = '00/e9/global_CreateCVtable012ed67c_00e9d9d0.cpp'
+        TestSource = '00/e9/global_CreateCVtable012ed67c_00e9d9d0_test.cpp'
+        PassPattern = '00e9d9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb3c60'
+        Module = '_global'
+        Source = '00/eb/global_CreateCVtable012f00bc_00eb3c60.cpp'
+        TestSource = '00/eb/global_CreateCVtable012f00bc_00eb3c60_test.cpp'
+        PassPattern = '00eb3c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb5450'
+        Module = '_global'
+        Source = '00/eb/global_CreateCVtable012f036c_00eb5450.cpp'
+        TestSource = '00/eb/global_CreateCVtable012f036c_00eb5450_test.cpp'
+        PassPattern = '00eb5450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1b70'
+        Module = '_global'
+        Source = '00/ec/global_CreateCVtable012f1390_00ec1b70.cpp'
+        TestSource = '00/ec/global_CreateCVtable012f1390_00ec1b70_test.cpp'
+        PassPattern = '00ec1b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edc1d0'
+        Module = '_global'
+        Source = '00/ed/global_CreateCVtable012f3e94_00edc1d0.cpp'
+        TestSource = '00/ed/global_CreateCVtable012f3e94_00edc1d0_test.cpp'
+        PassPattern = '00edc1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef48a0'
+        Module = '_global'
+        Source = '00/ef/global_CreateCVtable012f6518_00ef48a0.cpp'
+        TestSource = '00/ef/global_CreateCVtable012f6518_00ef48a0_test.cpp'
+        PassPattern = '00ef48a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
