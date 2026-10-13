@@ -298,6 +298,24 @@ the AI state-group TC hooks (`mov ecx,eax` after the lookup) and the two-level C
 (one key temporary shared by two `LowerBound` calls with immediate compares). Running total for
 the rescans: 3716/3752 rows from 165 families; catalog 25,473 (51.4%).
 
+### Wave 16 (512-byte rescan, fourth pass)
+
+Nine more families, 130 rows: the frame-pointer forwarders (STLport-style string range
+constructors with by-value iterator classes stored into reserved slots and a `__fastcall` helper
+taking the dispatch tag in edx; the 46-body two-argument forwarders whose tag is homed in the
+dead second slot; the hidden-pointer forwarders with a 4-byte handle copied by value), the
+combat-action constructors whose CSoundPair comes back through the hidden pointer from
+`GetSoundPair` over an implicitly converted CCharString literal (with and without a scoped setter
+string), the `__fastcall` tree serialisers (count, then two fields per node from the leftmost
+to the head through the `__cdecl` successor, dword and float variants) and the scalar deleting
+destructors of one-list-member classes (the base padded to the member offset; the translation
+unit must construct the class so its vtable -- and with it `??_G` -- is emitted). Parked with
+evidence: the 119-body script-entity factory (everything reproduces but the lookup-call
+register naming), `_Insert_n` for 8-byte elements (spill slot), tree erase-by-key (one load
+hoisted across a store) and persist `TransferFloat` (the zeroed traits temporary's store sits
+between the mode test and its branch in retail). Running total for the rescans: 3846/3877
+rows from 170 families; catalog 25,603 (51.7%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
