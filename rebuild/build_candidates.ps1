@@ -163168,6 +163168,984 @@ $catalog = @(
         TestSource = '00/c5/unattributed_StoreConstant00c5a6b0_00c5a6b0_test.cpp'
         PassPattern = '00c5a6b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c091a0'
+        Module = '_unattributed'
+        Source = '00/c0/unattributed_OnActivate00c091a0_00c091a0.cpp'
+        TestSource = '00/c0/unattributed_OnActivate00c091a0_00c091a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c091a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c14d80'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_OnActivate00c14d80_00c14d80.cpp'
+        TestSource = '00/c1/unattributed_OnActivate00c14d80_00c14d80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c14d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a700'
+        Module = '_unattributed'
+        Source = '00/c2/unattributed_OnActivate00c2a700_00c2a700.cpp'
+        TestSource = '00/c2/unattributed_OnActivate00c2a700_00c2a700_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2a700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a750'
+        Module = '_unattributed'
+        Source = '00/c2/unattributed_OnActivate00c2a750_00c2a750.cpp'
+        TestSource = '00/c2/unattributed_OnActivate00c2a750_00c2a750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2a750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2bca0'
+        Module = '_unattributed'
+        Source = '00/c2/unattributed_OnActivate00c2bca0_00c2bca0.cpp'
+        TestSource = '00/c2/unattributed_OnActivate00c2bca0_00c2bca0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2bca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2cb80'
+        Module = '_unattributed'
+        Source = '00/c2/unattributed_OnActivate00c2cb80_00c2cb80.cpp'
+        TestSource = '00/c2/unattributed_OnActivate00c2cb80_00c2cb80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2cb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36340'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_OnActivate00c36340_00c36340.cpp'
+        TestSource = '00/c3/unattributed_OnActivate00c36340_00c36340_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36390'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_OnActivate00c36390_00c36390.cpp'
+        TestSource = '00/c3/unattributed_OnActivate00c36390_00c36390_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36db0'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_OnActivate00c36db0_00c36db0.cpp'
+        TestSource = '00/c3/unattributed_OnActivate00c36db0_00c36db0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36e50'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_OnActivate00c36e50_00c36e50.cpp'
+        TestSource = '00/c3/unattributed_OnActivate00c36e50_00c36e50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f640'
+        Module = 'CVtable_012b3474'
+        Source = '00/c1/CVtable012b3474_CVtable012b3474_00c1f640.cpp'
+        TestSource = '00/c1/CVtable012b3474_CVtable012b3474_00c1f640_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f720'
+        Module = 'CVtable_012b3498'
+        Source = '00/c1/CVtable012b3498_CVtable012b3498_00c1f720.cpp'
+        TestSource = '00/c1/CVtable012b3498_CVtable012b3498_00c1f720_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f7e0'
+        Module = 'CVtable_012b34bc'
+        Source = '00/c1/CVtable012b34bc_CVtable012b34bc_00c1f7e0.cpp'
+        TestSource = '00/c1/CVtable012b34bc_CVtable012b34bc_00c1f7e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f8a0'
+        Module = 'CVtable_012b34e0'
+        Source = '00/c1/CVtable012b34e0_CVtable012b34e0_00c1f8a0.cpp'
+        TestSource = '00/c1/CVtable012b34e0_CVtable012b34e0_00c1f8a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f960'
+        Module = 'CVtable_012b3504'
+        Source = '00/c1/CVtable012b3504_CVtable012b3504_00c1f960.cpp'
+        TestSource = '00/c1/CVtable012b3504_CVtable012b3504_00c1f960_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fa20'
+        Module = 'CVtable_012b3528'
+        Source = '00/c1/CVtable012b3528_CVtable012b3528_00c1fa20.cpp'
+        TestSource = '00/c1/CVtable012b3528_CVtable012b3528_00c1fa20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1fa20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fb00'
+        Module = 'CVtable_012b354c'
+        Source = '00/c1/CVtable012b354c_CVtable012b354c_00c1fb00.cpp'
+        TestSource = '00/c1/CVtable012b354c_CVtable012b354c_00c1fb00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1fb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1fbe0'
+        Module = 'CVtable_012b3570'
+        Source = '00/c1/CVtable012b3570_CVtable012b3570_00c1fbe0.cpp'
+        TestSource = '00/c1/CVtable012b3570_CVtable012b3570_00c1fbe0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1fbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1d780'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CPair00c1d780_00c1d780.cpp'
+        TestSource = '00/c1/unattributed_CPair00c1d780_00c1d780_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1d780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c386a0'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c386a0_00c386a0.cpp'
+        TestSource = '00/c3/unattributed_CPair00c386a0_00c386a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c386a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c386f0'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c386f0_00c386f0.cpp'
+        TestSource = '00/c3/unattributed_CPair00c386f0_00c386f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c386f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38740'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c38740_00c38740.cpp'
+        TestSource = '00/c3/unattributed_CPair00c38740_00c38740_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c38740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38790'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c38790_00c38790.cpp'
+        TestSource = '00/c3/unattributed_CPair00c38790_00c38790_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c38790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c387e0'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c387e0_00c387e0.cpp'
+        TestSource = '00/c3/unattributed_CPair00c387e0_00c387e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c387e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c487b0'
+        Module = '_unattributed'
+        Source = '00/c4/unattributed_CPair00c487b0_00c487b0.cpp'
+        TestSource = '00/c4/unattributed_CPair00c487b0_00c487b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c487b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c49a70'
+        Module = '_unattributed'
+        Source = '00/c4/unattributed_CPair00c49a70_00c49a70.cpp'
+        TestSource = '00/c4/unattributed_CPair00c49a70_00c49a70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c49a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4bab0'
+        Module = '_unattributed'
+        Source = '00/c4/unattributed_CPair00c4bab0_00c4bab0.cpp'
+        TestSource = '00/c4/unattributed_CPair00c4bab0_00c4bab0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4bab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1dce0'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CPair00c1dce0_00c1dce0.cpp'
+        TestSource = '00/c1/unattributed_CPair00c1dce0_00c1dce0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1dce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39ba0'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c39ba0_00c39ba0.cpp'
+        TestSource = '00/c3/unattributed_CPair00c39ba0_00c39ba0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39bf0'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c39bf0_00c39bf0.cpp'
+        TestSource = '00/c3/unattributed_CPair00c39bf0_00c39bf0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39c40'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c39c40_00c39c40.cpp'
+        TestSource = '00/c3/unattributed_CPair00c39c40_00c39c40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39c90'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c39c90_00c39c90.cpp'
+        TestSource = '00/c3/unattributed_CPair00c39c90_00c39c90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39ce0'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CPair00c39ce0_00c39ce0.cpp'
+        TestSource = '00/c3/unattributed_CPair00c39ce0_00c39ce0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1afd0'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CScriptEntry00c1afd0_00c1afd0.cpp'
+        TestSource = '00/c1/unattributed_CScriptEntry00c1afd0_00c1afd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1afd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1d9d0'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CScriptEntry00c1d9d0_00c1d9d0.cpp'
+        TestSource = '00/c1/unattributed_CScriptEntry00c1d9d0_00c1d9d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1d9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39290'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CScriptEntry00c39290_00c39290.cpp'
+        TestSource = '00/c3/unattributed_CScriptEntry00c39290_00c39290_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39450'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CScriptEntry00c39450_00c39450.cpp'
+        TestSource = '00/c3/unattributed_CScriptEntry00c39450_00c39450_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39610'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CScriptEntry00c39610_00c39610.cpp'
+        TestSource = '00/c3/unattributed_CScriptEntry00c39610_00c39610_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c397d0'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CScriptEntry00c397d0_00c397d0.cpp'
+        TestSource = '00/c3/unattributed_CScriptEntry00c397d0_00c397d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c397d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39990'
+        Module = '_unattributed'
+        Source = '00/c3/unattributed_CScriptEntry00c39990_00c39990.cpp'
+        TestSource = '00/c3/unattributed_CScriptEntry00c39990_00c39990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c48800'
+        Module = '_unattributed'
+        Source = '00/c4/unattributed_CScriptEntry00c48800_00c48800.cpp'
+        TestSource = '00/c4/unattributed_CScriptEntry00c48800_00c48800_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c48800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c49b30'
+        Module = '_unattributed'
+        Source = '00/c4/unattributed_CScriptEntry00c49b30_00c49b30.cpp'
+        TestSource = '00/c4/unattributed_CScriptEntry00c49b30_00c49b30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c49b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4bc20'
+        Module = '_unattributed'
+        Source = '00/c4/unattributed_CScriptEntry00c4bc20_00c4bc20.cpp'
+        TestSource = '00/c4/unattributed_CScriptEntry00c4bc20_00c4bc20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4bc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f550'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CVtable012b3420Derived00c1f550_00c1f550.cpp'
+        TestSource = '00/c1/unattributed_CVtable012b3420Derived00c1f550_00c1f550_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f5a0'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CVtable012b3420Derived00c1f5a0_00c1f5a0.cpp'
+        TestSource = '00/c1/unattributed_CVtable012b3420Derived00c1f5a0_00c1f5a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1f5f0'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CVtable012b3420Derived00c1f5f0_00c1f5f0.cpp'
+        TestSource = '00/c1/unattributed_CVtable012b3420Derived00c1f5f0_00c1f5f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1ff20'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CVtable012b3420Derived00c1ff20_00c1ff20.cpp'
+        TestSource = '00/c1/unattributed_CVtable012b3420Derived00c1ff20_00c1ff20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1ff20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1ff90'
+        Module = '_unattributed'
+        Source = '00/c1/unattributed_CVtable012b3420Derived00c1ff90_00c1ff90.cpp'
+        TestSource = '00/c1/unattributed_CVtable012b3420Derived00c1ff90_00c1ff90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1ff90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c20000'
+        Module = '_unattributed'
+        Source = '00/c2/unattributed_CVtable012b3420Derived00c20000_00c20000.cpp'
+        TestSource = '00/c2/unattributed_CVtable012b3420Derived00c20000_00c20000_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c20000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c393f0'
+        Module = 'CV_StatueMasterScript'
+        Source = '00/c3/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c393f0.cpp'
+        TestSource = '00/c3/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c393f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c393f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c395b0'
+        Module = 'CV_StatueMasterScript'
+        Source = '00/c3/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c395b0.cpp'
+        TestSource = '00/c3/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c395b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c395b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39770'
+        Module = 'CV_StatueMasterScript'
+        Source = '00/c3/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c39770.cpp'
+        TestSource = '00/c3/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c39770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39930'
+        Module = 'CV_StatueMasterScript'
+        Source = '00/c3/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c39930.cpp'
+        TestSource = '00/c3/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c39930_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c49c30'
+        Module = 'CV_StatueMasterScript'
+        Source = '00/c4/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c49c30.cpp'
+        TestSource = '00/c4/CVStatueMasterScript_GetAngleBasedOnTimeOfDay_00c49c30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c49c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528300'
+        Module = '_unattributed'
+        Source = '00/52/unattributed_Remove00528300_00528300.cpp'
+        TestSource = '00/52/unattributed_Remove00528300_00528300_test.cpp'
+        PassPattern = '00528300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005285d0'
+        Module = '_unattributed'
+        Source = '00/52/unattributed_Remove005285d0_005285d0.cpp'
+        TestSource = '00/52/unattributed_Remove005285d0_005285d0_test.cpp'
+        PassPattern = '005285d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528b00'
+        Module = '_unattributed'
+        Source = '00/52/unattributed_Remove00528b00_00528b00.cpp'
+        TestSource = '00/52/unattributed_Remove00528b00_00528b00_test.cpp'
+        PassPattern = '00528b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052de10'
+        Module = '_unattributed'
+        Source = '00/52/unattributed_Remove0052de10_0052de10.cpp'
+        TestSource = '00/52/unattributed_Remove0052de10_0052de10_test.cpp'
+        PassPattern = '0052de10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052df90'
+        Module = '_unattributed'
+        Source = '00/52/unattributed_Remove0052df90_0052df90.cpp'
+        TestSource = '00/52/unattributed_Remove0052df90_0052df90_test.cpp'
+        PassPattern = '0052df90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00535580'
+        Module = '_unattributed'
+        Source = '00/53/unattributed_Remove00535580_00535580.cpp'
+        TestSource = '00/53/unattributed_Remove00535580_00535580_test.cpp'
+        PassPattern = '00535580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e8dd0'
+        Module = '_unattributed'
+        Source = '00/5e/unattributed_Remove005e8dd0_005e8dd0.cpp'
+        TestSource = '00/5e/unattributed_Remove005e8dd0_005e8dd0_test.cpp'
+        PassPattern = '005e8dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e8f50'
+        Module = '_unattributed'
+        Source = '00/5e/unattributed_Remove005e8f50_005e8f50.cpp'
+        TestSource = '00/5e/unattributed_Remove005e8f50_005e8f50_test.cpp'
+        PassPattern = '005e8f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00623a00'
+        Module = '_unattributed'
+        Source = '00/62/unattributed_Remove00623a00_00623a00.cpp'
+        TestSource = '00/62/unattributed_Remove00623a00_00623a00_test.cpp'
+        PassPattern = '00623a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00624080'
+        Module = '_unattributed'
+        Source = '00/62/unattributed_Remove00624080_00624080.cpp'
+        TestSource = '00/62/unattributed_Remove00624080_00624080_test.cpp'
+        PassPattern = '00624080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c7530'
+        Module = '_unattributed'
+        Source = '00/6c/unattributed_Remove006c7530_006c7530.cpp'
+        TestSource = '00/6c/unattributed_Remove006c7530_006c7530_test.cpp'
+        PassPattern = '006c7530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0c30'
+        Module = '_unattributed'
+        Source = '00/6f/unattributed_Remove006f0c30_006f0c30.cpp'
+        TestSource = '00/6f/unattributed_Remove006f0c30_006f0c30_test.cpp'
+        PassPattern = '006f0c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079f030'
+        Module = '_unattributed'
+        Source = '00/79/unattributed_Remove0079f030_0079f030.cpp'
+        TestSource = '00/79/unattributed_Remove0079f030_0079f030_test.cpp'
+        PassPattern = '0079f030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079f260'
+        Module = '_unattributed'
+        Source = '00/79/unattributed_Remove0079f260_0079f260.cpp'
+        TestSource = '00/79/unattributed_Remove0079f260_0079f260_test.cpp'
+        PassPattern = '0079f260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082efe0'
+        Module = '_unattributed'
+        Source = '00/82/unattributed_Remove0082efe0_0082efe0.cpp'
+        TestSource = '00/82/unattributed_Remove0082efe0_0082efe0_test.cpp'
+        PassPattern = '0082efe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082f2d0'
+        Module = '_unattributed'
+        Source = '00/82/unattributed_Remove0082f2d0_0082f2d0.cpp'
+        TestSource = '00/82/unattributed_Remove0082f2d0_0082f2d0_test.cpp'
+        PassPattern = '0082f2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00990070'
+        Module = '_unattributed'
+        Source = '00/99/unattributed_Remove00990070_00990070.cpp'
+        TestSource = '00/99/unattributed_Remove00990070_00990070_test.cpp'
+        PassPattern = '00990070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00990190'
+        Module = '_unattributed'
+        Source = '00/99/unattributed_Remove00990190_00990190.cpp'
+        TestSource = '00/99/unattributed_Remove00990190_00990190_test.cpp'
+        PassPattern = '00990190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d7630'
+        Module = '_unattributed'
+        Source = '00/9d/unattributed_Remove009d7630_009d7630.cpp'
+        TestSource = '00/9d/unattributed_Remove009d7630_009d7630_test.cpp'
+        PassPattern = '009d7630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d7a50'
+        Module = '_unattributed'
+        Source = '00/9d/unattributed_Remove009d7a50_009d7a50.cpp'
+        TestSource = '00/9d/unattributed_Remove009d7a50_009d7a50_test.cpp'
+        PassPattern = '009d7a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c36c0'
+        Module = '_unattributed'
+        Source = '00/4c/unattributed_Remove004c36c0_004c36c0.cpp'
+        TestSource = '00/4c/unattributed_Remove004c36c0_004c36c0_test.cpp'
+        PassPattern = '004c36c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c66a0'
+        Module = '_unattributed'
+        Source = '00/4c/unattributed_Remove004c66a0_004c66a0.cpp'
+        TestSource = '00/4c/unattributed_Remove004c66a0_004c66a0_test.cpp'
+        PassPattern = '004c66a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00535160'
+        Module = '_unattributed'
+        Source = '00/53/unattributed_Remove00535160_00535160.cpp'
+        TestSource = '00/53/unattributed_Remove00535160_00535160_test.cpp'
+        PassPattern = '00535160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00638d70'
+        Module = '_unattributed'
+        Source = '00/63/unattributed_Remove00638d70_00638d70.cpp'
+        TestSource = '00/63/unattributed_Remove00638d70_00638d70_test.cpp'
+        PassPattern = '00638d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c7ca0'
+        Module = '_unattributed'
+        Source = '00/6c/unattributed_Remove006c7ca0_006c7ca0.cpp'
+        TestSource = '00/6c/unattributed_Remove006c7ca0_006c7ca0_test.cpp'
+        PassPattern = '006c7ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d3ca0'
+        Module = '_unattributed'
+        Source = '00/6d/unattributed_Remove006d3ca0_006d3ca0.cpp'
+        TestSource = '00/6d/unattributed_Remove006d3ca0_006d3ca0_test.cpp'
+        PassPattern = '006d3ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d4110'
+        Module = '_unattributed'
+        Source = '00/6d/unattributed_Remove006d4110_006d4110.cpp'
+        TestSource = '00/6d/unattributed_Remove006d4110_006d4110_test.cpp'
+        PassPattern = '006d4110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0930'
+        Module = '_unattributed'
+        Source = '00/6f/unattributed_Remove006f0930_006f0930.cpp'
+        TestSource = '00/6f/unattributed_Remove006f0930_006f0930_test.cpp'
+        PassPattern = '006f0930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f1890'
+        Module = '_unattributed'
+        Source = '00/6f/unattributed_Remove006f1890_006f1890.cpp'
+        TestSource = '00/6f/unattributed_Remove006f1890_006f1890_test.cpp'
+        PassPattern = '006f1890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00776f60'
+        Module = '_unattributed'
+        Source = '00/77/unattributed_Remove00776f60_00776f60.cpp'
+        TestSource = '00/77/unattributed_Remove00776f60_00776f60_test.cpp'
+        PassPattern = '00776f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e9160'
+        Module = '_unattributed'
+        Source = '00/7e/unattributed_Remove007e9160_007e9160.cpp'
+        TestSource = '00/7e/unattributed_Remove007e9160_007e9160_test.cpp'
+        PassPattern = '007e9160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082f020'
+        Module = '_unattributed'
+        Source = '00/82/unattributed_Remove0082f020_0082f020.cpp'
+        TestSource = '00/82/unattributed_Remove0082f020_0082f020_test.cpp'
+        PassPattern = '0082f020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082f350'
+        Module = '_unattributed'
+        Source = '00/82/unattributed_Remove0082f350_0082f350.cpp'
+        TestSource = '00/82/unattributed_Remove0082f350_0082f350_test.cpp'
+        PassPattern = '0082f350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008351b0'
+        Module = '_unattributed'
+        Source = '00/83/unattributed_Remove008351b0_008351b0.cpp'
+        TestSource = '00/83/unattributed_Remove008351b0_008351b0_test.cpp'
+        PassPattern = '008351b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00883450'
+        Module = '_unattributed'
+        Source = '00/88/unattributed_Remove00883450_00883450.cpp'
+        TestSource = '00/88/unattributed_Remove00883450_00883450_test.cpp'
+        PassPattern = '00883450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00990430'
+        Module = '_unattributed'
+        Source = '00/99/unattributed_Remove00990430_00990430.cpp'
+        TestSource = '00/99/unattributed_Remove00990430_00990430_test.cpp'
+        PassPattern = '00990430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21520'
+        Module = '_unattributed'
+        Source = '00/a2/unattributed_Remove00a21520_00a21520.cpp'
+        TestSource = '00/a2/unattributed_Remove00a21520_00a21520_test.cpp'
+        PassPattern = '00a21520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21a50'
+        Module = '_unattributed'
+        Source = '00/a2/unattributed_Remove00a21a50_00a21a50.cpp'
+        TestSource = '00/a2/unattributed_Remove00a21a50_00a21a50_test.cpp'
+        PassPattern = '00a21a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b74e0'
+        Module = '_global'
+        Source = '00/4b/global_Find004b74e0_004b74e0.cpp'
+        TestSource = '00/4b/global_Find004b74e0_004b74e0_test.cpp'
+        PassPattern = '004b74e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b7550'
+        Module = '_global'
+        Source = '00/4b/global_Find004b7550_004b7550.cpp'
+        TestSource = '00/4b/global_Find004b7550_004b7550_test.cpp'
+        PassPattern = '004b7550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050e540'
+        Module = '_global'
+        Source = '00/50/global_Find0050e540_0050e540.cpp'
+        TestSource = '00/50/global_Find0050e540_0050e540_test.cpp'
+        PassPattern = '0050e540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005348e0'
+        Module = '_global'
+        Source = '00/53/global_Find005348e0_005348e0.cpp'
+        TestSource = '00/53/global_Find005348e0_005348e0_test.cpp'
+        PassPattern = '005348e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00612db0'
+        Module = '_global'
+        Source = '00/61/global_Find00612db0_00612db0.cpp'
+        TestSource = '00/61/global_Find00612db0_00612db0_test.cpp'
+        PassPattern = '00612db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006387f0'
+        Module = '_global'
+        Source = '00/63/global_Find006387f0_006387f0.cpp'
+        TestSource = '00/63/global_Find006387f0_006387f0_test.cpp'
+        PassPattern = '006387f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bcc10'
+        Module = '_global'
+        Source = '00/6b/global_Find006bcc10_006bcc10.cpp'
+        TestSource = '00/6b/global_Find006bcc10_006bcc10_test.cpp'
+        PassPattern = '006bcc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00738810'
+        Module = '_global'
+        Source = '00/73/global_Find00738810_00738810.cpp'
+        TestSource = '00/73/global_Find00738810_00738810_test.cpp'
+        PassPattern = '00738810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074c9b0'
+        Module = '_global'
+        Source = '00/74/global_Find0074c9b0_0074c9b0.cpp'
+        TestSource = '00/74/global_Find0074c9b0_0074c9b0_test.cpp'
+        PassPattern = '0074c9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00764080'
+        Module = '_global'
+        Source = '00/76/global_Find00764080_00764080.cpp'
+        TestSource = '00/76/global_Find00764080_00764080_test.cpp'
+        PassPattern = '00764080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007640f0'
+        Module = '_global'
+        Source = '00/76/global_Find007640f0_007640f0.cpp'
+        TestSource = '00/76/global_Find007640f0_007640f0_test.cpp'
+        PassPattern = '007640f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007789d0'
+        Module = '_global'
+        Source = '00/77/global_Find007789d0_007789d0.cpp'
+        TestSource = '00/77/global_Find007789d0_007789d0_test.cpp'
+        PassPattern = '007789d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c8130'
+        Module = '_global'
+        Source = '00/7c/global_Find007c8130_007c8130.cpp'
+        TestSource = '00/7c/global_Find007c8130_007c8130_test.cpp'
+        PassPattern = '007c8130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f7970'
+        Module = '_global'
+        Source = '00/7f/global_Find007f7970_007f7970.cpp'
+        TestSource = '00/7f/global_Find007f7970_007f7970_test.cpp'
+        PassPattern = '007f7970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080d970'
+        Module = '_global'
+        Source = '00/80/global_Find0080d970_0080d970.cpp'
+        TestSource = '00/80/global_Find0080d970_0080d970_test.cpp'
+        PassPattern = '0080d970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080d9e0'
+        Module = '_global'
+        Source = '00/80/global_Find0080d9e0_0080d9e0.cpp'
+        TestSource = '00/80/global_Find0080d9e0_0080d9e0_test.cpp'
+        PassPattern = '0080d9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e6fb0'
+        Module = '_global'
+        Source = '00/8e/global_Find008e6fb0_008e6fb0.cpp'
+        TestSource = '00/8e/global_Find008e6fb0_008e6fb0_test.cpp'
+        PassPattern = '008e6fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091f680'
+        Module = '_global'
+        Source = '00/91/global_Find0091f680_0091f680.cpp'
+        TestSource = '00/91/global_Find0091f680_0091f680_test.cpp'
+        PassPattern = '0091f680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d6e80'
+        Module = '_global'
+        Source = '00/9d/global_Find009d6e80_009d6e80.cpp'
+        TestSource = '00/9d/global_Find009d6e80_009d6e80_test.cpp'
+        PassPattern = '009d6e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14ac0'
+        Module = '_global'
+        Source = '00/a1/global_Find00a14ac0_00a14ac0.cpp'
+        TestSource = '00/a1/global_Find00a14ac0_00a14ac0_test.cpp'
+        PassPattern = '00a14ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7d050'
+        Module = '_global'
+        Source = '00/a7/global_Find00a7d050_00a7d050.cpp'
+        TestSource = '00/a7/global_Find00a7d050_00a7d050_test.cpp'
+        PassPattern = '00a7d050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7d0e0'
+        Module = '_global'
+        Source = '00/a7/global_Find00a7d0e0_00a7d0e0.cpp'
+        TestSource = '00/a7/global_Find00a7d0e0_00a7d0e0_test.cpp'
+        PassPattern = '00a7d0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00447800'
+        Module = '_global'
+        Source = '00/44/global_UninitFillNCPairCountedRef800447800_00447800.cpp'
+        TestSource = '00/44/global_UninitFillNCPairCountedRef800447800_00447800_test.cpp'
+        PassPattern = '00447800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005347a0'
+        Module = '_global'
+        Source = '00/53/global_UninitFillNCPairCountedRef8005347a0_005347a0.cpp'
+        TestSource = '00/53/global_UninitFillNCPairCountedRef8005347a0_005347a0_test.cpp'
+        PassPattern = '005347a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054a180'
+        Module = '_global'
+        Source = '00/54/global_UninitFillNCPairCountedRef80054a180_0054a180.cpp'
+        TestSource = '00/54/global_UninitFillNCPairCountedRef80054a180_0054a180_test.cpp'
+        PassPattern = '0054a180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00695bd0'
+        Module = '_global'
+        Source = '00/69/global_UninitFillNCPairCountedRef800695bd0_00695bd0.cpp'
+        TestSource = '00/69/global_UninitFillNCPairCountedRef800695bd0_00695bd0_test.cpp'
+        PassPattern = '00695bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00763eb0'
+        Module = '_global'
+        Source = '00/76/global_UninitFillNCPairCountedRef800763eb0_00763eb0.cpp'
+        TestSource = '00/76/global_UninitFillNCPairCountedRef800763eb0_00763eb0_test.cpp'
+        PassPattern = '00763eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f3820'
+        Module = '_global'
+        Source = '00/7f/global_UninitFillNCPairCountedRef8007f3820_007f3820.cpp'
+        TestSource = '00/7f/global_UninitFillNCPairCountedRef8007f3820_007f3820_test.cpp'
+        PassPattern = '007f3820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084ebd0'
+        Module = '_global'
+        Source = '00/84/global_UninitFillNCPairCountedRef80084ebd0_0084ebd0.cpp'
+        TestSource = '00/84/global_UninitFillNCPairCountedRef80084ebd0_0084ebd0_test.cpp'
+        PassPattern = '0084ebd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b2530'
+        Module = '_global'
+        Source = '00/8b/global_UninitFillNCPairCountedRef8008b2530_008b2530.cpp'
+        TestSource = '00/8b/global_UninitFillNCPairCountedRef8008b2530_008b2530_test.cpp'
+        PassPattern = '008b2530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098c030'
+        Module = '_global'
+        Source = '00/98/global_UninitFillNCPairCountedRef80098c030_0098c030.cpp'
+        TestSource = '00/98/global_UninitFillNCPairCountedRef80098c030_0098c030_test.cpp'
+        PassPattern = '0098c030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a29270'
+        Module = '_global'
+        Source = '00/a2/global_UninitFillNCPairCountedRef800a29270_00a29270.cpp'
+        TestSource = '00/a2/global_UninitFillNCPairCountedRef800a29270_00a29270_test.cpp'
+        PassPattern = '00a29270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45ea0'
+        Module = '_global'
+        Source = '00/a4/global_UninitFillNCPairCountedRef800a45ea0_00a45ea0.cpp'
+        TestSource = '00/a4/global_UninitFillNCPairCountedRef800a45ea0_00a45ea0_test.cpp'
+        PassPattern = '00a45ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5fce0'
+        Module = '_global'
+        Source = '00/a5/global_UninitFillNCPairCountedRef800a5fce0_00a5fce0.cpp'
+        TestSource = '00/a5/global_UninitFillNCPairCountedRef800a5fce0_00a5fce0_test.cpp'
+        PassPattern = '00a5fce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8d5c0'
+        Module = '_global'
+        Source = '00/a8/global_UninitFillNCPairCountedRef800a8d5c0_00a8d5c0.cpp'
+        TestSource = '00/a8/global_UninitFillNCPairCountedRef800a8d5c0_00a8d5c0_test.cpp'
+        PassPattern = '00a8d5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab1070'
+        Module = '_global'
+        Source = '00/ab/global_UninitFillNCPairCountedRef800ab1070_00ab1070.cpp'
+        TestSource = '00/ab/global_UninitFillNCPairCountedRef800ab1070_00ab1070_test.cpp'
+        PassPattern = '00ab1070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad1780'
+        Module = '_global'
+        Source = '00/ad/global_UninitFillNCPairCountedRef800ad1780_00ad1780.cpp'
+        TestSource = '00/ad/global_UninitFillNCPairCountedRef800ad1780_00ad1780_test.cpp'
+        PassPattern = '00ad1780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b38500'
+        Module = '_global'
+        Source = '00/b3/global_UninitFillNCPairCountedRef800b38500_00b38500.cpp'
+        TestSource = '00/b3/global_UninitFillNCPairCountedRef800b38500_00b38500_test.cpp'
+        PassPattern = '00b38500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b82860'
+        Module = '_global'
+        Source = '00/b8/global_UninitFillNCPairCountedRef800b82860_00b82860.cpp'
+        TestSource = '00/b8/global_UninitFillNCPairCountedRef800b82860_00b82860_test.cpp'
+        PassPattern = '00b82860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b82d00'
+        Module = '_global'
+        Source = '00/b8/global_UninitFillNCPairCountedRef800b82d00_00b82d00.cpp'
+        TestSource = '00/b8/global_UninitFillNCPairCountedRef800b82d00_00b82d00_test.cpp'
+        PassPattern = '00b82d00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
