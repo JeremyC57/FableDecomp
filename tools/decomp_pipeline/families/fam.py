@@ -79,7 +79,9 @@ if FAM=="tiny":
         if len(_b)<=16 and not _m[0][4].startswith(("8d4d","8b4d","8b45","ff25")): members.extend(_m)   # skip EH funclets and import jumps
 else:
     key, members = fams[int(FAM)]
+ONLY=set(x.lower() for x in os.environ.get("FAMONLY","").split(",") if x)
 for a, mmod, mname, ln, hx in members[:LIMIT]:
+    if ONLY and a.lower() not in ONLY: continue
     b=strip(hx); va=int(a,16); ins,calls,pushes,vts,retn=parse(b,va)
     if TPL in ("2","57"):   # Create: new CX(thing)
         size=pushes[0]; ctor=calls[1]; cls=ctor_class(ctor) or (mname[:-7] if mname.endswith("_Create") else None) or f"CClass_{ctor:08x}"
@@ -6350,6 +6352,974 @@ int main()
 {{
     X x; x.body[0] = 5; x.e = 7; x.f = 8; X* c = (X*)x.Clone(); if (!c || g_c != 1 || c->body[0] != 5 || c->f != 8) '''+FAIL(a)+'''
     delete c;
+'''),b)
+    elif TPL in ("w512_27",):   # void CCombatSequence_X::OnCreate() { CCountedPointer<CCombatActionBase> action(new CCombatAction_Y(m_pOwner, m_pTarget)); AddAction(action); CCombatSequenceBase::OnCreate(); }
+        if len(calls)!=6 or retn!=0: continue
+        newer,ctor,reset,adder,base,deleter=calls; size=pushes[0]
+        offs=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str]
+        if len(offs)!=2: continue
+        o2,o1=offs   # pushed right to left: second argument first
+        acls=tctor_class(ctor) or f"CCombatAction_{ctor:08x}"
+        cls=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else f"CCombatSequence_{a}"
+        bm,bn,_=label(base); bcls="CCombatSequenceBase" if (bm,bn) in uniq and bn.split("::")[-1]=="OnCreate" else f"CCombatSequenceBase_{base:08x}"
+        add(a,cls,"OnCreate",HDRF(a,f"{cls}::OnCreate() -- counted pointer to a new {acls}(m_{o1:02x}, m_{o2:02x}) ({size:#x} bytes) added through AddAction @ 0x{adder:08X}, then the base OnCreate @ 0x{base:08X}; the temporary is released inline",len(b))+f'''//
+// Retail bytes:  sub esp,8 ; push esi ; push {size:#x} ; mov esi,ecx ; mov dword ptr [esp+8],0 ; mov dword ptr [esp+0Ch],0 ; call operator new ; add esp,4 ; test eax,eax ; je Z ; mov ecx,[esi+{o2:#x}] ; mov edx,[esi+{o1:#x}] ; push ecx ; push edx ; mov ecx,eax ; call {acls}::{acls} ; jmp J ; Z: xor eax,eax ; J: push eax ; lea ecx,[esp+8] ; call CCountedPointer::Reset ; lea eax,[esp+4] ; push eax ; mov ecx,esi ; call AddAction ; mov ecx,esi ; call {bcls}::OnCreate ; mov eax,[esp+8] ; test eax,eax ; pop esi ; je E ; dec dword ptr [eax] ; mov eax,[esp+4] ; cmp dword ptr [eax],0 ; jne E ; mov ecx,[eax+8] ; call [eax+4] ; mov ecx,[esp+4] ; push ecx ; call operator delete ; add esp,4 ; E: add esp,8 ; ret
+// Virtual OnCreate of a combat sequence: a new {acls} ({size:#x} bytes, constructor @ 0x{ctor:08X}
+// over the sequence's two pointer members at +{o1:#x} and +{o2:#x}) is wrapped in a counted
+// pointer -- default-constructed (both fields zeroed, the stores scheduled before the
+// allocation) and assigned through the out-of-line Reset @ 0x{reset:08X}, which allocates the
+// count block -- handed to AddAction @ 0x{adder:08X} (its label
+// `std::vector::push_back` is propagated: the callee also bumps a count at +8), and the base
+// OnCreate @ 0x{base:08X} runs (its manifest label is propagated). The temporary's destructor is
+// inlined: decrement the block's count and, at zero, call its destroy function with the object
+// in ecx and delete the block; the stores nulling a dead local are elided. The sequence class
+// is this body's manifest module; the action class is named by its constructor when the label
+// is unique. One of {len(members)} bodies of this shape.
+struct CThingCreatureBase;
+struct CThing;
+
+struct SCountBlock {{
+    long m_references;                     // +0
+    void (__fastcall* m_pfnDestroy)(void*);// +4
+    void* m_pObject;                       // +8
+}};
+
+struct CCombatActionBase {{
+    virtual void v00();
+}};
+
+struct {acls} : CCombatActionBase {{
+    unsigned char _body[{size-4:#x}];        // sizeof({acls}) = {size:#x}
+    {acls}(CThingCreatureBase* owner, CThing* target);   // 0x{ctor:08X}
+}};
+
+struct CCountedPointer {{
+    CCombatActionBase* m_pObject;          // +0
+    SCountBlock* m_pCount;                 // +4
+    CCountedPointer() : m_pObject(0), m_pCount(0) {{ }}
+    CCountedPointer& operator=(CCombatActionBase* object) {{ Reset(object); return *this; }}
+    void Reset(CCombatActionBase* object); // 0x{reset:08X}
+    ~CCountedPointer()
+    {{
+        if (m_pCount) {{
+            --m_pCount->m_references;
+            if (m_pCount->m_references == 0) {{
+                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
+                delete m_pCount;
+            }}
+        }}
+        m_pObject = 0;
+        m_pCount = 0;
+    }}
+}};
+
+struct {bcls} {{
+    virtual void v00();
+    unsigned char _pad[{o1-4:#x}];
+    CThingCreatureBase* m_{o1:02x};               // +{o1:#x} owner
+{"    unsigned char _gap[%#x];" % (o2-o1-4) + chr(10) if o2-o1>4 else ""}    CThing* m_{o2:02x};                           // +{o2:#x} target
+    void AddAction(const CCountedPointer& action);   // 0x{adder:08X}
+    virtual void OnCreate();               // 0x{base:08X}
+}};
+
+struct {cls} : {bcls} {{
+    virtual void OnCreate();
+}};
+
+void {cls}::OnCreate()
+{{
+    CCountedPointer action;                // zeroed before the allocation (GOTCHAS: ctor-argument form zeroes after)
+    action = new {acls}(m_{o1:02x}, m_{o2:02x});
+    AddAction(action);
+    {bcls}::OnCreate();
+}}
+''',T(a,'''static int g_r = 0, g_a = 0, g_b = 0, g_d = 0; static void __fastcall Destroy(void*) { ++g_d; }
+struct Blk { long r; void (__fastcall* f)(void*); void* o; }; struct O { virtual void v00() {} }; struct X : O { unsigned char b[8]; X(void*, void*) {} };
+struct P { O* o; Blk* c; P() : o(0), c(0) {} P& operator=(O* p) { R(p); return *this; } void R(O* p) { o = p; c = new Blk; c->r = 1; c->f = Destroy; c->o = p; ++g_r; }
+    ~P() { if (c) { --c->r; if (c->r == 0) { c->f(c->o); delete c; } } o = 0; c = 0; } };
+struct Base { virtual void v00() {} unsigned char pad[0x18]; void* a; void* t; void Add(const P&) { ++g_a; } virtual void OnCreate() { ++g_b; } };
+struct D : Base { virtual void OnCreate(); }; void D::OnCreate() { P p; p = new X(a, t); Add(p); Base::OnCreate(); }
+int main()
+{
+    D d; d.a = 0; d.t = 0; d.OnCreate(); if (g_r != 1 || g_a != 1 || g_b != 1 || g_d != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_26",):   # void CX::AddEntry(const CCountedPointer& value) { if (!m_pList) m_pList = new CRetailList; m_pList->push_back(value); }  (Dinkumware list, no size, node {next, prev, value})
+        if len(calls)!=3 or retn!=4: continue
+        newer,m1,m2=calls
+        if m1!=m2: continue
+        offs=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "edi +" in i.op_str]
+        if not offs or len(set(offs))!=1: continue
+        off=offs[0]; ns=[p for p in pushes if p==0x10]
+        if len(ns)!=2 or pushes[0]!=4: continue
+        leaf=mmod.split("::")[-1]; cls=leaf if re.match(r"^C[A-Za-z0-9_]+$",leaf) else f"CUIElement_{a}"
+        fn=mname.split("::")[-1] if re.match(r"^vfunc_\d+$",mname.split("::")[-1]) else f"AddEntry_{a}"
+        add(a,mmod if cls!=f"CUIElement_{a}" else "_unattributed",fn,HDRF(a,f"{mmod}::{fn}(const CCountedPointer&) -- lazily creates the std::list member at +{off:#x} (head sentinel malloc'd self-linked) and appends a counted-pointer copy (inlined push_back: 16-byte node, copy constructor, link before the head)",len(b))+f'''//
+// Retail bytes:  push ecx ; push esi ; push edi ; mov edi,ecx ; mov eax,[edi+{off:#x}] ; test eax,eax ; mov dword ptr [esp+8],0 ; jne H ; push 4 ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je Z ; push 10h ; mov dword ptr [esi],0 ; call malloc ; mov [eax],eax ; mov [eax+4],eax ; add esp,4 ; mov [esi],eax ; jmp S ; Z: xor esi,esi ; S: mov [edi+{off:#x}],esi ; H: mov eax,[edi+{off:#x}] ; mov esi,[eax] ; push 10h ; call malloc ; lea ecx,[eax+8] ; add esp,4 ; test ecx,ecx ; je L ; mov edx,[value] ; mov edi,[edx] ; mov [ecx],edi ; mov edx,[edx+4] ; test edx,edx ; mov [ecx+4],edx ; je L ; inc dword ptr [edx] ; L: mov ecx,[esi+4] ; mov [eax],esi ; mov [eax+4],ecx ; mov [ecx],eax ; pop edi ; mov [esi+4],eax ; pop esi ; pop ecx ; ret 4
+// Virtual UI hook that appends a counted pointer to a lazily created list: the list member at
+// +{off:#x} is created on first use (operator new @ 0x{newer:08X}, its head sentinel malloc'd
+// @ 0x{m1:08X} and linked to itself by the inlined constructor), then push_back is inlined:
+// a 16-byte node is malloc'd, the counted pointer is placement-copied into its value (object
+// and count block, with the count incremented when present -- hence the null tests), and the
+// node is linked before the head. The zeroed dword local is the inlined constructor's empty
+// placement tag, homed in the frame. The list keeps no size member. One of {len(members)} bodies.
+#include <new>
+extern "C" void* __cdecl malloc(unsigned int size);
+
+struct SCountBlock {{
+    long m_references;                     // +0
+}};
+
+struct CCountedPointer {{
+    void* m_pObject;                       // +0
+    SCountBlock* m_pCount;                 // +4
+    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
+    {{
+        if (m_pCount)
+            ++m_pCount->m_references;
+    }}
+}};
+
+struct CRetailList {{
+    struct SNode {{
+        SNode* m_next;                     // +0
+        SNode* m_prev;                     // +4
+        CCountedPointer m_value;           // +8
+    }};
+    SNode* m_head;                         // +0 sentinel
+    CRetailList()
+    {{
+        m_head = 0;
+        m_head = (SNode*)malloc(sizeof(SNode));
+        m_head->m_next = m_head;
+        m_head->m_prev = m_head;
+    }}
+    void push_back(const CCountedPointer& value)
+    {{
+        SNode* head = m_head;
+        SNode* node = (SNode*)malloc(sizeof(SNode));
+        new (&node->m_value) CCountedPointer(value);
+        node->m_next = head;
+        node->m_prev = head->m_prev;
+        head->m_prev->m_next = node;
+        head->m_prev = node;
+    }}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{off:#x}];
+    CRetailList* m_pList;                  // +{off:#x}
+    virtual void {fn}(const CCountedPointer& value);
+}};
+
+void {cls}::{fn}(const CCountedPointer& value)
+{{
+    if (!m_pList)
+        m_pList = new CRetailList;
+    m_pList->push_back(value);
+}}
+''',T(a,'''#include <new>
+#include <cstdlib>
+struct B { long r; }; struct P { void* o; B* c; P(const P& x) : o(x.o), c(x.c) { if (c) ++c->r; } };
+struct L { struct N { N* n; N* p; P v; }; N* h; L() { h = 0; h = (N*)std::malloc(sizeof(N)); h->n = h; h->p = h; }
+    void pb(const P& v) { N* hd = h; N* n = (N*)std::malloc(sizeof(N)); new (&n->v) P(v); n->n = hd; n->p = hd->p; hd->p->n = n; hd->p = n; } };
+struct X { unsigned char pad[8]; L* l; X() { l = 0; } virtual void A(const P& v) { if (!l) l = new L; l->pb(v); } };
+int main()
+{
+    B b; b.r = 1; P p = { 0, &b }; X x; x.A(p); x.A(p); if (!x.l || b.r != 3 || x.l->h->n->n->n != x.l->h || x.l->h->p->v.c != &b) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_24",):   # void CEngine::AddEngineComponent(CEngineComponent* component, SComponentSlot* slot, unsigned char) { DisplayProgress(CCharString("LIT", -1), -1.0f, false, false); slot->m_pComponent = component; component->AddExclusiveObserver(slot); m_components.push_back(component); component->Attach(); }
+        if len(calls)!=7 or retn!=0xc: continue
+        sctor,progress,sdtor,observe,attach,grow,attach2=calls
+        if attach!=attach2: continue
+        lits=[p for p in pushes if 0x1200000<=p<0x1300000]
+        if len(lits)!=1: continue
+        s=lit(lits[0]); fl=[p for p in pushes if p==0xbf800000]
+        if len(fl)!=1: continue
+        offs=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "edi +" in i.op_str]
+        voff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "edi +" in i.op_str][0]
+        if offs!=[voff+4,voff+8]: continue
+        add(a,"CEngine",f"AddEngineComponent_{a}",HDRF(a,f"CEngine::AddEngineComponent(CEngineComponent*, SComponentSlot*, unsigned char) -- progress message {s}, slot store + AddExclusiveObserver @ 0x{observe:08X}, inline push_back on the component vector at +{voff:#x} (grow @ 0x{grow:08X}), then the component's attach hook @ 0x{attach:08X}",len(b))+f'''//
+// Retail bytes:  push ecx ; push esi ; push edi ; push -1 ; mov edi,ecx ; push offset "{s}" ; lea ecx,[esp+10h] ; call CCharString::CCharString ; push 0 ; push 0BF800000h ; xor dl,dl ; lea ecx,[esp+10h] ; call DisplayProgress ; lea ecx,[esp+8] ; call CCharString::~CCharString ; mov eax,[slot] ; mov esi,[component] ; push eax ; mov ecx,esi ; mov [eax],esi ; call CObservable::AddExclusiveObserver ; mov eax,[edi+{voff+4:#x}] ; mov edx,[edi+{voff+8:#x}] ; cmp eax,edx ; lea ecx,[edi+{voff:#x}] ; mov [esp+10h],esi ; je G ; test eax,eax ; je S ; mov [eax],esi ; S: add dword ptr [ecx+4],4 ; mov ecx,esi ; call Attach ; pop edi ; pop esi ; pop ecx ; ret 0Ch ; G: push 1 ; push 1 ; lea edx,[esp+18h] ; push edx ; lea edx,[esp+1Ch] ; push edx ; push eax ; call InsertGrow ; mov ecx,esi ; call Attach ; pop edi ; pop esi ; pop ecx ; ret 0Ch
+// One instantiation of CEngine::AddEngineComponent<T> (all {len(members)} instantiations compile to the
+// same bytes): shows the progress message "{s}" (a CCharString temporary passed by
+// reference to the __fastcall DisplayProgress @ 0x{progress:08X} with -1.0f and two false flags,
+// destroyed @ 0x{sdtor:08X} after the call), stores the component into its slot and registers
+// the slot as the component's exclusive observer (@ 0x{observe:08X}), appends the component
+// pointer to the engine's component vector at +{voff:#x} (push_back inlined: in-place store with
+// spare capacity, else the reallocating insert @ 0x{grow:08X} with a 1-byte empty-tag temporary
+// and the value homed in the dead argument slot), and calls the component's attach hook
+// @ 0x{attach:08X} (its manifest label is propagated). The flag argument is unused by this body.
+// The component type of this instantiation is not recoverable from the bytes.
+#include <new>
+#include "fable_string.h"
+
+struct SScalarTag {{ SScalarTag() {{ }} }};   // user constructor: no zero-initialisation of the 1-byte temporary
+
+void __fastcall DisplayProgress(const CCharString& message, float fraction, bool a, bool b);   // 0x{progress:08X}
+
+struct SComponentSlot;
+
+struct CEngineComponent {{
+    void AddExclusiveObserver(SComponentSlot* observer);   // 0x{observe:08X}
+    void Attach();                         // 0x{attach:08X}
+}};
+
+struct SComponentSlot {{
+    CEngineComponent* m_pComponent;        // +0
+}};
+
+struct CRetailVector_ptr {{
+    CEngineComponent** first;
+    CEngineComponent** last;
+    CEngineComponent** end;
+    void InsertGrow(CEngineComponent** where, CEngineComponent* const& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x{grow:08X}
+    void push_back(CEngineComponent* const& value)
+    {{
+        if (last != end) {{
+            new (last) CEngineComponent*(value);
+            ++last;
+        }}
+        else
+            InsertGrow(last, value, SScalarTag(), 1, true);
+    }}
+}};
+
+struct CEngine {{
+    unsigned char _pad[{voff:#x}];
+    CRetailVector_ptr m_components;        // +{voff:#x}
+    void AddEngineComponent_{a}(CEngineComponent* component, SComponentSlot* slot, unsigned char flag);
+}};
+
+void CEngine::AddEngineComponent_{a}(CEngineComponent* component, SComponentSlot* slot, unsigned char flag)
+{{
+    DisplayProgress(CCharString("{s}", -1), -1.0f, false, false);
+    slot->m_pComponent = component;
+    component->AddExclusiveObserver(slot);
+    m_components.push_back(component);
+    component->Attach();
+}}
+''',T(a,'''#include <new>
+static int g_p = 0, g_o = 0, g_at = 0, g_g = 0; struct Str { const char* s; Str(const char* x, long) : s(x) {} ~Str() { ++g_p; } };
+static void __fastcall DP(const Str&, float, bool, bool) { ++g_p; } struct Tg { Tg() {} };
+struct Comp { void Obs(void*) { ++g_o; } void At() { ++g_at; } }; struct Slot { Comp* c; };
+struct V { Comp** f; Comp** l; Comp** e; void G(Comp**, Comp* const&, const Tg&, unsigned long, bool) { ++g_g; } void pb(Comp* const& v) { if (l != e) { new (l) Comp*(v); ++l; } else G(l, v, Tg(), 1, true); } };
+struct E { unsigned char pad[8]; V v; void Add(Comp* c, Slot* s, unsigned char) { DP(Str("x", -1), -1.0f, false, false); s->c = c; c->Obs(s); v.pb(c); c->At(); } };
+int main()
+{
+    Comp* buf[1]; E e; e.v.f = buf; e.v.l = buf; e.v.e = buf + 1; Comp c; Slot s; e.Add(&c, &s, 0); e.Add(&c, &s, 0); if (g_p != 4 || g_o != 2 || g_at != 2 || g_g != 1 || s.c != &c || buf[0] != &c) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_67",):   # void CAIStateGroup_X::OnActivate() { if (m_target.GetPItem() && !(m_target.GetPItem()->m_flagsA & a) && (m_target.GetPItem()->m_flagsB & b)) { CTCStealth* tc = (CTCStealth*)GetTC(thing, K); tc->SetAsInDanger(m_pOwner->m_pThing, 3); } }
+        if len(calls)!=5 or retn!=0 or calls[0]!=calls[1] or calls[1]!=calls[2]: continue
+        getp,lower,setter=calls[0],calls[3],calls[4]
+        poff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "edi +" in i.op_str][0]
+        tests=[i for i in ins if i.mnemonic=="test" and i.operands[0].type==X86_OP_MEM]
+        if len(tests)!=2: continue
+        aoff,amask=tests[0].operands[0].mem.disp,tests[0].operands[1].imm; boff,bmask=tests[1].operands[0].mem.disp,tests[1].operands[1].imm
+        moff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "eax +" in i.op_str][0]
+        key=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "esp" in i.op_str and i.operands[1].type==X86_OP_IMM][0]
+        chain=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and ("edi +" in i.op_str or "ecx +" in i.op_str)]
+        if len(chain)!=2: continue
+        o1,o2=chain; k2=[p for p in pushes if p<0x100][0]
+        cls=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else f"CAIStateGroup_{a}"; fn=mname.split("::")[-1] if re.match(r"^[A-Za-z_]\w*$",mname.split("::")[-1]) else f"Hook_{a}"
+        _mem=sorted([(aoff,1,"unsigned char m_%02x;" % aoff,"flags byte"),(boff,4,"unsigned long m_%02x;" % boff,"flags dword"),(moff,12,"CVectorMap m_%02x;" % moff,"TC map")]); thing_members=""; _prev=0
+        for _o,_sz,_decl,_what in _mem:
+            if _o>_prev: thing_members+=f"    unsigned char _pad{_prev:02x}[{_o-_prev:#x}];\n"
+            thing_members+=f"    {_decl}".ljust(40)+f"// +{_o:#x} {_what}\n"; _prev=_o+_sz
+        gm,gn,_=label(getp); getter=gn.split("::")[-1] if (gm,gn) in uniq and re.match(r"^[A-Za-z_]\w*$",gn.split("::")[-1]) else f"GetPItem_{getp:08x}"
+        sm,sn,_=label(setter); scls=sm.split("::")[-1] if (sm,sn) in uniq and re.match(r"^C[A-Za-z0-9_]+$",sm.split("::")[-1]) else f"CTC_{setter:08x}"; sfn=sn.split("::")[-1] if (sm,sn) in uniq and re.match(r"^[A-Za-z_]\w*$",sn.split("::")[-1]) else f"Notify_{setter:08x}"
+        add(a,cls,fn,HDRF(a,f"{cls}::{fn}() -- if the intelligent pointer at +{poff:#x} resolves to a thing without flag {amask:#x} at +{aoff:#x} and with flag {bmask:#x} at +{boff:#x}, look up TC {key:#x} in the thing's TC map (+{moff:#x}, inlined CVectorMap find over LowerBound @ 0x{lower:08X}) and call {scls}::{sfn}(m_{o1:02x}->m_{o2:02x}, {k2})",len(b))+f'''//
+// Retail bytes:  push ecx ; push esi ; push edi ; mov edi,ecx ; lea esi,[edi+{poff:#x}] ; mov ecx,esi ; call {getter} ; test eax,eax ; je E ; mov ecx,esi ; call {getter} ; test byte ptr [eax+{aoff:#x}],{amask:#x} ; jne E ; mov ecx,esi ; call {getter} ; test dword ptr [eax+{boff:#x}],{bmask:#x} ; je E ; lea esi,[eax+{moff:#x}] ; lea eax,[esp+8] ; push eax ; mov ecx,esi ; mov dword ptr [esp+0Ch],{key:#x} ; call CVectorMap::LowerBound ; mov esi,[esi+4] ; cmp eax,esi ; je N ; cmp dword ptr [eax],{key:#x} ; jle F ; N: mov eax,esi ; F: mov ecx,[edi+{o1:#x}] ; mov edx,[ecx+{o2:#x}] ; mov eax,[eax+4] ; push {k2} ; push edx ; mov ecx,eax ; call {scls}::{sfn} ; E: pop edi ; pop esi ; pop ecx ; ret
+// AI state hook: the target intelligent pointer at +{poff:#x} is resolved through {getter}
+// @ 0x{getp:08X} on every use (three calls), the thing's two flag words are tested, and the
+// TC entry {key:#x} is fetched from the thing's CVectorMap at +{moff:#x} with the find idiom
+// inlined (LowerBound @ 0x{lower:08X}, then `it == last || key < it->first` falls back to
+// `last`; the key is a frame temporary passed by address); its value receives
+// {sfn}(owner->m_{o2:02x}, {k2}) @ 0x{setter:08X}. One of {len(members)} bodies of this shape.
+struct CThing;
+struct CTCBase;
+
+enum ETCInterfaceType {{ TC_FIRST = 0 }};
+
+struct SPair {{
+    long first;                            // ETCInterfaceType
+    CTCBase* second;
+}};
+
+struct CVectorMap {{
+    SPair* first;                          // +0
+    SPair* last;                           // +4
+    SPair* end;                            // +8
+    SPair* LowerBound(const long& key);    // 0x{lower:08X}
+    SPair* Find(ETCInterfaceType key)      // the enum converts to LowerBound's long reference through a frame temporary; the compare keeps the constant
+    {{
+        SPair* it = LowerBound(key);
+        if (it == last || key < it->first)
+            it = last;
+        return it;
+    }}
+}};
+
+struct CThing {{
+{thing_members}    CTCBase* GetTC(ETCInterfaceType type) {{ return m_{moff:02x}.Find(type)->second; }}   // returned value: loaded before the call sequence
+}};
+
+struct CIntelligentPointer {{
+    unsigned char _body[8];
+    CThing* {getter}();                    // 0x{getp:08X}
+}};
+
+struct {scls} {{
+    void {sfn}(CThing* thing, long status);   // 0x{setter:08X}
+}};
+
+struct SOwner {{
+    unsigned char _pad[{o2:#x}];
+    CThing* m_{o2:02x};                         // +{o2:#x}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{o1:#x}];
+    SOwner* m_{o1:02x};                         // +{o1:#x}
+    unsigned char _pad2[{poff-o1-4:#x}];
+    CIntelligentPointer m_{poff:02x};           // +{poff:#x}
+    void {fn}();
+}};
+
+void {cls}::{fn}()
+{{
+    if (m_{poff:02x}.{getter}() && !(m_{poff:02x}.{getter}()->m_{aoff:02x} & {amask:#x})) {{
+        CThing* thing = m_{poff:02x}.{getter}();
+        if (thing->m_{boff:02x} & {bmask:#x}) {{
+            {scls}* tc = ({scls}*)thing->GetTC((ETCInterfaceType){key:#x});
+            tc->{sfn}(m_{o1:02x}->m_{o2:02x}, {k2});
+        }}
+    }}
+}}
+''',T(a,'''static int g_n = 0; struct T; struct P { long f; T* s; };
+struct M { P* f; P* l; P* e; P* LB(const long& k) { P* i = f; while (i != l && i->f < k) ++i; return i; } P* Find(const long& k) { P* i = LB(k); if (i == l || k < i->f) i = l; return i; } };
+struct T { unsigned char pad[8]; unsigned char a; unsigned char pad2[3]; unsigned long b; M m; T* GT(long k) { return m.Find(k)->s; } void N(T*, long k) { g_n += (int)k; } };
+struct IP { T* t; T* G() { return t; } }; struct O { T* x; }; struct X { O* o; IP p; void F() { if (p.G() && !(p.G()->a & 1)) { T* t = p.G(); if (t->b & 4) { T* tc = (T*)t->GT(7); tc->N(o->x, 3); } } } };
+int main()
+{
+    T t, tc; P arr[2]; arr[0].f = 7; arr[0].s = &tc; t.m.f = arr; t.m.l = arr + 1; t.m.e = arr + 2; t.a = 0; t.b = 4; O o; o.x = &t; X x; x.o = &o; x.p.t = &t; x.F(); if (g_n != 3) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_48",):   # void CX::F() { CCharString name("LIT", -1); m_a->vslotN(&m_b, name); }
+        if len(calls)!=2 or retn!=0: continue
+        sctor,sdtor=calls; lits=[p for p in pushes if 0x1200000<=p<0x1300000]
+        if len(lits)!=1: continue
+        s=lit(lits[0]); slot=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM][0]
+        aoff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str][0]
+        boff=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.op_str.startswith("esi,")][0]
+        cls=f"CNamedCaller_{a}"; sl=slot//4
+        vt="".join(f"    virtual void _slot{j:03d}();\n" for j in range(sl))
+        add(a,"_unattributed",f"Notify_{san(s)}_{a}",HDRF(a,f"{cls}::Notify_{san(s)}_{a}() -- passes &m_{boff:02x} and the name \"{s}\" to virtual slot {sl} of the object at +{aoff:#x}",len(b))+f'''//
+// Retail bytes:  push ecx ; push esi ; push -1 ; mov esi,ecx ; push offset "{s}" ; lea ecx,[esp+0Ch] ; call CCharString::CCharString ; mov ecx,[esi+{aoff:#x}] ; mov eax,[ecx] ; lea edx,[esp+4] ; push edx ; add esi,{boff:#x} ; push esi ; call [eax+{slot:#x}] ; lea ecx,[esp+4] ; call CCharString::~CCharString ; pop esi ; pop ecx ; ret
+// Builds a scoped CCharString from the literal (constructor @ 0x{sctor:08X}, destructor
+// @ 0x{sdtor:08X}, labels propagated) and calls virtual slot {sl} (vtable offset {slot:#x}) of the
+// object at +{aoff:#x} with the address of this object's member at +{boff:#x} (formed in place:
+// `add esi,{boff:#x} ; push esi`) and the name. The function is unnamed in the manifest (gap
+// scan); its class and the callee's are modelled by their slots. One of {len(members)} bodies.
+#include "fable_string.h"
+
+struct SMember_{boff:02x};
+
+struct CSlotTarget_{a} {{
+{vt}    virtual void Notify(SMember_{boff:02x}* member, const CCharString& name);   // slot {sl}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{aoff:#x}];
+    CSlotTarget_{a}* m_{aoff:02x};            // +{aoff:#x}
+{"    unsigned char _pad2[%#x];" % (boff-aoff-4) + chr(10) if boff-aoff>4 else ""}    unsigned char m_{boff:02x}[4];              // +{boff:#x} (opaque member handed by address)
+    void Notify_{san(s)}_{a}();
+}};
+
+void {cls}::Notify_{san(s)}_{a}()
+{{
+    CCharString name("{s}", -1);
+    m_{aoff:02x}->Notify((SMember_{boff:02x}*)&m_{boff:02x}, name);
+}}
+''',T(a,'''static int g_n = 0; struct Str { const char* s; Str(const char* x, long) : s(x) {} ~Str() { ++g_n; } };
+struct Tg { virtual void a() {} virtual void b() {} virtual void N(void*, const Str& s) { g_n += s.s[0]; } };
+struct X { Tg* t; unsigned char m[4]; void F() { Str s("A", -1); t->N(&m, s); } };
+int main()
+{
+    Tg t; X x; x.t = &t; x.F(); if (g_n != 'A' + 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_68",):   # void CX::F() { CCharString name("LIT", -1); if (m_a.vslotN(name)) m_b->m_c = 1; }
+        if len(calls)!=2 or retn!=0: continue
+        sctor,sdtor=calls; lits=[p for p in pushes if 0x1200000<=p<0x1300000]
+        if len(lits)!=1: continue
+        s=lit(lits[0]); slot=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM][0]
+        aoff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]
+        boff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str and i.operands[1].mem.disp!=aoff][0]
+        _bs=[i for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "byte ptr" in i.op_str][0]; coff=_bs.operands[0].mem.disp; cval=_bs.operands[1].imm
+        cls=f"CNamedQuery_{a}"; sl=slot//4
+        vt="".join(f"    virtual void _slot{j:03d}();\n" for j in range(sl))
+        add(a,"_unattributed",f"Query_{san(s)}_{a}",HDRF(a,f"{cls}::Query_{san(s)}_{a}() -- asks virtual slot {sl} of the embedded object at +{aoff:#x} about \"{s}\"; on true stores {cval} to the byte at +{coff:#x} of the object at +{boff:#x}",len(b))+f'''//
+// Retail bytes:  push ecx ; push ebx ; push esi ; push -1 ; mov esi,ecx ; push offset "{s}" ; lea ecx,[esp+10h] ; call CCharString::CCharString ; mov eax,[esi+{aoff:#x}] ; lea ecx,[esi+{aoff:#x}] ; lea edx,[esp+8] ; push edx ; call [eax+{slot:#x}] ; lea ecx,[esp+8] ; mov bl,al ; call CCharString::~CCharString ; test bl,bl ; je E ; mov eax,[esi+{boff:#x}] ; mov byte ptr [eax+{coff:#x}],{cval} ; E: pop esi ; pop ebx ; pop ecx ; ret
+// Builds a scoped CCharString from the literal (constructor @ 0x{sctor:08X}, destructor
+// @ 0x{sdtor:08X}, labels propagated), calls virtual slot {sl} (vtable offset {slot:#x}) of the
+// polymorphic member embedded at +{aoff:#x} with it, keeps the bool result in bl across the
+// string's destructor, and on success sets the byte flag at +{coff:#x} of the object at
+// +{boff:#x}. Unnamed in the manifest (gap scan). One of {len(members)} bodies of this shape.
+struct CCharString {{                     // one pointer; the default length makes the literal convert implicitly (re-addressed with lea, GOTCHAS)
+    void* m_pData;
+    CCharString(const char* text, long length = -1);   // 0x{sctor:08X}
+    ~CCharString();                        // 0x{sdtor:08X}
+}};
+
+struct CQueryTarget_{a} {{
+{vt}    virtual bool Query(const CCharString& name);   // slot {sl}
+}};
+
+struct SFlagOwner_{a} {{
+    unsigned char _pad[{coff:#x}];
+    unsigned char m_{coff:02x};                 // +{coff:#x}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{aoff:#x}];
+    CQueryTarget_{a} m_{aoff:02x};            // +{aoff:#x} embedded (vptr first)
+{"    unsigned char _pad2[%#x];" % (boff-aoff-4) + chr(10) if boff-aoff>4 else ""}    SFlagOwner_{a}* m_{boff:02x};             // +{boff:#x}
+    void Query_{san(s)}_{a}();
+}};
+
+void {cls}::Query_{san(s)}_{a}()
+{{
+    bool found = m_{aoff:02x}.Query("{s}");   // the temporary dies after the call; the result rides in bl
+    if (found)
+        m_{boff:02x}->m_{coff:02x} = {cval};
+}}
+''',T(a,'''static int g_n = 0; struct Str { const char* s; Str(const char* x, long) : s(x) {} ~Str() { ++g_n; } };
+struct Tg { virtual void a() {} virtual bool Q(const Str& s) { return s.s[0] == 'A'; } }; struct O { unsigned char p[4]; unsigned char f; };
+struct X { Tg t; O* o; void F() { bool r = t.Q(Str("A", -1)); if (r) o->f = 1; } };
+int main()
+{
+    O o; o.f = 0; X x; x.o = &o; x.F(); if (g_n != 1 || o.f != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_51",):   # unsigned long CRetailTree::Erase(SNode* where) { SNode* victim = Erase_(where, &head->parent, &head->left, &head->right); victim->value.~T(); free(victim); return --size; }
+        if len(calls)!=3 or retn!=4: continue
+        helper,dtor,freer=calls; voff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "edi +" in i.op_str][0]
+        dm,dn,_=label(dtor); dl=dn.split("::")[-1]
+        if dtor==0x99eae0: vcls="CCharString"; vinc='#include "fable_string.h"\n'; vdecl=""
+        elif dl.startswith("~") and (dm,dn) in uniq and re.match(r"^C[A-Za-z0-9_]+$",dm.split("::")[-1]): vcls=dm.split("::")[-1]; vinc=""; vdecl=f"struct {vcls} {{\n    void* m_data;\n    ~{vcls}();                             // 0x{dtor:08X}\n}};\n\n"
+        else: vcls=f"CValue_{dtor:08x}"; vinc=""; vdecl=f"struct {vcls} {{\n    void* m_data;\n    ~{vcls}();                             // 0x{dtor:08X}\n}};\n\n"
+        nm=f"CRetailTree_{a}"
+        add(a,"_unattributed",f"Erase_{nm}",HDRF(a,f"{nm}::Erase(SNode*) -- unlink through the __cdecl helper @ 0x{helper:08X} (node, &head->parent, &head->left, &head->right), destroy the {vcls} value at +{voff:#x}, free the node, return the decremented size",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi] ; push edi ; lea ecx,[eax+0Ch] ; push ecx ; lea edx,[eax+8] ; push edx ; add eax,4 ; push eax ; mov eax,[where] ; push eax ; call Unlink ; mov edi,eax ; add esp,10h ; lea ecx,[edi+{voff:#x}] ; call {vcls}::~{vcls} ; test edi,edi ; je F ; push edi ; call free ; add esp,4 ; F: mov eax,[esi+4] ; dec eax ; mov [esi+4],eax ; pop edi ; pop esi ; ret 4
+// Dinkumware-style tree erase: the __cdecl unlink helper @ 0x{helper:08X} takes the node and the
+// addresses of the head's parent/left/right links (formed in place with `add eax,4` for the
+// last) and returns the unlinked node, whose {vcls} value at +{voff:#x} is destroyed
+// (@ 0x{dtor:08X}) before the node is freed through the null-tested deallocate (free @
+// 0x{freer:08X}); the size is decremented and returned (`mov/dec/mov` form). The manifest label
+// is propagated; the tree is named descriptively. One of {len(members)} bodies of this shape.
+{vinc}extern "C" void __cdecl free(void* block);
+
+{vdecl}struct {nm} {{
+    struct SNode {{
+        SNode* left;                       // +0
+        SNode* parent;                     // +4
+        SNode* left2;                      // +8  (head->left)
+        SNode* right;                      // +0xC (head->right)
+{"        unsigned char _pad[%#x];" % (voff-0x10) + chr(10) if voff>0x10 else ""}        {vcls} value;                      // +{voff:#x}
+    }};
+    SNode* head;                           // +0
+    unsigned long size;                    // +4
+    unsigned long Erase_{nm}(SNode* where);
+}};
+
+extern "C" {nm}::SNode* __cdecl Unlink_{helper:08x}({nm}::SNode* where, {nm}::SNode** root, {nm}::SNode** leftmost, {nm}::SNode** rightmost);   // 0x{helper:08X}
+
+unsigned long {nm}::Erase_{nm}(SNode* where)
+{{
+    SNode* victim = Unlink_{helper:08x}(where, &head->parent, &head->left2, &head->right);
+    victim->value.~{vcls}();
+    if (victim)
+        free(victim);
+    return --size;
+}}
+''',T(a,'''#include <cstdlib>
+static int g_d = 0; struct V { void* d; ~V() { ++g_d; } };
+struct Tr { struct N { N* a; N* p; N* l; N* r; V v; }; N* h; unsigned long s; unsigned long E(N* w); };
+static Tr::N* __cdecl U(Tr::N* w, Tr::N**, Tr::N**, Tr::N**) { return w; }
+unsigned long Tr::E(N* w) { N* v = U(w, &h->p, &h->l, &h->r); v->v.~V(); if (v) std::free(v); return --s; }
+int main()
+{
+    Tr t; Tr::N hd; t.h = &hd; t.s = 2; Tr::N* n = (Tr::N*)std::malloc(sizeof(Tr::N)); if (t.E(n) != 1 || g_d != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_17","w512_31","w512_119"):   # CGameScriptInterface script entry points over a by-value CScriptThing: GetThing() through the counted pointer, TC lookup (inlined CVectorMap find), member set / reset / get; the CScriptThing destructor inlined
+        mc=[i for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM]
+        vslots=sorted(set(i.operands[0].mem.disp for i in mc))
+        if len(vslots)!=2 or 4 not in vslots: continue
+        lower=sorted(set(c for c in calls if c!=0xbfe9bc and c!=0x99a2e0))
+        if len(lower)!=1 or calls[-1]!=0x99a2e0 or 0xbfe9bc not in calls: continue
+        lower=lower[0]; gslot=[v for v in vslots if v!=4][0]
+        vts2=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and 0x1200000<=i.operands[1].imm<0x1300000]
+        if not vts2 or len(set(vts2))!=1: continue
+        vt=vts2[0]
+        tst=[i for i in ins if i.mnemonic=="test" and i.operands[0].type==X86_OP_REG and i.operands[1].type==X86_OP_IMM]
+        if len(tst)!=1: continue
+        fmask=tst[0].operands[1].imm<<(8 if tst[0].op_str.startswith(("ch","dh","ah","bh")) else 0)
+        _ti=ins.index(tst[0]); _prev=ins[_ti-1]
+        if not (_prev.mnemonic=="mov" and _prev.operands[1].type==X86_OP_MEM and "eax +" in _prev.op_str): continue
+        foff=_prev.operands[1].mem.disp
+        moff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "eax +" in i.op_str][0]
+        key=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and i.operands[1].imm<0x1000][0]
+        fname=re.match(r"^\?(\w+)@",mname); fname=fname.group(1) if fname else (mname.split("::")[-1] if re.match(r"^[A-Za-z_]\w*$",mname.split("::")[-1]) else f"ScriptEntry_{a}")
+        # the member access after the lookup
+        post=[i for i in ins if i.address>max(i.address for i in ins if i.mnemonic=="pop" and i.op_str=="esi") and i.mnemonic=="mov"] if TPL!="w512_119" else []
+        common=f'''struct CThing;
+struct CTCBase;
+
+enum ETCInterfaceType {{ TC_FIRST = 0 }};
+
+struct SCountBlock {{
+    long m_references;                     // +0
+    void (__fastcall* m_pfnDestroy)(void*);// +4
+    void* m_pObject;                       // +8
+}};
+
+struct CScriptEntity {{
+{"".join("    virtual void _slot%02d();" % j + chr(10) for j in range(gslot//4))}    virtual CThing* GetThing();            // slot {gslot//4} (vtable offset {gslot:#x})
+}};
+
+struct CCountedPointer {{
+    CScriptEntity* m_pData;                // +0
+    SCountBlock* m_pInfo;                  // +4
+    ~CCountedPointer()
+    {{
+        if (m_pInfo) {{
+            --m_pInfo->m_references;
+            if (m_pInfo->m_references == 0) {{
+                m_pInfo->m_pfnDestroy(m_pInfo->m_pObject);
+                delete m_pInfo;
+            }}
+        }}
+        m_pData = 0;
+        m_pInfo = 0;
+    }}
+}};
+
+struct CBase {{
+    virtual void v00();
+    ~CBase();                              // 0x0099A2E0 (sets the CBase vtable; manifest label propagated)
+}};
+
+struct CScriptThing : CBase {{             // 12 bytes, passed by value (vtable 0x{vt:08X}, rtti-vtables.tsv)
+    CCountedPointer PImp;                  // +4 Data / +8 Info
+    ~CScriptThing() {{ }}
+    CThing* GetThing() const {{ return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }}
+}};
+
+struct SPair {{
+    long first;                            // ETCInterfaceType
+    CTCBase* second;
+}};
+
+struct CVectorMap {{
+    SPair* first;                          // +0
+    SPair* last;                           // +4
+    SPair* end;                            // +8
+    SPair* LowerBound(const long& key);    // 0x{lower:08X}
+    SPair* Find(ETCInterfaceType key)      // the enum converts to LowerBound's long reference through a frame temporary; the compare keeps the constant
+    {{
+        SPair* it = LowerBound(key);
+        if (it == last || key < it->first)
+            it = last;
+        return it;
+    }}
+}};
+
+struct CThing {{
+    unsigned char _pad[{foff:#x}];
+    unsigned long m_{foff:02x};                 // +{foff:#x} flags
+    unsigned char _pad2[{moff-foff-4:#x}];
+    CVectorMap m_{moff:02x};                    // +{moff:#x} TC map
+    CTCBase* GetTC(ETCInterfaceType type)
+    {{
+        CTCBase* tc;                       // deliberately left unset when the map is absent (retail reads the dead slot)
+        if (m_{foff:02x} & {fmask:#x})
+            tc = m_{moff:02x}.Find(type)->second;
+        return tc;
+    }}
+}};
+'''
+        if TPL=="w512_17":
+            if retn!=0x10: continue
+            _st=[i for i in post if i.operands[0].type==X86_OP_MEM and "eax +" in i.op_str][0]; soff=_st.operands[0].mem.disp; vty="unsigned char" if _st.operands[0].size==1 else "long"
+            add(a,"CGameScriptInterface",fname,HDRF(a,f"CGameScriptInterface::{fname}(CScriptThing, {vty}) -- GetThing through the counted pointer, TC {key:#x} from the thing's TC map (+{moff:#x}, inlined find), store the argument at +{soff:#x}; CScriptThing destroyed inline",len(b))+f'''//
+// Retail bytes:  push ecx ; mov ecx,[thing.PImp.Data] ; push edi ; xor edi,edi ; cmp ecx,edi ; je X ; mov eax,[ecx] ; call [eax+{gslot:#x}] ; cmp eax,edi ; jne B ; X: (CScriptThing dtor: vtable store, count release, delete) ; jmp D ; B: (GetThing again) ; mov ecx,[eax+{foff:#x}] ; test flag ; je N ; push esi ; lea esi,[eax+{moff:#x}] ; lea eax,[esp+8] ; push eax ; mov ecx,esi ; mov dword ptr [esp+0Ch],{key:#x} ; call CVectorMap::LowerBound ; mov esi,[esi+4] ; cmp eax,esi ; je L ; cmp dword ptr [eax],{key:#x} ; jle F ; L: mov eax,esi ; F: mov eax,[eax+4] ; pop esi ; jmp S ; N: mov eax,[dead slot] ; S: mov ecx,[value] ; mov [eax+{soff:#x}],ecx ; (dtor) ; D: lea ecx,[esp+0Ch] ; mov [esp+14h],edi ; mov [esp+10h],edi ; call CBase::~CBase ; pop edi ; pop ecx ; ret 10h
+// Script API entry point (virtual on CGameScriptInterface; `this` unused): the by-value
+// CScriptThing resolves its thing through virtual slot {gslot//4} of the counted pointee (null
+// tested, evaluated once for the guard and once for the body), the TC entry {key:#x} is looked
+// up in the thing's CVectorMap at +{moff:#x} when flag {fmask:#x} of +{foff:#x} is set (inlined find
+// over LowerBound @ 0x{lower:08X}; when the flag is clear retail reads an uninitialised local),
+// and the argument is stored at +{soff:#x} of the TC. The CScriptThing parameter's destructor
+// is inlined on both paths (vtable store, count-block release through the flag-tested
+// operator delete, fields nulled, then CBase::~CBase @ 0x0099A2E0). One of {len(members)} bodies.
+{common}
+struct STC_{soff:02x} {{
+    unsigned char _pad[{soff:#x}];
+    {vty} m_{soff:02x};{" "*(27-len(vty))}// +{soff:#x}
+}};
+
+struct CGameScriptInterface {{
+    void {fname}(CScriptThing thing, {vty} value);
+}};
+
+void CGameScriptInterface::{fname}(CScriptThing thing, {vty} value)
+{{
+    if (!thing.GetThing())
+        return;                            // the parameter's destructor is inlined here too
+    CThing* pThing = thing.GetThing();
+    ((STC_{soff:02x}*)pThing->GetTC((ETCInterfaceType){key:#x}))->m_{soff:02x} = value;
+}}
+''',T(a,'''static int g_d = 0; static void __fastcall Destroy(void*) { ++g_d; }
+struct Blk { long r; void (__fastcall* f)(void*); void* o; }; struct Th { long f; long t; };
+struct Ent { virtual Th* G() = 0; }; struct E2 : Ent { Th* t; virtual Th* G() { return t; } };
+struct P { Ent* d; Blk* i; ~P() { if (i) { --i->r; if (i->r == 0) { i->f(i->o); delete i; } } i = 0; d = 0; } };
+struct B { virtual void v() {} ~B() {} }; struct ST : B { P p; ~ST() {} Th* G() const { return p.d ? p.d->G() : 0; } };
+struct I { void S(ST s, long v) { if (!s.G()) return; Th* t = s.G(); t->t = v; } };
+int main()
+{
+    Th th; th.t = 0; E2 e; e.t = &th; Blk* b = new Blk; b->r = 1; b->f = Destroy; b->o = 0; ST s; s.p.d = &e; s.p.i = b; I i; i.S(s, 5); s.p.i = 0; s.p.d = 0; if (th.t != 5 || g_d != 1) '''+FAIL(a)+'''
+'''),b)
+        elif TPL=="w512_31":
+            if retn!=0xc: continue
+            lds=[]; sts=[]
+            for i in post:
+                if i.operands[0].type==X86_OP_MEM: sts.append(i.operands[0].mem.disp); break
+                if i.operands[1].type==X86_OP_MEM and "eax +" in i.op_str or "ecx +" in i.op_str: lds.append(i.operands[1].mem.disp)
+            if len(lds)!=2 or len(sts)!=1: continue
+            d1,d2=lds; soff=sts[0]
+            _st=[i for i in post if i.operands[0].type==X86_OP_MEM][0]; rty="unsigned char" if _st.operands[0].size==1 else "long"
+            add(a,"CGameScriptInterface",fname,HDRF(a,f"CGameScriptInterface::{fname}(CScriptThing) -- GetThing through the counted pointer, TC {key:#x} from the thing's TC map (+{moff:#x}, inlined find), reset +{soff:#x} from the TC's def (+{d1:#x} -> +{d2:#x}); CScriptThing destroyed inline",len(b))+f'''//
+// Retail bytes:  push ecx ; mov ecx,[thing.PImp.Data] ; push edi ; xor edi,edi ; cmp ecx,edi ; je X ; mov eax,[ecx] ; call [eax+{gslot:#x}] ; cmp eax,edi ; jne B ; X: (CScriptThing dtor) ; jmp D ; B: (GetThing again) ; mov ecx,[eax+{foff:#x}] ; test flag ; je N ; (inlined CVectorMap find of {key:#x}) ; jmp S ; N: mov eax,[dead slot] ; S: mov ecx,[eax+{d1:#x}] ; mov edx,[ecx+{d2:#x}] ; mov [eax+{soff:#x}],edx ; (dtor) ; D: lea ecx,[esp+0Ch] ; mov [esp+14h],edi ; mov [esp+10h],edi ; call CBase::~CBase ; pop edi ; pop ecx ; ret 0Ch
+// Script API entry point (virtual on CGameScriptInterface; `this` unused): the by-value
+// CScriptThing resolves its thing through virtual slot {gslot//4} of the counted pointee, the TC
+// entry {key:#x} is looked up in the thing's CVectorMap at +{moff:#x} when flag {fmask:#x} of +{foff:#x}
+// is set (inlined find over LowerBound @ 0x{lower:08X}; with the flag clear retail reads an
+// uninitialised local), and the TC member at +{soff:#x} is reset from its def: the object at
+// +{d1:#x} of the TC supplies +{d2:#x}. The CScriptThing destructor is inlined on both paths.
+// One of {len(members)} bodies of this shape.
+{common}
+struct STCDef_{d2:02x} {{
+    unsigned char _pad[{d2:#x}];
+    {rty} m_{d2:02x};{" "*(27-len(rty))}// +{d2:#x}
+}};
+
+struct STC_{soff:02x}_{d1:02x} {{
+    unsigned char _pad[{soff:#x}];
+    {rty} m_{soff:02x};{" "*(27-len(rty))}// +{soff:#x}
+    unsigned char _pad2[{d1-soff-(4 if rty=="long" else 1):#x}];
+    STCDef_{d2:02x}* m_{d1:02x};                 // +{d1:#x} def
+}};
+
+struct CGameScriptInterface {{
+    void {fname}(CScriptThing thing);
+}};
+
+void CGameScriptInterface::{fname}(CScriptThing thing)
+{{
+    if (!thing.GetThing())
+        return;                            // the parameter's destructor is inlined here too
+    CThing* pThing = thing.GetThing();
+    STC_{soff:02x}_{d1:02x}* tc = (STC_{soff:02x}_{d1:02x}*)pThing->GetTC((ETCInterfaceType){key:#x});
+    tc->m_{soff:02x} = tc->m_{d1:02x}->m_{d2:02x};
+}}
+''',T(a,'''static int g_d = 0; static void __fastcall Destroy(void*) { ++g_d; }
+struct Blk { long r; void (__fastcall* f)(void*); void* o; }; struct Df { long v; }; struct Th { long f; long t; Df* d; };
+struct Ent { virtual Th* G() = 0; }; struct E2 : Ent { Th* t; virtual Th* G() { return t; } };
+struct P { Ent* d; Blk* i; ~P() { if (i) { --i->r; if (i->r == 0) { i->f(i->o); delete i; } } i = 0; d = 0; } };
+struct B { virtual void v() {} ~B() {} }; struct ST : B { P p; ~ST() {} Th* G() const { return p.d ? p.d->G() : 0; } };
+struct I { void S(ST s) { if (!s.G()) return; Th* t = s.G(); t->t = t->d->v; } };
+int main()
+{
+    Df d; d.v = 9; Th th; th.t = 0; th.d = &d; E2 e; e.t = &th; Blk* b = new Blk; b->r = 1; b->f = Destroy; b->o = 0; ST s; s.p.d = &e; s.p.i = b; I i; i.S(s); s.p.i = 0; s.p.d = 0; if (th.t != 9 || g_d != 1) '''+FAIL(a)+'''
+'''),b)
+        else:   # w512_119: unsigned long Get(CScriptThing) { if (!thing.GetThing()) return 0; return tc->m_x; }
+            if retn!=0xc: continue
+            roff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==__import__("capstone.x86",fromlist=["X86_REG_ESI"]).X86_REG_ESI and i.operands[1].type==X86_OP_MEM and "eax +" in i.op_str]
+            if not roff: continue
+            roff=roff[-1]
+            add(a,"CGameScriptInterface",fname,HDRF(a,f"CGameScriptInterface::{fname}(CScriptThing) -- 0 unless the counted pointer resolves a thing; else the dword at +{roff:#x} of TC {key:#x} (thing's TC map +{moff:#x}, inlined find); CScriptThing destroyed inline",len(b))+f'''//
+// Retail bytes:  push ecx ; mov ecx,[thing.PImp.Data] ; push edi ; xor edi,edi ; cmp ecx,edi ; je X ; mov eax,[ecx] ; call [eax+{gslot:#x}] ; cmp eax,edi ; jne B ; X: (CScriptThing dtor) ; xor eax,eax ; pop edi ; pop ecx ; ret 0Ch ; B: (GetThing again) ; mov ecx,[eax+{foff:#x}] ; test flag ; push esi ; je N ; (inlined CVectorMap find of {key:#x}) ; jmp S ; N: mov eax,[dead slot] ; S: mov esi,[eax+{roff:#x}] ; (dtor) ; lea ecx,[esp+10h] ; mov [esp+14h],edi ; mov [esp+18h],edi ; call CBase::~CBase ; mov eax,esi ; pop esi ; pop edi ; pop ecx ; ret 0Ch
+// Script API getter (virtual on CGameScriptInterface; `this` unused): returns 0 when the
+// by-value CScriptThing does not resolve a thing (virtual slot {gslot//4} of the counted pointee),
+// else the dword at +{roff:#x} of TC {key:#x}, looked up in the thing's CVectorMap at +{moff:#x} when
+// flag {fmask:#x} of +{foff:#x} is set (inlined find over LowerBound @ 0x{lower:08X}; with the flag
+// clear retail reads an uninitialised local). The result is held in esi across the inlined
+// CScriptThing destructor. One of {len(members)} bodies of this shape.
+{common}
+struct STC_{roff:02x} {{
+    unsigned char _pad[{roff:#x}];
+    unsigned long m_{roff:02x};                 // +{roff:#x}
+}};
+
+struct CGameScriptInterface {{
+    unsigned long {fname}(CScriptThing thing);
+}};
+
+unsigned long CGameScriptInterface::{fname}(CScriptThing thing)
+{{
+    if (!thing.GetThing())
+        return 0;
+    CThing* pThing = thing.GetThing();
+    return ((STC_{roff:02x}*)pThing->GetTC((ETCInterfaceType){key:#x}))->m_{roff:02x};
+}}
+''',T(a,'''static int g_d = 0; static void __fastcall Destroy(void*) { ++g_d; }
+struct Blk { long r; void (__fastcall* f)(void*); void* o; }; struct Th { long f; unsigned long t; };
+struct Ent { virtual Th* G() = 0; }; struct E2 : Ent { Th* t; virtual Th* G() { return t; } };
+struct P { Ent* d; Blk* i; ~P() { if (i) { --i->r; if (i->r == 0) { i->f(i->o); delete i; } } i = 0; d = 0; } };
+struct B { virtual void v() {} ~B() {} }; struct ST : B { P p; ~ST() {} Th* G() const { return p.d ? p.d->G() : 0; } };
+struct I { unsigned long S(ST s) { if (!s.G()) return 0; Th* t = s.G(); return t->t; } };
+int main()
+{
+    Th th; th.t = 7; E2 e; e.t = &th; Blk* b = new Blk; b->r = 1; b->f = Destroy; b->o = 0; ST s; s.p.d = &e; s.p.i = b; I i; unsigned long r = i.S(s); s.p.i = 0; s.p.d = 0; if (r != 7 || g_d != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_104",):   # list<T>::clear() where T has a virtual destructor: cursor advanced, value destroyed through vtable slot 0 (flag 0), node freed, head re-linked
+        if len(calls)!=1 or retn!=0: continue
+        freer=calls[0]; voff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "edi +" in i.op_str][0]
+        if not any(i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM for i in ins): continue
+        nm=f"CRetailList_{a}"; vcls=f"CNodeValue_{a}"
+        add(a,"_unattributed",f"clear_{nm}",HDRF(a,f"{nm}::clear() -- destroy every node's polymorphic value at +{voff:#x} through its virtual destructor (slot 0, flag 0), free the node, re-link the head to itself",len(b))+f'''//
+// Retail bytes:  push ebx ; mov ebx,ecx ; mov eax,[ebx] ; push esi ; mov esi,[eax] ; cmp esi,eax ; je E ; push edi ; L: mov edi,esi ; mov eax,[edi+{voff:#x}] ; mov esi,[esi] ; lea ecx,[edi+{voff:#x}] ; push 0 ; call [eax] ; push edi ; call free ; mov eax,[ebx] ; add esp,4 ; cmp esi,eax ; jne L ; pop edi ; E: mov eax,[ebx] ; mov [eax],eax ; mov ebx,[ebx] ; mov [ebx+4],ebx ; pop ebx ; ret
+// STLport-style list::clear for values with a virtual destructor: walks from head->next to the
+// head (re-read from `this` each iteration), advancing the cursor before the old node's value
+// is destroyed through vtable slot 0 (the scalar deleting destructor called with flag 0: an
+// explicit destructor call) and the node freed (free @ 0x{freer:08X}, no null test), then links
+// the head to itself. The manifest label (`CGuiControlTreePane::SortTreeRecursively`) is
+// propagated across {len(members)} identical bodies; the list is named descriptively.
+extern "C" void __cdecl free(void* block);
+
+struct {vcls} {{
+    virtual ~{vcls}();                     // slot 0: scalar deleting destructor
+}};
+
+struct {nm} {{
+    struct SNode {{
+        SNode* m_next;                     // +0
+        SNode* m_prev;                     // +4
+        {vcls} m_value;                    // +{voff:#x}
+    }};
+    SNode* m_head;                         // +0 sentinel
+    void clear_{nm}();
+}};
+
+void {nm}::clear_{nm}()
+{{
+    SNode* cur = m_head->m_next;
+    while (cur != m_head) {{
+        SNode* tmp = cur;
+        cur = cur->m_next;
+        tmp->m_value.~{vcls}();
+        free(tmp);
+    }}
+    m_head->m_next = m_head;
+    m_head->m_prev = m_head;
+}}
+''',T(a,'''#include <cstdlib>
+#include <new>
+static int g_d = 0; struct V { virtual ~V() { ++g_d; } };
+struct L { struct N { N* n; N* p; V v; }; N* h; void C() { N* c = h->n; while (c != h) { N* t = c; c = c->n; t->v.~V(); std::free(t); } h->n = h; h->p = h; } };
+int main()
+{
+    L l; L::N hd; l.h = &hd; L::N* a = (L::N*)std::malloc(sizeof(L::N)); new (&a->v) V; hd.n = a; a->n = &hd; a->p = &hd; hd.p = a; l.C(); if (g_d != 1 || hd.n != &hd || hd.p != &hd) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_114",):   # void CX::OnPersist(CPersistContext* context, long) { context->TransferA("NAME1", m_a, defaultA); context->TransferB("NAME2", m_b, defaultB); }  (member addresses: lea, then add-in-place; zero defaults homed in one frame slot)
+        if len(calls)!=2 or retn!=8: continue
+        ta,tb=calls; lits=[p for p in pushes if 0x1200000<=p<0x1300000]
+        if len(lits)!=2: continue
+        na,nb=lit(lits[0]),lit(lits[1])
+        aoff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str]
+        boff=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.op_str.startswith("esi,")]
+        if len(aoff)!=1 or len(boff)!=1: continue
+        aoff,boff=aoff[0],boff[0]
+        zs=[i for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and i.operands[1].imm==0 and "esp" in i.op_str]
+        if len(zs)!=2: continue
+        tya="long" if zs[0].operands[0].size==4 else "signed char"; tyb="long" if zs[1].operands[0].size==4 else "signed char"
+        hn={ta:f"Transfer_{ta:08x}",tb:f"Transfer_{tb:08x}"}
+        cls=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else f"CPersistable_{a}"; fn=mname.split("::")[-1] if re.match(r"^[A-Za-z_]\w*$",mname.split("::")[-1]) else f"OnPersist_{a}"
+        add(a,mmod if cls!=f"CPersistable_{a}" else "_unattributed",fn,HDRF(a,f"{cls}::{fn}(CPersistContext*, long) -- persists {na} (+{aoff:#x}, {tya}) and {nb} (+{boff:#x}, {tyb}) through two typed context transfers with zero defaults",len(b))+f'''//
+// Retail bytes:  push ecx ; push esi ; push edi ; mov edi,[context] ; mov esi,ecx ; lea eax,[esp+{"8" if tya=="long" else "0Bh"}] ; push eax ; lea ecx,[esi+{aoff:#x}] ; push ecx ; push offset "{na}" ; mov ecx,edi ; mov {"dword" if tya=="long" else "byte"} ptr [default],0 ; call {hn[ta]} ; lea edx,[default2] ; push edx ; add esi,{boff:#x} ; push esi ; push offset "{nb}" ; mov ecx,edi ; mov {"dword" if tyb=="long" else "byte"} ptr [default2],0 ; call {hn[tb]} ; pop edi ; pop esi ; pop ecx ; ret 8
+// Persist hook: two members are handed by reference to typed CPersistContext transfer helpers
+// (@ 0x{ta:08X} and 0x{tb:08X}, labels propagated) together with their names and a zero default
+// built in a frame temporary (both defaults share the one frame slot: their lifetimes do not
+// overlap). The second member's address is formed in place (`add esi,{boff:#x} ; push esi`,
+// GOTCHAS). The second argument is unused by this body. Member types follow the default's
+// store width. One of {len(members)} bodies of this shape.
+struct CPersistContext {{
+    void {hn[ta]}(const char* name, {tya}& value, const {tya}& defaultValue);   // 0x{ta:08X}
+{"" if ta==tb else "    void %s(const char* name, %s& value, const %s& defaultValue);   // 0x%08X" % (hn[tb],tyb,tyb,tb) + chr(10)}}};
+
+struct {cls} {{
+    unsigned char _pad[{aoff:#x}];
+    {tya} m_{aoff:02x};{" "*(28-len(tya))}// +{aoff:#x} "{na}"
+{"    unsigned char _pad2[%#x];" % (boff-aoff-(4 if tya=="long" else 1)) + chr(10) if boff-aoff>(4 if tya=="long" else 1) else ""}    {tyb} m_{boff:02x};{" "*(28-len(tyb))}// +{boff:#x} "{nb}"
+    void {fn}(CPersistContext* context, long unused);
+}};
+
+void {cls}::{fn}(CPersistContext* context, long unused)
+{{
+    context->{hn[ta]}("{na}", m_{aoff:02x}, 0);
+    context->{hn[tb]}("{nb}", m_{boff:02x}, 0);
+}}
+''',T(a,'''static int g_t = 0; struct Ctx { void A(const char* n, long& v, const long& d) { v = n[0] + d; ++g_t; } void B(const char* n, signed char& v, const signed char& d) { v = (signed char)(n[0] + d); ++g_t; } };
+struct P { unsigned char pad[0x20]; long a; signed char b; void F(Ctx* c, long) { c->A("A", a, 0); c->B("B", b, 0); } };
+int main()
+{
+    Ctx c; P p; p.a = 0; p.b = 0; p.F(&c, 0); if (g_t != 2 || p.a != 'A' || p.b != 'B') '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_88",):   # void CX::GetEntry(long* result) { ETCInterfaceType type = K; if (m_p) { it = m_p->map.Find(type); if (it != m_p->map.last) { *result = it->second; return; } } *result = g_map.Find(type)->second; }
+        if len(calls)!=2 or calls[0]!=calls[1] or retn!=4: continue
+        lower=calls[0]; key=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "esp" in i.op_str and i.operands[1].type==X86_OP_IMM][0]
+        poff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "ecx +" in i.op_str][0]
+        moff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "edi +" in i.op_str][0]
+        gl=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[1].type==X86_OP_IMM and i.operands[1].imm>0x1300000]
+        if len(gl)!=1: continue
+        gl=gl[0]; nm=f"CMapOwner_{a}"
+        add(a,"_unattributed",f"GetEntry_{nm}",HDRF(a,f"{nm}::GetEntry(long*) -- entry {key:#x} from the CVectorMap of the object at +{poff:#x} (map at +{moff:#x}, inlined find over LowerBound @ 0x{lower:08X}), else from the global map @ 0x{gl:08X}",len(b))+f'''//
+// Retail bytes:  push ecx ; push edi ; mov edi,[ecx+{poff:#x}] ; test edi,edi ; mov dword ptr [esp+4],{key:#x} ; je G ; push esi ; lea eax,[esp+8] ; lea esi,[edi+{moff:#x}] ; push eax ; mov ecx,esi ; call CVectorMap::LowerBound ; mov esi,[esi+4] ; cmp eax,esi ; je L ; cmp dword ptr [eax],{key:#x} ; jle F ; L: mov eax,esi ; F: cmp eax,[edi+{moff+4:#x}] ; pop esi ; jne R ; G: lea ecx,[esp+4] ; push ecx ; mov ecx,offset g_map ; call CVectorMap::LowerBound ; mov ecx,[g_map+4] ; cmp eax,ecx ; je E ; cmp dword ptr [eax],{key:#x} ; jg E ; mov edx,[eax+4] ; mov eax,[result] ; mov [eax],edx ; pop edi ; pop ecx ; ret 4 ; E: mov ecx,[ecx+4] ; mov edx,[result] ; mov [edx],ecx ; pop edi ; pop ecx ; ret 4 ; R: mov eax,[eax+4] ; mov ecx,[result] ; mov [ecx],eax ; pop edi ; pop ecx ; ret 4
+// Two-level CVectorMap lookup written through an out-parameter: the key ({key:#x}) is one frame
+// local passed by address to both LowerBound calls (@ 0x{lower:08X}) while the inlined compares
+// keep the constant; the object's own map (object at +{poff:#x}, map at +{moff:#x}) is tried first
+// and its hit returned when the find did not fall back to `last`, else the global map
+// @ 0x{gl:08X} supplies the entry (reading `last->second` when absent, the tails duplicated).
+// The manifest label is propagated; names are descriptive. One of {len(members)} bodies of this shape.
+enum ETCInterfaceType {{ TC_FIRST = 0 }};
+
+struct SPair {{
+    long first;                            // ETCInterfaceType
+    long second;
+}};
+
+struct CVectorMap {{
+    SPair* first;                          // +0
+    SPair* last;                           // +4
+    SPair* end;                            // +8
+    SPair* LowerBound(const long& key);    // 0x{lower:08X}
+    SPair* Find(const long& key)
+    {{
+        SPair* it = LowerBound(key);
+        if (it == last || key < it->first)
+            it = last;
+        return it;
+    }}
+}};
+
+struct SMapHolder_{a} {{
+    unsigned char _pad[{moff:#x}];
+    CVectorMap m_{moff:02x};                    // +{moff:#x}
+}};
+
+extern CVectorMap g_map_{gl:08x};            // 0x{gl:08X}
+
+struct {nm} {{
+    unsigned char _pad[{poff:#x}];
+    SMapHolder_{a}* m_{poff:02x};               // +{poff:#x}
+    void GetEntry_{nm}(long* result);
+}};
+
+void {nm}::GetEntry_{nm}(long* result)
+{{
+    const long type = {key:#x};            // const local: homed once for the two reference bindings, folded in the compares
+    SMapHolder_{a}* holder = m_{poff:02x};
+    if (holder) {{
+        SPair* it = holder->m_{moff:02x}.Find(type);
+        if (it != holder->m_{moff:02x}.last) {{
+            *result = it->second;
+            return;
+        }}
+    }}
+    *result = g_map_{gl:08x}.Find(type)->second;
+}}
+''',T(a,'''struct P { long f; long s; };
+struct M { P* f; P* l; P* e; P* LB(const long& k) { P* i = f; while (i != l && i->f < k) ++i; return i; } P* Find(const long& k) { P* i = LB(k); if (i == l || k < i->f) i = l; return i; } };
+struct H { unsigned char pad[8]; M m; }; static M g; 
+struct X { unsigned char pad[4]; H* h; void G(long* r) { const long t = 1; H* p = h; if (p) { P* i = p->m.Find(t); if (i != p->m.l) { *r = i->s; return; } } *r = g.Find(t)->s; } };
+int main()
+{
+    P ga[2]; ga[0].f = 1; ga[0].s = 7; g.f = ga; g.l = ga + 1; g.e = ga + 2; H h; P ha[1]; h.m.f = ha; h.m.l = ha; h.m.e = ha + 1; X x; x.h = &h; long r = 0; x.G(&r); if (r != 7) '''+FAIL(a)+'''
+    x.h = 0; x.G(&r); if (r != 7) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_46",):   # _Uninit_fill_n for CCountedPointer elements: the counted-pointer copy constructor (two dwords, count incremented when present) inlined under the placement-new null test
+        if calls or retn!=8: continue
+        step=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[1].type==X86_OP_IMM and i.operands[0].type==X86_OP_REG]
+        if step!=[8] or not any(i.mnemonic=="inc" for i in ins): continue
+        add(a,"_global",f"UninitFillN_CCountedPointer_{a}",HDRF(a,f"_Uninit_fill_n<CCountedPointer*> -- placement-copy `count` counted pointers (object + count block, count incremented when present), return the advanced pointer",len(b))+f'''//
+// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe E ; push esi ; mov esi,edx ; mov edx,[value] ; L: test eax,eax ; je S ; mov ecx,[edx] ; mov [eax],ecx ; mov ecx,[edx+4] ; test ecx,ecx ; mov [eax+4],ecx ; je S ; inc dword ptr [ecx] ; S: add eax,8 ; dec esi ; jne L ; pop esi ; E: ret 8
+// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
+// value reference and the by-value allocator on the stack) for 8-byte counted-pointer
+// elements: the copy constructor is inlined under the placement-new null test (object and
+// count-block pointers copied, the block's count incremented when present); the advanced
+// destination is returned. The manifest label names a {{__int64, CCountedPointer}} pair
+// instantiation and is propagated; the bytes copy one 8-byte counted pointer. One of {len(members)} bodies.
+#include <new>
+
+struct SCountBlock {{
+    long m_references;                     // +0
+}};
+
+struct CCountedPointer {{
+    void* m_pObject;                       // +0
+    SCountBlock* m_pCount;                 // +4
+    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
+    {{
+        if (m_pCount)
+            ++m_pCount->m_references;
+    }}
+}};
+
+struct CRetailAllocator {{ }};
+
+CCountedPointer* __fastcall UninitFillN_CCountedPointer_{a}(CCountedPointer* first, unsigned long count, const CCountedPointer& value, CRetailAllocator allocator)
+{{
+    for (; 0 < count; --count, ++first)
+        new (first) CCountedPointer(value);
+    return first;
+}}
+''',T(a,'''#include <new>
+struct B { long r; }; struct P { void* o; B* c; P(const P& x) : o(x.o), c(x.c) { if (c) ++c->r; } }; struct A {};
+static P* __fastcall UF(P* f, unsigned long n, const P& v, A) { for (; 0 < n; --n, ++f) new (f) P(v); return f; }
+int main()
+{
+    B b; b.r = 1; unsigned char vb[8]; P* v = (P*)vb; v->o = 0; v->c = &b; unsigned char buf[24]; P* e = UF((P*)buf, 3, *v, A()); if (e != (P*)(buf + 24) || b.r != 4 || ((P*)buf)[2].c != &b) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_85",):   # `??_G` of a non-polymorphic class with one member whose destructor is out of line (no base destructor): member destroyed, flag-tested delete
+        leas=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea"]
+        if len(calls)!=2 or len(leas)!=1 or retn!=4: continue
+        dtor,deleter=calls; off=leas[0]
+        dm,dn,_=label(dtor); dl=dn.split("::")[-1]
+        if dtor==0x99eae0: mcls="CCharString"; minc='#include "fable_string.h"\n'; mdecl=""
+        elif dl.startswith("~") and (dm,dn) in uniq and re.match(r"^C[A-Za-z0-9_]+$",dm.split("::")[-1]): mcls=dm.split("::")[-1]; minc=""; mdecl=f"struct {mcls} {{\n    void* m_data;\n    ~{mcls}();                             // 0x{dtor:08X}\n}};\n\n"
+        else: mcls=f"CMember_{dtor:08x}"; minc=""; mdecl=f"struct {mcls} {{\n    void* m_data;\n    ~{mcls}();                             // 0x{dtor:08X}\n}};\n\n"
+        cls=f"COwner_{a}"
+        add(a,"_unattributed",f"ScalarDeletingDestructor_{cls}",HDRF(a,f"{cls}::`scalar deleting destructor'(unsigned int) -- non-virtual: the {mcls} member at +{off:#x} destroyed out of line, flag-tested delete",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; lea ecx,[esi+{off:#x}] ; call {mcls}::~{mcls} ; test byte ptr [esp+8],1 ; je K ; push esi ; call operator delete ; add esp,4 ; K: mov eax,esi ; pop esi ; ret 4
+// `??_G` of a NON-polymorphic class (no vtable store anywhere): VC7.1 emits a scalar deleting
+// destructor for any class with a non-trivial destructor that a translation unit deletes. The
+// implicit destructor is inlined: the {mcls} member at +{off:#x} is destroyed through its
+// out-of-line destructor @ 0x{dtor:08X}, then bit 0 of the flag argument selects the flag-tested
+// operator delete @ 0x{deleter:08X}. The manifest label (`vector deleting destructor` of
+// CLandscapeBackgroundPatch) is propagated across the family; the owner is named descriptively.
+// One of {len(members)} bodies of this shape.
+{minc}{mdecl}struct {cls} {{
+    unsigned char _pad[{off:#x}];
+    {mcls} m_{off:02x};{" "*(28-len(mcls))}// +{off:#x}
+}};
+
+// The delete-expression that makes the compiler emit {cls}::`scalar deleting destructor'.
+void Destroy_{cls}({cls}* object)
+{{
+    delete object;
+}}
+''',T(a,'''static int g_d = 0; struct S { void* p; ~S() { ++g_d; } };
+struct X { long a, b; S s; };
+static void Kill(X* x) { delete x; }
+int main()
+{
+    Kill(new X); if (g_d != 1) '''+FAIL(a)+'''
 '''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
