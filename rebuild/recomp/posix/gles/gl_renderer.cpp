@@ -1762,6 +1762,7 @@ void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVert
             static_cast<void*>(textures[0].p), textures[0] ? textures[0]->format : 0, textures[0] ? textures[0]->width : 0, textures[0] ? textures[0]->height : 0, textures[0] ? textures[0]->gl : 0,
             tss[0][D3DTSS_COLOROP], tss[0][D3DTSS_COLORARG1], tss[0][D3DTSS_COLORARG2], tss[0][D3DTSS_ALPHAOP], tss[0][D3DTSS_ALPHAARG1], tss[0][D3DTSS_ALPHAARG2]);
         if (vs && key_trace_once(vs->id)) log("gles trace: vs %u glsl:\n%s", vs->id, vs->sh.info.glsl.c_str());
+        if (ps && key_trace_once(0x10000u + ps->id)) log("gles trace: ps %u glsl:\n%s", ps->id, ps->sh.info.glsl.c_str());
         if (up && upData && d) {
             for (UINT v = 0; v < std::min<UINT>(upVertices, 4); ++v) {
                 const float* f = reinterpret_cast<const float*>(static_cast<const char*>(upData) + static_cast<size_t>(v) * upStride);
