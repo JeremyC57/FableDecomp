@@ -535,6 +535,20 @@ uint32_t mergedBindings(uint32_t vec) {
     for (size_t i = 0; i + kRecordSize <= all.size(); i += kRecordSize)
         if (rd32le(&all[i + 4]) == 1) hasPad = true;
     if (!hasPad) {
+        // Slot actions are positional: SetControlScheme (0x446EF0) pushes one slot object per
+        // record of ASSIGNABLE_SPECIAL_MOVE (54), QUICK_ACCESS_ITEM (55) and CONTEXT_SENSITIVE_ITEM
+        // (56) in record order, whatever the record's controller type, and the hero's spell and
+        // item slots are indexed by that position. The profile's keyboard records would take the
+        // first indices and push the pad's (X/B/A spells, the d-pad items) past the slots, so
+        // the pad's records replace them.
+        size_t dropped = 0;
+        for (size_t i = 0; i + kRecordSize <= all.size();) {
+            const uint32_t action = rd32le(&all[i]);
+            if (action == 54 || action == 55 || action == 56) { all.erase(all.begin() + i, all.begin() + i + kRecordSize); ++dropped; }
+            else i += kRecordSize;
+        }
+        static bool logged;
+        if (!logged) logged = true, log("controller: %zu keyboard slot bindings (actions 54/55/56) replaced by the pad's", dropped);
         // The Xbox scheme opens the Xbox pause menu with Start (actions 3 and 5). With the PC
         // menus, Start opens the PC in-game menu instead (action 72, Escape on the keyboard).
         const bool xbox = xboxMenusEnabled();
@@ -703,6 +717,6 @@ extern "C" void host_joystick_update(Ctx* c) {
 // activation process is also chosen from it. With HOLD_TARGET it reads as clear.
 extern "C" void F_00445B80_orig(Ctx* c);
 extern "C" void host_ztarget_toggle(Ctx* c) {
-    if (host::pad::holdTargetEnabled()) { retStd(c, 0, 0); return; }
+    if (host::pad::holdTargetEnabled()) { host::retStd(c, 0, 0); return; }
     F_00445B80_orig(c);
 }

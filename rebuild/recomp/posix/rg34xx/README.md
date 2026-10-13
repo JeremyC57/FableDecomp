@@ -81,6 +81,9 @@ Fable/            its files, in the folder of the same name next to it
   (`FABLE_PAD_MAPPINGS`); its raw button and axis numbers come from `FableRecomp --pad-probe`,
   which `Fable-diag.sh` runs (press the buttons in the order it names). Back + Start held
   for two seconds exits (`FABLE_PAD_QUIT=1`).
+  Left trigger locks a target while held (`HOLD_TARGET`); right trigger held with X, B or A
+  casts the assigned spells and Y cycles them; the d-pad is the Xbox quick-access and context
+  item slots (the pad's slot bindings replace the keyboard's 1..9, which the device cannot press).
 - **Host menu** (`FABLE_OVERLAY=1`, `posix/overlay/`): the pad's menu/function key (SDL's
   guide button; Back + Start held 1.5 s also works) opens a menu over the game: resume,
   graphics settings, volume, FPS counter, renderer statistics, log level, vsync, screenshot

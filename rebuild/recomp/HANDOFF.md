@@ -191,6 +191,11 @@ cmake --build build/win     # about 5 min; the generated C is ~250 MB
 FableRecomp.exe --game "D:\SteamLibrary\steamapps\common\Fable The Lost Chapters"
 ```
 
+v20 (RG34XX): hold-to-target through `host_ztarget_toggle`; Will mode and d-pad items fixed by
+replacing the profile's keyboard slot records (actions 54/55/56) with the Xbox scheme's in
+`mergedBindings` (slot lists are positional, see the 2026-10-12 journal). Open: Guild river water,
+Guild guards in childhood, quest screens (PC layout), Android launch crash (deferred).
+
 The log goes to `<game>\FableRecomp.log`.
 
 Environment variables:

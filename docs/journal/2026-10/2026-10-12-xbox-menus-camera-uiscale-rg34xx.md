@@ -429,3 +429,19 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   Will mode (right trigger held plus a face button) does not cast. The Xbox scheme's
   binding records are now logged once at load to see how the scheme binds the spell
   actions. The dialogue-scene crash did not recur in this run.
+- **Will mode root cause (2026-10-13, from the scheme dump)**: `FABLE_XBOX_CONTROL_SCHEME`
+  binds ACTIVATE_SPELL_MODE (86) to the right trigger and ASSIGNABLE_SPECIAL_MOVE (54) to
+  X, B and A; QUICK_ACCESS_ITEM (55) and CONTEXT_SENSITIVE_ITEM (56) to all four d-pad
+  directions; CYCLE_THROUGH_SPELLS (57) to Y; CHARGE_GUILD_SEAL (78) has no pad binding
+  (the seal is a context item). `CGamePlayerInterface::SetControlScheme` (0x446EF0) walks
+  the bindings once and pushes one slot object per record of 54, 55 and 56 onto the lists
+  at +0x7B8/+0x7C4/+0x7D0, in record order and whatever the record's controller type;
+  `GetAssignableSpecialMoveIndexForButton` (0x445EE0 and friends) returns the position of
+  the first slot object whose button matches. The merged vector put the profile's keyboard
+  records first, so the pad's X/B/A landed at spell-slot indices 3+ and the d-pad items
+  past the hero's item slots: nothing cast, nothing used. `mergedBindings` now drops the
+  profile's 54/55/56 records when it appends the pad's (logged once: "N keyboard slot
+  bindings ... replaced by the pad's"). With a pad in native mode the keyboard's 1..9 quick
+  slots are gone, which the RG34XX cannot press anyway.
+- The hold-to-target build (`host_ztarget_toggle`) first failed to compile (`retStd` without
+  its namespace); fixed, x86 and aarch64 rebuilt.
