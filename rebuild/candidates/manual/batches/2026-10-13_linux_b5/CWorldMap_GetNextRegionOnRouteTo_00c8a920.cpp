@@ -1,7 +1,7 @@
 // CWorldMap::GetNextRegionOnRouteTo() -- no stack arguments in retail
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8A920, oracle length 18 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov ecx,[ecx+48h] ; test ecx,ecx ; jne F ; mov eax,-131 ; ret ; F: jmp Router::Route
 // engine/CWorldMap.h: the route object lives at +0x48. Without one the sentinel -131 (0xFFFFFF7D,

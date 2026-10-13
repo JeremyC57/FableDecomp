@@ -132010,6 +132010,41 @@ $catalog = @(
         TestSource = '00/6a/unattributed_ForwardToMember0008645e0_006a7610_test.cpp'
         PassPattern = '006a7610_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0066106d'
+        Module = '_global'
+        Source = '00/66/global_InvokeOnSelf006603a0_0066106d.cpp'
+        TestSource = '00/66/global_InvokeOnSelf006603a0_0066106d_test.cpp'
+        PassPattern = '0066106d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066107f'
+        Module = '_global'
+        Source = '00/66/global_InvokeOnSelf006603dd_0066107f.cpp'
+        TestSource = '00/66/global_InvokeOnSelf006603dd_0066107f_test.cpp'
+        PassPattern = '0066107f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00661091'
+        Module = '_global'
+        Source = '00/66/global_InvokeOnSelf0066041a_00661091.cpp'
+        TestSource = '00/66/global_InvokeOnSelf0066041a_00661091_test.cpp'
+        PassPattern = '00661091_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006610a3'
+        Module = '_global'
+        Source = '00/66/global_InvokeOnSelf00660457_006610a3.cpp'
+        TestSource = '00/66/global_InvokeOnSelf00660457_006610a3_test.cpp'
+        PassPattern = '006610a3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006610b5'
+        Module = '_global'
+        Source = '00/66/global_InvokeOnSelf00660494_006610b5.cpp'
+        TestSource = '00/66/global_InvokeOnSelf00660494_006610b5_test.cpp'
+        PassPattern = '006610b5_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

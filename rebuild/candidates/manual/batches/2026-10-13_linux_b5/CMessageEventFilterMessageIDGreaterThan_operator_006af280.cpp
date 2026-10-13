@@ -1,7 +1,7 @@
 // CMessageEventFilter_MessageIDGreaterThan::operator()(CMessageEvent*)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AF280, oracle length 16 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov eax,[esp+4] ; mov edx,[eax+40h] ; cmp [ecx],edx ; sbb eax,eax ; neg eax ; ret 4
 // PDB: the filter holds the threshold id at +0x00; CMessageEvent carries its id at +0x40. True when

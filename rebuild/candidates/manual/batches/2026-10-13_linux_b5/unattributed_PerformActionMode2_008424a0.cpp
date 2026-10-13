@@ -1,6 +1,7 @@
 // <unattributed>::PerformAction (mode 2) -- Lookup_00692930(2, 0)->Method_006345c0()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008424A0, oracle length 17 bytes.
-// Grade: candidate -- still DIFFER under the Linux lane (Wine + DDK 13.10.4035 cl.exe), see batch README.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 // The manifest label for this body is propagated across byte-identical bodies and is NOT trusted;
 // the class is modelled from the bytes only and the name below describes what the code does.
 //

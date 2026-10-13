@@ -1,7 +1,7 @@
 // CTCUserActionPointBase::IsActionPointFree() -- the user list at +0x108 is non-empty
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00661F20, oracle length 18 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov eax,[ecx+108h] ; mov edx,[eax] ; xor ecx,ecx ; cmp edx,eax ; setne cl ; mov al,cl ; ret
 // True when the std::list at +0x108 has at least one node (sentinel->next != sentinel). The

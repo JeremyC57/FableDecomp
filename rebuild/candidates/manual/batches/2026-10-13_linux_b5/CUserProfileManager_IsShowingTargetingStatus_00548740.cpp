@@ -1,7 +1,7 @@
 // CUserProfileManager::IsShowingTargetingStatus()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00548740, oracle length 18 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov al,[ecx+0Ch] ; test al,al ; je C ; mov al,[ecx+134h] ; ret ; C: mov al,[ecx+6Ch] ; ret
 // Same template as the landed profile getters (0x0054A530 etc.): UseNewProfileValues (+0x0C) picks

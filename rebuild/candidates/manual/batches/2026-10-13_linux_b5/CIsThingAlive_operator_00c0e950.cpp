@@ -1,7 +1,7 @@
 // CIsThingAlive::operator()(T) -- Checker(+0x74).vslot17(&argument)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0E950, oracle length 17 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov eax,[ecx+74h] ; add ecx,74h ; lea edx,[esp+4] ; push edx ; call [eax+44h] ; ret 4
 // The predicate forwards its by-value argument (taken by reference by the callee: `lea edx,[esp+4]`)

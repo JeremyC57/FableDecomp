@@ -1,7 +1,7 @@
 // CTCBerserk::IncreaseBerserkDamageToEnemyMultiplier()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078BEC0, oracle length 16 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov eax,[ecx+68h] ; fld dword ptr [eax+94h] ; fadd dword ptr [ecx+28h] ; fstp dword ptr [ecx+28h] ; ret
 // engine/CTCBerserk.h (PDB): +0x28 float BerserkDamageToEnemy, +0x6C PDef (retail +0x68: the

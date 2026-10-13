@@ -1,7 +1,7 @@
 // CDisplayManager::CopyBackBufferToTexture()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BF5E0, oracle length 18 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  push esi ; lea eax,[ecx+2Ch] ; lea esi,[ecx+4Ch] ; push eax ; push esi ; call CDisplayManager::BlitRenderTargetSurfaceToTexture ; mov eax,esi ; pop esi ; ret
 // Blits the back-buffer surface (+0x2C) into the capture texture (+0x4C) and returns that texture.

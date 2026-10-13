@@ -1,7 +1,7 @@
 // CAIStateGroup_BirdGroundWander::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FD892, oracle length 13 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  push ebp ; mov ebp,esp ; and dword ptr [ecx+14h],0 ; pop ebp ; jmp CAIStateGroupBase::Initialise
 // Resets the group's frame counter at +0x14 and tail-calls the base Initialise @ 0x008FCEC0

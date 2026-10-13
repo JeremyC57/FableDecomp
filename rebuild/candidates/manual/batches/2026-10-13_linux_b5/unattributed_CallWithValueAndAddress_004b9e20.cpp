@@ -1,6 +1,7 @@
 // <unattributed>::CallWithValueAndAddress(long) -- Helper_004b8e40(value, &value)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B9E20, oracle length 18 bytes.
-// Grade: candidate -- still DIFFER under the Linux lane (Wine + DDK 13.10.4035 cl.exe), see batch README.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 // The manifest label for this body is propagated across byte-identical bodies and is NOT trusted;
 // the class is modelled from the bytes only and the name below describes what the code does.
 //

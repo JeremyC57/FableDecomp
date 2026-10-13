@@ -1,4 +1,4 @@
-# Batch `2026-10-13_linux_b5` — 71 commented matching candidates (53 landed)
+# Batch `2026-10-13_linux_b5` — 71 commented matching candidates (58 landed)
 
 Authored 2026-10-13 in the Linux container **with the compiler in the loop**: every candidate was
 graded through the Wine lane (DDK 13.10.4035 `cl.exe`, `/O2 /Oy /W3` + the lander's pragma/flag
@@ -10,19 +10,21 @@ eax-input fragment at 00c9cb40 are not functions at their recorded bounds).
 
 ## Lane grading result
 
-**53 of 71 rows are byte-exact (MATCH / RELOCATION_MATCH) with behaviour PASS** and live in
-`rebuild/src/compiled/`, `rebuild/tests/` and the catalog. The 18 still-DIFFER rows (ledgered in
+**58 of 71 rows are byte-exact (MATCH / RELOCATION_MATCH) with behaviour PASS** and live in
+`rebuild/src/compiled/`, `rebuild/tests/` and the catalog. The 13 still-DIFFER rows (ledgered in
 `tools/decomp_pipeline/crawl/gen_tried.txt`) are instruction-order misses, each carrying the best
 shape found and the remaining difference in its header comment:
 
-- `0066106d..b5` (5): an unoptimised `__stdcall` thunk whose `push dword ptr [ebp+8]` the lane's
-  flag set cannot reproduce (needs frame pointers kept with /O1-style codegen: `/Oy-`, outside the sweep).
 - `00658e90`, `006590c4..f4`, `0076e5d0` (6): pass-through `push dword ptr [esp+8]` + `lea` of a
   member; every shape tried loads the argument into a register first.
 - `008424a0`, `008424d0`, `00687d40` (3): retail `call ; ret` where our build emits the sibling-call
   `jmp` (the named-local trick only blocks it for a float result).
 - `00c8db20`: direct `call ??_G(0)` of a polymorphic destructor from an allocator destroy helper.
 - `004b9e20`, `00c42b80`, `00787bf1`: load ordering around a call / vtable fetch.
+
+The five `__stdcall` thunks `0066106d..b5` landed on the second pass once their translation unit's
+settings were reproduced in-source: `#pragma optimize("gsy",off)` + `#pragma optimize("s",on)`
+(size, no global optimisation, frame pointers kept) on a free `__stdcall` function.
 
 ## Naming
 

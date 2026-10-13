@@ -1,6 +1,7 @@
 // CAIStateGroup_MinionBehaviourCrowdBase::Cleanup()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00787BF1, oracle length 13 bytes.
-// Grade: candidate -- still DIFFER under the Linux lane (Wine + DDK 13.10.4035 cl.exe), see batch README.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov byte ptr [ecx+45h],0 ; mov byte ptr [ecx+44h],1 ; mov eax,[ecx] ; jmp [eax+7Ch]
 // Clears the "in crowd" flag (+0x45), marks the group finished (+0x44) and tail-calls the base

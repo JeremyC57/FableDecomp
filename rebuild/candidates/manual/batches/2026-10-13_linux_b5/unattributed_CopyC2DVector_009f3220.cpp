@@ -1,7 +1,7 @@
 // __fastcall C2DVector-return helper: copies the 8-byte vector it is given
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F3220, oracle length 15 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 // The manifest label for this body is propagated across byte-identical bodies and is NOT trusted;
 // the class is modelled from the bytes only and the name below describes what the code does.
 //

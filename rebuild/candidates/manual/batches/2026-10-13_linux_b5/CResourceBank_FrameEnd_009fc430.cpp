@@ -1,7 +1,7 @@
 // CResourceBank::FrameEnd()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FC430, oracle length 15 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  inc [ecx+30h] ; xor eax,eax ; mov [ecx+3Ch],eax ; inc [ecx+6Ch] ; mov [ecx+78h],eax ; ret
 // PDB CResourceBank: +0x04 CResourceList ResourceList, +0x40 CResourceList LoadingQueue (0x3C bytes

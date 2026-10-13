@@ -1,7 +1,7 @@
 // CWorld::GetChecksum()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049E200, oracle length 17 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov ecx,[ecx+50h] ; call CThingManager::GetNonLocalThingChecksum ; mov ecx,[013B89BCh] ; add eax,ecx ; ret
 // engine/CWorld.h (PDB): +0x50 scoped_ptr<CThingManager> PThingManager. The world checksum is the

@@ -1,7 +1,7 @@
 // CThingComponentDefNameTag constructor for "CTCDParticleEmitter"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3DFC, oracle length 19 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  push esi ; push -1 ; push offset "CTCDParticleEmitter" ; mov esi,ecx ; call CCharString::CCharString(char*,long) ; mov eax,esi ; pop esi ; ret
 // One of the 748 bodies the manifest labels `CActionDoCreatureAction::GetActionName` (propagated,

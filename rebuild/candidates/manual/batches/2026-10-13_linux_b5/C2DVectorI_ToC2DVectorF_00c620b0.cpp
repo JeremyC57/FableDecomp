@@ -1,7 +1,7 @@
 // C2DVectorI::ToC2DVectorF() -- integer point to float point by value
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C620B0, oracle length 17 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  fild dword ptr [ecx+4] ; mov eax,[esp+4] ; fild dword ptr [ecx] ; fstp dword ptr [eax] ; fstp dword ptr [eax+4] ; ret 4
 // Two longs converted to two floats into the hidden 8-byte result (the manifest says C2DBoxI ->

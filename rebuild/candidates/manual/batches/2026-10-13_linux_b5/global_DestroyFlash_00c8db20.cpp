@@ -1,6 +1,7 @@
 // std::_Destroy<NCreatureHitNotification::CFlash> (allocator destroy helper)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C8DB20, oracle length 12 bytes.
-// Grade: candidate -- still DIFFER under the Linux lane (Wine + DDK 13.10.4035 cl.exe), see batch README.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov eax,ecx ; push 0 ; mov ecx,edx ; call CFlash::`scalar deleting destructor' ; ret
 // __fastcall(allocator&, CFlash*): the allocator (ecx) is unused, the element (edx) has its

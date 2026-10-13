@@ -1,7 +1,7 @@
 // <unattributed>::HasNonEmptyName() -- Name (+0x6C, CWideString) != L""
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048DB98, oracle length 14 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 // The manifest label for this body is propagated across byte-identical bodies and is NOT trusted;
 // the class is modelled from the bytes only and the name below describes what the code does.
 //

@@ -1,7 +1,7 @@
 // C3DMesh2::CanRelocateData(long)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8CA00, oracle length 16 bytes.
-// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
-//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+// Grade: candidate -- authored and graded in the Linux lane (Wine + DDK 13.10.4035 cl.exe); the
+//        batch README records the lane verdict.
 //
 // Retail bytes:  mov dl,[ecx+0E5h] ; xor eax,eax ; test dl,dl ; sete al ; ret 4
 // The mesh's data may be relocated unless the lock flag at +0xE5 is set; the long argument is
