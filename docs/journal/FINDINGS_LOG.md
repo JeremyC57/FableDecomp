@@ -310,3 +310,11 @@ report and explicitly speculative restoration design:
 ## 2026-08-28 — Hit-local weapon augmentation inspection
 
 Re-homed to docs/engine/STATUE_WEAPON_AUGMENTATION_RE.md#verified-facts-from-findings-log on 2026-09-07.
+
+## 2026-10-13 — Family landing: open codegen questions
+
+Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, off; /GS; /Oa; /G3..7; /GR-):
+
+- **F15 (76 bodies, no-RTTI module 0x00CDD000..)** `push esi ; mov esi,ecx ; call Base::Base ; mov eax,[esp+0Ch] ; mov ecx,[esp+8] ; mov [esi+40h],eax ; mov [esi+44h],ecx ; mov [esi],vtable ; ... ret 8`. Init list, body assignment, inlined `Set()`, embedded pair member, inlined intermediate base, `long` members, table-pointer member and inline-defined ctor all place the vtable store between the two member stores. The inlined copy of the same ctor inside the `Alloc` factory (F16) matches, so the shape is real but its out-of-line emission is not understood.
+- **F73 (14 bodies)** scalar deleting destructor: member destructor at +off, `test [esp+8],1`, intermediate-base vtable store, delete. `__declspec(novtable)` on the derived class (which solves the plain-destructor sibling F143) removes the store entirely here (31 bytes) or leaves both stores (45 bytes).
+- **F148 (9 bodies)** `mov eax,[esp+4] ; mov ecx,[ecx+24h] ; push eax ; call Method ; ret 4`: every __thiscall forwarder VC7.1 builds becomes a sibling `jmp`; void/long/bool returns, __stdcall callee and `optimize("y",off)` do not reproduce the call.

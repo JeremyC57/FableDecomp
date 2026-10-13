@@ -123,6 +123,39 @@ Coverage: catalog 18,631 → 18,749 → 18,807 byte-exact entries (37.6% → 37.
 optimisation, frame pointers kept): a TU setting the lander sweep does not yet try.; the compile-gate
 ledger still needs the canonical refresh on the Windows box to count them.
 
+## Family landing (batches `2026-10-13_linux_b6n` and `_f<N>`)
+
+Hand-authoring ~80 rows per batch could not keep up with the catalog, so the un-landed bodies of
+≤ 64 bytes were grouped by opcode skeleton (`tools/decomp_pipeline/families/famscan.py`: 12,574
+bodies, 4,848 families) and one parametrised, commented source was written per shape
+(`fam.py`, one template per family index, aliases where the lander sweep covers a scheduling
+difference such as `pop ecx` vs `add esp,4`). Every template was graded on 3–5 samples with
+`gp.py` before the whole family went through `verify_and_land.py --land`.
+
+| wave | families | rows | landed |
+|---|---|---|---|
+| b6n: `CCharString("<lit>", -1)` returners | 1 | 179 | 179 |
+| 1: factories, ctor shells, Clone, list/block/tree ctors, `??_G` | 13 | 1,548 | 1,516 |
+| 2: Alloc(a,b), embedded members, Initialise+animation name, persist, static initialisers, copy ctors, … | 20 | 849 | 838 |
+| 3: ctor/dtor variants, vfunc getters/setters, allocators, static list/map initialisers | 32 | 445 | 425 |
+| 4: flag setters, root ctors, predicates, global getters, re-initialisers | 11 | 69 | 63 |
+
+Total 2,832 family rows → 2,800 landed (`famfinal.py` wrote the per-batch READMEs and headers, and
+ledgered the 24 DIFFERs). Catalog 18,807 → **21,786 byte-exact entries (44.0% of 49,568)**.
+
+Rules learned (all in GOTCHAS): by-value enum = `long`; `rtti-vtables.tsv` names classes, no-RTTI
+vtables (0x012C2F64.. module) become `CVtable_<va>`; base/member constructor labels are used only
+when unique in the manifest; a CCharString temporary handed to a setter is a scoped named local;
+`xor eax,eax ; cmp ; sete al` is an int result; a vtable store before zero stores = an embedded
+member with an inline ctor, a vtable store after member destructors = an inlined empty
+intermediate-base destructor with a `__declspec(novtable)` derived class; `if (p) delete p;`
+keeps the null test; a member store before the vtable store in a root class = an inlined base
+constructor whose own vtable store is dead. Lander change: `.text$yc`/`.text$yd` sections (dynamic
+initialisers and atexit thunks) are now read, so `CCharString g_x("lit", -1);` lands the retail
+`??__E` body (288 rows across F7/F25/F27/F28/F106/F153/F154/F71).
+
+Open after ten-plus variants each: F15 (76 rows), F73 (14), F148 (9) — `docs/journal/FINDINGS_LOG.md`.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
