@@ -24,6 +24,7 @@ std::atomic<uint64_t> g_head{0};  // bytes produced (monotonic; position = value
 std::atomic<uint64_t> g_tail{0};  // bytes consumed
 std::atomic<bool> g_consumerIdle{false}, g_producerWaiting{false};
 std::mutex g_mutex;
+std::mutex g_producer;  // begin()..commit(): the movie streaming thread records calls too (the guest's texture renderer filter)
 std::condition_variable g_cvConsumer, g_cvProducer, g_cvSync;
 std::thread g_thread;
 std::atomic<bool> g_stop{false};
@@ -97,6 +98,7 @@ void threadMain() {
         const size_t pos = static_cast<size_t>(tail % g_size);
         const Header* h = reinterpret_cast<const Header*>(g_ring + pos);
         const uint32_t op = h->op, len = h->len;
+        if (len < sizeof(Header) || (len & 7)) { host::log("gles: render thread: corrupt record (op %u, len %u) at %llu", op, len, static_cast<unsigned long long>(tail)); abort(); }
         if (op == OP_call) {
             auto* fn = *reinterpret_cast<std::function<void()>* const*>(h + 1);
             (*fn)();
@@ -124,6 +126,7 @@ bool onRenderThread() { return t_renderThread; }
 bool direct() { return !g_started || t_renderThread; }
 
 void* begin(uint32_t op, size_t args, size_t data) {
+    g_producer.lock();  // released by commit()
     const size_t len = (sizeof(Header) + args + data + 7) & ~static_cast<size_t>(7);
     Header* h = static_cast<Header*>(reserve(len));
     h->op = op, h->len = static_cast<uint32_t>(len);
@@ -132,6 +135,7 @@ void* begin(uint32_t op, size_t args, size_t data) {
 
 void commit() {
     g_head.store(g_pendingHead, std::memory_order_release);
+    g_producer.unlock();
     wakeConsumer();
 }
 
