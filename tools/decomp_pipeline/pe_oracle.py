@@ -2,14 +2,14 @@
 """Extract retail function bytes directly from Fable.exe (no Ghidra).
 Length = next-manifest-function-address - addr, minus trailing 0xCC/0x90 padding.
 Validates against the 94 known oracle rows before trusting."""
-import csv, struct, sys
+import os, csv, struct, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "crawl"))
 from rowtrim import trim_body
 
-ROOT = Path(r"D:\Documents\FableTLC")
-EXE = Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
+ROOT = Path(os.environ.get("FABLE_ROOT", r"D:\Documents\FableTLC"))
+EXE = Path(os.environ.get("FABLE_EXE", r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe"))
 IMAGE_BASE = 0x400000
 
 def read_tsv(p):

@@ -15,7 +15,7 @@ Usage: python shape_author.py <out_prefix> [--baked] [--unlanded] [--limit N] [-
   --shape-is-prototype  also take rows whose Ghidra prototype is INCOMPLETE
               (same rationale as `_gapscan`: the bytes are the only evidence)
 """
-import csv, json, re, struct, sys
+import os, csv, json, re, struct, sys
 from pathlib import Path
 
 sys_path_hack = Path(__file__).resolve().parent
@@ -25,9 +25,9 @@ from rowtrim import trim_body
 from purity import is_genuine   # over-captured manifest rows are cut to their real body
 from collections import Counter
 
-ROOT = Path(r"D:\Documents\FableTLC")
+ROOT = Path(os.environ.get("FABLE_ROOT", r"D:\Documents\FableTLC"))
 SCR  = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad")
-EXE  = Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
+EXE  = Path(os.environ.get("FABLE_EXE", r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe"))
 CAT  = ROOT / "rebuild/build_candidates.ps1"
 ORACLE = ROOT / "rebuild/oracles/auto-re-candidates.tsv"
 BOOT = ROOT / "rebuild/build_bootstrap.ps1"

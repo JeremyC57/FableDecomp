@@ -17,13 +17,13 @@ unchanged, so callers can use `true_body()` unconditionally.
 
 CLI: python rowtrim.py <addr_hex> [...]   -> report the trim decision for each address
 """
-import struct
+import os, struct
 import sys
 from pathlib import Path
 
 import capstone
 
-EXE = Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
+EXE = Path(os.environ.get("FABLE_EXE", r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe"))
 
 _MD = capstone.Cs(capstone.CS_ARCH_X86, capstone.CS_MODE_32)
 _MD.detail = True

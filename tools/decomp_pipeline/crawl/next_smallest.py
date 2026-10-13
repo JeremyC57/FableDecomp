@@ -2,7 +2,7 @@
 """Assemble the next binary-wide byte-parity batch: smallest un-landed manifest
 functions that have a complete prototype + known calling convention.
 Usage: python next_smallest.py <N> <out_prefix> [min_len]"""
-import csv, struct, re, json, glob, os, sys
+import os, csv, struct, re, json, glob, os, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -10,12 +10,12 @@ from rowtrim import trim_body   # cut over-captured rows to their real body
 N=int(sys.argv[1]) if len(sys.argv)>1 else 16
 PREFIX=sys.argv[2] if len(sys.argv)>2 else "gen_batch"
 MINLEN=int(sys.argv[3]) if len(sys.argv)>3 else 12
-ROOT=Path(r"D:\Documents\FableTLC")
+ROOT=Path(os.environ.get("FABLE_ROOT", r"D:\Documents\FableTLC"))  # repo root (env override for non-Windows lanes)
 SCR=Path(os.environ.get(
     "DECOMP_CRAWL_SCR",
     r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\7fcf5fa1-31b0-4034-8e81-be42686888b3\scratchpad"))
 SCR.mkdir(parents=True, exist_ok=True)
-EXE=Path(r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe")
+EXE=Path(os.environ.get("FABLE_EXE", r"C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe"))
 data=EXE.read_bytes()
 e_lfanew=struct.unpack_from("<I",data,0x3C)[0]; coff=e_lfanew+4
 nsec=struct.unpack_from("<H",data,coff+2)[0]; opt=struct.unpack_from("<H",data,coff+16)[0]
