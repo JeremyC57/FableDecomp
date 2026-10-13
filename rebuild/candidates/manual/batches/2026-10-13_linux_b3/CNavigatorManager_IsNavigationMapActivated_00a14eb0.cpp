@@ -7,10 +7,12 @@
 // Finds the loaded CNavQuadTreeMap with the requested index (std::list node: PQuadTree counted
 // pointer at +0x08, Index at +0x10) and returns the quad tree's activation flag (byte +0x05 of
 // the CNavQuadTree); an unloaded map is not activated. Retail keeps the list at +0x24 (PDB +0x30).
-// Layout note: in the shipped binary std::vector / CArray / map / CVectorMap objects are 4 bytes
-// smaller than in Ego_r.pdb (the editor build carries an extra word per container), and a retail
-// std::vector is {first, last, end} with `first` at +0. Members after such containers therefore
-// sit 4 bytes per preceding container earlier than the generated engine header says.
+// Layout note: in the shipped binary a std::vector / CArray / map / set / CVectorMap is 4 bytes
+// smaller than in Ego_r.pdb (the editor build carries an extra word per container) and a
+// std::list is 8 bytes smaller (retail keeps only the head pointer; the PDB list is 0xC bytes).
+// A retail std::vector is {first, last, end} with `first` at +0. Members after such containers
+// therefore sit earlier than the generated engine header says: 4 bytes per vector/map/set/CArray
+// and 8 bytes per list that precede them.
 
 struct CNavQuadTreeCalls {
     unsigned char _pad_0x00[5];

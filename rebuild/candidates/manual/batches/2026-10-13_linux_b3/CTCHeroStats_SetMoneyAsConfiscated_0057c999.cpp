@@ -8,10 +8,12 @@
 // Confiscating moves the purse into ConfiscatedMoney and zeroes it via SetMoney(0, false)
 // @ 0x0057A774; releasing gives it back via AddMoney(ConfiscatedMoney, false) @ 0x0057B327 and
 // clears the confiscated amount. The second argument of both helpers is a "silent" flag.
-// Layout note: in the shipped binary std::vector / CArray / map / CVectorMap objects are 4 bytes
-// smaller than in Ego_r.pdb (the editor build carries an extra word per container), and a retail
-// std::vector is {first, last, end} with `first` at +0. Members after such containers therefore
-// sit 4 bytes per preceding container earlier than the generated engine header says.
+// Layout note: in the shipped binary a std::vector / CArray / map / set / CVectorMap is 4 bytes
+// smaller than in Ego_r.pdb (the editor build carries an extra word per container) and a
+// std::list is 8 bytes smaller (retail keeps only the head pointer; the PDB list is 0xC bytes).
+// A retail std::vector is {first, last, end} with `first` at +0. Members after such containers
+// therefore sit earlier than the generated engine header says: 4 bytes per vector/map/set/CArray
+// and 8 bytes per list that precede them.
 
 struct CTCHeroStats_Retail {
     unsigned char _pad_0x00[0x3C];

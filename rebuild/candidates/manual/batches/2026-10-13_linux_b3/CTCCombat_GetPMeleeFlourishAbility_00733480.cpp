@@ -9,10 +9,12 @@
 // +0x38/+0x3C and CurrentAbilityIndex at +0x44. Returns a CDefPointer (copy = AddRef) to the
 // usable ability selected by CurrentAbilityIndex modulo the list length; the hidden result
 // pointer is the first stack slot.
-// Layout note: in the shipped binary std::vector / CArray / map / CVectorMap objects are 4 bytes
-// smaller than in Ego_r.pdb (the editor build carries an extra word per container), and a retail
-// std::vector is {first, last, end} with `first` at +0. Members after such containers therefore
-// sit 4 bytes per preceding container earlier than the generated engine header says.
+// Layout note: in the shipped binary a std::vector / CArray / map / set / CVectorMap is 4 bytes
+// smaller than in Ego_r.pdb (the editor build carries an extra word per container) and a
+// std::list is 8 bytes smaller (retail keeps only the head pointer; the PDB list is 0xC bytes).
+// A retail std::vector is {first, last, end} with `first` at +0. Members after such containers
+// therefore sit earlier than the generated engine header says: 4 bytes per vector/map/set/CArray
+// and 8 bytes per list that precede them.
 
 struct CDefPointeeBase {
     void* __vftable;        // +0x00

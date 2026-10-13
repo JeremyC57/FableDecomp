@@ -9,10 +9,11 @@ policy check.
 
 ## Retail-vs-PDB layout findings used here (each is stated in the file that relies on it)
 
-Rule (confirmed across all seven classes, see `../2026-10-13_linux_b3/README.md`): every std
-container (`std::vector`, `CArray`, `std::map`, `CVectorMap`, `std::list`) is 4 bytes smaller in
-the shipped binary than in Ego_r.pdb, and a retail `std::vector` is `{first, last, end}` with
-`first` at +0. A member therefore sits 4 bytes earlier per container that precedes it.
+Rule (confirmed across all seven classes; table and proof in `../2026-10-13_linux_b4/README.md`):
+a `std::vector` / `CArray` / `std::map` / `std::set` / `CVectorMap` is 4 bytes smaller in the
+shipped binary than in Ego_r.pdb and a `std::list` is 8 bytes smaller (head pointer only); a retail
+`std::vector` is `{first, last, end}` with `first` at +0. A member therefore sits 4 or 8 bytes
+earlier per container that precedes it.
 
 | Class | Retail offset evidence | Containers before it |
 |---|---|---|
@@ -21,7 +22,7 @@ the shipped binary than in Ego_r.pdb, and a retail `std::vector` is `{first, las
 | `CTCInventoryTrade` | CategoryIdent +0x170 (PDB +0x19C) | eleven (-0x2C) |
 | `CTCInventory` | ContextSensitiveFadeTimes vector at +0x160 (PDB +0x188) | ten (-0x28) |
 | `CLandscapeBackgroundTreeNode` | SubNode +0xA0 (PDB +0xA8) | two inside LODLoadInfo (-8) |
-| `CNavigatorManager` | QuadTrees list +0x24 (PDB +0x30) | three (-0xC) |
+| `CNavigatorManager` | QuadTrees list +0x24 (PDB +0x30) | one list + one vector/map in the unnamed +0x04..+0x28 block (-0xC) |
 | `CQuestManager` | RegisteredQuestNames vector +0x2C (PDB +0x34) | two inside RuntimeQuestPersistence (-8) |
 
 Where a retail layout disagrees with the generated header the TU declares a `<Class>_Retail`

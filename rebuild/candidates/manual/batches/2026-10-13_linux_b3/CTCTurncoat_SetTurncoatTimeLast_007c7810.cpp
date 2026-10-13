@@ -9,10 +9,12 @@
 // duration in seconds to frames with the global frame rate (long at 0x01375550, value 15) and the
 // CRT _ftol, records it, and if the creature is already past its resistance threshold also arms
 // the countdown to turning coat.
-// Layout note: in the shipped binary std::vector / CArray / map / CVectorMap objects are 4 bytes
-// smaller than in Ego_r.pdb (the editor build carries an extra word per container), and a retail
-// std::vector is {first, last, end} with `first` at +0. Members after such containers therefore
-// sit 4 bytes per preceding container earlier than the generated engine header says.
+// Layout note: in the shipped binary a std::vector / CArray / map / set / CVectorMap is 4 bytes
+// smaller than in Ego_r.pdb (the editor build carries an extra word per container) and a
+// std::list is 8 bytes smaller (retail keeps only the head pointer; the PDB list is 0xC bytes).
+// A retail std::vector is {first, last, end} with `first` at +0. Members after such containers
+// therefore sit earlier than the generated engine header says: 4 bytes per vector/map/set/CArray
+// and 8 bytes per list that precede them.
 
 extern long g_FramesPerSecond;      // 0x01375550 (.data), 15
 

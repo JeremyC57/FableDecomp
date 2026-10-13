@@ -7,15 +7,16 @@ syntax check, the purity gate and the shared-header policy check.
 
 ## The container-size rule (supersedes the per-class "editor-only member" wording in b2)
 
-Every class whose retail offsets disagree with `engine/<Class>.h` does so by exactly 4 bytes per
-std container (`std::vector`, `CArray`, `std::map`, `CVectorMap`, `std::list`) that precedes the
-member, and a retail `std::vector` is `{first, last, end}` with `first` at +0. Evidence in this
-batch: `CTCCombat` (two vectors before `CurrentAbilityIndex`: PDB +0x4C, retail +0x44),
-`CTCCreatureGroupBoastingCrowd` (one pointer-holding member: PDB +0x30, retail +0x2C),
-`CTCTurncoat` (one vector: PDB +0x4C, retail +0x48), `CCategory`/`CClassFactory` (vector `first`
-exactly at the header's vector offset). The Ego_r.pdb donor is an editor build whose containers
-carry one extra word. `gen_class_headers.py` can therefore derive retail layouts mechanically:
-subtract 4 for each container member emitted before the target offset.
+Every class whose retail offsets disagree with `engine/<Class>.h` does so by a fixed amount per
+std container that precedes the member: 4 bytes for a `std::vector` / `CArray` / `std::map` /
+`std::set` / `CVectorMap`, and 8 bytes for a `std::list` (retail keeps only the head pointer; see
+`../2026-10-13_linux_b4/README.md` for the table and the CTCVillage proof). A retail
+`std::vector` is `{first, last, end}` with `first` at +0. Evidence in this batch: `CTCCombat`
+(two vectors before `CurrentAbilityIndex`: PDB +0x4C, retail +0x44), `CTCCreatureGroupBoastingCrowd`
+(PDB +0x30, retail +0x2C), `CTCTurncoat` (one vector: PDB +0x4C, retail +0x48), `CCategory` /
+`CClassFactory` (vector `first` exactly at the header's vector offset). The Ego_r.pdb donor is an
+editor build whose containers carry extra words. `gen_class_headers.py` can therefore derive
+retail layouts mechanically from the PDB member types.
 
 ## Functions
 

@@ -30,6 +30,8 @@ Session on branch `FullDecomp` (head `8d6ce97c` at start) in a cloud Linux conta
 
 - `rebuild/candidates/manual/batches/2026-10-13_linux_b3/` — 23 more (same selection rule); 46 TUs
   pass the three checks.
+- `rebuild/candidates/manual/batches/2026-10-13_linux_b4/` — 28 more, including five CTCVillage
+  functions placed by the refined container rule; 56 TUs pass the three checks.
 
 ## Findings worth keeping
 
@@ -47,17 +49,17 @@ Session on branch `FullDecomp` (head `8d6ce97c` at start) in a cloud Linux conta
   TotalCountValid, RenderMaskValid) up the `Parent` chain, stopping at the first already-invalid cell.
 - `CThing` +0x48 is `CVectorMap<ETCInterfaceType,CTCBase*> Components` (PDB), so the body labelled
   `CThing::GetPBaseDef` at 0x007334B0 (reads +0x48 as a ref-counted pointer) is mislabelled; skipped.
-- **Container-size rule.** Every std container (`std::vector`, `CArray`, `std::map`, `CVectorMap`,
-  `std::list`) is 4 bytes smaller in retail than in Ego_r.pdb, and a retail `std::vector` is
-  `{first, last, end}` with `first` at +0. Members move 4 bytes earlier per preceding container:
-  CBankFile (-0x10 from +0x48, -0x24 from +0x110), CTCHeroStats (-8), CTCInventory (-0x28),
-  CTCInventoryTrade (-0x2C), CNavigatorManager (-0xC), CQuestManager (-8), CTCCombat (-8 by
-  CurrentAbilityIndex), CTCTurncoat (-4), CTCCreatureGroupBoastingCrowd (-4). `gen_class_headers.py`
-  can derive retail layouts mechanically from this; until then the batch TUs carry `<Class>_Retail`
-  views. (Earlier wording in b2 blamed editor-only members; the rule above replaces it.)
-- Retail `CTCHeroStats` is 8 bytes smaller than the PDB from the money block on (Stamina +0x58,
-  MaxStamina +0x5C, ExtraMaxStamina +0x90); `SetMaxStamina` clamps MaxStamina to
-  ExtraMaxStamina+1 and Stamina to MaxStamina.
+- **Container-size rule.** Relative to Ego_r.pdb, a retail `std::vector` / `CArray` / `std::map` /
+  `std::set` / `CVectorMap` is 4 bytes smaller and a retail `std::list` is 8 bytes smaller (head
+  pointer only); a retail vector is `{first, last, end}` with `first` at +0. Members move earlier by
+  4 per vector-like and 8 per list that precede them. Proof: CTCVillage (17 lists + 1 set before
+  `Initialised` = 0x8C; retail reads AmountOfFineAlreadyPaid +0xA0, HeroEnemyOfGuardsUntil +0xD4,
+  CurrentIsHeroCriminal +0xE4, CrateTasks +0x60 exactly there), CPlayer (InitialPlayerModeSet
+  +0x216 after the PlayerModes list), CTCHeroStats (Marriages +0x1D8 after six vectors/maps),
+  CBankFile (-0x10 / -0x24), CTCInventory (-0x28), CTCInventoryTrade (-0x2C), CQuestManager (-8),
+  CTCCombat (-8), CClassFactory (-4), CTCTurncoat (-4), CTCCreatureGroupBoastingCrowd (-4).
+  `gen_class_headers.py` can derive retail layouts mechanically from the PDB member types; until
+  then the batch TUs carry `<Class>_Retail` views.
 - Callee labels reached from these bodies are mostly propagated garbage (`CPixelShader::CountReferences`
   at 0x00662000 is called on a creature, `CWorld::DrawGetEnvironment` at 0x00449700 on a
   CPlayerManager). Only landed `PASS` identities were used for naming.
