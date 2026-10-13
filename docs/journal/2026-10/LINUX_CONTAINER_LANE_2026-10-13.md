@@ -316,6 +316,26 @@ hoisted across a store) and persist `TransferFloat` (the zeroed traits temporary
 between the mode test and its branch in retail). Running total for the rescans: 3846/3877
 rows from 170 families; catalog 25,603 (51.7%).
 
+### Wave 17 (512-byte rescan, fifth pass)
+
+Six more families, 102 rows, all STLport containers: the tree `erase(first, last)` (clear
+through the recursive release when the range is everything, else the inline successor, a
+`__cdecl` unlink and a free per node), the retail vector `resize(n, value)` for 2- and 4-byte
+scalars (the copy-down helper inlined as a memmove when shrinking, InsertN when growing; its
+`if (src == srcEnd) return dest;` early-out is what reproduces the `cmp eax,eax ; jne`), the
+59-body `insert_unique` over unsigned, signed and byte keys (descent, out-of-line decrement,
+`_M_insert` through an explicit result pointer homed in the dead value slot, `Insert(y, y, v, 0)`
+in the begin case and no comparator local), and `_M_insert` itself (node malloc'd and
+placement-copied, linked left or right of y, header links fixed, `__cdecl` rebalance, the
+iterator written through the result pointer). Parked with evidence: the 42-body
+`CDefinitionManager::GetDef` family (by name, by index, size-optimised) -- the by-value
+CDefPointer temporary, the out pointer's assignment through `m_p->Release()` and the fail path
+at the end all reproduce, but the temporary's own release (`mov esi,[eax+4] ; mov ecx,eax ;
+add eax,4 ; dec esi ; mov edx,esi ; test edx,edx ; mov [eax],esi`, `dec [eax] ; cmp [eax],0`
+in the size TU) resists eighteen helper shapes (volatile, reference, out-copy, sub-object `this`);
+StdSet insert over string keys (comparator inlining, 217 vs 254). Running total for the rescans:
+3948/3979 rows from 176 families; catalog 25,705 (51.9%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
