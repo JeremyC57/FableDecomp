@@ -7897,6 +7897,398 @@ int main()
 {
     Kill(new X); if (g_d != 11) '''+FAIL(a)+'''
 '''),b)
+    elif TPL in ("w512_25","w512_72"):   # pair<iterator,bool> CRetailTree::InsertUnique(const V& v) -- STLport insert_unique: descend comparing keys, step back unless at begin, insert through the out-of-line _M_insert (the iterator written through an explicit result pointer) with a null 4th argument
+        strk=(TPL=="w512_72")
+        if retn!=8 or len(calls)!=(3 if not strk else 5): continue
+        _sets=[i.mnemonic for i in ins if i.mnemonic.startswith("set")]; _cm=[i for i in ins if i.mnemonic=="cmp" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str]
+        if not strk and (len(_sets)!=1 or not _cm): continue
+        ksz=_cm[0].operands[0].size if not strk else 4; signed=(_sets[0]=="setl") if not strk else False
+        if strk:
+            less1,ins1,dec,less2,ins2=calls
+            if less1!=less2 or ins1!=ins2: continue
+            ins,less=ins1,less1
+        else:
+            ins1,dec,ins2=calls
+            if ins1!=ins2: continue
+            ins=ins1; less=0
+        nm=f"CRetailTree_{a}"
+        cmp_decl=('''struct CBasicString {
+    bool operator<(const CBasicString* other);   // 0x%08X
+};
+
+struct SLessString {                        // pointer keys: equal pointers are not less, null sorts first
+    bool operator()(CBasicString* a, CBasicString* b) const
+    {
+        if (a == b)
+            return false;
+        if (a == 0)
+            return true;
+        if (b == 0)
+            return false;
+        return a->operator<(b);
+    }
+};
+''' % less) if strk else ""
+        ktype="CBasicString*" if strk else ({1:"signed char",2:"short",4:"long"} if signed else {1:"unsigned char",2:"unsigned short",4:"unsigned long"})[ksz]; cmpname="SLessString" if strk else "SLessKey"
+        add(a,"_unattributed",f"InsertUnique_{nm}",HDRF(a,f"{nm}::InsertUnique(const SValue&) -- STLport insert_unique over {'string-pointer' if strk else ktype} keys: descend from the root, step back through the out-of-line decrement @ 0x{dec:08X} unless at begin, insert through the hidden-pointer _M_insert @ 0x{ins:08X}; returns {{iterator, inserted}} through the hidden pointer",len(b))+f'''//
+// Retail bytes:  {"sub esp,8 ; " if strk else ""}push ebx ; {"mov ebx,[ecx] ; push ebp ; push esi ; mov esi,[ebx+4] ; test esi,esi ; push edi ; mov [esp+14h],ecx ; mov edi,ebx" if strk else "mov ebx,[value] ; push ebp ; mov ebp,ecx ; mov ecx,[ebp] ; push esi ; mov esi,[ecx+4] ; test esi,esi ; push edi ; mov edi,ecx"} ; mov al,1 ; je J ; L: (compare key with [node+10h]) ; mov edi,esi ; (left or right) ; test esi,esi ; jne L ; J: test al,al ; (j = y) ; je C ; cmp edi,[head+8] ; jne D ; (insert x,y,v,0 ; result {{it,true}}) ; ret 8 ; D: lea ecx,[j] ; call iterator::operator-- ; C: (compare [j+10h] with key) ; jae F ; (insert ; result {{it,true}}) ; ret 8 ; F: (result {{j,false}}) ; ret 8
+// STLport `_Rb_tree::insert_unique(const value_type&)`: `y` starts at the header, `x` at the root
+// (+4 of the header), and the descent keeps `comp = key < node key` choosing left (+8) or right
+// (+0xC); if the last comparison went left and `y` is not the leftmost node (+8 of the header),
+// the iterator steps back through the out-of-line decrement @ 0x{dec:08X}; a key that is not
+// already present is inserted through _M_insert @ 0x{ins:08X} (x, y, value, null; the inserted
+// iterator is written through an explicit result pointer -- the address of `j`, whose slot is
+// the dead value-argument slot -- and returned) and the {{iterator, bool}} pair is written
+// through the function's own hidden pointer. The node layout is STLport's (colour, parent, left, right,
+// value at +0x10). Labels are propagated; names are descriptive. One of {len(members)} bodies.
+{"struct CBasicString;" + chr(10) + chr(10) if strk else ""}struct SNode {{
+    long m_color;                          // +0
+    SNode* m_parent;                       // +4
+    SNode* m_left;                         // +8
+    SNode* m_right;                        // +0xC
+    {ktype} m_key;{" "*(26-len(ktype))}// +0x10
+}};
+
+struct SValue {{
+    {ktype} m_key;
+}};
+
+struct SIterator {{
+    SNode* m_node;
+    SIterator(SNode* node) : m_node(node) {{ }}
+    SIterator(const SIterator& other) : m_node(other.m_node) {{ }}
+    SIterator& operator--();               // 0x{dec:08X}
+    bool operator==(const SIterator& other) const {{ return m_node == other.m_node; }}
+}};
+
+struct SPairIB {{
+    SIterator first;
+    bool second;
+    SPairIB(const SIterator& it, bool inserted) : first(it), second(inserted) {{ }}
+}};
+
+{cmp_decl}
+struct {nm} {{
+    SNode* m_header;                       // +0
+    unsigned long m_size;                  // +4
+    SIterator* Insert(SIterator* result, SNode* x, SNode* y, const SValue& value, SNode* w);   // 0x{ins:08X}
+    SIterator begin() {{ return SIterator(m_header->m_left); }}
+    SPairIB InsertUnique_{nm}(const SValue& value);
+}};
+
+SPairIB {nm}::InsertUnique_{nm}(const SValue& value)
+{{
+    {"SLessString comp;" + chr(10) if strk else ""}    SNode* y = m_header;
+    SNode* x = m_header->m_parent;
+    bool less = true;
+    while (x != 0) {{
+        y = x;
+        less = {"comp(value.m_key, x->m_key)" if strk else "value.m_key < x->m_key"};
+        x = less ? x->m_left : x->m_right;
+    }}
+    SIterator j(y);
+    if (less) {{
+        if (j == begin())
+            return SPairIB(*Insert(&j, y, y, value, 0), true);   // the new minimum: inserted to the left of y
+        --j;
+    }}
+    if ({"comp(j.m_node->m_key, value.m_key)" if strk else "j.m_node->m_key < value.m_key"})
+        return SPairIB(*Insert(&j, x, y, value, 0), true);
+    return SPairIB(j, false);
+}}
+''',T(a,'''struct N { long c; N* p; N* l; N* r; unsigned long k; }; struct V { unsigned long k; };
+struct It { N* n; It(N* x) : n(x) {} It(const It& o) : n(o.n) {} It& operator--() { n = n->l; return *this; } bool operator==(const It& o) const { return n == o.n; } };
+struct PIB { It f; bool s; PIB(const It& i, bool b) : f(i), s(b) {} };
+static int g_i = 0; struct Tr { N* h; unsigned long sz; It* Ins(It* r, N*, N* y, const V& v, N*) { ++g_i; r->n = y; return r; } It begin() { return It(h->l); }
+    PIB IU(const V& v) { N* y = h; N* x = h->p; bool less = true; while (x != 0) { y = x; less = v.k < x->k; x = less ? x->l : x->r; } It j(y); if (less) { if (j == begin()) return PIB(*Ins(&j, y, y, v, 0), true); --j; } if (j.n->k < v.k) return PIB(*Ins(&j, x, y, v, 0), true); return PIB(j, false); } };
+int main()
+{
+    N hd, n1; hd.p = &n1; hd.l = &n1; n1.p = &hd; n1.l = 0; n1.r = 0; n1.k = 5; Tr t; t.h = &hd; t.sz = 1; V v; v.k = 5; PIB r = t.IU(v); if (r.s || r.f.n != &n1 || g_i != 0) '''+FAIL(a)+'''
+    v.k = 7; PIB r2 = t.IU(v); if (!r2.s || g_i != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_73",):   # void CRetailTree::EraseRange(SNode* first, SNode* last): clear when the range is everything, else erase(first++) with the successor inlined and the __cdecl unlink helper
+        if len(calls)!=3 or retn!=8: continue
+        rec,unlink,freer=calls
+        nm=f"CRetailTree_{a}"
+        add(a,"_unattributed",f"EraseRange_{nm}",HDRF(a,f"{nm}::EraseRange(SNode*, SNode*) -- the whole tree is cleared through the recursive Erase @ 0x{rec:08X} (head reset, size zeroed); otherwise each node from first to last is unlinked through the __cdecl helper @ 0x{unlink:08X} with the successor computed inline, freed and the size decremented",len(b))+f'''//
+// Retail bytes:  push ebx ; mov ebx,[last] ; push esi ; mov esi,[first] ; push edi ; mov edi,ecx ; mov eax,[edi] ; cmp esi,[eax+8] ; jne L ; cmp ebx,eax ; jne L ; mov ecx,[edi+4] ; test ecx,ecx ; je E ; push [eax+4] ; mov ecx,edi ; call Erase ; (head->left = head ; head->parent = 0 ; head->right = head ; size = 0) ; pop edi ; pop esi ; pop ebx ; ret 8 ; L: cmp esi,ebx ; je E ; N: (successor of esi into esi, victim in ecx) ; mov eax,[edi] ; lea edx,[eax+0Ch] ; push edx ; lea edx,[eax+8] ; push edx ; add eax,4 ; push eax ; push ecx ; call Unlink ; add esp,10h ; test eax,eax ; je S ; push eax ; call free ; add esp,4 ; S: mov ecx,[edi+4] ; dec ecx ; cmp esi,ebx ; mov [edi+4],ecx ; jne N ; E: pop edi ; pop esi ; pop ebx ; ret 8
+// STLport-style `erase(first, last)`: when the range is [begin, end) the tree is cleared (the
+// recursive node release @ 0x{rec:08X} from the root, the header re-linked to itself and the
+// size zeroed); otherwise `erase(first++)` repeats -- the in-order successor is computed
+// inline (right subtree's leftmost, else climb while the node is a right child), the victim
+// is unlinked through the __cdecl helper @ 0x{unlink:08X} with the addresses of the header's
+// parent/left/right links (the last formed with `add eax,4`), freed when non-null (free @
+// 0x{freer:08X}) and the size decremented. Values are trivially destructible here. Labels are
+// propagated; names are descriptive. One of {len(members)} bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct SNode {{
+    long m_color;                          // +0
+    SNode* m_parent;                       // +4
+    SNode* m_left;                         // +8
+    SNode* m_right;                        // +0xC
+}};
+
+extern "C" SNode* __cdecl Unlink_{unlink:08x}(SNode* node, SNode** root, SNode** leftmost, SNode** rightmost);   // 0x{unlink:08X}
+
+struct {nm} {{
+    SNode* m_header;                       // +0
+    unsigned long m_size;                  // +4
+    void Erase(SNode* root);               // 0x{rec:08X}
+    static SNode* Successor(SNode* node)
+    {{
+        if (node->m_right != 0) {{
+            node = node->m_right;
+            while (node->m_left != 0)
+                node = node->m_left;
+        }}
+        else {{
+            SNode* y = node->m_parent;
+            while (node == y->m_right) {{
+                node = y;
+                y = y->m_parent;
+            }}
+            if (node->m_right != y)
+                node = y;
+        }}
+        return node;
+    }}
+    void EraseRange_{nm}(SNode* first, SNode* last);
+}};
+
+void {nm}::EraseRange_{nm}(SNode* first, SNode* last)
+{{
+    if (first == m_header->m_left && last == m_header) {{
+        if (m_size != 0) {{
+            Erase(m_header->m_parent);
+            m_header->m_left = m_header;
+            m_header->m_parent = 0;
+            m_header->m_right = m_header;
+            m_size = 0;
+        }}
+    }}
+    else {{
+        while (first != last) {{
+            SNode* victim = first;
+            first = Successor(first);
+            SNode* node = Unlink_{unlink:08x}(victim, &m_header->m_parent, &m_header->m_left, &m_header->m_right);
+            if (node)
+                free(node);
+            --m_size;
+        }}
+    }}
+}}
+''',T(a,'''#include <cstdlib>
+struct N { long c; N* p; N* l; N* r; }; static int g_u = 0, g_e = 0;
+static N* __cdecl UL(N* n, N**, N**, N**) { ++g_u; return 0; }
+struct Tr { N* h; unsigned long sz; void E(N*) { ++g_e; }
+    static N* Succ(N* n) { if (n->r) { n = n->r; while (n->l) n = n->l; } else { N* y = n->p; while (n == y->r) { n = y; y = y->p; } if (n->r != y) n = y; } return n; }
+    void ER(N* f, N* l) { if (f == h->l && l == h) { if (sz) { E(h->p); h->l = h; h->p = 0; h->r = h; sz = 0; } } else { while (f != l) { N* v = f; f = Succ(f); N* n = UL(v, &h->p, &h->l, &h->r); if (n) std::free(n); --sz; } } } };
+int main()
+{
+    N hd, a, b; hd.p = &a; hd.l = &a; hd.r = &b; a.p = &hd; a.l = 0; a.r = &b; b.p = &a; b.l = 0; b.r = 0; Tr t; t.h = &hd; t.sz = 2; t.ER(&a, &b); if (g_u != 1 || t.sz != 1) '''+FAIL(a)+'''
+    t.ER(&a, &hd); if (g_e != 1 || t.sz != 0) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_28",):   # void CRetailVector::resize(unsigned long n, const T& value): shrink with the copy-down helper inlined (memmove), else InsertN(end, n - size, value)
+        if len(calls)!=2 or retn!=8: continue
+        mm,insn=calls
+        shift=[i.operands[1].imm for i in ins if i.mnemonic=="sar" and i.operands[1].type==X86_OP_IMM]
+        if len(shift)!=1 or any(i.mnemonic=="sar" and i.operands[1].type==X86_OP_REG for i in ins): continue
+        sz=1<<shift[0]; ety={1:"unsigned char",2:"unsigned short",4:"long"}.get(sz,"SElement%d" % sz)
+        nm=f"CRetailVector_{a}"
+        add(a,"_global",f"Resize_{nm}",HDRF(a,f"{nm}::resize(unsigned long, const T&) -- {sz}-byte elements: shrinking copies the (empty) tail down with memmove through the inlined helper and moves `last`, growing calls InsertN @ 0x{insn:08X} at the end",len(b))+f'''//
+// Retail bytes:  mov edx,[n] ; push esi ; push edi ; mov edi,ecx ; mov eax,[edi+4] ; mov esi,[edi] ; mov ecx,eax ; sub ecx,esi ; sar ecx,{shift[0]} ; cmp edx,ecx ; jae G ; cmp eax,eax ; lea ecx,[esi+edx*{sz}] ; jne M ; mov eax,ecx ; mov [edi+4],eax ; pop edi ; pop esi ; ret 8 ; M: mov esi,eax ; sub esi,eax ; push esi ; push eax ; push ecx ; call memmove ; add esp,0Ch ; add eax,esi ; mov [edi+4],eax ; pop edi ; pop esi ; ret 8 ; G: mov esi,[value] ; push esi ; sub edx,ecx ; push edx ; push eax ; mov ecx,edi ; call InsertN ; pop edi ; pop esi ; ret 8
+// Retail vector resize for {sz}-byte scalars: when the new size is smaller, `erase(begin() + n,
+// end())` is inlined as the copy-down helper -- `if (last != end)` is kept although both are
+// the end pointer (`cmp eax,eax`), the tail is moved with memmove (@ 0x{mm:08X}) and the new end
+// is the destination plus the byte count -- followed by the store of `last`; otherwise
+// InsertN @ 0x{insn:08X} appends `n - size()` copies of the value at the end. The manifest label
+// is propagated across element sizes; names are descriptive. One of {len(members)} bodies of this shape.
+extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);
+{"struct SElement%d { unsigned char _bytes[%d]; };" % (sz,sz) + chr(10) if sz>4 else ""}
+struct {nm} {{
+    {ety}* first;{" "*(26-len(ety))}// +0
+    {ety}* last;{" "*(27-len(ety))}// +4
+    {ety}* end;{" "*(28-len(ety))}// +8
+    void InsertN({ety}* where, unsigned long count, const {ety}& value);   // 0x{insn:08X}
+    static {ety}* CopyDown({ety}* src, {ety}* srcEnd, {ety}* dest)
+    {{
+        if (src == srcEnd)
+            return dest;
+        unsigned long bytes = (unsigned long)((char*)srcEnd - (char*)src);
+        return ({ety}*)((char*)memmove(dest, src, bytes) + bytes);
+    }}
+    void Resize_{nm}(unsigned long n, const {ety}& value);
+}};
+
+void {nm}::Resize_{nm}(unsigned long n, const {ety}& value)
+{{
+    if (n < (unsigned long)(last - first))
+        last = CopyDown(last, last, first + n);   // erase(begin() + n, end())
+    else
+        InsertN(last, n - (last - first), value);
+}}
+''',T(a,'''#include <cstring>
+static int g_i = 0; struct V { long* f; long* l; long* e; void IN(long*, unsigned long c, const long&) { g_i += (int)c; }
+    static long* CD(long* s, long* se, long* d) { if (s == se) return d; unsigned long b = (unsigned long)((char*)se - (char*)s); return (long*)((char*)std::memmove(d, s, b) + b); }
+    void R(unsigned long n, const long& v) { if (n < (unsigned long)(l - f)) l = CD(l, l, f + n); else IN(l, n - (l - f), v); } };
+int main()
+{
+    long buf[4]; V v; v.f = buf; v.l = buf + 3; v.e = buf + 4; long x = 1; v.R(1, x); if (v.l != buf + 1) '''+FAIL(a)+'''
+    v.R(3, x); if (g_i != 2) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_37","w512_38","w512_49"):   # bool CDefinitionManager::GetDef(key, CDefPointer& out): the def pointer comes back through a hidden pointer homed in the dead key slot, the out pointer is reassigned with reference counting, the temporary released
+        byname=(TPL=="w512_37"); fp=(TPL=="w512_49")
+        if len(calls)!=1 or retn!=8: continue
+        if fp!=(b[:3]==b"\x55\x8b\xec"): continue
+        getter=calls[0]; hasguard=any(i.mnemonic=="jle" for i in ins)
+        if byname==hasguard: continue
+        gm,gn,_=label(getter); gname=gn.split("::")[-1] if (gm,gn) in uniq and re.match(r"^[A-Za-z_]\w*$",gn.split("::")[-1]) else ("GetPDefFromInstantiationName" if byname else "GetPDefFromGlobalIndex")
+        fname=re.sub(r"[^A-Za-z0-9_]","_",mname.split("::")[-1].split("<")[0]) or "GetDef"; fname=f"{fname}_{a}"
+        ktype="const CCharString&" if byname else "long"; kname="name" if byname else "index"
+        add(a,"CDefinitionManager",fname,HDRF(a,f"CDefinitionManager::GetDef<T>({ktype}, CDefPointer&) -- {gname} @ 0x{getter:08X} writes the def through a pointer homed in the dead key slot; false when null, else the out pointer is reassigned with reference counting (old def released, new one addref'd) and the temporary released; true",len(b))+f'''//
+// Retail bytes:  {"push ebp ; mov ebp,esp ; cmp dword ptr [index],0 ; jle F ; push [index] ; lea eax,[index] ; push eax ; call " + gname + " ; mov eax,[def] ; test eax,eax ; je F" if fp else ("mov eax,[index] ; test eax,eax ; jle F ; push eax ; lea eax,[esp+8] ; push eax ; call " + gname + " ; mov eax,[esp+4] ; test eax,eax ; je F" if not byname else "mov eax,[name] ; push eax ; lea edx,[esp+8] ; push edx ; call " + gname + " ; mov eax,[esp+4] ; test eax,eax ; je F")} ; push esi ; mov esi,[out] ; mov ecx,[esi] ; cmp ecx,eax ; je K ; test ecx,ecx ; je A ; dec dword ptr [ecx+4] ; jne Z ; mov eax,[ecx] ; call [eax+4] ; Z: mov eax,[def] ; {"and dword ptr [esi],0" if fp else "mov dword ptr [esi],0"} ; A: test eax,eax ; mov [esi],eax ; je R ; inc dword ptr [eax+4] ; mov eax,[def] ; K: {"mov ecx,eax ; add eax,4 ; dec dword ptr [eax] ; cmp dword ptr [eax],0 ; jne R ; mov eax,[ecx] ; call [eax+4]" if fp else "mov esi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec esi ; mov edx,esi ; test edx,edx ; mov [eax],esi ; jne R ; mov edx,[ecx] ; call [edx+4]"} ; R: mov al,1 ; pop esi ; {"jmp X ; F: xor al,al ; X: pop ebp ; ret 8" if fp else "ret 8 ; F: xor al,al ; ret 8"}
+// Definition lookup into a counted def pointer: the manager's {gname} @ 0x{getter:08X} returns a
+// CDefPointer through its hidden pointer, which VC homes in the (dead) key argument slot; a null
+// def fails. Otherwise the out pointer's assignment is inlined -- unless it already holds the
+// def, the old def is released (count at +4, virtual slot 1 destroys at zero) and nulled, the
+// new one stored and addref'd -- and the temporary's destructor releases the def again (the
+// decrement materialised in a register{"; size TU: and [mem],0 and dec/cmp" if fp else ""}). {"Frame pointer from the TU's optimize(y, off). " if fp else ""}The manifest label names one
+// instantiation; the def type is opaque. One of {len(members)} bodies of this shape.
+{"#pragma optimize(" + chr(34) + "y" + chr(34) + ", off)" + chr(10) + chr(10) if fp else ""}{"#include " + chr(34) + "fable_string.h" + chr(34) + chr(10) + chr(10) if byname else ""}struct CDefBase {{
+    virtual void v00();
+    virtual void Destroy();                // slot 1
+    long m_refs;                           // +4
+}};
+
+struct CDefPointer {{
+    CDefBase* m_p;
+    void Assign(CDefBase* def)
+    {{
+        if (m_p != def) {{
+            if (m_p) {{
+                if (--m_p->m_refs == 0)
+                    m_p->Destroy();
+                m_p = 0;
+            }}
+            m_p = def;
+            if (def)
+                ++def->m_refs;
+        }}
+    }}
+}};
+
+struct CDefinitionManager {{
+    CDefBase** {gname}(CDefBase** result, {ktype} {kname});   // 0x{getter:08X} (hidden result pointer)
+    bool {fname}({ktype} {kname}, CDefPointer& out);
+}};
+
+bool CDefinitionManager::{fname}({ktype} {kname}, CDefPointer& out)
+{{
+{"" if byname else "    if (" + kname + " <= 0)" + chr(10) + "        return false;" + chr(10)}    CDefBase* def;
+    {gname}(&def, {kname});
+    if (!def)
+        return false;
+    out.Assign(def);
+    --def->m_refs;                         // the temporary's release
+    if (def->m_refs == 0)
+        def->Destroy();
+    return true;
+}}
+''',T(a,'''static int g_d = 0; struct D { virtual void a() {} virtual void X() { ++g_d; } long r; };
+struct P { D* p; void A(D* d) { if (p != d) { if (p) { if (--p->r == 0) p->X(); p = 0; } p = d; if (d) ++d->r; } } };
+static D g_def; struct M { D** G(D** r, long k) { *r = k == 1 ? &g_def : 0; if (*r) ++(*r)->r; return r; }
+    bool GD(long k, P& o) { if (k <= 0) return false; D* d; G(&d, k); if (!d) return false; o.A(d); --d->r; if (d->r == 0) d->X(); return true; } };
+int main()
+{
+    g_def.r = 1; M m; P o; o.p = 0; if (!m.GD(1, o) || o.p != &g_def || g_def.r != 2 || m.GD(2, o) || m.GD(0, o)) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_34",):   # SIterator* CRetailTree::Insert(SIterator* result, SNode* x, SNode* y, const SValue& v, SNode* w) -- STLport _M_insert: create the node left or right of y, fix the header links, rebalance, count
+        if len(calls)!=3 or retn!=0x14 or calls[0]!=calls[1]: continue
+        alloc,_,rebal=calls; size=[p for p in pushes if p<0x100][0]
+        voff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "eax +" in i.op_str][0]
+        nm=f"CRetailTree_{a}"
+        add(a,"_unattributed",f"Insert_{nm}",HDRF(a,f"{nm}::Insert(SIterator*, SNode*, SNode*, const SValue&, SNode*) -- STLport _M_insert: a {size:#x}-byte node (malloc @ 0x{alloc:08X}) linked left or right of y, header root/leftmost/rightmost fixed, rebalance @ 0x{rebal:08X}, size incremented, the iterator written through the result pointer",len(b))+f'''//
+// Retail bytes:  push ebx ; mov ebx,[y] ; push esi ; mov esi,[value] ; push edi ; mov edi,ecx ; cmp ebx,[edi] ; je L ; mov eax,[w] ; test eax,eax ; jne R ; mov eax,[x] ; test eax,eax ; jne L ; mov eax,[esi] ; cmp eax,[ebx+10h] ; jl L ; R: push {size:#x} ; call malloc ; lea ecx,[eax+{voff:#x}] ; add esp,4 ; test ecx,ecx ; je S ; (two dwords copied) ; S: mov [ebx+0Ch],eax ; mov ecx,[edi] ; cmp ebx,[ecx+0Ch] ; mov esi,eax ; jne J ; mov [ecx+0Ch],eax ; jmp J ; L: push {size:#x} ; call malloc ; lea ecx,[eax+{voff:#x}] ; add esp,4 ; test ecx,ecx ; je T ; (two dwords copied) ; T: mov [ebx+8],eax ; mov ecx,[edi] ; cmp ebx,ecx ; mov esi,eax ; jne U ; mov [ecx+4],eax ; mov ecx,[edi] ; mov [ecx+0Ch],eax ; jmp J ; U: cmp ebx,[ecx+8] ; jne J ; mov [ecx+8],eax ; J: mov [esi+4],ebx ; mov dword ptr [esi+8],0 ; mov dword ptr [esi+0Ch],0 ; mov edx,[edi] ; add edx,4 ; push edx ; push esi ; call Rebalance ; mov eax,[edi+4] ; add esp,8 ; inc eax ; mov [edi+4],eax ; mov eax,[result] ; pop edi ; mov [eax],esi ; pop esi ; pop ebx ; ret 14h
+// STLport `_Rb_tree::_M_insert(x, y, v, w)`: the new node goes to the left of y when y is the
+// header, or (with w null) when x is non-null or the key orders before y's; otherwise to the
+// right. The node is malloc'd ({size:#x} bytes) and its 8-byte POD value placement-copied at
+// +{voff:#x} (hence the null test); the header's root/rightmost (y == header), leftmost or
+// rightmost links are fixed, the node's parent/children set, the __cdecl rebalance @ 0x{rebal:08X}
+// run with the root by reference, the count incremented and the iterator written through the
+// explicit result pointer. Labels are propagated; names are descriptive. One of {len(members)} bodies.
+#include <new>
+extern "C" void* __cdecl malloc(unsigned int size);
+
+struct SValue {{
+    long m_key;
+    long m_data;
+}};
+
+struct SNode {{
+    long m_color;                          // +0
+    SNode* m_parent;                       // +4
+    SNode* m_left;                         // +8
+    SNode* m_right;                        // +0xC
+    SValue m_value;                        // +{voff:#x}
+}};
+
+struct SIterator {{
+    SNode* m_node;
+}};
+
+extern "C" void __cdecl Rebalance_{rebal:08x}(SNode* node, SNode*& root);   // 0x{rebal:08X}
+
+struct {nm} {{
+    SNode* m_header;                       // +0
+    unsigned long m_size;                  // +4
+    static SNode* CreateNode(const SValue& value)
+    {{
+        SNode* node = (SNode*)malloc(sizeof(SNode));
+        new (&node->m_value) SValue(value);
+        return node;
+    }}
+    SIterator* Insert_{nm}(SIterator* result, SNode* x, SNode* y, const SValue& value, SNode* w);
+}};
+
+SIterator* {nm}::Insert_{nm}(SIterator* result, SNode* x, SNode* y, const SValue& value, SNode* w)
+{{
+    SNode* z;
+    if (y == m_header || (w == 0 && (x != 0 || value.m_key < y->m_value.m_key))) {{
+        z = CreateNode(value);
+        y->m_left = z;
+        if (y == m_header) {{
+            m_header->m_parent = z;
+            m_header->m_right = z;
+        }}
+        else if (y == m_header->m_left)
+            m_header->m_left = z;
+    }}
+    else {{
+        z = CreateNode(value);
+        y->m_right = z;
+        if (y == m_header->m_right)
+            m_header->m_right = z;
+    }}
+    z->m_parent = y;
+    z->m_left = 0;
+    z->m_right = 0;
+    Rebalance_{rebal:08x}(z, m_header->m_parent);
+    ++m_size;
+    result->m_node = z;
+    return result;
+}}
+''',T(a,'''#include <new>
+#include <cstdlib>
+struct V { long k; long d; }; struct N { long c; N* p; N* l; N* r; V v; }; struct It { N* n; }; static int g_rb = 0;
+static void __cdecl RB(N*, N*&) { ++g_rb; }
+struct Tr { N* h; unsigned long sz; static N* C(const V& v) { N* n = (N*)std::malloc(sizeof(N)); new (&n->v) V(v); return n; }
+    It* I(It* r, N* x, N* y, const V& v, N* w) { N* z; if (y == h || (w == 0 && (x != 0 || v.k < y->v.k))) { z = C(v); y->l = z; if (y == h) { h->p = z; h->r = z; } else if (y == h->l) h->l = z; } else { z = C(v); y->r = z; if (y == h->r) h->r = z; } z->p = y; z->l = 0; z->r = 0; RB(z, h->p); ++sz; r->n = z; return r; } };
+int main()
+{
+    N hd; hd.p = 0; hd.l = &hd; hd.r = &hd; Tr t; t.h = &hd; t.sz = 0; V v; v.k = 3; v.d = 4; It it; t.I(&it, 0, &hd, v, 0); if (t.sz != 1 || hd.p != it.n || it.n->v.d != 4 || g_rb != 1) '''+FAIL(a)+'''
+    V v2; v2.k = 5; v2.d = 0; It it2; t.I(&it2, 0, it.n, v2, 0); if (it.n->r != it2.n || t.sz != 2) '''+FAIL(a)+'''
+'''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
 OUT.mkdir(parents=True, exist_ok=True)

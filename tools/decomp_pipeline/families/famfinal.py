@@ -220,6 +220,15 @@ DESC={
  "i56":"__fastcall tree serialisers: count, then two dword fields per node from the leftmost to the head through the __cdecl successor",
  "i98":"same as i56 with a float second field",
  "i40":"scalar deleting destructors of one-list-member classes: member cleared out of line, base vtable stored by the inlined base destructor, flag-tested delete",
+ "i73":"STLport-style tree `erase(first, last)`: clear through the recursive release when the range is everything, else successor inline + __cdecl unlink + free per node",
+ "i28":"retail vector `resize(n, value)` for 2/4-byte scalars: copy-down helper inlined (memmove) when shrinking, InsertN when growing",
+ "i25":"STLport `insert_unique` over unsigned dword keys: descent, out-of-line decrement, _M_insert through an explicit result pointer homed in the dead value slot",
+ "i21":"STLport `insert_unique` over signed long / byte keys (same template as i25)",
+ "i32":"STLport `insert_unique` over signed long keys (same template as i25)",
+ "i37":"`CDefinitionManager::GetDef<T>(const CCharString&, CDefPointer&)`: hidden-pointer def lookup homed in the dead key slot, counted reassignment of the out pointer, temporary released",
+ "i38":"`CDefinitionManager::GetDef<T>(long, CDefPointer&)` with the index guard (same shape as i37)",
+ "i49":"`CDefinitionManager::GetDef<T>(long, CDefPointer&)` in a frame-pointer, size-optimised TU (same shape as i38)",
+ "i34":"STLport `_Rb_tree::_M_insert(x, y, v, w)`: node malloc'd and placement-copied, linked left/right of y, header links fixed, __cdecl rebalance, iterator through the result pointer",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
