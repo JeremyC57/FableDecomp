@@ -395,3 +395,11 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   only (PC_QUEST_COMPLETION_MENU_START/COMPLETE/FAIL/DEATH, PC_UI_QUEST_*_FRAME, ...); the
   Xbox code for those screens is not in the PC executable, so an Xbox-style version would
   be a new screen written in host code against the UI component system.
+- **Open: a harness crash at the first stick input after loading a save** (twice in ~12
+  runs, not reported from the device): `CInputManager::Update` -> `EventContainer_Erase` ->
+  `CChangingStateComponent::ForceState` reading 0xBF800000 (a float where a pointer is
+  expected). The pad menu code's hover handling (`setHovered`: OnHoverEnter/Leave and the
+  state refresh +0x214) on the front end's last pressed button leaves a deferred state
+  event behind; the button is destroyed by the level load and the event is processed by
+  the next input update in game. Not fixed yet: the fix is to leave no deferred GUI event
+  behind when a press changes the screen (drain or avoid the refresh on that press).
