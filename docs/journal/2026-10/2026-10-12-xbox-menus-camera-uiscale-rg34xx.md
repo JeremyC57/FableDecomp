@@ -403,3 +403,17 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   event behind; the button is destroyed by the level load and the event is processed by
   the next input update in game. Not fixed yet: the fix is to leave no deferred GUI event
   behind when a press changes the screen (drain or avoid the refresh on that press).
+- **Water** (flat blue moat at the Guild, flat grey sea at Oakvale): a draw trace of an
+  Oakvale frame (`FABLE_GLES_DRAWDUMP=<file>`, touched from outside at the right second)
+  shows the sea drawn by ps 561/562: `texm3x2pad`/`texm3x2tex` of a 128x128 dynamic bump
+  map (the engine renders the wave normals into it each frame) into the environment map,
+  then `mix(env, pc[0], pc[0].w)`. The translator dropped the source modifier of the bump
+  operand in texbem/texm3x2 (`_bx2`: 2x - 1 for an unsigned normal map), so the lookup
+  used unsigned normals; now applied. The fixed-function pixel emulation also grew to four
+  stages with BUMPENVMAP, MULTIPLYADD and LERP. v18 carries both; the moat is the user's
+  test (the harness cannot be steered out of the Guild hall).
+- **Device crash in v17** after ~20 minutes, entering Lookout Point: `strlen` of 0xA96 from
+  `C3DAnimationInfo::GetAnimation` <- `C3DAnimationManager::BlendAnimations` (a bad
+  animation name pointer). First seen with v17 (the restrict re-lift, the inline caches on
+  all dispatch sites, the hold-target handler on the on-press object). Open; the next log
+  decides whether it is the target-lock handler (lock a target, then wait) or streaming.
