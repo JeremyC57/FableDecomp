@@ -356,3 +356,7 @@ is visible). Levers taken, all visually neutral:
   is 14 ms, so the overlap is visible there as the game thread waiting. The first build
   crashed at exit (exit() with the thread alive destroyed its statics under it; now an
   exit hook stops it).
+- **`restrict` adopted**: back-to-back on the harness (same route, render thread on, the
+  game thread's own share of a gameplay frame = frame time minus the wait for the render
+  thread): 16.2 ms plain, 8.4 ms with `Ctx* restrict c` on every lifted function. The lifter
+  emits it now (v16 is a full re-lift and rebuild).

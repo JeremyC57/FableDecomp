@@ -422,7 +422,7 @@ public:
     std::string function(Function& f) {
         out_.str("");
         f_ = &f;
-        out_ << "void " << fname(f.entry) << "(Ctx* c) {\n"
+        out_ << "void " << fname(f.entry) << "(Ctx* restrict c) {\n"  // restrict: no guest address aliases the Ctx
              << "    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;\n"
              << "    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;\n"
              << "    int fop = FOP(FK_EXPLICIT, 4); uint32_t fr = 0, fa = 0, fb = 0; /* flags undefined at entry */\n"
@@ -1254,7 +1254,7 @@ int main(int argc, char** argv) {
     // the lifted-function contract ([esp] = return address on entry; pops it on return).
     for (const auto& [a, name] : hooks)
         if (code.count(a)) {
-            code[a] = "void " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
+            code[a] = "void " + fname(a) + "(Ctx* restrict c) { " + name + "(c); }\n\n";
             std::cerr << "hooked " << fname(a) << " -> " << name << "\n";
         }
     // Wrapped functions: the lifted body is renamed <name>_orig (callable from the host) and
@@ -1262,10 +1262,10 @@ int main(int argc, char** argv) {
     for (const auto& [a, name] : wraps)
         if (code.count(a)) {
             std::string body = code[a];
-            const std::string sig = "void " + fname(a) + "(Ctx* c) {";
+            const std::string sig = "void " + fname(a) + "(Ctx* restrict c) {";
             if (const auto at = body.find(sig); at != std::string::npos)
-                body.replace(at, sig.size(), "void " + fname(a) + "_orig(Ctx* c) {");
-            code[a] = body + "void " + fname(a) + "(Ctx* c) { " + name + "(c); }\n\n";
+                body.replace(at, sig.size(), "void " + fname(a) + "_orig(Ctx* restrict c) {");
+            code[a] = body + "void " + fname(a) + "(Ctx* restrict c) { " + name + "(c); }\n\n";
             std::cerr << "wrapped " << fname(a) << " -> " << name << "\n";
         }
 
