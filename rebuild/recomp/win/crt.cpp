@@ -610,6 +610,13 @@ void strInit(uint32_t self, const char* s, uint32_t n) {
     wr32(self + 24, res);
 }
 IMPORTN(P, "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z", mangled_10) {
+    const uint32_t sp = arg(c, 0);
+    if (sp < 0x10000) {  // a bad name pointer (device crashes: an animation name, a PC list name): an empty string, with the caller logged
+        log("std::string(const char*) from 0x%08X with pointer 0x%08X: empty string", rd32(c->esp), sp);
+        strInit(c->ecx, "", 0);
+        retStd(c, c->ecx, 1);
+        return;
+    }
     const char* s = argp(c, 0);
     strInit(c->ecx, s, static_cast<uint32_t>(std::strlen(s)));
     retStd(c, c->ecx, 1);
