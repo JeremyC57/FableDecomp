@@ -47,12 +47,54 @@ DESC={
  "69":"`CDerived::CDerived(T a) : CBase(), m_a(a) {}`",
  "49":"non-polymorphic default constructors whose only work is one CCharString-like member at +0 (owner class not identifiable)",
  "54":"non-polymorphic default constructors whose only work is one CCharString-like member at +8 (owner class not identifiable)",
+ "g4":"`CCountedPointer<T>::Reset(T*)`: release the shared count block (destroy + delete on the last reference), adopt the new object with a fresh block",
+ "g10":"`CCountedPointer<T>::Reset(T*)` (same template as g4)",
+ "g48":"`CCountedPointer<T>::CCountedPointer(T*)`: adopt the object with a null-checked count block",
+ "g61":"`CCountedPointer<T>::CCountedPointer(T*)` (`pop ecx` / `and [..],0` scheduling of g48; same template)",
+ "g6":"retail `std::map`/`std::set` destructors: erase the subtree, reset the head links, free the head",
+ "g7":"retail tree destructors (same template as g6)",
+ "g11":"retail red-black tree iterator `operator--` (Dinkumware `_Dec`)",
+ "g21":"retail red-black tree iterator `operator--` (same template as g11)",
+ "g13":"retail red-black tree iterator `operator++` (Dinkumware `_Inc`, static inline `_Min`)",
+ "g26":"`find(const long&)` on the retail tree with a signed key at +0x10 (Dinkumware `_Lbound` form, hidden-pointer iterator)",
+ "g30":"`find(const long&)` on the retail tree (same template as g26)",
+ "g43":"empty destructor of three consecutive CWideString members (reverse order, tail call)",
+ "g45":"one-byte persist read hook: `__fastcall TransferIn(ctx, value, &value)` then `*m_pValue = value`",
+ "g52":"`CX::CX(a, b)` root polymorphic class storing the first argument, second unused",
+ "g27":"retail `std::list` `_Buynode(const T&)`: malloc the node, placement-copy the value (null-tested address)",
+ "g36":"`Release()` of a static CCountedPointer: `Reset(0)` force-inlined on the global",
+ "g22":"`CCombatAction_X(owner) : CCombatActionBase(owner, K, CSoundPair())` plus a scoped CCharString animation name",
+ "g97":"`CCombatAction_X(owner) : CCombatActionBase(owner, K, CSoundPair())` without an animation name (same template)",
+ "g329":"`CCombatAction_X(owner) : CCombatActionBase(owner, K, CSoundPair())` (same template as g97)",
+ "g24":"copy constructors `CX(const CX&) : CBase(other), m_target(other.m_target)` with the smart-pointer copy inlined",
+ "g5":"`CActiveEntityScript<...>::SuspendableProcess()`: suspend the attached process or fire the stored callback with a by-value CScriptThing copy",
+ "g31":"`Assign(CBaseObject*)`: a stack CIntelligentPointer temporary routed into a member pointer (SetPItem/GetPItem)",
+ "g56":"`Assign(CBaseObject*)` through a temporary CIntelligentPointer (same template as g31)",
+ "g46":"Dinkumware `_Uninit_copy` (placement-copy a range, `__fastcall`), 4-byte elements",
+ "g47":"Dinkumware `_Uninit_copy`, 16/20-byte elements (size-optimised scheduling found by the sweep; same template as g46)",
+ "g51":"`~vector<T>` for polymorphic elements: virtual destructor per element, free the buffer",
+ "g60":"persist hooks transferring two adjacent byte members through `Transfer<signed char>` with literal zero defaults",
+ "g28":"static float initialisers `g = (float)cos(extern const double)` with the x87 intrinsic",
+ "g35":"static float initialisers `g = (float)sin(extern const double)` (same template as g28)",
+ "g62":"non-virtual `??_G` of a non-polymorphic {unsigned long, CCountedPointer} pair: inlined member destructor, then delete (emitted by a delete-expression)",
+ "g94":"non-virtual `??_G` of a non-polymorphic buffer owner: `if (m_buffer) free(m_buffer)` inlined, then delete",
+ "g155":"non-virtual `??_G` buffer owner (same template as g94)",
+ "g252":"non-virtual `??_G` buffer owner (same template as g94)",
+ "g253":"non-virtual `??_G` buffer owner (same template as g94)",
+ "g17":"EH-framed (/EHsc) `~CX() {}`: own vtable, one member destroyed out of line, inlined empty base destructor",
+ "g19":"EH-framed (/EHsc) `CX(a) : CBase(&m_value), m_value(a) {}`",
+ "g25":"EH-framed (/EHsc) `Call(a) { CParam p(a); m_pTarget->Slot(&p); }`",
+ "g53":"`[thunk] CX::vfunc_N adjustor{N}`: second-base override entry (`sub ecx,N ; jmp`), emitted with the vtables of a class whose two bases both declare the virtual",
+ "g65":"virtual getters forwarding to GetPItem on an embedded smart pointer (`add ecx,N ; jmp`)",
+ "g20":"`GetInterface_<type>(CTCBase**)`: presence-bitset test then a CVectorMap lower-bound lookup (frame-pointer TU: `optimize(\"y\",off)` + `(\"s\",on)`)",
+ "g38":"`GetInterface_<type>` with a register-held type constant (same template as g20)",
+ "gtiny":"generic tiny-body synthesiser (≤16 bytes): dword/byte/float getters (direct and through a pointer), setters, constant stores/returns, forwarders, scaled-global static initialisers, root constructors",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
 summary=[]
-for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))):
-    D=Path(D); fam=re.search(r"_f(\d+)$",D.name).group(1)
+for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_g*"))):
+    D=Path(D); fam=re.search(r"_([fg]\w+)$",D.name).group(1); fam=fam[1:] if fam[0]=="f" else fam
     rows=list(csv.DictReader(open(D/"oracle.tsv"),delimiter="\t"))
     landed=[r for r in rows if r["address"].lower() in cat]; rest=[r for r in rows if r["address"].lower() not in cat]
     for r in rows:

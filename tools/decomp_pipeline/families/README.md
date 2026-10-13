@@ -10,7 +10,7 @@ All three scripts read the scratch layout through `S` (the session scratchpad): 
 1. `famscan.py <maxbytes>` — groups every un-landed manifest body of ≤ maxbytes (trimmed with
    `crawl/rowtrim.py`, trailing `CC`/`90` stripped) by opcode skeleton → `$S/batch/families.json`
    (list of `(skeleton, [(addr, module, name, len, hex)...])`, largest family first).
-2. `fam.py <repo> <family-index> <batch-name> [limit]` — writes
+2. `fam.py <repo> <family-index> <batch-name> [limit|-] [template-id]` (`FAMFILE` env selects the scan file; the template id is the family index of the scan the template was written for, default = the family index) — writes
    `rebuild/candidates/manual/batches/<batch-name>/{payload.json, oracle.tsv, *.cpp, *_test.cpp}`
    for one family (templates keyed by family index; aliases share a template when the lander sweep
    covers the scheduling difference). Then `verify_and_land.py <batch>/payload.json <batch>/oracle.tsv --land`.

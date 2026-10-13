@@ -50,4 +50,4 @@ for k,v in big[:60]:
     cum+=len(v)
     print(f"{len(v):5d} (cum {cum:5d}) {v[0][3]:3d}B  {k[:140]}")
     print(f"        e.g. {v[0][0]} {v[0][1]}::{v[0][2]} | {v[1][0]} {v[1][2]} | {v[2][0] if len(v)>2 else ''}")
-json.dump([(k, v) for k,v in big], open(S/"batch/families.json","w"))
+json.dump([(k, v) for k,v in big], open(os.environ.get("FAMOUT", str(S/"batch/families.json")),"w"))

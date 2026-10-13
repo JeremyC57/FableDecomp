@@ -314,7 +314,7 @@ BASE_FLAGS=["/O2","/Oy","/W3"]
 # BASE_FLAGS is always tried first so a win here can only upgrade a DIFFER, never
 # regress an existing match. The winning extra flags are recorded per-catalog-entry
 # (CompilerFlags) so the real build reproduces the exact retail bytes.
-EXTRA_FLAGSETS=[[], ["/GS"], ["/Oa"], ["/GS","/Oa"]]
+EXTRA_FLAGSETS=[[], ["/GS"], ["/Oa"], ["/GS","/Oa"], ["/EHsc"]]   # /EHsc: a few retail modules (0x00C09000..) carry fs:[0] EH frames
 
 def parity_of(srctext, addr, leaf, retail, work, e, extra=(), base_flags=None, text_extractor=None):
     """Compile one TU and grade its .text against the retail oracle bytes.
@@ -445,7 +445,11 @@ def main():
         src=src0; winflags=[]; st,_,_=parity_of(src, addr, leaf, retail, work, e)
         if not st.startswith(("MATCH","RELOCATION")):
             done=False
-            for xf in EXTRA_FLAGSETS:
+            # a retail body that opens with the EH prologue (push -1 ; push handler) can only match
+            # under /EHsc: try that flag set first instead of last (saves ~20 compiles per row).
+            sweep=list(EXTRA_FLAGSETS)
+            if retail[:3]==b"\x6a\xff\x68" and ["/EHsc"] in sweep: sweep.remove(["/EHsc"]); sweep.insert(0,["/EHsc"])
+            for xf in sweep:
                 for P in PRAGMAS:
                     if not xf and not P: continue  # already tried base above
                     cand=(P+"\n"+src0) if P else src0
