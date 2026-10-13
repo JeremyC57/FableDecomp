@@ -222,6 +222,21 @@ persist forwarder F33 (24; retail re-reads the returned argument instead of cach
 non-frame-pointer `TransferBinaryIn` F24 (31; identical instructions, two range-check jumps target
 the other duplicated tail).
 
+### Wave 11 (256-byte rescan, tree copy and counted-pointer containers)
+
+Eleven more families, 251 rows: tree iterator increment and the unsigned-key `find` through the
+existing templates (28), the frame-pointer `push_back` (12) and a `PushBackConstant` wrapper (15),
+derived-class `operator=` over an out-of-line base assignment (14), `list<CCountedPointer>::clear`
+(13: advance the cursor first, then destroy the old node) and `_Move` of counted pointers (14: the
+inlined operator= reads the source's fields before the release), the VC6-era `_Tree::_Copy` /
+`operator=` pair (68: `parent` re-used as the running predecessor, a named head local across the
+Copy call, `and dword ptr [..],0` size TUs), the EH-module collection transfer (41) and the
+hashed-name constructors (46: `m_name("LIT")` -- an IMPLICIT CCharString conversion temporary is
+re-addressed with `lea`, an explicit `CCharString("LIT", -1)` reuses the constructor's returned
+pointer). Running total for the rescans: 2950/2966 rows from 95 families; catalog 24,721 (49.9%).
+Parked: the script callback `Fire` (F30, 26 rows; the `this` copy lands between the two vtable
+stores of the by-value CScriptThing argument here, after them in retail).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
