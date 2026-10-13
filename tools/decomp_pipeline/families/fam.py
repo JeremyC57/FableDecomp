@@ -713,6 +713,7 @@ int main()
         if cls==basecls: cls=f"{basecls}_Derived_{vt:08x}"
         sts=[i for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[0].mem.disp and ((i.operands[1].type==X86_OP_REG and (i.op_str.endswith(", eax") or i.op_str.endswith(", al"))) or (i.operands[1].type==X86_OP_IMM and i.operands[1].imm==0))]
         offs=[i.operands[0].mem.disp for i in sts]; sizes=[1 if "byte ptr" in i.op_str else 4 for i in sts]
+        if not offs: continue
         mem=""; prev=offs[0]
         for j,(o,sz) in enumerate(zip(offs,sizes)):
             if o>prev: mem+=f"    unsigned char _gap{j}[{o-prev:#x}];\n"
@@ -3632,6 +3633,757 @@ int main()
 {
     T::node h = {0,{0},0,0,0,0}; T t; t.h = &h; t.n = 0; long v = 3; T::it i = t.Ins(0, &h, v, 0); if (h.parent != i.c || h.r != i.c || t.n != 1 || i.c->k != 3) '''+FAIL(a)+'''
     std::free(i.c);
+'''),b)
+    elif TPL in ("w256_17",):   # retail vector grow-and-insert: Insert(where, const T* value, unused, count, bool noTail) for 4-byte scalar elements
+        sh=[i.operands[1].imm for i in ins if i.mnemonic=="sar"][0]; esz=1<<sh
+        if esz!=4: continue
+        nm="CRetailVector_dword"
+        add(a,nm,f"InsertGrow_{a}",HDRF(a,f"{nm}::InsertGrow(where, const long*, unused, count, noTail) -- reallocate to size + max(size, count), copy the head, fill `count` copies, copy the tail unless told not to",len(b))+f'''//
+// Retail bytes:  push ecx ; push ebp ; mov ebp,ecx ; mov eax,[ebp+4] ; push esi ; sub eax,[ebp] ; push edi ; mov edi,[esp+20h] ; sar eax,2 ; cmp eax,edi ; mov [esp+0Ch],eax ; lea ecx,[esp+20h] ; jb M ; lea ecx,[esp+0Ch] ; M: mov ecx,[ecx] ; add ecx,eax ; mov [esp+0Ch],ecx ; je Z ; lea eax,[ecx*4] ; push eax ; call malloc ; mov ecx,eax ; add esp,4 ; mov [esp+20h],ecx ; jmp H ; Z: mov dword ptr [esp+20h],0 ; mov ecx,[esp+20h] ; H: mov eax,[ebp] ; push ebx ; mov ebx,[esp+18h] ; cmp ebx,eax ; jne C ; mov eax,ecx ; jmp F ; C: mov esi,ebx ; sub esi,eax ; push esi ; push eax ; push ecx ; call memmove ; add esp,0Ch ; add eax,esi ; F: test edi,edi ; jbe T ; mov edx,[esp+1Ch] ; mov ecx,edi ; L: mov esi,[edx] ; mov [eax],esi ; add eax,4 ; dec ecx ; jne L ; T: mov cl,[esp+28h] ; test cl,cl ; mov edi,eax ; jne D ; mov esi,[ebp+4] ; cmp esi,ebx ; je D ; sub esi,ebx ; push esi ; push ebx ; push eax ; call memmove ; mov edi,eax ; add esp,0Ch ; add edi,esi ; D: mov eax,[ebp] ; test eax,eax ; pop ebx ; je R ; push eax ; call free ; add esp,4 ; R: mov eax,[esp+20h] ; mov ecx,[esp+0Ch] ; mov [ebp+4],edi ; pop edi ; lea edx,[eax+ecx*4] ; pop esi ; mov [ebp],eax ; mov [ebp+8],edx ; pop ebp ; pop ecx ; ret 14h
+// The retail vector's reallocating insert for 4-byte scalar elements {{first, last, end}}: new
+// capacity = size + max(size, count) (null buffer for zero, else malloc @ 0x00BFEA0E), the
+// elements before `where` are moved with memmove @ 0x00BFEAE6, `count` copies of *value are
+// written (the value is re-read per element: memmove may alias it), the tail after `where`
+// follows unless `noTail` is set (push_back/resize call it that way), the old buffer is released
+// with free @ 0x00BFEA14 and the three pointers are rewritten. The third argument is unused and
+// the new buffer pointer re-uses its dead `count` slot. `ret 14h`: five arguments. One of
+// {len(members)} bodies of this shape.
+extern "C" void* __cdecl malloc(unsigned int size);
+extern "C" void __cdecl free(void* block);
+extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);
+
+struct {nm} {{
+    long* first;
+    long* last;
+    long* end;
+    void InsertGrow_{a}(long* where, const long* value, void* unused, unsigned long count, bool noTail);
+}};
+
+void {nm}::InsertGrow_{a}(long* where, const long* value, void* unused, unsigned long count, bool noTail)
+{{
+    unsigned long size = last - first;
+    unsigned long capacity = size + (size < count ? count : size);
+    long* buffer = capacity == 0 ? 0 : (long*)malloc(capacity * sizeof(long));
+    long* out;
+    if (where == first)
+        out = buffer;
+    else {{
+        unsigned long head = (char*)where - (char*)first;
+        memmove(buffer, first, head);
+        out = (long*)((char*)buffer + head);
+    }}
+    for (unsigned long n = count; 0 < n; --n, ++out)
+        *out = *value;
+    long* newlast = out;
+    if (!noTail && last != where) {{
+        unsigned long tail = (char*)last - (char*)where;
+        memmove(out, where, tail);
+        newlast = (long*)((char*)out + tail);
+    }}
+    if (first)
+        free(first);
+    last = newlast;
+    first = buffer;
+    end = buffer + capacity;
+}}
+''',T(a,'''#include <cstdlib>
+#include <cstring>
+struct V { long* f; long* l; long* e;
+  void Ins(long* w, const long* v, void*, unsigned long c, bool nt) { unsigned long s = l - f; unsigned long cap = s + (s < c ? c : s); long* b = cap == 0 ? 0 : (long*)std::malloc(cap * 4); long* o; if (w == f) o = b; else { unsigned long h = (char*)w - (char*)f; std::memmove(b, f, h); o = (long*)((char*)b + h); } for (unsigned long n = c; 0 < n; --n, ++o) *o = *v; long* nl = o; if (!nt && l != w) { unsigned long t = (char*)l - (char*)w; std::memmove(o, w, t); nl = (long*)((char*)o + t); } if (f) std::free(f); l = nl; f = b; e = b + cap; } };
+int main()
+{
+    V v; v.f = (long*)std::malloc(8); v.f[0] = 1; v.f[1] = 3; v.l = v.f + 2; v.e = v.l; long x = 2; v.Ins(v.f + 1, &x, 0, 1, false); if (v.l - v.f != 3 || v.f[0] != 1 || v.f[1] != 2 || v.f[2] != 3 || v.e - v.f != 4) '''+FAIL(a)+'''
+    std::free(v.f);
+'''),b)
+    elif TPL in ("w256_28",):   # T* __fastcall UninitFillN(T* first, unsigned n, const T& value[, allocator]): placement-copy `n` copies through an out-of-line copy ctor
+        ctor=calls[0]; step=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[1].type==X86_OP_IMM and i.operands[0].type==X86_OP_REG][0]
+        cm,cn,_=label(ctor); ecls=cm.split("::")[-1] if (cn.split("::")[-1]==cm.split("::")[-1] and re.match(r"^C[A-Za-z0-9_]+$",cm.split("::")[-1]) and (cm,cn) in uniq) else f"CElement{step}_{ctor:08x}"
+        alloc=(retn==8)
+        add(a,"_global",f"UninitFillN_{ecls}_{a}",HDRF(a,f"_Uninit_fill_n<{ecls}*> -- placement-copy `count` copies of value from first ({step}-byte elements, copy ctor @ 0x{ctor:08X}), return the advanced pointer",len(b))+f'''//
+// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; push [value] ; mov ecx,esi ; call {ecls}::{ecls}(const {ecls}&) ; S: add esi,{step:#x} ; dec edi ; jne L ; pop edi ; E: mov eax,esi ; pop esi ; ret {retn}
+// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
+// the value reference on the stack{', then the by-value allocator' if alloc else ''}): copy-constructs `count` elements in place with
+// placement new (hence the null test on the destination) through the out-of-line copy
+// constructor @ 0x{ctor:08X} and returns the advanced destination. `ret {retn}` pops the value
+// reference{' and the unused allocator' if alloc else ''}. The element type is named from the copy constructor's label when
+// unique. One of {len(members)} bodies.
+#include <new>
+
+struct {ecls} {{
+    unsigned char _body[{step:#x}];
+    {ecls}(const {ecls}& other);           // 0x{ctor:08X}
+}};
+{"struct CRetailAllocator { };" if alloc else ""}
+{ecls}* __fastcall UninitFillN_{ecls}_{a}({ecls}* first, unsigned long count, const {ecls}& value{", CRetailAllocator allocator" if alloc else ""})
+{{
+    for (; 0 < count; --count, ++first)
+        new (first) {ecls}(value);
+    return first;
+}}
+''',T(a,'''#include <new>
+static int g_c = 0; struct E { unsigned char b[4]; E() {} E(const E& o) { ++g_c; b[0] = o.b[0]; } }; struct A {};
+static E* __fastcall UF(E* f, unsigned long n, const E& v'''+(", A" if alloc else "")+''') { for (; 0 < n; --n, ++f) new (f) E(v); return f; }
+int main()
+{
+    E v; v.b[0] = 7; unsigned char buf[12]; E* e = UF((E*)buf, 3, v'''+(", A()" if alloc else "")+'''); if (e != (E*)(buf + 12) || g_c != 3 || ((E*)buf)[2].b[0] != 7) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_82","w256_101"):   # _Uninit_fill_n for a pair {long, X} / {X, long}: one scalar member copied inline, the other through its out-of-line copy ctor
+        ctor=calls[0]; step=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[1].type==X86_OP_IMM and i.operands[0].type==X86_OP_REG][0]
+        cm,cn,_=label(ctor); xcls=cm.split("::")[-1] if (cn.split("::")[-1]==cm.split("::")[-1] and re.match(r"^C[A-Za-z0-9_]+$",cm.split("::")[-1]) and (cm,cn) in uniq) else f"CSecond_{ctor:08x}"
+        first_scalar=(TPL=="w256_82"); ecls=f"SPair{'Long' if first_scalar else ''}{xcls}{'' if first_scalar else 'Long'}"
+        alloc=(retn==8)
+        add(a,"_global",f"UninitFillN_{ecls}_{a}",HDRF(a,f"_Uninit_fill_n<{ecls}*> -- placement-copy `count` copies of a {{{'long, ' + xcls if first_scalar else xcls + ', long'}}} pair ({step}-byte elements, {xcls} copy ctor @ 0x{ctor:08X})",len(b))+f'''//
+// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe E ; push ebx ; mov ebx,[value] ; push edi ; mov edi,edx ; L: test esi,esi ; je S ; {"mov eax,[ebx] ; lea ecx,[ebx+4] ; push ecx ; lea ecx,[esi+4] ; mov [esi],eax ; call " + xcls + "::" + xcls if first_scalar else "push ebx ; mov ecx,esi ; call " + xcls + "::" + xcls + " ; mov eax,[ebx+4] ; mov [esi+4],eax"} ; S: add esi,{step:#x} ; dec edi ; jne L ; pop edi ; pop ebx ; E: mov eax,esi ; pop esi ; ret {retn}
+// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
+// value reference and the by-value allocator on the stack) for a pair whose {'first member is a 4-byte scalar' if first_scalar else 'second member is a 4-byte scalar'}
+// and whose {'second' if first_scalar else 'first'} member {xcls} has the out-of-line copy constructor @ 0x{ctor:08X}: the pair's
+// implicit copy constructor is inlined into the placement new (hence the null test), the
+// advanced destination is returned. One of {len(members)} bodies.
+#include <new>
+
+struct {xcls} {{
+    unsigned char _body[{step-4:#x}];
+    {xcls}(const {xcls}& other);           // 0x{ctor:08X}
+}};
+
+struct {ecls} {{
+{"    long first;" + chr(10) + "    " + xcls + " second;" if first_scalar else "    " + xcls + " first;" + chr(10) + "    long second;"}
+}};
+
+struct CRetailAllocator {{ }};
+
+{ecls}* __fastcall UninitFillN_{ecls}_{a}({ecls}* first, unsigned long count, const {ecls}& value{", CRetailAllocator allocator" if alloc else ""})
+{{
+    for (; 0 < count; --count, ++first)
+        new (first) {ecls}(value);
+    return first;
+}}
+''',T(a,'''#include <new>
+static int g_c = 0; struct X { unsigned char b[4]; X() {} X(const X& o) { ++g_c; b[0] = o.b[0]; } }; struct A {};
+struct P { '''+("long f; X s;" if first_scalar else "X f; long s;")+''' };
+static P* __fastcall UF(P* f, unsigned long n, const P& v'''+(", A" if alloc else "")+''') { for (; 0 < n; --n, ++f) new (f) P(v); return f; }
+int main()
+{
+    P v; '''+("v.f = 5; v.s.b[0] = 7;" if first_scalar else "v.f.b[0] = 7; v.s = 5;")+''' unsigned char buf[24]; P* e = UF((P*)buf, 3, v'''+(", A()" if alloc else "")+'''); if (e != (P*)(buf + 24) || g_c != 3 || ((P*)buf)[2].'''+("s.b[0]" if first_scalar else "f.b[0]")+''' != 7) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_51",):   # _Uninit_fill_n for an 8-byte trivially-copyable pair: inline two-dword copy under placement new
+        step=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[1].type==X86_OP_IMM and i.operands[0].type==X86_OP_REG][0]
+        if step!=8: continue
+        ecls=f"SPairLongLong"; alloc=(retn==8)
+        add(a,"_global",f"UninitFillN_{ecls}_{a}",HDRF(a,f"_Uninit_fill_n<{ecls}*> -- placement-copy `count` copies of an 8-byte {{long, long}} pair, return the advanced pointer",len(b))+f'''//
+// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe E ; mov ecx,[value] ; push esi ; L: test eax,eax ; je S ; mov esi,[ecx] ; mov [eax],esi ; mov esi,[ecx+4] ; mov [eax+4],esi ; S: add eax,8 ; dec edx ; jne L ; pop esi ; E: ret {retn}
+// Retail std::vector helper (Dinkumware `_Uninit_fill_n`, __fastcall: first in ecx, count in edx,
+// value reference and the by-value allocator on the stack) for an 8-byte pair of 4-byte scalars:
+// the trivial copy is two dword moves under the placement-new null test; the advanced
+// destination is returned. One of {len(members)} bodies.
+#include <new>
+
+struct {ecls} {{
+    long first;
+    long second;
+}};
+
+struct CRetailAllocator {{ }};
+
+{ecls}* __fastcall UninitFillN_{ecls}_{a}({ecls}* first, unsigned long count, const {ecls}& value{", CRetailAllocator allocator" if alloc else ""})
+{{
+    for (; 0 < count; --count, ++first)
+        new (first) {ecls}(value);
+    return first;
+}}
+''',T(a,'''#include <new>
+struct P { long f, s; }; struct A {};
+static P* __fastcall UF(P* f, unsigned long n, const P& v'''+(", A" if alloc else "")+''') { for (; 0 < n; --n, ++f) new (f) P(v); return f; }
+int main()
+{
+    P v; v.f = 5; v.s = 7; P buf[3]; P* e = UF(buf, 3, v'''+(", A()" if alloc else "")+'''); if (e != buf + 3 || buf[2].s != 7 || buf[0].f != 5) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_38",):   # ~CX() {}: members at the lea offsets destroyed out of line (reverse order), the +0 sub-object's destructor by tail call
+        leas=[(i.operands[1].mem.disp) for i in ins if i.mnemonic=="lea"]; tail=[i.operands[0].imm for i in ins if i.mnemonic=="jmp" and i.operands[0].type==X86_OP_IMM][0]
+        if len(calls)!=len(leas) or not leas: continue
+        pairs=sorted(zip(leas,calls))
+        def dcls(d):
+            dm,dn,_=label(d); dl=dn.split("::")[-1]; return dm.split("::")[-1] if (dl.startswith("~") and re.match(r"^C[A-Za-z0-9_]+$",dm.split("::")[-1]) and (dm,dn) in uniq) else f"CMember_{d:08x}"
+        names={d:dcls(d) for d in set(calls+[tail])}
+        offs=[o for o,_ in pairs]; gaps=[offs[j+1]-offs[j] for j in range(len(offs)-1)]; msz=min(gaps) if gaps else 4
+        decl=""; body=""
+        for d,c in sorted(names.items()):
+            if d in [cc for _,cc in pairs]: sz=msz
+            else: sz=4
+            decl+=f"struct {c} {{\n    unsigned char _body[{sz:#x}];\n    ~{c}();                            // 0x{d:08X}\n}};\n\n"
+        cls=f"CAggregate_{a}"; mem=f"    {names[tail]} m_first;{' '*(28-len(names[tail]))}// +0 (its destructor is the tail call)\n"; prev=4
+        for j,(o,c) in enumerate(pairs):
+            if o>prev: mem+=f"    unsigned char _gap{j}[{o-prev:#x}];\n"
+            mem+=f"    {names[c]} m_{o:02x};{' '*(28-len(names[c]))}// +{o:#x}\n"; prev=o+msz
+        add(a,"_unattributed",f"~{cls}",HDRF(a,f"{cls}::~{cls}() -- implicit destructor: members at {', '.join('+%#x'%o for o in reversed(offs))} destroyed out of line, the +0 member by tail call",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; {" ; ".join(f"lea ecx,[esi+{o:#x}] ; call {names[c]}::~{names[c]}" for o,c in reversed(pairs))} ; mov ecx,esi ; pop esi ; jmp {names[tail]}::~{names[tail]}
+// Implicit (compiler-generated) destructor of a non-polymorphic aggregate: members are destroyed
+// in reverse declaration order through their out-of-line destructors and the first member's
+// destructor (@ 0x{tail:08X}) is reached by tail call. Member types are named from the destructor
+// labels when unique, else by the destructor address. The manifest label (`_Dest_val<...>` /
+// `~{mname.split("::")[-1][1:] if mname.split("::")[-1].startswith("~") else mname.split("::")[-1]}`) is propagated. One of {len(members)} bodies of this shape.
+{decl}struct {cls} {{
+{mem}    ~{cls}();
+}};
+
+{cls}::~{cls}()
+{{
+}}
+''',T(a,'''static int g_d = 0; struct S { void* p; ~S() { g_d = g_d * 10 + (int)(long)p; } }; struct F { void* q; ~F() { g_d = g_d * 10 + 9; } };
+struct X { F a; S b, c; ~X(); }; X::~X() {}
+int main()
+{
+    { X x; x.b.p = (void*)2; x.c.p = (void*)3; } if (g_d != 329) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_99",):   # ~CX() {}: inlined shared-pointer member release (block with a vtable: --refs, slot-1 destroy, null the member), base/first-member destructor by tail call
+        off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str][0]
+        tail=[i.operands[0].imm for i in ins if i.mnemonic=="jmp" and i.operands[0].type==X86_OP_IMM][0]
+        tm,tn,_=label(tail); tl=tn.split("::")[-1]; bcls=tm.split("::")[-1] if (tl.startswith("~") and re.match(r"^C[A-Za-z0-9_]+$",tm.split("::")[-1]) and (tm,tn) in uniq) else f"CBase_{tail:08x}"
+        cls=f"CSharedOwner_{a}"
+        add(a,"_unattributed",f"~{cls}",HDRF(a,f"{cls}::~{cls}() -- releases the shared block at +{off:#x} (--refs, virtual destroy at zero, member nulled), then {bcls}::~{bcls} by tail call",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; mov ecx,[esi+{off:#x}] ; test ecx,ecx ; je T ; dec dword ptr [ecx+4] ; jne N ; mov eax,[ecx] ; call [eax+4] ; N: mov dword ptr [esi+{off:#x}],0 ; T: mov ecx,esi ; pop esi ; jmp {bcls}::~{bcls}
+// Implicit/empty destructor: the shared-pointer member at +{off:#x} is released inline (its control
+// block carries a vtable whose slot 1 destroys it when the reference count at +4 drops to zero,
+// and the member is nulled only when it was set), then the base class destructor @ 0x{tail:08X}
+// runs by tail call. The manifest label (`~{mname.split("::")[-1][1:]}`) is propagated. One of {len(members)} bodies.
+struct SSharedBlock {{
+    virtual void v00();
+    virtual void Destroy();                // slot 1: called when the count reaches zero
+    long m_references;                     // +4
+}};
+
+struct CSharedPointer {{
+    SSharedBlock* m_pBlock;
+    ~CSharedPointer()
+    {{
+        if (m_pBlock) {{
+            if (--m_pBlock->m_references == 0)
+                m_pBlock->Destroy();
+            m_pBlock = 0;
+        }}
+    }}
+}};
+
+struct {bcls} {{
+    unsigned char _body[{off:#x}];
+    ~{bcls}();                             // 0x{tail:08X}
+}};
+
+struct {cls} : {bcls} {{
+    CSharedPointer m_pointer;              // +{off:#x}
+    ~{cls}();
+}};
+
+{cls}::~{cls}()
+{{
+}}
+''',T(a,'''static int g_d = 0; struct K { virtual void v() {} virtual void D() { g_d += 100; } long r; };
+struct P { K* b; ~P() { if (b) { if (--b->r == 0) b->D(); b = 0; } } };
+struct B { long x; ~B() { ++g_d; } }; struct X : B { P p; ~X() {} };
+int main()
+{
+    K k; k.r = 1; { X x; x.p.b = &k; } if (g_d != 101) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_76",):   # pair<unsigned long, T>::pair(const pair& other): first copied inline, second through T's out-of-line copy ctor
+        ctor=calls[0]; cm,cn,_=label(ctor); xcls=cm.split("::")[-1] if (cn.split("::")[-1]==cm.split("::")[-1] and re.match(r"^C[A-Za-z0-9_]+$",cm.split("::")[-1]) and (cm,cn) in uniq) else f"CSecond_{ctor:08x}"
+        cls=f"SPairLong{xcls}"
+        add(a,"_unattributed",cls,HDRF(a,f"{cls}::{cls}(const {cls}&) -- copy constructor of a {{unsigned long, {xcls}}} pair: scalar copied inline, {xcls} copy ctor @ 0x{ctor:08X}",len(b))+f'''//
+// Retail bytes:  mov eax,[esp+4] ; push esi ; mov esi,ecx ; mov ecx,[eax] ; add eax,4 ; mov [esi],ecx ; push eax ; lea ecx,[esi+4] ; call {xcls}::{xcls}(const {xcls}&) ; mov eax,esi ; pop esi ; ret 4
+// Copy constructor of a std::pair-like {{unsigned long, {xcls}}} value (the map node value of the
+// manifest label `pair<unsigned_long,...>`): the scalar first member is copied inline and the
+// second member through its out-of-line copy constructor @ 0x{ctor:08X}; `this` is returned.
+// The second type is named from the constructor's label when unique. One of {len(members)} bodies.
+struct {xcls} {{
+    void* m_data;
+    {xcls}(const {xcls}& other);           // 0x{ctor:08X}
+}};
+
+struct {cls} {{
+    unsigned long first;                   // +0
+    {xcls} second;                         // +4
+    {cls}(const {cls}& other);
+}};
+
+{cls}::{cls}(const {cls}& other)
+    : first(other.first)
+    , second(other.second)
+{{
+}}
+''',T(a,'''static int g_c = 0; struct X { void* d; X(void* v) : d(v) {} X(const X& o) : d(o.d) { ++g_c; } };
+struct P { unsigned long f; X s; P(unsigned long a, void* b) : f(a), s(b) {} P(const P& o) : f(o.f), s(o.s) {} };
+int main()
+{
+    int v; P p(3, &v); P q(p); if (q.f != 3 || q.s.d != &v || g_c != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_44",):   # void vector::push_back(const T* value): construct in place when there is room (out-of-line copy ctor), else the reallocating insert of one element
+        if len(calls)!=2: continue
+        ctor,grow=calls; step=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM][0]
+        cm,cn,_=label(ctor); ecls=cm.split("::")[-1] if (cn.split("::")[-1]==cm.split("::")[-1] and re.match(r"^C[A-Za-z0-9_]+$",cm.split("::")[-1]) and (cm,cn) in uniq) else f"CElement{step}_{ctor:08x}"
+        nm=f"CRetailVector_{ecls}"
+        add(a,"_global",f"PushBack_{ecls}_{a}",HDRF(a,f"{nm}::push_back(const {ecls}*) -- placement-copy at `last` when there is room ({step}-byte elements, copy ctor @ 0x{ctor:08X}), else InsertGrow @ 0x{grow:08X}",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; mov ecx,[esi+4] ; cmp ecx,[esi+8] ; je G ; test ecx,ecx ; je S ; mov eax,[esp+8] ; push eax ; call {ecls}::{ecls}(const {ecls}&) ; S: add dword ptr [esi+4],{step:#x} ; pop esi ; ret 4 ; G: mov eax,[esp+8] ; push 1 ; push 1 ; lea edx,[esp+10h] ; push edx ; push eax ; push ecx ; mov ecx,esi ; call InsertGrow ; pop esi ; ret 4
+// Retail vector push_back for {step}-byte elements {{first, last, end}}: with spare capacity the element
+// is copy-constructed in place at `last` (placement new, hence the null test) through the
+// out-of-line copy constructor @ 0x{ctor:08X} and `last` advances; when full, the reallocating
+// insert @ 0x{grow:08X} is called for one element with `noTail` set. Its third argument is a
+// const reference to an empty tag object (Dinkumware-style iterator category): the compiler homes
+// that 1-byte temporary in this function's dead argument slot, which is the address retail pushes.
+// The element type is named from the copy constructor's label when unique. One of {len(members)} bodies.
+#include <new>
+
+struct {ecls} {{
+    unsigned char _body[{step:#x}];
+    {ecls}(const {ecls}& other);           // 0x{ctor:08X}
+}};
+
+struct SScalarTag {{ SScalarTag() {{ }} }};   // user constructor: no zero-initialisation of the 1-byte temporary                 // empty iterator-category tag: its 1-byte temporary lives in a dead stack slot
+
+struct {nm} {{
+    {ecls}* first;
+    {ecls}* last;
+    {ecls}* end;
+    void InsertGrow({ecls}* where, const {ecls}& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x{grow:08X}
+    void PushBack_{ecls}_{a}(const {ecls}& value);
+}};
+
+void {nm}::PushBack_{ecls}_{a}(const {ecls}& value)
+{{
+    if (last != end) {{
+        new (last) {ecls}(value);
+        ++last;
+    }}
+    else
+        InsertGrow(last, value, SScalarTag(), 1, true);
+}}
+''',T(a,'''#include <new>
+static int g_c = 0, g_g = 0; struct E { unsigned char b[4]; E() {} E(const E& o) { ++g_c; b[0] = o.b[0]; } };
+struct Tg { Tg() {} }; struct V { E* f; E* l; E* e; void G(E*, const E&, const Tg&, unsigned long, bool) { ++g_g; } void P(const E& v) { if (l != e) { new (l) E(v); ++l; } else G(l, v, Tg(), 1, true); } };
+int main()
+{
+    unsigned char buf[8]; V v; v.f = (E*)buf; v.l = v.f; v.e = v.f + 2; E x; x.b[0] = 9; v.P(x); v.P(x); v.P(x); if (g_c != 2 || g_g != 1 || v.l != v.f + 2 || v.f[1].b[0] != 9) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_50",):   # void CX::TransferOut(CPersistContext* ctx, long name) { long value = *m_pValue; ::TransferOut(ctx, name, &value); }
+        callee=calls[0]; off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "ecx +" in i.op_str][0]
+        cls=f"CTransferableLong_{callee:08x}"
+        add(a,"_unattributed",f"TransferOut_{cls}",HDRF(a,f"{cls}::vfunc_0(CPersistContext*, long) -- copies the target dword into a local and hands it to the __fastcall helper 0x{callee:08X}",len(b))+f'''//
+// Retail bytes:  push ecx ; mov eax,[ecx+{off:#x}] ; mov ecx,[eax] ; lea edx,[esp] ; mov [esp],ecx ; mov ecx,[esp+8] ; push edx ; mov edx,[esp+10h] ; call TransferOut ; pop ecx ; ret 8
+// Persist write hook of a four-byte transferable component: the dword behind the target
+// pointer at +{off:#x} is copied into a stack local whose address goes to the __fastcall helper
+// @ 0x{callee:08X} (context in ecx, the dword second parameter in edx, &local on the stack).
+// The manifest label (`CPersistContext_TransferableComponent::vfunc_0`) is propagated; the
+// class is named by the helper. One of {len(members)} bodies of this shape.
+struct CPersistContext;
+void __fastcall TransferOut_{callee:08x}(CPersistContext* context, long name, long* value);   // 0x{callee:08X}
+
+struct {cls} {{
+    virtual void v00();
+{"    unsigned char _pad[%#x];" % (off-4) + chr(10) if off>4 else ""}    long* m_pValue;                        // +{off:#x}
+    virtual void TransferOut(CPersistContext* context, long name);
+}};
+
+void {cls}::TransferOut(CPersistContext* context, long name)
+{{
+    long value = *m_pValue;
+    TransferOut_{callee:08x}(context, name, &value);
+}}
+''',T(a,'''struct Ctx; static long g_v = 0; static void __fastcall Helper(Ctx*, long n, long* v) { g_v = *v + n; }
+struct X { virtual void v00() {} long* p; virtual void T(Ctx* c, long n) { long v = *p; Helper(c, n, &v); } };
+int main()
+{
+    long val = 40; X x; x.p = &val; x.T(0, 2); if (g_v != 42) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_72",):   # void CX::SetItem(CIntelligentPointer item) { m_member.SetPItem(item.GetPItem()); }  (8-byte by-value parameter destroyed by the callee)
+        if len(calls)!=3: continue
+        getp,setp,dtor=calls; off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]
+        cls=f"CItemOwner_{a}"
+        add(a,"_unattributed",f"SetItem_{cls}",HDRF(a,f"{cls}::SetItem(CIntelligentPointer) -- m_{off:x}.SetPItem(item.GetPItem()); the by-value argument is destroyed here",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; lea ecx,[esp+8] ; call GetPItem ; push eax ; lea ecx,[esi+{off:#x}] ; call SetPItem ; lea ecx,[esp+8] ; call ~CIntelligentPointer ; pop esi ; ret 8
+// Takes an 8-byte CIntelligentPointer by value (so the callee destroys it, `ret 8`), reads its
+// target through CBaseIntelligentPointer::GetPItem @ 0x{getp:08X} and stores it into the member
+// pointer at +{off:#x} through SetPItem @ 0x{setp:08X}; the argument's destructor @ 0x{dtor:08X}
+// runs before returning. The manifest label (`CTCInventoryBase::GetItemDescription`) is
+// propagated; the class is named descriptively. One of {len(members)} bodies of this shape.
+struct CBaseObjectPointer;
+
+struct CIntelligentPointer {{              // CBaseIntelligentPointer: 8 bytes (struct_layouts_egor.tsv)
+    void* m_pLink;                         // +0
+    CBaseObjectPointer* m_pData;           // +4
+    CBaseObjectPointer* GetPItem();        // 0x{getp:08X}
+    void SetPItem(CBaseObjectPointer* item);   // 0x{setp:08X}
+    ~CIntelligentPointer();                // 0x{dtor:08X}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{off:#x}];
+    CIntelligentPointer m_item;            // +{off:#x}
+    void SetItem_{cls}(CIntelligentPointer item);
+}};
+
+void {cls}::SetItem_{cls}(CIntelligentPointer item)
+{{
+    m_item.SetPItem(item.GetPItem());
+}}
+''',T(a,'''static int g_d = 0; struct O; struct IP { void* l; O* d; O* G() { return d; } void S(O* o) { d = o; } ~IP() { ++g_d; } };
+struct X { unsigned char pad[8]; IP m; void Set(IP i) { m.S(i.G()); } };
+int main()
+{
+    X x; x.m.d = 0; IP i; i.d = (O*)&x; x.Set(i); if (x.m.d != (O*)&x || g_d != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_33",):   # T* __stdcall CPersistTraits<T>::TransferIn(T* value, CPersistItem item, CPersistContext* ctx) { Helper(value, item, ctx); return value; }
+        callee=calls[0]; tcls=re.sub(r"[^A-Za-z0-9_]+","_",mmod).strip("_") if (mmod,mname) in uniq else f"CTraits_{callee:08x}"
+        add(a,"_unattributed",f"TransferIn_{tcls}_{a}",HDRF(a,f"{mmod}::TransferIn(T*, CPersistItem, CPersistContext*) -- forwards to the __stdcall helper 0x{callee:08X} with the 4-byte item copied by value, returns the value pointer",len(b))+f'''//
+// Retail bytes:  push [esp+0Ch] ; mov edx,[esp+0Ch] ; push ecx ; mov eax,esp ; push [esp+0Ch] ; mov [eax],edx ; call Helper ; mov eax,[esp+4] ; ret 0Ch
+// Persist traits forwarder (__stdcall, three dword arguments): the context pointer, the
+// 4-byte persist item (a class with an inline copy constructor, so it is copied into an argument
+// slot by address rather than pushed as a dword) and the value pointer go to the __stdcall
+// helper @ 0x{callee:08X}; the value pointer is returned. One of {len(members)} bodies of this shape.
+struct CPersistContext;
+
+struct CPersistItem {{
+    void* m_handle;
+    CPersistItem(const CPersistItem& other) : m_handle(other.m_handle) {{ }}
+}};
+
+void __stdcall TransferInHelper_{callee:08x}(void* value, CPersistItem item, CPersistContext* context);   // 0x{callee:08X}
+
+void* __stdcall TransferIn_{tcls}_{a}(void* value, CPersistItem item, CPersistContext* context)
+{{
+    TransferInHelper_{callee:08x}(value, item, context);
+    return value;
+}}
+''',T(a,'''struct C; struct I { void* h; I(void* v) : h(v) {} I(const I& o) : h(o.h) {} };
+static void* g_v = 0; static void __stdcall H(void* v, I i, C*) { g_v = i.h; }
+static void* __stdcall T(void* v, I i, C* c) { H(v, i, c); return v; }
+int main()
+{
+    int a, b; I i(&b); if (T(&a, i, 0) != &a || g_v != &b) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_54",):   # `??_G` of a non-polymorphic class: member destructors, base destructor, flag-tested delete (emitted by a delete-expression)
+        leas=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea"]
+        if len(calls)!=len(leas)+2: continue
+        mcalls=calls[:len(leas)]; basedt=calls[len(leas)]
+        def dcls2(d):
+            dm,dn,_=label(d); dl=dn.split("::")[-1]; return dm.split("::")[-1] if (dl.startswith("~") and re.match(r"^C[A-Za-z0-9_]+$",dm.split("::")[-1]) and (dm,dn) in uniq) else f"CMember_{d:08x}"
+        pairs=sorted(zip(leas,mcalls)); offs=[o for o,_ in pairs]; gaps=[offs[j+1]-offs[j] for j in range(len(offs)-1)]; msz=min(gaps) if gaps else 8
+        names={d:dcls2(d) for d in set(mcalls)}; bm,bn,_=label(basedt); bl=bn.split("::")[-1]; bcls=bm.split("::")[-1] if (bl.startswith("~") and re.match(r"^C[A-Za-z0-9_]+$",bm.split("::")[-1]) and (bm,bn) in uniq) else f"CBase_{basedt:08x}"
+        cls=f"{bcls}_Derived_{a}"
+        decl="".join(f"struct {c} {{\n    unsigned char _body[{msz:#x}];\n    ~{c}();                            // 0x{d:08X}\n}};\n\n" for d,c in sorted(names.items()))
+        mem=""; prev=offs[0]
+        for j,(o,c) in enumerate(pairs):
+            if o>prev: mem+=f"    unsigned char _gap{j}[{o-prev:#x}];\n"
+            mem+=f"    {names[c]} m_{o:02x};{' '*(28-len(names[c]))}// +{o:#x}\n"; prev=o+msz
+        add(a,"_unattributed",f"ScalarDeletingDestructor_{cls}",HDRF(a,f"{cls}::`scalar deleting destructor'(unsigned int) -- non-virtual: {len(offs)} members destroyed out of line, {bcls}::~{bcls}, flag-tested delete",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; {" ; ".join(f"lea ecx,[esi+{o:#x}] ; call {names[c]}::~{names[c]}" for o,c in reversed(pairs))} ; mov ecx,esi ; call {bcls}::~{bcls} ; test byte ptr [esp+8],1 ; je K ; push esi ; call operator delete ; add esp,4 ; K: mov eax,esi ; pop esi ; ret 4
+// `??_G` of a NON-polymorphic class (no vtable store anywhere): VC7.1 emits a scalar deleting
+// destructor for any class with a non-trivial destructor that a translation unit deletes. The
+// implicit destructor is inlined: members at {', '.join('+%#x'%o for o in reversed(offs))} are destroyed in reverse
+// declaration order, then the base class destructor @ 0x{basedt:08X} runs, and bit 0 of the flag
+// argument selects the flag-tested operator delete @ 0x00BFE9BC. The manifest label (`vector
+// deleting destructor`) is propagated; names come from the destructor labels when unique.
+// One of {len(members)} bodies of this shape.
+{decl}struct {bcls} {{
+    unsigned char _body[{offs[0]:#x}];
+    ~{bcls}();                             // 0x{basedt:08X}
+}};
+
+struct {cls} : {bcls} {{
+{mem}}};
+
+// The delete-expression that makes the compiler emit {cls}::`scalar deleting destructor'.
+void Destroy_{cls}({cls}* object)
+{{
+    delete object;
+}}
+''',T(a,'''static int g_d = 0; struct S { void* p; void* q; ~S() { g_d = g_d * 10 + 2; } }; struct B { long x; ~B() { g_d = g_d * 10 + 1; } };
+struct X : B { S a, b; };
+static void Kill(X* x) { delete x; }
+int main()
+{
+    Kill(new X); if (g_d != 221) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_134",):   # bool __stdcall Less(const S* a, const S* b): order by the dword at +4, then by address
+        off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "edx +" in i.op_str][0]
+        add(a,"_unattributed",f"LessByKeyThenAddress_{a}",HDRF(a,f"bool __stdcall LessByKeyThenAddress(const SKeyed*, const SKeyed*) -- a->m_{off:x} != b->m_{off:x} ? a->m_{off:x} < b->m_{off:x} : a < b",len(b))+f'''//
+// Retail bytes:  mov edx,[esp+4] ; mov eax,[edx+{off:#x}] ; push esi ; mov esi,[esp+0Ch] ; mov ecx,[esi+{off:#x}] ; cmp eax,ecx ; jne S ; cmp edx,esi ; S: sbb eax,eax ; neg eax ; pop esi ; ret 8
+// Strict weak ordering helper (__stdcall, two object pointers): compares the unsigned dword at
+// +{off:#x}; equal keys fall back to the objects' addresses. Both branches end in the same
+// `sbb/neg` materialisation of the carry flag, so the compiler shares it. The manifest has no
+// label for this gap-scan body; it is named descriptively. One of {len(members)} bodies.
+struct SKeyed {{
+{"    unsigned char _pad[%#x];" % off + chr(10) if off else ""}    unsigned long m_key;                   // +{off:#x}
+}};
+
+bool __stdcall LessByKeyThenAddress_{a}(const SKeyed* a, const SKeyed* b)
+{{
+    if (a->m_key != b->m_key)
+        return a->m_key < b->m_key;
+    return a < b;
+}}
+''',T(a,'''struct K { unsigned char p[4]; unsigned long k; };
+static bool __stdcall L(const K* a, const K* b) { if (a->k != b->k) return a->k < b->k; return a < b; }
+int main()
+{
+    K x, y; x.k = 1; y.k = 2; if (!L(&x, &y) || L(&y, &x)) '''+FAIL(a)+'''
+    y.k = 1; if (L(&x, &y) != (&x < &y)) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_29",):   # void CX::FreeTree(Node* node) { while (node) { FreeTree(node->m_child); Node* next = node->m_next; free(node); node = next; } }
+        if len(calls)!=2 or calls[0]!=va: continue
+        child=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str]
+        if len(child)!=2: continue
+        coff,noff=child; cls=f"CTreeOwner_{a}"
+        add(a,"_unattributed",f"FreeTree_{cls}",HDRF(a,f"{cls}::FreeTree(SNode*) -- recursive free of a child-linked (+{coff:#x}) / sibling-linked (+{noff:#x}) node list",len(b))+f'''//
+// Retail bytes:  push ebx ; push esi ; mov esi,[esp+0Ch] ; test esi,esi ; mov ebx,ecx ; je E ; push edi ; L: mov eax,[esi+{coff:#x}] ; push eax ; mov ecx,ebx ; call FreeTree ; mov edi,[esi+{noff:#x}] ; push esi ; call free ; add esp,4 ; test edi,edi ; mov esi,edi ; jne L ; pop edi ; E: pop esi ; pop ebx ; ret 4
+// Walks a sibling list: recurses into each node's child list at +{coff:#x}, remembers the sibling at
+// +{noff:#x}, frees the node (free @ 0x00BFEA14) and continues with the sibling. `this` is only
+// needed for the recursive call. The manifest label (`LTextTreeWalkThrough::BuildTreeArray`) is
+// propagated; the owner is named descriptively. One of {len(members)} bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct SNode {{
+    unsigned char _pad[{min(coff,noff):#x}];
+    {"SNode* m_child;" if coff<noff else "SNode* m_next;"}{" "*(23)}// +{min(coff,noff):#x}
+{"    unsigned char _gap[%#x];" % (max(coff,noff)-min(coff,noff)-4) + chr(10) if max(coff,noff)-min(coff,noff)>4 else ""}    {"SNode* m_next;" if coff<noff else "SNode* m_child;"}{" "*(23)}// +{max(coff,noff):#x}
+}};
+
+struct {cls} {{
+    void FreeTree_{cls}(SNode* node);
+}};
+
+void {cls}::FreeTree_{cls}(SNode* node)
+{{
+    while (node) {{
+        FreeTree_{cls}(node->m_child);
+        SNode* next = node->m_next;
+        free(node);
+        node = next;
+    }}
+}}
+''',T(a,'''#include <cstdlib>
+static int g_f = 0; struct N { unsigned char p[8]; N* n; N* c; };
+struct X { void F(N* d) { while (d) { F(d->c); N* x = d->n; std::free(d); ++g_f; d = x; } } };
+int main()
+{
+    N* a = (N*)std::malloc(sizeof(N)); N* b = (N*)std::malloc(sizeof(N)); N* c = (N*)std::malloc(sizeof(N)); a->n = b; a->c = 0; b->n = 0; b->c = c; c->n = 0; c->c = 0;
+    X x; x.F(a); if (g_f != 3) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_75",):   # void vector::push_back(const long& value): 4-byte scalar stored in place when there is room, else the reallocating insert (no callee-saved registers)
+        if len(calls)!=1: continue
+        grow=calls[0]; step=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM][0]
+        if step!=4: continue
+        nm=f"CRetailVector_dword"
+        add(a,"_global",f"PushBack_dword_{a}",HDRF(a,f"{nm}::push_back(const long&) -- store at `last` when there is room, else InsertGrow @ 0x{grow:08X} for one element",len(b))+f'''//
+// Retail bytes:  mov eax,[ecx+4] ; cmp eax,[ecx+8] ; je G ; test eax,eax ; je S ; mov edx,[esp+4] ; mov edx,[edx] ; mov [eax],edx ; S: add dword ptr [ecx+4],4 ; ret 4 ; G: push 1 ; push 1 ; lea edx,[esp+0Ch] ; push edx ; mov edx,[esp+10h] ; push edx ; push eax ; call InsertGrow ; ret 4
+// Retail vector push_back for 4-byte scalar elements {{first, last, end}}: with spare capacity the
+// value is placement-copied at `last` (hence the null test) and `last` advances; when full, the
+// reallocating insert @ 0x{grow:08X} is called for one element with `noTail` set, its third
+// argument the address of a 1-byte empty-tag temporary homed in the dead argument slot. `this`
+// stays in ecx for the call. One of {len(members)} bodies of this shape.
+#include <new>
+
+struct SScalarTag {{ SScalarTag() {{ }} }};   // user constructor: no zero-initialisation of the 1-byte temporary
+
+struct {nm} {{
+    long* first;
+    long* last;
+    long* end;
+    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x{grow:08X}
+    void PushBack_dword_{a}(const long& value);
+}};
+
+void {nm}::PushBack_dword_{a}(const long& value)
+{{
+    if (last != end) {{
+        new (last) long(value);
+        ++last;
+    }}
+    else
+        InsertGrow(last, value, SScalarTag(), 1, true);
+}}
+''',T(a,'''#include <new>
+static int g_g = 0; struct Tg { Tg() {} };
+struct V { long* f; long* l; long* e; void G(long*, const long&, const Tg&, unsigned long, bool) { ++g_g; } void P(const long& v) { if (l != e) { new (l) long(v); ++l; } else G(l, v, Tg(), 1, true); } };
+int main()
+{
+    long buf[2]; V v; v.f = buf; v.l = buf; v.e = buf + 2; long x = 9; v.P(x); v.P(x); v.P(x); if (g_g != 1 || v.l != buf + 2 || buf[1] != 9) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_48",):   # persist: context->Transfer<long>("Name", this->m_value, default 0)  (dword default temporary)
+        litva=[p for p in pushes if p>0x1200000][0]; s=lit(litva)
+        off=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[0].type==X86_OP_REG][0]; callee=calls[0]
+        if not any(i.mnemonic=="mov" and "dword ptr [esp + 0xc], 0" in i.op_str for i in ins): continue
+        mcls=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else None
+        mod=mcls or "_unattributed"; fname="vfunc_1" if mcls else f"PersistTransfer_{san(s)}_{a}"; cls=mcls or f"CPersistable_{a}"
+        params="CPersistContext* context" if retn==4 else "CPersistContext* context, long unused"
+        add(a,mod,fname,HDRF(a,f"{cls}::{fname}({params}) -- persists the {s} dword at +{off:#x} with a zero default",len(b))+f'''//
+// Retail bytes:  push ecx ; lea eax,[esp] ; push eax ; add ecx,{off:#x} ; push ecx ; mov ecx,[esp+10h] ; push offset "{s}" ; mov dword ptr [esp+0Ch],0 ; call CPersistContext::Transfer<long> ; pop ecx ; ret {retn}
+// Virtual persist hook (slot 1 of this class's vtable): transfers the dword member at +{off:#x}
+// through CPersistContext::Transfer<long>(name, value, default) @ 0x{callee:08X}, with a zero
+// default built in a dword stack temporary.{"" if retn==4 else " The second argument is not used by this body."} The member name is taken from the
+// persisted key; the member type is any 4-byte scalar (`long` models it). One of {len(members)} bodies.
+struct CPersistContext {{
+    void Transfer(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x{callee:08X}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{off-4:#x}];        // after the vptr; members not touched here
+    long m_{san(s)};                        // +{off:#x}
+    virtual void v00();
+    virtual void {fname}({params});
+}};
+
+void {cls}::{fname}({params})
+{{
+    long defaultValue = 0;
+    context->Transfer("{s}", m_{san(s)}, defaultValue);
+}}
+''',T(a,'''static int g_t = 0; struct Ctx { void Transfer(const char* n, long& v, const long& d) { v = n[0] + d + 1; ++g_t; } };
+struct P { unsigned char pad[0x18]; long b; virtual void v00() {} virtual void vf(Ctx* c, long) { long d = 0; c->Transfer("A", b, d); } };
+int main()
+{
+    Ctx c; P p; p.b = 0; p.vf(&c, 0); if (g_t != 1 || p.b != 'B') '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_122",):   # node* list::Buynode(const long& value): malloc the node, placement-copy the 4-byte scalar value
+        n=pushes[0]; off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea"][0]
+        if len(calls)!=1 or n-off!=4: continue
+        nm=f"CRetailList_node{n:#x}_dword"
+        add(a,nm,"Buynode",HDRF(a,f"{nm}::Buynode(const long&) -- malloc a {n:#x}-byte node and placement-copy the dword value at +{off:#x}",len(b))+f'''//
+// Retail bytes:  push {n:#x} ; call malloc ; pop ecx ; lea ecx,[eax+{off:#x}] ; test ecx,ecx ; je S ; mov edx,[esp+4] ; mov edx,[edx] ; mov [ecx],edx ; S: ret 4
+// Retail std::list node factory for a 4-byte scalar value: one malloc'd node (malloc @
+// 0x00BFEA0E) whose value at +{off:#x} is placement-copied (hence the null test on the value
+// address); the node (malloc's result, still in eax) is returned. `this` (the list) is unused.
+// One of {len(members)} bodies of this shape.
+#include <new>
+extern "C" void* __cdecl malloc(unsigned int size);
+
+struct {nm} {{
+    struct SNode {{
+        unsigned char _links[{off:#x}];       // prev/next (and any further link) pointers
+        long m_value;                      // +{off:#x}
+    }};
+    SNode* Buynode(const long& value);
+}};
+
+{nm}::SNode* {nm}::Buynode(const long& value)
+{{
+    SNode* node = (SNode*)malloc(sizeof(SNode));
+    new (&node->m_value) long(value);
+    return node;
+}}
+''',T(a,'''#include <new>
+#include <cstdlib>
+struct L { struct N { unsigned char l[8]; long v; }; N* B(const long& v) { N* n = (N*)std::malloc(sizeof(N)); new (&n->v) long(v); return n; } };
+int main()
+{
+    L l; long x = 5; L::N* n = l.B(x); if (!n || n->v != 5) '''+FAIL(a)+'''
+    std::free(n);
+'''),b)
+    elif TPL in ("w256_92",):   # FreeTree with a member destroyed before the node is freed
+        if len(calls)!=3 or calls[0]!=va: continue
+        child=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str]
+        if len(child)!=2: continue
+        coff,noff=child; dtor=calls[1]; doff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]
+        dm,dn,_=label(dtor); dl=dn.split("::")[-1]; mcls=dm.split("::")[-1] if (dl.startswith("~") and re.match(r"^C[A-Za-z0-9_]+$",dm.split("::")[-1]) and (dm,dn) in uniq) else f"CMember_{dtor:08x}"
+        cls=f"CTreeOwner_{a}"; lo=min(coff,noff); hi=max(coff,noff)
+        add(a,"_unattributed",f"FreeTree_{cls}",HDRF(a,f"{cls}::FreeTree(SNode*) -- recursive free of a child-linked (+{coff:#x}) / sibling-linked (+{noff:#x}) node list, {mcls} member at +{doff:#x} destroyed first",len(b))+f'''//
+// Retail bytes:  push ebx ; push esi ; mov esi,[esp+0Ch] ; test esi,esi ; mov ebx,ecx ; je E ; push edi ; L: mov eax,[esi+{coff:#x}] ; push eax ; mov ecx,ebx ; call FreeTree ; mov edi,[esi+{noff:#x}] ; lea ecx,[esi+{doff:#x}] ; call {mcls}::~{mcls} ; push esi ; call free ; add esp,4 ; test edi,edi ; mov esi,edi ; jne L ; pop edi ; E: pop esi ; pop ebx ; ret 4
+// Walks a sibling list: recurses into each node's child list at +{coff:#x}, remembers the sibling at
+// +{noff:#x}, destroys the node's {mcls} member at +{doff:#x} (destructor @ 0x{dtor:08X}), frees the
+// node (free @ 0x00BFEA14) and continues with the sibling. The manifest label
+// (`LTextTreeWalkThrough::BuildTreeArray`) is propagated; the owner is named descriptively.
+// One of {len(members)} bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct {mcls} {{
+    void* m_data;
+    ~{mcls}();                             // 0x{dtor:08X}
+}};
+
+struct SNode {{
+    unsigned char _pad[{lo:#x}];
+    {"SNode* m_child;" if coff<noff else "SNode* m_next;"}{" "*23}// +{lo:#x}
+{"    unsigned char _gap[%#x];" % (hi-lo-4) + chr(10) if hi-lo>4 else ""}    {"SNode* m_next;" if coff<noff else "SNode* m_child;"}{" "*23}// +{hi:#x}
+{"    unsigned char _gap2[%#x];" % (doff-hi-4) + chr(10) if doff-hi>4 else ""}    {mcls} m_name;{" "*(24-len(mcls))}// +{doff:#x}
+}};
+
+struct {cls} {{
+    void FreeTree_{cls}(SNode* node);
+}};
+
+void {cls}::FreeTree_{cls}(SNode* node)
+{{
+    while (node) {{
+        FreeTree_{cls}(node->m_child);
+        SNode* next = node->m_next;
+        node->m_name.~{mcls}();
+        free(node);
+        node = next;
+    }}
+}}
+''',T(a,'''#include <cstdlib>
+static int g_f = 0, g_d = 0; struct M { void* d; ~M() { ++g_d; } }; struct N { unsigned char p[8]; N* n; N* c; M m; };
+struct X { void F(N* d) { while (d) { F(d->c); N* x = d->n; d->m.~M(); std::free(d); ++g_f; d = x; } } };
+int main()
+{
+    N* a = (N*)std::malloc(sizeof(N)); N* b = (N*)std::malloc(sizeof(N)); a->n = b; a->c = 0; b->n = 0; b->c = 0;
+    X x; x.F(a); if (g_f != 2 || g_d != 2) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_9",):   # CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream*, T*): inlined 4-byte stream read with the 64-bit position range check
+        if len(calls)!=1: continue
+        reader=calls[0]; fp=b[:3]==b"\x55\x8b\xec"; isstruct=any(i.mnemonic=="movsd" for i in ins)
+        vt="SPersistValue4" if isstruct else "long"
+        add(a,"_unattributed",f"TransferBinaryIn_{a}",HDRF(a,f"CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream*, T*) -- inlined 4-byte read ({'struct, movsd copy' if isstruct else 'scalar'}), 64-bit position range check, ReadWithSrcChunkOverflow @ 0x{reader:08X} when the chunk runs out{'; frame-pointer TU' if fp else ''}",len(b))+f'''//
+// Retail bytes:  {"push ebp ; mov ebp,esp ; mov ecx,[ebp+8]" if fp else "mov ecx,[esp+4]"} ; mov eax,[ecx+4] ; {"lea edx,[eax+4]" if fp else "push esi ; lea esi,[eax+4]"} ; xor eax,eax ; jl R ; jg B ; test lo,lo ; jb R ; B: test eax,eax ; jg R ; jl F ; cmp lo,7FFFFFFFh ; ja R ; F: {"push ebx ; mov ebx,[ecx+14h] ; cmp ebx,4 ; jl S ; mov eax,[ecx+0Ch] ; push esi ; push edi ; mov esi,eax ; lea edi,[ebp+8] ; movsd ; add eax,4 ; add ebx,-4 ; pop edi ; mov [ecx+0Ch],eax ; mov [ecx+14h],ebx ; mov [ecx+4],edx ; pop esi ; jmp J ; S: push 4 ; lea eax,[ebp+8] ; push eax ; call ReadWithSrcChunkOverflow ; J: pop ebx ; R: mov eax,[ebp+0Ch] ; mov ecx,[ebp+8] ; mov [eax],ecx ; pop ebp ; ret 8" if fp else "mov edx,[ecx+14h] ; cmp edx,4 ; jl S ; mov eax,[ecx+0Ch] ; push edi ; mov edi,[eax] ; add eax,4 ; mov [ecx+0Ch],eax ; mov eax,[esp+10h] ; add edx,-4 ; mov [ecx+4],esi ; mov [ecx+14h],edx ; mov [eax],edi ; pop edi ; pop esi ; ret 8 ; S: push 4 ; lea edx,[esp+0Ch] ; push edx ; call ReadWithSrcChunkOverflow ; R: mov ecx,[esp+8] ; mov eax,[esp+0Ch] ; mov [eax],ecx ; pop esi ; ret 8  (two more copies of R for the range-check exits)"}
+// Binary persist read of one 4-byte value: a local `value` (homed in the dead stream-argument
+// slot) is filled by the inlined CMemoryDataInputStream::Read(buffer, size) and copied to the
+// output. Read widens `position + size` to __int64 and rejects it outside [0, 0x7FFFFFFF]
+// (the zero high dword is materialised and compared like any 64-bit value); with enough bytes
+// left in the current chunk it memcpy's from the chunk pointer (+0xC), advances it, decrements
+// the remaining count (+0x14) and adds the size to the position (+4) -- `+=`, which keeps the
+// old position live and gives the `lea` form -- otherwise it defers to
+// CDataInputStream::ReadWithSrcChunkOverflow @ 0x{reader:08X}. {'A 4-byte struct value makes the memcpy a movsd; ' if isstruct else 'A scalar value lets the memcpy forward straight into the output; '}{'the TU keeps frame pointers and optimises for size.' if fp else 'the TU has no frame pointer.'}
+// The manifest label (`CPersistTraits<...>::TransferBinaryIn`) is propagated; the value type is
+// modelled by size. One of {len(members)} bodies of this shape.
+{'#pragma optimize("y", off)' + chr(10) + '#pragma optimize("s", on)' + chr(10) if fp else ''}extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
+#pragma intrinsic(memcpy)
+
+struct CMemoryDataInputStream {{
+    void* m_pVtable;                       // +0
+    unsigned long m_position;              // +4
+    long m_08;
+    const unsigned char* m_pData;          // +0xC  current chunk read pointer
+    long m_10;
+    long m_remaining;                      // +0x14 bytes left in the current chunk
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x{reader:08X}
+    __forceinline void Read(void* buffer, long size)
+    {{
+        __int64 newPosition = (__int64)(m_position + size);
+        if (newPosition < 0 || newPosition > 0x7fffffff)
+            return;
+        if (m_remaining >= size) {{
+            memcpy(buffer, m_pData, size);
+            m_pData += size;
+            m_remaining -= size;
+            m_position += size;
+        }}
+        else
+            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+    }}
+}};
+{"struct SPersistValue4 { unsigned short m_low; unsigned short m_high; };" + chr(10) if isstruct else ""}
+void __stdcall TransferBinaryIn_{a}(CMemoryDataInputStream* stream, {vt}* out)
+{{
+    {vt} value;
+    stream->Read(&value, sizeof(value));
+    *out = value;
+}}
+''',T(a,'''#include <cstring>
+struct S { void* vt; unsigned long pos; long a; const unsigned char* p; long b; long rem; static int g_o; void O(unsigned char*, long) { ++g_o; }
+  void R(void* buf, long n) { __int64 np = (__int64)(pos + n); if (np < 0 || np > 0x7fffffff) return; if (rem >= n) { std::memcpy(buf, p, n); p += n; rem -= n; pos += n; } else O((unsigned char*)buf, n); } };
+int S::g_o = 0;
+static void __stdcall T(S* s, long* o) { long v; s->R(&v, 4); *o = v; }
+int main()
+{
+    unsigned char data[8] = { 1, 0, 0, 0, 2, 0, 0, 0 }; S s; s.pos = 0; s.p = data; s.rem = 8; long v = 0; T(&s, &v); if (v != 1 || s.pos != 4 || s.rem != 4 || s.p != data + 4) '''+FAIL(a)+'''
+    s.rem = 2; T(&s, &v); if (S::g_o != 1) '''+FAIL(a)+'''
 '''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
