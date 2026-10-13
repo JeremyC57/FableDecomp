@@ -1,0 +1,158 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00a873c0",
+    "module": "CSBAgents",
+    "name": "CSBAgents",
+    "source_cpp": "// CSBAgents::CSBAgents(void*, void*) -- root polymorphic class: vtable, first argument kept at +0xc, second unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A873C0, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CSBAgents::`vftable' ; mov [eax+0xc],ecx ; ret 8\n// Two-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X129DEBC, rtti-vtables.tsv), stores the first argument at +0xc and ignores the second (`ret 8`).\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CSBAgents {\n    virtual void v00();\n    unsigned char _pad[0x8];\n    void* m_first;                         // +0xc\n    CSBAgents(void* first, void* /*second*/);\n};\n\nCSBAgents::CSBAgents(void* first, void* /*second*/)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00a873c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00a873c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00a873c0_TEST PASS"
+   },
+   {
+    "address": "00c08d20",
+    "module": "CVtable_012b1b40",
+    "name": "CVtable_012b1b40",
+    "source_cpp": "// CVtable_012b1b40::CVtable_012b1b40(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C08D20, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b1b40::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B1B40, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b1b40 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b1b40(void* first);\n};\n\nCVtable_012b1b40::CVtable_012b1b40(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c08d20_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c08d20_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c08d20_TEST PASS"
+   },
+   {
+    "address": "00c1b950",
+    "module": "CVtable_012b3224",
+    "name": "CVtable_012b3224",
+    "source_cpp": "// CVtable_012b3224::CVtable_012b3224(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1B950, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b3224::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B3224, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b3224 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b3224(void* first);\n};\n\nCVtable_012b3224::CVtable_012b3224(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c1b950_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c1b950_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c1b950_TEST PASS"
+   },
+   {
+    "address": "00c22240",
+    "module": "CVtable_012b3858",
+    "name": "CVtable_012b3858",
+    "source_cpp": "// CVtable_012b3858::CVtable_012b3858(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C22240, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b3858::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B3858, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b3858 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b3858(void* first);\n};\n\nCVtable_012b3858::CVtable_012b3858(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c22240_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c22240_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c22240_TEST PASS"
+   },
+   {
+    "address": "00c2a690",
+    "module": "CVtable_012b4180",
+    "name": "CVtable_012b4180",
+    "source_cpp": "// CVtable_012b4180::CVtable_012b4180(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2A690, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b4180::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B4180, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b4180 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b4180(void* first);\n};\n\nCVtable_012b4180::CVtable_012b4180(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c2a690_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c2a690_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c2a690_TEST PASS"
+   },
+   {
+    "address": "00c2a6b0",
+    "module": "CVtable_012b4188",
+    "name": "CVtable_012b4188",
+    "source_cpp": "// CVtable_012b4188::CVtable_012b4188(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2A6B0, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b4188::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B4188, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b4188 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b4188(void* first);\n};\n\nCVtable_012b4188::CVtable_012b4188(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c2a6b0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c2a6b0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c2a6b0_TEST PASS"
+   },
+   {
+    "address": "00c2bc60",
+    "module": "CVtable_012b44b8",
+    "name": "CVtable_012b44b8",
+    "source_cpp": "// CVtable_012b44b8::CVtable_012b44b8(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2BC60, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b44b8::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B44B8, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b44b8 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b44b8(void* first);\n};\n\nCVtable_012b44b8::CVtable_012b44b8(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c2bc60_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c2bc60_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c2bc60_TEST PASS"
+   },
+   {
+    "address": "00c2bc80",
+    "module": "CVtable_012b44c0",
+    "name": "CVtable_012b44c0",
+    "source_cpp": "// CVtable_012b44c0::CVtable_012b44c0(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2BC80, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b44c0::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B44C0, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b44c0 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b44c0(void* first);\n};\n\nCVtable_012b44c0::CVtable_012b44c0(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c2bc80_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c2bc80_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c2bc80_TEST PASS"
+   },
+   {
+    "address": "00c36270",
+    "module": "CVtable_012b50cc",
+    "name": "CVtable_012b50cc",
+    "source_cpp": "// CVtable_012b50cc::CVtable_012b50cc(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36270, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b50cc::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B50CC, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b50cc {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b50cc(void* first);\n};\n\nCVtable_012b50cc::CVtable_012b50cc(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c36270_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c36270_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c36270_TEST PASS"
+   },
+   {
+    "address": "00c362d0",
+    "module": "CVtable_012b50e4",
+    "name": "CVtable_012b50e4",
+    "source_cpp": "// CVtable_012b50e4::CVtable_012b50e4(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C362D0, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b50e4::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B50E4, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b50e4 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b50e4(void* first);\n};\n\nCVtable_012b50e4::CVtable_012b50e4(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c362d0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c362d0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c362d0_TEST PASS"
+   },
+   {
+    "address": "00c36d60",
+    "module": "CVtable_012b51d0",
+    "name": "CVtable_012b51d0",
+    "source_cpp": "// CVtable_012b51d0::CVtable_012b51d0(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36D60, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b51d0::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B51D0, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b51d0 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b51d0(void* first);\n};\n\nCVtable_012b51d0::CVtable_012b51d0(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c36d60_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c36d60_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c36d60_TEST PASS"
+   },
+   {
+    "address": "00c36d80",
+    "module": "CVtable_012b51e0",
+    "name": "CVtable_012b51e0",
+    "source_cpp": "// CVtable_012b51e0::CVtable_012b51e0(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36D80, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b51e0::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B51E0, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b51e0 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b51e0(void* first);\n};\n\nCVtable_012b51e0::CVtable_012b51e0(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c36d80_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c36d80_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c36d80_TEST PASS"
+   },
+   {
+    "address": "00c37bd0",
+    "module": "CVtable_012b528c",
+    "name": "CVtable_012b528c",
+    "source_cpp": "// CVtable_012b528c::CVtable_012b528c(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C37BD0, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b528c::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B528C, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b528c {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b528c(void* first);\n};\n\nCVtable_012b528c::CVtable_012b528c(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c37bd0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c37bd0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c37bd0_TEST PASS"
+   },
+   {
+    "address": "00c44d80",
+    "module": "CVtable_012b7bb4",
+    "name": "CVtable_012b7bb4",
+    "source_cpp": "// CVtable_012b7bb4::CVtable_012b7bb4(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C44D80, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b7bb4::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B7BB4, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b7bb4 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b7bb4(void* first);\n};\n\nCVtable_012b7bb4::CVtable_012b7bb4(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c44d80_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c44d80_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c44d80_TEST PASS"
+   },
+   {
+    "address": "00c44da0",
+    "module": "CVtable_012b7bbc",
+    "name": "CVtable_012b7bbc",
+    "source_cpp": "// CVtable_012b7bbc::CVtable_012b7bbc(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C44DA0, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b7bbc::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B7BBC, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b7bbc {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b7bbc(void* first);\n};\n\nCVtable_012b7bbc::CVtable_012b7bbc(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c44da0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c44da0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c44da0_TEST PASS"
+   },
+   {
+    "address": "00c46ff0",
+    "module": "CVtable_012b7e50",
+    "name": "CVtable_012b7e50",
+    "source_cpp": "// CVtable_012b7e50::CVtable_012b7e50(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C46FF0, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b7e50::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B7E50, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b7e50 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b7e50(void* first);\n};\n\nCVtable_012b7e50::CVtable_012b7e50(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c46ff0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c46ff0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c46ff0_TEST PASS"
+   },
+   {
+    "address": "00c47010",
+    "module": "CVtable_012b7e58",
+    "name": "CVtable_012b7e58",
+    "source_cpp": "// CVtable_012b7e58::CVtable_012b7e58(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C47010, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b7e58::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B7E58, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b7e58 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b7e58(void* first);\n};\n\nCVtable_012b7e58::CVtable_012b7e58(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c47010_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c47010_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c47010_TEST PASS"
+   },
+   {
+    "address": "00c47030",
+    "module": "CVtable_012b7e60",
+    "name": "CVtable_012b7e60",
+    "source_cpp": "// CVtable_012b7e60::CVtable_012b7e60(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C47030, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b7e60::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B7E60, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b7e60 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b7e60(void* first);\n};\n\nCVtable_012b7e60::CVtable_012b7e60(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c47030_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c47030_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c47030_TEST PASS"
+   },
+   {
+    "address": "00c62e20",
+    "module": "CVtable_012b93d4",
+    "name": "CVtable_012b93d4",
+    "source_cpp": "// CVtable_012b93d4::CVtable_012b93d4(void*) -- root polymorphic class: vtable, first argument kept at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C62E20, oracle length 18 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; mov dword ptr [eax],offset CVtable_012b93d4::`vftable' ; mov [eax+0x4],ecx ; ret 4\n// One-argument constructor of a root polymorphic class (no base constructor call): installs the\n// vtable (0x0X12B93D4, rtti-vtables.tsv), stores the first argument at +0x4.\n// Argument types are not recoverable; `void*` models them. One of 19 bodies.\nstruct CVtable_012b93d4 {\n    virtual void v00();\n    void* m_first;                         // +0x4\n    CVtable_012b93d4(void* first);\n};\n\nCVtable_012b93d4::CVtable_012b93d4(void* first)\n    : m_first(first)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} unsigned char p[8]; void* f; X(void* a, void*) : f(a) {} };\nint main()\n{\n    int v; X x(&v, 0); if (x.f != &v) { std::printf(\"00c62e20_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c62e20_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c62e20_TEST PASS"
+   }
+  ]
+ }
+}

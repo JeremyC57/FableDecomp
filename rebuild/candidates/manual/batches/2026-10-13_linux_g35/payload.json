@@ -1,0 +1,214 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "012245e0",
+    "module": "_static_init",
+    "name": "g_sin_01436dfc",
+    "source_cpp": "// dynamic initializer for float g_sin_01436dfc @ 0x01436DFC = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012245E0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x1436dfc] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_01436dfc = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"012245e0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"012245e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "012245e0_TEST PASS"
+   },
+   {
+    "address": "01224620",
+    "module": "_static_init",
+    "name": "g_sin_01436e08",
+    "source_cpp": "// dynamic initializer for float g_sin_01436e08 @ 0x01436E08 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224620, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x1436e08] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_01436e08 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224620_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224620_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224620_TEST PASS"
+   },
+   {
+    "address": "01224640",
+    "module": "_static_init",
+    "name": "g_sin_01436eb4",
+    "source_cpp": "// dynamic initializer for float g_sin_01436eb4 @ 0x01436EB4 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224640, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x1436eb4] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_01436eb4 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224640_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224640_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224640_TEST PASS"
+   },
+   {
+    "address": "01224660",
+    "module": "_static_init",
+    "name": "g_sin_01436ebc",
+    "source_cpp": "// dynamic initializer for float g_sin_01436ebc @ 0x01436EBC = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224660, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x1436ebc] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_01436ebc = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224660_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224660_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224660_TEST PASS"
+   },
+   {
+    "address": "012247d0",
+    "module": "_static_init",
+    "name": "g_sin_01437804",
+    "source_cpp": "// dynamic initializer for float g_sin_01437804 @ 0x01437804 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012247D0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x1437804] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_01437804 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"012247d0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"012247d0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "012247d0_TEST PASS"
+   },
+   {
+    "address": "012247f0",
+    "module": "_static_init",
+    "name": "g_sin_0143780c",
+    "source_cpp": "// dynamic initializer for float g_sin_0143780c @ 0x0143780C = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012247F0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143780c] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143780c = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"012247f0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"012247f0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "012247f0_TEST PASS"
+   },
+   {
+    "address": "01224810",
+    "module": "_static_init",
+    "name": "g_sin_01437814",
+    "source_cpp": "// dynamic initializer for float g_sin_01437814 @ 0x01437814 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224810, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x1437814] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_01437814 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224810_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224810_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224810_TEST PASS"
+   },
+   {
+    "address": "01224850",
+    "module": "_static_init",
+    "name": "g_sin_01437830",
+    "source_cpp": "// dynamic initializer for float g_sin_01437830 @ 0x01437830 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224850, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x1437830] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_01437830 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224850_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224850_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224850_TEST PASS"
+   },
+   {
+    "address": "01224870",
+    "module": "_static_init",
+    "name": "g_sin_01437838",
+    "source_cpp": "// dynamic initializer for float g_sin_01437838 @ 0x01437838 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224870, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x1437838] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_01437838 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224870_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224870_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224870_TEST PASS"
+   },
+   {
+    "address": "01224890",
+    "module": "_static_init",
+    "name": "g_sin_014378ac",
+    "source_cpp": "// dynamic initializer for float g_sin_014378ac @ 0x014378AC = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224890, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x14378ac] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_014378ac = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224890_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224890_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224890_TEST PASS"
+   },
+   {
+    "address": "012248e0",
+    "module": "_static_init",
+    "name": "g_sin_0143b8d0",
+    "source_cpp": "// dynamic initializer for float g_sin_0143b8d0 @ 0x0143B8D0 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012248E0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143b8d0] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143b8d0 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"012248e0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"012248e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "012248e0_TEST PASS"
+   },
+   {
+    "address": "01224910",
+    "module": "_static_init",
+    "name": "g_sin_0143b968",
+    "source_cpp": "// dynamic initializer for float g_sin_0143b968 @ 0x0143B968 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224910, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143b968] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143b968 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224910_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224910_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224910_TEST PASS"
+   },
+   {
+    "address": "01224930",
+    "module": "_static_init",
+    "name": "g_sin_0143b970",
+    "source_cpp": "// dynamic initializer for float g_sin_0143b970 @ 0x0143B970 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224930, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143b970] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143b970 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224930_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224930_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224930_TEST PASS"
+   },
+   {
+    "address": "01224950",
+    "module": "_static_init",
+    "name": "g_sin_0143b988",
+    "source_cpp": "// dynamic initializer for float g_sin_0143b988 @ 0x0143B988 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224950, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143b988] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143b988 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224950_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224950_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224950_TEST PASS"
+   },
+   {
+    "address": "01224980",
+    "module": "_static_init",
+    "name": "g_sin_0143ba94",
+    "source_cpp": "// dynamic initializer for float g_sin_0143ba94 @ 0x0143BA94 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224980, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143ba94] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143ba94 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224980_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224980_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224980_TEST PASS"
+   },
+   {
+    "address": "012249a0",
+    "module": "_static_init",
+    "name": "g_sin_0143ba9c",
+    "source_cpp": "// dynamic initializer for float g_sin_0143ba9c @ 0x0143BA9C = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012249A0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143ba9c] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143ba9c = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"012249a0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"012249a0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "012249a0_TEST PASS"
+   },
+   {
+    "address": "012249c0",
+    "module": "_static_init",
+    "name": "g_sin_0143baa4",
+    "source_cpp": "// dynamic initializer for float g_sin_0143baa4 @ 0x0143BAA4 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012249C0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143baa4] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143baa4 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"012249c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"012249c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "012249c0_TEST PASS"
+   },
+   {
+    "address": "012249e0",
+    "module": "_static_init",
+    "name": "g_sin_0143baac",
+    "source_cpp": "// dynamic initializer for float g_sin_0143baac @ 0x0143BAAC = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012249E0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143baac] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143baac = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"012249e0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"012249e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "012249e0_TEST PASS"
+   },
+   {
+    "address": "01224a00",
+    "module": "_static_init",
+    "name": "g_sin_0143bab4",
+    "source_cpp": "// dynamic initializer for float g_sin_0143bab4 @ 0x0143BAB4 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224A00, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143bab4] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143bab4 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224a00_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224a00_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224a00_TEST PASS"
+   },
+   {
+    "address": "01224a20",
+    "module": "_static_init",
+    "name": "g_sin_0143babc",
+    "source_cpp": "// dynamic initializer for float g_sin_0143babc @ 0x0143BABC = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224A20, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143babc] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143babc = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224a20_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224a20_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224a20_TEST PASS"
+   },
+   {
+    "address": "01224a40",
+    "module": "_static_init",
+    "name": "g_sin_0143bac8",
+    "source_cpp": "// dynamic initializer for float g_sin_0143bac8 @ 0x0143BAC8 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224A40, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143bac8] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143bac8 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224a40_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224a40_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224a40_TEST PASS"
+   },
+   {
+    "address": "01224a60",
+    "module": "_static_init",
+    "name": "g_sin_0143bad0",
+    "source_cpp": "// dynamic initializer for float g_sin_0143bad0 @ 0x0143BAD0 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224A60, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143bad0] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143bad0 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224a60_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224a60_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224a60_TEST PASS"
+   },
+   {
+    "address": "01224a80",
+    "module": "_static_init",
+    "name": "g_sin_0143bad8",
+    "source_cpp": "// dynamic initializer for float g_sin_0143bad8 @ 0x0143BAD8 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224A80, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143bad8] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143bad8 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224a80_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224a80_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224a80_TEST PASS"
+   },
+   {
+    "address": "01224aa0",
+    "module": "_static_init",
+    "name": "g_sin_0143bae0",
+    "source_cpp": "// dynamic initializer for float g_sin_0143bae0 @ 0x0143BAE0 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224AA0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143bae0] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143bae0 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224aa0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224aa0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224aa0_TEST PASS"
+   },
+   {
+    "address": "01224ac0",
+    "module": "_static_init",
+    "name": "g_sin_0143bae8",
+    "source_cpp": "// dynamic initializer for float g_sin_0143bae8 @ 0x0143BAE8 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224AC0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143bae8] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143bae8 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224ac0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224ac0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224ac0_TEST PASS"
+   },
+   {
+    "address": "01224ae0",
+    "module": "_static_init",
+    "name": "g_sin_0143baf0",
+    "source_cpp": "// dynamic initializer for float g_sin_0143baf0 @ 0x0143BAF0 = (float)sin(const double @ 0x012A1130 = 0.9999999999999999)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01224AE0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  fld qword ptr [0x12a1130] ; fsin ; fstp dword ptr [0x143baf0] ; ret\n// Compiler-generated `??__E` initializer of a static-storage float computed from a double constant\n// that lives in .rdata of another translation unit (0.9999999999999999, so it is not folded at compile time)\n// with the intrinsic sin() (`#pragma intrinsic`, the retail build's /Oi), stored as float. Both\n// objects are named by address; the constant is declared extern const. One of 26 bodies.\n#include <math.h>\n#pragma intrinsic(sin)\n\nextern const double g_angle_012a1130;     // 0x012A1130 = 0.9999999999999999\n\nfloat g_sin_0143baf0 = (float)sin(g_angle_012a1130);\n",
+    "test_cpp": "#include <cstdio>\n#include <math.h>\n#pragma intrinsic(cos)\nextern const double g_a; const double g_a = 0.0; static float g_c = (float)cos(g_a);\nint main()\n{\n    if (g_c != 1.0f) { std::printf(\"01224ae0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"01224ae0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "01224ae0_TEST PASS"
+   }
+  ]
+ }
+}

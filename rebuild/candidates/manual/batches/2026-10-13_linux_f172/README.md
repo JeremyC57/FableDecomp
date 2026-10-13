@@ -10,7 +10,7 @@ lander sweep in the Wine lane and landed with `verify_and_land.py --land`.
 ## Lane grading result
 
 - Rows: 8; landed byte-exact (RELOCATION_MATCH + PASS): 7; modules: 3.
-- DIFFER(5v5): 1 — 009fd4d0
+- UNGRADED: 1 — 009fd4d0
 
 ## Naming and trust
 
