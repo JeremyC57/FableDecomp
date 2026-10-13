@@ -20,6 +20,18 @@
 #include <thread>
 #include <vector>
 
+// the runtime and COM entry points named in the profile (file scope: see the markers below)
+struct Ctx;
+namespace host::com { void comAddRef(Ctx* c); void comRelease(Ctx* c); void comQueryInterface(Ctx* c); }
+typedef void (*GuestFnPtr)(Ctx*);
+extern "C" GuestFnPtr recomp_lookup(uint32_t target);
+extern "C" void recomp_dispatch(Ctx* c, uint32_t target);
+extern "C" void recomp_dispatch_ic(Ctx* c, uint32_t target, uint64_t* ic);
+extern "C" uint64_t recomp_rdtsc(void);
+extern "C" void recomp_fatal(Ctx* c, uint32_t eip, const char* what);
+extern "C" void recomp_cpuid(Ctx* c);
+
+
 extern "C" {
 typedef void (*GuestFn)(void*);
 typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;
@@ -51,16 +63,27 @@ void onProf(int, siginfo_t*, void* ctx) {
     g_total.fetch_add(1, std::memory_order_relaxed);
 }
 
-struct GuestFnEntry { uintptr_t host; uint32_t guest; };
+struct GuestFnEntry { uintptr_t host; uint32_t guest; const char* marker; };  // marker: a known host function instead
 std::vector<GuestFnEntry> g_guestFns;  // sorted by host address
 uintptr_t g_guestLo = 0, g_guestHi = 0;
 
+
+// Host functions that the linker lays out right after the lifted code (the runtime, the
+// COM layer): named here so samples in them are not attributed to the last lifted function.
 void collectGuestFns() {
     for (uint32_t t = 0; t < recomp_num_tables(); ++t) {
         uint32_t n = 0;
         const RecompEntry* e = recomp_table_entries(t, &n);
-        for (uint32_t i = 0; i < n; ++i) g_guestFns.push_back({reinterpret_cast<uintptr_t>(e[i].fn), e[i].addr});
+        for (uint32_t i = 0; i < n; ++i) g_guestFns.push_back({reinterpret_cast<uintptr_t>(e[i].fn), e[i].addr, nullptr});
     }
+    const std::pair<void*, const char*> markers[] = {
+        {reinterpret_cast<void*>(&recomp_dispatch), "recomp_dispatch"}, {reinterpret_cast<void*>(&recomp_dispatch_ic), "recomp_dispatch_ic"},
+        {reinterpret_cast<void*>(&recomp_lookup), "recomp_lookup"},     {reinterpret_cast<void*>(&recomp_rdtsc), "recomp_rdtsc"},
+        {reinterpret_cast<void*>(&recomp_fatal), "recomp_fatal"},       {reinterpret_cast<void*>(&recomp_cpuid), "recomp_cpuid"},
+        {reinterpret_cast<void*>(&host::com::comAddRef), "com::AddRef"}, {reinterpret_cast<void*>(&host::com::comRelease), "com::Release"},
+        {reinterpret_cast<void*>(&host::com::comQueryInterface), "com::QueryInterface"},
+    };
+    for (const auto& [fn, name] : markers) g_guestFns.push_back({reinterpret_cast<uintptr_t>(fn), 0, name});
     std::sort(g_guestFns.begin(), g_guestFns.end(), [](const GuestFnEntry& a, const GuestFnEntry& b) { return a.host < b.host; });
     if (!g_guestFns.empty()) g_guestLo = g_guestFns.front().host, g_guestHi = g_guestFns.back().host + 0x20000;  // the last function's extent is unknown
 }
@@ -78,7 +101,8 @@ void report() {
             if (it != g_guestFns.begin()) {
                 --it;
                 char buf[32];
-                std::snprintf(buf, sizeof buf, "guest 0x%08X", it->guest);
+                if (it->marker) std::snprintf(buf, sizeof buf, "host runtime!%s", it->marker);
+                else std::snprintf(buf, sizeof buf, "guest 0x%08X", it->guest);
                 ++hist[buf];
                 ++guest;
                 continue;

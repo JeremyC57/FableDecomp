@@ -632,3 +632,16 @@ IMPORTN(P, "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@
 
 }  // namespace
 }  // namespace host
+
+// 0xBFEA70 _ftol2 (--hook): the CRT's truncating double -> int64 helper, called from ~2000
+// sites (every (int)float in the game). The lifted version shuffles the x87 control word
+// through memory; here the stack top is read, truncated and returned in edx:eax.
+extern "C" void host_ftol2(Ctx* c) {
+    const double v = fpop(c);
+    int64_t r;
+    if (!(v > -9223372036854775808.0 && v < 9223372036854775808.0)) r = INT64_MIN;  // x87 indefinite
+    else r = static_cast<int64_t>(v);  // truncation toward zero, as fistp with RC = truncate
+    c->eax = static_cast<uint32_t>(r);
+    c->edx = static_cast<uint32_t>(static_cast<uint64_t>(r) >> 32);
+    c->esp += 4;  // ret
+}

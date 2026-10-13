@@ -485,6 +485,9 @@ struct Texture : Unknown<IDirect3DTexture9, &IID_IDirect3DTexture9> {
     HRESULT STDMETHODCALLTYPE AddDirtyRect(const RECT*) override { return S_OK; }
 };
 
+void dropVaosForBuffer(GLuint gl);       // Device: forget cached vertex array objects that reference it
+void dropVaosForPointer(const void* p);  // ... a vertex declaration / shader address about to be reused
+
 struct Buffer {  // vertex / index buffer storage
     GLuint gl = 0;
     UINT size = 0;
@@ -519,7 +522,7 @@ struct Buffer {  // vertex / index buffer storage
         if ((lockFlags & D3DLOCK_DISCARD) || (dynamic && !(lockFlags & D3DLOCK_NOOVERWRITE))) glBufferData(target, size, cpu.data(), GL_DYNAMIC_DRAW);
         else glBufferSubData(target, lockOff, lockSize, cpu.data() + lockOff);
     }
-    ~Buffer() { if (gl) glDeleteBuffers(1, &gl); }
+    ~Buffer() { if (gl) { dropVaosForBuffer(gl); glDeleteBuffers(1, &gl); } }
 };
 
 struct VertexBuffer : Unknown<IDirect3DVertexBuffer9, &IID_IDirect3DVertexBuffer9> {
@@ -564,6 +567,7 @@ struct VertexDecl : Unknown<IDirect3DVertexDeclaration9, &IID_IDirect3DVertexDec
     Device* dev;
     std::vector<D3DVERTEXELEMENT9> elements;  // without the terminator
     bool preTransformed = false;
+    ~VertexDecl() override { dropVaosForPointer(this); }
     VertexDecl(Device* d, const D3DVERTEXELEMENT9* el) : dev(d) {
         for (const D3DVERTEXELEMENT9* e = el; e->Stream != 0xFF; ++e) {
             elements.push_back(*e);
@@ -599,7 +603,7 @@ struct VertexShader : Unknown<IDirect3DVertexShader9, &IID_IDirect3DVertexShader
         *n = static_cast<UINT>(code.size() * 4);
         return S_OK;
     }
-    ~VertexShader() override { if (sh.gl) glDeleteShader(sh.gl); }
+    ~VertexShader() override { dropVaosForPointer(this); if (sh.gl) glDeleteShader(sh.gl); }
 };
 struct PixelShader : Unknown<IDirect3DPixelShader9, &IID_IDirect3DPixelShader9> {
     Device* dev;
@@ -738,6 +742,37 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
         GLuint vb[8] = {}; UINT off[8] = {}, stride[8] = {};
     } lastLayout;
     bool layoutValid = false;
+    struct GlShadow {  // the GL state last issued; -1 / ~0 = unknown (every field is re-issued after reset())
+        GLint vx, vy, vw, vh, sx, sy, sw, sh;
+        float zn, zf, slope, bias;
+        int scissor, depth, depthMask, blend, stencil, polyOff, cull;  // tri-state
+        GLenum depthFunc, sb, db, bop, sfunc, sfail, szfail, spass;
+        DWORD blendColor, colorMask;
+        GLint sref;
+        GLuint smask, swmask;
+        bool valid = false;
+        void reset() {
+            vx = vy = vw = vh = sx = sy = sw = sh = -1;
+            zn = zf = slope = bias = -1e30f;
+            scissor = depth = depthMask = blend = stencil = polyOff = cull = -1;
+            depthFunc = sb = db = bop = sfunc = sfail = szfail = spass = ~0u;
+            blendColor = colorMask = ~0u;
+            sref = -1;
+            smask = swmask = ~0u;
+            valid = true;
+        }
+    } glShadow;
+    void glStateUnknown() { rsDirty = true; glShadow.valid = false; }  // after a pass that set GL state directly
+    // Vertex array objects, one per layout key (declaration, shader, buffers, offsets): a draw
+    // then binds one object instead of re-issuing every attribute pointer. The element buffer
+    // binding is part of the object, so it is tracked per object.
+    struct LayoutKeyHash { size_t operator()(const LayoutKey& k) const { uint64_t h = 1469598103934665603ull; for (size_t i = 0; i < sizeof k; ++i) h = (h ^ reinterpret_cast<const unsigned char*>(&k)[i]) * 1099511628211ull; return static_cast<size_t>(h); } };
+    struct LayoutKeyEq { bool operator()(const LayoutKey& a, const LayoutKey& b) const { return std::memcmp(&a, &b, sizeof a) == 0; } };
+    struct VaoEntry { GLuint vao = 0, ibo = 0; int colorMask = 0; };
+    std::unordered_map<LayoutKey, VaoEntry, LayoutKeyHash, LayoutKeyEq> vaos;
+    VaoEntry* curVao = nullptr;
+    GLuint overlayVao = 0;  // the overlay and the present pass set attribute pointers on this one
+    void dropVaos(GLuint buffer, const void* pointer);
     uint64_t lastPresentNs = 0;
     double frameMs = 0, glMs = 0, swapMs = 0, uploadMs = 0;
     Surface* lastFboRt = nullptr; Surface* lastFboDs = nullptr; GLuint lastFboId = 0; bool lastFboValid = false;
@@ -747,7 +782,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     Ref<PixelShader> ps;
     Ref<VertexDecl> decl;
     DWORD fvf = 0;
-    Ref<VertexDecl> fvfDecl;  // the declaration built from the FVF
+    std::unordered_map<DWORD, Ref<VertexDecl>> fvfDecls;  // the declaration built from each FVF seen (its VAOs stay cached)
     StreamSource streams[8];
     Ref<IndexBuffer> indices;
     D3DVIEWPORT9 viewport{};
@@ -760,7 +795,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     Program* current = nullptr;
     uint32_t nextShaderId = 1;
     GLuint ffpVs = 0;
-    GLuint scratchVbo = 0, scratchIbo = 0, vao = 0;
+    GLuint scratchVbo = 0, scratchIbo = 0;
     uint32_t frames = 0;
     uint32_t statDraws = 0, statClears = 0;
     bool inScene = false;
@@ -776,6 +811,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     void applySamplers();
     Program* program();
     bool bindVertexLayout(const VertexDecl* d, bool up, const void* upData, UINT upStride, UINT baseVertex, INT baseVertexOffset);
+    int specifyAttributes(const VertexDecl* d, bool up, UINT upStride, INT baseVertex);
     void prepareDraw(bool up, const void* upData, UINT upStride, UINT upVertices, INT baseVertex);
     VertexDecl* fvfDeclaration();
     GLuint compileShader(GLenum type, const std::string& src, const char* what);
@@ -870,7 +906,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     HRESULT STDMETHODCALLTYPE CreateVertexDeclaration(const D3DVERTEXELEMENT9* el, IDirect3DVertexDeclaration9** out) override { if (!out || !el) return E_POINTER; *out = new VertexDecl(this, el); return S_OK; }
     HRESULT STDMETHODCALLTYPE SetVertexDeclaration(IDirect3DVertexDeclaration9* d) override { decl = static_cast<VertexDecl*>(d); if (d) fvf = 0; programDirty = true; return S_OK; }
     HRESULT STDMETHODCALLTYPE GetVertexDeclaration(IDirect3DVertexDeclaration9** out) override { if (!out) return E_POINTER; if (decl) decl->AddRef(); *out = decl; return S_OK; }
-    HRESULT STDMETHODCALLTYPE SetFVF(DWORD f) override { if (f) { fvf = f; decl = nullptr; fvfDecl = nullptr; programDirty = true; } return S_OK; }
+    HRESULT STDMETHODCALLTYPE SetFVF(DWORD f) override { if (f && (f != fvf || decl)) { fvf = f; decl = nullptr; programDirty = true; } return S_OK; }
     HRESULT STDMETHODCALLTYPE GetFVF(DWORD* f) override { if (f) *f = fvf; return S_OK; }
     HRESULT STDMETHODCALLTYPE CreateVertexShader(const DWORD* code, IDirect3DVertexShader9** out) override;
     HRESULT STDMETHODCALLTYPE SetVertexShader(IDirect3DVertexShader9* s) override { if (vs.p != s) programDirty = true; vs = static_cast<VertexShader*>(s); return S_OK; }
@@ -1025,7 +1061,9 @@ Device::~Device() {
     for (auto& [k, f] : fbos) glDeleteFramebuffers(1, &f);
     for (auto& [k, p] : programs) glDeleteProgram(p.gl);
     destroyBackBuffer();
-    if (vao) glDeleteVertexArrays(1, &vao);
+    if (overlayVao) glDeleteVertexArrays(1, &overlayVao);
+    for (auto& [k, e] : vaos) glDeleteVertexArrays(1, &e.vao);
+    vaos.clear();
     if (scratchVbo) glDeleteBuffers(1, &scratchVbo);
     if (scratchIbo) glDeleteBuffers(1, &scratchIbo);
     if (ffpVs) glDeleteShader(ffpVs);
@@ -1055,8 +1093,8 @@ bool Device::init(HWND hwnd) {
     glGetIntegerv(GL_MAJOR_VERSION, &maj);
     glGetIntegerv(GL_MINOR_VERSION, &min);
     es32 = maj > 3 || (maj == 3 && min >= 2);
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
+    glGenVertexArrays(1, &overlayVao);
+    glBindVertexArray(overlayVao);
     glGenBuffers(1, &scratchVbo);
     glGenBuffers(1, &scratchIbo);
     for (int i = 0; i < 8; ++i) glGenSamplers(1, &samplers[i].gl);
@@ -1137,7 +1175,7 @@ bool Device::createBackBuffer() {
     viewport = {0, 0, w, h, 0.0f, 1.0f};
     scissor = {0, 0, static_cast<LONG>(w), static_cast<LONG>(h)};
     boundFbo = ~0u;
-    rsDirty = true;
+    glStateUnknown();
     return true;
 }
 void Device::destroyBackBuffer() {
@@ -1161,7 +1199,7 @@ void Device::resolveMain() {
                       static_cast<GLint>(pp.BackBufferHeight), GL_COLOR_BUFFER_BIT, GL_NEAREST);
     msaaDirty = false;
     boundFbo = ~0u;
-    rsDirty = true;
+    glStateUnknown();
 }
 
 GLuint Device::readFboFor(Surface* src) {  // a framebuffer to read `src` from (the back buffer: resolved)
@@ -1310,7 +1348,7 @@ HRESULT STDMETHODCALLTYPE Device::StretchRect(IDirect3DSurface9* src, const RECT
     const RECT d = dr ? *dr : RECT{0, 0, static_cast<LONG>(b->level.width), static_cast<LONG>(b->level.height)};
     glDisable(GL_SCISSOR_TEST);
     glBlitFramebuffer(s.left, s.top, s.right, s.bottom, d.left, d.top, d.right, d.bottom, GL_COLOR_BUFFER_BIT, filter == D3DTEXF_POINT ? GL_NEAREST : GL_LINEAR);
-    rsDirty = true;
+    glStateUnknown();
     return S_OK;
 }
 HRESULT STDMETHODCALLTYPE Device::ColorFill(IDirect3DSurface9* s, const RECT* r, D3DCOLOR c) {
@@ -1326,7 +1364,7 @@ HRESULT STDMETHODCALLTYPE Device::ColorFill(IDirect3DSurface9* s, const RECT* r,
     glColorMask(1, 1, 1, 1);
     glClearColor(((c >> 16) & 255) / 255.0f, ((c >> 8) & 255) / 255.0f, (c & 255) / 255.0f, ((c >> 24) & 255) / 255.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    rsDirty = true;
+    glStateUnknown();
     return S_OK;
 }
 
@@ -1348,7 +1386,7 @@ HRESULT STDMETHODCALLTYPE Device::Clear(DWORD n, const D3DRECT* rects, DWORD fla
         glClear(bits);
     }
     ++statClears;
-    rsDirty = true;
+    glStateUnknown();
     GLCHECK("Clear");
     return S_OK;
 }
@@ -1433,7 +1471,7 @@ HRESULT STDMETHODCALLTYPE Device::CreatePixelShader(const DWORD* code, IDirect3D
 }
 
 VertexDecl* Device::fvfDeclaration() {
-    if (fvfDecl) return fvfDecl;
+    if (auto it = fvfDecls.find(fvf); it != fvfDecls.end()) return it->second;
     std::vector<D3DVERTEXELEMENT9> el;
     WORD off = 0;
     const DWORD pos = fvf & D3DFVF_POSITION_MASK;
@@ -1453,9 +1491,10 @@ VertexDecl* Device::fvfDeclaration() {
         off += size == 0 ? 8 : size == 3 ? 4 : size == 1 ? 12 : 16;
     }
     el.push_back(D3DDECL_END());
-    fvfDecl = new VertexDecl(this, el.data());
-    fvfDecl->Release();
-    return fvfDecl;
+    VertexDecl* d = new VertexDecl(this, el.data());
+    fvfDecls[fvf] = d;  // the Ref holds it
+    d->Release();
+    return d;
 }
 
 Program* Device::program() {
@@ -1610,53 +1649,74 @@ GLenum blendOp(DWORD o) {
     }
 }
 
+// The GL state last issued, so a render-state change between draws re-issues only what
+// changed (the Mali driver's cost is per call; Fable toggles blend / cull / z-write between
+// most draws, which used to re-apply everything). Passes that touch GL state directly (Clear,
+// ColorFill, StretchRect, the overlay, Present) invalidate it through glStateUnknown().
 void Device::applyRenderStates() {
     if (!rsDirty) return;
     rsDirty = false;
+    GlShadow& g = glShadow;
+    // FABLE_GLES_STATESHADOW=1 keeps the shadow across draws; off (every state re-issued when dirty) until verified
+    static const bool noShadow = [] { const char* e = getenv("FABLE_GLES_STATESHADOW"); return !(e && atoi(e) != 0); }();
+    if (!g.valid || noShadow) g.reset();  // a pass set GL state directly: nothing is known, every field is re-issued
     // viewport & scissor (rows are in Direct3D order in our framebuffers: no flip)
-    glViewport(static_cast<GLint>(viewport.X), static_cast<GLint>(viewport.Y), static_cast<GLsizei>(std::max(1u, viewport.Width)), static_cast<GLsizei>(std::max(1u, viewport.Height)));
-    glDepthRangef(viewport.MinZ, viewport.MaxZ);
-    if (rs[D3DRS_SCISSORTESTENABLE]) { glEnable(GL_SCISSOR_TEST); glScissor(scissor.left, scissor.top, std::max<LONG>(0, scissor.right - scissor.left), std::max<LONG>(0, scissor.bottom - scissor.top)); }
-    else glDisable(GL_SCISSOR_TEST);
-    // depth
-    if (rs[D3DRS_ZENABLE] && depthStencil) { glEnable(GL_DEPTH_TEST); glDepthFunc(cmpFunc(rs[D3DRS_ZFUNC])); } else glDisable(GL_DEPTH_TEST);
-    glDepthMask(rs[D3DRS_ZWRITEENABLE] ? GL_TRUE : GL_FALSE);
-    // blend
-    if (rs[D3DRS_ALPHABLENDENABLE]) {
-        glEnable(GL_BLEND);
-        glBlendFunc(blendFactor(rs[D3DRS_SRCBLEND]), blendFactor(rs[D3DRS_DESTBLEND]));
-        glBlendEquation(blendOp(rs[D3DRS_BLENDOP]));
-        const DWORD c = rs[D3DRS_BLENDFACTOR];
-        glBlendColor(((c >> 16) & 255) / 255.0f, ((c >> 8) & 255) / 255.0f, (c & 255) / 255.0f, ((c >> 24) & 255) / 255.0f);
-    } else {
-        glDisable(GL_BLEND);
+    const GLint vx = static_cast<GLint>(viewport.X), vy = static_cast<GLint>(viewport.Y);
+    const GLsizei vw = static_cast<GLsizei>(std::max(1u, viewport.Width)), vh = static_cast<GLsizei>(std::max(1u, viewport.Height));
+    if (vx != g.vx || vy != g.vy || vw != g.vw || vh != g.vh) { glViewport(vx, vy, vw, vh); g.vx = vx, g.vy = vy, g.vw = vw, g.vh = vh; }
+    if (viewport.MinZ != g.zn || viewport.MaxZ != g.zf) { glDepthRangef(viewport.MinZ, viewport.MaxZ); g.zn = viewport.MinZ, g.zf = viewport.MaxZ; }
+    const int sc = rs[D3DRS_SCISSORTESTENABLE] != 0;
+    if (sc != g.scissor) { if (sc) glEnable(GL_SCISSOR_TEST); else glDisable(GL_SCISSOR_TEST); g.scissor = sc; }
+    if (sc) {
+        const GLint sx = scissor.left, sy = scissor.top, sw = std::max<LONG>(0, scissor.right - scissor.left), shh = std::max<LONG>(0, scissor.bottom - scissor.top);
+        if (sx != g.sx || sy != g.sy || sw != g.sw || shh != g.sh) { glScissor(sx, sy, sw, shh); g.sx = sx, g.sy = sy, g.sw = sw, g.sh = shh; }
     }
-    const DWORD cw = rs[D3DRS_COLORWRITEENABLE];
-    glColorMask((cw & 1) != 0, (cw & 2) != 0, (cw & 4) != 0, (cw & 8) != 0);
+    // depth
+    const int depth = rs[D3DRS_ZENABLE] && depthStencil;
+    if (depth != g.depth) { if (depth) glEnable(GL_DEPTH_TEST); else glDisable(GL_DEPTH_TEST); g.depth = depth; }
+    if (depth) { const GLenum f = cmpFunc(rs[D3DRS_ZFUNC]); if (f != g.depthFunc) { glDepthFunc(f); g.depthFunc = f; } }
+    const int zw = rs[D3DRS_ZWRITEENABLE] != 0;
+    if (zw != g.depthMask) { glDepthMask(zw ? GL_TRUE : GL_FALSE); g.depthMask = zw; }
+    // blend
+    const int blend = rs[D3DRS_ALPHABLENDENABLE] != 0;
+    if (blend != g.blend) { if (blend) glEnable(GL_BLEND); else glDisable(GL_BLEND); g.blend = blend; }
+    if (blend) {
+        const GLenum sb = blendFactor(rs[D3DRS_SRCBLEND]), db = blendFactor(rs[D3DRS_DESTBLEND]), op = blendOp(rs[D3DRS_BLENDOP]);
+        if (sb != g.sb || db != g.db) { glBlendFunc(sb, db); g.sb = sb, g.db = db; }
+        if (op != g.bop) { glBlendEquation(op); g.bop = op; }
+        const DWORD c = rs[D3DRS_BLENDFACTOR];
+        if (c != g.blendColor) { glBlendColor(((c >> 16) & 255) / 255.0f, ((c >> 8) & 255) / 255.0f, (c & 255) / 255.0f, ((c >> 24) & 255) / 255.0f); g.blendColor = c; }
+    }
+    const DWORD cw = rs[D3DRS_COLORWRITEENABLE] & 15;
+    if (cw != g.colorMask) { glColorMask((cw & 1) != 0, (cw & 2) != 0, (cw & 4) != 0, (cw & 8) != 0); g.colorMask = cw; }
     // cull: clip y is negated in the vertex epilogue, which mirrors the winding, so a Direct3D
     // clockwise triangle comes out counter-clockwise in GL (D3DCULL_CCW culls what GL calls CW).
-    switch (rs[D3DRS_CULLMODE]) {
-        case D3DCULL_CW: glEnable(GL_CULL_FACE); glCullFace(GL_BACK); glFrontFace(GL_CW); break;
-        case D3DCULL_CCW: glEnable(GL_CULL_FACE); glCullFace(GL_BACK); glFrontFace(GL_CCW); break;
-        default: glDisable(GL_CULL_FACE); break;
+    const int cull = rs[D3DRS_CULLMODE] == D3DCULL_CW ? 1 : rs[D3DRS_CULLMODE] == D3DCULL_CCW ? 2 : 0;
+    if (cull != g.cull) {
+        if (cull) { if (g.cull <= 0) { glEnable(GL_CULL_FACE); glCullFace(GL_BACK); } glFrontFace(cull == 1 ? GL_CW : GL_CCW); }
+        else glDisable(GL_CULL_FACE);
+        g.cull = cull;
     }
     // stencil
-    if (rs[D3DRS_STENCILENABLE] && depthStencil) {
-        glEnable(GL_STENCIL_TEST);
-        glStencilFunc(cmpFunc(rs[D3DRS_STENCILFUNC]), static_cast<GLint>(rs[D3DRS_STENCILREF]), rs[D3DRS_STENCILMASK]);
-        glStencilOp(stencilOp(rs[D3DRS_STENCILFAIL]), stencilOp(rs[D3DRS_STENCILZFAIL]), stencilOp(rs[D3DRS_STENCILPASS]));
-        glStencilMask(rs[D3DRS_STENCILWRITEMASK]);
-    } else {
-        glDisable(GL_STENCIL_TEST);
+    const int st = rs[D3DRS_STENCILENABLE] && depthStencil;
+    if (st != g.stencil) { if (st) glEnable(GL_STENCIL_TEST); else glDisable(GL_STENCIL_TEST); g.stencil = st; }
+    if (st) {
+        const GLenum f = cmpFunc(rs[D3DRS_STENCILFUNC]);
+        const GLint ref = static_cast<GLint>(rs[D3DRS_STENCILREF]);
+        const GLuint mask = rs[D3DRS_STENCILMASK];
+        if (f != g.sfunc || ref != g.sref || mask != g.smask) { glStencilFunc(f, ref, mask); g.sfunc = f, g.sref = ref, g.smask = mask; }
+        const GLenum a = stencilOp(rs[D3DRS_STENCILFAIL]), b = stencilOp(rs[D3DRS_STENCILZFAIL]), cc = stencilOp(rs[D3DRS_STENCILPASS]);
+        if (a != g.sfail || b != g.szfail || cc != g.spass) { glStencilOp(a, b, cc); g.sfail = a, g.szfail = b, g.spass = cc; }
+        const GLuint wm = rs[D3DRS_STENCILWRITEMASK];
+        if (wm != g.swmask) { glStencilMask(wm); g.swmask = wm; }
     }
-    if (rs[D3DRS_SLOPESCALEDEPTHBIAS] || rs[D3DRS_DEPTHBIAS]) {
+    const int po = rs[D3DRS_SLOPESCALEDEPTHBIAS] || rs[D3DRS_DEPTHBIAS];
+    if (po != g.polyOff) { if (po) glEnable(GL_POLYGON_OFFSET_FILL); else glDisable(GL_POLYGON_OFFSET_FILL); g.polyOff = po; }
+    if (po) {
         float slope, bias;
         std::memcpy(&slope, &rs[D3DRS_SLOPESCALEDEPTHBIAS], 4);
         std::memcpy(&bias, &rs[D3DRS_DEPTHBIAS], 4);
-        glEnable(GL_POLYGON_OFFSET_FILL);
-        glPolygonOffset(slope, bias * (1 << 24));
-    } else {
-        glDisable(GL_POLYGON_OFFSET_FILL);
+        if (slope != g.slope || bias != g.bias) { glPolygonOffset(slope, bias * (1 << 24)); g.slope = slope, g.bias = bias; }
     }
 }
 
@@ -1722,17 +1782,9 @@ GLenum declType(BYTE t, GLint& size, GLboolean& norm, bool& isColor) {
     }
 }
 
-// Binds the vertex attributes for the current declaration. `baseVertex` shifts every stream.
-bool Device::bindVertexLayout(const VertexDecl* d, bool up, const void* upData, UINT upStride, UINT, INT baseVertex) {
-    if (!d) return false;
-    LayoutKey key;
-    key.decl = d, key.vs = d->preTransformed ? nullptr : vs.p, key.program = lastProgramGl, key.up = up, key.upStride = up ? upStride : 0, key.baseVertex = up ? 0 : baseVertex;
-    if (!up)
-        for (int i = 0; i < 8; ++i) key.vb[i] = streams[i].vb ? streams[i].vb->buf.gl : 0, key.off[i] = streams[i].offset, key.stride[i] = streams[i].stride;
-    if (layoutValid && std::memcmp(&key, &lastLayout, sizeof key) == 0) return true;  // same pointers as the last draw
-    lastLayout = key;
-    layoutValid = true;
-    for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
+// Issues the attribute pointers of `d` on the bound vertex array object; returns the mask of
+// colour attributes (the shader swizzles those from BGRA).
+int Device::specifyAttributes(const VertexDecl* d, bool up, UINT upStride, INT baseVertex) {
     int colorMask = 0;
     for (const D3DVERTEXELEMENT9& e : d->elements) {
         int loc = -1;
@@ -1761,10 +1813,70 @@ bool Device::bindVertexLayout(const VertexDecl* d, bool up, const void* upData, 
         }
         glEnableVertexAttribArray(static_cast<GLuint>(loc));
     }
-    if (current && current->uColorBgra >= 0) glUniform1i(current->uColorBgra, colorMask);
+    return colorMask;
+}
+
+// Binds the vertex attributes for the current declaration. `baseVertex` shifts every stream.
+bool Device::bindVertexLayout(const VertexDecl* d, bool up, const void* upData, UINT upStride, UINT, INT baseVertex) {
+    if (!d) return false;
+    LayoutKey key;
+    std::memset(&key, 0, sizeof key);  // the padding too: the key is hashed and compared as bytes
+    key.decl = d, key.vs = d->preTransformed ? nullptr : vs.p, key.program = lastProgramGl, key.up = up, key.upStride = up ? upStride : 0, key.baseVertex = up ? 0 : baseVertex;
+    if (!up)
+        for (int i = 0; i < 8; ++i) key.vb[i] = streams[i].vb ? streams[i].vb->buf.gl : 0, key.off[i] = streams[i].offset, key.stride[i] = streams[i].stride;
+    if (layoutValid && std::memcmp(&key, &lastLayout, sizeof key) == 0) return true;  // same pointers as the last draw
+    lastLayout = key;
+    layoutValid = true;
+    // FABLE_GLES_VAO=1 enables the cache; off until the white-terrain regression seen with it is understood
+    static const bool noVao = [] { const char* e = getenv("FABLE_GLES_VAO"); return !(e && atoi(e) != 0); }();
+    if (noVao) {  // one object, attributes re-specified every draw (the pre-cache behaviour)
+        static VaoEntry plain;
+        if (!plain.vao) glGenVertexArrays(1, &plain.vao);
+        glBindVertexArray(plain.vao);
+        for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
+        boundIbo = ~0u;
+        curVao = nullptr;
+        plain.colorMask = specifyAttributes(d, up, upStride, baseVertex);
+        if (current && current->uColorBgra >= 0) glUniform1i(current->uColorBgra, plain.colorMask);
+        return true;
+    }
+    if (auto it = vaos.find(key); it != vaos.end()) {
+        glBindVertexArray(it->second.vao);
+        curVao = &it->second;
+        boundIbo = it->second.ibo;
+        if (current && current->uColorBgra >= 0) glUniform1i(current->uColorBgra, it->second.colorMask);
+        return true;
+    }
+    if (vaos.size() >= 4096) {
+        for (auto& [k, e] : vaos) glDeleteVertexArrays(1, &e.vao);
+        vaos.clear();
+    }
+    VaoEntry entry;
+    glGenVertexArrays(1, &entry.vao);
+    glBindVertexArray(entry.vao);
+    boundIbo = 0;  // a fresh object has no element buffer
+    entry.colorMask = specifyAttributes(d, up, upStride, baseVertex);
+    if (current && current->uColorBgra >= 0) glUniform1i(current->uColorBgra, entry.colorMask);
+    curVao = &vaos.emplace(key, entry).first->second;  // node pointers stay valid across rehashing
     (void)upData;
     return true;
 }
+
+void Device::dropVaos(GLuint buffer, const void* pointer) {
+    for (auto it = vaos.begin(); it != vaos.end();) {
+        const LayoutKey& k = it->first;
+        bool hit = pointer && (k.decl == pointer || k.vs == pointer);
+        if (buffer) for (int i = 0; i < 8 && !hit; ++i) hit = k.vb[i] == buffer;
+        if (buffer && it->second.ibo == buffer) hit = true;
+        if (hit) {
+            if (curVao == &it->second) curVao = nullptr, layoutValid = false, boundIbo = ~0u;
+            glDeleteVertexArrays(1, &it->second.vao);
+            it = vaos.erase(it);
+        } else ++it;
+    }
+}
+void dropVaosForBuffer(GLuint gl) { if (g_device) g_device->dropVaos(gl, nullptr); }
+void dropVaosForPointer(const void* p) { if (g_device) g_device->dropVaos(0, p); }
 
 static bool key_trace_once(uint32_t id) { static std::vector<uint32_t> seen; if (std::find(seen.begin(), seen.end(), id) != seen.end()) return false; seen.push_back(id); return true; }
 // Host graphics settings: draws into the shadow buffer (a render target of the def's
@@ -1848,7 +1960,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT b
     if (!current) return S_OK;
     GLsizei count;
     const GLenum mode = primMode(t, n, count);
-    if (boundIbo != indices->buf.gl) { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices->buf.gl); boundIbo = indices->buf.gl; }
+    if (boundIbo != indices->buf.gl) { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices->buf.gl); boundIbo = indices->buf.gl; if (curVao) curVao->ibo = boundIbo; }
     const bool i32 = indices->format == D3DFMT_INDEX32;
     glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, reinterpret_cast<const void*>(static_cast<uintptr_t>(start) * (i32 ? 4 : 2)));
     ++statDraws;
@@ -1877,8 +1989,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UIN
     prepareDraw(true, data, stride, minIdx + numV, 0);
     if (!current) return S_OK;
     const bool i32 = fmt == D3DFMT_INDEX32;
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scratchIbo);
-    boundIbo = scratchIbo;
+    if (boundIbo != scratchIbo) { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scratchIbo); boundIbo = scratchIbo; if (curVao) curVao->ibo = scratchIbo; }
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, static_cast<GLsizeiptr>(count) * (i32 ? 4 : 2), idx, GL_STREAM_DRAW);
     glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, nullptr);
     ++statDraws;
@@ -1975,6 +2086,7 @@ void Device::drawOverlay() {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, overlayTexture);
     glBindSampler(0, 0);
+    glBindVertexArray(overlayVao);
     glBindBuffer(GL_ARRAY_BUFFER, overlayVbo);
     glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(verts.size() * sizeof(float)), verts.data(), GL_STREAM_DRAW);
     for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
@@ -1984,13 +2096,14 @@ void Device::drawOverlay() {
     glEnableVertexAttribArray(1);
     glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(verts.size() / 8));
     // the game's state is re-applied on the next draw
-    rsDirty = true;
+    glStateUnknown();
     texDirty = true;
     boundTexGl[0] = ~0u;
     samplersBound = false;  // unit 0 got the default sampler
     current = nullptr;
     constProgram = nullptr;
     layoutValid = false;
+    curVao = nullptr;
     programDirty = true;
     boundIbo = ~0u;
     lastProgramGl = 0;
@@ -2088,16 +2201,18 @@ bool Device::presentPass(int ww, int wh, float gamma) {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, mainColor);
     glBindSampler(0, 0);
+    glBindVertexArray(overlayVao);
     for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
     glDrawArrays(GL_TRIANGLES, 0, 3);
     // the game's state is re-applied on the next draw
-    rsDirty = true;
+    glStateUnknown();
     texDirty = true;
     boundTexGl[0] = ~0u;
     samplersBound = false;  // unit 0 got the default sampler
     current = nullptr;
     constProgram = nullptr;
     layoutValid = false;
+    curVao = nullptr;
     programDirty = true;
     boundIbo = ~0u;
     boundFbo = ~0u;
@@ -2190,7 +2305,7 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
     }
     statDraws = statClears = 0;
     boundFbo = ~0u;
-    rsDirty = true;
+    glStateUnknown();
     GLCHECK("Present");
     return S_OK;
 }

@@ -266,3 +266,45 @@ texture unit 0 and the sampler tracking never rebound the game's.
   The GetUIScale call sites in ChangePositionDelta, CSprite's size and the list's own
   layout were given the 1.6 as well (no visible effect, kept for consistency;
   `FABLE_XBOX_ZOOM_SITES=0/1/2`).
+
+### Third device log (v13) and the 30 fps round
+Gameplay at everything Low: ~48 ms frames, ~21 ms in GL (swap 0, uploads 0: pure draw
+submission in the Mali driver), ~27 ms game. The pause menu itself costs ~22 ms of CPU
+(2000+ components updated per frame). Changes:
+- **Hero save left the game paused** (user report): `CloseInGameMenu` only closes the
+  screen; Start's path (0x636270) also removes the menu's input process. The after-save
+  close now goes through `CloseInGameMenuViaGameEvent` (0x47D21C), the game event that
+  closes the menu and resumes.
+- **Profiler markers**: the samples after the last lifted function (the runtime's dispatch,
+  the COM layer) were charged to that function (8.6 % as "CFontBankStateBlock::CreateCRC").
+  The resolver now carries the addresses of recomp_dispatch / dispatch_ic / lookup / rdtsc
+  and the COM entry points as named markers.
+- **`_ftol2` (0xBFEA70) hooked** (`host_ftol2`): the CRT's truncating double -> int64, 2004
+  call sites, 1.9 % of samples through the lifted x87 control-word dance; the host reads the
+  stack top and truncates.
+- **Vertex array objects**: a draw whose buffers changed re-issued 16 attribute disables,
+  a buffer bind, an attribute pointer and an enable per element (~20 GL calls per mesh).
+  The renderer caches one VAO per layout key (declaration, shader, program, buffers,
+  offsets, strides) and binds it; the element buffer binding is tracked per object; objects
+  are dropped when a buffer, declaration or shader they reference is destroyed, and the
+  overlay and present passes use their own object.
+- **GL state shadow**: a render-state change between draws re-applied every state
+  (viewport, depth, blend, colour mask, cull, stencil, polygon offset: ~20 calls); the
+  renderer now keeps the values last issued and sends only what differs; passes that set
+  state directly (Clear, ColorFill, StretchRect, the overlay, Present) invalidate it. With
+  the VAOs, GL time under llvmpipe fell from 62 to 55 ms per gameplay frame (the
+  software rasteriser dominates there; the per-call share is what the Mali driver pays).
+- **ThinLTO option** for the lifted code (`FABLE_GEN_LTO`, lld): direct calls between
+  small lifted functions inline, which keeps the guest registers in host registers across
+  them instead of spilling to the Ctx at every call. Measured below.
+- **White terrain regression** (user report on the harness screenshots): the landscape
+  renders flat white since the build that added the VAO cache and the state shadow; trees,
+  grass and meshes are fine. One real bug found on reading: after a pass that sets GL state
+  directly the shadow re-issued only the enables, while the dependent values (blend
+  function, depth function, stencil parameters, scissor box, polygon offset) kept their
+  "known" values although the overlay had changed them (SRC_ALPHA blending) -> a later draw
+  with the same values as the shadow skipped the call. The shadow now resets every field
+  to "unknown". That alone did not bring the terrain back, so both mechanisms are behind
+  opt-in switches (`FABLE_GLES_VAO=1`, `FABLE_GLES_STATESHADOW=1`, default off) while the
+  harness bisects them (runs with each one off). The FVF declaration is now cached per
+  FVF value instead of being rebuilt (and its VAOs dropped) on every SetFVF.

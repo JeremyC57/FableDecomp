@@ -29,6 +29,12 @@ target_compile_definitions(fable_gen PRIVATE RECOMP_IDENTITY_MEMORY=1)
 set(FABLE_GEN_OPT "-O1" CACHE STRING "Optimisation level for the lifted code (-O2 for the handheld builds)")
 separate_arguments(FABLE_GEN_OPT_LIST UNIX_COMMAND "${FABLE_GEN_OPT}")
 target_compile_options(fable_gen PRIVATE ${FABLE_GEN_OPT_LIST} -fsigned-char -ffp-contract=off -fno-strict-aliasing -w)
+# ThinLTO across the lifted code: direct calls between small lifted functions inline, which
+# keeps the guest registers in host registers across them instead of spilling to the Ctx.
+option(FABLE_GEN_LTO "ThinLTO for the lifted code (needs lld)" OFF)
+if(FABLE_GEN_LTO)
+  target_compile_options(fable_gen PRIVATE -flto=thin)
+endif()
 
 set(FABLE_GUEST_DLLS "" CACHE STRING "prefix|file|dir;... for recompiled DLLs")
 set(GUEST_DLL_DECLS "")
@@ -90,6 +96,9 @@ target_compile_options(FableRecomp PRIVATE
   $<$<COMPILE_LANGUAGE:C,CXX>:-Wall -Wno-unused-function -Wno-ignored-attributes -Wno-unknown-pragmas -Wno-builtin-requires-header>
   $<$<COMPILE_LANGUAGE:C,CXX>:-Wno-nonportable-include-path -Wno-pragma-pack -Wno-microsoft-anon-tag -Wno-int-to-pointer-cast -Wno-microsoft-exception-spec>)
 target_link_libraries(FableRecomp PRIVATE PkgConfig::SDL2 PkgConfig::FFMPEG dl)
+if(FABLE_GEN_LTO)
+  target_link_options(FableRecomp PRIVATE -flto=thin -fuse-ld=lld -Wl,--thinlto-jobs=4)
+endif()
 # d3d9.cpp opens DXVK at run time. Linux also links it, so the build directory's copy is found;
 # the APK carries two DXVK builds and android_host.cpp picks one.
 if(NOT ANDROID)

@@ -554,8 +554,10 @@ void host::pad::menuAfterSaveTick() {
     const uint32_t menu = g_closeMenuAfterSave;
     if (!menu) return;
     g_closeMenuAfterSave = 0;
+    // CloseInGameMenuViaGameEvent (0x47D21C): the game event that closes the menu and takes
+    // the game out of pause (CloseInGameMenu alone left it paused, user report)
     HLOG(1, "menu: closing the pause menu after the hero save");
-    guestCallThis(0x47D78B, menu, {});
+    guestCallThis(0x47D21C, menu, {});
 }
 
 // 0x54EF00 NUISystem::CText's draw (virtual 2). The front end's labels are anchored a fixed
