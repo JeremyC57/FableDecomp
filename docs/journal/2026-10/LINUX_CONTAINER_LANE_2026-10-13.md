@@ -156,6 +156,28 @@ initialisers and atexit thunks) are now read, so `CCharString g_x("lit", -1);` l
 
 Open after ten-plus variants each: F15 (76 rows), F73 (14), F148 (9) — `docs/journal/FINDINGS_LOG.md`.
 
+## Family waves 5–7 (128-byte rescan, batches `2026-10-13_linux_g<N>`)
+
+`famscan.py 128` over the post-wave-4 catalog (11,111 families, 19,632 bodies); `fam.py` now
+dispatches on a template id separate from the family index (`FAMFILE`/5th argument), so one
+template serves every family of a shape across scans. 42 families → 1466/1474 rows landed
+(wave 5: 906, wave 6: 338, wave 7: 207). Catalog 23,237 byte-exact entries (46.9% of 49,568).
+
+Shapes landed: `CCountedPointer<T>::Reset`/constructor (195 + 36; the count block is rebuilt from
+`m_pObject`, not the argument), retail red-black tree destructor (227), iterator `--`/`++` (109 + 48,
+Dinkumware `_Dec`/`_Inc`), `find` with long keys (56, single-return form), `_Uninit_copy` (42,
+`T* d = dest;` + `++first, ++d`), `~vector` of polymorphic elements (19, `last` cached), `_Buynode`
+(28, placement new), persist read hooks (21 + 29), combat-action constructors with a zeroed
+`CSoundPair` and an animation name (54), copy constructors with an inlined smart-pointer copy (30),
+`SuspendableProcess` with a by-value `CScriptThing` (120), `Release()` of a static counted pointer
+(25), non-virtual `??_G` of non-polymorphic classes (15 + 36: `delete p` in a helper makes VC7.1
+emit it), EH-framed destructor/constructor/call shells (42 + 41 + 30, `/EHsc` added to the lander
+sweep), adjustor thunks (18: both bases must declare the virtual), `GetInterface_<type>` lookups
+(47, `optimize("y",off)` + `("s",on)` and a named map pointer), static `cos`/`sin` float
+initialisers (54, `#pragma intrinsic`). Rules are in GOTCHAS; the DDK STL headers are a different
+Dinkumware revision from retail (FINDINGS_LOG: F14 `std::copy` front ends), so STL internals are
+written out by hand.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
