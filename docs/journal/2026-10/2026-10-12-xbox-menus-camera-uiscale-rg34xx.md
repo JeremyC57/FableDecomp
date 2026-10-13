@@ -296,7 +296,11 @@ submission in the Mali driver), ~27 ms game. The pause menu itself costs ~22 ms 
   software rasteriser dominates there; the per-call share is what the Mali driver pays).
 - **ThinLTO option** for the lifted code (`FABLE_GEN_LTO`, lld): direct calls between
   small lifted functions inline, which keeps the guest registers in host registers across
-  them instead of spilling to the Ctx at every call. Measured below.
+  them instead of spilling to the Ctx at every call. Measured on the x86 harness (same
+  gameplay route, frame time minus GL time = game + runtime, average of the in-game frames):
+  -O1 26.9 ms, -O2 25.0 ms, -O2 + ThinLTO 25.3 ms. -O2 is what the handheld build already
+  uses; LTO buys nothing measurable (the hot paths are the hash dispatch and the GUI
+  component walks, not call overhead between small functions), so the option stays off.
 - **White terrain regression** (user report on the harness screenshots): the landscape
   rendered flat white since the build that added the VAO cache and the state shadow; trees,
   grass and meshes were fine. Bisected on the harness with each mechanism off: the cache was
