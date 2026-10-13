@@ -389,6 +389,9 @@ std::string ffpOp(uint32_t op, const std::string& a, const std::string& b, const
         case 15: return a + " + " + b + " * (1.0 - texA)";              // BLENDTEXTUREALPHAPM
         case 16: return "mix(" + b + ", " + a + ", cur.a)";             // BLENDCURRENTALPHA
         case 24: return "vec4(dot((" + a + ").rgb - 0.5, (" + b + ").rgb - 0.5) * 4.0)";  // DOTPRODUCT3
+        case 25: return a + " * " + b + " + " + cur;                      // MULTIPLYADD (arg0 = current)
+        case 26: return "mix(" + b + ", " + a + ", (" + cur + ").a)";     // LERP (arg0 = current)
+        case 17: return a + " * " + b;                                   // PREMODULATE: approximated as MODULATE
         default: return a;
     }
 }
@@ -398,11 +401,23 @@ std::string ffpPixelShader(const FfpPixelKey& key) {
     std::string s = kFragmentPrologue;
     s += "uniform vec4 uTFactor;\nvoid main() {\n";
     s += "  vec4 v0 = clamp(vColor0, 0.0, 1.0), v1 = clamp(vColor1, 0.0, 1.0);\n  vec4 cur = v0, tmp = vec4(0.0);\n";
-    for (int i = 0; i < 2; ++i) {
+    bool bumpNext = false;  // the previous stage was BUMPENVMAP: this stage's coordinates are perturbed by its texture
+    int bumpStage = 0;
+    for (int i = 0; i < 4; ++i) {
         const FfpStage& st = key.stage[i];
         if (st.colorOp == 1) break;  // DISABLE ends the chain
         const std::string tc = "vTex" + std::to_string(st.texCoordIndex & 7);
-        s += "  vec4 tex" + std::to_string(i) + " = " + (st.projected ? "texStageUV(" + std::to_string(i) + ", " + tc + ".xy / " + tc + ".w)" : "texStageUV(" + std::to_string(i) + ", " + tc + ".xy)") + ";\n";
+        std::string uv = st.projected ? tc + ".xy / " + tc + ".w" : tc + ".xy";
+        if (bumpNext) {  // D3DTOP_BUMPENVMAP on stage i-1: uv += bumpmat(i-1) * bump.rg (the bump texture is signed RG)
+            const std::string m = "uBump[" + std::to_string(bumpStage) + "]", b = "tex" + std::to_string(bumpStage);
+            uv = "(" + uv + ") + vec2(dot(" + m + ".xy, " + b + ".rg), dot(" + m + ".zw, " + b + ".rg))";
+            bumpNext = false;
+        }
+        s += "  vec4 tex" + std::to_string(i) + " = texStageUV(" + std::to_string(i) + ", " + uv + ");\n";
+        if (st.colorOp == 22 || st.colorOp == 23) {  // BUMPENVMAP(LUMINANCE): no colour result of its own; perturbs the next stage
+            bumpNext = true, bumpStage = i;
+            continue;
+        }
         s += "  { float texA = tex" + std::to_string(i) + ".a;\n";
         s += "    vec4 col = clamp(" + ffpOp(st.colorOp, ffpArg(st.colorArg1, i, false), ffpArg(st.colorArg2, i, false), "cur") + ", 0.0, 1.0);\n";
         if (st.alphaOp == 1) s += "    float alp = cur.a;\n";

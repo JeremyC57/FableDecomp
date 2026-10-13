@@ -51,7 +51,7 @@ struct FfpStage {
     bool operator==(const FfpStage&) const = default;
 };
 struct FfpPixelKey {
-    FfpStage stage[2];
+    FfpStage stage[4];  // Direct3D allows 8; the game uses up to 4 (bump-mapped water: bump, BUMPENVMAP, blend)
     bool specular = false;  // D3DRS_SPECULARENABLE
     bool operator==(const FfpPixelKey&) const = default;
 };

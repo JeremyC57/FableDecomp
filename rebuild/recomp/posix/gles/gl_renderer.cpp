@@ -1352,7 +1352,7 @@ Program* Device::program() {
     key.vs = rhw || !vs || !vs->sh.ok ? 0 : vs->id;
     key.ps = ps && ps->sh.ok ? ps->id : 0;
     if (!key.ps) {
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 4; ++i) {
             FfpStage& st = key.ffp.stage[i];
             st.colorOp = tss[i][D3DTSS_COLOROP], st.colorArg1 = tss[i][D3DTSS_COLORARG1], st.colorArg2 = tss[i][D3DTSS_COLORARG2];
             st.alphaOp = tss[i][D3DTSS_ALPHAOP], st.alphaArg1 = tss[i][D3DTSS_ALPHAARG1], st.alphaArg2 = tss[i][D3DTSS_ALPHAARG2];
