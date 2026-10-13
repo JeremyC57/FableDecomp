@@ -2857,6 +2857,478 @@ int main()
     X x;
 '''),b); continue
         continue   # no classifier matched: skip silently
+    elif TPL in ("w142",):   # EH: void CX::OnActivate() { CParam p; m_member.Slot(&p); }  (4-byte vtable-only parameter, embedded polymorphic member)
+        vt=vts[0][1]; pcls=rtti.get(vt) or f"CParam_{vt:08x}"; slot=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM][0]//4
+        moff=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.op_str.startswith("ecx,")][0]
+        cls=f"CActivator_{a}"; fn=clean(mname) if (clean(mname) and not clean(mname).startswith("sub_")) else f"Activate_{a}"
+        add(a,"_unattributed",f"{fn}_{a}",HDRF(a,f"{cls}::{fn}() -- EH-framed: a vtable-only {pcls} temporary handed to virtual slot {slot} of the member object at +{moff:#x}",len(b))+f'''//
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; mov dword ptr [esp],offset {pcls}::`vftable' ; mov eax,[ecx+{moff:#x}] ; add ecx,{moff:#x} ; lea edx,[esp] ; push edx ; mov dword ptr [esp+10h],0 ; call [eax+{slot*4:#x}] ; mov ecx,[esp+4] ; mov fs:[0],ecx ; add esp,10h ; ret
+// Built with C++ exceptions enabled (/EHsc). A 4-byte parameter object holding only its vtable
+// (0x{vt:08X}; inline constructor, empty inline destructor that gives the frame EH state 0) is
+// passed by address to virtual slot {slot} of the polymorphic member embedded at +{moff:#x}. The
+// manifest label is propagated; class names are placeholders. One of {len(members)} bodies.
+struct {pcls} {{
+    virtual void v00();
+    {pcls}() {{ }}
+    ~{pcls}() {{ }}
+}};
+
+struct CReceiver {{
+    virtual void v00();
+{"".join("    virtual void slot%02d();" % j + chr(10) for j in range(1,slot))}    virtual void Receive({pcls}* parameter);   // slot {slot}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{moff:#x}];
+    CReceiver m_receiver;                  // +{moff:#x} (embedded, not a pointer)
+    void {fn}();
+}};
+
+void {cls}::{fn}()
+{{
+    {pcls} parameter;
+    m_receiver.Receive(&parameter);
+}}
+''',T(a,'''static int g_c = 0; struct P { virtual void v00() {} P() {} ~P() {} };
+struct R { virtual void v00() {} virtual void Recv(P*) { ++g_c; } }; struct X { unsigned char pad[4]; R r; void Act() { P p; r.Recv(&p); } };
+int main()
+{
+    X x; x.Act(); if (g_c != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w212",):   # EH ctor: CX(T a) : CBase(), m_pValue(a), m_member() {}  (member ctor out of line, base with empty dtor)
+        vt=vts[0][1]; cls=rtti.get(vt) or f"CVtable_{vt:08x}"; mctor=calls[0]; off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]
+        poff=[i.operands[0].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "esi +" in i.op_str.split(",")[0] and i.operands[1].type==X86_OP_REG][0]
+        mcls="CBaseIntelligentPointer" if mctor==0xa01b10 else (tctor_class(mctor) or f"CMember_{mctor:08x}")
+        add(a,cls,cls,HDRF(a,f"{cls}::{cls}(void*) -- EH-framed: vtable, argument kept at +{poff:#x}, {mcls} member at +{off:#x} default-constructed out of line",len(b))+f'''//
+// Retail bytes:  (EH prologue) ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov eax,[esp+18h] ; lea ecx,[esi+{off:#x}] ; mov dword ptr [esp+10h],0 ; mov dword ptr [esi],offset {cls}::`vftable' ; mov [esi+{poff:#x}],eax ; call {mcls}::{mcls} ; mov ecx,[esp+8] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret 4
+// Built with C++ exceptions enabled (/EHsc). The base has an empty inline destructor (no code,
+// but EH state 0 once it is constructed); this class installs its vtable (0x{vt:08X}), stores the
+// argument at +{poff:#x} and default-constructs the member at +{off:#x} out of line @ 0x{mctor:08X}.
+// One of {len(members)} bodies of this shape.
+struct {cls}_Base {{
+    virtual void v00();
+    {cls}_Base() {{ }}
+    ~{cls}_Base() {{ }}
+}};
+
+struct {mcls} {{
+    void* m_data;
+    {mcls}();                              // 0x{mctor:08X}
+    ~{mcls}();
+}};
+
+struct {cls} : {cls}_Base {{
+    void* m_pValue;                        // +{poff:#x}
+    {mcls} m_member;                       // +{off:#x}
+    virtual void v00();
+    {cls}(void* value);
+}};
+
+{cls}::{cls}(void* value)
+    : {cls}_Base()
+    , m_pValue(value)
+    , m_member()
+{{
+}}
+''',T(a,'''static int g_m = 0; struct B { virtual void v00() {} B() {} ~B() {} }; struct M { void* d; M() : d(0) { ++g_m; } ~M() {} };
+struct X : B { void* p; M m; virtual void v00() {} X(void* v) : B(), p(v), m() {} };
+int main()
+{
+    int q; X x(&q); if (x.p != &q || g_m != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w171",):   # EH dtor: ~CX() {} -- member at +off destroyed out of line (state 0), then the base destructor (state -1); no vtables
+        mdtor=calls[0]; bdtor=calls[1]; off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]
+        adj=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and i.op_str.startswith("esi, [ecx")]; adj=adj[0] if adj else 0
+        cls=f"CPair_{a}"; inner=f"{cls}_Inner" if adj else cls
+        body=(f'''struct {inner} : CBase_{bdtor:08x} {{
+    unsigned char _pad[{off-4:#x}];
+    CMember_{mdtor:08x} m_member;          // +{off:#x}
+    ~{inner}() {{ }}                        // inline: inlined into the owner's destructor
+}};
+
+struct {cls} {{
+    unsigned char _pad[{adj:#x}];
+    {inner} m_inner;                       // +{adj:#x}
+    ~{cls}();
+}};
+''' if adj else f'''struct {cls} : CBase_{bdtor:08x} {{
+    unsigned char _pad[{off-4:#x}];
+    CMember_{mdtor:08x} m_member;          // +{off:#x}
+    ~{cls}();
+}};
+''')
+        add(a,"_unattributed",f"~{cls}",HDRF(a,f"{cls}::~{cls}() -- EH-framed empty destructor: member at +{off:#x} (@ 0x{mdtor:08X}) then base @ 0x{bdtor:08X}" + (f", on the sub-object at +{adj:#x}" if adj else ""),len(b))+f'''//
+// Retail bytes:  (EH prologue) ; push ecx ; push esi ; {"lea esi,[ecx+%#x]" % adj if adj else "mov esi,ecx"} ; mov [esp+4],esi ; lea ecx,[esi+{off:#x}] ; mov dword ptr [esp+10h],0 ; call ~member ; mov ecx,esi ; mov dword ptr [esp+10h],-1 ; call ~base ; mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
+// Built with C++ exceptions enabled (/EHsc). Non-polymorphic aggregate (no vtable stores): the
+// member at +{off:#x} is destroyed out of line @ 0x{mdtor:08X} under EH state 0, then the base
+// destructor @ 0x{bdtor:08X} runs under state -1.{" The whole thing is the inline destructor of a member embedded at +%#x of the owner, inlined into the owner's empty destructor." % adj if adj else ""}
+// The manifest label (`_Dest_val<...pair<CCharString,CScriptInfo>>`) names a map pair; classes are
+// placeholders named by their destructor addresses. One of {len(members)} bodies.
+struct CBase_{bdtor:08x} {{
+    void* m_data;
+    ~CBase_{bdtor:08x}();                  // 0x{bdtor:08X}
+}};
+
+struct CMember_{mdtor:08x} {{
+    void* m_data;
+    ~CMember_{mdtor:08x}();                // 0x{mdtor:08X}
+}};
+
+{body}
+{cls}::~{cls}()
+{{
+}}
+''',T(a,'''static int g_d = 0; struct B { void* d; ~B() { g_d = g_d * 10 + 1; } }; struct M { void* d; ~M() { g_d = g_d * 10 + 2; } };
+struct X : B { unsigned char pad[0x18]; M m; ~X() {} };
+int main()
+{
+    { X x; } if (g_d != 21) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w144",):   # EH ctor: CX(a1, a2) : CBase(), m_18(a1), m_1c(0, a2) {}
+        base=calls[0]; mctor=calls[1]; off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]
+        poff=[i.operands[0].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "esi +" in i.op_str.split(",")[0] and i.operands[1].type==X86_OP_REG][0]
+        cls=f"CScriptEntry_{a}"
+        add(a,"_unattributed",cls,HDRF(a,f"{cls}::{cls}(void*, void*) -- EH-framed: base @ 0x{base:08X}, first argument at +{poff:#x}, member at +{off:#x} constructed from (0, second argument)",len(b))+f'''//
+// Retail bytes:  (EH prologue) ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; call CBase::CBase ; mov ecx,[esp+1Ch] ; mov eax,[esp+18h] ; push ecx ; push 0 ; lea ecx,[esi+{off:#x}] ; mov dword ptr [esp+18h],0 ; mov [esi+{poff:#x}],eax ; call CMember::CMember ; mov ecx,[esp+8] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret 8
+// Built with C++ exceptions enabled (/EHsc). The out-of-line base constructor @ 0x{base:08X} runs
+// first (its destructor gives EH state 0), the first argument is stored at +{poff:#x} and the
+// member at +{off:#x} is constructed out of line @ 0x{mctor:08X} from (0, second argument). No
+// vtables are stored. Manifest labels here are propagated; classes are placeholders. One of {len(members)} bodies.
+struct CBase_{base:08x} {{
+    void* m_data;
+    CBase_{base:08x}();                    // 0x{base:08X}
+    ~CBase_{base:08x}();
+}};
+
+struct CMember_{mctor:08x} {{
+    void* m_data;
+    CMember_{mctor:08x}(long zero, void* value);   // 0x{mctor:08X}
+}};
+
+struct {cls} : CBase_{base:08x} {{
+    unsigned char _pad[{poff-4:#x}];
+    void* m_pFirst;                        // +{poff:#x}
+    CMember_{mctor:08x} m_member;          // +{off:#x}
+    {cls}(void* first, void* second);
+}};
+
+{cls}::{cls}(void* first, void* second)
+    : CBase_{base:08x}()
+    , m_pFirst(first)
+    , m_member(0, second)
+{{
+}}
+''',T(a,'''static long g_z = 1; struct B { void* d; B() : d(0) {} ~B() {} }; struct M { void* d; M(long z, void* v) : d(v) { g_z = z; } };
+struct X : B { unsigned char pad[0x14]; void* f; M m; X(void* a, void* b) : B(), f(a), m(0, b) {} };
+int main()
+{
+    int p, q; X x(&p, &q); if (x.f != &p || x.m.d != &q || g_z != 0) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w349",):   # EH dtor: ~CX() {} of a novtable class: member at +off destroyed out of line, then the inlined empty intermediate-base destructor stores its vtable
+        vt=vts[0][1]; mid=rtti.get(vt) or f"CVtable_{vt:08x}"; mdtor=calls[0]; off=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]
+        cls=f"{mid}_Derived_{a}"
+        add(a,"_unattributed",f"~{cls}",HDRF(a,f"{cls}::~{cls}() -- EH-framed, novtable: member at +{off:#x} destroyed, then the inlined empty {mid} destructor stores its vtable",len(b))+f'''//
+// Retail bytes:  (EH prologue) ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; lea ecx,[esi+{off:#x}] ; mov dword ptr [esp+10h],0 ; call ~member ; mov ecx,[esp+8] ; mov dword ptr [esi],offset {mid}::`vftable' ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
+// Built with C++ exceptions enabled (/EHsc). As in family 143: the derived class is abstract
+// (`__declspec(novtable)`, so no vtable store of its own), its member at +{off:#x} is destroyed out
+// of line @ 0x{mdtor:08X} under EH state 0, then the inline empty destructor of the intermediate
+// base {mid} is inlined (its vtable store 0x{vt:08X}). The derived class cannot be named from the
+// body. One of {len(members)} bodies of this shape.
+struct CMember_{mdtor:08x} {{
+    void* m_data;
+    ~CMember_{mdtor:08x}();                // 0x{mdtor:08X}
+}};
+
+struct {mid} {{
+    virtual void v00();
+    ~{mid}() {{ }}
+}};
+
+struct __declspec(novtable) {cls} : {mid} {{
+    unsigned char _pad[{off-4:#x}];
+    CMember_{mdtor:08x} m_member;          // +{off:#x}
+    virtual void v00();
+    ~{cls}();
+}};
+
+{cls}::~{cls}()
+{{
+}}
+''',T(a,'''static int g_d = 0; struct M { void* d; ~M() { ++g_d; } }; struct Mid { virtual void v00() {} ~Mid() {} };
+struct D : Mid { unsigned char pad[4]; M m; virtual void v00() {} ~D() {} };
+int main()
+{
+    { D d; } if (g_d != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w467",):   # EH: void CX::Invoke([T a]) { CAgents tmp(a or this); m_member.Slot(&tmp); }  -- 8-byte stack object from an out-of-line ctor, virtual call on an embedded member
+        ctor=calls[0]; slot=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM][0]//4
+        moff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "edx +" in i.op_str][0]; selfarg=retn==0
+        cls=f"CInvoker_{a}"; fn=f"Invoke_{a}"; params="" if selfarg else "void* argument"
+        add(a,"_unattributed",fn,HDRF(a,f"{cls}::{fn}({params}) -- EH-framed: a stack object built @ 0x{ctor:08X} from {'this' if selfarg else 'the argument'} is handed to virtual slot {slot} of the member at +{moff:#x}",len(b))+f'''//
+// Retail bytes:  (EH prologue) ; sub esp,8 ; {"mov edx,ecx ; push edx" if selfarg else "mov eax,[esp+18h] ; mov edx,ecx ; push eax"} ; lea ecx,[esp+4] ; call CAgents::CAgents ; {"mov eax,[edx+%#x] ; lea ecx,[edx+%#x]" % (moff,moff) if selfarg else "lea ecx,[edx+%#x] ; mov edx,[ecx]" % moff} ; lea edx/eax,[esp] ; push ; mov dword ptr [esp+14h],0 ; call [vtable+{slot*4:#x}] ; mov ecx,[esp+8] ; mov fs:[0],ecx ; add esp,14h ; ret {retn}
+// Built with C++ exceptions enabled (/EHsc). An 8-byte temporary is constructed out of line
+// @ 0x{ctor:08X} from {'this' if selfarg else 'the one argument'} (`this` stays in edx across the call), then
+// its address goes to virtual slot {slot} of the polymorphic member embedded at +{moff:#x}; the
+// temporary's empty inline destructor gives EH state 0. Manifest labels are propagated; classes
+// are placeholders. One of {len(members)} bodies of this shape.
+struct CAgents_{ctor:08x} {{                // 8 bytes: vtable + one member; the empty inline destructor only
+    virtual void v00();                    // resets the vtable (dead store, dropped) but still registers EH state 0
+    void* m_value;
+    CAgents_{ctor:08x}(void* source);      // 0x{ctor:08X}
+    ~CAgents_{ctor:08x}() {{ }}
+}};
+
+struct CReceiver {{
+    virtual void v00();
+{"".join("    virtual void slot%02d();" % j + chr(10) for j in range(1,slot))}    virtual void Receive(CAgents_{ctor:08x}* agents);   // slot {slot}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{moff:#x}];
+    CReceiver m_receiver;                  // +{moff:#x}
+    void {fn}({params});
+}};
+
+void {cls}::{fn}({params})
+{{
+    CAgents_{ctor:08x} agents({"this" if selfarg else "argument"});
+    m_receiver.Receive(&agents);
+}}
+''',T(a,'''static int g_c = 0; struct A { virtual void v00() {} void* a; A(void* s) : a(s) {} ~A() {} };
+struct R { virtual void v00() {} virtual void Recv(A*) { ++g_c; } }; struct X { unsigned char pad[4]; R r; void Inv(void* v) { A a(v); r.Recv(&a); } };
+int main()
+{
+    X x; x.Inv(0); if (g_c != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w468",):   # EH: long CX::Get() { CGuard guard(this); return m_pObject->Slot(); }  -- explicit out-of-line destructor of the guard
+        ctor=calls[0]; dtor=calls[1]; slot=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM][0]//4
+        poff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "esi +" in i.op_str][0]
+        cls=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else f"CScript_{a}"; mod=cls if not cls.startswith("CScript_") else "_unattributed"; fn=clean(mname) if (clean(mname) and not clean(mname).startswith("sub_")) else f"Query_{a}"
+        add(a,mod,fn,HDRF(a,f"{cls}::{fn}() -- EH-framed: guard object (ctor @ 0x{ctor:08X}, dtor @ 0x{dtor:08X}) around a virtual slot-{slot} call on the object at +{poff:#x}",len(b))+f'''//
+// Retail bytes:  (EH prologue) ; sub esp,8 ; push esi ; mov esi,ecx ; push esi ; lea ecx,[esp+8] ; call CGuard::CGuard ; mov ecx,[esi+{poff:#x}] ; mov eax,[ecx] ; mov dword ptr [esp+14h],0 ; call [eax+{slot*4:#x}] ; lea ecx,[esp+4] ; mov esi,eax ; mov dword ptr [esp+14h],-1 ; call CGuard::~CGuard ; mov ecx,[esp+0Ch] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret
+// Built with C++ exceptions enabled (/EHsc). An 8-byte guard is constructed from `this`
+// @ 0x{ctor:08X}, the result of virtual slot {slot} of the object at +{poff:#x} is kept in esi
+// while the guard is destroyed out of line @ 0x{dtor:08X} (state -1), then returned. Classes other
+// than the labelled one are placeholders. One of {len(members)} bodies of this shape.
+struct CGuard_{ctor:08x} {{
+    void* m_first;
+    void* m_second;
+    CGuard_{ctor:08x}(void* owner);        // 0x{ctor:08X}
+    ~CGuard_{ctor:08x}();                  // 0x{dtor:08X}
+}};
+
+struct CQueried {{
+    virtual void v00();
+{"".join("    virtual void slot%02d();" % j + chr(10) for j in range(1,slot))}    virtual long Query();                  // slot {slot}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{poff:#x}];
+    CQueried* m_pObject;                   // +{poff:#x}
+    long {fn}();
+}};
+
+long {cls}::{fn}()
+{{
+    CGuard_{ctor:08x} guard(this);
+    return m_pObject->Query();
+}}
+''',T(a,'''static int g_g = 0; struct G { void* a; void* b; G(void* o) : a(o), b(0) { ++g_g; } ~G() { --g_g; } };
+struct Q { virtual void v00() {} virtual void s1() {} virtual long Query() { return 7; } }; struct X { unsigned char pad[4]; Q* q; long Get() { G g(this); return q->Query(); } };
+int main()
+{
+    Q q; X x; x.q = &q; if (x.Get() != 7 || g_g != 0) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w15",):   # bool CDefinitionManager::GetDef<T>(long index, CDefPointer<T>& out): fetch by global index, assign the ref-counted pointer, release the temporary
+        getter=calls[0]; cls="CDefinitionManager"; nm=f"CDefPointer_{a}"
+        add(a,cls,f"GetDef_{a}",HDRF(a,f"{cls}::GetDef<T>(long, {nm}&) -- GetPDefFromGlobalIndex, then the intrusive-count assignment and the temporary's release, both inlined",len(b))+f'''//
+// Retail bytes:  mov eax,[esp+4] ; test eax,eax ; jle F ; push eax ; lea eax,[esp+8] ; push eax ; call GetPDefFromGlobalIndex ; mov eax,[esp+4] ; test eax,eax ; je F ; push esi ; mov esi,[esp+0Ch] ; mov ecx,[esi] ; cmp ecx,eax ; je S ; test ecx,ecx ; je N ; dec dword ptr [ecx+4] ; jne Z ; mov edx,[ecx] ; call [edx+4] ; Z: mov eax,[esp+8] ; mov dword ptr [esi],0 ; N: test eax,eax ; mov [esi],eax ; je R ; inc dword ptr [eax+4] ; mov eax,[esp+8] ; S: mov esi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec esi ; mov edx,esi ; test edx,edx ; mov [eax],esi ; jne R ; mov eax,[ecx] ; call [eax+4] ; R: mov al,1 ; pop esi ; ret 8 ; F: xor al,al ; ret 8
+// Template instantiation of the definition lookup: for a positive index the manager returns a
+// ref-counted definition pointer by value (@ 0x{getter:08X}; the temporary lives in the index's
+// own argument slot), a null result fails, otherwise the intrusive-count assignment into `out`
+// (release the old definition through vtable slot 1 when its count hits zero, adopt the new one
+// and bump its count) and the temporary's destructor (decrement, destroy on zero) are inlined.
+// The definition type is not recoverable from the body. One of {len(members)} bodies of this shape.
+struct CDef {{
+    virtual void v00();
+    virtual void Destroy();                // slot 1: called when the count reaches zero
+    long m_references;                     // +4
+}};
+
+struct {nm} {{
+    CDef* m_pDef;
+    {nm}() : m_pDef(0) {{ }}
+    ~{nm}()
+    {{
+        if (m_pDef) {{
+            CDef* def = m_pDef;
+            long left = def->m_references - 1;   // decremented in a register, stored, then tested (retail)
+            def->m_references = left;
+            if (left == 0)
+                def->Destroy();
+        }}
+    }}
+    {nm}& operator=(const {nm}& other)
+    {{
+        if (m_pDef != other.m_pDef) {{
+            if (m_pDef) {{
+                CDef* old = m_pDef;            // local: the decrement's flags are tested directly
+                if (--old->m_references == 0)
+                    old->Destroy();
+                m_pDef = 0;
+            }}
+            m_pDef = other.m_pDef;
+            if (m_pDef)
+                ++m_pDef->m_references;
+        }}
+        return *this;
+    }}
+}};
+
+struct {cls} {{
+    {nm} GetPDefFromGlobalIndex(long index);   // 0x{getter:08X}
+    bool GetDef_{a}(long index, {nm}& out);
+}};
+
+bool {cls}::GetDef_{a}(long index, {nm}& out)
+{{
+    if (index > 0) {{
+        {nm} def = GetPDefFromGlobalIndex(index);
+        if (def.m_pDef) {{
+            out = def;
+            return true;
+        }}
+    }}
+    return false;                          // one shared failure exit at the end, as retail
+}}
+''',T(a,'''static int g_x = 0; struct D { virtual void v00() {} virtual void Destroy() { ++g_x; } long r; D() : r(1) {} };
+struct P { D* p; P() : p(0) {} ~P() { if (p) { if (--p->r == 0) p->Destroy(); } } P& operator=(const P& o) { if (p != o.p) { if (p) { if (--p->r == 0) p->Destroy(); p = 0; } p = o.p; if (p) ++p->r; } return *this; } };
+static D g_d; struct M { P Get(long) { P t; t.p = &g_d; ++g_d.r; return t; } bool GetDef(long i, P& out) { if (i > 0) { P d = Get(i); if (d.p) { out = d; return true; } } return false; } };
+int main()
+{
+    M m; P out; if (!m.GetDef(3, out) || out.p != &g_d || g_d.r != 2 || m.GetDef(0, out)) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w49",):   # _Uninit_fill_n(dest, count, const pair<ulong, CCountedRef>& value): placement-copy count elements
+        step=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.op_str.startswith("eax,")][0]
+        nm=f"CPairCountedRef{step}"
+        add(a,"_global",f"UninitFillN_{nm}_{a}",HDRF(a,f"_Uninit_fill_n<{nm}*> -- placement-copy `count` {step}-byte {{key, counted ref}} pairs (count bump inlined)",len(b))+f'''//
+// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe E ; push esi ; mov esi,edx ; mov edx,[esp+8] ; L: test eax,eax ; je N ; mov ecx,[edx] ; mov [eax],ecx ; mov ecx,[edx+4] ; test ecx,ecx ; mov [eax+4],ecx ; je N ; inc dword ptr [ecx] ; N: add eax,{step} ; dec esi ; jne L ; pop esi ; E: ret 8
+// Dinkumware `_Uninit_fill_n` (__fastcall: dest in ecx, count in edx, the value and the
+// allocator on the stack): every slot is copy-constructed in place with placement new (null test
+// on the slot) from the value, whose second member is an intrusive counted reference (copying
+// it bumps the count block's first dword); the advanced destination is returned. The element
+// type is named by its shape. One of
+// {len(members)} bodies.
+#include <new>
+
+struct SCountBlock {{ long m_references; }};
+
+struct {nm} {{
+    unsigned long m_key;
+    SCountBlock* m_pCount;
+    {nm}(const {nm}& other) : m_key(other.m_key), m_pCount(other.m_pCount) {{ if (m_pCount) ++m_pCount->m_references; }}
+}};
+
+struct CRetailAllocator {{ }};
+
+{nm}* __fastcall UninitFillN_{nm}_{a}({nm}* dest, unsigned long count, const {nm}& value, CRetailAllocator allocator)
+{{
+    for (; 0 < count; --count, ++dest)
+        new (dest) {nm}(value);
+    return dest;                           // the advanced pointer is returned (retail keeps dest in eax from the start)
+}}
+''',T(a,'''#include <new>
+struct C { long r; }; struct P { unsigned long k; C* c; P(const P& o) : k(o.k), c(o.c) { if (c) ++c->r; } }; struct A {};
+static P* __fastcall F(P* d, unsigned long n, const P& v, A) { for (; 0 < n; --n, ++d) new (d) P(v); return d; }
+int main()
+{
+    C c = { 1 }; unsigned char buf[24]; P* v = (P*)buf; v->k = 5; v->c = &c; F((P*)(buf + 8), 2, *v, A()); if (c.r != 3 || ((P*)buf)[2].k != 5) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w50",):   # void CX::Remove(T key) { void* freed = Helper(key, &m_table->a, &m_table->b, &m_table->c); if (freed) free(freed); --m_count; }
+        helper=calls[0]; offs=sorted([i.operands[1].mem.disp for i in ins if i.mnemonic=="lea"]+[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.op_str.startswith("eax,")])
+        cls=f"CRemovalTable_{a}"
+        add(a,"_unattributed",f"Remove_{a}",HDRF(a,f"{cls}::Remove(key) -- cdecl helper @ 0x{helper:08X} over the table at [this]+{offs[0]:#x}/{offs[1]:#x}/{offs[2]:#x}, free the returned block, drop the count",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi] ; lea ecx,[eax+{offs[2]:#x}] ; push ecx ; lea edx,[eax+{offs[1]:#x}] ; push edx ; add eax,{offs[0]:#x} ; push eax ; mov eax,[esp+14h] ; push eax ; call Helper ; add esp,10h ; test eax,eax ; je K ; push eax ; call free ; add esp,4 ; K: dec dword ptr [esi+4] ; pop esi ; ret 4
+// Container removal: the __cdecl helper @ 0x{helper:08X} gets the key and the addresses of three
+// consecutive fields of the table object at [this] (the manifest's `CMemoryAllocatorVariableSize`
+// label for it is propagated); whatever block it hands back is released with free @ 0x00BFEA14,
+// then the element count at +4 is decremented. One of {len(members)} bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct STable {{
+    unsigned char _pad[{offs[0]:#x}];
+    void* m_first;                         // +{offs[0]:#x}
+    void* m_second;                        // +{offs[1]:#x}
+    void* m_third;                         // +{offs[2]:#x}
+}};
+
+void* __cdecl Helper_{helper:08x}(void* key, void** first, void** second, void** third);   // 0x{helper:08X}
+
+struct {cls} {{
+    STable* m_pTable;                      // +0
+    long m_count;                          // +4
+    void Remove_{a}(void* key);
+}};
+
+void {cls}::Remove_{a}(void* key)
+{{
+    void* freed = Helper_{helper:08x}(key, &m_pTable->m_first, &m_pTable->m_second, &m_pTable->m_third);
+    if (freed)
+        free(freed);
+    --m_count;
+}}
+''',T(a,'''#include <cstdlib>
+static void* __cdecl H(void*, void** a, void**, void**) { return *a; }
+struct T { unsigned char p[4]; void* a; void* b; void* c; }; struct X { T* t; long n; void R(void* k) { void* f = H(k, &t->a, &t->b, &t->c); if (f) std::free(f); --n; } };
+int main()
+{
+    T t; t.a = std::malloc(4); X x; x.t = &t; x.n = 2; x.R(0); if (x.n != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w41",):   # Dinkumware _Find for 4-byte elements: 4x unrolled loop plus a 3-case tail
+        nm=f"CFind4_{a}"
+        add(a,"_global",f"Find_{a}",HDRF(a,f"std::find<long*> -- Dinkumware `_Find`: four-way unrolled scan with a switch on the remainder (4-byte elements)",len(b))+f'''//
+// Retail bytes:  mov eax,ecx ; mov ecx,edx ; push ebx ; sub ecx,eax ; push esi ; sar ecx,4 ; test ecx,ecx ; push edi ; mov edi,[esp+10h] ; jle T ; mov esi,[edi] ; L: cmp [eax],esi ; je F ; (three more compare/advance steps) ; add eax,4 ; dec ecx ; test ecx,ecx ; jg L ; T: mov ecx,edx ; sub ecx,eax ; sar ecx,2 ; dec ecx ; je C1 ; dec ecx ; je C2 ; dec ecx ; jne D ; (case 3, 2, 1 compares) ; D: mov eax,edx ; F: pop edi ; pop esi ; pop ebx ; ret 8
+// The retail Dinkumware `find` for 4-byte scalar elements (__fastcall: first in ecx, last in
+// edx, the value by reference on the stack; `ret 8` also pops an unused tag): a loop over groups
+// of four comparisons (the value cached in a register) followed by a `switch` on the 0..3
+// remaining elements. Written out by hand because the DDK headers are a different revision.
+// One of {len(members)} bodies of this shape.
+struct CIteratorTag {{ }};
+
+long* __fastcall Find_{a}(long* first, long* last, const long& value, CIteratorTag tag)
+{{
+    long count;
+    for (count = (last - first) >> 2; 0 < count; --count) {{
+        if (*first == value) return first;
+        ++first;
+        if (*first == value) return first;
+        ++first;
+        if (*first == value) return first;
+        ++first;
+        if (*first == value) return first;
+        ++first;
+    }}
+    switch (last - first) {{
+    case 3:
+        if (*first == value) return first;
+        ++first;
+    case 2:
+        if (*first == value) return first;
+        ++first;
+    case 1:
+        if (*first == value) return first;
+    case 0:
+    default:
+        break;
+    }}
+    return last;
+}}
+''',T(a,'''struct Tg {};
+static long* __fastcall F(long* f, long* l, const long& v, Tg) { long n; for (n = (l - f) >> 2; 0 < n; --n) { if (*f == v) return f; ++f; if (*f == v) return f; ++f; if (*f == v) return f; ++f; if (*f == v) return f; ++f; } switch (l - f) { case 3: if (*f == v) return f; ++f; case 2: if (*f == v) return f; ++f; case 1: if (*f == v) return f; default: break; } return l; }
+int main()
+{
+    long a[7] = { 1, 2, 3, 4, 5, 6, 7 }; long k = 6, m = 9; if (F(a, a + 7, k, Tg()) != a + 5 || F(a, a + 7, m, Tg()) != a + 7) '''+FAIL(a)+'''
+'''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
 OUT.mkdir(parents=True, exist_ok=True)

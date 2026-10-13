@@ -89,6 +89,17 @@ DESC={
  "g20":"`GetInterface_<type>(CTCBase**)`: presence-bitset test then a CVectorMap lower-bound lookup (frame-pointer TU: `optimize(\"y\",off)` + `(\"s\",on)`)",
  "g38":"`GetInterface_<type>` with a register-held type constant (same template as g20)",
  "gtiny":"generic tiny-body synthesiser (≤16 bytes): dword/byte/float getters (direct and through a pointer), setters, constant stores/returns, forwarders, scaled-global static initialisers, root constructors",
+ "g142":"EH-framed `OnActivate()`: a vtable-only parameter object handed to virtual slot 10 of an embedded member",
+ "g212":"EH-framed `CX(a) : CBase(), m_pValue(a), m_member() {}` with the member constructed out of line",
+ "g171":"EH-framed empty destructor of a non-polymorphic pair: member then base destructor, states 0/-1",
+ "g348":"EH-framed empty destructor inlined on a member sub-object at +0x10 (same template as g171)",
+ "g144":"EH-framed `CX(a, b) : CBase(), m_18(a), m_1c(0, b) {}`",
+ "g349":"EH-framed novtable destructor: member destroyed, inlined empty intermediate-base destructor",
+ "g468":"EH-framed guarded virtual query: `CGuard guard(this); return m_pObject->Slot2();`",
+ "g49":"Dinkumware `_Uninit_fill_n` for {key, counted ref} pairs (placement copy, count bump, returns the advanced pointer)",
+ "g50":"container removal: cdecl helper over three table fields, free the returned block, drop the count",
+ "g54":"container removal (same template as g50)",
+ "g41":"Dinkumware `_Find` for 4-byte elements: four-way unrolled scan plus a remainder switch",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
