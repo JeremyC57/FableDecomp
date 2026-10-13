@@ -99,6 +99,28 @@ Compiler rules the misses taught (all now one line each in `docs/pipeline/GOTCHA
 - `wchar_t` is a typedef (no `/Zc:wchar_t`): include `<stddef.h>`; by-value class return with no
   `add esp,4` = `__stdcall`.
 
+## Batch 5: compile-as-you-go (same day)
+
+With the lane at ~0.5 s per compile (persistent `wineserver -p`), the next 80 smallest un-landed
+functions were authored straight against the compiler: generator `gen/batch5.py` → `payload.json` →
+`gp.py` (parity + sweep + side-by-side disassembly for every miss) → reshape → land.
+Result: **53 of 71 real functions landed** (9 of the 80 picks are mis-trimmed fragments, skipped);
+18 DIFFERs are ledgered, all instruction-order misses (`rebuild/candidates/manual/batches/2026-10-13_linux_b5/README.md`).
+
+New codegen rules from this batch (also in GOTCHAS): a named `float` local holding a call result
+blocks the sibling-call `jmp` (pointer/long locals do not); a `(long, float)` constructor reproduces
+the x87/register mixed copy of an 8-byte by-value return; a POD 8-byte struct comes back in
+`edx:eax`, a non-POD (any user ctor) through the hidden pointer; to get only the plain `??1`
+destructor body out of a polymorphic class give it a virtual function and a NON-virtual destructor
+(a virtual destructor makes the extractor see the deleting `??_G`); `x * <literal>` loads x first
+and multiplies by the constant pool, `x * <extern>` loads the extern first; a two-word
+`Helper(a, b)` that keeps `this` in ecx is a __thiscall member call; `inc dword ptr [mem]` pairs come
+from an inlined per-object helper, not from four statements on the owner; `ret` vs `ret N` fixes the
+real parameter count regardless of the manifest prototype.
+
+Coverage: catalog 18,631 → 18,749 → 18,802 byte-exact entries (37.6% → 37.9% of 49,568); the compile-gate
+ledger still needs the canonical refresh on the Windows box to count them.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
