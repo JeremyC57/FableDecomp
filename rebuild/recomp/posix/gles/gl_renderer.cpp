@@ -1761,6 +1761,11 @@ void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVert
             rs[D3DRS_ZENABLE], rs[D3DRS_ZFUNC], rs[D3DRS_ZWRITEENABLE], rs[D3DRS_CULLMODE], rs[D3DRS_COLORWRITEENABLE], rs[D3DRS_ALPHATESTENABLE], rs[D3DRS_FOGENABLE],
             static_cast<void*>(textures[0].p), textures[0] ? textures[0]->format : 0, textures[0] ? textures[0]->width : 0, textures[0] ? textures[0]->height : 0, textures[0] ? textures[0]->gl : 0,
             tss[0][D3DTSS_COLOROP], tss[0][D3DTSS_COLORARG1], tss[0][D3DTSS_COLORARG2], tss[0][D3DTSS_ALPHAOP], tss[0][D3DTSS_ALPHAARG1], tss[0][D3DTSS_ALPHAARG2]);
+        log("gles trace:   tex1=%p(%u gl%u) tex2=%p(%u gl%u) tex3=%p(%u gl%u) pc0=%.3f,%.3f,%.3f,%.3f c0=%.3f,%.3f,%.3f,%.3f",
+            static_cast<void*>(textures[1].p), textures[1] ? textures[1]->format : 0, textures[1] ? textures[1]->gl : 0,
+            static_cast<void*>(textures[2].p), textures[2] ? textures[2]->format : 0, textures[2] ? textures[2]->gl : 0,
+            static_cast<void*>(textures[3].p), textures[3] ? textures[3]->format : 0, textures[3] ? textures[3]->gl : 0,
+            psConst[0][0], psConst[0][1], psConst[0][2], psConst[0][3], vsConst[0][0], vsConst[0][1], vsConst[0][2], vsConst[0][3]);
         if (vs && key_trace_once(vs->id)) log("gles trace: vs %u glsl:\n%s", vs->id, vs->sh.info.glsl.c_str());
         if (ps && key_trace_once(0x10000u + ps->id)) log("gles trace: ps %u glsl:\n%s", ps->id, ps->sh.info.glsl.c_str());
         if (up && upData && d) {
