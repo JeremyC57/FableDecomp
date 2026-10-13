@@ -276,6 +276,28 @@ smart-pointer copy constructors and AssignTarget through old templates, and `_Un
 {long, X} / {X, long} pairs. Running total for the rescans: 3550/3585 rows from 150
 families; catalog 25,321 (51.1%).
 
+### Wave 15 (512-byte rescan, third pass)
+
+Thirteen more families, 152 rows. The big one is the `CGameScriptInterface` script API family
+(Set/Reset/Get over a by-value `CScriptThing`, 65 bodies in four shapes): the 12-byte parameter
+is `CBase`-derived with an embedded counted pointer, its destructor is inlined on both the early
+return and the main path (vtable store, count-block release, `CBase::~CBase`), the thing is
+resolved through virtual slot 11 of the pointee, and the TC lookup is an inlined `CVectorMap`
+find whose key must be an enum converting to the `LowerBound` reference (a frame temporary) so
+the compare keeps the immediate; the "map absent" path reads an uninitialised local that VC homes
+in a dead argument slot, and the source reproduces that. Also landed: `CCombatSequence_X::OnCreate`
+(counted temporary default-constructed, then assigned through `Reset`), gap-scan CCharString
+literal callers (virtual slot 350 with a member address; implicit conversion for a bool query
+with the result in `bl`), Dinkumware-style tree `Erase` returning the decremented size, two-member
+persist hooks with dword/byte defaults in one frame slot, STLport list clear through a virtual
+destructor, `_Uninit_fill_n` of counted pointers, and non-virtual `??_G` over one member.
+Parked with evidence: the lazily created NUISystem list push_back (24 bodies, a zeroed dword the
+compiler keeps that no allocator/tag model reproduces), `AddEngineComponent<T>` (20 identical
+bodies, the conversion temporary lands in the first argument slot in retail and the second here),
+the AI state-group TC hooks (`mov ecx,eax` after the lookup) and the two-level CVectorMap lookup
+(one key temporary shared by two `LowerBound` calls with immediate compares). Running total for
+the rescans: 3716/3752 rows from 165 families; catalog 25,473 (51.4%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
