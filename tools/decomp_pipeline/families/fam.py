@@ -3329,6 +3329,310 @@ int main()
 {
     long a[7] = { 1, 2, 3, 4, 5, 6, 7 }; long k = 6, m = 9; if (F(a, a + 7, k, Tg()) != a + 5 || F(a, a + 7, m, Tg()) != a + 7) '''+FAIL(a)+'''
 '''),b)
+    elif TPL in ("w256_1",):   # CCountedPointer<CX> __fastcall Create(owner, const CScriptThing& thing, arg): new CX(owner, thing, arg) wrapped in a fresh count block
+        size=pushes[0]; cctor=calls[1]; deleter=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and 0x401000<=i.operands[1].imm<0x1210000][0]
+        vt1,vt2=vts[0][1],vts[1][1]; basecls=rtti.get(vt1) or f"CVtable_{vt1:08x}"; cls=rtti.get(vt2) or f"CVtable_{vt2:08x}"
+        ofield=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and "ebx +" in i.op_str][0]
+        sts=[(i.operands[0].mem.disp,i.op_str.split(", ")[1]) for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "esi +" in i.op_str.split(",")[0] and i.operands[1].type==X86_OP_REG]
+        o_ctx=[d for d,r in sts if r=="eax"][0]; o_owner=[d for d,r in sts if r=="ebx"][0]; o_arg=[d for d,r in sts if r=="ecx"][0]; toff=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str][0]
+        if not (o_ctx==4 and toff==8 and o_owner==toff+12 and retn==8): continue
+        extra=[(i.operands[1].mem.disp) for i in ins if i.mnemonic=="lea" and "esi +" in i.op_str and i.operands[1].mem.disp!=toff]   # h22 variant: a member with an out-of-line ctor
+        mctor=calls[2] if (extra and len(calls)>3) else 0; moff=extra[0] if extra else 0
+        if extra and not (len(calls)>=4 and o_arg==o_owner+4 and moff==o_arg+4): continue
+        if not extra and o_arg!=o_owner+4: continue
+        tail=size-(moff+4 if extra else o_arg+4)
+        add(a,"_global",f"Create_{cls}",HDRF(a,f"CCountedPointer<{cls}> Create_{cls}(owner, arg, const CScriptThing&) -- new {cls}(owner, thing, arg) handed to a counted pointer (count block + deleter 0x{deleter:08X})",len(b))+f'''//
+// Retail bytes:  push ebx ; push esi ; push edi ; push {size:#x} ; mov ebx,edx ; mov edi,ecx ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je Z ; mov eax,[ebx+{ofield:#x}] ; mov [esi+4],eax ; mov eax,[esp+14h] ; push eax ; lea ecx,[esi+8] ; mov dword ptr [esi],offset {basecls}::`vftable' ; call CScriptThing::CScriptThing(const&) ; mov ecx,[esp+10h] ; mov dword ptr [esi],offset {cls}::`vftable' ; mov [esi+{o_owner:#x}],ebx ; mov [esi+{o_arg:#x}],ecx ; jmp P ; Z: xor esi,esi ; P: test esi,esi ; mov [edi],esi ; je N ; push 0Ch ; call operator new ; add esp,4 ; test eax,eax ; je Q ; mov ecx,[edi] ; mov dword ptr [eax],1 ; mov dword ptr [eax+4],offset Destroy ; mov [eax+8],ecx ; mov [edi+4],eax ; mov eax,edi ; (pops) ; ret 8 ; Q: xor eax,eax ; mov [edi+4],eax ; ... ; N: mov dword ptr [edi+4],0 ; ...
+// Script-side factory (no-RTTI module): a __fastcall function returning a CCountedPointer by
+// value (hidden result pointer in ecx, the owning script in edx, then on the stack one argument
+// and the CScriptThing by reference). It allocates sizeof({cls}) = {size:#x}, runs the inlined two-level
+// constructor (base {basecls}: context pointer copied from owner+{ofield:#x} and the CScriptThing
+// copy-constructed @ 0x{cctor:08X}; derived {cls}: owner and argument), then builds the
+// 12-byte count block {{1, deleter 0x{deleter:08X}, object}} exactly as the counted-pointer
+// constructor family does.{' This variant also default-constructs a member at +%#x out of line @ 0x%08X before the argument is assigned in the constructor body.' % (moff, mctor) if extra else ''} Vtables are named by address (the module carries no RTTI).
+// One of {len(members)} bodies of this shape.
+struct CScriptThing {{
+    unsigned char _body[12];
+    CScriptThing(const CScriptThing& other);   // 0x{cctor:08X}
+}};
+
+struct CScript {{
+    unsigned char _pad[{ofield:#x}];
+    void* m_pContext;                      // +{ofield:#x}
+}};
+
+// The context store precedes the base vtable store, so it belongs to a root class whose inline
+// constructor is inlined here (its own vtable store is dead and dropped).
+struct {basecls}_Root {{
+    virtual void v00();
+    void* m_pContext;                      // +4
+    {basecls}_Root(void* context) : m_pContext(context) {{ }}
+}};
+
+struct {basecls} : {basecls}_Root {{
+    virtual void v00();
+    CScriptThing m_thing;                  // +8
+    {basecls}(CScript* owner, const CScriptThing& thing) : {basecls}_Root(owner->m_pContext), m_thing(thing) {{ }}
+}};
+
+{"struct CMember_%08x {" % mctor + chr(10) + "    void* m_data;" + chr(10) + "    CMember_%08x();                      // 0x%08X, out of line" % (mctor, mctor) + chr(10) + "};" + chr(10) + chr(10) if extra else ""}struct {cls} : {basecls} {{
+    virtual void v00();
+    CScript* m_pOwner;                     // +{o_owner:#x}
+    void* m_pArgument;                     // +{o_arg:#x}{" (assigned in the body: stored after the member constructor)" if extra else ""}
+{"    CMember_%08x m_member;                 // +%#x" % (mctor, moff) + chr(10) if extra else ""}{"    unsigned char _tail[%#x];" % tail + chr(10) if tail>0 else ""}    {cls}(CScript* owner, const CScriptThing& thing, void* argument) : {basecls}(owner, thing), m_pOwner(owner){", m_member() { m_pArgument = argument; }" if extra else ", m_pArgument(argument) { }"}
+}};
+
+void __fastcall Destroy_{deleter:08x}(void* object);   // 0x{deleter:08X}
+
+struct SCountBlock {{
+    long m_references;
+    void (__fastcall* m_pfnDestroy)(void*);
+    void* m_pObject;
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_{deleter:08x}), m_pObject(object) {{ }}
+}};
+
+struct CCountedPointer {{
+    void* m_pObject;
+    SCountBlock* m_pCount;
+    CCountedPointer(void* object) : m_pObject(object)
+    {{
+        if (object)
+            m_pCount = new SCountBlock(m_pObject);
+        else
+            m_pCount = 0;
+    }}
+}};
+
+CCountedPointer __fastcall Create_{cls}(CScript* owner, void* argument, const CScriptThing& thing)
+{{
+    return CCountedPointer(new {cls}(owner, thing, argument));
+}}
+''',T(a,'''static void __fastcall Destroy(void*) { }
+struct ST { unsigned char b[12]; ST() {} ST(const ST& o) { b[0] = o.b[0]; } }; struct SC { unsigned char p[0x40]; void* ctx; };
+struct R { virtual void v00() {} void* c; R(void* x) : c(x) {} }; struct B : R { virtual void v00() {} ST t; B(SC* o, const ST& s) : R(o->ctx), t(s) {} };
+struct D : B { virtual void v00() {} SC* o; void* a; unsigned char tl[4]; D(SC* ow, const ST& s, void* ar) : B(ow, s), o(ow), a(ar) {} };
+struct K { long r; void (__fastcall* f)(void*); void* o; K(void* x) : r(1), f(Destroy), o(x) {} };
+struct P { void* o; K* c; P(void* x) : o(x) { if (x) c = new K(o); else c = 0; } };
+static P __fastcall Create(SC* ow, void* ar, const ST& s) { return P(new D(ow, s, ar)); }
+int main()
+{
+    SC sc; int v; sc.ctx = &v; ST s; s.b[0] = 3; P p = Create(&sc, &v, s); D* d = (D*)p.o; if (!d || !p.c || d->c != &v || d->t.b[0] != 3 || d->o != &sc || p.c->r != 1) '''+FAIL(a)+'''
+    delete p.c; delete d;
+'''),b)
+    elif TPL in ("w256_4",):   # void CScript::Main() { Add(new CSpawnedFunc_X(CCharString("LIT", -1), 0, this), CCharString("NAME", -1)); }
+        size=pushes[0]; lits=[p for p in pushes if 0x1200000<=p<0x1300000]; s1,s2=lit(lits[0]),lit(lits[1]); bctor=calls[1]; addfn=calls[3]
+        vt=vts[0][1]; cls=rtti.get(vt) or f"CVtable_{vt:08x}"; body=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and 0x401000<=i.operands[1].imm<0x1210000][0]
+        sts=[i.operands[0].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and "esi +" in i.op_str.split(",")[0]]; o_fn=sts[0]; o_owner=sts[1]
+        fn=clean(mname) or "Main"; owner=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else f"CScript_{a}"; mod=owner if not owner.startswith("CScript_") else "_unattributed"
+        add(a,mod,fn,HDRF(a,f"{owner}::{fn}() -- spawns the script function \"{s1}\" (body @ 0x{body:08X}) and registers it as \"{s2}\"",len(b))+f'''//
+// Retail bytes:  sub esp,8 ; push ebx ; push esi ; push edi ; xor ebx,ebx ; push {size:#x} ; mov edi,ecx ; mov [esp+14h],ebx ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je Z ; push -1 ; push offset "{s1}" ; lea ecx,[esp+14h] ; call CCharString::CCharString ; push 0 ; lea eax,[esp+10h] ; push eax ; mov ecx,esi ; mov ebx,1 ; call CSpawnedFunc::CSpawnedFunc ; mov dword ptr [esi],offset {cls}::`vftable' ; mov dword ptr [esi+{o_fn:#x}],offset body ; mov [esi+{o_owner:#x}],edi ; jmp P ; Z: xor esi,esi ; P: push -1 ; push offset "{s2}" ; lea ecx,[esp+18h] ; call CCharString::CCharString ; push eax ; push esi ; mov ecx,edi ; call Add ; lea ecx,[esp+10h] ; call ~CCharString ; pop edi ; pop esi ; test bl,1 ; pop ebx ; je E ; lea ecx,[esp] ; call ~CCharString ; E: add esp,8 ; ret
+// Script entry point of the no-RTTI script module: one full expression allocates a spawned
+// function object of {size:#x} bytes whose inlined constructor builds a CCharString temporary
+// from "{s1}" for the out-of-line base constructor @ 0x{bctor:08X} (name, 0), installs the
+// vtable (0x{vt:08X}), the function body pointer (0x{body:08X}) and the owning script, then
+// registers it with Add @ 0x{addfn:08X} under a second CCharString "{s2}". The first temporary
+// is destroyed at the end of the full expression only if the allocation succeeded (the `bl`
+// flag): that is how VC7.1 scopes a temporary built inside a `new` expression. One of {len(members)} bodies.
+#include "fable_string.h"
+
+struct {owner};
+
+struct CSpawnedFunc {{
+    virtual void v00();
+    unsigned char _body[{o_fn:#x} - 4];
+    CSpawnedFunc(const CCharString& name, long zero);   // 0x{bctor:08X}
+}};
+
+void Body_{body:08x}();                    // 0x{body:08X}: the script function this object runs
+
+struct {cls} : CSpawnedFunc {{
+    virtual void v00();
+    void (*m_pfnBody)();                   // +{o_fn:#x}
+    {owner}* m_pOwner;                     // +{o_owner:#x}
+{"    unsigned char _tail[%#x];" % (size-o_owner-4) + chr(10) if size-o_owner-4>0 else ""}    {cls}(const CCharString& name, long zero, {owner}* owner) : CSpawnedFunc(name, zero), m_pfnBody(Body_{body:08x}), m_pOwner(owner) {{ }}
+}};
+
+struct {owner} {{
+    void Add(CSpawnedFunc* function, const CCharString& name);   // 0x{addfn:08X}
+    void {fn}();
+}};
+
+void {owner}::{fn}()
+{{
+    Add(new {cls}(CCharString("{s1}", -1), 0, this), CCharString("{s2}", -1));
+}}
+''',T(a,'''static int g_a = 0, g_d = 0; struct S { const char* p; S(const char* t, long) : p(t) {} ~S() { ++g_d; } };
+struct F { virtual void v00() {} unsigned char b[0x30]; F(const S&, long) {} }; static void Body() {}
+struct O; struct X : F { virtual void v00() {} void (*f)(); O* o; X(const S& n, long z, O* ow) : F(n, z), f(Body), o(ow) {} };
+struct O { void Add(F* p, const S&) { ++g_a; delete p; } void Main() { Add(new X(S("A", -1), 0, this), S("B", -1)); } };
+int main()
+{
+    O o; o.Main(); if (g_a != 1 || g_d != 2) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_16",):   # pair<iterator,bool> CRetailTree::insert(const value_type&): VC6-era Dinkumware descent, begin()/--P checks, _Insert(X, Y, V, 0)
+        unsig=any(i.mnemonic in ("setb","setae","jae","jb","ja","jbe") for i in ins); kt="unsigned long" if unsig else "long"
+        maxfn=calls[0]; insfn=calls[1]; nm=f"CRetailTree_{'ulongkey' if unsig else 'longkey'}_ins{insfn:08x}"
+        add(a,nm,"insert",HDRF(a,f"{nm}::insert(const value_type&) -- unique-key insert: descend on `key < node.key`, step back unless at begin(), then _Insert @ 0x{insfn:08X}",len(b))+f'''//
+// Retail bytes:  push ebp ; mov ebp,esp ; push ebx ; mov ebx,ecx ; mov ecx,[ebx] ; push esi ; mov esi,[ecx+4] ; test esi,esi ; push edi ; mov edi,ecx ; mov dl,1 ; je D ; L: mov eax,[ebp+0Ch] ; mov eax,[eax] ; cmp eax,[esi+10h] ; mov edi,esi ; setl dl ; test dl,dl ; je R ; mov esi,[esi+8] ; jmp T ; R: mov esi,[esi+0Ch] ; T: test esi,esi ; jne L ; D: test dl,dl ; mov eax,edi ; je C ; cmp edi,[ecx+8] ; jne P ; push 0 ; push [ebp+0Ch] ; push edi ; push edi ; jmp I ; P: push edi ; call _Max ; pop ecx ; C: mov edx,[eax+10h] ; mov ecx,[ebp+0Ch] ; cmp edx,[ecx] ; jge F ; push 0 ; push ecx ; push edi ; push esi ; I: lea eax,[ebp+0Ch] ; push eax ; mov ecx,ebx ; call _Insert ; mov ecx,[eax] ; mov eax,[ebp+8] ; mov [eax],ecx ; mov byte ptr [eax+4],1 ; jmp E ; F: mov ecx,[ebp+8] ; mov [ecx],eax ; mov byte ptr [ecx+4],0 ; mov eax,ecx ; E: pop edi ; pop esi ; pop ebx ; pop ebp ; ret 8
+// The retail (VC6-era Dinkumware) `_Tree::insert` for a {'unsigned' if unsig else 'signed'} 32-bit key at +0x10: walk down
+// from head->parent remembering the parent and whether the key compares less; at the leaf, when
+// the last step went left and the parent is begin() insert immediately (`_Insert` @ 0x{insfn:08X}
+// called with the parent twice: a non-null first argument means "link as the left child"),
+// otherwise step back to the predecessor (the out-of-line `--iterator` helper @ 0x{maxfn:08X}) and insert only if that node's key is less than the new key;
+// the pair<iterator,bool> result goes through the hidden pointer. The compiler re-uses the dead
+// value-reference argument slot for `_Insert`'s hidden iterator result. Frame pointer + merged
+// call site: this TU is `optimize("y",off)` + `("s",on)`. One of {len(members)} bodies.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+
+struct {nm} {{
+    struct node {{ unsigned char flag; unsigned char _pad[3]; node* parent; node* left; node* right; {kt} key; }};
+    struct iterator {{ node* current; iterator(node* n) : current(n) {{ }} }};
+    struct pairib {{ iterator first; bool second; pairib(iterator f, bool s) : first(f), second(s) {{ }} }};
+    node* head;
+    unsigned long size;
+    static node* Prev(node* n);            // 0x{maxfn:08X}: predecessor of a node (the `--iterator` step, out of line)
+    iterator Insert(node* trynode, node* wherenode, const {kt}& value, node* newnode);   // 0x{insfn:08X}
+    pairib insert(const {kt}& value);
+}};
+
+{nm}::pairib {nm}::insert(const {kt}& value)
+{{
+    node* trynode = head->parent;
+    node* wherenode = head;
+    bool addleft = true;
+    while (trynode) {{
+        wherenode = trynode;
+        addleft = value < trynode->key;
+        trynode = addleft ? trynode->left : trynode->right;
+    }}
+    iterator where(wherenode);
+    if (!addleft)
+        ;
+    else if (where.current == head->left)
+        return pairib(Insert(wherenode, wherenode, value, 0), true);
+    else
+        where.current = Prev(where.current);
+    if (where.current->key < value)
+        return pairib(Insert(trynode, wherenode, value, 0), true);
+    return pairib(where, false);
+}}
+''',T(a,'''struct T { struct node { unsigned char f, p[3]; node* parent; node* l; node* r; long k; }; struct it { node* c; it(node* n) : c(n) {} }; struct pib { it f; bool s; pib(it a, bool b) : f(a), s(b) {} };
+  node* h; unsigned long n; static node* Prev(node* x) { x = x->l; while (x->r) x = x->r; return x; } it Ins(node*, node* w, const long& v, node*) { return it(w); }
+  pib insert(const long& v) { node* x = h->parent; node* y = h; bool a = true; while (x) { y = x; a = v < x->k; x = a ? x->l : x->r; } it w(y); if (!a) ; else if (w.c == h->l) return pib(Ins(y, y, v, 0), true); else w.c = Prev(w.c); if (w.c->k < v) return pib(Ins(x, y, v, 0), true); return pib(w, false); } };
+int main()
+{
+    T::node h = {0,{0},0,0,0,0}, a = {1,{0},&h,0,0,5}; h.parent = &a; h.l = &a; T t; t.h = &h; t.n = 1; long k = 5, m = 7; if (t.insert(k).s || !t.insert(m).s) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_32",):   # insert(const value_type&) with the iterator's out-of-line operator-- and default optimisation (no frame pointer)
+        unsig=any(i.mnemonic in ("setb","setae","jae","jb","ja","jbe") for i in ins); kt="unsigned long" if unsig else "long"
+        decfn=calls[0]; insfn=calls[1]; nm=f"CRetailTree_{'ulongkey' if unsig else 'longkey'}_ins{insfn:08x}"
+        add(a,nm,"insert",HDRF(a,f"{nm}::insert(const value_type&) -- unique-key insert: descend on `key < node.key`, iterator::operator-- unless at begin(), then _Insert @ 0x{insfn:08X}",len(b))+f'''//
+// Retail bytes:  push ebx ; mov ebx,[esp+0Ch] ; push ebp ; mov ebp,ecx ; mov ecx,[ebp] ; push esi ; mov esi,[ecx+4] ; test esi,esi ; push edi ; mov edi,ecx ; mov al,1 ; je D ; L: mov edx,[ebx] ; cmp edx,[esi+10h] ; setl al ; test al,al ; mov edi,esi ; je R ; mov esi,[esi+8] ; jmp T ; R: mov esi,[esi+0Ch] ; T: test esi,esi ; jne L ; D: test al,al ; mov edx,edi ; mov [esp+18h],edx ; je C ; cmp edi,[ecx+8] ; jne P ; push 0 ; push ebx ; push edi ; push edi ; lea eax,[esp+28h] ; push eax ; mov ecx,ebp ; call _Insert ; (pair {{it, true}}) ; ret 8 ; P: lea ecx,[esp+18h] ; call iterator::operator-- ; mov edx,[esp+18h] ; C: mov eax,[edx+10h] ; cmp eax,[ebx] ; jge F ; push 0 ; push ebx ; push edi ; push esi ; lea ecx,[esp+28h] ; push ecx ; mov ecx,ebp ; call _Insert ; (pair {{it, true}}) ; ret 8 ; F: (pair {{where, false}}) ; ret 8
+// The retail (VC6-era Dinkumware) `_Tree::insert` for a {'unsigned' if unsig else 'signed'} 32-bit key at +0x10, in a TU with
+// default optimisation: the local iterator lives in a stack slot and steps back through its
+// out-of-line `operator--` @ 0x{decfn:08X} (the family-11 body); `_Insert` @ 0x{insfn:08X} is called
+// with the parent twice at begin() (a non-null first argument links left), else with the null
+// try-node; the pair<iterator,bool> result goes through the hidden pointer. One of {len(members)} bodies.
+struct {nm} {{
+    struct node {{ unsigned char flag; unsigned char _pad[3]; node* parent; node* left; node* right; {kt} key; }};
+    struct iterator {{ node* current; iterator(node* n) : current(n) {{ }} iterator& Decrement(); }};   // 0x{decfn:08X}
+    struct pairib {{ iterator first; bool second; pairib(iterator f, bool s) : first(f), second(s) {{ }} }};
+    node* head;
+    unsigned long size;
+    iterator Insert(node* trynode, node* wherenode, const {kt}& value, node* newnode);   // 0x{insfn:08X}
+    pairib insert(const {kt}& value);
+}};
+
+{nm}::pairib {nm}::insert(const {kt}& value)
+{{
+    node* trynode = head->parent;
+    node* wherenode = head;
+    bool addleft = true;
+    while (trynode) {{
+        wherenode = trynode;
+        addleft = value < trynode->key;
+        trynode = addleft ? trynode->left : trynode->right;
+    }}
+    iterator where(wherenode);
+    if (!addleft)
+        ;
+    else if (where.current == head->left)
+        return pairib(Insert(wherenode, wherenode, value, 0), true);
+    else
+        where.Decrement();
+    if (where.current->key < value)
+        return pairib(Insert(trynode, wherenode, value, 0), true);
+    return pairib(where, false);
+}}
+''',T(a,'''struct T { struct node { unsigned char f, p[3]; node* parent; node* l; node* r; long k; }; struct it { node* c; it(node* n) : c(n) {} it& Dec() { c = c->l; while (c->r) c = c->r; return *this; } }; struct pib { it f; bool s; pib(it a, bool b) : f(a), s(b) {} };
+  node* h; unsigned long n; it Ins(node*, node* w, const long& v, node*) { return it(w); }
+  pib insert(const long& v) { node* x = h->parent; node* y = h; bool a = true; while (x) { y = x; a = v < x->k; x = a ? x->l : x->r; } it w(y); if (!a) ; else if (w.c == h->l) return pib(Ins(y, y, v, 0), true); else w.Dec(); if (w.c->k < v) return pib(Ins(x, y, v, 0), true); return pib(w, false); } };
+int main()
+{
+    T::node h = {0,{0},0,0,0,0}, a = {1,{0},&h,0,0,5}; h.parent = &a; h.l = &a; T t; t.h = &h; t.n = 1; long k = 5, m = 7; if (t.insert(k).s || !t.insert(m).s) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w256_15",):   # iterator _Insert(trynode, wherenode, value, forceRight): link the new node left or right, rebalance, count
+        unsig=any(i.mnemonic in ("setb","setae","jae","jb","ja","jbe") for i in ins); kt="unsigned long" if unsig else "long"
+        buy=calls[0]; rebal=calls[2]; nm=f"CRetailTree_{'ulongkey' if unsig else 'longkey'}_buy{buy:08x}"
+        add(a,nm,"Insert",HDRF(a,f"{nm}::_Insert(trynode, wherenode, const value_type&, forceRight) -- link a new node (Buynode @ 0x{buy:08X}) under wherenode, rebalance @ 0x{rebal:08X}, bump the count",len(b))+f'''//
+// Retail bytes:  push ebp ; mov ebp,esp ; mov eax,[ebp+14h] ; push ebx ; mov ebx,[ebp+10h] ; push esi ; push edi ; mov edi,ecx ; cmp ebx,[edi] ; je L ; cmp dword ptr [ebp+18h],0 ; jne R ; cmp dword ptr [ebp+0Ch],0 ; jne L ; mov ecx,[eax] ; cmp ecx,[ebx+10h] ; jl L ; R: push eax ; mov ecx,edi ; call Buynode ; mov esi,eax ; mov [ebx+0Ch],esi ; mov eax,[edi] ; cmp ebx,[eax+0Ch] ; jne K ; mov [eax+0Ch],esi ; jmp K ; L: push eax ; mov ecx,edi ; call Buynode ; mov esi,eax ; mov [ebx+8],esi ; mov eax,[edi] ; cmp ebx,eax ; jne M ; mov [eax+4],esi ; mov eax,[edi] ; jmp (head->right = Z) ; M: cmp ebx,[eax+8] ; jne K ; mov [eax+8],esi ; K: and dword ptr [esi+8],0 ; and dword ptr [esi+0Ch],0 ; mov [esi+4],ebx ; mov eax,[edi] ; add eax,4 ; push eax ; push esi ; call Rebalance ; inc dword ptr [edi+4] ; mov eax,[ebp+8] ; pop ecx ; pop ecx ; pop edi ; mov [eax],esi ; pop esi ; pop ebx ; pop ebp ; ret 14h
+// The retail (VC6-era Dinkumware) `_Tree::_Insert`: the new node goes LEFT of wherenode when
+// wherenode is the head, or (unless the fourth argument forces the right side) when a try-node was
+// supplied or the key is less than wherenode's; the head's parent/left/right links are fixed up
+// for a new root, leftmost or rightmost node; the node is detached, parented, rebalanced by the
+// __cdecl red-black fix-up @ 0x{rebal:08X} (node, &root) and counted. Returned through the hidden
+// iterator pointer (`ret 14h`: hidden + four arguments). Frame pointer, `and [..],0` and shared
+// call blocks: this TU is `optimize("y",off)` + `("s",on)`. One of {len(members)} bodies.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+
+struct {nm} {{
+    struct node {{ unsigned char flag; unsigned char _pad[3]; node* parent; node* left; node* right; {kt} key; }};
+    struct iterator {{ node* current; iterator(node* n) : current(n) {{ }} }};
+    node* head;
+    unsigned long size;
+    node* Buynode(const {kt}& value);      // 0x{buy:08X}
+    iterator Insert(node* trynode, node* wherenode, const {kt}& value, long forceRight);
+}};
+
+void __cdecl Rebalance_{rebal:08x}({nm}::node* newnode, {nm}::node** root);   // 0x{rebal:08X}
+
+{nm}::iterator {nm}::Insert(node* trynode, node* wherenode, const {kt}& value, long forceRight)
+{{
+    node* newnode;
+    if (wherenode == head || (!forceRight && (trynode != 0 || value < wherenode->key))) {{
+        newnode = Buynode(value);
+        wherenode->left = newnode;
+        if (wherenode == head) {{
+            head->parent = newnode;
+            head->right = newnode;
+        }}
+        else if (wherenode == head->left)
+            head->left = newnode;
+    }}
+    else {{
+        newnode = Buynode(value);
+        wherenode->right = newnode;
+        if (wherenode == head->right)
+            head->right = newnode;
+    }}
+    newnode->left = 0;
+    newnode->right = 0;
+    newnode->parent = wherenode;
+    Rebalance_{rebal:08x}(newnode, &head->parent);
+    ++size;
+    return iterator(newnode);
+}}
+''',T(a,'''#include <cstdlib>
+struct T { struct node { unsigned char f, p[3]; node* parent; node* l; node* r; long k; }; struct it { node* c; it(node* n) : c(n) {} }; node* h; unsigned long n;
+  node* Buy(const long& v) { node* z = (node*)std::malloc(sizeof(node)); z->k = v; return z; }
+  it Ins(node* x, node* w, const long& v, long fr) { node* z; if (w == h || (!fr && (x != 0 || v < w->k))) { z = Buy(v); w->l = z; if (w == h) { h->parent = z; h->r = z; } else if (w == h->l) h->l = z; } else { z = Buy(v); w->r = z; if (w == h->r) h->r = z; } z->l = 0; z->r = 0; z->parent = w; ++n; return it(z); } };
+int main()
+{
+    T::node h = {0,{0},0,0,0,0}; T t; t.h = &h; t.n = 0; long v = 3; T::it i = t.Ins(0, &h, v, 0); if (h.parent != i.c || h.r != i.c || t.n != 1 || i.c->k != 3) '''+FAIL(a)+'''
+    std::free(i.c);
+'''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
 OUT.mkdir(parents=True, exist_ok=True)

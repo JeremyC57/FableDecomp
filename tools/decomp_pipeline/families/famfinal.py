@@ -100,12 +100,18 @@ DESC={
  "g50":"container removal: cdecl helper over three table fields, free the returned block, drop the count",
  "g54":"container removal (same template as g50)",
  "g41":"Dinkumware `_Find` for 4-byte elements: four-way unrolled scan plus a remainder switch",
+ "h1":"script-module factories returning `CCountedPointer<CX>` by value: `new CX(owner, thing, arg)` (root/base/derived constructors inlined) wrapped in a fresh count block",
+ "h22":"script-module counted-pointer factories with an extra out-of-line member constructor (same template as h1)",
+ "h16":"retail (VC6-era Dinkumware) `_Tree::insert` with signed keys, frame-pointer/size TU: descent, begin() check, out-of-line `--iterator`, `_Insert(X, Y, V, 0)`",
+ "h139":"retail `_Tree::insert` with unsigned keys (same template as h16)",
+ "h15":"retail `_Tree::_Insert(trynode, wherenode, value, forceRight)`: link left/right, fix the head links, rebalance, count (signed keys)",
+ "h138":"retail `_Tree::_Insert` with unsigned keys (same template as h15)",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
 summary=[]
-for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_g*"))):
-    D=Path(D); fam=re.search(r"_([fg]\w+)$",D.name).group(1); fam=fam[1:] if fam[0]=="f" else fam
+for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_g*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_h*"))):
+    D=Path(D); fam=re.search(r"_([fgh]\w+)$",D.name).group(1); fam=fam[1:] if fam[0]=="f" else fam
     rows=list(csv.DictReader(open(D/"oracle.tsv"),delimiter="\t"))
     landed=[r for r in rows if r["address"].lower() in cat]; rest=[r for r in rows if r["address"].lower() not in cat]
     for r in rows:
