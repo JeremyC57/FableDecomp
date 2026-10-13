@@ -178,6 +178,16 @@ initialisers (54, `#pragma intrinsic`). Rules are in GOTCHAS; the DDK STL header
 Dinkumware revision from retail (FINDINGS_LOG: F14 `std::copy` front ends), so STL internals are
 written out by hand.
 
+### Wave 8 (EH module + STL helpers)
+
+Seven more EH-framed shapes of the 0x00C09000 module (parameter objects passed to virtual slots,
+constructors with out-of-line members, pair destructors with states 0/-1, a novtable destructor, a
+guarded virtual query: 54 rows), container removal helpers (38), the Dinkumware four-way unrolled
+`_Find` (22) and `_Uninit_fill_n` returning the advanced pointer (18): 132 rows. Running total for
+the 128-byte rescan: 1598/1609 rows from 53 families; catalog 23,369 (47.1%). Two shapes
+parked with their evidence in FINDINGS_LOG: F467/F624 (`this` survives a call in edx — a custom
+convention, probably /GL) and `GetDef<T>` (the temporary's release sequence).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
