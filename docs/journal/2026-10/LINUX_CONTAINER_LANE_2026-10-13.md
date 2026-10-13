@@ -104,8 +104,8 @@ Compiler rules the misses taught (all now one line each in `docs/pipeline/GOTCHA
 With the lane at ~0.5 s per compile (persistent `wineserver -p`), the next 80 smallest un-landed
 functions were authored straight against the compiler: generator `gen/batch5.py` → `payload.json` →
 `gp.py` (parity + sweep + side-by-side disassembly for every miss) → reshape → land.
-Result: **53 of 71 real functions landed** (9 of the 80 picks are mis-trimmed fragments, skipped);
-18 DIFFERs are ledgered, all instruction-order misses (`rebuild/candidates/manual/batches/2026-10-13_linux_b5/README.md`).
+Result: **58 of 71 real functions landed** (9 of the 80 picks are mis-trimmed fragments, skipped);
+13 DIFFERs are ledgered, all instruction-order misses (`rebuild/candidates/manual/batches/2026-10-13_linux_b5/README.md`).
 
 New codegen rules from this batch (also in GOTCHAS): a named `float` local holding a call result
 blocks the sibling-call `jmp` (pointer/long locals do not); a `(long, float)` constructor reproduces
@@ -118,7 +118,9 @@ and multiplies by the constant pool, `x * <extern>` loads the extern first; a tw
 from an inlined per-object helper, not from four statements on the owner; `ret` vs `ret N` fixes the
 real parameter count regardless of the manifest prototype.
 
-Coverage: catalog 18,631 → 18,749 → 18,802 byte-exact entries (37.6% → 37.9% of 49,568); the compile-gate
+Coverage: catalog 18,631 → 18,749 → 18,807 byte-exact entries (37.6% → 37.9% of 49,568). The five
+`__stdcall` thunks needed `#pragma optimize("gsy",off)` + `("s",on)` in-source (size, no global
+optimisation, frame pointers kept): a TU setting the lander sweep does not yet try.; the compile-gate
 ledger still needs the canonical refresh on the Windows box to count them.
 
 ## Resume

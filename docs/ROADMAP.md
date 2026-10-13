@@ -8,8 +8,8 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 ## Current focus (2026-09)
 
 - [x] 2026-10-13 Grade batches `rebuild/candidates/manual/batches/2026-10-13_linux_b1/` `_b2/`, `_b3/` and `_b4/` with `verify_and_land.py`: 118/122 landed byte-exact under the Wine lane — `docs/journal/2026-10/LINUX_CONTAINER_LANE_2026-10-13.md`
-- [x] 2026-10-13 Batch 5 compile-as-you-go in the Linux lane: 53/71 landed (`rebuild/candidates/manual/batches/2026-10-13_linux_b5/README.md`); 18 instruction-order DIFFERs ledgered, 5 of them need `/Oy-` added to the lander sweep (unoptimised `__stdcall` thunks with `push dword ptr [ebp+8]`)
-- [ ] 2026-10-13 Add `/Oy-` (frame pointers kept) to `EXTRA_FLAGSETS` in `verify_and_land.py` and re-grade 0066106d/7f/91/a3/b5
+- [x] 2026-10-13 Batch 5 compile-as-you-go in the Linux lane: 58/71 landed (`rebuild/candidates/manual/batches/2026-10-13_linux_b5/README.md`); 13 instruction-order DIFFERs ledgered
+- [ ] 2026-10-13 Add the `#pragma optimize("gsy",off)` + `("s",on)` pair (size, no global optimisation, frame pointers kept) to the lander's PRAGMAS sweep: it is what five `__stdcall` thunks in b5 needed and other unoptimised-TU bodies will too
 - [ ] 2026-10-13 Canonical refresh on the Windows box (`tools/bootstrap_rebuild_tree.py`, then `write_decomp_dashboard.py` + `update_readme_progress.py`) so the compile-gate ledger and README counts include the 118 rows landed from the Linux lane
 - [ ] 2026-10-13 Four open DIFFERs from those batches (0049d8c0 EventIsWorldEvent 23v23, 00a371c0 AllocateClass 40v42, 005d8e90 GetInventoryOwner 42v43, 009959f0 WriteString 46v46): instruction-order-only misses, shapes and diffs in each batch README
 - [ ] 2026-10-13 Promote `CRetailVector<T>` / `CRetailList<T>` (retail STL with iterator objects, see `docs/pipeline/GOTCHAS.md`) into a shared `rebuild/include/` header and have `gen_class_headers.py` emit them for container members
