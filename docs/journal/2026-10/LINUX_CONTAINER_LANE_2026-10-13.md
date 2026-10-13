@@ -237,6 +237,16 @@ pointer). Running total for the rescans: 2950/2966 rows from 95 families; catalo
 Parked: the script callback `Fire` (F30, 26 rows; the `this` copy lands between the two vtable
 stores of the by-value CScriptThing argument here, after them in retail).
 
+### Wave 12 (SGI algorithm instantiations)
+
+The retail algorithms are SGI-STL, not Dinkumware: `sort` is `__introsort_loop(first, last,
+(T*)0, __lg(last - first) * 2, comp)` followed by `__final_insertion_sort` (threshold 16, inlined
+in some TUs and out of line in others), the copies are SGI's counted `__copy(first, last, result,
+random_access_iterator_tag, Distance*)` (`rep movsd` for larger PODs, an out-of-line operator=
+otherwise), and every free function is `__fastcall`, i.e. those TUs were built with /Gr. Nine
+families, 133 rows. Running total for the rescans: 3083/3105 rows from 107 families;
+catalog 24,854 (50.1%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
