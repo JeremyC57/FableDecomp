@@ -47,6 +47,9 @@ export WINEPREFIX=$LANE/prefix WINEARCH=win32 WINEDEBUG=-all WINEDLLOVERRIDES="m
 export FABLE_ROOT=$REPO FABLE_VC71=$VC FABLE_OBJDUMP=objdump FABLE_WINE=wine
 export LANDVERIFY_WORK=$LANE/landverify
 export LINK=bufferoverflowu.lib   # the DDK CRT was built with /GS and needs __security_check_cookie from here
+# keep one wineserver alive across the thousands of cl.exe/link.exe runs: without it every
+# process boots a fresh server (~5 s each) and a batch takes 20x longer
+wineserver -p 2>/dev/null || true
 ENV
 mkdir -p "$LANE/landverify"
 wine "$VC/bin/cl.exe" 2>&1 | head -1
