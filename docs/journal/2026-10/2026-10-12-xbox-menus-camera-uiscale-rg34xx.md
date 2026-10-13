@@ -317,4 +317,5 @@ submission in the Mali driver), ~27 ms game. The pause menu itself costs ~22 ms 
   overlay had changed them (SRC_ALPHA blending) -> a draw with the same values as the
   shadow skipped the call. The shadow now resets every field to "unknown". The FVF
   declaration is cached per FVF value instead of being rebuilt (and its VAOs dropped) on
-  every SetFVF. Diagnostics: `FABLE_GLES_NOVAO=1`, `FABLE_GLES_NOSHADOW=1`.
+  every SetFVF. Diagnostics: `FABLE_GLES_NOVAO=1`, `FABLE_GLES_NOSHADOW=1`. Verified on
+  the harness with both on: the Oakvale grass is back (v14 package and APK).
