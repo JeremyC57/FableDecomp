@@ -179,7 +179,7 @@ bool start(std::function<bool()> makeCurrent, std::function<void()> release) {
     const char* e = getenv("FABLE_GLES_THREAD");
     g_enabled = !(e && atoi(e) == 0);
     if (!g_enabled) return false;
-    if (const char* f = getenv("FABLE_GLES_QUEUE_FRAMES")) g_inFlight = std::max(1, atoi(f));
+    if (const char* f = getenv("FABLE_GLES_QUEUE_FRAMES")) g_inFlight = std::max(0, atoi(f));  // 0: the game thread waits for every frame (diagnostic)
     const char* mb = getenv("FABLE_GLES_QUEUE_MB");
     g_size = static_cast<size_t>(mb ? std::max(8, atoi(mb)) : 48) << 20;
     g_ring = static_cast<uint8_t*>(std::malloc(g_size));

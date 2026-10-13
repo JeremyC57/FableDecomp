@@ -2139,7 +2139,8 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
             unsigned char px[4] = {0, 0, 0, 0};
             glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo);
             glReadPixels(static_cast<GLint>(bw / 2), static_cast<GLint>(bh / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
-            log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f", fr, draws, clears, progs, px[0], px[1], px[2], px[3], ww, wh, fMs, gMs, sMs, uMs, rMs, wMs);
+            const GLenum err = glGetError();  // on the render thread: a direct call, errors of the whole frame
+            log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f%s%X", fr, draws, clears, progs, px[0], px[1], px[2], px[3], ww, wh, fMs, gMs, sMs, uMs, rMs, wMs, err ? ", GL error 0x" : "", err);
             if (const char* dir = getenv("FABLE_GLES_DUMP")) {
                 std::vector<unsigned char> buf(static_cast<size_t>(bw) * bh * 4);
                 glReadPixels(0, 0, static_cast<GLint>(bw), static_cast<GLint>(bh), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());

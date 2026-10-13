@@ -1,6 +1,9 @@
 // Entry point: find the user's Fable install, map its Fable.exe at 0x00400000
 // (data only: the code that runs is the recompiled C), bind imports to host
 // handlers and start the retail CRT entry point.
+#ifdef FABLE_POSIX
+#include <dlfcn.h>
+#endif
 #include "host.hpp"
 
 #include <bcrypt.h>
@@ -161,6 +164,13 @@ LONG CALLBACK crashHandler(EXCEPTION_POINTERS* e) {
     log("CRASH: exception 0x%08lX at host %p (FableRecomp.exe+0x%llX), %s address 0x%llX", code, e->ExceptionRecord->ExceptionAddress,
         static_cast<unsigned long long>(addr - self), e->ExceptionRecord->ExceptionInformation[0] ? "writing" : "reading",
         static_cast<unsigned long long>(e->ExceptionRecord->ExceptionInformation[1]));
+#ifdef FABLE_POSIX
+    {   // the host symbol and module offset (GetModuleHandle is the guest image here)
+        Dl_info info{};
+        if (dladdr(reinterpret_cast<void*>(addr), &info) && info.dli_fname)
+            log("  host: %s+0x%llx%s%s", info.dli_fname, static_cast<unsigned long long>(addr - reinterpret_cast<uintptr_t>(info.dli_fbase)), info.dli_sname ? " in " : "", info.dli_sname ? info.dli_sname : "");
+    }
+#endif
     const GuestThread* t = currentThread();
     const uint32_t esp = t->ctx.esp;
     log("  guest esp 0x%08X ebp 0x%08X; return addresses on the guest stack:", esp, t->ctx.ebp);
