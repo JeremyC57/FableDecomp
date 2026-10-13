@@ -189,12 +189,14 @@ bool start(std::function<bool()> makeCurrent, std::function<void()> release) {
     g_head = g_tail = 0;
     g_thread = std::thread(threadMain);
     g_started = true;
+    std::atexit([] { stop(); });  // exit() while the thread runs would destroy its statics under it
     host::log("gles: render thread on (%zu MB queue, %d frame%s in flight)", g_size >> 20, g_inFlight, g_inFlight == 1 ? "" : "s");
     return true;
 }
 
 void stop() {
     if (!g_started) return;
+    if (t_renderThread) return;  // exit() called from a queued function: nothing to join from here
     flush();
     g_stop = true;
     { std::lock_guard<std::mutex> lk(g_mutex); g_cvConsumer.notify_all(); }
