@@ -242,14 +242,16 @@ struct Translator {
                 const int st = p[0].num(), sm = p[1].num();
                 out->samplers |= 1u << st;
                 out->bumpStages |= 1u << st;
-                const std::string m = "uBump[" + std::to_string(st) + "]", b = "t" + std::to_string(sm);
+                // the bump operand carries its modifier (_bx2 for an unsigned normal map: 2x - 1)
+                const std::string m = "uBump[" + std::to_string(st) + "]", b = "(" + src(p[1]) + ")";
+                (void)sm;
                 body += "  t" + std::to_string(st) + " = texStageUV(" + std::to_string(st) + ", vTex" + std::to_string(st) + ".xy + vec2(dot(" + m +
                         ".xz, " + b + ".xy), dot(" + m + ".yw, " + b + ".xy)));\n";
                 return true;
             }
             case 71:  // texm3x2pad tN, tM: u = dot(tN coords, tM)
                 if (!need(2)) return false;
-                pad3x2 = "dot(vTex" + std::to_string(p[0].num()) + ".xyz, t" + std::to_string(p[1].num()) + ".xyz)";
+                pad3x2 = "dot(vTex" + std::to_string(p[0].num()) + ".xyz, (" + src(p[1]) + ").xyz)";  // the operand's modifier (_bx2) applies
                 return true;
             case 72: {  // texm3x2tex tN, tM: v = dot(tN coords, tM); tN = sample stage N at (u, v)
                 if (!need(2)) return false;
@@ -257,7 +259,7 @@ struct Translator {
                 const int st = p[0].num();
                 out->samplers |= 1u << st;
                 body += "  t" + std::to_string(st) + " = texStageUV(" + std::to_string(st) + ", vec2(" + pad3x2 + ", dot(vTex" + std::to_string(st) +
-                        ".xyz, t" + std::to_string(p[1].num()) + ".xyz)));\n";
+                        ".xyz, (" + src(p[1]) + ").xyz)));\n";
                 pad3x2.clear();
                 return true;
             }
