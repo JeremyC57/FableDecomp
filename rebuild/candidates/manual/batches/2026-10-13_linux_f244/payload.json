@@ -1,0 +1,54 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00640000",
+    "module": "CViewBase",
+    "name": "GetDisplayEngine",
+    "source_cpp": "// CViewBase::GetDisplayEngine() -- returns the dword at +0x24 of the object the global @ 0x013B86A0 points to\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00640000, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[0x13b86a0] ; mov eax,[eax+0x24] ; ret\n// Static-style getter: reads the global object pointer at 0x013B86A0 and returns its dword member\n// at +0x24; `this` is not used (`ret` with no arguments). Names are descriptive beyond the\n// manifest label. One of 6 bodies of this shape.\nstruct CGlobalObject {\n    unsigned char _pad[0x24];\n    void* m_field;                         // +0x24\n};\n\nextern CGlobalObject* g_object_013b86a0;    // 0x013B86A0\n\nstruct CViewBase {\n    void* GetDisplayEngine();\n};\n\nvoid* CViewBase::GetDisplayEngine()\n{\n    return g_object_013b86a0->m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct G { unsigned char p[0x24]; void* f; }; static G g_g; static G* g_p = &g_g; struct X { void* Get() { return g_p->f; } };\nint main()\n{\n    int v; g_g.f = &v; X x; if (x.Get() != &v) { std::printf(\"00640000_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00640000_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00640000_TEST PASS"
+   },
+   {
+    "address": "00640010",
+    "module": "CViewBase",
+    "name": "GetDisplayEngine",
+    "source_cpp": "// CViewBase::GetDisplayEngine() -- returns the dword at +0x24 of the object the global @ 0x013B86A0 points to\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00640010, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[0x13b86a0] ; mov eax,[eax+0x24] ; ret\n// Static-style getter: reads the global object pointer at 0x013B86A0 and returns its dword member\n// at +0x24; `this` is not used (`ret` with no arguments). Names are descriptive beyond the\n// manifest label. One of 6 bodies of this shape.\nstruct CGlobalObject {\n    unsigned char _pad[0x24];\n    void* m_field;                         // +0x24\n};\n\nextern CGlobalObject* g_object_013b86a0;    // 0x013B86A0\n\nstruct CViewBase {\n    void* GetDisplayEngine();\n};\n\nvoid* CViewBase::GetDisplayEngine()\n{\n    return g_object_013b86a0->m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct G { unsigned char p[0x24]; void* f; }; static G g_g; static G* g_p = &g_g; struct X { void* Get() { return g_p->f; } };\nint main()\n{\n    int v; g_g.f = &v; X x; if (x.Get() != &v) { std::printf(\"00640010_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00640010_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00640010_TEST PASS"
+   },
+   {
+    "address": "00640020",
+    "module": "CViewBase",
+    "name": "GetDisplayEngine",
+    "source_cpp": "// CViewBase::GetDisplayEngine() -- returns the dword at +0x28 of the object the global @ 0x013B86A0 points to\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00640020, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[0x13b86a0] ; mov eax,[eax+0x28] ; ret\n// Static-style getter: reads the global object pointer at 0x013B86A0 and returns its dword member\n// at +0x28; `this` is not used (`ret` with no arguments). Names are descriptive beyond the\n// manifest label. One of 6 bodies of this shape.\nstruct CGlobalObject {\n    unsigned char _pad[0x28];\n    void* m_field;                         // +0x28\n};\n\nextern CGlobalObject* g_object_013b86a0;    // 0x013B86A0\n\nstruct CViewBase {\n    void* GetDisplayEngine();\n};\n\nvoid* CViewBase::GetDisplayEngine()\n{\n    return g_object_013b86a0->m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct G { unsigned char p[0x24]; void* f; }; static G g_g; static G* g_p = &g_g; struct X { void* Get() { return g_p->f; } };\nint main()\n{\n    int v; g_g.f = &v; X x; if (x.Get() != &v) { std::printf(\"00640020_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00640020_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00640020_TEST PASS"
+   },
+   {
+    "address": "00640030",
+    "module": "CViewBase",
+    "name": "GetDisplayEngine",
+    "source_cpp": "// CViewBase::GetDisplayEngine() -- returns the dword at +0x28 of the object the global @ 0x013B86A0 points to\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00640030, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[0x13b86a0] ; mov eax,[eax+0x28] ; ret\n// Static-style getter: reads the global object pointer at 0x013B86A0 and returns its dword member\n// at +0x28; `this` is not used (`ret` with no arguments). Names are descriptive beyond the\n// manifest label. One of 6 bodies of this shape.\nstruct CGlobalObject {\n    unsigned char _pad[0x28];\n    void* m_field;                         // +0x28\n};\n\nextern CGlobalObject* g_object_013b86a0;    // 0x013B86A0\n\nstruct CViewBase {\n    void* GetDisplayEngine();\n};\n\nvoid* CViewBase::GetDisplayEngine()\n{\n    return g_object_013b86a0->m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct G { unsigned char p[0x24]; void* f; }; static G g_g; static G* g_p = &g_g; struct X { void* Get() { return g_p->f; } };\nint main()\n{\n    int v; g_g.f = &v; X x; if (x.Get() != &v) { std::printf(\"00640030_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00640030_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00640030_TEST PASS"
+   },
+   {
+    "address": "00686da0",
+    "module": "CViewBase",
+    "name": "GetDisplayEngine",
+    "source_cpp": "// CViewBase::GetDisplayEngine() -- returns the dword at +0x2c of the object the global @ 0x013B8A1C points to\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00686DA0, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[0x13b8a1c] ; mov eax,[eax+0x2c] ; ret\n// Static-style getter: reads the global object pointer at 0x013B8A1C and returns its dword member\n// at +0x2c; `this` is not used (`ret` with no arguments). Names are descriptive beyond the\n// manifest label. One of 6 bodies of this shape.\nstruct CGlobalObject {\n    unsigned char _pad[0x2c];\n    void* m_field;                         // +0x2c\n};\n\nextern CGlobalObject* g_object_013b8a1c;    // 0x013B8A1C\n\nstruct CViewBase {\n    void* GetDisplayEngine();\n};\n\nvoid* CViewBase::GetDisplayEngine()\n{\n    return g_object_013b8a1c->m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct G { unsigned char p[0x24]; void* f; }; static G g_g; static G* g_p = &g_g; struct X { void* Get() { return g_p->f; } };\nint main()\n{\n    int v; g_g.f = &v; X x; if (x.Get() != &v) { std::printf(\"00686da0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00686da0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00686da0_TEST PASS"
+   },
+   {
+    "address": "00b806c0",
+    "module": "CEngineSimulationBase",
+    "name": "GetMaximumIterations",
+    "source_cpp": "// CEngineSimulationBase::GetMaximumIterations() -- returns the dword at +0x20 of the object the global @ 0x01436E68 points to\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B806C0, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[0x1436e68] ; mov eax,[eax+0x20] ; ret\n// Static-style getter: reads the global object pointer at 0x01436E68 and returns its dword member\n// at +0x20; `this` is not used (`ret` with no arguments). Names are descriptive beyond the\n// manifest label. One of 6 bodies of this shape.\nstruct CGlobalObject {\n    unsigned char _pad[0x20];\n    void* m_field;                         // +0x20\n};\n\nextern CGlobalObject* g_object_01436e68;    // 0x01436E68\n\nstruct CEngineSimulationBase {\n    void* GetMaximumIterations();\n};\n\nvoid* CEngineSimulationBase::GetMaximumIterations()\n{\n    return g_object_01436e68->m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct G { unsigned char p[0x24]; void* f; }; static G g_g; static G* g_p = &g_g; struct X { void* Get() { return g_p->f; } };\nint main()\n{\n    int v; g_g.f = &v; X x; if (x.Get() != &v) { std::printf(\"00b806c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00b806c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00b806c0_TEST PASS"
+   }
+  ]
+ }
+}

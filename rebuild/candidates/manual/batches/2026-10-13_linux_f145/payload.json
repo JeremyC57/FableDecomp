@@ -1,0 +1,78 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00543a80",
+    "module": "_unattributed",
+    "name": "vfunc_92",
+    "source_cpp": "// CClass_00543a80::vfunc_92() -- sets the byte flag at +0x16c\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00543A80, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x16c],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x16c and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CClass_00543a80 {\n    virtual void v00();\n    virtual void vfunc_92();\n    unsigned char _pad[0x168];\n    bool m_flag;                           // +0x16c\n};\n\nvoid CClass_00543a80::vfunc_92()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"00543a80_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00543a80_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00543a80_TEST PASS"
+   },
+   {
+    "address": "00543a90",
+    "module": "_unattributed",
+    "name": "vfunc_93",
+    "source_cpp": "// CClass_00543a90::vfunc_93() -- sets the byte flag at +0x16c\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00543A90, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x16c],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x16c and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CClass_00543a90 {\n    virtual void v00();\n    virtual void vfunc_93();\n    unsigned char _pad[0x168];\n    bool m_flag;                           // +0x16c\n};\n\nvoid CClass_00543a90::vfunc_93()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"00543a90_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00543a90_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00543a90_TEST PASS"
+   },
+   {
+    "address": "0054ff70",
+    "module": "_unattributed",
+    "name": "vfunc_92",
+    "source_cpp": "// CClass_0054ff70::vfunc_92() -- sets the byte flag at +0x189\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0054FF70, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x189],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x189 and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CClass_0054ff70 {\n    virtual void v00();\n    virtual void vfunc_92();\n    unsigned char _pad[0x185];\n    bool m_flag;                           // +0x189\n};\n\nvoid CClass_0054ff70::vfunc_92()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"0054ff70_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0054ff70_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0054ff70_TEST PASS"
+   },
+   {
+    "address": "0054ff80",
+    "module": "_unattributed",
+    "name": "vfunc_93",
+    "source_cpp": "// CClass_0054ff80::vfunc_93() -- sets the byte flag at +0x189\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0054FF80, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x189],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x189 and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CClass_0054ff80 {\n    virtual void v00();\n    virtual void vfunc_93();\n    unsigned char _pad[0x185];\n    bool m_flag;                           // +0x189\n};\n\nvoid CClass_0054ff80::vfunc_93()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"0054ff80_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0054ff80_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0054ff80_TEST PASS"
+   },
+   {
+    "address": "007fd3c0",
+    "module": "CTCDPhysicalObstruction",
+    "name": "vfunc_6",
+    "source_cpp": "// CTCDPhysicalObstruction::vfunc_6() -- sets the byte flag at +0x24\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD3C0, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x24],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x24 and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CTCDPhysicalObstruction {\n    virtual void v00();\n    virtual void vfunc_6();\n    unsigned char _pad[0x20];\n    bool m_flag;                           // +0x24\n};\n\nvoid CTCDPhysicalObstruction::vfunc_6()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"007fd3c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"007fd3c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "007fd3c0_TEST PASS"
+   },
+   {
+    "address": "00b0a130",
+    "module": "_unattributed",
+    "name": "vfunc_25",
+    "source_cpp": "// CClass_00b0a130::vfunc_25() -- sets the byte flag at +0x97\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0A130, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x97],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x97 and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CClass_00b0a130 {\n    virtual void v00();\n    virtual void vfunc_25();\n    unsigned char _pad[0x93];\n    bool m_flag;                           // +0x97\n};\n\nvoid CClass_00b0a130::vfunc_25()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"00b0a130_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00b0a130_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00b0a130_TEST PASS"
+   },
+   {
+    "address": "00e8bde0",
+    "module": "_unattributed",
+    "name": "sub_00e8bde0",
+    "source_cpp": "// CClass_00e8bde0::sub_00e8bde0() -- sets the byte flag at +0x1c\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00E8BDE0, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x1c],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x1c and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CClass_00e8bde0 {\n    virtual void v00();\n    virtual void sub_00e8bde0();\n    unsigned char _pad[0x18];\n    bool m_flag;                           // +0x1c\n};\n\nvoid CClass_00e8bde0::sub_00e8bde0()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"00e8bde0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00e8bde0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00e8bde0_TEST PASS"
+   },
+   {
+    "address": "00ee94c0",
+    "module": "_unattributed",
+    "name": "sub_00ee94c0",
+    "source_cpp": "// CClass_00ee94c0::sub_00ee94c0() -- sets the byte flag at +0x44\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE94C0, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x44],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x44 and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CClass_00ee94c0 {\n    virtual void v00();\n    virtual void sub_00ee94c0();\n    unsigned char _pad[0x40];\n    bool m_flag;                           // +0x44\n};\n\nvoid CClass_00ee94c0::sub_00ee94c0()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"00ee94c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00ee94c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00ee94c0_TEST PASS"
+   },
+   {
+    "address": "00f00c60",
+    "module": "_unattributed",
+    "name": "sub_00f00c60",
+    "source_cpp": "// CClass_00f00c60::sub_00f00c60() -- sets the byte flag at +0x1c\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00F00C60, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx+0x1c],1 ; ret\n// Virtual setter: writes 1 into the one-byte member at +0x1c and returns. The class comes\n// from the vtable-slot label of this address; the flag's name is descriptive. One of 9 bodies.\nstruct CClass_00f00c60 {\n    virtual void v00();\n    virtual void sub_00f00c60();\n    unsigned char _pad[0x18];\n    bool m_flag;                           // +0x1c\n};\n\nvoid CClass_00f00c60::sub_00f00c60()\n{\n    m_flag = true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual void Set() { f = true; } unsigned char p[4]; bool f; };\nint main()\n{\n    X x; x.f = false; x.Set(); if (!x.f) { std::printf(\"00f00c60_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00f00c60_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00f00c60_TEST PASS"
+   }
+  ]
+ }
+}

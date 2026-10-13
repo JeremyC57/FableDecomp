@@ -1,0 +1,7 @@
+address	name	length	bytes
+00640000	CViewBase::GetDisplayEngine	9	a1a0863b018b4024c3
+00640010	CViewBase::GetDisplayEngine	9	a1a0863b018b4024c3
+00640020	CViewBase::GetDisplayEngine	9	a1a0863b018b4028c3
+00640030	CViewBase::GetDisplayEngine	9	a1a0863b018b4028c3
+00686da0	CViewBase::GetDisplayEngine	9	a11c8a3b018b402cc3
+00b806c0	CEngineSimulationBase::GetMaximumIterations	9	a1686e43018b4020c3

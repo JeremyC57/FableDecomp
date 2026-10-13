@@ -1,0 +1,102 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00453ae0",
+    "module": "_global",
+    "name": "Create_CClass_004525b3",
+    "source_cpp": "// Create_CClass_004525b3() -- factory: new CClass_004525b3 with the default constructor @ 0x004525B3 out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00453AE0, oracle length 25 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0xc4 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004525b3::CClass_004525b3 ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004525b3) = 0xc4 bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004525b3 {\n    unsigned char _body[0xc4];       // sizeof(CClass_004525b3) = 0xc4\n    CClass_004525b3();                               // 0x004525B3\n};\n\nCClass_004525b3* Create_CClass_004525b3()\n{\n    return new CClass_004525b3;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"00453ae0_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"00453ae0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00453ae0_TEST PASS"
+   },
+   {
+    "address": "0045c5ab",
+    "module": "_global",
+    "name": "Create_CClass_00455eac",
+    "source_cpp": "// Create_CClass_00455eac() -- factory: new CClass_00455eac with the default constructor @ 0x00455EAC out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0045C5AB, oracle length 22 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x64 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_00455eac::CClass_00455eac ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_00455eac) = 0x64 bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_00455eac {\n    unsigned char _body[0x64];       // sizeof(CClass_00455eac) = 0x64\n    CClass_00455eac();                               // 0x00455EAC\n};\n\nCClass_00455eac* Create_CClass_00455eac()\n{\n    return new CClass_00455eac;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"0045c5ab_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"0045c5ab_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0045c5ab_TEST PASS"
+   },
+   {
+    "address": "0045f7a9",
+    "module": "_global",
+    "name": "Create_CSpecialAbilitiesMultiStrikeDef",
+    "source_cpp": "// Create_CSpecialAbilitiesMultiStrikeDef() -- factory: new CSpecialAbilitiesMultiStrikeDef with the default constructor @ 0x00457178 out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0045F7A9, oracle length 25 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x9c ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CSpecialAbilitiesMultiStrikeDef::CSpecialAbilitiesMultiStrikeDef ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CSpecialAbilitiesMultiStrikeDef) = 0x9c bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CSpecialAbilitiesMultiStrikeDef {\n    unsigned char _body[0x9c];       // sizeof(CSpecialAbilitiesMultiStrikeDef) = 0x9c\n    CSpecialAbilitiesMultiStrikeDef();                               // 0x00457178\n};\n\nCSpecialAbilitiesMultiStrikeDef* Create_CSpecialAbilitiesMultiStrikeDef()\n{\n    return new CSpecialAbilitiesMultiStrikeDef;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"0045f7a9_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"0045f7a9_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0045f7a9_TEST PASS"
+   },
+   {
+    "address": "004d805c",
+    "module": "_global",
+    "name": "Create_CClass_004d3826",
+    "source_cpp": "// Create_CClass_004d3826() -- factory: new CClass_004d3826 with the default constructor @ 0x004D3826 out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D805C, oracle length 22 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x3c ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004d3826::CClass_004d3826 ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004d3826) = 0x3c bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004d3826 {\n    unsigned char _body[0x3c];       // sizeof(CClass_004d3826) = 0x3c\n    CClass_004d3826();                               // 0x004D3826\n};\n\nCClass_004d3826* Create_CClass_004d3826()\n{\n    return new CClass_004d3826;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004d805c_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004d805c_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d805c_TEST PASS"
+   },
+   {
+    "address": "004d885e",
+    "module": "_global",
+    "name": "Create_CClass_004d4c3e",
+    "source_cpp": "// Create_CClass_004d4c3e() -- factory: new CClass_004d4c3e with the default constructor @ 0x004D4C3E out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D885E, oracle length 22 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x30 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004d4c3e::CClass_004d4c3e ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004d4c3e) = 0x30 bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004d4c3e {\n    unsigned char _body[0x30];       // sizeof(CClass_004d4c3e) = 0x30\n    CClass_004d4c3e();                               // 0x004D4C3E\n};\n\nCClass_004d4c3e* Create_CClass_004d4c3e()\n{\n    return new CClass_004d4c3e;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004d885e_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004d885e_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d885e_TEST PASS"
+   },
+   {
+    "address": "004d89b4",
+    "module": "_global",
+    "name": "Create_CClass_004d4fcf",
+    "source_cpp": "// Create_CClass_004d4fcf() -- factory: new CClass_004d4fcf with the default constructor @ 0x004D4FCF out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D89B4, oracle length 22 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x2c ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004d4fcf::CClass_004d4fcf ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004d4fcf) = 0x2c bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004d4fcf {\n    unsigned char _body[0x2c];       // sizeof(CClass_004d4fcf) = 0x2c\n    CClass_004d4fcf();                               // 0x004D4FCF\n};\n\nCClass_004d4fcf* Create_CClass_004d4fcf()\n{\n    return new CClass_004d4fcf;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004d89b4_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004d89b4_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d89b4_TEST PASS"
+   },
+   {
+    "address": "004d92b0",
+    "module": "_global",
+    "name": "Create_CClass_004d5eca",
+    "source_cpp": "// Create_CClass_004d5eca() -- factory: new CClass_004d5eca with the default constructor @ 0x004D5ECA out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D92B0, oracle length 22 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x30 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004d5eca::CClass_004d5eca ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004d5eca) = 0x30 bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004d5eca {\n    unsigned char _body[0x30];       // sizeof(CClass_004d5eca) = 0x30\n    CClass_004d5eca();                               // 0x004D5ECA\n};\n\nCClass_004d5eca* Create_CClass_004d5eca()\n{\n    return new CClass_004d5eca;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004d92b0_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004d92b0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d92b0_TEST PASS"
+   },
+   {
+    "address": "004d982f",
+    "module": "_global",
+    "name": "Create_CClass_004d6638",
+    "source_cpp": "// Create_CClass_004d6638() -- factory: new CClass_004d6638 with the default constructor @ 0x004D6638 out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D982F, oracle length 22 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x3c ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004d6638::CClass_004d6638 ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004d6638) = 0x3c bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004d6638 {\n    unsigned char _body[0x3c];       // sizeof(CClass_004d6638) = 0x3c\n    CClass_004d6638();                               // 0x004D6638\n};\n\nCClass_004d6638* Create_CClass_004d6638()\n{\n    return new CClass_004d6638;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004d982f_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004d982f_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d982f_TEST PASS"
+   },
+   {
+    "address": "004e2db2",
+    "module": "_global",
+    "name": "Create_CClass_004e1195",
+    "source_cpp": "// Create_CClass_004e1195() -- factory: new CClass_004e1195 with the default constructor @ 0x004E1195 out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E2DB2, oracle length 25 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x84 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004e1195::CClass_004e1195 ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004e1195) = 0x84 bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004e1195 {\n    unsigned char _body[0x84];       // sizeof(CClass_004e1195) = 0x84\n    CClass_004e1195();                               // 0x004E1195\n};\n\nCClass_004e1195* Create_CClass_004e1195()\n{\n    return new CClass_004e1195;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004e2db2_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004e2db2_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004e2db2_TEST PASS"
+   },
+   {
+    "address": "004e3096",
+    "module": "_global",
+    "name": "Create_CClass_004e1341",
+    "source_cpp": "// Create_CClass_004e1341() -- factory: new CClass_004e1341 with the default constructor @ 0x004E1341 out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3096, oracle length 22 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x70 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004e1341::CClass_004e1341 ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004e1341) = 0x70 bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004e1341 {\n    unsigned char _body[0x70];       // sizeof(CClass_004e1341) = 0x70\n    CClass_004e1341();                               // 0x004E1341\n};\n\nCClass_004e1341* Create_CClass_004e1341()\n{\n    return new CClass_004e1341;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004e3096_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004e3096_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004e3096_TEST PASS"
+   },
+   {
+    "address": "004e31fa",
+    "module": "_global",
+    "name": "Create_CClass_004e1516",
+    "source_cpp": "// Create_CClass_004e1516() -- factory: new CClass_004e1516 with the default constructor @ 0x004E1516 out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E31FA, oracle length 22 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x34 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004e1516::CClass_004e1516 ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004e1516) = 0x34 bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004e1516 {\n    unsigned char _body[0x34];       // sizeof(CClass_004e1516) = 0x34\n    CClass_004e1516();                               // 0x004E1516\n};\n\nCClass_004e1516* Create_CClass_004e1516()\n{\n    return new CClass_004e1516;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004e31fa_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004e31fa_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004e31fa_TEST PASS"
+   },
+   {
+    "address": "004ec526",
+    "module": "_global",
+    "name": "Create_CClass_004ebba3",
+    "source_cpp": "// Create_CClass_004ebba3() -- factory: new CClass_004ebba3 with the default constructor @ 0x004EBBA3 out of line\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004EC526, oracle length 25 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x8c ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CClass_004ebba3::CClass_004ebba3 ; N: xor eax,eax ; ret\n// A no-argument factory: allocates sizeof(CClass_004ebba3) = 0x8c bytes (operator new @ 0x00BFEA1A,\n// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor\n// (which returns `this`). The class is named from the constructor's manifest label when that label\n// is unique. One of 12 bodies of this shape.\nstruct CClass_004ebba3 {\n    unsigned char _body[0x8c];       // sizeof(CClass_004ebba3) = 0x8c\n    CClass_004ebba3();                               // 0x004EBBA3\n};\n\nCClass_004ebba3* Create_CClass_004ebba3()\n{\n    return new CClass_004ebba3;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct X { unsigned char body[0x3c]; X() { ++g_c; } };\nstatic X* Create() { return new X; }\nint main()\n{\n    X* x = Create(); if (!x || g_c != 1) { std::printf(\"004ec526_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"004ec526_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004ec526_TEST PASS"
+   }
+  ]
+ }
+}

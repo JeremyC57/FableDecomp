@@ -1,0 +1,62 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "004c6680",
+    "module": "CRetailBlock0x1c",
+    "name": "CRetailBlock0x1c",
+    "source_cpp": "// CRetailBlock0x1c::CRetailBlock0x1c(const allocator&) -- one malloc'd block of 0x1c bytes\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004C6680, oracle length 27 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi,ecx ; push 0x1c ; mov dword ptr [esi],0 ; call malloc ; mov [esi],eax ; add esp,4 ; mov eax,esi ; pop esi ; ret 4\n// A container constructor taking its allocator by value (`ret 4`): the block pointer is nulled, one\n// 0x1c-byte block is allocated (malloc @ 0x00BFEA0E, landed-trusted) and stored. The element type\n// is not recoverable from the body, so the class is named by its block size. One of 7 bodies.\nextern \"C\" void* __cdecl malloc(unsigned int size);\n\nstruct CRetailAllocator { };\n\nstruct CRetailBlock0x1c {\n    unsigned char* block;\n    CRetailBlock0x1c(CRetailAllocator allocator);\n};\n\nCRetailBlock0x1c::CRetailBlock0x1c(CRetailAllocator allocator)\n    : block(0)\n{\n    block = (unsigned char*)malloc(0x1c);\n}\n",
+    "test_cpp": "#include <cstdio>\n#include <cstdlib>\nstruct A {}; struct X { unsigned char* b; X(A) : b(0) { b = (unsigned char*)std::malloc(0x1c); } };\nint main()\n{\n    A al; X x(al); if (!x.b) { std::printf(\"004c6680_TEST FAIL\\n\"); return 1; }\n    std::free(x.b);\n\n    std::printf(\"004c6680_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004c6680_TEST PASS"
+   },
+   {
+    "address": "0056d010",
+    "module": "CRetailBlock0x18",
+    "name": "CRetailBlock0x18",
+    "source_cpp": "// CRetailBlock0x18::CRetailBlock0x18(const allocator&) -- one malloc'd block of 0x18 bytes\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0056D010, oracle length 27 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi,ecx ; push 0x18 ; mov dword ptr [esi],0 ; call malloc ; mov [esi],eax ; add esp,4 ; mov eax,esi ; pop esi ; ret 4\n// A container constructor taking its allocator by value (`ret 4`): the block pointer is nulled, one\n// 0x18-byte block is allocated (malloc @ 0x00BFEA0E, landed-trusted) and stored. The element type\n// is not recoverable from the body, so the class is named by its block size. One of 7 bodies.\nextern \"C\" void* __cdecl malloc(unsigned int size);\n\nstruct CRetailAllocator { };\n\nstruct CRetailBlock0x18 {\n    unsigned char* block;\n    CRetailBlock0x18(CRetailAllocator allocator);\n};\n\nCRetailBlock0x18::CRetailBlock0x18(CRetailAllocator allocator)\n    : block(0)\n{\n    block = (unsigned char*)malloc(0x18);\n}\n",
+    "test_cpp": "#include <cstdio>\n#include <cstdlib>\nstruct A {}; struct X { unsigned char* b; X(A) : b(0) { b = (unsigned char*)std::malloc(0x18); } };\nint main()\n{\n    A al; X x(al); if (!x.b) { std::printf(\"0056d010_TEST FAIL\\n\"); return 1; }\n    std::free(x.b);\n\n    std::printf(\"0056d010_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0056d010_TEST PASS"
+   },
+   {
+    "address": "006e6930",
+    "module": "CRetailBlock0x40",
+    "name": "CRetailBlock0x40",
+    "source_cpp": "// CRetailBlock0x40::CRetailBlock0x40(const allocator&) -- one malloc'd block of 0x40 bytes\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x006E6930, oracle length 27 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi,ecx ; push 0x40 ; mov dword ptr [esi],0 ; call malloc ; mov [esi],eax ; add esp,4 ; mov eax,esi ; pop esi ; ret 4\n// A container constructor taking its allocator by value (`ret 4`): the block pointer is nulled, one\n// 0x40-byte block is allocated (malloc @ 0x00BFEA0E, landed-trusted) and stored. The element type\n// is not recoverable from the body, so the class is named by its block size. One of 7 bodies.\nextern \"C\" void* __cdecl malloc(unsigned int size);\n\nstruct CRetailAllocator { };\n\nstruct CRetailBlock0x40 {\n    unsigned char* block;\n    CRetailBlock0x40(CRetailAllocator allocator);\n};\n\nCRetailBlock0x40::CRetailBlock0x40(CRetailAllocator allocator)\n    : block(0)\n{\n    block = (unsigned char*)malloc(0x40);\n}\n",
+    "test_cpp": "#include <cstdio>\n#include <cstdlib>\nstruct A {}; struct X { unsigned char* b; X(A) : b(0) { b = (unsigned char*)std::malloc(0x40); } };\nint main()\n{\n    A al; X x(al); if (!x.b) { std::printf(\"006e6930_TEST FAIL\\n\"); return 1; }\n    std::free(x.b);\n\n    std::printf(\"006e6930_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "006e6930_TEST PASS"
+   },
+   {
+    "address": "008aee40",
+    "module": "CRetailBlock0x18",
+    "name": "CRetailBlock0x18",
+    "source_cpp": "// CRetailBlock0x18::CRetailBlock0x18(const allocator&) -- one malloc'd block of 0x18 bytes\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008AEE40, oracle length 27 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi,ecx ; push 0x18 ; mov dword ptr [esi],0 ; call malloc ; mov [esi],eax ; add esp,4 ; mov eax,esi ; pop esi ; ret 4\n// A container constructor taking its allocator by value (`ret 4`): the block pointer is nulled, one\n// 0x18-byte block is allocated (malloc @ 0x00BFEA0E, landed-trusted) and stored. The element type\n// is not recoverable from the body, so the class is named by its block size. One of 7 bodies.\nextern \"C\" void* __cdecl malloc(unsigned int size);\n\nstruct CRetailAllocator { };\n\nstruct CRetailBlock0x18 {\n    unsigned char* block;\n    CRetailBlock0x18(CRetailAllocator allocator);\n};\n\nCRetailBlock0x18::CRetailBlock0x18(CRetailAllocator allocator)\n    : block(0)\n{\n    block = (unsigned char*)malloc(0x18);\n}\n",
+    "test_cpp": "#include <cstdio>\n#include <cstdlib>\nstruct A {}; struct X { unsigned char* b; X(A) : b(0) { b = (unsigned char*)std::malloc(0x18); } };\nint main()\n{\n    A al; X x(al); if (!x.b) { std::printf(\"008aee40_TEST FAIL\\n\"); return 1; }\n    std::free(x.b);\n\n    std::printf(\"008aee40_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008aee40_TEST PASS"
+   },
+   {
+    "address": "00990160",
+    "module": "CRetailBlock0x18",
+    "name": "CRetailBlock0x18",
+    "source_cpp": "// CRetailBlock0x18::CRetailBlock0x18(const allocator&) -- one malloc'd block of 0x18 bytes\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00990160, oracle length 27 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi,ecx ; push 0x18 ; mov dword ptr [esi],0 ; call malloc ; mov [esi],eax ; add esp,4 ; mov eax,esi ; pop esi ; ret 4\n// A container constructor taking its allocator by value (`ret 4`): the block pointer is nulled, one\n// 0x18-byte block is allocated (malloc @ 0x00BFEA0E, landed-trusted) and stored. The element type\n// is not recoverable from the body, so the class is named by its block size. One of 7 bodies.\nextern \"C\" void* __cdecl malloc(unsigned int size);\n\nstruct CRetailAllocator { };\n\nstruct CRetailBlock0x18 {\n    unsigned char* block;\n    CRetailBlock0x18(CRetailAllocator allocator);\n};\n\nCRetailBlock0x18::CRetailBlock0x18(CRetailAllocator allocator)\n    : block(0)\n{\n    block = (unsigned char*)malloc(0x18);\n}\n",
+    "test_cpp": "#include <cstdio>\n#include <cstdlib>\nstruct A {}; struct X { unsigned char* b; X(A) : b(0) { b = (unsigned char*)std::malloc(0x18); } };\nint main()\n{\n    A al; X x(al); if (!x.b) { std::printf(\"00990160_TEST FAIL\\n\"); return 1; }\n    std::free(x.b);\n\n    std::printf(\"00990160_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00990160_TEST PASS"
+   },
+   {
+    "address": "00a39440",
+    "module": "CRetailBlock0x14",
+    "name": "CRetailBlock0x14",
+    "source_cpp": "// CRetailBlock0x14::CRetailBlock0x14(const allocator&) -- one malloc'd block of 0x14 bytes\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A39440, oracle length 27 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi,ecx ; push 0x14 ; mov dword ptr [esi],0 ; call malloc ; mov [esi],eax ; add esp,4 ; mov eax,esi ; pop esi ; ret 4\n// A container constructor taking its allocator by value (`ret 4`): the block pointer is nulled, one\n// 0x14-byte block is allocated (malloc @ 0x00BFEA0E, landed-trusted) and stored. The element type\n// is not recoverable from the body, so the class is named by its block size. One of 7 bodies.\nextern \"C\" void* __cdecl malloc(unsigned int size);\n\nstruct CRetailAllocator { };\n\nstruct CRetailBlock0x14 {\n    unsigned char* block;\n    CRetailBlock0x14(CRetailAllocator allocator);\n};\n\nCRetailBlock0x14::CRetailBlock0x14(CRetailAllocator allocator)\n    : block(0)\n{\n    block = (unsigned char*)malloc(0x14);\n}\n",
+    "test_cpp": "#include <cstdio>\n#include <cstdlib>\nstruct A {}; struct X { unsigned char* b; X(A) : b(0) { b = (unsigned char*)std::malloc(0x14); } };\nint main()\n{\n    A al; X x(al); if (!x.b) { std::printf(\"00a39440_TEST FAIL\\n\"); return 1; }\n    std::free(x.b);\n\n    std::printf(\"00a39440_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00a39440_TEST PASS"
+   },
+   {
+    "address": "00b96640",
+    "module": "CRetailBlock0x1c",
+    "name": "CRetailBlock0x1c",
+    "source_cpp": "// CRetailBlock0x1c::CRetailBlock0x1c(const allocator&) -- one malloc'd block of 0x1c bytes\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B96640, oracle length 27 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi,ecx ; push 0x1c ; mov dword ptr [esi],0 ; call malloc ; mov [esi],eax ; add esp,4 ; mov eax,esi ; pop esi ; ret 4\n// A container constructor taking its allocator by value (`ret 4`): the block pointer is nulled, one\n// 0x1c-byte block is allocated (malloc @ 0x00BFEA0E, landed-trusted) and stored. The element type\n// is not recoverable from the body, so the class is named by its block size. One of 7 bodies.\nextern \"C\" void* __cdecl malloc(unsigned int size);\n\nstruct CRetailAllocator { };\n\nstruct CRetailBlock0x1c {\n    unsigned char* block;\n    CRetailBlock0x1c(CRetailAllocator allocator);\n};\n\nCRetailBlock0x1c::CRetailBlock0x1c(CRetailAllocator allocator)\n    : block(0)\n{\n    block = (unsigned char*)malloc(0x1c);\n}\n",
+    "test_cpp": "#include <cstdio>\n#include <cstdlib>\nstruct A {}; struct X { unsigned char* b; X(A) : b(0) { b = (unsigned char*)std::malloc(0x1c); } };\nint main()\n{\n    A al; X x(al); if (!x.b) { std::printf(\"00b96640_TEST FAIL\\n\"); return 1; }\n    std::free(x.b);\n\n    std::printf(\"00b96640_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00b96640_TEST PASS"
+   }
+  ]
+ }
+}

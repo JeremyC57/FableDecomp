@@ -1,0 +1,94 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00880f50",
+    "module": "_unattributed",
+    "name": "vfunc_2",
+    "source_cpp": "// CClass_00880f50::vfunc_2(CObject_00883ae0*) -- calls CObject_00883ae0::CEnvironmentSpellEffectInterface_UpdateAllEffects on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00880F50, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00883ae0::CEnvironmentSpellEffectInterface_UpdateAllEffects ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00883AE0 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00883ae0 {\n    void CEnvironmentSpellEffectInterface_UpdateAllEffects();                         // 0x00883AE0\n};\n\nstruct CClass_00880f50 {\n    virtual void v00();\n    virtual void vfunc_2(CObject_00883ae0* object);\n};\n\nvoid CClass_00880f50::vfunc_2(CObject_00883ae0* object)\n{\n    object->CEnvironmentSpellEffectInterface_UpdateAllEffects();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00880f50_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00880f50_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00880f50_TEST PASS"
+   },
+   {
+    "address": "00c14d70",
+    "module": "_unattributed",
+    "name": "sub_00c14d70",
+    "source_cpp": "// CClass_00c14d70::sub_00c14d70(CObject_00c2cb80*) -- calls CObject_00c2cb80::Method_00c2cb80 on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C14D70, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00c2cb80::Method_00c2cb80 ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C2CB80 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00c2cb80 {\n    void Method_00c2cb80();                         // 0x00C2CB80\n};\n\nstruct CClass_00c14d70 {\n    virtual void v00();\n    virtual void sub_00c14d70(CObject_00c2cb80* object);\n};\n\nvoid CClass_00c14d70::sub_00c14d70(CObject_00c2cb80* object)\n{\n    object->Method_00c2cb80();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c14d70_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c14d70_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c14d70_TEST PASS"
+   },
+   {
+    "address": "00c2a450",
+    "module": "_unattributed",
+    "name": "sub_00c2a450",
+    "source_cpp": "// CClass_00c2a450::sub_00c2a450(CObject_00c377a0*) -- calls CObject_00c377a0::Method_00c377a0 on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2A450, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00c377a0::Method_00c377a0 ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C377A0 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00c377a0 {\n    void Method_00c377a0();                         // 0x00C377A0\n};\n\nstruct CClass_00c2a450 {\n    virtual void v00();\n    virtual void sub_00c2a450(CObject_00c377a0* object);\n};\n\nvoid CClass_00c2a450::sub_00c2a450(CObject_00c377a0* object)\n{\n    object->Method_00c377a0();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c2a450_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c2a450_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c2a450_TEST PASS"
+   },
+   {
+    "address": "00c2a460",
+    "module": "_unattributed",
+    "name": "sub_00c2a460",
+    "source_cpp": "// CClass_00c2a460::sub_00c2a460(CPlayer*) -- calls CPlayer::OnModeActivityUpdate on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2A460, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CPlayer::OnModeActivityUpdate ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C37840 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CPlayer {\n    void OnModeActivityUpdate();                         // 0x00C37840\n};\n\nstruct CClass_00c2a460 {\n    virtual void v00();\n    virtual void sub_00c2a460(CPlayer* object);\n};\n\nvoid CClass_00c2a460::sub_00c2a460(CPlayer* object)\n{\n    object->OnModeActivityUpdate();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c2a460_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c2a460_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c2a460_TEST PASS"
+   },
+   {
+    "address": "00c2baa0",
+    "module": "_unattributed",
+    "name": "sub_00c2baa0",
+    "source_cpp": "// CClass_00c2baa0::sub_00c2baa0(CTextSlider*) -- calls CTextSlider::OnDeactivate on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2BAA0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CTextSlider::OnDeactivate ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C37BF0 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CTextSlider {\n    void OnDeactivate();                         // 0x00C37BF0\n};\n\nstruct CClass_00c2baa0 {\n    virtual void v00();\n    virtual void sub_00c2baa0(CTextSlider* object);\n};\n\nvoid CClass_00c2baa0::sub_00c2baa0(CTextSlider* object)\n{\n    object->OnDeactivate();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c2baa0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c2baa0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c2baa0_TEST PASS"
+   },
+   {
+    "address": "00c2c740",
+    "module": "_unattributed",
+    "name": "sub_00c2c740",
+    "source_cpp": "// CClass_00c2c740::sub_00c2c740(CObject_00c38550*) -- calls CObject_00c38550::Method_00c38550 on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C2C740, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00c38550::Method_00c38550 ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C38550 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00c38550 {\n    void Method_00c38550();                         // 0x00C38550\n};\n\nstruct CClass_00c2c740 {\n    virtual void v00();\n    virtual void sub_00c2c740(CObject_00c38550* object);\n};\n\nvoid CClass_00c2c740::sub_00c2c740(CObject_00c38550* object)\n{\n    object->Method_00c38550();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c2c740_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c2c740_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c2c740_TEST PASS"
+   },
+   {
+    "address": "00c36230",
+    "module": "_unattributed",
+    "name": "sub_00c36230",
+    "source_cpp": "// CClass_00c36230::sub_00c36230(CObject_00c44e80*) -- calls CObject_00c44e80::Method_00c44e80 on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36230, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00c44e80::Method_00c44e80 ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C44E80 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00c44e80 {\n    void Method_00c44e80();                         // 0x00C44E80\n};\n\nstruct CClass_00c36230 {\n    virtual void v00();\n    virtual void sub_00c36230(CObject_00c44e80* object);\n};\n\nvoid CClass_00c36230::sub_00c36230(CObject_00c44e80* object)\n{\n    object->Method_00c44e80();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c36230_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c36230_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c36230_TEST PASS"
+   },
+   {
+    "address": "00c36240",
+    "module": "_unattributed",
+    "name": "sub_00c36240",
+    "source_cpp": "// CClass_00c36240::sub_00c36240(CObject_00c44b40*) -- calls CObject_00c44b40::Method_00c44b40 on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36240, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00c44b40::Method_00c44b40 ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C44B40 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00c44b40 {\n    void Method_00c44b40();                         // 0x00C44B40\n};\n\nstruct CClass_00c36240 {\n    virtual void v00();\n    virtual void sub_00c36240(CObject_00c44b40* object);\n};\n\nvoid CClass_00c36240::sub_00c36240(CObject_00c44b40* object)\n{\n    object->Method_00c44b40();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c36240_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c36240_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c36240_TEST PASS"
+   },
+   {
+    "address": "00c36c80",
+    "module": "_unattributed",
+    "name": "sub_00c36c80",
+    "source_cpp": "// CClass_00c36c80::sub_00c36c80(CObject_00c36480*) -- calls CObject_00c36480::Method_00c36480 on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36C80, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00c36480::Method_00c36480 ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C36480 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00c36480 {\n    void Method_00c36480();                         // 0x00C36480\n};\n\nstruct CClass_00c36c80 {\n    virtual void v00();\n    virtual void sub_00c36c80(CObject_00c36480* object);\n};\n\nvoid CClass_00c36c80::sub_00c36c80(CObject_00c36480* object)\n{\n    object->Method_00c36480();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c36c80_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c36c80_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c36c80_TEST PASS"
+   },
+   {
+    "address": "00c36ca0",
+    "module": "_unattributed",
+    "name": "sub_00c36ca0",
+    "source_cpp": "// CClass_00c36ca0::sub_00c36ca0(CObject_00c36210*) -- calls CObject_00c36210::Method_00c36210 on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C36CA0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00c36210::Method_00c36210 ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C36210 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00c36210 {\n    void Method_00c36210();                         // 0x00C36210\n};\n\nstruct CClass_00c36ca0 {\n    virtual void v00();\n    virtual void sub_00c36ca0(CObject_00c36210* object);\n};\n\nvoid CClass_00c36ca0::sub_00c36ca0(CObject_00c36210* object)\n{\n    object->Method_00c36210();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c36ca0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c36ca0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c36ca0_TEST PASS"
+   },
+   {
+    "address": "00c37970",
+    "module": "_unattributed",
+    "name": "sub_00c37970",
+    "source_cpp": "// CClass_00c37970::sub_00c37970(CObject_00c47300*) -- calls CObject_00c47300::CTCOnHeroPush_ProcessStateTransition on the argument; this unused\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C37970, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx,[esp+4] ; call CObject_00c47300::CTCOnHeroPush_ProcessStateTransition ; ret 4\n// Virtual forwarder: the one argument becomes `this` of a __thiscall call @ 0x00C47300 with no\n// further arguments; this object is not read. Callee names are kept from the manifest only when the\n// label is unique. One of 11 bodies of this shape.\nstruct CObject_00c47300 {\n    void CTCOnHeroPush_ProcessStateTransition();                         // 0x00C47300\n};\n\nstruct CClass_00c37970 {\n    virtual void v00();\n    virtual void sub_00c37970(CObject_00c47300* object);\n};\n\nvoid CClass_00c37970::sub_00c37970(CObject_00c47300* object)\n{\n    object->CTCOnHeroPush_ProcessStateTransition();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_c = 0; struct O { void M() { ++g_c; } }; struct X { virtual void v00() {} virtual void F(O* o) { o->M(); } };\nint main()\n{\n    O o; X x; x.F(&o); if (g_c != 1) { std::printf(\"00c37970_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c37970_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c37970_TEST PASS"
+   }
+  ]
+ }
+}

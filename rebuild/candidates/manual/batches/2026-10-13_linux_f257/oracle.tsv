@@ -1,0 +1,7 @@
+address	name	length	bytes
+00838550	CThingNoise::vfunc_8	11	e80b10c9ff84c00f95c0c3
+0083be20	CThingSwitch::vfunc_8	11	e81bccffff84c00f95c0c3
+0083d6f0	CThingPhysicalSwitch::vfunc_8	11	e84bb3ffff84c00f95c0c3
+0090f1b0	CAIStateGroup_MinionReactToAlert::IsRunnable	11	e85bffffff85c00f95c0c3
+009112f0	CAIStateGroup_MinionGuardReactToBodyFoundMessage::IsRunnable	11	e8abffffff85c00f95c0c3
+00945610	CAIStateGroup_SitForMeal::IsStateGroupStillValid	11	e89bffffff84c00f95c0c3

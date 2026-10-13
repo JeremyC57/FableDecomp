@@ -1,0 +1,22 @@
+#pragma optimize("s",on)
+// Create_CTCShop(CThing*) -- factory: new CTCShop(owner)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D407C, oracle length 29 bytes.
+// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
+//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
+//
+// Retail bytes:  push esi ; push 0x58 ; mov esi,ecx ; call operator new ; test eax,eax ; pop ecx ; je N ; push esi ; mov ecx,eax ; call CTCShop::CTCShop ; pop esi ; ret ; N: xor eax,eax ; pop esi ; ret
+// A __fastcall factory: allocates sizeof(CTCShop) = 0x58 bytes (operator new @ 0x00BFEA1A,
+// landed-trusted), null-checks the block and runs the constructor @ 0x007744A0 on it with the
+// argument, returning the new object (or null). One of 338 bodies of this shape; the class
+// is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
+struct CThing;
+
+struct CTCShop {
+    unsigned char _body[0x58];       // sizeof(CTCShop) = 0x58
+    CTCShop(CThing* owner);                   // 0x007744A0
+};
+
+CTCShop* __fastcall Create_CTCShop(CThing* owner)
+{
+    return new CTCShop(owner);
+}

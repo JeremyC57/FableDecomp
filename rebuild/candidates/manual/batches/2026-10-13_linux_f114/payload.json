@@ -1,0 +1,94 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "006afe50",
+    "module": "CTCPhysicsBase",
+    "name": "vfunc_83",
+    "source_cpp": "// CTCPhysicsBase::vfunc_83() -- returns the byte at +0x40 of the object pointed to by +0x38\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x006AFE50, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x38] ; mov al,[eax+0x40] ; ret\n// Virtual getter through one pointer member: loads the object at +0x38 and returns its byte at\n// +0x40 in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x40];\n    unsigned char m_value;                 // +0x40\n};\n\nstruct CTCPhysicsBase {\n    virtual void v00();\n    virtual unsigned char vfunc_83();\n    unsigned char _pad[0x34];\n    CTarget* m_target;                     // +0x38\n};\n\nunsigned char CTCPhysicsBase::vfunc_83()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"006afe50_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"006afe50_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "006afe50_TEST PASS"
+   },
+   {
+    "address": "006bf890",
+    "module": "CTCShotDefinitionBase",
+    "name": "CanBeHitByMeleeStrike",
+    "source_cpp": "// CTCShotDefinitionBase::CanBeHitByMeleeStrike() -- returns the byte at +0x26 of the object pointed to by +0xc\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x006BF890, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0xc] ; mov al,[eax+0x26] ; ret\n// Virtual getter through one pointer member: loads the object at +0xc and returns its byte at\n// +0x26 in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x26];\n    unsigned char m_value;                 // +0x26\n};\n\nstruct CTCShotDefinitionBase {\n    virtual void v00();\n    virtual unsigned char CanBeHitByMeleeStrike();\n    unsigned char _pad[0x8];\n    CTarget* m_target;                     // +0xc\n};\n\nunsigned char CTCShotDefinitionBase::CanBeHitByMeleeStrike()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"006bf890_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"006bf890_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "006bf890_TEST PASS"
+   },
+   {
+    "address": "007022e0",
+    "module": "CTCShotDefinitionBase",
+    "name": "CanBeHitByMeleeStrike",
+    "source_cpp": "// CTCShotDefinitionBase::CanBeHitByMeleeStrike() -- returns the byte at +0x59 of the object pointed to by +0xc\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x007022E0, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0xc] ; mov al,[eax+0x59] ; ret\n// Virtual getter through one pointer member: loads the object at +0xc and returns its byte at\n// +0x59 in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x59];\n    unsigned char m_value;                 // +0x59\n};\n\nstruct CTCShotDefinitionBase {\n    virtual void v00();\n    virtual unsigned char CanBeHitByMeleeStrike();\n    unsigned char _pad[0x8];\n    CTarget* m_target;                     // +0xc\n};\n\nunsigned char CTCShotDefinitionBase::CanBeHitByMeleeStrike()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"007022e0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"007022e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "007022e0_TEST PASS"
+   },
+   {
+    "address": "00810ef0",
+    "module": "_unattributed",
+    "name": "vfunc_5",
+    "source_cpp": "// CClass_00810ef0::vfunc_5() -- returns the byte at +0x1d of the object pointed to by +0x8\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00810EF0, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x8] ; mov al,[eax+0x1d] ; ret\n// Virtual getter through one pointer member: loads the object at +0x8 and returns its byte at\n// +0x1d in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x1d];\n    unsigned char m_value;                 // +0x1d\n};\n\nstruct CClass_00810ef0 {\n    virtual void v00();\n    virtual unsigned char vfunc_5();\n    unsigned char _pad[0x4];\n    CTarget* m_target;                     // +0x8\n};\n\nunsigned char CClass_00810ef0::vfunc_5()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"00810ef0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00810ef0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00810ef0_TEST PASS"
+   },
+   {
+    "address": "00810f00",
+    "module": "CTCShotDefinitionBase",
+    "name": "CanBeHitByMeleeStrike",
+    "source_cpp": "// CTCShotDefinitionBase::CanBeHitByMeleeStrike() -- returns the byte at +0x1a of the object pointed to by +0x8\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00810F00, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x8] ; mov al,[eax+0x1a] ; ret\n// Virtual getter through one pointer member: loads the object at +0x8 and returns its byte at\n// +0x1a in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x1a];\n    unsigned char m_value;                 // +0x1a\n};\n\nstruct CTCShotDefinitionBase {\n    virtual void v00();\n    virtual unsigned char CanBeHitByMeleeStrike();\n    unsigned char _pad[0x4];\n    CTarget* m_target;                     // +0x8\n};\n\nunsigned char CTCShotDefinitionBase::CanBeHitByMeleeStrike()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"00810f00_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00810f00_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00810f00_TEST PASS"
+   },
+   {
+    "address": "00815230",
+    "module": "CTCShotDefinitionBase",
+    "name": "CanBeHitByMeleeStrike",
+    "source_cpp": "// CTCShotDefinitionBase::CanBeHitByMeleeStrike() -- returns the byte at +0x6e of the object pointed to by +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00815230, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x4] ; mov al,[eax+0x6e] ; ret\n// Virtual getter through one pointer member: loads the object at +0x4 and returns its byte at\n// +0x6e in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x6e];\n    unsigned char m_value;                 // +0x6e\n};\n\nstruct CTCShotDefinitionBase {\n    virtual void v00();\n    virtual unsigned char CanBeHitByMeleeStrike();\n    unsigned char _pad[0x0];\n    CTarget* m_target;                     // +0x4\n};\n\nunsigned char CTCShotDefinitionBase::CanBeHitByMeleeStrike()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"00815230_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00815230_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00815230_TEST PASS"
+   },
+   {
+    "address": "00815270",
+    "module": "CTCShotDefinitionBase",
+    "name": "CanBeHitByMeleeStrike",
+    "source_cpp": "// CTCShotDefinitionBase::CanBeHitByMeleeStrike() -- returns the byte at +0x6c of the object pointed to by +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00815270, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x4] ; mov al,[eax+0x6c] ; ret\n// Virtual getter through one pointer member: loads the object at +0x4 and returns its byte at\n// +0x6c in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x6c];\n    unsigned char m_value;                 // +0x6c\n};\n\nstruct CTCShotDefinitionBase {\n    virtual void v00();\n    virtual unsigned char CanBeHitByMeleeStrike();\n    unsigned char _pad[0x0];\n    CTarget* m_target;                     // +0x4\n};\n\nunsigned char CTCShotDefinitionBase::CanBeHitByMeleeStrike()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"00815270_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00815270_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00815270_TEST PASS"
+   },
+   {
+    "address": "00815280",
+    "module": "CTCShotDefinitionBase",
+    "name": "CanBeHitByMeleeStrike",
+    "source_cpp": "// CTCShotDefinitionBase::CanBeHitByMeleeStrike() -- returns the byte at +0x6d of the object pointed to by +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00815280, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x4] ; mov al,[eax+0x6d] ; ret\n// Virtual getter through one pointer member: loads the object at +0x4 and returns its byte at\n// +0x6d in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x6d];\n    unsigned char m_value;                 // +0x6d\n};\n\nstruct CTCShotDefinitionBase {\n    virtual void v00();\n    virtual unsigned char CanBeHitByMeleeStrike();\n    unsigned char _pad[0x0];\n    CTarget* m_target;                     // +0x4\n};\n\nunsigned char CTCShotDefinitionBase::CanBeHitByMeleeStrike()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"00815280_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00815280_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00815280_TEST PASS"
+   },
+   {
+    "address": "0084d7c0",
+    "module": "_unattributed",
+    "name": "vfunc_7",
+    "source_cpp": "// CClass_0084d7c0::vfunc_7() -- returns the byte at +0x60 of the object pointed to by +0x44\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0084D7C0, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x44] ; mov al,[eax+0x60] ; ret\n// Virtual getter through one pointer member: loads the object at +0x44 and returns its byte at\n// +0x60 in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x60];\n    unsigned char m_value;                 // +0x60\n};\n\nstruct CClass_0084d7c0 {\n    virtual void v00();\n    virtual unsigned char vfunc_7();\n    unsigned char _pad[0x40];\n    CTarget* m_target;                     // +0x44\n};\n\nunsigned char CClass_0084d7c0::vfunc_7()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"0084d7c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0084d7c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0084d7c0_TEST PASS"
+   },
+   {
+    "address": "0084d7d0",
+    "module": "_unattributed",
+    "name": "vfunc_8",
+    "source_cpp": "// CClass_0084d7d0::vfunc_8() -- returns the byte at +0x61 of the object pointed to by +0x44\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0084D7D0, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x44] ; mov al,[eax+0x61] ; ret\n// Virtual getter through one pointer member: loads the object at +0x44 and returns its byte at\n// +0x61 in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x61];\n    unsigned char m_value;                 // +0x61\n};\n\nstruct CClass_0084d7d0 {\n    virtual void v00();\n    virtual unsigned char vfunc_8();\n    unsigned char _pad[0x40];\n    CTarget* m_target;                     // +0x44\n};\n\nunsigned char CClass_0084d7d0::vfunc_8()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"0084d7d0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0084d7d0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0084d7d0_TEST PASS"
+   },
+   {
+    "address": "008cff20",
+    "module": "CGameScriptThing",
+    "name": "GetPThingUniqueID",
+    "source_cpp": "// CGameScriptThing::GetPThingUniqueID() -- returns the byte at +0x1c of the object pointed to by +0x18\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008CFF20, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax,[ecx+0x18] ; mov al,[eax+0x1c] ; ret\n// Virtual getter through one pointer member: loads the object at +0x18 and returns its byte at\n// +0x1c in al. Classes and member names are descriptive (vtable-slot label for the class).\n// One of 11 bodies of this shape.\nstruct CTarget {\n    unsigned char _pad[0x1c];\n    unsigned char m_value;                 // +0x1c\n};\n\nstruct CGameScriptThing {\n    virtual void v00();\n    virtual unsigned char GetPThingUniqueID();\n    unsigned char _pad[0x14];\n    CTarget* m_target;                     // +0x18\n};\n\nunsigned char CGameScriptThing::GetPThingUniqueID()\n{\n    return m_target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[0x40]; unsigned char v; }; struct X { virtual void v00() {} virtual unsigned char Get() { return t->v; } unsigned char p[0x34]; T* t; };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.Get() != 9) { std::printf(\"008cff20_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008cff20_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008cff20_TEST PASS"
+   }
+  ]
+ }
+}

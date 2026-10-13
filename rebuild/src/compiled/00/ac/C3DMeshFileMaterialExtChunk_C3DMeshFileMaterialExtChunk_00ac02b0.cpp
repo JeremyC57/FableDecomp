@@ -1,0 +1,23 @@
+// C3DMeshFileMaterialExtChunk::C3DMeshFileMaterialExtChunk() -- base CChunkedFileChunk(19525068) then this class's vtable
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC02B0, oracle length 23 bytes.
+// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
+//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
+//
+// Retail bytes:  push esi ; push 0x129edcc ; mov esi,ecx ; call CChunkedFileChunk::CChunkedFileChunk ; mov dword ptr [esi],offset C3DMeshFileMaterialExtChunk::`vftable' ; mov eax,esi ; pop esi ; ret
+// Default constructor that passes the constant 19525068 (0x129edcc) to the base constructor @ 0x00AA7590
+// (an identifier/type code of this class in the base's scheme) and installs this class's vtable
+// (0x0129EE90, named through rtti-vtables.tsv). One of 11 bodies of this shape.
+struct CChunkedFileChunk {
+    virtual void v00();
+    CChunkedFileChunk(long typeCode);              // 0x00AA7590
+};
+
+struct C3DMeshFileMaterialExtChunk : CChunkedFileChunk {
+    virtual void v00();
+    C3DMeshFileMaterialExtChunk();
+};
+
+C3DMeshFileMaterialExtChunk::C3DMeshFileMaterialExtChunk()
+    : CChunkedFileChunk(19525068)
+{
+}

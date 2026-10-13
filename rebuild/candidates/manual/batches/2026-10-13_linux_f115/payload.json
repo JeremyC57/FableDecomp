@@ -1,0 +1,94 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00724ba0",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_37",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_37() -- returns bit 2 of the byte at +0x85\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724BA0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x85] ; shr al,2 ; and al,1 ; ret\n// Virtual bitfield getter: bit 2 of the flag byte at +0x85, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_37();\n    unsigned char _pad[0x81];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_37()\n{\n    return m_bit2;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724ba0_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724ba0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724ba0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724ba0_TEST PASS"
+   },
+   {
+    "address": "00724bb0",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_39",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_39() -- returns bit 2 of the byte at +0x84\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724BB0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x84] ; shr al,2 ; and al,1 ; ret\n// Virtual bitfield getter: bit 2 of the flag byte at +0x84, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_39();\n    unsigned char _pad[0x80];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_39()\n{\n    return m_bit2;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724bb0_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724bb0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724bb0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724bb0_TEST PASS"
+   },
+   {
+    "address": "00724bc0",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_42",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_42() -- returns bit 4 of the byte at +0x85\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724BC0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x85] ; shr al,4 ; and al,1 ; ret\n// Virtual bitfield getter: bit 4 of the flag byte at +0x85, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_42();\n    unsigned char _pad[0x81];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n    unsigned char m_bit3 : 1;\n    unsigned char m_bit4 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_42()\n{\n    return m_bit4;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724bc0_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724bc0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724bc0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724bc0_TEST PASS"
+   },
+   {
+    "address": "00724c00",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_48",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_48() -- returns bit 2 of the byte at +0x84\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724C00, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x84] ; shr al,2 ; and al,1 ; ret\n// Virtual bitfield getter: bit 2 of the flag byte at +0x84, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_48();\n    unsigned char _pad[0x80];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_48()\n{\n    return m_bit2;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724c00_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724c00_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724c00_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724c00_TEST PASS"
+   },
+   {
+    "address": "00724c10",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_49",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_49() -- returns bit 3 of the byte at +0x84\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724C10, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x84] ; shr al,3 ; and al,1 ; ret\n// Virtual bitfield getter: bit 3 of the flag byte at +0x84, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_49();\n    unsigned char _pad[0x80];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n    unsigned char m_bit3 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_49()\n{\n    return m_bit3;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724c10_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724c10_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724c10_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724c10_TEST PASS"
+   },
+   {
+    "address": "00724c40",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_52",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_52() -- returns bit 3 of the byte at +0x85\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724C40, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x85] ; shr al,3 ; and al,1 ; ret\n// Virtual bitfield getter: bit 3 of the flag byte at +0x85, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_52();\n    unsigned char _pad[0x81];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n    unsigned char m_bit3 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_52()\n{\n    return m_bit3;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724c40_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724c40_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724c40_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724c40_TEST PASS"
+   },
+   {
+    "address": "00724c70",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_55",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_55() -- returns bit 5 of the byte at +0x84\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724C70, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x84] ; shr al,5 ; and al,1 ; ret\n// Virtual bitfield getter: bit 5 of the flag byte at +0x84, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_55();\n    unsigned char _pad[0x80];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n    unsigned char m_bit3 : 1;\n    unsigned char m_bit4 : 1;\n    unsigned char m_bit5 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_55()\n{\n    return m_bit5;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724c70_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724c70_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724c70_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724c70_TEST PASS"
+   },
+   {
+    "address": "00724c80",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_56",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_56() -- returns bit 4 of the byte at +0x84\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724C80, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x84] ; shr al,4 ; and al,1 ; ret\n// Virtual bitfield getter: bit 4 of the flag byte at +0x84, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_56();\n    unsigned char _pad[0x80];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n    unsigned char m_bit3 : 1;\n    unsigned char m_bit4 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_56()\n{\n    return m_bit4;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724c80_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724c80_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724c80_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724c80_TEST PASS"
+   },
+   {
+    "address": "00724cc0",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_60",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_60() -- returns bit 6 of the byte at +0x84\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724CC0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x84] ; shr al,6 ; and al,1 ; ret\n// Virtual bitfield getter: bit 6 of the flag byte at +0x84, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_60();\n    unsigned char _pad[0x80];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n    unsigned char m_bit3 : 1;\n    unsigned char m_bit4 : 1;\n    unsigned char m_bit5 : 1;\n    unsigned char m_bit6 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_60()\n{\n    return m_bit6;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724cc0_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724cc0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724cc0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724cc0_TEST PASS"
+   },
+   {
+    "address": "00724cd0",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_61",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_61() -- returns bit 6 of the byte at +0x85\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724CD0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x85] ; shr al,6 ; and al,1 ; ret\n// Virtual bitfield getter: bit 6 of the flag byte at +0x85, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_61();\n    unsigned char _pad[0x81];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n    unsigned char m_bit3 : 1;\n    unsigned char m_bit4 : 1;\n    unsigned char m_bit5 : 1;\n    unsigned char m_bit6 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_61()\n{\n    return m_bit6;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724cd0_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724cd0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724cd0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724cd0_TEST PASS"
+   },
+   {
+    "address": "00724cf0",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_83",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_83() -- returns bit 5 of the byte at +0x85\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724CF0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al,[ecx+0x85] ; shr al,5 ; and al,1 ; ret\n// Virtual bitfield getter: bit 5 of the flag byte at +0x85, returned as a bool in al. The\n// bitfield names are descriptive (vtable-slot label for the class). One of 11 bodies.\nstruct CTCPhysicsStandard {\n    virtual void v00();\n    virtual bool vfunc_83();\n    unsigned char _pad[0x81];\n    unsigned char m_bit0 : 1;\n    unsigned char m_bit1 : 1;\n    unsigned char m_bit2 : 1;\n    unsigned char m_bit3 : 1;\n    unsigned char m_bit4 : 1;\n    unsigned char m_bit5 : 1;\n};\n\nbool CTCPhysicsStandard::vfunc_83()\n{\n    return m_bit5;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Get() { return b2; } unsigned char p[4]; unsigned char b0 : 1; unsigned char b1 : 1; unsigned char b2 : 1; };\nint main()\n{\n    X x; x.b0 = 0; x.b1 = 0; x.b2 = 1; if (!x.Get()) { std::printf(\"00724cf0_TEST FAIL\\n\"); return 1; }\n    x.b2 = 0; if (x.Get()) { std::printf(\"00724cf0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724cf0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724cf0_TEST PASS"
+   }
+  ]
+ }
+}

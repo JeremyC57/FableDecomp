@@ -1,0 +1,19 @@
+// Create_CPSCEmitterGeneric() -- factory: new CPSCEmitterGeneric with the default constructor @ 0x00B103F0 out of line
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7ED0, oracle length 24 bytes.
+// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
+//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
+//
+// Retail bytes:  push 0x50 ; call operator new ; test eax,eax ; pop ecx ; je N ; mov ecx,eax ; jmp CPSCEmitterGeneric::CPSCEmitterGeneric ; N: xor eax,eax ; ret
+// A no-argument factory: allocates sizeof(CPSCEmitterGeneric) = 0x50 bytes (operator new @ 0x00BFEA1A,
+// landed-trusted), null-checks the block and tail-jumps into the out-of-line default constructor
+// (which returns `this`). The class is named from the constructor's manifest label when that label
+// is unique. One of 11 bodies of this shape.
+struct CPSCEmitterGeneric {
+    unsigned char _body[0x50];       // sizeof(CPSCEmitterGeneric) = 0x50
+    CPSCEmitterGeneric();                               // 0x00B103F0
+};
+
+CPSCEmitterGeneric* Create_CPSCEmitterGeneric()
+{
+    return new CPSCEmitterGeneric;
+}

@@ -1,0 +1,54 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00838550",
+    "module": "CThingNoise",
+    "name": "vfunc_8",
+    "source_cpp": "// CThingNoise::vfunc_8() -- normalises OnCreate()'s byte result to a bool\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00838550, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  call OnCreate ; test al,al ; setne al ; ret\n// Virtual predicate that forwards to the __thiscall helper @ 0x004C9560 on the same object\n// (ecx passes through untouched) and returns its byte result as a normalised bool. Callee name\n// kept from the manifest only when the label is unique. One of 6 bodies of this shape.\nstruct CThingNoise {\n    virtual void v00();\n    virtual bool vfunc_8();\n    unsigned char OnCreate();                // 0x004C9560\n};\n\nbool CThingNoise::vfunc_8()\n{\n    return OnCreate() ? true : false;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Is() { return Q() ? true : false; } unsigned char Q() { return 4; } };\nint main()\n{\n    X x; if (!x.Is()) { std::printf(\"00838550_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00838550_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00838550_TEST PASS"
+   },
+   {
+    "address": "0083be20",
+    "module": "CThingSwitch",
+    "name": "vfunc_8",
+    "source_cpp": "// CThingSwitch::vfunc_8() -- normalises OnCreate()'s byte result to a bool\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0083BE20, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  call OnCreate ; test al,al ; setne al ; ret\n// Virtual predicate that forwards to the __thiscall helper @ 0x00838A40 on the same object\n// (ecx passes through untouched) and returns its byte result as a normalised bool. Callee name\n// kept from the manifest only when the label is unique. One of 6 bodies of this shape.\nstruct CThingSwitch {\n    virtual void v00();\n    virtual bool vfunc_8();\n    unsigned char OnCreate();                // 0x00838A40\n};\n\nbool CThingSwitch::vfunc_8()\n{\n    return OnCreate() ? true : false;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Is() { return Q() ? true : false; } unsigned char Q() { return 4; } };\nint main()\n{\n    X x; if (!x.Is()) { std::printf(\"0083be20_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0083be20_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0083be20_TEST PASS"
+   },
+   {
+    "address": "0083d6f0",
+    "module": "CThingPhysicalSwitch",
+    "name": "vfunc_8",
+    "source_cpp": "// CThingPhysicalSwitch::vfunc_8() -- normalises OnCreate()'s byte result to a bool\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0083D6F0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  call OnCreate ; test al,al ; setne al ; ret\n// Virtual predicate that forwards to the __thiscall helper @ 0x00838A40 on the same object\n// (ecx passes through untouched) and returns its byte result as a normalised bool. Callee name\n// kept from the manifest only when the label is unique. One of 6 bodies of this shape.\nstruct CThingPhysicalSwitch {\n    virtual void v00();\n    virtual bool vfunc_8();\n    unsigned char OnCreate();                // 0x00838A40\n};\n\nbool CThingPhysicalSwitch::vfunc_8()\n{\n    return OnCreate() ? true : false;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Is() { return Q() ? true : false; } unsigned char Q() { return 4; } };\nint main()\n{\n    X x; if (!x.Is()) { std::printf(\"0083d6f0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0083d6f0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0083d6f0_TEST PASS"
+   },
+   {
+    "address": "0090f1b0",
+    "module": "CAIStateGroup_MinionReactToAlert",
+    "name": "IsRunnable",
+    "source_cpp": "// CAIStateGroup_MinionReactToAlert::IsRunnable() -- normalises Query_0090f110()'s byte result to a bool\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F1B0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  call Query_0090f110 ; test al,al ; setne al ; ret\n// Virtual predicate that forwards to the __thiscall helper @ 0x0090F110 on the same object\n// (ecx passes through untouched) and returns its byte result as a normalised bool. Callee name\n// kept from the manifest only when the label is unique. One of 6 bodies of this shape.\nstruct CAIStateGroup_MinionReactToAlert {\n    virtual void v00();\n    virtual bool IsRunnable();\n    unsigned char Query_0090f110();                // 0x0090F110\n};\n\nbool CAIStateGroup_MinionReactToAlert::IsRunnable()\n{\n    return Query_0090f110() ? true : false;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Is() { return Q() ? true : false; } unsigned char Q() { return 4; } };\nint main()\n{\n    X x; if (!x.Is()) { std::printf(\"0090f1b0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0090f1b0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0090f1b0_TEST PASS"
+   },
+   {
+    "address": "009112f0",
+    "module": "CAIStateGroup_MinionGuardReactToBodyFoundMessage",
+    "name": "IsRunnable",
+    "source_cpp": "// CAIStateGroup_MinionGuardReactToBodyFoundMessage::IsRunnable() -- normalises FindBodyFoundEvent()'s byte result to a bool\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x009112F0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  call FindBodyFoundEvent ; test al,al ; setne al ; ret\n// Virtual predicate that forwards to the __thiscall helper @ 0x009112A0 on the same object\n// (ecx passes through untouched) and returns its byte result as a normalised bool. Callee name\n// kept from the manifest only when the label is unique. One of 6 bodies of this shape.\nstruct CAIStateGroup_MinionGuardReactToBodyFoundMessage {\n    virtual void v00();\n    virtual bool IsRunnable();\n    unsigned char FindBodyFoundEvent();                // 0x009112A0\n};\n\nbool CAIStateGroup_MinionGuardReactToBodyFoundMessage::IsRunnable()\n{\n    return FindBodyFoundEvent() ? true : false;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Is() { return Q() ? true : false; } unsigned char Q() { return 4; } };\nint main()\n{\n    X x; if (!x.Is()) { std::printf(\"009112f0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"009112f0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "009112f0_TEST PASS"
+   },
+   {
+    "address": "00945610",
+    "module": "CAIStateGroup_SitForMeal",
+    "name": "IsStateGroupStillValid",
+    "source_cpp": "// CAIStateGroup_SitForMeal::IsStateGroupStillValid() -- normalises Query_009455b0()'s byte result to a bool\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00945610, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  call Query_009455b0 ; test al,al ; setne al ; ret\n// Virtual predicate that forwards to the __thiscall helper @ 0x009455B0 on the same object\n// (ecx passes through untouched) and returns its byte result as a normalised bool. Callee name\n// kept from the manifest only when the label is unique. One of 6 bodies of this shape.\nstruct CAIStateGroup_SitForMeal {\n    virtual void v00();\n    virtual bool IsStateGroupStillValid();\n    unsigned char Query_009455b0();                // 0x009455B0\n};\n\nbool CAIStateGroup_SitForMeal::IsStateGroupStillValid()\n{\n    return Query_009455b0() ? true : false;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual bool Is() { return Q() ? true : false; } unsigned char Q() { return 4; } };\nint main()\n{\n    X x; if (!x.Is()) { std::printf(\"00945610_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00945610_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00945610_TEST PASS"
+   }
+  ]
+ }
+}

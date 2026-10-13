@@ -1,0 +1,86 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "004d3f40",
+    "module": "CTCDNone",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDNone::vfunc_28(long) -- true when the argument equals 23\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3F40, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x17 ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 23 (0x17) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDNone {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDNone::vfunc_28(long value)\n{\n    return value == 23;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004d3f40_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004d3f40_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d3f40_TEST PASS"
+   },
+   {
+    "address": "004d4222",
+    "module": "CTCDNavigationSeed",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDNavigationSeed::vfunc_28(long) -- true when the argument equals 21\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D4222, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x15 ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 21 (0x15) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDNavigationSeed {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDNavigationSeed::vfunc_28(long value)\n{\n    return value == 21;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004d4222_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004d4222_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d4222_TEST PASS"
+   },
+   {
+    "address": "004d428e",
+    "module": "CTCDInternalMarker",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDInternalMarker::vfunc_28(long) -- true when the argument equals 12\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D428E, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0xc ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 12 (0xc) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDInternalMarker {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDInternalMarker::vfunc_28(long value)\n{\n    return value == 12;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004d428e_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004d428e_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d428e_TEST PASS"
+   },
+   {
+    "address": "004d42e2",
+    "module": "CTCDRegionEntrance",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDRegionEntrance::vfunc_28(long) -- true when the argument equals 24\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D42E2, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x18 ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 24 (0x18) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDRegionEntrance {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDRegionEntrance::vfunc_28(long value)\n{\n    return value == 24;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004d42e2_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004d42e2_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d42e2_TEST PASS"
+   },
+   {
+    "address": "004d8164",
+    "module": "CTCDCameraPoint",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDCameraPoint::vfunc_28(long) -- true when the argument equals 20\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004D8164, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x14 ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 20 (0x14) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDCameraPoint {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDCameraPoint::vfunc_28(long value)\n{\n    return value == 20;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004d8164_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004d8164_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004d8164_TEST PASS"
+   },
+   {
+    "address": "004db3cb",
+    "module": "CTCDRumble",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDRumble::vfunc_28(long) -- true when the argument equals 28\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB3CB, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x1c ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 28 (0x1c) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDRumble {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDRumble::vfunc_28(long value)\n{\n    return value == 28;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004db3cb_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004db3cb_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004db3cb_TEST PASS"
+   },
+   {
+    "address": "004df1bc",
+    "module": "CTCDPhysicalObstruction",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDPhysicalObstruction::vfunc_28(long) -- true when the argument equals 29\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004DF1BC, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x1d ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 29 (0x1d) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDPhysicalObstruction {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDPhysicalObstruction::vfunc_28(long value)\n{\n    return value == 29;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004df1bc_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004df1bc_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004df1bc_TEST PASS"
+   },
+   {
+    "address": "004e07d6",
+    "module": "CTCDHeroSuit",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDHeroSuit::vfunc_28(long) -- true when the argument equals 22\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E07D6, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x16 ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 22 (0x16) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDHeroSuit {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDHeroSuit::vfunc_28(long value)\n{\n    return value == 22;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004e07d6_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004e07d6_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004e07d6_TEST PASS"
+   },
+   {
+    "address": "004e3158",
+    "module": "CTCDExplosion",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDExplosion::vfunc_28(long) -- true when the argument equals 27\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3158, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x1b ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 27 (0x1b) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDExplosion {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDExplosion::vfunc_28(long value)\n{\n    return value == 27;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004e3158_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004e3158_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004e3158_TEST PASS"
+   },
+   {
+    "address": "004e3467",
+    "module": "CTCDExplosiveTrail",
+    "name": "vfunc_28",
+    "source_cpp": "// CTCDExplosiveTrail::vfunc_28(long) -- true when the argument equals 30\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3467, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax,eax ; cmp dword ptr [esp+4],0x1e ; sete al ; ret 4\n// Virtual predicate: compares its one argument with the constant 30 (0x1e) and returns the\n// result as a full-register integer (`xor eax,eax ; sete al`: an int/long result, a bool result\n// would drop the xor). `this` is not\n// read. The class comes from the vtable-slot label of this address. One of 10 bodies.\nstruct CTCDExplosiveTrail {\n    virtual void v00();\n    virtual long vfunc_28(long value);\n};\n\nlong CTCDExplosiveTrail::vfunc_28(long value)\n{\n    return value == 30;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { virtual void v00() {} virtual long Is(long v) { return v == 23; } };\nint main()\n{\n    X x; if (!x.Is(23) || x.Is(5)) { std::printf(\"004e3467_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004e3467_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004e3467_TEST PASS"
+   }
+  ]
+ }
+}
