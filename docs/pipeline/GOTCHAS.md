@@ -102,3 +102,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Mario rig (`work/mario_hero/stage_bindaxis4`): parent-relative ANIM translations stretch the
   segments; mesh-only rest/inverse-bind edits are insufficient. Parked.
 - ForgeFSE canonical fork is `D:\Code\ForgeFSE-retail-shadow`; `D:\Code\ForgeFSE` is stale.
+- Ubuntu's `7zip` package (dfsg) cannot read RAR5 archives ("Unsupported Method"); use `unrar` (multiverse).
+- Ghidra 12.1 release asset is `ghidra_12.1_PUBLIC_20260513.zip`; the GitHub API is blocked from cloud sessions, so probe the download URL directly.
+- `LabelApply.java` accepts the whole manifest at once (57k rows, names with `::` and `<>`): 0 failures; it creates functions Ghidra's auto-analysis missed (12,660 on a fresh import).
+- A Linux cloud session can author and self-check candidates (g++ syntax, purity, header policy) but cannot grade parity: keep such batches under `rebuild/candidates/manual/batches/` until the VC7.1 box runs `verify_and_land.py`.
