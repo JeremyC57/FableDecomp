@@ -64,10 +64,45 @@ Session on branch `FullDecomp` (head `8d6ce97c` at start) in a cloud Linux conta
   at 0x00662000 is called on a creature, `CWorld::DrawGetEnvironment` at 0x00449700 on a
   CPlayerManager). Only landed `PASS` identities were used for naming.
 
+## Grading and landing (same day, after the Wine lane came up)
+
+All four batches were graded in the container with the DDK 13.10.4035 `cl.exe` under wine32
+(`tools/decomp_pipeline/linux_lane/`, `docs/BUILDING.md` "Linux verification lane"). First pass:
+25/29, 30/42, 14/23, 18/28 byte-exact. Every miss was then diffed against the retail bytes with a
+capstone side-by-side (scratch `q.py` harness: `parity_of()` + both disassemblies) and re-authored
+until it matched; the landed files carry the reason in a `Lane feedback:` comment.
+
+| Batch | Rows | Landed | Still DIFFER |
+|---|---|---|---|
+| b1 | 29 | 29 | — |
+| b2 | 42 | 41 | 0049d8c0 `CWorld::EventIsWorldEvent` (23v23, entry pointer materialised) |
+| b3 | 23 | 21 | 00a371c0 `CClassFactory::AllocateClass` (40v42, `pop esi` placement), 005d8e90 `CTCInventoryItem::GetInventoryOwner` (42v43, sibling-call `jmp` vs `call;ret`) |
+| b4 | 28 | 27 | 009959f0 `CDataOutputStream::WriteString` (46v46, `mov edx,offset ""` hoisted) |
+| **total** | **122** | **118** | 4 (ledgered in `crawl/gen_tried.txt`) |
+
+Compiler rules the misses taught (all now one line each in `docs/pipeline/GOTCHAS.md`):
+
+- bool results: `return cond ? true : false;` is the retail `sete al`; `return cond;` is 4-6 bytes longer.
+- a value read before a call stays before the call only as a named local (IsMainPlayer, GetUnusedSpace, WantsNiceGift).
+- retail STL access goes through iterator objects: `*(begin()+n)` / `*begin()` / `end()` re-read from
+  `this` each iteration and never CSE with `size()`; `CRetailVector<T>` / `CRetailList<T>` (12-byte
+  vector, 4-byte list) reproduce it (GetRegisteredQuestFromIndex, GetContextSensitiveFadeAlpha,
+  IncrementProjectileWeaponMode, GetPMeleeFlourishAbility, DeleteAllClasses, IsThereACratePutDownTask).
+- a store the retail bytes re-read immediately = inlined helper with a `long&` parameter or a
+  const-ref `max` template (SetMaxStamina, ForceRenownLevelTo, ForceSpendableExperienceTo).
+- `#pragma optimize("s",on)` TUs: shared epilogue, `and [mem],0`, pass-through `push [esp+n]`
+  (SetCropTaskAsAcceptedByThing, GetContextSensitiveFadeAlpha, SetMaxStamina, ForceRenownLevelTo,
+  IsConflicting, IsThereACratePutDownTask) — the lander sweep selects it and records `["s"]`.
+- `dec eax ; jne` = one-case `switch`; `cmp 4;jl / cmp 5;jle / cmp 7;jne` = `switch` with cases {4,5,7}.
+- `test ah,5 ; jp` is ordered `<`; the SetTurncoatTimeLast draft had the sense inverted.
+- callee-saved registers are assigned in reverse declaration order of the locals.
+- `wchar_t` is a typedef (no `/Zc:wchar_t`): include `<stddef.h>`; by-value class return with no
+  `add esp,4` = `__stdcall`.
+
 ## Resume
 
-1. On the Windows box: run the grading command in the batch README; `--land` the wins; add the
-   DIFFER addresses to `tools/decomp_pipeline/crawl/gen_tried.txt`.
+1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
+   `tools/decomp_pipeline/crawl/gen_tried.txt` and described in each batch README.
 2. To regenerate the container-side artefacts: Ghidra project lives only in the container scratchpad
    (not committed); rebuild it with the headless import in `docs/BUILDING.md` and
    `LabelApply.java <tsv from functions.tsv>`.
