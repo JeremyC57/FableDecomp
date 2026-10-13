@@ -247,6 +247,21 @@ otherwise), and every free function is `__fastcall`, i.e. those TUs were built w
 families, 133 rows. Running total for the rescans: 3083/3105 rows from 107 families;
 catalog 24,854 (50.1%).
 
+### Wave 13 (512-byte rescan, batches `2026-10-13_linux_i<N>`)
+
+`famscan.py 512` over the post-wave-12 catalog (19,558 families, 27,878 bodies; 168 families of
+8+). Twenty-one families, 249 rows: Dinkumware `_Uninit_copy` / `_Fill` / `_Destroy_range` /
+`_Uninit_fill_n` loops (a >8-byte POD needs an explicit memberwise copy constructor to get
+direct dword moves instead of a pointer-register block copy), counted-pointer vector and pair
+destructors, `fill` through an out-of-line operator=, `distance` over tree iterators (SGI
+`__distance`: advance, then count), the unsigned-key `find` and the 0x1c-byte tree constructor
+through old templates, `erase(first, last)` with the SGI counted copy inlined (the compiler folds
+the source into an offset from the destination), `resize` with Erase/Insert out of line, STLport
+`__insertion_sort` (`__linear_insert(first, i, T(*i), comp)`: the by-value element has a user copy
+constructor), and `CPersistContext::TransferBinary` (mode 2 = load; the two-way switch lowers to
+`dec/dec` under the size pragma). Running total for the rescans: 3332/3354 rows from 128
+families; catalog 25,103 (50.6%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
