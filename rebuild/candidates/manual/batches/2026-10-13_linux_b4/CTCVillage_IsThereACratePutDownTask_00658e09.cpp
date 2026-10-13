@@ -1,7 +1,7 @@
 // CTCVillage::IsThereACratePutDownTask()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00658E09, oracle length 47 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; push edi ; mov edi,ecx ; mov eax,[edi+60h] ; mov esi,[eax] ; cmp esi,eax ; je F ; L: mov ecx,[esi+8] ; cmp byte ptr [ecx+18h],0 ; jne N ; mov eax,[ecx] ; call [eax+10h] ; test al,al ; jne T ; N: mov esi,[esi] ; cmp esi,[edi+60h] ; jne L ; F: xor al,al ; pop edi ; pop esi ; ret ; T: mov al,1 ; jmp <pop/ret>
 // Walks CrateTasks (PDB +0xD0; retail +0x60, see the layout note) for a task that nobody has
@@ -12,8 +12,29 @@
 // A retail std::vector is {first, last, end} with `first` at +0. Members after such containers
 // therefore sit earlier than the generated engine header says: 4 bytes per vector/map/set/CArray
 // and 8 bytes per list that precede them.
+//
+// Lane feedback: retail-list iterator object (end() re-read each iteration, `cmp esi,[edi+60h]`) under
+// #pragma optimize("s",on) (shared epilogue); the lander sweep applies the pragma. MATCH["s"].
+// Retail std::list (4 bytes: the sentinel-node pointer only) with an iterator OBJECT; node =
+// {next, prev, value}. begin()/end() are re-read from `this` on every use (no CSE through the
+// iterator temporary), which is the retail instruction order for every list walk seen so far.
+template<class T> struct CRetailList {
+    struct node { node* next; node* prev; T value; };
+    node* head;
+    struct iterator {
+        node* p;
+        explicit iterator(node* q) : p(q) {}
+        T& operator*() const { return p->value; }
+        iterator& operator++() { p = p->next; return *this; }
+        bool operator!=(const iterator& o) const { return p != o.p; }
+        bool operator==(const iterator& o) const { return p == o.p; }
+    };
+    iterator begin() { return iterator(head->next); }
+    iterator end() { return iterator(head); }
+    bool empty() const { return head->next == head; }
+    T& front() { return *begin(); }
+};
 
-// The crate-task list holds CCountedPointer<CVillageTaskCarryCrate> {Data, Info}: node+0x08 is the task.
 struct CVillageTaskCarryCrateCalls {
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
     virtual bool IsPutDownTask();          // slot 4 (+0x10): a put-crate-down (as opposed to pick-up) task
@@ -21,34 +42,25 @@ struct CVillageTaskCarryCrateCalls {
     bool          Taken;                   // +0x18 (name inferred: already accepted by a villager)
 };
 
-struct CVillageTaskListNode {
-    CVillageTaskListNode*         Next;         // +0x00
-    CVillageTaskListNode*         Prev;         // +0x04
-    CVillageTaskCarryCrateCalls*  Task_Data;    // +0x08
-    void*                         Task_Info;    // +0x0C
+struct CCountedPointer_CrateTask {
+    CVillageTaskCarryCrateCalls* Data;     // +0x00
+    void*                        Info;     // +0x04
 };
 
-// Retail CTCVillage: the 15 task/thing lists from +0x28 are 4 bytes each (PDB 0xC), the PlayersCrimes
-// set is 0xC (PDB 0x10) and the two lists after it are 4 bytes each, so everything from
-// Initialised (PDB +0x104) on is 0x8C bytes earlier than engine/CTCVillage.h says.
-struct CVillageTaskListNode;
+// Retail CTCVillage view: the crate-task list (4 bytes) sits at +0x60 (PDB +0xD0).
 struct CTCVillage_Retail {
-    unsigned char          _pad_0x00[0x60];
-    CVillageTaskListNode*  CrateTasks_Head;              // +0x60 list<CCountedPointer<CVillageTaskCarryCrate>> (PDB +0xD0)
-    unsigned char          _pad_0x64[0x3C];
-    long                   AmountOfFineAlreadyPaid;      // +0xA0 (PDB +0x12C)
-    unsigned char          _pad_0xA4[0x30];
-    long                   HeroEnemyOfGuardsUntil;       // +0xD4 (PDB +0x160)
-    unsigned char          _pad_0xD8[0x0C];
-    bool                   CurrentIsHeroCriminal;        // +0xE4 (PDB +0x170)
+    unsigned char                          _pad_0x00[0x60];
+    CRetailList<CCountedPointer_CrateTask> CrateTasks;    // +0x60
     bool IsThereACratePutDownTask();
 };
 
 bool CTCVillage_Retail::IsThereACratePutDownTask()
 {
-    CVillageTaskListNode* head = this->CrateTasks_Head;
-    for (CVillageTaskListNode* node = head->Next; node != head; node = node->Next) {
-        CVillageTaskCarryCrateCalls* task = node->Task_Data;
+    // Any crate task nobody has taken yet that is a put-down task? end() is re-read from
+    // `this` every iteration (the virtual call could change the list).
+    for (CRetailList<CCountedPointer_CrateTask>::iterator it = this->CrateTasks.begin();
+         it != this->CrateTasks.end(); ++it) {
+        CVillageTaskCarryCrateCalls* task = (*it).Data;
         if (!task->Taken && task->IsPutDownTask())
             return true;
     }

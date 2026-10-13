@@ -1,7 +1,7 @@
 // CRenderManagerCore::SetVertexFormat(unsigned long)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0AA30, oracle length 23 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov edx,[esp+4] ; mov eax,[ecx+3CF0h] ; mov ecx,[eax] ; push edx ; push eax ; call [ecx+164h] ; ret 4
 // engine/CRenderManagerCore.h (PDB): +0x3CF0 IDirect3DDevice9* PD3DDevice. COM vtable slot 89

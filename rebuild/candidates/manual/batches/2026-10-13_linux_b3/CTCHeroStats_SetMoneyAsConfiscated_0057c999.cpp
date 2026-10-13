@@ -1,7 +1,7 @@
 // CTCHeroStats::SetMoneyAsConfiscated(bool)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057C999, oracle length 43 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push ebx ; xor ebx,ebx ; cmp [esp+8],bl ; push esi ; mov esi,ecx ; push ebx ; je G ; mov eax,[esi+3Ch] ; add [esi+44h],eax ; push ebx ; call CTCHeroStats::SetMoney ; jmp R ; G: push [esi+44h] ; call CTCHeroStats::AddMoney ; mov [esi+44h],ebx ; R: pop esi ; pop ebx ; ret 4
 // Money +0x3C and ConfiscatedMoney +0x44 (PDB +0x44/+0x4C; see ForceRenownLevelTo for the shift).

@@ -1,4 +1,4 @@
-# Batch `2026-10-13_linux_b2` — 42 commented matching candidates (unverified)
+# Batch `2026-10-13_linux_b2` — 42 commented matching candidates (41 landed)
 
 Second batch from the Linux container lane (see `../2026-10-13_linux_b1/README.md` for the
 method and the grading command; substitute this directory's `payload.json` / `oracle.tsv`).
@@ -6,6 +6,16 @@ Targets were restricted to manifest rows whose (module, name) label is unique in
 and whose class has an `engine/<Class>.h` header, so every member access is PDB-named unless the
 file says otherwise. All 84 TUs pass the host syntax check, the purity gate and the shared-header
 policy check.
+
+## Lane grading result (2026-10-13, Wine + DDK 13.10.4035 `cl.exe`, `/O2 /Oy /W3` + lander sweep)
+
+Graded in the Linux container with `tools/decomp_pipeline/linux_lane/` and landed with `verify_and_land.py --land`:
+**41 of 42 rows are byte-exact (MATCH / RELOCATION_MATCH) with behaviour PASS** and now live in
+`rebuild/src/compiled/`, `rebuild/tests/` and the catalog. 12 rows needed a second shape (bool `?:` form, retail-vector iterator objects, const-ref max template, inline `long&` clamp helpers, `switch` for a one-case compare, the "s" pragma).
+
+Still open (DIFFER, recorded in `tools/decomp_pipeline/crawl/gen_tried.txt`):
+
+- 0049d8c0 CWorld::EventIsWorldEvent — DIFFER(23v23): retail materialises the table-entry pointer (`add eax,offset ; cmp [eax],0`) where every shape tried folds it into the addressing mode
 
 ## Retail-vs-PDB layout findings used here (each is stated in the file that relies on it)
 

@@ -1,7 +1,7 @@
 // CTCDoor::FrameUpdate()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007311F0, oracle length 41 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; call <update animation> ; mov eax,[esi+20h] ; mov eax,[eax+28h] ; test eax,eax ; jne A ; mov ecx,esi ; pop esi ; jmp <person trigger> ; A: cmp eax,1 ; jne R ; mov ecx,esi ; pop esi ; jmp <script trigger> ; R: pop esi ; ret
 // engine/CTCDoor.h (PDB): +0x20 PDef_Object (CDefPointer<CDoorDef>). Per frame: advance the door

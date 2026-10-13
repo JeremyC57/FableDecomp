@@ -1,7 +1,7 @@
 // CTCCreatureGroupBoastingCrowd::CurrentStateIsOffPodiumType()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007841C0, oracle length 41 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov eax,[ecx+2Ch] ; test eax,eax ; je T ; cmp eax,1 ; je T ; cmp eax,7 ; je T ; cmp eax,8 ; je T ; cmp eax,9 ; je T ; cmp eax,0Ah ; je T ; xor eax,eax ; ret ; T: mov eax,1 ; ret
 // engine/CTCCreatureGroupBoastingCrowd.h (PDB) has CrowdState at +0x30; retail reads it at +0x2C

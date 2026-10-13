@@ -1,7 +1,7 @@
 // CTCTargetingPlayer::SetAsTargetNextThingInDirection(ETargetNextThingMethod)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008023C0, oracle length 26 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov eax,[esp+4] ; push esi ; mov esi,ecx ; mov byte ptr [esi+3Ch],1 ; mov [esi+40h],eax ; call <frame counter> ; mov [esi+44h],eax ; pop esi ; ret 4
 // engine/CTCTargetingPlayer.h (PDB): +0x3C bool TargetNextThing, +0x40 ETargetNextThingMethod

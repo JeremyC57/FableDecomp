@@ -1,7 +1,7 @@
 // CTCVillage::GetBestCrateTaskForThing(CThing*)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00658EA0, oracle length 35 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; call CTCVillage::IsThereACratePutDownTask ; test al,al ; jne G ; xor eax,eax ; jmp R ; G: lea eax,[esi+60h] ; push eax ; push [esp+0Ch] ; mov ecx,esi ; call <best task in list> ; R: pop esi ; ret 4
 // With no put-down task available there is nothing to hand out; otherwise the best crate task for

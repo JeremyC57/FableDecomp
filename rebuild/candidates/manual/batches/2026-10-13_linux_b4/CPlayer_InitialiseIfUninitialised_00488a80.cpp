@@ -1,7 +1,7 @@
 // CPlayer::InitialiseIfUninitialised()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00488A80, oracle length 45 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; mov al,[esi+216h] ; test al,al ; jne R ; mov eax,[esi+14h] ; mov ecx,[eax+28h] ; call <loading query> ; test al,al ; jne R ; mov byte ptr [esi+216h],1 ; mov ecx,esi ; pop esi ; jmp CPlayer::SetupInitialPlayerMode ; R: pop esi ; ret
 // engine/CPlayer.h (PDB): +0x14 Component (CMainGameComponent*), +0x21E bool InitialPlayerModeSet.

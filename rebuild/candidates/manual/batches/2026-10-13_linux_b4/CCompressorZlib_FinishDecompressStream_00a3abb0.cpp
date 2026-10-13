@@ -1,7 +1,7 @@
 // CCompressorZlib::FinishDecompressStream()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3ABB0, oracle length 44 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push ebx ; push edi ; mov edi,ecx ; mov al,[edi+54h] ; xor ebx,ebx ; cmp al,bl ; je R ; push esi ; lea esi,[edi+1Ch] ; push esi ; call z_inflateEnd ; add esp,4 ; mov [esi],ebx ; mov [esi+0Ch],ebx ; mov [esi+4],ebx ; mov [esi+10h],ebx ; mov [edi+54h],bl ; pop esi ; R: pop edi ; pop ebx ; ret
 // engine/CCompressorZlib.h (PDB): z_stream Stream at +0x20, ZlibInitialised at +0x58; retail has
@@ -14,7 +14,9 @@
 // A retail std::vector is {first, last, end} with `first` at +0. Members after such containers
 // therefore sit earlier than the generated engine header says: 4 bytes per vector/map/set/CArray
 // and 8 bytes per list that precede them.
-
+//
+// Lane feedback: the zero stores go through the z_stream pointer (esi-relative), not through `this`;
+// member-relative stores swap the esi/edi roles. RELOCATION_MATCH.
 struct z_stream_s_Local {
     unsigned char* next_in;      // +0x00
     unsigned long  avail_in;     // +0x04
@@ -26,6 +28,7 @@ struct z_stream_s_Local {
 
 extern "C" int __cdecl inflateEnd(z_stream_s_Local* stream);   // z_inflateEnd @ 0x00C038D0
 
+// Retail CCompressorZlib view (PDB offsets +4; see the README container rule).
 struct CCompressorZlib_Retail {
     unsigned char    _pad_0x00[0x1C];
     z_stream_s_Local Stream;             // +0x1C (PDB +0x20)
@@ -35,12 +38,15 @@ struct CCompressorZlib_Retail {
 
 void CCompressorZlib_Retail::FinishDecompressStream()
 {
+    // Tear the inflate state down and clear the stream's buffer pointers/counts through the
+    // same z_stream pointer handed to inflateEnd (retail stores relative to that pointer).
     if (this->ZlibInitialised) {
-        inflateEnd(&this->Stream);
-        this->Stream.next_in   = 0;
-        this->Stream.next_out  = 0;
-        this->Stream.avail_in  = 0;
-        this->Stream.avail_out = 0;
-        this->ZlibInitialised  = false;
+        z_stream_s_Local* stream = &this->Stream;
+        inflateEnd(stream);
+        stream->next_in   = 0;
+        stream->next_out  = 0;
+        stream->avail_in  = 0;
+        stream->avail_out = 0;
+        this->ZlibInitialised = false;
     }
 }

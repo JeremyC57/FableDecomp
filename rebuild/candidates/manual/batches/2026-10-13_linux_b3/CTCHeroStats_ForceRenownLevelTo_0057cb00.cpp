@@ -1,7 +1,7 @@
 // CTCHeroStats::ForceRenownLevelTo(long)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057CB00, oracle length 42 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov eax,[esp+4] ; mov [ecx+70h],eax ; mov edx,[ecx+70h] ; test edx,edx ; mov eax,[ecx+74h] ; jge A ; and dword ptr [ecx+70h],0 ; jmp B ; A: cmp edx,eax ; jle B ; mov [ecx+70h],eax ; B: and dword ptr [ecx+78h],0 ; call CTCHeroStats::CheckForNewExpressions ; ret 4
 // Retail CTCHeroStats is 8 bytes smaller than Ego_r.pdb from the money block on (two 4-byte
@@ -14,13 +14,12 @@
 // A retail std::vector is {first, last, end} with `first` at +0. Members after such containers
 // therefore sit earlier than the generated engine header says: 4 bytes per vector/map/set/CArray
 // and 8 bytes per list that precede them.
-
+//
+// Lane feedback: byte-exact as an inlined `Clamp(long&, lo, hi)` helper under #pragma optimize("s",on)
+// (`and dword ptr [..],0` zero stores, shared tail); the lander sweep applies the pragma. RELOCATION_MATCH["s"].
+// Retail CTCHeroStats view (PDB offsets +8; see the batch README container-size rule).
 struct CTCHeroStats_Retail {
-    unsigned char _pad_0x00[0x3C];
-    long          Money;                  // +0x3C (PDB +0x44)
-    unsigned char _pad_0x40[4];
-    long          ConfiscatedMoney;       // +0x44 (PDB +0x4C)
-    unsigned char _pad_0x48[0x28];
+    unsigned char _pad_0x00[0x70];
     long          RenownLevel;            // +0x70 (PDB +0x78)
     long          RenownMaxLevel;         // +0x74 (PDB +0x7C)
     long          RenownPointsInLevel;    // +0x78 (PDB +0x80)
@@ -28,13 +27,22 @@ struct CTCHeroStats_Retail {
     void ForceRenownLevelTo(long level);
 };
 
+// Shared inline clamp (reference parameter: the compiler re-reads the member after the store,
+// exactly as the retail bytes do).
+static inline void Clamp(long& value, long minimum, long maximum)
+{
+    if (value < minimum)
+        value = minimum;
+    else if (value > maximum)
+        value = maximum;
+}
+
 void CTCHeroStats_Retail::ForceRenownLevelTo(long level)
 {
+    // Force the level, keep it inside [0, RenownMaxLevel], restart the points earned in the
+    // level and re-check which expressions the new renown unlocks.
     this->RenownLevel = level;
-    if (this->RenownLevel < 0)
-        this->RenownLevel = 0;
-    else if (this->RenownLevel > this->RenownMaxLevel)
-        this->RenownLevel = this->RenownMaxLevel;
+    Clamp(this->RenownLevel, 0, this->RenownMaxLevel);
     this->RenownPointsInLevel = 0;
     CheckForNewExpressions();
 }

@@ -1,7 +1,7 @@
 // CTCPhysicsBase::CalculateRadius()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AFE20, oracle length 46 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi] ; call [eax+174h] ; test eax,eax ; je D ; fld [eax+18h] ; pop esi ; ret ; D: mov esi,[esi+38h] ; test esi,esi ; je U ; fld [esi+28h] ; pop esi ; fmul [__real@0.5] ; ret ; U: fld [__real@1.0] ; pop esi ; ret
 // engine/CTCPhysicsBase.h (PDB): +0x38 PhysicsDef_Object (CDefPointer<CPhysicsDef>). Virtual slot

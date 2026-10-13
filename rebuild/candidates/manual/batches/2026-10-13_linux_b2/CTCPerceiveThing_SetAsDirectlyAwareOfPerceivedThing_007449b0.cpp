@@ -1,7 +1,7 @@
 // CTCPerceiveThing::SetAsDirectlyAwareOfPerceivedThing()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007449B0, oracle length 36 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; lea ecx,[esi+0Ch] ; call CBaseIntelligentPointer::GetPItem ; test eax,eax ; je R ; mov byte ptr [esi+30h],1 ; mov dword ptr [esi+1Ch],0 ; mov ecx,esi ; pop esi ; jmp <on directly aware> ; R: pop esi ; ret
 // engine/CTCPerceiveThing.h (PDB): +0x0C CIntelligentPointer<CThing const> PerceivedThing, +0x1C

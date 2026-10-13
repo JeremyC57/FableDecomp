@@ -1,7 +1,7 @@
 // CThingMapManager::GetMapsMemoryFootprint()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00637AE0, oracle length 44 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push ebx ; push esi ; push edi ; mov edi,ecx ; mov esi,[edi+14h] ; mov eax,[edi+18h] ; xor ebx,ebx ; cmp esi,eax ; je R ; L: mov eax,[esi] ; mov ecx,[eax] ; call CThingMap::GetMemoryFootprint ; add ebx,eax ; mov eax,[edi+18h] ; add esi,4 ; cmp esi,eax ; jne L ; R: pop edi ; pop esi ; mov eax,ebx ; pop ebx ; ret
 // engine/CThingMapManager.h (PDB): +0x08 CArray ThingMaps, +0x18 CArray ActiveThingMaps. The

@@ -1,7 +1,7 @@
 // CTCHeroStats::HasMarriageInState(EMarriageState)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057AC29, oracle length 34 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov ecx,[ecx+1D8h] ; mov eax,[ecx] ; jmp C ; L: mov edx,[eax+18h] ; cmp edx,[esp+4] ; je T ; mov eax,[eax] ; C: cmp eax,ecx ; jne L ; xor al,al ; ret 4 ; T: mov al,1 ; jmp <ret 4>
 // Same retail list as GetNumberOfCurrentSpouses (+0x1D8, PDB +0x1F0). True when any marriage

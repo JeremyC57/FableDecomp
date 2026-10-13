@@ -1,7 +1,7 @@
 // CTCInventoryExperience::ProcessExperienceActionAssign()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00576C0B, oracle length 46 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; push edi ; mov edi,ecx ; xor esi,esi ; L1: push esi ; mov ecx,edi ; call SpendExperienceOnStat ; inc esi ; cmp esi,0Ah ; jl L1 ; xor esi,esi ; inc esi ; L2: push esi ; mov ecx,edi ; call SpendExperienceOnAbility ; inc esi ; cmp esi,14h ; jl L2 ; mov ecx,edi ; pop edi ; pop esi ; jmp UpdateExperienceSpendLevelUp
 // Experience screen "assign" action: spend the queued experience on every trainable stat (0..9,

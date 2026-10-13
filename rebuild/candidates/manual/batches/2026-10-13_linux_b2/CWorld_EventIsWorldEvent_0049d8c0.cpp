@@ -1,7 +1,6 @@
 // CWorld::EventIsWorldEvent(CGameEvent*)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049D8C0, oracle length 23 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: candidate -- still DIFFER under the Linux lane (Wine + DDK 13.10.4035 cl.exe), see batch README.
 //
 // Retail bytes:  mov eax,[esp+4] ; mov eax,[eax] ; shl eax,6 ; add eax,offset g_GameEventInfo ; cmp dword ptr [eax],0 ; setne al ; ret 4
 // `this` is unused. The event's first dword is its type id, which indexes a 64-byte-per-entry

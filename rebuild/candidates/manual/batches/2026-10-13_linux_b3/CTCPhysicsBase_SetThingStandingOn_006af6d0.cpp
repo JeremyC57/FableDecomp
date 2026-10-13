@@ -1,7 +1,7 @@
 // CTCPhysicsBase::SetThingStandingOn(CTCPhysicsBase*)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AF6D0, oracle length 40 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov eax,[esp+4] ; test eax,eax ; mov ecx,[ecx+4] ; mov edx,[ecx] ; je N ; mov eax,[eax+4] ; mov [esp+4],eax ; jmp [edx+94h] ; N: mov dword ptr [esp+4],0 ; jmp [edx+94h]
 // engine/CTCPhysicsBase.h: +0x04 is the owning CThing (retail-only member `sub`). Forwards to the

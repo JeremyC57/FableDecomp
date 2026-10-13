@@ -1,7 +1,7 @@
 // CNavigatorManager::IsNavigationMapActivated(long)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A14EB0, oracle length 41 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  (same list walk as IsNavigationMapLoaded @ 0x00A14E80) ... found: mov eax,[eax+8] ; mov al,[eax+5] ; ret 4
 // Finds the loaded CNavQuadTreeMap with the requested index (std::list node: PQuadTree counted

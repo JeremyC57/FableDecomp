@@ -1,4 +1,4 @@
-# Batch `2026-10-13_linux_b1` — 29 commented matching candidates (unverified)
+# Batch `2026-10-13_linux_b1` — 29 commented matching candidates (29 landed)
 
 Authored 2026-10-13 in a Linux container that has the retail `Fable.exe` (16,666,624 bytes,
 linker 7.10, entry `0x401067`) and a reproduced Ghidra 12.1 database, but **no VC7.1 compiler**.
@@ -7,7 +7,15 @@ headers and the Ego_r.pdb layouts, with the codegen modelled on landed byte-exac
 same instruction shape. Nothing in this directory is counted as coverage until the parity oracle
 grades it.
 
-## Grade now: `candidate`
+## Lane grading result (2026-10-13, Wine + DDK 13.10.4035 `cl.exe`, `/O2 /Oy /W3` + lander sweep)
+
+Graded in the Linux container with `tools/decomp_pipeline/linux_lane/` and landed with `verify_and_land.py --land`:
+**29 of 29 rows are byte-exact (MATCH / RELOCATION_MATCH) with behaviour PASS** and now live in
+`rebuild/src/compiled/`, `rebuild/tests/` and the catalog. IsSigned, IsMainPlayer, CWStringParser::Init and the tattoo-path ctor needed a second shape (see each file's `Lane feedback` line).
+
+The grade line below is the pre-grading state kept for provenance.
+
+## Grade now: `candidate` (superseded by the section above)
 
 | File | Address | What it is |
 |---|---|---|
@@ -45,7 +53,7 @@ Seven of the 29 (the name-tag constructors, the tattoo path constructor, the thr
 getters) carry manifest labels that are propagated across byte-identical bodies; each file's header
 comment says why the label was rejected and what evidence the replacement name rests on.
 
-## How to grade (Windows box with `D:\Tools\vc71`)
+## How to grade (Windows box with `D:\Tools\vc71`, or the Linux lane: `docs/BUILDING.md`)
 
 ```
 python tools\decomp_pipeline\verify_and_land.py ^

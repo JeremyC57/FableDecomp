@@ -1,7 +1,7 @@
 // CNavBlockedQuadTreeNode::operator=(const CNavBlockedQuadTreeNode&)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A76240, oracle length 37 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov eax,ecx ; mov ecx,[esp+4] ; cmp eax,ecx ; je R ; (copy +4,+8 dwords, +0Ch,+0Dh bytes) ; R: ret 4
 // engine/CNavBlockedQuadTreeNode.h (PDB) gives only the vptr for this 0x10-byte node. The

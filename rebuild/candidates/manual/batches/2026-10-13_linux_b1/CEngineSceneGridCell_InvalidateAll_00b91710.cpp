@@ -1,7 +1,7 @@
 // CEngineSceneGridCell::InvalidateAll()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B91710, oracle length 19 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  L: mov al,[ecx+44h] ; test al,7 ; je R ; and al,0F8h ; mov [ecx+44h],al ; mov ecx,[ecx] ; test ecx,ecx ; jne L ; R: ret
 // PDB CEngineSceneGridCell: +0x00 CEngineSceneGridCell* Parent; +0x44 bitfield byte with

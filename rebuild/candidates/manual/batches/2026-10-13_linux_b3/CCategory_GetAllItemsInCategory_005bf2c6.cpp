@@ -1,7 +1,7 @@
 // CCategory::GetAllItemsInCategory(std::vector<std::pair<long,long> >&)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF2C6, oracle length 39 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; push edi ; mov edi,ecx ; mov esi,[edi+8] ; jmp C ; L: cmp dword ptr [esi+4],0 ; je N ; push [esp+0Ch] ; mov ecx,esi ; call CItem::GetItemThings ; N: add esi,14h ; C: cmp esi,[edi+0Ch] ; jb L ; pop edi ; pop esi ; ret 4
 // engine/CCategory.h (PDB): +0x08 vector<CItem> ItemsInCategory; CItem is 0x14 bytes with

@@ -1,7 +1,7 @@
 // CFadeInFadeOutBase::IsOpen()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048DA30, oracle length 28 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  cmp byte ptr [ecx],0 ; je F ; mov al,[ecx+0Dh] ; test al,al ; jne F ; mov al,[ecx+0Ch] ; test al,al ; jne F ; mov eax,1 ; ret ; F: xor eax,eax ; ret
 // engine/CFadeInFadeOutBase.h (PDB): +0x00 bool Active, +0x0C bool Closing, +0x0D bool Opening.

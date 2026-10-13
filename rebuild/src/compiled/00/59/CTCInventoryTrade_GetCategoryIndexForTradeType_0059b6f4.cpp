@@ -1,0 +1,34 @@
+#pragma optimize("s",on)
+// CTCInventoryTrade::GetCategoryIndexForTradeType()
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0059B6F4, oracle length 35 bytes.
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
+//
+// Retail bytes:  mov ecx,[ecx+170h] ; xor eax,eax ; L: cmp [eax*8+0137CCDCh],ecx ; je F ; inc eax ; cmp eax,2 ; jl L ; or eax,-1 ; ret ; F: mov eax,[eax*8+0137CCE0h] ; ret
+// Looks the inventory screen's CategoryIdent up in a two-row {ident, index} table in .data at
+// 0x0137CCDC: {11 -> 0, 12 -> 1}; anything else yields -1. Retail keeps CategoryIdent at +0x170
+// where engine/CTCInventoryTrade.h (Ego_r.pdb) has it at +0x19C: eleven std containers precede
+// it and each is 4 bytes smaller in the shipped build, so a retail-offset view is declared here.
+
+struct CTradeTypeCategory {
+    long Ident;          // EInventoryCategoryIdentifier value
+    long CategoryIndex;  // trade category index
+};
+
+extern CTradeTypeCategory g_TradeTypeCategories[2];    // 0x0137CCDC: {11,0}, {12,1}
+
+struct CTCInventoryTrade_Retail {
+    unsigned char _pad_0x000[0x170];
+    long          CategoryIdent;      // +0x170 (PDB +0x19C)
+    long GetCategoryIndexForTradeType();
+};
+
+long CTCInventoryTrade_Retail::GetCategoryIndexForTradeType()
+{
+    long ident = this->CategoryIdent;
+    for (long i = 0; i < 2; ++i) {
+        if (g_TradeTypeCategories[i].Ident == ident)
+            return g_TradeTypeCategories[i].CategoryIndex;
+    }
+    return -1;
+}

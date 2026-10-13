@@ -1,7 +1,7 @@
 // CAInputProcess::RemoveFromInterface()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0D2D0, oracle length 33 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; je R ; mov eax,[esi] ; call [eax+0Ch] ; mov ecx,[esi+4] ; push esi ; call CInputProcessManager::RemoveInputProcess ; mov dword ptr [esi+4],0 ; R: pop esi ; ret
 // engine/CAInputProcess.h (PDB): +0x04 PPlayerInterface (the owning CInputProcessManager).

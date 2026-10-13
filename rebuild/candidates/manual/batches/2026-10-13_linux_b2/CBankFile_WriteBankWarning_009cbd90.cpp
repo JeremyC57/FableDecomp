@@ -1,7 +1,7 @@
 // CBankFile::WriteBankWarning(const CCharString&)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CBD90, oracle length 34 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; mov ecx,[esi+0ECh] ; test ecx,ecx ; je L ; mov edx,[esp+8] ; mov eax,[ecx] ; push edx ; call [eax+0Ch] ; L: mov byte ptr [esi+0F4h],1 ; pop esi ; ret 4
 // Forwards the warning text to the progress callback's virtual slot 3 when one is attached and

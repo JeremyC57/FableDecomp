@@ -1,7 +1,7 @@
 // CLandscapeBackgroundTreeNode::SetVisibilityFlagAndUpdateParentChain(bool)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF7370, oracle length 43 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov al,[esp+4] ; cmp [ecx+0E4h],al ; je R ; mov [ecx+0E4h],al ; mov byte ptr [ecx+0E5h],1 ; mov ecx,[ecx+9Ch] ; test ecx,ecx ; je R ; call CLandscapeBackgroundTreeNode::UpdateParentChainVisibilityFlag ; R: ret 4
 // engine/CLandscapeBackgroundTreeNode.h (PDB): Parent +0xA4, VisibleLastFrame +0xEC,

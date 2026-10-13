@@ -1,7 +1,7 @@
 // C3DAnimationInfo::IsCombinationAnimation()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A23F00, oracle length 38 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov eax,ecx ; mov ecx,[eax+4] ; mov eax,[eax+8] ; push eax ; call CBankFile::GetEntryDataType ; and eax,0Fh ; cmp eax,7 ; je T ; cmp eax,8 ; je T ; cmp eax,9 ; je T ; xor al,al ; ret ; T: mov al,1 ; ret
 // engine/C3DAnimationInfo.h leaves +0x04 and +0x08 unnamed; retail uses them as the owning bank

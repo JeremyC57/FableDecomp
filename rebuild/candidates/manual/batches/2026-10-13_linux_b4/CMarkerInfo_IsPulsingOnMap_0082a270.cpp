@@ -1,7 +1,7 @@
 // CMarkerInfo::IsPulsingOnMap()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082A270, oracle length 44 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; call PeekGuiDef ; mov eax,[eax+958h] ; mov ecx,[esi+8] ; cmp ecx,[eax+4] ; pop esi ; je T ; cmp ecx,[eax+0Ch] ; je T ; cmp ecx,[eax+30h] ; je T ; cmp ecx,[eax+34h] ; je T ; xor al,al ; ret ; T: mov al,1 ; ret
 // engine/CMarkerInfo.h (PDB): +0x08 GraphicIndex. PeekGuiDef @ 0x00438570 (__fastcall, landed)

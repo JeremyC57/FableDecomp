@@ -1,7 +1,7 @@
 // CTexture::GetDimensions(unsigned long)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F9DB0, oracle length 43 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov eax,[ecx] ; mov ecx,[eax] ; sub esp,20h ; lea edx,[esp] ; push edx ; mov edx,[esp+2Ch] ; push edx ; push eax ; call [ecx+44h] ; mov eax,[esp+24h] ; mov ecx,[esp+18h] ; mov edx,[esp+1Ch] ; mov [eax],ecx ; mov [eax+4],edx ; add esp,20h ; ret 8
 // engine/CTexture.h (PDB): +0x00 IDirect3DTexture9* PD3DTexture. COM slot 17 (+0x44) is

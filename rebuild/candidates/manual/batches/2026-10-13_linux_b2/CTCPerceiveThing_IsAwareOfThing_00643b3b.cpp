@@ -1,7 +1,7 @@
 // CTCPerceiveThing::IsAwareOfThing()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00643B3B, oracle length 25 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  fld [__real@0] ; fld [ecx+18h] ; fucompp ; fnstsw ax ; test ah,44h ; jnp T ; xor eax,eax ; ret ; T: xor eax,eax ; inc eax ; ret
 // engine/CTCPerceiveThing.h (PDB): +0x18 float AwarenessTimer. Aware while the timer is non-zero.

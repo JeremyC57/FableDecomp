@@ -1,7 +1,7 @@
 // CCategory::UpdateItemStatsForThing(CThing*)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF16E, oracle length 46 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; push edi ; mov edi,[esp+0Ch] ; movzx eax,word ptr [edi+8Ch] ; push eax ; mov esi,ecx ; call CCategory::GetSlotWithItemsOfType ; cmp eax,-1 ; je R ; mov ecx,[esi+8] ; lea eax,[eax+eax*4] ; push edi ; lea ecx,[ecx+eax*4] ; call CItem::UpdateItemStats ; R: pop edi ; pop esi ; ret 4
 // engine/CCategory.h (PDB): +0x08 vector<CItem> ItemsInCategory (retail `first` at +0; CItem is

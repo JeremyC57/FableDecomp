@@ -1,41 +1,33 @@
-// NUISystem::CVirtualKeyboard::Cancel @ 0x00851860
+// CVirtualKeyboard::Cancel()
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00851860, oracle length 46 bytes.
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
-// This is the retail body transcribed from the decompiler/byte oracle.  The
-// three calls are deliberately relocation-isolated: their retail targets are
-// documented below, while the eventual linked bank supplies the real engine
-// implementations.  Do not replace this with a host-side keyboard shortcut.
-//
-// Retail bytes (rel32 call operands masked):
-//   8a410584c07526c6410501c6410401e80c32bbff8bc8e8d533bbff84c0740e
-//   6a00e8fa31bbff8bc8e8c332bbffc3
+// Retail bytes:  mov al,[ecx+5] ; test al,al ; jne R ; mov al,1 ; mov [ecx+5],al ; mov [ecx+4],al ; call <IME singleton> ; mov ecx,eax ; call CIME::IsIMEActive ; test al,al ; je R ; push 0 ; call <IME singleton> ; mov ecx,eax ; call CIME::FinaliseString ; R: ret
+// engine/CVirtualKeyboard.h (PDB): +0x04 Canceled, +0x05 Done. Cancelling a keyboard that is not
+// done marks it done and cancelled, and if the input-method editor is mid-composition
+// (CIME::IsIMEActive @ 0x00404C50) the composition is finalised without committing
+// (CIME::FinaliseString(false) @ 0x00404B50). The IME singleton accessor is 0x00404A80 (__cdecl,
+// no arguments; its manifest label is a propagated name).
+#include "engine/CVirtualKeyboard.h"
 
-extern "C" unsigned long __fastcall
-FableVirtualKeyboard_AddChildPrimitive_00851860(void*, void*);
-extern "C" unsigned char __fastcall
-FableVirtualKeyboard_IsIMEActive_00851860(void*, void*);
-extern "C" void __fastcall
-FableVirtualKeyboard_FinaliseString_00851860(void*, void*, bool);
+struct CIMECalls {
+    bool IsIMEActive();                     // 0x00404C50
+    void FinaliseString(bool commit);       // 0x00404B50
+};
 
-extern "C" __declspec(naked) void __fastcall
-CVirtualKeyboard_Cancel_00851860(void*, void*)
+extern CIMECalls* GFGetIME();               // 0x00404A80
+
+struct CVirtualKeyboard_Methods : CVirtualKeyboard {
+    void Cancel();
+};
+
+void CVirtualKeyboard_Methods::Cancel()
 {
-    __asm
-    {
-        mov al, byte ptr [ecx + 5]
-        test al, al
-        jne done
-        mov byte ptr [ecx + 5], 1
-        mov byte ptr [ecx + 4], 1
-        call FableVirtualKeyboard_AddChildPrimitive_00851860 // retail 00404a80
-        mov ecx, eax
-        call FableVirtualKeyboard_IsIMEActive_00851860         // retail 00404c50
-        test al, al
-        je done
-        push 0
-        call FableVirtualKeyboard_AddChildPrimitive_00851860 // retail 00404a80
-        mov ecx, eax
-        call FableVirtualKeyboard_FinaliseString_00851860      // retail 00404b50
-    done:
-        ret
+    if (!this->Done) {
+        this->Done     = true;
+        this->Canceled = true;
+        if (GFGetIME()->IsIMEActive())
+            GFGetIME()->FinaliseString(false);
     }
 }

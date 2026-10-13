@@ -1,7 +1,7 @@
 // CRenderManagerCore::Uninit()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0A9D0, oracle length 28 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; lea esi,[ecx+3A4Ch] ; mov ecx,esi ; call <IsInitialised> ; test al,al ; je R ; mov ecx,esi ; pop esi ; jmp <Uninitialise> ; R: pop esi ; ret
 // engine/CRenderManagerCore.h (PDB): +0x3A4C CSystemFont SystemFont (a CInitBaseClass). Tears the

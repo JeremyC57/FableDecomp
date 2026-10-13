@@ -1,7 +1,7 @@
 // CTCInventoryTrade::GetCategoryIndexForTradeType()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059B6F4, oracle length 35 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov ecx,[ecx+170h] ; xor eax,eax ; L: cmp [eax*8+0137CCDCh],ecx ; je F ; inc eax ; cmp eax,2 ; jl L ; or eax,-1 ; ret ; F: mov eax,[eax*8+0137CCE0h] ; ret
 // Looks the inventory screen's CategoryIdent up in a two-row {ident, index} table in .data at

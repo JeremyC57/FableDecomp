@@ -1,7 +1,7 @@
 // CThingComponentNameTag constructor for "CTCAssassinRush"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D4DF4, oracle length 19 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; push -1 ; push offset "CTCAssassinRush" ; mov esi,ecx ; call CCharString::CCharString(char*,long) ; mov eax,esi ; pop esi ; ret
 // The manifest labels this body `CActionDoCreatureAction::GetActionName` -- that label is

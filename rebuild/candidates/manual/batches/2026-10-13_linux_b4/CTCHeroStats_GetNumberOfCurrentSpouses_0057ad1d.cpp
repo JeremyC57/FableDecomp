@@ -1,7 +1,7 @@
 // CTCHeroStats::GetNumberOfCurrentSpouses()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057AD1D, oracle length 47 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov edx,[ecx+1D8h] ; mov ecx,[edx] ; xor eax,eax ; cmp ecx,edx ; je R ; push esi ; L: mov esi,[ecx+18h] ; cmp esi,1 ; je I ; cmp esi,3 ; je I ; cmp esi,2 ; je I ; cmp esi,4 ; jne N ; I: inc eax ; N: mov ecx,[ecx] ; cmp ecx,edx ; jne L ; pop esi ; R: ret
 // engine/CTCHeroStats.h (PDB): +0x1F0 std::list<CHeroMarriageInfo> Marriages; six std containers

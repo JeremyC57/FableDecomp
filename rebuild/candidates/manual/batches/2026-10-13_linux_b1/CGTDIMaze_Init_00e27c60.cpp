@@ -1,7 +1,7 @@
 // CGTDI_Maze::Init()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E27C60, oracle length 17 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+8] ; lea ecx,[esi+8] ; call [eax+28h] ; fstp [esi+1Ch] ; pop esi ; ret
 // Guardian Trophy Dealer maze info (quest script helper). The object embedded at +0x08 carries

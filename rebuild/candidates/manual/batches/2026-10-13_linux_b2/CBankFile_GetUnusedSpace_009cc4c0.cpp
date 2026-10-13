@@ -1,7 +1,7 @@
 // CBankFile::GetUnusedSpace()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CC4C0, oracle length 38 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  push esi ; push edi ; mov edi,ecx ; mov esi,[edi+0A8h] ; call <entry data total> ; mov ecx,[edi+0A4h] ; mov edx,[edi+0A0h] ; sub esi,ecx ; sub esi,edx ; sub esi,eax ; pop edi ; mov eax,esi ; pop esi ; ret
 // Unused bytes = FileSize - FileInformationSize - HeaderSize - (total size of entry data).
@@ -57,5 +57,9 @@ struct CBankFile_Retail {
 
 unsigned long CBankFile_Retail::GetUnusedSpace()
 {
-    return this->FileSize - this->FileInformationSize - this->HeaderSize - GetTotalEntryDataSize();
+    // Lane feedback: retail loads FileSize into esi BEFORE calling GetTotalEntryDataSize and
+    // subtracts the two header sizes and then the call result; that order only falls out when
+    // FileSize is read into a local first (a one-expression return calls first). RELOCATION_MATCH.
+    unsigned long fileSize = this->FileSize;
+    return fileSize - this->FileInformationSize - this->HeaderSize - GetTotalEntryDataSize();
 }

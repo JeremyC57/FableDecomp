@@ -1,7 +1,7 @@
 // CGraphicInfoFrame::GetBlankTexture()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FD3F0, oracle length 17 bytes.
-// Grade: candidate (authored from the retail bytes; byte parity NOT yet proven -- run
-//        tools/decomp_pipeline/verify_and_land.py on this batch's payload to grade it).
+// Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
+//        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
 // Retail bytes:  mov eax,[ecx+0Ch] ; mov ecx,[eax+1Ch] ; mov edx,[eax+20h] ; lea eax,[edx+ecx*8+2B4h] ; ret
 // PDB: CGraphicInfoFrame +0x0C = CGraphicInfo* GraphicInfo; CGraphicInfo +0x1C = ETextureType
