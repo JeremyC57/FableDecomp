@@ -479,13 +479,15 @@ extern "C" void host_ui_event(Ctx* c) {
 namespace { bool g_pcScreen = false; }
 extern "C" void F_0041DB1D_orig(Ctx* c);
 extern "C" void host_create_component(Ctx* c) {
+    // CCharString (PDB): one pointer to CCharStringData {CBasicString<char> {char* +0, length +4}, refs +0xD}
     const uint32_t str = rd32(c->esp + 4);
-    const uint32_t ptr = str ? rd32(str) : 0, len = str ? rd32(str + 4) : 0;
+    const uint32_t data = str ? rd32(str) : 0;
+    const uint32_t ptr = data >= 0x10000 && data < kGuestLimit ? rd32(data) : 0, len = data >= 0x10000 && data < kGuestLimit ? rd32(data + 4) : 0;
     char name[48] = {};
     if (ptr >= 0x10000 && ptr < kGuestLimit && len > 0 && len < sizeof name) std::memcpy(name, gp<const char>(ptr), len);
     const bool pc = std::strncmp(name, "PC_", 3) == 0, xbox = std::strncmp(name, "UI_", 3) == 0;
     static std::set<std::string> names;
-    if (names.size() < 60 && names.insert(name).second) HLOG(1, "ui: CreateComponent(\"%s\") str 0x%08X ptr 0x%08X len %u", name, str, ptr, len);
+    if (names.size() < 60 && names.insert(name).second) HLOG(1, "ui: CreateComponent(\"%s\")", name);
     if ((pc && !g_pcScreen) || (xbox && g_pcScreen)) {
         g_pcScreen = pc;
         HLOG(1, "ui: component %s created: the Xbox zoom is %s", name, pc ? "off (PC layout)" : "on");
