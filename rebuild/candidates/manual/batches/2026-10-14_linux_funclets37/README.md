@@ -1,0 +1,7 @@
+# Batch `2026-10-14_linux_funclets37` — EH unwind funclets of landed parents: 25 landed (the hand-authored EH parents of batch eh32)
+
+Pass 37 of `tools/decomp_pipeline/families/funclets.py` after the hand-authored EH-framed parents
+of `2026-10-14_linux_eh32` landed: every entry is an `Unwind@<va>` funclet graded from its parent's
+object at the funclet's offset into the `$L` block, with the parent's `/EHsc` flags and behaviour
+test (see `2026-10-14_linux_funclets1/README.md`). 45 funclets were tried; the 20 DIFFERs are the
+standing 8–14-byte unwind bodies whose retail block order differs from the DDK object (not landed).
