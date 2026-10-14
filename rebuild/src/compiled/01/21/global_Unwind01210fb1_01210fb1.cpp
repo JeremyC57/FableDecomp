@@ -1,0 +1,8 @@
+// EH unwind funclet @ 0x01210FB1 of CString_00c0e360::CString00c0e360_GetFileNameWithoutExtension00c0e360_00c0e360 (parent @ 0x00C0E360): VC7.1 emits the
+// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;
+// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 25 bytes at +0x10 of the parent's
+// block and is produced by the parent's translation unit, included below (no code of its own).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x01210FB1, oracle length 25 bytes.
+// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x10) and the parent's
+//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).
+#include "../src/compiled/00/c0/CString00c0e360_GetFileNameWithoutExtension00c0e360_00c0e360.cpp"
