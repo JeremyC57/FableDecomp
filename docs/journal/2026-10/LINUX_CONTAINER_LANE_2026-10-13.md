@@ -575,3 +575,12 @@ the malloc template by swapping the entry allocation only. Parked with evidence 
 00caf230 (DirectShow-style CUnknown/CBaseDispatch ctor: the lane folds the inlined `if (pptinfo == NULL)` on `&local`, retail keeps it),
 00c11d00 (CTCHero ctor, store scheduling), 00c1a9c0 (async read thread: lane rotates the loop and shrink-wraps). With these the
 0x00C0xxxx EH set is exhausted: every remaining open EH body is parked on a systematic lane-vs-retail codegen gap for the Windows QFE compiler.
+
+### Wave 24, part 1 (hand chunks 24–25, lane tooling saved)
+The 0x00C0xxxx EH set being exhausted, the delegated chunk pool resumed under the one-agent rule: chunk 24 (40 CCreatureAction_*
+rows) went to the single sub-agent (40/40 matched, `_hand24`), chunk 25 was authored by the coordinator in parallel (36/40,
+`_hand25` + `_hand25_b`; 008c6160 / 007a9b10 / 00528930 / 004c41d0 parked with evidence in the README). Catalog 28,516 -> 28,592
+(57.7%). Seven "CCreatureAction_*::Clone" rows turned out to be Dinkumware tree-node factories (value at +0x10) and are landed as
+`CRetailTree_<addr>::BuyNode`. The scratch-only lane tooling (grader, disassembler, EH helpers, chunk brief/cutter/lander, EH-pass
+builder example, parked list) is now in `tools/decomp_pipeline/linux_lane/lane_tools/` so a fresh container can resume; the chunk
+cutter trims the int3 padding the family rows carry (the lander compares whole rows). Lessons in GOTCHAS (wave 24a).

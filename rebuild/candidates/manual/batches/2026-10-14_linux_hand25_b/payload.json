@@ -1,0 +1,14 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "009680d0",
+    "module": "CCreatureAction_PickUpJug",
+    "name": "Clone",
+    "source_cpp": "// CCreatureAction_PickUpJug::Clone() -- new CCreatureAction_PickUpJug(*this): the implicit copy constructor inlined over the out-of-line CCreatureAction_PickUpThingAtTable copy constructor, then this class's vtable (0x012963A4)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x009680D0, length 47 bytes.\n// Callees: operator new @ 0x00BFEA1A (0xb4 bytes, null-checked), CCreatureAction_PickUpThingAtTable::CCreatureAction_PickUpThingAtTable(const CCreatureAction_PickUpThingAtTable&) @ 0x0084C9A0.\n// Shape: PickUpJug adds no data to PickUpThingAtTable (sizeof 0xb4), so its copy constructor is the base copy plus the vtable replacement.\nstruct CCreatureActionBase {\n    virtual void v00();\n};\n\nstruct CCreatureAction_PickUpThingAtTable : CCreatureActionBase {   // vtable 0x012753E4; sizeof 0xb4\n    unsigned char _body[0xb4 - 4];\n    CCreatureAction_PickUpThingAtTable(const CCreatureAction_PickUpThingAtTable& other);   // 0x0084C9A0\n};\n\nstruct CCreatureAction_PickUpJug : CCreatureAction_PickUpThingAtTable {   // vtable 0x012963A4; adds no data\n    virtual void v00();\n    CCreatureActionBase* Clone();\n};\n\nCCreatureActionBase* CCreatureAction_PickUpJug::Clone()\n{\n    return new CCreatureAction_PickUpJug(*this);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_copies = 0;\nstruct Base { virtual ~Base() {} };\nstruct Mid : Base { unsigned char body[0xb0]; Mid() {} Mid(const Mid& o) { ++g_copies; body[3] = o.body[3]; } };\nstruct Act : Mid { Act* Clone() { return new Act(*this); } };\nint main()\n{\n    Act a; a.body[3] = 5; Act* p = a.Clone(); Act* q = p;\n    bool ok = q && q != &a && g_copies == 1 && q->body[3] == 5; delete p;\n    if (!ok) { std::printf(\"009680d0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"009680d0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "009680d0_TEST PASS"
+   }
+  ]
+ }
+}
