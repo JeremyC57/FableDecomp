@@ -1,0 +1,14 @@
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+struct C2DVector { float X, Y; }; struct C3DVector { float X, Y, Z; };
+struct CInputEvent { long m_key; long m_4; bool m_8; unsigned char _pad09[3]; C3DVector m_movement; C2DVector m_position; long m_device; long m_24; long m_kind; float m_time; float m_time2;
+    void SetAsKeyboardCharacterRepeat(unsigned short character, double time) {
+        m_time2 = (float)time; m_device = 2; m_time = (float)time; m_kind = 16; *(unsigned short*)&m_key = character;
+    }
+};
+
+int main() {
+    CInputEvent e; std::memset(&e, 0, sizeof e); e.SetAsKeyboardCharacterRepeat(0x43, 3.0); if ((unsigned short)e.m_key != 0x43 || e.m_kind != 16 || e.m_device != 2 || e.m_time != 3.0f || e.m_time2 != 3.0f) { std::printf("00a03ce0_TEST FAIL\n"); return 1; }
+    std::printf("00a03ce0_TEST PASS\n"); return 0;
+}

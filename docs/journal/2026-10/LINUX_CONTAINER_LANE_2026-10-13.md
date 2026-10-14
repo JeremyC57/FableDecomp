@@ -547,6 +547,22 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 9 (chunks 47, 48, 49)
+Chunk 47 (CGroundNavigatorExternalInterface .. CHandleBasedMemoryPool) to the single sub-agent: 37/40 (`_hand47`; the navigator
+peek accessors with hidden-pointer returns, the four std::list::clear bodies mislabelled "SortTreeRecursively", CTextEntry /
+CGroupEntry::UnloadResource, CCombatRing::GetAttackerProngPosition, IntToWideString, the window-list inserts, a COM-style
+`__stdcall` cancel; the retail CHandleBasedMemoryPool header is 32 bytes and its CArray 12; parked: the SGI find_if tag slot,
+two def-pointer frame-word reuses). By the coordinator: chunk 48 (CHandleBasedMemoryPool .. CIME: 30/40, `_hand48`; the pool's
+free-list insert/find/update, the handle chain, CHeightMap::SetSizeZAt, the CHeroExperienceDef / CHeroMarriageDef / CHeroMorphDef
+constructors and the CDefPointeeBase destructors, the CHitLocation / CHitParameters destructors, SetPHitMaterialDef, CHoverable's
+constructor and Update, CIME; parked: the six `IsDivineWrathStrike` std::find bodies (an empty tag temporary overlaid on the live
+value slot), OnHovered's counted temporary, three vector-slot `lea` materialisations) and chunk 49 (CIPhysicsFacesSegmentBase ..
+CInputManager: 38/40, `_hand49`; the collision-stamp vector, nine unrelated "CIcicleData" constructors, HasEnoughIcons, the
+COM-style DrawText forwarder, CIndexBuffer's Direct3D create/lock, CInitBaseClass's constructor and deleting destructor, the
+CInkeyBuffer ring, fifteen CInputEvent setters, two retail vector push_backs; one cold block skipped, one argument-order store
+parked). Catalog 29,288 -> 29,318 -> 29,355 -> **29,393 (59.3%)**. Lessons in GOTCHAS wave 24l. Next: chunk 50 (CInputManager ..
+CInputProcessManager) is with the agent; chunk 51 (CInputProcessManager .. CItem) by hand; `mkchunk.py 52 2` (pool 2,760 rows).
+
 ### Wave 24, part 8 (chunks 43, 44, 45, 46)
 Chunk 43 (the CGameScriptInterface script entry points) to the single sub-agent: 38/40 (`_hand43`; every component
 lookup matched with the landed OUT-PARAMETER `GetInterface(T** ppOut, long type)` template, which leaves the component in
