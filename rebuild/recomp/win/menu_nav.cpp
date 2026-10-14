@@ -527,6 +527,18 @@ extern "C" void host_inventory_screen(Ctx* c) {
     F_00591E5E_orig(c);
 }
 
+#ifndef _WIN32
+#include <sys/uio.h>
+#include <unistd.h>
+// A read of guest memory that fails instead of faulting on an unmapped page.
+static bool safeRead(uint32_t addr, void* out, size_t n) {
+    iovec local{out, n}, remote{reinterpret_cast<void*>(static_cast<uintptr_t>(addr)), n};
+    return process_vm_readv(getpid(), &local, 1, &remote, 1, 0) == static_cast<ssize_t>(n);
+}
+#else
+static bool safeRead(uint32_t addr, void* out, size_t n) { std::memcpy(out, gp<const void>(addr), n); return true; }
+#endif
+
 // Harness diagnostics: the name of a def by global index, read from the definition
 // manager's entry table ([0x13B879C]+0xA4, entries holding the def at +0xC) by looking
 // for pointers to printable text in the entry and the def; "" when nothing looks like a name.
@@ -535,19 +547,22 @@ static std::string defNameGuess(uint32_t id) {
     if (!mgr || id > 0x100000) return "";
     const uint32_t table = rd32(mgr + 0xA4);
     if (!table) return "";
-    const uint32_t entry = rd32(table + id * 4);
-    if (!entry) return "";
+    uint32_t entry = 0;
+    if (!safeRead(table + id * 4, &entry, 4) || !entry) return "";
+    uint32_t probe[0x18];
+    if (!safeRead(entry, probe, sizeof probe)) return "";
     auto text = [](uint32_t p) -> std::string {
         if (p < 0x10000 || p > 0x7FFFFFFF) return "";
-        const char* c = gp<const char>(p);
+        char buf[48];
+        if (!safeRead(p, buf, sizeof buf)) return "";  // guest pages are not all mapped
         std::string s;
-        for (int i = 0; i < 48 && c[i]; ++i) { if (c[i] < 0x20 || c[i] > 0x7E) return ""; s += c[i]; }
+        for (int i = 0; i < 48 && buf[i]; ++i) { if (buf[i] < 0x20 || buf[i] > 0x7E) return ""; s += buf[i]; }
         return s.size() >= 4 ? s : "";
     };
     std::string out;
     for (uint32_t off = 0; off < 0x20; off += 4) { std::string t = text(rd32(entry + off)); if (!t.empty()) out += " e+" + std::to_string(off) + "=" + t; }
     const uint32_t def = rd32(entry + 0xC);
-    if (def) for (uint32_t off = 4; off < 0x60; off += 4) { std::string t = text(rd32(def + off)); if (!t.empty()) out += " d+" + std::to_string(off) + "=" + t; }
+    if (def && safeRead(def, probe, sizeof probe)) for (uint32_t off = 4; off < 0x60; off += 4) { std::string t = text(rd32(def + off)); if (!t.empty()) out += " d+" + std::to_string(off) + "=" + t; }
     return out;
 }
 
