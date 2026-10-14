@@ -34,6 +34,7 @@
 #include <vector>
 
 using namespace host;
+static bool safeRead(uint32_t addr, void* out, size_t n);  // below: a guest read that fails instead of faulting
 
 extern "C" void F_0055CB10_orig(Ctx* c);
 
@@ -493,16 +494,28 @@ extern "C" void host_ui_scale(Ctx* c) {
         // for 1024x768 and overflowed 720x480 with the 1.6: a screen whose root is wider
         // than 640 or taller than 480 is a PC layout and keeps the game's own scale.
         const uint32_t comp = c->esi;
+        // NUISystem::CComponent (PDB): Name CCharString +0x24, PParent +0xD8, Size +0xDC, DefIndex +0x158.
         uint32_t root = comp;
-        float w = 0, h = 0;  // the largest box along the ancestor chain (the roots are sizeless containers)
+        float w = 0, h = 0;  // the largest box along the ancestor chain
         std::string chain;
+        auto name = [](uint32_t comp) -> std::string {
+            for (uint32_t off : {0x24u, 0x28u}) {
+                const uint32_t p = rd32(comp + off);
+                char buf[40];
+                if (p < 0x10000 || p > 0x7FFFFFFF || !safeRead(p, buf, sizeof buf)) continue;
+                std::string t;
+                for (int i = 0; i < 40 && buf[i]; ++i) { if (buf[i] < 0x20 || buf[i] > 0x7E) { t.clear(); break; } t += buf[i]; }
+                if (t.size() >= 3) return t;
+            }
+            return "?";
+        };
         for (int i = 0; i < 24 && root >= 0x10000 && root < kGuestLimit; ++i) {
-            const float cw = rdf32(root + 0xD4), ch = rdf32(root + 0xD8);
-            if (cw > w) w = cw;
-            if (ch > h) h = ch;
-            if (i < 8) chain += " " + std::to_string(static_cast<int>(cw)) + "x" + std::to_string(static_cast<int>(ch)) + "/" + std::to_string(static_cast<int>(rd32(root + 0x150)));
-            const uint32_t p = rd32(root + 0xC8);
-            if (!p || p >= kGuestLimit) break;
+            const float cw = rdf32(root + 0xDC), ch = rdf32(root + 0xE0);
+            if (cw > w && cw < 8192.0f) w = cw;
+            if (ch > h && ch < 8192.0f) h = ch;
+            if (i < 8) chain += " " + name(root) + "(" + std::to_string(static_cast<int>(cw)) + "x" + std::to_string(static_cast<int>(ch)) + ")";
+            const uint32_t p = rd32(root + 0xD8);
+            if (!p || p >= kGuestLimit || p == root) break;
             root = p;
         }
         const bool pcLayout = w > 660.0f || h > 500.0f;
