@@ -2286,12 +2286,19 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         g_nsCapSleep = 0, g_capLate = 0, capFrom = fr, lineNs = lastPresentNs;
         const UINT bw = pp.BackBufferWidth, bh = pp.BackBufferHeight;
         const GLuint fbo = mainFbo;
+        // The centre pixel (a black-screen check for device logs) is a glReadPixels: the render
+        // thread waits for the GPU to finish the frame, a stall every 120 frames. Only on request.
+        static const bool probe = [] { const char* e = getenv("FABLE_GLES_PROBE"); return (e && atoi(e) != 0) || getenv("FABLE_GLES_DUMP"); }();
         gq::call([=] {
             unsigned char px[4] = {0, 0, 0, 0};
-            glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo);
-            glReadPixels(static_cast<GLint>(bw / 2), static_cast<GLint>(bh / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
+            if (probe) {
+                glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo);
+                glReadPixels(static_cast<GLint>(bw / 2), static_cast<GLint>(bh / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
+            }
             const GLenum err = glGetError();  // on the render thread: a direct call, errors of the whole frame
-            log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms (mean %.1f) of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f, cap %u slept %.1f/frame, %u late%s%X", fr, draws, clears, progs, px[0], px[1], px[2], px[3], ww, wh, fMs, mMs, gMs, sMs, uMs, rMs, wMs, capFps, cMs, capLate, err ? ", GL error 0x" : "", err);
+            char centre[16] = "-";  // FABLE_GLES_PROBE=1
+            if (probe) std::snprintf(centre, sizeof centre, "%02X%02X%02X%02X", px[0], px[1], px[2], px[3]);
+            log("gles: frame %u: %u draws, %u clears, %u programs, centre %s, window %dx%d, frame %.1f ms (mean %.1f) of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f, cap %u slept %.1f/frame, %u late%s%X", fr, draws, clears, progs, centre, ww, wh, fMs, mMs, gMs, sMs, uMs, rMs, wMs, capFps, cMs, capLate, err ? ", GL error 0x" : "", err);
             if (const char* dir = getenv("FABLE_GLES_DUMP")) {
                 std::vector<unsigned char> buf(static_cast<size_t>(bw) * bh * 4);
                 glReadPixels(0, 0, static_cast<GLint>(bw), static_cast<GLint>(bh), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
