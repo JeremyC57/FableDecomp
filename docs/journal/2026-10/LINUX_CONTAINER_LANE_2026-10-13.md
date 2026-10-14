@@ -547,6 +547,22 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 11 (chunks 52, 54)
+Chunk 52 (CItem leftovers .. CLandscapeBackgroundLoadTask) to the single sub-agent: 37/40 (`_hand52`; CKeyboard / CMouseDX /
+CKeyboardDX / CJoystickDX input bodies with label corrections (the "CJoystick" event rows are CKeyboard's at +0x3404, the
+"UpdateAcquired" rows are CMouseDX / CKeyboardDX / CJoystickDX by slot, "~CJoystickDX" is a DirectSound-buffer Stop+Release), the
+CLHFile GetSize/GetMode pair and the CLHFileManager factories, the eight "CLandscapeBackgroundLoadTask ??_G" rows that are a VC6 tree,
+POD-vector pairs, delete[] buffers and pool records; parked: a destroy-range tag at the live flags slot, an unoptimised list insert
+with three untouched frame dwords, a post-call load order). Chunk 54 (CLandscapeLayerMesh .. CLocalDetailPrimitiveMeshZSpriteBatch) by
+the coordinator: 34/40 (`_hand54`; the landscape-memory block owners (OnPostRelocation / ~CLandscapeLayerMesh), the free-area merge,
+the tesselator bodies, CLayer::SetAllPolys, the CLevelLoader / CLightningBranch / failure-handler constructors, the counted-pointer
+destructors of CEventHitBase and CLHFile, the CLipSyncDataBank insert / VC6 erase-all / resize and CLipSyncPhonemeSample::operator=,
+the NUISystem::CList predicates and AddChild variants, the cache-map close / update bodies, the collection-type IsEquivalent / copy /
+PeekFadeEnd, the placement-grid releases; parked: a byte-wise copy constructor, three temporaries in one dead slot, two allocator
+tags over a live slot, a `push edi ; lea` schedule, an argument load order). Catalog 29,503 -> 29,537 -> **29,574 (59.7%)**. Lessons in
+GOTCHAS wave 24n. Next: chunk 55 (CLocalDetailPrimitiveRepeatedMesh .. CMapFilenames) to the agent, chunk 56 (CMapFilenames ..
+CMemoryDataInputStream) by hand; `mkchunk.py 58 2` after (pool 2,520 rows).
+
 ### Wave 24, part 10 (chunks 50, 51, 53)
 Chunk 50 (CInputManager .. CInputProcessManager) to the single sub-agent: 39/40 (`_hand50`; the retail CInputManager layout (0x80
 bytes, CDiskFileWin32 at +0x60), event-scan vector bodies, the CInputProcess* Init / ProcessInput / AddToInterface rows, three
