@@ -1,0 +1,72 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00c33120",
+    "module": "CScriptDefinitionManager",
+    "name": "~CScriptDefinitionManager",
+    "source_cpp": "// CScriptDefinitionManager::~CScriptDefinitionManager() -- EH-framed destructor: stores the vtable (0x012B4F74), shuts down out of line (@ 0x00C3C450), then the base destructor (out of line @ 0x00C3C5C0)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C33120, oracle length 79 bytes. Built under /EHsc.\n// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov dword ptr [esi],offset vtable ; mov dword ptr [esp+10h],0 ; call Shutdown ; mov ecx,esi ; mov dword ptr [esp+10h],-1 ; call ~CBase ; mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret\n// The derived vtable is stored, EH state 0 covers the body (the base is alive and its destructor is\n// out of line), the out-of-line Shutdown runs on `this`, then the base destructor (state -1). `this`\n// is kept in the frame for the unwind funclet, which destroys the base. The class comes from the\n// manifest label; the base and the helper are descriptive. One of 4 bodies of this shape.\nstruct CScriptDefinitionManagerBase {\n    virtual void v00();\n    ~CScriptDefinitionManagerBase();                          // 0x00C3C5C0\n};\n\nstruct CScriptDefinitionManager : CScriptDefinitionManagerBase {                 // vtable 0x012B4F74\n    void Shutdown();                       // 0x00C3C450\n    ~CScriptDefinitionManager();\n};\n\nCScriptDefinitionManager::~CScriptDefinitionManager()\n{\n    Shutdown();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_s = 0, g_b = 0; struct B { virtual void v() {} ~B() { ++g_b; } }; struct X : B { void S() { ++g_s; } ~X() { S(); } };\nint main()\n{\n    { X x; } if (g_s != 1 || g_b != 1) { std::printf(\"00c33120_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c33120_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c33120_TEST PASS",
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "00c3f380",
+    "module": "CScriptDefinitionManager",
+    "name": "~CScriptDefinitionManager",
+    "source_cpp": "// CScriptDefinitionManager::~CScriptDefinitionManager() -- EH-framed destructor: stores the vtable (0x012B5BC0), shuts down out of line (@ 0x00C3E580), then the base destructor (out of line @ 0x00C3E2A0)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3F380, oracle length 79 bytes. Built under /EHsc.\n// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov dword ptr [esi],offset vtable ; mov dword ptr [esp+10h],0 ; call Shutdown ; mov ecx,esi ; mov dword ptr [esp+10h],-1 ; call ~CBase ; mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret\n// The derived vtable is stored, EH state 0 covers the body (the base is alive and its destructor is\n// out of line), the out-of-line Shutdown runs on `this`, then the base destructor (state -1). `this`\n// is kept in the frame for the unwind funclet, which destroys the base. The class comes from the\n// manifest label; the base and the helper are descriptive. One of 4 bodies of this shape.\nstruct CScriptDefinitionManagerBase {\n    virtual void v00();\n    ~CScriptDefinitionManagerBase();                          // 0x00C3E2A0\n};\n\nstruct CScriptDefinitionManager : CScriptDefinitionManagerBase {                 // vtable 0x012B5BC0\n    void Shutdown();                       // 0x00C3E580\n    ~CScriptDefinitionManager();\n};\n\nCScriptDefinitionManager::~CScriptDefinitionManager()\n{\n    Shutdown();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_s = 0, g_b = 0; struct B { virtual void v() {} ~B() { ++g_b; } }; struct X : B { void S() { ++g_s; } ~X() { S(); } };\nint main()\n{\n    { X x; } if (g_s != 1 || g_b != 1) { std::printf(\"00c3f380_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c3f380_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c3f380_TEST PASS",
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "00c331a0",
+    "module": "CScriptDefinitionManager",
+    "name": "~CScriptDefinitionManager",
+    "source_cpp": "// CScriptDefinitionManager::~CScriptDefinitionManager() -- EH-framed destructor: stores the vtable (0x012B4F84), shuts down out of line (@ 0x00C3C720), then the base destructor (out of line @ 0x00C33120)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C331A0, oracle length 79 bytes. Built under /EHsc.\n// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov dword ptr [esi],offset vtable ; mov dword ptr [esp+10h],0 ; call Shutdown ; mov ecx,esi ; mov dword ptr [esp+10h],-1 ; call ~CBase ; mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret\n// The derived vtable is stored, EH state 0 covers the body (the base is alive and its destructor is\n// out of line), the out-of-line Shutdown runs on `this`, then the base destructor (state -1). `this`\n// is kept in the frame for the unwind funclet, which destroys the base. The class comes from the\n// manifest label; the base and the helper are descriptive. One of 4 bodies of this shape.\nstruct CScriptDefinitionManagerBase {\n    virtual void v00();\n    ~CScriptDefinitionManagerBase();                          // 0x00C33120\n};\n\nstruct CScriptDefinitionManager : CScriptDefinitionManagerBase {                 // vtable 0x012B4F84\n    void Shutdown();                       // 0x00C3C720\n    ~CScriptDefinitionManager();\n};\n\nCScriptDefinitionManager::~CScriptDefinitionManager()\n{\n    Shutdown();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_s = 0, g_b = 0; struct B { virtual void v() {} ~B() { ++g_b; } }; struct X : B { void S() { ++g_s; } ~X() { S(); } };\nint main()\n{\n    { X x; } if (g_s != 1 || g_b != 1) { std::printf(\"00c331a0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c331a0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c331a0_TEST PASS",
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "00c3cec0",
+    "module": "CScriptDefinitionManager",
+    "name": "~CScriptDefinitionManager",
+    "source_cpp": "// CScriptDefinitionManager::~CScriptDefinitionManager() -- EH-framed destructor: stores the vtable (0x012B5A84), shuts down out of line (@ 0x00C40800), then the base destructor (out of line @ 0x00C4CF40)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3CEC0, oracle length 79 bytes. Built under /EHsc.\n// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov dword ptr [esi],offset vtable ; mov dword ptr [esp+10h],0 ; call Shutdown ; mov ecx,esi ; mov dword ptr [esp+10h],-1 ; call ~CBase ; mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret\n// The derived vtable is stored, EH state 0 covers the body (the base is alive and its destructor is\n// out of line), the out-of-line Shutdown runs on `this`, then the base destructor (state -1). `this`\n// is kept in the frame for the unwind funclet, which destroys the base. The class comes from the\n// manifest label; the base and the helper are descriptive. One of 4 bodies of this shape.\nstruct CScriptDefinitionManagerBase {\n    virtual void v00();\n    ~CScriptDefinitionManagerBase();                          // 0x00C4CF40\n};\n\nstruct CScriptDefinitionManager : CScriptDefinitionManagerBase {                 // vtable 0x012B5A84\n    void Shutdown();                       // 0x00C40800\n    ~CScriptDefinitionManager();\n};\n\nCScriptDefinitionManager::~CScriptDefinitionManager()\n{\n    Shutdown();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_s = 0, g_b = 0; struct B { virtual void v() {} ~B() { ++g_b; } }; struct X : B { void S() { ++g_s; } ~X() { S(); } };\nint main()\n{\n    { X x; } if (g_s != 1 || g_b != 1) { std::printf(\"00c3cec0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c3cec0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c3cec0_TEST PASS",
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "00c60b90",
+    "module": "CConsoleVariable",
+    "name": "~CConsoleVariable",
+    "source_cpp": "// CConsoleVariable::~CConsoleVariable() -- EH-framed destructor: unregisters itself from the registry at +0x14, then the base destructor (inline, restores the base vtable)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C60B90, oracle length 74 bytes. Built under /EHsc.\n// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov dword ptr [esi],offset vtable ; mov ecx,[esi+14h] ; push esi ; mov dword ptr [esp+14h],0 ; call CConsoleVariableRegistry::Remove ; mov ecx,[esp+8] ; mov dword ptr [esi],offset base vtable ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret\n// The derived vtable (0x012B9344) is stored, EH state 0 covers the body (the base is alive and has\n// a non-trivial inline destructor whose only effect is restoring the base vtable 0x012B5868), the\n// registry pointer at +0x14 removes `this` out of line (@ 0x00C5FF60). `this` is kept in the frame\n// for the unwind funclet. The class comes from the manifest label; the registry type is descriptive.\nstruct CConsoleVariable;\nstruct CConsoleVariableRegistry {\n    void Remove(CConsoleVariable* variable);   // 0x00C5FF60\n};\n\nstruct CConsoleVariableBase {                // vtable 0x012B5868\n    virtual void v00();\n    ~CConsoleVariableBase() { }\n};\n\nstruct CConsoleVariable : CConsoleVariableBase {   // vtable 0x012B9344\n    unsigned char _pad[0x10];\n    CConsoleVariableRegistry* m_pRegistry;   // +0x14\n    ~CConsoleVariable();\n};\n\nCConsoleVariable::~CConsoleVariable()\n{\n    m_pRegistry->Remove(this);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_r = 0; struct X; struct R { void Rm(X*) { ++g_r; } }; struct B { virtual void v() {} ~B() {} }; struct X : B { unsigned char p[16]; R* r; ~X() { r->Rm(this); } };\nint main()\n{\n    R r; { X x; x.r = &r; } if (g_r != 1) { std::printf(\"00c60b90_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c60b90_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c60b90_TEST PASS",
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "00c1adb0",
+    "module": "_unattributed",
+    "name": "~SPair_00c1adb0",
+    "source_cpp": "// SPair_00c1adb0::~SPair_00c1adb0() -- EH-framed destructor of a pair<CCharString, CScriptInfo>-like node value: the second (+0x1c, @ 0x00C29FB0) then the first (+0, @ 0x00C1C820)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1ADB0, oracle length 76 bytes. Built under /EHsc.\n// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; lea ecx,[esi+1Ch] ; mov dword ptr [esp+10h],0 ; call ~CSecond ; mov ecx,esi ; mov dword ptr [esp+10h],-1 ; call ~CFirst ; mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret\n// The manifest label is Dinkumware's `_Dest_val<allocator<pair<CCharString,CScriptInfo>>>`, i.e. the\n// out-of-line destructor of the map node value. Members are destroyed in reverse order: the second\n// at +0x1c (EH state 0 while the first is still alive), then the first on `this` (state -1).\n// Both member destructors are out of line; the user-declared pair destructor is the landed unit.\nstruct CFirst_00c1adb0 {                   // 0x1c bytes (a CCharString)\n    unsigned char _body[0x1c];\n    ~CFirst_00c1adb0();                    // 0x00C1C820\n};\n\nstruct CSecond_00c1adb0 {                  // the mapped value (a CScriptInfo)\n    unsigned char _body[4];\n    ~CSecond_00c1adb0();                   // 0x00C29FB0\n};\n\nstruct SPair_00c1adb0 {\n    CFirst_00c1adb0 first;                 // +0\n    CSecond_00c1adb0 second;               // +0x1c\n    ~SPair_00c1adb0();\n};\n\nSPair_00c1adb0::~SPair_00c1adb0()\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_f = 0, g_s = 0; struct F { unsigned char b[28]; ~F() { ++g_f; } }; struct Sd { unsigned char b[4]; ~Sd() { ++g_s; } }; struct P { F f; Sd s; ~P() {} };\nint main()\n{\n    { P p; } if (g_f != 1 || g_s != 1) { std::printf(\"00c1adb0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c1adb0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c1adb0_TEST PASS",
+    "flags": [
+     "/EHsc"
+    ]
+   }
+  ]
+ }
+}

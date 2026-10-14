@@ -1,0 +1,90 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "01213c05",
+    "name": "_global::Unwind@01213c05",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x01213C05 of _unattributed::unattributed_SPair00c2e140_00c2e140 (parent @ 0x00C2E140): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 11 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01213C05, oracle length 11 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c2/unattributed_SPair00c2e140_00c2e140.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_f = 0, g_s = 0; struct FM { unsigned char b[0x30]; ~FM() { ++g_f; } }; struct F { unsigned char h[12]; FM m; }; struct Sd { unsigned char b[4]; ~Sd() { ++g_s; } }; struct P { F f; Sd s; ~P() {} };\nstatic bool Check() { { P p; } return g_f == 1 && g_s == 1; }\n\nint main()\n{\n    if (!Check()) { std::printf(\"00c2e140_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c2e140_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c2e140_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "01213f90",
+    "name": "_global::Unwind@01213f90",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x01213F90 of CGameScriptInterface::CGameScriptInterface_EntitySetAsOpinionSource_00c308a0 (parent @ 0x00C308A0): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01213F90, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c3/CGameScriptInterface_EntitySetAsOpinionSource_00c308a0.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_v = 0; struct V { virtual void v() {} V() {} ~V() {} }; struct X { virtual void A(V*) { ++g_v; } virtual void* G() { return g_v ? 0 : this; } void F(long) { if (G()) { V v; A(&v); } } };\nstatic bool Check() { X x; x.F(0); x.F(0); return g_v == 1; }\n\nint main()\n{\n    if (!Check()) { std::printf(\"00c308a0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c308a0_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c308a0_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "01214342",
+    "name": "_global::Unwind@01214342",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x01214342 of CProfile::CProfile_CProfile_00c34aa0 (parent @ 0x00C34AA0): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01214342, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c3/CProfile_CProfile_00c34aa0.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_m = 0; struct __declspec(novtable) R { virtual void v() = 0; ~R() {} }; struct M { unsigned char b[4]; M() { ++g_m; } ~M() {} }; struct X : R { M m; void v() {} X() : m() {} };\nstatic bool Check() { X x; return g_m == 1; }\n\nint main()\n{\n    if (!Check()) { std::printf(\"00c34aa0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c34aa0_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c34aa0_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "01214d70",
+    "name": "_global::Unwind@01214d70",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x01214D70 of _unattributed::unattributed_CSubPrimitiveList00c3abf0_00c3abf0 (parent @ 0x00C3ABF0): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01214D70, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c3/unattributed_CSubPrimitiveList00c3abf0_00c3abf0.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct N { unsigned char b[16]; N(long) { ++g_n; } ~N() {} }; struct R { virtual void v() {} N* p; R(N* n) : p(n) {} ~R() {} }; struct X : R { N n; X() : R(&n), n(0) {} };\nstatic bool Check() { X x; return g_n == 1 && x.p == &x.n; }\n\nint main()\n{\n    if (!Check()) { std::printf(\"00c3abf0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c3abf0_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c3abf0_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "01214e00",
+    "name": "_global::Unwind@01214e00",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x01214E00 of _unattributed::unattributed_CSubPrimitiveList00c3b180_00c3b180 (parent @ 0x00C3B180): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01214E00, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c3/unattributed_CSubPrimitiveList00c3b180_00c3b180.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct N { unsigned char b[16]; N(long) { ++g_n; } ~N() {} }; struct R { virtual void v() {} N* p; R(N* n) : p(n) {} ~R() {} }; struct X : R { N n; X() : R(&n), n(0) {} };\nstatic bool Check() { X x; return g_n == 1 && x.p == &x.n; }\n\nint main()\n{\n    if (!Check()) { std::printf(\"00c3b180_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c3b180_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c3b180_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "012162d0",
+    "name": "_global::Unwind@012162d0",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x012162D0 of _unattributed::unattributed_CActionParamCountedPointer00c577b0_00c577b0 (parent @ 0x00C577B0): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012162D0, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c5/unattributed_CActionParamCountedPointer00c577b0_00c577b0.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_r = 0; struct B { virtual void v() {} ~B() {} }; struct X : B { virtual void R() { ++g_r; } __forceinline void D() { R(); } ~X() { D(); } };\nint main()\n{\n    { X x; } if (g_r != 1) { std::printf(\"00c577b0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c577b0_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c577b0_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "012163b0",
+    "name": "_global::Unwind@012163b0",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x012163B0 of _unattributed::unattributed_CActionParamCountedPointer00c5eef0_00c5eef0 (parent @ 0x00C5EEF0): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012163B0, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c5/unattributed_CActionParamCountedPointer00c5eef0_00c5eef0.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_r = 0; struct B { virtual void v() {} ~B() {} }; struct X : B { virtual void R() { ++g_r; } __forceinline void D() { R(); } ~X() { D(); } };\nint main()\n{\n    { X x; } if (g_r != 1) { std::printf(\"00c5eef0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c5eef0_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c5eef0_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   }
+  ]
+ }
+}
