@@ -531,6 +531,23 @@ extern "C" void host_ui_event(Ctx* c) {
     F_0055CB10_orig(c);
 }
 
+// 0x661F70 bool CThingCreatureBase::IsChild(): [[this+0xE0]+0xC4] == 1 (the age stage). From the
+// Xbox Skills screens, CTCInventoryAbilities::GetPrioritisedAbilityDefs (0x5F4B30) asks it of the
+// inventory's owner (+4) while that creature's +0xE0 is still null (selecting a spell category
+// or an expression crashed reading 0xC4). A null reads as "not a child".
+extern "C" void F_00661F70_orig(Ctx* c);
+extern "C" void host_is_child(Ctx* c) {
+    const uint32_t self = c->ecx;
+    if (self < 0x10000 || self >= kGuestLimit || rd32(self + 0xE0) < 0x10000 || rd32(self + 0xE0) >= kGuestLimit) {
+        static int logged;
+        if (logged++ < 5) HLOG(1, "creature: IsChild on 0x%08X with no +0xE0 (from 0x%08X): false", self, rd32(c->esp));
+        c->eax = 0;
+        c->esp += 4;  // ret
+        return;
+    }
+    F_00661F70_orig(c);
+}
+
 // 0x530780 CComponent* CComponent::FindChild(CCharString name), recursive over the children
 // (vtable +0xC), the string by value (the callee releases it). The inventory screens pick
 // their parts by the player GUI's live-GUI byte (+0x2BE): PC_MENU_ENTRY_ATTACK_SPELLS with it
