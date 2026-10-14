@@ -547,6 +547,12 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 13 (chunks 59, 60)
+
+- Chunk 59 (coordinator, `_hand59/`): 27/40 (CMouseCursor .. CNavQuadTreeNode). Parked 12 (store scheduling, dead-argument-slot homing, the `find` tag over the live key slot, register choice) and skipped one row spanning two functions.
+- Chunk 60 (coordinator, `_hand60/`): 36/40 (CNavQuadTreeNode .. CNavigatorQueueManager): the navigator manager / A* / flyer forwarders and lookups, five VC7.1 `list::clear` bodies, the 64-bit switch map lookup, the `/Os` `movsd` record forwarder. Parked 4 (GOTCHAS 24p).
+- Catalog 29,669 -> **29,732** (60.0%). Chunk 58 is with the single agent (lands in part 14).
+
 ### Wave 24, part 12 (chunks 55, 56, 57)
 Chunk 55 (CLocalDetailPrimitiveRepeatedMesh .. CMapFilenames) to the single sub-agent: 32/40 (`_hand55`; the NUISystem::CManager
 rows (/Os, retail layout: definition manager +0x64, graphics bank +0x10, layer tree +0x70), the CMap grid getters over the landed

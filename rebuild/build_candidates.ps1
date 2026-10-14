@@ -209455,6 +209455,447 @@ $catalog = @(
         TestSource = '00/c5/CScreenEffectOwner00c55c80_Reset_00c55c80_test.cpp'
         PassPattern = '00c55c80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004eb864'
+        Module = 'CMultiStaticMeshEntryDef'
+        Source = '00/4e/CMultiStaticMeshEntryDef_CMultiStaticMeshEntryDef_004eb864.cpp'
+        TestSource = '00/4e/CMultiStaticMeshEntryDef_CMultiStaticMeshEntryDef_004eb864_test.cpp'
+        PassPattern = '004eb864_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547be0'
+        Module = 'CMovie'
+        Source = '00/54/CMovie_GetSize_00547be0.cpp'
+        TestSource = '00/54/CMovie_GetSize_00547be0_test.cpp'
+        PassPattern = '00547be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e5a0'
+        Module = 'CMovie'
+        Source = '00/54/CMovie_GetSize_0054e5a0.cpp'
+        TestSource = '00/54/CMovie_GetSize_0054e5a0_test.cpp'
+        PassPattern = '0054e5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558c10'
+        Module = 'NUISystem::CNavButton'
+        Source = '00/55/NUISystemCNavButton_IsAcceptButton_00558c10.cpp'
+        TestSource = '00/55/NUISystemCNavButton_IsAcceptButton_00558c10_test.cpp'
+        PassPattern = '00558c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c650'
+        Module = 'NUISystem::CMouseCursor'
+        Source = '00/55/NUISystemCMouseCursor_CMouseCursor_0055c650.cpp'
+        TestSource = '00/55/NUISystemCMouseCursor_CMouseCursor_0055c650_test.cpp'
+        PassPattern = '0055c650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c8d0'
+        Module = 'NUISystem::CMouseCursor'
+        Source = '00/55/NUISystemCMouseCursor_scalardeletingdestructor_0055c8d0.cpp'
+        TestSource = '00/55/NUISystemCMouseCursor_scalardeletingdestructor_0055c8d0_test.cpp'
+        PassPattern = '0055c8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00646d90'
+        Module = 'CMultiStatBar'
+        Source = '00/64/CMultiStatBar_GetCurrentChange_00646d90.cpp'
+        TestSource = '00/64/CMultiStatBar_GetCurrentChange_00646d90_test.cpp'
+        PassPattern = '00646d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bd870'
+        Module = 'CMusicManager_006bd870'
+        Source = '00/6b/CMusicManager006bd870_ResetMusicEntriesOffsets_006bd870.cpp'
+        TestSource = '00/6b/CMusicManager006bd870_ResetMusicEntriesOffsets_006bd870_test.cpp'
+        PassPattern = '006bd870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00780410'
+        Module = 'CMusicManager_00780410'
+        Source = '00/78/CMusicManager00780410_ResetMusicEntriesOffsets_00780410.cpp'
+        TestSource = '00/78/CMusicManager00780410_ResetMusicEntriesOffsets_00780410_test.cpp'
+        PassPattern = '00780410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f76c0'
+        Module = 'CNavBlockedQuadTreeNode_009f76c0'
+        Source = '00/9f/CNavBlockedQuadTreeNode009f76c0_GetIndexTableEntry_009f76c0.cpp'
+        TestSource = '00/9f/CNavBlockedQuadTreeNode009f76c0_GetIndexTableEntry_009f76c0_test.cpp'
+        PassPattern = '009f76c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4eac0'
+        Module = 'CNavQuadTree'
+        Source = '00/a4/CNavQuadTree_IsActionPoint_00a4eac0.cpp'
+        TestSource = '00/a4/CNavQuadTree_IsActionPoint_00a4eac0_test.cpp'
+        PassPattern = '00a4eac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62f30'
+        Module = 'CMovableResourceMemoryPool'
+        Source = '00/a6/CMovableResourceMemoryPool_MoveResource_00a62f30.cpp'
+        TestSource = '00/a6/CMovableResourceMemoryPool_MoveResource_00a62f30_test.cpp'
+        PassPattern = '00a62f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a762f0'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_SetUpMapStructure_00a762f0.cpp'
+        TestSource = '00/a7/CNavQuadTree_SetUpMapStructure_00a762f0_test.cpp'
+        PassPattern = '00a762f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a768c0'
+        Module = 'CNavBlockedQuadTreeNode'
+        Source = '00/a7/CNavBlockedQuadTreeNode_CNavBlockedQuadTreeNode_00a768c0.cpp'
+        TestSource = '00/a7/CNavBlockedQuadTreeNode_CNavBlockedQuadTreeNode_00a768c0_test.cpp'
+        PassPattern = '00a768c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7d9c0'
+        Module = 'CRelativeTarget_00a7d9c0'
+        Source = '00/a7/CRelativeTarget00a7d9c0_SetTarget_00a7d9c0.cpp'
+        TestSource = '00/a7/CRelativeTarget00a7d9c0_SetTarget_00a7d9c0_test.cpp'
+        PassPattern = '00a7d9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab47d0'
+        Module = 'CMouseDX'
+        Source = '00/ab/CMouseDX_SetHasInputFocus_00ab47d0.cpp'
+        TestSource = '00/ab/CMouseDX_SetHasInputFocus_00ab47d0_test.cpp'
+        PassPattern = '00ab47d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c889b0'
+        Module = '_global'
+        Source = '00/c8/global_MulPS00c889b0_00c889b0.cpp'
+        TestSource = '00/c8/global_MulPS00c889b0_00c889b0_test.cpp'
+        PassPattern = '00c889b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9a90'
+        Module = 'CVideoPlayer_00ca9a90'
+        Source = '00/ca/CVideoPlayer00ca9a90_Pause_00ca9a90.cpp'
+        TestSource = '00/ca/CVideoPlayer00ca9a90_Pause_00ca9a90_test.cpp'
+        PassPattern = '00ca9a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dadf00'
+        Module = 'CNOVI_Villager'
+        Source = '00/da/CNOVIVillager_Init_00dadf00.cpp'
+        TestSource = '00/da/CNOVIVillager_Init_00dadf00_test.cpp'
+        PassPattern = '00dadf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daf000'
+        Module = 'CNOVI_TeddyGirl'
+        Source = '00/da/CNOVITeddyGirl_Init_00daf000.cpp'
+        TestSource = '00/da/CNOVITeddyGirl_Init_00daf000_test.cpp'
+        PassPattern = '00daf000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db0600'
+        Module = 'CNOVI_TeddyGirl'
+        Source = '00/db/CNOVITeddyGirl_GivenTeddy_00db0600.cpp'
+        TestSource = '00/db/CNOVITeddyGirl_GivenTeddy_00db0600_test.cpp'
+        PassPattern = '00db0600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db6bf0'
+        Module = 'CNOVI_BarrelThug'
+        Source = '00/db/CNOVIBarrelThug_Init_00db6bf0.cpp'
+        TestSource = '00/db/CNOVIBarrelThug_Init_00db6bf0_test.cpp'
+        PassPattern = '00db6bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db7db0'
+        Module = 'CNOVI_Barrel'
+        Source = '00/db/CNOVIBarrel_OnPredicateFail_00db7db0.cpp'
+        TestSource = '00/db/CNOVIBarrel_OnPredicateFail_00db7db0_test.cpp'
+        PassPattern = '00db7db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dbcd00'
+        Module = 'CNOVI_Bully'
+        Source = '00/db/CNOVIBully_GivenTeddy_00dbcd00.cpp'
+        TestSource = '00/db/CNOVIBully_GivenTeddy_00dbcd00_test.cpp'
+        PassPattern = '00dbcd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e99760'
+        Module = 'CNOVI_Script_00e99760'
+        Source = '00/e9/CNOVIScript00e99760_Init_00e99760.cpp'
+        TestSource = '00/e9/CNOVIScript00e99760_Init_00e99760_test.cpp'
+        PassPattern = '00e99760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eabac0'
+        Module = 'CMurderTwistBrotherOlder'
+        Source = '00/ea/CMurderTwistBrotherOlder_Init_00eabac0.cpp'
+        TestSource = '00/ea/CMurderTwistBrotherOlder_Init_00eabac0_test.cpp'
+        PassPattern = '00eabac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eace90'
+        Module = 'CMurderTwistBrotherOlder'
+        Source = '00/ea/CMurderTwistBrotherOlder_Init_00eace90.cpp'
+        TestSource = '00/ea/CMurderTwistBrotherOlder_Init_00eace90_test.cpp'
+        PassPattern = '00eace90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00415b80'
+        Module = 'SNavigationLayerDefaults_00415b80'
+        Source = '00/41/SNavigationLayerDefaults00415b80_SNavigationLayerDefaults00415b80_00415b80.cpp'
+        TestSource = '00/41/SNavigationLayerDefaults00415b80_SNavigationLayerDefaults00415b80_00415b80_test.cpp'
+        PassPattern = '00415b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d95eb'
+        Module = 'CTCObstacle'
+        Source = '00/4d/CTCObstacle_CTCObstacle_004d95eb.cpp'
+        TestSource = '00/4d/CTCObstacle_CTCObstacle_004d95eb_test.cpp'
+        PassPattern = '004d95eb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00566dc0'
+        Module = 'CRetailList_00566dc0'
+        Source = '00/56/CRetailList00566dc0_Clear_00566dc0.cpp'
+        TestSource = '00/56/CRetailList00566dc0_Clear_00566dc0_test.cpp'
+        PassPattern = '00566dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059b2cc'
+        Module = 'CNavigatorAStar_0059b2cc'
+        Source = '00/59/CNavigatorAStar0059b2cc_MoveToNavLineOfSightProximity_0059b2cc.cpp'
+        TestSource = '00/59/CNavigatorAStar0059b2cc_MoveToNavLineOfSightProximity_0059b2cc_test.cpp'
+        PassPattern = '0059b2cc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00640460'
+        Module = 'CComponentListOwner_00640460'
+        Source = '00/64/CComponentListOwner00640460_InterruptAll_00640460.cpp'
+        TestSource = '00/64/CComponentListOwner00640460_InterruptAll_00640460_test.cpp'
+        PassPattern = '00640460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070b8a0'
+        Module = 'CRetailList_0070b8a0'
+        Source = '00/70/CRetailList0070b8a0_Clear_0070b8a0.cpp'
+        TestSource = '00/70/CRetailList0070b8a0_Clear_0070b8a0_test.cpp'
+        PassPattern = '0070b8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075f580'
+        Module = 'CRetailList_0075f580'
+        Source = '00/75/CRetailList0075f580_Clear_0075f580.cpp'
+        TestSource = '00/75/CRetailList0075f580_Clear_0075f580_test.cpp'
+        PassPattern = '0075f580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9b30'
+        Module = 'CRetailList_009f9b30'
+        Source = '00/9f/CRetailList009f9b30_Clear_009f9b30.cpp'
+        TestSource = '00/9f/CRetailList009f9b30_Clear_009f9b30_test.cpp'
+        PassPattern = '009f9b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14ee0'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_IsNavigationMapLoadedWithSectionName_00a14ee0.cpp'
+        TestSource = '00/a1/CNavigatorManager_IsNavigationMapLoadedWithSectionName_00a14ee0_test.cpp'
+        PassPattern = '00a14ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14f40'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_InterruptAllNavigators_00a14f40.cpp'
+        TestSource = '00/a1/CNavigatorManager_InterruptAllNavigators_00a14f40_test.cpp'
+        PassPattern = '00a14f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14f70'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_GetNodeAt_00a14f70.cpp'
+        TestSource = '00/a1/CNavigatorManager_GetNodeAt_00a14f70_test.cpp'
+        PassPattern = '00a14f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a150a0'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_IsActionPoint_00a150a0.cpp'
+        TestSource = '00/a1/CNavigatorManager_IsActionPoint_00a150a0_test.cpp'
+        PassPattern = '00a150a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a15420'
+        Module = 'CNavigatorQueueManager'
+        Source = '00/a1/CNavigatorQueueManager_IsNavigatorAllowedToCalculateRoute_00a15420.cpp'
+        TestSource = '00/a1/CNavigatorQueueManager_IsNavigatorAllowedToCalculateRoute_00a15420_test.cpp'
+        PassPattern = '00a15420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a15470'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_SetSwitchableNodesAsBlocked_00a15470.cpp'
+        TestSource = '00/a1/CNavigatorManager_SetSwitchableNodesAsBlocked_00a15470_test.cpp'
+        PassPattern = '00a15470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a15670'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_CNavigatorManager_00a15670.cpp'
+        TestSource = '00/a1/CNavigatorManager_CNavigatorManager_00a15670_test.cpp'
+        PassPattern = '00a15670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a18ea0'
+        Module = 'CNavigatorFlyer'
+        Source = '00/a1/CNavigatorFlyer_MoveToPos_00a18ea0.cpp'
+        TestSource = '00/a1/CNavigatorFlyer_MoveToPos_00a18ea0_test.cpp'
+        PassPattern = '00a18ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a199f0'
+        Module = 'CNavigatorFlyer'
+        Source = '00/a1/CNavigatorFlyer_CanNavigateToPos_00a199f0.cpp'
+        TestSource = '00/a1/CNavigatorFlyer_CanNavigateToPos_00a199f0_test.cpp'
+        PassPattern = '00a199f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a19a30'
+        Module = 'CNavigatorFlyer'
+        Source = '00/a1/CNavigatorFlyer_IsNavLineOfSightClear_00a19a30.cpp'
+        TestSource = '00/a1/CNavigatorFlyer_IsNavLineOfSightClear_00a19a30_test.cpp'
+        PassPattern = '00a19a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1a170'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_IsEqual_00a1a170.cpp'
+        TestSource = '00/a1/CNavigatorAStar_IsEqual_00a1a170_test.cpp'
+        PassPattern = '00a1a170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1a1d0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_GetMyNodeAt_00a1a1d0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_GetMyNodeAt_00a1a1d0_test.cpp'
+        PassPattern = '00a1a1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1a210'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_IsNavigableAt_00a1a210.cpp'
+        TestSource = '00/a1/CNavigatorAStar_IsNavigableAt_00a1a210_test.cpp'
+        PassPattern = '00a1a210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1aec0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_GetMyNodeAt_00a1aec0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_GetMyNodeAt_00a1aec0_test.cpp'
+        PassPattern = '00a1aec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1fb00'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_MoveToPos_00a1fb00.cpp'
+        TestSource = '00/a1/CNavigatorAStar_MoveToPos_00a1fb00_test.cpp'
+        PassPattern = '00a1fb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1fb50'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_MoveToPosProximity_00a1fb50.cpp'
+        TestSource = '00/a1/CNavigatorAStar_MoveToPosProximity_00a1fb50_test.cpp'
+        PassPattern = '00a1fb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1fba0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_MoveToNavLineOfSightProximity_00a1fba0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_MoveToNavLineOfSightProximity_00a1fba0_test.cpp'
+        PassPattern = '00a1fba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a36fe0'
+        Module = 'CListOwner_00a36fe0'
+        Source = '00/a3/CListOwner00a36fe0_CallAll_00a36fe0.cpp'
+        TestSource = '00/a3/CListOwner00a36fe0_CallAll_00a36fe0_test.cpp'
+        PassPattern = '00a36fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3eb20'
+        Module = 'CListOwner_00a3eb20'
+        Source = '00/a3/CListOwner00a3eb20_ResetAll_00a3eb20.cpp'
+        TestSource = '00/a3/CListOwner00a3eb20_ResetAll_00a3eb20_test.cpp'
+        PassPattern = '00a3eb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75da0'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_CalculateChildrenNeighbours_00a75da0.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_CalculateChildrenNeighbours_00a75da0_test.cpp'
+        PassPattern = '00a75da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75fc0'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_MakeRegion_00a75fc0.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_MakeRegion_00a75fc0_test.cpp'
+        PassPattern = '00a75fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76010'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a76010.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a76010_test.cpp'
+        PassPattern = '00a76010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76550'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a7/CNavSwitchableLeafNode_GetMemoryUsage_00a76550.cpp'
+        TestSource = '00/a7/CNavSwitchableLeafNode_GetMemoryUsage_00a76550_test.cpp'
+        PassPattern = '00a76550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a78060'
+        Module = 'CNavRegion'
+        Source = '00/a7/CNavRegion_RemoveConnectionToRegion_00a78060.cpp'
+        TestSource = '00/a7/CNavRegion_RemoveConnectionToRegion_00a78060_test.cpp'
+        PassPattern = '00a78060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a84e40'
+        Module = 'CSwitchStateMap_00a84e40'
+        Source = '00/a8/CSwitchStateMap00a84e40_IsSwitchableOn_00a84e40.cpp'
+        TestSource = '00/a8/CSwitchStateMap00a84e40_IsSwitchableOn_00a84e40_test.cpp'
+        PassPattern = '00a84e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b59710'
+        Module = 'CEngineComponent'
+        Source = '00/b5/CEngineComponent_CEngineComponent_00b59710.cpp'
+        TestSource = '00/b5/CEngineComponent_CEngineComponent_00b59710_test.cpp'
+        PassPattern = '00b59710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c57780'
+        Module = 'CVtable_012b8ed4'
+        Source = '00/c5/CVtable012b8ed4_CVtable012b8ed4_00c57780.cpp'
+        TestSource = '00/c5/CVtable012b8ed4_CVtable012b8ed4_00c57780_test.cpp'
+        PassPattern = '00c57780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df2090'
+        Module = 'CScript_00df2090'
+        Source = '00/df/CScript00df2090_Init_00df2090.cpp'
+        TestSource = '00/df/CScript00df2090_Init_00df2090_test.cpp'
+        PassPattern = '00df2090_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
