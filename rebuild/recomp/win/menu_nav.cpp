@@ -328,8 +328,12 @@ bool pcScreenPad(uint32_t scratch, int dirEv, bool a, bool b, float ry) {
             if (x.r - x.l < 2.0f * (x.b - x.t) && (!close || x.t < close->t - 1 || (std::fabs(x.t - close->t) <= 1 && x.r > close->r))) close = &x;
         if (close) press(mgr, buttons, *close);
     } }
-    if (a) { HLOG(1, "menu: pc screen: select"); navigate(mgr, EV_SELECT, scratch); }
-    if (dirEv >= 0) navigate(mgr, static_cast<uint32_t>(dirEv), scratch);
+    // Up/down and A go to the screen's list as the manager's own UI events (the PC lists'
+    // entries are not clickable buttons, so the button navigator walked the scroll arrows);
+    // left/right still move between buttons.
+    if (a) { HLOG(1, "menu: pc screen: select"); guestCallThis(kManagerDispatch, mgr, {EV_SELECT}); }
+    if (dirEv == EV_UP || dirEv == EV_DOWN) { HLOG(1, "menu: pc screen: list %s", dirEv == EV_UP ? "up" : "down"); guestCallThis(kManagerDispatch, mgr, {static_cast<uint32_t>(dirEv)}); }
+    else if (dirEv >= 0) navigate(mgr, static_cast<uint32_t>(dirEv), scratch);
     if (std::fabs(ry) >= 0.5f) {
         static uint32_t lastScroll;
         const uint32_t now = GetTickCount();
