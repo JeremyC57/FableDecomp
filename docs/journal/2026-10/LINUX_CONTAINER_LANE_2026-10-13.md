@@ -551,3 +551,17 @@ the loop index declared before the string), lays the return-0 exit inline (0x00C
 64-bit loads (0x00CAF8F0), uses immediates where retail keeps a zero register (0x00C48E00), and
 never shares a frame slot between sibling-scope locals (0x00C1A870, 0x00C1A110 — retail does).
 The open EH set of the module is down to ~48 bodies of 298+ bytes.
+
+### Wave 23, part 14 (EH pass 31, funclets 36)
+
+Ten more bodies landed byte-exact (`2026-10-14_linux_eh31/` + `_eh31_b/`, commit `2fac7a40`):
+the playback `LogStatus` (string returned by value), the `CTCKraken` constructor, the audio-bank
+`LoadAsync` (COM smart pointer), the `CFileManager` constructor and destructor, the
+instance-manager `Assign`, the `CAbilitySoundComponent` constructor (sixteen slots, named
+strings from temporaries), the `CSBAgents` constructor, the `~CCodaFrameStreamer` destructor and
+the animation-group initialiser, plus 40 funclets (`_funclets36/`). Catalog 28,433 → **28,483
+(57.5%)**. Eight near misses parked with evidence: register colouring and lazy saves
+(0x00CA6450, 0x00CA68F0, 0x00C131C0, 0x00C42DD0), retail's tail-merged epilogues (0x00CA67B0),
+the `/GS` lane gap (0x00CAB160, 0x00C3BB50: the lane compiler copies or caches pointer
+arguments where retail re-reads the argument slots) and the array-new zero-count special case
+(0x00C3F800). The open EH set of the module is down to ~23 bodies of 390+ bytes.

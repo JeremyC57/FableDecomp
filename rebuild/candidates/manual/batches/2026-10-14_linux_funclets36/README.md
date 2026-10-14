@@ -1,4 +1,4 @@
-# Batch `2026-10-14_linux_funclets36` — EH unwind funclets of landed parents: 0 landed (the hand-authored EH parents of batches eh31 / eh31_b)
+# Batch `2026-10-14_linux_funclets36` — EH unwind funclets of landed parents: 40 landed (the hand-authored EH parents of batches eh31 / eh31_b)
 
 Pass 36 of `tools/decomp_pipeline/families/funclets.py` after the hand-authored EH-framed parents
 of `2026-10-14_linux_eh31` and `_eh31_b` landed: every entry is an `Unwind@<va>` funclet graded from its parent's
