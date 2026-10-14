@@ -477,6 +477,37 @@ test, EH frames the DDK drops for empty inline destructors, the DDK's STL `strin
 const allocator&)` choice in `_Xlen`, and LTCG register-argument bodies. Catalog 27,809
 (56.1%). EH-framed parents landed: 436 of 694; funclets in the catalog: 515 of 1,378.
 
+### Wave 23, parts 7–9 (EH passes 22–26, funclets 26–31, hand chunks 15–23)
+
+The hand EH lane resolved the long-standing "null-object warning" family: an MFC `CString`
+(`g_pchNil` default constructor, `Append`/`AppendNumber` `__fastcall` chain, handed to the log
+sink at 0x0143BB2C) built in its OWN nested block, followed by an empty-class trace temporary
+(0x00C16750) homed on a dead frame byte. Other shapes that now reproduce: a `__stdcall` walk over
+a multiply-inherited bank reached through a reference cast; MFC-style position lists with an
+inlined `__forceinline Find` returning the caller's `position` (the found path re-tests the
+memory slot); init-list members read back through an already-initialised member (`m_pWorld->`)
+instead of the parameter; `CNode` containers whose root and container destructors are out of
+line beside inline constructors; `__declspec(novtable)` intermediate classes so only the
+most-derived constructor stores its vtables; virtual calls on `this` in constructors/destructors
+through a non-virtual inline helper (`call [vtable+N]` when the vtable is known, dynamic dispatch
+under `novtable`); unsigned-to-float conversions (`fild` + 2^32 fix-up); a Y/Z-swapped vector
+copy; 8-byte result records; scalar initialisers assigned in the body after the member
+constructors. The delegated chunks 15–23 landed 333 of 360 rows before the user capped delegation
+at one agent; their label corrections (propagated creature-action, console and component labels)
+and retail-vs-PDB layout facts (CCombatActionBase 0x114, CCreatureActionBase 0xa8, CConsole,
+CCompressorZlib, CCompositeSurfaceCache) are in the batch READMEs and sources.
+
+Parked with evidence (DDK 13.10.4035 vs retail RTM, re-grade on the Windows box): the merged
+early-return block placed at the last return site (0x00C16E10, 0x00C31F60, 0x00C3CD00); a
+constant for two state stores materialised in a register by retail only (0x00C14560,
+0x00C14630); the DDK refusing to home an EH-tracked `CString` in an argument slot shared with the
+trace temporary (0x00C0E1F0); the final `return 0` `xor` hoisted above the test (0x00CAC4A0);
+init-list zero stores sunk past the semaphore pushes (0x00CAC9D0); the empty-string temporary's
+data loaded into edi by retail, ecx by the DDK (0x00C101D0); a key materialised for a reg/mem
+compare (0x00CAFE90); register roles (0x00C425E0, 0x00CAADB0); hoisted state store (0x00C32060);
+indexed search loops strength-reduced by the DDK (0x00C34B80, 0x00C34E60). Catalog 28,291
+(57.1%). Parked list: `$S/w23/parked.txt` / `parked_notes.txt`.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
