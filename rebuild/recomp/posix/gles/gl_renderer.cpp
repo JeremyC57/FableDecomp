@@ -39,6 +39,7 @@
 using namespace host;
 
 namespace host::gles {
+static bool g_rtDumpThisDraw;  // FABLE_GLES_DUMP_RT=all: this draw goes to the dump (prepareDraw/afterDraw)
 
 // ---- GL entry points, resolved from the context's driver (the device's own libGLESv2) ----
 namespace {
@@ -1750,6 +1751,13 @@ void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVert
     bindVertexLayout(decl ? decl.p : fvf ? fvfDeclaration() : nullptr, up, upData, upStride, upVertices, baseVertex);
     static int traceLeft = [] { const char* t = getenv("FABLE_GLES_TRACE"); return t ? atoi(t) : 0; }();
     if (dumpFrameWanted()) traceLeft = 1;  // every draw of that frame is traced
+    // FABLE_GLES_DUMP_RT=all: every textured draw into an off-screen render target, in any
+    // frame, is traced and dumped (up to 300), to catch one-off composites such as the hero's
+    // morph textures at load.
+    static const bool rtAll = [] { const char* t = getenv("FABLE_GLES_DUMP_RT"); return t && std::strcmp(t, "all") == 0; }();
+    static int rtAllLeft = 300;
+    g_rtDumpThisDraw = false;
+    if (rtAll && rtAllLeft > 0 && renderTarget && !renderTarget->isBackBuffer && textures[0] && textures[0]->width >= 64) { --rtAllLeft; traceLeft = 1; g_rtDumpThisDraw = true; }
     if (traceLeft > 0) {
         --traceLeft;
         const VertexDecl* d = decl ? decl.p : fvf ? fvfDeclaration() : nullptr;
@@ -1996,7 +2004,7 @@ bool Device::dumpFrameWanted() {
 }
 
 void Device::afterDraw() {
-    if (!dumpFrameWanted()) return;
+    if (!dumpFrameWanted() && !g_rtDumpThisDraw) return;
     const char* dir = getenv("FABLE_GLES_DUMP");
     if (!dir) return;
     static const bool rtOnly = getenv("FABLE_GLES_DUMP_RT") != nullptr;  // only draws into off-screen render targets
