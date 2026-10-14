@@ -1299,8 +1299,17 @@ HRESULT STDMETHODCALLTYPE Device::Clear(DWORD n, const D3DRECT* rects, DWORD fla
     if (flags & D3DCLEAR_TARGET) { bits |= GL_COLOR_BUFFER_BIT; glClearColor(((color >> 16) & 255) / 255.0f, ((color >> 8) & 255) / 255.0f, (color & 255) / 255.0f, ((color >> 24) & 255) / 255.0f); glColorMask(1, 1, 1, 1); }
     if (flags & D3DCLEAR_ZBUFFER) { bits |= GL_DEPTH_BUFFER_BIT; glClearDepthf(z); glDepthMask(GL_TRUE); }
     if (flags & D3DCLEAR_STENCIL) { bits |= GL_STENCIL_BUFFER_BIT; glClearStencil(static_cast<GLint>(stencil)); glStencilMask(0xFF); }
-    glEnable(GL_SCISSOR_TEST);
-    if (n && rects) {
+    // A clear of the whole target goes without the scissor test, so a tile-based GPU sees a
+    // clear of the entire attachments (no load of the previous contents into the tiles; the
+    // game clears colour, depth and stencil at every frame start) instead of a scissored one it
+    // must compare against the framebuffer size or execute as a draw.
+    const UINT tw = renderTarget ? renderTarget->level.width : 0, th = renderTarget ? renderTarget->level.height : 0;
+    const bool whole = !(n && rects) && viewport.X == 0 && viewport.Y == 0 && viewport.Width >= tw && viewport.Height >= th;
+    if (whole) glDisable(GL_SCISSOR_TEST);
+    else glEnable(GL_SCISSOR_TEST);
+    if (whole) {
+        glClear(bits);
+    } else if (n && rects) {
         for (DWORD i = 0; i < n; ++i) {
             glScissor(rects[i].x1, rects[i].y1, rects[i].x2 - rects[i].x1, rects[i].y2 - rects[i].y1);
             glClear(bits);
