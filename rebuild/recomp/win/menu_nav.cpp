@@ -527,6 +527,51 @@ extern "C" void host_inventory_screen(Ctx* c) {
     F_00591E5E_orig(c);
 }
 
+// 0x581E33 int CTCInventory::GetQuickAccessItem(int index): index into the quick-access
+// item ids at this+0x154 and, past their end, into the context-item ids at this+0x148 with
+// no upper bound. CDrawQuickAccessIcons::Draw (0x652FA4) forms the index from the PC GUI
+// def's icon counts (nine quick slots), so with the Xbox scheme's four quick-access slots
+// the context lookups run past the four context ids and the garbage id crashed GetDef.
+// The wrap answers 0 (no item) past the end of either vector.
+extern "C" void host_quick_access_item(Ctx* c) {
+    const uint32_t inv = c->ecx;
+    uint32_t index = rd32(c->esp + 4);
+    const uint32_t qb = rd32(inv + 0x154), qe = rd32(inv + 0x158), cb = rd32(inv + 0x148), ce = rd32(inv + 0x14C);
+    const uint32_t qn = qe >= qb ? (qe - qb) / 4 : 0, cn = ce >= cb ? (ce - cb) / 4 : 0;
+    uint32_t id = 0;
+    if (index < qn) id = rd32(qb + index * 4);
+    else if (index - qn < cn) id = rd32(cb + (index - qn) * 4);
+    c->eax = id;
+    c->esp += 8;  // ret 4
+}
+
+// 0x581FA4 int CTCInventory::GetContextSensitiveItemGraphicIndex(int slot): the id at
+// [slot] of the context-item id vector at this+0x148, resolved through GetEngineGraphic
+// (0x5D96A0). CDrawQuickAccessIcons::Draw (0x652FA4) asks for every icon of the player
+// GUI's context-item list; after a d-pad context-item press the lookup read a bad id and
+// crashed in GetPDefFromGlobalIndex. The wrap logs the slot, the vector and the id, and
+// answers 0 (no graphic) for a slot past the vector or an id that cannot be a def index.
+extern "C" void F_00581FA4_orig(Ctx* c);
+extern "C" void host_csi_graphic(Ctx* c) {
+    const uint32_t inv = c->ecx, slot = rd32(c->esp + 4);
+    const uint32_t begin = rd32(inv + 0x148), end = rd32(inv + 0x14C);
+    const uint32_t count = end >= begin ? (end - begin) / 4 : 0;
+    const int32_t id = slot < count ? static_cast<int32_t>(rd32(begin + slot * 4)) : 0;
+    static uint32_t lastLogged = 0xFFFFFFFF;
+    const uint32_t key = (slot << 24) ^ static_cast<uint32_t>(id) ^ (count << 16);
+    if (key != lastLogged) {
+        lastLogged = key;
+        HLOG(1, "inventory: context item graphic for slot %u of %u: id %d", slot, count, id);
+    }
+    if (slot >= count || id <= 0 || id > 0x100000) {
+        if (slot < count && id > 0) HLOG(1, "inventory: context item slot %u has a bad id %d: no graphic", slot, id);
+        c->eax = 0;
+        c->esp += 8;  // ret 4
+        return;
+    }
+    F_00581FA4_orig(c);
+}
+
 // 0x47E196 CTCInGameMenu::SaveGame(int slot): after writing the files it re-registers the PC
 // mouse pointer component at this+0xEC (UI_MOUSE_POINTER, set only by OpenInGameMenuPC,
 // 0x4804DE) with the UI manager as an observer (its CObserver part at +4:

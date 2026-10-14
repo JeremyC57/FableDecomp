@@ -445,3 +445,14 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   slots are gone, which the RG34XX cannot press anyway.
 - The hold-to-target build (`host_ztarget_toggle`) first failed to compile (`retStd` without
   its namespace); fixed, x86 and aarch64 rebuilt.
+- **D-pad items crashed the PC HUD (harness, after the slot fix)**: `CPlayerGui::CPlayerGui`
+  (0x43B570, at 0x43C2A4) always constructs `CDrawQuickAccessIconsPC`; there is no Xbox
+  drawer in the PC exe, only the shared base `CDrawQuickAccessIcons::Draw` (0x652FA4). The
+  draw indexes the hero's item ids with the PC GUI def's icon counts (nine quick slots plus
+  the context icons) through `CTCInventory::GetQuickAccessItem` (0x581E33), which falls
+  through from the quick-access vector (this+0x154) into the context-item vector (this+0x148)
+  with no upper bound; with the Xbox scheme's four quick slots the context lookups ran off
+  the end and `GetDef` crashed on the garbage id (also through
+  `GetContextSensitiveItemGraphicIndex` 0x581FA4 from the PC drawer's own loop). Two wraps
+  bound both lookups (`host_quick_access_item`, `host_csi_graphic`, 0 past the end) and the
+  second logs the slot, count and id once per change.
