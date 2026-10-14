@@ -565,3 +565,12 @@ the animation-group initialiser, plus 40 funclets (`_funclets36/`). Catalog 28,4
 the `/GS` lane gap (0x00CAB160, 0x00C3BB50: the lane compiler copies or caches pointer
 arguments where retail re-reads the argument slots) and the array-new zero-count special case
 (0x00C3F800). The open EH set of the module is down to ~23 bodies of 390+ bytes.
+
+### Wave 23, part 15 (EH pass 32) — paused mid-batch
+Paused on user request before landing. Matched in scratch (`$S/w23/e_<addr>.cpp`, not yet landed, no `t32/` builder yet):
+00c3ee10 CAnimationOwner::CreateNavigationLayer (twin of 00c3ec80), 00c16310 CScriptLoader::LoadScript, 00c38b20 ~CActivationReceptor,
+00c23c10 / 00c23e00 / 00c24050 / 00c239b0 CEventSubscription ctor family (malloc + `new[]` twins; entries 0x2c / 0xc / 0xb4 bytes),
+00c4c8b0 CMasterObject::LoadScriptInfo (8-byte CProfileLock fixed the frame). Parked with evidence (`$S/w23/parked_notes.txt`):
+00c4cab0 (vtable caching / regalloc), 00caf230 COM dispatch-container ctor (lane folds the inlined `&local != NULL` test retail keeps),
+00c11d00 CTCHero ctor (store scheduling only). In progress: 00c1a9c0 AsyncReadThread (494v485, saved-`this` slot shape).
+Resume: build `$S/w23/t32/` (build.py names + tests.py) for the eight matches, land `2026-10-14_linux_eh32`, then `funclets37`, dashboard, docs.
