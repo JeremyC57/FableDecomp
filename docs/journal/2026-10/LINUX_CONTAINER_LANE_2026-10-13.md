@@ -336,6 +336,29 @@ in the size TU) resists eighteen helper shapes (volatile, reference, out-copy, s
 StdSet insert over string keys (comparator inlining, 217 vs 254). Running total for the rescans:
 3948/3979 rows from 176 families; catalog 25,705 (51.9%).
 
+### Wave 18 (512-byte rescan, sixth pass)
+
+Thirteen batches, 336 rows, led by the definition lookups: the ~100 `CDefinitionManager::GetDef<T>`
+bodies (by instantiation name, by global index, by kind and index; speed and frame-pointer size
+TUs) and the 151 `CDefClassBase::GetSubDef<T>` bodies (a block-scoped literal CCharString,
+the sub-def index through virtual slot 14, the manager's CDefPointer<CDefBase> converting-copied
+into the typed CDefPointer<T>) finally reproduce once the temporary's release is written as the
+ref-count base's two inline accessors called from one member function on the pointee
+(`DecRef(); if (GetRefCount() == 0) Destroy();` -- the adjusted base pointer is materialised
+once for both uses, the stored count forwarded to the test, the def kept in ecx for the virtual
+call), while the typed pointer's own destructor and assignment use the single-expression
+`if (--m_count == 0) Destroy()`; the size TUs need `operator=` and the temporary's destructor
+forced inline. Also landed: the speed-TU `CPersistTraits<float>::TransferBinaryIn` (31) once the
+64-bit range check goes through an inline bool predicate (its exits then share the duplicated
+return tails the retail way), the static tree atexit destructors (15), the frame-pointer range
+constructor forwarders (11, size pragma) and the counted-pointer event dispatchers through a
+single-inheritance member function pointer (26). Parked with evidence: the retail vector
+grow-and-insert cluster (register assignment differs from the lane's 13.10.4035), map FindNode
+over string keys (everything but one jump-threading fold), the lazy list push_back (a zeroed
+frame dword), the CTriangleList counted factory (one hoisted argument load) and copy_backward of
+8-byte pairs (induction-variable elimination). Running total for the rescans: 4284/4315 rows
+from 189 families; catalog 26,041 (52.5%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
