@@ -508,7 +508,13 @@ struct SwapChain : Unknown<IDirect3DSwapChain9, &IID_IDirect3DSwapChain9> {
 
 // ---- the device ---------------------------------------------------------------------------
 struct StreamSource { Ref<VertexBuffer> vb; UINT offset = 0, stride = 0; };
-struct SamplerState { DWORD v[14] = {0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0}; GLuint gl = 0; bool dirty = true; };
+struct SamplerState {
+    DWORD v[14] = {0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0};
+    GLuint gl = 0;
+    bool dirty = true;
+    GLint sent[4] = {-1, -1, -1, -1};  // wrap s / t, mag, min last set on the sampler object (-1: never)
+    void param(int i, GLenum pname, GLint value) { if (sent[i] != value) { glSamplerParameteri(gl, pname, value); sent[i] = value; } }
+};
 struct ProgramKey {
     uint32_t vs = 0;   // 0: fixed function (pre-transformed)
     uint32_t ps = 0;   // 0: fixed function
@@ -1691,22 +1697,24 @@ void Device::applySamplers() {
         if (!samplersBound) glBindSampler(static_cast<GLuint>(i), s.gl);  // the sampler objects stay on their units
         if (!s.dirty) continue;
         s.dirty = false;
-        glSamplerParameteri(s.gl, GL_TEXTURE_WRAP_S, wrapMode(s.v[D3DSAMP_ADDRESSU]));
-        glSamplerParameteri(s.gl, GL_TEXTURE_WRAP_T, wrapMode(s.v[D3DSAMP_ADDRESSV]));
+        // only the parameters that differ from what the sampler object holds (a change of one
+        // Direct3D sampler state used to re-send all five)
+        s.param(0, GL_TEXTURE_WRAP_S, static_cast<GLint>(wrapMode(s.v[D3DSAMP_ADDRESSU])));
+        s.param(1, GL_TEXTURE_WRAP_T, static_cast<GLint>(wrapMode(s.v[D3DSAMP_ADDRESSV])));
         const bool mag = s.v[D3DSAMP_MAGFILTER] >= D3DTEXF_LINEAR, min = s.v[D3DSAMP_MINFILTER] >= D3DTEXF_LINEAR;
         const DWORD mip = s.v[D3DSAMP_MIPFILTER];
-        glSamplerParameteri(s.gl, GL_TEXTURE_MAG_FILTER, mag ? GL_LINEAR : GL_NEAREST);
+        s.param(2, GL_TEXTURE_MAG_FILTER, mag ? GL_LINEAR : GL_NEAREST);
         GLenum minf;
         if (mip == D3DTEXF_NONE) minf = min ? GL_LINEAR : GL_NEAREST;
         else if (mip == D3DTEXF_POINT) minf = min ? GL_LINEAR_MIPMAP_NEAREST : GL_NEAREST_MIPMAP_NEAREST;
         else minf = min ? GL_LINEAR_MIPMAP_LINEAR : GL_NEAREST_MIPMAP_LINEAR;
-        glSamplerParameteri(s.gl, GL_TEXTURE_MIN_FILTER, minf);
+        s.param(3, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(minf));
         float bias;
         std::memcpy(&bias, &s.v[D3DSAMP_MIPMAPLODBIAS], 4);
         // the game asks for a -4 bias on some stages to force the top level: the device
         // honours it within the levels that exist
         (void)bias;
-        glSamplerParameteri(s.gl, GL_TEXTURE_COMPARE_MODE, GL_NONE);
+        // GL_TEXTURE_COMPARE_MODE is GL_NONE on a new sampler object and nothing changes it
     }
     samplersBound = true;
     texDirty = false;
