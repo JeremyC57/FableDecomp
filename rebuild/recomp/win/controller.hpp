@@ -31,4 +31,6 @@ void menuAfterSaveTick();  // menu_nav.cpp: closes the pause menu after a hero s
 namespace host::menu {
 // Pad focus for the menus (menu_nav.cpp), once per input update while a pad is connected.
 void poll(uint32_t scratch);
+// A PC mouse screen is up in play: the pad's A/B/directions/right stick drive it (true: keep them from the game).
+bool pcScreenPad(uint32_t scratch, int dirEv, bool a, bool b, float ry);
 }  // namespace host::menu

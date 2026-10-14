@@ -68,6 +68,9 @@ struct Button {
 };
 
 uint32_t g_focus = 0;  // widget the pad last focused
+}  // namespace
+extern bool g_pcScreen;  // host_create_component: a PC_ screen was the last created
+namespace {
 
 bool xboxMenus() {
     static const bool on = host::pad::xboxMenusEnabled();
@@ -297,6 +300,59 @@ void poll(uint32_t scratch) {
     focusOn(buttons, *f);
 }
 
+// The PC screens the game still builds in play (the quest table, quest start and completion,
+// trading, the experience screen) are mouse screens: their clickable buttons answer the
+// manager's mouse events only, so the pad did nothing there. While one is up (a PC_ screen
+// was the last created, the Xbox menus are closed, and clickable buttons are registered) the
+// pad drives them through the front end's navigator: A selects, B presses the Back/close
+// button, the d-pad and left stick move the focus, the right stick presses the scroll arrows
+// of the description pane (the lowest column of arrow buttons). The caller keeps those
+// inputs from the game while this returns true.
+bool pcScreenPad(uint32_t scratch, int dirEv, bool a, bool b, float ry) {
+    const uint32_t mgr = rd32(kUiManager);
+    if (!mgr || !rd32(0x13B8790) || liveGui() || !g_pcScreen) return false;
+    if (dirEv < 0 && !a && !b && std::fabs(ry) < 0.5f) {
+        // nothing pressed: report whether the screen is up, cheaply (buttons cached per frame)
+        static uint32_t lastCheck;
+        static bool lastUp;
+        const uint32_t now = GetTickCount();
+        if (now - lastCheck > 250) lastCheck = now, lastUp = !activeButtons(mgr, scratch).empty();
+        return lastUp;
+    }
+    const std::vector<Button> buttons = activeButtons(mgr, scratch);
+    if (buttons.empty()) return false;
+    if (b) { HLOG(1, "menu: pc screen: back"); if (!navigate(mgr, EV_BACK, scratch)) {
+        // no Back-action button: the close button is the small one furthest top-right
+        const Button* close = nullptr;
+        for (const Button& x : buttons)
+            if (x.r - x.l < 2.0f * (x.b - x.t) && (!close || x.t < close->t - 1 || (std::fabs(x.t - close->t) <= 1 && x.r > close->r))) close = &x;
+        if (close) press(mgr, buttons, *close);
+    } }
+    if (a) { HLOG(1, "menu: pc screen: select"); navigate(mgr, EV_SELECT, scratch); }
+    if (dirEv >= 0) navigate(mgr, static_cast<uint32_t>(dirEv), scratch);
+    if (std::fabs(ry) >= 0.5f) {
+        static uint32_t lastScroll;
+        const uint32_t now = GetTickCount();
+        if (now - lastScroll >= 120) {
+            lastScroll = now;
+            auto arrow = [](const Button& x) { return x.r - x.l < 2.0f * (x.b - x.t) && x.b - x.t < 60.0f; };
+            const Button* down = nullptr;
+            for (const Button& x : buttons) if (arrow(x) && (!down || x.cy() > down->cy())) down = &x;
+            const Button* up = nullptr;
+            if (down)
+                for (const Button& x : buttons)
+                    if (arrow(x) && &x != down && std::fabs(x.cx() - down->cx()) < 8.0f && x.cy() < down->cy() && (!up || x.cy() > up->cy())) up = &x;
+            const Button* target = ry > 0 ? down : up;  // the game's stick Y points down
+            if (target) {
+                const uint32_t keep = g_focus;
+                press(mgr, buttons, *target);
+                if (const Button* f = find(buttons, keep)) focusOn(buttons, *f);
+            }
+        }
+    }
+    return true;
+}
+
 }  // namespace host::menu
 
 // FABLE_UI_DUMP: on a pad direction in the in-game menus, log every component of the manager
@@ -476,7 +532,7 @@ extern "C" void host_ui_event(Ctx* c) {
 // the quest table, trading, the experience screen) are laid out for 1024x768; the Xbox ones
 // (UI_*) for 640x480. The last top-level name seen decides whether host_ui_scale applies the
 // Xbox 1.6: a PC_ name turns it off until a UI_ name turns it back on.
-namespace { bool g_pcScreen = false; }
+bool g_pcScreen = false;  // declared near the top
 extern "C" void F_0041DB1D_orig(Ctx* c);
 extern "C" void host_create_component(Ctx* c) {
     // CCharString (PDB): one pointer to CCharStringData {CBasicString<char> {char* +0, length +4}, refs +0xD}

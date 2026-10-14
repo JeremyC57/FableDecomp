@@ -686,7 +686,7 @@ extern "C" void host_joystick_update(Ctx* c) {
     host::gfx::applyPending();  // graphics settings changed in the overlay: on the game thread, outside rendering
     menuAfterSaveTick();
     testMorphTick();  // harness: FABLE_TEST_MORPH
-    c->esp = (c->esp - 0x80) & ~0xFu;  // scratch below the guest stack for the event
+    c->esp = (c->esp - 0x100) & ~0xFu;  // scratch below the guest stack for the event and the menu code
     const uint32_t ev = c->esp + 0x20;
     guestCallThis(kClear, self, {});
 
@@ -731,6 +731,25 @@ extern "C" void host_joystick_update(Ctx* c) {
             now[XB_DLEFT] = b & XINPUT_GAMEPAD_DPAD_LEFT, now[XB_DRIGHT] = b & XINPUT_GAMEPAD_DPAD_RIGHT;
         }
         const float t = static_cast<float>(GetTickCount());
+        // PC mouse screens in play (quest table, quest screens, trading, experience): the pad
+        // drives them and those inputs do not reach the game.
+        {
+            static int stickDir = -1;
+            static uint32_t stickSince, stickRepeat;
+            int dirEv = -1;
+            const uint32_t tick = GetTickCount();
+            int sd = -1;
+            if (std::fabs(ly) > 0.6f || std::fabs(lx) > 0.6f) sd = std::fabs(ly) >= std::fabs(lx) ? (ly < 0 ? 0 : 1) : (lx < 0 ? 2 : 3);
+            if (sd != stickDir) { stickDir = sd, stickSince = stickRepeat = tick; if (sd >= 0) dirEv = sd; }
+            else if (sd >= 0 && tick - stickSince > 400 && tick - stickRepeat > 150) { stickRepeat = tick; dirEv = sd; }
+            const bool edge[] = {now[XB_DUP] && !g_held[XB_DUP], now[XB_DDOWN] && !g_held[XB_DDOWN], now[XB_DLEFT] && !g_held[XB_DLEFT], now[XB_DRIGHT] && !g_held[XB_DRIGHT]};
+            for (int d = 0; d < 4; ++d) if (edge[d]) dirEv = d;
+            const bool aEdge = now[XB_A] && !g_held[XB_A], bEdge = now[XB_B] && !g_held[XB_B];
+            if (ok && host::menu::pcScreenPad(ev + 0x40, dirEv, aEdge, bEdge, ry)) {
+                for (uint8_t i : {XB_A, XB_B, XB_DUP, XB_DDOWN, XB_DLEFT, XB_DRIGHT}) now[i] = g_held[i];  // swallowed
+                lx = ly = 0;
+            }
+        }
         for (uint8_t i = 1; i < XB_COUNT; ++i)
             if (now[i] != g_held[i]) {
                 g_held[i] = now[i];
