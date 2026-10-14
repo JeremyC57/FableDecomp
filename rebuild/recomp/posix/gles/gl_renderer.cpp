@@ -2009,6 +2009,12 @@ void Device::afterDraw() {
     if (!dir) return;
     static const bool rtOnly = getenv("FABLE_GLES_DUMP_RT") != nullptr;  // only draws into off-screen render targets
     if (rtOnly && (!renderTarget || renderTarget->isBackBuffer)) return;
+    static const std::pair<unsigned, unsigned> range = [] {  // FABLE_GLES_DUMP_DRAWS=a-b: only draws a..b of the dumped frame
+        const char* r = getenv("FABLE_GLES_DUMP_DRAWS"); unsigned a = 0, b = 0xFFFFFFFFu;
+        if (r) sscanf(r, "%u-%u", &a, &b);
+        return std::make_pair(a, b);
+    }();
+    if (!g_rtDumpThisDraw && (statDraws < range.first || statDraws > range.second)) return;
     UINT w = pp.BackBufferWidth, h = pp.BackBufferHeight;
     if (renderTarget && !renderTarget->isBackBuffer) w = renderTarget->level.width, h = renderTarget->level.height;
     std::vector<unsigned char> buf(static_cast<size_t>(w) * h * 4);
