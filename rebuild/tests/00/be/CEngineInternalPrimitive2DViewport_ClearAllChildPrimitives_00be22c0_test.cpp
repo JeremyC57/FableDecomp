@@ -1,0 +1,11 @@
+#include <cstdio>
+struct CPrim { virtual void PostRender() { ++posts; } virtual CPrim* GetAsOcclusionPrimitive() { return occ; } virtual void ResetOcclusionInfo(long l) { layer = l; } virtual void SetAnimation(void* a) { arg = a; } virtual void SetPosition(void* a) { arg = a; }
+    unsigned long RenderLayerMask; unsigned char PostRenderEnable; int posts; CPrim* occ; long layer; void* arg; CPrim() : RenderLayerMask(0), PostRenderEnable(0), posts(0), occ(0), layer(0), arg(0) { } };
+struct CEnginePrimitiveHandle { long m_id; CPrim* m_pPrimitive; };
+static int g_erased = 0; static unsigned long g_updFlags = 0; static int g_upd = 0;
+struct CRetailHandleVector { CEnginePrimitiveHandle* m_pFirst; CEnginePrimitiveHandle* m_pLast; CEnginePrimitiveHandle* m_pEnd; unsigned long GetCount() const { return m_pLast - m_pFirst; }
+    void erase(CEnginePrimitiveHandle* f, CEnginePrimitiveHandle* l) { ++g_erased; m_pLast = f; } void clear() { erase(m_pFirst, m_pLast); } };
+static void UpdatePosition(void*, unsigned long f) { ++g_upd; g_updFlags = f; }
+struct CViewport { unsigned long RenderLayerMask; CRetailHandleVector Primitives; void Update() { RenderLayerMask = 0; for (CEnginePrimitiveHandle* h = Primitives.m_pFirst; h != Primitives.m_pLast; ++h) if (h->m_pPrimitive) RenderLayerMask |= h->m_pPrimitive->RenderLayerMask; }
+    void ClearAllChildPrimitives() { Primitives.clear(); Update(); } };
+int main() { CPrim a; a.RenderLayerMask = 3; CEnginePrimitiveHandle hs[1] = { { 0, &a } }; CViewport v; v.RenderLayerMask = 3; v.Primitives.m_pFirst = hs; v.Primitives.m_pLast = hs + 1; v.ClearAllChildPrimitives(); if (g_erased != 1 || v.Primitives.GetCount() != 0 || v.RenderLayerMask != 0) { std::printf("00be22c0_TEST FAIL\n"); return 1; } std::printf("00be22c0_TEST PASS\n"); return 0; }

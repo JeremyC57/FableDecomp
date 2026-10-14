@@ -528,6 +528,25 @@ pointer the body reads (the VC7.1 heap is not zeroed). Parked (notes in `$S/w23/
 constructor), 0x00CAACA0, 0x00C3DA60 (tail-merged error block), 0x00C172F0. Catalog 28,387
 (57.3%); the open EH set is now 300+ bytes per body.
 
+### Wave 24, part 4 (chunks 30, 32, 34, 35)
+Chunk 30 (CDrawMiniMap .. CDynamicObjectHeapBase) to the single sub-agent: 33/40 (`_hand30`; the NPlayerGui drawers and
+CDrawQuestInfo list walkers under `optimize("s")`, CCombatManager::ResetDialogue, CDriveManager's file/directory removal,
+CDynamicList::Initialise; parked on the call-prep-inside-store-group scheduling gap, FPU-pushed float arguments and the /GS
+argument-load gap). Chunks 32 (CEngine .. CEngineInternalPrimitiveMeshBase: 33/40, `_hand32`), 34 (CEngineLightingManager ..
+CEnginePrimitiveManagerDecal: 32/40, `_hand34`) and 35 (CEnginePrimitiveManagerDecal .. CEngineResourceManager: 34/40,
+`_hand35`) by the coordinator: the internal-primitive container family over one shared vtable + VC6 handle-vector model, the
+CreateInternalPrimitive allocator family (plain words before the vtable, member objects after), four manager destructors
+over one CVertexShader model (`novtable` bases, a local pointer for the `dec ; jne` release), the engine manager's
+component-list walkers, CPersistContext transfers, the 0x00C3xxxx last-error idiom, two `??_G` bodies (one needs `/EHsc`
+and an explicit `leaf`: the lander now honours the payload's `leaf`, chunk sources carry `// Flags:` / `// Leaf:` lines).
+Parked with evidence (NOTES.md, READMEs): the hidden return pointer kept in edx across a same-TU callee, the allocator
+address from a dead flag slot, select-then-store duplication, a sqrt result parked through an integer local, the dead
+`lea eax,[eax+edi*8]` of a reference-bound handle (five bodies), `mov ecx,eax` materialisation, a `??_G` without a vtable
+store, a dead 16-byte zeroed temporary, zero-register `xor` hoisting (three constructors), index/first register
+allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte prefixes of larger functions: 00bd71b0,
+00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
+agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in

@@ -453,7 +453,11 @@ def main():
     print(f"{'addr':10} {'parity':16} {'behav':6} name")
     for c in data:
         addr=c["address"].lower().replace("0x","")
-        name=c.get("name") or (orc.get(addr,{}).get("name")) or f"sub_{addr}"; leaf=name.rsplit("::",1)[-1]
+        name=c.get("name") or (orc.get(addr,{}).get("name")) or f"sub_{addr}"
+        # An explicit `leaf` picks the object symbol (substring of the mangled name) when the
+        # display leaf cannot: a `~Class` destructor is `??1Class@@...` in the object, so a TU
+        # that also emits a larger `??_G`/vector-destructor-iterator body would be mis-selected.
+        leaf=c.get("leaf") or name.rsplit("::",1)[-1]
         if addr in outside_manifest:
             print(f"{addr:10} {'OUTSIDE_MANIFEST':16} {'-':6} {name}")
             continue
@@ -510,7 +514,7 @@ def main():
         beh=behaviour_of(tst, addr, patt, work, e, sobj)
         print(f"{addr:10} {st:16} {beh:6} {name}")
         if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
-            base=make_base(mod, leaf, addr)
+            base=make_base(mod, name.rsplit("::",1)[-1], addr)   # file names use the display leaf, not the symbol selector
             wins.append({"addr":addr,"name":name,"leaf":leaf,"module":mod,"status":st,"pass":patt,"base":base,
                          "src":src,"test":tst,"oracle_row":o,"flags":list(winflags)})
     print(f"\nWINS: {len(wins)}")

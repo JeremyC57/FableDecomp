@@ -1,0 +1,4 @@
+#include <cstdio>
+struct SRenderSettings { unsigned char _pad[0x4c]; float m_defaultFadeDistance; float m_drawDistanceBias; }; static SRenderSettings g_rs; static SRenderSettings* g_pRenderSettings = &g_rs;
+struct CPrimBase { unsigned char _pad[0x14]; float FadeBegin; float MaxDraw; void Set(float d) { if (d <= 0.0f) d = g_pRenderSettings->m_defaultFadeDistance; FadeBegin = d; MaxDraw = (g_pRenderSettings->m_drawDistanceBias + 1.0f) * d; } };
+int main() { g_rs.m_defaultFadeDistance = 100; g_rs.m_drawDistanceBias = 0.5f; CPrimBase p; p.Set(5); if (p.FadeBegin != 5 || p.MaxDraw != 7.5f) { std::printf("00b8fd40_TEST FAIL\n"); return 1; } p.Set(-20); if (p.FadeBegin != 100 || p.MaxDraw != 150) { std::printf("00b8fd40_TEST FAIL\n"); return 1; } p.Set(0); if (p.FadeBegin != 100 || p.MaxDraw != 150) { std::printf("00b8fd40_TEST FAIL\n"); return 1; } std::printf("00b8fd40_TEST PASS\n"); return 0; }
