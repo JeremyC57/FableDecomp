@@ -527,6 +527,30 @@ extern "C" void host_inventory_screen(Ctx* c) {
     F_00591E5E_orig(c);
 }
 
+// Harness diagnostics: the name of a def by global index, read from the definition
+// manager's entry table ([0x13B879C]+0xA4, entries holding the def at +0xC) by looking
+// for pointers to printable text in the entry and the def; "" when nothing looks like a name.
+static std::string defNameGuess(uint32_t id) {
+    const uint32_t mgr = rd32(0x13B879C);
+    if (!mgr || id > 0x100000) return "";
+    const uint32_t table = rd32(mgr + 0xA4);
+    if (!table) return "";
+    const uint32_t entry = rd32(table + id * 4);
+    if (!entry) return "";
+    auto text = [](uint32_t p) -> std::string {
+        if (p < 0x10000 || p > 0x7FFFFFFF) return "";
+        const char* c = gp<const char>(p);
+        std::string s;
+        for (int i = 0; i < 48 && c[i]; ++i) { if (c[i] < 0x20 || c[i] > 0x7E) return ""; s += c[i]; }
+        return s.size() >= 4 ? s : "";
+    };
+    std::string out;
+    for (uint32_t off = 0; off < 0x20; off += 4) { std::string t = text(rd32(entry + off)); if (!t.empty()) out += " e+" + std::to_string(off) + "=" + t; }
+    const uint32_t def = rd32(entry + 0xC);
+    if (def) for (uint32_t off = 4; off < 0x60; off += 4) { std::string t = text(rd32(def + off)); if (!t.empty()) out += " d+" + std::to_string(off) + "=" + t; }
+    return out;
+}
+
 // 0x581E33 int CTCInventory::GetQuickAccessItem(int index): index into the quick-access
 // item ids at this+0x154 and, past their end, into the context-item ids at this+0x148 with
 // no upper bound. CDrawQuickAccessIcons::Draw (0x652FA4) forms the index from the PC GUI
@@ -541,6 +565,8 @@ extern "C" void host_quick_access_item(Ctx* c) {
     uint32_t id = 0;
     if (index < qn) id = rd32(qb + index * 4);
     else if (index - qn < cn) id = rd32(cb + (index - qn) * 4);
+    static int32_t lastQ[16];
+    if (index < 16 && lastQ[index] != static_cast<int32_t>(id)) { lastQ[index] = static_cast<int32_t>(id); HLOG(1, "inventory: quick-access index %u (quick %u, context %u): id %u%s", index, qn, cn, id, defNameGuess(id).c_str()); }
     c->eax = id;
     c->esp += 8;  // ret 4
 }
@@ -557,11 +583,11 @@ extern "C" void host_csi_graphic(Ctx* c) {
     const uint32_t begin = rd32(inv + 0x148), end = rd32(inv + 0x14C);
     const uint32_t count = end >= begin ? (end - begin) / 4 : 0;
     const int32_t id = slot < count ? static_cast<int32_t>(rd32(begin + slot * 4)) : 0;
-    static uint32_t lastLogged = 0xFFFFFFFF;
-    const uint32_t key = (slot << 24) ^ static_cast<uint32_t>(id) ^ (count << 16);
-    if (key != lastLogged) {
-        lastLogged = key;
-        HLOG(1, "inventory: context item graphic for slot %u of %u: id %d", slot, count, id);
+    static int32_t lastId[16];
+    static uint32_t lastCount = 0xFFFFFFFF;
+    if (slot < 16 && (lastId[slot] != id || lastCount != count)) {  // once per change, not per frame
+        lastId[slot] = id, lastCount = count;
+        HLOG(1, "inventory: context item graphic for slot %u of %u: id %d%s", slot, count, id, defNameGuess(static_cast<uint32_t>(id)).c_str());
     }
     if (slot >= count || id <= 0 || id > 0x100000) {
         if (slot < count && id > 0) HLOG(1, "inventory: context item slot %u has a bad id %d: no graphic", slot, id);

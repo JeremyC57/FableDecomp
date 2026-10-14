@@ -542,6 +542,15 @@ uint32_t mergedBindings(uint32_t vec) {
         // first indices and push the pad's (X/B/A spells, the d-pad items) past the slots, so
         // the pad's records replace them.
         size_t dropped = 0;
+        static bool loggedPc;
+        if (!loggedPc) {
+            loggedPc = true;
+            for (size_t i = 0; i + kRecordSize <= all.size(); i += kRecordSize) {
+                const uint32_t action = rd32le(&all[i]);
+                if (action == 54 || action == 55 || action == 56 || action == 78)
+                    HLOG(1, "controller:   profile slot record action %u type %u key %u button %u", action, rd32le(&all[i + 4]), rd32le(&all[i + 8]), rd32le(&all[i + 12]));
+            }
+        }
         for (size_t i = 0; i + kRecordSize <= all.size();) {
             const uint32_t action = rd32le(&all[i]);
             if (action == 54 || action == 55 || action == 56) { all.erase(all.begin() + i, all.begin() + i + kRecordSize); ++dropped; }
@@ -630,6 +639,42 @@ extern "C" void host_primary_inputs(Ctx* c) {
     retCdecl(c, vec);
 }
 
+// Harness only: FABLE_TEST_MORPH names a file; when it appears its "offset value" line is
+// written as a float into every CTCHeroMorph (vtable 0x1265CF4, found by scanning the
+// mapped guest heap) with the dirty byte +0x3D set, so an age morph can be forced on a
+// childhood save to reproduce adult-hero rendering. The file is removed once applied.
+#ifndef _WIN32
+#include <unistd.h>
+static void testMorphTick() {
+    static const char* path = std::getenv("FABLE_TEST_MORPH");
+    if (!path) return;
+    std::ifstream f(path);
+    if (!f) return;
+    unsigned off = 0; float val = 0;
+    f >> std::hex >> off >> std::dec >> val;
+    f.close();
+    unlink(path);
+    std::ifstream maps("/proc/self/maps");
+    std::string line;
+    int hits = 0;
+    while (std::getline(maps, line)) {
+        unsigned long long lo = 0, hi = 0; char perms[8] = {};
+        if (sscanf(line.c_str(), "%llx-%llx %7s", &lo, &hi, perms) != 3) continue;
+        if (perms[0] != 'r' || perms[1] != 'w' || hi > 0x100000000ull) continue;
+        for (unsigned long long a = lo; a + 0x64 <= hi; a += 4) {
+            if (*reinterpret_cast<const uint32_t*>(a) != 0x1265CF4u) continue;
+            std::memcpy(reinterpret_cast<void*>(a + off), &val, 4);
+            *reinterpret_cast<uint8_t*>(a + 0x3D) = 1;
+            ++hits;
+            host::log("test: CTCHeroMorph at 0x%08llX: +0x%X = %g", a, off, static_cast<double>(val));
+        }
+    }
+    host::log("test: morph write applied to %d objects", hits);
+}
+#else
+static void testMorphTick() {}
+#endif
+
 // 0xAB6E40: bool __thiscall CJoystickDX::UpdateEvents()
 extern "C" void host_joystick_update(Ctx* c) {
     using namespace host::pad;
@@ -638,6 +683,7 @@ extern "C" void host_joystick_update(Ctx* c) {
     if (!once) once = true, host::log("controller: joystick device 0x%08X polled by the game", self);
     host::gfx::applyPending();  // graphics settings changed in the overlay: on the game thread, outside rendering
     menuAfterSaveTick();
+    testMorphTick();  // harness: FABLE_TEST_MORPH
     c->esp = (c->esp - 0x80) & ~0xFu;  // scratch below the guest stack for the event
     const uint32_t ev = c->esp + 0x20;
     guestCallThis(kClear, self, {});
