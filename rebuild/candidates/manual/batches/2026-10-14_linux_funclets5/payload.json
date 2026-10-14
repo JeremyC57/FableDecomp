@@ -1,0 +1,42 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "01211584",
+    "name": "_global::Unwind@01211584",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x01211584 of _unattributed::unattributed_AddConstraintRepeat00c11710_00c11710 (parent @ 0x00C11710): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01211584, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c1/unattributed_AddConstraintRepeat00c11710_00c11710.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_l = 0, g_a = 0; struct G {}; static G g_g;\nstruct L { G* t; long s; L(G* x) : t(x), s(0) { ++g_l; } ~L() { --g_l; } }; struct O { long a; void A(void*) { ++g_a; } };\nstruct X { unsigned char p[2008]; O o; void F(void* v) { L l(&g_g); o.A(v); } };\nint main()\n{\n    X* x = new X; x->F(0); if (g_a != 1 || g_l != 0) { std::printf(\"00c11710_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"00c11710_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c11710_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "01211596",
+    "name": "_global::Unwind@01211596",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x01211596 of _unattributed::unattributed_AddConstraintRepeat00c11780_00c11780 (parent @ 0x00C11780): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x01211596, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c1/unattributed_AddConstraintRepeat00c11780_00c11780.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_l = 0, g_a = 0; struct G {}; static G g_g;\nstruct L { G* t; long s; L(G* x) : t(x), s(0) { ++g_l; } ~L() { --g_l; } }; struct O { long a; void A(void*) { ++g_a; } };\nstruct X { unsigned char p[2008]; O o; void F(void* v) { L l(&g_g); o.A(v); } };\nint main()\n{\n    X* x = new X; x->F(0); if (g_a != 1 || g_l != 0) { std::printf(\"00c11780_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"00c11780_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c11780_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   },
+   {
+    "address": "012115a8",
+    "name": "_global::Unwind@012115a8",
+    "module": "_global",
+    "source_cpp": "// EH unwind funclet @ 0x012115A8 of _unattributed::unattributed_AddConstraintRepeat00c117f0_00c117f0 (parent @ 0x00C117F0): VC7.1 emits the\n// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;\n// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 8 bytes at +0x0 of the parent's\n// block and is produced by the parent's translation unit, included below (no code of its own).\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x012115A8, oracle length 8 bytes.\n// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's\n//        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).\n#include \"../src/compiled/00/c1/unattributed_AddConstraintRepeat00c117f0_00c117f0.cpp\"\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_l = 0, g_a = 0; struct G {}; static G g_g;\nstruct L { G* t; long s; L(G* x) : t(x), s(0) { ++g_l; } ~L() { --g_l; } }; struct O { long a; void A(void*) { ++g_a; } };\nstruct X { unsigned char p[2008]; O o; void F(void* v) { L l(&g_g); o.A(v); } };\nint main()\n{\n    X* x = new X; x->F(0); if (g_a != 1 || g_l != 0) { std::printf(\"00c117f0_TEST FAIL\\n\"); return 1; }\n    delete x;\n\n    std::printf(\"00c117f0_TEST PASS\\n\");\n    return 0;\n}",
+    "pass_pattern": "00c117f0_TEST PASS",
+    "funclet_offset": 0,
+    "flags": [
+     "/EHsc"
+    ]
+   }
+  ]
+ }
+}

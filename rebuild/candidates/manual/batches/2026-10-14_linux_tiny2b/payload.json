@@ -1,0 +1,102 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "0075c160",
+    "module": "CASuspendableProcess",
+    "name": "CheckTermination",
+    "source_cpp": "// CASuspendableProcess::CheckTermination() -- non-zero (as a byte) when the byte at +0x3a is non-zero\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C160, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0x3a] ; test al, al ; setne al ; ret \n// Tiny-body shape `IsSet` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CASuspendableProcess {\n    unsigned char _pad[0x3a];\n    unsigned char m_value;                 // +0x3a\n    unsigned char CheckTermination();                   // a byte result: a `bool` return would zero eax first\n};\n\nunsigned char CASuspendableProcess::CheckTermination()\n{\n    return m_value != 0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char v; unsigned char G() { return v != 0; } };\nint main()\n{\n    X x; x.v = 2; if (!x.G()) { std::printf(\"0075c160_TEST FAIL\\n\"); return 1; }\n    x.v = 0; if (x.G()) { std::printf(\"0075c160_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0075c160_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0075c160_TEST PASS"
+   },
+   {
+    "address": "0075c170",
+    "module": "CASuspendableProcess",
+    "name": "CheckTermination",
+    "source_cpp": "// CASuspendableProcess::CheckTermination() -- non-zero (as a byte) when the byte at +0x3b is non-zero\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C170, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0x3b] ; test al, al ; setne al ; ret \n// Tiny-body shape `IsSet` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CASuspendableProcess {\n    unsigned char _pad[0x3b];\n    unsigned char m_value;                 // +0x3b\n    unsigned char CheckTermination();                   // a byte result: a `bool` return would zero eax first\n};\n\nunsigned char CASuspendableProcess::CheckTermination()\n{\n    return m_value != 0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char v; unsigned char G() { return v != 0; } };\nint main()\n{\n    X x; x.v = 2; if (!x.G()) { std::printf(\"0075c170_TEST FAIL\\n\"); return 1; }\n    x.v = 0; if (x.G()) { std::printf(\"0075c170_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0075c170_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0075c170_TEST PASS"
+   },
+   {
+    "address": "00a4b220",
+    "module": "CASuspendableProcess",
+    "name": "CheckTermination",
+    "source_cpp": "// CASuspendableProcess::CheckTermination() -- non-zero (as a byte) when the byte at +0x5 is non-zero\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4B220, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 5] ; test al, al ; setne al ; ret \n// Tiny-body shape `IsSet` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CASuspendableProcess {\n    unsigned char _pad[0x5];\n    unsigned char m_value;                 // +0x5\n    unsigned char CheckTermination();                   // a byte result: a `bool` return would zero eax first\n};\n\nunsigned char CASuspendableProcess::CheckTermination()\n{\n    return m_value != 0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char v; unsigned char G() { return v != 0; } };\nint main()\n{\n    X x; x.v = 2; if (!x.G()) { std::printf(\"00a4b220_TEST FAIL\\n\"); return 1; }\n    x.v = 0; if (x.G()) { std::printf(\"00a4b220_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00a4b220_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00a4b220_TEST PASS"
+   },
+   {
+    "address": "00724c30",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_51",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_51() -- returns bit 1 of the flag byte at +0x84 (a one-bit bitfield, byte arithmetic)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724C30, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0x84] ; shr al, 1 ; and al, 1 ; ret \n// Tiny-body shape `GetFlagBitByte` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCPhysicsStandard {\n    unsigned char _pad[0x84];\n    unsigned char m_bit0 : 1;              // bit 0\n    unsigned char m_flag : 1;               // bit 1 of the byte at +0x84: VC reads an unsigned char bitfield with byte shifts\n    bool vfunc_51();\n};\n\nbool CTCPhysicsStandard::vfunc_51()\n{\n    return m_flag;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; unsigned char G() { return (f >> 1) & 1; } };\nint main()\n{\n    X x; x.f = 1 << 1; if (x.G() != 1) { std::printf(\"00724c30_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724c30_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724c30_TEST PASS"
+   },
+   {
+    "address": "00724cb0",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_59",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_59() -- returns bit 1 of the flag byte at +0x85 (a one-bit bitfield, byte arithmetic)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724CB0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0x85] ; shr al, 1 ; and al, 1 ; ret \n// Tiny-body shape `GetFlagBitByte` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCPhysicsStandard {\n    unsigned char _pad[0x85];\n    unsigned char m_bit0 : 1;              // bit 0\n    unsigned char m_flag : 1;               // bit 1 of the byte at +0x85: VC reads an unsigned char bitfield with byte shifts\n    bool vfunc_59();\n};\n\nbool CTCPhysicsStandard::vfunc_59()\n{\n    return m_flag;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; unsigned char G() { return (f >> 1) & 1; } };\nint main()\n{\n    X x; x.f = 1 << 1; if (x.G() != 1) { std::printf(\"00724cb0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724cb0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724cb0_TEST PASS"
+   },
+   {
+    "address": "00a3f970",
+    "module": "_global",
+    "name": "vfunc_2",
+    "source_cpp": "// vfunc_2(void*) -- deletes the argument (operator delete @ 0x00BFEA14); stdcall\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3F970, oracle length 14 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; push eax ; call 0xbfea14 ; pop ecx ; ret 4\n// Tiny-body shape `FreeBlock`: a `__stdcall` wrapper that deletes its argument as a raw block (a\n// delete-expression over a trivially destructible pointee: the block is loaded into eax, pushed to\n// `operator delete` @ 0x00BFEA14 -- the FSE label `Game_free` -- and the slot is cleaned with `pop ecx`;\n// a plain `free` call pushes the stack slot directly). The manifest label is propagated; the name is descriptive.\nvoid __stdcall vfunc_2(void* block)\n{\n    delete static_cast<char*>(block);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void __stdcall F(void* b) { delete static_cast<char*>(b); }\nint main()\n{\n    F(new char[4]);\n\n    std::printf(\"00a3f970_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00a3f970_TEST PASS"
+   },
+   {
+    "address": "00a3f9a0",
+    "module": "_global",
+    "name": "vfunc_2",
+    "source_cpp": "// vfunc_2(void*) -- deletes the argument (operator delete @ 0x00BFEA14); stdcall\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3F9A0, oracle length 14 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; push eax ; call 0xbfea14 ; pop ecx ; ret 4\n// Tiny-body shape `FreeBlock`: a `__stdcall` wrapper that deletes its argument as a raw block (a\n// delete-expression over a trivially destructible pointee: the block is loaded into eax, pushed to\n// `operator delete` @ 0x00BFEA14 -- the FSE label `Game_free` -- and the slot is cleaned with `pop ecx`;\n// a plain `free` call pushes the stack slot directly). The manifest label is propagated; the name is descriptive.\nvoid __stdcall vfunc_2(void* block)\n{\n    delete static_cast<char*>(block);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void __stdcall F(void* b) { delete static_cast<char*>(b); }\nint main()\n{\n    F(new char[4]);\n\n    std::printf(\"00a3f9a0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00a3f9a0_TEST PASS"
+   },
+   {
+    "address": "00c19640",
+    "module": "_global",
+    "name": "FreeBlock_00c19640",
+    "source_cpp": "// FreeBlock_00c19640(void*) -- deletes the argument (operator delete @ 0x00BFE9BC); stdcall\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C19640, oracle length 14 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; push eax ; call 0xbfe9bc ; pop ecx ; ret 4\n// Tiny-body shape `FreeBlock`: a `__stdcall` wrapper that deletes its argument as a raw block (a\n// delete-expression over a trivially destructible pointee: the block is loaded into eax, pushed to\n// `operator delete` @ 0x00BFE9BC -- the FSE label `Game_free` -- and the slot is cleaned with `pop ecx`;\n// a plain `free` call pushes the stack slot directly). The manifest label is propagated; the name is descriptive.\nvoid __stdcall FreeBlock_00c19640(void* block)\n{\n    delete static_cast<char*>(block);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void __stdcall F(void* b) { delete static_cast<char*>(b); }\nint main()\n{\n    F(new char[4]);\n\n    std::printf(\"00c19640_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c19640_TEST PASS"
+   },
+   {
+    "address": "00c1b320",
+    "module": "_global",
+    "name": "FreeBlock_00c1b320",
+    "source_cpp": "// FreeBlock_00c1b320(void*) -- deletes the argument (operator delete @ 0x00BFE9BC); stdcall\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1B320, oracle length 14 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; push eax ; call 0xbfe9bc ; pop ecx ; ret 4\n// Tiny-body shape `FreeBlock`: a `__stdcall` wrapper that deletes its argument as a raw block (a\n// delete-expression over a trivially destructible pointee: the block is loaded into eax, pushed to\n// `operator delete` @ 0x00BFE9BC -- the FSE label `Game_free` -- and the slot is cleaned with `pop ecx`;\n// a plain `free` call pushes the stack slot directly). The manifest label is propagated; the name is descriptive.\nvoid __stdcall FreeBlock_00c1b320(void* block)\n{\n    delete static_cast<char*>(block);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void __stdcall F(void* b) { delete static_cast<char*>(b); }\nint main()\n{\n    F(new char[4]);\n\n    std::printf(\"00c1b320_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c1b320_TEST PASS"
+   },
+   {
+    "address": "006e1d50",
+    "module": "CTCDParticleEmitter",
+    "name": "vfunc_23",
+    "source_cpp": "// CTCDParticleEmitter::vfunc_23() -- returns bit 2 of the flag byte at +0x44 (a one-bit bitfield, byte arithmetic)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x006E1D50, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0x44] ; shr al, 2 ; and al, 1 ; ret \n// Tiny-body shape `GetFlagBitByte` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCDParticleEmitter {\n    unsigned char _pad[0x44];\n    unsigned char m_bit0 : 1;              // bit 0\n    unsigned char m_bit1 : 1;              // bit 1\n    unsigned char m_flag : 1;               // bit 2 of the byte at +0x44: VC reads an unsigned char bitfield with byte shifts\n    bool vfunc_23();\n};\n\nbool CTCDParticleEmitter::vfunc_23()\n{\n    return m_flag;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; unsigned char G() { return (f >> 2) & 1; } };\nint main()\n{\n    X x; x.f = 1 << 2; if (x.G() != 1) { std::printf(\"006e1d50_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"006e1d50_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "006e1d50_TEST PASS"
+   },
+   {
+    "address": "0072a860",
+    "module": "CASuspendableProcess",
+    "name": "CheckTermination",
+    "source_cpp": "// CASuspendableProcess::CheckTermination() -- non-zero (as a byte) when the byte at +0xc is non-zero\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0072A860, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0xc] ; test al, al ; setne al ; ret \n// Tiny-body shape `IsSet` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CASuspendableProcess {\n    unsigned char _pad[0xc];\n    unsigned char m_value;                 // +0xc\n    unsigned char CheckTermination();                   // a byte result: a `bool` return would zero eax first\n};\n\nunsigned char CASuspendableProcess::CheckTermination()\n{\n    return m_value != 0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char v; unsigned char G() { return v != 0; } };\nint main()\n{\n    X x; x.v = 2; if (!x.G()) { std::printf(\"0072a860_TEST FAIL\\n\"); return 1; }\n    x.v = 0; if (x.G()) { std::printf(\"0072a860_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0072a860_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0072a860_TEST PASS"
+   },
+   {
+    "address": "00aed010",
+    "module": "CTCPhysicsStandard",
+    "name": "CanCollideWithLandscape",
+    "source_cpp": "// CTCPhysicsStandard::CanCollideWithLandscape() -- returns bit 3 of the flag byte at +0x44 (a one-bit bitfield, byte arithmetic)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AED010, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0x44] ; shr al, 3 ; and al, 1 ; ret \n// Tiny-body shape `GetFlagBitByte` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCPhysicsStandard {\n    unsigned char _pad[0x44];\n    unsigned char m_bit0 : 1;              // bit 0\n    unsigned char m_bit1 : 1;              // bit 1\n    unsigned char m_bit2 : 1;              // bit 2\n    unsigned char m_flag : 1;               // bit 3 of the byte at +0x44: VC reads an unsigned char bitfield with byte shifts\n    bool CanCollideWithLandscape();\n};\n\nbool CTCPhysicsStandard::CanCollideWithLandscape()\n{\n    return m_flag;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; unsigned char G() { return (f >> 3) & 1; } };\nint main()\n{\n    X x; x.f = 1 << 3; if (x.G() != 1) { std::printf(\"00aed010_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00aed010_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00aed010_TEST PASS"
+   }
+  ]
+ }
+}
