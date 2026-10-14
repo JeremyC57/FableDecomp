@@ -66,6 +66,24 @@ std::atomic<uint64_t> g_nsSwapRender{0};  // the swap as timed on the render thr
 uint64_t g_nsCapSleep = 0;  // game thread: time slept by the frame rate cap since the last stats line
 unsigned g_capLate = 0;     // frames that ended after the cap's deadline (no sleep) since the last stats line
 
+// A 64-bit hash of a byte range, 8 bytes a step (each step is a bijection of the state, so a
+// single changed word always changes the result). The byte-wise FNV it replaces cost ~5 cycles
+// a byte on the A53 (a dependent multiply per byte): the vertex-array key of every draw and the
+// HUD's re-locked text textures go through it.
+inline uint64_t hashBytes(const void* data, size_t n) {
+    const unsigned char* p = static_cast<const unsigned char*>(data);
+    uint64_t h = 0x9E3779B97F4A7C15ull ^ n;
+    size_t i = 0;
+    for (; i + 8 <= n; i += 8) {
+        uint64_t w;
+        std::memcpy(&w, p + i, 8);
+        h = (h ^ w) * 0xFF51AFD7ED558CCDull;
+        h ^= h >> 32;
+    }
+    for (; i < n; ++i) h = (h ^ p[i]) * 1099511628211ull;
+    return h ^ (h >> 29);
+}
+
 // ---- COM base ------------------------------------------------------------------------------
 template <class I, const IID* ID> struct Unknown : I {
     LONG refs = 1;
@@ -639,7 +657,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     // Vertex array objects, one per layout key (declaration, shader, buffers, offsets): a draw
     // then binds one object instead of re-issuing every attribute pointer. The element buffer
     // binding is part of the object, so it is tracked per object.
-    struct LayoutKeyHash { size_t operator()(const LayoutKey& k) const { uint64_t h = 1469598103934665603ull; for (size_t i = 0; i < sizeof k; ++i) h = (h ^ reinterpret_cast<const unsigned char*>(&k)[i]) * 1099511628211ull; return static_cast<size_t>(h); } };
+    struct LayoutKeyHash { size_t operator()(const LayoutKey& k) const { return static_cast<size_t>(hashBytes(&k, sizeof k)); } };
     struct LayoutKeyEq { bool operator()(const LayoutKey& a, const LayoutKey& b) const { return std::memcmp(&a, &b, sizeof a) == 0; } };
     struct VaoEntry { GLuint vao = 0, ibo = 0; int colorMask = 0; };
     std::unordered_map<LayoutKey, VaoEntry, LayoutKeyHash, LayoutKeyEq> vaos;
@@ -937,8 +955,7 @@ void Texture::upload(UINT level, const RECT* rect) {
     if (!s || s->level.cpu.empty()) return;
     const uint64_t t0 = nowNs();
     if (s->level.cpu.size() <= 65536) {  // skip an identical re-upload of a small level
-        uint64_t h = 1469598103934665603ull;
-        for (uint8_t b : s->level.cpu) h = (h ^ b) * 1099511628211ull;
+        const uint64_t h = hashBytes(s->level.cpu.data(), s->level.cpu.size());
         if (h == s->level.hash) return;
         s->level.hash = h;
     }
