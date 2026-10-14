@@ -502,6 +502,14 @@ extern "C" void host_ui_scale(Ctx* c) {
         auto readU32 = [](uint32_t a, uint32_t& v) { return a >= 0x10000 && a < kGuestLimit && safeRead(a, &v, 4); };
         auto looksLikeComponent = [&](uint32_t comp) { uint32_t vt = 0; return readU32(comp, vt) && vt >= 0x1230000 && vt < 0x1270000; };
         uint32_t root = c->esi;
+        {   // one raw dump per site: the component's first 0x160 bytes, to pin the retail layout
+            static std::set<uint32_t> dumped;
+            if (dumped.size() < 20 && dumped.insert(ret).second) {
+                std::string words;
+                for (uint32_t off = 0; off < 0x160; off += 4) { uint32_t v = 0; readU32(root + off, v); char b[16]; std::snprintf(b, sizeof b, "%s%08X", off % 32 == 0 ? "\n  " : " ", v); words += b; }
+                HLOG(1, "ui: site 0x%08X component 0x%08X:%s", ret, root, words.c_str());
+            }
+        }
         float w = 0, h = 0;
         std::string chain;
         for (int i = 0; i < 24 && looksLikeComponent(root); ++i) {
