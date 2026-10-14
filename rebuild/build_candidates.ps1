@@ -180544,6 +180544,2358 @@ $catalog = @(
         TestSource = '00/a8/unattributed_InsertCRetailTree00a80ce0_00a80ce0_test.cpp'
         PassPattern = '00a80ce0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0040fe60'
+        Module = '_unattributed'
+        Source = '00/40/unattributed_TransferBinaryIn0040fe60_0040fe60.cpp'
+        TestSource = '00/40/unattributed_TransferBinaryIn0040fe60_0040fe60_test.cpp'
+        PassPattern = '0040fe60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0040fef0'
+        Module = '_unattributed'
+        Source = '00/40/unattributed_TransferBinaryIn0040fef0_0040fef0.cpp'
+        TestSource = '00/40/unattributed_TransferBinaryIn0040fef0_0040fef0_test.cpp'
+        PassPattern = '0040fef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b85d0'
+        Module = '_unattributed'
+        Source = '00/4b/unattributed_TransferBinaryIn004b85d0_004b85d0.cpp'
+        TestSource = '00/4b/unattributed_TransferBinaryIn004b85d0_004b85d0_test.cpp'
+        PassPattern = '004b85d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00625730'
+        Module = '_unattributed'
+        Source = '00/62/unattributed_TransferBinaryIn00625730_00625730.cpp'
+        TestSource = '00/62/unattributed_TransferBinaryIn00625730_00625730_test.cpp'
+        PassPattern = '00625730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006322b0'
+        Module = '_unattributed'
+        Source = '00/63/unattributed_TransferBinaryIn006322b0_006322b0.cpp'
+        TestSource = '00/63/unattributed_TransferBinaryIn006322b0_006322b0_test.cpp'
+        PassPattern = '006322b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00632390'
+        Module = '_unattributed'
+        Source = '00/63/unattributed_TransferBinaryIn00632390_00632390.cpp'
+        TestSource = '00/63/unattributed_TransferBinaryIn00632390_00632390_test.cpp'
+        PassPattern = '00632390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00632470'
+        Module = '_unattributed'
+        Source = '00/63/unattributed_TransferBinaryIn00632470_00632470.cpp'
+        TestSource = '00/63/unattributed_TransferBinaryIn00632470_00632470_test.cpp'
+        PassPattern = '00632470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00632550'
+        Module = '_unattributed'
+        Source = '00/63/unattributed_TransferBinaryIn00632550_00632550.cpp'
+        TestSource = '00/63/unattributed_TransferBinaryIn00632550_00632550_test.cpp'
+        PassPattern = '00632550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00632630'
+        Module = '_unattributed'
+        Source = '00/63/unattributed_TransferBinaryIn00632630_00632630.cpp'
+        TestSource = '00/63/unattributed_TransferBinaryIn00632630_00632630_test.cpp'
+        PassPattern = '00632630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00632710'
+        Module = '_unattributed'
+        Source = '00/63/unattributed_TransferBinaryIn00632710_00632710.cpp'
+        TestSource = '00/63/unattributed_TransferBinaryIn00632710_00632710_test.cpp'
+        PassPattern = '00632710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00632900'
+        Module = '_unattributed'
+        Source = '00/63/unattributed_TransferBinaryIn00632900_00632900.cpp'
+        TestSource = '00/63/unattributed_TransferBinaryIn00632900_00632900_test.cpp'
+        PassPattern = '00632900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00671c60'
+        Module = '_unattributed'
+        Source = '00/67/unattributed_TransferBinaryIn00671c60_00671c60.cpp'
+        TestSource = '00/67/unattributed_TransferBinaryIn00671c60_00671c60_test.cpp'
+        PassPattern = '00671c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00671d40'
+        Module = '_unattributed'
+        Source = '00/67/unattributed_TransferBinaryIn00671d40_00671d40.cpp'
+        TestSource = '00/67/unattributed_TransferBinaryIn00671d40_00671d40_test.cpp'
+        PassPattern = '00671d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00671e20'
+        Module = '_unattributed'
+        Source = '00/67/unattributed_TransferBinaryIn00671e20_00671e20.cpp'
+        TestSource = '00/67/unattributed_TransferBinaryIn00671e20_00671e20_test.cpp'
+        PassPattern = '00671e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00671f00'
+        Module = '_unattributed'
+        Source = '00/67/unattributed_TransferBinaryIn00671f00_00671f00.cpp'
+        TestSource = '00/67/unattributed_TransferBinaryIn00671f00_00671f00_test.cpp'
+        PassPattern = '00671f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00671fe0'
+        Module = '_unattributed'
+        Source = '00/67/unattributed_TransferBinaryIn00671fe0_00671fe0.cpp'
+        TestSource = '00/67/unattributed_TransferBinaryIn00671fe0_00671fe0_test.cpp'
+        PassPattern = '00671fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006725d0'
+        Module = '_unattributed'
+        Source = '00/67/unattributed_TransferBinaryIn006725d0_006725d0.cpp'
+        TestSource = '00/67/unattributed_TransferBinaryIn006725d0_006725d0_test.cpp'
+        PassPattern = '006725d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077fd10'
+        Module = '_unattributed'
+        Source = '00/77/unattributed_TransferBinaryIn0077fd10_0077fd10.cpp'
+        TestSource = '00/77/unattributed_TransferBinaryIn0077fd10_0077fd10_test.cpp'
+        PassPattern = '0077fd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ad7f0'
+        Module = '_unattributed'
+        Source = '00/7a/unattributed_TransferBinaryIn007ad7f0_007ad7f0.cpp'
+        TestSource = '00/7a/unattributed_TransferBinaryIn007ad7f0_007ad7f0_test.cpp'
+        PassPattern = '007ad7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdcb50'
+        Module = '_unattributed'
+        Source = '00/cd/unattributed_TransferBinaryIn00cdcb50_00cdcb50.cpp'
+        TestSource = '00/cd/unattributed_TransferBinaryIn00cdcb50_00cdcb50_test.cpp'
+        PassPattern = '00cdcb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdcd00'
+        Module = '_unattributed'
+        Source = '00/cd/unattributed_TransferBinaryIn00cdcd00_00cdcd00.cpp'
+        TestSource = '00/cd/unattributed_TransferBinaryIn00cdcd00_00cdcd00_test.cpp'
+        PassPattern = '00cdcd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdceb0'
+        Module = '_unattributed'
+        Source = '00/cd/unattributed_TransferBinaryIn00cdceb0_00cdceb0.cpp'
+        TestSource = '00/cd/unattributed_TransferBinaryIn00cdceb0_00cdceb0_test.cpp'
+        PassPattern = '00cdceb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1e040'
+        Module = '_unattributed'
+        Source = '00/e1/unattributed_TransferBinaryIn00e1e040_00e1e040.cpp'
+        TestSource = '00/e1/unattributed_TransferBinaryIn00e1e040_00e1e040_test.cpp'
+        PassPattern = '00e1e040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e258a0'
+        Module = '_unattributed'
+        Source = '00/e2/unattributed_TransferBinaryIn00e258a0_00e258a0.cpp'
+        TestSource = '00/e2/unattributed_TransferBinaryIn00e258a0_00e258a0_test.cpp'
+        PassPattern = '00e258a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e38eb0'
+        Module = '_unattributed'
+        Source = '00/e3/unattributed_TransferBinaryIn00e38eb0_00e38eb0.cpp'
+        TestSource = '00/e3/unattributed_TransferBinaryIn00e38eb0_00e38eb0_test.cpp'
+        PassPattern = '00e38eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e75920'
+        Module = '_unattributed'
+        Source = '00/e7/unattributed_TransferBinaryIn00e75920_00e75920.cpp'
+        TestSource = '00/e7/unattributed_TransferBinaryIn00e75920_00e75920_test.cpp'
+        PassPattern = '00e75920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e75ad0'
+        Module = '_unattributed'
+        Source = '00/e7/unattributed_TransferBinaryIn00e75ad0_00e75ad0.cpp'
+        TestSource = '00/e7/unattributed_TransferBinaryIn00e75ad0_00e75ad0_test.cpp'
+        PassPattern = '00e75ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9e350'
+        Module = '_unattributed'
+        Source = '00/e9/unattributed_TransferBinaryIn00e9e350_00e9e350.cpp'
+        TestSource = '00/e9/unattributed_TransferBinaryIn00e9e350_00e9e350_test.cpp'
+        PassPattern = '00e9e350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6680'
+        Module = '_unattributed'
+        Source = '00/eb/unattributed_TransferBinaryIn00eb6680_00eb6680.cpp'
+        TestSource = '00/eb/unattributed_TransferBinaryIn00eb6680_00eb6680_test.cpp'
+        PassPattern = '00eb6680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6830'
+        Module = '_unattributed'
+        Source = '00/eb/unattributed_TransferBinaryIn00eb6830_00eb6830.cpp'
+        TestSource = '00/eb/unattributed_TransferBinaryIn00eb6830_00eb6830_test.cpp'
+        PassPattern = '00eb6830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f2d5b0'
+        Module = '_unattributed'
+        Source = '00/f2/unattributed_TransferBinaryIn00f2d5b0_00f2d5b0.cpp'
+        TestSource = '00/f2/unattributed_TransferBinaryIn00f2d5b0_00f2d5b0_test.cpp'
+        PassPattern = '00f2d5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012290c0'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_BinaryTreeRefcountedNodeDeleter012290c0_012290c0.cpp'
+        TestSource = '01/22/unattributed_BinaryTreeRefcountedNodeDeleter012290c0_012290c0_test.cpp'
+        PassPattern = '012290c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229280'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CParticleMorphsTreeDeleter01229280_01229280.cpp'
+        TestSource = '01/22/unattributed_CParticleMorphsTreeDeleter01229280_01229280_test.cpp'
+        PassPattern = '01229280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012292e0'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CSoundPairTreeDeleter012292e0_012292e0.cpp'
+        TestSource = '01/22/unattributed_CSoundPairTreeDeleter012292e0_012292e0_test.cpp'
+        PassPattern = '012292e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229be0'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_DatabaseArrayBuildDeleter101229be0_01229be0.cpp'
+        TestSource = '01/22/unattributed_DatabaseArrayBuildDeleter101229be0_01229be0_test.cpp'
+        PassPattern = '01229be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229c40'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_DatabaseArrayBuildDeleter201229c40_01229c40.cpp'
+        TestSource = '01/22/unattributed_DatabaseArrayBuildDeleter201229c40_01229c40_test.cpp'
+        PassPattern = '01229c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229ca0'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_ListRecursiveDestroyDeleter101229ca0_01229ca0.cpp'
+        TestSource = '01/22/unattributed_ListRecursiveDestroyDeleter101229ca0_01229ca0_test.cpp'
+        PassPattern = '01229ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229d00'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_ListRecursiveDestroyDeleter201229d00_01229d00.cpp'
+        TestSource = '01/22/unattributed_ListRecursiveDestroyDeleter201229d00_01229d00_test.cpp'
+        PassPattern = '01229d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229d60'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_ListRecursiveDestroyDeleter301229d60_01229d60.cpp'
+        TestSource = '01/22/unattributed_ListRecursiveDestroyDeleter301229d60_01229d60_test.cpp'
+        PassPattern = '01229d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229e80'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CleanupLTextTreeWalker001229e80_01229e80.cpp'
+        TestSource = '01/22/unattributed_CleanupLTextTreeWalker001229e80_01229e80_test.cpp'
+        PassPattern = '01229e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229f30'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CleanupLTextTreeWalker101229f30_01229f30.cpp'
+        TestSource = '01/22/unattributed_CleanupLTextTreeWalker101229f30_01229f30_test.cpp'
+        PassPattern = '01229f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a0a0'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CleanupLTextTreeWalker20122a0a0_0122a0a0.cpp'
+        TestSource = '01/22/unattributed_CleanupLTextTreeWalker20122a0a0_0122a0a0_test.cpp'
+        PassPattern = '0122a0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a100'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CleanupLTextTreeWalker30122a100_0122a100.cpp'
+        TestSource = '01/22/unattributed_CleanupLTextTreeWalker30122a100_0122a100_test.cpp'
+        PassPattern = '0122a100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a160'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CleanupLTextTreeWalker40122a160_0122a160.cpp'
+        TestSource = '01/22/unattributed_CleanupLTextTreeWalker40122a160_0122a160_test.cpp'
+        PassPattern = '0122a160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a4f0'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CleanupLTextTreeWalker50122a4f0_0122a4f0.cpp'
+        TestSource = '01/22/unattributed_CleanupLTextTreeWalker50122a4f0_0122a4f0_test.cpp'
+        PassPattern = '0122a4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a7c0'
+        Module = '_unattributed'
+        Source = '01/22/unattributed_CleanupLTextTreeWalker60122a7c0_0122a7c0.cpp'
+        TestSource = '01/22/unattributed_CleanupLTextTreeWalker60122a7c0_0122a7c0_test.cpp'
+        PassPattern = '0122a7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00410820'
+        Module = 'CDefinitionManager'
+        Source = '00/41/CDefinitionManager_GetDef00410820_00410820.cpp'
+        TestSource = '00/41/CDefinitionManager_GetDef00410820_00410820_test.cpp'
+        PassPattern = '00410820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043ff30'
+        Module = 'CDefinitionManager'
+        Source = '00/43/CDefinitionManager_GetDef0043ff30_0043ff30.cpp'
+        TestSource = '00/43/CDefinitionManager_GetDef0043ff30_0043ff30_test.cpp'
+        PassPattern = '0043ff30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab990'
+        Module = 'CDefinitionManager'
+        Source = '00/4a/CDefinitionManager_GetDef004ab990_004ab990.cpp'
+        TestSource = '00/4a/CDefinitionManager_GetDef004ab990_004ab990_test.cpp'
+        PassPattern = '004ab990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d0910'
+        Module = 'CDefinitionManager'
+        Source = '00/4d/CDefinitionManager_GetDef004d0910_004d0910.cpp'
+        TestSource = '00/4d/CDefinitionManager_GetDef004d0910_004d0910_test.cpp'
+        PassPattern = '004d0910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00669770'
+        Module = 'CDefinitionManager'
+        Source = '00/66/CDefinitionManager_GetDef00669770_00669770.cpp'
+        TestSource = '00/66/CDefinitionManager_GetDef00669770_00669770_test.cpp'
+        PassPattern = '00669770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d3e80'
+        Module = 'CDefinitionManager'
+        Source = '00/6d/CDefinitionManager_GetDef006d3e80_006d3e80.cpp'
+        TestSource = '00/6d/CDefinitionManager_GetDef006d3e80_006d3e80_test.cpp'
+        PassPattern = '006d3e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0e10'
+        Module = 'CDefinitionManager'
+        Source = '00/6f/CDefinitionManager_GetDef006f0e10_006f0e10.cpp'
+        TestSource = '00/6f/CDefinitionManager_GetDef006f0e10_006f0e10_test.cpp'
+        PassPattern = '006f0e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00792350'
+        Module = 'CDefinitionManager'
+        Source = '00/79/CDefinitionManager_GetDef00792350_00792350.cpp'
+        TestSource = '00/79/CDefinitionManager_GetDef00792350_00792350_test.cpp'
+        PassPattern = '00792350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007923c0'
+        Module = 'CDefinitionManager'
+        Source = '00/79/CDefinitionManager_GetDef007923c0_007923c0.cpp'
+        TestSource = '00/79/CDefinitionManager_GetDef007923c0_007923c0_test.cpp'
+        PassPattern = '007923c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008abf80'
+        Module = 'CDefinitionManager'
+        Source = '00/8a/CDefinitionManager_GetDef008abf80_008abf80.cpp'
+        TestSource = '00/8a/CDefinitionManager_GetDef008abf80_008abf80_test.cpp'
+        PassPattern = '008abf80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008abff0'
+        Module = 'CDefinitionManager'
+        Source = '00/8a/CDefinitionManager_GetDef008abff0_008abff0.cpp'
+        TestSource = '00/8a/CDefinitionManager_GetDef008abff0_008abff0_test.cpp'
+        PassPattern = '008abff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aee60'
+        Module = 'CDefinitionManager'
+        Source = '00/8a/CDefinitionManager_GetDef008aee60_008aee60.cpp'
+        TestSource = '00/8a/CDefinitionManager_GetDef008aee60_008aee60_test.cpp'
+        PassPattern = '008aee60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009824e0'
+        Module = 'CDefinitionManager'
+        Source = '00/98/CDefinitionManager_GetDef009824e0_009824e0.cpp'
+        TestSource = '00/98/CDefinitionManager_GetDef009824e0_009824e0_test.cpp'
+        PassPattern = '009824e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cde280'
+        Module = 'CDefinitionManager'
+        Source = '00/cd/CDefinitionManager_GetDef00cde280_00cde280.cpp'
+        TestSource = '00/cd/CDefinitionManager_GetDef00cde280_00cde280_test.cpp'
+        PassPattern = '00cde280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00410890'
+        Module = 'CDefinitionManager'
+        Source = '00/41/CDefinitionManager_GetDef00410890_00410890.cpp'
+        TestSource = '00/41/CDefinitionManager_GetDef00410890_00410890_test.cpp'
+        PassPattern = '00410890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043ffa0'
+        Module = 'CDefinitionManager'
+        Source = '00/43/CDefinitionManager_GetDef0043ffa0_0043ffa0.cpp'
+        TestSource = '00/43/CDefinitionManager_GetDef0043ffa0_0043ffa0_test.cpp'
+        PassPattern = '0043ffa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004481d0'
+        Module = 'CDefinitionManager'
+        Source = '00/44/CDefinitionManager_GetDef004481d0_004481d0.cpp'
+        TestSource = '00/44/CDefinitionManager_GetDef004481d0_004481d0_test.cpp'
+        PassPattern = '004481d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063f3a0'
+        Module = 'CDefinitionManager'
+        Source = '00/63/CDefinitionManager_GetDef0063f3a0_0063f3a0.cpp'
+        TestSource = '00/63/CDefinitionManager_GetDef0063f3a0_0063f3a0_test.cpp'
+        PassPattern = '0063f3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066c340'
+        Module = 'CDefinitionManager'
+        Source = '00/66/CDefinitionManager_GetDef0066c340_0066c340.cpp'
+        TestSource = '00/66/CDefinitionManager_GetDef0066c340_0066c340_test.cpp'
+        PassPattern = '0066c340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bd060'
+        Module = 'CDefinitionManager'
+        Source = '00/6b/CDefinitionManager_GetDef006bd060_006bd060.cpp'
+        TestSource = '00/6b/CDefinitionManager_GetDef006bd060_006bd060_test.cpp'
+        PassPattern = '006bd060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074d220'
+        Module = 'CDefinitionManager'
+        Source = '00/74/CDefinitionManager_GetDef0074d220_0074d220.cpp'
+        TestSource = '00/74/CDefinitionManager_GetDef0074d220_0074d220_test.cpp'
+        PassPattern = '0074d220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a35d0'
+        Module = 'CDefinitionManager'
+        Source = '00/7a/CDefinitionManager_GetDef007a35d0_007a35d0.cpp'
+        TestSource = '00/7a/CDefinitionManager_GetDef007a35d0_007a35d0_test.cpp'
+        PassPattern = '007a35d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a90f0'
+        Module = 'CDefinitionManager'
+        Source = '00/7a/CDefinitionManager_GetDef007a90f0_007a90f0.cpp'
+        TestSource = '00/7a/CDefinitionManager_GetDef007a90f0_007a90f0_test.cpp'
+        PassPattern = '007a90f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00817c70'
+        Module = 'CDefinitionManager'
+        Source = '00/81/CDefinitionManager_GetDef00817c70_00817c70.cpp'
+        TestSource = '00/81/CDefinitionManager_GetDef00817c70_00817c70_test.cpp'
+        PassPattern = '00817c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083cfa0'
+        Module = 'CDefinitionManager'
+        Source = '00/83/CDefinitionManager_GetDef0083cfa0_0083cfa0.cpp'
+        TestSource = '00/83/CDefinitionManager_GetDef0083cfa0_0083cfa0_test.cpp'
+        PassPattern = '0083cfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083d630'
+        Module = 'CDefinitionManager'
+        Source = '00/83/CDefinitionManager_GetDef0083d630_0083d630.cpp'
+        TestSource = '00/83/CDefinitionManager_GetDef0083d630_0083d630_test.cpp'
+        PassPattern = '0083d630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083e0d0'
+        Module = 'CDefinitionManager'
+        Source = '00/83/CDefinitionManager_GetDef0083e0d0_0083e0d0.cpp'
+        TestSource = '00/83/CDefinitionManager_GetDef0083e0d0_0083e0d0_test.cpp'
+        PassPattern = '0083e0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085abb0'
+        Module = 'CDefinitionManager'
+        Source = '00/85/CDefinitionManager_GetDef0085abb0_0085abb0.cpp'
+        TestSource = '00/85/CDefinitionManager_GetDef0085abb0_0085abb0_test.cpp'
+        PassPattern = '0085abb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042aeda'
+        Module = 'CDefinitionManager'
+        Source = '00/42/CDefinitionManager_GetDef0042aeda_0042aeda.cpp'
+        TestSource = '00/42/CDefinitionManager_GetDef0042aeda_0042aeda_test.cpp'
+        PassPattern = '0042aeda_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042af3c'
+        Module = 'CDefinitionManager'
+        Source = '00/42/CDefinitionManager_GetDef0042af3c_0042af3c.cpp'
+        TestSource = '00/42/CDefinitionManager_GetDef0042af3c_0042af3c_test.cpp'
+        PassPattern = '0042af3c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b040'
+        Module = 'CDefinitionManager'
+        Source = '00/42/CDefinitionManager_GetDef0042b040_0042b040.cpp'
+        TestSource = '00/42/CDefinitionManager_GetDef0042b040_0042b040_test.cpp'
+        PassPattern = '0042b040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b144'
+        Module = 'CDefinitionManager'
+        Source = '00/42/CDefinitionManager_GetDef0042b144_0042b144.cpp'
+        TestSource = '00/42/CDefinitionManager_GetDef0042b144_0042b144_test.cpp'
+        PassPattern = '0042b144_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b312'
+        Module = 'CDefinitionManager'
+        Source = '00/42/CDefinitionManager_GetDef0042b312_0042b312.cpp'
+        TestSource = '00/42/CDefinitionManager_GetDef0042b312_0042b312_test.cpp'
+        PassPattern = '0042b312_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b374'
+        Module = 'CDefinitionManager'
+        Source = '00/42/CDefinitionManager_GetDef0042b374_0042b374.cpp'
+        TestSource = '00/42/CDefinitionManager_GetDef0042b374_0042b374_test.cpp'
+        PassPattern = '0042b374_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048591c'
+        Module = 'CDefinitionManager'
+        Source = '00/48/CDefinitionManager_GetDef0048591c_0048591c.cpp'
+        TestSource = '00/48/CDefinitionManager_GetDef0048591c_0048591c_test.cpp'
+        PassPattern = '0048591c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057ff30'
+        Module = 'CDefinitionManager'
+        Source = '00/57/CDefinitionManager_GetDef0057ff30_0057ff30.cpp'
+        TestSource = '00/57/CDefinitionManager_GetDef0057ff30_0057ff30_test.cpp'
+        PassPattern = '0057ff30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c0c99'
+        Module = 'CDefinitionManager'
+        Source = '00/5c/CDefinitionManager_GetDef005c0c99_005c0c99.cpp'
+        TestSource = '00/5c/CDefinitionManager_GetDef005c0c99_005c0c99_test.cpp'
+        PassPattern = '005c0c99_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f81be'
+        Module = 'CDefinitionManager'
+        Source = '00/5f/CDefinitionManager_GetDef005f81be_005f81be.cpp'
+        TestSource = '00/5f/CDefinitionManager_GetDef005f81be_005f81be_test.cpp'
+        PassPattern = '005f81be_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8a57'
+        Module = 'CDefinitionManager'
+        Source = '00/5f/CDefinitionManager_GetDef005f8a57_005f8a57.cpp'
+        TestSource = '00/5f/CDefinitionManager_GetDef005f8a57_005f8a57_test.cpp'
+        PassPattern = '005f8a57_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8ab9'
+        Module = 'CDefinitionManager'
+        Source = '00/5f/CDefinitionManager_GetDef005f8ab9_005f8ab9.cpp'
+        TestSource = '00/5f/CDefinitionManager_GetDef005f8ab9_005f8ab9_test.cpp'
+        PassPattern = '005f8ab9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8b1b'
+        Module = 'CDefinitionManager'
+        Source = '00/5f/CDefinitionManager_GetDef005f8b1b_005f8b1b.cpp'
+        TestSource = '00/5f/CDefinitionManager_GetDef005f8b1b_005f8b1b_test.cpp'
+        PassPattern = '005f8b1b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044ba90'
+        Module = 'CDefinitionManager'
+        Source = '00/44/CDefinitionManager_GetDef0044ba90_0044ba90.cpp'
+        TestSource = '00/44/CDefinitionManager_GetDef0044ba90_0044ba90_test.cpp'
+        PassPattern = '0044ba90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab840'
+        Module = 'CDefinitionManager'
+        Source = '00/4a/CDefinitionManager_GetDef004ab840_004ab840.cpp'
+        TestSource = '00/4a/CDefinitionManager_GetDef004ab840_004ab840_test.cpp'
+        PassPattern = '004ab840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab920'
+        Module = 'CDefinitionManager'
+        Source = '00/4a/CDefinitionManager_GetDef004ab920_004ab920.cpp'
+        TestSource = '00/4a/CDefinitionManager_GetDef004ab920_004ab920_test.cpp'
+        PassPattern = '004ab920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aba00'
+        Module = 'CDefinitionManager'
+        Source = '00/4a/CDefinitionManager_GetDef004aba00_004aba00.cpp'
+        TestSource = '00/4a/CDefinitionManager_GetDef004aba00_004aba00_test.cpp'
+        PassPattern = '004aba00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00512e60'
+        Module = 'CDefinitionManager'
+        Source = '00/51/CDefinitionManager_GetDef00512e60_00512e60.cpp'
+        TestSource = '00/51/CDefinitionManager_GetDef00512e60_00512e60_test.cpp'
+        PassPattern = '00512e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00513160'
+        Module = 'CDefinitionManager'
+        Source = '00/51/CDefinitionManager_GetDef00513160_00513160.cpp'
+        TestSource = '00/51/CDefinitionManager_GetDef00513160_00513160_test.cpp'
+        PassPattern = '00513160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056d0c0'
+        Module = 'CDefinitionManager'
+        Source = '00/56/CDefinitionManager_GetDef0056d0c0_0056d0c0.cpp'
+        TestSource = '00/56/CDefinitionManager_GetDef0056d0c0_0056d0c0_test.cpp'
+        PassPattern = '0056d0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00669640'
+        Module = 'CDefinitionManager'
+        Source = '00/66/CDefinitionManager_GetDef00669640_00669640.cpp'
+        TestSource = '00/66/CDefinitionManager_GetDef00669640_00669640_test.cpp'
+        PassPattern = '00669640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006697e0'
+        Module = 'CDefinitionManager'
+        Source = '00/66/CDefinitionManager_GetDef006697e0_006697e0.cpp'
+        TestSource = '00/66/CDefinitionManager_GetDef006697e0_006697e0_test.cpp'
+        PassPattern = '006697e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685d90'
+        Module = 'CDefinitionManager'
+        Source = '00/68/CDefinitionManager_GetDef00685d90_00685d90.cpp'
+        TestSource = '00/68/CDefinitionManager_GetDef00685d90_00685d90_test.cpp'
+        PassPattern = '00685d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685e00'
+        Module = 'CDefinitionManager'
+        Source = '00/68/CDefinitionManager_GetDef00685e00_00685e00.cpp'
+        TestSource = '00/68/CDefinitionManager_GetDef00685e00_00685e00_test.cpp'
+        PassPattern = '00685e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685e70'
+        Module = 'CDefinitionManager'
+        Source = '00/68/CDefinitionManager_GetDef00685e70_00685e70.cpp'
+        TestSource = '00/68/CDefinitionManager_GetDef00685e70_00685e70_test.cpp'
+        PassPattern = '00685e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069ce80'
+        Module = 'CDefinitionManager'
+        Source = '00/69/CDefinitionManager_GetDef0069ce80_0069ce80.cpp'
+        TestSource = '00/69/CDefinitionManager_GetDef0069ce80_0069ce80_test.cpp'
+        PassPattern = '0069ce80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a3060'
+        Module = 'CDefinitionManager'
+        Source = '00/6a/CDefinitionManager_GetDef006a3060_006a3060.cpp'
+        TestSource = '00/6a/CDefinitionManager_GetDef006a3060_006a3060_test.cpp'
+        PassPattern = '006a3060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b9d90'
+        Module = 'CDefinitionManager'
+        Source = '00/6b/CDefinitionManager_GetDef006b9d90_006b9d90.cpp'
+        TestSource = '00/6b/CDefinitionManager_GetDef006b9d90_006b9d90_test.cpp'
+        PassPattern = '006b9d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c76b0'
+        Module = 'CDefinitionManager'
+        Source = '00/6c/CDefinitionManager_GetDef006c76b0_006c76b0.cpp'
+        TestSource = '00/6c/CDefinitionManager_GetDef006c76b0_006c76b0_test.cpp'
+        PassPattern = '006c76b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0e80'
+        Module = 'CDefinitionManager'
+        Source = '00/6f/CDefinitionManager_GetDef006f0e80_006f0e80.cpp'
+        TestSource = '00/6f/CDefinitionManager_GetDef006f0e80_006f0e80_test.cpp'
+        PassPattern = '006f0e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0ef0'
+        Module = 'CDefinitionManager'
+        Source = '00/6f/CDefinitionManager_GetDef006f0ef0_006f0ef0.cpp'
+        TestSource = '00/6f/CDefinitionManager_GetDef006f0ef0_006f0ef0_test.cpp'
+        PassPattern = '006f0ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00737f80'
+        Module = 'CDefinitionManager'
+        Source = '00/73/CDefinitionManager_GetDef00737f80_00737f80.cpp'
+        TestSource = '00/73/CDefinitionManager_GetDef00737f80_00737f80_test.cpp'
+        PassPattern = '00737f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00749ac0'
+        Module = 'CDefinitionManager'
+        Source = '00/74/CDefinitionManager_GetDef00749ac0_00749ac0.cpp'
+        TestSource = '00/74/CDefinitionManager_GetDef00749ac0_00749ac0_test.cpp'
+        PassPattern = '00749ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f760'
+        Module = 'CDefinitionManager'
+        Source = '00/74/CDefinitionManager_GetDef0074f760_0074f760.cpp'
+        TestSource = '00/74/CDefinitionManager_GetDef0074f760_0074f760_test.cpp'
+        PassPattern = '0074f760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007719c0'
+        Module = 'CDefinitionManager'
+        Source = '00/77/CDefinitionManager_GetDef007719c0_007719c0.cpp'
+        TestSource = '00/77/CDefinitionManager_GetDef007719c0_007719c0_test.cpp'
+        PassPattern = '007719c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078b230'
+        Module = 'CDefinitionManager'
+        Source = '00/78/CDefinitionManager_GetDef0078b230_0078b230.cpp'
+        TestSource = '00/78/CDefinitionManager_GetDef0078b230_0078b230_test.cpp'
+        PassPattern = '0078b230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078da50'
+        Module = 'CDefinitionManager'
+        Source = '00/78/CDefinitionManager_GetDef0078da50_0078da50.cpp'
+        TestSource = '00/78/CDefinitionManager_GetDef0078da50_0078da50_test.cpp'
+        PassPattern = '0078da50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00798c10'
+        Module = 'CDefinitionManager'
+        Source = '00/79/CDefinitionManager_GetDef00798c10_00798c10.cpp'
+        TestSource = '00/79/CDefinitionManager_GetDef00798c10_00798c10_test.cpp'
+        PassPattern = '00798c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079bd10'
+        Module = 'CDefinitionManager'
+        Source = '00/79/CDefinitionManager_GetDef0079bd10_0079bd10.cpp'
+        TestSource = '00/79/CDefinitionManager_GetDef0079bd10_0079bd10_test.cpp'
+        PassPattern = '0079bd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079bd80'
+        Module = 'CDefinitionManager'
+        Source = '00/79/CDefinitionManager_GetDef0079bd80_0079bd80.cpp'
+        TestSource = '00/79/CDefinitionManager_GetDef0079bd80_0079bd80_test.cpp'
+        PassPattern = '0079bd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079dbb0'
+        Module = 'CDefinitionManager'
+        Source = '00/79/CDefinitionManager_GetDef0079dbb0_0079dbb0.cpp'
+        TestSource = '00/79/CDefinitionManager_GetDef0079dbb0_0079dbb0_test.cpp'
+        PassPattern = '0079dbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079f0e0'
+        Module = 'CDefinitionManager'
+        Source = '00/79/CDefinitionManager_GetDef0079f0e0_0079f0e0.cpp'
+        TestSource = '00/79/CDefinitionManager_GetDef0079f0e0_0079f0e0_test.cpp'
+        PassPattern = '0079f0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a5080'
+        Module = 'CDefinitionManager'
+        Source = '00/7a/CDefinitionManager_GetDef007a5080_007a5080.cpp'
+        TestSource = '00/7a/CDefinitionManager_GetDef007a5080_007a5080_test.cpp'
+        PassPattern = '007a5080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ab530'
+        Module = 'CDefinitionManager'
+        Source = '00/7a/CDefinitionManager_GetDef007ab530_007ab530.cpp'
+        TestSource = '00/7a/CDefinitionManager_GetDef007ab530_007ab530_test.cpp'
+        PassPattern = '007ab530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c3a60'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007c3a60_007c3a60.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007c3a60_007c3a60_test.cpp'
+        PassPattern = '007c3a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c4f80'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007c4f80_007c4f80.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007c4f80_007c4f80_test.cpp'
+        PassPattern = '007c4f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c6600'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007c6600_007c6600.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007c6600_007c6600_test.cpp'
+        PassPattern = '007c6600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c7720'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007c7720_007c7720.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007c7720_007c7720_test.cpp'
+        PassPattern = '007c7720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cc8e0'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007cc8e0_007cc8e0.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007cc8e0_007cc8e0_test.cpp'
+        PassPattern = '007cc8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cd760'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007cd760_007cd760.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007cd760_007cd760_test.cpp'
+        PassPattern = '007cd760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ce100'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007ce100_007ce100.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007ce100_007ce100_test.cpp'
+        PassPattern = '007ce100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cec90'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007cec90_007cec90.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007cec90_007cec90_test.cpp'
+        PassPattern = '007cec90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cf2e0'
+        Module = 'CDefinitionManager'
+        Source = '00/7c/CDefinitionManager_GetDef007cf2e0_007cf2e0.cpp'
+        TestSource = '00/7c/CDefinitionManager_GetDef007cf2e0_007cf2e0_test.cpp'
+        PassPattern = '007cf2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f3bb0'
+        Module = 'CDefinitionManager'
+        Source = '00/7f/CDefinitionManager_GetDef007f3bb0_007f3bb0.cpp'
+        TestSource = '00/7f/CDefinitionManager_GetDef007f3bb0_007f3bb0_test.cpp'
+        PassPattern = '007f3bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00817b40'
+        Module = 'CDefinitionManager'
+        Source = '00/81/CDefinitionManager_GetDef00817b40_00817b40.cpp'
+        TestSource = '00/81/CDefinitionManager_GetDef00817b40_00817b40_test.cpp'
+        PassPattern = '00817b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082e1e0'
+        Module = 'CDefinitionManager'
+        Source = '00/82/CDefinitionManager_GetDef0082e1e0_0082e1e0.cpp'
+        TestSource = '00/82/CDefinitionManager_GetDef0082e1e0_0082e1e0_test.cpp'
+        PassPattern = '0082e1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083b970'
+        Module = 'CDefinitionManager'
+        Source = '00/83/CDefinitionManager_GetDef0083b970_0083b970.cpp'
+        TestSource = '00/83/CDefinitionManager_GetDef0083b970_0083b970_test.cpp'
+        PassPattern = '0083b970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083bd10'
+        Module = 'CDefinitionManager'
+        Source = '00/83/CDefinitionManager_GetDef0083bd10_0083bd10.cpp'
+        TestSource = '00/83/CDefinitionManager_GetDef0083bd10_0083bd10_test.cpp'
+        PassPattern = '0083bd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e31d0'
+        Module = 'CDefinitionManager'
+        Source = '00/8e/CDefinitionManager_GetDef008e31d0_008e31d0.cpp'
+        TestSource = '00/8e/CDefinitionManager_GetDef008e31d0_008e31d0_test.cpp'
+        PassPattern = '008e31d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00415890'
+        Module = 'CDefinitionManager'
+        Source = '00/41/CDefinitionManager_GetDef00415890_00415890.cpp'
+        TestSource = '00/41/CDefinitionManager_GetDef00415890_00415890_test.cpp'
+        PassPattern = '00415890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528760'
+        Module = 'CDefinitionManager'
+        Source = '00/52/CDefinitionManager_GetDef00528760_00528760.cpp'
+        TestSource = '00/52/CDefinitionManager_GetDef00528760_00528760_test.cpp'
+        PassPattern = '00528760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00637650'
+        Module = 'CDefinitionManager'
+        Source = '00/63/CDefinitionManager_GetDef00637650_00637650.cpp'
+        TestSource = '00/63/CDefinitionManager_GetDef00637650_00637650_test.cpp'
+        PassPattern = '00637650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ae1c0'
+        Module = 'CDefinitionManager'
+        Source = '00/6a/CDefinitionManager_GetDef006ae1c0_006ae1c0.cpp'
+        TestSource = '00/6a/CDefinitionManager_GetDef006ae1c0_006ae1c0_test.cpp'
+        PassPattern = '006ae1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b2660'
+        Module = 'CDefinitionManager'
+        Source = '00/6b/CDefinitionManager_GetDef006b2660_006b2660.cpp'
+        TestSource = '00/6b/CDefinitionManager_GetDef006b2660_006b2660_test.cpp'
+        PassPattern = '006b2660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00701c90'
+        Module = 'CDefinitionManager'
+        Source = '00/70/CDefinitionManager_GetDef00701c90_00701c90.cpp'
+        TestSource = '00/70/CDefinitionManager_GetDef00701c90_00701c90_test.cpp'
+        PassPattern = '00701c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00737ff0'
+        Module = 'CDefinitionManager'
+        Source = '00/73/CDefinitionManager_GetDef00737ff0_00737ff0.cpp'
+        TestSource = '00/73/CDefinitionManager_GetDef00737ff0_00737ff0_test.cpp'
+        PassPattern = '00737ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083b000'
+        Module = 'CDefinitionManager'
+        Source = '00/83/CDefinitionManager_GetDef0083b000_0083b000.cpp'
+        TestSource = '00/83/CDefinitionManager_GetDef0083b000_0083b000_test.cpp'
+        PassPattern = '0083b000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b28e40'
+        Module = 'CDefinitionManager'
+        Source = '00/b2/CDefinitionManager_GetDef00b28e40_00b28e40.cpp'
+        TestSource = '00/b2/CDefinitionManager_GetDef00b28e40_00b28e40_test.cpp'
+        PassPattern = '00b28e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00430096'
+        Module = 'CDefinitionManager'
+        Source = '00/43/CDefinitionManager_GetDef00430096_00430096.cpp'
+        TestSource = '00/43/CDefinitionManager_GetDef00430096_00430096_test.cpp'
+        PassPattern = '00430096_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004300fb'
+        Module = 'CDefinitionManager'
+        Source = '00/43/CDefinitionManager_GetDef004300fb_004300fb.cpp'
+        TestSource = '00/43/CDefinitionManager_GetDef004300fb_004300fb_test.cpp'
+        PassPattern = '004300fb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451354'
+        Module = 'CDefinitionManager'
+        Source = '00/45/CDefinitionManager_GetDef00451354_00451354.cpp'
+        TestSource = '00/45/CDefinitionManager_GetDef00451354_00451354_test.cpp'
+        PassPattern = '00451354_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004513b9'
+        Module = 'CDefinitionManager'
+        Source = '00/45/CDefinitionManager_GetDef004513b9_004513b9.cpp'
+        TestSource = '00/45/CDefinitionManager_GetDef004513b9_004513b9_test.cpp'
+        PassPattern = '004513b9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004858b7'
+        Module = 'CDefinitionManager'
+        Source = '00/48/CDefinitionManager_GetDef004858b7_004858b7.cpp'
+        TestSource = '00/48/CDefinitionManager_GetDef004858b7_004858b7_test.cpp'
+        PassPattern = '004858b7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f89f2'
+        Module = 'CDefinitionManager'
+        Source = '00/5f/CDefinitionManager_GetDef005f89f2_005f89f2.cpp'
+        TestSource = '00/5f/CDefinitionManager_GetDef005f89f2_005f89f2_test.cpp'
+        PassPattern = '005f89f2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00512fe0'
+        Module = 'CDefClassBase'
+        Source = '00/51/CDefClassBase_GetSubDef00512fe0_00512fe0.cpp'
+        TestSource = '00/51/CDefClassBase_GetSubDef00512fe0_00512fe0_test.cpp'
+        PassPattern = '00512fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005130a0'
+        Module = 'CDefClassBase'
+        Source = '00/51/CDefClassBase_GetSubDef005130a0_005130a0.cpp'
+        TestSource = '00/51/CDefClassBase_GetSubDef005130a0_005130a0_test.cpp'
+        PassPattern = '005130a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005da180'
+        Module = 'CDefClassBase'
+        Source = '00/5d/CDefClassBase_GetSubDef005da180_005da180.cpp'
+        TestSource = '00/5d/CDefClassBase_GetSubDef005da180_005da180_test.cpp'
+        PassPattern = '005da180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005da240'
+        Module = 'CDefClassBase'
+        Source = '00/5d/CDefClassBase_GetSubDef005da240_005da240.cpp'
+        TestSource = '00/5d/CDefClassBase_GetSubDef005da240_005da240_test.cpp'
+        PassPattern = '005da240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005da300'
+        Module = 'CDefClassBase'
+        Source = '00/5d/CDefClassBase_GetSubDef005da300_005da300.cpp'
+        TestSource = '00/5d/CDefClassBase_GetSubDef005da300_005da300_test.cpp'
+        PassPattern = '005da300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00669580'
+        Module = 'CDefClassBase'
+        Source = '00/66/CDefClassBase_GetSubDef00669580_00669580.cpp'
+        TestSource = '00/66/CDefClassBase_GetSubDef00669580_00669580_test.cpp'
+        PassPattern = '00669580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006696b0'
+        Module = 'CDefClassBase'
+        Source = '00/66/CDefClassBase_GetSubDef006696b0_006696b0.cpp'
+        TestSource = '00/66/CDefClassBase_GetSubDef006696b0_006696b0_test.cpp'
+        PassPattern = '006696b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00670b90'
+        Module = 'CDefClassBase'
+        Source = '00/67/CDefClassBase_GetSubDef00670b90_00670b90.cpp'
+        TestSource = '00/67/CDefClassBase_GetSubDef00670b90_00670b90_test.cpp'
+        PassPattern = '00670b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685c00'
+        Module = 'CDefClassBase'
+        Source = '00/68/CDefClassBase_GetSubDef00685c00_00685c00.cpp'
+        TestSource = '00/68/CDefClassBase_GetSubDef00685c00_00685c00_test.cpp'
+        PassPattern = '00685c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00696130'
+        Module = 'CDefClassBase'
+        Source = '00/69/CDefClassBase_GetSubDef00696130_00696130.cpp'
+        TestSource = '00/69/CDefClassBase_GetSubDef00696130_00696130_test.cpp'
+        PassPattern = '00696130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a2fa0'
+        Module = 'CDefClassBase'
+        Source = '00/6a/CDefClassBase_GetSubDef006a2fa0_006a2fa0.cpp'
+        TestSource = '00/6a/CDefClassBase_GetSubDef006a2fa0_006a2fa0_test.cpp'
+        PassPattern = '006a2fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ae260'
+        Module = 'CDefClassBase'
+        Source = '00/6a/CDefClassBase_GetSubDef006ae260_006ae260.cpp'
+        TestSource = '00/6a/CDefClassBase_GetSubDef006ae260_006ae260_test.cpp'
+        PassPattern = '006ae260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ae320'
+        Module = 'CDefClassBase'
+        Source = '00/6a/CDefClassBase_GetSubDef006ae320_006ae320.cpp'
+        TestSource = '00/6a/CDefClassBase_GetSubDef006ae320_006ae320_test.cpp'
+        PassPattern = '006ae320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b0fa0'
+        Module = 'CDefClassBase'
+        Source = '00/6b/CDefClassBase_GetSubDef006b0fa0_006b0fa0.cpp'
+        TestSource = '00/6b/CDefClassBase_GetSubDef006b0fa0_006b0fa0_test.cpp'
+        PassPattern = '006b0fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c1b00'
+        Module = 'CDefClassBase'
+        Source = '00/6c/CDefClassBase_GetSubDef006c1b00_006c1b00.cpp'
+        TestSource = '00/6c/CDefClassBase_GetSubDef006c1b00_006c1b00_test.cpp'
+        PassPattern = '006c1b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c7720'
+        Module = 'CDefClassBase'
+        Source = '00/6c/CDefClassBase_GetSubDef006c7720_006c7720.cpp'
+        TestSource = '00/6c/CDefClassBase_GetSubDef006c7720_006c7720_test.cpp'
+        PassPattern = '006c7720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cd2f0'
+        Module = 'CDefClassBase'
+        Source = '00/6c/CDefClassBase_GetSubDef006cd2f0_006cd2f0.cpp'
+        TestSource = '00/6c/CDefClassBase_GetSubDef006cd2f0_006cd2f0_test.cpp'
+        PassPattern = '006cd2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d3d00'
+        Module = 'CDefClassBase'
+        Source = '00/6d/CDefClassBase_GetSubDef006d3d00_006d3d00.cpp'
+        TestSource = '00/6d/CDefClassBase_GetSubDef006d3d00_006d3d00_test.cpp'
+        PassPattern = '006d3d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d3dc0'
+        Module = 'CDefClassBase'
+        Source = '00/6d/CDefClassBase_GetSubDef006d3dc0_006d3dc0.cpp'
+        TestSource = '00/6d/CDefClassBase_GetSubDef006d3dc0_006d3dc0_test.cpp'
+        PassPattern = '006d3dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d3ef0'
+        Module = 'CDefClassBase'
+        Source = '00/6d/CDefClassBase_GetSubDef006d3ef0_006d3ef0.cpp'
+        TestSource = '00/6d/CDefClassBase_GetSubDef006d3ef0_006d3ef0_test.cpp'
+        PassPattern = '006d3ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00702930'
+        Module = 'CDefClassBase'
+        Source = '00/70/CDefClassBase_GetSubDef00702930_00702930.cpp'
+        TestSource = '00/70/CDefClassBase_GetSubDef00702930_00702930_test.cpp'
+        PassPattern = '00702930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071f930'
+        Module = 'CDefClassBase'
+        Source = '00/71/CDefClassBase_GetSubDef0071f930_0071f930.cpp'
+        TestSource = '00/71/CDefClassBase_GetSubDef0071f930_0071f930_test.cpp'
+        PassPattern = '0071f930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007325d0'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef007325d0_007325d0.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef007325d0_007325d0_test.cpp'
+        PassPattern = '007325d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00732bd0'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef00732bd0_00732bd0.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef00732bd0_00732bd0_test.cpp'
+        PassPattern = '00732bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007381f0'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef007381f0_007381f0.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef007381f0_007381f0_test.cpp'
+        PassPattern = '007381f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007382b0'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef007382b0_007382b0.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef007382b0_007382b0_test.cpp'
+        PassPattern = '007382b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00738370'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef00738370_00738370.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef00738370_00738370_test.cpp'
+        PassPattern = '00738370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00738430'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef00738430_00738430.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef00738430_00738430_test.cpp'
+        PassPattern = '00738430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007384f0'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef007384f0_007384f0.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef007384f0_007384f0_test.cpp'
+        PassPattern = '007384f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00746100'
+        Module = 'CDefClassBase'
+        Source = '00/74/CDefClassBase_GetSubDef00746100_00746100.cpp'
+        TestSource = '00/74/CDefClassBase_GetSubDef00746100_00746100_test.cpp'
+        PassPattern = '00746100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00746c20'
+        Module = 'CDefClassBase'
+        Source = '00/74/CDefClassBase_GetSubDef00746c20_00746c20.cpp'
+        TestSource = '00/74/CDefClassBase_GetSubDef00746c20_00746c20_test.cpp'
+        PassPattern = '00746c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074d160'
+        Module = 'CDefClassBase'
+        Source = '00/74/CDefClassBase_GetSubDef0074d160_0074d160.cpp'
+        TestSource = '00/74/CDefClassBase_GetSubDef0074d160_0074d160_test.cpp'
+        PassPattern = '0074d160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f6a0'
+        Module = 'CDefClassBase'
+        Source = '00/74/CDefClassBase_GetSubDef0074f6a0_0074f6a0.cpp'
+        TestSource = '00/74/CDefClassBase_GetSubDef0074f6a0_0074f6a0_test.cpp'
+        PassPattern = '0074f6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007510d0'
+        Module = 'CDefClassBase'
+        Source = '00/75/CDefClassBase_GetSubDef007510d0_007510d0.cpp'
+        TestSource = '00/75/CDefClassBase_GetSubDef007510d0_007510d0_test.cpp'
+        PassPattern = '007510d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00751190'
+        Module = 'CDefClassBase'
+        Source = '00/75/CDefClassBase_GetSubDef00751190_00751190.cpp'
+        TestSource = '00/75/CDefClassBase_GetSubDef00751190_00751190_test.cpp'
+        PassPattern = '00751190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077ac20'
+        Module = 'CDefClassBase'
+        Source = '00/77/CDefClassBase_GetSubDef0077ac20_0077ac20.cpp'
+        TestSource = '00/77/CDefClassBase_GetSubDef0077ac20_0077ac20_test.cpp'
+        PassPattern = '0077ac20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077d080'
+        Module = 'CDefClassBase'
+        Source = '00/77/CDefClassBase_GetSubDef0077d080_0077d080.cpp'
+        TestSource = '00/77/CDefClassBase_GetSubDef0077d080_0077d080_test.cpp'
+        PassPattern = '0077d080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787060'
+        Module = 'CDefClassBase'
+        Source = '00/78/CDefClassBase_GetSubDef00787060_00787060.cpp'
+        TestSource = '00/78/CDefClassBase_GetSubDef00787060_00787060_test.cpp'
+        PassPattern = '00787060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079c4b0'
+        Module = 'CDefClassBase'
+        Source = '00/79/CDefClassBase_GetSubDef0079c4b0_0079c4b0.cpp'
+        TestSource = '00/79/CDefClassBase_GetSubDef0079c4b0_0079c4b0_test.cpp'
+        PassPattern = '0079c4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ad9c0'
+        Module = 'CDefClassBase'
+        Source = '00/7a/CDefClassBase_GetSubDef007ad9c0_007ad9c0.cpp'
+        TestSource = '00/7a/CDefClassBase_GetSubDef007ad9c0_007ad9c0_test.cpp'
+        PassPattern = '007ad9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2540'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007b2540_007b2540.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007b2540_007b2540_test.cpp'
+        PassPattern = '007b2540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2600'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007b2600_007b2600.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007b2600_007b2600_test.cpp'
+        PassPattern = '007b2600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b44e0'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007b44e0_007b44e0.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007b44e0_007b44e0_test.cpp'
+        PassPattern = '007b44e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b5680'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007b5680_007b5680.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007b5680_007b5680_test.cpp'
+        PassPattern = '007b5680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bb920'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007bb920_007bb920.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007bb920_007bb920_test.cpp'
+        PassPattern = '007bb920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c8000'
+        Module = 'CDefClassBase'
+        Source = '00/7c/CDefClassBase_GetSubDef007c8000_007c8000.cpp'
+        TestSource = '00/7c/CDefClassBase_GetSubDef007c8000_007c8000_test.cpp'
+        PassPattern = '007c8000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d9a80'
+        Module = 'CDefClassBase'
+        Source = '00/7d/CDefClassBase_GetSubDef007d9a80_007d9a80.cpp'
+        TestSource = '00/7d/CDefClassBase_GetSubDef007d9a80_007d9a80_test.cpp'
+        PassPattern = '007d9a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007df9e0'
+        Module = 'CDefClassBase'
+        Source = '00/7d/CDefClassBase_GetSubDef007df9e0_007df9e0.cpp'
+        TestSource = '00/7d/CDefClassBase_GetSubDef007df9e0_007df9e0_test.cpp'
+        PassPattern = '007df9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e0540'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e0540_007e0540.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e0540_007e0540_test.cpp'
+        PassPattern = '007e0540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e0a40'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e0a40_007e0a40.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e0a40_007e0a40_test.cpp'
+        PassPattern = '007e0a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1400'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e1400_007e1400.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e1400_007e1400_test.cpp'
+        PassPattern = '007e1400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1d30'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e1d30_007e1d30.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e1d30_007e1d30_test.cpp'
+        PassPattern = '007e1d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e2390'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e2390_007e2390.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e2390_007e2390_test.cpp'
+        PassPattern = '007e2390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e3290'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e3290_007e3290.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e3290_007e3290_test.cpp'
+        PassPattern = '007e3290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e47d0'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e47d0_007e47d0.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e47d0_007e47d0_test.cpp'
+        PassPattern = '007e47d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e5820'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e5820_007e5820.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e5820_007e5820_test.cpp'
+        PassPattern = '007e5820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e6e00'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e6e00_007e6e00.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e6e00_007e6e00_test.cpp'
+        PassPattern = '007e6e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7d80'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e7d80_007e7d80.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e7d80_007e7d80_test.cpp'
+        PassPattern = '007e7d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e8200'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e8200_007e8200.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e8200_007e8200_test.cpp'
+        PassPattern = '007e8200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eae40'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007eae40_007eae40.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007eae40_007eae40_test.cpp'
+        PassPattern = '007eae40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ee6e0'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007ee6e0_007ee6e0.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007ee6e0_007ee6e0_test.cpp'
+        PassPattern = '007ee6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eeea0'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007eeea0_007eeea0.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007eeea0_007eeea0_test.cpp'
+        PassPattern = '007eeea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f1ee0'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007f1ee0_007f1ee0.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007f1ee0_007f1ee0_test.cpp'
+        PassPattern = '007f1ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f3c20'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007f3c20_007f3c20.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007f3c20_007f3c20_test.cpp'
+        PassPattern = '007f3c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f4c90'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007f4c90_007f4c90.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007f4c90_007f4c90_test.cpp'
+        PassPattern = '007f4c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f5560'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007f5560_007f5560.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007f5560_007f5560_test.cpp'
+        PassPattern = '007f5560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f87a0'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007f87a0_007f87a0.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007f87a0_007f87a0_test.cpp'
+        PassPattern = '007f87a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fcd50'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007fcd50_007fcd50.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007fcd50_007fcd50_test.cpp'
+        PassPattern = '007fcd50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fe5b0'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007fe5b0_007fe5b0.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007fe5b0_007fe5b0_test.cpp'
+        PassPattern = '007fe5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00801670'
+        Module = 'CDefClassBase'
+        Source = '00/80/CDefClassBase_GetSubDef00801670_00801670.cpp'
+        TestSource = '00/80/CDefClassBase_GetSubDef00801670_00801670_test.cpp'
+        PassPattern = '00801670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080fe60'
+        Module = 'CDefClassBase'
+        Source = '00/80/CDefClassBase_GetSubDef0080fe60_0080fe60.cpp'
+        TestSource = '00/80/CDefClassBase_GetSubDef0080fe60_0080fe60_test.cpp'
+        PassPattern = '0080fe60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00810c80'
+        Module = 'CDefClassBase'
+        Source = '00/81/CDefClassBase_GetSubDef00810c80_00810c80.cpp'
+        TestSource = '00/81/CDefClassBase_GetSubDef00810c80_00810c80_test.cpp'
+        PassPattern = '00810c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008148c0'
+        Module = 'CDefClassBase'
+        Source = '00/81/CDefClassBase_GetSubDef008148c0_008148c0.cpp'
+        TestSource = '00/81/CDefClassBase_GetSubDef008148c0_008148c0_test.cpp'
+        PassPattern = '008148c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00817bb0'
+        Module = 'CDefClassBase'
+        Source = '00/81/CDefClassBase_GetSubDef00817bb0_00817bb0.cpp'
+        TestSource = '00/81/CDefClassBase_GetSubDef00817bb0_00817bb0_test.cpp'
+        PassPattern = '00817bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c33e0'
+        Module = 'CDefClassBase'
+        Source = '00/8c/CDefClassBase_GetSubDef008c33e0_008c33e0.cpp'
+        TestSource = '00/8c/CDefClassBase_GetSubDef008c33e0_008c33e0_test.cpp'
+        PassPattern = '008c33e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c3510'
+        Module = 'CDefClassBase'
+        Source = '00/8c/CDefClassBase_GetSubDef008c3510_008c3510.cpp'
+        TestSource = '00/8c/CDefClassBase_GetSubDef008c3510_008c3510_test.cpp'
+        PassPattern = '008c3510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c78f0'
+        Module = 'CDefClassBase'
+        Source = '00/8c/CDefClassBase_GetSubDef008c78f0_008c78f0.cpp'
+        TestSource = '00/8c/CDefClassBase_GetSubDef008c78f0_008c78f0_test.cpp'
+        PassPattern = '008c78f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c79b0'
+        Module = 'CDefClassBase'
+        Source = '00/8c/CDefClassBase_GetSubDef008c79b0_008c79b0.cpp'
+        TestSource = '00/8c/CDefClassBase_GetSubDef008c79b0_008c79b0_test.cpp'
+        PassPattern = '008c79b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c7a70'
+        Module = 'CDefClassBase'
+        Source = '00/8c/CDefClassBase_GetSubDef008c7a70_008c7a70.cpp'
+        TestSource = '00/8c/CDefClassBase_GetSubDef008c7a70_008c7a70_test.cpp'
+        PassPattern = '008c7a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cbff0'
+        Module = 'CDefClassBase'
+        Source = '00/8c/CDefClassBase_GetSubDef008cbff0_008cbff0.cpp'
+        TestSource = '00/8c/CDefClassBase_GetSubDef008cbff0_008cbff0_test.cpp'
+        PassPattern = '008cbff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cd0d0'
+        Module = 'CDefClassBase'
+        Source = '00/8c/CDefClassBase_GetSubDef008cd0d0_008cd0d0.cpp'
+        TestSource = '00/8c/CDefClassBase_GetSubDef008cd0d0_008cd0d0_test.cpp'
+        PassPattern = '008cd0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e3240'
+        Module = 'CDefClassBase'
+        Source = '00/8e/CDefClassBase_GetSubDef008e3240_008e3240.cpp'
+        TestSource = '00/8e/CDefClassBase_GetSubDef008e3240_008e3240_test.cpp'
+        PassPattern = '008e3240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e7790'
+        Module = 'CDefClassBase'
+        Source = '00/8e/CDefClassBase_GetSubDef008e7790_008e7790.cpp'
+        TestSource = '00/8e/CDefClassBase_GetSubDef008e7790_008e7790_test.cpp'
+        PassPattern = '008e7790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f00f0'
+        Module = 'CDefClassBase'
+        Source = '00/8f/CDefClassBase_GetSubDef008f00f0_008f00f0.cpp'
+        TestSource = '00/8f/CDefClassBase_GetSubDef008f00f0_008f00f0_test.cpp'
+        PassPattern = '008f00f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00956590'
+        Module = 'CDefClassBase'
+        Source = '00/95/CDefClassBase_GetSubDef00956590_00956590.cpp'
+        TestSource = '00/95/CDefClassBase_GetSubDef00956590_00956590_test.cpp'
+        PassPattern = '00956590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095c5c0'
+        Module = 'CDefClassBase'
+        Source = '00/95/CDefClassBase_GetSubDef0095c5c0_0095c5c0.cpp'
+        TestSource = '00/95/CDefClassBase_GetSubDef0095c5c0_0095c5c0_test.cpp'
+        PassPattern = '0095c5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00978190'
+        Module = 'CDefClassBase'
+        Source = '00/97/CDefClassBase_GetSubDef00978190_00978190.cpp'
+        TestSource = '00/97/CDefClassBase_GetSubDef00978190_00978190_test.cpp'
+        PassPattern = '00978190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005da3c0'
+        Module = 'CDefClassBase'
+        Source = '00/5d/CDefClassBase_GetSubDef005da3c0_005da3c0.cpp'
+        TestSource = '00/5d/CDefClassBase_GetSubDef005da3c0_005da3c0_test.cpp'
+        PassPattern = '005da3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ed4a0'
+        Module = 'CDefClassBase'
+        Source = '00/5e/CDefClassBase_GetSubDef005ed4a0_005ed4a0.cpp'
+        TestSource = '00/5e/CDefClassBase_GetSubDef005ed4a0_005ed4a0_test.cpp'
+        PassPattern = '005ed4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006daa90'
+        Module = 'CDefClassBase'
+        Source = '00/6d/CDefClassBase_GetSubDef006daa90_006daa90.cpp'
+        TestSource = '00/6d/CDefClassBase_GetSubDef006daa90_006daa90_test.cpp'
+        PassPattern = '006daa90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0f60'
+        Module = 'CDefClassBase'
+        Source = '00/6f/CDefClassBase_GetSubDef006f0f60_006f0f60.cpp'
+        TestSource = '00/6f/CDefClassBase_GetSubDef006f0f60_006f0f60_test.cpp'
+        PassPattern = '006f0f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007086f0'
+        Module = 'CDefClassBase'
+        Source = '00/70/CDefClassBase_GetSubDef007086f0_007086f0.cpp'
+        TestSource = '00/70/CDefClassBase_GetSubDef007086f0_007086f0_test.cpp'
+        PassPattern = '007086f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00722d30'
+        Module = 'CDefClassBase'
+        Source = '00/72/CDefClassBase_GetSubDef00722d30_00722d30.cpp'
+        TestSource = '00/72/CDefClassBase_GetSubDef00722d30_00722d30_test.cpp'
+        PassPattern = '00722d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072ef60'
+        Module = 'CDefClassBase'
+        Source = '00/72/CDefClassBase_GetSubDef0072ef60_0072ef60.cpp'
+        TestSource = '00/72/CDefClassBase_GetSubDef0072ef60_0072ef60_test.cpp'
+        PassPattern = '0072ef60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007380d0'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef007380d0_007380d0.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef007380d0_007380d0_test.cpp'
+        PassPattern = '007380d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007385b0'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef007385b0_007385b0.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef007385b0_007385b0_test.cpp'
+        PassPattern = '007385b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073dbe0'
+        Module = 'CDefClassBase'
+        Source = '00/73/CDefClassBase_GetSubDef0073dbe0_0073dbe0.cpp'
+        TestSource = '00/73/CDefClassBase_GetSubDef0073dbe0_0073dbe0_test.cpp'
+        PassPattern = '0073dbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00748900'
+        Module = 'CDefClassBase'
+        Source = '00/74/CDefClassBase_GetSubDef00748900_00748900.cpp'
+        TestSource = '00/74/CDefClassBase_GetSubDef00748900_00748900_test.cpp'
+        PassPattern = '00748900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f7d0'
+        Module = 'CDefClassBase'
+        Source = '00/74/CDefClassBase_GetSubDef0074f7d0_0074f7d0.cpp'
+        TestSource = '00/74/CDefClassBase_GetSubDef0074f7d0_0074f7d0_test.cpp'
+        PassPattern = '0074f7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007550f0'
+        Module = 'CDefClassBase'
+        Source = '00/75/CDefClassBase_GetSubDef007550f0_007550f0.cpp'
+        TestSource = '00/75/CDefClassBase_GetSubDef007550f0_007550f0_test.cpp'
+        PassPattern = '007550f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00778900'
+        Module = 'CDefClassBase'
+        Source = '00/77/CDefClassBase_GetSubDef00778900_00778900.cpp'
+        TestSource = '00/77/CDefClassBase_GetSubDef00778900_00778900_test.cpp'
+        PassPattern = '00778900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077e430'
+        Module = 'CDefClassBase'
+        Source = '00/77/CDefClassBase_GetSubDef0077e430_0077e430.cpp'
+        TestSource = '00/77/CDefClassBase_GetSubDef0077e430_0077e430_test.cpp'
+        PassPattern = '0077e430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007815a0'
+        Module = 'CDefClassBase'
+        Source = '00/78/CDefClassBase_GetSubDef007815a0_007815a0.cpp'
+        TestSource = '00/78/CDefClassBase_GetSubDef007815a0_007815a0_test.cpp'
+        PassPattern = '007815a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00785010'
+        Module = 'CDefClassBase'
+        Source = '00/78/CDefClassBase_GetSubDef00785010_00785010.cpp'
+        TestSource = '00/78/CDefClassBase_GetSubDef00785010_00785010_test.cpp'
+        PassPattern = '00785010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787ae0'
+        Module = 'CDefClassBase'
+        Source = '00/78/CDefClassBase_GetSubDef00787ae0_00787ae0.cpp'
+        TestSource = '00/78/CDefClassBase_GetSubDef00787ae0_00787ae0_test.cpp'
+        PassPattern = '00787ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a61d0'
+        Module = 'CDefClassBase'
+        Source = '00/7a/CDefClassBase_GetSubDef007a61d0_007a61d0.cpp'
+        TestSource = '00/7a/CDefClassBase_GetSubDef007a61d0_007a61d0_test.cpp'
+        PassPattern = '007a61d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a6ca0'
+        Module = 'CDefClassBase'
+        Source = '00/7a/CDefClassBase_GetSubDef007a6ca0_007a6ca0.cpp'
+        TestSource = '00/7a/CDefClassBase_GetSubDef007a6ca0_007a6ca0_test.cpp'
+        PassPattern = '007a6ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007afa90'
+        Module = 'CDefClassBase'
+        Source = '00/7a/CDefClassBase_GetSubDef007afa90_007afa90.cpp'
+        TestSource = '00/7a/CDefClassBase_GetSubDef007afa90_007afa90_test.cpp'
+        PassPattern = '007afa90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b7f50'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007b7f50_007b7f50.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007b7f50_007b7f50_test.cpp'
+        PassPattern = '007b7f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b9700'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007b9700_007b9700.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007b9700_007b9700_test.cpp'
+        PassPattern = '007b9700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c3ad0'
+        Module = 'CDefClassBase'
+        Source = '00/7c/CDefClassBase_GetSubDef007c3ad0_007c3ad0.cpp'
+        TestSource = '00/7c/CDefClassBase_GetSubDef007c3ad0_007c3ad0_test.cpp'
+        PassPattern = '007c3ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d1260'
+        Module = 'CDefClassBase'
+        Source = '00/7d/CDefClassBase_GetSubDef007d1260_007d1260.cpp'
+        TestSource = '00/7d/CDefClassBase_GetSubDef007d1260_007d1260_test.cpp'
+        PassPattern = '007d1260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d4bd0'
+        Module = 'CDefClassBase'
+        Source = '00/7d/CDefClassBase_GetSubDef007d4bd0_007d4bd0.cpp'
+        TestSource = '00/7d/CDefClassBase_GetSubDef007d4bd0_007d4bd0_test.cpp'
+        PassPattern = '007d4bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1230'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007e1230_007e1230.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007e1230_007e1230_test.cpp'
+        PassPattern = '007e1230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ea960'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007ea960_007ea960.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007ea960_007ea960_test.cpp'
+        PassPattern = '007ea960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ecd00'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007ecd00_007ecd00.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007ecd00_007ecd00_test.cpp'
+        PassPattern = '007ecd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007efc50'
+        Module = 'CDefClassBase'
+        Source = '00/7e/CDefClassBase_GetSubDef007efc50_007efc50.cpp'
+        TestSource = '00/7e/CDefClassBase_GetSubDef007efc50_007efc50_test.cpp'
+        PassPattern = '007efc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f16b0'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007f16b0_007f16b0.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007f16b0_007f16b0_test.cpp'
+        PassPattern = '007f16b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f9330'
+        Module = 'CDefClassBase'
+        Source = '00/7f/CDefClassBase_GetSubDef007f9330_007f9330.cpp'
+        TestSource = '00/7f/CDefClassBase_GetSubDef007f9330_007f9330_test.cpp'
+        PassPattern = '007f9330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087c490'
+        Module = 'CDefClassBase'
+        Source = '00/87/CDefClassBase_GetSubDef0087c490_0087c490.cpp'
+        TestSource = '00/87/CDefClassBase_GetSubDef0087c490_0087c490_test.cpp'
+        PassPattern = '0087c490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c5a50'
+        Module = 'CDefClassBase'
+        Source = '00/8c/CDefClassBase_GetSubDef008c5a50_008c5a50.cpp'
+        TestSource = '00/8c/CDefClassBase_GetSubDef008c5a50_008c5a50_test.cpp'
+        PassPattern = '008c5a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e3300'
+        Module = 'CDefClassBase'
+        Source = '00/8e/CDefClassBase_GetSubDef008e3300_008e3300.cpp'
+        TestSource = '00/8e/CDefClassBase_GetSubDef008e3300_008e3300_test.cpp'
+        PassPattern = '008e3300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ecda0'
+        Module = 'CDefClassBase'
+        Source = '00/8e/CDefClassBase_GetSubDef008ecda0_008ecda0.cpp'
+        TestSource = '00/8e/CDefClassBase_GetSubDef008ecda0_008ecda0_test.cpp'
+        PassPattern = '008ecda0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f01b0'
+        Module = 'CDefClassBase'
+        Source = '00/8f/CDefClassBase_GetSubDef008f01b0_008f01b0.cpp'
+        TestSource = '00/8f/CDefClassBase_GetSubDef008f01b0_008f01b0_test.cpp'
+        PassPattern = '008f01b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f27a0'
+        Module = 'CDefClassBase'
+        Source = '00/8f/CDefClassBase_GetSubDef008f27a0_008f27a0.cpp'
+        TestSource = '00/8f/CDefClassBase_GetSubDef008f27a0_008f27a0_test.cpp'
+        PassPattern = '008f27a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042af9e'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_GetSubDef0042af9e_0042af9e.cpp'
+        TestSource = '00/42/CDefClassBase_GetSubDef0042af9e_0042af9e_test.cpp'
+        PassPattern = '0042af9e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b0a2'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_GetSubDef0042b0a2_0042b0a2.cpp'
+        TestSource = '00/42/CDefClassBase_GetSubDef0042b0a2_0042b0a2_test.cpp'
+        PassPattern = '0042b0a2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b1a6'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_GetSubDef0042b1a6_0042b1a6.cpp'
+        TestSource = '00/42/CDefClassBase_GetSubDef0042b1a6_0042b1a6_test.cpp'
+        PassPattern = '0042b1a6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b248'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_GetSubDef0042b248_0042b248.cpp'
+        TestSource = '00/42/CDefClassBase_GetSubDef0042b248_0042b248_test.cpp'
+        PassPattern = '0042b248_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00485815'
+        Module = 'CDefClassBase'
+        Source = '00/48/CDefClassBase_GetSubDef00485815_00485815.cpp'
+        TestSource = '00/48/CDefClassBase_GetSubDef00485815_00485815_test.cpp'
+        PassPattern = '00485815_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dc858'
+        Module = 'CDefClassBase'
+        Source = '00/4d/CDefClassBase_GetSubDef004dc858_004dc858.cpp'
+        TestSource = '00/4d/CDefClassBase_GetSubDef004dc858_004dc858_test.cpp'
+        PassPattern = '004dc858_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057ff92'
+        Module = 'CDefClassBase'
+        Source = '00/57/CDefClassBase_GetSubDef0057ff92_0057ff92.cpp'
+        TestSource = '00/57/CDefClassBase_GetSubDef0057ff92_0057ff92_test.cpp'
+        PassPattern = '0057ff92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00580034'
+        Module = 'CDefClassBase'
+        Source = '00/58/CDefClassBase_GetSubDef00580034_00580034.cpp'
+        TestSource = '00/58/CDefClassBase_GetSubDef00580034_00580034_test.cpp'
+        PassPattern = '00580034_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005933c8'
+        Module = 'CDefClassBase'
+        Source = '00/59/CDefClassBase_GetSubDef005933c8_005933c8.cpp'
+        TestSource = '00/59/CDefClassBase_GetSubDef005933c8_005933c8_test.cpp'
+        PassPattern = '005933c8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059346a'
+        Module = 'CDefClassBase'
+        Source = '00/59/CDefClassBase_GetSubDef0059346a_0059346a.cpp'
+        TestSource = '00/59/CDefClassBase_GetSubDef0059346a_0059346a_test.cpp'
+        PassPattern = '0059346a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059350c'
+        Module = 'CDefClassBase'
+        Source = '00/59/CDefClassBase_GetSubDef0059350c_0059350c.cpp'
+        TestSource = '00/59/CDefClassBase_GetSubDef0059350c_0059350c_test.cpp'
+        PassPattern = '0059350c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005935c4'
+        Module = 'CDefClassBase'
+        Source = '00/59/CDefClassBase_GetSubDef005935c4_005935c4.cpp'
+        TestSource = '00/59/CDefClassBase_GetSubDef005935c4_005935c4_test.cpp'
+        PassPattern = '005935c4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005936c2'
+        Module = 'CDefClassBase'
+        Source = '00/59/CDefClassBase_GetSubDef005936c2_005936c2.cpp'
+        TestSource = '00/59/CDefClassBase_GetSubDef005936c2_005936c2_test.cpp'
+        PassPattern = '005936c2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1e5a'
+        Module = 'CDefClassBase'
+        Source = '00/5b/CDefClassBase_GetSubDef005b1e5a_005b1e5a.cpp'
+        TestSource = '00/5b/CDefClassBase_GetSubDef005b1e5a_005b1e5a_test.cpp'
+        PassPattern = '005b1e5a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1efc'
+        Module = 'CDefClassBase'
+        Source = '00/5b/CDefClassBase_GetSubDef005b1efc_005b1efc.cpp'
+        TestSource = '00/5b/CDefClassBase_GetSubDef005b1efc_005b1efc_test.cpp'
+        PassPattern = '005b1efc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bade1'
+        Module = 'CDefClassBase'
+        Source = '00/5b/CDefClassBase_GetSubDef005bade1_005bade1.cpp'
+        TestSource = '00/5b/CDefClassBase_GetSubDef005bade1_005bade1_test.cpp'
+        PassPattern = '005bade1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c0cfb'
+        Module = 'CDefClassBase'
+        Source = '00/5c/CDefClassBase_GetSubDef005c0cfb_005c0cfb.cpp'
+        TestSource = '00/5c/CDefClassBase_GetSubDef005c0cfb_005c0cfb_test.cpp'
+        PassPattern = '005c0cfb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cc10e'
+        Module = 'CDefClassBase'
+        Source = '00/5c/CDefClassBase_GetSubDef005cc10e_005cc10e.cpp'
+        TestSource = '00/5c/CDefClassBase_GetSubDef005cc10e_005cc10e_test.cpp'
+        PassPattern = '005cc10e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655d28'
+        Module = 'CDefClassBase'
+        Source = '00/65/CDefClassBase_GetSubDef00655d28_00655d28.cpp'
+        TestSource = '00/65/CDefClassBase_GetSubDef00655d28_00655d28_test.cpp'
+        PassPattern = '00655d28_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f440'
+        Module = 'CDefClassBase'
+        Source = '00/65/CDefClassBase_GetSubDef0065f440_0065f440.cpp'
+        TestSource = '00/65/CDefClassBase_GetSubDef0065f440_0065f440_test.cpp'
+        PassPattern = '0065f440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f604'
+        Module = 'CDefClassBase'
+        Source = '00/65/CDefClassBase_GetSubDef0065f604_0065f604.cpp'
+        TestSource = '00/65/CDefClassBase_GetSubDef0065f604_0065f604_test.cpp'
+        PassPattern = '0065f604_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f7b4'
+        Module = 'CDefClassBase'
+        Source = '00/65/CDefClassBase_GetSubDef0065f7b4_0065f7b4.cpp'
+        TestSource = '00/65/CDefClassBase_GetSubDef0065f7b4_0065f7b4_test.cpp'
+        PassPattern = '0065f7b4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00788e53'
+        Module = 'CDefClassBase'
+        Source = '00/78/CDefClassBase_GetSubDef00788e53_00788e53.cpp'
+        TestSource = '00/78/CDefClassBase_GetSubDef00788e53_00788e53_test.cpp'
+        PassPattern = '00788e53_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007be7ea'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007be7ea_007be7ea.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007be7ea_007be7ea_test.cpp'
+        PassPattern = '007be7ea_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007be88c'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007be88c_007be88c.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007be88c_007be88c_test.cpp'
+        PassPattern = '007be88c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007be92e'
+        Module = 'CDefClassBase'
+        Source = '00/7b/CDefClassBase_GetSubDef007be92e_007be92e.cpp'
+        TestSource = '00/7b/CDefClassBase_GetSubDef007be92e_007be92e_test.cpp'
+        PassPattern = '007be92e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a291'
+        Module = '_unattributed'
+        Source = '00/42/unattributed_CVector0042a291_0042a291.cpp'
+        TestSource = '00/42/unattributed_CVector0042a291_0042a291_test.cpp'
+        PassPattern = '0042a291_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a2ec'
+        Module = '_unattributed'
+        Source = '00/42/unattributed_CVector0042a2ec_0042a2ec.cpp'
+        TestSource = '00/42/unattributed_CVector0042a2ec_0042a2ec_test.cpp'
+        PassPattern = '0042a2ec_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042b2ea'
+        Module = '_unattributed'
+        Source = '00/42/unattributed_CVector0042b2ea_0042b2ea.cpp'
+        TestSource = '00/42/unattributed_CVector0042b2ea_0042b2ea_test.cpp'
+        PassPattern = '0042b2ea_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053c8d0'
+        Module = '_unattributed'
+        Source = '00/53/unattributed_CVector0053c8d0_0053c8d0.cpp'
+        TestSource = '00/53/unattributed_CVector0053c8d0_0053c8d0_test.cpp'
+        PassPattern = '0053c8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655cdc'
+        Module = '_unattributed'
+        Source = '00/65/unattributed_CVector00655cdc_00655cdc.cpp'
+        TestSource = '00/65/unattributed_CVector00655cdc_00655cdc_test.cpp'
+        PassPattern = '00655cdc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f4e2'
+        Module = '_unattributed'
+        Source = '00/65/unattributed_CVector0065f4e2_0065f4e2.cpp'
+        TestSource = '00/65/unattributed_CVector0065f4e2_0065f4e2_test.cpp'
+        PassPattern = '0065f4e2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f50a'
+        Module = '_unattributed'
+        Source = '00/65/unattributed_CVector0065f50a_0065f50a.cpp'
+        TestSource = '00/65/unattributed_CVector0065f50a_0065f50a_test.cpp'
+        PassPattern = '0065f50a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f532'
+        Module = '_unattributed'
+        Source = '00/65/unattributed_CVector0065f532_0065f532.cpp'
+        TestSource = '00/65/unattributed_CVector0065f532_0065f532_test.cpp'
+        PassPattern = '0065f532_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f55a'
+        Module = '_unattributed'
+        Source = '00/65/unattributed_CVector0065f55a_0065f55a.cpp'
+        TestSource = '00/65/unattributed_CVector0065f55a_0065f55a_test.cpp'
+        PassPattern = '0065f55a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f582'
+        Module = '_unattributed'
+        Source = '00/65/unattributed_CVector0065f582_0065f582.cpp'
+        TestSource = '00/65/unattributed_CVector0065f582_0065f582_test.cpp'
+        PassPattern = '0065f582_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f5aa'
+        Module = '_unattributed'
+        Source = '00/65/unattributed_CVector0065f5aa_0065f5aa.cpp'
+        TestSource = '00/65/unattributed_CVector0065f5aa_0065f5aa_test.cpp'
+        PassPattern = '0065f5aa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d16780'
+        Module = '_unattributed'
+        Source = '00/d1/unattributed_FireCDispatcher00d16780_00d16780.cpp'
+        TestSource = '00/d1/unattributed_FireCDispatcher00d16780_00d16780_test.cpp'
+        PassPattern = '00d16780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2d530'
+        Module = '_unattributed'
+        Source = '00/d2/unattributed_FireCDispatcher00d2d530_00d2d530.cpp'
+        TestSource = '00/d2/unattributed_FireCDispatcher00d2d530_00d2d530_test.cpp'
+        PassPattern = '00d2d530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d97360'
+        Module = '_unattributed'
+        Source = '00/d9/unattributed_FireCDispatcher00d97360_00d97360.cpp'
+        TestSource = '00/d9/unattributed_FireCDispatcher00d97360_00d97360_test.cpp'
+        PassPattern = '00d97360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9d8f0'
+        Module = '_unattributed'
+        Source = '00/d9/unattributed_FireCDispatcher00d9d8f0_00d9d8f0.cpp'
+        TestSource = '00/d9/unattributed_FireCDispatcher00d9d8f0_00d9d8f0_test.cpp'
+        PassPattern = '00d9d8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da29b0'
+        Module = '_unattributed'
+        Source = '00/da/unattributed_FireCDispatcher00da29b0_00da29b0.cpp'
+        TestSource = '00/da/unattributed_FireCDispatcher00da29b0_00da29b0_test.cpp'
+        PassPattern = '00da29b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da77f0'
+        Module = '_unattributed'
+        Source = '00/da/unattributed_FireCDispatcher00da77f0_00da77f0.cpp'
+        TestSource = '00/da/unattributed_FireCDispatcher00da77f0_00da77f0_test.cpp'
+        PassPattern = '00da77f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dca660'
+        Module = '_unattributed'
+        Source = '00/dc/unattributed_FireCDispatcher00dca660_00dca660.cpp'
+        TestSource = '00/dc/unattributed_FireCDispatcher00dca660_00dca660_test.cpp'
+        PassPattern = '00dca660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de8300'
+        Module = '_unattributed'
+        Source = '00/de/unattributed_FireCDispatcher00de8300_00de8300.cpp'
+        TestSource = '00/de/unattributed_FireCDispatcher00de8300_00de8300_test.cpp'
+        PassPattern = '00de8300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e05130'
+        Module = '_unattributed'
+        Source = '00/e0/unattributed_FireCDispatcher00e05130_00e05130.cpp'
+        TestSource = '00/e0/unattributed_FireCDispatcher00e05130_00e05130_test.cpp'
+        PassPattern = '00e05130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0de50'
+        Module = '_unattributed'
+        Source = '00/e0/unattributed_FireCDispatcher00e0de50_00e0de50.cpp'
+        TestSource = '00/e0/unattributed_FireCDispatcher00e0de50_00e0de50_test.cpp'
+        PassPattern = '00e0de50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1f5e0'
+        Module = '_unattributed'
+        Source = '00/e1/unattributed_FireCDispatcher00e1f5e0_00e1f5e0.cpp'
+        TestSource = '00/e1/unattributed_FireCDispatcher00e1f5e0_00e1f5e0_test.cpp'
+        PassPattern = '00e1f5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2e8c0'
+        Module = '_unattributed'
+        Source = '00/e2/unattributed_FireCDispatcher00e2e8c0_00e2e8c0.cpp'
+        TestSource = '00/e2/unattributed_FireCDispatcher00e2e8c0_00e2e8c0_test.cpp'
+        PassPattern = '00e2e8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e36970'
+        Module = '_unattributed'
+        Source = '00/e3/unattributed_FireCDispatcher00e36970_00e36970.cpp'
+        TestSource = '00/e3/unattributed_FireCDispatcher00e36970_00e36970_test.cpp'
+        PassPattern = '00e36970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e39100'
+        Module = '_unattributed'
+        Source = '00/e3/unattributed_FireCDispatcher00e39100_00e39100.cpp'
+        TestSource = '00/e3/unattributed_FireCDispatcher00e39100_00e39100_test.cpp'
+        PassPattern = '00e39100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e54060'
+        Module = '_unattributed'
+        Source = '00/e5/unattributed_FireCDispatcher00e54060_00e54060.cpp'
+        TestSource = '00/e5/unattributed_FireCDispatcher00e54060_00e54060_test.cpp'
+        PassPattern = '00e54060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6b200'
+        Module = '_unattributed'
+        Source = '00/e6/unattributed_FireCDispatcher00e6b200_00e6b200.cpp'
+        TestSource = '00/e6/unattributed_FireCDispatcher00e6b200_00e6b200_test.cpp'
+        PassPattern = '00e6b200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7c670'
+        Module = '_unattributed'
+        Source = '00/e7/unattributed_FireCDispatcher00e7c670_00e7c670.cpp'
+        TestSource = '00/e7/unattributed_FireCDispatcher00e7c670_00e7c670_test.cpp'
+        PassPattern = '00e7c670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8d0a0'
+        Module = '_unattributed'
+        Source = '00/e8/unattributed_FireCDispatcher00e8d0a0_00e8d0a0.cpp'
+        TestSource = '00/e8/unattributed_FireCDispatcher00e8d0a0_00e8d0a0_test.cpp'
+        PassPattern = '00e8d0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9def0'
+        Module = '_unattributed'
+        Source = '00/e9/unattributed_FireCDispatcher00e9def0_00e9def0.cpp'
+        TestSource = '00/e9/unattributed_FireCDispatcher00e9def0_00e9def0_test.cpp'
+        PassPattern = '00e9def0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7610'
+        Module = '_unattributed'
+        Source = '00/ea/unattributed_FireCDispatcher00ea7610_00ea7610.cpp'
+        TestSource = '00/ea/unattributed_FireCDispatcher00ea7610_00ea7610_test.cpp'
+        PassPattern = '00ea7610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec52f0'
+        Module = '_unattributed'
+        Source = '00/ec/unattributed_FireCDispatcher00ec52f0_00ec52f0.cpp'
+        TestSource = '00/ec/unattributed_FireCDispatcher00ec52f0_00ec52f0_test.cpp'
+        PassPattern = '00ec52f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7580'
+        Module = '_unattributed'
+        Source = '00/ed/unattributed_FireCDispatcher00ed7580_00ed7580.cpp'
+        TestSource = '00/ed/unattributed_FireCDispatcher00ed7580_00ed7580_test.cpp'
+        PassPattern = '00ed7580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed9960'
+        Module = '_unattributed'
+        Source = '00/ed/unattributed_FireCDispatcher00ed9960_00ed9960.cpp'
+        TestSource = '00/ed/unattributed_FireCDispatcher00ed9960_00ed9960_test.cpp'
+        PassPattern = '00ed9960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edce60'
+        Module = '_unattributed'
+        Source = '00/ed/unattributed_FireCDispatcher00edce60_00edce60.cpp'
+        TestSource = '00/ed/unattributed_FireCDispatcher00edce60_00edce60_test.cpp'
+        PassPattern = '00edce60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef8cc0'
+        Module = '_unattributed'
+        Source = '00/ef/unattributed_FireCDispatcher00ef8cc0_00ef8cc0.cpp'
+        TestSource = '00/ef/unattributed_FireCDispatcher00ef8cc0_00ef8cc0_test.cpp'
+        PassPattern = '00ef8cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f06370'
+        Module = '_unattributed'
+        Source = '00/f0/unattributed_FireCDispatcher00f06370_00f06370.cpp'
+        TestSource = '00/f0/unattributed_FireCDispatcher00f06370_00f06370_test.cpp'
+        PassPattern = '00f06370_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
