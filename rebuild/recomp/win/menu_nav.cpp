@@ -471,6 +471,26 @@ extern "C" void host_ui_event(Ctx* c) {
     F_0055CB10_orig(c);
 }
 
+// 0x41DB1D CManager::CreateComponent(const CCharString& defName, int): every screen and
+// component comes through here by def name. The PC screens the game still builds (PC_QUEST_*,
+// the quest table, trading, the experience screen) are laid out for 1024x768; the Xbox ones
+// (UI_*) for 640x480. The last top-level name seen decides whether host_ui_scale applies the
+// Xbox 1.6: a PC_ name turns it off until a UI_ name turns it back on.
+namespace { bool g_pcScreen = false; }
+extern "C" void F_0041DB1D_orig(Ctx* c);
+extern "C" void host_create_component(Ctx* c) {
+    const uint32_t str = rd32(c->esp + 4);
+    const uint32_t ptr = str ? rd32(str) : 0, len = str ? rd32(str + 4) : 0;
+    char name[48] = {};
+    if (ptr >= 0x10000 && ptr < kGuestLimit && len > 0 && len < sizeof name) std::memcpy(name, gp<const char>(ptr), len);
+    const bool pc = std::strncmp(name, "PC_", 3) == 0, xbox = std::strncmp(name, "UI_", 3) == 0;
+    if ((pc && !g_pcScreen) || (xbox && g_pcScreen)) {
+        g_pcScreen = pc;
+        HLOG(1, "ui: component %s created: the Xbox zoom is %s", name, pc ? "off (PC layout)" : "on");
+    }
+    F_0041DB1D_orig(c);
+}
+
 extern "C" void F_0041CF47_orig(Ctx* c);
 // 0x41CF47 CManager::GetUIScale(C2DVector* out): window / 1024x768. The Xbox screens are laid
 // out for 640x480, so they need 1.6 times that.
@@ -489,42 +509,11 @@ extern "C" void host_ui_scale(Ctx* c) {
     bool zoom = false;
     for (size_t i = 0; i < (tier >= 2 ? 16u : tier == 1 ? 10u : 4u); ++i) zoom = zoom || ret == kSites[i];
     if (xboxMenus() && rd32(0x13B8790) && zoom) {
-        // The component is `this` of the caller (esi at every site). The PC screens the game
-        // still builds (the quest table, the quest start and completion screens) are laid out
-        // for 1024x768 and overflowed 720x480 with the 1.6: a screen whose root is wider
-        // than 640 or taller than 480 is a PC layout and keeps the game's own scale.
-        // The PC-layout test (the quest table, quest start and completion screens are laid out
-        // for 1024x768 and overflow 720x480 under the 1.6) walks the component's ancestors
-        // (retail NUISystem::CComponent = the PDB layout less 8: Name +0x1C, PParent +0xD0, Size +0xD4, DefIndex +0x150).
-        // The component is taken from esi, which is not `this` at every site: every read is
-        // fault-safe and a candidate is only trusted with a vtable in the executable's
-        // read-only data, otherwise the zoom applies as before.
-        auto readU32 = [](uint32_t a, uint32_t& v) { return a >= 0x10000 && a < kGuestLimit && safeRead(a, &v, 4); };
-        auto looksLikeComponent = [&](uint32_t comp) { uint32_t vt = 0; return readU32(comp, vt) && vt >= 0x1230000 && vt < 0x1270000; };
-        // Retail CComponent (raw dump, 2026-10-14): Name CCharString {char* +0x24, len +0x28},
-        // PParent +0xD8 (as the PDB); Size (+0xDC) is 0 on sprites and roots alike, so the
-        // layout is told from the names: the PC screens' components are PC_*, the Xbox UI_*.
-        uint32_t root = c->esi;
-        std::string chain;
-        bool pcLayout = false;
-        auto nameOf = [&](uint32_t comp) -> std::string {
-            uint32_t ptr = 0, len = 0;
-            if (!readU32(comp + 0x24, ptr) || !readU32(comp + 0x28, len) || ptr < 0x10000 || ptr > 0x7FFFFFFF || len == 0 || len > 64) return "";
-            char buf[65] = {};
-            if (!safeRead(ptr, buf, len)) return "";
-            for (uint32_t i = 0; i < len; ++i) if (buf[i] < 0x20 || buf[i] > 0x7E) return "";
-            return std::string(buf, len);
-        };
-        for (int i = 0; i < 24 && looksLikeComponent(root); ++i) {
-            const std::string n = nameOf(root);
-            if (n.rfind("PC_", 0) == 0) pcLayout = true;
-            if (i < 10) chain += " " + (n.empty() ? std::string("?") : n);
-            uint32_t parent = 0;
-            if (!readU32(root + 0xD8, parent) || !parent || parent == root) break;
-            root = parent;
-        }
-        static std::set<std::string> seen;
-        if (seen.insert(chain).second) HLOG(1, "ui: zoom site 0x%08X chain%s: %s layout", ret, chain.c_str(), pcLayout ? "PC (no Xbox zoom)" : "Xbox");
+        // The PC screens the game still builds (the quest table, quest start and completion,
+        // trading, the experience screen) are laid out for 1024x768 and overflowed 720x480
+        // under the 1.6; host_create_component (CManager::CreateComponent, by def name: PC_*
+        // versus UI_*) tells which layout is up.
+        const bool pcLayout = g_pcScreen;  // set by host_create_component from the def names
         if (!pcLayout) {
             wrf32(out, rdf32(out) * 1.6f);
             wrf32(out + 4, rdf32(out + 4) * 1.6f);
