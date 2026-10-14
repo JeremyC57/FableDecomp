@@ -670,11 +670,15 @@ extern "C" void host_ui_scale(Ctx* c) {
 // the Xbox inventory/hero screens; OpenPCInventory builds PC_TOP_LEVEL_LIST).
 extern "C" void F_0058F649_orig(Ctx* c);
 namespace { uint32_t g_xboxInventory = 0; }  // the CTCInventory whose Xbox screens are up
+// The Xbox inventory screens are on screen: set when they open with the live GUI on (a user
+// open, not the one at load), cleared by xboxScreensTick once the live GUI is off.
+bool g_xboxScreensUp = false;
 extern "C" void host_open_inventory(Ctx* c) {
     const uint32_t inv = c->ecx, xbox = rd32(rd32(inv) + 0x78);
     HLOG(1, "menu: inventory 0x%08X opens %s", inv, xboxMenus() ? "the Xbox screens" : "the PC menu");
     g_xboxInventory = xboxMenus() ? inv : 0;
     if (xboxMenus()) {
+        if (liveGui()) { g_xboxScreensUp = true; HLOG(1, "menu: Xbox inventory screens up (live GUI on)"); }
         guestCallThis(xbox, inv, {});
         c->esp += 4;
         return;
@@ -1056,3 +1060,25 @@ extern "C" void host_component_size(Ctx* c) {
     F_00533D30_orig(c);
 }
 
+
+// 0x41E6D3 NUISystem::CManager vfunc_14, the UI event handler: its actions (a category select at
+// 0x4200B0, the description pane at 0x4237A0 / 0x423B65, ...) build PC screen parts when the
+// player GUI's live-GUI byte (+0x2BE) is set and Xbox ones otherwise. The host shows the Xbox
+// inventory with the live GUI on, so the handler built PC parts into the Xbox screens and
+// crashed (Clothing, the description pane: PC_DESCRIPTION_INDEPENDANT). While the Xbox
+// inventory screens are up (g_xboxScreensUp) the handler runs with the byte clear; a toggle it
+// makes itself (closing the menu) carries over to the real value.
+extern "C" void F_0041E6D3_orig(Ctx* c);
+extern "C" void host_ui_manager_event(Ctx* c) {
+    const uint32_t gui = rd32(0x13B8790);
+    if (!g_xboxScreensUp || !gui || !rd8(gui + 0x2BE)) { F_0041E6D3_orig(c); return; }
+    wr8(gui + 0x2BE, 0);
+    F_0041E6D3_orig(c);
+    if (rd32(0x13B8790) == gui) wr8(gui + 0x2BE, rd8(gui + 0x2BE) ? 0 : 1);
+}
+
+namespace host::menu {
+void xboxScreensTick() {  // once per input update: the Xbox inventory screens end with the live GUI
+    if (g_xboxScreensUp && !liveGui()) { g_xboxScreensUp = false; HLOG(1, "menu: Xbox inventory screens closed (live GUI off)"); }
+}
+}  // namespace host::menu

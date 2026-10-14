@@ -685,6 +685,7 @@ extern "C" void host_joystick_update(Ctx* c) {
     if (!once) once = true, host::log("controller: joystick device 0x%08X polled by the game", self);
     host::gfx::applyPending();  // graphics settings changed in the overlay: on the game thread, outside rendering
     menuAfterSaveTick();
+    host::menu::xboxScreensTick();
     testMorphTick();  // harness: FABLE_TEST_MORPH
     c->esp = (c->esp - 0x100) & ~0xFu;  // scratch below the guest stack for the event and the menu code
     const uint32_t ev = c->esp + 0x20;
