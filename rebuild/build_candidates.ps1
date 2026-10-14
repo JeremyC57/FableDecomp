@@ -184086,6 +184086,1405 @@ $catalog = @(
         TestSource = '00/af/unattributed_UpperBoundCVectorMap00af6120_00af6120_test.cpp'
         PassPattern = '00af6120_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '01210c80'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210c80_01210c80.cpp'
+        TestSource = '01/21/global_Unwind01210c80_01210c80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c09b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01210ca0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210ca0_01210ca0.cpp'
+        TestSource = '01/21/global_Unwind01210ca0_01210ca0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c09f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01210ce0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210ce0_01210ce0.cpp'
+        TestSource = '01/21/global_Unwind01210ce0_01210ce0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0a160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012111a0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012111a0_012111a0.cpp'
+        TestSource = '01/21/global_Unwind012111a0_012111a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0f580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012111e0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012111e0_012111e0.cpp'
+        TestSource = '01/21/global_Unwind012111e0_012111e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0f780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211220'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211220_01211220.cpp'
+        TestSource = '01/21/global_Unwind01211220_01211220_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0f980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211280'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211280_01211280.cpp'
+        TestSource = '01/21/global_Unwind01211280_01211280_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0fe40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211b10'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211b10_01211b10.cpp'
+        TestSource = '01/21/global_Unwind01211b10_01211b10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c154f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211b90'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211b90_01211b90.cpp'
+        TestSource = '01/21/global_Unwind01211b90_01211b90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c15950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212e40'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212e40_01212e40.cpp'
+        TestSource = '01/21/global_Unwind01212e40_01212e40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c22ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212e60'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212e60_01212e60.cpp'
+        TestSource = '01/21/global_Unwind01212e60_01212e60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c23120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212e80'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212e80_01212e80.cpp'
+        TestSource = '01/21/global_Unwind01212e80_01212e80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c23280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212ff0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212ff0_01212ff0.cpp'
+        TestSource = '01/21/global_Unwind01212ff0_01212ff0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c24520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213010'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213010_01213010.cpp'
+        TestSource = '01/21/global_Unwind01213010_01213010_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c24680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213030'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213030_01213030.cpp'
+        TestSource = '01/21/global_Unwind01213030_01213030_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c247e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213070'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213070_01213070.cpp'
+        TestSource = '01/21/global_Unwind01213070_01213070_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c249e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012130d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012130d0_012130d0.cpp'
+        TestSource = '01/21/global_Unwind012130d0_012130d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213110'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213110_01213110.cpp'
+        TestSource = '01/21/global_Unwind01213110_01213110_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213150'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213150_01213150.cpp'
+        TestSource = '01/21/global_Unwind01213150_01213150_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c253c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012136d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012136d0_012136d0.cpp'
+        TestSource = '01/21/global_Unwind012136d0_012136d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012136f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012136f0_012136f0.cpp'
+        TestSource = '01/21/global_Unwind012136f0_012136f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213710'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213710_01213710.cpp'
+        TestSource = '01/21/global_Unwind01213710_01213710_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213750'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213750_01213750.cpp'
+        TestSource = '01/21/global_Unwind01213750_01213750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213890'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213890_01213890.cpp'
+        TestSource = '01/21/global_Unwind01213890_01213890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2c170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012138d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012138d0_012138d0.cpp'
+        TestSource = '01/21/global_Unwind012138d0_012138d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2c4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213aa0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213aa0_01213aa0.cpp'
+        TestSource = '01/21/global_Unwind01213aa0_01213aa0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2d030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213b80'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213b80_01213b80.cpp'
+        TestSource = '01/21/global_Unwind01213b80_01213b80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2e030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213dd0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213dd0_01213dd0.cpp'
+        TestSource = '01/21/global_Unwind01213dd0_01213dd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c302b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213df0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213df0_01213df0.cpp'
+        TestSource = '01/21/global_Unwind01213df0_01213df0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c30300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213e10'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213e10_01213e10.cpp'
+        TestSource = '01/21/global_Unwind01213e10_01213e10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c30350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214010'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214010_01214010.cpp'
+        TestSource = '01/21/global_Unwind01214010_01214010_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c30e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214330'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214330_01214330.cpp'
+        TestSource = '01/21/global_Unwind01214330_01214330_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c349c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012144f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012144f0_012144f0.cpp'
+        TestSource = '01/21/global_Unwind012144f0_012144f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012145e0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012145e0_012145e0.cpp'
+        TestSource = '01/21/global_Unwind012145e0_012145e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c37470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214730'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214730_01214730.cpp'
+        TestSource = '01/21/global_Unwind01214730_01214730_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c382b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214d50'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214d50_01214d50.cpp'
+        TestSource = '01/21/global_Unwind01214d50_01214d50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c3b040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214de0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214de0_01214de0.cpp'
+        TestSource = '01/21/global_Unwind01214de0_01214de0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c3b5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215480'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215480_01215480.cpp'
+        TestSource = '01/21/global_Unwind01215480_01215480_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c456b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012154c0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012154c0_012154c0.cpp'
+        TestSource = '01/21/global_Unwind012154c0_012154c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c45750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012155f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012155f0_012155f0.cpp'
+        TestSource = '01/21/global_Unwind012155f0_012155f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c46d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215770'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215770_01215770.cpp'
+        TestSource = '01/21/global_Unwind01215770_01215770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c47d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012157b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012157b0_012157b0.cpp'
+        TestSource = '01/21/global_Unwind012157b0_012157b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c47e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01210cc0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210cc0_01210cc0.cpp'
+        TestSource = '01/21/global_Unwind01210cc0_01210cc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0a0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01210d40'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210d40_01210d40.cpp'
+        TestSource = '01/21/global_Unwind01210d40_01210d40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0a3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211180'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211180_01211180.cpp'
+        TestSource = '01/21/global_Unwind01211180_01211180_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0f4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012111c0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012111c0_012111c0.cpp'
+        TestSource = '01/21/global_Unwind012111c0_012111c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0f6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211200'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211200_01211200.cpp'
+        TestSource = '01/21/global_Unwind01211200_01211200_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0f8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211240'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211240_01211240.cpp'
+        TestSource = '01/21/global_Unwind01211240_01211240_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0fae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211ad0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211ad0_01211ad0.cpp'
+        TestSource = '01/21/global_Unwind01211ad0_01211ad0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c153a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211af0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211af0_01211af0.cpp'
+        TestSource = '01/21/global_Unwind01211af0_01211af0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c15450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212f90'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212f90_01212f90.cpp'
+        TestSource = '01/21/global_Unwind01212f90_01212f90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c24320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212fb0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212fb0_01212fb0.cpp'
+        TestSource = '01/21/global_Unwind01212fb0_01212fb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c243d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212fd0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212fd0_01212fd0.cpp'
+        TestSource = '01/21/global_Unwind01212fd0_01212fd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c24480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213050'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213050_01213050.cpp'
+        TestSource = '01/21/global_Unwind01213050_01213050_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c24940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213090'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213090_01213090.cpp'
+        TestSource = '01/21/global_Unwind01213090_01213090_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c24b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213670'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213670_01213670.cpp'
+        TestSource = '01/21/global_Unwind01213670_01213670_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213690'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213690_01213690.cpp'
+        TestSource = '01/21/global_Unwind01213690_01213690_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012136b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012136b0_012136b0.cpp'
+        TestSource = '01/21/global_Unwind012136b0_012136b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213870'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213870_01213870.cpp'
+        TestSource = '01/21/global_Unwind01213870_01213870_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2c0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213b40'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213b40_01213b40.cpp'
+        TestSource = '01/21/global_Unwind01213b40_01213b40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2ddf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213d10'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213d10_01213d10.cpp'
+        TestSource = '01/21/global_Unwind01213d10_01213d10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2f980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213d60'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213d60_01213d60.cpp'
+        TestSource = '01/21/global_Unwind01213d60_01213d60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2fbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213db0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213db0_01213db0.cpp'
+        TestSource = '01/21/global_Unwind01213db0_01213db0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2fe20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213fd0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213fd0_01213fd0.cpp'
+        TestSource = '01/21/global_Unwind01213fd0_01213fd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c30be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012144b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012144b0_012144b0.cpp'
+        TestSource = '01/21/global_Unwind012144b0_012144b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c368c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012146f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012146f0_012146f0.cpp'
+        TestSource = '01/21/global_Unwind012146f0_012146f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c38070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214d10'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214d10_01214d10.cpp'
+        TestSource = '01/21/global_Unwind01214d10_01214d10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c3adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214da0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214da0_01214da0.cpp'
+        TestSource = '01/21/global_Unwind01214da0_01214da0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c3b380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215400'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215400_01215400.cpp'
+        TestSource = '01/21/global_Unwind01215400_01215400_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c45220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012155b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012155b0_012155b0.cpp'
+        TestSource = '01/21/global_Unwind012155b0_012155b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c46af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012156d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012156d0_012156d0.cpp'
+        TestSource = '01/21/global_Unwind012156d0_012156d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c47830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012156f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012156f0_012156f0.cpp'
+        TestSource = '01/21/global_Unwind012156f0_012156f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c478e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01210d60'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210d60_01210d60.cpp'
+        TestSource = '01/21/global_Unwind01210d60_01210d60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0a5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01210d80'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210d80_01210d80.cpp'
+        TestSource = '01/21/global_Unwind01210d80_01210d80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0a610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01210da0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210da0_01210da0.cpp'
+        TestSource = '01/21/global_Unwind01210da0_01210da0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0a660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211260'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211260_01211260.cpp'
+        TestSource = '01/21/global_Unwind01211260_01211260_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0fdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012112a0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012112a0_012112a0.cpp'
+        TestSource = '01/21/global_Unwind012112a0_012112a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0fe90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012112c0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012112c0_012112c0.cpp'
+        TestSource = '01/21/global_Unwind012112c0_012112c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0fee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012112e0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012112e0_012112e0.cpp'
+        TestSource = '01/21/global_Unwind012112e0_012112e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0ff30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211b70'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211b70_01211b70.cpp'
+        TestSource = '01/21/global_Unwind01211b70_01211b70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c15900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01211bb0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01211bb0_01211bb0.cpp'
+        TestSource = '01/21/global_Unwind01211bb0_01211bb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c159a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012130b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012130b0_012130b0.cpp'
+        TestSource = '01/21/global_Unwind012130b0_012130b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012130f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012130f0_012130f0.cpp'
+        TestSource = '01/21/global_Unwind012130f0_012130f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c252d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213130'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213130_01213130.cpp'
+        TestSource = '01/21/global_Unwind01213130_01213130_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213170'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213170_01213170.cpp'
+        TestSource = '01/21/global_Unwind01213170_01213170_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213190'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213190_01213190.cpp'
+        TestSource = '01/21/global_Unwind01213190_01213190_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012131b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012131b0_012131b0.cpp'
+        TestSource = '01/21/global_Unwind012131b0_012131b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c254b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012131d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012131d0_012131d0.cpp'
+        TestSource = '01/21/global_Unwind012131d0_012131d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012131f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012131f0_012131f0.cpp'
+        TestSource = '01/21/global_Unwind012131f0_012131f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213210'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213210_01213210.cpp'
+        TestSource = '01/21/global_Unwind01213210_01213210_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c255a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213230'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213230_01213230.cpp'
+        TestSource = '01/21/global_Unwind01213230_01213230_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c255f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213730'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213730_01213730.cpp'
+        TestSource = '01/21/global_Unwind01213730_01213730_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213770'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213770_01213770.cpp'
+        TestSource = '01/21/global_Unwind01213770_01213770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213790'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213790_01213790.cpp'
+        TestSource = '01/21/global_Unwind01213790_01213790_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2b9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012137b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012137b0_012137b0.cpp'
+        TestSource = '01/21/global_Unwind012137b0_012137b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2ba30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012138b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012138b0_012138b0.cpp'
+        TestSource = '01/21/global_Unwind012138b0_012138b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2c480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012138f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012138f0_012138f0.cpp'
+        TestSource = '01/21/global_Unwind012138f0_012138f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2c520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213a80'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213a80_01213a80.cpp'
+        TestSource = '01/21/global_Unwind01213a80_01213a80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2cfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213b60'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213b60_01213b60.cpp'
+        TestSource = '01/21/global_Unwind01213b60_01213b60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2dfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213e30'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213e30_01213e30.cpp'
+        TestSource = '01/21/global_Unwind01213e30_01213e30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c30400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213e50'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213e50_01213e50.cpp'
+        TestSource = '01/21/global_Unwind01213e50_01213e50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c30450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213e70'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213e70_01213e70.cpp'
+        TestSource = '01/21/global_Unwind01213e70_01213e70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c304a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213ff0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213ff0_01213ff0.cpp'
+        TestSource = '01/21/global_Unwind01213ff0_01213ff0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c30dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012144d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012144d0_012144d0.cpp'
+        TestSource = '01/21/global_Unwind012144d0_012144d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214640'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214640_01214640.cpp'
+        TestSource = '01/21/global_Unwind01214640_01214640_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c37720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214710'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214710_01214710.cpp'
+        TestSource = '01/21/global_Unwind01214710_01214710_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c38260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214d30'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214d30_01214d30.cpp'
+        TestSource = '01/21/global_Unwind01214d30_01214d30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c3aff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214dc0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214dc0_01214dc0.cpp'
+        TestSource = '01/21/global_Unwind01214dc0_01214dc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c3b580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215460'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215460_01215460.cpp'
+        TestSource = '01/21/global_Unwind01215460_01215460_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c45660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012154a0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012154a0_012154a0.cpp'
+        TestSource = '01/21/global_Unwind012154a0_012154a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c45700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012155d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012155d0_012155d0.cpp'
+        TestSource = '01/21/global_Unwind012155d0_012155d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c46ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215750'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215750_01215750.cpp'
+        TestSource = '01/21/global_Unwind01215750_01215750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c47d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215790'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215790_01215790.cpp'
+        TestSource = '01/21/global_Unwind01215790_01215790_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c47db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01210b36'
+        Module = '_global'
+        Source = '01/21/global_Unwind01210b36_01210b36.cpp'
+        TestSource = '01/21/global_Unwind01210b36_01210b36_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c091a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012119d3'
+        Module = '_global'
+        Source = '01/21/global_Unwind012119d3_012119d3.cpp'
+        TestSource = '01/21/global_Unwind012119d3_012119d3_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c14d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213575'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213575_01213575.cpp'
+        TestSource = '01/21/global_Unwind01213575_01213575_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2a700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01213587'
+        Module = '_global'
+        Source = '01/21/global_Unwind01213587_01213587.cpp'
+        TestSource = '01/21/global_Unwind01213587_01213587_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2a750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012137ed'
+        Module = '_global'
+        Source = '01/21/global_Unwind012137ed_012137ed.cpp'
+        TestSource = '01/21/global_Unwind012137ed_012137ed_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2bca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012139c9'
+        Module = '_global'
+        Source = '01/21/global_Unwind012139c9_012139c9.cpp'
+        TestSource = '01/21/global_Unwind012139c9_012139c9_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2cb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214437'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214437_01214437.cpp'
+        TestSource = '01/21/global_Unwind01214437_01214437_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214449'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214449_01214449.cpp'
+        TestSource = '01/21/global_Unwind01214449_01214449_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214522'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214522_01214522.cpp'
+        TestSource = '01/21/global_Unwind01214522_01214522_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214546'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214546_01214546.cpp'
+        TestSource = '01/21/global_Unwind01214546_01214546_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c36e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012126e0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012126e0_012126e0.cpp'
+        TestSource = '01/21/global_Unwind012126e0_012126e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212700'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212700_01212700.cpp'
+        TestSource = '01/21/global_Unwind01212700_01212700_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212720'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212720_01212720.cpp'
+        TestSource = '01/21/global_Unwind01212720_01212720_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212740'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212740_01212740.cpp'
+        TestSource = '01/21/global_Unwind01212740_01212740_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212760'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212760_01212760.cpp'
+        TestSource = '01/21/global_Unwind01212760_01212760_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212780'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212780_01212780.cpp'
+        TestSource = '01/21/global_Unwind01212780_01212780_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1fa20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012127a0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012127a0_012127a0.cpp'
+        TestSource = '01/21/global_Unwind012127a0_012127a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1fb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012127c0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012127c0_012127c0.cpp'
+        TestSource = '01/21/global_Unwind012127c0_012127c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1fbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012124b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012124b0_012124b0.cpp'
+        TestSource = '01/21/global_Unwind012124b0_012124b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1d780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012147b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012147b0_012147b0.cpp'
+        TestSource = '01/21/global_Unwind012147b0_012147b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c386a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012147d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012147d0_012147d0.cpp'
+        TestSource = '01/21/global_Unwind012147d0_012147d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c386f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012147f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012147f0_012147f0.cpp'
+        TestSource = '01/21/global_Unwind012147f0_012147f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c38740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214810'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214810_01214810.cpp'
+        TestSource = '01/21/global_Unwind01214810_01214810_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c38790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214830'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214830_01214830.cpp'
+        TestSource = '01/21/global_Unwind01214830_01214830_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c387e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012157d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012157d0_012157d0.cpp'
+        TestSource = '01/21/global_Unwind012157d0_012157d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c487b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215aa0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215aa0_01215aa0.cpp'
+        TestSource = '01/21/global_Unwind01215aa0_01215aa0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c49a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215cb0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215cb0_01215cb0.cpp'
+        TestSource = '01/21/global_Unwind01215cb0_01215cb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4bab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212550'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212550_01212550.cpp'
+        TestSource = '01/21/global_Unwind01212550_01212550_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1dce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214b30'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214b30_01214b30.cpp'
+        TestSource = '01/21/global_Unwind01214b30_01214b30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214b50'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214b50_01214b50.cpp'
+        TestSource = '01/21/global_Unwind01214b50_01214b50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214b70'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214b70_01214b70.cpp'
+        TestSource = '01/21/global_Unwind01214b70_01214b70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214b90'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214b90_01214b90.cpp'
+        TestSource = '01/21/global_Unwind01214b90_01214b90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214bb0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214bb0_01214bb0.cpp'
+        TestSource = '01/21/global_Unwind01214bb0_01214bb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212220'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212220_01212220.cpp'
+        TestSource = '01/21/global_Unwind01212220_01212220_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1afd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012124d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012124d0_012124d0.cpp'
+        TestSource = '01/21/global_Unwind012124d0_012124d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1d9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214850'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214850_01214850.cpp'
+        TestSource = '01/21/global_Unwind01214850_01214850_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012148b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012148b0_012148b0.cpp'
+        TestSource = '01/21/global_Unwind012148b0_012148b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214910'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214910_01214910.cpp'
+        TestSource = '01/21/global_Unwind01214910_01214910_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214970'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214970_01214970.cpp'
+        TestSource = '01/21/global_Unwind01214970_01214970_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c397d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012149d0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012149d0_012149d0.cpp'
+        TestSource = '01/21/global_Unwind012149d0_012149d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012157f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012157f0_012157f0.cpp'
+        TestSource = '01/21/global_Unwind012157f0_012157f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c48800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215ac0'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215ac0_01215ac0.cpp'
+        TestSource = '01/21/global_Unwind01215ac0_01215ac0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c49b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215e70'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215e70_01215e70.cpp'
+        TestSource = '01/21/global_Unwind01215e70_01215e70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4bc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212680'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212680_01212680.cpp'
+        TestSource = '01/21/global_Unwind01212680_01212680_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012126a0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012126a0_012126a0.cpp'
+        TestSource = '01/21/global_Unwind012126a0_012126a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012126c0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012126c0_012126c0.cpp'
+        TestSource = '01/21/global_Unwind012126c0_012126c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1f5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212840'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212840_01212840.cpp'
+        TestSource = '01/21/global_Unwind01212840_01212840_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1ff20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212860'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212860_01212860.cpp'
+        TestSource = '01/21/global_Unwind01212860_01212860_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1ff90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01212880'
+        Module = '_global'
+        Source = '01/21/global_Unwind01212880_01212880.cpp'
+        TestSource = '01/21/global_Unwind01212880_01212880_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c20000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214890'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214890_01214890.cpp'
+        TestSource = '01/21/global_Unwind01214890_01214890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c393f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012148f0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012148f0_012148f0.cpp'
+        TestSource = '01/21/global_Unwind012148f0_012148f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c395b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01214950'
+        Module = '_global'
+        Source = '01/21/global_Unwind01214950_01214950.cpp'
+        TestSource = '01/21/global_Unwind01214950_01214950_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012149b0'
+        Module = '_global'
+        Source = '01/21/global_Unwind012149b0_012149b0.cpp'
+        TestSource = '01/21/global_Unwind012149b0_012149b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01215b00'
+        Module = '_global'
+        Source = '01/21/global_Unwind01215b00_01215b00.cpp'
+        TestSource = '01/21/global_Unwind01215b00_01215b00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c49c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53440'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c53440_00c53440.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53440_00c53440_test.cpp'
+        PassPattern = '00c53440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c534a0'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c534a0_00c534a0.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c534a0_00c534a0_test.cpp'
+        PassPattern = '00c534a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53500'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c53500_00c53500.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53500_00c53500_test.cpp'
+        PassPattern = '00c53500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53560'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c53560_00c53560.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53560_00c53560_test.cpp'
+        PassPattern = '00c53560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53650'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c53650_00c53650.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53650_00c53650_test.cpp'
+        PassPattern = '00c53650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53800'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c53800_00c53800.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53800_00c53800_test.cpp'
+        PassPattern = '00c53800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53860'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c53860_00c53860.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53860_00c53860_test.cpp'
+        PassPattern = '00c53860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c538c0'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c538c0_00c538c0.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c538c0_00c538c0_test.cpp'
+        PassPattern = '00c538c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c53920'
+        Module = '_unattributed'
+        Source = '00/c5/unattributed_SetClampedCAttribute00c53920_00c53920.cpp'
+        TestSource = '00/c5/unattributed_SetClampedCAttribute00c53920_00c53920_test.cpp'
+        PassPattern = '00c53920_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
