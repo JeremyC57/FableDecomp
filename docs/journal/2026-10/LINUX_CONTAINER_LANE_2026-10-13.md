@@ -396,6 +396,31 @@ duplicated three times by VC) -- if/else chains or an inline setter fold the lit
 stores. 527 EH-framed parents (and their ~1,200 funclets) remain; they are mostly one-off bodies.
 Running total for the rescans: 4630/4676 rows from 218 batches; catalog 26,387 (53.2%).
 
+### Wave 21 (EH-framed families, their funclets, the ≤16-byte tail)
+
+203 rows from three sources. (1) Six EH-framed families of the 512-byte scan, each a `/EHsc`
+parent with a `push -1 ; push offset __ehhandler` frame: the assertion handlers F47 (14; a
+CDebugStream over the shared buffer, file/line/message through `__fastcall` `operator<<`, the
+report callback when installed, an empty CDebugBreak temporary whose dead frame slot keeps the
+retail high byte), the mailbox `ProcessMessage`/`DispatchMessage` pair F163/F328 (8+6; scoped
+lock, peek through the mailbox's virtual slot, the assertion stream in a nested scope with the
+`CDebugBreak()` inside the `if`), the two-level `CIntelligentPointer` constructors F676 (4), observer
+registration F1117 (3) and the pair destructors F1121 (3; the user-declared destructor is the
+landed unit -- the implicit one yields only a 5-byte tail-call wrapper). (2) Their unwind funclets
+through `families/funclets.py` (batches funclets2-5). The F676 funclets needed two fixes: the
+state-0 funclet destroys the root base on `this` with no offset, so the root is a polymorphic
+`__declspec(novtable)` class owning the vptr (the parent body is identical under both models;
+only the funclet tells them apart), and under `/Gy` the inline base constructor is also emitted
+out of line with a `$L` block of its own, so the extractor now tries every `$L` block in section
+order. (3) The ≤16-byte tail through a second generic synthesiser, `wtiny2` (~24 instruction-pattern
+recognisers: forwarders, through-pointer getters, bit tests, size getters, global setters, small
+constructors): 114 of 132 bodies, after three model fixes -- a `mov al ; test ; setne al` predicate
+returns `unsigned char` (a `bool` zeroes eax first), a `shr al,n ; and al,1` getter is a one-bit
+bitfield of an `unsigned char` storage unit, and the `__stdcall` block-release wrapper is a
+delete-expression (`mov eax,[esp+4] ; push eax ; call operator delete ; pop ecx`; `free` pushes
+the slot directly). Running total for the rescans: 4833/4925 rows from 230 batches; catalog
+26,590 (53.6%). EH-framed parents landed: 205 of 694; funclets landed: 218 of 1,378.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
