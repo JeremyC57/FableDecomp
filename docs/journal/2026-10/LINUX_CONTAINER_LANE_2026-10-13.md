@@ -547,6 +547,23 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 5 (chunks 33, 36, 37)
+Chunk 33 (CEngineInternalPrimitiveMeshBase .. CEngineLightingManager) to the single sub-agent: 37/40 (`_hand33`;
+CIVCountedPointer / CCountedPointer releases and assignments, the particle-group primitives over the retail layout,
+CParticleSimulation's destructor pair, owner delete loops, a `__fastcall` allocator free; parked: a compare-chain register
+choice and the inline by-value getter's frame temporary). Chunks 36 (CEngineResourceManager ..
+CEngineScreenEffectOutlineGlow: 39/40, `_hand36`) and 37 (CEngineScreenEffectOutlineGlow .. CEngineTreeFilerBase: 33/40,
+`_hand37`) by the coordinator: the free-buffer / list-owner / vector-of-objects destructor families, NShape::CShape and
+CBasicShape, CScreenFilterEntry, the engine scene's chain walkers, four list range-insert forwarders, the block-file
+manager's set lookups and counted-pointer assignment, CEngineStateBlocks (ten 4-byte members), the sub-primitive
+constructors (members in the novtable base before the derived vtable), three NON-POLYMORPHIC deleting destructors whose
+polymorphic object at +0 is a member. The test harness compiles behaviour tests with the lane's cl.exe (not g++): the
+VC7.1 `std::string` has no `clear()`. The funclet pass cut 20 candidates that all DIFFER 0vN (removed, as funclets39).
+Parked with evidence (NOTES / READMEs): zero-register and `lea` scheduling, callee-saved scratch registers around a byte
+test, `add esp,4` placement, address-taken-local register allocation, two deleting destructors without a vtable store
+(one with a pooled delete called with `this` in ecx). Catalog 28,903 -> **29,012 (58.5%)**. Lessons in GOTCHAS waves
+24g/24h. Next: `mkchunk.py 38 1` (pool ~3,280 rows), one chunk to the agent, one by hand.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
