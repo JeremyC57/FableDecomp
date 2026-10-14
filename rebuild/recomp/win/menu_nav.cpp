@@ -545,7 +545,15 @@ extern "C" void host_create_component(Ctx* c) {
     const uint32_t ptr = data >= 0x10000 && data < kGuestLimit ? rd32(data) : 0, len = data >= 0x10000 && data < kGuestLimit ? rd32(data + 4) : 0;
     char name[48] = {};
     if (ptr >= 0x10000 && ptr < kGuestLimit && len > 0 && len < sizeof name) std::memcpy(name, gp<const char>(ptr), len);
-    const bool pc = std::strncmp(name, "PC_", 3) == 0, xbox = std::strncmp(name, "UI_", 3) == 0;
+    // Templates and helpers (PC_WEAPON_BUTTON_DYNAMIC_TEMPLATE, PC_BUTTON_BASTARD, ..._DUMMY)
+    // are created inside Xbox screens too (the quick-access menu, the inventory's weapon
+    // rows): they decide nothing. A PC_ screen part turns the Xbox zoom off; only an Xbox
+    // screen root (a UI_ menu, list or screen) turns it back on.
+    const std::string n(name);
+    const bool helper = n.find("TEMPLATE") != std::string::npos || n.find("BASTARD") != std::string::npos || n.find("DUMMY") != std::string::npos;
+    const bool pc = !helper && n.rfind("PC_", 0) == 0;
+    const bool xbox = !helper && n.rfind("UI_", 0) == 0 &&
+                      (n.rfind("UI_LIST_", 0) == 0 || n.find("MENU") != std::string::npos || n.find("SCREEN") != std::string::npos);
     static std::set<std::string> names;
     static const bool allNames = std::getenv("FABLE_UI_NAMES") != nullptr;  // every name, every time (diagnostic)
     if (allNames) HLOG(1, "ui: CreateComponent(\"%s\")", name);
