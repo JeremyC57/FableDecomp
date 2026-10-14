@@ -269,11 +269,12 @@ DESC={
  "i137":"Dinkumware `sort_heap` over 8-byte pairs with a user copy constructor, `_Adjust_heap` out of line.",
  "i125":"`CCountedPointer<T>::CCountedPointer(T*)`: object stored, count block allocated inline when non-null.",
  "i127":"`CVectorMap::UpperBound(const long&)`: Dinkumware upper_bound over 12/24/40-byte entries keyed by a signed dword.",
+ "i122":"Clamped attribute setters: the value clamped between two pooled float literals through a nested ternary (FPU loads, duplicated tails), the set bit or'd into the flags.",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
 tried=ROOT/"tools/decomp_pipeline/crawl/gen_tried.txt"; have=set(open(tried).read().split()) if tried.exists() else set(); newtried=[]
 summary=[]
-for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_g*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_h*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_i*"))):
+for D in sorted(glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_f*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_g*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_h*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-13_linux_i*"))+glob.glob(str(ROOT/"rebuild/candidates/manual/batches/2026-10-14_linux_i*"))):
     D=Path(D); fam=re.search(r"_([fghi]\w+)$",D.name).group(1); fam=fam[1:] if fam[0]=="f" else fam
     rows=list(csv.DictReader(open(D/"oracle.tsv"),delimiter="\t"))
     landed=[r for r in rows if r["address"].lower() in cat]; rest=[r for r in rows if r["address"].lower() not in cat]

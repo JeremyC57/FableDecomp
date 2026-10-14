@@ -27,3 +27,19 @@ Scans used so far: `families.json` (64-byte cap, templates keyed by family index
 `families128.json` (128-byte cap, template ids `w*`, batches `_g<N>`), `families256.json` (256-byte cap,
 template ids `w256_*`, batches `_h<N>`). The special family `tiny` collects every body of 16 bytes or
 less for the generic `wtiny` synthesiser.
+
+## EH unwind funclets (`funclets.py`, added 2026-10-14)
+
+VC7.1 emits the unwind funclets of an EH-framed function (`push -1 ; push offset __ehhandler`)
+together with its `__ehhandler$` thunk as one separate `.text` contribution headed by a `$L<n>`
+label; the linker put Fable's blocks at `0x0121xxxx`, and Ghidra catalogues each funclet as its own
+function (`Unwind@<va>`, 1,378 of them). They carry no source of their own: `funclets.py <repo>
+<batch-name> [limit]` reads every landed `/EHsc` parent from `rebuild/build_candidates.ps1`, walks
+the parent's retail `FuncInfo` (handler thunk → `mov eax, offset FuncInfo`; unwind map actions) and
+writes one payload entry per funclet whose source is a one-line stub that `#include`s the parent's
+landed file (path relative to `rebuild/include`), with `funclet_offset` (its offset in the block)
+and `flags` (the parent's extra flags). `verify_and_land.py` compares `len(oracle)` bytes at that
+offset of the object's `$L` block (relocation offsets shifted) and reuses the parent's behaviour
+test. Re-run it after every wave that lands EH-framed parents; parents with try blocks
+(`nTryBlocks > 0`) are skipped until catch funclets are modelled.
+

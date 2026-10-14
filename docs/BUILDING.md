@@ -54,6 +54,8 @@ bash tools/decomp_pipeline/linux_lane/setup_vc71_wine.sh /path/to/lane   # ~700 
 source /path/to/lane/env.sh                        # FABLE_ROOT/FABLE_VC71/FABLE_OBJDUMP/FABLE_WINE, LINK=
 FABLE_EXE=/path/to/Fable.exe python tools/decomp_pipeline/crawl/next_smallest.py 16 batch
 python tools/decomp_pipeline/verify_and_land.py payload.json oracle.tsv [--land] [--recheck-landed]
+S=<scratch> FAMFILE=$S/batch/families512.json python tools/decomp_pipeline/families/fam.py . <family> <batch> - <template>   # shape families
+S=<scratch> python tools/decomp_pipeline/families/funclets.py . <batch>   # EH unwind funclets of landed /EHsc parents
 ```
 Notes: the DDK's `<cstdio>`-style headers lack the `namespace std` using-declarations, so the
 setup overlays thin shims (`write_std_shims.py`); the DDK CRT libraries need

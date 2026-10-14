@@ -74,6 +74,30 @@ def obj_text(path, leaf):
     sel=max(named or fns,key=lambda f:len(f["bytes"]))
     return bytes(sel["bytes"]),int(sel["section"]),str(sel["symbol"])
 
+def funclet_extractor(offset, length):
+    """Text extractor for an EH unwind funclet: VC7.1 emits a function's funclets and its
+    `__ehhandler$` thunk as one separate `.text` contribution headed by a `$L<n>` label, in
+    unwind-map order (the retail layout at 0x0121xxxx is the same block, so a funclet's
+    oracle is `length` bytes at `offset` into that contribution). Returns the slice, its
+    section, the label and the offset so parity_of can shift the relocation offsets."""
+    def extract(path, leaf):
+        pr = subprocess.run([OBJDUMP,"-d",str(path)],capture_output=True,text=True,check=True)
+        fns,sec,cur=[],-1,None
+        for line in pr.stdout.splitlines():
+            if TEXTSEC_D.match(line): sec+=1;cur=None;continue
+            s=DS.match(line)
+            if s:
+                if int(s.group(1), 16) == 0 or cur is None:
+                    cur={"symbol":s.group(2),"section":sec,"bytes":bytearray()};fns.append(cur)
+                continue
+            e=DB.match(line)
+            if e and cur is not None: cur["bytes"].extend(bytes.fromhex(e.group(1)))
+        cands=[f for f in fns if f["symbol"].startswith("$L") and len(f["bytes"])>=offset+length]
+        if not cands: raise RuntimeError("no funclet block")
+        sel=cands[0]
+        return bytes(sel["bytes"][offset:offset+length]),int(sel["section"]),str(sel["symbol"]),offset
+    return extract
+
 def obj_relocs(path, sel):
     hp=subprocess.run([OBJDUMP,"-h",str(path)],capture_output=True,text=True,check=True)
     flags=[];hl=hp.stdout.splitlines()
@@ -329,9 +353,10 @@ def parity_of(srctext, addr, leaf, retail, work, e, extra=(), base_flags=None, t
     obj=work/f"{addr}.obj"; obj.unlink(missing_ok=True)
     cp=cl(["/nologo","/c"]+flags+list(extra)+[f"/Fo{obj}",str(sp)],e)
     if cp.returncode or not obj.exists(): return "SRC_FAIL",None,None
-    try: built,sec,_=extract(obj,leaf)
+    try:
+        res=extract(obj,leaf); built,sec=res[0],res[1]; roff=res[3] if len(res)>3 else 0
     except Exception: return "OBJDUMP_ERR",None,None
-    rel=obj_relocs(obj,sec)
+    rel=[r-roff for r in obj_relocs(obj,sec) if r>=roff]
     if retail==built: return "MATCH",built,sec
     if mask(retail,rel)==mask(built,rel): return "RELOCATION_MATCH",built,sec
     return f"DIFFER({len(built)}v{len(retail)})",built,sec
@@ -441,8 +466,13 @@ def main():
         if hdr_warn and os.environ.get("LANDVERIFY_STRICT_HEADERS")=="1":
             print(f"{addr:10} {'HEADER_POLICY':16} {'-':6} {name}"); continue
         retail=bytes.fromhex(o["bytes"])
+        # Optional per-entry extras: `flags` (known-good extra compiler flags, e.g. the parent's
+        # /EHsc for a funclet) and `funclet_offset` (this entry is an EH unwind funclet of the
+        # TU's function: compare `len(retail)` bytes at that offset of the `$L` block).
+        pre=list(c.get("flags") or [])
+        ext=funclet_extractor(int(c["funclet_offset"]), len(retail)) if c.get("funclet_offset") is not None else None
         # try base source/flags, then a pragma x extra-flag sweep (permuter integrated).
-        src=src0; winflags=[]; st,_,_=parity_of(src, addr, leaf, retail, work, e)
+        src=src0; winflags=pre; st,_,_=parity_of(src, addr, leaf, retail, work, e, extra=pre, text_extractor=ext)
         if not st.startswith(("MATCH","RELOCATION")):
             done=False
             # a retail body that opens with the EH prologue (push -1 ; push handler) can only match
@@ -453,16 +483,16 @@ def main():
                 for P in PRAGMAS:
                     if not xf and not P: continue  # already tried base above
                     cand=(P+"\n"+src0) if P else src0
-                    st2,_,_=parity_of(cand, addr, leaf, retail, work, e, extra=xf)
+                    st2,_,_=parity_of(cand, addr, leaf, retail, work, e, extra=pre+xf, text_extractor=ext)
                     if st2.startswith(("MATCH","RELOCATION")):
-                        src=cand; winflags=xf
+                        src=cand; winflags=pre+xf
                         tag=(P.split('(')[1].split(',')[0] if P else "")
                         if xf: tag=(tag+" "+" ".join(xf)).strip()
                         st=st2+(f"[{tag}]" if tag else ""); done=True; break
                 if done: break
         # recompile the winning (src, winflags) last so sobj holds the winning object
         if st.startswith(("MATCH","RELOCATION")):
-            parity_of(src, addr, leaf, retail, work, e, extra=winflags)
+            parity_of(src, addr, leaf, retail, work, e, extra=winflags, text_extractor=ext)
         sobj=work/f"{addr}.obj"  # source object from the last parity_of(src) compile
         beh=behaviour_of(tst, addr, patt, work, e, sobj)
         print(f"{addr:10} {st:16} {beh:6} {name}")

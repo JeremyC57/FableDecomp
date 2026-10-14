@@ -9361,6 +9361,47 @@ int main()
     E v[4]; v[0].k = 1; v[1].k = 3; v[2].k = 3; v[3].k = 7; M m; m.b = v; m.e = v + 4; long k = 3; if (m.U(k) != v + 3) ''' % (esz-4)+FAIL(a)+'''
     k = 0; if (m.U(k) != v) '''+FAIL(a)+'''
 '''),b)
+    elif TPL in ("w512_122",):   # void CAttribute::SetClamped(float): clamp the value between two pooled float literals through a ternary, store it, set the flag bit
+        if len(calls)!=0 or retn!=4 or b[:4]!=b"\xd9\x44\x24\x04": continue
+        consts=[i.operands[0].mem.disp for i in ins if i.mnemonic=="fcomp" and i.operands[0].type==X86_OP_MEM and i.operands[0].mem.base==0]
+        stores=sorted(set(i.operands[0].mem.disp for i in ins if i.mnemonic=="fstp" and i.operands[0].type==X86_OP_MEM))
+        masks=sorted(set(i.operands[1].imm for i in ins if i.mnemonic=="or" and i.operands[1].type==X86_OP_IMM))
+        if len(consts)!=2 or len(stores)!=1 or len(masks)!=1: continue
+        import struct as _st
+        lo=_st.unpack("<f",rb(consts[0],4))[0]; hi=_st.unpack("<f",rb(consts[1],4))[0]
+        def flit(x):
+            for pr in range(0,10):
+                s=f"{x:.{pr}f}"
+                if _st.unpack("<f",_st.pack("<f",float(s)))[0]==x: break
+            if "." not in s: s+=".0"
+            return s+"f"
+        voff=stores[0]; mask=masks[0]; nm=f"CAttribute_{a}"
+        add(a,"_unattributed",f"SetClamped_{nm}",HDRF(a,f"{nm}::SetClamped(float) -- store the value clamped to [{flit(lo)}, {flit(hi)}] at +{voff:#x} and set flag {mask:#x}",len(b))+f'''//
+// Retail bytes:  fld [value] ; fcomp [lo] ; fnstsw ax ; test ah,5 ; jp B ; mov eax,[ecx] ; fld [lo] ; or eax,{mask:#x} ; fstp [ecx+{voff:#x}] ; mov [ecx],eax ; ret 4 ; B: fld [value] ; fcomp [hi] ; fnstsw ax ; test ah,41h ; jne C ; mov eax,[ecx] ; fld [hi] ; or eax,{mask:#x} ; fstp [ecx+{voff:#x}] ; mov [ecx],eax ; ret 4 ; C: mov eax,[ecx] ; fld [value] ; or eax,{mask:#x} ; fstp [ecx+{voff:#x}] ; mov [ecx],eax ; ret 4
+// Clamped attribute setter: the value is clamped to [{flit(lo)}, {flit(hi)}] with one nested ternary (so each
+// branch's result is an FPU load of the chosen operand, and VC duplicates the store + flag tail
+// into all three branches), stored at +{voff:#x}, and the "set" bit {mask:#x} is or'd into the flags
+// dword at +0 (load / or / store interleaved with the FPU copy). The bounds are float literals
+// the compiler pools (the retail loads them from .rdata). The manifest label is propagated;
+// the attribute class is named by address. One of {len(members)} bodies of this shape.
+struct {nm} {{
+    unsigned long m_flags;                 // +0
+    unsigned char _pad[{voff:#x} - 4];
+    float m_value;                         // +{voff:#x}
+    void SetClamped_{nm}(float value);
+}};
+
+void {nm}::SetClamped_{nm}(float value)
+{{
+    m_value = value < {flit(lo)} ? {flit(lo)} : (value > {flit(hi)} ? {flit(hi)} : value);
+    m_flags |= {mask:#x};
+}}
+''',T(a,'''struct A { unsigned long f; unsigned char p[%d]; float v; void S(float x) { v = x < %s ? %s : (x > %s ? %s : x); f |= %s; } };
+int main()
+{
+    A a; a.f = 0; a.S(%s - 1.0f); if (a.v != %s || a.f != %s) ''' % (voff-4, flit(lo), flit(lo), flit(hi), flit(hi), hex(mask), flit(lo), flit(lo), hex(mask))+FAIL(a)+'''
+    a.S(%s + 1.0f); if (a.v != %s) ''' % (flit(hi), flit(hi))+FAIL(a)+'''
+'''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
 OUT.mkdir(parents=True, exist_ok=True)
