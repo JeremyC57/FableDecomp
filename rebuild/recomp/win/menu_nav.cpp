@@ -646,12 +646,21 @@ extern "C" void host_ui_scale(Ctx* c) {
     // pause panel's ring was short of its ring by the unzoomed part) and CSprite's size
     // (0x52ECC0): the same 1.6 everywhere the Xbox screens are laid out
     // and CList's own layout (CanMove 0x537776, the view-area pass 0x5379F5: the list's
-    // position offsets and view box, FABLE_XBOX_ZOOM_SITES=2)
+    // position offsets and view box, FABLE_XBOX_ZOOM_SITES=2). The view-area pass scales a
+    // row's size (0x537AA7/ABF) and the view box's size (0x537D74/D92) before
+    // C2DBoxF::ContainsPoint decides which rows show (alpha 255) and which hide (alpha 0);
+    // with only the rows zoomed the box was 1/1.6 of its height: rows entering a category
+    // list were missing and rows scrolled above the box still drew over the screen title.
     static const uint32_t kSites[] = {0x52F88C, 0x52F8AB, 0x52F8CB, 0x52F8E4, 0x52EA8E, 0x52EAA9, 0x52EB4E, 0x52EB69, 0x52ECFE, 0x52ED19,
-                                      0x5377D7, 0x5377ED, 0x537872, 0x5378E6, 0x537AA7, 0x537ABF};
+                                      0x5377D7, 0x5377ED, 0x537872, 0x5378E6, 0x537AA7, 0x537ABF, 0x537D74, 0x537D92};
     static const int tier = [] { const char* e = std::getenv("FABLE_XBOX_ZOOM_SITES"); return e ? std::atoi(e) : 2; }();
-    bool zoom = false;
-    for (size_t i = 0; i < (tier >= 2 ? 16u : tier == 1 ? 10u : 4u); ++i) zoom = zoom || ret == kSites[i];
+    bool zoom = tier >= 3;  // diagnostic: 3 = every caller, -1 = none
+    for (size_t i = 0; tier >= 0 && i < (tier >= 2 ? std::size(kSites) : tier == 1 ? 10u : 4u); ++i) zoom = zoom || ret == kSites[i];
+    static const bool logCallers = std::getenv("FABLE_XBOX_ZOOM_LOG") != nullptr;
+    if (logCallers && xboxMenus() && rd32(0x13B8790) && !g_pcScreen) {
+        static std::set<uint32_t> seen;
+        if (seen.insert(ret).second) HLOG(1, "ui: GetUIScale from 0x%08X (%s)", ret, zoom ? "zoomed" : "not zoomed");
+    }
     if (xboxMenus() && rd32(0x13B8790) && zoom) {
         // The PC screens the game still builds (the quest table, quest start and completion,
         // trading, the experience screen) are laid out for 1024x768 and overflowed 720x480
@@ -773,10 +782,10 @@ extern "C" void host_use_quick_item(Ctx* c) {
     if (host::pad::nativeEnabled() && host::pad::rightTriggerHeld()) { HLOG(1, "inventory: d-pad favourite %u (trigger held)", slot); F_005840A6_orig(c); return; }
     if (host::pad::nativeEnabled() && slot < 4) {
         if (slot == 0) { HLOG(1, "inventory: d-pad up: quick-access menu"); guestCallThis(0x583BD5, inv, {}); c->esp += 8; return; }
-        // Down: nothing here; CHARGE_GUILD_SEAL (78) is bound to the same button and the game
-        // charges the seal while it is held (the instant use through the -2 path opened the
-        // teleport menu at once). Left/right: the context item of the moment, or nothing (the
-        // fixed assignment underneath is the PC's default expression, not an Xbox context).
+        // Down: nothing here; it is CHARGE_GUILD_SEAL (78) alone and the game charges the seal
+        // while it is held (the instant use through the -2 path opened the teleport menu at
+        // once). Left/right: the context item of the moment, or nothing (the fixed assignment
+        // underneath is the PC's default expression, not an Xbox context).
         if (slot == 1) { c->esp += 8; return; }
         const uint32_t cb = rd32(inv + 0x154), ce = rd32(inv + 0x158);
         if (ce >= cb + (slot + 1) * 4 && static_cast<int32_t>(rd32(cb + slot * 4)) > 0) {
@@ -790,6 +799,47 @@ extern "C" void host_use_quick_item(Ctx* c) {
     }
     F_005840A6_orig(c);
 }
+// D-pad down on the Xbox scheme: the Guild Seal (action 78, charged while held, as G on the
+// PC), except when an NPC's follow/wait command is among the context items: the press uses
+// that instead (OBJECT_EXPRESSION_FOLLOW_DUMMY / _WAIT_DUMMY, as F2-F4 offer it on the PC).
+// The inventory is the one the HUD's quick-access icons last drew.
+static uint32_t g_hudInv = 0;
+static uint32_t defIndexByName(const char* name) {
+    const uint32_t mgr = rd32(0x13B879C);  // CGameDefinitionManager
+    if (!mgr) return 0;
+    const size_t n = std::strlen(name) + 1;
+    const uint32_t mem = gcalloc(1, 0x20 + static_cast<uint32_t>(n)), str = mem, text = mem + 0x10;
+    std::memcpy(gp(text), name, n);
+    guestCallThis(0x99EBF0, str, {text, 0xFFFFFFFFu});  // CCharString(const char*, -1)
+    const uint32_t def = guestCallThis(0x9AD410, mgr, {str});  // GetDefGlobalIndexFromName
+    guestCallThis(0x99EAE0, str, {});
+    gfree(mem);
+    return def;
+}
+namespace host::menu {
+bool npcCommandPress() {
+    const uint32_t inv = g_hudInv;
+    if (!inv || !rd32(0x13B8790)) return false;
+    static uint32_t follow, wait;
+    if (!follow) follow = defIndexByName("OBJECT_EXPRESSION_FOLLOW_DUMMY"), wait = defIndexByName("OBJECT_EXPRESSION_WAIT_DUMMY");
+    if (!follow && !wait) return false;
+    const uint32_t cb = rd32(inv + 0x154), ce = rd32(inv + 0x158);
+    for (uint32_t slot = 0; slot < 8 && cb + (slot + 1) * 4 <= ce; ++slot) {
+        const uint32_t id = rd32(cb + slot * 4);
+        if (id && (id == follow || id == wait)) {
+            HLOG(1, "inventory: d-pad down: NPC %s (context slot %u)", id == follow ? "follow" : "wait", slot);
+            guestCallThis(0x583A92, inv, {slot});
+            return true;
+        }
+    }
+    const uint32_t qb = rd32(inv + 0x148), qe = rd32(inv + 0x14C);
+    for (uint32_t i = 0; i < 16 && qb + (i + 1) * 4 <= qe; ++i) {
+        const uint32_t id = rd32(qb + i * 4);
+        if (id && (id == follow || id == wait)) HLOG(1, "inventory: d-pad down: NPC %s offered at +0x148[%u] only", id == follow ? "follow" : "wait", i);
+    }
+    return false;
+}
+}  // namespace host::menu
 extern "C" void host_use_context_item(Ctx* c) {
     const uint32_t inv = c->ecx, slot = rd32(c->esp + 4);
     if (host::pad::nativeEnabled() && host::pad::rightTriggerHeld() && slot < 4) {
@@ -800,7 +850,6 @@ extern "C" void host_use_context_item(Ctx* c) {
     }
     if (host::pad::nativeEnabled()) {
         if (slot == 0) { HLOG(1, "inventory: d-pad up: quick-access menu"); guestCallThis(0x583BD5, inv, {}); c->esp += 8; return; }
-        if (slot == 1) { c->esp += 8; return; }  // the seal charges through action 78 on the same button
     }
     F_00583A92_orig(c);
 }
@@ -837,6 +886,7 @@ extern "C" void host_csi_graphic(Ctx* c) {
     const uint32_t begin = rd32(inv + 0x148), end = rd32(inv + 0x14C);
     const uint32_t count = end >= begin ? (end - begin) / 4 : 0;
     const int32_t id = slot < count ? static_cast<int32_t>(rd32(begin + slot * 4)) : 0;
+    g_hudInv = inv;
     static int32_t lastId[16];
     static uint32_t lastCount = 0xFFFFFFFF;
     if (slot < 16 && (lastId[slot] != id || lastCount != count)) {  // once per change, not per frame
@@ -948,11 +998,34 @@ extern "C" void host_text_draw(Ctx* c) {
 // components must scale from the origin too, or the picture sits where the 640x480 layout
 // put it while its ring moved with the zoom (verified: aligned at 640x480 only).
 extern "C" void F_0052FFD0_orig(Ctx* c);
+// CComponent::Name (+0x24, PDB): a CCharString -> CCharStringData {char*, length}.
+static std::string componentName(uint32_t self, uint32_t off = 0x1C) {
+    const uint32_t data = rd32(self + off);
+    if (data < 0x10000 || data >= kGuestLimit) return "";
+    const uint32_t ptr = rd32(data), len = rd32(data + 4);
+    if (ptr < 0x10000 || ptr >= kGuestLimit || len == 0 || len > 80) return "";
+    std::string n(gp<const char>(ptr), len);
+    for (char ch : n) if (ch < 0x20 || ch > 0x7E) return "";
+    return n;
+}
 extern "C" void host_update_position(Ctx* c) {
     const uint32_t self = c->ecx;
     F_0052FFD0_orig(c);
     static const bool on = [] { const char* e = std::getenv("FABLE_XBOX_ABSOLUTE_ZOOM"); return !e || std::atoi(e) != 0; }();
     if (!on || !self || !xboxMenus() || !rd32(0x13B8790)) return;
+    static const bool logPos = std::getenv("FABLE_UI_POS") != nullptr;  // diagnostic: each named component once, with its place
+    if (logPos && g_xboxScreensUp) {
+        std::string name = componentName(self, 0x1C);
+        if (name.empty()) name = componentName(self, 0x20);
+        if (name.empty()) name = componentName(self, 0x24);
+        const float rx = rdf32(self + 0x54), ry = rdf32(self + 0x58);
+        char key[64];
+        std::snprintf(key, sizeof key, "%08X/%d/%d", rd32(self), static_cast<int>(rx) / 8, static_cast<int>(ry) / 8);
+        static std::set<std::string> seen;
+        if (seen.size() < 3000 && seen.insert(name.empty() ? std::string(key) : name).second)
+            HLOG(1, "ui: pos %s 0x%08X vt 0x%08X render %.1f,%.1f anchor %.1f,%.1f size %.1f,%.1f zoom %.3f,%.3f def %d", name.empty() ? "-" : name.c_str(), self, rd32(self), rx, ry,
+                 rdf32(self + 0xF8), rdf32(self + 0xFC), rdf32(self + 0xD4), rdf32(self + 0xD8), rdf32(self + 0x7C), rdf32(self + 0x80), static_cast<int>(rd32(self + 0x150)));
+    }
     const uint32_t vt = rd32(self);
     if (!(guestCallThis(rd32(vt + 0x198), self, {}) & 0xFF)) return;  // parented: already zoomed
     const float zx = rdf32(self + 0x7C), zy = rdf32(self + 0x80);  // the component's render zoom
@@ -1079,6 +1152,9 @@ extern "C" void host_ui_manager_event(Ctx* c) {
 
 namespace host::menu {
 void xboxScreensTick() {  // once per input update: the Xbox inventory screens end with the live GUI
+    static int32_t lastCharge = -1;  // CInputProcessQuickAccessItems' charging slot (-2: the Guild Seal)
+    const int32_t charge = static_cast<int32_t>(rd32(0x137EE78));
+    if (charge != lastCharge) { lastCharge = charge; HLOG(1, "inventory: quick-access charge slot %d", charge); }
     if (g_xboxScreensUp && !liveGui()) { g_xboxScreensUp = false; HLOG(1, "menu: Xbox inventory screens closed (live GUI off)"); }
 }
 }  // namespace host::menu

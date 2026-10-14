@@ -577,7 +577,7 @@ uint32_t mergedBindings(uint32_t vec) {
         } else {
             add(72, XB_BACK);  // the in-game menu, as Back opened the inventory on Xbox
             add(76, XB_B);     // INVENTORY_UNSELECT: back out of the menu screens
-            add(78, XB_DDOWN); // CHARGE_GUILD_SEAL (the PC's G key): held on d-pad down, the Xbox seal
+            add(78, XB_DDOWN); // CHARGE_GUILD_SEAL (the PC's G key): held on d-pad down, the Xbox seal (host_quick_button)
         }
     }
     const uint32_t need = static_cast<uint32_t>(all.size());
@@ -758,6 +758,9 @@ extern "C" void host_joystick_update(Ctx* c) {
                     host::log("test: CPlayerGui::Open");
                     guestCallThis(0x4374B0, rd32(0x13B8790), {});
                 }
+                // D-pad down with an NPC's follow/wait on offer gives that command instead of
+                // charging the seal (the press is used up here, its release is harmless).
+                if (i == XB_DDOWN && now[i] && xboxMenusEnabled() && !rightTriggerHeld() && host::menu::npcCommandPress()) continue;
                 writeEvent(ev, now[i] ? EV_BUTTON_PRESSED : EV_BUTTON_RELEASED, lx, ly, i, t);
                 guestCallThis(kAddEventToStore, self, {ev});
                 guestCallThis(kProcessMaintainedEvents, self, {ev});
@@ -776,6 +779,23 @@ extern "C" void host_joystick_update(Ctx* c) {
     }
     c->esp = savedEsp;
     retCdecl(c, 1);
+}
+
+// 0x446000 bool CGamePlayerInterface::IsEventContextSensitiveItemButton(CInputEvent*, long* slot)
+// (the manifest's name; it walks the QUICK_ACCESS_ITEM (55) controls at +0x7C4).
+// CInputProcessQuickAccessItems::ProcessInput (0x68E510) takes the Guild Seal's slot (-2) for
+// a CHARGE_GUILD_SEAL (78) press and then asks this, which overwrote the slot with 1 for
+// d-pad down (the Xbox scheme's second 55 record), so the seal never charged. With the Xbox
+// scheme, d-pad down is not a quick-access button unless the right trigger is held (the
+// favourites).
+extern "C" void F_00446000_orig(Ctx* c);
+extern "C" void host_quick_button(Ctx* c) {
+    const uint32_t ev = rd32(c->esp + 4);
+    if (ev && rd32(ev + 0x20) == 1 && rd8(ev + 8) == host::pad::XB_DDOWN && host::pad::xboxMenusEnabled() && !host::pad::rightTriggerHeld()) {
+        host::retStd(c, 0, 2);
+        return;
+    }
+    F_00446000_orig(c);
 }
 
 // 0x445B80 CGamePlayerInterface::GetToggleZTarget(): the controls def's ToggleZTarget byte

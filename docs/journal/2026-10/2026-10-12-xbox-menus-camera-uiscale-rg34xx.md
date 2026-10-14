@@ -526,3 +526,36 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   inventory (the inventory "opens" once at load, so the host's Xbox-inventory flag is always
   set). Harness: Equipment -> Weapons -> Melee, Equipment -> Clothing open, B closes, the hero
   walks after.
+- **Crash in sub-menus after v23 (device log)**: the handler built PC_DESCRIPTION_INDEPENDANT
+  (vfunc_14 at 0x42380E / 0x423BD3, gated on the same byte) inside an Xbox screen and libc
+  faulted. `host_ui_manager_event` now wraps the whole handler (0x41E6D3) with the byte clear,
+  but only while `g_xboxScreensUp` (set when the host opens the Xbox inventory with the live
+  GUI on, cleared by `xboxScreensTick` when the live GUI goes off), which keeps Back working.
+  Harness: Equipment -> Clothing -> Head -> item -> Wear and back out, no crash; the hero
+  walks after closing.
+- **Guild Seal on d-pad down (user report: "no longer working")**:
+  `CInputProcessQuickAccessItems::ProcessInput` (0x68E510) takes the seal's slot (-2) when the
+  press is CHARGE_GUILD_SEAL (78), then asks 0x446000 (manifest: IsEventContextSensitiveItemButton;
+  it walks the QUICK_ACCESS_ITEM (55) controls at +0x7C4), which overwrote the slot with 1
+  because d-pad down is the Xbox scheme's second 55 record; the charge ran on slot 1 and was
+  cancelled at once (harness: charge slot 1, then -1). `host_quick_button` (wrap 0x446000)
+  answers no for d-pad down unless the right trigger is held (the favourites), so the press
+  charges the seal exactly as G does on the PC (0x68E450 cancels the charge when no held 78
+  event is queued). The NPC follow/wait commands (OBJECT_EXPRESSION_FOLLOW_DUMMY /
+  _WAIT_DUMMY; global def index = compiled_game_entries index + 1) go to d-pad down when they
+  are among the context items (`host::menu::npcCommandPress`, from the joystick hook). The
+  context ids with no NPC are GUILD_SEAL_1, BELCH, MIDDLE_FINGER, VICTORY_PUMP.
+  Harness: holding d-pad down charges the seal (charge slot -2, the seal icon glows) and the
+  charge ends when released.
+- **Xbox list rows missing / drawn over titles**: CList's view-area pass (vfunc 185, 0x5379F5)
+  shows a row (alpha 255) when both corners of its zoomed box lie inside the list's view box
+  and hides it (alpha 0) otherwise; the view box's size is multiplied by GetUIScale at
+  0x537D74 / 0x537D92, which were not zoomed, so the box was 1/1.6 of its height: a category
+  list opened with one row, and rows scrolled above the box still drew over the screen title.
+  Both sites are zoomed now; Equipment shows its four rows with the faded edge rows and nothing
+  over the title. `FABLE_XBOX_ZOOM_LOG=1` logs every GetUIScale caller seen in the Xbox screens
+  (zoomed or not); `FABLE_XBOX_ZOOM_SITES=3` zooms every caller, `-1` none (diagnostics).
+  Still unzoomed and seen: CScrollingViewport (0x53EABC.., mouse hit test; 0x53F1E3..),
+  CText::CanScroll (0x54ECEB), CTable::Draw (0x5511A5/C3).
+- Clothing in the harness: Head, Hands, Torso, Legs, Feet: item -> Wear and the "No ..." item
+  to remove it, the hero model changes each time, no crash.
