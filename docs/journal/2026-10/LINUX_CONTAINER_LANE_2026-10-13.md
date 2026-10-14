@@ -566,11 +566,12 @@ the `/GS` lane gap (0x00CAB160, 0x00C3BB50: the lane compiler copies or caches p
 arguments where retail re-reads the argument slots) and the array-new zero-count special case
 (0x00C3F800). The open EH set of the module is down to ~23 bodies of 390+ bytes.
 
-### Wave 23, part 15 (EH pass 32) — paused mid-batch
-Paused on user request before landing. Matched in scratch (`$S/w23/e_<addr>.cpp`, not yet landed, no `t32/` builder yet):
-00c3ee10 CAnimationOwner::CreateNavigationLayer (twin of 00c3ec80), 00c16310 CScriptLoader::LoadScript, 00c38b20 ~CActivationReceptor,
-00c23c10 / 00c23e00 / 00c24050 / 00c239b0 CEventSubscription ctor family (malloc + `new[]` twins; entries 0x2c / 0xc / 0xb4 bytes),
-00c4c8b0 CMasterObject::LoadScriptInfo (8-byte CProfileLock fixed the frame). Parked with evidence (`$S/w23/parked_notes.txt`):
-00c4cab0 (vtable caching / regalloc), 00caf230 COM dispatch-container ctor (lane folds the inlined `&local != NULL` test retail keeps),
-00c11d00 CTCHero ctor (store scheduling only). In progress: 00c1a9c0 AsyncReadThread (494v485, saved-`this` slot shape).
-Resume: build `$S/w23/t32/` (build.py names + tests.py) for the eight matches, land `2026-10-14_linux_eh32`, then `funclets37`, dashboard, docs.
+### Wave 23, part 15 (EH pass 32, funclets 37)
+Landed `2026-10-14_linux_eh32` (8 bodies: 00c3ee10 CreateNavigationLayer, 00c16310 LoadScript, 00c38b20 ~CActivationReceptor,
+the four CEventSubscription ctors 00c23c10 / 00c23e00 / 00c24050 / 00c239b0, 00c4c8b0 LoadScriptInfo) and `_funclets37` (25 of 45).
+Catalog 28,483 -> 28,516 (57.5%). The t32 builder/tests were produced by the session's single sub-agent from the matched scratch sources.
+Lessons: the CProfileLock is 8 bytes (section + tick) -- a 4-byte model shrinks the frame by a word (c4c8b0); `new T[n]` twins derive from
+the malloc template by swapping the entry allocation only. Parked with evidence (`$S/w23/parked_notes.txt`): 00c4cab0 (vtable caching),
+00caf230 (DirectShow-style CUnknown/CBaseDispatch ctor: the lane folds the inlined `if (pptinfo == NULL)` on `&local`, retail keeps it),
+00c11d00 (CTCHero ctor, store scheduling), 00c1a9c0 (async read thread: lane rotates the loop and shrink-wraps). With these the
+0x00C0xxxx EH set is exhausted: every remaining open EH body is parked on a systematic lane-vs-retail codegen gap for the Windows QFE compiler.
