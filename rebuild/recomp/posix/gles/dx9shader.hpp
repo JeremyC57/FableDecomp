@@ -62,6 +62,11 @@ std::string ffpPixelShader(const FfpPixelKey& key);
 // uniform vec4 uViewport (x, y, w, h).
 std::string ffpVertexShaderRhw(int texCoords);
 
+// A fragment shader's text (pixel shader or fixed-function) with the alpha test compiled in.
+// Without it the epilogue never discards: the renderer builds this variant only for draws with
+// D3DRS_ALPHATESTENABLE and a function other than ALWAYS.
+std::string withAlphaTest(const std::string& glsl);
+
 // The shared epilogue pieces.
 extern const char* kVertexPrologue;
 extern const char* kFragmentPrologue;

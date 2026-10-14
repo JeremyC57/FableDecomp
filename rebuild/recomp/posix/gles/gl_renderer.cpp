@@ -501,6 +501,7 @@ struct VertexShader : Unknown<IDirect3DVertexShader9, &IID_IDirect3DVertexShader
 struct PixelShader : Unknown<IDirect3DPixelShader9, &IID_IDirect3DPixelShader9> {
     Device* dev;
     Shader sh;
+    GLuint glAlphaTest = 0;  // the variant with the alpha test (withAlphaTest), compiled when a draw first needs it
     std::vector<uint32_t> code;
     uint32_t id;
     HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
@@ -510,7 +511,7 @@ struct PixelShader : Unknown<IDirect3DPixelShader9, &IID_IDirect3DPixelShader9> 
         *n = static_cast<UINT>(code.size() * 4);
         return S_OK;
     }
-    ~PixelShader() override { if (sh.gl) glDeleteShader(sh.gl); }
+    ~PixelShader() override { if (sh.gl) glDeleteShader(sh.gl); if (glAlphaTest) glDeleteShader(glAlphaTest); }
 };
 
 struct Query : Unknown<IDirect3DQuery9, &IID_IDirect3DQuery9> {
@@ -582,9 +583,10 @@ struct ProgramKey {
     uint32_t vs = 0;   // 0: fixed function (pre-transformed)
     uint32_t ps = 0;   // 0: fixed function
     FfpPixelKey ffp;
+    bool alphaTest = false;  // the fragment shader carries the alpha test (and so may discard)
     bool operator==(const ProgramKey&) const = default;
 };
-struct ProgramKeyHash { size_t operator()(const ProgramKey& k) const { return (static_cast<size_t>(k.vs) * 131) ^ k.ps ^ (k.ffp.stage[0].colorOp << 8) ^ (k.ffp.stage[0].colorArg2 << 12) ^ (k.ffp.stage[0].alphaOp << 16) ^ (k.ffp.specular << 20) ^ (k.ffp.stage[1].colorOp << 22); } };
+struct ProgramKeyHash { size_t operator()(const ProgramKey& k) const { return (static_cast<size_t>(k.vs) * 131) ^ k.ps ^ (k.ffp.stage[0].colorOp << 8) ^ (k.ffp.stage[0].colorArg2 << 12) ^ (k.ffp.stage[0].alphaOp << 16) ^ (k.ffp.specular << 20) ^ (k.ffp.stage[1].colorOp << 22) ^ (static_cast<size_t>(k.alphaTest) << 30); } };
 struct Program {
     GLuint gl = 0;
     GLint uC = -1, uColorBgra = -1, uPc = -1, uBump = -1, uProjMask = -1, uFogColor = -1, uFogEnable = -1, uAlphaFunc = -1, uAlphaRef = -1, uViewport = -1, uTFactor = -1, uHalfPixel = -1;
@@ -815,7 +817,7 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
         if (s < 256 && rs[s] != v) {
             rs[s] = v;
             rsDirty = true;
-            if (s == D3DRS_SPECULARENABLE) programDirty = true;
+            if (s == D3DRS_SPECULARENABLE || s == D3DRS_ALPHATESTENABLE || s == D3DRS_ALPHAFUNC) programDirty = true;  // the program key reads them
             // the states setConstants mirrors into uniforms (the rest are GL state: applyRenderStates)
             if (s == D3DRS_FOGCOLOR || s == D3DRS_FOGENABLE || s == D3DRS_ALPHATESTENABLE || s == D3DRS_ALPHAFUNC || s == D3DRS_ALPHAREF || s == D3DRS_TEXTUREFACTOR) miscChanged();
         }
@@ -1562,20 +1564,31 @@ Program* Device::program() {
         }
         key.ffp.specular = rs[D3DRS_SPECULARENABLE] != 0;
     }
+    // The alpha test is compiled into its own variant: a shader that can discard costs a Mali GPU
+    // its early depth update and forward pixel kill on every draw, alpha test on or off.
+    key.alphaTest = rs[D3DRS_ALPHATESTENABLE] && rs[D3DRS_ALPHAFUNC] != D3DCMP_ALWAYS;
     auto it = programs.find(key);
     if (it != programs.end()) return it->second.gl ? &it->second : nullptr;
     Program& p = programs[key];  // node-based map: the slot's address stays valid while the render thread fills it
     const GLuint v = key.vs ? vs->sh.gl : ffpVs;
-    const GLuint psGl = key.ps ? ps->sh.gl : 0;
-    const std::string ffpSrc = key.ps ? std::string() : ffpPixelShader(key.ffp);
+    PixelShader* const pso = key.ps ? ps.p : nullptr;
+    const bool alphaTest = key.alphaTest;
+    const std::string ffpSrc = key.ps ? std::string() : alphaTest ? withAlphaTest(ffpPixelShader(key.ffp)) : ffpPixelShader(key.ffp);
     // The fixed-function shader's compile, the link and the ~150 uniform-location queries each
     // need an answer from the driver: through the queue every one of them was a round trip to
     // the render thread (a hitch the first time a shader pair draws). They run there in one go.
-    auto build = [this, &p, v, psGl, &ffpSrc] {
-        GLuint f = psGl;
-        if (!psGl) f = compileShader(GL_FRAGMENT_SHADER, ffpSrc, "fixed-function pixel shader");
+    auto build = [this, &p, v, pso, alphaTest, &ffpSrc] {
+        GLuint f = 0;
+        if (pso && alphaTest) {
+            if (!pso->glAlphaTest) pso->glAlphaTest = compileShader(GL_FRAGMENT_SHADER, withAlphaTest(pso->sh.info.glsl), "pixel shader (alpha test)");
+            f = pso->glAlphaTest;
+        } else if (pso) {
+            f = pso->sh.gl;
+        } else {
+            f = compileShader(GL_FRAGMENT_SHADER, ffpSrc, "fixed-function pixel shader");
+        }
         p.gl = linkProgram(v, f);
-        if (!psGl && f) glDeleteShader(f);
+        if (!pso && f) glDeleteShader(f);
         if (!p.gl) return;
         p.uC = glGetUniformLocation(p.gl, "c");
         p.uColorBgra = glGetUniformLocation(p.gl, "uColorBgra");

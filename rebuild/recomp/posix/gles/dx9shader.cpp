@@ -32,6 +32,9 @@ const char* kFragmentPrologue =
     "  if (s == 3) return texture(s3, uv); if (s == 4) return texture(s4, uv); return texture(s5, uv);\n"
     "}\n"
     "void finish(vec4 color) {\n"
+    // Only the alpha-test variant (withAlphaTest) can discard: on a Mali GPU a shader that may
+    // discard gets no early depth/stencil update and no forward pixel kill, whatever the uniform.
+    "#ifdef FABLE_ALPHA_TEST\n"
     "  if (uAlphaFunc != 8) {\n"  // D3DCMP_*: 1 never 2 less 3 equal 4 lessequal 5 greater 6 notequal 7 greaterequal 8 always
     "    float a = color.a, r = uAlphaRef; bool pass = true;\n"
     "    if (uAlphaFunc == 1) pass = false; else if (uAlphaFunc == 2) pass = a < r; else if (uAlphaFunc == 3) pass = abs(a - r) < 0.002;\n"
@@ -39,6 +42,7 @@ const char* kFragmentPrologue =
     "    else if (uAlphaFunc == 7) pass = a >= r;\n"
     "    if (!pass) discard;\n"
     "  }\n"
+    "#endif\n"
     "  if (uFogEnable != 0) color.rgb = mix(uFogColor.rgb, color.rgb, clamp(vFog, 0.0, 1.0));\n"
     "  fragColor = color;\n"
     "}\n";
@@ -344,6 +348,12 @@ std::string pixelShaderText(Translator& t) {
 }
 
 }  // namespace
+
+std::string withAlphaTest(const std::string& glsl) {
+    const size_t eol = glsl.find('\n');  // after "#version 300 es": the define must follow it
+    if (eol == std::string::npos) return glsl;
+    return glsl.substr(0, eol + 1) + "#define FABLE_ALPHA_TEST 1\n" + glsl.substr(eol + 1);
+}
 
 bool translateDx9Shader(const uint32_t* code, Dx9Shader& out, std::string& err) {
     Translator t;
