@@ -235,6 +235,47 @@ void convert16(D3DFORMAT f, const uint8_t* src, uint8_t* dst, size_t n) {
     }
 }
 
+// 16-bit storage for decoded DXT (FABLE_GLES_TEX16 / texture detail Low): half the memory and
+// the texture-fetch bandwidth of RGBA8 on a bandwidth-bound tiler. The storage follows what the
+// texture's levels need, in this order; a level that needs more re-creates it.
+enum DxtStore { ST_565, ST_5551, ST_4444, ST_8888 };
+struct DxtStoreFormat { GLenum internal, format, type; };
+constexpr DxtStoreFormat kDxtStore[4] = {
+    {GL_RGB565, GL_RGB, GL_UNSIGNED_SHORT_5_6_5},        // opaque (every DXT1 colour endpoint is exactly 565)
+    {GL_RGB5_A1, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1},    // alpha only 0 or 255 (DXT1 punch-through, alpha-tested DXT3/5)
+    {GL_RGBA4, GL_RGBA, GL_UNSIGNED_SHORT_4_4_4_4},      // smooth alpha, mode 2 only (DXT3's alpha is 4-bit already)
+    {GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE},               // smooth alpha
+};
+// 0 off; 1: RGB565 / RGB5_A1, smooth alpha stays RGBA8; 2: smooth alpha as RGBA4 as well.
+// FABLE_GLES_TEX16 sets it; unset, it is 1 when the host texture detail is Low.
+int dxt16Mode() {
+    static const int env = [] { const char* e = getenv("FABLE_GLES_TEX16"); return e ? std::clamp(atoi(e), 0, 2) : -1; }();
+    if (env >= 0) return env;
+    return host::gfx::get().texture == host::gfx::LOW ? 1 : 0;
+}
+// The storage a decoded level needs.
+int dxtNeed(const std::vector<uint8_t>& rgba, int mode) {
+    bool opaque = true;
+    for (size_t i = 3; i < rgba.size(); i += 4) {
+        const uint8_t a = rgba[i];
+        if (a == 255) continue;
+        if (a != 0) return mode >= 2 ? ST_4444 : ST_8888;
+        opaque = false;
+    }
+    return opaque ? ST_565 : ST_5551;
+}
+// RGBA8 -> a packed 16-bit store (first component in the high bits, as GL's packed types read),
+// rounded to nearest (a 565 endpoint decoded by decodeColor565 packs back to itself).
+void packDxt16(int rank, const uint8_t* rgba, size_t n, uint16_t* out) {
+    auto q = [](unsigned v, unsigned max) { return (v * max + 127) / 255; };
+    for (size_t i = 0; i < n; ++i, rgba += 4) {
+        const unsigned r = rgba[0], g = rgba[1], b = rgba[2], a = rgba[3];
+        if (rank == ST_565) out[i] = static_cast<uint16_t>(q(r, 31) << 11 | q(g, 63) << 5 | q(b, 31));
+        else if (rank == ST_5551) out[i] = static_cast<uint16_t>(q(r, 31) << 11 | q(g, 31) << 6 | q(b, 31) << 1 | (a >= 128 ? 1 : 0));
+        else out[i] = static_cast<uint16_t>(q(r, 15) << 12 | q(g, 15) << 8 | q(b, 15) << 4 | q(a, 15));
+    }
+}
+
 // ---- resources ----------------------------------------------------------------------------
 struct Surface;
 struct Texture;
@@ -296,10 +337,14 @@ struct Texture : Unknown<IDirect3DTexture9, &IID_IDirect3DTexture9> {
     std::vector<Surface*> surfaces;  // one per level, created on demand (referenced by us)
     DWORD lod = 0;
     D3DTEXTUREFILTERTYPE autogen = D3DTEXF_LINEAR;
+    int tex16 = 0;        // DXT decoded to 16-bit texels (dxt16Mode at creation); 0 = RGBA8
+    int storeRank = -1;   // tex16: the DxtStore its storage has (-1: none yet, allocated at the first upload)
     Texture(Device* d, UINT w, UINT h, UINT l, DWORD u, D3DFORMAT f, D3DPOOL p);
     ~Texture() override;
     Surface* surface(UINT level);
-    void upload(UINT level, const RECT* rect);
+    void upload(UINT level, const RECT* rect, bool force = false);
+    void initObject(GLenum internal);  // binds gl, gives it storage (0: none) and its parameters
+    void store16(int rank);            // tex16: storage of that rank (a new object if it had one)
     // IDirect3DResource9
     HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
     HRESULT STDMETHODCALLTYPE SetPrivateData(REFGUID, const void*, DWORD, DWORD) override { return S_OK; }
@@ -924,16 +969,32 @@ Texture::Texture(Device* d, UINT w, UINT h, UINT l, DWORD u, D3DFORMAT f, D3DPOO
     surfaces.assign(levels, nullptr);
     if (pool != D3DPOOL_SYSTEMMEM && pool != D3DPOOL_SCRATCH) {
         glGenTextures(1, &gl);
-        dev->bindForUpdate(gl);
-        glTexStorage2D(GL_TEXTURE_2D, static_cast<GLsizei>(levels), info.internal, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
-        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, &info.swizzle[0]);
-        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, &info.swizzle[1]);
-        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, &info.swizzle[2]);
-        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, &info.swizzle[3]);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, static_cast<GLint>(levels - 1));
-        if (info.depth) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_NONE);
+        tex16 = isDxt(f) ? dxt16Mode() : 0;
+        initObject(tex16 ? 0 : info.internal);  // tex16: the storage waits for the first level's alpha
         GLCHECK("CreateTexture");
     }
+}
+void Texture::initObject(GLenum internal) {
+    dev->bindForUpdate(gl);
+    if (internal) glTexStorage2D(GL_TEXTURE_2D, static_cast<GLsizei>(levels), internal, static_cast<GLsizei>(width), static_cast<GLsizei>(height));
+    glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, &info.swizzle[0]);
+    glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, &info.swizzle[1]);
+    glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_B, &info.swizzle[2]);
+    glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_A, &info.swizzle[3]);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, static_cast<GLint>(levels - 1));
+    if (info.depth) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_NONE);
+}
+void Texture::store16(int rank) {
+    if (storeRank >= 0) {  // immutable storage keeps its format: a new object, the levels uploaded again
+        for (GLuint& b : dev->boundTexGl) if (b == gl) b = ~0u;
+        glDeleteTextures(1, &gl);
+        glGenTextures(1, &gl);
+        initObject(0);
+    } else {
+        dev->bindForUpdate(gl);
+    }
+    glTexStorage2D(GL_TEXTURE_2D, static_cast<GLsizei>(levels), kDxtStore[rank].internal, static_cast<GLsizei>(width), static_cast<GLsizei>(height));
+    storeRank = rank;
 }
 Texture::~Texture() {
     for (GLuint& b : dev->boundTexGl) if (b == gl && gl) b = ~0u;
@@ -949,18 +1010,42 @@ Surface* Texture::surface(UINT level) {
     }
     return surfaces[level];
 }
-void Texture::upload(UINT level, const RECT* rect) {
+void Texture::upload(UINT level, const RECT* rect, bool force) {
     if (!gl) return;
     Surface* s = surfaces[level];
     if (!s || s->level.cpu.empty()) return;
     const uint64_t t0 = nowNs();
     if (s->level.cpu.size() <= 65536) {  // skip an identical re-upload of a small level
         const uint64_t h = hashBytes(s->level.cpu.data(), s->level.cpu.size());
-        if (h == s->level.hash) return;
+        if (h == s->level.hash && !force) return;
         s->level.hash = h;
     }
     struct UploadTime { uint64_t t0; ~UploadTime() { const uint64_t d = nowNs() - t0; g_nsUpload += d; g_nsGl += d; } } timing{t0};
     const UINT w = s->level.width, h = s->level.height;
+    if (tex16) {
+        std::vector<uint8_t> rgba = decodeDxt(format, s->level.cpu.data(), w, h);
+        const int need = dxtNeed(rgba, tex16);
+        if (need > storeRank) {
+            const bool had = storeRank >= 0;
+            store16(need);
+            if (had)  // the levels already uploaded, into the new object
+                for (UINT l = 0; l < levels; ++l)
+                    if (l != level && surfaces[l] && !surfaces[l]->level.cpu.empty()) upload(l, nullptr, true);
+        }
+        dev->bindForUpdate(gl);
+        glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+        const DxtStoreFormat& sf = kDxtStore[storeRank];
+        if (storeRank == ST_8888) {
+            glTexSubImage2D(GL_TEXTURE_2D, static_cast<GLint>(level), 0, 0, static_cast<GLsizei>(w), static_cast<GLsizei>(h), sf.format, sf.type, rgba.data());
+        } else {
+            std::vector<uint16_t> packed(static_cast<size_t>(w) * h);
+            packDxt16(storeRank, rgba.data(), packed.size(), packed.data());
+            glTexSubImage2D(GL_TEXTURE_2D, static_cast<GLint>(level), 0, 0, static_cast<GLsizei>(w), static_cast<GLsizei>(h), sf.format, sf.type, packed.data());
+        }
+        (void)rect;
+        GLCHECK("upload");
+        return;
+    }
     dev->bindForUpdate(gl);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     if (isDxt(format)) {
