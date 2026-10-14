@@ -535,3 +535,19 @@ constructor), 0x00CAACA0, 0x00C3DA60 (tail-merged error block), 0x00C172F0. Cata
 2. To regenerate the container-side artefacts: Ghidra project lives only in the container scratchpad
    (not committed); rebuild it with the headless import in `docs/BUILDING.md` and
    `LabelApply.java <tsv from functions.tsv>`.
+
+### Wave 23, part 13 (EH pass 30, funclets 35)
+
+Fifteen more bodies landed byte-exact (`2026-10-14_linux_eh30/`, commit `0f82791c`): the two
+auto-delete-array `Resize` twins, the buffered-reader `Seek`, the two checked `At` twins, the
+mailbox `Dispatch`, the map-who `CreateInstance`, the `__fastcall` bitset describer that returns a
+string by value, the audio thread-owner `Attach` / `WaitForAsyncCompletion`, the animation-table
+`GetMaxDamageInAnimation`, the `~CCreatureActionHeroJump` and `~CTCKraken` destructors, the
+master-object `Finalize` (`delete this`) and the hero `ReleaseTarget` sweep, plus the 31 funclets of
+those parents (`_funclets35/`). Catalog 28,387 → **28,433 (57.4%)**. Ten near misses parked with
+evidence in `$S/w23/parked_notes.txt`: the DDK hoists loads/stores past `push`es (0x00C14E40,
+0x00CAB370/0x00CAC070), colours registers differently (0x00C11AC0, 0x00C88780, 0x00C0AD10 needed
+the loop index declared before the string), lays the return-0 exit inline (0x00C11230), interleaves
+64-bit loads (0x00CAF8F0), uses immediates where retail keeps a zero register (0x00C48E00), and
+never shares a frame slot between sibling-scope locals (0x00C1A870, 0x00C1A110 — retail does).
+The open EH set of the module is down to ~48 bodies of 298+ bytes.
