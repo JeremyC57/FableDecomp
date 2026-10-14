@@ -584,3 +584,18 @@ rows) went to the single sub-agent (40/40 matched, `_hand24`), chunk 25 was auth
 `CRetailTree_<addr>::BuyNode`. The scratch-only lane tooling (grader, disassembler, EH helpers, chunk brief/cutter/lander, EH-pass
 builder example, parked list) is now in `tools/decomp_pipeline/linux_lane/lane_tools/` so a fresh container can resume; the chunk
 cutter trims the int3 padding the family rows carry (the lander compares whole rows). Lessons in GOTCHAS (wave 24a).
+
+### Wave 24, part 2 (hand chunks 26–27)
+Fresh chat, same container: the previous scratch lane (game, DDK compiler, Wine prefix, pools) survived under the old
+scratchpad directory and was reused as `$S`; the only bootstrap cost was priming Wine (`wine cmd /c exit` with null stdio) so the
+service processes do not inherit the grader's pipe. Chunk 26 (40 rows, CCreatureAction_* Sheathe.. WhisperSommersaultBackward)
+went to the single sub-agent: 40/40 matched (`_hand26`), with six relabels (BanditKingUnstuck / VillagerAttackKnockdown /
+WaspQueenDie constructors, a list BuyNode, an STLport list Insert, a free `__stdcall` setter). Chunk 27 (CCreatureAction_
+WhisperSommersaultForward .. CDateAndTime: the CDateAndTime family, the CDataOutputStream writers, data-bank lookups, stream
+constructors, CDBMinion, CCriticalSectionLock) was authored by the coordinator: 35/40 (`_hand27` + `_hand27_b`). Catalog
+28,592 -> **28,667 (57.8%)**. Parked with evidence (`$S/w22/agent27/NOTES.md`, best sources in `differ/`): 00bf3250 (1.0f
+register stores sunk past the zero stores), 00c59720 (mask narrowing), 00995a20 / 00995a80 (null-arm block placement),
+00e5dde0 (argument load scheduling). `funclets.py` found 20 new EH parents but the lane emitted no funclet for any of them
+(DIFFER 0vN) -- the batch was discarded; the agent's EH-prologue constructors want a look on the Windows box. Lessons in
+GOTCHAS (wave 24b). Next cut: `mkchunk.py 28 2` (pool ~3,640 rows).
+

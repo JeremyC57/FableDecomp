@@ -1,0 +1,14 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00c6e660",
+    "module": "CRenderCall_00c6e660",
+    "name": "Call",
+    "source_cpp": "// CRenderCall_00c6e660::Call() -- call virtual slot 4 on `this` with four zero arguments, the address of a zeroed two-float record, a zero and a one\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6E660, length 45 bytes.\n// Callees: virtual slot 4 of `this` (seven arguments; the vtable is read before the pushes).\n// Shape: `sub esp,8` is the 8-byte local record, its address is pushed as the fifth argument (`lea edx,[esp+8]` after\n// three pushes) and its two floats are zeroed by immediate stores only after all seven pushes (the scheduler sinks the\n// stores next to the call; float zeroes are immediates, which is why no zero register is shared with the pushes); the trailing `add esp,8` frees the local -- the callee is __thiscall/__stdcall and pops its arguments.\n// The manifest label \"CDataOutputStream::WriteCBYTE\" is propagated from a same-shape body (WriteCBYTE takes a\n// byte argument; this body takes none), so the class and record are named by address and shape.\nstruct SZeroPair_00c6e660 {                 // two floats: their zeroes are immediate stores (an integer zero would claim a\n    float m_first;                         // register and turn the `push 0` immediates into `push eax`)\n    float m_second;\n};\n\nstruct CRenderCall_00c6e660 {\n    virtual void v00();\n    virtual void v01();\n    virtual void v02();\n    virtual void v03();\n    virtual void Submit(long a, long b, long c, long d, SZeroPair_00c6e660* record, long e, long f);   // slot 4\n    void Call();\n};\n\nvoid CRenderCall_00c6e660::Call()\n{\n    SZeroPair_00c6e660 record;\n    record.m_first = 0.0f;\n    record.m_second = 0.0f;\n    Submit(0, 0, 0, 0, &record, 0, 1);\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct SZeroPair_00c6e660 { float m_first, m_second; };\nstruct CRenderCall_00c6e660 {\n    virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { }\n    virtual void Submit(long a, long b, long c, long d, SZeroPair_00c6e660* r, long e, long f) { seen = a + b + c + d + e; last = f; pair = *r; ++calls; }\n    long seen, last, calls; SZeroPair_00c6e660 pair;\n    void Call() { SZeroPair_00c6e660 record; record.m_first = 0.0f; record.m_second = 0.0f; Submit(0, 0, 0, 0, &record, 0, 1); }\n};\nint main()\n{\n    CRenderCall_00c6e660 c; c.calls = 0; c.pair.m_first = 5.0f; c.Call();\n    if (c.calls != 1 || c.seen != 0 || c.last != 1 || c.pair.m_first != 0.0f || c.pair.m_second != 0.0f) { std::printf(\"00c6e660_TEST FAIL\\n\"); return 1; }\n    std::printf(\"00c6e660_TEST PASS\\n\"); return 0;\n}\n",
+    "pass_pattern": "00c6e660_TEST PASS"
+   }
+  ]
+ }
+}
