@@ -74,7 +74,7 @@ def obj_text(path, leaf):
     sel=max(named or fns,key=lambda f:len(f["bytes"]))
     return bytes(sel["bytes"]),int(sel["section"]),str(sel["symbol"])
 
-def funclet_extractor(offset, length):
+def funclet_extractor(offset, length, retail=None):
     """Text extractor for an EH unwind funclet: VC7.1 emits a function's funclets and its
     `__ehhandler$` thunk as one separate `.text` contribution headed by a `$L<n>` label, in
     unwind-map order (the retail layout at 0x0121xxxx is the same block, so a funclet's
@@ -92,10 +92,23 @@ def funclet_extractor(offset, length):
                 continue
             e=DB.match(line)
             if e and cur is not None: cur["bytes"].extend(bytes.fromhex(e.group(1)))
-        cands=[f for f in fns if f["symbol"].startswith("$L") and len(f["bytes"])>=offset+length]
+        cands=[f for f in fns if f["symbol"].startswith("$L") and len(f["bytes"])>=length]
         if not cands: raise RuntimeError("no funclet block")
-        sel=cands[0]
-        return bytes(sel["bytes"][offset:offset+length]),int(sel["section"]),str(sel["symbol"]),offset
+        # A TU with several EH-framed functions (an inline base constructor emitted out of line
+        # beside the parent) holds one `$L` block per function under /Gy; the parent's block is
+        # the one that reproduces the oracle, so every block is tried, in section order.
+        # VC7.1 orders a function's funclets by unwind state, which is not always the retail
+        # address order, so when the expected offset does not reproduce the oracle look for the
+        # slice anywhere in the block (relocation-masked compare), preferring the expected offset.
+        if retail is not None and len(retail)==length:
+            for sel in cands:
+                blk=bytes(sel["bytes"]); sec=int(sel["section"]); rel=obj_relocs(path,sec)
+                order=[offset]+[o for o in range(0,len(blk)-length+1) if o!=offset]
+                for o in order:
+                    r=[x-o for x in rel if o<=x<o+length]
+                    if mask(retail,r)==mask(blk[o:o+length],r): return blk[o:o+length],sec,str(sel["symbol"]),o
+        sel=cands[0]; blk=bytes(sel["bytes"]); sec=int(sel["section"])
+        return blk[offset:offset+length],sec,str(sel["symbol"]),offset
     return extract
 
 def obj_relocs(path, sel):
@@ -470,7 +483,7 @@ def main():
         # /EHsc for a funclet) and `funclet_offset` (this entry is an EH unwind funclet of the
         # TU's function: compare `len(retail)` bytes at that offset of the `$L` block).
         pre=list(c.get("flags") or [])
-        ext=funclet_extractor(int(c["funclet_offset"]), len(retail)) if c.get("funclet_offset") is not None else None
+        ext=funclet_extractor(int(c["funclet_offset"]), len(retail), retail) if c.get("funclet_offset") is not None else None
         # try base source/flags, then a pragma x extra-flag sweep (permuter integrated).
         src=src0; winflags=pre; st,_,_=parity_of(src, addr, leaf, retail, work, e, extra=pre, text_extractor=ext)
         if not st.startswith(("MATCH","RELOCATION")):

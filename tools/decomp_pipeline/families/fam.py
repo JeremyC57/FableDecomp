@@ -4,7 +4,7 @@ Usage: fam.py <repo> <family-id> <out-batch-name> [limit]   (env S = scratchpad)
 import json, sys, csv, re, os, struct
 from pathlib import Path
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
-from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EAX, X86_REG_ESI, X86_REG_ECX
+from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EAX, X86_REG_ESI, X86_REG_ECX, X86_REG_EDX
 ROOT=Path(sys.argv[1]); FAM=sys.argv[2]; BATCH=sys.argv[3]; LIMIT=int(sys.argv[4]) if (len(sys.argv)>4 and sys.argv[4]!="-") else 10**9
 TPL=sys.argv[5] if len(sys.argv)>5 else FAM   # template id (family index of the scan the template was written for)
 S=Path(os.environ["S"]); OUT=ROOT/"rebuild/candidates/manual/batches"/BATCH
@@ -9402,6 +9402,624 @@ int main()
     A a; a.f = 0; a.S(%s - 1.0f); if (a.v != %s || a.f != %s) ''' % (voff-4, flit(lo), flit(lo), flit(hi), flit(hi), hex(mask), flit(lo), flit(lo), hex(mask))+FAIL(a)+'''
     a.S(%s + 1.0f); if (a.v != %s) ''' % (flit(hi), flit(hi))+FAIL(a)+'''
 '''),b)
+    elif TPL in ("w512_47",):   # long __stdcall ErrorHandler(void*, void*): EH-framed debug-stream message chain, optional report callback, debugger break
+        if retn!=8 or b[:3]!=b"\x6a\xff\x68" or len(calls)<4: continue
+        sdtor=calls[-2]; brk=calls[-1]
+        ops=[(i.operands[1].imm, None) for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_EDX and i.operands[1].type==X86_OP_IMM]
+        chain=[]; k=0
+        for i in ins:
+            if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_EDX and i.operands[1].type==X86_OP_IMM: last=i.operands[1].imm
+            elif i.mnemonic=="call" and i.operands[0].type==X86_OP_IMM and chain is not None and i.operands[0].imm not in (sdtor,brk):
+                chain.append((i.operands[0].imm,last))
+        if len(chain)<2: continue
+        sops=sorted(set(c for c,v in chain if v>0x1200000)); nops=sorted(set(c for c,v in chain if v<=0x1200000))
+        if len(sops)!=1 or len(nops)>1: continue
+        sop=sops[0]; nop=nops[0] if nops else None
+        globs=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_EAX and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==0 and i.operands[1].mem.disp>0x400000]
+        if len(globs)!=2: continue
+        gbuf,gpfn=globs
+        def cstr(s): return '"'+s.replace("\\","\\\\").replace('"','\\"').replace("\n","\\n").replace("\r","\\r").replace("\t","\\t")+'"'
+        parts=[]
+        for c,v in chain:
+            parts.append(cstr(lit(v)) if c==sop else str(v))
+        fname=re.sub(r"[^A-Za-z0-9_]","_",mname.split("::")[-1]) or "ErrorHandler"; fname=f"{fname}_{a}"
+        add(a,"_global",fname,HDRF(a,f"{fname}(void*, void*) -- EH-framed debug message: a CDebugStream over the shared buffer @ 0x{gbuf:08X}, {len(chain)} `<<` pieces, the report callback @ 0x{gpfn:08X} when set, then a debugger break (constructor @ 0x{brk:08X}); returns 0",len(b))+f'''//
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; mov eax,[g_pDebugBuffer] ; mov [esp+4],eax ; mov edx,offset lit ; lea ecx,[esp+4] ; mov dword ptr [esp+10h],0 ; call operator<< ; (mov edx,piece ; mov ecx,eax ; call operator<<) x{len(chain)-1} ; mov eax,[g_pfnErrorReport] ; test eax,eax ; je S ; mov ecx,[esp+4] ; call eax ; S: lea ecx,[esp+4] ; mov dword ptr [esp+10h],-1 ; call ~CDebugStream ; lea ecx,[esp+3] ; call CDebugBreak::CDebugBreak ; mov ecx,[esp+8] ; xor eax,eax ; mov fs:[0],ecx ; add esp,14h ; ret 8
+// Error-handler callback (two unused arguments, `__stdcall`): a CDebugStream local over the shared
+// debug buffer (EH state 0 while it lives) receives the message pieces through the `__fastcall`
+// `operator<<` overloads @ 0x{sop:08X} (text){" / 0x%08X (number)" % nop if nop else ""} chained on the returned reference,
+// the report callback @ 0x{gpfn:08X} is called with the buffer when installed, the stream is
+// destroyed (@ 0x{sdtor:08X}, state -1) and an empty CDebugBreak temporary -- its constructor @
+// 0x{brk:08X} breaks into the debugger -- is built in the high byte of the dead frame dword;
+// the handler returns 0. Built under /EHsc (the `__ehhandler` is not compared; the unwind
+// funclet lands separately through the funclet pass). Literals are the retail strings; the
+// manifest label is propagated. One of {len(members)} bodies of this shape.
+struct CDebugStream {{                      // 4 bytes: the message buffer
+    char* m_pBuffer;
+    CDebugStream(char* buffer) : m_pBuffer(buffer) {{ }}
+    CDebugStream& __fastcall operator<<(const char* text);   // 0x{sop:08X}
+{"    CDebugStream& __fastcall operator<<(long value);         // 0x%08X" % nop + chr(10) if nop else ""}    ~CDebugStream();                       // 0x{sdtor:08X}
+}};
+
+struct CDebugBreak {{                       // empty class whose constructor breaks into the debugger
+    CDebugBreak();                         // 0x{brk:08X}
+}};
+
+extern char* g_pDebugBuffer;               // 0x{gbuf:08X}
+extern void (__fastcall* g_pfnErrorReport)(const char* text);   // 0x{gpfn:08X}
+
+long __stdcall {fname}(void* unused1, void* unused2)
+{{
+    {{
+        CDebugStream s(g_pDebugBuffer);
+        s << {" << ".join(parts)};
+        if (g_pfnErrorReport)
+            g_pfnErrorReport(s.m_pBuffer);
+    }}
+    CDebugBreak();
+    return 0;
+}}
+''',T(a,'''static int g_n = 0, g_b = 0, g_r = 0; static char g_buf[4];
+struct D { char* p; D(char* b) : p(b) {} D& __fastcall operator<<(const char*) { ++g_n; return *this; } D& __fastcall operator<<(long) { ++g_n; return *this; } ~D() { ++g_r; } };
+struct B { B() { ++g_b; } }; static char* g_p = g_buf; static void __fastcall Rep(const char*) { g_r += 10; } static void (__fastcall* g_f)(const char*) = Rep;
+static long __stdcall H(void*, void*) { { D s(g_p); s << "a" << "b" << 7 << "c"; if (g_f) g_f(s.p); } B(); return 0; }
+int main()
+{
+    if (H(0, 0) != 0 || g_n != 4 || g_b != 1 || g_r != 11) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_163",):   # long CMailboxQueue::ProcessMessage(void*): EH-framed scoped lock, peek through the mailbox's virtual slot 3, release the semaphore and push the message when empty
+        if retn!=4 or b[:3]!=b"\x6a\xff\x68" or len(calls)!=4 or calls[1]!=calls[3]: continue
+        lctor,ldtor,rel,_=calls
+        vs=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM]
+        if vs!=[0xc,4]: continue
+        nm=f"CMailboxQueue_{a}"
+        add(a,"_unattributed",f"ProcessMessage_{nm}",HDRF(a,f"{nm}::ProcessMessage(void*) -- under a scoped queue lock (ctor @ 0x{lctor:08X}, dtor @ 0x{ldtor:08X}): 1 when the mailbox at +0x18 has a pending item (virtual slot 3), else release the semaphore at +0x1C (@ 0x{rel:08X}), push the message (virtual slot 1) and return 0; EH-framed",len(b))+f'''//
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push esi ; lea ecx,[esp+8] ; call CQueueLock::CQueueLock ; mov ecx,[esi+18h] ; mov eax,[ecx] ; mov dword ptr [esp+14h],0 ; call [eax+0Ch] ; test eax,eax ; je E ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~CQueueLock ; mov eax,1 ; pop esi ; mov ecx,[esp+8] ; mov fs:[0],ecx ; add esp,14h ; ret 4 ; E: lea ecx,[esi+1Ch] ; call CSemaphore::Release ; mov ecx,[esi+18h] ; mov eax,[message] ; mov edx,[ecx] ; push eax ; call [edx+4] ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~CQueueLock ; mov ecx,[esp+0Ch] ; xor eax,eax ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret 4
+// Mailbox queue step under an 8-byte scoped lock (constructed over the queue, EH state 0 while it
+// lives, destroyed on both exits): when the mailbox at +0x18 reports a pending item through its
+// virtual slot 3 the call returns 1; otherwise the semaphore at +0x1C is released (@ 0x{rel:08X}),
+// the message is pushed through virtual slot 1 and 0 is returned. Built under /EHsc (the
+// `__ehhandler` is not compared; the unwind funclet lands separately through the funclet pass).
+// The manifest label is propagated; the queue class is named by address. One of {len(members)}
+// bodies of this shape.
+struct {nm};
+
+struct CQueueLock {{                        // 8-byte scoped lock over the queue
+    {nm}* m_pQueue;
+    long m_state;
+    CQueueLock({nm}* queue);   // 0x{lctor:08X}
+    ~CQueueLock();                         // 0x{ldtor:08X}
+}};
+
+struct CSemaphore {{
+    long m_value;
+    void Release();                        // 0x{rel:08X}
+}};
+
+struct CMailbox {{
+    virtual void v00();
+    virtual void Push(void* message);      // slot 1
+    virtual void v08();
+    virtual void* Peek();                  // slot 3
+}};
+
+struct {nm} {{
+    unsigned char _pad[0x18];
+    CMailbox* m_pMailbox;                  // +0x18
+    CSemaphore m_semaphore;                // +0x1C
+    long ProcessMessage_{nm}(void* message);
+}};
+
+long {nm}::ProcessMessage_{nm}(void* message)
+{{
+    CQueueLock lock(this);
+    if (m_pMailbox->Peek())
+        return 1;
+    m_semaphore.Release();
+    m_pMailbox->Push(message);
+    return 0;
+}}
+''',T(a,'''static int g_l = 0, g_r = 0, g_p = 0; struct Q;
+struct L { Q* q; long s; L(Q* x) : q(x), s(0) { ++g_l; } ~L() { --g_l; } }; struct Sem { long v; void R() { ++g_r; } };
+struct M { virtual void a() {} virtual void Push(void*) { ++g_p; } virtual void b() {} virtual void* Peek() { return g_p ? (void*)1 : 0; } };
+struct Q { unsigned char p[0x18]; M* m; Sem s; long P(void* x) { L l(this); if (m->Peek()) return 1; s.R(); m->Push(x); return 0; } };
+int main()
+{
+    M m; Q q; q.m = &m; if (q.P(0) != 0 || g_r != 1 || g_p != 1 || g_l != 0 || q.P(0) != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_676",):   # EH-framed two-member constructor: empty destructible base (state 0), pointer member, out-of-line member constructors at +8 and +N, two vtables
+        if retn!=8 or b[:3]!=b"\x6a\xff\x68" or len(calls)!=2: continue
+        c8,cN=calls
+        vts=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and i.operands[1].imm>0x1000000]
+        leas=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==X86_REG_ESI]
+        if len(vts)!=2 or len(leas)!=2 or leas[0]!=8: continue
+        noff=leas[1]; psz=noff-8
+        cls=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else f"CIntelligentPointer_{a}"; cls=f"{cls}_{a}" if not cls.endswith(a) else cls
+        add(a,"_unattributed",cls,HDRF(a,f"{cls}::{cls}(void*, void*) -- EH-framed constructor: novtable polymorphic root (EH state 0), item pointer at +4, {psz}-byte member at +8 built out of line (@ 0x{c8:08X}), own vtable, then the member at +{noff:#x} built from the first argument (@ 0x{cN:08X}, state 1)",len(b))+f'''//
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov eax,[item] ; lea ecx,[esi+8] ; mov dword ptr [esp+10h],0 ; mov dword ptr [esi],offset base vtable ; mov [esi+4],eax ; call member8 ctor ; mov ecx,[source] ; push ecx ; lea ecx,[esi+{noff:#x}] ; mov dword ptr [esp+14h],1 ; mov dword ptr [esi],offset vtable ; call memberN ctor ; mov ecx,[esp+8] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret 8
+// Two-level EH-framed constructor: the base class (a polymorphic root at +0 with an out-of-line
+// destructor and no vtable store of its own (`novtable`), which is what puts the frame in EH state 0
+// before any member exists -- its funclet destroys it on `this` with no offset; the base's own
+// destructor is out of line too, so state 1's funclet destroys the whole
+// base through it rather than the member; its own vtable; the item
+// pointer at +4; a {psz}-byte member at +8 default-constructed out of line @ 0x{c8:08X}) and the
+// class itself (vtable, state 1, the member at +{noff:#x} constructed from the first argument @
+// 0x{cN:08X}). `this` is kept in the frame for the unwind funclets. Built under /EHsc (the
+// `__ehhandler` is not compared; the funclets land through the funclet pass). The manifest
+// label names the class; the member types are opaque. One of {len(members)} bodies of this shape.
+struct CMember8 {{                          // member at +8, default-constructed out of line
+    unsigned char _body[{psz:#x}];
+    CMember8();                            // 0x{c8:08X}
+    ~CMember8();
+}};
+
+struct CMemberN {{                          // member at +{noff:#x}, constructed from the first argument
+    unsigned char _body[4];
+    CMemberN(void* source);                // 0x{cN:08X}
+    ~CMemberN();
+}};
+
+struct __declspec(novtable) CDestructible {{ // polymorphic root at +0 (no vtable store of its own) with an out-of-line
+    virtual void v00();                    // destructor: EH state 0 while the first member is built; its funclet
+    ~CDestructible();                      // destroys it on `this` (+0), which is why the root owns the vptr
+}};
+
+struct CPointerBase_{a} : CDestructible {{     // vtable 0x{vts[0]:08X}
+    void* m_pItem;                         // +4
+    CMember8 m_member8;                    // +8
+    CPointerBase_{a}(void* item) : m_pItem(item), m_member8() {{ }}
+    ~CPointerBase_{a}();                   // out of line: the unwind funclet for state 1 destroys the whole base through it
+}};
+
+struct {cls} : CPointerBase_{a} {{             // vtable 0x{vts[1]:08X}
+    CMemberN m_memberN;                    // +{noff:#x}
+    {cls}(void* source, void* item);
+}};
+
+{cls}::{cls}(void* source, void* item)
+    : CPointerBase_{a}(item), m_memberN(source)
+{{
+}}
+''',T(a,'''static int g_a = 0, g_b = 0; struct M8 { unsigned char b[%d]; M8() { ++g_a; } ~M8() {} }; struct MN { unsigned char b[4]; MN(void*) { ++g_b; } ~MN() {} };
+struct D { ~D() {} }; struct PB : D { virtual void v() {} void* p; M8 m; PB(void* i) : p(i), m() {} };
+struct X : PB { MN n; X(void* s, void* i) : PB(i), n(s) {} };
+int main()
+{
+    int v; X x(&v, &v); if (x.p != &v || g_a != 1 || g_b != 1) ''' % psz+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_328",):   # void* CMailboxQueue::DispatchMessage(void*): acquire the semaphore, scoped lock, assert the mailbox is non-empty (debug stream + break), dispatch the message, return it
+        if retn!=4 or b[:3]!=b"\x6a\xff\x68" or len(calls)<8: continue
+        acq,lctor=calls[0],calls[1]; sdtor,brk,ldtor=calls[-3],calls[-2],calls[-1]
+        vs=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM]
+        if vs!=[8,0]: continue
+        chain=[]; last=None
+        for i in ins:
+            if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_EDX and i.operands[1].type==X86_OP_IMM: last=i.operands[1].imm
+            elif i.mnemonic=="call" and i.operands[0].type==X86_OP_IMM and i.operands[0].imm not in (acq,lctor,sdtor,brk,ldtor) and last is not None: chain.append((i.operands[0].imm,last)); last=None
+        sops=sorted(set(c for c,v in chain if v>0x1200000)); nops=sorted(set(c for c,v in chain if v<=0x1200000))
+        if len(sops)!=1 or len(nops)>1: continue
+        sop=sops[0]; nop=nops[0] if nops else None
+        globs=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==0 and i.operands[1].mem.disp>0x400000]
+        if len(globs)!=2: continue
+        gbuf,gpfn=globs
+        def cstr(s): return '"'+s.replace("\\","\\\\").replace('"','\\"').replace("\n","\\n").replace("\r","\\r").replace("\t","\\t")+'"'
+        parts=[cstr(lit(v)) if c==sop else str(v) for c,v in chain]
+        nm=f"CMailboxQueue_{a}"
+        add(a,"_unattributed",f"DispatchMessage_{nm}",HDRF(a,f"{nm}::DispatchMessage(void*) -- acquire the semaphore at +0x1C (@ 0x{acq:08X}), scoped lock, assert the mailbox at +0x18 holds an item (virtual slot 2; else a debug-stream message and a debugger break), dispatch the message through virtual slot 0, return it; EH-framed",len(b))+f'''//
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,10h ; push esi ; mov esi,ecx ; lea ecx,[esi+1Ch] ; call CSemaphore::Acquire ; push esi ; lea ecx,[esp+10h] ; call CQueueLock::CQueueLock ; mov ecx,[esi+18h] ; mov eax,[ecx] ; mov dword ptr [esp+1Ch],0 ; call [eax+8] ; test eax,eax ; ja D ; mov ecx,[g_pDebugBuffer] ; mov [esp+8],ecx ; mov edx,offset lit ; lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],1 ; call operator<< ; (mov edx,piece ; mov ecx,eax ; call operator<<) x{len(chain)-1} ; mov eax,[g_pfnErrorReport] ; test eax,eax ; je S ; mov ecx,[esp+8] ; call eax ; S: lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],0 ; call ~CDebugStream ; lea ecx,[esp+7] ; call CDebugBreak::CDebugBreak ; D: mov ecx,[esi+18h] ; mov esi,[message] ; mov edx,[ecx] ; push esi ; call [edx] ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+1Ch],-1 ; call ~CQueueLock ; mov ecx,[esp+14h] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,1Ch ; ret 4
+// Mailbox dispatch: the semaphore at +0x1C is acquired (@ 0x{acq:08X}), an 8-byte scoped lock
+// is taken over the queue (EH state 0), and unless the mailbox at +0x18 reports a positive count
+// through its virtual slot 2 an assertion fires: a CDebugStream over the shared debug buffer
+// (its own nested scope: state 1 as a byte store, destroyed before the break) receives the file/line/message pieces through
+// the `__fastcall` `operator<<` overloads @ 0x{sop:08X}{" / 0x%08X" % nop if nop else ""}, the report callback @
+// 0x{gpfn:08X} runs when installed, the stream is destroyed and an empty CDebugBreak temporary
+// (@ 0x{brk:08X}, in the high byte of the dead frame dword) breaks into the debugger. The
+// message is then dispatched through the mailbox's virtual slot 0 and returned (the slot's
+// result is ignored), the lock destroyed (state -1). Built under /EHsc; the funclets land
+// through the funclet pass. The manifest label is propagated; the literals are the retail
+// strings. One of {len(members)} bodies of this shape.
+struct {nm};
+
+struct CQueueLock {{                        // 8-byte scoped lock over the queue
+    {nm}* m_pQueue;
+    long m_state;
+    CQueueLock({nm}* queue);   // 0x{lctor:08X}
+    ~CQueueLock();                         // 0x{ldtor:08X}
+}};
+
+struct CSemaphore {{
+    long m_value;
+    void Acquire();                        // 0x{acq:08X}
+}};
+
+struct CMailbox {{
+    virtual void* Dispatch(void* message); // slot 0
+    virtual void v04();
+    virtual unsigned long GetCount();      // slot 2
+}};
+
+struct CDebugStream {{                      // 4 bytes: the message buffer
+    char* m_pBuffer;
+    CDebugStream(char* buffer) : m_pBuffer(buffer) {{ }}
+    CDebugStream& __fastcall operator<<(const char* text);   // 0x{sop:08X}
+{"    CDebugStream& __fastcall operator<<(long value);         // 0x%08X" % nop + chr(10) if nop else ""}    ~CDebugStream();                       // 0x{sdtor:08X}
+}};
+
+struct CDebugBreak {{                       // empty class whose constructor breaks into the debugger
+    CDebugBreak();                         // 0x{brk:08X}
+}};
+
+extern char* g_pDebugBuffer;               // 0x{gbuf:08X}
+extern void (__fastcall* g_pfnErrorReport)(const char* text);   // 0x{gpfn:08X}
+
+struct {nm} {{
+    unsigned char _pad[0x18];
+    CMailbox* m_pMailbox;                  // +0x18
+    CSemaphore m_semaphore;                // +0x1C
+    void* DispatchMessage_{nm}(void* message);
+}};
+
+void* {nm}::DispatchMessage_{nm}(void* message)
+{{
+    m_semaphore.Acquire();
+    CQueueLock lock(this);
+    if (!(m_pMailbox->GetCount() > 0)) {{
+        {{
+            CDebugStream s(g_pDebugBuffer);
+            s << {" << ".join(parts)};
+            if (g_pfnErrorReport)
+                g_pfnErrorReport(s.m_pBuffer);
+        }}
+        CDebugBreak();
+    }}
+    m_pMailbox->Dispatch(message);
+    return message;
+}}
+''',T(a,'''static int g_l = 0, g_a = 0, g_d = 0, g_n = 0, g_b = 0; static char g_buf[4]; static char* g_p = g_buf; struct Q;
+struct L { Q* q; long s; L(Q* x) : q(x), s(0) { ++g_l; } ~L() { --g_l; } }; struct Sem { long v; void A() { ++g_a; } };
+struct M { virtual void* D(void* m) { ++g_d; return 0; } virtual void b() {} virtual unsigned long C() { return (unsigned long)g_d; } };
+struct D { char* p; D(char* b) : p(b) {} D& __fastcall operator<<(const char*) { ++g_n; return *this; } D& __fastcall operator<<(long) { ++g_n; return *this; } ~D() {} };
+struct B { B() { ++g_b; } }; static void (__fastcall* g_f)(const char*) = 0;
+struct Q { unsigned char p[0x18]; M* m; Sem s; void* P(void* x) { s.A(); L l(this); if (!(m->C() > 0)) { { D d(g_p); d << "a" << "(" << 3 << ")"; if (g_f) g_f(d.p); } B(); } m->D(x); return x; } };
+int main()
+{
+    M m; Q q; q.m = &m; int v; if (q.P(&v) != &v || g_a != 1 || g_d != 1 || g_b != 1 || g_n != 4 || g_l != 0) '''+FAIL(a)+'''
+    if (q.P(&v) != &v || g_b != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_1117",):   # void CX::AddObserver(void*): EH-framed scoped lock over a global, then the observable member's out-of-line add
+        if retn!=4 or b[:3]!=b"\x6a\xff\x68" or len(calls)!=3 or calls[0]==calls[1]: continue
+        lctor,addfn,ldtor=calls
+        gl=[i.operands[0].imm for i in ins if i.mnemonic=="push" and i.operands[0].type==X86_OP_IMM and 0x1300000<i.operands[0].imm<0x1500000]
+        leas=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==X86_REG_ESI]
+        if len(gl)!=1 or len(leas)!=1: continue
+        glock=gl[0]; moff=leas[0]
+        cls=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else f"CObserved_{a}"; cls=f"{cls}_{a}"
+        fn=re.sub(r"[^A-Za-z0-9_]","_",mname.split("::")[-1]) or "AddObserver"
+        add(a,"_unattributed",f"{fn}_{a}",HDRF(a,f"{cls}::{fn}(void*) -- under a scoped lock over the global @ 0x{glock:08X} (ctor @ 0x{lctor:08X}, dtor @ 0x{ldtor:08X}), the observable member at +{moff:#x} adds the observer (@ 0x{addfn:08X}); EH-framed",len(b))+f'''//
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call CScopedLock::CScopedLock ; mov eax,[observer] ; push eax ; lea ecx,[esi+{moff:#x}] ; mov dword ptr [esp+18h],0 ; call AddObserver ; lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~CScopedLock ; mov ecx,[esp+0Ch] ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret 4
+// Observer registration under the global observer lock: an 8-byte scoped lock is built over the
+// global lock object @ 0x{glock:08X} (EH state 0 while it lives), the observable member at
+// +{moff:#x} adds the observer out of line (@ 0x{addfn:08X}), and the lock is destroyed (state -1).
+// Built under /EHsc (the `__ehhandler` is not compared; the funclet lands through the funclet
+// pass). The manifest label is propagated; the class is named by address. One of {len(members)}
+// bodies of this shape.
+struct CGlobalLockTarget;
+extern CGlobalLockTarget g_observerLock;   // 0x{glock:08X}
+
+struct CScopedLock {{                       // 8-byte scoped lock
+    CGlobalLockTarget* m_pTarget;
+    long m_state;
+    CScopedLock(CGlobalLockTarget* target);   // 0x{lctor:08X}
+    ~CScopedLock();                        // 0x{ldtor:08X}
+}};
+
+struct CObservable {{
+    long m_a;
+    void AddObserver(void* observer);      // 0x{addfn:08X}
+}};
+
+struct {cls} {{
+    unsigned char _pad[{moff:#x}];
+    CObservable m_observable;              // +{moff:#x}
+    void {fn}_{a}(void* observer);
+}};
+
+void {cls}::{fn}_{a}(void* observer)
+{{
+    CScopedLock lock(&g_observerLock);
+    m_observable.AddObserver(observer);
+}}
+''',T(a,'''static int g_l = 0, g_a = 0; struct G {}; static G g_g;
+struct L { G* t; long s; L(G* x) : t(x), s(0) { ++g_l; } ~L() { --g_l; } }; struct O { long a; void A(void*) { ++g_a; } };
+struct X { unsigned char p[%d]; O o; void F(void* v) { L l(&g_g); o.A(v); } };
+int main()
+{
+    X* x = new X; x->F(0); if (g_a != 1 || g_l != 0) ''' % moff+FAIL(a)+'''
+    delete x;
+'''),b)
+    elif TPL in ("w512_1121",):   # SPair::~SPair(): EH-framed destructor of a pair<CFirst, CDebugStream>: the stream at +0x18 (state 0), the first's 0x10-byte member at +8 (state 1), the first's base vtable restored
+        if retn!=0 or b[:3]!=b"\x6a\xff\x68" or len(calls)!=2: continue
+        sdtor,m8dtor=calls
+        leas=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==X86_REG_ESI]
+        vts=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and i.operands[1].imm>0x1000000]
+        if leas!=[0x18,8] or len(vts)!=1: continue
+        nm=f"SPair_{a}"
+        add(a,"_unattributed",nm,HDRF(a,f"{nm}::~{nm}() -- EH-framed pair destructor: the CDebugStream second at +0x18 (@ 0x{sdtor:08X}, state 0), then the first's 0x10-byte member at +8 (@ 0x{m8dtor:08X}, state 1) and the first's polymorphic base (vtable 0x{vts[0]:08X}) with its empty inline destructor",len(b))+f'''//
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; lea ecx,[esi+18h] ; mov dword ptr [esp+10h],0 ; call ~CDebugStream ; lea ecx,[esi+8] ; mov dword ptr [esp+10h],1 ; call ~CMember8 ; mov ecx,[esp+8] ; mov dword ptr [esi],offset CBase::`vftable' ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
+// Destructor of a map value pair whose first member is a polymorphic 0x18-byte class (vptr, a
+// pointer, a 0x10-byte member destroyed out of line @ 0x{m8dtor:08X}) and whose second is the
+// shared-buffer CDebugStream (@ 0x{sdtor:08X}): members go in reverse order under EH states 0
+// and 1, and the first's empty inline base destructor restores the base vtable last; `this` is
+// kept in the frame for the unwind funclets. Built under /EHsc (the `__ehhandler` is not
+// compared; the funclets land through the funclet pass). The manifest label
+// (`_Dest_val<allocator<pair<...>>>`) is propagated; the types are modelled by layout. One of
+// {len(members)} bodies of this shape.
+struct CMember8 {{                          // +8, 0x10 bytes, destroyed out of line
+    unsigned char _body[0x10];
+    ~CMember8();                           // 0x{m8dtor:08X}
+}};
+
+struct CDebugStream {{                      // the shared-buffer stream
+    char* m_pBuffer;
+    ~CDebugStream();                       // 0x{sdtor:08X}
+}};
+
+struct CBase {{                             // vtable 0x{vts[0]:08X}
+    virtual ~CBase() {{ }}
+}};
+
+struct CFirst : CBase {{                    // 0x18 bytes: vptr, a pointer, the member
+    void* m_4;
+    CMember8 m_member8;                    // +8
+}};
+
+struct {nm} {{
+    CFirst first;                          // +0
+    CDebugStream second;                   // +0x18
+    ~{nm}();
+}};
+
+{nm}::~{nm}()
+{{
+}}
+''',T(a,'''static int g_m = 0, g_s = 0; struct M { unsigned char b[0x10]; ~M() { ++g_m; } }; struct D { char* p; ~D() { ++g_s; } };
+struct B { virtual ~B() {} }; struct F : B { void* m; M mm; }; struct P { F f; D s; ~P() {} };
+int main()
+{
+    { P p; } if (g_m != 1 || g_s != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("wtiny2",):   # second generic synthesiser for <=16-byte bodies: forwarders, through-pointer getters, bit tests, size getters, global setters, small constructors
+        d=" ; ".join(f"{i.mnemonic} {i.op_str}" for i in ins)
+        def hx(s): return int(s,16) if s.startswith("0x") else int(s)
+        cls=clean(mmod) if re.match(r"^C[A-Za-z0-9_]+$",mmod) else None; mod=cls or "_unattributed"; cname=cls or f"CClass_{a}"
+        fn=clean(mname) if (clean(mname) and not clean(mname).startswith(("sub_","Unwind","FUN_"))) else None
+        def emit(kind, title, body_src, decl, test_src, note=""):
+            add(a,mod,fn or f"{kind}_{a}",HDRF(a,f"{cname}::{fn or kind+'_'+a}{title}",len(b))+f'''//
+// Retail bytes:  {d}
+// Tiny-body shape `{kind}` synthesised from the instruction pattern (the class comes from the
+// manifest label when it is a plain class name, else the method is landed under a descriptive
+// placeholder); member names are descriptive. {note}
+{decl}
+{body_src}''',T(a,test_src),b)
+        F=fn or None
+        m_=re.fullmatch(r"mov eax, dword ptr \[ecx \+ (\w+)\] ; mov ecx, dword ptr \[esp \+ 4\] ; push eax ; call (\w+) ; ret 4", d)
+        if m_:
+            off=hx(m_.group(1)); tgt=hx(m_.group(2)); nm=F or f"ForwardMember_{a}"
+            emit("ForwardMember", f"(CTarget*) -- calls the target's method @ 0x{tgt:08X} with the member at +{off:#x}",
+                f"void {cname}::{nm}(CTarget* target)\n{{\n    target->Receive(m_value);\n}}\n",
+                f"struct CTarget {{\n    void Receive(long value);              // 0x{tgt:08X}\n}};\n\nstruct {cname} {{\n    unsigned char _pad[{off:#x}];\n    long m_value;                          // +{off:#x}\n    void {nm}(CTarget* target);\n}};\n",
+                "static long g_v = 0; struct T { void R(long v) { g_v = v; } }; struct X { unsigned char p[4]; long v; void F(T* t) { t->R(v); } };\nint main()\n{\n    T t; X x; x.v = 3; x.F(&t); if (g_v != 3) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov eax, ecx ; mov dword ptr \[eax\], (0x[0-9a-f]+|\d+) ; mov dword ptr \[eax \+ 4\], 0 ; ret ", d)
+        if m_:
+            vt=hx(m_.group(1)); nm=F or cname
+            add(a,mod,cname,HDRF(a,f"{cname}::{cname}() -- sets the vtable (0x{vt:08X}) and nulls the member at +4",len(b))+f'''//
+// Retail bytes:  {d}
+// Tiny-body shape `CtorVtableNull`: a polymorphic class with one pointer member, default-constructed
+// to null (the vtable address is a relocation). The class comes from the manifest label when it is
+// a plain class name; member names are descriptive.
+struct {cname} {{
+    virtual void v00();
+    void* m_pItem;                         // +4
+    {cname}();
+}};
+
+{cname}::{cname}()
+    : m_pItem(0)
+{{
+}}
+''',T(a,"struct X { virtual void v() {} void* p; X() : p(0) {} };\nint main()\n{\n    X x; if (x.p != 0) "+FAIL(a)+"\n"),b); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[ecx \+ (\w+)\] ; mov al, byte ptr \[eax \+ (\w+)\] ; ret ", d)
+        if m_:
+            o1,o2=hx(m_.group(1)),hx(m_.group(2)); nm=F or f"GetByteThrough_{a}"
+            emit("GetByteThrough", f"() -- returns the byte at +{o2:#x} of the object at +{o1:#x}",
+                f"unsigned char {cname}::{nm}()\n{{\n    return m_object->m_value;\n}}\n",
+                f"struct CTarget {{\n    unsigned char _pad[{o2:#x}];\n    unsigned char m_value;                 // +{o2:#x}\n}};\n\nstruct {cname} {{\n    unsigned char _pad[{o1:#x}];\n    CTarget* m_object;                     // +{o1:#x}\n    unsigned char {nm}();\n}};\n",
+                "struct T { unsigned char p[4]; unsigned char v; }; struct X { unsigned char p[4]; T* t; unsigned char G() { return t->v; } };\nint main()\n{\n    T t; t.v = 9; X x; x.t = &t; if (x.G() != 9) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"lea eax, \[ecx \+ (\w+)\] ; mov ecx, dword ptr \[ecx \+ (\w+)\] ; mov ecx, dword ptr \[ecx \+ (\w+)\] ; push eax ; call (\w+) ; ret ", d)
+        if m_:
+            om,o1,o2,tgt=hx(m_.group(1)),hx(m_.group(2)),hx(m_.group(3)),hx(m_.group(4)); nm=F or f"RegisterWith_{a}"
+            emit("RegisterWith", f"() -- passes the member at +{om:#x} by address to the method @ 0x{tgt:08X} of the object at +{o2:#x} of the object at +{o1:#x}",
+                f"void {cname}::{nm}()\n{{\n    m_pOwner->m_pRegistry->Register(&m_entry);\n}}\n",
+                f"struct SEntry {{ long m_value; }};\n\nstruct CRegistry {{\n    void Register(SEntry* entry);          // 0x{tgt:08X}\n}};\n\nstruct COwner {{\n    unsigned char _pad[{o2:#x}];\n    CRegistry* m_pRegistry;                // +{o2:#x}\n}};\n\nstruct {cname} {{\n    unsigned char _pad0[{o1:#x}];\n    COwner* m_pOwner;                      // +{o1:#x}\n{'    unsigned char _pad1[%#x];' % (om-o1-4) + chr(10) if om-o1-4 else ''}    SEntry m_entry;                        // +{om:#x}\n    void {nm}();\n}};\n",
+                "static void* g_e = 0; struct E { long v; }; struct R { void Reg(E* e) { g_e = e; } }; struct O { unsigned char p[4]; R* r; }; struct X { unsigned char p[4]; O* o; E e; void F() { o->r->Reg(&e); } };\nint main()\n{\n    R r; O o; o.r = &r; X x; x.o = &o; x.F(); if (g_e != &x.e) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"push (0x[0-9a-f]+|\d+) ; call (\w+) ; ret ", d)
+        if m_:
+            k,tgt=hx(m_.group(1)),hx(m_.group(2)); nm=F or f"CallWith_{a}"
+            emit("CallWith", f"() -- calls the member method @ 0x{tgt:08X} with the constant {k}",
+                f"void {cname}::{nm}()\n{{\n    Method({k});\n}}\n",
+                f"struct {cname} {{\n    void Method(long value);               // 0x{tgt:08X}\n    void {nm}();\n}};\n",
+                "static long g_v = -1; struct X { void M(long v) { g_v = v; } void F() { M(%d); } };\nint main()\n{\n    X x; x.F(); if (g_v != %d) " % (k,k)+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[ecx \+ (\w+)\] ; sub eax, dword ptr \[ecx \+ (\w+)\] ; sar eax, (\d) ; ret ", d)
+        if m_ and hx(m_.group(1))==hx(m_.group(2))+4:
+            ob=hx(m_.group(2)); sh=int(m_.group(3)); esz=1<<sh; nm=F or f"GetCount_{a}"
+            emit("GetCount", f"() -- the element count of the {esz}-byte-element range at +{ob:#x}/+{ob+4:#x}",
+                f"long {cname}::{nm}()\n{{\n    return m_last - m_first;\n}}\n",
+                f"struct SElement {{ unsigned char _body[{esz:#x}]; }};\n\nstruct {cname} {{\n    unsigned char _pad[{ob:#x}];\n    SElement* m_first;                     // +{ob:#x}\n    SElement* m_last;                      // +{ob+4:#x}\n    long {nm}();\n}};\n",
+                "struct E { unsigned char b[%d]; }; struct X { unsigned char p[4]; E* f; E* l; long C() { return l - f; } };\nint main()\n{\n    E v[5]; X x; x.f = v; x.l = v + 5; if (x.C() != 5) " % esz+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[ecx\] ; test eax, eax ; je \w+ ; push eax ; call (\w+) ; pop ecx ; ret ", d)
+        if m_:
+            tgt=hx(m_.group(1)); nm=F or cname
+            add(a,mod,nm if nm!=cname else cname,HDRF(a,f"{cname}::~{cname}() -- frees the owned block at +0 when non-null (free @ 0x{tgt:08X}); size TU",len(b))+f'''//
+// Retail bytes:  {d}
+// Tiny-body shape `DtorFree`: the destructor frees its one owned block when non-null; the size
+// TU cleans the argument with `pop ecx`. The class comes from the manifest label when it is a
+// plain class name; member names are descriptive.
+#pragma optimize("s", on)
+extern "C" void __cdecl free(void* block);
+
+struct {cname} {{
+    void* m_pData;                         // +0
+    ~{cname}();
+}};
+
+{cname}::~{cname}()
+{{
+    if (m_pData)
+        free(m_pData);
+}}
+''',T(a,"#include <cstdlib>\nstruct X { void* p; ~X() { if (p) std::free(p); } };\nint main()\n{\n    { X x; x.p = std::malloc(4); } { X y; y.p = 0; }\n"),b); continue
+        m_=re.fullmatch(r"xor eax, eax ; mov al, byte ptr \[ecx \+ (\w+)\] ; shr eax, (\d+) ; and eax, 1 ; ret ", d)
+        if m_:
+            off=hx(m_.group(1)); bit=int(m_.group(2)); nm=F or f"GetBit{bit}_{a}"
+            emit("GetFlagBit", f"() -- returns bit {bit} of the flag byte at +{off:#x} as a dword",
+                f"long {cname}::{nm}()\n{{\n    return (m_flags >> {bit}) & 1;\n}}\n",
+                f"struct {cname} {{\n    unsigned char _pad[{off:#x}];\n    unsigned char m_flags;                 // +{off:#x}\n    long {nm}();\n}};\n",
+                "struct X { unsigned char p[4]; unsigned char f; long G() { return (f >> %d) & 1; } };\nint main()\n{\n    X x; x.f = 1 << %d; if (x.G() != 1) " % (bit,bit)+FAIL(a)+"\n    x.f = 0; if (x.G() != 0) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov ecx, dword ptr \[ecx \+ (\w+)\] ; push (0x[0-9a-f]+|\d+) ; call (\w+) ; ret ", d)
+        if m_:
+            off,k,tgt=hx(m_.group(1)),hx(m_.group(2)),hx(m_.group(3)); nm=F or f"ForwardConstant_{a}"
+            emit("ForwardConstant", f"() -- calls the method @ 0x{tgt:08X} of the object at +{off:#x} with the constant {k}",
+                f"void {cname}::{nm}()\n{{\n    m_pObject->Method({k});\n}}\n",
+                f"struct CTarget {{\n    void Method(long value);               // 0x{tgt:08X}\n}};\n\nstruct {cname} {{\n    unsigned char _pad[{off:#x}];\n    CTarget* m_pObject;                    // +{off:#x}\n    void {nm}();\n}};\n",
+                "static long g_v = -1; struct T { void M(long v) { g_v = v; } }; struct X { unsigned char p[4]; T* t; void F() { t->M(%d); } };\nint main()\n{\n    T t; X x; x.t = &t; x.F(); if (g_v != %d) " % (k,k)+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[ecx \+ (\w+)\] ; fld dword ptr \[eax \+ (\w+)\] ; ret 4", d)
+        if m_:
+            o1,o2=hx(m_.group(1)),hx(m_.group(2)); nm=F or f"GetFloatThroughArg_{a}"
+            emit("GetFloatThroughArg", f"(long) -- returns the float at +{o2:#x} of the object at +{o1:#x} (the argument is unused)",
+                f"float {cname}::{nm}(long unused)\n{{\n    return m_object->m_value;\n}}\n",
+                f"struct CTarget {{\n    unsigned char _pad[{o2:#x}];\n    float m_value;                         // +{o2:#x}\n}};\n\nstruct {cname} {{\n    unsigned char _pad[{o1:#x}];\n    CTarget* m_object;                     // +{o1:#x}\n    float {nm}(long unused);\n}};\n",
+                "struct T { unsigned char p[4]; float v; }; struct X { unsigned char p[4]; T* t; float G(long) { return t->v; } };\nint main()\n{\n    T t; t.v = 2.5f; X x; x.t = &t; if (x.G(0) != 2.5f) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov dword ptr \[(\w+)\], ecx ; ret ", d)
+        if m_:
+            g=hx(m_.group(1)); nm=F or f"SetGlobal_{a}"
+            add(a,"_global",nm,HDRF(a,f"{nm}(void*) -- stores the argument into the global @ 0x{g:08X} (fastcall)",len(b))+f'''//
+// Retail bytes:  {d}
+// Tiny-body shape `SetGlobal`: a `__fastcall` setter of one global pointer (the global's address
+// is a relocation). The manifest label is propagated; the name is descriptive.
+extern void* g_value;                      // 0x{g:08X}
+
+void __fastcall {nm}(void* value)
+{{
+    g_value = value;
+}}
+''',T(a,"static void* g = 0; static void __fastcall S(void* v) { g = v; }\nint main()\n{\n    int x; S(&x); if (g != &x) "+FAIL(a)+"\n"),b); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[ecx\] ; jmp dword ptr \[eax \+ (\w+)\]", d)
+        if m_:
+            off=hx(m_.group(1)); slot=off//4; nm=F or f"CallVirtual{slot}_{a}"
+            emit("TailVirtual", f"() -- tail-calls virtual slot {slot}",
+                f"void {cname}::{nm}()\n{{\n    Virtual{slot}();\n}}\n",
+                f"struct {cname} {{\n"+"".join(f"    virtual void v{4*k:02x}();\n" for k in range(slot))+f"    virtual void Virtual{slot}();          // slot {slot}\n    void {nm}();\n}};\n",
+                "static int g_n = 0; struct X { "+" ".join(f"virtual void v{k}() {{}}" for k in range(slot))+" virtual void V() { ++g_n; } void F() { V(); } };\nint main()\n{\n    X x; x.F(); if (g_n != 1) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[ecx \+ (\w+)\] ; dec dword ptr \[eax \+ (\w+)\] ; ret ", d)
+        if m_:
+            o1,o2=hx(m_.group(1)),hx(m_.group(2)); nm=F or f"DecrementThrough_{a}"
+            emit("DecrementThrough", f"() -- decrements the counter at +{o2:#x} of the object at +{o1:#x}",
+                f"void {cname}::{nm}()\n{{\n    --m_object->m_count;\n}}\n",
+                f"struct CTarget {{\n    unsigned char _pad[{o2:#x}];\n    long m_count;                          // +{o2:#x}\n}};\n\nstruct {cname} {{\n    unsigned char _pad[{o1:#x}];\n    CTarget* m_object;                     // +{o1:#x}\n    void {nm}();\n}};\n",
+                "struct T { unsigned char p[4]; long c; }; struct X { unsigned char p[4]; T* t; void F() { --t->c; } };\nint main()\n{\n    T t; t.c = 2; X x; x.t = &t; x.F(); if (t.c != 1) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov ecx, dword ptr \[ecx \+ (\w+)\] ; mov eax, dword ptr \[ecx \+ 4\] ; sub eax, dword ptr \[ecx\] ; sar eax, (\d) ; ret ", d)
+        if m_:
+            off=hx(m_.group(1)); sh=int(m_.group(2)); esz=1<<sh; nm=F or f"GetCountThrough_{a}"
+            emit("GetCountThrough", f"() -- the element count ({esz}-byte elements) of the range object at +{off:#x}",
+                f"long {cname}::{nm}()\n{{\n    return m_pRange->m_last - m_pRange->m_first;\n}}\n",
+                f"struct SElement {{ unsigned char _body[{esz:#x}]; }};\n\nstruct CRange {{\n    SElement* m_first;\n    SElement* m_last;\n}};\n\nstruct {cname} {{\n    unsigned char _pad[{off:#x}];\n    CRange* m_pRange;                      // +{off:#x}\n    long {nm}();\n}};\n",
+                "struct E { unsigned char b[%d]; }; struct R { E* f; E* l; }; struct X { unsigned char p[4]; R* r; long C() { return r->l - r->f; } };\nint main()\n{\n    E v[3]; R r; r.f = v; r.l = v + 3; X x; x.r = &r; if (x.C() != 3) " % esz+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov al, byte ptr \[ecx \+ (\w+)\] ; test al, al ; setne al ; ret ", d)
+        if m_:
+            off=hx(m_.group(1)); nm=F or f"IsSet_{a}"
+            emit("IsSet", f"() -- non-zero (as a byte) when the byte at +{off:#x} is non-zero",
+                f"unsigned char {cname}::{nm}()\n{{\n    return m_value != 0;\n}}\n",
+                f"struct {cname} {{\n    unsigned char _pad[{off:#x}];\n    unsigned char m_value;                 // +{off:#x}\n    unsigned char {nm}();                   // a byte result: a `bool` return would zero eax first\n}};\n",
+                "struct X { unsigned char p[4]; unsigned char v; unsigned char G() { return v != 0; } };\nint main()\n{\n    X x; x.v = 2; if (!x.G()) "+FAIL(a)+"\n    x.v = 0; if (x.G()) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"push (0x[0-9a-f]+|\d+) ; push (0x[0-9a-f]+|\d+) ; call (\w+) ; ret ", d)
+        if m_:
+            k2,k1,tgt=hx(m_.group(1)),hx(m_.group(2)),hx(m_.group(3)); nm=F or f"CallWith2_{a}"
+            emit("CallWith2", f"() -- calls the member method @ 0x{tgt:08X} with the constants {k1}, {k2}",
+                f"void {cname}::{nm}()\n{{\n    Method({k1}, {k2});\n}}\n",
+                f"struct {cname} {{\n    void Method(long first, long second);  // 0x{tgt:08X}\n    void {nm}();\n}};\n",
+                "static long g_a = -1, g_b = -1; struct X { void M(long a, long b) { g_a = a; g_b = b; } void F() { M(%d, %d); } };\nint main()\n{\n    X x; x.F(); if (g_a != %d || g_b != %d) " % (k1,k2,k1,k2)+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov al, byte ptr \[ecx \+ (\w+)\] ; shr al, (\d) ; and al, 1 ; ret ", d)
+        if m_:
+            off=hx(m_.group(1)); bit=int(m_.group(2)); nm=F or f"GetBit{bit}Byte_{a}"
+            fields="".join(f"    unsigned char m_bit{i} : 1;              // bit {i}\n" for i in range(bit))
+            emit("GetFlagBitByte", f"() -- returns bit {bit} of the flag byte at +{off:#x} (a one-bit bitfield, byte arithmetic)",
+                f"bool {cname}::{nm}()\n{{\n    return m_flag;\n}}\n",
+                f"struct {cname} {{\n    unsigned char _pad[{off:#x}];\n{fields}    unsigned char m_flag : 1;               // bit {bit} of the byte at +{off:#x}: VC reads an unsigned char bitfield with byte shifts\n    bool {nm}();\n}};\n",
+                "struct X { unsigned char p[4]; unsigned char f; unsigned char G() { return (f >> %d) & 1; } };\nint main()\n{\n    X x; x.f = 1 << %d; if (x.G() != 1) " % (bit,bit)+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[esp \+ 4\] ; push eax ; call (\w+) ; pop ecx ; ret 4", d)
+        if m_:
+            tgt=hx(m_.group(1)); nm=F or f"FreeBlock_{a}"
+            add(a,"_global",nm,HDRF(a,f"{nm}(void*) -- deletes the argument (operator delete @ 0x{tgt:08X}); stdcall",len(b))+f'''//
+// Retail bytes:  {d}
+// Tiny-body shape `FreeBlock`: a `__stdcall` wrapper that deletes its argument as a raw block (a
+// delete-expression over a trivially destructible pointee: the block is loaded into eax, pushed to
+// `operator delete` @ 0x{tgt:08X} -- the FSE label `Game_free` -- and the slot is cleaned with `pop ecx`;
+// a plain `free` call pushes the stack slot directly). The manifest label is propagated; the name is descriptive.
+void __stdcall {nm}(void* block)
+{{
+    delete static_cast<char*>(block);
+}}
+''',T(a,"static void __stdcall F(void* b) { delete static_cast<char*>(b); }\nint main()\n{\n    F(new char[4]);\n"),b); continue
+        m_=re.fullmatch(r"mov byte ptr \[(\w+)\], cl ; ret ", d)
+        if m_:
+            g=hx(m_.group(1)); nm=F or f"SetGlobalByte_{a}"
+            add(a,"_global",nm,HDRF(a,f"{nm}(bool) -- stores the argument into the global byte @ 0x{g:08X} (fastcall)",len(b))+f'''//
+// Retail bytes:  {d}
+// Tiny-body shape `SetGlobalByte`: a `__fastcall` setter of one global byte flag (the global's
+// address is a relocation). The manifest label is propagated; the name is descriptive.
+extern bool g_flag;                        // 0x{g:08X}
+
+void __fastcall {nm}(bool value)
+{{
+    g_flag = value;
+}}
+''',T(a,"static bool g = false; static void __fastcall S(bool v) { g = v; }\nint main()\n{\n    S(true); if (!g) "+FAIL(a)+"\n"),b); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[esp \+ 4\] ; ret 4", d)
+        if m_:
+            nm=F or f"ReturnArg_{a}"
+            emit("ReturnArg", f"(long) -- returns its argument (the object is unused)",
+                f"long {cname}::{nm}(long value)\n{{\n    return value;\n}}\n",
+                f"struct {cname} {{\n    long {nm}(long value);\n}};\n",
+                "struct X { long F(long v) { return v; } };\nint main()\n{\n    X x; if (x.F(4) != 4) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[esp \+ 4\] ; mov dword ptr \[ecx\], eax ; ret 4", d)
+        if m_:
+            nm=F or f"SetFirst_{a}"
+            emit("SetFirst", f"(long) -- stores the argument into the member at +0",
+                f"void {cname}::{nm}(long value)\n{{\n    m_value = value;\n}}\n",
+                f"struct {cname} {{\n    long m_value;                          // +0\n    void {nm}(long value);\n}};\n",
+                "struct X { long v; void S(long x) { v = x; } };\nint main()\n{\n    X x; x.S(6); if (x.v != 6) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"add ecx, (0x[0-9a-f]+|\d+) ; call (\w+) ; ret 4", d)
+        if m_:
+            off,tgt=hx(m_.group(1)),hx(m_.group(2)); nm=F or f"GetItemOfMember_{a}"
+            emit("GetItemOfMember", f"(long) -- calls the method @ 0x{tgt:08X} on the member at +{off:#x} (the argument is unused)",
+                f"void* {cname}::{nm}(long unused)\n{{\n    return m_pointer.GetPItem();\n}}\n",
+                f"struct CBaseIntelligentPointer {{\n    void* GetPItem();                      // 0x{tgt:08X}\n}};\n\nstruct {cname} {{\n    unsigned char _pad[{off:#x}];\n    CBaseIntelligentPointer m_pointer;     // +{off:#x}\n    void* {nm}(long unused);\n}};\n",
+                "struct P { void* p; void* G() { return p; } }; struct X { unsigned char pad[4]; P q; void* F(long) { return q.G(); } };\nint main()\n{\n    X x; x.q.p = &x; if (x.F(0) != &x) "+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov ecx, dword ptr \[esp \+ 4\] ; xor eax, eax ; cmp ecx, (0x[0-9a-f]+|\d+) ; sete al ; ret 4", d)
+        if m_:
+            k=hx(m_.group(1)); nm=F or f"IsKind_{a}"
+            emit("IsKind", f"(long) -- true when the argument equals {k}",
+                f"bool {cname}::{nm}(long kind)\n{{\n    return kind == {k};\n}}\n",
+                f"struct {cname} {{\n    bool {nm}(long kind);\n}};\n",
+                "struct X { bool F(long k) { return k == %d; } };\nint main()\n{\n    X x; if (!x.F(%d) || x.F(%d)) " % (k,k,k+1)+FAIL(a)+"\n"); continue
+        m_=re.fullmatch(r"mov eax, dword ptr \[esp \+ 4\] ; push (0x[0-9a-f]+|\d+) ; push eax ; call (\w+) ; ret 4", d)
+        if m_:
+            k,tgt=hx(m_.group(1)),hx(m_.group(2)); nm=F or f"ForwardWithConstant_{a}"
+            emit("ForwardWithConstant", f"(void*) -- calls the member method @ 0x{tgt:08X} with the argument and the constant {k}",
+                f"void {cname}::{nm}(void* value)\n{{\n    Method(value, {k});\n}}\n",
+                f"struct {cname} {{\n    void Method(void* value, long kind);   // 0x{tgt:08X}\n    void {nm}(void* value);\n}};\n",
+                "static long g_k = -1; static void* g_v = 0; struct X { void M(void* v, long k) { g_v = v; g_k = k; } void F(void* v) { M(v, %d); } };\nint main()\n{\n    X x; int i; x.F(&i); if (g_v != &i || g_k != %d) " % (k,k)+FAIL(a)+"\n"); continue
+        continue
     else:
         raise SystemExit("family template not implemented: "+TPL)
 OUT.mkdir(parents=True, exist_ok=True)
