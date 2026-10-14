@@ -510,3 +510,19 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   - Harness: the front-end crash in `EventContainer_Erase` (reading 0xBF800000) hit once more
     before a save loaded; still harness-only.
   - Open: save/load list on the device, quick-access panel frame, Guild river water.
+- **Crash entering an inventory category (user report, v22b: Equipment -> Clothing)**: the
+  UI event handler (CManager vfunc_14) builds a selected category through its PC constructor
+  (vtable +0x15C) when the player GUI's live-GUI byte (+0x2BE) is set and the Xbox one (+0x134)
+  otherwise (0x4200B0), and the builders under it pick PC_ or UI_ parts by the same byte
+  (`CTCInventoryAbilities::GetMenuEntryFromCategory` 0x5EE288). The host opens the Xbox
+  inventory through the live-GUI action, so the byte is set: Clothing built PC_SUB_LIST /
+  PC_UI_FRAME / PC_DESCRIPTION_VIEWPORT into the Xbox screen and jumped through a null; the
+  Skills -> Magic categories looked up PC_MENU_ENTRY_* children in UI_ screens. Fixes:
+  `host_ui_event` runs a select from the inventory processors with the byte clear (a toggle
+  made inside carries over); `host_find_child` retries a failed PC_ lookup with the UI_ name
+  at the outermost call; `host_is_child` reads a creature with no +0xE0 data as not a child
+  (selecting a spell category or an expression crashed in GetPrioritisedAbilityDefs). A
+  broader version that cleared the byte for the whole handler stopped Back from opening the
+  inventory (the inventory "opens" once at load, so the host's Xbox-inventory flag is always
+  set). Harness: Equipment -> Weapons -> Melee, Equipment -> Clothing open, B closes, the hero
+  walks after.

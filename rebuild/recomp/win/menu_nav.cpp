@@ -478,6 +478,21 @@ extern "C" void host_ui_event(Ctx* c) {
         const uint32_t from = rd32(c->esp);
         if (from == 0x68A291 || from == 0x68AEA5 || from == 0x68B355 || from == 0x68B83A || from == 0x68BF88) wr32(c->esp + 4, EV_SELECT);
     }
+    // The select builds the chosen category's screen (CManager vfunc_14, 0x4200B0): through its
+    // PC constructor (vtable +0x15C) when the player GUI's live-GUI byte (+0x2BE) is set, the
+    // Xbox one (+0x134) otherwise, and the builders under it pick PC_ or UI_ parts by the same
+    // byte. The host opens the Xbox inventory through the live-GUI action, so the byte is set
+    // and Equipment -> Clothing built the PC screen into the Xbox one and crashed. A select
+    // from the inventory processors runs with the byte clear (a toggle made inside carries over).
+    if (xboxMenus() && rd32(c->esp + 4) == EV_SELECT) {
+        const uint32_t from = rd32(c->esp), gui = rd32(0x13B8790);
+        if (gui && rd8(gui + 0x2BE) && (from == 0x68A291 || from == 0x68AEA5 || from == 0x68B355 || from == 0x68B83A || from == 0x68BF88)) {
+            wr8(gui + 0x2BE, 0);
+            F_0055CB10_orig(c);
+            if (rd32(0x13B8790) == gui) wr8(gui + 0x2BE, rd8(gui + 0x2BE) ? 0 : 1);
+            return;
+        }
+    }
     // It also sends a direction on every "held" pad event (its second branch, 0x68A95D to
     // 0x68ABC6), i.e. every frame, which the Xbox screens take as one step each. They get
     // one step per press here and then a steady repeat while the direction is held.
@@ -1040,3 +1055,4 @@ extern "C" void host_component_size(Ctx* c) {
     }
     F_00533D30_orig(c);
 }
+
