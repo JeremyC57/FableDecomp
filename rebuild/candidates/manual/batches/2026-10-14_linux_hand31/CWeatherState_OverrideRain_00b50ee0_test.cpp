@@ -1,0 +1,5 @@
+#include <cstdio>
+struct CWeatherState { unsigned char _pad[0x12e8]; float m_rainAmount; unsigned char m_rainOverride; unsigned char _p1[3]; float m_snowAmount; unsigned char m_snowOverride; unsigned char _p2[3]; float m_maxAmount;
+    void OverrideRain(float amount) { if (amount >= 0.0f) { m_rainAmount = amount < m_maxAmount ? amount : m_maxAmount; m_rainOverride = 1; } else { m_rainOverride = 0; } } };
+int main() { CWeatherState w; w.m_maxAmount = 1.0f; w.m_rainOverride = 9; w.OverrideRain(0.5f); if (w.m_rainOverride != 1 || w.m_rainAmount != 0.5f) { std::printf("00b50ee0_TEST FAIL\n"); return 1; }
+    w.OverrideRain(3.0f); if (w.m_rainOverride != 1 || w.m_rainAmount != 1.0f) { std::printf("00b50ee0_TEST FAIL\n"); return 1; } w.OverrideRain(-1.0f); if (w.m_rainOverride != 0 || w.m_rainAmount != 1.0f) { std::printf("00b50ee0_TEST FAIL\n"); return 1; } w.OverrideRain(0.0f); if (w.m_rainOverride != 1 || w.m_rainAmount != 0.0f) { std::printf("00b50ee0_TEST FAIL\n"); return 1; } std::printf("00b50ee0_TEST PASS\n"); return 0; }

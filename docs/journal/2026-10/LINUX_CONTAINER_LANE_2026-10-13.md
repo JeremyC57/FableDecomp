@@ -599,3 +599,15 @@ register stores sunk past the zero stores), 00c59720 (mask narrowing), 00995a20 
 (DIFFER 0vN) -- the batch was discarded; the agent's EH-prologue constructors want a look on the Windows box. Lessons in
 GOTCHAS (wave 24b). Next cut: `mkchunk.py 28 2` (pool ~3,640 rows).
 
+### Wave 24, part 3 (hand chunks 28–31)
+Chunk 28 (CDateAndTime .. CDisplayManager) to the single sub-agent: 38/40 (`_hand28`; SSE constructors with a by-value `__m128i`
+in xmm0 under `/GS`, SGI `vector::erase`, `_Uninit_fill_n` over packed def classes, retail-tree `Contains`; 00a31220 / 009ace90
+parked on register allocation / tail placement). Chunks 29 (CDisplayManager .. CDrawMiniMap: 34/40, `_hand29`) and 31 (CEditBox ..
+CEngine: 32/40, `_hand31`) by the coordinator. Catalog 28,701 -> 28,739 -> **28,771 (58.1%)**. Parked with evidence in the
+agents' NOTES.md and the batch READMEs: whole-program `this` retention across a call (00c20cb0), a bare `fistp` rounding (an
+inline-asm helper, 006472b2), a stack-imbalanced retail body (00c2d260), `fld x ; fdivr 1.0` operand order (006d63a0),
+zero-register / copy-register allocation (0049ba70, 007b52b0, 00b25d20/50), `push` vs `mov ecx` order (00540120), the eax zero
+register with `mov al` returns (00643e09), 8 dead frame bytes (00c437c0), `mov ecx,ebx` scheduling (00644334/006443ac). Lessons
+in GOTCHAS (waves 24c, 24d). Next cut: chunk 30 is cut (`$S/w22/chunk30.tsv`, CDrawMiniMap .. CDynamicObjectHeapBase, for the
+next agent); then `mkchunk.py 32 2` (pool ~3,480 rows).
+

@@ -1,0 +1,8 @@
+#include <cstdio>
+static void* g_target = (void*)1; static long g_a = 0, g_b = 0; static int g_calls = 0;
+struct CObj { virtual void v00() { } virtual bool Accepts() { return accepts; } bool accepts;
+    void Set(long v) { ++g_calls; g_target = this; g_a = v; } void Set2(long v) { ++g_calls; g_target = this; g_b = v; } };
+static void Call(CObj* object, long a, long b) { CObj* t = object->Accepts() ? object : 0; t->Set(a); t->Set2(b); }
+int main() { CObj o; o.accepts = true; Call(&o, 7, 9); if (g_target != &o || g_a != 7 || g_b != 9 || g_calls != 2) { std::printf("00c34180_TEST FAIL\n"); return 1; }
+    // the rejecting case would dereference null in retail: only the accepting arm is exercised
+    std::printf("00c34180_TEST PASS\n"); return 0; }

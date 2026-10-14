@@ -1,0 +1,3 @@
+#include <cstdio>
+struct CEngine { unsigned char _pad[0xb8]; unsigned long m_sceneRenderFlags; void Enable3DSceneRendering(bool e) { m_sceneRenderFlags &= ~1; if (e) m_sceneRenderFlags |= 1; } };
+int main() { CEngine e; e.m_sceneRenderFlags = 0xff; e.Enable3DSceneRendering(false); if (e.m_sceneRenderFlags != (0xff & ~1)) { std::printf("00b23f90_TEST FAIL\n"); return 1; } e.Enable3DSceneRendering(true); if (e.m_sceneRenderFlags != 0xff) { std::printf("00b23f90_TEST FAIL\n"); return 1; } e.m_sceneRenderFlags = 0; e.Enable3DSceneRendering(true); if (e.m_sceneRenderFlags != 1) { std::printf("00b23f90_TEST FAIL\n"); return 1; } std::printf("00b23f90_TEST PASS\n"); return 0; }

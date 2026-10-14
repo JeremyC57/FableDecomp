@@ -1,0 +1,3 @@
+#include <cstdio>
+struct CRenderSetting { unsigned char _pad[0x14]; unsigned long m_flags; unsigned char _pad18[0xfc - 0x18]; float m_value; void SetValue(float v) { if (m_value != v) { m_value = v; m_flags |= 0x200; } } };
+int main() { CRenderSetting s; s.m_flags = 0; s.m_value = 1.0f; s.SetValue(1.0f); if (s.m_flags) { std::printf("00c445c0_TEST FAIL\n"); return 1; } s.SetValue(2.0f); if (s.m_value != 2.0f || s.m_flags != 0x200) { std::printf("00c445c0_TEST FAIL\n"); return 1; } std::printf("00c445c0_TEST PASS\n"); return 0; }

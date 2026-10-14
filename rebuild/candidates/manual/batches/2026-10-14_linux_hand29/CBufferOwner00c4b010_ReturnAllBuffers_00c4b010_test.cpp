@@ -1,0 +1,4 @@
+#include <cstdio>
+static int g_returns = 0; static long g_which = -1;
+struct CBufferOwner { unsigned char _pad[0x68]; long m_outstanding; void ReturnBuffer(long w) { ++g_returns; g_which = w; --m_outstanding; } void ReturnAllBuffers() { while (m_outstanding != 0) ReturnBuffer(0); } };
+int main() { CBufferOwner b; b.m_outstanding = 3; b.ReturnAllBuffers(); if (b.m_outstanding != 0 || g_returns != 3 || g_which != 0) { std::printf("00c4b010_TEST FAIL\n"); return 1; } b.ReturnAllBuffers(); if (g_returns != 3) { std::printf("00c4b010_TEST FAIL\n"); return 1; } std::printf("00c4b010_TEST PASS\n"); return 0; }
