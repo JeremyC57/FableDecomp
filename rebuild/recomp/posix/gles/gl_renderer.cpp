@@ -1309,7 +1309,17 @@ HRESULT STDMETHODCALLTYPE Device::SetTexture(DWORD st, IDirect3DBaseTexture9* t)
 }
 
 // ---- shaders / programs ----
+// Run `fn` on the render thread and wait for it: one queue round trip for a sequence of calls
+// that each need the driver's answer (glCreate*, glGet*), instead of one round trip per call.
+template <class F> void runOnRenderThread(F&& fn) {
+    if (gq::direct()) { fn(); return; }
+    gq::Sync done;
+    gq::call([&fn, &done] { fn(); gq::signal(done); });
+    gq::wait(done);
+}
+
 GLuint Device::compileShader(GLenum type, const std::string& src, const char* what) {
+    if (!gq::direct()) { GLuint r = 0; runOnRenderThread([&] { r = compileShader(type, src, what); }); return r; }
     GLuint s = glCreateShader(type);
     const char* p = src.c_str();
     glShaderSource(s, 1, &p, nullptr);
@@ -1328,6 +1338,7 @@ GLuint Device::compileShader(GLenum type, const std::string& src, const char* wh
 }
 GLuint Device::linkProgram(GLuint v, GLuint f) {
     if (!v || !f) return 0;
+    if (!gq::direct()) { GLuint r = 0; runOnRenderThread([&] { r = linkProgram(v, f); }); return r; }
     GLuint p = glCreateProgram();
     glAttachShader(p, v);
     glAttachShader(p, f);
@@ -1426,15 +1437,19 @@ Program* Device::program() {
     }
     auto it = programs.find(key);
     if (it != programs.end()) return it->second.gl ? &it->second : nullptr;
-    Program p;
+    Program& p = programs[key];  // node-based map: the slot's address stays valid while the render thread fills it
     const GLuint v = key.vs ? vs->sh.gl : ffpVs;
-    GLuint f = 0;
-    bool ownF = false;
-    if (key.ps) f = ps->sh.gl;
-    else f = compileShader(GL_FRAGMENT_SHADER, ffpPixelShader(key.ffp), "fixed-function pixel shader"), ownF = true;
-    p.gl = linkProgram(v, f);
-    if (ownF && f) glDeleteShader(f);
-    if (p.gl) {
+    const GLuint psGl = key.ps ? ps->sh.gl : 0;
+    const std::string ffpSrc = key.ps ? std::string() : ffpPixelShader(key.ffp);
+    // The fixed-function shader's compile, the link and the ~150 uniform-location queries each
+    // need an answer from the driver: through the queue every one of them was a round trip to
+    // the render thread (a hitch the first time a shader pair draws). They run there in one go.
+    auto build = [this, &p, v, psGl, &ffpSrc] {
+        GLuint f = psGl;
+        if (!psGl) f = compileShader(GL_FRAGMENT_SHADER, ffpSrc, "fixed-function pixel shader");
+        p.gl = linkProgram(v, f);
+        if (!psGl && f) glDeleteShader(f);
+        if (!p.gl) return;
         p.uC = glGetUniformLocation(p.gl, "c");
         p.uColorBgra = glGetUniformLocation(p.gl, "uColorBgra");
         p.uPc = glGetUniformLocation(p.gl, "pc");
@@ -1448,8 +1463,6 @@ Program* Device::program() {
         p.uTFactor = glGetUniformLocation(p.gl, "uTFactor");
         p.uHalfPixel = glGetUniformLocation(p.gl, "uHalfPixel");
         glUseProgram(p.gl);
-        lastProgramGl = p.gl;
-        layoutValid = false;
         for (int i = 0; i < 6; ++i) {
             const std::string n = "s" + std::to_string(i);
             p.uS[i] = glGetUniformLocation(p.gl, n.c_str());
@@ -1457,10 +1470,13 @@ Program* Device::program() {
         }
         for (int k = 0; k < 128; ++k) p.uCElem[k] = p.uC >= 0 ? glGetUniformLocation(p.gl, ("c[" + std::to_string(k) + "]").c_str()) : -1;
         for (int k = 0; k < 8; ++k) p.uPcElem[k] = p.uPc >= 0 ? glGetUniformLocation(p.gl, ("pc[" + std::to_string(k) + "]").c_str()) : -1;
+    };
+    runOnRenderThread(build);
+    if (p.gl) {
+        lastProgramGl = p.gl;  // build() left it bound
+        layoutValid = false;
     }
-    auto& slot = programs[key];
-    slot = p;
-    return slot.gl ? &slot : nullptr;
+    return p.gl ? &p : nullptr;
 }
 
 // Sends the registers in [0, hi) whose version differs from what the program has seen, as runs
