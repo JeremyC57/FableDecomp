@@ -492,3 +492,21 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
 - **v21/v21b (RG34XX)**: the d-pad layout and favourites, the adult head fix, the quest
   scaling attempt above. Open besides it: the quick-access menu's panel frame, the
   save/load list on the device, the PC key labels on the quick-access icons.
+- **v22 (2026-10-14)**: PC screens fit and take the pad.
+  - D-pad down: CHARGE_GUILD_SEAL (78) bound to it in `mergedBindings`; the wrap no longer
+    uses OBJECT_GUILD_SEAL_1 directly (that opened the teleport menu at once). Left/right:
+    only the context item of the moment, nothing otherwise (the fixed assignment under them
+    was the PC's default expression).
+  - Oversized PC screens: `host_create_component` wraps `CManager::CreateComponent`
+    (0x41DB1D; the def name is a CCharString -> CCharStringData {char*, length}); a PC_ name
+    turns the Xbox 1.6 in `host_ui_scale` off, a UI_ name back on. The quest table is
+    PC_QUESTS_SELECTION_MENU and now fits 720x480 at the PC layout's own scale. The
+    component-walk attempts before it failed: esi is not the component at every zoom site.
+  - Pad on PC screens (`host::menu::pcScreenPad`, from the joystick hook): while a PC_ screen
+    with clickable buttons is up in play, up/down and A go to the manager as UI events (the
+    PC lists' entries are not buttons), left/right move between buttons, B presses the Back
+    or close button, the right stick presses the description pane's scroll arrows; those
+    inputs are kept from the game. Harness: the quest list steps with the d-pad and B closes.
+  - Harness: the front-end crash in `EventContainer_Erase` (reading 0xBF800000) hit once more
+    before a save loaded; still harness-only.
+  - Open: save/load list on the device, quick-access panel frame, Guild river water.
