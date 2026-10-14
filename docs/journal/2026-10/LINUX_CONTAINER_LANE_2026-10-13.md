@@ -421,6 +421,31 @@ delete-expression (`mov eax,[esp+4] ; push eax ; call operator delete ; pop ecx`
 the slot directly). Running total for the rescans: 4833/4925 rows from 230 batches; catalog
 26,590 (53.6%). EH-framed parents landed: 205 of 694; funclets landed: 218 of 1,378.
 
+### Wave 22 (the EH 3-body families, their funclets, the ≤16-byte tail synthesisers 3 and 4)
+
+195 rows. (1) The five remaining 3-body EH-framed families: observer notification F1116 (find,
+then a virtual notify with `(this, argument)`), the file visitor F1123 (a 12-byte stack visitor
+whose inline *empty* destructor is what registers EH state 0 -- nothing is called on the normal
+path), the container constructors F1130 and destructors F1131, and the `new CX` factories F1136
+(the class's own operator new/delete; the block stays in the frame for the operator-delete
+funclet). F1130/F1131 took four lessons: a virtual call written directly in a constructor or
+destructor is devirtualised by VC7.1, so retail's `call [eax+N]` there means the call sits in an
+inline non-virtual helper; the most-derived class is `__declspec(novtable)` (its destructor body
+runs before any vtable store); a member initialised before the EH state-0 store belongs to the
+root base (the root's own vtable store is dead and dropped in the constructor); and the inline
+helper with a loop needs `__forceinline`. Their 21 funclets followed (funclets6). (2) Two more
+generic synthesisers for the ≤16-byte tail: `wtiny3` (22 recognisers over the 3-9-body shapes:
+`::operator delete(this)`, unused-argument forwarders, COM-style `__stdcall` interface calls,
+`__fastcall` import wrappers, hidden-pointer handle returns, bit counters -- 83 of 88) and
+`wtiny4` (40 recognisers over the two-body shapes -- 76 of 83). Lessons: VC loads the right-hand
+FPU operand first; a one-slot call whose result is returned is cleaned with `add esp,4` and a
+dropped one with `pop ecx`; a byte predicate (`setne al`, `sbb al,al`) returns `unsigned char`.
+Parked with evidence: the four `$E` initialisers that store one constant (VC7.1 folds every
+inline constructor into static initialisation -- link-time inlining), the list copy constructors
+F135 (63 v 63 bytes, one load scheduled differently) and three sibling-call wrappers the DDK
+compiler always tail-jumps. Running total for the rescans: 5028/5165 rows from 240 batches;
+catalog 26,785 (54.0%). EH-framed parents landed: 220 of 694; funclets landed: 239 of 1,378.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
