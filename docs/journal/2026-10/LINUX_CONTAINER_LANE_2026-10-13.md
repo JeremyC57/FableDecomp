@@ -359,6 +359,25 @@ frame dword), the CTriangleList counted factory (one hoisted argument load) and 
 8-byte pairs (induction-variable elimination). Running total for the rescans: 4284/4315 rows
 from 189 families; catalog 26,041 (52.5%).
 
+### Wave 19 (512-byte rescan, seventh pass: the small Dinkumware shapes)
+
+Twenty-seven batches, 170 rows, almost all 35–80-byte algorithm instantiations: `_Uninit_fill_n`
+and `_Uninit_copy` (POD dwords, memberwise-copied classes, `rep movsd` blocks, counted pointers
+with addref; the placement null check is VC's own), `std::fill`, `_Destroy_range` (counted
+pointers through `Release`, virtual destructors with the deleting flag 0), vector teardown loops,
+`_Dest_val` over counted-pointer map values, the tree iterator distance, `sort_heap` over pairs
+with a user copy constructor, `CVectorMap::UpperBound` over 12/24/40-byte entries, the
+counted-pointer constructor from a raw pointer, and the thirty `IS_THING_ALIVE`/`IS_THING_DEAD`
+predicates (nested ifs keep both tests as branches). Lessons: the size TUs show as unaligned
+loops and `pop ecx` argument cleanup; a 12/16-byte element copied through one register is a
+class with a memberwise user copy constructor, through three registers a POD of dwords, through
+`rep movsd` a byte block; `upper_bound` needs the negated comparison so the advance is the
+fall-through. Parked after two attempts each (all one scheduling or register detail short, see
+the Windows-box note in ROADMAP): make_heap, equal_range, the implicit operator=,
+Array_Initialize, the erase copy-down, and the copy/copy_backward shapes whose source pointer
+retail eliminates. Running total for the rescans: 4454/4500 rows from 216 families; catalog
+26,211 (52.9%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
