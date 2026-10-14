@@ -493,30 +493,27 @@ extern "C" void host_ui_scale(Ctx* c) {
         // still builds (the quest table, the quest start and completion screens) are laid out
         // for 1024x768 and overflowed 720x480 with the 1.6: a screen whose root is wider
         // than 640 or taller than 480 is a PC layout and keeps the game's own scale.
-        const uint32_t comp = c->esi;
-        // NUISystem::CComponent (PDB): Name CCharString +0x24, PParent +0xD8, Size +0xDC, DefIndex +0x158.
-        uint32_t root = comp;
-        float w = 0, h = 0;  // the largest box along the ancestor chain
+        // The PC-layout test (the quest table, quest start and completion screens are laid out
+        // for 1024x768 and overflow 720x480 under the 1.6) walks the component's ancestors
+        // (NUISystem::CComponent: Name +0x24, PParent +0xD8, Size +0xDC, DefIndex +0x158).
+        // The component is taken from esi, which is not `this` at every site: every read is
+        // fault-safe and a candidate is only trusted with a vtable in the executable's
+        // read-only data, otherwise the zoom applies as before.
+        auto readU32 = [](uint32_t a, uint32_t& v) { return a >= 0x10000 && a < kGuestLimit && safeRead(a, &v, 4); };
+        auto looksLikeComponent = [&](uint32_t comp) { uint32_t vt = 0; return readU32(comp, vt) && vt >= 0x1230000 && vt < 0x1270000; };
+        uint32_t root = c->esi;
+        float w = 0, h = 0;
         std::string chain;
-        auto name = [](uint32_t comp) -> std::string {
-            for (uint32_t off : {0x24u, 0x28u}) {
-                const uint32_t p = rd32(comp + off);
-                char buf[40];
-                if (p < 0x10000 || p > 0x7FFFFFFF || !safeRead(p, buf, sizeof buf)) continue;
-                std::string t;
-                for (int i = 0; i < 40 && buf[i]; ++i) { if (buf[i] < 0x20 || buf[i] > 0x7E) { t.clear(); break; } t += buf[i]; }
-                if (t.size() >= 3) return t;
-            }
-            return "?";
-        };
-        for (int i = 0; i < 24 && root >= 0x10000 && root < kGuestLimit; ++i) {
-            const float cw = rdf32(root + 0xDC), ch = rdf32(root + 0xE0);
-            if (cw > w && cw < 8192.0f) w = cw;
-            if (ch > h && ch < 8192.0f) h = ch;
-            if (i < 8) chain += " " + name(root) + "(" + std::to_string(static_cast<int>(cw)) + "x" + std::to_string(static_cast<int>(ch)) + ")";
-            const uint32_t p = rd32(root + 0xD8);
-            if (!p || p >= kGuestLimit || p == root) break;
-            root = p;
+        for (int i = 0; i < 24 && looksLikeComponent(root); ++i) {
+            uint32_t cw = 0, ch = 0, parent = 0;
+            readU32(root + 0xDC, cw), readU32(root + 0xE0, ch), readU32(root + 0xD8, parent);
+            float fw, fh;
+            std::memcpy(&fw, &cw, 4), std::memcpy(&fh, &ch, 4);
+            if (fw > w && fw < 8192.0f) w = fw;
+            if (fh > h && fh < 8192.0f) h = fh;
+            if (i < 8) chain += " " + std::to_string(static_cast<int>(fw)) + "x" + std::to_string(static_cast<int>(fh));
+            if (!parent || parent == root) break;
+            root = parent;
         }
         const bool pcLayout = w > 660.0f || h > 500.0f;
         static std::set<uint32_t> seen;

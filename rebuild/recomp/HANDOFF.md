@@ -191,6 +191,9 @@ cmake --build build/win     # about 5 min; the generated C is ~250 MB
 FableRecomp.exe --game "D:\SteamLibrary\steamapps\common\Fable The Lost Chapters"
 ```
 
+v21b (RG34XX): Xbox d-pad layout and favourites (`host_use_quick_item` / `host_use_context_item`),
+render-target locks read back from GL (the adult hero's face), a PC-layout test in `host_ui_scale`
+that does not fire yet (see the 2026-10-12 journal, quest screens).
 v20 (RG34XX): hold-to-target through `host_ztarget_toggle`; Will mode and d-pad items fixed by
 replacing the profile's keyboard slot records (actions 54/55/56) with the Xbox scheme's in
 `mergedBindings` (slot lists are positional, see the 2026-10-12 journal). Open: Guild river water,

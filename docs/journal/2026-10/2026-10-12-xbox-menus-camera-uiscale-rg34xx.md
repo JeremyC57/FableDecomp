@@ -474,3 +474,21 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   left/right: context items) and, with the right trigger held, the favourite slots (the
   controller-help screen's "Access Favourites (D-pad)"). The quick-access menu opens with
   "Items x N / Expressions x N" rows but no panel frame (open).
+- **Quest table / quest start / quest completion screens oversized (user screenshots, v20)**:
+  `host_ui_scale` multiplies `CManager::GetUIScale` (window / 1024x768) by 1.6 at the zoom
+  sites for the Xbox screens (laid out for 640x480); the PC-layout quest screens got the
+  same 1.6 and ran off a 720x480 screen. The wrap now skips the 1.6 when the largest box
+  up the component's ancestor chain exceeds 640x480 (NUISystem::CComponent per the PDB:
+  Name +0x24, PParent +0xD8, Size +0xDC, DefIndex +0x158). Open: the component is taken
+  from esi, which proved not to be `this` at every site (the first version read garbage
+  and crashed once in the harness, shipped as v21; v21b makes every read fault-safe and
+  trusts only a candidate with a vtable in .rdata), and the harness logs still show
+  0x0 boxes, so the rule has not yet fired: the quest table in the harness still clips on
+  the right. Next: take the component from the call site's own frame (each site's `this`
+  register verified in the lifted code) or flag the PC screens from CPlayer's
+  InitModeQuestCompletionUI (0x633B10) / UninitModeQuestCompletionUI (0x633B40) and the
+  quest table's opener. The harness reaches the table from the post-graduation save with a
+  short left nudge of the stick and A (adult14.sh).
+- **v21/v21b (RG34XX)**: the d-pad layout and favourites, the adult head fix, the quest
+  scaling attempt above. Open besides it: the quick-access menu's panel frame, the
+  save/load list on the device, the PC key labels on the quick-access icons.
