@@ -592,6 +592,16 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     static void syncRegs(const GLint* loc, const float (*val)[4], const uint64_t* ver, uint64_t* seen, int hi);
     GLuint lastProgramGl = 0;
     GLuint boundTexGl[8] = {};        // texture bound to each unit
+    int activeUnit = 0;               // the unit glActiveTexture last selected
+    // Binds `t` on the active unit for a creation, an upload or a mip generation. That unit then
+    // no longer holds what the draws bound there; without recording it, the next draw that keeps
+    // the same texture on that unit sampled the uploaded one instead (applySamplers saw no change).
+    void bindForUpdate(GLuint t) {
+        if (boundTexGl[activeUnit] == t) return;  // already bound there
+        glBindTexture(GL_TEXTURE_2D, t);
+        boundTexGl[activeUnit] = t;
+        texDirty = true;
+    }
     bool samplersBound = false, anySamplerDirty = true;
     struct LayoutKey {
         const VertexDecl* decl = nullptr; const VertexShader* vs = nullptr; GLuint program = 0;
@@ -890,7 +900,7 @@ Texture::Texture(Device* d, UINT w, UINT h, UINT l, DWORD u, D3DFORMAT f, D3DPOO
     surfaces.assign(levels, nullptr);
     if (pool != D3DPOOL_SYSTEMMEM && pool != D3DPOOL_SCRATCH) {
         glGenTextures(1, &gl);
-        glBindTexture(GL_TEXTURE_2D, gl);
+        dev->bindForUpdate(gl);
         glTexStorage2D(GL_TEXTURE_2D, static_cast<GLsizei>(levels), info.internal, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
         glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_R, &info.swizzle[0]);
         glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_G, &info.swizzle[1]);
@@ -928,7 +938,7 @@ void Texture::upload(UINT level, const RECT* rect) {
     }
     struct UploadTime { uint64_t t0; ~UploadTime() { const uint64_t d = nowNs() - t0; g_nsUpload += d; g_nsGl += d; } } timing{t0};
     const UINT w = s->level.width, h = s->level.height;
-    glBindTexture(GL_TEXTURE_2D, gl);
+    dev->bindForUpdate(gl);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     if (isDxt(format)) {
         std::vector<uint8_t> rgba = decodeDxt(format, s->level.cpu.data(), w, h);
@@ -943,7 +953,7 @@ void Texture::upload(UINT level, const RECT* rect) {
     (void)rect;
     GLCHECK("upload");
 }
-void STDMETHODCALLTYPE Texture::GenerateMipSubLevels() { if (gl) { glBindTexture(GL_TEXTURE_2D, gl); glGenerateMipmap(GL_TEXTURE_2D); } }
+void STDMETHODCALLTYPE Texture::GenerateMipSubLevels() { if (gl) { dev->bindForUpdate(gl); glGenerateMipmap(GL_TEXTURE_2D); } }
 
 // ---- SwapChain ----
 HRESULT STDMETHODCALLTYPE SwapChain::Present(const RECT* a, const RECT* b, HWND h, const RGNDATA* d, DWORD) { return dev->Present(a, b, h, d); }
@@ -1030,7 +1040,7 @@ bool Device::init(HWND hwnd) {
 bool Device::createBackBuffer() {
     const UINT w = std::max(1u, pp.BackBufferWidth), h = std::max(1u, pp.BackBufferHeight);
     glGenTextures(1, &mainColor);
-    glBindTexture(GL_TEXTURE_2D, mainColor);
+    bindForUpdate(mainColor);
     glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA8, static_cast<GLsizei>(w), static_cast<GLsizei>(h));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -1673,7 +1683,7 @@ void Device::applySamplers() {
     for (int i = 0; i < 8; ++i) {
         const GLuint want = textures[i] ? textures[i]->gl : 0;
         if (want != boundTexGl[i]) {
-            glActiveTexture(GL_TEXTURE0 + i);
+            if (activeUnit != i) { glActiveTexture(GL_TEXTURE0 + i); activeUnit = i; }
             glBindTexture(GL_TEXTURE_2D, want);
             boundTexGl[i] = want;
         }
@@ -1987,7 +1997,7 @@ void Device::drawOverlay() {
             for (int y = 0; y < 16; ++y)
                 for (int x = 0; x < 8; ++x) atlas[static_cast<size_t>(y) * 96 * 8 + g * 8 + x] = g == 95 ? 255 : (kOverlayFont[g][y] & (0x80 >> x)) ? 255 : 0;
         glGenTextures(1, &overlayTexture);
-        glBindTexture(GL_TEXTURE_2D, overlayTexture);
+        bindForUpdate(overlayTexture);
         glTexStorage2D(GL_TEXTURE_2D, 1, GL_R8, 96 * 8, 16);
         glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 96 * 8, 16, GL_RED, GL_UNSIGNED_BYTE, atlas.data());
@@ -2037,6 +2047,7 @@ void Device::drawOverlay() {
     glUseProgram(overlayProgram);
     glUniform2f(overlayUSize, static_cast<float>(pp.BackBufferWidth), static_cast<float>(pp.BackBufferHeight));
     glActiveTexture(GL_TEXTURE0);
+    activeUnit = 0;
     glBindTexture(GL_TEXTURE_2D, overlayTexture);
     glBindSampler(0, 0);
     glBindVertexArray(overlayVao);
@@ -2159,6 +2170,7 @@ bool Device::presentPass(int ww, int wh, float gamma) {
     glUniform1f(presentUGamma, gamma);
     glUniform2f(presentUSize, static_cast<float>(ww), static_cast<float>(wh));
     glActiveTexture(GL_TEXTURE0);
+    activeUnit = 0;
     glBindTexture(GL_TEXTURE_2D, mainColor);
     glBindSampler(0, 0);
     glBindVertexArray(overlayVao);
