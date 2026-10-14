@@ -531,6 +531,44 @@ extern "C" void host_ui_event(Ctx* c) {
     F_0055CB10_orig(c);
 }
 
+// 0x530780 CComponent* CComponent::FindChild(CCharString name), recursive over the children
+// (vtable +0xC), the string by value (the callee releases it). The inventory screens pick
+// their parts by the player GUI's live-GUI byte (+0x2BE): PC_MENU_ENTRY_ATTACK_SPELLS with it
+// set, UI_MENU_ENTRY_ATTACK_SPELLS without (CTCInventoryAbilities::GetMenuEntryFromCategory
+// 0x5EE288, the equipment categories likewise). The host opens the Xbox inventory through the
+// live-GUI action, so the byte is set while the Xbox screens (built from UI_ parts) are up:
+// the PC_ lookup found nothing and the caller dereferenced the null (the crash entering a
+// category). With the Xbox menus, a PC_ lookup that fails at the outermost call is retried
+// with the UI_ name.
+extern "C" void F_00530780_orig(Ctx* c);
+extern "C" void host_find_child(Ctx* c) {
+    static thread_local int depth = 0;
+    const uint32_t self = c->ecx;
+    std::string name;
+    if (depth == 0 && xboxMenus()) {
+        const uint32_t data = rd32(c->esp + 4);
+        const uint32_t ptr = data >= 0x10000 && data < kGuestLimit ? rd32(data) : 0, len = data >= 0x10000 && data < kGuestLimit ? rd32(data + 4) : 0;
+        if (ptr >= 0x10000 && ptr < kGuestLimit && len > 3 && len < 96) name.assign(gp<const char>(ptr), len);
+    }
+    ++depth;
+    F_00530780_orig(c);
+    --depth;
+    if (c->eax || name.rfind("PC_", 0) != 0) return;
+    const std::string alt = "UI_" + name.substr(3);
+    const uint32_t mem = gcalloc(1, 8 + static_cast<uint32_t>(alt.size()) + 1);
+    const uint32_t slot = mem, chars = mem + 8;
+    std::memcpy(gp<char>(chars), alt.c_str(), alt.size() + 1);
+    guestCallThis(0x99EBF0, slot, {chars, 0xFFFFFFFFu});  // CCharString(const char*, -1)
+    const uint32_t eaxSaved = c->eax;
+    ++depth;
+    const uint32_t found = guestCallThis(0x530780, self, {rd32(slot)});  // releases the string
+    --depth;
+    gfree(mem);
+    static std::set<std::string> logged;
+    if (logged.insert(name).second) HLOG(1, "ui: FindChild(%s) failed in an Xbox screen: %s -> 0x%08X", name.c_str(), alt.c_str(), found);
+    c->eax = found ? found : eaxSaved;
+}
+
 // 0x41DB1D CManager::CreateComponent(const CCharString& defName, int): every screen and
 // component comes through here by def name. The PC screens the game still builds (PC_QUEST_*,
 // the quest table, trading, the experience screen) are laid out for 1024x768; the Xbox ones
