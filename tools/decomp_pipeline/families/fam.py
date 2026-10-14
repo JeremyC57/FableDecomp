@@ -4,7 +4,7 @@ Usage: fam.py <repo> <family-id> <out-batch-name> [limit]   (env S = scratchpad)
 import json, sys, csv, re, os, struct
 from pathlib import Path
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
-from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG
+from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EAX, X86_REG_ESI
 ROOT=Path(sys.argv[1]); FAM=sys.argv[2]; BATCH=sys.argv[3]; LIMIT=int(sys.argv[4]) if (len(sys.argv)>4 and sys.argv[4]!="-") else 10**9
 TPL=sys.argv[5] if len(sys.argv)>5 else FAM   # template id (family index of the scan the template was written for)
 S=Path(os.environ["S"]); OUT=ROOT/"rebuild/candidates/manual/batches"/BATCH
@@ -8137,71 +8137,103 @@ int main()
     long buf[4]; V v; v.f = buf; v.l = buf + 3; v.e = buf + 4; long x = 1; v.R(1, x); if (v.l != buf + 1) '''+FAIL(a)+'''
     v.R(3, x); if (g_i != 2) '''+FAIL(a)+'''
 '''),b)
-    elif TPL in ("w512_37","w512_38","w512_49"):   # bool CDefinitionManager::GetDef(key, CDefPointer& out): the def pointer comes back through a hidden pointer homed in the dead key slot, the out pointer is reassigned with reference counting, the temporary released
-        byname=(TPL=="w512_37"); fp=(TPL=="w512_49")
-        if len(calls)!=1 or retn!=8: continue
+    elif TPL in ("w512_37","w512_38","w512_49","w512_243"):   # bool CDefinitionManager::GetDef(key, CDefPointer& out): the def pointer comes back through a hidden pointer homed in the dead key slot, the out pointer is reassigned with reference counting, the temporary released
+        fp=(TPL in ("w512_49","w512_243")); extra=(TPL=="w512_243")
+        if len(calls)!=1 or retn!=(12 if extra else 8): continue
         if fp!=(b[:3]==b"\x55\x8b\xec"): continue
         getter=calls[0]; hasguard=any(i.mnemonic=="jle" for i in ins)
-        if byname==hasguard: continue
+        byname=not hasguard
+        if TPL=="w512_37" and not byname: continue
+        if TPL in ("w512_38","w512_49","w512_243") and byname: continue
+        caddr=[i.address for i in ins if i.mnemonic=="call"][0]; start=int(a,16)+(3 if fp else 0)
+        npush=sum(1 for i in ins if i.mnemonic=="push" and start<=i.address<caddr)
+        if extra!=(npush==3): continue
         gm,gn,_=label(getter); gname=gn.split("::")[-1] if (gm,gn) in uniq and re.match(r"^[A-Za-z_]\w*$",gn.split("::")[-1]) else ("GetPDefFromInstantiationName" if byname else "GetPDefFromGlobalIndex")
         fname=re.sub(r"[^A-Za-z0-9_]","_",mname.split("::")[-1].split("<")[0]) or "GetDef"; fname=f"{fname}_{a}"
         ktype="const CCharString&" if byname else "long"; kname="name" if byname else "index"
-        add(a,"CDefinitionManager",fname,HDRF(a,f"CDefinitionManager::GetDef<T>({ktype}, CDefPointer&) -- {gname} @ 0x{getter:08X} writes the def through a pointer homed in the dead key slot; false when null, else the out pointer is reassigned with reference counting (old def released, new one addref'd) and the temporary released; true",len(b))+f'''//
-// Retail bytes:  {"push ebp ; mov ebp,esp ; cmp dword ptr [index],0 ; jle F ; push [index] ; lea eax,[index] ; push eax ; call " + gname + " ; mov eax,[def] ; test eax,eax ; je F" if fp else ("mov eax,[index] ; test eax,eax ; jle F ; push eax ; lea eax,[esp+8] ; push eax ; call " + gname + " ; mov eax,[esp+4] ; test eax,eax ; je F" if not byname else "mov eax,[name] ; push eax ; lea edx,[esp+8] ; push edx ; call " + gname + " ; mov eax,[esp+4] ; test eax,eax ; je F")} ; push esi ; mov esi,[out] ; mov ecx,[esi] ; cmp ecx,eax ; je K ; test ecx,ecx ; je A ; dec dword ptr [ecx+4] ; jne Z ; mov eax,[ecx] ; call [eax+4] ; Z: mov eax,[def] ; {"and dword ptr [esi],0" if fp else "mov dword ptr [esi],0"} ; A: test eax,eax ; mov [esi],eax ; je R ; inc dword ptr [eax+4] ; mov eax,[def] ; K: {"mov ecx,eax ; add eax,4 ; dec dword ptr [eax] ; cmp dword ptr [eax],0 ; jne R ; mov eax,[ecx] ; call [eax+4]" if fp else "mov esi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec esi ; mov edx,esi ; test edx,edx ; mov [eax],esi ; jne R ; mov edx,[ecx] ; call [edx+4]"} ; R: mov al,1 ; pop esi ; {"jmp X ; F: xor al,al ; X: pop ebp ; ret 8" if fp else "ret 8 ; F: xor al,al ; ret 8"}
-// Definition lookup into a counted def pointer: the manager's {gname} @ 0x{getter:08X} returns a
-// CDefPointer through its hidden pointer, which VC homes in the (dead) key argument slot; a null
-// def fails. Otherwise the out pointer's assignment is inlined -- unless it already holds the
-// def, the old def is released (count at +4, virtual slot 1 destroys at zero) and nulled, the
-// new one stored and addref'd -- and the temporary's destructor releases the def again (the
-// decrement materialised in a register{"; size TU: and [mem],0 and dec/cmp" if fp else ""}). {"Frame pointer from the TU's optimize(y, off). " if fp else ""}The manifest label names one
-// instantiation; the def type is opaque. One of {len(members)} bodies of this shape.
-{"#pragma optimize(" + chr(34) + "y" + chr(34) + ", off)" + chr(10) + chr(10) if fp else ""}{"#include " + chr(34) + "fable_string.h" + chr(34) + chr(10) + chr(10) if byname else ""}struct CDefBase {{
+        add(a,"CDefinitionManager",fname,HDRF(a,f"CDefinitionManager::GetDef<T>({'long, ' if extra else ''}{ktype}, CDefPointer&) -- {gname} @ 0x{getter:08X} returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false{'; frame-pointer size TU' if fp else ''}",len(b))+f'''//
+// Retail bytes:  {"push ebp ; mov ebp,esp ; cmp dword ptr [index],0 ; jle F ; push [index] ; lea eax,[index] ; " + ("push [kind] ; " if extra else "") + "push eax ; call " + gname + " ; mov eax,[def] ; test eax,eax ; je F" if fp else ("mov eax,[index] ; test eax,eax ; jle F ; push eax ; lea eax,[esp+8] ; push eax ; call " + gname + " ; mov eax,[esp+4] ; test eax,eax ; je F" if not byname else "mov eax,[name] ; push eax ; lea edx,[esp+8] ; push edx ; call " + gname + " ; mov eax,[esp+4] ; test eax,eax ; je F")} ; push esi ; mov esi,[out] ; mov ecx,[esi] ; cmp ecx,eax ; je K ; test ecx,ecx ; je A ; dec dword ptr [ecx+4] ; jne Z ; mov eax,[ecx] ; call [eax+4] ; Z: {"and dword ptr [esi],0 ; mov eax,[def]" if fp else "mov eax,[def] ; mov dword ptr [esi],0"} ; A: test eax,eax ; mov [esi],eax ; je R ; inc dword ptr [eax+4] ; mov eax,[def] ; K: {"mov ecx,eax ; add eax,4 ; dec dword ptr [eax] ; cmp dword ptr [eax],0 ; jne R ; mov eax,[ecx] ; call [eax+4]" if fp else "mov esi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec esi ; mov edx,esi ; test edx,edx ; mov [eax],esi ; jne R ; mov edx,[ecx] ; call [edx+4]"} ; R: mov al,1 ; pop esi ; {"jmp X ; F: xor al,al ; X: pop ebp ; ret " + ("0Ch" if extra else "8") if fp else "ret 8 ; F: xor al,al ; ret 8"}
+// Definition lookup into a counted def pointer: {gname} @ 0x{getter:08X} returns a CDefPointer by
+// value through the hidden pointer, which VC homes in the dead key argument slot; the
+// temporary is re-read from that slot at every use. A null def fails (the false path sits at
+// the end: the success branch is the `if` body). Otherwise `out = def` is inlined -- unless
+// the out pointer already holds the def, its old def is released through CDefBase::Release
+// (`this` in ecx, `dec [ecx+4] ; jne`, virtual slot 1 destroys at zero) and nulled, the new one
+// stored and addref'd -- and the temporary's destructor releases the def through the
+// ref-count base's two inline accessors (decrement, then test the count): the adjusted base
+// pointer is materialised once for both (`add eax,4`), the stored value is forwarded to the
+// test{" (re-read in the size TU: `dec [eax] ; cmp [eax],0`)" if fp else ""} and the def is kept in ecx for the virtual call.{" Frame pointer and size optimisation from the TU's pragmas." if fp else ""} The manifest
+// label names one instantiation; the def type is opaque. One of {len(members)} bodies of this shape.
+{"#pragma optimize(" + chr(34) + "y" + chr(34) + ", off)" + chr(10) + "#pragma optimize(" + chr(34) + "s" + chr(34) + ", on)" + chr(10) + chr(10) if fp else ""}{"#include " + chr(34) + "fable_string.h" + chr(34) + chr(10) + chr(10) if byname else ""}struct CRefCounted {{                       // second base: the count sits at +4 behind the vptr
+    long m_count;
+    void DecRef() {{ --m_count; }}
+    long GetRefCount() const {{ return m_count; }}
+}};
+
+struct CDefVirtual {{
     virtual void v00();
     virtual void Destroy();                // slot 1
-    long m_refs;                           // +4
+}};
+
+struct CDefBase : CDefVirtual, CRefCounted {{
+    void Release()                         // inlined into CDefPointer::operator=
+    {{
+        if (--m_count == 0)
+            Destroy();
+    }}
+    void ReleaseTemporary()                // inlined into ~CDefPointer
+    {{
+        DecRef();
+        if (GetRefCount() == 0)
+            Destroy();
+    }}
 }};
 
 struct CDefPointer {{
     CDefBase* m_p;
-    void Assign(CDefBase* def)
+    CDefPointer() {{ }}
+    ~CDefPointer()
     {{
-        if (m_p != def) {{
+        if (m_p)
+            m_p->ReleaseTemporary();
+    }}
+    {"__forceinline " if fp else ""}CDefPointer& operator=(const CDefPointer& other)   // {"forced: the size TU would call it out of line" if fp else "inlined by the speed TU"}
+    {{
+        if (m_p != other.m_p) {{
             if (m_p) {{
-                if (--m_p->m_refs == 0)
-                    m_p->Destroy();
+                m_p->Release();
                 m_p = 0;
             }}
-            m_p = def;
-            if (def)
-                ++def->m_refs;
+            m_p = other.m_p;
+            if (m_p)
+                ++m_p->m_count;
         }}
+        return *this;
     }}
 }};
 
 struct CDefinitionManager {{
-    CDefBase** {gname}(CDefBase** result, {ktype} {kname});   // 0x{getter:08X} (hidden result pointer)
-    bool {fname}({ktype} {kname}, CDefPointer& out);
+    CDefPointer {gname}({"long kind, " if extra else ""}{ktype} {kname});   // 0x{getter:08X} (hidden result pointer)
+    bool {fname}({"long kind, " if extra else ""}{ktype} {kname}, CDefPointer& out);
 }};
 
-bool CDefinitionManager::{fname}({ktype} {kname}, CDefPointer& out)
+bool CDefinitionManager::{fname}({"long kind, " if extra else ""}{ktype} {kname}, CDefPointer& out)
 {{
-{"" if byname else "    if (" + kname + " <= 0)" + chr(10) + "        return false;" + chr(10)}    CDefBase* def;
-    {gname}(&def, {kname});
-    if (!def)
-        return false;
-    out.Assign(def);
-    --def->m_refs;                         // the temporary's release
-    if (def->m_refs == 0)
-        def->Destroy();
-    return true;
+{"" if byname else "    if (" + kname + " <= 0)" + chr(10) + "        return false;" + chr(10)}    CDefPointer def = {gname}({"kind, " if extra else ""}{kname});
+    if (def.m_p) {{
+        out = def;
+        return true;
+    }}
+    return false;
 }}
-''',T(a,'''static int g_d = 0; struct D { virtual void a() {} virtual void X() { ++g_d; } long r; };
-struct P { D* p; void A(D* d) { if (p != d) { if (p) { if (--p->r == 0) p->X(); p = 0; } p = d; if (d) ++d->r; } } };
-static D g_def; struct M { D** G(D** r, long k) { *r = k == 1 ? &g_def : 0; if (*r) ++(*r)->r; return r; }
-    bool GD(long k, P& o) { if (k <= 0) return false; D* d; G(&d, k); if (!d) return false; o.A(d); --d->r; if (d->r == 0) d->X(); return true; } };
+''',T(a,'''static int g_d = 0; struct R { long c; void Dec() { --c; } long G() const { return c; } }; struct V { virtual void a() {} virtual void X() { ++g_d; } };
+struct D : V, R { void Rel() { if (--c == 0) X(); } void RelT() { Dec(); if (G() == 0) X(); } };
+struct P { D* p; P() {} P(D* q) : p(q) { if (p) ++p->c; } ~P() { if (p) p->RelT(); } P& operator=(const P& o) { if (p != o.p) { if (p) { p->Rel(); p = 0; } p = o.p; if (p) ++p->c; } return *this; } };
+static D g_def; struct M { P G(long k) { return P(k == 1 ? &g_def : 0); }
+    bool GD(long k, P& o) { if (k <= 0) return false; P d = G(k); if (d.p) { o = d; return true; } return false; } };
 int main()
 {
-    g_def.r = 1; M m; P o; o.p = 0; if (!m.GD(1, o) || o.p != &g_def || g_def.r != 2 || m.GD(2, o) || m.GD(0, o)) '''+FAIL(a)+'''
+    g_def.c = 1; M m; P o; o.p = 0; if (!m.GD(1, o) || o.p != &g_def || g_def.c != 2 || m.GD(2, o) || m.GD(0, o) || g_def.c != 2) '''+FAIL(a)+'''
 '''),b)
     elif TPL in ("w512_34",):   # SIterator* CRetailTree::Insert(SIterator* result, SNode* x, SNode* y, const SValue& v, SNode* w) -- STLport _M_insert: create the node left or right of y, fix the header links, rebalance, count
         if len(calls)!=3 or retn!=0x14 or calls[0]!=calls[1]: continue
@@ -8288,6 +8320,521 @@ int main()
 {
     N hd; hd.p = 0; hd.l = &hd; hd.r = &hd; Tr t; t.h = &hd; t.sz = 0; V v; v.k = 3; v.d = 4; It it; t.I(&it, 0, &hd, v, 0); if (t.sz != 1 || hd.p != it.n || it.n->v.d != 4 || g_rb != 1) '''+FAIL(a)+'''
     V v2; v2.k = 5; v2.d = 0; It it2; t.I(&it2, 0, it.n, v2, 0); if (it.n->r != it2.n || t.sz != 2) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_16",):   # CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream*, T*): inlined 4-byte stream read with the 64-bit position range check
+        if len(calls)!=1: continue
+        reader=calls[0]; fp=b[:3]==b"\x55\x8b\xec"; isstruct=any(i.mnemonic=="movsd" for i in ins)
+        vt="SPersistValue4" if isstruct else "long"
+        add(a,"_unattributed",f"TransferBinaryIn_{a}",HDRF(a,f"CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream*, T*) -- inlined 4-byte read ({'struct, movsd copy' if isstruct else 'scalar'}), 64-bit position range check through an inline bool predicate (its exits share the duplicated return tails the retail way), ReadWithSrcChunkOverflow @ 0x{reader:08X} when the chunk runs out{'; frame-pointer TU' if fp else ''}",len(b))+f'''//
+// Retail bytes:  {"push ebp ; mov ebp,esp ; mov ecx,[ebp+8]" if fp else "mov ecx,[esp+4]"} ; mov eax,[ecx+4] ; {"lea edx,[eax+4]" if fp else "push esi ; lea esi,[eax+4]"} ; xor eax,eax ; jl R ; jg B ; test lo,lo ; jb R ; B: test eax,eax ; jg R ; jl F ; cmp lo,7FFFFFFFh ; ja R ; F: {"push ebx ; mov ebx,[ecx+14h] ; cmp ebx,4 ; jl S ; mov eax,[ecx+0Ch] ; push esi ; push edi ; mov esi,eax ; lea edi,[ebp+8] ; movsd ; add eax,4 ; add ebx,-4 ; pop edi ; mov [ecx+0Ch],eax ; mov [ecx+14h],ebx ; mov [ecx+4],edx ; pop esi ; jmp J ; S: push 4 ; lea eax,[ebp+8] ; push eax ; call ReadWithSrcChunkOverflow ; J: pop ebx ; R: mov eax,[ebp+0Ch] ; mov ecx,[ebp+8] ; mov [eax],ecx ; pop ebp ; ret 8" if fp else "mov edx,[ecx+14h] ; cmp edx,4 ; jl S ; mov eax,[ecx+0Ch] ; push edi ; mov edi,[eax] ; add eax,4 ; mov [ecx+0Ch],eax ; mov eax,[esp+10h] ; add edx,-4 ; mov [ecx+4],esi ; mov [ecx+14h],edx ; mov [eax],edi ; pop edi ; pop esi ; ret 8 ; S: push 4 ; lea edx,[esp+0Ch] ; push edx ; call ReadWithSrcChunkOverflow ; R: mov ecx,[esp+8] ; mov eax,[esp+0Ch] ; mov [eax],ecx ; pop esi ; ret 8  (two more copies of R for the range-check exits)"}
+// Binary persist read of one 4-byte value: a local `value` (homed in the dead stream-argument
+// slot) is filled by the inlined CMemoryDataInputStream::Read(buffer, size) and copied to the
+// output. Read widens `position + size` to __int64 and rejects it outside [0, 0x7FFFFFFF]
+// (the zero high dword is materialised and compared like any 64-bit value); with enough bytes
+// left in the current chunk it memcpy's from the chunk pointer (+0xC), advances it, decrements
+// the remaining count (+0x14) and adds the size to the position (+4) -- `+=`, which keeps the
+// old position live and gives the `lea` form -- otherwise it defers to
+// CDataInputStream::ReadWithSrcChunkOverflow @ 0x{reader:08X}. {'A 4-byte struct value makes the memcpy a movsd; ' if isstruct else 'A scalar value lets the memcpy forward straight into the output; '}{'the TU keeps frame pointers and optimises for size.' if fp else 'the TU has no frame pointer.'}
+// The manifest label (`CPersistTraits<...>::TransferBinaryIn`) is propagated; the value type is
+// modelled by size. One of {len(members)} bodies of this shape.
+{'#pragma optimize("y", off)' + chr(10) + '#pragma optimize("s", on)' + chr(10) if fp else ''}extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
+#pragma intrinsic(memcpy)
+
+struct CMemoryDataInputStream {{
+    void* m_pVtable;                       // +0
+    unsigned long m_position;              // +4
+    long m_08;
+    const unsigned char* m_pData;          // +0xC  current chunk read pointer
+    long m_10;
+    long m_remaining;                      // +0x14 bytes left in the current chunk
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x{reader:08X}
+    static __forceinline bool IsValidPosition(__int64 position) {{ return position >= 0 && position <= 0x7fffffff; }}
+    __forceinline void Read(void* buffer, long size)
+    {{
+        __int64 newPosition = (__int64)(m_position + size);
+        if (!IsValidPosition(newPosition))
+            return;
+        if (m_remaining >= size) {{
+            memcpy(buffer, m_pData, size);
+            m_pData += size;
+            m_remaining -= size;
+            m_position += size;
+        }}
+        else
+            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+    }}
+}};
+{"struct SPersistValue4 { unsigned short m_low; unsigned short m_high; };" + chr(10) if isstruct else ""}
+void __stdcall TransferBinaryIn_{a}(CMemoryDataInputStream* stream, {vt}* out)
+{{
+    {vt} value;
+    stream->Read(&value, sizeof(value));
+    *out = value;
+}}
+''',T(a,'''#include <cstring>
+struct S { void* vt; unsigned long pos; long a; const unsigned char* p; long b; long rem; static int g_o; void O(unsigned char*, long) { ++g_o; }
+  void R(void* buf, long n) { __int64 np = (__int64)(pos + n); if (!(np >= 0 && np <= 0x7fffffff)) return; if (rem >= n) { std::memcpy(buf, p, n); p += n; rem -= n; pos += n; } else O((unsigned char*)buf, n); } };
+int S::g_o = 0;
+static void __stdcall T(S* s, long* o) { long v; s->R(&v, 4); *o = v; }
+int main()
+{
+    unsigned char data[8] = { 1, 0, 0, 0, 2, 0, 0, 0 }; S s; s.pos = 0; s.p = data; s.rem = 8; long v = 0; T(&s, &v); if (v != 1 || s.pos != 4 || s.rem != 4 || s.p != data + 4) '''+FAIL(a)+'''
+    s.rem = 2; T(&s, &v); if (S::g_o != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_36",):   # static CRetailTree destructor registered with atexit: clear (recursive release from the root, header relinked to itself, size zeroed) then free the header
+        if len(calls)!=2 or retn!=0: continue
+        rec,freer=calls
+        gl=sorted(set(i.operands[k].mem.disp for i in ins for k in range(len(i.operands)) if i.operands[k].type==X86_OP_MEM and i.operands[k].mem.base==0 and i.operands[k].mem.disp>0x400000))
+        if len(gl)!=2 or gl[1]-gl[0]!=4: continue
+        obj=gl[0]
+        nm=re.sub(r"[^A-Za-z0-9_]","_",mname.split("::")[-1]) or "TreeDeleter"
+        add(a,"_unattributed",f"{nm}_{a}",HDRF(a,f"static CRetailTree @ 0x{obj:08X} atexit destructor -- clear (recursive Erase @ 0x{rec:08X} from the root, header relinked to itself, size zeroed) then free the header node (free @ 0x{freer:08X})",len(b))+f'''//
+// Retail bytes:  mov eax,[size] ; test eax,eax ; je F ; mov eax,[header] ; mov ecx,[eax+4] ; push ecx ; mov ecx,offset tree ; call Erase ; mov eax,[header] ; mov [eax+8],eax ; mov edx,[header] ; mov dword ptr [edx+4],0 ; mov eax,[header] ; mov [eax+0Ch],eax ; mov dword ptr [size],0 ; F: mov eax,[header] ; test eax,eax ; je R ; push eax ; call free ; pop ecx ; R: ret
+// Compiler-generated dynamic atexit destructor (`??__F`) of a static STLport-style tree object at
+// 0x{obj:08X} (header pointer, then the node count): the inlined destructor clears the tree when it
+// holds nodes -- the recursive node release @ 0x{rec:08X} from the root, the header's left,
+// parent and right links reset (each through a fresh load of the header pointer, since the
+// stores may alias the static) and the count zeroed -- then returns the header node to the
+// allocator, which frees it when non-null (free @ 0x{freer:08X}). The manifest label is a
+// descriptive name for the static; the element type is irrelevant here. One of {len(members)}
+// bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct SNode {{
+    long m_color;                          // +0
+    SNode* m_parent;                       // +4
+    SNode* m_left;                         // +8
+    SNode* m_right;                        // +0xC
+}};
+
+struct CRetailTree {{
+    SNode* m_header;                       // +0
+    long m_size;                           // +4
+    void Erase(SNode* root);               // 0x{rec:08X} recursive node release
+    void Clear()
+    {{
+        if (m_size != 0) {{
+            Erase(m_header->m_parent);
+            m_header->m_left = m_header;
+            m_header->m_parent = 0;
+            m_header->m_right = m_header;
+            m_size = 0;
+        }}
+    }}
+    ~CRetailTree()
+    {{
+        Clear();
+        if (m_header)
+            free(m_header);
+    }}
+}};
+
+static CRetailTree g_{nm}_{a};             // 0x{obj:08X}
+''',T(a,'''#include <cstdlib>
+static int g_e = 0, g_f = 0;
+struct N { long c; N* p; N* l; N* r; };
+struct Tr { N* h; long n; void E(N*) { ++g_e; } void C() { if (n != 0) { E(h->p); h->l = h; h->p = 0; h->r = h; n = 0; } } ~Tr() { C(); if (h) { ++g_f; std::free(h); } } };
+static void Run() { Tr t; t.h = (N*)std::malloc(sizeof(N)); t.h->p = t.h; t.n = 1; }
+int main()
+{
+    Run(); if (g_e != 1 || g_f != 1) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_33",):   # SPair* __fastcall CopyBackward(first, last, dest, tag): counted backward copy of 8-byte pairs
+        if len(calls)!=0 or retn!=8: continue
+        add(a,"_unattributed",f"CopyBackward_{a}",HDRF(a,f"__fastcall CopyBackward(SPair* first, SPair* last, SPair* dest, tag) -- counted backward copy of 8-byte pairs, returns the new dest",len(b))+f'''//
+// Retail bytes:  mov eax,[dest] ; push esi ; mov esi,edx ; sub esi,ecx ; sar esi,3 ; test esi,esi ; jle R ; mov ecx,edx ; sub ecx,eax ; L: mov edx,[ecx+eax-8] ; sub eax,8 ; dec esi ; mov [eax],edx ; mov edx,[ecx+eax+4] ; mov [eax+4],edx ; jne L ; R: pop esi ; ret 8
+// Random-access `copy_backward` for 8-byte pairs (a float and an enum): the element count is
+// the pointer difference, the loop copies `*--dest = *--last` as two dwords while the count
+// runs down, and the compiler addresses the source relative to the destination (the two
+// pointers move in lockstep). Fastcall: first in ecx, last in edx, the destination and the
+// iterator-category tag on the stack (`ret 8`); the new destination is returned. The manifest
+// label (`_Copy_impl<pair<float,E>*, ...>`) is propagated. One of {len(members)} bodies of this
+// shape.
+struct SPair {{ float first; long second; }};
+struct SRandomAccessIteratorTag {{ char m_tag; }};
+
+SPair* __fastcall CopyBackward_{a}(SPair* first, SPair* last, SPair* dest, SRandomAccessIteratorTag)
+{{
+    long n = last - first;
+    if (n > 0) {{
+        do {{
+            *--dest = *--last;
+        }} while (--n != 0);
+    }}
+    return dest;
+}}
+''',T(a,'''struct P { float f; long s; }; struct Tg { char t; };
+static P* __fastcall CB(P* a, P* b, P* d, Tg) { long n = b - a; if (n > 0) { do { *--d = *--b; } while (--n != 0); } return d; }
+int main()
+{
+    P v[6]; for (int i = 0; i < 6; ++i) { v[i].f = (float)i; v[i].s = i * 10; } Tg t; P* r = CB(v, v + 4, v + 6, t);
+    if (r != v + 2 || v[5].s != 30 || v[2].s != 0 || v[4].f != 2.0f) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_35",):   # CCountedPointer<CTriangleList_X> __fastcall Create(owner, value, thing) { return CCountedPointer<...>(new CTriangleList_X(owner, value, thing)); }
+        if len(calls)!=4 or retn!=8 or len(pushes)<2: continue
+        newer,thingctor,lastctor,newer2=calls
+        if newer!=newer2: continue
+        size=pushes[0]
+        leas=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==X86_REG_ESI]
+        if len(leas)!=2 or leas[0]!=8: continue
+        toff=leas[1]
+        dels=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[0].mem.disp==4 and i.operands[0].mem.base==X86_REG_EAX and i.operands[1].type==X86_OP_IMM]
+        if len(dels)!=1: continue
+        deleter=dels[0]
+        lm,ln,_=label(lastctor); lcls=ln.split("::")[0] if (lm,ln) in uniq and "::" in ln and ln.split("::")[0]==ln.split("::")[-1] and re.match(r"^C[A-Za-z0-9_]+$",ln.split("::")[0]) else f"CMember_{lastctor:08x}"
+        cls=f"CTriangleList_{a}"
+        add(a,"_unattributed",f"Create_{cls}",HDRF(a,f"CCountedPointer<{cls}> __fastcall Create(CThingOwner*, long, CThing*) -- new {cls} ({size:#x} bytes: owner's +0x40 copied to +4, CScriptThing @ 0x{thingctor:08X} at +8, owner at +0x14, value at +0x18, {lcls} @ 0x{lastctor:08X} at +{toff:#x}) wrapped in a counted pointer whose block (count 1, destroy @ 0x{deleter:08X}, object) is allocated inline",len(b))+f'''//
+// Retail bytes:  push ebx ; push esi ; push edi ; push {size:#x} ; mov ebx,edx ; mov edi,ecx ; call operator new ; mov esi,eax ; add esp,4 ; test esi,esi ; je Z ; mov eax,[ebx+40h] ; mov [esi+4],eax ; mov eax,[thing] ; push eax ; lea ecx,[esi+8] ; mov dword ptr [esi],offset base vtable ; call CScriptThing::CScriptThing ; lea ecx,[esi+{toff:#x}] ; mov dword ptr [esi],offset vtable ; mov [esi+14h],ebx ; call {lcls}::{lcls} ; mov ecx,[value] ; mov [esi+18h],ecx ; jmp C ; Z: xor esi,esi ; C: test esi,esi ; mov [edi],esi ; je N ; push 0Ch ; call operator new ; add esp,4 ; test eax,eax ; je F ; mov ecx,[edi] ; mov dword ptr [eax],1 ; mov dword ptr [eax+4],offset destroy ; mov [eax+8],ecx ; mov [edi+4],eax ; mov eax,edi ; pop edi ; pop esi ; pop ebx ; ret 8 ; F: xor eax,eax ; mov [edi+4],eax ; mov eax,edi ; pop ... ; ret 8 ; N: mov dword ptr [edi+4],0 ; mov eax,edi ; pop ... ; ret 8
+// Fastcall factory returning a counted pointer through the hidden result (ecx): the owner comes
+// in edx, the value and the thing on the stack. The object is `new`'d ({size:#x} bytes; the
+// constructor chain is inlined behind the null test): a non-polymorphic base copies the
+// owner's +0x40 dword to +4 (it sits under the vptr), the polymorphic base sets its vtable
+// and constructs the CScriptThing member at +8 (@ 0x{thingctor:08X}) from the thing, the class
+// sets its own vtable, stores the owner at +0x14, constructs the {lcls} member at
+// +{toff:#x} (@ 0x{lastctor:08X}) and assigns the value to +0x18 in its body. The counted
+// pointer stores the object and, when non-null, allocates its count block inline (`new`
+// without a throwing allocator: a null block leaves the field null) with count 1, the
+// type-erased destroy routine @ 0x{deleter:08X} and the object re-read from the member. The
+// manifest label (`CTriangleList::CTriangleList`) is propagated over the family; the class
+// is named by address and its unconstructed members are opaque. One of {len(members)}
+// bodies of this shape.
+struct CThing;
+struct CThingOwner {{ unsigned char _pad[0x40]; long m_40; }};
+
+struct CScriptThing {{
+    unsigned char _body[0xC];
+    CScriptThing(CThing* thing);           // 0x{thingctor:08X}
+}};
+
+struct {lcls} {{
+    long m_value;
+    {lcls}();                              // 0x{lastctor:08X}
+}};
+
+struct SCountBlock {{
+    long m_references;                     // +0
+    void (__fastcall* m_pfnDestroy)(void*);// +4
+    void* m_pObject;                       // +8
+    SCountBlock(void* object);
+}};
+
+void __fastcall CountedDestroy(void* object);   // 0x{deleter:08X}
+
+inline SCountBlock::SCountBlock(void* object)
+    : m_references(1), m_pfnDestroy(CountedDestroy), m_pObject(object)
+{{
+}}
+
+struct CActionData {{                       // non-polymorphic base: lands at +4 under the vptr
+    long m_owner40;
+    CActionData(CThingOwner* owner) : m_owner40(owner->m_40) {{ }}
+}};
+
+struct CActionBase : CActionData {{
+    virtual void v00();
+    CScriptThing m_thing;                  // +8
+    CActionBase(CThingOwner* owner, CThing* thing) : CActionData(owner), m_thing(thing) {{ }}
+}};
+
+struct {cls} : CActionBase {{
+    CThingOwner* m_owner;                  // +0x14
+    long m_18;                             // +0x18
+{"    unsigned char _gap[%#x];" % (toff-0x1c) + chr(10) if toff>0x1c else ""}    {lcls} m_{toff:02x};                        // +{toff:#x}
+{"    unsigned char _tail[%#x];" % (size-toff-4) + chr(10) if size-toff-4>0 else ""}    virtual void v00();
+    {cls}(CThingOwner* owner, long value, CThing* thing)
+        : CActionBase(owner, thing), m_owner(owner)
+    {{
+        m_18 = value;
+    }}
+}};
+
+struct CCountedPointer {{
+    CActionBase* m_pObject;                // +0
+    SCountBlock* m_pCount;                 // +4
+    CCountedPointer(CActionBase* object)
+    {{
+        m_pObject = object;
+        if (object)
+            m_pCount = new SCountBlock(m_pObject);
+        else
+            m_pCount = 0;
+    }}
+}};
+
+CCountedPointer __fastcall Create_{cls}(CThingOwner* owner, long value, CThing* thing)
+{{
+    return CCountedPointer(new {cls}(owner, value, thing));
+}}
+''',T(a,'''static int g_d = 0; static void __fastcall Destroy(void*) { ++g_d; }
+struct Blk { long r; void (__fastcall* f)(void*); void* o; Blk(void* p) : r(1), f(Destroy), o(p) {} };
+struct Own { unsigned char p[0x40]; long v; }; struct Th { unsigned char b[0xC]; Th(void*) {} }; struct Tm { long t; Tm() : t(7) {} };
+struct Dat { long v; Dat(Own* o) : v(o->v) {} }; struct Bs : Dat { virtual void v00() {} Th th; Bs(Own* o, void* t) : Dat(o), th(t) {} };
+struct X : Bs { Own* ow; long v18; Tm tm; virtual void v00() {} X(Own* o, long v, void* t) : Bs(o, t), ow(o) { v18 = v; } };
+struct P { Bs* o; Blk* c; P(Bs* p) { o = p; if (p) c = new Blk(o); else c = 0; } };
+static P __fastcall Cr(Own* o, long v, void* t) { return P(new X(o, v, t)); }
+int main()
+{
+    Own o; o.v = 42; P p = Cr(&o, 5, &o); X* x = (X*)p.o;
+    if (!x || x->v != 42 || x->ow != &o || x->v18 != 5 || x->tm.t != 7 || !p.c || p.c->r != 1 || p.c->o != x || p.c->f != Destroy) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_6",):   # bool CDefClassBase::GetSubDef<T>(CDefPointer<T>& out): index lookup by a literal name through virtual slot 14, def fetched from the manager into a typed counted pointer, assigned to out
+        if len(calls)!=3 or retn!=4: continue
+        sctor,sdtor,getter=calls; fp=(b[:3]==b"\x55\x8b\xec")
+        litva=[p for p in pushes if p>0x1200000]
+        if len(litva)!=1: continue
+        s=lit(litva[0]); cs='"'+s.replace("\\","\\\\").replace('"','\\"')+'"'
+        vslots=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM]
+        if not vslots or vslots[0]!=0x38: continue
+        moffs=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==X86_REG_ESI and i.operands[1].mem.disp>0]
+        if moffs!=[0x1c]: continue
+        fname=re.sub(r"[^A-Za-z0-9_]","_",mname.split("::")[-1].split("<")[0]) or "GetSubDef"; fname=f"{fname}_{a}"
+        add(a,"CDefClassBase",fname,HDRF(a,f"CDefClassBase::GetSubDef<T>(CDefPointer<T>&) -- the sub-def index for {s!r} through virtual slot 14 (a temporary CCharString), the def fetched from the manager at +0x1C (GetPDefFromGlobalIndex @ 0x{getter:08X}) into a typed counted pointer (converting copy, the manager's temporary released), assigned to the out pointer; false when the name has no index{'; frame-pointer size TU' if fp else ''}",len(b))+f'''//
+// Retail bytes:  {"push ebp ; mov ebp,esp ; " if fp else ""}push ecx ; push esi ; push edi ; push -1 ; mov esi,ecx ; push offset {s!r} ; lea ecx,[name] ; call CCharString::CCharString ; mov eax,[esi] ; lea ecx,[name] ; push ecx ; mov ecx,esi ; call [eax+38h] ; lea ecx,[name] ; mov edi,eax ; call CCharString::~CCharString ; test edi,edi ; je F ; {"push dword ptr [edi] ; mov ecx,[esi+1Ch] ; lea eax,[temp] ; push eax" if fp else "mov edx,[edi] ; mov ecx,[esi+1Ch] ; push edx ; lea eax,[temp] ; push eax"} ; call GetPDefFromGlobalIndex ; mov esi,[eax] ; test esi,esi ; je C ; inc dword ptr [esi+4] ; C: mov eax,[temp] ; test eax,eax ; je A ; {"mov ecx,eax ; add eax,4 ; dec dword ptr [eax] ; cmp dword ptr [eax],0 ; jne N ; mov eax,[ecx] ; call [eax+4] ; N: and dword ptr [temp],0" if fp else "mov edi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edi ; mov edx,edi ; test edx,edx ; mov [eax],edi ; jne N ; mov edx,[ecx] ; call [edx+4] ; N: mov dword ptr [temp],0"} ; A: mov edi,[out] ; mov ecx,[edi] ; cmp ecx,esi ; je K ; test ecx,ecx ; je B ; dec dword ptr [ecx+4] ; jne Z ; mov eax,[ecx] ; call [eax+4] ; Z: {"and dword ptr [edi],0" if fp else "mov dword ptr [edi],0"} ; B: test esi,esi ; mov [edi],esi ; je R ; inc dword ptr [esi+4] ; K: test esi,esi ; je R ; dec dword ptr [esi+4] ; jne R ; mov e?x,[esi] ; mov ecx,esi ; call [e?x+4] ; R: {"mov al,1 ; jmp X ; F: xor al,al ; X: pop edi ; pop esi ; leave ; ret 4" if fp else "pop edi ; mov al,1 ; pop esi ; pop ecx ; ret 4 ; F: pop edi ; xor al,al ; pop esi ; pop ecx ; ret 4"}
+// Typed sub-definition lookup: a block-scoped CCharString named {s!r} (constructed with the
+// explicit -1 length, destroyed at the end of its block, right after the virtual lookup) is
+// passed to the virtual GetSubDefIndex (slot 14), which returns a pointer to the global index
+// or null (the false path sits at the end: the success branch is the `if` body). The manager
+// at +0x1C returns its CDefPointer<CDefBase> through the hidden pointer -- homed in the dead
+// string slot -- and the typed CDefPointer<T> is converting-copied from it (addref; no copy
+// elision across the two types), then the manager's temporary is destroyed: its destructor
+// releases through the ref-count base's two inline accessors (adjusted base pointer
+// materialised once, stored value forwarded to the test{", re-read in the size TU" if fp else ""}) and nulls the
+// field (the store survives because code follows). `out = result` is the typed pointer's
+// inlined assignment (release the old def through CDefBase::Release, store, addref) and the
+// typed local's destructor releases through Release (`dec [esi+4] ; jne`, the null store
+// elided for the register-held field).{" Frame pointer and size optimisation from the TU's pragmas." if fp else ""} The manifest label names one instantiation;
+// T is opaque. One of {len(members)} bodies of this shape.
+{"#pragma optimize(" + chr(34) + "y" + chr(34) + ", off)" + chr(10) + "#pragma optimize(" + chr(34) + "s" + chr(34) + ", on)" + chr(10) + chr(10) if fp else ""}#include "fable_string.h"
+
+struct CRefCounted {{                       // second base: the count sits at +4 behind the vptr
+    long m_count;
+    void DecRef() {{ --m_count; }}
+    long GetRefCount() const {{ return m_count; }}
+}};
+
+struct CDefVirtual {{
+    virtual void v00();
+    virtual void Destroy();                // slot 1
+}};
+
+struct CDefBase : CDefVirtual, CRefCounted {{
+    void Release()                         // CDefPointer<T>: destructor and assignment
+    {{
+        if (--m_count == 0)
+            Destroy();
+    }}
+    void ReleaseTemporary()                // CDefPointer<CDefBase>: the manager's temporary
+    {{
+        DecRef();
+        if (GetRefCount() == 0)
+            Destroy();
+    }}
+}};
+
+struct CDefPointerBase {{                   // CDefPointer<CDefBase>: the manager's return type
+    CDefBase* m_p;
+    CDefPointerBase() {{ }}
+    {"__forceinline " if fp else ""}~CDefPointerBase(){"                      // forced: the size TU would call it out of line" if fp else ""}
+    {{
+        if (m_p) {{
+            m_p->ReleaseTemporary();
+            m_p = 0;
+        }}
+    }}
+}};
+
+struct CSubDef : CDefBase {{ }};              // T
+
+struct CDefPointer {{                       // CDefPointer<T>
+    CSubDef* m_p;
+    CDefPointer() {{ }}
+    CDefPointer(const CDefPointerBase& other) : m_p((CSubDef*)other.m_p) {{ if (m_p) ++m_p->m_count; }}
+    ~CDefPointer()
+    {{
+        if (m_p)
+            m_p->Release();
+    }}
+    {"__forceinline " if fp else ""}CDefPointer& operator=(const CDefPointer& other)
+    {{
+        if (m_p != other.m_p) {{
+            if (m_p) {{
+                m_p->Release();
+                m_p = 0;
+            }}
+            m_p = other.m_p;
+            if (m_p)
+                ++m_p->m_count;
+        }}
+        return *this;
+    }}
+}};
+
+struct CDefinitionManager {{
+    CDefPointerBase GetPDefFromGlobalIndex(long index);   // 0x{getter:08X} (hidden result pointer)
+}};
+
+struct CDefClassBase {{
+    virtual void v00();
+    virtual void v04();
+    virtual void v08();
+    virtual void v0c();
+    virtual void v10();
+    virtual void v14();
+    virtual void v18();
+    virtual void v1c();
+    virtual void v20();
+    virtual void v24();
+    virtual void v28();
+    virtual void v2c();
+    virtual void v30();
+    virtual void v34();
+    virtual long* GetSubDefIndex(const CCharString& name);   // slot 14 (+0x38)
+    unsigned char _pad[0x1c - 4];
+    CDefinitionManager* m_pManager;        // +0x1C
+    bool {fname}(CDefPointer& out);
+}};
+
+bool CDefClassBase::{fname}(CDefPointer& out)
+{{
+    long* pIndex;
+    {{
+        CCharString name({cs}, -1);
+        pIndex = GetSubDefIndex(name);
+    }}
+    if (pIndex) {{
+        CDefPointer result(m_pManager->GetPDefFromGlobalIndex(*pIndex));
+        out = result;
+        return true;
+    }}
+    return false;
+}}
+''',T(a,'''static int g_d = 0; struct R { long c; void Dec() { --c; } long G() const { return c; } }; struct V { virtual void a() {} virtual void X() { ++g_d; } };
+struct D : V, R { void Rel() { if (--c == 0) X(); } void RelT() { Dec(); if (G() == 0) X(); } };
+struct PB { D* p; PB() {} PB(D* q) : p(q) { if (p) ++p->c; } ~PB() { if (p) { p->RelT(); p = 0; } } };
+struct P { D* p; P() {} P(const PB& o) : p(o.p) { if (p) ++p->c; } ~P() { if (p) p->Rel(); } P& operator=(const P& o) { if (p != o.p) { if (p) { p->Rel(); p = 0; } p = o.p; if (p) ++p->c; } return *this; } };
+static D g_def; static long g_idx = 1; struct M { PB G(long k) { return PB(k == 1 ? &g_def : 0); } };
+struct S { char x[8]; S(const char*, long) {} ~S() {} };
+struct C { virtual long* I(const S&) { return g_idx > 0 ? &g_idx : 0; } M* m; bool GS(P& o) { long* pi; { S n("x", -1); pi = I(n); } if (pi) { P r(m->G(*pi)); o = r; return true; } return false; } };
+int main()
+{
+    g_def.c = 1; M m; C c; c.m = &m; P o; o.p = 0; if (!c.GS(o) || o.p != &g_def || g_def.c != 2) '''+FAIL(a)+'''
+    g_idx = 0; if (c.GS(o) || g_def.c != 2) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_69",):   # CVector::CVector(SIterator first, SIterator last) { Construct(first, last, SInputIteratorTag()); }  -- frame-pointer size TU, by-value iterator copies into reserved slots, tag by const reference homed in the high byte of the dead second slot
+        if len(calls)!=1 or retn!=8 or b[:3]!=b"\x55\x8b\xec": continue
+        helper=calls[0]
+        if not any(i.mnemonic=="lea" and "ebp + 0xf" in i.op_str for i in ins): continue
+        if sum(1 for i in ins if i.mnemonic=="mov" and i.op_str=="eax, esp")!=2: continue
+        nm=f"CVector_{a}"
+        add(a,"_unattributed",nm,HDRF(a,f"{nm}::{nm}(SIterator, SIterator) -- range constructor forwarding both by-value iterators and an input-iterator tag (by const reference, homed in the high byte of the dead second slot) to the __thiscall Construct @ 0x{helper:08X}; frame-pointer size TU",len(b))+f'''//
+// Retail bytes:  push ebp ; mov ebp,esp ; push esi ; lea eax,[ebp+0Fh] ; push eax ; push ecx ; mov esi,ecx ; mov ecx,[last] ; mov eax,esp ; mov [eax],ecx ; push ecx ; mov ecx,[first] ; mov eax,esp ; mov [eax],ecx ; mov ecx,esi ; call Construct ; mov eax,esi ; pop esi ; pop ebp ; ret 8
+// Range constructor of a vector-like container: the two 4-byte iterator classes (user copy
+// constructor) are copied into reserved argument slots (`push reg ; mov eax,esp ; mov [eax],value`)
+// right to left, the category tag is an empty temporary with a user constructor passed by
+// const reference and homed in the high byte of the now-dead `last` slot (`lea eax,[ebp+0Fh]`),
+// and the out-of-line Construct @ 0x{helper:08X} does the work; the constructor returns `this`.
+// Size optimisation keeps the `first` load next to its copy (the speed TU hoists it to the
+// prologue); the frame pointer comes from the TU's pragma. The manifest label is a mangled
+// template-argument fragment and is not used; the element type is opaque. One of {len(members)}
+// bodies of this shape.
+#pragma optimize("y", off)              // frame pointer kept in this TU
+#pragma optimize("s", on)
+
+struct SIterator {{                         // 4-byte iterator class with a user copy constructor
+    void* m_pNode;
+    SIterator(const SIterator& other) : m_pNode(other.m_pNode) {{ }}
+}};
+
+struct SInputIteratorTag {{ SInputIteratorTag() {{ }} }};   // user constructor: no zero-initialisation of the 1-byte temporary
+
+struct {nm} {{
+    void Construct(SIterator first, SIterator last, const SInputIteratorTag& tag);   // 0x{helper:08X}
+    {nm}(SIterator first, SIterator last);
+}};
+
+{nm}::{nm}(SIterator first, SIterator last)
+{{
+    Construct(first, last, SInputIteratorTag());
+}}
+''',T(a,'''struct It { void* p; It(const It& o) : p(o.p) {} It(void* x) : p(x) {} }; struct Tg { Tg() {} };
+static int g_n = 0; struct X { void C(It f, It l, const Tg&) { g_n = (int)((char*)l.p - (char*)f.p); } X(It f, It l) { C(f, l, Tg()); } };
+int main()
+{
+    char buf[8]; X x(It(buf), It(buf + 5)); if (g_n != 5) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_19",):   # void CDispatcher::Fire() { (m_pHandler->*m_pfnHandler)(CEvent(m_thing)); m_fired = true; }  -- event built by value in the argument slots, counted-pointer member copied with addref, call through a single-inheritance member function pointer
+        if len(calls)!=0 or retn!=0 or len(pushes)!=0: continue
+        if not any(i.mnemonic=="sub" and i.op_str=="esp, 0xc" for i in ins): continue
+        vts=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[1].type==X86_OP_IMM and i.operands[1].imm>0x1000000]
+        if len(vts)!=2: continue
+        ics=[i.operands[0].mem.disp for i in ins if i.mnemonic=="call" and i.operands[0].type==X86_OP_MEM]
+        if ics!=[0x34]: continue
+        if not any(i.mnemonic=="mov" and i.op_str=="byte ptr [esi + 5], 1" for i in ins): continue
+        offs=sorted(set(i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==X86_REG_ESI))
+        if offs!=[0x38,0x40,0x44]: continue
+        ev=f"CEvent_{a}"; cls=f"CDispatcher_{a}"
+        add(a,"_unattributed",f"Fire_{cls}",HDRF(a,f"{cls}::Fire() -- builds a {ev} (base vtable then its own, the counted pointer at +0x40 copied with addref) by value in the argument slots, calls the handler through the member function pointer at +0x34 on the target at +0x38, then sets the fired flag at +5",len(b))+f'''//
+// Retail bytes:  push esi ; sub esp,0Ch ; mov eax,esp ; mov dword ptr [eax],offset base vtable ; mov dword ptr [eax],offset vtable ; mov esi,ecx ; mov ecx,[esi+40h] ; mov [eax+4],ecx ; mov ecx,[esi+44h] ; test ecx,ecx ; mov [eax+8],ecx ; je S ; inc dword ptr [ecx] ; S: mov ecx,[esi+38h] ; call [esi+34h] ; mov byte ptr [esi+5],1 ; pop esi ; ret
+// Event dispatch: the 12-byte event (a polymorphic base whose inlined constructor stores the
+// base vtable, then the class's own; a counted pointer copied from the dispatcher's member at
+// +0x40 with its block's count at +0 bumped when present) is constructed directly in the
+// reserved argument slots and passed by value (the callee destroys it) through the
+// single-inheritance member function pointer at +0x34 on the handler object at +0x38; the
+// fired flag at +5 is set afterwards. Classes are named by address; the vtables are
+// relocations. One of {len(members)} bodies of this shape.
+struct SCountBlock {{
+    long m_references;                     // +0
+}};
+
+struct CCountedPointer {{
+    void* m_pObject;                       // +0
+    SCountBlock* m_pCount;                 // +4
+    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
+    {{
+        if (m_pCount)
+            ++m_pCount->m_references;
+    }}
+    ~CCountedPointer();
+}};
+
+struct CEventBase {{
+    virtual void v00();
+    CEventBase() {{ }}
+}};
+
+struct {ev} : CEventBase {{
+    CCountedPointer m_thing;               // +4
+    {ev}(const CCountedPointer& thing) : m_thing(thing) {{ }}
+}};
+
+struct CHandler {{                          // complete single-inheritance class: the member function pointer is one code address
+    virtual void v00();
+}};
+
+struct {cls} {{
+    unsigned char _pad0[5];
+    bool m_fired;                          // +5
+    unsigned char _pad1[0x34 - 6];
+    void (CHandler::*m_pfnHandler)({ev} event);   // +0x34
+    CHandler* m_pHandler;                  // +0x38
+    unsigned char _pad2[0x40 - 0x3c];
+    CCountedPointer m_thing;               // +0x40
+    void Fire_{cls}();
+}};
+
+void {cls}::Fire_{cls}()
+{{
+    (m_pHandler->*m_pfnHandler)({ev}(m_thing));
+    m_fired = true;
+}}
+''',T(a,'''static int g_h = 0, g_r = 0; struct Blk { long r; }; struct CP { void* o; Blk* c; CP(const CP& x) : o(x.o), c(x.c) { if (c) ++c->r; } CP(void* a, Blk* b) : o(a), c(b) {} ~CP() { if (c) --c->r; } };
+struct EB { virtual void v() {} EB() {} }; struct E : EB { CP t; E(const CP& x) : t(x) {} };
+struct H { virtual void v() {} void On(E e) { g_h = (e.t.c ? (int)e.t.c->r : -1); } };
+struct D { unsigned char p0[5]; bool f; unsigned char p1[0x34 - 6]; void (H::*fn)(E); H* h; unsigned char p2[4]; CP t; D(H* x, const CP& y) : h(x), fn(&H::On), t(y) { f = false; } void Fire() { (h->*fn)(E(t)); f = true; } };
+int main()
+{
+    Blk b; b.r = 1; H h; { CP cp(&b, &b); D d(&h, cp); d.Fire(); if (!d.f || g_h != 3 || b.r != 2) '''+FAIL(a)+'''
+    }
 '''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
