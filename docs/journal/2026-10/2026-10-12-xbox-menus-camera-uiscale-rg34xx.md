@@ -456,3 +456,21 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   `GetContextSensitiveItemGraphicIndex` 0x581FA4 from the PC drawer's own loop). Two wraps
   bound both lookups (`host_quick_access_item`, `host_csi_graphic`, 0 past the end) and the
   second logs the slot, count and id once per change.
+- **Black adult head (user report, v20; reproduced with the post-graduation save)**: the
+  hero's face is composed on a render target (CSurfaceCompositor, fixed-function, three
+  layers) and then copied into a DXT1 texture through `D3DXLoadSurfaceFromSurface`. The
+  GLES renderer's `Surface::LockRect` succeeded on every surface, handing back a zeroed CPU
+  buffer for a render target, so the copy read black (D3D9 refuses that lock, which is what
+  sends D3DX through `GetRenderTargetData`). The lock now reads 32-bit render targets back
+  from GL first. Found with `FABLE_GLES_DUMP_DRAWS=280-300`: the head is draw 297 of the
+  Guild frame, a skinned draw sampling a 256x256 DXT1 texture, and the composites captured
+  with `FABLE_GLES_DUMP_RT=all` were correct.
+- **D-pad (user report)**: with the Xbox scheme, actions 55 and 56 both sit on the four
+  directions; `CWorld::EAUseQuickAccessItem` (0x62ABA0) routes slots below the context count
+  to `UseContextSensitiveItem` (0x583A92, the dynamic ids at inventory+0x154) and the rest to
+  `UseQuickAccessItem` (0x5840A6, the fixed assignments at +0x148, pre-filled by the PC exe
+  with a potion and three expressions), and -2 charges OBJECT_GUILD_SEAL_1 (the PC's G key).
+  The wraps give the Xbox layout (up: `OpenQuickAccessMenu` 0x583BD5, down: the seal,
+  left/right: context items) and, with the right trigger held, the favourite slots (the
+  controller-help screen's "Access Favourites (D-pad)"). The quick-access menu opens with
+  "Items x N / Expressions x N" rows but no panel frame (open).

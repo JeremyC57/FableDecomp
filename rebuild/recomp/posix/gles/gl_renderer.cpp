@@ -804,6 +804,21 @@ HRESULT STDMETHODCALLTYPE Surface::LockRect(D3DLOCKED_RECT* out, const RECT* rec
     if (!out) return E_POINTER;
     if (level.locked) return D3DERR_INVALIDCALL;
     if (level.cpu.empty()) level.cpu.assign(levelBytes(format, level.width, level.height), 0);
+    // A render target's lock reads the GL contents back first: D3D9 refuses the lock, which
+    // makes D3DX copy through GetRenderTargetData, but here it succeeded on a zeroed buffer,
+    // so the hero's composed face copied into its DXT1 texture as black (the adult hero's
+    // head). Only the 32-bit colour formats are read back; the rest keep the CPU copy.
+    const bool renderTarget = (usage & D3DUSAGE_RENDERTARGET) || isBackBuffer;
+    if (renderTarget && !isMainDepth && (format == D3DFMT_A8R8G8B8 || format == D3DFMT_X8R8G8B8) && !(flags & D3DLOCK_DISCARD)) {
+        const GLuint f = dev->readFboFor(this);
+        glBindFramebuffer(GL_FRAMEBUFFER, f);
+        dev->boundFbo = f;
+        std::vector<uint8_t> px(static_cast<size_t>(level.width) * level.height * 4);
+        glReadPixels(0, 0, static_cast<GLsizei>(level.width), static_cast<GLsizei>(level.height), GL_RGBA, GL_UNSIGNED_BYTE, px.data());
+        for (size_t i = 0; i + 3 < px.size() && i + 3 < level.cpu.size(); i += 4) { level.cpu[i] = px[i + 2]; level.cpu[i + 1] = px[i + 1]; level.cpu[i + 2] = px[i]; level.cpu[i + 3] = px[i + 3]; }
+        static bool once;
+        if (!once) once = true, log("gles: a render target (%ux%u) was locked: read back from GL", level.width, level.height);
+    }
     const UINT pitch = levelPitch(format, level.width);
     level.locked = true;
     level.wholeLock = !rect;
