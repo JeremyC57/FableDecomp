@@ -494,12 +494,20 @@ extern "C" void host_ui_scale(Ctx* c) {
         // than 640 or taller than 480 is a PC layout and keeps the game's own scale.
         const uint32_t comp = c->esi;
         uint32_t root = comp;
-        for (int i = 0; i < 24 && root >= 0x10000 && root < kGuestLimit; ++i) { const uint32_t p = rd32(root + 0xC8); if (!p || p >= kGuestLimit) break; root = p; }
-        float w = 0, h = 0;
-        if (root >= 0x10000 && root < kGuestLimit) w = rdf32(root + 0xD4), h = rdf32(root + 0xD8);
+        float w = 0, h = 0;  // the largest box along the ancestor chain (the roots are sizeless containers)
+        std::string chain;
+        for (int i = 0; i < 24 && root >= 0x10000 && root < kGuestLimit; ++i) {
+            const float cw = rdf32(root + 0xD4), ch = rdf32(root + 0xD8);
+            if (cw > w) w = cw;
+            if (ch > h) h = ch;
+            if (i < 8) chain += " " + std::to_string(static_cast<int>(cw)) + "x" + std::to_string(static_cast<int>(ch)) + "/" + std::to_string(static_cast<int>(rd32(root + 0x150)));
+            const uint32_t p = rd32(root + 0xC8);
+            if (!p || p >= kGuestLimit) break;
+            root = p;
+        }
         const bool pcLayout = w > 660.0f || h > 500.0f;
         static std::set<uint32_t> seen;
-        if (seen.insert(root).second) HLOG(1, "ui: screen root 0x%08X size %.0fx%.0f def %d: %s layout", root, w, h, static_cast<int>(rd32(root + 0x150)), pcLayout ? "PC (no Xbox zoom)" : "Xbox");
+        if (seen.insert(root).second) HLOG(1, "ui: screen root 0x%08X largest %.0fx%.0f chain%s: %s layout", root, w, h, chain.c_str(), pcLayout ? "PC (no Xbox zoom)" : "Xbox");
         if (!pcLayout) {
             wrf32(out, rdf32(out) * 1.6f);
             wrf32(out + 4, rdf32(out + 4) * 1.6f);
