@@ -1,0 +1,46 @@
+// CPrimitiveBlock_00ac5740::DiscardDeviceIndependentResources() -- drop the device-independent data block (intrusive counted pointer at +0x34)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC5740, length 36 bytes.
+// Callees: virtual slot 1 (+0x04) of the pointee: CIVCountedPointeeBase::Destroy, called when the count hits zero.
+// Shape: CIVCountedPointer<T>::operator=(T*) with a null argument, inlined -- the Release() part
+// (`if (p) { if (--p->count == 0) p->Destroy(); p = 0; }`) followed by the unconditional store of the
+// new (null) value, which is why the null store appears twice. `this` rides in esi across the virtual call.
+// The manifest label (CAnimatedBlock::DiscardDeviceIndependentResources) is propagated from the +0x2c body
+// @ 0x00A8EE90; this body resets a counted pointer at +0x34, so it is a sibling N3DPrimitive block class
+// (not identified in the PDB layouts) -- modelled by its address.
+struct CIVCountedPointeeBase {
+    virtual void v0();
+    virtual void Destroy();                     // slot 1 (+0x04)
+    long m_refCount;                            // +0x04
+};
+
+template<class T> struct CIVCountedPointer {
+    T* m_pObject;
+    void Release()
+    {
+        T* p = m_pObject;
+        if (p) {
+            if (--p->m_refCount == 0)
+                p->Destroy();
+            m_pObject = 0;
+        }
+    }
+    CIVCountedPointer& operator=(T* object)
+    {
+        Release();
+        m_pObject = object;
+        return *this;
+    }
+};
+
+struct CDeviceIndependent : CIVCountedPointeeBase { };
+
+struct CPrimitiveBlock_00ac5740 {
+    unsigned char _pad[0x34];
+    CIVCountedPointer<CDeviceIndependent> Data;   // +0x34
+    void DiscardDeviceIndependentResources();
+};
+
+void CPrimitiveBlock_00ac5740::DiscardDeviceIndependentResources()
+{
+    Data = 0;
+}
