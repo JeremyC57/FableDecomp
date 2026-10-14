@@ -1999,6 +1999,8 @@ void Device::afterDraw() {
     if (!dumpFrameWanted()) return;
     const char* dir = getenv("FABLE_GLES_DUMP");
     if (!dir) return;
+    static const bool rtOnly = getenv("FABLE_GLES_DUMP_RT") != nullptr;  // only draws into off-screen render targets
+    if (rtOnly && (!renderTarget || renderTarget->isBackBuffer)) return;
     UINT w = pp.BackBufferWidth, h = pp.BackBufferHeight;
     if (renderTarget && !renderTarget->isBackBuffer) w = renderTarget->level.width, h = renderTarget->level.height;
     std::vector<unsigned char> buf(static_cast<size_t>(w) * h * 4);
