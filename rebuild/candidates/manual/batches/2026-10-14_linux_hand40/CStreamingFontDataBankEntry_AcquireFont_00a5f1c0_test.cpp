@@ -1,0 +1,19 @@
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+static int g_created = 0; static long g_a = 0, g_b = 0; static void* g_bank = 0; static void* g_reset = 0; static long g_count = 1;
+struct CStreamingFontBank { unsigned char _body[0x40]; CStreamingFontBank(long a, long b) { ++g_created; g_a = a; g_b = b; g_bank = this; } };
+struct CCountedPointer_00a5f1c0 { CStreamingFontBank* m_pObject; long* m_pCount;
+    CCountedPointer_00a5f1c0() { }
+    CCountedPointer_00a5f1c0(const CCountedPointer_00a5f1c0& o) : m_pObject(o.m_pObject), m_pCount(o.m_pCount) { if (m_pCount) ++*m_pCount; }
+    void Reset(CStreamingFontBank* o) { g_reset = o; m_pObject = o; m_pCount = &g_count; } };
+struct CStreamingFontDataBankEntry { virtual void v00() { } CCountedPointer_00a5f1c0 m_font; long m_c; long m_b;
+    static CStreamingFontBank* CreateBank(long a, long b) { return new CStreamingFontBank(a, b); }
+    CCountedPointer_00a5f1c0 AcquireFont() { if (!m_font.m_pObject) m_font.Reset(CreateBank(m_c, m_b)); return m_font; } };
+int main() {
+    CStreamingFontDataBankEntry e; e.m_font.m_pObject = 0; e.m_font.m_pCount = 0; e.m_c = 5; e.m_b = 6; long count = 1;
+    { CCountedPointer_00a5f1c0 p = e.AcquireFont(); if (!g_bank || g_a != 5 || g_b != 6 || g_reset != g_bank || e.m_font.m_pObject != g_bank || p.m_pObject != g_bank || p.m_pCount != e.m_font.m_pCount || *p.m_pCount != 2) { std::printf("00a5f1c0_TEST FAIL\n"); return 1; } }
+    { CCountedPointer_00a5f1c0 p = e.AcquireFont(); if (g_created != 1 || *p.m_pCount != 3) { std::printf("00a5f1c0_TEST FAIL\n"); return 1; } }
+    e.m_font.m_pObject = (CStreamingFontBank*)1; e.m_font.m_pCount = &count; { CCountedPointer_00a5f1c0 p = e.AcquireFont(); if (g_created != 1 || count != 2 || p.m_pObject != (CStreamingFontBank*)1) { std::printf("00a5f1c0_TEST FAIL\n"); return 1; } }
+    std::printf("00a5f1c0_TEST PASS\n"); return 0;
+}

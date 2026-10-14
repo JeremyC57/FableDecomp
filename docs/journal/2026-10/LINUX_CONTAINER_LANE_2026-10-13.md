@@ -547,6 +547,22 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 7 (chunks 40, 41, 42)
+Chunk 41 (CGameCameraManager .. CGameScriptInterface) to the single sub-agent: 35/40 (`_hand41`; the scripted-control
+action constructors, CPSCSpline, CProcessedInput, CGameEvent::ReadData8 (a static `__fastcall` with an edx:eax return),
+CMap theme camera heights, timer deregistration over an STLport tree; retail CGameCameraManager is 0x18 bytes narrower
+than the PDB; parked: two constant-trip loops the DDK unrolls, a stack CDefPointer release, two load-order nits). Chunks 40
+(CFileInstaller .. CGameCameraManager: 34/40, `_hand40`; the file-installer locks and buffer erase, the def
+constructors with an intermediate novtable base, font bank entries / AcquireFont with the counted copy, CFontManager,
+CFrameData, CFrameRateSmoother::AddFrameTime, the camera-manager message and frustum test; parked: two CRT `__ehvec`
+SEH funclets, a loop register choice, a C3DVector return copy, a vector-first reload, a member-ctor schedule) and 42 (the
+CGameScriptInterface entry points, 34/40, `_hand42`: the IsValid/GetThing script-thing shape over the retail CThing
+bit-fields, the world-map/thing-manager/conversation forwarders, the player-mode switch table; parked: a `not cl` bool
+test, a register choice, two argument-load orders, the fade colour split, a tail jump) by the coordinator. Lander fix:
+`objdump -d -z` so switch tables keep their zero runs. Catalog 29,086 -> 29,120 -> 29,154 -> **29,189 (58.9%)**.
+Lessons in GOTCHAS wave 24j. Next: chunk 43 is cut (`$S/w22/chunk43.tsv`, CGameScriptInterface); `mkchunk.py 44 2`
+(pool ~3,080 rows).
+
 ### Wave 24, part 6 (chunks 38, 39)
 Chunk 38 (CEngineVSConstantLayoutLightsBones .. CEnvironment) to the single sub-agent: 38/40 (`_hand38`; CObjectAugmentationsDef and
 CEntitySoundDef-style def constructors, the libpk auto-map entry constructors, buffer-pair array destructors, a `__fastcall` delete

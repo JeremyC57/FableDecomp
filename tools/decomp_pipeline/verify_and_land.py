@@ -52,7 +52,7 @@ TEXTSEC_H = re.compile(r"^\s*\d+\s+\.text(?:\$\w+)?\s+")
 TEXTSEC_D = re.compile(r"^Disassembly of section \.text(?:\$\w+)?:")
 TEXTSEC_R = re.compile(r"^RELOCATION RECORDS FOR \[\.text(?:\$\w+)?\]:")
 def obj_text(path, leaf):
-    pr = subprocess.run([OBJDUMP,"-d",str(path)],capture_output=True,text=True,check=True)
+    pr = subprocess.run([OBJDUMP,"-d","-z",str(path)],capture_output=True,text=True,check=True)
     fns,sec,cur=[],-1,None
     for line in pr.stdout.splitlines():
         if TEXTSEC_D.match(line): sec+=1;cur=None;continue   # .text and .text$yc/.text$yd (dynamic initialisers + atexit thunks)
@@ -81,7 +81,7 @@ def funclet_extractor(offset, length, retail=None):
     oracle is `length` bytes at `offset` into that contribution). Returns the slice, its
     section, the label and the offset so parity_of can shift the relocation offsets."""
     def extract(path, leaf):
-        pr = subprocess.run([OBJDUMP,"-d",str(path)],capture_output=True,text=True,check=True)
+        pr = subprocess.run([OBJDUMP,"-d","-z",str(path)],capture_output=True,text=True,check=True)
         fns,sec,cur=[],-1,None
         for line in pr.stdout.splitlines():
             if TEXTSEC_D.match(line): sec+=1;cur=None;continue

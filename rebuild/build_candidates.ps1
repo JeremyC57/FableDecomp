@@ -205374,6 +205374,727 @@ $catalog = @(
         TestSource = '00/cb/CCodecState00cb1d00_CCodecState00cb1d00_00cb1d00_test.cpp'
         PassPattern = '00cb1d00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0048da62'
+        Module = 'CFontBank'
+        Source = '00/48/CFontBank_GetStringWidth_0048da62.cpp'
+        TestSource = '00/48/CFontBank_GetStringWidth_0048da62_test.cpp'
+        PassPattern = '0048da62_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049b9e0'
+        Module = 'CFrameRateSmoother'
+        Source = '00/49/CFrameRateSmoother_AddFrameTime_0049b9e0.cpp'
+        TestSource = '00/49/CFrameRateSmoother_AddFrameTime_0049b9e0_test.cpp'
+        PassPattern = '0049b9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aecf0'
+        Module = 'CFrameData_004aecf0'
+        Source = '00/4a/CFrameData004aecf0_CFrameData004aecf0_004aecf0.cpp'
+        TestSource = '00/4a/CFrameData004aecf0_CFrameData004aecf0_004aecf0_test.cpp'
+        PassPattern = '004aecf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d6638'
+        Module = 'CFireheartMinigameDef'
+        Source = '00/4d/CFireheartMinigameDef_CFireheartMinigameDef_004d6638.cpp'
+        TestSource = '00/4d/CFireheartMinigameDef_CFireheartMinigameDef_004d6638_test.cpp'
+        PassPattern = '004d6638_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e1722'
+        Module = 'CRumbleDef'
+        Source = '00/4e/CRumbleDef_CRumbleDef_004e1722.cpp'
+        TestSource = '00/4e/CRumbleDef_CRumbleDef_004e1722_test.cpp'
+        PassPattern = '004e1722_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e59e1'
+        Module = 'CFlammableDef'
+        Source = '00/4e/CFlammableDef_TransferHelper_004e59e1.cpp'
+        TestSource = '00/4e/CFlammableDef_TransferHelper_004e59e1_test.cpp'
+        PassPattern = '004e59e1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692120'
+        Module = 'NCreatureAction::CActionEventTriggerParticle'
+        Source = '00/69/NCreatureActionCActionEventTriggerParticle_CActionEventTriggerParticle_00692120.cpp'
+        TestSource = '00/69/NCreatureActionCActionEventTriggerParticle_CActionEventTriggerParticle_00692120_test.cpp'
+        PassPattern = '00692120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692270'
+        Module = 'NCreatureAction::CActionEventAddObject'
+        Source = '00/69/NCreatureActionCActionEventAddObject_CActionEventAddObject_00692270.cpp'
+        TestSource = '00/69/NCreatureActionCActionEventAddObject_CActionEventAddObject_00692270_test.cpp'
+        PassPattern = '00692270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00697860'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_TellEngineThatCameraHasMoved_00697860.cpp'
+        TestSource = '00/69/CGameCameraManager_TellEngineThatCameraHasMoved_00697860_test.cpp'
+        PassPattern = '00697860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00697f50'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_IsPosInViewingFrustrum_00697f50.cpp'
+        TestSource = '00/69/CGameCameraManager_IsPosInViewingFrustrum_00697f50_test.cpp'
+        PassPattern = '00697f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b64d0'
+        Module = '_global'
+        Source = '00/8b/global_AllocCCombatSequenceWillPhysicalShieldNonMelee_008b64d0.cpp'
+        TestSource = '00/8b/global_AllocCCombatSequenceWillPhysicalShieldNonMelee_008b64d0_test.cpp'
+        PassPattern = '008b64d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c3330'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_FreeBuffer_009c3330.cpp'
+        TestSource = '00/9c/CFileInstaller_FreeBuffer_009c3330_test.cpp'
+        PassPattern = '009c3330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c42f0'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_ProcessFileReadCompletion_009c42f0.cpp'
+        TestSource = '00/9c/CFileInstaller_ProcessFileReadCompletion_009c42f0_test.cpp'
+        PassPattern = '009c42f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c5650'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_SetBuffers_009c5650.cpp'
+        TestSource = '00/9c/CFileInstaller_SetBuffers_009c5650_test.cpp'
+        PassPattern = '009c5650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c7150'
+        Module = 'std::vector<CFileInstaller::CBufferChunk>'
+        Source = '00/9c/stdvectorCFileInstallerCBufferChunk_erase_009c7150.cpp'
+        TestSource = '00/9c/stdvectorCFileInstallerCBufferChunk_erase_009c7150_test.cpp'
+        PassPattern = '009c7150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2b40'
+        Module = 'CFontManager'
+        Source = '00/9e/CFontManager_ReleaseFont_009e2b40.cpp'
+        TestSource = '00/9e/CFontManager_ReleaseFont_009e2b40_test.cpp'
+        PassPattern = '009e2b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd830'
+        Module = 'CFrameData'
+        Source = '00/9f/CFrameData_GetUnloadableMemory_009fd830.cpp'
+        TestSource = '00/9f/CFrameData_GetUnloadableMemory_009fd830_test.cpp'
+        PassPattern = '009fd830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fdbe0'
+        Module = 'CFrameData'
+        Source = '00/9f/CFrameData_Sizeof_009fdbe0.cpp'
+        TestSource = '00/9f/CFrameData_Sizeof_009fdbe0_test.cpp'
+        PassPattern = '009fdbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ff860'
+        Module = 'CFrameData'
+        Source = '00/9f/CFrameData_OnResourceLoaded_009ff860.cpp'
+        TestSource = '00/9f/CFrameData_OnResourceLoaded_009ff860_test.cpp'
+        PassPattern = '009ff860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5f110'
+        Module = 'CStreamingFontDataBankEntry'
+        Source = '00/a5/CStreamingFontDataBankEntry_CStreamingFontDataBankEntry_00a5f110.cpp'
+        TestSource = '00/a5/CStreamingFontDataBankEntry_CStreamingFontDataBankEntry_00a5f110_test.cpp'
+        PassPattern = '00a5f110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5f1c0'
+        Module = 'CStreamingFontDataBankEntry'
+        Source = '00/a5/CStreamingFontDataBankEntry_AcquireFont_00a5f1c0.cpp'
+        TestSource = '00/a5/CStreamingFontDataBankEntry_AcquireFont_00a5f1c0_test.cpp'
+        PassPattern = '00a5f1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a63440'
+        Module = 'CFontDataBankEntry'
+        Source = '00/a6/CFontDataBankEntry_CFontDataBankEntry_00a63440.cpp'
+        TestSource = '00/a6/CFontDataBankEntry_CFontDataBankEntry_00a63440_test.cpp'
+        PassPattern = '00a63440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a634f0'
+        Module = 'CFontDataBankEntry'
+        Source = '00/a6/CFontDataBankEntry_AcquireFont_00a634f0.cpp'
+        TestSource = '00/a6/CFontDataBankEntry_AcquireFont_00a634f0_test.cpp'
+        PassPattern = '00a634f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a63ad0'
+        Module = 'CFontDataBank'
+        Source = '00/a6/CFontDataBank_GetLastModifiedTime_00a63ad0.cpp'
+        TestSource = '00/a6/CFontDataBank_GetLastModifiedTime_00a63ad0_test.cpp'
+        PassPattern = '00a63ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a69980'
+        Module = 'CManagedTextureData'
+        Source = '00/a6/CManagedTextureData_CManagedTextureData_00a69980.cpp'
+        TestSource = '00/a6/CManagedTextureData_CManagedTextureData_00a69980_test.cpp'
+        PassPattern = '00a69980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d1e0'
+        Module = 'CFontBankStateBlock'
+        Source = '00/c2/CFontBankStateBlock_CreateCRC_00c2d1e0.cpp'
+        TestSource = '00/c2/CFontBankStateBlock_CreateCRC_00c2d1e0_test.cpp'
+        PassPattern = '00c2d1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c457e0'
+        Module = 'CFractal'
+        Source = '00/c4/CFractal_NewFractalData_00c457e0.cpp'
+        TestSource = '00/c4/CFractal_NewFractalData_00c457e0_test.cpp'
+        PassPattern = '00c457e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5d550'
+        Module = 'CFireEffectCreationSet'
+        Source = '00/c5/CFireEffectCreationSet_CFireEffectCreationSet_00c5d550.cpp'
+        TestSource = '00/c5/CFireEffectCreationSet_CFireEffectCreationSet_00c5d550_test.cpp'
+        PassPattern = '00c5d550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df2f40'
+        Module = 'CFireHeart'
+        Source = '00/df/CFireHeart_Init_00df2f40.cpp'
+        TestSource = '00/df/CFireHeart_Init_00df2f40_test.cpp'
+        PassPattern = '00df2f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e83840'
+        Module = 'CFisticuffsMember'
+        Source = '00/e8/CFisticuffsMember_OnPredicateFail_00e83840.cpp'
+        TestSource = '00/e8/CFisticuffsMember_OnPredicateFail_00e83840_test.cpp'
+        PassPattern = '00e83840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e83990'
+        Module = 'CFisticuffsMember'
+        Source = '00/e8/CFisticuffsMember_OnPredicateFail00e83990_00e83990.cpp'
+        TestSource = '00/e8/CFisticuffsMember_OnPredicateFail00e83990_00e83990_test.cpp'
+        PassPattern = '00e83990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f263d0'
+        Module = 'CFireheartMinigameDef_00f263d0'
+        Source = '00/f2/CFireheartMinigameDef00f263d0_CFireheartMinigameDef00f263d0_00f263d0.cpp'
+        TestSource = '00/f2/CFireheartMinigameDef00f263d0_CFireheartMinigameDef00f263d0_00f263d0_test.cpp'
+        PassPattern = '00f263d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f27650'
+        Module = 'CFireheartMinigameDef_00f27650'
+        Source = '00/f2/CFireheartMinigameDef00f27650_CFireheartMinigameDef00f27650_00f27650.cpp'
+        TestSource = '00/f2/CFireheartMinigameDef00f27650_CFireheartMinigameDef00f27650_00f27650_test.cpp'
+        PassPattern = '00f27650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f37520'
+        Module = 'CGPUScratchBufferTextureManager'
+        Source = '00/f3/CGPUScratchBufferTextureManager_CGPUScratchBufferTextureManager_00f37520.cpp'
+        TestSource = '00/f3/CGPUScratchBufferTextureManager_CGPUScratchBufferTextureManager_00f37520_test.cpp'
+        PassPattern = '00f37520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e030'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_OverrideAutomaticHouseLocking_0088e030.cpp'
+        TestSource = '00/88/CGameScriptInterface_OverrideAutomaticHouseLocking_0088e030_test.cpp'
+        PassPattern = '0088e030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e1c0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetMaxHealth_0088e1c0.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetMaxHealth_0088e1c0_test.cpp'
+        PassPattern = '0088e1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e220'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_IsEntityPickPocketable_0088e220.cpp'
+        TestSource = '00/88/CGameScriptInterface_IsEntityPickPocketable_0088e220_test.cpp'
+        PassPattern = '0088e220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e2a0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_IsLevelLoaded_0088e2a0.cpp'
+        TestSource = '00/88/CGameScriptInterface_IsLevelLoaded_0088e2a0_test.cpp'
+        PassPattern = '0088e2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e390'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_GetWanderingPopulationScriptDefNameInCurrentRegi_0088e390.cpp'
+        TestSource = '00/88/CGameScriptInterface_GetWanderingPopulationScriptDefNameInCurrentRegi_0088e390_test.cpp'
+        PassPattern = '0088e390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e3d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_MiniMapAllowRouteBetweenRegions_0088e3d0.cpp'
+        TestSource = '00/88/CGameScriptInterface_MiniMapAllowRouteBetweenRegions_0088e3d0_test.cpp'
+        PassPattern = '0088e3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e410'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsHiddenOnMiniMap_0088e410.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsHiddenOnMiniMap_0088e410_test.cpp'
+        PassPattern = '0088e410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e440'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetThingHasInformation_0088e440.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetThingHasInformation_0088e440_test.cpp'
+        PassPattern = '0088e440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e480'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_ClearThingHasInformation_0088e480.cpp'
+        TestSource = '00/88/CGameScriptInterface_ClearThingHasInformation_0088e480_test.cpp'
+        PassPattern = '0088e480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e5a0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetThingPersistent_0088e5a0.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetThingPersistent_0088e5a0_test.cpp'
+        PassPattern = '0088e5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e5f0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetShotAccuracyPercentage_0088e5f0.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetShotAccuracyPercentage_0088e5f0_test.cpp'
+        PassPattern = '0088e5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e750'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetMaxRunningSpeed_0088e750.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetMaxRunningSpeed_0088e750_test.cpp'
+        PassPattern = '0088e750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e7b0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetMaxWalkingSpeed_0088e7b0.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetMaxWalkingSpeed_0088e7b0_test.cpp'
+        PassPattern = '0088e7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e810'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntityResetMaxRunningSpeed_0088e810.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntityResetMaxRunningSpeed_0088e810_test.cpp'
+        PassPattern = '0088e810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e870'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntityResetMaxWalkingSpeed_0088e870.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntityResetMaxWalkingSpeed_0088e870_test.cpp'
+        PassPattern = '0088e870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e8d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsRemoveAllMovementBlockingModes_0088e8d0.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsRemoveAllMovementBlockingModes_0088e8d0_test.cpp'
+        PassPattern = '0088e8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e980'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_IsHeroControlledByPlayer_0088e980.cpp'
+        TestSource = '00/88/CGameScriptInterface_IsHeroControlledByPlayer_0088e980_test.cpp'
+        PassPattern = '0088e980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e9f0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsDrawable_0088e9f0.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsDrawable_0088e9f0_test.cpp'
+        PassPattern = '0088e9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ea20'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetCutsceneBehaviour_0088ea20.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetCutsceneBehaviour_0088ea20_test.cpp'
+        PassPattern = '0088ea20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ea50'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntityGetSex_0088ea50.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntityGetSex_0088ea50_test.cpp'
+        PassPattern = '0088ea50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ea90'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsRespondToHit_0088ea90.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsRespondToHit_0088ea90_test.cpp'
+        PassPattern = '0088ea90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ead0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsDamageable_0088ead0.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsDamageable_0088ead0_test.cpp'
+        PassPattern = '0088ead0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ec20'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsUseMovementInActions_0088ec20.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsUseMovementInActions_0088ec20_test.cpp'
+        PassPattern = '0088ec20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f480'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_ApplyScriptBrush_0088f480.cpp'
+        TestSource = '00/88/CGameScriptInterface_ApplyScriptBrush_0088f480_test.cpp'
+        PassPattern = '0088f480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f4d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntityEnableGravity_0088f4d0.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntityEnableGravity_0088f4d0_test.cpp'
+        PassPattern = '0088f4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f530'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntityBeginLoadingBasicAnimations_0088f530.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntityBeginLoadingBasicAnimations_0088f530_test.cpp'
+        PassPattern = '0088f530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f670'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetEntityAsFollowingHeroThroughTeleporters_0088f670.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetEntityAsFollowingHeroThroughTeleporters_0088f670_test.cpp'
+        PassPattern = '0088f670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fd00'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetInLimbo_0088fd00.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetInLimbo_0088fd00_test.cpp'
+        PassPattern = '0088fd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fd90'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetCreatureNotReload_0088fd90.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetCreatureNotReload_0088fd90_test.cpp'
+        PassPattern = '0088fd90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fe00'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_AddLogBookEntry_0088fe00.cpp'
+        TestSource = '00/88/CGameScriptInterface_AddLogBookEntry_0088fe00_test.cpp'
+        PassPattern = '0088fe00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ff80'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_ResetToDefaultThemeAllInternals_0088ff80.cpp'
+        TestSource = '00/88/CGameScriptInterface_ResetToDefaultThemeAllInternals_0088ff80_test.cpp'
+        PassPattern = '0088ff80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890550'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_IsRegionLoadedAndPreloaded_00890550.cpp'
+        TestSource = '00/89/CGameScriptInterface_IsRegionLoadedAndPreloaded_00890550_test.cpp'
+        PassPattern = '00890550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008906c0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_AddNewConversation_008906c0.cpp'
+        TestSource = '00/89/CGameScriptInterface_AddNewConversation_008906c0_test.cpp'
+        PassPattern = '008906c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890710'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_AddPersonToConversation_00890710.cpp'
+        TestSource = '00/89/CGameScriptInterface_AddPersonToConversation_00890710_test.cpp'
+        PassPattern = '00890710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00446110'
+        Module = 'CGamePlayerInterface'
+        Source = '00/44/CGamePlayerInterface_IsEventContextSensitiveItemButton_00446110.cpp'
+        TestSource = '00/44/CGamePlayerInterface_IsEventContextSensitiveItemButton_00446110_test.cpp'
+        PassPattern = '00446110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049bb60'
+        Module = 'CGameJoystickManager'
+        Source = '00/49/CGameJoystickManager_CGameJoystickManager_0049bb60.cpp'
+        TestSource = '00/49/CGameJoystickManager_CGameJoystickManager_0049bb60_test.cpp'
+        PassPattern = '0049bb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab210'
+        Module = 'CGameNavigatorManagerExternalInterface'
+        Source = '00/4a/CGameNavigatorManagerExternalInterface_Clone_004ab210.cpp'
+        TestSource = '00/4a/CGameNavigatorManagerExternalInterface_Clone_004ab210_test.cpp'
+        PassPattern = '004ab210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c600'
+        Module = 'CMouseCursor'
+        Source = '00/55/CMouseCursor_GetScaledSize_0055c600.cpp'
+        TestSource = '00/55/CMouseCursor_GetScaledSize_0055c600_test.cpp'
+        PassPattern = '0055c600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00628e80'
+        Module = 'CGameEvent'
+        Source = '00/62/CGameEvent_ReadData8_00628e80.cpp'
+        TestSource = '00/62/CGameEvent_ReadData8_00628e80_test.cpp'
+        PassPattern = '00628e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00698430'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_IsLineOfSightToPos_00698430.cpp'
+        TestSource = '00/69/CGameCameraManager_IsLineOfSightToPos_00698430_test.cpp'
+        PassPattern = '00698430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006987a0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_PushCameraMode_006987a0.cpp'
+        TestSource = '00/69/CGameCameraManager_PushCameraMode_006987a0_test.cpp'
+        PassPattern = '006987a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069a850'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_SetCameraManagerDef_0069a850.cpp'
+        TestSource = '00/69/CGameCameraManager_SetCameraManagerDef_0069a850_test.cpp'
+        PassPattern = '0069a850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069ac30'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_UpdateObservedThingInMelee_0069ac30.cpp'
+        TestSource = '00/69/CGameCameraManager_UpdateObservedThingInMelee_0069ac30_test.cpp'
+        PassPattern = '0069ac30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069b610'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_RemoveBuildingCameraMode_0069b610.cpp'
+        TestSource = '00/69/CGameCameraManager_RemoveBuildingCameraMode_0069b610_test.cpp'
+        PassPattern = '0069b610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069cef0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_GetCurrentModeIfProjectileWeapon_0069cef0.cpp'
+        TestSource = '00/69/CGameCameraManager_GetCurrentModeIfProjectileWeapon_0069cef0_test.cpp'
+        PassPattern = '0069cef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b7510'
+        Module = 'CGameMap'
+        Source = '00/6b/CGameMap_Clear_006b7510.cpp'
+        TestSource = '00/6b/CGameMap_Clear_006b7510_test.cpp'
+        PassPattern = '006b7510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e73b0'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_FreezeControls_006e73b0.cpp'
+        TestSource = '00/6e/CGameScriptInterface_FreezeControls_006e73b0_test.cpp'
+        PassPattern = '006e73b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e73e0'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_UnfreezeControls_006e73e0.cpp'
+        TestSource = '00/6e/CGameScriptInterface_UnfreezeControls_006e73e0_test.cpp'
+        PassPattern = '006e73e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00711fa0'
+        Module = 'CTCScriptedControl::CActionBase'
+        Source = '00/71/CTCScriptedControlCActionBase_CActionBase_00711fa0.cpp'
+        TestSource = '00/71/CTCScriptedControlCActionBase_CActionBase_00711fa0_test.cpp'
+        PassPattern = '00711fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d7b80'
+        Module = 'CTCTavernGame'
+        Source = '00/7d/CTCTavernGame_EndCutFade_007d7b80.cpp'
+        TestSource = '00/7d/CTCTavernGame_EndCutFade_007d7b80_test.cpp'
+        PassPattern = '007d7b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f81e0'
+        Module = 'CTCInterface'
+        Source = '00/7f/CTCInterface_EndCutFade_007f81e0.cpp'
+        TestSource = '00/7f/CTCInterface_EndCutFade_007f81e0_test.cpp'
+        PassPattern = '007f81e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008200b0'
+        Module = 'CMap'
+        Source = '00/82/CMap_GetThemeMinCameraHeightAtPosition_008200b0.cpp'
+        TestSource = '00/82/CMap_GetThemeMinCameraHeightAtPosition_008200b0_test.cpp'
+        PassPattern = '008200b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00820140'
+        Module = 'CMap'
+        Source = '00/82/CMap_GetThemeMaxCameraHeightAtPosition_00820140.cpp'
+        TestSource = '00/82/CMap_GetThemeMaxCameraHeightAtPosition_00820140_test.cpp'
+        PassPattern = '00820140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082fe00'
+        Module = 'CThingCreature'
+        Source = '00/82/CThingCreature_EndCutFade_0082fe00.cpp'
+        TestSource = '00/82/CThingCreature_EndCutFade_0082fe00_test.cpp'
+        PassPattern = '0082fe00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00855b50'
+        Module = 'CCreatureAction_BlockRespond'
+        Source = '00/85/CCreatureActionBlockRespond_CCreatureActionBlockRespond_00855b50.cpp'
+        TestSource = '00/85/CCreatureActionBlockRespond_CCreatureActionBlockRespond_00855b50_test.cpp'
+        PassPattern = '00855b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088de90'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsAllowedToFollowHero_0088de90.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsAllowedToFollowHero_0088de90_test.cpp'
+        PassPattern = '0088de90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ded0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsAllowedToChangeRegionFollowingState_0088ded0.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsAllowedToChangeRegionFollowingState_0088ded0_test.cpp'
+        PassPattern = '0088ded0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088df20'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EntitySetAsRespondingToFollowAndWaitExpressions_0088df20.cpp'
+        TestSource = '00/88/CGameScriptInterface_EntitySetAsRespondingToFollowAndWaitExpressions_0088df20_test.cpp'
+        PassPattern = '0088df20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088dfa0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_HeroStopDigging_0088dfa0.cpp'
+        TestSource = '00/88/CGameScriptInterface_HeroStopDigging_0088dfa0_test.cpp'
+        PassPattern = '0088dfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088dfd0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_OpenHouseDoors_0088dfd0.cpp'
+        TestSource = '00/88/CGameScriptInterface_OpenHouseDoors_0088dfd0_test.cpp'
+        PassPattern = '0088dfd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e000'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_CloseHouseDoors_0088e000.cpp'
+        TestSource = '00/88/CGameScriptInterface_CloseHouseDoors_0088e000_test.cpp'
+        PassPattern = '0088e000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00903660'
+        Module = 'NTCScriptedControl::CActionStopScripting'
+        Source = '00/90/NTCScriptedControlCActionStopScripting_CActionStopScripting_00903660.cpp'
+        TestSource = '00/90/NTCScriptedControlCActionStopScripting_CActionStopScripting_00903660_test.cpp'
+        PassPattern = '00903660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00905130'
+        Module = 'NTCScriptedControl::CActionWaitForThingToFinishPerformingTasks'
+        Source = '00/90/NTCScriptedControlCActionWaitForThingToFinishPerformingTasks_CActionWaitForThingToFinishPerformingTasks_00905130.cpp'
+        TestSource = '00/90/NTCScriptedControlCActionWaitForThingToFinishPerformingTasks_CActionWaitForThingToFinishPerformingTasks_00905130_test.cpp'
+        PassPattern = '00905130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f1a80'
+        Module = 'CGameEventPackageSet'
+        Source = '00/9f/CGameEventPackageSet_CGameEventPackageSet_009f1a80.cpp'
+        TestSource = '00/9f/CGameEventPackageSet_CGameEventPackageSet_009f1a80_test.cpp'
+        PassPattern = '009f1a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9ba10'
+        Module = 'C3DMeshFileLoader'
+        Source = '00/a9/C3DMeshFileLoader_CreatePhysicsFacesSegment_00a9ba10.cpp'
+        TestSource = '00/a9/C3DMeshFileLoader_CreatePhysicsFacesSegment_00a9ba10_test.cpp'
+        PassPattern = '00a9ba10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9ba40'
+        Module = 'C3DMeshFileLoader'
+        Source = '00/a9/C3DMeshFileLoader_CreatePhysicsFacesSegmentFromPhysicsChunks_00a9ba40.cpp'
+        TestSource = '00/a9/C3DMeshFileLoader_CreatePhysicsFacesSegmentFromPhysicsChunks_00a9ba40_test.cpp'
+        PassPattern = '00a9ba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1b350'
+        Module = 'NParticleEngine::CPSCSpline'
+        Source = '00/b1/NParticleEngineCPSCSpline_CPSCSpline_00b1b350.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCSpline_CPSCSpline_00b1b350_test.cpp'
+        PassPattern = '00b1b350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77440'
+        Module = 'CVtable_012bf0c8'
+        Source = '00/c7/CVtable012bf0c8_CVtable012bf0c8_00c77440.cpp'
+        TestSource = '00/c7/CVtable012bf0c8_CVtable012bf0c8_00c77440_test.cpp'
+        PassPattern = '00c77440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed43d0'
+        Module = 'CV_StatueMasterScript'
+        Source = '00/ed/CVStatueMasterScript_GetTimeOfDayFraction_00ed43d0.cpp'
+        TestSource = '00/ed/CVStatueMasterScript_GetTimeOfDayFraction_00ed43d0_test.cpp'
+        PassPattern = '00ed43d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
