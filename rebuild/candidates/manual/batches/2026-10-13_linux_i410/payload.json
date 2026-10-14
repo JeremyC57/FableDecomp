@@ -1,0 +1,46 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00630dd0",
+    "module": "_global",
+    "name": "Destroy_00630dd0",
+    "source_cpp": "// _Destroy_range<T*> -- run the virtual destructor (deleting flag 0) over [first, last) (124-byte elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00630DD0, oracle length 34 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; push edi ; mov edi,edx ; mov esi,ecx ; cmp esi,edi ; je R ; (pad) ; L: mov eax,[esi] ; push 0 ; mov ecx,esi ; call [eax] ; add esi,0x7c ; cmp esi,edi ; jne L ; R: pop edi ; pop esi ; ret\n// Dinkumware `_Destroy_range` over 124-byte elements: each element's virtual destructor is called through slot 0 with the deleting flag 0. Fastcall: first in ecx, last in edx. The manifest label is\n// propagated; the element type is opaque. One of 5 bodies of this shape.\nstruct CElement {\n    virtual ~CElement();                   // slot 0: the scalar deleting destructor (flag 0: no delete)\n    unsigned char _body[0x7c - 4];\n};\n\nvoid __fastcall Destroy_00630dd0(CElement* first, CElement* last)\n{\n    for (; first != last; ++first)\n        first->~CElement();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_d = 0; struct C { virtual ~C() { ++g_d; } unsigned char b[120]; };\nstatic void __fastcall F(C* f, C* l) { for (; f != l; ++f) f->~C(); }\nint main()\n{\n    { C buf[2]; F(buf, buf + 2); if (g_d != 2) { std::printf(\"00630dd0_TEST FAIL\\n\"); return 1; }\n    }\n\n    std::printf(\"00630dd0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00630dd0_TEST PASS"
+   },
+   {
+    "address": "0067b7b0",
+    "module": "_global",
+    "name": "Destroy_0067b7b0",
+    "source_cpp": "// _Destroy_range<T*> -- run the virtual destructor (deleting flag 0) over [first, last) (72-byte elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0067B7B0, oracle length 34 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; push edi ; mov edi,edx ; mov esi,ecx ; cmp esi,edi ; je R ; (pad) ; L: mov eax,[esi] ; push 0 ; mov ecx,esi ; call [eax] ; add esi,0x48 ; cmp esi,edi ; jne L ; R: pop edi ; pop esi ; ret\n// Dinkumware `_Destroy_range` over 72-byte elements: each element's virtual destructor is called through slot 0 with the deleting flag 0. Fastcall: first in ecx, last in edx. The manifest label is\n// propagated; the element type is opaque. One of 5 bodies of this shape.\nstruct CElement {\n    virtual ~CElement();                   // slot 0: the scalar deleting destructor (flag 0: no delete)\n    unsigned char _body[0x48 - 4];\n};\n\nvoid __fastcall Destroy_0067b7b0(CElement* first, CElement* last)\n{\n    for (; first != last; ++first)\n        first->~CElement();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_d = 0; struct C { virtual ~C() { ++g_d; } unsigned char b[68]; };\nstatic void __fastcall F(C* f, C* l) { for (; f != l; ++f) f->~C(); }\nint main()\n{\n    { C buf[2]; F(buf, buf + 2); if (g_d != 2) { std::printf(\"0067b7b0_TEST FAIL\\n\"); return 1; }\n    }\n\n    std::printf(\"0067b7b0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0067b7b0_TEST PASS"
+   },
+   {
+    "address": "00cdb790",
+    "module": "_global",
+    "name": "Destroy_00cdb790",
+    "source_cpp": "// _Destroy_range<T*> -- run the virtual destructor (deleting flag 0) over [first, last) (92-byte elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CDB790, oracle length 34 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; push edi ; mov edi,edx ; mov esi,ecx ; cmp esi,edi ; je R ; (pad) ; L: mov eax,[esi] ; push 0 ; mov ecx,esi ; call [eax] ; add esi,0x5c ; cmp esi,edi ; jne L ; R: pop edi ; pop esi ; ret\n// Dinkumware `_Destroy_range` over 92-byte elements: each element's virtual destructor is called through slot 0 with the deleting flag 0. Fastcall: first in ecx, last in edx. The manifest label is\n// propagated; the element type is opaque. One of 5 bodies of this shape.\nstruct CElement {\n    virtual ~CElement();                   // slot 0: the scalar deleting destructor (flag 0: no delete)\n    unsigned char _body[0x5c - 4];\n};\n\nvoid __fastcall Destroy_00cdb790(CElement* first, CElement* last)\n{\n    for (; first != last; ++first)\n        first->~CElement();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_d = 0; struct C { virtual ~C() { ++g_d; } unsigned char b[88]; };\nstatic void __fastcall F(C* f, C* l) { for (; f != l; ++f) f->~C(); }\nint main()\n{\n    { C buf[2]; F(buf, buf + 2); if (g_d != 2) { std::printf(\"00cdb790_TEST FAIL\\n\"); return 1; }\n    }\n\n    std::printf(\"00cdb790_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00cdb790_TEST PASS"
+   },
+   {
+    "address": "00cdb7c0",
+    "module": "_global",
+    "name": "Destroy_00cdb7c0",
+    "source_cpp": "// _Destroy_range<T*> -- run the virtual destructor (deleting flag 0) over [first, last) (52-byte elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CDB7C0, oracle length 34 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; push edi ; mov edi,edx ; mov esi,ecx ; cmp esi,edi ; je R ; (pad) ; L: mov eax,[esi] ; push 0 ; mov ecx,esi ; call [eax] ; add esi,0x34 ; cmp esi,edi ; jne L ; R: pop edi ; pop esi ; ret\n// Dinkumware `_Destroy_range` over 52-byte elements: each element's virtual destructor is called through slot 0 with the deleting flag 0. Fastcall: first in ecx, last in edx. The manifest label is\n// propagated; the element type is opaque. One of 5 bodies of this shape.\nstruct CElement {\n    virtual ~CElement();                   // slot 0: the scalar deleting destructor (flag 0: no delete)\n    unsigned char _body[0x34 - 4];\n};\n\nvoid __fastcall Destroy_00cdb7c0(CElement* first, CElement* last)\n{\n    for (; first != last; ++first)\n        first->~CElement();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_d = 0; struct C { virtual ~C() { ++g_d; } unsigned char b[48]; };\nstatic void __fastcall F(C* f, C* l) { for (; f != l; ++f) f->~C(); }\nint main()\n{\n    { C buf[2]; F(buf, buf + 2); if (g_d != 2) { std::printf(\"00cdb7c0_TEST FAIL\\n\"); return 1; }\n    }\n\n    std::printf(\"00cdb7c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00cdb7c0_TEST PASS"
+   },
+   {
+    "address": "00cdb7f0",
+    "module": "_global",
+    "name": "Destroy_00cdb7f0",
+    "source_cpp": "// _Destroy_range<T*> -- run the virtual destructor (deleting flag 0) over [first, last) (56-byte elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CDB7F0, oracle length 34 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; push edi ; mov edi,edx ; mov esi,ecx ; cmp esi,edi ; je R ; (pad) ; L: mov eax,[esi] ; push 0 ; mov ecx,esi ; call [eax] ; add esi,0x38 ; cmp esi,edi ; jne L ; R: pop edi ; pop esi ; ret\n// Dinkumware `_Destroy_range` over 56-byte elements: each element's virtual destructor is called through slot 0 with the deleting flag 0. Fastcall: first in ecx, last in edx. The manifest label is\n// propagated; the element type is opaque. One of 5 bodies of this shape.\nstruct CElement {\n    virtual ~CElement();                   // slot 0: the scalar deleting destructor (flag 0: no delete)\n    unsigned char _body[0x38 - 4];\n};\n\nvoid __fastcall Destroy_00cdb7f0(CElement* first, CElement* last)\n{\n    for (; first != last; ++first)\n        first->~CElement();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_d = 0; struct C { virtual ~C() { ++g_d; } unsigned char b[52]; };\nstatic void __fastcall F(C* f, C* l) { for (; f != l; ++f) f->~C(); }\nint main()\n{\n    { C buf[2]; F(buf, buf + 2); if (g_d != 2) { std::printf(\"00cdb7f0_TEST FAIL\\n\"); return 1; }\n    }\n\n    std::printf(\"00cdb7f0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00cdb7f0_TEST PASS"
+   }
+  ]
+ }
+}

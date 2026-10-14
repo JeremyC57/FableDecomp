@@ -1,0 +1,54 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "0075b430",
+    "module": "_global",
+    "name": "Fill_0075b430",
+    "source_cpp": "// fill<T*, T> -- assign value over [first, last) (12-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0075B430, oracle length 49 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 12 bytes [eax] -> [ecx]> ; add ecx,0xc ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4\n// `std::fill` over a 12-byte POD element: the value reference is loaded once and assigned to every\n// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the\n// stack. The manifest label is propagated; the element type is modelled by size. One of\n// 6 bodies of this shape.\nstruct SElement { unsigned char _body[0xc]; };\n\nvoid __fastcall Fill_0075b430(SElement* first, SElement* last, const SElement& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[12]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E v; v.b[0] = 7; v.b[11] = 9; E buf[3]; F(buf, buf + 3, v); if (buf[2].b[0] != 7 || buf[1].b[11] != 9) { std::printf(\"0075b430_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0075b430_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0075b430_TEST PASS"
+   },
+   {
+    "address": "008192b0",
+    "module": "_global",
+    "name": "Fill_008192b0",
+    "source_cpp": "// fill<T*, T> -- assign value over [first, last) (12-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008192B0, oracle length 49 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 12 bytes [eax] -> [ecx]> ; add ecx,0xc ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4\n// `std::fill` over a 12-byte POD element: the value reference is loaded once and assigned to every\n// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the\n// stack. The manifest label is propagated; the element type is modelled by size. One of\n// 6 bodies of this shape.\nstruct SElement { unsigned char _body[0xc]; };\n\nvoid __fastcall Fill_008192b0(SElement* first, SElement* last, const SElement& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[12]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E v; v.b[0] = 7; v.b[11] = 9; E buf[3]; F(buf, buf + 3, v); if (buf[2].b[0] != 7 || buf[1].b[11] != 9) { std::printf(\"008192b0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008192b0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008192b0_TEST PASS"
+   },
+   {
+    "address": "0086a4f0",
+    "module": "_global",
+    "name": "Fill_0086a4f0",
+    "source_cpp": "// fill<T*, T> -- assign value over [first, last) (12-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0086A4F0, oracle length 49 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 12 bytes [eax] -> [ecx]> ; add ecx,0xc ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4\n// `std::fill` over a 12-byte POD element: the value reference is loaded once and assigned to every\n// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the\n// stack. The manifest label is propagated; the element type is modelled by size. One of\n// 6 bodies of this shape.\nstruct SElement { unsigned char _body[0xc]; };\n\nvoid __fastcall Fill_0086a4f0(SElement* first, SElement* last, const SElement& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[12]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E v; v.b[0] = 7; v.b[11] = 9; E buf[3]; F(buf, buf + 3, v); if (buf[2].b[0] != 7 || buf[1].b[11] != 9) { std::printf(\"0086a4f0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0086a4f0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0086a4f0_TEST PASS"
+   },
+   {
+    "address": "0086ef60",
+    "module": "_global",
+    "name": "Fill_0086ef60",
+    "source_cpp": "// fill<T*, T> -- assign value over [first, last) (12-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0086EF60, oracle length 49 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 12 bytes [eax] -> [ecx]> ; add ecx,0xc ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4\n// `std::fill` over a 12-byte POD element: the value reference is loaded once and assigned to every\n// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the\n// stack. The manifest label is propagated; the element type is modelled by size. One of\n// 6 bodies of this shape.\nstruct SElement { unsigned char _body[0xc]; };\n\nvoid __fastcall Fill_0086ef60(SElement* first, SElement* last, const SElement& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[12]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E v; v.b[0] = 7; v.b[11] = 9; E buf[3]; F(buf, buf + 3, v); if (buf[2].b[0] != 7 || buf[1].b[11] != 9) { std::printf(\"0086ef60_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0086ef60_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0086ef60_TEST PASS"
+   },
+   {
+    "address": "00885d90",
+    "module": "_global",
+    "name": "Fill_00885d90",
+    "source_cpp": "// fill<T*, T> -- assign value over [first, last) (12-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00885D90, oracle length 49 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 12 bytes [eax] -> [ecx]> ; add ecx,0xc ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4\n// `std::fill` over a 12-byte POD element: the value reference is loaded once and assigned to every\n// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the\n// stack. The manifest label is propagated; the element type is modelled by size. One of\n// 6 bodies of this shape.\nstruct SElement { unsigned char _body[0xc]; };\n\nvoid __fastcall Fill_00885d90(SElement* first, SElement* last, const SElement& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[12]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E v; v.b[0] = 7; v.b[11] = 9; E buf[3]; F(buf, buf + 3, v); if (buf[2].b[0] != 7 || buf[1].b[11] != 9) { std::printf(\"00885d90_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00885d90_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00885d90_TEST PASS"
+   },
+   {
+    "address": "008f6580",
+    "module": "_global",
+    "name": "Fill_008f6580",
+    "source_cpp": "// fill<T*, T> -- assign value over [first, last) (12-byte POD elements)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008F6580, oracle length 49 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy 12 bytes [eax] -> [ecx]> ; add ecx,0xc ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4\n// `std::fill` over a 12-byte POD element: the value reference is loaded once and assigned to every\n// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the\n// stack. The manifest label is propagated; the element type is modelled by size. One of\n// 6 bodies of this shape.\nstruct SElement { unsigned char _body[0xc]; };\n\nvoid __fastcall Fill_008f6580(SElement* first, SElement* last, const SElement& value)\n{\n    for (; first != last; ++first)\n        *first = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct E { unsigned char b[12]; };\nstatic void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }\nint main()\n{\n    E v; v.b[0] = 7; v.b[11] = 9; E buf[3]; F(buf, buf + 3, v); if (buf[2].b[0] != 7 || buf[1].b[11] != 9) { std::printf(\"008f6580_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008f6580_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008f6580_TEST PASS"
+   }
+  ]
+ }
+}
