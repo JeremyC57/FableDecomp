@@ -488,8 +488,22 @@ extern "C" void host_ui_scale(Ctx* c) {
     bool zoom = false;
     for (size_t i = 0; i < (tier >= 2 ? 16u : tier == 1 ? 10u : 4u); ++i) zoom = zoom || ret == kSites[i];
     if (xboxMenus() && rd32(0x13B8790) && zoom) {
-        wrf32(out, rdf32(out) * 1.6f);
-        wrf32(out + 4, rdf32(out + 4) * 1.6f);
+        // The component is `this` of the caller (esi at every site). The PC screens the game
+        // still builds (the quest table, the quest start and completion screens) are laid out
+        // for 1024x768 and overflowed 720x480 with the 1.6: a screen whose root is wider
+        // than 640 or taller than 480 is a PC layout and keeps the game's own scale.
+        const uint32_t comp = c->esi;
+        uint32_t root = comp;
+        for (int i = 0; i < 24 && root >= 0x10000 && root < kGuestLimit; ++i) { const uint32_t p = rd32(root + 0xC8); if (!p || p >= kGuestLimit) break; root = p; }
+        float w = 0, h = 0;
+        if (root >= 0x10000 && root < kGuestLimit) w = rdf32(root + 0xD4), h = rdf32(root + 0xD8);
+        const bool pcLayout = w > 660.0f || h > 500.0f;
+        static std::set<uint32_t> seen;
+        if (seen.insert(root).second) HLOG(1, "ui: screen root 0x%08X size %.0fx%.0f def %d: %s layout", root, w, h, static_cast<int>(rd32(root + 0x150)), pcLayout ? "PC (no Xbox zoom)" : "Xbox");
+        if (!pcLayout) {
+            wrf32(out, rdf32(out) * 1.6f);
+            wrf32(out + 4, rdf32(out + 4) * 1.6f);
+        }
     }
 }
 
