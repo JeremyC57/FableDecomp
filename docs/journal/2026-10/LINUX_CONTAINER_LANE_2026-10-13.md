@@ -547,6 +547,27 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 8 (chunks 43, 44, 45, 46)
+Chunk 43 (the CGameScriptInterface script entry points) to the single sub-agent: 38/40 (`_hand43`; every component
+lookup matched with the landed OUT-PARAMETER `GetInterface(T** ppOut, long type)` template, which leaves the component in
+eax like retail; label corrections for the mini-map, guild-master message, bullet-time, opinion-source and trap bodies;
+parked: a `push esi` placement and the CDefPointer re-read). By the coordinator: chunk 44 (the same family with a
+pointer-returning `Find()` model: 9/40, `_hand44` -- the README records the eax-load gap that chunk 43 then resolved;
+the parked rows want re-authoring with the out-parameter form), chunk 45 (CGameScriptThing / CGameTimeManager
+neighbours: 18/40, `_hand45`; `pack(4)` for `__int64` after a vptr, inline setters, `static __stdcall`, `unsigned short`
+wide strings) and chunk 46 (CGameScriptThing .. CGroundNavigatorExternalInterface: 34/40, `_hand46`; the inline
+`data->~T(); operator delete(data)` chain of CGraphicFrame::UnInitialise x3, the counted-pointer member object in
+~CGameScriptThingManager, two non-polymorphic ~CGlobalDef bodies, the 64-bit UID list, the graphic bank list walkers,
+the parsed item owning its CCharString in ReadFromParserAsSLONG x3, NotifyEntryUpdated with a volatile vector-first;
+parked: IsTimeBetween's duplicated compare, PeekNavigatorRadius' hoisted `fld`, the UpdateAvailableMemory store/load
+order x2, two by-value handle inserts). Correction: the 0x0122DEDC constant is 0.0f, not -1.0f -- the two landed rows that
+read it (0x004348D0, 0x0089D340) and their tests/READMEs are fixed. Catalog 29,189 -> 29,216 -> 29,254 -> **29,288 (59.1%)**.
+Lessons in GOTCHAS wave 24k. Hygiene item found: 620 files under `rebuild/src/compiled` from the old Windows waves
+contain `__asm` / `__declspec(naked)` (grade `asm_bake`, e.g. `CGameScriptInterface_RemoveHeroHairstyle_0089b4d0.cpp`);
+the lander rejects new ones, the old ones need a sweep (re-author or move to `rebuild/oracles/`). Next: chunk 47
+(CGroundNavigatorExternalInterface .. CHandleBasedMemoryPool) is with the agent; chunks 48/49 are cut
+(`mkchunk.py 48 2`, pool 2,840 rows); 48 by hand.
+
 ### Wave 24, part 7 (chunks 40, 41, 42)
 Chunk 41 (CGameCameraManager .. CGameScriptInterface) to the single sub-agent: 35/40 (`_hand41`; the scripted-control
 action constructors, CPSCSpline, CProcessedInput, CGameEvent::ReadData8 (a static `__fastcall` with an edx:eax return),
