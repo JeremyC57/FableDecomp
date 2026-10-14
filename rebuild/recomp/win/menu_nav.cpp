@@ -487,7 +487,7 @@ extern "C" void host_create_component(Ctx* c) {
     if (ptr >= 0x10000 && ptr < kGuestLimit && len > 0 && len < sizeof name) std::memcpy(name, gp<const char>(ptr), len);
     const bool pc = std::strncmp(name, "PC_", 3) == 0, xbox = std::strncmp(name, "UI_", 3) == 0;
     static std::set<std::string> names;
-    if (names.size() < 60 && names.insert(name).second) HLOG(1, "ui: CreateComponent(\"%s\")", name);
+    if (pc && names.size() < 400 && names.insert(name).second) HLOG(1, "ui: CreateComponent(\"%s\")", name);
     if ((pc && !g_pcScreen) || (xbox && g_pcScreen)) {
         g_pcScreen = pc;
         HLOG(1, "ui: component %s created: the Xbox zoom is %s", name, pc ? "off (PC layout)" : "on");
