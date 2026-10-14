@@ -547,6 +547,20 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 10 (chunks 50, 51, 53)
+Chunk 50 (CInputManager .. CInputProcessManager) to the single sub-agent: 39/40 (`_hand50`; the retail CInputManager layout (0x80
+bytes, CDiskFileWin32 at +0x60), event-scan vector bodies, the CInputProcess* Init / ProcessInput / AddToInterface rows, three
+mislabelled destructors (~CTCEffectOnDie, ~CThingTrackNode); parked: IsMouseEventInQueue's register pairing). By the coordinator:
+chunk 51 (CInputProcessManager .. CItem: 33/40, `_hand51`; the input-process manager list and destructor, two keyed no-RTTI
+constructors, the input-process Update/Cleanup/ProcessInput bodies, the CIs* predicates (hopscotch board, hit events, horn task,
+projectile weapon, thing state counters, usable icicle point), the CItem def queries / constructor / RemoveItem / GetItemThings /
+AddItem and the counted-record copies and assignments, the handle release/place bodies; one LTCG row skipped, six parked) and chunk 53
+(CLandscapeBackgroundLoadTask .. CLandscapeGPUUpdateQueue: 38/40, `_hand53`; thirty deleting destructors with propagated labels
+reproduced as non-polymorphic `delete` helpers, novtable-over-base classes and virtual destructors with factories, the landscape
+memory-manager `operator delete`, the tree-node / split-branch bodies, nine "ClearTextures" bodies; parked: a register choice and a
+`lea` schedule). Catalog 29,393 -> 29,426 -> 29,465 -> **29,503 (59.5%)**. Lessons in GOTCHAS wave 24m. Next: chunk 52 (CItem ..
+CLandscapeBackgroundLoadTask) to the agent; `mkchunk.py 54 2` (pool 2,680 rows).
+
 ### Wave 24, part 9 (chunks 47, 48, 49)
 Chunk 47 (CGroundNavigatorExternalInterface .. CHandleBasedMemoryPool) to the single sub-agent: 37/40 (`_hand47`; the navigator
 peek accessors with hidden-pointer returns, the four std::list::clear bodies mislabelled "SortTreeRecursively", CTextEntry /
