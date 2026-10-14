@@ -547,6 +547,20 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 6 (chunks 38, 39)
+Chunk 38 (CEngineVSConstantLayoutLightsBones .. CEnvironment) to the single sub-agent: 38/40 (`_hand38`; CObjectAugmentationsDef and
+CEntitySoundDef-style def constructors, the libpk auto-map entry constructors, buffer-pair array destructors, a `__fastcall` delete
+helper, the CAudioContext EAXSet/EAXGet wrappers, StartRaining/StartSnowing, CSoundBankLH / CMemoryFile constructors, libpk init
+functions; retail CEngineWaterRenderer / CEngineWorldMap offsets differ from the Ego PDB by the 12-byte CArrays; parked: two def
+constructors where retail schedules a member-constructor `lea` after a run of register-zero stores). Chunk 39 (CEnvironment ..
+CFileInstaller) by the coordinator: 36/40 (`_hand39`; the NEntityEvents event constructors/destructors over CIntelligentPointer /
+CIVCountedPointer / CCountedPointer members, CEventHitBase and CLHFile deleting destructors, the spell-effect interface setters and
+frame update, theme-stack transitions, the three CFadeinSummoner::Init variants with a 16-byte CIsThingAlive filter, CFileInstaller::
+Unpause over `volatile` members, CFileDataInputStream reads, the CDateAndTime / CFadeInFadeOutBase records, CExpressionDef's twelve
+member objects; parked: a counted-pointer return without NRVO, a `dec [ecx+4] ; jne` release through an accessor, a register-choice
+loop, a 12-byte fill scheduled across call-prep pushes). Catalog 29,012 -> 29,048 -> **29,086 (58.7%)**. Lessons in GOTCHAS wave 24i.
+Next: `mkchunk.py 40 2` is cut (chunk 40 CFileInstaller .. CGameCameraManager by hand, chunk 41 to the agent; pool ~3,160 rows).
+
 ### Wave 24, part 5 (chunks 33, 36, 37)
 Chunk 33 (CEngineInternalPrimitiveMeshBase .. CEngineLightingManager) to the single sub-agent: 37/40 (`_hand33`;
 CIVCountedPointer / CCountedPointer releases and assignments, the particle-group primitives over the retail layout,
