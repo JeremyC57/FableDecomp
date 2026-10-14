@@ -508,6 +508,26 @@ compare (0x00CAFE90); register roles (0x00C425E0, 0x00CAADB0); hoisted state sto
 indexed search loops strength-reduced by the DDK (0x00C34B80, 0x00C34E60). Catalog 28,291
 (57.1%). Parked list: `$S/w23/parked.txt` / `parked_notes.txt`.
 
+### Wave 23, parts 10–12 (EH passes 27–29, funclets 32–34)
+
+Single-session work after delegation was capped: 35 more hand-authored EH-framed bodies of
+236–291 bytes from the 0x00C0xxxx module (`_eh27..29/`, 70 funclets). New shapes that reproduce:
+MFC `CString::Right` with two inlined null-object checks and the hidden-result flag; the
+red-black node (shared or owned sentinel, self-linked link) and morphable node holder (ternary
+over a common base) constructors shared by the module's containers; `__cdecl` factories with a
+class `operator new`, a 0xa0-byte record assignment and `delete` through a virtual destructor;
+action factories with a `__stdcall` error hook and class allocator; constructors whose scalar
+initialisers are body assignments after the member constructors; float init-list zeros as
+immediates beside integer zeros in the zero register; `novtable` side bases; `~CNavButton` /
+`~C3DMesh2` / `~CVolume` / `~CCombatAbilityStrafeDef` destructors with inline container
+destructors and per-pointer `if (p) { delete p; p = 0; }`; the mailbox by-value `Take`; the
+worker-thread constructor on the landed thread procedure. Behaviour tests must initialise every
+pointer the body reads (the VC7.1 heap is not zeroed). Parked (notes in `$S/w23/parked_notes.txt`):
+0x00CAB770 / 0x00CAC300 (derived vtable stores above the section push), 0x00C14F90, 0x00CAFE90,
+0x00C425E0, 0x00C101D0, 0x00CAF580, 0x00C39130 (state store before a non-throwing member
+constructor), 0x00CAACA0, 0x00C3DA60 (tail-merged error block), 0x00C172F0. Catalog 28,387
+(57.3%); the open EH set is now 300+ bytes per body.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
