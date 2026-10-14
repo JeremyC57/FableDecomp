@@ -4,7 +4,7 @@ Usage: fam.py <repo> <family-id> <out-batch-name> [limit]   (env S = scratchpad)
 import json, sys, csv, re, os, struct
 from pathlib import Path
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
-from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EAX, X86_REG_ESI
+from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EAX, X86_REG_ESI, X86_REG_ECX
 ROOT=Path(sys.argv[1]); FAM=sys.argv[2]; BATCH=sys.argv[3]; LIMIT=int(sys.argv[4]) if (len(sys.argv)>4 and sys.argv[4]!="-") else 10**9
 TPL=sys.argv[5] if len(sys.argv)>5 else FAM   # template id (family index of the scan the template was written for)
 S=Path(os.environ["S"]); OUT=ROOT/"rebuild/candidates/manual/batches"/BATCH
@@ -8835,6 +8835,531 @@ int main()
 {
     Blk b; b.r = 1; H h; { CP cp(&b, &b); D d(&h, cp); d.Fire(); if (!d.f || g_h != 3 || b.r != 2) '''+FAIL(a)+'''
     }
+'''),b)
+    elif TPL in ("w512_fillpod",):   # T* __fastcall UninitFillN(T* first, unsigned count, const T& value[, allocator]): placement-copy `count` copies with the placement null check
+        if len(calls)!=0 or retn not in (4,8): continue
+        steps=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_EAX and i.operands[1].type==X86_OP_IMM]
+        if len(steps)!=1 or not any(i.mnemonic=="dec" for i in ins): continue
+        esz=steps[0]; alloc=(retn==8)
+        haspad=any(i.mnemonic=="nop" or (i.mnemonic=="lea" and re.match(r"^(\w+), \[\1\]$",i.op_str)) or (i.mnemonic=="mov" and i.op_str=="edi, edi") for i in ins)
+        rep=any(i.mnemonic=="rep movsd" or "movsd" in i.mnemonic for i in ins)
+        pairform=rep and any(i.mnemonic=="lea" and "ebx + 4" in i.op_str for i in ins)
+        threereg=any(i.mnemonic=="push" and i.op_str=="ebx" for i in ins) and not rep
+        if pairform: ety="pair"; 
+        elif rep: ety="block"
+        elif threereg or esz<=8: ety="pod"
+        else: ety="ctor"
+        nd=esz//4
+        if ety=="pair":
+            edef="struct SSecond { unsigned char _body[%#x]; };\nstruct SElement {\n    long m_first;\n    SSecond m_second;\n};" % (esz-4)
+        elif ety=="block":
+            edef="struct SElement { unsigned char _body[%#x]; };" % esz
+        elif ety=="pod":
+            edef="struct SElement { "+" ".join(f"long m_{4*k:x};" for k in range(nd))+" };"
+        else:
+            edef="struct SElement {\n    "+" ".join(f"long m_{4*k:x};" for k in range(nd))+"\n    SElement(const SElement& other) : "+", ".join(f"m_{4*k:x}(other.m_{4*k:x})" for k in range(nd))+" { }   // memberwise user copy: one register per dword\n};"
+        add(a,"_global",f"UninitFillN_{a}",HDRF(a,f"_Uninit_fill_n<T*> -- placement-copy `count` copies of value from first ({esz}-byte {'pair<long, X>' if ety=='pair' else ('block' if ety=='block' else ('POD' if ety=='pod' else 'memberwise-copied'))} elements{', allocator by value' if alloc else ''}{', size TU' if not haspad else ''}), return the advanced pointer",len(b))+f'''//
+// Retail bytes:  test edx,edx ; mov eax,ecx ; jbe R ; mov ecx,[value] ; push regs ; {"" if not haspad else "(alignment pad) ; "}L: test eax,eax ; je N ; <copy {esz} bytes [ecx] -> [eax]> ; N: add eax,{esz:#x} ; dec edx ; jne L ; pop regs ; R: ret {retn}
+// Dinkumware `_Uninit_fill_n` for a {esz}-byte element: each copy is a placement new -- VC emits the
+// null check on the placement address -- of the value reference{" (the allocator rides along by value: a 1-byte class in a 4-byte slot)" if alloc else ""}.
+// {"A pair whose first member is copied as one dword and whose second (a POD block) goes through `rep movsd`." if ety=="pair" else ("A plain block copied with `rep movsd`." if ety=="block" else ("A POD of dwords copied member by member (three registers when VC splits the base pointers)." if ety=="pod" else "A class with a memberwise user copy constructor: every dword moves through one register."))}
+// {"Size optimisation leaves the loop unaligned." if not haspad else "The speed TU pads the loop head."} Fastcall: first in ecx, count in edx. The manifest label is propagated; the element type is modelled by size. One of {len(members)} bodies of this shape.
+{"#pragma optimize(" + chr(34) + "s" + chr(34) + ", on)" + chr(10) + chr(10) if not haspad else ""}#include <new>
+
+{edef}
+{"struct CRetailAllocator { };" + chr(10) if alloc else ""}
+SElement* __fastcall UninitFillN_{a}(SElement* first, unsigned long count, const SElement& value{", CRetailAllocator allocator" if alloc else ""})
+{{
+    for (; 0 < count; --count, ++first)
+        new (first) SElement(value);
+    return first;
+}}
+''',T(a,'''#include <new>
+struct E { long v[%d]; }; struct A { };
+static E* __fastcall F(E* f, unsigned long n, const E& v%s) { for (; 0 < n; --n, ++f) new (f) E(v); return f; }
+int main()
+{
+    E v; for (int i = 0; i < %d; ++i) v.v[i] = i + 1; E buf[3]; E* r = F(buf, 3, v%s); if (r != buf + 3 || buf[2].v[0] != 1 || buf[1].v[%d] != %d) ''' % (max(nd,1), ", A" if alloc else "", max(nd,1), ", A()" if alloc else "", max(nd,1)-1, max(nd,1))+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_ucopy",):   # T* __fastcall UninitCopy(const T* first, const T* last, T* dest, allocator): placement-copy a range with the placement null check
+        if len(calls)!=0 or retn!=8: continue
+        steps=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_EAX and i.operands[1].type==X86_OP_IMM]
+        if len(steps)!=1 or any(i.mnemonic=="dec" for i in ins): continue
+        esz=steps[0]
+        haspad=any(i.mnemonic=="nop" or (i.mnemonic=="lea" and re.match(r"^(\w+), \[\1\]$",i.op_str)) or (i.mnemonic=="mov" and i.op_str=="edi, edi") for i in ins)
+        counted=any(i.mnemonic=="inc" for i in ins)
+        nd=esz//4
+        if counted:
+            edef="struct SCountBlock { long m_a; long m_references; };\nstruct SElement {                          // counted pointer: the copy bumps the block's count at +4\n    SCountBlock* m_pCount;\n    SElement(const SElement& other) : m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }\n};"
+        elif esz<=8:
+            edef="struct SElement { "+" ".join(f"long m_{4*k:x};" for k in range(nd))+" };"
+        else:
+            edef="struct SElement {\n    "+" ".join(f"long m_{4*k:x};" for k in range(nd))+"\n    SElement(const SElement& other) : "+", ".join(f"m_{4*k:x}(other.m_{4*k:x})" for k in range(nd))+" { }   // memberwise user copy: one register per dword\n};"
+        add(a,"_global",f"UninitCopy_{a}",HDRF(a,f"_Uninit_copy<T*> -- placement-copy [first, last) to dest ({esz}-byte {'counted-pointer' if counted else ('POD' if esz<=8 else 'memberwise-copied')} elements, allocator by value{', size TU' if not haspad else ''}), return the advanced destination",len(b))+f'''//
+// Retail bytes:  cmp ecx,edx ; mov eax,[dest] ; je R ; push esi ; {"(alignment pad) ; " if haspad else ""}L: test eax,eax ; je N ; <copy {esz} bytes [ecx] -> [eax]{" ; addref" if counted else ""}> ; N: add ecx,{esz:#x} ; add eax,{esz:#x} ; cmp ecx,edx ; jne L ; pop esi ; R: ret 8
+// Dinkumware `_Uninit_copy` for a {esz}-byte element: each copy is a placement new -- VC emits the null
+// check on the placement address -- from the source range; the allocator rides along by value
+// (a 1-byte class in a 4-byte slot). {"The element is a counted pointer whose copy constructor bumps the block's reference count when the block is present." if counted else ("A POD of dwords." if esz<=8 else "A class with a memberwise user copy constructor: every dword moves through one register.")}
+// {"Size optimisation leaves the loop unaligned." if not haspad else "The speed TU pads the loop head."} Fastcall: first in ecx, last in edx. The manifest label is propagated; the element type is modelled by size. One of {len(members)} bodies of this shape.
+{"#pragma optimize(" + chr(34) + "s" + chr(34) + ", on)" + chr(10) + chr(10) if not haspad else ""}#include <new>
+
+{edef}
+struct CRetailAllocator {{ }};
+
+SElement* __fastcall UninitCopy_{a}(const SElement* first, const SElement* last, SElement* dest, CRetailAllocator allocator)
+{{
+    for (; first != last; ++first, ++dest)
+        new (dest) SElement(*first);
+    return dest;
+}}
+''',T(a,'''#include <new>
+struct E { long v[%d]; }; struct A { };
+static E* __fastcall F(const E* f, const E* l, E* d, A) { for (; f != l; ++f, ++d) new (d) E(*f); return d; }
+int main()
+{
+    E src[2]; src[0].v[0] = 5; src[1].v[0] = 6; E dst[2]; E* r = F(src, src + 2, dst, A()); if (r != dst + 2 || dst[0].v[0] != 5 || dst[1].v[0] != 6) ''' % max(nd,1)+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_fill",):   # void __fastcall Fill(T* first, T* last, const T& value): assign value over the range (POD block copy)
+        if len(calls)!=0 or retn!=4 or b[:2]!=b"\x3b\xca": continue
+        steps=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_ECX and i.operands[1].type==X86_OP_IMM]
+        if len(steps)!=1: continue
+        esz=steps[0]
+        add(a,"_global",f"Fill_{a}",HDRF(a,f"fill<T*, T> -- assign value over [first, last) ({esz}-byte POD elements)",len(b))+f'''//
+// Retail bytes:  cmp ecx,edx ; je R ; mov eax,[value] ; push regs ; (alignment pad) ; L: <copy {esz} bytes [eax] -> [ecx]> ; add ecx,{esz:#x} ; cmp ecx,edx ; jne L ; pop regs ; R: ret 4
+// `std::fill` over a {esz}-byte POD element: the value reference is loaded once and assigned to every
+// element of the range (dword moves). Fastcall: first in ecx, last in edx, the value on the
+// stack. The manifest label is propagated; the element type is modelled by size. One of
+// {len(members)} bodies of this shape.
+struct SElement {{ unsigned char _body[{esz:#x}]; }};
+
+void __fastcall Fill_{a}(SElement* first, SElement* last, const SElement& value)
+{{
+    for (; first != last; ++first)
+        *first = value;
+}}
+''',T(a,'''struct E { unsigned char b[%d]; };
+static void __fastcall F(E* f, E* l, const E& v) { for (; f != l; ++f) *f = v; }
+int main()
+{
+    E v; v.b[0] = 7; v.b[%d] = 9; E buf[3]; F(buf, buf + 3, v); if (buf[2].b[0] != 7 || buf[1].b[%d] != 9) ''' % (esz, esz-1, esz-1)+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_destroy",):   # void __fastcall Destroy(T* first, T* last[, unused]): run the element destructor over a range (counted pointer release, or a virtual destructor)
+        if len(calls)!=0 or retn not in (0,4) or b[:2]!=b"\x56\x57": continue
+        steps=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_ESI and i.operands[1].type==X86_OP_IMM]
+        if len(steps)!=1: continue
+        esz=steps[0]; virt=any(i.mnemonic=="push" and i.op_str=="0" for i in ins)
+        if virt:
+            src=f'''struct CElement {{
+    virtual ~CElement();                   // slot 0: the scalar deleting destructor (flag 0: no delete)
+    unsigned char _body[{esz:#x} - 4];
+}};
+
+void __fastcall Destroy_{a}(CElement* first, CElement* last)
+{{
+    for (; first != last; ++first)
+        first->~CElement();
+}}
+'''
+            desc=f"_Destroy_range<T*> -- run the virtual destructor (deleting flag 0) over [first, last) ({esz}-byte elements)"
+            test='''static int g_d = 0; struct C { virtual ~C() { ++g_d; } unsigned char b[%d]; };
+static void __fastcall F(C* f, C* l) { for (; f != l; ++f) f->~C(); }
+int main()
+{
+    { C buf[2]; F(buf, buf + 2); if (g_d != 2) ''' % (esz-4)+FAIL(a)+'''
+    }
+'''
+        else:
+            src=f'''struct CObject {{
+    virtual void v00();
+    virtual void Destroy();                // slot 1
+    long m_references;                     // +4
+    void Release() {{ if (--m_references == 0) Destroy(); }}
+}};
+
+struct CCountedPointer {{
+    CObject* m_p;
+    ~CCountedPointer() {{ if (m_p) {{ m_p->Release(); m_p = 0; }} }}
+}};
+
+void __fastcall Destroy_{a}(CCountedPointer* first, CCountedPointer* last{", long unused" if retn==4 else ""})
+{{
+    for (; first != last; ++first)
+        first->~CCountedPointer();
+}}
+'''
+            desc=f"_Destroy_range<CCountedPointer*> -- release every counted pointer in [first, last) (count at +4, virtual slot 1 destroys at zero, field nulled)"
+            test='''static int g_d = 0; struct O { virtual void a() {} virtual void X() { ++g_d; } long r; void Rel() { if (--r == 0) X(); } };
+struct P { O* p; ~P() { if (p) { p->Rel(); p = 0; } } };
+static void __fastcall F(P* f, P* l%s) { for (; f != l; ++f) f->~P(); }
+int main()
+{
+    O o; o.r = 2; P buf[2]; buf[0].p = &o; buf[1].p = &o; F(buf, buf + 2%s); if (g_d != 1 || buf[1].p != 0) ''' % (", long" if retn==4 else "", ", 0" if retn==4 else "")+FAIL(a)+'''
+'''
+        add(a,"_global",f"Destroy_{a}",HDRF(a,desc,len(b))+f'''//
+// Retail bytes:  push esi ; push edi ; mov edi,edx ; mov esi,ecx ; cmp esi,edi ; je R ; (pad) ; L: {"mov eax,[esi] ; push 0 ; mov ecx,esi ; call [eax]" if virt else "mov ecx,[esi] ; test ecx,ecx ; je N ; dec dword ptr [ecx+4] ; jne Z ; mov eax,[ecx] ; call [eax+4] ; Z: mov dword ptr [esi],0 ; N:"} ; add esi,{esz:#x} ; cmp esi,edi ; jne L ; R: pop edi ; pop esi ; ret{" 4" if retn==4 else ""}
+// Dinkumware `_Destroy_range` over {esz}-byte elements: {"each element's virtual destructor is called through slot 0 with the deleting flag 0" if virt else "each counted pointer releases its object through CObject::Release (the count at +4, virtual slot 1 at zero) and nulls its field"}. Fastcall: first in ecx, last in edx{"; a trailing stack argument (the allocator) is unused" if retn==4 else ""}. The manifest label is
+// propagated; the element type is opaque. One of {len(members)} bodies of this shape.
+'''+src,T(a,test),b)
+    elif TPL in ("w512_vdestroy",):   # void CRetailVector::Destroy(): free every element's owned block, then the buffer
+        if len(calls)!=2 or calls[0]!=calls[1] or retn!=0 or b[:2]!=b"\x53\x56": continue
+        freer=calls[0]
+        steps=[i.operands[1].imm for i in ins if i.mnemonic=="add" and i.operands[0].type==X86_OP_REG and i.operands[0].reg==X86_REG_ESI and i.operands[1].type==X86_OP_IMM]
+        offs=[i.operands[1].mem.disp for i in ins if i.mnemonic=="mov" and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==X86_REG_ESI]
+        if len(steps)!=1 or len(offs)!=1: continue
+        esz=steps[0]; poff=offs[0]
+        nm=f"CRetailVector_{a}"
+        add(a,"_unattributed",f"Destroy_{nm}",HDRF(a,f"{nm}::Destroy() -- free each element's owned block (at +{poff:#x} of the {esz}-byte element, free @ 0x{freer:08X}) from first to last, then the buffer",len(b))+f'''//
+// Retail bytes:  push ebx ; push esi ; mov ebx,ecx ; mov esi,[ebx] ; push edi ; mov edi,[ebx+4] ; cmp esi,edi ; je F ; (pad) ; L: mov eax,[esi+{poff:#x}] ; test eax,eax ; je N ; push eax ; call free ; add esp,4 ; N: add esi,{esz:#x} ; cmp esi,edi ; jne L ; F: mov ebx,[ebx] ; test ebx,ebx ; je R ; push ebx ; call free ; add esp,4 ; R: pop edi ; pop esi ; pop ebx ; ret
+// Vector teardown for {esz}-byte elements that own one heap block each (at +{poff:#x}): the end
+// pointer is cached before the loop, every non-null block is freed, then the buffer itself.
+// Labels are propagated; names are descriptive. One of {len(members)} bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct SElement {{
+{"    unsigned char _head[%#x];" % poff + chr(10) if poff else ""}    void* m_pData;                         // +{poff:#x} owned block
+{"    unsigned char _rest[%#x];" % (esz-poff-4) + chr(10) if esz-poff-4 else ""}}};
+
+struct {nm} {{
+    SElement* first;
+    SElement* last;
+    void Destroy_{nm}();
+}};
+
+void {nm}::Destroy_{nm}()
+{{
+    SElement* p = first;
+    SElement* end = last;
+    for (; p != end; ++p) {{
+        if (p->m_pData)
+            free(p->m_pData);
+    }}
+    if (first)
+        free(first);
+}}
+''',T(a,'''#include <cstdlib>
+struct E { unsigned char h[%d]; void* d; unsigned char r[%d]; };
+struct V { E* f; E* l; void D() { E* p = f; E* e = l; for (; p != e; ++p) if (p->d) std::free(p->d); if (f) std::free(f); } };
+int main()
+{
+    V v; v.f = (E*)std::malloc(sizeof(E) * 2); v.l = v.f + 2; v.f[0].d = std::malloc(4); v.f[1].d = 0; v.D(); V w; w.f = 0; w.l = 0; w.D();
+''' % (max(poff,1) if poff else 1, max(esz-poff-4,1)) )+'''''',b) if False else add(a,"_unattributed",f"Destroy_{nm}",HDRF(a,f"{nm}::Destroy() -- free each element's owned block (at +{poff:#x} of the {esz}-byte element, free @ 0x{freer:08X}) from first to last, then the buffer",len(b))+f'''//
+// Retail bytes:  push ebx ; push esi ; mov ebx,ecx ; mov esi,[ebx] ; push edi ; mov edi,[ebx+4] ; cmp esi,edi ; je F ; (pad) ; L: mov eax,[esi+{poff:#x}] ; test eax,eax ; je N ; push eax ; call free ; add esp,4 ; N: add esi,{esz:#x} ; cmp esi,edi ; jne L ; F: mov ebx,[ebx] ; test ebx,ebx ; je R ; push ebx ; call free ; add esp,4 ; R: pop edi ; pop esi ; pop ebx ; ret
+// Vector teardown for {esz}-byte elements that own one heap block each (at +{poff:#x}): the end
+// pointer is cached before the loop, every non-null block is freed, then the buffer itself.
+// Labels are propagated; names are descriptive. One of {len(members)} bodies of this shape.
+extern "C" void __cdecl free(void* block);
+
+struct SElement {{
+{"    unsigned char _head[%#x];" % poff + chr(10) if poff else ""}    void* m_pData;                         // +{poff:#x} owned block
+{"    unsigned char _rest[%#x];" % (esz-poff-4) + chr(10) if esz-poff-4 else ""}}};
+
+struct {nm} {{
+    SElement* first;
+    SElement* last;
+    void Destroy_{nm}();
+}};
+
+void {nm}::Destroy_{nm}()
+{{
+    SElement* p = first;
+    SElement* end = last;
+    for (; p != end; ++p) {{
+        if (p->m_pData)
+            free(p->m_pData);
+    }}
+    if (first)
+        free(first);
+}}
+''',T(a,'''#include <cstdlib>
+struct E { %svoid* d; %s};
+struct V { E* f; E* l; void D() { E* p = f; E* e = l; for (; p != e; ++p) if (p->d) std::free(p->d); if (f) std::free(f); } };
+int main()
+{
+    V v; v.f = (E*)std::malloc(sizeof(E) * 2); v.l = v.f + 2; v.f[0].d = std::malloc(4); v.f[1].d = 0; v.D(); V w; w.f = 0; w.l = 0; w.D(); if (sizeof(E) != %d) ''' % (("unsigned char h[%d]; " % poff) if poff else "", ("unsigned char r[%d]; " % (esz-poff-4)) if esz-poff-4 else "", esz)+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_alive",):   # bool __fastcall IS_THING_ALIVE(CIntelligentPointer&): GetPItem twice, null and the dead bit at +0x91
+        if len(calls)!=2 or calls[0]!=calls[1] or retn!=0: continue
+        getter=calls[0]
+        inv=b"\x32\xc0\x5e\xc3\xb0\x01" in b   # xor al,al ... mov al,1 order: the inverted (dead) predicate
+        holder=[i.operands[1].mem.disp for i in ins if i.mnemonic=="lea" and i.operands[1].type==X86_OP_MEM and i.operands[1].mem.base==X86_REG_ECX]
+        hoff=holder[0] if holder else 0
+        fname=("IsThingDead_" if inv else "IsThingAlive_")+a
+        add(a,"_global",fname,HDRF(a,f"IS_THING_{'DEAD' if inv else 'ALIVE'}<CIntelligentPointer<T>>({'holder with the pointer at +%#x' % hoff if hoff else 'pointer'}) -- GetPItem @ 0x{getter:08X} twice: null, then the dead bit (+0x91 & 1)",len(b))+f'''//
+// Retail bytes:  push esi ; {"lea esi,[ecx+%#x]" % hoff if hoff else "mov esi,ecx"} ; {"mov ecx,esi ; " if hoff else ""}call GetPItem ; test eax,eax ; je F ; mov ecx,esi ; call GetPItem ; test byte ptr [eax+91h],1 ; jne F ; {"xor al,al" if inv else "mov al,1"} ; pop esi ; ret ; F: {"mov al,1" if inv else "xor al,al"} ; pop esi ; ret
+// Script-side liveness predicate over an intelligent pointer{" embedded at +%#x of its holder" % hoff if hoff else ""}: the item is
+// fetched twice through CBaseIntelligentPointer::GetPItem @ 0x{getter:08X} (null means {"dead" if inv else "not alive"}),
+// and its dead bit (bit 0 of the byte at +0x91) decides; the nested-if form keeps both tests as
+// branches with the shared {"true" if inv else "false"} tail at the end. Fastcall: the reference in ecx. The manifest
+// label is propagated; the thing class is opaque. One of {len(members)} bodies of this shape.
+struct CThing {{
+    unsigned char _pad[0x91];
+    unsigned char m_flags;                 // +0x91 bit 0: dead
+    bool IsDead() const {{ return (m_flags & 1) != 0; }}
+}};
+
+struct CBaseIntelligentPointer {{
+    CThing* GetPItem();                    // 0x{getter:08X}
+}};
+{chr(10) + "inline bool IsThingAlive(CBaseIntelligentPointer& pointer)" + chr(10) + "{" + chr(10) + "    if (pointer.GetPItem() != 0) {" + chr(10) + "        if (!pointer.GetPItem()->IsDead())" + chr(10) + "            return true;" + chr(10) + "    }" + chr(10) + "    return false;" + chr(10) + "}" + chr(10) + chr(10) + "struct CHolder { unsigned char _pad[%#x]; CBaseIntelligentPointer m_pointer; };" % hoff + chr(10) if hoff else ""}
+bool __fastcall {fname}({"CHolder& holder" if hoff else "CBaseIntelligentPointer& pointer"})
+{{
+{"    return IsThingAlive(holder.m_pointer);" if hoff else ("    if (pointer.GetPItem() != 0) {" + chr(10) + "        if (!pointer.GetPItem()->IsDead())" + chr(10) + "            return false;" + chr(10) + "    }" + chr(10) + "    return true;" if inv else "    if (pointer.GetPItem() != 0) {" + chr(10) + "        if (!pointer.GetPItem()->IsDead())" + chr(10) + "            return true;" + chr(10) + "    }" + chr(10) + "    return false;")}
+}}
+''',T(a,'''struct T { unsigned char p[0x91]; unsigned char f; bool D() const { return (f & 1) != 0; } };
+struct P { T* t; T* G() { return t; } };
+static bool __fastcall A(P& p) { if (p.G() != 0) { if (!p.G()->D()) return true; } return false; }
+int main()
+{
+    T t; t.f = 0; P p; p.t = &t; if (!A(p)) '''+FAIL(a)+'''
+    t.f = 1; if (A(p)) '''+FAIL(a)+'''
+    p.t = 0; if (A(p)) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_destval",):   # void __fastcall DestroyValue(SValue*): release the counted pointer at +8/+0xC (count at +0, destroy through +4 on +8, delete the block) and null both fields
+        if len(calls)!=1 or retn!=0 or b[:2]!=b"\x56\x8b": continue
+        deleter=calls[0]
+        add(a,"_global",f"DestroyValue_{a}",HDRF(a,f"_Dest_val<allocator<pair<K, CCountedPointer>>> -- release the pair's counted pointer (block count at +0, destroy routine at +4 over the object at +8, block deleted @ 0x{deleter:08X}) and null the two fields",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+0Ch] ; push edi ; xor edi,edi ; cmp eax,edi ; je N ; dec dword ptr [eax] ; mov eax,[esi+0Ch] ; cmp dword ptr [eax],edi ; jne N ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[esi+0Ch] ; push eax ; call operator delete ; add esp,4 ; N: mov [esi+8],edi ; mov [esi+0Ch],edi ; pop edi ; pop esi ; ret
+// Dinkumware `_Dest_val` over a map value whose second member is a counted pointer (object at +8,
+// count block at +0xC): the block's count is decremented and re-read through the field, at zero
+// the type-erased destroy routine runs on the object and the block is deleted; both fields are
+// nulled (the zero kept in edi). Fastcall: the value in ecx. The manifest label is propagated;
+// the key is opaque padding. One of {len(members)} bodies of this shape.
+void __cdecl operator delete(void* block);
+
+struct SCountBlock {{
+    long m_references;                     // +0
+    void (__thiscall* m_pfnDestroy)(void*);// +4
+    void* m_pObject;                       // +8
+}};
+
+struct SValue {{
+    unsigned char _key[8];                 // +0 key
+    void* m_pObject;                       // +8
+    SCountBlock* m_pCount;                 // +0xC
+}};
+
+void __fastcall DestroyValue_{a}(SValue* value)
+{{
+    if (value->m_pCount) {{
+        --value->m_pCount->m_references;
+        if (value->m_pCount->m_references == 0) {{
+            value->m_pCount->m_pfnDestroy(value->m_pCount->m_pObject);
+            operator delete(value->m_pCount);
+        }}
+    }}
+    value->m_pObject = 0;
+    value->m_pCount = 0;
+}}
+''',T(a,'''static int g_d = 0; static void __thiscall D(void*) { ++g_d; }
+struct B { long r; void (__thiscall* f)(void*); void* o; }; struct V { unsigned char k[8]; void* o; B* c; };
+static void __fastcall F(V* v) { if (v->c) { --v->c->r; if (v->c->r == 0) { v->c->f(v->c->o); delete v->c; } } v->o = 0; v->c = 0; }
+int main()
+{
+    B* b = new B; b->r = 1; b->f = D; b->o = 0; V v; v.o = (void*)1; v.c = b; F(&v); if (g_d != 1 || v.o != 0 || v.c != 0) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_dist",):   # long __cdecl Distance(const SIterator& first, const SIterator& last): count successor steps (size TU)
+        if len(calls)!=1 or retn!=0 or b[:4]!=b"\x8b\x44\x24\x04": continue
+        succ=calls[0]
+        add(a,"_global",f"Distance_{a}",HDRF(a,f"Distance(const SIterator&, const SIterator&) -- count the __cdecl successor steps @ 0x{succ:08X} from first to last (size TU)",len(b))+f'''//
+// Retail bytes:  mov eax,[first] ; mov ecx,[last] ; mov eax,[eax] ; push esi ; mov esi,[ecx] ; push edi ; xor edi,edi ; jmp T ; L: push eax ; call Successor ; pop ecx ; inc edi ; T: cmp eax,esi ; jne L ; mov eax,edi ; pop edi ; pop esi ; ret
+// Bidirectional-iterator distance for a tree: both iterators' nodes are loaded first, the end
+// node cached, and the loop advances through the __cdecl successor helper @ 0x{succ:08X}, counting
+// after each step; the size TU cleans the argument with `pop ecx`. The manifest label is
+// propagated; names are descriptive. One of {len(members)} bodies of this shape.
+#pragma optimize("s", on)
+
+struct SNode;
+SNode* __cdecl Successor(SNode* node);      // 0x{succ:08X}
+
+struct SIterator {{
+    SNode* m_node;
+}};
+
+long __cdecl Distance_{a}(const SIterator& first, const SIterator& last)
+{{
+    SNode* node = first.m_node;
+    SNode* end = last.m_node;
+    long n = 0;
+    while (node != end) {{
+        node = Successor(node);
+        ++n;
+    }}
+    return n;
+}}
+''',T(a,'''struct N { N* next; }; static N* __cdecl S(N* n) { return n->next; } struct I { N* n; };
+static long __cdecl F(const I& a, const I& b) { N* n = a.n; N* e = b.n; long c = 0; while (n != e) { n = S(n); ++c; } return c; }
+int main()
+{
+    N n[3]; n[0].next = &n[1]; n[1].next = &n[2]; n[2].next = 0; I a; a.n = &n[0]; I b; b.n = &n[2]; if (F(a, b) != 2 || F(b, b) != 0) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_fillctor",):   # T* __fastcall UninitFillN(T* first, unsigned count, const T& value): `count` out-of-line __fastcall Construct calls (size TU)
+        if len(calls)!=1 or retn!=4 or b[:3]!=b"\x85\xd2\x56": continue
+        ctor=calls[0]
+        add(a,"_global",f"UninitFillN_{a}",HDRF(a,f"_Uninit_fill_n<T*> -- `count` copies of value constructed through the __fastcall Construct @ 0x{ctor:08X} (4-byte elements, size TU), return the advanced pointer",len(b))+f'''//
+// Retail bytes:  test edx,edx ; push esi ; mov esi,ecx ; jbe R ; push edi ; mov edi,edx ; mov edx,[value] ; mov ecx,esi ; call Construct ; add esi,4 ; dec edi ; jne L ; pop edi ; R: mov eax,esi ; pop esi ; ret 4
+// Dinkumware `_Uninit_fill_n` where the element's construction stays out of line: the __fastcall
+// `_Construct` @ 0x{ctor:08X} takes the slot in ecx and the value in edx; the count runs down in
+// edi; the size TU keeps the loop unaligned. The manifest label is propagated; the element is
+// a 4-byte opaque class. One of {len(members)} bodies of this shape.
+#pragma optimize("s", on)
+
+struct CElement {{ long m_value; }};
+void __fastcall Construct(CElement* where, const CElement& value);   // 0x{ctor:08X}
+
+CElement* __fastcall UninitFillN_{a}(CElement* first, unsigned long count, const CElement& value)
+{{
+    for (; 0 < count; --count, ++first)
+        Construct(first, value);
+    return first;
+}}
+''',T(a,'''struct E { long v; }; static void __fastcall C(E* w, const E& v) { w->v = v.v; }
+static E* __fastcall F(E* f, unsigned long n, const E& v) { for (; 0 < n; --n, ++f) C(f, v); return f; }
+int main()
+{
+    E v; v.v = 3; E buf[2]; if (F(buf, 2, v) != buf + 2 || buf[1].v != 3) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_sortheap",):   # void __fastcall SortHeap(SPair* first, SPair* last, SLess pred): Dinkumware sort_heap over 8-byte pairs with a user copy constructor, _Adjust_heap out of line
+        if len(calls)!=1 or retn!=4 or not any(i.mnemonic=="and" and i.op_str=="eax, 0xfffffff8" for i in ins): continue
+        adj=calls[0]
+        add(a,"_global",f"SortHeap_{a}",HDRF(a,f"_Sort_heap<pair*> -- pop_heap until one element remains: swap the last into the front slot's value, copy the first to the back, _Adjust_heap @ 0x{adj:08X} from hole 0 (8-byte pairs with a user copy constructor, comparator by value)",len(b))+f'''//
+// Retail bytes:  push ebx ; push ebp ; push esi ; push edi ; mov edi,ecx ; mov eax,edx ; sub eax,edi ; and eax,-8 ; cmp eax,8 ; jle R ; mov ebp,[pred] ; mov ebx,8 ; lea esi,[edx-8] ; sub ebx,edi ; L: mov eax,[edi] ; mov ecx,[esi] ; mov edx,[esi+4] ; mov [esi],eax ; mov eax,[edi+4] ; push ebp ; mov [esi+4],eax ; sub esp,8 ; mov eax,esp ; mov [eax],ecx ; lea ecx,[ebx+esi-8] ; sar ecx,3 ; mov [eax+4],edx ; push ecx ; xor edx,edx ; mov ecx,edi ; call _Adjust_heap ; sub esi,8 ; lea edx,[ebx+esi] ; and edx,-8 ; cmp edx,8 ; jg L ; R: pop edi ; pop esi ; pop ebp ; pop ebx ; ret 4
+// Dinkumware `sort_heap`: while more than one element remains, `pop_heap` moves the last element's
+// value aside (copied into the reserved argument slot: the pair has a user copy constructor),
+// copies the front to the back and re-sifts from hole 0 through the out-of-line __fastcall
+// `_Adjust_heap` @ 0x{adj:08X} (first in ecx, hole in edx, bottom count, the value, the
+// comparator by value), then `--last`. The byte-count form (`and -8 ; cmp 8`) is VC's lowering
+// of `1 < last - first`. The manifest label is propagated; the pair's members are modelled as
+// dwords. One of {len(members)} bodies of this shape.
+struct SPair {{
+    long m_first;
+    unsigned long m_second;
+    SPair(const SPair& other) : m_first(other.m_first), m_second(other.m_second) {{ }}
+}};
+
+struct SLess {{ char m_tag; }};              // comparator object passed by value
+
+void __fastcall AdjustHeap(SPair* first, long hole, long bottom, SPair value, SLess pred);   // 0x{adj:08X}
+
+inline void PopHeap(SPair* first, SPair* last, SPair* dest, SPair value, SLess pred)
+{{
+    *dest = *first;
+    AdjustHeap(first, 0, last - first, value, pred);
+}}
+
+void __fastcall SortHeap_{a}(SPair* first, SPair* last, SLess pred)
+{{
+    for (; 1 < last - first; --last)
+        PopHeap(first, last - 1, last - 1, *(last - 1), pred);
+}}
+''',T(a,'''struct P { long a; unsigned long b; P(const P& o) : a(o.a), b(o.b) {} P(long x) : a(x), b(0) {} }; struct L { char t; };
+static int g_n = 0; static void __fastcall Adj(P* f, long h, long bot, P v, L) { g_n += (int)bot; f[h] = v; }
+static void Pop(P* f, P* l, P* d, P v, L p) { *d = *f; Adj(f, 0, l - f, v, p); }
+static void __fastcall SH(P* f, P* l, L p) { for (; 1 < l - f; --l) Pop(f, l - 1, l - 1, *(l - 1), p); }
+int main()
+{
+    P v[3] = { P(3), P(1), P(2) }; L p; SH(v, v + 3, p); if (g_n != 3 || v[2].a != 3) '''+FAIL(a)+'''
+'''),b)
+    elif TPL in ("w512_cptrctor",):   # CCountedPointer::CCountedPointer(T* object): store the object, allocate the count block inline (count 1, destroy routine, object) when non-null
+        if len(calls)!=1 or retn!=4 or len(pushes)!=1 or pushes[0]!=0xc: continue
+        newer=calls[0]
+        dels=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_MEM and i.operands[0].mem.disp==4 and i.operands[0].mem.base==X86_REG_EAX and i.operands[1].type==X86_OP_IMM]
+        if len(dels)!=1: continue
+        deleter=dels[0]; nm=f"CCountedPointer_{a}"
+        add(a,"_unattributed",nm,HDRF(a,f"{nm}::{nm}(T*) -- store the object; when non-null allocate the 12-byte count block (count 1, destroy routine @ 0x{deleter:08X}, the object re-read from the member), else null the block",len(b))+f'''//
+// Retail bytes:  mov eax,[object] ; test eax,eax ; push esi ; mov esi,ecx ; mov [esi],eax ; je Z ; push 0Ch ; call operator new ; add esp,4 ; test eax,eax ; je F ; mov ecx,[esi] ; mov dword ptr [eax],1 ; mov dword ptr [eax+4],offset destroy ; mov [eax+8],ecx ; mov [esi+4],eax ; mov eax,esi ; pop esi ; ret 4 ; F: xor eax,eax ; mov [esi+4],eax ; mov eax,esi ; pop esi ; ret 4 ; Z: mov dword ptr [esi+4],0 ; mov eax,esi ; pop esi ; ret 4
+// Counted-pointer constructor from a raw pointer: the object is stored first, then the count
+// block is `new`'d inline for a non-null object (VC's null check on the non-throwing
+// allocation leaves the field null on failure) with count 1, the type-erased destroy routine
+// @ 0x{deleter:08X} and the object re-read from the member (the allocation call could have
+// changed it). The manifest label names one instantiation; the object type is opaque. One of
+// {len(members)} bodies of this shape.
+struct CObject;
+
+struct SCountBlock {{
+    long m_references;                     // +0
+    void (__fastcall* m_pfnDestroy)(void*);// +4
+    void* m_pObject;                       // +8
+    SCountBlock(void* object);
+}};
+
+void __fastcall CountedDestroy(void* object);   // 0x{deleter:08X}
+
+inline SCountBlock::SCountBlock(void* object)
+    : m_references(1), m_pfnDestroy(CountedDestroy), m_pObject(object)
+{{
+}}
+
+struct {nm} {{
+    CObject* m_pObject;                    // +0
+    SCountBlock* m_pCount;                 // +4
+    {nm}(CObject* object);
+}};
+
+{nm}::{nm}(CObject* object)
+{{
+    m_pObject = object;
+    if (object)
+        m_pCount = new SCountBlock(m_pObject);
+    else
+        m_pCount = 0;
+}}
+''',T(a,'''static void __fastcall D(void*) {}
+struct B { long r; void (__fastcall* f)(void*); void* o; B(void* p) : r(1), f(D), o(p) {} };
+struct P { void* o; B* c; P(void* p) { o = p; if (p) c = new B(o); else c = 0; } };
+int main()
+{
+    int x; P p(&x); P q(0); if (p.o != &x || !p.c || p.c->r != 1 || p.c->o != &x || q.c != 0) '''+FAIL(a)+'''
+    delete p.c;
+'''),b)
+    elif TPL in ("w512_ubound",):   # SEntry* CVectorMap::UpperBound(const long& key): Dinkumware upper_bound over fixed-size entries keyed by a signed dword at +0
+        if len(calls)!=0 or retn!=4: continue
+        magic=[i.operands[1].imm for i in ins if i.mnemonic=="mov" and i.operands[0].type==X86_OP_REG and i.operands[1].type==X86_OP_IMM and i.operands[1].imm in (0x2aaaaaab,0x66666667)]
+        sars=[i.operands[1].imm for i in ins if i.mnemonic=="sar" and i.operands[0].type==X86_OP_REG and i.operands[0].reg!=X86_REG_EAX]
+        if len(magic)!=1 or not sars: continue
+        esz={(0x2aaaaaab,1):12,(0x2aaaaaab,2):24,(0x66666667,4):40}.get((magic[0],sars[0]))
+        if not esz: continue
+        nm=f"CVectorMap_{a}"
+        add(a,"_unattributed",f"UpperBound_{nm}",HDRF(a,f"{nm}::UpperBound(const long&) -- binary search for the first {esz}-byte entry whose signed dword key at +0 is greater than the key",len(b))+f'''//
+// Retail bytes:  push esi ; mov esi,[ecx] ; mov ecx,[ecx+4] ; sub ecx,esi ; mov eax,magic ; imul ecx ; sar edx,k ; mov ecx,edx ; shr ecx,1Fh ; add ecx,edx ; test ecx,ecx ; jle R ; mov eax,[key] ; push ebx ; push edi ; mov edi,[eax] ; L: mov eax,ecx ; cdq ; sub eax,edx ; sar eax,1 ; lea edx,[eax*N] ; mov ebx,[esi+edx*4] ; cmp edi,ebx ; lea edx,[esi+edx*4] ; jl H ; lea esi,[edx+{esz:#x}] ; or edx,-1 ; sub edx,eax ; add ecx,edx ; jmp T ; H: mov ecx,eax ; T: test ecx,ecx ; jg L ; pop edi ; pop ebx ; R: mov eax,esi ; pop esi ; ret 4
+// Dinkumware `upper_bound` over the map's contiguous {esz}-byte entries (count = byte span divided
+// by {esz} through the multiply-by-reciprocal idiom): halve the count, and unless the key is less
+// than the middle entry's key step past the middle (`count -= half + 1`), else keep the lower
+// half; the key reference is read once. The negated comparison puts the advance in the
+// fall-through block. The manifest label is propagated; the entry's payload is opaque. One of
+// {len(members)} bodies of this shape.
+struct SEntry {{
+    long m_key;                            // +0 signed key
+    unsigned char _payload[{esz:#x} - 4];
+}};
+
+struct {nm} {{
+    SEntry* m_begin;
+    SEntry* m_end;
+    SEntry* UpperBound_{nm}(const long& key);
+}};
+
+SEntry* {nm}::UpperBound_{nm}(const long& key)
+{{
+    SEntry* first = m_begin;
+    long count = m_end - m_begin;
+    while (0 < count) {{
+        long half = count / 2;
+        SEntry* mid = first + half;
+        if (!(key < mid->m_key)) {{
+            first = ++mid;
+            count -= half + 1;
+        }}
+        else
+            count = half;
+    }}
+    return first;
+}}
+''',T(a,'''struct E { long k; unsigned char p[%d]; };
+struct M { E* b; E* e; E* U(const long& k) { E* f = b; long n = e - b; while (0 < n) { long h = n / 2; E* m = f + h; if (!(k < m->k)) { f = ++m; n -= h + 1; } else n = h; } return f; } };
+int main()
+{
+    E v[4]; v[0].k = 1; v[1].k = 3; v[2].k = 3; v[3].k = 7; M m; m.b = v; m.e = v + 4; long k = 3; if (m.U(k) != v + 3) ''' % (esz-4)+FAIL(a)+'''
+    k = 0; if (m.U(k) != v) '''+FAIL(a)+'''
 '''),b)
     else:
         raise SystemExit("family template not implemented: "+TPL)
