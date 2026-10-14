@@ -589,8 +589,12 @@ static void chargeGuildSeal(uint32_t inv) {
 }
 extern "C" void F_005840A6_orig(Ctx* c);
 extern "C" void F_00583A92_orig(Ctx* c);
+// With the right trigger held the d-pad is the favourites (the controller help screen:
+// "Access Favourites (D-pad)" under "Favourites (Right Trigger)"): the four fixed
+// quick-access assignments, used as the game's UseQuickAccessItem does.
 extern "C" void host_use_quick_item(Ctx* c) {
     const uint32_t inv = c->ecx, slot = rd32(c->esp + 4);
+    if (host::pad::nativeEnabled() && host::pad::rightTriggerHeld()) { HLOG(1, "inventory: d-pad favourite %u (trigger held)", slot); F_005840A6_orig(c); return; }
     if (host::pad::nativeEnabled() && slot < 4) {
         if (slot == 0) { HLOG(1, "inventory: d-pad up: quick-access menu"); guestCallThis(0x583BD5, inv, {}); c->esp += 8; return; }
         if (slot == 1) { chargeGuildSeal(inv); c->esp += 8; return; }
@@ -606,6 +610,12 @@ extern "C" void host_use_quick_item(Ctx* c) {
 }
 extern "C" void host_use_context_item(Ctx* c) {
     const uint32_t inv = c->ecx, slot = rd32(c->esp + 4);
+    if (host::pad::nativeEnabled() && host::pad::rightTriggerHeld() && slot < 4) {
+        HLOG(1, "inventory: d-pad favourite %u (trigger held)", slot);
+        guestCallThis(0x5840A6, inv, {slot});  // through the wrap's original: the fixed assignment
+        c->esp += 8;
+        return;
+    }
     if (host::pad::nativeEnabled()) {
         if (slot == 0) { HLOG(1, "inventory: d-pad up: quick-access menu"); guestCallThis(0x583BD5, inv, {}); c->esp += 8; return; }
         if (slot == 1) { chargeGuildSeal(inv); c->esp += 8; return; }

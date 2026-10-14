@@ -593,6 +593,7 @@ uint32_t mergedBindings(uint32_t vec) {
 
 }  // namespace
 
+bool rightTriggerHeld() { return g_held[XB_RT]; }  // the pad's right trigger (Xbox: spell mode, favourites with the d-pad)
 bool nativeEnabled() {
     std::lock_guard<std::mutex> l(g.m);
     if (!g.init) load();
