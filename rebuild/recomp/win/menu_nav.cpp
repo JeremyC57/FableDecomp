@@ -566,6 +566,53 @@ static std::string defNameGuess(uint32_t id) {
     return out;
 }
 
+// The Xbox d-pad: CWorld::EAUseQuickAccessItem (0x62ABA0) takes a slot from the event:
+// slots below the context-item count go to CTCInventory::UseContextSensitiveItem (0x583A92,
+// the dynamic ids at this+0x154: left/right fill with context expressions), the rest to
+// CTCInventory::UseQuickAccessItem (0x5840A6, the fixed assignments at this+0x148, which the
+// PC exe pre-fills with a potion and three expressions), and -2 (the PC's G key, action 78)
+// charges OBJECT_GUILD_SEAL_1. With the Xbox scheme both action 55 and 56 sit on the four
+// d-pad directions, so a press reached the pre-filled quick slot and down played an
+// expression. The Xbox layout is up: the quick-access menu, down: the Guild Seal, left and
+// right: the context items; the wraps apply it when the native pad is on.
+static void chargeGuildSeal(uint32_t inv) {
+    const uint32_t mgr = rd32(0x13B879C);  // CGameDefinitionManager
+    if (!mgr) return;
+    const uint32_t mem = gcalloc(1, 0x30), str = mem, param = mem + 0x20;
+    guestCallThis(0x99EBF0, str, {0x1251B4Cu, 0xFFFFFFFFu});  // CCharString("OBJECT_GUILD_SEAL_1")
+    const uint32_t def = guestCallThis(0x9AD410, mgr, {str});  // GetDefGlobalIndexFromName
+    guestCallThis(0x99EAE0, str, {});
+    wr32(param, 0xFFFFFFFEu);
+    HLOG(1, "inventory: d-pad down: Guild Seal (def %u)", def);
+    if (def) guestCallThis(rd32(rd32(inv) + 0x84), inv, {def, param});
+    gfree(mem);
+}
+extern "C" void F_005840A6_orig(Ctx* c);
+extern "C" void F_00583A92_orig(Ctx* c);
+extern "C" void host_use_quick_item(Ctx* c) {
+    const uint32_t inv = c->ecx, slot = rd32(c->esp + 4);
+    if (host::pad::nativeEnabled() && slot < 4) {
+        if (slot == 0) { HLOG(1, "inventory: d-pad up: quick-access menu"); guestCallThis(0x583BD5, inv, {}); c->esp += 8; return; }
+        if (slot == 1) { chargeGuildSeal(inv); c->esp += 8; return; }
+        const uint32_t cb = rd32(inv + 0x154), ce = rd32(inv + 0x158);
+        if (ce >= cb + (slot + 1) * 4 && static_cast<int32_t>(rd32(cb + slot * 4)) > 0) {
+            HLOG(1, "inventory: d-pad slot %u: context item %u", slot, rd32(cb + slot * 4));
+            guestCallThis(0x583A92, inv, {slot});
+            c->esp += 8;
+            return;
+        }
+    }
+    F_005840A6_orig(c);
+}
+extern "C" void host_use_context_item(Ctx* c) {
+    const uint32_t inv = c->ecx, slot = rd32(c->esp + 4);
+    if (host::pad::nativeEnabled()) {
+        if (slot == 0) { HLOG(1, "inventory: d-pad up: quick-access menu"); guestCallThis(0x583BD5, inv, {}); c->esp += 8; return; }
+        if (slot == 1) { chargeGuildSeal(inv); c->esp += 8; return; }
+    }
+    F_00583A92_orig(c);
+}
+
 // 0x581E33 int CTCInventory::GetQuickAccessItem(int index): index into the quick-access
 // item ids at this+0x154 and, past their end, into the context-item ids at this+0x148 with
 // no upper bound. CDrawQuickAccessIcons::Draw (0x652FA4) forms the index from the PC GUI
