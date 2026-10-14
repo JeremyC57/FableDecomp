@@ -577,6 +577,7 @@ uint32_t mergedBindings(uint32_t vec) {
         } else {
             add(72, XB_BACK);  // the in-game menu, as Back opened the inventory on Xbox
             add(76, XB_B);     // INVENTORY_UNSELECT: back out of the menu screens
+            add(78, XB_DDOWN); // CHARGE_GUILD_SEAL (the PC's G key): held on d-pad down, the Xbox seal
         }
     }
     const uint32_t need = static_cast<uint32_t>(all.size());

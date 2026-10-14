@@ -495,7 +495,7 @@ extern "C" void host_ui_scale(Ctx* c) {
         // than 640 or taller than 480 is a PC layout and keeps the game's own scale.
         // The PC-layout test (the quest table, quest start and completion screens are laid out
         // for 1024x768 and overflow 720x480 under the 1.6) walks the component's ancestors
-        // (NUISystem::CComponent: Name +0x24, PParent +0xD8, Size +0xDC, DefIndex +0x158).
+        // (retail NUISystem::CComponent = the PDB layout less 8: Name +0x1C, PParent +0xD0, Size +0xD4, DefIndex +0x150).
         // The component is taken from esi, which is not `this` at every site: every read is
         // fault-safe and a candidate is only trusted with a vtable in the executable's
         // read-only data, otherwise the zoom applies as before.
@@ -506,7 +506,7 @@ extern "C" void host_ui_scale(Ctx* c) {
         std::string chain;
         for (int i = 0; i < 24 && looksLikeComponent(root); ++i) {
             uint32_t cw = 0, ch = 0, parent = 0;
-            readU32(root + 0xDC, cw), readU32(root + 0xE0, ch), readU32(root + 0xD8, parent);
+            readU32(root + 0xD4, cw), readU32(root + 0xD8, ch), readU32(root + 0xD0, parent);  // retail: PDB offsets - 8 (Size +0xD4, PParent +0xD0)
             float fw, fh;
             std::memcpy(&fw, &cw, 4), std::memcpy(&fh, &ch, 4);
             if (fw > w && fw < 8192.0f) w = fw;
@@ -607,7 +607,7 @@ static std::string defNameGuess(uint32_t id) {
 // d-pad directions, so a press reached the pre-filled quick slot and down played an
 // expression. The Xbox layout is up: the quick-access menu, down: the Guild Seal, left and
 // right: the context items; the wraps apply it when the native pad is on.
-static void chargeGuildSeal(uint32_t inv) {
+[[maybe_unused]] static void chargeGuildSeal(uint32_t inv) {  // kept: the instant use (opens the teleport menu)
     const uint32_t mgr = rd32(0x13B879C);  // CGameDefinitionManager
     if (!mgr) return;
     const uint32_t mem = gcalloc(1, 0x30), str = mem, param = mem + 0x20;
@@ -629,14 +629,20 @@ extern "C" void host_use_quick_item(Ctx* c) {
     if (host::pad::nativeEnabled() && host::pad::rightTriggerHeld()) { HLOG(1, "inventory: d-pad favourite %u (trigger held)", slot); F_005840A6_orig(c); return; }
     if (host::pad::nativeEnabled() && slot < 4) {
         if (slot == 0) { HLOG(1, "inventory: d-pad up: quick-access menu"); guestCallThis(0x583BD5, inv, {}); c->esp += 8; return; }
-        if (slot == 1) { chargeGuildSeal(inv); c->esp += 8; return; }
+        // Down: nothing here; CHARGE_GUILD_SEAL (78) is bound to the same button and the game
+        // charges the seal while it is held (the instant use through the -2 path opened the
+        // teleport menu at once). Left/right: the context item of the moment, or nothing (the
+        // fixed assignment underneath is the PC's default expression, not an Xbox context).
+        if (slot == 1) { c->esp += 8; return; }
         const uint32_t cb = rd32(inv + 0x154), ce = rd32(inv + 0x158);
         if (ce >= cb + (slot + 1) * 4 && static_cast<int32_t>(rd32(cb + slot * 4)) > 0) {
             HLOG(1, "inventory: d-pad slot %u: context item %u", slot, rd32(cb + slot * 4));
             guestCallThis(0x583A92, inv, {slot});
-            c->esp += 8;
-            return;
+        } else {
+            HLOG(1, "inventory: d-pad slot %u: no context item", slot);
         }
+        c->esp += 8;
+        return;
     }
     F_005840A6_orig(c);
 }
@@ -650,7 +656,7 @@ extern "C" void host_use_context_item(Ctx* c) {
     }
     if (host::pad::nativeEnabled()) {
         if (slot == 0) { HLOG(1, "inventory: d-pad up: quick-access menu"); guestCallThis(0x583BD5, inv, {}); c->esp += 8; return; }
-        if (slot == 1) { chargeGuildSeal(inv); c->esp += 8; return; }
+        if (slot == 1) { c->esp += 8; return; }  // the seal charges through action 78 on the same button
     }
     F_00583A92_orig(c);
 }
