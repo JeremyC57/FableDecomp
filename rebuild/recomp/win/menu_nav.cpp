@@ -501,31 +501,30 @@ extern "C" void host_ui_scale(Ctx* c) {
         // read-only data, otherwise the zoom applies as before.
         auto readU32 = [](uint32_t a, uint32_t& v) { return a >= 0x10000 && a < kGuestLimit && safeRead(a, &v, 4); };
         auto looksLikeComponent = [&](uint32_t comp) { uint32_t vt = 0; return readU32(comp, vt) && vt >= 0x1230000 && vt < 0x1270000; };
+        // Retail CComponent (raw dump, 2026-10-14): Name CCharString {char* +0x24, len +0x28},
+        // PParent +0xD8 (as the PDB); Size (+0xDC) is 0 on sprites and roots alike, so the
+        // layout is told from the names: the PC screens' components are PC_*, the Xbox UI_*.
         uint32_t root = c->esi;
-        {   // one raw dump per site: the component's first 0x160 bytes, to pin the retail layout
-            static std::set<uint32_t> dumped;
-            if (dumped.size() < 20 && dumped.insert(ret).second) {
-                std::string words;
-                for (uint32_t off = 0; off < 0x160; off += 4) { uint32_t v = 0; readU32(root + off, v); char b[16]; std::snprintf(b, sizeof b, "%s%08X", off % 32 == 0 ? "\n  " : " ", v); words += b; }
-                HLOG(1, "ui: site 0x%08X component 0x%08X:%s", ret, root, words.c_str());
-            }
-        }
-        float w = 0, h = 0;
         std::string chain;
+        bool pcLayout = false;
+        auto nameOf = [&](uint32_t comp) -> std::string {
+            uint32_t ptr = 0, len = 0;
+            if (!readU32(comp + 0x24, ptr) || !readU32(comp + 0x28, len) || ptr < 0x10000 || ptr > 0x7FFFFFFF || len == 0 || len > 64) return "";
+            char buf[65] = {};
+            if (!safeRead(ptr, buf, len)) return "";
+            for (uint32_t i = 0; i < len; ++i) if (buf[i] < 0x20 || buf[i] > 0x7E) return "";
+            return std::string(buf, len);
+        };
         for (int i = 0; i < 24 && looksLikeComponent(root); ++i) {
-            uint32_t cw = 0, ch = 0, parent = 0;
-            readU32(root + 0xD4, cw), readU32(root + 0xD8, ch), readU32(root + 0xD0, parent);  // retail: PDB offsets - 8 (Size +0xD4, PParent +0xD0)
-            float fw, fh;
-            std::memcpy(&fw, &cw, 4), std::memcpy(&fh, &ch, 4);
-            if (fw > w && fw < 8192.0f) w = fw;
-            if (fh > h && fh < 8192.0f) h = fh;
-            if (i < 8) chain += " " + std::to_string(static_cast<int>(fw)) + "x" + std::to_string(static_cast<int>(fh));
-            if (!parent || parent == root) break;
+            const std::string n = nameOf(root);
+            if (n.rfind("PC_", 0) == 0) pcLayout = true;
+            if (i < 10) chain += " " + (n.empty() ? std::string("?") : n);
+            uint32_t parent = 0;
+            if (!readU32(root + 0xD8, parent) || !parent || parent == root) break;
             root = parent;
         }
-        const bool pcLayout = w > 660.0f || h > 500.0f;
-        static std::set<uint32_t> seen;
-        if (seen.insert(root).second) HLOG(1, "ui: screen root 0x%08X largest %.0fx%.0f chain%s: %s layout", root, w, h, chain.c_str(), pcLayout ? "PC (no Xbox zoom)" : "Xbox");
+        static std::set<std::string> seen;
+        if (seen.insert(chain).second) HLOG(1, "ui: zoom site 0x%08X chain%s: %s layout", ret, chain.c_str(), pcLayout ? "PC (no Xbox zoom)" : "Xbox");
         if (!pcLayout) {
             wrf32(out, rdf32(out) * 1.6f);
             wrf32(out + 4, rdf32(out + 4) * 1.6f);
