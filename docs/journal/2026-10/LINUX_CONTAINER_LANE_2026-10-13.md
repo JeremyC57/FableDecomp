@@ -378,6 +378,24 @@ Array_Initialize, the erase copy-down, and the copy/copy_backward shapes whose s
 retail eliminates. Running total for the rescans: 4454/4500 rows from 216 families; catalog
 26,211 (52.9%).
 
+### Wave 20 (EH unwind funclets of landed parents; FPU clamped setters)
+
+176 rows from two sources. The 1,378 `Unwind@<va>` catalog functions are the unwind funclets
+VC7.1 emits after every EH-framed function (`push -1 ; push offset __ehhandler`): one `$L<n>`-headed
+`.text` contribution per parent holding its funclets in unwind-map order followed by the
+`__ehhandler$` thunk, which the linker placed at 0x0121xxxx. They carry no source of their own, so
+`tools/decomp_pipeline/families/funclets.py` walks each landed `/EHsc` parent's retail FuncInfo
+(handler thunk → `mov eax, offset FuncInfo` → unwind map actions), checks the block is contiguous
+and writes one payload entry per funclet whose source is a stub that `#include`s the parent's
+landed file; `verify_and_land.py` grew a `funclet_offset` extractor (the funclet's bytes at that
+offset of the object's `$L` block, relocations shifted) and per-entry `flags`, and reuses the
+parent's behaviour test. All 167 funclets of the 167 landed parents graded RELOCATION_MATCH/PASS.
+The second source is the nine `CAttribute::SetClamped` bodies: the value clamped between two pooled
+float literals through one nested ternary (each branch an FPU load, the store + flag tail
+duplicated three times by VC) -- if/else chains or an inline setter fold the literals into integer
+stores. 527 EH-framed parents (and their ~1,200 funclets) remain; they are mostly one-off bodies.
+Running total for the rescans: 4630/4676 rows from 218 batches; catalog 26,387 (53.2%).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
