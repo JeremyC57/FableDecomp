@@ -547,6 +547,24 @@ allocation, the empty-range inlined erase, and two bad family-scan rows (28-byte
 00ba1140). Catalog 28,771 -> **28,903 (58.3%)**. Lessons in GOTCHAS waves 24e/24f. Next: chunk 33 is cut for the next
 agent (`$S/w22/chunk33.tsv`, `agent33/PROMPT.md`); `mkchunk.py 36 1` for the coordinator (pool ~3,360 rows).
 
+### Wave 24, part 12 (chunks 55, 56, 57)
+Chunk 55 (CLocalDetailPrimitiveRepeatedMesh .. CMapFilenames) to the single sub-agent: 32/40 (`_hand55`; the NUISystem::CManager
+rows (/Os, retail layout: definition manager +0x64, graphics bank +0x10, layer tree +0x70), the CMap grid getters over the landed
+0081f090 model, CThingSwitch and C3DMeshMaterial::CFilenames constructors mislabelled CMapFilenames, CPatchTesselationEdgeStrip,
+a CAIBrain method with a stack CBrainOutput; parked: the 00bfac70-style `push edi ; lea` hoist on the two mesh constructors, a
+push-before-branches argument, a register choice, a reference-vs-value divide order, a retail null-`this` re-read, the wave-24b mask
+narrowing, a `push edi` placement). By the coordinator: chunk 56 (CMapFilenames .. CMemoryDataInputStream: 39/40, `_hand56`; the
+CMemoryAllocator / CMemoryAllocatorFixedSize / CMemoryAllocatorVariableSize bodies (sub-allocator sums under the allocator lock, the
+fixed-size area chains, the variable-size chunk tree rotation and best-fit search, the aligned header arithmetic with the counters
+read into locals), CMemoryAreaChunk::RemoveAreaFromFreeList, CSimpleMemoryPool::CMemoryBlock, CMatrix3x4::operator* (the named-local
+copy-constructor return), CMapInfo / CMarkerInfo / CMapsAndRegionsDialog / CMemoryDataInputStream rows; parked: one register choice)
+and chunk 57 (CMemoryDataInputStream .. CMessageEventFilter_CanBeSeenOrHeard: 24/40, `_hand57`; the memory stream / console line /
+memory file constructors, the NUISystem::CScrollingViewport and CMesh constructors with three vtables, the mesh bank manager and
+mesh data bank bodies, ~CMeshData, the by-value counted-pointer setter, the SGI median, the distance filter; fifteen parked on
+register choice, branch layout, push hoisting, tag-slot sharing, an `int 3` after `_CxxThrowException`, store scheduling; one cold
+block skipped). Catalog 29,574 -> 29,613 -> 29,645 -> **29,669 (59.9%)**. Lessons in GOTCHAS wave 24o. Next: chunk 58 (CMouseCursor ..
+CNavQuadTreeNode) to the agent, chunk 59 by hand; `mkchunk.py 60 2` after (pool 2,440 rows).
+
 ### Wave 24, part 11 (chunks 52, 54)
 Chunk 52 (CItem leftovers .. CLandscapeBackgroundLoadTask) to the single sub-agent: 37/40 (`_hand52`; CKeyboard / CMouseDX /
 CKeyboardDX / CJoystickDX input bodies with label corrections (the "CJoystick" event rows are CKeyboard's at +0x3404, the

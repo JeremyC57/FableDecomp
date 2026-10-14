@@ -1,0 +1,10 @@
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+static long g_base = 0; static const char* g_text = 0; static long g_len = 0; struct CBase { virtual void v00() { } CBase() { ++g_base; } }; struct CCharString { void* m_p; CCharString(const char* t, long n) : m_p(0) { g_text = t; g_len = n; } };
+struct CConsoleCommandLine : CBase { virtual void v00() { } CCharString m_line; bool m_8; long m_c; CConsoleCommandLine() : CBase(), m_line("", -1), m_8(false), m_c(0) { } };
+
+int main() {
+    CConsoleCommandLine c; if (g_base != 1 || std::strcmp(g_text, "") || g_len != -1 || c.m_8 || c.m_c) { std::printf("009ea2b0_TEST FAIL\n"); return 1; }
+    std::printf("009ea2b0_TEST PASS\n"); return 0;
+}

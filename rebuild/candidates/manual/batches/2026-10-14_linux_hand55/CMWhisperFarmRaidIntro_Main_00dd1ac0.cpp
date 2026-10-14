@@ -1,0 +1,25 @@
+// CM_WhisperFarmRaidIntro::Main() -- when the parent raid script (+0x14) has not run its cutscene (+0x88) and this script is not aborted (0x00F35B30), mark the cutscene done and run the parent's multiplier cutscene (0x00DD1AF0)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD1AC0, length 48 bytes.
+// Callees: the abort test @ 0x00F35B30 (on `this`, bool; propagated manifest label), CQ_OrchardFarmRaidScript::DoMultiplierCutscene @ 0x00DD1AF0 (a tail jump). Shape: the parent re-read after the call, `ret`.
+struct CQ_OrchardFarmRaidScript {                  // the parent quest script (+0x14)
+    unsigned char _pad[0x78];
+    void*         m_pRaidThing;                    // +0x78
+    unsigned char _pad7c[0xc];
+    bool          m_cutsceneDone;                  // +0x88
+    void DoMultiplierCutscene();                   // 0x00DD1AF0
+};
+struct CM_WhisperFarmRaidIntro {
+    void*                     __vftable;           // +0x00
+    unsigned char             _pad04[0x10];
+    CQ_OrchardFarmRaidScript* ParentClass;         // +0x14
+    bool IsAborted();                              // 0x00F35B30
+    void Main();
+};
+
+void CM_WhisperFarmRaidIntro::Main()
+{
+    if (!ParentClass->m_cutsceneDone && !IsAborted()) {
+        ParentClass->m_cutsceneDone = true;
+        ParentClass->DoMultiplierCutscene();
+    }
+}

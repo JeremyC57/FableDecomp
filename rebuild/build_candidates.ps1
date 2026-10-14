@@ -208790,6 +208790,671 @@ $catalog = @(
         TestSource = '00/eb/CLadyGrey_Init_00eb7960_test.cpp'
         PassPattern = '00eb7960_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004fde50'
+        Module = 'CMapInfo'
+        Source = '00/4f/CMapInfo_CMapInfo_004fde50.cpp'
+        TestSource = '00/4f/CMapInfo_CMapInfo_004fde50_test.cpp'
+        PassPattern = '004fde50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067b0b0'
+        Module = 'CRetailTree_0067b0b0'
+        Source = '00/67/CRetailTree0067b0b0_BuyNode_0067b0b0.cpp'
+        TestSource = '00/67/CRetailTree0067b0b0_BuyNode_0067b0b0_test.cpp'
+        PassPattern = '0067b0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067b0e0'
+        Module = 'CRetailTree_0067b0e0'
+        Source = '00/67/CRetailTree0067b0e0_BuyNode_0067b0e0.cpp'
+        TestSource = '00/67/CRetailTree0067b0e0_BuyNode_0067b0e0_test.cpp'
+        PassPattern = '0067b0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067b110'
+        Module = 'CRetailTree_0067b110'
+        Source = '00/67/CRetailTree0067b110_BuyNode_0067b110.cpp'
+        TestSource = '00/67/CRetailTree0067b110_BuyNode_0067b110_test.cpp'
+        PassPattern = '0067b110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00697c60'
+        Module = 'CMapInfo_00697c60'
+        Source = '00/69/CMapInfo00697c60_Clear_00697c60.cpp'
+        TestSource = '00/69/CMapInfo00697c60_Clear_00697c60_test.cpp'
+        PassPattern = '00697c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e3ab0'
+        Module = 'CMemoryDataInputStream_006e3ab0'
+        Source = '00/6e/CMemoryDataInputStream006e3ab0_OpenStringSource_006e3ab0.cpp'
+        TestSource = '00/6e/CMemoryDataInputStream006e3ab0_OpenStringSource_006e3ab0_test.cpp'
+        PassPattern = '006e3ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082a230'
+        Module = 'CMarkerInfo'
+        Source = '00/82/CMarkerInfo_IsRotatedOnMap_0082a230.cpp'
+        TestSource = '00/82/CMarkerInfo_IsRotatedOnMap_0082a230_test.cpp'
+        PassPattern = '0082a230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00994930'
+        Module = 'CMemoryDataInputStream'
+        Source = '00/99/CMemoryDataInputStream_CMemoryDataInputStream_00994930.cpp'
+        TestSource = '00/99/CMemoryDataInputStream_CMemoryDataInputStream_00994930_test.cpp'
+        PassPattern = '00994930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cbf60'
+        Module = 'CMapsAndRegionsDialog'
+        Source = '00/9c/CMapsAndRegionsDialog_OpenMapDialog_009cbf60.cpp'
+        TestSource = '00/9c/CMapsAndRegionsDialog_OpenMapDialog_009cbf60_test.cpp'
+        PassPattern = '009cbf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f1760'
+        Module = 'CMemoryBuffer'
+        Source = '00/9f/CMemoryBuffer_Copy_009f1760.cpp'
+        TestSource = '00/9f/CMemoryBuffer_Copy_009f1760_test.cpp'
+        PassPattern = '009f1760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f2450'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_GetHeaderOverhead_009f2450.cpp'
+        TestSource = '00/9f/CMemoryAllocator_GetHeaderOverhead_009f2450_test.cpp'
+        PassPattern = '009f2450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f2550'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_GetWastedSpace_009f2550.cpp'
+        TestSource = '00/9f/CMemoryAllocator_GetWastedSpace_009f2550_test.cpp'
+        PassPattern = '009f2550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f2660'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_ConsolidateFreeAreas_009f2660.cpp'
+        TestSource = '00/9f/CMemoryAllocator_ConsolidateFreeAreas_009f2660_test.cpp'
+        PassPattern = '009f2660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f28d0'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_InitDebugInfo_009f28d0.cpp'
+        TestSource = '00/9f/CMemoryAllocator_InitDebugInfo_009f28d0_test.cpp'
+        PassPattern = '009f28d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a56530'
+        Module = 'CMatrix3x4'
+        Source = '00/a5/CMatrix3x4_operator_00a56530.cpp'
+        TestSource = '00/a5/CMatrix3x4_operator_00a56530_test.cpp'
+        PassPattern = '00a56530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5c670'
+        Module = 'CSimpleMemoryPool::CMemoryBlock'
+        Source = '00/a5/CSimpleMemoryPoolCMemoryBlock_CMemoryBlock_00a5c670.cpp'
+        TestSource = '00/a5/CSimpleMemoryPoolCMemoryBlock_CMemoryBlock_00a5c670_test.cpp'
+        PassPattern = '00a5c670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5c6e0'
+        Module = 'CSimpleMemoryPool::CMemoryBlock'
+        Source = '00/a5/CSimpleMemoryPoolCMemoryBlock_CMemoryBlock_00a5c6e0.cpp'
+        TestSource = '00/a5/CSimpleMemoryPoolCMemoryBlock_CMemoryBlock_00a5c6e0_test.cpp'
+        PassPattern = '00a5c6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5c9b0'
+        Module = 'CSimpleMemoryPool::CMemoryBlock'
+        Source = '00/a5/CSimpleMemoryPoolCMemoryBlock_scalardeletingdestructor_00a5c9b0.cpp'
+        TestSource = '00/a5/CSimpleMemoryPoolCMemoryBlock_scalardeletingdestructor_00a5c9b0_test.cpp'
+        PassPattern = '00a5c9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64500'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetLargestFreeAreaSize_00a64500.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetLargestFreeAreaSize_00a64500_test.cpp'
+        PassPattern = '00a64500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64530'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetNoAreas_00a64530.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetNoAreas_00a64530_test.cpp'
+        PassPattern = '00a64530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64560'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_00a64560.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetNoAllocatedAreas_00a64560_test.cpp'
+        PassPattern = '00a64560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a646e0'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_RotateLeft_00a646e0.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_RotateLeft_00a646e0_test.cpp'
+        PassPattern = '00a646e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64c10'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_AllocateMemoryFromExistingChunks_00a64c10.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_AllocateMemoryFromExistingChunks_00a64c10_test.cpp'
+        PassPattern = '00a64c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64e20'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetHeaderOverhead_00a64e20.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetHeaderOverhead_00a64e20_test.cpp'
+        PassPattern = '00a64e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a651b0'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetAllocationSize_00a651b0.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetAllocationSize_00a651b0_test.cpp'
+        PassPattern = '00a651b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a651e0'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetAllocationSizeIncludingHeader_00a651e0.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetAllocationSizeIncludingHeader_00a651e0_test.cpp'
+        PassPattern = '00a651e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65210'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetTotalMemoryControlledByAllocator_00a65210.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetTotalMemoryControlledByAllocator_00a65210_test.cpp'
+        PassPattern = '00a65210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65330'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_Validate_00a65330.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_Validate_00a65330_test.cpp'
+        PassPattern = '00a65330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a658e0'
+        Module = 'CMemoryAreaChunk'
+        Source = '00/a6/CMemoryAreaChunk_RemoveAreaFromFreeList_00a658e0.cpp'
+        TestSource = '00/a6/CMemoryAreaChunk_RemoveAreaFromFreeList_00a658e0_test.cpp'
+        PassPattern = '00a658e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65a50'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_Deallocate_00a65a50.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_Deallocate_00a65a50_test.cpp'
+        PassPattern = '00a65a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65e70'
+        Module = 'CMemoryAllocatorFixedSize'
+        Source = '00/a6/CMemoryAllocatorFixedSize_DeleteChunk_00a65e70.cpp'
+        TestSource = '00/a6/CMemoryAllocatorFixedSize_DeleteChunk_00a65e70_test.cpp'
+        PassPattern = '00a65e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a660a0'
+        Module = 'CMemoryAllocatorFixedSize'
+        Source = '00/a6/CMemoryAllocatorFixedSize_GetAllAllocatedAreas_00a660a0.cpp'
+        TestSource = '00/a6/CMemoryAllocatorFixedSize_GetAllAllocatedAreas_00a660a0_test.cpp'
+        PassPattern = '00a660a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66100'
+        Module = 'CMemoryAllocatorFixedSize'
+        Source = '00/a6/CMemoryAllocatorFixedSize_GetAllocatedArea_00a66100.cpp'
+        TestSource = '00/a6/CMemoryAllocatorFixedSize_GetAllocatedArea_00a66100_test.cpp'
+        PassPattern = '00a66100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66260'
+        Module = 'CMemoryAllocatorFixedSize'
+        Source = '00/a6/CMemoryAllocatorFixedSize_Validate_00a66260.cpp'
+        TestSource = '00/a6/CMemoryAllocatorFixedSize_Validate_00a66260_test.cpp'
+        PassPattern = '00a66260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a663a0'
+        Module = 'CMemoryAllocatorFixedSize'
+        Source = '00/a6/CMemoryAllocatorFixedSize_Validate_00a663a0.cpp'
+        TestSource = '00/a6/CMemoryAllocatorFixedSize_Validate_00a663a0_test.cpp'
+        PassPattern = '00a663a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66600'
+        Module = 'CMemoryAllocatorFixedSize'
+        Source = '00/a6/CMemoryAllocatorFixedSize_scalardeletingdestructor_00a66600.cpp'
+        TestSource = '00/a6/CMemoryAllocatorFixedSize_scalardeletingdestructor_00a66600_test.cpp'
+        PassPattern = '00a66600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac5190'
+        Module = 'C3DMeshFileEngineMaterialChunk::CMapFilenames'
+        Source = '00/ac/C3DMeshFileEngineMaterialChunkCMapFilenames_CMapFilenames_00ac5190.cpp'
+        TestSource = '00/ac/C3DMeshFileEngineMaterialChunkCMapFilenames_CMapFilenames_00ac5190_test.cpp'
+        PassPattern = '00ac5190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9fec0'
+        Module = 'CMeleeApprentice'
+        Source = '00/e9/CMeleeApprentice_Init_00e9fec0.cpp'
+        TestSource = '00/e9/CMeleeApprentice_Init_00e9fec0_test.cpp'
+        PassPattern = '00e9fec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef42d0'
+        Module = 'CMeanBandit'
+        Source = '00/ef/CMeanBandit_OnInterrupted_00ef42d0.cpp'
+        TestSource = '00/ef/CMeanBandit_OnInterrupted_00ef42d0_test.cpp'
+        PassPattern = '00ef42d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041e3b2'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_GetLayer_0041e3b2.cpp'
+        TestSource = '00/41/NUISystemCManager_GetLayer_0041e3b2_test.cpp'
+        PassPattern = '0041e3b2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a9b7'
+        Module = 'NUISystem::CManager'
+        Source = '00/42/NUISystemCManager_SetGraphicsBank_0042a9b7.cpp'
+        TestSource = '00/42/NUISystemCManager_SetGraphicsBank_0042a9b7_test.cpp'
+        PassPattern = '0042a9b7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00529b00'
+        Module = 'CThingSwitch'
+        Source = '00/52/CThingSwitch_CThingSwitch_00529b00.cpp'
+        TestSource = '00/52/CThingSwitch_CThingSwitch_00529b00_test.cpp'
+        PassPattern = '00529b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f91e0'
+        Module = 'CAnimationEventQuery_006f91e0'
+        Source = '00/6f/CAnimationEventQuery006f91e0_GetEmbeddedEventNames_006f91e0.cpp'
+        TestSource = '00/6f/CAnimationEventQuery006f91e0_GetEmbeddedEventNames_006f91e0_test.cpp'
+        PassPattern = '006f91e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f9240'
+        Module = 'CAnimationEventQuery_006f9240'
+        Source = '00/6f/CAnimationEventQuery006f9240_GetEmbeddedEventNames_006f9240.cpp'
+        TestSource = '00/6f/CAnimationEventQuery006f9240_GetEmbeddedEventNames_006f9240_test.cpp'
+        PassPattern = '006f9240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f9720'
+        Module = 'CAnimationEventQuery_006f9720'
+        Source = '00/6f/CAnimationEventQuery006f9720_AnimHasEvent_006f9720.cpp'
+        TestSource = '00/6f/CAnimationEventQuery006f9720_AnimHasEvent_006f9720_test.cpp'
+        PassPattern = '006f9720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081e690'
+        Module = 'CMap'
+        Source = '00/81/CMap_GetWorldMapNumber_0081e690.cpp'
+        TestSource = '00/81/CMap_GetWorldMapNumber_0081e690_test.cpp'
+        PassPattern = '0081e690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081e780'
+        Module = 'CMap'
+        Source = '00/81/CMap_AllocateMapThingUID_0081e780.cpp'
+        TestSource = '00/81/CMap_AllocateMapThingUID_0081e780_test.cpp'
+        PassPattern = '0081e780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081e7b0'
+        Module = 'CMap'
+        Source = '00/81/CMap_GetMemoryFootprint_0081e7b0.cpp'
+        TestSource = '00/81/CMap_GetMemoryFootprint_0081e7b0_test.cpp'
+        PassPattern = '0081e7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081e7e0'
+        Module = 'CMap'
+        Source = '00/81/CMap_Clear_0081e7e0.cpp'
+        TestSource = '00/81/CMap_Clear_0081e7e0_test.cpp'
+        PassPattern = '0081e7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081e960'
+        Module = 'CMapBrushList_0081e960'
+        Source = '00/81/CMapBrushList0081e960_GetScriptedMapBrush_0081e960.cpp'
+        TestSource = '00/81/CMapBrushList0081e960_GetScriptedMapBrush_0081e960_test.cpp'
+        PassPattern = '0081e960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081e9f0'
+        Module = 'CMapBrushList_0081e9f0'
+        Source = '00/81/CMapBrushList0081e9f0_GetScriptedMapBrush_0081e9f0.cpp'
+        TestSource = '00/81/CMapBrushList0081e9f0_GetScriptedMapBrush_0081e9f0_test.cpp'
+        PassPattern = '0081e9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081ee00'
+        Module = 'CMap'
+        Source = '00/81/CMap_InitGameMap_0081ee00.cpp'
+        TestSource = '00/81/CMap_InitGameMap_0081ee00_test.cpp'
+        PassPattern = '0081ee00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0081f460'
+        Module = 'CMap'
+        Source = '00/81/CMap_IsCameraPassableAt_0081f460.cpp'
+        TestSource = '00/81/CMap_IsCameraPassableAt_0081f460_test.cpp'
+        PassPattern = '0081f460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00820080'
+        Module = 'CMap'
+        Source = '00/82/CMap_GetGroundSizeZAt_00820080.cpp'
+        TestSource = '00/82/CMap_GetGroundSizeZAt_00820080_test.cpp'
+        PassPattern = '00820080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00820100'
+        Module = 'CMap'
+        Source = '00/82/CMap_GetThemeSizeZAt_00820100.cpp'
+        TestSource = '00/82/CMap_GetThemeSizeZAt_00820100_test.cpp'
+        PassPattern = '00820100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088bb60'
+        Module = 'CAIBrain_0088bb60'
+        Source = '00/88/CAIBrain0088bb60_ForceResetWithOutput_0088bb60.cpp'
+        TestSource = '00/88/CAIBrain0088bb60_ForceResetWithOutput_0088bb60_test.cpp'
+        PassPattern = '0088bb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f75b0'
+        Module = 'CMap'
+        Source = '00/8f/CMap_DrawGetEngineThemeAt_008f75b0.cpp'
+        TestSource = '00/8f/CMap_DrawGetEngineThemeAt_008f75b0_test.cpp'
+        PassPattern = '008f75b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f75f0'
+        Module = 'CMap'
+        Source = '00/8f/CMap_DrawGetEngineBlendAt_008f75f0.cpp'
+        TestSource = '00/8f/CMap_DrawGetEngineBlendAt_008f75f0_test.cpp'
+        PassPattern = '008f75f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f7800'
+        Module = 'CMap'
+        Source = '00/8f/CMap_DrawBlockGetSizeZAt_008f7800.cpp'
+        TestSource = '00/8f/CMap_DrawBlockGetSizeZAt_008f7800_test.cpp'
+        PassPattern = '008f7800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a69e60'
+        Module = 'CManagedTexture'
+        Source = '00/a6/CManagedTexture_Sizeof_00a69e60.cpp'
+        TestSource = '00/a6/CManagedTexture_Sizeof_00a69e60_test.cpp'
+        PassPattern = '00a69e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abef60'
+        Module = 'C3DMeshMaterial::CFilenames'
+        Source = '00/ab/C3DMeshMaterialCFilenames_CFilenames_00abef60.cpp'
+        TestSource = '00/ab/C3DMeshMaterialCFilenames_CFilenames_00abef60_test.cpp'
+        PassPattern = '00abef60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf9b40'
+        Module = 'CLocalDetailPrimitiveRepeatedMesh'
+        Source = '00/bf/CLocalDetailPrimitiveRepeatedMesh_OnPostRelocation_00bf9b40.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveRepeatedMesh_OnPostRelocation_00bf9b40_test.cpp'
+        PassPattern = '00bf9b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfc370'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/bf/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00bfc370.cpp'
+        TestSource = '00/bf/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00bfc370_test.cpp'
+        PassPattern = '00bfc370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c087c0'
+        Module = 'CMainGameComponent'
+        Source = '00/c0/CMainGameComponent_BeginInputLoading_00c087c0.cpp'
+        TestSource = '00/c0/CMainGameComponent_BeginInputLoading_00c087c0_test.cpp'
+        PassPattern = '00c087c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d15140'
+        Module = 'CMainGameComponentInit'
+        Source = '00/d1/CMainGameComponentInit_CMainGameComponentInit_00d15140.cpp'
+        TestSource = '00/d1/CMainGameComponentInit_CMainGameComponentInit_00d15140_test.cpp'
+        PassPattern = '00d15140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9ecf0'
+        Module = 'CMC_MinionGuard'
+        Source = '00/d9/CMCMinionGuard_SetTarget_00d9ecf0.cpp'
+        TestSource = '00/d9/CMCMinionGuard_SetTarget_00d9ecf0_test.cpp'
+        PassPattern = '00d9ecf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd1ac0'
+        Module = 'CM_WhisperFarmRaidIntro'
+        Source = '00/dd/CMWhisperFarmRaidIntro_Main_00dd1ac0.cpp'
+        TestSource = '00/dd/CMWhisperFarmRaidIntro_Main_00dd1ac0_test.cpp'
+        PassPattern = '00dd1ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd1eb0'
+        Module = 'CMK_OFI_GWLL_WHIS2'
+        Source = '00/dd/CMKOFIGWLLWHIS2_Main_00dd1eb0.cpp'
+        TestSource = '00/dd/CMKOFIGWLLWHIS2_Main_00dd1eb0_test.cpp'
+        PassPattern = '00dd1eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e93020'
+        Module = 'CM_HiddenBooty'
+        Source = '00/e9/CMHiddenBooty_OnPredicateFail_00e93020.cpp'
+        TestSource = '00/e9/CMHiddenBooty_OnPredicateFail_00e93020_test.cpp'
+        PassPattern = '00e93020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea50a0'
+        Module = 'CLostTraderBrother'
+        Source = '00/ea/CLostTraderBrother_Init_00ea50a0.cpp'
+        TestSource = '00/ea/CLostTraderBrother_Init_00ea50a0_test.cpp'
+        PassPattern = '00ea50a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec9cb0'
+        Module = 'CMansLover'
+        Source = '00/ec/CMansLover_Init_00ec9cb0.cpp'
+        TestSource = '00/ec/CMansLover_Init_00ec9cb0_test.cpp'
+        PassPattern = '00ec9cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053f120'
+        Module = 'NUISystem::CScrollingViewport'
+        Source = '00/53/NUISystemCScrollingViewport_CScrollingViewport_0053f120.cpp'
+        TestSource = '00/53/NUISystemCScrollingViewport_CScrollingViewport_0053f120_test.cpp'
+        PassPattern = '0053f120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550190'
+        Module = 'NUISystem::CMesh'
+        Source = '00/55/NUISystemCMesh_CMesh_00550190.cpp'
+        TestSource = '00/55/NUISystemCMesh_CMesh_00550190_test.cpp'
+        PassPattern = '00550190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006af220'
+        Module = 'CDistanceFilter_006af220'
+        Source = '00/6a/CDistanceFilter006af220_operator_006af220.cpp'
+        TestSource = '00/6a/CDistanceFilter006af220_operator_006af220_test.cpp'
+        PassPattern = '006af220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007046d0'
+        Module = 'CMeshDataBank_007046d0'
+        Source = '00/70/CMeshDataBank007046d0_SetAnimationMemoryPool_007046d0.cpp'
+        TestSource = '00/70/CMeshDataBank007046d0_SetAnimationMemoryPool_007046d0_test.cpp'
+        PassPattern = '007046d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995f50'
+        Module = 'CMemoryDataInputStream'
+        Source = '00/99/CMemoryDataInputStream_CMemoryDataInputStream_00995f50.cpp'
+        TestSource = '00/99/CMemoryDataInputStream_CMemoryDataInputStream_00995f50_test.cpp'
+        PassPattern = '00995f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00996af0'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/99/CMemoryDataOutputStream_CMemoryDataOutputStream_00996af0.cpp'
+        TestSource = '00/99/CMemoryDataOutputStream_CMemoryDataOutputStream_00996af0_test.cpp'
+        PassPattern = '00996af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b2930'
+        Module = '_global'
+        Source = '00/9b/global_Median009b2930_009b2930.cpp'
+        TestSource = '00/9b/global_Median009b2930_009b2930_test.cpp'
+        PassPattern = '009b2930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9730'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_SetLength_009e9730.cpp'
+        TestSource = '00/9e/CMemoryFile_SetLength_009e9730_test.cpp'
+        PassPattern = '009e9730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ea2b0'
+        Module = 'CConsoleCommandLine'
+        Source = '00/9e/CConsoleCommandLine_CConsoleCommandLine_009ea2b0.cpp'
+        TestSource = '00/9e/CConsoleCommandLine_CConsoleCommandLine_009ea2b0_test.cpp'
+        PassPattern = '009ea2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a09d90'
+        Module = 'CMeshBankManager'
+        Source = '00/a0/CMeshBankManager_OnPreDeviceReset_00a09d90.cpp'
+        TestSource = '00/a0/CMeshBankManager_OnPreDeviceReset_00a09d90_test.cpp'
+        PassPattern = '00a09d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a09e70'
+        Module = 'CMeshBankManager'
+        Source = '00/a0/CMeshBankManager_FlushUnusedBanks_00a09e70.cpp'
+        TestSource = '00/a0/CMeshBankManager_FlushUnusedBanks_00a09e70_test.cpp'
+        PassPattern = '00a09e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a23a30'
+        Module = 'CMeshBankStateBlock'
+        Source = '00/a2/CMeshBankStateBlock_GetDefault_00a23a30.cpp'
+        TestSource = '00/a2/CMeshBankStateBlock_GetDefault_00a23a30_test.cpp'
+        PassPattern = '00a23a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a23b00'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_ProcessLoadingQueue_00a23b00.cpp'
+        TestSource = '00/a2/CMeshDataBank_ProcessLoadingQueue_00a23b00_test.cpp'
+        PassPattern = '00a23b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24000'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_FreeDeviceSpecificResources_00a24000.cpp'
+        TestSource = '00/a2/CMeshDataBank_FreeDeviceSpecificResources_00a24000_test.cpp'
+        PassPattern = '00a24000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a243b0'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_NotifyEntryUpdated_00a243b0.cpp'
+        TestSource = '00/a2/CMeshDataBank_NotifyEntryUpdated_00a243b0_test.cpp'
+        PassPattern = '00a243b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2ad10'
+        Module = 'CEntryVectorOwner_00a2ad10'
+        Source = '00/a2/CEntryVectorOwner00a2ad10_Sizeof_00a2ad10.cpp'
+        TestSource = '00/a2/CEntryVectorOwner00a2ad10_Sizeof_00a2ad10_test.cpp'
+        PassPattern = '00a2ad10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2b6f0'
+        Module = 'CMeshData'
+        Source = '00/a2/CMeshData_CMeshData_00a2b6f0.cpp'
+        TestSource = '00/a2/CMeshData_CMeshData_00a2b6f0_test.cpp'
+        PassPattern = '00a2b6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2d6c0'
+        Module = 'CMeshBankStateBlock'
+        Source = '00/a2/CMeshBankStateBlock_Set_00a2d6c0.cpp'
+        TestSource = '00/a2/CMeshBankStateBlock_Set_00a2d6c0_test.cpp'
+        PassPattern = '00a2d6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a36100'
+        Module = 'C3DMeshStatsOwner_00a36100'
+        Source = '00/a3/C3DMeshStatsOwner00a36100_HasDummyObject_00a36100.cpp'
+        TestSource = '00/a3/C3DMeshStatsOwner00a36100_HasDummyObject_00a36100_test.cpp'
+        PassPattern = '00a36100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8ef50'
+        Module = 'CGroupFlagOwner_00a8ef50'
+        Source = '00/a8/CGroupFlagOwner00a8ef50_MarkGroups_00a8ef50.cpp'
+        TestSource = '00/a8/CGroupFlagOwner00a8ef50_MarkGroups_00a8ef50_test.cpp'
+        PassPattern = '00a8ef50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b29680'
+        Module = 'CEntryVector_00b29680'
+        Source = '00/b2/CEntryVector00b29680_DeleteAll_00b29680.cpp'
+        TestSource = '00/b2/CEntryVector00b29680_DeleteAll_00b29680_test.cpp'
+        PassPattern = '00b29680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b423b0'
+        Module = 'CMapOwner_00b423b0'
+        Source = '00/b4/CMapOwner00b423b0_SetMapVisibility_00b423b0.cpp'
+        TestSource = '00/b4/CMapOwner00b423b0_SetMapVisibility_00b423b0_test.cpp'
+        PassPattern = '00b423b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c54bd0'
+        Module = 'CAssistanceOwner_00c54bd0'
+        Source = '00/c5/CAssistanceOwner00c54bd0_Reset_00c54bd0.cpp'
+        TestSource = '00/c5/CAssistanceOwner00c54bd0_Reset_00c54bd0_test.cpp'
+        PassPattern = '00c54bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55c80'
+        Module = 'CScreenEffectOwner_00c55c80'
+        Source = '00/c5/CScreenEffectOwner00c55c80_Reset_00c55c80.cpp'
+        TestSource = '00/c5/CScreenEffectOwner00c55c80_Reset_00c55c80_test.cpp'
+        PassPattern = '00c55c80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
