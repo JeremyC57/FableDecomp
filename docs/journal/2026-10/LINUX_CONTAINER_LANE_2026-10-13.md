@@ -446,6 +446,37 @@ F135 (63 v 63 bytes, one load scheduled differently) and three sibling-call wrap
 compiler always tail-jumps. Running total for the rescans: 5028/5165 rows from 240 batches;
 catalog 26,785 (54.0%). EH-framed parents landed: 220 of 694; funclets landed: 239 of 1,378.
 
+### Wave 23 (hand-authored EH-framed bodies, funclet passes 7–25, delegated hand-authoring agents)
+
+Two lanes ran side by side. (1) Hand EH passes `_eh1..21`: 216 of the one-off EH-framed bodies of
+the 0x00C09000.. module (105–170 bytes) written against the compiler one at a time with
+`$S/tools/q.py` / `udiff.py`: scoped-lock queries and setters over the global @ 0x0143BB14,
+member factories (`new CObject(this, b, c, a)`), container constructors and destructors built from
+the root/node pattern (the root keeps the node pointer, the most-derived class is `novtable`,
+drain loops through `__forceinline` virtual helpers), class arrays through `__ehvec_ctor`/`_dtor`,
+COM-style `__stdcall` slot calls with `this` pushed, one-word critical-section holders with the
+Win32 imports, action-request records with slot accessors, event dispatch with `delete` through a
+virtual destructor, `std::vector` insert/erase shapes and float results parked in dead argument
+slots. Each pass was followed by `families/funclets.py` (277 funclets in `_funclets7..25`).
+(2) Delegated hand-authoring: the class-labelled 17–96-byte singleton/pair pool was cut into
+40-row chunks (`$S/w22/chunkNN.tsv`, oracles registered for q.py) and handed to background agents
+with a brief (`$S/w22/BRIEF.md`: tools, rules, test template, lessons); each agent iterates at most
+four times per row and writes `payload.json` / `oracle.tsv` / `differ/` / `NOTES.md`; the
+coordinator lands sequentially with `$S/w22/land_agent.sh` (strips the padding the chunk rows
+carry, filters already-landed addresses). Chunks 00–14 landed 519 of 522 rows; the agents'
+lessons and label corrections are in the batch READMEs. Lessons (also in GOTCHAS): constructor
+shells read as embedded members with inline constructors (vtable store before zeroed stores) or
+root-base members (store before the derived vtable); a member stored before EH state 0 belongs to
+the root; `optimize("y",off)+("s",on)` for frame-pointer bodies; a non-throwing `operator delete`
+declaration removes the EH state of an inline vector release; a member destructor declared
+`throw()` as the last call drops the trailing state store; reference parameters make downcasts
+null-check free; the Dinkumware `insert` temporary and other inlined locals are homed in dead
+argument slots. Parked with evidence (FINDINGS): DDK-vs-RTM scheduling nits (adjacent stores,
+register roles, a load before the `this` parking), the DDK folding `size() != 0` into a mask
+test, EH frames the DDK drops for empty inline destructors, the DDK's STL `string(const char*,
+const allocator&)` choice in `_Xlen`, and LTCG register-argument bodies. Catalog 27,809
+(56.1%). EH-framed parents landed: 436 of 694; funclets in the catalog: 515 of 1,378.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
