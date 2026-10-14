@@ -1,0 +1,494 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00405c10",
+    "module": "_global",
+    "name": "CFourierAnalysis_00405c10",
+    "source_cpp": "// CFourierAnalysis_00405c10(void* a0, void* a1) -- `__cdecl`: returns argument 1\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00405C10, oracle length 5 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 8] ; ret \n// Tiny-body shape `ReturnArg` synthesised from the instruction pattern; the manifest label is\n// propagated where it is a plain name, the other names are descriptive.\nvoid* __cdecl CFourierAnalysis_00405c10(void* a0, void* a1)\n{\n    return a1;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void* __cdecl R(void* a0, void* a1) { return a1; }\nint main()\n{\n    int i; if (R(&i, &i) != &i) { std::printf(\"00405c10_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00405c10_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00405c10_TEST PASS"
+   },
+   {
+    "address": "0042d506",
+    "module": "_unattributed",
+    "name": "vfunc_13",
+    "source_cpp": "// CClass_0042d506::vfunc_13() -- returns the 16-bit member at +0xc0\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0042D506, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ax, word ptr [ecx + 0xc0] ; ret \n// Tiny-body shape `GetWord` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_0042d506 {\n    unsigned char _pad[0xc0];\n    short m_value;                         // +0xc0\n    short vfunc_13();\n};\n\nshort CClass_0042d506::vfunc_13()\n{\n    return m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; short v; short G() { return v; } };\nint main()\n{\n    X x; x.v = -3; if (x.G() != -3) { std::printf(\"0042d506_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0042d506_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0042d506_TEST PASS"
+   },
+   {
+    "address": "0057eebc",
+    "module": "_global",
+    "name": "ReturnArg_0057eebc",
+    "source_cpp": "// ReturnArg_0057eebc(void* a0) -- `__cdecl`: returns argument 0\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0057EEBC, oracle length 5 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; ret \n// Tiny-body shape `ReturnArg` synthesised from the instruction pattern; the manifest label is\n// propagated where it is a plain name, the other names are descriptive.\nvoid* __cdecl ReturnArg_0057eebc(void* a0)\n{\n    return a0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void* __cdecl R(void* a0) { return a0; }\nint main()\n{\n    int i; if (R(&i) != &i) { std::printf(\"0057eebc_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0057eebc_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0057eebc_TEST PASS"
+   },
+   {
+    "address": "0041db64",
+    "module": "_unattributed",
+    "name": "vfunc_27",
+    "source_cpp": "// CClass_0041db64::vfunc_27(long) -- passes the by-value argument by reference to the member at +0x60's setter @ 0x0042B646\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0041DB64, oracle length 16 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  lea eax, [esp + 4] ; push eax ; add ecx, 0x60 ; call 0x42b646 ; ret 4\n// Tiny-body shape `SetMemberValue` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CMember {\n    void Set(const long& value);           // 0x0042B646\n};\n\nstruct CClass_0041db64 {\n    unsigned char _pad[0x60];\n    CMember m_member;                      // +0x60\n    void vfunc_27(long value);\n};\n\nvoid CClass_0041db64::vfunc_27(long value)\n{\n    m_member.Set(value);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic long g_v = 0; struct M { void S(const long& v) { g_v = v; } }; struct X { unsigned char p[8]; M m; void F(long v) { m.S(v); } };\nint main()\n{\n    X x; x.F(5); if (g_v != 5) { std::printf(\"0041db64_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0041db64_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0041db64_TEST PASS"
+   },
+   {
+    "address": "0041db74",
+    "module": "_unattributed",
+    "name": "vfunc_24",
+    "source_cpp": "// CClass_0041db74::vfunc_24(long) -- passes the by-value argument by reference to the member at +0x5c's setter @ 0x0042B687\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0041DB74, oracle length 16 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  lea eax, [esp + 4] ; push eax ; add ecx, 0x5c ; call 0x42b687 ; ret 4\n// Tiny-body shape `SetMemberValue` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CMember {\n    void Set(const long& value);           // 0x0042B687\n};\n\nstruct CClass_0041db74 {\n    unsigned char _pad[0x5c];\n    CMember m_member;                      // +0x5c\n    void vfunc_24(long value);\n};\n\nvoid CClass_0041db74::vfunc_24(long value)\n{\n    m_member.Set(value);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic long g_v = 0; struct M { void S(const long& v) { g_v = v; } }; struct X { unsigned char p[8]; M m; void F(long v) { m.S(v); } };\nint main()\n{\n    X x; x.F(5); if (g_v != 5) { std::printf(\"0041db74_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0041db74_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0041db74_TEST PASS"
+   },
+   {
+    "address": "0052e930",
+    "module": "_unattributed",
+    "name": "vfunc_22",
+    "source_cpp": "// CClass_0052e930::vfunc_22(const long&) -- stores the referenced value into the member at +0x90\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0052E930, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov edx, dword ptr [eax] ; mov dword ptr [ecx + 0x90], edx ; ret 4\n// Tiny-body shape `SetFromRef` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_0052e930 {\n    unsigned char _pad[0x90];\n    long m_value;                          // +0x90\n    void vfunc_22(const long& value);\n};\n\nvoid CClass_0052e930::vfunc_22(const long& value)\n{\n    m_value = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; long v; void F(const long& r) { v = r; } };\nint main()\n{\n    X x; long k = 9; x.F(k); if (x.v != 9) { std::printf(\"0052e930_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0052e930_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0052e930_TEST PASS"
+   },
+   {
+    "address": "0052e9b0",
+    "module": "_unattributed",
+    "name": "vfunc_30",
+    "source_cpp": "// CClass_0052e9b0::vfunc_30(const long&) -- stores the referenced value into the member at +0x94\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0052E9B0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov edx, dword ptr [eax] ; mov dword ptr [ecx + 0x94], edx ; ret 4\n// Tiny-body shape `SetFromRef` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_0052e9b0 {\n    unsigned char _pad[0x94];\n    long m_value;                          // +0x94\n    void vfunc_30(const long& value);\n};\n\nvoid CClass_0052e9b0::vfunc_30(const long& value)\n{\n    m_value = value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; long v; void F(const long& r) { v = r; } };\nint main()\n{\n    X x; long k = 9; x.F(k); if (x.v != 9) { std::printf(\"0052e9b0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0052e9b0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0052e9b0_TEST PASS"
+   },
+   {
+    "address": "0057f745",
+    "module": "CPersistContext_TransferableVector",
+    "name": "vfunc_0",
+    "source_cpp": "// CPersistContext_TransferableVector::vfunc_0() -- element count of the {first, last} range object at +0x4 (24-byte elements, signed division)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0057F745, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx, dword ptr [ecx + 4] ; mov eax, dword ptr [ecx + 4] ; sub eax, dword ptr [ecx] ; push 0x18 ; cdq  ; pop ecx ; idiv ecx ; ret \n// Tiny-body shape `GetCountThroughRange` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct SRange {\n    long m_first;                          // byte positions: the elements are 24 bytes\n    long m_last;\n};\n\nstruct CPersistContext_TransferableVector {\n    unsigned char _pad[0x4];\n    SRange* m_pRange;                      // +0x4\n    long vfunc_0();\n};\n\nlong CPersistContext_TransferableVector::vfunc_0()\n{\n    return (m_pRange->m_last - m_pRange->m_first) / 24;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct R { long f; long l; }; struct X { unsigned char p[4]; R* r; long C() { return (r->l - r->f) / 24; } };\nint main()\n{\n    R r; r.f = 0; r.l = 72; X x; x.r = &r; if (x.C() != 3) { std::printf(\"0057f745_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0057f745_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0057f745_TEST PASS"
+   },
+   {
+    "address": "005c0923",
+    "module": "CPersistContext_TransferableVector",
+    "name": "vfunc_0",
+    "source_cpp": "// CPersistContext_TransferableVector::vfunc_0() -- element count of the {first, last} range object at +0x4 (20-byte elements, signed division)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x005C0923, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx, dword ptr [ecx + 4] ; mov eax, dword ptr [ecx + 4] ; sub eax, dword ptr [ecx] ; push 0x14 ; cdq  ; pop ecx ; idiv ecx ; ret \n// Tiny-body shape `GetCountThroughRange` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct SRange {\n    long m_first;                          // byte positions: the elements are 20 bytes\n    long m_last;\n};\n\nstruct CPersistContext_TransferableVector {\n    unsigned char _pad[0x4];\n    SRange* m_pRange;                      // +0x4\n    long vfunc_0();\n};\n\nlong CPersistContext_TransferableVector::vfunc_0()\n{\n    return (m_pRange->m_last - m_pRange->m_first) / 20;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct R { long f; long l; }; struct X { unsigned char p[4]; R* r; long C() { return (r->l - r->f) / 20; } };\nint main()\n{\n    R r; r.f = 0; r.l = 60; X x; x.r = &r; if (x.C() != 3) { std::printf(\"005c0923_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"005c0923_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "005c0923_TEST PASS"
+   },
+   {
+    "address": "005b15c2",
+    "module": "_unattributed",
+    "name": "CClass_005b15c2",
+    "source_cpp": "// CClass_005b15c2::CClass_005b15c2() -- constructor: the base is built out of line (@ 0x0099AED0), then the member at +0x4 is zeroed\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B15C2, oracle length 16 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi, ecx ; call 0x99aed0 ; and dword ptr [esi + 4], 0 ; mov eax, esi ; pop esi ; ret \n// Tiny-body shape `CtorBaseThenZero`: a derived constructor over an out-of-line base constructor\n// followed by one zeroed member (`and [esi+N], 0`). The class comes from the manifest label.\nstruct CBase_005b15c2 {\n    unsigned char _body[0x4];\n    CBase_005b15c2();                             // 0x0099AED0\n};\n\nstruct CClass_005b15c2 : CBase_005b15c2 {\n    long m_value;                          // +0x4\n    CClass_005b15c2();\n};\n\nCClass_005b15c2::CClass_005b15c2()\n    : m_value(0)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct B { unsigned char b[4]; B() { ++g_n; } }; struct X : B { long v; X() : v(0) {} };\nint main()\n{\n    X x; if (g_n != 1 || x.v != 0) { std::printf(\"005b15c2_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"005b15c2_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "005b15c2_TEST PASS"
+   },
+   {
+    "address": "005b1fbc",
+    "module": "_unattributed",
+    "name": "CClass_005b1fbc",
+    "source_cpp": "// CClass_005b1fbc::CClass_005b1fbc() -- constructor: the base is built out of line (@ 0x0099AED0), then the member at +0x4 is zeroed\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x005B1FBC, oracle length 16 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi, ecx ; call 0x99aed0 ; and dword ptr [esi + 4], 0 ; mov eax, esi ; pop esi ; ret \n// Tiny-body shape `CtorBaseThenZero`: a derived constructor over an out-of-line base constructor\n// followed by one zeroed member (`and [esi+N], 0`). The class comes from the manifest label.\nstruct CBase_005b1fbc {\n    unsigned char _body[0x4];\n    CBase_005b1fbc();                             // 0x0099AED0\n};\n\nstruct CClass_005b1fbc : CBase_005b1fbc {\n    long m_value;                          // +0x4\n    CClass_005b1fbc();\n};\n\nCClass_005b1fbc::CClass_005b1fbc()\n    : m_value(0)\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct B { unsigned char b[4]; B() { ++g_n; } }; struct X : B { long v; X() : v(0) {} };\nint main()\n{\n    X x; if (g_n != 1 || x.v != 0) { std::printf(\"005b1fbc_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"005b1fbc_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "005b1fbc_TEST PASS"
+   },
+   {
+    "address": "00656ffe",
+    "module": "_global",
+    "name": "CallIfNonNull_00656ffe",
+    "source_cpp": "// CallIfNonNull_00656ffe(CTarget*) -- `__fastcall`: calls the target's method @ 0x00656E6F with 1 when the pointer is non-null\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00656FFE, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  test ecx, ecx ; je 0x657009 ; push 1 ; call 0x656e6f ; ret \n// Tiny-body shape `CallIfNonNull` synthesised from the instruction pattern; the manifest label is\n// propagated where it is a plain name, the other names are descriptive.\nstruct CTarget {\n    void Method(long kind);                // 0x00656E6F\n};\n\nvoid __fastcall CallIfNonNull_00656ffe(CTarget* target)\n{\n    if (target)\n        target->Method(1);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic long g_k = 0; struct T { void M(long k) { g_k = k; } }; static void __fastcall F(T* t) { if (t) t->M(1); }\nint main()\n{\n    T t; F(0); F(&t); if (g_k != 1) { std::printf(\"00656ffe_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00656ffe_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00656ffe_TEST PASS"
+   },
+   {
+    "address": "00657016",
+    "module": "_global",
+    "name": "CallIfNonNull_00657016",
+    "source_cpp": "// CallIfNonNull_00657016(CTarget*) -- `__fastcall`: calls the target's method @ 0x00656EAD with 1 when the pointer is non-null\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00657016, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  test ecx, ecx ; je 0x657021 ; push 1 ; call 0x656ead ; ret \n// Tiny-body shape `CallIfNonNull` synthesised from the instruction pattern; the manifest label is\n// propagated where it is a plain name, the other names are descriptive.\nstruct CTarget {\n    void Method(long kind);                // 0x00656EAD\n};\n\nvoid __fastcall CallIfNonNull_00657016(CTarget* target)\n{\n    if (target)\n        target->Method(1);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic long g_k = 0; struct T { void M(long k) { g_k = k; } }; static void __fastcall F(T* t) { if (t) t->M(1); }\nint main()\n{\n    T t; F(0); F(&t); if (g_k != 1) { std::printf(\"00657016_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00657016_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00657016_TEST PASS"
+   },
+   {
+    "address": "006622c0",
+    "module": "_unattributed",
+    "name": "CCombatAction_IsToCauseRecoilCommon",
+    "source_cpp": "// CClass_006622c0::CCombatAction_IsToCauseRecoilCommon() -- the 1-bit bitfield at bit 0 of the flag byte at +0x149 of the object at +0xe0\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x006622C0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0xe0] ; mov al, byte ptr [eax + 0x149] ; and al, 1 ; ret \n// Tiny-body shape `GetTargetBits` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTarget {\n    unsigned char _pad[0x149];\n    unsigned char m_field : 1;             // +0x149, bits 0..0\n};\n\nstruct CClass_006622c0 {\n    unsigned char _pad[0xe0];\n    CTarget* m_pTarget;                    // +0xe0\n    bool CCombatAction_IsToCauseRecoilCommon();\n};\n\nbool CClass_006622c0::CCombatAction_IsToCauseRecoilCommon()\n{\n    return m_pTarget->m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[4]; unsigned char f; }; struct X { unsigned char q[4]; T* t; unsigned char G() { return t->f & 1; } };\nint main()\n{\n    T t; t.f = 0xff; X x; x.t = &t; if (x.G() != 1) { std::printf(\"006622c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"006622c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "006622c0_TEST PASS"
+   },
+   {
+    "address": "00703000",
+    "module": "CThingObject",
+    "name": "vfunc_54",
+    "source_cpp": "// CThingObject::vfunc_54() -- the 1-bit bitfield at bit 0 of the flag byte at +0x98 of the object at +0xd0\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00703000, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0xd0] ; mov al, byte ptr [eax + 0x98] ; and al, 1 ; ret \n// Tiny-body shape `GetTargetBits` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTarget {\n    unsigned char _pad[0x98];\n    unsigned char m_field : 1;             // +0x98, bits 0..0\n};\n\nstruct CThingObject {\n    unsigned char _pad[0xd0];\n    CTarget* m_pTarget;                    // +0xd0\n    bool vfunc_54();\n};\n\nbool CThingObject::vfunc_54()\n{\n    return m_pTarget->m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[4]; unsigned char f; }; struct X { unsigned char q[4]; T* t; unsigned char G() { return t->f & 1; } };\nint main()\n{\n    T t; t.f = 0xff; X x; x.t = &t; if (x.G() != 1) { std::printf(\"00703000_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00703000_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00703000_TEST PASS"
+   },
+   {
+    "address": "00994b40",
+    "module": "CCreatureActionBase",
+    "name": "GetFramesRemaining",
+    "source_cpp": "// CCreatureActionBase::GetFramesRemaining() -- the member at +0xc minus the member at +0x8\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00994B40, oracle length 7 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0xc] ; sub eax, dword ptr [ecx + 8] ; ret \n// Tiny-body shape `GetDifference` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CCreatureActionBase {\n    unsigned char _pad[0x8];\n    long m_start;                          // +0x8\n    long m_end;                            // +0xc\n    long GetFramesRemaining();\n};\n\nlong CCreatureActionBase::GetFramesRemaining()\n{\n    return m_end - m_start;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; long s; long e; long D() { return e - s; } };\nint main()\n{\n    X x; x.s = 2; x.e = 7; if (x.D() != 5) { std::printf(\"00994b40_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00994b40_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00994b40_TEST PASS"
+   },
+   {
+    "address": "00692870",
+    "module": "CCreatureActionBase",
+    "name": "GetAnimationIndex",
+    "source_cpp": "// CCreatureActionBase::GetAnimationIndex() -- the first dword of the object at +0x74\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00692870, oracle length 6 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0x74] ; mov eax, dword ptr [eax] ; ret \n// Tiny-body shape `GetTargetFirst` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTarget {\n    void* m_pFirst;                        // +0\n};\n\nstruct CCreatureActionBase {\n    unsigned char _pad[0x74];\n    CTarget* m_pTarget;                    // +0x74\n    void* GetAnimationIndex();\n};\n\nvoid* CCreatureActionBase::GetAnimationIndex()\n{\n    return m_pTarget->m_pFirst;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { void* f; }; struct X { unsigned char p[4]; T* t; void* G() { return t->f; } };\nint main()\n{\n    int i; T t; t.f = &i; X x; x.t = &t; if (x.G() != &i) { std::printf(\"00692870_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00692870_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00692870_TEST PASS"
+   },
+   {
+    "address": "008565b0",
+    "module": "CCombatActionBase",
+    "name": "GetAnimationIndex",
+    "source_cpp": "// CCombatActionBase::GetAnimationIndex() -- the first dword of the object at +0x74\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008565B0, oracle length 6 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0x74] ; mov eax, dword ptr [eax] ; ret \n// Tiny-body shape `GetTargetFirst` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTarget {\n    void* m_pFirst;                        // +0\n};\n\nstruct CCombatActionBase {\n    unsigned char _pad[0x74];\n    CTarget* m_pTarget;                    // +0x74\n    void* GetAnimationIndex();\n};\n\nvoid* CCombatActionBase::GetAnimationIndex()\n{\n    return m_pTarget->m_pFirst;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { void* f; }; struct X { unsigned char p[4]; T* t; void* G() { return t->f; } };\nint main()\n{\n    int i; T t; t.f = &i; X x; x.t = &t; if (x.G() != &i) { std::printf(\"008565b0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008565b0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008565b0_TEST PASS"
+   },
+   {
+    "address": "0069e1d0",
+    "module": "CGameCameraManager",
+    "name": "GetCameraManager",
+    "source_cpp": "// CGameCameraManager::GetCameraManager(void**) -- stores `this` through the out-pointer and returns true\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0069E1D0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov dword ptr [eax], ecx ; mov al, 1 ; ret 4\n// Tiny-body shape `GetSelf` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CGameCameraManager {\n    bool GetCameraManager(void** out);\n};\n\nbool CGameCameraManager::GetCameraManager(void** out)\n{\n    *out = this;\n    return true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { bool G(void** o) { *o = this; return true; } };\nint main()\n{\n    X x; void* o = 0; if (!x.G(&o) || o != &x) { std::printf(\"0069e1d0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0069e1d0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0069e1d0_TEST PASS"
+   },
+   {
+    "address": "0069e1e0",
+    "module": "CGameCameraManager",
+    "name": "GetCameraManager",
+    "source_cpp": "// CGameCameraManager::GetCameraManager(void**) -- stores `this` through the out-pointer and returns true\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0069E1E0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov dword ptr [eax], ecx ; mov al, 1 ; ret 4\n// Tiny-body shape `GetSelf` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CGameCameraManager {\n    bool GetCameraManager(void** out);\n};\n\nbool CGameCameraManager::GetCameraManager(void** out)\n{\n    *out = this;\n    return true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { bool G(void** o) { *o = this; return true; } };\nint main()\n{\n    X x; void* o = 0; if (!x.G(&o) || o != &x) { std::printf(\"0069e1e0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0069e1e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0069e1e0_TEST PASS"
+   },
+   {
+    "address": "006a99c0",
+    "module": "CThingPlayerCreature",
+    "name": "vfunc_90",
+    "source_cpp": "// CThingPlayerCreature::vfunc_90() -- the member at +0xe0 plus 0x100\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x006A99C0, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0xe0] ; add eax, 0x100 ; ret \n// Tiny-body shape `GetOffsetValue` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CThingPlayerCreature {\n    unsigned char _pad[0xe0];\n    long m_value;                          // +0xe0\n    long vfunc_90();\n};\n\nlong CThingPlayerCreature::vfunc_90()\n{\n    return m_value + 0x100;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; long v; long G() { return v + 256; } };\nint main()\n{\n    X x; x.v = 1; if (x.G() != 257) { std::printf(\"006a99c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"006a99c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "006a99c0_TEST PASS"
+   },
+   {
+    "address": "00830250",
+    "module": "CThingAICreature",
+    "name": "vfunc_90",
+    "source_cpp": "// CThingAICreature::vfunc_90() -- the member at +0xe0 plus 0x100\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00830250, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0xe0] ; add eax, 0x100 ; ret \n// Tiny-body shape `GetOffsetValue` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CThingAICreature {\n    unsigned char _pad[0xe0];\n    long m_value;                          // +0xe0\n    long vfunc_90();\n};\n\nlong CThingAICreature::vfunc_90()\n{\n    return m_value + 0x100;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; long v; long G() { return v + 256; } };\nint main()\n{\n    X x; x.v = 1; if (x.G() != 257) { std::printf(\"00830250_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00830250_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00830250_TEST PASS"
+   },
+   {
+    "address": "00724c90",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_57",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_57() -- the 1-bit bitfield at bit 7 of the flag byte at +0x84\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724C90, oracle length 10 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0x84] ; shr al, 7 ; ret \n// Tiny-body shape `GetHighBits` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCPhysicsStandard {\n    unsigned char _pad[0x84];\n    unsigned char m_low : 7;              // bits 0..6 of the byte at +0x84\n    unsigned char m_field : 1;             // bits 7..7\n    bool vfunc_57();\n};\n\nbool CTCPhysicsStandard::vfunc_57()\n{\n    return m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; unsigned char G() { return f >> 7; } };\nint main()\n{\n    X x; x.f = 0x80; if (x.G() != 1) { std::printf(\"00724c90_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724c90_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724c90_TEST PASS"
+   },
+   {
+    "address": "00724ce0",
+    "module": "CTCPhysicsStandard",
+    "name": "vfunc_62",
+    "source_cpp": "// CTCPhysicsStandard::vfunc_62() -- the 1-bit bitfield at bit 7 of the flag byte at +0x85\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00724CE0, oracle length 10 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [ecx + 0x85] ; shr al, 7 ; ret \n// Tiny-body shape `GetHighBits` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCPhysicsStandard {\n    unsigned char _pad[0x85];\n    unsigned char m_low : 7;              // bits 0..6 of the byte at +0x85\n    unsigned char m_field : 1;             // bits 7..7\n    bool vfunc_62();\n};\n\nbool CTCPhysicsStandard::vfunc_62()\n{\n    return m_field;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; unsigned char G() { return f >> 7; } };\nint main()\n{\n    X x; x.f = 0x80; if (x.G() != 1) { std::printf(\"00724ce0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00724ce0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00724ce0_TEST PASS"
+   },
+   {
+    "address": "0076e260",
+    "module": "CTCWeaponTrail",
+    "name": "vfunc_16",
+    "source_cpp": "// CTCWeaponTrail::vfunc_16(bool) -- calls the member method @ 0x0076E150 when the flag argument is set\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0076E260, oracle length 16 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [esp + 4] ; test al, al ; je 0x76e26d ; call 0x76e150 ; ret 4\n// Tiny-body shape `UpdateIf` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCWeaponTrail {\n    void Update();                         // 0x0076E150\n    void vfunc_16(bool enable);\n};\n\nvoid CTCWeaponTrail::vfunc_16(bool enable)\n{\n    if (enable)\n        Update();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct X { void U() { ++g_n; } void F(bool e) { if (e) U(); } };\nint main()\n{\n    X x; x.F(false); x.F(true); if (g_n != 1) { std::printf(\"0076e260_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0076e260_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0076e260_TEST PASS"
+   },
+   {
+    "address": "0077cdd0",
+    "module": "CTCHighlightItem",
+    "name": "vfunc_16",
+    "source_cpp": "// CTCHighlightItem::vfunc_16(bool) -- calls the member method @ 0x0077CCA0 when the flag argument is set\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CDD0, oracle length 16 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [esp + 4] ; test al, al ; je 0x77cddd ; call 0x77cca0 ; ret 4\n// Tiny-body shape `UpdateIf` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCHighlightItem {\n    void Update();                         // 0x0077CCA0\n    void vfunc_16(bool enable);\n};\n\nvoid CTCHighlightItem::vfunc_16(bool enable)\n{\n    if (enable)\n        Update();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct X { void U() { ++g_n; } void F(bool e) { if (e) U(); } };\nint main()\n{\n    X x; x.F(false); x.F(true); if (g_n != 1) { std::printf(\"0077cdd0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0077cdd0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0077cdd0_TEST PASS"
+   },
+   {
+    "address": "008b0600",
+    "module": "CGameScriptThing",
+    "name": "DecrementScriptCounter",
+    "source_cpp": "// CGameScriptThing::DecrementScriptCounter() -- increments the counter at +0xc\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008B0600, oracle length 4 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  inc dword ptr [ecx + 0xc] ; ret \n// Tiny-body shape `Increment` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CGameScriptThing {\n    unsigned char _pad[0xc];\n    long m_count;                          // +0xc\n    void DecrementScriptCounter();\n};\n\nvoid CGameScriptThing::DecrementScriptCounter()\n{\n    ++m_count;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; long c; void F() { ++c; } };\nint main()\n{\n    X x; x.c = 1; x.F(); if (x.c != 2) { std::printf(\"008b0600_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008b0600_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008b0600_TEST PASS"
+   },
+   {
+    "address": "008d4670",
+    "module": "CGameScriptThing",
+    "name": "IncrementScriptCounter",
+    "source_cpp": "// CGameScriptThing::IncrementScriptCounter() -- increments the counter at +0x14\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008D4670, oracle length 4 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  inc dword ptr [ecx + 0x14] ; ret \n// Tiny-body shape `Increment` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CGameScriptThing {\n    unsigned char _pad[0x14];\n    long m_count;                          // +0x14\n    void IncrementScriptCounter();\n};\n\nvoid CGameScriptThing::IncrementScriptCounter()\n{\n    ++m_count;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; long c; void F() { ++c; } };\nint main()\n{\n    X x; x.c = 1; x.F(); if (x.c != 2) { std::printf(\"008d4670_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008d4670_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008d4670_TEST PASS"
+   },
+   {
+    "address": "008eac30",
+    "module": "_unattributed",
+    "name": "vfunc_2",
+    "source_cpp": "// CClass_008eac30::vfunc_2(long) -- calls the member method @ 0x008EA9F0; the 1 argument(s) are not forwarded\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008EAC30, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  call 0x8ea9f0 ; ret 4\n// Tiny-body shape `ForwardIgnoringArgs` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_008eac30 {\n    void Method();                         // 0x008EA9F0\n    void vfunc_2(long);\n};\n\nvoid CClass_008eac30::vfunc_2(long)\n{\n    Method();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct X { void M() { ++g_n; } void F(long a0) { M(); } };\nint main()\n{\n    X x; x.F(0); if (g_n != 1) { std::printf(\"008eac30_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008eac30_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008eac30_TEST PASS"
+   },
+   {
+    "address": "00c213b0",
+    "module": "_unattributed",
+    "name": "ForwardIgnoringArgs_00c213b0",
+    "source_cpp": "// CClass_00c213b0::ForwardIgnoringArgs_00c213b0(long) -- calls the member method @ 0x00C206E0; the 1 argument(s) are not forwarded\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C213B0, oracle length 8 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  call 0xc206e0 ; ret 4\n// Tiny-body shape `ForwardIgnoringArgs` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_00c213b0 {\n    void Method();                         // 0x00C206E0\n    void ForwardIgnoringArgs_00c213b0(long);\n};\n\nvoid CClass_00c213b0::ForwardIgnoringArgs_00c213b0(long)\n{\n    Method();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct X { void M() { ++g_n; } void F(long a0) { M(); } };\nint main()\n{\n    X x; x.F(0); if (g_n != 1) { std::printf(\"00c213b0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c213b0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c213b0_TEST PASS"
+   },
+   {
+    "address": "008fcfa0",
+    "module": "CPlayer",
+    "name": "GetCurrentMode",
+    "source_cpp": "// CPlayer::GetCurrentMode() -- the dword at +0x24 of the object at +0x1c of the object at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008FCFA0, oracle length 10 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 4] ; mov ecx, dword ptr [eax + 0x1c] ; mov eax, dword ptr [ecx + 0x24] ; ret \n// Tiny-body shape `GetThroughTwo` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CSecond {\n    unsigned char _pad[0x24];\n    void* m_value;                         // +0x24\n};\n\nstruct CFirst {\n    unsigned char _pad[0x1c];\n    CSecond* m_pSecond;                    // +0x1c\n};\n\nstruct CPlayer {\n    unsigned char _pad[0x4];\n    CFirst* m_pFirst;                      // +0x4\n    void* GetCurrentMode();\n};\n\nvoid* CPlayer::GetCurrentMode()\n{\n    return m_pFirst->m_pSecond->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct S { unsigned char p[4]; void* v; }; struct Fi { unsigned char p[8]; S* s; }; struct X { unsigned char p[4]; Fi* f; void* G() { return f->s->v; } };\nint main()\n{\n    int i; S s; s.v = &i; Fi f; f.s = &s; X x; x.f = &f; if (x.G() != &i) { std::printf(\"008fcfa0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008fcfa0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008fcfa0_TEST PASS"
+   },
+   {
+    "address": "008fcfc0",
+    "module": "CPlayer",
+    "name": "GetCurrentMode",
+    "source_cpp": "// CPlayer::GetCurrentMode() -- the dword at +0x24 of the object at +0x1c of the object at +0x4\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x008FCFC0, oracle length 10 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 4] ; mov ecx, dword ptr [eax + 0x1c] ; mov eax, dword ptr [ecx + 0x24] ; ret \n// Tiny-body shape `GetThroughTwo` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CSecond {\n    unsigned char _pad[0x24];\n    void* m_value;                         // +0x24\n};\n\nstruct CFirst {\n    unsigned char _pad[0x1c];\n    CSecond* m_pSecond;                    // +0x1c\n};\n\nstruct CPlayer {\n    unsigned char _pad[0x4];\n    CFirst* m_pFirst;                      // +0x4\n    void* GetCurrentMode();\n};\n\nvoid* CPlayer::GetCurrentMode()\n{\n    return m_pFirst->m_pSecond->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct S { unsigned char p[4]; void* v; }; struct Fi { unsigned char p[8]; S* s; }; struct X { unsigned char p[4]; Fi* f; void* G() { return f->s->v; } };\nint main()\n{\n    int i; S s; s.v = &i; Fi f; f.s = &s; X x; x.f = &f; if (x.G() != &i) { std::printf(\"008fcfc0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"008fcfc0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "008fcfc0_TEST PASS"
+   },
+   {
+    "address": "009224e0",
+    "module": "CAIStateGroup_Freeze",
+    "name": "IsRunnable",
+    "source_cpp": "// CAIStateGroup_Freeze::IsRunnable() -- returns the global flag byte @ 0x013BB68C\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x009224E0, oracle length 6 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [0x13bb68c] ; ret \n// Tiny-body shape `GetGlobalFlag` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nextern unsigned char g_flag_013bb68c;         // 0x013BB68C\n\nstruct CAIStateGroup_Freeze {\n    unsigned char IsRunnable();\n};\n\nunsigned char CAIStateGroup_Freeze::IsRunnable()\n{\n    return g_flag_013bb68c;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic unsigned char g_f = 3; struct X { unsigned char G() { return g_f; } };\nint main()\n{\n    X x; if (x.G() != 3) { std::printf(\"009224e0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"009224e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "009224e0_TEST PASS"
+   },
+   {
+    "address": "00cb28e0",
+    "module": "CAIStateGroup_Freeze",
+    "name": "IsRunnable",
+    "source_cpp": "// CAIStateGroup_Freeze::IsRunnable() -- returns the global flag byte @ 0x0143E890\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB28E0, oracle length 6 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov al, byte ptr [0x143e890] ; ret \n// Tiny-body shape `GetGlobalFlag` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nextern unsigned char g_flag_0143e890;         // 0x0143E890\n\nstruct CAIStateGroup_Freeze {\n    unsigned char IsRunnable();\n};\n\nunsigned char CAIStateGroup_Freeze::IsRunnable()\n{\n    return g_flag_0143e890;\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic unsigned char g_f = 3; struct X { unsigned char G() { return g_f; } };\nint main()\n{\n    X x; if (x.G() != 3) { std::printf(\"00cb28e0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00cb28e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00cb28e0_TEST PASS"
+   },
+   {
+    "address": "009aa240",
+    "module": "_unattributed",
+    "name": "CClass_009aa240",
+    "source_cpp": "// CClass_009aa240::CClass_009aa240() -- constructor: initialises through the out-of-line helper @ 0x0099E4B0\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x009AA240, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi, ecx ; call 0x99e4b0 ; mov eax, esi ; pop esi ; ret \n// Tiny-body shape `CtorInit`: a default constructor whose whole body is one out-of-line\n// initialiser call; `this` is kept in esi for the return. The class comes from the manifest label.\nstruct CClass_009aa240 {\n    unsigned char _body[4];\n    void Initialise();                     // 0x0099E4B0\n    CClass_009aa240();\n};\n\nCClass_009aa240::CClass_009aa240()\n{\n    Initialise();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct X { unsigned char b[4]; void I() { ++g_n; } X() { I(); } };\nint main()\n{\n    X x; if (g_n != 1) { std::printf(\"009aa240_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"009aa240_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "009aa240_TEST PASS"
+   },
+   {
+    "address": "00c1bd10",
+    "module": "_unattributed",
+    "name": "CClass_00c1bd10",
+    "source_cpp": "// CClass_00c1bd10::CClass_00c1bd10() -- constructor: initialises through the out-of-line helper @ 0x00C1BC90\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1BD10, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push esi ; mov esi, ecx ; call 0xc1bc90 ; mov eax, esi ; pop esi ; ret \n// Tiny-body shape `CtorInit`: a default constructor whose whole body is one out-of-line\n// initialiser call; `this` is kept in esi for the return. The class comes from the manifest label.\nstruct CClass_00c1bd10 {\n    unsigned char _body[4];\n    void Initialise();                     // 0x00C1BC90\n    CClass_00c1bd10();\n};\n\nCClass_00c1bd10::CClass_00c1bd10()\n{\n    Initialise();\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct X { unsigned char b[4]; void I() { ++g_n; } X() { I(); } };\nint main()\n{\n    X x; if (g_n != 1) { std::printf(\"00c1bd10_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c1bd10_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c1bd10_TEST PASS"
+   },
+   {
+    "address": "00c1bad0",
+    "module": "CTCPhysicsStandard",
+    "name": "CanCollideWithThingsOneWay",
+    "source_cpp": "// CTCPhysicsStandard::CanCollideWithThingsOneWay() -- the flag byte at +0x2 masked with 0x1, as a dword\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1BAD0, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax, eax ; mov al, byte ptr [ecx + 2] ; and eax, 1 ; ret \n// Tiny-body shape `GetFlagMask` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCPhysicsStandard {\n    unsigned char _pad[0x2];\n    unsigned char m_flags;                 // +0x2\n    long CanCollideWithThingsOneWay();\n};\n\nlong CTCPhysicsStandard::CanCollideWithThingsOneWay()\n{\n    return m_flags & 0x1;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; long G() { return f & 1; } };\nint main()\n{\n    X x; x.f = 0xff; if (x.G() != 1) { std::printf(\"00c1bad0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c1bad0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c1bad0_TEST PASS"
+   },
+   {
+    "address": "00c27b70",
+    "module": "CTCPhysicsStandard",
+    "name": "CanCollideWithThingsOneWay",
+    "source_cpp": "// CTCPhysicsStandard::CanCollideWithThingsOneWay() -- the flag byte at +0x44 masked with 0x1, as a dword\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C27B70, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  xor eax, eax ; mov al, byte ptr [ecx + 0x44] ; and eax, 1 ; ret \n// Tiny-body shape `GetFlagMask` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTCPhysicsStandard {\n    unsigned char _pad[0x44];\n    unsigned char m_flags;                 // +0x44\n    long CanCollideWithThingsOneWay();\n};\n\nlong CTCPhysicsStandard::CanCollideWithThingsOneWay()\n{\n    return m_flags & 0x1;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; long G() { return f & 1; } };\nint main()\n{\n    X x; x.f = 0xff; if (x.G() != 1) { std::printf(\"00c27b70_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c27b70_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c27b70_TEST PASS"
+   },
+   {
+    "address": "00c34a70",
+    "module": "_unattributed",
+    "name": "ApplyMemberArg_00c34a70",
+    "source_cpp": "// CClass_00c34a70::ApplyMemberArg_00c34a70(long unused0, void* value) -- calls the member at +0x4's method @ 0x00C42AB0 with argument 1\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C34A70, oracle length 16 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 8] ; push eax ; add ecx, 4 ; call 0xc42ab0 ; ret 8\n// Tiny-body shape `ApplyMemberArg` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CMember {\n    void Apply(void* value);               // 0x00C42AB0\n};\n\nstruct CClass_00c34a70 {\n    unsigned char _pad[0x4];\n    CMember m_member;                      // +0x4\n    void ApplyMemberArg_00c34a70(long unused0, void* value);\n};\n\nvoid CClass_00c34a70::ApplyMemberArg_00c34a70(long unused0, void* value)\n{\n    m_member.Apply(value);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void* g_v = 0; struct M { void A(void* v) { g_v = v; } }; struct X { unsigned char p[4]; M m; void F(long unused0, void* value) { m.A(value); } };\nint main()\n{\n    X x; int i; x.F(0, &i); if (g_v != &i) { std::printf(\"00c34a70_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c34a70_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c34a70_TEST PASS"
+   },
+   {
+    "address": "00c34a90",
+    "module": "_unattributed",
+    "name": "ApplyMemberArg_00c34a90",
+    "source_cpp": "// CClass_00c34a90::ApplyMemberArg_00c34a90(long unused0, void* value) -- calls the member at +0x4's method @ 0x00C42B80 with argument 1\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C34A90, oracle length 16 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 8] ; push eax ; add ecx, 4 ; call 0xc42b80 ; ret 8\n// Tiny-body shape `ApplyMemberArg` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CMember {\n    void Apply(void* value);               // 0x00C42B80\n};\n\nstruct CClass_00c34a90 {\n    unsigned char _pad[0x4];\n    CMember m_member;                      // +0x4\n    void ApplyMemberArg_00c34a90(long unused0, void* value);\n};\n\nvoid CClass_00c34a90::ApplyMemberArg_00c34a90(long unused0, void* value)\n{\n    m_member.Apply(value);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void* g_v = 0; struct M { void A(void* v) { g_v = v; } }; struct X { unsigned char p[4]; M m; void F(long unused0, void* value) { m.A(value); } };\nint main()\n{\n    X x; int i; x.F(0, &i); if (g_v != &i) { std::printf(\"00c34a90_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c34a90_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c34a90_TEST PASS"
+   },
+   {
+    "address": "00c463a0",
+    "module": "_unattributed",
+    "name": "ReleaseMember_00c463a0",
+    "source_cpp": "// CClass_00c463a0::ReleaseMember_00c463a0() -- passes the member at +0x8 to the `__cdecl` function @ 0x00BFEB1C\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C463A0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 8] ; push eax ; call 0xbfeb1c ; pop ecx ; ret \n// Tiny-body shape `ReleaseMember` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nvoid __cdecl Release_00bfeb1c(void* block);     // 0x00BFEB1C\n\nstruct CClass_00c463a0 {\n    unsigned char _pad[0x8];\n    void* m_pBlock;                        // +0x8\n    void ReleaseMember_00c463a0();\n};\n\nvoid CClass_00c463a0::ReleaseMember_00c463a0()\n{\n    Release_00bfeb1c(m_pBlock);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void* g_b = 0; static void __cdecl R(void* b) { g_b = b; } struct X { unsigned char p[4]; void* k; void F() { R(k); } };\nint main()\n{\n    X x; int i; x.k = &i; x.F(); if (g_b != &i) { std::printf(\"00c463a0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c463a0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c463a0_TEST PASS"
+   },
+   {
+    "address": "00c61bd0",
+    "module": "_unattributed",
+    "name": "ReleaseMember_00c61bd0",
+    "source_cpp": "// CClass_00c61bd0::ReleaseMember_00c61bd0() -- passes the member at +0x4 to the `__cdecl` function @ 0x00BFEB1C\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C61BD0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 4] ; push eax ; call 0xbfeb1c ; pop ecx ; ret \n// Tiny-body shape `ReleaseMember` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nvoid __cdecl Release_00bfeb1c(void* block);     // 0x00BFEB1C\n\nstruct CClass_00c61bd0 {\n    unsigned char _pad[0x4];\n    void* m_pBlock;                        // +0x4\n    void ReleaseMember_00c61bd0();\n};\n\nvoid CClass_00c61bd0::ReleaseMember_00c61bd0()\n{\n    Release_00bfeb1c(m_pBlock);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void* g_b = 0; static void __cdecl R(void* b) { g_b = b; } struct X { unsigned char p[4]; void* k; void F() { R(k); } };\nint main()\n{\n    X x; int i; x.k = &i; x.F(); if (g_b != &i) { std::printf(\"00c61bd0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c61bd0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c61bd0_TEST PASS"
+   },
+   {
+    "address": "00c5d690",
+    "module": "_unattributed",
+    "name": "IsBelow_00c5d690",
+    "source_cpp": "// CClass_00c5d690::IsBelow_00c5d690() -- 1 when the unsigned member at +0x14 is below the one at +0x10\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5D690, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0x14] ; cmp eax, dword ptr [ecx + 0x10] ; sbb eax, eax ; neg eax ; ret \n// Tiny-body shape `IsBelow` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_00c5d690 {\n    unsigned char _pad[0x10];\n    unsigned long m_limit;                 // +0x10\n    unsigned long m_current;                   // +0x14\n    long IsBelow_00c5d690();\n};\n\nlong CClass_00c5d690::IsBelow_00c5d690()\n{\n    return m_current < m_limit;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned long c; unsigned long l; long G() { return c < l; } };\nint main()\n{\n    X x; x.c = 1; x.l = 2; if (x.G() != 1) { std::printf(\"00c5d690_TEST FAIL\\n\"); return 1; }\n    x.c = 3; if (x.G() != 0) { std::printf(\"00c5d690_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c5d690_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c5d690_TEST PASS"
+   },
+   {
+    "address": "00c5e2a0",
+    "module": "_unattributed",
+    "name": "IsBelow_00c5e2a0",
+    "source_cpp": "// CClass_00c5e2a0::IsBelow_00c5e2a0() -- 1 when the unsigned member at +0x24 is below the one at +0x20\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5E2A0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [ecx + 0x24] ; cmp eax, dword ptr [ecx + 0x20] ; sbb eax, eax ; neg eax ; ret \n// Tiny-body shape `IsBelow` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_00c5e2a0 {\n    unsigned char _pad[0x20];\n    unsigned long m_limit;                 // +0x20\n    unsigned long m_current;                   // +0x24\n    long IsBelow_00c5e2a0();\n};\n\nlong CClass_00c5e2a0::IsBelow_00c5e2a0()\n{\n    return m_current < m_limit;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned long c; unsigned long l; long G() { return c < l; } };\nint main()\n{\n    X x; x.c = 1; x.l = 2; if (x.G() != 1) { std::printf(\"00c5e2a0_TEST FAIL\\n\"); return 1; }\n    x.c = 3; if (x.G() != 0) { std::printf(\"00c5e2a0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c5e2a0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c5e2a0_TEST PASS"
+   },
+   {
+    "address": "00c69740",
+    "module": "CChunkedFileChunk",
+    "name": "~CChunkedFileChunk",
+    "source_cpp": "// CChunkedFileChunk::~CChunkedFileChunk() -- empty destructor: stores the vtable (0x012B957C) and tail-jumps to the base destructor @ 0x00C74450\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C69740, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov dword ptr [ecx], 0x12b957c ; jmp 0xc74450\n// Tiny-body shape `DtorToBase`: a derived class with an empty destructor over a base whose\n// destructor is out of line -- the derived vtable is stored (a relocation) and the base\n// destructor is tail-called on the same `this`. The class comes from the manifest label.\nstruct CBase_00c69740 {\n    virtual void v00();\n    ~CBase_00c69740();                            // 0x00C74450\n};\n\nstruct CChunkedFileChunk : CBase_00c69740 {              // vtable 0x012B957C\n    ~CChunkedFileChunk();\n};\n\nCChunkedFileChunk::~CChunkedFileChunk()\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct B { virtual void v() {} ~B() { ++g_n; } }; struct X : B { ~X() {} };\nint main()\n{\n    { X x; } if (g_n != 1) { std::printf(\"00c69740_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c69740_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c69740_TEST PASS"
+   },
+   {
+    "address": "00c697c0",
+    "module": "CChunkedFileChunk",
+    "name": "~CChunkedFileChunk",
+    "source_cpp": "// CChunkedFileChunk::~CChunkedFileChunk() -- empty destructor: stores the vtable (0x012B9580) and tail-jumps to the base destructor @ 0x00C74450\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C697C0, oracle length 11 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov dword ptr [ecx], 0x12b9580 ; jmp 0xc74450\n// Tiny-body shape `DtorToBase`: a derived class with an empty destructor over a base whose\n// destructor is out of line -- the derived vtable is stored (a relocation) and the base\n// destructor is tail-called on the same `this`. The class comes from the manifest label.\nstruct CBase_00c697c0 {\n    virtual void v00();\n    ~CBase_00c697c0();                            // 0x00C74450\n};\n\nstruct CChunkedFileChunk : CBase_00c697c0 {              // vtable 0x012B9580\n    ~CChunkedFileChunk();\n};\n\nCChunkedFileChunk::~CChunkedFileChunk()\n{\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct B { virtual void v() {} ~B() { ++g_n; } }; struct X : B { ~X() {} };\nint main()\n{\n    { X x; } if (g_n != 1) { std::printf(\"00c697c0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c697c0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c697c0_TEST PASS"
+   },
+   {
+    "address": "00c6abf0",
+    "module": "_unattributed",
+    "name": "SetFlagReturnZero_00c6abf0",
+    "source_cpp": "// CClass_00c6abf0::SetFlagReturnZero_00c6abf0(long) -- stores 0 into the flag byte at +0x4 and returns 0; the argument is not read\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6ABF0, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx + 4], 0 ; xor eax, eax ; ret 4\n// Tiny-body shape `SetFlagReturnZero` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_00c6abf0 {\n    unsigned char _pad[0x4];\n    unsigned char m_flag;                  // +0x4\n    long SetFlagReturnZero_00c6abf0(long unused);\n};\n\nlong CClass_00c6abf0::SetFlagReturnZero_00c6abf0(long)\n{\n    m_flag = 0;\n    return 0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; long F(long) { f = 0; return 0; } };\nint main()\n{\n    X x; x.f = 9; if (x.F(1) != 0 || x.f != 0) { std::printf(\"00c6abf0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c6abf0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c6abf0_TEST PASS"
+   },
+   {
+    "address": "00c71730",
+    "module": "_unattributed",
+    "name": "SetFlagReturnZero_00c71730",
+    "source_cpp": "// CClass_00c71730::SetFlagReturnZero_00c71730(long) -- stores 1 into the flag byte at +0x4 and returns 0; the argument is not read\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C71730, oracle length 9 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov byte ptr [ecx + 4], 1 ; xor eax, eax ; ret 4\n// Tiny-body shape `SetFlagReturnZero` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_00c71730 {\n    unsigned char _pad[0x4];\n    unsigned char m_flag;                  // +0x4\n    long SetFlagReturnZero_00c71730(long unused);\n};\n\nlong CClass_00c71730::SetFlagReturnZero_00c71730(long)\n{\n    m_flag = 1;\n    return 0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; unsigned char f; long F(long) { f = 1; return 0; } };\nint main()\n{\n    X x; x.f = 9; if (x.F(1) != 0 || x.f != 1) { std::printf(\"00c71730_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c71730_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c71730_TEST PASS"
+   },
+   {
+    "address": "00ca9120",
+    "module": "_unattributed",
+    "name": "GetArgField_00ca9120",
+    "source_cpp": "// CClass_00ca9120::GetArgField_00ca9120(const CTarget*) -- returns the dword at +0x14 of the argument object\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA9120, oracle length 10 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov eax, dword ptr [eax + 0x14] ; ret 4\n// Tiny-body shape `GetArgField` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTarget {\n    unsigned char _pad[0x14];\n    void* m_value;                         // +0x14\n};\n\nstruct CClass_00ca9120 {\n    void* GetArgField_00ca9120(const CTarget* target);\n};\n\nvoid* CClass_00ca9120::GetArgField_00ca9120(const CTarget* target)\n{\n    return target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[4]; void* v; }; struct X { void* G(const T* t) { return t->v; } };\nint main()\n{\n    int i; T t; t.v = &i; X x; if (x.G(&t) != &i) { std::printf(\"00ca9120_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00ca9120_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00ca9120_TEST PASS"
+   },
+   {
+    "address": "00ca9380",
+    "module": "_unattributed",
+    "name": "GetArgField_00ca9380",
+    "source_cpp": "// CClass_00ca9380::GetArgField_00ca9380(const CTarget*) -- returns the dword at +0x10 of the argument object\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA9380, oracle length 10 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov eax, dword ptr [eax + 0x10] ; ret 4\n// Tiny-body shape `GetArgField` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTarget {\n    unsigned char _pad[0x10];\n    void* m_value;                         // +0x10\n};\n\nstruct CClass_00ca9380 {\n    void* GetArgField_00ca9380(const CTarget* target);\n};\n\nvoid* CClass_00ca9380::GetArgField_00ca9380(const CTarget* target)\n{\n    return target->m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { unsigned char p[4]; void* v; }; struct X { void* G(const T* t) { return t->v; } };\nint main()\n{\n    int i; T t; t.v = &i; X x; if (x.G(&t) != &i) { std::printf(\"00ca9380_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00ca9380_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00ca9380_TEST PASS"
+   },
+   {
+    "address": "004dcb11",
+    "module": "_unattributed",
+    "name": "vfunc_30",
+    "source_cpp": "// CClass_004dcb11::vfunc_30(long*) -- stores 0x2 through the out-pointer and returns true\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x004DCB11, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov dword ptr [eax], 2 ; mov al, 1 ; ret 4\n// Tiny-body shape `GetConstantOut` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_004dcb11 {\n    bool vfunc_30(long* out);                  // the constant may be a float's bits; it is stored as a dword\n};\n\nbool CClass_004dcb11::vfunc_30(long* out)\n{\n    *out = 0x2;\n    return true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { bool G(long* o) { *o = 2; return true; } };\nint main()\n{\n    X x; long o = 0; if (!x.G(&o) || o != 2) { std::printf(\"004dcb11_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"004dcb11_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "004dcb11_TEST PASS"
+   },
+   {
+    "address": "005297f0",
+    "module": "CThingPhysical",
+    "name": "vfunc_58",
+    "source_cpp": "// CThingPhysical::vfunc_58(long*) -- stores 0x0 through the out-pointer\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x005297F0, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov dword ptr [eax], 0 ; ret 4\n// Tiny-body shape `SetOut` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CThingPhysical {\n    void vfunc_58(long* out);\n};\n\nvoid CThingPhysical::vfunc_58(long* out)\n{\n    *out = 0x0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { void G(long* o) { *o = 0; } };\nint main()\n{\n    X x; long o = 5; x.G(&o); if (o != 0) { std::printf(\"005297f0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"005297f0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "005297f0_TEST PASS"
+   },
+   {
+    "address": "005ed260",
+    "module": "_unattributed",
+    "name": "vfunc_5",
+    "source_cpp": "// CClass_005ed260::vfunc_5(long*) -- stores 0x3e4ccccd through the out-pointer and returns true\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x005ED260, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov dword ptr [eax], 0x3e4ccccd ; mov al, 1 ; ret 4\n// Tiny-body shape `GetConstantOut` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CClass_005ed260 {\n    bool vfunc_5(long* out);                  // the constant may be a float's bits; it is stored as a dword\n};\n\nbool CClass_005ed260::vfunc_5(long* out)\n{\n    *out = 0x3e4ccccd;\n    return true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { bool G(long* o) { *o = 1045220557; return true; } };\nint main()\n{\n    X x; long o = 0; if (!x.G(&o) || o != 1045220557) { std::printf(\"005ed260_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"005ed260_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "005ed260_TEST PASS"
+   },
+   {
+    "address": "00662850",
+    "module": "CThingPlayerCreature",
+    "name": "vfunc_58",
+    "source_cpp": "// CThingPlayerCreature::vfunc_58(long*) -- stores 0x0 through the out-pointer\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00662850, oracle length 13 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov eax, dword ptr [esp + 4] ; mov dword ptr [eax], 0 ; ret 4\n// Tiny-body shape `SetOut` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CThingPlayerCreature {\n    void vfunc_58(long* out);\n};\n\nvoid CThingPlayerCreature::vfunc_58(long* out)\n{\n    *out = 0x0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { void G(long* o) { *o = 0; } };\nint main()\n{\n    X x; long o = 5; x.G(&o); if (o != 0) { std::printf(\"00662850_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00662850_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00662850_TEST PASS"
+   },
+   {
+    "address": "006bbed0",
+    "module": "CConsoleCommand",
+    "name": "vfunc_5",
+    "source_cpp": "// CConsoleCommand::vfunc_5(void*) -- calls the `__fastcall` callback at +0x18 with the object at +0x14 and the argument\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x006BBED0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov edx, dword ptr [esp + 4] ; mov eax, ecx ; mov ecx, dword ptr [eax + 0x14] ; call dword ptr [eax + 0x18] ; ret 4\n// Tiny-body shape `InvokeCallback` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CConsoleCommand {\n    unsigned char _pad[0x14];\n    void* m_pObject;                        // +0x14\n    void (__fastcall* m_pfnCallback)(void* object, void* argument);// +0x18\n    void vfunc_5(void* argument);\n};\n\nvoid CConsoleCommand::vfunc_5(void* argument)\n{\n    m_pfnCallback(m_pObject, argument);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void* g_o = 0; static void* g_a = 0; static void __fastcall CB(void* o, void* a) { g_o = o; g_a = a; }\nstruct X { unsigned char p[4]; void* o; void (__fastcall* f)(void*, void*); void F(void* a) { f(o, a); } };\nint main()\n{\n    X x; int i, j; x.o = &i; x.f = CB; x.F(&j); if (g_o != &i || g_a != &j) { std::printf(\"006bbed0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"006bbed0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "006bbed0_TEST PASS"
+   },
+   {
+    "address": "009efeb0",
+    "module": "CConsoleCommand",
+    "name": "vfunc_5",
+    "source_cpp": "// CConsoleCommand::vfunc_5(void*) -- calls the `__fastcall` callback at +0x18 with the object at +0x14 and the argument\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x009EFEB0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov edx, dword ptr [esp + 4] ; mov eax, ecx ; mov ecx, dword ptr [eax + 0x14] ; call dword ptr [eax + 0x18] ; ret 4\n// Tiny-body shape `InvokeCallback` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CConsoleCommand {\n    unsigned char _pad[0x14];\n    void* m_pObject;                        // +0x14\n    void (__fastcall* m_pfnCallback)(void* object, void* argument);// +0x18\n    void vfunc_5(void* argument);\n};\n\nvoid CConsoleCommand::vfunc_5(void* argument)\n{\n    m_pfnCallback(m_pObject, argument);\n}\n",
+    "test_cpp": "#include <cstdio>\nstatic void* g_o = 0; static void* g_a = 0; static void __fastcall CB(void* o, void* a) { g_o = o; g_a = a; }\nstruct X { unsigned char p[4]; void* o; void (__fastcall* f)(void*, void*); void F(void* a) { f(o, a); } };\nint main()\n{\n    X x; int i, j; x.o = &i; x.f = CB; x.F(&j); if (g_o != &i || g_a != &j) { std::printf(\"009efeb0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"009efeb0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "009efeb0_TEST PASS"
+   },
+   {
+    "address": "00a23fc0",
+    "module": "_unattributed",
+    "name": "vfunc_4",
+    "source_cpp": "// CClass_00a23fc0::vfunc_4() -- the target at +0x30's predicate @ 0x009D54E0 (tail-called), or 1 when there is no target\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A23FC0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx, dword ptr [ecx + 0x30] ; test ecx, ecx ; je 0xa23fcc ; jmp 0x9d54e0 ; mov al, 1 ; ret \n// Tiny-body shape `QueryTarget` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTarget {\n    bool Query();                          // 0x009D54E0\n};\n\nstruct CClass_00a23fc0 {\n    unsigned char _pad[0x30];\n    CTarget* m_pTarget;                    // +0x30\n    bool vfunc_4();\n};\n\nbool CClass_00a23fc0::vfunc_4()\n{\n    if (m_pTarget)\n        return m_pTarget->Query();\n    return true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { bool Q() { return false; } }; struct X { unsigned char p[4]; T* t; bool G() { if (t) return t->Q(); return true; } };\nint main()\n{\n    X x; x.t = 0; if (x.G() != true) { std::printf(\"00a23fc0_TEST FAIL\\n\"); return 1; }\n    T t; x.t = &t; if (x.G()) { std::printf(\"00a23fc0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00a23fc0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00a23fc0_TEST PASS"
+   },
+   {
+    "address": "00a23ff0",
+    "module": "_unattributed",
+    "name": "vfunc_4",
+    "source_cpp": "// CClass_00a23ff0::vfunc_4() -- the target at +0x1c's predicate @ 0x009D54E0 (tail-called), or 1 when there is no target\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A23FF0, oracle length 15 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ecx, dword ptr [ecx + 0x1c] ; test ecx, ecx ; je 0xa23ffc ; jmp 0x9d54e0 ; mov al, 1 ; ret \n// Tiny-body shape `QueryTarget` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CTarget {\n    bool Query();                          // 0x009D54E0\n};\n\nstruct CClass_00a23ff0 {\n    unsigned char _pad[0x1c];\n    CTarget* m_pTarget;                    // +0x1c\n    bool vfunc_4();\n};\n\nbool CClass_00a23ff0::vfunc_4()\n{\n    if (m_pTarget)\n        return m_pTarget->Query();\n    return true;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct T { bool Q() { return false; } }; struct X { unsigned char p[4]; T* t; bool G() { if (t) return t->Q(); return true; } };\nint main()\n{\n    X x; x.t = 0; if (x.G() != true) { std::printf(\"00a23ff0_TEST FAIL\\n\"); return 1; }\n    T t; x.t = &t; if (x.G()) { std::printf(\"00a23ff0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00a23ff0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00a23ff0_TEST PASS"
+   },
+   {
+    "address": "00c1baa0",
+    "module": "CManager",
+    "name": "GetKeyPressed",
+    "source_cpp": "// CManager::GetKeyPressed() -- returns the 16-bit member at +0x6\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C1BAA0, oracle length 5 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  mov ax, word ptr [ecx + 6] ; ret \n// Tiny-body shape `GetWord` synthesised from the instruction pattern (the class comes from the\n// manifest label when it is a plain class name, else the method is landed under a descriptive\n// placeholder); member names are descriptive. \nstruct CManager {\n    unsigned char _pad[0x6];\n    short m_value;                         // +0x6\n    short GetKeyPressed();\n};\n\nshort CManager::GetKeyPressed()\n{\n    return m_value;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct X { unsigned char p[4]; short v; short G() { return v; } };\nint main()\n{\n    X x; x.v = -3; if (x.G() != -3) { std::printf(\"00c1baa0_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"00c1baa0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "00c1baa0_TEST PASS"
+   },
+   {
+    "address": "0121a2dc",
+    "module": "_global",
+    "name": "g_global_0121a2dc",
+    "source_cpp": "// g_global_0121a2dc() -- registers the destructor thunk @ 0x01228AF1 with _atexit @ 0x004012BC (a dynamic initialiser of a global with a trivial constructor)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0121A2DC, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x1228af1 ; call 0x4012bc ; pop ecx ; ret \n// Tiny-body shape `RegisterAtExit` synthesised from the instruction pattern; the manifest label is\n// propagated where it is a plain name, the other names are descriptive.\nstruct CGlobal_0121a2dc {                       // trivially constructed, destroyed at exit through the thunk @ 0x01228AF1\n    ~CGlobal_0121a2dc();\n};\n\nCGlobal_0121a2dc g_global_0121a2dc;\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct G { ~G() { ++g_n; } }; static G g;\nint main()\n{\n    if (g_n != 0) { std::printf(\"0121a2dc_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0121a2dc_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0121a2dc_TEST PASS"
+   },
+   {
+    "address": "0121a389",
+    "module": "_global",
+    "name": "g_global_0121a389",
+    "source_cpp": "// g_global_0121a389() -- registers the destructor thunk @ 0x01228BA2 with _atexit @ 0x004012BC (a dynamic initialiser of a global with a trivial constructor)\n// Retail: Fable.exe (TLC, VC7.1) function @ 0x0121A389, oracle length 12 bytes.\n// Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK\n//        13.10.4035 cl.exe); the batch README records the lane verdict.\n//\n// Retail bytes:  push 0x1228ba2 ; call 0x4012bc ; pop ecx ; ret \n// Tiny-body shape `RegisterAtExit` synthesised from the instruction pattern; the manifest label is\n// propagated where it is a plain name, the other names are descriptive.\nstruct CGlobal_0121a389 {                       // trivially constructed, destroyed at exit through the thunk @ 0x01228BA2\n    ~CGlobal_0121a389();\n};\n\nCGlobal_0121a389 g_global_0121a389;\n",
+    "test_cpp": "#include <cstdio>\nstatic int g_n = 0; struct G { ~G() { ++g_n; } }; static G g;\nint main()\n{\n    if (g_n != 0) { std::printf(\"0121a389_TEST FAIL\\n\"); return 1; }\n\n    std::printf(\"0121a389_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "0121a389_TEST PASS"
+   }
+  ]
+ }
+}
