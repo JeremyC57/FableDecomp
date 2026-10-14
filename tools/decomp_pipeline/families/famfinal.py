@@ -275,6 +275,11 @@ DESC={
  "i328":"EH-framed mailbox `DispatchMessage`: semaphore acquire, scoped lock, nested-scope assertion stream + debugger break when the mailbox is empty, dispatch, return the message.",
  "i676":"EH-framed two-level constructors: novtable polymorphic root (state 0, destroyed on `this` by its funclet), item pointer, out-of-line member constructors at +8 and +N, two vtables.",
  "i1117":"EH-framed observer registration under the global observer lock (8-byte scoped lock, out-of-line add on the observable member).",
+ "i1116":"EH-framed observer notification under the global observer lock: Find on the observable member, virtual notify (this, argument) when found.",
+ "i1123":"EH-framed `WriteToFile`: a 12-byte stack visitor (vtable, result, file; inline empty destructor registers state 0) handed to this's virtual slot 10, its result returned.",
+ "i1130":"EH-framed three-level constructors: the root keeps the node pointer, the container builds the node out of line, the novtable leaf calls the virtual Init through an inline helper.",
+ "i1131":"EH-framed container destructors: the novtable leaf drains the container (virtual RemoveFirst/OnRemove, each item deleted) through an inline helper, then the node member and the vtables unwind.",
+ "i1136":"EH-framed factories: `new CX` through the class operator new, null-checked, the out-of-line constructor run; the block stays in the frame for the operator-delete funclet.",
  "i1121":"EH-framed pair destructors (`_Dest_val`): the CDebugStream second, the first's out-of-line member, the base vtable restored.",
  "15":"`CDerived::CDerived(a, b) : CBase(), m_second(b), m_first(a) {}` -- open DIFFER (retail stores the vtable after both members; VC7.1 here schedules it between them)",
 }
