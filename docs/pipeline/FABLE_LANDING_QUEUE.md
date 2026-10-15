@@ -146,6 +146,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand119` | Hand chunk 119 (CAIFilter_ShouldStillBeWorkingInWarehouse .. CAIStateGroup_Gaze): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand120` | Hand chunk 120 (CAIStateGroup_GazeAtHome .. CAIStateGroup_MeleeCombatNearbyBase): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand121` | Hand chunk 121 (CAIStateGroup_MeleeCombatNearbyBase .. CAIStateGroup_SeekScriptTarget): 26 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand122` | Hand chunk 122 (CAIStateGroup_SetupWares .. CAnimComponentFlags): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -195,7 +196,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **253 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **260 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -398,6 +399,16 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0095d070 CAIStateGroup_RangedCombatUsePreferredFirePoint::AttackEnemy DIFFER(108v108): retail `push esi ; mov esi,ecx ; ... jne body ; xor al,al ; pop esi ; ret` (the shared false exit inline after the first test), ours `this` in edi and the exit at the end | tried: two early returns, `if (Can) { if (!far) return ... } return false;`, an `||` of the two tests, early returns through an inline distance helper | next: lane gap: block placement (the FPU body and the `cmp eax,1 ; setne al` tail match; `== 1 ? false : true` gives the setne where `!= 1` gives dec/neg/sbb/neg)
 - 0095d4c0 CAIStateGroup_RangedCombatUsePreferredFirePoint::GetFirePointList DIFFER(130v130): retail keeps both empty filters in the frame dword at +4 (`lea ecx,[esp+6]` / `lea edx,[esp+7]`), ours homes the first one in the dead argument slot (`lea ecx,[esp+34h]`) | tried: temporaries in the && chain, named filter locals (own dwords), a named Bind2 (most-vexing-parse SRC_FAIL, then a copy), a member operator&& | next: a filter type whose temporary cannot be homed in the argument slot (one-byte member with a user copy constructor?), else lane gap: temporary homing
 - 00939180 CAIStateGroup_MinionSitAtHome::IsRunnable DIFFER(161v155): retail `mov [edi],eax ; xor edx,edx ; mov ecx,96h ; div ecx ; mov edi,edx ; call GFGetCurrentFrame`, ours keeps the rotated seed in ebx, calls first and divides after (`mov edi,96h ; div edi`, +`push ebx`) | tried: range by const reference (gives the literal `div` as in 00984a20 but not the order), the random step as its own statement, the world as an unused helper argument | next: a form that forces the modulo before the frame call (store the remainder through a volatile? a non-inline helper compiled earlier in the TU?)
+
+
+#### `2026-10-15_linux_hand122` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand122/differ/`)
+- 00945a90 CAIStateGroup_SitForMeal::GetPCookingPot DIFFER(127v121): `sub esp,8` + the shifted `[esp+N]` offsets v retail `push ecx` (lookup key, predicate and find_if result overlaid in ONE frame word) | tried: GetPHome accessor, iterator in its own block, search in a (force)inline helper | next: lane gap: frame-slot sharing between an inlined callee's local and a later hidden-return temporary
+- 00946380 CAIStateGroup_SitForMeal::GetPCookingPot DIFFER(122v116): `sub esp,8` v `push ecx` (same overlay, uninitialised predicate) | tried: predicate with user constructor, key taken from the inlined parameter, named predicate + iterator locals | next: lane gap: frame-slot sharing (as 00945a90)
+- 00945b10 CAIStateGroup_SitForMeal::GetPFreeChair DIFFER(126v122): `sub esp,8` v `push ecx` (key and returned iterator overlaid; no predicate temporary here) | tried: early-return form, out pointer scoped to a block, iterator with a user destructor | next: lane gap: frame-slot sharing (as 00945a90)
+- 00962b80 CAIStateGroup_VersusEnemyBase::OnReplace DIFFER(129v129): `mov eax,[edi+4]` / `mov edx,[edi+4]` swapped against retail's edx-then-eax for the two PBrain loads after RemoveMode | tried: without the world local, inline LeaveCombat helper, inline RemoveModeIfSet helper | next: lane gap: register allocation tie
+- 009395f0 CAIStateGroup_SitRoundCampfire::GetPNearCampfire DIFFER(122v122): retail loads each copied position's three dwords before storing them (interleaving the next PBrain load) and stores the result zero after the creature load; the lane alternates load/store | tried: memberwise copy constructor, POD vector, radius init-list vs body (body moves the radius store to retail's place) | next: lane gap: struct-copy scheduling
+- 00964360 CAIStateGroup_StealStealableItem::FindPStealableItem DIFFER(107v107): same copy scheduling (`mov ecx,[eax] ; mov edx,[eax+4] ; mov eax,[eax+8]` then three stores) plus the zero store one instruction early | tried: memberwise copy ctor, POD + body assignment, by-value constructor parameter (the empty filter as a Bind2 temporary fixed the frame layout) | next: lane gap: struct-copy scheduling
+- 00a763f0 CANavQuadTreeNode::operator== DIFFER(116v116): retail `mov ecx,[esp+8]` before `fld [esi+4]`, the lane after it | tried: by-reference NearlyEqual helper, pointer local for the other node | next: lane gap: one-instruction scheduling
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

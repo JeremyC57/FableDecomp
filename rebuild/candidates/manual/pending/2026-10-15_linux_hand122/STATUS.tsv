@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00927ea0	RELOCATION_MATCH	131v131	PASS	shopkeeper GetInterface(0x90) + shop stock reset
+009454c0	RELOCATION_MATCH	110v110	PASS	PlayAnimation wait action; result==2 ?true:false after inner block
+00945530	RELOCATION_MATCH	119v119	PASS	IS_THING_ALIVE + bool GetInterface(0x2D) release
+00945620	RELOCATION_MATCH	122v122	PASS	calls ReleaseControlOfPot; carrying GetInterface(0x46)
+00945a90	DIFFER	127v121	-	frame: key/predicate/iterator share one slot in retail (lane gap)
+00945b10	DIFFER	126v122	-	frame: key/iterator share one slot in retail (lane gap)
+00946380	DIFFER	122v116	-	frame: key/predicate/iterator share one slot in retail (lane gap)
+009395f0	DIFFER	122v122	-	vector copy scheduling (loads-then-stores) (lane gap)
+00964360	DIFFER	107v107	-	vector copy scheduling + zero store position (lane gap)
+0051a110	RELOCATION_MATCH	158v158	PASS	= CRegion::~CRegion (label corrected); STLport map + vectors
+0096e610	RELOCATION_MATCH	101v101	PASS	IS_THING_ALIVE + SummonerSummonInto combat action
+009685c0	RELOCATION_MATCH	144v144	PASS	named zero C3DVector before the vslot-79 speed query
+00967250	RELOCATION_MATCH	108v108	PASS	out-param GetInterface(0xB8) seat check
+00942920	RELOCATION_MATCH	147v147	PASS	cyclic gesture table + PlayAnimation wait action
+0094dbc0	RELOCATION_MATCH	122v122	PASS	RiseUp action (0x118 bytes) after HasMode(0x1E)
+00938580	RELOCATION_MATCH	98v98	PASS	GetInterface(0x2D) miss path reads frame slot
+00962b80	DIFFER	129v129	-	eax/edx register swap only (lane gap)
+008e8a10	RELOCATION_MATCH	113v113	PASS	alive && GetInterface && HasMode(0x3F) -> false
+009635c0	RELOCATION_MATCH	113v113	PASS	base check; HasMode(0x38) ? false : true
+00911a00	RELOCATION_MATCH	137v137	PASS	d = dx*dx; d += dy*dy > 100
+00942820	RELOCATION_MATCH	121v121	PASS	three implicit CCharString temporaries
+009428a0	RELOCATION_MATCH	121v121	PASS	named Teach (label corrected from propagated CrouchAndTalk)
+00944d10	RELOCATION_MATCH	154v154	PASS	creature local before the reservation pushes
+009445f0	RELOCATION_MATCH	154v154	PASS	twin of 00944d10
+00944690	RELOCATION_MATCH	149v149	PASS	string in its own block shares the key slot
+00a763f0	DIFFER	116v116	-	one-instruction scheduling (arg load vs fld)
+00e33720	RELOCATION_MATCH	148v148	PASS	GSI slots 360/70/599/844; PImp as own copy-ctor member
+00712bb0	RELOCATION_MATCH	112v112	PASS	scripted action hand-over / watch
+00870d70	RELOCATION_MATCH	102v102	PASS	two separate early returns; local in dead arg slot
+0040ed10	RELOCATION_MATCH	144v144	PASS	global epsilon squared; four-way direction
+009051f0	RELOCATION_MATCH	149v149	PASS	novtable CActionBase; GetScriptThing into member
+00905290	RELOCATION_MATCH	129v129	PASS	route-thing twin of 009051f0
+009034f0	RELOCATION_MATCH	117v117	PASS	novtable CActionBase; init list in member order
+00713180	RELOCATION_MATCH	117v117	PASS	TurnToFace member with scalar position members
+00717bc0	RELOCATION_MATCH	143v143	PASS	= CActionOverheadTalkToThing ctor (label corrected)
+007b5740	RELOCATION_MATCH	124v124	PASS	two inline CPersistContext::Transfer<T>
+00ce1110	RELOCATION_MATCH	153v153	PASS	__forceinline CSpawnedFuncBase ctor
+005c2013	RELOCATION_MATCH	115v115	PASS	= STLport vector<T20>::reserve (label corrected); y off + s on
+005dbda0	RELOCATION_MATCH	130v130	PASS	inline 1-byte stream Read; vector assigned from the call
+005dc3c0	RELOCATION_MATCH	130v130	PASS	inline helper local homed in dead arg slot
