@@ -129,6 +129,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand102` | Hand chunk 102 (CTCSwitchableNavigation .. CTCTavernGameCardBlackjack): 33 of 40 byte-exact | - | 6 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand103` | Hand chunk 103 (CTCTavernGameCardBlackjack .. CTCThingOwner): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand104` | Hand chunk 104 (CTCThingOwner .. CTCVolumeContainmentTracker): 36 of 40 byte-exact | - | 3 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand105` | Hand chunk 105 (CTCVolumeContainmentTracker .. CTargetPoint): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand106` | Hand chunk 106 (CTargetPoint .. CThemeChannel): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand107` | Hand chunk 107 (CThing .. CThingBaseDef): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand110` | Hand chunk 110 (CThingFilter_HasFreeActionPoint .. CThingHolySite): 36 of 40 byte-exact | - | 1 | 3 | landed; parked rows open |
@@ -177,7 +178,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **163 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **166 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 26 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -241,6 +242,12 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 006dee80 CTCTrophy::UpdateGainedWitnessSounds DIFFER(92v94): ours `mov [esp+8],fps ; call ; mov [esp+0Ch],frame ; fild fps ; fmul [def+44h] ; fiadd frame`, retail `mov [esp+0Ch],fps ; call ; mov [esp+8],frame ; fild frame ; fild fps ; fmul ; faddp` | tried: plain expression, def/fps/frame named locals, explicit (float) casts, operands swapped | next: the frame as a named `float` local (`float frame = (float)GetWorldFrame();`) so it is converted and kept on the FPU stack before the product
 - 00659295 CTCVillage::InitialiseToggleTorchTypes DIFFER(79v77): ours `mov eax,[eax+4] ; cmp byte ptr [eax+1Ch],0 ; sete cl ; push ecx ; mov ecx,eax`, retail `mov ecx,[eax+4] ; cmp byte ptr [ecx+1Ch],0 ; sete al ; push eax` | tried: pointer-returning PeekTC + named light local, `__forceinline` PeekTC, inline CTCLight::ToggleActive on the returned pointer, out-parameter PeekTC | next: lane gap: register choice for the component (the 1-byte sete target), unless a `bool` local for `!Active` evaluated first changes it
 - 007ee370 CTCVillageMember::OnCreate DIFFER(88v86): ours zeroes the def local before the argument pushes and holds the def object in edi (extra push/pop), retail zeroes it after the pushes and reloads it into the dead `this` register esi after `add esi,0Ch ; push esi` | tried: CDefPointer local with destructor (re-reads the escaped local), plain holder + pointer local + inline release, the same under `/Os` (worse: frame), an inline SubDef-and-release helper | next: lane gap: retail treats the address-escaped local as unchanged across GetSubDef (whole-program / LTCG alias knowledge) -- try a `__fastcall`/`const` GetSubDef declaration or a by-value def holder returned from GetDef
+
+
+#### `2026-10-15_linux_hand105` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand105/differ/`)
+- 0076e290 CTCWeaponTrail::SetLastProjectileWeaponTrailPoint DIFFER(84v84): pair copy scheduling -- retail `mov ecx,[esp+4] ; mov edx,[esp+8] ; mov eax,esi ; mov [eax],ecx ...`, lane `mov edx,[esp+4] ; mov ecx,esi ; mov [ecx],edx ; mov eax,[esp+8] ...` | tried: `back() = Get(point)` implicit copy (73v84), + memberwise operator= (83v84), named result local (87v84), destination reference taken before the call + named local + memberwise operator= (84v84) | next: lane gap: register scheduling of a 24-byte memberwise copy (try C3DVector with its own user operator= / copy constructor)
+- 0076ef40 CTCWeaponTrail::OnCreate DIFFER(92v91): retail `movzx ecx,byte ptr [eax+6Ch]`, lane `xor ecx,ecx ; mov cl,byte ptr [eax+6Ch]` (rest identical) | tried: `(b & 8) ? 2 : 0` on an unsigned char, a 1-bit bitfield (94v91), /G7 (90v91), /G6 (92v91) | next: the byte read through a `bool`/enum-returning inline accessor widened to long (wave 24p: a bool forwarded to a long is `movzx`), else lane gap: movzx selection
+- 007e2da0 CTCWobble::SetWobbleParameters DIFFER(92v79): retail inlines an inline-assembly ceil helper (`fadd [ebp-4] ; fistp dword [ebp+0Ch] ; fild ; fsub [ebp+8] ; fstp [ebp-0Ch] ; mov eax,[ebp-8] ; cmp eax,[ebp-0Ch] ; jne ; dec [ebp+0Ch]`) | tried: volatile locals + `(long)` under /QIfist /Op (`fistp qword`, 92v79) | next: lane gap: inline-assembly helper (asm_bake oracle only)
 
 
 #### `2026-10-15_linux_hand106` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand106/differ/`)

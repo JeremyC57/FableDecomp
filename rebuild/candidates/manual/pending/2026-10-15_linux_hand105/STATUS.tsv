@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00785c80	RELOCATION_MATCH	55v55	PASS	OnThingCarried; carrier TC pointer re-read after first call
+007df3e0	RELOCATION_MATCH	89v89	PASS	OnPutOnMount; implicit CCharString conversion temporary ("CTCTeleporter")
+007df440	RELOCATION_MATCH	54v54	PASS	OnTakenOffMount; RemoveTC(0xDD) (manifest OnPropertyChanged propagated)
+007df610	RELOCATION_MATCH	85v85	PASS	ctor; GetSubDef<CWallMountEffectsDef> on owner def
+007b5b40	RELOCATION_MATCH	81v81	PASS	ctor; two CIntelligentPointer(0) members
+00556350	RELOCATION_MATCH	77v77	PASS	label fix: NUISystem::CRedefinerList ctor (3 vptrs)
+005da4f0	MATCH	23v23	PASS	CTCWeapon::FrameUpdate (vtable slot 9)
+005da540	RELOCATION_MATCH	96v96	PASS	label fix: GetUnsheatheAnim (returns +0xd8/+0xd4)
+005da5a0	RELOCATION_MATCH	96v96	PASS	GetSheatheAnim (returns +0xe0/+0xdc)
+005da6a0	RELOCATION_MATCH	52v52	PASS	CTCWeapon ctor; AimingTime=-1 in body
+005da850	MATCH	32v32	PASS	counted def-pointer copy, release without null test
+005da950	MATCH	35v35	PASS	label fix: IsProjectileWeaponAutoLoading (def +0xc4)
+005da980	MATCH	48v48	PASS	def flag in scoped local; return Loaded or true
+005daa00	MATCH	49v49	PASS	class 1 or 2; || gives full-register tails
+005dad10	RELOCATION_MATCH	69v69	PASS	IsUsableBy && class 3 && third arg
+005dad60	RELOCATION_MATCH	58v58	PASS	type==0 -> IsUsableBy polarity
+00656caa	RELOCATION_MATCH	86v86	PASS	label fix: CQuestInfoElementMiniGameBar ctor; optimize("s") for fld/fstp float consts
+00c4cf40	RELOCATION_MATCH	49v49	PASS	label fix: CVtable_012B8778 list-node dtor (??1)
+0076de60	MATCH	68v68	PASS	out-param local homed in dead arg slot
+0076e290	DIFFER	84v84	-	parked: pair copy scheduling (two loads ahead) after 4 forms
+0076e4a0	MATCH	33v33	PASS	hoisted xor + sete/setg arms
+0076e5f0	RELOCATION_MATCH	45v45	PASS	false tail last; tail jumps to private overload
+0076ef40	DIFFER	92v91	-	parked: movzx vs xor/mov byte widening (OnCreate)
+00732d00	RELOCATION_MATCH	49v49	PASS	named placement local + per-arm stores; extern 0.0f
+00661720	RELOCATION_MATCH	32v32	PASS	label fix: CAnimateThing::IsFinished (out-of-line inline copy)
+006cec90	RELOCATION_MATCH	62v62	PASS	zero-initialised float result local
+006ceea0	RELOCATION_MATCH	76v76	PASS	fps and def taken into locals before the frame call
+006cefe0	RELOCATION_MATCH	92v92	PASS	definitions holder local; range!=0 polarity
+006cfe80	RELOCATION_MATCH	59v59	PASS	a && (b || inline IsInLoveWithHero)
+006cfec0	RELOCATION_MATCH	70v70	PASS	five-term && with shared byte tails
+006d03e0	RELOCATION_MATCH	38v38	PASS	inline IsMarriedToThePlayer
+006d0800	RELOCATION_MATCH	38v38	PASS	label fix: CTCWife::OnInitialActivate (slot 6, inlined twin)
+006d1de0	RELOCATION_MATCH	73v73	PASS	nested ifs, marriage re-tested
+00c40410	MATCH	62v62	PASS	label fix: CVtable_012B5A80::Init (morph action); chained X=Y=Z=0
+007c6a40	RELOCATION_MATCH	83v83	PASS	inline GetInterface(0xA7) out-param template
+007e2da0	DIFFER	92v79	-	parked: lane gap, inline-assembly ceil helper (fistp dword)
+00ee13b0	RELOCATION_MATCH	65v65	PASS	night-arm guard with discarded daytime abort test
+004d7a76	RELOCATION_MATCH	26v26	PASS	optimize("s") for or [..],-1 stores
+00987d50	RELOCATION_MATCH	26v26	PASS	label fix: CShaderConstantRange ctor
+00a695c0	RELOCATION_MATCH	26v26	PASS	label fix: CVolumeTexture ctor
