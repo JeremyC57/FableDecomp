@@ -50,7 +50,10 @@ Fable/            its files, in the folder of the same name next to it
   `FABLE_GLES_NOVAO=1` (one vertex array object, attributes re-specified every draw) and
   `FABLE_GLES_NOSHADOW=1` (every render state re-issued whenever one changes). The GL
   calls are replayed by a render thread (`FABLE_GLES_THREAD=0` runs them on the game
-  thread; `FABLE_GLES_QUEUE_FRAMES=N` allows N frames in flight, default 1). The graphics
+  thread; `FABLE_GLES_QUEUE_FRAMES=N` allows N frames in flight, default 1). The periodic
+  `gles: frame` log line counts that frame's buffer uploads (in-place ones stall a tiler) and
+  reads the back buffer's centre pixel only with `FABLE_GLES_PROBE=1` (the readback drains
+  the GPU). The graphics
   page's "Frame rate cap" (`fps_cap`, 30 by default here) holds the game to that rate: a
   steadier pace and less heat and battery than running the menus at 60.
 - **GLES scope.** What the game uses on the PC, per a Direct3D call census: vs_1_1 and
@@ -61,10 +64,15 @@ Fable/            its files, in the folder of the same name next to it
 - **Speed.** The x86 game runs as lifted C on four A53 cores at 1.5 GHz; expect a fraction
   of the Android frame rate. 720x480 keeps the GPU load low. The first device log showed
   gameplay at 7-8 fps with ~1300 draws a frame and menus at the 60 fps cap, so the cost is
-  per draw: the renderer keeps GL state and uniform traffic to what changed (per-program
-  constant ranges, cached vertex layouts and texture bindings), never waits for occlusion
-  query results, orphans dynamic buffers rather than writing them in place (a Mali stall),
-  and discards the depth buffer at the end of each frame. The host menu's statistics line
+  per draw: the renderer keeps GL state and uniform traffic to what changed (each program is
+  sent only the constants and mirrored states that differ from what it last received;
+  sampler parameters likewise; cached vertex layouts and texture bindings), builds a new
+  shader program in one round trip to its render thread, never waits for occlusion query
+  results, orphans dynamic buffers rather than writing them in place (a Mali stall), clears
+  whole targets without the scissor (no tile load), compiles the alpha test (a `discard`)
+  only into the programs of alpha-tested draws (a shader that can discard loses Mali's early
+  depth update and forward pixel kill), and discards the depth buffer at the end of each
+  frame. The host menu's statistics line
   shows the frame time and the part spent in GL, which tells the game's own CPU time from
   the renderer's. The lifted code is built at -O2 for the Cortex-A53 (`FABLE_GEN_OPT`,
   `linux-a64.cmake`), and `Fable.sh` puts the CPU and GPU governors into performance mode
@@ -94,7 +102,10 @@ Fable/            its files, in the folder of the same name next to it
   the host menu's Graphics page holds what it had: resolution (fractions of the 720x480
   panel, scaled up on present), refresh rate, anti-aliasing (2x/4x multisampling), screen
   aspect ratio (auto = 3:2 here), landscape / mesh / texture / shadow / effects detail
-  (each Low..Highest; shadow Low = no shadows), brightness, vertical sync (off / on / half
+  (each Low..Highest; shadow Low = no shadows; texture Low also stores the decoded DXT
+  textures in 16-bit formats, RGB565 / RGB5_A1, half the memory and texture bandwidth:
+  `FABLE_GLES_TEX16=1` forces that at any detail, `2` also turns smooth alpha into RGBA4,
+  `0` keeps RGBA8), brightness, vertical sync (off / on / half
   = a 30 fps lock), plus draw distance, glow, water reflections and weather. Changes apply at once and are saved in `save/graphics.txt`; `Fable.sh`'s
   `FABLE_GFX_DEFAULTS` is the first-run preset (shadows and water reflections off: each is
   an extra scene pass). Lower the render resolution first if the GPU is the limit, the

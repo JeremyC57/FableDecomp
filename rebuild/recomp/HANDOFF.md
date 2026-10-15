@@ -112,6 +112,12 @@ user's original game folder; no retail bytes or generated code are in git.
     Mali driver's per-draw CPU cost overlaps the game's frame; the lifter emits
     `Ctx* restrict c` (the game thread's frame share halved on the harness) and inline
     caches on every dispatch site; host-to-guest calls cache their lookup.
+  - **GLES renderer round (2026-10-15, not yet on the device)**: uniforms per program only
+    when changed (constant registers versioned), sampler parameters shadowed, program builds
+    in one render-thread round trip, whole-target clears unscissored, alpha test as a shader
+    variant (no `discard` otherwise), no periodic readback (`FABLE_GLES_PROBE=1`), a stale
+    texture binding after mid-frame uploads fixed, 16-bit DXT storage at texture detail Low
+    (`FABLE_GLES_TEX16`); the frame log counts buffer uploads. See the 2026-10-15 journal.
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).
