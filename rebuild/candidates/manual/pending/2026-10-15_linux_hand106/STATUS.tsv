@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c202f0	DIFFER	74v74	-	parked: dtor (label wrong); two base vtable stores come out +0,+8 vs retail +8,+0
+00805920	MATCH	73v73	PASS	MagSq grouped X*X + (Y*Y + Z*Z) to match x87 reassociation
+004e1537	RELOCATION_MATCH	47v47	PASS	label: CTCIdleScheduler ctor (vtable 0x012426C4); /Os pragma
+0057fc71	MATCH	43v43	PASS	label: GetTypeBalancedScariness; /Os pragma
+0057fc9c	MATCH	43v43	PASS	label: GetTypeBalancedGoodstrength; /Os pragma
+00dcd160	RELOCATION_MATCH	96v96	PASS	entity-script ctor (CPermanentBarrier shape)
+00a98910	RELOCATION_MATCH	91v91	PASS	3-case switch on AllocateType
+004a89d0	RELOCATION_MATCH	87v87	PASS	CTestQuest copy constructor
+004a8f50	RELOCATION_MATCH	87v87	PASS	label: CTestQuest::operator=
+0054f580	RELOCATION_MATCH	62v62	PASS	SetText args pushed before GetText call (right-to-left)
+00546aa0	MATCH	84v84	PASS	label: NUISystem::CZoomingComponent::GetDataFromDef
+00546cd0	MATCH	82v82	PASS	NUISystem::CTextContainer::GetDataFromDef
+00546d30	RELOCATION_MATCH	46v46	PASS	NUISystem::CTextContainer ctor (3 vtables)
+006aed80	RELOCATION_MATCH	50v50	PASS	label: CTCRegionFollower ctor (STLport list)
+00757640	RELOCATION_MATCH	51v51	PASS	label: CTCWound ctor (STLport list)
+00780070	RELOCATION_MATCH	50v50	PASS	label: CTCHeroGuide ctor (STLport list)
+009f8690	RELOCATION_MATCH	43v43	PASS	label: CGraphicBankManager ctor (STLport list)
+00c2e270	RELOCATION_MATCH	60v60	PASS	label: loader AddChildren (class unknown)
+009f9d00	MATCH	68v68	PASS	bitfield copies
+009f9e00	RELOCATION_MATCH	96v96	PASS	label: CTexture::GetSurfaceLevel (not GetNoLevels)
+009f9e80	RELOCATION_MATCH	82v82	PASS	sibling of CVolumeTexture::GetByteLength
+00b3b1f0	RELOCATION_MATCH	70v70	PASS	label: CEngineResourceManager::AllocateTexture (CTexture::Create autoname)
+00b3b5b0	RELOCATION_MATCH	29v29	PASS	label: CEngineResourceManager::FreeTexture (CTexture::Destroy autoname)
+00c098f0	MATCH	24v24	PASS	label: scoped-pointer dtor (not CTexture::Uninitialise)
+00a696d0	MATCH	22v22	PASS	retail CTextureManager pool stride 0x54 (PDB 0x58): TextureBuffer +0x5d0
+00a698b0	RELOCATION_MATCH	56v56	PASS	fill loop needs count + array pointer locals (rep stosd)
+004d1eb0	RELOCATION_MATCH	84v84	PASS	label: CVectorMap<K,24-byte>::Add
+0081b2a0	RELOCATION_MATCH	93v93	PASS	label: CVectorMap<K,20-byte>::AddEntry (Add + sort)
+0081d7d0	RELOCATION_MATCH	77v77	PASS	label: CVectorMap<K,20-byte>::Add
+00a3b590	RELOCATION_MATCH	87v87	PASS	DirectShow SDK sample CheckMediaType
+00ca49f0	MATCH	92v92	PASS	label: CBaseRenderer::GetSampleTimes
+00ca4b20	MATCH	63v63	PASS	label: CBaseRenderer::Render
+00ca5cf0	RELOCATION_MATCH	38v38	PASS	label: CBaseVideoRenderer::ScheduleSample
+00ca6020	RELOCATION_MATCH	44v44	PASS	label: CBaseVideoRenderer::get_DevSyncOffset
+00ca6050	RELOCATION_MATCH	46v46	PASS	label: CBaseVideoRenderer::get_Jitter
+00ca6580	RELOCATION_MATCH	37v37	PASS	label: CBaseRenderer::SourceThreadCanWait
+00ca7620	MATCH	50v50	PASS	label: CBaseFilter::GetClassID
+00ca77a0	MATCH	65v65	PASS	label: CBaseFilter::StreamTime
+00cacd20	RELOCATION_MATCH	60v60	PASS	label: CUnknown::NonDelegatingRelease
+006b5fb0	MATCH	90v90	PASS	STLport _Vector_base model
