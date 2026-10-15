@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005bcea4	RELOCATION_MATCH	84v84	PASS	X-axis gain ease; `x*x + y*y` (right operand evaluated first); y-off+s
+005bcef8	RELOCATION_MATCH	84v84	PASS	label fix: Z-axis twin (writes +0x11C from stick Y); y-off+s
+005bd1eb	RELOCATION_MATCH	74v74	PASS	quest-manager guard + category loop; s
+005bd5db	DIFFER	84v85	-	parked: regalloc (stride offset vs count in ebx), 4 forms tried
+005bdb68	RELOCATION_MATCH	44v44	PASS	by-value CWideString temp in dead arg slot; first in named local; y-off+s
+005bdc77	RELOCATION_MATCH	61v61	PASS	HasTC filter temp + out-pointer local; y-off+s
+005bdcb4	RELOCATION_MATCH	40v40	PASS	state/slide guard + sound + tail jmp; s
+005bdcdc	RELOCATION_MATCH	40v40	PASS	label fix: HighlightPreviousItem; s
+005bdd04	RELOCATION_MATCH	53v53	PASS	signed >=0 then unsigned size compare; s
+005bdd39	RELOCATION_MATCH	83v83	PASS	slot 26; `fucompp ; jp` = member == 1.0f; s
+005bdd8c	RELOCATION_MATCH	44v44	PASS	label fix: slot 38 'up' handler; two-case switch; s
+005bddb8	RELOCATION_MATCH	44v44	PASS	slot 39; two-case switch + vtable tail jumps; s
+005be8d3	RELOCATION_MATCH	32v32	PASS	label fix: GetBoughtPrice; named local -> sibling jmp; s
+005bf3c6	RELOCATION_MATCH	43v43	PASS	label fix: slot 79 RemoveItemFromInventory; index local first; s
+005bf3f1	RELOCATION_MATCH	35v35	PASS	slot 47; count>0 then create; s
+005bf482	RELOCATION_MATCH	33v33	PASS	rotated pointer walk; s
+005bf8cb	RELOCATION_MATCH	79v79	PASS	index loop over const vector&; y-off+s
+005bf91a	RELOCATION_MATCH	79v79	PASS	slot 73; loop + inline vector clear() for [esi+4]; s
+005bfa44	RELOCATION_MATCH	37v37	PASS	label fix: GetAllNonEmptyInventoryItems(vector&, bool); s
+005bfa69	RELOCATION_MATCH	37v37	PASS	pointer walk, (type, vector&); s
+005bfa8e	RELOCATION_MATCH	56v56	PASS	vector local + slot 85; y-off+s
+005bfac6	RELOCATION_MATCH	59v59	PASS	vector local + slot 85; y-off+s
+005bfc90	RELOCATION_MATCH	73v73	PASS	float named local homed in dead arg slot; y-off+s
+0061a040	RELOCATION_MATCH	24v24	PASS	label fix: GetSelectedCategoryThing (unreferenced copy); s
+008081b0	RELOCATION_MATCH	92v92	PASS	label fix: SGI __pop_heap<CIntelligentPointer<CThing>>; speed + __forceinline copy/assign
+00927450	RELOCATION_MATCH	92v92	PASS	label fix: SGI __pop_heap<CIntelligentPointer<const CThing>>; speed
+009e2560	RELOCATION_MATCH	39v39	PASS	label fix: __fastcall AppendLongToString; speed
+00c21e20	MATCH	43v43	PASS	label fix: child-then-self slot-17 lookup; speed
+00c28610	MATCH	38v38	PASS	label fix: CHandleBasedMemoryPool::FreeHandle (union slot keeps both stores)
+004e7d4d	RELOCATION_MATCH	21v21	PASS	base slot 76: return copy of global empty CWideString; s
+005b34d5	RELOCATION_MATCH	52v52	PASS	slot 58; bool& local in frame; y-off+s
+005b369a	RELOCATION_MATCH	79v79	PASS	slot 1; Transfer of the bool PARAMETER by reference; y-off+s
+005b40e6	RELOCATION_MATCH	87v87	PASS	implicit CCharString conversion temp; y-off+s
+005b4771	RELOCATION_MATCH	36v36	PASS	pair temp pushed to vector at +0x134; y-off+s
+005b4a6e	RELOCATION_MATCH	39v39	PASS	slot 35; flag && pointer; s
+005b4e7c	RELOCATION_MATCH	44v44	PASS	slot 30; base call + front-end slot 22; s
+005b6a2d	RELOCATION_MATCH	57v57	PASS	slot 31; lea edi for PMannequin, tail jmp; s
+005c2e2a	RELOCATION_MATCH	52v52	PASS	label fix: CTCInventoryWeapons slot 58; y-off+s
+00c2c7b0	RELOCATION_MATCH	43v43	PASS	label fix: layered registration Add; speed
+004c6140	RELOCATION_MATCH	35v35	PASS	label fix: time-multiplier controller RemoveRequest; speed

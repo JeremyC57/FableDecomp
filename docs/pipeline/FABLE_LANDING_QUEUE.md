@@ -156,8 +156,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand901` | Chunk 901 -- the skipped-row ledger pieces (34 bodies from 15 multi-function catalogue rows) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand91` | Hand chunk 91 (CTCHeroStats .. CTCInventory): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand93` | Hand chunk 93 (CTCInventoryBase .. CTCInventoryExperience): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 
-Totals: **0 matched rows staged for landing**, **124 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **125 parked rows** for the Fable retry pass.
 
 ### Skipped rows (6 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -381,5 +382,9 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00581fa4 CTCInventory::GetQuickAccessItemGraphicIndex DIFFER(43v45): same `lea` vs `shl ecx,2 ; [ecx+eax]` addressing as 00581cfd | tried: POD return, explicit result pointer, pack(2), non-POD without "s" | next: same as 00581cfd (one fix lands both)
 - 00581d8e CTCInventory::IsContextSensitiveOpinionExpressionAvailable DIFFER(75v77): ours `mov ecx,[eax+edi*4] ; test ecx,ecx`, retail `cmp dword ptr [eax+edi*4],0 ; jle ; mov ecx,[eax+edi*4]` | tried: `&&`, nested if + signed index, no "s", volatile compare (gives the memory compare + reload but folds the address with `lea`, 78v77) | next: the same index-scaling accessor as 00581cfd combined with the volatile-free form
 - 00584b42 CTCInventory::ClosePCInventoryMenu DIFFER(70v68): ours `mov eax,[eax+4] ; mov edx,[eax] ; mov ecx,eax ; call [edx+7Ch]`, retail `mov ecx,[eax+4] ; mov eax,[ecx] ; call [eax+7Ch]` | tried: T** out, T*& out, split HasInterface/FindInterface helpers, no "s" | next: lane gap: register choice at a virtual call (sibling rows 00584af6/00584fe3 with the same template match)
+
+
+#### `2026-10-15_linux_hand93` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand93/differ/`)
+- 005bd5db CTCInventoryBase::GetCategoryWithAssociationThing DIFFER(84v85): retail keeps the stride offset in ebx and spills the count to [ebp-4] (`lea ecx,[ebx+eax]`, `cmp edi,[ebp-4]`), the lane keeps the count in ebx and spills the offset (`add ecx,[ebp-4]`, `add dword ptr [ebp-4],2Ch`) | tried: for+break with post `if (i < count)`, while loop with reversed declaration order, `&&` loop condition with `first + i`, outer `if (count > 0)` | next: lane gap: register allocation (callee-saved choice between the compiler's strength-reduced offset and a user local); maybe the original wrote an inline `GetNumberOfCategories()`/index helper -- try one form with the count behind an inline accessor taking it by reference
 
 <!-- queue:end -->
