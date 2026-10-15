@@ -121,8 +121,9 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand75` | Hand chunk 75 (CShaderRenderManager .. CSkeletalMorphResourceManager): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand77` | Hand chunk 77 (CSpellContainerList .. CSubtitleRenderer): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand81` | Hand chunk 81 (CTCAssassinRush .. CTCBoastingPodium): 36 of 40 byte-exact | 36 | 4 | 0 | STAGED: land it |
 
-Totals: **650 matched rows staged for landing**, **62 parked rows** for the Fable retry pass.
+Totals: **686 matched rows staged for landing**, **66 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -253,5 +254,12 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 009ba390 CStringParser::ReadLineAsString DIFFER(76v71): retail reads `[ecx+4]` / `[ecx+20h]` AFTER the call to SkipPastNewline (`this` kept in ecx across the call) | tried: start pointer local + `String + StringPos - start` length | next: lane gap: whole-program (/GL) callee register knowledge
 - 009ba4a0 CStringParser::ReadAsStringUntilWhitespace DIFFER(81v80): retail `mov eax,[esi+4] ; lea edi,[eax+ecx] ; cmp byte ptr [edi],0`, lane `mov edi,[esi+4] ; mov al,[edi+ecx] ; add edi,ecx ; test al,al`; the length is built in edx (retail) vs eax (lane) | tried: early empty return, reading path as the `if` body, `optimize("s")` (57 bytes, merges returns), `&String[pos]` form | next: lane gap: the lane folds the dereference into the address computation
 - 0048dc3c CSubtitleRenderer::GetTextOffsetFromEmbeddedTagGraphic DIFFER(79v79): retail places the thumb-click return (`add eax,6A4h ; jmp`) right after its `||` pair (`je A ; cmp ; jne next ; A:`); the lane jumps (`je ; je`) to a copy below the default return | tried: else-if returns (+`optimize("s")`, which fixes the shared `ret 4`), a nested `!=` guard, a result-pointer local, a ternary chain | next: lane gap: block placement
+
+
+#### `2026-10-15_linux_hand81` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand81/differ/`)
+- 007e93c0 CTCAvoidRegionExit::vfunc_2 DIFFER(78v78): `mov edx,[esp+8]` (range.first) is loaded after the second iterator's slot copy instead of before `push ecx` | tried: plain EqualRange+Erase, inline map forwarders (both loads hoisted, `mov ecx,esp` addressing), STLport base-class iterator copy constructor, a named first-iterator local | next: lane gap: argument-build scheduling of two by-value 4-byte iterators
+- 007e9410 CTCAvoidRegionExit::OnKill DIFFER(78v78): same body as 007e93c0 (slot 14, base call 0x006868F0); the same single load is out of place | tried: plain form, inline forwarders | next: lane gap: argument-build scheduling (as 007e93c0)
+- 007e9360 CTCAvoidRegionExit::vfunc_16 DIFFER(91v91): same removal under `if (flag)`, `__forceinline` helper; the key temporary already lands in the dead bool slot; only `mov edx,[esp+8]` is out of place | tried: plain helper (not inlined, 30 bytes), forceinline + forwarders, forceinline plain | next: lane gap: argument-build scheduling (as 007e93c0)
+- 0064639c CPlayerGuiThingList_0064639c::RemoveThing DIFFER(69v69): the key temporary's store `mov [ebp+8],eax` is scheduled before `lea esi,[ecx+3Ch] ; mov ecx,[esi]` instead of after | tried: `const CThing* const&` key (binds directly, no copy), a derived-to-base key conversion (temporary and erase-result slot now exact), an inline list Find wrapper (out of line), the same wrapper `__forceinline` | next: lane gap: store scheduling of a conversion temporary homed in a dead argument slot
 
 <!-- queue:end -->

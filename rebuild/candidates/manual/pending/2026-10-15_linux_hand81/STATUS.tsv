@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004e2365	RELOCATION_MATCH	39v39	PASS	~CQuestCardDef (vtable 0x01241E44 ??_G); novtable def over inline CDefPointeeBase dtor; optimize(s)
+00569c30	RELOCATION_MATCH	32v32	PASS	~owner: Clear() body, inline buffer free, out-of-line vector dtor tail jump; non-polymorphic
+007a4350	RELOCATION_MATCH	78v78	PASS	CTCWillEnflame::SetPTarget (PDB +0x20/+0x21, packed); temp CIntelligentPointer in inner scope
+007a7150	RELOCATION_MATCH	81v81	PASS	CTCBattleCharge::SetPTarget (IsZTargetting +0x88); temp in inner scope
+007a9ab0	RELOCATION_MATCH	81v81	PASS	CTCAssassinRush::SetPTarget (IsZTargetting +0x9d); temp in inner scope
+007aa480	RELOCATION_MATCH	68v68	PASS	CancelMove; parent read into a local; unlocked path is the if-arm
+007aa840	RELOCATION_MATCH	49v49	PASS	FinishMove(creature): FinishCurrentAction, FinalAction start, StartTrailDelay, CleanUpEffects
+007e4c70	RELOCATION_MATCH	35v35	PASS	~CTCCreditsUI (vtable 0x012705AC ??_G); novtable over out-of-line ~CTCBase
+00a833b0	RELOCATION_MATCH	52v52	PASS	non-virtual ??_G of a plain record (list<counted> at +4) via a delete helper
+00bba140	RELOCATION_MATCH	62v62	PASS	~CEngineInternalPrimitiveParticleGroup; novtable over inline CIVCountedPointeeBase dtor
+00656ba2	RELOCATION_MATCH	50v50	PASS	NPlayerGui CQuestInfoElementCounter ctor #1 (vtable 0x0125A4F0); optimize(s)
+00656bd8	RELOCATION_MATCH	50v50	PASS	NPlayerGui CQuestInfoElementCounter ctor #2; optimize(s)
+00771140	RELOCATION_MATCH	33v33	PASS	CTCThingUIDDummyForSerialisation ctor (vtable 0x0126A724); ThingUID(0)
+007e35a0	RELOCATION_MATCH	33v33	PASS	CTCAtmosPlayer ctor; two zero initialisers
+004d975c	RELOCATION_MATCH	61v61	PASS	CTCAvoidRegionExit ctor; optimize(s); two CIntelligentPointer members
+004dda37	RELOCATION_MATCH	72v72	PASS	CTCTargetingAI ctor (vtable 0x012411FC); optimize(y off)+(s); list allocator tag in dead slot
+00781200	RELOCATION_MATCH	89v89	PASS	CFirePoint(parent, name, helper, effect, resistance) (PDB layout fits)
+007b6610	RELOCATION_MATCH	66v66	PASS	CTCCrateStack ctor (vtable 0x0126DA14)
+007e9360	DIFFER	91v91	-	slot-16 override: base call + exit-weight map removal; one load scheduled late
+007e93c0	DIFFER	78v78	-	slot-2 override: base call + exit-weight map removal; one load scheduled late
+007e9410	DIFFER	78v78	-	slot-14 OnKill: base call + exit-weight map removal; one load scheduled late
+00686aa0	MATCH	50v50	PASS	CTCBase::Serialise: save modes ask slot 23, then slot-1 transfer
+00782770	RELOCATION_MATCH	46v46	PASS	CTCBoastingArea ctor (vtable 0x0126B314): state 0, radius 3, anticipation 10
+0078be70	MATCH	75v75	PASS	GetSuperRumble: def + member per output; local model (retail PDef +0x68)
+0078bfc0	RELOCATION_MATCH	59v59	PASS	ShouldAttackDecapitate: GetWorld is a thiscall member (ecx live); long result
+0078d210	RELOCATION_MATCH	49v49	PASS	CancelForCutscene: IsInCutscene +0x72; parent read into a local
+007e57c0	RELOCATION_MATCH	81v81	PASS	CTCBetting ctor: inline vector ctors, Active as first body assignment, Resize(5) x2
+0056a880	RELOCATION_MATCH	55v55	PASS	CTCBoastUI::Deactivate: nested ifs, Close tail jump; local model (retail offsets)
+0056a930	RELOCATION_MATCH	74v74	PASS	CTCBoastUI::AllowUIToOpen: RequestActivate inlined
+00782a90	RELOCATION_MATCH	58v58	PASS	CTCBoastingArea::OnKill (slot 14): hero alive and state 2 -> OnHeroLeavingArea
+0064639c	DIFFER	69v69	-	list find+erase (thunk 0x00437900); key temp store scheduled two instructions early
+00783210	RELOCATION_MATCH	39v39	PASS	slot-1 transfer of CrowdSizesSuppressed; false default homed in the dead flag slot
+00783a10	RELOCATION_MATCH	31v31	PASS	slot 16: flag -> KillAllCrowdThings, else Startup unless Active
+00783bc0	RELOCATION_MATCH	36v36	PASS	GetCrowd(create) -> OnHeroApproachBoastingArea
+00783bf0	RELOCATION_MATCH	36v36	PASS	GetCrowd(create) -> OnHeroEnterBoastingArea (label corrected)
+00783c20	RELOCATION_MATCH	40v40	PASS	GetCrowd -> OnHeroLeaveBoastingArea; parent read into a local first
+00783c50	RELOCATION_MATCH	47v47	PASS	GetCrowd -> OnHeroBoast(arg); parent read into a local first
+00783c80	RELOCATION_MATCH	51v51	PASS	GetCrowd -> OnHeroAttackCrowdMember, CrowdSizesSuppressed = true
+004e7513	RELOCATION_MATCH	50v50	PASS	CTCBoastingPodium ctor; optimize(s); vector map + def pointer member ctors
+007554c0	RELOCATION_MATCH	95v95	PASS	CTCLook draw request ctor: forceinline base (type 8) then type 10; STLport tree init
