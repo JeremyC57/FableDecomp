@@ -223170,6 +223170,230 @@ $catalog = @(
         TestSource = '00/ca/CBaseFilter_CBaseFilter_00cac830_test.cpp'
         PassPattern = '00cac830_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0052c6a0'
+        Module = 'CMarkerRecordVector'
+        Source = '00/52/CMarkerRecordVector_resize_0052c6a0.cpp'
+        TestSource = '00/52/CMarkerRecordVector_resize_0052c6a0_test.cpp'
+        PassPattern = '0052c6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662620'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_IsPerformingASneakingIncompatibleAction_00662620.cpp'
+        TestSource = '00/66/CThingCreatureBase_IsPerformingASneakingIncompatibleAction_00662620_test.cpp'
+        PassPattern = '00662620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662650'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_FinishCurrentAction_00662650.cpp'
+        TestSource = '00/66/CThingCreatureBase_FinishCurrentAction_00662650_test.cpp'
+        PassPattern = '00662650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006626a0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_SetHiddenOnMiniMap_006626a0.cpp'
+        TestSource = '00/66/CThingCreatureBase_SetHiddenOnMiniMap_006626a0_test.cpp'
+        PassPattern = '006626a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662880'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_ConstructFromParams_00662880.cpp'
+        TestSource = '00/66/CThingCreatureBase_ConstructFromParams_00662880_test.cpp'
+        PassPattern = '00662880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006628e0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_SerialiseGameState_006628e0.cpp'
+        TestSource = '00/66/CThingCreatureBase_SerialiseGameState_006628e0_test.cpp'
+        PassPattern = '006628e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662930'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_ConstructFromLevelScript_00662930.cpp'
+        TestSource = '00/66/CThingCreatureBase_ConstructFromLevelScript_00662930_test.cpp'
+        PassPattern = '00662930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662970'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_NewCreatureInteraction_00662970.cpp'
+        TestSource = '00/66/CThingCreatureBase_NewCreatureInteraction_00662970_test.cpp'
+        PassPattern = '00662970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006629b0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_RemoveFromCreatureInteraction_006629b0.cpp'
+        TestSource = '00/66/CThingCreatureBase_RemoveFromCreatureInteraction_006629b0_test.cpp'
+        PassPattern = '006629b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664370'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_OnKill_00664370.cpp'
+        TestSource = '00/66/CThingCreatureBase_OnKill_00664370_test.cpp'
+        PassPattern = '00664370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006649c0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_UnsheatheMeleeWeapon_006649c0.cpp'
+        TestSource = '00/66/CThingCreatureBase_UnsheatheMeleeWeapon_006649c0_test.cpp'
+        PassPattern = '006649c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664a10'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_UnsheatheRangedWeapon_00664a10.cpp'
+        TestSource = '00/66/CThingCreatureBase_UnsheatheRangedWeapon_00664a10_test.cpp'
+        PassPattern = '00664a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664c60'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_IsAbleToRecoverFromStunned_00664c60.cpp'
+        TestSource = '00/66/CThingCreatureBase_IsAbleToRecoverFromStunned_00664c60_test.cpp'
+        PassPattern = '00664c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664cb0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetMaxSneakingSpeed_00664cb0.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetMaxSneakingSpeed_00664cb0_test.cpp'
+        PassPattern = '00664cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664d00'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_IsBlocking_00664d00.cpp'
+        TestSource = '00/66/CThingCreatureBase_IsBlocking_00664d00_test.cpp'
+        PassPattern = '00664d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a70b0'
+        Module = 'CThingFilter_HasDefGlobalIndex'
+        Source = '00/6a/CThingFilterHasDefGlobalIndex_operator_006a70b0.cpp'
+        TestSource = '00/6a/CThingFilterHasDefGlobalIndex_operator_006a70b0_test.cpp'
+        PassPattern = '006a70b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a74f0'
+        Module = 'CThingFilter_HasAnyScriptName'
+        Source = '00/6a/CThingFilterHasAnyScriptName_operator_006a74f0.cpp'
+        TestSource = '00/6a/CThingFilterHasAnyScriptName_operator_006a74f0_test.cpp'
+        PassPattern = '006a74f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a75d0'
+        Module = 'CThingFilter_AICreatureHasProperty'
+        Source = '00/6a/CThingFilterAICreatureHasProperty_operator_006a75d0.cpp'
+        TestSource = '00/6a/CThingFilterAICreatureHasProperty_operator_006a75d0_test.cpp'
+        PassPattern = '006a75d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a78d0'
+        Module = 'CThingFilter_CanSeeEachOther'
+        Source = '00/6a/CThingFilterCanSeeEachOther_operator_006a78d0.cpp'
+        TestSource = '00/6a/CThingFilterCanSeeEachOther_operator_006a78d0_test.cpp'
+        PassPattern = '006a78d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a80e0'
+        Module = 'CThingFilter_IsPerceivingThing'
+        Source = '00/6a/CThingFilterIsPerceivingThing_operator_006a80e0.cpp'
+        TestSource = '00/6a/CThingFilterIsPerceivingThing_operator_006a80e0_test.cpp'
+        PassPattern = '006a80e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a8880'
+        Module = 'CThingFilter_IsInFaction'
+        Source = '00/6a/CThingFilterIsInFaction_operator_006a8880.cpp'
+        TestSource = '00/6a/CThingFilterIsInFaction_operator_006a8880_test.cpp'
+        PassPattern = '006a8880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a89e0'
+        Module = 'CThingFilter_IsOccupiableOfType'
+        Source = '00/6a/CThingFilterIsOccupiableOfType_operator_006a89e0.cpp'
+        TestSource = '00/6a/CThingFilterIsOccupiableOfType_operator_006a89e0_test.cpp'
+        PassPattern = '006a89e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a8a30'
+        Module = 'CThingFilter_IsOccupiableOccupied'
+        Source = '00/6a/CThingFilterIsOccupiableOccupied_operator_006a8a30.cpp'
+        TestSource = '00/6a/CThingFilterIsOccupiableOccupied_operator_006a8a30_test.cpp'
+        PassPattern = '006a8a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a8a80'
+        Module = 'CThingFilter_HasFreeActionPoint'
+        Source = '00/6a/CThingFilterHasFreeActionPoint_operator_006a8a80.cpp'
+        TestSource = '00/6a/CThingFilterHasFreeActionPoint_operator_006a8a80_test.cpp'
+        PassPattern = '006a8a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a8d30'
+        Module = 'CThingFilter_CanBeHitByEpicSpell'
+        Source = '00/6a/CThingFilterCanBeHitByEpicSpell_operator_006a8d30.cpp'
+        TestSource = '00/6a/CThingFilterCanBeHitByEpicSpell_operator_006a8d30_test.cpp'
+        PassPattern = '006a8d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bb810'
+        Module = 'CThingDrawInformation'
+        Source = '00/6b/CThingDrawInformation_SetBarPercentage_006bb810.cpp'
+        TestSource = '00/6b/CThingDrawInformation_SetBarPercentage_006bb810_test.cpp'
+        PassPattern = '006bb810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c4560'
+        Module = 'CThingFilter_AICreatureHasProperty'
+        Source = '00/6c/CThingFilterAICreatureHasProperty_operator_006c4560.cpp'
+        TestSource = '00/6c/CThingFilterAICreatureHasProperty_operator_006c4560_test.cpp'
+        PassPattern = '006c4560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c8c50'
+        Module = 'CThingFilter_IsAlliedWithFaction'
+        Source = '00/6c/CThingFilterIsAlliedWithFaction_operator_006c8c50.cpp'
+        TestSource = '00/6c/CThingFilterIsAlliedWithFaction_operator_006c8c50_test.cpp'
+        PassPattern = '006c8c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00835aa0'
+        Module = 'CThingDeadCreature'
+        Source = '00/83/CThingDeadCreature_CreateFromDef_00835aa0.cpp'
+        TestSource = '00/83/CThingDeadCreature_CreateFromDef_00835aa0_test.cpp'
+        PassPattern = '00835aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00835ac0'
+        Module = 'CThingDeadCreature'
+        Source = '00/83/CThingDeadCreature_DrawPreparePrimitivesForRendering_00835ac0.cpp'
+        TestSource = '00/83/CThingDeadCreature_DrawPreparePrimitivesForRendering_00835ac0_test.cpp'
+        PassPattern = '00835ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00835c20'
+        Module = 'CThingDeadCreature'
+        Source = '00/83/CThingDeadCreature_CThingDeadCreature_00835c20.cpp'
+        TestSource = '00/83/CThingDeadCreature_CThingDeadCreature_00835c20_test.cpp'
+        PassPattern = '00835c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00982db0'
+        Module = 'CThingFilter_HasBuildingAsHome'
+        Source = '00/98/CThingFilterHasBuildingAsHome_operator_00982db0.cpp'
+        TestSource = '00/98/CThingFilterHasBuildingAsHome_operator_00982db0_test.cpp'
+        PassPattern = '00982db0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

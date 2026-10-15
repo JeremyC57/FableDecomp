@@ -133,6 +133,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand106` | Hand chunk 106 (CTargetPoint .. CThemeChannel): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand107` | Hand chunk 107 (CThing .. CThingBaseDef): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand108` | Hand chunk 108 (CThingBodyReorienter .. CThingCreatureBase): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand109` | Hand chunk 109 (CThingCreatureBase .. CThingFilter_HasFreeActionPoint): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand110` | Hand chunk 110 (CThingFilter_HasFreeActionPoint .. CThingHolySite): 36 of 40 byte-exact | - | 1 | 3 | landed; parked rows open |
 | `2026-10-15_linux_hand111` | Hand chunk 111 (CThingHolySite .. CThingPhysical): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
@@ -182,7 +183,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **181 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **189 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 26 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -269,6 +270,17 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 006c5630 COpinionDeedDefTable::GetDeedDef DIFFER(84v78): same as 0083c1e0 (ushort def-index table at +0x2e of an interface-0x51 component) | tried: the 0083c1e0 form | next: lane gap: as 0083c1e0
 - 007f9f00 CThingCompare_BestForTargeting2::operator() DIFFER(94v94): `pop ebx` scheduled after `fnstsw ax` in retail, before it in ours | tried: `GetValue(posB) < GetValue(posA)` (wrong evaluation order, int exits), `if (GetValue(posA) > GetValue(posB)) return true; return false;` | next: lane gap: epilogue scheduling (compiler build)
 - 006621c0 CThingCreatureBase::IsFreeToFinishAction DIFFER(68v68): last test `jge` to the false tail with `mov al,1` inline vs retail `jl` to a trailing `mov al,1` after the shared `xor al,al` | tried: local + if chain (77), member reads + `||` return (81), `!(...)` guard block with explicit null test (64, right tail order, missing the second null test), guard block + inline IsPerformingAnyAction (68) | next: guard block + the IsPerformingAnyAction body written inline as `if (!(PCurrentAction && !PCurrentAction->Finished)) return true;`, or the `||` return inside the guard block
+
+
+#### `2026-10-15_linux_hand109` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand109/differ/`)
+- 00663260 CThingCreatureBase::GetCombatAnimationSet DIFFER(59v49): `mov eax,[esp+4] ; ... ; mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx` where retail has `mov ecx,[esp+4] ; ... ; dec [ecx+4] ; jne` | tried: CDefPointer destructor, local-copy release, release as a member of the counted object, the landed CDefBase (CDefVirtual + CRefCounted) model | next: the hand-written release on a pointer local (it fixed the release in 00662c70/00662c10), else lane gap: address-taken def-pointer release
+- 00835b90 CThingDeadCreature::PeekDefinition DIFFER(70v60): the filled def pointer loaded into eax then copied to esi, release forms `&m_refCount` (`add eax,4 ; dec edx ; test edx,edx`) where retail loads esi and does `dec [esi+4] ; jne` | tried: template CDefPointer destructor, optimize("s"), a non-virtual function-pointer model, the landed CDefBase model, a free inline release | next: lane gap: address-taken def-pointer release (same as agent47's 006CDB50)
+- 0083d900 CThingDeadCreature::PeekDefinition DIFFER(72v60): same as 00835b90 even with the hand-written release (`mov eax,[esp+4] ; test ; mov esi,eax ; ... add eax,4 ; dec edx ; mov ecx,edx`) | tried: raw release on a pointer local, the returned reference taken before the release | next: lane gap: address-taken def-pointer release
+- 00662c70 CThingCreatureBase::HasAnim DIFFER(72v72): `mov ecx,[esp+14h] ; mov esi,[esp+8] ; mov edx,[esp+10h]` where retail loads the def into esi after both arguments | tried: CDefPointer destructor (re-read + split release), /Oa, hand release on a pointer local (scheduling only left), an inline const-reference accessor | next: lane gap: scheduling (argument loads vs the pointer local)
+- 00662c10 CThingCreatureBase::GetAnimsWithNameStartingWith DIFFER(83v83): `mov edx,[esp+14h] ; mov esi,[esp+4] ; mov eax,[esp+10h]` where retail loads esi after both arguments | tried: hand release on a pointer local, the pointer captured inside the call's object expression | next: lane gap: scheduling (same as 00662c70)
+- 006e3780 CTCTalk::GetPhonemeAnim DIFFER(79v77): the def pointer's zero store scheduled before `mov ecx,[ecx+70h]` and the filled pointer loaded into eax then `mov edi,eax` (retail `mov edi,[esp+8]`) | tried: hand release on a pointer local (no null test, matching retail's), the base pointer as a named local (fixes the prologue, breaks the registers), an inline GetBaseDef() accessor | next: lane gap: def-pointer load register (eax then copy)
+- 00835bd0 CThingDeadCreature::PreloadDeadAnimation DIFFER(75v75): `sub esp,8` (a second frame word for the for_each functor result) and no `test esi,esi ; je` before the release (the lane drops it after the dereference) | tried: hand release on a pointer local, CDefPointer destructor (93 bytes: re-read + split release) | next: lane gap: hidden-result temporary sharing the dead def slot (QFE/RTM frame-slot sharing)
+- 00733020 CThingFilter_HasBuildingAsHome::operator() DIFFER(27v27): `cmp edx,eax` where retail has `cmp eax,edx` (written `m_building == f()`) | tried: `f() == m_building` (folds to `sub eax,[esi] ; neg ; sbb ; inc`, 23 bytes), the reversed compare, a base-class pointer member, a reference member | next: a `bool` local or an inline compare helper taking both pointers by value, else lane gap: compare operand order
 
 
 #### `2026-10-15_linux_hand110` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand110/differ/`)
