@@ -594,3 +594,32 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   alone no longer re-runs SetVideoOptions (the engine's device reset, a hitch per press).
   With vsync on the cap and the refresh run on separate clocks: for a 30 lock use vsync
   "half"; 25 and 40 pace evenly only with vsync off.
+- **"Head" over every clothing item name (user report)**: CTCInventoryClothing's Xbox screen
+  (vfunc 77, 0x5B76D1) gives each body-part entry a label ("Head x 1", ...) on the description
+  title line, a child of the entry row created from 0x5B83CF. In the category list only the
+  highlighted entry's label shows (state +0x14C = 3, alpha 255). In an item screen the rows
+  go to alpha 0 but the first entry's label kept state 3 and full alpha, so "Head x 1" drew
+  under every item name. `host_text_draw` draws a label only in state 3 with its row
+  (the label's parent, UI_WEAPON_MENU_ENTRY_BRANCH...) above alpha 0; the Equipment list's
+  clothing entry above the row is at alpha 0 throughout, so only the row counts. The draw
+  still runs with the colour's alpha at 0 (a CText keeps its engine primitive between draws;
+  skipping the draw left the last text up, the labels piled up).
+- **Row bars of the quick-access menu and the weapon / item / clothing lists (user report:
+  "the graphic for the quick access seemed a little glitched")**: CreateMenuEntryComponent
+  (0x428494) gives each row one shared, name-cached bar table (PC_BUTTON_BASTARD: L, a
+  stretched M, R with the orb) that CTable::Draw (0x550DC0) draws per row: the pieces' offsets
+  are multiplied by GetUIScale at 0x5511A5 / 0x5511C3, not zoomed, while their sizes come from
+  the zoomed render zoom, so the right cap sat at 1/1.6 of its offset with the middle running
+  on past the orb. Both sites are zoomed now. `FABLE_XBOX_BAR=1` makes the bar's cache miss
+  (CreateComponent from 0x4284C0 / 0x428505) in an Xbox screen build the Xbox bar
+  UI_BUTTON_BASTARD (width 180, still in game.bin) that the rows and their markers were laid
+  out for; off by default, it faulted entering Clothing (see v24 below).
+- B does not close the quick-access menu on the Xbox either (user check): no change.
+- **v24** = the re-lift with the CPU round's lifter (155 of 161 lifted files change:
+  small displacements folded into the host addressing mode, `rep stos` fills), the trap-range
+  dispatch, the GLES renderer round (2026-10-15-gles-renderer-perf.md), the frame rate cap
+  fix, and the Xbox screen fixes above (clothing labels, right-stick hint, row markers and
+  bars, viewport zoom, pause-menu save texts). Harness: with fps_cap=40 the menus hold 25.0 ms
+  (22.5 ms slept per frame, 0 late) and gameplay frames slower than the cap sleep nothing
+  (mean = the frame, 120 of 120 late). The Xbox bar swap (`FABLE_XBOX_BAR=1`) faulted entering
+  Clothing (CComponent::FindChild 0x530780 called through "STAR" text) and is off by default.

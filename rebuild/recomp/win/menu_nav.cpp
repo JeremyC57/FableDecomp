@@ -609,6 +609,11 @@ extern "C" void host_find_child(Ctx* c) {
 // Xbox 1.6: a PC_ name turns it off until a UI_ name turns it back on.
 bool g_pcScreen = false;  // declared near the top
 std::set<uint32_t> g_clothingLabels;  // the clothing screen's body-part labels (host_create_component)
+// The Xbox pause menu's per-save-file texts (host_create_component) and the CTCInGameMenu that
+// built them (its +0xC is the menu's open flag: set by the builder at 0x48317B, cleared by
+// CloseInGameMenu at 0x47D8F7 and CloseInGameMenuPC at 0x47DC16).
+std::set<uint32_t> g_saveFileTexts;
+uint32_t g_saveFileMenu = 0;
 extern "C" void F_0041DB1D_orig(Ctx* c);
 extern "C" void host_create_component(Ctx* c) {
     // CCharString (PDB): one pointer to CCharStringData {CBasicString<char> {char* +0, length +4}, refs +0xD}
@@ -634,13 +639,46 @@ extern "C" void host_create_component(Ctx* c) {
         g_pcScreen = pc;
         HLOG(1, "ui: component %s created: the Xbox zoom is %s", name, pc ? "off (PC layout)" : "on");
     }
-    const uint32_t ret = rd32(c->esp);
+    const uint32_t ret = rd32(c->esp), callerEsi = c->esi;
+    // CManager::CreateMenuEntryComponent (0x428494) builds the rows of the quick-access menu and
+    // the weapon / item / clothing lists with one shared, name-cached bar: PC_BUTTON_BASTARD
+    // (width 210) on PC. The Xbox rows and their markers were laid out for the Xbox bar,
+    // UI_BUTTON_BASTARD (width 180, still in game.bin): with FABLE_XBOX_BAR=1 its cache miss
+    // (CreateComponent from 0x4284C0 / 0x428505) builds that one in an Xbox screen. Off by
+    // default: entering Clothing with it faulted in CComponent::FindChild (0x530780, an
+    // indirect call through "STAR" text: the row looks up its PC piece names in the bar).
+    // The cache keeps the caller's name, so the bar stays cached under the PC name.
+    static const bool xboxBar = [] { const char* e = std::getenv("FABLE_XBOX_BAR"); return e && std::atoi(e) != 0; }();
+    uint32_t barName = 0;
+    if (xboxBar && (ret == 0x4284C5 || ret == 0x42850A) && n == "PC_BUTTON_BASTARD" && xboxMenus() && rd32(0x13B8790) && !g_pcScreen) {
+        static const char kAlt[] = "UI_BUTTON_BASTARD";
+        barName = gcalloc(1, 8 + sizeof kAlt);
+        std::memcpy(gp<char>(barName + 8), kAlt, sizeof kAlt);
+        guestCallThis(0x99EBF0, barName, {barName + 8, 0xFFFFFFFFu});  // CCharString(const char*, -1)
+        wr32(c->esp + 4, barName);  // CreateComponent(const CCharString& name, int)
+        HLOG(1, "ui: Xbox screen row bar: UI_BUTTON_BASTARD for PC_BUTTON_BASTARD");
+    }
     F_0041DB1D_orig(c);
+    if (barName) {
+        guestCallThis(0x99EAE0, barName, {});  // ~CCharString
+        gfree(barName);
+    }
     // CTCInventoryClothing's Xbox screen (vfunc 77, 0x5B76D1) gives every body-part entry a
     // label ("Head x 1", ...) on the description title line, a UI_TEXT_WEAPONS_NAME_TEMPLATE_NEW
     // child of the entry created here; going into a category hides only that category's
     // label (action 0x4B), so the others stayed drawn over the item screens ("HeadNo Hat").
     if (ret == 0x5B83CF && c->eax) g_clothingLabels.insert(c->eax);
+    // CTCInGameMenu's Xbox pause menu (0x4830A1, the manifest's second "OpenInGameMenuPC")
+    // gives every save file a "Save Details" header (UI_TEXT_FILE_DESCRIPTION,
+    // TEXT_GUI_MENU_FILE_INFO at 65,261, created at 0x483B40) and its details text
+    // (UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW_ONE_OFF at 95,293, 0x483B6D, a fake child of
+    // the pause list's UI_SCROLLING_VIEWPORT_TEXT_AREA, which draws all of them). Both are
+    // children of the file's Save row and of its Load row (0x4847B7/0x484804 and
+    // 0x484A56/0x484AA7), on the same two lines for every file: one left opaque drew under
+    // the focused row's. The menu is rebuilt on every open and UI_LIST_PAUSE_MENU is its first
+    // component (0x48319E; the caller's esi is the CTCInGameMenu).
+    if (ret == 0x4831A3) { g_saveFileTexts.clear(); g_saveFileMenu = callerEsi; }
+    if ((ret == 0x483B45 || ret == 0x483B72) && c->eax) g_saveFileTexts.insert(c->eax);
 }
 
 extern "C" void F_0041CF47_orig(Ctx* c);
@@ -666,7 +704,13 @@ extern "C" void host_ui_scale(Ctx* c) {
                                       // (0x53E9A0), and CText::CanScroll: the window was 1/1.6 of the pane's
                                       // zoomed size, so long descriptions ran on under the footer.
                                       0x53F1E3, 0x53F213, 0x53F251, 0x53F280, 0x53EE1B, 0x53EE4B, 0x53EE89, 0x53EEB8,
-                                      0x53EABC, 0x53EAE5, 0x53EB1F, 0x53EB56, 0x54ECEB};
+                                      0x53EABC, 0x53EAE5, 0x53EB1F, 0x53EB56, 0x54ECEB,
+                                      // CTable::Draw (0x550DC0), the shared row bar drawn per parent (the
+                                      // quick-access menu, the weapon / item / clothing lists): it places
+                                      // each piece at its offset x UI scale but sizes it by the zoomed render
+                                      // zoom, so the right cap sat at 1/1.6 of its offset with the stretched
+                                      // middle running on past it
+                                      0x5511A5, 0x5511C3};
     static const int tier = [] { const char* e = std::getenv("FABLE_XBOX_ZOOM_SITES"); return e ? std::atoi(e) : 2; }();
     bool zoom = tier >= 3;  // diagnostic: 3 = every caller, -1 = none
     for (size_t i = 0; tier >= 0 && i < (tier >= 2 ? std::size(kSites) : tier == 1 ? 10u : 4u); ++i) zoom = zoom || ret == kSites[i];
@@ -995,6 +1039,25 @@ void host::pad::menuAfterSaveTick() {
 // front end's screen height / 480. Front end only (0x13B8790, the in-game GUI, is null);
 // FABLE_TEXT_CENTER=0 keeps the game's placement; FABLE_UI_TRACE=1 dumps the components.
 bool uiTrace() { static const bool on = std::getenv("FABLE_UI_TRACE") != nullptr; return on; }
+// A pause-menu save file's "Save Details" header or details text (g_saveFileTexts) shows only
+// for the focused row of a list on screen: its row (a CMenuEntry, vt 0x124662C) is in state 3
+// (+0x14C) and is its CList's (vt 0x12462E4) selected child (+0x164[+0x15C]), and the list's
+// state is one whose CUIState colour (+0x18, alpha +0x1B; vtable +0x21C) is not transparent
+// (UI_SUB_LIST: 1/3/5/6 shown, 0/2/4/7 hidden). Rows the player never focused keep the
+// "INVALID FILE DESCRIPTION STRING" placeholder (action 0x7DD fills it on focus) and no row.
+static bool saveFileTextShows(uint32_t text, uint32_t& row, uint32_t& list, uint32_t& why) {
+    constexpr uint32_t kMenuEntryVt = 0x0124662C, kListVt = 0x012462E4;
+    row = parentOf(text), list = row ? parentOf(row) : 0, why = 0;
+    if (!row || rd32(row) != kMenuEntryVt) { why = 1; return false; }
+    if (!list || rd32(list) != kListVt) { why = 2; return false; }
+    if (rd32(row + 0x14C) != 3) { why = 3; return false; }
+    if (!rd8(row + 0x97)) { why = 6; return false; }  // the row itself is drawn transparent
+    const uint32_t b = rd32(list + 0x164), e = rd32(list + 0x168), idx = rd32(list + 0x15C);
+    if (!(b >= 0x10000 && e > b && e - b <= 0x1000 && idx < (e - b) / 4 && rd32(b + idx * 4) == row)) { why = 4; return false; }
+    const uint32_t st = guestCallThis(rd32(rd32(list) + 0x21C), list, {rd32(list + 0x14C)});
+    if (st && !rd8(st + 0x1B)) { why = 5; return false; }
+    return true;
+}
 extern "C" void F_0054EF00_orig(Ctx* c);
 extern "C" void host_text_draw(Ctx* c) {
     static const bool centre = [] { const char* e = std::getenv("FABLE_TEXT_CENTER"); return !e || std::atoi(e) != 0; }();
@@ -1013,11 +1076,12 @@ extern "C" void host_text_draw(Ctx* c) {
     }
     if (self && !g_clothingLabels.empty() && g_clothingLabels.count(self)) {
         // Only the highlighted entry's label shows (its state, +0x14C, is 3) and only while
-        // its entry row is shown: in an item screen the category rows are hidden but the
-        // first entry's label kept state 3 ("Head" over every item name). A row or list above
-        // the label with render alpha 0 hides it. A CText keeps its engine primitive between
-        // draws, so the draw still runs (skipping it left the last text up), with the render
-        // colour's alpha (+0x94, byte 3) at 0.
+        // its entry row (UI_WEAPON_MENU_ENTRY_BRANCH..., the label's parent) is shown: in an
+        // item screen the category rows are at alpha 0 but the first entry's label kept state
+        // 3 ("Head" over every item name). Only the row counts: the clothing entry of the
+        // Equipment list above it is at alpha 0 throughout. A CText keeps its engine
+        // primitive between draws, so the draw still runs (skipping it left the last text
+        // up), with the render colour's alpha (+0x94, byte 3) at 0.
         const uint32_t state = rd32(self + 0x14C);
         uint8_t upAlpha = 0xFF;
         char chain[160] = {};
@@ -1025,7 +1089,7 @@ extern "C" void host_text_draw(Ctx* c) {
         for (uint32_t p = self, i = 0; i < 3 && (p = parentOf(p)); ++i) {
             uint8_t a = 0xFF;
             uint32_t st = 0;
-            if (safeRead(p + 0x97, &a, 1) && a < upAlpha) upAlpha = a;
+            if (safeRead(p + 0x97, &a, 1) && i == 0) upAlpha = a;
             safeRead(p + 0x14C, &st, 4);
             if (used < sizeof chain) used += std::snprintf(chain + used, sizeof chain - used, " <- %.24s state %u alpha %u", componentName(p).c_str(), st, a);
         }
@@ -1043,6 +1107,38 @@ extern "C" void host_text_draw(Ctx* c) {
             F_0054EF00_orig(c);
             wr8(self + 0x97, a);
             return;
+        }
+    }
+    // The pause menu's Save / Load screens: one file's header and details at a time (the
+    // focused row's). The texts of a row left behind (the Save list's last row when the Load
+    // list opens, a row the list moved off) stayed opaque and drew under it: "Save Details"
+    // with two entries' details over each other. FABLE_KEEP_SAVE_TEXTS=1 keeps the game's
+    // drawing; FABLE_SAVE_TEXT_LOG=1 logs each text's verdict when it changes.
+    if (self && !g_saveFileTexts.empty()) {
+        if (!g_saveFileMenu || !rd8(g_saveFileMenu + 0xC)) {
+            g_saveFileTexts.clear();  // the pause menu closed: its components are gone
+        } else if (g_saveFileTexts.count(self) && xboxMenus()) {
+            uint32_t row, list, why;
+            const bool show = saveFileTextShows(self, row, list, why);
+            static const bool log = std::getenv("FABLE_SAVE_TEXT_LOG") != nullptr;
+            if (log) {
+                static std::map<uint32_t, uint32_t> seen;
+                const uint32_t sig = why << 24 | (row & 0xFFFFFF);
+                auto it = seen.find(self);
+                if ((it == seen.end() || it->second != sig) && seen.size() < 256) {
+                    seen[self] = sig;
+                    HLOG(1, "ui: save text 0x%08X %s state %u row 0x%08X state %u list 0x%08X state %u sel %u: %s (%u)", self, componentName(self).c_str(),
+                         rd32(self + 0x14C), row, row ? rd32(row + 0x14C) : 0, list, list ? rd32(list + 0x14C) : 0, list ? rd32(list + 0x15C) : 0, show ? "shown" : "hidden", why);
+                }
+            }
+            static const bool keep = std::getenv("FABLE_KEEP_SAVE_TEXTS") != nullptr;
+            if (!show && !keep) {
+                const uint8_t a = rd8(self + 0x97);  // drawn transparent, as the clothing labels
+                wr8(self + 0x97, 0);
+                F_0054EF00_orig(c);
+                wr8(self + 0x97, a);
+                return;
+            }
         }
     }
     static const bool logText = std::getenv("FABLE_UI_POS") != nullptr;  // diagnostic: the Xbox screens' texts, once per name and value
