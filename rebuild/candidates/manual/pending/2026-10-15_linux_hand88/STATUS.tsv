@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00798540	RELOCATION_MATCH	34v34	PASS	owner alive + player-type test then SetSuspendAnimation(false,0)
+004d8fdd	RELOCATION_MATCH	46v46	PASS	ctor; optimize s
+005edc90	RELOCATION_MATCH	45v45	PASS	GetPItem twice, Dead bit test
+007ffe40	RELOCATION_MATCH	52v52	PASS	persist MaxOccupation then derived transfer (vfunc_1)
+007ffd60	RELOCATION_MATCH	75v75	PASS	2D radius test, named locals for x87 order
+008fa280	DIFFER	104v83	-	parked: sub-def pointer register (eax v ecx), ebx pushed early
+004d8c27	RELOCATION_MATCH	46v46	PASS	ctor; optimize s
+004d966f	RELOCATION_MATCH	50v50	PASS	really CTCFlourishTarget ctor; optimize s
+004bc030	DIFFER	94v91	-	parked: first bit-field copy reloads destination byte
+004bc620	RELOCATION_MATCH	69v69	PASS	Primitives walk, RenderedLastFrame bit
+004bcfe0	RELOCATION_MATCH	92v92	PASS	temporary CEnginePrimitiveAnimation to manager slot 24
+004bd3c0	DIFFER	93v91	-	parked: component/holder register swap after lookup
+004bd420	RELOCATION_MATCH	54v54	PASS	reserve(4) then components slot 2
+004bd690	RELOCATION_MATCH	79v79	PASS	unsigned short flags local, manager slot 32
+004be490	RELOCATION_MATCH	69v69	PASS	inline reasons getter; latch bit copy
+004bf920	RELOCATION_MATCH	64v64	PASS	list erase by value address
+004bf9e0	RELOCATION_MATCH	55v55	PASS	reasons in bl, ClearAllPrimitives on new reason 8
+004bfa20	RELOCATION_MATCH	36v36	PASS	bit-field store from bool + |= 4
+004bfb00	RELOCATION_MATCH	55v55	PASS	signed counter transitions, cross-jumped tails
+004bfce0	RELOCATION_MATCH	43v43	PASS	SetAsChanged(8) inlined
+004bff60	RELOCATION_MATCH	96v96	PASS	STLport map walk; cur declared before it (4 grades)
+004bffd0	RELOCATION_MATCH	48v48	PASS	default from def, word compare
+004c0000	RELOCATION_MATCH	74v74	PASS	inline ClearAllPrimitives + list remove
+004c00b0	RELOCATION_MATCH	46v46	PASS	map operator[] assignment, colour read first
+004c11d0	RELOCATION_MATCH	32v32	PASS	GetHelperPoint result normalised to bool
+00a3f8b0	RELOCATION_MATCH	72v72	PASS	really CGameMapInterface slot 0 (GetHeightAt); aggregate coords x first
+00ca9ae0	RELOCATION_MATCH	45v45	PASS	really video player Resume (vtable next to landed Pause)
+00ca9b10	RELOCATION_MATCH	41v41	PASS	really video player ResumeStream
+00ca9b40	RELOCATION_MATCH	41v41	PASS	really video player SuspendStream
+00caec80	MATCH	47v47	PASS	really COM-style Unadvise on second base (__stdcall)
+004de839	RELOCATION_MATCH	47v47	PASS	really CTCAnimatingObject ctor; optimize y off + s
+007e14c0	RELOCATION_MATCH	67v67	PASS	ctor + RegisterComponent
+00c2a6d0	RELOCATION_MATCH	33v33	PASS	really third-party registry ReleaseByKey (vtable slot count fixed on grade 2)
+00caddc0	RELOCATION_MATCH	47v47	PASS	really CAppearance_00caddc0::Rebuild (critical-section reset)
+004e748a	RELOCATION_MATCH	59v59	PASS	really CTCCarrying ctor; optimize y off + s
+007495d0	RELOCATION_MATCH	80v80	PASS	really CTCStealth::~CTCStealth (novtable)
+007a66a0	RELOCATION_MATCH	67v67	PASS	ctor + RegisterComponent
+0077c3e0	RELOCATION_MATCH	83v83	PASS	ctor + RegisterComponent
+0077c490	RELOCATION_MATCH	56v56	PASS	generator fetched in its own statement (2 grades)
+0077b6b0	RELOCATION_MATCH	76v76	PASS	really CTCGraphicAppearanceAnimatedMesh scalar deleting dtor

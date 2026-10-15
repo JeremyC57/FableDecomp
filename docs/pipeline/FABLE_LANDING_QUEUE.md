@@ -151,9 +151,10 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand85` | Hand chunk 85 (CTCCreatureGroup .. CTCDHeroSuit): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand86` | Hand chunk 86 (CTCDHeroSuit .. CTCEffectOnDie): 34 of 40 byte-exact | - | 4 | 2 | landed; parked rows open |
 | `2026-10-15_linux_hand87` | Hand chunk 87 (CTCElectrocutedEffect .. CTCForcePushed): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand88` | Hand chunk 88 (CTCForcePushed .. CTCGraphicAppearanceStaticMesh): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 
-Totals: **0 matched rows staged for landing**, **110 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **113 parked rows** for the Fable retry pass.
 
 ### Skipped rows (19 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -359,6 +360,12 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00569330 CNetString_Retail::Substr DIFFER(84v86): lane computes `m_start+pos` once and adds min to it; retail recomputes `min + start + pos` (`add eax,esi ; add eax,edx`) | tried: `m_start + pos + Min(n, size()-pos)`, `m_start + (pos + Min(...))`, `&m_start[pos]` as the first argument (4 grades in all, probe/00569330_b/_d) | next: `Min(...) + m_start + pos` as the second constructor argument
 - 006c3b70 CTCFadeOutAndIn::FadeOut DIFFER(88v90): retail rounds with `fstp [esp+8] ; fld [esp+8] ; fistp dword ptr [esp]` into a `push ecx` frame word; /QIfist emits `fistp qword ptr` into an 8-byte frame, plain C++ calls __ftol2 | tried: /QIfist cast (1 grade) | next: lane gap: asm_bake (inline-asm rounding helper)
 - 006c3bd0 CTCFadeOutAndIn::FadeIn DIFFER(83v85): same inline-asm `fistp dword` rounding helper as FadeOut | tried: /QIfist cast (1 grade) | next: lane gap: asm_bake (inline-asm rounding helper)
+
+
+#### `2026-10-15_linux_hand88` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand88/differ/`)
+- 008fa280 CTCGift::IsGiftOfType DIFFER(104v83): after GetSubDef the lane keeps the sub-def pointer in eax (retail ecx), so each inlined release is `mov ecx,eax ; add eax,4 ; dec ; test ; mov [eax]` instead of `dec [ecx+4]`, and ebx is pushed at entry (retail only on the success path) | tried: refcount in the class, local-copy release, the landed two-base CDefBase model, reversed polarity | next: a CDefPointer-style RAII local whose destructor releases (scope end instead of explicit releases), or lane gap: register allocation
+- 004bc030 CTCGraphicAppearance::Copy DIFFER(94v91): first bit-field copy -- retail `mov al,[src+59h] ; mov dl,[ecx+59h] ; xor al,dl ; and al,1 ; xor dl,al` loads the destination byte once, the lane reloads it for the final xor | tried: plain bit-field copy, `bool : 1` bit-fields, a getter returning the bit, an explicit `(flags & ~1) | (other & 1)` merge | next: copy the whole flag byte through a union/struct-of-bits member, or lane gap: bit-field merge codegen
+- 004bd3c0 CTCGraphicAppearance::IsDrawingAfterWater DIFFER(93v91): after the interface lookup retail loads the component into ecx and the holder (+0x10) into eax (`mov ecx,[eax+4] ; mov eax,[ecx+10h]`); the lane swaps them and adds `mov ecx,eax` | tried: the out-parameter GetInterface template (plain and `__forceinline`), HasTC + pointer-returning FindTC, an inline holder test member | next: lane gap: register allocation (scheduling-only, 2 bytes)
 
 
 #### `2026-10-15_linux_hand90` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand90/differ/`)
