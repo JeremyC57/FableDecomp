@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+004debf7	MATCH	5	PASS	CTCTargetingSpirit::vfunc_10
+004debfc	MATCH	3	PASS	CTCTargetingSpirit::vfunc_29
+004debff	MATCH	5	PASS	CTCTargetingSpirit::vfunc_31
+004dec04	MATCH	5	PASS	CTCTargetingSpirit::vfunc_32
+004dec09	RELOCATION_MATCH	16	PASS	CTCTargetingSpirit::vfunc_22
+004dec19	MATCH	3	PASS	CTCTargetingSpirit::vfunc_8
+0061b530	RELOCATION_MATCH	40	PASS	CTCInventoryQuests::ProcessInventoryInputUp
+0061b560	RELOCATION_MATCH	40	PASS	CTCInventoryQuests::ProcessInventoryInputDown
