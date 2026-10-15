@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ae85b0	RELOCATION_MATCH	61v61	PASS	ToUpper temp in dead arg slot; bool in bl across dtor
+00ae8980	RELOCATION_MATCH	72v72	PASS	bank vptr on CBankFile root (0x234 new)
+00ae8bf0	RELOCATION_MATCH	55v55	PASS	member inline ctors; CurrentHandle body assignment
+00aeaf20	RELOCATION_MATCH	87v87	PASS	renamed ...EmitterParticles; reverse_iterator walk
+00aeaf80	RELOCATION_MATCH	87v87	PASS	reverse_iterator walk; Initialised ushort bit 8
+00aeb000	RELOCATION_MATCH	89v89	PASS	Sleeping through inline bool accessor; STLport size() loop
+0049bdc0	MATCH	76v76	PASS	pack(1) PDB layout (CameraPos +0x15); CWorld slot 8 GetGameLODCentre
+0056d300	RELOCATION_MATCH	78v78	PASS	renamed CRetailTree_0056d300::Erase (STLport tree erase)
+0056d720	RELOCATION_MATCH	78v78	PASS	renamed CRetailTree_0056d720::Erase (twin of 0056d300)
+00a39cc0	RELOCATION_MATCH	85v85	PASS	renamed CWADFile::Open; CCharString temporary through inline CRC helper
+00cacb80	RELOCATION_MATCH	40v40	PASS	renamed DirectShow CUnknown::CUnknown (novtable, dllimport InterlockedIncrement)
+00743780	RELOCATION_MATCH	62v62	PASS	renamed NCreatureMode::CModeDragonFlyingBase ??_G (novtable, delete helper)
+00b81e20	RELOCATION_MATCH	50v50	PASS	renamed CEnginePrimitiveSimulationInfo::ClearSimulations (VC6 erase(begin,end))
+00c1bed0	RELOCATION_MATCH	41v41	PASS	class named by address; CProfileLock + stdcall notify, no EH
+00a4cd70	MATCH	81v81	PASS	renamed CAnimationData_00a4cd70::RelocateData (caller C3DAnimation2)
+00adf2a0	RELOCATION_MATCH	86v86	PASS	handle local before the pool; accelerations stored last
+00adfc60	MATCH	83v83	PASS	5 arrays rebased; PDB layout holds
+004af560	RELOCATION_MATCH	77v77	PASS	renamed CQuestManager::IsQuestCardActive (ActiveQuestCards +0x5c)
+004c7d50	RELOCATION_MATCH	50v50	PASS	renamed CThing::OnDie (vtable slot 11); value-initialised for_each functor
+006aee40	DIFFER	92v90	-	CTCRegionFollower::GetFollowers; lane gap: push_back item + empty tag over the dead arg slot
+006d5850	DIFFER	92v90	-	CTCFollowed::GetFollowers; same lane gap as 006aee40
+007f8be0	RELOCATION_MATCH	50v50	PASS	renamed CTCAnimatingObject::ClearQueuedAnims (STLport list clear)
+00af3ee0	MATCH	76v76	PASS	component-map walk with explicit state pointer (do/while)
+00af3fb0	MATCH	85v85	PASS	component-map walk; args (sphere, time, this, &UpdateParameters)
+00af4010	MATCH	95v95	PASS	component-map walk; Initialised &= ok bitfield
+00af4070	MATCH	49v49	PASS	component-map walk: entry ptr + state ptr do/while
+00af40b0	MATCH	71v71	PASS	component-map walk, end compared from memory at entry
+00af4320	MATCH	60v60	PASS	component-map walk, end compared from memory at entry
+00af5330	RELOCATION_MATCH	68v68	PASS	STLport erase inlined; hidden-pointer iterator return
+00af5690	RELOCATION_MATCH	78v78	PASS	CDecal non-virtual dtor + static fastcall operator delete
+00af58a0	RELOCATION_MATCH	47v47	PASS	renamed ClearAllParticles; node walk + re-pointed iterator object
+00af58d0	RELOCATION_MATCH	47v47	PASS	node walk + re-pointed iterator object
+00af8f80	MATCH	93v93	PASS	MAX(MAX(x,y),z) macro: inner compare evaluated twice
+00b05840	RELOCATION_MATCH	80v80	PASS	identity via two chained assignments (right-to-left stores)
+00b05980	RELOCATION_MATCH	51v51	PASS	diagonal *= Scale after the unscaled transform
+00459abe	RELOCATION_MATCH	53v53	PASS	3 blocks freed last-to-first, base dtor 0x430300 tail jump; /Os
+00459b73	RELOCATION_MATCH	67v67	PASS	4 blocks freed last-to-first, base dtor tail jump; /Os
+004ddf6f	RELOCATION_MATCH	47v47	PASS	members: intelligent ptr then 2 forceinline array dtors, base tail jump; /Os
+004e0d7e	RELOCATION_MATCH	59v59	PASS	novtable def over inline CDefPointeeBase dtor; 3 forceinline arrays; /Os
+004e424b	RELOCATION_MATCH	73v73	PASS	novtable def over inline CDefPointeeBase dtor; 4 16-byte arrays; /Os
