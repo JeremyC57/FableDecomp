@@ -232845,6 +232845,258 @@ $catalog = @(
         TestSource = '00/9b/CParsedItem_NoOp009b9930_009b9930_test.cpp'
         PassPattern = '009b9930_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00455f3c'
+        Module = 'CPersistContext'
+        Source = '00/45/CPersistContext_TransferSubComponent_00455f3c.cpp'
+        TestSource = '00/45/CPersistContext_TransferSubComponent_00455f3c_test.cpp'
+        PassPattern = '00455f3c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004859ad'
+        Module = 'CPersistContext'
+        Source = '00/48/CPersistContext_Transfer_004859ad.cpp'
+        TestSource = '00/48/CPersistContext_Transfer_004859ad_test.cpp'
+        PassPattern = '004859ad_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00487af0'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_Uninitialise_00487af0.cpp'
+        TestSource = '00/48/CPlayer_Uninitialise_00487af0_test.cpp'
+        PassPattern = '00487af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049b860'
+        Module = 'CPersistContext_TransferableVector'
+        Source = '00/49/CPersistContextTransferableVector_Resize_0049b860.cpp'
+        TestSource = '00/49/CPersistContextTransferableVector_Resize_0049b860_test.cpp'
+        PassPattern = '0049b860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ebb1c'
+        Module = 'CHeroExperienceDef'
+        Source = '00/4e/CHeroExperienceDef_CHeroExperienceDef_004ebb1c.cpp'
+        TestSource = '00/4e/CHeroExperienceDef_CHeroExperienceDef_004ebb1c_test.cpp'
+        PassPattern = '004ebb1c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054ded0'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_CFrontEndButton_0054ded0.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_CFrontEndButton_0054ded0_test.cpp'
+        PassPattern = '0054ded0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00580371'
+        Module = 'CPersistContext'
+        Source = '00/58/CPersistContext_Transfer_00580371.cpp'
+        TestSource = '00/58/CPersistContext_Transfer_00580371_test.cpp'
+        PassPattern = '00580371_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cc1e8'
+        Module = 'CPersistContext'
+        Source = '00/5c/CPersistContext_Transfer_005cc1e8.cpp'
+        TestSource = '00/5c/CPersistContext_Transfer_005cc1e8_test.cpp'
+        PassPattern = '005cc1e8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006baed0'
+        Module = 'CPersistContext'
+        Source = '00/6b/CPersistContext_Transfer_006baed0.cpp'
+        TestSource = '00/6b/CPersistContext_Transfer_006baed0_test.cpp'
+        PassPattern = '006baed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d4180'
+        Module = 'CPersistContext_TransferableVector'
+        Source = '00/6d/CPersistContextTransferableVector_TransferIn_006d4180.cpp'
+        TestSource = '00/6d/CPersistContextTransferableVector_TransferIn_006d4180_test.cpp'
+        PassPattern = '006d4180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fd040'
+        Module = 'CStringKeyedTable_006fd040'
+        Source = '00/6f/CStringKeyedTable006fd040_CStringKeyedTable006fd040_006fd040.cpp'
+        TestSource = '00/6f/CStringKeyedTable006fd040_CStringKeyedTable006fd040_006fd040_test.cpp'
+        PassPattern = '006fd040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00814d10'
+        Module = 'CPhysicalPrimitiveSphere'
+        Source = '00/81/CPhysicalPrimitiveSphere_GetFirstIntersectionWithFiniteLine_00814d10.cpp'
+        TestSource = '00/81/CPhysicalPrimitiveSphere_GetFirstIntersectionWithFiniteLine_00814d10_test.cpp'
+        PassPattern = '00814d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00814e10'
+        Module = 'CPhysicalPrimitiveSphere'
+        Source = '00/81/CPhysicalPrimitiveSphere_IsPosInside_00814e10.cpp'
+        TestSource = '00/81/CPhysicalPrimitiveSphere_IsPosInside_00814e10_test.cpp'
+        PassPattern = '00814e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00814f90'
+        Module = 'CPhysicalPrimitiveSphere'
+        Source = '00/81/CPhysicalPrimitiveSphere_GetBoundingSphere_00814f90.cpp'
+        TestSource = '00/81/CPhysicalPrimitiveSphere_GetBoundingSphere_00814f90_test.cpp'
+        PassPattern = '00814f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00815620'
+        Module = 'CPhysicalPrimitiveSphere'
+        Source = '00/81/CPhysicalPrimitiveSphere_TransferBinaryIn_00815620.cpp'
+        TestSource = '00/81/CPhysicalPrimitiveSphere_TransferBinaryIn_00815620_test.cpp'
+        PassPattern = '00815620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00815ba0'
+        Module = 'CPhysicalPrimitiveCylinder'
+        Source = '00/81/CPhysicalPrimitiveCylinder_GetFirstIntersectionWithFiniteLine_00815ba0.cpp'
+        TestSource = '00/81/CPhysicalPrimitiveCylinder_GetFirstIntersectionWithFiniteLine_00815ba0_test.cpp'
+        PassPattern = '00815ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00815c40'
+        Module = 'CPhysicalPrimitiveCylinder'
+        Source = '00/81/CPhysicalPrimitiveCylinder_GetFirstIntersectionWithTriangle_00815c40.cpp'
+        TestSource = '00/81/CPhysicalPrimitiveCylinder_GetFirstIntersectionWithTriangle_00815c40_test.cpp'
+        PassPattern = '00815c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098dd90'
+        Module = 'CShaderStats'
+        Source = '00/98/CShaderStats_CShaderStats_0098dd90.cpp'
+        TestSource = '00/98/CShaderStats_CShaderStats_0098dd90_test.cpp'
+        PassPattern = '0098dd90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bab60'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_StartSection_009bab60.cpp'
+        TestSource = '00/9b/CPersistContext_StartSection_009bab60_test.cpp'
+        PassPattern = '009bab60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009babf0'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_EndSection_009babf0.cpp'
+        TestSource = '00/9b/CPersistContext_EndSection_009babf0_test.cpp'
+        PassPattern = '009babf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2f190'
+        Module = 'C3DMeshStats'
+        Source = '00/a2/C3DMeshStats_C3DMeshStats_00a2f190.cpp'
+        TestSource = '00/a2/C3DMeshStats_C3DMeshStats_00a2f190_test.cpp'
+        PassPattern = '00a2f190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5d800'
+        Module = 'CShaderResource'
+        Source = '00/a5/CShaderResource_CShaderResource_00a5d800.cpp'
+        TestSource = '00/a5/CShaderResource_CShaderResource_00a5d800_test.cpp'
+        PassPattern = '00a5d800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5ec40'
+        Module = 'CPixelShaderData'
+        Source = '00/a5/CPixelShaderData_CPixelShaderData_00a5ec40.cpp'
+        TestSource = '00/a5/CPixelShaderData_CPixelShaderData_00a5ec40_test.cpp'
+        PassPattern = '00a5ec40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6c890'
+        Module = 'CPhysicsMesh'
+        Source = '00/a6/CPhysicsMesh_CalculateCentreOfGravity_00a6c890.cpp'
+        TestSource = '00/a6/CPhysicsMesh_CalculateCentreOfGravity_00a6c890_test.cpp'
+        PassPattern = '00a6c890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6cb20'
+        Module = 'CPhysicsMesh'
+        Source = '00/a6/CPhysicsMesh_GetRigidBodyBoundingPoints_00a6cb20.cpp'
+        TestSource = '00/a6/CPhysicsMesh_GetRigidBodyBoundingPoints_00a6cb20_test.cpp'
+        PassPattern = '00a6cb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a73db0'
+        Module = 'CPhysicsMesh'
+        Source = '00/a7/CPhysicsMesh_CalculateNumberOfNavigationLineLevels_00a73db0.cpp'
+        TestSource = '00/a7/CPhysicsMesh_CalculateNumberOfNavigationLineLevels_00a73db0_test.cpp'
+        PassPattern = '00a73db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a74360'
+        Module = 'CPhysicsMesh'
+        Source = '00/a7/CPhysicsMesh_CalculateNavigationLineInfo_00a74360.cpp'
+        TestSource = '00/a7/CPhysicsMesh_CalculateNavigationLineInfo_00a74360_test.cpp'
+        PassPattern = '00a74360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a98470'
+        Module = 'N3DPrimitive::CDeviceIndependent'
+        Source = '00/a9/N3DPrimitiveCDeviceIndependent_CDeviceIndependent_00a98470.cpp'
+        TestSource = '00/a9/N3DPrimitiveCDeviceIndependent_CDeviceIndependent_00a98470_test.cpp'
+        PassPattern = '00a98470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b81cf0'
+        Module = 'CEngineSimulationManager'
+        Source = '00/b8/CEngineSimulationManager_CEngineSimulationManager_00b81cf0.cpp'
+        TestSource = '00/b8/CEngineSimulationManager_CEngineSimulationManager_00b81cf0_test.cpp'
+        PassPattern = '00b81cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00baa2b0'
+        Module = 'CEngineInternalPrimitiveMorphInfo'
+        Source = '00/ba/CEngineInternalPrimitiveMorphInfo_CEngineInternalPrimitiveMorphInfo_00baa2b0.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitiveMorphInfo_CEngineInternalPrimitiveMorphInfo_00baa2b0_test.cpp'
+        PassPattern = '00baa2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfc2e0'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/bf/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00bfc2e0.cpp'
+        TestSource = '00/bf/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00bfc2e0_test.cpp'
+        PassPattern = '00bfc2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfc410'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/bf/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00bfc410.cpp'
+        TestSource = '00/bf/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00bfc410_test.cpp'
+        PassPattern = '00bfc410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfc510'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/bf/CPatchTesselationEdgeStrip_SetMovableResourceHandler_00bfc510.cpp'
+        TestSource = '00/bf/CPatchTesselationEdgeStrip_SetMovableResourceHandler_00bfc510_test.cpp'
+        PassPattern = '00bfc510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfc590'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/bf/CPatchTesselationEdgeStrip_RelocateData_00bfc590.cpp'
+        TestSource = '00/bf/CPatchTesselationEdgeStrip_RelocateData_00bfc590_test.cpp'
+        PassPattern = '00bfc590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfc770'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/bf/CPatchTesselationEdgeStrip_Save_00bfc770.cpp'
+        TestSource = '00/bf/CPatchTesselationEdgeStrip_Save_00bfc770_test.cpp'
+        PassPattern = '00bfc770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb13f0'
+        Module = 'CPersistTraits'
+        Source = '00/cb/CPersistTraits_RemoveNodeAndRecycle_00cb13f0.cpp'
+        TestSource = '00/cb/CPersistTraits_RemoveNodeAndRecycle_00cb13f0_test.cpp'
+        PassPattern = '00cb13f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

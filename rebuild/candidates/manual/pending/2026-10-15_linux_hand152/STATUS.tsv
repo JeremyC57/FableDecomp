@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004ebb1c	RELOCATION_MATCH	135v135	PASS	CHeroExperienceDef dtor (label propagated)
+0054ded0	RELOCATION_MATCH	127v127	PASS	NUISystem::CFrontEndButton dtor (label propagated)
+006fd040	RELOCATION_MATCH	112v112	PASS	unnamed CBase-derived table dtor (label propagated)
+0098dd90	RELOCATION_MATCH	145v145	PASS	anon CShaderStats dtor (label propagated)
+00a2f190	RELOCATION_MATCH	121v121	PASS	C3DMeshStats dtor (label propagated)
+00a5d800	RELOCATION_MATCH	108v108	PASS	CShaderResource dtor (label propagated)
+00a98470	RELOCATION_MATCH	126v126	PASS	N3DPrimitive::CDeviceIndependent dtor (label propagated)
+00b81cf0	RELOCATION_MATCH	112v112	PASS	CEngineSimulationManager dtor (label propagated)
+00baa2b0	RELOCATION_MATCH	128v128	PASS	CEngineInternalPrimitiveMorphInfo dtor (label propagated)
+00bfc2e0	RELOCATION_MATCH	137v137	PASS	ctor
+00bfc410	RELOCATION_MATCH	115v115	PASS	dtor
+00bfc510	RELOCATION_MATCH	115v115	PASS	
+00bfc590	MATCH	109v109	PASS	per-array inline RelocateData
+00bfc770	RELOCATION_MATCH	102v102	PASS	
+00455f3c	RELOCATION_MATCH	100v100	PASS	frame-pointer size TU
+004859ad	RELOCATION_MATCH	153v153	PASS	really Transfer<C3DVector>; frame-pointer size TU
+00580371	RELOCATION_MATCH	150v150	PASS	frame-pointer size TU
+005cc1e8	RELOCATION_MATCH	150v150	PASS	frame-pointer size TU
+006baed0	RELOCATION_MATCH	104v104	PASS	two-arg overload; value type is a {CCharString,map,map} record
+009bab60	RELOCATION_MATCH	134v134	PASS	
+009babf0	RELOCATION_MATCH	144v144	PASS	
+0049b860	RELOCATION_MATCH	101v101	PASS	slot 1 Resize, vector<CCharString>
+006d4180	RELOCATION_MATCH	101v101	PASS	slot 3 TransferIn, pair<CCharString,long> elements
+00cb13f0	RELOCATION_MATCH	109v109	PASS	owner unconfirmed
+00815ba0	RELOCATION_MATCH	158v158	PASS	
+00815c40	RELOCATION_MATCH	153v153	PASS	
+00814d10	RELOCATION_MATCH	127v127	PASS	
+00814e10	RELOCATION_MATCH	141v141	PASS	
+00814f90	RELOCATION_MATCH	124v124	PASS	
+00815620	RELOCATION_MATCH	119v119	PASS	
+00a86e20	DIFFER	122v117	-	lane gap: local homed in dead arg slot
+00a17620	DIFFER	99v99	-	fadd operand order only
+00a187c0	DIFFER	154v145	-	this kept in edx needs callee bodies in TU (stub probe matches)
+00a6c890	RELOCATION_MATCH	110v110	PASS	
+00a6cb20	RELOCATION_MATCH	129v129	PASS	
+00a73db0	RELOCATION_MATCH	153v153	PASS	
+00a74360	RELOCATION_MATCH	160v160	PASS	
+00c1c3f0	DIFFER	116v110	-	LTCG custom convention (result in eax)
+00a5ec40	RELOCATION_MATCH	107v107	PASS	
+00487af0	RELOCATION_MATCH	113v113	PASS	

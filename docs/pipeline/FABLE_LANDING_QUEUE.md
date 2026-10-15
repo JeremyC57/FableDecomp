@@ -176,6 +176,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand149` | Hand chunk 149 (CMovableResource .. CObjectTypeCollectionPalette): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand150` | Hand chunk 150 (COpenCloseHelper .. CParentDefClassBase): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand151` | Hand chunk 151 (CParentDefClassBase .. CPatchTesselationEdgeStrip): 30 of 40 byte-exact | - | 10 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand152` | Hand chunk 152 (CPatchTesselationEdgeStrip .. CPlayer): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -230,7 +231,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **452 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **456 parked rows** for the Fable retry pass.
 
 ### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -722,6 +723,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00ae2d20 CParticleProgram::SimulationStep (mesh overload) DIFFER(102v97): same as 0x00AE2CB0 | tried: nested, named local, static forwarding helper | next: as 0x00AE2CB0
 - 00af5010 NParticleEngine::CParticleSystem::AllocateParticle DIFFER(127v128): retail pushes esi at entry; lane delays `push esi` into the append block, moving the null-result exits | tried: return 0 vs guard, STLport link order vs prev local | next: lane gap: callee-saved push delayed into a branch
 - 00af56e0 NParticleEngine::CParticleSystem::DeleteAllParticles DIFFER(138v138): loop-bottom store of the frame iterator `mov [esp+0Ch],edi` (retail) vs `mov [esp+0Ch],ebx` (lane); all other bytes match | tried: iterator by ref / const ref, by-value wrapper, separate `current` frame iterator | next: register-choice artefact; try `current = Particles.erase(it); it = current;` ordering
+
+
+#### `2026-10-15_linux_hand152` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand152/differ/`)
+- 00a86e20 CPhysicsFacesSegmentLeaf::GetPossibleCollisionSet DIFFER(122v117): retail keeps the pushed index (and the insert's empty tag) in the dead `faces` argument slot with no frame; ours opens `push ecx` and rotates ebx/ebp/edi | tried: named local + inlined push_back, __forceinline helper taking the index by value | next: lane gap: short-lived local in a dead argument slot
+- 00a17620 CPhysicsMesh::HasBoundingSphereIntersectedFromTo DIFFER(99v99): `fld [ecx+80h] ; fadd [esp+10h]` (retail) vs `fld [esp+10h] ; fadd [ecx+80h]` | tried: R + radius + 15, radius + R + 15, memberwise C3DVector copy ctor (fixed the centre copy), named reach local | next: assign the reach into the `radius` parameter itself (`radius += BoundingSphere.Radius + 15.0f`, retail parks it in that slot) or read the radius through an inline getter
+- 00a187c0 CPhysicsMesh::GetSphereIntersectionFromTo DIFFER(154v145): retail keeps `this` in edx across the four member calls (no esi save) | tried: plain source; a probe with four edx-preserving stub callee bodies above it under `auto_inline(off)` gives RELOCATION_MATCH | next: author the real callee bodies (0xA18760, 0xA17690, 0xA17AF0, 0xA182C0) into the TU, or accept a stub-prefixed TU
+- 00c1c3f0 CPhysicsMeshObject::GetHelperPointPositionStatic DIFFER(116v110): only the result pointer -- retail takes it in eax (ecx = matrix, edx = point; the caller 0xC1C573 sets eax/esi), ours loads it from the stack (`mov eax,[esp+10h]`, `ret 4`); arithmetic identical | tried: __fastcall static returning C3DVector | next: lane gap: LTCG custom calling convention
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

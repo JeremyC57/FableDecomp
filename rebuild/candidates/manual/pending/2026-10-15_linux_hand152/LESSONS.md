@@ -1,0 +1,11 @@
+# Chunk 152 lessons (for GOTCHAS)
+- A propagated "~X" label on a body with no own vtable store is usually a member-wise dtor: follow the single caller (a ??_G) to its vtable slot 0; 9 of 14 CPatchTesselationEdgeStrip rows were other classes' dtors.
+- A per-member inline `bool Relocate(old, new)` that compares `old != data` after reading Data into a local gives retail's `mov eax,[m] ; cmp edx,eax`; comparing the member directly loads the argument first.
+- Two-way mode ladders with the "other" arm laid out first: `if (m != 0 && m != 1) A; else if (m == 1) B; else C;` (a switch gives `sub ; dec`). A 0..3 + default switch in source order gives `sub eax,0 ; je ; dec ...` with default first, cases reversed.
+- `T d = T();` is elided by VC7.1; retail's construct-copy-destroy-before-call comes from an inline by-value getter `static T Get() { T v; return v; }` (no NRVO).
+- A traits/pair default built from "" needs the implicit conversion (`DefaultVal("", 0)`); an explicit `CCharString("")` argument makes the copy ctor reuse the ctor's eax.
+- A loop counter VC turns into a count-down frame word while ebx carries the 1-based value comes from a zero-based loop that uses `i + 1` everywhere.
+- A recycle-or-delete if/else followed by one shared `--count; return x;` gives the memory-RMW `inc [m] ; dec [m]` in the duplicated tails.
+- A struct whose zero stores go through a `lea esi,[edi+N]` register before a call that takes &member is a reference local (`C3DVector& c = m;`).
+- When retail keeps `this` in edx across several member calls (no callee-saved push), the callees were compiled earlier in the same TU (confirmed by an edx-preserving stub probe on 0xA187C0).
+- New lane gap: an internal static helper taking its result pointer in eax (0xC1C3F0, caller passes eax/esi) is an LTCG custom calling convention; the body otherwise matches.
