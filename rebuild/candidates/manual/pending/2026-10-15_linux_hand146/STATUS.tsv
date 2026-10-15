@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004174f1	RELOCATION_MATCH	119v119	PASS	CMainGameComponent::InitParticleEngine (y-off+s size TU, named CCharString local)
+004179ee	RELOCATION_MATCH	106v106	PASS	CMainGameComponent::ChangeMaxTextureSize (Min<unsigned long> over signed operands; y-off+s)
+00a697a0	RELOCATION_MATCH	100v100	PASS	CManagedTextureData::CreateTexture (request + result C2DExtentsI locals)
+0041cf47	RELOCATION_MATCH	107v107	PASS	NUISystem::CManager::GetUIScale (C2DVector local returned by copy; y-off+s)
+0041d03c	DIFFER	108v108	-	NUISystem::CManager::RenderErrorMessage: push ecx/fld order (scheduling)
+0041e10d	RELOCATION_MATCH	97v97	PASS	NUISystem::CManager::IsKeyHeld (y-off+s)
+0041e641	RELOCATION_MATCH	146v146	PASS	NUISystem::CManager::~CManager (size TU, novtable base)
+004b14f0	RELOCATION_MATCH	152v152	PASS	append-if-absent thing-action param (label propagated; inline Find returning stop node)
+00556980	RELOCATION_MATCH	97v97	PASS	is CRedefinerList::NotifyOfRedefinition (label wrong)
+006f9430	DIFFER	146v146	-	NAnimationEvents::CManager::EventExists: one mov eax,ecx before end lea
+006f95a0	DIFFER	138v151	-	GetExtraEventsBetweenTimes: collector local kept in memory by retail, list ptr add eax,4
+006f9790	DIFFER	141v141	-	GetEventTimeInSeconds: fst before/after pops (scheduling)
+009e2ba0	RELOCATION_MATCH	104v104	PASS	is CFontManager::GetStaticFont (label wrong)
+009e2c10	RELOCATION_MATCH	104v104	PASS	is CFontManager::GetStreamingFont (label wrong)
+0075f180	RELOCATION_MATCH	107v107	PASS	is CKeyCamera::CKeyCamera (label wrong)
+00b493c0	RELOCATION_MATCH	105v105	PASS	CManagerShadowedSpotLight value ctor
+0081ed90	RELOCATION_MATCH	98v98	PASS	CMap::InitHeightMap (scoped_ptr reset)
+0081ef30	RELOCATION_MATCH	129v129	PASS	CMap::SetEngineThemeAtIncludingExtraCells (long palette-index local)
+0081fa20	DIFFER	121v103	-	GetThemeMinCameraSizeZOffsetAt: retail homes 3 locals in dead arg slot (lane gap)
+0081fa90	DIFFER	121v103	-	twin of 0081fa20 (+0x84 field): same arg-slot homing gap
+00820ab0	RELOCATION_MATCH	158v158	PASS	CMap::UpdateScriptedMapBrushes (tag with user ctor)
+00820f80	RELOCATION_MATCH	142v142	PASS	CMap::CreateScriptedMapBrush (node-pointer local)
+00c3f490	RELOCATION_MATCH	101v101	PASS	is ~CVtable_012b5c60 (label CMap::Destructor wrong), /EHsc
+004fb3e0	RELOCATION_MATCH	143v143	PASS	CMapInfo::SaveBinary
+004fdde0	RELOCATION_MATCH	97v97	PASS	CMapInfo::Clear
+005110b0	RELOCATION_MATCH	157v157	PASS	CMapInfo copy ctor (C2DBoxI user copy ctor)
+0082a3e0	DIFFER	118v118	-	CMarkerInfo::IsReversedOnMap: lea order before LowerBound (scheduling)
+008ee720	RELOCATION_MATCH	100v100	PASS	CMaterialDef::GetRandomBerserkedSwordHitParticleEffect
+008ee790	DIFFER	152v152	-	GetBlendedSwordHitEffect: frame 0xc v 8 (iterator/double slot sharing) + fabs order
+00a55d80	MATCH	97v97	PASS	CMatrix3x4::InitialiseSkewedSymmetric (chained identity stores)
+009f2310	RELOCATION_MATCH	116v116	PASS	CMemoryAllocator::~CMemoryAllocator
+009f2390	RELOCATION_MATCH	110v110	PASS	CMemoryAllocator::GetAllocationSize (unsigned shift)
+009f2920	RELOCATION_MATCH	155v155	PASS	CMemoryAllocator::InternalDeallocate
+009f2a40	DIFFER	120v122	-	InternalAllocate: size clamp register (eax then ebp)
+00a65ad0	RELOCATION_MATCH	113v113	PASS	CMemoryAllocatorBase ctor (zero loop = rep stosd)
+00a65f40	RELOCATION_MATCH	100v100	PASS	CMemoryAllocatorFixedSize::InternalAlloc
+00a66160	RELOCATION_MATCH	105v105	PASS	CMemoryAllocatorFixedSize::DeleteChunk
+00a661d0	MATCH	137v137	PASS	CMemoryAllocatorFixedSize::CreateChunk
+00a64590	RELOCATION_MATCH	102v102	PASS	CMemoryAllocatorVariableSize::GetFragmentation (named float result)
+00a64db0	RELOCATION_MATCH	100v100	PASS	CMemoryAllocatorVariableSize::GetTotalMemoryAllocated (static helper reads globals)

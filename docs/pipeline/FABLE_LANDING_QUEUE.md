@@ -170,6 +170,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand143` | Hand chunk 143 (CGuiVarTransferStruct .. CInputProcessControlCreature): 31 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand144` | Hand chunk 144 (CInputProcessControlCreatureActivateZTarget .. CLODDynamicBuildInfo): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand145` | Hand chunk 145 (CLandscapeBackgroundPatch .. CMainGameComponent): 32 of 40 byte-exact | - | 7 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand146` | Hand chunk 146 (CMainGameComponent .. CMemoryAllocatorVariableSize): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -222,7 +223,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **401 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **410 parked rows** for the Fable retry pass.
 
 ### Skipped rows (9 open of 31 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -645,6 +646,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00a42df0 CLipSyncDataBank::NotifyEntryAdded DIFFER(119v119): retail `fld [esp+20h] ; push edi ; fstp [edx+edi*8+4] ; push eax`, ours `push edi ; push eax ; fstp` (scheduling only) | tried: begin()+index, m_first[index], float local punned through its address | next: lane gap: scheduling (the float store sunk past the base call's pushes)
 - 004165e8 CMainGameComponent::CheckSync DIFFER(138v136): retail keeps the packet index in esi and re-reads the package argument `mov ecx,[ebp+8]` before every call; ours caches the package in esi and the index in edi (+push/pop edi) | tried: const reference, pointer, one-word handle class by value | next: lane gap: register allocation (or the argument's address escapes somewhere in the original, e.g. an inline debug compare compiled out)
 - 0053852b NUISystem::CList::SaveState DIFFER(131v131): retail homes the list's allocator temporary in the high byte of the LIVE hidden-return slot (`lea eax,[ebp+0Bh]`, 0x10 frame, list [ebp-4], record [ebp-10h]) and walks nodes in edi / component in esi; ours gives the temporary [ebp-1] (0x14 frame) and swaps esi/edi | tried: template and plain allocator tag, component declared before the loop | next: lane gap: empty temporary over a live parameter slot (same as the 24n `find` tag rows)
+
+
+#### `2026-10-15_linux_hand146` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand146/differ/`)
+- 009f2a40 CMemoryAllocator::InternalAllocate DIFFER(120v122): retail `mov eax,[esp+4] ; cmp eax,1 ; jge` before the pushes then `mov ebp,eax ; add eax,14h`; ours loads size into ebp after the pushes and `lea eax,[ebp+14h]` | tried: if-clamp, ternary clamp, Max() inline, `total = Max+0x14; size = total-0x14` | next: `long n = Max(size,1L)` with Max written `a < b ? b : a`, total from n
+- 008ee790 CMaterialDef::GetBlendedSwordHitEffect DIFFER(152v152): frame `sub esp,0Ch` v 8 (retail shares the find iterator's word with the double spill) and `fld 1.83 ; fdiv` before `fld speed ; fabs` | tried: float tanh expression, named double, scoped iterator, swapped operands, iterator temporary | next: lane gap: frame-slot sharing between an iterator and a double spill
+- 0082a3e0 CMarkerInfo::IsReversedOnMap DIFFER(118v118): `lea ecx,[esp+4] ; lea esi,[eax+44h] ; push ecx` v retail `lea esi,[eax+44h] ; lea eax,[esp+4] ; push eax` | tried: Find-pointer read, GetTCOut out-param (fixed the read), const long& key | next: lane gap: scheduling
+- 0081fa20 CMap::GetThemeMinCameraSizeZOffsetAt DIFFER(121v103): retail homes blend, def pointer and the float result all in the dead `pos` argument slot (no frame); ours opens `sub esp,8` and re-reads the def after `dec [eax+4]` | tried: Release() member, hand `--RefCount`, copied def local, CDefPointer object | next: lane gap: multi-local homing into a dead argument slot
+- 0081fa90 CMap::GetThemeMinCameraSizeZOffsetAt DIFFER(121v103): twin of 0081fa20 (float at +0x84), same arg-slot homing | tried: the 0081fa20 best form | next: lane gap: multi-local homing into a dead argument slot
+- 006f9790 CManager::GetEventTimeInSeconds DIFFER(141v141): `fst [esp+18h]` before the three pops in retail, after two pops (`[esp+10h]`, same slot) in ours | tried: named float result, direct return | next: lane gap: scheduling
+- 006f9430 CManager::EventExists DIFFER(146v146): ours `mov eax,ecx ; lea edi,[eax+edx*8]` v retail `lea edi,[ecx+edx*8]` (alignment filler then differs) | tried: end() in the condition, hoisted end after/before begin, by-value key + unsigned conversion (fixed the key) | next: index loop over m_count or `&m_pData[m_count]`
+- 006f95a0 CManager::GetExtraEventsBetweenTimes DIFFER(138v151): retail keeps the collector's two time words in a frame local reused as the for_each hidden result and tests the list pointer in place (`add eax,4 ; je`); ours forwards the arguments into the argument area and uses `lea ecx,[eax+4]` | tried: temporary collector, named collector, time-range sub-object + ternary accessor, `collector = for_each(...)` | next: time range as a by-value struct parameter, or a reference-returning list accessor
+- 0041d03c CManager::RenderErrorMessage DIFFER(108v108): `fld [ebp-4] ; push ecx` v retail `push ecx ; fld [ebp-4]` for UpdateErrorMessage's float argument | tried: direct time store, double local | next: lane gap: scheduling
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

@@ -1,0 +1,11 @@
+# Lessons from hand chunk 146
+- A zeroing `for` loop gives `lea edi,[...] ; mov ecx,N ; rep stosd`; the memset intrinsic loads ecx first (0x00A65AD0).
+- A STATIC inline helper that reads globals just written from members lets VC forward the stored registers (no member re-read) (0x00A64DB0).
+- Identity setters whose stores run high-to-low are chained assignments (`a = b = c = 0.0f` stores c first) (0x00A55D80).
+- `Min<unsigned long>(size, caps->X)` over signed operands materialises BOTH operands as temporaries (frame word + dead arg slot) and picks by address (0x004179EE).
+- An empty iterator tag passed by reference needs a user constructor, else value-initialisation stores 0 into its frame byte (0x00820AB0).
+- An inline Find that RETURNS the stop node (instead of `break`) keeps retail's post-loop `cmp eax,ecx` on both exits (0x004B14F0).
+- A returned 2-float struct built in a local with a user copy ctor fixes the [ebp-8]/[ebp-4] slot order (0x0041CF47).
+- A function-pointer/counted result kept as the list NODE pointer (`&node->_M_data` at the call) puts `add edi,8` right before the push (0x00820F80).
+- `C2DExtentsI r = f(); members = r; req = r;` reproduces a result-local copied back into the request local (0x00A697A0).
+- Lane gaps seen: retail homes several short-lived locals (out value, def pointer, float result) into ONE dead argument slot; ours homes only one.
