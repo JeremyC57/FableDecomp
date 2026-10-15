@@ -1,0 +1,2 @@
+- A split ledger piece grades against the FIRST oracle row q.py finds: delete the old multi-function row from the parent chunk oracle in $S/batch before grading (00f36ca0 graded 17v129 until then).
+- `jmp` over an `lea ecx,[ecx]` pad into a `for` loop over a global singly linked list is the plain pre-tested loop; nothing special is needed.

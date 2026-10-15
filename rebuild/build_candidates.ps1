@@ -228704,6 +228704,41 @@ $catalog = @(
         TestSource = '00/e7/CEMRhodri_Init_00e76540_test.cpp'
         PassPattern = '00e76540_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00f36ca0'
+        Module = 'CDynamicObjectHeapBase'
+        Source = '00/f3/CDynamicObjectHeapBase_RefCountedRelease_00f36ca0.cpp'
+        TestSource = '00/f3/CDynamicObjectHeapBase_RefCountedRelease_00f36ca0_test.cpp'
+        PassPattern = '00f36ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36cc0'
+        Module = 'CDynamicObjectHeapBase'
+        Source = '00/f3/CDynamicObjectHeapBase_RefCountedReleaseAllHeaps_00f36cc0.cpp'
+        TestSource = '00/f3/CDynamicObjectHeapBase_RefCountedReleaseAllHeaps_00f36cc0_test.cpp'
+        PassPattern = '00f36cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36cf0'
+        Module = 'CDynamicObjectHeapBase'
+        Source = '00/f3/CDynamicObjectHeapBase_CDynamicObjectHeapBase_00f36cf0.cpp'
+        TestSource = '00/f3/CDynamicObjectHeapBase_CDynamicObjectHeapBase_00f36cf0_test.cpp'
+        PassPattern = '00f36cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36d10'
+        Module = 'SHeapCounterPair'
+        Source = '00/f3/SHeapCounterPair_SHeapCounterPair_00f36d10.cpp'
+        TestSource = '00/f3/SHeapCounterPair_SHeapCounterPair_00f36d10_test.cpp'
+        PassPattern = '00f36d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36d20'
+        Module = 'CDynamicObjectHeapBase'
+        Source = '00/f3/CDynamicObjectHeapBase_NoOp00f36d20_00f36d20.cpp'
+        TestSource = '00/f3/CDynamicObjectHeapBase_NoOp00f36d20_00f36d20_test.cpp'
+        PassPattern = '00f36d20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

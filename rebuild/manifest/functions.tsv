@@ -54779,6 +54779,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f36c60	CDynamicObjectHeapBase	CDynamicObjectHeapBase	__thiscall	undefined	1	CDynamicObjectHeapBase *	0	yes	accepted									
 00f36c90	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f3\CBase_CBase_00f36c90.cpp
 00f36ca0	RefCountedRelease	CDynamicObjectHeapBase	__thiscall	void	1	CDynamicObjectHeapBase *	1	yes	accepted									
+00f36cc0	CDynamicObjectHeapBase::Piece_00f36cc0	CDynamicObjectHeapBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
+00f36cf0	CDynamicObjectHeapBase::Piece_00f36cf0	CDynamicObjectHeapBase	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+00f36d10	CDynamicObjectHeapBase::Piece_00f36d10	CDynamicObjectHeapBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
+00f36d20	CDynamicObjectHeapBase::Piece_00f36d20	CDynamicObjectHeapBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00f36d30	EndShutdown	CGPUScratchBufferTextureManager	__thiscall	bool	1	CGPUScratchBufferTextureManager *	1	yes	accepted									
 00f36ee0	StartSurfaceUse	CGPUScratchBufferTextureManager	__thiscall	CSurface *	2	CGPUScratchBufferTextureManager *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f3\CGPUScratchBufferTextureManager_StartSurfaceUse_00f36ee0.cpp
 00f36f00	$E2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f3\E2_E2_00f36f00.cpp

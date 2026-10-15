@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+00f36ca0	MATCH	17	PASS	CDynamicObjectHeapBase::RefCountedRelease
+00f36cc0	RELOCATION_MATCH	43	PASS	CDynamicObjectHeapBase::RefCountedReleaseAllHeaps (no callers)
+00f36cf0	RELOCATION_MATCH	31	PASS	CDynamicObjectHeapBase scalar deleting destructor (vtable 0x01301CD4 slot 0)
+00f36d10	MATCH	16	PASS	SHeapCounterPair::SHeapCounterPair (descriptive name; no callers)
+00f36d20	MATCH	1	PASS	empty member (descriptive name; no callers)

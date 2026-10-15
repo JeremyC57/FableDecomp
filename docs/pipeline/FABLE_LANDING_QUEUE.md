@@ -194,6 +194,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand904` | Chunk 904 -- skipped-ledger pieces (9 bodies from 3 multi-function rows), hand-authored by the coordinator (Fable 5.1) | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand905` | Chunk 905 (skipped-row ledger: the two functions of catalogue row 00837040) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand906` | Chunk 906 (skipped-row ledger: the two functions of catalogue row 009576c0) | - | 0 | 0 | done |
+| `2026-10-15_linux_hand907` | Chunk 907 (skipped-row ledger: the five functions of catalogue row 00f36ca0) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand91` | Hand chunk 91 (CTCHeroStats .. CTCInventory): 34 of 40 byte-exact | - | 2 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand92` | Hand chunk 92 (CTCInventory .. CTCInventoryBase): 38 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand93` | Hand chunk 93 (CTCInventoryBase .. CTCInventoryExperience): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
@@ -210,7 +211,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 
 Totals: **8 matched rows staged for landing**, **312 parked rows** for the Fable retry pass.
 
-### Skipped rows (9 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -222,7 +223,6 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
 | `00caef70` | multi | in-chunk:904 | 00caef70:9 00caef80:3 00caef90:3 00caefa0:3 | `2026-10-15_linux_hand110` | row holds four functions |
-| `00f36ca0` | multi | open | 00f36ca0:17 00f36cc0:43 00f36cf0:31 00f36d10:16 00f36d20:1 | `2026-10-15_linux_hand133` | row spans 4 functions (int3 padding then more bodies) |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
