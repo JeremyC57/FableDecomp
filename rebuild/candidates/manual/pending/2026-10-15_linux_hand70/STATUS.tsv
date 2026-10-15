@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00675b60	RELOCATION_MATCH	83v83	PASS	implicit member-wise operator=; CVectorMap assignment inlined (vector op= + sorted byte)
+0086bcc0	RELOCATION_MATCH	82v82	PASS	named morph local; max as `Member > arg ? Member : arg` ternary (template re-reads, swapped form flips cmp)
+0086bf70	RELOCATION_MATCH	58v58	PASS	three member calls; set array via add edi,18h
+00bef9c0	RELOCATION_MATCH	87v87	PASS	label wrong (entry-vector push_back of CEntryTable_00befbc0); VC6 push_back + InsertGrow tag in dead slot
+00677810	RELOCATION_MATCH	40v40	PASS	counted loop of 79, two bare operator delete per column (trivial dtor)
+0067a520	RELOCATION_MATCH	40v40	PASS	byte-identical twin of 0x00677810
+006feed0	RELOCATION_MATCH	82v82	PASS	count -= 1 then inline ternary clamp to MaxCount; <= 0.0f via 0.0f pool constant
+006fef30	RELOCATION_MATCH	81v81	PASS	header shell; bool via xor/mov al
+006fedd0	RELOCATION_MATCH	68v68	PASS	header shell; plain member writes
+006feca0	RELOCATION_MATCH	52v52	PASS	non-virtual base TransferBinaryOut call then three floats
+006775b0	RELOCATION_MATCH	67v67	PASS	inline base ctor, plain argument copies
+00c5ce00	MATCH	56v56	PASS	label wrong (audio ring-buffer Init, not a ctor); unsigned div
+00677540	RELOCATION_MATCH	77v77	PASS	1.0f / (upper - lower) init; upper not stored
+0067c2f0	RELOCATION_MATCH	46v46	PASS	COpinionSet member copy ctor after vtable; radius*radius
+007003a0	RELOCATION_MATCH	87v87	PASS	retail CArray (12 bytes); GetList returns the array itself when empty
+007e81b0	RELOCATION_MATCH	69v69	PASS	inline CPersistContext::Transfer<bool> switch(2,3); traits temp in dead arg slot
+00556580	RELOCATION_MATCH	61v61	PASS	NUISystem::CRedefinerList; control base SetState slot 4 twice
+005570f0	RELOCATION_MATCH	72v72	PASS	C2DVector needs user ctor AND user copy ctor to build the virtual result in the arg slot; base OnActivate tail jump
+00557360	RELOCATION_MATCH	70v70	PASS	??_G: three vtables, active-list global cleared, ~CScrollableList
+00558b30	RELOCATION_MATCH	81v81	PASS	label wrong (NUISystem::CKeyRedefiner ??_G); list member dtor then CClickable
+006bbf40	MATCH	47v47	PASS	label wrong (GetWorldMapOffset: def +0xAC); hidden-pointer C2DVector
+006bbf70	MATCH	47v47	PASS	def +0xB4 NameGraphicOffset; hidden-pointer C2DVector
+006bc4d0	RELOCATION_MATCH	22v22	PASS	map<CCharString,C2DVector> at +0x38 (retail offsets)
+006bc4f0	RELOCATION_MATCH	23v23	PASS	twin of 0x006BC4D0 for Y
+00828590	RELOCATION_MATCH	61v61	PASS	inline CVectorMap find; found path first; node via CCountedPointer operator->
+004016f0	DIFFER	78v78	-	label wrong (CDisplayManagerInit ctor); store grouping/register order only
+004564b5	RELOCATION_MATCH	48v48	PASS	empty body: CVectorMap/CDefString inline ctors; optimize(s) for `or [..],-1`
+00a4eb00	RELOCATION_MATCH	79v79	PASS	label wrong (C3DAnimationStats ctor); STLport tree header init; vector cleared by inline member (flushes add esp)
+0066c6a0	MATCH	45v45	PASS	two value-object assignments (both words loaded first)
+0066c7b0	DIFFER	90v94	-	retail copies TLX/TLY before subtracting, arm sums allocated differently (copy-register allocation)
+0066ccc0	RELOCATION_MATCH	42v42	PASS	member-object inline ctors only; retail vectors 12 bytes
+00c8d970	MATCH	70v70	PASS	label wrong (0x168-byte C-module state Reset, not a ctor)
+007d79c0	RELOCATION_MATCH	63v63	PASS	manifest Copy is the implicit operator= (returns this); packed parent-def base
+00447bb0	RELOCATION_MATCH	23v23	PASS	label wrong (CSavedInputEvent ctor: CInputEvent member + CCamera flags)
+0055deb0	RELOCATION_MATCH	36v36	PASS	label wrong (CActivity ctor by PDB layout: 3 strings + 2 bytes)
+004d2ef0	RELOCATION_MATCH	35v35	PASS	AllocFunc/DriverType/Name copy ctor
+00c46550	RELOCATION_MATCH	31v31	PASS	label wrong (12-byte region lookup key: vector + GetLength())
+009dbff0	RELOCATION_MATCH	49v49	PASS	forwarder with by-value CWideString destroyed by callee; mov al,1
+00c9dce0	RELOCATION_MATCH	87v87	PASS	label wrong (C-module record FreeBuffers); dllimport free hoisted, memset
+00cafd90	RELOCATION_MATCH	34v34	PASS	label wrong (audio object dtor); __declspec(novtable) gives the null-checked +4 base conversion

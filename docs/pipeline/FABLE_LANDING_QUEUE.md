@@ -105,12 +105,13 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand66` | Hand chunk 66 (CPersistContext .. CPhysicsForceModelGotoOutsideSimple): 36 of 40 byte-exact | 36 | 3 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand67` | Hand chunk 67 (CPhysicsForceModelGotoOutsideSimple .. CPlayer): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand69` | Hand chunk 69 (CQ_MinionCampScript .. CQuickAccessItemButtonGuiDef): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand70` | Hand chunk 70 (CRandomAppearanceMorph .. CRenderManager2D): 38 of 40 byte-exact | 38 | 2 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand71` | Hand chunk 71 (CRenderManagerCore .. CRightHandedSet): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand73` | Hand chunk 73 (CScriptGameResourceObjectScriptedThing .. CScriptThing): 38 of 40 byte-exact | 38 | 1 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand74` | Hand chunk 74 (CScriptThing .. CShaderRenderManager): 35 of 40 byte-exact | 35 | 0 | 5 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 
-Totals: **394 matched rows staged for landing**, **38 parked rows** for the Fable retry pass.
+Totals: **432 matched rows staged for landing**, **40 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -180,6 +181,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00bde080 CLocalDetailCacheMap::CQuadTreeElement::ValidationTest DIFFER(44v49): retail ends `mov ecx,[esi+0Ch] ; test ecx,ecx ; pop esi ; je ; jmp ValidationTest`, the lane emits `mov esi,[esi+0Ch] ; test esi,esi ; jne <body>` (self tail call turned into a loop) | tried: out-of-line member, in-class inline definition + forcing caller, `#pragma optimize("g",off)` | next: lane gap: tail-recursion elimination (retail keeps the self sibling-call jmp)
 - 004afbb0 CQuestManager::OnEntityInterrupted DIFFER(72v72): retail keeps `this` in ebx and the thing in ebp (`mov ebp,[esp+0Ch] ; mov ebx,ecx`) and loads the id with `mov eax,[ebp+1Ch] ; mov ecx,[ebp+18h]`, ours swaps ebx/ebp and loads the id through ecx/edx | tried: plain member access (the thing is loaded in the preheader), a `CThing*` local (propagated away), an id-pointer local (entry load, registers still swapped), a pointer local for the list member | next: lane gap: register colouring (try a `CThing&` member-function helper for the two script calls, or the out-of-line `for` with an iterator object)
 - 004b3810 CQuestManager::SetCreatureGenerationEnabledDuringScript DIFFER(76v76): `lea eax,[esp+14h]` (retail homes the empty find tag on the LIVE `enabled` slot) vs the lane's `lea eax,[esp+10h]` (the dead `script` slot) | tried: vector pointer declared before / after the cached `last` (the second fixes the esi/edi colouring) | next: lane gap: empty tag temporary over a live argument slot (wave 24l/24n)
+
+
+#### `2026-10-15_linux_hand70` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand70/differ/`)
+- 004016f0 CDisplayManagerInit::CDisplayManagerInit DIFFER(78v78): retail `xor eax,eax ; mov ecx,1` both hoisted, NoBackBuffers `mov [esi+19h],cl` after the `mov byte [esi+18h],10h` immediate; the lane reuses eax (`mov eax,1` after the zero group) and keeps +0x19 inside the ones group | tried: member order (ones group first, eax=1/ecx=0), member order with the Present* trio reversed (fixes the in-group order), retail store order (zeros first; only register reuse and +0x19 left) | next: lane gap: constant-register grouping/scheduling of body-assignment stores (same instructions, same length)
+- 0066c7b0 CRegionMinimap::InitialiseRegionBox DIFFER(90v94): retail copies the top-left words before subtracting (`mov edx,esi ; sub eax,edx`, `mov ebx,edi ; sub edx,ebx`) and builds the wide arm's right edge in ebx (`lea ebx,[eax+esi] ; mov eax,ebx`); the lane subtracts esi/edi directly and allocates the arm sums differently | tried: flat if/else side clamp, three arms storing a C2DBoxI temporary (struct copy via `add ecx,14h`), per-arm field stores, a brx/bry join on the header fields, the join over an inlined GetRegionMapExtents (best, in differ/) | next: by-value C2DVectorI/C2DExtentsI temporaries fed to an inline C2DBoxI(topLeft, extents) setter over the flat header fields (the retail copies look like the inlined GetRegionMapExtents' re-reads CSE'd into copy registers), else lane gap: copy-register allocation
 
 
 #### `2026-10-15_linux_hand71` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand71/differ/`)
