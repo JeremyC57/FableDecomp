@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b1b4d0	DIFFER	69v69	-	parked: lane sinks the 0x1E immediate store below the argument copies (scheduling only); label CPersistContext::Init wrong (SDecalRequest ctor)
+00cd3da4	RELOCATION_MATCH	41v41	PASS	STLport vector<T16>::resize(n) = resize(n, T()); y-off + s pragmas; label wrong
+00f33d90	RELOCATION_MATCH	44v44	PASS	STLport vector<0x34 def record>::resize(n); label wrong
+00f349b0	RELOCATION_MATCH	53v53	PASS	TransferableVector::Resize: TransVector->resize(n) inlined, inline CDefPointeeBase dtor + ~CResource; label wrong
+005819f2	RELOCATION_MATCH	27v27	PASS	CTCInventory::ValidateIndex: dropped count check, returns the index; label wrong
+0099a540	RELOCATION_MATCH	28v28	PASS	CFileInformation ctor (three CDateAndTime); label wrong
+00cd45e0	RELOCATION_MATCH	28v28	PASS	three-CCharString record ctor (class not identified); label wrong
+00403f90	RELOCATION_MATCH	38v38	PASS	bool TransferOut: "TRUE"/"FALSE" appended
+00403fc0	DIFFER	33v36	-	parked: retail zero-fills the traits slot as a dword then the bool byte; lane value-init stores only the byte
+00405a10	RELOCATION_MATCH	31v31	PASS	unsigned char TransferOut via long writer
+0040f870	RELOCATION_MATCH	48v48	PASS	float TransferOut via FormatDouble(6, v) temp; named pointer local for the ecx load
+0044b7e0	RELOCATION_MATCH	22v22	PASS	__int64 TransferIn via ReadInt64
+0044b800	RELOCATION_MATCH	42v42	PASS	unsigned __int64 TransferOut via CCharString(UInt64) temp
+004aa3f0	RELOCATION_MATCH	32v32	PASS	double TransferIn via long reader (fild)
+004aa410	RELOCATION_MATCH	36v36	PASS	double TransferOut via __ftol2 long
+004cbd00	RELOCATION_MATCH	34v34	PASS	short TransferIn via long reader
+004cbd30	RELOCATION_MATCH	31v31	PASS	short TransferOut via long writer
+004cbe00	RELOCATION_MATCH	31v31	PASS	signed char TransferOut via long writer
+00455fa0	SKIP	-v42	-	skip: 42-byte row = three functions (jmp [eax+48h] thunk, bit getter, bit setter)
+0040fba0	DIFFER	37v37	-	parked: long vector TransferOut, index/first load order swapped (scheduling only)
+0049b070	RELOCATION_MATCH	59v59	PASS	CCharString vector TransferIn via CPersistTraits<CCharString>
+0049b0b0	RELOCATION_MATCH	59v59	PASS	CCharString vector TransferOut via CPersistTraits<CCharString>
+005663c0	RELOCATION_MATCH	44v44	PASS	float vector TransferIn via CPersistTraits<float>
+005663f0	RELOCATION_MATCH	54v54	PASS	float vector TransferOut via FormatDouble; temp in dead index slot; named first-pointer local
+00614430	RELOCATION_MATCH	30v30	PASS	__int64 vector TransferIn via ReadInt64
+00614450	RELOCATION_MATCH	49v49	PASS	UInt64 vector TransferOut; temp in dead index slot; named first-pointer local
+0074cda0	RELOCATION_MATCH	44v44	PASS	CDefIndex vector TransferIn via CPersistTraits<CDefIndex>
+0074cdd0	RELOCATION_MATCH	44v44	PASS	CDefIndex vector TransferOut via CPersistTraits<CDefIndex>
+0042d5b1	RELOCATION_MATCH	83v83	PASS	STLport map<CComponent*,CUIState>::operator[]; named default value; label wrong
+00815010	RELOCATION_MATCH	46v46	PASS	Cylinder TransferBinaryOut: BaseName, Radius, Height
+00ca9820	RELOCATION_MATCH	64v64	PASS	audio thread owner release: ResetEvent/SetEvent/CloseHandle; label wrong
+0067f810	RELOCATION_MATCH	90v90	PASS	SetPPrimitiveFromType: prototype scan, clone into PPrimitive
+00c1bff0	MATCH	53v53	PASS	12-byte vector copy through a POD named local; label wrong
+00c1c070	MATCH	53v53	PASS	12-byte vector Y/Z swizzle through a POD named local; label wrong
+00a85ff0	RELOCATION_MATCH	59v59	PASS	~CPhysicsFacesSegmentBranch: delete both children; local polymorphic model
+00a86f60	RELOCATION_MATCH	79v79	PASS	??_G of the branch (scalar), new-factory pulls the vtable
+00ca7b30	RELOCATION_MATCH	48v48	PASS	__stdcall COM-style Reset (+list RemoveAll); label wrong
+00ca7b60	MATCH	40v40	PASS	__stdcall COM-style Reset; label wrong
+008fa7e0	MATCH	30v30	PASS	GetVelocity: reference accessor + memberwise copy ctor; label DoVelocityDamping is the caller
+0047cf3f	RELOCATION_MATCH	34v34	PASS	CPersistTraits<C3DVector>::TransferBinaryIn; y-off + s pragmas; label wrong
