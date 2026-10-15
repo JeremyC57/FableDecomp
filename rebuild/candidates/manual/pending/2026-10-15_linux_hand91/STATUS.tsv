@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0057de14	DIFFER	67v67	-	CTCHeroStats::ApplyPenaltyForDeath: parked, see NOTES.md
+00a75460	RELOCATION_MATCH	49v49	PASS	CContainmentVolume::IsContainingSphere (catalog: CTCHeroStats::AddHousePosition)
+00a754a0	RELOCATION_MATCH	49v49	PASS	CContainmentVolume::IsContainingPartOfSphere (catalog: CTCHeroStats::AddHousePosition)
+00a89320	MATCH	33v33	PASS	C3DMesh2::GetVertexCount (catalog: CTCHeroStats::GetNumberOfAbilityCasts)
+00a89350	MATCH	33v33	PASS	C3DMesh2::GetTriangleCount (catalog: CTCHeroStats::GetNumberOfAbilityCasts)
+00c3c450	RELOCATION_MATCH	70v70	PASS	CVtable_012B4F74::Close (catalog: CTCHeroStats::ProcessEventNotification)
+00c6acc0	RELOCATION_MATCH	73v73	PASS	CSoundMixer::MixBlocks (catalog: CTCHeroStats::ApplyVectorScale)
+00c74450	RELOCATION_MATCH	39v39	PASS	CVtable_012BF050::~CVtable_012BF050 (catalog: CTCHeroStats::~CTCHeroStats)
+00c74480	RELOCATION_MATCH	63v63	PASS	CVtable_012BF050::`scalar deleting destructor' (catalog: CTCHeroStats::~CTCHeroStats)
+004e75d9	RELOCATION_MATCH	64v64	PASS	CTCHitLocations::CTCHitLocations
+008153c0	MATCH	86v86	PASS	CTCHitLocations::GetPCombatFirstHitLocationPosInside
+0047d5f2	RELOCATION_MATCH	27v27	PASS	CTCInGameMenu::SetPDef
+005bdb4d	RELOCATION_MATCH	27v27	PASS	CTCInventoryBase::SetPDef
+008574d0	RELOCATION_MATCH	78v78	PASS	CCombatActionBase::SetCombatAnimation (catalog: CTCInGameMenu::SetPDef)
+005819aa	RELOCATION_MATCH	51v51	PASS	CTCInventory::OnItemHighlighted (catalog: CTCInventory::vfunc_36)
+00581a14	RELOCATION_MATCH	26v26	PASS	CTCInventory::SetQuickAccessAssign
+00581a3b	RELOCATION_MATCH	25v25	PASS	CTCInventory::ProcessInventoryInputLeft (catalog: CTCInventory::vfunc_40)
+00581a54	RELOCATION_MATCH	25v25	PASS	CTCInventory::ProcessInventoryInputRight (catalog: CTCInventory::vfunc_41)
+00581a6d	RELOCATION_MATCH	70v70	PASS	CTCInventory::ProcessButtonAReleased
+00581ab3	SKIP	-	-	CTCInventory::CTCInventory::vfunc_59: row holds two functions (ProcessButtonBReleased + ProcessButtonXReleased)
+00581b01	RELOCATION_MATCH	47v47	PASS	CTCInventory::ProcessButtonYReleased
+00581c1e	RELOCATION_MATCH	46v46	PASS	CTCInventory::StartGameRendering
+00581c78	RELOCATION_MATCH	81v81	PASS	CTCInventory::InitialActivate (catalog: CTCInventory::vfunc_5)
+00581cfd	DIFFER	43v45	-	CTCInventory::GetContextSensitiveItemGraphicIndex: parked, see NOTES.md
+00581d4e	MATCH	64v64	PASS	CTCInventory::GetContextSensitiveItemButtonIndex
+00581d8e	DIFFER	75v77	-	CTCInventory::IsContextSensitiveOpinionExpressionAvailable: parked, see NOTES.md
+00581ddb	RELOCATION_MATCH	88v88	PASS	CTCInventory::GetQuickAccessItemDef
+00581e33	MATCH	60v60	PASS	CTCInventory::GetQuickAccessItem
+00581e6f	RELOCATION_MATCH	78v78	PASS	CTCInventory::UpdateContextSensitiveItemFades
+00581fa4	DIFFER	43v45	-	CTCInventory::GetQuickAccessItemGraphicIndex (catalog: GetContextSensitiveItemGraphicIndex): parked, see NOTES.md
+00581fd1	RELOCATION_MATCH	86v86	PASS	CTCInventory::GetQuickAccessItemButtonIndex
+00582027	MATCH	76v76	PASS	CTCInventory::GetQuickAccessNextFreeSlot
+005826fa	RELOCATION_MATCH	90v90	PASS	CTCInventory::IsQuitMenuReceivingInput
+005829cd	RELOCATION_MATCH	73v73	PASS	CTCInventory::RemoveContextSensitivePreferredItem
+00583a6d	RELOCATION_MATCH	37v37	PASS	CTCInventory::Copy (catalog: CTCInventory::vfunc_12)
+00584af6	RELOCATION_MATCH	76v76	PASS	CTCInventory::ClosePCScoreboard
+00584b42	DIFFER	70v68	-	CTCInventory::ClosePCInventoryMenu: parked, see NOTES.md
+00584edc	RELOCATION_MATCH	57v57	PASS	CTCInventory::AssignThingSwappingPC
+00584fe3	RELOCATION_MATCH	74v74	PASS	CTCInventory::ClosePCMapMenu
+0058509f	RELOCATION_MATCH	64v64	PASS	CTCInventory::OnItemAdded

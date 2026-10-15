@@ -153,8 +153,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand87` | Hand chunk 87 (CTCElectrocutedEffect .. CTCForcePushed): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand88` | Hand chunk 88 (CTCForcePushed .. CTCGraphicAppearanceStaticMesh): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand91` | Hand chunk 91 (CTCHeroStats .. CTCInventory): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
 
-Totals: **0 matched rows staged for landing**, **113 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **118 parked rows** for the Fable retry pass.
 
 ### Skipped rows (19 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -374,5 +375,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00771d50 CTCHeroPodium::GetCrowdPos DIFFER(85v85): only the frame differs, retail `sub esp,10h` / `add esp,10h` (4 dead bytes above the 12-byte zero C3DVector temporary), lane `0Ch` | tried: temporary in the assignment, named local, an empty CDebugBreak-style temporary, the vector element through a begin() iterator object | next: lane gap: dead frame bytes (RTM vs QFE frame layout), or an unknown dead 4-byte local in the original
 - 0057a962 CTCHeroStats::GetMaxExtraMaxStamina DIFFER(40v39): the best graded form emits `add eax,0DCh ; mov ecx,[eax]` for retail `mov ecx,[eax+0DCh]` | tried: reference copy + destructor release, raw-pointer ctor + pointee AddRef/Release, raw-pointer ctor + destructor release, reference copy + pointee members | next: the by-value holder accessor that matched the byte-twin 0057a939; differ/0057a962.cpp already holds it UNGRADED (budget spent), re-grade first
 - 0057adb8 CTCHeroStats::ResetTrainingStatus DIFFER(70v63): retail loads the def object once into ecx and releases with `dec dword ptr [ecx+4] ; jne`; the lane loads it into eax and emits `mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0` (or re-reads the frame word after the dec) | tried: pointee Release member + `if (Object) Object->Release()`, `if (Object && --Object->RefCount == 0)` in the destructor, local copy + direct dec, local copy + pointee Release | next: try the by-value accessor or out-parameter idiom that GetSubDef's other callers use; otherwise lane gap: def-pointer register allocation (cf. 24k "CDefPointer local re-read from its slot")
+
+
+#### `2026-10-15_linux_hand91` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand91/differ/`)
+- 0057de14 CTCHeroStats::ApplyPenaltyForDeath DIFFER(67v67): second def-object load `mov ecx,[eax+0DCh] ; mov eax,[ecx+58h]` where retail keeps eax (`mov eax,[eax+0DCh] ; mov eax,[eax+58h]`) | tried: inline `-abs(...)` args, `-abs` local, `abs` local, raw-value local | next: lane gap: register allocation (scheduling-only)
+- 00581cfd CTCInventory::GetContextSensitiveItemGraphicIndex DIFFER(43v45): ours `lea eax,[eax+ecx*4] ; cmp [eax],0 ; mov edx,[eax]`, retail `shl ecx,2 ; cmp [ecx+eax],0 ; mov edx,[ecx+eax]` | tried: POD by-value return, explicit result pointer, pack(1)/pack(2), non-POD CEngineGraphic (fixed the hidden-ecx call and the ebp-0Eh slot) | next: an element accessor that scales the index by itself (Dinkumware `*(begin() + n)` through an iterator class, or byte-offset arithmetic)
+- 00581fa4 CTCInventory::GetQuickAccessItemGraphicIndex DIFFER(43v45): same `lea` vs `shl ecx,2 ; [ecx+eax]` addressing as 00581cfd | tried: POD return, explicit result pointer, pack(2), non-POD without "s" | next: same as 00581cfd (one fix lands both)
+- 00581d8e CTCInventory::IsContextSensitiveOpinionExpressionAvailable DIFFER(75v77): ours `mov ecx,[eax+edi*4] ; test ecx,ecx`, retail `cmp dword ptr [eax+edi*4],0 ; jle ; mov ecx,[eax+edi*4]` | tried: `&&`, nested if + signed index, no "s", volatile compare (gives the memory compare + reload but folds the address with `lea`, 78v77) | next: the same index-scaling accessor as 00581cfd combined with the volatile-free form
+- 00584b42 CTCInventory::ClosePCInventoryMenu DIFFER(70v68): ours `mov eax,[eax+4] ; mov edx,[eax] ; mov ecx,eax ; call [edx+7Ch]`, retail `mov ecx,[eax+4] ; mov eax,[ecx] ; call [eax+7Ch]` | tried: T** out, T*& out, split HasInterface/FindInterface helpers, no "s" | next: lane gap: register choice at a virtual call (sibling rows 00584af6/00584fe3 with the same template match)
 
 <!-- queue:end -->

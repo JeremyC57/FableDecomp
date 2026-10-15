@@ -217429,6 +217429,244 @@ $catalog = @(
         TestSource = '00/ca/CAdviseHolder00caec80_Unadvise_00caec80_test.cpp'
         PassPattern = '00caec80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0047d5f2'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_SetPDef_0047d5f2.cpp'
+        TestSource = '00/47/CTCInGameMenu_SetPDef_0047d5f2_test.cpp'
+        PassPattern = '0047d5f2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e75d9'
+        Module = 'CTCHitLocations'
+        Source = '00/4e/CTCHitLocations_CTCHitLocations_004e75d9.cpp'
+        TestSource = '00/4e/CTCHitLocations_CTCHitLocations_004e75d9_test.cpp'
+        PassPattern = '004e75d9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005819aa'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OnItemHighlighted_005819aa.cpp'
+        TestSource = '00/58/CTCInventory_OnItemHighlighted_005819aa_test.cpp'
+        PassPattern = '005819aa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581a14'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_SetQuickAccessAssign_00581a14.cpp'
+        TestSource = '00/58/CTCInventory_SetQuickAccessAssign_00581a14_test.cpp'
+        PassPattern = '00581a14_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581a3b'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ProcessInventoryInputLeft_00581a3b.cpp'
+        TestSource = '00/58/CTCInventory_ProcessInventoryInputLeft_00581a3b_test.cpp'
+        PassPattern = '00581a3b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581a54'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ProcessInventoryInputRight_00581a54.cpp'
+        TestSource = '00/58/CTCInventory_ProcessInventoryInputRight_00581a54_test.cpp'
+        PassPattern = '00581a54_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581a6d'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ProcessButtonAReleased_00581a6d.cpp'
+        TestSource = '00/58/CTCInventory_ProcessButtonAReleased_00581a6d_test.cpp'
+        PassPattern = '00581a6d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581b01'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ProcessButtonYReleased_00581b01.cpp'
+        TestSource = '00/58/CTCInventory_ProcessButtonYReleased_00581b01_test.cpp'
+        PassPattern = '00581b01_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581c1e'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_StartGameRendering_00581c1e.cpp'
+        TestSource = '00/58/CTCInventory_StartGameRendering_00581c1e_test.cpp'
+        PassPattern = '00581c1e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581c78'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_InitialActivate_00581c78.cpp'
+        TestSource = '00/58/CTCInventory_InitialActivate_00581c78_test.cpp'
+        PassPattern = '00581c78_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581d4e'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_GetContextSensitiveItemButtonIndex_00581d4e.cpp'
+        TestSource = '00/58/CTCInventory_GetContextSensitiveItemButtonIndex_00581d4e_test.cpp'
+        PassPattern = '00581d4e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581ddb'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_GetQuickAccessItemDef_00581ddb.cpp'
+        TestSource = '00/58/CTCInventory_GetQuickAccessItemDef_00581ddb_test.cpp'
+        PassPattern = '00581ddb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581e33'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_GetQuickAccessItem_00581e33.cpp'
+        TestSource = '00/58/CTCInventory_GetQuickAccessItem_00581e33_test.cpp'
+        PassPattern = '00581e33_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581e6f'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_UpdateContextSensitiveItemFades_00581e6f.cpp'
+        TestSource = '00/58/CTCInventory_UpdateContextSensitiveItemFades_00581e6f_test.cpp'
+        PassPattern = '00581e6f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581fd1'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_GetQuickAccessItemButtonIndex_00581fd1.cpp'
+        TestSource = '00/58/CTCInventory_GetQuickAccessItemButtonIndex_00581fd1_test.cpp'
+        PassPattern = '00581fd1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00582027'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_GetQuickAccessNextFreeSlot_00582027.cpp'
+        TestSource = '00/58/CTCInventory_GetQuickAccessNextFreeSlot_00582027_test.cpp'
+        PassPattern = '00582027_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005826fa'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_IsQuitMenuReceivingInput_005826fa.cpp'
+        TestSource = '00/58/CTCInventory_IsQuitMenuReceivingInput_005826fa_test.cpp'
+        PassPattern = '005826fa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005829cd'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_RemoveContextSensitivePreferredItem_005829cd.cpp'
+        TestSource = '00/58/CTCInventory_RemoveContextSensitivePreferredItem_005829cd_test.cpp'
+        PassPattern = '005829cd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00583a6d'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_Copy_00583a6d.cpp'
+        TestSource = '00/58/CTCInventory_Copy_00583a6d_test.cpp'
+        PassPattern = '00583a6d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00584af6'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ClosePCScoreboard_00584af6.cpp'
+        TestSource = '00/58/CTCInventory_ClosePCScoreboard_00584af6_test.cpp'
+        PassPattern = '00584af6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00584edc'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_AssignThingSwappingPC_00584edc.cpp'
+        TestSource = '00/58/CTCInventory_AssignThingSwappingPC_00584edc_test.cpp'
+        PassPattern = '00584edc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00584fe3'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ClosePCMapMenu_00584fe3.cpp'
+        TestSource = '00/58/CTCInventory_ClosePCMapMenu_00584fe3_test.cpp'
+        PassPattern = '00584fe3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0058509f'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OnItemAdded_0058509f.cpp'
+        TestSource = '00/58/CTCInventory_OnItemAdded_0058509f_test.cpp'
+        PassPattern = '0058509f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bdb4d'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_SetPDef_005bdb4d.cpp'
+        TestSource = '00/5b/CTCInventoryBase_SetPDef_005bdb4d_test.cpp'
+        PassPattern = '005bdb4d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008153c0'
+        Module = 'CTCHitLocations'
+        Source = '00/81/CTCHitLocations_GetPCombatFirstHitLocationPosInside_008153c0.cpp'
+        TestSource = '00/81/CTCHitLocations_GetPCombatFirstHitLocationPosInside_008153c0_test.cpp'
+        PassPattern = '008153c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008574d0'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_SetCombatAnimation_008574d0.cpp'
+        TestSource = '00/85/CCombatActionBase_SetCombatAnimation_008574d0_test.cpp'
+        PassPattern = '008574d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75460'
+        Module = 'CContainmentVolume'
+        Source = '00/a7/CContainmentVolume_IsContainingSphere_00a75460.cpp'
+        TestSource = '00/a7/CContainmentVolume_IsContainingSphere_00a75460_test.cpp'
+        PassPattern = '00a75460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a754a0'
+        Module = 'CContainmentVolume'
+        Source = '00/a7/CContainmentVolume_IsContainingPartOfSphere_00a754a0.cpp'
+        TestSource = '00/a7/CContainmentVolume_IsContainingPartOfSphere_00a754a0_test.cpp'
+        PassPattern = '00a754a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a89320'
+        Module = 'C3DMesh2'
+        Source = '00/a8/C3DMesh2_GetVertexCount_00a89320.cpp'
+        TestSource = '00/a8/C3DMesh2_GetVertexCount_00a89320_test.cpp'
+        PassPattern = '00a89320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a89350'
+        Module = 'C3DMesh2'
+        Source = '00/a8/C3DMesh2_GetTriangleCount_00a89350.cpp'
+        TestSource = '00/a8/C3DMesh2_GetTriangleCount_00a89350_test.cpp'
+        PassPattern = '00a89350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3c450'
+        Module = 'CVtable_012B4F74'
+        Source = '00/c3/CVtable012B4F74_Close_00c3c450.cpp'
+        TestSource = '00/c3/CVtable012B4F74_Close_00c3c450_test.cpp'
+        PassPattern = '00c3c450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6acc0'
+        Module = 'CSoundMixer'
+        Source = '00/c6/CSoundMixer_MixBlocks_00c6acc0.cpp'
+        TestSource = '00/c6/CSoundMixer_MixBlocks_00c6acc0_test.cpp'
+        PassPattern = '00c6acc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c74450'
+        Module = 'CVtable_012BF050'
+        Source = '00/c7/CVtable012BF050_CVtable012BF050_00c74450.cpp'
+        TestSource = '00/c7/CVtable012BF050_CVtable012BF050_00c74450_test.cpp'
+        PassPattern = '00c74450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c74480'
+        Module = 'CVtable_012BF050'
+        Source = '00/c7/CVtable012BF050_scalardeletingdestructor_00c74480.cpp'
+        TestSource = '00/c7/CVtable012BF050_scalardeletingdestructor_00c74480_test.cpp'
+        PassPattern = '00c74480_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

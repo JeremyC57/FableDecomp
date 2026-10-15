@@ -1,0 +1,50 @@
+#pragma optimize("s", on)
+// CTCInventory::GetQuickAccessItemButtonIndex(long item) -- slot index of the item among the quick-access items, -1 when absent
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00581FD1, length 86 bytes; size-optimised TU ("s").
+// Callees: GetWorld 0x00686D50 (free: `return g_pGame->m_30;`), CWorld::GetMainPlayer 0x00449960,
+//          CItemList::GetCount 0x00445950 (`(m_7c8 - m_7c4) >> 3`) -- the same dropped range-check chain as
+//          the landed CTCInventory::ValidateIndex (0x005819F2), whose model is reused here.
+// Ego_r PDB: ?GetQuickAccessItemButtonIndex@CTCInventory@@QAEJJ@Z.
+// Retail layout: engine/CTCInventory.h is the wider Ego_r.pdb layout (QuickAccessItems at PDB +0x168, 16-byte
+// vectors); the shipped object keeps QuickAccessItems as a 12-byte {first,last,end} vector<long> at +0x148,
+// so `this` is modelled locally.
+// Shape: the count chain is a statement whose result is dropped (the callees are out of line); then a counted
+// loop over `size()` strength-reduced to a walking element pointer, `or eax,-1` when not found.
+struct CItemList {
+    unsigned long GetCount();                        // 0x00445950
+};
+
+struct CPlayer {
+    unsigned char _pad_0x00[0x0c];
+    CItemList*    m_pItems;                          // +0x0c
+};
+
+struct CWorld {
+    CPlayer* GetMainPlayer();                        // 0x00449960
+};
+
+CWorld* GetWorld();                                  // 0x00686D50
+
+struct CLongVector {
+    long* first;                                     // +0x00
+    long* last;                                      // +0x04
+    long* end_of_storage;                            // +0x08
+    unsigned long size() const { return (unsigned long)(last - first); }
+    long& operator[](unsigned long n) { return first[n]; }
+};
+
+struct CTCInventory {
+    unsigned char _pad_0x000[0x148];
+    CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
+    long GetQuickAccessItemButtonIndex(long item);
+};
+
+long CTCInventory::GetQuickAccessItemButtonIndex(long item)
+{
+    GetWorld()->GetMainPlayer()->m_pItems->GetCount();
+    for (unsigned long i = 0; i < QuickAccessItems.size(); ++i) {
+        if (QuickAccessItems[i] == item)
+            return i;
+    }
+    return -1;
+}
