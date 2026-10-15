@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007874c0	RELOCATION_MATCH	54v54	PASS	CTCSkeletalMorph ??_G (label propagated): counted ptr + CArray members, CTCBase base
+007b06c0	RELOCATION_MATCH	67v67	PASS	CTCFishingSpot ??_G (label propagated): RemoveParticles body + 3 intelligent pointers
+007e0db0	RELOCATION_MATCH	46v46	PASS	CTCEffectOnDie ??_G (label propagated): CCharString member, CTCBase base
+00836da0	MATCH	29v29	PASS	rotated while-walk over PreviousNode (+0xd4) for IsStart (+0xec)
+00837040	SKIP	-v28	-	two functions in the row (0x837040 tail-jump + 0x837050 getter)
+00837060	RELOCATION_MATCH	35v35	PASS	named pointer local to the packed +0xe6 record gives the dead add
+00838500	RELOCATION_MATCH	47v47	PASS	CThingTrackNode ??_G: class __fastcall operator delete
+00996f30	RELOCATION_MATCH	52v52	PASS	CFileDataOutputStream ??_G (label propagated): inline CDataStream dtor store
+009971a0	RELOCATION_MATCH	49v49	PASS	CFileDataInputStream ??_G (label propagated): Close() bound statically
+009a0b30	RELOCATION_MATCH	46v46	PASS	CFontBank ??_G (label propagated)
+00a03aa0	RELOCATION_MATCH	73v73	PASS	CHandleBasedMemoryPool ??_G (label propagated): inline CArray free
+00a63b30	RELOCATION_MATCH	83v83	PASS	CFontDataBank ??_G (label propagated): polymorphic member inline dtor store
+00aa8d80	RELOCATION_MATCH	56v56	PASS	CChunkedFileRawDataChunk ??_G (label propagated): delete[] Data
+00aacea0	RELOCATION_MATCH	70v70	PASS	CSoundEmitterLH ??_G (label propagated): __forceinline array dtor
+00b0f990	RELOCATION_MATCH	81v81	PASS	NParticleEngine::CPSCUpdateNormal ??_G (label propagated): __forceinline array dtor
+00cb0e30	RELOCATION_MATCH	84v84	PASS	lock + E_FAIL early out + SetEvent/Wait, reply read into a local
+00cb0eb0	RELOCATION_MATCH	47v47	PASS	int result, zero-timeout wait
+00485468	RELOCATION_MATCH	35v35	PASS	really std::vector<T*>::erase(iterator) (label propagated)
+0053c7ef	RELOCATION_MATCH	34v34	PASS	really std::vector<unsigned char>::erase(iterator) (label propagated)
+0098ec40	RELOCATION_MATCH	47v47	PASS	void Close, flags cleared through one zero register
+00991450	RELOCATION_MATCH	88v88	PASS	CThreadedFile ??_G: __forceinline Close inlined
+0098e770	RELOCATION_MATCH	91v91	PASS	device row local + iterator reference local (4 grades)
+00cd4450	RELOCATION_MATCH	23v23	PASS	thing manager slot 87 into TimerIndex
+00cd4490	RELOCATION_MATCH	23v23	PASS	really CCounter::CCounter (slot 653 GetWorldFrame; label propagated)
+0069bf30	RELOCATION_MATCH	76v76	PASS	really the C2DVector instantiation (label says C3DVector)
+00c62150	MATCH	20v20	PASS	static __stdcall pointer chain
+00c9cb40	DIFFER	18v18	-	LTCG custom convention: grid passed in eax
+00c08750	RELOCATION_MATCH	39v39	PASS	really CVtable_012b1a54 3-arg ctor (label propagated)
+00c256f0	MATCH	52v52	PASS	really C3DVector::operator== __fastcall (label propagated)
+00c25730	MATCH	52v52	PASS	really C3DVector::operator!= __fastcall (label propagated)
+004d36fe	RELOCATION_MATCH	78v78	PASS	optimize(s): or [esi+3Ch],-1 CDefString inline ctor
+004d7fad	RELOCATION_MATCH	73v73	PASS	novtable def-dtor family, CDefPointeeBase store + tail jump
+0050b490	RELOCATION_MATCH	79v79	PASS	really CDrawMapInfo copy ctor (label propagated)
+00e83620	RELOCATION_MATCH	87v87	PASS	nested GSI call, tail jump to CleanupAfterFight
+00e83680	MATCH	59v59	PASS	script interface slots 338/452, thing slot 67
+00456d69	RELOCATION_MATCH	53v53	PASS	really COpinionDeedEffectsDef ctor: list allocator temp in push-ecx slot
+0047bf90	RELOCATION_MATCH	42v42	PASS	really CQuestDesc ctor (label propagated)
+004f9784	RELOCATION_MATCH	47v47	PASS	really pair<const long,record> copy ctor; optimize(s) + __forceinline record copy (4 grades)
+005fa530	RELOCATION_MATCH	43v43	PASS	float zeros as body assignments share the int zero register
+00612980	RELOCATION_MATCH	61v61	PASS	memberwise copy ctor

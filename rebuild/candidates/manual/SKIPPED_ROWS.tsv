@@ -11,6 +11,7 @@ address	row_len	batch	label	kind	status	pieces	note
 007460d0	48	2026-10-15_linux_hand98	CTCPerceiveThing::CTCPerceiveThing::vfunc_10	multi	done	007460d0:5,007460e0:3,007460f0:9	three functions in a 48-byte row (jmp [eax+24h] / mov al,1 / vtable getter)
 00750960	32	2026-10-15_linux_hand84	CTCChest::CTCChest::vfunc_10	multi	done	00750960:5,00750970:3	two functions: jmp [eax+24h], int3 padding, then mov al,1 ; ret (chunk 84, paused before staging)
 007fa26c	36	2026-10-15_linux_hand79	CTCActionUseBuyHouse::OnCreate	cold	open	007fa160:0	not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that function lands (parent 007fa160)
+00837040	32	2026-10-15_linux_hand113	CThingTrackNode::CThingTrackNode::vfunc_27	multi	open	00837040:12,00837050:12	two functions in the row (0x837040 tail-jump + 0x837050 getter)
 0088b7e0	48	2026-10-15_linux_hand74	CScriptThing::GetCurrentScriptPriority	multi	done	0088b7e0:17,0088b800:4	row spans two functions (0x88b7e0 + 0x88b800)
 008aae20	96	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	008aae20:22,008aae40:27,008aae60:4,008aae70:4	row spans four functions
 00991620	80	2026-10-15_linux_hand86	CTCDParticleEmitter::EditFrameUpdate	multi	done	00991620:24,00991640:36	EditFrameUpdate row holds two functions (chunk 86, paused before staging)
