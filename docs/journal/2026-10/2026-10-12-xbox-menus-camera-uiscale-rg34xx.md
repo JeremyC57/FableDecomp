@@ -559,3 +559,38 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   CText::CanScroll (0x54ECEB), CTable::Draw (0x5511A5/C3).
 - Clothing in the harness: Head, Hands, Torso, Legs, Feet: item -> Wear and the "No ..." item
   to remove it, the hero model changes each time, no crash.
+- **Right-stick hint over the description text (user report)**: the description pane's
+  UI_THUMB_STICK_UP_DOWN group (up/down arrows, the stick, its "R") sits at x 480..507 of the
+  640x480 design and the description text wraps at about 505, so it covered the ends of the
+  lines on any screen size. `host_update_position` moves the group 34 design units right
+  (times its render zoom); its children follow from its render position. CComponent::Name is
+  at +0x20 in the retail layout (PDB/Ego_r +0x24); +0x1C holds a float in some components and
+  a first diagnostic that read it as a pointer crashed. `FABLE_UI_POS=1` logs each named
+  component of the Xbox screens once (render position, zoom) and each text (name, value).
+  The parts do not follow the group's render position (moving only the group left the
+  arrows, stick and "R" in place), so every UI_THUMB_STICK* component moves.
+- **Green selection marker floating right of weapon / item / clothing rows (user report)**:
+  each row carries UI_SELECTION_ARROW_RIGHT at a fixed offset of the Xbox row template (29
+  design units right of the bar's right cap); those rows hold the PC button template
+  (PC_WEAPON_BUTTON_DYNAMIC_TEMPLATE, PC_TEXT_SLOT_L/M/R; the PC build has no Xbox one) whose
+  bar is shorter. `alignRowMarker` (from host_update_position, for a marker or a PC right cap)
+  finds the row through the tree (children at +0xB0/+0xB4; the parent taken from +0xC8/+0xD0
+  only when its children include the component: +0xD0 held a float and a first version that
+  trusted it crashed at 0x420000B0) and puts the marker 29 units past the PC cap. All reads in
+  that path are fault-safe.
+- **Description text running on under the footer**: CScrollingViewport's window (0x53F1C0),
+  scroll range (ScrollChildren 0x53EDA0), pointer hit test (0x53E9A0) and CText::CanScroll
+  multiplied by the unzoomed UI scale (window 1/1.6 of the pane); those 13 GetUIScale sites
+  are zoomed now with the others.
+- **Overlay FPS cap lowered the frame rate (user report)**: the cap in `Device::Present`
+  (gles) restarted its schedule at now + period whenever a frame ended past its deadline, so
+  every frame slower than the cap slept one more full period (41 ms Guild frames became 74 ms
+  at cap 30; one late frame in an 18 ms menu doubled at cap 60). The game has no limiter of
+  its own and alternates cheap and expensive frames (the world ticks at 15 Hz), so the
+  expensive ones were the ones penalised; the handheld turns cap 30 on by default. Now a late
+  frame never sleeps and keeps the schedule (the next frame can catch up), the schedule
+  restarts only a whole period behind, and the sleep is retried on EINTR. The 120-frame
+  `gles: frame` line adds the mean frame and `cap C slept S/frame, L late`. A change of the cap
+  alone no longer re-runs SetVideoOptions (the engine's device reset, a hitch per press).
+  With vsync on the cap and the refresh run on separate clocks: for a 30 lock use vsync
+  "half"; 25 and 40 pace evenly only with vsync off.

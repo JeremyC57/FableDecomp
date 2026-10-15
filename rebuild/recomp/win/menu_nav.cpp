@@ -35,6 +35,7 @@
 
 using namespace host;
 static bool safeRead(uint32_t addr, void* out, size_t n);  // below: a guest read that fails instead of faulting
+static uint32_t parentOf(uint32_t node);                     // below: the parent whose children hold node, or 0
 
 extern "C" void F_0055CB10_orig(Ctx* c);
 
@@ -607,6 +608,7 @@ extern "C" void host_find_child(Ctx* c) {
 // (UI_*) for 640x480. The last top-level name seen decides whether host_ui_scale applies the
 // Xbox 1.6: a PC_ name turns it off until a UI_ name turns it back on.
 bool g_pcScreen = false;  // declared near the top
+std::set<uint32_t> g_clothingLabels;  // the clothing screen's body-part labels (host_create_component)
 extern "C" void F_0041DB1D_orig(Ctx* c);
 extern "C" void host_create_component(Ctx* c) {
     // CCharString (PDB): one pointer to CCharStringData {CBasicString<char> {char* +0, length +4}, refs +0xD}
@@ -632,7 +634,13 @@ extern "C" void host_create_component(Ctx* c) {
         g_pcScreen = pc;
         HLOG(1, "ui: component %s created: the Xbox zoom is %s", name, pc ? "off (PC layout)" : "on");
     }
+    const uint32_t ret = rd32(c->esp);
     F_0041DB1D_orig(c);
+    // CTCInventoryClothing's Xbox screen (vfunc 77, 0x5B76D1) gives every body-part entry a
+    // label ("Head x 1", ...) on the description title line, a UI_TEXT_WEAPONS_NAME_TEMPLATE_NEW
+    // child of the entry created here; going into a category hides only that category's
+    // label (action 0x4B), so the others stayed drawn over the item screens ("HeadNo Hat").
+    if (ret == 0x5B83CF && c->eax) g_clothingLabels.insert(c->eax);
 }
 
 extern "C" void F_0041CF47_orig(Ctx* c);
@@ -652,7 +660,13 @@ extern "C" void host_ui_scale(Ctx* c) {
     // with only the rows zoomed the box was 1/1.6 of its height: rows entering a category
     // list were missing and rows scrolled above the box still drew over the screen title.
     static const uint32_t kSites[] = {0x52F88C, 0x52F8AB, 0x52F8CB, 0x52F8E4, 0x52EA8E, 0x52EAA9, 0x52EB4E, 0x52EB69, 0x52ECFE, 0x52ED19,
-                                      0x5377D7, 0x5377ED, 0x537872, 0x5378E6, 0x537AA7, 0x537ABF, 0x537D74, 0x537D92};
+                                      0x5377D7, 0x5377ED, 0x537872, 0x5378E6, 0x537AA7, 0x537ABF, 0x537D74, 0x537D92,
+                                      // CScrollingViewport (the description panes): its window (0x53F1C0),
+                                      // the scroll range (ScrollChildren 0x53EDA0), the pointer hit test
+                                      // (0x53E9A0), and CText::CanScroll: the window was 1/1.6 of the pane's
+                                      // zoomed size, so long descriptions ran on under the footer.
+                                      0x53F1E3, 0x53F213, 0x53F251, 0x53F280, 0x53EE1B, 0x53EE4B, 0x53EE89, 0x53EEB8,
+                                      0x53EABC, 0x53EAE5, 0x53EB1F, 0x53EB56, 0x54ECEB};
     static const int tier = [] { const char* e = std::getenv("FABLE_XBOX_ZOOM_SITES"); return e ? std::atoi(e) : 2; }();
     bool zoom = tier >= 3;  // diagnostic: 3 = every caller, -1 = none
     for (size_t i = 0; tier >= 0 && i < (tier >= 2 ? std::size(kSites) : tier == 1 ? 10u : 4u); ++i) zoom = zoom || ret == kSites[i];
@@ -682,6 +696,25 @@ namespace { uint32_t g_xboxInventory = 0; }  // the CTCInventory whose Xbox scre
 // The Xbox inventory screens are on screen: set when they open with the live GUI on (a user
 // open, not the one at load), cleared by xboxScreensTick once the live GUI is off.
 bool g_xboxScreensUp = false;
+// CComponent::Name: a CCharString -> CCharStringData {char*, length}; +0x20 in the retail
+// layout (the PDB's +0x24 is from Ego_r). Read without faulting (diagnostics).
+static std::string componentName(uint32_t self) {
+    uint32_t data = 0, str[2] = {};
+    if (!safeRead(self + 0x20, &data, 4) || data < 0x10000 || !safeRead(data, str, 8) || str[1] == 0 || str[1] > 80) return "";
+    char buf[81] = {};
+    if (!safeRead(str[0], buf, str[1])) return "";
+    std::string n(buf, str[1]);
+    for (char ch : n) if (ch < 0x20 || ch > 0x7E) return "";
+    return n;
+}
+// Whether a component's name starts with a prefix, without a string or a syscall:
+// UpdatePosition runs for every component every frame.
+static bool componentNameStarts(uint32_t self, const char* prefix) {
+    const uint32_t data = rd32(self + 0x20);
+    if (data < 0x10000 || data >= kGuestLimit) return false;
+    const uint32_t ptr = rd32(data), len = rd32(data + 4), n = static_cast<uint32_t>(std::strlen(prefix));
+    return len >= n && len < 0x100 && ptr >= 0x10000 && ptr < kGuestLimit && std::memcmp(gp<const char>(ptr), prefix, n) == 0;
+}
 extern "C" void host_open_inventory(Ctx* c) {
     const uint32_t inv = c->ecx, xbox = rd32(rd32(inv) + 0x78);
     HLOG(1, "menu: inventory 0x%08X opens %s", inv, xboxMenus() ? "the Xbox screens" : "the PC menu");
@@ -978,6 +1011,69 @@ extern "C" void host_text_draw(Ctx* c) {
             HLOG(1, "text: 0x%08X%s", self, f.c_str());
         }
     }
+    if (self && !g_clothingLabels.empty() && g_clothingLabels.count(self)) {
+        // Only the highlighted entry's label shows (its state, +0x14C, is 3) and only while
+        // its entry row is shown: in an item screen the category rows are hidden but the
+        // first entry's label kept state 3 ("Head" over every item name). A row or list above
+        // the label with render alpha 0 hides it. A CText keeps its engine primitive between
+        // draws, so the draw still runs (skipping it left the last text up), with the render
+        // colour's alpha (+0x94, byte 3) at 0.
+        const uint32_t state = rd32(self + 0x14C);
+        uint8_t upAlpha = 0xFF;
+        char chain[160] = {};
+        size_t used = 0;
+        for (uint32_t p = self, i = 0; i < 3 && (p = parentOf(p)); ++i) {
+            uint8_t a = 0xFF;
+            uint32_t st = 0;
+            if (safeRead(p + 0x97, &a, 1) && a < upAlpha) upAlpha = a;
+            safeRead(p + 0x14C, &st, 4);
+            if (used < sizeof chain) used += std::snprintf(chain + used, sizeof chain - used, " <- %.24s state %u alpha %u", componentName(p).c_str(), st, a);
+        }
+        static std::map<uint32_t, uint32_t> seen;  // label -> state and alpha last logged
+        const uint32_t sig = state << 8 | upAlpha;
+        auto it = seen.find(self);
+        if ((it == seen.end() || it->second != sig) && seen.size() < 64) {
+            seen[self] = sig;
+            HLOG(1, "ui: clothing label 0x%08X %s state %u colour 0x%08X%s", self, componentName(self).c_str(), state, rd32(self + 0x94), chain);
+        }
+        static const bool keep = std::getenv("FABLE_KEEP_CLOTHING_LABELS") != nullptr;
+        if ((state != 3 || upAlpha == 0) && !keep) {
+            const uint8_t a = rd8(self + 0x97);
+            wr8(self + 0x97, 0);
+            F_0054EF00_orig(c);
+            wr8(self + 0x97, a);
+            return;
+        }
+    }
+    static const bool logText = std::getenv("FABLE_UI_POS") != nullptr;  // diagnostic: the Xbox screens' texts, once per name and value
+    if (logText && self && g_xboxScreensUp) {
+        std::string name = componentName(self), value;
+        for (uint32_t off : {0x184u, 0x188u, 0x18Cu}) {  // CText::Value (CWideString), PDB +0x18C
+            uint32_t data = 0, str[2] = {};
+            if (!safeRead(self + off, &data, 4) || data < 0x10000 || !safeRead(data, str, 8) || str[1] == 0 || str[1] > 200) continue;
+            uint16_t wide[60] = {};
+            const uint32_t n = std::min<uint32_t>(str[1], 60);
+            if (!safeRead(str[0], wide, n * 2)) continue;
+            value.clear();
+            for (uint32_t i = 0; i < n; ++i) value += wide[i] >= 0x20 && wide[i] < 0x7F ? static_cast<char>(wide[i]) : '?';
+            value = "+" + std::to_string(off) + " '" + value + "'";
+            break;
+        }
+        if (value.empty() && name.find("SUB") != std::string::npos) {  // where the value is: the raw words
+            static std::set<std::string> dumped;
+            if (dumped.insert(name).second) {
+                std::string f;
+                uint32_t w[24] = {};
+                if (safeRead(self + 0x170, w, sizeof w))
+                    for (int i = 0; i < 24; ++i) { char b[24]; std::snprintf(b, sizeof b, " %X:%08X", 0x170 + i * 4, w[i]); f += b; }
+                HLOG(1, "ui: text words %s%s", name.c_str(), f.c_str());
+            }
+        }
+        static std::set<std::string> seen;
+        const std::string key = name + value;
+        if (seen.size() < 3000 && seen.insert(key).second)
+            HLOG(1, "ui: text %s %s at %.1f,%.1f colour 0x%08X", name.empty() ? "-" : name.c_str(), value.c_str(), rdf32(self + 0xF8), rdf32(self + 0xFC), rd32(self + 0x9C));
+    }
     if (!centre || !self || rd32(0x13B8790) != 0) { F_0054EF00_orig(c); return; }
     const float sy = rd8(0x13B8768) ? rdf32(0x13B8770) / 480.0f : 1.0f;
     const float dy = (29.0f * sy - 16.0f) * 0.5f - 10.0f;
@@ -998,26 +1094,83 @@ extern "C" void host_text_draw(Ctx* c) {
 // components must scale from the origin too, or the picture sits where the 640x480 layout
 // put it while its ring moved with the zoom (verified: aligned at 640x480 only).
 extern "C" void F_0052FFD0_orig(Ctx* c);
-// CComponent::Name (+0x24, PDB): a CCharString -> CCharStringData {char*, length}.
-static std::string componentName(uint32_t self, uint32_t off = 0x1C) {
-    const uint32_t data = rd32(self + off);
-    if (data < 0x10000 || data >= kGuestLimit) return "";
-    const uint32_t ptr = rd32(data), len = rd32(data + 4);
-    if (ptr < 0x10000 || ptr >= kGuestLimit || len == 0 || len > 80) return "";
-    std::string n(gp<const char>(ptr), len);
-    for (char ch : n) if (ch < 0x20 || ch > 0x7E) return "";
-    return n;
+// CComponent's tree in the retail layout: Children (a vector of 8-byte CCountedPointers) at
+// +0xB0/+0xB4; the parent pointer is taken from +0xC8 or +0xD0 only when that component's
+// children include this one. Every read is fault-safe (only markers and bar caps come here).
+static bool childrenOf(uint32_t node, uint32_t& b, uint32_t& e) {
+    uint32_t v[2];
+    if (node < 0x10000 || node >= kGuestLimit || !safeRead(node + 0xB0, v, 8)) return false;
+    b = v[0], e = v[1];
+    return b >= 0x10000 && e >= b && e - b <= 0x800 && e < kGuestLimit;
 }
+static uint32_t parentOf(uint32_t node) {
+    for (uint32_t off : {0xC8u, 0xD0u}) {
+        uint32_t p = 0, b, e;
+        if (!safeRead(node + off, &p, 4) || !childrenOf(p, b, e)) continue;
+        for (uint32_t q = b; q < e; q += 8) { uint32_t c = 0; if (safeRead(q, &c, 4) && c == node) return p; }
+    }
+    return 0;
+}
+static bool nameStartsSafe(uint32_t node, const char* prefix) {
+    uint32_t data = 0, str[2] = {};
+    const uint32_t n = static_cast<uint32_t>(std::strlen(prefix));
+    char buf[64];
+    if (n > sizeof buf || !safeRead(node + 0x20, &data, 4) || !safeRead(data, str, 8) || str[1] < n || str[1] > 0x100 || !safeRead(str[0], buf, n)) return false;
+    return std::memcmp(buf, prefix, n) == 0;
+}
+static uint32_t findDescendant(uint32_t node, const char* prefix, int depth) {
+    uint32_t b, e;
+    if (depth > 4 || !childrenOf(node, b, e)) return 0;
+    for (uint32_t q = b; q < e; q += 8) {
+        uint32_t child = 0;
+        if (!safeRead(q, &child, 4) || child < 0x10000 || child >= kGuestLimit) continue;
+        if (nameStartsSafe(child, prefix)) return child;
+        if (const uint32_t r = findDescendant(child, prefix, depth + 1)) return r;
+    }
+    return 0;
+}
+static void alignRowMarker(uint32_t self) {
+    // the row: the nearest ancestor holding a marker (the marker's own parent)
+    uint32_t row = self, marker = 0;
+    for (int i = 0; i < 4 && !marker; ++i) {
+        if (!(row = parentOf(row))) return;
+        marker = findDescendant(row, "UI_SELECTION_ARROW_RIGHT", 3);
+    }
+    const uint32_t cap = marker ? findDescendant(row, "PC_TEXT_SLOT_R", 3) : 0;  // the row's own bar: children and grandchildren only (a branch row also holds its sub-list)
+    if (!cap) return;  // an Xbox row: the marker is where the design put it
+    float cx = 0, zx = 0, ax = 0, anchor = 0;
+    if (!safeRead(cap + 0x54, &cx, 4) || !safeRead(marker + 0x7C, &zx, 4) || !safeRead(marker + 0x54, &ax, 4) || !safeRead(marker + 0xF8, &anchor, 4)) return;
+    const float x = cx + 29.0f * zx;
+    if (!(zx > 0.1f && zx < 10.0f) || std::fabs(x - ax) < 0.5f || std::fabs(x - ax) > 200.0f) return;
+    wrf32(marker + 0xF8, anchor + (x - ax));
+    wrf32(marker + 0x54, x);
+}
+
 extern "C" void host_update_position(Ctx* c) {
     const uint32_t self = c->ecx;
     F_0052FFD0_orig(c);
     static const bool on = [] { const char* e = std::getenv("FABLE_XBOX_ABSOLUTE_ZOOM"); return !e || std::atoi(e) != 0; }();
     if (!on || !self || !xboxMenus() || !rd32(0x13B8790)) return;
+    // The description pane's right-stick hint (UI_THUMB_STICK_UP_DOWN: the up/down arrows, the
+    // stick and its "R") sits at x 480..507 of the 640x480 design while the description text
+    // wraps at about 505, so it covered the ends of the lines. Every part moves right past the
+    // text (the parts do not follow the group's render position, so each moves).
+    if (componentNameStarts(self, "UI_THUMB_STICK")) {
+        const float dx = 34.0f * rdf32(self + 0x7C);  // design units x the render zoom
+        wrf32(self + 0x54, rdf32(self + 0x54) + dx);
+        wrf32(self + 0xF8, rdf32(self + 0xF8) + dx);
+    }
+    // The green selection marker (UI_SELECTION_ARROW_RIGHT, one per row, shown on the focused
+    // one) sits at a fixed offset in the Xbox row template, where the Xbox bar ends: 29 design
+    // units right of the bar's right cap. Weapon, item and clothing rows carry the PC button
+    // template (PC_WEAPON_BUTTON_DYNAMIC_TEMPLATE; the PC build has no Xbox one) whose bar is
+    // shorter, which left the marker floating right of the row. When the marker or a PC right
+    // cap (PC_TEXT_SLOT_R) is placed, the marker of that row takes the same offset from the
+    // cap. Components are only re-placed while they move, so either side may be the later one.
+    if (componentNameStarts(self, "UI_SELECTION_ARROW_RIGHT") || componentNameStarts(self, "PC_TEXT_SLOT_R")) alignRowMarker(self);
     static const bool logPos = std::getenv("FABLE_UI_POS") != nullptr;  // diagnostic: each named component once, with its place
     if (logPos && g_xboxScreensUp) {
-        std::string name = componentName(self, 0x1C);
-        if (name.empty()) name = componentName(self, 0x20);
-        if (name.empty()) name = componentName(self, 0x24);
+        const std::string name = componentName(self);
         const float rx = rdf32(self + 0x54), ry = rdf32(self + 0x58);
         char key[64];
         std::snprintf(key, sizeof key, "%08X/%d/%d", rd32(self), static_cast<int>(rx) / 8, static_cast<int>(ry) / 8);
@@ -1155,6 +1308,6 @@ void xboxScreensTick() {  // once per input update: the Xbox inventory screens e
     static int32_t lastCharge = -1;  // CInputProcessQuickAccessItems' charging slot (-2: the Guild Seal)
     const int32_t charge = static_cast<int32_t>(rd32(0x137EE78));
     if (charge != lastCharge) { lastCharge = charge; HLOG(1, "inventory: quick-access charge slot %d", charge); }
-    if (g_xboxScreensUp && !liveGui()) { g_xboxScreensUp = false; HLOG(1, "menu: Xbox inventory screens closed (live GUI off)"); }
+    if (g_xboxScreensUp && !liveGui()) { g_xboxScreensUp = false; g_clothingLabels.clear(); HLOG(1, "menu: Xbox inventory screens closed (live GUI off)"); }
 }
 }  // namespace host::menu
