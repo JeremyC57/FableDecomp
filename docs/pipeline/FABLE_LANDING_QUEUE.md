@@ -122,8 +122,9 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand77` | Hand chunk 77 (CSpellContainerList .. CSubtitleRenderer): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand81` | Hand chunk 81 (CTCAssassinRush .. CTCBoastingPodium): 36 of 40 byte-exact | 36 | 4 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand82` | Hand chunk 82 (CTCBoastingPosition .. CTCCameraPointScripted): 33 of 40 byte-exact | 33 | 7 | 0 | STAGED: land it |
 
-Totals: **686 matched rows staged for landing**, **66 parked rows** for the Fable retry pass.
+Totals: **719 matched rows staged for landing**, **73 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -261,5 +262,15 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 007e9410 CTCAvoidRegionExit::OnKill DIFFER(78v78): same body as 007e93c0 (slot 14, base call 0x006868F0); the same single load is out of place | tried: plain form, inline forwarders | next: lane gap: argument-build scheduling (as 007e93c0)
 - 007e9360 CTCAvoidRegionExit::vfunc_16 DIFFER(91v91): same removal under `if (flag)`, `__forceinline` helper; the key temporary already lands in the dead bool slot; only `mov edx,[esp+8]` is out of place | tried: plain helper (not inlined, 30 bytes), forceinline + forwarders, forceinline plain | next: lane gap: argument-build scheduling (as 007e93c0)
 - 0064639c CPlayerGuiThingList_0064639c::RemoveThing DIFFER(69v69): the key temporary's store `mov [ebp+8],eax` is scheduled before `lea esi,[ecx+3Ch] ; mov ecx,[esi]` instead of after | tried: `const CThing* const&` key (binds directly, no copy), a derived-to-base key conversion (temporary and erase-result slot now exact), an inline list Find wrapper (out of line), the same wrapper `__forceinline` | next: lane gap: store scheduling of a conversion temporary homed in a dead argument slot
+
+
+#### `2026-10-15_linux_hand82` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand82/differ/`)
+- 004fa9a0 CTCBulletTime::GetBulletTimeTicksFromAbilityLevel DIFFER(62v58): ebp frame with `mov [ebp-0Ch],0.5f ; mov [ebp-8],1.0f ; fld x ; fadd [ebp-0Ch] ; fistp dword [ebp-4] ; fild [ebp-4] ; fsub [ebp-8] ; fstp [ebp-10h] ; mov eax,x ; cmp eax,[ebp-10h] ; dec dword [ebp-4]` | tried: volatile locals + /QIfist + optimize("y",off) (74v58), plain C ceiling + /QIfist (62v58) | next: lane gap: inline __asm (asm_bake only)
+- 0079c5f0 CTCBulletTime::GetBulletTimeTicksFromAbilityLevel DIFFER(61v68): the same inline-asm ceiling inlined after `fild [ticksPerSecond] ; fmul [ecx+2Ch] ; fstp [ebp-10h]` | tried: plain C ceiling + /QIfist | next: lane gap: inline __asm
+- 0079c680 CTCBulletTime::GetBulletTimeRemainingPercentage DIFFER(80v77): the same inline-asm ceiling, then `fild [ebp-18h] ; fidiv [ebp-4]` | tried: plain C ceiling + /QIfist | next: lane gap: inline __asm
+- 0079c6d0 CTCBulletTime::GetBulletTimeElapsedTicks DIFFER(64v71): the same inline-asm ceiling, then `mov eax,[ebp-4] ; sub eax,[ecx+0Ch]` | tried: plain C ceiling + /QIfist | next: lane gap: inline __asm
+- 006c0120 CTCBuyableHouse::GetPrice DIFFER(57v57): ours `mov edi,[eax+28h] ; mov eax,[eax+2Ch] ; sub eax,edi`, retail `mov edx,[eax+2Ch] ; mov edi,[eax+28h] ; sub edx,edi` | tried: `GetValueOfTrophies() + def->Price[level]` (48v57), call result in a named local (60v57), `prices` first-pointer local + explicit `last - prices` (57v57), `prices` local + size() (61v57) | next: lane gap: register/load order of the size() difference (maybe a `const vector&` local plus the `prices` local)
+- 007e3040 CTCCameraCollision::vfunc_4 DIFFER(93v81): retail keeps the local def pointer's object in esi from GetSubDef's `this` through the release (`test esi,esi ; dec [esi+4]`) and stores the local's null after the argument pushes; the lane re-reads the frame slot after the call, stores the null first and expands the release (`mov esi,[eax+4] ; add eax,4 ; dec esi`) | tried: CDefPointer local (93v81; member-template specialisation declarations ICE the compiler first), explicit release on a raw copy (119v81), raw out-pointer local (89v81) | next: lane gap: CDefPointer local cached in esi across a call (GOTCHAS 24k)
+- 0075cd30 CTCCameraPointScripted::GetEndPos DIFFER(81v81): X sum `fld [esi+40h] ; fadd [eax]` stored after two pushes (retail) vs `fld [eax] ; fadd [esi+40h]` stored after three | tried: free `operator+(pos, EndPos)`, member `pos + EndPos` (X and store order right, Z/Y reversed), member `EndPos + pos` | next: lane gap: x87 operand order / store scheduling of the last component
 
 <!-- queue:end -->

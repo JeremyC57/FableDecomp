@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00781da0	RELOCATION_MATCH	70v70	PASS	ctor: CTCBase(owner), vtable, intelligent ptrs +0xc/+0x2e (packed), three bools in declaration order
+00781df0	RELOCATION_MATCH	80v80	PASS	dtor: kill live particle effect via 3x GetPItem, member ptr dtors, tail-jump ~CTCBase
+00787750	RELOCATION_MATCH	35v35	PASS	ctor: CTCBase(owner) then ParentThing->SetCutscenePauseBehaviour(2)
+00787780	MATCH	86v86	PASS	physics local in edi; Rhset = GetRHSet() (slot 72), Pos = physics->Position, ForceVisible = false
+007aeda0	RELOCATION_MATCH	56v56	PASS	EnablePhaseChanges || force -> phase + PhaseStartPos (+0x22, packed)
+007aede0	MATCH	33v33	PASS	no def or phase >= size() (unsigned) -> true
+007aee40	RELOCATION_MATCH	69v69	PASS	MaxHealth * (percent * 0.01f); parenthesised so the literal multiply stays first
+007aee90	RELOCATION_MATCH	47v47	PASS	threshold > Health with the thing in a local; two exits
+007aeec0	RELOCATION_MATCH	78v78	PASS	label CountEffects: counts living HelperCreatures (+0x30); element bound to a reference
+007aef10	RELOCATION_MATCH	78v78	PASS	counts living Effects (+0x3c); element bound to a reference
+004fa9a0	DIFFER	62v58	-	inline __asm ceiling (fistp dword on memory locals)
+0079c5f0	DIFFER	61v68	-	inline __asm ceiling inlined after fild ticks * m_fDuration
+0079c680	DIFFER	80v77	-	inline __asm ceiling + fild remaining / fidiv ticks
+0079c6d0	DIFFER	64v71	-	inline __asm ceiling - BulletTimeRemainingTicks
+0079ce80	RELOCATION_MATCH	91v91	PASS	GetInterface(16) out-param template + PlaySound(sound,0,flags,0,-1), else invalid handle
+0079de00	RELOCATION_MATCH	91v91	PASS	byte twin of 0079ce80; really CTCPhysicalShieldSpell (called from its CancelMove)
+006bf810	RELOCATION_MATCH	65v65	PASS	nested ifs; clamp as if (rents > 0) return rents (ternary is branch-free)
+006bf860	MATCH	37v37	PASS	DayNextRentIsDue = Dinkumware min(DayNextRentIsDue, ++day)
+006bf920	MATCH	51v51	PASS	Price[level+1] - Price[level] with level >= 0 and level+1 < size(), else -1
+006bf960	RELOCATION_MATCH	49v49	PASS	not owned and main sign post alive; Dead via inline bool IsDead()
+006c0120	DIFFER	57v57	-	size() load order/register (edx vs eax) differs; rest exact
+006c0270	RELOCATION_MATCH	73v73	PASS	Rent first in a local before the trophy call; PDef-> scoped AddRef/Release for MaxRentBags
+006c0f70	RELOCATION_MATCH	81v81	PASS	DressingSignPost = CIntelligentPointer<CThing>(CreateSignPost(g_name, false))
+00747450	RELOCATION_MATCH	40v40	PASS	label wrong: thing-list find wrapper; key via inline const& front end
+008ed010	RELOCATION_MATCH	33v33	PASS	label wrong: possession find wrapper; last in a local; ?: true : false
+00a77540	RELOCATION_MATCH	37v37	PASS	label wrong: position-list find wrapper; last in a local; full-register bool
+007e3040	DIFFER	93v81	-	lane gap: def-pointer local cached in esi across GetSubDef (24k), null store schedule
+0075d940	RELOCATION_MATCH	87v87	PASS	GetInterface(51) + owner pointer at +0x0d + building flag 0x40
+005ecfd0	MATCH	31v31	PASS	GetPointType<T> template, slot 28, type id 6
+00737160	MATCH	31v31	PASS	GetPointType<T> template, slot 3, type id 1 (mov al,al)
+00850780	MATCH	30v30	PASS	GetPointType<T> template, slot 28, type id 0
+00878a10	RELOCATION_MATCH	52v52	PASS	static __fastcall C3DVector: named local (X, Y, Z + 1.6f), memberwise copy
+0087b7e0	MATCH	31v31	PASS	GetPointType<T> template, slot 28, type id 1 (mov al,al)
+0087b9f0	MATCH	31v31	PASS	GetPointType<T> template, slot 28, type id 3
+00942230	RELOCATION_MATCH	47v47	PASS	label wrong: constructor of a thing bounding sphere (separate float members)
+0052e0a0	RELOCATION_MATCH	31v31	PASS	label wrong: SGI find front end (/Gr fastcall, tree iterator with ctor)
+00535320	RELOCATION_MATCH	31v31	PASS	label wrong: SGI find front end, second tree instance
+00567a40	RELOCATION_MATCH	39v39	PASS	label wrong: SGI find front end, list iterator with user copy ctor
+006e1b10	MATCH	33v33	PASS	label wrong: C3DVector getter of +0xd4 via the (x, y, z) value ctor
+0075cd30	DIFFER	81v81	-	X-sum operand order + store schedule (x87 scheduling)
