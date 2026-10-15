@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00812f70	RELOCATION_MATCH	72v72	PASS	
+004e5f18	RELOCATION_MATCH	35v35	PASS	pragma optimize("s")
+007714b0	DIFFER	95v87	-	parked 4 grades; real name CTCOpinionSource::PushNewSourceDef
+008137b0	RELOCATION_MATCH	45v45	PASS	
+00813860	RELOCATION_MATCH	55v55	PASS	label vfunc_29 -> RemoveMember
+008138a0	RELOCATION_MATCH	55v55	PASS	label vfunc_30 -> DeactivateMember
+008138e0	RELOCATION_MATCH	50v50	PASS	
+007f8390	RELOCATION_MATCH	89v89	PASS	
+007f8490	RELOCATION_MATCH	48v48	PASS	
+007f8540	RELOCATION_MATCH	79v79	PASS	
+0073ae10	DIFFER	99v92	-	parked 3 grades
+0073af60	DIFFER	104v95	-	parked 1 grade (lane gap, same frame-slot reload as AddMode)
+006cb6c0	MATCH	21v21	PASS	
+006cba50	DIFFER	38v38	-	parked scheduling-only
+006cba80	MATCH	63v63	PASS	
+00861e00	RELOCATION_MATCH	91v91	PASS	label wrong: CModeStandBase::CModeStandBase
+00c1d850	RELOCATION_MATCH	33v33	PASS	label wrong: CVtable_012b32a0::GetTotalTimeSeconds
+00681790	DIFFER	40v43	-	parked 4 grades; byte-identical twin of 006817c0
+006817c0	DIFFER	40v43	-	parked; twin of 00681790 (same source)
+006817f0	DIFFER	84v84	-	parked 4+ grades; sub vs add switch normalisation (lane gap)
+006818f0	RELOCATION_MATCH	73v73	PASS	jump table
+00681940	RELOCATION_MATCH	59v59	PASS	
+00681ae0	MATCH	73v73	PASS	
+00681b30	RELOCATION_MATCH	52v52	PASS	label vfunc_14 -> OnKill
+00681e30	RELOCATION_MATCH	39v39	PASS	label wrong: SetOpinionReactionMask
+006820e0	DIFFER	93v96	-	parked 4 grades; inline CCharString==""
+006822e0	RELOCATION_MATCH	39v39	PASS	
+007cede0	RELOCATION_MATCH	95v95	PASS	
+007e4a50	RELOCATION_MATCH	59v59	PASS	
+0077a130	DIFFER	74v72	-	parked 4 grades; register choice ebx vs esi reuse
+0077ace0	RELOCATION_MATCH	93v93	PASS	scalar deleting dtor (Leaf ??_G)
+004dcd2b	RELOCATION_MATCH	64v64	PASS	label wrong: ~CTCKrakenTentacle; pragma s
+004e1437	RELOCATION_MATCH	88v88	PASS	label wrong: ~CTCKraken; pragma s
+004e3ee1	RELOCATION_MATCH	64v64	PASS	pragma s
+006c1be0	RELOCATION_MATCH	59v59	PASS	label wrong: ~CTCBuyableHouse
+0080c210	RELOCATION_MATCH	31v31	PASS	
+0080c3c0	RELOCATION_MATCH	79v79	PASS	
+0080c410	RELOCATION_MATCH	72v72	PASS	
+008100a0	RELOCATION_MATCH	44v44	PASS	label vfunc_6 -> OnInitialActivate
+004de7fd	RELOCATION_MATCH	38v38	PASS	label wrong: CTCParticleAttacher ctor; pragma s
