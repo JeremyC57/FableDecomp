@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ac6dc0	MATCH	117v117	PASS	3x3 double matrix narrowed into a by-value CMatrix3x4 (owner is not the PDB 2DStaticMesh: label propagated)
+00b9e4e0	DIFFER	130v130	-	parked: radius multiply loads the scale first (fld [ecx+58h]) where retail loads the mesh radius first
+00af70d0	RELOCATION_MATCH	147v147	PASS	handle Clear + STLport POD vector clear (owner at +0x84/+0x90; viewport label propagated, no xrefs)
+00af7170	RELOCATION_MATCH	138v138	PASS	same body as 0x00AF70D0 at +0x5C/+0x68
+00be2120	DIFFER	107v106	-	parked: lane folds the first Data load into [edx+eax*8+4] where retail forms the slot address first (lane gap 24l)
+00be21f0	RELOCATION_MATCH	105v105	PASS	2D viewport ctor; dead C4DVector temporary from body assignment in C2DAlphaMaskInfo ctor
+00b83750	DIFFER	167v155	-	parked: second map::find result built in a temp + copied (retail reuses one frame word); this/mesh register swap
+00bceb40	RELOCATION_MATCH	146v146	PASS	interpolated position (end-start)*t+start, t from the global CEngineInterpolationInfo set list
+00b8fdf0	MATCH	106v106	PASS	AddToList: mask local first, walker in the for, head re-read as *list
+00b8fe60	MATCH	116v116	PASS	RemoveFromList (grid cell count + render list unlink)
+00b8ff00	DIFFER	102v102	-	parked: CEngineInternalPrimitiveBase ctor, store scheduling around the vtable store and the bitfield
+00bc58e0	RELOCATION_MATCH	142v142	PASS	Changer ClearChildPrimitive: handle Clear + inline render-mask refresh
+00bc5ae0	RELOCATION_MATCH	137v137	PASS	Changer Update from the PDB CEnginePrimitiveChanger descriptor
+00bba290	MATCH	157v157	PASS	Decal Update; Lit = bit 7 of an unsigned short bitfield
+00bcdfb0	RELOCATION_MATCH	123v123	PASS	FlareSprite Update via a CEnginePrimitiveSprite frame local + qualified sprite Update
+00bc62d0	DIFFER	98v97	-	parked: same lane gap as 0x00BE2120 (group at +0x50)
+00b453d0	RELOCATION_MATCH	142v142	PASS	Light Update; colour through an inline 4-argument setter (right-to-left args)
+00bc7d40	RELOCATION_MATCH	110v110	PASS	Line midpoint (end-start)*0.5+start
+00bc7db0	DIFFER	141v154	-	parked: X add order of the centre and the radius centre-copy/dX spill
+0077ee70	RELOCATION_MATCH	97v97	PASS	really CTCHeroCentre::~CTCHeroCentre (vtable 0x0126AF94 slot 0 -> 0x0077EE50 -> here)
+00beb5c0	RELOCATION_MATCH	159v159	PASS	MeshBase GetFadeDistance (one result local written field by field)
+0043f9b0	MATCH	109v109	PASS	really CEnginePrimitiveHandle::operator= (out-of-line copy of the inlined handle assignment)
+00bbc310	MATCH	139v139	PASS	ParticleGroup SetChildPrimitive (slot 7)
+00bbc3a0	MATCH	141v141	PASS	ParticleGroup GetChildPrimitiveHandle (slot 9)
+00bbce10	DIFFER	175v154	-	parked: id*8 CSE'd into ebx + register allocation (retail re-forms [eax+edi*8])
+00a11ba0	RELOCATION_MATCH	113v113	PASS	really CPhysicsMeshObject::GetBoundingBoxZEdge
+00a11c20	DIFFER	108v103	-	parked: really CPhysicsMeshObject::GetBoundingBoxXEdge; frame trim of the temp vector (Y/Z twins match)
+00a11c90	RELOCATION_MATCH	113v113	PASS	really CPhysicsMeshObject::GetBoundingBoxYEdge
+00bacf00	MATCH	103v103	PASS	Sprite bounding sphere; C3DVector memberwise copy ctor keeps the frame temporary
+00b9d8e0	RELOCATION_MATCH	160v160	PASS	StaticMesh Update; engine record via inline accessor, ShadowMeshInfo = MeshInfo = ...
+00b9dbd0	DIFFER	130v130	-	parked: twin of 0x00B9E4E0 (radius operand order)
+0042fa30	MATCH	158v158	PASS	CEngineInterpolationInfo default ctor
+0069ed40	MATCH	121v121	PASS	CEngineInterpolationInfo::operator=(const CInterpolationInfo&)
+0069ede0	RELOCATION_MATCH	110v110	PASS	CEngineInterpolationInfo(const CInterpolationInfo&) -> out-of-line operator=
+006a2370	DIFFER	97v97	-	parked: really CTCCarrying::OnSetInLimbo; retail caches the vector start in esi across for_each (lane gap 24k)
+00bdc3c0	RELOCATION_MATCH	133v133	PASS	LandscapeMap OnMapVisibilityChanged
+00bdc450	RELOCATION_MATCH	149v149	PASS	LandscapeMap Clear; counted pointer reset through an inline member
+00bd9b90	RELOCATION_MATCH	97v97	PASS	FreeVirtual; delete through a class __fastcall operator delete
+00bda360	RELOCATION_MATCH	107v107	PASS	AllocateIndexBuffer; class operator new = landed AllocVirtual body
+00bda3d0	RELOCATION_MATCH	148v148	PASS	AllocateVertexBuffer; inline vertex buffer ctor with PVertexBuffer/Stride in the derived body

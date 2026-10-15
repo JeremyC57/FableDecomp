@@ -158,6 +158,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand131` | Hand chunk 131 (CCreatureAction_UndeadReturnToEarth .. CDeviceIndependent): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand132` | Hand chunk 132 (CDiskFileWin32 .. CDrawRenown): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand133` | Hand chunk 133 (CDrawTargetInfo .. CEngineInternalPrimitive2DStaticMesh): 33 of 40 byte-exact | - | 6 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand134` | Hand chunk 134 (CEngineInternalPrimitive2DStaticMesh .. CEngineLandscapeMemoryManager): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -209,7 +210,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **312 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **322 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -507,6 +508,19 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00af12a0 CEmitterData::BuildEmitterTemplate DIFFER(144v144): `mov ecx,[edi] ; lea eax,[esp+8] ; push eax` (lane: `lea ecx` + push first) and the count block reloaded into ecx (lane edx) | tried: `EmitterTemplate->ReadBinary(stream)`, object read into a local first | next: lane gap: register allocation
 - 00b1aeb0 NParticleEngine::CPSCLight::~CPSCLight DIFFER(119v121): `mov ecx,[edi+5Ch] ; test ecx,ecx` hoisted above `lea esi,[edi+58h] ; mov [esi],vtable` (retail: after the store, through eax, then `mov ecx,eax`) | tried: plain member, volatile member + locals, __forceinline + volatile, __forceinline + volatile re-read helper | next: lane gap: store-then-load order (the 24k "volatile does not pin it" gap)
 - 008859f0 CEnvironmentSpellEffectInterface::GetRenderFrameInterpolatedScreenFilterParameters DIFFER(112v119): middle copy read through the returned eax with `add eax,10h` for Tint and the named local placed below the temporary (retail: fixed frame offsets, temporary at the frame bottom) | tried: copy-init, POD assignment, user copy ctor + out-param, user operator= + implicit copy | next: operator= copying Tint as four floats, or a named temporary `CScreenFilterParams interpolated = ...; params = interpolated;`
+
+
+#### `2026-10-15_linux_hand134` (10 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand134/differ/`)
+- 00b9e4e0 CEngineInternalPrimitive2DStaticMesh::GetBoundingSphereWorldSpace DIFFER(130v130): `fld [ecx+58h] ; fmul [edx+34h]` vs retail `fld [edx+34h] ; fmul [ecx+58h]` (radius * scale tail only) | tried: r*s, s*r, float local `*=`, float-returning inline helper, `*r = R; *r *= s` (radius first but an extra fst) | next: lander pragma sweep; else lane gap: x87 operand order
+- 00b9dbd0 CEngineInternalPrimitiveStaticMesh::GetBoundingSphereWorldSpace DIFFER(130v130): same radius tail as 00b9e4e0 (byte-identical twin) | tried: as 00b9e4e0 | next: as 00b9e4e0
+- 00be2120 CEngineInternalPrimitive2DViewport::ClearChildPrimitive DIFFER(107v106): `mov ecx,[edx+eax*8+4] ; test ; push esi ; lea esi,[edx+eax*8] ; mov eax,ecx` vs retail `push esi ; lea esi,[edx+eax*8] ; mov eax,[esi+4] ; test eax,eax` | tried: reference, pointer, iterator-object and plain-pointer element access, bool ClearIfSet helper | next: lane gap: vector slot address materialisation (GOTCHAS 24l)
+- 00bc62d0 CEngineInternalPrimitiveGroup::ClearChildPrimitive DIFFER(98v97): same as 00be2120 (vector at +0x50) | tried: reference, iterator local, ClearIfSet | next: lane gap: vector slot address materialisation
+- 00b8ff00 CEngineInternalPrimitiveBase::CEngineInternalPrimitiveBase DIFFER(102v102): retail stores +0x1C/+4 before the vtable and +0x0C/+0x10/+0x20/GridPos after it, bitfield read-modify before Alpha; ours schedules them across | tried: all initialisers, all body assignments, OcclusionLayerBitMask initialiser + body | next: try GridPos/FadeDistance as member objects with ctors and the zero members in an embedded struct (24i rule)
+- 00bbce10 CEngineInternalPrimitiveParticleGroup::ClearChildPrimitive DIFFER(175v154): `lea ebx,[ebp*8]` (id*8 CSE, id in ebp) vs retail id in edi with `[ecx+edi*8]` re-formed and this in ebx | tried: plain, inline helper (not inlined), __forceinline ReleaseID (fixes the arg-slot store), iterator-object operator[] | next: lane gap: scaled-index CSE / register allocation
+- 00bc7db0 CEngineInternalPrimitiveLine::GetBoundingSphereWorldSpace DIFFER(141v154): sum X `fld [ecx+54h]` vs retail `fld [ecx+48h]`; retail copies the centre's Z through edx into a frame word and spills dX to [esp] before the length | tried: member operators + Length, `(end+start)` + named centre copy, by-value operator- operand, named offset local | next: a by-value C3DVector taken from `sphere.Center` after its stores (re-read from the argument)
+- 00a11c20 CPhysicsMeshObject::GetBoundingBoxXEdge DIFFER(108v103): `sub esp,0Ch ; fstp [esp] ; ... ; fld [esp]` vs retail `push ecx ; fst [esp] ; fxch` | tried: temporary vector, by-value Rotate, named half-width float, no user copy ctor | next: lane gap: frame trimming of a partly-constant temporary (the Y/Z twins match)
+- 00b83750 CEngineInternalPrimitiveAnimatedMesh::GetBoneScalings DIFFER(167v155): second `find` into a temp + `mov eax,[eax] ; mov [esp+0Ch],eax` (8-byte frame, ebx = this) vs retail one frame word reused and edi = this, ebx = mesh pushed late | tried: key local + reassigned iterator, two scoped lookups, user iterator copy/assignment, long key converted at the call | next: lane gap: call-result temporary coalescing
+- 006a2370 CTCCarrying::OnSetInLimbo DIFFER(97v97): vector start re-read from the frame for `first` and for the destructor vs retail `mov esi,[esp+0Ch]` once (push esi frame) | tried: direct begin()/end(), begin() local, for_each defined above under auto_inline(off) | next: lane gap: local cached in esi across a call (GOTCHAS 24k)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
