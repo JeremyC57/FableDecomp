@@ -57,9 +57,6 @@ CTCInventory source carries a local descriptive model that says so.
 
 ## Parked for Fable 5.1 (5)
 - 0057de14 CTCHeroStats::ApplyPenaltyForDeath DIFFER(67v67): second def-object load `mov ecx,[eax+0DCh] ; mov eax,[ecx+58h]` where retail keeps eax (`mov eax,[eax+0DCh] ; mov eax,[eax+58h]`) | tried: inline `-abs(...)` args, `-abs` local, `abs` local, raw-value local | next: lane gap: register allocation (scheduling-only)
-- 00581cfd CTCInventory::GetContextSensitiveItemGraphicIndex DIFFER(43v45): ours `lea eax,[eax+ecx*4] ; cmp [eax],0 ; mov edx,[eax]`, retail `shl ecx,2 ; cmp [ecx+eax],0 ; mov edx,[ecx+eax]` | tried: POD by-value return, explicit result pointer, pack(1)/pack(2), non-POD CEngineGraphic (fixed the hidden-ecx call and the ebp-0Eh slot) | next: an element accessor that scales the index by itself (Dinkumware `*(begin() + n)` through an iterator class, or byte-offset arithmetic)
-- 00581fa4 CTCInventory::GetQuickAccessItemGraphicIndex DIFFER(43v45): same `lea` vs `shl ecx,2 ; [ecx+eax]` addressing as 00581cfd | tried: POD return, explicit result pointer, pack(2), non-POD without "s" | next: same as 00581cfd (one fix lands both)
-- 00581d8e CTCInventory::IsContextSensitiveOpinionExpressionAvailable DIFFER(75v77): ours `mov ecx,[eax+edi*4] ; test ecx,ecx`, retail `cmp dword ptr [eax+edi*4],0 ; jle ; mov ecx,[eax+edi*4]` | tried: `&&`, nested if + signed index, no "s", volatile compare (gives the memory compare + reload but folds the address with `lea`, 78v77) | next: the same index-scaling accessor as 00581cfd combined with the volatile-free form
 - 00584b42 CTCInventory::ClosePCInventoryMenu DIFFER(70v68): ours `mov eax,[eax+4] ; mov edx,[eax] ; mov ecx,eax ; call [edx+7Ch]`, retail `mov ecx,[eax+4] ; mov eax,[ecx] ; call [eax+7Ch]` | tried: T** out, T*& out, split HasInterface/FindInterface helpers, no "s" | next: lane gap: register choice at a virtual call (sibling rows 00584af6/00584fe3 with the same template match)
 
 ## Skipped
@@ -74,7 +71,6 @@ CTCInventory source carries a local descriptive model that says so.
 - 00c74450 / 00c74480 "CTCHeroStats::~CTCHeroStats" -> destructor / scalar deleting destructor of no-RTTI base 0x012BF050.
 - 005bdb4d "CTCInGameMenu::SetPDef" -> NInventory::CTCInventoryBase::SetPDef.
 - 008574d0 "CTCInGameMenu::SetPDef" -> CCombatActionBase::SetCombatAnimation.
-- 00581fa4 "GetContextSensitiveItemGraphicIndex" -> CTCInventory::GetQuickAccessItemGraphicIndex (reads QuickAccessItems +0x148).
 - vfunc names: 00581c78 slot 5 = InitialActivate, 00583a6d slot 12 = Copy, 005819aa slot 36 = OnItemHighlighted,
   00581a3b / 00581a54 slots 40/41 = ProcessInventoryInputLeft / Right, 00581ab3 slot 59 = ProcessButtonBReleased.
 - Callees: 0x00454886 "CActiveFile::operator=" = std::vector<long>::operator=; 0x00562E70 "~CParticleEffect" = the PC

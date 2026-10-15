@@ -1,7 +1,8 @@
-// Grade: DIFFER(43v45) -- addressing only: ours folds the element address once (`lea eax,[eax+ecx*4] ; cmp [eax],0 ; mov edx,[eax]`), retail scales the index alone (`shl ecx,2 ; cmp [ecx+eax],0 ; mov edx,[ecx+eax]`)
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // CTCInventory::GetContextSensitiveItemGraphicIndex(long index) -- graphic bank index of the context-sensitive item in the given slot, 0 for an empty slot
+// Retry (Fable landing session): matched once the vector subscript is the STLport form `*(begin() + n)` -- retail scales the index
+// on its own (`shl ecx,2 ; [ecx+eax]`) / re-reads the element for the call; a bare `first[n]` folds the address into one `lea`.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00581cfd, length 45 bytes; size-optimised TU with a frame pointer
 // (`optimize("y",off)` + `("s",on)`, `leave`).
 // Callees: GetEngineGraphic(long) 0x005D96A0 (__fastcall by-value CEngineGraphic: result slot in ecx, item type in edx;
@@ -33,7 +34,8 @@ struct CLongVector {
     long* last;                                      // +0x04
     long* end_of_storage;                            // +0x08
     unsigned long size() const { return (unsigned long)(last - first); }
-    long& operator[](unsigned long n) { return first[n]; }
+    long* begin() const { return first; }
+    long& operator[](unsigned long n) { return *(begin() + n); }
 };
 
 struct CTCInventory {

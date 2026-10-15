@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0071a8a0	RELOCATION_MATCH	78v78	PASS	STLport list loop, end() re-read
+00744500	RELOCATION_MATCH	57v57	PASS	really SetExtendedSightRadius (+0x44)
+00744540	RELOCATION_MATCH	59v59	PASS	SetSightRadius; clamp via fcom/fst
+007447e0	DIFFER	77v77	-	epilogue pop/fstp interleave
+007448b0	RELOCATION_MATCH	51v51	PASS	really IsPlayerIgnoreFOVLineOfSight (+0x2f)
+007448f0	RELOCATION_MATCH	81v81	PASS	really GetSightRadius (scales +0x40)
+00744950	RELOCATION_MATCH	81v81	PASS	GetExtendedSightRadius (scales +0x44)
+007460d0	SKIP	-	-	three functions in a 48-byte row (jmp [eax+24h] / mov al,1 / vtable getter)
+0055d490	RELOCATION_MATCH	45v45	PASS	CTCPhotojournalCapture: FrameCounter > 18 -> hide the player GUI
+0055d4d0	RELOCATION_MATCH	73v73	PASS	frame counter + screenshot count-down
+0072ac40	DIFFER	75v75	-	register colouring: thing in eax / component in ecx
+0079e520	RELOCATION_MATCH	81v81	PASS	owner as first local; LoopingSound[SpellLevel-1]
+004cb6e0	DIFFER	51v51	-	fadd operand order (x87 load of the offset vs the position)
+006af700	MATCH	54v54	PASS	two whole-vector copies from one reference
+006af790	RELOCATION_MATCH	59v59	PASS	static GetFrame through GetWorld(); bit copy through one flag reference
+006afcb0	DIFFER	53v53	-	fadd operand order (twin of 004cb6e0)
+006aff00	RELOCATION_MATCH	63v63	PASS	args pushed before the world-map virtual (object expression last)
+006b0150	RELOCATION_MATCH	18v18	PASS	vfunc_45 = ClearGraphicPersistenceFlags
+006b0190	MATCH	49v49	PASS	!info && (info || !(flags & 8)) via inline
+006b01d0	RELOCATION_MATCH	54v54	PASS	virtual SetPosition then OldPosition = pos
+006b0210	RELOCATION_MATCH	49v49	PASS	inline C3DVector += ; or byte [3Ch],1
+006b1450	RELOCATION_MATCH	60v60	PASS	vfunc_71 = GetRHSet: C3DVector user copy ctor -> first float via x87
+006b14b0	RELOCATION_MATCH	28v28	PASS	vfunc_39 = HasPositiveMass (long result)
+007266c0	RELOCATION_MATCH	58v58	PASS	CTCPhysicsNavigator ctor (catalog said CTCPhysicsBase)
+00880800	RELOCATION_MATCH	52v52	PASS	other->slot 93 then HasSphereSphereCollidedAt
+00724f50	RELOCATION_MATCH	46v46	PASS	ctor: body assignments (bits then floats)
+00724f80	DIFFER	53v53	-	lane hoists mov cl,[esi+3Ch] above the zero stores
+00724fc0	DIFFER	48v48	-	lane hoists the flag-byte RMW above the ImpulseVelocity zero stores
+00725000	MATCH	57v57	PASS	vfunc_34 = SetForcedMoveToPos
+00725250	MATCH	51v51	PASS	vfunc_81 = AddImpulseVelocity
+007254b0	RELOCATION_MATCH	78v78	PASS	__forceinline erase + early-out trivial copy (cmp eax,eax)
+00725e60	MATCH	25v25	PASS	vfunc_79 = GetRenderZOffset(t) lerp
+00c462e0	DIFFER	40v51	-	retail spills the first lerp to an 8-byte frame
+007232e0	RELOCATION_MATCH	62v62	PASS	bool:1 = mass > 0 (branchy insert)
+00723320	MATCH	41v41	PASS	SetPosition then OldPosition = Position
+00723360	RELOCATION_MATCH	68v68	PASS	Position += Velocity, gravity, SetPosition
+007233b0	RELOCATION_MATCH	71v71	PASS	virtual returns long narrowed to the u16 parameter
+00723400	RELOCATION_MATCH	29v29	PASS	ctor: bit cleared before the vtable
+00726700	RELOCATION_MATCH	79v79	PASS	vfunc_31 = CTCPhysicsNavigator::ResetPosition
+00726780	MATCH	51v51	PASS	vfunc_81 = CTCPhysicsNavigator::AddImpulse

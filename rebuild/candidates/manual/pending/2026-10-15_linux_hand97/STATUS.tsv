@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a3c330	RELOCATION_MATCH	29v29	PASS	really C3DAnimationBlendState::ClearCombinationBlends (label propagated)
+0072e560	RELOCATION_MATCH	33v33	PASS	type-5 message forward
+004d49dd	RELOCATION_MATCH	32v32	PASS	size-opt ctor; static default-amount getter
+00788d68	RELOCATION_MATCH	32v32	PASS	really pair<CIntelligentPointer<const CThing>,long> converting ctor (label propagated)
+007cbf20	MATCH	38v38	PASS	per-level def tables
+007cc410	RELOCATION_MATCH	86v86	PASS	out-param GetInterface, uninitialised absent path
+007cc490	RELOCATION_MATCH	51v51	PASS	timer update + tail jump
+007cc7d0	RELOCATION_MATCH	92v92	PASS	STLport _Vector_base/alloc_proxy model for AmmoEffects
+00749810	DIFFER	74v79	-	split byte RMW for the def bit-fields (lane: and byte ptr [m])
+00749860	RELOCATION_MATCH	29v29	PASS	life timer update
+0080f130	RELOCATION_MATCH	93v93	PASS	step (max-min)*0.001f must be a named float local
+0080f210	RELOCATION_MATCH	39v39	PASS	global read into a named local before the call
+0080fd30	RELOCATION_MATCH	85v85	PASS	out-param GetInterface in the flag test
+00765d50	MATCH	47v47	PASS	index loop, size re-read
+00766480	RELOCATION_MATCH	81v81	PASS	zero-initialised result local, if/else-if chain
+007681d0	RELOCATION_MATCH	61v61	PASS	CDefPointer operator=(0) release through a local copy
+004df365	RELOCATION_MATCH	79v79	PASS	size-opt; interface zero words are a vector member object
+00cb1e50	RELOCATION_MATCH	91v91	PASS	really DirectShow CMediaType::Set (label propagated)
+007bba50	RELOCATION_MATCH	25v25	PASS	long result float compare
+007bba70	RELOCATION_MATCH	70v70	PASS	function-local static from the fps global
+00c384e0	MATCH	42v42	PASS	long equality negated into bool (class unknown, label propagated)
+0075c180	RELOCATION_MATCH	91v91	PASS	really CTCCameraPointDefinitionBase ctor; FOV is a body assignment
+00771290	RELOCATION_MATCH	38v38	PASS	static GetWorldFrame, unsigned compare
+00771360	RELOCATION_MATCH	91v91	PASS	all stores after the vtable (vector first)
+00771620	RELOCATION_MATCH	54v54	PASS	DefinitionManager in a named local
+008640c0	RELOCATION_MATCH	34v34	PASS	long result a && b
+008640f0	RELOCATION_MATCH	34v34	PASS	twin on +0x1a: PeekWitnessWillOverrideFactionEnemy
+00baa250	RELOCATION_MATCH	82v82	PASS	really CEngineInternalPrimitiveMorphInfo ctor; STLport vectors + rb-tree header
+007b7de0	RELOCATION_MATCH	19v19	PASS	inlined vector clear
+004d7e46	RELOCATION_MATCH	54v54	PASS	size-opt ctor, pack(1) POwner at +0xd
+007e1ac0	RELOCATION_MATCH	57v57	PASS	really CTCInfoDisplay ctor (label propagated)
+007e8370	RELOCATION_MATCH	56v56	PASS	IS_THING_ALIVE + UID copy
+007e8420	RELOCATION_MATCH	27v27	PASS	single GetPItem alive test
+007e8440	RELOCATION_MATCH	27v27	PASS	twin of 007e8420
+007e8820	RELOCATION_MATCH	46v46	PASS	base InitialActivate + UID lookup
+006a06e0	RELOCATION_MATCH	80v80	PASS	C3DVector memberwise user copy ctor
+004a93c0	RELOCATION_MATCH	34v34	PASS	really CBasicString<char>::operator== (label propagated)
+007f8b60	RELOCATION_MATCH	67v67	PASS	empty functor for_each homed in dead msg slot
+00c2a5c0	RELOCATION_MATCH	58v58	PASS	explicit dtor + operator delete twice (class unknown)
+0071a850	DIFFER	78v78	-	esi/edi register swap only

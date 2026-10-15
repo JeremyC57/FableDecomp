@@ -1,0 +1,4 @@
+address	module	name	length
+00581cfd	CTCInventory	GetContextSensitiveItemGraphicIndex	45
+00581fa4	CTCInventory	GetContextSensitiveItemGraphicIndex	45
+00581d8e	CTCInventory	IsContextSensitiveOpinionExpressionAvailable	77

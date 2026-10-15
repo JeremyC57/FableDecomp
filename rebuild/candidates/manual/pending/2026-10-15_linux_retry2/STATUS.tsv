@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00581cfd	MATCH	45	PASS	GetContextSensitiveItemGraphicIndex
+00581fa4	MATCH	45	PASS	GetQuickAccessItemGraphicIndex
+00581d8e	MATCH	77	PASS	IsContextSensitiveOpinionExpressionAvailable

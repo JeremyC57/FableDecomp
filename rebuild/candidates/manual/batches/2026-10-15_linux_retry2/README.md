@@ -1,0 +1,2 @@
+# Retry batch 2 (Fable landing session): chunk 91 element-access rows
+The three CTCInventory rows parked on element addressing (00581cfd, 00581fa4, 00581d8e) match once the vector subscript is written the STLport way, `*(begin() + n)`: retail scales the index separately (`shl ecx,2 ; cmp [ecx+eax],0`) and re-reads the element for the __fastcall argument, where a bare `first[n]` folds the address into one `lea` and CSEs the load.

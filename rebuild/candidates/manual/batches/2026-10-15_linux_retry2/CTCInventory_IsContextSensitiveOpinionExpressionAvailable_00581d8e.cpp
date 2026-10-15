@@ -1,6 +1,7 @@
-// Grade: DIFFER(75v77) -- load CSE only: ours loads the element once (`mov ecx,[eax+edi*4] ; test ecx,ecx`), retail compares in memory and reloads for the call (`cmp [eax+edi*4],0 ; jle ; mov ecx,[eax+edi*4]`) ; a volatile compare reproduces the in-memory cmp + reload but folds the address (`lea eax,[eax+edi*4] ; cmp [eax],0`), 78v77
 #pragma optimize("s", on)
 // CTCInventory::IsContextSensitiveOpinionExpressionAvailable() -- true when any context-sensitive slot holds an item of the opinion-expression type (6)
+// Retry (Fable landing session): matched once the vector subscript is the STLport form `*(begin() + n)` -- retail scales the index
+// on its own (`shl ecx,2 ; [ecx+eax]`) / re-reads the element for the call; a bare `first[n]` folds the address into one `lea`.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00581D8E, length 77 bytes; size-optimised TU ("s").
 // Callees: GetContextSensitiveType(long) 0x005D9B90 (__fastcall, item type in ecx; returns EContextSensitiveType).
 // Ego_r PDB: ?IsContextSensitiveOpinionExpressionAvailable@CTCInventory@@QAE_NXZ.
@@ -20,7 +21,8 @@ struct CLongVector {
     long* last;                                      // +0x04
     long* end_of_storage;                            // +0x08
     unsigned long size() const { return (unsigned long)(last - first); }
-    long& operator[](unsigned long n) { return first[n]; }
+    long* begin() const { return first; }
+    long& operator[](unsigned long n) { return *(begin() + n); }
 };
 
 struct CTCInventory {
