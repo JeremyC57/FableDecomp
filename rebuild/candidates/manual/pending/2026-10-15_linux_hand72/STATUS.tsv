@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0084f4d0	MATCH	60v60	PASS	0x28-byte axis/point-list record (two vectors, retail vector, word); label CRightHandedSet::CRightHandedSet propagated
+00c25860	DIFFER	57v57	-	C3DVector::CrossProduct (label GetRight propagated): one x87 operand order in the Y component
+00c40370	MATCH	57v57	PASS	C3DVector::SetCrossProduct (this = b x a); label GetRight propagated
+009f8ba0	RELOCATION_MATCH	62v62	PASS	CRoughFrameCounter::NewFrame: elapsed converted to float, non-zero case as the if body
+0042be50	RELOCATION_MATCH	43v43	PASS	NUISystem::CAction::CAction (label CRumbleDef propagated); y-off + s TU, allocator temp at [ebp-1]
+006ff9a0	RELOCATION_MATCH	29v29	PASS	CReactionFrequencyTraits_LinearTime(min,max) (label CSBAgents propagated)
+00c19e40	RELOCATION_MATCH	18v18	PASS	vtable 0x012B2F98 one-argument ctor (label CSBAgents propagated)
+00c22060	RELOCATION_MATCH	25v25	PASS	vtable 0x012B3850 two-argument ctor (label CSBAgents propagated)
+00c31990	MATCH	18v18	PASS	two-word record, first word zeroed (label CSBAgents propagated)
+00c32fc0	RELOCATION_MATCH	25v25	PASS	vtable 0x012B4F4C two-argument ctor (label CSBAgents propagated)
+00c330a0	RELOCATION_MATCH	25v25	PASS	vtable 0x012B4F60 ctor with crossed arguments (label CSBAgents propagated)
+00a88080	RELOCATION_MATCH	50v50	PASS	CSBCCorridor::Reset = inlined STLport list clear of Walls
+00a03530	RELOCATION_MATCH	29v29	PASS	~CScopedCritical: LeaveCriticalSection at retail pool offset 0x44c
+009f4910	RELOCATION_MATCH	61v61	PASS	CScratchBuffer::Initialise: nested-if form shares the false tail
+006c59a0	DIFFER	58v60	-	CTCHeroOpinionDeedLog::DecriminaliseDeed (label propagated): iterator read through find's returned pointer
+00880f60	RELOCATION_MATCH	73v73	PASS	CScreenEffectPriorityStack::GetRadialBlurParam: set find + rep movsd copy
+00881010	RELOCATION_MATCH	71v71	PASS	CScreenEffectPriorityStack::SetAreaCenter (+0x40)
+008810c0	RELOCATION_MATCH	71v71	PASS	CScreenEffectPriorityStack::SetBlurCenter (+0x4c; label SetAreaCenter propagated)
+00881150	RELOCATION_MATCH	55v55	PASS	CScreenEffectPriorityStack::SetAreaTrackPos (+0x58)
+008811d0	RELOCATION_MATCH	55v55	PASS	CScreenEffectPriorityStack::SetBlurTrackPos (+0x5c; label SetAreaTrackPos propagated)
+00881820	RELOCATION_MATCH	59v59	PASS	CScreenEffectPriorityStack::DeleteRadialBlurEntry (+0x10 keys; label DeleteDisplacementEntry propagated)
+00881860	RELOCATION_MATCH	59v59	PASS	CScreenEffectPriorityStack::DeleteDisplacementEntry (+0x78 keys)
+00656c77	RELOCATION_MATCH	51v51	PASS	NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick ctor (label CScreenFilterSThingByPass propagated); optimize s
+009c3130	RELOCATION_MATCH	57v57	PASS	CFileInstaller entry record ctor (label CScreenFilterSThingByPass propagated)
+00cd2757	RELOCATION_MATCH	25v25	PASS	CScreenFilterSThingByPass(thing, bypass); optimize s
+004af5b0	RELOCATION_MATCH	87v87	PASS	CQuestManager::GetActiveQuestFromScriptName (label CScriptBase::OnRegionLoaded propagated); head + key block hoisted into locals
+00cb7aa0	RELOCATION_MATCH	92v92	PASS	CScriptBase::KillSpawnedFunction(name, id)
+00cb7b00	RELOCATION_MATCH	87v87	PASS	CScriptBase::OnRegionLoaded (label KillSpawnedFunction propagated)
+00cb7b60	RELOCATION_MATCH	87v87	PASS	CScriptBase::OnRegionUnloaded (label KillSpawnedFunction propagated)
+00cbe583	DIFFER	61v61	-	GetSquaredDistanceBetweenThings (label CScriptBase::Activate propagated): vptr eax/edx + square order
+006e5600	RELOCATION_MATCH	91v91	PASS	CScriptConversation::IsValid: IS_THING_ALIVE per person
+006e5800	RELOCATION_MATCH	49v49	PASS	CScriptConversationManager::AddPersonToConversation forwarder
+006e5950	RELOCATION_MATCH	64v64	PASS	CScriptConversationManager::AddLineToConversation forwarder
+00c3c720	RELOCATION_MATCH	45v45	PASS	vtable 0x012B4F84 Shutdown override (label CleanupAudioAndRender propagated)
+00caa3c0	DIFFER	80v69	-	DeallocateScriptEntries pop loop: lane rotates the top-tested loop
+00caa410	RELOCATION_MATCH	96v96	PASS	vtable 0x012BF83C COM-style destructor (/EHsc); label ~CScriptDefinitionManager propagated
+00cd3f00	RELOCATION_MATCH	55v55	PASS	CScriptDefinitionManager(): CDefinitionManager(L"script.bin", cb) via inline by-value helper
+006e7630	RELOCATION_MATCH	95v95	PASS	CScriptGameResourceObjectMovie ctor: player mode switch
+006e7bd0	RELOCATION_MATCH	87v87	PASS	CScriptGameResourceObjectMovieBase ??_G: implicit dtor, base-as-first-member model
+007e7520	RELOCATION_MATCH	87v87	PASS	CScriptGameResourceObjectScriptedThingBase ??_G (label MovieBase propagated); same model

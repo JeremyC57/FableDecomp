@@ -107,11 +107,12 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand69` | Hand chunk 69 (CQ_MinionCampScript .. CQuickAccessItemButtonGuiDef): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand70` | Hand chunk 70 (CRandomAppearanceMorph .. CRenderManager2D): 38 of 40 byte-exact | 38 | 2 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand71` | Hand chunk 71 (CRenderManagerCore .. CRightHandedSet): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand72` | Hand chunk 72 (CRightHandedSet .. CScriptGameResourceObjectMovieBase): 36 of 40 byte-exact | 36 | 4 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand73` | Hand chunk 73 (CScriptGameResourceObjectScriptedThing .. CScriptThing): 38 of 40 byte-exact | 38 | 1 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand74` | Hand chunk 74 (CScriptThing .. CShaderRenderManager): 35 of 40 byte-exact | 35 | 0 | 5 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 
-Totals: **432 matched rows staged for landing**, **40 parked rows** for the Fable retry pass.
+Totals: **468 matched rows staged for landing**, **44 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -192,6 +193,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00def6a0 CVtable_012ddf3c::CVtable_012ddf3c DIFFER(91v91): `mov ecx,edi` for the +0x28 CBase constructor sits between the +0x20 and +0x24 zero stores in retail, before all three in the lane | tried: three plain init-list zeros, a 3-word member object with inline ctor + CScriptThing's two words as a member object (fixed the two vtable-store positions), the zero words and the default CScriptThing as one member object | next: lane gap: member-constructor `this` scheduled after a register-zero store run (the 24i gap)
 - 009fbd00 CRenderTarget::`scalar deleting destructor' DIFFER(66v60): retail stores no CRenderTarget vptr (`mov dword ptr [esi],offset vftable` extra in ours) | tried: implicit destructor (the lane emits ??1 out of line and calls it: 30v60, also with /Ob2 and a __forceinline CSurface destructor), `__forceinline virtual ~CRenderTarget() {}` (inlined but stores the vptr), `__declspec(novtable)` (no ??_G emitted) | next: lane gap: the lane keeps the implicit destructor out of line instead of inlining it into `??_G`, as retail did. In this chunk the lane also emitted the implicit copy constructors (0x0046649A, 0x00737370) out of line.
 - 009fc4a0 CResource::SetAsMRU DIFFER(78v80): retail copies the previous node through eax before linking (`mov eax,edx ; mov [eax+10h],ecx ; mov edx,[ecx+10h] ; mov [edx+0Ch],ecx`), the lane stores through edx and reloads into eax | tried: landed ListInsert(prev, next), four links written out, a next-first insert helper with `prev->` and with `PrevResource->` | next: the form that fixed 0x009FBFE0 (head reached through an inline `GetHead()` accessor at each use, maybe under optimize("s"))
+
+
+#### `2026-10-15_linux_hand72` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand72/differ/`)
+- 00c25860 C3DVector::CrossProduct DIFFER(57v57): Y component's second product retail `fld [ecx] ; fmul [eax+8]` vs lane `fld [eax+8] ; fmul [ecx]` | tried: `X * other.Z`, `other.Z * X`, inline Cross(a, b) helper, field-by-field named result | next: lane gap: x87 commutative operand canonicalisation (both spellings compile identically)
+- 006c59a0 CTCHeroOpinionDeedLog::DecriminaliseDeed DIFFER(58v60): found iterator read retail `mov eax,[esp+4]` (frame slot) vs lane `mov eax,[eax]` (find's returned pointer); body after the compare exact | tried: `iterator it = find()` + `it->second` (61v60), inline IsCrime setter (61v60), reference to the node value (60v60), `it; it = find();` assignment (58v60) | next: iterator copy-constructed from a named temporary / `it = iterator(find())` with a user copy constructor so the slot is re-read
+- 00cbe583 GetSquaredDistanceBetweenThings DIFFER(61v61): retail `mov esi,eax ; mov eax,[edi] ; mov ecx,edi ; call [eax+18h]` vs lane vptr fetched into edx first; squares retail Z, X, Y vs lane Z, Y, X | tried: POD difference (107v61), memberwise-copy C3DVector (61v61), named position references + reordered sum (no change) | next: lane gap: vptr eax/edx register choice (0x0053D000 family) + x87 sum canonicalisation
+- 00caa3c0 CVtable_012bf83c::DeallocateScriptEntries DIFFER(80v69): retail keeps the pop loop top-tested (`test ; je D ; ... ; jmp L`), lane rotates it (entry test + bottom test + `lea ebx,[ebx]` alignment pad); body identical | tried: `while (m_pFirstEntry)` (83v69), `for (;;) { entry = m_pFirstEntry; if (!entry) break; ... }` (80v69) | next: lane gap: loop rotation (GOTCHAS Wave 23f)
 
 
 #### `2026-10-15_linux_hand73` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand73/differ/`)
