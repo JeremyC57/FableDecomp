@@ -1,0 +1,12 @@
+# Chunk 154 lessons (candidates for GOTCHAS)
+- A list search followed by one store on the hit (SetBoastAsCompleted/Failed, SetQuestWorldMapOffset) pushes ebx/esi only on the non-empty path in retail. That shape comes from a `__forceinline bool Find(key, T*& out)` helper. A flat loop in the body pushes at entry, and a pointer-returning helper adds `lea ; test` before the store.
+- Callee clobber knowledge works with a REAL callee body: defining the landed 15-line `Compare` (0x411570) above the caller under `#pragma auto_inline(off)` keeps the key in a callee-saved register across the call (re-read only after calls that write memory). This flipped 0x4B0030/0x4AFFA0, and probably helps every CCharString-equality loop that retail runs without a reload.
+- `bool X[8]` cleared with an element `for` loop gives `lea eax,[esi+N] ; xor ecx,ecx ; mov [eax],ecx ; mov [eax+4],ecx`. memset reuses the shared zero register and stores through esi.
+- Init-list zero words in a quest-script ctor hoist the `xor ebx,ebx` above the vtable store. Wrap them in an embedded member object with its own zeroing ctor and the xor lands after the store (0xD25410).
+- When bit-field clears share a byte with dword zero stores, writing the clears after the zero stores gives retail's `mov al ; and al,mask` hoisted with the byte store last. Writing them first stores the byte before the dwords.
+- `CIntelligentPointer` in CQuestInfoElementBar is byte-aligned (+0x39) while the following `ulong64` keeps 8-byte alignment (+0x48). Model it as a `#pragma pack(1)` member class plus an `unsigned __int64` member, not dword pairs.
+- A by-value result passed on to another call with `lea ecx,[esp+N] ; push ecx` is a named local, even for CScriptThing temporaries (0x4AFA60).
+- In a size TU, the CRGBColour copy ctor and Set must be `__forceinline` or they are called out of line.
+- The inline `CCharString::GetLength()` written `p == 0 ? 0 : p->len` reuses the tested zero register (`push ecx`), while `p ? p->len : 0` adds an `xor ecx,ecx` arm.
+- An inline accessor returning an unset local (`T* tc; if (HasTC(k)) tc = GetTC(k); return tc;`) inside a loop is loaded from its frame word into a callee-saved register once before the loop (0x4B1080). Intrusive counts need inline AddRef/DecRef for `inc/dec [ecx+4]`.
+- VC7.1 reassociates chains of four float products: the written order does not map to a simple permutation (0x987BF0 rows 1-2 still differ after four forms). Row 0's z,y,w,x came from the written order y,z,w,x.

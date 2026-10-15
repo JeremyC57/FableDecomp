@@ -178,6 +178,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand151` | Hand chunk 151 (CParentDefClassBase .. CPatchTesselationEdgeStrip): 30 of 40 byte-exact | - | 10 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand152` | Hand chunk 152 (CPatchTesselationEdgeStrip .. CPlayer): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand153` | Hand chunk 153 (CPlayer .. CQ_HangingTreeEvilScript): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand154` | Hand chunk 154 (CQ_HangingTreeGoodScript .. CQuestManager): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -232,7 +233,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **463 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **470 parked rows** for the Fable retry pass.
 
 ### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -741,6 +742,16 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0087c580 CPlayer::GlobalEventCreatureDied DIFFER(99v102): non-main arm retail `mov eax,[ebp+28h] ; push eax`, ours `push esi` (value loaded before GetMainPlayerNumber) | tried: plain compare, 64-bit id local (fixed id compare), inline IsMainPlayer, inline else helper | next: lane gap: member re-read after a call (CSE of a pre-call load)
 - 004384f0 CPlayerGui::PeekGlobalDef DIFFER(117v123): inline counted release `mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx` (ours `mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax`), and retail calls CGameDefinitionManager::Get before pushing &name | tried: hand-written Reset (one try, known gap) | next: lane gap: inline counted release; put the Get call in a GetWorld-style inline helper
 - 00438ff0 CPlayerGui::DrawSaveScreen DIFFER(118v116): component kept in ecx by retail (`mov ecx,[eax+4]`), eax + `mov ecx,eax` by ours; same blocks and dead-slot read | tried: chunk-141 unset accessor, inline test, condition declaration, entry-returning Find | next: lane gap: register choice
+
+
+#### `2026-10-15_linux_hand154` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand154/differ/`)
+- 00d80cc0 CQ_HeroSoulsBriarScript::Init DIFFER(130v130): retail `mov ecx,[g_pGameScriptInterface] ; mov edx,[esi+68h]`, ours loads the timer index first | tried: CTimer::Set inline, direct call, by-value CTimer arg, interface local in Set | next: scheduling only (the same Set form matches Nostro 0xD87B20); try `PlayedBriarCS = false` after the timers or a two-timer inline helper
+- 00d9ec50 CQ_MinionCampScript::IsAssignedAsHeroAttacker DIFFER(147v147): the IsAlive / second IsNull vtable loads use edx/eax where retail uses eax/edx | tried: flat `||` of `&&` triples, inline IsLiveAttacker(attacker, thing) helper (worse) | next: lane gap: register allocation
+- 00bddf30 CQuadTreeElement::CQuadTreeElement DIFFER(119v119): retail loads `mov dl,[eax+48h]` before the child zero stores and stores +0x2c after the flag byte; ours loads after +0x04 and stores +0x2c first | tried: flags after/before the children, inline ClearStateFlags() before/after the collection reset | next: scheduling only; maybe the flags are a separate bit-field struct member with its own ctor
+- 00987bf0 CQuaternion::operator* (really a 3x4 row-matrix Transform(in, out, w)) DIFFER(156v156): rows 1-2 evaluate the terms z,y,w,x where retail has z,y,x,w (row 0 matches when written y,z,w,x) | tried: written z,y,x,w / y,z,x,w / x,y,z,w, inline Dot3(t) + T*w | next: VC7.1 reassociates the float sums; try the remaining permutations (x,z,y,w / z,x,y,w / y,x,z,w) of rows 1-2
+- 00addfe0 CQuaternion::operator* (in-place twin Transform(v, w)) DIFFER(157v157): same rows 1-2 order | tried: Dot3 + T*w, T*w + Dot3, written z,y,w,x | next: as 00987bf0 (fix one, apply to both)
+- 004b00c0 CQuestManager::IsQuestRegistered DIFFER(159v154): retail keeps the quest-name local in the dead argument slot and passes __find's empty random_access_iterator_tag at that same slot; ours opens a push-ecx frame word, and the inline `operator==(const char*)` arms are laid out differently | tried: ternary-initialised local, inline by-value GetQuestNameFromSectionName helper | next: lane gap: local + empty tag temporary in a dead argument slot
+- 004b1960 CQuestManager::TransferBoastToUI DIFFER(144v141): retail pushes edi at entry, ours delays the push into the non-empty path (everything else matches with the inline CCharString::operator== form) | tried: SameString(block, block) form, operator== form | next: lane gap: callee-saved push placement
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

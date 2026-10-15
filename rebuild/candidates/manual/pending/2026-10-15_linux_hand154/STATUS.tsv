@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00d6fd00	RELOCATION_MATCH	101v101	PASS	STLport back()/pop_back explicit dtor
+00d80c30	RELOCATION_MATCH	135v135	PASS	+ scripted-thing handle with embedded {Data,Info} zero member
+00d80cc0	DIFFER	130v130	-	scheduling: global vs timer index load order
+00d83470	RELOCATION_MATCH	102v102	PASS	label: is CQ_HeroSoulsMotherScript::Init (vtable 0x12D45F0 slot 3)
+00d84bb0	RELOCATION_MATCH	106v106	PASS	member stores in source order
+00d83400	RELOCATION_MATCH	103v103	PASS	novtable arg base + STLport _Rb_tree map + CTimer member
+00d87b20	RELOCATION_MATCH	115v115	PASS	CTimer::Set inline + two implicit CCharString temps
+00d9ec50	DIFFER	147v147	-	eax/edx swap in vtable loads
+00da0e40	RELOCATION_MATCH	141v141	PASS	rand() % size(); out-of-line size 0xDA0ED0
+00d25410	RELOCATION_MATCH	153v153	PASS	six zero words via embedded member ctor (init-list zeros hoist xor)
+00dc2170	MATCH	128v128	PASS	vector size()/operator[] recomputed
+00dc3cf0	RELOCATION_MATCH	113v113	PASS	flag stores in retail order
+00dcf4c0	RELOCATION_MATCH	119v119	PASS	label: Main of vtable 0x12DB4B8 (not FadeObjectUp)
+00dfc290	RELOCATION_MATCH	137v137	PASS	local vector<ulong>; terminate checks as early returns
+00e0b020	RELOCATION_MATCH	115v115	PASS	element for-loop (not memset) for bool[8]
+00e1a800	RELOCATION_MATCH	106v106	PASS	three CScriptThing members (CBase + {Data,Info})
+00bddb90	RELOCATION_MATCH	102v102	PASS	inline RemoveObjectCollections; merged bit clears
+00bddc00	RELOCATION_MATCH	127v127	PASS	bit clears written after zero stores
+00bddf30	DIFFER	119v119	-	flag byte load/store scheduling
+00bddfb0	RELOCATION_MATCH	101v101	PASS	out-of-line RemoveObjectCollections; CMovableResource base
+00ac6e80	MATCH	103v103	PASS	m += o.m per double
+00ac7050	MATCH	149v149	PASS	a,b,c,d locals; inline DotProduct Z+Y+X
+00987bf0	DIFFER	156v156	-	FP sum order rows 1-2 (reassociation)
+00addfe0	DIFFER	157v157	-	FP sum order rows 1-2 (twin of 00987bf0)
+0064a450	RELOCATION_MATCH	153v153	PASS	size TU; same model
+00656b1b	RELOCATION_MATCH	135v135	PASS	size TU s+y off; __forceinline CRGBColour copy/Set; __int64 UID
+004af350	RELOCATION_MATCH	98v98	PASS	GetLength as == 0 ? 0 : len
+004af6d0	RELOCATION_MATCH	98v98	PASS	__forceinline bool finder with out pointer
+004af7a0	RELOCATION_MATCH	100v100	PASS	|| of inline operator== forms
+004af810	RELOCATION_MATCH	99v99	PASS	node string on the left
+004af880	RELOCATION_MATCH	99v99	PASS	label: SetBoastAsFailed; __forceinline bool finder (twin of 004af8f0)
+004af8f0	RELOCATION_MATCH	99v99	PASS	__forceinline bool FindAcceptedBoast(id,name,CBoast*&)
+004afa60	RELOCATION_MATCH	160v160	PASS	named CScriptThing local in hit block
+004affa0	RELOCATION_MATCH	131v131	PASS	label: RemoveBoastsForScript (Boasts +0x68); Compare body above
+004b0030	RELOCATION_MATCH	131v131	PASS	Compare real body above under auto_inline(off)
+004b00c0	DIFFER	159v154	-	lane gap: local + tag in dead arg slot
+004b1080	RELOCATION_MATCH	143v143	PASS	unset-local accessor; AddRef/DecRef inline
+004b1110	RELOCATION_MATCH	133v133	PASS	&& chain; GetTC via forceinline find
+004b1450	RELOCATION_MATCH	152v152	PASS	name + tc->GetSectionNameSuffix("%")
+004b1960	DIFFER	144v141	-	lane gap: edi push at entry
