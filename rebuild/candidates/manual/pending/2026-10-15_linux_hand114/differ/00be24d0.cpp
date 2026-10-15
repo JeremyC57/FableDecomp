@@ -6,6 +6,9 @@
 // Model: no engine header; Ego_r.pdb's CVO_OracleMarker (0x30 bytes) does not fit these offsets (label propagated).
 // Tried: aggregate/brace local, member-wise local, (x,y,z,w) ctor temporary, implicit/user copy ctor, user operator=,
 // memset local, long[4] array member, const-ref inline setter with a temporary / a named local, float fields (frame kept but immediate stores).
+// Fable retry (2026-10-15): an inlined `Fill(SQuad*, long)` helper on a local then the member (26v54, both folded), a member
+// `Set(const SQuad&)` fed a one-value temporary (26v54) and `Set(SQuad)` by value (38v54: the copy splits into two
+// zero registers, no frame). The surviving 16-byte block at [esp+4] after `push esi` still has no source form.
 #include <string.h>
 struct SQuad {
     long a, b, c, d;
