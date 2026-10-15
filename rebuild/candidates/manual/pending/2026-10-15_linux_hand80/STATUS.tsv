@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c11180	RELOCATION_MATCH	49v49	PASS	bitfield setter m_bit1=1 under the 0x0143BB14 scoped lock (label OnCreate propagated)
+00c111c0	RELOCATION_MATCH	49v49	PASS	bitfield setter m_bit0=1 under the 0x0143BB14 scoped lock (label OnCreate propagated)
+0072a630	RELOCATION_MATCH	74v74	PASS	ctor: inlined CTCActionUseBase + IP member + AddToGlobalTCs
+0072a680	RELOCATION_MATCH	54v54	PASS	dtor: RemoveFromGlobalTCs, implicit member/base dtors
+0072a730	RELOCATION_MATCH	75v75	PASS	??_G: forceinline dtor, novtable+forceinline empty ~CTCActionUseBase
+0079bdf0	RELOCATION_MATCH	78v78	PASS	really CTCSummonSpell ??_G (pack(1) IP members at +0x11/+0x2c)
+007a50f0	RELOCATION_MATCH	78v78	PASS	really CTCWillEnflame ??_G (pack(1) IP members at +0x18/+0x21)
+007ece20	RELOCATION_MATCH	55v55	PASS	OnActionUse: action temporary in the call, owner via inline GetThing()
+007eb390	RELOCATION_MATCH	96v96	PASS	OnActionUse: &user null test, Dead bit, type 5, action temporary
+004da9d7	RELOCATION_MATCH	36v36	PASS	ctor /Os: base out of line, CDefPointer + CWideString members
+007e8160	RELOCATION_MATCH	77v77	PASS	OnSerialise: default from inline helper returning a named local (no NRVO)
+00729c50	RELOCATION_MATCH	72v72	PASS	GetRegionEntranceName: first world map a named local
+00870750	RELOCATION_MATCH	68v68	PASS	really CThingComponentSet::Add(const CCharString&, bool): packed 9-byte CEntry temp
+00c497e0	RELOCATION_MATCH	58v58	PASS	__stdcall stream callback (registered at 0x00C49A2F), frame homed in dead arg slot
+007eaf20	RELOCATION_MATCH	31v31	PASS	OnCreate: !((flags>>8)&1) on a scalar virtual return
+007f7710	RELOCATION_MATCH	62v62	PASS	ctor: local retail model (12-byte vector), header layout disagrees
+00c38ac0	RELOCATION_MATCH	48v48	PASS	mailbox ReceiveMessage (label AddTrigger propagated)
+007ffc70	RELOCATION_MATCH	85v85	PASS	Chest::Activate: out-parameter GetInterface(0x3c) + Open
+007ffcd0	RELOCATION_MATCH	85v85	PASS	Chest::Deactivate: out-parameter GetInterface(0x3c) + Close
+007f75c0	RELOCATION_MATCH	49v49	PASS	Validate: (A&&!T)||(!A&&T) exclusive-or
+007f7600	RELOCATION_MATCH	76v76	PASS	OnSerialise: const bool& literal default in dead arg slot
+007f7650	RELOCATION_MATCH	94v94	PASS	Activate: GetInterface(0x3d), ExternalTrigger or SetAsActive(true)
+007f7850	RELOCATION_MATCH	20v20	PASS	really CTCActivationReceptorBase::OnKill: for_each with 4-byte functor
+00723fd0	RELOCATION_MATCH	50v50	PASS	really CTCPhysicsStandard ctor: 16 bitfield inits fold to two byte stores
+0074e6b0	RELOCATION_MATCH	44v44	PASS	really CTCContainerRewardHero ctor: inlined CTCContainer
+0044c47b	RELOCATION_MATCH	37v37	PASS	really CCombatAbilityMeleeAttackData ctor (/Os)
+004d5efb	RELOCATION_MATCH	33v33	PASS	ctor /Os: fldz/fstp float before vtable
+007e1f70	RELOCATION_MATCH	70v70	PASS	OnInitialActivate: subsystem slot 9 then GFFloatRandom > 0.5 kill
+007f8d00	RELOCATION_MATCH	88v88	PASS	GetInterface(0x5a) + UpdateMode=0
+007f8d60	RELOCATION_MATCH	85v85	PASS	named float local for the old fraction (x87 copy)
+007f8dc0	RELOCATION_MATCH	95v95	PASS	animator a named local before SetMainAnim pushes
+006627a0	RELOCATION_MATCH	80v80	PASS	really CThingCreatureBase::GetAnimMovementDistance: Magnitude(x,y,z) by value
+006627f0	RELOCATION_MATCH	42v42	PASS	really CThingCreatureBase::GetAnimDuration: bank a named local
+0070b3f0	RELOCATION_MATCH	67v67	PASS	ctor: PAnimation(new CAnimateThing(owner))
+0070b4a0	RELOCATION_MATCH	42v42	PASS	GetAnimDuration: CTCBase twin of 006627f0
+006ca7f0	RELOCATION_MATCH	59v59	PASS	named reference to the texture-morph set (attempt 3)
+00443220	RELOCATION_MATCH	46v46	PASS	novtable derived dtor: inline list dtor + out-of-line list dtor + base jmp
+0047747c	RELOCATION_MATCH	47v47	PASS	/Os novtable derived dtor, __forceinline vector dtor
+004ad650	RELOCATION_MATCH	52v52	PASS	non-polymorphic ??_G through a delete helper
+004cbfb0	RELOCATION_MATCH	78v78	PASS	SetThingCollisionPtr: CollidedThing = thing via converting IP temp, pack(1)

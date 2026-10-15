@@ -1,74 +1,43 @@
-#include <stdio.h>
-
-struct IDirect3DSurface9
-{
-    virtual void __stdcall QueryInterfacePlaceholder() = 0;
-    virtual unsigned long __stdcall AddRef() = 0;
-    virtual unsigned long __stdcall Release() = 0;
+#include <cstdio>
+static int g_addRefs = 0, g_releases = 0;
+struct IDirect3DSurface9 {
+    long m_refs;
+    virtual unsigned long AddRef() { ++g_addRefs; return ++m_refs; }
+    virtual unsigned long Release() { ++g_releases; return --m_refs; }
+    virtual ~IDirect3DSurface9() {}
 };
-
-struct CSurface
-{
-    void* vtable00;
-    IDirect3DSurface9* surface04;
-    unsigned long ownership08;
-    unsigned long mipLevel0C;
-
-    void InitialiseFromTextureMipmap(IDirect3DSurface9* surface);
-};
-
-struct TestSurface : IDirect3DSurface9
-{
-    unsigned long addRefCalls;
-    unsigned long releaseCalls;
-
-    TestSurface() : addRefCalls(0), releaseCalls(0)
+class CSurface {
+public:
+    virtual ~CSurface() {}
+    IDirect3DSurface9* PD3DSurface;
+    unsigned long      AllocationSource;
+    void*              PAllocatedMemory;
+    CSurface() : PD3DSurface(0), AllocationSource(0), PAllocatedMemory(0) {}
+    void Uninitialise()
     {
+        if (PD3DSurface) {
+            PD3DSurface->Release();
+            PD3DSurface = 0;
+            AllocationSource = 0;
+        }
     }
-
-    virtual void __stdcall QueryInterfacePlaceholder()
+    void InitialiseFromTextureMipmap(IDirect3DSurface9* mipmapSurface)
     {
-    }
-
-    virtual unsigned long __stdcall AddRef()
-    {
-        return ++addRefCalls;
-    }
-
-    virtual unsigned long __stdcall Release()
-    {
-        return ++releaseCalls;
+        Uninitialise();
+        PD3DSurface = mipmapSurface;
+        AllocationSource = 3;
     }
 };
-
 int main()
 {
-    TestSurface first;
-    TestSurface second;
-    CSurface wrapper = {};
-
-    wrapper.InitialiseFromTextureMipmap(&first);
-    if (
-        wrapper.surface04 != &first ||
-        wrapper.ownership08 != 3 ||
-        first.addRefCalls != 0 ||
-        first.releaseCalls != 0)
-    {
-        printf("FABLETLC_SURFACE_INITIALISE_TEXTURE_MIPMAP_BEHAVIOR FAIL code=1\n");
-        return 1;
-    }
-
-    wrapper.InitialiseFromTextureMipmap(&second);
-    if (
-        wrapper.surface04 != &second ||
-        wrapper.ownership08 != 3 ||
-        first.releaseCalls != 1 ||
-        second.addRefCalls != 0)
-    {
-        printf("FABLETLC_SURFACE_INITIALISE_TEXTURE_MIPMAP_BEHAVIOR FAIL code=2\n");
-        return 2;
-    }
-
-    printf("FABLETLC_SURFACE_INITIALISE_TEXTURE_MIPMAP_BEHAVIOR PASS\n");
+    IDirect3DSurface9 oldD3d; oldD3d.m_refs = 1;
+    IDirect3DSurface9 mip; mip.m_refs = 1;
+    CSurface a; a.PD3DSurface = &oldD3d; a.AllocationSource = 1;
+    a.InitialiseFromTextureMipmap(&mip);
+    if (a.PD3DSurface != &mip || a.AllocationSource != 3 || oldD3d.m_refs != 0 || mip.m_refs != 1 || g_addRefs != 0) { std::printf("009f2f10_TEST FAIL\n"); return 1; }
+    CSurface b;
+    b.InitialiseFromTextureMipmap(&mip);
+    if (b.PD3DSurface != &mip || b.AllocationSource != 3 || g_releases != 1) { std::printf("009f2f10_TEST FAIL\n"); return 1; }
+    std::printf("009f2f10_TEST PASS\n");
     return 0;
 }
