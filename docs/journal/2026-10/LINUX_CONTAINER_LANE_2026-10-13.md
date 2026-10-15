@@ -729,6 +729,23 @@ registers, `lea` address formation); a virtual first declared by a secondary bas
 overloaded virtuals sit in reverse declaration order. Catalog 30,909 -> **31,659 (63.9%)**; ledger open: 2 ltcg, 2 cold,
 1 single EH tail, the 2 asm-rounding prefix bodies and the COM thunk.
 
+### Wave 25, part 3 (Fable 5.1 session: chunks 113–114, ledger chunk 905, duplicate-source hygiene)
+
+- Landed chunks 113 (38/40: 00c9cb40 parked, LTCG register convention; 00837040 two-function row → ledger) and
+  114 (37/40: 00406d90 loop rotation, 00be24d0/00be2540 dead 16-byte stack temporary). Catalog 31,774 (64.1%).
+- Ledger chunk 905: row 00837040 split into CThingTrackNode::DrawIsDrawable (vtable 0x01272CE4 slot 27, tail jump
+  to CDisplayEngine slot 9) and a dead getter at 0x837050 reading the packed +0xe6 draw record shared with 0x837060.
+  Both matched first grade. Ledger: 00837040 done; still open 004a1c8e (EH tail), 005c150b/00c8a520 (ltcg),
+  007fa26c/00a446fa (cold), 00ba1140/00bd71b0 (asm rounding, in 902 differ), 00caef70 (in 904 differ).
+- Chunk 114 re-authored 0040d2a0 and 0040d400, already landed; the lander wrote a second source for 0040d2a0 under
+  a different name (it keys on file name, not address). A repo scan found 23 more addresses with two sources (most
+  from the 2026-09-07 import); kept the file whose name matches the catalog row, removed the other and its test.
+  Coverage is per catalog address and was never inflated.
+- Fleet rule (owner): 5 Opus agents + 1 Fable 5.1 medium agent. In flight: 115 (Fable), 116–120 (Opus); prepared 121–124.
+- Review items from chunk 114 LESSONS.md not yet acted on: 0x0040B6D0 is the RefreshRate setter and 0x0040B750 the
+  VerticalSyncEnabled setter (landed under wrong labels, pad-based models); from chunk 113: CFileDataOutputStream.h
+  +4 is a CCharString, CHandleBasedMemoryPool.h Name is at +0x448.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
