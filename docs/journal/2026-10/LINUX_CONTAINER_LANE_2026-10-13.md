@@ -746,6 +746,23 @@ overloaded virtuals sit in reverse declaration order. Catalog 30,909 -> **31,659
   VerticalSyncEnabled setter (landed under wrong labels, pad-based models); from chunk 113: CFileDataOutputStream.h
   +4 is a CCharString, CHandleBasedMemoryPool.h Name is at +0x448.
 
+### Wave 25, part 4 (chunks 115–121, ledger 906, comment pass started and paused)
+
+- Landed chunks 115 (36), 116 (37), 117 (31), 118 (36), 119 (30), 120 (25), 121 (26) and ledger chunk 906 (2: the two
+  functions of row 009576c0). Catalog 31,997 (64.6%). The AI state-group chunks (119–121) park 9–15 rows each on
+  register-role gaps: a component loaded straight into ecx for a virtual call, `this` in edi, scheduling of the
+  shared false exit, and a constant-false bool (`xor dl,dl ; mov [slot],eax ; jne`) VC7.1 never folds for us.
+- Fleet (owner): 5 Opus + 1 Fable 5.1 medium. A developer-voice comment pass (write comments as the original Fable
+  developers would) ran briefly on `rebuild/src/compiled/00/40/`: 59 files rewritten, code token-identical, regraded
+  and committed; paused by the owner in favour of an Opus authoring agent. Brief/tools in `$S/w22/comments/`.
+- Hygiene: the empty InitStateGroup override at 0x946620 landed earlier as a bare `__stdcall` stub; now a
+  protected-virtual member model with a header and test. Duplicate-address source check after every landing.
+- Review items (documented, not acted on): wrong catalog labels on landed 0x40B6D0/0x40B750 (RefreshRate and
+  VerticalSync setters), 0x99A380 (CVillageTask base ctor, not CBaseIntelligentPointer), 0x6AF290 (probably
+  IsTargettedAtThing), two GetChunkInfo bodies (0xAC62B0, 0xAAE0F0) sharing a suspect body; generated headers
+  with wrong offsets (CFileDataOutputStream +4, CHandleBasedMemoryPool Name +0x448, CVideoSys after +0x30,
+  CAIStateGroup_CreatureUseCoverBase PCoverThing).
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
