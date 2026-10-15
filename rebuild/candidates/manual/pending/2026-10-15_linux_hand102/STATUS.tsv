@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007876d0	RELOCATION_MATCH	71v71	PASS	
+006e27e0	RELOCATION_MATCH	95v95	PASS	
+006e28a0	RELOCATION_MATCH	33v33	PASS	
+006e28d0	RELOCATION_MATCH	59v59	PASS	
+006e2910	RELOCATION_MATCH	48v48	PASS	
+006e2cb0	RELOCATION_MATCH	63v63	PASS	vfunc_1 = Persist
+006e2cf0	DIFFER	66v64	-	scheduling: narrator ref vs last load order around the SGI find call
+006e3180	RELOCATION_MATCH	86v86	PASS	
+006e3b10	RELOCATION_MATCH	32v32	PASS	
+006e3b30	RELOCATION_MATCH	48v48	PASS	
+006e3b60	RELOCATION_MATCH	43v43	PASS	
+00ca5380	RELOCATION_MATCH	25v25	PASS	is CBaseVideoRenderer::OnStopStreaming (label propagated)
+004da8f7	RELOCATION_MATCH	43v43	PASS	
+00716790	RELOCATION_MATCH	74v74	PASS	is CActionFireProjectileWeapon ctor (label propagated)
+007ea510	RELOCATION_MATCH	62v62	PASS	
+004da8b7	RELOCATION_MATCH	64v64	PASS	
+004e4045	RELOCATION_MATCH	56v56	PASS	is ~CTCDExplosiveTrail (label propagated)
+007891f8	RELOCATION_MATCH	64v64	PASS	is ~CTCTrapBase (label propagated)
+007f5860	RELOCATION_MATCH	48v48	PASS	
+007f5890	RELOCATION_MATCH	80v80	PASS	
+008023e0	RELOCATION_MATCH	50v50	PASS	vfunc_39 = UpdateNearestInterestingThing
+00802590	DIFFER	64v64	-	block layout: method-0 arm placed after method-1 arm
+00803b20	RELOCATION_MATCH	48v48	PASS	
+004debf7	SKIP	-	-	row holds six tiny functions back to back (jmp [eax+24h]; xor eax,eax ret; ret 0Ch; ret 4; a call forwarder; mov al,1 ret)
+007b9f60	RELOCATION_MATCH	94v94	PASS	
+007b9fc0	RELOCATION_MATCH	54v54	PASS	
+007de4a0	RELOCATION_MATCH	64v64	PASS	is CTCWallMount ctor (label propagated)
+005e9b20	DIFFER	74v74	-	one register: vtable fetch in eax (retail) vs edx (lane) in the state-47 arm
+005e9b70	RELOCATION_MATCH	69v69	PASS	
+005eb4b0	RELOCATION_MATCH	92v92	PASS	
+007bd2a7	DIFFER	49v42	-	def release: retail dec [ecx+4]; lane materialises the count address (add eax,4; dec; cmp); is CTCShotDefinitionMultiArrow::GetWeaponTrailGraphic (label propagated)
+008f0b80	DIFFER	75v73	-	one register copy: def object loaded into eax then mov ecx,eax; is CardBase::GetPackPosition (label propagated)
+00c46dc0	MATCH	37v37	PASS	is C2DVector operator== (label propagated)
+008f0930	RELOCATION_MATCH	48v48	PASS	
+008f0960	RELOCATION_MATCH	51v51	PASS	is CardBase::NewRound (catalog says NewGame)
+008f0b20	DIFFER	112v92	-	retail keeps the local def object in esi across a vcall; lane reloads the address-taken local
+007da020	RELOCATION_MATCH	36v36	PASS	
+007da050	RELOCATION_MATCH	30v30	PASS	
+007da1a0	MATCH	81v81	PASS	
+007da230	MATCH	84v84	PASS	

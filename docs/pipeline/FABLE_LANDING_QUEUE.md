@@ -126,6 +126,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-14_linux_hand58` | Hand chunk 58 (CMessageEventFilter_IsOriginatedByThing .. CMouseCursor): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand100` | Hand chunk 100 (CTCRotate .. CTCSkeletalMorph): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand101` | Hand chunk 101 (CTCSmashableBase .. CTCSwitchableNavigation): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand102` | Hand chunk 102 (CTCSwitchableNavigation .. CTCTavernGameCardBlackjack): 33 of 40 byte-exact | - | 6 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand103` | Hand chunk 103 (CTCTavernGameCardBlackjack .. CTCThingOwner): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
@@ -171,12 +172,13 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **0 matched rows staged for landing**, **150 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **156 parked rows** for the Fable retry pass.
 
-### Skipped rows (8 open of 21 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (9 open of 22 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
+| `004debf7` | multi | open | 004debf7:5 004debfc:3 004debff:5 004dec04:5 004dec09:16 004dec19:3 | `2026-10-15_linux_hand102` | row holds six tiny functions back to back (jmp [eax+24h]; xor eax,eax ret; ret 0Ch; ret 4; a call forwarder; mov al,1 ret) |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `0061b530` | multi | open | 0061b530:40 0061b560:40 | `2026-10-15_linux_hand95` | row holds two functions (0x0061B530 + 0x0061B560) |
 | `007460d0` | multi | in-chunk:902 | 007460d0:5 007460e0:3 007460f0:9 | `2026-10-15_linux_hand98` | three functions in a 48-byte row (jmp [eax+24h] / mov al,1 / vtable getter) |
@@ -212,6 +214,15 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0072aa50 CTCSpecialAbilities::SetupGhostSwordSpell DIFFER(72v72): same AddTC `this`-load order (the rest, incl. the component in esi across the string destructor, matches) | tried: plain scoped-name form | next: lane gap: argument/`this` scheduling
 - 0072aaa0 CTCSpecialAbilities::SetupMultiArrow DIFFER(67v67): same AddTC `this`-load order on ParentThing (+4) | tried: plain form | next: lane gap: argument/`this` scheduling
 - 0072c680 CTCSpecialAbilities::SetupLightningSpell DIFFER(83v83): same AddTC `this`-load order (CalculateWeaponState + the +0x0c setter match) | tried: plain scoped-name form | next: lane gap: argument/`this` scheduling
+
+
+#### `2026-10-15_linux_hand102` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand102/differ/`)
+- 006e2cf0 CTCTalk::SetAsUsingNarrator DIFFER(66v64): retail `mov edx,[esp+0Ch] ; mov esi,[eax+104h] ; lea ecx,[esp+0Ch] ; push ecx ; mov ecx,[eax+100h]`, lane loads last first and first through eax (`mov ecx,eax`) | tried: `last` local, no local, result local, begin()/end() accessors + template front end | next: model the narrator list as a real STLport vector member with an iterator-object begin()/end() and the SGI find front end taking iterators by value
+- 00802590 CTCTargetingPlayer::SetAsTargetNextThing DIFFER(64v64): block order -- retail places the method-0 arm right after the flag test (`je` to the method-1 arm), lane places method 1 first | tried: `locked && !flag` if/else, `!locked || flag` if/else, nested if + early return, ternary argument | next: lane gap: branch layout of a tail-duplicated if/else (try a `bool` helper `IsLiveLockTarget()` returning the test)
+- 005e9b20 CTCTavernGame::SetState DIFFER(74v74): state-47 arm `mov eax,[ecx] ; call [eax+78h]` (retail) vs `mov edx,[ecx] ; call [edx+78h]` | tried: if/else-if + return, switch, three-arm with inline ChangeState, two sequential ifs | next: lane gap: register choice for a dead-argument vtable fetch
+- 007bd2a7 NThingShot::CTCShotDefinitionMultiArrow::GetWeaponTrailGraphic DIFFER(49v42): retail release `dec dword ptr [ecx+4] ; jne`, lane `mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0` | tried: member `--Object->count`, local pointer copy, pointee Release(), speed TU with frame pointer | next: drop the `const` sub-def / `mutable` count, or a non-template def pointer; check whether the TU is speed with `and [ebp-4],0` from an EH-like store
+- 008f0b80 CTCTavernGameCardBase::GetPackPosition DIFFER(75v73): retail loads the def object straight into ecx, lane `mov eax,[esp+4]` + `mov ecx,eax` (and edx for the count) | tried: member-form release (82v73), local pointer copy (78v73), pointee Release (78v73), local pointer + local count (75v73) | next: read the def object into a named local in the body (`CTavernGameCardBaseDef* d = def.Object;`) so it lands in the dead `this` register
+- 008f0b20 CTCTavernGameCardBase::GetCardDef DIFFER(112v92): retail keeps the local def's object in esi across the old object's virtual Destroy() and into the local's destructor; lane reloads the address-taken local after every call, and orders the zero store / `[thing+70h]` load differently | tried: member-form operator= + destructor, operator= reading both objects into locals + local-copy destructor | next: lane gap: address-taken local CSE'd across a call by retail; maybe a raw `T**` GetSubDef out-parameter
 
 
 #### `2026-10-15_linux_hand103` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand103/differ/`)
