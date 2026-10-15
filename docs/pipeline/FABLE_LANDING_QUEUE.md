@@ -161,6 +161,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand134` | Hand chunk 134 (CEngineInternalPrimitive2DStaticMesh .. CEngineLandscapeMemoryManager): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand135` | Hand chunk 135 (CEngineLandscapeMemoryManager .. CEnginePrimitiveManager2DStaticMeshes): 28 of 40 byte-exact | - | 12 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand136` | Hand chunk 136 (CEnginePrimitiveManagerAnimatedMeshesBase .. CEngineSceneGrid): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand138` | Hand chunk 138 (CEngineWeatherRenderer .. CFactionDatabase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -212,7 +213,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **342 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **345 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -549,6 +550,12 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00bb6b50 CEnginePrimitiveManagerWeatherMask::RenderSubPrimitive DIFFER(136v136): retail pipelines the ten sphere/box dword loads one store ahead and loads Flags before the matrix `rep movsd`; the lane copies sequentially | tried: member-initialising ctor (float by value -> x87; const float& best), default ctor + struct assignments, memberwise C3DVector operator= | next: lane gap: scheduling only
 - 00bb6ab0 CEnginePrimitiveManagerWeatherMask::RenderPrimitive DIFFER(152v152): retail squares Y, Z, then X (`fld st(1) ; fmul st(2) ; fld st(1) ; fmul st(2)`); the lane squares Z, Y, X | tried: x+y+z, x+(y+z), y+z+x, by-value Magnitude(x,y,z) (the same source matches sibling 0x00BBA340) | next: lane gap: x87 operand order (or an unidentified helper that keeps Y on top)
 - 0042dd28 CNewFrontendGameComponent::CleanUpInterfaces (catalogued CEngineResourceManager::ChangeScene) DIFFER(139v139): retail zero register ebp and manager local ebx; the lane swaps them | tried: speed TU, optimize("s") (best), no manager local, function-scope manager local | next: lane gap: callee-saved register assignment
+
+
+#### `2026-10-15_linux_hand138` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand138/differ/`)
+- 00b3edf0 CEngineWorldMap::LinkMapToWorld DIFFER(131v131): retail `mov ebx,[ecx+18h]` before the map words, unshifted start X kept in edi and shifted after the Y bounds, row index in ebx; ours `mov edi,[ecx+18h]`, start X shifted at once, x/y registers swapped in the loops | tried: natural expressions (short and long index), offset/position locals, unshifted bounds shifted later | next: lane gap: register allocation (same instructions, registers swapped)
+- 00b3ee80 CEngineWorldMap::UnlinkMapFromWorld DIFFER(119v119): retail `mov ebx,edx ; ... ; sub ebx,edi` (start X subtracted after loading the Y words, shifted after start Y); ours `sub edx,edi ; mov edi,[ecx+1Ch] ; sar edx,5` before the Y loads | tried: natural expressions, four-argument SCellBox constructor (141 bytes, worse) | next: lane gap: scheduling (same instructions, other order)
+- 00530ec0 CDefOwner00530ec0::GetDef DIFFER(99v98): retail `mov ecx,[esp+4] ; ... ; mov edx,[ecx+4] ; inc edx ; mov eax,edx ; dec eax ; mov [ecx+4],edx ; mov [ecx+4],eax` vs ours `mov eax,[esp+4] ; mov ecx,eax ; mov edx,[eax+4] ; add eax,4 ; inc edx ; mov [eax],edx ; dec edx ; mov [eax],edx` | tried: CDefPointer local returned by value (reloads the slot after the inc), ternary manager (Get() hoisted above the pushes), if/else on a manager local, frontEnd local + hand release through an inline guard (manager part now byte-exact) | next: build the returned pointer straight from the out slot (`CDefPointer(const SDefSlot&)`) or let the guard read the slot itself so the object is loaded into ecx
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

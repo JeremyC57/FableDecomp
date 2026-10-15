@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b52090	RELOCATION_MATCH	142v142	PASS	C3DBoundingSphere centre through a by-value getter (x/y on FPU, z dword-copied)
+00512c70	RELOCATION_MATCH	107v107	PASS	label wrong: /Gr fastcall factory of a 5-byte flag record; named counted-pointer local copied out (merged inc/dec)
+0088b910	MATCH	101v101	PASS	label wrong: FindLastRecordBelow over 12-byte keyed records at +0x94
+009d58d0	RELOCATION_MATCH	152v152	PASS	label wrong: CBankFileAsync::CreateEntry (inlined CBankFileAsyncEntry ctor 0x9D5260)
+00b3edf0	DIFFER	131v131	-	parked: register allocation/scheduling only (offset/start-X registers swapped)
+00b3ee80	DIFFER	119v119	-	parked: scheduling only (start X subtracted after the Y words in retail)
+00b3ff70	RELOCATION_MATCH	142v142	PASS	real CreateNewBankMap: state block counted-pointer local passed by value to AddEntry
+00b40000	RELOCATION_MATCH	108v108	PASS	label wrong (no args): CloseStaticMap of every map, water renderer and the bank file
+00b42c70	RELOCATION_MATCH	154v154	PASS	DeleteAllMaps: DeleteMap(i) loop + Dinkumware resize(0) with T() default + delete Map
+00d77340	RELOCATION_MATCH	149v149	PASS	label wrong: CQ_HangingTreeGoodScript::StoreGuardsHealth (GetHealth slot 264, push_back)
+00c647b0	RELOCATION_MATCH	129v129	PASS	level read once into a local; chained current = deferred stores
+00c64940	RELOCATION_MATCH	115v115	PASS	sibling of 00c647b0 without deferred copy, dirty bit 0x400000
+006b2b10	RELOCATION_MATCH	115v115	PASS	tick-state fields modelled pack(1) (OldWindDirection at +0xc61)
+006b3600	RELOCATION_MATCH	124v124	PASS	label wrong: SetThemeWeight (calls 0x886D70)
+006b3680	RELOCATION_MATCH	122v122	PASS	SetThemeWeight on all six channels
+006b3800	RELOCATION_MATCH	122v122	PASS	four-argument TransitionToTheme
+006b38d0	RELOCATION_MATCH	120v120	PASS	label wrong: TransitionToThemeAllChannels (calls StartThemeTransition)
+008860d0	RELOCATION_MATCH	134v134	PASS	BGRA texel to float colour; 4-arg ctor evaluated right to left
+00885070	MATCH	149v149	PASS	params block built in a frame local, POD rep movsd copies
+00885110	MATCH	138v138	PASS	blur centre then area centre, track = 1
+008851a0	MATCH	101v101	PASS	label shared: this one writes the BLUR centre (SetRadialBlurCenterScreenPos)
+00885210	MATCH	101v101	PASS	area centre, C3DVector(x, y, 0) named local
+00885420	MATCH	116v116	PASS	screen-filter block, POD tint copy
+00a70ff0	RELOCATION_MATCH	140v140	PASS	label wrong: SGI __linear_insert over pair<CCharString, 52-byte POD> (/Gr)
+00c6ca20	RELOCATION_MATCH	150v150	PASS	label wrong: CVtable_012bed7c ctor (aligned buffer pointer, memset records, unrolled clear loop)
+006b84e0	RELOCATION_MATCH	101v101	PASS	default CRadialBlurPositionParams (C3DVector members with inline ctors)
+006b85d0	RELOCATION_MATCH	102v102	PASS	screen-filter block passed to InsertScreenFilterEntry
+008889c0	RELOCATION_MATCH	150v150	PASS	1 - BaseWeight > 1/1024 gate; loop from entry 1
+00886160	RELOCATION_MATCH	111v111	PASS	found arm returns through the entry-captured begin pointer
+00530ec0	DIFFER	99v98	-	parked: release register shape (object in eax + add eax,4 vs retail ecx); label wrong (hidden-return def getter)
+008116d0	RELOCATION_MATCH	129v129	PASS	IS_THING_ALIVE + forceinlined out-param GetInterface(0x1a), base vtable last
+00453178	RELOCATION_MATCH	152v152	PASS	#pragma optimize("s",on): eax-only leas and fldz/fld1 shared fstp clamp
+00757500	RELOCATION_MATCH	99v99	PASS	vector TransferBinaryOut, 44-byte elements, count ? first : this
+0081ace0	RELOCATION_MATCH	102v102	PASS	same template, 24-byte elements
+0081ad50	RELOCATION_MATCH	102v102	PASS	same template, 40-byte elements
+0086f590	RELOCATION_MATCH	100v100	PASS	same template, 12-byte elements
+00d37330	RELOCATION_MATCH	156v156	PASS	handle pointer local; rotated StartScriptingEntity wait loop; tail-jump IsDone
+00d36860	RELOCATION_MATCH	109v109	PASS	by-value CScriptThing copy via the PImp member copy ctor (addressed from this)
+00d3af50	RELOCATION_MATCH	97v97	PASS	SetHeroAge(GetHeroAge()+1); by-value CCharString built in the arg slot
+009ad2e0	RELOCATION_MATCH	98v98	PASS	CRC key kept in a register, search-key copy homed in the dead name slot

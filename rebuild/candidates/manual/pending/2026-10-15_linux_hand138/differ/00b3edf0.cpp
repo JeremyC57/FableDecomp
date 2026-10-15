@@ -1,0 +1,35 @@
+// CEngineWorldMap::LinkMapToWorld(CEngineMap* map, long mapIndex) -- stamp the map's index into every world-grid cell (32-unit cells) its world rectangle covers
+// Grade: DIFFER(131v131) -- register allocation/scheduling only: retail loads MapOffsetX into ebx before the map words, keeps the unshifted start X in edi (shifted after the Y bounds) and the row index in ebx; ours puts the offsets in edi and shifts start X at once (x/y registers swapped in the loops). Tried: natural expressions, offset/position locals, unshifted bounds shifted later, short vs long index.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00B3EDF0, 131 bytes (+ int3 padding).
+// Callees: none.
+// Layout: `this` is engine/CEngineWorldMap.h (Map +0x0c as short*, MapArrayWidth +0x10, MapOffsetX +0x18, MapOffsetY +0x1c --
+//   the retail offsets equal the PDB's this low). CEngineMap is modelled locally: its retail MapWidth / MapHeight / WorldPosX /
+//   WorldPosY (unsigned short) sit at +0x5c/+0x5e/+0x60/+0x62, 4 below the PDB (the retail STLport list iterator before them
+//   is narrower), so engine/CEngineMap.h does not fit.
+// Shape: the four cell bounds are signed shifts (`sar 5`) of long differences of zero-extended words; the row index is
+//   spilled to the dead argument slot across the inner loop, the row base `MapArrayWidth * y` is re-multiplied for every
+//   cell (both members re-read after each store through `short*`).
+#include "engine/CEngineWorldMap.h"
+
+struct CEngineMap_00b3edf0 {
+    unsigned char  _pad0[0x5c];
+    unsigned short MapWidth;                     // +0x5c
+    unsigned short MapHeight;                    // +0x5e
+    unsigned short WorldPosX;                    // +0x60
+    unsigned short WorldPosY;                    // +0x62
+};
+
+struct CEngineWorldMapLink : CEngineWorldMap {
+    void LinkMapToWorld(CEngineMap_00b3edf0* map, long mapIndex);
+};
+
+void CEngineWorldMapLink::LinkMapToWorld(CEngineMap_00b3edf0* map, long mapIndex)
+{
+    long endX = (map->WorldPosX + map->MapWidth - MapOffsetX) >> 5;
+    long startX = (map->WorldPosX - MapOffsetX) >> 5;
+    long endY = (map->WorldPosY + map->MapHeight - MapOffsetY) >> 5;
+    long startY = (map->WorldPosY - MapOffsetY) >> 5;
+    for (long y = startY; y < endY; ++y)
+        for (long x = startX; x < endX; ++x)
+            static_cast<short*>(Map)[MapArrayWidth * y + x] = mapIndex;
+}
