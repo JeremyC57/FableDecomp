@@ -1,0 +1,12 @@
+# Chunk 142 lessons
+- A CGameScriptThing component accessor is `if (PThing.GetPItem() && !PThing.GetPItem()->dead)` then the out-parameter `GetInterface(&tc, kind)` (component stays in eax); a flag member read as `mov al,[eax+N]` is `bool` (an `unsigned char` adds `test ; setne`).
+- A by-value class argument is built in the argument area (`sub esp,8 ; mov ecx,esp`) only when its copy constructor is DECLARED; with the implicit one VC builds a frame temporary and pushes its words.
+- `fld x ; fmul [0.0f]` (the variable first) comes from a LITERAL `0.0f` component; an `extern const float` zero loads the constant first.
+- `if (max <= v) max = v` gives `cmp max,v ; ja`; the `v >= max` spelling swaps the compare operands (`cmp v,max ; jb`).
+- `p ? p->Sizeof() + 4 : 4` keeps the +4 in both arms (`add eax,4` / `mov eax,4`); `(p ? p->Sizeof() : 0) + 4` folds it into the next constant.
+- A sum whose fixed part retail computes BEFORE a conditional call (edi live across the test) is a local assigned first: `size = sizeof(*this) + cap*4; Set(size + ptr.Sizeof() - 8);`.
+- A non-polymorphic class's `??_G` needs a `__forceinline` destructor, else `??_G` calls `??1` out of line (and the leaf `??_GCX` also matches `??_GCXData`: use `??_GCX@@`).
+- An intrusive-pointer reset that tests and decrements through ecx (`mov ecx,[esi+8] ; test ecx,ecx ; dec [ecx+4]`) is a local pointer copy; the member form re-reads after the decrement.
+- A CCharString argument built before the interface vtable load is a NAMED local in its own `{}` block; a temporary in the call is built after `mov edi,[ecx]`.
+- An early-out `if (!p) return 0;` placed before the dereference gives retail's fall-into-zero-exit layout where `if (p) return p->x; return 0;` jumps over.
+- Propagated labels: 7 of 40 rows in this chunk were other classes/functions (see NOTES.md label corrections); "IsDaybreak", "ProcessLoading", "UnInitialise" and "AddGossipFactionToCategory" are all byte-twin propagations.

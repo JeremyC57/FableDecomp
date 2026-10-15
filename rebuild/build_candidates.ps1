@@ -230601,6 +230601,244 @@ $catalog = @(
         TestSource = '00/f2/CFeatDef_CFeatDef_00f2d270_test.cpp'
         PassPattern = '00f2d270_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041c0e0'
+        Module = 'CGraphicFrame'
+        Source = '00/41/CGraphicFrame_operator_0041c0e0.cpp'
+        TestSource = '00/41/CGraphicFrame_operator_0041c0e0_test.cpp'
+        PassPattern = '0041c0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055c950'
+        Module = 'NUISystem::CObservable'
+        Source = '00/55/NUISystemCObservable_RemoveAllObservers_0055c950.cpp'
+        TestSource = '00/55/NUISystemCObservable_RemoveAllObservers_0055c950_test.cpp'
+        PassPattern = '0055c950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005faba0'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_IsPositionInsideClipEdges_005faba0.cpp'
+        TestSource = '00/5f/CTCInventoryMap_IsPositionInsideClipEdges_005faba0_test.cpp'
+        PassPattern = '005faba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bb720'
+        Module = 'CGameTimeManager'
+        Source = '00/6b/CGameTimeManager_FastForwardTimeTo_006bb720.cpp'
+        TestSource = '00/6b/CGameTimeManager_FastForwardTimeTo_006bb720_test.cpp'
+        PassPattern = '006bb720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bbba0'
+        Module = 'CGameTimeManager'
+        Source = '00/6b/CGameTimeManager_Load_006bbba0.cpp'
+        TestSource = '00/6b/CGameTimeManager_Load_006bbba0_test.cpp'
+        PassPattern = '006bbba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cdc70'
+        Module = 'CGroundNavigatorExternalInterface'
+        Source = '00/6c/CGroundNavigatorExternalInterface_GetPThingToNotAvoid_006cdc70.cpp'
+        TestSource = '00/6c/CGroundNavigatorExternalInterface_GetPThingToNotAvoid_006cdc70_test.cpp'
+        PassPattern = '006cdc70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ce670'
+        Module = 'CGroundNavigatorExternalInterface'
+        Source = '00/6c/CGroundNavigatorExternalInterface_CGroundNavigatorExternalInterface_006ce670.cpp'
+        TestSource = '00/6c/CGroundNavigatorExternalInterface_CGroundNavigatorExternalInterface_006ce670_test.cpp'
+        PassPattern = '006ce670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007047d0'
+        Module = 'CGameScriptThingManager'
+        Source = '00/70/CGameScriptThingManager_FrameUpdate_007047d0.cpp'
+        TestSource = '00/70/CGameScriptThingManager_FrameUpdate_007047d0_test.cpp'
+        PassPattern = '007047d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008059f0'
+        Module = 'CGetBestTargetInDirection'
+        Source = '00/80/CGetBestTargetInDirection_CGetBestTargetInDirection_008059f0.cpp'
+        TestSource = '00/80/CGetBestTargetInDirection_CGetBestTargetInDirection_008059f0_test.cpp'
+        PassPattern = '008059f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00829d20'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_IsPositionInsideClipEdges_00829d20.cpp'
+        TestSource = '00/82/CMiniMapDisplay_IsPositionInsideClipEdges_00829d20_test.cpp'
+        PassPattern = '00829d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a1a10'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_AddCreatureScriptedMode_008a1a10.cpp'
+        TestSource = '00/8a/CGameScriptInterface_AddCreatureScriptedMode_008a1a10_test.cpp'
+        PassPattern = '008a1a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cff60'
+        Module = 'CGameScriptThing'
+        Source = '00/8c/CGameScriptThing_CGameScriptThing_008cff60.cpp'
+        TestSource = '00/8c/CGameScriptThing_CGameScriptThing_008cff60_test.cpp'
+        PassPattern = '008cff60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0250'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_CGameScriptThing_008d0250.cpp'
+        TestSource = '00/8d/CGameScriptThing_CGameScriptThing_008d0250_test.cpp'
+        PassPattern = '008d0250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d02c0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_GetDefName_008d02c0.cpp'
+        TestSource = '00/8d/CGameScriptThing_GetDefName_008d02c0_test.cpp'
+        PassPattern = '008d02c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d06c0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_IsUsable_008d06c0.cpp'
+        TestSource = '00/8d/CGameScriptThing_IsUsable_008d06c0_test.cpp'
+        PassPattern = '008d06c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0960'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_SetFriendsWithEverythingFlag_008d0960.cpp'
+        TestSource = '00/8d/CGameScriptThing_SetFriendsWithEverythingFlag_008d0960_test.cpp'
+        PassPattern = '008d0960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d09d0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_GetActivationTriggerStatus_008d09d0.cpp'
+        TestSource = '00/8d/CGameScriptThing_GetActivationTriggerStatus_008d09d0_test.cpp'
+        PassPattern = '008d09d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0a40'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_SetActivationTriggerStatus_008d0a40.cpp'
+        TestSource = '00/8d/CGameScriptThing_SetActivationTriggerStatus_008d0a40_test.cpp'
+        PassPattern = '008d0a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0ac0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_GetCurrentScriptPriority_008d0ac0.cpp'
+        TestSource = '00/8d/CGameScriptThing_GetCurrentScriptPriority_008d0ac0_test.cpp'
+        PassPattern = '008d0ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0b30'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_IsSneaking_008d0b30.cpp'
+        TestSource = '00/8d/CGameScriptThing_IsSneaking_008d0b30_test.cpp'
+        PassPattern = '008d0b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e2a90'
+        Module = 'CGetBestIciclePointForTarget'
+        Source = '00/8e/CGetBestIciclePointForTarget_CGetBestIciclePointForTarget_008e2a90.cpp'
+        TestSource = '00/8e/CGetBestIciclePointForTarget_CGetBestIciclePointForTarget_008e2a90_test.cpp'
+        PassPattern = '008e2a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c8060'
+        Module = 'NGameText::CGroupEntry'
+        Source = '00/9c/NGameTextCGroupEntry_CGroupEntry_009c8060.cpp'
+        TestSource = '00/9c/NGameTextCGroupEntry_CGroupEntry_009c8060_test.cpp'
+        PassPattern = '009c8060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7c00'
+        Module = 'CVectorMap<CCharString,CSymbolInfo,CCompareString>'
+        Source = '00/9e/CVectorMapCCharStringCSymbolInfoCCompareString_Add_009e7c00.cpp'
+        TestSource = '00/9e/CVectorMapCCharStringCSymbolInfoCCompareString_Add_009e7c00_test.cpp'
+        PassPattern = '009e7c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f86c0'
+        Module = 'CGraphicBankManager'
+        Source = '00/9f/CGraphicBankManager_CGraphicBankManager_009f86c0.cpp'
+        TestSource = '00/9f/CGraphicBankManager_CGraphicBankManager_009f86c0_test.cpp'
+        PassPattern = '009f86c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd020'
+        Module = 'CGraphicBankStateBlock'
+        Source = '00/9f/CGraphicBankStateBlock_Set_009fd020.cpp'
+        TestSource = '00/9f/CGraphicBankStateBlock_Set_009fd020_test.cpp'
+        PassPattern = '009fd020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fdde0'
+        Module = 'CGraphicInfo'
+        Source = '00/9f/CGraphicInfo_Sizeof_009fdde0.cpp'
+        TestSource = '00/9f/CGraphicInfo_Sizeof_009fdde0_test.cpp'
+        PassPattern = '009fdde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fe620'
+        Module = 'CGraphicInfoFrame'
+        Source = '00/9f/CGraphicInfoFrame_BeginLoading_009fe620.cpp'
+        TestSource = '00/9f/CGraphicInfoFrame_BeginLoading_009fe620_test.cpp'
+        PassPattern = '009fe620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a014d0'
+        Module = 'CGraphicDataBank'
+        Source = '00/a0/CGraphicDataBank_GetGraphicMaxWidth_00a014d0.cpp'
+        TestSource = '00/a0/CGraphicDataBank_GetGraphicMaxWidth_00a014d0_test.cpp'
+        PassPattern = '00a014d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a01540'
+        Module = 'CGraphicDataBank'
+        Source = '00/a0/CGraphicDataBank_GetGraphicMaxHeight_00a01540.cpp'
+        TestSource = '00/a0/CGraphicDataBank_GetGraphicMaxHeight_00a01540_test.cpp'
+        PassPattern = '00a01540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a63d20'
+        Module = 'CGenericVarRef'
+        Source = '00/a6/CGenericVarRef_ReadFromParserAsFloat_00a63d20.cpp'
+        TestSource = '00/a6/CGenericVarRef_ReadFromParserAsFloat_00a63d20_test.cpp'
+        PassPattern = '00a63d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a641a0'
+        Module = 'CGenericVar'
+        Source = '00/a6/CGenericVar_ReadFromParserAsFloat_00a641a0.cpp'
+        TestSource = '00/a6/CGenericVar_ReadFromParserAsFloat_00a641a0_test.cpp'
+        PassPattern = '00a641a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2ed60'
+        Module = 'CGraphicFrame'
+        Source = '00/b2/CGraphicFrame_ScalarDeletingDestructor_00b2ed60.cpp'
+        TestSource = '00/b2/CGraphicFrame_ScalarDeletingDestructor_00b2ed60_test.cpp'
+        PassPattern = '00b2ed60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1eae0'
+        Module = 'CGuardToHelpDefend'
+        Source = '00/d1/CGuardToHelpDefend_Init_00d1eae0.cpp'
+        TestSource = '00/d1/CGuardToHelpDefend_Init_00d1eae0_test.cpp'
+        PassPattern = '00d1eae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee8fe0'
+        Module = 'CGlobal_WatchForHeroDeathScript'
+        Source = '00/ee/CGlobalWatchForHeroDeathScript_WatchForHeroDeath_00ee8fe0.cpp'
+        TestSource = '00/ee/CGlobalWatchForHeroDeathScript_WatchForHeroDeath_00ee8fe0_test.cpp'
+        PassPattern = '00ee8fe0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

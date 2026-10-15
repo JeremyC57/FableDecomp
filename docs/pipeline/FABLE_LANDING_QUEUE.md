@@ -166,6 +166,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand139` | Hand chunk 139 (CFadeinSummoner .. CGameScriptInterface): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand140` | Hand chunk 140 (CGameScriptInterface .. CGameScriptInterface): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand141` | Hand chunk 141 (CGameScriptInterface .. CGameScriptInterface): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand142` | Hand chunk 142 (CGameScriptInterface .. CGuiVarTransferStruct): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -217,7 +218,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **366 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **372 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -593,6 +594,15 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0089bbc0 CGameScriptInterface::EntityPlayObjectAnimation DIFFER(113v130): retail loads the component into ecx (`mov ecx,[eax+4] ; mov al,[ecx+0Ch]`) and tail-duplicates `inc ; push loop ; push id ; push anim ; call PlayAnimation` into both arms of `m_hasId ? m_id : -1` (`or eax,-1 ; inc eax` unfolded); ours joins with a jmp | tried: local + ternary, inline PlayNextAnimation member, if/return GetId, __forceinline | next: an out-of-line-defined (auto_inline off) GetId above the caller, or the id expression as a separate inline returning `GetId() + 1`
 - 0089fe20 CGameScriptInterface::SetVillageAttitude DIFFER(133v133): register choice only -- the attitude switch runs in eax (`mov eax,[esp+0Ch] ; sub eax,0 ; dec eax`) in retail, edx in ours | tried: switch in the body, switch in a (__forceinline) component member | next: lane gap: register allocation
 - 008a0720 CGameScriptInterface::EntityFadeOut DIFFER(157v155): register choice only -- retail keeps the fade component in ecx (`mov ecx,[eax+4]` / `mov ecx,esi ; test ecx,ecx`), ours in eax plus a `mov ecx,eax` before the call | tried: temporary name, named local, name in its own block before the null test, inline FadeOut member | next: make the GetTC path produce the component as `this` of an inline (`GetTC(...)->...` chain) so it lands in ecx; else lane gap: register allocation
+
+
+#### `2026-10-15_linux_hand142` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand142/differ/`)
+- 008d0190 CGameScriptThing::FrameUpdate DIFFER(112v112): register swap only -- retail keeps this in edi and &PThing in esi, ours the reverse | tried: direct member chain, inline CThing GetPosition/GetAngleXY accessors (fixed the vcall load), inline IsThingAlive member | next: lane gap: register allocation
+- 008a7d60 CGameScriptInterface::GetThingWithScriptName DIFFER(135v151): retail keeps the vector start in edi with ebx as zero and gives each return its own epilogue (null path `cmp edi,ebx ; je` before free, found path frees without a test); ours merges both returns into one null-tested free | tried: if(empty) first, if(!empty) first, STLport _Vector_base split | next: a found-path form where VC can prove the start non-null (e.g. `CThing** first = things.begin(); if (first != things.end()) { CThing* t = *first; ... }`), or a dtor without the null test plus an explicit test on the empty path
+- 0070d100 CGraphicBankManager::ProcessLoading DIFFER(159v158): retail homes both the pushed `&entry` value and the empty insert tag in the dead `out` argument slot (no frame); ours adds a `push ecx` frame word for the value, shifting the loop pad | tried: rvalue cast argument, __forceinline by-value helper, named local | next: lane gap: two temporaries sharing one dead argument slot (as 0x005383DD)
+- 009fd700 CGraphicInfo::CGraphicInfo DIFFER(126v126): scheduling only -- retail emits `push ebp ; mov ebp,[esp+10h]` after the PixelFormat/bit-field loads and `push edi` after the bit-field store; ours hoists them | tried: init-list header ctor, chained body assignments (reverses the stores), separate body assignments | next: lane gap: prologue push scheduling
+- 006cdd50 CGroundNavigatorExternalInterface::~CGroundNavigatorExternalInterface DIFFER(176v155): body and loops match; retail pushes edi in the prologue (before the mask test) so every path shares one epilogue, ours pushes it after the null test and emits separate early-out epilogues | tried: STLport list::remove, find + while(next != end), for(;;) with an explicit next test, for(;;) with the single find | next: route the absent-component path to the same exit (drop the separate `if (obstacles)` split or move the sweep into an auto_inline(off) helper defined above)
+- 00aeef40 CGuiVarTransferStruct::Add DIFFER(172v146): retail keeps the counted-pointer temporary in registers (Data edi, Info esi) through the in-place copy, the reference bump and the release although its address goes to the insert; ours re-reads both words from the frame everywhere | tried: temporary argument, named local, init-list counted-pointer ctor | next: define the insert (0x00AF0FA0) above under auto_inline(off) so VC knows it does not write the value, else lane gap: store-to-load forwarding of an address-taken local
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008a1a10	RELOCATION_MATCH	159v159	PASS	CGameScriptInterface::AddCreatureScriptedMode
+008a7d60	DIFFER	135v151	-	CGameScriptInterface::?GetThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptT -- retail splits the two returns with separate vector frees (no null test on the found path)
+009e7c00	RELOCATION_MATCH	106v106	PASS	CVectorMap<CCharString,CSymbolInfo,CCompareString>::Add
+008cff60	RELOCATION_MATCH	123v123	PASS	CGameScriptThing::CGameScriptThing
+008d0190	DIFFER	112v112	-	CGameScriptThing::FrameUpdate -- register swap this/&PThing (esi/edi)
+008d0250	RELOCATION_MATCH	107v107	PASS	CGameScriptThing::CGameScriptThing
+008d02c0	RELOCATION_MATCH	132v132	PASS	CGameScriptThing::GetDefName
+008d06c0	RELOCATION_MATCH	98v98	PASS	CGameScriptThing::IsUsable
+008d0960	RELOCATION_MATCH	99v99	PASS	CGameScriptThing::SetFriendsWithEverythingFlag
+008d09d0	RELOCATION_MATCH	106v106	PASS	CGameScriptThing::GetActivationTriggerStatus
+008d0a40	RELOCATION_MATCH	123v123	PASS	CGameScriptThing::SetActivationTriggerStatus
+008d0ac0	RELOCATION_MATCH	97v97	PASS	CGameScriptThing::GetCurrentScriptPriority
+008d0b30	RELOCATION_MATCH	99v99	PASS	CGameScriptThing::IsSneaking
+007047d0	RELOCATION_MATCH	130v130	PASS	CGameScriptThingManager::FrameUpdate
+005faba0	RELOCATION_MATCH	118v118	PASS	CTCInventoryMap::IsPositionInsideClipEdges
+006bb720	RELOCATION_MATCH	101v101	PASS	CGameTimeManager::FastForwardTimeTo
+006bbba0	RELOCATION_MATCH	129v129	PASS	CGameTimeManager::Load
+00829d20	RELOCATION_MATCH	106v106	PASS	CMiniMapDisplay::IsPositionInsideClipEdges
+00a641a0	RELOCATION_MATCH	133v133	PASS	CGenericVar::ReadFromParserAsFloat
+00a63d20	RELOCATION_MATCH	137v137	PASS	CGenericVarRef::ReadFromParserAsFloat
+008e2a90	RELOCATION_MATCH	122v122	PASS	CGetBestIciclePointForTarget::CGetBestIciclePointForTarget
+008059f0	RELOCATION_MATCH	158v158	PASS	CGetBestTargetInDirection::CGetBestTargetInDirection
+00ee8fe0	RELOCATION_MATCH	153v153	PASS	CGlobal_WatchForHeroDeathScript::WatchForHeroDeath
+0055c950	RELOCATION_MATCH	98v98	PASS	NUISystem::CObservable::RemoveAllObservers
+0070d100	DIFFER	159v158	-	CGraphicBankManager::ProcessLoading -- lane gap: value and insert tag share the dead argument slot in retail
+009f86c0	RELOCATION_MATCH	111v111	PASS	CGraphicBankManager::~CGraphicBankManager
+009fd020	MATCH	141v141	PASS	CGraphicBankStateBlock::Set
+00a014d0	MATCH	102v102	PASS	CGraphicDataBank::GetGraphicMaxWidth
+00a01540	MATCH	102v102	PASS	CGraphicDataBank::GetGraphicMaxHeight
+0041c0e0	RELOCATION_MATCH	106v106	PASS	CGraphicFrame::operator=
+00b2ed60	RELOCATION_MATCH	114v114	PASS	CGraphicFrame::ScalarDeletingDestructor
+009fd700	DIFFER	126v126	-	CGraphicInfo::CGraphicInfo -- push ebp/push edi scheduling only
+009fdde0	RELOCATION_MATCH	137v137	PASS	CGraphicInfo::Sizeof
+009fe620	RELOCATION_MATCH	120v120	PASS	CGraphicInfoFrame::BeginLoading
+006cdc70	RELOCATION_MATCH	135v135	PASS	CGroundNavigatorExternalInterface::GetPThingToNotAvoid
+006cdd50	DIFFER	176v155	-	CGroundNavigatorExternalInterface::~CGroundNavigatorExternalInterface -- prologue push edi / shared epilogue; body matches
+006ce670	RELOCATION_MATCH	153v153	PASS	CGroundNavigatorExternalInterface::CGroundNavigatorExternalInterface
+009c8060	RELOCATION_MATCH	130v130	PASS	NGameText::CGroupEntry::CGroupEntry
+00d1eae0	RELOCATION_MATCH	160v160	PASS	CGuardToHelpDefend::Init
+00aeef40	DIFFER	172v146	-	CGuiVarTransferStruct::Add -- retail forwards the address-taken counted-pointer temporary in registers
