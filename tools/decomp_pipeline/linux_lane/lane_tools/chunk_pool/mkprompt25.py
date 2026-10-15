@@ -1,7 +1,7 @@
 # usage (repo root, S exported): python3 mkprompt25.py 61 62 ...  -- wave 25: build $S/w22/agentNN (scripts, dis_all.txt, PROMPT.md) for the 16-agent fleet
 import os,sys,csv,collections,subprocess,re
 S=os.environ['S']; TR=open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'brief_tools_rules.md')).read().split('\n')
-sec=lambda a,b: '\n'.join(TR[a-21:b-21])
+sec=lambda a,b: "\n".join(TR[a-21+(2 if a>21 else 0):b-21+2])
 tools=sec(21,49).replace('agent58','agentNN')
 rules=sec(49,83)
 for n in map(int,sys.argv[1:]):

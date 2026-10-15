@@ -6,6 +6,8 @@
 - Manifest labels for callees: `grep -P "^00c3b840\t" rebuild/manifest/functions.tsv` (columns: address, name, module,
   calling convention, return type, parameter count, parameter types...). Labels are propagated across
   byte-identical bodies and often wrong for small functions -- treat them as hints.
+- Callers of any address (call/jmp sites and absolute references): `python3 $S/w23/xref.py <hexva>` -- the quickest way to
+  name a row whose manifest label is propagated (read the callers' landed sources or their vtable slots).
 - Vtables: `grep -i "<vtable va without 0x>" rebuild/manifest/rtti-vtables.tsv` (class, vtable_va, slot, func_va) when present.
 - Landed sources for reference and reuse (already byte-exact): `rebuild/src/compiled/<aa>/<bb>/*_<addr>.cpp`
   (shard by the first two bytes of the address). `grep -rl "0x00C3B840" rebuild/src/compiled | head` finds

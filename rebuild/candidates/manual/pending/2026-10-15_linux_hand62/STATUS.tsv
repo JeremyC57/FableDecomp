@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ec3230	RELOCATION_MATCH	62v62	PASS	CV_RandomPopulationSimScript::ChooseRandomGuardFromDefs (CCharString by value; label COpinionSourceDef rejected)
+0046bf1c	RELOCATION_MATCH	86v86	PASS	CPersistTraits<T>::TransferBinaryIn for a 0x54-byte record (dest = 2nd arg, this unused); label COpinionTransientOffset propagated
+00ac6f50	MATCH	35v35	PASS	COptimisedFace::RemapIndex: three compare/store pairs
+004afc60	DIFFER	65v63	-	CQuestManager::IsCreatureGenerationEnabled (label propagated); entry-block load order/copy only
+00acd900	DIFFER	83v83	-	COptimisedPrimitive::DetectFoldOver(CVertexPairContraction*): loop register colouring only
+00b18020	RELOCATION_MATCH	53v53	PASS	CPSCAttractor ctor: bit-fields in the mem-initialiser list (attempt 2)
+0042d9e0	RELOCATION_MATCH	29v29	PASS	CDefClassBase::CDefClassBase (vtable 0x01230BCC; label CPSCBase propagated): bit clears in the body fold before the vtable store
+00af2620	RELOCATION_MATCH	29v29	PASS	NParticleEngine::CPSCBase::CPSCBase
+00a6f9c0	RELOCATION_MATCH	93v93	PASS	??_G of a non-polymorphic {CCharString, C3DMeshVolume} record via a delete helper; label CPSCEmitterGeneric rejected
+00af2970	RELOCATION_MATCH	51v51	PASS	NParticleEngine::CPSCManager ctor: inline vector-map ctor + RegisterPSCs + inline sort-if-dirty
+00b163e0	RELOCATION_MATCH	40v40	PASS	CPSCOrbit::WriteBinary (slot 16)
+00cb27f0	RELOCATION_MATCH	39v39	PASS	DXUT ImeUi InitCompStringData (label CPSCOrbit::DatabaseCopy rejected)
+00b07570	MATCH	93v93	PASS	CPSCSingleSprite::ClearAllPrimitives (vtable slot 29)
+00903610	RELOCATION_MATCH	41v41	PASS	NTCScriptedControl::CActionWait::CActionWait(long) (vtable 0x0128D760; label CPSCSpline propagated)
+00b1aff0	RELOCATION_MATCH	58v58	PASS	CPSCSpline::WriteBinary (slot 16)
+00b215a0	RELOCATION_MATCH	62v62	PASS	CPSCSplineBase::Initialise: position-param data pointer as a named local (attempt 2)
+00b21940	RELOCATION_MATCH	82v82	PASS	CPSCSplineBase::GetPointAtPos
+00b219a0	DIFFER	86v86	-	CPSCSplineBase::GetPointAtIndex: inlined C3DVector copy register colouring only
+00ec09e0	RELOCATION_MATCH	75v75	PASS	CPW_NecklaceDiggingSpot::Main (script coroutine, CGSI slot 578 SetDiggingSpotAsHidden)
+0066c000	RELOCATION_MATCH	29v29	PASS	{buffer,count} destructor: delete[] + two zero stores (label propagated twin)
+0066c150	RELOCATION_MATCH	29v29	PASS	byte-identical twin of 0066c000
+00a62a60	MATCH	22v22	PASS	CPackedUIntArray::Sizeof: 0x10 + ceil(bits*count/32)*4
+009fcd40	RELOCATION_MATCH	63v63	PASS	CVolumeTexture forwarder GetVolumeLevel(level).Helper(arg); CVolume temp dtor inline; label CPaintMapDialog::InitNumberBox rejected
+00a69550	RELOCATION_MATCH	63v63	PASS	twin of 009fcd40 with helper 0x00A67450
+00430370	RELOCATION_MATCH	51v51	PASS	CParentDefClassBase ctor: inlined CDefClassBase/CDefString/CVectorMap ctors; retail base 0x39 bytes (12-byte vector map)
+0045c54e	RELOCATION_MATCH	93v93	PASS	CSoundThemeDef::operator= (Copy thunk slot 19 + PDB layout); CRGBColour must be 4-byte aligned
+0045c614	RELOCATION_MATCH	57v57	PASS	CCreatureGenerationFamilyDef::operator= (slot-19 Copy thunk + PDB layout)
+0045d505	RELOCATION_MATCH	93v93	PASS	CCameraManagerDef::operator=
+0045d5d3	RELOCATION_MATCH	64v64	PASS	CHeroPostcardGeneratorDef::operator=: byte-aligned (pack 1) C2DVector/C3DVector at +0x39, float padded to +0x58
+0045dd05	RELOCATION_MATCH	39v39	PASS	COpinionReactionMaskDef::operator= (bool at +0x39 after the 0x39-byte base)
+0045e187	RELOCATION_MATCH	39v39	PASS	COpinionDeedMaskDef::operator=
+0045e660	RELOCATION_MATCH	52v52	PASS	COpinionPersonalityDef::operator=: hand-written, no base assignment, owned 0xb4-byte trait table copied in place last
+004600cb	RELOCATION_MATCH	75v75	PASS	CSpecialAbilitiesDrainLifeDef::operator=
+00460131	RELOCATION_MATCH	57v57	PASS	CSpecialAbilitiesHealLifeDef::operator=
+00460185	RELOCATION_MATCH	60v60	PASS	CSpecialAbilitiesGhostSwordDef::operator=: float[4] element loop through the FPU
+004601ea	RELOCATION_MATCH	81v81	PASS	CSpecialAbilitiesTurncoatSpellDef::operator=
+00460256	RELOCATION_MATCH	51v51	PASS	CSpecialAbilitiesFireballSpellDef::operator=
+00460457	RELOCATION_MATCH	93v93	PASS	CSpecialAbilitiesSummonSpellDef::operator=
+0046051d	RELOCATION_MATCH	81v81	PASS	CSpecialAbilitiesElectrocutedEffectDef::operator=
+00460a19	RELOCATION_MATCH	45v45	PASS	CSpecialAbilitiesCreatureTintDef::operator=

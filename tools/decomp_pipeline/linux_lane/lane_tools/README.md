@@ -12,6 +12,7 @@ workflow around `verify_and_land.py`. They contain no retail data. Every one exp
 | `gp.py payload.json oracle.tsv [addr...]` | grade a whole payload through the lane with the lander's pragma/flag sweep. |
 | `xdis.py <va-hex> <len-hex>` | Capstone disassembly straight from `Fable.exe` (path inside: `$S/dl/game/Fable The Lost Chapters/Fable.exe`). |
 | `fun.py 0x<va>` | an EH-framed body's handler, unwind states and funclets. |
+| `xref.py <va-hex> ...` | call/jmp sites and absolute references to an address (naming rows with propagated labels). |
 | `rstr.py 0x<va>` / `iat.py 0x<iat-slot>` | a string literal / an import name at an address. |
 | `next.py N [x]` | the next open EH-framed bodies by size (needs `$S/batch/eh_open_oracle.tsv` from `mk_eh_oracle.py` and `$S/w23/parked.txt`). |
 | `pick.py`, `info.py`, `skel.py`, `famscan.py` | target picking, batch annotation, opcode-skeleton lookup of landed twins, family scanning (`famscan.py 512` writes the families JSON the chunk cutter reads). |
