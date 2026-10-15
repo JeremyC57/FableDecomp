@@ -24645,6 +24645,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00836de0	FlipTrackDirection	CThingTrackNode	__thiscall	void	1	CThingTrackNode *	1	yes	accepted									
 00836ee0	SetTrackName	CThingTrackNode	__thiscall	void	2	CThingTrackNode *,CCharString *	1	yes	accepted									
 00837040	CThingTrackNode::vfunc_27	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00837050	CThingTrackNode::Piece_00837050	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00837060	DrawGetDrawSizeX	CThingTrackNode	__thiscall	void	3	CThingTrackNode *,float,float *	1	yes	accepted									
 00837220	UpdateFacingDirection	CThingTrackNode	__thiscall	void	1	CThingTrackNode *	1	yes	accepted									
 008374f0	CThingTrackNode::vfunc_25	CThingTrackNode	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00613510	RELOCATION_MATCH	43v43	PASS	init list; Region store before the string ctor; PDB names
+0052e5d0	MATCH	55v55	PASS	all members as BODY assignments in retail store order (zoom, position, colour R/G/B/A, time, type, flag)
+00e0d640	MATCH	51v51	PASS	virtual float call + POD position copy from a returned reference
+00406820	RELOCATION_MATCH	90v90	PASS	four independent `if (v >= K) q = n` (dead first test kept as jne +0)
+00406890	RELOCATION_MATCH	51v51	PASS	known-max case as the if body, `return 3` fall-through last
+00406d90	DIFFER	89v84	-	retail width loop un-rotated (jmp back); lane rotates it
+0040b690	RELOCATION_MATCH	49v49	PASS	resolution setter (+0x48/+0x104); label SetAntialiasing propagated
+0040d2a0	RELOCATION_MATCH	69v69	PASS	singleton Get: null-checked new into counted-pointer operator=
+0040d2f0	RELOCATION_MATCH	89v89	PASS	two inlined single-flag setters (FP/PC bow Y/Z)
+0040d400	RELOCATION_MATCH	44v44	PASS	if/else Load/Save with duplicated epilogues
+0041a0c0	RELOCATION_MATCH	17v17	PASS	static __fastcall CWideString getter (hidden result in ecx); label propagated
+0041a4c0	RELOCATION_MATCH	41v41	PASS	static __fastcall: documents folder + literal via __fastcall operator+; label propagated
+007d7c10	RELOCATION_MATCH	23v23	PASS	thiscall by-value CWideString(L"") return; slot 42 of CTCTavernGameSpotTheAddition
+00913960	MATCH	42v42	PASS	STLport deque<T(0x30)>::back() with the IMPLICIT iterator copy (frame kept); label propagated
+00be24d0	DIFFER	36v54	-	16-byte frame temporary with surviving dead zero stores; every form SROAs it
+00be2540	DIFFER	38v56	-	ctor twin of 00be24d0, same frame-temporary gap
+00d12cb0	RELOCATION_MATCH	74v74	PASS	CVtable_012C9E68 ctor: novtable intermediate base + CTimer member ctor
+00d66e90	RELOCATION_MATCH	73v73	PASS	WAIT macro on QuestComplete||QuestFinished + conditional flag
+00d7c700	RELOCATION_MATCH	62v62	PASS	CVtable_012D3994 ctor (timer +0x58, three zero words)
+00e00690	RELOCATION_MATCH	59v59	PASS	CVtable_012DF16C ctor (timer +0x48, CCharString +0x78)
+00e1feb0	RELOCATION_MATCH	60v60	PASS	def pointer local before rand(), max re-read through the global, named difference local
+00e2ab60	RELOCATION_MATCH	85v85	PASS	CVtable_012E2428 ctor: CCharString[5] inline counted loop
+00e2ba50	RELOCATION_MATCH	95v95	PASS	while(!terminating){ if(cond){...tail IsActiveThreadTerminating} NewScriptFrame }
+00e2bac0	RELOCATION_MATCH	77v77	PASS	good-ending rewards (MoralityGood +0x2b4); catalog name shared with the evil twin
+00e2bb10	RELOCATION_MATCH	77v77	PASS	evil-ending rewards (MoralityEvil +0x2b0)
+00e50100	RELOCATION_MATCH	73v73	PASS	WAIT macro on three flags + QuestFinished store
+00e32350	RELOCATION_MATCH	93v93	PASS	real CV_ArcheryCompetitionScript ctor: two CTimers + CCharString[10]
+00e32ef0	MATCH	63v63	PASS	four GSI calls through Game re-read per call
+00e33000	MATCH	48v48	PASS	UpdateQuestInfoCounter(id, score, -1) + fild float online score
+00e37cf0	RELOCATION_MATCH	84v84	PASS	for i<5 with per-arm terminate check, *(begin()+i) vector access
+00e38290	RELOCATION_MATCH	48v48	PASS	by-value CCharString param, `!(a != b)` loop break
+00e46bd0	RELOCATION_MATCH	93v93	PASS	STLport _Vector_base/_STLP_alloc_proxy vector + CScriptThing PImp member object
+00b2fa40	RELOCATION_MATCH	66v66	PASS	STLport erase(begin(),end()) with __copy_trivial (cmp eax,eax kept); label propagated
+00ea3490	RELOCATION_MATCH	66v66	PASS	WAIT macro on two flags + unconditional flag store
+00e5d1f0	RELOCATION_MATCH	70v70	PASS	statement order around SetTimer(CommentaryTimer, 0)
+00c12040	RELOCATION_MATCH	82v82	PASS	`if (a && b)` with tail-jump timer reset; engine-module body, labels propagated
+00e6da40	RELOCATION_MATCH	63v63	PASS	if/else with terminate check first; TortureType = TortureCount++
+00e75680	RELOCATION_MATCH	73v73	PASS	statement-order stores around CCharString operator=
+00e7a580	RELOCATION_MATCH	52v52	PASS	WAIT macro on StageNumber, trailing terminate check as tail jump
+00e86e10	RELOCATION_MATCH	78v78	PASS	nested ifs, each action behind the terminate check; inc dword ptr

@@ -138,6 +138,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand111` | Hand chunk 111 (CThingHolySite .. CThingPhysical): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand112` | Hand chunk 112 (CThingPhysical .. CThingTrackNode): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand113` | Hand chunk 113 (CThingTrackNode .. CUIMiniMapMarker): 38 of 40 byte-exact | - | 1 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand114` | Hand chunk 114 (CUIMiniMapMarker .. CV_FisticuffsClubScript): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -185,7 +186,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **192 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **195 parked rows** for the Fable retry pass.
 
 ### Skipped rows (9 open of 27 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -194,7 +195,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
-| `00837040` | multi | open | 00837040:12 00837050:12 | `2026-10-15_linux_hand113` | two functions in the row (0x837040 tail-jump + 0x837050 getter) |
+| `00837040` | multi | in-chunk:905 | 00837040:12 00837050:12 | `2026-10-15_linux_hand113` | two functions in the row (0x837040 tail-jump + 0x837050 getter) |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
@@ -304,6 +305,12 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 
 #### `2026-10-15_linux_hand113` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand113/differ/`)
 - 00c9cb40 CTopologySizeGrid::Hora DIFFER(18v18): retail reads the grid from eax (`mov ecx,[eax+10h] ; imul ecx,[esp+4] ; add ecx,edx ; mov edx,[eax] ; mov eax,[edx+ecx*4]`), ours from ecx | tried: `__fastcall Hora(grid, column, row)` | next: lane gap: LTCG custom calling convention (object passed in eax; all six callers 0x00C9D553.. are in the same module)
+
+
+#### `2026-10-15_linux_hand114` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand114/differ/`)
+- 00406d90 CUserProfileManager::ClampResolution DIFFER(89v84): retail width walk is un-rotated (`cmp [eax],esi ; jle ; dec edx ; sub eax,10h ; jmp back`, args in edi/esi) where the lane rotates it with a lookahead load (`mov edi,[ecx-10h] ; ... ; jg`) and allocates esi/edx | tried: while, for(;;)+break, pointer walk, optimize("s"), inline and __forceinline helper holding the walk | next: lane gap: loop rotation (GOTCHAS 23f)
+- 00be24d0 CVO_OracleMarker::Init DIFFER(36v54): retail keeps a 0x10-byte frame temporary (`sub esp,10h`) whose four zero stores survive after the member copy through `mov esi,eax` | tried: brace/memberwise/memset local, (x,y,z,w) ctor temporary, implicit/user copy ctor, user operator=, long[4] array member, const-ref inline setter with temporary or named local, float fields | next: lane gap: dead stores of an address-taken 16-byte temporary (or an unknown source form; class unidentified, no references)
+- 00be2540 CVO_OracleMarker::Init DIFFER(38v56): constructor twin of 00be24d0 (`mov eax,ecx`, returns this), same frame-temporary shape | tried: as 00be24d0 | next: same as 00be24d0
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
