@@ -169,9 +169,16 @@ const Settings& get() {
 void set(const Settings& s) {
     std::lock_guard<std::mutex> l(g_lock);
     load();
+    // the frame rate cap is read by Present every frame: a change of the cap alone needs no
+    // SetVideoOptions re-apply (the engine's device reset path) on the game thread
+    const Settings& o = g_settings;
+    const bool sameVideo = s.resolutionScale == o.resolutionScale && s.refreshRate == o.refreshRate && s.antialiasing == o.antialiasing && s.aspect == o.aspect &&
+                           s.landscape == o.landscape && s.model == o.model && s.texture == o.texture && s.shadow == o.shadow && s.effects == o.effects &&
+                           s.brightness == o.brightness && s.vsync == o.vsync && s.drawDistance == o.drawDistance && s.glow == o.glow && s.water == o.water &&
+                           s.weather == o.weather;
     g_settings = s;
     g_seeded = true;
-    g_pending = true;
+    if (!sameVideo) g_pending = true;
     save();
 }
 

@@ -26,6 +26,7 @@
 #include <algorithm>
 #include <atomic>
 #include <cmath>
+#include <cerrno>
 #include <cstdio>
 #include <ctime>
 #include <cstdlib>
@@ -62,6 +63,8 @@ uint64_t g_nsGl = 0;
 struct GlTime { uint64_t t0 = nowNs(); ~GlTime() { g_nsGl += nowNs() - t0; } };
 uint64_t g_nsSwap = 0, g_nsUpload = 0;  // parts of g_nsGl: the swap (vsync wait) and texture uploads
 std::atomic<uint64_t> g_nsSwapRender{0};  // the swap as timed on the render thread
+uint64_t g_nsCapSleep = 0;  // game thread: time slept by the frame rate cap since the last stats line
+unsigned g_capLate = 0;     // frames that ended after the cap's deadline (no sleep) since the last stats line
 
 // ---- COM base ------------------------------------------------------------------------------
 template <class I, const IID* ID> struct Unknown : I {
@@ -2170,6 +2173,13 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         // the readback runs on the render thread (a round trip here would stall the overlap)
         const unsigned fr = frames, draws = statDraws, clears = statClears, progs = static_cast<unsigned>(programs.size());
         const double fMs = frameMs, gMs = glMs, sMs = swapMs, uMs = uploadMs, rMs = gq::renderMs(), wMs = gq::waitMs();
+        // the frame rate cap since the last line: mean sleep per frame, frames that missed its deadline
+        static unsigned capFrom = 0;
+        static uint64_t lineNs = 0;
+        const double cMs = fr > capFrom ? g_nsCapSleep / 1e6 / (fr - capFrom) : 0;
+        const double mMs = fr > capFrom && lineNs ? (lastPresentNs - lineNs) / 1e6 / (fr - capFrom) : 0;  // mean frame since the last line
+        const unsigned capLate = g_capLate, capFps = static_cast<unsigned>(host::gfx::get().fpsCap);
+        g_nsCapSleep = 0, g_capLate = 0, capFrom = fr, lineNs = lastPresentNs;
         const UINT bw = pp.BackBufferWidth, bh = pp.BackBufferHeight;
         const GLuint fbo = mainFbo;
         gq::call([=] {
@@ -2177,7 +2187,7 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
             glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo);
             glReadPixels(static_cast<GLint>(bw / 2), static_cast<GLint>(bh / 2), 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, px);
             const GLenum err = glGetError();  // on the render thread: a direct call, errors of the whole frame
-            log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f%s%X", fr, draws, clears, progs, px[0], px[1], px[2], px[3], ww, wh, fMs, gMs, sMs, uMs, rMs, wMs, err ? ", GL error 0x" : "", err);
+            log("gles: frame %u: %u draws, %u clears, %u programs, centre %02X%02X%02X%02X, window %dx%d, frame %.1f ms (mean %.1f) of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f, cap %u slept %.1f/frame, %u late%s%X", fr, draws, clears, progs, px[0], px[1], px[2], px[3], ww, wh, fMs, mMs, gMs, sMs, uMs, rMs, wMs, capFps, cMs, capLate, err ? ", GL error 0x" : "", err);
             if (const char* dir = getenv("FABLE_GLES_DUMP")) {
                 std::vector<unsigned char> buf(static_cast<size_t>(bw) * bh * 4);
                 glReadPixels(0, 0, static_cast<GLint>(bw), static_cast<GLint>(bh), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
@@ -2194,11 +2204,22 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
     }
     gq::frameEnd();  // at most one frame unreplayed: this frame's replay overlaps the next frame's game work
     if (const int cap = host::gfx::get().fpsCap) {  // hold the game thread to the cap: steadier pacing, idle cores sleep
+        // `next` is the earliest time this frame may end. An early frame sleeps until then; a
+        // late one never sleeps: it keeps the schedule (the next frame can catch up) unless it
+        // is a whole period behind, then the schedule restarts from now. (The schedule used to
+        // restart at now + period on every late frame, so each frame slower than the cap slept
+        // a full extra period: 41 ms Guild frames became 74 ms at a 30 cap.)
         static uint64_t next = 0;
         const uint64_t now = nowNs(), period = 1000000000ull / static_cast<uint64_t>(cap);
-        if (!next || now > next + period) next = now;
-        next += period;
-        if (next > now) { const timespec ts = {static_cast<time_t>(next / 1000000000ull), static_cast<long>(next % 1000000000ull)}; clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &ts, nullptr); }
+        next = next ? next + period : now + period;
+        if (now < next) {
+            const timespec ts = {static_cast<time_t>(next / 1000000000ull), static_cast<long>(next % 1000000000ull)};
+            while (clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &ts, nullptr) == EINTR) {}  // FABLE_PROFILE's SIGPROF
+            g_nsCapSleep += nowNs() - now;
+        } else {
+            ++g_capLate;
+            if (now - next > period) next = now;  // too far behind to catch up: drop the debt
+        }
     }
     statDraws = statClears = 0;
     boundFbo = ~0u;
