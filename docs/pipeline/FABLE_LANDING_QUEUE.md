@@ -169,6 +169,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand142` | Hand chunk 142 (CGameScriptInterface .. CGuiVarTransferStruct): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand143` | Hand chunk 143 (CGuiVarTransferStruct .. CInputProcessControlCreature): 31 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand144` | Hand chunk 144 (CInputProcessControlCreatureActivateZTarget .. CLODDynamicBuildInfo): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand145` | Hand chunk 145 (CLandscapeBackgroundPatch .. CMainGameComponent): 32 of 40 byte-exact | - | 7 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -220,9 +221,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **393 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **400 parked rows** for the Fable retry pass.
 
-### Skipped rows (9 open of 30 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (10 open of 31 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -235,6 +236,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
 | `00caef70` | multi | in-chunk:904 | 00caef70:9 00caef80:3 00caef90:3 00caefa0:3 | `2026-10-15_linux_hand110` | row holds four functions |
+| `00d9f1b0` | single | open | 00d9f1b0:149 | `2026-10-15_linux_hand145` | row spans two functions (OnPredicateFail ends at 0x00D9F1FA; int3 padding; a second function starts at 0x00D9F200) |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -633,6 +635,16 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00ab6180 CKeyboardDX::GetKeyName DIFFER(154v146): `name` shadowed into esi at entry; failure arm first | tried: DIPROPSTRING local | next: lane gap: /GS parameter shadowing (also write the success arm first)
 - 00ab6450 CKeyboardDX::SetExclusiveMode DIFFER(131v131): window in eax / device in ecx vs retail window ecx / device eax | tried: window local, unsigned-long window, device local | next: lane gap: register choice
 - 0051d870 CRecord24Vector::resize DIFFER(104v104): `mov ecx,[esp+14h] ... mov edi,ecx` vs `mov edi,[esp+14h] ... mov ecx,edi` | tried: member re-read, first local, first+last locals | next: lane gap: register copy direction
+
+
+#### `2026-10-15_linux_hand145` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand145/differ/`)
+- 00be6790 CLandscapeBackgroundPatch::PackVertexNormal DIFFER(75v106): retail `fstp [esp+10h] ; fld [esp+10h] ; fistp dword [esp+N]` per component (bare fistp rounding after a float store/reload in the dead argument slot); ours calls __ftol2 | tried: (long) cast through an inline helper, /QIfist (qword fistp, no reload) | next: lane gap: inline-asm FTOI helper (byte purity forbids it)
+- 00be8b50 CLandscapeBackgroundPatch::PackVertexNormal DIFFER(81v108): same fistp rounding; this variant stores the packed word into `this` (+0) | tried: same as 00be6790 | next: lane gap: inline-asm FTOI helper
+- 00be8df0 CLandscapeBackgroundPatch::PackVertexNormal DIFFER(81v111): same fistp rounding; `this` moved to eax first (`mov eax,ecx`), packed word stored through it | tried: same as 00be6790 | next: lane gap: inline-asm FTOI helper
+- 00bfdf60 CLandscapeBackgroundPatch::PackVertexNormal DIFFER(75v106): byte-twin of 00be6790 | tried: same | next: lane gap: inline-asm FTOI helper
+- 00a42df0 CLipSyncDataBank::NotifyEntryAdded DIFFER(119v119): retail `fld [esp+20h] ; push edi ; fstp [edx+edi*8+4] ; push eax`, ours `push edi ; push eax ; fstp` (scheduling only) | tried: begin()+index, m_first[index], float local punned through its address | next: lane gap: scheduling (the float store sunk past the base call's pushes)
+- 004165e8 CMainGameComponent::CheckSync DIFFER(138v136): retail keeps the packet index in esi and re-reads the package argument `mov ecx,[ebp+8]` before every call; ours caches the package in esi and the index in edi (+push/pop edi) | tried: const reference, pointer, one-word handle class by value | next: lane gap: register allocation (or the argument's address escapes somewhere in the original, e.g. an inline debug compare compiled out)
+- 0053852b NUISystem::CList::SaveState DIFFER(131v131): retail homes the list's allocator temporary in the high byte of the LIVE hidden-return slot (`lea eax,[ebp+0Bh]`, 0x10 frame, list [ebp-4], record [ebp-10h]) and walks nodes in edi / component in esi; ours gives the temporary [ebp-1] (0x14 frame) and swaps esi/edi | tried: template and plain allocator tag, component declared before the loop | next: lane gap: empty temporary over a live parameter slot (same as the 24n `find` tag rows)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

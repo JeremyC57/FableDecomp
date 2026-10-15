@@ -231248,6 +231248,230 @@ $catalog = @(
         TestSource = '00/e9/CMHiddenBooty_Init_00e93080_test.cpp'
         PassPattern = '00e93080_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004162b5'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_UpdateRegular_004162b5.cpp'
+        TestSource = '00/41/CMainGameComponent_UpdateRegular_004162b5_test.cpp'
+        PassPattern = '004162b5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004163b7'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_SetExclusiveMode_004163b7.cpp'
+        TestSource = '00/41/CMainGameComponent_SetExclusiveMode_004163b7_test.cpp'
+        PassPattern = '004163b7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004166e2'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_GetGameTimeOfNextPresentCompletion_004166e2.cpp'
+        TestSource = '00/41/CMainGameComponent_GetGameTimeOfNextPresentCompletion_004166e2_test.cpp'
+        PassPattern = '004166e2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004168dc'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_InitialiseFonts_004168dc.cpp'
+        TestSource = '00/41/CMainGameComponent_InitialiseFonts_004168dc_test.cpp'
+        PassPattern = '004168dc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050f980'
+        Module = 'CLevelFiles'
+        Source = '00/50/CLevelFiles_CLevelFiles_0050f980.cpp'
+        TestSource = '00/50/CLevelFiles_CLevelFiles_0050f980_test.cpp'
+        PassPattern = '0050f980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00537956'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ChangePosition_00537956.cpp'
+        TestSource = '00/53/NUISystemCList_ChangePosition_00537956_test.cpp'
+        PassPattern = '00537956_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053beac'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_AddScrollingChildDynamically_0053beac.cpp'
+        TestSource = '00/53/NUISystemCList_AddScrollingChildDynamically_0053beac_test.cpp'
+        PassPattern = '0053beac_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c2710'
+        Module = 'CLevelLoader'
+        Source = '00/6c/CLevelLoader_ProcessHoverAnimQueue_006c2710.cpp'
+        TestSource = '00/6c/CLevelLoader_ProcessHoverAnimQueue_006c2710_test.cpp'
+        PassPattern = '006c2710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076e620'
+        Module = 'CTCWeaponTrail'
+        Source = '00/76/CTCWeaponTrail_CTCWeaponTrail_0076e620.cpp'
+        TestSource = '00/76/CTCWeaponTrail_CTCWeaponTrail_0076e620_test.cpp'
+        PassPattern = '0076e620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f2360'
+        Module = 'CLightningBranch'
+        Source = '00/7f/CLightningBranch_CLightningBranch_007f2360.cpp'
+        TestSource = '00/7f/CLightningBranch_CLightningBranch_007f2360_test.cpp'
+        PassPattern = '007f2360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00873a10'
+        Module = 'NCameraModes::CSimplePointBase'
+        Source = '00/87/NCameraModesCSimplePointBase_CSimplePointBase_00873a10.cpp'
+        TestSource = '00/87/NCameraModesCSimplePointBase_CSimplePointBase_00873a10_test.cpp'
+        PassPattern = '00873a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d5f10'
+        Module = 'CLoadingMemoryFailureHandler'
+        Source = '00/9d/CLoadingMemoryFailureHandler_HandleFailedAllocation_009d5f10.cpp'
+        TestSource = '00/9d/CLoadingMemoryFailureHandler_HandleFailedAllocation_009d5f10_test.cpp'
+        PassPattern = '009d5f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a43960'
+        Module = 'CLipSyncSampleData'
+        Source = '00/a4/CLipSyncSampleData_Sizeof_00a43960.cpp'
+        TestSource = '00/a4/CLipSyncSampleData_Sizeof_00a43960_test.cpp'
+        PassPattern = '00a43960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a48a40'
+        Module = 'CLipSyncFrameData'
+        Source = '00/a4/CLipSyncFrameData_FindPhonemeID_00a48a40.cpp'
+        TestSource = '00/a4/CLipSyncFrameData_FindPhonemeID_00a48a40_test.cpp'
+        PassPattern = '00a48a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5cb00'
+        Module = 'CLayer'
+        Source = '00/a5/CLayer_SetAllPolys_00a5cb00.cpp'
+        TestSource = '00/a5/CLayer_SetAllPolys_00a5cb00_test.cpp'
+        PassPattern = '00a5cb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdfd80'
+        Module = 'CLocalDetailPrimitiveMesh'
+        Source = '00/bd/CLocalDetailPrimitiveMesh_CLocalDetailPrimitiveMesh_00bdfd80.cpp'
+        TestSource = '00/bd/CLocalDetailPrimitiveMesh_CLocalDetailPrimitiveMesh_00bdfd80_test.cpp'
+        PassPattern = '00bdfd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6490'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_TestIfLoadTaskCanBeAborted_00bf6490.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_TestIfLoadTaskCanBeAborted_00bf6490_test.cpp'
+        PassPattern = '00bf6490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6530'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_StartTreeLoadTask_00bf6530.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_StartTreeLoadTask_00bf6530_test.cpp'
+        PassPattern = '00bf6530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf65b0'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_StartPatchLoadTask_00bf65b0.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_StartPatchLoadTask_00bf65b0_test.cpp'
+        PassPattern = '00bf65b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6750'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_InvalidateEdgeTesellation_00bf6750.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_InvalidateEdgeTesellation_00bf6750_test.cpp'
+        PassPattern = '00bf6750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6a30'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_MarkTreeAsInvisibleLastFrame_00bf6a30.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_MarkTreeAsInvisibleLastFrame_00bf6a30_test.cpp'
+        PassPattern = '00bf6a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6ac0'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_UpdateParentChainVisibilityFlag_00bf6ac0.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_UpdateParentChainVisibilityFlag_00bf6ac0_test.cpp'
+        PassPattern = '00bf6ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6b70'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_OnPostRelocation_00bf6b70.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_OnPostRelocation_00bf6b70_test.cpp'
+        PassPattern = '00bf6b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6bf0'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_TreeHasLoadTasks_00bf6bf0.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_TreeHasLoadTasks_00bf6bf0_test.cpp'
+        PassPattern = '00bf6bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf8430'
+        Module = 'CLandscapeBackgroundSubNodeSplitBranch'
+        Source = '00/bf/CLandscapeBackgroundSubNodeSplitBranch_ProcessBackgroundLoading_00bf8430.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundSubNodeSplitBranch_ProcessBackgroundLoading_00bf8430_test.cpp'
+        PassPattern = '00bf8430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf9aa0'
+        Module = 'CLocalDetailPrimitiveBase'
+        Source = '00/bf/CLocalDetailPrimitiveBase_ClipPrimitive_00bf9aa0.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveBase_ClipPrimitive_00bf9aa0_test.cpp'
+        PassPattern = '00bf9aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfa8a0'
+        Module = 'CLocalDetailPrimitiveMeshZSpriteBatch'
+        Source = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_RelocateData_00bfa8a0.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_RelocateData_00bfa8a0_test.cpp'
+        PassPattern = '00bfa8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c631e0'
+        Module = 'CLight'
+        Source = '00/c6/CLight_SetLightValue_00c631e0.cpp'
+        TestSource = '00/c6/CLight_SetLightValue_00c631e0_test.cpp'
+        PassPattern = '00c631e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63270'
+        Module = 'CLight'
+        Source = '00/c6/CLight_SetIntegerProperty_00c63270.cpp'
+        TestSource = '00/c6/CLight_SetIntegerProperty_00c63270_test.cpp'
+        PassPattern = '00c63270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c632e0'
+        Module = 'CLight'
+        Source = '00/c6/CLight_SetIntegerProperty2_00c632e0.cpp'
+        TestSource = '00/c6/CLight_SetIntegerProperty2_00c632e0_test.cpp'
+        PassPattern = '00c632e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c63350'
+        Module = 'CLight'
+        Source = '00/c6/CLight_SetIntegerProperty3_00c63350.cpp'
+        TestSource = '00/c6/CLight_SetIntegerProperty3_00c63350_test.cpp'
+        PassPattern = '00c63350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3b320'
+        Module = 'CM_HeroDownstairs'
+        Source = '00/e3/CMHeroDownstairs_Main_00e3b320.cpp'
+        TestSource = '00/e3/CMHeroDownstairs_Main_00e3b320_test.cpp'
+        PassPattern = '00e3b320_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00be6790	DIFFER	75v106	-	retail rounds each component with a bare dword `fistp` after a float store/reload through the dead argument slot (an inline-asm FTOI helper in the ori
+00be8b50	DIFFER	81v108	-	retail rounds each component with a bare dword `fistp` after a float store/reload through the dead argument slot (an inline-asm FTOI helper in the ori
+00be8df0	DIFFER	81v111	-	retail rounds each component with a bare dword `fistp` after a float store/reload through the dead argument slot (an inline-asm FTOI helper in the ori
+00bfdf60	DIFFER	75v106	-	retail rounds each component with a bare dword `fistp` after a float store/reload through the dead argument slot (an inline-asm FTOI helper in the ori
+00bf8430	RELOCATION_MATCH	135v135	PASS	nested if blocks give retail's three separate exits; retail node 0xE8 (RightBranch +0xEC)
+00bf6490	MATCH	147v147	PASS	patch pointer in a local; GetPatch/GetSplitBranch inline
+00bf6530	RELOCATION_MATCH	115v115	PASS	class operator new(size, owner) -> AllocVirtual; `return task->flag = true`
+00bf65b0	RELOCATION_MATCH	124v124	PASS	twin of StartTreeLoadTask with the LOD record; separate flag store
+00bf6750	RELOCATION_MATCH	155v155	PASS	world x/y locals; four InvalidateEdge calls
+00bf6a30	RELOCATION_MATCH	133v133	PASS	right-branch tail recursion becomes the loop
+00bf6ac0	MATCH	120v120	PASS	inline SetVisibilityFlagAndUpdateParentChain (tail recursion -> loop)
+00bf6b70	RELOCATION_MATCH	118v118	PASS	manager re-read from the engine global per call
+00bf6bf0	RELOCATION_MATCH	142v142	PASS	`if (split) return a||b; return false;`
+00a5cb00	RELOCATION_MATCH	132v132	PASS	label suspect: matrix set-to-inverse via D3DXMatrixInverse
+0050f980	RELOCATION_MATCH	129v129	PASS	three separate counted-pointer members (an array gives a loop)
+006c2710	RELOCATION_MATCH	139v139	PASS	CCharString named locals in their own blocks
+00c631e0	RELOCATION_MATCH	144v144	PASS	`stored != value` (argument loaded first)
+00c63270	MATCH	103v103	PASS	reference local to the record field
+00c632e0	MATCH	112v112	PASS	same form as SetIntegerProperty
+00c63350	MATCH	112v112	PASS	same form as SetIntegerProperty
+007f2360	RELOCATION_MATCH	112v112	PASS	GetPItem re-called for every use
+00a42df0	DIFFER	119v119	-	scheduling only: retail stores the float (`fstp [edx+edi*8+4]`) between `push edi` and `push eax` (the base call's id), ours after both pushes | tried
+00a48a40	RELOCATION_MATCH	117v117	PASS	record returned by value; default ctor for not-found
+00a43960	MATCH	107v107	PASS	leaf ?Sizeof@CLipSyncSampleData@@QBEKXZ; array Sizeof __forceinline
+00537956	RELOCATION_MATCH	159v159	PASS	OnActivate owner-pointer model with null-tested release
+0053852b	DIFFER	131v131	-	frame layout and registers: retail homes the list allocator temporary in the high byte of the LIVE hidden-return slot (`lea eax,[ebp+0Bh]`, 0x10-byte 
+0053beac	RELOCATION_MATCH	116v116	PASS	rvalue push_back arguments land in the dead arg slot
+0076e620	RELOCATION_MATCH	126v126	PASS	label fix: CTCWeaponTrail ctor (vtable 0x0126A5B4)
+009d5f10	RELOCATION_MATCH	104v104	PASS	lock local destroyed on both exits (no EH)
+00bf9aa0	RELOCATION_MATCH	153v153	PASS	`range*range < sum`; bitfield `Outside ? false : true`
+00bdfd80	RELOCATION_MATCH	105v105	PASS	novtable mesh over inline CMovableResource dtor; handle model of 0x004C4160
+00bfa8a0	RELOCATION_MATCH	114v114	PASS	named RelocateData (vtable slot 1); inline IsInBlock/Rebase
+00873a10	RELOCATION_MATCH	102v102	PASS	label fix: NCameraModes::CSimplePointBase ctor (vtable 0x01277644)
+00d9f1b0	SKIP	-	-	row spans two functions (OnPredicateFail ends at 0x00D9F1FA; int3 padding; a second function starts at 0x00D9F200)
+00e3b320	RELOCATION_MATCH	132v132	PASS	while(!IsDone()) with per-step abort tests
+004162b5	RELOCATION_MATCH	119v119	PASS	size TU + y off; one double start-time local
+004163b7	RELOCATION_MATCH	104v104	PASS	width local first, then right-to-left args
+004165e8	DIFFER	138v136	-	retail keeps the loop index in esi and re-reads the package argument from [ebp+8] for every call (no `this`/package register); ours caches the package
+004166e2	RELOCATION_MATCH	104v104	PASS	CVsyncCallbackTimerInfo is 0x30 bytes
+004168dc	RELOCATION_MATCH	119v119	PASS	size TU + y off; strings in their own blocks
