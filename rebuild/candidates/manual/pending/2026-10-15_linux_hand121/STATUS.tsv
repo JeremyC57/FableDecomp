@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c17260	DIFFER	144v138	-	lane gap: this arrives in esi (custom link-time convention), EH frame; label propagated
+0090c800	RELOCATION_MATCH	100v100	PASS	random-frames step; GetTimeToInitiate() * fps range
+00929aa0	RELOCATION_MATCH	112v112	PASS	bool && chain, full-register result; dropped GetPWorld() call kept
+00933470	DIFFER	123v123	-	register swap eax/ecx (creature vs null-initialised component)
+009331e0	RELOCATION_MATCH	102v102	PASS	villager -> village -> handler compare -> SetCriminalHandler(0)
+00902233	RELOCATION_MATCH	97v97	PASS	optimize(y,off)+(s,on); converting CIntelligentPointer temp
+00939d00	RELOCATION_MATCH	104v104	PASS	Bind2<IsOfType, empty>; 64-bit UID compare
+0090f290	RELOCATION_MATCH	136v136	PASS	nested ifs, single return false; HasTC + pointer-returning FindTC
+0090ee20	DIFFER	134v134	-	Bind3 first-pointer store scheduled before the out-of-line filter ctor
+00934120	RELOCATION_MATCH	151v151	PASS	HasMode/AddMode; slot-31 call; GetTagger/SetTagger
+0090f110	DIFFER	146v154	-	three-GetPItem typed read with a constant-false bool (xor dl,dl ; jne) folds away
+0090f1c0	DIFFER	143v149	-	same xor dl,dl typed read on the event pointer at +0x50
+0091d120	RELOCATION_MATCH	104v104	PASS	out-param GetEvent homed in the dead key slot
+00936ba0	RELOCATION_MATCH	103v103	PASS	life state != 3 -> AddMode(15)
+009587d0	RELOCATION_MATCH	107v107	PASS	named CCharString local in an inner scope
+007338a0	RELOCATION_MATCH	102v102	PASS	label propagated: creature-mode cleanup (thing at +4, flags +0x62/+0x63)
+0091cfa0	RELOCATION_MATCH	97v97	PASS	RemoveMode(0x11); InvestigatingNoise = false
+0092ecd0	RELOCATION_MATCH	111v111	PASS	function-static float from a const product; X*X+Y*Y+Z*Z; fcomp [static]
+0092ed40	RELOCATION_MATCH	117v117	PASS	delta spilled across the call; X*X + (Y*Y + Z*Z); fcompp
+00937d20	RELOCATION_MATCH	122v122	PASS	ternary finder; converting CIntelligentPointer temp
+00939180	DIFFER	161v155	-	literal-range division deferred after GFGetCurrentFrame (push ebx)
+0090fae0	RELOCATION_MATCH	115v115	PASS	FindNearestBuildingWithProperty(pos, 0x20); out-pointer store
+0090fb60	DIFFER	142v140	-	argument loaded into ecx after the prologue; null-initialised tavern in eax instead of ecx
+0090fc50	DIFFER	129v127	-	component moved through eax instead of straight into ecx; FindTC form breaks the early-return layout
+0090fd20	RELOCATION_MATCH	132v132	PASS	&& chain; creature named local in an inline helper (esi)
+0090f690	RELOCATION_MATCH	125v125	PASS	base Initialise + random-frames (fps*80)
+0090f9c0	DIFFER	150v148	-	component/argument load order + inline false exit
+0090fa60	RELOCATION_MATCH	118v118	PASS	IS_THING_ALIVE + GetPItem()->GetInterface + RemoveUser
+009104d0	DIFFER	158v152	-	register roles rotated (zero/count/first); extra mov ebp,eax
+00939060	RELOCATION_MATCH	114v114	PASS	unsigned char result (setle al, no xor)
+0090bbf0	DIFFER	100v100	-	scratch registers only (creature chain through ecx, vtable load eax)
+0093cab0	DIFFER	104v104	-	esi/edi swap for the member address vs the successor
+0095f660	RELOCATION_MATCH	131v131	PASS	CTCTalk stop + LogReaction with the world in a named local
+00984a20	RELOCATION_MATCH	149v149	PASS	range by const& -> literal `div`; long result; `break` shares the mov eax,1 exit
+00946100	RELOCATION_MATCH	130v130	PASS	IS_THING_ALIVE + out-param lookup + FreeActionPoint
+009462a0	RELOCATION_MATCH	138v138	PASS	CDefPointer copy from the raw pointer (addref/release) across IsCookTime
+0095d070	DIFFER	108v108	-	this in edi vs esi; shared false exit inline after the first test
+0095d310	RELOCATION_MATCH	138v138	PASS	HasTC + FindTC on the carried thing; shared xor al,al
+0095d4c0	DIFFER	130v130	-	first empty filter homed in the dead argument slot instead of frame +6
+0093bfa0	RELOCATION_MATCH	142v142	PASS	cmp operand order: PEnemy.GetPItem() == vcall

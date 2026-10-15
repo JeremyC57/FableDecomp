@@ -1,0 +1,19 @@
+# Chunk 121 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+- A literal divisor that retail divides with `div` (`mov ecx,2Dh ; div ecx`, 0x00984A20; `mov ecx,96h ; div ecx`, 0x00939180) is a range passed to the inlined random helper BY CONST REFERENCE (`RandomFrames(const unsigned long& range)`): a by-value literal becomes VC7.1's magic-multiply.
+- `if (r != 4) return 0; break;` inside a `do/while` shares the loop's `mov eax,1` exit (0x00984A20); `if (r == 4) return 1; return 0;` collapses to `sete`. A `mov eax,1` / `xor eax,eax` pair from a bool-looking function is a `long` result (also the `&&` chains of 00929aa0 / 0090fd20 return through the full register as bool).
+- `setle al` with no `xor eax,eax` is an `unsigned char` return type (0x00939060 IsStillValid), even for a virtual the PDB declares bool.
+- A function-static float with an init guard and a constant store (`test byte [guard],1 ; or ... ; mov [g],41100000h`, 0x0092ECD0) is `static const float s = k * k;` with `k` a namespace-scope `const float` -- the front end treats the product as dynamic init and the back end folds it.
+- `X*X + Y*Y + Z*Z` sums z, x, y on the x87 (0x0092ECD0); the same magnitude read from a spilled delta that sums z, y, x is `X*X + (Y*Y + Z*Z)` (0x0092ED40) -- the landed 0x00805920 note, confirmed for the memory-operand form.
+- A CDefPointer local built from a RAW def pointer member (`CDefPointer(CDefBase* p) : m_p(p) { if (p) ++p->count; }`) gives the direct `mov esi,[eax+94h]`; a copy from the member (`const CDefPointer&`) forms the address with `add eax,94h` (0x009462A0).
+- A CCharString passed to a `const CCharString&` parameter is a NAMED local in an inner scope when retail passes it with `lea edx,[esp+8]` and destroys it before the next member store (0x009587D0); a temporary reuses the constructor's eax (`push eax`).
+- The creature argument of a call inside a `&&` chain is a named local in an `__forceinline` helper when retail loads it into a callee-saved register before the argument pushes (0x0090FD20: esi across GetPThingWorld, `this` moves to ebx).
+- The pointer-returning `FindTC<T>(type)` (HasTC first) lands the component straight in ecx (`mov ecx,[eax+4]`) for a following call with no arguments (0x0090F290, 0x0095D310); when the call has an argument that retail loads AFTER the component (0x0090F9C0) or the component is a null-initialised local (0x00933470, 0x0090FB60) the register allocation still differs -- parked.
+- A chain of three GetPItem calls on one intelligent pointer with `xor dl,dl ; mov [deadslot],eax ; jne` between the second and third (0x0090F110, 0x0090F1C0 and four other retail bodies: 0x006E7820, 0x008941A0, 0x008D04E0, 0x00958B20) is an inline typed read whose constant-false check VC7.1 does not fold; a `const&`-bound temporary + `return false` inline is folded by the lane. Unsolved.
+- The PDB name of the compare operands follows the source order: `PEnemy.GetPItem() == tc->GetTarget()` gives `cmp eax,ebx` with the virtual call evaluated first into ebx (0x0093BFA0).
+
+Review at landing:
+- 00c17260 and 007338a0 carry propagated manifest labels (see NOTES "Label corrections"); 007338a0 is authored under the catalog name with a local creature-mode model -- the landing session may want to rename the module.
+- All sources use local base models next to existing engine headers (the headers flatten CAIStateGroupBase and have no vtable); 0095f660 / 00984a20 pack the class to 1 for the +0x6b intelligent pointer.
+- 0090fa60 (matched) uses the out-param lookup while its sibling 0090f9c0 (parked) needs the pointer-returning one: the landing session may find the single form that fits both.
+- 0092ed40's distance getter 0x00661CC0 is modelled as a free function (`fld [0x0125AAB8] ; ret`, no ecx set-up by the caller) although the manifest labels it CAIStateGroup_EnemyCreatureBase::GetCombatMinDistance.
+- No row needed more than 4 grades; parked rows list every form tried.
