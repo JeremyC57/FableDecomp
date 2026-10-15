@@ -120,8 +120,9 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand74` | Hand chunk 74 (CScriptThing .. CShaderRenderManager): 35 of 40 byte-exact | 35 | 0 | 5 | STAGED: land it |
 | `2026-10-15_linux_hand75` | Hand chunk 75 (CShaderRenderManager .. CSkeletalMorphResourceManager): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
+| `2026-10-15_linux_hand77` | Hand chunk 77 (CSpellContainerList .. CSubtitleRenderer): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 
-Totals: **616 matched rows staged for landing**, **56 parked rows** for the Fable retry pass.
+Totals: **650 matched rows staged for landing**, **62 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -243,5 +244,14 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 004e00bc CQuestCardDef::CQuestCardDef DIFFER(45v45): `lea ecx,[esi+5Ch]` hoisted above the RewardObjects zero stores | tried: optimize("s") init-list vector | next: lane gap: lea scheduling (24i)
 - 0045cfad CSoundMap::operator= DIFFER(49v49): last Dirty byte copied through cl with `pop edi ; mov eax,esi ; pop esi` between load and store (retail: through al before the pops) | tried: explicit memberwise outer + inner operator=, implicit outer operator=, void inner operator=, optimize("s") (out-lines the inner operator=, 33 bytes) | next: lane gap: register/scheduling (try `__forceinline` inner operator= under optimize("s"))
 - 005bc6d6 CUIBackgroundOwner_005bc6d6::RenderBackground DIFFER(20v23): float argument re-pushed `mov eax,[esp+4] ; push eax` (retail `fld [esp+4] ; push ecx ; fstp [esp]`) | tried: plain float forwarder, /Op, 4-byte float wrapper with a user copy ctor, optimize("g",off) | next: optimize("s") (the unaligned 0x005BC6D6 start suggests a /Os TU), else lane gap: float argument copy
+
+
+#### `2026-10-15_linux_hand77` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand77/differ/`)
+- 00b1b5e0 CSprite::GetHeight DIFFER(8v34): retail `sub esp,0Ch ; mov [esp+8],float ; mov [esp+4],&result ; fld [esp+8] ; mov edx,[esp+4] ; fistp dword ptr [edx]` vs the lane's `fld [ecx+48h] ; jmp __ftol2` | tried: `(long)m_height` | next: lane gap: inlined inline-asm rounding helper (asm_bake, same as 006472b2)
+- 00a5f290 CStreamingFontDataBank::CStreamingFontDataBank DIFFER(89v89): `mov ecx,edi` (Filename as `this`) comes between the 2nd and 3rd Fonts zero stores in retail, before all three in the lane | tried: init-list CArray constructor, body-assigned CArray constructor, declared `~CArray` | next: lane gap: member-constructor `this` setup scheduled before register-zero stores (the 24i gap)
+- 009b9940 CStringParser::SetStringPos DIFFER(62v62): retail moves `this` to esi and keeps the quote flag in cl (end pointer in edi), the lane keeps `this` in ecx with the flag in bl (end in esi); loop-head padding is `jmp ; lea ecx,[ecx]` in retail and `lea esp,[esp]` in the lane | tried: pointer loop `p != String + pos`, index loop, `text` local, declaration order flag/pointer before the store | next: lane gap: register allocation / alignment padding
+- 009ba390 CStringParser::ReadLineAsString DIFFER(76v71): retail reads `[ecx+4]` / `[ecx+20h]` AFTER the call to SkipPastNewline (`this` kept in ecx across the call) | tried: start pointer local + `String + StringPos - start` length | next: lane gap: whole-program (/GL) callee register knowledge
+- 009ba4a0 CStringParser::ReadAsStringUntilWhitespace DIFFER(81v80): retail `mov eax,[esi+4] ; lea edi,[eax+ecx] ; cmp byte ptr [edi],0`, lane `mov edi,[esi+4] ; mov al,[edi+ecx] ; add edi,ecx ; test al,al`; the length is built in edx (retail) vs eax (lane) | tried: early empty return, reading path as the `if` body, `optimize("s")` (57 bytes, merges returns), `&String[pos]` form | next: lane gap: the lane folds the dereference into the address computation
+- 0048dc3c CSubtitleRenderer::GetTextOffsetFromEmbeddedTagGraphic DIFFER(79v79): retail places the thumb-click return (`add eax,6A4h ; jmp`) right after its `||` pair (`je A ; cmp ; jne next ; A:`); the lane jumps (`je ; je`) to a copy below the default return | tried: else-if returns (+`optimize("s")`, which fixes the shared `ret 4`), a nested `!=` guard, a result-pointer local, a ternary chain | next: lane gap: block placement
 
 <!-- queue:end -->

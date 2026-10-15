@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ae3330	RELOCATION_MATCH	37v37	PASS	two-member vector<16-byte>::reserve forwarder (label propagated; CVectorPairOwner_00ae3330::ReserveBoth)
+00bf7b90	RELOCATION_MATCH	34v34	PASS	two embedded CLandscapeBackgroundTreeNode::LoadHeader calls (label propagated)
+00c219f0	RELOCATION_MATCH	41v41	PASS	input event processor: two stages then (state == 6) ? 0 : -1 (label propagated)
+00b21a00	RELOCATION_MATCH	73v73	PASS	CSplinePosParamData ctor: resize(count, 0); count must be a named local
+00b21160	RELOCATION_MATCH	79v79	PASS	CSplineRandomOffsetData::Update: inline memberwise CCardinalSpline assignment, tail jmp
+00b1b5e0	DIFFER	8v34	-	parked: inline-asm fistp rounding helper (asm_bake); label CSprite propagated
+00433693	RELOCATION_MATCH	29v29	PASS	CStartupDefinitionManager ctor: base(file, empty callback) + vtable; optimize("s")
+00645f2e	RELOCATION_MATCH	95v95	PASS	CStatBar::DrawChangeText: CRGBColour ctor body-assigns R,G,B,A; y-off + s
+0064dae0	RELOCATION_MATCH	75v75	PASS	CStatBar::AddChangeText: if/else of two push_front statements cross-jumped; y-off + s
+0064cc11	RELOCATION_MATCH	84v84	PASS	CStatBase ctor (PDB names, retail 12-byte vectors); optimize("s") fldz floats
+00a8e710	RELOCATION_MATCH	84v84	PASS	CStaticBlock::SaveBinary: six writes in source order
+00ed4830	RELOCATION_MATCH	54v54	PASS	CStatueMasterChest::Main: abort test in both arms, RemoveThing(Thing,false,true)
+00a1a1a0	MATCH	35v35	PASS	CSteeringAgent compare: long result of ||, retail lists 4 bytes
+0062f740	RELOCATION_MATCH	70v70	PASS	CStopWatch ctor: 1/QueryPerformanceFrequency or 1.0
+0062f790	RELOCATION_MATCH	36v36	PASS	CStopWatch::GetTicks static: QPC or 0
+0062f7c0	RELOCATION_MATCH	63v63	PASS	CStopWatch::Start: inline GetTicks
+0062f800	RELOCATION_MATCH	77v77	PASS	CStopWatch::StartZero
+0062f850	RELOCATION_MATCH	87v87	PASS	CStopWatch::Stop
+0062f8b0	RELOCATION_MATCH	76v76	PASS	CStopWatch::Reset
+0062f900	RELOCATION_MATCH	93v93	PASS	CStopWatch::GetElapsedSeconds: ticks * period
+00a5eea0	RELOCATION_MATCH	57v57	PASS	CStreamingFontDataBank::AdjustUpdateEntries via engine/CBankFile.h
+00a5f290	DIFFER	89v89	-	parked: mov ecx,edi scheduled before the Fonts zero stores (scheduling only)
+00a5f9d0	RELOCATION_MATCH	32v32	PASS	CStreamingFontDataBank::GetLastModifiedTime = CDateAndTime(1,1,1,1,1,0,0) (same as landed 0x009CB710)
+00c1e050	RELOCATION_MATCH	46v46	PASS	UI display-element ctor (4 args) over base 0x00C1EAA0; label CStringAndCage propagated
+00403c20	RELOCATION_MATCH	60v60	PASS	CStringParser::Init(const CCharString&,...): TempCharString = text; Init(text chars,...)
+00414e30	RELOCATION_MATCH	88v88	PASS	CStringParser(char*, cb, filename, line) ctor: inline comment-list ctor + Init
+0046381b	RELOCATION_MATCH	86v86	PASS	CStringParser copy ctor: memberwise, movsd cursor copy; optimize("s")
+009b9940	DIFFER	62v62	-	parked: register allocation (this in ecx/bl flag vs esi/cl) + loop padding form
+009ba390	DIFFER	76v71	-	parked: retail keeps this in ecx across SkipPastNewline (LTCG)
+009ba4a0	DIFFER	81v80	-	parked: lane folds the start load (mov al,[edi+ecx]) where retail does lea + cmp byte [edi],0
+009ba4f0	RELOCATION_MATCH	77v77	PASS	CStringParser::NextItemExists: saved cursor restored on success
+009ba8c0	RELOCATION_MATCH	57v57	PASS	CStringParser::PeekNextItem: saved cursor restored on success
+00c345b0	RELOCATION_MATCH	58v58	PASS	change-detecting 16-byte record assignment, bool __fastcall equality (label CStringParser propagated)
+0048db46	RELOCATION_MATCH	61v61	PASS	CSubtitleRenderer::IsWaitingForClickPast: nested ifs, optimize("s")
+0048dbc3	RELOCATION_MATCH	54v54	PASS	CSubtitleRenderer::GetBlackBarHeight: named float local; y-off + s
+0048dc3c	DIFFER	79v79	-	parked: block placement of the thumb-click return
+0048de44	RELOCATION_MATCH	70v70	PASS	CSubtitleRenderer::IsCutsceneSkippable: checks nested under InCutscene; optimize("s")
+0048f1f4	RELOCATION_MATCH	60v60	PASS	CSubtitleRenderer::Draw2DText: layer 0x43/0x40, -1; y-off + s
+004908da	RELOCATION_MATCH	77v77	PASS	CSubtitleRenderer::SetCutsceneActionMode: implicit "" conversion temp; y-off + s
+00492f69	RELOCATION_MATCH	75v75	PASS	CSubtitleRenderer::SetText 9-arg overload: named empty CWideString local; y-off + s
