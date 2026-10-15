@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00944470	RELOCATION_MATCH	108v108	PASS	ctor: init-list village + two inline CIP copy ctors, by-value args destroyed
+009444e0	RELOCATION_MATCH	117v117	PASS	nested ifs, one return true; Leaf ??R
+008fd1b0	RELOCATION_MATCH	111v111	PASS	GetInterface out-param template; engine headers
+0097e200	RELOCATION_MATCH	112v112	PASS	forceinline GetInterface; ?1:4 branch-free
+009812c0	RELOCATION_MATCH	130v130	PASS	6->7 arg forwarder, by-value CIP copies in arg slots
+00981ea0	RELOCATION_MATCH	130v130	PASS	same forwarder, other target
+009576c0	SKIP	-v139	-	two functions: 13-byte OnActivate (jmp [eax+40h]) + 0x009576D0 body
+009578a0	DIFFER	148v148	-	tail block order of the 2-way exit (TurnToFace vs return false)
+009284b0	RELOCATION_MATCH	160v160	PASS	inline world-random step x2; frame + r*0.5f
+00929220	RELOCATION_MATCH	135v135	PASS	two forceinline GetInterface + GFGetPVillageInterface
+009292b0	RELOCATION_MATCH	135v135	PASS	twin of 00929220 (iface 0xF1)
+0093a540	RELOCATION_MATCH	125v125	PASS	GetPWorld()->static calls; do/while; unsigned end frame
+009143e0	RELOCATION_MATCH	126v126	PASS	untested GetInterface (miss reads dead slot)
+0095e870	RELOCATION_MATCH	134v134	PASS	nested ifs, int result
+0095ebf0	DIFFER	109v107	-	virtual-call this: component via eax+mov ecx,eax vs retail straight into ecx
+00919a70	DIFFER	105v105	-	reply homed in own frame slot vs dead seller arg slot; ternary mask lowering
+00965f30	DIFFER	115v115	-	position copy: retail loads all 3 words before storing
+00965fb0	DIFFER	126v126	-	add esi,14h scheduled before vs after GetPItem call
+00917db0	RELOCATION_MATCH	119v119	PASS	item-returning inline accessor for lea ecx,[eax+170h]
+00979260	RELOCATION_MATCH	130v130	PASS	C3DVector diff local (dead Z slot) + comparator built in arg area
+009208e0	RELOCATION_MATCH	124v124	PASS	action temporary inside the call
+0091e990	RELOCATION_MATCH	114v114	PASS	implicit CCharString conversion; GetCreature accessor
+0091f050	DIFFER	128v126	-	virtual-call this: component via eax+mov ecx,eax vs retail straight into ecx
+0091f0d0	RELOCATION_MATCH	97v97	PASS	named CCharString in inner scope + creature local + action temp
+00920990	RELOCATION_MATCH	103v103	PASS	implicit POD C3DVector assignment (lea ecx)
+0097aae0	RELOCATION_MATCH	130v130	PASS	same shape as 00979260 (protected)
+009708a0	DIFFER	143v143	-	this/count in ebp/ebx swapped
+0095fe60	RELOCATION_MATCH	98v98	PASS	CIP reset temp; class fwd decls for exact mangling
+00960f00	DIFFER	118v118	-	push esi shrink-wrapped after the bit test (retail in prologue)
+009226b0	DIFFER	156v156	-	Bind2 first-pointer store scheduling + creature register choice
+0096d190	RELOCATION_MATCH	105v105	PASS	untested GetInterface; slot-15 tail
+0096d260	RELOCATION_MATCH	106v106	PASS	GetInterface + village nearest building
+0091d850	RELOCATION_MATCH	112v112	PASS	creature + world named locals
+0091dd30	RELOCATION_MATCH	99v99	PASS	enemy local + CIP assign
+0094ef90	RELOCATION_MATCH	111v111	PASS	chained getters + CIP assign
+0094f000	RELOCATION_MATCH	125v125	PASS	if(alive){ while(Move()==2) DoNothing(); }
+0094c7e0	RELOCATION_MATCH	102v102	PASS	base call + resets; protected + class fwd decls
+00918190	RELOCATION_MATCH	156v156	PASS	ctor: inline base ctor chain, def indices; Leaf ??0
+00918880	RELOCATION_MATCH	116v116	PASS	bool frame byte reloaded as dword; game time local
+00918ac0	RELOCATION_MATCH	129v129	PASS	world-random < 30.0f; marker + creature locals

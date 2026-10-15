@@ -1,0 +1,84 @@
+// Grade: DIFFER(118v118) -- prologue only: retail pushes esi in the prologue (`push ecx ; push esi ; push edi`) and shares one epilogue; the lane shrink-wraps `push esi` after the interface-bit test (nested ifs, a result variable, optimize("s") and this early-return form tried; this form is the closest)
+// CAIStateGroup_DeedReactionRootFromSleep::IsRunnable() -- never runnable itself: when the sleeping creature would react to a violent/alarming deed it just clears the sleep component's flag (waking it) so the awake reaction root takes over
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00960F00, length 118 bytes (+ int3 padding).
+// Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 0xD4 =
+// bitset word 6 bit 20 -> `test dword ptr [eax+38h],100000h`), CAIStateGroup_DeedReactionRoot::IsRunnable @ 0x009609B0
+// (the base implementation, called non-virtually).
+// Shape: the landed GetInterface out-parameter template inside nested ifs; the component is kept in esi for the
+// final byte store; the deed-type test `(type != 0 && type < 10) || type == 0x35 || type == 10 || type == 11`
+// (short-circuit order kept: `test ; je ; cmp 0Ah ; jl` then three equality tests); every path returns false
+// (one `xor al,al` tail).
+// Model: local (no engine header for this class; CurrentDeedType +0x1c from struct_layouts_egor.tsv).
+struct CTCBase;
+struct CWorld;
+struct CThingAICreature;
+
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);       // 0x0040F020
+};
+
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;                 // +0x44
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+};
+
+struct CTCSleep {                               // interface 0xD4
+    unsigned char _pad[0xc];
+    unsigned char m_bAsleep;                    // +0x0c
+};
+
+struct CAIBrain {
+    unsigned char _pad[0x18];
+    CThing* Creature;                           // +0x18
+};
+
+struct CAIStateGroupBase {
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    long ScriptAIPriority;                      // +0x08
+    void* Name_PStringData;                     // +0x0c
+    unsigned char Terminated;                   // +0x10
+    unsigned char Priority;                     // +0x11
+    unsigned char Enabled;                      // +0x12
+    unsigned char _pad_0x13;
+};
+
+struct CAIStateGroup_DeedReactionRoot : CAIStateGroupBase {
+    unsigned char ThingReactingTo[8];           // +0x14 CIntelligentPointer<const CThing>
+    long CurrentDeedType;                       // +0x1c EOpinionDeedType
+    virtual bool IsRunnable();                  // 0x009609B0
+};
+
+struct CAIStateGroup_DeedReactionRootFromSleep : CAIStateGroup_DeedReactionRoot {
+    virtual bool IsRunnable();
+};
+
+bool CAIStateGroup_DeedReactionRootFromSleep::IsRunnable()
+{
+    CTCSleep* sleep;
+    if (!PBrain->Creature->GetInterface(&sleep, 0xD4))
+        return false;
+    if (sleep->m_bAsleep && CAIStateGroup_DeedReactionRoot::IsRunnable()) {
+        long type = CurrentDeedType;
+        if ((type != 0 && type < 10) || type == 0x35 || type == 10 || type == 11)
+            sleep->m_bAsleep = false;
+    }
+    return false;
+}

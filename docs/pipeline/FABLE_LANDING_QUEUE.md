@@ -142,6 +142,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand115` | Hand chunk 115 (CV_MurderTwistFinalScript .. CViewport): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand116` | Hand chunk 116 (CViewport .. CWADFile): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand117` | Hand chunk 117 (C2DBoxF .. C3DMeshFilePrimitiveChunk): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand119` | Hand chunk 119 (CAIFilter_ShouldStillBeWorkingInWarehouse .. CAIStateGroup_Gaze): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -190,15 +191,16 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **211 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **220 parked rows** for the Fable retry pass.
 
-### Skipped rows (8 open of 27 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (9 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
+| `009576c0` | multi | open | 009576c0:16 009576d0:123 | `2026-10-15_linux_hand119` | two functions: 13-byte OnActivate (jmp [eax+40h]) + 0x009576D0 body |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
@@ -339,6 +341,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00a526d0 C3DAnimation2::ConvertTimeToFrames DIFFER(115v123): same inline-asm floor on a rate +4 / ushort count +8 record | tried: C++ stand-in | next: lane gap: inline-asm helper
 - 00a4dea0 C3DAnimationSequenceData::GetKeyframeInterpolate DIFFER(111v108): same inline-asm floor | tried: C++ stand-in | next: lane gap: inline-asm helper
 - 00ac6600 C3DMeshFileClothChunk::WriteToFile DIFFER(146v146): esi/edi swap (retail out=edi, &CompiledCode=esi) | tried: plain bool local, reference local, inline WriteOptionalArray helper, duplicated condition | next: lane gap: register colouring (or a different array/stream helper shape)
+
+
+#### `2026-10-15_linux_hand119` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand119/differ/`)
+- 009578a0 CAIStateGroupBehaviourBase::UpdateFocusAttentionOnThingActive DIFFER(148v148): retail `cmp eax,2 ; je turn ; xor al,al ; ret ; turn: call TurnToFace`, lane `jne false ; call TurnToFace ; ret ; false: xor al,al` | tried: for(;;) with continue + `== 2 return TurnToFace()`, inverted `!= 2 return false`, do/while, switch | next: lane gap: block placement of the final two-way exit
+- 0095ebf0 CAIStateGroup_BoastingCrowdMember::OnReplace DIFFER(109v107): retail `mov ecx,[eax+4] ; mov eax,[edi+4] ; mov eax,[eax+18h] ; mov edx,[ecx] ; push eax`, lane loads the creature into ecx, the component into eax, then `mov ecx,eax` | tried: out-parameter GetInterface, forceinline pointer-returning find, an inline wrapper taking PBrain | next: lane gap: register allocation of a virtual call's `this` (same as 0x0091F050)
+- 00919a70 CAIStateGroup_BuyFromSeller::GetSellersReply DIFFER(105v105): retail homes the reply pointer in the dead `seller` argument slot (`sub esp,20h`) and lowers `status == 2 ? reply : 0` as `sub eax,2 ; neg ; sbb ; not ; and`; the best source has its own slot (`sub esp,24h`) and `xor ecx,ecx ; cmp ; setne ; dec ; and` | tried: `&&` filter chain (builds the seller filter first), by-value Bind2 operand, three-argument Bind3 constructor (fixes the build order), named filter local | next: an `&&` chain whose operator evaluates the right operand first (the chain form DID home the reply in the seller slot), else lane gap: frame-slot sharing
+- 00965f30 CAIStateGroup_CarryCrateAndFollow::FindPCrate DIFFER(115v115): retail loads the three position words (ecx, edx, eax) before storing them into the comparator, the lane interleaves the first two stores | tried: implicit POD copy, by-value constructor parameter, body assignment, three scalar float members | next: lane gap: copy scheduling
+- 00965fb0 CAIStateGroup_CarryCrateAndFollow::IsRunnable DIFFER(126v126): retail `call GetPItem ; add esi,14h ; push eax`, lane `add esi,14h ; call GetPItem` | tried: operator= returning a reference / void, a named temporary in a scope, a member pointer local | next: lane gap: scheduling of the member address around a call
+- 0091f050 CAIStateGroup_CreatureRangedCombatUseWillShield::IsRunnable DIFFER(128v126): retail `mov ecx,[eax+4] ; mov eax,[ecx] ; call [eax+74h]`, lane `mov eax,[eax+4] ; mov edx,[eax] ; mov ecx,eax ; call [edx+74h]` | tried: out-parameter GetInterface, pointer-returning find, the lookup written inline, an uncast CTCBase virtual | next: lane gap: register allocation of a virtual call's `this` (same as 0x0095EBF0)
+- 009708a0 CAIStateGroup_CreatureUseCoverBase::RemoveThingFromCoverList DIFFER(143v143): `this` in ebp and the copy count in ebx in retail, swapped in the lane | tried: STLport erase + __copy loop (both `__forceinline` needed for the shape), a list reference local | next: lane gap: callee-saved register colouring
+- 00960f00 CAIStateGroup_DeedReactionRootFromSleep::IsRunnable DIFFER(118v118): retail pushes esi in the prologue (`push ecx ; push esi ; push edi`), the lane shrink-wraps `push esi` after the interface-bit test | tried: nested ifs, a result variable, optimize("s"), early `return false` | next: lane gap: shrink-wrapping
+- 009226b0 CAIStateGroup_Drunk::IsStillValid DIFFER(156v156): retail stores the Bind2 first pointer before the IsForThing constructor call and the 0x14 type after the creature push, with the creature in eax; the lane stores the type first, the pointer after the call and uses ecx/edx | tried: creature named locals, a member operator&& | next: lane gap: store scheduling around an out-of-line filter constructor
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
