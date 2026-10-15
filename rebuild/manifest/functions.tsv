@@ -50428,6 +50428,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d9f160	Init	CMC_Minion	__thiscall	void	1	CMC_Minion *	1	yes	accepted									
 00d9f1a0	sub_00d9f1a0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d9f1b0	OnPredicateFail	CMC_Minion	__thiscall	void	1	CMC_Minion *	1	yes	accepted									
+00d9f200	CMC_Minion::Piece_00d9f200	CMC_Minion	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00d9f250	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d9\CLandscapeBackgroundPatch_vectordeletingdestructor_00d9f250.cpp
 00d9f270	Main	CMC_Minion	__thiscall	void	1	CMC_Minion *	1	yes	accepted									
 00d9f5b0	CTriangleList	CTriangleList	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									

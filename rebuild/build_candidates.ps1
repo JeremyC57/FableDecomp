@@ -231472,6 +231472,20 @@ $catalog = @(
         TestSource = '00/e3/CMHeroDownstairs_Main_00e3b320_test.cpp'
         PassPattern = '00e3b320_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d9f1b0'
+        Module = 'CQ_MinionCampScript'
+        Source = '00/d9/CQMinionCampScript_OnMinionKilled_00d9f1b0.cpp'
+        TestSource = '00/d9/CQMinionCampScript_OnMinionKilled_00d9f1b0_test.cpp'
+        PassPattern = '00d9f1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9f200'
+        Module = 'CQ_MinionCampScript'
+        Source = '00/d9/CQMinionCampScript_StartMinionSpawnTimer_00d9f200.cpp'
+        TestSource = '00/d9/CQMinionCampScript_StartMinionSpawnTimer_00d9f200_test.cpp'
+        PassPattern = '00d9f200_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

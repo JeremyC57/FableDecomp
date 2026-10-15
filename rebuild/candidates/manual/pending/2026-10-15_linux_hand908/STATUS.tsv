@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00d9f1b0	RELOCATION_MATCH	75	PASS	CQ_MinionCampScript::OnMinionKilled (descriptive name; the catalogue label CMC_Minion::OnPredicateFail belongs to the thunk at 0x00D9F1A0)
+00d9f200	RELOCATION_MATCH	69	PASS	CQ_MinionCampScript::StartMinionSpawnTimer (descriptive name; tail-called by 0x00D9F1B0)
+009f5d70	DIFFER	156v156	-	CInputManager::LoadAllEventPackages: everything matches except where `this` is homed to [ebp-14h] (lane gap, 4 attempts)

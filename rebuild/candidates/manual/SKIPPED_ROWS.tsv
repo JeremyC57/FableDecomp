@@ -17,7 +17,7 @@ address	row_len	batch	label	kind	status	pieces	note
 009576c0	144	2026-10-15_linux_hand119	CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase::OnActivate	multi	done	009576c0:16,009576d0:123	two functions: 13-byte OnActivate (jmp [eax+40h]) + 0x009576D0 body
 00991620	80	2026-10-15_linux_hand86	CTCDParticleEmitter::EditFrameUpdate	multi	done	00991620:24,00991640:36	EditFrameUpdate row holds two functions (chunk 86, paused before staging)
 009cbd30	96	2026-10-15_linux_hand73	CScriptGameResourceObjectScriptedThingBase::AskHeroQuestion	multi	done	009cbd30:20,009cbd50:19,009cbd70:20	three AskHeroQuestion-style forwarders separated by int3 padding
-009f5d70	121	2026-10-15_linux_hand143	CInputManager::LoadAllEventPackages	prefix	open	009f5d70:156	CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B)
+009f5d70	121	2026-10-15_linux_hand143	CInputManager::LoadAllEventPackages	prefix	open	009f5d70:156	CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B); full 156-byte EH body authored in chunk 908 (pending/2026-10-15_linux_hand908/differ): DIFFER(156v156), only the `this` home-store position differs (lane gap)
 00a446fa	31	2026-10-14_linux_hand49	CIngredientOwner::Init	cold	open	00a446ce:0	continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent); covered when the parent lands
 00aacf90	32	2026-10-15_linux_hand76	CSoundReceiverLH::CSoundReceiverLH::vfunc_2	multi	done	00aacf90:5,00aacfa0:4	a jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding
 00ac20d0	48	2026-10-15_linux_hand110	CThingFilter_IsValid::operator()	multi	done	00ac20d0:5,00ac20e0:11,00ac20f0:6	row holds three functions
@@ -28,5 +28,5 @@ address	row_len	batch	label	kind	status	pieces	note
 00c8a520	32	2026-10-14_linux_hand57	CMemoryDataOutputStream::Clear	ltcg	open		a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG
 00ca5510	96	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	00ca5510:16,00ca5520:8,00ca5530:7,00ca5540:44	row spans four functions
 00caef70	64	2026-10-15_linux_hand110	CThingFilter_IsValid::operator()	multi	in-chunk:904	00caef70:9,00caef80:3,00caef90:3,00caefa0:3	row holds four functions
-00d9f1b0	160	2026-10-15_linux_hand145	CMC_Minion::OnPredicateFail	single	open	00d9f1b0:149	row spans two functions (OnPredicateFail ends at 0x00D9F1FA; int3 padding; a second function starts at 0x00D9F200)
+00d9f1b0	160	2026-10-15_linux_hand145	CMC_Minion::OnPredicateFail	multi	done	00d9f1b0:75,00d9f200:69	row holds two CQ_MinionCampScript members under a propagated CMC_Minion label (0x00D9F1A0 is the real CMC_Minion::OnPredicateFail thunk: mov ecx,[ecx+14h] ; jmp): the minion-died handler and the spawn-timer restart it tail-calls
 00f36ca0	144	2026-10-15_linux_hand133	CDynamicObjectHeapBase::RefCountedRelease	multi	done	00f36ca0:17,00f36cc0:43,00f36cf0:31,00f36d10:16,00f36d20:1	row spans 4 functions (int3 padding then more bodies)

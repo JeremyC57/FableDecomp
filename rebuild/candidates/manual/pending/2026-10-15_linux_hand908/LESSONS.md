@@ -1,0 +1,4 @@
+- A `mov ecx,[ecx+N] ; jmp` thunk before a body means the body's manifest label is the thunk's: `this` of the body is the field the thunk fetches (CMC_Minion::OnPredicateFail -> CQ_MinionCampScript member).
+- A random factor that stays on the FPU stack across the cast (`fmul st(1)` ... `fstp st(0)`) is a NAMED float local; the inline expression gives `fmulp`.
+- VC7.1 skips an object's EH state when every call during its lifetime is declared throw(): `try { T t(f); v.push_back(t); }` with a throw() push_back sets only the try state before the constructor and -1 after the destructor.
+- Lane gap: the home store of `this` for a catch continuation is scheduled after a pre-loop call by the lane; retail stores it right after `mov edi,ecx` (0x009F5D70).
