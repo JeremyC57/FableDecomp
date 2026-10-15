@@ -685,6 +685,27 @@ test, `add esp,4` placement, address-taken-local register allocation, two deleti
 (one with a pooled delete called with `this` in ecx). Catalog 28,903 -> **29,012 (58.5%)**. Lessons in GOTCHAS waves
 24g/24h. Next: `mkchunk.py 38 1` (pool ~3,280 rows), one chunk to the agent, one by hand.
 
+### Wave 25, part 1 (Opus authoring fleet; Fable 5.1 landing session; chunks 58, 61–91, ledger chunk 901)
+The owner ran this wave as a split: Opus 5.5 sub-agents (up to 16, later capped at 8, then 10, then 12) author the class-labelled
+chunks in parallel in their own `$S/w22/agentNN/` directories (`mkprompt25.py` builds dir + brief; agents never touch the repo)
+and stage them with `stage_pending.sh` into `rebuild/candidates/manual/pending/<batch>/`; the Fable 5.1 session re-grades and
+lands each batch with `land_pending.sh` (`verify_and_land.py --land` under the retail flags + pragma sweep, tests under the lane's
+cl.exe), keeps the parked sources under `pending/<batch>/differ/`, and regenerates `docs/pipeline/FABLE_LANDING_QUEUE.md`
+(`queue_status.py`). A mid-wave pause (owner) and an Opus usage limit cost nothing: every agent kept `PROGRESS.md` and the
+relaunched agents resumed from it without redoing matched rows. Landed: chunk 58 (34/40) and 61–91 (35, 37, 40, 38, 35, 36, 37,
+36, 37, 38, 37, 36, 38, 35, 34, 33, 34, 38, 37, 40, 36, 33, 32, 36, 31, 34, 36, 37, 34, 35, 34 of 40) -- 1,113 rows, zero lander
+refusals. Rows an agent could not author as ONE function are no longer lost: `skipped_ledger.py` keeps them in
+`rebuild/candidates/manual/SKIPPED_ROWS.tsv` (kinds multi / prefix / cold / ltcg) and `to-chunk NN` turns the multi/prefix pieces
+into an ordinary chunk; chunk 901 (34 bodies from 13 multi rows: CPersistContext_TransferableSubComponent slots 0–2, CTCInventory
+ProcessButtonB/XReleased, the CTCDoor/CTCChest slot-10/23 pairs, CTCCreatureModeManager's list walkers, CScriptThing operator==/!=,
+CSoundReceiverLH slots 2/4, the STLport `<cmath>` float overloads atan2/log10/pow, a block-header thunk, `Sleep(interval/10000)`)
+was hand-authored by the coordinator, 34/34 -- but 21 pieces were refused on the first landing as OUTSIDE_MANIFEST (the manifest
+knew only the original rows); their starts are now manifest rows with evidence and `to-chunk` adds them itself (GOTCHAS wave 25).
+Catalog 29,732 -> **30,909 (62.4%)**. Open: ~124 parked rows across the pending batches (register colouring, the push_back
+empty-tag slot, post-call re-reads, `fistp` asm_bake helpers, LTCG conventions), 6 ledger rows (2 ltcg, 2 cold, 2 ~2 KB prefix
+functions), the review items in each batch's LESSONS.md (local models beside headers whose PDB offsets miss retail's 12-byte
+containers; wrong propagated labels listed in NOTES.md). In flight: chunks 92–103 (12 agents); 104–108 prepared; pool ~1,040.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
