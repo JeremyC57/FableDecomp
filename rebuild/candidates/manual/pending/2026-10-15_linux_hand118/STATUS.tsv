@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ab9ce0	RELOCATION_MATCH	108v108	PASS	factory: RegisterNewChunk(new T) with inlined identity-matrix default ctor
+00abbe90	DIFFER	105v103	-	/GS sprintf summary; register/scheduling only (mov eax,ecx; result ptr loaded before call)
+00abbf30	RELOCATION_MATCH	131v131	PASS	count + 3 WriteUShort per 6-byte triangle + super-chunk WriteToFile
+00abbdf0	RELOCATION_MATCH	151v151	PASS	count + 8 WriteFloat per 32-byte C3DVertex2
+00aa4d80	RELOCATION_MATCH	133v133	PASS	inlined memory-stream Read (landed TransferBinaryIn model)
+0098a8e0	MATCH	139v139	PASS	label fix: CShaderRenderManager::UpdateBoneMatrices (device local inside the if)
+00aa58c0	RELOCATION_MATCH	109v109	PASS	version 2 + 4 words + __fastcall params writer + WriteData(GetData(), Size())
+00aa59c0	RELOCATION_MATCH	105v105	PASS	factory: inline ctor, member-object ctors (scale 1.0 / bias 0 / empty CArray)
+00a24930	RELOCATION_MATCH	105v105	PASS	LOD slots reset through CIVCountedPointer operator=(empty); MeshData member dtor; base inline dtor
+00a24870	RELOCATION_MATCH	113v113	PASS	inlined landed Sizeof (two ternaries + sizeof) and a named resource-list local
+004eb9e8	RELOCATION_MATCH	128v128	PASS	label fix: CHeroExperienceDef ctor; STLport vector model fixes the 24i lea scheduling
+00c6afc0	RELOCATION_MATCH	143v143	PASS	/EHsc; label fix (no-RTTI audio object); novtable root members before the vtable store
+004c3380	RELOCATION_MATCH	120v120	PASS	memberwise operator= with the inlined landed CCountedPointer::operator= (source fields in locals)
+00a35f80	MATCH	130v130	PASS	whole-sphere frame copy (16-byte frame) + named result local via memberwise copy ctor
+00a36010	RELOCATION_MATCH	128v128	PASS	Mesh = info->GetMeshStats(): inlined counted operator= + temporary's inline dtor
+00a36df0	DIFFER	113v113	-	hidden-pointer push scheduled before the inner GetInfo call (tried: named stats local, temp chain, id local, info local)
+00ac2160	DIFFER	123v125	-	new-null arm reuses the edi zero register (retail xor eax,eax) (tried: plain new, element local, placement-new ternary)
+00a2e9a0	RELOCATION_MATCH	126v126	PASS	member ctors then Name=, Reset(new), Initialise(GetData() [Size()>0 -> ja], Size(), pool)
+005508d0	RELOCATION_MATCH	98v98	PASS	CBase + vtable + two CRightHandedSet copies (memberwise C3DVector copy ctor)
+005ed190	RELOCATION_MATCH	123v123	PASS	label fix: NCameraModes::CScriptModuleGoToLookInDirection ctor; inline Normalise (1.0f/sqrt intrinsic)
+00645f8d	DIFFER	124v131	-	label fix: NPlayerGui::CStatBar slot 1; element offset kept in edi by retail, folded into lea by the lane (tried *(begin()+i), long/int index, iterator object)
+00a8e5c0	MATCH	136v136	PASS	materials + previous index as named locals before the block reference
+00a90700	RELOCATION_MATCH	137v137	PASS	root ctor: vtable then init list + member-object ctors
+00a90860	RELOCATION_MATCH	157v157	PASS	GetSizeof helpers accumulated statement by statement
+00a92870	RELOCATION_MATCH	140v140	PASS	scoped_ptr detach+delete; block pointers assigned an empty CIVCountedPointer
+00b09f90	RELOCATION_MATCH	103v103	PASS	label fix: CEnginePrimitiveSpriteTrail ctor; inline VC6 list, member-object zero vector, SetIdentity
+00a44eb0	RELOCATION_MATCH	138v138	PASS	body loop clears back pointers; counted-ptr member dtor (nulls kept) + landed CRetailArray dtor
+00a44d80	RELOCATION_MATCH	104v104	PASS	copy ctor: default SharedData then body operator= (inlined), value and null morph
+00a45370	RELOCATION_MATCH	151v151	PASS	inline signed-min ternary evaluated twice, immediate 1.0 clamp, inline counted Clear()
+00a455a0	RELOCATION_MATCH	141v141	PASS	Reset(new CShared) with inline ctor; STLport vector model fixes the lea scheduling; inline target operator=
+00a13c60	RELOCATION_MATCH	120v120	PASS	axis-angle matrix ctor + copy of *this kept on x87; component on the left of each product
+00e33e00	RELOCATION_MATCH	146v146	PASS	same as 00e33c90 with two scalar zeros (ebx zero register)
+00e33c90	RELOCATION_MATCH	152v152	PASS	nested game->B(m_thing, game->A(name, 0)); CScriptThing temp inline dtor
+00e33660	RELOCATION_MATCH	154v154	PASS	&& condition with two implicit CCharString conversions (flag-register temporaries, no EH)
+00516180	RELOCATION_MATCH	114v114	PASS	ReadVar<int>; the vector ctor defined (out of line) earlier in the TU keeps the buffer pointer in edi (5 grades: fix found on twin 00516d90)
+00516d90	RELOCATION_MATCH	114v114	PASS	byte-identical twin of 00516180 (catalogue: ReadVar<int>)
+00516e10	RELOCATION_MATCH	111v111	PASS	ReadVar<unsigned char>, same source shape
+0088b6f0	RELOCATION_MATCH	100v100	PASS	terminate + rotated pump loop + cleanup; local retail model (PDB header 4 bytes high from +0x28)
+0088ba40	RELOCATION_MATCH	113v113	PASS	bool local starts false, takes OutputValid; output copied via CBrainOutput::operator=
+0088bac0	RELOCATION_MATCH	155v155	PASS	landed update-frame arithmetic + list walk (end re-read) + activate

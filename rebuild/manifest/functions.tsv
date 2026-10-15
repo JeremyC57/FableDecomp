@@ -32146,6 +32146,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009574d0	CAIStateGroup_MinionBehaviourGreetCreature::Update	CAIStateGroup_MinionBehaviourGreetCreature	__thiscall	void	1	CAIStateGroup_MinionBehaviourGreetCreature *	1	yes	accepted									
 009575c0	CAIStateGroup_MinionBehaviourGreetCreature::IsRunnable	CAIStateGroup_MinionBehaviourGreetCreature	__thiscall	bool	1	CAIStateGroup_MinionBehaviourGreetCreature *	1	yes	accepted									
 009576c0	CAIStateGroupBehaviourBase::OnActivate	CAIStateGroupBehaviourBase	__thiscall	void	1	CAIStateGroupBehaviourBase *	1	yes	accepted									
+009576d0	CAIStateGroupBehaviourBase::Piece_009576d0	CAIStateGroupBehaviourBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00957750	TurnToFace	CAIStateGroup_OpinionReactionRoot	__thiscall	bool	1	CAIStateGroup_OpinionReactionRoot *	1	yes	accepted									
 00957790	CAIStateGroupBehaviourBase::Cleanup	CAIStateGroupBehaviourBase	__thiscall	void	1	CAIStateGroupBehaviourBase *	1	yes	accepted									
 009577e0	?IsRunnable@CAIStateGroupBehaviourBase@@UAE_NXZ	CAIStateGroupBehaviourBase	__thiscall	bool	1	CAIStateGroupBehaviourBase *	1	yes	accepted									

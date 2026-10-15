@@ -142,6 +142,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand115` | Hand chunk 115 (CV_MurderTwistFinalScript .. CViewport): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand116` | Hand chunk 116 (CViewport .. CWADFile): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand117` | Hand chunk 117 (C2DBoxF .. C3DMeshFilePrimitiveChunk): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand118` | Hand chunk 118 (C3DMeshFileTransformationChunk .. CAIBrain): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand119` | Hand chunk 119 (CAIFilter_ShouldStillBeWorkingInWarehouse .. CAIStateGroup_Gaze): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
@@ -191,7 +192,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **220 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **224 parked rows** for the Fable retry pass.
 
 ### Skipped rows (9 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -200,7 +201,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
-| `009576c0` | multi | open | 009576c0:16 009576d0:123 | `2026-10-15_linux_hand119` | two functions: 13-byte OnActivate (jmp [eax+40h]) + 0x009576D0 body |
+| `009576c0` | multi | in-chunk:906 | 009576c0:16 009576d0:123 | `2026-10-15_linux_hand119` | two functions: 13-byte OnActivate (jmp [eax+40h]) + 0x009576D0 body |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
@@ -341,6 +342,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00a526d0 C3DAnimation2::ConvertTimeToFrames DIFFER(115v123): same inline-asm floor on a rate +4 / ushort count +8 record | tried: C++ stand-in | next: lane gap: inline-asm helper
 - 00a4dea0 C3DAnimationSequenceData::GetKeyframeInterpolate DIFFER(111v108): same inline-asm floor | tried: C++ stand-in | next: lane gap: inline-asm helper
 - 00ac6600 C3DMeshFileClothChunk::WriteToFile DIFFER(146v146): esi/edi swap (retail out=edi, &CompiledCode=esi) | tried: plain bool local, reference local, inline WriteOptionalArray helper, duplicated condition | next: lane gap: register colouring (or a different array/stream helper shape)
+
+
+#### `2026-10-15_linux_hand118` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand118/differ/`)
+- 00abbe90 C3DMeshFileTrianglesChunk::GetChunkInfo DIFFER(105v103): `mov eax,ecx ; mov ecx,[eax+30h] ; sub ecx,[eax+2Ch] ; imul ecx` vs retail `mov edx,[ecx+30h] ; sub edx,[ecx+2Ch] ; imul edx`, hidden result pointer loaded before the sprintf call instead of after | tried: plain sprintf+return, count local, optimize("s"), inline GetNumTriangles | next: lane gap: register allocation under /GS (try a `CCharString::Format`-style helper or an out-of-line count getter)
+- 00a36df0 C3DMeshObject::GetEventTime DIFFER(113v113): `lea ecx,[esp] ; push ecx` (hidden result of GetAnimationStats) pushed before the GetInfo call instead of after it | tried: named stats local, full temp chain, animation-id local, info local | next: an inline accessor wrapping `GetInfo(id)->GetAnimationStats()` so the inner call completes before the hidden pointer is formed
+- 00ac2160 C3DMeshPartitionElement::BuildSubElement DIFFER(123v125): null arm of `new` stores the zero register `mov [ebx+ebp*4+20h],edi` where retail does `xor eax,eax ; mov [..],eax` | tried: plain new, element local, placement-new ternary | next: lane gap: zero-register coalescing at the new-null merge (one attempt left: a non-inline factory helper defined earlier in the TU)
+- 00645f8d NPlayerGui::CStatBar::ClearGraphics DIFFER(124v131): `lea ecx,[eax+ebx*8]` per use vs retail `mov edi,ebx ; shl edi,3 ; lea ecx,[edi+eax]` / `add ecx,edi` (scaled index kept in edi across the calls) | tried: `*(begin() + i)` with inline begin(), long/int index, iterator object | next: lane gap: RTM vector slot address materialisation (wave 24l), or a byte-offset loop variable
 
 
 #### `2026-10-15_linux_hand119` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand119/differ/`)

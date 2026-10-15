@@ -225137,6 +225137,259 @@ $catalog = @(
         TestSource = '00/98/CAIStateGroupBase_AIActionSpeakAISpeechToTarget_00981ea0_test.cpp'
         PassPattern = '00981ea0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c3380'
+        Module = 'C3DMeshObject'
+        Source = '00/4c/C3DMeshObject_operator_004c3380.cpp'
+        TestSource = '00/4c/C3DMeshObject_operator_004c3380_test.cpp'
+        PassPattern = '004c3380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004eb9e8'
+        Module = 'CHeroExperienceDef'
+        Source = '00/4e/CHeroExperienceDef_CHeroExperienceDef_004eb9e8.cpp'
+        TestSource = '00/4e/CHeroExperienceDef_CHeroExperienceDef_004eb9e8_test.cpp'
+        PassPattern = '004eb9e8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00516180'
+        Module = 'CAFile'
+        Source = '00/51/CAFile_ReadVarint_00516180.cpp'
+        TestSource = '00/51/CAFile_ReadVarint_00516180_test.cpp'
+        PassPattern = '00516180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00516d90'
+        Module = 'CAFile'
+        Source = '00/51/CAFile_ReadVarint_00516d90.cpp'
+        TestSource = '00/51/CAFile_ReadVarint_00516d90_test.cpp'
+        PassPattern = '00516d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00516e10'
+        Module = 'CAFile'
+        Source = '00/51/CAFile_ReadVarunsignedchar_00516e10.cpp'
+        TestSource = '00/51/CAFile_ReadVarunsignedchar_00516e10_test.cpp'
+        PassPattern = '00516e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005508d0'
+        Module = 'C3DOrientationInterpolator'
+        Source = '00/55/C3DOrientationInterpolator_C3DOrientationInterpolator_005508d0.cpp'
+        TestSource = '00/55/C3DOrientationInterpolator_C3DOrientationInterpolator_005508d0_test.cpp'
+        PassPattern = '005508d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ed190'
+        Module = 'NCameraModes::CScriptModuleGoToLookInDirection'
+        Source = '00/5e/NCameraModesCScriptModuleGoToLookInDirection_CScriptModuleGoToLookInDirection_005ed190.cpp'
+        TestSource = '00/5e/NCameraModesCScriptModuleGoToLookInDirection_CScriptModuleGoToLookInDirection_005ed190_test.cpp'
+        PassPattern = '005ed190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088b6f0'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_OnKill_0088b6f0.cpp'
+        TestSource = '00/88/CAIBrain_OnKill_0088b6f0_test.cpp'
+        PassPattern = '0088b6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ba40'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_ForceReset_0088ba40.cpp'
+        TestSource = '00/88/CAIBrain_ForceReset_0088ba40_test.cpp'
+        PassPattern = '0088ba40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088bac0'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_IsReadyToRunStateGroupWithHigherScriptPriorityTh_0088bac0.cpp'
+        TestSource = '00/88/CAIBrain_IsReadyToRunStateGroupWithHigherScriptPriorityTh_0088bac0_test.cpp'
+        PassPattern = '0088bac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098a8e0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateBoneMatrices_0098a8e0.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateBoneMatrices_0098a8e0_test.cpp'
+        PassPattern = '0098a8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a13c60'
+        Module = 'C3DVector'
+        Source = '00/a1/C3DVector_Rotate_00a13c60.cpp'
+        TestSource = '00/a1/C3DVector_Rotate_00a13c60_test.cpp'
+        PassPattern = '00a13c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24870'
+        Module = 'C3DMeshLODInfo'
+        Source = '00/a2/C3DMeshLODInfo_ConvertToMeshStats_00a24870.cpp'
+        TestSource = '00/a2/C3DMeshLODInfo_ConvertToMeshStats_00a24870_test.cpp'
+        PassPattern = '00a24870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24930'
+        Module = 'C3DMeshInfo'
+        Source = '00/a2/C3DMeshInfo_C3DMeshInfo_00a24930.cpp'
+        TestSource = '00/a2/C3DMeshInfo_C3DMeshInfo_00a24930_test.cpp'
+        PassPattern = '00a24930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2e9a0'
+        Module = 'C3DMeshVolume'
+        Source = '00/a2/C3DMeshVolume_C3DMeshVolume_00a2e9a0.cpp'
+        TestSource = '00/a2/C3DMeshVolume_C3DMeshVolume_00a2e9a0_test.cpp'
+        PassPattern = '00a2e9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a35f80'
+        Module = 'C3DMeshObject'
+        Source = '00/a3/C3DMeshObject_GetBoundingCentre_00a35f80.cpp'
+        TestSource = '00/a3/C3DMeshObject_GetBoundingCentre_00a35f80_test.cpp'
+        PassPattern = '00a35f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a36010'
+        Module = 'C3DMeshObject'
+        Source = '00/a3/C3DMeshObject_SetMesh_00a36010.cpp'
+        TestSource = '00/a3/C3DMeshObject_SetMesh_00a36010_test.cpp'
+        PassPattern = '00a36010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a44d80'
+        Module = 'C3DSkeletalMorphParameter'
+        Source = '00/a4/C3DSkeletalMorphParameter_C3DSkeletalMorphParameter_00a44d80.cpp'
+        TestSource = '00/a4/C3DSkeletalMorphParameter_C3DSkeletalMorphParameter_00a44d80_test.cpp'
+        PassPattern = '00a44d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a44eb0'
+        Module = 'C3DSkeletalMorph'
+        Source = '00/a4/C3DSkeletalMorph_C3DSkeletalMorph_00a44eb0.cpp'
+        TestSource = '00/a4/C3DSkeletalMorph_C3DSkeletalMorph_00a44eb0_test.cpp'
+        PassPattern = '00a44eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45370'
+        Module = 'C3DSkeletalMorphParameter'
+        Source = '00/a4/C3DSkeletalMorphParameter_SetCurrentValue_00a45370.cpp'
+        TestSource = '00/a4/C3DSkeletalMorphParameter_SetCurrentValue_00a45370_test.cpp'
+        PassPattern = '00a45370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a455a0'
+        Module = 'C3DSkeletalMorphParameter'
+        Source = '00/a4/C3DSkeletalMorphParameter_C3DSkeletalMorphParameter_00a455a0.cpp'
+        TestSource = '00/a4/C3DSkeletalMorphParameter_C3DSkeletalMorphParameter_00a455a0_test.cpp'
+        PassPattern = '00a455a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8e5c0'
+        Module = 'C3DPrimitive2'
+        Source = '00/a8/C3DPrimitive2_CalculateTextureChangeFlags_00a8e5c0.cpp'
+        TestSource = '00/a8/C3DPrimitive2_CalculateTextureChangeFlags_00a8e5c0_test.cpp'
+        PassPattern = '00a8e5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a90700'
+        Module = 'C3DPrimitive2'
+        Source = '00/a9/C3DPrimitive2_C3DPrimitive2_00a90700.cpp'
+        TestSource = '00/a9/C3DPrimitive2_C3DPrimitive2_00a90700_test.cpp'
+        PassPattern = '00a90700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a90860'
+        Module = 'C3DPrimitive2'
+        Source = '00/a9/C3DPrimitive2_Sizeof_00a90860.cpp'
+        TestSource = '00/a9/C3DPrimitive2_Sizeof_00a90860_test.cpp'
+        PassPattern = '00a90860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a92870'
+        Module = 'C3DPrimitive2'
+        Source = '00/a9/C3DPrimitive2_UploadAnimatedBuffers_00a92870.cpp'
+        TestSource = '00/a9/C3DPrimitive2_UploadAnimatedBuffers_00a92870_test.cpp'
+        PassPattern = '00a92870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa4d80'
+        Module = 'C3DMeshFileXTextureIndexChunk'
+        Source = '00/aa/C3DMeshFileXTextureIndexChunk_ReadFromFile_00aa4d80.cpp'
+        TestSource = '00/aa/C3DMeshFileXTextureIndexChunk_ReadFromFile_00aa4d80_test.cpp'
+        PassPattern = '00aa4d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa58c0'
+        Module = 'C3DMeshFileXVertexDataChunk'
+        Source = '00/aa/C3DMeshFileXVertexDataChunk_WriteToFile_00aa58c0.cpp'
+        TestSource = '00/aa/C3DMeshFileXVertexDataChunk_WriteToFile_00aa58c0_test.cpp'
+        PassPattern = '00aa58c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa59c0'
+        Module = 'C3DMeshFileXVertexDataChunk'
+        Source = '00/aa/C3DMeshFileXVertexDataChunk_CreateNewInstance_00aa59c0.cpp'
+        TestSource = '00/aa/C3DMeshFileXVertexDataChunk_CreateNewInstance_00aa59c0_test.cpp'
+        PassPattern = '00aa59c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab9ce0'
+        Module = 'C3DMeshFileTransformationChunk'
+        Source = '00/ab/C3DMeshFileTransformationChunk_CreateNewInstance_00ab9ce0.cpp'
+        TestSource = '00/ab/C3DMeshFileTransformationChunk_CreateNewInstance_00ab9ce0_test.cpp'
+        PassPattern = '00ab9ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abbdf0'
+        Module = 'C3DMeshFileVerticesChunk'
+        Source = '00/ab/C3DMeshFileVerticesChunk_WriteToFile_00abbdf0.cpp'
+        TestSource = '00/ab/C3DMeshFileVerticesChunk_WriteToFile_00abbdf0_test.cpp'
+        PassPattern = '00abbdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abbf30'
+        Module = 'C3DMeshFileTrianglesChunk'
+        Source = '00/ab/C3DMeshFileTrianglesChunk_WriteToFile_00abbf30.cpp'
+        TestSource = '00/ab/C3DMeshFileTrianglesChunk_WriteToFile_00abbf30_test.cpp'
+        PassPattern = '00abbf30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b09f90'
+        Module = 'CEnginePrimitiveSpriteTrail'
+        Source = '00/b0/CEnginePrimitiveSpriteTrail_CEnginePrimitiveSpriteTrail_00b09f90.cpp'
+        TestSource = '00/b0/CEnginePrimitiveSpriteTrail_CEnginePrimitiveSpriteTrail_00b09f90_test.cpp'
+        PassPattern = '00b09f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6afc0'
+        Module = 'CSoundOutput00c6afc0'
+        Source = '00/c6/CSoundOutput00c6afc0_CSoundOutput00c6afc0_00c6afc0.cpp'
+        TestSource = '00/c6/CSoundOutput00c6afc0_CSoundOutput00c6afc0_00c6afc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c6afc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e33660'
+        Module = 'CAC_Owner'
+        Source = '00/e3/CACOwner_OnPredicateFail_00e33660.cpp'
+        TestSource = '00/e3/CACOwner_OnPredicateFail_00e33660_test.cpp'
+        PassPattern = '00e33660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e33c90'
+        Module = 'CAC_DummyStatic'
+        Source = '00/e3/CACDummyStatic_Init_00e33c90.cpp'
+        TestSource = '00/e3/CACDummyStatic_Init_00e33c90_test.cpp'
+        PassPattern = '00e33c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e33e00'
+        Module = 'CAC_DummyMoving'
+        Source = '00/e3/CACDummyMoving_Init_00e33e00.cpp'
+        TestSource = '00/e3/CACDummyMoving_Init_00e33e00_test.cpp'
+        PassPattern = '00e33e00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
