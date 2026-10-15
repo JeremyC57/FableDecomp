@@ -1,10 +1,11 @@
 // CCreatureAction_SendMessage::PerformAction() -- if the receiver is alive, post the action's message (def, position, sender = this creature, receiver, extra) to the world's message-event manager
-// Grade: DIFFER(106v110) -- retail calls GetWorld() BEFORE pushing the five AddMessage arguments (receiver/sender/def held in ebx/edi/ebp, Extra and &Position read after the call); the lane pushes the arguments first and fetches the manager last
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008491E0, length 110 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PReceiver at +0xb8 twice for the alive test and once for the argument,
 // PCreature at +8 twice), CCreatureActionBase::GetWorld @ 0x00692940 (the manifest "_Dest_val<...>" label is propagated; the result's +0x60 is the
 // message-event manager), CMessageEventManager::AddMessage(CMessageEventDef*, const C3DVector*, CThing*, CThing*, long) @ 0x00687730.
-// Shape: the landed IS_THING_ALIVE idiom on PReceiver; then retail calls PCreature.GetPItem() once and DROPS the result (the eax of the first
+// Shape: the landed IS_THING_ALIVE idiom on PReceiver; the post goes through an inline PostMessage(def, sender, receiver) helper whose
+// body FIRST takes `CWorld* world = GetWorld()` into a local: that puts the world call after the three register arguments and before the
+// pushes (a chained `GetWorld()->Manager->AddMessage(...)` pushes first and fetches the manager last, 106v110); then retail calls PCreature.GetPItem() once and DROPS the result (the eax of the first
 // call is overwritten by the receiver fetch) -- a discarded expression statement in the source; the AddMessage arguments are evaluated right
 // to left (receiver into ebx, sender into edi, the def word into ebp) before the manager is fetched through GetWorld().
 // Members: MessageDef at +0xa8 is a counted def pointer (the copy constructor 0x00982750 bumps the count at +4), Position at +0xac,
@@ -53,6 +54,11 @@ struct CCreatureAction_SendMessage : CCreatureActionBase {
     CBaseIntelligentPointer PReceiver;      // +0xb8 CIntelligentPointer<CThing>
     long Extra;                             // +0xc0
     virtual void PerformAction();
+    void PostMessage(CMessageEventDef* def, CThing* sender, CThing* receiver)
+    {
+        CWorld* world = GetWorld();
+        world->MessageEventManager->AddMessage(def, &Position, sender, receiver, Extra);
+    }
 };
 
 void CCreatureAction_SendMessage::PerformAction()
@@ -61,7 +67,6 @@ void CCreatureAction_SendMessage::PerformAction()
         PCreature.GetPItem();               // evaluated and discarded in retail
         CThing* receiver = PReceiver.GetPItem();
         CThing* sender = PCreature.GetPItem();
-        CMessageEventDef* def = MessageDef;
-        GetWorld()->MessageEventManager->AddMessage(def, &Position, sender, receiver, Extra);
+        PostMessage(MessageDef, sender, receiver);
     }
 }

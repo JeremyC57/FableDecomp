@@ -1,0 +1,1 @@
+- A chained `GetWorld()->Manager->Call(args)` pushes the args first and fetches the manager last; when retail fetches the world between the register arguments and the pushes, wrap the call in an inline helper whose body starts with `CWorld* world = GetWorld();` (008491e0).

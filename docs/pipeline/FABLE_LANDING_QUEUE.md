@@ -154,7 +154,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand127` | Hand chunk 127 (CCrateTeamMember .. CCreatureAction_CastStrengthMultiStrike): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand128` | Hand chunk 128 (CCreatureAction_CastStrengthMultiStrike .. CCreatureAction_GoUnderground): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand129` | Hand chunk 129 (CCreatureAction_HeroLoadRangedWeapon .. CCreatureAction_ScorpionTailPlunge): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
-| `2026-10-15_linux_hand130` | Hand chunk 130 (CCreatureAction_ScorpionTailWithdraw .. CCreatureAction_TrollTunnel): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand130` | Hand chunk 130 (CCreatureAction_ScorpionTailWithdraw .. CCreatureAction_TrollTunnel): 36 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -203,8 +203,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry1` | Retry batch 1 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
+| `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **294 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **293 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -470,8 +471,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 005e3620 CKeyedCountedList::Add (catalogued CCreatureAction_InterruptableMidAttackAutoTurn ctor) DIFFER(132v114): retail keeps the pair's key/pointer in ecx/esi for the in-place copy and the final release (`test esi,esi ; dec [esi+4]` after the InsertOverflow call), ours re-reads the address-taken pair from its frame slot | tried: member-pointer ctor/dtor, local-pointer ctor/dtor (best), /Oa | next: two objects (a register-only counted copy that is released + a bitwise frame pair for the InsertOverflow argument), or STLport `make_pair`/converting-pair forms
 
 
-#### `2026-10-15_linux_hand130` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand130/differ/`)
-- 008491e0 CCreatureAction_SendMessage::PerformAction DIFFER(106v110): retail fetches receiver/sender/def into ebx/edi/ebp, calls GetWorld() (0x00692940) and only then pushes Extra/receiver/sender/&Position/def; the lane pushes the five arguments first and calls GetWorld last | tried: plain chained call, locals for receiver/sender/def, inline CThing::PostMessage, inline CCreatureActionBase::PostMessage | next: inline helper with by-value def/sender/receiver whose body starts `CWorld* world = GetWorld();` (the discarded first `PCreature.GetPItem()` statement is reproduced already)
+#### `2026-10-15_linux_hand130` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand130/differ/`)
 - 00848fd0 CCreatureAction_SitDown::PerformAction DIFFER(107v105): retail joins the mode manager straight into ecx (`mov ecx,[eax+4]` / `mov ecx,[esp+8]`) and builds the by-value counted pointer through edx/eax; the lane joins into eax, copies through esi/ecx/edx and adds `mov ecx,eax` | tried: init-list copy ctor, converting template copy ctor, GetTC<T>() accessor (moves the lookup after the copy), body-assignment copy with a block local | next: lane gap: register allocation of a joined `this` around an inlined by-value copy (try the brief's auto_inline(off) callee-above trick only if a callee body is in the TU)
 - 00854720 CCreatureAction_SpiritReturnToHero::PerformAction DIFFER(104v104): register swap only -- retail `push esi ; push edi ; mov edi,ecx` (this in edi, player in esi), lane this in esi, player in edi (push edi after the global load) | tried: ternary with player local, inline GetPhysics() accessor (fixed the vcall shape), inline GetHeroOrSelf helper, `self` local after the player | next: lane gap: callee-saved register colouring
 - 0062d890 CCreatureAction_ThrowGameObject::CCreatureAction_ThrowGameObject DIFFER(129v129): scheduling only -- retail builds the "STANDARD_CAST" string, loads the owner into edi, then zeroes the sound pair and the two trailing zero arguments from eax; the lane hoists the zero (edi) above the string constructor call and loads the owner after the pushes | tried: CSoundPair() temporary, inline NoSound() helper | next: lane gap: zero-register hoisting across a call

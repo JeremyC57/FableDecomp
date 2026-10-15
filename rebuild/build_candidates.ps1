@@ -227995,6 +227995,13 @@ $catalog = @(
         TestSource = '00/98/CCreatureActionSendMessage_CCreatureActionSendMessage_00982750_test.cpp'
         PassPattern = '00982750_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008491e0'
+        Module = 'CCreatureAction_SendMessage'
+        Source = '00/84/CCreatureActionSendMessage_PerformAction_008491e0.cpp'
+        TestSource = '00/84/CCreatureActionSendMessage_PerformAction_008491e0_test.cpp'
+        PassPattern = '008491e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
