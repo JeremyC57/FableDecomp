@@ -1,6 +1,8 @@
 // CKeyedCountedList::Add(const long&, const CCountedRef&) -- push the (key, counted object) pair onto the entry vector and mark the list changed
 // Leaf: CKeyedCountedList
 // Grade: DIFFER(132v114) -- retail keeps the pair's key/pointer in ecx/esi for the in-place copy and the final release (the frame pair is only the InsertOverflow argument); every form here re-reads the address-taken local from its slot (tried: pointer-member ctor/dtor, local-pointer ctor/dtor, /Oa)
+// Fable retry (2026-10-15): a named `SKeyedEntry entry(key, item)` local instead of the temporary grades DIFFER(134v114); the in-place copy
+// still reloads both words from the frame after the add-ref store. The two-object idea (register-only counted copy + bitwise frame copy) is untried.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E3620, length 114 bytes (+ int3 padding).
 // Label correction: the manifest row "CCreatureAction_InterruptableMidAttackAutoTurn::CCreatureAction_InterruptableMidAttackAutoTurn" is
 // propagated (no vtable store, `ret 8`, no direct callers or pointer references in the image); the class is named by its effect.
