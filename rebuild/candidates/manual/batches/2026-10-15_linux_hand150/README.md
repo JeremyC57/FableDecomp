@@ -1,0 +1,44 @@
+# Hand chunk 150 (COpenCloseHelper .. CParentDefClassBase): 32 of 40 byte-exact
+
+## What matched (32)
+- **CParentDefClassBase-labelled `operator=` (8)**: every row is a *derived* def's `operator=` (slot 19 Copy of the def vtable is the 5-byte `jmp` right before each body): 0x0045C112 CMaterialDef, 0x0045EE9B COpinionSourceDef, 0x0045F58A CSpecialAbilitiesAssassinRushDef, 0x0045FE2B CSpecialAbilitiesEnflameDef, 0x00460A61 CSoundDef, 0x00461ACD CHitLocationDef, 0x00462451 CMeleeCombatAbilityDef, 0x004628D0 CPlayerMovementDef. Shape: `#pragma optimize("s", on)`, packed 0x39-byte retail base with out-of-line `operator=` (0x431ED0), then members in declaration order (PDB offsets minus 4; containers 12 bytes). Array members (bool[79], float[4]) are written as explicit element `for` loops. CHitLocationDef's CPhysicalPrimitiveInit (one CCountedPointer) needs `__forceinline` written `operator=`s on both the record and the pointer (implicit one is out-lined; size TU out-lines plain inline) so the body is `push Info ; push Data ; call ShareData`.
+- **COpinionPersonalityTraits::TransferBinaryOut** (0x0045E863): nine `WriteFloat` calls, size TU (`fld ; push ecx ; fstp [esp]`).
+- **COpenCloseHelper::FrameUpdate** (0x0074FF60): `if (Opening) {...} else if (Closing) {...}`; the float compares are `amount - 1.0f > -eps` and `amount < eps`.
+- **COpenDoor::operator()** (0x008AD530): HasTC/GetTC(0x26) then `if (m_force) ScriptTriggerOpen(m_open); else ScriptTriggerOpen(!IsOpen());` -- `IsOpen()` must `return !Opening && !Closing && CurrentOpen;` (full-register `mov eax,1`); the if/return-true form gives `mov al,1`.
+- **COpinionDeed ctor** (0x006C54C0): init list; C3DVector memberwise user copy ctor; CIntelligentPointer built by its inline `(T*)` ctor (base ctor, own vtable, SetPItem).
+- **COpinionTransientOffset ctor** (0x00681610): `x = peak; if (n == 0) n = 1; else x = peak / n; Frames = n;` and a named run-out difference local.
+- **COpinionReactionManager (6)**: AttachOpinionSource x2 (out-param GetInterface template, AddTC name as a named CCharString in its own block, `*pp && f()` shared false tail), ClearOpinionSource (HasTC + pointer-returning GetTC into a local, `!pop || (Pop(), empty)` shares RemoveTC), LogReaction (each traits pointer a named local; unchecked TC accessor `CTC* tc; if (HasTC) tc = GetTC; return tc;`; `tc->GetWorld()->GetWorldFrame()` keeps the GetWorld call), GetThingAttitudeToPlayer (`T* p = 0; if (c && HasTC) p = GetTC;`), ...AsString (nested ifs, both returns index the CCharString table).
+- **0x0067BFB0 CPersistContext list transfer**: CheckCRC(""), CPersistTraits<list<CReactionMatch*>> local owning an STLport list (malloc'd self-linked head, out-of-line ~list), mode switch 3/2.
+- **0x009FD160 CGraphicHeader::Load**: inline CDataInputStream::Read(this, 0x1c) (landed family) then `PixelFormat = stream.ReadPixelFormat();`.
+- **COptimisedPrimitive (2)**: FindFaceTextureTangents (two FindTextureTangent calls; `this` spills itself), RemapGroups (`for (unsigned i = 0; i < Vertices.size(); ++i)`). Retail arrays are 12-byte vectors (Vertices +0x10, Faces +0x1c, VertexPairContractions +0x34, SegmentCount +0x40) -- the engine header is the PDB layout.
+- **COrbitState::Initialise** (0x00B161A0): positions cleared through an inline `C3DVector::Zero() { X = Y = Z = 0.0f; }` (written inline the zero stores move around the second fstp).
+- **0x00A6E670 std::swap<pair<CCharString,C3DDummyObject>>**: `/Gr` template `T tmp(a); a = b; b = tmp;` (implicit copy = string members + `rep movsd`).
+- **0x00A7A760 CNavQuadTree ctor**: bool init list, then member inline ctors; vectors MUST be STLport `_Vector_base` with an `_STLP_alloc_proxy` end-of-storage (else the malloc's `add esp,4` moves); STLport list alloc-proxy (`_M_node(0)` then `allocate(1)`).
+- **CPSCSplineBase ctor** (0x00B21530): `Spline(C3DVector(0,0,0), C3DVector(0,0,0), 0.5f, false)` mem-initialiser; counted pointers zeroed by inline ctors.
+- **CPSCSpline::GetUpdateParam** (0x00B1B030, slot 1): frame time in a named float local before the count; `time * (speed / count) * scale`.
+- **CPSCUpdateNormal (2)**: KillAllDecalEmitters (iterator loop + inlined STLport `list::clear` with explicit virtual dtor `push 0 ; call [eax]`), GetComponentCost (slot 20; Dead read through an inline `bool IsDead()` accessor -> `shr al,5 ; test al,1`; raw bit-field gives `test byte ptr [eax+40h],20h`).
+- **CPackedUIntArray (2)**: operator[] (bits cached in a byte local, multiply re-reads the member), Initialise (clamp, `delete[]`, resets, CalculateBias/CountBits, `new unsigned long[words]`, PackArray(..., words)).
+
+## Parked for Fable 5.1 (8)
+- 00af9000 CPSCLight::SmoothFadeValue DIFFER(84v99): `fstp [esp+4] ; fld [esp+4] ; fistp dword [esp]` rounding (and our build folds 0.5*1024) | tried: (long) cast, /QIfist | next: lane gap: inline-asm dword fistp
+- 00b05e10 CPSCLight::SmoothFadeValue DIFFER(84v99): same body as 00af9000 (per-TU copy, callers 0xB08D77/0xB08DA9) | tried: as 00af9000 | next: lane gap: inline-asm dword fistp
+- 00b1ad90 CPSCLight::SmoothFadeValue DIFFER(84v99): same body as 00af9000 (callers 0xB1A098/0xB1A0D0) | tried: as 00af9000 | next: lane gap: inline-asm dword fistp
+- 00ac8540 COptimisedPrimitive::PaintSegments DIFFER(133v133): retail `call malloc ; add esp,4 ; mov [eax],eax`, ours sinks `add esp,4` below the head stores and the SegmentCount load | tried: direct malloc in the list ctor, static allocate helper, member-assigned head, STLport alloc-proxy allocate(1) (worse: register swap) | next: model Faces as the STLport `_Vector_base` + `_STLP_alloc_proxy` (fixed the same shape in 0x00A7A760)
+- 00ac8a60 COptimisedPrimitive::UpdateCost DIFFER(126v121): ours keeps the contraction ref in edi (retail esi), stores ListIterator after the pair's counted-pointer release (retail before it, re-reading contraction.Data after insert) and releases with `dec [eax] ; cmp [esi],0` (retail `dec [esi] ; jne`) | tried: whole-expression assign, __forceinline pair/pointer dtors, complete single-inheritance owner for the 4-byte member pointer, named iterator local, user iterator operator= + direct Info release | next: release through an Info member function (`info->Release()` per wave-18 lesson) and the assignment via an inline accessor evaluated after the call
+- 00b10220 CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles DIFFER(126v148): bare dword `fistp` after float store/reload in the two-decimal rounding | tried: inline power-of-ten loop + (long) cast | next: lane gap: inline-asm dword fistp
+- 00b102c0 CPSCEmitterGeneric::GetRandomRadius DIFFER(151v151): same rounding helper | tried: inline quantiser + pow intrinsic | next: lane gap: inline-asm dword fistp
+- 00a62ae0 CPackedUIntArray::CalculateBias DIFFER(132v130): retail has no frame (counter in the dead `bits` slot, mask in the dead `count` slot, `data` in ebx at entry), ours opens `push ecx` for the mask/counter | tried: plain form, mask stored over `bits` | next: lane gap: several locals in dead argument slots
+
+## Skipped
+- none (no row holds two functions or runs into a catch funclet).
+
+## Label corrections
+- 0x0045C112 / 0x0045EE9B / 0x0045F58A / 0x0045FE2B / 0x00460A61 / 0x00461ACD / 0x00462451 / 0x004628D0 "CParentDefClassBase::operator=" are CMaterialDef / COpinionSourceDef / CSpecialAbilitiesAssassinRushDef / CSpecialAbilitiesEnflameDef / CSoundDef / CHitLocationDef / CMeleeCombatAbilityDef / CPlayerMovementDef `operator=` (vtable slot 19 thunks).
+- 0x0067BFB0 "COpinionReactionManagerDef::Transfer" is a CPersistContext transfer of `list<CReactionMatch*>` (this = persist context; called from 0x006798E6).
+- 0x009FD160 "COpinionTransientOffset::TransferBinaryIn" is CGraphicHeader::Load (load twin of CGraphicHeader::Save 0x009FD1E0).
+- 0x00A6E670 "CPSCOrbit::DatabaseCopy" is std::swap<pair<CCharString,C3DDummyObject>> (__fastcall, thunk 0x00A6EF80).
+- 0x00A7A760 "CPSCOrbit::CPSCOrbit" is CNavQuadTree::CNavQuadTree (vtable 0x0129DE64, 0x88-byte allocation at 0x00A15748).
+- 0x00993EE0 "WriteCBYTE" is CDataOutputStream::WriteFloat; 0x0049D870 is GetWorldFrame; 0x00AEAA00 "GetMaxDrawDistance" / 0x00AEA9F0 "GFGetPreMainMemoryUsed" are particle-clock getters (float @ 0x01399508 / long @ 0x01399504).
+- 0x007714B0 "CTCCreatureGroupTag::DeactivateMember" is CTCOpinionSource::PushNewSourceDef(long); 0x00771510 "CTCCameraPointScriptedSpline::EditCycleNextKeyCamera" is CTCOpinionSource::PopSourceDef; 0x00771620 is PushNewSourceDef(const CCharString&).
+- 0x004AB420 "CGuiControlTreePane::SortTreeRecursively" and 0x0042AB73 "CActiveFile::OnReadFinished" are list destructors; 0x00A56AA0 "CPSCSplineBase_Initialize" is CCardinalSpline's (p0, p1, tension, connected) ctor.
+- 0x00B05E10 / 0x00B1AD90 carry "CPSCLight::SmoothFadeValue" by byte-twin propagation; they are per-TU copies of the same fade helper called from 0x00B08Dxx and 0x00B1A0xx code.

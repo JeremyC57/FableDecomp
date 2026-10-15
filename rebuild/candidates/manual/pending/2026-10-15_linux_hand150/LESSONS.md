@@ -1,0 +1,9 @@
+# Chunk 150 lessons (for GOTCHAS)
+- Vtable slot 19 (Copy) of a def class is a 5-byte `jmp` placed right before its `operator=`: the propagated "CParentDefClassBase::operator=" label hides the real derived def (8 of 8 rows here). Array members in those copies are explicit element loops (`sub edi,esi` source-relative byte loop for bool[N], `fld [eax+ecx] ; fstp [ecx]` for float[N]).
+- A record holding only a CCountedPointer, assigned inside a size-TU `operator=`, needs `__forceinline` written `operator=`s on both the record and the pointer (implicit = out-of-line call; plain inline = out-of-line in /Os).
+- `return a && b && c;` from an inline bool member gives `mov eax,1 / xor eax,eax`; `if (a && b && c) return true; return false;` gives `mov al,1 / xor al,al`.
+- An unsigned short bit-field read through an inline `bool IsX() const { return X; }` tests as `shr al,N ; test al,1`; reading the field directly folds to `test byte ptr [m],1<<N`.
+- Two chained-zero C3DVector clears that retail schedules after an fstp need an inline `Zero() { X = Y = Z = 0.0f; }` member; written in the body they interleave with the fstp.
+- The STLport `_Vector_base` + `_STLP_alloc_proxy` vector model (gotcha wave 25) also fixed a constructor whose list-head malloc `add esp,4` sat below later member zero stores (CNavQuadTree 0x00A7A760); the list itself is the alloc-proxy form `_M_node(0)` + `allocate(1)` (retail keeps the dead zero store).
+- A member pointer to an incomplete class compiles to the 16-byte general form (`call [eax+8]` with adjustments); a counted-pointer info block's `(object->*destroy)()` needs a complete single-inheritance class to give `mov ecx,[esi+8] ; call [esi+4]`.
+- A call made before an expression's other operands (frame-time getter before a size computation) is a named float local.

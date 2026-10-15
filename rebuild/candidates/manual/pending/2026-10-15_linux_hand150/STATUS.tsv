@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0074ff60	RELOCATION_MATCH	115v115	PASS	COpenCloseHelper::FrameUpdate; zero-register flag compares
+008ad530	RELOCATION_MATCH	142v142	PASS	COpenDoor functor; IsOpen returns the && expression
+006c54c0	RELOCATION_MATCH	109v109	PASS	COpinionDeed ctor; memberwise C3DVector copy, CIntelligentPointer(T*) inline ctor
+0045e863	RELOCATION_MATCH	138v138	PASS	nine WriteFloat calls; size TU
+00700780	RELOCATION_MATCH	146v146	PASS	AttachOpinionSource(name); out-param GetInterface + named CCharString block
+00700820	RELOCATION_MATCH	146v146	PASS	AttachOpinionSource(long) overload
+007008c0	RELOCATION_MATCH	122v122	PASS	ClearOpinionSource; HasTC + GetTC local, shared RemoveTC
+00700940	RELOCATION_MATCH	141v141	PASS	LogReaction; traits pointers as named locals, unchecked TC accessor
+00701840	RELOCATION_MATCH	103v103	PASS	GetThingAttitudeToPlayer; T* p = 0 preload
+007018b0	RELOCATION_MATCH	136v136	PASS	GetThingAttitudeToPlayerAsString; nested ifs, shared tail
+0067bfb0	RELOCATION_MATCH	108v108	PASS	really CPersistContext list<CReactionMatch*> transfer (caller is COpinionReactionManagerDef::Transfer)
+00681610	MATCH	100v100	PASS	COpinionTransientOffset ctor
+009fd160	RELOCATION_MATCH	120v120	PASS	really CGraphicHeader::Load (not COpinionTransientOffset)
+00ac7e10	RELOCATION_MATCH	155v155	PASS	FindFaceTextureTangents; this spilled to frame
+00ac8540	DIFFER	133v133	-	PaintSegments; malloc add esp,4 sinks below head stores
+00ac8a60	DIFFER	126v121	-	UpdateCost; iterator store/release order and register choice
+00ac99f0	RELOCATION_MATCH	104v104	PASS	RemapGroups; size() re-evaluated per pass
+00b161a0	RELOCATION_MATCH	105v105	PASS	COrbitState::Initialise; inline C3DVector::Zero
+00b10220	DIFFER	126v148	-	lane gap: inline-asm dword fistp rounding
+00b102c0	DIFFER	151v151	-	lane gap: inline-asm dword fistp rounding
+00af9000	DIFFER	84v99	-	lane gap: inline-asm dword fistp (cos-table fade)
+00b05e10	DIFFER	84v99	-	lane gap: same body as 00af9000 (per-TU copy)
+00b1ad90	DIFFER	84v99	-	lane gap: same body as 00af9000 (per-TU copy)
+00a6e670	RELOCATION_MATCH	105v105	PASS	really std::swap<pair<CCharString,C3DDummyObject>> (/Gr)
+00a7a760	RELOCATION_MATCH	136v136	PASS	really CNavQuadTree ctor (vtable 0x129DE64); STLport _Vector_base proxy model
+00b1b030	RELOCATION_MATCH	130v130	PASS	CPSCSpline::GetUpdateParam (vtable slot 1); named frame-time local
+00b21530	RELOCATION_MATCH	112v112	PASS	CPSCSplineBase ctor; spline mem-initialiser with two zero C3DVector temps
+00b0c730	RELOCATION_MATCH	121v121	PASS	KillAllDecalEmitters; STLport list clear inlined
+00b0c7b0	RELOCATION_MATCH	123v123	PASS	GetComponentCost (slot 20); inline bool IsDead accessor
+00a629f0	RELOCATION_MATCH	101v101	PASS	CPackedUIntArray::operator[]
+00a62ae0	DIFFER	132v130	-	lane gap: locals homed in dead arg slots (no frame in retail)
+00a62d80	RELOCATION_MATCH	152v152	PASS	CPackedUIntArray::Initialise
+0045c112	RELOCATION_MATCH	141v141	PASS	really CMaterialDef::operator= (vtable slot 19)
+0045ee9b	RELOCATION_MATCH	146v146	PASS	really COpinionSourceDef::operator=; bool[79] element loop
+0045f58a	RELOCATION_MATCH	141v141	PASS	really CSpecialAbilitiesAssassinRushDef::operator=
+0045fe2b	RELOCATION_MATCH	154v154	PASS	really CSpecialAbilitiesEnflameDef::operator=; float array element loops
+00460a61	RELOCATION_MATCH	105v105	PASS	really CSoundDef::operator=
+00461acd	RELOCATION_MATCH	143v143	PASS	really CHitLocationDef::operator=; __forceinline counted-pointer assignment
+00462451	RELOCATION_MATCH	117v117	PASS	really CMeleeCombatAbilityDef::operator=
+004628d0	RELOCATION_MATCH	117v117	PASS	really CPlayerMovementDef::operator=

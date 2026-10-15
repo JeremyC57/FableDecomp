@@ -174,6 +174,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand147` | Hand chunk 147 (CMemoryAllocatorVariableSize .. CModeDazed): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand148` | Hand chunk 148 (CModeDragonFlying .. CMouseDX): 26 of 40 byte-exact | - | 13 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand149` | Hand chunk 149 (CMovableResource .. CObjectTypeCollectionPalette): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand150` | Hand chunk 150 (COpenCloseHelper .. CParentDefClassBase): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -227,7 +228,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **434 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **442 parked rows** for the Fable retry pass.
 
 ### Skipped rows (10 open of 33 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -696,6 +697,17 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00a0ed80 std::__copy_aux<_Deque_iterator<8-byte T>> DIFFER(120v118): same tag-temporary frame word as 00a0e790 (twin instantiation) | tried: the 00a0e790 forms (one grade) | next: lane gap: empty-class temporary placed at an existing argument slot
 - 00720610 std::__pop_heap<pair<EHeroMorphType,CTextureMorphEntry>*> DIFFER(116v116): retail loads the value's second word (`mov ecx,[esp+18h]`) before `sub esp,18h`, ours after it (`mov ecx,[esp+30h]`) -- scheduling only | tried: implicit copies, STLport pair memberwise copy ctor, CTextureMorphEntry memberwise copy ctor | next: lane gap: argument-area copy scheduling
 - 00bdef40 CLocalDetailCacheMap::CObjectTypeCollectionPalette::GetIndexFromType DIFFER(125v123): the empty __true_type temporary for `_M_insert_overflow` -- retail gives it the address of the `type` argument slot (same as the value), ours a `push ecx` frame word (offsets +4, loop-head padding `jmp ; lea ecx,[ecx]` becomes `lea esp,[esp]`) | tried: tag with a user ctor, a named uninitialised POD tag | next: lane gap: empty-class temporary placed at an existing argument slot
+
+
+#### `2026-10-15_linux_hand150` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand150/differ/`)
+- 00af9000 CPSCLight::SmoothFadeValue DIFFER(84v99): `fstp [esp+4] ; fld [esp+4] ; fistp dword [esp]` rounding (and our build folds 0.5*1024) | tried: (long) cast, /QIfist | next: lane gap: inline-asm dword fistp
+- 00b05e10 CPSCLight::SmoothFadeValue DIFFER(84v99): same body as 00af9000 (per-TU copy, callers 0xB08D77/0xB08DA9) | tried: as 00af9000 | next: lane gap: inline-asm dword fistp
+- 00b1ad90 CPSCLight::SmoothFadeValue DIFFER(84v99): same body as 00af9000 (callers 0xB1A098/0xB1A0D0) | tried: as 00af9000 | next: lane gap: inline-asm dword fistp
+- 00ac8540 COptimisedPrimitive::PaintSegments DIFFER(133v133): retail `call malloc ; add esp,4 ; mov [eax],eax`, ours sinks `add esp,4` below the head stores and the SegmentCount load | tried: direct malloc in the list ctor, static allocate helper, member-assigned head, STLport alloc-proxy allocate(1) (worse: register swap) | next: model Faces as the STLport `_Vector_base` + `_STLP_alloc_proxy` (fixed the same shape in 0x00A7A760)
+- 00ac8a60 COptimisedPrimitive::UpdateCost DIFFER(126v121): ours keeps the contraction ref in edi (retail esi), stores ListIterator after the pair's counted-pointer release (retail before it, re-reading contraction.Data after insert) and releases with `dec [eax] ; cmp [esi],0` (retail `dec [esi] ; jne`) | tried: whole-expression assign, __forceinline pair/pointer dtors, complete single-inheritance owner for the 4-byte member pointer, named iterator local, user iterator operator= + direct Info release | next: release through an Info member function (`info->Release()` per wave-18 lesson) and the assignment via an inline accessor evaluated after the call
+- 00b10220 CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles DIFFER(126v148): bare dword `fistp` after float store/reload in the two-decimal rounding | tried: inline power-of-ten loop + (long) cast | next: lane gap: inline-asm dword fistp
+- 00b102c0 CPSCEmitterGeneric::GetRandomRadius DIFFER(151v151): same rounding helper | tried: inline quantiser + pow intrinsic | next: lane gap: inline-asm dword fistp
+- 00a62ae0 CPackedUIntArray::CalculateBias DIFFER(132v130): retail has no frame (counter in the dead `bits` slot, mask in the dead `count` slot, `data` in ebx at entry), ours opens `push ecx` for the mask/counter | tried: plain form, mask stored over `bits` | next: lane gap: several locals in dead argument slots
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
