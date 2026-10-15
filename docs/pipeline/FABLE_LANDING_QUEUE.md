@@ -159,12 +159,13 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand92` | Hand chunk 92 (CTCInventory .. CTCInventoryBase): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand93` | Hand chunk 93 (CTCInventoryBase .. CTCInventoryExperience): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand94` | Hand chunk 94 (CTCInventoryExperience .. CTCInventoryMap): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand96` | Hand chunk 96 (CTCKraken .. CTCMeleeTrap): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand97` | Hand chunk 97 (CTCMeleeTrap .. CTCParticleAttachmentTracker): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand98` | Hand chunk 98 (CTCParticleAttachmentTracker .. CTCPhysicsNavigator): 32 of 40 byte-exact | - | 7 | 1 | landed; parked rows open |
 | `2026-10-15_linux_retry1` | Retry batch 1 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 
-Totals: **0 matched rows staged for landing**, **133 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **135 parked rows** for the Fable retry pass.
 
 ### Skipped rows (7 open of 20 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -398,6 +399,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 
 #### `2026-10-15_linux_hand94` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand94/differ/`)
 - 0056ef2d CTCInventoryExperience::vfunc_29 DIFFER(66v66): retail `xor edx,edx ; cmp [esi],edx ; setg dl` (zero register reused as the setcc target) with first/limit in esi/edi and the second result in eax; the lane pushes ebx and uses it for both setcc results | tried: `cond ? 2 : 1`, named `first` local (fixed the start-pointer re-read), named `lastAllowed` local, `(cond) + 1` | next: lane gap: register allocation (setcc into the compare-zero register)
+
+
+#### `2026-10-15_linux_hand96` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand96/differ/`)
+- 00751da0 CTCLook::IsAbleToTurnDaBody DIFFER(57v59): retail `mov eax,[esi+10h] ; test eax,eax ; ... test byte ptr [eax+91h],1 ; ... mov ecx,eax ; call IsPerformingAnyAction`, ours loads PParentCreature straight into ecx | tried: member reads, a creature local, a static inline helper taking the pointer, a Dead bitfield | next: an inline CTCLook accessor returning the creature through an out parameter (the GetInterface eax pattern), or lane gap: register choice
+- 007884f5 CTCMeleeTrap::ResetTrap DIFFER(98v96): retail `mov ebx,[ebp-4]` straight after GetSubDef and releases through ebx; ours `mov eax,[ebp-4] ... mov ebx,eax` (best form) / re-reads `[ebp-4]` for the release (honest CDefPointer-destructor form, 102v96) | tried: CDefPointer destructor (plain and `__forceinline` Release), local-copy release, raw-pointer explicit release | next: lane gap: escaped CDefPointer local cached in a register by retail (wave 24k "CDefPointer local re-read from its slot")
 
 
 #### `2026-10-15_linux_hand97` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand97/differ/`)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007fb4a0	RELOCATION_MATCH	92v92	PASS	GetClosestTentacleToTarget + inline GetInterface(227) (__forceinline)
+007fbc30	RELOCATION_MATCH	44v44	PASS	named CCharString("MEETS_WATER") -> CreateHeadEffect
+008f9e60	RELOCATION_MATCH	36v36	PASS	label propagated; CTimedTrigger_008f9e60::Start (GetTickCount import)
+007f0770	RELOCATION_MATCH	40v40	PASS	bool store tail-duplicated
+007f1170	RELOCATION_MATCH	84v84	PASS	global + def read into locals before the frame call
+007f15d0	RELOCATION_MATCH	36v36	PASS	float dword copy + CCharString operator=
+007e5970	RELOCATION_MATCH	50v50	PASS	ctor; init list after vtable, owner SetForceFrameUpdate(true)
+00640d00	RELOCATION_MATCH	28v28	PASS	vtable slot 9; named RequestAppearanceUpdate
+00641210	RELOCATION_MATCH	77v77	PASS	secondary-base override (this at +0xc); two STLport clears
+00641480	RELOCATION_MATCH	25v25	PASS	vtable slot 6; named ApplyDefActiveState
+004e6d17	RELOCATION_MATCH	90v90	PASS	ctor; optimize(s); inline CIntelligentPointer ctors
+004e769f	RELOCATION_MATCH	64v64	PASS	??1 implicit dtor; optimize(s); __forceinline def release
+004db4d7	RELOCATION_MATCH	83v83	PASS	ctor; optimize(s)
+004dcedd	RELOCATION_MATCH	56v56	PASS	??1 implicit dtor; optimize(s)
+004e33bb	RELOCATION_MATCH	70v70	PASS	label propagated: CTCNymph::~CTCNymph (packed layout)
+004e3401	RELOCATION_MATCH	80v80	PASS	label propagated: CTCDExplosiveTrail ctor; y-off + s
+007f23d0	RELOCATION_MATCH	62v62	PASS	vtable slot 6; counted CDefPointer copy + GetSubDef
+007517b0	MATCH	32v32	PASS	-1 store first, change-tested head state
+00751ad0	RELOCATION_MATCH	23v23	PASS	frame number + 90
+00751b30	RELOCATION_MATCH	64v64	PASS	C3DVector hidden return; memberwise copy ctor; packed +0xa1
+00751b80	MATCH	59v59	PASS	inline change-tested setters, -1 store after
+00751da0	DIFFER	57v59	-	retail loads PParentCreature into eax then mov ecx,eax
+00751fc0	RELOCATION_MATCH	58v58	PASS	long result; <= / >= float chain
+00753020	RELOCATION_MATCH	21v21	PASS	genuine CTCLook::IsTurningBody (two float out locals)
+00753040	RELOCATION_MATCH	53v53	PASS	two GetSubDef calls + CentreHead + ChangeEyeAngles(0,0)
+00753080	RELOCATION_MATCH	79v79	PASS	constant 1 CSE in ebx
+00753b40	RELOCATION_MATCH	95v95	PASS	inline GetInterface(90), garbage out word on absent path
+00851cc0	RELOCATION_MATCH	38v38	PASS	label propagated: CRetailMap_00851cc0::Add (tree insert)
+00c0a8c0	RELOCATION_MATCH	24v24	PASS	label propagated: CBitMaskPair_00c0a8c0::SetFlag (__fastcall helper)
+00c2d100	RELOCATION_MATCH	87v87	PASS	label propagated: CRandomDelay_00c2d100::PickDelay (rand, log10)
+00c33920	RELOCATION_MATCH	74v74	PASS	label propagated: free __stdcall; C3DVector memberwise copy ctor
+00c377b0	MATCH	24v24	PASS	label propagated: CFloatMaximum_00c377b0::Accumulate
+00c44880	MATCH	28v28	PASS	label propagated: CRenderSetting_00c44880::SetValue
+0071a670	RELOCATION_MATCH	94v94	PASS	ctor; CMapwhoNode inline ctors; bitfield clear
+0071a6d0	RELOCATION_MATCH	61v61	PASS	manager local before pushes; setne form
+0071a750	RELOCATION_MATCH	54v54	PASS	accessor results as named locals
+0071a810	RELOCATION_MATCH	58v58	PASS	??_G; __forceinline dtor + RemoveFromMapwho; new factory
+008ebdd0	RELOCATION_MATCH	26v26	PASS	label propagated: counted-pointer deleter (__fastcall)
+007883c3	RELOCATION_MATCH	67v67	PASS	y-off + s; named CCharString in else block
+007884f5	DIFFER	98v96	-	def cached eax->ebx vs retail ebx direct (lane re-reads CDefPointer slot)
