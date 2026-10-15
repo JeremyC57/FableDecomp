@@ -767,6 +767,28 @@ overloaded virtuals sit in reverse declaration order. Catalog 30,909 -> **31,659
   chunks 120–127: 0 wins (280 DIFFER, 4 already carry a pragma, 4 SRC_FAIL, 17 grader timeouts under agent contention).
   The parked rows there are genuine register-colouring / scheduling gaps, not pragma choices.
 
+### Wave 25, part 5 (chunks 122–134, ledger 907, retry batch 4, three stub rewrites, 3-agent cap)
+
+- Landed chunks 122 (33), 123 (31), 124 (33), 125 (39), 126 (36), 127 (36), 128 (37), 129 (38), 130 (36), 131 (35),
+  132 (32), 133 (33), 134 (30), ledger chunk 907 (5: CDynamicObjectHeapBase::RefCountedRelease, the release-all walk
+  over the global heap list, the deleting dtor, a two-word zeroing ctor and an empty member) and retry batch 4
+  (0x8491e0 CCreatureAction_SendMessage::PerformAction via an inline PostMessage helper that takes GetWorld() into a
+  local first). Catalog 32,452 (65.5%).
+- Chunk 133's row 00f36ca0 held five functions; split through `skipped_ledger.py to-chunk 907`. The stale
+  multi-function row in `$S/batch/chunk133_oracle.tsv` shadowed the first piece in the grader (17v129) until it
+  was deleted: `q.py` takes the first oracle row it finds, so remove parent-chunk rows before grading ledger pieces.
+- Hygiene rewrites, regraded byte-exact: CStringParser ctor 0x404720 (CCharString members, STLport list head node
+  built in a local and stored once, `Init(text.GetString(), ...)`), 0x5c1f1f (now `CRetailVector20::_M_clear` under
+  `#pragma optimize("s", on)`), 0x946620 (protected virtual empty InitStateGroup override).
+- Fleet rule (owner, latest): **3 Opus 5.5 agents at medium effort**. Agents in flight finish as they are and freed
+  slots above the cap are not refilled; chunk 134's slot was the first dropped. In flight: 135–138; prepared 139–144.
+- Chunk 134 renamed six rows from propagated labels (CEnginePrimitiveHandle::operator=, ~CTCHeroCentre,
+  CPhysicsMeshObject::GetBoundingBox{X,Y,Z}Edge, CTCCarrying::OnSetInLimbo); its parked rows are the known
+  `lea`-before-load slot-address gap (24l) and the vector-start-in-esi gap (24k).
+- Parked-row retries that failed (notes in the differ files): 0xbe24d0 (dead 16-byte temp, 3 forms), 0x5e3620
+  (pair reloaded from frame), 0x72abd0 (esi/edi swap). Review items still open: 0x704580 header address,
+  0xA62960 is Unlock not a dtor, CCategory field naming 4 bytes off, CBulletTimeManager header offsets.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
