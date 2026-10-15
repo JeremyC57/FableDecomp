@@ -1295,14 +1295,15 @@ extern "C" void host_update_position(Ctx* c) {
         wrf32(self + 0x54, rdf32(self + 0x54) + dx);
         wrf32(self + 0xF8, rdf32(self + 0xF8) + dx);
     }
-    // The inventory screens' lists sit at the 640x480 design's x, stretched 1.125 at 720x480:
+    // The inventory and pause screens' lists sit at the 640x480 design's x, stretched 1.125 at 720x480:
     // their bars ran onto the picture ring's frame. Each outermost CList (vt 0x12462E4; no
     // list above it, so a nested list is not moved twice) moves left by FABLE_XBOX_LIST_SHIFT
-    // design units (20); its rows and their bars, texts and markers follow its render
+    // design units (36); its rows and their bars, texts and markers follow its render
     // position. Absolutely placed parts (the description pane, the clothing labels) stay.
-    static const float listShift = [] { const char* e = std::getenv("FABLE_XBOX_LIST_SHIFT"); return e ? static_cast<float>(std::atof(e)) : 20.0f; }();
+    static const float listShift = [] { const char* e = std::getenv("FABLE_XBOX_LIST_SHIFT"); return e ? static_cast<float>(std::atof(e)) : 36.0f; }();
     constexpr uint32_t kListVt = 0x012462E4;
-    if (listShift != 0.0f && g_xboxScreensUp && rd32(self) == kListVt) {
+    const bool pauseUp = g_saveFileMenu && rd8(g_saveFileMenu + 0xC);  // the Xbox pause menu (same list / ring layout)
+    if (listShift != 0.0f && (g_xboxScreensUp || pauseUp) && rd32(self) == kListVt) {
         bool outermost = true;
         for (uint32_t p = self, i = 0; outermost && i < 6 && (p = parentOf(p)); ++i) {
             uint32_t vt = 0;
@@ -1510,10 +1511,23 @@ extern "C" void host_component_size(Ctx* c) {
 // crashed (Clothing, the description pane: PC_DESCRIPTION_INDEPENDANT). While the Xbox
 // inventory screens are up (g_xboxScreensUp) the handler runs with the byte clear; a toggle it
 // makes itself (closing the menu) carries over to the real value.
+// Action 60 runs with the byte as it is. It is the ActionOnBack of the Xbox top-level entries
+// (UI_MENU_ENTRY_SKILLS/EQUIPMENT/MAP/QUESTS/LOGBOOK/STATS), which CMenuEntry's back (0x53DDD0)
+// runs when its list is the only level on the menu stack (0x13B8A98): B on the top level. The
+// handler (0x41F54A) calls the hero's CTCInventory::AddCloseInventoryEvent (virtual +0x80,
+// 0x584A73), which ends the live GUI (CPlayerGui::ToggleLiveGui 0x438310, Back's close) only
+// when it sees the byte set, so with the byte clear B did nothing there. It builds no screen parts.
+constexpr uint32_t kActionCloseInventory = 60;
 extern "C" void F_0041E6D3_orig(Ctx* c);
 extern "C" void host_ui_manager_event(Ctx* c) {
     const uint32_t gui = rd32(0x13B8790);
     if (!g_xboxScreensUp || !gui || !rd8(gui + 0x2BE)) { F_0041E6D3_orig(c); return; }
+    const uint32_t ref = rd32(c->esp + 4), action = ref ? rd32(ref) : 0;  // CCountedPointer<CAction>*; the type is at +0
+    if (action && rd32(action) == kActionCloseInventory) {
+        HLOG(1, "menu: B on the Xbox inventory's top level: close (action 60)");
+        F_0041E6D3_orig(c);
+        return;
+    }
     wr8(gui + 0x2BE, 0);
     F_0041E6D3_orig(c);
     if (rd32(0x13B8790) == gui) wr8(gui + 0x2BE, rd8(gui + 0x2BE) ? 0 : 1);

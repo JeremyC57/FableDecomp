@@ -660,3 +660,12 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   render thread ms, QueryInterface calls`. The v24 device profile put 4.1% of samples in
   `runtime!com::QueryInterfac` (a stripped runtime: possibly the nearest symbol of the trap
   path); the per-frame count tells whether the guest really calls it that often.
+- **B did not close the Xbox inventory at its top level (user report)**: B (76) sends UI back
+  event 5 to the active list's selected entry (CInputProcessInventory 0x68A296); CMenuEntry's
+  GoBack (0x53DDD0) pops a level or, on the only level, runs the entry's ActionOnBack: 60 for
+  the top-level entries in game.bin (UI_MENU_ENTRY_SKILLS/EQUIPMENT/MAP/QUESTS/LOGBOOK/STATS).
+  Action 60 (0x41F54A) calls CTCInventory::AddCloseInventoryEvent (0x584A73), which toggles
+  the live GUI only when [[0x13B8790]+0x2BE] is set, and `host_ui_manager_event` runs actions
+  with that byte clear while the Xbox screens are up. Action 60 now runs with the byte as is.
+- Lists: the shift is 36 design units and covers the Xbox pause menu too (user: "the lists
+  need to be moved left more").
