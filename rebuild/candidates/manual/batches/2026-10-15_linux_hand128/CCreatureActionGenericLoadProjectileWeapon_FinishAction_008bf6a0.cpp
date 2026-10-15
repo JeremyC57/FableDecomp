@@ -1,0 +1,91 @@
+// CCreatureAction_GenericLoadProjectileWeapon::FinishAction() -- if the creature carries a live weapon with a weapon component (0x48), mark its projectile as loaded; then the base FinishAction
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008BF6A0, length 145 bytes, plain `ret`.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (x2),
+//          CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CTCWeapon::SetProjectileWeaponLoaded(bool, CThing*)
+//          @ 0x005DAC50, CCombatActionBase::FinishAction @ 0x00859A20.
+// Shape: the carrying component (0x46) comes from the bool-returning out-parameter GetInterface template; the weapon
+//   component (0x48) is a HasTC test (flags dword loaded into ecx, `test ch,1`) plus a pointer-returning lookup whose
+//   result goes straight into ecx for the call (the out-parameter form parks it in eax first); the carried thing's alive test is inline on the raw pointer (null, then dead bit +0x91);
+//   everything joins on the base FinishAction call.
+// Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; nothing else of the class is touched.
+struct CTCBase;
+
+struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);   // 0x0040F020
+};
+
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;             // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char m_flags91;                // +0x91 bit 0: dead
+    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+    unsigned long HasTC(long interfaceType) const   // the masked presence word (a bool return narrows to shr/and)
+    {
+        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
+    }
+    __forceinline CTCBase* FindTC(long interfaceType)   // the lookup alone, result straight into a register
+    {
+        long type = interfaceType;
+        CInterfaceMap* map = &m_interfaces;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || interfaceType < it->type)
+            it = map->last;
+        return it->component;
+    }
+};
+
+struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + item
+    void*   __vftable;                      // +0x00
+    CThing* m_pItem;                        // +0x04
+    CThing* GetPItem() const;               // 0x00A01B50
+};
+
+struct CTCCarrying {                        // interface type 0x46 component
+    CThing* GetThingInPrimarySlot();        // 0x006A1440
+};
+
+struct CTCWeapon {                          // interface type 0x48 component
+    void SetProjectileWeaponLoaded(bool loaded, CThing* projectile);   // 0x005DAC50
+};
+
+struct CCombatActionBase {                  // retail sizeof 0x114
+    virtual void v00();
+    unsigned char _pad04[4];                // +0x04
+    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    unsigned char _pad10[0x114 - 0x10];
+    virtual void FinishAction();            // 0x00859A20
+};
+
+struct CCreatureAction_GenericLoadProjectileWeapon : CCombatActionBase {
+    virtual void FinishAction();
+};
+
+void CCreatureAction_GenericLoadProjectileWeapon::FinishAction()
+{
+    CTCCarrying* carrying;
+    if (PCreature.GetPItem()->GetInterface(&carrying, 0x46)) {
+        CThing* weapon = carrying->GetThingInPrimarySlot();
+        if (weapon != 0 && !(weapon->m_flags91 & 1)) {
+            if (weapon->HasTC(0x48))
+                ((CTCWeapon*)weapon->FindTC(0x48))->SetProjectileWeaponLoaded(true, 0);
+        }
+    }
+    CCombatActionBase::FinishAction();
+}

@@ -1,0 +1,71 @@
+// CCreatureAction_FinishFireballSpell::SetAnims() -- if the caster has a fireball-spell component (interface 0x9d), use its release animation name as the action's animation
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008BAB70, length 98 bytes, plain `ret`.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,
+//          CTCFireballSpell::GetReleaseAnimName() (CCharString by value, hidden result pointer) @ 0x007C86F0,
+//          CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0 (manifest label
+//          "CTCInGameMenu::SetPDef" is propagated), CCharString::~CCharString @ 0x0099EAE0.
+// Shape: the bool-returning out-parameter GetInterface template (landed AlertToPlayer 0x00849320 shape) in the `if`:
+//   bit 0x9d is tested in memory (`test dword ptr [eax+30h],20000000h`); the returned string temporary lands in the
+//   same `push ecx` frame word as the lookup key, is passed by reference and destroyed after the setter.
+// Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; FinishFireballSpell adds nothing used here.
+struct CTCBase;
+
+struct CCharString {
+    void* m_pData;
+    ~CCharString();                         // 0x0099EAE0
+};
+
+struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);   // 0x0040F020
+};
+
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;             // +0x44
+    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+};
+
+struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + item
+    void*   __vftable;                      // +0x00
+    CThing* m_pItem;                        // +0x04
+    CThing* GetPItem() const;               // 0x00A01B50
+};
+
+struct CTCFireballSpell {                   // interface type 0x9d component
+    CCharString GetReleaseAnimName();       // 0x007C86F0
+};
+
+struct CCombatActionBase {                  // retail sizeof 0x114
+    virtual void v00();
+    unsigned char _pad04[4];                // +0x04
+    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    unsigned char _pad10[0x114 - 0x10];
+    void SetAnimationName(const CCharString& name);   // 0x008574D0
+};
+
+struct CCreatureAction_FinishFireballSpell : CCombatActionBase {
+    void SetAnims();
+};
+
+void CCreatureAction_FinishFireballSpell::SetAnims()
+{
+    CTCFireballSpell* fireball;
+    if (PCreature.GetPItem()->GetInterface(&fireball, 0x9d))
+        SetAnimationName(fireball->GetReleaseAnimName());
+}

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009535b0	RELOCATION_MATCH	97v97	PASS	real class CCreatureAction_DragonFireBeamInto (vtable 0x01293E54), float Timer
+005ee3b3	DIFFER	111v101	-	real CTCInventoryAbilities::GetMiscThingsDef; lane re-reads def local after add-ref + lea/push order
+008bb0b0	RELOCATION_MATCH	119v119	PASS	ebx zero shared by sound pair and bool initialisers
+008bbf20	RELOCATION_MATCH	106v106	PASS	immediate zero stores
+008ba970	RELOCATION_MATCH	138v138	PASS	out-param GetInterface 0xa7, uninitialised out pointer, tail-duplicated call
+0072abd0	DIFFER	98v98	-	real CTCSpecialAbilities::FadeOrKillEffect (static __fastcall); esi/edi swap only
+008baa00	RELOCATION_MATCH	138v138	PASS	out-param GetInterface 0xa7, follower re-fetched for the reference argument
+008bc5e0	RELOCATION_MATCH	123v123	PASS	inline converting CIntelligentPointer ctor
+008dba90	RELOCATION_MATCH	111v111	PASS	real NCreatureMode::CModeDragonFireBeam::KillBeamEffect (FadeOrKillEffect inlined via a reference local)
+008b6e60	DIFFER	117v114	-	dead add eax,44h of the inlined CDefPointer copy source (lane)
+0084c540	RELOCATION_MATCH	117v117	PASS	copy ctor, CIntelligentPointer copies
+00953630	RELOCATION_MATCH	132v132	PASS	CEnginePrimitiveHandle member with inline ctor
+008f2fb0	RELOCATION_MATCH	99v99	PASS	field-wise C3DVector, named creature local for the physics TC
+008f3c00	RELOCATION_MATCH	111v111	PASS	creature local before SetSuspendAnimation pushes
+00953120	RELOCATION_MATCH	106v106	PASS	
+008f4f40	RELOCATION_MATCH	143v143	PASS	POD C3DVector element assignments
+008f2f30	RELOCATION_MATCH	119v119	PASS	physics slot 36 (airborne) then HoverOutOf body
+009533e0	RELOCATION_MATCH	119v119	PASS	out-of-line 12-byte vector copy ctor, counted pointer ctor
+00843510	RELOCATION_MATCH	154v154	PASS	implicit literal temporary; zeros immediate with 0.0f speed
+00848d10	RELOCATION_MATCH	160v160	PASS	two out-param lookups sharing one frame word
+009717a0	RELOCATION_MATCH	112v112	PASS	three scalar members (struct member copies via lea)
+008bab70	RELOCATION_MATCH	98v98	PASS	bool GetInterface; returned string shares key slot
+008d5200	RELOCATION_MATCH	116v116	PASS	
+008d5280	RELOCATION_MATCH	119v119	PASS	PTarget(0)
+008d58d0	RELOCATION_MATCH	134v134	PASS	block-scoped ReleaseMissile locals; key reuses the dead slot
+008d6320	RELOCATION_MATCH	146v146	PASS	copy ctor incl. CDefPointer add-ref
+008ba0b0	RELOCATION_MATCH	143v143	PASS	block-scoped name string; component in ebx
+008bf6a0	RELOCATION_MATCH	145v145	PASS	unsigned long HasTC + pointer-returning lookup for the 2nd component
+0092e810	RELOCATION_MATCH	127v127	PASS	copy ctor with out-of-line CCharString copies
+00945410	RELOCATION_MATCH	109v109	PASS	
+007ee7e0	RELOCATION_MATCH	105v105	PASS	real class CCreatureAction_OpenChest (vtable 0x0127173C)
+00860060	RELOCATION_MATCH	107v107	PASS	
+00916590	RELOCATION_MATCH	110v110	PASS	real class CCreatureAction_PickUpGoods (vtable 0x0128FBF4)
+008b7920	RELOCATION_MATCH	126v126	PASS	
+008b79a0	RELOCATION_MATCH	121v121	PASS	
+00843470	RELOCATION_MATCH	155v155	PASS	real class CCreatureAction_LearnExpression (vtable 0x0127461C)
+007ed450	RELOCATION_MATCH	140v140	PASS	
+008b8110	RELOCATION_MATCH	116v116	PASS	NULL sound name
+008ca600	RELOCATION_MATCH	116v116	PASS	real class CCreatureAction_NymphSummonOutOf (vtable 0x01282354)
+008e4770	RELOCATION_MATCH	119v119	PASS	real class CCreatureAction_ScorpionRecover (vtable 0x01286724)
