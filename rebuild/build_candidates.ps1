@@ -227218,6 +227218,272 @@ $catalog = @(
         TestSource = '00/dc/CCrateTeamMember_GoOnPatrol_00dcec70_test.cpp'
         PassPattern = '00dcec70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006f2f60'
+        Module = 'CombatDialogueManager'
+        Source = '00/6f/CombatDialogueManager_CombatDialogueManager_006f2f60.cpp'
+        TestSource = '00/6f/CombatDialogueManager_CombatDialogueManager_006f2f60_test.cpp'
+        PassPattern = '006f2f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074dac0'
+        Module = 'CCreatureAction_RiseUp'
+        Source = '00/74/CCreatureActionRiseUp_CCreatureActionRiseUp_0074dac0.cpp'
+        TestSource = '00/74/CCreatureActionRiseUp_CCreatureActionRiseUp_0074dac0_test.cpp'
+        PassPattern = '0074dac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078b640'
+        Module = 'CCreatureAction_HeroLoadRangedWeapon'
+        Source = '00/78/CCreatureActionHeroLoadRangedWeapon_FinishAction_0078b640.cpp'
+        TestSource = '00/78/CCreatureActionHeroLoadRangedWeapon_FinishAction_0078b640_test.cpp'
+        PassPattern = '0078b640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7fd0'
+        Module = 'CCreatureAction_Read'
+        Source = '00/7e/CCreatureActionRead_CCreatureActionRead_007e7fd0.cpp'
+        TestSource = '00/7e/CCreatureActionRead_CCreatureActionRead_007e7fd0_test.cpp'
+        PassPattern = '007e7fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008424f0'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_008424f0.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_008424f0_test.cpp'
+        PassPattern = '008424f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00842570'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_00842570.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_00842570_test.cpp'
+        PassPattern = '00842570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008425e0'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_008425e0.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_008425e0_test.cpp'
+        PassPattern = '008425e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00842740'
+        Module = 'CCreatureAction_PlayIntoLoopOutOfAnimation'
+        Source = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_00842740.cpp'
+        TestSource = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_00842740_test.cpp'
+        PassPattern = '00842740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00842960'
+        Module = 'CCreatureAction_PlayIntoLoopOutOfAnimation'
+        Source = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_00842960.cpp'
+        TestSource = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_00842960_test.cpp'
+        PassPattern = '00842960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008440c0'
+        Module = 'CCreatureAction_PickUpThingAtTable'
+        Source = '00/84/CCreatureActionPickUpThingAtTable_CCreatureActionPickUpThingAtTable_008440c0.cpp'
+        TestSource = '00/84/CCreatureActionPickUpThingAtTable_CCreatureActionPickUpThingAtTable_008440c0_test.cpp'
+        PassPattern = '008440c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00845a70'
+        Module = 'CCreatureAction_PlayerInteractionViewQuests'
+        Source = '00/84/CCreatureActionPlayerInteractionViewQuests_PerformAction_00845a70.cpp'
+        TestSource = '00/84/CCreatureActionPlayerInteractionViewQuests_PerformAction_00845a70_test.cpp'
+        PassPattern = '00845a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00848ae0'
+        Module = 'CCreatureAction_PickUpGenericBox'
+        Source = '00/84/CCreatureActionPickUpGenericBox_FrameUpdate_00848ae0.cpp'
+        TestSource = '00/84/CCreatureActionPickUpGenericBox_FrameUpdate_00848ae0_test.cpp'
+        PassPattern = '00848ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084a180'
+        Module = 'CCreatureAction_PickUpJug'
+        Source = '00/84/CCreatureActionPickUpJug_PerformAction_0084a180.cpp'
+        TestSource = '00/84/CCreatureActionPickUpJug_PerformAction_0084a180_test.cpp'
+        PassPattern = '0084a180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084a200'
+        Module = 'CCreatureAction_PutDownJug'
+        Source = '00/84/CCreatureActionPutDownJug_PerformAction_0084a200.cpp'
+        TestSource = '00/84/CCreatureActionPutDownJug_PerformAction_0084a200_test.cpp'
+        PassPattern = '0084a200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084be30'
+        Module = 'CCreatureAction_PerformExpressionExtended'
+        Source = '00/84/CCreatureActionPerformExpressionExtended_CCreatureActionPerformExpressionExtended_0084be30.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpressionExtended_CCreatureActionPerformExpressionExtended_0084be30_test.cpp'
+        PassPattern = '0084be30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084c340'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_0084c340.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_0084c340_test.cpp'
+        PassPattern = '0084c340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084c3e0'
+        Module = 'CCreatureAction_PlayIntoLoopOutOfAnimation'
+        Source = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_0084c3e0.cpp'
+        TestSource = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_0084c3e0_test.cpp'
+        PassPattern = '0084c3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087cd50'
+        Module = 'CCreatureAction_InterruptableMidAttackAutoTurn'
+        Source = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_PerformAction_0087cd50.cpp'
+        TestSource = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_PerformAction_0087cd50_test.cpp'
+        PassPattern = '0087cd50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087e690'
+        Module = 'CCreatureAction_InterruptableMidAttackAutoTurn'
+        Source = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_CCreatureActionInterruptableMidAttackAutoTurn_0087e690.cpp'
+        TestSource = '00/87/CCreatureActionInterruptableMidAttackAutoTurn_CCreatureActionInterruptableMidAttackAutoTurn_0087e690_test.cpp'
+        PassPattern = '0087e690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b7f80'
+        Module = 'CCreatureAction_PlayCombatAnimation'
+        Source = '00/8b/CCreatureActionPlayCombatAnimation_CCreatureActionPlayCombatAnimation_008b7f80.cpp'
+        TestSource = '00/8b/CCreatureActionPlayCombatAnimation_CCreatureActionPlayCombatAnimation_008b7f80_test.cpp'
+        PassPattern = '008b7f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008bd880'
+        Module = 'CCreatureAction_RiseUp'
+        Source = '00/8b/CCreatureActionRiseUp_CCreatureActionRiseUp_008bd880.cpp'
+        TestSource = '00/8b/CCreatureActionRiseUp_CCreatureActionRiseUp_008bd880_test.cpp'
+        PassPattern = '008bd880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c0790'
+        Module = 'CCreatureAction_JackFloatUp'
+        Source = '00/8c/CCreatureActionJackFloatUp_FrameUpdate_008c0790.cpp'
+        TestSource = '00/8c/CCreatureActionJackFloatUp_FrameUpdate_008c0790_test.cpp'
+        PassPattern = '008c0790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c1180'
+        Module = 'CCreatureAction_JackFloatUp'
+        Source = '00/8c/CCreatureActionJackFloatUp_FinishAction_008c1180.cpp'
+        TestSource = '00/8c/CCreatureActionJackFloatUp_FinishAction_008c1180_test.cpp'
+        PassPattern = '008c1180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c11f0'
+        Module = 'CCreatureAction_JackFall'
+        Source = '00/8c/CCreatureActionJackFall_Initialise_008c11f0.cpp'
+        TestSource = '00/8c/CCreatureActionJackFall_Initialise_008c11f0_test.cpp'
+        PassPattern = '008c11f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c1260'
+        Module = 'CCreatureAction_JackGetUp'
+        Source = '00/8c/CCreatureActionJackGetUp_FinishAction_008c1260.cpp'
+        TestSource = '00/8c/CCreatureActionJackGetUp_FinishAction_008c1260_test.cpp'
+        PassPattern = '008c1260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c2490'
+        Module = 'CCreatureAction_JackFall'
+        Source = '00/8c/CCreatureActionJackFall_FinishAction_008c2490.cpp'
+        TestSource = '00/8c/CCreatureActionJackFall_FinishAction_008c2490_test.cpp'
+        PassPattern = '008c2490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c4810'
+        Module = 'CCreatureAction_ScorpionTailPlunge'
+        Source = '00/8c/CCreatureActionScorpionTailPlunge_PerformAction_008c4810.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionTailPlunge_PerformAction_008c4810_test.cpp'
+        PassPattern = '008c4810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c4b00'
+        Module = 'CCreatureAction_ScorpionRecover'
+        Source = '00/8c/CCreatureActionScorpionRecover_FinishAction_008c4b00.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionRecover_FinishAction_008c4b00_test.cpp'
+        PassPattern = '008c4b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c4e20'
+        Module = 'CCreatureAction_ScorpionChargeInto'
+        Source = '00/8c/CCreatureActionScorpionChargeInto_CCreatureActionScorpionChargeInto_008c4e20.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionChargeInto_CCreatureActionScorpionChargeInto_008c4e20_test.cpp'
+        PassPattern = '008c4e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c99c0'
+        Module = 'CCreatureAction_HobbeSpellcasterAim'
+        Source = '00/8c/CCreatureActionHobbeSpellcasterAim_FinishAction_008c99c0.cpp'
+        TestSource = '00/8c/CCreatureActionHobbeSpellcasterAim_FinishAction_008c99c0_test.cpp'
+        PassPattern = '008c99c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c9f40'
+        Module = 'CCreatureAction_NymphGetHitDie'
+        Source = '00/8c/CCreatureActionNymphGetHitDie_FrameUpdate_008c9f40.cpp'
+        TestSource = '00/8c/CCreatureActionNymphGetHitDie_FrameUpdate_008c9f40_test.cpp'
+        PassPattern = '008c9f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e6490'
+        Module = 'CCreatureAction_ReleaseStrengthBerserk'
+        Source = '00/8e/CCreatureActionReleaseStrengthBerserk_Initialise_008e6490.cpp'
+        TestSource = '00/8e/CCreatureActionReleaseStrengthBerserk_Initialise_008e6490_test.cpp'
+        PassPattern = '008e6490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009254c0'
+        Module = 'CCreatureAction_KrakenLowChargeLoop'
+        Source = '00/92/CCreatureActionKrakenLowChargeLoop_CCreatureActionKrakenLowChargeLoop_009254c0.cpp'
+        TestSource = '00/92/CCreatureActionKrakenLowChargeLoop_CCreatureActionKrakenLowChargeLoop_009254c0_test.cpp'
+        PassPattern = '009254c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009255e0'
+        Module = 'CCreatureAction_KrakenLowAttackLoop'
+        Source = '00/92/CCreatureActionKrakenLowAttackLoop_CCreatureActionKrakenLowAttackLoop_009255e0.cpp'
+        TestSource = '00/92/CCreatureActionKrakenLowAttackLoop_CCreatureActionKrakenLowAttackLoop_009255e0_test.cpp'
+        PassPattern = '009255e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00925780'
+        Module = 'CCreatureAction_KrakenHighAttackLoop'
+        Source = '00/92/CCreatureActionKrakenHighAttackLoop_CCreatureActionKrakenHighAttackLoop_00925780.cpp'
+        TestSource = '00/92/CCreatureActionKrakenHighAttackLoop_CCreatureActionKrakenHighAttackLoop_00925780_test.cpp'
+        PassPattern = '00925780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00976f30'
+        Module = 'CCreatureAction_JackShotFloat'
+        Source = '00/97/CCreatureActionJackShotFloat_CCreatureActionJackShotFloat_00976f30.cpp'
+        TestSource = '00/97/CCreatureActionJackShotFloat_CCreatureActionJackShotFloat_00976f30_test.cpp'
+        PassPattern = '00976f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00977100'
+        Module = 'CCreatureAction_JackScream'
+        Source = '00/97/CCreatureActionJackScream_CCreatureActionJackScream_00977100.cpp'
+        TestSource = '00/97/CCreatureActionJackScream_CCreatureActionJackScream_00977100_test.cpp'
+        PassPattern = '00977100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097b3f0'
+        Module = 'CCreatureAction_JumpOutFromCover'
+        Source = '00/97/CCreatureActionJumpOutFromCover_CCreatureActionJumpOutFromCover_0097b3f0.cpp'
+        TestSource = '00/97/CCreatureActionJumpOutFromCover_CCreatureActionJumpOutFromCover_0097b3f0_test.cpp'
+        PassPattern = '0097b3f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

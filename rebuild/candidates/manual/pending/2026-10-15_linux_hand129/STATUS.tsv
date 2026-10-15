@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0078b640	RELOCATION_MATCH	111v111	PASS	Finished -> SetWeaponLoaded; base; GetInterface(0x8C) erase(this)+recalc
+008c99c0	RELOCATION_MATCH	119v119	PASS	IS_THING_ALIVE spell -> Kill(true) + clear via temp CIntelligentPointer
+005e3620	DIFFER	132v114	-	not an AutoTurn ctor: pair push_back on a vector + flag; pair local re-read vs retail registers
+0087cd50	RELOCATION_MATCH	145v145	PASS	params via inline accessor (shares key frame word); AddMode(0x1F)
+0087e690	RELOCATION_MATCH	115v115	PASS	copy ctor; RequiredFacing memberwise dword copy ctor
+008c11f0	RELOCATION_MATCH	103v103	PASS	unchecked GetInterface(0xAD) ClearEffects; base Initialise
+008c2490	RELOCATION_MATCH	160v160	PASS	mode 0x33 removal; GoUnderground temp in SetCurrentAction
+008c0790	RELOCATION_MATCH	140v140	PASS	rise as C3DVector(0,0,r) keeps 0x1c frame; physics via inline accessor
+008c1180	RELOCATION_MATCH	101v101	PASS	unchecked GetInterface(0x31) AddMode(0x31) if absent
+008c1260	RELOCATION_MATCH	101v101	PASS	twin of 008c1180 with mode 0x34
+00977100	RELOCATION_MATCH	133v133	PASS	one-arg combat ctor; counted ptr zeroed by member ctor
+00976f30	RELOCATION_MATCH	99v99	PASS	two-arg combat ctor; name reference to setter
+0097b3f0	RELOCATION_MATCH	117v117	PASS	three scalar members from the vector (struct member gave lea)
+009255e0	RELOCATION_MATCH	115v115	PASS	label: KrakenLowAttackLoop (vtable 0x01290C64, ATTACK_LOW_LOOP)
+00925780	RELOCATION_MATCH	115v115	PASS	init-list long+bool; scoped name
+009254c0	RELOCATION_MATCH	119v119	PASS	init-list arg + owner->+0xb4
+008c9f40	RELOCATION_MATCH	125v125	PASS	position copied by value; ground + HeightOnInit*(1-progress)
+006f2f60	RELOCATION_MATCH	98v98	PASS	label: ~CombatDialogueManager (CCombatManager+0x38)
+0084be30	RELOCATION_MATCH	146v146	PASS	copy ctor; CDefPointer inline add-ref
+00848ae0	RELOCATION_MATCH	143v143	PASS	IS_THING_ALIVE else FinishAction; LowerBound 0x004365B0
+0084a180	RELOCATION_MATCH	119v119	PASS	unchecked GetInterface(0xBB) flag clear
+008440c0	RELOCATION_MATCH	115v115	PASS	table ctor; converting CIntelligentPointer member
+008424f0	RELOCATION_MATCH	116v116	PASS	name lookup overload; init list
+00842570	RELOCATION_MATCH	107v107	PASS	animation-entry overload
+008425e0	RELOCATION_MATCH	117v117	PASS	full 11-arg overload
+0084c340	RELOCATION_MATCH	99v99	PASS	explicit memberwise copy ctor
+008b7f80	RELOCATION_MATCH	97v97	PASS	three flag bytes in init list
+00842740	RELOCATION_MATCH	148v148	PASS	two CCharString copies; local CCharString model
+00842960	RELOCATION_MATCH	137v137	PASS	stage 2; default strings; AnimDelayTime=0 in body
+0084c3e0	RELOCATION_MATCH	123v123	PASS	copy ctor with two CCharString copies
+00845a70	RELOCATION_MATCH	155v155	PASS	two IS_THING_ALIVE; guide null-tested
+0084a200	RELOCATION_MATCH	137v137	PASS	two checked GetInterface lookups
+007e7fd0	RELOCATION_MATCH	117v117	PASS	implicit conversion temp for STANDARD_CAST
+008e6490	RELOCATION_MATCH	99v99	PASS	checked GetInterface(0x84); float virtual arg
+0074dac0	RELOCATION_MATCH	128v128	PASS	two-arg RiseUp, flag 1
+008bd880	RELOCATION_MATCH	123v123	PASS	one-arg RiseUp, null sound name, flag 0
+008c4e20	RELOCATION_MATCH	116v116	PASS	CIntelligentPointer member + body store
+008c4b00	RELOCATION_MATCH	123v123	PASS	unchecked GetInterface; RemoveMode(0x38); resume anim
+008c4a80	DIFFER	119v117	-	component merged into eax vs retail ecx
+008c4810	RELOCATION_MATCH	130v130	PASS	def name in own block; unchecked GetTCDriver

@@ -152,6 +152,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand125` | Hand chunk 125 (CCharString .. CCombatManager): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand126` | Hand chunk 126 (CCombatManager .. CCrateTeamManager): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand127` | Hand chunk 127 (CCrateTeamMember .. CCreatureAction_CastStrengthMultiStrike): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand129` | Hand chunk 129 (CCreatureAction_HeroLoadRangedWeapon .. CCreatureAction_ScorpionTailPlunge): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -201,7 +202,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **285 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **287 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -454,6 +455,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 008b9dd0 CCreatureAction_CastPhysicalShieldSpell::Initialise DIFFER(125v125): retail `mov edi,ecx ; call Initialise ; lea esi,[edi+8]` (this=edi, &PCreature=esi), ours `mov esi,ecx ; ... ; lea edi,[esi+8]`; every other instruction identical | tried: scoped named AddTC name (0x008C4250 form), implicit temporary (0x008C08B0 form), an explicit `CBaseIntelligentPointer&` local after the base call | next: lane gap: esi/edi tie-break for `this` vs the pointer-member address (the matched 008cca60 sibling got this=edi with the same source style)
 - 00692ec0 CCreatureActionBase::HasPrecedingAction DIFFER(95v97): retail's early `return false` is its own `xor al,al ; pop esi ; pop ecx ; ret` block at the end, ours jumps to the shared epilogue returning the just-tested al; the `GetInterface(&q,70) && !q->Has()` body matches byte for byte (`mov eax,1` / `xor eax,eax` = an int-typed `&&`, GetInterface returning long) | tried: `return !q->Has()` (setcc), ternary (setcc), long-GetInterface `&&` (closest), slot 36 returning unsigned char | next: find the form whose early false is not folded into the tested register -- maybe the first test is on a `long`-returning slot compared differently, or `return false` through a bool local
 - 007c3070 CCreatureActionBase::GetActionSpeedParameter DIFFER(112v112): retail `mov esi,[esp+8] ; je ; lea ecx,[esp+0Ch] ; push ecx ; lea edx,[esp+14h] ; push edx ; mov ecx,esi ; call` and `mov eax,[esi] ; call [eax+4]`, ours `mov ecx,[esp+8] ; mov esi,ecx ; je ; lea edx ; push edx ; lea eax ; push eax ; call` and `mov edx,[esi] ; call [edx+4]` | tried: hand release + `return value` (load at the end), inline CDefPointer dtor + operator-> (full inlined release), hand release + `result = value` after the call, register `result` + addressed `value` copied inside the found branch (closest: frame, zeroing and the edi result now match) | next: lane gap: register choice around the def-pointer local; maybe the lookup is a `__thiscall` on a different object expression (`def.m_p->` vs the local)
+
+
+#### `2026-10-15_linux_hand129` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand129/differ/`)
+- 008c4a80 CCreatureAction_ScorpionSummon::Initialise DIFFER(119v117): retail merges the two GetInterface arms straight into ecx (`mov ecx,[eax+4]` / `mov ecx,[esp+8]`), ours into eax plus `mov ecx,eax` before AddMode | tried: out-parameter GetInterface, inline GetModeManager accessor, value-returning inline lookup, local declared before the base call | next: the twin ScorpionRecover::FinishAction (008c4b00, same source shape) matches with eax -- look for a different AddMode declaration (e.g. a base-class member reached through a cast) or a register-allocation lane gap
+- 005e3620 CKeyedCountedList::Add (catalogued CCreatureAction_InterruptableMidAttackAutoTurn ctor) DIFFER(132v114): retail keeps the pair's key/pointer in ecx/esi for the in-place copy and the final release (`test esi,esi ; dec [esi+4]` after the InsertOverflow call), ours re-reads the address-taken pair from its frame slot | tried: member-pointer ctor/dtor, local-pointer ctor/dtor (best), /Oa | next: two objects (a register-only counted copy that is released + a bitwise frame pair for the InsertOverflow argument), or STLport `make_pair`/converting-pair forms
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
