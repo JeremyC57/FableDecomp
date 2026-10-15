@@ -1555,6 +1555,7 @@ void xboxScreensTick() {  // once per input update: the Xbox inventory screens e
 // C3DAnimation2::CalcLocalTransformations (0xA4CEC0) and CalcLocalTransformationsRelative
 // (0xA4D770): --wrap 0xA4CEC0=host_calc_local_transformations
 //             --wrap 0xA4D770=host_calc_local_transformations_relative
+//             --wrap 0xA4D330=host_calc_local_bone_transformation
 // ============================================================================
 // Two device crashes (v17 and v25, in combat, rendering an animated mesh: GetBoneTransformations
 // -> CalcBlendedMeshTransformations -> CombineBlendedBaseAnimations 0xA9F374 -> 0xA4CEC0)
@@ -1589,7 +1590,16 @@ void xboxScreensTick() {  // once per input update: the Xbox inventory screens e
 // has already found readable (kernel.cpp's page table only for a page not seen yet). On an x86-64
 // host, a 40-bone animation with paletted tracks (synthetic data, the lifted 0xA4CEC0): about
 // 0.45 us per call against 5.5 us for the original (8%), 30 ns of it per call.
+//
+// CalcLocalBoneTransformation (0xA4D330, one bone: out keyframe, bone, time; ret 0xC) reads the
+// same instance, sequence table, sequence data and keys for one bone. A device log of v26 (attacked
+// and taking damage) faulted there, from CombineBlendedBaseAnimationsBoneList (0xAA0DC0, under
+// CalcBlendedBoneTransformation 0xAA2110): Sequences[bone].Data 0x07099D40 was readable but its
+// constant rotation key pointer [data+0x14] read 0x38000100 (a float's bits, not a pointer), so
+// the data is stale. The same guard covers it: the checks of CalcLocalTransformations for the one
+// bone, and on a skip the bone's keyframe as track modes 0/0 leave it.
 extern "C" void F_00A4CEC0_orig(Ctx* c);
+extern "C" void F_00A4D330_orig(Ctx* c);
 extern "C" void F_00A4D770_orig(Ctx* c);
 #ifndef _WIN32
 namespace w32 { bool guestWritable(uint32_t a, size_t n); const char* guestPageState(uint32_t a); }
@@ -1612,9 +1622,12 @@ struct AnimFn {
     uint32_t retBlended, retBase;  // the return addresses of its calls in the two callers
     uint32_t dataBytes;            // the sequence data it reads: [data+8, data+8+dataBytes)
     bool relative;
+    unsigned slot;  // its skip counter
 };
-constexpr AnimFn kCalc{"CalcLocalTransformations", 0xA4CEC0, 0xC, 0xA4CEE1, 0xA9F379, 0xA9F240, 0x24, false};
-constexpr AnimFn kRelative{"CalcLocalTransformationsRelative", 0xA4D770, 0x10, 0xA4D791, 0xA9F363, 0xA9F22B, 0x20, true};
+constexpr AnimFn kCalc{"CalcLocalTransformations", 0xA4CEC0, 0xC, 0xA4CEE1, 0xA9F379, 0xA9F240, 0x24, false, 0};
+constexpr AnimFn kRelative{"CalcLocalTransformationsRelative", 0xA4D770, 0x10, 0xA4D791, 0xA9F363, 0xA9F22B, 0x20, true, 1};
+// its callers keep no CCountedPointer at a known place: no retBlended/retBase
+constexpr AnimFn kBone{"CalcLocalBoneTransformation", 0xA4D330, 0xC, 0xA4D353, 0, 0, 0x24, false, 2};
 
 bool guestRange(uint32_t a, uint64_t n, bool write) {  // a whole array (n > 0)
     if (!n || n > 0x7FFFFFFFu) return false;
@@ -1765,17 +1778,83 @@ bool relativeCheck(Ctx* c, AnimCheck& k) {
     return true;
 }
 
+// Every guest address 0xA4D330..0xA4D76B reads or writes (the stack and the acos tables aside).
+bool boneCheck(Ctx* c, AnimCheck& k) {
+    const uint32_t self = c->ecx, out = rd32(c->esp + 4), b = rd32(c->esp + 8);
+    if (!k.read("the instance (this+0x50..+0x73)", self + kFps, kLocked - kFps) || !animFrame(c, kBone, k)) return false;
+    const uint32_t f = k.frame, seqs = rd32(self + kSequences), mask = rd32(self + kRigidMask), rigid = rd32(self + kRigidPos);
+    k.bone = b;
+    if (!k.array("the output keyframe (argument 1)", out, 0x20, true) ||
+        !k.read("the bone's sequence [this+0x5C] + 8 * bone", seqs + b * 8, 4))
+        return false;
+    const uint32_t d = rd32(seqs + b * 8);
+    if (!k.read("the sequence data (Sequences[bone].Data +8..+0x2B)", d + 8, kBone.dataBytes)) return false;
+    const uint32_t count = rd16(d + 8), modes = rd8(d + 0xB);
+    const uint32_t f2 = k.frame2 = f + 1 < count ? f + 1 : 0;
+    const uint32_t rot = rd32(d + 0x14), pos = rd32(d + 0x20);
+    switch (modes & 3) {
+        case 1:
+            if (!k.read("the rotation key [data+0x14]", rot, 16)) return false;
+            break;
+        case 2:
+            if (!k.keys("a rotation key [data+0x14] + 16 * frame", rot, f, f2, 16)) return false;
+            break;
+        case 3: {
+            const uint32_t pal = rd32(d + 0x24);
+            if (!k.keys("the rotation palette [data+0x24] + frame", pal, f, f2, 1)) return false;
+            k.key = rd8(pal + f), k.key2 = rd8(pal + f2);
+            if (k.key == k.key2 ? !k.read("a paletted rotation key [data+0x14]", rot + (k.key << 4), 16)
+                                : !k.keys("a paletted rotation key [data+0x14]", rot, k.key, k.key2, 16))
+                return false;
+            break;
+        }
+        default: break;
+    }
+    k.key = k.key2 = ~0u;
+    switch ((modes >> 2) & 3) {
+        case 1:
+            if (!k.read("the position key [data+0x20]", pos, 6)) return false;
+            break;
+        case 2:
+            if (!k.keys("a position key [data+0x20] + 6 * frame", pos, f, f2, 6)) return false;
+            break;
+        case 3: {
+            const uint32_t pal = rd32(d + 0x28);
+            if (!k.keys("the position palette [data+0x28] + frame", pal, f, f2, 1)) return false;
+            k.key = rd8(pal + f), k.key2 = rd8(pal + f2);
+            if (!k.keys("a paletted position key [data+0x20]", pos, k.key, k.key2, 6)) return false;
+            break;
+        }
+        default: break;
+    }
+    if (mask && (!k.read("the rigid bone mask [this+0x6C] + bone", mask + b, 1) ||
+                 (rd8(mask + b) && !k.read("a rigid bone position [this+0x70]", rigid + b * 12, 12))))
+        return false;
+    return true;
+}
+
 // The mesh the call is for: CalcLocalTransformationsRelative's argument 4; esi at the two callers'
 // CalcLocalTransformations calls.
 uint32_t animMesh(Ctx* c, const AnimFn& fn) {
     if (fn.relative) return rd32(c->esp + 16);
     const uint32_t ret = rd32(c->esp);
-    return ret == fn.retBlended || ret == fn.retBase ? c->esi : 0;
+    return fn.retBlended && (ret == fn.retBlended || ret == fn.retBase) ? c->esi : 0;
 }
 
 // A skipped call's output, written so the blending never reads the pool's stale contents; what
 // was written goes to `said` for the log.
 void animFill(Ctx* c, const AnimFn& fn, char* said, size_t size) {
+    if (fn.slot == kBone.slot) {  // the one keyframe, rotation (0,0,0,1) and position 0
+        const uint32_t o = rd32(c->esp + 4);
+        if (!guestRange(o, 0x20, true)) {
+            std::snprintf(said, size, "left as is: the output keyframe is not writable");
+            return;
+        }
+        wr32(o, 0), wr32(o + 4, 0), wr32(o + 8, 0), wr32(o + 12, 0x3F800000u);
+        wr32(o + 16, 0), wr32(o + 20, 0), wr32(o + 24, 0), wr32(o + 28, 0);
+        std::snprintf(said, size, "an identity keyframe (rotation (0,0,0,1), position 0) for bone %u", rd32(c->esp + 8));
+        return;
+    }
     const uint32_t self = c->ecx, out = rd32(c->esp + 4), mesh = animMesh(c, fn);
     const bool instance = w32::guestReadable(self + kBones, 4), meshOk = mesh && w32::guestReadable(mesh + kMeshBones, 0xC);
     const uint32_t bones = instance ? rd32(self + kBones) : 0, meshBones = meshOk ? rd32(mesh + kMeshBones) : 0;
@@ -1807,8 +1886,8 @@ void animFill(Ctx* c, const AnimFn& fn, char* said, size_t size) {
 uint32_t animPeek(uint32_t a) { return w32::guestReadable(a, 4) ? rd32(a) : 0xFFFFFFFFu; }
 
 void animReport(Ctx* c, const AnimFn& fn, const AnimCheck& k, const char* said) {
-    static std::atomic<uint32_t> s_skipped[2];
-    const uint32_t n = s_skipped[fn.relative].fetch_add(1) + 1;
+    static std::atomic<uint32_t> s_skipped[3];
+    const uint32_t n = s_skipped[fn.slot].fetch_add(1) + 1;
     const uint32_t self = c->ecx, ret = rd32(c->esp);
     if (n > 1) {  // then a count at powers of two
         if (!(n & (n - 1)))
@@ -1837,7 +1916,7 @@ void animReport(Ctx* c, const AnimFn& fn, const AnimCheck& k, const char* said) 
     if (const uint32_t mesh = animMesh(c, fn))
         HLOG(0, "anim guard:   mesh 0x%08X: id [+0xE8] 0x%08X, bones [+0x98] %d, bind-pose keyframes [+0xA0] 0x%08X", mesh,
              animPeek(mesh + kMeshId), static_cast<int>(animPeek(mesh + kMeshBones)), animPeek(mesh + kMeshKeyframes));
-    if (ret == fn.retBlended || ret == fn.retBase) {
+    if (fn.retBlended && (ret == fn.retBlended || ret == fn.retBase)) {
         // the caller's CCountedPointer from GetAnimation {instance, counter block {count, release,
         // its argument}}, just above the arguments; edi is the animation state (its +8 the id
         // GetAnimation was asked for), ebp the C3DAnimationManager
@@ -1881,4 +1960,11 @@ extern "C" void host_calc_local_transformations_relative(Ctx* c) {
     if (AnimCheck k; !relativeCheck(c, k)) return animSkip(c, kRelative, k);
 #endif
     F_00A4D770_orig(c);
+}
+
+extern "C" void host_calc_local_bone_transformation(Ctx* c) {
+#ifndef _WIN32
+    if (AnimCheck k; !boneCheck(c, k)) return animSkip(c, kBone, k);
+#endif
+    F_00A4D330_orig(c);
 }

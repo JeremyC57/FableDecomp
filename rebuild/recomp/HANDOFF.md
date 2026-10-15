@@ -199,7 +199,7 @@ fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=h
     --wrap 0x47E196=host_save_game --wrap 0x54EF00=host_text_draw \
     --wrap 0x52FFD0=host_update_position --hook 0xBFEA70=host_ftol2 --hook 0x9FC070=host_unloadable_memory \
     --wrap 0x445B80=host_ztarget_toggle --wrap 0x591E5E=host_inventory_screen --wrap 0x581FA4=host_csi_graphic --wrap 0x581E33=host_quick_access_item --wrap 0x5840A6=host_use_quick_item --wrap 0x583A92=host_use_context_item --wrap 0x41DB1D=host_create_component --wrap 0x530780=host_find_child --wrap 0x661F70=host_is_child --wrap 0x41E6D3=host_ui_manager_event --wrap 0x446000=host_quick_button --wrap 0x54E6F0=host_viewport_draw --wrap 0xBE1E70=host_viewport2d_render \
-    --wrap 0xA4CEC0=host_calc_local_transformations --wrap 0xA4D770=host_calc_local_transformations_relative \
+    --wrap 0xA4CEC0=host_calc_local_transformations --wrap 0xA4D770=host_calc_local_transformations_relative --wrap 0xA4D330=host_calc_local_bone_transformation \
     --wrap 0xC78A10=host_hrtf_fir --wrap 0xC79440=host_hrtf_fir_ramp --wrap 0xC9C2F0=host_mdct_butterfly
 # coroutine switch -> host fibers; native Xbox pad (controller.cpp); UI scale (ui_scale.cpp);
 # host graphics settings (gfx_options.cpp, --wrap 0xB24690=host_video_options); the Xbox

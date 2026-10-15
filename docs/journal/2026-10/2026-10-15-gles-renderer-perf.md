@@ -165,3 +165,31 @@ everything below was reviewed, nothing was measured on the device yet.
 - **Overlay input**: buttons, triggers and sticks held when the host menu closes stay hidden from
   the game until released; Back+Start is held back 120 ms alone so the menu combo never reaches
   the game (FABLE_OVERLAY_SOLO_MS).
+
+## v27: the third animation crash, CalcLocalBoneTransformation (device log fa917f32)
+
+The device crashed when the hero was attacked and took damage. v26's honest crash report pinned it
+down. Lifted `F_00A4D330` +0x26c is `C3DAnimation2::CalcLocalBoneTransformation`, the single-bone
+sibling of the two functions v26 guards. It was reached from `CombineBlendedBaseAnimationsBoneList`
+(0xAA0DC0), which is called by `CalcBlendedBoneTransformation` (0xAA2110). The read was of address
+0x38000100:
+
+- `Sequences[bone].Data` (0x07099D40) was readable;
+- the bone's rotation mode was 1 (one constant key);
+- the key pointer `[data+0x14]` held 0x38000100, the bits of a float rather than a pointer.
+
+So the sequence data was stale, the same family as the v17 and v25 crashes. The fix is
+`--wrap 0xA4D330=host_calc_local_bone_transformation` (`win/menu_nav.cpp`). It applies the same
+mapped-page checks to the one bone (instance, frame via the lifted ConvertTimeToFrames, sequence
+entry, data, rotation and position keys or palettes, rigid mask and position). On a bad pointer it
+writes an identity keyframe and logs once with `anim guard:`. That log line says whether the data
+lies inside the instance's sequence data buffer, which is the next clue to the root cause (a
+relocated pool, or an instance outliving its animation).
+
+The same log's perf numbers:
+
+- The program cache works: session 2 read 90 programs in 50 ms and pre-linked 89 in 123 ms over
+  83 frames, with 0 compiled.
+- Towns run at 30 fps with p99 at about 34 ms.
+- Combat dips to about 28 fps.
+- The texture encode/decode cost (14% in the first profile window) is load-time only (1% later).
