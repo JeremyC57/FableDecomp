@@ -67,7 +67,6 @@ carries the class/method the evidence supports. See "Label corrections".
 
 ## Parked for Fable 5.1 (2)
 
-- 005edf33 CTCInventoryAbilities::GetButtonAbilityIsSetTo DIFFER(65v67): retail searches with the cursor in edx and `last` in eax (not-found keeps eax = last and jumps over, found does `mov eax,edx`); ours keeps the cursor in eax and moves `last` in on the not-found exit | tried: plain loop under s (58v67), inline find helper (called out of line under s), `__forceinline` return-it/return-last helper (65v67), `__forceinline` break + return-it helper (pre-tested loop, 65v67) | next: a `__forceinline` find taking `(first, last)` BY VALUE as parameters (Dinkumware `find_if` front end with a predicate object), or the loop written in the caller with the not-found path assigning `it = AbilityButtons.end()`
 - 005bc58f CTCInventoryBase::SetInventoryAnimRenderBox DIFFER(35v35): `lea eax,[ecx+0BCh] ; mov ecx,[esp+4]` (dest in eax, source in ecx) vs ours `mov eax,[esp+4] ; ... add ecx,0BCh` | tried: POD assignment, reference local to the member, optimize("s") (movsd x4), memberwise inline operator= | next: a C2DBoxF member function on the destination (`InventoryAnimRenderBox.Set(box)`) or a copy through a `C2DBoxF*` destination local declared before the argument is read; else lane gap: register allocation of a 16-byte copy
 
 ## Skipped

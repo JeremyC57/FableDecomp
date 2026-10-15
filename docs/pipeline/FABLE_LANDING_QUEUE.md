@@ -157,7 +157,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand901` | Chunk 901 -- the skipped-row ledger pieces (34 bodies from 15 multi-function catalogue rows) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand91` | Hand chunk 91 (CTCHeroStats .. CTCInventory): 34 of 40 byte-exact | - | 2 | 1 | landed; parked rows open |
-| `2026-10-15_linux_hand92` | Hand chunk 92 (CTCInventory .. CTCInventoryBase): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand92` | Hand chunk 92 (CTCInventory .. CTCInventoryBase): 38 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand93` | Hand chunk 93 (CTCInventoryBase .. CTCInventoryExperience): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand94` | Hand chunk 94 (CTCInventoryExperience .. CTCInventoryMap): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand95` | Hand chunk 95 (CTCInventoryMap .. CTCJackShield): 39 of 40 byte-exact | - | 0 | 1 | done |
@@ -167,8 +167,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand99` | Hand chunk 99 (CTCPhysicsNavigator .. CTCRockTrollShield): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_retry1` | Retry batch 1 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
+| `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **0 matched rows staged for landing**, **145 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **144 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 21 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -402,8 +403,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00584b42 CTCInventory::ClosePCInventoryMenu DIFFER(70v68): ours `mov eax,[eax+4] ; mov edx,[eax] ; mov ecx,eax ; call [edx+7Ch]`, retail `mov ecx,[eax+4] ; mov eax,[ecx] ; call [eax+7Ch]` | tried: T** out, T*& out, split HasInterface/FindInterface helpers, no "s" | next: lane gap: register choice at a virtual call (sibling rows 00584af6/00584fe3 with the same template match)
 
 
-#### `2026-10-15_linux_hand92` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand92/differ/`)
-- 005edf33 CTCInventoryAbilities::GetButtonAbilityIsSetTo DIFFER(65v67): retail searches with the cursor in edx and `last` in eax (not-found keeps eax = last and jumps over, found does `mov eax,edx`); ours keeps the cursor in eax and moves `last` in on the not-found exit | tried: plain loop under s (58v67), inline find helper (called out of line under s), `__forceinline` return-it/return-last helper (65v67), `__forceinline` break + return-it helper (pre-tested loop, 65v67) | next: a `__forceinline` find taking `(first, last)` BY VALUE as parameters (Dinkumware `find_if` front end with a predicate object), or the loop written in the caller with the not-found path assigning `it = AbilityButtons.end()`
+#### `2026-10-15_linux_hand92` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand92/differ/`)
 - 005bc58f CTCInventoryBase::SetInventoryAnimRenderBox DIFFER(35v35): `lea eax,[ecx+0BCh] ; mov ecx,[esp+4]` (dest in eax, source in ecx) vs ours `mov eax,[esp+4] ; ... add ecx,0BCh` | tried: POD assignment, reference local to the member, optimize("s") (movsd x4), memberwise inline operator= | next: a C2DBoxF member function on the destination (`InventoryAnimRenderBox.Set(box)`) or a copy through a `C2DBoxF*` destination local declared before the argument is read; else lane gap: register allocation of a 16-byte copy
 
 

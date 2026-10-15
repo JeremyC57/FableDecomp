@@ -220503,6 +220503,13 @@ $catalog = @(
         TestSource = '00/c3/unattributed_ForwardIfStateMask217_00c35c30_test.cpp'
         PassPattern = '00c35c30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005edf33'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetButtonAbilityIsSetTo_005edf33.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetButtonAbilityIsSetTo_005edf33_test.cpp'
+        PassPattern = '005edf33_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
