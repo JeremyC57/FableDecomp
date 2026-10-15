@@ -1,5 +1,7 @@
 import json,os,sys,re
+# usage: mkchunk.py N [K] [LO HI]   cut K chunks of 40 class-labelled rows (LO..HI bytes, default 17..96) starting at chunk N
 S=os.environ['S']; N=int(sys.argv[1]); K=int(sys.argv[2]) if len(sys.argv)>2 else 1
+LO=int(sys.argv[3]) if len(sys.argv)>3 else 17; HI=int(sys.argv[4]) if len(sys.argv)>4 else 96
 d=json.load(open(f'{S}/batch/families512.json'))
 cat={l.split('\t')[0].lower() for l in open('rebuild/oracles/auto-re-candidates.tsv')}
 used=set()
@@ -10,7 +12,7 @@ rows=[]
 for shape,fam in d:
     if len(fam)>2: continue
     for a,m,n,l,h in fam:
-        if not re.match(r'^C[A-Z0-9]',m) or '::' in m or '<' in m or not (17<=l<=96): continue
+        if not re.match(r'^C[A-Z0-9]',m) or '::' in m or '<' in m or not (LO<=l<=HI): continue
         if a.lower() in cat or a in used: continue
         rows.append((m,a,n,l,h))
 rows.sort(key=lambda r:(r[0],r[1]))
