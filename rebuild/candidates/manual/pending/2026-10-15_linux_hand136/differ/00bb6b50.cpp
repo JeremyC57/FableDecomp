@@ -1,0 +1,63 @@
+// Grade: DIFFER(ours v retail) -- 136v136, scheduling only: retail software-pipelines the ten sphere/box dword copies (each load issued one store ahead, ecx/edx alternating) and loads the flags argument before the matrix block copy; the lane copies load/store in sequence and loads the flags after the scale store. Tried the member-initialising constructor (float by value -> x87 copy; const float& -> this, best), default construction + struct assignments (lea-based copies), and memberwise C3DVector operator= (same as best)
+// CEnginePrimitiveManagerWeatherMask::RenderSubPrimitive(CEngineSubPrimitiveBase&, ERenderPassType) -- copies the parent weather-mask primitive's sphere, box, inverse transform and scale into a CWeatherMask and hands it with the primitive's flags to the weather renderer
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00BB6B50, length 136 bytes (+ int3 padding).
+// Signature from the catalog (mangled): ?RenderSubPrimitive@CEnginePrimitiveManagerWeatherMask@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z
+// (`ret 8`; `this` and the pass type are unused).
+// Callees: 0x00B50C80 CEngineWeatherRenderer::AddWeatherMask(const CWeatherMask&, unsigned long) on the global weather
+// renderer @ 0x01436E44.
+// Layout: CEngineSubPrimitiveBase (PDB, 0x18): Parent at +0xc. CEngineInternalPrimitiveWeatherMask (PDB): BSphere
+// +0x48, BBox +0x58, InvTransform +0x70, Scale +0xa0, Flags +0xa4. CWeatherMask (PDB, 0x5c): BSphere +0, BBox +0x10,
+// InvTransform +0x28, Scale +0x58 -- the whole 0x5c-byte frame.
+// Shape: the mask is built by its member-initialising constructor: the sphere and the box copy memberwise
+// (C3DVector has a user copy constructor: one register per dword, ecx/edx alternating), the 0x30-byte matrix is a
+// POD block (`rep movsd`), the scale a dword move; the flags argument is loaded before the matrix copy ends.
+
+struct C3DVector {                                       // memberwise user copy constructor
+    float X, Y, Z;
+    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
+};
+struct C3DBoundingSphere { C3DVector Center; float Radius; };
+struct C3DBoundingBox { C3DVector Min; C3DVector Max; };
+struct CMatrix3x4 { float m[12]; };                      // XAxis, YAxis, ZAxis, Position: a POD block
+
+struct CWeatherMask {                                    // 0x5c bytes (PDB)
+    C3DBoundingSphere BSphere;                           // +0x00
+    C3DBoundingBox    BBox;                              // +0x10
+    CMatrix3x4        InvTransform;                      // +0x28
+    float             Scale;                             // +0x58
+    CWeatherMask(const C3DBoundingSphere& bSphere, const C3DBoundingBox& bBox, const CMatrix3x4& invTransform, const float& scale)
+        : BSphere(bSphere), BBox(bBox), InvTransform(invTransform), Scale(scale) { }
+};
+
+struct CEngineInternalPrimitiveWeatherMask {             // CEngineInternalPrimitiveBase (0x48) + the mask data
+    unsigned char     _base[0x48];
+    C3DBoundingSphere BSphere;                           // +0x48
+    C3DBoundingBox    BBox;                              // +0x58
+    CMatrix3x4        InvTransform;                      // +0x70
+    float             Scale;                             // +0xa0
+    unsigned long     Flags;                             // +0xa4
+};
+struct CEngineSubPrimitiveBase {                         // PDB, 0x18 bytes
+    void*                                vptr;           // +0x00
+    unsigned long                        RenderFlags;    // +0x04
+    unsigned char                        Alpha;          // +0x08
+    CEngineInternalPrimitiveWeatherMask* Parent;         // +0x0c
+    CEngineSubPrimitiveBase*             NextSubPrimitive; // +0x10
+    void*                                Manager;        // +0x14
+};
+
+struct CEngineWeatherRenderer {
+    void AddWeatherMask(const CWeatherMask& mask, unsigned long flags);   // 0x00B50C80
+};
+extern CEngineWeatherRenderer* g_pEngineWeatherRenderer;  // 0x01436E44
+
+struct CEnginePrimitiveManagerWeatherMask {
+    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long passType);
+};
+
+void CEnginePrimitiveManagerWeatherMask::RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long passType)
+{
+    CEngineInternalPrimitiveWeatherMask* primitive = subPrimitive.Parent;
+    CWeatherMask mask(primitive->BSphere, primitive->BBox, primitive->InvTransform, primitive->Scale);
+    g_pEngineWeatherRenderer->AddWeatherMask(mask, primitive->Flags);
+}

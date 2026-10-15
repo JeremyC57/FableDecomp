@@ -160,6 +160,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand133` | Hand chunk 133 (CDrawTargetInfo .. CEngineInternalPrimitive2DStaticMesh): 33 of 40 byte-exact | - | 6 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand134` | Hand chunk 134 (CEngineInternalPrimitive2DStaticMesh .. CEngineLandscapeMemoryManager): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand135` | Hand chunk 135 (CEngineLandscapeMemoryManager .. CEnginePrimitiveManager2DStaticMeshes): 28 of 40 byte-exact | - | 12 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand136` | Hand chunk 136 (CEnginePrimitiveManagerAnimatedMeshesBase .. CEngineSceneGrid): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -211,7 +212,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **334 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **342 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -537,6 +538,17 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00bc5a20 CEnginePrimitiveChangerManager::RenderPrimitiveToShadowBuffer DIFFER(113v116): retail dead `lea eax,[edx+eax*8]` beside the slot load (index eax / primitive ecx), ours folds it (primitive eax / index ecx) | tried: early returns (shrink-wrapped), single-exit nested ifs (fixed the tail), handle reference local, STLport iterator object | next: lane gap: RTM vector-slot address materialisation
 - 0041c500 CEnginePrimitiveHandle::`scalar deleting destructor' DIFFER(112v114): retail `mov [esi],vtbl ; mov eax,[esi+4] ; test eax,eax ; ... ; mov ecx,eax` (the retail out-of-line Clear @ 0x0041BE70 has the same head), ours loads Data straight into ecx and sinks the vtable store | tried: member test, pointer local, pointee-side inline NotifyIfLastHandle, static_cast to a derived primitive | next: Clear as an out-of-line member defined above under `auto_inline(off)` is NOT the shape (it is inlined); try the release/notify through CIVCountedPointer inline accessors (`Data->`, `Data.GetRefCount()`)
 - 00bb1640 CEnginePrimitiveManager2DSprites::GetSupportedTypes DIFFER(122v122): retail `mov dword ptr [esp+0Ch],23h` (second constant in the dead argument slot, shared with the tag), ours reuses the first constant's `push ecx` word | tried: literal temporaries, two named locals (128v122) | next: lane gap: value temporary sharing the dead argument slot (as 00b59c70)
+
+
+#### `2026-10-15_linux_hand136` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand136/differ/`)
+- 007703b0 CEnginePrimitiveWeaponTrail::CEnginePrimitiveWeaponTrail DIFFER(144v144): retail `lea ebx,[esp+28h]` homes the empty `__false_type` tag over the LIVE alpha argument slot; the lane uses the dead interpolation-set slot `[esp+3Ch]`, and the 8 member stores after the call are scheduled differently | tried: init-list order, local self-linked node, iterator copy ctor (fixed the slot build) | next: lane gap: empty tag over a live argument slot (the 0x005384DD / 0x00A76C70 family)
+- 00a0e680 UninitCopyDeque (catalogued CEnginePrimitiveRenderer::AddStaticMesh) DIFFER(118v116): retail `lea edx,[esp+58h]` homes the const-ref tag in the dead `result` slot; the lane adds `push ecx` + `lea edx,[esp+37h]` + `pop ecx` | tried: user-constructed tag (best), plain empty tag (adds a zero store), optimize("s") (frame pointer) | next: lane gap: empty tag homed in a dead by-value class argument slot
+- 00a0eb40 UninitCopyDeque (catalogued AddStaticMesh) DIFFER(118v116): same as 00a0e680 (callee 0x00A0E790) | tried: as 00a0e680 | next: lane gap: same
+- 00a0ef90 UninitCopyDeque (catalogued AddStaticMesh) DIFFER(118v116): same as 00a0e680 (callee 0x00A0ED80) | tried: as 00a0e680 | next: lane gap: same
+- 00bc7920 CEnginePrimitiveManagerText::GetSupportedTypes DIFFER(122v122): retail `mov [esp+0Ch],27h` puts the second pushed value in the dead vector-argument slot, shared with the tag; the lane uses the frame word `mov [esp+4],27h` | tried: literal temporaries (best), named locals (8-byte frame) | next: lane gap: value/tag sharing a dead argument slot
+- 00bb6b50 CEnginePrimitiveManagerWeatherMask::RenderSubPrimitive DIFFER(136v136): retail pipelines the ten sphere/box dword loads one store ahead and loads Flags before the matrix `rep movsd`; the lane copies sequentially | tried: member-initialising ctor (float by value -> x87; const float& best), default ctor + struct assignments, memberwise C3DVector operator= | next: lane gap: scheduling only
+- 00bb6ab0 CEnginePrimitiveManagerWeatherMask::RenderPrimitive DIFFER(152v152): retail squares Y, Z, then X (`fld st(1) ; fmul st(2) ; fld st(1) ; fmul st(2)`); the lane squares Z, Y, X | tried: x+y+z, x+(y+z), y+z+x, by-value Magnitude(x,y,z) (the same source matches sibling 0x00BBA340) | next: lane gap: x87 operand order (or an unidentified helper that keeps Y on top)
+- 0042dd28 CNewFrontendGameComponent::CleanUpInterfaces (catalogued CEngineResourceManager::ChangeScene) DIFFER(139v139): retail zero register ebp and manager local ebx; the lane swaps them | tried: speed TU, optimize("s") (best), no manager local, function-scope manager local | next: lane gap: callee-saved register assignment
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

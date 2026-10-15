@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bd7110	RELOCATION_MATCH	146v146	PASS	AnimatedMeshesBase RenderSubPrimitive; cloth pointer via operator->
+00bba340	RELOCATION_MATCH	142v142	PASS	Decal RenderPrimitive; novtable sub-primitive base + fastcall pool operator new
+00bce160	RELOCATION_MATCH	115v115	PASS	FlareSprites dtor; shader release through a pointer local
+00bbc0b0	RELOCATION_MATCH	116v116	PASS	SetUpPointLights; pack(1) unaligned CurrentWorldPos, channel desc assigned from temporary
+00bbceb0	RELOCATION_MATCH	117v117	PASS	ParticleGroup CreateInternalPrimitive; __forceinline group ctor
+00bbea70	RELOCATION_MATCH	123v123	PASS	SpriteTrailGroup CreateInternalPrimitive; derived vtable last
+00b99670	RELOCATION_MATCH	149v149	PASS	RepeatedStaticMeshes UploadShaderConstants
+00baa780	MATCH	149v149	PASS	RepeatedZSprites UpdateRepeatedZSprite; POD record assignments
+00bc68b0	RELOCATION_MATCH	127v127	PASS	Text CreateInternalPrimitive; two-case switch
+00bc7920	DIFFER	122v122	-	Text GetSupportedTypes; 2nd pushed value homed in dead vector-arg slot (lane gap)
+00bb6ab0	DIFFER	152v152	-	WeatherMask RenderPrimitive; x87 square order Y,Z,X vs lane Z,Y,X
+00bb6b50	DIFFER	136v136	-	WeatherMask RenderSubPrimitive; retail pipelines the record copies (scheduling)
+00b1fe80	MATCH	144v144	PASS	ParticleDecal ctor; memberwise C3DVector copy ctor, Set(r,g,b,a) colour copy
+00af08d0	MATCH	101v101	PASS	ParticleGroup ctor
+007324a0	MATCH	136v136	PASS	label fix: CEnginePrimitiveLine ctor (type 0x10, retail 0x38 bytes)
+00b058e0	MATCH	147v147	PASS	ParticleMesh ctor
+00afe2a0	MATCH	116v116	PASS	ParticleSprite ctor
+0047d6f2	RELOCATION_MATCH	153v153	PASS	label fix: CTCInGameMenu::IsSaveComponentReceivingInput (y off + s on)
+00a0e680	DIFFER	118v116	-	label fix: SGI uninitialized_copy over deque iterators; tag homed in dead result slot (lane gap)
+00a0eb40	DIFFER	118v116	-	label fix: same deque uninitialized_copy shape (lane gap)
+00a0ef90	DIFFER	118v116	-	label fix: same deque uninitialized_copy shape (lane gap)
+00b32100	RELOCATION_MATCH	133v133	PASS	ResetWorldTransform; identity matrix via SetIdentity
+00b32820	RELOCATION_MATCH	158v158	PASS	FrameEnd with this at the secondary base (+0x268)
+00b32e90	RELOCATION_MATCH	136v136	PASS	AddPrimitive; inline CEnginePrimitiveHandle ctor/dtor
+00bbdcb0	RELOCATION_MATCH	132v132	PASS	label fix: STLport list<CEnginePrimitiveHandle>::resize(n)
+00642000	MATCH	108v108	PASS	label fix: CEnginePrimitiveLight ctor (type 0x0f)
+00afe220	MATCH	115v115	PASS	label fix: CEnginePrimitiveParticleLine ctor (type 0x15)
+00b82330	RELOCATION_MATCH	141v141	PASS	AddSimulation; max via conditional + CCountedPointer operator=
+006558ce	MATCH	142v142	PASS	Sprite ctor; frame pointer y off + s on (fldz Offset)
+004c3120	RELOCATION_MATCH	117v117	PASS	Text ctor; out-of-line CWideString copy
+00a02d20	RELOCATION_MATCH	129v129	PASS	label fix: CHandleBasedMemoryPool ctor (vtable 0x0129C964)
+00b8fad0	RELOCATION_MATCH	112v112	PASS	RegisterPrimitiveManager; engine header
+007703b0	DIFFER	144v144	-	WeaponTrail ctor; empty tag homed over live alpha arg slot (lane gap)
+0049d000	MATCH	127v127	PASS	WeatherMask ctor; matrix rep movsd
+0042dd28	DIFFER	139v139	-	label fix: CNewFrontendGameComponent::CleanUpInterfaces (probable); ebx/ebp swap
+00b3b4f0	RELOCATION_MATCH	136v136	PASS	ResizeHiresTextureMemory
+00b3b7f0	RELOCATION_MATCH	126v126	PASS	ProcessLoading; system-manager local
+00b91760	RELOCATION_MATCH	126v126	PASS	RenderPrimitiveList; manager local before chain
+00471b73	RELOCATION_MATCH	118v118	PASS	label fix: STLport list<24-byte POD>::operator= (y off + s on)
+00b91ca0	RELOCATION_MATCH	122v122	PASS	InvalidateBoundingBoxAndDrawDistance (recursive)
