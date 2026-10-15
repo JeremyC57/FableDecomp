@@ -139,6 +139,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand112` | Hand chunk 112 (CThingPhysical .. CThingTrackNode): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand113` | Hand chunk 113 (CThingTrackNode .. CUIMiniMapMarker): 38 of 40 byte-exact | - | 1 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand114` | Hand chunk 114 (CUIMiniMapMarker .. CV_FisticuffsClubScript): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand115` | Hand chunk 115 (CV_MurderTwistFinalScript .. CViewport): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand116` | Hand chunk 116 (CViewport .. CWADFile): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
@@ -188,7 +189,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **198 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **202 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 27 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -312,6 +313,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00406d90 CUserProfileManager::ClampResolution DIFFER(89v84): retail width walk is un-rotated (`cmp [eax],esi ; jle ; dec edx ; sub eax,10h ; jmp back`, args in edi/esi) where the lane rotates it with a lookahead load (`mov edi,[ecx-10h] ; ... ; jg`) and allocates esi/edx | tried: while, for(;;)+break, pointer walk, optimize("s"), inline and __forceinline helper holding the walk | next: lane gap: loop rotation (GOTCHAS 23f)
 - 00be24d0 CVO_OracleMarker::Init DIFFER(36v54): retail keeps a 0x10-byte frame temporary (`sub esp,10h`) whose four zero stores survive after the member copy through `mov esi,eax` | tried: brace/memberwise/memset local, (x,y,z,w) ctor temporary, implicit/user copy ctor, user operator=, long[4] array member, const-ref inline setter with temporary or named local, float fields | next: lane gap: dead stores of an address-taken 16-byte temporary (or an unknown source form; class unidentified, no references)
 - 00be2540 CVO_OracleMarker::Init DIFFER(38v56): constructor twin of 00be24d0 (`mov eax,ecx`, returns this), same frame-temporary shape | tried: as 00be24d0 | next: same as 00be24d0
+
+
+#### `2026-10-15_linux_hand115` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand115/differ/`)
+- 00ac7940 CVertexPairContraction::RemapIndex DIFFER(76v75): lane `mov eax,[ecx+4] ; mov esi,[ecx+8] ; sub esi,eax` (m_pFirst register-cached for the entry size test) and `cmp [eax+edx*8],esi` on the first field with the second loaded into ebx; retail `mov eax,[ecx+8] ; sub eax,[ecx+4]`, loop head `mov eax,[ecx+4] ; mov ebx,[eax+edx*8] ; cmp ebx,esi ; lea eax,[eax+edx*8]` then `cmp [eax+4],esi` | tried: `m_pFirst + i` pointer, `*(Begin() + i)` reference (best), `volatile` m_pFirst (79), STLport operator[] per access (79) | next: lane gap: loop-invariant vector-first load scheduled before the size test; try `for (SIndexPair* p = Begin(); p != Begin() + Size(); ...)` or an index loop with Size() in a `long` local
+- 00ad9470 CVertexGroupBlock::RemoveLast DIFFER(84v84): key `sub eax,4` for retail `add eax,-4`; hidden-result pointer `lea ecx ; push ecx` for retail `lea eax ; push eax`; after equal_range the lane reads `second` into edx and reserves BOTH iterator slots (`push ecx ; mov eax,esp ; push ecx ; mov [eax],edx`) before filling, retail reads `first` into edx, builds the `second` slot right after its `push ecx`, then the `first` slot | tried: key by const& (copied into the frame, 92), key by value, `&m_pLast[-1]` | next: lane gap: by-value 4-byte iterator pair argument build order; try erase taking the iterators by `const CNodeIterator&` plus an inline wrapper, or a pair type without user constructors
+- 00b93eb0 CEngineSceneGrid::CEngineSceneGrid DIFFER(80v80): register colouring only -- `mov eax,1 ; shl eax,cl` / `lea edx,[esi+14h]` where retail has `mov edx,1 ; shl edx,cl` / `lea eax,[esi+14h]`; every other instruction and its order agrees | tried: init-list `m_side(1 << shift)` + `resize(m_side * m_side, 0)` (re-reads the member), `long`/`unsigned long` local side with the body store (best), vector(n, value) init-list constructor (76) | next: lane gap: register choice; try `m_cells.resize(side * side, 0)` with `side` declared before the init list via a helper, or `#pragma optimize("s", on)`
+- 00de19f0 CVictimsFather::Init DIFFER(94v94): the lane hoists `lea edi,[esi+8]` (the &m_father of the two later pushes) between the by-value temporary's two vtable stores and copies the CScriptThing through it (`mov ecx,[edi+4] ; mov ecx,[edi+8]`); retail reads `[esi+0Ch]` / `[esi+10h]` and forms the lea right before the second call | tried: `&m_father` for both later calls, `CScriptThing&` parameters, a `CScriptThing* father = &m_father` local declared after the first call | next: lane gap: address hoisting across an inlined copy constructor; try an inline accessor returning the copy by value for the first call, or the two callbacks through a `__forceinline` helper taking `this`
 
 
 #### `2026-10-15_linux_hand116` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand116/differ/`)

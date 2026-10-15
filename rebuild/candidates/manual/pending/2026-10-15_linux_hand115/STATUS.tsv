@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00d2f6b0	RELOCATION_MATCH	84v84	PASS	CVtable_012cc60c (label propagated x5); novtable arg base, two member objects with embedded {Data,Info} ctors
+00eb07d0	RELOCATION_MATCH	87v87	PASS	implicit CCharString conversion temporary; both exits call IsActiveThreadTerminating
+00eb2000	RELOCATION_MATCH	88v88	PASS	CVtable_012efee8 helper (label propagated); base args (thing, iface), plain initialisers, index assigned in the body
+00ec53c0	RELOCATION_MATCH	84v84	PASS	CVtable_012f17dc (label propagated x5); same model, two handles
+00b93eb0	DIFFER	80v80	-	CEngineSceneGrid ctor (label propagated): register colouring only, side in eax vs retail edx
+00df5c90	RELOCATION_MATCH	62v62	PASS	CV_SwordInTheStoneScript ctor; zero words in an embedded state member, RegisterTimer in the body
+00eb6a00	RELOCATION_MATCH	83v83	PASS	two resize(2, T()) with explicit temporaries sharing one 16-byte frame slot
+00ed57e0	RELOCATION_MATCH	78v78	PASS	rotated while(!Terminating) loop, nested terminating return
+00ed72f0	RELOCATION_MATCH	40v40	PASS	rand()%6+10 into a local before the global's vtable fetch
+00ed7c70	RELOCATION_MATCH	95v95	PASS	by-value CCharString destroyed by the callee; operator!= loop over 12 8-byte entries
+00edbc30	RELOCATION_MATCH	74v74	PASS	rotated loop, nested ifs, flag byte
+009cc410	RELOCATION_MATCH	60v60	PASS	owner is NGameText::CDataBank; map Find ternary, key bound by reference
+009ea080	MATCH	32v32	PASS	byte/byte/long/long init list in declaration order
+00a63200	RELOCATION_MATCH	53v53	PASS	GFGetSystemManager() into a local before the pushes
+00a63240	RELOCATION_MATCH	82v82	PASS	system local; out pointer homed in the dead size slot
+00ad9470	DIFFER	84v84	-	CVertexGroupBlock::RemoveLast: key sub vs add -4, hidden-result pointer register, by-value iterator slots both reserved before being filled
+00ac7940	DIFFER	76v75	-	CVertexPairContraction::RemapIndex: m_pFirst register-cached before the entry size test, first field compared from memory (retail loads it, lea once)
+0098c3d0	RELOCATION_MATCH	55v55	PASS	CPixelShader ??_G (label propagated); local copy release, __forceinline virtual dtor, new T factory
+009c1ae0	RELOCATION_MATCH	55v55	PASS	CVertexShader ??_G (scalar, not vector); same model, count at +0x10
+00a62fc0	RELOCATION_MATCH	48v48	PASS	novtable argument base for the word at +4; ret 14h = five args, three read
+00a630d0	RELOCATION_MATCH	64v64	PASS	CVertexShaderData ??_G (scalar); two COM Release calls, out-of-line CBase dtor
+00aab810	RELOCATION_MATCH	41v41	PASS	CActiveSoundInfo ctor (label propagated)
+00b0f310	RELOCATION_MATCH	34v34	PASS	CParticleUpdateParamDesc ctor (label propagated)
+00b29720	RELOCATION_MATCH	52v52	PASS	CEngineLayerRenderer ctor (label propagated); 12-byte vector member with inline ctor
+00b98bc0	RELOCATION_MATCH	49v49	PASS	CEngineSubPrimitiveRepeatedStaticMesh ctor (label propagated); novtable base owns every store
+00bdaf80	RELOCATION_MATCH	34v34	PASS	CShaderConstantRange ctor (label propagated)
+00de19f0	DIFFER	94v94	-	CVictimsFather::Init: the member lea hoisted between the temporary's vtable stores; copy read through edi instead of this
+00a3b0f0	MATCH	52v52	PASS	do/while poll of IMediaControl::GetState, counter in esi
+00a3b1c0	RELOCATION_MATCH	43v43	PASS	unsigned char result, WaitForState(1), State = 2
+00a3b1f0	RELOCATION_MATCH	43v43	PASS	unsigned char result, WaitForState(0), State = 3
+00a3b220	RELOCATION_MATCH	49v49	PASS	double local from the 0.0 qword constant, float return without narrowing
+00a3b260	RELOCATION_MATCH	49v49	PASS	same shape as GetLength on slot 9
+00a3b330	RELOCATION_MATCH	76v76	PASS	Stop() defined above and inlined; `>= 1.0f` is test ah,1
+00a3b920	RELOCATION_MATCH	70v70	PASS	log intrinsic, clamp into the parameter slot, __ftol2, COM put_Volume
+00a3bc20	RELOCATION_MATCH	65v65	PASS	delete TexRenderer + CoUninitialize + inlined ~CMovieSubtitles (CWideString, list clear + free head)
+00a3bc70	RELOCATION_MATCH	87v87	PASS	init-list members around the subtitle member ctor, body assignments, CoInitialize(0); retail layout 8 bytes below the PDB after +0x30
+0069e940	RELOCATION_MATCH	50v50	PASS	NDisplayView::CView3DThirdPerson (label ok); inline CView3DBase ctor with GetDisplayEngine body
+00681980	RELOCATION_MATCH	65v65	PASS	thing local + manager local before the chained call
+0053fcd0	RELOCATION_MATCH	36v36	PASS	NUISystem::CViewport; push_back(const T&) + child slot 90
+0054ea00	RELOCATION_MATCH	96v96	PASS	NUISystem::CViewport; three vtables, handle member, vector member, body call
