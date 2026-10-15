@@ -1,0 +1,81 @@
+// CQuestManager::CActiveQuest::AddPRegion(const CRegion* region) -- remember a region the quest uses (once); a null region clears the list
+// Grade: DIFFER(153v148) -- lane gap (empty tag temporary): retail passes the random_access_iterator_tag and the __true_type of the push_back overflow at the live region-argument slot (`lea eax,[esp+14h] ; push eax ; lea ecx,[esp+18h]` = the same slot twice) and keeps region in ebp; ours opens a `push ecx` frame word for the tags, so the region stays in its slot. The clear() = erase(begin(), end()) / __copy_trivial tail matches.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x004B3860, length 146 bytes (`ret 4`).
+// Identity: the landed CQuestManager::AddQuestRegion 0x004B3900 calls this as CActiveQuest::AddPRegion (catalog
+// "CQuestManager::AddRegionToQuestArray"). Retail CActiveQuest: Regions (vector<const CRegion*>, 12 bytes) at +0x10.
+// Callees: STLport __find(first, last, const T&, random_access_iterator_tag) @ 0x004B7550 (`__fastcall`),
+// vector::_M_insert_overflow(pos, const T&, __true_type, n, atend) @ 0x004BA640, memmove @ 0x00BFEAE6.
+// Shape: STLport vector inlines: find() == end() (end() loaded once into ebx), push_back's in-place construct with
+// the null test, and clear() = erase(begin(), end()) through __copy_trivial (memmove of zero bytes, `cmp eax,eax`).
+// Leaf: AddPRegion
+#include <stddef.h>
+
+extern "C" void* __cdecl memmove(void* dest, const void* src, size_t count);   // 0x00BFEAE6
+
+struct CRegion;
+
+struct __true_type { __true_type() {} };
+struct random_access_iterator_tag { random_access_iterator_tag() {} };
+
+typedef const CRegion* PCRegion;
+
+PCRegion* __fastcall FindRegion(PCRegion* first, PCRegion* last, const PCRegion& value,
+                                const random_access_iterator_tag& tag);       // 0x004B7550
+
+inline void* CopyTrivial(const void* first, const void* last, void* result)
+{
+    if (first == last)
+        return result;
+    size_t n = (const char*)last - (const char*)first;
+    return (char*)memmove(result, first, n) + n;
+}
+
+struct CRegionVector {                              // STLport vector<const CRegion*>
+    PCRegion* _M_start;
+    PCRegion* _M_finish;
+    PCRegion* _M_end_of_storage;
+    PCRegion* begin() { return _M_start; }
+    PCRegion* end() { return _M_finish; }
+    void _M_insert_overflow(PCRegion* pos, const PCRegion& x, const __true_type&, size_t n, bool atend);   // 0x004BA640
+    void push_back(const PCRegion& x)
+    {
+        if (_M_finish != _M_end_of_storage) {
+            if (_M_finish)
+                *_M_finish = x;
+            ++_M_finish;
+        } else
+            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
+    }
+    PCRegion* erase(PCRegion* first, PCRegion* last)
+    {
+        PCRegion* i = (PCRegion*)CopyTrivial(last, _M_finish, first);
+        _M_finish = i;
+        return first;
+    }
+    void clear() { erase(begin(), end()); }
+};
+
+inline PCRegion* find(PCRegion* first, PCRegion* last, const PCRegion& value)
+{
+    return FindRegion(first, last, value, random_access_iterator_tag());
+}
+
+struct CQuestManager {
+    struct CActiveQuest {
+        long          ID;                           // +0x00
+        void*         PScriptInfo;                  // +0x04
+        void*         PScript;                      // +0x08
+        void*         PScriptInfoData;              // +0x0c
+        CRegionVector Regions;                      // +0x10
+        void AddPRegion(const CRegion* region);
+    };
+};
+
+void CQuestManager::CActiveQuest::AddPRegion(const CRegion* region)
+{
+    if (region) {
+        if (find(Regions.begin(), Regions.end(), region) == Regions.end())
+            Regions.push_back(region);
+    } else
+        Regions.clear();
+}

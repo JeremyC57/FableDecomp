@@ -179,6 +179,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand152` | Hand chunk 152 (CPatchTesselationEdgeStrip .. CPlayer): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand153` | Hand chunk 153 (CPlayer .. CQ_HangingTreeEvilScript): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand154` | Hand chunk 154 (CQ_HangingTreeGoodScript .. CQuestManager): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand155` | Hand chunk 155 (CQuestManager .. CRenderManagerCore): 29 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -233,7 +234,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **470 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **481 parked rows** for the Fable retry pass.
 
 ### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -752,6 +753,20 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00addfe0 CQuaternion::operator* (in-place twin Transform(v, w)) DIFFER(157v157): same rows 1-2 order | tried: Dot3 + T*w, T*w + Dot3, written z,y,w,x | next: as 00987bf0 (fix one, apply to both)
 - 004b00c0 CQuestManager::IsQuestRegistered DIFFER(159v154): retail keeps the quest-name local in the dead argument slot and passes __find's empty random_access_iterator_tag at that same slot; ours opens a push-ecx frame word, and the inline `operator==(const char*)` arms are laid out differently | tried: ternary-initialised local, inline by-value GetQuestNameFromSectionName helper | next: lane gap: local + empty tag temporary in a dead argument slot
 - 004b1960 CQuestManager::TransferBoastToUI DIFFER(144v141): retail pushes edi at entry, ours delays the push into the non-empty path (everything else matches with the inline CCharString::operator== form) | tried: SameString(block, block) form, operator== form | next: lane gap: callee-saved push placement
+
+
+#### `2026-10-15_linux_hand155` (11 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand155/differ/`)
+- 0086c4d0 CRandomAppearanceMorph::CRandomAppearanceMorph DIFFER(106v106): `lea edi,[esi+0Ch]` placed after the Dirty byte store instead of between the +0x1c/+0x20 zero stores | tried: init-list vs body Dirty, MaxTextureGroupID in body | next: lane gap: scheduling
+- 0049c700 CThingSearchTools::GetMapRelativeBox DIFFER(109v107): named result local copied out through `mov esi,eax` (edx/edi swapped) where retail stores the four differences straight into the hidden result | tried: direct member reads, reference local, C2DVectorI offset local, named result | next: C2DBoxI(C2DVectorI tl, C2DVectorI br) or an inline `operator-(C2DVectorI)` on the box
+- 0066c630 CRegionMinimap::SetRegionMapExtents DIFFER(107v108): retail `lea ebx,[edx+esi]` and the late TLX load into the freed esi; ours preloads TLX into ebx and `add esi,edx` | tried: locals, inline sums in other operand orders, a C2DBoxI local | next: lane gap: register allocation
+- 0066c810 CRegionMinimap::GetWorldCoordinatesFromTGAPosition DIFFER(100v100): same instructions, retail 0x1c frame (top-left at +4/+8, extents +0x10/+0x14, two unused words) vs ours 0x14 | tried: named float size (reciprocal multiply), casts at both uses, default-construct + assign value objects | next: two named temporaries whose dead words explain the holes (e.g. C2DBoxI copies)
+- 006294a0 CWorld::HandleLeaveWorldPacket DIFFER(110v110): the flag byte homed in the dead packet-argument slot in retail, in its own frame byte in ours (frame 0x30 vs 0x34) | tried: function- and block-scope flag | next: lane gap: short-lived local in a dead argument slot
+- 006bc380 CRegion::GetWorldMapNameGraphic DIFFER(119v129): the hand release `lea eax,[esi+4] ; mov ecx,esi ; mov esi,[eax] ; dec esi ; mov edx,esi ; test edx,edx ; mov [eax],esi` vs ours `mov eax,[esi+4] ; dec eax ; mov [esi+4],eax`; `this` in esi vs edi | tried: inline ReleaseDef over a count reference | next: lane gap: inline counted release
+- 004b3860 CQuestManager::CActiveQuest::AddPRegion DIFFER(153v148): the find tag and the push_back __true_type sit at the LIVE region-argument slot (`lea eax,[esp+14h]` twice) in retail; ours opens a `push ecx` frame word | tried: STLport find/push_back/clear inlines (the clear tail matches) | next: lane gap: empty tag temporary at a live argument slot
+- 004b2fe0 CQuestManager::AddActivatedQuestName DIFFER(114v114): `lea esi,[edi+4Ch]` placed between the tag push and the key push in retail, before the tag push in ours | tried: early-return form, if/return-true form, vector reference local, mixed member/reference arguments | next: lane gap: scheduling
+- 004b19f0 CQuestManager::GetBoastsForScript DIFFER(141v141): retail pushes edi at entry, ours after the empty-list test (every loop offset +4) | tried: SameString(boast, name), CCharString::operator==, prev-node local in insert (fixed the links), boast name block local (fixed eax/ecx) | next: lane gap: callee-saved push delayed into a branch
+- 004b64e0 CQuestManager::SaveGameState(CPersistContext&) DIFFER(132v142): retail lays the writing arm first and duplicates the WriteBuffer call in both string arms; ours puts Transfer first and shares one call sequence | tried: ternary and null-first accessors (fixed GetLength), inverted mode test, explicit if/else over WriteBuffer | next: `#pragma optimize` sweep or an inline CDataOutputStream::WriteString(const CCharString&)
+- 004b2ad0 CQuestManager::DeactivateEventQuests DIFFER(156v149): retail keeps the local list's header node in esi across the insert/SetQuestAsFailed/clear calls and `this` in ebp; ours reloads the header from the list object after every call | tried: STLport list ctor with member stores and with a node local | next: a list type whose header pointer is a separate local, or the real 0x004B92D0/0x004B9DA0 bodies above (both write memory)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

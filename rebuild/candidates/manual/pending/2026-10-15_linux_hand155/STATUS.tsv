@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004b19f0	DIFFER	141v141	-	GetBoastsForScript; push edi delayed into branch (lane gap)
+004b2490	RELOCATION_MATCH	119v119	PASS	SetQuestAsPersistent; quest name block in a named local
+004b2ad0	DIFFER	156v149	-	DeactivateEventQuests; local list header cached in esi in retail
+004b2fe0	DIFFER	114v114	-	AddActivatedQuestName; lea esi scheduling only
+004b3860	DIFFER	153v148	-	CActiveQuest::AddPRegion; tag temp at live arg slot (lane gap)
+004b39b0	RELOCATION_MATCH	106v106	PASS	ClearQuestPersistScript; range erase over a map reference with end/upper locals
+004b41f0	RELOCATION_MATCH	107v107	PASS	CRuntimeQuestPersistence::ClearAll (label descriptive); inline erase+Clear member
+004b43d0	RELOCATION_MATCH	118v118	PASS	DeactivateQuest(name, reason); quest named local, counted ptr by value
+004b64e0	DIFFER	132v142	-	SaveGameState(CPersistContext&); block layout of the string writer
+009de6f0	RELOCATION_MATCH	146v146	PASS	CQuickDrawTriInfo::operator= (label said ctor)
+00d40aa0	RELOCATION_MATCH	97v97	PASS	CRaceMarker::Main quest-script entity loop
+004fa7f0	RELOCATION_MATCH	99v99	PASS	COldFileFormatMapHeader8 v7->v8 conversion (label CRadialBlurEntry propagated)
+00882c90	RELOCATION_MATCH	104v104	PASS	NScreenEffect CRadialBlurEntry copy ctor
+0086c4d0	DIFFER	106v106	-	CRandomAppearanceMorph ctor; lea edi scheduling
+00bee710	RELOCATION_MATCH	155v155	PASS	STLport uninitialized_fill_n of 28-byte morph record
+00f39e50	MATCH	122v122	PASS	bit-run shuffle ops
+00f3a270	MATCH	99v99	PASS	Size() at both uses
+00f3afc0	RELOCATION_MATCH	145v145	PASS	CCompressorZlib-shaped wrapper
+006fee20	RELOCATION_MATCH	129v129	PASS	ternary recharge rate
+006ff9c0	RELOCATION_MATCH	114v114	PASS	named float elapsed local
+00677620	RELOCATION_MATCH	114v114	PASS	novtable CReactionMatch base
+006fec30	RELOCATION_MATCH	112v112	PASS	9 writes
+007002a0	RELOCATION_MATCH	123v123	PASS	reference element locals
+00700320	RELOCATION_MATCH	122v122	PASS	base Match body above under auto_inline(off); += statements
+006febc0	RELOCATION_MATCH	101v101	PASS	8 writes
+00700200	RELOCATION_MATCH	153v153	PASS	clamp via reference Clamp
+006feb50	RELOCATION_MATCH	101v101	PASS	8 writes
+00700180	RELOCATION_MATCH	118v118	PASS	clamp of inline expression
+00701990	RELOCATION_MATCH	125v125	PASS	inline CMemoryDataInputStream::Read
+00557000	RELOCATION_MATCH	123v123	PASS	NUISystem::CRedefinerList::Refresh
+006bc380	DIFFER	119v129	-	GetWorldMapNameGraphic; counted release lane gap
+006ca950	RELOCATION_MATCH	145v145	PASS	CTextureMorphs::AddBlend (label IsMapIncluded propagated)
+0049c700	DIFFER	109v107	-	CThingSearchTools box helper (label propagated); result copy-out
+0066c630	DIFFER	107v108	-	SetRegionMapExtents; regalloc only
+0066c810	DIFFER	100v100	-	GetWorldCoordinatesFromTGAPosition; frame layout only
+0066dbb0	RELOCATION_MATCH	157v157	PASS	Initialise; member-order -1 stores
+006294a0	DIFFER	110v110	-	CWorld packet handler (label AddLineToDrawBuffer propagated); flag in dead arg slot
+009dc500	RELOCATION_MATCH	119v119	PASS	two triangles per arm
+009dd8f0	RELOCATION_MATCH	109v109	PASS	named locals before pushes
+00a0a940	RELOCATION_MATCH	130v130	PASS	shell over engine header

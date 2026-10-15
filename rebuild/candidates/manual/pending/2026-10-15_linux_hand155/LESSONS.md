@@ -1,0 +1,10 @@
+# Lessons from chunk 155
+- An inline reference `Clamp(const float& v, const float& lo, const float& hi)` explains `lea eax,[esp] ; fld [eax]` returns with 0.0f/1.0f frame temporaries; a named result local gives `fstp ; fld`, the expression passed directly gives `fst` (0x00700180 vs 0x00700320).
+- Float sums: `r = base; r += a; r += b;` keeps retail's left-to-right add order; one expression `base + a + b + c` is reassociated (0x00700320). A float local used as a divisor twice becomes a reciprocal multiply; `(float)x / (float)n` at each use keeps two `fdiv` (0x0066C810).
+- Inlined CCharString compare in a loop: when retail loads the element's block before the key, put the element's block (or the element object) in a named local; inline member reads load the key first and swap eax/ecx (0x004B2490, 0x004B43D0, 0x004B19F0).
+- `CRGBColour(r,g,b,a) { R = r; G = g; B = b; A = a; }` (body assignments) gives retail's +2,+1,+0,+3 byte store order; an init list follows the B,G,R,A layout (0x006CA950).
+- A C2DBoxF/POD assignment in `lea` address form is the implicit operator= of a class that declares a user copy constructor; a user operator= gives direct moves (0x009DE6F0).
+- Empty STLport tags: a fresh `__false_type()` / `random_access_iterator_tag()` DOES land in a dead argument slot whose value was loaded into a register (0x00BEE710, 0x004B2FE0, 0x004B39B0); the lane gap is only the LIVE slot case (the slot's address is also passed as the value, 0x004B3860).
+- STLport range erase where retail reuses end() for both the emptiness test and __copy's `last` and calls UpperBound before the __copy pushes: write it out with end() and UpperBound() in locals over a map reference (0x004B39B0); a per-container inline helper called twice avoids the second container re-reading its finish (0x004B41F0).
+- A `mov eax,ecx` copy body that ends with eax holding a callee's result (no `mov eax,this`) is a void member, not a constructor (0x004FA7F0).
+- Labels: see NOTES.md "Label corrections" (6 of the 40 rows carried another function's propagated name).

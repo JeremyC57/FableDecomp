@@ -233559,6 +233559,209 @@ $catalog = @(
         TestSource = '00/e1/CQWizardBattleScript_CQWizardBattleScript_00e1a800_test.cpp'
         PassPattern = '00e1a800_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004b2490'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_SetQuestAsPersistent_004b2490.cpp'
+        TestSource = '00/4b/CQuestManager_SetQuestAsPersistent_004b2490_test.cpp'
+        PassPattern = '004b2490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b39b0'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_ClearQuestPersistScript_004b39b0.cpp'
+        TestSource = '00/4b/CQuestManager_ClearQuestPersistScript_004b39b0_test.cpp'
+        PassPattern = '004b39b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b41f0'
+        Module = 'NQuestManager::CRuntimeQuestPersistence'
+        Source = '00/4b/NQuestManagerCRuntimeQuestPersistence_ClearAll_004b41f0.cpp'
+        TestSource = '00/4b/NQuestManagerCRuntimeQuestPersistence_ClearAll_004b41f0_test.cpp'
+        PassPattern = '004b41f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b43d0'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_DeactivateQuest_004b43d0.cpp'
+        TestSource = '00/4b/CQuestManager_DeactivateQuest_004b43d0_test.cpp'
+        PassPattern = '004b43d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fa7f0'
+        Module = 'COldFileFormatMapHeader8'
+        Source = '00/4f/COldFileFormatMapHeader8_ConvertFrom_004fa7f0.cpp'
+        TestSource = '00/4f/COldFileFormatMapHeader8_ConvertFrom_004fa7f0_test.cpp'
+        PassPattern = '004fa7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557000'
+        Module = 'NUISystem::CRedefinerList'
+        Source = '00/55/NUISystemCRedefinerList_Refresh_00557000.cpp'
+        TestSource = '00/55/NUISystemCRedefinerList_Refresh_00557000_test.cpp'
+        PassPattern = '00557000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066dbb0'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_Initialise_0066dbb0.cpp'
+        TestSource = '00/66/CRegionMinimap_Initialise_0066dbb0_test.cpp'
+        PassPattern = '0066dbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00677620'
+        Module = 'CReactionMatch_AsymmetricPyramid'
+        Source = '00/67/CReactionMatchAsymmetricPyramid_CReactionMatchAsymmetricPyramid_00677620.cpp'
+        TestSource = '00/67/CReactionMatchAsymmetricPyramid_CReactionMatchAsymmetricPyramid_00677620_test.cpp'
+        PassPattern = '00677620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ca950'
+        Module = 'CTextureMorphs'
+        Source = '00/6c/CTextureMorphs_AddBlend_006ca950.cpp'
+        TestSource = '00/6c/CTextureMorphs_AddBlend_006ca950_test.cpp'
+        PassPattern = '006ca950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006feb50'
+        Module = 'CReactionMatch_SecondaryAxisMRShifted'
+        Source = '00/6f/CReactionMatchSecondaryAxisMRShifted_TransferBinaryOut_006feb50.cpp'
+        TestSource = '00/6f/CReactionMatchSecondaryAxisMRShifted_TransferBinaryOut_006feb50_test.cpp'
+        PassPattern = '006feb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006febc0'
+        Module = 'CReactionMatch_SecondaryAxisCentredMRShifted'
+        Source = '00/6f/CReactionMatchSecondaryAxisCentredMRShifted_TransferBinaryOut_006febc0.cpp'
+        TestSource = '00/6f/CReactionMatchSecondaryAxisCentredMRShifted_TransferBinaryOut_006febc0_test.cpp'
+        PassPattern = '006febc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fec30'
+        Module = 'CReactionMatch_AsymmetricPyramid'
+        Source = '00/6f/CReactionMatchAsymmetricPyramid_TransferBinaryOut_006fec30.cpp'
+        TestSource = '00/6f/CReactionMatchAsymmetricPyramid_TransferBinaryOut_006fec30_test.cpp'
+        PassPattern = '006fec30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fee20'
+        Module = 'CReactionFrequencyTraits_ControlledCount'
+        Source = '00/6f/CReactionFrequencyTraitsControlledCount_CReactionFrequencyTraitsControlledCount_006fee20.cpp'
+        TestSource = '00/6f/CReactionFrequencyTraitsControlledCount_CReactionFrequencyTraitsControlledCount_006fee20_test.cpp'
+        PassPattern = '006fee20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ff9c0'
+        Module = 'CReactionFrequencyTraits_LinearTime'
+        Source = '00/6f/CReactionFrequencyTraitsLinearTime_CalculateWeight_006ff9c0.cpp'
+        TestSource = '00/6f/CReactionFrequencyTraitsLinearTime_CalculateWeight_006ff9c0_test.cpp'
+        PassPattern = '006ff9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00700180'
+        Module = 'CReactionMatch_SecondaryAxisMRShifted'
+        Source = '00/70/CReactionMatchSecondaryAxisMRShifted_Match_00700180.cpp'
+        TestSource = '00/70/CReactionMatchSecondaryAxisMRShifted_Match_00700180_test.cpp'
+        PassPattern = '00700180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00700200'
+        Module = 'CReactionMatch_SecondaryAxisCentredMRShifted'
+        Source = '00/70/CReactionMatchSecondaryAxisCentredMRShifted_Match_00700200.cpp'
+        TestSource = '00/70/CReactionMatchSecondaryAxisCentredMRShifted_Match_00700200_test.cpp'
+        PassPattern = '00700200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007002a0'
+        Module = 'CReactionMatch_AsymmetricPyramid'
+        Source = '00/70/CReactionMatchAsymmetricPyramid_Match_007002a0.cpp'
+        TestSource = '00/70/CReactionMatchAsymmetricPyramid_Match_007002a0_test.cpp'
+        PassPattern = '007002a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00700320'
+        Module = 'CReactionMatch_MRPyramid'
+        Source = '00/70/CReactionMatchMRPyramid_Match_00700320.cpp'
+        TestSource = '00/70/CReactionMatchMRPyramid_Match_00700320_test.cpp'
+        PassPattern = '00700320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00701990'
+        Module = 'CReactionMatch_Sphere'
+        Source = '00/70/CReactionMatchSphere_TransferBinaryIn_00701990.cpp'
+        TestSource = '00/70/CReactionMatchSphere_TransferBinaryIn_00701990_test.cpp'
+        PassPattern = '00701990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00882c90'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack::CRadialBlurEntry'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStackCRadialBlurEntry_CRadialBlurEntry_00882c90.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStackCRadialBlurEntry_CRadialBlurEntry_00882c90_test.cpp'
+        PassPattern = '00882c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009dc500'
+        Module = 'CRenderManager2D'
+        Source = '00/9d/CRenderManager2D_AddQuadToDrawBuffer_009dc500.cpp'
+        TestSource = '00/9d/CRenderManager2D_AddQuadToDrawBuffer_009dc500_test.cpp'
+        PassPattern = '009dc500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009dd8f0'
+        Module = 'CRenderManager2D'
+        Source = '00/9d/CRenderManager2D_Draw2DText_009dd8f0.cpp'
+        TestSource = '00/9d/CRenderManager2D_Draw2DText_009dd8f0_test.cpp'
+        PassPattern = '009dd8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009de6f0'
+        Module = 'CQuickDrawTriInfo'
+        Source = '00/9d/CQuickDrawTriInfo_operator_009de6f0.cpp'
+        TestSource = '00/9d/CQuickDrawTriInfo_operator_009de6f0_test.cpp'
+        PassPattern = '009de6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0a940'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_Init_00a0a940.cpp'
+        TestSource = '00/a0/CRenderManagerCore_Init_00a0a940_test.cpp'
+        PassPattern = '00a0a940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bee710'
+        Module = 'CRandomAppearanceMorph'
+        Source = '00/be/CRandomAppearanceMorph_UninitializedFillN_00bee710.cpp'
+        TestSource = '00/be/CRandomAppearanceMorph_UninitializedFillN_00bee710_test.cpp'
+        PassPattern = '00bee710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d40aa0'
+        Module = 'CRaceMarker'
+        Source = '00/d4/CRaceMarker_Main_00d40aa0.cpp'
+        TestSource = '00/d4/CRaceMarker_Main_00d40aa0_test.cpp'
+        PassPattern = '00d40aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f39e50'
+        Module = 'CRangeCompressor'
+        Source = '00/f3/CRangeCompressor_CalcShuffleOperations_00f39e50.cpp'
+        TestSource = '00/f3/CRangeCompressor_CalcShuffleOperations_00f39e50_test.cpp'
+        PassPattern = '00f39e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3a270'
+        Module = 'CRangeCompressor'
+        Source = '00/f3/CRangeCompressor_CalcMemoryNeededBitCompressed_00f3a270.cpp'
+        TestSource = '00/f3/CRangeCompressor_CalcMemoryNeededBitCompressed_00f3a270_test.cpp'
+        PassPattern = '00f3a270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3afc0'
+        Module = 'CRangeCompressor'
+        Source = '00/f3/CRangeCompressor_Compress_00f3afc0.cpp'
+        TestSource = '00/f3/CRangeCompressor_Compress_00f3afc0_test.cpp'
+        PassPattern = '00f3afc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
