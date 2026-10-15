@@ -221259,6 +221259,62 @@ $catalog = @(
         TestSource = '00/ca/CBaseVideoRenderer_OnStopStreaming_00ca5380_test.cpp'
         PassPattern = '00ca5380_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004debf7'
+        Module = 'CTCTargetingSpirit'
+        Source = '00/4d/CTCTargetingSpirit_vfunc10_004debf7.cpp'
+        TestSource = '00/4d/CTCTargetingSpirit_vfunc10_004debf7_test.cpp'
+        PassPattern = '004debf7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004debfc'
+        Module = 'CTCTargetingSpirit'
+        Source = '00/4d/CTCTargetingSpirit_vfunc29_004debfc.cpp'
+        TestSource = '00/4d/CTCTargetingSpirit_vfunc29_004debfc_test.cpp'
+        PassPattern = '004debfc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004debff'
+        Module = 'CTCTargetingSpirit'
+        Source = '00/4d/CTCTargetingSpirit_vfunc31_004debff.cpp'
+        TestSource = '00/4d/CTCTargetingSpirit_vfunc31_004debff_test.cpp'
+        PassPattern = '004debff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dec04'
+        Module = 'CTCTargetingSpirit'
+        Source = '00/4d/CTCTargetingSpirit_vfunc32_004dec04.cpp'
+        TestSource = '00/4d/CTCTargetingSpirit_vfunc32_004dec04_test.cpp'
+        PassPattern = '004dec04_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dec09'
+        Module = 'CTCTargetingSpirit'
+        Source = '00/4d/CTCTargetingSpirit_vfunc22_004dec09.cpp'
+        TestSource = '00/4d/CTCTargetingSpirit_vfunc22_004dec09_test.cpp'
+        PassPattern = '004dec09_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dec19'
+        Module = 'CTCTargetingSpirit'
+        Source = '00/4d/CTCTargetingSpirit_vfunc8_004dec19.cpp'
+        TestSource = '00/4d/CTCTargetingSpirit_vfunc8_004dec19_test.cpp'
+        PassPattern = '004dec19_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0061b530'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_ProcessInventoryInputUp_0061b530.cpp'
+        TestSource = '00/61/CTCInventoryQuests_ProcessInventoryInputUp_0061b530_test.cpp'
+        PassPattern = '0061b530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0061b560'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_ProcessInventoryInputDown_0061b560.cpp'
+        TestSource = '00/61/CTCInventoryQuests_ProcessInventoryInputDown_0061b560_test.cpp'
+        PassPattern = '0061b560_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

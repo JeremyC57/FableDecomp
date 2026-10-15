@@ -7099,6 +7099,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004debc4	CGoldDef::Transfer	CGoldDef	__thiscall	void	2	CGoldDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CGoldDef_Transfer_004debc4.cpp
 004debd4	CTCBed	CTCBed	__thiscall	undefined	2	CTCBed *,CThing *	0	yes	accepted									
 004debf7	CTCTargetingSpirit::vfunc_10	CTCTargetingSpirit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+004debfc	CTCTargetingSpirit::Piece_004debfc	CTCTargetingSpirit	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+004debff	CTCTargetingSpirit::Piece_004debff	CTCTargetingSpirit	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+004dec04	CTCTargetingSpirit::Piece_004dec04	CTCTargetingSpirit	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+004dec09	CTCTargetingSpirit::Piece_004dec09	CTCTargetingSpirit	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+004dec19	CTCTargetingSpirit::Piece_004dec19	CTCTargetingSpirit	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 004dec1c	CCoinGameObstacleDef::Transfer	CCoinGameObstacleDef	__thiscall	void	2	CCoinGameObstacleDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CCoinGameObstacleDef_Transfer_004dec1c.cpp
 004dec2c	?Transfer@CTavernGameCoinBaseDef@@UAEXAAVCPersistContext@@@Z	CTavernGameCoinBaseDef	__fastcall	void	0		1	yes	accepted									
 004dec86	?Transfer@CTavernGameCoinGolfDef@@UAEXAAVCPersistContext@@@Z	CTavernGameCoinGolfDef	__fastcall	void	0		1	yes	accepted									
@@ -13054,6 +13059,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0061ad60	DrawActiveTestQuests	CTCInventoryQuests	__thiscall	void	2	CTCInventoryQuests *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 0061b3c0	CTCInventoryQuests::vfunc_11	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0061b530	CTCInventoryQuests::vfunc_38	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0061b560	CTCInventoryQuests::Piece_0061b560	CTCInventoryQuests	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 0061b590	ProcessButtonAReleased	CTCInventoryQuests	__thiscall	void	1	CTCInventoryQuests *	1	yes	accepted									
 0061b5f0	ProcessButtonBReleased	CTCInventoryQuests	__thiscall	void	1	CTCInventoryQuests *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\61\CTCInventoryQuests_ProcessButtonBReleased_0061b5f0.cpp
 0061b610	ConstructQuestList	CTCInventoryQuests	__thiscall	void	5	CTCInventoryQuests *,vector<CThing*,std::allocator<CThing*>_> *,CList *,QuestScreenType,CList *	1	yes	accepted									
