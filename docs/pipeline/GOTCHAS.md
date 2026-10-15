@@ -107,3 +107,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   The v17 "strlen of 0xA96" and v24 "reading 0xB42" readings were wrong; `w32::reassertFaultHandlers` fixes it.
 - The recomp table entry nearest below a host pc is not necessarily its function: `--wrap` bodies (F_X_orig, just
   before F_X), recomp.h helpers, the runtime and host code have none. main.cpp `logCodeAt` marks them (FABLE_WRAPS).
+- `package_rg34xx.sh` without `FFMPEG_PREFIX=/home/user/build/ffmpeg-a64` bundles Ubuntu's FFmpeg and its 100+ libs (64 MB tarball, not 23).
