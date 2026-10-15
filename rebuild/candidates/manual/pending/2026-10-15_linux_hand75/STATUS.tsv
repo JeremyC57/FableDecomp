@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00988e30	MATCH	71v71	PASS	world matrix upload, count clamped to 4 (ternary)
+009896b0	RELOCATION_MATCH	25v25	PASS	forwarder to SetVSMatrixConstantTransposed(reg, m, 4)
+009896d0	MATCH	45v45	PASS	user constants upload, zero count skipped
+00989700	MATCH	85v85	PASS	camera-pos vector (w=0) via inline SetVertexShaderConstant(reg,x,y,z,w) helper; label propagated from UpdateAmbient
+00989910	MATCH	73v73	PASS	one vector via the inline (reg,x,y,z,w) helper
+00989960	MATCH	74v74	PASS	(a,b,c,0) via the inline (reg,x,y,z,w) helper
+00989a60	MATCH	78v78	PASS	(xyz,w) at user base + index via the inline helper
+00989ab0	MATCH	74v74	PASS	C4DVector at user base + index via the inline helper
+00989b00	MATCH	78v78	PASS	(x,y,z,w) at user base + index via the inline helper
+00989b50	MATCH	74v74	PASS	byte-identical twin of 00989ab0
+00c40450	DIFFER	79v75	-	CTrackedTransform SetPosition (label propagated): lane splits `or [ecx+48h],8000h` into load/or/store scheduled into the copy
+00c404a0	DIFFER	79v75	-	CTrackedTransform SetDirection (label propagated): lane splits `or [ecx+48h],10000h` into load/or/store scheduled into the copy
+00c40830	RELOCATION_MATCH	45v45	PASS	27-dword projection block copy + dirty bits + global flag (label propagated)
+00c417a0	MATCH	40v40	PASS	CRangedObject::SetRange(first,last) per landed caller (label propagated)
+00a46f30	RELOCATION_MATCH	46v46	PASS	two {CCharString, STLport vector} records; label propagated
+00a5d750	MATCH	69v69	PASS	delete every shader, null slot, clear bank
+00a5d870	RELOCATION_MATCH	51v51	PASS	ctor; Shaders = STLport vector (alloc proxy) fixes the lea placement
+00a5d8b0	RELOCATION_MATCH	66v66	PASS	implicit CVertexShaderInput op= + GetData() (size > 0)
+00dbf190	RELOCATION_MATCH	71v71	PASS	script ctor: novtable intermediate base owns (first,second); STLport array
+00761200	MATCH	61v61	PASS	NShape::CShape add delta to selected points, bool result
+00a3d330	RELOCATION_MATCH	76v76	PASS	C3DAnimationBlendState::CSharedData copy ctor
+006bab80	RELOCATION_MATCH	69v69	PASS	static __fastcall NewEntry() returning CEntry by value (no NRVO); label AddEntry propagated
+004e069f	RELOCATION_MATCH	36v36	PASS	def Copy: base op= + Type + CShopItem block (rep movsd, /Os)
+00aa8360	RELOCATION_MATCH	74v74	PASS	CChunkedFileSuperChunk(const char*) ctor (label propagated)
+00c3c3b0	RELOCATION_MATCH	46v46	PASS	CVtable_012b4f74 ctor, record zeroed by memset ctor (label propagated)
+00454b5f	RELOCATION_MATCH	41v41	PASS	CThingBuildingDef ctor, /Os fldz record (label propagated)
+00455e39	RELOCATION_MATCH	32v32	PASS	CSimVoice ctor (CInitBaseClass base, inline vector map)
+0046313e	DIFFER	43v43	-	CSimVoice::operator= (base flag, map): dirty-flag byte copy scheduled after the pops (dl vs al)
+006808c0	DIFFER	61v73	-	CSimVoice::TransferBinaryOut (count + data block): lane CSEs the element count across the GetData() join; retail re-reads first/last with ebx
+00b20b60	RELOCATION_MATCH	49v49	PASS	CSplineData CopyFrom (flags + two vector op=); label propagated
+009d2af0	RELOCATION_MATCH	94v94	PASS	STLport vector<POD pair>(n), value-initialised T() fill
+00a533f0	DIFFER	82v80	-	CSimpleMemoryPool::New<T>(count) with 64-bit size guard: lane keeps a dead `jb` after `test edx,edx ; ja` in the 64-bit size guard
+00a5c570	DIFFER	74v74	-	CSimpleMemoryPool(capacity, granularity) ctor: `xor ecx,ecx` placed after (lane) instead of before (retail) the granularity store
+00a5c600	MATCH	54v54	PASS	ClearMemoryBlocks; tail-duplicated null store
+00a5c790	MATCH	65v65	PASS	Reset = inlined ClearMemoryBlocks + root/capacity
+00a5c850	MATCH	57v57	PASS	pool total minus free areas (+16 each)
+00a6b620	RELOCATION_MATCH	90v90	PASS	STLport vector<pair>(n) default-construct loop (ebx zero, aligned loop)
+00a6b680	RELOCATION_MATCH	93v93	PASS	STLport vector<4-byte>(n) fill
+00b2ec80	RELOCATION_MATCH	93v93	PASS	byte-identical twin of 00a6b680
+00b93df0	RELOCATION_MATCH	73v73	PASS	STLport tree clear + record = T()

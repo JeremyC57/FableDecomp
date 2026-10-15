@@ -90,6 +90,18 @@ Never `cd` into the scratchpad; keep the repo as cwd. Never commit. Never modify
 
 ## Chunk {N} classes
 {'; '.join(cls)}.
+Newest fleet lessons (wave 25, not yet in GOTCHAS -- try these BEFORE parking a row as a "lane gap"):
+- The "24i" shape (`lea ecx` / `mov ecx,edi` for a member scheduled after/before the zero stores, two argument stores before
+  the vtable store) is usually NOT a compiler gap: model STLport vectors with their real structure -- `_Vector_base(const allocator&)`
+  with `_M_start(0), _M_finish(0)` and the end-of-storage pointer in an `_STLP_alloc_proxy` over an empty allocator built from an
+  `allocator_type()` temporary -- and put a two-member argument pair in an inlined `__declspec(novtable)` intermediate base.
+- VC7.1 drops the vtable reset in a compiler-GENERATED destructor: a `??_G` storing no vtable / only the base vtable = the class
+  declares no destructor (a user `~T() {{}}` adds a store); the wave-24m "polymorphic base as first member" model covers the rest.
+- A by-value class result built in an argument slot (`push ; sub esp,8 ; push esp ; call`) needs both a user constructor and a
+  user copy constructor; a `__fastcall` hidden-pointer C3DVector result must land in a NAMED local.
+- Named pointer locals pick retail's registers (`T* first = m_pVec->m_pFirst;` loads into the dead `this` register).
+- If line 1's name differs from the catalog name, check the leaf against `objdump -t $S/wine/q/<addr>/<addr>.obj`: a leaf
+  that matches no symbol silently grades the LARGEST function in the TU.
 Before authoring a class, look for landed relatives: `grep -rl "<Class>" rebuild/src/compiled | head` and reuse their
 models (same members, same accessor shapes). Read `docs/pipeline/GOTCHAS.md` (whole file) before starting -- the
 "Wave 24n/24o/24p" lines are the newest lessons.

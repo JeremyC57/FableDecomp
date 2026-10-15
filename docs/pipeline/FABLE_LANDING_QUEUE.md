@@ -63,6 +63,11 @@ forms tried | next: idea or "lane gap"`. For each one:
    gone), stage it as `<date>_linux_fable_retryNN` with `stage_pending.sh` and land it with `land_pending.sh`.
 4. Delete the fixed row's `differ/` source and hand-over line; when a batch's `differ/` is empty remove its pending dir.
 
+**Retry hint from chunk 75:** many rows parked as the "24i" lane gap (a member `lea` / `mov ecx,edi` placed before or
+after the zero stores, argument stores before the vtable store) are MODEL errors, not compiler gaps: re-author them with
+the STLport `_Vector_base` + `_STLP_alloc_proxy` model and a `__declspec(novtable)` intermediate base owning the argument
+pair (see `pending/2026-10-15_linux_hand75/LESSONS.md`) before giving up on them.
+
 ## Step 3 -- docs after each landed part (Fable)
 GOTCHAS: one `- Wave 25x (...)` line built from the batches' NOTES "What matched" lessons and each pending dir's `LESSONS.md` (the agent's final-report lessons plus any review item, e.g. a local base model next to an existing engine header -- check those before accepting the batch); journal
 `docs/journal/2026-10/LINUX_CONTAINER_LANE_2026-10-13.md` (new part section above the previous one); `docs/HANDOFF.md`
@@ -113,9 +118,10 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand72` | Hand chunk 72 (CRightHandedSet .. CScriptGameResourceObjectMovieBase): 36 of 40 byte-exact | 36 | 4 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand73` | Hand chunk 73 (CScriptGameResourceObjectScriptedThing .. CScriptThing): 38 of 40 byte-exact | 38 | 1 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand74` | Hand chunk 74 (CScriptThing .. CShaderRenderManager): 35 of 40 byte-exact | 35 | 0 | 5 | STAGED: land it |
+| `2026-10-15_linux_hand75` | Hand chunk 75 (CShaderRenderManager .. CSkeletalMorphResourceManager): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 
-Totals: **582 matched rows staged for landing**, **50 parked rows** for the Fable retry pass.
+Totals: **616 matched rows staged for landing**, **56 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -219,6 +225,15 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 
 #### `2026-10-15_linux_hand73` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand73/differ/`)
 - 00853260 NCameraModes::CScriptModuleSpline::IsFinished DIFFER(38v38): retail `je 85327Ch` after the dead-bit test with the shared `mov al,1 ; pop esi ; ret` exit as its fall-through and the `mov al,[esi+58h] ; test al,al ; setne al` tail last; the lane emits `jne` to a `mov al,1` exit placed after the setne tail (same instructions, block order only) | tried: `if (!p || p->m_dead) return true; return RF != 0;`, `if (p && !p->m_dead) return RF != 0; return true;`, `return !p || p->m_dead || RF;` (bool: full-register 0/1, 42 bytes), nested `if (p) { if (dead) return true; return RF != 0; } return true;` | next: the lander's optimize("s"/"t") sweep, then lane gap: block placement of a shared constant-return exit
+
+
+#### `2026-10-15_linux_hand75` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand75/differ/`)
+- 00c40450 CTrackedTransform_00c40450::SetPosition DIFFER(79v75): retail `or dword ptr [ecx+48h],8000h` after the 12-byte copy; the lane emits `mov eax,[ecx+48h] ; or eax,8000h ; mov [ecx+48h],eax` interleaved with the third copy | tried: volatile flags, inline SetDirty, component-wise copy, CTrackedVector-typed member with operator!=, optimize("s")/("t"), /Oa, /GS | next: lane gap: RMW split by the scheduler
+- 00c404a0 CTrackedTransform_00c404a0::SetDirection DIFFER(79v75): same as 00c40450 (`or [ecx+48h],10000h` split into load/or/store) | tried: the 00c40450 forms | next: lane gap: RMW split by the scheduler
+- 0046313e CSimVoice::operator= DIFFER(43v43): retail `mov al,[edi+0Dh] ; mov [ebx+0Dh],al ; pop edi ; mov eax,esi`, the lane `mov dl,[edi+0Dh] ; pop edi ; mov eax,esi ; pop esi ; mov [ebx+0Dh],dl` | tried: explicit operator= with inline map op=, implicit (COMDAT) op=, STLport vector member / base for the map, optimize("s") | next: lane gap: epilogue scheduling of the last byte store
+- 006808c0 CSimVoice::TransferBinaryOut DIFFER(61v73): after WriteLong, retail re-reads first/last for the byte count behind the GetData() join (`mov ecx,[esi+4] ; mov ebx,[esi] ; sub ; sar 3 ; shl 3`, ebx saved); the lane reuses the GetData count (`shl eax,3`) | tried: ternary / if-local / void* GetData, signed and unsigned Size, separate byte-count accessor, data local, iterator-object vector, STLport vector base | next: model the map as the real CVectorMap<..> template over the VC7.1 std::vector with checked iterators (the PDB names `_Vector_iterator`), or lane gap: cross-join CSE
+- 00a5c570 CSimpleMemoryPool::CSimpleMemoryPool DIFFER(74v74): one instruction placement: retail `xor ecx,ecx` before `mov [esi+0Ch],eax`, the lane after it | tried: granularity in the init list with body assignments, everything in the body, everything in the init list | next: an inline SetGrowthGranularity / CArea constructor variant, else lane gap: scheduling
+- 00a533f0 CSimpleMemoryPool::New<SSequenceKey> DIFFER(82v80): the lane keeps a dead `jb` after `test edx,edx ; ja` in the unsigned 64-bit size guard; retail drops it because `test` clears CF | tried: `<= 0xFFFFFFFF`, inverted `>`, `< 2^32`, a named 64-bit local, optimize("s"), /Oa, /GS | next: lane gap: dead branch after test (RTM peephole)
 
 
 #### `2026-10-15_linux_hand76` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand76/differ/`)
