@@ -146,8 +146,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand80` | Hand chunk 80 (CTCActionUseBuyHouse .. CTCAssassinRush): 40 of 40 byte-exact | - | 0 | 0 | done |
 | `2026-10-15_linux_hand81` | Hand chunk 81 (CTCAssassinRush .. CTCBoastingPodium): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand82` | Hand chunk 82 (CTCBoastingPosition .. CTCCameraPointScripted): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 
-Totals: **0 matched rows staged for landing**, **77 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **82 parked rows** for the Fable retry pass.
 
 ### Skipped rows (19 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -310,5 +311,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 006c0120 CTCBuyableHouse::GetPrice DIFFER(57v57): ours `mov edi,[eax+28h] ; mov eax,[eax+2Ch] ; sub eax,edi`, retail `mov edx,[eax+2Ch] ; mov edi,[eax+28h] ; sub edx,edi` | tried: `GetValueOfTrophies() + def->Price[level]` (48v57), call result in a named local (60v57), `prices` first-pointer local + explicit `last - prices` (57v57), `prices` local + size() (61v57) | next: lane gap: register/load order of the size() difference (maybe a `const vector&` local plus the `prices` local)
 - 007e3040 CTCCameraCollision::vfunc_4 DIFFER(93v81): retail keeps the local def pointer's object in esi from GetSubDef's `this` through the release (`test esi,esi ; dec [esi+4]`) and stores the local's null after the argument pushes; the lane re-reads the frame slot after the call, stores the null first and expands the release (`mov esi,[eax+4] ; add eax,4 ; dec esi`) | tried: CDefPointer local (93v81; member-template specialisation declarations ICE the compiler first), explicit release on a raw copy (119v81), raw out-pointer local (89v81) | next: lane gap: CDefPointer local cached in esi across a call (GOTCHAS 24k)
 - 0075cd30 CTCCameraPointScripted::GetEndPos DIFFER(81v81): X sum `fld [esi+40h] ; fadd [eax]` stored after two pushes (retail) vs `fld [eax] ; fadd [esi+40h]` stored after three | tried: free `operator+(pos, EndPos)`, member `pos + EndPos` (X and store order right, Z/Y reversed), member `EndPos + pos` | next: lane gap: x87 operand order / store scheduling of the last component
+
+
+#### `2026-10-15_linux_hand90` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand90/differ/`)
+- 00c2d800 CAudioFormat::BytesToSamples DIFFER(36v30): retail keeps `this` in ecx across `call GetBlockAlign` and the quotient in edx across `call GetSamplesPerBlock` (`mov edx,eax ; call ; imul eax,edx`); the lane saves both in esi/edi | tried: natural member form | next: lane gap: LTCG callee register knowledge
+- 00c2d820 CAudioFormat::SamplesToBytes DIFFER(36v30): same as 00c2d800 with the callees swapped | tried: natural member form | next: lane gap: LTCG callee register knowledge
+- 00771d50 CTCHeroPodium::GetCrowdPos DIFFER(85v85): only the frame differs, retail `sub esp,10h` / `add esp,10h` (4 dead bytes above the 12-byte zero C3DVector temporary), lane `0Ch` | tried: temporary in the assignment, named local, an empty CDebugBreak-style temporary, the vector element through a begin() iterator object | next: lane gap: dead frame bytes (RTM vs QFE frame layout), or an unknown dead 4-byte local in the original
+- 0057a962 CTCHeroStats::GetMaxExtraMaxStamina DIFFER(40v39): the best graded form emits `add eax,0DCh ; mov ecx,[eax]` for retail `mov ecx,[eax+0DCh]` | tried: reference copy + destructor release, raw-pointer ctor + pointee AddRef/Release, raw-pointer ctor + destructor release, reference copy + pointee members | next: the by-value holder accessor that matched the byte-twin 0057a939; differ/0057a962.cpp already holds it UNGRADED (budget spent), re-grade first
+- 0057adb8 CTCHeroStats::ResetTrainingStatus DIFFER(70v63): retail loads the def object once into ecx and releases with `dec dword ptr [ecx+4] ; jne`; the lane loads it into eax and emits `mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0` (or re-reads the frame word after the dec) | tried: pointee Release member + `if (Object) Object->Release()`, `if (Object && --Object->RefCount == 0)` in the destructor, local copy + direct dec, local copy + pointee Release | next: try the by-value accessor or out-parameter idiom that GetSubDef's other callers use; otherwise lane gap: def-pointer register allocation (cf. 24k "CDefPointer local re-read from its slot")
 
 <!-- queue:end -->

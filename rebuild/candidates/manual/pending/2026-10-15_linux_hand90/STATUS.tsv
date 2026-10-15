@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006d8ad0	RELOCATION_MATCH	46v46	PASS	engine header CTCHeroExperience.h; ten-stat loop + OnStatLevelChange(false)
+006d8b00	RELOCATION_MATCH	71v71	PASS	local model (AttackHistory +0x50 retail); {-1,0} const-ref temporary
+006d8ca0	RELOCATION_MATCH	82v82	PASS	slot 12 Copy (label vfunc_12); Leaf: Copy
+007497c0	RELOCATION_MATCH	33v33	PASS	really CTCNoise::ResetLifeTimer (label propagated)
+007bed90	RELOCATION_MATCH	53v53	PASS	really CTCShotDefinitionBase::SetTimeToDie; fps read into a named local first
+00c2d800	DIFFER	36v30	-	audio-format BytesToSamples; LTCG callee register knowledge (lane gap)
+00c2d820	DIFFER	36v30	-	audio-format SamplesToBytes; LTCG callee register knowledge (lane gap)
+0071c790	RELOCATION_MATCH	39v39	PASS	Changed +0x3D retail; float 0.0f arg pushed as 0
+0071e130	RELOCATION_MATCH	77v77	PASS	slot 28 ApplyChanges; message in its own inner block
+006c58f0	RELOCATION_MATCH	46v46	PASS	STLport map find (const twin), hidden-pointer iterator
+006c5a50	RELOCATION_MATCH	44v44	PASS	STLport map find (non-const twin)
+006c6e20	RELOCATION_MATCH	92v92	PASS	ten-argument PostDeed; WeaponOutDeedHandle +0x28 retail
+0041cadc	RELOCATION_MATCH	52v52	PASS	really NUISystem::CYesNo ctor; optimize("s")
+00555180	RELOCATION_MATCH	71v71	PASS	really NUISystem::CScrollableList ctor; speed TU
+00771d50	DIFFER	85v85	-	only frame size differs (sub esp,10h vs 0Ch); 4 forms tried
+00771db0	RELOCATION_MATCH	39v39	PASS	vector member object with inline ctor after the vtable store
+004e30e7	RELOCATION_MATCH	93v93	PASS	really CTCDExplosion ctor; optimize("s")
+007556b0	RELOCATION_MATCH	82v82	PASS	pair default temporary + byte default in the dead arg slot
+007e0670	RELOCATION_MATCH	50v50	PASS	nested ifs; __fastcall IsAvailableForHeroSprint
+007e0700	RELOCATION_MATCH	69v69	PASS	named float local computed before the global flag test
+0057a774	MATCH	69v69	PASS	Max(const&) + ClampMin(long&) helpers, optimize("s")
+0057a82a	RELOCATION_MATCH	74v74	PASS	named float local orders the inc; raw def pointer word
+0057a8af	MATCH	43v43	PASS	zero-initialised index switch helper
+0057a8da	MATCH	49v49	PASS	zero-initialised index switch helper
+0057a90b	RELOCATION_MATCH	46v46	PASS	by-value def-pointer accessor (__forceinline) + y-off/s
+0057a939	RELOCATION_MATCH	41v41	PASS	by-value def-pointer accessor + pointee AddRef/Release
+0057a962	DIFFER	40v39	-	4 grades spent; differ file carries the sibling-proven form (ungraded)
+0057aa5b	MATCH	77v77	PASS	i != size() loop
+0057aaa8	MATCH	49v49	PASS	i != size() loop, hoisted size
+0057aad9	RELOCATION_MATCH	59v59	PASS	signed then unsigned range check, fidiv
+0057ab14	RELOCATION_MATCH	86v86	PASS	really GetMaxFollowersForRenownLevel (def +0xB8)
+0057ab6a	RELOCATION_MATCH	86v86	PASS	if (size() > 0) guard + ternary clamp
+0057abd6	RELOCATION_MATCH	83v83	PASS	optimize("s") fixes the register colouring
+0057ac4b	RELOCATION_MATCH	62v62	PASS	|| chain with a long (BOOL) result
+0057ac89	MATCH	59v59	PASS	POD record copy rep movsd
+0057acc4	MATCH	89v89	PASS	if (!gay) first
+0057adb8	DIFFER	70v63	-	def-pointer release shape (dec/cmp vs dec;jne); 4 forms tried
+0057adf7	RELOCATION_MATCH	92v92	PASS	d = dx*dx; d += dy*dy
+0057b3e2	RELOCATION_MATCH	93v93	PASS	inlined out-param GetInterface template (__forceinline) + y-off/s
+0057cb4b	RELOCATION_MATCH	51v51	PASS	C3DVector memberwise user copy ctor; y-off/s
