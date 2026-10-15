@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007437c0	DIFFER	151v151	-	lane gap: push scheduling against register-zero stores (24i family)
+007438a0	DIFFER	145v145	-	lane gap: push scheduling against register-zero stores (24i family)
+008dc590	RELOCATION_MATCH	104v104	PASS	checked GetInterface(0x3a) + bit set
+007419b0	RELOCATION_MATCH	137v137	PASS	CModeDragonGetHit ctor; filter CRC as one ternary guard pair
+008d7510	RELOCATION_MATCH	111v111	PASS	PTarget = CIntelligentPointer(hero) temp + inline operator=
+007418d0	RELOCATION_MATCH	136v136	PASS	label: CModeDragonLanded ctor (vtable 0x012683A8)
+00741b60	RELOCATION_MATCH	136v136	PASS	CModeDragonHover(CThing*) ctor
+008d8580	RELOCATION_MATCH	148v148	PASS	CModeDragonHover(CThing*, CThing* target) ctor
+00741a90	RELOCATION_MATCH	123v123	PASS	CModeDragonRearUp(CThing*) ctor
+008d84f0	RELOCATION_MATCH	134v134	PASS	CModeDragonRearUp(CThing*, float) ctor, Timer = fps * seconds
+00743990	RELOCATION_MATCH	129v129	PASS	StrafeBurninate ctor over out-of-line CModeDragonFlying ctor; inline Filter.SetGroup
+007413c0	RELOCATION_MATCH	146v146	PASS	CModeDrained ctor, PDrainer(0)
+008d6780	DIFFER	149v149	-	model `GetAnimFromName(name, GetAnimFilter(), 0L)` with a no-argument virtual; the register choice may remain (008d6e80 gap)
+008d6e80	DIFFER	157v157	-	lane gap: copy-register choice (the 4 AnimUpdate rows share it)
+008ea8a0	DIFFER	146v139	-	lane gap: several short-lived locals in one dead argument slot (the body shape is decoded in the source comment)
+008ea930	DIFFER	127v121	-	lane gap: several short-lived locals in one dead argument slot
+00aabca0	RELOCATION_MATCH	151v151	PASS	label: CSoundEmitterLH::RemoveInactiveSounds
+00aac460	RELOCATION_MATCH	133v133	PASS	label: CSoundEmitterLH vtable slot 12 (strstr stop)
+00aac5e0	DIFFER	130v136	-	lane gap: loop-invariant argument hoisted into ebp with the loop head unaligned (GOTCHAS 24p, 0x00A15100)
+00743000	RELOCATION_MATCH	121v121	PASS	label: ~CModeDragonFlying; novtable derived + novtable FlyingBase
+0084b840	RELOCATION_MATCH	98v98	PASS	label: ~CModeSleepBed; novtable derived, non-virtual dtor chain
+008df310	RELOCATION_MATCH	134v134	PASS	kill blocks, ExtinguishFlames, resume, Active = false
+00740340	RELOCATION_MATCH	146v146	PASS	CModeJackOfBladesFloat ctor
+007412b0	RELOCATION_MATCH	146v146	PASS	label: CModeScreamerAggressive ctor (vtable 0x012681EC)
+008d7730	RELOCATION_MATCH	99v99	PASS	two kill-if-alive blocks
+008d7370	RELOCATION_MATCH	111v111	PASS	operator= takes GetPItem() into a local first
+008d7430	RELOCATION_MATCH	114v114	PASS	label: CModeScorpionKingTailPlunge::SetTarget (vtable 0x0123E7D8, packed +0xa1/+0x89)
+008d6620	SKIP	-v105	-	row holds FrameUpdate (0x008D6620, 43 bytes) plus four `mov ecx,[ecx+4]` thunks after int3 padding
+008d6f20	DIFFER	149v149	-	lane gap: register choice around the CAnimInit build (as 008d6e80)
+008de700	DIFFER	160v160	-	lane gap: register coalescing of the lookup owner (the rest -- action temporary, duplicated RemoveMode arms -- matches)
+008d7930	DIFFER	109v109	-	lane gap: callee-saved register colouring
+0096dd10	RELOCATION_MATCH	137v137	PASS	CModeScreamerAggressive(thing, target); CRC via out-of-line 0x00404310
+008d6cb0	DIFFER	129v129	-	lane gap: register choice around the CAnimInit build (same as 008d6e80)
+008d7cd0	RELOCATION_MATCH	137v137	PASS	CModeSleepBed(CThing*) ctor, name copied from global 0x013BAFD4
+008e9710	RELOCATION_MATCH	149v149	PASS	GetInterface as third && term, inline CAnimSet::FadeOut
+008d79f0	RELOCATION_MATCH	151v151	PASS	base OnDeactivate, RemoveTC(0xee), two kill blocks
+00caf820	DIFFER	104v104	-	lane gap: store scheduling around the EH state store
+005545d0	RELOCATION_MATCH	137v137	PASS	label: CMorphingSprite ctor (not Initialize); local model (header offsets 0x30 high)
+00c44ab0	DIFFER	134v134	-	lane gap: `push eax` before `mov ecx,esi` (GOTCHAS 24d, 00540120)
+00ab4870	RELOCATION_MATCH	154v154	PASS	ClientToScreen/GetClientRect/OffsetRect; value-ctor return
