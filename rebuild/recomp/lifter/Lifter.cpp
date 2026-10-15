@@ -1010,6 +1010,15 @@ private:
         }
         if (kind == "movs" && w == 32)
             return line("if (!c->df && ecx && (edi + ecx * 4u <= esi || esi + ecx * 4u <= edi)) { memcpy(GP(edi), GP(esi), (size_t)ecx * 4u); esi += ecx * 4u; edi += ecx * 4u; ecx = 0; } while (ecx != 0) { " + one + " --ecx; }");
+        if (kind == "stos") {
+            // Forward fill (MSVC's inlined memset / zeroing): memset, or a loop over a host
+            // pointer that the compiler vectorises; the general loop below steps a 32-bit edi
+            // one element at a time.
+            const std::string fill = w == 8 ? "memset(GP(edi), (int)(uint8_t)eax, (size_t)ecx);"
+                                             : "{ uint8_t* p_ = GP(edi); const uint32_t v_ = " + readReg(acc) + "; for (size_t i_ = 0; i_ < ecx; ++i_) " +
+                                                   (w == 16 ? "wr16p(p_ + 2u * i_, (uint16_t)v_); }" : "wr32p(p_ + 4u * i_, v_); }");
+            return line("if (!c->df && ecx) { " + fill + " edi += ecx * " + sz + "u; ecx = 0; } while (ecx != 0) { " + one + " --ecx; }");
+        }
         return line("while (ecx != 0) { " + one + " --ecx; }");
     }
 
