@@ -231056,6 +231056,198 @@ $catalog = @(
         TestSource = '00/e9/CHHUndead_Main_00e95e80_test.cpp'
         PassPattern = '00e95e80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004d1000'
+        Module = '_global'
+        Source = '00/4d/global_linearinsert_004d1000.cpp'
+        TestSource = '00/4d/global_linearinsert_004d1000_test.cpp'
+        PassPattern = '004d1000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557ca0'
+        Module = 'CKeyRedefiner'
+        Source = '00/55/CKeyRedefiner_GetSubTypeForAction_00557ca0.cpp'
+        TestSource = '00/55/CKeyRedefiner_GetSubTypeForAction_00557ca0_test.cpp'
+        PassPattern = '00557ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bd8a0'
+        Module = 'CItem'
+        Source = '00/5b/CItem_GetItemDescription_005bd8a0.cpp'
+        TestSource = '00/5b/CItem_GetItemDescription_005bd8a0_test.cpp'
+        PassPattern = '005bd8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bdde4'
+        Module = 'CItem'
+        Source = '00/5b/CItem_AddInventoryItem_005bdde4.cpp'
+        TestSource = '00/5b/CItem_AddInventoryItem_005bdde4_test.cpp'
+        PassPattern = '005bdde4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00687a90'
+        Module = 'CInputProcessGameBase'
+        Source = '00/68/CInputProcessGameBase_IsEventButtonPressed_00687a90.cpp'
+        TestSource = '00/68/CInputProcessGameBase_IsEventButtonPressed_00687a90_test.cpp'
+        PassPattern = '00687a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00687b30'
+        Module = 'CInputProcessGameBase'
+        Source = '00/68/CInputProcessGameBase_IsEventButtonReleased_00687b30.cpp'
+        TestSource = '00/68/CInputProcessGameBase_IsEventButtonReleased_00687b30_test.cpp'
+        PassPattern = '00687b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00687bd0'
+        Module = 'CInputProcessGameBase'
+        Source = '00/68/CInputProcessGameBase_IsEventButtonHeld_00687bd0.cpp'
+        TestSource = '00/68/CInputProcessGameBase_IsEventButtonHeld_00687bd0_test.cpp'
+        PassPattern = '00687bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068cac0'
+        Module = 'CInputProcessFirstPerson'
+        Source = '00/68/CInputProcessFirstPerson_ProcessInput_0068cac0.cpp'
+        TestSource = '00/68/CInputProcessFirstPerson_ProcessInput_0068cac0_test.cpp'
+        PassPattern = '0068cac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068d700'
+        Module = 'CInputProcessFirstPersonLookAround'
+        Source = '00/68/CInputProcessFirstPersonLookAround_ProcessInput_0068d700.cpp'
+        TestSource = '00/68/CInputProcessFirstPersonLookAround_ProcessInput_0068d700_test.cpp'
+        PassPattern = '0068d700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068e3c0'
+        Module = 'CInputProcessQuickAccessItems'
+        Source = '00/68/CInputProcessQuickAccessItems_CancelQuickAccessCharge_0068e3c0.cpp'
+        TestSource = '00/68/CInputProcessQuickAccessItems_CancelQuickAccessCharge_0068e3c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068e3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068e450'
+        Module = 'CInputProcessQuickAccessItems'
+        Source = '00/68/CInputProcessQuickAccessItems_Update_0068e450.cpp'
+        TestSource = '00/68/CInputProcessQuickAccessItems_Update_0068e450_test.cpp'
+        PassPattern = '0068e450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068ea60'
+        Module = 'CInputProcessSetRangedWeaponThirdPersonMode'
+        Source = '00/68/CInputProcessSetRangedWeaponThirdPersonMode_ProcessInput_0068ea60.cpp'
+        TestSource = '00/68/CInputProcessSetRangedWeaponThirdPersonMode_ProcessInput_0068ea60_test.cpp'
+        PassPattern = '0068ea60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068f2a0'
+        Module = 'CInputProcessWatchForWillChargeUpThirdPersonModeTermination'
+        Source = '00/68/CInputProcessWatchForWillChargeUpThirdPersonModeTermination_Update_0068f2a0.cpp'
+        TestSource = '00/68/CInputProcessWatchForWillChargeUpThirdPersonModeTermination_Update_0068f2a0_test.cpp'
+        PassPattern = '0068f2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00690d30'
+        Module = 'CInputProcessParalysed'
+        Source = '00/69/CInputProcessParalysed_ProcessInput_00690d30.cpp'
+        TestSource = '00/69/CInputProcessParalysed_ProcessInput_00690d30_test.cpp'
+        PassPattern = '00690d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00691470'
+        Module = 'CInputProcessCreditsUI'
+        Source = '00/69/CInputProcessCreditsUI_ProcessInput_00691470.cpp'
+        TestSource = '00/69/CInputProcessCreditsUI_ProcessInput_00691470_test.cpp'
+        PassPattern = '00691470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075f1f0'
+        Module = 'CKeyCamera'
+        Source = '00/75/CKeyCamera_CKeyCamera_0075f1f0.cpp'
+        TestSource = '00/75/CKeyCamera_CKeyCamera_0075f1f0_test.cpp'
+        PassPattern = '0075f1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00939a50'
+        Module = 'CIsNearCampfireWithSpace'
+        Source = '00/93/CIsNearCampfireWithSpace_operator_00939a50.cpp'
+        TestSource = '00/93/CIsNearCampfireWithSpace_operator_00939a50_test.cpp'
+        PassPattern = '00939a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00963810'
+        Module = 'CIsImposterHit'
+        Source = '00/96/CIsImposterHit_operator_00963810.cpp'
+        TestSource = '00/96/CIsImposterHit_operator_00963810_test.cpp'
+        PassPattern = '00963810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e43b0'
+        Module = 'CJoystick'
+        Source = '00/9e/CJoystick_CJoystick_009e43b0.cpp'
+        TestSource = '00/9e/CJoystick_CJoystick_009e43b0_test.cpp'
+        PassPattern = '009e43b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d780'
+        Module = 'CInputProcessManager'
+        Source = '00/a0/CInputProcessManager_RemoveInputProcess_00a0d780.cpp'
+        TestSource = '00/a0/CInputProcessManager_RemoveInputProcess_00a0d780_test.cpp'
+        PassPattern = '00a0d780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab5ff0'
+        Module = 'CKeyboardDX'
+        Source = '00/ab/CKeyboardDX_UpdateKeyStates_00ab5ff0.cpp'
+        TestSource = '00/ab/CKeyboardDX_UpdateKeyStates_00ab5ff0_test.cpp'
+        PassPattern = '00ab5ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab6060'
+        Module = 'CKeyboardDX'
+        Source = '00/ab/CKeyboardDX_SetHasInputFocus_00ab6060.cpp'
+        TestSource = '00/ab/CKeyboardDX_SetHasInputFocus_00ab6060_test.cpp'
+        PassPattern = '00ab6060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab7850'
+        Module = 'CJoystickDX'
+        Source = '00/ab/CJoystickDX_CJoystickDX_00ab7850.cpp'
+        TestSource = '00/ab/CJoystickDX_CJoystickDX_00ab7850_test.cpp'
+        PassPattern = '00ab7850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0a9a0'
+        Module = 'CVtable012b1e84'
+        Source = '00/c0/CVtable012b1e84_CVtable012b1e84_00c0a9a0.cpp'
+        TestSource = '00/c0/CVtable012b1e84_CVtable012b1e84_00c0a9a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0a9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c165a0'
+        Module = 'CVtable012b2ab0'
+        Source = '00/c1/CVtable012b2ab0_CVtable012b2ab0_00c165a0.cpp'
+        TestSource = '00/c1/CVtable012b2ab0_CVtable012b2ab0_00c165a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c165a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1dff0'
+        Module = 'CKG_Sheriff'
+        Source = '00/d1/CKGSheriff_Init_00d1dff0.cpp'
+        TestSource = '00/d1/CKGSheriff_Init_00d1dff0_test.cpp'
+        PassPattern = '00d1dff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e93080'
+        Module = 'CM_HiddenBooty'
+        Source = '00/e9/CMHiddenBooty_Init_00e93080.cpp'
+        TestSource = '00/e9/CMHiddenBooty_Init_00e93080_test.cpp'
+        PassPattern = '00e93080_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

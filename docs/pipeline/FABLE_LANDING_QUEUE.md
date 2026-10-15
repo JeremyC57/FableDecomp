@@ -168,6 +168,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand141` | Hand chunk 141 (CGameScriptInterface .. CGameScriptInterface): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand142` | Hand chunk 142 (CGameScriptInterface .. CGuiVarTransferStruct): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand143` | Hand chunk 143 (CGuiVarTransferStruct .. CInputProcessControlCreature): 31 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand144` | Hand chunk 144 (CInputProcessControlCreatureActivateZTarget .. CLODDynamicBuildInfo): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -219,7 +220,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **380 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **393 parked rows** for the Fable retry pass.
 
 ### Skipped rows (9 open of 30 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -616,6 +617,22 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0068e2c0 CInputProcessBlock::ProcessInput DIFFER(107v103): same /GS caching in ebx | tried: named event, unnamed temporary (no caching but no cookie: 85v103), `__forceinline` QueueGameEvent helper | next: lane gap: /GS parameter caching
 - 0068e330 CInputProcessBlock::Update DIFFER(111v103): `push esi ; mov esi,[esp+34h]` caching under /GS; without /GS the body matches retail minus the cookie | tried: ternary constructor argument (becomes `neg/sbb/and/add`), one event per if/else arm (right structure) | next: lane gap: /GS parameter caching
 - 00691560 CInputProcessBetting::ProcessInput DIFFER(108v105): retail loads the component `mov ecx,[eax+4]` before the flag byte `mov al,[13BAE1Dh]`; lane loads the flag into cl first, then `mov ecx,eax` | tried: local + nested if, inline member holding the flag test, volatile flag | next: lane gap: load ordering across the flag test (try the out-parameter GetInterface form)
+
+
+#### `2026-10-15_linux_hand144` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand144/differ/`)
+- 00688260 CInputProcessControlCreatureActivateZTarget::ProcessInput DIFFER(141v137): `push ebp ; mov ebp,[esp+38h]` / edi = event at entry vs retail late `mov ecx,[esp+3Ch]`; zero bytes immediates vs `xor al,al` | tried: nested if, `bool` local + default-arg ctor, temporary event (no cookie -> shape right but no /GS frame) | next: lane gap: /GS parameter shadowing (combine with the __forceinline AddGameEvent(long) helper of 006882f0)
+- 006882f0 CInputProcessControlCreatureActivateZTargetOnPress::ProcessInput DIFFER(107v103): `push ebx ; mov ebx,[esp+38h]` (processed shadowed) vs retail `mov ecx,[esp+3Ch]` before the call | tried: inline AddGameEvent(long) helper, __forceinline helper (fixed the `xor al,al` zero bytes) | next: lane gap: /GS parameter shadowing
+- 006a4040 CInputProcessJumpingAndRolling::ProcessJumping DIFFER(116v112): ebp/edi shadow loads at entry vs retail late loads | tried: named CGameEvent local | next: lane gap: /GS parameter shadowing
+- 0068fee0 CInputProcessLightning::Update DIFFER(103v98): `push esi ; mov esi,[esp+34h]` (processed) vs `mov ecx,[esp+30h]` before AddGameEvent; everything else identical | tried: named event local | next: lane gap: /GS parameter shadowing
+- 0068c7f0 CInputProcessToggleViewHeroMode::ProcessInput DIFFER(133v129): processed in ebx, event in esi at entry vs retail event in edi, processed re-read | tried: __forceinline AddGameEvent(long) helper | next: lane gap: /GS parameter shadowing
+- 00688ba0 CInputProcessZTarget::DeactivateZTarget DIFFER(149v149): `mov edi,[esp+64h]` hoisted above the GetHeroCreature call | tried: two named event locals | next: lane gap: /GS parameter shadowing
+- 00811100 CIsHitEventHitByThingWithScriptName::operator() DIFFER(131v130): `sete al ; ... test al,al ; jne` after `repe cmpsb` vs retail `je true ; jmp` (no materialised bool) | tried: plain inline ops, __forceinline ops + accessor (fixed the `lea ecx,[eax+50h]`), ternary operator==, single `||` expression | next: an `IsEmpty()`-style inline that returns straight from the strcmp intrinsic, or lane gap: branch threading of an inlined bool
+- 00875990 CIsSwitchValid::operator() DIFFER(154v157): ground length computed after the virtual radius call (`fst ; fcompp ; test ah,5`) vs retail `fstp [esp+28h] ; call ; fcomp [esp+28h]` | tried: C3DVector locals, C2DVector helper, user copy ctor, `C3DVector operator-` (fixed the frame and load order) | next: compute the length through an expression that reads a member (gotcha wave 25 chunk 139) or an inline `float GetLength2D() const` on the vector
+- 005bd82e CItem::GetInventoryItemDef DIFFER(126v114): `xor esi,esi` shared zero register vs `and [ebp-4],0`; base def at [ebp-8] not cached in esi | tried: result copy + hand release, CDefClassBasePointer class with dtor, raw pointer local + local-caching copy ctor/dtor | next: declare the sub pointer before the def pointer, or `optimize("y", off)` + `("s", on)` variants with the base pointer as a CDefPointer member of a wrapper
+- 009e42e0 CJoystick::UpdateMaintainedEventPositions DIFFER(122v122): `mov ecx,ebx ; push eax` vs retail `push eax ; mov ecx,ebx` before the last call | tried: event reference local, node re-addressing, forwarding inline overload | next: lane gap: call-argument scheduling
+- 00ab6180 CKeyboardDX::GetKeyName DIFFER(154v146): `name` shadowed into esi at entry; failure arm first | tried: DIPROPSTRING local | next: lane gap: /GS parameter shadowing (also write the success arm first)
+- 00ab6450 CKeyboardDX::SetExclusiveMode DIFFER(131v131): window in eax / device in ecx vs retail window ecx / device eax | tried: window local, unsigned-long window, device local | next: lane gap: register choice
+- 0051d870 CRecord24Vector::resize DIFFER(104v104): `mov ecx,[esp+14h] ... mov edi,ecx` vs `mov edi,[esp+14h] ... mov ecx,edi` | tried: member re-read, first local, first+last locals | next: lane gap: register copy direction
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

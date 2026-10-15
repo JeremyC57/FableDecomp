@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00688260	DIFFER	141v137	-	/GS parameter shadowing (lane gap)
+006882f0	DIFFER	107v103	-	/GS parameter shadowing (lane gap)
+00691470	RELOCATION_MATCH	121v121	PASS	
+0068cac0	RELOCATION_MATCH	149v149	PASS	
+0068d700	RELOCATION_MATCH	129v129	PASS	
+00687a90	RELOCATION_MATCH	154v154	PASS	IsEventButtonPressed (label IsEventButtonHeld propagated)
+00687b30	RELOCATION_MATCH	156v156	PASS	IsEventButtonReleased (label propagated)
+00687bd0	RELOCATION_MATCH	156v156	PASS	IsEventButtonHeld
+006a4040	DIFFER	116v112	-	/GS parameter shadowing (lane gap)
+0068fee0	DIFFER	103v98	-	/GS parameter shadowing (lane gap)
+00a0d780	MATCH	132v132	PASS	
+00690d30	RELOCATION_MATCH	116v116	PASS	
+0068e3c0	RELOCATION_MATCH	141v141	PASS	/GS, no params
+0068e450	RELOCATION_MATCH	115v115	PASS	
+0068ea60	RELOCATION_MATCH	123v123	PASS	
+0068c7f0	DIFFER	133v129	-	/GS parameter shadowing (lane gap)
+0068f2a0	RELOCATION_MATCH	120v120	PASS	
+00688ba0	DIFFER	149v149	-	/GS parameter shadowing: processed loaded before the call
+00811100	DIFFER	131v130	-	inlined == "" materialises sete al; lea vs add ecx,50h
+00963810	RELOCATION_MATCH	108v108	PASS	
+00939a50	RELOCATION_MATCH	145v145	PASS	
+00875990	DIFFER	154v157	-	ground length computed after the virtual call
+00c165a0	RELOCATION_MATCH	111v111	PASS	ctor of vtable 0x012B2AB0 (label CIsVariableFalse::Clone wrong); /EHsc
+005bd82e	DIFFER	126v114	-	shared zero register, def frame slot order
+005bd8a0	RELOCATION_MATCH	145v145	PASS	
+005bdde4	RELOCATION_MATCH	108v108	PASS	
+004d1000	RELOCATION_MATCH	123v123	PASS	STLport __linear_insert (label CJoystick::EventScanStart wrong)
+009e42e0	DIFFER	122v122	-	scheduling: mov ecx before push eax
+00c0a9a0	RELOCATION_MATCH	109v109	PASS	dtor of vtable 0x012B1E84 (label ~CJoystick wrong); /EHsc
+009e43b0	RELOCATION_MATCH	101v101	PASS	CJoystick ctor (label CJoystickDX::Constructor wrong)
+00ab7850	RELOCATION_MATCH	114v114	PASS	
+00d1dff0	RELOCATION_MATCH	147v147	PASS	
+00e93080	RELOCATION_MATCH	146v146	PASS	CM_HiddenBooty::Init (label CKG_Sheriff propagated)
+0075f1f0	RELOCATION_MATCH	122v122	PASS	
+00557ca0	RELOCATION_MATCH	120v120	PASS	
+00ab5ff0	MATCH	101v101	PASS	ternary bool return
+00ab6060	RELOCATION_MATCH	160v160	PASS	
+00ab6180	DIFFER	154v146	-	/GS parameter shadowing + branch order
+00ab6450	DIFFER	131v131	-	register swap eax/ecx for SetCooperativeLevel
+0051d870	DIFFER	104v104	-	register copy direction edi/ecx

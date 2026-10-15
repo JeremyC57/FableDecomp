@@ -1,0 +1,11 @@
+# Chunk 144 lessons
+- /GS lane gap (7 rows parked): the lane's DDK 13.10.4035 compiler copies pointer/reference PARAMETERS into callee-saved registers at entry whenever the function has a /GS buffer (vulnerable-parameter shadowing); retail (RTM) re-reads the argument slots late. Every /GS ProcessInput/Update with a `CProcessedInput&` parameter differs only by that; the parameterless /GS 0x0068E3C0 matched. Park such rows after one try.
+- In CGameEvent ProcessInput rows, retail's `xor al,al ; mov [EndPos],al ; mov [Replacement],al` before the push comes from a `__forceinline void AddGameEvent(long type) { CGameEvent e(type); AddGameEvent(e); }` helper on CProcessedInput (a plain named local stores immediates after the push).
+- Two identical `if (A) {queue X} else if (B) {queue X}` arms cross-jump after the `push` of the event address (0x0068EA60).
+- `T* p = 0; if (HasTC(k)) p = GetTC(k);` gives a preloaded `xor ecx,ecx` with the lookup result in ecx; `HasTC(k) ? GetTC(k) : 0` materialises through eax and an extra jump.
+- A constructor storing members in a non-declaration order (0x00AB7850: +0xd40, +0xd38, +0xd28/+0xd30, then +0xd18..+0xd24) is body assignments in that order; initialisers always follow declaration order.
+- A copy constructor whose stores follow neither declaration nor implicit-operator= order (0x0075F1F0) is an explicit body in retail's store order, with the one class member default-constructed first.
+- `return r == 0 ? true : false;` on a long gives `test ; sete al`; `return r == 0;` materialises `xor ecx,ecx ; sete cl ; mov al,cl` (0x00AB5FF0).
+- A top-tested drain loop retail keeps unrotated is `do { if (count == 0) break; r = Read(&count); } while (r >= 0);` (a `while (count) { if (Read() < 0) break; }` is rotated).
+- A GetThingWithScriptName call whose vtable index looks like it takes an extra `push 1` is usually the outer call's trailing argument pushed first (0x00E93080: SetDiggingSpotAsHidden(thing, true)).
+- `(float)sqrt(...) > x` vs `!(... > x)`: `if (!(len > eps)) return;` gives `test ah,41h ; jne` where `len <= eps` adds `jnp`.
