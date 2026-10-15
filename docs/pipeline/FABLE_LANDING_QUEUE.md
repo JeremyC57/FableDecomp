@@ -184,6 +184,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand157` | Hand chunk 157 (CScriptGameResourceObjectScriptedThing .. CShaderRenderManager): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand158` | Hand chunk 158 (CShaderRenderManager .. CSplinePosParamData): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand159` | Hand chunk 159 (CSplineRandomOffsetData .. CSurface): 26 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand160` | Hand chunk 160 (CSurface .. CTCBuyableHouse): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -238,9 +239,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **515 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **524 parked rows** for the Fable retry pass.
 
-### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -248,6 +249,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
+| `0080aad1` | single | open | 0080aad1:106 | `2026-10-15_linux_hand160` | not a function: the else-branch tail of 0x0080AA60 (je 0x80AAD1; pops edi/esi it never pushed) |
 | `009f5d70` | prefix | open | 009f5d70:156 | `2026-10-15_linux_hand143` | CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B); fu |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
@@ -817,6 +819,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0x009A4160 CStreamingFontBank::FindGlyph DIFFER(143v142): retail `test byte ptr [eax+1],80h ; je`, ours `mov cl,[eax+1] ; test cl,cl ; jns`, then the 0x104 size store sinks below the pushes | tried: word & 0x8000 (CSEs the size load), a 15+1 bit field, a byte union with bool / unsigned char IsCompressed() | next: a byte-test idiom that keeps `test mem,imm` (maybe `(High & 0x80) == 0x80` or a signed char compare); the size local in the dead character slot already matches
 - 0x009F3010 CSurface::ReadOnlyLock DIFFER(138v144): the failure arm: retail `xor eax,eax ; mov edx,eax ; mov eax,[esp+4Ch]` and stores +8/+0xc first, ours zero-stores in member order; on success retail loads the result pointer before pitch/bits | tried: fail-first, success-first (fixes the block order), RECT field order top/left/bottom/right (fixes the rect stores), a user C2DExtentsI copy ctor | next: the failure value is probably a constant/static zero CSurfaceLockedRect or a default-constructed one assigned memberwise
 - 0x00A20970 CSteeringAgent::SetGoal DIFFER(144v144): retail `fsqrt ; fstp st(2) ; fstp st(0) ; fstp [esi+58h]`, ours stores the length before popping the delta | tried: inline delta + GetLength, operator- temporary, named delta local (fixes the flag-store order), GetLength through a named float | next: the length helper may take the vector by value or be a static `Length(x, y)`; the `(float)fabs(d) <= 1e-4f` compare already matches
+
+
+#### `2026-10-15_linux_hand160` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand160/differ/`)
+- 009f33e0 CSurface::Lock DIFFER(139v141): retail keeps desc.Width/Height in ebx/ebp loaded after `mov esi,[esi+4]` and stores rect bottom/right from them after the pushes; failure arm `xor eax,eax ; mov edx,eax` | tried: direct desc fields, width/height locals, rect stores top/left/bottom/right, C2DExtentsI local | next: build the result through a `CSurfaceLockedRect` default ctor / a C2DExtentsI(0,0) temporary bound by reference
+- 009f40a0 CSurface::Clear DIFFER(120v120): scheduling only, retail does both imuls before `mov edi,[locked.PMem]` | tried: X*Y*depth order, named byte count | next: the destination as a named pointer local (the fix that matched SetPixel 0x9F4120)
+- 009a4f20 CSystemManager::ProcessWindowMessages DIFFER(141v141): register rotation only (retail eax/ecx/edx for the lea temporaries, ours ecx/edx/eax) | tried: if/continue form, MSG declared first | next: lane gap: register rotation (compiler build)
+- 007eb110 CTCActionUsePickUp::OnActionUse DIFFER(150v138): local def release, retail `mov ecx,[esp+8] ; test ; je ; dec dword ptr [ecx+4] ; jne`, ours the register form `mov esi,[eax+4] ; ... ; dec esi ; mov [eax],esi`; retail zeroes the def after pushing its address | tried: dtor with/without zero store, GetSubDef by pointer/reference, action named vs temporary | next: `T* p = Data; if (p && --p->RefCount == 0) p->Destroy();` (0x7EB1A0's last try got the memory-form dec)
+- 007eb1a0 CTCActionUsePickUpGenericBox::OnActionUse DIFFER(147v138): same release; best form `if (Data && --Data->RefCount == 0)` gives `dec [eax+4]` then a reload | tried: ReleaseTemporary helper, __forceinline dtor, const def + mutable count, direct decrement | next: the decrement through a local pointer copy in ecx, or GetSubDef wrapped in an inline helper that returns the def pointer by value
+- 00729b20 CTCActionUseScriptedHook::OnActionUse DIFFER(125v150): our two SetText arms cross-jump into one tail; retail keeps two complete calls with their own `ret 4` (arm 1 font in eax + UI before the pushes, arm 2 font in ecx, UI after) | tried: inline font, font locals, explicit return, UI local | next: write the two arms through different inline helpers (e.g. a `ShowConfirmation()` member for arm 1) so they cannot merge
+- 007ebab0 CTCActionUseWindow::OnActionUse DIFFER(124v122): retail this=esi/user=edi and the camera vcall `mov ecx,[eax+34h] ; mov eax,[ecx] ; lea edx`; ours swapped registers and `mov eax,[eax+34h] ; mov edx,[eax] ; lea ecx ; mov ecx,eax` | tried: camera local, creature for the physics call, block 2 as an inline member | next: lane gap: register allocation (or the camera reached through an inline accessor)
+- 007f9010 CTCAnimatingObject::PlayAnimation DIFFER(131v131): priority in ebp where retail uses ebx, nothing else | tried: CAnimInit temporary vs named (named fixed the store order), default ctor + Set, early return | next: lane gap: callee-saved register choice
+- 0056a8c0 CTCBoastUI::DrawPreparePrimitivesForRendering DIFFER(104v104): retail spills the hoisted info.Renderer into the dead `info` argument slot (`mov [esp+14h],eax`) and reads each element at the loop top; ours keeps it only in ebp and rotates the first element load before the loop | tried: renderer local, per-call read, 4-byte struct by value, const member | next: lane gap: a short-lived local kept in a dead argument slot
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

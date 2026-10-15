@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009f3230	RELOCATION_MATCH	107v107	PASS	CSurface::InitialiseAsImage; extents read into locals before the device, format a named local
+009f32a0	RELOCATION_MATCH	107v107	PASS	CSurface::InitialiseAsDepthBuffer
+009f3310	RELOCATION_MATCH	115v115	PASS	CSurface::InitialiseAsRenderTarget
+009f33e0	DIFFER	139v141	-	CSurface::Lock: ebx/ebp extents + rect store order, failure-arm zero pair
+009f40a0	DIFFER	120v120	-	CSurface::Clear: scheduling of mov edi vs the two imuls
+009f4120	RELOCATION_MATCH	110v110	PASS	CSurface::SetPixel; destination pointer as a named local
+00f38990	RELOCATION_MATCH	117v117	PASS	CSurfaceCompositor ctor; inline CRenderTarget/CSurface ctors under new
+00a447d0	RELOCATION_MATCH	100v100	PASS	CSuspendableProcessMicrothread::Restart; optimize("", off) TU
+007daae0	RELOCATION_MATCH	117v117	PASS	label: CTCTavernGameCardBlackjack::EndRound (slot 33), not CSwappingStateComponent::Initialise
+009a4f20	DIFFER	141v141	-	CSystemManager::ProcessWindowMessages: register rotation only
+009a59a0	RELOCATION_MATCH	137v137	PASS	CSystemManager::SetExclusiveMode
+009a7440	RELOCATION_MATCH	118v118	PASS	CSystemManager ctor; retail has an extra counted pointer at +0x84
+0056e0e0	RELOCATION_MATCH	101v101	PASS	label: ~NCameraModes::CBase (vtable 0x0124DD74), not ~CTCActionUseBed
+0080aad1	SKIP	-v106	-	not a function: the else-branch tail of 0x0080AA60 (je 0x80AAD1; pops edi/esi it never pushed)
+005c00a0	RELOCATION_MATCH	129v129	PASS	label: ~NInventory::CTCInventoryBase (vtable 0x01253DBC), not ~CTCActionUseBuyOrSteal; size TU
+007eb110	DIFFER	150v138	-	CTCActionUsePickUp::OnActionUse: local def-pointer release register form
+007eb1a0	DIFFER	147v138	-	CTCActionUsePickUpGenericBox::OnActionUse: same def release (mem-form dec with a reload)
+007e80c0	RELOCATION_MATCH	116v116	PASS	CTCActionUseReadable::OnActionUse; action temporary by reference, novtable leaf
+00b317a0	RELOCATION_MATCH	154v154	PASS	label: unreferenced __fastcall AddCameraKey helper of the CEngineCamera debug script, not CTCActionUseReadable::OnCreate
+00729a90	RELOCATION_MATCH	142v142	PASS	CTCActionUseScriptedHook ctor
+00729b20	DIFFER	125v150	-	CTCActionUseScriptedHook::OnActionUse: our two SetText arms cross-jump into one tail
+007ebab0	DIFFER	124v122	-	CTCActionUseWindow::OnActionUse: esi/edi swap and camera vcall register form
+0077b1c0	RELOCATION_MATCH	97v97	PASS	CTCActivationTrigger::OnInitialActivate (slot 6)
+007f9010	DIFFER	131v131	-	CTCAnimatingObject::PlayAnimation: priority in ebp vs retail ebx only
+00458b9d	RELOCATION_MATCH	124v124	PASS	label: ~CHeroCombatDef (deleting dtor 0x00458B81, Sizeof 0x148), not CTCAssassinRush::FinishMove; size TU
+00709b10	RELOCATION_MATCH	152v152	PASS	label: ~CEnginePrimitiveMorphedAnimatingMesh (ctor 0x00709A50), not ~CTCAssassinRush
+0092bd80	RELOCATION_MATCH	107v107	PASS	CTCAvoidRegionExit::GetPosition; ternary ref/temporary, user C3DVector copy ctor
+006869e0	RELOCATION_MATCH	98v98	PASS	CTCBase::EndSerialising; final sum a named local
+00686fa0	RELOCATION_MATCH	107v107	PASS	CTCBase::Clone; name temporary into an inline static AllocTC
+007a7370	RELOCATION_MATCH	114v114	PASS	CTCBattleCharge::OnInitialActivate (slot 6)
+0056a8c0	DIFFER	104v104	-	CTCBoastUI::DrawPreparePrimitivesForRendering: hoisted renderer spill + loop rotation
+007827d0	RELOCATION_MATCH	138v138	PASS	CTCBoastingArea::OnHeroEnteringArea
+00782860	RELOCATION_MATCH	121v121	PASS	CTCBoastingArea::OnHeroLeavingArea
+00783730	RELOCATION_MATCH	142v142	PASS	CTCBoastingCrowdControl::GetCrowdGroup; nested ifs, one false exit
+00781fe0	RELOCATION_MATCH	128v128	PASS	CTCBoastingPosition::DeactivatePosition; pack(1) model (+0x2E pointer)
+00782060	RELOCATION_MATCH	114v114	PASS	CTCBoastingPosition::RemoveBoast
+007aef60	RELOCATION_MATCH	110v110	PASS	CTCBoss::ClearEffects
+007aefd0	RELOCATION_MATCH	114v114	PASS	CTCBoss ctor; vectors as _Vector_base + alloc proxy
+007af050	RELOCATION_MATCH	153v153	PASS	CTCBoss::FrameUpdate; Bind2 filter over argument temporaries
+006bf8a0	RELOCATION_MATCH	120v120	PASS	CTCBuyableHouse ctor

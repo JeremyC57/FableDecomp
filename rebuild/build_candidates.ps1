@@ -234644,6 +234644,216 @@ $catalog = @(
         TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCSummonerToKill_Main_00d88540_test.cpp'
         PassPattern = '00d88540_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00458b9d'
+        Module = 'CHeroCombatDef'
+        Source = '00/45/CHeroCombatDef_CHeroCombatDef_00458b9d.cpp'
+        TestSource = '00/45/CHeroCombatDef_CHeroCombatDef_00458b9d_test.cpp'
+        PassPattern = '00458b9d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056e0e0'
+        Module = 'NCameraModes::CBase'
+        Source = '00/56/NCameraModesCBase_CBase_0056e0e0.cpp'
+        TestSource = '00/56/NCameraModesCBase_CBase_0056e0e0_test.cpp'
+        PassPattern = '0056e0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c00a0'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5c/NInventoryCTCInventoryBase_CTCInventoryBase_005c00a0.cpp'
+        TestSource = '00/5c/NInventoryCTCInventoryBase_CTCInventoryBase_005c00a0_test.cpp'
+        PassPattern = '005c00a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006869e0'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_EndSerialising_006869e0.cpp'
+        TestSource = '00/68/CTCBase_EndSerialising_006869e0_test.cpp'
+        PassPattern = '006869e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00686fa0'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_Clone_00686fa0.cpp'
+        TestSource = '00/68/CTCBase_Clone_00686fa0_test.cpp'
+        PassPattern = '00686fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf8a0'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6b/CTCBuyableHouse_CTCBuyableHouse_006bf8a0.cpp'
+        TestSource = '00/6b/CTCBuyableHouse_CTCBuyableHouse_006bf8a0_test.cpp'
+        PassPattern = '006bf8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00709b10'
+        Module = 'CEnginePrimitiveMorphedAnimatingMesh'
+        Source = '00/70/CEnginePrimitiveMorphedAnimatingMesh_CEnginePrimitiveMorphedAnimatingMesh_00709b10.cpp'
+        TestSource = '00/70/CEnginePrimitiveMorphedAnimatingMesh_CEnginePrimitiveMorphedAnimatingMesh_00709b10_test.cpp'
+        PassPattern = '00709b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00729a90'
+        Module = 'CTCActionUseScriptedHook'
+        Source = '00/72/CTCActionUseScriptedHook_CTCActionUseScriptedHook_00729a90.cpp'
+        TestSource = '00/72/CTCActionUseScriptedHook_CTCActionUseScriptedHook_00729a90_test.cpp'
+        PassPattern = '00729a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077b1c0'
+        Module = 'CTCActivationTrigger'
+        Source = '00/77/CTCActivationTrigger_OnInitialActivate_0077b1c0.cpp'
+        TestSource = '00/77/CTCActivationTrigger_OnInitialActivate_0077b1c0_test.cpp'
+        PassPattern = '0077b1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00781fe0'
+        Module = 'CTCBoastingPosition'
+        Source = '00/78/CTCBoastingPosition_DeactivatePosition_00781fe0.cpp'
+        TestSource = '00/78/CTCBoastingPosition_DeactivatePosition_00781fe0_test.cpp'
+        PassPattern = '00781fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00782060'
+        Module = 'CTCBoastingPosition'
+        Source = '00/78/CTCBoastingPosition_RemoveBoast_00782060.cpp'
+        TestSource = '00/78/CTCBoastingPosition_RemoveBoast_00782060_test.cpp'
+        PassPattern = '00782060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007827d0'
+        Module = 'CTCBoastingArea'
+        Source = '00/78/CTCBoastingArea_OnHeroEnteringArea_007827d0.cpp'
+        TestSource = '00/78/CTCBoastingArea_OnHeroEnteringArea_007827d0_test.cpp'
+        PassPattern = '007827d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00782860'
+        Module = 'CTCBoastingArea'
+        Source = '00/78/CTCBoastingArea_OnHeroLeavingArea_00782860.cpp'
+        TestSource = '00/78/CTCBoastingArea_OnHeroLeavingArea_00782860_test.cpp'
+        PassPattern = '00782860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00783730'
+        Module = 'CTCBoastingCrowdControl'
+        Source = '00/78/CTCBoastingCrowdControl_GetCrowdGroup_00783730.cpp'
+        TestSource = '00/78/CTCBoastingCrowdControl_GetCrowdGroup_00783730_test.cpp'
+        PassPattern = '00783730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a7370'
+        Module = 'CTCBattleCharge'
+        Source = '00/7a/CTCBattleCharge_OnInitialActivate_007a7370.cpp'
+        TestSource = '00/7a/CTCBattleCharge_OnInitialActivate_007a7370_test.cpp'
+        PassPattern = '007a7370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007aef60'
+        Module = 'CTCBoss'
+        Source = '00/7a/CTCBoss_ClearEffects_007aef60.cpp'
+        TestSource = '00/7a/CTCBoss_ClearEffects_007aef60_test.cpp'
+        PassPattern = '007aef60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007aefd0'
+        Module = 'CTCBoss'
+        Source = '00/7a/CTCBoss_CTCBoss_007aefd0.cpp'
+        TestSource = '00/7a/CTCBoss_CTCBoss_007aefd0_test.cpp'
+        PassPattern = '007aefd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007af050'
+        Module = 'CTCBoss'
+        Source = '00/7a/CTCBoss_FrameUpdate_007af050.cpp'
+        TestSource = '00/7a/CTCBoss_FrameUpdate_007af050_test.cpp'
+        PassPattern = '007af050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007daae0'
+        Module = 'CTCTavernGameCardBlackjack'
+        Source = '00/7d/CTCTavernGameCardBlackjack_EndRound_007daae0.cpp'
+        TestSource = '00/7d/CTCTavernGameCardBlackjack_EndRound_007daae0_test.cpp'
+        PassPattern = '007daae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e80c0'
+        Module = 'CTCActionUseReadable'
+        Source = '00/7e/CTCActionUseReadable_OnActionUse_007e80c0.cpp'
+        TestSource = '00/7e/CTCActionUseReadable_OnActionUse_007e80c0_test.cpp'
+        PassPattern = '007e80c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092bd80'
+        Module = 'CTCAvoidRegionExit'
+        Source = '00/92/CTCAvoidRegionExit_GetPosition_0092bd80.cpp'
+        TestSource = '00/92/CTCAvoidRegionExit_GetPosition_0092bd80_test.cpp'
+        PassPattern = '0092bd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a59a0'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_SetExclusiveMode_009a59a0.cpp'
+        TestSource = '00/9a/CSystemManager_SetExclusiveMode_009a59a0_test.cpp'
+        PassPattern = '009a59a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a7440'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_CSystemManager_009a7440.cpp'
+        TestSource = '00/9a/CSystemManager_CSystemManager_009a7440_test.cpp'
+        PassPattern = '009a7440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f3230'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_InitialiseAsImage_009f3230.cpp'
+        TestSource = '00/9f/CSurface_InitialiseAsImage_009f3230_test.cpp'
+        PassPattern = '009f3230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f32a0'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_InitialiseAsDepthBuffer_009f32a0.cpp'
+        TestSource = '00/9f/CSurface_InitialiseAsDepthBuffer_009f32a0_test.cpp'
+        PassPattern = '009f32a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f3310'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_InitialiseAsRenderTarget_009f3310.cpp'
+        TestSource = '00/9f/CSurface_InitialiseAsRenderTarget_009f3310_test.cpp'
+        PassPattern = '009f3310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f4120'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_SetPixel_009f4120.cpp'
+        TestSource = '00/9f/CSurface_SetPixel_009f4120_test.cpp'
+        PassPattern = '009f4120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a447d0'
+        Module = 'CSuspendableProcessMicrothread'
+        Source = '00/a4/CSuspendableProcessMicrothread_Restart_00a447d0.cpp'
+        TestSource = '00/a4/CSuspendableProcessMicrothread_Restart_00a447d0_test.cpp'
+        PassPattern = '00a447d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b317a0'
+        Module = '_global'
+        Source = '00/b3/global_AddCameraKey_00b317a0.cpp'
+        TestSource = '00/b3/global_AddCameraKey_00b317a0_test.cpp'
+        PassPattern = '00b317a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f38990'
+        Module = 'CSurfaceCompositor'
+        Source = '00/f3/CSurfaceCompositor_CSurfaceCompositor_00f38990.cpp'
+        TestSource = '00/f3/CSurfaceCompositor_CSurfaceCompositor_00f38990_test.cpp'
+        PassPattern = '00f38990_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
