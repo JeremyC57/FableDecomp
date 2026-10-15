@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c3f510	RELOCATION_MATCH	62v62	PASS	real identity CVtable_012b5c60 slot 13 (GetDataSize); null arm placed last
+00437770	MATCH	36v36	PASS	PCrime stat bar at +0x2ec; operator-> accessor
+004497e0	DIFFER	101v91	-	tail merge: lane re-addresses the string temp with eax/ecx/edx, retail eax/edx/eax (NEUTRAL+SPIRIT cross-jump)
+00449c30	RELOCATION_MATCH	47v47	PASS	index loop, size re-derived per call
+0098a7a0	RELOCATION_MATCH	79v79	PASS	real name CShaderRenderManager::Uninitialise
+00a773e0	MATCH	53v53	PASS	real name CNavSwitchableLeafNode::IsEveryUniqueIDOpen
+00a78dd0	RELOCATION_MATCH	67v67	PASS	real name CNavQuadTree::UnblockAllSwitchableNodes
+00ab37b0	DIFFER	44v58	-	real name CVertexStreamFormat::CalculateVertexSize; lane reverses the loop counter (dec edi ; jne)
+00987f70	MATCH	77v77	PASS	transposed float copy via edx
+00c70a60	DIFFER	94v91	-	inline-asm original (push esi/edi, xmm0..7); intrinsics build an aligned ebp frame
+00f37970	MATCH	73v73	PASS	real name CGPUScratchBufferTextureManager::CResourceEntry copy ctor
+005191e0	RELOCATION_MATCH	79v79	PASS	real name NThingMap::CThingMapManager ctor (SGI set header)
+009bdb00	RELOCATION_MATCH	49v49	PASS	real name CXMVPlayer ctor (STLport list sentinel)
+00a3aea0	RELOCATION_MATCH	68v68	PASS	real name CACompressor ctor
+00a69ed0	RELOCATION_MATCH	61v61	PASS	Allocated && GetUnusedFrames() <= limit
+00642390	RELOCATION_MATCH	47v47	PASS	real name NGraphicAppearance::CPrimitive ctor
+00dd59f0	MATCH	68v68	PASS	nested GetHero call shares the vtable in ebx
+00564b00	RELOCATION_MATCH	21v21	PASS	_unattributed: {0, CWideString()} record ctor
+006b62b0	RELOCATION_MATCH	67v67	PASS	real name NEnvironmentInternal::CEnvironmentThemePriorityStackEntry copy ctor
+0071f3d0	RELOCATION_MATCH	23v23	PASS	_unattributed: {0, CDateAndTime()} record ctor, unused arg
+009f9450	RELOCATION_MATCH	91v91	PASS	CProfile copy ctor (memberwise)
+00879560	RELOCATION_MATCH	56v56	PASS	named C3DVector local re-addressed with lea
+00879620	RELOCATION_MATCH	88v88	PASS	NCameraModes::CProjectileWeapon ctor
+008798c0	RELOCATION_MATCH	51v51	PASS	named C3DVector local re-addressed with lea
+00bdefc0	RELOCATION_MATCH	66v66	PASS	real name CLocalDetailCacheMap ctor; Map is a body assignment
+00d2d7b0	RELOCATION_MATCH	76v76	PASS	real name CPermanentBarrier ctor; PMasterData body assignment
+00e1f3a0	RELOCATION_MATCH	52v52	PASS	rotated wait loop + tail jmp
+00e23eb0	MATCH	79v79	PASS	nested SetEntityAsRegionFollowing(GetHero(), ...)
+00e24210	DIFFER	66v68	-	retail materialises back() address (sub eax,4 ; mov eax,[eax]); lane folds to [edx-4]
+00f03270	RELOCATION_MATCH	80v80	PASS	watch loop, || chain
+00d15090	RELOCATION_MATCH	88v88	PASS	watch loop, failure branch tail jmp
+00d150f0	RELOCATION_MATCH	66v66	PASS	watch loop
+00e69f90	RELOCATION_MATCH	81v81	PASS	real class CV_ChapelOfEvilScript (descriptive method name)
+00edbd10	RELOCATION_MATCH	81v81	PASS	real class CV_TempleOfLightScript (descriptive method name)
+00d25c20	RELOCATION_MATCH	53v53	PASS	++count >= between
+00d360e0	RELOCATION_MATCH	78v78	PASS	HasHeroForceQuitFireheartMinigame wait + RespawnHero(true)
+006976b0	MATCH	53v53	PASS	real name CGameCameraManager::ResetRightStickLookAroundVector
+00c3e260	RELOCATION_MATCH	45v45	PASS	_unattributed __cdecl default-descriptor filler
+00d68cd0	RELOCATION_MATCH	59v59	PASS	rotated wait loop
+00d74ce0	RELOCATION_MATCH	75v75	PASS	watch loop, CCharString operator=

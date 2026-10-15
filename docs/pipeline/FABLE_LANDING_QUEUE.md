@@ -105,6 +105,7 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand65` | Hand chunk 65 (CPatchTesselationEdgeStrip .. CPersistContext): 35 of 40 byte-exact | 35 | 5 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand66` | Hand chunk 66 (CPersistContext .. CPhysicsForceModelGotoOutsideSimple): 36 of 40 byte-exact | 36 | 3 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand67` | Hand chunk 67 (CPhysicsForceModelGotoOutsideSimple .. CPlayer): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand68` | Hand chunk 68 (CPlayer .. CQ_HangingTreeGoodScript): 36 of 40 byte-exact | 36 | 4 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand69` | Hand chunk 69 (CQ_MinionCampScript .. CQuickAccessItemButtonGuiDef): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand70` | Hand chunk 70 (CRandomAppearanceMorph .. CRenderManager2D): 38 of 40 byte-exact | 38 | 2 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand71` | Hand chunk 71 (CRenderManagerCore .. CRightHandedSet): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
@@ -113,7 +114,7 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand74` | Hand chunk 74 (CScriptThing .. CShaderRenderManager): 35 of 40 byte-exact | 35 | 0 | 5 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 
-Totals: **506 matched rows staged for landing**, **46 parked rows** for the Fable retry pass.
+Totals: **542 matched rows staged for landing**, **50 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -182,6 +183,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00a18760 CPhysicsMesh::GetPointIntersectionFromTo DIFFER(93v95): retail `mov edx,ecx` before the pre-test call and `[edx+0B4h]` / `mov ecx,edx` after it, plus `xor bl,bl` false result; lane keeps `this` in esi and `xor al,al` at the exit | tried: `bool result = false; if (pre-test) { if (g && seg) return A; return B; } return result;` (pointer and PDB reference signatures) | next: lane gap: whole-program (LTCG) register knowledge that 0x00A17690 preserves edx
 - 00487aa0 CPlayer::InitJoystickDeviceNumber DIFFER(67v67): else arm `dec ecx ; and ecx,eax ; mov [esi+228h],ecx` vs lane `dec ecx ; and eax,ecx ; mov [esi+228h],eax` | tried: direct `Number == GetMainPlayerNumber()`, inline IsMainPlayer, negated condition, inline IsMainPlayer with a `number` local (the last fixes ebx/edi and the else-arm Number re-read) | next: write the else arm as `number != mainDevice ? number : 0` or `JoystickDeviceNumber = Number; if (Number == mainDevice) JoystickDeviceNumber = 0;` on top of the local-Number IsMainPlayer
 - 00c21330 CPlayer::IsFirstPersonTargeting DIFFER(48v42): retail keeps `this` in ecx across `call 0x00C20EE0` (`add ecx,38h` after it, no `push esi ; mov esi,ecx`) | tried: `!= 0` byte result, bool member read from a named 16-byte record local (only the this-register difference remains) | next: lane gap: whole-program register knowledge of the 0x00C2xxxx callee (the 00c20cb0 family); identity also unproven (`ret 4` vs the PDB's no-argument IsFirstPersonTargeting)
+
+
+#### `2026-10-15_linux_hand68` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand68/differ/`)
+- 004497e0 CPlayerManager::GetPlayerDefIndexFromNumber DIFFER(101v91): retail cross-jumps the NEUTRAL and SPIRIT `lea ecx ; call CCharString ; lea eax,[esp+8] ; push eax` blocks (HERO uses edx), the lane re-addresses with eax/ecx/edx and merges none | tried: explicit CCharString temporaries (73, all paths merged, ctor eax pushed), implicit conversions in three returns (101), if/else into a long local (101), `number != 4 && number == MainPlayer` + literal ternary (94) | next: lane gap: register allocation / tail-merge (RTM vs QFE)
+- 00e24210 CQR_EscortTraderScript::InFinalRegion DIFFER(66v68): retail `mov eax,[ecx+eax*4] ; mov ecx,[ecx+114h] ; sub eax,4 ; mov eax,[eax]` vs lane `mov edx,[ecx+eax*4] ; mov eax,[edx-4] ; mov ecx,[ecx+114h]` | tried: operator== reading the left block first (70), right block first (66), back() via iterator `--it` (66) and `operator-(1)` (66) | next: lane gap: RTM vector-slot address materialisation (GOTCHAS 24l)
+- 00ab37b0 CVertexStreamFormat::CalculateVertexSize DIFFER(44v58): retail keeps the index (`inc esi ; cmp esi,edi ; jb`) against a size re-derived in the preheader (`mov edi,[ecx+8] ; mov eax,edx ; sub edi,eax ; sar edi,3`), the lane reverses the counter (`mov edi,eax ... dec edi ; jne`) | tried: unsigned index with GetDataTypeSize defined in the TU (noinline, needed for edx live across the call), signed index, callee defined after the caller | next: lane gap: IPA-known callee + loop-counter reversal (QFE optimiser)
+- 00c70a60 CopyAligned128 (catalog CPreTransposedBoneMatrix::Set) DIFFER(94v91): retail `push esi ; push edi ; mov esi,[esp+10h] ; mov edi,[esp+0Ch] ; movdqa xmm0..7` (inline-asm register discipline) vs intrinsics `push ebp ; mov ebp,esp ; ... and esp,-16` with rotated xmm order | tried: _mm_load_si128/_mm_store_si128 x8 | next: lane gap: inline-asm original (asm_bake only)
 
 
 #### `2026-10-15_linux_hand69` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand69/differ/`)
