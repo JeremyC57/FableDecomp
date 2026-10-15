@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006a4d90	MATCH	36v36	PASS	physics TC in a named local (straight into ecx); && chain with true/false returns
+006a4df0	MATCH	79v79	PASS	inline C3DVector difference kept on x87; squared length < range*range; long result
+006a4e70	MATCH	21v21	PASS	void slot-88 call on PhysicsTC then return true
+006a4f10	RELOCATION_MATCH	69v69	PASS	by-value CPhysicsMeshObject temporary (hidden ptr) chained call, out-of-line dtor
+006a4f60	RELOCATION_MATCH	73v73	PASS	PhysicsTC re-read through an inline accessor; named mesh-object local
+006a5260	MATCH	96v96	PASS	clamp via inline helper taking max by const& (re-reads MaxHealth)
+006a5ab0	MATCH	60v60	PASS	by-value CDefPointer copy, flag bit read, release without null test
+00a3e3e0	MATCH	54v54	PASS	CSoundManagerLH vtable slot 2 (label wrong); negated bool forwarded by sibling jmp
+0083d940	RELOCATION_MATCH	71v71	PASS	base call as if-body, shared xor al,al tail; mode != 1 && != 3
+00661fd0	MATCH	18v18	PASS	one-bit unsigned char bitfield of the creature def
+006635d0	RELOCATION_MATCH	37v37	PASS	GetAnimFromName(name,0)->first word into slot 68
+00666850	DIFFER	76v74	-	parked: def pointer loaded to eax then copied to edi
+006a9590	RELOCATION_MATCH	73v73	PASS	player in local, base OnDie tail jump
+006a9640	RELOCATION_MATCH	65v65	PASS	display engine local; by-value 0x38 transform temporary
+006a9960	RELOCATION_MATCH	82v82	PASS	base construct in if; Health==0 fill via fst/fucompp; Drawable bitfield
+006a99d0	RELOCATION_MATCH	34v34	PASS	two returns re-reading PPlayerMovementDef
+006a9b70	RELOCATION_MATCH	67v67	PASS	walking twin (label says running): named CCharString local
+006a9bc0	RELOCATION_MATCH	67v67	PASS	named CCharString local for the speed table name
+006ad970	RELOCATION_MATCH	88v88	PASS	landed out-param GetInterface template (type 0x1f)
+00c61ca0	RELOCATION_MATCH	55v55	PASS	particle initialiser (label propagated); three-link owner chain
+00c62400	RELOCATION_MATCH	57v57	PASS	twin with helper defined above under auto_inline(off)
+006fd170	RELOCATION_MATCH	54v54	PASS	vector resize(n,T()) wrapper: float element + null array holder (review)
+00436500	DIFFER	64v66	-	parked: table entry address materialised by retail
+005800d6	RELOCATION_MATCH	91v91	PASS	optimize(s); forceinline Bind2 operator(); member template
+005c0d9d	RELOCATION_MATCH	72v72	PASS	optimize(s); same template, out-of-line HasTC filter
+008367b0	RELOCATION_MATCH	89v89	PASS	pack(1) layout; intelligent pointer member inline derived ctor
+00836810	RELOCATION_MATCH	37v37	PASS	g && !Dead guard, sibling jmp, invalid-handle fallback
+00836840	RELOCATION_MATCH	37v37	PASS	g && !Dead guard, sibling jmp, invalid-handle fallback
+00836870	RELOCATION_MATCH	34v34	PASS	g && !Dead guard, sibling jmp, false fallback
+008368a0	RELOCATION_MATCH	34v34	PASS	g && !Dead guard, sibling jmp, false fallback
+004b72f0	RELOCATION_MATCH	49v49	PASS	CBoast non-virtual ??_G from a delete helper
+004b77a0	RELOCATION_MATCH	52v52	PASS	pair<CCharString, quest CPersistInfo> non-virtual ??_G
+00529ba0	RELOCATION_MATCH	52v52	PASS	CThingSwitch ??_G: no user dtor; class operator delete __fastcall
+0056cba0	RELOCATION_MATCH	49v49	PASS	pair<long,CBoast> non-virtual ??_G (key inferred)
+006fb730	RELOCATION_MATCH	52v52	PASS	pair<CCharString,CSymbolInfo> non-virtual ??_G
+0052d770	RELOCATION_MATCH	63v63	PASS	NUISystem::CChangingStateComponent ??_G: three vtables
+0056e2f0	RELOCATION_MATCH	49v49	PASS	NCameraModes::CCameraPointModeBase ??_G
+0063a230	RELOCATION_MATCH	59v59	PASS	CTCRegionDisplay ??_G: forceinline dtor calling RemoveFromGlobalTCs
+0072a450	RELOCATION_MATCH	75v75	PASS	CTCActionUseScriptedHook ??_G: forceinline dtor
+0077d140	RELOCATION_MATCH	51v51	PASS	CTCHighlightItem ??_G: dtor calls DoStopRunning

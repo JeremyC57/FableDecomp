@@ -136,6 +136,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand109` | Hand chunk 109 (CThingCreatureBase .. CThingFilter_HasFreeActionPoint): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand110` | Hand chunk 110 (CThingFilter_HasFreeActionPoint .. CThingHolySite): 36 of 40 byte-exact | - | 1 | 3 | landed; parked rows open |
 | `2026-10-15_linux_hand111` | Hand chunk 111 (CThingHolySite .. CThingPhysical): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand112` | Hand chunk 112 (CThingPhysical .. CThingTrackNode): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -183,7 +184,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **189 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **191 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 26 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -292,6 +293,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00521a90 CThingManager::SetNameForThing DIFFER(78v78): first operator[] key `lea ecx` vs retail `lea eax`; second call `mov edx,[name] ; push edx ; lea eax ; push eax ; mov ecx,esi` vs retail `mov ecx,[name] ; push ecx ; lea edx ; mov ecx,esi ; push edx` | tried: inline `find()==end()`, named find local (fixed the hoisted head load), Contains() helper, named entry references | next: lane gap: register allocation of argument temporaries
 - 0083d280 CThingMarker::GetProperties (slot 48) DIFFER(103v94): the middle add-ref/release -- retail `mov ecx,[esi+4] ; inc ecx ; mov eax,ecx ; dec eax ; mov [esi+4],ecx ; mov [esi+4],eax` on the cached def, the lane `inc [eax+4]` then re-reads the address-taken local and releases through the ReleaseTemporary shape | tried: explicit temporary copy, inline by-value def getter, `__forceinline` getter (final untested release + Properties read now match), direct count arithmetic in the copy ctor/dtor | next: copy the def pointer into a LOCAL inside the copy constructor/destructor (24f rule) so the release does not re-read the frame slot
 - 00702c60 CThingObject::DrawIsDrawable DIFFER(76v75): blink parity `mov eax,[esi+0D4h] ; and eax,1` vs retail `mov al,[esi+0D4h] ; and al,1` | tried: `(x & 1) != 0`, `(bool)(x & 1)` with the nested-if (fixed the shared `xor al,al` tail), `(bool)((unsigned char)x & 1)`, an `unsigned char` return type | next: a byte-typed view of DieOffTimer (union/`*(unsigned char*)&`), else lane gap: load narrowing
+
+
+#### `2026-10-15_linux_hand112` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand112/differ/`)
+- 00666850 CThingPlayerCreature::vfunc_71 DIFFER(76v74): `mov eax,[esp+8] ; lea esi,[eax+60h] ; mov edi,eax` where retail loads `mov edi,[esp+8] ; lea esi,[edi+60h]` (the def pointer kept in edi across the map find, released with no null test) | tried: CDefPointer local with `--m_pDef->m_refCount` destructor (83v74), local-copy destructor + `!=` ternary (84v74), null-testing Release destructor (88v74), explicit release through a raw local + cleared member (76v74, kept) | next: lane gap: register copy (the natural CDefPointer form re-reads the frame slot after the find call; retail CSEs it -- RTM alias assumption for an address-taken local)
+- 00436500 CThingSearchTools::GetMapwhoArea DIFFER(64v66): `shl eax,4 ; add eax,137DAD8h ; mov ecx,[eax+4]` (+ `push ebx` scheduled after it) where the lane folds `mov ecx,[eax+137DADCh]` | tried: four-argument constructor return (64v66, field order wrong), named local built field by field + memberwise copy (64v66, only the address fold left, kept), by-value copy of the table entry (92v66) | next: lane gap: RTM materialised table-entry address (GOTCHAS 24l "vector slot address" family)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
