@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007eebb0	RELOCATION_MATCH	24v24	PASS	static frame getter called through GetWorld(); ?: bool
+007eecf0	RELOCATION_MATCH	48v48	PASS	def temporary; release as a member of the def
+004d3b41	RELOCATION_MATCH	55v55	PASS	is CTCCameraPointGeneralCase ctor (vtable 0x0123B194); /Os; chained 2.0f
+007224e0	RELOCATION_MATCH	92v92	PASS	slot 14 OnKill; kill live smoke things
+00722540	RELOCATION_MATCH	42v42	PASS	vector as member object with inline ctor
+00770fa0	RELOCATION_MATCH	78v78	PASS	stack CIntelligentPointer converting ctor + push_back
+007f61b0	RELOCATION_MATCH	78v78	PASS	is CTCTargetingAI::AddThingToNotAttack (list +0x48)
+0066ac80	RELOCATION_MATCH	81v81	PASS	CIntelligentPointer(0) converting ctor member
+0066b040	DIFFER	69v61	-	parked: def local zero store / release register
+0066bbf0	RELOCATION_MATCH	18v18	PASS	slot 9 FrameUpdate; tail jump
+0072a950	RELOCATION_MATCH	23v23	PASS	slot 14 OnKill; RemoveTC(0x92)
+0072a970	DIFFER	63v63	-	parked: lane gap, AddTC this-load order
+0072a9b0	DIFFER	68v68	-	parked: lane gap (is SetupForcePush)
+0072aa00	DIFFER	68v68	-	parked: lane gap (is SetupHealLife)
+0072aa50	DIFFER	72v72	-	parked: lane gap
+0072aaa0	DIFFER	67v67	-	parked: lane gap (is SetupMultiArrow)
+0072ab40	RELOCATION_MATCH	36v36	PASS	slot 1 persist of a static long
+0072ac90	RELOCATION_MATCH	93v93	PASS	__forceinline GetInterface template
+0072c370	RELOCATION_MATCH	74v74	PASS	slot 9 FrameUpdate; GetInterface(0x29)
+0072c680	DIFFER	83v83	-	parked: lane gap
+00c35c30	RELOCATION_MATCH	31v31	PASS	free __stdcall; label CTCSpecialAbilities::OnKill wrong
+007b2800	RELOCATION_MATCH	73v73	PASS	slot 1 persist; two float defaults
+00747090	RELOCATION_MATCH	74v74	PASS	GetWorld() results in named locals
+007470e0	RELOCATION_MATCH	45v45	PASS	ternary float -> long, fild*fmul order
+007471a0	RELOCATION_MATCH	80v80	PASS	danger-things loop, named thing local
+00747560	RELOCATION_MATCH	81v81	PASS	GetInterface(0x31) + AddMode(7)
+00bfbbc0	RELOCATION_MATCH	44v44	PASS	is CLocalDetailLayer::CObject ctor; CIVCountedPointer member object
+00c25cb0	RELOCATION_MATCH	39v39	PASS	is ~CParticleHandle (16-byte local record)
+004dc737	RELOCATION_MATCH	62v62	PASS	/Os; __forceinline handle ctor
+008abbf0	MATCH	67v67	PASS	engine/CTCStockItem.h; handle Release
+0066aeb0	RELOCATION_MATCH	58v58	PASS	is CTCSoundPlayer::StopAllAttachedSounds
+0066afa0	RELOCATION_MATCH	68v68	PASS	is CTCSoundPlayer::SetSpecificSamplePitch
+0066aff0	RELOCATION_MATCH	68v68	PASS	is CTCSoundPlayer::SetSpecificSampleVolume
+0079a660	RELOCATION_MATCH	60v60	PASS	unaligned Minion +0x11
+0079a6a0	RELOCATION_MATCH	60v60	PASS	unaligned Minion +0x11
+0079c240	RELOCATION_MATCH	70v70	PASS	GetSubDef into PDef in ctor body
+00787550	RELOCATION_MATCH	35v35	PASS	slot 4 OnCreate; named local source
+00787580	RELOCATION_MATCH	65v65	PASS	is SetAsBlockingNavigation(bool)
+007875d0	RELOCATION_MATCH	70v70	PASS	slot 16 OnSetInLimbo(bool); !inLimbo
+00787690	RELOCATION_MATCH	59v59	PASS	slot 5 InitialActivate

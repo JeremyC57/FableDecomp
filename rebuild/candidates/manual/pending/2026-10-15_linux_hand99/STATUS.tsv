@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007268d0	DIFFER	69v69	-	CTCPhysicsNavigator::OnCreate; lane hoists xor eax,eax above the Navigating byte store (scheduling only)
+00726920	MATCH	53v53	PASS	slot-41 predicate gates the POD target copy + Moving bit
+00727120	MATCH	57v57	PASS	ForcedMoveToPos POD copy + two bitfields merged into one byte store
+006e7fd0	RELOCATION_MATCH	95v95	PASS	really CDefendingCombatantInfo::CProng::GetRotatedPosition (label propagated)
+00759a00	RELOCATION_MATCH	56v56	PASS	RHSet POD copy then tail-jumped SetAsMoving(true)
+00759b20	MATCH	24v24	PASS	RHSet.Forward by value (memberwise copy ctor); retail RHSet at +0x68 (12-byte vectors)
+0081e4f0	RELOCATION_MATCH	90v90	PASS	really a packed rigid-body file record CopyFrom (snprintf name copy; label propagated)
+00c442f0	MATCH	35v35	PASS	really CMarkedBuffer_00c44550::GetMark (label propagated)
+00c6b720	DIFFER	35v37	-	SBodyRecord_00c55030::Reset; register allocation (edx/esi/edi vs eax/edx/esi)
+0049d150	MATCH	84v84	PASS	really CTCPhysicsBase::GetInterpolatedPosition (label propagated); inline-operator lerp
+004c22c0	MATCH	85v85	PASS	really C3DVector::Interpolate (label propagated)
+004c2ef0	MATCH	84v84	PASS	unidentified two-vector interpolator, named by address (label propagated)
+006af740	RELOCATION_MATCH	64v64	PASS	really CTCPhysicsBase::UpdateOldPosition, slot 96 (label propagated)
+007235e0	RELOCATION_MATCH	80v80	PASS	SetAsMoving + FeelsGravity = enable && air resistance > 0.0001f
+007236a0	MATCH	20v20	PASS	mesh-info word passed to virtual slot 85
+007238e0	RELOCATION_MATCH	65v65	PASS	UpdateOldRHSet (virtual) + RHSet POD copy + SetAsMoving(true)
+00723930	RELOCATION_MATCH	71v71	PASS	frame-gated OldRHSet = RHSet; static frame getter through GetWorld()
+00723980	MATCH	59v59	PASS	virtual SetFacingAnglesFromRHSet then OldRHSet = set
+007239c0	RELOCATION_MATCH	65v65	PASS	byte-identical twin of 007238e0 at slot 75
+00723c00	MATCH	24v24	PASS	RHSet.Forward by value (memberwise copy ctor)
+00723c20	MATCH	94v94	PASS	interpolated facing; named local + memberwise copy ctor
+00724c50	MATCH	20v20	PASS	OnGround | OnMesh bitwise
+00724d00	MATCH	28v28	PASS	PushableByHero bitfield store
+00afe320	MATCH	84v84	PASS	unidentified packed interpolator, named by address (label propagated)
+004e0cdf	RELOCATION_MATCH	59v59	PASS	size TU ctor: CTCBase, IP member, UID 0, empty vector
+006543ff	RELOCATION_MATCH	57v57	PASS	really NPlayerGui::CAutoPickupBar ctor (label propagated); y-off + s TU
+008004d0	RELOCATION_MATCH	40v40	PASS	IP operator-> then GetPosition copied by value
+00800500	RELOCATION_MATCH	55v55	PASS	inlined IS_THING_DEAD + vector empty test, long result
+00787ddc	RELOCATION_MATCH	54v54	PASS	size TU ctor, scalar initialisers before the vtable store
+00702560	RELOCATION_MATCH	55v55	PASS	CCharString != then = then tail-jumped GUI refresh
+006259e0	RELOCATION_MATCH	49v49	PASS	ctor + AddToGlobalUpdateTCs body
+007e2730	RELOCATION_MATCH	40v40	PASS	really CTCFineDialogue ctor (label propagated)
+00728400	RELOCATION_MATCH	87v87	PASS	inlined CCountedPointer operator= (object read first) + Seed + UpdateMorphSet
+00728470	DIFFER	71v71	-	TC-120 lookup into PTCSkeletalMorph; one register (eax vs ecx) for the found TC
+00af6690	RELOCATION_MATCH	88v88	PASS	unidentified record operator= with the same counted-pointer assignment (label propagated)
+006398b0	RELOCATION_MATCH	73v73	PASS	ctor: two CWideString members, init list, AddToGlobalUpdateTCs
+00639b70	RELOCATION_MATCH	33v33	PASS	alpha > 0 && name != L"", long result
+007156b0	RELOCATION_MATCH	92v92	PASS	really CTCScriptedControl ctor (label propagated); two inline VC6 lists
+006aeb60	RELOCATION_MATCH	57v57	PASS	list walk over intelligent pointers, bool result
+007aed80	MATCH	28v28	PASS	rechargeCounter countdown resets health to 5

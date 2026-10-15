@@ -19775,6 +19775,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007460a0	CTCPerceiveThing::vfunc_21	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007460b0	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 007460d0	CTCPerceiveThing::vfunc_10	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007460e0	CTCPerceiveThing::Piece_007460e0	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+007460f0	CTCPerceiveThing::Piece_007460f0	CTCPerceiveThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00746100	GetSubDef<CAICreatureWillPowerIndicatorDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
 007461c0	GetPBestLeafThing<CFilter_Bind2<CThingFilter_NoiseCameFromThing,CThingFilter_NoiseCanBeHeardFromPosition>,CThingCompare_GetMostRecentlyCreatedThing,CThingNoise>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,CFilter_Bind2<CThingFilter_NoiseCameFromThing,CThingFilter_NoiseCanBeHeardFromPosition> *,CThingCompare_GetMostRecentlyCreatedThing *,CThingNoise * *	1	yes	accepted									
 00746260	FindMostRecentMessage<CFilter_Bind2<CMessageEventFilter_IsOfType,CMessageEventFilter_CanBeSeenOrHeard>_>	CMessageEventManager	__thiscall	CMessageEvent *	2	CMessageEventManager *,CFilter_Bind2<CMessageEventFilter_IsOfType,CMessageEventFilter_CanBeSeenOrHeard> *	1	yes	accepted									

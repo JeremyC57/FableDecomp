@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005faa60	RELOCATION_MATCH	45v45	PASS	secondary CBase slot 3 at +0x130; `if (a && !b) return true; return false;`
+005fae90	RELOCATION_MATCH	79v79	PASS	CTCBase.h ParentThing; vector by reference, right-to-left arg evaluation
+005faf10	RELOCATION_MATCH	57v57	PASS	CBase slot-0 override (this = +0x130 sub-object); local CDefPointer copy
+005fc840	RELOCATION_MATCH	87v87	PASS	two IS_THING_ALIVE tests; GetRegion arg pushed before world-map accessor
+005fd0b0	RELOCATION_MATCH	54v54	PASS	&& guard + early return; qualified base call as tail jmp
+006116c0	RELOCATION_MATCH	17v17	PASS	void forwarder with two constant args (no tail jmp)
+00cbc660	RELOCATION_MATCH	86v86	PASS	really CVectorMap<u64,CPersistInfo>::Clear; std::swap-style Swap(T&,T&) + forceinline _Tidy
+005dedc0	RELOCATION_MATCH	38v38	PASS	really CVectorMap<ulong,CAnimationEntry> sort-if-dirty + trim; __fastcall SGI sort
+0061a0e0	RELOCATION_MATCH	23v23	PASS	named float local blocks the sibling jmp; 0.5f
+0061a100	RELOCATION_MATCH	23v23	PASS	named float local blocks the sibling jmp; 0.035f
+0061a140	RELOCATION_MATCH	32v32	PASS	&& guard; base slot-41 tail jmp
+0061a170	MATCH	40v40	PASS	bool toggle via sete with hoisted zero register
+0061a1a0	RELOCATION_MATCH	33v33	PASS	static index ++ wrap
+0061a1d0	RELOCATION_MATCH	20v20	PASS	static index -- wrap (dec mem; jns)
+0061a220	RELOCATION_MATCH	57v57	PASS	twin of 005faf10 (CTCInventoryQuests)
+0061b530	SKIP	-v88	-	row holds two functions (0x0061B530 + 0x0061B560)
+005c2aa9	RELOCATION_MATCH	47v47	PASS	really vector<NInventory::CItem>::resize(n); optimize(y off, s on)
+005cc6f3	RELOCATION_MATCH	40v40	PASS	optimize(s); PDB members -0x1C
+005cd2fe	RELOCATION_MATCH	65v65	PASS	Leaf ??1; CBase ~CBase(){} re-stores base vtable after member dtor
+005d7fab	RELOCATION_MATCH	41v41	PASS	really CTCInventoryStats::OnSerialise (slot 1); optimize(s)
+0059b71c	RELOCATION_MATCH	35v35	PASS	optimize(s); arg cached in edi (3 uses)
+0059b740	RELOCATION_MATCH	55v55	PASS	two-case switch (sub/dec); PDB names, retail -0x2C
+0059c6b0	RELOCATION_MATCH	45v45	PASS	callee 0x59B6F4 defined earlier in TU (auto_inline off) -> this kept in edx
+0059c6dd	RELOCATION_MATCH	51v51	PASS	same-TU callee register knowledge; && form for mov al,1 exits
+0059c710	RELOCATION_MATCH	55v55	PASS	same-TU callee register knowledge; args 1,3,5,2
+0059c747	RELOCATION_MATCH	29v29	PASS	same-TU callee register knowledge; tail jmp RemoveItem
+0059c8ae	RELOCATION_MATCH	68v68	PASS	delete PCurrentOpenTradeMenu + Components.pop_back (add [esi+10h],-4)
+0059d9c2	RELOCATION_MATCH	78v78	PASS	forceinline out-param GetInterface (0x5E); optimize(y off, s on)
+005c2e02	RELOCATION_MATCH	27v27	PASS	optimize(s); pass-through pushes
+005c2e82	RELOCATION_MATCH	89v89	PASS	four-way ||; __fastcall static IsThing helper; unaligned +0x141
+005c30d3	RELOCATION_MATCH	71v71	PASS	IS_THING_ALIVE + GetPItem per active weapon; optimize(s)
+005c9962	RELOCATION_MATCH	92v92	PASS	GetInterface result ignored (component local starts 0); y off + s
+005c99be	RELOCATION_MATCH	63v63	PASS	vector<CItem> local zeroed via result register; y off + s
+005cac8d	RELOCATION_MATCH	44v44	PASS	really CloseInventory (slot 31); for_each + mem_fun_ref, hidden functor result
+005cb742	RELOCATION_MATCH	62v62	PASS	base call then two lea-addressed blocks with and [edi],0
+005cbcea	RELOCATION_MATCH	40v40	PASS	out-flag store before __fastcall IsAugmentation
+005cbd12	RELOCATION_MATCH	24v24	PASS	signed > 0 guard on GetHighlightedItem
+00c265b0	RELOCATION_MATCH	47v47	PASS	really a pool-resource Release (label propagated); same-TU callee keeps ecx
+007319a0	RELOCATION_MATCH	29v29	PASS	CTCBase.h; global vptr slot 9 in ecx
+00731970	RELOCATION_MATCH	37v37	PASS	CTCBase.h; ParentThing slot 28
