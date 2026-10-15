@@ -127,11 +127,12 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 
 Totals: **757 matched rows staged for landing**, **75 parked rows** for the Fable retry pass.
 
-### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (15 open of 15 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
 | `00455fa0` | multi | open | 00455fa0:8 00455fa8:12 00455fb4:22 | `2026-10-15_linux_hand66` | three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter) |
+| `00581ab3` | multi | open | 00581ab3:46 00581ae1:32 | `2026-10-15_linux_hand91` | two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging) |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `0073a840` | multi | open | 0073a840:49 0073a880:18 | `2026-10-14_linux_hand59` | two functions after the int3 padding |
 | `0088b7e0` | multi | open | 0088b7e0:17 0088b800:4 | `2026-10-15_linux_hand74` | row spans two functions (0x88b7e0 + 0x88b800) |
