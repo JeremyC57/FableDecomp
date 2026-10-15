@@ -62,6 +62,10 @@ inline uint64_t nowNs() { timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return
 uint64_t g_nsGl = 0;
 struct GlTime { uint64_t t0 = nowNs(); ~GlTime() { g_nsGl += nowNs() - t0; } };
 uint64_t g_nsSwap = 0, g_nsUpload = 0;  // parts of g_nsGl: the swap (vsync wait) and texture uploads
+// vertex/index buffer uploads this frame (the frame log line): an in-place write to a buffer the
+// GPU may still read (glBufferSubData) makes a tiler's driver copy the buffer or wait
+uint32_t g_bufUploads = 0, g_bufInPlace = 0;
+uint64_t g_bufBytes = 0;
 std::atomic<uint64_t> g_nsSwapRender{0};  // the swap as timed on the render thread
 uint64_t g_nsCapSleep = 0;  // game thread: time slept by the frame rate cap since the last stats line
 unsigned g_capLate = 0;     // frames that ended after the cap's deadline (no sleep) since the last stats line
@@ -412,8 +416,14 @@ struct Buffer {  // vertex / index buffer storage
         // A dynamic buffer still in use by queued draws must not be written in place (the
         // driver would wait or copy): orphan it and upload the whole mirror, unless the game
         // promises NOOVERWRITE. Static buffers are filled before use.
-        if ((lockFlags & D3DLOCK_DISCARD) || (dynamic && !(lockFlags & D3DLOCK_NOOVERWRITE))) glBufferData(GL_COPY_WRITE_BUFFER, size, cpu.data(), GL_DYNAMIC_DRAW);
-        else glBufferSubData(GL_COPY_WRITE_BUFFER, lockOff, lockSize, cpu.data() + lockOff);
+        ++g_bufUploads;
+        if ((lockFlags & D3DLOCK_DISCARD) || (dynamic && !(lockFlags & D3DLOCK_NOOVERWRITE))) {
+            glBufferData(GL_COPY_WRITE_BUFFER, size, cpu.data(), GL_DYNAMIC_DRAW);
+            g_bufBytes += size;
+        } else {
+            glBufferSubData(GL_COPY_WRITE_BUFFER, lockOff, lockSize, cpu.data() + lockOff);
+            ++g_bufInPlace, g_bufBytes += lockSize;
+        }
     }
     ~Buffer() { if (gl) { dropVaosForBuffer(gl); glDeleteBuffers(1, &gl); } }
 };
@@ -712,7 +722,8 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     GLuint overlayVao = 0;  // the overlay and the present pass set attribute pointers on this one
     void dropVaos(GLuint buffer, const void* pointer);
     uint64_t lastPresentNs = 0;
-    double frameMs = 0, glMs = 0, swapMs = 0, uploadMs = 0;
+    double frameMs = 0, glMs = 0, swapMs = 0, uploadMs = 0, bufKb = 0;
+    unsigned bufUploads = 0, bufInPlace = 0;  // the last frame's buffer uploads (g_bufUploads)
     Surface* lastFboRt = nullptr; Surface* lastFboDs = nullptr; GLuint lastFboId = 0; bool lastFboValid = false;
     bool programDirty = true;  // vs/ps/stage states changed since program() last ran
     GLuint boundIbo = ~0u;
@@ -2386,12 +2397,15 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         glMs = g_nsGl / 1e6;
         swapMs = (gq::enabled() ? g_nsSwapRender.load() : g_nsSwap) / 1e6, uploadMs = g_nsUpload / 1e6;
         g_nsGl = g_nsSwap = g_nsUpload = 0;
+        bufUploads = g_bufUploads, bufInPlace = g_bufInPlace, bufKb = static_cast<double>(g_bufBytes) / 1024.0;
+        g_bufUploads = g_bufInPlace = 0, g_bufBytes = 0;
         lastPresentNs = t1;
     }
     if (host::g_logLevel >= 1 && (frames % 120 == 1 || getenv("FABLE_GLES_DUMP"))) {
         // the readback runs on the render thread (a round trip here would stall the overlap)
         const unsigned fr = frames, draws = statDraws, clears = statClears, progs = static_cast<unsigned>(programs.size());
-        const double fMs = frameMs, gMs = glMs, sMs = swapMs, uMs = uploadMs, rMs = gq::renderMs(), wMs = gq::waitMs();
+        const double fMs = frameMs, gMs = glMs, sMs = swapMs, uMs = uploadMs, rMs = gq::renderMs(), wMs = gq::waitMs(), bKb = bufKb;
+        const unsigned bUp = bufUploads, bIn = bufInPlace;
         // the frame rate cap since the last line: mean sleep per frame, frames that missed its deadline
         static unsigned capFrom = 0;
         static uint64_t lineNs = 0;
@@ -2413,7 +2427,7 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
             const GLenum err = glGetError();  // on the render thread: a direct call, errors of the whole frame
             char centre[16] = "-";  // FABLE_GLES_PROBE=1
             if (probe) std::snprintf(centre, sizeof centre, "%02X%02X%02X%02X", px[0], px[1], px[2], px[3]);
-            log("gles: frame %u: %u draws, %u clears, %u programs, centre %s, window %dx%d, frame %.1f ms (mean %.1f) of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f, cap %u slept %.1f/frame, %u late%s%X", fr, draws, clears, progs, centre, ww, wh, fMs, mMs, gMs, sMs, uMs, rMs, wMs, capFps, cMs, capLate, err ? ", GL error 0x" : "", err);
+            log("gles: frame %u: %u draws, %u clears, %u programs, centre %s, window %dx%d, frame %.1f ms (mean %.1f) of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f, buffer uploads %u (%u in place, %.0f KB), cap %u slept %.1f/frame, %u late%s%X", fr, draws, clears, progs, centre, ww, wh, fMs, mMs, gMs, sMs, uMs, rMs, wMs, bUp, bIn, bKb, capFps, cMs, capLate, err ? ", GL error 0x" : "", err);
             if (const char* dir = getenv("FABLE_GLES_DUMP")) {
                 std::vector<unsigned char> buf(static_cast<size_t>(bw) * bh * 4);
                 glReadPixels(0, 0, static_cast<GLint>(bw), static_cast<GLint>(bh), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
