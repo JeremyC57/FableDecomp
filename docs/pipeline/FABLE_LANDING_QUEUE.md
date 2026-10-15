@@ -163,6 +163,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand136` | Hand chunk 136 (CEnginePrimitiveManagerAnimatedMeshesBase .. CEngineSceneGrid): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand137` | Hand chunk 137 (CEngineSceneGrid .. CEngineWeatherRenderer): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand138` | Hand chunk 138 (CEngineWeatherRenderer .. CFactionDatabase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand141` | Hand chunk 141 (CGameScriptInterface .. CGameScriptInterface): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -214,7 +215,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **350 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **354 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -565,6 +566,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00b3edf0 CEngineWorldMap::LinkMapToWorld DIFFER(131v131): retail `mov ebx,[ecx+18h]` before the map words, unshifted start X kept in edi and shifted after the Y bounds, row index in ebx; ours `mov edi,[ecx+18h]`, start X shifted at once, x/y registers swapped in the loops | tried: natural expressions (short and long index), offset/position locals, unshifted bounds shifted later | next: lane gap: register allocation (same instructions, registers swapped)
 - 00b3ee80 CEngineWorldMap::UnlinkMapFromWorld DIFFER(119v119): retail `mov ebx,edx ; ... ; sub ebx,edi` (start X subtracted after loading the Y words, shifted after start Y); ours `sub edx,edi ; mov edi,[ecx+1Ch] ; sar edx,5` before the Y loads | tried: natural expressions, four-argument SCellBox constructor (141 bytes, worse) | next: lane gap: scheduling (same instructions, other order)
 - 00530ec0 CDefOwner00530ec0::GetDef DIFFER(99v98): retail `mov ecx,[esp+4] ; ... ; mov edx,[ecx+4] ; inc edx ; mov eax,edx ; dec eax ; mov [ecx+4],edx ; mov [ecx+4],eax` vs ours `mov eax,[esp+4] ; mov ecx,eax ; mov edx,[eax+4] ; add eax,4 ; inc edx ; mov [eax],edx ; dec edx ; mov [eax],edx` | tried: CDefPointer local returned by value (reloads the slot after the inc), ternary manager (Get() hoisted above the pushes), if/else on a manager local, frontEnd local + hand release through an inline guard (manager part now byte-exact) | next: build the returned pointer straight from the out slot (`CDefPointer(const SDefSlot&)`) or let the guard read the slot itself so the object is loaded into ecx
+
+
+#### `2026-10-15_linux_hand141` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand141/differ/`)
+- 0089bb30 CGameScriptInterface::EntitySetThingAsWantingMoney DIFFER(141v142): retail keeps the lookup key and the "CTCMoneyReceiver" CCharString in the dead `thing` slot ([esp+8], no frame); ours adds `push ecx` and puts the string (or the key) in that new word | tried: temporary argument, named local in the else block, __forceinline GetOrAddTC helper | next: the EntityFadeOut form (`CTCBase* added; { CCharString name(..); added = AddTC(name,0,0); }` then `receiver = added`), which shared the slot correctly there
+- 0089bbc0 CGameScriptInterface::EntityPlayObjectAnimation DIFFER(113v130): retail loads the component into ecx (`mov ecx,[eax+4] ; mov al,[ecx+0Ch]`) and tail-duplicates `inc ; push loop ; push id ; push anim ; call PlayAnimation` into both arms of `m_hasId ? m_id : -1` (`or eax,-1 ; inc eax` unfolded); ours joins with a jmp | tried: local + ternary, inline PlayNextAnimation member, if/return GetId, __forceinline | next: an out-of-line-defined (auto_inline off) GetId above the caller, or the id expression as a separate inline returning `GetId() + 1`
+- 0089fe20 CGameScriptInterface::SetVillageAttitude DIFFER(133v133): register choice only -- the attitude switch runs in eax (`mov eax,[esp+0Ch] ; sub eax,0 ; dec eax`) in retail, edx in ours | tried: switch in the body, switch in a (__forceinline) component member | next: lane gap: register allocation
+- 008a0720 CGameScriptInterface::EntityFadeOut DIFFER(157v155): register choice only -- retail keeps the fade component in ecx (`mov ecx,[eax+4]` / `mov ecx,esi ; test ecx,ecx`), ours in eax plus a `mov ecx,eax` before the call | tried: temporary name, named local, name in its own block before the null test, inline FadeOut member | next: make the GetTC path produce the component as `this` of an inline (`GetTC(...)->...` chain) so it lands in ecx; else lane gap: register allocation
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
