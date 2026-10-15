@@ -180,6 +180,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand153` | Hand chunk 153 (CPlayer .. CQ_HangingTreeEvilScript): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand154` | Hand chunk 154 (CQ_HangingTreeGoodScript .. CQuestManager): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand155` | Hand chunk 155 (CQuestManager .. CRenderManagerCore): 29 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand156` | Hand chunk 156 (CRenderManagerCore .. CScriptGameResourceObjectScriptedThing): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -234,7 +235,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **481 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **491 parked rows** for the Fable retry pass.
 
 ### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -767,6 +768,19 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 004b19f0 CQuestManager::GetBoastsForScript DIFFER(141v141): retail pushes edi at entry, ours after the empty-list test (every loop offset +4) | tried: SameString(boast, name), CCharString::operator==, prev-node local in insert (fixed the links), boast name block local (fixed eax/ecx) | next: lane gap: callee-saved push delayed into a branch
 - 004b64e0 CQuestManager::SaveGameState(CPersistContext&) DIFFER(132v142): retail lays the writing arm first and duplicates the WriteBuffer call in both string arms; ours puts Transfer first and shares one call sequence | tried: ternary and null-first accessors (fixed GetLength), inverted mode test, explicit if/else over WriteBuffer | next: `#pragma optimize` sweep or an inline CDataOutputStream::WriteString(const CCharString&)
 - 004b2ad0 CQuestManager::DeactivateEventQuests DIFFER(156v149): retail keeps the local list's header node in esi across the insert/SetQuestAsFailed/clear calls and `this` in ebp; ours reloads the header from the list object after every call | tried: STLport list ctor with member stores and with a node local | next: a list type whose header pointer is a separate local, or the real 0x004B92D0/0x004B9DA0 bodies above (both write memory)
+
+
+#### `2026-10-15_linux_hand156` (10 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand156/differ/`)
+- 00a07900 CRenderStateManager::Init DIFFER(117v115): extra `mov ecx,esi` before the ForceResendRenderStatesToHardware call | tried: plain body | next: lane gap: callee clobber knowledge -- needs the real 8 KB call-free SetDefaultRenderStates (0xA059E0) defined above in the TU
+- 009fc5f0 CResourceBank::CResourceBank DIFFER(155v156): first CResourceList copy -- retail hoists the CResource vtable store next to the two outer vtable stores and zeroes the head via esi before `lea eax,[esi+8]` | tried: count as member init, in CResource body, in the list body, as an inline base | next: separate inline CResourceList ctor shapes per member, or a CResource base ctor + body mix
+- 009fc170 CResourceList::UnloadNextResource DIFFER(155v149): after ListRemove retail uses ecx/edx (`mov ecx,eax ; mov [ecx+10h],esi`), `inc dword ptr [edi+38h]` and a separate return-true epilogue | tried: ListInsert forms, optimize("s"), if/else return | next: define the real ListRemove 0x9FBFB0 body above under auto_inline(off) (callee clobber knowledge)
+- 007767a0 CMatrix3x4::Set(const CRightHandedSet&, const C3DVector&) DIFFER(127v127): `fstp [ecx] ; mov [ecx+8],edx ; fstp [ecx+4]` vs ours storing the spilled z first | tried: implicit copy, user operator=, user copy ctor, operator^ cross product (products now match) | next: Set(x,y,z)-style inline assignment of the right vector, or explicit float members
+- 00c404f0 COrientedEngineObject::SetOrientationVectors DIFFER(155v147): `or dword ptr [ecx+48h],20000h` vs `mov eax,[ecx+48h] ; or eax ; mov [ecx+48h],eax` (x2) | tried: plain word `|=`, 1-bit field, optimize("s") (+__forceinline compares) | next: lane gap? (memory-operand `or` in a speed TU; check other landed `or dword ptr [m],imm` speed rows)
+- 00a87260 CSB::ShouldIgnoreAgent DIFFER(133v137): retail `mov cl,[esi+61h] ; test cl,cl ; jne ; test al,al ; je` re-tests the loaded +0x60 flag; ours folds the second test | tried: inline helper (__forceinline), one && expression, bool local | next: a non-folded helper returning bool by value (e.g. member function with `bool` result tested by the caller) or a volatile-free second read through another accessor
+- 00d89160 CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::OnPredicateFail DIFFER(107v107): retail loads the def pointer 0x143E90C into edi before each GetTimer call and forms the timer as `add eax,54h ; mov eax,[eax]`; ours reads the def after the call | tried: operands swapped, `CScriptDef* const`, const-long& timer helpers | next: a CTimer helper taking the def by reference (`IsBelow(const CScriptDef&)`), or the comparison inside an inline on the parent script
+- 004381b0 CScreenMessage::IsHardCoded DIFFER(118v117): frame slots of the "(HC)" marker and the converted text swapped, text re-read from the frame instead of the returned pointer | tried: temporary in the call, named local, const& binding, inline StartsWith (not inlined) | next: `__forceinline bool StartsWith(const CCharString&)` on the conversion temporary
+- 00cb7c40 CScriptBase::RunSpawnedFunctions DIFFER(107v107): register allocation only (this ebx vs ebp, zero ebp vs ebx; count-block reload eax vs ecx) | tried: operator delete vs delete | next: lane gap: register allocation (scheduling-only)
+- 00cb88b0 CScriptBase::OnScriptedEntityDeactivated DIFFER(131v128): retail keeps the re-read key in edx/ebx and tests the bool with `cmp byte ptr [esp+1Ch],0`; ours ecx/edx + `mov esi,ecx` and `mov bl ; test bl` | tried: find(const&), __forceinline by-value find, open-coded LowerBound + const copy, const copy after find | next: register allocation; maybe the key compare inside a CKeyPairCompareLess functor
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a0ab50	RELOCATION_MATCH	139v139	PASS	CRenderManagerCore::DrawCurrentBuffersAsIndexedTris
+00a0abe0	RELOCATION_MATCH	127v127	PASS	CRenderManagerCore::DrawCurrentBuffersAsTris
+00a0aca0	RELOCATION_MATCH	147v147	PASS	CRenderManagerCore::DrawCurrentBuffersIndexed
+00a0aea0	RELOCATION_MATCH	146v146	PASS	CRenderManagerCore::DrawAsIndexedTris
+00a0afe0	RELOCATION_MATCH	116v116	PASS	CRenderManagerCore::CRenderManagerCore
+00a0b0a0	MATCH	148v148	PASS	CRenderManagerCore::SetViewTransform
+00a0b140	MATCH	151v151	PASS	CRenderManagerCore::SetViewTransform
+00a0b1e0	MATCH	157v157	PASS	CRenderManagerCore::SetWorldTransform
+00a0b280	RELOCATION_MATCH	158v158	PASS	CRenderManagerCore::SetTextureTransform
+00a0b3e0	MATCH	160v160	PASS	CRenderManagerCore::SetPerspectiveTransform
+00a0b480	RELOCATION_MATCH	146v146	PASS	CRenderManagerCore::BeginRender
+00a044e0	MATCH	151v151	PASS	CRenderStateManager::ForceResendRenderStatesToHardware
+00a05970	RELOCATION_MATCH	108v108	PASS	CRenderStateManager::CRenderStateManager
+00a07900	DIFFER	117v115	-	CRenderStateManager::Init: retail calls ForceResend straight after SetDefaultRenderStates without reloading ecx (callee clobber knowledge of the 8 KB call-free 0xA059E0)
+009fc5f0	DIFFER	155v156	-	CResourceBank ctor: first CResourceList copy schedules the CResource vtable store/zeroing differently from the second
+009fc170	DIFFER	155v149	-	CResourceList::UnloadNextResource: ecx/edx allocation and inc-mem after the ListRemove call; next idea: real ListRemove 0x9FBFB0 body in the TU
+007767a0	DIFFER	127v127	-	CMatrix3x4::Set(rhset,pos): one store order (right.z vs right.x/y)
+00c404f0	DIFFER	155v147	-	SetOrientationVectors: `or dword ptr [ecx+48h],20000h` vs load/or/store
+004fa860	MATCH	109v109	PASS	CRigidBodyConfig::operator=
+00cb7a00	RELOCATION_MATCH	146v146	PASS	CRuntimeScriptedEntityPersist::SaveToGameStateScript
+0069e460	RELOCATION_MATCH	145v145	PASS	CSACCombat::SetUpPhysics
+0069e5d0	RELOCATION_MATCH	145v145	PASS	CSACCombat::SetUpPhysics
+00a87260	DIFFER	133v137	-	CSB::ShouldIgnoreAgent: retail re-tests the +0x60 flag before the obstacle call; ours folds it
+00df1760	MATCH	159v159	PASS	CSTS_BriarRose::Init
+00d89160	DIFFER	107v107	-	CSUMMONED_CREATURE::OnPredicateFail: def pointer loaded before each GetTimer call
+008162f0	RELOCATION_MATCH	147v147	PASS	CScreenEffectPriorityStack::Process
+00880a40	MATCH	145v145	PASS	CScreenEffectPriorityStack::Reset
+00880e50	RELOCATION_MATCH	98v98	PASS	CScreenEffectPriorityStack::Process
+00881780	RELOCATION_MATCH	157v157	PASS	CScreenEffectPriorityStack::InsertDisplacementEntry
+00438020	RELOCATION_MATCH	126v126	PASS	CScreenMessage::CScreenMessage
+004381b0	DIFFER	118v117	-	CScreenMessage::IsHardCoded: frame slots of marker/text swapped; next: __forceinline StartsWith
+00438770	RELOCATION_MATCH	117v117	PASS	CScreenMessage::Update
+007f3e90	RELOCATION_MATCH	97v97	PASS	CScriptBase::RemovePredicate
+0084f570	RELOCATION_MATCH	97v97	PASS	CScriptBase::RemovePredicate
+00cb7c40	DIFFER	107v107	-	CScriptBase::RunSpawnedFunctions: ebx/ebp swap and eax/ecx reload (regalloc only)
+00cb7ee0	RELOCATION_MATCH	117v117	PASS	CScriptBase::CScriptBase::LoadOrCreatePersistInfo
+00cb83d0	RELOCATION_MATCH	103v103	PASS	CScriptBase::SaveEntityScript
+00cb8820	RELOCATION_MATCH	135v135	PASS	CScriptBase::SaveGameState
+00cb88b0	DIFFER	131v128	-	CScriptBase::OnScriptedEntityDeactivated: register allocation of the re-read key
+00903760	RELOCATION_MATCH	120v120	PASS	CScriptGameResourceObjectScriptedThing::?Converse@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@PBD@Z

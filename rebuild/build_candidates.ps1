@@ -233762,6 +233762,216 @@ $catalog = @(
         TestSource = '00/f3/CRangeCompressor_Compress_00f3afc0_test.cpp'
         PassPattern = '00f3afc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00438020'
+        Module = 'CScreenMessage'
+        Source = '00/43/CScreenMessage_CScreenMessage_00438020.cpp'
+        TestSource = '00/43/CScreenMessage_CScreenMessage_00438020_test.cpp'
+        PassPattern = '00438020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00438770'
+        Module = 'CScreenMessage'
+        Source = '00/43/CScreenMessage_Update_00438770.cpp'
+        TestSource = '00/43/CScreenMessage_Update_00438770_test.cpp'
+        PassPattern = '00438770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fa860'
+        Module = 'CTwoLayerPolyMap'
+        Source = '00/4f/CTwoLayerPolyMap_operator_004fa860.cpp'
+        TestSource = '00/4f/CTwoLayerPolyMap_operator_004fa860_test.cpp'
+        PassPattern = '004fa860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069e460'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_SetTrackFirstCamPointMode_0069e460.cpp'
+        TestSource = '00/69/CGameCameraManager_SetTrackFirstCamPointMode_0069e460_test.cpp'
+        PassPattern = '0069e460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069e5d0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_SetSnapToFirstCamPointMode_0069e5d0.cpp'
+        TestSource = '00/69/CGameCameraManager_SetSnapToFirstCamPointMode_0069e5d0_test.cpp'
+        PassPattern = '0069e5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f3e90'
+        Module = 'std::vector'
+        Source = '00/7f/stdvector_erase_007f3e90.cpp'
+        TestSource = '00/7f/stdvector_erase_007f3e90_test.cpp'
+        PassPattern = '007f3e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008162f0'
+        Module = '_global'
+        Source = '00/81/global_RegisterThingHandlers_008162f0.cpp'
+        TestSource = '00/81/global_RegisterThingHandlers_008162f0_test.cpp'
+        PassPattern = '008162f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084f570'
+        Module = 'std::vector'
+        Source = '00/84/stdvector_erase_0084f570.cpp'
+        TestSource = '00/84/stdvector_erase_0084f570_test.cpp'
+        PassPattern = '0084f570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00880a40'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStack_Reset_00880a40.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStack_Reset_00880a40_test.cpp'
+        PassPattern = '00880a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00880e50'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStack_Process_00880e50.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStack_Process_00880e50_test.cpp'
+        PassPattern = '00880e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00881780'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStack_InsertDisplacementEntry_00881780.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStack_InsertDisplacementEntry_00881780_test.cpp'
+        PassPattern = '00881780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00903760'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_Converse_00903760.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_Converse_00903760_test.cpp'
+        PassPattern = '00903760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a044e0'
+        Module = 'CRenderStateManager'
+        Source = '00/a0/CRenderStateManager_ForceResendRenderStatesToHardware_00a044e0.cpp'
+        TestSource = '00/a0/CRenderStateManager_ForceResendRenderStatesToHardware_00a044e0_test.cpp'
+        PassPattern = '00a044e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a05970'
+        Module = 'CRenderStateManager'
+        Source = '00/a0/CRenderStateManager_CRenderStateManager_00a05970.cpp'
+        TestSource = '00/a0/CRenderStateManager_CRenderStateManager_00a05970_test.cpp'
+        PassPattern = '00a05970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ab50'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_DrawCurrentBuffersAsIndexedTris_00a0ab50.cpp'
+        TestSource = '00/a0/CRenderManagerCore_DrawCurrentBuffersAsIndexedTris_00a0ab50_test.cpp'
+        PassPattern = '00a0ab50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0abe0'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_DrawCurrentBuffersAsTris_00a0abe0.cpp'
+        TestSource = '00/a0/CRenderManagerCore_DrawCurrentBuffersAsTris_00a0abe0_test.cpp'
+        PassPattern = '00a0abe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0aca0'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_DrawCurrentBuffersIndexed_00a0aca0.cpp'
+        TestSource = '00/a0/CRenderManagerCore_DrawCurrentBuffersIndexed_00a0aca0_test.cpp'
+        PassPattern = '00a0aca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0aea0'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_DrawAsIndexedTris_00a0aea0.cpp'
+        TestSource = '00/a0/CRenderManagerCore_DrawAsIndexedTris_00a0aea0_test.cpp'
+        PassPattern = '00a0aea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0afe0'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_CRenderManagerCore_00a0afe0.cpp'
+        TestSource = '00/a0/CRenderManagerCore_CRenderManagerCore_00a0afe0_test.cpp'
+        PassPattern = '00a0afe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b0a0'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_SetViewTransform_00a0b0a0.cpp'
+        TestSource = '00/a0/CRenderManagerCore_SetViewTransform_00a0b0a0_test.cpp'
+        PassPattern = '00a0b0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b140'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_SetWorldTransform_00a0b140.cpp'
+        TestSource = '00/a0/CRenderManagerCore_SetWorldTransform_00a0b140_test.cpp'
+        PassPattern = '00a0b140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b1e0'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_SetWorldTransform_00a0b1e0.cpp'
+        TestSource = '00/a0/CRenderManagerCore_SetWorldTransform_00a0b1e0_test.cpp'
+        PassPattern = '00a0b1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b280'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_SetTextureTransform_00a0b280.cpp'
+        TestSource = '00/a0/CRenderManagerCore_SetTextureTransform_00a0b280_test.cpp'
+        PassPattern = '00a0b280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b3e0'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_SetPerspectiveTransform_00a0b3e0.cpp'
+        TestSource = '00/a0/CRenderManagerCore_SetPerspectiveTransform_00a0b3e0_test.cpp'
+        PassPattern = '00a0b3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b480'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_BeginRender_00a0b480.cpp'
+        TestSource = '00/a0/CRenderManagerCore_BeginRender_00a0b480_test.cpp'
+        PassPattern = '00a0b480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb7a00'
+        Module = 'NScript::CRuntimeScriptedEntityPersist'
+        Source = '00/cb/NScriptCRuntimeScriptedEntityPersist_SaveToGameStateScript_00cb7a00.cpp'
+        TestSource = '00/cb/NScriptCRuntimeScriptedEntityPersist_SaveToGameStateScript_00cb7a00_test.cpp'
+        PassPattern = '00cb7a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb7ee0'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_LoadEntityScript_00cb7ee0.cpp'
+        TestSource = '00/cb/CScriptBase_LoadEntityScript_00cb7ee0_test.cpp'
+        PassPattern = '00cb7ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb83d0'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_SaveEntityScript_00cb83d0.cpp'
+        TestSource = '00/cb/CScriptBase_SaveEntityScript_00cb83d0_test.cpp'
+        PassPattern = '00cb83d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb8820'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_SaveGameState_00cb8820.cpp'
+        TestSource = '00/cb/CScriptBase_SaveGameState_00cb8820_test.cpp'
+        PassPattern = '00cb8820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df1760'
+        Module = 'NScript::CQ_SummoningTheShipScript::CSTS_BriarRose'
+        Source = '00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Init_00df1760.cpp'
+        TestSource = '00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Init_00df1760_test.cpp'
+        PassPattern = '00df1760_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
