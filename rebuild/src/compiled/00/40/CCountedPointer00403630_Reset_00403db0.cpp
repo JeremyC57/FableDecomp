@@ -1,33 +1,38 @@
-// CCountedPointer_00403630::Reset(T*) -- drop the shared count block (destroying the object on last reference), then adopt the new object
+// CCountedPointer_00403630::Reset(T* object) -- let go of the current object (deleting it on the last reference) and take shared ownership of a new one
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00403DB0, oracle length 103 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
-// Retail bytes:  push esi ; mov esi,ecx ; mov eax,[esi+4] ; test eax,eax ; je A ; dec dword ptr [eax] ; mov eax,[esi+4] ; cmp dword ptr [eax],0 ; jne A ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[esi+4] ; push eax ; call operator delete ; add esp,4 ; A: mov eax,[esp+8] ; test eax,eax ; mov dword ptr [esi+4],0 ; mov [esi],eax ; je Z ; push 0Ch ; call operator new ; add esp,4 ; test eax,eax ; je N ; mov ecx,[esi] ; mov dword ptr [eax],1 ; mov dword ptr [eax+4],offset Destroy ; mov [eax+8],ecx ; mov [esi+4],eax ; pop esi ; ret 4 ; N: xor eax,eax ; mov [esi+4],eax ; Z: pop esi ; ret 4
-// Intrusive-count smart pointer {object, count block}: the 12-byte count block holds the
-// reference count, the per-type destroy function (0x00403630, called with the object in ecx)
-// and the object. Reset() decrements the old block (re-reading it after the decrement: the count
-// is touched through a reference), destroys + frees it on zero, then adopts the new object by
-// allocating a fresh block (operator new @ 0x00BFEA1A, null-checked; delete @ 0x00BFE9BC). The
-// instantiation is named from the manifest label when unique, else from the destroy function.
-// One of 121 bodies of this shape.
-void __fastcall Destroy_00403630(void* object);   // 0x00403630: the per-type deleter stored in the block
+// Our counted pointer is two words: the object and a 12-byte count block shared by every pointer to that
+// object (reference count, the per-type deleter, and the object the deleter is given). Reset() is the
+// assignment primitive: if we currently share a block we drop our reference, and when that was the last
+// one we run the deleter on the object and free the block. Then we adopt the new object, allocating a
+// fresh block with a count of one for it; a null object leaves the pointer empty. If the block
+// allocation fails the object is held without a block and will never be deleted by us. This
+// instantiation's deleter is the routine at 0x00403630.
+//
+// Matching: the block pointer is re-read after the decrement (the count is touched through a
+// reference); operator new @ 0x00BFEA1A is null-checked, delete @ 0x00BFE9BC; the new block takes the
+// object re-read through `this` ([esi]), not the argument. One of 121 bodies of this shape.
+void __fastcall Destroy_00403630(void* object);   // the per-type deleter stored in the block
 
+// Count block shared by all pointers to one object.
 struct SCountBlock {
-    long m_references;                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);// +4
-    void* m_pObject;                       // +8
+    long m_references;                     // how many pointers share the object
+    void (__fastcall* m_pfnDestroy)(void*);// deletes the object on the last release
+    void* m_pObject;                       // the object handed to the deleter
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00403630), m_pObject(object) { }
 };
 
 struct CCountedPointer_00403630 {
-    void* m_pObject;                       // +0
-    SCountBlock* m_pCount;                 // +4
+    void* m_pObject;                       // the object we point at
+    SCountBlock* m_pCount;                 // its shared count block (null when empty)
     void Reset(void* object);
 };
 
 void CCountedPointer_00403630::Reset(void* object)
 {
+    // Release what we hold now.
     if (m_pCount) {
         --m_pCount->m_references;
         if (m_pCount->m_references == 0) {
@@ -35,8 +40,9 @@ void CCountedPointer_00403630::Reset(void* object)
             delete m_pCount;
         }
     }
+    // Adopt the new object with a fresh count of one.
     m_pCount = 0;
     m_pObject = object;
     if (object)
-        m_pCount = new SCountBlock(m_pObject);   // re-read through `this` (retail loads [esi] for the block), not the argument
+        m_pCount = new SCountBlock(m_pObject);   // re-read through `this`, not the argument
 }

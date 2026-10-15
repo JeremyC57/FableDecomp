@@ -1,22 +1,26 @@
-// Release_013ca818() -- drops the static counted pointer @ 0x013CA818: Reset(0) inlined
+// Release_013ca818() -- shut down the file installer singleton: drop the static counted pointer @ 0x013CA818 (Reset(0) inlined)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00404490, oracle length 57 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
-// Retail bytes:  mov eax,[0x13ca81c] ; push esi ; xor esi,esi ; cmp eax,esi ; je Z ; dec dword ptr [eax] ; mov eax,[0x13ca81c] ; cmp [eax],esi ; jne Z ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[0x13ca81c] ; push eax ; call operator delete ; add esp,4 ; Z: mov [0x13ca81c],esi ; mov [0x13ca818],esi ; pop esi ; ret
-// A static CCountedPointer {object @ 0x013CA818, count block @ 0x013CA81C} being released: the
-// inlined Reset(0) decrements the block, destroys the object through the block's function pointer
-// and frees the block (operator delete @ 0x00BFE9BC) on the last reference, then nulls both
-// fields (the "adopt new object" half folds away for a null argument). One of 25 bodies.
+// The file installer lives in a static counted pointer (object @ 0x013CA818, count block @ 0x013CA81C)
+// that CFileInstallerSingleton::Get creates on first use. GFUninitialise calls this to let it go: we
+// drop our reference on the count block, and since the singleton is normally the only holder that
+// destroys the installer through the block's deleter and frees the block. Both words are then nulled,
+// so a later Get() would build a fresh installer.
+//
+// Matching: Reset(0) is __forceinline so the "adopt new object" half folds away for a null argument;
+// the block pointer is re-read after the decrement; delete @ 0x00BFE9BC. One of 25 bodies of this shape.
+// Count block shared by all pointers to one object.
 struct SCountBlock {
-    long m_references;
-    void (__fastcall* m_pfnDestroy)(void*);
-    void* m_pObject;
+    long m_references;                       // how many pointers share the object
+    void (__fastcall* m_pfnDestroy)(void*);  // deletes the object on the last release
+    void* m_pObject;                         // the object handed to the deleter
 };
 
 struct CCountedPointerStatic {
-    void* m_pObject;
-    SCountBlock* m_pCount;
+    void* m_pObject;                         // the installer
+    SCountBlock* m_pCount;                   // its count block
     __forceinline void Reset(void* object)
     {
         if (m_pCount) {
@@ -31,6 +35,7 @@ struct CCountedPointerStatic {
     }
 };
 
+// The installer singleton's pointer.
 extern CCountedPointerStatic g_pointer_013ca818;   // 0x013CA818
 
 void Release_013ca818()
