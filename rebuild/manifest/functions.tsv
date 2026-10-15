@@ -33940,6 +33940,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009b9890	DrawGetEnvironment	CWorld	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\global_DrawGetEnvironment_009b9890.cpp
 009b98a0	DrawGetSeaLevel	CMap	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\DrawGetSeaLevel_DrawGetSeaLevel_009b98a0.cpp
 009b98b0	ConvertToString	CParsedItem	__thiscall	CCharString	1	CParsedItem *	1	yes	accepted									
+009b9930	CParsedItem::Piece_009b9930	CParsedItem	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 009b9940	SetStringPos	CStringParser	__thiscall	void	2	CStringParser *,ulong	1	yes	accepted									
 009b99c0	CStringParser_ParseSingleChar	_global	unknown	undefined	0		0	yes	accepted									
 009b9a20	SkipUntilString	CStringParser	__thiscall	bool	2	CStringParser *,CCharString *	1	yes	accepted									

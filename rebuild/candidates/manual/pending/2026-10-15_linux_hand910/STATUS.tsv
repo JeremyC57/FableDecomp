@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+009b98b0	RELOCATION_MATCH	128	PASS	CParsedItem::ConvertToString (body authored in chunk 151, re-graded over the 128-byte piece that includes its jump table)
+009b9930	MATCH	3	PASS	empty one-argument member after the jump table, no callers (descriptive name NoOp_009b9930)

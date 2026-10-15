@@ -216,6 +216,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand908` | Chunk 908 (skipped-row ledger: the two functions of catalogue row 00d9f1b0, and the EH prefix row 009f5d70) | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand909` | Chunk 909 (skipped-row ledger: the five functions of catalogue row 008d6620) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand91` | Hand chunk 91 (CTCHeroStats .. CTCInventory): 34 of 40 byte-exact | - | 2 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand910` | Chunk 910 (skipped-row ledger: the two functions of catalogue row 009b98b0) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand92` | Hand chunk 92 (CTCInventory .. CTCInventoryBase): 38 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand93` | Hand chunk 93 (CTCInventoryBase .. CTCInventoryExperience): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand94` | Hand chunk 94 (CTCInventoryExperience .. CTCInventoryMap): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
@@ -231,7 +232,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 
 Totals: **8 matched rows staged for landing**, **452 parked rows** for the Fable retry pass.
 
-### Skipped rows (11 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -239,7 +240,6 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
-| `009b98b0` | multi | open | 009b98b0:112 009b9920:19 | `2026-10-15_linux_hand151` | row holds two functions (separate ret 4 at 0x9B9930); body identical 128v131 |
 | `009f5d70` | prefix | open | 009f5d70:156 | `2026-10-15_linux_hand143` | CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B); fu |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |

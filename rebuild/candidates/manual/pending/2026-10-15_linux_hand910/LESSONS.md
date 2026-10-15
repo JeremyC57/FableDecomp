@@ -1,0 +1,2 @@
+- A jump table belongs to the function that uses it: a ledger split must end the first piece after the table, not before it (009b98b0:128), or the oracle bytes for the body fall short.
+- A 16-aligned `ret N` with no callers right after a jump table is its own function; the manifest had no row for it, so the ledger tool added the start.

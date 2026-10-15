@@ -232831,6 +232831,20 @@ $catalog = @(
         TestSource = '00/e2/CScriptRecordSet00e299f0_CScriptRecordSet00e299f0_00e299f0_test.cpp'
         PassPattern = '00e299f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009b98b0'
+        Module = 'CParsedItem'
+        Source = '00/9b/CParsedItem_ConvertToString_009b98b0.cpp'
+        TestSource = '00/9b/CParsedItem_ConvertToString_009b98b0_test.cpp'
+        PassPattern = '009b98b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b9930'
+        Module = 'CParsedItem'
+        Source = '00/9b/CParsedItem_NoOp009b9930_009b9930.cpp'
+        TestSource = '00/9b/CParsedItem_NoOp009b9930_009b9930_test.cpp'
+        PassPattern = '009b9930_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
