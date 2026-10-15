@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004e079c	RELOCATION_MATCH	38v38	PASS	CTCDHeroSuit ctor; member objects with inline ctors keep the vtable store first
+004e0aab	RELOCATION_MATCH	42v42	PASS	really CTCGatherPointBase ctor (vtable 0x012421E4); label propagated
+00771230	RELOCATION_MATCH	18v18	PASS	really CTCDriverBase::DrawPreparePrimitivesForRendering (inherited slot 11); label names an inheritor
+006e0590	RELOCATION_MATCH	85v85	PASS	SetAlwaysUpdate; emitter bit via inline setter on the emitter
+006e05f0	RELOCATION_MATCH	47v47	PASS	EnterTimelineEnd; sibling jmp on the emitter branch
+006e0db0	RELOCATION_MATCH	44v44	PASS	AttachToCamera(long,float)
+006e0fc0	RELOCATION_MATCH	81v81	PASS	OnSetInLimbo; flag byte loaded once after the predicate
+006e1020	RELOCATION_MATCH	84v84	PASS	SetAsDrawable; inline thing-alive test
+006e11a0	RELOCATION_MATCH	76v76	PASS	SetEmitterUpdateParameters
+006e1e60	RELOCATION_MATCH	92v92	PASS	~CTCDParticleEmitter (??1); inline CCountedPointer release
+00991620	SKIP	-	-	row holds two functions (second body at 00991640)
+004df14b	DIFFER	91v91	-	CTCDPhysicalObstruction ctor; mov ecx,edi scheduled earlier (wave-24i lane gap)
+00778ef0	RELOCATION_MATCH	33v33	PASS	CTCDRegionEntrance::OnSerialise (slot 1)
+007f1890	RELOCATION_MATCH	24v24	PASS	CTCDRumble::FrameUpdate (slot 9); post-decrement test
+00702ac0	RELOCATION_MATCH	74v74	PASS	CTCDayOrNightOnlySupport::GetSectionNameSuffix; two-case switch
+007e3450	RELOCATION_MATCH	56v56	PASS	CTCDeadShotInThingTracker ctor
+007e3490	RELOCATION_MATCH	75v75	PASS	SetThingStuckIn(const CThing&); intelligent-pointer temporary
+007e34e0	RELOCATION_MATCH	70v70	PASS	CTCDeadShotInThingTracker::FrameUpdate (slot 9)
+008ec810	MATCH	18v18	PASS	really CTCDegradableBase::OnHitByShot (slot 29)
+008ec830	MATCH	18v18	PASS	really CTCDegradableBase::OnHitByMelee (slot 28)
+008ec7e0	RELOCATION_MATCH	31v31	PASS	IsAvailableToHit const; result local preset to false
+008ec900	MATCH	59v59	PASS	IsFullyDegraded const; CDefPointer returned by value
+008ecc80	RELOCATION_MATCH	53v53	PASS	OnHit; IsAvailableToHit/SetAvailabilityToHitFromFrame inlined
+004db15e	RELOCATION_MATCH	45v45	PASS	really NThingShot::CTCShotDefinitionDrainLife ctor; label propagated
+004db3db	RELOCATION_MATCH	38v38	PASS	CTCDiceGame ctor
+007e2530	RELOCATION_MATCH	73v73	PASS	CTCDiggingSpot::OnSerialise (slot 1)
+007509a0	RELOCATION_MATCH	47v47	PASS	CTCDiscovery ctor; unaligned member under pack(1)
+007509d0	DIFFER	90v90	-	SetDiscovered; this/discoverer esi<->edi register swap
+0078e7c0	DIFFER	91v94	-	Attackable; __fastcall arg evaluation order, this in edi, setne vs mov al,1 tail
+00793cc0	DIFFER	91v94	-	really CTCUnholyPower::Attackable; byte-identical to 0078e7c0, same parked source
+00730580	MATCH	17v17	PASS	CTCDoor::OnCreate (slot 4)
+007305a0	MATCH	37v37	PASS	CTCDoor::Copy(const CTCBase&) (slot 12)
+00731170	RELOCATION_MATCH	95v95	PASS	CTCDoor::OnSerialise (slot 1)
+007312f0	SKIP	-	-	row holds two functions (jmp [eax+24h], then mov al,1;ret at 00731300)
+007c3040	RELOCATION_MATCH	35v35	PASS	CTCDrainLife::SetAICast
+00771200	RELOCATION_MATCH	35v35	PASS	CTCDriverBase ctor; virtual call on the parent
+004d8193	RELOCATION_MATCH	35v35	PASS	really CTCCameraPointBuilding ctor; label propagated
+00746820	RELOCATION_MATCH	51v51	PASS	really CTCBed ctor; label propagated
+007bad20	RELOCATION_MATCH	33v33	PASS	really CTCTrespassable ctor; label propagated
+007e0b50	RELOCATION_MATCH	56v56	PASS	CTCEffectOnDie ctor

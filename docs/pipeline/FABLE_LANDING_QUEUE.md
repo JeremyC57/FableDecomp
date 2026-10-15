@@ -146,33 +146,34 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand80` | Hand chunk 80 (CTCActionUseBuyHouse .. CTCAssassinRush): 40 of 40 byte-exact | - | 0 | 0 | done |
 | `2026-10-15_linux_hand81` | Hand chunk 81 (CTCAssassinRush .. CTCBoastingPodium): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand82` | Hand chunk 82 (CTCBoastingPosition .. CTCCameraPointScripted): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand86` | Hand chunk 86 (CTCDHeroSuit .. CTCEffectOnDie): 34 of 40 byte-exact | - | 4 | 2 | landed; parked rows open |
 | `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 
-Totals: **0 matched rows staged for landing**, **82 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **86 parked rows** for the Fable retry pass.
 
 ### Skipped rows (19 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
-| `00455fa0` | multi | open | 00455fa0:8 00455fa8:12 00455fb4:22 | `2026-10-15_linux_hand66` | three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter) |
-| `00581ab3` | multi | open | 00581ab3:46 00581ae1:32 | `2026-10-15_linux_hand91` | two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging) |
+| `00455fa0` | multi | in-chunk:901 | 00455fa0:8 00455fa8:12 00455fb4:22 | `2026-10-15_linux_hand66` | three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter) |
+| `00581ab3` | multi | in-chunk:901 | 00581ab3:46 00581ae1:32 | `2026-10-15_linux_hand91` | two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging) |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
-| `007312f0` | multi | open | 007312f0:5 00731300:3 | `2026-10-15_linux_hand86` | CTCDoor::vfunc_10 row holds two functions (chunk 86, paused before staging) |
-| `0073a840` | multi | open | 0073a840:49 0073a880:18 | `2026-10-14_linux_hand59` | two functions after the int3 padding |
-| `00750960` | multi | open | 00750960:5 00750970:3 | `2026-10-15_linux_hand84` | two functions: jmp [eax+24h], int3 padding, then mov al,1 ; ret (chunk 84, paused before staging) |
+| `007312f0` | multi | in-chunk:901 | 007312f0:5 00731300:3 | `2026-10-15_linux_hand86` | CTCDoor::vfunc_10 row holds two functions (chunk 86, paused before staging) |
+| `0073a840` | multi | in-chunk:901 | 0073a840:49 0073a880:18 | `2026-10-14_linux_hand59` | two functions after the int3 padding |
+| `00750960` | multi | in-chunk:901 | 00750960:5 00750970:3 | `2026-10-15_linux_hand84` | two functions: jmp [eax+24h], int3 padding, then mov al,1 ; ret (chunk 84, paused before staging) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
-| `0088b7e0` | multi | open | 0088b7e0:17 0088b800:4 | `2026-10-15_linux_hand74` | row spans two functions (0x88b7e0 + 0x88b800) |
-| `008aae20` | multi | open | 008aae20:22 008aae40:27 008aae60:4 008aae70:4 | `2026-10-15_linux_hand74` | row spans four functions |
-| `00991620` | multi | open | 00991620:24 00991640:36 | `2026-10-15_linux_hand86` | EditFrameUpdate row holds two functions (chunk 86, paused before staging) |
-| `009cbd30` | multi | open | 009cbd30:20 009cbd50:19 009cbd70:20 | `2026-10-15_linux_hand73` | three AskHeroQuestion-style forwarders separated by int3 padding |
+| `0088b7e0` | multi | in-chunk:901 | 0088b7e0:17 0088b800:4 | `2026-10-15_linux_hand74` | row spans two functions (0x88b7e0 + 0x88b800) |
+| `008aae20` | multi | in-chunk:901 | 008aae20:22 008aae40:27 008aae60:4 008aae70:4 | `2026-10-15_linux_hand74` | row spans four functions |
+| `00991620` | multi | in-chunk:901 | 00991620:24 00991640:36 | `2026-10-15_linux_hand86` | EditFrameUpdate row holds two functions (chunk 86, paused before staging) |
+| `009cbd30` | multi | in-chunk:901 | 009cbd30:20 009cbd50:19 009cbd70:20 | `2026-10-15_linux_hand73` | three AskHeroQuestion-style forwarders separated by int3 padding |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
-| `00aacf90` | multi | open | 00aacf90:5 00aacfa0:4 | `2026-10-15_linux_hand76` | a jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding |
+| `00aacf90` | multi | in-chunk:901 | 00aacf90:5 00aacfa0:4 | `2026-10-15_linux_hand76` | a jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding |
 | `00ba1140` | prefix | open | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | open | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
-| `00c3eb60` | multi | open | 00c3eb60:25 00c3eb80:25 | `2026-10-15_linux_hand74` | row spans two functions (0xc3eb60 + 0xc3eb80) |
-| `00c40e20` | multi | open | 00c40e20:8 00c40e30:11 00c40e40:11 00c40e50:14 | `2026-10-15_linux_hand74` | row spans four functions |
+| `00c3eb60` | multi | in-chunk:901 | 00c3eb60:25 00c3eb80:25 | `2026-10-15_linux_hand74` | row spans two functions (0xc3eb60 + 0xc3eb80) |
+| `00c40e20` | multi | in-chunk:901 | 00c40e20:8 00c40e30:11 00c40e40:11 00c40e50:14 | `2026-10-15_linux_hand74` | row spans four functions |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
-| `00ca5510` | multi | open | 00ca5510:16 00ca5520:8 00ca5530:7 00ca5540:44 | `2026-10-15_linux_hand74` | row spans four functions |
+| `00ca5510` | multi | in-chunk:901 | 00ca5510:16 00ca5520:8 00ca5530:7 00ca5540:44 | `2026-10-15_linux_hand74` | row spans four functions |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -311,6 +312,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 006c0120 CTCBuyableHouse::GetPrice DIFFER(57v57): ours `mov edi,[eax+28h] ; mov eax,[eax+2Ch] ; sub eax,edi`, retail `mov edx,[eax+2Ch] ; mov edi,[eax+28h] ; sub edx,edi` | tried: `GetValueOfTrophies() + def->Price[level]` (48v57), call result in a named local (60v57), `prices` first-pointer local + explicit `last - prices` (57v57), `prices` local + size() (61v57) | next: lane gap: register/load order of the size() difference (maybe a `const vector&` local plus the `prices` local)
 - 007e3040 CTCCameraCollision::vfunc_4 DIFFER(93v81): retail keeps the local def pointer's object in esi from GetSubDef's `this` through the release (`test esi,esi ; dec [esi+4]`) and stores the local's null after the argument pushes; the lane re-reads the frame slot after the call, stores the null first and expands the release (`mov esi,[eax+4] ; add eax,4 ; dec esi`) | tried: CDefPointer local (93v81; member-template specialisation declarations ICE the compiler first), explicit release on a raw copy (119v81), raw out-pointer local (89v81) | next: lane gap: CDefPointer local cached in esi across a call (GOTCHAS 24k)
 - 0075cd30 CTCCameraPointScripted::GetEndPos DIFFER(81v81): X sum `fld [esi+40h] ; fadd [eax]` stored after two pushes (retail) vs `fld [eax] ; fadd [esi+40h]` stored after three | tried: free `operator+(pos, EndPos)`, member `pos + EndPos` (X and store order right, Z/Y reversed), member `EndPos + pos` | next: lane gap: x87 operand order / store scheduling of the last component
+
+
+#### `2026-10-15_linux_hand86` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand86/differ/`)
+- 004df14b CTCDPhysicalObstruction::CTCDPhysicalObstruction DIFFER(91v91): `mov ecx,edi` for line1's CBaseClass call is scheduled before the three vector zero stores (retail: between the 2nd and 3rd store) | tried: the 12-byte vector ctor as an init list and as body assignments (3 grades) | next: lane gap: member-ctor `lea/mov ecx` scheduled before a run of register-zero stores (wave 24i)
+- 007509d0 CTCDiscovery::SetDiscovered DIFFER(90v90): retail keeps `this` in esi and the discoverer in edi, the lane the reverse | tried: plain argument, named local copy of the discoverer, named CIntelligentPointer local | next: lane gap: register allocation (esi/edi swap)
+- 0078e7c0 CTCDivineWrath::Attackable DIFFER(91v94): retail loads ParentThing into ebx before the target GetPItem call and loads arg1 before arg2 for both `__fastcall` AreThingsEnemies calls; `this` in esi (lane: edi); retail shares one `mov al,1` tail after `test al,al ; jne` where the lane emits `setne` | tried: if/return-true chain, single `||`/`&&` return expression | next: try AreThingsEnemies modelled as a static member with explicit locals for the two arguments (ParentThing loaded into a local before the first test); otherwise lane gap: __fastcall argument evaluation order
+- 00793cc0 CTCUnholyPower::Attackable DIFFER(91v94): byte-identical to 0078e7c0, same differences | tried: the same source as 0078e7c0 | next: lands with 0078e7c0 when that one matches
 
 
 #### `2026-10-15_linux_hand90` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand90/differ/`)

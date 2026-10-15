@@ -1,0 +1,52 @@
+// CTCDivineWrath::Attackable(CThingCreatureBase* creature) -- a creature may be hit when it is an enemy of the caster, or always while a live z-target is friendly
+// Grade: DIFFER(ours v retail) -- 91v94: retail loads ParentThing into ebx BEFORE the target GetPItem call and loads arg1 before arg2 for both __fastcall AreThingsEnemies calls (the lane evaluates the call/arg2 first), keeps `this` in esi (lane: edi), and shares one `mov al,1` tail after `test al,al ; jne` where the lane emits `setne`
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0078E7C0, length 94 bytes.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3); AreThingsEnemies(CThing*, CThing*) @ 0x0076D2F0
+// (`__fastcall` bool, x2). Called from CTCDivineWrath::FrameUpdate @ 0x0078FD60 (vtable 0x0126BE84 slot 9).
+// Name and signature from ghidra_out/egor_signatures.tsv (`?Attackable@CTCDivineWrath@@AAE_NPAVCThingCreatureBase@@@Z`).
+// PDB CTCDivineWrath: PTarget (CIntelligentPointer<CThingCreatureBase>) +0x71, IsZTargetting +0x79; the retail
+// CWillButtonHelperTimer at +0x1c is 4 bytes smaller (12-byte vector), so they sit at +0x6d / +0x75 -- the target
+// pointer really is unaligned (`lea edi,[esi+6Dh]`), hence pack(1).
+// Shape: the inline "thing dead" test (null item or dead bit +0x91) and the z-target flag guard the first
+// AreThingsEnemies (ParentThing loaded into ebx before the GetPItem call); its false result returns true;
+// every other path falls to the second AreThingsEnemies whose true result shares the `mov al,1` tail and
+// whose false result is returned as is.
+struct CThingCreatureBase;
+
+struct CThing {
+    unsigned char _pad[0x91];
+    unsigned char m_flags91;                                // +0x91 bit 0: Dead
+    bool IsDead() const { return (m_flags91 & 1) != 0; }
+};
+
+struct CTCEnemy {
+    static bool __fastcall AreThingsEnemies(const CThing& a, const CThing& b);   // 0x0076D2F0
+};
+
+#pragma pack(push, 1)
+struct CBaseIntelligentPointer {                            // sizeof 8: vptr + PData
+    virtual void v00();
+    void* PData;                                            // +0x04 CBaseObjectPointer*
+    CThing* GetPItem() const;                               // 0x00A01B50
+};
+
+struct CTCDivineWrath {
+    virtual void v00();
+    CThing*                 ParentThing;                    // +0x04 (CTCBase)
+    unsigned char           _body[0x6d - 0x08];             // ToBeRemoved .. CutSceneCancel (+0x6c)
+    CBaseIntelligentPointer PTarget;                        // +0x6d CIntelligentPointer<CThingCreatureBase>
+    bool                    IsZTargetting;                  // +0x75
+    bool Attackable(CThingCreatureBase* creature);
+};
+#pragma pack(pop)
+
+bool CTCDivineWrath::Attackable(CThingCreatureBase* creature)
+{
+    if (PTarget.GetPItem() != 0 && !PTarget.GetPItem()->IsDead() && IsZTargetting) {
+        if (!CTCEnemy::AreThingsEnemies(*ParentThing, *PTarget.GetPItem()))
+            return true;
+    }
+    if (CTCEnemy::AreThingsEnemies(*ParentThing, *reinterpret_cast<CThing*>(creature)))
+        return true;
+    return false;
+}
