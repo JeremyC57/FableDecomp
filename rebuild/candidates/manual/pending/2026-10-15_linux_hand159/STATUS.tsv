@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b20630	RELOCATION_MATCH	119v119	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::WriteBinary
+0041a850	RELOCATION_MATCH	115v115	PASS	NUISystem::CSprite::GetSize
+0041b800	RELOCATION_MATCH	106v106	PASS	NUISystem::CSprite::CSprite
+00a8ea70	RELOCATION_MATCH	145v145	PASS	CStaticBlock::LoadBinary
+00a20970	DIFFER	144v144	-	CSteeringAgent::SetGoal (parked, see NOTES.md)
+009a4160	DIFFER	143v142	-	CStreamingFontBank::FindGlyph (parked, see NOTES.md)
+00a5f010	RELOCATION_MATCH	118v118	PASS	CStreamingFontDataBank::StreamGlyph
+0085adb0	RELOCATION_MATCH	102v102	PASS	CCombatActionBase::CStrikeEvent::CStrikeEvent
+0069de30	RELOCATION_MATCH	104v104	PASS	NCameraModes::CStringAndCage::CStringAndCage
+008733d0	RELOCATION_MATCH	104v104	PASS	NCameraModes::CSACCombat::CSACCombat
+00871fd0	DIFFER	124v124	-	NCameraModes::CStringAndCageBase::UpdateXYVars (parked, see NOTES.md)
+009b9a20	DIFFER	125v125	-	CStringParser::SkipUntilString (parked, see NOTES.md)
+009b9c60	DIFFER	125v124	-	CStringParser::SkipWhitespace (parked, see NOTES.md)
+009b9ce0	DIFFER	131v131	-	CStringParser::SkipUntilWhitespace (parked, see NOTES.md)
+009b9d70	DIFFER	127v132	-	CStringParser::SkipPastNewline (parked, see NOTES.md)
+009ba080	DIFFER	136v136	-	CStringParser::ReadNextItem (parked, see NOTES.md)
+009ba540	RELOCATION_MATCH	111v111	PASS	CStringParser::ReadAsInteger
+009ba5b0	DIFFER	150v155	-	CStringParser::ReadAsUHUGE (parked, see NOTES.md)
+009ba650	DIFFER	154v154	-	CStringParser::ReadAsFloat (parked, see NOTES.md)
+009ba6f0	RELOCATION_MATCH	145v145	PASS	CStringParser::ReadAsString
+009ba790	RELOCATION_MATCH	145v145	PASS	CStringParser::ReadAsSymbol
+009ba900	RELOCATION_MATCH	101v101	PASS	CStringParser::PeekNextItemType
+0048dd94	DIFFER	100v98	-	CSubtitleRenderer::Pause (parked, see NOTES.md)
+0048df77	RELOCATION_MATCH	155v155	PASS	CSubtitleRenderer::GetTextFromEmbeddedTagGraphic
+00492e4b	RELOCATION_MATCH	134v134	PASS	CSubtitleRenderer::SetText
+00492ed1	DIFFER	152v152	-	CSubtitleRenderer::SetText (parked, see NOTES.md)
+00492fb4	DIFFER	147v149	-	CSubtitleRenderer::SetText (parked, see NOTES.md)
+00493049	RELOCATION_MATCH	142v142	PASS	CSubtitleRenderer::SetText
+00c53d50	MATCH	144v144	PASS	C3DSoundSource::SetPosition
+00c53e40	MATCH	144v144	PASS	C3DSoundSource::SetVelocity
+00cbe960	RELOCATION_MATCH	142v142	PASS	AddLogbookStoryEntryString
+00cbe9ee	RELOCATION_MATCH	147v147	PASS	AddLogbookTutorialEntry
+00cbea81	RELOCATION_MATCH	153v153	PASS	AddLogbookTutorialEntryPC
+004cdbd0	RELOCATION_MATCH	101v101	PASS	CSubtitledMessage::CSubtitledMessage
+004ce4e0	RELOCATION_MATCH	98v98	PASS	CSubtitledMessage::AddCameraTagFromIndex
+004d1fe0	RELOCATION_MATCH	119v119	PASS	CSubtitledMessage::CSubtitledMessage
+00719e80	RELOCATION_MATCH	119v119	PASS	CSubtitledMessage::operator=
+00d83dc0	RELOCATION_MATCH	148v148	PASS	NScript::CQ_HeroSoulsMotherScript::CSummonerToKill::Main
+00d88540	RELOCATION_MATCH	148v148	PASS	NScript::CQ_HeroSoulsNostroScript::CSummonerToKill::Main
+009f3010	DIFFER	138v144	-	CSurface::ReadOnlyLock (parked, see NOTES.md)

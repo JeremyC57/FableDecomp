@@ -1,0 +1,10 @@
+# Lessons from chunk 159 (for GOTCHAS)
+- A three-float `if (v != GetX())` setter: write `v != GetX()` (argument on the left) with a by-value inline getter and member `operator!=`; leave C3DVector's `operator=` implicit (a user one changes the copy registers). 0xC53D50/0xC53E40 MATCH.
+- A named-local group passed in reverse (first constructed at the lowest frame slot, passed last): declare the locals last-argument-first (0x492E4B's four empty captions).
+- A `__fastcall` global whose only argument is a `const CCharString&` looks like a thiscall on a string (`mov esi,ecx ; mov edx,esi ; lea ecx,[ebp-4] ; call operator+`): check the PDB for `YIX` names before trusting a class label (the AddLogbook* helpers).
+- Compiler-generated memberwise copy ctor / operator= over CVectorMap members: model CVectorMap as {vector member with out-of-line copy/assign, empty comparator struct, bool Dirty}; the Dirty byte copy follows each vector call.
+- STLport map iterator test: compare `it.Node != map.Header` directly (`cmp eax,[edi]`); an inline `end()` iterator loads the header into a register first.
+- A float compare of `fabs(d)` against a float epsilon needs `(float)fabs(d) <= 1e-4f` (else `fcomp qword`).
+- CStringParser retail layout is 0x28 bytes (CCursorPos {InQuotes, StringPos, Line} at +0x1c). MoveStringPos/CalcInQuotes are inline in retail but inlined inconsistently; `__forceinline` on both reproduces the inlined quote scan (SkipWhitespace), an out-of-line CalcInQuotes declaration the others.
+- A camera-mode ctor whose own members store before the derived vtable: `__declspec(novtable)` intermediate base ctor (CStringAndCageBase), and the base's DefaultFOV (+4) as a body assignment after the vtable store.
+- Lane gaps seen again: the RTM-only `lea reg,[a+b] ; cmp byte ptr [reg],0` address materialisation (4 CStringParser rows); argument temporaries homed in dead parameter slots by the lane even when the function has frame locals (retail does that only frameless; 0x492ED1/0x492FB4); a 1-byte local packed into the unused top byte of a bool parameter slot (0x48DD94).
