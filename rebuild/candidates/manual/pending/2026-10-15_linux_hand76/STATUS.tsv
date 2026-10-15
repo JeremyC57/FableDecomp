@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006fb960	RELOCATION_MATCH	88v88	PASS	SGI __unguarded_linear_insert over pair<ulong,CSmallVector<CEvent,32>> (label CSmallVector::Erase wrong); key read into a local -> ebx
+0056e330	RELOCATION_MATCH	78v78	PASS	NCameraModes::CSnapToPoint ctor: root ctor, inline CCameraPointModeBase + CIntelligentPointer converting ctor, TrackThing=true
+0069df80	RELOCATION_MATCH	78v78	PASS	NCameraModes::CTrack ctor (label CSnapToPoint propagated), ZTargeting=false
+00a0b8e0	MATCH	17v17	PASS	null-tested tail virtual call on +0x10, long result
+00457a83	RELOCATION_MATCH	65v65	PASS	CSpecialAbilitiesTurncoatSpellDef ctor (label CSoundDef propagated): five retail vectors
+00458413	RELOCATION_MATCH	65v65	PASS	CSoundDef ctor: five retail vectors from the PDB layout
+00aabc50	MATCH	65v65	PASS	nested if(system){loop} for the single shared false exit
+00aac400	RELOCATION_MATCH	87v87	PASS	stop/mark matching active sounds then prune, all inside the system test
+0041c930	MATCH	45v45	PASS	POD record ctor; +0x10 assigned in the body (stored last)
+00a248f0	RELOCATION_MATCH	56v56	PASS	C3DMeshInfo ctor (label CSoundInit propagated): sphere zeroed as dwords then radius -1.0f in body
+00c5d0a0	RELOCATION_MATCH	32v32	PASS	CVtable_012b8fc4 ctor: zeroed block is an embedded member object
+00c8db30	RELOCATION_MATCH	42v42	PASS	free(first word) + memset 32 (libogg/libvorbis clear idiom)
+00c8df70	RELOCATION_MATCH	49v49	PASS	vorbis_info_init shape: memset 32 + calloc(1,0xE80)
+00a3e430	RELOCATION_MATCH	65v65	PASS	new CSoundBankLH(this) then slot 1; tail duplicated into the null arm
+00a3e480	MATCH	41v41	PASS	nested if, bool, slot5->slot6 == 2
+00a3ec70	MATCH	32v32	PASS	SGI __distance list walk, unsigned < as long (sbb/neg)
+00a3ec90	MATCH	30v30	PASS	limit - list size
+00a3ed90	RELOCATION_MATCH	65v65	PASS	lookup + slot-6 play with 4.0f, `>= 0` bool through full register
+00a3eed0	RELOCATION_MATCH	46v46	PASS	lookup + slot-1 call, true
+00a41800	MATCH	26v26	PASS	implicit 12-byte vector assignment to +0x74
+0045cfad	DIFFER	49v49	-	CSoundMap::operator= (two CVectorMaps); last Dirty byte via cl and scheduled after the pops
+00aacf90	SKIP	-v20	-	row holds two functions (jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding)
+00aad060	RELOCATION_MATCH	33v33	PASS	position assignment then Commit (0x00AACFB0)
+00aad090	RELOCATION_MATCH	56v56	PASS	up then forward assignment then Commit
+004570d3	DIFFER	61v61	-	lea eax,[esi+90h] scheduled two stores early (lane scheduling); optimize(s) + PDB vectors otherwise exact
+004578de	RELOCATION_MATCH	56v56	PASS	CSpecialAbilitiesDrainLifeDef ctor (label BattleChargeDef propagated): four retail vectors
+00c5ed90	RELOCATION_MATCH	89v89	PASS	CWound_00c5eca0 ctor (label propagated), matches the landed dtor model: five inline Win32 holders
+00f336f0	RELOCATION_MATCH	56v56	PASS	CVtable_012e5ff0 ctor over base 0x0042D9E0: zeroed member object
+009a9ad0	RELOCATION_MATCH	79v79	PASS	copy ctor of pair{CCharString, {4 CWideString, long}} (label DrainLifeDef operator= wrong)
+00af8b40	RELOCATION_MATCH	68v68	PASS	CDynamicObjectHeap<116,529> ctor (label GhostSwordDef operator= wrong): flag assigned first in the body
+00457da9	DIFFER	58v58	-	lea ecx,[esi+64h] hoisted above the vector zero stores (24i lane gap)
+00458c19	DIFFER	45v45	-	CMeleeCombatAbilityDef ctor (label propagated); lea ecx,[esi+68h] hoisted (24i lane gap)
+004e00bc	DIFFER	45v45	-	CQuestCardDef ctor (label propagated); lea ecx,[esi+5Ch] hoisted (24i lane gap)
+00b39f30	RELOCATION_MATCH	61v61	PASS	CEnginePrimitiveAttachmentManager ctor (label propagated): two bases + inline STLport list
+00e99890	MATCH	44v44	PASS	flag then game slots 516/517 on &Thing
+00544b70	RELOCATION_MATCH	78v78	PASS	NUISystem::CSpellContainerList ctor: three vtables, PDB-mapped members zeroed, GetDataFromDef
+005bc6d6	DIFFER	20v23	-	float argument re-pushed via mov/push, retail via fld/fstp
+00698b20	RELOCATION_MATCH	36v36	PASS	CGameCameraManager::PlayCameraSound (label AddChild wrong): fastcall forwarder
+006c27a0	RELOCATION_MATCH	39v39	PASS	vector(+0x10) / tree(+0) / word assignment setter (label AddChild wrong)
+009a8150	RELOCATION_MATCH	28v28	PASS	map<CCharString,CCharString>[key] = value (label AddChild wrong)

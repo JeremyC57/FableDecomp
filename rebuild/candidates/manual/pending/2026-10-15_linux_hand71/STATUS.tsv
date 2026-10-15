@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a0ac60	RELOCATION_MATCH	51v51	PASS	IDirect3DDevice9::DrawIndexedPrimitive(TRIANGLELIST) forwarder after RealiseRenderState
+00a0ad40	RELOCATION_MATCH	61v61	PASS	primitive type read from the selected index buffer before RealiseRenderState
+00a0ae10	RELOCATION_MATCH	39v39	PASS	DrawPrimitive(TRIANGLELIST) forwarder
+00a0ae40	RELOCATION_MATCH	36v36	PASS	renamed DrawCurrentBuffersAsTriFan: draws D3DPT_TRIANGLEFAN (label propagated from 0x00A0AE70)
+00a0ae70	RELOCATION_MATCH	36v36	PASS	DrawPrimitive(POINTLIST, 0, count); first argument unused
+00a0af40	RELOCATION_MATCH	58v58	PASS	DrawIndexedPrimitiveUP(TRIANGLELIST, INDEX16) forwarder
+00a0b520	RELOCATION_MATCH	63v63	PASS	tris-per-second from GFGetTime; elapsed is a named double local
+00a0b590	RELOCATION_MATCH	71v71	PASS	??_G: inline virtual dtor = Uninit() + implicit CSystemFont dtor + out-of-line base dtor; new-factory
+00def6a0	DIFFER	91v91	-	script-module ctor (label wrong); mov ecx,edi scheduled before the zero stores (lane gap)
+00a044b0	RELOCATION_MATCH	21v21	PASS	??1 virtual dtor: global and device pointer cleared, base dtor tail jump
+009fbd00	DIFFER	66v60	-	??_G: retail has no CRenderTarget vptr store; implicit dtor not inlined by the lane
+00a10e30	RELOCATION_MATCH	36v36	PASS	both CSurface members uninitialised when live; second is a tail jump
+00a10e60	RELOCATION_MATCH	35v35	PASS	colour-surface AttachTarget overload
+00a10e90	RELOCATION_MATCH	35v35	PASS	depth-surface AttachTarget overload
+00a5b760	RELOCATION_MATCH	59v59	PASS	actually CCachedFile copy ctor; array end word as its own inline-constructed part
+00ac2100	RELOCATION_MATCH	63v63	PASS	actually ~C3DMeshPartitionElement (out of line, recursive delete)
+00c35d50	RELOCATION_MATCH	39v39	PASS	free __stdcall: Shutdown or SetTarget(0) tail call with argument-slot reuse
+00ca5170	RELOCATION_MATCH	31v31	PASS	media-module class named by address; HRESULT test then tail call
+0046649a	RELOCATION_MATCH	57v57	PASS	implicit copy ctor emitted out of line via a placement-new helper; base vptr store kept
+00737370	RELOCATION_MATCH	69v69	PASS	actually CCombatAbilityMeleeAttackData implicit copy ctor
+008ee9b0	RELOCATION_MATCH	79v79	PASS	actually Mass::Mass; C2DVector temporaries assigned in the body
+009fbec0	RELOCATION_MATCH	33v33	PASS	CResource default ctor; base count before derived vptr
+009fc450	MATCH	78v78	PASS	renamed SetAsLRU (links after the head = first to unload); ListRemove+ListInsert inlined
+009fc4a0	DIFFER	78v80	-	SetAsMRU: retail mov eax,edx copy of the previous node not reproduced
+00c23ba0	RELOCATION_MATCH	64v64	PASS	actually ??1 of CVtable_012b3a94: delete[] buffer + delete[] 0xb4-byte entries (/EHsc)
+00c23fe0	RELOCATION_MATCH	61v61	PASS	actually ??1 of CVtable_012b3a9c: delete[] buffer + delete[] 0x2c-byte entries (/EHsc)
+00c24240	RELOCATION_MATCH	61v61	PASS	actually ??1 of CVtable_012b3aa4: delete[] buffer + delete[] 0x0c-byte entries (/EHsc)
+00c35d10	MATCH	19v19	PASS	not CResource: indexed-table getter named by address
+009fc020	MATCH	80v80	PASS	actually CResourceList::RemoveResource (count/memory at +0x20/+0x24)
+009fc380	MATCH	52v52	PASS	list AddResource __forceinline under optimize("s"); head via inline accessor
+009fc3d0	MATCH	52v52	PASS	renamed AddResourceToLoadingQueue (the +0x40 list)
+00c6d9d0	RELOCATION_MATCH	94v94	PASS	actually CVtable_012bed90 ctor: two memset records, two pointers, a plain record
+009fbfe0	MATCH	49v49	PASS	optimize("s") + head reached through an inline accessor at each use
+009fc070	MATCH	59v59	PASS	rotated for loop, virtual slot 3, unsigned age test
+009fc100	MATCH	50v50	PASS	for loop over the list calling virtual slot 9; tail-duplicated store
+009fc570	RELOCATION_MATCH	77v77	PASS	vptr, inline CResource head ctor, body assignments in source order
+00c1ae20	MATCH	33v33	PASS	actually CDispatcher_00c1ac40 ctor (0x24-byte dispatcher of the file manager)
+00487050	MATCH	46v46	PASS	init-list copy through the engine memberwise C3DVector copy ctor
+0049ce00	MATCH	55v55	PASS	CrossProduct(Forward, Up) inline helper fixes the x87 operand order
+004bbe10	MATCH	50v50	PASS	not a ctor (eax not this): CRightHandedSet::Set with implicit C3DVector assignment
