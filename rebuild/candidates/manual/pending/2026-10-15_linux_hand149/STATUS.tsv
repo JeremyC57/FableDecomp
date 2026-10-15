@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00adf460	RELOCATION_MATCH	101v101	PASS	particle owner AllocateParticles: unsigned __int64 size guard, handle member read inline
+00a62e40	RELOCATION_MATCH	98v98	PASS	CMovableResourceMemoryPool::AllocateResource (bool arg from flags & 1)
+00547c10	RELOCATION_MATCH	121v121	PASS	NUISystem::CMovie::GetDataFromDef (CTextContainer def-temporary model, retail = PDB - 0x30)
+005482d0	RELOCATION_MATCH	120v120	PASS	NUISystem::CMovie(CIEngine&, long): three vtables, members in order, engine static
+00548350	RELOCATION_MATCH	110v110	PASS	NUISystem::CMovie copy ctor (label CopyConstructor): copies only the draggable base
+00c43420	MATCH	116v116	PASS	SetLoopPoints: optional record set/clear, negated inline operator==
+00c434a0	MATCH	143v143	PASS	SetVolumeParams: same shape, three-field record, dirty bit 0x100
+00db0950	RELOCATION_MATCH	144v144	PASS	CNOVI_AffairMan::Init (factory 0x24 bytes; GuildMaster Init model)
+00db1e80	RELOCATION_MATCH	116v116	PASS	CNOVI_AffairWoman::Init
+00daeeb0	RELOCATION_MATCH	156v156	PASS	is CNOVI_Victim::Init (label CNOVI_BookTrader wrong: two flags + EntitySetAsScared)
+00db3f00	RELOCATION_MATCH	152v152	PASS	CNOVI_BookTrader::Init (TRADER strings beside vtable 0x012D8E80)
+00dac390	RELOCATION_MATCH	141v141	PASS	CNOVI_LiveFather::Init
+00daebf0	RELOCATION_MATCH	109v109	PASS	CNOVI_Villager::GetVillagerSpeechIndex (IsDone re-tests; IsDone ? 0 : idx tail)
+00a78a90	RELOCATION_MATCH	134v134	PASS	CNavConnectorNode ctor (inline CSmallVector push_back, T() fill in dead arg slot)
+00a76490	MATCH	107v107	PASS	CNavNavigableLeafNode::AddNavigableNodeNeighbouringSwitchableNodeToRegion (if-wrapped body)
+00a76b90	RELOCATION_MATCH	123v123	PASS	CNavNavigableLeafNode::SetUpNeighboursWithLeaf (leaf is the SECOND argument)
+00a77b00	DIFFER	122v125	-	MakeRegion: ours pushes ebp/esi/edi lazily, retail at entry
+00a769a0	RELOCATION_MATCH	135v135	PASS	CNavQuadTree::CalculateNeighbours (index advanced after the children call)
+00a761c0	MATCH	122v122	PASS	CNavQuadTreeNode::GetMemoryUsage (statement-by-statement sum)
+00a789f0	RELOCATION_MATCH	146v146	PASS	CNavQuadTreeNode::AddToIndexTable (insert(make_pair(this, index)))
+00a7a570	RELOCATION_MATCH	98v98	PASS	CNavQuadTreeNode ctor (LeafNode(true) in the inline base ctor)
+00a77c30	RELOCATION_MATCH	99v99	PASS	CNavSwitchableLeafNode::SaveToFile (count homed in dead arg slot)
+006ccf70	RELOCATION_MATCH	134v134	PASS	CNavigationInput::operator== (__forceinline tolerance compare, if/return true)
+00a0e790	DIFFER	120v118	-	is STLport __copy_aux over deque iterators (label wrong): empty tag temp gets a frame word
+00a0ed80	DIFFER	120v118	-	twin of 00a0e790 (second 8-byte deque instantiation): same tag-temp gap
+00a1a0a0	RELOCATION_MATCH	151v151	PASS	CNavigatorAStar::GetCostFromNodeToNode (switch on preferability byte)
+00a47110	RELOCATION_MATCH	99v99	PASS	CNavigatorBase ctor (Clone + new CSteeringAgent body assignments)
+00a155d0	RELOCATION_MATCH	149v149	PASS	CNavigatorManager::RemoveNavigationMap (STLport list erase + counted ptr release)
+00850280	RELOCATION_MATCH	111v111	PASS	is STLport list<pair<long,list<long>>>::clear (label FrameUpdate wrong)
+0042dc94	RELOCATION_MATCH	148v148	PASS	CNewFrontendGameComponent::Update (y-off+s size TU)
+0042e3ee	SKIP	-v101	-	prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function
+0042f50b	RELOCATION_MATCH	158v158	PASS	~CNewFrontendGameComponent (size TU, __forceinline def release and base dtor)
+00cdf080	RELOCATION_MATCH	157v157	PASS	COF_MainGates::Main (filter block + `? false : true` bool)
+006c20b0	RELOCATION_MATCH	109v109	PASS	CObject::OnAdd (vector of 28-byte entries, size() per iteration)
+00b38780	MATCH	101v101	PASS	is CEnginePrimitiveHandle Clear()+assign (label ~CObject wrong)
+00720610	DIFFER	116v116	-	is __pop_heap<pair<EHeroMorphType,CTextureMorphEntry>> (label wrong): one load scheduled before sub esp
+00bdd860	RELOCATION_MATCH	128v128	PASS	is CLocalDetailCacheMap::CObjectTypeCollection::RenderUpdate (label class wrong)
+00bdeb50	RELOCATION_MATCH	145v145	PASS	CObjectCacheGroupCollection::StaticUpdate
+00bde600	RELOCATION_MATCH	122v122	PASS	CObjectTypeCollection::CreatePrimitiveOfType (class operator new per primitive)
+00bdef40	DIFFER	125v123	-	GetIndexFromType: empty __true_type temp gets a frame word (lane gap)

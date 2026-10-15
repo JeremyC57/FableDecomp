@@ -1,4 +1,5 @@
 address	row_len	batch	label	kind	status	pieces	note
+0042e3ee	101	2026-10-15_linux_hand149	CNewFrontendGameComponent::Input	prefix	open	0042e3ee:1441	prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function
 00455fa0	42	2026-10-15_linux_hand66	CPersistContext_TransferableSubComponent::CPersistContext_TransferableSubComponent::vfunc_0	multi	done	00455fa0:8,00455fa8:12,00455fb4:22	three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter)
 004a1c8e	34	2026-10-15_linux_hand104	CTCTrophy::OnShowTrophyInitialise	single	open	004a1c8e:27	catch-continuation fragment of an EH function, not an entry
 004debf7	37	2026-10-15_linux_hand102	CTCTargetingSpirit::CTCTargetingSpirit::vfunc_10	multi	done	004debf7:5,004debfc:3,004debff:5,004dec04:5,004dec09:16,004dec19:3	row holds six tiny functions back to back (jmp [eax+24h]; xor eax,eax ret; ret 0Ch; ret 4; a call forwarder; mov al,1 ret)

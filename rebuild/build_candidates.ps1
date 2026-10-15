@@ -232159,6 +232159,244 @@ $catalog = @(
         TestSource = '00/8d/NCreatureModeCModeStunned_GetOutOfActionTimeSeconds_008d6680_test.cpp'
         PassPattern = '008d6680_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0042dc94'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_Update_0042dc94.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_Update_0042dc94_test.cpp'
+        PassPattern = '0042dc94_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042f50b'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042f50b.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042f50b_test.cpp'
+        PassPattern = '0042f50b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547c10'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_GetDataFromDef_00547c10.cpp'
+        TestSource = '00/54/NUISystemCMovie_GetDataFromDef_00547c10_test.cpp'
+        PassPattern = '00547c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005482d0'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_CMovie_005482d0.cpp'
+        TestSource = '00/54/NUISystemCMovie_CMovie_005482d0_test.cpp'
+        PassPattern = '005482d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548350'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_CMovie_00548350.cpp'
+        TestSource = '00/54/NUISystemCMovie_CMovie_00548350_test.cpp'
+        PassPattern = '00548350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c20b0'
+        Module = 'CObject'
+        Source = '00/6c/CObject_OnAdd_006c20b0.cpp'
+        TestSource = '00/6c/CObject_OnAdd_006c20b0_test.cpp'
+        PassPattern = '006c20b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ccf70'
+        Module = 'CNavigationInput'
+        Source = '00/6c/CNavigationInput_operator_006ccf70.cpp'
+        TestSource = '00/6c/CNavigationInput_operator_006ccf70_test.cpp'
+        PassPattern = '006ccf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00850280'
+        Module = 'std::list<std::pair<long, std::list<long> > >'
+        Source = '00/85/stdliststdpairlongstdlistlong_clear_00850280.cpp'
+        TestSource = '00/85/stdliststdpairlongstdlistlong_clear_00850280_test.cpp'
+        PassPattern = '00850280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a155d0'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_RemoveNavigationMap_00a155d0.cpp'
+        TestSource = '00/a1/CNavigatorManager_RemoveNavigationMap_00a155d0_test.cpp'
+        PassPattern = '00a155d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1a0a0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_GetCostFromNodeToNode_00a1a0a0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_GetCostFromNodeToNode_00a1a0a0_test.cpp'
+        PassPattern = '00a1a0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a47110'
+        Module = 'CNavigatorBase'
+        Source = '00/a4/CNavigatorBase_CNavigatorBase_00a47110.cpp'
+        TestSource = '00/a4/CNavigatorBase_CNavigatorBase_00a47110_test.cpp'
+        PassPattern = '00a47110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62e40'
+        Module = 'CMovableResourceMemoryPool'
+        Source = '00/a6/CMovableResourceMemoryPool_AllocateResource_00a62e40.cpp'
+        TestSource = '00/a6/CMovableResourceMemoryPool_AllocateResource_00a62e40_test.cpp'
+        PassPattern = '00a62e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a761c0'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_GetMemoryUsage_00a761c0.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_GetMemoryUsage_00a761c0_test.cpp'
+        PassPattern = '00a761c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76490'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a76490.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a76490_test.cpp'
+        PassPattern = '00a76490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a769a0'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_CalculateNeighbours_00a769a0.cpp'
+        TestSource = '00/a7/CNavQuadTree_CalculateNeighbours_00a769a0_test.cpp'
+        PassPattern = '00a769a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76b90'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_SetUpNeighboursWithLeaf_00a76b90.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_SetUpNeighboursWithLeaf_00a76b90_test.cpp'
+        PassPattern = '00a76b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a77c30'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a7/CNavSwitchableLeafNode_SaveToFile_00a77c30.cpp'
+        TestSource = '00/a7/CNavSwitchableLeafNode_SaveToFile_00a77c30_test.cpp'
+        PassPattern = '00a77c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a789f0'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_AddToIndexTable_00a789f0.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_AddToIndexTable_00a789f0_test.cpp'
+        PassPattern = '00a789f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a78a90'
+        Module = 'CNavConnectorNode'
+        Source = '00/a7/CNavConnectorNode_CNavConnectorNode_00a78a90.cpp'
+        TestSource = '00/a7/CNavConnectorNode_CNavConnectorNode_00a78a90_test.cpp'
+        PassPattern = '00a78a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7a570'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_CNavQuadTreeNode_00a7a570.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_CNavQuadTreeNode_00a7a570_test.cpp'
+        PassPattern = '00a7a570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adf460'
+        Module = 'CMovableResource'
+        Source = '00/ad/CMovableResource_AllocateParticles_00adf460.cpp'
+        TestSource = '00/ad/CMovableResource_AllocateParticles_00adf460_test.cpp'
+        PassPattern = '00adf460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b38780'
+        Module = 'CEnginePrimitiveHandle'
+        Source = '00/b3/CEnginePrimitiveHandle_SetData_00b38780.cpp'
+        TestSource = '00/b3/CEnginePrimitiveHandle_SetData_00b38780_test.cpp'
+        PassPattern = '00b38780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdd860'
+        Module = 'CLocalDetailCacheMap::CObjectTypeCollection'
+        Source = '00/bd/CLocalDetailCacheMapCObjectTypeCollection_RenderUpdate_00bdd860.cpp'
+        TestSource = '00/bd/CLocalDetailCacheMapCObjectTypeCollection_RenderUpdate_00bdd860_test.cpp'
+        PassPattern = '00bdd860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bde600'
+        Module = 'CLocalDetailCacheMap::CObjectTypeCollection'
+        Source = '00/bd/CLocalDetailCacheMapCObjectTypeCollection_CreatePrimitiveOfType_00bde600.cpp'
+        TestSource = '00/bd/CLocalDetailCacheMapCObjectTypeCollection_CreatePrimitiveOfType_00bde600_test.cpp'
+        PassPattern = '00bde600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdeb50'
+        Module = 'CLocalDetailCacheMap::CObjectCacheGroupCollection'
+        Source = '00/bd/CLocalDetailCacheMapCObjectCacheGroupCollection_StaticUpdate_00bdeb50.cpp'
+        TestSource = '00/bd/CLocalDetailCacheMapCObjectCacheGroupCollection_StaticUpdate_00bdeb50_test.cpp'
+        PassPattern = '00bdeb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c43420'
+        Module = 'CMusicManager'
+        Source = '00/c4/CMusicManager_SetLoopPoints_00c43420.cpp'
+        TestSource = '00/c4/CMusicManager_SetLoopPoints_00c43420_test.cpp'
+        PassPattern = '00c43420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c434a0'
+        Module = 'CMusicManager'
+        Source = '00/c4/CMusicManager_SetVolumeParams_00c434a0.cpp'
+        TestSource = '00/c4/CMusicManager_SetVolumeParams_00c434a0_test.cpp'
+        PassPattern = '00c434a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf080'
+        Module = 'COF_MainGates'
+        Source = '00/cd/COFMainGates_Main_00cdf080.cpp'
+        TestSource = '00/cd/COFMainGates_Main_00cdf080_test.cpp'
+        PassPattern = '00cdf080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dac390'
+        Module = 'CNOVI_LiveFather'
+        Source = '00/da/CNOVILiveFather_Init_00dac390.cpp'
+        TestSource = '00/da/CNOVILiveFather_Init_00dac390_test.cpp'
+        PassPattern = '00dac390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daebf0'
+        Module = 'CNOVI_Villager'
+        Source = '00/da/CNOVIVillager_GetVillagerSpeechIndex_00daebf0.cpp'
+        TestSource = '00/da/CNOVIVillager_GetVillagerSpeechIndex_00daebf0_test.cpp'
+        PassPattern = '00daebf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daeeb0'
+        Module = 'CNOVI_Victim'
+        Source = '00/da/CNOVIVictim_Init_00daeeb0.cpp'
+        TestSource = '00/da/CNOVIVictim_Init_00daeeb0_test.cpp'
+        PassPattern = '00daeeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db0950'
+        Module = 'CNOVI_AffairMan'
+        Source = '00/db/CNOVIAffairMan_Init_00db0950.cpp'
+        TestSource = '00/db/CNOVIAffairMan_Init_00db0950_test.cpp'
+        PassPattern = '00db0950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db1e80'
+        Module = 'CNOVI_AffairWoman'
+        Source = '00/db/CNOVIAffairWoman_Init_00db1e80.cpp'
+        TestSource = '00/db/CNOVIAffairWoman_Init_00db1e80_test.cpp'
+        PassPattern = '00db1e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db3f00'
+        Module = 'CNOVI_BookTrader'
+        Source = '00/db/CNOVIBookTrader_Init_00db3f00.cpp'
+        TestSource = '00/db/CNOVIBookTrader_Init_00db3f00_test.cpp'
+        PassPattern = '00db3f00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

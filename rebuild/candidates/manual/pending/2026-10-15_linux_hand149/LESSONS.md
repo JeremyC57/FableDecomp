@@ -1,0 +1,11 @@
+# Lessons from hand chunk 149
+- An empty tag temporary (`random_access_iterator_tag()`, `__true_type()`) passed by const reference: retail addresses it inside an existing argument slot (even a live one), the lane opens a `push ecx` frame word. No source form found (user ctor, no ctor, named POD local, helper returning the tag); park after one try (0x00A0E790, 0x00A0ED80, 0x00BDEF40).
+- A base class member set to a constant BEFORE the derived vtable store comes from the inline base ctor's initialiser list (`LeafNode(true)`); a derived body assignment lands after the vtable store (0x00A7A570).
+- `insert(make_pair(this, index))` stores the pair's second word before the pushes and the first after them; a direct `value_type(this, index)` temporary stores both after (0x00A789F0).
+- A function whose loop index is used both as `i % width` and `nodes[i]` after the per-node call increments the index right after that call (`++i;` mid-body), not in the `for` header (0x00A769A0).
+- Sum of four virtual results built `usage = 0x20 + A(); usage += B(); ...` keeps the running total in ebx; one big expression loads all four child pointers up front (0x00A761C0).
+- `if (x == 0) { loop; return true; } return false;` keeps all callee-saved pushes at entry in some bodies and not in others (0x00A76490 matched, 0x00A77B00 did not): lane gap on push placement.
+- Pinning a quest-script class from a propagated label: vtable (pointer to the Init slot) -> the `mov [esi],vtable` in the factory -> the `push size` of its operator new -> the PDB class sizes and member flags; strings next to the vtable name the NPC.
+- STLport `list::clear` of a list whose element owns an inner list: the inner destructor (clear, sentinel reset re-reading the member, null-tested `free`) inlines into the element destructor; instantiate the outer list explicitly and use the mangled clear as the leaf (0x00850280).
+- A size TU (`optimize("s")`) inlines a member's release, a POD vector's free and an empty virtual base destructor only when they are `__forceinline` (0x0042F50B).
+- `f() ? false : true` stored in a bool across a CCharString block destructor keeps the 8-bit neg/sbb/inc in bl (0x00CDF080).

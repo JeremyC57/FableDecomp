@@ -173,6 +173,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand146` | Hand chunk 146 (CMainGameComponent .. CMemoryAllocatorVariableSize): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand147` | Hand chunk 147 (CMemoryAllocatorVariableSize .. CModeDazed): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand148` | Hand chunk 148 (CModeDragonFlying .. CMouseDX): 26 of 40 byte-exact | - | 13 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand149` | Hand chunk 149 (CMovableResource .. CObjectTypeCollectionPalette): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -226,12 +227,13 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **429 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **434 parked rows** for the Fable retry pass.
 
-### Skipped rows (9 open of 32 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (10 open of 33 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
+| `0042e3ee` | prefix | open | 0042e3ee:1441 | `2026-10-15_linux_hand149` | prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function |
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
@@ -686,6 +688,14 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 008d7930 CModeScorpionKingTailPlunge::OnDeactivate DIFFER(109v109): esi/edi swapped: retail keeps `this` in edi and the member address in esi (as 008D7730 does), the lane gives `this` esi when it is used after the blocks (Active = false) | tried: plain two blocks, inline KillIfAlive() member helper | next: lane gap: callee-saved register colouring
 - 00caf820 CLockedUpdater_00caf820::Set (catalog CModifierGraphic::CModifierGraphic) DIFFER(104v104): retail stores +0x6c then +0x68 BEFORE `mov ecx,esi` and the EH state store; the lane sinks the +0x68 store below the state store | tried: stores in load order, stores in member order, inline SetValues(first, second), inline SetValues(second, first) | next: lane gap: store scheduling around the EH state store
 - 00c44ab0 CMouseCursor::Initialize DIFFER(134v134): `mov ecx,esi ; push eax` (retail) vs `push eax ; mov ecx,esi` around the TurnToPointer call (GetPressed's result pushed as the renderer's last argument) | tried: inline argument, named pressed local | next: lane gap: `push eax` before `mov ecx,esi` (GOTCHAS 24d, 00540120)
+
+
+#### `2026-10-15_linux_hand149` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand149/differ/`)
+- 00a77b00 CNavNavigableLeafNode::MakeRegion DIFFER(122v125): ours pushes ebp/esi/edi at first use (ebp after the PRegion store, esi/edi inside the loop guard), retail pushes all three at entry and keeps the early `xor al,al` exit at the tail | tried: early-return and if-wrapped bodies, STLport-5 list insert (prev loaded once -- fixed the link stores), a `made` result local | next: lane gap: callee-saved push placement (try a do/while loop or the loop over an inline Find helper)
+- 00a0e790 std::__copy_aux<_Deque_iterator<C2DVector>> DIFFER(120v118): the empty random_access_iterator_tag temporary passed by reference: retail addresses it at the dead `result` argument slot (`lea edx,[esp+5Ch]`, no frame), ours opens a `push ecx` frame word (all offsets +4, `pop ecx`) | tried: tag with/without user ctor, STLport tag inheritance chain, iterator_category()/distance_type() helpers | next: lane gap: empty-class temporary placed at an existing argument slot
+- 00a0ed80 std::__copy_aux<_Deque_iterator<8-byte T>> DIFFER(120v118): same tag-temporary frame word as 00a0e790 (twin instantiation) | tried: the 00a0e790 forms (one grade) | next: lane gap: empty-class temporary placed at an existing argument slot
+- 00720610 std::__pop_heap<pair<EHeroMorphType,CTextureMorphEntry>*> DIFFER(116v116): retail loads the value's second word (`mov ecx,[esp+18h]`) before `sub esp,18h`, ours after it (`mov ecx,[esp+30h]`) -- scheduling only | tried: implicit copies, STLport pair memberwise copy ctor, CTextureMorphEntry memberwise copy ctor | next: lane gap: argument-area copy scheduling
+- 00bdef40 CLocalDetailCacheMap::CObjectTypeCollectionPalette::GetIndexFromType DIFFER(125v123): the empty __true_type temporary for `_M_insert_overflow` -- retail gives it the address of the `type` argument slot (same as the value), ours a `push ecx` frame word (offsets +4, loop-head padding `jmp ; lea ecx,[ecx]` becomes `lea esp,[esp]`) | tried: tag with a user ctor, a named uninitialised POD tag | next: lane gap: empty-class temporary placed at an existing argument slot
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
