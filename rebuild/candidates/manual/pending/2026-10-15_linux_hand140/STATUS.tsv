@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006e7480	RELOCATION_MATCH	136v136	PASS	qualified UnfreezeControls call inlined; CWorld+0x34 camera ScriptEnd
+0088e150	DIFFER	111v111	-	AddUBYTE byte gets its own frame slot; retail homes it in the dead flag arg slot (frame 0x30 vs 0x2c)
+0088eb30	RELOCATION_MATCH	129v129	PASS	killable bit +0xbc bit1; vslots 526/527
+0088f570	DIFFER	150v147	-	retail CSEs constant 1 in edi and stores CSoundInit words in a different order
+00890470	RELOCATION_MATCH	108v108	PASS	zero C3DVector named before the manager local
+008904e0	RELOCATION_MATCH	106v106	PASS	zero C3DVector named before the manager local
+00890ba0	RELOCATION_MATCH	112v112	PASS	IsPlayer branch returns early
+00890c10	RELOCATION_MATCH	107v107	PASS	IsPlayer else-branch last (UnsheatheMeleeWeapon tail)
+00891db0	RELOCATION_MATCH	117v117	PASS	CCountedPointer from raw Data + inline AddRef (inc [esi+4])
+00891e30	RELOCATION_MATCH	111v111	PASS	CCountedPointer from raw Data + inline AddRef; named CCharString local
+00892cf0	DIFFER	117v117	-	inline operator==("") materialises sete; retail branches on repe cmpsb flags
+00892d80	RELOCATION_MATCH	101v101	PASS	out-of-line operator!=("")
+008933f0	RELOCATION_MATCH	125v125	PASS	
+00893470	RELOCATION_MATCH	126v126	PASS	
+008934f0	RELOCATION_MATCH	126v126	PASS	
+00893610	RELOCATION_MATCH	117v117	PASS	
+00893870	RELOCATION_MATCH	116v116	PASS	
+008938f0	RELOCATION_MATCH	100v100	PASS	
+00893960	RELOCATION_MATCH	99v99	PASS	Bind3 chain; IsOfType temp lands in the dead argument slot
+008939d0	RELOCATION_MATCH	115v115	PASS	
+00893b00	RELOCATION_MATCH	151v151	PASS	named CCharString local for GetString result
+00893d80	RELOCATION_MATCH	153v153	PASS	
+00893ff0	RELOCATION_MATCH	131v131	PASS	
+00894080	RELOCATION_MATCH	131v131	PASS	
+00894110	RELOCATION_MATCH	129v129	PASS	
+00894250	RELOCATION_MATCH	111v111	PASS	
+008943c0	RELOCATION_MATCH	125v125	PASS	`message ? true : false` gives setne
+00894bf0	DIFFER	170v159	-	bool result spilled to frame (retail: bl); failure-path gift release lea form
+00894c90	DIFFER	171v158	-	bool result spilled to frame (retail: bl); failure-path gift release lea form
+00894d30	DIFFER	170v159	-	bool result spilled to frame (retail: bl); failure-path gift release lea form
+00894dd0	RELOCATION_MATCH	131v131	PASS	named CCharString local before AddTC
+00895010	RELOCATION_MATCH	115v115	PASS	named CCharString local before AddTC
+008953a0	RELOCATION_MATCH	136v136	PASS	
+00895430	RELOCATION_MATCH	102v102	PASS	
+008955c0	DIFFER	138v136	-	component via eax then mov ecx,eax; retail loads it straight into ecx
+00895a10	RELOCATION_MATCH	128v128	PASS	
+00895a90	RELOCATION_MATCH	99v99	PASS	
+00895bc0	RELOCATION_MATCH	99v99	PASS	
+00896120	DIFFER	145v143	-	component via eax then mov ecx,eax; retail loads it straight into ecx
+008966c0	RELOCATION_MATCH	97v97	PASS	

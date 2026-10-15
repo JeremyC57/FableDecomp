@@ -1,0 +1,218 @@
+// CGameScriptInterface::EntitySetAsStolen(const CScriptThing& thing) const -- gives the hero the item (GiveHeroItem(thing)) and posts message 0x47 (delay 50) carrying the thing
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008904E0, length 105 bytes.
+// Callees: CScriptThing virtual slots 75 (+0x12c, IsValid) and 11 (+0x2c, GetThing), CGameScriptInterface virtual slot 123 (+0x1ec, GiveHeroItem),
+// CMessageEventManager::AddMessage @ 0x00687540 (CWorld+0x60; the result is dropped).
+// Shape: the manager is read into a local before the zero position (its three zero stores precede the pushes).
+// Leaf: EntitySetAsStolen
+#include <string.h>
+struct CThing_Retail;
+struct CScriptThing;
+// CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
+#pragma pack(push, 1)
+struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
+    char*         PData;                    // +0x00
+    unsigned long StringLength;             // +0x04
+    unsigned long DataLength : 31;          // +0x08
+    bool          UseFastExtend : 1;        // +0x0c
+    bool operator==(const char* text) const;    // 0x004115A0
+};
+struct CCharStringData {                    // 17 bytes
+    CBasicStringChar Data;                  // +0x00
+    long             NoRefs;                // +0x0d
+};
+#pragma pack(pop)
+class CCharString {
+public:
+    CCharStringData* PStringData;           // +0x00
+    CCharString(const char* text, long length);         // 0x0099EBF0
+    ~CCharString();                                     // 0x0099EAE0
+    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    bool operator==(const char* text) const
+    {
+        if (PStringData == 0)
+            return strcmp(text, "") == 0;
+        return PStringData->Data == text;
+    }
+    bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
+};
+struct CThing_Retail;
+struct CBase {
+    CBase();                                        // 0x0099A2D0
+    virtual ~CBase();
+};
+struct CScriptThing : CBase {                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
+     virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
+    virtual void s008(); virtual void s009(); virtual void s010();
+    virtual CThing_Retail* GetThing() const;   // slot 11 (+0x2c)
+    virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019();
+    virtual void s020(); virtual void s021(); virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025(); virtual void s026(); virtual void s027();
+    virtual void s028(); virtual void s029(); virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035();
+    virtual void s036(); virtual void s037(); virtual void s038(); virtual void s039(); virtual void s040(); virtual void s041(); virtual void s042(); virtual void s043();
+    virtual void s044(); virtual void s045(); virtual void s046(); virtual void s047(); virtual void s048(); virtual void s049(); virtual void s050(); virtual void s051();
+    virtual void s052(); virtual void s053(); virtual void s054(); virtual void s055(); virtual void s056(); virtual void s057(); virtual void s058(); virtual void s059();
+    virtual void s060(); virtual void s061(); virtual void s062(); virtual void s063(); virtual void s064(); virtual void s065(); virtual void s066(); virtual void s067();
+    virtual void s068(); virtual void s069(); virtual void s070(); virtual void s071(); virtual void s072(); virtual void s073(); virtual void s074();
+    virtual bool IsValid() const;   // slot 75 (+0x12c)
+    void* m_pData;                                  // +0x04
+    void* m_pItem;                                  // +0x08
+    CScriptThing() : m_pData(0), m_pItem(0) { }
+};
+struct CTCBase_Retail;
+struct CInterfaceMap_Retail {                       // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
+    struct SEntry { long type; CTCBase_Retail* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);           // 0x004365B0 / 0x0040F020 (two copies of the same body)
+};
+struct CThing_Retail {
+    virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
+    virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
+    virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023();
+    virtual void t024(); virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029(); virtual void t030(); virtual void t031();
+    virtual void t032(); virtual void t033(); virtual void t034(); virtual void t035(); virtual void t036(); virtual void t037(); virtual void t038(); virtual void t039();
+    virtual void t040(); virtual void t041(); virtual void t042(); virtual void t043(); virtual void t044(); virtual void t045(); virtual void t046(); virtual void t047();
+    virtual void t048(); virtual void t049(); virtual void t050(); virtual void t051(); virtual void t052(); virtual void t053(); virtual void t054(); virtual void t055();
+    virtual void t056(); virtual void t057(); virtual void t058(); virtual void t059(); virtual void t060(); virtual void t061(); virtual void t062(); virtual void t063();
+    virtual void t064(); virtual void t065(); virtual void t066(); virtual void t067(); virtual void t068(); virtual void t069(); virtual void t070(); virtual void t071();
+    virtual void t072(); virtual void t073(); virtual void t074(); virtual void t075(); virtual void t076();
+    virtual bool IsPlayer();   // slot 77 (+0x134)
+    unsigned char         _pad04[0xc];              // +0x04 .. +0x10
+    unsigned char         m_type;                   // +0x10
+    unsigned char         _pad11[0xf];
+    unsigned long         m_presentBits[9];         // +0x20 std::bitset of the interface types present
+    CInterfaceMap_Retail  m_interfaces;             // +0x44 the sorted {type, component} map
+    unsigned char         _pad4c[0x20];
+    unsigned char         m_flags;                  // +0x6c (bit 2 = game object, bit 3 = creature)
+    unsigned char         _pad6d[0x24];
+    unsigned char         m_dead : 1;               // +0x91 bit 0
+    unsigned char         m_91_1 : 7;
+    unsigned char         _pad92[0x2a];
+    unsigned char         m_bc_0 : 1;               // +0xbc
+    unsigned char         m_givesHeroStatChangesOnHit : 1;   // bit 1
+    unsigned char         m_bc_2 : 6;
+    unsigned char         _padbd[0x10c];
+    unsigned char         m_1c9_0 : 3;              // +0x1c9
+    unsigned char         m_marryable : 1;          //        bit 3
+    unsigned char         m_marryableToHero : 1;    //        bit 4
+    unsigned char         m_1c9_5 : 3;
+    CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)
+    CTCBase_Retail* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
+    void RemoveTC(long interfaceType);              // 0x004C9840 (the label "CBaseObject::OnPropertyChanged" is propagated)
+    void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
+    void SheatheAllWeapons();                       // 0x006647F0 (CThingCreatureBase)
+    void UnsheatheAllWeapons();                     // 0x00666830 (CThingCreatureBase)
+    void UnsheatheMeleeWeapon();                    // 0x00666820 (CThingCreatureBase)
+    void SetAsGivingHeroStatChangesOnBeingHit(bool giving);   // 0x008389C0 (CThingGameObject)
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap_Retail* map = &m_interfaces;   // named pointer: retail advances esi to the map once
+            CInterfaceMap_Retail::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+    unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
+};
+struct CPlayer_Retail {
+    CThing_Retail* GetHeroThing();                  // 0x00487DC0 (label propagated)
+    CThing_Retail* GetControlledThing();            // 0x00487DD0 (label propagated)
+};
+struct CPlayerManager_Retail {
+    CPlayer_Retail* GetPlayer();                    // 0x00449970 (labelled "Catch@0040d959", propagated)
+};
+struct CRegionDef_Retail {                          // a counted def object (count at +4, virtual slot 1 destroys)
+    virtual void r000();
+    virtual void DeleteThis();   // slot 1 (+0x4)
+    virtual void r002(); virtual void r003(); virtual void r004(); virtual void r005(); virtual void r006(); virtual void r007(); virtual void r008(); virtual void r009();
+    virtual void GetDefName() const;   // slot 10 (+0x28)
+    long          m_refCount;                       // +0x04
+    unsigned char _pad08[0x6c];
+    long          m_wanderingPopulationScriptDef;   // +0x74
+};
+template<class T> struct CCountedPointer {
+    T* Data;
+    CCountedPointer(const CCountedPointer& other) : Data(other.Data) { if (Data) ++Data->m_refCount; }
+    ~CCountedPointer() { if (Data && --Data->m_refCount == 0) Data->DeleteThis(); }
+    T* operator->() const { return Data; }
+    bool IsNull() const { return Data == 0; }
+};
+struct CRegion_Retail {                             // 0x58-byte world-map region record
+    unsigned char _pad00[0x18];
+    CCharString   m_name;                           // +0x18
+    unsigned char _pad1c[8];
+    CCountedPointer<CRegionDef_Retail> m_pDef;      // +0x24
+    unsigned char _pad28[0x2d];
+    bool          m_creatureGenerationEnabled;      // +0x55
+};
+struct CWorldMap_Retail {
+    long GetCurrentRegionNumber();                  // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
+    CRegion_Retail& GetRegion(long region);         // 0x004FC180
+    CRegion_Retail& GetRegionEntry(long region);    // 0x004FB490 (same body as GetRegion; the label "CTCInventoryBase::GetCategoryWithIndex" is propagated)
+    long GetRegionNumberFromName(const CCharString& name);   // 0x004FC210
+};
+struct CCombatManager_Retail {
+    void CreatureUnsheathWeapon(CThing_Retail* creature, long mode);   // 0x006EBDD0
+};
+struct CMessageEvent_Retail;
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+};
+struct CMessageEventManager_Retail {
+    CMessageEvent_Retail* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing_Retail* from, CThing_Retail* to, float value1, float value2, long data);   // 0x00687540
+};
+struct CWorld {
+    virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005(); virtual void w006(); virtual void w007();
+    virtual void w008(); virtual void w009(); virtual void w010(); virtual void w011();
+    virtual CWorldMap_Retail* GetWorldMap();   // slot 12 (+0x30)
+    virtual CWorldMap_Retail* PeekWorldMap();   // slot 13 (+0x34)
+    unsigned char                _pad04[0x48];
+    CCombatManager_Retail*       m_pCombatManager;  // +0x4c
+    unsigned char                _pad50[0x10];
+    CMessageEventManager_Retail* PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
+    unsigned char                _pad64[0x70];
+    bool                         m_creatureGeneratorsEnabled;   // +0xd4 (global switch)
+};
+struct CWorld;
+struct CDefinitionManager_Retail;
+struct CGameScriptInterface {
+    virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006(); virtual void g007();
+    virtual void g008(); virtual void g009(); virtual void g010(); virtual void g011(); virtual void g012(); virtual void g013(); virtual void g014(); virtual void g015();
+    virtual void g016(); virtual void g017(); virtual void g018(); virtual void g019(); virtual void g020(); virtual void g021(); virtual void g022(); virtual void g023();
+    virtual void g024(); virtual void g025(); virtual void g026(); virtual void g027(); virtual void g028(); virtual void g029(); virtual void g030(); virtual void g031();
+    virtual void g032(); virtual void g033(); virtual void g034(); virtual void g035(); virtual void g036(); virtual void g037(); virtual void g038(); virtual void g039();
+    virtual void g040(); virtual void g041(); virtual void g042(); virtual void g043(); virtual void g044(); virtual void g045(); virtual void g046(); virtual void g047();
+    virtual void g048(); virtual void g049(); virtual void g050(); virtual void g051(); virtual void g052(); virtual void g053(); virtual void g054(); virtual void g055();
+    virtual void g056(); virtual void g057(); virtual void g058(); virtual void g059(); virtual void g060(); virtual void g061(); virtual void g062(); virtual void g063();
+    virtual void g064(); virtual void g065(); virtual void g066(); virtual void g067(); virtual void g068(); virtual void g069(); virtual void g070(); virtual void g071();
+    virtual void g072(); virtual void g073(); virtual void g074(); virtual void g075(); virtual void g076(); virtual void g077(); virtual void g078(); virtual void g079();
+    virtual void g080(); virtual void g081(); virtual void g082(); virtual void g083(); virtual void g084(); virtual void g085(); virtual void g086(); virtual void g087();
+    virtual void g088(); virtual void g089(); virtual void g090(); virtual void g091(); virtual void g092(); virtual void g093(); virtual void g094(); virtual void g095();
+    virtual void g096(); virtual void g097(); virtual void g098(); virtual void g099(); virtual void g100(); virtual void g101(); virtual void g102(); virtual void g103();
+    virtual void g104(); virtual void g105(); virtual void g106(); virtual void g107(); virtual void g108(); virtual void g109(); virtual void g110(); virtual void g111();
+    virtual void g112(); virtual void g113(); virtual void g114(); virtual void g115(); virtual void g116(); virtual void g117(); virtual void g118(); virtual void g119();
+    virtual void g120(); virtual void g121(); virtual void g122();
+    virtual void GiveHeroItem(const CScriptThing& thing) const;   // slot 123 (+0x1ec)
+    virtual bool GiveHeroItemsFromContainer(const CScriptThing& container, bool flag) const;   // slot 124 (+0x1f0)
+    CWorld*                    World;               // +0x04 (engine/CGameScriptInterface.h)
+    void*                      Component;           // +0x08
+    void*                      DisplayEngine;       // +0x0c
+    CDefinitionManager_Retail* DefinitionManager;   // +0x10
+    CPlayerManager_Retail*     PlayerManager;       // +0x14
+    void EntitySetAsStolen(const CScriptThing& thing) const;
+};
+
+void CGameScriptInterface::EntitySetAsStolen(const CScriptThing& thing) const
+{
+    if (thing.IsValid()) {
+        GiveHeroItem(thing);
+        C3DVector position(0.0f, 0.0f, 0.0f);
+        CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;
+        messages->AddMessage(0x47, 0x32, position, 0, 0, 0.0f, 0.0f, (long)thing.GetThing());
+    }
+}

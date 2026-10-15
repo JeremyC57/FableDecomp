@@ -1,0 +1,10 @@
+# Chunk 140 lessons (for GOTCHAS)
+- `return p ? true : false;` on a pointer gives `test eax,eax ; setne al`; `return p != 0;` gives `neg ; sbb ; neg` (bool return) -- 0x008943C0 vs the rest of the Msg family.
+- A CCharString argument built BEFORE the trailing constant pushes (`push -1 ; push str ; lea ecx,[..] ; call ctor ; push 0 ; push 0 ; lea ; push`) is a NAMED local (`CCharString name("CTCWife", -1); AddTC(name, 0, 0);`); VC homes it in a dead by-value argument slot (the bool flag) on its own. Same for a GetString result copied with `lea ; push` (named) vs `push eax` (unnamed temporary).
+- Message filters: the landed Bind2/Bind3 `&&` chain works unchanged; `GetCurrentWorldFrameForMessages() - 1` reproduces the `dec edi` variants; VC builds the Bind3 IsOfType temporary in the dead argument slot itself.
+- CCountedPointer copied from a region member by reference keeps `add eax,24h`; construct it from the raw `.Data` pointer instead; `inc dword ptr [esi+4]` needs an inline `AddRef()` member (a bare `++m_refCount` in the ctor gives load/inc/store).
+- A qualified call to an own member (`CGameScriptInterface::UnfreezeControls()`) is inlined; the retail body that repeats a sibling function's body twice is that.
+- AddMessage callers: `C3DVector position(0,0,0)` named BEFORE `CMessageEventManager* messages = World->...` puts the zero stores before the manager load (gotcha 136's opposite order sinks them).
+- `if (!IsPlayer()) {...} else tail();` puts the else tail last; `if (IsPlayer()) { ...; return; }` keeps it inline.
+- Two GetDef/GetSubDef out-pointers sharing the dead argument slot = ONE reused out-slot variable (the class def read into a register first); `if (p && --p->m_refCount == 0)` with p in esi gives `test ; je ; dec [esi+4] ; jne`; a success-path `count = rc - 1; rc = count; if (!count)` gives the load/dec/store release.
+- Lane gap: an inlined GetInterface component used as `this` goes through eax (`mov eax,[eax+4] ; ... mov ecx,eax`) where some retail bodies load it straight into ecx (0x008955C0, 0x00896120); checked/unchecked GetInterface and __forceinline accessors all give eax.
