@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004f9960	RELOCATION_MATCH	126v126	PASS	really STLport _Rb_tree copy ctor (8-byte values); optimize("s"), forceinline base ctor, reference accessors
+006f04c0	RELOCATION_MATCH	139v139	PASS	really STLport list _S_merge<CThingCompare_Nearest> (/Gr fastcall, 12-byte comparator)
+00a70280	RELOCATION_MATCH	116v116	PASS	really __pop_heap<pair<CCharString,C3DDummyObject>> (callee 0xA6FB40 names it); implicit pair copy/assign inline
+00ab15f0	DIFFER	109v109	-	parked: /Oa reaches 109v109, register allocation only
+006d6110	RELOCATION_MATCH	149v149	PASS	CBrainOutput copy ctor; memberwise copies, counted + intelligent pointer copies inline
+00d9e930	RELOCATION_MATCH	143v143	PASS	CBriarRose (minion camp) entity-script ctor; Game/ParentClass plain initialisers, timer ctor inline
+00d9e9e0	RELOCATION_MATCH	157v157	PASS	CBriarRose::Init (slot 2); IMPLICIT CScriptThing copy ctor for the by-value argument
+00da2610	RELOCATION_MATCH	147v147	PASS	CBriarRose::DoSpeech; nested Game->Slot(..., Game->GetHero()) fetches outer vtable first
+00eaed90	RELOCATION_MATCH	97v97	PASS	really CMurderTwistSheriff ctor (factory name "MurderTwistSheriff"); label propagated
+009c6020	RELOCATION_MATCH	98v98	PASS	~CBufferChunk with GFFreeFromGlobalAllocator __forceinline; Leaf ??1CBufferChunk
+004c5ea0	RELOCATION_MATCH	107v107	PASS	local model: engine header CBulletTimeManager.h is 4 bytes off after the 12-byte retail map
+0091a670	DIFFER	120v120	-	parked: really CAIStateGroupBase::WaitForMessageEvent<Bind3>; `mov eax,4` latch scheduling only
+00969760	DIFFER	120v120	-	parked: twin of 0091a670 (Bind2 filter); same scheduling-only diff
+00d69f50	RELOCATION_MATCH	121v121	PASS	really CHTE_Prisoner::Main (entity slot 1, factory "HTE_Prisoner"); class label propagated
+00d6a0d0	RELOCATION_MATCH	121v121	PASS	really CHTE_Executioner::Main (entity slot 1, factory "HTE_Executioner"); class label propagated
+00669d30	RELOCATION_MATCH	100v100	PASS	CRC lookup in a CRC->long STLport map at +0x28; owner class unknown (manifest name kept)
+00a5b020	DIFFER	124v128	-	parked: thrown CBBBFileException in its own frame word (retail) vs dead arg slot (lane)
+0049d380	MATCH	97v97	PASS	CCamera copy ctor; memberwise, float members as raw dwords
+008f8c00	RELOCATION_MATCH	110v110	PASS	really LSocket::Attach (caller LSocket::Accept); label CCamera::SetView propagated
+00a0c130	RELOCATION_MATCH	120v120	PASS	CCamera(pos, forward, up, hfov, vfov); FOVFlags(1) in the init list
+00a0c1b0	DIFFER	158v152	-	parked: x87 operand order of the cross-product products in the free arm
+008f0660	MATCH	144v144	PASS	CCard::Move; PDB byte-packed vectors (pack(1) = real layout)
+007e1e30	RELOCATION_MATCH	119v119	PASS	engine/CCarriedReadableDef.h + _Methods; inline CPersistContext::Transfer(CDefString&) twice
+005bcf61	MATCH	129v129	PASS	retail-offset CCategory view (header 4 bytes off); unsigned up-scan, signed wrap scan
+005bcfe2	MATCH	114v114	PASS	retail-offset CCategory view; signed down scans
+005bd0f7	DIFFER	132v140	-	parked: retail keeps an unreachable wrap block after `dec eax ; js`; lane folds it
+005bd9b2	RELOCATION_MATCH	107v107	PASS	itemType then inventory named locals stop jump threading of the flag
+005bdac5	RELOCATION_MATCH	136v136	PASS	optimize("y",off)+("s",on); scoped CDefPointer references
+005bf103	RELOCATION_MATCH	107v107	PASS	STLport *(begin()+n) keeps the scaled slot offset in edi
+005bf24a	RELOCATION_MATCH	124v124	PASS	optimize("y",off)+("s",on); flag parked in [ebp-1] across the def release
+005bfcd9	RELOCATION_MATCH	133v133	PASS	by-value CDefPointer (forceinline copy/dtor), implicit conversion temp for PAssociatedThing = 0
+0052c7e0	RELOCATION_MATCH	140v140	PASS	NUISystem::CChangingStateComponent::Update; chained X = Y = 1.0f
+0099b3c0	RELOCATION_MATCH	121v121	PASS	really CWideString::AllocStringData; ?: form + STLport _String_base/alloc_proxy
+0099b560	RELOCATION_MATCH	128v128	PASS	really CWideString::MakeOwnCopyOfData; tag temp in high byte of push-ecx frame
+0099b860	RELOCATION_MATCH	107v107	PASS	really CWideString::operator=(wchar_t); Leaf ??4CWideString
+0099e520	MATCH	127v127	PASS	operator!=(char) = !(forceinline ==); null-test-positive form for block order
+0099ea60	RELOCATION_MATCH	124v124	PASS	one hoisted operator new; forceinline (text,length) ctors
+0099f100	RELOCATION_MATCH	122v122	PASS	operator+=(const char*); data local + guarded do/while strlen
+0099f450	RELOCATION_MATCH	117v117	PASS	GetText()[i] read; named substring local
+0099f4d0	DIFFER	120v135	-	parked: lane jump-threads the GetLength/GetText null tests
