@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0066ae10	RELOCATION_MATCH	69v69	PASS	CGameScriptThing::IsSamplePlaying (label propagated); engine header + nested ifs, bool tail
+0066ae60	RELOCATION_MATCH	69v69	PASS	CGameScriptThing::IsSampleLoadedAndPlaying (label propagated); twin of 0066ae10
+00903710	RELOCATION_MATCH	73v73	PASS	ctor; inline handle-base ctor, PThing SetPItem(0); local model (header flat)
+009037e0	RELOCATION_MATCH	44v44	PASS	if (a && b) return true; two exits
+009038d0	RELOCATION_MATCH	75v75	PASS	returns CScriptThing by hidden ptr; out-of-line null ctor 0x008CFF40
+00903920	RELOCATION_MATCH	70v70	PASS	nested guard chain, creature local in esi, tail jump
+00903970	RELOCATION_MATCH	84v84	PASS	as 00903920 with four calls
+006a0c50	RELOCATION_MATCH	57v57	PASS	CCreatureAction_SheatheItemToInventory copy ctor (label propagated); counted ptr member ctor
+007e7490	RELOCATION_MATCH	57v57	PASS	returns CScriptThing; inline default ctor in null arm
+00905330	RELOCATION_MATCH	45v45	PASS	CScriptGameResourceObjectScriptedThingBase copy ctor; CBaseObject copy + counted ptr
+009775f0	RELOCATION_MATCH	57v57	PASS	CCreatureAction_JackScream copy ctor (label propagated); retail ptr +0x114 (PDB +0x12c)
+009cbd30	SKIP	-v84	-	row covers three AskHeroQuestion-style forwarders (int3 padding inside the row)
+00cb9c50	RELOCATION_MATCH	39v39	PASS	{CCharString, CCountedPointer} pair copy ctor (label propagated)
+00cb5c70	MATCH	32v32	PASS	CurrentScriptID = 1 is a BODY assignment (init list stores it first)
+00cb7d60	RELOCATION_MATCH	61v61	PASS	inline Find with end() cached once in a local
+006cb960	MATCH	44v44	PASS	CTCCreatureNavigation::SetNavigationTarget (label propagated); POD record assignment
+00851d30	MATCH	44v44	PASS	NCameraModes::CScriptModuleBase::SetCoordAxis; POD CRightHandedSet assignment
+00c10a30	RELOCATION_MATCH	57v57	PASS	SNavigationRequest ctor (label propagated); init list around two member ctors
+00c1e5a0	RELOCATION_MATCH	71v71	PASS	CThingSearchClient ctor (label propagated); POD copy + registry slot 9
+00c266e0	RELOCATION_MATCH	90v90	PASS	CNavigationTask_012b3fdc ctor (label propagated); request ctor inlined
+008527f0	RELOCATION_MATCH	47v47	PASS	bool && chain -> full-register 0/1
+0081d620	RELOCATION_MATCH	86v86	PASS	push_back, pair{long, POD20} element (label propagated)
+00be4380	RELOCATION_MATCH	82v82	PASS	push_back, 6-dword memberwise element (label propagated)
+00f3b420	RELOCATION_MATCH	82v82	PASS	push_back, 6-dword memberwise element (label propagated)
+00851e70	MATCH	91v91	PASS	operator+ into a named local, POD assignment to the owner
+00853190	RELOCATION_MATCH	74v74	PASS	OpenGate ctor; SelfTerminateBase ctor inlined
+00852490	RELOCATION_MATCH	38v38	PASS	WFDuration in init list, EndFrame in body
+00853260	DIFFER	38v38	-	block order: shared mov al,1 exit placed last by the lane (4 forms tried)
+004d18e0	RELOCATION_MATCH	92v92	PASS	push_back, pair{long, POD24} element (label propagated)
+00543c90	RELOCATION_MATCH	88v88	PASS	push_back, 7-dword memberwise element (label propagated)
+00852090	RELOCATION_MATCH	41v41	PASS	if (a && b && c) return true; two exits
+008524c0	RELOCATION_MATCH	71v71	PASS	ctor forwarding the first argument twice to SetUpTransitionCamera
+00852510	RELOCATION_MATCH	75v75	PASS	ctor forwarding six arguments to SetUpTransitionCamera
+00abed70	RELOCATION_MATCH	94v94	PASS	push_back, 8-dword memberwise element (label propagated)
+00b31c10	RELOCATION_MATCH	94v94	PASS	push_back, 8-dword memberwise element (label propagated)
+00bf5fe0	RELOCATION_MATCH	88v88	PASS	push_back, 7-dword memberwise element (label propagated)
+004aa8d0	RELOCATION_MATCH	42v42	PASS	pimpl forward, slot 2; static empty CCharString copy
+004aa900	RELOCATION_MATCH	42v42	PASS	pimpl forward, slot 3; static empty CCharString copy
+004aa940	RELOCATION_MATCH	57v57	PASS	pimpl forward, slot 5; static zero C3DVector copy
+004aa9a0	RELOCATION_MATCH	57v57	PASS	pimpl forward, slot 7; static zero C3DVector copy

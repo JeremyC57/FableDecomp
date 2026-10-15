@@ -64,7 +64,7 @@ forms tried | next: idea or "lane gap"`. For each one:
 4. Delete the fixed row's `differ/` source and hand-over line; when a batch's `differ/` is empty remove its pending dir.
 
 ## Step 3 -- docs after each landed part (Fable)
-GOTCHAS: one `- Wave 25x (...)` line built from the batches' NOTES "What matched" lessons; journal
+GOTCHAS: one `- Wave 25x (...)` line built from the batches' NOTES "What matched" lessons and each pending dir's `LESSONS.md` (the agent's final-report lessons plus any review item, e.g. a local base model next to an existing engine header -- check those before accepting the batch); journal
 `docs/journal/2026-10/LINUX_CONTAINER_LANE_2026-10-13.md` (new part section above the previous one); `docs/HANDOFF.md`
 and `docs/ROADMAP.md` counts; `python3 tools/write_decomp_dashboard.py && python3 tools/update_readme_progress.py`;
 commit `land: ...` as BuffJesus with the session's Co-Authored-By / Claude-Session lines; `git push -u origin FullDecomp`.
@@ -79,8 +79,9 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | pending batch | chunk | matched (to land) | parked | skipped | state |
 |---|---|---|---|---|---|
 | `2026-10-14_linux_hand58` | Hand chunk 58 (CMessageEventFilter_IsOriginatedByThing .. CMouseCursor): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand73` | Hand chunk 73 (CScriptGameResourceObjectScriptedThing .. CScriptThing): 38 of 40 byte-exact | 38 | 1 | 1 | STAGED: land it |
 
-Totals: **34 matched rows staged for landing**, **6 parked rows** for the Fable retry pass.
+Totals: **72 matched rows staged for landing**, **7 parked rows** for the Fable retry pass.
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -91,5 +92,9 @@ Totals: **34 matched rows staged for landing**, **6 parked rows** for the Fable 
 - 0082a390 GetNonAutoMarkers: prologue only -- retail pushes ebx/esi at the entry, the lane shrink-wraps them into the non-empty branch; the loop (malloc, placement test, link) is byte-identical.
 - 00741d60 CModeExplosiveForcePushed `??_G`: the lane calls the implicit ~CAnimFilterOfGroup and ~CModeBase out of line where retail inlines them; verified in the lane's object that an implicit destructor stores only the BASE vtable (so a user `__forceinline` destructor adds a store retail lacks); `novtable` and the inline pragmas do not help.
 - 006af2d0 IsOriginatorAlive::operator(): the inlined GetPOriginator<CThing> constant-false check (`mov [esp+8],eax ; xor al,al ; jne`) that the lane folds (`return false`, `thing != thing`, `(unsigned long)thing < 0` through a `CThing* const&` tried) -- the same gap as the parked 0x006AF4E0.
+
+
+#### `2026-10-15_linux_hand73` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand73/differ/`)
+- 00853260 NCameraModes::CScriptModuleSpline::IsFinished DIFFER(38v38): retail `je 85327Ch` after the dead-bit test with the shared `mov al,1 ; pop esi ; ret` exit as its fall-through and the `mov al,[esi+58h] ; test al,al ; setne al` tail last; the lane emits `jne` to a `mov al,1` exit placed after the setne tail (same instructions, block order only) | tried: `if (!p || p->m_dead) return true; return RF != 0;`, `if (p && !p->m_dead) return RF != 0; return true;`, `return !p || p->m_dead || RF;` (bool: full-register 0/1, 42 bytes), nested `if (p) { if (dead) return true; return RF != 0; } return true;` | next: the lander's optimize("s"/"t") sweep, then lane gap: block placement of a shared constant-return exit
 
 <!-- queue:end -->
