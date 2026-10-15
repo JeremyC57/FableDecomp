@@ -99,6 +99,26 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 `rebuild/candidates/manual/batches/2026-10-14_linux_hand59/README.md` and `..._hand60/README.md` (sources in
 `$S/w22/agent59/parked/`, `$S/w22/agent60/parked/`; scratch only).
 
+## Paused agent chunks (owner's pause, 2026-10-15) -- scratch only, NOT staged
+The owner paused the fleet. Ten chunks stopped part-way; their work is only in `$S/w22/agentNN/` (lost on a container reset).
+Each has `PROGRESS.md` (per-row state, attempt counts, next steps). To resume: SendMessage the agent (or give a fresh agent
+its PROMPT.md plus "resume from PROGRESS.md"), then stage it with `stage_pending.sh` when finish.py has run.
+
+| chunk | matched | parked | skipped | left to do |
+|---|---|---|---|---|
+| 80 | 35 graded + 5 matched in probes | 0 | 0 | grade 2, write 3 sources, 38 tests, gall/tall, STATUS/NOTES, finish |
+| 83 | 32 | 8 | 0 | fix two header lengths, 32 tests, gall/tall, STATUS/NOTES/LESSONS, finish |
+| 84 | 36 | 3 | 1 | 24 tests, gall/tall, STATUS/NOTES/LESSONS, finish |
+| 85 | 27 | 8 | 0 | 1 row analysed, 4 not started, all tests, finish |
+| 86 | 34 (tests pass) | 4 | 2 | re-grade 3 re-signatured sources with absolute paths, update 3 tests, STATUS/NOTES/LESSONS, finish |
+| 87 | 36 | 4 | 0 | rename 4 methods + regrade, move 2 parked sources out of src/, 31 tests, finish |
+| 88 | 28 | 3 | 0 | 1 in progress, 8 not started, all tests, finish |
+| 89 | 34 (in probe/ only) | 6 | 0 | write the 34 final sources into src/, regrade 006ca040 / 007b29b0, all tests, finish |
+| 90 | 32 | 4 | 0 | 0057adb8 (1 attempt left; its src/ file does NOT match yet), 3 rows, all tests, finish |
+| 91 | 19 (tests pass) | 1 | 1 | 19 rows not started, finish |
+
+Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never launched.
+
 ## Generated status
 <!-- queue:begin -->
 | pending batch | chunk | matched (to land) | parked | skipped | state |
@@ -122,21 +142,26 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand77` | Hand chunk 77 (CSpellContainerList .. CSubtitleRenderer): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand78` | Hand chunk 78 (CSubtitledMessage .. CSystemManager): 38 of 40 byte-exact | 38 | 2 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand79` | Hand chunk 79 (CSystemManager .. CTCActionUseBuyHouse): 37 of 40 byte-exact | 37 | 2 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand81` | Hand chunk 81 (CTCAssassinRush .. CTCBoastingPodium): 36 of 40 byte-exact | 36 | 4 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand82` | Hand chunk 82 (CTCBoastingPosition .. CTCCameraPointScripted): 33 of 40 byte-exact | 33 | 7 | 0 | STAGED: land it |
 
-Totals: **757 matched rows staged for landing**, **75 parked rows** for the Fable retry pass.
+Totals: **794 matched rows staged for landing**, **77 parked rows** for the Fable retry pass.
 
-### Skipped rows (15 open of 15 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (19 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
 | `00455fa0` | multi | open | 00455fa0:8 00455fa8:12 00455fb4:22 | `2026-10-15_linux_hand66` | three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter) |
 | `00581ab3` | multi | open | 00581ab3:46 00581ae1:32 | `2026-10-15_linux_hand91` | two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging) |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
+| `007312f0` | multi | open | 007312f0:5 00731300:3 | `2026-10-15_linux_hand86` | CTCDoor::vfunc_10 row holds two functions (chunk 86, paused before staging) |
 | `0073a840` | multi | open | 0073a840:49 0073a880:18 | `2026-10-14_linux_hand59` | two functions after the int3 padding |
+| `00750960` | multi | open | 00750960:5 00750970:3 | `2026-10-15_linux_hand84` | two functions: jmp [eax+24h], int3 padding, then mov al,1 ; ret (chunk 84, paused before staging) |
+| `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
 | `0088b7e0` | multi | open | 0088b7e0:17 0088b800:4 | `2026-10-15_linux_hand74` | row spans two functions (0x88b7e0 + 0x88b800) |
 | `008aae20` | multi | open | 008aae20:22 008aae40:27 008aae60:4 008aae70:4 | `2026-10-15_linux_hand74` | row spans four functions |
+| `00991620` | multi | open | 00991620:24 00991640:36 | `2026-10-15_linux_hand86` | EditFrameUpdate row holds two functions (chunk 86, paused before staging) |
 | `009cbd30` | multi | open | 009cbd30:20 009cbd50:19 009cbd70:20 | `2026-10-15_linux_hand73` | three AskHeroQuestion-style forwarders separated by int3 padding |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00aacf90` | multi | open | 00aacf90:5 00aacfa0:4 | `2026-10-15_linux_hand76` | a jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding |
@@ -262,6 +287,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 #### `2026-10-15_linux_hand78` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand78/differ/`)
 - 009f31c0 CSurface::SetPixel DIFFER(84v82): retail `imul eax,[x] ; mov ecx,[rect] ; mov edx,[ecx+8] ; imul edx,[y] ; add edx,eax ; add edx,[ecx+0Ch]` vs ours `imul eax,[x] ; mov ecx,[rect] ; mov edx,[ecx+8] ; imul edx,[y] ; mov ecx,[ecx+0Ch] ; add eax,edx ; add ecx,eax` (register choice of the pixel-address sum) | tried: `PMem + y*Pitch + x*depth`, `&PMem[y*Pitch + x*depth]`, `PMem + Pitch*y + depth*x` (all 86v82: depth copied to ecx, rect in eax), a named `long offset` local (84v82) | next: an inline `CSurfaceLockedRect::GetPixelAddress(x, y, bytesPerPixel)` helper, or a `const CRGBColour&` colour parameter; else lane gap: register allocation.
 - 004e06c3 CShopDef::CShopDef DIFFER(62v62): retail `mov [esi+4Ch],eax ; mov [esi+50h],eax ; lea ecx,[esi+64h] ; mov [esi+54h],eax` vs ours `lea ecx,[esi+64h]` right after the `[esi+48h]` store | tried: vectors as inline-constructed members, the same under optimize("s"), six plain init-list words (lea above all six stores) | next: lane gap: member-constructor `lea` scheduled after a run of register-zero stores (GOTCHAS wave 24i).
+
+
+#### `2026-10-15_linux_hand79` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand79/differ/`)
+- 007eac10 CTCActionUseBase::OnCreate DIFFER(93v81): retail keeps the local def pointer in esi from GetSubDef through its release and stores its zero after the argument pushes; ours re-reads the frame slot | tried: plain CDefPointer local, raw pointer copy probe (83v81) | next: lane gap: CDefPointer local filled through `&local` re-read (GOTCHAS 24k; as hand82 0x007E3040)
+- 007eac70 CTCActionUseBase::vfunc_6 DIFFER(63v63): retail loads ParentThing into ecx before the three argument pushes, ours after | tried: named string local, named thing local, inline GetThing() accessor, implicit CCharString conversion | next: lane gap: scheduling
 
 
 #### `2026-10-15_linux_hand81` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand81/differ/`)
