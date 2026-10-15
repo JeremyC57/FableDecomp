@@ -1,0 +1,82 @@
+// CDefendingCombatantInfo::CDefendingCombatantInfo(const CDefendingCombatantInfo& other) -- copy constructor: attacker map and combat-wheel ring vector copied out of line, the scalars word by word, the last-attacker intelligent pointer re-pointed, the attack-pattern def pointer shared with an add-ref
+// Leaf: ??0CDefendingCombatantInfo
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x006F46D0, length 116 bytes (`ret 4`).
+// Callees: map<unsigned __int64, CThingCreatureBase*> copy constructor @ 0x006F33A0, vector<CCombatRing> copy constructor
+// @ 0x006F43C0 (CombatWheel's only member), CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10,
+// ::GetPItem @ 0x00A01B50, ::SetPItem @ 0x00A01B90 (CIntelligentPointer<CThing> vtable 0x01238C6C).
+// Layout (Ego_r.pdb with retail 12-byte STLport containers): Attackers +0x00, CombatWheel +0x0c, LastVictimWheelUpdatePos
+// +0x18, LastWheelUpdateWorldFrame +0x24, PLastAttacker +0x28, PAttackPattern +0x30, AttackPatternIndex +0x34,
+// FrameForNextInstruction +0x38.
+// Shape: a memberwise copy constructor in declaration order; the inline CDefPointer copy constructor loads, tests and
+// stores the object word before `inc dword ptr [eax+4]`; C3DVector's memberwise user copy constructor moves its three
+// words straight through ecx/edx/eax (an implicit struct copy goes through `lea` re-based pointers).
+struct CBaseObject;
+struct CThingCreatureBase;
+struct CAttackPatternDef;
+
+struct CAttackerMap {                            // map<unsigned __int64, CThingCreatureBase*> (STLport, 12 bytes)
+    unsigned char _tree[0xc];
+    CAttackerMap(const CAttackerMap& other);     // 0x006F33A0
+};
+struct CCombatRingVector {                       // vector<CCombatRing> (STLport, 12 bytes)
+    void* _M_start;
+    void* _M_finish;
+    void* _M_end_of_storage;
+    CCombatRingVector(const CCombatRingVector& other);   // 0x006F43C0
+};
+struct CCombatWheel {
+    CCombatRingVector CombatRings;               // +0x00
+};
+struct C3DVector {                               // floats, moved as dwords (a float member copy would go through the FPU)
+    unsigned long X, Y, Z;
+    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
+};
+
+struct CBaseIntelligentPointer {
+    virtual void v00();
+    CBaseObject* m_pItem;                        // +4
+    CBaseIntelligentPointer();                   // 0x00A01B10
+    CBaseObject* GetPItem() const;               // 0x00A01B50
+    void SetPItem(CBaseObject* item);            // 0x00A01B90
+};
+struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+    virtual void v00();
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+};
+
+struct CDefPointee {
+    virtual void v00();
+    long m_refCount;                             // +4
+};
+struct CDefPointer {                             // CDefPointer<const CAttackPatternDef>
+    CDefPointee* Object;
+    CDefPointer(const CDefPointer& other) : Object(other.Object)
+    {
+        if (Object)
+            ++Object->m_refCount;
+    }
+};
+
+struct CDefendingCombatantInfo {
+    CAttackerMap        Attackers;               // +0x00
+    CCombatWheel        CombatWheel;             // +0x0c
+    C3DVector           LastVictimWheelUpdatePos;   // +0x18
+    long                LastWheelUpdateWorldFrame;  // +0x24
+    CIntelligentPointer PLastAttacker;           // +0x28
+    CDefPointer         PAttackPattern;          // +0x30
+    long                AttackPatternIndex;      // +0x34
+    long                FrameForNextInstruction; // +0x38
+    CDefendingCombatantInfo(const CDefendingCombatantInfo& other);
+};
+
+CDefendingCombatantInfo::CDefendingCombatantInfo(const CDefendingCombatantInfo& other)
+    : Attackers(other.Attackers)
+    , CombatWheel(other.CombatWheel)
+    , LastVictimWheelUpdatePos(other.LastVictimWheelUpdatePos)
+    , LastWheelUpdateWorldFrame(other.LastWheelUpdateWorldFrame)
+    , PLastAttacker(other.PLastAttacker)
+    , PAttackPattern(other.PAttackPattern)
+    , AttackPatternIndex(other.AttackPatternIndex)
+    , FrameForNextInstruction(other.FrameForNextInstruction)
+{
+}

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008ec700	RELOCATION_MATCH	103v103	PASS	UndeadReturnToEarth::FinishAction; temp UndeadIdleUnderground action
+008ec3f0	RELOCATION_MATCH	118v118	PASS	UndeadRiseUp::FrameUpdate
+008ec470	RELOCATION_MATCH	119v119	PASS	UndeadRiseUp::FinishAction; creature local before pushes
+0069f910	RELOCATION_MATCH	110v110	PASS	UnsheatheItemFromInventory::Initialise
+0069fc40	RELOCATION_MATCH	136v136	PASS	UnsheatheItemFromInventory::FinishAction
+006a0e80	RELOCATION_MATCH	97v97	PASS	UnsheatheItemFromInventory copy ctor
+006dd8f0	RELOCATION_MATCH	132v132	PASS	UnsheatheToShowToSheatheTrophy::FinishAction; packed ShowTrophy temp
+007e92d0	RELOCATION_MATCH	144v144	PASS	really CTCAvoidRegionExit::RebuildStaticThingLists (label wrong)
+00847fb0	DIFFER	108v106	-	UseLamp: CTCLight pointer via eax then copied to ecx (retail loads ecx directly)
+0069f230	RELOCATION_MATCH	125v125	PASS	UseObject ctor
+008c5370	RELOCATION_MATCH	158v158	PASS	WaspQueenDie::FinishAction; creature local forces LoopNum reload
+008c4040	RELOCATION_MATCH	131v131	PASS	WaspQueenLashOutAttack::Initialise
+008c3f90	RELOCATION_MATCH	131v131	PASS	WaspQueenPrimaryAttack::Initialise
+008c0820	RELOCATION_MATCH	130v130	PASS	WhisperSommersaultForward::Initialise
+0077ed20	RELOCATION_MATCH	114v114	PASS	really __pop_heap<pair<CCharString,C3DVector>> (label wrong)
+00f29d00	DIFFER	144v144	-	CCutsceneDef ctor: 3-bit flag clear and -1 store sink below the vtable store (scheduling)
+00e01670	RELOCATION_MATCH	107v107	PASS	CDarkwoodTrader ctor (entity script)
+009c7ef0	RELOCATION_MATCH	120v120	PASS	CDataBank::ConvertNarratorNameToIndex; cursor pointer local
+009c95e0	RELOCATION_MATCH	150v150	PASS	NGameText::CDataBank::GetTextBySymbol; named counted-pointer + hand release
+009945e0	RELOCATION_MATCH	138v138	PASS	CDataInputStream::ReadColour
+00994670	RELOCATION_MATCH	137v137	PASS	CDataInputStream::ReadPixelFormat
+00994c80	RELOCATION_MATCH	149v149	PASS	CDataInputStream::ReadNullTerminatedString
+00994d20	RELOCATION_MATCH	155v155	PASS	CDataInputStream::ReadNullTerminatedWString
+00429880	RELOCATION_MATCH	105v105	PASS	really CRGBFloatColour::GetRGBColour (label wrong)
+00994230	RELOCATION_MATCH	151v151	PASS	CDataOutputStream::WriteRepeatedByte; Flags /GS
+00720cb0	DIFFER	122v121	-	__linear_insert: value key not cached in ebx across copy_backward (tail copy ctor takes &value)
+0081bda0	RELOCATION_MATCH	135v135	PASS	really SGI __linear_insert (24-byte pair)
+0082f5c0	DIFFER	62v111	-	STLport __default_constructed<_Tp>: retail copy chain through a 0x30 frame not reproduced
+009e9d40	RELOCATION_MATCH	109v109	PASS	CDateAndTime::ToFileTime
+00a33780	RELOCATION_MATCH	119v119	PASS	really SGI __linear_insert (20-byte pair)
+004b7980	RELOCATION_MATCH	107v107	PASS	CDefString::operator==(const CCharString&)
+0076d640	RELOCATION_MATCH	107v107	PASS	CDefString::operator!=(const CCharString&)
+00c0bce0	RELOCATION_MATCH	120v120	PASS	really MFC-style CString::Compare (label wrong)
+009d4f10	RELOCATION_MATCH	119v119	PASS	CDefStringTable::Unlock
+00b8fc40	RELOCATION_MATCH	131v131	PASS	ApplyCustomSettings; by-value inline helper keeps float on FPU
+006ec7d0	RELOCATION_MATCH	118v118	PASS	really CCombatWheel::AddRing (label wrong); named index local
+006f46d0	RELOCATION_MATCH	116v116	PASS	CDefendingCombatantInfo copy ctor
+009ad410	DIFFER	135v141	-	GetDefGlobalIndexFromName: out-value homed in dead arg slot (no push-ecx frame), register colouring
+00b6bd40	RELOCATION_MATCH	113v113	PASS	CDefinitionManager::GetDef<CSoundThemeDef> (speed twin of landed family)
+00a972a0	MATCH	102v102	PASS	Sizeof of a CArray of counted CTriangleList pointers (label class doubtful)
