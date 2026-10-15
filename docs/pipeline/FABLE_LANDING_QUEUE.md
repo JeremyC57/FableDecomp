@@ -163,6 +163,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand136` | Hand chunk 136 (CEnginePrimitiveManagerAnimatedMeshesBase .. CEngineSceneGrid): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand137` | Hand chunk 137 (CEngineSceneGrid .. CEngineWeatherRenderer): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand138` | Hand chunk 138 (CEngineWeatherRenderer .. CFactionDatabase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand139` | Hand chunk 139 (CFadeinSummoner .. CGameScriptInterface): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand140` | Hand chunk 140 (CGameScriptInterface .. CGameScriptInterface): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand141` | Hand chunk 141 (CGameScriptInterface .. CGameScriptInterface): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
@@ -216,7 +217,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **362 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **366 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -567,6 +568,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00b3edf0 CEngineWorldMap::LinkMapToWorld DIFFER(131v131): retail `mov ebx,[ecx+18h]` before the map words, unshifted start X kept in edi and shifted after the Y bounds, row index in ebx; ours `mov edi,[ecx+18h]`, start X shifted at once, x/y registers swapped in the loops | tried: natural expressions (short and long index), offset/position locals, unshifted bounds shifted later | next: lane gap: register allocation (same instructions, registers swapped)
 - 00b3ee80 CEngineWorldMap::UnlinkMapFromWorld DIFFER(119v119): retail `mov ebx,edx ; ... ; sub ebx,edi` (start X subtracted after loading the Y words, shifted after start Y); ours `sub edx,edi ; mov edi,[ecx+1Ch] ; sar edx,5` before the Y loads | tried: natural expressions, four-argument SCellBox constructor (141 bytes, worse) | next: lane gap: scheduling (same instructions, other order)
 - 00530ec0 CDefOwner00530ec0::GetDef DIFFER(99v98): retail `mov ecx,[esp+4] ; ... ; mov edx,[ecx+4] ; inc edx ; mov eax,edx ; dec eax ; mov [ecx+4],edx ; mov [ecx+4],eax` vs ours `mov eax,[esp+4] ; mov ecx,eax ; mov edx,[eax+4] ; add eax,4 ; inc edx ; mov [eax],edx ; dec edx ; mov [eax],edx` | tried: CDefPointer local returned by value (reloads the slot after the inc), ternary manager (Get() hoisted above the pushes), if/else on a manager local, frontEnd local + hand release through an inline guard (manager part now byte-exact) | next: build the returned pointer straight from the out slot (`CDefPointer(const SDefSlot&)`) or let the guard read the slot itself so the object is loaded into ecx
+
+
+#### `2026-10-15_linux_hand139` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand139/differ/`)
+- 00d9fe40 CFadeinSummoner::GetAlphaChange DIFFER(112v112): block placement only -- retail keeps the shared `fld [0.0f] ; ret` in the `<= 0` arm and the `> 0` arm's IsDone jumps back into it; the lane keeps it in the later arm | tried: `> 0` arm first, `<= 0` arm first, `!IsDone()` first-arm return, one shared trailing `return 0.0f` | next: lane gap: tail-merge block placement
+- 00f37030 CGPUScratchBufferTextureManager::FreeMemoryPage DIFFER(146v140): retail overlays push_back's empty SScalarTag on the LIVE page parameter slot (`lea edx,[esp+18h]` and `[esp+1Ch]` both = &page, no frame); the lane gives the tag its own `push ecx` word and re-stores ebx into the page slot | tried: const& push_back (page reloaded every pass), a local index copy (137v140), by-value push_back (146v140, body otherwise identical) | next: lane gap: empty tag temporary over a live argument slot (wave 24l)
+- 0069a920 CGameCameraManager::RemoveCombatCameraMode DIFFER(116v104): the local CDefPointer destructor -- retail `mov ecx,[esp+4] ; test ; je ; dec [ecx+4] ; jne`, the lane `mov eax,[slot] ; ... mov esi,[eax+4] ; add eax,4 ; dec esi ; mov edx,esi ; test ; mov [eax],esi`; also the local's zero store before the index load (retail: after `push eax`) | tried: member decrement, local-copy decrement, pointee-side Release(), CDefPointer::Release() | next: a CDefPointer whose destructor calls an out-of-line-looking helper, or lane gap: def-pointer frame-slot release
+- 0069ac90 CGameCameraManager::SetCameraManagerSetDef DIFFER(136v124): the same local CDefPointer destructor shape and zero-store order as 0069a920 (the operator= part matches) | tried: as 0069a920 | next: as 0069a920
 
 
 #### `2026-10-15_linux_hand140` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand140/differ/`)

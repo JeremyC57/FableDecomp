@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00d9fe40	DIFFER	112v112	-	parked: shared return-0.0f block placement
+00f2d200	RELOCATION_MATCH	111v111	PASS	memberwise assignment, base op= out of line
+00f2d270	RELOCATION_MATCH	117v117	PASS	memberwise copy ctor, vtable after base
+009c31e0	RELOCATION_MATCH	103v103	PASS	volatile pause count; Unlock before wait
+009c32c0	RELOCATION_MATCH	103v103	PASS	quotient reads members -> computed before lock dtor
+009c3a60	MATCH	116v116	PASS	STLport *(begin()+i) + unsigned size loop
+009c5310	RELOCATION_MATCH	139v139	PASS	inlined GFAllocateFromGlobalAllocator in loop
+00780540	RELOCATION_MATCH	144v144	PASS	zero-init local emitter accessor; IP temp assign
+007813d0	RELOCATION_MATCH	123v123	PASS	copy ctor with inline IP copy ctors
+00d3ace0	MATCH	113v113	PASS	label suspect: FireHeart entity (no arg); nested Game calls
+00e80cf0	RELOCATION_MATCH	100v100	PASS	by-value CCharString destroyed by callee
+00e81a60	RELOCATION_MATCH	99v99	PASS	done check returns true before store
+00e81ad0	RELOCATION_MATCH	107v107	PASS	done check returns false before store
+0087b6f0	RELOCATION_MATCH	127v127	PASS	uninit out pointer + never-assigned fallback pointer
+00a462a0	RELOCATION_MATCH	141v141	PASS	label wrong: __pop_heap<C3DSkeletalBoneMorph>
+00a701d0	RELOCATION_MATCH	141v141	PASS	label wrong: __pop_heap<pair<CCharString,C3DHelperPoint>>
+00a633a0	RELOCATION_MATCH	123v123	PASS	local model (header layout 0x64 high)
+009fdc20	RELOCATION_MATCH	136v136	PASS	else return false arm; inline CCountedPointer reset
+00f37030	DIFFER	146v140	-	parked: tag temporary over live page slot (lane gap)
+00697760	RELOCATION_MATCH	131v131	PASS	retail offsets, one zero register
+00697b70	RELOCATION_MATCH	150v150	PASS	counted-pointer op= + by-value param dtor
+00698840	RELOCATION_MATCH	105v105	PASS	named map iterator local; ReleaseTemporary dtor
+006988b0	RELOCATION_MATCH	147v147	PASS	CDefPointer local copied into by-value arg
+00698950	RELOCATION_MATCH	124v124	PASS	inline counted-pointer reset
+006994f0	RELOCATION_MATCH	108v108	PASS	alive idiom + GetInterface 0x36
+0069a920	DIFFER	116v104	-	parked: def-pointer local release shape
+0069ac90	DIFFER	136v124	-	parked: def-pointer local release shape
+0069b650	RELOCATION_MATCH	152v152	PASS	twin of UpdateObservedThingInMelee
+0069b6f0	RELOCATION_MATCH	158v158	PASS	subtitle query bool taken before tests
+00a34420	RELOCATION_MATCH	159v159	PASS	label wrong: __pop_heap<pair<ulong,named counted ptr>>
+00a71b40	RELOCATION_MATCH	159v159	PASS	label wrong: __pop_heap twin of 00a34420
+00cbbad0	RELOCATION_MATCH	153v153	PASS	label wrong: __pop_heap<pair<CCharString,CCountedPointer>>
+00450bff	RELOCATION_MATCH	115v115	PASS	/Os: forceinline CDefPointer dtors, no vtable
+009f1870	MATCH	124v124	PASS	bool local declared first fixes spills
+009f1650	MATCH	105v105	PASS	implicit 0x28-byte struct copies
+006b7760	RELOCATION_MATCH	137v137	PASS	CGameMapCell() temp with empty user ctor
+00445a60	RELOCATION_MATCH	124v124	PASS	mouse device named local
+00445c30	RELOCATION_MATCH	122v122	PASS	input type object named local per entry
+00435000	RELOCATION_MATCH	98v98	PASS	retail PlayerManager +0xc; GetInterface 0x8e
+006e71f0	RELOCATION_MATCH	128v128	PASS	while loop over float end frame
