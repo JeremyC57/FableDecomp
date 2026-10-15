@@ -38,4 +38,5 @@ PY
 python3 -u tools/decomp_pipeline/verify_and_land.py "$D/payload.json" "$D/oracle.tsv" --land 2>&1 | grep -E "DIFFER|FAIL|WINS|LANDED|TCC|SRC_FAIL" || true
 cp "$P/NOTES.md" "$D/README.md"
 rm -rf "$P/payload.json" "$P/oracle.tsv" "$P/src" "$P/test"
+python3 tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/skipped_ledger.py refresh
 echo "landed $1 -- compare WINS with the staged count; any row the lander refused goes to differ/ + the queue doc"

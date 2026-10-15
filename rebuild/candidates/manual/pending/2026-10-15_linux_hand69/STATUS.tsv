@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00da2490	RELOCATION_MATCH	92v92	PASS	script WAIT loop (rotated, aligned) + trailing terminate test; ebx=1 shared by compare and bool store
+00ddb450	RELOCATION_MATCH	66v66	PASS	++master counter; DeactivateQuestLater("Q_PrisonRace", 1) via implicit CCharString temporary
+00e1a870	RELOCATION_MATCH	89v89	PASS	AddQuestRegion("Q_WizardBattle","HookCoast") implicit temporaries; MazeConversation = 0
+00e1d640	RELOCATION_MATCH	71v71	PASS	CleanUp; SetTeleportingAsActive(true); DisplayQuestInfo(false); 0x00E1D7B0; GiveHeroExperience(master+0xfa4); MissionSucceeded
+00b48e10	RELOCATION_MATCH	59v59	PASS	relabelled CDynamicObjectHeap<56,16>::Release (FableWin.pdb); block chain at +0x398
+00bdda50	MATCH	44v44	PASS	delete the collection chain (Next read before delete's null test)
+00bddcb0	RELOCATION_MATCH	85v85	PASS	manager local in ebx; counted child loop + chain for loop
+00bde020	RELOCATION_MATCH	87v87	PASS	bool bitfields at +0x48; counted delete loop over Children
+00bde080	DIFFER	44v49	-	lane tail-recursion elimination turns the Children[1] sibling jmp into a loop
+00ac6ef0	MATCH	91v91	PASS	eleven doubles scaled; fld st(0) per member
+00c256a0	MATCH	27v27	PASS	relabelled C3DVector::DotProduct (float, Z+Y+X order)
+00c257e0	MATCH	33v33	PASS	relabelled C3DVector operator+ (__fastcall, hidden result in ecx, ctor args right to left)
+00c88990	MATCH	31v31	PASS	relabelled AddPS (addps twin of landed MulPS_00c889b0)
+00a88c10	RELOCATION_MATCH	56v56	PASS	*this = *this * q; implicit 4-dword assignment
+00a88c50	RELOCATION_MATCH	96v96	PASS	if (four fabs < eps &&) return true; return false;
+00a88cb0	RELOCATION_MATCH	83v83	PASS	X,Y,Z near 0 and W near 1.0f (0x0122DED8)
+006caba0	MATCH	90v90	PASS	relabelled CCompositeBlendDesc ctor; colour copy through inline Set(r,g,b,a)
+0077c210	RELOCATION_MATCH	53v53	PASS	relabelled CEngineMeshEffectDistanceFade ctor (vtable 0x0126ADE0); inline root/base ctors
+0064a515	RELOCATION_MATCH	83v83	PASS	/Os; base modelled novtable (inline base dtor would re-store 0x0125A2B4)
+00656c3c	RELOCATION_MATCH	55v55	PASS	/Os; base(scale) + Graphic + Text(L"") + Ticked init list
+004af300	RELOCATION_MATCH	68v68	PASS	C3DVector(0,0,0) float temporary stored after the pushes; return true
+004af3f0	RELOCATION_MATCH	83v83	PASS	index call into a named local first, then AddMessage
+004af670	RELOCATION_MATCH	84v84	PASS	key data local inside the non-empty guard of a do/while (hoisted across Compare)
+004af9c0	RELOCATION_MATCH	68v68	PASS	out-of-line CCharString != then Failed/Completed skip tests
+004afa10	MATCH	67v67	PASS	&& chain over PScript, MasterScript, MasterScriptDataAlloc
+004afbb0	DIFFER	72v72	-	register colouring only (this/thing in ebx/ebp swapped; uid via ecx/edx)
+004afc00	RELOCATION_MATCH	47v47	PASS	for each active quest with a script: OnRegionLoaded(region)
+004afc30	RELOCATION_MATCH	47v47	PASS	relabelled OnRegionUnloaded (FableWin.pdb); twin of 0x004AFC00
+004b0160	RELOCATION_MATCH	75v75	PASS	last local declared before the vector pointer; found path in the if body
+004b0e50	RELOCATION_MATCH	93v93	PASS	out-param GetInterface (result ignored, uninitialised slot read); GoldReward
+004b0eb0	RELOCATION_MATCH	93v93	PASS	relabelled SetQuestCardRenownReward (FableWin.pdb); RenownReward +0x30
+004b27f0	RELOCATION_MATCH	82v82	PASS	relabelled CRuntimeQuestPersistence::GetQuestMasterDataPersistScript; inline find with last local
+004b3810	DIFFER	76v76	-	tag temporary homed on the live `enabled` slot in retail, dead `script` slot in the lane
+004b3900	RELOCATION_MATCH	95v95	PASS	same do/while search as 0x004AF670; AddPRegion on the found quest
+004b49e0	RELOCATION_MATCH	41v41	PASS	DeactivateAllQuests; inline RemoveAllBoasts; WorldDestructed = true
+004b5030	RELOCATION_MATCH	77v77	PASS	CCharString + CPersistContext(string) locals; OnPersist slot 1; SetQuestMasterDataPersistScript
+009ccdc0	RELOCATION_MATCH	35v35	PASS	relabelled CBankFile::FindIndexBySymbol (FableWin.pdb); map at +0xac
+0046ee2d	RELOCATION_MATCH	57v57	PASS	/Os copy ctor: base copy, vtable, five dwords through eax
+0046ef87	RELOCATION_MATCH	49v49	PASS	/Os virtual Copy (void): qualified base Copy then five dwords
+00855ee0	RELOCATION_MATCH	75v75	PASS	relabelled CCreatureAction_BlockBase copy ctor; C3DVector memberwise copy ctor

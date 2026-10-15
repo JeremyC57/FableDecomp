@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004aaa40	RELOCATION_MATCH	20v20	PASS	GetAngleXY pimpl forward; named float local keeps call;ret
+004abe90	RELOCATION_MATCH	33v33	PASS	copy ctor; PImp member inline copy ctor after vtable store
+004abf80	RELOCATION_MATCH	60v60	PASS	MsgWhoKnockedMeOut; impl pointer in a local, copy ctor inlined
+0050eef0	MATCH	52v52	PASS	label wrong (CScriptThing::IsAlive); thing-filter operator(), two kept tails
+00704730	RELOCATION_MATCH	31v31	PASS	label wrong; CGameScriptThingManager::GetNullScriptThing (PDB name)
+0088b7e0	SKIP	-v36	-	row spans two functions (0x88b7e0 + 0x88b800)
+008aae20	SKIP	-v84	-	row spans four functions
+008ab980	RELOCATION_MATCH	74v74	PASS	CScriptThing::operator=; source words read into locals first
+00a0a550	RELOCATION_MATCH	50v50	PASS	label wrong; {CCharString, CCountedPointer} Sizeof
+00a0a610	RELOCATION_MATCH	50v50	PASS	label wrong; byte-identical twin of 00a0a550
+00c3eb60	SKIP	-v57	-	row spans two functions (0xc3eb60 + 0xc3eb80)
+00c40e20	SKIP	-v62	-	row spans four functions
+00ca5510	SKIP	-v92	-	row spans four functions
+0082e290	RELOCATION_MATCH	74v74	PASS	C2DBoxI inline Contains/Width (calibrated on 0x82e3d0)
+0082e2e0	MATCH	70v70	PASS	same C2DBoxI model
+0082e380	MATCH	75v75	PASS	same C2DBoxI model
+0082ea50	RELOCATION_MATCH	75v75	PASS	map operator[] twice; POD vector copies
+00559600	RELOCATION_MATCH	70v70	PASS	CScrollBar::Update; ++Layer at +0x12f
+00559830	RELOCATION_MATCH	84v84	PASS	NUISystem ctor, init list after vtables
+00546b00	RELOCATION_MATCH	60v60	PASS	label wrong; NUISystem::CZoomingComponent ctor
+00547600	RELOCATION_MATCH	66v66	PASS	label wrong; NUISystem::CSwappingStateComponent ctor, STLport vector member
+00559360	RELOCATION_MATCH	66v66	PASS	NUISystem::CScrollBarOutside ctor
+00c208e0	RELOCATION_MATCH	59v59	PASS	label wrong; no-RTTI state-machine body (_unattributed)
+004e0c61	RELOCATION_MATCH	45v45	PASS	label wrong; CTCHaste ctor, optimize(s)
+004e5c2f	RELOCATION_MATCH	44v44	PASS	label wrong; CTCCreatureGroup ctor, optimize(s)
+0053ed40	MATCH	94v94	PASS	CScrollingViewport::GetDataFromDef; CDefPointer release via DecRef/GetRefCount
+0053fc30	RELOCATION_MATCH	87v87	PASS	scalar deleting dtor; inline virtual dtor + new factory
+00dc3e50	RELOCATION_MATCH	68v68	PASS	returned[4] clear loop = one dword store
+00ec0b00	MATCH	50v50	PASS	Game slot 477 + Me.GetPos() into StartPos
+00a35330	RELOCATION_MATCH	30v30	PASS	label wrong; sorted-container Sort() over 56-byte records
+0048ddf6	RELOCATION_MATCH	78v78	PASS	optimize(y off)+(s on) frame-pointer ctor
+004935a7	RELOCATION_MATCH	81v81	PASS	memberwise copy ctor; needs optimize(s)
+00a61f20	MATCH	27v27	PASS	intrinsic memset of the 8-byte state
+00f39d40	MATCH	72v72	PASS	field stores in source order
+00f39d90	RELOCATION_MATCH	90v90	PASS	1.0f / Attenuation2, fld hoisted
+0059b4fe	RELOCATION_MATCH	91v91	PASS	label wrong; STLport deque<T*> copy ctor, optimize(y off)+(s on)
+00987e50	MATCH	45v45	PASS	label wrong; CPixelShader assign (out-of-line copy of the inline in 0x988140)
+00988140	MATCH	70v70	PASS	ApplyPixelShader; inline CPixelShader assign
+00988540	RELOCATION_MATCH	54v54	PASS	SetProjectionTransform; rep movsd + Transpose
+00988680	MATCH	62v62	PASS	label wrong; CShaderRenderManager::SetAmbientColour

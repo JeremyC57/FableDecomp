@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b836e0	RELOCATION_MATCH	72v72	PASS	list clear of CIVCountedPointer values (label propagated); CRetailList_00b836e0::Clear
+0065846c	MATCH	43v43	PASS	ctor (pos, property); C3DVector user copy ctor; optimize("s")
+0065d750	MATCH	43v43	PASS	memberwise copy ctor (as landed 0x0049CF80)
+00711520	RELOCATION_MATCH	96v96	PASS	two STLport vector clears + two zeroes (label wrong); CNavigatorOwner_00711520::ResetBuffers
+00768a70	DIFFER	73v81	-	16-byte std::swap (label wrong); temp words in frame vs lane registers
+00769340	DIFFER	73v81	-	byte-identical to 00768a70; same lane gap
+008068b0	DIFFER	73v81	-	16-byte std::swap variant (label wrong); first three temp words in frame
+0086a690	MATCH	73v73	PASS	swap of pair<long, POD12> with memberwise copy ctor (label wrong)
+0086af10	MATCH	73v73	PASS	byte-identical to 0086a690
+00f0ca30	MATCH	41v41	PASS	three-word member swap (label wrong); SThreeWordRecord::Swap
+0042f75e	RELOCATION_MATCH	47v47	PASS	optimize("s"): push [esi+10h] straight from memory
+00c48d90	RELOCATION_MATCH	26v26	PASS	zero triple + CBaseIntelligentPointer member (label CNoise wrong)
+00f36ba0	RELOCATION_MATCH	22v22	PASS	real CNoise ctor (Seed +0x1800, InitPerlinNoise)
+004c4160	RELOCATION_MATCH	94v94	PASS	primitive-handle member dtor at +4 (label CObject wrong); __forceinline handle/pointer dtors, IsUnique()+operator->
+004e4d3b	RELOCATION_MATCH	67v67	PASS	copy ctor; optimize("s") = every word through eax
+004e9550	DIFFER	80v77	-	CPersistContext transfer; lea ecx of traits not hoisted above the switch in lane
+004ec46d	RELOCATION_MATCH	67v67	PASS	copy ctor twin of 004e4d3b
+00765cc0	RELOCATION_MATCH	32v32	PASS	ctor Played/Sound("")/Handle -1
+007688e0	RELOCATION_MATCH	34v34	PASS	same body + ret 4 (ignored argument; modelled as non-copying copy ctor)
+00768fa0	RELOCATION_MATCH	32v32	PASS	byte-identical to 00765cc0
+00bdd9a0	RELOCATION_MATCH	64v64	PASS	inline ClearLoadRequest + delete-list loop
+00bdde80	RELOCATION_MATCH	82v82	PASS	dtor: ClearLoadRequest(Map->FileBlockManager) + delete-list loop
+0099a4d0	RELOCATION_MATCH	76v76	PASS	CBaseObject ??_G (label wrong); __forceinline virtual dtor + new factory
+00bddda0	RELOCATION_MATCH	51v51	PASS	dtor: delete-list loop over Primitives
+0055de90	RELOCATION_MATCH	27v27	PASS	{CCharString, long -1, CCharString} ctor (label CObservable wrong)
+004df3f7	RELOCATION_MATCH	61v61	PASS	optimize("y",off)+("s"): /Os float copy ctor = fld/fstp first word, mov rest
+004df434	MATCH	26v26	PASS	optimize("s"): first float via x87
+004df44e	MATCH	32v32	PASS	optimize("s"): first float via x87
+0072dd60	RELOCATION_MATCH	67v67	PASS	AddTC("CTCOwnedEntity") + SetPOwner (label wrong); implicit CCharString conversion temp
+00681750	MATCH	55v55	PASS	switch 2..9 / 53; `x != -1 ? true : false` for bare setne
+00471e17	RELOCATION_MATCH	45v45	PASS	explicit memberwise operator=; optimize("s")
+00471f60	RELOCATION_MATCH	51v51	PASS	copy ctor; optimize("s")
+00f25dd0	RELOCATION_MATCH	63v63	PASS	copy ctor of no-RTTI def vtable 0x012FB358 (label wrong)
+00456f71	RELOCATION_MATCH	71v71	PASS	new T[5] via vector constructor iterator; optimize("s"); word-aligned map member
+00adf5b0	MATCH	37v37	PASS	memcpy Positions->SavedPositions (label wrong); this unused
+00681500	RELOCATION_MATCH	44v44	PASS	retail AttitudeMask at +0x554 (PDB +0x55C)
+006feae0	MATCH	47v47	PASS	playing ? 1 : -1 delta
+00700120	DIFFER	79v95	-	lane drops the redundant range==0 guard (VRP)
+00701940	RELOCATION_MATCH	68v68	PASS	map find with key homed in dead arg slot; 0.0f pool constant
+0045de67	RELOCATION_MATCH	83v83	PASS	STLport map erase loop, by-value iterator with user copy ctor; optimize("s")

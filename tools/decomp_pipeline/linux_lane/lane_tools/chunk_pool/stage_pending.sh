@@ -20,6 +20,19 @@ cp "$A"/test/*.cpp "$P/test/" 2>/dev/null || true
 cp "$A"/differ/*.cpp "$P/differ/" 2>/dev/null || true
 chunk=${1/agent/chunk}
 cut -f1-4 "$S/w22/$chunk.tsv" > "$P/rows.tsv"
+# every SKIP row goes into the permanent skipped-row ledger (rebuild/candidates/manual/SKIPPED_ROWS.tsv)
+if [ -f "$A/STATUS.tsv" ]; then
+  python3 - "$A/STATUS.tsv" "$S/w22/$chunk.tsv" "$2" <<'PY'
+import csv,sys,os
+sys.path.insert(0,'tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool'); import skipped_ledger as K
+rows={r['address']:r for r in csv.DictReader(open(sys.argv[2]),delimiter='\t')}
+for r in csv.DictReader(open(sys.argv[1]),delimiter='\t'):
+    if (r.get('status') or '').strip().upper()=='SKIP' and r['address'] in rows:
+        c=rows[r['address']]
+        if K.add(sys.argv[3],f"{r['address']}:{c['length']}",c['module']+'::'+c['name'],(r.get('note') or '').strip()):
+            print('logged skipped row',r['address'])
+PY
+fi
 python3 - "$P" <<'PY'
 import json,sys,os
 p=sys.argv[1]; n=len(json.load(open(p+'/payload.json'))['result']['authored'])

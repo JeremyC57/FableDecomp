@@ -69,6 +69,26 @@ GOTCHAS: one `- Wave 25x (...)` line built from the batches' NOTES "What matched
 and `docs/ROADMAP.md` counts; `python3 tools/write_decomp_dashboard.py && python3 tools/update_readme_progress.py`;
 commit `land: ...` as BuffJesus with the session's Co-Authored-By / Claude-Session lines; `git push -u origin FullDecomp`.
 
+## Skipped rows -- the permanent ledger (any session, any agent; no Fable needed to author them)
+A row an agent could not author as ONE function is logged in `rebuild/candidates/manual/SKIPPED_ROWS.tsv` (address, row
+length, source batch, original label, kind, status, pieces `addr:len,...`, note). `stage_pending.sh` adds every `SKIP`
+line of an agent's STATUS.tsv automatically; `land_pending.sh` runs `skipped_ledger.py refresh`, which closes a row once
+every piece is in the catalog. The chunk cutter never re-offers a used row, so this ledger is the only record. Kinds:
+- `multi` -- several functions in one row (pieces found by `split_rows.py` from the exe: padding and terminators).
+  Author each piece like a normal row.
+- `prefix` -- the row is only the first bytes of a longer function (the piece length is the whole function, often
+  2 KB+). Author the whole function (a hand EH-style pass, not the 17-96-byte chunk brief).
+- `cold` -- a block that belongs to another function (pieces = the parent `addr:0`); it is covered when the parent lands.
+- `ltcg` -- a function using link-time register conventions (a callee assumed to preserve ecx, the object passed in esi);
+  one translation unit cannot reproduce it on the lane: leave for the Windows box (`/GL` + `/LTCG`) or keep as an oracle.
+To work the open `multi` pieces (and `prefix` ones up to `--max-len`):
+```
+python3 tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/skipped_ledger.py to-chunk 901      # writes $S/w22/chunk901.tsv + oracle, marks rows in-chunk:901
+python3 tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/mkprompt25.py 901                    # $S/w22/agent901/ + PROMPT.md
+```
+then give `$S/w22/agent901/PROMPT.md` to an agent, stage it (`stage_pending.sh agent901 <date>_linux_skipped901`) and land
+it like any other batch. Use chunk numbers 901+ for ledger chunks (the pool cutter uses 00-99).
+
 ## Also open from the Fable sessions (optional retries)
 Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 `rebuild/candidates/manual/batches/2026-10-14_linux_hand59/README.md` and `..._hand60/README.md` (sources in
@@ -79,23 +99,37 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | pending batch | chunk | matched (to land) | parked | skipped | state |
 |---|---|---|---|---|---|
 | `2026-10-14_linux_hand58` | Hand chunk 58 (CMessageEventFilter_IsOriginatedByThing .. CMouseCursor): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | 35 | 5 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand65` | Hand chunk 65 (CPatchTesselationEdgeStrip .. CPersistContext): 35 of 40 byte-exact | 35 | 5 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand66` | Hand chunk 66 (CPersistContext .. CPhysicsForceModelGotoOutsideSimple): 36 of 40 byte-exact | 36 | 3 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand67` | Hand chunk 67 (CPhysicsForceModelGotoOutsideSimple .. CPlayer): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand69` | Hand chunk 69 (CQ_MinionCampScript .. CQuickAccessItemButtonGuiDef): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand71` | Hand chunk 71 (CRenderManagerCore .. CRightHandedSet): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand73` | Hand chunk 73 (CScriptGameResourceObjectScriptedThing .. CScriptThing): 38 of 40 byte-exact | 38 | 1 | 1 | STAGED: land it |
+| `2026-10-15_linux_hand74` | Hand chunk 74 (CScriptThing .. CShaderRenderManager): 35 of 40 byte-exact | 35 | 0 | 5 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 
-Totals: **287 matched rows staged for landing**, **30 parked rows** for the Fable retry pass.
+Totals: **394 matched rows staged for landing**, **38 parked rows** for the Fable retry pass.
 
-### Skipped rows (the row holds several functions: split it into one row per function, then author the pieces)
-| address | batch | bytes | note |
-|---|---|---|---|
-| `00455fa0` | `2026-10-15_linux_hand66` | -v42 | skip: 42-byte row = three functions (jmp [eax+48h] thunk, bit getter, bit setter) |
-| `009cbd30` | `2026-10-15_linux_hand73` | -v84 | row covers three AskHeroQuestion-style forwarders (int3 padding inside the row) |
-| `00aacf90` | `2026-10-15_linux_hand76` | -v20 | row holds two functions (jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding) |
-Also skipped before wave 25: `0073a840` (chunk 59: 0x0073A840 plus the 18-byte 0x0073A880). The chunk cutter never re-offers a used row, so these stay uncovered until split.
+### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
+| address | kind | status | pieces (addr:len) | from | note |
+|---|---|---|---|---|---|
+| `00455fa0` | multi | open | 00455fa0:8 00455fa8:12 00455fb4:22 | `2026-10-15_linux_hand66` | three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter) |
+| `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
+| `0073a840` | multi | open | 0073a840:49 0073a880:18 | `2026-10-14_linux_hand59` | two functions after the int3 padding |
+| `0088b7e0` | multi | open | 0088b7e0:17 0088b800:4 | `2026-10-15_linux_hand74` | row spans two functions (0x88b7e0 + 0x88b800) |
+| `008aae20` | multi | open | 008aae20:22 008aae40:27 008aae60:4 008aae70:4 | `2026-10-15_linux_hand74` | row spans four functions |
+| `009cbd30` | multi | open | 009cbd30:20 009cbd50:19 009cbd70:20 | `2026-10-15_linux_hand73` | three AskHeroQuestion-style forwarders separated by int3 padding |
+| `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
+| `00aacf90` | multi | open | 00aacf90:5 00aacfa0:4 | `2026-10-15_linux_hand76` | a jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding |
+| `00ba1140` | prefix | open | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
+| `00bd71b0` | prefix | open | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
+| `00c3eb60` | multi | open | 00c3eb60:25 00c3eb80:25 | `2026-10-15_linux_hand74` | row spans two functions (0xc3eb60 + 0xc3eb80) |
+| `00c40e20` | multi | open | 00c40e20:8 00c40e30:11 00c40e40:11 00c40e50:14 | `2026-10-15_linux_hand74` | row spans four functions |
+| `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
+| `00ca5510` | multi | open | 00ca5510:16 00ca5520:8 00ca5530:7 00ca5540:44 | `2026-10-15_linux_hand74` | row spans four functions |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -106,6 +140,14 @@ Also skipped before wave 25: `0073a840` (chunk 59: 0x0073A840 plus the 18-byte 0
 - 0082a390 GetNonAutoMarkers: prologue only -- retail pushes ebx/esi at the entry, the lane shrink-wraps them into the non-empty branch; the loop (malloc, placement test, link) is byte-identical.
 - 00741d60 CModeExplosiveForcePushed `??_G`: the lane calls the implicit ~CAnimFilterOfGroup and ~CModeBase out of line where retail inlines them; verified in the lane's object that an implicit destructor stores only the BASE vtable (so a user `__forceinline` destructor adds a store retail lacks); `novtable` and the inline pragmas do not help.
 - 006af2d0 IsOriginatorAlive::operator(): the inlined GetPOriginator<CThing> constant-false check (`mov [esp+8],eax ; xor al,al ; jne`) that the lane folds (`return false`, `thing != thing`, `(unsigned long)thing < 0` through a `CThing* const&` tried) -- the same gap as the parked 0x006AF4E0.
+
+
+#### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
+- 00768a70 SwapKeyedRecord (label CNearestBuildingWithProperty) DIFFER(73v81): retail builds the swap temporary's last three words in the 16-byte frame through esi (`mov esi,[ecx+4] ; mov [esp+8],esi` x3) and copies left=right through esi/edi only, lane keeps them in ebx/ebp/esi/edi | tried: POD, 4-word memberwise ctor (+operator=), pair<long,POD12> with pair ctor (matches 0086a690), member ctor, float members, array members, memcpy member, all again under optimize("s") | next: lane gap: register allocation (temporary not scalar-replaced in retail)
+- 00769340 SwapKeyedRecord (label CNearestBuildingWithProperty) DIFFER(73v81): byte-identical to 00768a70, same frame-temporary difference | tried: same set as 00768a70 | next: lane gap: register allocation
+- 008068b0 SwapKeyedRecord (label CNearestBuildingWithProperty) DIFFER(73v81): retail spills the temporary's first three words to the frame through eax and keeps the fourth in eax | tried: same set as 00768a70 (12-byte member first and last) | next: lane gap: register allocation
+- 00700120 COpinionReactionManager::GetBlurredAttitude DIFFER(79v95): the lane drops the `range ? seed % range : 0` guard after the random step (`test esi,esi ; je` + duplicated `blurred[0]` arm in retail) because the entry test already proved count > 0 | tried: named unsigned count, size() re-evaluated for the range (keeps the guard, recomputes the size after the call: 105), early return with a long count (81) | next: lane gap: value-range propagation (QFE drops a redundant zero test RTM kept)
+- 004e9550 CPersistContext::TransferHelper (label CObjectAugmentationParticleSet::TransferHelper) DIFFER(80v77): retail forms the traits `this` (`lea ecx,[ebp-2Ch]`) once above the mode switch's first `je` and the default arm falls into the destructor call without re-forming it; the lane re-forms it per arm | tried: switch, if/else chain (83), __forceinline traits TransferBinary(context, value) holding the switch (80) | next: lane gap: rematerialisation/hoisting of a frame address
 
 
 #### `2026-10-15_linux_hand62` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand62/differ/`)
@@ -132,6 +174,12 @@ Also skipped before wave 25: `0073a840` (chunk 59: 0x0073A840 plus the 18-byte 0
 - 00a18760 CPhysicsMesh::GetPointIntersectionFromTo DIFFER(93v95): retail `mov edx,ecx` before the pre-test call and `[edx+0B4h]` / `mov ecx,edx` after it, plus `xor bl,bl` false result; lane keeps `this` in esi and `xor al,al` at the exit | tried: `bool result = false; if (pre-test) { if (g && seg) return A; return B; } return result;` (pointer and PDB reference signatures) | next: lane gap: whole-program (LTCG) register knowledge that 0x00A17690 preserves edx
 - 00487aa0 CPlayer::InitJoystickDeviceNumber DIFFER(67v67): else arm `dec ecx ; and ecx,eax ; mov [esi+228h],ecx` vs lane `dec ecx ; and eax,ecx ; mov [esi+228h],eax` | tried: direct `Number == GetMainPlayerNumber()`, inline IsMainPlayer, negated condition, inline IsMainPlayer with a `number` local (the last fixes ebx/edi and the else-arm Number re-read) | next: write the else arm as `number != mainDevice ? number : 0` or `JoystickDeviceNumber = Number; if (Number == mainDevice) JoystickDeviceNumber = 0;` on top of the local-Number IsMainPlayer
 - 00c21330 CPlayer::IsFirstPersonTargeting DIFFER(48v42): retail keeps `this` in ecx across `call 0x00C20EE0` (`add ecx,38h` after it, no `push esi ; mov esi,ecx`) | tried: `!= 0` byte result, bool member read from a named 16-byte record local (only the this-register difference remains) | next: lane gap: whole-program register knowledge of the 0x00C2xxxx callee (the 00c20cb0 family); identity also unproven (`ret 4` vs the PDB's no-argument IsFirstPersonTargeting)
+
+
+#### `2026-10-15_linux_hand69` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand69/differ/`)
+- 00bde080 CLocalDetailCacheMap::CQuadTreeElement::ValidationTest DIFFER(44v49): retail ends `mov ecx,[esi+0Ch] ; test ecx,ecx ; pop esi ; je ; jmp ValidationTest`, the lane emits `mov esi,[esi+0Ch] ; test esi,esi ; jne <body>` (self tail call turned into a loop) | tried: out-of-line member, in-class inline definition + forcing caller, `#pragma optimize("g",off)` | next: lane gap: tail-recursion elimination (retail keeps the self sibling-call jmp)
+- 004afbb0 CQuestManager::OnEntityInterrupted DIFFER(72v72): retail keeps `this` in ebx and the thing in ebp (`mov ebp,[esp+0Ch] ; mov ebx,ecx`) and loads the id with `mov eax,[ebp+1Ch] ; mov ecx,[ebp+18h]`, ours swaps ebx/ebp and loads the id through ecx/edx | tried: plain member access (the thing is loaded in the preheader), a `CThing*` local (propagated away), an id-pointer local (entry load, registers still swapped), a pointer local for the list member | next: lane gap: register colouring (try a `CThing&` member-function helper for the two script calls, or the out-of-line `for` with an iterator object)
+- 004b3810 CQuestManager::SetCreatureGenerationEnabledDuringScript DIFFER(76v76): `lea eax,[esp+14h]` (retail homes the empty find tag on the LIVE `enabled` slot) vs the lane's `lea eax,[esp+10h]` (the dead `script` slot) | tried: vector pointer declared before / after the cached `last` (the second fixes the esi/edi colouring) | next: lane gap: empty tag temporary over a live argument slot (wave 24l/24n)
 
 
 #### `2026-10-15_linux_hand71` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand71/differ/`)
