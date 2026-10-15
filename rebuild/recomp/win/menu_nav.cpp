@@ -817,9 +817,15 @@ extern "C" void host_inventory_screen(Ctx* c) {
 #include <sys/uio.h>
 #include <unistd.h>
 // A read of guest memory that fails instead of faulting on an unmapped page.
+namespace w32 { bool guestReadable(uint32_t a, size_t n); }  // posix/w32/kernel.cpp: the guest page states
 static bool safeRead(uint32_t addr, void* out, size_t n) {
+    // Committed guest pages (the host's own page table): a plain copy, no system call. The
+    // checked read (process_vm_readv: two system calls per read, 16% of the device's CPU in
+    // the inventory screens in v24) only for addresses the table does not vouch for.
+    if (w32::guestReadable(addr, n)) { std::memcpy(out, reinterpret_cast<const void*>(static_cast<uintptr_t>(addr)), n); return true; }
+    static const pid_t self = getpid();
     iovec local{out, n}, remote{reinterpret_cast<void*>(static_cast<uintptr_t>(addr)), n};
-    return process_vm_readv(getpid(), &local, 1, &remote, 1, 0) == static_cast<ssize_t>(n);
+    return process_vm_readv(self, &local, 1, &remote, 1, 0) == static_cast<ssize_t>(n);
 }
 #else
 static bool safeRead(uint32_t addr, void* out, size_t n) { std::memcpy(out, gp<const void>(addr), n); return true; }
@@ -1108,20 +1114,21 @@ extern "C" void host_text_draw(Ctx* c) {
         // up), with the render colour's alpha (+0x94, byte 3) at 0.
         const uint32_t state = rd32(self + 0x14C);
         uint8_t upAlpha = 0xFF;
-        char chain[160] = {};
-        size_t used = 0;
-        for (uint32_t p = self, i = 0; i < 3 && (p = parentOf(p)); ++i) {
-            uint8_t a = 0xFF;
-            uint32_t st = 0;
-            if (safeRead(p + 0x97, &a, 1) && i == 0) upAlpha = a;
-            safeRead(p + 0x14C, &st, 4);
-            if (used < sizeof chain) used += std::snprintf(chain + used, sizeof chain - used, " <- %.24s state %u alpha %u", componentName(p).c_str(), st, a);
-        }
+        const uint32_t row = parentOf(self);
+        if (row) safeRead(row + 0x97, &upAlpha, 1);
         static std::map<uint32_t, uint32_t> seen;  // label -> state and alpha last logged
         const uint32_t sig = state << 8 | upAlpha;
         auto it = seen.find(self);
-        if ((it == seen.end() || it->second != sig) && seen.size() < 64) {
+        if ((it == seen.end() || it->second != sig) && seen.size() < 64) {  // the chain is built only when it is logged
             seen[self] = sig;
+            char chain[160] = {};
+            size_t used = 0;
+            for (uint32_t p = self, i = 0; i < 3 && (p = parentOf(p)); ++i) {
+                uint8_t a = 0xFF;
+                uint32_t st = 0;
+                safeRead(p + 0x97, &a, 1), safeRead(p + 0x14C, &st, 4);
+                if (used < sizeof chain) used += std::snprintf(chain + used, sizeof chain - used, " <- %.24s state %u alpha %u", componentName(p).c_str(), st, a);
+            }
             HLOG(1, "ui: clothing label 0x%08X %s state %u colour 0x%08X%s", self, componentName(self).c_str(), state, rd32(self + 0x94), chain);
         }
         static const bool keep = std::getenv("FABLE_KEEP_CLOTHING_LABELS") != nullptr;

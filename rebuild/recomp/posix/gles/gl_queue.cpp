@@ -73,18 +73,25 @@ void wakeConsumer() {
 void threadMain() {
     t_renderThread = true;
     if (!g_makeCurrent()) { host::log("gles: the render thread could not take the context"); }
-    uint64_t frameStart = 0, frameBusy = 0;
+    // The busy time is taken per burst of records (one clock read when a burst starts, one
+    // when the queue runs dry or a frame ends), not per record: two clock_gettime calls per
+    // replayed GL call were 1.3-2.1 % of the device's samples.
+    uint64_t burstStart = 0, frameBusy = 0;
     for (;;) {
         uint64_t tail = g_tail.load(std::memory_order_relaxed);
         uint64_t head = g_head.load(std::memory_order_acquire);
         if (tail == head) {
+            if (burstStart) frameBusy += nowNs() - burstStart, burstStart = 0;
             if (g_stop.load()) break;
-            // spin briefly (the producer is usually about to add more), then sleep
             // a short spin (the producer is usually about to add more), then sleep: sched_yield in
-            // a loop burned a core (15 % of the device's samples) and the battery
+            // a loop burned a core (15 % of the device's samples) and the battery. The clock is
+            // read every 64 polls, not on each.
             bool got = false;
             const uint64_t spinUntil = nowNs() + 50000;
-            while (!got && nowNs() < spinUntil) got = g_head.load(std::memory_order_acquire) != tail;
+            for (unsigned i = 1; !got; ++i) {
+                got = g_head.load(std::memory_order_acquire) != tail;
+                if (!got && (i & 63) == 0 && nowNs() >= spinUntil) break;
+            }
             if (!got) {
                 g_consumerIdle.store(true, std::memory_order_release);
                 std::unique_lock<std::mutex> lk(g_mutex);
@@ -93,8 +100,7 @@ void threadMain() {
             }
             continue;
         }
-        const uint64_t t0 = nowNs();
-        if (!frameStart) frameStart = t0;
+        if (!burstStart) burstStart = nowNs();
         const size_t pos = static_cast<size_t>(tail % g_size);
         const Header* h = reinterpret_cast<const Header*>(g_ring + pos);
         const uint32_t op = h->op, len = h->len;
@@ -104,15 +110,15 @@ void threadMain() {
             (*fn)();
             delete fn;
         } else if (op == OP_frame) {
-            frameBusy += nowNs() - t0;
+            const uint64_t now = nowNs();
+            frameBusy += now - burstStart, burstStart = now;
             g_renderNs.store(frameBusy);
-            frameBusy = 0, frameStart = 0;
+            frameBusy = 0;
             g_framesDone.fetch_add(1, std::memory_order_acq_rel);
             { std::lock_guard<std::mutex> lk(g_mutex); g_cvProducer.notify_all(); }
         } else if (op != OP_pad) {
             replay(op, h + 1);
         }
-        if (op != OP_frame) frameBusy += nowNs() - t0;
         g_tail.store(tail + len, std::memory_order_release);
         if (g_producerWaiting.load(std::memory_order_acquire)) { std::lock_guard<std::mutex> lk(g_mutex); g_cvProducer.notify_all(); }
     }

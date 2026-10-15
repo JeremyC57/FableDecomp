@@ -61,3 +61,35 @@ Clear 0x7 with the full viewport once a frame, never with rectangles.
   conventions; a full-screen copy a frame.
 - The queue's per-call mutex (`g_producer`, ~10k lock pairs a frame) could become a
   spinlock or a per-thread ring.
+
+## v24 on the device (user log 2026-10-15) and the next round
+
+- Render thread per draw (world median) 35.1 us against 40.7-43.4 us in v18-v23 (-15..18%);
+  the same first view after load (663 draws) 20.5 ms against 25.2 (v23) / 29.2 (v22b).
+  `recomp_lookup` is gone from the profile (3.3-7.1% before: the trap-range dispatch); the
+  runtime module fell from 7-12.6% to 3-5%. The title screen is now vsync-bound (16.7 ms).
+- The world is still game-thread bound in every version (`waited 0.0`, render thread 11-24
+  ms against 25-47 ms frames); v24's log has too little world time to measure world fps.
+- The profiler's `runtime!com::QueryInterfac` (4.1%) is the stripped runtime's nearest symbol
+  for the whole guest-to-host call path (D3D/DInput/DSound wrappers, the trap dispatcher, the
+  guest heap, the CRT imports), not QueryInterface. libc +0x81d6c/+0x82040/+0x820b8 are futex
+  waits / contended mutex lock and unlock; the condition-variable broadcasts come from the
+  Win32 layer's single global condition variable (every SetEvent wakes every waiter) and the
+  audio callback mixing under `audioLock`.
+- **The inventory screens ran 35-40 ms per frame**: menu_nav.cpp's `safeRead` made two system
+  calls per guest read (process_vm_readv + getpid: 16% of the menu window) and the clothing
+  labels, the list shift and the row markers walk parents and children every frame. safeRead
+  now copies directly when the POSIX layer's page table says the pages are committed
+  (`w32::guestReadable`), the checked read only otherwise; the label diagnostic string is built
+  only when it is logged.
+- The render thread read the clock twice per replayed GL call and on every idle-spin poll
+  (clock_gettime 1.3-2.1%): now once per burst and every 64 polls.
+- Next (ranked): the game thread's fixed cost per D3D call (inline caches holding trap
+  handlers, a lock-free GL queue producer, the per-draw `GlTime`), static x87 TOP tracking in
+  the lifter (the world-fps lever), per-object waits in the Win32 layer and mixing audio
+  outside its lock (loading), a plain mutex for the guest heap; profiler symbol names for the
+  host path.
+- 24-bit colour: nothing to gain. The window surface is 32 bpp either way (Mali has no packed
+  24-bit format, stride 2880 at 720 px), the present pass writes alpha 1, the main target is
+  RGBA8 + D24S8; RGB565 would save ~40 MB/s at the cost of banding while the GPU is idle
+  (world swap 0.1-0.2 ms).

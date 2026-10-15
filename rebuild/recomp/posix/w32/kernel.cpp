@@ -100,6 +100,16 @@ uintptr_t findFree(size_t size) {
 }
 }  // namespace vm
 
+// Whether [a, a+n) lies in committed, readable pages of the guest window (the host's
+// fault-free guest reads: menu_nav.cpp safeRead). Lock-free: the page states are bytes, and a
+// reader racing a decommit sees either state; callers fall back to a checked read when false.
+bool guestReadable(uint32_t a, size_t n) {
+    if (!vm::ready || n == 0 || !vm::inWindow(a, n)) return false;
+    for (size_t i = vm::idx(a), e = vm::idx(a + n - 1); i <= e; ++i)
+        if (vm::state[i] != vm::COMMITTED || vm::hostProt(vm::prot[i]) == PROT_NONE) return false;
+    return true;
+}
+
 // ============================================================================
 // PE resources (resource-only modules: LoadLibraryEx with LOAD_LIBRARY_AS_DATAFILE)
 // ============================================================================
