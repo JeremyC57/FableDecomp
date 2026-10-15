@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004d2b2a	RELOCATION_MATCH	57v57	PASS	CTCRotate ctor; optimize("s")
+0072a530	RELOCATION_MATCH	55v55	PASS	CTCRotate::SetRotationInfo; POD axis copy, seconds*fps
+00c46570	RELOCATION_MATCH	38v38	PASS	really SRegionLookupEntry ctor {0, C2DVector, length}; label propagated
+004c70f0	RELOCATION_MATCH	25v25	PASS	IsActive: `if (!locked && empty) return 0; return 1;`
+006a3da0	RELOCATION_MATCH	84v84	PASS	really CVectorMap<ulong,CIntelligentPointer>::Add; label propagated
+00712c20	RELOCATION_MATCH	82v82	PASS	SetLocked; temp CIntelligentPointer in inner scope
+00712c80	RELOCATION_MATCH	70v70	PASS	ClearLocked; temp in inner scope
+00802650	RELOCATION_MATCH	76v76	PASS	really CTCTargetingPlayer lock clear (+0xe4/+0xf4, PDB +8); label propagated
+0085ee10	RELOCATION_MATCH	41v41	PASS	really __fastcall IsCreatureButNotHero(CThing*); label propagated
+0074f080	RELOCATION_MATCH	95v95	PASS	CTCContainerRewardHero::OnDie (slot 13) with inline GetInterface(0xa0)
+00812340	DIFFER	36v35	-	Search: clamp store re-read not reproduced
+00812370	RELOCATION_MATCH	53v53	PASS	CTCSearchableContainer::OnSerialise (slot 1)
+00761b10	RELOCATION_MATCH	52v52	PASS	world local, camera member read twice
+00772790	DIFFER	78v80	-	GetDaysTillRestock: register colouring this/node
+00773dc0	RELOCATION_MATCH	74v74	PASS	AddShopper; RemoveShopper + temp CIntelligentPointer push_back
+00798d90	RELOCATION_MATCH	63v63	PASS	AddNewCustomer; retail vector iterator + SetPItem form
+00798dd0	RELOCATION_MATCH	55v55	PASS	HasBeenCustomer; element bound to a reference local
+00798e10	RELOCATION_MATCH	89v89	PASS	EmptyCustomerList; retail vector iterator
+007990c0	RELOCATION_MATCH	85v85	PASS	RequiresNewCustomer; nested != ifs, one return true
+00799320	RELOCATION_MATCH	41v41	PASS	OnDie; nested && with GetShopTC twice
+00799a60	RELOCATION_MATCH	49v49	PASS	GetAreOtherPeopleInShop; CWorld::GetWorldFrame
+007befb0	RELOCATION_MATCH	63v63	PASS	GetInitialVelocity; named float speed local
+007bd80a	RELOCATION_MATCH	59v59	PASS	~CTCShotDefinitionDrainLife; IS_THING_ALIVE + Kill(true)
+007bd7ca	RELOCATION_MATCH	64v64	PASS	~CTCShotDefinitionFireballSpell; optimize y off + s
+00779ca0	DIFFER	46v46	-	really CTCDExperienceOrb ctor; xor/or scheduling only
+007bbc65	RELOCATION_MATCH	58v58	PASS	MultiArrow ctor; optimize("s"), C3DVector(x,y,z) member, body flag
+007e2500	RELOCATION_MATCH	33v33	PASS	really CTCDiggingSpot ctor; label propagated
+00bbbf40	RELOCATION_MATCH	43v43	PASS	really CEnginePrimitiveManagerParticleGroup ctor; label propagated
+004dc991	RELOCATION_MATCH	49v49	PASS	Projectile ctor; optimize("s"), __forceinline handle ctor; header Line1 +0xa0 vs retail +0x9c
+004dd728	RELOCATION_MATCH	90v90	PASS	really ~SPrimitiveHandleHolder (handle at +4), /Os twin of 0x004C4160
+004de6b6	RELOCATION_MATCH	47v47	PASS	really CTCCreatureItemLevitationBase ctor; optimize y off + s
+007bbdca	RELOCATION_MATCH	90v90	PASS	TearInGround::UpdateMovement; C3DVector user copy ctor under y off + s
+0087c420	DIFFER	91v76	-	IsOfType: def pointer coloured eax, release not folded to dec [ecx+4]
+006fcf40	RELOCATION_MATCH	76v76	PASS	really CVectorMap<ulong,CSmallVector<CEvent,32>>::Add
+0077f270	RELOCATION_MATCH	76v76	PASS	really CVectorMap<CCharString,12-byte rec>::Add; memberwise copy ctor
+00786870	RELOCATION_MATCH	44v44	PASS	GetPSkeletalMorph; counted pointer returned by hidden pointer
+00a41a70	RELOCATION_MATCH	86v86	PASS	really CVectorMap<{CCharString,CCharString},long>::Add
+00a72b90	RELOCATION_MATCH	83v83	PASS	really CVectorMap<CCharString,16-byte rec>::Add
+00af2910	RELOCATION_MATCH	91v91	PASS	really CVectorMap<CCharString,{long,long,CCharString}>::Add
+00af3a40	RELOCATION_MATCH	91v91	PASS	really CVectorMap<CCharString,{long,long,CCharString}>::Add (duplicate of 00af2910)

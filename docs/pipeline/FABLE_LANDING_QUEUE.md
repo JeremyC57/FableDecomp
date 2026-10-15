@@ -124,6 +124,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | pending batch | chunk | matched (to land) | parked | skipped | state |
 |---|---|---|---|---|---|
 | `2026-10-14_linux_hand58` | Hand chunk 58 (CMessageEventFilter_IsOriginatedByThing .. CMouseCursor): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand100` | Hand chunk 100 (CTCRotate .. CTCSkeletalMorph): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand101` | Hand chunk 101 (CTCSmashableBase .. CTCSwitchableNavigation): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
@@ -169,7 +170,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **0 matched rows staged for landing**, **144 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **148 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 21 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -193,6 +194,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0082a390 GetNonAutoMarkers: prologue only -- retail pushes ebx/esi at the entry, the lane shrink-wraps them into the non-empty branch; the loop (malloc, placement test, link) is byte-identical.
 - 00741d60 CModeExplosiveForcePushed `??_G`: the lane calls the implicit ~CAnimFilterOfGroup and ~CModeBase out of line where retail inlines them; verified in the lane's object that an implicit destructor stores only the BASE vtable (so a user `__forceinline` destructor adds a store retail lacks); `novtable` and the inline pragmas do not help.
 - 006af2d0 IsOriginatorAlive::operator(): the inlined GetPOriginator<CThing> constant-false check (`mov [esp+8],eax ; xor al,al ; jne`) that the lane folds (`return false`, `thing != thing`, `(unsigned long)thing < 0` through a `CThing* const&` tried) -- the same gap as the parked 0x006AF4E0.
+
+
+#### `2026-10-15_linux_hand100` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand100/differ/`)
+- 00772790 CTCShop::GetDaysTillRestock DIFFER(78v80): retail keeps this=esi and the node in ebx read back from the iterator frame slot (`push ebx ; ... mov ebx,[esp+0Ch]`), ours colours this=ebx, node=esi via `mov esi,[eax]` | tried: plain expression, `day` local, node local from the find call (best), named iterator + node local | next: an inline find helper returning the node pointer through a reference out-parameter, or a CRetailMap iterator object with operator-> (lane gap: register colouring likely)
+- 00779ca0 CTCDExperienceOrb::CTCDExperienceOrb DIFFER(46v46): `xor ecx,ecx ; or eax,-1` (retail) vs `or eax,-1 ; xor ecx,ecx` (ours) | tried: init list, pointer-typed +0xc, the -1 pair and the flag pair as body assignments | next: lane gap: scheduling-only
+- 00812340 CTCSearchableContainer::Search DIFFER(36v35): retail decrements via edx and re-reads the member after the clamp store (`mov eax,[ecx+1Ch] ; test eax,eax` into one shared `jne`), ours knows the clamped 0 and calls from the clamp arm | tried: plain --/clamp (`dec [mem] ; jns`), `long& ClampToZero(long&)` (best), local + assignment expression, ternary lvalue, reference local, Dinkumware `Max(m, 0L)` / `Max(m - 1, 0L)`, by-value clamp | next: a `volatile`-free out-of-line-looking helper such as a const-ref `std::max` with a 0 held in a named local, or a clamp on an `unsigned`/`long` mix
+- 0087c420 CTCSinglePersonOccupiable::IsOfType DIFFER(91v76): ours reads the def pointer into eax so each CDefPointer release becomes load/dec/store + `mov ecx,eax` (retail `mov ecx,[esp]` then `dec dword ptr [ecx+4] ; jne`), and the prologue order differs (zero store before the push) | tried: member-test destructor (best), local copy in the destructor, Release() on the pointee, optimize("s") | next: the landed CDefPointer model from the GetSubDef callers (0x0087C490 family) with a `__forceinline` destructor and an `operator->` accessor for the flag test
 
 
 #### `2026-10-15_linux_hand101` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand101/differ/`)
