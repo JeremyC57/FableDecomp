@@ -1,0 +1,4 @@
+address	name	length	bytes
+007460d0	CTCPerceiveThing::vfunc_10	5	8b01ff6024
+007460e0	CTCPerceiveThing::vfunc_8	3	b001c3
+007460f0	CTCPerceiveThing::Piece_007460f0	9	8b018b400483c008c3

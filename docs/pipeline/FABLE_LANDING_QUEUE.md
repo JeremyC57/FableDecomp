@@ -132,7 +132,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand105` | Hand chunk 105 (CTCVolumeContainmentTracker .. CTargetPoint): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand106` | Hand chunk 106 (CTargetPoint .. CThemeChannel): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand107` | Hand chunk 107 (CThing .. CThingBaseDef): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand108` | Hand chunk 108 (CThingBodyReorienter .. CThingCreatureBase): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand110` | Hand chunk 110 (CThingFilter_HasFreeActionPoint .. CThingHolySite): 36 of 40 byte-exact | - | 1 | 3 | landed; parked rows open |
+| `2026-10-15_linux_hand111` | Hand chunk 111 (CThingHolySite .. CThingPhysical): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -164,7 +166,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand89` | Hand chunk 89 (CTCGraphicAppearanceStaticMesh .. CTCHeroExperience): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand901` | Chunk 901 -- the skipped-row ledger pieces (34 bodies from 15 multi-function catalogue rows) | - | 0 | 0 | done |
+| `2026-10-15_linux_hand902` | Hand chunk 902 (CTCPerceiveThing .. CEnginePrimitiveManagerAnimatedMeshesBase): 3 of 5 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand903` | Chunk 903 -- skipped-ledger pieces (8 bodies from 2 multi-function rows), hand-authored by the coordinator (Fable 5.1) | 8 | 0 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand904` | Chunk 904 -- skipped-ledger pieces (9 bodies from 3 multi-function rows), hand-authored by the coordinator (Fable 5.1) | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand91` | Hand chunk 91 (CTCHeroStats .. CTCInventory): 34 of 40 byte-exact | - | 2 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand92` | Hand chunk 92 (CTCInventory .. CTCInventoryBase): 38 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand93` | Hand chunk 93 (CTCInventoryBase .. CTCInventoryExperience): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
@@ -178,23 +182,20 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **166 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **181 parked rows** for the Fable retry pass.
 
-### Skipped rows (11 open of 26 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (8 open of 26 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
-| `005271b0` | multi | open | 005271b0:8 005271c0:62 | `2026-10-15_linux_hand110` | row holds two functions (jmp thunk + ctor) |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
-| `007460d0` | multi | in-chunk:902 | 007460d0:5 007460e0:3 007460f0:9 | `2026-10-15_linux_hand98` | three functions in a 48-byte row (jmp [eax+24h] / mov al,1 / vtable getter) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
-| `00ac20d0` | multi | open | 00ac20d0:5 00ac20e0:11 00ac20f0:6 | `2026-10-15_linux_hand110` | row holds three functions |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
-| `00caef70` | multi | open | 00caef70:9 00caef80:3 00caef90:3 00caefa0:3 | `2026-10-15_linux_hand110` | row holds four functions |
+| `00caef70` | multi | in-chunk:904 | 00caef70:9 00caef80:3 00caef90:3 00caefa0:3 | `2026-10-15_linux_hand110` | row holds four functions |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -259,8 +260,26 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00830260 CThingAICreature::RandomiseMovementSpeed DIFFER(84v84): `mov [esp+4],eax` (seed store) scheduled before `fld [ecx+0B0h]`, retail stores it after `push ecx ; lea ecx,[esp+8]` | tried: seed local then call, range local first, seed wrapped in an inline CRandomSeed object | next: lane gap: scheduling of a local's initial store relative to the outgoing-argument push
 
 
+#### `2026-10-15_linux_hand108` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand108/differ/`)
+- 0082d6b0 CThingBuilding::GetMaterial DIFFER(74v64): def-pointer release `mov eax,[esp+4] ; test ; mov esi,eax ; ... mov edx,[eax+4] ; add eax,4 ; dec edx ; mov [eax],edx` vs retail `mov esi,[esp+4] ; test esi,esi ; dec dword ptr [esi+4] ; jne` | tried: raw-pointer inline GetBuildingDef with CDefPointer dtor, dtor through a local copy, CDefVirtual+CRefCounted base (GetSubDef family model), detach-and-release helper (not inlined) | next: lane gap: register choice for the def-pointer slot load (wave-24k "CDefPointer local cached in esi" gap)
+- 0082d7d0 CThingBuilding::GetFloorMaterial DIFFER(74v64): same release shape as 0082d6b0 | tried: raw-pointer helper, `__forceinline` detach (`def.Object = 0` + explicit release: right release but the dtor re-reads the slot), handle without destructor (load/dec/store again) | next: lane gap: as 0082d6b0
+- 0082d870 CThingBuilding::UsesHighDetailQuadTree DIFFER(74v66): one extra `mov dword ptr [esp+4],0` (the detach store; everything else identical) | tried: raw-pointer helper (76v66), detach store without destructor | next: lane gap: as 0082d6b0 (the store is what makes the lane load straight into esi)
+- 0082d8c0 CThingBuilding::GetReverbEnvironment DIFFER(94v84): same release shape as 0082d6b0 | tried: raw-pointer helper, `optimize("s")` + `__forceinline` (frame pointer, `dec [eax] ; cmp [eax],0`) | next: lane gap: as 0082d6b0
+- 0083c1e0 CThingSwitch::GetSwitchDef DIFFER(82v76): `inc [eax+4] ; mov eax,[esp+4] ; dec [eax+4] ; mov ecx,[esp+4]` (slot re-read after the add-ref) vs retail one load into ecx and `inc edx ; mov eax,edx ; dec eax ; mov [ecx+4],edx ; mov [ecx+4],eax` | tried: `++`/`--` counted pointer, load/inc/store copy + local-copy destructor | next: lane gap: CDefPointer local re-read from its slot (wave 24k)
+- 006c5630 COpinionDeedDefTable::GetDeedDef DIFFER(84v78): same as 0083c1e0 (ushort def-index table at +0x2e of an interface-0x51 component) | tried: the 0083c1e0 form | next: lane gap: as 0083c1e0
+- 007f9f00 CThingCompare_BestForTargeting2::operator() DIFFER(94v94): `pop ebx` scheduled after `fnstsw ax` in retail, before it in ours | tried: `GetValue(posB) < GetValue(posA)` (wrong evaluation order, int exits), `if (GetValue(posA) > GetValue(posB)) return true; return false;` | next: lane gap: epilogue scheduling (compiler build)
+- 006621c0 CThingCreatureBase::IsFreeToFinishAction DIFFER(68v68): last test `jge` to the false tail with `mov al,1` inline vs retail `jl` to a trailing `mov al,1` after the shared `xor al,al` | tried: local + if chain (77), member reads + `||` return (81), `!(...)` guard block with explicit null test (64, right tail order, missing the second null test), guard block + inline IsPerformingAnyAction (68) | next: guard block + the IsPerformingAnyAction body written inline as `if (!(PCurrentAction && !PCurrentAction->Finished)) return true;`, or the `||` return inside the guard block
+
+
 #### `2026-10-15_linux_hand110` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand110/differ/`)
 - 0063ef50 CThingFilter_OverlappingCircle::operator() DIFFER(95v95): retail squares dx first (`fld st(2) ; fmul st(3)` twice) where ours squares dy first (`fld st(1) ; fmul st(2)` then `fld st(3) ; fmul st(4)`) | tried: named C3DVector local (reads the frame slot), const-ref local, inline operator- + GetLengthSquared2D (spills), inline `Overlaps(const C3DVector&, physics)` helper (only the square order left) | next: `dy * dy + dx * dx` inside the helper, or the deltas in a C3DVector local inside the helper
+
+
+#### `2026-10-15_linux_hand111` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand111/differ/`)
+- 0051e4f0 CThingManager::GetPhysicsDebugInfo DIFFER(50v50): `mov edx,[ecx] ; call [edx+164h]` vs retail `mov eax,[ecx] ; call [eax+164h]` | tried: named physics local, bool-returning virtual, inline GetPhysics() accessor twice, Dinkumware iterator object | next: lane gap: register choice (vtable register after a dead eax temp)
+- 00521a90 CThingManager::SetNameForThing DIFFER(78v78): first operator[] key `lea ecx` vs retail `lea eax`; second call `mov edx,[name] ; push edx ; lea eax ; push eax ; mov ecx,esi` vs retail `mov ecx,[name] ; push ecx ; lea edx ; mov ecx,esi ; push edx` | tried: inline `find()==end()`, named find local (fixed the hoisted head load), Contains() helper, named entry references | next: lane gap: register allocation of argument temporaries
+- 0083d280 CThingMarker::GetProperties (slot 48) DIFFER(103v94): the middle add-ref/release -- retail `mov ecx,[esi+4] ; inc ecx ; mov eax,ecx ; dec eax ; mov [esi+4],ecx ; mov [esi+4],eax` on the cached def, the lane `inc [eax+4]` then re-reads the address-taken local and releases through the ReleaseTemporary shape | tried: explicit temporary copy, inline by-value def getter, `__forceinline` getter (final untested release + Properties read now match), direct count arithmetic in the copy ctor/dtor | next: copy the def pointer into a LOCAL inside the copy constructor/destructor (24f rule) so the release does not re-read the frame slot
+- 00702c60 CThingObject::DrawIsDrawable DIFFER(76v75): blink parity `mov eax,[esi+0D4h] ; and eax,1` vs retail `mov al,[esi+0D4h] ; and al,1` | tried: `(x & 1) != 0`, `(bool)(x & 1)` with the nested-if (fixed the shared `xor al,al` tail), `(bool)((unsigned char)x & 1)`, an `unsigned char` return type | next: a byte-typed view of DieOffTimer (union/`*(unsigned char*)&`), else lane gap: load narrowing
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
@@ -454,6 +473,15 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00c2d820 CAudioFormat::SamplesToBytes DIFFER(36v30): same as 00c2d800 with the callees swapped | tried: natural member form | next: lane gap: LTCG callee register knowledge
 - 00771d50 CTCHeroPodium::GetCrowdPos DIFFER(85v85): only the frame differs, retail `sub esp,10h` / `add esp,10h` (4 dead bytes above the 12-byte zero C3DVector temporary), lane `0Ch` | tried: temporary in the assignment, named local, an empty CDebugBreak-style temporary, the vector element through a begin() iterator object | next: lane gap: dead frame bytes (RTM vs QFE frame layout), or an unknown dead 4-byte local in the original
 - 0057adb8 CTCHeroStats::ResetTrainingStatus DIFFER(70v63): retail loads the def object once into ecx and releases with `dec dword ptr [ecx+4] ; jne`; the lane loads it into eax and emits `mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0` (or re-reads the frame word after the dec) | tried: pointee Release member + `if (Object) Object->Release()`, `if (Object && --Object->RefCount == 0)` in the destructor, local copy + direct dec, local copy + pointee Release | next: try the by-value accessor or out-parameter idiom that GetSubDef's other callers use; otherwise lane gap: def-pointer register allocation (cf. 24k "CDefPointer local re-read from its slot")
+
+
+#### `2026-10-15_linux_hand902` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand902/differ/`)
+- 00ba1140 CEnginePrimitiveManagerStaticMeshesBase::RenderPrimitive DIFFER(2372v2344): retail `fstp [esp+20h] ; fld [esp+20h] ; fistp dword [esp+38h]` and `fstp [esp+40h] ; fld [esp+40h] ; mov edx,[esp+64h] ; fistp dword [edx]` (the engine's inline-asm FtoL) v lane `call __ftol2 ; mov [..],eax`; retail LOD loop `cmp edi,3 ; jae` at the top + `jmp` back v lane rotated `cmp edi,3 ; jb`; `sub esp,298h` v `294h` with slots shifted (`this` +0Ch v +10h, distance +14h v +18h, shadowed +1Bh v +17h); ebx/ebp colouring swapped (retail ebp = 0x4000/zero/primitive, ebx = occlusion record/manager/visibility/flags; lane parks `this` in ebp at entry); plane dot product x,z,y v z,y,x; `movzx edi,al ; and ; or ; shr` v `and eax ; or ; shr ; mov edi,eax` | tried: v1 plain (1962 bytes, nothing inlined), v2 __forceinline helpers + by-value X/Z/Y Length + local-copy transform + `!(d > 1e-4f)` LOD clamp + out-of-line first bounding-box ctor / inline second + explicit out-of-line/inline mesh release, v3 fade as early-return helper + `(unsigned char)(flags >> 9) & 1`, v4 fade if/else chain + `shadowed` declared early (worse), v5 CArray `GetData()` object + switch on type, v6 volatile alpha scale (best: 576 normalised diff lines) | next: lane gap: inline asm (FtoL rounding helper) + loop rotation; once a lane accepts the asm oracle, regrade v6 and re-tune the ebx/ebp colouring
+- 00bd71b0 CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitive DIFFER(2121v2116): retail `fstp [esp+34h] ; fld [esp+34h] ; mov edx,[esp+58h] ; fistp dword [edx]` (inline-asm FtoL) v `call __ftol2`; retail loads the sphere radius first (`fld [eax+34h]` ... `fadd st(1)` ... `fstp st(0)`), so the transform terms then start z*m20 v lane y*m10; `sub esp,294h` v `290h` with slots shifted (`this` +0Ch v +10h, radius +10h v +18h); ebx/ebp swapped (retail ebx = view/visibility, ebp = new record/mesh kept across the loop; lane spills the mesh pointer); plane dot-product order; `movzx esi,al` form | tried: v1 from the static model (504 lines), v2 if/else type chain 11/38 (best: 486 lines); radius forms probed (by value, by reference, local radius, sphere copy, member helper, explicit sqrt) all load R last | next: lane gap: inline asm (FtoL) + compiler-build x87 scheduling (hoisted radius load)
+
+
+#### `2026-10-15_linux_hand904` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand904/differ/`)
+- 00caef70 func_00caef70 DIFFER(13v9): argument-slot re-store before a tail-called __stdcall method | tried: __stdcall/__cdecl free function, static member, __stdcall member, C-style COM tables (typed / void*), size pragma | next: lane gap (argument-slot reuse)
 
 
 #### `2026-10-15_linux_hand91` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand91/differ/`)

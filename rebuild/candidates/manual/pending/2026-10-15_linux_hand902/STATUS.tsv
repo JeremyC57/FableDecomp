@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+007460d0	MATCH	5v5	PASS	CTCPerceiveThing slot 10 -> slot 9 tail jump (graded with bin/q902.py: chunk98_oracle holds a stale 48-byte row for this address)
+007460e0	MATCH	3v3	PASS	CTCPerceiveThing slot 8 constant true
+007460f0	MATCH	9v9	PASS	STLport list<T>::back() COMDAT (no callers); leaf back
+00ba1140	DIFFER	2372v2344	-	StaticMeshesBase::RenderPrimitive parked after 6 grades: inline-asm FtoL x2, LOD loop rotation, frame/register drift
+00bd71b0	DIFFER	2121v2116	-	AnimatedMeshesBase::RenderPrimitive parked after 2 grades: inline-asm FtoL, hoisted radius load, frame/register drift

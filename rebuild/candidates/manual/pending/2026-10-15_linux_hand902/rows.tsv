@@ -1,0 +1,6 @@
+address	module	name	length
+007460d0	CTCPerceiveThing	Piece_007460d0	5
+007460e0	CTCPerceiveThing	Piece_007460e0	3
+007460f0	CTCPerceiveThing	Piece_007460f0	9
+00ba1140	CEnginePrimitiveManagerStaticMeshesBase	Piece_00ba1140	2344
+00bd71b0	CEnginePrimitiveManagerAnimatedMeshesBase	Piece_00bd71b0	2116

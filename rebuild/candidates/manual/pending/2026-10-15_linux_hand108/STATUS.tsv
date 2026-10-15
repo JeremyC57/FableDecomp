@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00863e10	RELOCATION_MATCH	83v83	PASS	CThingBodyReorienter::UpdateBodyReorienation; PDB layout
+006c5630	DIFFER	84v78	-	unresolved interface-0x51 component GetDeedDef; CDefPointer slot re-read (lane gap 24k)
+0082d000	RELOCATION_MATCH	90v90	PASS	IsPointInside; named physics local
+0082d080	RELOCATION_MATCH	41v41	PASS	DrawPreparePrimitivesForRendering (slot 36)
+0082d6b0	DIFFER	74v64	-	GetMaterial (slot 70, WallMaterial); def-pointer release register choice
+0082d7d0	DIFFER	74v64	-	GetFloorMaterial (slot 40); def-pointer release register choice
+0082d810	RELOCATION_MATCH	91v91	PASS	WorldUpdate (slot 19)
+0082d870	DIFFER	74v66	-	UsesHighDetailQuadTree (slot 57); detach-store form only extra store
+0082d8c0	DIFFER	94v84	-	GetReverbEnvironment (label wrong); def-pointer release register choice
+0082e090	RELOCATION_MATCH	66v66	PASS	SetIsAvailableForResidency; GetInterface 0xd5 template
+0082e0e0	RELOCATION_MATCH	64v64	PASS	GetIsAvailableForResidency; GetInterface 0xd5 template
+0083c1e0	DIFFER	82v76	-	CThingSwitch::GetSwitchDef (label wrong); CDefPointer slot re-read (lane gap 24k)
+00453f63	RELOCATION_MATCH	43v43	PASS	CCombatAbilityStrafeDef::operator=; forceinline record op=
+00453f93	RELOCATION_MATCH	49v49	PASS	CCombatAbilityUseProjectileWeaponDef::operator=; forceinline record op=
+00463ba2	RELOCATION_MATCH	57v57	PASS	CEntitySoundDef::operator=
+004dfeb8	RELOCATION_MATCH	76v76	PASS	CCarryableDef::operator=; C3DVector movsd block
+004e0569	RELOCATION_MATCH	63v63	PASS	CChestDef::operator=
+004e12b8	RELOCATION_MATCH	93v93	PASS	CFishDef::operator= (via Copy thunk)
+004e1918	RELOCATION_MATCH	93v93	PASS	CBettingDef::operator= (via Copy thunk)
+004e19e2	RELOCATION_MATCH	63v63	PASS	CFireheartMinigameDef::operator=
+004e2391	RELOCATION_MATCH	81v81	PASS	CBuyableHouseDef::operator=
+004e2447	RELOCATION_MATCH	51v51	PASS	CCreatureGeneratorDef::operator=
+004e2c08	RELOCATION_MATCH	69v69	PASS	CBossDef::operator=
+004e2ce4	RELOCATION_MATCH	87v87	PASS	CTurncoatDef::operator=
+004e4450	RELOCATION_MATCH	39v39	PASS	CClockDef::operator= (via Copy thunk)
+004e4d88	RELOCATION_MATCH	63v63	PASS	CExperienceDef::operator=
+004e5839	RELOCATION_MATCH	63v63	PASS	CFlammableDef::operator= (via Copy thunk); inlined CFireEffectCreationSet op=
+007f9730	MATCH	85v85	PASS	copy constructor; memberwise, last member in body
+007f9f00	DIFFER	94v94	-	operator() comparator; scheduling-only pop ebx
+00870480	RELOCATION_MATCH	82v82	PASS	Add; packed 9-byte CEntry
+008708f0	RELOCATION_MATCH	61v61	PASS	TransferBinaryOut; GetData select, 0x01AB6CCE end marker
+00870980	RELOCATION_MATCH	62v62	PASS	HasDriver; SGI find_if front end + split statement
+006619f0	RELOCATION_MATCH	33v33	PASS	SetLastActionHandedness; static GetWorldFrame via GetWorld()
+00661ef0	MATCH	33v33	PASS	PerformBlockedReaction; named action local
+00662040	RELOCATION_MATCH	59v59	PASS	GetStunTimeSeconds (label says Dazed); CFloatRange local
+006620a0	RELOCATION_MATCH	62v62	PASS	GetDazedTimeSeconds; CFloatRange local
+00662110	RELOCATION_MATCH	74v74	PASS	MakeNoise
+006621c0	DIFFER	68v68	-	IsFreeToFinishAction; final block layout
+006624a0	RELOCATION_MATCH	66v66	PASS	UpdateLastAttackingCreature; world local + inline GetFramesSince
+006624f0	RELOCATION_MATCH	85v85	PASS	SetAttackedByCreature; SetPTarget family

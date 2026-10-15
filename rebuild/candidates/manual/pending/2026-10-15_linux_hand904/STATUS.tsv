@@ -1,0 +1,10 @@
+address	status	bytes	test	note
+005271b0	MATCH	8	PASS	CThingFilter_IsValid::func_005271b0
+005271c0	RELOCATION_MATCH	62	PASS	CThingFilter_IsValid::func_005271c0
+00ac20d0	MATCH	5	PASS	CThingFilter_IsValid::func_00ac20d0
+00ac20e0	MATCH	11	PASS	CThingFilter_IsValid::func_00ac20e0
+00ac20f0	RELOCATION_MATCH	6	PASS	CThingFilter_IsValid::func_00ac20f0
+00caef70	DIFFER	13v9	-	COM forwarder thunk: argument-slot re-store before the tail jump (lane gap)
+00caef80	MATCH	3	PASS	CThingFilter_IsValid::func_00caef80
+00caef90	MATCH	3	PASS	CThingFilter_IsValid::func_00caef90
+00caefa0	MATCH	3	PASS	CThingFilter_IsValid::func_00caefa0

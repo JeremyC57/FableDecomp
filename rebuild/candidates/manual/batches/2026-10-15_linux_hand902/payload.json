@@ -1,0 +1,33 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "007460d0",
+    "module": "CTCPerceiveThing",
+    "name": "vfunc_10",
+    "source_cpp": "// CTCPerceiveThing::vfunc_10() -- forward vtable slot 10 to the component's own slot 9 (its frame update)\n// Retail: Fable.exe (TLC, VC7.1) @ 0x007460D0, 5 bytes. Vtable 0x012688CC (CTCPerceiveThing, rtti-vtables.tsv)\n// slot 10; slot 9 is 0x00745C70 (CTCPerceiveThing's frame update, unlanded). Same pair as CTCChest 0x00750960 and\n// CTCDoor 0x007312F0 (landed): the catalogue row held three tiny bodies (skipped ledger, chunk 902).\n// Leaf: vfunc_10\n// Shape: `mov eax,[ecx] ; jmp [eax+24h]` -- a call to the object's own virtual as the whole body is tail-jumped.\nstruct CTCPerceiveThing_Calls {                    // vtable 0x012688CC\n    virtual void v00();\n    virtual void v01();\n    virtual void v02();\n    virtual void v03();\n    virtual void v04();\n    virtual void v05();\n    virtual void v06();\n    virtual void v07();\n    virtual bool v08();\n    virtual void FrameUpdate();                    // slot 9 (+0x24), 0x00745C70\n    virtual void vfunc_10();\n};\n\nvoid CTCPerceiveThing_Calls::vfunc_10()\n{\n    FrameUpdate();\n}\n",
+    "test_cpp": "#include <cstdio>\n// Behaviour test for 0x007460D0: CTCPerceiveThing slot 10 forwards to slot 9 (FrameUpdate).\nstruct CTCPerceiveThing_Calls {\n    int calls;\n    CTCPerceiveThing_Calls() : calls(0) {}\n    virtual void v00() {}\n    virtual void v01() {}\n    virtual void v02() {}\n    virtual void v03() {}\n    virtual void v04() {}\n    virtual void v05() {}\n    virtual void v06() {}\n    virtual void v07() {}\n    virtual bool v08() { return true; }\n    virtual void FrameUpdate() { calls += 1; }\n    virtual void vfunc_10();\n};\nvoid CTCPerceiveThing_Calls::vfunc_10() { FrameUpdate(); }\n\nstruct Derived : CTCPerceiveThing_Calls {\n    virtual void FrameUpdate() { calls += 10; }\n};\n\nint main()\n{\n    CTCPerceiveThing_Calls a;\n    Derived d;\n    a.vfunc_10();\n    a.vfunc_10();\n    CTCPerceiveThing_Calls* p = &d;\n    p->vfunc_10();\n    if (a.calls != 2 || d.calls != 10) { std::printf(\"007460d0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"007460d0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "007460d0_TEST PASS",
+    "leaf": "vfunc_10"
+   },
+   {
+    "address": "007460e0",
+    "module": "CTCPerceiveThing",
+    "name": "vfunc_8",
+    "source_cpp": "// CTCPerceiveThing::vfunc_8() -- constant-true virtual (slot 8 of the CTCPerceiveThing vtable)\n// Retail: Fable.exe (TLC, VC7.1) @ 0x007460E0, 3 bytes. Vtable 0x012688CC slot 8 (rtti-vtables.tsv); the catalogue\n// row 007460d0 held this body too (skipped ledger, chunk 902). Other CTC components override slot 8 with their own\n// predicates; the perception component simply answers yes.\n// Shape: `mov al,1 ; ret` -- a bool return with no `this` use.\n// Leaf: vfunc_8\nstruct CTCPerceiveThing_Slot8 {                    // vtable 0x012688CC\n    virtual bool vfunc_8();\n};\n\nbool CTCPerceiveThing_Slot8::vfunc_8()\n{\n    return true;\n}\n",
+    "test_cpp": "#include <cstdio>\n// Behaviour test for 0x007460E0: CTCPerceiveThing slot 8 always answers true.\nstruct CTCPerceiveThing_Slot8 {\n    virtual bool vfunc_8();\n};\nbool CTCPerceiveThing_Slot8::vfunc_8() { return true; }\n\nint main()\n{\n    CTCPerceiveThing_Slot8 a, b;\n    CTCPerceiveThing_Slot8* p = &b;\n    if (!a.vfunc_8() || p->vfunc_8() != true) { std::printf(\"007460e0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"007460e0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "007460e0_TEST PASS",
+    "leaf": "vfunc_8"
+   },
+   {
+    "address": "007460f0",
+    "module": "CTCPerceiveThing",
+    "name": "Piece_007460f0",
+    "source_cpp": "// CTCPerceiveThing::Piece_007460f0() -- STLport list<T>::back(): the payload of the node before the sentinel\n// Retail: Fable.exe (TLC, VC7.1) @ 0x007460F0, 9 bytes; no call sites or absolute references (an inlined-elsewhere\n// COMDAT kept between CTCPerceiveThing's vtable bodies; catalogue row 007460d0 held it, skipped ledger, chunk 902).\n// STLport _List_base keeps only the sentinel node pointer (the allocator proxy is empty) at +0; a node is\n// { _M_next +0, _M_prev +4, _M_data +8 }, so back() == *(--end()) == &_M_node->_M_prev->_M_data.\n// Shape: `mov eax,[ecx] ; mov eax,[eax+4] ; add eax,8` -- address of the data member of the previous node.\n// Leaf: back\nstruct PerceiveListNode {\n    PerceiveListNode* _M_next;                     // +0x00\n    PerceiveListNode* _M_prev;                     // +0x04\n    long              _M_data;                     // +0x08 element payload\n};\n\nstruct PerceiveList {\n    PerceiveListNode* _M_node;                     // +0x00 sentinel\n    long& back();\n};\n\nlong& PerceiveList::back()\n{\n    return _M_node->_M_prev->_M_data;\n}\n",
+    "test_cpp": "#include <cstdio>\n// Behaviour test for 0x007460F0: STLport-style list back() == sentinel->_M_prev->_M_data.\nstruct PerceiveListNode {\n    PerceiveListNode* _M_next;\n    PerceiveListNode* _M_prev;\n    long              _M_data;\n};\nstruct PerceiveList {\n    PerceiveListNode* _M_node;\n    long& back();\n};\nlong& PerceiveList::back() { return _M_node->_M_prev->_M_data; }\n\nint main()\n{\n    PerceiveListNode sentinel, n1, n2;\n    // circular list: sentinel <-> n1 <-> n2 <-> sentinel\n    sentinel._M_next = &n1; sentinel._M_prev = &n2; sentinel._M_data = -1;\n    n1._M_next = &n2; n1._M_prev = &sentinel; n1._M_data = 11;\n    n2._M_next = &sentinel; n2._M_prev = &n1; n2._M_data = 22;\n    PerceiveList l; l._M_node = &sentinel;\n    if (l.back() != 22 || &l.back() != &n2._M_data) { std::printf(\"007460f0_TEST FAIL\\n\"); return 1; }\n    l.back() = 33;\n    if (n2._M_data != 33) { std::printf(\"007460f0_TEST FAIL\\n\"); return 1; }\n    std::printf(\"007460f0_TEST PASS\\n\");\n    return 0;\n}\n",
+    "pass_pattern": "007460f0_TEST PASS",
+    "leaf": "back"
+   }
+  ]
+ }
+}

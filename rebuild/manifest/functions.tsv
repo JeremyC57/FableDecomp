@@ -8856,6 +8856,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00526fe0	_Copy_backward<CSharerParserOutputToDebugContextMapper::CEntry*,CSharerParserOutputToDebugContextMapper::CEntry*>	_Copy_backward<CSharerParserOutputToDebugContextMapper::CEntry*,CSharerParserOutputToDebugContextMapper	__fastcall	CEntry *	4	CEntry *,CEntry *,CEntry *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00527170	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 005271b0	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+005271c0	CThingFilter_IsValid::Piece_005271c0	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00527200	CCharString_ReplaceAll	_global	unknown	undefined	0		0	yes	accepted									
 00527300	sub_00527300	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00527320	Alloc	_global	__fastcall	CClass *	0		1	yes	accepted									
@@ -39312,6 +39313,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac20b0	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CThingFilterIsValid_operator_00ac20b0.cpp
 00ac20c0	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CThingFilterIsValid_operator_00ac20c0.cpp
 00ac20d0	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+00ac20e0	CThingFilter_IsValid::Piece_00ac20e0	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
+00ac20f0	CThingFilter_IsValid::Piece_00ac20f0	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00ac2100	Uninitialise	CRenderTarget	__thiscall	void	1	CRenderTarget *	1	yes	accepted									
 00ac2160	BuildSubElement	C3DMeshPartitionElement	__thiscall	C3DMeshPartitionElement *	2	C3DMeshPartitionElement *,long	1	yes	accepted									
 00ac21e0	ReadFromFile	C3DMeshPartitionElement	__thiscall	void	2	C3DMeshPartitionElement *,CDataInputStream *	1	yes	accepted									
@@ -48057,6 +48060,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caef50	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 00caef60	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 00caef70	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+00caef80	CThingFilter_IsValid::Piece_00caef80	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
+00caef90	CThingFilter_IsValid::Piece_00caef90	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
+00caefa0	CThingFilter_IsValid::Piece_00caefa0	CThingFilter_IsValid	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00caefb0	ReleaseVolume	CVolume	__thiscall	void	1	CVolume *	1	yes	accepted									
 00caf070	AddLineToDrawBuffer	CRenderManager2D	__thiscall	void	5	CRenderManager2D *,CTVertexRHWColSpecTex1 *,CTVertexRHWColSpecTex1 *,ulong,CTexture *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CRenderManager2D_AddLineToDrawBuffer_00caf070.cpp
 00caf090	CThingFilter_CheckThing	_global	unknown	undefined	0		0	yes	accepted									

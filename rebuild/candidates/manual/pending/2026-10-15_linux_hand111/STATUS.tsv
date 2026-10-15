@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0083b9f0	RELOCATION_MATCH	41v41	PASS	DrawIsDrawable: engine slot 9 && CThing base
+0083ba20	RELOCATION_MATCH	78v78	PASS	OnCreate: CEngineGraphic copy + 100.0f extents
+0083ba70	RELOCATION_MATCH	41v41	PASS	slot 36 = DrawPreparePrimitivesForRendering
+0083bb40	RELOCATION_MATCH	90v90	PASS	slot 3 = SerialiseGameState (def refetch unless mode 1/3)
+0083bba0	RELOCATION_MATCH	76v76	PASS	slot 4 = ConstructFromLevelScript
+0083be50	RELOCATION_MATCH	41v41	PASS	CThingSwitch::DrawIsDrawable (vtable 0x012453FC; label propagated)
+0084b620	RELOCATION_MATCH	73v73	PASS	CCreatureAction_PerformExpressionExtended ??_G (first-member model)
+00982550	RELOCATION_MATCH	73v73	PASS	CCreatureAction_SendMessage ??_G (first-member model)
+00a009a0	RELOCATION_MATCH	56v56	PASS	CGraphicInfoFrame ??_G (first-member model)
+00abfaa0	RELOCATION_MATCH	70v70	PASS	C3DMeshMaterial ??_G (user dtor, forceinline)
+00464498	RELOCATION_MATCH	40v40	PASS	CThingHolySiteDef::Copy, optimize(s)
+0051dee0	RELOCATION_MATCH	55v55	PASS	GetMapAt -> CWorldMap slot 14
+0051df20	RELOCATION_MATCH	55v55	PASS	GetMapAt const -> CWorldMap const slot 15
+0051df80	MATCH	81v81	PASS	AddToRenderList intrusive list append
+0051e4f0	DIFFER	50v50	-	parked: vtable fetched into edx vs retail eax (register choice only)
+0051e530	MATCH	48v48	PASS	GetNonLocalThingChecksum over non-Dead things
+0051efc0	RELOCATION_MATCH	74v74	PASS	SetNonScriptedEntitesPaused, HasTC masked word
+005202f0	RELOCATION_MATCH	49v49	PASS	OnCreateClass: UIDToThingMap insert
+005215f0	RELOCATION_MATCH	38v38	PASS	OnDeleteClass: UIDToThingMap erase by value key
+00521a90	DIFFER	78v78	-	parked: register choice for the operator[] key/arg loads
+0085cfe0	RELOCATION_MATCH	35v35	PASS	CThingMap::GetMemoryFootprint
+0085d370	RELOCATION_MATCH	91v91	PASS	CThingMap ctor, C2DBoxI memberwise copy ctor
+00cac830	RELOCATION_MATCH	94v94	PASS	CBaseFilter ctor (DirectShow, AM_NOVTABLE); label propagated
+00637980	MATCH	72v72	PASS	RemoveMapwhoNodeFromCell
+00637a80	MATCH	78v78	PASS	GetThingMapAt const, named entry local
+0083d100	RELOCATION_MATCH	52v52	PASS	CThingMarker::DrawIsDrawable
+0083d280	DIFFER	103v94	-	parked: def add-ref/release pair re-reads the address-taken local
+004644c0	RELOCATION_MATCH	58v58	PASS	CThingMarkerDef::Copy, optimize(s)
+004979a0	RELOCATION_MATCH	39v39	PASS	CRenderTarget::~CRenderTarget (label propagated), novtable
+005299c0	RELOCATION_MATCH	79v79	PASS	CThingVillage ctor (label propagated)
+00702c60	DIFFER	76v75	-	parked: blink parity dword and vs retail byte load
+00702ce0	MATCH	30v30	PASS	ResetDieOffTimer
+00703010	MATCH	18v18	PASS	slot 57 = def UseHighDetailQuadTree bit
+007030c0	RELOCATION_MATCH	74v74	PASS	slot 3 SerialiseGameState
+00703110	RELOCATION_MATCH	58v58	PASS	slot 4 ConstructFromLevelScript
+007031c0	RELOCATION_MATCH	67v67	PASS	CThingObject ctor, PDef member object
+00703470	RELOCATION_MATCH	85v85	PASS	slot 22, GetInterface(26) template
+00703780	RELOCATION_MATCH	69v69	PASS	slot 64, GetInterface(172) template
+006a4d20	RELOCATION_MATCH	60v60	PASS	OnCreate adds CTCSoundPlayer TC
+006a4d60	RELOCATION_MATCH	47v47	PASS	ValidateInitialisation
