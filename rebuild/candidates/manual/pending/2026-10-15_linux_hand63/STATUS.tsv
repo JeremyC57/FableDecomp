@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00461344	RELOCATION_MATCH	87v87	PASS	CArmourDef::operator= (label propagated); def module /Os pragma
+00461d50	RELOCATION_MATCH	81v81	PASS	CCombatSequenceDef::operator= (label propagated); /Os pragma
+00462b15	RELOCATION_MATCH	57v57	PASS	CBrainDef::operator= (label propagated); /Os pragma
+00462e2d	RELOCATION_MATCH	75v75	PASS	CPlayerInventoryDef::operator= (label propagated); /Os pragma
+0046ee98	RELOCATION_MATCH	55v55	PASS	CParentDefClassBase copy ctor; /Os + __forceinline CVectorMap copy ctor
+00472e83	RELOCATION_MATCH	87v87	PASS	CEnvironmentThemeDaySetDef::operator= (label propagated); /Os pragma
+0067c6d0	RELOCATION_MATCH	75v75	PASS	CBlurredAttitudesDef copy ctor with inline CParentDefClassBase copy (label propagated)
+00c3d2d0	MATCH	27v27	PASS	CVtable_012B5870::GetPair80 (label GetInstantiationName propagated)
+00f25c60	RELOCATION_MATCH	51v51	PASS	CArenaWaveDef copy ctor (no-RTTI vtable 0x012FB2F0; label propagated)
+00f25f60	RELOCATION_MATCH	45v45	PASS	CArenaWaveDef::operator= (label propagated)
+00af7a90	RELOCATION_MATCH	84v84	PASS	NParticleEngine::CParticle ctor: inline member ctors + scoped_ptr reset
+00af85e0	RELOCATION_MATCH	49v49	PASS	CParticle::GetInterpolatedLifetimerInSeconds
+00af16e0	RELOCATION_MATCH	91v91	PASS	CParticleDataBank::NotifyBankSize: element reference local
+00541870	RELOCATION_MATCH	71v71	PASS	NUISystem::CDynamicList ??_G (label propagated)
+005440b0	RELOCATION_MATCH	77v77	PASS	NUISystem::CParticleEffect ??_G
+00547ab0	RELOCATION_MATCH	71v71	PASS	NUISystem::CSwappingStateComponent ??_G (label propagated)
+00562e70	RELOCATION_MATCH	56v56	PASS	CTCHeroOnlineScoreboard::ResetScoreboard (label ~CParticleEffect propagated)
+00563410	RELOCATION_MATCH	95v95	PASS	CTCHeroOnlineScoreboard::AbortWithMessage (label ~CParticleEffect propagated)
+008f6de0	RELOCATION_MATCH	61v61	PASS	CHeightMap ??_G (label propagated)
+00953a40	RELOCATION_MATCH	51v51	PASS	CCreatureAction_DragonBurninateInto ??_G: implicit dtor = no vtable store
+009b6c50	RELOCATION_MATCH	53v53	PASS	unreferenced ??_G of a record with a nested named buffer (class unknown)
+009f9a10	RELOCATION_MATCH	49v49	PASS	unreferenced ??_G of a record (CWideString + buffer; class unknown)
+00a5e7b0	RELOCATION_MATCH	53v53	PASS	unreferenced ??_G of a record with a nested object buffer (class unknown)
+00a62860	RELOCATION_MATCH	72v72	PASS	CShaderDataBank ??_G (label propagated)
+00c3f3d0	RELOCATION_MATCH	91v91	PASS	CVtable_012B5C10 dtor (/EHsc; negating bool accessor) [flags /EHsc]
+006e1b40	MATCH	78v78	PASS	CParticleEmitter::GetCurrentOrientation (Transform at +0xb0)
+006e2570	RELOCATION_MATCH	59v59	PASS	CParticleUpdateParameters::operator= (label SetUpdateParameters propagated)
+00815820	RELOCATION_MATCH	70v70	PASS	CTCHitLocations::GetPHitLocationFromName (label HasAllocatedDecals propagated)
+00aed020	RELOCATION_MATCH	47v47	PASS	CParticleEmitter::GetEmitterCost
+00aed140	RELOCATION_MATCH	52v52	PASS	CParticleEmitter::ClearAllParticles (label ClearAllDecals propagated)
+00aed1e0	RELOCATION_MATCH	52v52	PASS	CParticleEmitter::ClearAllDecals
+00aed250	RELOCATION_MATCH	51v51	PASS	CParticleEmitter::EnterTimelineEnd
+00aed290	RELOCATION_MATCH	88v88	PASS	CParticleEmitter::GetParticleStats: bool accessor over the Sleeping bit
+00aedca0	RELOCATION_MATCH	48v48	PASS	CParticleEmitter::GetNoParticles (label GetNoDecals propagated)
+00aedcd0	RELOCATION_MATCH	48v48	PASS	CParticleEmitter::GetNoDecals
+00aee180	RELOCATION_MATCH	86v86	PASS	CParticleEmitter::GetPParticleSystemFromName; /Oa; free operator== [flags /Oa]
+00aee1e0	RELOCATION_MATCH	86v86	PASS	CParticleEmitter::GetPParticleSystemFromName const twin; /Oa [flags /Oa]
+00af0610	RELOCATION_MATCH	57v57	PASS	CParticleEmitter::SetUpdateParameters (inline parameter assignment)
+00af0650	RELOCATION_MATCH	58v58	PASS	CParticleEmitter::DatabaseClone
+00af5960	RELOCATION_MATCH	55v55	PASS	CParticleSystem::DatabaseClone (label CParticleEmitter propagated)

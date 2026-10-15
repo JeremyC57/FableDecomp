@@ -101,6 +101,7 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-14_linux_hand58` | Hand chunk 58 (CMessageEventFilter_IsOriginatedByThing .. CMouseCursor): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | 35 | 5 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | 40 | 0 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand64` | Hand chunk 64 (CParticleEmitterDatabase .. CPatchTesselationEdgeStrip): 38 of 40 byte-exact | 38 | 2 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand65` | Hand chunk 65 (CPatchTesselationEdgeStrip .. CPersistContext): 35 of 40 byte-exact | 35 | 5 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand66` | Hand chunk 66 (CPersistContext .. CPhysicsForceModelGotoOutsideSimple): 36 of 40 byte-exact | 36 | 3 | 1 | STAGED: land it |
@@ -114,7 +115,7 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand74` | Hand chunk 74 (CScriptThing .. CShaderRenderManager): 35 of 40 byte-exact | 35 | 0 | 5 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 
-Totals: **542 matched rows staged for landing**, **50 parked rows** for the Fable retry pass.
+Totals: **582 matched rows staged for landing**, **50 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
