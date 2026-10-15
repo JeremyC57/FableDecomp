@@ -229628,6 +229628,251 @@ $catalog = @(
         TestSource = '00/d7/CQHangingTreeGoodScript_StoreGuardsHealth_00d77340_test.cpp'
         PassPattern = '00d77340_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0048d7c0'
+        Module = 'CKeyedDefStringTable'
+        Source = '00/48/CKeyedDefStringTable_CKeyedDefStringTable_0048d7c0.cpp'
+        TestSource = '00/48/CKeyedDefStringTable_CKeyedDefStringTable_0048d7c0_test.cpp'
+        PassPattern = '0048d7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052c4b0'
+        Module = 'CKeyedTablePair'
+        Source = '00/52/CKeyedTablePair_CKeyedTablePair_0052c4b0.cpp'
+        TestSource = '00/52/CKeyedTablePair_CKeyedTablePair_0052c4b0_test.cpp'
+        PassPattern = '0052c4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ddae0'
+        Module = 'CTCTrophy'
+        Source = '00/6d/CTCTrophy_CTCTrophy_006ddae0.cpp'
+        TestSource = '00/6d/CTCTrophy_CTCTrophy_006ddae0_test.cpp'
+        PassPattern = '006ddae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082b750'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_UpdateMarkersNow_0082b750.cpp'
+        TestSource = '00/82/CMiniMapDisplay_UpdateMarkersNow_0082b750_test.cpp'
+        PassPattern = '0082b750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098d9f0'
+        Module = 'CNamedShaderTable'
+        Source = '00/98/CNamedShaderTable_CNamedShaderTable_0098d9f0.cpp'
+        TestSource = '00/98/CNamedShaderTable_CNamedShaderTable_0098d9f0_test.cpp'
+        PassPattern = '0098d9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f7330'
+        Module = 'CPairedNodeLists'
+        Source = '00/9f/CPairedNodeLists_CPairedNodeLists_009f7330.cpp'
+        TestSource = '00/9f/CPairedNodeLists_CPairedNodeLists_009f7330_test.cpp'
+        PassPattern = '009f7330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2ae60'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_FindIndexInCompletedBank_00b2ae60.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_FindIndexInCompletedBank_00b2ae60_test.cpp'
+        PassPattern = '00b2ae60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2b790'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_GetGraphicInfo_00b2b790.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_GetGraphicInfo_00b2b790_test.cpp'
+        PassPattern = '00b2b790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4f390'
+        Module = 'CEngineShadowRenderer'
+        Source = '00/b4/CEngineShadowRenderer_UpdateShadowScene_00b4f390.cpp'
+        TestSource = '00/b4/CEngineShadowRenderer_UpdateShadowScene_00b4f390_test.cpp'
+        PassPattern = '00b4f390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b50510'
+        Module = 'CEngineShadowRenderer'
+        Source = '00/b5/CEngineShadowRenderer_SetupShadowFuncRenderStates_00b50510.cpp'
+        TestSource = '00/b5/CEngineShadowRenderer_SetupShadowFuncRenderStates_00b50510_test.cpp'
+        PassPattern = '00b50510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5a160'
+        Module = 'CEngineScreenEffectColourFilter'
+        Source = '00/b5/CEngineScreenEffectColourFilter_UpdateUVs_00b5a160.cpp'
+        TestSource = '00/b5/CEngineScreenEffectColourFilter_UpdateUVs_00b5a160_test.cpp'
+        PassPattern = '00b5a160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5bfd0'
+        Module = 'CEngineScreenEffectRadialBlurRenderer'
+        Source = '00/b5/CEngineScreenEffectRadialBlurRenderer_SetEffectQuality_00b5bfd0.cpp'
+        TestSource = '00/b5/CEngineScreenEffectRadialBlurRenderer_SetEffectQuality_00b5bfd0_test.cpp'
+        PassPattern = '00b5bfd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5ea30'
+        Module = 'CEngineScreenEffectRadialBlurRenderer'
+        Source = '00/b5/CEngineScreenEffectRadialBlurRenderer_Render_00b5ea30.cpp'
+        TestSource = '00/b5/CEngineScreenEffectRadialBlurRenderer_Render_00b5ea30_test.cpp'
+        PassPattern = '00b5ea30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5ee00'
+        Module = 'CEngineScreenEffectGlowRenderer'
+        Source = '00/b5/CEngineScreenEffectGlowRenderer_SetEffectQuality_00b5ee00.cpp'
+        TestSource = '00/b5/CEngineScreenEffectGlowRenderer_SetEffectQuality_00b5ee00_test.cpp'
+        PassPattern = '00b5ee00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b61aa0'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_KeepHistoryInRange_00b61aa0.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_KeepHistoryInRange_00b61aa0_test.cpp'
+        PassPattern = '00b61aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6d630'
+        Module = 'CEngineWaterRenderer'
+        Source = '00/b6/CEngineWaterRenderer_FinishUsingDynamicTextures_00b6d630.cpp'
+        TestSource = '00/b6/CEngineWaterRenderer_FinishUsingDynamicTextures_00b6d630_test.cpp'
+        PassPattern = '00b6d630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b80840'
+        Module = 'CEngineSimulationManager'
+        Source = '00/b8/CEngineSimulationManager_PausedWorldFrameUpdate_00b80840.cpp'
+        TestSource = '00/b8/CEngineSimulationManager_PausedWorldFrameUpdate_00b80840_test.cpp'
+        PassPattern = '00b80840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84320'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_RenderListTwoPass_00b84320.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_RenderListTwoPass_00b84320_test.cpp'
+        PassPattern = '00b84320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84400'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_DeleteList_00b84400.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_DeleteList_00b84400_test.cpp'
+        PassPattern = '00b84400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b86a70'
+        Module = 'CEngineScreenEffectDisplacementRenderer'
+        Source = '00/b8/CEngineScreenEffectDisplacementRenderer_InitialiseTextures_00b86a70.cpp'
+        TestSource = '00/b8/CEngineScreenEffectDisplacementRenderer_InitialiseTextures_00b86a70_test.cpp'
+        PassPattern = '00b86a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b88ed0'
+        Module = 'CEngineScreenEffectDisplacementRenderer'
+        Source = '00/b8/CEngineScreenEffectDisplacementRenderer_Render_00b88ed0.cpp'
+        TestSource = '00/b8/CEngineScreenEffectDisplacementRenderer_Render_00b88ed0_test.cpp'
+        PassPattern = '00b88ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b89140'
+        Module = 'CEngineScreenEffectOutlineGlow'
+        Source = '00/b8/CEngineScreenEffectOutlineGlow_FinishOutlineRendering_00b89140.cpp'
+        TestSource = '00/b8/CEngineScreenEffectOutlineGlow_FinishOutlineRendering_00b89140_test.cpp'
+        PassPattern = '00b89140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b918b0'
+        Module = 'CEngineSceneGridCell'
+        Source = '00/b9/CEngineSceneGridCell_MovePrimitivesTo_00b918b0.cpp'
+        TestSource = '00/b9/CEngineSceneGridCell_MovePrimitivesTo_00b918b0_test.cpp'
+        PassPattern = '00b918b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b91d20'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_GetCellTotalPrimitiveCount_00b91d20.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_GetCellTotalPrimitiveCount_00b91d20_test.cpp'
+        PassPattern = '00b91d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b92250'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_EnumeratePrimitives_00b92250.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_EnumeratePrimitives_00b92250_test.cpp'
+        PassPattern = '00b92250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b935c0'
+        Module = 'CEngineSceneGridCell'
+        Source = '00/b9/CEngineSceneGridCell_CEngineSceneGridCell_00b935c0.cpp'
+        TestSource = '00/b9/CEngineSceneGridCell_CEngineSceneGridCell_00b935c0_test.cpp'
+        PassPattern = '00b935c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b93660'
+        Module = 'CEngineSceneGridCell'
+        Source = '00/b9/CEngineSceneGridCell_CEngineSceneGridCell_00b93660.cpp'
+        TestSource = '00/b9/CEngineSceneGridCell_CEngineSceneGridCell_00b93660_test.cpp'
+        PassPattern = '00b93660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b937a0'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_GetCellCreate_00b937a0.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_GetCellCreate_00b937a0_test.cpp'
+        PassPattern = '00b937a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b949a0'
+        Module = 'CEngineSceneMap'
+        Source = '00/b9/CEngineSceneMap_Initialise_00b949a0.cpp'
+        TestSource = '00/b9/CEngineSceneMap_Initialise_00b949a0_test.cpp'
+        PassPattern = '00b949a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdb260'
+        Module = 'CEngineVSConstantLayoutLightsBones'
+        Source = '00/bd/CEngineVSConstantLayoutLightsBones_CEngineVSConstantLayoutLightsBones_00bdb260.cpp'
+        TestSource = '00/bd/CEngineVSConstantLayoutLightsBones_CEngineVSConstantLayoutLightsBones_00bdb260_test.cpp'
+        PassPattern = '00bdb260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be9530'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/be/CEngineSkyRenderer_KeepHistoryInRange_00be9530.cpp'
+        TestSource = '00/be/CEngineSkyRenderer_KeepHistoryInRange_00be9530_test.cpp'
+        PassPattern = '00be9530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfd3b0'
+        Module = 'CEngineWaterBackgroundSubPatch'
+        Source = '00/bf/CEngineWaterBackgroundSubPatch_OnPostRelocation_00bfd3b0.cpp'
+        TestSource = '00/bf/CEngineWaterBackgroundSubPatch_OnPostRelocation_00bfd3b0_test.cpp'
+        PassPattern = '00bfd3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfd480'
+        Module = 'CEngineWaterBackgroundSubPatch'
+        Source = '00/bf/CEngineWaterBackgroundSubPatch_CEngineWaterBackgroundSubPatch_00bfd480.cpp'
+        TestSource = '00/bf/CEngineWaterBackgroundSubPatch_CEngineWaterBackgroundSubPatch_00bfd480_test.cpp'
+        PassPattern = '00bfd480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfd5d0'
+        Module = 'CEngineWaterBackgroundSubPatch'
+        Source = '00/bf/CEngineWaterBackgroundSubPatch_RelocateData_00bfd5d0.cpp'
+        TestSource = '00/bf/CEngineWaterBackgroundSubPatch_RelocateData_00bfd5d0_test.cpp'
+        PassPattern = '00bfd5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5d610'
+        Module = 'CWaveOutDevice'
+        Source = '00/c5/CWaveOutDevice_Close_00c5d610.cpp'
+        TestSource = '00/c5/CWaveOutDevice_Close_00c5d610_test.cpp'
+        PassPattern = '00c5d610_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

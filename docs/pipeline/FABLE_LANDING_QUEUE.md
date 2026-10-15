@@ -161,6 +161,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand134` | Hand chunk 134 (CEngineInternalPrimitive2DStaticMesh .. CEngineLandscapeMemoryManager): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand135` | Hand chunk 135 (CEngineLandscapeMemoryManager .. CEnginePrimitiveManager2DStaticMeshes): 28 of 40 byte-exact | - | 12 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand136` | Hand chunk 136 (CEnginePrimitiveManagerAnimatedMeshesBase .. CEngineSceneGrid): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand137` | Hand chunk 137 (CEngineSceneGrid .. CEngineWeatherRenderer): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand138` | Hand chunk 138 (CEngineWeatherRenderer .. CFactionDatabase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
@@ -213,7 +214,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **345 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **350 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -550,6 +551,14 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00bb6b50 CEnginePrimitiveManagerWeatherMask::RenderSubPrimitive DIFFER(136v136): retail pipelines the ten sphere/box dword loads one store ahead and loads Flags before the matrix `rep movsd`; the lane copies sequentially | tried: member-initialising ctor (float by value -> x87; const float& best), default ctor + struct assignments, memberwise C3DVector operator= | next: lane gap: scheduling only
 - 00bb6ab0 CEnginePrimitiveManagerWeatherMask::RenderPrimitive DIFFER(152v152): retail squares Y, Z, then X (`fld st(1) ; fmul st(2) ; fld st(1) ; fmul st(2)`); the lane squares Z, Y, X | tried: x+y+z, x+(y+z), y+z+x, by-value Magnitude(x,y,z) (the same source matches sibling 0x00BBA340) | next: lane gap: x87 operand order (or an unidentified helper that keeps Y on top)
 - 0042dd28 CNewFrontendGameComponent::CleanUpInterfaces (catalogued CEngineResourceManager::ChangeScene) DIFFER(139v139): retail zero register ebp and manager local ebx; the lane swaps them | tried: speed TU, optimize("s") (best), no manager local, function-scope manager local | next: lane gap: callee-saved register assignment
+
+
+#### `2026-10-15_linux_hand137` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand137/differ/`)
+- 00b5bbc0 CEngineShadowRenderer::SetShadowClipVolumesToNeverShadow DIFFER(117v117): retail `mov eax,3F000000h ; mov edx,3F4CCCCDh` (0.5f stays in eax, edx reused for the zero) vs lane `mov eax,3F4CCCCDh ; xor edx,edx` hoisted and eax reloaded with 0.5f | tried: retail store order, member order, long-typed zeros, `optimize("s")` (x87 path) | next: lane gap: constant-register allocation (same stores, same order)
+- 00b50e50 CEngineWeatherRenderer::GetBoxBoundingSphereRadiusSquared DIFFER(113v114): retail homes y/z at [esp]/[esp+4] and the if/else maximum at [esp+8]; the lane puts the maximum at [esp] | tried: C3DVector copy + ternaries, scalar locals + if/else (FP code identical), maximum declared first, struct copy + if/else | next: lane gap: frame-slot ordering
+- 00bf2ad0 CEngineTreeFilerBase::ConvertTreeToList DIFFER(115v115): retail list tail in esi and climbing parent in edi, lane the reverse (every other instruction identical) | tried: separate cursor local, `root` reused as cursor, head/tail declaration swap, parent declared at function scope first | next: lane gap: callee-saved register colouring
+- 00bf3030 CEngineTreeFilerBase::AddNewKey DIFFER(122v122): retail `lea eax,[eax*4+1Ch]` and a copy loop with dest in eax, `key - dest` in edx, index in ecx (`[edx+eax]`); lane `lea ecx` and `[edx+eax*4]` with the index in eax | tried: indexed copy, pointer-walk copy, key words addressed as `(node + 1)` | next: an `unsigned long` index or a `memcpy`-style inline helper; else lane gap: induction-variable strength reduction
+- 00c0a790 CAnimatedMeshCreateParams::CAnimatedMeshCreateParams (catalogued CEngineWaterBackgroundSubPatch ctor) DIFFER(106v106): retail loads `mov edx,3F800000h` right before the first 1.0f store (after the +0x10 byte store), the lane hoists it to the top; all stores and their order match with body assignments | tried: initialiser list, C2DVector scale member, body assignments in retail order | next: lane gap: constant-load placement (the 24b "1.0f register" family)
 
 
 #### `2026-10-15_linux_hand138` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand138/differ/`)

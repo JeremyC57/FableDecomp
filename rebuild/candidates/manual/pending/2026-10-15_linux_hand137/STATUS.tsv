@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b91d20	RELOCATION_MATCH	149v149	PASS	recursive 2x2 child total, cached in the cell (PDB layout)
+00b92250	RELOCATION_MATCH	141v141	PASS	cell chain then recursive children; enumerator slot 1
+00b937a0	RELOCATION_MATCH	105v105	PASS	create on demand, parent from LevelUp (x/2,y/2)
+00b918b0	RELOCATION_MATCH	108v108	PASS	move primitives; inline AddPrimitive/Invalidate
+00b935c0	RELOCATION_MATCH	153v153	PASS	handle array inline loop; bit-field RMW; inline LCG + GFROR13
+00b93660	RELOCATION_MATCH	118v118	PASS	handle dtor via null-safe GetRefCount accessor (eax then ecx)
+00b949a0	RELOCATION_MATCH	135v135	PASS	really CEngineSceneMap::Initialise; resize(1, CCountedPointer()) + Reset(new grid)
+00b5a160	RELOCATION_MATCH	108v108	PASS	8-byte C2DCoordI size local; quarter-texel UVs (header)
+0048d7c0	RELOCATION_MATCH	103v103	PASS	really a container record dtor (vector of pairs + STLport map)
+00b86a70	RELOCATION_MATCH	141v141	PASS	free page, alloc page + 256x256 texture; bool via setge cl
+00b88ed0	RELOCATION_MATCH	123v123	PASS	pass test; inlined ReleaseDynamicTextures (header shell)
+00b5ee00	RELOCATION_MATCH	114v114	PASS	glow quality; disabled arm clears flag before freeing page
+0052c4b0	RELOCATION_MATCH	135v135	PASS	really a container record dtor (2 vectors + STLport map)
+0098d9f0	RELOCATION_MATCH	113v113	PASS	really a container record dtor (vector<CCharString> + map)
+009f7330	RELOCATION_MATCH	107v107	PASS	really an unoptimised record dtor; optimize("",off) + __forceinline list dtor
+00b89140	RELOCATION_MATCH	110v110	PASS	restore RT/viewport, conditional texture release (header shell)
+00c5d610	RELOCATION_MATCH	121v121	PASS	really CWaveOutDevice::Close (no-RTTI vtable 0x012B8FC4 slot 7)
+00b5bfd0	RELOCATION_MATCH	113v113	PASS	radial blur quality (header shell)
+00b5ea30	RELOCATION_MATCH	151v151	PASS	radial blur render; Fade > 1/255; two releases
+0082b750	RELOCATION_MATCH	107v107	PASS	really CMiniMapDisplay::UpdateMarkersNow; by-value empty predicate with user ctor
+00b4f390	RELOCATION_MATCH	144v144	PASS	headers CEngineShadowRenderer + CEngineCamera with casts
+00b50510	RELOCATION_MATCH	125v125	PASS	identity matrix via chained assignments (right to left)
+00b5bbc0	DIFFER	117v117	-	constant-register allocation (0.5f/0.8f/0 in eax/edx)
+00b80840	RELOCATION_MATCH	156v156	PASS	retail lists 4 bytes (-0x1c vs PDB); memberwise C3DVector copy ctor
+00b61aa0	MATCH	143v143	PASS	thiscall ignoring this; if/else-if per axis
+00be9530	MATCH	143v143	PASS	byte-identical twin of 00b61aa0
+006ddae0	RELOCATION_MATCH	148v148	PASS	really CTCTrophy ctor (vtable 0x0125FC54)
+00b84320	MATCH	100v100	PASS	two do/while chain walks per entry
+00b84400	MATCH	97v97	PASS	virtual Destroy(1) per sub; inlined SGI erase(begin,end)
+00b2ae60	RELOCATION_MATCH	128v128	PASS	ids read into locals first; IntToString + "-" + IntToString
+00b2b790	RELOCATION_MATCH	137v137	PASS	two typed getters with begin()+n (no tail merge)
+00bf2ad0	DIFFER	115v115	-	esi/edi swap (tail vs parent)
+00bf3030	DIFFER	122v122	-	copy-loop induction registers
+00bdb260	RELOCATION_MATCH	130v130	PASS	two CShaderConstantRange temporaries (sibling template)
+00bfd3b0	RELOCATION_MATCH	106v106	PASS	header shell; manager local; 4 bridge pairs then main
+00bfd480	RELOCATION_MATCH	144v144	PASS	local model with CMovableResource base; non-virtual dtor
+00bfd5d0	RELOCATION_MATCH	147v147	PASS	header shell; inline RelocatePointer; Leaf RelocateData
+00c0a790	DIFFER	106v106	-	really a 0x5c-byte create-params ctor; 1.0f load placement
+00b6d630	RELOCATION_MATCH	103v103	PASS	pool local; (texture, slot) pairs 8 bytes below the PDB
+00b50e50	DIFFER	113v114	-	frame-slot order of y/z vs the maximum
