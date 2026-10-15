@@ -667,5 +667,8 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   Action 60 (0x41F54A) calls CTCInventory::AddCloseInventoryEvent (0x584A73), which toggles
   the live GUI only when [[0x13B8790]+0x2BE] is set, and `host_ui_manager_event` runs actions
   with that byte clear while the Xbox screens are up. Action 60 now runs with the byte as is.
+  Harness (/tmp/claude-0/agent_bclose/vbclose.sh): B on the top level closes the inventory
+  ("close (action 60)", then "screens closed"), B in Equipment returns to the top level and
+  a second B closes, B leaves the quick-access menu open (as on the Xbox).
 - Lists: the shift is 36 design units and covers the Xbox pause menu too (user: "the lists
   need to be moved left more").
