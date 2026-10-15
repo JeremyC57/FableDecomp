@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00cb7e50	RELOCATION_MATCH	135v135	PASS	CGuiVarTransferStruct::Add(CGuiVar* var, const CCharString& name)
+00e95e80	RELOCATION_MATCH	137v137	PASS	CHHUndead::Main()
+00d83f20	RELOCATION_MATCH	114v114	PASS	CHS_Screamer::OnPredicateFail()
+00d73610	RELOCATION_MATCH	146v146	PASS	CHTG_AmbushPoint::Main()
+00a01e40	RELOCATION_MATCH	141v141	PASS	CHandleBasedMemoryPool::CombineAreas(CHeader* first, CHeader* second)
+00a01ed0	DIFFER	122v122	-	CHandleBasedMemoryPool::FindFreeArea(long size): scheduling only: retail `mov ebx,edx ; cmp ebx,100h` before the outer loop, the lane `cmp edx,100h ; mov ebx,edx`
+00a02190	RELOCATION_MATCH	143v143	PASS	CHandleBasedMemoryPool::Uninitialise()
+00a02370	RELOCATION_MATCH	159v159	PASS	CHandleBasedMemoryPool::EndShutdown()
+00a02570	RELOCATION_MATCH	151v151	PASS	CHandleBasedMemoryPool::Initialise(long poolSize, bool multiThreaded, unsigned long memoryFlags)
+00a02610	RELOCATION_MATCH	109v109	PASS	CHandleBasedMemoryPool::InitialiseFromPreallocatedBuffer(void* buffer, long size, bool multiThreaded)
+00a03040	RELOCATION_MATCH	136v136	PASS	CHandleBasedMemoryPool::InternalAllocateHandle()
+00c27fd0	DIFFER	116v116	-	CHandleBasedMemoryPool::FindFreeArea(long size): scheduling only: retail `mov ebx,edx ; cmp ebx,100h` before the outer loop, the lane `cmp edx,100h ; mov ebx,edx` (same gap as 0x00A01ED0)
+008f5f00	MATCH	147v147	PASS	CHeightMap::Update()
+008f6050	DIFFER	123v109	-	CHeightMap::Clear(): constant-register choice: retail hoists 0 into ecx (`cmp eax,ecx` loop guards, `mov [eax],ecx`, `mov [eax+8],cl`) and stores 0xff as an immediate; the
+004e3d4a	RELOCATION_MATCH	121v121	PASS	CWeaponDef::~CWeaponDef()
+0082a460	RELOCATION_MATCH	150v150	PASS	CMiniMapDisplay::CMiniMapDisplay()
+00d7f110	RELOCATION_MATCH	142v142	PASS	CHeroSoulsEnemy::Main()
+004560e1	RELOCATION_MATCH	155v155	PASS	CHeroStatsDef::CHeroStatsDef()
+00755520	RELOCATION_MATCH	103v103	PASS	SAppearanceDrawRecord_00755520::~SAppearanceDrawRecord_00755520()
+00816390	RELOCATION_MATCH	107v107	PASS	CHitLocation::SetEnabled(bool enabled)
+005e26e0	RELOCATION_MATCH	132v132	PASS	InsertSortedEntry_005e26e0(SPriorityEntry* first, SPriorityEntry* next, SPriorityEntry value, CContextSensitivePriorityCompare pred)
+008f5c50	RELOCATION_MATCH	146v146	PASS	CHitThing::ModifyHeroStats(CTCHeroStats* heroStats)
+008e2fc0	RELOCATION_MATCH	105v105	PASS	CIcicleData::CIcicleData(const CIcicleData& other)
+009e4850	MATCH	117v117	PASS	CInputEvent::CInputEvent(const CInputEvent& other)
+00c25ce0	RELOCATION_MATCH	112v112	PASS	CInputEvent::CompareEvents(const SEventKey& a, const SEventKey& b)
+00c25d50	RELOCATION_MATCH	136v136	PASS	CInputEvent::LessThanComparator(const SEventKey& a, const SEventKey& b)
+009f4c60	RELOCATION_MATCH	133v133	PASS	CInputManager::IsJoystickEventInQueue(EInputEventType type, long button, CInputEvent* event, long device)
+009f54d0	RELOCATION_MATCH	103v103	PASS	CInputManager::SetEventsFromEventPackage(const CInputEventPackage& package)
+009f5540	RELOCATION_MATCH	123v123	PASS	CInputManager::ClearEvents()
+009f5d70	SKIP	-v121	-	CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B)
+00a5ffd0	RELOCATION_MATCH	119v119	PASS	CInputManagerDX::~CInputManagerDX()
+00a901e0	RELOCATION_MATCH	126v126	PASS	C3DPrimitive2::FreeData()
+0068c760	DIFFER	135v131	-	CInputProcessBButtonExitMode::ProcessInput(const CInputEvent& event, CProcessedInput& processed): /GS lane gap: the lane caches `processed` in ebx at entry and grows the frame by 4; retail re-reads the slot (`mov ecx,[esp+40h]`)
+00691560	DIFFER	108v105	-	CInputProcessBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed): load order: retail reads the component (`mov ecx,[eax+4]`) before the enable-flag byte (`mov al,[13BAE1Dh]`), the lane reads the flag first into cl an
+0068e2c0	DIFFER	107v103	-	CInputProcessBlock::ProcessInput(const CInputEvent& event, CProcessedInput& processed): /GS lane gap: the lane caches `processed` in ebx at entry, retail re-reads `[esp+3Ch]`; without /GS (or with an unnamed temporary, which loses the coo
+0068e330	DIFFER	111v103	-	CInputProcessBlock::Update(CProcessedInput& processed): /GS lane gap: the lane caches `processed` in esi at entry (`push esi ; mov esi,[esp+34h]`); without /GS the body is the retail one minus the cookie
+0068d790	RELOCATION_MATCH	155v155	PASS	CInputProcessCameraLookAround::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
+0068c6e0	DIFFER	128v126	-	CInputProcessClickPastText::ProcessInput(const CInputEvent& event, CProcessedInput& processed): /GS lane gap: the lane caches `processed` in ebx at entry (`push ebx ; mov ebx,[esp+38h]`), retail re-reads its slot when needed; the event build and 
+0068fb90	RELOCATION_MATCH	112v112	PASS	CInputProcessCombat::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
+006881d0	RELOCATION_MATCH	132v132	PASS	CInputProcessControlCreature::Update(CProcessedInput& processed)

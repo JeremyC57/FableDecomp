@@ -167,6 +167,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand140` | Hand chunk 140 (CGameScriptInterface .. CGameScriptInterface): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand141` | Hand chunk 141 (CGameScriptInterface .. CGameScriptInterface): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand142` | Hand chunk 142 (CGameScriptInterface .. CGuiVarTransferStruct): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand143` | Hand chunk 143 (CGuiVarTransferStruct .. CInputProcessControlCreature): 31 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -218,15 +219,16 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **372 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **380 parked rows** for the Fable retry pass.
 
-### Skipped rows (8 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (9 open of 30 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
+| `009f5d70` | prefix | open | 009f5d70:156 | `2026-10-15_linux_hand143` | CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B) |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
@@ -603,6 +605,17 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 009fd700 CGraphicInfo::CGraphicInfo DIFFER(126v126): scheduling only -- retail emits `push ebp ; mov ebp,[esp+10h]` after the PixelFormat/bit-field loads and `push edi` after the bit-field store; ours hoists them | tried: init-list header ctor, chained body assignments (reverses the stores), separate body assignments | next: lane gap: prologue push scheduling
 - 006cdd50 CGroundNavigatorExternalInterface::~CGroundNavigatorExternalInterface DIFFER(176v155): body and loops match; retail pushes edi in the prologue (before the mask test) so every path shares one epilogue, ours pushes it after the null test and emits separate early-out epilogues | tried: STLport list::remove, find + while(next != end), for(;;) with an explicit next test, for(;;) with the single find | next: route the absent-component path to the same exit (drop the separate `if (obstacles)` split or move the sweep into an auto_inline(off) helper defined above)
 - 00aeef40 CGuiVarTransferStruct::Add DIFFER(172v146): retail keeps the counted-pointer temporary in registers (Data edi, Info esi) through the in-place copy, the reference bump and the release although its address goes to the insert; ours re-reads both words from the frame everywhere | tried: temporary argument, named local, init-list counted-pointer ctor | next: define the insert (0x00AF0FA0) above under auto_inline(off) so VC knows it does not write the value, else lane gap: store-to-load forwarding of an address-taken local
+
+
+#### `2026-10-15_linux_hand143` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand143/differ/`)
+- 00a01ed0 CHandleBasedMemoryPool::FindFreeArea DIFFER(122v122): retail `mov ebx,edx ; cmp ebx,100h`, lane `cmp edx,100h ; mov ebx,edx` before the outer loop | tried: if-clamp, ternary loop initialiser, if/else into a separate index, inline static clamp helper, split `for(;;){ if (best) break; }` | next: lane gap: copy-propagated loop-guard register (scheduling)
+- 00c27fd0 CHandleBasedMemoryPool::FindFreeArea DIFFER(116v116): same `mov ebx,edx ; cmp ebx,100h` vs `cmp edx,100h ; mov ebx,edx` (second pool build, free lists at +0x3c, no flags test) | tried: ternary initialiser, const-ref Min template (adds a frame) | next: lane gap: same as 00a01ed0
+- 008f6050 CHeightMap::Clear DIFFER(123v109): retail hoists 0 into ecx (`cmp eax,ecx` loop guards, `mov [eax],ecx`, `mov [eax+8],cl`) and stores 0xff immediate; lane hoists `mov cl,0FFh`, uses `test`, and forms the memset address in ebp | tried: plain stores + memset, inline cell Reset(), 0.0f + sizeof memset + outer-declared indices, Height as unsigned long | next: lane gap: constant-register choice (maybe a cell assignment from a const default cell)
+- 0068c6e0 CInputProcessClickPastText::ProcessInput DIFFER(128v126): `push ebx ; mov ebx,[esp+38h]` (processed cached at entry) vs retail re-reading `[esp+3Ch]` | tried: named CGameEvent | next: lane gap: /GS parameter caching (GOTCHAS 23e)
+- 0068c760 CInputProcessBButtonExitMode::ProcessInput DIFFER(135v131): same /GS caching of `processed` in ebx (frame +4) | tried: named event + inline AddLong | next: lane gap: /GS parameter caching
+- 0068e2c0 CInputProcessBlock::ProcessInput DIFFER(107v103): same /GS caching in ebx | tried: named event, unnamed temporary (no caching but no cookie: 85v103), `__forceinline` QueueGameEvent helper | next: lane gap: /GS parameter caching
+- 0068e330 CInputProcessBlock::Update DIFFER(111v103): `push esi ; mov esi,[esp+34h]` caching under /GS; without /GS the body matches retail minus the cookie | tried: ternary constructor argument (becomes `neg/sbb/and/add`), one event per if/else arm (right structure) | next: lane gap: /GS parameter caching
+- 00691560 CInputProcessBetting::ProcessInput DIFFER(108v105): retail loads the component `mov ecx,[eax+4]` before the flag byte `mov al,[13BAE1Dh]`; lane loads the flag into cl first, then `mov ecx,eax` | tried: local + nested if, inline member holding the flag test, volatile flag | next: lane gap: load ordering across the flag test (try the out-parameter GetInterface form)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

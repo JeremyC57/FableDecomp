@@ -230839,6 +230839,223 @@ $catalog = @(
         TestSource = '00/ee/CGlobalWatchForHeroDeathScript_WatchForHeroDeath_00ee8fe0_test.cpp'
         PassPattern = '00ee8fe0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004560e1'
+        Module = 'CHeroStatsDef'
+        Source = '00/45/CHeroStatsDef_CHeroStatsDef_004560e1.cpp'
+        TestSource = '00/45/CHeroStatsDef_CHeroStatsDef_004560e1_test.cpp'
+        PassPattern = '004560e1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e3d4a'
+        Module = 'CWeaponDef'
+        Source = '00/4e/CWeaponDef_CWeaponDef_004e3d4a.cpp'
+        TestSource = '00/4e/CWeaponDef_CWeaponDef_004e3d4a_test.cpp'
+        PassPattern = '004e3d4a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e26e0'
+        Module = '_global'
+        Source = '00/5e/global_InsertSortedEntry005e26e0_005e26e0.cpp'
+        TestSource = '00/5e/global_InsertSortedEntry005e26e0_005e26e0_test.cpp'
+        PassPattern = '005e26e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006881d0'
+        Module = 'CInputProcessControlCreature'
+        Source = '00/68/CInputProcessControlCreature_Update_006881d0.cpp'
+        TestSource = '00/68/CInputProcessControlCreature_Update_006881d0_test.cpp'
+        PassPattern = '006881d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068d790'
+        Module = 'CInputProcessCameraLookAround'
+        Source = '00/68/CInputProcessCameraLookAround_ProcessInput_0068d790.cpp'
+        TestSource = '00/68/CInputProcessCameraLookAround_ProcessInput_0068d790_test.cpp'
+        PassPattern = '0068d790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068fb90'
+        Module = 'CInputProcessCombat'
+        Source = '00/68/CInputProcessCombat_ProcessInput_0068fb90.cpp'
+        TestSource = '00/68/CInputProcessCombat_ProcessInput_0068fb90_test.cpp'
+        PassPattern = '0068fb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00755520'
+        Module = 'SAppearanceDrawRecord_00755520'
+        Source = '00/75/SAppearanceDrawRecord00755520_SAppearanceDrawRecord00755520_00755520.cpp'
+        TestSource = '00/75/SAppearanceDrawRecord00755520_SAppearanceDrawRecord00755520_00755520_test.cpp'
+        PassPattern = '00755520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00816390'
+        Module = 'CHitLocation'
+        Source = '00/81/CHitLocation_SetEnabled_00816390.cpp'
+        TestSource = '00/81/CHitLocation_SetEnabled_00816390_test.cpp'
+        PassPattern = '00816390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082a460'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_CMiniMapDisplay_0082a460.cpp'
+        TestSource = '00/82/CMiniMapDisplay_CMiniMapDisplay_0082a460_test.cpp'
+        PassPattern = '0082a460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e2fc0'
+        Module = 'CIcicleData'
+        Source = '00/8e/CIcicleData_CIcicleData_008e2fc0.cpp'
+        TestSource = '00/8e/CIcicleData_CIcicleData_008e2fc0_test.cpp'
+        PassPattern = '008e2fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f5c50'
+        Module = 'CHitThing'
+        Source = '00/8f/CHitThing_ModifyHeroStats_008f5c50.cpp'
+        TestSource = '00/8f/CHitThing_ModifyHeroStats_008f5c50_test.cpp'
+        PassPattern = '008f5c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f5f00'
+        Module = 'CHeightMap'
+        Source = '00/8f/CHeightMap_Update_008f5f00.cpp'
+        TestSource = '00/8f/CHeightMap_Update_008f5f00_test.cpp'
+        PassPattern = '008f5f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e4850'
+        Module = 'CInputEvent'
+        Source = '00/9e/CInputEvent_CInputEvent_009e4850.cpp'
+        TestSource = '00/9e/CInputEvent_CInputEvent_009e4850_test.cpp'
+        PassPattern = '009e4850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f4c60'
+        Module = 'CInputManager'
+        Source = '00/9f/CInputManager_IsJoystickEventInQueue_009f4c60.cpp'
+        TestSource = '00/9f/CInputManager_IsJoystickEventInQueue_009f4c60_test.cpp'
+        PassPattern = '009f4c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f54d0'
+        Module = 'CInputManager'
+        Source = '00/9f/CInputManager_SetEventsFromEventPackage_009f54d0.cpp'
+        TestSource = '00/9f/CInputManager_SetEventsFromEventPackage_009f54d0_test.cpp'
+        PassPattern = '009f54d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f5540'
+        Module = 'CInputManager'
+        Source = '00/9f/CInputManager_ClearEvents_009f5540.cpp'
+        TestSource = '00/9f/CInputManager_ClearEvents_009f5540_test.cpp'
+        PassPattern = '009f5540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a01e40'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_CombineAreas_00a01e40.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_CombineAreas_00a01e40_test.cpp'
+        PassPattern = '00a01e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a02190'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_Uninitialise_00a02190.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_Uninitialise_00a02190_test.cpp'
+        PassPattern = '00a02190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a02370'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_EndShutdown_00a02370.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_EndShutdown_00a02370_test.cpp'
+        PassPattern = '00a02370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a02570'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_Initialise_00a02570.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_Initialise_00a02570_test.cpp'
+        PassPattern = '00a02570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a02610'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_InitialiseFromPreallocatedBuffer_00a02610.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_InitialiseFromPreallocatedBuffer_00a02610_test.cpp'
+        PassPattern = '00a02610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a03040'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_InternalAllocateHandle_00a03040.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_InternalAllocateHandle_00a03040_test.cpp'
+        PassPattern = '00a03040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5ffd0'
+        Module = 'CInputManagerDX'
+        Source = '00/a5/CInputManagerDX_CInputManagerDX_00a5ffd0.cpp'
+        TestSource = '00/a5/CInputManagerDX_CInputManagerDX_00a5ffd0_test.cpp'
+        PassPattern = '00a5ffd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a901e0'
+        Module = 'C3DPrimitive2'
+        Source = '00/a9/C3DPrimitive2_FreeData_00a901e0.cpp'
+        TestSource = '00/a9/C3DPrimitive2_FreeData_00a901e0_test.cpp'
+        PassPattern = '00a901e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c25ce0'
+        Module = 'CInputEvent'
+        Source = '00/c2/CInputEvent_CompareEvents_00c25ce0.cpp'
+        TestSource = '00/c2/CInputEvent_CompareEvents_00c25ce0_test.cpp'
+        PassPattern = '00c25ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c25d50'
+        Module = 'CInputEvent'
+        Source = '00/c2/CInputEvent_LessThanComparator_00c25d50.cpp'
+        TestSource = '00/c2/CInputEvent_LessThanComparator_00c25d50_test.cpp'
+        PassPattern = '00c25d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb7e50'
+        Module = 'CGuiVarTransferStruct'
+        Source = '00/cb/CGuiVarTransferStruct_Add_00cb7e50.cpp'
+        TestSource = '00/cb/CGuiVarTransferStruct_Add_00cb7e50_test.cpp'
+        PassPattern = '00cb7e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d73610'
+        Module = 'CHTG_AmbushPoint'
+        Source = '00/d7/CHTGAmbushPoint_Main_00d73610.cpp'
+        TestSource = '00/d7/CHTGAmbushPoint_Main_00d73610_test.cpp'
+        PassPattern = '00d73610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7f110'
+        Module = 'CHeroSoulsEnemy'
+        Source = '00/d7/CHeroSoulsEnemy_Main_00d7f110.cpp'
+        TestSource = '00/d7/CHeroSoulsEnemy_Main_00d7f110_test.cpp'
+        PassPattern = '00d7f110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d83f20'
+        Module = 'CHS_Screamer'
+        Source = '00/d8/CHSScreamer_OnPredicateFail_00d83f20.cpp'
+        TestSource = '00/d8/CHSScreamer_OnPredicateFail_00d83f20_test.cpp'
+        PassPattern = '00d83f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e95e80'
+        Module = 'CHHUndead'
+        Source = '00/e9/CHHUndead_Main_00e95e80.cpp'
+        TestSource = '00/e9/CHHUndead_Main_00e95e80_test.cpp'
+        PassPattern = '00e95e80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
