@@ -228949,6 +228949,202 @@ $catalog = @(
         TestSource = '00/be/CEngineInternalPrimitiveMeshBase_GetFadeDistance_00beb5c0_test.cpp'
         PassPattern = '00beb5c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c3000'
+        Module = 'CEngineMeshEffectOutlineSmooth'
+        Source = '00/4c/CEngineMeshEffectOutlineSmooth_CEngineMeshEffectOutlineSmooth_004c3000.cpp'
+        TestSource = '00/4c/CEngineMeshEffectOutlineSmooth_CEngineMeshEffectOutlineSmooth_004c3000_test.cpp'
+        PassPattern = '004c3000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c3090'
+        Module = 'CEnginePrimitiveLine'
+        Source = '00/4c/CEnginePrimitiveLine_CEnginePrimitiveLine_004c3090.cpp'
+        TestSource = '00/4c/CEnginePrimitiveLine_CEnginePrimitiveLine_004c3090_test.cpp'
+        PassPattern = '004c3090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00655048'
+        Module = 'CEnginePrimitive2DText'
+        Source = '00/65/CEnginePrimitive2DText_CEnginePrimitive2DText_00655048.cpp'
+        TestSource = '00/65/CEnginePrimitive2DText_CEnginePrimitive2DText_00655048_test.cpp'
+        PassPattern = '00655048_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006db7e0'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_CTCHeroExperience_006db7e0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_CTCHeroExperience_006db7e0_test.cpp'
+        PassPattern = '006db7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075ef00'
+        Module = 'CKeyCamera'
+        Source = '00/75/CKeyCamera_operator_0075ef00.cpp'
+        TestSource = '00/75/CKeyCamera_operator_0075ef00_test.cpp'
+        PassPattern = '0075ef00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b44ce0'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_ResetAlreadyFoundFlags_00b44ce0.cpp'
+        TestSource = '00/b4/CEngineLightingManager_ResetAlreadyFoundFlags_00b44ce0_test.cpp'
+        PassPattern = '00b44ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b44e30'
+        Module = 'CEngineLocalLightElement'
+        Source = '00/b4/CEngineLocalLightElement_CEngineLocalLightElement_00b44e30.cpp'
+        TestSource = '00/b4/CEngineLocalLightElement_CEngineLocalLightElement_00b44e30_test.cpp'
+        PassPattern = '00b44e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b44eb0'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_CreateInternalPrimitive_00b44eb0.cpp'
+        TestSource = '00/b4/CEngineLightingManager_CreateInternalPrimitive_00b44eb0_test.cpp'
+        PassPattern = '00b44eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b46890'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_EnableFog_00b46890.cpp'
+        TestSource = '00/b4/CEngineLightingManager_EnableFog_00b46890_test.cpp'
+        PassPattern = '00b46890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b46b90'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_GetLightsInSphereFast_00b46b90.cpp'
+        TestSource = '00/b4/CEngineLightingManager_GetLightsInSphereFast_00b46b90_test.cpp'
+        PassPattern = '00b46b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b47280'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_SetGlobalLightingParameters_00b47280.cpp'
+        TestSource = '00/b4/CEngineLightingManager_SetGlobalLightingParameters_00b47280_test.cpp'
+        PassPattern = '00b47280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b47310'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_SetupShaderSpotLight_00b47310.cpp'
+        TestSource = '00/b4/CEngineLightingManager_SetupShaderSpotLight_00b47310_test.cpp'
+        PassPattern = '00b47310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b599c0'
+        Module = 'CEngineLocalDetailGenerator'
+        Source = '00/b5/CEngineLocalDetailGenerator_LoadNewScene_00b599c0.cpp'
+        TestSource = '00/b5/CEngineLocalDetailGenerator_LoadNewScene_00b599c0_test.cpp'
+        PassPattern = '00b599c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b671e0'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_CalcForegroundFadeFactors_00b671e0.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_CalcForegroundFadeFactors_00b671e0_test.cpp'
+        PassPattern = '00b671e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b67480'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_SetupCommonStates_00b67480.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_SetupCommonStates_00b67480_test.cpp'
+        PassPattern = '00b67480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9e8c0'
+        Module = 'CEnginePrimitiveManager2DStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManager2DStaticMeshes_CreateInternalPrimitive_00b9e8c0.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManager2DStaticMeshes_CreateInternalPrimitive_00b9e8c0_test.cpp'
+        PassPattern = '00b9e8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba77b0'
+        Module = 'CEnginePrimitiveManager2DStaticMeshes'
+        Source = '00/ba/CEnginePrimitiveManager2DStaticMeshes_RenderSubPrimitive_00ba77b0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManager2DStaticMeshes_RenderSubPrimitive_00ba77b0_test.cpp'
+        PassPattern = '00ba77b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bacfd0'
+        Module = 'CEnginePrimitiveManager2DSprites'
+        Source = '00/ba/CEnginePrimitiveManager2DSprites_CreateInternalPrimitive_00bacfd0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManager2DSprites_CreateInternalPrimitive_00bacfd0_test.cpp'
+        PassPattern = '00bacfd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb1900'
+        Module = 'CEnginePrimitiveManager2DSprites'
+        Source = '00/bb/CEnginePrimitiveManager2DSprites_CEnginePrimitiveManager2DSprites_00bb1900.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManager2DSprites_CEnginePrimitiveManager2DSprites_00bb1900_test.cpp'
+        PassPattern = '00bb1900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb63a0'
+        Module = 'CEngineParticleSimulationRenderData'
+        Source = '00/bb/CEngineParticleSimulationRenderData_CEngineParticleSimulationRenderData_00bb63a0.cpp'
+        TestSource = '00/bb/CEngineParticleSimulationRenderData_CEngineParticleSimulationRenderData_00bb63a0_test.cpp'
+        PassPattern = '00bb63a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc7b20'
+        Module = 'CEnginePrimitiveManager2DSprites'
+        Source = '00/bc/CEnginePrimitiveManager2DSprites_CEnginePrimitiveManager2DSprites_00bc7b20.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManager2DSprites_CEnginePrimitiveManager2DSprites_00bc7b20_test.cpp'
+        PassPattern = '00bc7b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bda470'
+        Module = 'CEngineLandscapeMemoryManager'
+        Source = '00/bd/CEngineLandscapeMemoryManager_AllocateTexture_00bda470.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_AllocateTexture_00bda470_test.cpp'
+        PassPattern = '00bda470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdd3e0'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/bd/CEngineLandscapePatch_vectordeletingdestructor_00bdd3e0.cpp'
+        TestSource = '00/bd/CEngineLandscapePatch_vectordeletingdestructor_00bdd3e0_test.cpp'
+        PassPattern = '00bdd3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be1a00'
+        Module = 'CEnginePrimitiveManager2DParticleGroup'
+        Source = '00/be/CEnginePrimitiveManager2DParticleGroup_CreateInternalPrimitive_00be1a00.cpp'
+        TestSource = '00/be/CEnginePrimitiveManager2DParticleGroup_CreateInternalPrimitive_00be1a00_test.cpp'
+        PassPattern = '00be1a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be1ba0'
+        Module = 'CEnginePrimitive2DViewportManager'
+        Source = '00/be/CEnginePrimitive2DViewportManager_Render2DPrimitive_00be1ba0.cpp'
+        TestSource = '00/be/CEnginePrimitive2DViewportManager_Render2DPrimitive_00be1ba0_test.cpp'
+        PassPattern = '00be1ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf3860'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/bf/CEngineLandscapePatch_ClipPatch_00bf3860.cpp'
+        TestSource = '00/bf/CEngineLandscapePatch_ClipPatch_00bf3860_test.cpp'
+        PassPattern = '00bf3860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf5d30'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/bf/CEngineLandscapePatch_scalardeletingdestructor_00bf5d30.cpp'
+        TestSource = '00/bf/CEngineLandscapePatch_scalardeletingdestructor_00bf5d30_test.cpp'
+        PassPattern = '00bf5d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c49100'
+        Module = 'SQueuedSoundEvent'
+        Source = '00/c4/SQueuedSoundEvent_operator_00c49100.cpp'
+        TestSource = '00/c4/SQueuedSoundEvent_operator_00c49100_test.cpp'
+        PassPattern = '00c49100_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

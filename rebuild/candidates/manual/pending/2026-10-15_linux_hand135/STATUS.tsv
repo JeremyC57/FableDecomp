@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bda470	RELOCATION_MATCH	120v120	PASS	class operator new (landscape allocator) inlined; pool = ~usage & 1
+00bdd3e0	RELOCATION_MATCH	97v97	PASS	??_E; inline usual delete forwarding to __fastcall (void*,long) forms gives xor edx,edx
+00bf3860	RELOCATION_MATCH	140v140	PASS	frustum 4-plane box test, z-y-x dot order
+00bf38f0	DIFFER	126v132	-	+0x14 delete: retail keeps a second null test (mov ecx,eax ; test ecx,ecx)
+00bf5d30	RELOCATION_MATCH	100v100	PASS	??_G; __forceinline on both destructors
+00b671e0	RELOCATION_MATCH	135v135	PASS	inline Set(x,y,z,w) (args right to left)
+00b67480	RELOCATION_MATCH	140v140	PASS	identity matrix: descending zero fill then diagonal
+007624e0	DIFFER	167v160	-	really NShape::CShapeManager::CreateShape; return-copy add-ref/release fold + this/zero register colouring
+00b44ce0	MATCH	107v107	PASS	grid at +0xEC (retail CArray 12 bytes)
+00b44eb0	RELOCATION_MATCH	99v99	PASS	two type tests, new light / shadowed spot light
+00b46890	RELOCATION_MATCH	109v109	PASS	__forceinline SetState; (mask & state.mask) == 0 with |=
+00b46b90	RELOCATION_MATCH	107v107	PASS	2r <= limit, then the cache lookup
+00b47280	RELOCATION_MATCH	143v143	PASS	theme channel colours + normalised direction
+00b47310	RELOCATION_MATCH	116v116	PASS	scene-data copy + falloff scale
+00b599c0	RELOCATION_MATCH	101v101	PASS	two list walks; (double)1e30f
+00b59c70	DIFFER	162v159	-	lane gap: value temp + tag share the dead argument slot
+00b44e30	RELOCATION_MATCH	128v128	PASS	memberwise C3DVector copy ctor
+009eaf80	DIFFER	105v107	-	really CConsole::AddCommandLineToHistory; head reload after size walk + insert arg schedule
+00b41db0	DIFFER	147v147	-	lane gap: shrink-wrapped ebp/edi saves
+00bb63a0	RELOCATION_MATCH	128v128	PASS	inline counted array ctor loop; PVertexBuffer/Stride in the derived body
+005bc1b0	DIFFER	102v102	-	colour byte-copy load schedule (B/G dword hoisted in retail)
+00493ac2	DIFFER	153v153	-	scheduling only (bounds lea, zero store)
+004c3000	RELOCATION_MATCH	103v103	PASS	really CEngineMeshEffectOutlineSmooth ctor
+00543910	DIFFER	114v114	-	scheduling only (position X store)
+00655048	RELOCATION_MATCH	106v106	PASS	/Os copy ctor; __forceinline colour copy
+0075ef00	RELOCATION_MATCH	111v111	PASS	really CKeyCamera::operator=
+00c49100	RELOCATION_MATCH	117v117	PASS	really a libpk CStaticQueue record operator= (SQueuedSoundEvent)
+00be1ba0	RELOCATION_MATCH	98v98	PASS	novtable intermediate base; chain is the 3rd argument
+006db7e0	RELOCATION_MATCH	147v147	PASS	really ~CTCHeroExperience (novtable, local def releases)
+00b3a110	DIFFER	99v99	-	lane gap: empty tag over the live params slot
+00bc5a20	DIFFER	113v116	-	lane gap: dead lea of the vector slot (RTM materialisation)
+0041c500	DIFFER	112v114	-	inlined Clear head: eax-then-ecx copy + vtable store first
+004c3090	MATCH	143v143	PASS	memberwise C3DVector copy ctor
+00be1a00	RELOCATION_MATCH	123v123	PASS	__forceinline ctors (group, 2D group, list)
+00bacfd0	RELOCATION_MATCH	109v109	PASS	two-case switch factory
+00bb1640	DIFFER	122v122	-	lane gap: second constant temp in the dead argument slot
+00bb1900	RELOCATION_MATCH	130v130	PASS	local pointer copy for shader release; novtable manager
+00bc7b20	RELOCATION_MATCH	130v130	PASS	byte twin of 0x00BB1900
+00b9e8c0	RELOCATION_MATCH	138v138	PASS	novtable intermediate base + __forceinline ctors
+00ba77b0	RELOCATION_MATCH	97v97	PASS	base call with pass 1 then the inlined base body
