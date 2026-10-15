@@ -1,0 +1,86 @@
+// C3DMeshFileConvexVolumeChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- version 1, the name, then each bounding plane as a normal vector and a distance
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AAA9A0, 112 bytes. Callees: CDataOutputStream::WriteULong 0x00993EA0,
+// WriteNullTerminatedString 0x00995AE0, Write3DVector 0x00993FD0, WriteFloat 0x00993EE0. No sub-chunk write.
+// Shared retail model of the landed C3DMeshFile*Chunk family (C3DMeshFileConvexVolumeChunk::GetChunkInfo
+// 0x00AA9AD0): Name +0x2C, Planes CArray +0x30 (16-byte elements: `sar 4`). The plane count is an unsigned
+// local (the loop counts it down, spilled to the dead `out` slot); each plane is a reference to the re-indexed
+// element (begin re-read per pass) used for both writes.
+// ---- shared retail model for the C3DMeshFile*Chunk family (TLC Fable.exe) -----------------------
+// The PDB header rebuild/include/engine/<Class>.h comes from Ego_r.pdb, a later build in which the
+// C3DMeshFileChunk base is 0x34 bytes; in retail TLC it is 0x2c (every derived member sits 8 bytes
+// lower, and the vtable slots are the same).  The bytes decide, so this file models the retail layout
+// with the PDB member names and says so here instead of including the disagreeing header.
+struct CCharString {
+    CCharString();                                      // 0x0099E4B0 default
+    CCharString(const char* text, long length);         // 0x0099EBF0 (-1 = strlen)
+    CCharString(const CCharString& other);              // 0x0099EC30 copy
+    ~CCharString();                                     // 0x0099EAE0
+    void* m_pStringData;                                // CCharStringData*
+};
+CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
+CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
+CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
+
+struct CMatrix3x4 { float m_row[3][4]; };               // 48 bytes, copied with rep movsd
+struct C3DVector  { float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
+
+struct CChunkedFileSaver;
+struct CDataOutputStream {
+    void WriteULong(unsigned long value);               // 0x00993EA0
+    void WriteLong(long value);                         // 0x00993EB0
+    void WriteFloat(float value);                       // 0x00993EE0
+    void WriteBool(bool value);                         // 0x00993E30
+    void WriteMatrix3x4(const CMatrix3x4& m);           // 0x00994070
+    void Write3DVector(const C3DVector& v);            // 0x00993FD0
+    void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
+};
+
+// CChunkedFileChunk (0x10) -> CChunkedFileSuperChunk -> C3DMeshFileChunk (0x2c in retail).
+struct C3DMeshFileChunk {
+    virtual ~C3DMeshFileChunk();                                 // slot 0 (scalar deleting dtor)
+    virtual void v1();
+    virtual CCharString GetChunkInfo() const;                    // slot 2
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;  // slot 8, 0x00AA78C0
+    virtual C3DMeshFileChunk* CreateNewInstance() const;                                 // slot 9
+    virtual C3DMeshFileChunk* InitNewInstance(C3DMeshFileChunk* chunk) const;            // slot 10 (+0x28)
+    C3DMeshFileChunk(const char* chunkType);                     // 0x00AA8360
+    unsigned char _base_body[0x28];                              // +0x04 .. +0x2b (chunk type, parent, child list)
+};
+
+// ------------------------------------------------------------------------------------------------
+
+template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+    T* m_begin; T* m_end; T* m_capacity;
+    CArray() : m_begin(0), m_end(0), m_capacity(0) {}
+    unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
+    const T& operator[](unsigned long i) const { return m_begin[i]; }
+};
+
+struct C3DPlane {
+    C3DVector Normal;            // +0x0
+    float     Distance;          // +0xc
+};
+
+struct C3DMeshFileConvexVolumeChunk : C3DMeshFileChunk {
+    CCharString        Name;     // +0x2c
+    CArray<C3DPlane>   Planes;   // +0x30 .. +0x3b   sizeof == 0x3c
+    virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;
+};
+
+void C3DMeshFileConvexVolumeChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
+{
+    out.WriteULong(1);
+    out.WriteNullTerminatedString(Name);
+    unsigned long count = Planes.Size();
+    out.WriteULong(count);
+    for (unsigned long i = 0; i < count; ++i) {
+        const C3DPlane& plane = Planes[i];
+        out.Write3DVector(plane.Normal);
+        out.WriteFloat(plane.Distance);
+    }
+}

@@ -141,6 +141,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand114` | Hand chunk 114 (CUIMiniMapMarker .. CV_FisticuffsClubScript): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand115` | Hand chunk 115 (CV_MurderTwistFinalScript .. CViewport): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand116` | Hand chunk 116 (CViewport .. CWADFile): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand117` | Hand chunk 117 (C2DBoxF .. C3DMeshFilePrimitiveChunk): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -189,7 +190,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **202 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **211 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 27 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -326,6 +327,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00669390 CViewport::ClearHandle DIFFER(58v58): retail `mov ecx,eax ; mov eax,[ecx] ; push esi ; call [eax+0Ch]`, ours `mov ecx,eax ; mov edx,[eax] ; push esi ; call [edx+0Ch]` (vtable register of the slot-3 notify only) | tried: member-only form, handle-pointer local, object local, object + handle locals (best) | next: route the notify through an inline helper so the vtable is read from ecx, else lane gap: register choice
 - 00a69ad0 CFrameDataHandle::Clear (catalog CViewport::ClearHandle) DIFFER(70v73): retail re-reads the member for the second null test (`mov eax,[esi+4] ; test eax,eax ; je ; cmp [eax+4],2`) while the Close call reuses the first load in ecx; ours tests the cached ecx | tried: `m_p && count == 2`, inline bool predicate, ternary GetRefCount accessor, object local + accessor (best) | next: a volatile-cast read for the second test only, else lane gap: QFE CSE of a member re-read
 - 007fe670 CVillageDef::Validate DIFFER(63v63): retail `lea ecx,[esp+10h] ; push ecx ; mov ecx,[esi+28h]`, ours `mov ecx,[esi+28h] ; lea edx,[esp+10h] ; push edx` (begin load scheduled before the value address) | tried: one-expression find, named `last` local (best), raw member operands, optimize("s") | next: begin() returning an iterator object, else lane gap: fastcall register scheduling
+
+
+#### `2026-10-15_linux_hand117` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand117/differ/`)
+- 004fab40 C2DBoxI::Overlapping DIFFER(127v157): retail recomputes both y half-heights for the compare (o.minY reloaded, this-half first), the lane CSEs them | tried: separate ifs, `&&` (fixes the branch layout), C2DCoordI centre struct, reversed y compare | next: model the y axis through a different inline (e.g. a GetHeight()/2 accessor vs centre helper), else lane gap: CSE across inlines
+- 0066c880 CRegionMinimap::GetTGAPositionFromWorldCoordinates DIFFER(115v115): `sub esp,14h` with own slots for the two fidiv temporaries vs the lane's `sub esp,0Ch` homing them in the dead pos slot (load order follows) | tried: long locals, C2DCoordI topLeft local, extent struct local, interleaved named width/height | next: lane gap: frame-slot reuse of dead argument slots
+- 00aaf5b0 C3DAnimFileSequenceChunk::GetChunkInfo DIFFER(151v149): lane loads the hidden result pointer into esi at entry (name pointer to edi); retail re-reads the slot after _snprintf | tried: direct form | next: lane gap: /GS hidden-pointer caching (GOTCHAS 23e)
+- 00abae50 C3DMeshFileGroupChunk::GetChunkInfo DIFFER(100v98): same /GS hidden-result caching plus `mov eax,ecx` | tried: direct form, optimize("s") | next: lane gap: /GS hidden-pointer caching
+- 00a4fd70 C3DAnimationSequenceData::InitialiseAsConstant DIFFER(132v130): lane caches the matrix reference in edi (push edi) under /GS, retail re-reads its slot | tried: direct form | next: lane gap: /GS argument caching
+- 00a52650 C3DAnimation2::ConvertTimeToFrames DIFFER(110v117): `fsub 0.5 ; fistp` floor with frame-local 0.5f/1.0f and a frame pointer | tried: C++ floor stand-in (graded once) | next: lane gap: inline-asm helper (asm_bake only)
+- 00a526d0 C3DAnimation2::ConvertTimeToFrames DIFFER(115v123): same inline-asm floor on a rate +4 / ushort count +8 record | tried: C++ stand-in | next: lane gap: inline-asm helper
+- 00a4dea0 C3DAnimationSequenceData::GetKeyframeInterpolate DIFFER(111v108): same inline-asm floor | tried: C++ stand-in | next: lane gap: inline-asm helper
+- 00ac6600 C3DMeshFileClothChunk::WriteToFile DIFFER(146v146): esi/edi swap (retail out=edi, &CompiledCode=esi) | tried: plain bool local, reference local, inline WriteOptionalArray helper, duplicated condition | next: lane gap: register colouring (or a different array/stream helper shape)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

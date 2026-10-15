@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0066c560	MATCH	152v152	PASS	if/else-if clamps, ordered < via test ah,5
+004fab40	DIFFER	127v157	-	y-axis half extents recomputed in retail, CSEd by the lane
+0066c880	DIFFER	115v115	-	real CRegionMinimap::GetTGAPositionFromWorldCoordinates; fidiv temps get own frame slots in retail
+00a57a40	RELOCATION_MATCH	130v130	PASS	named float squared length before *0.25f
+00a14540	RELOCATION_MATCH	125v125	PASS	returns *this (mov eax,ecx); table fast inverse sqrt
+00a737b0	RELOCATION_MATCH	138v138	PASS	real AddKeyedChunk (push_back of {long,name,chunk} temp)
+00a73840	RELOCATION_MATCH	151v151	PASS	real AddStringKeyedChunk
+00cbd670	RELOCATION_MATCH	129v129	PASS	real AddNamedChunk (push_back of {name,chunk} temp)
+00aaf5b0	DIFFER	151v149	-	/GS lane gap: hidden result pointer cached in esi at entry
+00aaf650	RELOCATION_MATCH	148v148	PASS	unsigned count local, countdown loop
+00aae190	RELOCATION_MATCH	135v135	PASS	right-to-left chained operator+
+00aae440	RELOCATION_MATCH	140v140	PASS	class stream/loader mangling + __forceinline Read
+00aa48d0	RELOCATION_MATCH	150v150	PASS	accessor and read branch polarity
+00a52650	DIFFER	110v117	-	lane gap: inline-asm fistp floor helper
+00a526d0	DIFFER	115v123	-	lane gap: inline-asm fistp floor helper
+00a3c0c0	MATCH	114v114	PASS	BaseAnimation as CIVCountedPointer with operator->
+00a3c260	RELOCATION_MATCH	99v99	PASS	implicit copy ctor in new; release as pointee member
+00a269c0	RELOCATION_MATCH	138v138	PASS	inline Data&&member tests + resource-list touch + counted copy
+00a42fc0	RELOCATION_MATCH	155v155	PASS	real CLipSyncDataBank::GetLipSyncData; reference local for re-indexed slot
+00bd85f0	MATCH	101v101	PASS	PDB StartState/EndState blend states, CIVCountedPointer op=
+00a4dea0	DIFFER	111v108	-	lane gap: inline-asm fistp floor helper
+00a4fd70	DIFFER	132v130	-	/GS lane gap: matrix reference argument cached in edi
+00a31530	MATCH	120v120	PASS	C3DVector operator temporaries
+00ac3b00	RELOCATION_MATCH	116v116	PASS	memory stream local, size evaluated before data
+00ac4150	RELOCATION_MATCH	116v116	PASS	STLport _Vector_base model fixes xor/mov scheduling
+00a89190	RELOCATION_MATCH	110v110	PASS	init list + body flag stores (+0xE5 then +0xE4)
+00a893c0	RELOCATION_MATCH	140v140	PASS	size += prim.Sizeof() - 0xA0
+00a896a0	RELOCATION_MATCH	156v156	PASS	ConstructElements helper with by-value count
+00c1cc10	RELOCATION_MATCH	133v133	PASS	real CMatrix3x4::GetRotationAngles
+00ac6600	DIFFER	146v146	-	esi/edi swap (out vs &CompiledCode)
+00ac66e0	RELOCATION_MATCH	99v99	PASS	inline ctor in factory
+00aaa9a0	RELOCATION_MATCH	109v109	PASS	plane reference local
+00ac5260	MATCH	135v135	PASS	null-case-first GetLength accessor
+00abae50	DIFFER	100v98	-	/GS lane gap: hidden result pointer cached in esi at entry
+00abaee0	RELOCATION_MATCH	111v111	PASS	element reference spilled to dead out slot
+00aa9da0	RELOCATION_MATCH	100v100	PASS	inline ctor in factory
+00abfe80	RELOCATION_MATCH	153v153	PASS	by-value getters, named result local, const CCharString return
+00abfcf0	RELOCATION_MATCH	127v127	PASS	CRGBColour as one dword
+00abc390	RELOCATION_MATCH	135v135	PASS	if/else with shared super-chunk call
+00abd0d0	RELOCATION_MATCH	122v122	PASS	STLport _Vector_base member + resize(1) + [0]=-1
