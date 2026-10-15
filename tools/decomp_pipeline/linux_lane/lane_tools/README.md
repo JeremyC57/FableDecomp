@@ -18,6 +18,11 @@ workflow around `verify_and_land.py`. They contain no retail data. Every one exp
 | `chunk_pool/BRIEF.md` | the brief handed to the single hand-authoring sub-agent (tools, rules, test template, output format). |
 | `chunk_pool/mkchunk.py N [K]` | cut the next K 40-row chunks of the class-labelled 17–96-byte pool from `$S/batch/families512.json` into `$S/w22/chunkNN.tsv` + `$S/batch/chunkNN_oracle.tsv`. |
 | `chunk_pool/land_agent.sh agentNN <batchname>` | copy an agent's payload into a batch dir and land it (sequential). |
+| `chunk_pool/mkprompt25.py NN ...` | build `$S/w22/agentNN/` for a parallel authoring agent: helper scripts from `chunk_pool/agent_scripts/`, `dis_all.txt`, and `PROMPT.md` (the wave-25 brief; tools/rules text in `chunk_pool/brief_tools_rules.md`). |
+| `chunk_pool/stage_pending.sh agentNN <name>` | stage a finished chunk in `rebuild/candidates/manual/pending/<name>/` WITHOUT landing (survives a container reset). |
+| `chunk_pool/land_pending.sh <name>` | the final re-grade + tests + landing of a staged batch (the Fable 5.1 step), leaving only the parked rows in pending. |
+| `chunk_pool/oracle_from_exe.py rows.tsv <name>` | rebuild grader oracle rows for a staged chunk from Fable.exe into `$S/batch/<name>_oracle.tsv` (scratch only). |
+| `chunk_pool/queue_status.py` | regenerate the status table and parked-row lists of `docs/pipeline/FABLE_LANDING_QUEUE.md`. |
 | `eh_pass_example/build.py`, `tests.py` | the per-pass batch builder of a hand EH pass (names dict + behaviour tests); copy and edit for the next pass. |
 | `eh_pass_example/parked*.txt` | the parked EH bodies with the evidence of why they do not match on this compiler build. |
 
