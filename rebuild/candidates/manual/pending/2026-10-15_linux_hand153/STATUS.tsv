@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00487fb0	DIFFER	97v99	-	CPlayerGui ctor argument load scheduling (edi/ebx)
+00488ab0	RELOCATION_MATCH	111v111	PASS	CPlayer::Update()
+0048a1a0	RELOCATION_MATCH	107v107	PASS	CPlayer::InitPlayerHeroLogBook()
+006335e0	MATCH	100v100	PASS	CPlayer::InitModeControlFreeCamera(EPlayerMode mode, CProcessedInput* input)
+006337c0	MATCH	97v97	PASS	CPlayer::InitModeParalysed(EPlayerMode mode, CProcessedInput* input)
+006359c0	RELOCATION_MATCH	142v142	PASS	CPlayer::InitModeClickPastText(EPlayerMode mode, CProcessedInput* input)
+0087c580	DIFFER	99v102	-	else arm re-reads Number in retail, ours reuses esi
+00a67ea0	RELOCATION_MATCH	115v115	PASS	CVolumeTexture::GetVolumeLevel (catalog CPlayer::UninitModeQuestCompletionUI)
+00c90cb0	RELOCATION_MATCH	130v130	PASS	InitializeDrawing, a linked media player routine (catalog CPlayer::InitializeDrawing)
+00438230	RELOCATION_MATCH	133v133	PASS	CPlayerGui::ClearGui()
+00438460	RELOCATION_MATCH	136v136	PASS	CPlayerGui::PrepareForLoad()
+004384f0	DIFFER	117v123	-	lane gap: inline counted release; Get() before name push
+00438990	RELOCATION_MATCH	129v129	PASS	CPlayerGui::GetAbilityButton(long index)
+00438a20	RELOCATION_MATCH	126v126	PASS	CPlayerGui::SetAbilityButton(long index, long button)
+00438ff0	DIFFER	118v116	-	register choice: component in ecx (retail) vs eax
+0043a4d0	RELOCATION_MATCH	160v160	PASS	CPlayerGui::SetGuildSealLevelUpPos(const C2DVector& pos)
+00449730	RELOCATION_MATCH	132v132	PASS	CPlayerManager::GetSpiritDefName(long player)
+00449cb0	RELOCATION_MATCH	99v99	PASS	CPlayerManager::SwapToHero(long player)
+008198c0	MATCH	113v113	PASS	SwapKeyedRecords (catalog CPreTransposedBoneMatrix::Set)
+00885a80	MATCH	139v139	PASS	CIDrawEnvironmentRadialBlurParameters copy ctor (catalog CPreTransposedBoneMatrix::Set)
+00c70040	DIFFER	144v141	-	lane gap: hand-written MMX (inline asm) body
+00a69830	RELOCATION_MATCH	125v125	PASS	CPreallocTexturePool::Allocate()
+00499c50	RELOCATION_MATCH	129v129	PASS	CProgressDisplay::DisplayProgress(const CCharString& textTag, float progress, bool a, bool b)
+006e9140	RELOCATION_MATCH	141v141	PASS	CProng::SetBlocked(bool blocked)
+006f17a0	DIFFER	127v127	-	scheduling: add esi,14h after vs before the first GetPItem
+00e24090	RELOCATION_MATCH	112v112	PASS	CQR_EscortTraderScript::ForceDisableFollow(const CScriptThing& trader)
+00e24260	DIFFER	95v97	-	back() address formed unfolded (sub eax,4) in retail
+005ea8e0	RELOCATION_MATCH	108v108	PASS	CTCTavernGame::OnSerialise (catalog CQR_EscortTrader_ManagerScript::OnPersist)
+00f03560	RELOCATION_MATCH	118v118	PASS	CQ_AmbushTradersScript::WatchForBoastSuccess()
+00f0b780	RELOCATION_MATCH	135v135	PASS	CQ_AmbushTradersScript::PhaseOne()
+00cfa660	RELOCATION_MATCH	149v149	PASS	CQ_ArenaScript::CQ_ArenaScript(void* owner, CGameScriptInterface* game)
+00f14270	RELOCATION_MATCH	136v136	PASS	CQ_ArenaScript::GetFanfareMusic(long round)
+00d17ea0	RELOCATION_MATCH	119v119	PASS	CQ_BountyHuntScript::AddBoastQuestInfo()
+00d66ee0	RELOCATION_MATCH	103v103	PASS	CQ_GuildTrainingWoodsMeleeScript::EndMission (catalog CQ_CinemaTestScript)
+00f02100	RELOCATION_MATCH	103v103	PASS	CQ_CinemaTestScript::EndMission()
+00f02170	RELOCATION_MATCH	146v146	PASS	CQ_CinemaTestScript::PhaseOne()
+00d254b0	RELOCATION_MATCH	110v110	PASS	CQ_DragonBossFightScript::Init()
+00d2a820	RELOCATION_MATCH	125v125	PASS	CQ_EndGameFocalSitesScript::CQ_EndGameFocalSitesScript(void* owner, CGameScriptInterface* game)
+00d3a920	RELOCATION_MATCH	134v134	PASS	CQ_FireHeartScript::UpdateHistory(bool good)
+00d69cd0	RELOCATION_MATCH	101v101	PASS	CQ_HangingTreeEvilScript::BanditYells()

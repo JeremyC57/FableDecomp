@@ -177,6 +177,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand150` | Hand chunk 150 (COpenCloseHelper .. CParentDefClassBase): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand151` | Hand chunk 151 (CParentDefClassBase .. CPatchTesselationEdgeStrip): 30 of 40 byte-exact | - | 10 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand152` | Hand chunk 152 (CPatchTesselationEdgeStrip .. CPlayer): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand153` | Hand chunk 153 (CPlayer .. CQ_HangingTreeEvilScript): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -231,7 +232,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **456 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **463 parked rows** for the Fable retry pass.
 
 ### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -730,6 +731,16 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00a17620 CPhysicsMesh::HasBoundingSphereIntersectedFromTo DIFFER(99v99): `fld [ecx+80h] ; fadd [esp+10h]` (retail) vs `fld [esp+10h] ; fadd [ecx+80h]` | tried: R + radius + 15, radius + R + 15, memberwise C3DVector copy ctor (fixed the centre copy), named reach local | next: assign the reach into the `radius` parameter itself (`radius += BoundingSphere.Radius + 15.0f`, retail parks it in that slot) or read the radius through an inline getter
 - 00a187c0 CPhysicsMesh::GetSphereIntersectionFromTo DIFFER(154v145): retail keeps `this` in edx across the four member calls (no esi save) | tried: plain source; a probe with four edx-preserving stub callee bodies above it under `auto_inline(off)` gives RELOCATION_MATCH | next: author the real callee bodies (0xA18760, 0xA17690, 0xA17AF0, 0xA182C0) into the TU, or accept a stub-prefixed TU
 - 00c1c3f0 CPhysicsMeshObject::GetHelperPointPositionStatic DIFFER(116v110): only the result pointer -- retail takes it in eax (ecx = matrix, edx = point; the caller 0xC1C573 sets eax/esi), ours loads it from the stack (`mov eax,[esp+10h]`, `ret 4`); arithmetic identical | tried: __fastcall static returning C3DVector | next: lane gap: LTCG custom calling convention
+
+
+#### `2026-10-15_linux_hand153` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand153/differ/`)
+- 00e24260 CQR_EscortTraderScript::GetTraderRandomSpeechEnabled DIFFER(95v97): retail `mov eax,[esi+eax*4] ; sub eax,4 ; mov eax,[eax]`, ours `mov edx,[esi+eax*4] ; mov eax,[edx-4]` | tried: back() as *(end()-1), decremented end copy, named reference, reverse_iterator | next: an out-of-line-looking iterator class with user copy ctor for vector<CCharString>::iterator, or back() through `end()` returning by value
+- 00c70040 CopyBlock128MMX (catalog CPreTransposedBoneMatrix::Set) DIFFER(144v141): retail push esi/edi + mm0..mm7 rotated movq pairs + emms; intrinsics give an aligned ebp frame and reuse mm0 | tried: __m64 intrinsics | next: lane gap: inline-asm body
+- 006f17a0 CProng::SetPOccupyingAttacker DIFFER(127v127): retail forms `add esi,14h` after the first temporary's GetPItem, ours before | tried: forced-inline helper, item local + member reference, inline base operator= over a converting temporary | next: lane gap: scheduling only
+- 00487fb0 CPlayer::InitPlayerGui DIFFER(97v99): CPlayerGui ctor argument loads: retail loads bank/manager/interface into edi/ecx/ebx (push ebx) before pushing, ours interleaves loads and pushes | tried: member compare, number local (fixed the compare), optimize("s"), inline accessors | next: lane gap: argument scheduling
+- 0087c580 CPlayer::GlobalEventCreatureDied DIFFER(99v102): non-main arm retail `mov eax,[ebp+28h] ; push eax`, ours `push esi` (value loaded before GetMainPlayerNumber) | tried: plain compare, 64-bit id local (fixed id compare), inline IsMainPlayer, inline else helper | next: lane gap: member re-read after a call (CSE of a pre-call load)
+- 004384f0 CPlayerGui::PeekGlobalDef DIFFER(117v123): inline counted release `mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx` (ours `mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax`), and retail calls CGameDefinitionManager::Get before pushing &name | tried: hand-written Reset (one try, known gap) | next: lane gap: inline counted release; put the Get call in a GetWorld-style inline helper
+- 00438ff0 CPlayerGui::DrawSaveScreen DIFFER(118v116): component kept in ecx by retail (`mov ecx,[eax+4]`), eax + `mov ecx,eax` by ours; same blocks and dead-slot read | tried: chunk-141 unset accessor, inline test, condition declaration, entry-returning Find | next: lane gap: register choice
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
