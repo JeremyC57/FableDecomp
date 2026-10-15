@@ -414,6 +414,11 @@ std::set<uint32_t>& traceAddrs() {
     static std::set<uint32_t> s;
     return s;
 }
+// --no-fold: every memory operand as the wrapped 32-bit sum (see Emitter::mem).
+bool& foldDisplacements() {
+    static bool on = true;
+    return on;
+}
 
 class Emitter {
 public:
@@ -555,6 +560,25 @@ private:
         return "(uint32_t)(" + s + ")";
     }
 
+    // A load or store of memory operand `o` through accessor `fn` (rd32, wr16, rdxmm...),
+    // without the closing parenthesis; `pre` goes before the address argument. A base
+    // and/or index register with a displacement below 64 KiB uses the host-pointer form
+    // (`rd32p(MA(ecx, 60)`, see MA in recomp.h): the compiler folds the displacement into
+    // the addressing mode. Absolute operands and large displacements keep the 32-bit sum.
+    // `lea` is a value, not an access: it always uses addr().
+    std::string mem(const std::string& fn, const ZydisDecodedOperand& o, const std::string& pre = "") {
+        const int64_t d = o.mem.disp.value;
+        const bool hasReg = o.mem.base != ZYDIS_REGISTER_NONE || o.mem.index != ZYDIS_REGISTER_NONE;
+        if (!foldDisplacements() || !hasReg || d == 0 || d <= -0x10000 || d >= 0x10000 || o.mem.segment == ZYDIS_REGISTER_FS)
+            return fn + "(" + pre + addr(o);
+        std::string s;
+        auto add = [&](const std::string& t) { s += s.empty() ? t : " + " + t; };
+        if (o.mem.base != ZYDIS_REGISTER_NONE) add(reg32(o.mem.base));
+        if (o.mem.index != ZYDIS_REGISTER_NONE)
+            add(o.mem.scale > 1 ? reg32(o.mem.index) + " * " + std::to_string(o.mem.scale) + "u" : reg32(o.mem.index));
+        return fn + "p(" + pre + "MA(" + s + ", " + std::to_string(d) + ")";
+    }
+
     static uint32_t mask(int bits) { return bits >= 32 ? 0xFFFFFFFFu : ((1u << bits) - 1u); }
 
     // Value of operand as uint32 (zero-extended from `bits`).
@@ -562,9 +586,9 @@ private:
         switch (o.type) {
         case ZYDIS_OPERAND_TYPE_REGISTER: return readReg(o.reg.value);
         case ZYDIS_OPERAND_TYPE_MEMORY:
-            if (bits == 8) return "(uint32_t)rd8(" + addr(o) + ")";
-            if (bits == 16) return "(uint32_t)rd16(" + addr(o) + ")";
-            return "rd32(" + addr(o) + ")";
+            if (bits == 8) return "(uint32_t)" + mem("rd8", o) + ")";
+            if (bits == 16) return "(uint32_t)" + mem("rd16", o) + ")";
+            return mem("rd32", o) + ")";
         case ZYDIS_OPERAND_TYPE_IMMEDIATE:
             return hexu(static_cast<uint32_t>(o.imm.value.s) & mask(bits));
         default: return "0u";
@@ -572,9 +596,9 @@ private:
     }
     std::string wr(const ZydisDecodedOperand& o, int bits, const std::string& v) {
         if (o.type == ZYDIS_OPERAND_TYPE_REGISTER) return writeReg(o.reg.value, v);
-        if (bits == 8) return "wr8(" + addr(o) + ", (uint8_t)(" + v + "));";
-        if (bits == 16) return "wr16(" + addr(o) + ", (uint16_t)(" + v + "));";
-        return "wr32(" + addr(o) + ", (uint32_t)(" + v + "));";
+        if (bits == 8) return mem("wr8", o) + ", (uint8_t)(" + v + "));";
+        if (bits == 16) return mem("wr16", o) + ", (uint16_t)(" + v + "));";
+        return mem("wr32", o) + ", (uint32_t)(" + v + "));";
     }
 
     static std::string bytes(int bits) { return std::to_string(bits / 8); }
@@ -992,21 +1016,19 @@ private:
     // ---- x87 ----
 
     std::string fmemLoad(const ZydisDecodedOperand& o, bool integer) {
-        const std::string a = addr(o);
         if (integer) {
-            if (o.size == 16) return "(double)(int16_t)rd16(" + a + ")";
-            if (o.size == 64) return "(double)(int64_t)rd64(" + a + ")";
-            return "(double)(int32_t)rd32(" + a + ")";
+            if (o.size == 16) return "(double)(int16_t)" + mem("rd16", o) + ")";
+            if (o.size == 64) return "(double)(int64_t)" + mem("rd64", o) + ")";
+            return "(double)(int32_t)" + mem("rd32", o) + ")";
         }
-        if (o.size == 32) return "(double)rdf32(" + a + ")";
-        if (o.size == 64) return "rdf64(" + a + ")";
-        return "f80_load(" + a + ")";
+        if (o.size == 32) return "(double)" + mem("rdf32", o) + ")";
+        if (o.size == 64) return mem("rdf64", o) + ")";
+        return "f80_load(" + addr(o) + ")";
     }
     std::string fmemStore(const ZydisDecodedOperand& o, const std::string& v) {
-        const std::string a = addr(o);
-        if (o.size == 32) return "wrf32(" + a + ", (float)(" + v + "));";
-        if (o.size == 64) return "wrf64(" + a + ", " + v + ");";
-        return "f80_store(" + a + ", " + v + ");";
+        if (o.size == 32) return mem("wrf32", o) + ", (float)(" + v + "));";
+        if (o.size == 64) return mem("wrf64", o) + ", " + v + ");";
+        return "f80_store(" + addr(o) + ", " + v + ");";
     }
     static int stIndex(ZydisRegister r) { return r - ZYDIS_REGISTER_ST0; }
 
@@ -1059,16 +1081,14 @@ private:
         }
         case ZYDIS_MNEMONIC_FIST: case ZYDIS_MNEMONIC_FISTP: {
             const bool pop = m == ZYDIS_MNEMONIC_FISTP;
-            const std::string a = addr(*mem);
-            std::string s = mem->size == 16 ? "wr16(" + a + ", (uint16_t)fist16(c, ST(0)));"
-                            : mem->size == 64 ? "wr64(" + a + ", (uint64_t)fist64(c, ST(0)));"
-                                              : "wr32(" + a + ", (uint32_t)fist32(c, ST(0)));";
+            std::string s = mem->size == 16 ? this->mem("wr16", *mem) + ", (uint16_t)fist16(c, ST(0)));"
+                            : mem->size == 64 ? this->mem("wr64", *mem) + ", (uint64_t)fist64(c, ST(0)));"
+                                              : this->mem("wr32", *mem) + ", (uint32_t)fist32(c, ST(0)));";
             return line(s + (pop ? " fpop(c);" : ""));
         }
         case ZYDIS_MNEMONIC_FISTTP: {
-            const std::string a = addr(*mem);
             return line("{ double t = trunc(ST(0)); " +
-                        std::string(mem->size == 16 ? "wr16(" + a + ", (uint16_t)(int16_t)t);" : mem->size == 64 ? "wr64(" + a + ", (uint64_t)(int64_t)t);" : "wr32(" + a + ", (uint32_t)(int32_t)t);") +
+                        std::string(mem->size == 16 ? this->mem("wr16", *mem) + ", (uint16_t)(int16_t)t);" : mem->size == 64 ? this->mem("wr64", *mem) + ", (uint64_t)(int64_t)t);" : this->mem("wr32", *mem) + ", (uint32_t)(int32_t)t);") +
                         " fpop(c); }");
         }
         case ZYDIS_MNEMONIC_FADD: return arith("+", false, false, false);
@@ -1125,10 +1145,10 @@ private:
         case ZYDIS_MNEMONIC_FPREM: case ZYDIS_MNEMONIC_FPREM1:
             return line("ST(0) = " + std::string(m == ZYDIS_MNEMONIC_FPREM ? "fmod" : "remainder") + "(ST(0), ST(1)); c->fpu.sw &= (uint16_t)~X87_C2;");
         case ZYDIS_MNEMONIC_FNSTSW:
-            if (mem) return line("wr16(" + addr(*mem) + ", fnstsw(c));");
+            if (mem) return line(this->mem("wr16", *mem) + ", fnstsw(c));");
             return line(writeReg(ZYDIS_REGISTER_AX, "fnstsw(c)"));
-        case ZYDIS_MNEMONIC_FNSTCW: return line("wr16(" + addr(*mem) + ", c->fpu.cw);");
-        case ZYDIS_MNEMONIC_FLDCW: return line("c->fpu.cw = rd16(" + addr(*mem) + ");");
+        case ZYDIS_MNEMONIC_FNSTCW: return line(this->mem("wr16", *mem) + ", c->fpu.cw);");
+        case ZYDIS_MNEMONIC_FLDCW: return line("c->fpu.cw = " + this->mem("rd16", *mem) + ");");
         case ZYDIS_MNEMONIC_FNINIT: return line("c->fpu.top = 0; c->fpu.sw = 0; c->fpu.cw = 0x037F;");
         case ZYDIS_MNEMONIC_FNCLEX: return line("c->fpu.sw &= 0x7F00u;");
         case ZYDIS_MNEMONIC_FFREE: case ZYDIS_MNEMONIC_FNOP: case ZYDIS_MNEMONIC_FWAIT: return;
@@ -1167,7 +1187,7 @@ private:
 int main(int argc, char** argv) {
     using namespace recomp;
     if (argc < 4) {
-        std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N] [--prefix NAME] [--no-refs] [--hook ADDR=host_fn]... [--trace ADDR]...\n";
+        std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N] [--prefix NAME] [--no-refs] [--no-fold] [--hook ADDR=host_fn]... [--trace ADDR]...\n";
         return 2;
     }
     const Image img(argv[1]);
@@ -1198,6 +1218,8 @@ int main(int argc, char** argv) {
             prefix = argv[++i];
         } else if (a == "--no-refs") {
             noRefs = true;
+        } else if (a == "--no-fold") {
+            foldDisplacements() = false;
         } else if (a == "--per-file" && i + 1 < argc) {
             perFile = std::stoul(argv[++i]);
         }

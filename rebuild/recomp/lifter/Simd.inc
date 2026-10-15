@@ -19,21 +19,19 @@ std::string vload(const std::string& t, const ZydisDecodedOperand& o) {
     if (o.type == ZYDIS_OPERAND_TYPE_REGISTER) return "memset(&" + t + ", 0, 16); " + t + ".d[0] = " + readReg(o.reg.value) + ";";
     if (o.type == ZYDIS_OPERAND_TYPE_IMMEDIATE)
         return "memset(&" + t + ", 0, 16); " + t + ".q[0] = " + hexu(o.imm.value.u & 0xFF) + ";";
-    const std::string a = addr(o);
-    if (o.size >= 128) return "rdxmm(&" + t + ", " + a + ");";
-    if (o.size == 64) return "memset(&" + t + ", 0, 16); " + t + ".q[0] = rd64(" + a + ");";
-    if (o.size == 16) return "memset(&" + t + ", 0, 16); " + t + ".w[0] = rd16(" + a + ");";
-    return "memset(&" + t + ", 0, 16); " + t + ".d[0] = rd32(" + a + ");";
+    if (o.size >= 128) return mem("rdxmm", o, "&" + t + ", ") + ");";
+    if (o.size == 64) return "memset(&" + t + ", 0, 16); " + t + ".q[0] = " + mem("rd64", o) + ");";
+    if (o.size == 16) return "memset(&" + t + ", 0, 16); " + t + ".w[0] = " + mem("rd16", o) + ");";
+    return "memset(&" + t + ", 0, 16); " + t + ".d[0] = " + mem("rd32", o) + ");";
 }
 // Emit code storing Xmm temporary `t` to operand `o` (memory width = o.size).
 std::string vstore(const ZydisDecodedOperand& o, const std::string& t) {
     if (isXmm(o)) return "c->xmm[" + std::to_string(o.reg.value - ZYDIS_REGISTER_XMM0) + "] = " + t + ";";
     if (isMm(o)) return "c->mm[" + std::to_string(o.reg.value - ZYDIS_REGISTER_MM0) + "] = " + t + ".q[0];";
     if (o.type == ZYDIS_OPERAND_TYPE_REGISTER) return writeReg(o.reg.value, t + ".d[0]");
-    const std::string a = addr(o);
-    if (o.size >= 128) return "wrxmm(" + a + ", &" + t + ");";
-    if (o.size == 64) return "wr64(" + a + ", " + t + ".q[0]);";
-    return "wr32(" + a + ", " + t + ".d[0]);";
+    if (o.size >= 128) return mem("wrxmm", o) + ", &" + t + ");";
+    if (o.size == 64) return mem("wr64", o) + ", " + t + ".q[0]);";
+    return mem("wr32", o) + ", " + t + ".d[0]);";
 }
 
 // dst = f(A = dst, B = src) lane-wise; `lanes` counts elements of `field`.
@@ -63,21 +61,21 @@ bool simd(const Insn& ins) {
         return true;
     case ZYDIS_MNEMONIC_MOVQ:
         if (isXmm(o[0]) || isMm(o[0])) line("{ Xmm T; " + vload("T", o[1]) + " T.q[1] = 0; " + vstore(o[0], "T") + " }");
-        else line("{ Xmm T; " + vload("T", o[1]) + " wr64(" + addr(o[0]) + ", T.q[0]); }");
+        else line("{ Xmm T; " + vload("T", o[1]) + " " + mem("wr64", o[0]) + ", T.q[0]); }");
         return true;
     case ZYDIS_MNEMONIC_MOVD:
         if (isXmm(o[0]) || isMm(o[0])) line("{ Xmm T; " + vload("T", o[1]) + " T.d[1] = 0; T.q[1] = 0; " + vstore(o[0], "T") + " }");
-        else line("{ Xmm T; " + vload("T", o[1]) + " " + (o[0].type == ZYDIS_OPERAND_TYPE_MEMORY ? "wr32(" + addr(o[0]) + ", T.d[0]);" : writeReg(o[0].reg.value, "T.d[0]")) + " }");
+        else line("{ Xmm T; " + vload("T", o[1]) + " " + (o[0].type == ZYDIS_OPERAND_TYPE_MEMORY ? mem("wr32", o[0]) + ", T.d[0]);" : writeReg(o[0].reg.value, "T.d[0]")) + " }");
         return true;
     case ZYDIS_MNEMONIC_MOVSS:
         if (isXmm(o[0]) && isXmm(o[1])) line("{ Xmm A, B; " + vload("A", o[0]) + " " + vload("B", o[1]) + " A.f[0] = B.f[0]; " + vstore(o[0], "A") + " }");
         else if (isXmm(o[0])) line("{ Xmm T; " + vload("T", o[1]) + " " + vstore(o[0], "T") + " }");
-        else line("{ Xmm T; " + vload("T", o[1]) + " wr32(" + addr(o[0]) + ", T.d[0]); }");
+        else line("{ Xmm T; " + vload("T", o[1]) + " " + mem("wr32", o[0]) + ", T.d[0]); }");
         return true;
     case ZYDIS_MNEMONIC_MOVLPS: case ZYDIS_MNEMONIC_MOVHPS: {
         const std::string half = m == ZYDIS_MNEMONIC_MOVLPS ? "0" : "1";
-        if (isXmm(o[0])) line("{ Xmm A; " + vload("A", o[0]) + " A.q[" + half + "] = rd64(" + addr(o[1]) + "); " + vstore(o[0], "A") + " }");
-        else line("{ Xmm A; " + vload("A", o[1]) + " wr64(" + addr(o[0]) + ", A.q[" + half + "]); }");
+        if (isXmm(o[0])) line("{ Xmm A; " + vload("A", o[0]) + " A.q[" + half + "] = " + mem("rd64", o[1]) + "); " + vstore(o[0], "A") + " }");
+        else line("{ Xmm A; " + vload("A", o[1]) + " " + mem("wr64", o[0]) + ", A.q[" + half + "]); }");
         return true;
     }
     case ZYDIS_MNEMONIC_MOVHLPS:

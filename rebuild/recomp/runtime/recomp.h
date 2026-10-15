@@ -128,20 +128,45 @@ uint64_t recomp_rdtsc(void);
 
 /* ---- guest memory ---------------------------------------------------------- */
 
-static inline uint8_t rd8(uint32_t a) { return *GP(a); }
-static inline uint16_t rd16(uint32_t a) { uint16_t v; memcpy(&v, GP(a), 2); return v; }
-static inline uint32_t rd32(uint32_t a) { uint32_t v; memcpy(&v, GP(a), 4); return v; }
-static inline uint64_t rd64(uint32_t a) { uint64_t v; memcpy(&v, GP(a), 8); return v; }
-static inline float rdf32(uint32_t a) { float v; memcpy(&v, GP(a), 4); return v; }
-static inline double rdf64(uint32_t a) { double v; memcpy(&v, GP(a), 8); return v; }
-static inline void wr8(uint32_t a, uint8_t v) { *GP(a) = v; }
-static inline void wr16(uint32_t a, uint16_t v) { memcpy(GP(a), &v, 2); }
-static inline void wr32(uint32_t a, uint32_t v) { memcpy(GP(a), &v, 4); }
-static inline void wr64(uint32_t a, uint64_t v) { memcpy(GP(a), &v, 8); }
-static inline void wrf32(uint32_t a, float v) { memcpy(GP(a), &v, 4); }
-static inline void wrf64(uint32_t a, double v) { memcpy(GP(a), &v, 8); }
-static inline void rdxmm(Xmm* x, uint32_t a) { memcpy(x->b, GP(a), 16); }
-static inline void wrxmm(uint32_t a, const Xmm* x) { memcpy(GP(a), x->b, 16); }
+/* Accessors on a host pointer into guest memory (the `p` forms), and on a guest address. */
+static inline uint8_t rd8p(const uint8_t* p) { return *p; }
+static inline uint16_t rd16p(const uint8_t* p) { uint16_t v; memcpy(&v, p, 2); return v; }
+static inline uint32_t rd32p(const uint8_t* p) { uint32_t v; memcpy(&v, p, 4); return v; }
+static inline uint64_t rd64p(const uint8_t* p) { uint64_t v; memcpy(&v, p, 8); return v; }
+static inline float rdf32p(const uint8_t* p) { float v; memcpy(&v, p, 4); return v; }
+static inline double rdf64p(const uint8_t* p) { double v; memcpy(&v, p, 8); return v; }
+static inline void wr8p(uint8_t* p, uint8_t v) { *p = v; }
+static inline void wr16p(uint8_t* p, uint16_t v) { memcpy(p, &v, 2); }
+static inline void wr32p(uint8_t* p, uint32_t v) { memcpy(p, &v, 4); }
+static inline void wr64p(uint8_t* p, uint64_t v) { memcpy(p, &v, 8); }
+static inline void wrf32p(uint8_t* p, float v) { memcpy(p, &v, 4); }
+static inline void wrf64p(uint8_t* p, double v) { memcpy(p, &v, 8); }
+static inline void rdxmmp(Xmm* x, const uint8_t* p) { memcpy(x->b, p, 16); }
+static inline void wrxmmp(uint8_t* p, const Xmm* x) { memcpy(p, x->b, 16); }
+
+static inline uint8_t rd8(uint32_t a) { return rd8p(GP(a)); }
+static inline uint16_t rd16(uint32_t a) { return rd16p(GP(a)); }
+static inline uint32_t rd32(uint32_t a) { return rd32p(GP(a)); }
+static inline uint64_t rd64(uint32_t a) { return rd64p(GP(a)); }
+static inline float rdf32(uint32_t a) { return rdf32p(GP(a)); }
+static inline double rdf64(uint32_t a) { return rdf64p(GP(a)); }
+static inline void wr8(uint32_t a, uint8_t v) { wr8p(GP(a), v); }
+static inline void wr16(uint32_t a, uint16_t v) { wr16p(GP(a), v); }
+static inline void wr32(uint32_t a, uint32_t v) { wr32p(GP(a), v); }
+static inline void wr64(uint32_t a, uint64_t v) { wr64p(GP(a), v); }
+static inline void wrf32(uint32_t a, float v) { wrf32p(GP(a), v); }
+static inline void wrf64(uint32_t a, double v) { wrf64p(GP(a), v); }
+static inline void rdxmm(Xmm* x, uint32_t a) { rdxmmp(x, GP(a)); }
+static inline void wrxmm(uint32_t a, const Xmm* x) { wrxmmp(GP(a), x); }
+
+/* A lifted memory operand `base [+ index * scale] + disp` with a small displacement
+ * (|disp| < 64 KiB, emitted by the lifter): the base part wraps to 32 bits like x86, the
+ * displacement is added to the host pointer, so the compiler folds it into a [reg, #imm]
+ * addressing mode instead of a separate 32-bit add before every access. The two forms
+ * differ only when the x86 sum wraps around 4 GiB, which lands in the first or last 64 KiB
+ * of the guest space: never mapped (the guest's null page / the kernel half), a fault in
+ * retail as well. */
+#define MA(base, disp) (GP(base) + (int32_t)(disp))
 
 /* ---- lazy integer flags -----------------------------------------------------
  * A flag-setting instruction records (op, result, a, b); consumers derive the
