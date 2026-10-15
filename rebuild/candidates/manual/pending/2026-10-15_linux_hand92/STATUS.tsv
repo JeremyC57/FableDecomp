@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00587749	RELOCATION_MATCH	62v62	PASS	CTCInventory::ProcessDPadUpReleased; optimize(s); local retail-offset view
+0058a729	RELOCATION_MATCH	58v58	PASS	CTCInventory::ConstructStyleCardsScreenPC; optimize(s)
+00591e5e	RELOCATION_MATCH	46v46	PASS	CTCInventory::ConstructScreenPC (virtual); optimize(s)
+006b94e0	RELOCATION_MATCH	42v42	PASS	really CFaction::SetAlliedToFaction (label propagated)
+006b9530	RELOCATION_MATCH	42v42	PASS	really CFaction::SetEnemyOfFaction (label propagated)
+00ae8490	RELOCATION_MATCH	45v45	PASS	really CArray<C3DGroup2>::AddDefault (label propagated)
+00c17820	RELOCATION_MATCH	33v33	PASS	really a __fastcall message-event filter TestThing (label propagated)
+00c27a20	RELOCATION_MATCH	51v51	PASS	really a no-RTTI script-module CancelPending under CScopedLock (label propagated)
+00c2d920	RELOCATION_MATCH	69v69	PASS	really CSoundFormat::GetPCMBufferSize (label propagated); body-assignment store order
+00c443d0	RELOCATION_MATCH	83v83	PASS	ClearMarkedItems of a no-RTTI 0x00C4 table (module label propagated); indexed slot + __int64 record
+0057aa1b	MATCH	64v64	PASS	really CTCHeroStats::GetNumberOfRegionsVisited (label propagated); optimize(s), i != size()
+005edea3	RELOCATION_MATCH	72v72	PASS	y-off + s; Min(level, const 3) through the dead arg slot
+005edf33	DIFFER	65v67	-	parked: loop register pairing (cursor/last swapped)
+005ee0e7	RELOCATION_MATCH	79v79	PASS	optimize(s); unused bool arg
+005ee146	MATCH	61v61	PASS	optimize(s); i < size()
+005ee207	RELOCATION_MATCH	68v68	PASS	y-off + s; __forceinline converting CDefPointer ctor + release
+005ee24b	MATCH	61v61	PASS	optimize(s); > 0 element test
+005ee31d	RELOCATION_MATCH	72v72	PASS	optimize(s); __forceinline CVectorMap::Find
+005eed8c	RELOCATION_MATCH	67v67	PASS	optimize(s)
+005eef84	RELOCATION_MATCH	51v51	PASS	optimize(s); callee GetAbilityMaximumLevel defined in the same TU keeps this in edx
+005eefb7	RELOCATION_MATCH	59v59	PASS	y-off + s; if/else arms tail-merged
+005f3e3e	RELOCATION_MATCH	63v63	PASS	y-off + s; implicit CCharString conversion temporary
+005f3e7d	RELOCATION_MATCH	77v77	PASS	optimize(s)
+005f3eca	RELOCATION_MATCH	74v74	PASS	optimize(s)
+005f3f14	RELOCATION_MATCH	79v79	PASS	optimize(s)
+005f4c45	RELOCATION_MATCH	74v74	PASS	optimize(s); reference to the entry def pointer
+008631b0	RELOCATION_MATCH	21v21	PASS	really CCreatureInteraction::RemoveCreature (label propagated); derived-to-base conversion temp
+009bff10	RELOCATION_MATCH	41v41	PASS	really CDisplayManager::ChangePresentationInterval(bool,long,bool) (label propagated)
+005bc4df	RELOCATION_MATCH	34v34	PASS	really SetCanItemBeUsed (+0x35, label propagated); optimize(s)
+005bc505	RELOCATION_MATCH	34v34	PASS	SetCanItemBeQuickAssigned (+0x34); optimize(s)
+005bc527	RELOCATION_MATCH	95v95	PASS	/GS + y-off + s; CGameEvent local
+005bc58f	DIFFER	35v35	-	parked: dest/source register roles swapped
+005bc6b3	RELOCATION_MATCH	35v35	PASS	y-off + s; this unused
+005bc754	MATCH	39v39	PASS	really CCategory::OnKill (label propagated); empty loop kept
+005bc9c8	RELOCATION_MATCH	61v61	PASS	really CTCInventoryBase::OnKill (vtable slot 14); same-TU callee lets VC hoist the count
+005bca05	RELOCATION_MATCH	65v65	PASS	CTCInventoryBase::SetQuestPersistentFlagForItems(bool); optimize(s)
+005bca46	RELOCATION_MATCH	65v65	PASS	really UpdateNonQuestPersistentRefCountForItems (label propagated); optimize(s)
+005bca87	RELOCATION_MATCH	71v71	PASS	optimize(s); same-TU getter keeps first in edi
+005bccf1	MATCH	60v60	PASS	optimize(s); inline CCategory::Deselect
+005bce49	RELOCATION_MATCH	91v91	PASS	y-off + s; this unused

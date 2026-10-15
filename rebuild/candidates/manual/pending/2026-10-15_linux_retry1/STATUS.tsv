@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+0057a962	RELOCATION_MATCH	39	PASS	CTCHeroStats::GetMaxExtraMaxStamina (retry of the hand90 parked row)

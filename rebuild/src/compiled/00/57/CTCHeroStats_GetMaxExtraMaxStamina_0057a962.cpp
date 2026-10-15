@@ -1,6 +1,6 @@
 // CTCHeroStats::GetMaxExtraMaxStamina() const -- the hero-stats definition's cap on bonus stamina points, read through a counted def-pointer copy
-// Grade: DIFFER(40v39) -- last graded form (member copied by reference) emits `add eax,0DCh ; mov ecx,[eax]` for retail's `mov ecx,[eax+0DCh]`; grading budget (4) spent. THIS FILE carries the by-value accessor form that matched the byte-identical sibling GetStartingMaxStamina (0x0057A939) -- ungraded here, re-grade at landing.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057A962, 39 bytes.
+// Retry (Fable landing session): the sibling-proven by-value accessor form the author left ungraded grades RELOCATION_MATCH.
 // Callees: CTCBase::GetDefinitions() @ 0x006869D0 (ParentThing's definition holder: the global @ 0x013B8A1C, +0x20),
 //          CHeroStatsDef virtual slot 1 (+0x04, destroy when the count drops to zero).
 //
