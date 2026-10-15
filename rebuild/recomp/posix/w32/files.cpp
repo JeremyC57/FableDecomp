@@ -2,14 +2,23 @@
 #include "w32.hpp"
 
 #include <cerrno>
+#include <chrono>
+#include <condition_variable>
+#include <cstdlib>
 #include <cstring>
+#include <deque>
 #include <dirent.h>
 #include <fcntl.h>
 #include <map>
+#include <mutex>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
 #include <sys/time.h>
+#include <thread>
+#include <time.h>
 #include <unistd.h>
+
+namespace host { void log(const char* fmt, ...); }
 
 namespace w32 {
 
@@ -165,6 +174,7 @@ struct File : Object {
     bool overlapped = false;
     bool deleteOnClose = false;
     bool console = false;
+    std::atomic<bool> wrote{false};  // written through this handle since its last FlushFileBuffers (any thread)
     ~File() override {
         if (fd > 2) close(fd);
         if (deleteOnClose) unlink(path.c_str());
@@ -225,6 +235,7 @@ HANDLE createFile(const std::string& path, DWORD access, DWORD disposition, DWOR
     f->path = path;
     f->overlapped = flags & FILE_FLAG_OVERLAPPED;
     f->deleteOnClose = flags & FILE_FLAG_DELETE_ON_CLOSE;
+    f->wrote = (o & O_TRUNC) || (!existed && (o & O_CREAT));  // created or emptied: a change for FlushFileBuffers too
     setError(existed && (disposition == CREATE_ALWAYS || disposition == OPEN_ALWAYS) ? ERROR_ALREADY_EXISTS : ERROR_SUCCESS);
     return newHandle(f);
 }
@@ -247,6 +258,7 @@ BOOL doIo(HANDLE h, void* buf, DWORD n, DWORD* done, OVERLAPPED* ov, bool write)
         return FALSE;
     }
     if (done) *done = static_cast<DWORD>(r);
+    if (write && r > 0) f->wrote = true;
     if (ov) {
         ov->Internal = (!write && r == 0 && n) ? ERROR_HANDLE_EOF : 0;
         ov->InternalHigh = static_cast<ULONG_PTR>(r);
@@ -393,6 +405,7 @@ BOOL WINAPI SetEndOfFile(HANDLE h) {
     auto f = fileOf(h);
     if (!f) return FALSE;
     const off_t at = lseek(f->fd, 0, SEEK_CUR);
+    f->wrote = true;  // a size change for FlushFileBuffers to flush
     return ftruncate(f->fd, at) == 0 ? TRUE : fail(errnoToWin(errno));
 }
 DWORD WINAPI GetFileSize(HANDLE h, LPDWORD high) {
@@ -450,10 +463,119 @@ BOOL WINAPI GetFileInformationByHandle(HANDLE h, LPBY_HANDLE_FILE_INFORMATION ou
     out->nFileIndexLow = static_cast<DWORD>(st.st_ino);
     return TRUE;
 }
+// The game's CDiskFileWin32 calls FlushFileBuffers before every CloseHandle and on every
+// SetPosition / MovePosition (0x0099A920, 0x0099ABF0, 0x0099AC90), read-only files included.
+// fsync on the handheld's SD card (FAT/exFAT: the file, the allocation table and a device cache
+// flush) held the game thread on every seek and close: region changes write comback.dat /
+// comback.rec / comfront.dat, saves write the profile and the save. A handle that wrote nothing
+// has nothing to flush; a written file is flushed on a background thread, at most one fsync
+// pending per file (a flush while one is pending is covered by it; one while it runs queues one
+// more), so the data reaches the card moments later without a frame waiting for it.
+//
+// The trade-off: a save is durable a moment after the game reports it (one fsync, typically
+// well under a second, a few seconds on a slow card), not before. The ways out of the process
+// wait for the flushes requested before them (drainFileFlushes: ExitProcess, the Back+Start
+// and host-menu exits); SIGTERM (the firmware's quit) reaches the game as SDL_QUIT -> WM_CLOSE,
+// whose exit is ExitProcess. A SIGKILL or a power cut within that moment can lose the last
+// writes. FABLE_SYNC_FLUSH=1: on the calling thread, as before.
+}  // extern "C"
+
+namespace w32 {
+namespace {
+struct Flusher {
+    std::mutex m;
+    std::condition_variable cv, done;
+    // A file with a flush outstanding (one descriptor each): `from` is the first request the
+    // queued or running fsync covers, `again` the first one made while it runs (it runs again).
+    struct Item { int fd; std::string path; bool running; uint64_t from, again; };
+    std::map<std::pair<dev_t, ino_t>, Item> items;
+    std::deque<std::pair<dev_t, ino_t>> q;
+    uint64_t requests = 0;  // flush requests so far: each one's ticket
+    static uint64_t nowNs() { timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return static_cast<uint64_t>(t.tv_sec) * 1000000000ull + t.tv_nsec; }
+    void run() {
+        std::unique_lock<std::mutex> l(m);
+        for (;;) {
+            cv.wait(l, [&] { return !q.empty(); });
+            const auto key = q.front();
+            q.pop_front();
+            Item& it = items.at(key);
+            it.running = true;
+            const int fd = it.fd;
+            const std::string path = it.path;
+            l.unlock();
+            const uint64_t t0 = nowNs();
+            fsync(fd);
+            const double ms = (nowNs() - t0) / 1e6;
+            if (ms >= 20) host::log("files: fsync %s took %.0f ms (background)", path.c_str(), ms);
+            l.lock();
+            Item& d = items.at(key);
+            d.running = false;
+            if (d.again) {  // written and flushed again while this one ran
+                d.from = d.again, d.again = 0;
+                q.push_back(key);
+            } else {
+                close(d.fd);
+                items.erase(key);
+            }
+            done.notify_all();
+        }
+    }
+    void flush(int fileFd, const std::string& path) {
+        struct stat st;
+        if (fstat(fileFd, &st) != 0) { fsync(fileFd); return; }
+        const auto key = std::make_pair(st.st_dev, st.st_ino);
+        {
+            std::lock_guard<std::mutex> l(m);
+            const uint64_t ticket = ++requests;
+            auto it = items.find(key);
+            if (it != items.end()) {
+                if (it->second.running && !it->second.again) it->second.again = ticket;  // queued: that fsync covers this one
+                return;
+            }
+            const int fd = dup(fileFd);
+            if (fd >= 0) {
+                items.emplace(key, Item{fd, path, false, ticket, 0});
+                q.push_back(key);
+                cv.notify_one();
+                return;
+            }
+        }
+        fsync(fileFd);  // no descriptor to spare: here, as before
+    }
+    // Waits for the flushes requested before the call, not for ones made while it waits (a
+    // thread that keeps writing cannot hold the exit); 10 s at most (a card that hangs).
+    void drain() {
+        std::unique_lock<std::mutex> l(m);
+        const uint64_t upTo = requests;
+        const auto waiting = [&] { size_t n = 0; for (const auto& [k, it] : items) n += it.from <= upTo; return n; };
+        if (!done.wait_for(l, std::chrono::seconds(10), [&] { return waiting() == 0; }))
+            host::log("files: %zu background fsyncs still running at exit", waiting());
+    }
+};
+std::atomic<Flusher*> g_flusher{nullptr};
+std::once_flag g_flusherOnce;
+Flusher* flusher() {
+    std::call_once(g_flusherOnce, [] {
+        Flusher* fl = new Flusher;  // never freed: the thread lives until the process exits
+        std::thread([fl] { fl->run(); }).detach();
+        g_flusher.store(fl);
+    });
+    return g_flusher.load();
+}
+}  // namespace
+void drainFileFlushes() {
+    if (Flusher* fl = g_flusher.load()) fl->drain();
+}
+}  // namespace w32
+
+extern "C" {
 BOOL WINAPI FlushFileBuffers(HANDLE h) {
     auto f = fileOf(h);
     if (!f) return FALSE;
-    if (!f->console) fsync(f->fd);
+    if (f->console || !f->wrote.exchange(false)) return TRUE;
+    static const bool syncFlush = [] { const char* e = std::getenv("FABLE_SYNC_FLUSH"); return e && std::atoi(e) != 0; }();
+    if (syncFlush) fsync(f->fd);
+    else flusher()->flush(f->fd, f->path);
     return TRUE;
 }
 

@@ -61,6 +61,20 @@ Fable/            its files, in the folder of the same name next to it
   pre-transformed UI quads, DXT1/3/5 textures (decoded on the CPU; Mali has no S3TC),
   render-target and depth textures, occlusion queries. No state blocks, cube/volume
   textures or multisampling.
+- **Saves and the shader cache.** The game flushes a file on every seek and close; on the SD
+  card each flush took tens of milliseconds on the game's thread, so a file that was written
+  is flushed by a background thread instead (one flush outstanding per file). A save is
+  therefore on the card a moment after the game reports it (typically well under a second, a
+  few seconds on a slow card). Quitting through the game, the host menu's exit or Back + Start
+  waits for those flushes, and SIGTERM (a firmware's quit) reaches the game as a window close,
+  which quits the same way; a SIGKILL or a power cut in that moment can lose the save's last
+  writes. `FABLE_SYNC_FLUSH=1` flushes on the game's thread as before. Shader programs are
+  kept as driver binaries in `save/gles_programs.bin` (the 1024 most recently used; another
+  GPU driver starts it over; `FABLE_GLES_PROGRAM_CACHE=0` turns it off): a program the game
+  used in an earlier session loads instead of compiling (~40-50 ms each on the Mali-G31), and
+  those of the last three sessions are created a slice per frame (~2 ms of the render
+  thread, `FABLE_GLES_PROGRAM_WARM_MS`) after start. A frame over 100 ms logs what the
+  renderer did in it (`gles: long frame`; `FABLE_GLES_LONG_FRAME_MS`).
 - **Speed.** The x86 game runs as lifted C on four A53 cores at 1.5 GHz; expect a fraction
   of the Android frame rate. 720x480 keeps the GPU load low. The first device log showed
   gameplay at 7-8 fps with ~1300 draws a frame and menus at the 60 fps cap, so the cost is
@@ -77,6 +91,19 @@ Fable/            its files, in the folder of the same name next to it
   the renderer's. The lifted code is built at -O2 for the Cortex-A53 (`FABLE_GEN_OPT`,
   `linux-a64.cmake`), and `Fable.sh` puts the CPU and GPU governors into performance mode
   for the session (`FABLE_NO_PERF=1` leaves them).
+- **Code layout.** The lifted code is ~56 MB of machine code in guest-address order, and a
+  frame's work is spread thin over it (the hottest lifted function is under 2% of the
+  samples), so the A53's 32 KiB instruction cache and its TLBs (10 L1 instruction entries, 512
+  shared) miss on most calls. The build therefore links with lld and places the functions in
+  `hot_symbols.txt` (written by `gen_hot_order.py` from a profile) first and together, between
+  the markers `fable_hot_text_begin`/`_end`; at start the game copies that range onto
+  transparent huge pages when the kernel has them (`huge text:` in the log says what it did;
+  `FABLE_HUGE_TEXT=0` turns it off). `FABLE_PMU=60` (opt-in: off in `Fable.sh`, since the
+  PMU support of Allwinner kernels varies; `Fable-diag.sh` runs `FableRecomp --pmu-probe` to
+  test it) logs the busiest thread's hardware counters every minute (`pmu:`): IPC,
+  instruction-cache and branch misses, and on the A53 the share of cycles lost to
+  instruction-cache and instruction-TLB misses, the numbers that say whether the layout work
+  pays. The A53 errata 835769/843419 workarounds are on (`FABLE_A53_ERRATA`).
 - **Vsync.** Off in the first-run preset: a frame shows as soon as it is done instead of
   waiting for the next 60 Hz refresh. "Half" locks to 30 fps and is the smoothest choice
   once frames fit in 33 ms.
@@ -107,15 +134,26 @@ Fable/            its files, in the folder of the same name next to it
   `FABLE_GLES_TEX16=1` forces that at any detail, `2` also turns smooth alpha into RGBA4,
   `0` keeps RGBA8), brightness, vertical sync (off / on / half
   = a 30 fps lock), plus draw distance, glow, water reflections and weather. Changes apply at once and are saved in `save/graphics.txt`; `Fable.sh`'s
-  `FABLE_GFX_DEFAULTS` is the first-run preset (shadows and water reflections off: each is
-  an extra scene pass). Lower the render resolution first if the GPU is the limit, the
-  draw distance and model detail if the CPU is (the statistics line shows the split).
+  `FABLE_GFX_DEFAULTS` is the first-run preset, used only while `save/graphics.txt` does not
+  exist (an upgrade keeps the player's settings; delete the file to get a newer preset). The
+  preset is the PC's Low detail with an 80% draw distance, because the game's own CPU time
+  per frame is the limit on this device: mesh detail Low draws objects to 0.75x their
+  distance, at most 250 m, without the repeated ground meshes and z-sprite billboards (a town
+  went from ~760 to ~545 draws a frame and lost two render-target clears); draw distance
+  culls the meshes further out together with their bone and cloth work; effects Low has no
+  weather, colour filter, glow, radial blur or 3D distortion; shadows and water reflections
+  are whole extra scene passes. Landscape detail has no reader in the retail engine that we
+  found (the PC menu fixes it at Normal; the device log shows no change). Raise draw
+  distance and mesh detail first when there is CPU time to spare; lower the render
+  resolution if the GPU is the limit (the statistics line shows the split).
 - **Volume.** The OS's rocker does not reach the game's mixer, so with `FABLE_VOLUME_KEYS=1`
   a thread reads KEY_VOLUMEUP/DOWN from the evdev devices that have them and steps the host's
   master volume (`save/volume.txt`; also in the host menu).
 
 ## Building
 ```sh
+# host tools: clang, lld (ld.lld: the hot-function order needs it; without it CMake warns and
+# links with GNU ld, unordered), cmake, ninja, meson
 # arm64 packages (dpkg --add-architecture arm64; libsdl2-dev:arm64 libavcodec-dev:arm64 ...)
 meson setup build/dxvk-a64 <dxvk 2.x> --cross-file android/linux-aarch64.ini --buildtype release \
   -Denable_dxgi=false -Denable_d3d8=false -Denable_d3d10=false -Denable_d3d11=false -Dnative_sdl2=enabled
@@ -135,5 +173,20 @@ ninja -C build/linux-a64
 # (the GLES renderer needs only the GLES3/gl3.h header; it links no GL library)
 FFMPEG_PREFIX=build/ffmpeg-a64 rebuild/recomp/posix/rg34xx/package_rg34xx.sh build/linux-a64 build/dxvk-a64 out/rg34xx
 ```
+Hot-function order: `hot_symbols.txt` is regenerated from a profile with
+`gen_hot_order.py --gen-dir gen_win --log <device log.txt> -o rebuild/recomp/posix/rg34xx/hot_symbols.txt`
+(the profiler's top-60 lines seed it, and the direct callees and callers of those functions fill it to
+4 MiB), or better from a complete profile: `--counts` takes `<count> <symbol>` lines (a full
+sample histogram, e.g. `perf report` of the x86-64 build), `--profdata` an instrumented run (below).
+A new list needs only a relink. `-DFABLE_SYMBOL_ORDER=` (empty) builds without it.
+
+Profile-guided optimisation (clang PGO): the instrumentation profile is keyed by the source, so a
+desktop session trains the handheld build. `pgo_train.sh build/linux /tmp/pgo -- <play command>`
+(a harness script that starts `$FABLE_BUILD/FableRecomp`, loads a save and plays in a world scene
+for 10+ minutes) builds an instrumented x86-64 copy (`FABLE_PGO=gen`; needs `libclang-rt-18-dev`, or
+`FABLE_PGO_RUNTIME=<libclang_rt.profile.a>`), runs the command, and writes `/tmp/pgo/fable.profdata`
+and a complete `/tmp/pgo/hot_symbols.txt`; configure the aarch64 build with
+`-DFABLE_PGO=/tmp/pgo/fable.profdata` and copy the ordering file over this directory's.
+
 Smoke test on x86-64 (qemu-user, Mesa llvmpipe through `lib/fallback`, SDL on X11):
 `SDL_VIDEODRIVER=x11 FABLE_RENDERER=gles LIBGL_ALWAYS_SOFTWARE=1 qemu-aarch64 Fable/lib/ld-linux-aarch64.so.1 --library-path Fable/lib:Fable/lib/fallback Fable/FableRecomp --game <game>`.

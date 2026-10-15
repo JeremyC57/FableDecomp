@@ -2,7 +2,8 @@
 // game's own Video Options page is inert (FABLE_HOST_GFX). They mirror the game's
 // CEngineVideoOptions (landscape / model / texture / shadow / effects quality, each
 // Low..Highest, plus the resolution) and add a few direct levers (draw distance, glow,
-// water reflection, weather). Applied at CEngine::SetVideoOptions (0xB24690, wrapped): the
+// water reflection, weather, distortion, character LOD). Applied at
+// CEngine::SetVideoOptions (0xB24690, wrapped): the
 // quality fields and the resolution are rewritten in the options the game passes, the
 // extras act on the engine's four CEngineVideoOptionsDef objects. Persisted in
 // <data dir>/graphics.txt; a change is re-applied on the game thread at the next input
@@ -35,7 +36,10 @@ struct Settings {
     bool glow = true;           // false: the glow/bloom chain is off (def EnableGlow) and its passes are skipped
     bool water = true;          // false: no water reflection pass (def EnableWaterReflection)
     bool weather = true;        // false: no weather effects (def EnableWeatherEffects)
+    bool distortion = true;     // false: no screen distortion pass (defs Enable2DDisplacement / Enable3DDisplacement; 2D is on in every retail def)
+    int characterLod = 0;       // 0..3: floor for the defs' CharacterLODErrorTolerance (0 in every retail def: animated meshes never leave LOD 0)
 };
+float characterLodTolerance(int level);  // the tolerance a characterLod level writes (0, 1, 1.5, 3)
 float gammaExponent(int brightness);  // the exponent the present pass applies (1 at 50)
 
 const Settings& get();

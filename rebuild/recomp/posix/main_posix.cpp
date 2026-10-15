@@ -16,6 +16,10 @@ void androidInit(const std::string& data);
 #endif
 
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int);
+#ifdef FABLE_CODELAYOUT
+void fableCodeLayoutInit();  // codelayout.cpp: hot code onto huge pages, FABLE_PMU counters, PGO dumps
+int fablePmuProbe();         // --pmu-probe: do the hardware counters work here?
+#endif
 extern "C" void w32_setCommandLine(const wchar_t* cmd);
 namespace w32 {
 void setDataDir(const std::string& dir);
@@ -50,6 +54,9 @@ static int gameMain(int argc, char** argv) {
     for (int i = 1; i < argc; ++i)
         if (std::string(argv[i]) == "--gl-probe") return host::gles::fb::probe();  // diagnostics: EGL on the framebuffer, then exit
         else if (std::string(argv[i]) == "--pad-probe") return w32::padProbe();
+#ifdef FABLE_CODELAYOUT
+        else if (std::string(argv[i]) == "--pmu-probe") return fablePmuProbe();
+#endif
     w32::wstr cmd;
     for (int i = 0; i < argc; ++i) {
         const bool path = i > 0 && argv[i][0] == '/' && std::string(argv[i - 1]) == "--game";
@@ -71,6 +78,9 @@ static int gameMain(int argc, char** argv) {
 // recurses on the host stack); the process's own main thread (on Android, SDL's Java thread,
 // with about 1 MiB) is too small.
 int main(int argc, char** argv) {
+#ifdef FABLE_CODELAYOUT
+    fableCodeLayoutInit();  // first: it may move code, so no other thread may run yet
+#endif
     struct Args { int argc; char** argv; int rc; } args{argc, argv, 0};
     pthread_attr_t a;
     pthread_attr_init(&a);

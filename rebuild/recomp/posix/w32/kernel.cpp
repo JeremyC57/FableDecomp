@@ -2,12 +2,14 @@
 // resources, code pages and locale, error messages, vectored exception handlers.
 #include "w32.hpp"
 
+#include <atomic>
 #include <cerrno>
 #include <chrono>
 #include <csignal>
 #include <cstdio>
 #include <cstring>
 #include <ctime>
+#include <dlfcn.h>
 #include <fstream>
 #include <functional>
 #include <map>
@@ -18,6 +20,8 @@
 #include <unistd.h>
 
 extern char** environ;
+
+namespace host { void log(const char* fmt, ...); }
 
 namespace w32 {
 
@@ -109,6 +113,23 @@ bool guestReadable(uint32_t a, size_t n) {
         if (vm::state[i] != vm::COMMITTED || vm::hostProt(vm::prot[i]) == PROT_NONE) return false;
     return true;
 }
+// The same for writes (committed, writable pages).
+bool guestWritable(uint32_t a, size_t n) {
+    if (!vm::ready || n == 0 || !vm::inWindow(a, n)) return false;
+    for (size_t i = vm::idx(a), e = vm::idx(a + n - 1); i <= e; ++i)
+        if (vm::state[i] != vm::COMMITTED || !(vm::hostProt(vm::prot[i]) & PROT_WRITE)) return false;
+    return true;
+}
+// What the guest page holding `a` is (diagnostics: why a guest pointer is unusable).
+const char* guestPageState(uint32_t a) {
+    if (!vm::ready || !vm::inWindow(a, 1)) return "outside the guest window";
+    const size_t i = vm::idx(a);
+    if (vm::allocBase[i] == 0xFFFFFFFFu) return "host memory";
+    if (vm::state[i] == vm::FREE) return "free (never allocated, or released)";
+    if (vm::state[i] == vm::RESERVED) return "reserved, not committed";
+    const int p = vm::hostProt(vm::prot[i]);
+    return p == PROT_NONE ? "committed, no access" : (p & PROT_WRITE) ? "committed" : "committed, read-only";
+}
 
 // ============================================================================
 // PE resources (resource-only modules: LoadLibraryEx with LOAD_LIBRARY_AS_DATAFILE)
@@ -198,6 +219,35 @@ static bool findRes(const PeModule& m, uintptr_t type, uintptr_t name, WORD lang
 namespace {
 std::mutex g_vehLock;
 std::vector<PVECTORED_EXCEPTION_HANDLER> g_veh;
+constexpr int kFaultSignals[] = {SIGSEGV, SIGBUS, SIGILL, SIGFPE};
+std::atomic<bool> g_faultHandlers{false};
+// SDL's fault handler (its evdev keyboard restore), saved when reassertFaultHandlers puts ours
+// back on top of it: it still gets each fault, after the report.
+struct sigaction g_displaced[NSIG];
+std::atomic<bool> g_hasDisplaced[NSIG];
+
+#if defined(__aarch64__)
+// ESR_EL1 of the thread's last fault, from the signal frame's esr_context record (ESR_MAGIC). The
+// kernel adds the record whenever the thread has a fault code, so the frame of a signal that was
+// sent later (a re-raise) carries it too; 0 when there is none.
+uint64_t frameEsr(const ucontext_t* u) {
+    const auto* p = reinterpret_cast<const uint8_t*>(u->uc_mcontext.__reserved);
+    const uint8_t* const end = p + sizeof u->uc_mcontext.__reserved;
+    while (p + 8 <= end) {
+        uint32_t magic, size;
+        std::memcpy(&magic, p, 4);
+        std::memcpy(&size, p + 4, 4);
+        if (!magic || size < 8 || size > static_cast<size_t>(end - p)) break;
+        if (magic == 0x45535201u && size >= 16) {  // ESR_MAGIC
+            uint64_t esr;
+            std::memcpy(&esr, p + 8, 8);
+            return esr;
+        }
+        p += size;
+    }
+    return 0;
+}
+#endif
 
 void onSignal(int sig, siginfo_t* si, void* uc) {
     EXCEPTION_RECORD rec{};
@@ -206,18 +256,39 @@ void onSignal(int sig, siginfo_t* si, void* uc) {
                        : sig == SIGILL                 ? EXCEPTION_ILLEGAL_INSTRUCTION
                        : sig == SIGFPE                 ? EXCEPTION_INT_DIVIDE_BY_ZERO
                                                        : EXCEPTION_BREAKPOINT;
-    rec.NumberParameters = 2;
-    rec.ExceptionInformation[1] = reinterpret_cast<ULONG_PTR>(si->si_addr);
+    // si_code <= 0 (SI_USER, SI_TKILL, SI_QUEUE): the signal was sent (kill, tgkill, raise), not
+    // raised by a fault here, and si_addr overlays the sender's pid: the case when another
+    // handler took the fault first and re-raised it. Then the third parameter is the sender and
+    // the fourth says whether the address (the second) is the thread's last memory fault as the
+    // kernel recorded it (1) or unknown (0, the address 0).
+    const bool sent = si->si_code <= 0;
+    const bool memFault = sig == SIGSEGV || sig == SIGBUS;
+    rec.NumberParameters = sent ? 4 : 2;
+    rec.ExceptionInformation[1] = sent ? 0 : reinterpret_cast<ULONG_PTR>(si->si_addr);
+    if (sent) rec.ExceptionInformation[2] = static_cast<ULONG_PTR>(si->si_pid);
     auto* u = static_cast<ucontext_t*>(uc);
 #if defined(__x86_64__)
     rec.ExceptionAddress = reinterpret_cast<void*>(u->uc_mcontext.gregs[REG_RIP]);
     ctx.Rip = u->uc_mcontext.gregs[REG_RIP];
     ctx.Rsp = u->uc_mcontext.gregs[REG_RSP];
-    rec.ExceptionInformation[0] = (u->uc_mcontext.gregs[REG_ERR] & 2) ? 1 : 0;
+    // The frame's trapno/err/cr2 are the thread's last trap as the kernel keeps it (thread.trap_nr,
+    // error_code, cr2), also in the frame of a signal sent later: a page fault (14) has the address
+    // in cr2 and the write bit in err.
+    const bool pageFault = u->uc_mcontext.gregs[REG_TRAPNO] == 14;
+    if (sent && memFault && pageFault) rec.ExceptionInformation[1] = static_cast<ULONG_PTR>(u->uc_mcontext.gregs[REG_CR2]), rec.ExceptionInformation[3] = 1;
+    if (!sent || rec.ExceptionInformation[3]) rec.ExceptionInformation[0] = (u->uc_mcontext.gregs[REG_ERR] & 2) ? 1 : 0;
 #elif defined(__aarch64__)
     rec.ExceptionAddress = reinterpret_cast<void*>(u->uc_mcontext.pc);
     ctx.Pc = u->uc_mcontext.pc;
     ctx.Sp = u->uc_mcontext.sp;
+    for (int i = 0; i < 31; ++i) ctx.X[i] = u->uc_mcontext.regs[i];  // the lifted code keeps the guest registers in these
+    const uint64_t esr = frameEsr(u);
+    const uint32_t ec = static_cast<uint32_t>(esr >> 26) & 0x3Fu;
+    if (ec == 0x24 || ec == 0x25) rec.ExceptionInformation[0] = (esr >> 6) & 1;  // a data abort: WnR (write, not read)
+    // A re-raised fault: fault_address is the thread's last fault address as the kernel keeps it
+    // (thread.fault_address), set by data and instruction aborts (EC 0x24/0x25, 0x20/0x21).
+    if (sent && memFault && (ec == 0x24 || ec == 0x25 || ec == 0x20 || ec == 0x21))
+        rec.ExceptionInformation[1] = u->uc_mcontext.fault_address, rec.ExceptionInformation[3] = 1;
 #endif
     EXCEPTION_POINTERS ep{&rec, &ctx};
     std::vector<PVECTORED_EXCEPTION_HANDLER> hs;
@@ -227,10 +298,72 @@ void onSignal(int sig, siginfo_t* si, void* uc) {
     }
     for (auto h : hs)
         if (h(&ep) == EXCEPTION_CONTINUE_EXECUTION) return;
+    // After the report, SDL's handler (displaced by ours) gets the fault too. It restores the
+    // console keyboard, puts ours back, unblocks the signal and raises it: ours then sees a sent
+    // signal, which is not passed on again and goes to the default action below. Should the
+    // handler return instead (it handled the fault), the instruction runs again, as it would have
+    // with that handler on top.
+    if (!sent && g_hasDisplaced[sig].load(std::memory_order_acquire)) {
+        const struct sigaction& d = g_displaced[sig];
+        if (d.sa_flags & SA_SIGINFO) {
+            if (d.sa_sigaction) { d.sa_sigaction(sig, si, uc); return; }
+        } else if (d.sa_handler != SIG_DFL && d.sa_handler != SIG_IGN) {
+            d.sa_handler(sig);
+            return;
+        }
+    }
     signal(sig, SIG_DFL);
     raise(sig);
 }
+
+struct sigaction faultAction() {
+    // Signal handlers run on an alternate stack per thread where one is installed; the
+    // handler itself only logs.
+    struct sigaction sa{};
+    sa.sa_sigaction = onSignal;
+    sa.sa_flags = SA_SIGINFO | SA_ONSTACK;
+    sigemptyset(&sa.sa_mask);
+    return sa;
+}
 }  // namespace
+
+// SDL's evdev input (started by its KMSDRM and dummy video drivers) mutes the console keyboard
+// when it finds one and then installs handlers for SIGSEGV, SIGBUS, SIGILL, SIGFPE (and SIGABRT,
+// SIGHUP, ...) that restore the keyboard and re-raise the signal (libSDL2 2.30
+// kbd_cleanup_signal_action). Video starts at the game's first CreateWindow, after the crash
+// handler, so every device crash report showed that re-raise: the host pc in libc's raise() and
+// "reading address <our pid>" (si_addr of a sent signal), the fault itself lost. Called after SDL
+// video init: for the fault signals, a handler from libSDL2 goes under ours (it gets each fault
+// after the report); any other handler over ours stays on top, as before, and is only logged.
+void reassertFaultHandlers() {
+#if !defined(__ANDROID__)  // ART's sigchain owns the fault signals there
+    if (!g_faultHandlers.load()) return;  // no crash handler installed
+    for (int s : kFaultSignals) {
+        struct sigaction cur{};
+        if (sigaction(s, nullptr, &cur) != 0) continue;
+        const bool info = (cur.sa_flags & SA_SIGINFO) != 0;
+        if (info && cur.sa_sigaction == onSignal) continue;
+        const void* h = info ? reinterpret_cast<const void*>(cur.sa_sigaction) : reinterpret_cast<const void*>(cur.sa_handler);
+        const bool handler = info ? cur.sa_sigaction != nullptr : cur.sa_handler != SIG_DFL && cur.sa_handler != SIG_IGN;
+        Dl_info dl{};
+        const char* lib = handler && dladdr(h, &dl) && dl.dli_fname ? dl.dli_fname : nullptr;
+        if (!lib || !std::strstr(lib, "libSDL2")) {
+            host::log("signals: signal %d has %s%s (%p) over the crash handler; left on top (its faults may not reach the crash log)", s,
+                      handler ? "a handler from " : info || cur.sa_handler == SIG_DFL ? "the default action" : "SIG_IGN",
+                      handler ? (lib ? lib : "an unknown module") : "", h);
+            continue;
+        }
+        if (!g_hasDisplaced[s].load()) {
+            g_displaced[s] = cur;
+            g_hasDisplaced[s].store(true, std::memory_order_release);
+        }
+        const struct sigaction sa = faultAction();
+        if (sigaction(s, &sa, nullptr) != 0) continue;
+        host::log("signals: signal %d had SDL's handler from %s (%p) over the crash handler; the crash handler is back on top and "
+                  "passes faults on to it", s, lib, h);
+    }
+#endif
+}
 
 // ============================================================================
 // pseudo modules: host-implemented "DLLs" handed out by LoadLibrary/GetProcAddress
@@ -514,6 +647,7 @@ int WINAPI GetTimeFormatW(LCID, DWORD, const SYSTEMTIME* st, LPCWSTR, LPWSTR out
 // ---- process / environment ------------------------------------------------------------------
 static wstr g_cmdLine = L"Fable.exe";
 void WINAPI ExitProcess(UINT code) {
+    w32::drainFileFlushes();  // the saves' data on the card before the process goes
     std::fflush(nullptr);
     _exit(static_cast<int>(code));
 }
@@ -859,13 +993,9 @@ BOOL WINAPI VerQueryValueA(LPCVOID block, LPCSTR sub, LPVOID* out, PUINT len) {
 PVOID WINAPI AddVectoredExceptionHandler(ULONG first, PVECTORED_EXCEPTION_HANDLER h) {
     static std::once_flag once;
     std::call_once(once, [] {
-        // Signal handlers run on an alternate stack per thread where one is installed; the
-        // handler itself only logs.
-        struct sigaction sa{};
-        sa.sa_sigaction = onSignal;
-        sa.sa_flags = SA_SIGINFO | SA_ONSTACK;
-        sigemptyset(&sa.sa_mask);
-        for (int s : {SIGSEGV, SIGBUS, SIGILL, SIGFPE}) sigaction(s, &sa, nullptr);
+        const struct sigaction sa = faultAction();
+        for (int s : kFaultSignals) sigaction(s, &sa, nullptr);
+        g_faultHandlers.store(true);
     });
     std::lock_guard<std::mutex> l(g_vehLock);
     if (first) g_veh.insert(g_veh.begin(), h);
@@ -1066,12 +1196,12 @@ int WINAPI GetLocaleInfoA(LCID, LCTYPE type, LPSTR out, int n) {
 
 }  // extern "C"
 
+#include "recomp_clock.h"
 namespace w32 {
-uint64_t monotonicNs() {
-    timespec t;
-    clock_gettime(CLOCK_MONOTONIC, &t);
-    return static_cast<uint64_t>(t.tv_sec) * 1000000000ull + static_cast<uint64_t>(t.tv_nsec);
-}
+// QueryPerformanceCounter, GetTickCount(64), timeGetTime: CLOCK_MONOTONIC, from the counter on
+// AArch64 (recomp_clock.h: thousands of guest calls per frame; clock_gettime costs ~100-150
+// cycles each on the A53).
+uint64_t monotonicNs() { return recomp_clock_ns(); }
 uint64_t nowFileTime() {
     timespec t;
     clock_gettime(CLOCK_REALTIME, &t);

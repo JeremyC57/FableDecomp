@@ -24,6 +24,14 @@ OUT="$DIR/diag.txt"
   echo "--- environment"; env | sort
   echo "--- ports launcher libs (PortMaster/stock)"
   ls -la /usr/lib/libSDL2* /roms/ports/PortMaster/libs* /mnt/sdcard/Roms/PORTS/PortMaster/libs* 2>&1 | head -40
+  echo "--- CPU, huge pages, performance counters (code layout: FABLE_HUGE_TEXT, FABLE_PMU)"
+  cat /proc/cpuinfo 2>&1 | grep -iE "^(processor|CPU part|CPU revision|Features)" | head -8
+  for f in /sys/kernel/mm/transparent_hugepage/enabled /sys/kernel/mm/transparent_hugepage/defrag /proc/sys/kernel/perf_event_paranoid; do printf '%s: ' "$f"; cat "$f" 2>&1; done
+  grep -iE "AnonHugePages|HugePages_Total|MemTotal|MemAvailable" /proc/meminfo 2>&1
+  (zcat /proc/config.gz 2>/dev/null || cat "/boot/config-$(uname -r)" 2>/dev/null) | grep -E "TRANSPARENT_HUGEPAGE|HW_PERF_EVENTS|ARM64_ERRATUM_843419|ARM64_4K_PAGES"
+  ls /sys/bus/event_source/devices/ 2>&1; grep -iE "pmu|arm-pmu" /proc/interrupts 2>&1
+  echo "--- hardware counter probe (FABLE_PMU=60 in Fable.sh's environment logs them during play)"
+  timeout 20 "$DIR/lib/ld-linux-aarch64.so.1" --library-path "$DIR/lib" "$DIR/FableRecomp" --pmu-probe 2>&1
   echo "--- clocks (cpufreq / devfreq governors and frequencies)"
   for f in /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq; do printf '%s: ' "$f"; cat "$f" 2>&1; done
   for d in /sys/class/devfreq/*; do [ -d "$d" ] && for f in governor available_governors cur_freq max_freq available_frequencies; do printf '%s/%s: ' "$d" "$f"; cat "$d/$f" 2>&1; done; done

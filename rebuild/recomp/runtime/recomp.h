@@ -5,8 +5,9 @@
  * flat 32-bit space at `g_mem` (the PE image is mapped at its retail base
  * 0x00400000), so guest pointers stay 32-bit on 64-bit hosts (x64, ARM64).
  *
- * Generated code keeps the eight GPRs and the lazy flag state in C locals and
- * writes them back to the context only at calls, returns and indirect
+ * Generated code keeps the eight GPRs, the lazy flag state and (in functions
+ * with x87 code) the x87 registers, TOP, control and status words in C locals
+ * and writes them back to the context only at calls, returns and indirect
  * branches, so the C compiler can optimise straight-line code freely.
  *
  * Must be compiled without floating-point contraction (-ffp-contract=off):
@@ -331,53 +332,65 @@ static inline double* st_ref(Ctx* c, int i) { return &c->fpu.st[(c->fpu.top + (u
 static inline void fpush(Ctx* c, double v) { c->fpu.top = (c->fpu.top - 1u) & 7u; c->fpu.st[c->fpu.top] = v; }
 static inline double fpop(Ctx* c) { double v = c->fpu.st[c->fpu.top]; c->fpu.top = (c->fpu.top + 1u) & 7u; return v; }
 
+/* The `_cw` / `_sw` forms take the control word or status word as a value (or a pointer to
+ * it): lifted functions keep the x87 stack, TOP, CW and SW in C locals (see the lifter's
+ * x87 notes) and write them back to `c->fpu` only at calls and returns. The `Ctx` forms are
+ * the same operations on `c->fpu` (host code, and functions lifted in the memory model). */
+
 /* Precision control: 24-bit mode rounds every result to float (Direct3D sets
  * it unless D3DCREATE_FPU_PRESERVE); 53/64-bit modes are modelled as double. */
-static inline double fprec(Ctx* c, double v) {
-    return ((c->fpu.cw >> 8) & 3u) == 0 ? (double)(float)v : v;
+static inline double fprec_cw(uint32_t cw, double v) {
+    return ((cw >> 8) & 3u) == 0 ? (double)(float)v : v;
 }
+static inline double fprec(Ctx* c, double v) { return fprec_cw(c->fpu.cw, v); }
 
-static inline double fround_rc(Ctx* c, double v) {
-    switch ((c->fpu.cw >> 10) & 3u) {
+static inline double fround_cw(uint32_t cw, double v) {
+    switch ((cw >> 10) & 3u) {
     case 0: return nearbyint(v);
     case 1: return floor(v);
     case 2: return ceil(v);
     default: return trunc(v);
     }
 }
-static inline int32_t fist32(Ctx* c, double v) {
-    const double r = fround_rc(c, v);
+static inline double fround_rc(Ctx* c, double v) { return fround_cw(c->fpu.cw, v); }
+static inline int32_t fist32_cw(uint32_t cw, double v) {
+    const double r = fround_cw(cw, v);
     if (!(r >= -2147483648.0 && r <= 2147483647.0)) return (int32_t)0x80000000u;
     return (int32_t)r;
 }
-static inline int16_t fist16(Ctx* c, double v) {
-    const double r = fround_rc(c, v);
+static inline int16_t fist16_cw(uint32_t cw, double v) {
+    const double r = fround_cw(cw, v);
     if (!(r >= -32768.0 && r <= 32767.0)) return (int16_t)0x8000;
     return (int16_t)r;
 }
-static inline int64_t fist64(Ctx* c, double v) {
-    const double r = fround_rc(c, v);
+static inline int64_t fist64_cw(uint32_t cw, double v) {
+    const double r = fround_cw(cw, v);
     if (!(r >= -9223372036854775808.0 && r < 9223372036854775808.0)) return (int64_t)0x8000000000000000ull;
     return (int64_t)r;
 }
+static inline int32_t fist32(Ctx* c, double v) { return fist32_cw(c->fpu.cw, v); }
+static inline int16_t fist16(Ctx* c, double v) { return fist16_cw(c->fpu.cw, v); }
+static inline int64_t fist64(Ctx* c, double v) { return fist64_cw(c->fpu.cw, v); }
 
 /* fsin/fcos/fptan/fsincos: hardware range rule. +-inf -> invalid -> NaN;
  * finite |x| >= 2^63 -> operand unchanged and C2 set; otherwise C2 cleared. */
-static inline int x87_trig_in_range(Ctx* c, double v) {
-    if (isinf(v)) { c->fpu.sw &= (uint16_t)~X87_C2; return 1; } /* libm returns NaN, like hardware */
-    if (fabs(v) >= 9223372036854775808.0) { c->fpu.sw |= X87_C2; return 0; }
-    c->fpu.sw &= (uint16_t)~X87_C2;
+static inline int x87_trig_in_range_sw(uint16_t* sw, double v) {
+    if (isinf(v)) { *sw &= (uint16_t)~X87_C2; return 1; } /* libm returns NaN, like hardware */
+    if (fabs(v) >= 9223372036854775808.0) { *sw |= X87_C2; return 0; }
+    *sw &= (uint16_t)~X87_C2;
     return 1;
 }
+static inline int x87_trig_in_range(Ctx* c, double v) { return x87_trig_in_range_sw(&c->fpu.sw, v); }
 
 /* fcom/fucom: C3 C2 C0 = 000 (>), 001 (<), 100 (=), 111 (unordered). */
-static inline void fcmp(Ctx* c, double a, double b) {
-    uint16_t sw = (uint16_t)(c->fpu.sw & ~(X87_C0 | X87_C2 | X87_C3));
+static inline uint16_t fcmp_sw(uint16_t sw0, double a, double b) {
+    uint16_t sw = (uint16_t)(sw0 & ~(X87_C0 | X87_C2 | X87_C3));
     if (isnan(a) || isnan(b)) sw |= X87_C0 | X87_C2 | X87_C3;
     else if (a < b) sw |= X87_C0;
     else if (a == b) sw |= X87_C3;
-    c->fpu.sw = sw;
+    return sw;
 }
+static inline void fcmp(Ctx* c, double a, double b) { c->fpu.sw = fcmp_sw(c->fpu.sw, a, b); }
 /* fcomi: result in ZF/PF/CF. */
 static inline uint32_t fcmpi(double a, double b) {
     if (isnan(a) || isnan(b)) return EF_ZF | EF_PF | EF_CF;
@@ -385,7 +398,14 @@ static inline uint32_t fcmpi(double a, double b) {
     if (a == b) return EF_ZF;
     return 0;
 }
-static inline uint16_t fnstsw(Ctx* c) { return (uint16_t)((c->fpu.sw & ~0x3800u) | ((c->fpu.top & 7u) << 11)); }
+/* MSVC's _ftol2 (hooked as host_ftol2, and inlined by the lifter at direct call sites):
+ * ST(0) truncated toward zero to edx:eax; NaN or out of range -> the integer indefinite. */
+static inline int64_t ftol2_trunc(double v) {
+    if (!(v > -9223372036854775808.0 && v < 9223372036854775808.0)) return (int64_t)0x8000000000000000ull;
+    return (int64_t)v;
+}
+static inline uint16_t fnstsw_top(uint16_t sw, uint32_t top) { return (uint16_t)((sw & ~0x3800u) | ((top & 7u) << 11)); }
+static inline uint16_t fnstsw(Ctx* c) { return fnstsw_top(c->fpu.sw, c->fpu.top); }
 
 /* 80-bit extended <-> double. */
 static inline double f80_load(uint32_t a) {

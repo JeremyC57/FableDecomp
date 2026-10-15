@@ -152,6 +152,9 @@ void ensureSdl() {
             }
         }
     }
+    // SDL's evdev keyboard (KMSDRM and dummy video) installs fatal-signal handlers over the crash
+    // handler that re-raise every fault, which hid the faults from the crash log
+    reassertFaultHandlers();
     g_sdlThread = currentTid();
 }
 

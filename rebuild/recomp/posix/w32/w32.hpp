@@ -37,8 +37,9 @@ wchar_t lower(wchar_t c);
 
 // ---- kernel objects -------------------------------------------------------------------------
 // Every handle the API hands out is a small integer (so the 32-bit guest can hold it)
-// naming a reference-counted Object. Waitable objects share one lock and condition variable:
-// simple, and correct for WaitForMultipleObjects.
+// naming a reference-counted Object. Waitable objects share one lock (simple, and correct for
+// WaitForMultipleObjects); each waiting thread registers the objects it waits on and sleeps on
+// its own condition variable, so a state change wakes only the threads waiting on that object.
 struct Object {
     virtual ~Object() = default;
     virtual bool waitable() const { return false; }
@@ -52,7 +53,21 @@ template <class T> std::shared_ptr<T> objectAs(HANDLE h) { return std::dynamic_p
 bool closeHandle(HANDLE h);
 
 std::mutex& waitLock();
-void notifyAll();  // call with waitLock held after changing any object's state
+// Call with waitLock held after changing o's state: wakes the threads waiting on o.
+void notifyWaiters(const Object* o);
+// A thread blocked in a wait (sync.cpp), registered under waitLock while it may sleep.
+struct Waiter {
+    std::condition_variable cv;                     // waited on with waitLock
+    const std::shared_ptr<Object>* objs = nullptr;  // the objects it waits on
+    DWORD n = 0;
+    DWORD tid = 0;
+    bool alertable = false;  // APCs queued to tid wake it
+    bool woken = false;      // notified since it last went to sleep
+    Waiter* next = nullptr;
+    Waiter* prev = nullptr;
+};
+void addWaiter(Waiter* w);     // with waitLock held
+void removeWaiter(Waiter* w);  // with waitLock held
 DWORD currentTid();
 
 // Alertable waits: queued APCs/completion routines run when the thread waits alertably.
@@ -67,6 +82,7 @@ std::string toPosixPath(const wchar_t* winPath, bool forCreate = false);
 std::string toPosixPathA(const char* winPath, bool forCreate = false);
 wstr toWindowsPath(const std::string& posix);
 void setCDrive(const std::string& dir);
+void drainFileFlushes();  // files.cpp: wait for the background fsyncs of FlushFileBuffers (the ways out of the process)
 
 // ---- SDL / windows (user.cpp) ---------------------------------------------------------------
 void* sdlWindow(HWND h);  // SDL_Window* for a top-level window, nullptr otherwise
@@ -76,6 +92,7 @@ float masterVolume();     // 0..1, audio.cpp (persisted in the data dir)
 void setMasterVolume(float v);
 void startVolumeKeys();   // volkeys.cpp: FABLE_VOLUME_KEYS=1
 void startProfiler();     // profiler.cpp: FABLE_PROFILE=1 (or a report interval in seconds)
+void reassertFaultHandlers();  // kernel.cpp: the crash handler back on top of SDL's fault handlers (after SDL video init)
 int padProbe();           // --pad-probe diagnostics (xinput.cpp)
 bool fbdevGl();           // SDL video could not start (no KMS/DRM): dummy video, EGL on the framebuffer
 bool displayBounds(SDL_Rect& b);

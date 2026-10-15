@@ -22,6 +22,13 @@
 #include "../overlay/overlay.hpp"
 #include "gfx_options.hpp"
 #include "../overlay/overlay_font.inc"
+// the program binary cache (program_cache.inc): its file thread and the save folder holding the file
+#include <condition_variable>
+#include <deque>
+#include <fcntl.h>
+#include <mutex>
+#include <thread>
+namespace w32 { const std::string& dataDir(); }  // ole.cpp: FABLE_RECOMP_DATA
 
 #include <algorithm>
 #include <atomic>
@@ -33,6 +40,7 @@
 #include <cstring>
 #include <map>
 #include <memory>
+#include <mutex>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -58,6 +66,11 @@ Device* g_device = nullptr;
         if (host::g_logLevel >= 2) { GLenum e = glGetError(); if (e) log("gles: GL error 0x%X at %s", e, what); } \
     } while (0)
 
+// FABLE_GLES_<name>: on unless set to 0 (the switches of the per-draw work below; each restores
+// the previous behaviour for a device comparison)
+bool envOn(const char* name) { const char* e = getenv(name); return !(e && atoi(e) == 0); }
+bool texMaskOn() { static const bool on = envOn("FABLE_GLES_TEXMASK"); return on; }
+
 // ---- timing: nanoseconds spent inside the renderer, per frame (the overlay statistics) ----
 inline uint64_t nowNs() { timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return static_cast<uint64_t>(t.tv_sec) * 1000000000ull + t.tv_nsec; }
 uint64_t g_nsGl = 0;
@@ -65,11 +78,16 @@ struct GlTime { uint64_t t0 = nowNs(); ~GlTime() { g_nsGl += nowNs() - t0; } };
 uint64_t g_nsSwap = 0, g_nsUpload = 0;  // parts of g_nsGl: the swap (vsync wait) and texture uploads
 // vertex/index buffer uploads this frame (the frame log line): an in-place write to a buffer the
 // GPU may still read (glBufferSubData) makes a tiler's driver copy the buffer or wait
-uint32_t g_bufUploads = 0, g_bufInPlace = 0;
+uint32_t g_bufUploads = 0, g_bufInPlace = 0, g_bufOrphaned = 0;  // orphaned: whole relocks given new storage (ORPHAN_WHOLE)
 uint64_t g_bufBytes = 0;
 std::atomic<uint64_t> g_nsSwapRender{0};  // the swap as timed on the render thread
 uint64_t g_nsCapSleep = 0;  // game thread: time slept by the frame rate cap since the last stats line
 unsigned g_capLate = 0;     // frames that ended after the cap's deadline (no sleep) since the last stats line
+// What a frame created (the long-frame line in Present: which kind of work a hitch was)
+struct FrameWork {
+    unsigned programs = 0, programsCached = 0, shaders = 0, textures = 0, readbacks = 0;
+    uint64_t nsPrograms = 0, texBytes = 0;
+} g_work;
 
 // A 64-bit hash of a byte range, 8 bytes a step (each step is a bijection of the state, so a
 // single changed word always changes the result). The byte-wise FNV it replaces cost ~5 cycles
@@ -380,11 +398,34 @@ struct Texture : Unknown<IDirect3DTexture9, &IID_IDirect3DTexture9> {
     HRESULT STDMETHODCALLTYPE AddDirtyRect(const RECT*) override { return S_OK; }
 };
 
-void dropVaosForBuffer(GLuint gl);       // Device: forget cached vertex array objects that reference it
-void dropVaosForPointer(const void* p);  // ... a vertex declaration / shader address about to be reused
+// The key of a cached vertex array object (Device::vaos): what its attribute pointers were set
+// from. Declarations and vertex-shader input lists enter as ids that are never reused (the old key
+// held their addresses, so every release of one searched the whole cache for keys a new object at
+// that address could match): content ids, so objects with the same contents share
+// (FABLE_GLES_VAO_CONTENT=0: one id per object, the old granularity).
+struct VaoKey {
+    uint32_t decl = 0;    // VertexDecl::layoutId
+    uint32_t inputs = 0;  // VertexShader::inputsId (0: pre-transformed or no shader)
+    GLuint program = 0;   // only with FABLE_GLES_VAO_SHARE=0 (the old key)
+    uint32_t up = 0, upStride = 0;
+    int32_t baseVertex = 0;
+    GLuint vb[8] = {};
+    UINT off[8] = {}, stride[8] = {};
+};
+static_assert(sizeof(VaoKey) == 6 * 4 + 24 * 4, "VaoKey is hashed and compared as bytes: no padding");
+uint32_t vaoLayoutId(char kind, const void* data, size_t n);  // the id of a declaration / input list (VaoKey)
+
+struct Buffer;
+void dropVaosForBuffer(Buffer* b);  // Device: delete the cached vertex array objects that reference it
 
 struct Buffer {  // vertex / index buffer storage
     GLuint gl = 0;
+    // keys of the cached vertex array objects that use this buffer (attributes or element buffer;
+    // some may be gone or have another element buffer since): its release deletes those instead
+    // of searching every cached object
+    std::vector<VaoKey> vaoKeys;
+    bool drawn = false;  // a draw used it since its last upload (its storage may still be read)
+    uint64_t serial = 0;  // never reused, unlike the GL name (VaoEntry::noted)
     UINT size = 0;
     std::vector<uint8_t> cpu;
     bool locked = false;
@@ -393,15 +434,19 @@ struct Buffer {  // vertex / index buffer storage
     bool dirtyAll = true;
     bool dynamic = false;
     GLenum target;
+    GLenum hint = GL_STATIC_DRAW;  // the usage the storage was created with
     void create(GLenum t, UINT n, DWORD usage) {
+        static std::atomic<uint64_t> serials{0};
+        serial = ++serials;
         target = t, size = n, dynamic = (usage & D3DUSAGE_DYNAMIC) != 0;
+        hint = dynamic ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW;
         cpu.assign(n, 0);
         glGenBuffers(1, &gl);
         // Uploads go through the copy-write binding point: binding an index buffer to
         // GL_ELEMENT_ARRAY_BUFFER here would silently replace the element buffer of whichever
         // cached vertex array object is bound, behind the device's tracking.
         glBindBuffer(GL_COPY_WRITE_BUFFER, gl);
-        glBufferData(GL_COPY_WRITE_BUFFER, n, nullptr, (usage & D3DUSAGE_DYNAMIC) ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
+        glBufferData(GL_COPY_WRITE_BUFFER, n, nullptr, hint);
     }
     void* lock(UINT off, UINT n, DWORD flags) {
         if (n == 0 || off + n > size) n = size - off;
@@ -418,15 +463,25 @@ struct Buffer {  // vertex / index buffer storage
         // driver would wait or copy): orphan it and upload the whole mirror, unless the game
         // promises NOOVERWRITE. Static buffers are filled before use.
         ++g_bufUploads;
+        // A managed buffer re-locked whole after a draw used it (FABLE_GLES_ORPHAN_WHOLE, default
+        // on) gets new storage with the same contents too: written in place, storage that queued
+        // draws may still read makes the driver copy it or wait for the GPU. (Not the first fill:
+        // nothing has read the storage create() made.)
+        static const bool orphanWhole = envOn("FABLE_GLES_ORPHAN_WHOLE");
+        const bool wasDrawn = drawn;
+        drawn = false;
         if ((lockFlags & D3DLOCK_DISCARD) || (dynamic && !(lockFlags & D3DLOCK_NOOVERWRITE))) {
             glBufferData(GL_COPY_WRITE_BUFFER, size, cpu.data(), GL_DYNAMIC_DRAW);
             g_bufBytes += size;
+        } else if (orphanWhole && wasDrawn && lockOff == 0 && lockSize == size) {
+            glBufferData(GL_COPY_WRITE_BUFFER, size, cpu.data(), hint);
+            ++g_bufOrphaned, g_bufBytes += size;
         } else {
             glBufferSubData(GL_COPY_WRITE_BUFFER, lockOff, lockSize, cpu.data() + lockOff);
             ++g_bufInPlace, g_bufBytes += lockSize;
         }
     }
-    ~Buffer() { if (gl) { dropVaosForBuffer(gl); glDeleteBuffers(1, &gl); } }
+    ~Buffer() { if (gl) { dropVaosForBuffer(this); glDeleteBuffers(1, &gl); } }
 };
 
 struct VertexBuffer : Unknown<IDirect3DVertexBuffer9, &IID_IDirect3DVertexBuffer9> {
@@ -471,12 +526,13 @@ struct VertexDecl : Unknown<IDirect3DVertexDeclaration9, &IID_IDirect3DVertexDec
     Device* dev;
     std::vector<D3DVERTEXELEMENT9> elements;  // without the terminator
     bool preTransformed = false;
-    ~VertexDecl() override { dropVaosForPointer(this); }
+    uint32_t layoutId = 0;  // the id of `elements` (vaoLayoutId; VaoKey::decl)
     VertexDecl(Device* d, const D3DVERTEXELEMENT9* el) : dev(d) {
         for (const D3DVERTEXELEMENT9* e = el; e->Stream != 0xFF; ++e) {
             elements.push_back(*e);
             if (e->Usage == D3DDECLUSAGE_POSITIONT) preTransformed = true;
         }
+        layoutId = vaoLayoutId('d', elements.data(), elements.size() * sizeof(D3DVERTEXELEMENT9));
     }
     HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
     HRESULT STDMETHODCALLTYPE GetDeclaration(D3DVERTEXELEMENT9* out, UINT* n) override {
@@ -500,6 +556,7 @@ struct VertexShader : Unknown<IDirect3DVertexShader9, &IID_IDirect3DVertexShader
     Shader sh;
     std::vector<uint32_t> code;
     uint32_t id;
+    uint32_t inputsId = 0;  // the id of sh.info.inputs (vaoLayoutId; VaoKey::inputs)
     HRESULT STDMETHODCALLTYPE GetDevice(IDirect3DDevice9** out) override;
     HRESULT STDMETHODCALLTYPE GetFunction(void* out, UINT* n) override {
         if (!n) return E_POINTER;
@@ -507,7 +564,7 @@ struct VertexShader : Unknown<IDirect3DVertexShader9, &IID_IDirect3DVertexShader
         *n = static_cast<UINT>(code.size() * 4);
         return S_OK;
     }
-    ~VertexShader() override { dropVaosForPointer(this); if (sh.gl) glDeleteShader(sh.gl); }
+    ~VertexShader() override { if (sh.gl) glDeleteShader(sh.gl); }
 };
 struct PixelShader : Unknown<IDirect3DPixelShader9, &IID_IDirect3DPixelShader9> {
     Device* dev;
@@ -620,6 +677,8 @@ struct Program {
     int colorBgra = -1;      // uColorBgra last sent
 };
 
+#include "program_cache.inc"
+
 struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     IDirect3D9* d3d;
     D3DPRESENT_PARAMETERS pp{};
@@ -685,12 +744,15 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
         texDirty = true;
     }
     bool samplersBound = false, anySamplerDirty = true;
-    struct LayoutKey {
-        const VertexDecl* decl = nullptr; const VertexShader* vs = nullptr; GLuint program = 0;
-        bool up = false; UINT upStride = 0; INT baseVertex = 0;
-        GLuint vb[8] = {}; UINT off[8] = {}, stride[8] = {};
-    } lastLayout;
+    // Sampler objects by parameter set (FABLE_GLES_SAMPLER_CACHE, default on): a unit whose
+    // Direct3D sampler states change binds the object made for the new set instead of re-setting
+    // the parameters of its own object (1-4 glSamplerParameteri on an object queued draws use).
+    GLuint samplerObj[108] = {};  // by samplerCode()
+    GLuint boundSampler[8] = {};  // the object bound on each unit (~0u: unknown)
+    VaoKey lastLayout;
     bool layoutValid = false;
+    int curColorMask = 0;     // colour attributes of the bound vertex array object (uColorBgra)
+    unsigned programTexMask = ~0u;  // FABLE_GLES_TEXMASK: stages 0-3 with a texture when program() last built the key
     struct GlShadow {  // the GL state last issued; -1 / ~0 = unknown (every field is re-issued after reset())
         GLint vx, vy, vw, vh, sx, sy, sw, sh;
         float zn, zf, slope, bias;
@@ -712,23 +774,44 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
         }
     } glShadow;
     void glStateUnknown() { rsDirty = true; glShadow.valid = false; }  // after a pass that set GL state directly
-    // Vertex array objects, one per layout key (declaration, shader, buffers, offsets): a draw
-    // then binds one object instead of re-issuing every attribute pointer. The element buffer
-    // binding is part of the object, so it is tracked per object.
-    struct LayoutKeyHash { size_t operator()(const LayoutKey& k) const { return static_cast<size_t>(hashBytes(&k, sizeof k)); } };
-    struct LayoutKeyEq { bool operator()(const LayoutKey& a, const LayoutKey& b) const { return std::memcmp(&a, &b, sizeof a) == 0; } };
-    struct VaoEntry { GLuint vao = 0, ibo = 0; int colorMask = 0; };
-    std::unordered_map<LayoutKey, VaoEntry, LayoutKeyHash, LayoutKeyEq> vaos;
+    // Vertex array objects, one per layout key (declaration, shader inputs, buffers, offsets): a
+    // draw then binds one object instead of re-issuing every attribute pointer. The element buffer
+    // binding is part of the object, so it is tracked per object (bindElements).
+    struct LayoutKeyHash { size_t operator()(const VaoKey& k) const { return static_cast<size_t>(hashBytes(&k, sizeof k)); } };
+    struct LayoutKeyEq { bool operator()(const VaoKey& a, const VaoKey& b) const { return std::memcmp(&a, &b, sizeof a) == 0; } };
+    struct VaoEntry {
+        GLuint vao = 0, ibo = 0;
+        int colorMask = 0;
+        uint32_t lastFrame = 0;
+        // the index buffers (Buffer::serial) whose key lists hold this object already: an object
+        // switching between a few element buffers is noted on each once, not on every switch
+        uint64_t noted[4] = {};
+        unsigned notedNext = 0;
+    };
+    std::unordered_map<VaoKey, VaoEntry, LayoutKeyHash, LayoutKeyEq> vaos;
     VaoEntry* curVao = nullptr;
+    const VaoKey* curKey = nullptr;  // curVao's key (in its map node)
     GLuint overlayVao = 0;  // the overlay and the present pass set attribute pointers on this one
-    void dropVaos(GLuint buffer, const void* pointer);
+    void dropVaos(Buffer& b);                     // b is being released
+    void noteVao(Buffer& b, const VaoKey& key);   // the object of `key` uses b
+    void eraseVao(decltype(vaos)::iterator it);
+    void evictVaos();                             // the cache is full
+    // Vertex array object names: generated on the render thread ahead of need, a batch at a time,
+    // without the game thread waiting (glGenVertexArrays through the name pool was a round trip
+    // through the whole queue every 64 new objects; a cache refill after a purge made dozens).
+    struct VaoNames { gq::Sync done; std::vector<GLuint> names; };
+    std::vector<GLuint> vaoNamePool;
+    std::shared_ptr<VaoNames> vaoNamesPending;
+    GLuint newVaoName();
+    // the frame log line: objects created this frame / since the last line, cache purges
+    unsigned vaoCreatedFrame = 0, vaoCreatedLine = 0, vaoCreatedLast = 0, vaoPurges = 0, vaoEvicted = 0;
     uint64_t lastPresentNs = 0;
     double frameMs = 0, glMs = 0, swapMs = 0, uploadMs = 0, bufKb = 0;
     static constexpr unsigned kPerfWindow = 240;  // frames between two log lines (120) and some slack
     float perfFrames[kPerfWindow] = {};
     unsigned perfN = 0;
-    double perfDraws = 0, perfGlMs = 0, perfSwapMs = 0, perfWaitMs = 0, perfRenderMs = 0;
-    unsigned bufUploads = 0, bufInPlace = 0;  // the last frame's buffer uploads (g_bufUploads)
+    double perfDraws = 0, perfGlMs = 0, perfSwapMs = 0, perfWaitMs = 0, perfRenderMs = 0, perfGlCalls = 0;
+    unsigned bufUploads = 0, bufInPlace = 0, bufOrphaned = 0;  // the last frame's buffer uploads (g_bufUploads)
     Surface* lastFboRt = nullptr; Surface* lastFboDs = nullptr; GLuint lastFboId = 0; bool lastFboValid = false;
     bool programDirty = true;  // vs/ps/stage states changed since program() last ran
     GLuint boundIbo = ~0u;
@@ -750,6 +833,13 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     uint32_t nextShaderId = 1;
     GLuint ffpVs = 0;
     GLuint scratchVbo = 0, scratchIbo = 0;
+    // the GL_ARRAY_BUFFER binding (not vertex array state): skips re-binding scratchVbo per UP
+    // draw and per attribute (FABLE_GLES_ARRAYBUF=0: always bound, as before)
+    GLuint arrayBuffer = ~0u;
+    void bindArrayBuffer(GLuint b) {
+        static const bool track = envOn("FABLE_GLES_ARRAYBUF");
+        if (arrayBuffer != b || !track) { glBindBuffer(GL_ARRAY_BUFFER, b); arrayBuffer = b; }
+    }
     uint32_t frames = 0;
     uint32_t statDraws = 0, statClears = 0;
     bool inScene = false;
@@ -764,9 +854,10 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     void applyRenderStates();
     void applySamplers();
     Program* program();
-    bool bindVertexLayout(const VertexDecl* d, bool up, const void* upData, UINT upStride, UINT baseVertex, INT baseVertexOffset);
+    bool bindVertexLayout(const VertexDecl* d, bool up, UINT upStride, INT baseVertex);
     int specifyAttributes(const VertexDecl* d, bool up, UINT upStride, INT baseVertex);
     void prepareDraw(bool up, const void* upData, UINT upStride, UINT upVertices, INT baseVertex);
+    void bindElements(GLuint ib, Buffer* owner);  // the element buffer of the bound vertex array object
     VertexDecl* fvfDeclaration();
     GLuint compileShader(GLenum type, const std::string& src, const char* what);
     GLuint linkProgram(GLuint v, GLuint f);
@@ -957,6 +1048,7 @@ HRESULT STDMETHODCALLTYPE Surface::LockRect(D3DLOCKED_RECT* out, const RECT* rec
         dev->boundFbo = f;
         std::vector<uint8_t> px(static_cast<size_t>(level.width) * level.height * 4);
         glReadPixels(0, 0, static_cast<GLsizei>(level.width), static_cast<GLsizei>(level.height), GL_RGBA, GL_UNSIGNED_BYTE, px.data());
+        ++g_work.readbacks;
         for (size_t i = 0; i + 3 < px.size() && i + 3 < level.cpu.size(); i += 4) { level.cpu[i] = px[i + 2]; level.cpu[i + 1] = px[i + 1]; level.cpu[i + 2] = px[i]; level.cpu[i + 3] = px[i + 3]; }
         static bool once;
         if (!once) once = true, log("gles: a render target (%ux%u) was locked: read back from GL", level.width, level.height);
@@ -986,6 +1078,7 @@ Texture::Texture(Device* d, UINT w, UINT h, UINT l, DWORD u, D3DFORMAT f, D3DPOO
     info = formatInfo(f);
     surfaces.assign(levels, nullptr);
     if (pool != D3DPOOL_SYSTEMMEM && pool != D3DPOOL_SCRATCH) {
+        ++g_work.textures;
         glGenTextures(1, &gl);
         tex16 = isDxt(f) ? dxt16Mode() : 0;
         initObject(tex16 ? 0 : info.internal);  // tex16: the storage waits for the first level's alpha
@@ -1040,6 +1133,7 @@ void Texture::upload(UINT level, const RECT* rect, bool force) {
     }
     struct UploadTime { uint64_t t0; ~UploadTime() { const uint64_t d = nowNs() - t0; g_nsUpload += d; g_nsGl += d; } } timing{t0};
     const UINT w = s->level.width, h = s->level.height;
+    g_work.texBytes += s->level.cpu.size();
     if (tex16) {
         std::vector<uint8_t> rgba = decodeDxt(format, s->level.cpu.data(), w, h);
         const int need = dxtNeed(rgba, tex16);
@@ -1103,6 +1197,9 @@ Device::~Device() {
     if (scratchIbo) glDeleteBuffers(1, &scratchIbo);
     if (ffpVs) glDeleteShader(ffpVs);
     for (auto& s : samplers) if (s.gl) glDeleteSamplers(1, &s.gl);
+    if (vaoNamesPending && vaoNamesPending->done.done.load()) vaoNamePool.insert(vaoNamePool.end(), vaoNamesPending->names.begin(), vaoNamesPending->names.end());
+    if (!vaoNamePool.empty()) glDeleteVertexArrays(static_cast<GLsizei>(vaoNamePool.size()), vaoNamePool.data());
+    for (GLuint& o : samplerObj) if (o) glDeleteSamplers(1, &o);
     if (context) SDL_GL_DeleteContext(context);
     if (w32::fbdevGl()) fb::close();
     d3d->Release();
@@ -1160,7 +1257,9 @@ bool Device::init(HWND hwnd) {
         tss[s][D3DTSS_TEXCOORDINDEX] = static_cast<DWORD>(s);
         tss[s][D3DTSS_BUMPENVLSCALE] = 0, tss[s][D3DTSS_BUMPENVLOFFSET] = 0;
     }
-    return createBackBuffer();
+    if (!createBackBuffer()) return false;
+    progcache::g_cache.start();  // the stored program binaries: read on the cache's thread, pre-linked a slice per frame
+    return true;
 }
 
 bool Device::createBackBuffer() {
@@ -1220,6 +1319,7 @@ bool Device::createBackBuffer() {
     miscChanged();
     boundFbo = ~0u;
     glStateUnknown();
+    w32::reassertFaultHandlers();  // the GL driver and EGL are up: log (or put under ours, SDL's) any fault handler they added
     return true;
 }
 void Device::destroyBackBuffer() {
@@ -1369,6 +1469,7 @@ HRESULT STDMETHODCALLTYPE Device::GetRenderTargetData(IDirect3DSurface9* src, ID
     boundFbo = f;
     std::vector<uint8_t> px(static_cast<size_t>(a->level.width) * a->level.height * 4);
     glReadPixels(0, 0, static_cast<GLsizei>(a->level.width), static_cast<GLsizei>(a->level.height), GL_RGBA, GL_UNSIGNED_BYTE, px.data());
+    ++g_work.readbacks;
     b->level.cpu.resize(px.size());
     for (size_t i = 0; i < px.size(); i += 4) { b->level.cpu[i] = px[i + 2]; b->level.cpu[i + 1] = px[i + 1]; b->level.cpu[i + 2] = px[i]; b->level.cpu[i + 3] = px[i + 3]; }  // to BGRA
     return S_OK;
@@ -1448,7 +1549,10 @@ HRESULT STDMETHODCALLTYPE Device::Clear(DWORD n, const D3DRECT* rects, DWORD fla
 }
 
 HRESULT STDMETHODCALLTYPE Device::SetTexture(DWORD st, IDirect3DBaseTexture9* t) {
-    if (st < 2) programDirty = true;  // the fixed-function key reads whether stages 0-1 have a texture
+    // The fixed-function key reads only whether stages 0-3 have a texture: prepareDraw compares
+    // that mask (the game sets stage 0 to NULL and back around most draws, which re-ran the
+    // program lookup every draw). FABLE_GLES_TEXMASK=0: any stage 0-1 change, and only that, as before.
+    if (st < 2 && !texMaskOn()) programDirty = true;
     if (st >= 8) return D3DERR_INVALIDCALL;
     if (t && t->GetType() != D3DRTYPE_TEXTURE) return D3DERR_INVALIDCALL;
     textures[st] = static_cast<Texture*>(t);
@@ -1502,6 +1606,14 @@ GLuint Device::linkProgram(GLuint v, GLuint f) {
     }
     return p;
 }
+// Shaders are translated when created and compiled when a program first needs them, on the
+// render thread inside that program's build (not at all when the program comes from the
+// binary cache). Each creation used to be a queue round trip plus a compile, outside the
+// renderer's timing: the game creates its shaders on first use (CShaderResource::
+// GetVertexShader / GetPixelShader, 0xA5D510 / 0xA5D620), mid-game included. A shader that
+// does not compile is found by program() and falls back as a failed creation did.
+// FABLE_GLES_EAGER_SHADERS=1 compiles at creation as before.
+static bool eagerShaders() { static const bool e = [] { const char* v = getenv("FABLE_GLES_EAGER_SHADERS"); return v && atoi(v) != 0; }(); return e; }
 HRESULT STDMETHODCALLTYPE Device::CreateVertexShader(const DWORD* code, IDirect3DVertexShader9** out) {
     if (!out || !code) return E_POINTER;
     VertexShader* s = new VertexShader();
@@ -1510,12 +1622,14 @@ HRESULT STDMETHODCALLTYPE Device::CreateVertexShader(const DWORD* code, IDirect3
     while (code[n] != 0x0000FFFF) ++n;
     s->code.assign(code, code + n + 1);
     std::string err;
+    ++g_work.shaders;
     if (translateDx9Shader(code, s->sh.info, err)) {
-        s->sh.gl = compileShader(GL_VERTEX_SHADER, s->sh.info.glsl, "vertex shader");
-        s->sh.ok = s->sh.gl != 0;
+        s->sh.ok = true;
+        if (eagerShaders()) s->sh.gl = compileShader(GL_VERTEX_SHADER, s->sh.info.glsl, "vertex shader"), s->sh.ok = s->sh.gl != 0;
     } else {
         log("gles: vertex shader not translated: %s", err.c_str());
     }
+    s->inputsId = vaoLayoutId('v', s->sh.info.inputs.data(), s->sh.info.inputs.size() * sizeof(Dx9Input));
     *out = s;
     return S_OK;
 }
@@ -1527,9 +1641,10 @@ HRESULT STDMETHODCALLTYPE Device::CreatePixelShader(const DWORD* code, IDirect3D
     while (code[n] != 0x0000FFFF) ++n;
     s->code.assign(code, code + n + 1);
     std::string err;
+    ++g_work.shaders;
     if (translateDx9Shader(code, s->sh.info, err)) {
-        s->sh.gl = compileShader(GL_FRAGMENT_SHADER, s->sh.info.glsl, "pixel shader");
-        s->sh.ok = s->sh.gl != 0;
+        s->sh.ok = true;
+        if (eagerShaders()) s->sh.gl = compileShader(GL_FRAGMENT_SHADER, s->sh.info.glsl, "pixel shader"), s->sh.ok = s->sh.gl != 0;
     } else {
         log("gles: pixel shader not translated: %s", err.c_str());
     }
@@ -1589,59 +1704,105 @@ Program* Device::program() {
     auto it = programs.find(key);
     if (it != programs.end()) return it->second.gl ? &it->second : nullptr;
     Program& p = programs[key];  // node-based map: the slot's address stays valid while the render thread fills it
-    const GLuint v = key.vs ? vs->sh.gl : ffpVs;
+    const uint64_t t0 = nowNs();
+    VertexShader* const vso = key.vs ? vs.p : nullptr;
     PixelShader* const pso = key.ps ? ps.p : nullptr;
     const bool alphaTest = key.alphaTest;
-    const std::string ffpSrc = key.ps ? std::string() : alphaTest ? withAlphaTest(ffpPixelShader(key.ffp)) : ffpPixelShader(key.ffp);
-    // The fixed-function shader's compile, the link and the ~150 uniform-location queries each
-    // need an answer from the driver: through the queue every one of them was a round trip to
-    // the render thread (a hitch the first time a shader pair draws). They run there in one go.
-    auto build = [this, &p, v, pso, alphaTest, &ffpSrc] {
-        GLuint f = 0;
-        if (pso && alphaTest) {
-            if (!pso->glAlphaTest) pso->glAlphaTest = compileShader(GL_FRAGMENT_SHADER, withAlphaTest(pso->sh.info.glsl), "pixel shader (alpha test)");
-            f = pso->glAlphaTest;
-        } else if (pso) {
-            f = pso->sh.gl;
-        } else {
-            f = compileShader(GL_FRAGMENT_SHADER, ffpSrc, "fixed-function pixel shader");
+    // The GLSL this program links (the binary cache's key): the vertex shader's (or the
+    // pre-transformed path's) and the fragment shader's, alpha test variant included.
+    static const std::string ffpVsSrc = ffpVertexShaderRhw(4);  // what ffpVs was compiled from
+    const std::string& vsSrc = vso ? vso->sh.info.glsl : ffpVsSrc;
+    const std::string fsSrc = pso ? (alphaTest ? withAlphaTest(pso->sh.info.glsl) : pso->sh.info.glsl)
+                                  : alphaTest ? withAlphaTest(ffpPixelShader(key.ffp)) : ffpPixelShader(key.ffp);
+    progcache::Cache& cache = progcache::g_cache;
+    const progcache::Key ck = cache.on ? progcache::keyOf(vsSrc, fsSrc) : progcache::Key{};
+    progcache::Entry* const stored = cache.find(ck, vsSrc.size(), fsSrc.size());
+    ++g_work.programs;
+    // Pre-linked from its binary by a warm-up slice: no round trip at all (prepareDraw binds it).
+    if (cache.takeReady(stored, p)) {
+        layoutValid = false;
+        const uint64_t ns = nowNs() - t0;
+        g_work.nsPrograms += ns, ++g_work.programsCached;
+        cache.note(true, true, ns / 1e6);
+        return &p;
+    }
+    // Else one round trip: from a binary when there is one the driver takes (the stored one, or
+    // read back from a program made from the same GLSL for another key), else the shaders'
+    // compile (each once, kept for the next program that uses it), the link (the binary read
+    // back for the cache) and the ~150 uniform-location queries, all in one go.
+    const progcache::Entry* from = nullptr;
+    GLuint donor = 0;
+    cache.source(stored, from, donor);
+    static std::vector<uint32_t> badAlphaVariant;  // pixel shaders whose alpha-test variant does not compile: not tried again per key
+    const bool alphaKnownBad = pso && alphaTest && std::find(badAlphaVariant.begin(), badAlphaVariant.end(), pso->id) != badAlphaVariant.end();
+    const bool keep = cache.on;
+    bool loaded = false, vsFailed = false, psFailed = false, alphaFailed = false;
+    GLenum newFormat = 0;
+    std::vector<uint8_t> newBinary;
+    auto build = [&] {
+        p.gl = cache.load(from, donor);
+        loaded = p.gl != 0;
+        if (!p.gl) {
+            GLuint v = ffpVs, f = 0;
+            if (vso) {
+                if (!vso->sh.gl) vso->sh.gl = compileShader(GL_VERTEX_SHADER, vsSrc, "vertex shader");
+                if (!(v = vso->sh.gl)) { vsFailed = true; return; }
+            }
+            if (pso) {
+                if (alphaTest && !alphaKnownBad) {
+                    if (!pso->glAlphaTest) pso->glAlphaTest = compileShader(GL_FRAGMENT_SHADER, fsSrc, "pixel shader (alpha test)");
+                    f = pso->glAlphaTest;
+                    alphaFailed = !f;
+                }
+                // the shader itself: for this program, or (its alpha-test variant failing) to tell
+                // whether the shader is the bad one
+                if (!alphaTest || alphaFailed) {
+                    if (!pso->sh.gl) pso->sh.gl = compileShader(GL_FRAGMENT_SHADER, pso->sh.info.glsl, "pixel shader");
+                    if (!pso->sh.gl) { psFailed = true; return; }
+                    if (!alphaTest) f = pso->sh.gl;
+                }
+            } else {
+                f = compileShader(GL_FRAGMENT_SHADER, fsSrc, "fixed-function pixel shader");
+            }
+            p.gl = progcache::link(v, f, keep);
+            if (!pso && f) glDeleteShader(f);
+            if (p.gl && keep) progcache::readBinary(p.gl, newFormat, newBinary);
         }
-        p.gl = linkProgram(v, f);
-        if (!pso && f) glDeleteShader(f);
         if (!p.gl) return;
-        p.uC = glGetUniformLocation(p.gl, "c");
-        p.uColorBgra = glGetUniformLocation(p.gl, "uColorBgra");
-        p.uPc = glGetUniformLocation(p.gl, "pc");
-        p.uBump = glGetUniformLocation(p.gl, "uBump");
-        p.uProjMask = glGetUniformLocation(p.gl, "uProjMask");
-        p.uFogColor = glGetUniformLocation(p.gl, "uFogColor");
-        p.uFogEnable = glGetUniformLocation(p.gl, "uFogEnable");
-        p.uAlphaFunc = glGetUniformLocation(p.gl, "uAlphaFunc");
-        p.uAlphaRef = glGetUniformLocation(p.gl, "uAlphaRef");
-        p.uViewport = glGetUniformLocation(p.gl, "uViewport");
-        p.uTFactor = glGetUniformLocation(p.gl, "uTFactor");
-        p.uHalfPixel = glGetUniformLocation(p.gl, "uHalfPixel");
-        glUseProgram(p.gl);
-        for (int i = 0; i < 6; ++i) {
-            const std::string n = "s" + std::to_string(i);
-            p.uS[i] = glGetUniformLocation(p.gl, n.c_str());
-            if (p.uS[i] >= 0) glUniform1i(p.uS[i], i);
-        }
-        for (int k = 0; k < 128; ++k) p.uCElem[k] = p.uC >= 0 ? glGetUniformLocation(p.gl, ("c[" + std::to_string(k) + "]").c_str()) : -1;
-        for (int k = 0; k < 8; ++k) p.uPcElem[k] = p.uPc >= 0 ? glGetUniformLocation(p.gl, ("pc[" + std::to_string(k) + "]").c_str()) : -1;
+        progcache::queryLocations(p);
     };
     runOnRenderThread(build);
+    cache.built(stored, from != nullptr, loaded, p.gl);
+    if (alphaFailed && !psFailed) badAlphaVariant.push_back(pso->id);  // as before: draws with that variant are skipped
+    if (vsFailed || psFailed) {
+        // A shader that does not compile: from this draw on, the pre-transformed vertex path /
+        // the fixed-function pixel pipeline, as when its compile failed at creation.
+        if (vsFailed) vso->sh.ok = false;
+        if (psFailed) pso->sh.ok = false;
+        programs.erase(key);
+        programDirty = true;
+        return program();
+    }
     if (p.gl) {
         lastProgramGl = p.gl;  // build() left it bound
         layoutValid = false;
     }
+    if (!newBinary.empty()) cache.add(stored, ck, vsSrc.size(), fsSrc.size(), newFormat, std::move(newBinary), p.gl);
+    const uint64_t ns = nowNs() - t0;
+    g_work.nsPrograms += ns;
+    if (loaded) ++g_work.programsCached;
+    if (cache.on) cache.note(loaded, false, ns / 1e6);
     return p.gl ? &p : nullptr;
 }
 
 // Sends the registers in [0, hi) whose version differs from what the program has seen, as runs
-// (a gap of a few in-sync registers is sent along: one call is cheaper than two).
+// (in-sync registers between two changed ones are sent along: one call is cheaper than two).
+// The game writes a few scattered ranges per draw (the census: 4.3 SetVertexShaderConstantF a
+// draw, ending at c2-4, c9, c17, c21, c33-42 and c93-94): a gap of 4 kept most of them separate
+// calls, 16 merges all below c42 into one for a few hundred bytes more (estimated ~4 -> ~2
+// glUniform4fv a draw; the frame log line counts them). FABLE_GLES_UNIFORM_GAP sets it (4: as before).
 void Device::syncRegs(const GLint* loc, const float (*val)[4], const uint64_t* ver, uint64_t* seen, int hi) {
-    constexpr int kGap = 4;
+    static const int kGap = [] { const char* e = getenv("FABLE_GLES_UNIFORM_GAP"); return e ? std::clamp(atoi(e), 1, 128) : 16; }();
     for (int k = 0; k < hi;) {
         if (seen[k] == ver[k]) { ++k; continue; }
         int e = k + 1;
@@ -1827,8 +1988,24 @@ GLenum wrapMode(DWORD a) {
         default: return GL_REPEAT;
     }
 }
+// The index of a sampler parameter set in Device::samplerObj (3 x 3 wrap modes, 2 mag, 6 min filters).
+int samplerCode(GLenum ws, GLenum wt, GLenum mag, GLenum minf) {
+    auto wrap = [](GLenum w) { return w == GL_MIRRORED_REPEAT ? 1 : w == GL_CLAMP_TO_EDGE ? 2 : 0; };
+    int m = 0;
+    switch (minf) {
+        case GL_LINEAR: m = 1; break;
+        case GL_NEAREST_MIPMAP_NEAREST: m = 2; break;
+        case GL_LINEAR_MIPMAP_NEAREST: m = 3; break;
+        case GL_NEAREST_MIPMAP_LINEAR: m = 4; break;
+        case GL_LINEAR_MIPMAP_LINEAR: m = 5; break;
+        default: m = 0; break;  // GL_NEAREST
+    }
+    return wrap(ws) + 3 * wrap(wt) + 9 * (mag == GL_LINEAR ? 1 : 0) + 18 * m;
+}
 void Device::applySamplers() {
     if (!texDirty && !anySamplerDirty && samplersBound) return;
+    static const bool cache = envOn("FABLE_GLES_SAMPLER_CACHE");
+    if (!samplersBound) for (GLuint& b : boundSampler) b = ~0u;
     for (int i = 0; i < 8; ++i) {
         const GLuint want = textures[i] ? textures[i]->gl : 0;
         if (want != boundTexGl[i]) {
@@ -1837,6 +2014,27 @@ void Device::applySamplers() {
             boundTexGl[i] = want;
         }
         SamplerState& s = samplers[i];
+        if (cache) {
+            if (!s.dirty && boundSampler[i] != ~0u) continue;
+            s.dirty = false;
+            const GLenum ws = wrapMode(s.v[D3DSAMP_ADDRESSU]), wt = wrapMode(s.v[D3DSAMP_ADDRESSV]);
+            const bool mag = s.v[D3DSAMP_MAGFILTER] >= D3DTEXF_LINEAR, min = s.v[D3DSAMP_MINFILTER] >= D3DTEXF_LINEAR;
+            const DWORD mip = s.v[D3DSAMP_MIPFILTER];
+            const GLenum magf = mag ? GL_LINEAR : GL_NEAREST;
+            const GLenum minf = mip == D3DTEXF_NONE ? (min ? GL_LINEAR : GL_NEAREST)
+                              : mip == D3DTEXF_POINT ? (min ? GL_LINEAR_MIPMAP_NEAREST : GL_NEAREST_MIPMAP_NEAREST)
+                              : (min ? GL_LINEAR_MIPMAP_LINEAR : GL_NEAREST_MIPMAP_LINEAR);
+            GLuint& obj = samplerObj[samplerCode(ws, wt, magf, minf)];
+            if (!obj) {  // a new parameter set: its object, made once (names come from the pool init() filled)
+                glGenSamplers(1, &obj);
+                glSamplerParameteri(obj, GL_TEXTURE_WRAP_S, static_cast<GLint>(ws));
+                glSamplerParameteri(obj, GL_TEXTURE_WRAP_T, static_cast<GLint>(wt));
+                glSamplerParameteri(obj, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(magf));
+                glSamplerParameteri(obj, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(minf));
+            }
+            if (boundSampler[i] != obj) { glBindSampler(static_cast<GLuint>(i), obj); boundSampler[i] = obj; }
+            continue;  // the mip LOD bias is not honoured either way (below); compare mode: the object default
+        }
         if (!samplersBound) glBindSampler(static_cast<GLuint>(i), s.gl);  // the sampler objects stay on their units
         if (!s.dirty) continue;
         s.dirty = false;
@@ -1905,12 +2103,12 @@ int Device::specifyAttributes(const VertexDecl* d, bool up, UINT upStride, INT b
         const GLenum type = declType(e.Type, size, norm, isColor);
         if (isColor) colorMask |= 1 << loc;
         if (up) {
-            glBindBuffer(GL_ARRAY_BUFFER, scratchVbo);
+            bindArrayBuffer(scratchVbo);
             glVertexAttribPointer(static_cast<GLuint>(loc), size, type, norm, static_cast<GLsizei>(upStride), reinterpret_cast<const void*>(static_cast<uintptr_t>(e.Offset)));
         } else {
             const StreamSource& s = streams[e.Stream < 8 ? e.Stream : 0];
             if (!s.vb) continue;
-            glBindBuffer(GL_ARRAY_BUFFER, s.vb->buf.gl);
+            bindArrayBuffer(s.vb->buf.gl);
             glVertexAttribPointer(static_cast<GLuint>(loc), size, type, norm, static_cast<GLsizei>(s.stride), reinterpret_cast<const void*>(static_cast<uintptr_t>(s.offset + e.Offset + static_cast<INT>(s.stride) * baseVertex)));
         }
         glEnableVertexAttribArray(static_cast<GLuint>(loc));
@@ -1919,65 +2117,197 @@ int Device::specifyAttributes(const VertexDecl* d, bool up, UINT upStride, INT b
 }
 
 // Binds the vertex attributes for the current declaration. `baseVertex` shifts every stream.
-bool Device::bindVertexLayout(const VertexDecl* d, bool up, const void* upData, UINT upStride, UINT, INT baseVertex) {
+bool Device::bindVertexLayout(const VertexDecl* d, bool up, UINT upStride, INT baseVertex) {
     if (!d) return false;
-    LayoutKey key;
-    std::memset(&key, 0, sizeof key);  // the padding too: the key is hashed and compared as bytes
-    key.decl = d, key.vs = d->preTransformed ? nullptr : vs.p, key.program = lastProgramGl, key.up = up, key.upStride = up ? upStride : 0, key.baseVertex = up ? 0 : baseVertex;
+    // FABLE_GLES_VAO_SHARE=0: the program is part of the key, as before. Attribute locations are
+    // explicit in every vertex shader, so programs sharing the vertex inputs can share an object;
+    // prepareDraw sends the program its uColorBgra.
+    static const bool share = envOn("FABLE_GLES_VAO_SHARE");
+    VaoKey key;
+    std::memset(&key, 0, sizeof key);  // compared and hashed as bytes
+    key.decl = d->layoutId, key.inputs = d->preTransformed || !vs ? 0 : vs->inputsId, key.program = share ? 0 : lastProgramGl;
+    key.up = up, key.upStride = up ? upStride : 0, key.baseVertex = up ? 0 : baseVertex;
     if (!up)
-        for (int i = 0; i < 8; ++i) key.vb[i] = streams[i].vb ? streams[i].vb->buf.gl : 0, key.off[i] = streams[i].offset, key.stride[i] = streams[i].stride;
-    if (layoutValid && std::memcmp(&key, &lastLayout, sizeof key) == 0) return true;  // same pointers as the last draw
+        for (int i = 0; i < 8; ++i) {
+            if (streams[i].vb) streams[i].vb->buf.drawn = true, key.vb[i] = streams[i].vb->buf.gl;  // drawn: Buffer::unlock
+            key.off[i] = streams[i].offset, key.stride[i] = streams[i].stride;
+        }
+    if (layoutValid && std::memcmp(&key, &lastLayout, sizeof key) == 0) {  // same pointers as the last draw
+        if (curVao) curVao->lastFrame = frames;
+        return true;
+    }
     lastLayout = key;
     layoutValid = true;
     static const bool noVao = [] { const char* e = getenv("FABLE_GLES_NOVAO"); return e && atoi(e) != 0; }();
     if (noVao) {  // diagnostic: one object, attributes re-specified every draw (the pre-cache behaviour)
-        static VaoEntry plain;
-        if (!plain.vao) glGenVertexArrays(1, &plain.vao);
-        glBindVertexArray(plain.vao);
+        static GLuint plain;
+        if (!plain) glGenVertexArrays(1, &plain);
+        glBindVertexArray(plain);
         for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
         boundIbo = ~0u;
-        curVao = nullptr;
-        plain.colorMask = specifyAttributes(d, up, upStride, baseVertex);
-        setColorBgra(plain.colorMask);
+        curVao = nullptr, curKey = nullptr;
+        curColorMask = specifyAttributes(d, up, upStride, baseVertex);
         return true;
     }
     if (auto it = vaos.find(key); it != vaos.end()) {
         glBindVertexArray(it->second.vao);
-        curVao = &it->second;
+        curVao = &it->second, curKey = &it->first;
+        curVao->lastFrame = frames;
         boundIbo = it->second.ibo;
-        setColorBgra(it->second.colorMask);
+        curColorMask = it->second.colorMask;
         return true;
     }
-    if (vaos.size() >= 4096) {
-        for (auto& [k, e] : vaos) glDeleteVertexArrays(1, &e.vao);
-        vaos.clear();
-    }
+    if (vaos.size() >= 4096) evictVaos();
     VaoEntry entry;
-    glGenVertexArrays(1, &entry.vao);
+    entry.vao = newVaoName();
+    entry.lastFrame = frames;
     glBindVertexArray(entry.vao);
     boundIbo = 0;  // a fresh object has no element buffer
     entry.colorMask = specifyAttributes(d, up, upStride, baseVertex);
-    setColorBgra(entry.colorMask);
-    curVao = &vaos.emplace(key, entry).first->second;  // node pointers stay valid across rehashing
-    (void)upData;
+    curColorMask = entry.colorMask;
+    const auto node = vaos.emplace(key, entry).first;
+    curVao = &node->second, curKey = &node->first;  // node pointers stay valid across rehashing
+    layoutValid = true;  // (an eviction above may have deleted the object bound before)
+    ++vaoCreatedFrame;
+    // the vertex buffers it uses: their release deletes it (the element buffer: bindElements)
+    if (!up)
+        for (int i = 0; i < 8; ++i) {
+            if (!streams[i].vb) continue;
+            bool seen = false;
+            for (int j = 0; j < i && !seen; ++j) seen = streams[j].vb.p == streams[i].vb.p;
+            if (!seen) noteVao(streams[i].vb->buf, node->first);
+        }
     return true;
 }
 
-void Device::dropVaos(GLuint buffer, const void* pointer) {
-    for (auto it = vaos.begin(); it != vaos.end();) {
-        const LayoutKey& k = it->first;
-        bool hit = pointer && (k.decl == pointer || k.vs == pointer);
-        if (buffer) for (int i = 0; i < 8 && !hit; ++i) hit = k.vb[i] == buffer;
-        if (buffer && it->second.ibo == buffer) hit = true;
-        if (hit) {
-            if (curVao == &it->second) curVao = nullptr, layoutValid = false, boundIbo = ~0u;
-            glDeleteVertexArrays(1, &it->second.vao);
-            it = vaos.erase(it);
-        } else ++it;
+// The element buffer of the bound vertex array object (part of its state, tracked per object).
+// An index buffer that becomes one notes the object, so its release finds it.
+void Device::bindElements(GLuint ib, Buffer* owner) {
+    if (boundIbo == ib) return;
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib);
+    boundIbo = ib;
+    if (curVao) {
+        curVao->ibo = ib;
+        if (owner && std::find(std::begin(curVao->noted), std::end(curVao->noted), owner->serial) == std::end(curVao->noted)) {
+            noteVao(*owner, *curKey);
+            curVao->noted[curVao->notedNext++ & 3] = owner->serial;
+        }
     }
 }
-void dropVaosForBuffer(GLuint gl) { if (g_device) g_device->dropVaos(gl, nullptr); }
-void dropVaosForPointer(const void* p) { if (g_device) g_device->dropVaos(0, p); }
+
+// Ids for vertex declarations and vertex-shader input lists (VaoKey), never reused: content ids
+// (a key matches only objects made from the same content), or with FABLE_GLES_VAO_CONTENT=0 one
+// id per object, as the addresses in the old key were.
+uint32_t vaoLayoutId(char kind, const void* data, size_t n) {
+    static const bool content = envOn("FABLE_GLES_VAO_CONTENT");
+    static std::mutex m;
+    static std::unordered_map<std::string, uint32_t> ids;
+    static uint32_t next = 1;
+    std::lock_guard<std::mutex> lk(m);
+    if (!content) return next++;
+    std::string k(1, kind);
+    k.append(static_cast<const char*>(data), n);
+    const auto [it, fresh] = ids.emplace(std::move(k), next);
+    if (fresh) ++next;
+    return it->second;
+}
+
+GLuint Device::newVaoName() {
+    if (gq::direct()) { GLuint n = 0; glGenVertexArrays(1, &n); return n; }
+    constexpr size_t kBatch = 1024, kLow = 512;
+    auto takePending = [this] {
+        vaoNamePool.insert(vaoNamePool.end(), vaoNamesPending->names.begin(), vaoNamesPending->names.end());
+        vaoNamesPending.reset();
+    };
+    if (vaoNamesPending && vaoNamesPending->done.done.load(std::memory_order_acquire)) takePending();
+    if (vaoNamePool.size() < kLow && !vaoNamesPending) {  // the next batch, made while the game goes on
+        vaoNamesPending = std::make_shared<VaoNames>();
+        std::shared_ptr<VaoNames> req = vaoNamesPending;
+        gq::call([req] {
+            req->names.resize(kBatch);
+            real::glGenVertexArrays(static_cast<GLsizei>(kBatch), req->names.data());
+            gq::signal(req->done);
+        });
+    }
+    if (vaoNamePool.empty()) {  // only at the start, or after more than a batch in a burst: wait for it
+        gq::wait(vaoNamesPending->done);
+        takePending();
+    }
+    const GLuint n = vaoNamePool.back();
+    vaoNamePool.pop_back();
+    return n;
+}
+
+// The cache is full: the objects not used in the last two frames go (FABLE_GLES_VAO_EVICT=0: all
+// of them, as before); all go if that frees less than a quarter. The buffers' key lists keep the
+// keys of deleted objects: noteVao and dropVaos skip them.
+void Device::evictVaos() {
+    static const bool evict = envOn("FABLE_GLES_VAO_EVICT");
+    const size_t before = vaos.size();
+    if (evict)
+        for (auto it = vaos.begin(); it != vaos.end();) {
+            const auto next = std::next(it);
+            if (it->second.lastFrame + 2 < frames) eraseVao(it);
+            it = next;
+        }
+    if (vaos.size() > before * 3 / 4) {
+        for (auto& [k, e] : vaos) glDeleteVertexArrays(1, &e.vao);
+        vaos.clear();
+        curVao = nullptr, curKey = nullptr, layoutValid = false, boundIbo = ~0u;
+        ++vaoPurges;
+    } else {
+        vaoEvicted += static_cast<unsigned>(before - vaos.size());
+    }
+}
+
+void Device::eraseVao(decltype(vaos)::iterator it) {
+    if (curVao == &it->second) curVao = nullptr, curKey = nullptr, layoutValid = false, boundIbo = ~0u;
+    glDeleteVertexArrays(1, &it->second.vao);
+    vaos.erase(it);
+}
+// Records that the object of `key` uses `b`. The list keeps keys of objects deleted since (an
+// eviction, the release of another of their buffers) and repeats (an object that took b as its
+// element buffer again): when it is full those are dropped first, so it stays within twice the
+// live ones.
+void Device::noteVao(Buffer& b, const VaoKey& key) {
+    std::vector<VaoKey>& v = b.vaoKeys;
+    if (!v.empty() && std::memcmp(&v.back(), &key, sizeof key) == 0) return;  // noted just now
+    if (v.size() >= 16 && v.size() == v.capacity()) {
+        v.erase(std::remove_if(v.begin(), v.end(), [&](const VaoKey& k) { return vaos.find(k) == vaos.end(); }), v.end());
+        std::sort(v.begin(), v.end(), [](const VaoKey& a, const VaoKey& c) { return std::memcmp(&a, &c, sizeof a) < 0; });
+        v.erase(std::unique(v.begin(), v.end(), [](const VaoKey& a, const VaoKey& c) { return std::memcmp(&a, &c, sizeof a) == 0; }), v.end());
+        // room for as many again: the next compaction is as many notes away as there are live keys
+        // (with no headroom a list of 2^k - 1 live keys compacted on every note)
+        v.reserve(std::max<size_t>(16, 2 * v.size() + 1));
+    }
+    v.push_back(key);
+}
+// `b` is released: delete the objects that use it, as attributes or as their element buffer now
+// (those are all on its list). FABLE_GLES_VAO_INDEX=0: search every cached object, as before (the
+// device profile: 2.4 % of all CPU over a session, 5-8 % in towns, a walk over up to 4096 nodes
+// per release).
+void Device::dropVaos(Buffer& b) {
+    if (arrayBuffer == b.gl) arrayBuffer = ~0u;  // deleting a bound buffer unbinds it (and the name may come back)
+    if (boundIbo == b.gl) boundIbo = ~0u;
+    static const bool indexed = envOn("FABLE_GLES_VAO_INDEX");
+    auto uses = [&b](const VaoKey& k, const VaoEntry& e) {
+        if (e.ibo == b.gl) return true;
+        for (GLuint v : k.vb) if (v == b.gl) return true;
+        return false;
+    };
+    if (indexed) {
+        for (const VaoKey& k : b.vaoKeys)
+            if (auto it = vaos.find(k); it != vaos.end() && uses(it->first, it->second)) eraseVao(it);
+    } else {
+        for (auto it = vaos.begin(); it != vaos.end();) {
+            const auto next = std::next(it);
+            if (uses(it->first, it->second)) eraseVao(it);
+            it = next;
+        }
+    }
+    b.vaoKeys.clear();
+}
+void dropVaosForBuffer(Buffer* b) { if (g_device) g_device->dropVaos(*b); }
 
 static bool key_trace_once(uint32_t id) { static std::vector<uint32_t> seen; if (std::find(seen.begin(), seen.end(), id) != seen.end()) return false; seen.push_back(id); return true; }
 // Host graphics settings: draws into the shadow buffer (a render target of the def's
@@ -1995,16 +2325,20 @@ void Device::prepareDraw(bool up, const void* upData, UINT upStride, UINT upVert
     bindTarget();
     applyRenderStates();
     applySamplers();
+    if (texMaskOn()) {  // the fixed-function key reads which of stages 0-3 have a texture (SetTexture)
+        const unsigned m = (textures[0] ? 1u : 0u) | (textures[1] ? 2u : 0u) | (textures[2] ? 4u : 0u) | (textures[3] ? 8u : 0u);
+        if (m != programTexMask) programTexMask = m, programDirty = true;
+    }
     Program* p = program();
     current = p;
     if (!p) return;
     if (p->gl != lastProgramGl) { glUseProgram(p->gl); lastProgramGl = p->gl; }
     setConstants(p);
     if (up) {
-        glBindBuffer(GL_ARRAY_BUFFER, scratchVbo);
+        bindArrayBuffer(scratchVbo);
         glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(upStride) * upVertices, upData, GL_STREAM_DRAW);
     }
-    bindVertexLayout(decl ? decl.p : fvf ? fvfDeclaration() : nullptr, up, upData, upStride, upVertices, baseVertex);
+    if (bindVertexLayout(decl ? decl.p : fvf ? fvfDeclaration() : nullptr, up, upStride, baseVertex)) setColorBgra(curColorMask);
     static int traceLeft = [] { const char* t = getenv("FABLE_GLES_TRACE"); return t ? atoi(t) : 0; }();
     if (dumpFrameWanted()) traceLeft = 1;  // every draw of that frame is traced
     // FABLE_GLES_DUMP_RT=all: every textured draw into an off-screen render target, in any
@@ -2074,7 +2408,8 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitive(D3DPRIMITIVETYPE t, INT b
     if (!current) return S_OK;
     GLsizei count;
     const GLenum mode = primMode(t, n, count);
-    if (boundIbo != indices->buf.gl) { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices->buf.gl); boundIbo = indices->buf.gl; if (curVao) curVao->ibo = boundIbo; }
+    bindElements(indices->buf.gl, &indices->buf);
+    indices->buf.drawn = true;
     const bool i32 = indices->format == D3DFMT_INDEX32;
     glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, reinterpret_cast<const void*>(static_cast<uintptr_t>(start) * (i32 ? 4 : 2)));
     ++statDraws;
@@ -2103,7 +2438,7 @@ HRESULT STDMETHODCALLTYPE Device::DrawIndexedPrimitiveUP(D3DPRIMITIVETYPE t, UIN
     prepareDraw(true, data, stride, minIdx + numV, 0);
     if (!current) return S_OK;
     const bool i32 = fmt == D3DFMT_INDEX32;
-    if (boundIbo != scratchIbo) { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scratchIbo); boundIbo = scratchIbo; if (curVao) curVao->ibo = scratchIbo; }
+    bindElements(scratchIbo, nullptr);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, static_cast<GLsizeiptr>(count) * (i32 ? 4 : 2), idx, GL_STREAM_DRAW);
     glDrawElements(mode, count, i32 ? GL_UNSIGNED_INT : GL_UNSIGNED_SHORT, nullptr);
     ++statDraws;
@@ -2202,7 +2537,7 @@ void Device::drawOverlay() {
     glBindTexture(GL_TEXTURE_2D, overlayTexture);
     glBindSampler(0, 0);
     glBindVertexArray(overlayVao);
-    glBindBuffer(GL_ARRAY_BUFFER, overlayVbo);
+    bindArrayBuffer(overlayVbo);
     glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(verts.size() * sizeof(float)), verts.data(), GL_STREAM_DRAW);
     for (int i = 0; i < 16; ++i) glDisableVertexAttribArray(static_cast<GLuint>(i));
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 32, nullptr);
@@ -2217,7 +2552,7 @@ void Device::drawOverlay() {
     samplersBound = false;  // unit 0 got the default sampler
     current = nullptr;
     layoutValid = false;
-    curVao = nullptr;
+    curVao = nullptr, curKey = nullptr;
     programDirty = true;
     boundIbo = ~0u;
     lastProgramGl = 0;
@@ -2334,7 +2669,7 @@ bool Device::presentPass(int ww, int wh, float gamma) {
     samplersBound = false;  // unit 0 got the default sampler
     current = nullptr;
     layoutValid = false;
-    curVao = nullptr;
+    curVao = nullptr, curKey = nullptr;
     programDirty = true;
     boundIbo = ~0u;
     boundFbo = ~0u;
@@ -2405,9 +2740,11 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         glMs = g_nsGl / 1e6;
         swapMs = (gq::enabled() ? g_nsSwapRender.load() : g_nsSwap) / 1e6, uploadMs = g_nsUpload / 1e6;
         g_nsGl = g_nsSwap = g_nsUpload = 0;
-        bufUploads = g_bufUploads, bufInPlace = g_bufInPlace, bufKb = static_cast<double>(g_bufBytes) / 1024.0;
-        g_bufUploads = g_bufInPlace = 0, g_bufBytes = 0;
+        bufUploads = g_bufUploads, bufInPlace = g_bufInPlace, bufOrphaned = g_bufOrphaned, bufKb = static_cast<double>(g_bufBytes) / 1024.0;
+        g_bufUploads = g_bufInPlace = g_bufOrphaned = 0, g_bufBytes = 0;
+        vaoCreatedLast = vaoCreatedFrame, vaoCreatedLine += vaoCreatedFrame, vaoCreatedFrame = 0;
         lastPresentNs = t1;
+        perfGlCalls += gq::lastFrameCalls();  // the GL calls of the last frame the render thread finished
         if (frameMs > 0) perfFrames[perfN++ % kPerfWindow] = static_cast<float>(frameMs);
         perfDraws += statDraws, perfGlMs += glMs, perfSwapMs += swapMs, perfWaitMs += gq::waitMs(), perfRenderMs += gq::renderMs();
     }
@@ -2415,7 +2752,7 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         // the readback runs on the render thread (a round trip here would stall the overlap)
         const unsigned fr = frames, draws = statDraws, clears = statClears, progs = static_cast<unsigned>(programs.size());
         const double fMs = frameMs, gMs = glMs, sMs = swapMs, uMs = uploadMs, rMs = gq::renderMs(), wMs = gq::waitMs(), bKb = bufKb;
-        const unsigned bUp = bufUploads, bIn = bufInPlace;
+        const unsigned bUp = bufUploads, bIn = bufInPlace, bOr = bufOrphaned;
         // the frame rate cap since the last line: mean sleep per frame, frames that missed its deadline
         static unsigned capFrom = 0;
         static uint64_t lineNs = 0;
@@ -2437,15 +2774,20 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
                 for (unsigned i = 0; i < n; ++i) over33 += v[i] > 33.4f, over50 += v[i] > 50.0f;
                 static uint32_t qiFrom = 0;
                 const uint32_t qi = host::com::g_queryInterfaceCalls.load(std::memory_order_relaxed);
-                log("gles: perf %u frames: p50 %.1f p90 %.1f p99 %.1f max %.1f ms, %u over 33 ms, %u over 50 ms; per frame: %.0f draws, gl %.2f ms (swap %.2f), waited %.2f, render thread %.2f, QueryInterface %.1f",
+                // gl calls: records the render thread replayed (one per GL call; per draw: / draws)
+                log("gles: perf %u frames: p50 %.1f p90 %.1f p99 %.1f max %.1f ms, %u over 33 ms, %u over 50 ms; per frame: %.0f draws, gl %.2f ms (swap %.2f), waited %.2f, render thread %.2f, QueryInterface %.1f, gl calls %.0f (%.1f per draw)",
                     n, pct(0.5), pct(0.9), pct(0.99), v[n - 1], over33, over50, perfDraws / n, perfGlMs / n, perfSwapMs / n, perfWaitMs / n, perfRenderMs / n,
-                    static_cast<double>(qi - qiFrom) / n);
+                    static_cast<double>(qi - qiFrom) / n, perfGlCalls / n, perfDraws > 0 ? perfGlCalls / perfDraws : 0.0);
                 qiFrom = qi;
             }
-            perfN = 0, perfDraws = 0, perfGlMs = perfSwapMs = perfWaitMs = perfRenderMs = 0;
+            perfN = 0, perfDraws = 0, perfGlMs = perfSwapMs = perfWaitMs = perfRenderMs = perfGlCalls = 0;
         }
         const UINT bw = pp.BackBufferWidth, bh = pp.BackBufferHeight;
         const GLuint fbo = mainFbo;
+        // vertex array objects: cached, created this frame / since the last line, evicted, purges
+        const unsigned nVao = static_cast<unsigned>(vaos.size()), vaoNew = vaoCreatedLast, vaoNewLine = vaoCreatedLine, nEvict = vaoEvicted, nPurge = vaoPurges;
+        const unsigned nSampler = static_cast<unsigned>(std::count_if(std::begin(samplerObj), std::end(samplerObj), [](GLuint o) { return o != 0; }));
+        vaoCreatedLine = 0;
         // The centre pixel (a black-screen check for device logs) is a glReadPixels: the render
         // thread waits for the GPU to finish the frame, a stall every 120 frames. Only on request.
         static const bool probe = [] { const char* e = getenv("FABLE_GLES_PROBE"); return (e && atoi(e) != 0) || getenv("FABLE_GLES_DUMP"); }();
@@ -2458,7 +2800,28 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
             const GLenum err = glGetError();  // on the render thread: a direct call, errors of the whole frame
             char centre[16] = "-";  // FABLE_GLES_PROBE=1
             if (probe) std::snprintf(centre, sizeof centre, "%02X%02X%02X%02X", px[0], px[1], px[2], px[3]);
-            log("gles: frame %u: %u draws, %u clears, %u programs, centre %s, window %dx%d, frame %.1f ms (mean %.1f) of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f, buffer uploads %u (%u in place, %.0f KB), cap %u slept %.1f/frame, %u late%s%X", fr, draws, clears, progs, centre, ww, wh, fMs, mMs, gMs, sMs, uMs, rMs, wMs, bUp, bIn, bKb, capFps, cMs, capLate, err ? ", GL error 0x" : "", err);
+            // This frame's GL calls as the render thread replayed them (the frame boundary that
+            // resets the counts is recorded after this): what each draw costs the driver.
+            char calls[256] = "-";
+            if (gq::enabled()) {
+                const uint32_t* c = gq::frameOpCounts();
+                uint32_t total = 0;
+                for (uint32_t op = OP_call; op < OP_count; ++op) total += c[op];
+                const uint32_t uni = c[OP_glUniform1f] + c[OP_glUniform1i] + c[OP_glUniform2f] + c[OP_glUniform4f] + c[OP_glUniform4fv];
+                const uint32_t tex = c[OP_glBindTexture] + c[OP_glActiveTexture], smp = c[OP_glBindSampler] + c[OP_glSamplerParameteri];
+                const uint32_t attr = c[OP_glVertexAttribPointer] + c[OP_glEnableVertexAttribArray] + c[OP_glDisableVertexAttribArray];
+                const uint32_t buf = c[OP_glBindBuffer] + c[OP_glBufferData] + c[OP_glBufferSubData];
+                const uint32_t state = c[OP_glEnable] + c[OP_glDisable] + c[OP_glBlendFunc] + c[OP_glBlendEquation] + c[OP_glBlendColor] + c[OP_glDepthFunc] + c[OP_glDepthMask] +
+                                       c[OP_glColorMask] + c[OP_glCullFace] + c[OP_glFrontFace] + c[OP_glStencilFunc] + c[OP_glStencilOp] + c[OP_glStencilMask] + c[OP_glPolygonOffset] +
+                                       c[OP_glViewport] + c[OP_glScissor] + c[OP_glDepthRangef];
+                const uint32_t draw = c[OP_glDrawElements] + c[OP_glDrawArrays], vao = c[OP_glBindVertexArray], prog = c[OP_glUseProgram];
+                std::snprintf(calls, sizeof calls, "%u (draw %u, uniform %u, texture %u, sampler %u, vao %u, attrib %u, program %u, state %u, buffer %u, other %u)", total, draw, uni, tex, smp, vao, attr, prog, state,
+                              buf, total - draw - uni - tex - smp - vao - attr - prog - state - buf);
+            }
+            char glErr[32] = "";
+            if (err) std::snprintf(glErr, sizeof glErr, ", GL error 0x%X", err);
+            log("gles: frame %u: %u draws, %u clears, %u programs, centre %s, window %dx%d, frame %.1f ms (mean %.1f) of which gl %.1f (swap %.1f, uploads %.1f), render thread %.1f, waited %.1f, buffer uploads %u (%u in place, %u orphaned, %.0f KB), cap %u slept %.1f/frame, %u late, gl calls %s, %u vaos (+%u, +%u since the last line, %u evicted, %u purges), %u sampler objects%s",
+                fr, draws, clears, progs, centre, ww, wh, fMs, mMs, gMs, sMs, uMs, rMs, wMs, bUp, bIn, bOr, bKb, capFps, cMs, capLate, calls, nVao, vaoNew, vaoNewLine, nEvict, nPurge, nSampler, glErr);
             if (const char* dir = getenv("FABLE_GLES_DUMP")) {
                 std::vector<unsigned char> buf(static_cast<size_t>(bw) * bh * 4);
                 glReadPixels(0, 0, static_cast<GLint>(bw), static_cast<GLint>(bh), GL_RGBA, GL_UNSIGNED_BYTE, buf.data());
@@ -2473,6 +2836,16 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
             }
         });
     }
+    // A long frame says what the renderer did in it (device logs: shader builds, texture
+    // creation and uploads, readbacks) and how much of it was the game's own work.
+    static const double longMs = [] { const char* e = getenv("FABLE_GLES_LONG_FRAME_MS"); return e ? atof(e) : 100.0; }();
+    if (longMs > 0 && frameMs >= longMs && host::g_logLevel >= 1)
+        log("gles: long frame %u: %.0f ms, %.0f outside the renderer; renderer %.1f: %u new programs %.1f ms (%u from the cache), %u shaders created, "
+            "%u textures created, texture uploads %.1f ms %.0f KB, buffer uploads %u (%.0f KB), %u readbacks; render thread %.1f, waited %.1f",
+            frames, frameMs, std::max(0.0, frameMs - glMs), glMs, g_work.programs, g_work.nsPrograms / 1e6, g_work.programsCached, g_work.shaders, g_work.textures,
+            uploadMs, static_cast<double>(g_work.texBytes) / 1024.0, bufUploads, bufKb, g_work.readbacks, gq::renderMs(), gq::waitMs());
+    g_work = FrameWork{};
+    progcache::g_cache.tick(lastProgramGl);  // the next slice of the program cache's warm-up, at the end of this frame's replay
     gq::frameEnd();  // at most one frame unreplayed: this frame's replay overlaps the next frame's game work
     if (const int cap = host::gfx::get().fpsCap) {  // hold the game thread to the cap: steadier pacing, idle cores sleep
         // `next` is the earliest time this frame may end. An early frame sleeps until then; a

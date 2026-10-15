@@ -33,6 +33,16 @@ bool g_exiting = false;
 std::string g_toast;
 uint32_t g_toastUntil = 0;
 uint32_t g_exitAt = 0;
+// What the game must not see (filterPad): buttons, triggers and sticks still held when the menu
+// closes stay hidden until released (else B / A / the guide's partner buttons reach the game as
+// fresh presses on its next poll), and Back + Start from the moment both are down (the menu's
+// combo). Start or Back pressed alone is held back for g_soloMs: if the other joins it is the
+// combo and the game sees neither; a tap shorter than that is replayed afterwards.
+WORD g_hidden = 0;
+bool g_hideLt = false, g_hideRt = false, g_hideLs = false, g_hideRs = false;
+WORD g_solo = 0, g_pulse = 0;
+uint32_t g_soloSince = 0, g_pulseUntil = 0;
+bool g_soloPassed = false;
 
 uint32_t ticks() {
     using namespace std::chrono;
@@ -42,7 +52,7 @@ uint32_t ticks() {
 enum Item { RESUME, GRAPHICS, VOLUME, FPS, STATS, LOGLEVEL, SCREENSHOT, EXIT, COUNT };
 // the graphics page: the game's own Video Options (resolution, refresh rate, anti-aliasing,
 // aspect ratio, the detail levels, brightness, vsync) plus direct levers on the engine
-enum GfxItem { G_RES, G_REFRESH, G_AA, G_ASPECT, G_LANDSCAPE, G_MODEL, G_TEXTURE, G_SHADOW, G_EFFECTS, G_BRIGHT, G_VSYNC, G_FPS, G_DRAW, G_GLOW, G_WATER, G_WEATHER, G_BACK, G_COUNT };
+enum GfxItem { G_RES, G_REFRESH, G_AA, G_ASPECT, G_LANDSCAPE, G_MODEL, G_TEXTURE, G_SHADOW, G_EFFECTS, G_BRIGHT, G_VSYNC, G_FPS, G_DRAW, G_GLOW, G_WATER, G_WEATHER, G_DISTORT, G_CHARLOD, G_BACK, G_COUNT };
 int g_page = 0;  // 0: main, 1: graphics
 std::string onOff(bool b) { return b ? "on" : "off"; }
 std::string resolutionText(int scale) {
@@ -71,6 +81,11 @@ std::string gfxLabel(int i) {
         case G_GLOW: return "Glow / bloom: " + onOff(s.glow);
         case G_WATER: return "Water reflections: " + onOff(s.water);
         case G_WEATHER: return "Weather effects: " + onOff(s.weather);
+        case G_DISTORT: return "Heat haze / distortion: " + onOff(s.distortion);
+        case G_CHARLOD: {
+            static const char* names[] = {"off (always full detail)", "1.0", "1.5", "3.0 (coarsest)"};
+            return std::string("Character LOD: ") + names[std::clamp(s.characterLod, 0, 3)] + "  (left/right)";
+        }
         case G_BACK: return "Back";
         default: return "";
     }
@@ -102,6 +117,8 @@ void gfxChange(int i, int dir) {  // dir: -1 left, +1 right, 0 select
         case G_GLOW: s.glow = !s.glow; break;
         case G_WATER: s.water = !s.water; break;
         case G_WEATHER: s.weather = !s.weather; break;
+        case G_DISTORT: s.distortion = !s.distortion; break;
+        case G_CHARLOD: s.characterLod = cycleQ(s.characterLod, dir); break;
         case G_BACK: g_page = 0; g_sel = GRAPHICS; return;
         default: return;
     }
@@ -164,11 +181,57 @@ void notePresent() {
 int textScale(int height) { return height > 600 ? 2 : 1; }
 void toast(const char* text) { std::lock_guard<std::mutex> l(g_lock); g_toast = text; g_toastUntil = ticks() + 2000; }
 
+bool stickHeld(SHORT x, SHORT y) { return std::abs(int(x)) > XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE || std::abs(int(y)) > XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE; }
+
+// The menu just closed: everything still held stays away from the game until released.
+void hideHeld(const XINPUT_GAMEPAD& in) {
+    g_hidden = in.wButtons;
+    g_hideLt = in.bLeftTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD, g_hideRt = in.bRightTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD;
+    g_hideLs = stickHeld(in.sThumbLX, in.sThumbLY), g_hideRs = stickHeld(in.sThumbRX, in.sThumbRY);
+    g_solo = g_pulse = 0;
+    if (g_hidden || g_hideLt || g_hideRt || g_hideLs || g_hideRs)
+        std::fprintf(stderr, "overlay: menu closed; held buttons 0x%04X%s%s stay hidden from the game until released\n", g_hidden,
+                     g_hideLt || g_hideRt ? " + triggers" : "", g_hideLs || g_hideRs ? " + sticks" : "");
+}
+
+// Closed menu: what reaches the game (see g_hidden).
+void filterClosed(XINPUT_GAMEPAD& g, bool combo, uint32_t now) {
+    static const uint32_t soloMs = [] { const char* e = std::getenv("FABLE_OVERLAY_SOLO_MS"); return e ? static_cast<uint32_t>(std::atoi(e)) : 120u; }();
+    constexpr WORD kCombo = XINPUT_GAMEPAD_BACK | XINPUT_GAMEPAD_START;
+    const WORD raw = g.wButtons, solo = raw & kCombo;
+    g_hidden &= raw;  // released: the game sees the button again
+    if (g_hideLt && g.bLeftTrigger <= XINPUT_GAMEPAD_TRIGGER_THRESHOLD) g_hideLt = false;
+    if (g_hideRt && g.bRightTrigger <= XINPUT_GAMEPAD_TRIGGER_THRESHOLD) g_hideRt = false;
+    if (g_hideLs && !stickHeld(g.sThumbLX, g.sThumbLY)) g_hideLs = false;
+    if (g_hideRs && !stickHeld(g.sThumbRX, g.sThumbRY)) g_hideRs = false;
+    if (combo) {
+        g_hidden |= kCombo, g_solo = 0;
+    } else if (solo && soloMs) {
+        if (solo != g_solo) g_solo = solo, g_soloSince = now, g_soloPassed = (g_hidden & solo) != 0;
+        if (!g_soloPassed && now - g_soloSince < soloMs) g.wButtons &= static_cast<WORD>(~solo);
+        else g_soloPassed = true;
+    } else {
+        if (g_solo && !g_soloPassed) g_pulse = g_solo, g_pulseUntil = now + std::max(soloMs, 100u);  // a short tap, replayed
+        g_solo = 0;
+    }
+    g.wButtons &= static_cast<WORD>(~g_hidden);
+    if (g_pulse) {
+        if (now < g_pulseUntil) g.wButtons |= g_pulse;
+        else g_pulse = 0;
+    }
+    if (g_hideLt) g.bLeftTrigger = 0;
+    if (g_hideRt) g.bRightTrigger = 0;
+    if (g_hideLs) g.sThumbLX = g.sThumbLY = 0;
+    if (g_hideRs) g.sThumbRX = g.sThumbRY = 0;
+}
+
 void filterPad(XINPUT_GAMEPAD& g, bool guide) {
     if (!enabled()) return;
     std::lock_guard<std::mutex> l(g_lock);
     const uint32_t now = ticks();
+    if (g_exiting && now > g_exitAt) w32::drainFileFlushes();  // the background fsyncs of FlushFileBuffers (files.cpp), before the hard exit
     if (g_exiting && now > g_exitAt) { std::fprintf(stderr, "overlay: exit\n"); std::fflush(nullptr); _exit(0); }
+    const XINPUT_GAMEPAD in = g;
     const WORD pressed = static_cast<WORD>(g.wButtons & ~g_lastButtons);
     g_lastButtons = g.wButtons;
     const bool guidePressed = guide && !g_lastGuide;
@@ -178,7 +241,8 @@ void filterPad(XINPUT_GAMEPAD& g, bool guide) {
     if (combo) { if (!g_guideDown) g_guideDown = now; } else g_guideDown = 0;
     const bool comboHeld = g_guideDown && now - g_guideDown > 1500;
     if (!g_open) {
-        if (guidePressed || comboHeld) { g_open = true; g_page = 0; g_sel = 0; g_guideDown = 0; std::memset(&g, 0, sizeof g); }
+        if (guidePressed || comboHeld) { g_open = true; g_page = 0; g_sel = 0; g_guideDown = 0; std::memset(&g, 0, sizeof g); return; }
+        filterClosed(g, combo, now);
         return;
     }
     if (g_page == 1) {  // graphics page
@@ -189,7 +253,7 @@ void filterPad(XINPUT_GAMEPAD& g, bool guide) {
         if (pressed & XINPUT_GAMEPAD_A) gfxChange(g_sel, 0);
         if ((pressed & XINPUT_GAMEPAD_B) || guidePressed) { g_page = 0; g_sel = GRAPHICS; }
         std::memset(&g, 0, sizeof g);
-        return;
+        return;  // the graphics page never closes the menu itself
     }
     // open: the game sees nothing; navigate
     if (pressed & XINPUT_GAMEPAD_DPAD_UP) g_sel = (g_sel + COUNT - 1) % COUNT;
@@ -199,6 +263,7 @@ void filterPad(XINPUT_GAMEPAD& g, bool guide) {
         w32::setMasterVolume(w32::masterVolume() + ((pressed & XINPUT_GAMEPAD_DPAD_RIGHT) ? 0.05f : -0.05f));
     if (g_sel == LOGLEVEL && (pressed & (XINPUT_GAMEPAD_DPAD_LEFT | XINPUT_GAMEPAD_DPAD_RIGHT))) host::g_logLevel = (host::g_logLevel + ((pressed & XINPUT_GAMEPAD_DPAD_RIGHT) ? 1 : 2)) % 3;
     if ((pressed & XINPUT_GAMEPAD_B) || guidePressed) g_open = false;
+    if (!g_open) hideHeld(in);  // closed by B, the guide, Resume or Screenshot
     std::memset(&g, 0, sizeof g);
 }
 

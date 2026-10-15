@@ -123,9 +123,19 @@ user's original game folder; no retail bytes or generated code are in git.
     addressing mode: -6.3% A53 instructions on a 2745-function sample; `--no-fold` gives the
     old output byte for byte); `rep stos` with DF clear is a memset / vectorised fill; trap
     (import/COM) calls go to the host hook before any table lookup (`recomp_set_host_range`);
-    `recomp_fns` is hidden (no GOT load per inline-cache hit). Not done yet:
-    static x87 TOP tracking in the lifter (4-6% of lifted A53 instructions load/store TOP
-    or index the emulated stack), freeing the D3D lock staging copies of load-once resources.
+    `recomp_fns` is hidden (no GOT load per inline-cache hit). Not done yet: freeing the
+    D3D lock staging copies of load-once resources.
+  - **x87 in locals (2026-10-15, needs a re-lift):** every function with x87 code keeps the
+    stack registers, TOP, CW and SW in C locals named by the static depth (solved per
+    function, the depth after a call is free: a weighted union-find), written back only at
+    SPILL and retaken after RELOAD, so `c->fpu` is exactly what the old per-op memory model
+    held at every call/return/trap; all 5,940 x87 functions solve. A53 instructions: -43%
+    CalcBlendedBoneTransformation, -46% CalcLocalBoneTransformation, -55%
+    ApplyParentTransformations, -52% CRightHandedSet::Interpolate, -38%/-26% particle sprite
+    vfuncs, -44% IsInsideFrustum. Direct calls to `_ftol2` (hooked `host_ftol2`) are inlined
+    (1,993 sites). Old-vs-new differential runs over all x87 functions (random heap, TOP,
+    registers, CW) match bit for bit apart from NaN sign/payload (signaling NaNs are no longer quieted on `fld`/`fst` dword copies: clang folds the round trip), which already vary with -O level.
+    `--no-x87-locals --no-ftol2-inline` reproduces the previous output byte for byte.
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).
@@ -158,7 +168,7 @@ xwd -root -silent | convert xwd:- shot.png      # screenshot
 | `main.cpp` | Finds the game folder (`--game`, `FABLE_DIR`, the exe's own folder, the remembered `HKCU\Software\FableRecomp\GameDir`, the default Steam library, then a folder picker), verifies the Fable.exe SHA-256, maps it, runs entry 0x401067 on a 256 MB-stack thread |
 | `crt.cpp` | msvcr71/msvcp71 (startup, heap, strings, printf family, math incl. `_CI*`, a VC7.1-exact qsort, `std::exception`, VC7.1 `std::string`) |
 | `format.cpp/.hpp` | printf/scanf over guest varargs with MSVC semantics |
-| `kernel32.cpp` | kernel32: critical sections (host pointer kept in the guest CS), async I/O (`ReadFileEx`), resources, `LoadLibrary`/`GetProcAddress`, TLS, etc. |
+| `kernel32.cpp` | kernel32: critical sections (host pointer kept in the guest CS), async I/O (`ReadFileEx`), resources, `LoadLibrary`/`GetProcAddress`, TLS, etc. `host_unloadable_memory` (0x9FC070, hooked by the lifter): skips the per-frame texture walk whose sum (`CGraphicDataBank` AvailableMemory) is never read |
 | `user32.cpp` | Window classes/procs (guest WndProc called through a host proc), MSG and `lParam` struct conversion, dialogs |
 | `misc.cpp` | gdi32, advapi32 (registry in the 32-bit view), winmm, version, shell32, ole32/oleaut32, imm32, wsock32 (network reported as unavailable) |
 | `com.hpp/.cpp`, `com_vtables.inc`, `gen_com.py` | COM proxies. Guest vtables of traps for D3D9, DInput8, DirectDraw 7 and DirectSound are generated from mingw headers. `OVERRIDES` in `gen_com.py` lists the hand-written methods. Host-implemented COM classes register with `HostClassReg`; `CoCreateInstance` (misc.cpp) tries those, then the real 64-bit class behind a proxy |
@@ -187,15 +197,18 @@ fable_recomp Fable.exe rebuild/manifest/functions.tsv gen_win/ --hook 0x9D8650=h
     --wrap 0x55CB10=host_ui_event --wrap 0x58F649=host_open_inventory --wrap 0x41CF47=host_ui_scale \
     --wrap 0x69AC90=host_camera_set --wrap 0x533D30=host_component_size --wrap 0xB24690=host_video_options \
     --wrap 0x47E196=host_save_game --wrap 0x54EF00=host_text_draw \
-    --wrap 0x52FFD0=host_update_position --hook 0xBFEA70=host_ftol2 \
-    --wrap 0x445B80=host_ztarget_toggle --wrap 0x591E5E=host_inventory_screen --wrap 0x581FA4=host_csi_graphic --wrap 0x581E33=host_quick_access_item --wrap 0x5840A6=host_use_quick_item --wrap 0x583A92=host_use_context_item --wrap 0x41DB1D=host_create_component --wrap 0x530780=host_find_child --wrap 0x661F70=host_is_child --wrap 0x41E6D3=host_ui_manager_event --wrap 0x446000=host_quick_button --wrap 0x54E6F0=host_viewport_draw --wrap 0xBE1E70=host_viewport2d_render
+    --wrap 0x52FFD0=host_update_position --hook 0xBFEA70=host_ftol2 --hook 0x9FC070=host_unloadable_memory \
+    --wrap 0x445B80=host_ztarget_toggle --wrap 0x591E5E=host_inventory_screen --wrap 0x581FA4=host_csi_graphic --wrap 0x581E33=host_quick_access_item --wrap 0x5840A6=host_use_quick_item --wrap 0x583A92=host_use_context_item --wrap 0x41DB1D=host_create_component --wrap 0x530780=host_find_child --wrap 0x661F70=host_is_child --wrap 0x41E6D3=host_ui_manager_event --wrap 0x446000=host_quick_button --wrap 0x54E6F0=host_viewport_draw --wrap 0xBE1E70=host_viewport2d_render \
+    --wrap 0xA4CEC0=host_calc_local_transformations --wrap 0xA4D770=host_calc_local_transformations_relative \
+    --wrap 0xC78A10=host_hrtf_fir --wrap 0xC79440=host_hrtf_fir_ramp --wrap 0xC9C2F0=host_mdct_butterfly
 # coroutine switch -> host fibers; native Xbox pad (controller.cpp); UI scale (ui_scale.cpp);
 # host graphics settings (gfx_options.cpp, --wrap 0xB24690=host_video_options); the Xbox
 # pause menu's Hero Save (menu_nav.cpp, host_save_game: a stand-in for the PC menu object);
 # front-end labels centred in their bars (menu_nav.cpp, host_text_draw); the Xbox screens'
 # absolute components zoomed with the rest (host_update_position);
 # pad menu navigation and the Xbox in-game menus (menu_nav.cpp); the Xbox chase camera
-# (camera.cpp). --wrap keeps the original body as F_<addr>_orig
+# (camera.cpp); the per-frame texture-memory walk skipped (kernel32.cpp, host_unloadable_memory).
+# --wrap keeps the original body as F_<addr>_orig
 fable_recomp ConfigDetect.dll - gen_cfg/ --prefix cfgdetect
 python3 rebuild/recomp/win/gen_com.py <llvm-mingw>/generic-w64-mingw32/include rebuild/recomp/win/com_vtables.inc
 cmake -S rebuild/recomp/win -B build/win -G Ninja \

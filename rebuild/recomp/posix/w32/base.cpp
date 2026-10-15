@@ -178,11 +178,38 @@ bool closeHandle(HANDLE h) {
     return true;
 }
 
+// ---- waits: one lock, a registered waiter per sleeping thread -------------------------------
+// One process-wide condition variable woke every waiting thread (the guest's worker threads,
+// the host's main thread waiting for the guest's, the sound and file threads) on every
+// SetEvent / ReleaseSemaphore / ReleaseMutex, and each then queued on the lock to look and
+// sleep again. A waiter now names its objects, and only the waiters of the changed object
+// (or, for an APC, the alertable waits of its thread) are woken.
 static std::mutex g_waitLock;
-static std::condition_variable_any g_waitCv;
+static Waiter* g_waiters;  // under g_waitLock
 std::mutex& waitLock() { return g_waitLock; }
-void notifyAll() { g_waitCv.notify_all(); }
-std::condition_variable_any& waitCv() { return g_waitCv; }
+void addWaiter(Waiter* w) {
+    w->prev = nullptr;
+    w->next = g_waiters;
+    if (g_waiters) g_waiters->prev = w;
+    g_waiters = w;
+}
+void removeWaiter(Waiter* w) {
+    if (w->prev) w->prev->next = w->next;
+    else g_waiters = w->next;
+    if (w->next) w->next->prev = w->prev;
+    w->next = w->prev = nullptr;
+}
+void notifyWaiters(const Object* o) {
+    for (Waiter* w = g_waiters; w; w = w->next) {
+        bool hit = !o;
+        for (DWORD i = 0; !hit && i < w->n; ++i) hit = w->objs[i].get() == o;
+        if (hit && !w->woken) { w->woken = true; w->cv.notify_one(); }
+    }
+}
+static void notifyAlertable(DWORD tid) {
+    for (Waiter* w = g_waiters; w; w = w->next)
+        if (w->alertable && w->tid == tid && !w->woken) { w->woken = true; w->cv.notify_one(); }
+}
 
 // ---- APCs ---------------------------------------------------------------------------------
 namespace {
@@ -196,7 +223,7 @@ void queueApc(DWORD tid, std::function<void()> fn) {
         g_apcs[tid].push_back(std::move(fn));
     }
     std::lock_guard<std::mutex> l(g_waitLock);
-    g_waitCv.notify_all();
+    notifyAlertable(tid);
 }
 
 bool hasApcs(DWORD tid) {

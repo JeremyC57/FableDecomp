@@ -150,6 +150,138 @@ std::string sha256(const std::vector<uint8_t>& data) {
     return s;
 }
 
+#ifdef FABLE_POSIX
+}  // namespace
+// What the crash report names a host pc by. The lifted functions are in the tables (the main one
+// and the recompiled DLLs'), but code without a table entry sits among and after them: each
+// --wrap function's original body F_X_orig (Lifter.cpp emits it just before the F_X wrapper, and
+// only F_X is in the table), the runtime (runtime.c) and the host's own code. Those are marks too
+// (as in profiler.cpp), so a pc in them is not given to the lifted function before it.
+extern "C" {
+typedef struct RecompEntry { uint32_t addr; GuestFn fn; } RecompEntry;
+typedef struct GuestDllTable { const char* file; const RecompEntry* table; const uint32_t* size; } GuestDllTable;
+extern const GuestDllTable guest_dll_tables[];  // guest_dlls.c (CMake)
+extern const uint32_t guest_dll_count;
+uint32_t recomp_num_tables(void);
+const RecompEntry* recomp_table_entries(uint32_t i, uint32_t* n);
+int recomp_init_memory(void);
+void recomp_register_table(const RecompEntry* table, uint32_t size);
+// The lift command's --wrap list (HANDOFF.md): the original body and the host function of each.
+// Weak: one this build was not lifted with is null.
+#define FABLE_WRAPS(X)                                                                                                       \
+    X(0055CB10, host_ui_event) X(0058F649, host_open_inventory) X(0041CF47, host_ui_scale) X(0069AC90, host_camera_set)        \
+    X(00533D30, host_component_size) X(00B24690, host_video_options) X(0047E196, host_save_game) X(0054EF00, host_text_draw)   \
+    X(0052FFD0, host_update_position) X(00445B80, host_ztarget_toggle) X(00591E5E, host_inventory_screen)                      \
+    X(00581FA4, host_csi_graphic) X(00581E33, host_quick_access_item) X(005840A6, host_use_quick_item)                         \
+    X(00583A92, host_use_context_item) X(0041DB1D, host_create_component) X(00530780, host_find_child)                         \
+    X(00661F70, host_is_child) X(0041E6D3, host_ui_manager_event) X(00446000, host_quick_button) X(0054E6F0, host_viewport_draw) \
+    X(00BE1E70, host_viewport2d_render) X(00A4CEC0, host_calc_local_transformations)                                           \
+    X(00A4D770, host_calc_local_transformations_relative) X(00C78A10, host_hrtf_fir) X(00C79440, host_hrtf_fir_ramp)           \
+    X(00C9C2F0, host_mdct_butterfly)
+#define FABLE_WRAP_DECL(a, h) __attribute__((weak)) void F_##a##_orig(Ctx* c); __attribute__((weak)) void h(Ctx* c);
+FABLE_WRAPS(FABLE_WRAP_DECL)
+#undef FABLE_WRAP_DECL
+}
+namespace host::com { void comAddRef(Ctx* c); void comRelease(Ctx* c); void comQueryInterface(Ctx* c); }
+namespace {
+LONG CALLBACK crashHandler(EXCEPTION_POINTERS* e);
+
+struct CodeMark {
+    enum Kind : uint8_t { kNone, kLifted, kOrig, kRuntime, kHost } kind = kNone;
+    uintptr_t at = 0;
+    uint32_t guest = 0;
+    const char* name = nullptr;
+};
+
+// The marks nearest to pc: the last one at or below it and the first one above it.
+void nearestMarks(uintptr_t pc, CodeMark& lo, CodeMark& hi) {
+    lo = {}, hi = {};
+    auto mark = [&](uintptr_t at, CodeMark::Kind kind, uint32_t guest, const char* name) {
+        if (!at) return;
+        if (at <= pc) {
+            if (!lo.kind || at > lo.at) lo = {kind, at, guest, name};
+        } else if (!hi.kind || at < hi.at) {
+            hi = {kind, at, guest, name};
+        }
+    };
+    auto table = [&](const RecompEntry* r, uint32_t n) {
+        for (uint32_t i = 0; r && i < n; ++i) mark(reinterpret_cast<uintptr_t>(r[i].fn), CodeMark::kLifted, r[i].addr, nullptr);
+    };
+    uint32_t n = 0;
+    const RecompEntry* exe = recomp_table_entries(0, &n);  // Fable.exe's
+    table(exe, n);
+    for (uint32_t i = 0; i < guest_dll_count; ++i)  // every recompiled DLL, loaded (registered) or not
+        if (guest_dll_tables[i].table && guest_dll_tables[i].size) table(guest_dll_tables[i].table, *guest_dll_tables[i].size);
+#define FABLE_WRAP_MARK(a, h)                                                               \
+    mark(reinterpret_cast<uintptr_t>(&F_##a##_orig), CodeMark::kOrig, 0x##a##u, nullptr); \
+    mark(reinterpret_cast<uintptr_t>(&h), CodeMark::kHost, 0, #h);
+    FABLE_WRAPS(FABLE_WRAP_MARK)
+#undef FABLE_WRAP_MARK
+#define FABLE_MARK(kind, f) mark(reinterpret_cast<uintptr_t>(&f), CodeMark::kind, 0, #f);
+    FABLE_MARK(kRuntime, recomp_init_memory) FABLE_MARK(kRuntime, recomp_register_table) FABLE_MARK(kRuntime, recomp_num_tables)
+    FABLE_MARK(kRuntime, recomp_table_entries) FABLE_MARK(kRuntime, recomp_lookup) FABLE_MARK(kRuntime, recomp_set_host_range)
+    FABLE_MARK(kRuntime, recomp_dispatch) FABLE_MARK(kRuntime, recomp_dispatch_ic) FABLE_MARK(kRuntime, recomp_fatal)
+    FABLE_MARK(kRuntime, recomp_cpuid) FABLE_MARK(kRuntime, recomp_rdtsc) FABLE_MARK(kRuntime, recomp_landing_push)
+    FABLE_MARK(kRuntime, recomp_landing_pop) FABLE_MARK(kRuntime, recomp_landing_chain_get) FABLE_MARK(kRuntime, recomp_landing_chain_set)
+    FABLE_MARK(kRuntime, recomp_resume_at)
+    FABLE_MARK(kHost, host::com::comAddRef) FABLE_MARK(kHost, host::com::comRelease) FABLE_MARK(kHost, host::com::comQueryInterface)
+    FABLE_MARK(kHost, crashHandler)
+#undef FABLE_MARK
+}
+
+const char* markName(const CodeMark& m, char* buf, size_t size) {
+    switch (m.kind) {
+        case CodeMark::kLifted: std::snprintf(buf, size, "lifted F_%08X", m.guest); break;
+        case CodeMark::kOrig: std::snprintf(buf, size, "F_%08X_orig (the original body of the wrapped F_%08X)", m.guest, m.guest); break;
+        case CodeMark::kRuntime: std::snprintf(buf, size, "the runtime's %s", m.name); break;
+        case CodeMark::kHost: std::snprintf(buf, size, "host function %s", m.name); break;
+        default: std::snprintf(buf, size, "?"); break;
+    }
+    return buf;
+}
+
+// Where a host pc lies, from the marks around it. A pc between two lifted function starts is
+// most likely in the lower one (marked approximate); a pc past the last lifted start before a
+// runtime or host mark, below every mark, or in another module is not given to a lifted function.
+void logCodeAt(const char* what, uintptr_t pc) {
+    void* const p = reinterpret_cast<void*>(pc);
+    Dl_info self{}, at{};
+    const bool found = dladdr(p, &at) && at.dli_fname;
+    if (!dladdr(reinterpret_cast<void*>(&crashHandler), &self) || !found || at.dli_fbase != self.dli_fbase) {
+        if (found)
+            log("  %s %p: %s+0x%llx%s%s, not the program's own code", what, p, at.dli_fname,
+                static_cast<unsigned long long>(pc - reinterpret_cast<uintptr_t>(at.dli_fbase)), at.dli_sname ? " in " : "", at.dli_sname ? at.dli_sname : "");
+        else
+            log("  %s %p: in no loaded module", what, p);
+        return;
+    }
+    CodeMark lo, hi;
+    nearestMarks(pc, lo, hi);
+    char low[96], next[128];
+    if (hi.kind) {
+        char n[96];
+        std::snprintf(next, sizeof next, "%s -0x%llx", markName(hi, n, sizeof n), static_cast<unsigned long long>(hi.at - pc));
+    } else {
+        std::snprintf(next, sizeof next, "none");
+    }
+    const auto below = static_cast<unsigned long long>(pc - lo.at);
+    const bool liftedLo = lo.kind == CodeMark::kLifted || lo.kind == CodeMark::kOrig;
+    const bool liftedHi = hi.kind == CodeMark::kLifted || hi.kind == CodeMark::kOrig;
+    if (!lo.kind)
+        log("  %s %p: below every code mark (the first: %s): not lifted code", what, p, next);
+    else if (liftedLo && liftedHi)
+        log("  %s %p: most likely in %s +0x%llx (approximate: the function starts nearest below and above are that one and %s; "
+            "out-of-line helpers from recomp.h also sit between lifted functions)",
+            what, p, markName(lo, low, sizeof low), below, next);
+    else if (liftedLo)
+        log("  %s %p: past %s +0x%llx, the last lifted function start before the next mark (%s): not attributed (the end of that "
+            "function, or the runtime or host code linked after the lifted code)",
+            what, p, markName(lo, low, sizeof low), below, next);
+    else
+        log("  %s %p: not lifted code: after %s +0x%llx (approximate; the next mark: %s)", what, p, markName(lo, low, sizeof low), below, next);
+}
+#endif
+
 // Crash report for faults in the recompiled code: the host address, and the likely guest
 // call chain (return addresses into Fable.exe found on the guest stack).
 LONG CALLBACK crashHandler(EXCEPTION_POINTERS* e) {
@@ -165,14 +297,37 @@ LONG CALLBACK crashHandler(EXCEPTION_POINTERS* e) {
         static_cast<unsigned long long>(addr - self), e->ExceptionRecord->ExceptionInformation[0] ? "writing" : "reading",
         static_cast<unsigned long long>(e->ExceptionRecord->ExceptionInformation[1]));
 #ifdef FABLE_POSIX
+    if (e->ExceptionRecord->NumberParameters >= 4)  // kernel.cpp onSignal: a sent signal (si_code <= 0)
+        log("  the signal was sent (by process %llu) after a fault: another handler took the fault first and re-raised it, so the "
+            "host address is that raise; %s",
+            static_cast<unsigned long long>(e->ExceptionRecord->ExceptionInformation[2]),
+            e->ExceptionRecord->ExceptionInformation[3] ? "the address above is the thread's last memory fault as the kernel recorded it"
+                                                        : "the fault address is not known (the address above is 0)");
     {   // the host symbol and module offset (GetModuleHandle is the guest image here)
         Dl_info info{};
         if (dladdr(reinterpret_cast<void*>(addr), &info) && info.dli_fname)
             log("  host: %s+0x%llx%s%s", info.dli_fname, static_cast<unsigned long long>(addr - reinterpret_cast<uintptr_t>(info.dli_fbase)), info.dli_sname ? " in " : "", info.dli_sname ? info.dli_sname : "");
     }
+    logCodeAt("host pc", addr);  // the lifted guest function it falls in, if any
+#if defined(__aarch64__)
+    {
+        const CONTEXT* x = e->ContextRecord;
+        logCodeAt("host lr (the return address of the last call made, or of the caller)", static_cast<uintptr_t>(x->X[30]));
+        for (int i = 0; i < 31; i += 4) {  // the lifted code keeps guest registers and pointers in these
+            char line[160];
+            int n = 0;
+            for (int j = i; j < i + 4 && j < 31; ++j)
+                n += std::snprintf(line + n, sizeof line - n, " x%-2d %016llx", j, static_cast<unsigned long long>(x->X[j]));
+            log("  host%s", line);
+        }
+        log("  host sp %016llx", static_cast<unsigned long long>(x->Sp));
+    }
+#endif
 #endif
     const GuestThread* t = currentThread();
     const uint32_t esp = t->ctx.esp;
+    log("  guest registers at the last call or return: eax %08X ecx %08X edx %08X ebx %08X esi %08X edi %08X", t->ctx.eax, t->ctx.ecx,
+        t->ctx.edx, t->ctx.ebx, t->ctx.esi, t->ctx.edi);
     log("  guest esp 0x%08X ebp 0x%08X; return addresses on the guest stack:", esp, t->ctx.ebp);
     int shown = 0;
     for (uint32_t a = esp; a + 4 <= t->stackHi && a < esp + 0x2000 && shown < 24; a += 4) {

@@ -674,3 +674,26 @@ IMPORT(K, TlsSetValue) {
 }
 }  // namespace
 }  // namespace host
+
+// CResourceList::GetUnloadableMemory (0x9FC070, ulong __thiscall(ulong minUnusedFrames), ret 4),
+// replaced by the lifter: --hook 0x9FC070=host_unloadable_memory. Its only callers are
+// CGraphicDataBank::FrameEnd (0x9FD6AE) and the uncalled UpdateAvailableMemory (0x9FD3CE); both
+// add the result to the bank's AvailableMemory (+0x278), which nothing in Fable.exe reads (nor
+// MinAvailablePreloadMemory +0x274: a preload budget the PC build never consults). The retail
+// walk runs every frame for every graphics bank over each resident texture frame left unused
+// for ReduceSizeFrameDelay frames (3; one engine bank is set to 1 every frame at 0xB3B7E5, which
+// makes it every resident frame there) and asks Direct3D twice for each one's size
+// (CFrameData::GetUnloadableMemory 0x9FD830 -> CTexture::GetLevelByteLength 0x9F9E80, two
+// GetLevelDesc calls through the COM traps): about 1.5% of the device's CPU, on the game thread,
+// for a number that is thrown away. Nothing else depends on it: the list holds loaded frames
+// only, which never have async file data (BeginLoading sets it at 0x9FE27E and moves the frame
+// to the loading list; UploadFrame clears it at 0x9FF2D0 before 0x9FF429 adds the frame back),
+// so CBankFileAsyncData::IsFinished (it clears a flag) is never reached from the walk, and
+// FrameEnd and its callers read no register but eax after the call.
+extern "C" void host_unloadable_memory(Ctx* c) {
+    static std::atomic<bool> logged{false};
+    if (!logged.exchange(true, std::memory_order_relaxed))
+        HLOG(1, "texture memory: the per-frame unloadable-memory walk (0x9FC070) is skipped (its sum is never read)");
+    c->eax = 0;
+    c->esp += 8;  // ret 4
+}

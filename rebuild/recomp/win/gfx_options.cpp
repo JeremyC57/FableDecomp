@@ -39,12 +39,13 @@ constexpr uint32_t kWidth = 0, kHeight = 4, kAspectX = 8, kAspectY = 12, kRefres
 // DrawDistanceMultiplier 0.75/1/1.25/1.5, ShadowBufferSize 0/1024/2048/4096 for Low..Highest).
 constexpr uint32_t kLODErrorTolerance = 64, kCharacterLODErrorTolerance = 68, kDrawDistanceMultiplier = 72, kDrawDistanceMinimum = 76,
                    kDrawDistanceMaximum = 80, kRepeatedMeshDrawDistanceFactor = 84, kZSpriteDrawDistanceMultiplier = 96, kShadowBufferSize = 100,
-                   kEnableGlow = 0x6E, kEnableWaterReflection = 0x70, kEnableWeatherEffects = 0x71;
+                   kEnable2DDisplacement = 0x6C, kEnable3DDisplacement = 0x6D, kEnableGlow = 0x6E, kEnableWaterReflection = 0x70,
+                   kEnableWeatherEffects = 0x71;
 constexpr uint32_t kDefSlots[4] = {0x120, 0x124, 0x128, 0x12C};  // CEngine: LOW, NORMAL, HIGH, HIGHEST
 
 struct Original {  // a def's values before the host touched them
     float lod, charLod, ddMul, ddMin, ddMax, repeated, zsprite;
-    uint8_t glow, water, weather;
+    uint8_t glow, water, weather, disp2d, disp3d;
 };
 std::map<uint32_t, Original> g_originals;
 
@@ -73,15 +74,18 @@ void parseLine(const char* line, Settings& s) {
     else if (std::sscanf(line, "glow=%d", &v) == 1) s.glow = v != 0;
     else if (std::sscanf(line, "water_reflection=%d", &v) == 1) s.water = v != 0;
     else if (std::sscanf(line, "weather=%d", &v) == 1) s.weather = v != 0;
+    else if (std::sscanf(line, "distortion=%d", &v) == 1) s.distortion = v != 0;
+    else if (std::sscanf(line, "character_lod=%d", &v) == 1) s.characterLod = std::clamp(v, 0, 3);
 }
 
 void save() {
     if (FILE* f = std::fopen(path().c_str(), "w")) {
         const Settings& s = g_settings;
         std::fprintf(f, "resolution_scale=%d\nrefresh_rate=%d\nantialiasing=%d\naspect_ratio=%d\nlandscape_detail=%d\nmodel_detail=%d\ntexture_detail=%d\n"
-                        "shadow_quality=%d\neffects_quality=%d\nbrightness=%d\nvsync=%d\ndraw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\nfps_cap=%d\n",
+                        "shadow_quality=%d\neffects_quality=%d\nbrightness=%d\nvsync=%d\ndraw_distance=%d\nglow=%d\nwater_reflection=%d\nweather=%d\nfps_cap=%d\n"
+                        "distortion=%d\ncharacter_lod=%d\n",
                      s.resolutionScale, s.refreshRate, s.antialiasing, s.aspect, s.landscape, s.model, s.texture, s.shadow, s.effects, s.brightness, s.vsync,
-                     s.drawDistance, s.glow ? 1 : 0, s.water ? 1 : 0, s.weather ? 1 : 0, s.fpsCap);
+                     s.drawDistance, s.glow ? 1 : 0, s.water ? 1 : 0, s.weather ? 1 : 0, s.fpsCap, s.distortion ? 1 : 0, s.characterLod);
         std::fclose(f);
     }
 }
@@ -92,10 +96,11 @@ void applyToDef(uint32_t def, const Settings& s) {
     if (it == g_originals.end()) {
         Original o{rdf32(def + kLODErrorTolerance), rdf32(def + kCharacterLODErrorTolerance), rdf32(def + kDrawDistanceMultiplier),
                    rdf32(def + kDrawDistanceMinimum), rdf32(def + kDrawDistanceMaximum), rdf32(def + kRepeatedMeshDrawDistanceFactor),
-                   rdf32(def + kZSpriteDrawDistanceMultiplier), rd8(def + kEnableGlow), rd8(def + kEnableWaterReflection), rd8(def + kEnableWeatherEffects)};
+                   rdf32(def + kZSpriteDrawDistanceMultiplier), rd8(def + kEnableGlow), rd8(def + kEnableWaterReflection), rd8(def + kEnableWeatherEffects),
+                   rd8(def + kEnable2DDisplacement), rd8(def + kEnable3DDisplacement)};
         it = g_originals.emplace(def, o).first;
-        log("gfx: def 0x%08X: lod %.2f/%.2f draw x%.2f [%.0f..%.0f] repeated %.2f zsprite %.2f shadow %u glow %u water %u weather %u", def, o.lod, o.charLod,
-            o.ddMul, o.ddMin, o.ddMax, o.repeated, o.zsprite, rd32(def + kShadowBufferSize), o.glow, o.water, o.weather);
+        log("gfx: def 0x%08X: lod %.2f/%.2f draw x%.2f [%.0f..%.0f] repeated %.2f zsprite %.2f shadow %u glow %u water %u weather %u distortion %u/%u", def,
+            o.lod, o.charLod, o.ddMul, o.ddMin, o.ddMax, o.repeated, o.zsprite, rd32(def + kShadowBufferSize), o.glow, o.water, o.weather, o.disp2d, o.disp3d);
     }
     const Original& o = it->second;
     const float dd = s.drawDistance / 100.0f;
@@ -107,6 +112,11 @@ void applyToDef(uint32_t def, const Settings& s) {
     wr8(def + kEnableGlow, o.glow && s.glow ? 1 : 0);
     wr8(def + kEnableWaterReflection, o.water && s.water ? 1 : 0);
     wr8(def + kEnableWeatherEffects, o.weather && s.weather ? 1 : 0);
+    wr8(def + kEnable2DDisplacement, o.disp2d && s.distortion ? 1 : 0);
+    wr8(def + kEnable3DDisplacement, o.disp3d && s.distortion ? 1 : 0);
+    // read every frame by CEnginePrimitiveRenderer::FrameStart (0xB32660) for the mesh-detail def and
+    // used by CEngineInternalPrimitiveAnimatedMesh::SetupMesh (0xBCF2E0) to pick the LOD level
+    wrf32(def + kCharacterLODErrorTolerance, std::max(o.charLod, characterLodTolerance(s.characterLod)));
 }
 
 // FABLE_GFX_DEFAULTS="key=value,key=value" (graphics.txt keys) seeds the settings when no file exists
@@ -144,6 +154,11 @@ void aspectValue(int a, int w, int h, float& x, float& y) {
     x = g ? static_cast<float>(w / g) : 4.0f, y = g ? static_cast<float>(h / g) : 3.0f;
 }
 
+float characterLodTolerance(int level) {
+    static const float tolerances[] = {0.0f, 1.0f, 1.5f, 3.0f};  // 1.5 = the ENGINE def's own value
+    return tolerances[std::clamp(level, 0, 3)];
+}
+
 float gammaExponent(int brightness) { return std::exp2((50 - std::clamp(brightness, 0, 100)) / 50.0f); }  // 100: 0.5 (brighter), 0: 2 (darker)
 
 void load() {
@@ -175,7 +190,7 @@ void set(const Settings& s) {
     const bool sameVideo = s.resolutionScale == o.resolutionScale && s.refreshRate == o.refreshRate && s.antialiasing == o.antialiasing && s.aspect == o.aspect &&
                            s.landscape == o.landscape && s.model == o.model && s.texture == o.texture && s.shadow == o.shadow && s.effects == o.effects &&
                            s.brightness == o.brightness && s.vsync == o.vsync && s.drawDistance == o.drawDistance && s.glow == o.glow && s.water == o.water &&
-                           s.weather == o.weather;
+                           s.weather == o.weather && s.distortion == o.distortion && s.characterLod == o.characterLod;
     g_settings = s;
     g_seeded = true;
     if (!sameVideo) g_pending = true;
@@ -249,9 +264,10 @@ extern "C" void host_video_options(Ctx* c) {
         wrf32(g_optsCopy + kAspectX, ax), wrf32(g_optsCopy + kAspectY, ay);
         if (s.refreshRate) wr32(g_optsCopy + kRefresh, static_cast<uint32_t>(s.refreshRate));
         wr32(g_optsCopy + kVsync, s.vsync ? 1 : 0);
-        HLOG(1, "gfx: host settings: %ux%u (%d%%) %.0f:%.0f %u Hz aa %d vsync %d, landscape %s, model %s, texture %s, shadow %s, effects %s, brightness %d, draw %d%%, glow %d, water %d, weather %d",
+        HLOG(1, "gfx: host settings: %ux%u (%d%%) %.0f:%.0f %u Hz aa %d vsync %d, landscape %s, model %s, texture %s, shadow %s, effects %s, brightness %d, draw %d%%, glow %d, water %d, weather %d, distortion %d, character lod %d",
              rd32(g_optsCopy), rd32(g_optsCopy + 4), s.resolutionScale, ax, ay, rd32(g_optsCopy + kRefresh), s.antialiasing, s.vsync, qualityName(s.landscape),
-             qualityName(s.model), qualityName(s.texture), qualityName(s.shadow), qualityName(s.effects), s.brightness, s.drawDistance, s.glow, s.water, s.weather);
+             qualityName(s.model), qualityName(s.texture), qualityName(s.shadow), qualityName(s.effects), s.brightness, s.drawDistance, s.glow, s.water, s.weather,
+             s.distortion, s.characterLod);
         wr32(c->esp + 4, g_optsCopy);
     }
     for (uint32_t slot : kDefSlots) applyToDef(rd32(engine + slot), s);

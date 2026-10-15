@@ -23,6 +23,17 @@ cp "$HERE/Fable.sh" "$OUT/Fable.sh"; cp "$HERE/Fable-diag.sh" "$OUT/Fable-diag.s
 OUT="$OUT/Fable"
 cp "$BUILD/FableRecomp" "$OUT/FableRecomp"
 cp "$DXVK/src/d3d9/libdxvk_d3d9.so" "$OUT/lib/libdxvk_d3d9.so.0"
+# The profiler's (FABLE_PROFILE=1) names for the host code of the stripped binary: its symbols
+# without the ~150k lifted F_ functions (named from the recompiled tables), tagged with the
+# build id so a stale file is ignored. Link (mangled) names: the profiler demangles them for
+# its log and keeps them for FABLE_PROFILE_DUMP (gen_hot_order.py --counts, an lld ordering file).
+NM=${NM:-aarch64-linux-gnu-nm}; command -v "$NM" >/dev/null || NM=nm
+{
+  echo "# host symbols of FableRecomp for the profiler (package_rg34xx.sh): <link address> <name>"
+  aarch64-linux-gnu-readelf -n "$BUILD/FableRecomp" | awk '/Build ID/ {print "# build-id " $3}'
+  aarch64-linux-gnu-readelf -SW "$BUILD/FableRecomp" | sed -n 's/.*\] \.plt  *PROGBITS  *\([0-9a-f]*\) .*/\1 [plt]/p'
+  "$NM" -n --defined-only "$BUILD/FableRecomp" | awk '$2 ~ /^[tTwW]$/ && $3 !~ /^(F_|\$|\.L)/ { print $1, $3 }'
+} > "$OUT/FableRecomp.syms"
 aarch64-linux-gnu-strip --strip-unneeded "$OUT/FableRecomp" "$OUT/lib/libdxvk_d3d9.so.0"
 
 if [ -n "$FFMPEG_PREFIX" ]; then  # the minimal FFmpeg first, so the sysroot's is not pulled in

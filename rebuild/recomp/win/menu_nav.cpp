@@ -25,7 +25,9 @@
 #include "controller.hpp"
 
 #include <algorithm>
+#include <atomic>
 #include <cmath>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <map>
@@ -1548,3 +1550,335 @@ void xboxScreensTick() {  // once per input update: the Xbox inventory screens e
     if (g_xboxScreensUp && !liveGui()) { g_xboxScreensUp = false; g_clothingLabels.clear(); HLOG(1, "menu: Xbox inventory screens closed (live GUI off)"); }
 }
 }  // namespace host::menu
+
+// ============================================================================
+// C3DAnimation2::CalcLocalTransformations (0xA4CEC0) and CalcLocalTransformationsRelative
+// (0xA4D770): --wrap 0xA4CEC0=host_calc_local_transformations
+//             --wrap 0xA4D770=host_calc_local_transformations_relative
+// ============================================================================
+// Two device crashes (v17 and v25, in combat, rendering an animated mesh: GetBoneTransformations
+// -> CalcBlendedMeshTransformations -> CombineBlendedBaseAnimations 0xA9F374 -> 0xA4CEC0)
+// faulted in CalcLocalTransformations' bone loop, after its one call (ConvertTimeToFrames, a
+// leaf) had returned: the guest esp of both reports is the value that return leaves, and the
+// loop makes no calls. Which pointer was bad the reports cannot say (SDL's re-raise hid the fault
+// address: kernel.cpp reassertFaultHandlers). The loop touches the instance (from
+// C3DAnimationInfo::GetAnimation's per-mesh map), its sequence table and sequence data (in a
+// relocatable resource pool), the track keys and the caller's C3DKeyframe array. Both callers
+// (CombineBlendedBaseAnimations 0xA9F2F0, CombineBaseAnimations 0xA9F1D0) call
+// CalcLocalTransformationsRelative instead when the instance's flags [this+8] have bit 2 set: the
+// same ConvertTimeToFrames, sequence table, sequence data and rotation keys (its rotation
+// arithmetic only reaches stack temporaries), then each bone's keyframe copied whole from the
+// mesh's bind pose [argument 4 + 0xA0] into the output. The same bad data faults there too.
+//
+// The guard checks every guest address the function will touch, for the frame its own
+// ConvertTimeToFrames gives, against the host's page table, and skips the call when one is not
+// mapped; everywhere else the original runs unchanged. The output array comes fresh from
+// CSimpleMemoryPool::Allocate (0xAA0100, in CalcBlendedMeshTransformations) on every call, so a
+// skip fills it rather than leave the pool's stale contents to the blending: with what
+// CalcLocalTransformations writes for track mode 0 (rotation (0,0,0,1) at +0x00, zeros at
+// +0x10..+0x1F of each 0x30-byte keyframe; it never writes the scaling at +0x20), for the
+// instance's bone count but no more than the mesh's (the size of that output slot); for
+// CalcLocalTransformationsRelative with its own result (the bind-pose copy) when the mesh's
+// keyframes can be read, else the same. The first skip of each function logs the bad access, the
+// instance, the bone, its sequence data and the caller's handle: the next device log names the
+// bad pointer.
+//
+// Cost: per call one more lifted ConvertTimeToFrames (the frame cannot be bounded tighter than
+// FrameCount otherwise, and checking whole tracks would skip valid calls) and three or four
+// page-table walks for the arrays; per bone one to six inline compares against the pages the call
+// has already found readable (kernel.cpp's page table only for a page not seen yet). On an x86-64
+// host, a 40-bone animation with paletted tracks (synthetic data, the lifted 0xA4CEC0): about
+// 0.45 us per call against 5.5 us for the original (8%), 30 ns of it per call.
+extern "C" void F_00A4CEC0_orig(Ctx* c);
+extern "C" void F_00A4D770_orig(Ctx* c);
+#ifndef _WIN32
+namespace w32 { bool guestWritable(uint32_t a, size_t n); const char* guestPageState(uint32_t a); }
+extern "C" void F_00A52650(Ctx* c);  // C3DAnimation2::ConvertTimeToFrames(float time, ulong* frame, float* fraction), ret 0xC
+
+namespace {
+constexpr uint32_t kAnimation2Vtable = 0x129D548;  // C3DAnimation2 (its constructor 0xA4EE10)
+// C3DAnimation2 fields (retail offsets: the Ego_r PDB's minus 4)
+constexpr uint32_t kFlags = 0x08, kPool = 0x38, kHandle = 0x3C, kFps = 0x50, kFrames = 0x54, kBones = 0x58, kSequences = 0x5C,
+                   kDataSize = 0x60, kData = 0x64, kRigidMask = 0x6C, kRigidPos = 0x70, kLocked = 0x74;
+// C3DMesh2 fields (the PDB's minus 8: BoneCount, BoneKeyframes, MeshID)
+constexpr uint32_t kMeshBones = 0x98, kMeshKeyframes = 0xA0, kMeshId = 0xE8;
+
+// The two functions. Both callers pass the mesh in esi (it is CalcLocalTransformationsRelative's
+// argument 4) and keep GetAnimation's CCountedPointer just above the arguments.
+struct AnimFn {
+    const char* name;
+    uint32_t addr, argBytes;
+    uint32_t frameRet;            // the return address of its ConvertTimeToFrames call
+    uint32_t retBlended, retBase;  // the return addresses of its calls in the two callers
+    uint32_t dataBytes;            // the sequence data it reads: [data+8, data+8+dataBytes)
+    bool relative;
+};
+constexpr AnimFn kCalc{"CalcLocalTransformations", 0xA4CEC0, 0xC, 0xA4CEE1, 0xA9F379, 0xA9F240, 0x24, false};
+constexpr AnimFn kRelative{"CalcLocalTransformationsRelative", 0xA4D770, 0x10, 0xA4D791, 0xA9F363, 0xA9F22B, 0x20, true};
+
+bool guestRange(uint32_t a, uint64_t n, bool write) {  // a whole array (n > 0)
+    if (!n || n > 0x7FFFFFFFu) return false;
+    return write ? w32::guestWritable(a, static_cast<size_t>(n)) : w32::guestReadable(a, static_cast<size_t>(n));
+}
+
+struct AnimCheck {
+    const char* what = nullptr;  // the access found unmapped
+    uint32_t addr = 0;
+    uint64_t size = 0;
+    bool write = false;
+    uint32_t bone = ~0u, frame = 0, frame2 = 0, key = ~0u, key2 = ~0u;
+    // The guest pages this call has found readable, by page number (direct-mapped): an animation's
+    // tracks lie in a few pages of its data, so most per-bone checks are this inline compare, not
+    // a walk of kernel.cpp's page table. Per call only: pages can be released between calls.
+    uint32_t pages[32];
+    AnimCheck() { std::memset(pages, 0xFF, sizeof pages); }  // no 4 KiB page number is 0xFFFFFFFF
+    bool fail(const char* w, uint32_t a, uint64_t n, bool wr) {
+        what = w, addr = a, size = n, write = wr;
+        return false;
+    }
+    // [a, a+n) readable, 0 < n <= 0x1000
+    __attribute__((always_inline)) bool read(const char* w, uint32_t a, uint32_t n) {
+        const uint32_t p = a >> 12;
+        return (((a + n - 1) >> 12) == p && pages[p & 31] == p) || readPages(w, a, n);
+    }
+    __attribute__((noinline)) bool readPages(const char* w, uint32_t a, uint32_t n) {
+        if (!w32::guestReadable(a, n)) return fail(w, a, n, false);
+        pages[(a >> 12) & 31] = a >> 12, pages[((a + n - 1) >> 12) & 31] = (a + n - 1) >> 12;
+        return true;
+    }
+    bool array(const char* w, uint32_t a, uint64_t n, bool wr = false) { return guestRange(a, n, wr) || fail(w, a, n, wr); }
+    // The keys i and j of a track of `size`-byte keys (as the original, in 32-bit address arithmetic).
+    __attribute__((always_inline)) bool keys(const char* w, uint32_t track, uint32_t i, uint32_t j, uint32_t size) {
+        if (j == i + 1) return read(w, track + i * size, 2 * size);
+        return read(w, track + i * size, size) && read(w, track + j * size, size);
+    }
+};
+
+// The frame the original's ConvertTimeToFrames call will compute: the lifted function itself, with
+// its two outputs below the guest stack pointer (it only reads this+0x50/+0x54 and writes those).
+// A FrameCount of 0 fails: it would divide by it (recomp_fatal).
+bool animFrame(Ctx* c, const AnimFn& fn, AnimCheck& k) {
+    const uint32_t esp = c->esp, eax = c->eax, ecx = c->ecx, edx = c->edx;
+    if (!rd32(ecx + kFrames)) return k.fail("FrameCount [this+0x54] = 0 (ConvertTimeToFrames divides by it)", ecx + kFrames, 0, false);
+    const uint32_t out = esp - 0x20;  // frame, fraction
+    c->esp = out - 16;
+    wr32(c->esp, fn.frameRet);
+    wr32(c->esp + 4, rd32(esp + 12));  // the time (argument 3 of both)
+    wr32(c->esp + 8, out);
+    wr32(c->esp + 12, out + 4);
+    F_00A52650(c);  // pops its arguments (ret 0xC)
+    k.frame = rd32(out);
+    c->esp = esp, c->eax = eax, c->ecx = ecx, c->edx = edx;
+    return true;
+}
+
+// Every guest address 0xA4CEC0..0xA4D325 reads or writes (the stack and the acos tables in the
+// image aside); false at the first one found unmapped.
+bool calcCheck(Ctx* c, AnimCheck& k) {
+    const uint32_t self = c->ecx, out = rd32(c->esp + 4);
+    if (!k.read("the instance (this+0x50..+0x73)", self + kFps, kLocked - kFps) || !animFrame(c, kCalc, k)) return false;
+    const uint32_t bones = rd32(self + kBones), f = k.frame;
+    if (!bones) return true;
+    const uint32_t seqs = rd32(self + kSequences), mask = rd32(self + kRigidMask), rigid = rd32(self + kRigidPos);
+    // each bone's rotation (+0x00) and position (+0x10) in the caller's C3DKeyframe array (0x30 each)
+    if (!k.array("the output keyframes (argument 1)", out, uint64_t(bones - 1) * 0x30 + 0x20, true) ||
+        !k.array("the sequence table [this+0x5C]", seqs, uint64_t(bones - 1) * 8 + 4) ||
+        (mask && !k.array("the rigid bone mask [this+0x6C]", mask, bones)))
+        return false;
+    for (uint32_t b = 0; b < bones; ++b) {
+        k.bone = b, k.key = k.key2 = ~0u;
+        const uint32_t d = rd32(seqs + b * 8);
+        if (!k.read("the sequence data (Sequences[bone].Data +8..+0x2B)", d + 8, kCalc.dataBytes)) return false;
+        const uint32_t count = rd16(d + 8), modes = rd8(d + 0xB);
+        const uint32_t f2 = k.frame2 = f + 1 < count ? f + 1 : 0;
+        const uint32_t rot = rd32(d + 0x14), pos = rd32(d + 0x20);
+        switch (modes & 3) {  // RotationTrackMode: 0 identity, 1 constant, 2 per frame, 3 paletted (16-byte CQuaternion keys)
+            case 1:
+                if (!k.read("the rotation key [data+0x14]", rot, 16)) return false;
+                break;
+            case 2:
+                if (!k.keys("a rotation key [data+0x14] + 16 * frame", rot, f, f2, 16)) return false;
+                break;
+            case 3: {
+                const uint32_t pal = rd32(d + 0x24);
+                if (!k.keys("the rotation palette [data+0x24] + frame", pal, f, f2, 1)) return false;
+                k.key = rd8(pal + f), k.key2 = rd8(pal + f2);
+                if (k.key == k.key2 ? !k.read("a paletted rotation key [data+0x14]", rot + (k.key << 4), 16)  // copied, not blended
+                                    : !k.keys("a paletted rotation key [data+0x14]", rot, k.key, k.key2, 16))
+                    return false;
+                break;
+            }
+            default: break;
+        }
+        k.key = k.key2 = ~0u;
+        switch ((modes >> 2) & 3) {  // PositionTrackMode, the same modes (6-byte C3DVectorWord keys)
+            case 1:
+                if (!k.read("the position key [data+0x20]", pos, 6)) return false;
+                break;
+            case 2:
+                if (!k.keys("a position key [data+0x20] + 6 * frame", pos, f, f2, 6)) return false;
+                break;
+            case 3: {
+                const uint32_t pal = rd32(d + 0x28);
+                if (!k.keys("the position palette [data+0x28] + frame", pal, f, f2, 1)) return false;
+                k.key = rd8(pal + f), k.key2 = rd8(pal + f2);
+                if (!k.keys("a paletted position key [data+0x20]", pos, k.key, k.key2, 6)) return false;
+                break;
+            }
+            default: break;
+        }
+        if (mask && rd8(mask + b) && !k.read("a rigid bone position [this+0x70]", rigid + b * 12, 12)) return false;
+    }
+    return true;
+}
+
+// Every guest address 0xA4D770..0xA4D911 reads or writes (the stack and the acos table aside).
+bool relativeCheck(Ctx* c, AnimCheck& k) {
+    const uint32_t self = c->ecx, out = rd32(c->esp + 4), mesh = rd32(c->esp + 16);
+    if (!k.read("the instance (this+0x50..+0x5F)", self + kFps, kSequences + 4 - kFps) || !animFrame(c, kRelative, k)) return false;
+    const uint32_t bones = rd32(self + kBones), f = k.frame;
+    if (!bones) return true;
+    const uint32_t seqs = rd32(self + kSequences);
+    if (!k.array("the sequence table [this+0x5C]", seqs, uint64_t(bones - 1) * 8 + 4) ||
+        !k.read("the mesh's keyframe pointer [argument 4 + 0xA0]", mesh + kMeshKeyframes, 4))
+        return false;
+    // each bone's whole keyframe (0x30 bytes, rep movs) from the mesh's array into the caller's
+    const uint32_t base = rd32(mesh + kMeshKeyframes);
+    if (!k.array("the mesh's bind-pose keyframes [mesh+0xA0]", base, uint64_t(bones) * 0x30) ||
+        !k.array("the output keyframes (argument 1)", out, uint64_t(bones) * 0x30, true))
+        return false;
+    for (uint32_t b = 0; b < bones; ++b) {
+        k.bone = b, k.key = k.key2 = ~0u;
+        const uint32_t d = rd32(seqs + b * 8);
+        if (!k.read("the sequence data (Sequences[bone].Data +8..+0x27)", d + 8, kRelative.dataBytes)) return false;
+        const uint32_t count = rd16(d + 8), modes = rd8(d + 0xB);
+        const uint32_t f2 = k.frame2 = f + 1 < count ? f + 1 : 0;
+        const uint32_t rot = rd32(d + 0x14);
+        if ((modes & 3) == 2 && !k.keys("a rotation key [data+0x14] + 16 * frame", rot, f, f2, 16)) return false;
+        if ((modes & 3) == 3) {  // the keys only when the palette names two different ones
+            const uint32_t pal = rd32(d + 0x24);
+            if (!k.keys("the rotation palette [data+0x24] + frame", pal, f, f2, 1)) return false;
+            k.key = rd8(pal + f), k.key2 = rd8(pal + f2);
+            if (k.key != k.key2 && !k.keys("a paletted rotation key [data+0x14]", rot, k.key, k.key2, 16)) return false;
+        }
+    }
+    return true;
+}
+
+// The mesh the call is for: CalcLocalTransformationsRelative's argument 4; esi at the two callers'
+// CalcLocalTransformations calls.
+uint32_t animMesh(Ctx* c, const AnimFn& fn) {
+    if (fn.relative) return rd32(c->esp + 16);
+    const uint32_t ret = rd32(c->esp);
+    return ret == fn.retBlended || ret == fn.retBase ? c->esi : 0;
+}
+
+// A skipped call's output, written so the blending never reads the pool's stale contents; what
+// was written goes to `said` for the log.
+void animFill(Ctx* c, const AnimFn& fn, char* said, size_t size) {
+    const uint32_t self = c->ecx, out = rd32(c->esp + 4), mesh = animMesh(c, fn);
+    const bool instance = w32::guestReadable(self + kBones, 4), meshOk = mesh && w32::guestReadable(mesh + kMeshBones, 0xC);
+    const uint32_t bones = instance ? rd32(self + kBones) : 0, meshBones = meshOk ? rd32(mesh + kMeshBones) : 0;
+    // the bones the blending reads: the instance's, no more than the mesh's (the size of this
+    // output slot), or the mesh's when the instance cannot be read
+    uint32_t n = instance ? bones : meshBones;
+    if (instance && meshOk && meshBones < n) n = meshBones;
+    if (fn.relative && meshOk && n) {  // its own result: the mesh's keyframes, copied as rep movsd does
+        const uint32_t base = rd32(mesh + kMeshKeyframes);
+        if (guestRange(base, uint64_t(n) * 0x30, false) && guestRange(out, uint64_t(n) * 0x30, true)) {
+            for (uint32_t i = 0; i < n * 12; ++i) wr32(out + i * 4, rd32(base + i * 4));
+            std::snprintf(said, size, "the mesh's %u bind-pose keyframes copied, as the original does", n);
+            return;
+        }
+    }
+    // else track mode 0's keyframe
+    if (!n || !guestRange(out, uint64_t(n - 1) * 0x30 + 0x20, true)) {
+        std::snprintf(said, size, "left as is (%s): the pool's stale contents", n ? "the output is not writable" : "no bone count");
+        return;
+    }
+    for (uint32_t b = 0; b < n; ++b) {
+        const uint32_t o = out + b * 0x30;
+        wr32(o, 0), wr32(o + 4, 0), wr32(o + 8, 0), wr32(o + 12, 0x3F800000u);  // rotation (0,0,0,1)
+        wr32(o + 16, 0), wr32(o + 20, 0), wr32(o + 24, 0), wr32(o + 28, 0);      // position 0
+    }
+    std::snprintf(said, size, "identity keyframes (rotation (0,0,0,1), position 0) for %u bones", n);
+}
+
+uint32_t animPeek(uint32_t a) { return w32::guestReadable(a, 4) ? rd32(a) : 0xFFFFFFFFu; }
+
+void animReport(Ctx* c, const AnimFn& fn, const AnimCheck& k, const char* said) {
+    static std::atomic<uint32_t> s_skipped[2];
+    const uint32_t n = s_skipped[fn.relative].fetch_add(1) + 1;
+    const uint32_t self = c->ecx, ret = rd32(c->esp);
+    if (n > 1) {  // then a count at powers of two
+        if (!(n & (n - 1)))
+            HLOG(0, "anim guard: %u calls of C3DAnimation2::%s skipped so far (this one: %s 0x%08X, instance 0x%08X, bone %d, from 0x%08X; output: %s)",
+                 n, fn.name, k.what, k.addr, self, static_cast<int>(k.bone), ret, said);
+        return;
+    }
+    if (k.size)
+        HLOG(0, "anim guard: C3DAnimation2::%s (0x%X, from 0x%08X) skipped: %s, 0x%08X (%llu bytes, %s), is not mapped: page %s. Output: %s. Once:",
+             fn.name, fn.addr, ret, k.what, k.addr, static_cast<unsigned long long>(k.size), k.write ? "written" : "read",
+             w32::guestPageState(k.addr), said);
+    else
+        HLOG(0, "anim guard: C3DAnimation2::%s (0x%X, from 0x%08X) skipped: %s. Output: %s. Once:", fn.name, fn.addr, ret, k.what, said);
+    if (w32::guestReadable(self, kLocked + 1)) {
+        const uint32_t vt = rd32(self);
+        HLOG(0, "anim guard:   instance 0x%08X: vtable 0x%08X (%s), flags 0x%08X, fps %g, frames %u, bones %u, sequences 0x%08X, sequence data "
+                "0x%08X+0x%X, pool 0x%08X handle %d, locked %u, rigid mask 0x%08X, rigid positions 0x%08X",
+             self, vt, vt == kAnimation2Vtable ? "C3DAnimation2" : "NOT C3DAnimation2's: freed or reused memory?", rd32(self + kFlags),
+             rdf32(self + kFps), rd32(self + kFrames), rd32(self + kBones), rd32(self + kSequences), rd32(self + kData), rd32(self + kDataSize),
+             rd32(self + kPool), static_cast<int>(rd32(self + kHandle)), rd8(self + kLocked), rd32(self + kRigidMask), rd32(self + kRigidPos));
+    } else {
+        HLOG(0, "anim guard:   instance 0x%08X is not readable (page %s)", self, w32::guestPageState(self));
+    }
+    HLOG(0, "anim guard:   call: keyframes 0x%08X, time %g -> frame %u; guest registers eax %08X ebx %08X esi %08X edi %08X ebp %08X",
+         rd32(c->esp + 4), rdf32(c->esp + 12), k.frame, c->eax, c->ebx, c->esi, c->edi, c->ebp);
+    if (const uint32_t mesh = animMesh(c, fn))
+        HLOG(0, "anim guard:   mesh 0x%08X: id [+0xE8] 0x%08X, bones [+0x98] %d, bind-pose keyframes [+0xA0] 0x%08X", mesh,
+             animPeek(mesh + kMeshId), static_cast<int>(animPeek(mesh + kMeshBones)), animPeek(mesh + kMeshKeyframes));
+    if (ret == fn.retBlended || ret == fn.retBase) {
+        // the caller's CCountedPointer from GetAnimation {instance, counter block {count, release,
+        // its argument}}, just above the arguments; edi is the animation state (its +8 the id
+        // GetAnimation was asked for), ebp the C3DAnimationManager
+        const uint32_t at = c->esp + 4 + fn.argBytes + 0xC, handle = rd32(at), counter = rd32(at + 4);
+        HLOG(0, "anim guard:   %s: handle {0x%08X, counter 0x%08X: count %d, release 0x%08X(0x%08X)}, animation state vtable 0x%08X id %u",
+             ret == fn.retBlended ? "CombineBlendedBaseAnimations" : "CombineBaseAnimations", handle, counter, static_cast<int>(animPeek(counter)),
+             animPeek(counter + 4), animPeek(counter + 8), animPeek(c->edi), animPeek(c->edi + 8));
+    }
+    if (k.bone == ~0u || !w32::guestReadable(rd32(self + kSequences) + k.bone * 8, 8)) return;
+    const uint32_t seq = rd32(self + kSequences) + k.bone * 8, data = rd32(seq);
+    const uint32_t buf = rd32(self + kData), bufSize = rd32(self + kDataSize);
+    HLOG(0, "anim guard:   bone %u of %u: sequence {data 0x%08X, parent %d, shared %u}, data %s the instance's sequence data buffer", k.bone,
+         rd32(self + kBones), data, static_cast<int16_t>(rd16(seq + 4)), rd8(seq + 6), data - buf < bufSize ? "inside" : "outside");
+    if (w32::guestReadable(data, 0x2C))
+        HLOG(0, "anim guard:   sequence data 0x%08X: frames %u, modes 0x%02X, factor %g, rotation track 0x%08X (%u), position track 0x%08X (%u), "
+                "rotation palette 0x%08X (%u), position palette 0x%08X (%u); frame %u/%u, palette keys %d/%d",
+             data, rd16(data + 8), rd8(data + 0xB), rdf32(data + 0xC), rd32(data + 0x14), rd16(data + 0x18), rd32(data + 0x20), rd16(data + 0x1A),
+             rd32(data + 0x24), rd16(data + 0x1C), rd32(data + 0x28), rd16(data + 0x1E), k.frame, k.frame2, static_cast<int>(k.key),
+             static_cast<int>(k.key2));
+}
+
+// A skip: fill the output, log, and return as the original does (ret 0xC / 0x10).
+void animSkip(Ctx* c, const AnimFn& fn, const AnimCheck& k) {
+    char said[128];
+    animFill(c, fn, said, sizeof said);
+    animReport(c, fn, k, said);
+    c->esp += 4 + fn.argBytes;
+}
+}  // namespace
+#endif
+
+extern "C" void host_calc_local_transformations(Ctx* c) {
+#ifndef _WIN32
+    if (AnimCheck k; !calcCheck(c, k)) return animSkip(c, kCalc, k);
+#endif
+    F_00A4CEC0_orig(c);
+}
+
+extern "C" void host_calc_local_transformations_relative(Ctx* c) {
+#ifndef _WIN32
+    if (AnimCheck k; !relativeCheck(c, k)) return animSkip(c, kRelative, k);
+#endif
+    F_00A4D770_orig(c);
+}

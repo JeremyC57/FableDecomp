@@ -93,3 +93,75 @@ Clear 0x7 with the full viewport once a frame, never with rectangles.
   24-bit format, stride 2880 at 720 px), the present pass writes alpha 1, the main target is
   RGBA8 + D24S8; RGB565 would save ~40 MB/s at the cost of banding while the GPU is idle
   (world swap 0.1-0.2 ms).
+
+## v26: the round from the towns/fights/cutscenes log (527c3e3b, v25)
+
+The log: towns, Greatwood, fights, cutscenes; no crash. World frames p50 35-59 ms with
+600-1100 draws, `waited 0.00` (the game thread sets the frame), render thread 22-35 ms.
+Process CPU over 100k samples: guest 45%, libmali 25%, libc 13%, host 10%, runtime 4%.
+Eight investigations ran in parallel, each patch adversarially reviewed (several twice);
+everything below was reviewed, nothing was measured on the device yet.
+
+- **Device::dropVaos was 2.4% of all CPU, 5-8% in the 45-55 ms town windows** (the v25
+  FableRecomp+0x387d8e8.. samples): every buffer, declaration or shader release walked the whole
+  VAO map. Now each buffer lists its VAOs (noted once per index buffer; amortised, no compaction
+  cliff); VAOs are shared across programs (explicit attribute locations) and keyed by
+  declaration/input content; VAO names come from the render thread in batches of 1024; LRU
+  eviction at 4096. Queue: producer/consumer counters on separate cache lines, cached positions,
+  a futex producer lock (spin then sleep); constant uploads merged across gaps of 16; sampler
+  objects cached per parameter set; the program looked up only when the textured-stage mask
+  changes; whole-buffer relocks orphaned only when a draw used the buffer. Switches:
+  FABLE_GLES_{VAO_INDEX,VAO_SHARE,VAO_CONTENT,VAO_EVICT,ARRAYBUF,TEXMASK,UNIFORM_GAP,
+  SAMPLER_CACHE,ORPHAN_WHOLE,QUEUE_FUTEX,QUEUE_CACHE}=0. Frame line: GL calls per type, VAOs.
+- **Shader programs compiled mid-game cost 40-55 ms each** (4 -> 115 programs in a session,
+  frames up to 858 ms): a persistent program-binary cache, `save/gles_programs.bin` (SHA-256
+  of the GLSL, driver-keyed header, per-record checksums, LRU to 1024, read on a cache thread,
+  published before any rewrite, programs of the last 3 sessions pre-linked in <= 2 ms slices per
+  frame, the rest loaded from binary at first draw); shaders compile lazily at first use with
+  the old fallbacks. `gles: long frame` line for every frame >= 100 ms, classifying it.
+- **FlushFileBuffers was an fsync on the SD card on every guest seek and close** (CDiskFileWin32
+  Close/SetPosition/MovePosition all flush): no-op for handles that never wrote, otherwise a
+  coalesced background fsync per inode, drained (tickets: only what was requested before) at
+  ExitProcess, the Back+Start quit and the overlay exit. FABLE_SYNC_FLUSH=1 restores it.
+- **CResourceList::GetUnloadableMemory walked every resident texture each frame** (two
+  GetLevelDesc COM calls per frame, 1.1% + the trap path) for a sum nothing reads (AvailableMemory
+  +0x278 is write-only; budgets come from the engine pools): `--hook 0x9FC070=host_unloadable_memory`.
+- **The top "graphics" guest functions were audio** (labels wrong): 0xC78A10/0xC79440 are the
+  software DirectSound mixer's MMX HRTF FIR (25 taps per ear per 128-sample block, every 3D
+  voice: no hardware 3D buffers), 0xC9C2F0.. are libvorbis 1.0.1's MDCT. Native replacements
+  (NEON FIR, bit-exact; the butterfly in the same double order), verified against the lifted
+  code on the first 64 calls each on the device (FABLE_DSP_VERIFY, FABLE_DSP_HOST=0).
+- **Host overhead**: the guest's calls to host traps (every D3D9/DSound COM call) never hit the
+  per-site inline cache (65536 reserved slots, `recomp_host_handler`); the Win32 layer's global
+  condition variable became per-waiter wake-ups, critical sections and SRW locks futex locks;
+  QPC/GetTickCount/timeGetTime/rdtsc read CNTVCT_EL0, anchored to CLOCK_MONOTONIC every 64 ms
+  (seqlock, never backwards: a re-base bound added after review for chrony-size slews), the fps
+  cap keeps clock_gettime. Profiler: host symbols from `FableRecomp.syms` (packaged), the guest
+  range bounded by the next host symbol, per-thread CPU lines, library time by caller.
+- **Lifter: the x87 stack in C locals** (static depth per function, written back where the GPRs
+  are spilled) and `_ftol2` inlined at 1,993 sites: A53 instructions -26..-55% on the hot
+  animation/particle/frustum functions (CalcBlendedBoneTransformation 5224 -> 2972); old vs new
+  differential over all 5,940 x87 functions identical but NaN signs. `--no-x87-locals`,
+  `--no-ftol2-inline` give the old output byte for byte.
+- **Build**: lld with `-ffunction-sections` and a hot-symbol ordering file from the device
+  profile (rg34xx/hot_symbols.txt, gen_hot_order.py); hot text on transparent huge pages when
+  the kernel has them (posix/codelayout.cpp, FABLE_HUGE_TEXT); **the Cortex-A53 errata 843419
+  linker fix was missing** (clang does not pass it; the H700 is r0p4): on now with
+  -mfix-cortex-a53-835769; `-mno-outline-atomics` (no LSE on the A53). PGO plumbing
+  (FABLE_PGO=gen / <profdata>, rg34xx/pgo_train.sh) not yet run. FABLE_PMU=60 (opt-in) logs IPC
+  and I-side stalls of the busiest thread.
+- **Settings**: the device was already at the lowest preset; new installs get it plus 80% draw
+  distance; the host menu gains 2D distortion and character LOD (retail defaults).
+- **Crash reports were never true on the device**: SDL2's evdev keyboard handler took every
+  SIGSEGV, restored ours and re-raised it, so each report showed libc's raise() and "reading
+  address <our pid>" (0xA45..0xB42 were pids). The crash handler now goes back on top of SDL's
+  (and passes the fault on), reads the kernel's recorded fault address for sent signals, logs
+  the host registers and names the lifted function (wrap `_orig` bodies and host code included,
+  approximate where it can't tell). The v17/v25 animation crash is in
+  C3DAnimation2::CalcLocalTransformations' bone loop (stack-pointer arithmetic): both it and
+  CalcLocalTransformationsRelative are now guarded (`--wrap 0xA4CEC0/0xA4D770`): an unreadable
+  instance/track/key/output skips the mesh for that frame (identity or bind pose) and logs which
+  pointer, once.
+- **Overlay input**: buttons, triggers and sticks held when the host menu closes stay hidden from
+  the game until released; Back+Start is held back 120 ms alone so the menu combo never reaches
+  the game (FABLE_OVERLAY_SOLO_MS).

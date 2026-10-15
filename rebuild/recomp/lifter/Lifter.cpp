@@ -419,6 +419,17 @@ bool& foldDisplacements() {
     static bool on = true;
     return on;
 }
+// --no-x87-locals: every x87 operation on c->fpu (the memory model, see Emitter::x87).
+bool& x87Locals() {
+    static bool on = true;
+    return on;
+}
+// Direct calls to these addresses (the CRT's _ftol2, when it is hooked to host_ftol2) are
+// inlined as the conversion host_ftol2 performs; --no-ftol2-inline keeps the calls.
+std::set<uint32_t>& ftol2Inline() {
+    static std::set<uint32_t> s;
+    return s;
+}
 
 class Emitter {
 public:
@@ -427,11 +438,27 @@ public:
     std::string function(Function& f) {
         out_.str("");
         f_ = &f;
+        xl_ = false;
+        xin_.clear();
+        xout_.clear();
+        if (x87Locals()) xl_ = analyzeX87(f);
+        xlFn_ = xl_;
         out_ << "void " << fname(f.entry) << "(Ctx* restrict c) {\n"  // restrict: no guest address aliases the Ctx
              << "    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;\n"
              << "    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;\n"
              << "    int fop = FOP(FK_EXPLICIT, 4); uint32_t fr = 0, fa = 0, fb = 0; /* flags undefined at entry */\n"
              << "    (void)fop; (void)fr; (void)fa; (void)fb;\n";
+        if (xl_) {
+            // x87 local model: base = TOP at entry (depth 0), registers relative to it.
+            out_ << "    uint32_t xbase = c->fpu.top & 7u; uint16_t xcw = c->fpu.cw, xsw = c->fpu.sw;\n";
+            std::string regs;
+            for (int k = 0; k < 8; ++k)
+                if (xused_ >> k & 1)
+                    regs += std::string(regs.empty() ? "    double " : ", ") + "xs" + std::to_string(k) + " = c->fpu.st[(xbase + " +
+                            std::to_string(k) + "u) & 7u]";
+            if (!regs.empty()) out_ << regs << ";\n";
+            out_ << "    (void)xbase; (void)xcw; (void)xsw;\n";
+        }
         if (traceAddrs().count(f.entry)) out_ << "    SPILL; recomp_trace(c, " << hex(f.entry) << "u);\n";
         if (f.eh) {
             // Landing pad: the host's C++ exception dispatch longjmps here to continue
@@ -439,8 +466,28 @@ public:
             out_ << "    RecompLanding land_ __attribute__((cleanup(recomp_landing_pop)));\n"
                  << "    recomp_landing_push(&land_, esp);\n"
                  << "    if (__builtin_setjmp(land_.jb)) {\n"
-                 << "        RELOAD; fop = FOP(FK_EXPLICIT, 4);\n"
-                 << "        switch (land_.target) {\n";
+                 << "        RELOAD; fop = FOP(FK_EXPLICIT, 4);\n";
+            if (xl_) {
+                // Retake the x87 state at the continuation's static depth.
+                std::map<int, std::vector<uint32_t>> byDepth;
+                for (uint32_t l : f.labels)
+                    if (f.insns.count(l)) {
+                        auto it = xin_.find(l);
+                        const int d = it == xin_.end() ? 0 : it->second.d & 7;
+                        if (d) byDepth[d].push_back(l);
+                    }
+                out_ << "        { uint32_t xd = 0u;";
+                if (!byDepth.empty()) {
+                    out_ << " switch (land_.target) {";
+                    for (const auto& [d, ls] : byDepth) {
+                        for (uint32_t l : ls) out_ << " case " << hex(l) << "u:";
+                        out_ << " xd = " << d << "u; break;";
+                    }
+                    out_ << " }";
+                }
+                out_ << " " << xreload("xd") << " }\n";
+            }
+            out_ << "        switch (land_.target) {\n";
             for (uint32_t l : f.labels)
                 if (f.insns.count(l)) out_ << "        case " << hex(l) << "u: goto " << lname(l) << ";\n";
             out_ << "        }\n"
@@ -462,10 +509,20 @@ public:
             }
             first = false;
             terminated_ = false;
+            if (xlFn_) {
+                // An instruction the analysis never reached is dead in the C code as well
+                // (e.g. bytes after an unsupported instruction): memory model.
+                auto it = xin_.find(a);
+                xl_ = it != xin_.end();
+                xs_ = xl_ ? it->second : XState{};
+                xd_ = xs_.d;
+                auto ot = xout_.find(a);
+                xoutD_ = ot == xout_.end() ? xs_.d : ot->second;
+            }
             const Insn* ins = p_.decode(a);
             if (!ins) {
                 ++st_.decodeErrors;
-                out_ << "    SPILL; recomp_fatal(c, " << hex(a) << ", \"undecodable\"); return;\n";
+                out_ << "    SPILL; " << (xl_ ? xspill(xs_) : "") << "recomp_fatal(c, " << hex(a) << ", \"undecodable\"); return;\n";
                 terminated_ = true;
                 expected = a + 1;
                 continue;
@@ -475,14 +532,20 @@ public:
             expected = ins->next();
         }
         if (!terminated_) out_ << "    goto " << target(expected) << ";\n";
+        xl_ = xlFn_;
         // Labels that are other functions' entries (tail calls / fall-through).
         for (uint32_t l : f.labels) {
             if (!f.insns.count(l)) {
                 out_ << lname(l) << ":;\n";
+                std::string xsp;
+                if (xl_) {
+                    auto it = xin_.find(l);
+                    if (it != xin_.end()) xsp = xspill(it->second);
+                }
                 if (p_.isEntry(l) && p_.functions().count(l))
-                    out_ << "    SPILL; " << fname(l) << "(c); return;\n";
+                    out_ << "    SPILL; " << xsp << fname(l) << "(c); return;\n";
                 else
-                    out_ << "    SPILL; recomp_fatal(c, " << hex(l) << ", \"jump outside lifted code\"); return;\n";
+                    out_ << "    SPILL; " << xsp << "recomp_fatal(c, " << hex(l) << ", \"jump outside lifted code\"); return;\n";
             }
         }
         out_ << "}\n\n";
@@ -499,18 +562,339 @@ private:
         // this function, or (if outside it) a tail-call / trap stub.
         f_->labels.insert(a);
         if (!f_->insns.count(a) && p_.isEntry(a)) called.insert(a);
+        if (dry_) drySuccs_.push_back(a);
         return lname(a);
     }
 
-    void line(const std::string& s) { out_ << "    " << s << "\n"; }
+    void line(const std::string& s) {
+        if (dry_) {
+            dryText_ += s;
+            dryText_ += '\n';
+            return;
+        }
+        out_ << "    " << (xl_ ? xsync(s) : s) << "\n";
+    }
 
     void unsupported(const Insn& ins) {
         const std::string m = ZydisMnemonicGetString(ins.in.mnemonic);
-        st_.unsupported[m]++;
-        ++st_.unsupportedInsns;
+        if (!dry_) {
+            st_.unsupported[m]++;
+            ++st_.unsupportedInsns;
+        }
         line("SPILL; recomp_fatal(c, " + hex(ins.addr) + ", \"unsupported " + m + "\"); return;");
         terminated_ = true;
     }
+
+    // ---- x87 local model ----
+    //
+    // Memory model (--no-x87-locals): every x87 operation goes through c->fpu (ST(i),
+    // fpush, fpop): TOP is loaded, masked and stored per operation, and since lifted code
+    // passes `c` to its callees the C compiler must assume any guest store may alias
+    // c->fpu, so registers and the control word are reloaded after every store (on the A53
+    // half the instructions of the animation and particle functions).
+    // Local model (every function with x87 code whose depths solve, see solveDepths): the
+    // eight registers live in C locals xs0..xs7, named relative to a runtime base `xbase`.
+    // At an instruction where `d` values have been pushed since the base was taken (a
+    // compile-time number), ST(i) is xs[(i - d) & 7], the image of
+    // c->fpu.st[(xbase + ((i - d) & 7)) & 7], and TOP is (xbase - d) & 7. CW and SW are
+    // locals too (CW is written through on fldcw). At every SPILL the registers written
+    // since the last sync, TOP (if anything was pushed or popped) and SW (if written) are
+    // stored to c->fpu; after every RELOAD the base is retaken as xbase = c->fpu.top + d
+    // and the registers are reloaded, which absorbs whatever the callee did to the stack
+    // (a float result pushed, say). So c->fpu holds exactly what the memory model would
+    // hold at every call, return, indirect branch and trap, and the C expressions computing
+    // each value are the same: the two models give bit-identical results.
+    struct XState {
+        int d = 0;            // values pushed since the base was taken
+        uint8_t dirty = 0;    // registers (base-relative) written since the last sync
+        bool top = false;     // pushed or popped since the last sync
+        bool sw = false;      // status word written since the last sync
+    };
+    struct DryInfo {
+        int dOut = 0;
+        uint8_t used = 0, written = 0;
+        bool moved = false, swWritten = false, sync = false, reload = false, term = false;
+        std::vector<uint32_t> succs;
+    };
+
+    static bool isX87(const Insn& ins) {
+        return ins.in.meta.category == ZYDIS_CATEGORY_X87_ALU || ins.in.meta.category == ZYDIS_CATEGORY_FCMOV;
+    }
+    static bool isFtol2Call(const Insn& ins) {
+        if (ins.in.mnemonic != ZYDIS_MNEMONIC_CALL || ins.op[0].type != ZYDIS_OPERAND_TYPE_IMMEDIATE) return false;
+        uint64_t t = 0;
+        ZydisCalcAbsoluteAddress(&ins.in, &ins.op[0], ins.addr, &t);
+        return ftol2Inline().count(static_cast<uint32_t>(t)) != 0;
+    }
+
+    // Emit `ins` into a scratch buffer at depth `d` to learn its x87 effect and successors.
+    DryInfo dryRun(const Insn& ins, int d) {
+        dry_ = true;
+        dryText_.clear();
+        drySuccs_.clear();
+        terminated_ = false;
+        xd_ = d;
+        xread_ = xwritten_ = 0;
+        xmoved_ = xswWritten_ = xsync_ = false;
+        emit(ins);
+        DryInfo r;
+        r.dOut = xd_;
+        r.used = uint8_t(xread_ | xwritten_);
+        r.written = xwritten_;
+        r.moved = xmoved_;
+        r.swWritten = xswWritten_;
+        r.sync = xsync_;
+        r.reload = dryText_.find("RELOAD;") != std::string::npos;
+        r.term = terminated_;
+        r.succs = drySuccs_;
+        dry_ = false;
+        terminated_ = false;
+        return r;
+    }
+
+    // Dataflow over the emitted control flow (dry runs of every instruction give its x87
+    // effect and successors). False: the function stays in the memory model.
+    bool analyzeX87(Function& f) {
+        bool any = false;
+        for (uint32_t a : f.insns)
+            if (const Insn* ins = p_.decode(a); ins && (isX87(*ins) || isFtol2Call(*ins))) { any = true; break; }
+        if (!any) return false;
+        const auto savedLabels = f.labels;  // the dry runs add the labels the real pass adds later
+        const auto savedCalled = called;
+        const uint32_t savedRet = retBytes;
+        xl_ = true;
+        const bool ok = solveDepths(f, savedLabels) && dirtyFlow(f, savedLabels);
+        f.labels = savedLabels;
+        called = savedCalled;
+        retBytes = savedRet;
+        xl_ = false;
+        if (!ok) {
+            ++x87Fallback;
+            xin_.clear();
+            xout_.clear();
+            return false;
+        }
+        ++x87Local;
+        return true;
+    }
+
+    // Pass 1: the depth at every instruction. Within a run between syncs the depth moves by
+    // each instruction's static push/pop count; after a sync (call, indirect call, cpuid,
+    // fsincos/fptan/fninit) the base is retaken, so the depth there is free: a new variable.
+    // Paths meeting at a label equate their depths (a weighted union-find); a contradiction
+    // (a cycle whose pushes do not balance) keeps the function in the memory model.
+    // Fills xin_[a].d and xout_.
+    bool solveDepths(Function& f, const std::set<uint32_t>& labels) {
+        std::vector<int> parent, poff;  // value(v) = value(parent[v]) + poff[v]
+        auto newVar = [&]() { parent.push_back(static_cast<int>(parent.size())); poff.push_back(0); return static_cast<int>(parent.size()) - 1; };
+        auto find = [&](int v) {  // -> root, value(v) - value(root)
+            int off = 0, r = v;
+            while (parent[r] != r) { off += poff[r]; r = parent[r]; }
+            int o2 = off;  // path compression
+            while (parent[v] != v) { const int nx = parent[v], no = o2 - poff[v]; parent[v] = r; poff[v] = o2; v = nx; o2 = no; }
+            return std::pair<int, int>(r, off);
+        };
+        struct Sym { int var, off; };
+        std::map<uint32_t, Sym> sym;
+        std::map<uint32_t, Sym> outSym;  // sync instructions: depth after
+        std::deque<uint32_t> work;
+        bool ok = true;
+        auto visit = [&](uint32_t t, Sym s) {
+            auto it = sym.find(t);
+            if (it == sym.end()) {
+                sym.emplace(t, s);
+                work.push_back(t);
+                return;
+            }
+            const auto [ra, xa] = find(it->second.var);
+            const auto [rb, xb] = find(s.var);
+            const int va = xa + it->second.off, vb = xb + s.off;  // relative to the roots
+            if (ra == rb) {
+                if (va != vb) {
+                    if (ok && std::getenv("RECOMP_X87_DEBUG"))
+                        std::cerr << "x87 depth conflict in " << fname(f.entry) << " at " << hex(t) << ": " << va << " vs " << vb << "\n";
+                    ok = false;
+                }
+                return;
+            }
+            parent[rb] = ra;  // value(rb) = value(ra) + va - vb
+            poff[rb] = va - vb;
+        };
+        std::map<uint32_t, DryInfo> dry;
+        visit(f.entry, Sym{newVar(), 0});
+        for (int pass = 0; ok && pass < 2; ++pass) {
+            while (ok && !work.empty()) {
+                const uint32_t a = work.front();
+                work.pop_front();
+                if (!f.insns.count(a)) continue;  // tail-call / trap stub: spills, never continues
+                const Insn* ins = p_.decode(a);
+                if (!ins) continue;
+                const Sym s = sym[a];
+                auto it = dry.find(a);
+                if (it == dry.end()) it = dry.emplace(a, dryRun(*ins, 0)).first;  // pushes/pops do not depend on the depth
+                const DryInfo& di = it->second;
+                Sym o{s.var, s.off + di.dOut};
+                if (di.sync || di.reload) {
+                    o = Sym{newVar(), 0};
+                    outSym[a] = o;
+                }
+                for (uint32_t t : di.succs) visit(t, o);
+                if (!di.term) visit(ins->next(), o);
+            }
+            if (!f.eh) break;
+            // EH: every label is a possible catch continuation, entered through the landing pad
+            // with the base retaken; one reached only that way gets a depth of its own.
+            for (uint32_t l : labels)
+                if (f.insns.count(l) && !sym.count(l)) visit(l, Sym{newVar(), 0});
+        }
+        if (!ok) return false;
+        // Concrete depths: the entry at 0, every other free root at 0.
+        const auto [re, xe] = find(sym[f.entry].var);
+        const int entryRootValue = -(xe + sym[f.entry].off);
+        auto value = [&](const Sym& s) {
+            const auto [r, x] = find(s.var);
+            return (r == re ? entryRootValue : 0) + x + s.off;
+        };
+        xin_.clear();
+        xout_.clear();
+        for (const auto& [a, s] : sym) xin_[a].d = value(s);
+        for (const auto& [a, s] : outSym) xout_[a] = value(s);
+        return true;
+    }
+
+    // Pass 2: what is dirty (written since the last sync) at every instruction, at the depths
+    // of pass 1, and which registers the function names. Fills xin_ / xused_.
+    bool dirtyFlow(Function& f, const std::set<uint32_t>& labels) {
+        std::map<uint32_t, XState> in;
+        std::map<uint32_t, DryInfo> info;  // dry runs at the real depth (register names depend on it)
+        std::deque<uint32_t> work;
+        bool ok = true;
+        uint8_t used = 0;
+        auto merge = [&](uint32_t t, const XState& s) {
+            auto it = in.find(t);
+            if (it == in.end()) {
+                in.emplace(t, s);
+                work.push_back(t);
+                return;
+            }
+            XState& o = it->second;
+            if (o.d != s.d) { ok = false; return; }  // cannot happen after pass 1
+            const XState n{o.d, uint8_t(o.dirty | s.dirty), o.top || s.top, o.sw || s.sw};
+            if (n.dirty != o.dirty || n.top != o.top || n.sw != o.sw) {
+                o = n;
+                work.push_back(t);
+            }
+        };
+        auto depth = [&](uint32_t a) { auto it = xin_.find(a); return it == xin_.end() ? 0 : it->second.d; };
+        merge(f.entry, XState{depth(f.entry), 0, false, false});
+        for (int pass = 0; ok && pass < 2; ++pass) {
+            while (ok && !work.empty()) {
+                const uint32_t a = work.front();
+                work.pop_front();
+                if (!f.insns.count(a)) continue;
+                const Insn* ins = p_.decode(a);
+                if (!ins) continue;
+                const XState s = in[a];
+                auto it = info.find(a);
+                if (it == info.end()) it = info.emplace(a, dryRun(*ins, s.d)).first;
+                const DryInfo& di = it->second;
+                used |= di.used;
+                XState o = s;
+                if (di.sync || di.reload) {
+                    o = XState{xout_.at(a), 0, false, false};
+                } else {
+                    o.d = di.dOut;
+                    o.dirty |= di.written;
+                    o.top = o.top || di.moved;
+                    o.sw = o.sw || di.swWritten;
+                }
+                for (uint32_t t : di.succs) merge(t, o);
+                if (!di.term) merge(ins->next(), o);
+            }
+            if (!f.eh) break;
+            for (uint32_t l : labels)
+                if (f.insns.count(l) && !in.count(l)) merge(l, XState{depth(l), 0, false, false});
+        }
+        if (!ok) return false;
+        xin_ = std::move(in);
+        xused_ = used;
+        return true;
+    }
+
+    // Store what is dirty in state `s` to c->fpu (emitted after SPILL).
+    std::string xspill(const XState& s) const {
+        std::string r;
+        for (int k = 0; k < 8; ++k)
+            if (s.dirty >> k & 1) r += "c->fpu.st[(xbase + " + std::to_string(k) + "u) & 7u] = xs" + std::to_string(k) + "; ";
+        if (s.top) r += "c->fpu.top = (xbase + " + std::to_string((-s.d) & 7) + "u) & 7u; ";
+        if (s.sw) r += "c->fpu.sw = xsw; ";
+        return r;
+    }
+    // Retake the base and reload the registers at depth `d` (an expression; emitted after RELOAD).
+    std::string xreload(const std::string& d) const {
+        std::string r = "xbase = (c->fpu.top + " + d + ") & 7u;";
+        for (int k = 0; k < 8; ++k)
+            if (xused_ >> k & 1) r += " xs" + std::to_string(k) + " = c->fpu.st[(xbase + " + std::to_string(k) + "u) & 7u];";
+        return r + " xcw = c->fpu.cw; xsw = c->fpu.sw;";
+    }
+    std::string xreload(int d) const { return xreload(std::to_string(d & 7) + "u"); }
+    // A line of the current instruction in the local model: x87 write-back after SPILL, retake after RELOAD.
+    std::string xsync(const std::string& s) const {
+        std::string r;
+        r.reserve(s.size() + 96);
+        for (size_t i = 0; i < s.size();) {
+            if (s.compare(i, 6, "SPILL;") == 0) {
+                const std::string w = xspill(xs_);
+                r += w.empty() ? "SPILL;" : "SPILL; " + w.substr(0, w.size() - 1);
+                i += 6;
+            } else if (s.compare(i, 7, "RELOAD;") == 0) {
+                r += "RELOAD; " + xreload(xoutD_);
+                i += 7;
+            } else {
+                r += s[i++];
+            }
+        }
+        return r;
+    }
+
+    // Names of ST(i) for reading / writing, push and pop, in the current model.
+    std::string stR(int i) {
+        if (!xl_) return "ST(" + std::to_string(i) + ")";
+        const int k = (i - xd_) & 7;
+        xread_ |= uint8_t(1u << k);
+        return "xs" + std::to_string(k);
+    }
+    std::string stW(int i) {
+        if (!xl_) return "ST(" + std::to_string(i) + ")";
+        const int k = (i - xd_) & 7;
+        xwritten_ |= uint8_t(1u << k);
+        return "xs" + std::to_string(k);
+    }
+    std::string fpushS(const std::string& v) {
+        if (!xl_) return "fpush(c, " + v + ");";
+        ++xd_;
+        xmoved_ = true;
+        return stW(0) + " = " + v + ";";
+    }
+    std::string fpopS() {  // " fpop(c);" (leading space) in the memory model
+        if (!xl_) return " fpop(c);";
+        --xd_;
+        xmoved_ = true;
+        return "";
+    }
+    std::string prec(const std::string& v) const { return xl_ ? "fprec_cw(xcw, " + v + ")" : "fprec(c, " + v + ")"; }
+    std::string cwArg() const { return xl_ ? "xcw" : "c"; }
+    std::string cwFn(const std::string& f) const { return xl_ ? f + "_cw" : f; }
+    std::string swRef(bool write) {
+        if (!xl_) return "c->fpu.sw";
+        if (write) xswWritten_ = true;
+        return "xsw";
+    }
+
+public:
+    uint64_t x87Local = 0, x87Fallback = 0;
+
+private:
 
     // ---- registers & operands ----
 
@@ -607,6 +991,13 @@ private:
 
     void callDirect(const Insn& ins, uint32_t t) {
         line("esp -= 4; wr32(esp, " + hex(ins.next()) + "u);");
+        if (ftol2Inline().count(t)) {
+            // host_ftol2 inline: pop ST(0), truncate to edx:eax, return (no spill, dispatch or reload).
+            const std::string v = stR(0);
+            line("{ int64_t r_ = ftol2_trunc(" + v + ");" + fpopS() + " eax = (uint32_t)r_; edx = (uint32_t)((uint64_t)r_ >> 32); esp += 4; }");
+            called.insert(t);
+            return;
+        }
         if (!p_.functions().count(t)) {  // target is not code we lifted (garbage decode)
             line("SPILL; RECOMP_ICALL(c, " + hex(t) + "u); RELOAD;");  // resolved once through the inline cache, not a hash lookup per call
             return;
@@ -840,7 +1231,7 @@ private:
                     if (done.insert(t).second) s += " case " + hexu(t) + ": goto " + target(t) + ";";
                 return line(s + " default: { uint32_t t = " + rd(o[0], 32) + "; SPILL; RECOMP_ICALL(c, t); return; } }");
             }
-            ++st_.unresolvedIndirectJumps;
+            if (!dry_) ++st_.unresolvedIndirectJumps;
             return line("{ uint32_t t = " + rd(o[0], 32) + "; SPILL; RECOMP_ICALL(c, t); return; }");
         }
         case ZYDIS_MNEMONIC_CALL: {
@@ -1055,50 +1446,69 @@ private:
         const std::string loc = hex(ins.addr);
         auto arith = [&](const char* expr, bool reverse, bool pop, bool integer) {
             // dst = dst OP src  (reverse: dst = src OP dst)
-            std::string dst, src;
+            int di = 1, si = 0;  // implicit forms (e.g. faddp with no operands)
+            std::string src;
             if (mem) {
-                dst = "ST(0)";
+                di = 0;
                 src = fmemLoad(*mem, integer);
             } else if (sts.size() >= 2) {
-                dst = "ST(" + std::to_string(sts[0]) + ")";
-                src = "ST(" + std::to_string(sts[1]) + ")";
-            } else {  // implicit forms (e.g. faddp with no operands)
-                dst = "ST(1)";
-                src = "ST(0)";
+                di = sts[0];
+                si = sts[1];
             }
+            if (!mem) src = stR(si);
+            const std::string dst = stR(di), dstW = stW(di);
             const std::string a = reverse ? "s" : "d", b = reverse ? "d" : "s";
-            std::string s = "{ double s = " + src + ", d = " + dst + "; " + dst + " = fprec(c, " + a + " " + expr + " " + b + "); }";
-            if (pop) s += " fpop(c);";
+            std::string s = "{ double s = " + src + ", d = " + dst + "; " + dstW + " = " + prec(a + " " + expr + " " + b) + "; }";
+            if (pop) s += fpopS();
             line(s);
+        };
+        // A conditional push (fsincos/fptan out of range) or a TOP reset (fninit) has no static
+        // depth: the local model writes its state back, runs the memory-model form and retakes
+        // the base at the nominal depth (xbase = TOP + d: right whichever way it went).
+        auto viaMemory = [&](const std::string& code, int pushes) {
+            if (!xl_) return line(code);
+            xsync_ = true;
+            const std::string w = dry_ ? std::string() : xspill(xs_);
+            xd_ = dry_ ? xd_ + pushes : xoutD_;  // the depth chosen for the retaken base
+            line("{ " + w + code + " " + xreload(xd_) + " }");
         };
         switch (m) {
         case ZYDIS_MNEMONIC_FLD:
-            if (mem) return line("fpush(c, " + fmemLoad(*mem, false) + ");");
-            return line("{ double v = ST(" + std::to_string(sts.empty() ? 0 : sts[0]) + "); fpush(c, v); }");
-        case ZYDIS_MNEMONIC_FILD: return line("fpush(c, " + fmemLoad(*mem, true) + ");");
-        case ZYDIS_MNEMONIC_FLD1: return line("fpush(c, 1.0);");
-        case ZYDIS_MNEMONIC_FLDZ: return line("fpush(c, 0.0);");
-        case ZYDIS_MNEMONIC_FLDPI: return line("fpush(c, 3.14159265358979323846);");
-        case ZYDIS_MNEMONIC_FLDL2E: return line("fpush(c, 1.44269504088896340736);");
-        case ZYDIS_MNEMONIC_FLDLN2: return line("fpush(c, 0.693147180559945309417);");
-        case ZYDIS_MNEMONIC_FLDLG2: return line("fpush(c, 0.301029995663981195214);");
-        case ZYDIS_MNEMONIC_FLDL2T: return line("fpush(c, 3.32192809488736234787);");
+            if (mem) return line(fpushS(fmemLoad(*mem, false)));
+            {
+                const std::string v = stR(sts.empty() ? 0 : sts[0]);
+                return line("{ double v = " + v + "; " + fpushS("v") + " }");
+            }
+        case ZYDIS_MNEMONIC_FILD: return line(fpushS(fmemLoad(*mem, true)));
+        case ZYDIS_MNEMONIC_FLD1: return line(fpushS("1.0"));
+        case ZYDIS_MNEMONIC_FLDZ: return line(fpushS("0.0"));
+        case ZYDIS_MNEMONIC_FLDPI: return line(fpushS("3.14159265358979323846"));
+        case ZYDIS_MNEMONIC_FLDL2E: return line(fpushS("1.44269504088896340736"));
+        case ZYDIS_MNEMONIC_FLDLN2: return line(fpushS("0.693147180559945309417"));
+        case ZYDIS_MNEMONIC_FLDLG2: return line(fpushS("0.301029995663981195214"));
+        case ZYDIS_MNEMONIC_FLDL2T: return line(fpushS("3.32192809488736234787"));
         case ZYDIS_MNEMONIC_FST: case ZYDIS_MNEMONIC_FSTP: {
             const bool pop = m == ZYDIS_MNEMONIC_FSTP;
-            if (mem) return line(fmemStore(*mem, "ST(0)") + (pop ? " fpop(c);" : ""));
-            return line("ST(" + std::to_string(sts.empty() ? 1 : sts[0]) + ") = ST(0);" + (pop ? " fpop(c);" : ""));
+            if (mem) {
+                std::string s = fmemStore(*mem, stR(0));
+                return line(s + (pop ? fpopS() : ""));
+            }
+            const std::string v = stR(0);
+            std::string s = stW(sts.empty() ? 1 : sts[0]) + " = " + v + ";";
+            return line(s + (pop ? fpopS() : ""));
         }
         case ZYDIS_MNEMONIC_FIST: case ZYDIS_MNEMONIC_FISTP: {
             const bool pop = m == ZYDIS_MNEMONIC_FISTP;
-            std::string s = mem->size == 16 ? this->mem("wr16", *mem) + ", (uint16_t)fist16(c, ST(0)));"
-                            : mem->size == 64 ? this->mem("wr64", *mem) + ", (uint64_t)fist64(c, ST(0)));"
-                                              : this->mem("wr32", *mem) + ", (uint32_t)fist32(c, ST(0)));";
-            return line(s + (pop ? " fpop(c);" : ""));
+            const std::string v = stR(0);
+            std::string s = mem->size == 16 ? this->mem("wr16", *mem) + ", (uint16_t)" + cwFn("fist16") + "(" + cwArg() + ", " + v + "));"
+                            : mem->size == 64 ? this->mem("wr64", *mem) + ", (uint64_t)" + cwFn("fist64") + "(" + cwArg() + ", " + v + "));"
+                                              : this->mem("wr32", *mem) + ", (uint32_t)" + cwFn("fist32") + "(" + cwArg() + ", " + v + "));";
+            return line(s + (pop ? fpopS() : ""));
         }
         case ZYDIS_MNEMONIC_FISTTP: {
-            return line("{ double t = trunc(ST(0)); " +
-                        std::string(mem->size == 16 ? this->mem("wr16", *mem) + ", (uint16_t)(int16_t)t);" : mem->size == 64 ? this->mem("wr64", *mem) + ", (uint64_t)(int64_t)t);" : this->mem("wr32", *mem) + ", (uint32_t)(int32_t)t);") +
-                        " fpop(c); }");
+            std::string s = "{ double t = trunc(" + stR(0) + "); " +
+                            std::string(mem->size == 16 ? this->mem("wr16", *mem) + ", (uint16_t)(int16_t)t);" : mem->size == 64 ? this->mem("wr64", *mem) + ", (uint64_t)(int64_t)t);" : this->mem("wr32", *mem) + ", (uint32_t)(int32_t)t);");
+            return line(s + fpopS() + " }");
         }
         case ZYDIS_MNEMONIC_FADD: return arith("+", false, false, false);
         case ZYDIS_MNEMONIC_FADDP: return arith("+", false, true, false);
@@ -1122,47 +1532,76 @@ private:
         case ZYDIS_MNEMONIC_FICOM: case ZYDIS_MNEMONIC_FICOMP: {
             const bool integer = m == ZYDIS_MNEMONIC_FICOM || m == ZYDIS_MNEMONIC_FICOMP;
             const bool pop = m == ZYDIS_MNEMONIC_FCOMP || m == ZYDIS_MNEMONIC_FUCOMP || m == ZYDIS_MNEMONIC_FICOMP;
-            const std::string src = mem ? fmemLoad(*mem, integer) : "ST(" + std::to_string(sts.empty() ? 1 : sts[0]) + ")";
-            return line("fcmp(c, ST(0), " + src + ");" + (pop ? " fpop(c);" : ""));
+            const std::string a = stR(0);
+            const std::string src = mem ? fmemLoad(*mem, integer) : stR(sts.empty() ? 1 : sts[0]);
+            return line(fcmpS(a, src) + (pop ? fpopS() : ""));
         }
-        case ZYDIS_MNEMONIC_FCOMPP: case ZYDIS_MNEMONIC_FUCOMPP:
-            return line("fcmp(c, ST(0), ST(1)); fpop(c); fpop(c);");
+        case ZYDIS_MNEMONIC_FCOMPP: case ZYDIS_MNEMONIC_FUCOMPP: {
+            const std::string a = stR(0), b = stR(1);
+            std::string s = fcmpS(a, b) + fpopS();
+            return line(s + fpopS());
+        }
         case ZYDIS_MNEMONIC_FCOMI: case ZYDIS_MNEMONIC_FCOMIP: case ZYDIS_MNEMONIC_FUCOMI: case ZYDIS_MNEMONIC_FUCOMIP: {
             const bool pop = m == ZYDIS_MNEMONIC_FCOMIP || m == ZYDIS_MNEMONIC_FUCOMIP;
-            return line("fr = fcmpi(ST(0), ST(" + std::to_string(sts.size() >= 2 ? sts[1] : 1) + ")); fop = FOP(FK_EXPLICIT, 4);" + (pop ? " fpop(c);" : ""));
+            const std::string a = stR(0), b = stR(sts.size() >= 2 ? sts[1] : 1);
+            return line("fr = fcmpi(" + a + ", " + b + "); fop = FOP(FK_EXPLICIT, 4);" + (pop ? fpopS() : ""));
         }
-        case ZYDIS_MNEMONIC_FTST: return line("fcmp(c, ST(0), 0.0);");
-        case ZYDIS_MNEMONIC_FXAM:
-            return line("{ double v = ST(0); uint16_t sw = (uint16_t)(c->fpu.sw & ~(X87_C0|X87_C1|X87_C2|X87_C3)); if (signbit(v)) sw |= X87_C1; if (isnan(v)) sw |= X87_C0; else if (isinf(v)) sw |= X87_C0|X87_C2; else if (v == 0.0) sw |= X87_C3; else sw |= X87_C2; c->fpu.sw = sw; }");
+        case ZYDIS_MNEMONIC_FTST: return line(fcmpS(stR(0), "0.0"));
+        case ZYDIS_MNEMONIC_FXAM: {
+            const std::string v = stR(0), swr = swRef(false), sww = swRef(true);
+            return line("{ double v = " + v + "; uint16_t sw = (uint16_t)(" + swr + " & ~(X87_C0|X87_C1|X87_C2|X87_C3)); if (signbit(v)) sw |= X87_C1; if (isnan(v)) sw |= X87_C0; else if (isinf(v)) sw |= X87_C0|X87_C2; else if (v == 0.0) sw |= X87_C3; else sw |= X87_C2; " + sww + " = sw; }");
+        }
         case ZYDIS_MNEMONIC_FXCH: {
-            const std::string r = "ST(" + std::to_string(sts.empty() ? 1 : sts[0]) + ")";
-            return line("{ double t = ST(0); ST(0) = " + r + "; " + r + " = t; }");
+            const int k = sts.empty() ? 1 : sts[0];
+            const std::string r = stR(k), rw = stW(k), t0 = stR(0), t0w = stW(0);
+            return line("{ double t = " + t0 + "; " + t0w + " = " + r + "; " + rw + " = t; }");
         }
-        case ZYDIS_MNEMONIC_FCHS: return line("ST(0) = -ST(0);");
-        case ZYDIS_MNEMONIC_FABS: return line("ST(0) = fabs(ST(0));");
-        case ZYDIS_MNEMONIC_FSQRT: return line("ST(0) = fprec(c, sqrt(ST(0)));");
-        case ZYDIS_MNEMONIC_FSIN: return line("if (x87_trig_in_range(c, ST(0))) ST(0) = fprec(c, sin(ST(0)));");
-        case ZYDIS_MNEMONIC_FCOS: return line("if (x87_trig_in_range(c, ST(0))) ST(0) = fprec(c, cos(ST(0)));");
-        case ZYDIS_MNEMONIC_FSINCOS: return line("{ double v = ST(0); if (x87_trig_in_range(c, v)) { ST(0) = fprec(c, sin(v)); fpush(c, fprec(c, cos(v))); } }");
-        case ZYDIS_MNEMONIC_FPTAN: return line("if (x87_trig_in_range(c, ST(0))) { ST(0) = fprec(c, tan(ST(0))); fpush(c, 1.0); }");
-        case ZYDIS_MNEMONIC_FPATAN: return line("{ double x = ST(0), y = ST(1); fpop(c); ST(0) = fprec(c, atan2(y, x)); }");
-        case ZYDIS_MNEMONIC_F2XM1: return line("ST(0) = fprec(c, exp2(ST(0)) - 1.0);");
-        case ZYDIS_MNEMONIC_FYL2X: return line("{ double x = ST(0), y = ST(1); fpop(c); ST(0) = fprec(c, y * log2(x)); }");
-        case ZYDIS_MNEMONIC_FYL2XP1: return line("{ double x = ST(0), y = ST(1); fpop(c); ST(0) = fprec(c, y * log2(x + 1.0)); }");
-        case ZYDIS_MNEMONIC_FSCALE: return line("ST(0) = ldexp(ST(0), (int)trunc(ST(1)));");
-        case ZYDIS_MNEMONIC_FRNDINT: return line("ST(0) = fround_rc(c, ST(0));");
-        case ZYDIS_MNEMONIC_FPREM: case ZYDIS_MNEMONIC_FPREM1:
-            return line("ST(0) = " + std::string(m == ZYDIS_MNEMONIC_FPREM ? "fmod" : "remainder") + "(ST(0), ST(1)); c->fpu.sw &= (uint16_t)~X87_C2;");
-        case ZYDIS_MNEMONIC_FNSTSW:
-            if (mem) return line(this->mem("wr16", *mem) + ", fnstsw(c));");
-            return line(writeReg(ZYDIS_REGISTER_AX, "fnstsw(c)"));
-        case ZYDIS_MNEMONIC_FNSTCW: return line(this->mem("wr16", *mem) + ", c->fpu.cw);");
-        case ZYDIS_MNEMONIC_FLDCW: return line("c->fpu.cw = " + this->mem("rd16", *mem) + ");");
-        case ZYDIS_MNEMONIC_FNINIT: return line("c->fpu.top = 0; c->fpu.sw = 0; c->fpu.cw = 0x037F;");
-        case ZYDIS_MNEMONIC_FNCLEX: return line("c->fpu.sw &= 0x7F00u;");
+        case ZYDIS_MNEMONIC_FCHS: { const std::string v = stR(0); return line(stW(0) + " = -" + v + ";"); }
+        case ZYDIS_MNEMONIC_FABS: { const std::string v = stR(0); return line(stW(0) + " = fabs(" + v + ");"); }
+        case ZYDIS_MNEMONIC_FSQRT: { const std::string v = stR(0); return line(stW(0) + " = " + prec("sqrt(" + v + ")") + ";"); }
+        case ZYDIS_MNEMONIC_FSIN: case ZYDIS_MNEMONIC_FCOS: {
+            const std::string v = stR(0), w = stW(0), fn = m == ZYDIS_MNEMONIC_FSIN ? "sin" : "cos";
+            return line("if (" + trigS(v) + ") " + w + " = " + prec(fn + "(" + v + ")") + ";");
+        }
+        case ZYDIS_MNEMONIC_FSINCOS:
+            return viaMemory("{ double v = ST(0); if (x87_trig_in_range(c, v)) { ST(0) = fprec(c, sin(v)); fpush(c, fprec(c, cos(v))); } }", 1);
+        case ZYDIS_MNEMONIC_FPTAN:
+            return viaMemory("if (x87_trig_in_range(c, ST(0))) { ST(0) = fprec(c, tan(ST(0))); fpush(c, 1.0); }", 1);
+        case ZYDIS_MNEMONIC_FPATAN: case ZYDIS_MNEMONIC_FYL2X: case ZYDIS_MNEMONIC_FYL2XP1: {
+            const std::string x = stR(0), y = stR(1);
+            const std::string e = m == ZYDIS_MNEMONIC_FPATAN ? "atan2(y, x)" : m == ZYDIS_MNEMONIC_FYL2X ? "y * log2(x)" : "y * log2(x + 1.0)";
+            std::string s = "{ double x = " + x + ", y = " + y + ";" + fpopS();
+            return line(s + " " + stW(0) + " = " + prec(e) + "; }");
+        }
+        case ZYDIS_MNEMONIC_F2XM1: { const std::string v = stR(0); return line(stW(0) + " = " + prec("exp2(" + v + ") - 1.0") + ";"); }
+        case ZYDIS_MNEMONIC_FSCALE: {
+            const std::string v = stR(0), k = stR(1);
+            return line(stW(0) + " = ldexp(" + v + ", (int)trunc(" + k + "));");
+        }
+        case ZYDIS_MNEMONIC_FRNDINT: { const std::string v = stR(0); return line(stW(0) + " = " + cwFn(xl_ ? "fround" : "fround_rc") + "(" + cwArg() + ", " + v + ");"); }
+        case ZYDIS_MNEMONIC_FPREM: case ZYDIS_MNEMONIC_FPREM1: {
+            const std::string v = stR(0), k = stR(1), w = stW(0);
+            return line(w + " = " + std::string(m == ZYDIS_MNEMONIC_FPREM ? "fmod" : "remainder") + "(" + v + ", " + k + "); " + swRef(true) + " &= (uint16_t)~X87_C2;");
+        }
+        case ZYDIS_MNEMONIC_FNSTSW: {
+            // The local model's TOP is xbase - d.
+            const std::string v = xl_ ? "fnstsw_top(xsw, xbase + " + std::to_string((-xd_) & 7) + "u)" : "fnstsw(c)";
+            if (mem) return line(this->mem("wr16", *mem) + ", " + v + ");");
+            return line(writeReg(ZYDIS_REGISTER_AX, v));
+        }
+        case ZYDIS_MNEMONIC_FNSTCW: return line(this->mem("wr16", *mem) + ", " + (xl_ ? "xcw" : "c->fpu.cw") + ");");
+        case ZYDIS_MNEMONIC_FLDCW:
+            if (xl_) return line("xcw = " + this->mem("rd16", *mem) + "); c->fpu.cw = xcw;");
+            return line("c->fpu.cw = " + this->mem("rd16", *mem) + ");");
+        case ZYDIS_MNEMONIC_FNINIT: return viaMemory("c->fpu.top = 0; c->fpu.sw = 0; c->fpu.cw = 0x037F;", 0);
+        case ZYDIS_MNEMONIC_FNCLEX: return line(swRef(true) + " &= 0x7F00u;");
         case ZYDIS_MNEMONIC_FFREE: case ZYDIS_MNEMONIC_FNOP: case ZYDIS_MNEMONIC_FWAIT: return;
-        case ZYDIS_MNEMONIC_FINCSTP: return line("c->fpu.top = (c->fpu.top + 1u) & 7u;");
-        case ZYDIS_MNEMONIC_FDECSTP: return line("c->fpu.top = (c->fpu.top - 1u) & 7u;");
+        case ZYDIS_MNEMONIC_FINCSTP:
+            if (xl_) { --xd_; xmoved_ = true; return; }
+            return line("c->fpu.top = (c->fpu.top + 1u) & 7u;");
+        case ZYDIS_MNEMONIC_FDECSTP:
+            if (xl_) { ++xd_; xmoved_ = true; return; }
+            return line("c->fpu.top = (c->fpu.top - 1u) & 7u;");
         case ZYDIS_MNEMONIC_FCMOVB: case ZYDIS_MNEMONIC_FCMOVE: case ZYDIS_MNEMONIC_FCMOVBE: case ZYDIS_MNEMONIC_FCMOVU:
         case ZYDIS_MNEMONIC_FCMOVNB: case ZYDIS_MNEMONIC_FCMOVNE: case ZYDIS_MNEMONIC_FCMOVNBE: case ZYDIS_MNEMONIC_FCMOVNU: {
             int ccode = 0x2;
@@ -1173,11 +1612,22 @@ private:
             if (m == ZYDIS_MNEMONIC_FCMOVNE) ccode = 0x5;
             if (m == ZYDIS_MNEMONIC_FCMOVNBE) ccode = 0x7;
             if (m == ZYDIS_MNEMONIC_FCMOVNU) ccode = 0xB;
-            return line("if (f_cond(" + std::to_string(ccode) + ", fop, fr, fa, fb)) ST(0) = ST(" + std::to_string(sts.size() >= 2 ? sts[1] : 1) + ");");
+            const std::string v = stR(sts.size() >= 2 ? sts[1] : 1);
+            return line("if (f_cond(" + std::to_string(ccode) + ", fop, fr, fa, fb)) " + stW(0) + " = " + v + ";");
         }
         default:
             return unsupported(ins);
         }
+    }
+    std::string fcmpS(const std::string& a, const std::string& b) {
+        if (!xl_) return "fcmp(c, " + a + ", " + b + ");";
+        xswWritten_ = true;
+        return "xsw = fcmp_sw(xsw, " + a + ", " + b + ");";
+    }
+    std::string trigS(const std::string& v) {
+        if (!xl_) return "x87_trig_in_range(c, " + v + ")";
+        xswWritten_ = true;
+        return "x87_trig_in_range_sw(&xsw, " + v + ")";
     }
 
     // ---- SIMD (MMX / SSE / SSE2) — implemented in Simd.inc ----
@@ -1188,6 +1638,21 @@ private:
     Function* f_ = nullptr;
     std::ostringstream out_;
     bool terminated_ = false;
+    // dry runs (x87 analysis)
+    bool dry_ = false;
+    std::string dryText_;
+    std::vector<uint32_t> drySuccs_;
+    // x87 local model
+    bool xl_ = false;                    // current instruction uses it
+    bool xlFn_ = false;                  // current function uses it
+    std::map<uint32_t, XState> xin_;     // state on entry to each instruction / stub label
+    std::map<uint32_t, int> xout_;       // depth after each sync instruction (the retaken base)
+    int xoutD_ = 0;                      // xout_ of the instruction being emitted
+    XState xs_;                          // state at the instruction being emitted
+    int xd_ = 0;                         // depth while emitting it
+    uint8_t xused_ = 0;                  // registers the function names
+    uint8_t xread_ = 0, xwritten_ = 0;   // effects recorded by a dry run
+    bool xmoved_ = false, xswWritten_ = false, xsync_ = false;
 };
 
 } // namespace
@@ -1196,7 +1661,7 @@ private:
 int main(int argc, char** argv) {
     using namespace recomp;
     if (argc < 4) {
-        std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N] [--prefix NAME] [--no-refs] [--no-fold] [--hook ADDR=host_fn]... [--trace ADDR]...\n";
+        std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N] [--prefix NAME] [--no-refs] [--no-fold] [--no-x87-locals] [--no-ftol2-inline] [--hook ADDR=host_fn]... [--trace ADDR]...\n";
         return 2;
     }
     const Image img(argv[1]);
@@ -1204,6 +1669,7 @@ int main(int argc, char** argv) {
     std::set<uint32_t> only;
     size_t perFile = 400;
     bool noRefs = false;
+    bool noFtol2Inline = false;
     std::string prefix = "recomp";
     std::map<uint32_t, std::string> hooks;  // guest functions replaced by host code
     std::map<uint32_t, std::string> wraps;  // guest functions routed through host code, original kept
@@ -1229,11 +1695,18 @@ int main(int argc, char** argv) {
             noRefs = true;
         } else if (a == "--no-fold") {
             foldDisplacements() = false;
+        } else if (a == "--no-x87-locals") {
+            x87Locals() = false;
+        } else if (a == "--no-ftol2-inline") {
+            noFtol2Inline = true;
         } else if (a == "--per-file" && i + 1 < argc) {
             perFile = std::stoul(argv[++i]);
         }
     }
 
+    if (!noFtol2Inline)
+        for (const auto& [a, name] : hooks)
+            if (name == "host_ftol2") ftol2Inline().insert(a);
     Program prog(img);
     if (std::string(argv[2]) != "-") {
         std::ifstream tsv(argv[2]);
@@ -1279,6 +1752,7 @@ int main(int argc, char** argv) {
             for (uint32_t t : em.called)
                 if (!selected.count(t)) todo.push_back(t);
         }
+        std::cerr << "x87 in locals: " << em.x87Local << " functions, memory model (depth differs between paths): " << em.x87Fallback << "\n";
     }
 
     // Hooked functions: the body becomes a call to the host implementation, which follows

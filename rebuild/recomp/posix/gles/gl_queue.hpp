@@ -41,6 +41,11 @@ void flush();          // wait until everything recorded so far has been replaye
 void frameEnd();
 double renderMs();     // render-thread time spent on the last replayed frame (ms)
 double waitMs();       // time the game thread spent waiting at the last frame boundary (ms)
+// Replayed records (GL calls, plus host functions run by call()): per op for the frame being
+// replayed (render thread only: the frame log line runs there), and the total of the last
+// replayed frame (any thread).
+const uint32_t* frameOpCounts();  // indexed by GlOp (gl_queue_gen.hpp), OP_count entries
+uint32_t lastFrameCalls();
 
 // Lifecycle: start() launches the thread, which runs makeCurrent() first (the creating thread
 // must have released the context); stop() drains the queue, runs release() there and joins.

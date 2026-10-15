@@ -99,6 +99,84 @@ target_link_libraries(FableRecomp PRIVATE PkgConfig::SDL2 PkgConfig::FFMPEG dl)
 if(FABLE_GEN_LTO)
   target_link_options(FableRecomp PRIVATE -flto=thin -fuse-ld=lld -Wl,--thinlto-jobs=4)
 endif()
+# ---- code layout (rg34xx/linux-a64.cmake turns on all but the PGO options for the handheld) -
+# The lifted code is ~56 MB of .text in guest-address order, so a frame's functions are spread
+# over thousands of pages: an in-order Cortex-A53 with 10 L1 iTLB entries and a small L2 pays a
+# TLB walk and a cache miss on most calls. These pack the hot functions together (and onto huge
+# pages) and let a profile steer the compiler.
+option(FABLE_LLD "Link with lld" OFF)
+set(FABLE_SYMBOL_ORDER "" CACHE FILEPATH "Hot functions placed first (lld --symbol-ordering-file; rg34xx/gen_hot_order.py writes it)")
+option(FABLE_HUGE_TEXT "At startup, move the hot code onto transparent huge pages (codelayout.cpp)" OFF)
+set(FABLE_PGO "" CACHE STRING "Clang PGO: 'gen' builds an instrumented binary (training run), or the path of a merged .profdata to optimise with")
+set(FABLE_PGO_RUNTIME "" CACHE FILEPATH "libclang_rt.profile archive for FABLE_PGO=gen when clang's own is not installed (libclang-rt-18-dev)")
+option(FABLE_A53_ERRATA "Cortex-A53 errata 835769 (compiler) and 843419 (linker) workarounds; GCC applies both by default, clang neither" OFF)
+if(NOT ANDROID)  # the hot-range markers, the huge-page remap, FABLE_PMU counters
+  target_sources(FableRecomp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/codelayout.cpp)
+  set_property(SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/main_posix.cpp APPEND PROPERTY COMPILE_DEFINITIONS FABLE_CODELAYOUT=1)
+endif()
+if(FABLE_LLD OR FABLE_SYMBOL_ORDER)
+  find_program(FABLE_LD_LLD NAMES ld.lld DOC "lld, the linker FABLE_LLD and FABLE_SYMBOL_ORDER use")
+  if(FABLE_LD_LLD)
+    target_link_options(FableRecomp PRIVATE -fuse-ld=lld)
+  else()
+    message(WARNING "ld.lld not found (Debian/Ubuntu: apt install lld): linking with the default linker, "
+      "without the hot-function order (FABLE_SYMBOL_ORDER) the huge-page remap relies on")
+    set(FABLE_SYMBOL_ORDER "")  # GNU ld has no --symbol-ordering-file
+  endif()
+endif()
+if(FABLE_SYMBOL_ORDER)
+  if(NOT EXISTS "${FABLE_SYMBOL_ORDER}")
+    message(FATAL_ERROR "FABLE_SYMBOL_ORDER: ${FABLE_SYMBOL_ORDER} not found")
+  endif()
+  # one section per function, so the linker can move each; --no-rosegment keeps the read-only
+  # data in the code segment ahead of .text (as GNU ld lays it out), which lets the huge-page
+  # range start below the first hot function
+  target_compile_options(fable_gen PRIVATE -ffunction-sections)
+  target_compile_options(FableRecomp PRIVATE $<$<COMPILE_LANGUAGE:C,CXX>:-ffunction-sections>)
+  target_link_options(FableRecomp PRIVATE "LINKER:--symbol-ordering-file=${FABLE_SYMBOL_ORDER}"
+    LINKER:--no-warn-symbol-ordering LINKER:--no-rosegment)
+  set_property(TARGET FableRecomp APPEND PROPERTY LINK_DEPENDS "${FABLE_SYMBOL_ORDER}")
+endif()
+if(FABLE_A53_ERRATA)
+  target_compile_options(fable_gen PRIVATE -mfix-cortex-a53-835769)
+  target_compile_options(FableRecomp PRIVATE $<$<COMPILE_LANGUAGE:C,CXX>:-mfix-cortex-a53-835769>)
+  # The A53 has no LSE atomics: inline load/store-exclusive loops instead of clang's outlined
+  # __aarch64_* helpers (a call and a runtime check per atomic, e.g. the GL queue's producer lock).
+  target_compile_options(fable_gen PRIVATE -mno-outline-atomics)
+  target_compile_options(FableRecomp PRIVATE $<$<COMPILE_LANGUAGE:C,CXX>:-mno-outline-atomics>)
+  target_link_options(FableRecomp PRIVATE LINKER:--fix-cortex-a53-843419)
+endif()
+if(FABLE_HUGE_TEXT AND NOT ANDROID)
+  set_property(SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/codelayout.cpp APPEND PROPERTY COMPILE_DEFINITIONS FABLE_HUGE_TEXT=1)
+endif()
+if(FABLE_PGO STREQUAL "gen")
+  # the x86-64 harness build: function and branch counts of a play session (rg34xx/pgo_train.sh)
+  if(ANDROID)
+    message(FATAL_ERROR "FABLE_PGO=gen: the instrumented training build is the Linux (harness) one; "
+      "Android builds take a profile from it with FABLE_PGO=<path>.profdata")
+  endif()
+  target_compile_options(fable_gen PRIVATE -fprofile-instr-generate)
+  target_compile_options(FableRecomp PRIVATE $<$<COMPILE_LANGUAGE:C,CXX>:-fprofile-instr-generate>)
+  if(FABLE_PGO_RUNTIME)
+    target_link_options(FableRecomp PRIVATE -u __llvm_profile_runtime)
+    target_link_libraries(FableRecomp PRIVATE ${FABLE_PGO_RUNTIME})
+  else()
+    target_link_options(FableRecomp PRIVATE -fprofile-instr-generate)
+  endif()
+  set_property(SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/codelayout.cpp APPEND PROPERTY COMPILE_DEFINITIONS FABLE_PGO_GEN=1)
+elseif(FABLE_PGO)
+  if(NOT EXISTS "${FABLE_PGO}")
+    message(FATAL_ERROR "FABLE_PGO: ${FABLE_PGO} not found")
+  endif()
+  # the profile comes from the same sources built for another host: functions the lifter has
+  # changed since (or that differ per architecture) are simply left unprofiled
+  set(PGO_USE -fprofile-instr-use=${FABLE_PGO} -Wno-profile-instr-out-of-date -Wno-profile-instr-unprofiled -Wno-profile-instr-missing)
+  target_compile_options(fable_gen PRIVATE ${PGO_USE})
+  target_compile_options(FableRecomp PRIVATE "$<$<COMPILE_LANGUAGE:C,CXX>:${PGO_USE}>")
+  set_property(SOURCE ${GEN_SOURCES} ${HOST_SOURCES} ${W32_SOURCES} ${GLES_SOURCES}
+    APPEND PROPERTY OBJECT_DEPENDS "${FABLE_PGO}")  # a new profile recompiles
+endif()
+
 # d3d9.cpp opens DXVK at run time. Linux also links it, so the build directory's copy is found;
 # the APK carries two DXVK builds and android_host.cpp picks one.
 if(NOT ANDROID)

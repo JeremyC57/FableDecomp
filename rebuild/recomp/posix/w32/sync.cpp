@@ -2,17 +2,20 @@
 #include "w32.hpp"
 
 #include <chrono>
+#include <climits>
+#include <cstdio>
 #include <cstring>
 #include <map>
 #include <pthread.h>
 #include <sched.h>
-#include <shared_mutex>
+#include <string>
 #include <sys/mman.h>
 #include <thread>
 #include <unistd.h>
+#include <linux/futex.h>  // the POSIX layer runs on Linux and Android
+#include <sys/syscall.h>
 
 namespace w32 {
-std::condition_variable_any& waitCv();
 bool hasApcs(DWORD tid);
 
 namespace {
@@ -95,40 +98,60 @@ DWORD currentTid() {
     return t_tid;
 }
 
+// A poll (timeout 0) reads no clock and allocates nothing; a wait that must sleep registers
+// itself so that only a change of one of its objects (or an APC for an alertable wait) wakes it.
 static DWORD waitMany(DWORD n, const HANDLE* hs, BOOL all, DWORD timeout, BOOL alertable) {
-    std::vector<std::shared_ptr<Object>> objs(n);
+    std::shared_ptr<Object> inl[4];
+    std::vector<std::shared_ptr<Object>> many;
+    std::shared_ptr<Object>* objs = inl;
+    if (n > 4) many.resize(n), objs = many.data();
     for (DWORD i = 0; i < n; ++i) {
         if (hs[i] == GetCurrentProcess()) { objs[i] = nullptr; continue; }
         objs[i] = object(hs[i]);
         if (!objs[i] || !objs[i]->waitable()) { setError(ERROR_INVALID_HANDLE); return WAIT_FAILED; }
     }
     const DWORD tid = currentTid();
-    const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(timeout);
+    std::chrono::steady_clock::time_point deadline;
+    if (timeout != 0 && timeout != INFINITE) deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(timeout);
+    Waiter w;
+    bool registered = false;
+    DWORD r;
     std::unique_lock<std::mutex> lk(waitLock());
     for (;;) {
-        if (alertable && hasApcs(tid)) {
-            lk.unlock();
-            runApcs();
-            return WAIT_IO_COMPLETION;
-        }
+        if (alertable && hasApcs(tid)) { r = WAIT_IO_COMPLETION; break; }
         if (all) {
             bool ok = n > 0;
-            for (auto& o : objs) ok = ok && o && o->signaled(tid);
+            for (DWORD i = 0; i < n; ++i) ok = ok && objs[i] && objs[i]->signaled(tid);
             if (ok) {
-                for (auto& o : objs) o->acquire(tid);
-                return WAIT_OBJECT_0;
+                for (DWORD i = 0; i < n; ++i) objs[i]->acquire(tid);
+                r = WAIT_OBJECT_0;
+                break;
             }
         } else {
-            for (DWORD i = 0; i < n; ++i)
-                if (objs[i] && objs[i]->signaled(tid)) {
-                    objs[i]->acquire(tid);
-                    return WAIT_OBJECT_0 + i;
-                }
+            DWORD i = 0;
+            while (i < n && !(objs[i] && objs[i]->signaled(tid))) ++i;
+            if (i < n) {
+                objs[i]->acquire(tid);
+                r = WAIT_OBJECT_0 + i;
+                break;
+            }
         }
-        if (timeout == 0) return WAIT_TIMEOUT;
-        if (timeout == INFINITE) waitCv().wait(lk);
-        else if (waitCv().wait_until(lk, deadline) == std::cv_status::timeout) timeout = 0;  // final check, then time out
+        if (timeout == 0) { r = WAIT_TIMEOUT; break; }
+        if (!registered) {
+            w.objs = objs, w.n = n, w.tid = tid, w.alertable = alertable != FALSE;
+            addWaiter(&w);
+            registered = true;
+        }
+        w.woken = false;
+        if (timeout == INFINITE) w.cv.wait(lk);
+        else if (w.cv.wait_until(lk, deadline) == std::cv_status::timeout) timeout = 0;  // final check, then time out
     }
+    if (registered) removeWaiter(&w);
+    if (r == WAIT_IO_COMPLETION) {
+        lk.unlock();
+        runApcs();
+    }
+    return r;
 }
 
 // ---- fibers ------------------------------------------------------------------------------
@@ -244,7 +267,7 @@ BOOL WINAPI SetEvent(HANDLE h) {
     if (!e) return fail(ERROR_INVALID_HANDLE);
     std::lock_guard<std::mutex> l(waitLock());
     e->set = true;
-    notifyAll();
+    notifyWaiters(e.get());
     return TRUE;
 }
 BOOL WINAPI ResetEvent(HANDLE h) {
@@ -285,7 +308,7 @@ BOOL WINAPI ReleaseMutex(HANDLE h) {
     std::lock_guard<std::mutex> l(waitLock());
     if (m->owner != currentTid()) return fail(ERROR_NOT_OWNER);
     if (--m->count == 0) m->owner = 0;
-    notifyAll();
+    notifyWaiters(m.get());
     return TRUE;
 }
 HANDLE WINAPI CreateSemaphoreW(LPSECURITY_ATTRIBUTES, LONG initial, LONG max, LPCWSTR name) {
@@ -302,7 +325,7 @@ BOOL WINAPI ReleaseSemaphore(HANDLE h, LONG n, LPLONG prev) {
     if (prev) *prev = s->count;
     if (s->count + n > s->max) return fail(ERROR_TOO_MANY_POSTS);
     s->count += n;
-    notifyAll();
+    notifyWaiters(s.get());
     return TRUE;
 }
 
@@ -323,57 +346,125 @@ BOOL WINAPI DuplicateHandle(HANDLE, HANDLE src, HANDLE, LPHANDLE out, DWORD, BOO
     return TRUE;
 }
 
+// ---- futex word locks: critical sections and SRW locks ------------------------------------------
+// A lock is one 32-bit word: bit 31 held exclusively, bit 30 threads sleep on it, bits 0-29 the
+// shared holders. Uncontended, taking it is one compare-and-swap and releasing it one atomic
+// (glibc's recursive pthread mutex and pthread_rwlock do several atomics and bookkeeping each
+// way). Contended, a short spin (a section of a few hundred instructions then costs no futex
+// wait and wake, which Windows' critical sections and SRW locks avoid too), then a futex wait;
+// a release that finds sleepers wakes them all to try again.
+}  // extern "C"
+namespace {
+constexpr uint32_t kLockExcl = 1u << 31, kLockSleepers = 1u << 30, kLockShared = kLockSleepers - 1;
+inline void cpuRelax() {
+#if defined(__aarch64__)
+    __asm__ __volatile__("yield");
+#elif defined(__x86_64__) || defined(__i386__)
+    __builtin_ia32_pause();
+#endif
+}
+// Takes the lock once canTake(state) holds, as take(state).
+template <class Can, class Take> void wordAcquire(uint32_t* w, Can canTake, Take take) {
+    for (int spin = 0;; ++spin) {
+        uint32_t s = __atomic_load_n(w, __ATOMIC_RELAXED);
+        if (canTake(s)) {
+            if (__atomic_compare_exchange_n(w, &s, take(s), false, __ATOMIC_ACQUIRE, __ATOMIC_RELAXED)) return;
+            continue;
+        }
+        if (spin < 100) { cpuRelax(); continue; }
+        if (!(s & kLockSleepers) && !__atomic_compare_exchange_n(w, &s, s | kLockSleepers, false, __ATOMIC_RELAXED, __ATOMIC_RELAXED)) continue;
+        syscall(SYS_futex, w, FUTEX_WAIT_PRIVATE, s | kLockSleepers, nullptr, nullptr, 0);  // returns at once if the word changed
+    }
+}
+inline void wordWakeAll(uint32_t* w) { syscall(SYS_futex, w, FUTEX_WAKE_PRIVATE, INT_MAX, nullptr, nullptr, 0); }
+inline bool wordFree(uint32_t s) { return (s & ~kLockSleepers) == 0; }
+inline void lockExclusive(uint32_t* w) {
+    uint32_t s = 0;
+    if (__atomic_compare_exchange_n(w, &s, kLockExcl, false, __ATOMIC_ACQUIRE, __ATOMIC_RELAXED)) return;
+    wordAcquire(w, wordFree, [](uint32_t v) { return v | kLockExcl; });
+}
+inline bool tryLockExclusive(uint32_t* w) {
+    uint32_t s = __atomic_load_n(w, __ATOMIC_RELAXED);
+    return wordFree(s) && __atomic_compare_exchange_n(w, &s, s | kLockExcl, false, __ATOMIC_ACQUIRE, __ATOMIC_RELAXED);
+}
+inline void unlockExclusive(uint32_t* w) {
+    if (__atomic_exchange_n(w, 0u, __ATOMIC_RELEASE) & kLockSleepers) wordWakeAll(w);
+}
+inline void lockShared(uint32_t* w) {
+    wordAcquire(w, [](uint32_t v) { return !(v & kLockExcl) && (v & kLockShared) != kLockShared; }, [](uint32_t v) { return v + 1; });
+}
+inline void unlockShared(uint32_t* w) {
+    if (__atomic_sub_fetch(w, 1u, __ATOMIC_RELEASE) == kLockSleepers) {  // the last holder out, threads asleep
+        uint32_t e = kLockSleepers;  // else a new holder took it (and keeps the flag for its release)
+        if (__atomic_compare_exchange_n(w, &e, 0u, false, __ATOMIC_RELAXED, __ATOMIC_RELAXED)) wordWakeAll(w);
+    }
+}
+// A critical section behind DebugInfo, recursive as Windows' (owner + depth).
+struct HostCs {
+    uint32_t word = 0;
+    std::atomic<DWORD> owner{0};  // only the owner ever sees its own id here
+    uint32_t depth = 0;
+};
+HostCs* csOf(LPCRITICAL_SECTION cs) { return reinterpret_cast<HostCs*>(cs->DebugInfo); }
+}  // namespace
+extern "C" {
+
 // ---- critical sections ----------------------------------------------------------------------
-// The pthread mutex lives behind DebugInfo; RecursionCount/OwningThread are kept for inspection.
-static pthread_mutex_t* csMutex(LPCRITICAL_SECTION cs) { return reinterpret_cast<pthread_mutex_t*>(cs->DebugInfo); }
+// RecursionCount/OwningThread are kept for inspection.
 void WINAPI InitializeCriticalSection(LPCRITICAL_SECTION cs) {
     std::memset(cs, 0, sizeof *cs);
-    auto* m = new pthread_mutex_t;
-    pthread_mutexattr_t a;
-    pthread_mutexattr_init(&a);
-    pthread_mutexattr_settype(&a, PTHREAD_MUTEX_RECURSIVE);
-    pthread_mutex_init(m, &a);
-    pthread_mutexattr_destroy(&a);
-    cs->DebugInfo = reinterpret_cast<PRTL_CRITICAL_SECTION_DEBUG>(m);
+    cs->DebugInfo = reinterpret_cast<PRTL_CRITICAL_SECTION_DEBUG>(new HostCs);
     cs->LockCount = -1;
 }
 BOOL WINAPI InitializeCriticalSectionAndSpinCount(LPCRITICAL_SECTION cs, DWORD) { InitializeCriticalSection(cs); return TRUE; }
 void WINAPI DeleteCriticalSection(LPCRITICAL_SECTION cs) {
-    if (auto* m = csMutex(cs)) { pthread_mutex_destroy(m); delete m; }
+    delete csOf(cs);
     cs->DebugInfo = nullptr;
 }
 void WINAPI EnterCriticalSection(LPCRITICAL_SECTION cs) {
-    pthread_mutex_lock(csMutex(cs));
+    HostCs* h = csOf(cs);
+    const DWORD me = currentTid();
+    if (h->owner.load(std::memory_order_relaxed) == me) {
+        ++h->depth;
+    } else {
+        lockExclusive(&h->word);
+        h->owner.store(me, std::memory_order_relaxed);
+        h->depth = 1;
+    }
     ++cs->RecursionCount;
-    cs->OwningThread = reinterpret_cast<HANDLE>(static_cast<uintptr_t>(currentTid()));
+    cs->OwningThread = reinterpret_cast<HANDLE>(static_cast<uintptr_t>(me));
 }
 BOOL WINAPI TryEnterCriticalSection(LPCRITICAL_SECTION cs) {
-    if (pthread_mutex_trylock(csMutex(cs)) != 0) return FALSE;
+    HostCs* h = csOf(cs);
+    const DWORD me = currentTid();
+    if (h->owner.load(std::memory_order_relaxed) == me) {
+        ++h->depth;
+    } else {
+        if (!tryLockExclusive(&h->word)) return FALSE;
+        h->owner.store(me, std::memory_order_relaxed);
+        h->depth = 1;
+    }
     ++cs->RecursionCount;
-    cs->OwningThread = reinterpret_cast<HANDLE>(static_cast<uintptr_t>(currentTid()));
+    cs->OwningThread = reinterpret_cast<HANDLE>(static_cast<uintptr_t>(me));
     return TRUE;
 }
 void WINAPI LeaveCriticalSection(LPCRITICAL_SECTION cs) {
+    HostCs* h = csOf(cs);
     if (--cs->RecursionCount == 0) cs->OwningThread = nullptr;
-    pthread_mutex_unlock(csMutex(cs));
+    if (h->owner.load(std::memory_order_relaxed) != currentTid()) return;  // not the owner: no effect (the recursive mutex's EPERM)
+    if (--h->depth == 0) {
+        h->owner.store(0, std::memory_order_relaxed);
+        unlockExclusive(&h->word);
+    }
 }
 
-// ---- SRW locks: SRWLOCK_INIT is zero, so the lock object is created on first use ------------
-static std::shared_mutex* srw(PSRWLOCK l) {
-    auto** slot = reinterpret_cast<std::shared_mutex**>(&l->Ptr);
-    std::shared_mutex* m = __atomic_load_n(slot, __ATOMIC_ACQUIRE);
-    if (m) return m;
-    auto* fresh = new std::shared_mutex;
-    std::shared_mutex* expected = nullptr;
-    if (__atomic_compare_exchange_n(slot, &expected, fresh, false, __ATOMIC_ACQ_REL, __ATOMIC_ACQUIRE)) return fresh;
-    delete fresh;
-    return expected;
-}
+// ---- SRW locks: the SRWLOCK's own word (SRWLOCK_INIT is zero) ----------------------------------
+static uint32_t* srwWord(PSRWLOCK l) { return reinterpret_cast<uint32_t*>(&l->Ptr); }
 void WINAPI InitializeSRWLock(PSRWLOCK l) { l->Ptr = nullptr; }
-void WINAPI AcquireSRWLockExclusive(PSRWLOCK l) { srw(l)->lock(); }
-void WINAPI ReleaseSRWLockExclusive(PSRWLOCK l) { srw(l)->unlock(); }
-void WINAPI AcquireSRWLockShared(PSRWLOCK l) { srw(l)->lock_shared(); }
-void WINAPI ReleaseSRWLockShared(PSRWLOCK l) { srw(l)->unlock_shared(); }
+void WINAPI AcquireSRWLockExclusive(PSRWLOCK l) { lockExclusive(srwWord(l)); }
+void WINAPI ReleaseSRWLockExclusive(PSRWLOCK l) { unlockExclusive(srwWord(l)); }
+void WINAPI AcquireSRWLockShared(PSRWLOCK l) { lockShared(srwWord(l)); }
+void WINAPI ReleaseSRWLockShared(PSRWLOCK l) { unlockShared(srwWord(l)); }
 
 // ---- threads ------------------------------------------------------------------------------
 struct ThreadStart {
@@ -388,6 +479,13 @@ static void* threadMain(void* p) {
     auto* s = static_cast<ThreadStart*>(p);
     t_self = s->self;
     t_tid = s->self->tid;
+#if defined(__linux__)
+    {   // the log's [tid], for the profiler's per-thread lines and top/ps
+        char name[16];
+        std::snprintf(name, sizeof name, "w32-%u", static_cast<unsigned>(t_tid));
+        pthread_setname_np(pthread_self(), name);
+    }
+#endif
     {
         std::unique_lock<std::mutex> l(s->gate);
         s->cv.wait(l, [&] { return s->go; });
@@ -400,7 +498,7 @@ static void* threadMain(void* p) {
     std::lock_guard<std::mutex> l(waitLock());
     self->exitCode = code;
     self->done = true;
-    notifyAll();
+    notifyWaiters(self.get());
     return nullptr;
 }
 static std::mutex g_startLock;
@@ -460,7 +558,7 @@ void WINAPI ExitThread(DWORD code) {
         std::lock_guard<std::mutex> l(waitLock());
         t_self->exitCode = code;
         t_self->done = true;
-        notifyAll();
+        notifyWaiters(t_self.get());
     }
     pthread_exit(nullptr);
 }
@@ -488,17 +586,25 @@ DWORD WINAPI SleepEx(DWORD ms, BOOL alertable) {
     if (!alertable) { Sleep(ms); return 0; }
     const DWORD tid = currentTid();
     const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(ms);
+    Waiter w;  // no objects: only an APC for this thread wakes it
+    w.tid = tid, w.alertable = true;
+    bool registered = false;
+    DWORD r = 0;
     std::unique_lock<std::mutex> lk(waitLock());
     for (;;) {
-        if (hasApcs(tid)) {
-            lk.unlock();
-            runApcs();
-            return WAIT_IO_COMPLETION;
-        }
-        if (ms == 0) return 0;
-        if (ms == INFINITE) waitCv().wait(lk);
-        else if (waitCv().wait_until(lk, deadline) == std::cv_status::timeout) return 0;
+        if (hasApcs(tid)) { r = WAIT_IO_COMPLETION; break; }
+        if (ms == 0) break;
+        if (!registered) addWaiter(&w), registered = true;
+        w.woken = false;
+        if (ms == INFINITE) w.cv.wait(lk);
+        else if (w.cv.wait_until(lk, deadline) == std::cv_status::timeout) break;
     }
+    if (registered) removeWaiter(&w);
+    if (r == WAIT_IO_COMPLETION) {
+        lk.unlock();
+        runApcs();
+    }
+    return r;
 }
 BOOL WINAPI SwitchToThread(void) { sched_yield(); return TRUE; }
 

@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <vector>
 
+extern "C" GuestFn (*recomp_host_handler)(uint32_t target);  // runtime.c: host targets in the inline caches
+
 namespace host {
 
 // ============================================================================
@@ -410,6 +412,16 @@ static int onUnknownTarget(Ctx* c, uint32_t target) {
     return 0;
 }
 
+// The plain handler of the trap at `target`, which the lifted code's inline caches may then call
+// directly (runtime.c); none for data handlers, or while every call is traced (log level 2:
+// a cached site would skip the trace; FABLE_RECOMP_LOG=2 at start keeps every call traced).
+static GuestFn hostHandler(uint32_t target) {
+    if (host::g_logLevel >= 2 || !g_traps || target < kTrapBase || target >= kTrapEnd || (target - kTrapBase) % 16) return nullptr;
+    const uint32_t i = (target - kTrapBase) / 16;
+    if (i >= g_trapCount.load(std::memory_order_acquire)) return nullptr;
+    return g_traps[i].fn;
+}
+
 static void onFatal(Ctx* c, uint32_t eip, const char* what) {
     die("guest fault: %s at 0x%08X (eax=%08X ecx=%08X edx=%08X ebx=%08X esp=%08X ebp=%08X esi=%08X edi=%08X, [esp]=%08X)", what, eip,
         c->eax, c->ecx, c->edx, c->ebx, c->esp, c->ebp, c->esi, c->edi, c->esp ? rd32(c->esp) : 0);
@@ -469,6 +481,7 @@ void threadsInit() {
     wr32(g_peb + 0xA4, 5);  // OSMajorVersion: report XP-era 5.1
     wr32(g_peb + 0xA8, 1);
     recomp_on_unknown_target = onUnknownTarget;
+    recomp_host_handler = hostHandler;
     recomp_set_host_range(kTrapBase, kTrapEnd);  // import / COM calls skip the lifted-code lookups
     recomp_on_fatal = onFatal;
 }
@@ -483,9 +496,10 @@ static uint32_t callImpl(uint32_t fn, bool hasThis, uint32_t thisPtr, std::initi
     wr32(esp, kReturnSentinel);
     c->esp = esp;
     if (hasThis) c->ecx = thisPtr;
-    {   // the same few targets are called over and over (menu wraps): a small direct-mapped cache in front of the hash
+    {   // the same few targets are called over and over (menu wraps): a small direct-mapped cache in front of the hash,
+        // per thread (guest threads call in at once, and a slot is two words)
         struct Slot { uint32_t addr; GuestFn f; };
-        static Slot cache[256];
+        static thread_local Slot cache[256];
         Slot& s = cache[(fn >> 4) & 255];
         if (s.addr != fn || !s.f) { s.f = recomp_lookup(fn); s.addr = fn; }
         if (s.f) s.f(c); else recomp_dispatch(c, fn);

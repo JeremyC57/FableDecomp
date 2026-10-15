@@ -672,3 +672,12 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   a second B closes, B leaves the quick-access menu open (as on the Xbox).
 - Lists: the shift is 36 design units and covers the Xbox pause menu too (user: "the lists
   need to be moved left more").
+
+## Correction (v26): the device crash addresses were pids
+
+Every RG34XX crash report through v25 was SDL2's evdev keyboard handler re-raising the fault
+(libc+0x874d8 is raise()'s tgkill; the "reading address" 0xA45..0xB42 was si_addr of a sent
+signal = our pid). So the v17 "strlen of 0xA96 from GetAnimation" and the v24 "reading 0xB42"
+readings above are wrong: v17 and v25 faulted in C3DAnimation2::CalcLocalTransformations' bone
+loop after GetAnimation returned; the v24 host_find_child fix stands on its own (the freed retry
+buffer was a real bug), not on 0xB42. See 2026-10-15-gles-renderer-perf.md (v26).

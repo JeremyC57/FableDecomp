@@ -10,6 +10,11 @@
 #include <thread>
 #include <vector>
 #include <time.h>
+#if defined(__linux__)
+#include <linux/futex.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+#endif
 
 namespace host::gles::gq {
 namespace {
@@ -18,13 +23,29 @@ struct Header { uint32_t op, len; };  // len: whole record, header included, mul
 
 inline uint64_t nowNs() { timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return static_cast<uint64_t>(t.tv_sec) * 1000000000ull + static_cast<uint64_t>(t.tv_nsec); }
 
-size_t g_size = 0;
+// Cache lines: the producer's and the consumer's hot fields live on separate lines. They used
+// to share one (with g_size / g_ring as well), so every recorded call and every replayed record
+// pulled the line over from the other core (A53s: a snoop per access) - false sharing on the
+// hottest path of both threads.
+constexpr size_t kLine = 64;
+alignas(kLine) size_t g_size = 0;  // read-only while the thread runs
 uint8_t* g_ring = nullptr;
-std::atomic<uint64_t> g_head{0};  // bytes produced (monotonic; position = value % size)
-std::atomic<uint64_t> g_tail{0};  // bytes consumed
-std::atomic<bool> g_consumerIdle{false}, g_producerWaiting{false};
-std::mutex g_mutex;
+bool g_cacheIdx = true;  // FABLE_GLES_QUEUE_CACHE=0: re-read the other side's index on every record (the old traffic)
+bool g_futex = true;     // FABLE_GLES_QUEUE_FUTEX=0: the producer lock is a std::mutex
+alignas(kLine) std::atomic<uint64_t> g_head{0};  // bytes produced (monotonic; position = value % size)
+alignas(kLine) std::atomic<uint64_t> g_tail{0};  // bytes consumed
+// Producer-private (under the producer lock): the ring position of g_head (no division per
+// record), the record being written, and the consumer's tail as last read - it is read again
+// only when that copy shows too little room (it can only lag: the room it shows is real).
+struct alignas(kLine) Producer {
+    uint64_t pendingHead = 0;      // the record being written ends here
+    size_t pos = 0, pendingPos = 0;
+    uint64_t tailSeen = 0;
+} g_prod;
+alignas(kLine) std::atomic<bool> g_consumerIdle{false}, g_producerWaiting{false};  // rarely written: read on every record
+alignas(kLine) std::atomic<uint32_t> g_producerLock{0};  // 0 free, 1 held, 2 held and a producer sleeps on it
 std::mutex g_producer;  // begin()..commit(): the movie streaming thread records calls too (the guest's texture renderer filter)
+std::mutex g_mutex;
 std::condition_variable g_cvConsumer, g_cvProducer, g_cvSync;
 std::thread g_thread;
 std::atomic<bool> g_stop{false};
@@ -35,31 +56,78 @@ int g_inFlight = 1;
 std::atomic<uint64_t> g_framesQueued{0}, g_framesDone{0};
 std::atomic<uint64_t> g_renderNs{0};  // the last replayed frame's render-thread time
 double g_waitMs = 0;
-uint64_t g_pendingHead = 0;           // producer: the record being written ends here
+// replayed records by op, this frame (render thread; a line of its own), and the last frame's total
+struct alignas(kLine) OpCounts { uint32_t n[OP_count + 1]; } g_opCounts{};
+std::atomic<uint32_t> g_lastFrameCalls{0};
+
+// The producer lock: a futex lock whose free case (nearly always) is one compare-and-swap to take
+// and one exchange to release, no pthread call or futex system call (the atomics may still be
+// outlined helpers, without -mno-outline-atomics); taken, it spins briefly and then sleeps: the
+// other producer (the movie thread) holds it across a frame's texture copy, and any producer
+// across reserve()'s wait for ring room, for milliseconds - spinning or yielding through that
+// burnt a core (2026-10-12).
+#if defined(__linux__)
+inline void futexWait(std::atomic<uint32_t>& a, uint32_t v) { syscall(SYS_futex, reinterpret_cast<uint32_t*>(&a), FUTEX_WAIT_PRIVATE, v, nullptr, nullptr, 0); }
+inline void futexWake(std::atomic<uint32_t>& a) { syscall(SYS_futex, reinterpret_cast<uint32_t*>(&a), FUTEX_WAKE_PRIVATE, 1, nullptr, nullptr, 0); }
+#endif
+inline void lockProducer() {
+#if defined(__linux__)
+    if (g_futex) {
+        uint32_t c = 0;
+        if (g_producerLock.compare_exchange_strong(c, 1, std::memory_order_acquire, std::memory_order_relaxed)) return;
+        for (int i = 0; i < 100; ++i) {  // a record's copy is usually over by now
+            c = 0;
+            if (g_producerLock.load(std::memory_order_relaxed) == 0 && g_producerLock.compare_exchange_weak(c, 1, std::memory_order_acquire, std::memory_order_relaxed)) return;
+        }
+        // sleep until the holder wakes us; the state stays 2 while anyone may sleep on it
+        c = g_producerLock.exchange(2, std::memory_order_acquire);
+        while (c != 0) {
+            futexWait(g_producerLock, 2);
+            c = g_producerLock.exchange(2, std::memory_order_acquire);
+        }
+        return;
+    }
+#endif
+    g_producer.lock();
+}
+inline void unlockProducer() {
+#if defined(__linux__)
+    if (g_futex) {
+        if (g_producerLock.exchange(0, std::memory_order_release) == 2) futexWake(g_producerLock);
+        return;
+    }
+#endif
+    g_producer.unlock();
+}
 
 std::function<bool()> g_makeCurrent;
 std::function<void()> g_release;
 
 // A record that would cross the end of the ring is preceded by a pad record to the end.
 void* reserve(size_t len) {
-    const uint64_t head = g_head.load(std::memory_order_relaxed);
-    size_t pos = static_cast<size_t>(head % g_size);
+    const uint64_t head = g_head.load(std::memory_order_relaxed);  // written only under the producer lock
+    size_t pos = g_prod.pos;
     uint64_t need = len;
     size_t padLen = 0;
     if (pos + len > g_size) { padLen = g_size - pos; need = padLen + len; }
     // wait for room: the consumer frees space as it advances
-    while (g_size - (head - g_tail.load(std::memory_order_acquire)) < need) {
-        g_producerWaiting.store(true);
-        std::unique_lock<std::mutex> lk(g_mutex);
-        g_cvProducer.wait_for(lk, std::chrono::milliseconds(1), [&] { return g_size - (head - g_tail.load(std::memory_order_acquire)) >= need; });
-        g_producerWaiting.store(false);
+    if (!g_cacheIdx || g_size - (head - g_prod.tailSeen) < need) {
+        g_prod.tailSeen = g_tail.load(std::memory_order_acquire);
+        while (g_size - (head - g_prod.tailSeen) < need) {
+            g_producerWaiting.store(true);
+            std::unique_lock<std::mutex> lk(g_mutex);
+            g_cvProducer.wait_for(lk, std::chrono::milliseconds(1), [&] { return g_size - (head - g_tail.load(std::memory_order_acquire)) >= need; });
+            g_producerWaiting.store(false);
+            g_prod.tailSeen = g_tail.load(std::memory_order_acquire);
+        }
     }
     if (padLen) {
         Header* h = reinterpret_cast<Header*>(g_ring + pos);
         h->op = OP_pad, h->len = static_cast<uint32_t>(padLen);
         pos = 0;
     }
-    g_pendingHead = head + need;
+    g_prod.pendingHead = head + need;
+    g_prod.pendingPos = pos + len == g_size ? 0 : pos + len;
     return g_ring + pos;
 }
 
@@ -77,9 +145,13 @@ void threadMain() {
     // when the queue runs dry or a frame ends), not per record: two clock_gettime calls per
     // replayed GL call were 1.3-2.1 % of the device's samples.
     uint64_t burstStart = 0, frameBusy = 0;
+    // The consumer's own tail and ring position, and the producer's head as last read: it is
+    // read again only once the records up to it are replayed.
+    uint64_t tail = g_tail.load(std::memory_order_relaxed), head = tail;
+    size_t pos = 0;
+    uint32_t frameCalls = 0;
     for (;;) {
-        uint64_t tail = g_tail.load(std::memory_order_relaxed);
-        uint64_t head = g_head.load(std::memory_order_acquire);
+        if (!g_cacheIdx || tail == head) head = g_head.load(std::memory_order_acquire);
         if (tail == head) {
             if (burstStart) frameBusy += nowNs() - burstStart, burstStart = 0;
             if (g_stop.load()) break;
@@ -101,12 +173,12 @@ void threadMain() {
             continue;
         }
         if (!burstStart) burstStart = nowNs();
-        const size_t pos = static_cast<size_t>(tail % g_size);
         const Header* h = reinterpret_cast<const Header*>(g_ring + pos);
         const uint32_t op = h->op, len = h->len;
-        if (len < sizeof(Header) || (len & 7)) { host::log("gles: render thread: corrupt record (op %u, len %u) at %llu", op, len, static_cast<unsigned long long>(tail)); abort(); }
+        if (len < sizeof(Header) || (len & 7) || len > g_size - pos) { host::log("gles: render thread: corrupt record (op %u, len %u) at %llu", op, len, static_cast<unsigned long long>(tail)); abort(); }
         if (op == OP_call) {
             auto* fn = *reinterpret_cast<std::function<void()>* const*>(h + 1);
+            ++g_opCounts.n[OP_call], ++frameCalls;
             (*fn)();
             delete fn;
         } else if (op == OP_frame) {
@@ -114,12 +186,19 @@ void threadMain() {
             frameBusy += now - burstStart, burstStart = now;
             g_renderNs.store(frameBusy);
             frameBusy = 0;
+            g_lastFrameCalls.store(frameCalls, std::memory_order_relaxed);
+            frameCalls = 0;
+            std::memset(g_opCounts.n, 0, sizeof g_opCounts.n);
             g_framesDone.fetch_add(1, std::memory_order_acq_rel);
             { std::lock_guard<std::mutex> lk(g_mutex); g_cvProducer.notify_all(); }
         } else if (op != OP_pad) {
+            ++g_opCounts.n[op < OP_count ? op : OP_count], ++frameCalls;
             replay(op, h + 1);
         }
-        g_tail.store(tail + len, std::memory_order_release);
+        tail += len;
+        pos += len;
+        if (pos == g_size) pos = 0;  // a record (or the pad before a wrapped one) ends exactly at the end
+        g_tail.store(tail, std::memory_order_release);
         if (g_producerWaiting.load(std::memory_order_acquire)) { std::lock_guard<std::mutex> lk(g_mutex); g_cvProducer.notify_all(); }
     }
     if (g_release) g_release();
@@ -132,7 +211,7 @@ bool onRenderThread() { return t_renderThread; }
 bool direct() { return !g_started || t_renderThread; }
 
 void* begin(uint32_t op, size_t args, size_t data) {
-    g_producer.lock();  // released by commit()
+    lockProducer();  // released by commit()
     const size_t len = (sizeof(Header) + args + data + 7) & ~static_cast<size_t>(7);
     Header* h = static_cast<Header*>(reserve(len));
     h->op = op, h->len = static_cast<uint32_t>(len);
@@ -140,8 +219,9 @@ void* begin(uint32_t op, size_t args, size_t data) {
 }
 
 void commit() {
-    g_head.store(g_pendingHead, std::memory_order_release);
-    g_producer.unlock();
+    g_prod.pos = g_prod.pendingPos;
+    g_head.store(g_prod.pendingHead, std::memory_order_release);
+    unlockProducer();
     wakeConsumer();
 }
 
@@ -188,6 +268,8 @@ void frameEnd() {
 
 double renderMs() { return g_renderNs.load() / 1e6; }
 double waitMs() { return g_waitMs; }
+const uint32_t* frameOpCounts() { return g_opCounts.n; }
+uint32_t lastFrameCalls() { return g_lastFrameCalls.load(std::memory_order_relaxed); }
 
 bool start(std::function<bool()> makeCurrent, std::function<void()> release) {
     const char* e = getenv("FABLE_GLES_THREAD");
@@ -199,12 +281,16 @@ bool start(std::function<bool()> makeCurrent, std::function<void()> release) {
     g_ring = static_cast<uint8_t*>(std::malloc(g_size));
     if (!g_ring) { g_enabled = false; return false; }
     g_makeCurrent = std::move(makeCurrent), g_release = std::move(release);
+    if (const char* c = getenv("FABLE_GLES_QUEUE_CACHE")) g_cacheIdx = atoi(c) != 0;
+    if (const char* c = getenv("FABLE_GLES_QUEUE_FUTEX")) g_futex = atoi(c) != 0;
     g_stop = false;
     g_head = g_tail = 0;
+    g_prod = Producer{};
     g_thread = std::thread(threadMain);
     g_started = true;
     std::atexit([] { stop(); });  // exit() while the thread runs would destroy its statics under it
-    host::log("gles: render thread on (%zu MB queue, %d frame%s in flight)", g_size >> 20, g_inFlight, g_inFlight == 1 ? "" : "s");
+    host::log("gles: render thread on (%zu MB queue, %d frame%s in flight, index cache %s, producer %s)", g_size >> 20, g_inFlight, g_inFlight == 1 ? "" : "s",
+              g_cacheIdx ? "on" : "off", g_futex ? "futex lock" : "mutex");
     return true;
 }
 
@@ -221,15 +307,19 @@ void stop() {
 }
 
 void genNames(int kind, int n, unsigned* out) {
+    // A refill is a round trip: the game thread waits until the render thread has replayed
+    // everything recorded before it (a level load's texture uploads included), so the batch
+    // is large enough that a region load refills once or twice instead of every 64 objects.
+    constexpr int kBatch = 256;
     static std::vector<unsigned> pools[GEN_count];
     std::vector<unsigned>& pool = pools[kind];
     while (n > 0) {
         if (pool.empty()) {
-            pool.resize(64);
+            pool.resize(kBatch);
             unsigned* buf = pool.data();
             auto fn = genFn(kind);
             Sync s;
-            call([fn, buf, &s] { fn(64, buf); signal(s); });
+            call([fn, buf, &s] { fn(kBatch, buf); signal(s); });
             wait(s);
         }
         *out++ = pool.back();

@@ -122,7 +122,7 @@ DWORD WINAPI getState(DWORD user, XINPUT_STATE* s) {
         static Uint32 since = 0;
         if (SDL_GameControllerGetButton(p, SDL_CONTROLLER_BUTTON_BACK) && SDL_GameControllerGetButton(p, SDL_CONTROLLER_BUTTON_START)) {
             if (!since) since = SDL_GetTicks();
-            else if (SDL_GetTicks() - since > 2000) { std::fprintf(stderr, "controller: Back+Start held: exiting\n"); std::fflush(nullptr); _exit(0); }
+            else if (SDL_GetTicks() - since > 2000) { std::fprintf(stderr, "controller: Back+Start held: exiting\n"); drainFileFlushes(); std::fflush(nullptr); _exit(0); }
         } else {
             since = 0;
         }
