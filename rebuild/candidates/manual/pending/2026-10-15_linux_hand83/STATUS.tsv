@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0075cd90	DIFFER	81v81	-	fadd operand order / fstp scheduling (lane gap)
+0076d6f0	RELOCATION_MATCH	39v39	PASS	_global::FindThingInList __fastcall find front end (copy-ctor iterator); label rejected
+0076d850	RELOCATION_MATCH	31v31	PASS	_global::FindThingInList __fastcall find front end; label rejected
+00aa5bd0	RELOCATION_MATCH	80v80	PASS	two STLport clear() (copy_trivial + counted copy)
+00c1bfb0	MATCH	19v19	PASS	_global::SwapYZ __fastcall; label rejected
+005202b0	DIFFER	57v55	-	lane gap 24l: value temp and tag share the arg slot
+006bc4a0	DIFFER	51v48	-	lane gap 24l: value and tag share the arg slot
+0075d050	MATCH	79v79	PASS	InitialiseSpline, -1 -> size()-1
+0075d8b0	RELOCATION_MATCH	58v58	PASS	named iterator local re-read from frame slot
+00771510	RELOCATION_MATCH	41v41	PASS	stack pop + re-apply; label rejected
+00778b30	DIFFER	57v55	-	lane gap 24l: value temp and tag share the arg slot
+007f7810	DIFFER	60v58	-	lane gap 24l: value temp and tag share the arg slot
+007fef40	DIFFER	56v53	-	lane gap 24l: value and tag share the arg slot
+009f0570	DIFFER	39v39	-	compare before by-value param dtor (lane gap)
+0075c1e0	RELOCATION_MATCH	33v33	PASS	GetTrackPosition (slot 35), memberwise dword copy ctor
+0075d8f0	RELOCATION_MATCH	70v70	PASS	IsLeafCriteriaMet (slot 29), __forceinline GetInterface
+004d4f94	RELOCATION_MATCH	34v34	PASS	really CTCStealableItemLocation ctor, optimize("s")
+0075dc00	RELOCATION_MATCH	88v88	PASS	vfunc_17: error text + track lookup via out-param GetInterface
+007ed060	RELOCATION_MATCH	63v63	PASS	&CAction(creature) temporary passed to SetCurrentAction
+007edb80	RELOCATION_MATCH	85v85	PASS	three-way entry select puts component in ecx
+007edfb0	RELOCATION_MATCH	27v27	PASS	base hook + OnActionUseCommon
+007edfd0	RELOCATION_MATCH	27v27	PASS	base hook + OnActionUseCommon (twin of 007edfb0)
+0084b7c0	RELOCATION_MATCH	59v59	PASS	really NCreatureMode::CModeSleepBed ctor
+0040f560	RELOCATION_MATCH	48v48	PASS	STLport deque PopFrontAux (4-byte T); label rejected
+004d3d0e	RELOCATION_MATCH	52v52	PASS	CTCCarryable ctor, optimize("s")
+0059ad35	RELOCATION_MATCH	47v47	PASS	STLport deque PopBackAux (4-byte T), optimize("s"); label rejected
+00705150	RELOCATION_MATCH	19v19	PASS	CTCCarryable::OnKill (vtable slot 14)
+00705b00	RELOCATION_MATCH	96v96	PASS	overload + two POD assignments
+00833ba0	RELOCATION_MATCH	92v92	PASS	really CThingAICreature::OnLevelUnload (slot 43)
+008b0a60	RELOCATION_MATCH	45v45	PASS	really ~CCombatSequenceBase
+009138b0	RELOCATION_MATCH	46v46	PASS	STLport deque PopFrontAux (48-byte T); label rejected
+009d5ee0	RELOCATION_MATCH	43v43	PASS	really ~CLoadingMemoryFailureHandler
+00a0e620	RELOCATION_MATCH	49v49	PASS	STLport deque PopBackAux (8-byte T); label rejected
+00c6ac60	RELOCATION_MATCH	39v39	PASS	MMX sample scaler front end; label rejected
+00caa080	RELOCATION_MATCH	32v32	PASS	ReleaseSemaphore owner; label rejected
+006a1060	RELOCATION_MATCH	58v58	PASS	__forceinline FindThing loop, != end()
+006a1330	DIFFER	62v60	-	def pointer via eax then ecx for release (register choice)
+006a1440	RELOCATION_MATCH	71v71	PASS	list walk with two exits
+006a19b0	RELOCATION_MATCH	65v65	PASS	__forceinline FindThing loop + RemoveThingInCarrySlot(slot,false)
+00aab910	RELOCATION_MATCH	71v71	PASS	really CSoundEmitterLH::CActiveSound ctor

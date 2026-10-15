@@ -146,10 +146,13 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand80` | Hand chunk 80 (CTCActionUseBuyHouse .. CTCAssassinRush): 40 of 40 byte-exact | - | 0 | 0 | done |
 | `2026-10-15_linux_hand81` | Hand chunk 81 (CTCAssassinRush .. CTCBoastingPodium): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand82` | Hand chunk 82 (CTCBoastingPosition .. CTCCameraPointScripted): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand83` | Hand chunk 83 (CTCCameraPointScripted .. CTCCarrying): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand84` | Hand chunk 84 (CTCCarrying .. CTCCreatureGroup): 36 of 40 byte-exact | - | 3 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand86` | Hand chunk 86 (CTCDHeroSuit .. CTCEffectOnDie): 34 of 40 byte-exact | - | 4 | 2 | landed; parked rows open |
+| `2026-10-15_linux_hand87` | Hand chunk 87 (CTCElectrocutedEffect .. CTCForcePushed): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 
-Totals: **0 matched rows staged for landing**, **86 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **101 parked rows** for the Fable retry pass.
 
 ### Skipped rows (19 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -314,11 +317,35 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0075cd30 CTCCameraPointScripted::GetEndPos DIFFER(81v81): X sum `fld [esi+40h] ; fadd [eax]` stored after two pushes (retail) vs `fld [eax] ; fadd [esi+40h]` stored after three | tried: free `operator+(pos, EndPos)`, member `pos + EndPos` (X and store order right, Z/Y reversed), member `EndPos + pos` | next: lane gap: x87 operand order / store scheduling of the last component
 
 
+#### `2026-10-15_linux_hand83` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand83/differ/`)
+- 0075cd90 CTCCameraPointScripted::GetEndPos DIFFER(81v81): X sum `fld [eax] ; fadd [esi+4Ch]` vs retail `fld [esi+4Ch] ; fadd [eax]`, one fstp/push pair scheduled differently | tried: free inline operator+ (a.X + b.X), operands swapped, member operator+ over a named position reference | next: lane gap: commutative fadd operand order chosen by the scheduler
+- 006a1330 CTCCarrying::IsSlotPrimarySlot DIFFER(62v60): def pointer loaded into eax and copied to ecx for the release (`mov eax,[esp+4] ... mov ecx,eax`) vs retail `mov ecx,[esp+4] ; mov eax,[ecx+4]` | tried: `if (--m_p->m_refCount == 0) m_p->Destroy();` (69v60), local pointer copy + Release() on the pointee (66v60), explicit count local (62v60) | next: the count-local release written as a member of the pointee (so `this` lands in ecx), else lane gap: register choice
+- 009f0570 CNameRegistry_009f0570::Contains (catalog CTCCameraPointScriptedSpline::AddAnimIndexToAvailableAnimList) DIFFER(39v39): lane `cmp eax,esi ; setne bl` before the by-value CCharString destructor and `mov al,bl` vs retail `mov edi,eax`, destructor, `cmp edi,esi ; setne al` | tried: `return Find(name) != end;`, named node local, iterator with inline operator!=, `? true : false` | next: lane gap: register allocation of the compare across the parameter destructor
+- 005202b0 CPointerListOwner_005202b0::Add (catalog EditCyclePreviousKeyCamera) DIFFER(57v55): lane builds the converted value in a `push ecx` slot; retail re-stores it into the dead argument slot (`mov [esp+4],edx`) and passes that one address as both value and tag | tried: rvalue cast / inline accessor argument, landed SScalarTag push_back | next: lane gap: 24l empty tag overlaid on a live argument slot
+- 006bc4a0 CRetailVector_006bc4a0::push_back (catalog EditCyclePreviousKeyCamera) DIFFER(51v48): lane gives the tag its own frame byte (`push ecx`, `lea edx,[esp+0Bh]`); retail passes the by-value parameter's slot as both value ref and tag, no frame | tried: landed SScalarTag push_back, inline `push_back(const T&)` front end over the by-value parameter (agent82's 0x00747450 trick; still 51v48) | next: lane gap: 24l empty tag overlaid on a live argument slot
+- 00778b30 CPointerListOwner_00778b30::Add (catalog EditCyclePreviousKeyCamera) DIFFER(57v55): as 005202b0 with the vector at +0xc | tried: rvalue cast / inline accessor argument, landed SScalarTag push_back | next: lane gap: 24l empty tag overlaid on a live argument slot
+- 007f7810 CPointerListOwner_007f7810::AddRecordItem (catalog EditCyclePreviousKeyCamera) DIFFER(60v58): fetched value (`[arg+4]`) built in a `push ecx` slot vs retail re-store into the dead argument slot shared with the tag | tried: rvalue inline accessor argument, landed SScalarTag push_back | next: lane gap: 24l empty tag overlaid on a live argument slot
+- 007fef40 CPointerListOwner_007fef40::Add (catalog EditCyclePreviousKeyCamera) DIFFER(56v53): lane gives the tag its own frame byte; retail passes the parameter slot as both value ref and tag, no frame | tried: lvalue parameter bound to push_back(const T&), landed SScalarTag push_back | next: lane gap: 24l empty tag overlaid on a live argument slot
+
+
+#### `2026-10-15_linux_hand84` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand84/differ/`)
+- 00be1e20 CEnginePrimitive2DViewportManager::CEnginePrimitive2DViewportManager DIFFER(77v77): retail forwards the four zero dwords of the frame temporary all through edx (`mov edx,eax` then four `mov [ecx+n],edx`); the lane alternates edx/eax and schedules `lea ecx,[esi+14h]` before `mov edx,eax` | tried: member copy-constructed from a temporary (elided, 51 bytes), user memberwise operator= (elided), implicit assignment in the body (77v77) | next: lane gap: copy-register allocation
+- 005e3c60 vector<pair<unsigned long, CAnimationEntry> >::resize DIFFER(78v68): the default pair temporary's counted-pointer release -- retail `mov ecx,[esp+10h] ; test ecx,ecx ; je ; dec dword ptr [ecx+4] ; jne`, the lane `mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx` | tried: `--Object->m_count` in the dtor, a local pointer copy, Release() on the pointee, Release() on a CRefCounted second base | next: lane gap: counted-pointer release register form (4 attempts used)
+- 00c6ac90 CAudioFilterStage::Process DIFFER(39v38): retail loads the gain into ecx (`mov ecx,[esp+10h]`) for 0x00C6AAE0, which reads ecx as a parameter and returns with a plain `ret` while the caller cleans four stack arguments (`add esp,10h`) | tried: `__cdecl` callee | next: lane gap: LTCG custom calling convention
+
+
 #### `2026-10-15_linux_hand86` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand86/differ/`)
 - 004df14b CTCDPhysicalObstruction::CTCDPhysicalObstruction DIFFER(91v91): `mov ecx,edi` for line1's CBaseClass call is scheduled before the three vector zero stores (retail: between the 2nd and 3rd store) | tried: the 12-byte vector ctor as an init list and as body assignments (3 grades) | next: lane gap: member-ctor `lea/mov ecx` scheduled before a run of register-zero stores (wave 24i)
 - 007509d0 CTCDiscovery::SetDiscovered DIFFER(90v90): retail keeps `this` in esi and the discoverer in edi, the lane the reverse | tried: plain argument, named local copy of the discoverer, named CIntelligentPointer local | next: lane gap: register allocation (esi/edi swap)
 - 0078e7c0 CTCDivineWrath::Attackable DIFFER(91v94): retail loads ParentThing into ebx before the target GetPItem call and loads arg1 before arg2 for both `__fastcall` AreThingsEnemies calls; `this` in esi (lane: edi); retail shares one `mov al,1` tail after `test al,al ; jne` where the lane emits `setne` | tried: if/return-true chain, single `||`/`&&` return expression | next: try AreThingsEnemies modelled as a static member with explicit locals for the two arguments (ParentThing loaded into a local before the first test); otherwise lane gap: __fastcall argument evaluation order
 - 00793cc0 CTCUnholyPower::Attackable DIFFER(91v94): byte-identical to 0078e7c0, same differences | tried: the same source as 0078e7c0 | next: lands with 0078e7c0 when that one matches
+
+
+#### `2026-10-15_linux_hand87` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand87/differ/`)
+- 00567d00 CNetString_Retail::RangeInitialize DIFFER(90v89): one extra `int3` after the `__declspec(noreturn)` ThrowLengthError call at the end of the body (retail's next byte is int3 padding, trimmed by the oracle) | tried: STLport _M_range_initialize with inline _M_allocate_block/__copy_trivial (1 grade) | next: lane gap: trailing int3 after a noreturn call (grader should trim it, or compare ignoring trailing int3)
+- 00569330 CNetString_Retail::Substr DIFFER(84v86): lane computes `m_start+pos` once and adds min to it; retail recomputes `min + start + pos` (`add eax,esi ; add eax,edx`) | tried: `m_start + pos + Min(n, size()-pos)`, `m_start + (pos + Min(...))`, `&m_start[pos]` as the first argument (4 grades in all, probe/00569330_b/_d) | next: `Min(...) + m_start + pos` as the second constructor argument
+- 006c3b70 CTCFadeOutAndIn::FadeOut DIFFER(88v90): retail rounds with `fstp [esp+8] ; fld [esp+8] ; fistp dword ptr [esp]` into a `push ecx` frame word; /QIfist emits `fistp qword ptr` into an 8-byte frame, plain C++ calls __ftol2 | tried: /QIfist cast (1 grade) | next: lane gap: asm_bake (inline-asm rounding helper)
+- 006c3bd0 CTCFadeOutAndIn::FadeIn DIFFER(83v85): same inline-asm `fistp dword` rounding helper as FadeOut | tried: /QIfist cast (1 grade) | next: lane gap: asm_bake (inline-asm rounding helper)
 
 
 #### `2026-10-15_linux_hand90` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand90/differ/`)

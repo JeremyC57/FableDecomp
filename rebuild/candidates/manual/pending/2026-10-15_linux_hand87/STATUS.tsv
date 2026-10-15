@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00567d00	DIFFER	90v89	-	STLport string _M_range_initialize (CNetString_Retail::RangeInitialize); lane int3 after noreturn call
+00569330	DIFFER	84v86	-	STLport string substr (CNetString_Retail::Substr); lane CSEs start+pos; 4 attempts
+00c0aa10	RELOCATION_MATCH	34v34	PASS	CAudioObject_00c0aa10::GetElementCount
+00c0ac00	RELOCATION_MATCH	34v34	PASS	CAudioObject_00c0ac00::GetSecondTableCount
+00c11150	RELOCATION_MATCH	48v48	PASS	CAudioListener_00c11150::GetValue
+00c15f10	RELOCATION_MATCH	31v31	PASS	CAudioObject_00c15f10::SetUnused
+00c1e4d0	RELOCATION_MATCH	43v43	PASS	CAudioOwner_00c1e4d0::GetShortValue
+0071aa50	RELOCATION_MATCH	87v87	PASS	CTCEmoteIcon::SetActiveTimer
+0071aab0	RELOCATION_MATCH	81v81	PASS	CTCEmoteIcon::SetEmoteIcon
+0071ac20	MATCH	68v68	PASS	CTCEmoteIcon::SetAsDrawable
+0071af30	MATCH	94v94	PASS	CTCEmoteIcon::FrameUpdate
+0071b040	MATCH	83v83	PASS	CTCEmoteIcon::HandleMessage
+00750b80	RELOCATION_MATCH	18v18	PASS	CTCExplodingObject::OnCreate
+00750ba0	RELOCATION_MATCH	52v52	PASS	CTCExplodingObject::SetCountdownTimer
+00750cd0	RELOCATION_MATCH	96v96	PASS	CTCExplodingObject::~CTCExplodingObject
+00750dd0	RELOCATION_MATCH	79v79	PASS	CTCExplodingObject::Explode
+0049d310	MATCH	23v23	PASS	CTCFadeOutAndIn::IsFading
+00661600	MATCH	23v23	PASS	CTCPerceiveThing::CanSeeOrSmellPerceivedThing
+006c3b50	MATCH	27v27	PASS	CTCFadeOutAndIn::FinalCleanup
+006c3b70	DIFFER	88v90	-	really FadeOut; inline-asm fistp rounding helper (asm_bake gap)
+006c3bd0	DIFFER	83v85	-	FadeIn; inline-asm fistp rounding helper (asm_bake gap)
+0082cf40	MATCH	30v30	PASS	CTCDoor::IsClosed
+007e2790	RELOCATION_MATCH	83v83	PASS	CTCFineDialogue::IsAllowed
+007e5cc0	RELOCATION_MATCH	22v22	PASS	CTCFireRangedWeaponOnLeavingStateGroup::FinalCleanup
+007c8660	RELOCATION_MATCH	82v82	PASS	CTCFireballSpell::SetWeaponState
+007b1eb0	RELOCATION_MATCH	94v94	PASS	CTCFishing::GoFishing
+004df2d4	RELOCATION_MATCH	47v47	PASS	CTCAISummon::CTCAISummon (pragma optimize y off + s on)
+007e2450	RELOCATION_MATCH	46v46	PASS	CTCFishingRod::CTCFishingRod
+007b0330	RELOCATION_MATCH	39v39	PASS	CTCFishingSpot::OnSerialise
+00c3caa0	RELOCATION_MATCH	86v86	PASS	CSlot_00c3cb30::~CSlot_00c3cb30 (/EHsc)
+00780d20	RELOCATION_MATCH	94v94	PASS	CTCFlammable::OnInitialActivate
+007e8a00	RELOCATION_MATCH	20v20	PASS	CTCFlourishTarget::OnInitialActivate
+007e8a20	RELOCATION_MATCH	20v20	PASS	CTCFlourishTarget::FinalCleanup
+006d4d40	RELOCATION_MATCH	34v34	PASS	CTCFollowed::RemoveAllFollowers
+006d4d70	RELOCATION_MATCH	53v53	PASS	CTCFollowed::IsFollower
+006d4db0	RELOCATION_MATCH	53v53	PASS	CTCFollowed::IsAIFollower
+0072a8d0	RELOCATION_MATCH	53v53	PASS	CTCSpecialAbilities::IsUndeadFollower
+0072a910	RELOCATION_MATCH	59v59	PASS	CTCSpecialAbilities::GetUndeadFollower
+007f6170	RELOCATION_MATCH	53v53	PASS	CTCTargetingAI::IsThingAttackable
+00798510	RELOCATION_MATCH	34v34	PASS	CTCForcePushed::OnKill

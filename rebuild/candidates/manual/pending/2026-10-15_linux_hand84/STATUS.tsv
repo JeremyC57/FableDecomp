@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c6ac90	DIFFER	39v38	-	audio filter stage (label CTCCarrying wrong); LTCG ecx-parameter callee: lane gap
+00750010	RELOCATION_MATCH	50v50	PASS	CTCChest::Persist: base hook then ChestOpen transfer
+00750730	RELOCATION_MATCH	67v67	PASS	CTCChest slot 4: forced-inline out-param GetInterface(9) under ChestOpen
+007508d0	RELOCATION_MATCH	88v88	PASS	CTCChest ctor; pack(1) intelligent pointer at +0x31
+00750960	SKIP	-v19	-	row holds two functions (jmp [eax+24h] + int3 + mov al,1;ret)
+00778fa0	RELOCATION_MATCH	94v94	PASS	really CTCDRegionExit ctor (label propagated); pack(1) pointer at +0x2a
+00732730	RELOCATION_MATCH	80v80	PASS	CTCClock hand-speed scaled time delta
+007327b0	MATCH	57v57	PASS	CTCClock slot 12: inlined CDefPointer operator=
+005e3c60	DIFFER	78v68	-	really vector<pair<ulong,CAnimationEntry>>::resize; temp release via edx in lane
+006e9960	RELOCATION_MATCH	70v70	PASS	really CCombatManager::GetNumberOfAttackers (label propagated)
+007332a0	RELOCATION_MATCH	40v40	PASS	queue behind existing actions
+00733410	RELOCATION_MATCH	72v72	PASS	0 damage during action (100,250)
+00733750	RELOCATION_MATCH	49v49	PASS	plain block-ability finder wrapper
+00733910	RELOCATION_MATCH	64v64	PASS	for_each CGetMaxComboStage functor by value, __fastcall
+00734050	RELOCATION_MATCH	96v96	PASS	forced-inline GetInterface(48) in && chain, fild/fadd/__ftol2
+00734570	RELOCATION_MATCH	96v96	PASS	combo chain advance/reset
+00734880	RELOCATION_MATCH	49v49	PASS	really GetPrioritizedBlockAbilityIterator (twin label)
+0074fde0	RELOCATION_MATCH	78v78	PASS	CTCContainer ??_G: CTCBase as first member of non-polymorphic class
+0074e240	RELOCATION_MATCH	58v58	PASS	CTCContainerRewardHero::Persist (label OnSerialise)
+0074e500	RELOCATION_MATCH	96v96	PASS	zero-init gold local + inline GetInterface(204)
+0066ffd0	RELOCATION_MATCH	39v39	PASS	C3DVector by hidden pointer, +0.2 on Z
+00670050	RELOCATION_MATCH	50v50	PASS	CTCCoopSpirit ctor
+006707a0	RELOCATION_MATCH	50v50	PASS	OnHit particle (OnHitParticle)
+006707e0	RELOCATION_MATCH	50v50	PASS	really OnStrike (OnStrikeParticle); label says OnHit
+007b6660	RELOCATION_MATCH	38v38	PASS	neg/sbb/neg != 0
+007b6690	RELOCATION_MATCH	36v36	PASS	neg/sbb/add 2 ternary
+007b6750	RELOCATION_MATCH	60v60	PASS	zero-init result local assigned per arm -> tail jumps
+006543af	RELOCATION_MATCH	80v80	PASS	really NPlayerGui::CMultiStatBar ctor; optimize("y",off)+("s",on)
+0070a520	RELOCATION_MATCH	69v69	PASS	really CTCTextureDecal ctor
+007c81b0	RELOCATION_MATCH	56v56	PASS	really CTCHitOnCollision ctor
+007dcf90	RELOCATION_MATCH	55v55	PASS	CTCCreatureFlyOnSpline ctor
+00be1e20	DIFFER	77v77	-	really CEnginePrimitive2DViewportManager ctor; copy-register allocation lane gap
+006a2b50	RELOCATION_MATCH	67v67	PASS	really CVectorMap<long,CIntelligentPointer>::FindValue
+00749e40	RELOCATION_MATCH	87v87	PASS	local model (PDB layout 0x10 high); implicit memberwise assignment
+00749ea0	RELOCATION_MATCH	95v95	PASS	local model; imul/neg frames, LevelPersistent bitfield
+0074a190	RELOCATION_MATCH	75v75	PASS	local model; STLport list distance loop, sequential returns
+00453de0	RELOCATION_MATCH	54v54	PASS	really CCombatAbilityBlockingData ctor; optimize("s")
+007c9720	RELOCATION_MATCH	59v59	PASS	CTCCreatureGeneratorCreator ctor; pack(1) pointer at +0x11
+009bdba0	RELOCATION_MATCH	63v63	PASS	really CMovieSubtitles ctor (no vtable)
+00812f20	RELOCATION_MATCH	76v76	PASS	sequential early returns, setne full-register bool
