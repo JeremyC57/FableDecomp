@@ -1,0 +1,60 @@
+// CCreatureAction_StartSneaking::FinishAction() -- put the creature into mode 7 (sneaking) through its mode manager (interface type 0x31), then the base FinishAction
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00845C70, length 105 bytes (+ int3 padding).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup
+// for type 0x31 = bit 17 of the bitset dword at +0x24), CTCCreatureModeManager::AddMode(unsigned long) @ 0x0073AE10 (bool result dropped),
+// CCreatureActionBase::FinishAction @ 0x00694430 (direct base call).
+// Shape: the mode manager is an UNINITIALISED out-parameter used unconditionally (the landed 0x00930DC0 shape): the AddMode + base call tail is
+// duplicated into the miss path, which reads the never-written frame word; esi is pushed only around the lookup.
+// The PDB header (CCreatureAction_StartSneaking.h) flattens the base; modelled locally (retail CCreatureActionBase is 0xa8 bytes).
+struct CTCBase;
+struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);   // 0x0040F020
+};
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;             // +0x44
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+};
+struct CBaseIntelligentPointer {
+    virtual void v00();
+    CThing* m_pItem;                        // +4
+    CThing* GetPItem() const;               // 0x00A01B50
+};
+struct CTCCreatureModeManager {             // interface type 0x31 component
+    bool AddMode(unsigned long mode);       // 0x0073AE10
+};
+
+struct CCreatureActionBase {                // retail sizeof 0xa8
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void FinishAction();            // slot 4, 0x00694430
+    unsigned char _pad04[4];                // +0x04
+    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    unsigned char _pad10[0xa8 - 0x10];      // +0x10
+};
+struct CCreatureAction_StartSneaking : CCreatureActionBase {
+    virtual void FinishAction();
+};
+
+void CCreatureAction_StartSneaking::FinishAction()
+{
+    CTCCreatureModeManager* pModes;
+    PCreature.GetPItem()->GetInterface(&pModes, 0x31);
+    pModes->AddMode(7);
+    CCreatureActionBase::FinishAction();
+}

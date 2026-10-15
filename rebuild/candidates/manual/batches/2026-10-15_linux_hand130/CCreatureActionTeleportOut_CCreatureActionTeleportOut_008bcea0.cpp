@@ -1,0 +1,50 @@
+// CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase*) -- base CCombatActionBase(owner, 250, zeroed CSoundPair), own vtable, the name "ST_TELEPORT", then the creature's current position as the target
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCEA0, length 127 bytes (+ int3 padding).
+// Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString(const char*, long)
+// @ 0x0099EBF0 (literal 0x0127E488 "ST_TELEPORT"), CCombatActionBase::SetName(const CCharString&) @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0,
+// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CThing::GetPosition @ 0x004C73D0. Own vtable 0x0127E344 (rtti-vtables.tsv).
+// Shape: `ret 4`; the landed 0x008CBCF0 constructor shape (sound pair zeroed from eax, scoped named CCharString in the 8-byte frame), then a body
+// assignment of the whole C3DVector (TargetPos +0x114 addressed through `lea ecx,[esi+114h]`: a struct assignment).
+// The PDB header (CCreatureAction_TeleportOut.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
+#include "fable_string.h"
+struct CThingCreatureBase;
+struct C3DVector { float X, Y, Z; };
+struct CThing {
+    const C3DVector& GetPosition() const;   // 0x004C73D0
+};
+struct CSoundPair {
+    long m_first;
+    long m_second;
+    CSoundPair() : m_first(0), m_second(0) { }
+};
+struct CBaseIntelligentPointer {
+    virtual void v00();
+    CThing* m_pItem;                        // +4
+    CThing* GetPItem() const;               // 0x00A01B50
+};
+
+struct CCombatActionBase {                  // retail sizeof 0x114
+    virtual void v00();
+    unsigned char _pad04[4];                // +0x04
+    CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    unsigned char _pad10[0x114 - 0x10];     // +0x10
+    CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                 // 0x00858030
+    CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);  // 0x00857F30
+    void SetName(const CCharString& name);  // 0x008574D0
+};
+struct CCreatureAction_TeleportOut : CCombatActionBase {   // vtable 0x0127E344
+    C3DVector TargetPos;                    // +0x114
+    bool Instant;                           // +0x120
+    virtual void v00();
+    CCreatureAction_TeleportOut(CThingCreatureBase* owner);
+};
+
+CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase* owner)
+    : CCombatActionBase(owner, 250, CSoundPair())
+{
+    {
+        CCharString name("ST_TELEPORT", -1);   // scoped named local (a bare temporary would reuse eax, GOTCHAS)
+        SetName(name);
+    }
+    TargetPos = PCreature.GetPItem()->GetPosition();
+}

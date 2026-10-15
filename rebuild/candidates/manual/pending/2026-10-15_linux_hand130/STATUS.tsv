@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008c4780	RELOCATION_MATCH	139v139	PASS	uninitialised GetInterface out-param, tail dup; creature local before pushes
+008c42b0	RELOCATION_MATCH	126v126	PASS	IS_THING_ALIVE(PTarget) + GetInterface 0x93
+008c43b0	RELOCATION_MATCH	124v124	PASS	base first, IS_THING_ALIVE + GetInterface 0x93
+008c4330	RELOCATION_MATCH	126v126	PASS	twin of 008c42b0
+008c4430	RELOCATION_MATCH	124v124	PASS	twin of 008c43b0
+008b8cb0	RELOCATION_MATCH	113v113	PASS	fraction > 0.3f; null-initialised out-param in esi
+008b8f30	RELOCATION_MATCH	132v132	PASS	IS_THING_ALIVE + null-init emitter in edi
+008491e0	DIFFER	106v110	-	PARKED: GetWorld() called before arg pushes in retail
+00982750	RELOCATION_MATCH	134v134	PASS	copy ctor; Position as scalar members (struct copies via lea)
+0069f480	RELOCATION_MATCH	110v110	PASS	GetInterface 0x81 if-body
+0069f670	RELOCATION_MATCH	136v136	PASS	PerformedAction byte getter; counted follow-up action
+008b7b10	RELOCATION_MATCH	133v133	PASS	scoped SIMPLE_NOISE string shares the key slot
+00842d40	RELOCATION_MATCH	101v101	PASS	GoodsPlace local from two struct copies
+0084c170	RELOCATION_MATCH	159v159	PASS	copy ctor; 11 scalar words
+006dd980	RELOCATION_MATCH	153v153	PASS	stack SheatheTrophy action, implicit dtors + inline counted-pointer release
+006df730	RELOCATION_MATCH	143v143	PASS	pack(1) class (IP at +0xb5); base args right to left
+006dfb90	RELOCATION_MATCH	129v129	PASS	pack(1) copy ctor
+00848fd0	DIFFER	107v105	-	PARKED: join register ecx vs eax around by-value counted pointer
+008ab9d0	RELOCATION_MATCH	123v123	PASS	by-value counted pointer: add-ref + release folded
+00854810	RELOCATION_MATCH	158v158	PASS	(long)(float)global; vector *= 2; creature local before push
+00854720	DIFFER	104v104	-	PARKED: esi/edi swap only
+0087e7a0	RELOCATION_MATCH	135v135	PASS	two helper-returned strings; vcall returns CSoundPair by value
+008ed650	RELOCATION_MATCH	142v142	PASS	is CCreatureAction_Die ctor (vtable 0x01287FC4); label corrected
+00845c70	RELOCATION_MATCH	105v105	PASS	uninitialised out-param AddMode(7), tail dup
+008caf10	RELOCATION_MATCH	130v130	PASS	inline forwarder with by-value args; HasTC + m_5c obstruction
+008cbd90	RELOCATION_MATCH	116v116	PASS	0x008CBCF0 shape + IP member
+008cbe10	RELOCATION_MATCH	135v135	PASS	raw-pointer alive test; temp IP assigned to PTarget
+008cb6e0	RELOCATION_MATCH	159v159	PASS	scoped slot-name string; index declared outside scope
+008bcea0	RELOCATION_MATCH	127v127	PASS	body struct assignment of TargetPos (lea)
+008bcf20	RELOCATION_MATCH	130v130	PASS	C3DVector user copy ctor -> fixed-offset init
+008bcfb0	RELOCATION_MATCH	135v135	PASS	4-arg base twin of 008bcf20
+008cf3d0	RELOCATION_MATCH	129v129	PASS	GetInterface out-param is the member +0x114
+0062d890	DIFFER	129v129	-	PARKED: zero register hoisted above string ctor (scheduling)
+00846090	RELOCATION_MATCH	107v107	PASS	uninitialised carrying out-param, joined paths
+008c0b70	RELOCATION_MATCH	133v133	PASS	SetName scope, base Initialise, AddMode(0x36) tail dup
+008c7480	RELOCATION_MATCH	99v99	PASS	set<action*>::erase(this) via const& temp in key slot
+008c7390	RELOCATION_MATCH	112v112	PASS	body assignment of TargetPos + flag
+008c7400	RELOCATION_MATCH	123v123	PASS	TargetPos = thing->GetPosition() in body
+008c7d80	RELOCATION_MATCH	127v127	PASS	copy ctor; C3DVector user copy ctor
+008c63c0	RELOCATION_MATCH	97v97	PASS	uninitialised out-param, joined; g_pPlayerGui->Refresh(0)
