@@ -1,0 +1,3 @@
+- `fcomp mem ; fnstsw ax ; test ah,5 ; jp` is `if (x < c)`; `test ah,1 ; jne` is what `>=` produces. Read the sense from the jump, not from which branch returns 1.
+- `dx*dx + dy*dy` as one expression squares the top of the FP stack (dy) first; retail's dx-first order is `float d = dx*dx; d += dy*dy;`.
+- OnActivate of a behaviour state group zeroes its float timers with the integer literal 0 (one shared zero register) before the slot-16 hook.

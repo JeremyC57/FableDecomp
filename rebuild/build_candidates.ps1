@@ -225390,6 +225390,20 @@ $catalog = @(
         TestSource = '00/e3/CACDummyMoving_Init_00e33e00_test.cpp'
         PassPattern = '00e33e00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009576c0'
+        Module = 'CAIStateGroupBehaviourBase'
+        Source = '00/95/CAIStateGroupBehaviourBase_OnActivate_009576c0.cpp'
+        TestSource = '00/95/CAIStateGroupBehaviourBase_OnActivate_009576c0_test.cpp'
+        PassPattern = '009576c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009576d0'
+        Module = 'CAIStateGroupBehaviourBase'
+        Source = '00/95/CAIStateGroupBehaviourBase_IsTargetSeenWithinCloseRange_009576d0.cpp'
+        TestSource = '00/95/CAIStateGroupBehaviourBase_IsTargetSeenWithinCloseRange_009576d0_test.cpp'
+        PassPattern = '009576d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

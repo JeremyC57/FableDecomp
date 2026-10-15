@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+009576c0	MATCH	13	PASS	CAIStateGroupBehaviourBase::OnActivate (vtable 0x0128C444 slot 2)
+009576d0	RELOCATION_MATCH	123	PASS	CAIStateGroupBehaviourBase::IsTargetSeenWithinCloseRange (no callers; descriptive name)

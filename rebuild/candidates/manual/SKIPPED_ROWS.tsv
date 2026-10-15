@@ -14,7 +14,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00837040	32	2026-10-15_linux_hand113	CThingTrackNode::CThingTrackNode::vfunc_27	multi	done	00837040:12,00837050:12	two functions in the row (0x837040 tail-jump + 0x837050 getter)
 0088b7e0	48	2026-10-15_linux_hand74	CScriptThing::GetCurrentScriptPriority	multi	done	0088b7e0:17,0088b800:4	row spans two functions (0x88b7e0 + 0x88b800)
 008aae20	96	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	008aae20:22,008aae40:27,008aae60:4,008aae70:4	row spans four functions
-009576c0	144	2026-10-15_linux_hand119	CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase::OnActivate	multi	in-chunk:906	009576c0:16,009576d0:123	two functions: 13-byte OnActivate (jmp [eax+40h]) + 0x009576D0 body
+009576c0	144	2026-10-15_linux_hand119	CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase::OnActivate	multi	done	009576c0:16,009576d0:123	two functions: 13-byte OnActivate (jmp [eax+40h]) + 0x009576D0 body
 00991620	80	2026-10-15_linux_hand86	CTCDParticleEmitter::EditFrameUpdate	multi	done	00991620:24,00991640:36	EditFrameUpdate row holds two functions (chunk 86, paused before staging)
 009cbd30	96	2026-10-15_linux_hand73	CScriptGameResourceObjectScriptedThingBase::AskHeroQuestion	multi	done	009cbd30:20,009cbd50:19,009cbd70:20	three AskHeroQuestion-style forwarders separated by int3 padding
 00a446fa	31	2026-10-14_linux_hand49	CIngredientOwner::Init	cold	open	00a446ce:0	continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent); covered when the parent lands
