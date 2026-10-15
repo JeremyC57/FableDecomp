@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006a8b40	RELOCATION_MATCH	76v76	PASS	GetInterface(0x2D) && IsActionPointFree
+00ca49c0	RELOCATION_MATCH	26v26	PASS	label: CTextureRenderer vtable slot 30 (EndFlush-style)
+006a6f50	MATCH	33v33	PASS	physics mesh != 0
+006a7f30	RELOCATION_MATCH	60v60	PASS	inline CCharString ==
+006a76b0	MATCH	72v72	PASS	Range read into a local first
+006a7780	MATCH	86v86	PASS	label: In3DRange (3D distance)
+00c1e9f0	RELOCATION_MATCH	43v43	PASS	label: unattributed 0xC1 sequence client; __fastcall callee
+006a7930	MATCH	43v43	PASS	call == MapNo
+006a7960	RELOCATION_MATCH	34v34	PASS	call == RegionID
+0080e480	RELOCATION_MATCH	82v82	PASS	GetInterface(0x31) type 0x5F
+007892ea	RELOCATION_MATCH	87v87	PASS	optimize y off + s on; bitset::test out of line
+006a7a80	RELOCATION_MATCH	24v24	PASS	arg before object
+006a7390	RELOCATION_MATCH	47v47	PASS	radius homed in dead arg slot
+006a8c00	RELOCATION_MATCH	87v87	PASS	ctor: Override init-list, pointer in body
+006a7640	RELOCATION_MATCH	28v28	PASS	right-to-left args
+006a8450	RELOCATION_MATCH	94v94	PASS	present case as if body
+0075c4f0	RELOCATION_MATCH	53v53	PASS	label: CTCCameraPointScriptedSpline::IsCombatSpline; parent in a local
+005271b0	SKIP	-	-	row holds two functions (jmp thunk + ctor)
+00ac20d0	SKIP	-	-	row holds three functions
+00caef70	SKIP	-	-	row holds four functions
+0085afd0	RELOCATION_MATCH	93v93	PASS	GetInterface(0x3F) type 7
+006a7020	MATCH	38v38	PASS	fabs intrinsic
+006a7ad0	RELOCATION_MATCH	72v72	PASS	C3DVector delta local, g_fZero
+006a81f0	RELOCATION_MATCH	79v79	PASS	GetInterface(0x37)
+00809210	RELOCATION_MATCH	82v82	PASS	GetInterface(0x77) intelligent ptr
+0063ef50	DIFFER	95v95	-	square order only (95v95)
+00c61c70	MATCH	32v32	PASS	16-byte ctor; PDB is 8 bytes
+0063efb0	RELOCATION_MATCH	81v81	PASS	mesh object local, max
+008388d0	RELOCATION_MATCH	96v96	PASS	5th arg not forwarded
+00838a40	RELOCATION_MATCH	94v94	PASS	success path as if body
+00838b20	MATCH	51v51	PASS	CDefPointer local copy release
+00838b60	MATCH	54v54	PASS	CDefPointer local copy release
+004ae450	RELOCATION_MATCH	57v57	PASS	non-polymorphic delete helper
+004c3cd0	RELOCATION_MATCH	56v56	PASS	label: C3DAnimationBlendState; base as first member
+005e0de0	RELOCATION_MATCH	56v56	PASS	base as first member
+00696060	RELOCATION_MATCH	49v49	PASS	non-polymorphic delete helper
+00724de0	RELOCATION_MATCH	78v78	PASS	label: CTCPhysicsStandard; novtable CTCPhysicsBase
+0079c570	RELOCATION_MATCH	70v70	PASS	label: CTCSummonableCreature; pack(1)
+007a62d0	RELOCATION_MATCH	70v70	PASS	label: CTCForcePushPower
+0083b3b0	RELOCATION_MATCH	41v41	PASS	label: CThingVillage::DrawIsDrawable (vtable slot 27)

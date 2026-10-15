@@ -130,6 +130,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand103` | Hand chunk 103 (CTCTavernGameCardBlackjack .. CTCThingOwner): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand104` | Hand chunk 104 (CTCThingOwner .. CTCVolumeContainmentTracker): 36 of 40 byte-exact | - | 3 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand107` | Hand chunk 107 (CThing .. CThingBaseDef): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand110` | Hand chunk 110 (CThingFilter_HasFreeActionPoint .. CThingHolySite): 36 of 40 byte-exact | - | 1 | 3 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -175,20 +176,23 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **161 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **162 parked rows** for the Fable retry pass.
 
-### Skipped rows (8 open of 23 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (11 open of 26 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
+| `005271b0` | multi | open | 005271b0:8 005271c0:62 | `2026-10-15_linux_hand110` | row holds two functions (jmp thunk + ctor) |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007460d0` | multi | in-chunk:902 | 007460d0:5 007460e0:3 007460f0:9 | `2026-10-15_linux_hand98` | three functions in a 48-byte row (jmp [eax+24h] / mov al,1 / vtable getter) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
+| `00ac20d0` | multi | open | 00ac20d0:5 00ac20e0:11 00ac20f0:6 | `2026-10-15_linux_hand110` | row holds three functions |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
+| `00caef70` | multi | open | 00caef70:9 00caef80:3 00caef90:3 00caefa0:3 | `2026-10-15_linux_hand110` | row holds four functions |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -241,6 +245,10 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 #### `2026-10-15_linux_hand107` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand107/differ/`)
 - 004c8c90 CThing::IsUnderScriptControl DIFFER(83v81): `mov eax,[eax+4] ; mov cl,[eax+18h] ; ... mov ecx,eax` vs retail `mov ecx,[eax+4] ; mov al,[ecx+18h]` (component pointer register) | tried: GetInterface `!`-form, HasTC + pointer-returning GetTC, inline component member `IsUnderControl()`, `if (GetInterface) return ...; return false;` (fixed block order) | next: a const-qualified GetInterface / a different CVectorMap instance (retail calls LowerBound 0x004365B0, not 0x0040F020), or `CTCScriptControl* c = 0;` initialised before the lookup
 - 00830260 CThingAICreature::RandomiseMovementSpeed DIFFER(84v84): `mov [esp+4],eax` (seed store) scheduled before `fld [ecx+0B0h]`, retail stores it after `push ecx ; lea ecx,[esp+8]` | tried: seed local then call, range local first, seed wrapped in an inline CRandomSeed object | next: lane gap: scheduling of a local's initial store relative to the outgoing-argument push
+
+
+#### `2026-10-15_linux_hand110` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand110/differ/`)
+- 0063ef50 CThingFilter_OverlappingCircle::operator() DIFFER(95v95): retail squares dx first (`fld st(2) ; fmul st(3)` twice) where ours squares dy first (`fld st(1) ; fmul st(2)` then `fld st(3) ; fmul st(4)`) | tried: named C3DVector local (reads the frame slot), const-ref local, inline operator- + GetLengthSquared2D (spills), inline `Overlaps(const C3DVector&, physics)` helper (only the square order left) | next: `dy * dy + dx * dx` inside the helper, or the deltas in a C3DVector local inside the helper
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
