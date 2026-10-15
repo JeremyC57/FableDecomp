@@ -14,7 +14,7 @@ A=$S/w22/$1; P=rebuild/candidates/manual/pending/$2
 if grep -lE "__asm|naked|_emit" "$A"/src/*.cpp 2>/dev/null; then echo "asm in matched sources -- refuse"; exit 1; fi
 mkdir -p "$P/src" "$P/test" "$P/differ"
 cp "$A/payload.json" "$A/oracle.tsv" "$A/NOTES.md" "$P/"
-[ -f "$A/STATUS.tsv" ] && cp "$A/STATUS.tsv" "$P/"
+for f in STATUS.tsv LESSONS.md; do [ -f "$A/$f" ] && cp "$A/$f" "$P/"; done
 cp "$A"/src/*.cpp "$P/src/" 2>/dev/null || true
 cp "$A"/test/*.cpp "$P/test/" 2>/dev/null || true
 cp "$A"/differ/*.cpp "$P/differ/" 2>/dev/null || true

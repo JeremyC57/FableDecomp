@@ -82,8 +82,11 @@ Never `cd` into the scratchpad; keep the repo as cwd. Never commit. Never modify
    - `## Parked for Fable 5.1 (<K>)` -- one bullet per parked row in exactly this form:
      `- <addr> <Class::Name> DIFFER(<ours>v<retail>): <the differing instructions, one line> | tried: <forms tried> | next: <the next idea, or "lane gap: <kind>">`
    - `## Skipped` and `## Label corrections` (propagated manifest labels you found wrong).
-4. Final message (short): matched / parked / skipped counts, the parked addresses, and any lesson the coordinator should
-   add to GOTCHAS.
+4. `LESSONS.md`: `# Chunk {N} -- lessons from the authoring agent (fold into GOTCHAS at landing)`, then one bullet per
+   codegen lesson worth adding to docs/pipeline/GOTCHAS.md (the source form -> the retail shape, with an address), then
+   `Review at landing:` items the landing session must check (rows that needed more than 4 grades, local base models
+   next to an existing engine header, errors you noticed in ALREADY-LANDED sources, catalog rows that hold several functions).
+5. Final message (short): matched / parked / skipped counts, the parked addresses, and the lessons.
 
 ## Chunk {N} classes
 {'; '.join(cls)}.

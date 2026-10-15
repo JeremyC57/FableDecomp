@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008fcbd0	RELOCATION_MATCH	56v56	PASS	NCameraModes::CPhysicsForceModelGotoOutsideSimple::DoAttractToPoint (vtable slot 6): base DoAttractToPoint * 3.0f
+008fcc10	RELOCATION_MATCH	56v56	PASS	real name DoVelocityDamping (vtable slot 7): base DoVelocityDamping * 6.0f
+004af740	RELOCATION_MATCH	89v89	PASS	real identity CQuestManager::GetIndexFromRegisteredQuest (rotated loop, key copied in the non-empty arm)
+00a18760	DIFFER	93v95	-	LTCG: this kept in edx across the pre-test call, false result in bl
+00a6c850	RELOCATION_MATCH	55v55	PASS	TotalFaceIndices (6-byte triangles) > 60 -> RootSegment.Reset(Create(...))
+00a6d050	RELOCATION_MATCH	63v63	PASS	real name GetAllHelperPointNames (HelperPoints +0x10, 20-byte records)
+00a6d090	RELOCATION_MATCH	65v65	PASS	GetAllDummyObjectNames (56-byte records), functor result in the dead arg slot
+00a73d10	RELOCATION_MATCH	88v88	PASS	counted loop, record kept as a reference local
+00a73d70	MATCH	52v52	PASS	retail vector iterator object re-reads first in both arms
+00987e20	RELOCATION_MATCH	35v35	PASS	real class CPixelShader (vtables): data pointer local, virtual delete
+0099a430	RELOCATION_MATCH	56v56	PASS	real class CBaseObject: intelligent-pointer block detach
+009be1e0	RELOCATION_MATCH	35v35	PASS	real class CVertexShader: count at +0x10
+00a24f30	RELOCATION_MATCH	41v41	PASS	counted pointer as member object with __forceinline dtor
+00a24f90	MATCH	36v36	PASS	CIVCountedPointer operator=(0): release + second zero store
+00a26370	RELOCATION_MATCH	85v85	PASS	C3DAnimationInfo::Sizeof form + inlined CMeshData::Sizeof
+00a2b740	RELOCATION_MATCH	61v61	PASS	__forceinline virtual dtor + new-T factory
+00a11ec0	MATCH	91v91	PASS	rotation through an inline CMatrix3x4 member taking const C3DVector&
+00a127d0	RELOCATION_MATCH	41v41	PASS	member counted-pointer dtor, base dtor tail jump
+00a12840	RELOCATION_MATCH	74v74	PASS	local counted-pointer copy; scale functor built in the dead arg slot
+00a128a0	RELOCATION_MATCH	49v49	PASS	local counted-pointer copy, bool in bl
+00a12c90	RELOCATION_MATCH	42v42	PASS	local counted-pointer copy, bool in bl
+00a12cc0	RELOCATION_MATCH	95v95	PASS	default-constructed Mesh then operator=
+009e3790	RELOCATION_MATCH	87v87	PASS	do/while over the CD3DFormatInfo table @0x0129BA40
+00a5ecb0	RELOCATION_MATCH	65v65	PASS	Data(new CPixelShaderData(...)) init list
+00a5ed00	RELOCATION_MATCH	63v63	PASS	__forceinline virtual dtor, COM Release, delete[]
+00a42140	MATCH	36v36	PASS	implicit POD assignment (this copy in edx, esi temp)
+00487aa0	DIFFER	67v67	-	one register pair in the else-arm and/store (ecx vs eax)
+00487bd0	RELOCATION_MATCH	70v70	PASS	inline IsMainPlayer reading Number into a local first
+00487eb0	RELOCATION_MATCH	64v64	PASS	retail +0x217 AggressiveMode; two guarded arms
+00633700	MATCH	82v82	PASS	engine/CPlayer.h, five virtual AddToInterface calls
+00633b40	RELOCATION_MATCH	33v33	PASS	engine/CPlayer.h, mirror of landed InitModeQuestCompletionUI
+00634160	MATCH	39v39	PASS	retail list head at +0x210 (4-byte list); full-register bool
+00634470	RELOCATION_MATCH	71v71	PASS	engine/CPlayer.h, five RemoveFromInterface + RemoveMode(0x1C)
+00636e50	RELOCATION_MATCH	60v60	PASS	engine/CPlayer.h, double Local test around the virtual call
+0073a8a0	MATCH	54v54	PASS	real identity CTCCreatureModeManager::IsModeActive
+00811340	MATCH	54v54	PASS	byte-identical copy of 0x0073A8A0 (IsModeActive)
+00982eb0	RELOCATION_MATCH	84v84	PASS	real identity CAIStateGroup_OpinionReactionRoot::WifeFeelingUpdate
+00982f10	RELOCATION_MATCH	84v84	PASS	real identity CAIStateGroup_OpinionReactionRoot::WifeGeneralUpdate
+00982f70	RELOCATION_MATCH	86v86	PASS	real identity CAIStateGroup_OpinionReactionRoot::WifeToHerselfUpdate
+00c21330	DIFFER	48v42	-	LTCG: this kept in ecx across the 0x00C20EE0 call

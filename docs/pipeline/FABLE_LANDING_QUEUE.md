@@ -80,11 +80,12 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 |---|---|---|---|---|---|
 | `2026-10-14_linux_hand58` | Hand chunk 58 (CMessageEventFilter_IsOriginatedByThing .. CMouseCursor): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand66` | Hand chunk 66 (CPersistContext .. CPhysicsForceModelGotoOutsideSimple): 36 of 40 byte-exact | 36 | 3 | 1 | STAGED: land it |
+| `2026-10-15_linux_hand67` | Hand chunk 67 (CPhysicsForceModelGotoOutsideSimple .. CPlayer): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand71` | Hand chunk 71 (CRenderManagerCore .. CRightHandedSet): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand73` | Hand chunk 73 (CScriptGameResourceObjectScriptedThing .. CScriptThing): 38 of 40 byte-exact | 38 | 1 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 
-Totals: **178 matched rows staged for landing**, **19 parked rows** for the Fable retry pass.
+Totals: **215 matched rows staged for landing**, **22 parked rows** for the Fable retry pass.
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -101,6 +102,12 @@ Totals: **178 matched rows staged for landing**, **19 parked rows** for the Fabl
 - 00403fc0 CPersistContext_TransferableComponent::TransferIn DIFFER(33v36): retail `xor eax,eax ; mov [esp],eax ; mov byte ptr [esp],al` (dword zero-fill of the CPersistTraits<bool> slot, then the byte) vs lane `xor al,al ; mov byte ptr [esp],al` | tried: ctor `DefaultVal()` / `DefaultVal(T())` / defaulted `const T&` argument, aggregate `{false}` / `{bool()}`, temporary `CPersistTraits<bool>().TransferIn(..)`, value-initialised POD `= CPersistTraits<bool>()` (closest), padded 4-byte POD (dword only) | next: lane gap: value-initialisation of a 1-byte POD (RTM zero-fills the 4-byte slot first)
 - 0040fba0 CPersistContext_TransferableVector::TransferOut DIFFER(37v37): `mov edx,[esp+0Ch]` (index) before `mov ecx,[eax]` (first) in retail, swapped in the lane | tried: `(*TransVector)[index]`, iterator-object `*(begin()+n)` (+2 bytes), named `first` pointer local, vector reference local, parameter reuse `index = ..; Write(&index)` | next: lane gap: load scheduling (the same named-local trick fixes the two sibling writers 005663f0 / 00614450, not this one)
 - 00b1b4d0 CPersistContext::Init DIFFER(69v69): `mov dword ptr [eax],1Eh` right after the +0x4 zero store in retail, sunk below the argument copies in the lane | tried: init list, base class owning +0x0/+0x4, body assignments in retail order, `#pragma optimize("s",on)` (adds a frame) | next: lane gap: immediate-store sinking (same family as the 24b "1.0f store sunk past zero stores" gap)
+
+
+#### `2026-10-15_linux_hand67` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand67/differ/`)
+- 00a18760 CPhysicsMesh::GetPointIntersectionFromTo DIFFER(93v95): retail `mov edx,ecx` before the pre-test call and `[edx+0B4h]` / `mov ecx,edx` after it, plus `xor bl,bl` false result; lane keeps `this` in esi and `xor al,al` at the exit | tried: `bool result = false; if (pre-test) { if (g && seg) return A; return B; } return result;` (pointer and PDB reference signatures) | next: lane gap: whole-program (LTCG) register knowledge that 0x00A17690 preserves edx
+- 00487aa0 CPlayer::InitJoystickDeviceNumber DIFFER(67v67): else arm `dec ecx ; and ecx,eax ; mov [esi+228h],ecx` vs lane `dec ecx ; and eax,ecx ; mov [esi+228h],eax` | tried: direct `Number == GetMainPlayerNumber()`, inline IsMainPlayer, negated condition, inline IsMainPlayer with a `number` local (the last fixes ebx/edi and the else-arm Number re-read) | next: write the else arm as `number != mainDevice ? number : 0` or `JoystickDeviceNumber = Number; if (Number == mainDevice) JoystickDeviceNumber = 0;` on top of the local-Number IsMainPlayer
+- 00c21330 CPlayer::IsFirstPersonTargeting DIFFER(48v42): retail keeps `this` in ecx across `call 0x00C20EE0` (`add ecx,38h` after it, no `push esi ; mov esi,ecx`) | tried: `!= 0` byte result, bool member read from a named 16-byte record local (only the this-register difference remains) | next: lane gap: whole-program register knowledge of the 0x00C2xxxx callee (the 00c20cb0 family); identity also unproven (`ret 4` vs the PDB's no-argument IsFirstPersonTargeting)
 
 
 #### `2026-10-15_linux_hand71` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand71/differ/`)
