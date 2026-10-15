@@ -70,8 +70,16 @@ void recomp_dispatch(Ctx* c, uint32_t target);
 /* Indirect calls from lifted code go through a per-site inline cache: (index << 32) | address
  * of the last target, index into recomp_fns (1-based, 0 = empty). A 64-bit store/load is
  * single-copy atomic on the hosts, so guest threads race on it benignly. */
+/* Hidden on ELF: defined in the same image as all lifted code, so the hit path loads it
+ * PC-relative instead of through the GOT (one dependent load less per indirect call). */
+#if defined(__ELF__) && (defined(__GNUC__) || defined(__clang__))
+__attribute__((visibility("hidden")))
+#endif
 extern GuestFn* recomp_fns;
 void recomp_dispatch_ic(Ctx* c, uint32_t target, uint64_t* ic);
+/* Guest range [lo, end) of host-implemented targets (traps), never lifted code: the dispatch
+ * hands those to the host's unknown-target hook before any table lookup. */
+void recomp_set_host_range(uint32_t lo, uint32_t end);
 #if defined(__GNUC__) || defined(__clang__)
 #define RECOMP_IC_LOAD(p) __atomic_load_n((p), __ATOMIC_RELAXED)
 #else

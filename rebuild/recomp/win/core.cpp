@@ -469,6 +469,7 @@ void threadsInit() {
     wr32(g_peb + 0xA4, 5);  // OSMajorVersion: report XP-era 5.1
     wr32(g_peb + 0xA8, 1);
     recomp_on_unknown_target = onUnknownTarget;
+    recomp_set_host_range(kTrapBase, kTrapEnd);  // import / COM calls skip the lifted-code lookups
     recomp_on_fatal = onFatal;
 }
 

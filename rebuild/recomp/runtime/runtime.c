@@ -132,8 +132,26 @@ GuestFn recomp_lookup(uint32_t target) {
     return f;
 }
 
+/* Host-implemented targets (the import and COM method traps) occupy one guest address range
+   that holds no lifted code. The inline caches only remember lifted functions, so every call
+   into a trap used to miss the cache, miss the hash, binary-search every table and only then
+   reach recomp_on_unknown_target: hundreds of cycles per D3D, CRT or kernel32 call. A target
+   in the range now goes to the host hook first (the lookups could only have missed). */
+static uint32_t g_hostLo, g_hostSpan;
+
+void recomp_set_host_range(uint32_t lo, uint32_t end) {
+    g_hostLo = lo;
+    g_hostSpan = end > lo ? end - lo : 0;
+}
+
+static int hostTarget(Ctx* c, uint32_t target) {
+    return target - g_hostLo < g_hostSpan && recomp_on_unknown_target && recomp_on_unknown_target(c, target);
+}
+
 void recomp_dispatch(Ctx* c, uint32_t target) {
-    GuestFn fn = recomp_lookup(target);
+    GuestFn fn;
+    if (hostTarget(c, target)) return;
+    fn = recomp_lookup(target);
     if (fn) {
         fn(c);
         return;
@@ -144,6 +162,7 @@ void recomp_dispatch(Ctx* c, uint32_t target) {
 
 void recomp_dispatch_ic(Ctx* c, uint32_t target, uint64_t* ic) {
     uint32_t idx;
+    if (hostTarget(c, target)) return;
     if (!g_hash) buildHash();
     idx = lookupIdx(target);
     if (idx) {
