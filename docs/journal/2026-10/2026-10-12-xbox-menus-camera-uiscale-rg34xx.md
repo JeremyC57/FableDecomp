@@ -623,3 +623,40 @@ runtime 7.5-9.6 % (`recomp_lookup` 5.9 %: v16's inline caches). Fixes from the r
   (22.5 ms slept per frame, 0 late) and gameplay frames slower than the cap sleep nothing
   (mean = the frame, 120 of 120 late). The Xbox bar swap (`FABLE_XBOX_BAR=1`) faulted entering
   Clothing (CComponent::FindChild 0x530780 called through "STAR" text) and is off by default.
+- **Rows onto the picture ring (user report: "the bars in general need to be moved left")**:
+  at 720x480 the inventory rows run x 64..400 and the ring's frame starts at about x 355 (the
+  640x480 design stretched 1.125). The Xbox rows' own bar (UI_BUTTON) ends at about 400 with
+  the green marker on its orb; the CreateMenuEntryComponent rows' PC bar (210 wide) ended at
+  423 with the orb past the marker. In CTable::Draw's piece loop (esi the table, edi the
+  piece) the GetUIScale call at 0x5511A5 now also narrows PC_BUTTON_BASTARD: offsets times
+  `FABLE_PC_BAR_SCALE` (0.94) and the table's render zoom x (+0x7C, recomputed at 0x550E58 per
+  draw, so scaled once per draw). Every outermost CList (vt 0x12462E4, no list above it) of
+  the inventory screens moves left by `FABLE_XBOX_LIST_SHIFT` design units (20); rows, bars,
+  texts and markers follow its render position.
+- **A dim line under "A - Select / B - Back" (description pane)**: the pane's only clip is the
+  2D viewport's alpha mask (graphic 4818, UI_VIEWPORT_TEXT_AREA_SPRITE; CViewport draw
+  0x54E6F0, CEngineInternalPrimitive2DViewport::Render 0xBE1E70), whose opaque band is the
+  Window (texels 43..584 x 291..402). The retail mask has a faint smudge below it (rows
+  461..479, alpha 17..51), and the third line past the window showed through at y~465.
+  `host_viewport_draw` records each CScrollingViewport's window (anchor + Window x
+  RelativeRenderZoom), `host_viewport2d_render` scissors the primitive's render to it
+  (`host::d3d9ClipPush/Pop` on the native device; the GLES device implements the scissor).
+  `FABLE_VIEWPORT_CLIP=0` off, `FABLE_VIEWPORT_CLIP_LOG=1` logs the windows. New lift wraps:
+  `--wrap 0x54E6F0=host_viewport_draw --wrap 0xBE1E70=host_viewport2d_render`.
+- **Device crash charging the Guild Seal fully (user log, v24)**: the full charge opens the
+  teleport map (PC_WORLD_MAP, PC_TELEPORT_LIST; CTCInventoryMap_BuildMapMenu 0x60EEB0).
+  `FindChild("PC_TITLE_WORLD_MAP")` fails there, and `host_find_child` retried it as
+  UI_TITLE_WORLD_MAP (also absent), then returned a copy of eax taken after its
+  CCharString constructor call: `guestCallThis` leaves the guest result in `c->eax`, so that
+  was the retry string's own (freed) buffer. BuildMapMenu attached it to PC_UI_MAP_FRAME
+  (vfunc +0x1F0 at 0x60FA6B) and the game later crashed releasing its "name" (reading 0xB42,
+  ~CCharString 0x99EAE0). A failed retry now returns the original null. The Xbox bar swap's
+  destructor call in `host_create_component` had the same fault (the created bar replaced by
+  the destructor's eax: the "STAR" crash entering Clothing); it now keeps the result.
+  Before the crash the log shows the charge slot alternating -2 / -1 while d-pad down was
+  held (open).
+- **Perf log line (v25)**: every 120 frames `gles: perf N frames: p50/p90/p99/max ms, frames
+  over 33 / 50 ms; per frame: draws, game-thread GL ms (swap), waited (for the render thread),
+  render thread ms, QueryInterface calls`. The v24 device profile put 4.1% of samples in
+  `runtime!com::QueryInterfac` (a stripped runtime: possibly the nearest symbol of the trap
+  path); the per-frame count tells whether the guest really calls it that often.

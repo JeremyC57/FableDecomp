@@ -1,5 +1,6 @@
 // COM proxy machinery and the generated vtables.
 #define DIRECTINPUT_VERSION 0x0800
+#include <atomic>
 #include "com.hpp"
 
 #include <d3d9.h>
@@ -134,7 +135,9 @@ Class* classForIid(REFIID iid) {
     return nullptr;
 }
 
+std::atomic<uint32_t> g_queryInterfaceCalls{0};  // the renderer's perf log line: calls per frame
 void comQueryInterface(Ctx* c) {
+    g_queryInterfaceCalls.fetch_add(1, std::memory_order_relaxed);
     IUnknown* p = unwrapRaw(arg(c, 0));
     const GUID& iid = *gp<GUID>(arg(c, 1));
     const uint32_t out = arg(c, 2);

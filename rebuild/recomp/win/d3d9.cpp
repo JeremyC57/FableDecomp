@@ -937,3 +937,38 @@ void host::d3d9ApplyGamma(float exponent) {
     }
     g_gammaDevice->SetGammaRamp(0, D3DSGR_NO_CALIBRATION, &ramp);
 }
+
+namespace host {
+// A scissor around one stretch of 2D drawing (menu_nav.cpp: a scrolling viewport's text
+// window). l/t/r/b are game pixels, as the game's own SetScissorRect takes them; with a UI
+// scale they are scaled like the game's (upRect). Nested calls intersect. Pop restores the
+// device's own scissor state, which the game's render-state cache never saw change.
+namespace {
+struct SavedClip { RECT r; DWORD on; };
+std::vector<SavedClip> g_clipStack;
+}  // namespace
+bool d3d9ClipPush(int l, int t, int r, int b) {
+    IDirect3DDevice9* d = g_gammaDevice;
+    if (!d || r <= l || b <= t) return false;
+    RECT want{l, t, r, b};
+    if (uiScaling()) want = upRect(want);
+    SavedClip s{};
+    if (FAILED(d->GetScissorRect(&s.r)) || FAILED(d->GetRenderState(D3DRS_SCISSORTESTENABLE, &s.on))) return false;
+    if (s.on) {  // already clipping (an enclosing viewport): keep inside it
+        want.left = std::max(want.left, s.r.left), want.top = std::max(want.top, s.r.top);
+        want.right = std::max(want.left, std::min(want.right, s.r.right)), want.bottom = std::max(want.top, std::min(want.bottom, s.r.bottom));
+    }
+    g_clipStack.push_back(s);
+    d->SetScissorRect(&want);
+    d->SetRenderState(D3DRS_SCISSORTESTENABLE, TRUE);
+    return true;
+}
+void d3d9ClipPop() {
+    IDirect3DDevice9* d = g_gammaDevice;
+    if (!d || g_clipStack.empty()) return;
+    const SavedClip s = g_clipStack.back();
+    g_clipStack.pop_back();
+    d->SetScissorRect(&s.r);
+    d->SetRenderState(D3DRS_SCISSORTESTENABLE, s.on);
+}
+}  // namespace host

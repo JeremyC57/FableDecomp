@@ -36,6 +36,7 @@
 using namespace host;
 static bool safeRead(uint32_t addr, void* out, size_t n);  // below: a guest read that fails instead of faulting
 static uint32_t parentOf(uint32_t node);                     // below: the parent whose children hold node, or 0
+static bool nameStartsSafe(uint32_t node, const char* prefix);  // below: a component name test that never faults
 
 extern "C" void F_0055CB10_orig(Ctx* c);
 
@@ -592,14 +593,17 @@ extern "C" void host_find_child(Ctx* c) {
     const uint32_t slot = mem, chars = mem + 8;
     std::memcpy(gp<char>(chars), alt.c_str(), alt.size() + 1);
     guestCallThis(0x99EBF0, slot, {chars, 0xFFFFFFFFu});  // CCharString(const char*, -1)
-    const uint32_t eaxSaved = c->eax;
     ++depth;
     const uint32_t found = guestCallThis(0x530780, self, {rd32(slot)});  // releases the string
     --depth;
     gfree(mem);
     static std::set<std::string> logged;
     if (logged.insert(name).second) HLOG(1, "ui: FindChild(%s) failed in an Xbox screen: %s -> 0x%08X", name.c_str(), alt.c_str(), found);
-    c->eax = found ? found : eaxSaved;
+    // Not found either way: the caller gets the original null. (guestCallThis leaves its
+    // result in c->eax: a copy of eax taken after the string constructor was the string's
+    // own buffer, which this returned for a failed retry; the Guild Seal's teleport map
+    // attached it as PC_TITLE_WORLD_MAP and crashed releasing its "name".)
+    c->eax = found;
 }
 
 // 0x41DB1D CManager::CreateComponent(const CCharString& defName, int): every screen and
@@ -646,7 +650,8 @@ extern "C" void host_create_component(Ctx* c) {
     // UI_BUTTON_BASTARD (width 180, still in game.bin): with FABLE_XBOX_BAR=1 its cache miss
     // (CreateComponent from 0x4284C0 / 0x428505) builds that one in an Xbox screen. Off by
     // default: entering Clothing with it faulted in CComponent::FindChild (0x530780, an
-    // indirect call through "STAR" text: the row looks up its PC piece names in the bar).
+    // indirect call through "STAR" text): the destructor call below replaced the created bar
+    // in c->eax (fixed since, not retested).
     // The cache keeps the caller's name, so the bar stays cached under the PC name.
     static const bool xboxBar = [] { const char* e = std::getenv("FABLE_XBOX_BAR"); return e && std::atoi(e) != 0; }();
     uint32_t barName = 0;
@@ -660,8 +665,10 @@ extern "C" void host_create_component(Ctx* c) {
     }
     F_0041DB1D_orig(c);
     if (barName) {
-        guestCallThis(0x99EAE0, barName, {});  // ~CCharString
+        const uint32_t created = c->eax;
+        guestCallThis(0x99EAE0, barName, {});  // ~CCharString (guestCallThis leaves its result in c->eax)
         gfree(barName);
+        c->eax = created;
     }
     // CTCInventoryClothing's Xbox screen (vfunc 77, 0x5B76D1) gives every body-part entry a
     // label ("Head x 1", ...) on the description title line, a UI_TEXT_WEAPONS_NAME_TEMPLATE_NEW
@@ -685,7 +692,7 @@ extern "C" void F_0041CF47_orig(Ctx* c);
 // 0x41CF47 CManager::GetUIScale(C2DVector* out): window / 1024x768. The Xbox screens are laid
 // out for 640x480, so they need 1.6 times that.
 extern "C" void host_ui_scale(Ctx* c) {
-    const uint32_t out = rd32(c->esp + 4), ret = rd32(c->esp);
+    const uint32_t out = rd32(c->esp + 4), ret = rd32(c->esp), caller = c->esi;  // CTable::Draw's esi: the table
     F_0041CF47_orig(c);
     // CComponent::UpdateZoom, CComponent::ChangePositionDelta (both, 0x52EA30 / 0x52EAF0: a
     // delta is scaled by the UI scale before it moves a component: the picture inside the
@@ -728,6 +735,23 @@ extern "C" void host_ui_scale(Ctx* c) {
         if (!pcLayout) {
             wrf32(out, rdf32(out) * 1.6f);
             wrf32(out + 4, rdf32(out + 4) * 1.6f);
+            // The rows built by CreateMenuEntryComponent carry the PC bar (PC_BUTTON_BASTARD,
+            // width 210), longer than the Xbox rows' bar: its orb ended past the row marker and
+            // over the ring. It is drawn narrower (FABLE_PC_BAR_SCALE, 0.94: the Xbox rows'
+            // length at 720x480): the pieces' offsets here and, once per draw, the table's
+            // render zoom x (+0x7C, which sizes the pieces; CTable::Draw recomputes it at
+            // 0x550E58 on every draw, so it is scaled when it differs from the value written).
+            static const float barScale = [] { const char* e = std::getenv("FABLE_PC_BAR_SCALE"); const float v = e ? static_cast<float>(std::atof(e)) : 0.94f; return v > 0.3f && v <= 1.5f ? v : 1.0f; }();
+            if (ret == 0x5511A5 && barScale != 1.0f && caller && nameStartsSafe(caller, "PC_BUTTON_BASTARD")) {
+                static std::map<uint32_t, float> written;
+                const float z = rdf32(caller + 0x7C);
+                auto it = written.find(caller);
+                if (it == written.end() || it->second != z) {
+                    wrf32(caller + 0x7C, z * barScale);
+                    written[caller] = z * barScale;
+                }
+                wrf32(out, rdf32(out) * barScale);
+            }
         }
     }
 }
@@ -1132,7 +1156,10 @@ extern "C" void host_text_draw(Ctx* c) {
                 }
             }
             static const bool keep = std::getenv("FABLE_KEEP_SAVE_TEXTS") != nullptr;
-            if (!show && !keep) {
+            // Only a text whose row and list were found is judged: the details text is a
+            // child of the viewport that is not in its children (no row found: why 1), and
+            // hiding those hid every file's details.
+            if (!show && !keep && why >= 3) {
                 const uint8_t a = rd8(self + 0x97);  // drawn transparent, as the clothing labels
                 wr8(self + 0x97, 0);
                 F_0054EF00_orig(c);
@@ -1236,6 +1263,18 @@ static void alignRowMarker(uint32_t self) {
     if (!cap) return;  // an Xbox row: the marker is where the design put it
     float cx = 0, zx = 0, ax = 0, anchor = 0;
     if (!safeRead(cap + 0x54, &cx, 4) || !safeRead(marker + 0x7C, &zx, 4) || !safeRead(marker + 0x54, &ax, 4) || !safeRead(marker + 0xF8, &anchor, 4)) return;
+    static const bool logPos = std::getenv("FABLE_UI_POS") != nullptr;
+    if (logPos) {  // diagnostic: where the bar's cap is placed and drawn (CTable::Draw sets its +0xF8)
+        static int n = 0;
+        float v[8] = {};
+        const uint32_t table = parentOf(cap);
+        if (n < 40 && safeRead(cap + 0x34, v, 4) && safeRead(cap + 0xF8, v + 1, 4) && safeRead(cap + 0x7C, v + 2, 4) && safeRead(marker + 0x34, v + 3, 4) &&
+            safeRead(row + 0x54, v + 4, 4) && safeRead(row + 0xF8, v + 5, 4) && (!table || (safeRead(table + 0x54, v + 6, 4) && safeRead(table + 0xF8, v + 7, 4)))) {
+            ++n;
+            HLOG(1, "ui: marker 0x%08X cap 0x%08X local %.1f render %.1f anchor %.1f zoom %.3f | marker local %.1f render %.1f anchor %.1f zoom %.3f | row render %.1f anchor %.1f | table 0x%08X render %.1f anchor %.1f",
+                 marker, cap, v[0], cx, v[1], v[2], v[3], ax, anchor, zx, v[4], v[5], table, v[6], v[7]);
+        }
+    }
     const float x = cx + 29.0f * zx;
     if (!(zx > 0.1f && zx < 10.0f) || std::fabs(x - ax) < 0.5f || std::fabs(x - ax) > 200.0f) return;
     wrf32(marker + 0xF8, anchor + (x - ax));
@@ -1255,6 +1294,25 @@ extern "C" void host_update_position(Ctx* c) {
         const float dx = 34.0f * rdf32(self + 0x7C);  // design units x the render zoom
         wrf32(self + 0x54, rdf32(self + 0x54) + dx);
         wrf32(self + 0xF8, rdf32(self + 0xF8) + dx);
+    }
+    // The inventory screens' lists sit at the 640x480 design's x, stretched 1.125 at 720x480:
+    // their bars ran onto the picture ring's frame. Each outermost CList (vt 0x12462E4; no
+    // list above it, so a nested list is not moved twice) moves left by FABLE_XBOX_LIST_SHIFT
+    // design units (20); its rows and their bars, texts and markers follow its render
+    // position. Absolutely placed parts (the description pane, the clothing labels) stay.
+    static const float listShift = [] { const char* e = std::getenv("FABLE_XBOX_LIST_SHIFT"); return e ? static_cast<float>(std::atof(e)) : 20.0f; }();
+    constexpr uint32_t kListVt = 0x012462E4;
+    if (listShift != 0.0f && g_xboxScreensUp && rd32(self) == kListVt) {
+        bool outermost = true;
+        for (uint32_t p = self, i = 0; outermost && i < 6 && (p = parentOf(p)); ++i) {
+            uint32_t vt = 0;
+            if (safeRead(p, &vt, 4) && vt == kListVt) outermost = false;
+        }
+        if (outermost) {
+            const float dx = listShift * rdf32(self + 0x7C);
+            wrf32(self + 0x54, rdf32(self + 0x54) - dx);
+            wrf32(self + 0xF8, rdf32(self + 0xF8) - dx);
+        }
     }
     // The green selection marker (UI_SELECTION_ARROW_RIGHT, one per row, shown on the focused
     // one) sits at a fixed offset in the Xbox row template, where the Xbox bar ends: 29 design
@@ -1281,6 +1339,68 @@ extern "C" void host_update_position(Ctx* c) {
     if (!(zx > 0.01f && zx < 100.0f && zy > 0.01f && zy < 100.0f) || (zx == 1.0f && zy == 1.0f)) return;
     wrf32(self + 0x54, rdf32(self + 0x54) * zx), wrf32(self + 0x58, rdf32(self + 0x58) * zy);
     wrf32(self + 0xF8, rdf32(self + 0xF8) * zx), wrf32(self + 0xFC, rdf32(self + 0xFC) * zy);
+}
+
+namespace host { bool d3d9ClipPush(int l, int t, int r, int b); void d3d9ClipPop(); }
+
+// The description pane (UI_SCROLLING_VIEWPORT_TEXT_AREA, a CScrollingViewport, vt
+// 0x12468D4) clips its text only with the alpha mask of its 2D viewport primitive
+// (CViewport draw 0x54E6F0 -> type 0x21; CEngineInternalPrimitive2DViewport::Render
+// 0xBE1E70 renders the children with the mask on texture stage 1). Lines past the Window are
+// still drawn. The retail mask (graphic 4818) has a faint smudge under its window, at texel
+// rows 461..479 and x 77..412 (alpha 17..51). A long description's third line below the
+// window showed through it under the footer, at y~465. The 2D viewport's drawing is
+// scissored to the viewport's Window: anchor (+0xF8) + Window (+0x178 x0,y0,x1,y1) x
+// RelativeRenderZoom (+0x108). This is where the mask's opaque band lies, so nothing the
+// mask shows is lost. FABLE_VIEWPORT_CLIP=0 keeps the game's drawing; FABLE_VIEWPORT_CLIP_LOG=1
+// logs each window once.
+namespace {
+struct ViewportWindow { uint32_t mask, ax, ay; int l, t, r, b; };
+ViewportWindow g_scrollWindows[8];
+unsigned g_scrollWindowNext = 0;
+bool viewportClipOn() {
+    static const bool on = [] { const char* e = std::getenv("FABLE_VIEWPORT_CLIP"); return !e || std::atoi(e) != 0; }();
+    return on && xboxMenus();
+}
+}  // namespace
+
+extern "C" void F_0054E6F0_orig(Ctx* c);
+extern "C" void host_viewport_draw(Ctx* c) {  // --wrap 0x54E6F0 (CScrollingViewport vfunc 2)
+    constexpr uint32_t kScrollingViewportVt = 0x012468D4;
+    const uint32_t vp = c->ecx;
+    if (vp && viewportClipOn() && rd32(vp) == kScrollingViewportVt && rd32(vp + 0x170)) {
+        const float ax = rdf32(vp + 0xF8), ay = rdf32(vp + 0xFC), zx = rdf32(vp + 0x108), zy = rdf32(vp + 0x10C);
+        const float x0 = rdf32(vp + 0x178), y0 = rdf32(vp + 0x17C), x1 = rdf32(vp + 0x180), y1 = rdf32(vp + 0x184);
+        if (zx > 0.01f && zx < 100.0f && zy > 0.01f && zy < 100.0f && x1 > x0 && y1 > y0) {
+            // The Window's far edges are inclusive texels of the mask band (43..584 x 291..402).
+            ViewportWindow w{rd32(vp + 0x170), rd32(vp + 0xF8), rd32(vp + 0xFC),
+                           static_cast<int>(std::floor(ax + x0 * zx)), static_cast<int>(std::floor(ay + y0 * zy)),
+                           static_cast<int>(std::ceil(ax + (x1 + 1.0f) * zx)), static_cast<int>(std::ceil(ay + (y1 + 1.0f) * zy))};
+            ViewportWindow* slot = nullptr;
+            for (auto& s : g_scrollWindows)
+                if (s.mask == w.mask && s.ax == w.ax && s.ay == w.ay) slot = &s;
+            if (!slot) slot = &g_scrollWindows[g_scrollWindowNext++ % 8];
+            static const bool log = std::getenv("FABLE_VIEWPORT_CLIP_LOG") != nullptr;
+            if (log && (slot->mask != w.mask || slot->l != w.l || slot->t != w.t || slot->r != w.r || slot->b != w.b))
+                HLOG(1, "ui: viewport clip 0x%08X %s mask %u window %d,%d-%d,%d", vp, componentName(vp).c_str(), w.mask, w.l, w.t, w.r, w.b);
+            *slot = w;
+        }
+    }
+    F_0054E6F0_orig(c);
+}
+
+extern "C" void F_00BE1E70_orig(Ctx* c);
+extern "C" void host_viewport2d_render(Ctx* c) {  // --wrap 0xBE1E70 (CEngineInternalPrimitive2DViewport::Render)
+    const uint32_t prim = c->ecx;
+    bool clipped = false;
+    if (prim && viewportClipOn()) {
+        // Copied bit-exact from the draw's desc by Update 0xBE1C10: mask graphic +0x68, clip box x0/y0 +0x7C/+0x80.
+        const uint32_t mask = rd32(prim + 0x68), ax = rd32(prim + 0x7C), ay = rd32(prim + 0x80);
+        for (const auto& s : g_scrollWindows)
+            if (s.mask && s.mask == mask && s.ax == ax && s.ay == ay) { clipped = host::d3d9ClipPush(s.l, s.t, s.r, s.b); break; }
+    }
+    F_00BE1E70_orig(c);
+    if (clipped) host::d3d9ClipPop();
 }
 
 // 0x533D30 CComponent::GetSize(C2DVector* out): the bounding box of the children. The Xbox

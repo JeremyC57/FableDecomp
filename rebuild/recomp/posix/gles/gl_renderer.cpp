@@ -39,6 +39,7 @@
 
 using namespace host;
 
+namespace host::com { extern std::atomic<uint32_t> g_queryInterfaceCalls; }  // com.cpp: guest QueryInterface calls (perf log)
 namespace host::gles {
 static bool g_rtDumpThisDraw;  // FABLE_GLES_DUMP_RT=all: this draw goes to the dump (prepareDraw/afterDraw)
 
@@ -723,6 +724,10 @@ struct Device : Unknown<IDirect3DDevice9, &IID_IDirect3DDevice9> {
     void dropVaos(GLuint buffer, const void* pointer);
     uint64_t lastPresentNs = 0;
     double frameMs = 0, glMs = 0, swapMs = 0, uploadMs = 0, bufKb = 0;
+    static constexpr unsigned kPerfWindow = 240;  // frames between two log lines (120) and some slack
+    float perfFrames[kPerfWindow] = {};
+    unsigned perfN = 0;
+    double perfDraws = 0, perfGlMs = 0, perfSwapMs = 0, perfWaitMs = 0, perfRenderMs = 0;
     unsigned bufUploads = 0, bufInPlace = 0;  // the last frame's buffer uploads (g_bufUploads)
     Surface* lastFboRt = nullptr; Surface* lastFboDs = nullptr; GLuint lastFboId = 0; bool lastFboValid = false;
     bool programDirty = true;  // vs/ps/stage states changed since program() last ran
@@ -2403,6 +2408,8 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         bufUploads = g_bufUploads, bufInPlace = g_bufInPlace, bufKb = static_cast<double>(g_bufBytes) / 1024.0;
         g_bufUploads = g_bufInPlace = 0, g_bufBytes = 0;
         lastPresentNs = t1;
+        if (frameMs > 0) perfFrames[perfN++ % kPerfWindow] = static_cast<float>(frameMs);
+        perfDraws += statDraws, perfGlMs += glMs, perfSwapMs += swapMs, perfWaitMs += gq::waitMs(), perfRenderMs += gq::renderMs();
     }
     if (host::g_logLevel >= 1 && (frames % 120 == 1 || getenv("FABLE_GLES_DUMP"))) {
         // the readback runs on the render thread (a round trip here would stall the overlap)
@@ -2416,6 +2423,27 @@ HRESULT STDMETHODCALLTYPE Device::Present(const RECT*, const RECT*, HWND, const 
         const double mMs = fr > capFrom && lineNs ? (lastPresentNs - lineNs) / 1e6 / (fr - capFrom) : 0;  // mean frame since the last line
         const unsigned capLate = g_capLate, capFps = static_cast<unsigned>(host::gfx::get().fpsCap);
         g_nsCapSleep = 0, g_capLate = 0, capFrom = fr, lineNs = lastPresentNs;
+        // The distribution since the last line (device logs: what to tune next). Percentiles of
+        // the frame, hitches, the mean draws, game-thread GL time and wait for the render
+        // thread, the render thread's own time, and guest COM QueryInterface calls per frame.
+        {
+            const unsigned n = std::min(perfN, kPerfWindow);
+            if (n >= 8) {
+                float v[kPerfWindow];
+                std::copy(perfFrames, perfFrames + n, v);
+                std::sort(v, v + n);
+                const auto pct = [&](double q) { return v[std::min<unsigned>(n - 1, static_cast<unsigned>(q * (n - 1) + 0.5))]; };
+                unsigned over33 = 0, over50 = 0;
+                for (unsigned i = 0; i < n; ++i) over33 += v[i] > 33.4f, over50 += v[i] > 50.0f;
+                static uint32_t qiFrom = 0;
+                const uint32_t qi = host::com::g_queryInterfaceCalls.load(std::memory_order_relaxed);
+                log("gles: perf %u frames: p50 %.1f p90 %.1f p99 %.1f max %.1f ms, %u over 33 ms, %u over 50 ms; per frame: %.0f draws, gl %.2f ms (swap %.2f), waited %.2f, render thread %.2f, QueryInterface %.1f",
+                    n, pct(0.5), pct(0.9), pct(0.99), v[n - 1], over33, over50, perfDraws / n, perfGlMs / n, perfSwapMs / n, perfWaitMs / n, perfRenderMs / n,
+                    static_cast<double>(qi - qiFrom) / n);
+                qiFrom = qi;
+            }
+            perfN = 0, perfDraws = 0, perfGlMs = perfSwapMs = perfWaitMs = perfRenderMs = 0;
+        }
         const UINT bw = pp.BackBufferWidth, bh = pp.BackBufferHeight;
         const GLuint fbo = mainFbo;
         // The centre pixel (a black-screen check for device logs) is a glReadPixels: the render
