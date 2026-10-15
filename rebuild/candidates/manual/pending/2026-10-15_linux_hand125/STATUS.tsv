@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0099f930	RELOCATION_MATCH	127v127	PASS	static __fastcall by-value return; inline counted copy ctor/dtor
+009e6530	MATCH	108v108	PASS	word-wise strict ordering; strength-reduced loop
+00c0c630	RELOCATION_MATCH	137v137	PASS	MFC CString::ReleaseBuffer (0xC0 library), inline ASSERT GetData
+00c0d7c0	RELOCATION_MATCH	108v108	PASS	MFC CString::TrimRight(TCHAR) with _mbsinc import
+00c0d970	RELOCATION_MATCH	152v152	PASS	MFC CString::TrimLeft(TCHAR) with memmove import
+00c0ba40	RELOCATION_MATCH	137v137	PASS	MFC CString::~CString (label CCharStringData::Release)
+00c1bc90	RELOCATION_MATCH	121v121	PASS	setters defined out of class above Init (callee clobber knowledge)
+00dddce0	RELOCATION_MATCH	153v153	PASS	label wrong: no-RTTI vtable slot 3 reset; counted operator= reads source first
+00aa77a0	RELOCATION_MATCH	140v140	PASS	engine header + methods derivation; inlined stream Read, size on left of compare
+00aa78c0	RELOCATION_MATCH	131v131	PASS	local model (retail 12-byte vectors); back-patched chunk sizes
+00aa7950	MATCH	102v102	PASS	label wrong: FindRegisteredSubChunkType; intrinsic strcmp
+00aa7ea0	RELOCATION_MATCH	147v147	PASS	by-value counted copy per element; count in frame slot
+00aa82c0	RELOCATION_MATCH	147v147	PASS	index loop with STLport *(begin()+i); erase out of line
+0055af60	MATCH	107v107	PASS	landed CClickable model + CDefPointer temporary (slot 108)
+009f0240	RELOCATION_MATCH	123v123	PASS	STLport map find by hidden-pointer iterator; function-local static
+00856a20	RELOCATION_MATCH	154v154	PASS	fps local in frame; arg pushed before inline GetPItem object
+00856d30	RELOCATION_MATCH	155v155	PASS	creature named before slot-7 call; || chain
+008570d0	RELOCATION_MATCH	115v115	PASS	landed for_each prologue; two copy-constructing returns
+00857520	RELOCATION_MATCH	145v145	PASS	*(begin()+n) element; GetInterface template type 0x30
+0085c0b0	RELOCATION_MATCH	108v108	PASS	GetInterface out-param template; slot 27 test
+0085c120	RELOCATION_MATCH	97v97	PASS	GetInterface out-param template
+0085c360	RELOCATION_MATCH	111v111	PASS	copy ctor, scalar float members
+00867820	RELOCATION_MATCH	142v142	PASS	named CCharString block; untested GetInterface result
+0066a5b0	RELOCATION_MATCH	159v159	PASS	CSoundPair temp + inline CIntelligentPointer ctor
+0066a7e0	RELOCATION_MATCH	151v151	PASS	inline CIntelligentPointer copy ctor
+008678b0	RELOCATION_MATCH	160v160	PASS	label wrong: GenericStrikeResponseBase ctor (vtable 0x01264734)
+00984b40	RELOCATION_MATCH	158v158	PASS	label wrong: opinion-reaction condition; nested ifs, copy-ctor vector keeps FPU
+00867a70	RELOCATION_MATCH	116v116	PASS	pack(1) layout; CCharString copy out of line
+00865eb0	DIFFER	144v144	-	parked: scratch register rotation only (eax/edx, eax/ecx, ecx/edx)
+00880120	RELOCATION_MATCH	111v111	PASS	copy ctor, scalar float members
+008ed8c0	RELOCATION_MATCH	139v139	PASS	named creature before pushes
+00866ce0	RELOCATION_MATCH	157v157	PASS	named creature before pushes; physics via inline accessor
+00956760	RELOCATION_MATCH	102v102	PASS	GetSoundPair(owner, "SWORD_SWING") fastcall hidden return
+008c2980	RELOCATION_MATCH	97v97	PASS	0x11c action temporary + named string
+008c29f0	RELOCATION_MATCH	143v143	PASS	bit-pattern -1 compare; 0x124-byte shield temporary
+006e8600	RELOCATION_MATCH	148v148	PASS	inlined GetRing(0); 0.0f/fps not folded
+006e86a0	RELOCATION_MATCH	137v137	PASS	this parked in frame; fabs intrinsic
+006e9450	RELOCATION_MATCH	119v119	PASS	inline GetCombatantInfo without end test
+006e9e40	RELOCATION_MATCH	125v125	PASS	UID read once, by-value helper params
+006e9ec0	RELOCATION_MATCH	139v139	PASS	UID read once, by-value helper params

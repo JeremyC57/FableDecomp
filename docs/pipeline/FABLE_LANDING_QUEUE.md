@@ -148,6 +148,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand121` | Hand chunk 121 (CAIStateGroup_MeleeCombatNearbyBase .. CAIStateGroup_SeekScriptTarget): 26 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand122` | Hand chunk 122 (CAIStateGroup_SetupWares .. CAnimComponentFlags): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand123` | Hand chunk 123 (CAnimComponentStrikeResponseAnim .. CBenTestScriptsScript): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand125` | Hand chunk 125 (CCharString .. CCombatManager): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -197,7 +198,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **269 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **270 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -422,6 +423,10 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00412210 CRetailDeque<T*>::~CRetailDeque DIFFER(150v150): register allocation only (retail: finish copy in edx/edi/ebx/ebp, start walked through ecx; build: ecx/edx/edi/ebx + ebp) | tried: plain call (116v150), inline by-value _Destroy layer, memberwise user copy ctor (146v150), copy ctor over a POD body (150v150) | next: copy order inside the iterator copy ctor / a `const It&` inline layer
 - 00c14b50 CSettingsProxy_012b29f8::SetOptionCC DIFFER(66v109): retail keeps the /EHsc frame (fs:[0], state -1 hoisted above the branch) although nothing can throw inside the CProfileLock scope; the lane drops the frame entirely | tried: /EHsc, /EHa (114v109: extra state-0 store) | next: lane gap: EH frame elision around a non-throwing lock scope
 - 00c14bc0 CSettingsProxy_012b29f8::SetOptionCD DIFFER(66v109): twin of 00c14b50 (byte +0xCD) | tried: /EHsc, /EHa | next: lane gap: EH frame elision (same as 00c14b50)
+
+
+#### `2026-10-15_linux_hand125` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand125/differ/`)
+- 00865eb0 CCombatAction_GenericStrikeResponseKnockdownRecoverBase::Initialise DIFFER(144v144): scratch-register rotation only -- retail `mov eax,[ecx+8] ; push eax ; lea edx,[esp+0Ch] ; push edx` (GetString index / hidden result), `lea eax,[esp+8]` for SetCombatAnimation and `lea ecx,[esp+8]` for the fallback literal; ours edx/eax, ecx, edx | tried: out-pointer vs out-reference lookup, entry pointer local, free `operator!=`, const-ref bound result, inline GetNameIndex helper, declared CCharString copy constructor (all identical output) | next: lane gap: register allocation (allocator rotation), or try the GetString call as a static/global-function form
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
