@@ -1,76 +1,79 @@
 // CStringParser::CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename, long baseLineOffset) -- build a parser over a CCharString
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00404720, 117 bytes. Callees: CBase ctor 0x0099A2D0, CCharString ctor 0x0099E4B0 (x2), malloc 0x00BFEA0E,
-//   CCharString::operator=, CStringParser::Init(char*, ...).
+// Leaf: ??0CStringParser
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00404720, 117 bytes (`ret 10h`). Callees: CBase::CBase 0x0099A2D0, CCharString::CCharString
+// 0x0099E4B0 (Filename, TempCharString), malloc 0x00BFEA0E (the comment list's 16-byte head node), CCharString::operator=
+// 0x0099EFB0, CStringParser::Init(char*, callback, const CCharString&, long) 0x009B9530.
 //
-// The string parser reads our text data files (defs, scripts, config) and tracks line numbers for
-// error messages. This constructor takes the text as a CCharString: after the CBase sub-object and our
-// own vtable are in place we default-construct the Filename and TempCharString members, create the
-// self-linked sentinel node for the comment list, then keep a reference-counted copy of the text in
-// TempCharString so the raw characters we parse from stay alive for the parser's lifetime. The raw
-// pointer comes from that string's representation (an empty string yields the shared "" literal), and
-// everything is handed to Init() which does the real work. See the Init overload at 0x00403C20.
+// The string parser reads our text data files (defs, scripts, config) and tracks the cursor and line number for
+// error messages. The char* Init does the real work but does not own the characters it walks, so when a caller
+// hands us a CCharString we keep a reference-counted copy in TempCharString for the parser's lifetime and then
+// initialise over that string's characters (an empty string parses the shared "" literal). The error callback,
+// the filename and the base line offset go straight through to Init.
 //
-// Matching: the vtable store is an immediate after the base constructor; the sentinel allocation is a
-// literal 0x10 with two self-link stores; the null-rep check is written with explicit gotos so the
-// "" literal path is the out-of-line arm and the data pointer load is the fall-through.
+// Matching: retail CStringParser is 0x28 bytes (the PDB's 0x30 has a 12-byte list): the comment list is one word,
+// an STLport list whose head node is allocated self-linked in the member constructor (zeroed first, then
+// malloc(16) into a LOCAL that is linked to itself and stored once); the vtable (0x0122D874) is stored after the polymorphic CBase constructor;
+// the characters come from the ARGUMENT (kept in ebx) through the null-case-first inline accessor, so the ""
+// literal is the fall-through arm; TempCharString's address lives in edi across the two calls on it.
+extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CCharString
-{
-    void* rep; // shared representation block; its first word is the char* data; null means empty
-
-    CCharString& operator=(const CCharString& src);     // share the other string's block
+class CBase {
+public:
+    CBase();                                       // 0x0099A2D0
+    virtual ~CBase();
 };
 
-typedef void (*StringParserErrorCB)(CCharString*);
+struct CCharStringData {                           // shared representation block of a CCharString
+    char*         PData;                           // characters
+    unsigned long Length;                          // character count
+};
+extern char g_emptyLiteral_0129aaf4[];             // "" sentinel returned for an empty string
 
-extern "C" void __fastcall FableStringParserBaseConstruct_0099A2D0(void* self);   // CBase constructor
-extern "C" void __fastcall FableCharStringConstruct_0099E4B0(void* self);         // CCharString default constructor
-extern "C" void* __cdecl FableAllocate_00BFEA0E(unsigned int size);              // engine malloc
-
-struct CStringParser
-{
-    void* vtbl;              // CStringParser's vtable
-    unsigned char pad[8];    // String, BaseLineOffset (set by Init)
-    CCharString member0c;    // Filename
-    CCharString member10;    // TempCharString: our copy of the text
-    void* sentinel;          // comment list head (self-linked sentinel node)
-
-    // The real initialiser: parses from a raw buffer we keep alive.
-    void Init(char* name, StringParserErrorCB cb, CCharString* ctx, long mode);
+class CCharString {
+public:
+    CCharStringData* PStringData;                  // null means empty
+    CCharString();                                 // 0x0099E4B0
+    CCharString& operator=(const CCharString& other);   // 0x0099EFB0: share the other string's block
+    char* GetString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->PData; }
 };
 
-extern "C" void* __fastcall CStringParser_ctor(
-    void* self, void*, const CCharString* src, StringParserErrorCB cb, CCharString* ctx, long mode)
+struct SCommentNode {                              // list node: links first, the CStringParserCommentBoundaries payload after
+    SCommentNode* Next;
+    SCommentNode* Prev;
+    long          Start;
+    long          End;
+};
+
+struct CCommentList {                              // STLport list<CStringParserCommentBoundaries>: one word, the head node
+    SCommentNode* Node;
+    CCommentList() : Node(0)
+    {
+        SCommentNode* node = (SCommentNode*)malloc(sizeof(SCommentNode));
+        node->Next = node;
+        node->Prev = node;
+        Node = node;
+    }
+};
+
+typedef void (*StringParserErrorCallback)(CCharString*);
+
+class CStringParser : public CBase {               // vtable 0x0122D874
+public:
+    char*                     String;              // +0x04 characters being parsed (set by Init)
+    unsigned long             BaseLineOffset;      // +0x08 line number of the first character (set by Init)
+    CCharString               Filename;            // +0x0c for error messages
+    CCharString               TempCharString;      // +0x10 our reference to the text when given a CCharString
+    CCommentList              Comments;            // +0x14 comment boundaries found so far
+    StringParserErrorCallback ErrorCallback;       // +0x18
+    long                      CursorPos[3];        // +0x1c InQuotes, StringPos, Line
+
+    CStringParser(const CCharString& text, StringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);
+    void Init(char* text, StringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
+};
+
+CStringParser::CStringParser(const CCharString& text, StringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset)
+    : CBase(), Filename(), TempCharString(), Comments()
 {
-    CStringParser* self_ = (CStringParser*)self;
-
-    FableStringParserBaseConstruct_0099A2D0(self);
-    self_->vtbl = (void*)0x0122d874;
-
-    FableCharStringConstruct_0099E4B0(&self_->member0c);
-    FableCharStringConstruct_0099E4B0(&self_->member10);
-
-    // Empty comment list: a sentinel that points at itself.
-    self_->sentinel = 0;
-    unsigned int* sentinel = (unsigned int*)FableAllocate_00BFEA0E(0x10);
-    sentinel[0] = (unsigned int)sentinel;
-    sentinel[1] = (unsigned int)sentinel;
-    self_->sentinel = sentinel;
-    // Hold a reference to the text so the characters cannot go away under the parser.
-    self_->member10 = *src;
-
-    // Raw characters to parse from; an empty string uses the shared "" literal.
-    void* srcRep = src->rep;
-    char* name;
-    if (srcRep == 0)
-        goto useDefault;
-    name = *(char**)srcRep;
-    goto haveName;
-useDefault:
-    name = (char*)0x0129aaf4;
-haveName:
-    ;
-
-    self_->Init(name, cb, ctx, mode);
-    return self;
+    TempCharString = text;
+    Init(text.GetString(), errorCallback, filename, baseLineOffset);
 }
