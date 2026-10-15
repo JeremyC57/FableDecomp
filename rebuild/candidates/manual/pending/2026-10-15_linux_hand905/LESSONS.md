@@ -1,0 +1,2 @@
+- Slot 27 of the CThing-family vtables is DrawIsDrawable; a `call GetDisplayEngine ; jmp [edx+24h]` body at that slot is `return GetDisplayEngine()->IsDrawingEnabled();`.
+- A `mov eax,[eax+0E6h]` after the mesh-bank getter is a member of the same byte-packed draw record that 0x00837060 multiplies at +0xee; share the record model between the siblings.

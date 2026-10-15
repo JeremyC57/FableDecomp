@@ -1,0 +1,3 @@
+address	name	length	bytes
+00837040	CThingTrackNode::DrawIsDrawable	12	e82b0ac9ff8b108bc8ff6224
+00837050	CThingTrackNode::GetDrawRecordA	12	e84b09c9ff8b80e6000000c3

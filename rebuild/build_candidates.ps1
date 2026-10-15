@@ -224185,6 +224185,20 @@ $catalog = @(
         TestSource = '00/ea/CVBeardyBaldyScript_WatchForQuestFinished_00ea3490_test.cpp'
         PassPattern = '00ea3490_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00837040'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_DrawIsDrawable_00837040.cpp'
+        TestSource = '00/83/CThingTrackNode_DrawIsDrawable_00837040_test.cpp'
+        PassPattern = '00837040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00837050'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_GetDrawRecordA_00837050.cpp'
+        TestSource = '00/83/CThingTrackNode_GetDrawRecordA_00837050_test.cpp'
+        PassPattern = '00837050_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

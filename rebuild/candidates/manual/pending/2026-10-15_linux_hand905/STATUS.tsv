@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00837040	RELOCATION_MATCH	12	PASS	CThingTrackNode::DrawIsDrawable (vtable 0x01272CE4 slot 27)
+00837050	RELOCATION_MATCH	12	PASS	CThingTrackNode::GetDrawRecordA (no callers; dead getter of the +0xe6 draw record)
