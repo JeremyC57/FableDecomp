@@ -23,6 +23,17 @@ for name in sorted(os.listdir(root)) if os.path.isdir(root) else []:
         parked.append(f'\n#### `{name}` ({d} parked; sources in `{p}/differ/`)\n'+sec.group(1).strip()+'\n')
 gen=['| pending batch | chunk | matched (to land) | parked | skipped | state |','|---|---|---|---|---|---|']+rows
 gen.append(f'\nTotals: **{tot_m} matched rows staged for landing**, **{tot_p} parked rows** for the Fable retry pass.\n')
+skipped=[]
+for name in sorted(os.listdir(root)) if os.path.isdir(root) else []:
+    st=f'{root}/{name}/STATUS.tsv'
+    if os.path.exists(st):
+        for r in csv.DictReader(open(st),delimiter='\t'):
+            if (r.get('status') or '').strip().upper()=='SKIP':
+                skipped.append(f"| `{r['address']}` | `{name}` | {r.get('bytes','')} | {(r.get('note') or '').strip()} |")
+gen.append('### Skipped rows (the row holds several functions: split it into one row per function, then author the pieces)')
+gen+=(['| address | batch | bytes | note |','|---|---|---|---|']+skipped) if skipped else ['(none)']
+gen.append('Also skipped before wave 25: `0073a840` (chunk 59: 0x0073A840 plus the 18-byte 0x0073A880). The chunk cutter never re-offers a used row, so these stay uncovered until split.')
+gen.append('')
 gen.append('### Parked rows per batch (hand-over lines written by the authoring agents)')
 gen+=parked or ['(none yet)']
 t=open(doc).read()

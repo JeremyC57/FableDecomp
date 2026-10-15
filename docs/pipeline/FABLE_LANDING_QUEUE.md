@@ -79,13 +79,22 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | pending batch | chunk | matched (to land) | parked | skipped | state |
 |---|---|---|---|---|---|
 | `2026-10-14_linux_hand58` | Hand chunk 58 (CMessageEventFilter_IsOriginatedByThing .. CMouseCursor): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand65` | Hand chunk 65 (CPatchTesselationEdgeStrip .. CPersistContext): 35 of 40 byte-exact | 35 | 5 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand66` | Hand chunk 66 (CPersistContext .. CPhysicsForceModelGotoOutsideSimple): 36 of 40 byte-exact | 36 | 3 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand67` | Hand chunk 67 (CPhysicsForceModelGotoOutsideSimple .. CPlayer): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand71` | Hand chunk 71 (CRenderManagerCore .. CRightHandedSet): 37 of 40 byte-exact | 37 | 3 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand73` | Hand chunk 73 (CScriptGameResourceObjectScriptedThing .. CScriptThing): 38 of 40 byte-exact | 38 | 1 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 
-Totals: **215 matched rows staged for landing**, **22 parked rows** for the Fable retry pass.
+Totals: **250 matched rows staged for landing**, **27 parked rows** for the Fable retry pass.
+
+### Skipped rows (the row holds several functions: split it into one row per function, then author the pieces)
+| address | batch | bytes | note |
+|---|---|---|---|
+| `00455fa0` | `2026-10-15_linux_hand66` | -v42 | skip: 42-byte row = three functions (jmp [eax+48h] thunk, bit getter, bit setter) |
+| `009cbd30` | `2026-10-15_linux_hand73` | -v84 | row covers three AskHeroQuestion-style forwarders (int3 padding inside the row) |
+| `00aacf90` | `2026-10-15_linux_hand76` | -v20 | row holds two functions (jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding) |
+Also skipped before wave 25: `0073a840` (chunk 59: 0x0073A840 plus the 18-byte 0x0073A880). The chunk cutter never re-offers a used row, so these stay uncovered until split.
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -96,6 +105,14 @@ Totals: **215 matched rows staged for landing**, **22 parked rows** for the Fabl
 - 0082a390 GetNonAutoMarkers: prologue only -- retail pushes ebx/esi at the entry, the lane shrink-wraps them into the non-empty branch; the loop (malloc, placement test, link) is byte-identical.
 - 00741d60 CModeExplosiveForcePushed `??_G`: the lane calls the implicit ~CAnimFilterOfGroup and ~CModeBase out of line where retail inlines them; verified in the lane's object that an implicit destructor stores only the BASE vtable (so a user `__forceinline` destructor adds a store retail lacks); `novtable` and the inline pragmas do not help.
 - 006af2d0 IsOriginatorAlive::operator(): the inlined GetPOriginator<CThing> constant-false check (`mov [esp+8],eax ; xor al,al ; jne`) that the lane folds (`return false`, `thing != thing`, `(unsigned long)thing < 0` through a `CThing* const&` tried) -- the same gap as the parked 0x006AF4E0.
+
+
+#### `2026-10-15_linux_hand65` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand65/differ/`)
+- 009ba9d0 CPersistContext::Init(6 args) DIFFER(58v58): retail copies each pointer argument through ONE register (`mov edx,[esp+10h] ; mov [ecx],edx ; mov edx,[esp+14h] ; mov [ecx+4],edx ...`) and zeroes eax before the +0x10 store, the lane interleaves eax/edx loads ahead of the stores | tried: plain body, `optimize("s"/"t"/"y")`, `g` off, assignments through a reference-taking inline helper, volatile members | next: lane gap: copy-register scheduling (RTM vs QFE)
+- 009badd0 CPersistContext::CPersistContext(6 args) DIFFER(60v60): the same single-register (edx) copy sequence as 009ba9d0 inlined into the constructor; the lane alternates ecx/edx | tried: Init inlined into the constructor, `optimize("s")` (stops the inlining, 36 bytes) | next: lane gap: copy-register scheduling (same as 009ba9d0)
+- 009bb0d0 CPersistContext::CleanOutLine DIFFER(50v50): only the SIB operand order: retail `cmp byte ptr [eax+ecx],0Ah` / `mov byte ptr [eax+ecx],20h` (index i as base), the lane `[ecx+eax]` (text as base) | tried: ternary text accessor (gave a jmp diamond), default-first accessor (fixed everything else), `i[text]`, `optimize("s")` | next: try `operator[]` on CCharString or an `unsigned char*` text; else lane gap: address-mode operand order
+- 004310a7 CPersistContext::TransferWideString DIFFER(91v91): the two 4-byte string frame slots are swapped: retail default local `[ebp-4]`, read temporary `[ebp-8]`; the lane `[ebp-8]` / `[ebp-4]` | tried: body local after CheckCRC, named local in the case block, default as an argument temporary to an inlined helper, explicit `operator=` call, const-ref bound temporary | next: lane gap: frame-slot order of a local vs a later temporary
+- 00431143 CPersistContext::TransferString DIFFER(91v91): same frame-slot swap as 004310a7 (CCharString twin) | tried: the same five forms | next: lane gap: frame-slot order (as 004310a7)
 
 
 #### `2026-10-15_linux_hand66` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand66/differ/`)

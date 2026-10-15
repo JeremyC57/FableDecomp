@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004ecafd	RELOCATION_MATCH	80v80	PASS	CObjectAugmentationsDef::~ (novtable over CDefPointeeBase, /Os)
+0066ccf0	RELOCATION_MATCH	58v58	PASS	CRegionMinimap::~ (CSurface/CTexture inline dtors)
+00764fc0	RELOCATION_MATCH	63v63	PASS	NShape::CShape ??_G (__forceinline virtual dtor + new factory)
+00765080	RELOCATION_MATCH	63v63	PASS	NShape::CClosedShapeBase ??_G (dead derived vtable store dropped)
+00765370	RELOCATION_MATCH	63v63	PASS	NShape::CSubdivisionTriangle ??_G
+009c5110	RELOCATION_MATCH	85v85	PASS	CFileInstaller::FreeBuffers (lock + dllimport GlobalFree)
+00a2d710	RELOCATION_MATCH	85v85	PASS	CMeshBankStateBlock::~ (inline STLport set clear)
+00a5eb70	RELOCATION_MATCH	62v62	PASS	CVertexShaderInput::~ (novtable, tag in frame byte)
+00a98640	RELOCATION_MATCH	62v62	PASS	N3DPrimitive::CVertexShaderInputStatic::~
+00a986d0	RELOCATION_MATCH	62v62	PASS	N3DPrimitive::CVertexShaderInputAnimated::~
+00aa7480	RELOCATION_MATCH	51v51	PASS	C3DMeshFileXAnimatedPrimitiveBlockChunk::~ (novtable)
+00ac39c0	RELOCATION_MATCH	69v69	PASS	SBinaryTreeNode ??_G (non-virtual, recursive delete)
+00b231e0	RELOCATION_MATCH	82v82	PASS	counted-pointer deleter of CSplineRandomOffsetData
+00bfc3b0	RELOCATION_MATCH	88v88	PASS	CPatchTesselationEdgeStrip::Reset
+00bfc4c0	RELOCATION_MATCH	69v69	PASS	CPatchTesselationEdgeStrip::ResizeVertexCount
+005c14c4	RELOCATION_MATCH	57v57	PASS	CPerItemData copy ctor (/Os: copies through eax)
+00411010	RELOCATION_MATCH	76v76	PASS	Transfer(CCharString&): default via named-return helper
+00411060	RELOCATION_MATCH	76v76	PASS	Transfer(CWideString&): default via named-return helper
+004310a7	DIFFER	91v91	-	TransferWideString: string frame slots swapped
+00431143	DIFFER	91v91	-	TransferString: string frame slots swapped
+00485b44	RELOCATION_MATCH	40v40	PASS	Transfer(C3DVector&) default (0,0,0); y-off + s
+004ab810	RELOCATION_MATCH	37v37	PASS	Transfer(double&) default 0.0 (label said long)
+004aef50	MATCH	22v22	PASS	IsSaving (label IsBinary): Mode 1 || Mode 3, long result
+004ed04d	RELOCATION_MATCH	48v48	PASS	vector<CShopItemDef>::resize(n); y-off + s
+00687cb0	RELOCATION_MATCH	34v34	PASS	CInputProcessGameBase::IsAssignableSpecialMoveButtonInQueue
+00687d50	RELOCATION_MATCH	34v34	PASS	CInputProcessGameBase::IsGameActionEventInQueue (2-arg)
+006e9270	RELOCATION_MATCH	65v65	PASS	CCombatManager::IsCreatureBeingAttacked (named by address)
+006e92c0	RELOCATION_MATCH	65v65	PASS	CCombatManager::IsCreatureAttacking (named by address)
+00757160	RELOCATION_MATCH	37v37	PASS	TransferMap(name, map&) zero default
+007e3aa0	RELOCATION_MATCH	32v32	PASS	Transfer(long&) default -1
+00800d30	RELOCATION_MATCH	44v44	PASS	Transfer(C2DVector&) default (0,0)
+009ba9d0	DIFFER	58v58	-	Init(6 args): single-register copy scheduling
+009baa50	MATCH	27v27	PASS	Init(CDataOutputStream*, bool) (label said ctor)
+009bad60	RELOCATION_MATCH	59v59	PASS	TransferObjectSaveText
+009bada0	RELOCATION_MATCH	42v42	PASS	TransferSubComponentSaveText
+009badd0	DIFFER	60v60	-	ctor(6 args): single-register copy scheduling
+009bae10	MATCH	29v29	PASS	ctor(CCharString*) text save
+009bae30	MATCH	29v29	PASS	ctor(load stream, bool)
+009bae50	MATCH	29v29	PASS	ctor(save stream, bool)
+009bb0d0	DIFFER	50v50	-	CleanOutLine: SIB base/index order
