@@ -147,6 +147,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand120` | Hand chunk 120 (CAIStateGroup_GazeAtHome .. CAIStateGroup_MeleeCombatNearbyBase): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand121` | Hand chunk 121 (CAIStateGroup_MeleeCombatNearbyBase .. CAIStateGroup_SeekScriptTarget): 26 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand122` | Hand chunk 122 (CAIStateGroup_SetupWares .. CAnimComponentFlags): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand123` | Hand chunk 123 (CAnimComponentStrikeResponseAnim .. CBenTestScriptsScript): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -196,7 +197,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **260 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **269 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -409,6 +410,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 009395f0 CAIStateGroup_SitRoundCampfire::GetPNearCampfire DIFFER(122v122): retail loads each copied position's three dwords before storing them (interleaving the next PBrain load) and stores the result zero after the creature load; the lane alternates load/store | tried: memberwise copy constructor, POD vector, radius init-list vs body (body moves the radius store to retail's place) | next: lane gap: struct-copy scheduling
 - 00964360 CAIStateGroup_StealStealableItem::FindPStealableItem DIFFER(107v107): same copy scheduling (`mov ecx,[eax] ; mov edx,[eax+4] ; mov eax,[eax+8]` then three stores) plus the zero store one instruction early | tried: memberwise copy ctor, POD + body assignment, by-value constructor parameter (the empty filter as a Bind2 temporary fixed the frame layout) | next: lane gap: struct-copy scheduling
 - 00a763f0 CANavQuadTreeNode::operator== DIFFER(116v116): retail `mov ecx,[esp+8]` before `fld [esi+4]`, the lane after it | tried: by-reference NearlyEqual helper, pointer local for the other node | next: lane gap: one-instruction scheduling
+
+
+#### `2026-10-15_linux_hand123` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand123/differ/`)
+- 006e2a50 CTCTalk::SetUpSpeechSample DIFFER(152v152): the two SpeechSample re-reads load into ecx / edx where retail uses eax / ecx (`mov eax,[esi+0Ch] ; push eax` before BeginLoadingEntry, `mov ecx,[esi+0Ch] ; push ecx` before the duration call) | tried: base form, float local for GFGetTime, GetSampleDurationFrames defined above under auto_inline(off) | next: model GetLipSyncBank / the bank lookup differently (by-value helper) or lane gap: register allocation
+- 006d7080 CAttackHistoryCombo::IsComboSuccess DIFFER(140v146): retail re-dereferences the history iterator through a copy (`mov edx,edi ; mov edx,[edx+8]` initially, `mov eax,edi ; mov eax,[eax+4] ; mov edx,[eax+8]` on advance) where the build CSEs it into `mov edx,eax` | tried: node pointers, forward const_iterator class, reverse_iterator class | next: by-value iterator helpers (`Value(const_iterator i)`, `PreviousValue(const_iterator i) { --i; return *i; }`) to block the CSE
+- 00c564f0 CAudioContext::SetEAXGlobalProperty DIFFER(127v127): same instructions, block placement: retail puts the default converter right after the compare tree (`cmp eax,0A001h ; jmp` into a shared `je`) and the `return 0` / `return -3` blocks last; the build falls through into the -3 block | tried: shared case body (range tree), separate bodies, default first, switch + trailing if | next: lane gap: switch block layout (or the original enum/return-code helper)
+- 009a7ca0 CBankFileManager::FindBank DIFFER(146v144): the alias ternary pushes per arm in retail (`je ; add eax,14h ; push eax ; jmp` / `push ebx`, shared copy-ctor call) where the build selects into eax and pushes once; plus an `int3` after the noreturn _CxxThrowException | tried: reference ternary, inline ResolveAlias helper, ternary of copy temporaries (214v144) | next: lane gap: int3 after _CxxThrowException (as 0x00994B10); ternary arm push still open
+- 009ccb20 CBankFile::WriteZeros DIFFER(156v156): retail homes the fill-value AND allocator temporaries of the vector fill constructor in the one dead `count` slot (`lea ecx,[esp+18h]` / `lea edx,[esp+1Ch]`, frame 0xC); the build gives one of them a frame byte (frame 0x10, every offset shifted) | tried: allocator with / without user ctor, defaulted fill / allocator arguments | next: lane gap: two const-ref temporaries in one dead argument slot (as 0x005383DD)
+- 00c35e30 _unattributed::ActivateCurrentTarget DIFFER(106v110): retail keeps a duplicated presence test (`test eax,eax ; je error ; test eax,eax ; je ok`) that the build folds away | tried: `HasEntries() && (!HasEntries() || valid)`, if-chain helper with `count ? valid != 0 : true` (adds setne) | next: find the original accessor pair (two differently typed views of the same word)
+- 00412210 CRetailDeque<T*>::~CRetailDeque DIFFER(150v150): register allocation only (retail: finish copy in edx/edi/ebx/ebp, start walked through ecx; build: ecx/edx/edi/ebx + ebp) | tried: plain call (116v150), inline by-value _Destroy layer, memberwise user copy ctor (146v150), copy ctor over a POD body (150v150) | next: copy order inside the iterator copy ctor / a `const It&` inline layer
+- 00c14b50 CSettingsProxy_012b29f8::SetOptionCC DIFFER(66v109): retail keeps the /EHsc frame (fs:[0], state -1 hoisted above the branch) although nothing can throw inside the CProfileLock scope; the lane drops the frame entirely | tried: /EHsc, /EHa (114v109: extra state-0 store) | next: lane gap: EH frame elision around a non-throwing lock scope
+- 00c14bc0 CSettingsProxy_012b29f8::SetOptionCD DIFFER(66v109): twin of 00c14b50 (byte +0xCD) | tried: /EHsc, /EHa | next: lane gap: EH frame elision (same as 00c14b50)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

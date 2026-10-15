@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005dbf50	RELOCATION_MATCH	128v128	PASS	TransferBinaryIn: inner CPersistTraits<ulong> value local keeps length in edi
+005dbee0	RELOCATION_MATCH	108v108	PASS	TransferBinaryIn: inlined stream Read, float copy
+005dca60	RELOCATION_MATCH	123v123	PASS	Initialise: CStringParser + CPersistTraits<float> empty temp in dead arg slot
+00b31700	RELOCATION_MATCH	151v151	PASS	really CEngineCamera::CEngineCamera(bool) (vtable 0x012A12A4); label CAnimInit::Clear propagated
+0070d030	RELOCATION_MATCH	112v112	PASS	CAnimSet::Update: jump-table switch; float getter + inline setter for x87 copy
+006e2a50	DIFFER	152v152	-	really CTCTalk speech setup; reg choice eax/ecx vs ecx/edx on SpeechSample re-reads
+0070c100	MATCH	109v109	PASS	two list walks + `count == alphas.size()` operand order
+0070e6a0	RELOCATION_MATCH	106v106	PASS	intrusive counted-pointer operator= x2
+00a8e770	RELOCATION_MATCH	140v140	PASS	twin of landed CStaticBlock::SaveBinary + virtual Write
+00a25a70	RELOCATION_MATCH	99v99	PASS	C3DAnimationInfo::CAnimationData::CanUnload; if-body layout, ?true:false, end local
+005db630	RELOCATION_MATCH	127v127	PASS	TransferBinaryOut: component pointer read before the type-id write
+005dec70	RELOCATION_MATCH	135v135	PASS	ctor: default members, *this = other, new TransitionInTime component
+00a2b4e0	MATCH	109v109	PASS	really C3DAnimationInfo::operator= (POD C3DVector -> lea copy)
+00738f90	RELOCATION_MATCH	99v99	PASS	predicate by const ref, end pointer local
+00473504	RELOCATION_MATCH	143v143	PASS	CAppearanceDef::Transfer under optimize("s")
+00d7df30	RELOCATION_MATCH	151v151	PASS	script Main: two top-tested wait loops (slots 425/426)
+006d7080	DIFFER	140v146	-	reverse-iterator history walk; retail re-derefs through a copy (CSE here)
+00c564f0	DIFFER	127v127	-	virtual EAX setter (inlined EAXSetGlobal + error switch); block placement only
+00c715d0	RELOCATION_MATCH	105v105	PASS	mixerSetControlDetails restore + mixerClose
+00647511	RELOCATION_MATCH	100v100	PASS	optimize y-off + s; time-first source order
+009a7ca0	DIFFER	146v144	-	FindBank: per-arm push of the alias ternary + int3 after the throw (lane gap)
+009cbe10	RELOCATION_MATCH	121v121	PASS	SplitPath on a ToWideString temp in the dead arg slot
+009cc450	RELOCATION_MATCH	112v112	PASS	landed EntryExists / GetEntryDataSize inlined
+009ccb20	DIFFER	156v156	-	really WriteZeros(count); two const-ref temps in one dead slot (lane gap)
+009cd330	RELOCATION_MATCH	144v144	PASS	really WriteEntryData(position, source, size, padding)
+009cea70	RELOCATION_MATCH	108v108	PASS	retail-mode close / write info + delete recovery file
+009d2fc0	RELOCATION_MATCH	127v127	PASS	SGI __unguarded_linear_insert under /Gr (fastcall)
+00c35e30	DIFFER	106v110	-	free stdcall target helper; duplicated presence test folded here
+009d5820	RELOCATION_MATCH	122v122	PASS	OpenFileReadOnly override: base call, new CThreadedFile, Open
+009d66a0	RELOCATION_MATCH	136v136	PASS	counted-pointer by value: detach/attach + inline operator= + param dtor
+00412210	DIFFER	150v150	-	really SGI-style deque<T*> destructor; register allocation only
+009d5b60	RELOCATION_MATCH	130v130	PASS	stack lock, early exits, explicit Unlock before the wait
+00c14b50	DIFFER	66v109	-	settings setter under CProfileLock: lane drops the EH frame
+00c14bc0	DIFFER	66v109	-	twin of 00c14b50 (+0xCD)
+009cc840	RELOCATION_MATCH	104v104	PASS	resize with default temp in dead arg slot; *(begin()+n) copy loop
+00b443b0	RELOCATION_MATCH	106v106	PASS	really an engine member dtor (counted ptr + map); label propagated
+009a7990	RELOCATION_MATCH	135v135	PASS	pop_back loop + inline map clear
+0084e110	RELOCATION_MATCH	136v136	PASS	really CCameraModeBase::Init (callers CGameCameraManager); POD CCamera rep movsd
+00a01b90	RELOCATION_MATCH	123v123	PASS	landed ClearData inlined; new POD record without null check
+00efe9f0	RELOCATION_MATCH	131v131	PASS	float fade loop (fst into push-ecx slot), slots 510/7/108
