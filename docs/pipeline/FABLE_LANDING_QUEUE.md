@@ -126,6 +126,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-14_linux_hand58` | Hand chunk 58 (CMessageEventFilter_IsOriginatedByThing .. CMouseCursor): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand100` | Hand chunk 100 (CTCRotate .. CTCSkeletalMorph): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand101` | Hand chunk 101 (CTCSmashableBase .. CTCSwitchableNavigation): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand103` | Hand chunk 103 (CTCTavernGameCardBlackjack .. CTCThingOwner): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -170,7 +171,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **0 matched rows staged for landing**, **148 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **150 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 21 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -211,6 +212,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0072aa50 CTCSpecialAbilities::SetupGhostSwordSpell DIFFER(72v72): same AddTC `this`-load order (the rest, incl. the component in esi across the string destructor, matches) | tried: plain scoped-name form | next: lane gap: argument/`this` scheduling
 - 0072aaa0 CTCSpecialAbilities::SetupMultiArrow DIFFER(67v67): same AddTC `this`-load order on ParentThing (+4) | tried: plain form | next: lane gap: argument/`this` scheduling
 - 0072c680 CTCSpecialAbilities::SetupLightningSpell DIFFER(83v83): same AddTC `this`-load order (CalculateWeaponState + the +0x0c setter match) | tried: plain scoped-name form | next: lane gap: argument/`this` scheduling
+
+
+#### `2026-10-15_linux_hand103` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand103/differ/`)
+- 007d3510 CTCTavernGameCoinGolf::vfunc_32 DIFFER(80v80): retail `mov ecx,[esi+4] ; mov ecx,[ecx+70h] ; lea eax,[esp+8] ; xor edi,edi ; push eax ; mov [esp+0Ch],edi` vs lane `mov ecx,[esi+4] ; xor edi,edi ; lea eax ; mov [esp+8],edi ; mov ecx,[ecx+70h] ; push eax` (the null out-pointer store scheduled between the two loads) | tried: raw-pointer out local, inline GetDefinition accessor, CDefPointer class with null constructor, definition pointer taken into a local first | next: lane gap: scheduling of a zero store against an address-chain load (same family as the 24i `lea ecx` after zero stores gap)
+- 007d7ec0 CTCTavernGameSpotTheAddition::vfunc_11 DIFFER(78v66): (1) the same null out-pointer store schedule as 007d3510; (2) the inlined CDefPointer release compiles to the 24h counted shape `mov esi,[eax+4] ; add eax,4 ; dec esi ; mov [eax],esi ; jne` where retail has `mov ecx,[esp+8] ; test ecx,ecx ; je ; dec [ecx+4] ; jne ; call [vt+4]` | tried: `m_p && --m_p->n` destructor, local copy with &&, Release() member on the pointee, nested ifs on a local copy | next: write the release in the body on a plain pointer copied from the out slot (`T* def = slot; if (def) { if (--def->m_refCount == 0) def->Destroy(); }` -- the open-coded form gave the clean `dec [edi+4] ; jne` in 007d3510); part (1) is probably a lane gap
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

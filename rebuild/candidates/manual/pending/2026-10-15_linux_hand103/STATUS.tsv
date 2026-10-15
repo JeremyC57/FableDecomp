@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007da8b0	MATCH	71v71	PASS	hand pointer in a named local (register colouring)
+007daa60	RELOCATION_MATCH	56v56	PASS	persist hook; const& zero default homed in dead arg slot
+007daaa0	RELOCATION_MATCH	59v59	PASS	LeaveGame slot 30; erase(begin,end) early-out copy-down
+007db280	RELOCATION_MATCH	81v81	PASS	ctor; three vectors as member objects with inline ctors
+007d4de0	RELOCATION_MATCH	34v34	PASS	CardSorting LeaveGame (label said CardPairs)
+007d5f60	RELOCATION_MATCH	34v34	PASS	LeaveGame slot 30
+007d5f90	MATCH	18v18	PASS	one-case switch into result local
+007d6830	RELOCATION_MATCH	56v56	PASS	persist TargetTime (+0x98, retail CTCTavernGame offset)
+00cacd00	RELOCATION_MATCH	31v31	PASS	really CUnknown::NonDelegatingAddRef (windef max macro)
+007d4e10	MATCH	18v18	PASS	one-case switch into result local
+007d56d0	RELOCATION_MATCH	88v88	PASS	persist hook, two const& defaults
+008ef110	RELOCATION_MATCH	91v91	PASS	three null-tested kills, reverse-order clears
+008ef1b0	MATCH	80v80	PASS	squared threshold written in loop, hoisted to arg slot
+008ef910	RELOCATION_MATCH	50v50	PASS	plain for over coin vector
+007d3510	DIFFER	80v80	-	parked: null out-pointer store scheduled early (lane)
+007d4a60	RELOCATION_MATCH	33v33	PASS	DrawPrepare override; IsBeingPlayed +0x20
+007d4a90	RELOCATION_MATCH	69v69	PASS	LeaveGame; camera source via inline accessor
+0086bde0	RELOCATION_MATCH	83v83	PASS	really a layered entry push_back (label propagated); flag inside the list record
+00c59fc0	RELOCATION_MATCH	37v37	PASS	really a material-stage setter (label propagated)
+007cf460	RELOCATION_MATCH	50v50	PASS	LeaveGame; uninitialised out-pointer local
+007cf4a0	RELOCATION_MATCH	30v30	PASS	NewGame; float/int zeros share eax
+007cf4c0	RELOCATION_MATCH	96v96	PASS	best-score check, fucompp/fcomp shapes
+007d7b40	RELOCATION_MATCH	50v50	PASS	LeaveGame; uninitialised out-pointer local
+007d7c40	MATCH	50v50	PASS	retail vector iterator object re-loads first
+007d7ec0	DIFFER	78v66	-	parked: out-pointer store schedule + inlined def release shape
+007d8140	RELOCATION_MATCH	32v32	PASS	QuitMidGame slot 34
+00c3a970	RELOCATION_MATCH	37v37	PASS	really CInterpolatedFloat ctor (label propagated)
+00968090	MATCH	54v54	PASS	pack(1) PDB layout, null-tested physics
+007b8590	RELOCATION_MATCH	38v38	PASS	really GetTankard (+0x1C Tankards)
+007b85c0	RELOCATION_MATCH	38v38	PASS	GetFood (+0x28)
+0095aa00	RELOCATION_MATCH	81v81	PASS	really hornet-queen KillBossHelpers (GetInterface 0xAD)
+00947c30	MATCH	50v50	PASS	physics slots 31/32/36
+007dfeb0	RELOCATION_MATCH	42v42	PASS	tail jump reusing arg slot
+007dfee0	RELOCATION_MATCH	84v84	PASS	ctor; pack(1); body-assigned last flag
+007dff40	RELOCATION_MATCH	73v73	PASS	persist two bools under a flag
+0070a3e0	MATCH	69v69	PASS	POD 16-byte record assignment
+0070a430	RELOCATION_MATCH	81v81	PASS	inlined STLport erase loop with found flag
+00a3eb60	RELOCATION_MATCH	82v82	PASS	really CSoundManagerLH slot 5; delete after deref has no null test
+004e1d20	RELOCATION_MATCH	72v72	PASS	really SGI __pop_heap (/Gr, y-off + s pragmas)
+0071b200	RELOCATION_MATCH	56v56	PASS	for_each(CKillThing) + clear
