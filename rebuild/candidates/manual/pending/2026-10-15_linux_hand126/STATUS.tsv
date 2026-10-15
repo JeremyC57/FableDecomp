@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006ea050	RELOCATION_MATCH	106v106	PASS	map find twice through by-value-key inline helper
+006eabb0	RELOCATION_MATCH	146v146	PASS	three callee-saved reads, two exits
+006ed9e0	RELOCATION_MATCH	148v148	PASS	__forceinline GetInterface template (0x36 stealth)
+006e8b60	RELOCATION_MATCH	103v103	PASS	CIntelligentPointer(0) temporary per prong
+006ebee0	RELOCATION_MATCH	141v141	PASS	call duplicated per arm
+00906db0	RELOCATION_MATCH	140v140	PASS	derived action with inline ctor (vtable after base call)
+00906d20	RELOCATION_MATCH	140v140	PASS	derived action with inline ctor (vtable after base call)
+00907ae0	RELOCATION_MATCH	126v126	PASS	GetOwner() const accessor fixes eax/ecx colouring
+00907b60	RELOCATION_MATCH	126v126	PASS	GetOwner() const accessor fixes eax/ecx colouring
+00907930	RELOCATION_MATCH	137v137	PASS	body store m_28 = 0 first
+0090a550	RELOCATION_MATCH	156v156	PASS	inline CCombatActionBase(owner,150,CSoundPair()) ctor; ebx zero reg
+00a17480	RELOCATION_MATCH	139v139	PASS	label wrong: STLport list<SEntry>::insert(where)
+0069e3d0	RELOCATION_MATCH	134v134	PASS	label wrong: camera manager; Reset defined earlier in TU
+00909140	RELOCATION_MATCH	133v133	PASS	GetOwner() accessor; float 2.0f immediate
+00c41990	RELOCATION_MATCH	132v132	PASS	if/else clamp into float local; pow via named local
+00c41bb0	RELOCATION_MATCH	134v134	PASS	twin of 00c41990 with float arg
+006f4990	RELOCATION_MATCH	97v97	PASS	copy ctor; retail 12-byte vector shifts DefenderInfo to +0x34
+00748760	RELOCATION_MATCH	132v132	PASS	/Gr __fastcall SGI __median, stateful comparator
+0052e9c0	RELOCATION_MATCH	98v98	PASS	TargetPosition copy written in each arm
+005303f0	RELOCATION_MATCH	101v101	PASS	this -> CObserver* null-tested conversion
+005304c0	MATCH	98v98	PASS	*(begin()+i) iterator object
+00530530	MATCH	112v112	PASS	two queries re-read the element
+00530610	MATCH	113v113	PASS	found element re-read after the loop
+00531000	DIFFER	139v139	-	retail saves ebp in the prologue (push ebx ; push ebp ; push esi); the lane shrink-wraps it into the else arm (push ebp after the size load) and align
+00546140	RELOCATION_MATCH	133v133	PASS	counted font bank copy in registers; CRGBColour Set copy
+00994a80	DIFFER	138v141	-	register colouring: retail keeps `position` in edi (saved in the prologue) and the chunk size in ebp (saved only on the inflate path); the lane swaps 
+00cafce0	RELOCATION_MATCH	124v124	PASS	label wrong: DirectShow CRendererPosPassThru ctor
+0076aae0	DIFFER	105v105	-	scheduling only: in the by-value copy built for __unguarded_linear_insert retail stores the key word ([eax]=edi) first, the lane sinks it after the ot
+0086c620	RELOCATION_MATCH	107v107	PASS	label wrong: STLport __linear_insert {long key; POD12}
+00a3a840	RELOCATION_MATCH	117v117	PASS	
+00a3a8c0	RELOCATION_MATCH	107v107	PASS	finished stored twice on the end path
+00a3ab00	RELOCATION_MATCH	139v139	PASS	static inflate state global
+00a3ac40	RELOCATION_MATCH	127v127	PASS	info written from values, compressed size first
+00a3add0	RELOCATION_MATCH	155v155	PASS	64-bit bound via __aulldiv; CArray GetData select
+00625350	RELOCATION_MATCH	115v115	PASS	explicit memberwise operator=; POD16 record copy
+009ea740	RELOCATION_MATCH	136v136	PASS	dense switch + jump table; case order bool first
+0042d6b2	RELOCATION_MATCH	131v131	PASS	optimize(s); *this by reference, this by pointer
+006e5790	DIFFER	94v100	-	lane gap (GOTCHAS wave 24l, std::find tag over a live parameter slot): retail enregisters `person` in ebx, stores it back to its own argument slot for
+00d90550	RELOCATION_MATCH	110v110	PASS	clamp tests the arg, stores the local
+00cdb3c0	RELOCATION_MATCH	141v141	PASS	non-polymorphic; inline ~CScriptThing and ~CTimer

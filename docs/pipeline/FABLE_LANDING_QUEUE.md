@@ -150,6 +150,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand123` | Hand chunk 123 (CAnimComponentStrikeResponseAnim .. CBenTestScriptsScript): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand124` | Hand chunk 124 (CBinaryTree_Alt .. CCharString): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand125` | Hand chunk 125 (CCharString .. CCombatManager): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand126` | Hand chunk 126 (CCombatManager .. CCrateTeamManager): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -199,7 +200,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **277 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **281 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -438,6 +439,13 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 
 #### `2026-10-15_linux_hand125` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand125/differ/`)
 - 00865eb0 CCombatAction_GenericStrikeResponseKnockdownRecoverBase::Initialise DIFFER(144v144): scratch-register rotation only -- retail `mov eax,[ecx+8] ; push eax ; lea edx,[esp+0Ch] ; push edx` (GetString index / hidden result), `lea eax,[esp+8]` for SetCombatAnimation and `lea ecx,[esp+8]` for the fallback literal; ours edx/eax, ecx, edx | tried: out-pointer vs out-reference lookup, entry pointer local, free `operator!=`, const-ref bound result, inline GetNameIndex helper, declared CCharString copy constructor (all identical output) | next: lane gap: register allocation (allocator rotation), or try the GetString call as a static/global-function form
+
+
+#### `2026-10-15_linux_hand126` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand126/differ/`)
+- 00531000 CComponent::FindAllChildrenOfType DIFFER(139v139): retail `push ebx ; push ebp ; push esi` in the prologue, lane pushes ebp only in the loop arm and aligns the loop with `lea ebx,[ebx]` instead of `jmp ; lea ecx,[ecx]` | tried: if/else, early return, reversed arms, function-scope index | next: lane gap: callee-saved register shrink-wrapping
+- 00994a80 CCompressedMemoryDataInputStream::SetPosition DIFFER(138v141): position/chunk in edi/ebp (retail) vs ebp/edi (lane); `mov edx,[14h] ; lea eax,[edx+ecx]` vs `mov eax,[14h] ; add eax,edx`; pointer advance `ptr + (pos - StreamPos)` vs `ptr - StreamPos + pos` | tried: plain body, locals in store order, declaration order swap, inlined InternalReadUnbuffered (fixed the push order) | next: an inline SetPositionAssumeWithinSourceChunk-style helper taking the chunk end, or lane gap: register colouring
+- 0076aae0 CCompressorZlib::SetupStream (STLport __linear_insert) DIFFER(105v105): by-value copy for __unguarded_linear_insert stores the key `[eax]=edi` first in retail, last in the lane | tried: init-list, body-assignment, split copy ctors, key+POD12 member (gives the 0086c620 shape) | next: lane gap: scheduling
+- 006e5790 CConversation::AddPersonToConversation DIFFER(94v100): retail keeps `person` in ebx, stores it back into its own argument slot for find's const-ref value and homes the iterator-tag temporary in that same slot; lane binds the slot directly and gives the tag its own frame byte (`sub esp,0Ch`, `lea eax,[esp+0Bh]`) | tried: STLport __find(first, end, person, random_access_iterator_tag()) with end in a local | next: lane gap: tag temporary over a live parameter slot (GOTCHAS 24l)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

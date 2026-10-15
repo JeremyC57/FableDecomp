@@ -1,0 +1,13 @@
+# Chunk 126 lessons (for GOTCHAS)
+- Register colouring of a counted-pointer OnCreate (`lea eax ; push eax` / `mov ecx,[esp+4] ; push ecx` vs edx/eax): read the sequence owner through an inline `GetOwner() const` accessor instead of the member (00907ae0, 00907b60, 00909140).
+- A thin derived action whose vtable store follows the base-ctor call (new block in edi) = inline derived ctor over an out-of-line base ctor (`new CDerived(a, b)` with `CDerived(a, b) : CBase(a, b) {}`).
+- A by-value counted-pointer argument whose count block stays cached in esi across the call (`dec [esi] ; jne` at the end) needs the Reset that assigned it compiled EARLIER in the TU (`#pragma auto_inline(off)`): VC7.1 then knows the local's address did not escape (0069e3d0). Same family as the wave-25 register-clobber lesson.
+- A 64-bit key re-stored from a register pair into its frame slot before each of two `find` calls = an inline helper taking the key BY VALUE (`Find(unsigned __int64 key) { return find(key); }`) over a register local (006ea050).
+- The landed GetInterface out-parameter template must be `__forceinline` when the TU would otherwise out-line it (006ed9e0: a `call` + `push 0x36` appeared).
+- A struct copy into a possibly-aliasing out-parameter is not forwarded from the just-written header: retail's constant stores mean the source writes the VALUES (`info.CompressedSize = 13`), in retail's order (00a3ac40); `size <= 0` on an unsigned size gives `test ; ja` where `== 0` gives `jne`.
+- A record copy where only the first word is stored before the call setup comes from an X store hoisted out of both arms: write the record copy in EACH arm (0052e9c0).
+- A by-value 16-byte record built in the argument area with `mov [eax],key ; add eax,4 ; ...` = {key; 12-byte POD member} with a user copy ctor `: key(o.key), value(o.value)`; the four-scalar form sinks the key store (0086c620 vs parked 0076aae0).
+- `this` passed as a REFERENCE to a secondary base needs no null test, as a POINTER it gets `neg ; sbb ; and` under optimize("s") (0042d6b2); an explicit `this -> base*` argument in a speed TU gets `test ; je ; lea ; jmp ; xor` (005303f0).
+- DirectShow strmbase classes are in the exe (no RTTI): 0x00CACC80 is `CUnknown::CUnknown(name, pUnk)`; AM_NOVTABLE intermediate classes leave only their members' stores before the next class's vtables (00cafce0).
+- `float clamped = arg; if (arg < 0) clamped = 0;` reproduces "test the argument, store into the local" (00d90550).
+- Lane gaps confirmed: callee-saved push shrink-wrapping (00531000), edi/ebp colouring of a parameter vs a loop local (00994a80), key-store scheduling in a by-value record copy (0076aae0), the std::find tag over a live parameter slot (006e5790, GOTCHAS 24l).
