@@ -157,6 +157,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand130` | Hand chunk 130 (CCreatureAction_ScorpionTailWithdraw .. CCreatureAction_TrollTunnel): 36 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand131` | Hand chunk 131 (CCreatureAction_UndeadReturnToEarth .. CDeviceIndependent): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand132` | Hand chunk 132 (CDiskFileWin32 .. CDrawRenown): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand133` | Hand chunk 133 (CDrawTargetInfo .. CEngineInternalPrimitive2DStaticMesh): 33 of 40 byte-exact | - | 6 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -207,9 +208,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **306 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **312 parked rows** for the Fable retry pass.
 
-### Skipped rows (8 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (9 open of 29 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -221,6 +222,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
 | `00caef70` | multi | in-chunk:904 | 00caef70:9 00caef80:3 00caef90:3 00caefa0:3 | `2026-10-15_linux_hand110` | row holds four functions |
+| `00f36ca0` | multi | open | 00f36ca0:17 00f36cc0:43 00f36cf0:31 00f36d10:16 00f36d20:1 | `2026-10-15_linux_hand133` | row spans 4 functions (int3 padding then more bodies) |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -496,6 +498,15 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0099abf0 CDiskFileWin32::SetPosition DIFFER(142v159): the lane drops the dead LARGE_INTEGER high-half store (`cdq ; mov [esp+18h],edx`) and shrinks the 12-byte frame, moving the CBBBFileException object into the dead argument slot | tried: LARGE_INTEGER local, __int64 local, inline FlushAndSeek(__int64) and (LARGE_INTEGER) helpers | next: lane gap: dead-store elimination of a union member (QFE vs RTM)
 - 0055a510 NUISystem::CDraggable::ProcessEvent DIFFER(157v157): frame layout only -- retail gives the two GetUIScale result temporaries separate 8-byte slots (sub esp,18h), ours share one (sub esp,10h) | tried: named float scale locals (fixed the code order), empty C2DVector destructor, inline helper temporaries | next: lane gap: temporary slot sharing (QFE/RTM frame-slot gap)
 - 0064e019 NPlayerGui::CDrawMiniMap::ToggleCentering DIFFER(135v136): retail this/fade/world in esi/ebp/edi with World loaded into ecx then copied to edi; ours ebp/edi/esi loading World straight into esi | tried: fade pointer local, declaration orders, __forceinline CWorld::GetCurrentRegion accessor (5 grades) | next: lane gap: register allocation
+
+
+#### `2026-10-15_linux_hand133` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand133/differ/`)
+- 00c17400 _global::DeleteTrackNodeCommand DIFFER(138v155): `push esi ; mov esi,[esp+24h] ; call 0x00C16CE0` -- the callee reads esi as an input | tried: one draft | next: lane gap: LTCG custom register argument (whole-program codegen)
+- 00c26cd0 CMailboxQueue_00c26cd0::PostMessage DIFFER(115v115): `lea edx,[esp+1Ch] ; push edx` (lane ecx) and `push 1 ; lea ecx,[esi+18h] ; push eax` (lane lea after both pushes) | tried: push_back wrapper, insert(end(), 1, x) at the call site | next: lane gap: register/scheduling
+- 00c27130 CMailboxQueue_00c27130::PostMessage DIFFER(115v115): same as 00c26cd0 (twin, other insert instantiation) | tried: same two forms | next: lane gap: register/scheduling
+- 00af12a0 CEmitterData::BuildEmitterTemplate DIFFER(144v144): `mov ecx,[edi] ; lea eax,[esp+8] ; push eax` (lane: `lea ecx` + push first) and the count block reloaded into ecx (lane edx) | tried: `EmitterTemplate->ReadBinary(stream)`, object read into a local first | next: lane gap: register allocation
+- 00b1aeb0 NParticleEngine::CPSCLight::~CPSCLight DIFFER(119v121): `mov ecx,[edi+5Ch] ; test ecx,ecx` hoisted above `lea esi,[edi+58h] ; mov [esi],vtable` (retail: after the store, through eax, then `mov ecx,eax`) | tried: plain member, volatile member + locals, __forceinline + volatile, __forceinline + volatile re-read helper | next: lane gap: store-then-load order (the 24k "volatile does not pin it" gap)
+- 008859f0 CEnvironmentSpellEffectInterface::GetRenderFrameInterpolatedScreenFilterParameters DIFFER(112v119): middle copy read through the returned eax with `add eax,10h` for Tint and the named local placed below the temporary (retail: fixed frame offsets, temporary at the frame bottom) | tried: copy-init, POD assignment, user copy ctor + out-param, user operator= + implicit copy | next: operator= copying Tint as four floats, or a named temporary `CScreenFilterParams interpolated = ...; params = interpolated;`
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

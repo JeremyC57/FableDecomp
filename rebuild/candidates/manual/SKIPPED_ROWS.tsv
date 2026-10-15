@@ -27,3 +27,4 @@ address	row_len	batch	label	kind	status	pieces	note
 00c8a520	32	2026-10-14_linux_hand57	CMemoryDataOutputStream::Clear	ltcg	open		a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG
 00ca5510	96	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	00ca5510:16,00ca5520:8,00ca5530:7,00ca5540:44	row spans four functions
 00caef70	64	2026-10-15_linux_hand110	CThingFilter_IsValid::operator()	multi	in-chunk:904	00caef70:9,00caef80:3,00caef90:3,00caefa0:3	row holds four functions
+00f36ca0	144	2026-10-15_linux_hand133	CDynamicObjectHeapBase::RefCountedRelease	multi	open	00f36ca0:17,00f36cc0:43,00f36cf0:31,00f36d10:16,00f36d20:1	row spans 4 functions (int3 padding then more bodies)

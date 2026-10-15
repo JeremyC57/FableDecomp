@@ -228472,6 +228472,238 @@ $catalog = @(
         TestSource = '00/c6/CSkillTable00c67470_SetSkillPropertiesEx_00c689b0_test.cpp'
         PassPattern = '00c689b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0042d830'
+        Module = 'CEngineInit'
+        Source = '00/42/CEngineInit_CEngineInit_0042d830.cpp'
+        TestSource = '00/42/CEngineInit_CEngineInit_0042d830_test.cpp'
+        PassPattern = '0042d830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b9b90'
+        Module = 'CActiveQuest'
+        Source = '00/4b/CActiveQuest_CActiveQuest_004b9b90.cpp'
+        TestSource = '00/4b/CActiveQuest_CActiveQuest_004b9b90_test.cpp'
+        PassPattern = '004b9b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540e50'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_ScrollSelectionUp_00540e50.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_ScrollSelectionUp_00540e50_test.cpp'
+        PassPattern = '00540e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540ec0'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_ScrollSelectionDown_00540ec0.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_ScrollSelectionDown_00540ec0_test.cpp'
+        PassPattern = '00540ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e0b0'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_CFrontEndButton_0054e0b0.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_CFrontEndButton_0054e0b0_test.cpp'
+        PassPattern = '0054e0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00644526'
+        Module = 'NPlayerGui::CDrawTargetInfo'
+        Source = '00/64/NPlayerGuiCDrawTargetInfo_OnEventAttack_00644526.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawTargetInfo_OnEventAttack_00644526_test.cpp'
+        PassPattern = '00644526_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bc410'
+        Module = 'CRegion'
+        Source = '00/6b/CRegion_CRegion_006bc410.cpp'
+        TestSource = '00/6b/CRegion_CRegion_006bc410_test.cpp'
+        PassPattern = '006bc410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006be300'
+        Module = 'CMusicManager'
+        Source = '00/6b/CMusicManager_CMusicManager_006be300.cpp'
+        TestSource = '00/6b/CMusicManager_CMusicManager_006be300_test.cpp'
+        PassPattern = '006be300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006eb9f0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_HasSequenceAgainstAttacked_006eb9f0.cpp'
+        TestSource = '00/6e/CCombatManager_HasSequenceAgainstAttacked_006eb9f0_test.cpp'
+        PassPattern = '006eb9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00992510'
+        Module = 'CSoundBankRecord'
+        Source = '00/99/CSoundBankRecord_CSoundBankRecord_00992510.cpp'
+        TestSource = '00/99/CSoundBankRecord_CSoundBankRecord_00992510_test.cpp'
+        PassPattern = '00992510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099fdb0'
+        Module = '_global'
+        Source = '00/99/global_HighestSetBit_0099fdb0.cpp'
+        TestSource = '00/99/global_HighestSetBit_0099fdb0_test.cpp'
+        PassPattern = '0099fdb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e4ae0'
+        Module = 'CDriveManager'
+        Source = '00/9e/CDriveManager_DriveExists_009e4ae0.cpp'
+        TestSource = '00/9e/CDriveManager_DriveExists_009e4ae0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '009e4ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26860'
+        Module = 'C3DAnimationInfo::CAnimationData'
+        Source = '00/a2/C3DAnimationInfoCAnimationData_CAnimationData_00a26860.cpp'
+        TestSource = '00/a2/C3DAnimationInfoCAnimationData_CAnimationData_00a26860_test.cpp'
+        PassPattern = '00a26860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b24030'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_WorldFrameUpdate_00b24030.cpp'
+        TestSource = '00/b2/CEngine_WorldFrameUpdate_00b24030_test.cpp'
+        PassPattern = '00b24030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b240c0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_PausedWorldFrameUpdate_00b240c0.cpp'
+        TestSource = '00/b2/CEngine_PausedWorldFrameUpdate_00b240c0_test.cpp'
+        PassPattern = '00b240c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b25c00'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_RenderColorFilteredQuad_00b25c00.cpp'
+        TestSource = '00/b2/CEngine_RenderColorFilteredQuad_00b25c00_test.cpp'
+        PassPattern = '00b25c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b26010'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_OnPreDeviceReset_00b26010.cpp'
+        TestSource = '00/b2/CEngine_OnPreDeviceReset_00b26010_test.cpp'
+        PassPattern = '00b26010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b321b0'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_CollectPrimitiveStats_00b321b0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_CollectPrimitiveStats_00b321b0_test.cpp'
+        PassPattern = '00b321b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b36c50'
+        Module = 'CShadowClipVolume'
+        Source = '00/b3/CShadowClipVolume_CShadowClipVolume_00b36c50.cpp'
+        TestSource = '00/b3/CShadowClipVolume_CShadowClipVolume_00b36c50_test.cpp'
+        PassPattern = '00b36c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b38db0'
+        Module = 'CEngineInternalAttachedPrimitive'
+        Source = '00/b3/CEngineInternalAttachedPrimitive_RedoMatrixConversion_00b38db0.cpp'
+        TestSource = '00/b3/CEngineInternalAttachedPrimitive_RedoMatrixConversion_00b38db0_test.cpp'
+        PassPattern = '00b38db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b38e30'
+        Module = 'CEngineInternalAttachedPrimitive'
+        Source = '00/b3/CEngineInternalAttachedPrimitive_RedoMatrixConversion_00b38e30.cpp'
+        TestSource = '00/b3/CEngineInternalAttachedPrimitive_RedoMatrixConversion_00b38e30_test.cpp'
+        PassPattern = '00b38e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3a910'
+        Module = 'CEngineInternalAttachedPrimitive'
+        Source = '00/b3/CEngineInternalAttachedPrimitive_CEngineInternalAttachedPrimitive_00b3a910.cpp'
+        TestSource = '00/b3/CEngineInternalAttachedPrimitive_CEngineInternalAttachedPrimitive_00b3a910_test.cpp'
+        PassPattern = '00b3a910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4a5f0'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_Set2DLighting_00b4a5f0.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_Set2DLighting_00b4a5f0_test.cpp'
+        PassPattern = '00b4a5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4af50'
+        Module = 'CEngineCameraDesc'
+        Source = '00/b4/CEngineCameraDesc_CEngineCameraDesc_00b4af50.cpp'
+        TestSource = '00/b4/CEngineCameraDesc_CEngineCameraDesc_00b4af50_test.cpp'
+        PassPattern = '00b4af50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b80ad0'
+        Module = 'CEngineClothSimulationMeshBase'
+        Source = '00/b8/CEngineClothSimulationMeshBase_ConvertVectorToLocal_00b80ad0.cpp'
+        TestSource = '00/b8/CEngineClothSimulationMeshBase_ConvertVectorToLocal_00b80ad0_test.cpp'
+        PassPattern = '00b80ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b80fe0'
+        Module = 'CEngineClothSimulationMeshBase'
+        Source = '00/b8/CEngineClothSimulationMeshBase_GetWindVector_00b80fe0.cpp'
+        TestSource = '00/b8/CEngineClothSimulationMeshBase_GetWindVector_00b80fe0_test.cpp'
+        PassPattern = '00b80fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b81230'
+        Module = 'CEngineClothSimulationAnimatedMesh'
+        Source = '00/b8/CEngineClothSimulationAnimatedMesh_CalcAndSetRunState_00b81230.cpp'
+        TestSource = '00/b8/CEngineClothSimulationAnimatedMesh_CalcAndSetRunState_00b81230_test.cpp'
+        PassPattern = '00b81230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b81d60'
+        Module = 'CEngineClothSimulationMeshBase'
+        Source = '00/b8/CEngineClothSimulationMeshBase_ClearParticleSims_00b81d60.cpp'
+        TestSource = '00/b8/CEngineClothSimulationMeshBase_ClearParticleSims_00b81d60_test.cpp'
+        PassPattern = '00b81d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be2a80'
+        Module = 'CEngineInlineTableBuilder'
+        Source = '00/be/CEngineInlineTableBuilder_CEngineInlineTableBuilder_00be2a80.cpp'
+        TestSource = '00/be/CEngineInlineTableBuilder_CEngineInlineTableBuilder_00be2a80_test.cpp'
+        PassPattern = '00be2a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5e050'
+        Module = 'CKsObject'
+        Source = '00/c5/CKsObject_SetProperty_00c5e050.cpp'
+        TestSource = '00/c5/CKsObject_SetProperty_00c5e050_test.cpp'
+        PassPattern = '00c5e050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cba750'
+        Module = '_global'
+        Source = '00/cb/global_popheap_00cba750.cpp'
+        TestSource = '00/cb/global_popheap_00cba750_test.cpp'
+        PassPattern = '00cba750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbbeb0'
+        Module = '_global'
+        Source = '00/cb/global_partialsort_00cbbeb0.cpp'
+        TestSource = '00/cb/global_partialsort_00cbbeb0_test.cpp'
+        PassPattern = '00cbbeb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e76540'
+        Module = 'CEM_Rhodri'
+        Source = '00/e7/CEMRhodri_Init_00e76540.cpp'
+        TestSource = '00/e7/CEMRhodri_Init_00e76540_test.cpp'
+        PassPattern = '00e76540_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

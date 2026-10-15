@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00644526	RELOCATION_MATCH	97v97	PASS	NPlayerGui::CDrawTargetInfo::OnEventAttack; #pragma optimize("s",on); CRGBColour by value w/ user copy ctor, body-assigned R,G,B,A
+009e4ae0	RELOCATION_MATCH	138v138	PASS	CDriveManager::DriveExists; Flags /GS; success path is the if-body
+00540e50	MATCH	99v99	PASS	NUISystem::CDynamicList::ScrollSelectionUp; STLport *(begin()+n)
+00540ec0	MATCH	136v136	PASS	NUISystem::CDynamicList::ScrollSelectionDown
+0054e0b0	RELOCATION_MATCH	111v111	PASS	label fix: NUISystem::CFrontEndButton ctor (rtti vtables); leaf ??0CFrontEndButton
+00f36ca0	SKIP	-	-	row spans 4 functions (int3 padding then more bodies)
+00e76540	RELOCATION_MATCH	142v142	PASS	CEM_Rhodri::Init; CBriarRose::Init model
+00c17400	DIFFER	138v155	-	lane gap: LTCG esi register argument to 0x00C16CE0; label wrong (fastcall, ret 8)
+00c26cd0	DIFFER	115v115	-	mailbox PostMessage (label fix); register/scheduling only; /EHsc
+00c27130	DIFFER	115v115	-	twin of 00c26cd0; register/scheduling only; /EHsc
+004b9b90	RELOCATION_MATCH	113v113	PASS	label fix: CActiveQuest::~CActiveQuest; leaf ??1CActiveQuest
+00992510	RELOCATION_MATCH	120v120	PASS	label fix: sound-bank record dtor (descriptive CSoundBankRecord); leaf ??1CSoundBankRecord
+00cba750	RELOCATION_MATCH	137v137	PASS	label fix: SGI __pop_heap<pair<u64,CPersistInfo>> (/Gr-style fastcall); leaf __pop_heap
+00cbbeb0	RELOCATION_MATCH	123v123	PASS	label fix: SGI __partial_sort, same instantiation; leaf __partial_sort
+00a26860	RELOCATION_MATCH	160v160	PASS	label fix: C3DAnimationInfo::CAnimationData dtor; leaf ??1CAnimationData
+00af12a0	DIFFER	144v144	-	CEmitterData::BuildEmitterTemplate; register allocation only
+006be300	RELOCATION_MATCH	115v115	PASS	label fix: CMusicManager ctor; leaf ??0CMusicManager
+0099fdb0	MATCH	123v123	PASS	label fix: __fastcall HighestSetBit (floor log2); leaf HighestSetBit
+00b24030	RELOCATION_MATCH	143v143	PASS	CEngine::WorldFrameUpdate; local model (PDB offsets -8)
+00b240c0	RELOCATION_MATCH	140v140	PASS	CEngine::PausedWorldFrameUpdate
+00b25c00	RELOCATION_MATCH	124v124	PASS	CEngine::RenderColorFilteredQuad; inlined capture-block push
+00b26010	RELOCATION_MATCH	151v151	PASS	CEngine::OnPreDeviceReset; STLport erase early-out copy
+00b321b0	RELOCATION_MATCH	120v120	PASS	label fix: CEnginePrimitiveRenderer::CollectPrimitiveStats
+00b4a5f0	RELOCATION_MATCH	122v122	PASS	label fix: CEnginePrimitiveRenderer2D::Set2DLighting
+00b36c50	MATCH	133v133	PASS	label fix: CShadowClipVolume implicit copy ctor; leaf ??0CShadowClipVolume
+00b4af50	MATCH	114v114	PASS	CEngineCameraDesc copy ctor; C2DBoxF/C3DVector user copy ctors
+00b81230	RELOCATION_MATCH	143v143	PASS	CEngineClothSimulationAnimatedMesh::CalcAndSetRunState; += term order
+00b80ad0	MATCH	105v105	PASS	ConvertVectorToLocal; statement-by-statement sums
+00b80fe0	RELOCATION_MATCH	112v112	PASS	GetWindVector; callee above under auto_inline(off)
+00b81d60	RELOCATION_MATCH	148v148	PASS	ClearParticleSims; STLport push_back inlined
+00c5e050	RELOCATION_MATCH	109v109	PASS	label fix: KS SetProperty (DeviceIoControl IOCTL_KS_PROPERTY); leaf SetProperty
+0042d830	RELOCATION_MATCH	122v122	PASS	CEngineInit ctor (retail 8 pointers)
+006bc410	RELOCATION_MATCH	132v132	PASS	label fix: CRegion ctor; STLport alloc proxy; leaf ??0CRegion
+00be2a80	RELOCATION_MATCH	150v150	PASS	CEngineInlineTableBuilder ctor; __forceinline log2 helper
+00b38db0	RELOCATION_MATCH	113v113	PASS	RedoMatrixConversion x100/-100
+00b38e30	RELOCATION_MATCH	113v113	PASS	RedoMatrixConversion x0.01/-0.01
+00b3a910	RELOCATION_MATCH	108v108	PASS	CEngineInternalAttachedPrimitive ctor; leaf ??0CEngineInternalAttachedPrimitive
+00b1aeb0	DIFFER	119v121	-	label fix: NParticleEngine::CPSCLight dtor; first null test hoisted above vtable store
+006eb9f0	RELOCATION_MATCH	101v101	PASS	label fix: CCombatManager predicate (descriptive name); leaf HasSequenceAgainstAttacked
+008859f0	DIFFER	112v119	-	label fix: CEnvironmentSpellEffectInterface::GetRenderFrameInterpolatedScreenFilterParameters; middle copy
