@@ -221567,6 +221567,272 @@ $catalog = @(
         TestSource = '00/ae/CSortedMapOwner00ae34d0_SortAndProcess_00ae34d0_test.cpp'
         PassPattern = '00ae34d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00464536'
+        Module = 'CThingBaseDef'
+        Source = '00/46/CThingBaseDef_operator_00464536.cpp'
+        TestSource = '00/46/CThingBaseDef_operator_00464536_test.cpp'
+        PassPattern = '00464536_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004acb50'
+        Module = 'CThing'
+        Source = '00/4a/CThing_GetTCDriverCTCDExperienceOrb_004acb50.cpp'
+        TestSource = '00/4a/CThing_GetTCDriverCTCDExperienceOrb_004acb50_test.cpp'
+        PassPattern = '004acb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c73e0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_InitTC_004c73e0.cpp'
+        TestSource = '00/4c/CThing_InitTC_004c73e0_test.cpp'
+        PassPattern = '004c73e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7470'
+        Module = 'CThing'
+        Source = '00/4c/CThing_ValidateThing_004c7470.cpp'
+        TestSource = '00/4c/CThing_ValidateThing_004c7470_test.cpp'
+        PassPattern = '004c7470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c74b0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_DrawGetEditDrawInfo_004c74b0.cpp'
+        TestSource = '00/4c/CThing_DrawGetEditDrawInfo_004c74b0_test.cpp'
+        PassPattern = '004c74b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7500'
+        Module = 'CThing'
+        Source = '00/4c/CThing_IsFreeForDeletion_004c7500.cpp'
+        TestSource = '00/4c/CThing_IsFreeForDeletion_004c7500_test.cpp'
+        PassPattern = '004c7500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7540'
+        Module = 'CThing'
+        Source = '00/4c/CThing_DrawPreparePrimitivesForRendering_004c7540.cpp'
+        TestSource = '00/4c/CThing_DrawPreparePrimitivesForRendering_004c7540_test.cpp'
+        PassPattern = '004c7540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7790'
+        Module = 'CThing'
+        Source = '00/4c/CThing_DrawIsDrawable_004c7790.cpp'
+        TestSource = '00/4c/CThing_DrawIsDrawable_004c7790_test.cpp'
+        PassPattern = '004c7790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c77b0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_vfunc29_004c77b0.cpp'
+        TestSource = '00/4c/CThing_vfunc29_004c77b0_test.cpp'
+        PassPattern = '004c77b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c77d0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_OnLevelUnload_004c77d0.cpp'
+        TestSource = '00/4c/CThing_OnLevelUnload_004c77d0_test.cpp'
+        PassPattern = '004c77d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7820'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SendMessageW_004c7820.cpp'
+        TestSource = '00/4c/CThing_SendMessageW_004c7820_test.cpp'
+        PassPattern = '004c7820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c78a0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetCutscenePauseBehaviour_004c78a0.cpp'
+        TestSource = '00/4c/CThing_SetCutscenePauseBehaviour_004c78a0_test.cpp'
+        PassPattern = '004c78a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c78f0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_IsRenderedThisFrame_004c78f0.cpp'
+        TestSource = '00/4c/CThing_IsRenderedThisFrame_004c78f0_test.cpp'
+        PassPattern = '004c78f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7950'
+        Module = 'CThing'
+        Source = '00/4c/CThing_GetPhysPos_004c7950.cpp'
+        TestSource = '00/4c/CThing_GetPhysPos_004c7950_test.cpp'
+        PassPattern = '004c7950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7b80'
+        Module = 'CThing'
+        Source = '00/4c/CThing_vfunc17_004c7b80.cpp'
+        TestSource = '00/4c/CThing_vfunc17_004c7b80_test.cpp'
+        PassPattern = '004c7b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7bf0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_IsFrameUpdated_004c7bf0.cpp'
+        TestSource = '00/4c/CThing_IsFrameUpdated_004c7bf0_test.cpp'
+        PassPattern = '004c7bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7c60'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetForceFrameUpdate_004c7c60.cpp'
+        TestSource = '00/4c/CThing_SetForceFrameUpdate_004c7c60_test.cpp'
+        PassPattern = '004c7c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7cc0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_GetDefName_004c7cc0.cpp'
+        TestSource = '00/4c/CThing_GetDefName_004c7cc0_test.cpp'
+        PassPattern = '004c7cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7cf0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_OnKill_004c7cf0.cpp'
+        TestSource = '00/4c/CThing_OnKill_004c7cf0_test.cpp'
+        PassPattern = '004c7cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7ff0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_CreateUID_004c7ff0.cpp'
+        TestSource = '00/4c/CThing_CreateUID_004c7ff0_test.cpp'
+        PassPattern = '004c7ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c8ba0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_WorldUpdateBulletTime_004c8ba0.cpp'
+        TestSource = '00/4c/CThing_WorldUpdateBulletTime_004c8ba0_test.cpp'
+        PassPattern = '004c8ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c9c40'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetToKillOnLevelUnload_004c9c40.cpp'
+        TestSource = '00/4c/CThing_SetToKillOnLevelUnload_004c9c40_test.cpp'
+        PassPattern = '004c9c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c9d20'
+        Module = 'CThing'
+        Source = '00/4c/CThing_FrameUpdate_004c9d20.cpp'
+        TestSource = '00/4c/CThing_FrameUpdate_004c9d20_test.cpp'
+        PassPattern = '004c9d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004facd0'
+        Module = 'CThingAICreatureInit'
+        Source = '00/4f/CThingAICreatureInit_CThingAICreatureInit_004facd0.cpp'
+        TestSource = '00/4f/CThingAICreatureInit_CThingAICreatureInit_004facd0_test.cpp'
+        PassPattern = '004facd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a9520'
+        Module = 'CThingAICreature'
+        Source = '00/6a/CThingAICreature_GetTargetPosition_006a9520.cpp'
+        TestSource = '00/6a/CThingAICreature_GetTargetPosition_006a9520_test.cpp'
+        PassPattern = '006a9520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ae5c0'
+        Module = 'CThing'
+        Source = '00/6a/CThing_GetTCDriverCTCDExperienceOrb_006ae5c0.cpp'
+        TestSource = '00/6a/CThing_GetTCDriverCTCDExperienceOrb_006ae5c0_test.cpp'
+        PassPattern = '006ae5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007334b0'
+        Module = 'CThing'
+        Source = '00/73/CThing_GetPBaseDef_007334b0.cpp'
+        TestSource = '00/73/CThing_GetPBaseDef_007334b0_test.cpp'
+        PassPattern = '007334b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007890ea'
+        Module = 'CThing'
+        Source = '00/78/CThing_GetTCDriverCTCDPhysicalObstruction_007890ea.cpp'
+        TestSource = '00/78/CThing_GetTCDriverCTCDPhysicalObstruction_007890ea_test.cpp'
+        PassPattern = '007890ea_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078ddb0'
+        Module = 'CThing'
+        Source = '00/78/CThing_SetAsGameStatePersisted_0078ddb0.cpp'
+        TestSource = '00/78/CThing_SetAsGameStatePersisted_0078ddb0_test.cpp'
+        PassPattern = '0078ddb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082fe60'
+        Module = 'CThingAICreature'
+        Source = '00/82/CThingAICreature_GetTargetPosition_0082fe60.cpp'
+        TestSource = '00/82/CThingAICreature_GetTargetPosition_0082fe60_test.cpp'
+        PassPattern = '0082fe60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00830320'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_IsAvailableForInteractionType_00830320.cpp'
+        TestSource = '00/83/CThingAICreature_IsAvailableForInteractionType_00830320_test.cpp'
+        PassPattern = '00830320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008337b0'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_vfunc14_008337b0.cpp'
+        TestSource = '00/83/CThingAICreature_vfunc14_008337b0_test.cpp'
+        PassPattern = '008337b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00833a10'
+        Module = 'CThingAnimatable'
+        Source = '00/83/CThingAnimatable_SetSuspendAnimation_00833a10.cpp'
+        TestSource = '00/83/CThingAnimatable_SetSuspendAnimation_00833a10_test.cpp'
+        PassPattern = '00833a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083af60'
+        Module = 'CThing'
+        Source = '00/83/CThing_GetPBaseDef_0083af60.cpp'
+        TestSource = '00/83/CThing_GetPBaseDef_0083af60_test.cpp'
+        PassPattern = '0083af60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e5fb0'
+        Module = 'CThing'
+        Source = '00/8e/CThing_AddToRenderList_008e5fb0.cpp'
+        TestSource = '00/8e/CThing_AddToRenderList_008e5fb0_test.cpp'
+        PassPattern = '008e5fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00991750'
+        Module = 'CThing'
+        Source = '00/99/CThing_OnDie_00991750.cpp'
+        TestSource = '00/99/CThing_OnDie_00991750_test.cpp'
+        PassPattern = '00991750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c597e0'
+        Module = 'CThing'
+        Source = '00/c5/CThing_AddToRenderList_00c597e0.cpp'
+        TestSource = '00/c5/CThing_AddToRenderList_00c597e0_test.cpp'
+        PassPattern = '00c597e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c59820'
+        Module = 'CThing'
+        Source = '00/c5/CThing_AddToRenderList_00c59820.cpp'
+        TestSource = '00/c5/CThing_AddToRenderList_00c59820_test.cpp'
+        PassPattern = '00c59820_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

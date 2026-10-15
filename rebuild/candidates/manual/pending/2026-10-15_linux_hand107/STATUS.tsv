@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004acb50	MATCH	27v27	PASS	inlined HasTC word test (word 2 mask 0x800)
+004c73e0	MATCH	86v86	PASS	if/else chain on InitialisationStage:3
+004c7470	MATCH	63v63	PASS	component vector loop, end re-read
+004c74b0	RELOCATION_MATCH	53v53	PASS	colour via inline Set(r,g,b,a); empty CCharString literal
+004c7500	MATCH	55v55	PASS	component vector loop, aligned head
+004c7540	MATCH	50v50	PASS	driver via inline accessor -> ecx
+004c7790	MATCH	32v32	PASS	&& chain full-register bool
+004c77b0	MATCH	32v32	PASS	byte-identical to DrawIsDrawable (slot 29)
+004c77d0	MATCH	67v67	PASS	bitfield pair merged around component loop
+004c7820	MATCH	73v73	PASS	as OnLevelUnload with message arg
+004c78a0	MATCH	66v66	PASS	3-case switch on long
+004c78f0	MATCH	50v50	PASS	long-returning appearance query (movzx test)
+004c7950	MATCH	52v52	PASS	inline C2DVector+C3DVector operator on the call temporary
+004c7b80	MATCH	53v53	PASS	!Dead through inline IsAlive() (not cl)
+004c7bf0	MATCH	74v74	PASS	|| chain with inlined IsRenderedThisFrame
+004c7c60	RELOCATION_MATCH	58v58	PASS	bitfield store re-tested; tail jump AddToUpdateList
+004c7cc0	RELOCATION_MATCH	34v34	PASS	hidden-pointer CDefString pass-through
+004c7cf0	RELOCATION_MATCH	90v90	PASS	landed OnDie for_each model
+004c7ff0	RELOCATION_MATCH	87v87	PASS	two bool locals in frame bytes (named classFlag local)
+004c8ba0	RELOCATION_MATCH	91v91	PASS	GetInterface template + STLport list walk
+004c8c90	DIFFER	83v81	-	component in eax->ecx vs retail ecx
+004c9c40	RELOCATION_MATCH	91v91	PASS	bitfield compare/merge then map query + Kill
+004c9d20	RELOCATION_MATCH	64v64	PASS	inline IsActive on bullet-time manager, tail jumps
+006ae5c0	MATCH	27v27	PASS	same template, word 3 mask 0x200 (propagated label: different driver type)
+007334b0	MATCH	19v19	PASS	CDefPointer copy-ctor return; +0x48 owner is not CThing (label propagated)
+007890ea	RELOCATION_MATCH	39v39	PASS	out-of-line bitset::test, optimize(s) shared tail
+0078ddb0	MATCH	28v28	PASS	bitfield bit 5 of +0x15c (derived class; label propagated)
+0083af60	MATCH	19v19	PASS	twin of 007334b0 at +0x4c (label propagated)
+008e5fb0	RELOCATION_MATCH	52v52	PASS	C3DVector *= (1 - air resistance); physics TC (label propagated)
+00991750	MATCH	53v53	PASS	flag clear + vector stride 0x24 loop (label propagated)
+00c597e0	RELOCATION_MATCH	55v55	PASS	4-arg forwarder, -9 failure (no-RTTI module; label propagated)
+00c59820	RELOCATION_MATCH	55v55	PASS	twin of 00c597e0
+006a9520	RELOCATION_MATCH	40v40	PASS	named-local C3DVector field copy (fxch st(2))
+0082fe60	RELOCATION_MATCH	40v40	PASS	twin of 006a9520
+00830260	DIFFER	84v84	-	seed store scheduled before fld (scheduling only)
+00830320	MATCH	41v41	PASS	&& full-register bool
+008337b0	RELOCATION_MATCH	75v75	PASS	__forceinline GetInterface (not inlined otherwise)
+004facd0	RELOCATION_MATCH	77v77	PASS	init-list ctor, out-of-line CCharString copy
+00833a10	RELOCATION_MATCH	91v91	PASS	suspender set add/erase + setne bitfield
+00464536	RELOCATION_MATCH	71v71	PASS	explicit memberwise operator= under optimize(s) (movs blocks)

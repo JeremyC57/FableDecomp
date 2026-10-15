@@ -129,6 +129,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand102` | Hand chunk 102 (CTCSwitchableNavigation .. CTCTavernGameCardBlackjack): 33 of 40 byte-exact | - | 6 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand103` | Hand chunk 103 (CTCTavernGameCardBlackjack .. CTCThingOwner): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand104` | Hand chunk 104 (CTCThingOwner .. CTCVolumeContainmentTracker): 36 of 40 byte-exact | - | 3 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand107` | Hand chunk 107 (CThing .. CThingBaseDef): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -174,7 +175,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **159 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **161 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 23 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -235,6 +236,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 006dee80 CTCTrophy::UpdateGainedWitnessSounds DIFFER(92v94): ours `mov [esp+8],fps ; call ; mov [esp+0Ch],frame ; fild fps ; fmul [def+44h] ; fiadd frame`, retail `mov [esp+0Ch],fps ; call ; mov [esp+8],frame ; fild frame ; fild fps ; fmul ; faddp` | tried: plain expression, def/fps/frame named locals, explicit (float) casts, operands swapped | next: the frame as a named `float` local (`float frame = (float)GetWorldFrame();`) so it is converted and kept on the FPU stack before the product
 - 00659295 CTCVillage::InitialiseToggleTorchTypes DIFFER(79v77): ours `mov eax,[eax+4] ; cmp byte ptr [eax+1Ch],0 ; sete cl ; push ecx ; mov ecx,eax`, retail `mov ecx,[eax+4] ; cmp byte ptr [ecx+1Ch],0 ; sete al ; push eax` | tried: pointer-returning PeekTC + named light local, `__forceinline` PeekTC, inline CTCLight::ToggleActive on the returned pointer, out-parameter PeekTC | next: lane gap: register choice for the component (the 1-byte sete target), unless a `bool` local for `!Active` evaluated first changes it
 - 007ee370 CTCVillageMember::OnCreate DIFFER(88v86): ours zeroes the def local before the argument pushes and holds the def object in edi (extra push/pop), retail zeroes it after the pushes and reloads it into the dead `this` register esi after `add esi,0Ch ; push esi` | tried: CDefPointer local with destructor (re-reads the escaped local), plain holder + pointer local + inline release, the same under `/Os` (worse: frame), an inline SubDef-and-release helper | next: lane gap: retail treats the address-escaped local as unchanged across GetSubDef (whole-program / LTCG alias knowledge) -- try a `__fastcall`/`const` GetSubDef declaration or a by-value def holder returned from GetDef
+
+
+#### `2026-10-15_linux_hand107` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand107/differ/`)
+- 004c8c90 CThing::IsUnderScriptControl DIFFER(83v81): `mov eax,[eax+4] ; mov cl,[eax+18h] ; ... mov ecx,eax` vs retail `mov ecx,[eax+4] ; mov al,[ecx+18h]` (component pointer register) | tried: GetInterface `!`-form, HasTC + pointer-returning GetTC, inline component member `IsUnderControl()`, `if (GetInterface) return ...; return false;` (fixed block order) | next: a const-qualified GetInterface / a different CVectorMap instance (retail calls LowerBound 0x004365B0, not 0x0040F020), or `CTCScriptControl* c = 0;` initialised before the lookup
+- 00830260 CThingAICreature::RandomiseMovementSpeed DIFFER(84v84): `mov [esp+4],eax` (seed store) scheduled before `fld [ecx+0B0h]`, retail stores it after `push ecx ; lea ecx,[esp+8]` | tried: seed local then call, range local first, seed wrapped in an inline CRandomSeed object | next: lane gap: scheduling of a local's initial store relative to the outgoing-argument push
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
