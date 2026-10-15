@@ -1,0 +1,44 @@
+# Hand chunk 158 (CShaderRenderManager .. CSplinePosParamData): 35 of 40 byte-exact
+
+## What matched (35)
+- **CShaderRenderManager (labels propagated)**: 0x00A0B710 converts a name to a full wide path and creates a resource through the owner's device (descriptive class; the device is a named local read after the conversion, descriptor bytes cleared then the third set). 0x00C3C3E0 / 0x00C3C6B0 are members of the no-RTTI vtable-0x012B4F74 class (landed ctor 0x00C3C3B0, Close 0x00C3C450): SetDesc copies the 7-word record whose 7th word IS the buffer (+0x28) and allocates on null; Setup validates the kind, calls SetDesc and creates the +0x30 audio buffer (qualified `Close()` on failure).
+- **NShape::CShape**: GetBounds (first point X/Y as named float locals = fld/fst stores; direct copies are integer moves); UpdateDeletePoint (`lea ecx,[esi+8]` = a reference local to the points vector, outer `if (n) {...return true;} return false;`, STLport clear via CopyTrivial).
+- **C3DAnimationBlendState::CSharedData::~CSharedData** (0x00A3D460): no own vtable store = `__declspec(novtable)` derived; counted block `{count, void (C::*)(), C*}` needs a COMPLETE class or VC emits the 16-byte general member-pointer call; every member dtor `__forceinline`, the vector with an STLport `_Destroy(first,last)` helper.
+- **CShoveHaPennyRegionDef::Transfer**: two inline Transfer<float> (landed CActivateQuestDef template).
+- **CSickChildFishingSpot::Main**: landed CHHUndead prelude; explicit IsDone test then rotated `while (!IsDone())`, GSI slot 243 IsFishingSpotEnabled.
+- **STLport vector ctors labelled CSimpleMemoryPool::New<C3DAnimationSequence>** (0x007C2AB0, 0x008F69B0, 0x00AD30C0): the landed 0x009D2AF0 _Vector_base/alloc-proxy model with a 12-byte element (empty default ctor) and `__forceinline` UninitializedFillN. A user memberwise copy ctor keeps immediate zero stores and re-reads the T() words each pass (0x7C2AB0); the implicit copy uses one zero register and hoists them (0x8F69B0); vector(n, val, alloc) is 0xAD30C0.
+- **CSimpleMemoryPool** (Allocate, CreateNewMemoryBlock, SetMemoryPool, FreeAll): one shared local model (PDB CArea/CMemoryBlock; CMemoryBlock : CIVCountedPointeeBase, vtable 0x0129D568). Allocate's retry is a tail call `return Allocate(size)` (jump to the rounding at the top); `grow = Capacity; if (First) grow = Growth;` (the ternary adds a jmp); block ctor body stores in retail order; FreeAll's multi-block part is a `__forceinline` DeleteBlocks() helper (redundant re-test).
+- **CSkeletalMorphs**: TransferBinaryOut (`*(begin()+n)`, entry reference local, counter in the dead arg slot); GetAllMorphsOfType (false exit after `if (first != last) {...}`, the copy as `(first++)->second`).
+- **NUISystem::CSlider ctor**: CMouseCursor base model, members 0x30 below the PDB, init-list zeros.
+- **CSliderAnimator::ExtractParenthesis**: `optimize("s", on)` + `("y", off)` (leave); GetLength as `p == 0 ? 0 : p->len`.
+- **CSoundDef::Transfer / CSoundThemeDef::Transfer**: def module (s + y off); per-type one-arg transfers declared as overloads; zero default lives in the dead context slot.
+- **CSoundManagerLH slot 17**: the 24-byte request filled by six assignments in retail STORE order (b, d, e, c, 4, a).
+- **CSpecialAbilitiesMultiArrowDef / MultiStrikeDef operator=** (slot-19 jmp stubs confirm both labels): arrays as explicit element `for` loops under y off (count homed in the dead `other` slot); MultiStrike ctor: empty body over vector-ctor-iterated CDefString arrays and zeroing vector members.
+- **CEngineLocalDetailGenerator ctor** (label CSpeechAnalyser wrong): the argument member is the only initialiser, constants are body assignments, fade table an element loop.
+- **CSpeechFrame::WriteToFile**: size re-read per pass.
+- **NUISystem::CSpellContainer ctor / CSpellContainerList::GetDataFromDef**: the def read in an inline GetDataFromDef() (a virtual written directly in the ctor is bound statically); the CDefPointer dtor calls the def's inline ReleaseTemporary() with NO null test, DecRef/GetRefCount on the ref-count base at +4 -> retail's `mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; cmp/test ; mov [eax],edx` release.
+- **CSpellContainerList::Initialise**: dead SelectedChild zero store kept, size()/2, loop re-reads size.
+- **CVolumeDerived_00ca7360 ctor** (label CSpellContainerList propagated): CVolume (landed 0x00CA61D0) base, two `__declspec(novtable)` interface bases at +0xe0/+0xe4.
+- **CSplinePosParamData**: GetClosestParameterisedControlPoints(index) (`x > 0 ? x : 0` = setle/dec/and), the float overload at 0x00B214C0, InterpolateTo (conditional flag, CRC default local by reference, by-value array temporary), TransformFromIndex (key named local in the dead slot).
+
+## Parked for Fable 5.1 (5)
+- 00aacfb0 CShaderRenderManager::UpdateFogColour DIFFER(108v108): last vector copy stores z (`mov [esp+8],ecx`) before y (`mov [esp+4],edx`) around the device reload; retail y then z | tried: implicit copy, user init-list copy ctor, owner local, body-assign copy ctor, optimize("s") | next: lane gap: scheduling only
+- 00bb17d0 CShaderRenderManager::SetVSVectorAsColour (C4DVector(const CRGBColour&)) DIFFER(129v115): retail keeps R,G on the FPU (`fxch ; fstp [eax] ; fstp [eax+4]`) and spills only B,A through [esp+8]/[esp+0xc]; ours spills x,y (or all) first | tried: void member with temp, ctor with temp + `*this = t`, named float locals + member stores (101 bytes, stores direct), `*this = C4DVector(r,g,b,a)` | next: a Set(r,g,b,a)-style inline with the B/A arguments forced through memory, or a non-ctor static helper returning the vector by value
+- 00a53440 CSimpleMemoryPool::New<C3DAnimationSequenceData> DIFFER(125v116): the 64-bit size check -- retail `cmp edx,esi ; ja fail ; cmp eax,-1 ; ja fail` has no `jb` between halves, ours adds `jb ok` and a 7-byte loop-align pad | tried: `(unsigned __int64)n*sizeof(T) <= 0xffffffff`, `< 0x100000000ui64` (cmp edx,1), split hi/lo test | next: a different overflow idiom (e.g. an inline helper returning bool from the 64-bit product, or ULARGE_INTEGER-style HighPart/LowPart test)
+- 00c28ae0 CSoundDef::CSoundDef (CStackOwner_00c287e0 ctor) DIFFER(171v158): retail opens the /EHsc frame but stores no EH state and does not home `this`; ours with a throwing Clear() stores states 0/2 and `[esp+8]=this`, with Clear() throw()/__declspec(nothrow) or trivial member dtors the frame disappears | tried: throwing, throw(), nothrow, trivial dtors | next: lane gap: EH frame without state stores (maybe a member whose ctor is an out-of-line throw() call, or a QFE difference)
+- 00544210 CSpellContainerList::InitialiseOffsets DIFFER(119v124): the alpha argument -- retail `fstp [esp+10h] ; mov eax,[esp+10h] ; push eax` (via the dead count slot), ours `push ecx ; fstp [esp]` | tried: ternary conversion, if/else conversion (fixes the two filds), hand-homed slot, /Op (argument matches but `half` is then stored/reloaded) | next: /Op with `half` as an unnamed common subexpression so only the alpha local is homed
+
+## Skipped
+- none
+
+## Label corrections
+- 0x00A0B710 "CShaderRenderManager::UpdateLightGlobals": sits among CRenderManagerCore/CNamedOwner members, descriptive class.
+- 0x00C3C3E0 "SetProjectionTransform" / 0x00C3C6B0 "SetupProjectionWithValidation": members of the no-RTTI vtable-0x012B4F74 class (SetDesc / Setup).
+- 0x00BB17D0 "SetVSVectorAsColour" (3 params) is a one-argument `mov eax,ecx` body: a CRGBColour -> 4-float converter.
+- 0x007C2AB0 / 0x008F69B0 / 0x00AD30C0 "CSimpleMemoryPool::New<C3DAnimationSequence>": STLport vector<12-byte> ctors.
+- 0x00A3D460 "~CSharedData" is C3DAnimationBlendState::CSharedData (vtable 0x0129D1F8 via deleting dtor 0x00A3D440).
+- 0x00C28AE0 "CSoundDef::CSoundDef" is the ctor of the vtable-0x012B4098 class (landed dtor 0x00C287E0).
+- 0x00B59B60 "CSpeechAnalyser::CSpeechAnalyser" is CEngineLocalDetailGenerator's ctor (vtable 0x012A2588); 0x00B59710 is its base ctor (labelled CNavigationLayer).
+- 0x00CA7360 "CSpellContainerList::CSpellContainerList" is the ctor of a CVolume_00ca61d0-derived class (vtables 0x012BF5D8..).
+- 0x00B214C0 "TransformFromPosition" is the float-position overload of CSplinePosParamData::GetClosestParameterisedControlPoints (called from TransformFromPos 0x00B21850).
+- Callees: 0x0075F4E0 "MedianCut::GetNewTreeNode" is the shape points vector's erase-by-pointer; 0x00993EA0/0x00993E90 "WriteCBYTE" are WriteULong/WriteUShort; 0x0046AA63/0x0046AFC6/0x0046B3F4/0x0046B92A/0x0046BE1F "FrameUpdate" and 0x00431102/0x004595A3/0x00431061/0x0043314A "UpdateShadowScene" are def-module CPersistContext transfers; 0x00454886/0x0045EF2D/0x0045BC09 "CActiveFile::operator=" and 0x00432EE9 "CCombatWheel::operator=" are vector operator=; 0x0042D9D0 is CDefString::CDefString; 0x00CA52A0 "OnActivate" is the CVolumeDerived initialiser; 0x0099EAE0 "_Cons_val" is ~CCharString.

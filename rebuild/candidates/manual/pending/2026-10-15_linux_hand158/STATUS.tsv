@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a0b710	RELOCATION_MATCH	124v124	PASS	descriptive class (label propagated); device named local, descriptor bytes cleared then set
+00aacfb0	DIFFER	108v108	-	UpdateFogColour; last vector copy stores z before y (scheduling only)
+00bb17d0	DIFFER	129v115	-	C4DVector(const CRGBColour&); retail keeps R,G on FPU, spills B,A only
+00c3c3e0	RELOCATION_MATCH	98v98	PASS	CVtable_012b4f74::SetDesc (label SetProjectionTransform propagated); record word 6 is the buffer
+00c3c6b0	RELOCATION_MATCH	97v97	PASS	CVtable_012b4f74::Setup (label propagated); qualified Close()
+00760bc0	MATCH	122v122	PASS	NShape::CShape::GetBounds; first point X/Y as float locals
+00762010	RELOCATION_MATCH	116v116	PASS	NShape::CShape::UpdateDeletePoint; reference local to Points, outer if/return false
+00a3d460	RELOCATION_MATCH	129v129	PASS	C3DAnimationBlendState::CSharedData dtor; novtable derived, complete class for member-fn-pointer deleter
+007d0070	RELOCATION_MATCH	125v125	PASS	two Transfer<float> (landed CActivateQuestDef template)
+00ecd530	RELOCATION_MATCH	145v145	PASS	quest entity Main; IsFishingSpotEnabled slot 243
+007c2ab0	RELOCATION_MATCH	115v115	PASS	STLport vector<12-byte>(n) with user copy ctor element (label propagated)
+008f69b0	RELOCATION_MATCH	116v116	PASS	STLport vector<12-byte>(n) with implicit copy (label propagated)
+00a53440	DIFFER	125v116	-	CSimpleMemoryPool::New<C3DAnimationSequenceData>; 64-bit size check jb
+00a5c720	MATCH	101v101	PASS	CSimpleMemoryPool::FreeAll; forceinline DeleteBlocks helper
+00a5c7e0	RELOCATION_MATCH	103v103	PASS	CSimpleMemoryPool::SetMemoryPool; non-owning block ctor body order
+00a5c890	RELOCATION_MATCH	121v121	PASS	CSimpleMemoryPool::CreateNewMemoryBlock; BlockSize member passed to AllocateAligned
+00a5c910	RELOCATION_MATCH	134v134	PASS	CSimpleMemoryPool::Allocate; tail-recursive retry, if-form growth size
+00ad30c0	RELOCATION_MATCH	116v116	PASS	STLport vector<12-byte>(n, val, alloc) (label propagated)
+0081adc0	RELOCATION_MATCH	133v133	PASS	CSkeletalMorphs::TransferBinaryOut; operator[] as *(begin()+n)
+0081ae50	RELOCATION_MATCH	117v117	PASS	CSkeletalMorphs::GetAllMorphsOfType; (first++)->second copy
+0054c050	RELOCATION_MATCH	102v102	PASS	NUISystem::CSlider ctor; members 0x30 below PDB
+0056ead6	RELOCATION_MATCH	114v114	PASS	CSliderAnimator::ExtractParenthesis; optimize s + y off, p==0?0:len
+0046a9ce	RELOCATION_MATCH	149v149	PASS	CSoundDef::Transfer; def module s + y off
+00c28ae0	DIFFER	171v158	-	CStackOwner_00c287e0 ctor (label CSoundDef propagated); EH frame without states
+00a3e4b0	RELOCATION_MATCH	107v107	PASS	CSoundManagerLH slot 17; request filled in retail store order
+0046329e	RELOCATION_MATCH	150v150	PASS	CSoundThemeDef::Transfer; flag order 60,62,61,63
+0045f7c7	RELOCATION_MATCH	111v111	PASS	CSpecialAbilitiesMultiArrowDef::operator=; array for loops, y off
+00457178	RELOCATION_MATCH	112v112	PASS	CSpecialAbilitiesMultiStrikeDef ctor; empty body
+0045f716	RELOCATION_MATCH	147v147	PASS	CSpecialAbilitiesMultiStrikeDef::operator=; array for loops, y off
+00b59b60	RELOCATION_MATCH	127v127	PASS	CEngineLocalDetailGenerator ctor (label CSpeechAnalyser wrong); arg in init list, constants in body
+00a48ac0	RELOCATION_MATCH	129v129	PASS	CSpeechFrame::WriteToFile
+00545720	RELOCATION_MATCH	136v136	PASS	NUISystem::CSpellContainer ctor; inline GetDataFromDef, ReleaseTemporary without null test
+00544210	DIFFER	119v124	-	CSpellContainerList::InitialiseOffsets; float arg via dead slot (/Op lead)
+00544290	RELOCATION_MATCH	120v120	PASS	CSpellContainerList::Initialise
+00544480	RELOCATION_MATCH	145v145	PASS	CSpellContainerList::GetDataFromDef; chained alpha assignment
+00ca7360	RELOCATION_MATCH	103v103	PASS	CVolumeDerived_00ca7360 ctor (label CSpellContainerList propagated); novtable interfaces
+00b21450	RELOCATION_MATCH	97v97	PASS	GetClosestParameterisedControlPoints(index); branchless max
+00b214c0	RELOCATION_MATCH	97v97	PASS	GetClosestParameterisedControlPoints(float pos) (label TransformFromPosition wrong)
+00b217d0	RELOCATION_MATCH	118v118	PASS	CSplinePosParamData::InterpolateTo
+00b218b0	RELOCATION_MATCH	130v130	PASS	CSplinePosParamData::TransformFromIndex

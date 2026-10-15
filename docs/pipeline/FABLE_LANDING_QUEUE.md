@@ -182,6 +182,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand155` | Hand chunk 155 (CQuestManager .. CRenderManagerCore): 29 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand156` | Hand chunk 156 (CRenderManagerCore .. CScriptGameResourceObjectScriptedThing): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand157` | Hand chunk 157 (CScriptGameResourceObjectScriptedThing .. CShaderRenderManager): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand158` | Hand chunk 158 (CShaderRenderManager .. CSplinePosParamData): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -236,7 +237,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **496 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **501 parked rows** for the Fable retry pass.
 
 ### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -790,6 +791,14 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00852220 NCameraModes::CScriptModuleFullTransition::Update DIFFER(133v133): second sum's X term only: retail `fld [esi+4Ch] ; mov eax,[esi+38h] ; fadd [eax+10h]`, ours `mov eax ; fld [eax+10h] ; fadd [esi+4Ch]`; swapping the operands fixes X but flips Y/Z | tried: both operand orders | next: lane gap: scheduling
 - 008531e0 NCameraModes::CScriptModuleOpenGate::Update DIFFER(117v117): only the X term of `Pos += DeltaPos`: retail `fld [edi] ; fadd [esi+68h]`, ours `fld [esi+68h] ; fadd [edi]` | tried: direct call, appearance local, owner local (fixed the ebx shape), operator+ form | next: lane gap: scheduling (same X-term operand-order effect as 0x852220)
 - 00989830 CShaderRenderManager::InitialiseLight DIFFER(98v99): retail loads the attenuation table pointer, computes `(j>>2)<<5` and `j&3` from two `lea [ebx-1]`, adds, THEN loads Attenuation2; ours hoists the Attenuation2 load above the table load and shares one `lea` | tried: pointer + component locals, inline double index (folds to `[edx+eax*4]`), block reference, block member indexing | next: lane gap: scheduling
+
+
+#### `2026-10-15_linux_hand158` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand158/differ/`)
+- 00aacfb0 CShaderRenderManager::UpdateFogColour DIFFER(108v108): last vector copy stores z (`mov [esp+8],ecx`) before y (`mov [esp+4],edx`) around the device reload; retail y then z | tried: implicit copy, user init-list copy ctor, owner local, body-assign copy ctor, optimize("s") | next: lane gap: scheduling only
+- 00bb17d0 CShaderRenderManager::SetVSVectorAsColour (C4DVector(const CRGBColour&)) DIFFER(129v115): retail keeps R,G on the FPU (`fxch ; fstp [eax] ; fstp [eax+4]`) and spills only B,A through [esp+8]/[esp+0xc]; ours spills x,y (or all) first | tried: void member with temp, ctor with temp + `*this = t`, named float locals + member stores (101 bytes, stores direct), `*this = C4DVector(r,g,b,a)` | next: a Set(r,g,b,a)-style inline with the B/A arguments forced through memory, or a non-ctor static helper returning the vector by value
+- 00a53440 CSimpleMemoryPool::New<C3DAnimationSequenceData> DIFFER(125v116): the 64-bit size check -- retail `cmp edx,esi ; ja fail ; cmp eax,-1 ; ja fail` has no `jb` between halves, ours adds `jb ok` and a 7-byte loop-align pad | tried: `(unsigned __int64)n*sizeof(T) <= 0xffffffff`, `< 0x100000000ui64` (cmp edx,1), split hi/lo test | next: a different overflow idiom (e.g. an inline helper returning bool from the 64-bit product, or ULARGE_INTEGER-style HighPart/LowPart test)
+- 00c28ae0 CSoundDef::CSoundDef (CStackOwner_00c287e0 ctor) DIFFER(171v158): retail opens the /EHsc frame but stores no EH state and does not home `this`; ours with a throwing Clear() stores states 0/2 and `[esp+8]=this`, with Clear() throw()/__declspec(nothrow) or trivial member dtors the frame disappears | tried: throwing, throw(), nothrow, trivial dtors | next: lane gap: EH frame without state stores (maybe a member whose ctor is an out-of-line throw() call, or a QFE difference)
+- 00544210 CSpellContainerList::InitialiseOffsets DIFFER(119v124): the alpha argument -- retail `fstp [esp+10h] ; mov eax,[esp+10h] ; push eax` (via the dead count slot), ours `push ecx ; fstp [esp]` | tried: ternary conversion, if/else conversion (fixes the two filds), hand-homed slot, /Op (argument matches but `half` is then stored/reloaded) | next: /Op with `half` as an unnamed common subexpression so only the alpha local is homed
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
