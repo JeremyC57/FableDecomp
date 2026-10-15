@@ -1418,8 +1418,11 @@ HRESULT STDMETHODCALLTYPE Device::Clear(DWORD n, const D3DRECT* rects, DWORD fla
     // clear of the entire attachments (no load of the previous contents into the tiles; the
     // game clears colour, depth and stencil at every frame start) instead of a scissored one it
     // must compare against the framebuffer size or execute as a draw.
+    // (Only when the depth-stencil, if any, is the target's size: with attachments of different
+    // sizes the scissored clear stays.)
     const UINT tw = renderTarget ? renderTarget->level.width : 0, th = renderTarget ? renderTarget->level.height : 0;
-    const bool whole = !(n && rects) && viewport.X == 0 && viewport.Y == 0 && viewport.Width >= tw && viewport.Height >= th;
+    const bool sameSize = !depthStencil || (depthStencil->level.width == tw && depthStencil->level.height == th);
+    const bool whole = sameSize && !(n && rects) && viewport.X == 0 && viewport.Y == 0 && viewport.Width >= tw && viewport.Height >= th;
     if (whole) glDisable(GL_SCISSOR_TEST);
     else glEnable(GL_SCISSOR_TEST);
     if (whole) {
