@@ -228248,6 +228248,230 @@ $catalog = @(
         TestSource = '00/e0/CDarkwoodTrader_CDarkwoodTrader_00e01670_test.cpp'
         PassPattern = '00e01670_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00434f60'
+        Module = 'CDisplayEngine'
+        Source = '00/43/CDisplayEngine_WorldUpdate_00434f60.cpp'
+        TestSource = '00/43/CDisplayEngine_WorldUpdate_00434f60_test.cpp'
+        PassPattern = '00434f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005236f0'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/52/NThingManagerCEntityRuntimePersistence_Clear_005236f0.cpp'
+        TestSource = '00/52/NThingManagerCEntityRuntimePersistence_Clear_005236f0_test.cpp'
+        PassPattern = '005236f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00643eb2'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_DrawBox_00643eb2.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_DrawBox_00643eb2_test.cpp'
+        PassPattern = '00643eb2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00643f13'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_DisplayQuestInfo_00643f13.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_DisplayQuestInfo_00643f13_test.cpp'
+        PassPattern = '00643f13_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006441f6'
+        Module = 'NPlayerGui::CDrawMoney'
+        Source = '00/64/NPlayerGuiCDrawMoney_Draw_006441f6.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawMoney_Draw_006441f6_test.cpp'
+        PassPattern = '006441f6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006442ae'
+        Module = 'NPlayerGui::CDrawCrime'
+        Source = '00/64/NPlayerGuiCDrawCrime_Draw_006442ae.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawCrime_Draw_006442ae_test.cpp'
+        PassPattern = '006442ae_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064483d'
+        Module = 'NPlayerGui::CDrawRenown'
+        Source = '00/64/NPlayerGuiCDrawRenown_Draw_0064483d.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawRenown_Draw_0064483d_test.cpp'
+        PassPattern = '0064483d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00644d91'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_UpdateBar_00644d91.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_UpdateBar_00644d91_test.cpp'
+        PassPattern = '00644d91_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00644efd'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_UpdateMiniGame_00644efd.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_UpdateMiniGame_00644efd_test.cpp'
+        PassPattern = '00644efd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00647357'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_RemoveElement_00647357.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_RemoveElement_00647357_test.cpp'
+        PassPattern = '00647357_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064b668'
+        Module = 'NPlayerGui::CDrawQuickAccessIcons'
+        Source = '00/64/NPlayerGuiCDrawQuickAccessIcons_ClearSoundEffects_0064b668.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuickAccessIcons_ClearSoundEffects_0064b668_test.cpp'
+        PassPattern = '0064b668_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064d62f'
+        Module = 'NPlayerGui::CDrawQuickAccessIcons'
+        Source = '00/64/NPlayerGuiCDrawQuickAccessIcons_ClearPrimitivesIfNecessary_0064d62f.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuickAccessIcons_ClearPrimitivesIfNecessary_0064d62f_test.cpp'
+        PassPattern = '0064d62f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064e1e4'
+        Module = 'NPlayerGui::CDrawHealth'
+        Source = '00/64/NPlayerGuiCDrawHealth_CDrawHealth_0064e1e4.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawHealth_CDrawHealth_0064e1e4_test.cpp'
+        PassPattern = '0064e1e4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064e83f'
+        Module = 'NPlayerGui::CDrawMiniMap'
+        Source = '00/64/NPlayerGuiCDrawMiniMap_CDrawMiniMap_0064e83f.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawMiniMap_CDrawMiniMap_0064e83f_test.cpp'
+        PassPattern = '0064e83f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064f7fc'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_AddBar_0064f7fc.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_AddBar_0064f7fc_test.cpp'
+        PassPattern = '0064f7fc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064f93f'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_AddTimer_0064f93f.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_AddTimer_0064f93f_test.cpp'
+        PassPattern = '0064f93f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064f9a7'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/64/NPlayerGuiCDrawQuestInfo_AddCounter_0064f9a7.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuestInfo_AddCounter_0064f9a7_test.cpp'
+        PassPattern = '0064f9a7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00651904'
+        Module = 'NPlayerGui::CDrawGuildSeal'
+        Source = '00/65/NPlayerGuiCDrawGuildSeal_CDrawGuildSeal_00651904.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawGuildSeal_CDrawGuildSeal_00651904_test.cpp'
+        PassPattern = '00651904_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00651a7e'
+        Module = 'NPlayerGui::CDrawAbilityButtons'
+        Source = '00/65/NPlayerGuiCDrawAbilityButtons_CDrawAbilityButtons_00651a7e.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawAbilityButtons_CDrawAbilityButtons_00651a7e_test.cpp'
+        PassPattern = '00651a7e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006541d1'
+        Module = 'NPlayerGui::CDraw2DText'
+        Source = '00/65/NPlayerGuiCDraw2DText_Draw_006541d1.cpp'
+        TestSource = '00/65/NPlayerGuiCDraw2DText_Draw_006541d1_test.cpp'
+        PassPattern = '006541d1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00654593'
+        Module = 'NPlayerGui::CDrawQuestInfo'
+        Source = '00/65/NPlayerGuiCDrawQuestInfo_DisplayMiniGameInfo_00654593.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawQuestInfo_DisplayMiniGameInfo_00654593_test.cpp'
+        PassPattern = '00654593_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006977f0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_GetViewWidthAtPosition_006977f0.cpp'
+        TestSource = '00/69/CGameCameraManager_GetViewWidthAtPosition_006977f0_test.cpp'
+        PassPattern = '006977f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a6a00'
+        Module = 'CDisplayManagerInit'
+        Source = '00/9a/CDisplayManagerInit_CDisplayManagerInit_009a6a00.cpp'
+        TestSource = '00/9a/CDisplayManagerInit_CDisplayManagerInit_009a6a00_test.cpp'
+        PassPattern = '009a6a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009be490'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_ResizeWindowToBackBufferSize_009be490.cpp'
+        TestSource = '00/9b/CDisplayManager_ResizeWindowToBackBufferSize_009be490_test.cpp'
+        PassPattern = '009be490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009be590'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_GetBestSignedTextureFormat_009be590.cpp'
+        TestSource = '00/9b/CDisplayManager_GetBestSignedTextureFormat_009be590_test.cpp'
+        PassPattern = '009be590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009be6c0'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_GetBestAlphaTextureFormat_009be6c0.cpp'
+        TestSource = '00/9b/CDisplayManager_GetBestAlphaTextureFormat_009be6c0_test.cpp'
+        PassPattern = '009be6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009be980'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_InitVirtualPixels_009be980.cpp'
+        TestSource = '00/9b/CDisplayManager_InitVirtualPixels_009be980_test.cpp'
+        PassPattern = '009be980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bed10'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_GetCurrentWindowedSettings_009bed10.cpp'
+        TestSource = '00/9b/CDisplayManager_GetCurrentWindowedSettings_009bed10_test.cpp'
+        PassPattern = '009bed10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bf2d0'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_FlipToGDISurface_009bf2d0.cpp'
+        TestSource = '00/9b/CDisplayManager_FlipToGDISurface_009bf2d0_test.cpp'
+        PassPattern = '009bf2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bfe70'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_ChangePresentationInterval_009bfe70.cpp'
+        TestSource = '00/9b/CDisplayManager_ChangePresentationInterval_009bfe70_test.cpp'
+        PassPattern = '009bfe70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c0020'
+        Module = 'CDisplayManager'
+        Source = '00/9c/CDisplayManager_SetExclusiveMode_009c0020.cpp'
+        TestSource = '00/9c/CDisplayManager_SetExclusiveMode_009c0020_test.cpp'
+        PassPattern = '009c0020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c689b0'
+        Module = 'CSkillTable_00c67470'
+        Source = '00/c6/CSkillTable00c67470_SetSkillPropertiesEx_00c689b0.cpp'
+        TestSource = '00/c6/CSkillTable00c67470_SetSkillPropertiesEx_00c689b0_test.cpp'
+        PassPattern = '00c689b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

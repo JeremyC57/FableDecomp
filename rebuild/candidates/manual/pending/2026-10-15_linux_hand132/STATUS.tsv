@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0099abf0	DIFFER	142v159	-	lane drops the dead LARGE_INTEGER high-half store; 12-byte frame shrinks to 4
+00434c00	DIFFER	142v144	-	colour low-half copy through ebx after the fade-time stores (scheduling/regs)
+00434f60	RELOCATION_MATCH	104v104	PASS	--count==0 inside >0; empty L"" assigned to the two progress strings
+006977f0	RELOCATION_MATCH	106v106	PASS	really CGameCameraManager::GetViewWidthAtPosition (catalog label propagated); (fov*0.5f)*(double)2pi
+009be490	RELOCATION_MATCH	148v148	PASS	GetSystemMetrics in ebp; AttachedToExternalWindow at system manager +0xec
+009be590	RELOCATION_MATCH	126v126	PASS	indexed for loop over the format table
+009be6c0	RELOCATION_MATCH	140v140	PASS	indexed for loop (cursor strength-reduced to &BitDepth)
+009be980	RELOCATION_MATCH	130v130	PASS	statement-by-statement doubles + floor thunk
+009bed10	RELOCATION_MATCH	103v103	PASS	COM GetAdapterDisplayMode + GetWindowRect import
+009bee40	DIFFER	101v101	-	register/scheduling of the extents store and lea registers
+009bf2d0	RELOCATION_MATCH	128v128	PASS	while loop inside the exclusive test
+009bfe70	RELOCATION_MATCH	160v160	PASS	inline memberwise copy ctor + interval operator==
+009c0020	RELOCATION_MATCH	146v146	PASS	inline memberwise copy ctor; return 2 when unchanged
+009a6a00	RELOCATION_MATCH	125v125	PASS	user memberwise copy ctor
+0055a510	DIFFER	157v157	-	frame layout: retail gives the two GetUIScale temporaries separate slots
+006541d1	RELOCATION_MATCH	135v135	PASS	count local before the handle pointer local
+00651a7e	RELOCATION_MATCH	134v134	PASS	forceinline handle ctor + CIVCountedPointer member object
+006441f6	RELOCATION_MATCH	109v109	PASS	really CDrawMoney::Draw (PMoney +0x2cc); unsigned char alpha parameter
+006442ae	RELOCATION_MATCH	109v109	PASS	PCrime +0x2ec; unsigned char alpha parameter
+00651904	RELOCATION_MATCH	104v104	PASS	initialiser list in declaration order; ebx shared zero
+00c689b0	RELOCATION_MATCH	146v146	PASS	skill table (catalog label propagated); nested if(result>=0)
+0064e1e4	RELOCATION_MATCH	107v107	PASS	CDrawStamina-shaped ctor
+0064e019	DIFFER	135v136	-	register assignment esi/ebp/edi vs ebp/edi/esi
+0064e83f	RELOCATION_MATCH	157v157	PASS	local model (engine/CDrawMiniMap.h is the PDB layout, does not fit)
+005236f0	RELOCATION_MATCH	158v158	PASS	really NThingManager::CEntityRuntimePersistence::Clear (label propagated)
+00643eb2	RELOCATION_MATCH	97v97	PASS	forceinline C2DVector/C2DBoxF copy ctors
+00643f13	RELOCATION_MATCH	102v102	PASS	frame-rate long local homed in the dead bool slot
+00644d91	RELOCATION_MATCH	103v103	PASS	ChangeBarColour shape + >=0.0f limits
+00644efd	RELOCATION_MATCH	136v136	PASS	Dinkumware min through const refs; size()==1
+00647357	RELOCATION_MATCH	98v98	PASS	list pointer local + break after erase + for_each Clear
+0064a3ed	DIFFER	99v99	-	register assignment only (ebx/edi/esi)
+0064f659	DIFFER	131v131	-	lea ecx,[esi+50h] scheduled before the zero stores (24i lane gap)
+0064f7fc	RELOCATION_MATCH	137v137	PASS	sprite lookups in locals before new
+0064f93f	RELOCATION_MATCH	104v104	PASS	really AddTimer (creates CQuestInfoElementTimer); Leaf AddTimer
+0064f9a7	RELOCATION_MATCH	104v104	PASS	counted-pointer converting copy in the argument area
+00654593	RELOCATION_MATCH	145v145	PASS	unsigned index loop, walk does not stop
+0064b668	RELOCATION_MATCH	114v114	PASS	>0 unsigned; converted CThing* temporary; split HasInterface + returning lookup
+0064d62f	RELOCATION_MATCH	121v121	PASS	forceinline handle Clear with local-pointer release
+00652f0a	DIFFER	154v154	-	push 0Dh scheduled before the EffectPositions zero stores
+0064483d	RELOCATION_MATCH	103v103	PASS	StatUpdateGraphics[4]; forced open
