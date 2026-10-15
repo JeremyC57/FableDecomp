@@ -3,6 +3,8 @@
 //   compiler swaps them (esi <-> edi); every instruction and offset otherwise identical. Tried: GetTC returning a null-
 //   default pointer (94v98, flags word in edx), this out-parameter form with the local zeroed before the lookup (98v98,
 //   best), a pointer-returning wrapper over it (94v98).
+// Fable retry (2026-10-15): a reference local over the parameter (the 0x008DBA90 form) still grades 98v98 with esi/edi swapped; a named
+//   `CThing* thing` local for the lookup drops to 94v98. The swap is a register-colouring gap in this standalone body.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072ABD0, length 98 bytes, `ret` with the pointer in ecx.
 // Identity: Ego_r.pdb has `?FadeOrKillEffect@CTCSpecialAbilities@@SIXAAV?$CIntelligentPointer@VCThing@@@@@Z` (a static
 //   __fastcall taking the effect pointer by reference); this body is called by CTCDivineWrath::FinishMove (0x0078F785)
