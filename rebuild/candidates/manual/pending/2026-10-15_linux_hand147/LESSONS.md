@@ -1,0 +1,11 @@
+# Chunk 147 lessons (for GOTCHAS)
+- The inline CAnimFilterOfGroup ctor in creature-mode ctors must take its CRC arguments from the CCharString `GetPString()` / `GetLength()` ternary accessors (as landed at 0x0073E8F0). The merged `if (!p) {len = 0; data = "";} else {...}` form only matches when the next statement uses a parameter register; with constant stores or calls after it VC picks the other register assignment. The accessor form matched all 11 mode ctors here (both retail register patterns).
+- A constructor whose base-initialiser arguments are evaluated BEFORE the first base call (data in the dead argument slot, sizes in ebx/ebp) passes them to ONE inline `__declspec(novtable)` intermediate base ctor `(data, size, sizeCopy)`; listing the two bases directly evaluates the second base's arguments after the first base call (0x00995EE0).
+- In-class initialisers of a ctor: argument-valued members are stored before the vtable store, zero-valued ones (one shared zero register) after it; body assignments schedule differently (0x00A65930).
+- A byte store can alias globals: a value retail computes from globals BEFORE a `bool` member store and recomputes after it is a local assigned before the store (0x00A65830).
+- An in-class inline member called twice in one body is inlined at the first call site and called out of line at the second (0x00A659C0 AllocateArea: exactly retail's split).
+- `!(~x & 0x1f)` gives `not eax ; test al,1Fh`; `(x & 0x1f) == 0x1f` gives `and ; cmp al`.
+- A CCountedPointer passed by value releases in its destructor through a local block copy (`dec [edi] ; jne`), the member operator= release re-reads the member (`dec [eax] ; mov eax,[m] ; cmp [eax],0`).
+- `#pragma pack(1)` is the real layout of NCreatureMode::CModeOutOfActionBase (CIntelligentPointer at +0x6d).
+- STLport `vector::resize(n)` called with the default `const T& = T()` puts the zero fill byte in a dead argument slot.
+- New lane gaps seen: register-save placement (ours defers `push ebx ; push esi` past an early-out test, 0x006178F0); the intrusive release `mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx` (0x0053D4B0, same shape as the asm-baked 0x0041AB00 / 0x0055AF60 / 0x00666D10).

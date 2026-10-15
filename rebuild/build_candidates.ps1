@@ -231704,6 +231704,244 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c3f490_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ae0e0'
+        Module = 'SHandleAndTextLists'
+        Source = '00/4a/SHandleAndTextLists_SHandleAndTextLists_004ae0e0.cpp'
+        TestSource = '00/4a/SHandleAndTextLists_SHandleAndTextLists_004ae0e0_test.cpp'
+        PassPattern = '004ae0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053dfe0'
+        Module = 'NUISystem::CMenuEntry'
+        Source = '00/53/NUISystemCMenuEntry_CMenuEntry_0053dfe0.cpp'
+        TestSource = '00/53/NUISystemCMenuEntry_CMenuEntry_0053dfe0_test.cpp'
+        PassPattern = '0053dfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056ac10'
+        Module = 'CTCBoastUI'
+        Source = '00/56/CTCBoastUI_CTCBoastUI_0056ac10.cpp'
+        TestSource = '00/56/CTCBoastUI_CTCBoastUI_0056ac10_test.cpp'
+        PassPattern = '0056ac10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073ac50'
+        Module = 'CTCCreatureModeManager::CModeBase'
+        Source = '00/73/CTCCreatureModeManagerCModeBase_FrameUpdate_0073ac50.cpp'
+        TestSource = '00/73/CTCCreatureModeManagerCModeBase_FrameUpdate_0073ac50_test.cpp'
+        PassPattern = '0073ac50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073eac0'
+        Module = 'CModeBase'
+        Source = '00/73/CModeBase_CModeBase_0073eac0.cpp'
+        TestSource = '00/73/CModeBase_CModeBase_0073eac0_test.cpp'
+        PassPattern = '0073eac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073fdb0'
+        Module = 'NCreatureMode::CModeCrouch'
+        Source = '00/73/NCreatureModeCModeCrouch_CModeCrouch_0073fdb0.cpp'
+        TestSource = '00/73/NCreatureModeCModeCrouch_CModeCrouch_0073fdb0_test.cpp'
+        PassPattern = '0073fdb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740160'
+        Module = 'NCreatureMode::CModeStunned'
+        Source = '00/74/NCreatureModeCModeStunned_CModeStunned_00740160.cpp'
+        TestSource = '00/74/NCreatureModeCModeStunned_CModeStunned_00740160_test.cpp'
+        PassPattern = '00740160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740250'
+        Module = 'NCreatureMode::CModeDazed'
+        Source = '00/74/NCreatureModeCModeDazed_CModeDazed_00740250.cpp'
+        TestSource = '00/74/NCreatureModeCModeDazed_CModeDazed_00740250_test.cpp'
+        PassPattern = '00740250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741730'
+        Module = 'NCreatureMode::CModeChargeForcePush'
+        Source = '00/74/NCreatureModeCModeChargeForcePush_CModeChargeForcePush_00741730.cpp'
+        TestSource = '00/74/NCreatureModeCModeChargeForcePush_CModeChargeForcePush_00741730_test.cpp'
+        PassPattern = '00741730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ac3f0'
+        Module = 'NCreatureMode::CModeScreamerSuperAttack'
+        Source = '00/8a/NCreatureModeCModeScreamerSuperAttack_CModeScreamerSuperAttack_008ac3f0.cpp'
+        TestSource = '00/8a/NCreatureModeCModeScreamerSuperAttack_CModeScreamerSuperAttack_008ac3f0_test.cpp'
+        PassPattern = '008ac3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008bd7f0'
+        Module = 'NCreatureMode::CModeChargeForcePush'
+        Source = '00/8b/NCreatureModeCModeChargeForcePush_CModeChargeForcePush_008bd7f0.cpp'
+        TestSource = '00/8b/NCreatureModeCModeChargeForcePush_CModeChargeForcePush_008bd7f0_test.cpp'
+        PassPattern = '008bd7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c3700'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportIntangible'
+        Source = '00/8c/NCreatureModeCModeBriarRoseTeleportIntangible_CModeBriarRoseTeleportIntangible_008c3700.cpp'
+        TestSource = '00/8c/NCreatureModeCModeBriarRoseTeleportIntangible_CModeBriarRoseTeleportIntangible_008c3700_test.cpp'
+        PassPattern = '008c3700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d7d60'
+        Module = 'NCreatureMode::CModeCreatureIsProjectile'
+        Source = '00/8d/NCreatureModeCModeCreatureIsProjectile_CModeCreatureIsProjectile_008d7d60.cpp'
+        TestSource = '00/8d/NCreatureModeCModeCreatureIsProjectile_CModeCreatureIsProjectile_008d7d60_test.cpp'
+        PassPattern = '008d7d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d7de0'
+        Module = 'NCreatureMode::CModeRockTrollVulnerable'
+        Source = '00/8d/NCreatureModeCModeRockTrollVulnerable_CModeRockTrollVulnerable_008d7de0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeRockTrollVulnerable_CModeRockTrollVulnerable_008d7de0_test.cpp'
+        PassPattern = '008d7de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d82b0'
+        Module = 'NCreatureMode::CModeScorpionKingExhausted'
+        Source = '00/8d/NCreatureModeCModeScorpionKingExhausted_CModeScorpionKingExhausted_008d82b0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeScorpionKingExhausted_CModeScorpionKingExhausted_008d82b0_test.cpp'
+        PassPattern = '008d82b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d9220'
+        Module = 'NCreatureMode::CModeConversation'
+        Source = '00/8d/NCreatureModeCModeConversation_CModeConversation_008d9220.cpp'
+        TestSource = '00/8d/NCreatureModeCModeConversation_CModeConversation_008d9220_test.cpp'
+        PassPattern = '008d9220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d92c0'
+        Module = 'NCreatureMode::CModeConversation'
+        Source = '00/8d/NCreatureModeCModeConversation_CModeConversation_008d92c0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeConversation_CModeConversation_008d92c0_test.cpp'
+        PassPattern = '008d92c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e7850'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportInvulnerable'
+        Source = '00/8e/NCreatureModeCModeBriarRoseTeleportInvulnerable_OnDeactivate_008e7850.cpp'
+        TestSource = '00/8e/NCreatureModeCModeBriarRoseTeleportInvulnerable_OnDeactivate_008e7850_test.cpp'
+        PassPattern = '008e7850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090e090'
+        Module = 'CMessageEventManager'
+        Source = '00/90/CMessageEventManager_FindMostRecentMessageCFilterBind3CMessageEventFi_0090e090.cpp'
+        TestSource = '00/90/CMessageEventManager_FindMostRecentMessageCFilterBind3CMessageEventFi_0090e090_test.cpp'
+        PassPattern = '0090e090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00994960'
+        Module = 'CMemoryDataInputStream'
+        Source = '00/99/CMemoryDataInputStream_ReadNullTerminatedWString_00994960.cpp'
+        TestSource = '00/99/CMemoryDataInputStream_ReadNullTerminatedWString_00994960_test.cpp'
+        PassPattern = '00994960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995ee0'
+        Module = 'CMemoryDataInputStream'
+        Source = '00/99/CMemoryDataInputStream_CMemoryDataInputStream_00995ee0.cpp'
+        TestSource = '00/99/CMemoryDataInputStream_CMemoryDataInputStream_00995ee0_test.cpp'
+        PassPattern = '00995ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00996cc0'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/99/CMemoryDataOutputStream_Write_00996cc0.cpp'
+        TestSource = '00/99/CMemoryDataOutputStream_Write_00996cc0_test.cpp'
+        PassPattern = '00996cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9420'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_OpenFromFile_009e9420.cpp'
+        TestSource = '00/9e/CMemoryFile_OpenFromFile_009e9420_test.cpp'
+        PassPattern = '009e9420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0a150'
+        Module = 'CMeshBankManager'
+        Source = '00/a0/CMeshBankManager_CMeshBankManager_00a0a150.cpp'
+        TestSource = '00/a0/CMeshBankManager_CMeshBankManager_00a0a150_test.cpp'
+        PassPattern = '00a0a150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24050'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_SetAnimationMemoryPool_00a24050.cpp'
+        TestSource = '00/a2/CMeshDataBank_SetAnimationMemoryPool_00a24050_test.cpp'
+        PassPattern = '00a24050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24150'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_SetMeshDataMemoryPool_00a24150.cpp'
+        TestSource = '00/a2/CMeshDataBank_SetMeshDataMemoryPool_00a24150_test.cpp'
+        PassPattern = '00a24150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24330'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_NotifyEntryRemoved_00a24330.cpp'
+        TestSource = '00/a2/CMeshDataBank_NotifyEntryRemoved_00a24330_test.cpp'
+        PassPattern = '00a24330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62050'
+        Module = 'CShaderDataBank'
+        Source = '00/a6/CShaderDataBank_CloseShaders_00a62050.cpp'
+        TestSource = '00/a6/CShaderDataBank_CloseShaders_00a62050_test.cpp'
+        PassPattern = '00a62050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64e70'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_InsertIntoTree_00a64e70.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_InsertIntoTree_00a64e70_test.cpp'
+        PassPattern = '00a64e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65060'
+        Module = 'CMemoryAreaChunk'
+        Source = '00/a6/CMemoryAreaChunk_RemoveAreaFromFreeList_00a65060.cpp'
+        TestSource = '00/a6/CMemoryAreaChunk_RemoveAreaFromFreeList_00a65060_test.cpp'
+        PassPattern = '00a65060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65260'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_GetAllAllocatedAreas_00a65260.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_GetAllAllocatedAreas_00a65260_test.cpp'
+        PassPattern = '00a65260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65410'
+        Module = 'CMemoryAreaChunk'
+        Source = '00/a6/CMemoryAreaChunk_Init_00a65410.cpp'
+        TestSource = '00/a6/CMemoryAreaChunk_Init_00a65410_test.cpp'
+        PassPattern = '00a65410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65830'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_NewChunkDemandPaged_00a65830.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_NewChunkDemandPaged_00a65830_test.cpp'
+        PassPattern = '00a65830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a65930'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_CMemoryAllocatorVariableSize_00a65930.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_CMemoryAllocatorVariableSize_00a65930_test.cpp'
+        PassPattern = '00a65930_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

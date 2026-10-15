@@ -171,6 +171,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand144` | Hand chunk 144 (CInputProcessControlCreatureActivateZTarget .. CLODDynamicBuildInfo): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand145` | Hand chunk 145 (CLandscapeBackgroundPatch .. CMainGameComponent): 32 of 40 byte-exact | - | 7 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand146` | Hand chunk 146 (CMainGameComponent .. CMemoryAllocatorVariableSize): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand147` | Hand chunk 147 (CMemoryAllocatorVariableSize .. CModeDazed): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -223,7 +224,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **410 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **416 parked rows** for the Fable retry pass.
 
 ### Skipped rows (9 open of 31 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -658,6 +659,15 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 006f9430 CManager::EventExists DIFFER(146v146): ours `mov eax,ecx ; lea edi,[eax+edx*8]` v retail `lea edi,[ecx+edx*8]` (alignment filler then differs) | tried: end() in the condition, hoisted end after/before begin, by-value key + unsigned conversion (fixed the key) | next: index loop over m_count or `&m_pData[m_count]`
 - 006f95a0 CManager::GetExtraEventsBetweenTimes DIFFER(138v151): retail keeps the collector's two time words in a frame local reused as the for_each hidden result and tests the list pointer in place (`add eax,4 ; je`); ours forwards the arguments into the argument area and uses `lea ecx,[eax+4]` | tried: temporary collector, named collector, time-range sub-object + ternary accessor, `collector = for_each(...)` | next: time range as a by-value struct parameter, or a reference-returning list accessor
 - 0041d03c CManager::RenderErrorMessage DIFFER(108v108): `fld [ebp-4] ; push ecx` v retail `push ecx ; fld [ebp-4]` for UpdateErrorMessage's float argument | tried: direct time store, double local | next: lane gap: scheduling
+
+
+#### `2026-10-15_linux_hand147` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand147/differ/`)
+- 00a659c0 CMemoryAllocatorVariableSize::Allocate DIFFER(140v140): retail reloads Alignment (+0xc14) into edx before AlignmentShift (+0xc18) into ecx after the global stores; ours loads ecx first | tried: inline AllocateArea (in-class: VC inlines the first call site only, exactly retail's split), local alignment, operand orders, SetCurrentAlignment helper | next: lane gap: scheduling-only
+- 009e90c0 CMemoryFile::SetPosition DIFFER(112v118): retail `sub esp,8` (message word + separate thrown-int word) and `mov edx,[ecx+0Ch] ; cmp eax,edx`; ours `push ecx`, throws from the dead argument slot, compares against memory | tried: `throw 11`, named long, CFileError struct, error code declared first, inline thrower | next: a thrown class object with a user copy ctor / the message declared at function scope
+- 009e99c0 CMemoryFile::CMemoryFile(const CMemoryFile&) DIFFER(114v112): retail puts the __copy result temporary in the same dead `other` slot as the empty iterator tag; ours gives it its own frame word (push ecx/pop ecx, all offsets +4) | tried: inline copy(), STLport __iterator_category/__distance_type helpers, direct __copy | next: lane gap: two call temporaries in one dead slot (chunk 132)
+- 0053d4b0 NUISystem::CMenuEntry::Update DIFFER(135v139): frame swap (retail counted-pointer temp at [esp+8], wasVisible at [esp+0Fh]) and the inline release `mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx` vs ours `dec [eax+4]` | tried: `--count`, pointer-to-count, split statements, volatile count, local declaration order | next: the same intrusive release in the asm-baked 0x0041AB00 / 0x0055AF60 / 0x00666D10 -- solve the shape once for all four
+- 006178f0 CMessageEventManager::FindAllMessages<CFilter_Bind2<IsOfType,OccuredBetween>> DIFFER(126v127): `push ebx ; push esi` deferred past the empty-list test in ours (retail saves all four registers at entry); all other instructions match | tried: pointer loop, iterator struct, optimize("s") | next: lane gap: register-save placement (shrink-wrapping)
+- 006af3f0 CMessageEventFilter_IsMyDeadLeader::operator() DIFFER(160v160): retail stores the second GetPItem() into the dead argument slot followed by a never-taken `xor al,al ; jne`; zeroes the CDefPointer slot after the GetDef pushes; release in ecx | tried: plain flow, volatile by-value helper, __forceinline release + member GetDefinitionManager | next: find the compiled-out inline (an ASSERT-style helper taking the thing by value) and a CDefPointer whose ctor VC schedules after the pushes
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

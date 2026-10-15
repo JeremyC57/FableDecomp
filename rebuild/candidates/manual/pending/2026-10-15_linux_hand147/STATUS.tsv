@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a64e70	RELOCATION_MATCH	122v122	PASS	rb-tree insert
+00a65260	RELOCATION_MATCH	108v108	PASS	GetDataStart via globals
+00a65830	RELOCATION_MATCH	108v108	PASS	area size local before the aliasing byte store
+00a65930	RELOCATION_MATCH	138v138	PASS	zero initialisers land after the vtable store
+00a659c0	DIFFER	140v140	-	scheduling: c14/c18 reload order
+00a65060	RELOCATION_MATCH	138v138	PASS	PDB 52-byte chunk layout
+00a65410	RELOCATION_MATCH	110v110	PASS	chunk + area init
+00994960	RELOCATION_MATCH	136v136	PASS	named position local
+00995ee0	RELOCATION_MATCH	110v110	PASS	novtable intermediate base (data,size,sizeCopy) evaluates args before the first base call
+00996cc0	RELOCATION_MATCH	129v129	PASS	resize with char() fill in dead slot
+009e90c0	DIFFER	112v118	-	frame: two words + Length in edx
+009e9420	RELOCATION_MATCH	120v120	PASS	CWideString temp in dead slot
+009e99c0	DIFFER	114v112	-	frame: __copy result shares tag slot
+0053d4b0	DIFFER	135v139	-	frame swap + intrusive release shape
+0053dfe0	RELOCATION_MATCH	103v103	PASS	CClickable base, 3 vtables, init-list zeros
+0056ac10	RELOCATION_MATCH	100v100	PASS	label: CTCBoastUI ctor (vtable 0x124DCFC), inline STLport rb-tree header
+00a0a150	RELOCATION_MATCH	112v112	PASS	counted-pointer null assign per node
+00a24050	RELOCATION_MATCH	129v129	PASS	by-value CCountedPointer param
+00a24150	RELOCATION_MATCH	129v129	PASS	label: SetMeshDataMemoryPool
+00a24330	RELOCATION_MATCH	122v122	PASS	protected virtual; *(begin()+n)
+00a62050	RELOCATION_MATCH	122v122	PASS	label: CShaderDataBank::CloseShaders
+006af3f0	DIFFER	160v160	-	compiled-out check store + def slot zero order
+006178f0	DIFFER	126v127	-	register-save placement
+0090e090	RELOCATION_MATCH	140v140	PASS	inline ThingSearchFilter; !(~flags & 0x1f)
+004ae0e0	RELOCATION_MATCH	99v99	PASS	label: stack-record dtor (two STLport vectors), not CMiniMapDisplay::ClearPrimitiveHandles
+0073ac50	RELOCATION_MATCH	98v98	PASS	HasTC returns masked word; T* p=0; if(HasTC) p=GetTC
+0073eac0	RELOCATION_MATCH	124v124	PASS	CRC args via GetPString/GetLength accessors
+008c3700	RELOCATION_MATCH	144v144	PASS	CIntelligentPointer member
+008ac3f0	RELOCATION_MATCH	158v158	PASS	label: CModeScreamerSuperAttack
+008e7850	RELOCATION_MATCH	105v105	PASS	IS_THING_ALIVE idiom
+00741730	RELOCATION_MATCH	120v120	PASS	CRC args via accessors
+008bd7f0	RELOCATION_MATCH	123v123	PASS	flag from argument
+008d9220	RELOCATION_MATCH	149v149	PASS	out-param GetInterface on ParentThing
+008d92c0	RELOCATION_MATCH	137v137	PASS	attitude argument twin
+008d7d60	RELOCATION_MATCH	124v124	PASS	owner kept in ebx
+008d7de0	RELOCATION_MATCH	121v121	PASS	label: CModeRockTrollVulnerable
+008d82b0	RELOCATION_MATCH	121v121	PASS	label: CModeScorpionKingExhausted
+0073fdb0	RELOCATION_MATCH	136v136	PASS	CAnimFilterOf2Groups inline ctor, implicit temporaries
+00740160	RELOCATION_MATCH	152v152	PASS	label: CModeStunned; pack(1) out-of-action base
+00740250	RELOCATION_MATCH	152v152	PASS	pack(1) CModeOutOfActionBase
