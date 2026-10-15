@@ -139,6 +139,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand112` | Hand chunk 112 (CThingPhysical .. CThingTrackNode): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand113` | Hand chunk 113 (CThingTrackNode .. CUIMiniMapMarker): 38 of 40 byte-exact | - | 1 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand114` | Hand chunk 114 (CUIMiniMapMarker .. CV_FisticuffsClubScript): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand116` | Hand chunk 116 (CViewport .. CWADFile): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -187,7 +188,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **195 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **198 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 27 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -311,6 +312,12 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00406d90 CUserProfileManager::ClampResolution DIFFER(89v84): retail width walk is un-rotated (`cmp [eax],esi ; jle ; dec edx ; sub eax,10h ; jmp back`, args in edi/esi) where the lane rotates it with a lookahead load (`mov edi,[ecx-10h] ; ... ; jg`) and allocates esi/edx | tried: while, for(;;)+break, pointer walk, optimize("s"), inline and __forceinline helper holding the walk | next: lane gap: loop rotation (GOTCHAS 23f)
 - 00be24d0 CVO_OracleMarker::Init DIFFER(36v54): retail keeps a 0x10-byte frame temporary (`sub esp,10h`) whose four zero stores survive after the member copy through `mov esi,eax` | tried: brace/memberwise/memset local, (x,y,z,w) ctor temporary, implicit/user copy ctor, user operator=, long[4] array member, const-ref inline setter with temporary or named local, float fields | next: lane gap: dead stores of an address-taken 16-byte temporary (or an unknown source form; class unidentified, no references)
 - 00be2540 CVO_OracleMarker::Init DIFFER(38v56): constructor twin of 00be24d0 (`mov eax,ecx`, returns this), same frame-temporary shape | tried: as 00be24d0 | next: same as 00be24d0
+
+
+#### `2026-10-15_linux_hand116` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand116/differ/`)
+- 00669390 CViewport::ClearHandle DIFFER(58v58): retail `mov ecx,eax ; mov eax,[ecx] ; push esi ; call [eax+0Ch]`, ours `mov ecx,eax ; mov edx,[eax] ; push esi ; call [edx+0Ch]` (vtable register of the slot-3 notify only) | tried: member-only form, handle-pointer local, object local, object + handle locals (best) | next: route the notify through an inline helper so the vtable is read from ecx, else lane gap: register choice
+- 00a69ad0 CFrameDataHandle::Clear (catalog CViewport::ClearHandle) DIFFER(70v73): retail re-reads the member for the second null test (`mov eax,[esi+4] ; test eax,eax ; je ; cmp [eax+4],2`) while the Close call reuses the first load in ecx; ours tests the cached ecx | tried: `m_p && count == 2`, inline bool predicate, ternary GetRefCount accessor, object local + accessor (best) | next: a volatile-cast read for the second test only, else lane gap: QFE CSE of a member re-read
+- 007fe670 CVillageDef::Validate DIFFER(63v63): retail `lea ecx,[esp+10h] ; push ecx ; mov ecx,[esi+28h]`, ours `mov ecx,[esi+28h] ; lea edx,[esp+10h] ; push edx` (begin load scheduled before the value address) | tried: one-expression find, named `last` local (best), raw member operands, optimize("s") | next: begin() returning an iterator object, else lane gap: fastcall register scheduling
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

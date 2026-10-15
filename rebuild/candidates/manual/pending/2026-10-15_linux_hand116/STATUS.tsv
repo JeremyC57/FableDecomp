@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00669390	DIFFER	58v58	-	parked: vtable register of the slot-3 call (eax vs edx) after 4 forms
+00a69ad0	DIFFER	70v73	-	parked: retail re-reads the handle member for the second null test; DDK tests the cached register
+007fe670	DIFFER	63v63	-	parked: begin() load scheduled before the value lea (ecx/edx swap), SGI find front end otherwise exact
+0065ef94	RELOCATION_MATCH	64v64	PASS	optimize("s")
+007b85f0	RELOCATION_MATCH	78v78	PASS	seat-table SetOccupant; STLport operator[] via begin()+n; label propagated
+0065ee66	RELOCATION_MATCH	54v54	PASS	optimize("s")
+00860a00	RELOCATION_MATCH	75v75	PASS	CVillageTaskPatrol::AssignCreatureToTask
+00860e70	RELOCATION_MATCH	88v88	PASS	CVillageTaskSecuritySweep::RemoveThingFromTask
+00ef4950	RELOCATION_MATCH	78v78	PASS	CVillager::OnInterrupted
+0045e620	RELOCATION_MATCH	37v37	PASS	optimize("s"), explicit memberwise copy
+00851700	RELOCATION_MATCH	32v32	PASS	CVirtualKeyboard::CVirtualKeyboard
+00a674b0	MATCH	46v46	PASS	value-ctor return
+00a674e0	RELOCATION_MATCH	77v77	PASS	multiply order written Width*Height*Depth
+00a67730	MATCH	49v49	PASS	CVolume::operator=
+00c336b0	MATCH	52v52	PASS	SetTarget on a render-target owner; CVolume label propagated
+00c57010	RELOCATION_MATCH	36v36	PASS	COM release + CoUninitialize (no-RTTI class)
+00ca8660	MATCH	75v75	PASS	COM ReleaseBuffers; CVolume label propagated
+00a673e0	RELOCATION_MATCH	40v40	PASS	CVolume copy ctor (CVolumeTexture label propagated)
+00a67dd0	RELOCATION_MATCH	58v58	PASS	CVolumeTexture::CVolumeTexture
+00a68060	RELOCATION_MATCH	85v85	PASS	CVolumeTexture::Uninitialise
+00a68250	RELOCATION_MATCH	80v80	PASS	device local, format local, cond ? true : false
+00a682a0	RELOCATION_MATCH	52v52	PASS	CVolumeTexture::operator=
+00f0d470	RELOCATION_MATCH	31v31	PASS	script-query record ctor; CVsyncCallbackTimer label propagated
+00656795	RELOCATION_MATCH	35v35	PASS	CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo
+006815f0	MATCH	22v22	PASS	CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo
+009f7020	RELOCATION_MATCH	46v46	PASS	CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo
+00af07a0	MATCH	96v96	PASS	CRightHandedSet::SetDefault (void, not a ctor)
+00c39f10	RELOCATION_MATCH	25v25	PASS	memset of the 3-word slot array (lea edx) + body clear; label propagated
+00c3a110	RELOCATION_MATCH	25v25	PASS	twin of 00c39f10 (memset form)
+00c3a310	RELOCATION_MATCH	28v28	PASS	4-word memset twin
+00c3b930	RELOCATION_MATCH	39v39	PASS	CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo
+00c3c8a0	RELOCATION_MATCH	27v27	PASS	CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo
+00c90f10	RELOCATION_MATCH	51v51	PASS	Init() not a ctor; memset(this) keeps the zero register private
+00cb12e0	MATCH	28v28	PASS	CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo
+00748530	RELOCATION_MATCH	50v50	PASS	intelligent-pointer record ctor; CWADFile label propagated
+00a39b40	RELOCATION_MATCH	35v35	PASS	CWADFile::CWADFile
+00a39b70	RELOCATION_MATCH	42v42	PASS	CWADFile::CWADFile
+00a39bb0	RELOCATION_MATCH	43v43	PASS	CWADFile::CWADFile::Read
+00a39c40	RELOCATION_MATCH	45v45	PASS	CWADFile::CWADFile::GetPathname
+00a39c80	RELOCATION_MATCH	61v61	PASS	CWADFile::CWADFile::Clone
