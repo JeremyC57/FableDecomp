@@ -763,6 +763,10 @@ overloaded virtuals sit in reverse declaration order. Catalog 30,909 -> **31,659
   with wrong offsets (CFileDataOutputStream +4, CHandleBasedMemoryPool Name +0x448, CVideoSys after +0x30,
   CAIStateGroup_CreatureUseCoverBase PCoverThing).
 
+- Pragma-variant sweep (`$S/w23/retry/retry2.py`, variants as-is / Os / Ot / y-off+Os / Og-off) over the 61 parked sources of
+  chunks 120–127: 0 wins (280 DIFFER, 4 already carry a pragma, 4 SRC_FAIL, 17 grader timeouts under agent contention).
+  The parked rows there are genuine register-colouring / scheduling gaps, not pragma choices.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
