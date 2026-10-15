@@ -3,7 +3,8 @@
 #   python3 skipped_ledger.py add <batch> <addr>:<rowlen> [label] [note]   classify (split_rows.py) and append (idempotent)
 #   python3 skipped_ledger.py refresh                                     mark rows done when every piece is in the catalog
 #   python3 skipped_ledger.py to-chunk <NN> [--max-len 600]               turn the open multi/prefix pieces that are not
-#        landed into an ordinary chunk ($S/w22/chunkNN.tsv + $S/batch/chunkNN_oracle.tsv), mark those rows in-chunk:NN;
+#        landed into an ordinary chunk ($S/w22/chunkNN.tsv + $S/batch/chunkNN_oracle.tsv), mark those rows in-chunk:NN,
+#        and add each piece start to rebuild/manifest/functions.tsv (the lander refuses OUTSIDE_MANIFEST starts);
 #        then `python3 mkprompt25.py NN` and hand $S/w22/agentNN/PROMPT.md to any authoring agent, stage + land as usual.
 #   python3 skipped_ledger.py show
 # kinds: multi (several functions in one row -> author each piece), prefix (the row is the start of a longer function ->
@@ -56,7 +57,29 @@ def to_chunk(nn,maxlen=600):
     with open(f'{S}/batch/chunk{N}_oracle.tsv','w') as f:
         f.write('address\tname\tlength\tbytes\n')
         for a,m,nm,n,h in sel: f.write(f'{a}\t{m}::{nm}\t{n}\t{h}\n')
-    save(rows); return len(sel)
+    save(rows); manifest_add(sel); return len(sel)
+def manifest_add(sel):
+    """verify_and_land.py refuses any start that is not in rebuild/manifest/functions.tsv (OUTSIDE_MANIFEST), and the
+    manifest only knows the original multi-function row: add each split piece as a discovered gapscan-style row with
+    its evidence (an RTTI vtable slot when rtti-vtables.tsv has it, else the split itself)."""
+    M='rebuild/manifest/functions.tsv'
+    rows=list(csv.DictReader(open(M,encoding='utf-8-sig'),delimiter='\t')); hdr=list(rows[0].keys())
+    have={r['address'].lower() for r in rows}
+    vt={}
+    for r in csv.DictReader(open('rebuild/manifest/rtti-vtables.tsv'),delimiter='\t'): vt.setdefault(r['func_va'].lower(),r['class'])
+    new=[]
+    for a,m,nm,n,h in sel:
+        if a in have: continue
+        r={k:'' for k in hdr}
+        r.update(address=a,name=f'{vt.get(a,m)}::{nm}',module=vt.get(a,m),calling_convention='unknown',return_type='undefined',
+                 parameter_count='0',prototype_complete='0',agent_verdict='discovered',agent_source='gapscan',
+                 lift_source='rtti-vtables.tsv' if a in vt else 'split_rows.py (skipped-ledger piece)')
+        new.append(r)
+    if not new: return 0
+    rows+=new; rows.sort(key=lambda r:int(r['address'],16))
+    with open(M,'w',newline='',encoding='utf-8') as f:
+        w=csv.DictWriter(f,fieldnames=hdr,delimiter='\t',lineterminator='\n'); w.writeheader(); w.writerows(rows)
+    print(len(new),'piece starts added to rebuild/manifest/functions.tsv'); return len(new)
 if __name__=='__main__':
     c=sys.argv[1]
     if c=='add': print('added' if add(sys.argv[2],sys.argv[3],*(sys.argv[4:6])) else 'already logged')

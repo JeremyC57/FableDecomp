@@ -2457,6 +2457,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00455f1a	CThingNoiseDef::Transfer	CThingNoiseDef	__thiscall	void	2	CThingNoiseDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CThingNoiseDef_Transfer_00455f1a.cpp
 00455f3c	TransferSubComponent<CTCNoiseDef>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CTCNoiseDef *	1	yes	accepted									
 00455fa0	CPersistContext_TransferableSubComponent::vfunc_0	CPersistContext_TransferableSubComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00455fa8	CPersistContext_TransferableSubComponent::vfunc_1	CPersistContext_TransferableSubComponent	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+00455fb4	CPersistContext_TransferableSubComponent::vfunc_2	CPersistContext_TransferableSubComponent	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 00455fca	CAIStateGroup_HoverHornetQueen	CAIStateGroup_HoverHornetQueen	__thiscall	undefined	1	CAIStateGroup_HoverHornetQueen *	0	yes	accepted									
 00455ff0	CCreatureGenerationFamilyDef::GetSizeofClass	CCreatureGenerationFamilyDef	__thiscall	ulong	1	CCreatureGenerationFamilyDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCreatureGenerationFamilyDef_GetSizeofClass_00455ff0.cpp
 00455ff4	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00455ff4.cpp
@@ -10816,6 +10818,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00581a54	CTCInventory::vfunc_41	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00581a6d	ProcessButtonAReleased	CTCInventory	__thiscall	void	1	CTCInventory *	1	yes	accepted									
 00581ab3	CTCInventory::vfunc_59	CTCInventory	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00581ae1	CTCInventory::ProcessButtonXReleased	CTCInventory	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 00581b01	ProcessButtonYReleased	CTCInventory	__thiscall	void	1	CTCInventory *	1	yes	accepted									
 00581b33	HasScreenshots	CTCInventory	__thiscall	bool	1	CTCInventory *	1	yes	accepted									
 00581bde	GetContextSensitivePreferredItemButtonIndex	_global	__fastcall	long	1	long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\58\global_GetContextSensitivePreferredItemButtonIndex_00581bde.cpp
@@ -19050,6 +19053,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007312c0	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 007312e0	CTCDoor::vfunc_8	CTCDoor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007312f0	CTCDoor::vfunc_10	CTCDoor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00731300	CTCDoor::vfunc_23	CTCDoor	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 00731310	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\CLandscapeBackgroundPatch_vectordeletingdestructor_00731310.cpp
 00731330	~C3DAnimationBlendState	C3DAnimationBlendState	__thiscall	void	1	C3DAnimationBlendState *	1	yes	accepted									
 007313b0	GetPFirstThingInRoughArea<CFilter_Bind2<CThingFilter_InArea,CThingFilter_IsWithinZRange>,CThingCreatureBase>	CThingSearchTools	__thiscall	bool	4	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_InArea,CThingFilter_IsWithinZRange> *,CThingCreatureBase * *	1	yes	accepted									
@@ -19275,6 +19279,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0073a760	GetNoFramesBeforePlayingCombinationIdleAnims	CModeBase	__thiscall	long	2	CModeBase *,EMode	1	yes	accepted									
 0073a7d0	GetNoFramesBeforePlayingCombinationIdleAnims	CModeBase	__thiscall	long	2	CModeBase *,EMode	1	yes	accepted									
 0073a840	RemoveNeighbours	CNavQuadTreeNode	__thiscall	void	1	CNavQuadTreeNode *	1	yes	accepted									
+0073a880	CTCCreatureModeManager::vfunc_9	CTCCreatureModeManager	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 0073a8a0	HasMode	CPlayer	__thiscall	bool	2	CPlayer *,EPlayerMode	1	yes	accepted									
 0073a8e0	AllocateMode	CTCCreatureModeManager	__thiscall	CCountedPointer<CTCCreatureModeManager::CModeBase>	2	CTCCreatureModeManager *,ulong	1	yes	accepted									
 0073a9b0	CAnimEntryLite	CAnimEntryLite	__thiscall	undefined	2	CAnimEntryLite *,CAnimationEntry *	0	yes	accepted									
@@ -20022,6 +20027,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00750930	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00750950	CTCChest::vfunc_8	CTCChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00750960	CTCChest::vfunc_10	CTCChest	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00750970	CTCChest::vfunc_23	CTCChest	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 00750980	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\CLandscapeBackgroundPatch_vectordeletingdestructor_00750980.cpp
 007509a0	CTCDiscovery	CTCDiscovery	__thiscall	undefined	2	CTCDiscovery *,CThing *	0	yes	accepted									
 007509d0	SetDiscovered	CTCDiscovery	__thiscall	void	3	CTCDiscovery *,bool,CThing *	1	yes	accepted									
@@ -26353,6 +26359,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0088b7a0	?SuspendableProcess@CAIBrain@@EAEXXZ	CAIBrain	__thiscall	void	1	CAIBrain *	1	yes	accepted									
 0088b7d0	DrawGetWorldMap	CEditWorld	__thiscall	CIDrawWorldMap *	1	CEditWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\88\CEditWorld_DrawGetWorldMap_0088b7d0.cpp
 0088b7e0	GetCurrentScriptPriority	CScriptThing	__thiscall	EScriptAIPriority	1	CScriptThing *	1	yes	accepted									
+0088b800	CScriptThing::func_0088b800	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 0088b810	IsUpdateZoneActiveThisFrame	CAIBrain	__thiscall	bool	1	CAIBrain *	1	yes	accepted									
 0088b870	FindNextStateGroupToUse	CAIBrain	__thiscall	CAIStateGroupBase *	2	CAIBrain *,long	1	yes	accepted									
 0088b8c0	SetAllStateGroupsEnabled	CAIBrain	__thiscall	void	2	CAIBrain *,bool	1	yes	accepted									
@@ -27305,6 +27312,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008aac10	_Copy_impl<std::pair<CCharString,CCharString>*,std::pair<class_CCharString,class_CCharString>*>	_Copy_impl<std::pair<CCharString,CCharString>*,std	__fastcall	pair<CCharString,CCharString> *	4	pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 008aac50	std::find_if_3d_distance	std	unknown	undefined	0		0	yes	accepted									
 008aae20	operator==	CScriptThing	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
+008aae40	CScriptThing::operator!=	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+008aae60	CScriptThing::func_008aae60	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+008aae70	CScriptThing::func_008aae70	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 008aae80	C3DPositionInterpolator	C3DPositionInterpolator	__thiscall	undefined	3	C3DPositionInterpolator *,C3DVector *,C3DVector *	0	yes	accepted									
 008aaed0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CLandscapeBackgroundPatch_vectordeletingdestructor_008aaed0.cpp
 008aaef0	CEngineScenePrimitiveStatsEnumerator	CEngineScenePrimitiveStatsEnumerator	__thiscall	undefined	5	CEngineScenePrimitiveStatsEnumerator *,map<unsigned_long,unsigned_long,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,unsigned_long>_>_> *,C2DBoxF *,EEnginePrimitiveStatIndex,ulong	0	yes	accepted									
@@ -33049,6 +33059,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009915e0	SetMiniMapEnabled	CWorld	__thiscall	void	2	CWorld *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWorld_SetMiniMapEnabled_009915e0.cpp
 00991600	SetMiniMapEnabled	CWorld	__thiscall	void	2	CWorld *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWorld_SetMiniMapEnabled_00991600.cpp
 00991620	EditFrameUpdate	CTCDParticleEmitter	__thiscall	void	1	CTCDParticleEmitter *	1	yes	accepted									
+00991640	CTCDParticleEmitter::func_00991640	CTCDParticleEmitter	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 00991670	Catch@0040dc8c	_global	unknown	undefined	0		0	yes	accepted									
 00991690	FindFirstSymbolWithVal	CSymbolMap	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
 009916f0	FindFirstSymbolWithVal	CSymbolMap	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
@@ -34299,6 +34310,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009cbc50	CBankFile::GetLastModifiedTime	CBankFile	__thiscall	CDateAndTime	2	CBankFile *,CCharString const &	1	yes	accepted									
 009cbd10	GetBankHandle	CBankFile	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CBankFile_GetBankHandle_009cbd10.cpp
 009cbd30	AskHeroQuestion	CScriptGameResourceObjectScriptedThingBase	__thiscall	void	8	CScriptGameResourceObjectScriptedThingBase *,CScriptThing *,char *,CCharString *,CCharString *,CCharString *,bool,bool	1	yes	accepted									
+009cbd50	CScriptGameResourceObjectScriptedThingBase::func_009cbd50	CScriptGameResourceObjectScriptedThingBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+009cbd70	CScriptGameResourceObjectScriptedThingBase::func_009cbd70	CScriptGameResourceObjectScriptedThingBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 009cbd90	WriteBankWarning	CBankFile	__thiscall	void	2	CBankFile *,CCharString *	1	yes	accepted									
 009cbe10	ConvertPathToFilename	CBankFile	__thiscall	CCharString	2	CBankFile *,CCharString *	1	yes	accepted									
 009cbe90	BankData_CopyRange	_global	unknown	undefined	0		0	yes	accepted									
@@ -38810,6 +38823,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aacf40	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00aacf70	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aacf70.cpp
 00aacf90	CSoundReceiverLH::vfunc_2	CSoundReceiverLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00aacfa0	CSoundReceiverLH::vfunc_4	CSoundReceiverLH	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 00aacfb0	UpdateFogColour	CShaderRenderManager	__thiscall	void	1	CShaderRenderManager *	1	yes	accepted									
 00aad020	CACompressor	CACompressor	__thiscall	undefined	3	CACompressor *,void *,long	0	yes	accepted									
 00aad060	CSoundReceiverLH::vfunc_1	CSoundReceiverLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -45931,6 +45945,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3eaa0	operator()	CIsThingConscious	__thiscall	bool	1	CIsThingConscious *	1	yes	accepted									
 00c3eb00	operator()	CIsThingConscious	__thiscall	bool	1	CIsThingConscious *	1	yes	accepted									
 00c3eb60	GetCurrentScriptPriority	CScriptThing	__thiscall	EScriptAIPriority	1	CScriptThing *	1	yes	accepted									
+00c3eb80	CScriptThing::func_00c3eb80	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 00c3eba0	HasPhysicsMesh	C3DMeshInfo	__thiscall	bool	1	C3DMeshInfo *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\C3DMeshInfo_HasPhysicsMesh_00c3eba0.cpp
 00c3ebb0	CTCHeroStats_DestructorCallback	_global	unknown	undefined	0		0	yes	accepted									
 00c3ec10	sub_00c3ec10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -46017,6 +46032,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c40cf0	sub_00c40cf0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c40d10	NormalizeVectorPair	_global	unknown	undefined	0		0	yes	accepted									
 00c40e20	operator==	CScriptThing	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
+00c40e30	std::atan2	std	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+00c40e40	std::log10	std	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+00c40e50	std::pow	std	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 00c40e60	Pow2_Float	_global	unknown	undefined	0		0	yes	accepted									
 00c40ee0	Math_ScaleByLog2	_global	unknown	undefined	0		0	yes	accepted									
 00c40f50	Math_ComputeLogValue	_global	unknown	undefined	0		0	yes	accepted									
@@ -47745,6 +47763,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca53c0	CallCommandFunction	CConsoleCommand<CNewFrontendGameComponent>	__thiscall	void	2	CConsoleCommand<CNewFrontendGameComponent> *,vector<CGenericVar,std::allocator<CGenericVar>_> *	1	yes	accepted									
 00ca53f0	operator==	CScriptThing	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
 00ca5510	operator==	CScriptThing	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
+00ca5520	CScriptThing::func_00ca5520	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+00ca5530	CScriptThing::func_00ca5530	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+00ca5540	CScriptThing::func_00ca5540	CScriptThing	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 00ca5570	Audio_SleepUntilFrameTime	_global	unknown	undefined	0		0	yes	accepted									
 00ca55e0	WriteToFile	CChunkedFileRawDataChunk	__thiscall	void	3	CChunkedFileRawDataChunk *,CDataOutputStream *,CChunkedFileSaver *	1	yes	accepted									
 00ca5610	Audio_UpdateFrameTimings	_global	unknown	undefined	0		0	yes	accepted									

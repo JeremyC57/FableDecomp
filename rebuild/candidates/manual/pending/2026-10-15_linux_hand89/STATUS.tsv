@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0077bd20	RELOCATION_MATCH	76v76	PASS	CTCGraphicAppearanceStaticMesh ??_G (forceinline virtual dtor + new factory)
+0077c2a0	RELOCATION_MATCH	76v76	PASS	real class CTCGraphicAppearanceStaticMeshFadeOutOnProximity ??_G
+0077c7e0	RELOCATION_MATCH	76v76	PASS	real class CTCGraphicAppearanceSprite ??_G
+007b29b0	RELOCATION_MATCH	76v76	PASS	Clamp(const&) template, const long 10 bound by reference
+007b2cf0	RELOCATION_MATCH	92v92	PASS	inline GetInterface(&out, 0x23), uninitialised out pointer
+007b2d50	DIFFER	89v89	-	register allocation only (out pointer ecx vs eax); 4 grades
+007fffb0	RELOCATION_MATCH	44v44	PASS	
+00800000	RELOCATION_MATCH	32v32	PASS	real name CTCHaste::FrameUpdate (slot 9)
+00572672	RELOCATION_MATCH	23v23	PASS	real CTCInventoryExperience::UpdateExternalExperienceSpendStat; optimize("s"); engine header
+00572689	RELOCATION_MATCH	23v23	PASS	real CTCInventoryExperience::UpdateExternalExperienceSpendAbility; optimize("s"); engine header
+005cd2a6	RELOCATION_MATCH	88v88	PASS	real CTCInventoryStats ctor; optimize("s")
+006c9fa0	RELOCATION_MATCH	25v25	PASS	CTCHero::GiveTutorialForCategory (label right)
+006c9fe0	RELOCATION_MATCH	93v93	PASS	CTCHero ctor, pack(1) intelligent pointers
+006ca040	RELOCATION_MATCH	87v87	PASS	CTCHero::Copy(const CTCBase&) per PDB
+0071afe0	RELOCATION_MATCH	93v93	PASS	real CTCEmoteIcon ctor
+0077f570	RELOCATION_MATCH	77v77	PASS	real CTCHeroCentreDoorMarker ctor
+00b2ad90	RELOCATION_MATCH	57v57	PASS	real CEngineSurfaceCompositionManager::ProcessLoading(bool,double)
+00706000	MATCH	53v53	PASS	
+00706640	RELOCATION_MATCH	86v86	PASS	VC6 erase(begin,end) copy loop + inline SetAsChanged
+00706ec0	RELOCATION_MATCH	46v46	PASS	real name Copy(const CTCBase&) (slot 12)
+00707930	RELOCATION_MATCH	49v49	PASS	real name UploadChangesToGraphics
+00707ad0	RELOCATION_MATCH	49v49	PASS	real name FrameUpdate (slot 9), same body as 00707930
+0075cc60	RELOCATION_MATCH	66v66	PASS	real CTCCameraPointScripted ctor
+0077d470	RELOCATION_MATCH	57v57	PASS	CDefPointer member object (plain pointer form differs)
+00780820	RELOCATION_MATCH	60v60	PASS	real CTCFlammable ctor
+006d6370	RELOCATION_MATCH	23v23	PASS	
+006d64b0	MATCH	56v56	PASS	
+006d6590	DIFFER	42v40	-	jns on sub flags vs test;jge (lane gap)
+006d65e0	MATCH	61v61	PASS	iterator-object operator[] + reference Min
+006d6620	MATCH	61v61	PASS	real name GetVisibilityMultiplier
+006d6770	MATCH	57v57	PASS	
+006d67b0	MATCH	86v86	PASS	
+006d6870	DIFFER	83v82	-	add eax,0F0h vs [edi+0F0h] register reuse; 4 grades
+006d6ea0	RELOCATION_MATCH	58v58	PASS	
+006d6f60	DIFFER	61v59	-	same jns gap as 006d6590
+006d7120	DIFFER	85v73	-	lane gap: float live on x87 across call
+006d7570	RELOCATION_MATCH	76v76	PASS	by-value CDefPointer getter temporary
+006d7de0	RELOCATION_MATCH	43v43	PASS	real name GetExperienceFallbackMultiplier
+006d7e10	DIFFER	88v86	-	find tag/arg scheduling; real name GetExperienceMultiplierFallbackIndex
+006d7e70	RELOCATION_MATCH	80v80	PASS	

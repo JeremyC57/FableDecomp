@@ -152,34 +152,23 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand86` | Hand chunk 86 (CTCDHeroSuit .. CTCEffectOnDie): 34 of 40 byte-exact | - | 4 | 2 | landed; parked rows open |
 | `2026-10-15_linux_hand87` | Hand chunk 87 (CTCElectrocutedEffect .. CTCForcePushed): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand88` | Hand chunk 88 (CTCForcePushed .. CTCGraphicAppearanceStaticMesh): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand89` | Hand chunk 89 (CTCGraphicAppearanceStaticMesh .. CTCHeroExperience): 34 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand90` | Hand chunk 90 (CTCHeroExperience .. CTCHeroStats): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand901` | Chunk 901 -- the skipped-row ledger pieces (34 bodies from 15 multi-function catalogue rows) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand91` | Hand chunk 91 (CTCHeroStats .. CTCInventory): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
 
-Totals: **0 matched rows staged for landing**, **118 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **124 parked rows** for the Fable retry pass.
 
-### Skipped rows (19 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (6 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
-| `00455fa0` | multi | in-chunk:901 | 00455fa0:8 00455fa8:12 00455fb4:22 | `2026-10-15_linux_hand66` | three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter) |
-| `00581ab3` | multi | in-chunk:901 | 00581ab3:46 00581ae1:32 | `2026-10-15_linux_hand91` | two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging) |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
-| `007312f0` | multi | in-chunk:901 | 007312f0:5 00731300:3 | `2026-10-15_linux_hand86` | CTCDoor::vfunc_10 row holds two functions (chunk 86, paused before staging) |
-| `0073a840` | multi | in-chunk:901 | 0073a840:49 0073a880:18 | `2026-10-14_linux_hand59` | two functions after the int3 padding |
-| `00750960` | multi | in-chunk:901 | 00750960:5 00750970:3 | `2026-10-15_linux_hand84` | two functions: jmp [eax+24h], int3 padding, then mov al,1 ; ret (chunk 84, paused before staging) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
-| `0088b7e0` | multi | in-chunk:901 | 0088b7e0:17 0088b800:4 | `2026-10-15_linux_hand74` | row spans two functions (0x88b7e0 + 0x88b800) |
-| `008aae20` | multi | in-chunk:901 | 008aae20:22 008aae40:27 008aae60:4 008aae70:4 | `2026-10-15_linux_hand74` | row spans four functions |
-| `00991620` | multi | in-chunk:901 | 00991620:24 00991640:36 | `2026-10-15_linux_hand86` | EditFrameUpdate row holds two functions (chunk 86, paused before staging) |
-| `009cbd30` | multi | in-chunk:901 | 009cbd30:20 009cbd50:19 009cbd70:20 | `2026-10-15_linux_hand73` | three AskHeroQuestion-style forwarders separated by int3 padding |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
-| `00aacf90` | multi | in-chunk:901 | 00aacf90:5 00aacfa0:4 | `2026-10-15_linux_hand76` | a jmp [eax+4] stub + `lea eax,[ecx+4] ; ret` after int3 padding |
 | `00ba1140` | prefix | open | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | open | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
-| `00c3eb60` | multi | in-chunk:901 | 00c3eb60:25 00c3eb80:25 | `2026-10-15_linux_hand74` | row spans two functions (0xc3eb60 + 0xc3eb80) |
-| `00c40e20` | multi | in-chunk:901 | 00c40e20:8 00c40e30:11 00c40e40:11 00c40e50:14 | `2026-10-15_linux_hand74` | row spans four functions |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
-| `00ca5510` | multi | in-chunk:901 | 00ca5510:16 00ca5520:8 00ca5530:7 00ca5540:44 | `2026-10-15_linux_hand74` | row spans four functions |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
 
@@ -367,6 +356,15 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 008fa280 CTCGift::IsGiftOfType DIFFER(104v83): after GetSubDef the lane keeps the sub-def pointer in eax (retail ecx), so each inlined release is `mov ecx,eax ; add eax,4 ; dec ; test ; mov [eax]` instead of `dec [ecx+4]`, and ebx is pushed at entry (retail only on the success path) | tried: refcount in the class, local-copy release, the landed two-base CDefBase model, reversed polarity | next: a CDefPointer-style RAII local whose destructor releases (scope end instead of explicit releases), or lane gap: register allocation
 - 004bc030 CTCGraphicAppearance::Copy DIFFER(94v91): first bit-field copy -- retail `mov al,[src+59h] ; mov dl,[ecx+59h] ; xor al,dl ; and al,1 ; xor dl,al` loads the destination byte once, the lane reloads it for the final xor | tried: plain bit-field copy, `bool : 1` bit-fields, a getter returning the bit, an explicit `(flags & ~1) | (other & 1)` merge | next: copy the whole flag byte through a union/struct-of-bits member, or lane gap: bit-field merge codegen
 - 004bd3c0 CTCGraphicAppearance::IsDrawingAfterWater DIFFER(93v91): after the interface lookup retail loads the component into ecx and the holder (+0x10) into eax (`mov ecx,[eax+4] ; mov eax,[ecx+10h]`); the lane swaps them and adds `mov ecx,eax` | tried: the out-parameter GetInterface template (plain and `__forceinline`), HasTC + pointer-returning FindTC, an inline holder test member | next: lane gap: register allocation (scheduling-only, 2 bytes)
+
+
+#### `2026-10-15_linux_hand89` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand89/differ/`)
+- 007b2d50 CTCGuard::GetBribeAmountWillTake DIFFER(89v89): retail `mov eax,ecx ; mov eax,[eax+4] ; xor ecx,ecx ... mov ecx,[eax+4] ; call GetPVillage`, ours `mov edx,[ecx+4] ; xor eax,eax ... mov eax,[eax+4] ; mov ecx,eax` | tried: out pointer `= 0` + inline GetInterface, the same through an inline GetVillage() helper (4 grades) | next: lane gap: register allocation of the out-pointer (ecx vs eax)
+- 006d6590 CTCHeroExperience::SpendExperience(EHeroExperienceStatCategory, long) DIFFER(42v40): retail `jns` on the flags of `sub [eax],esi` vs ours `test edx,edx ; jge` after the reload | tried: natural two-statement form (best), `long&` local (46v40), `if ((v[c] -= amount) < 0)` (55v40) | next: lane gap: compiler-build flag reuse across a reload
+- 006d6f60 CTCHeroExperience::SpendExperience(EHeroTrainableStatType, long) DIFFER(61v59): the same `jns` vs `test ; jge` (inlined category overload) | tried: natural form (best), `long&` local (69v59) | next: lane gap: compiler-build flag reuse (as 006d6590)
+- 006d6870 CTCHeroExperience::GetMeleeStrikeAnimationSpeedMultiplier DIFFER(83v82): ours `mov eax,[edi+58h] ; fld [eax+0F4h] ; add eax,0F0h ; fld [eax]`, retail `mov edi,[edi+58h] ; fld [edi+0F4h] ; fld [edi+0F0h]` | tried: `low` local in GetValue (best), one-line GetValue (79v82) (4 grades; the other two variants were not kept) | next: read the range through the by-value copy so `this` dies early, else lane gap: register reuse
+- 006d7120 CTCHeroExperience::GetAttackVariationMultiplier DIFFER(85v73): retail keeps the running max in st(0) across the IsComboSuccess call (`fcom`, `fstp st(0) ; fld`), ours spills it to a frame slot (`push ecx ; mov [esp+0Ch],3F800000h`) | tried: natural loop (1 grade) | next: lane gap: x87 value live across a call
+- 006d7e10 CTCHeroExperience::GetExperienceMultiplierFallbackIndex DIFFER(88v86): retail `lea ecx,[esp+7] ; push ecx ; mov [esp+0Ch],eax ; ... lea edx,[esp+0Ch] ; push edx` (tag pushed first), ours stores the value and loads first/last before forming the tag | tried: one-expression find (3 grades) | next: multiplier/tag as named locals, else lane gap: find tag-temporary scheduling
 
 
 #### `2026-10-15_linux_hand90` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand90/differ/`)
