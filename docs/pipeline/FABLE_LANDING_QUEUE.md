@@ -157,8 +157,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand901` | Chunk 901 -- the skipped-row ledger pieces (34 bodies from 15 multi-function catalogue rows) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand91` | Hand chunk 91 (CTCHeroStats .. CTCInventory): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand93` | Hand chunk 93 (CTCInventoryBase .. CTCInventoryExperience): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand94` | Hand chunk 94 (CTCInventoryExperience .. CTCInventoryMap): 39 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 
-Totals: **0 matched rows staged for landing**, **125 parked rows** for the Fable retry pass.
+Totals: **0 matched rows staged for landing**, **126 parked rows** for the Fable retry pass.
 
 ### Skipped rows (6 open of 19 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -386,5 +387,9 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 
 #### `2026-10-15_linux_hand93` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand93/differ/`)
 - 005bd5db CTCInventoryBase::GetCategoryWithAssociationThing DIFFER(84v85): retail keeps the stride offset in ebx and spills the count to [ebp-4] (`lea ecx,[ebx+eax]`, `cmp edi,[ebp-4]`), the lane keeps the count in ebx and spills the offset (`add ecx,[ebp-4]`, `add dword ptr [ebp-4],2Ch`) | tried: for+break with post `if (i < count)`, while loop with reversed declaration order, `&&` loop condition with `first + i`, outer `if (count > 0)` | next: lane gap: register allocation (callee-saved choice between the compiler's strength-reduced offset and a user local); maybe the original wrote an inline `GetNumberOfCategories()`/index helper -- try one form with the count behind an inline accessor taking it by reference
+
+
+#### `2026-10-15_linux_hand94` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand94/differ/`)
+- 0056ef2d CTCInventoryExperience::vfunc_29 DIFFER(66v66): retail `xor edx,edx ; cmp [esi],edx ; setg dl` (zero register reused as the setcc target) with first/limit in esi/edi and the second result in eax; the lane pushes ebx and uses it for both setcc results | tried: `cond ? 2 : 1`, named `first` local (fixed the start-pointer re-read), named `lastAllowed` local, `(cond) + 1` | next: lane gap: register allocation (setcc into the compare-zero register)
 
 <!-- queue:end -->

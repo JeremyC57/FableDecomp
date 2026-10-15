@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0056e5ec	RELOCATION_MATCH	30v30	PASS	base ButtonAReleased + clear Add event flags; /Os immediates
+0056e60f	RELOCATION_MATCH	30v30	PASS	slot 60 twin (Remove event); renamed ProcessButtonXReleased
+0056e632	RELOCATION_MATCH	66v66	PASS	stat lookup (10-entry table); renamed GetHeroTrainableStatType
+0056e674	RELOCATION_MATCH	66v66	PASS	ability lookup (20-entry table)
+0056ea4e	RELOCATION_MATCH	76v76	PASS	GetXString()+IntToWideString(count); y-off + s
+0056ea9a	MATCH	60v60	PASS	if/else chain over OrigGeneral..OrigWill
+0056ec79	RELOCATION_MATCH	19v19	PASS	zero indicator pair, tail ResetStatIndicatorValues
+0056ec8c	RELOCATION_MATCH	63v63	PASS	2-case switch; decrement + slider refresh + vfunc_29
+0056eccb	RELOCATION_MATCH	61v61	PASS	slot 39 twin; static __stdcall folded callee; renamed ProcessInventoryInputUp
+0056ef2d	DIFFER	66v66	-	regalloc only (setcc target / esi-edi vs ebx); parked
+0056f03d	MATCH	83v83	PASS	three counted reset loops + magnitude=0
+0056f26f	RELOCATION_MATCH	78v78	PASS	def copy + ExperienceItemLabelStat lookup; renamed GetExperienceStatName
+0056f2bd	RELOCATION_MATCH	78v78	PASS	def copy + ExperienceItemLabelAbility lookup; y-off + s
+00572636	RELOCATION_MATCH	60v60	PASS	switch {1,2}/{3,4,5} binary lowering
+00574647	RELOCATION_MATCH	88v88	PASS	held Add event; scale read into local before def copy
+0057469f	RELOCATION_MATCH	88v88	PASS	slot 56 twin (Remove); renamed ProcessButtonXHeld
+0057598a	RELOCATION_MATCH	53v53	PASS	SGI find /Gr + push_back; unsigned char result
+0045641a	RELOCATION_MATCH	39v39	PASS	~CAppearanceModifierDef (novtable over CDefPointeeBase)
+004daea9	RELOCATION_MATCH	41v41	PASS	CTCInventoryItem ctor; init-list zeroes after vtable
+004e2bc7	RELOCATION_MATCH	33v33	PASS	~CTCPreCalculatedNavigationRoute (novtable over CTCBase)
+004e3cb3	RELOCATION_MATCH	31v31	PASS	~CContainerRewardHeroDef (novtable over CDefPointeeBase)
+005d8e70	RELOCATION_MATCH	29v29	PASS	PInventory->GetBoughtPrice(def index); /Os
+005d92f0	RELOCATION_MATCH	45v45	PASS	def copy + GetRHSetFromOrientation into hidden result
+0061a260	RELOCATION_MATCH	84v84	PASS	CTCInventoryQuests static stdcall quest-card region check; inner scope + named string + uchar
+007de440	RELOCATION_MATCH	43v43	PASS	~CTCCreatureFlyInCircles (pack(1) unaligned IPs)
+007f59c0	RELOCATION_MATCH	44v44	PASS	CTCTargetingAI::OnInitialActivate (slot 6)
+009d8960	MATCH	40v40	PASS	handle operator= ; release on the pointee
+00a37360	RELOCATION_MATCH	60v60	PASS	~CClassFactory (vector tag in push-ecx slot)
+00a55420	RELOCATION_MATCH	35v35	PASS	~C3DAnimFileSequenceChunk
+00a9d3f0	RELOCATION_MATCH	35v35	PASS	~C3DMeshFileConvexVolumeChunk
+00af5900	RELOCATION_MATCH	96v96	PASS	~NParticleEngine::CParticleSystem
+00b81e60	RELOCATION_MATCH	57v57	PASS	~CEngineClothSimulationStaticMesh (inline base dtor)
+00b84030	RELOCATION_MATCH	57v57	PASS	~CEngineClothSimulation2DAnimatedMesh (twin of 00b81e60)
+00bcde40	RELOCATION_MATCH	35v35	PASS	~CEngineInternalPrimitiveWeaponTrail
+00c6a3d0	RELOCATION_MATCH	58v58	PASS	CTCKraken_00c6a780::Shutdown (landed Kraken model)
+0072dac0	RELOCATION_MATCH	42v42	PASS	InventoryOpen gate; base helper(viewport, CBase::slot3())
+0072db90	RELOCATION_MATCH	66v66	PASS	CTCInventoryMagic ctor (two bases, inline vector ctor)
+005fa910	RELOCATION_MATCH	54v54	PASS	CTCInventoryMap slot 38 wrap-around decrement
+005fa950	RELOCATION_MATCH	59v59	PASS	CTCInventoryMap slot 39 wrap-around increment
+005faa30	RELOCATION_MATCH	37v37	PASS	GetWorld()->slot13()->GetActiveRegionIndex()
