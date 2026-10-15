@@ -1,0 +1,3 @@
+- A `mov ecx,[ecx+4] ; jmp` forwarder returning the callee's integral type tail-jumps; the same forwarder of a float-returning callee is `call ; ret` when the result goes through a named float local.
+- A pure-virtual slot in a base vtable (`__purecall` 0x00BFEA08) is `= 0` in the model; the base's own FrameUpdate can still tail-jump through it.
+- Ledger pieces again graded against the stale multi-row in the parent chunk oracle until it was deleted.

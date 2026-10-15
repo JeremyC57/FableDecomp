@@ -232124,6 +232124,41 @@ $catalog = @(
         TestSource = '00/ab/CMouseDX_PeekScreenPos_00ab4870_test.cpp'
         PassPattern = '00ab4870_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008d6620'
+        Module = 'NCreatureMode::CModeOutOfActionBase'
+        Source = '00/8d/NCreatureModeCModeOutOfActionBase_FrameUpdate_008d6620.cpp'
+        TestSource = '00/8d/NCreatureModeCModeOutOfActionBase_FrameUpdate_008d6620_test.cpp'
+        PassPattern = '008d6620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d6650'
+        Module = 'NCreatureMode::CModeDazed'
+        Source = '00/8d/NCreatureModeCModeDazed_GetOutOfActionRecoveryFrames_008d6650.cpp'
+        TestSource = '00/8d/NCreatureModeCModeDazed_GetOutOfActionRecoveryFrames_008d6650_test.cpp'
+        PassPattern = '008d6650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d6660'
+        Module = 'NCreatureMode::CModeDazed'
+        Source = '00/8d/NCreatureModeCModeDazed_GetOutOfActionTimeSeconds_008d6660.cpp'
+        TestSource = '00/8d/NCreatureModeCModeDazed_GetOutOfActionTimeSeconds_008d6660_test.cpp'
+        PassPattern = '008d6660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d6670'
+        Module = 'NCreatureMode::CModeStunned'
+        Source = '00/8d/NCreatureModeCModeStunned_GetOutOfActionRecoveryFrames_008d6670.cpp'
+        TestSource = '00/8d/NCreatureModeCModeStunned_GetOutOfActionRecoveryFrames_008d6670_test.cpp'
+        PassPattern = '008d6670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d6680'
+        Module = 'NCreatureMode::CModeStunned'
+        Source = '00/8d/NCreatureModeCModeStunned_GetOutOfActionTimeSeconds_008d6680.cpp'
+        TestSource = '00/8d/NCreatureModeCModeStunned_GetOutOfActionTimeSeconds_008d6680_test.cpp'
+        PassPattern = '008d6680_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

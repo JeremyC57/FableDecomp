@@ -28998,6 +28998,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008d6580	NCreatureMode::CModeSitChair::vfunc_5	NCreatureMode::CModeSitChair	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6610	NCreatureMode::CModeBlock::vfunc_4	NCreatureMode::CModeBlock	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6620	FrameUpdate	CModeOutOfActionBase	__thiscall	void	1	CModeOutOfActionBase *	1	yes	accepted									
+008d6650	NCreatureMode::CModeDazed::Piece_008d6650	NCreatureMode::CModeDazed	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+008d6660	NCreatureMode::CModeDazed::Piece_008d6660	NCreatureMode::CModeDazed	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+008d6670	NCreatureMode::CModeStunned::Piece_008d6670	NCreatureMode::CModeStunned	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
+008d6680	NCreatureMode::CModeStunned::Piece_008d6680	NCreatureMode::CModeStunned	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 008d6690	OnActivate	CModeCreatureIsProjectile	__thiscall	void	1	CModeCreatureIsProjectile *	1	yes	accepted									
 008d66e0	OnActivate	CModeUnderground	__thiscall	void	1	CModeUnderground *	1	yes	accepted									
 008d6710	OnDeactivate	CModeUnderground	__thiscall	void	1	CModeUnderground *	1	yes	accepted									

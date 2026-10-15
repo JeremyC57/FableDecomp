@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+008d6620	RELOCATION_MATCH	43	PASS	NCreatureMode::CModeOutOfActionBase::FrameUpdate (slot 3; catalogue label)
+008d6650	RELOCATION_MATCH	8	PASS	CModeDazed slot 13 forwarder to 0x00662020 (descriptive name GetOutOfActionRecoveryFrames)
+008d6660	RELOCATION_MATCH	9	PASS	CModeDazed slot 14 forwarder to 0x006620A0 GetDazedTimeSeconds (descriptive name GetOutOfActionTimeSeconds)
+008d6670	RELOCATION_MATCH	8	PASS	CModeStunned slot 13 forwarder to 0x00662020
+008d6680	RELOCATION_MATCH	9	PASS	CModeStunned slot 14 forwarder to 0x00662040 (really GetStunnedTimeSeconds)

@@ -1,0 +1,6 @@
+address	name	length	bytes
+008d6620	NCreatureMode::CModeOutOfActionBase::FrameUpdate	43	568bf1e82846e6ff8b466885c07e04488946688a466c84c0740f8b466885c075088b068bce5eff603c5ec3
+008d6650	NCreatureMode::CModeDazed::GetOutOfActionRecoveryFrames	8	8b4904e9c8b9d8ff
+008d6660	NCreatureMode::CModeDazed::GetOutOfActionTimeSeconds	9	8b4904e838bad8ffc3
+008d6670	NCreatureMode::CModeStunned::GetOutOfActionRecoveryFrames	8	8b4904e9a8b9d8ff
+008d6680	NCreatureMode::CModeStunned::GetOutOfActionTimeSeconds	9	8b4904e8b8b9d8ffc3
