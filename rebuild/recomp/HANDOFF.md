@@ -118,6 +118,14 @@ user's original game folder; no retail bytes or generated code are in git.
     variant (no `discard` otherwise), no periodic readback (`FABLE_GLES_PROBE=1`), a stale
     texture binding after mid-frame uploads fixed, 16-bit DXT storage at texture detail Low
     (`FABLE_GLES_TEX16`); the frame log counts buffer uploads. See the 2026-10-15 journal.
+  - **CPU round (2026-10-15, needs a re-lift):** memory operands with a register and a
+    displacement under 64 KiB are emitted as `rd32p(MA(ecx, 60))` (displacement in the host
+    addressing mode: -6.3% A53 instructions on a 2745-function sample; `--no-fold` gives the
+    old output byte for byte); `rep stos` with DF clear is a memset / vectorised fill; trap
+    (import/COM) calls go to the host hook before any table lookup (`recomp_set_host_range`);
+    `recomp_fns` is hidden (no GOT load per inline-cache hit). Not done yet:
+    static x87 TOP tracking in the lifter (4-6% of lifted A53 instructions load/store TOP
+    or index the emulated stack), freeing the D3D lock staging copies of load-once resources.
 - **Next:**
   - Real-Windows testing of gameplay (input, performance, saving, area transitions,
     combat).
