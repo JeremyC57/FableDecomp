@@ -232621,6 +232621,216 @@ $catalog = @(
         TestSource = '00/b2/NParticleEngineCPSCSplineBase_CPSCSplineBase_00b21530_test.cpp'
         PassPattern = '00b21530_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004575fc'
+        Module = 'CSpecialAbilitiesBulletTimeDef'
+        Source = '00/45/CSpecialAbilitiesBulletTimeDef_CSpecialAbilitiesBulletTimeDef_004575fc.cpp'
+        TestSource = '00/45/CSpecialAbilitiesBulletTimeDef_CSpecialAbilitiesBulletTimeDef_004575fc_test.cpp'
+        PassPattern = '004575fc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045784b'
+        Module = 'CSpecialAbilitiesPhysicalShieldDef'
+        Source = '00/45/CSpecialAbilitiesPhysicalShieldDef_CSpecialAbilitiesPhysicalShieldDef_0045784b.cpp'
+        TestSource = '00/45/CSpecialAbilitiesPhysicalShieldDef_CSpecialAbilitiesPhysicalShieldDef_0045784b_test.cpp'
+        PassPattern = '0045784b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046f4f0'
+        Module = 'CSkyDef'
+        Source = '00/46/CSkyDef_operator_0046f4f0.cpp'
+        TestSource = '00/46/CSkyDef_operator_0046f4f0_test.cpp'
+        PassPattern = '0046f4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049be10'
+        Module = 'CParticleEnvironmentInteraction'
+        Source = '00/49/CParticleEnvironmentInteraction_GetWindVelocity_0049be10.cpp'
+        TestSource = '00/49/CParticleEnvironmentInteraction_GetWindVelocity_0049be10_test.cpp'
+        PassPattern = '0049be10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e46cd'
+        Module = 'CJackOfBladesBattleDef'
+        Source = '00/4e/CJackOfBladesBattleDef_operator_004e46cd.cpp'
+        TestSource = '00/4e/CJackOfBladesBattleDef_operator_004e46cd_test.cpp'
+        PassPattern = '004e46cd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005195b0'
+        Module = 'CLevelLoader::CObject'
+        Source = '00/51/CLevelLoaderCObject_CObject_005195b0.cpp'
+        TestSource = '00/51/CLevelLoaderCObject_CObject_005195b0_test.cpp'
+        PassPattern = '005195b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00543fa0'
+        Module = 'NUISystem::CParticleEffect'
+        Source = '00/54/NUISystemCParticleEffect_GetDataFromDef_00543fa0.cpp'
+        TestSource = '00/54/NUISystemCParticleEffect_GetDataFromDef_00543fa0_test.cpp'
+        PassPattern = '00543fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054e5d0'
+        Module = 'NUISystem::CViewport'
+        Source = '00/54/NUISystemCViewport_GetDataFromDef_0054e5d0.cpp'
+        TestSource = '00/54/NUISystemCViewport_GetDataFromDef_0054e5d0_test.cpp'
+        PassPattern = '0054e5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e21f0'
+        Module = '_global'
+        Source = '00/5e/global_popheap_005e21f0.cpp'
+        TestSource = '00/5e/global_popheap_005e21f0_test.cpp'
+        PassPattern = '005e21f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066dc50'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_CreateRegionMinimap_0066dc50.cpp'
+        TestSource = '00/66/CRegionMinimap_CreateRegionMinimap_0066dc50_test.cpp'
+        PassPattern = '0066dc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e25c0'
+        Module = 'CParticleCreationParameters'
+        Source = '00/6e/CParticleCreationParameters_CParticleCreationParameters_006e25c0.cpp'
+        TestSource = '00/6e/CParticleCreationParameters_CParticleCreationParameters_006e25c0_test.cpp'
+        PassPattern = '006e25c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2640'
+        Module = 'CParticleCreationParameters'
+        Source = '00/6e/CParticleCreationParameters_CParticleCreationParameters_006e2640.cpp'
+        TestSource = '00/6e/CParticleCreationParameters_CParticleCreationParameters_006e2640_test.cpp'
+        PassPattern = '006e2640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ad4a0'
+        Module = 'CParentDefClassBase'
+        Source = '00/9a/CParentDefClassBase_GetPSubDefInfo_009ad4a0.cpp'
+        TestSource = '00/9a/CParentDefClassBase_GetPSubDefInfo_009ad4a0_test.cpp'
+        PassPattern = '009ad4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ad510'
+        Module = 'CParentDefClassBase'
+        Source = '00/9a/CParentDefClassBase_GetPSubDefInfo_009ad510.cpp'
+        TestSource = '00/9a/CParentDefClassBase_GetPSubDefInfo_009ad510_test.cpp'
+        PassPattern = '009ad510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab0b70'
+        Module = 'CParticleMorphs'
+        Source = '00/ab/CParticleMorphs_MorphEntryFromPointer_00ab0b70.cpp'
+        TestSource = '00/ab/CParticleMorphs_MorphEntryFromPointer_00ab0b70_test.cpp'
+        PassPattern = '00ab0b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab0bf0'
+        Module = 'CParticleMorphs'
+        Source = '00/ab/CParticleMorphs_MorphEntryFromValue_00ab0bf0.cpp'
+        TestSource = '00/ab/CParticleMorphs_MorphEntryFromValue_00ab0bf0_test.cpp'
+        PassPattern = '00ab0bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae85f0'
+        Module = 'CParticleEmitterDatabase'
+        Source = '00/ae/CParticleEmitterDatabase_CreateSymbolMap_00ae85f0.cpp'
+        TestSource = '00/ae/CParticleEmitterDatabase_CreateSymbolMap_00ae85f0_test.cpp'
+        PassPattern = '00ae85f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae89e0'
+        Module = 'CParticleEmitterDatabase'
+        Source = '00/ae/CParticleEmitterDatabase_GetEmitterTemplate_00ae89e0.cpp'
+        TestSource = '00/ae/CParticleEmitterDatabase_GetEmitterTemplate_00ae89e0_test.cpp'
+        PassPattern = '00ae89e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb850'
+        Module = 'CParticleEmitterManager'
+        Source = '00/ae/CParticleEmitterManager_CreateInterpolatedEmitter_00aeb850.cpp'
+        TestSource = '00/ae/CParticleEmitterManager_CreateInterpolatedEmitter_00aeb850_test.cpp'
+        PassPattern = '00aeb850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb8c0'
+        Module = 'CParticleEmitterManager'
+        Source = '00/ae/CParticleEmitterManager_CreateInterpolatedEmitter_00aeb8c0.cpp'
+        TestSource = '00/ae/CParticleEmitterManager_CreateInterpolatedEmitter_00aeb8c0_test.cpp'
+        PassPattern = '00aeb8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aecf90'
+        Module = 'CParticleEmitter'
+        Source = '00/ae/CParticleEmitter_ShouldSpawn_00aecf90.cpp'
+        TestSource = '00/ae/CParticleEmitter_ShouldSpawn_00aecf90_test.cpp'
+        PassPattern = '00aecf90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeddc0'
+        Module = 'CParticleEmitter'
+        Source = '00/ae/CParticleEmitter_SetPosition_00aeddc0.cpp'
+        TestSource = '00/ae/CParticleEmitter_SetPosition_00aeddc0_test.cpp'
+        PassPattern = '00aeddc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aee940'
+        Module = 'CParticleEmitter'
+        Source = '00/ae/CParticleEmitter_ClearAllPrimitives_00aee940.cpp'
+        TestSource = '00/ae/CParticleEmitter_ClearAllPrimitives_00aee940_test.cpp'
+        PassPattern = '00aee940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1670'
+        Module = 'NParticleEngine::CParticleDataBank'
+        Source = '00/af/NParticleEngineCParticleDataBank_CParticleDataBank_00af1670.cpp'
+        TestSource = '00/af/NParticleEngineCParticleDataBank_CParticleDataBank_00af1670_test.cpp'
+        PassPattern = '00af1670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af8f00'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/af/NParticleEngineCParticleSystem_ScaleParticleDimensions_00af8f00.cpp'
+        TestSource = '00/af/NParticleEngineCParticleSystem_ScaleParticleDimensions_00af8f00_test.cpp'
+        PassPattern = '00af8f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b05b80'
+        Module = 'NParticleEngine::CParticleSystem'
+        Source = '00/b0/NParticleEngineCParticleSystem_ScaleParticleDimensions_00b05b80.cpp'
+        TestSource = '00/b0/NParticleEngineCParticleSystem_ScaleParticleDimensions_00b05b80_test.cpp'
+        PassPattern = '00b05b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c29c30'
+        Module = 'CVector_ulong_00c29c30'
+        Source = '00/c2/CVectorulong00c29c30_pushback_00c29c30.cpp'
+        TestSource = '00/c2/CVectorulong00c29c30_pushback_00c29c30_test.cpp'
+        PassPattern = '00c29c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb7210'
+        Module = 'CStringPairRecordVector_00cb7210'
+        Source = '00/cb/CStringPairRecordVector00cb7210_pushback_00cb7210.cpp'
+        TestSource = '00/cb/CStringPairRecordVector00cb7210_pushback_00cb7210_test.cpp'
+        PassPattern = '00cb7210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbd510'
+        Module = 'CRecordSet_00cbd510'
+        Source = '00/cb/CRecordSet00cbd510_CRecordSet00cbd510_00cbd510.cpp'
+        TestSource = '00/cb/CRecordSet00cbd510_CRecordSet00cbd510_00cbd510_test.cpp'
+        PassPattern = '00cbd510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e299f0'
+        Module = 'CScriptRecordSet_00e299f0'
+        Source = '00/e2/CScriptRecordSet00e299f0_CScriptRecordSet00e299f0_00e299f0.cpp'
+        TestSource = '00/e2/CScriptRecordSet00e299f0_CScriptRecordSet00e299f0_00e299f0_test.cpp'
+        PassPattern = '00e299f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

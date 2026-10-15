@@ -175,6 +175,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand148` | Hand chunk 148 (CModeDragonFlying .. CMouseDX): 26 of 40 byte-exact | - | 13 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand149` | Hand chunk 149 (CMovableResource .. CObjectTypeCollectionPalette): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand150` | Hand chunk 150 (COpenCloseHelper .. CParentDefClassBase): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand151` | Hand chunk 151 (CParentDefClassBase .. CPatchTesselationEdgeStrip): 30 of 40 byte-exact | - | 10 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -228,9 +229,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **442 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **452 parked rows** for the Fable retry pass.
 
-### Skipped rows (10 open of 33 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (11 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -238,6 +239,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
+| `009b98b0` | multi | open | 009b98b0:112 009b9920:19 | `2026-10-15_linux_hand151` | row holds two functions (separate ret 4 at 0x9B9930); body identical 128v131 |
 | `009f5d70` | prefix | open | 009f5d70:156 | `2026-10-15_linux_hand143` | CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B); fu |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
@@ -708,6 +710,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00b10220 CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles DIFFER(126v148): bare dword `fistp` after float store/reload in the two-decimal rounding | tried: inline power-of-ten loop + (long) cast | next: lane gap: inline-asm dword fistp
 - 00b102c0 CPSCEmitterGeneric::GetRandomRadius DIFFER(151v151): same rounding helper | tried: inline quantiser + pow intrinsic | next: lane gap: inline-asm dword fistp
 - 00a62ae0 CPackedUIntArray::CalculateBias DIFFER(132v130): retail has no frame (counter in the dead `bits` slot, mask in the dead `count` slot, `data` in ebx at entry), ours opens `push ecx` for the mask/counter | tried: plain form, mask stored over `bits` | next: lane gap: several locals in dead argument slots
+
+
+#### `2026-10-15_linux_hand151` (10 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand151/differ/`)
+- 009b00d0 CParentDefClassBase::AddSubDef DIFFER(163v155): placement copy of the pair reads `second` back from the frame (`mov edx,[esp+14h] ; mov [ecx+4],edx` x2) where retail stores edi/ebx | tried: field-wise pair, pair ctor from CSubDefInfo temp, Add(key, def, parent) with CSubDefInfo ctor, memberwise CSubDefInfo copy ctor | next: pair built with a by-value ctor of three scalars, or `make_pair(key, CSubDefInfo(d, p))` passed by value
+- 009b0170 CParentDefClassBase::RemoveSubDef DIFFER(140v138): key and random_access_iterator_tag both homed in the dead `name` slot by retail; lane opens a `push ecx` word for the key | tried: key local, by-value inline Remove, const& Remove | next: lane gap: several short-lived locals sharing one dead argument slot
+- 009b9700 CParsedItem::InitAsInteger DIFFER(91v103): retail threads the zero-length path (own `mov [ecx],3 ; ret` exit, `xor bl,bl` with edx as shared zero/index) where the lane keeps one tail with `cmp bl,1`; `[edx+edi+1]` operand order | tried: bool / unsigned char flag, preloaded char with `text[i+1]`, declaration order | next: an explicit `if (length == 0) { Type = 3; return; }` guard or a do/while form
+- 0054e980 NUISystem::CScrollingViewport::RemoveChild (slot 89) DIFFER(131v126): retail homes find()'s random_access_iterator_tag in the `child` argument slot; lane opens a `push ecx` byte, flipping esi/edi | tried: plain erase, __copy_trivial helper with Clear inside the found branch | next: lane gap: empty tag temporary at an existing argument slot
+- 00aee8c0 CParticleEmitter::Kill DIFFER(126v117): retail `or byte ptr [esi+40h],20h` before the zero stores and `and byte ptr [esi+41h],0FEh` after; lane loads both bytes into cl/al and stores at the end (ushort group: one merged word RMW) | tried: ushort bit-fields, inline setters, unsigned char units, optimize("s") | next: bits through a byte-typed flags view (`m_flagBytes[0] |= 0x20`)
+- 00ae2cb0 CParticleProgram::SimulationStep DIFFER(107v102): retail `push ecx ; fstp [esp]` straight into the argument AND re-reads the vtable for the second virtual call; nested call caches the vtable in ebp (102v102), named float local spills via [esp+10h] | tried: nested, named local, inline forwarding wrapper, __forceinline inner accessor | next: lane gap candidate (virtual-call designator evaluated before the arguments)
+- 00ae2d20 CParticleProgram::SimulationStep (mesh overload) DIFFER(102v97): same as 0x00AE2CB0 | tried: nested, named local, static forwarding helper | next: as 0x00AE2CB0
+- 00af5010 NParticleEngine::CParticleSystem::AllocateParticle DIFFER(127v128): retail pushes esi at entry; lane delays `push esi` into the append block, moving the null-result exits | tried: return 0 vs guard, STLport link order vs prev local | next: lane gap: callee-saved push delayed into a branch
+- 00af56e0 NParticleEngine::CParticleSystem::DeleteAllParticles DIFFER(138v138): loop-bottom store of the frame iterator `mov [esp+0Ch],edi` (retail) vs `mov [esp+0Ch],ebx` (lane); all other bytes match | tried: iterator by ref / const ref, by-value wrapper, separate `current` frame iterator | next: register-choice artefact; try `current = Particles.erase(it); it = current;` ordering
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

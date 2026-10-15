@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0046f4f0	RELOCATION_MATCH	117v117	PASS	CSkyDef::operator= (vtable slot 19 jmp); label propagated
+004e46cd	RELOCATION_MATCH	123v123	PASS	CJackOfBladesBattleDef::operator= (slot 19 jmp); label propagated
+009ad4a0	RELOCATION_MATCH	98v98	PASS	GetPSubDefInfo const: Find(key by value) passes &copy
+009ad510	RELOCATION_MATCH	98v98	PASS	GetPSubDefInfo non-const twin
+009b00d0	DIFFER	163v155	-	163v155: pair copy reads second from frame instead of edi/ebx
+009b0170	DIFFER	140v138	-	140v138: lane gap, key + tag share dead name slot
+009b9700	DIFFER	91v103	-	91v103: retail threads the zero-length exit (known-false flag)
+009b98b0	SKIP	128v131	-	row holds two functions (separate ret 4 at 0x9B9930); body identical 128v131
+006e25c0	RELOCATION_MATCH	118v118	PASS	C3DVector memberwise user copy ctor
+006e2640	RELOCATION_MATCH	127v127	PASS	interpolated overload
+00af1670	RELOCATION_MATCH	103v103	PASS	NParticleEngine::CParticleDataBank ctor; _STLP_alloc_proxy CArray
+00543fa0	MATCH	106v106	PASS	NUISystem::CParticleEffect; STLport operator[]
+0054e5d0	MATCH	106v106	PASS	really NUISystem::CViewport (byte twin, +0x170)
+005e21f0	RELOCATION_MATCH	119v119	PASS	really SGI __pop_heap<pair<ulong,CAnimationEntry>>
+005195b0	RELOCATION_MATCH	103v103	PASS	really ~CLevelLoader::CObject
+0054e980	DIFFER	131v126	-	131v126: lane gap, empty find() tag homed in child arg slot; really CScrollingViewport slot 89
+00aecf90	RELOCATION_MATCH	118v118	PASS	!(lenSq <= max*max) for test ah,1 je
+00aeddc0	MATCH	150v150	PASS	implicit interpolator operator= + inline matrix setter
+00aee8c0	DIFFER	126v117	-	126v117: single-bit byte or/and on +0x40/+0x41 merged by the lane
+00aee940	RELOCATION_MATCH	128v128	PASS	CEnginePrimitiveHandle::Clear inlined
+00cbd510	RELOCATION_MATCH	148v148	PASS	really dtor of CBase-derived class (vtable 0x12C1648), novtable
+00ae85f0	RELOCATION_MATCH	134v134	PASS	named name copy + named prefix
+00ae89e0	RELOCATION_MATCH	145v145	PASS	info local before counted-pointer local
+00aeb850	RELOCATION_MATCH	110v110	PASS	PDB signature from manifest
+00aeb8c0	RELOCATION_MATCH	118v118	PASS	<= 0.0f gives test ah,41h jp
+0049be10	MATCH	123v123	PASS	operator*(float) + inline GetWind accessor
+00ab0b70	RELOCATION_MATCH	105v105	PASS	conditional temporaries ternary
+00ab0bf0	RELOCATION_MATCH	107v107	PASS	__forceinline entry getter
+00e299f0	RELOCATION_MATCH	113v113	PASS	really ctor of 0x12E22C8 class; novtable intermediate base
+00ae2cb0	DIFFER	107v102	-	107v102: vtable reload vs direct float push in nested virtual call
+00ae2d20	DIFFER	102v97	-	102v97: same as 0x00AE2CB0
+00c29c30	RELOCATION_MATCH	98v98	PASS	really Dinkumware vector<ulong>::push_back
+0066dc50	RELOCATION_MATCH	158v158	PASS	really CRegionMinimap member (InitialiseSurface inlined)
+00cb7210	RELOCATION_MATCH	109v109	PASS	really STLport vector push_back (24-byte record), __forceinline copy ctor
+00af5010	DIFFER	127v128	-	127v128: lane gap, push esi delayed into branch
+00af56e0	DIFFER	138v138	-	138v138: one store operand edi vs ebx
+00af8f00	MATCH	117v117	PASS	nested MAX macro
+00b05b80	RELOCATION_MATCH	117v117	PASS	integer twin, _ftol
+004575fc	RELOCATION_MATCH	130v130	PASS	really ~CSpecialAbilitiesBulletTimeDef
+0045784b	RELOCATION_MATCH	147v147	PASS	really ~CSpecialAbilitiesPhysicalShieldDef
