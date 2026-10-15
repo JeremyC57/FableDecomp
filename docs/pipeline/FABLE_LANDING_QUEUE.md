@@ -121,10 +121,11 @@ Parked rows of the Fable-authored chunks 59 and 60 are listed with evidence in
 | `2026-10-15_linux_hand75` | Hand chunk 75 (CShaderRenderManager .. CSkeletalMorphResourceManager): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand76` | Hand chunk 76 (CSmallVector .. CSpellContainerList): 33 of 40 byte-exact | 33 | 6 | 1 | STAGED: land it |
 | `2026-10-15_linux_hand77` | Hand chunk 77 (CSpellContainerList .. CSubtitleRenderer): 34 of 40 byte-exact | 34 | 6 | 0 | STAGED: land it |
+| `2026-10-15_linux_hand78` | Hand chunk 78 (CSubtitledMessage .. CSystemManager): 38 of 40 byte-exact | 38 | 2 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand81` | Hand chunk 81 (CTCAssassinRush .. CTCBoastingPodium): 36 of 40 byte-exact | 36 | 4 | 0 | STAGED: land it |
 | `2026-10-15_linux_hand82` | Hand chunk 82 (CTCBoastingPosition .. CTCCameraPointScripted): 33 of 40 byte-exact | 33 | 7 | 0 | STAGED: land it |
 
-Totals: **719 matched rows staged for landing**, **73 parked rows** for the Fable retry pass.
+Totals: **757 matched rows staged for landing**, **75 parked rows** for the Fable retry pass.
 
 ### Skipped rows (14 open of 14 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -255,6 +256,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 009ba390 CStringParser::ReadLineAsString DIFFER(76v71): retail reads `[ecx+4]` / `[ecx+20h]` AFTER the call to SkipPastNewline (`this` kept in ecx across the call) | tried: start pointer local + `String + StringPos - start` length | next: lane gap: whole-program (/GL) callee register knowledge
 - 009ba4a0 CStringParser::ReadAsStringUntilWhitespace DIFFER(81v80): retail `mov eax,[esi+4] ; lea edi,[eax+ecx] ; cmp byte ptr [edi],0`, lane `mov edi,[esi+4] ; mov al,[edi+ecx] ; add edi,ecx ; test al,al`; the length is built in edx (retail) vs eax (lane) | tried: early empty return, reading path as the `if` body, `optimize("s")` (57 bytes, merges returns), `&String[pos]` form | next: lane gap: the lane folds the dereference into the address computation
 - 0048dc3c CSubtitleRenderer::GetTextOffsetFromEmbeddedTagGraphic DIFFER(79v79): retail places the thumb-click return (`add eax,6A4h ; jmp`) right after its `||` pair (`je A ; cmp ; jne next ; A:`); the lane jumps (`je ; je`) to a copy below the default return | tried: else-if returns (+`optimize("s")`, which fixes the shared `ret 4`), a nested `!=` guard, a result-pointer local, a ternary chain | next: lane gap: block placement
+
+
+#### `2026-10-15_linux_hand78` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand78/differ/`)
+- 009f31c0 CSurface::SetPixel DIFFER(84v82): retail `imul eax,[x] ; mov ecx,[rect] ; mov edx,[ecx+8] ; imul edx,[y] ; add edx,eax ; add edx,[ecx+0Ch]` vs ours `imul eax,[x] ; mov ecx,[rect] ; mov edx,[ecx+8] ; imul edx,[y] ; mov ecx,[ecx+0Ch] ; add eax,edx ; add ecx,eax` (register choice of the pixel-address sum) | tried: `PMem + y*Pitch + x*depth`, `&PMem[y*Pitch + x*depth]`, `PMem + Pitch*y + depth*x` (all 86v82: depth copied to ecx, rect in eax), a named `long offset` local (84v82) | next: an inline `CSurfaceLockedRect::GetPixelAddress(x, y, bytesPerPixel)` helper, or a `const CRGBColour&` colour parameter; else lane gap: register allocation.
+- 004e06c3 CShopDef::CShopDef DIFFER(62v62): retail `mov [esi+4Ch],eax ; mov [esi+50h],eax ; lea ecx,[esi+64h] ; mov [esi+54h],eax` vs ours `lea ecx,[esi+64h]` right after the `[esi+48h]` store | tried: vectors as inline-constructed members, the same under optimize("s"), six plain init-list words (lea above all six stores) | next: lane gap: member-constructor `lea` scheduled after a run of register-zero stores (GOTCHAS wave 24i).
 
 
 #### `2026-10-15_linux_hand81` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand81/differ/`)

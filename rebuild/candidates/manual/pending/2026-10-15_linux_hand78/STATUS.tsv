@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004cdb70	RELOCATION_MATCH	94v94	PASS	CSubtitledMessage ctor; PDB layout, CVectorMap inline ctors (Dirty byte), bank fetched in body
+006e9360	RELOCATION_MATCH	41v41	PASS	mislabelled: 64-bit-id map lookup returning &node->value (owner unidentified); key copied to a frame local
+006e9390	RELOCATION_MATCH	41v41	PASS	byte-identical twin of 006e9360
+009f2d60	RELOCATION_MATCH	55v55	PASS	CSurface copy ctor; local polymorphic model (header vptr is a data word)
+009f2dd0	RELOCATION_MATCH	79v79	PASS	D3DXLoadSurfaceFromFileW; CWideString temp in the dead by-ref arg slot
+009f2e70	MATCH	76v76	PASS	operator=; Uninitialise auto-inlined; engine header + methods struct
+009f2ec0	MATCH	65v65	PASS	AllocationSource = surface != 0; AddRef on the argument
+009f2f10	MATCH	66v66	PASS	adopt mip surface, source 3; dead zero stores kept
+009f2f60	RELOCATION_MATCH	43v43	PASS	GetDesc -> CPixelFormat built in hidden result
+009f2fc0	RELOCATION_MATCH	75v75	PASS	depth*W*H/8 with GetPixelFormat inlined
+009f31c0	DIFFER	84v82	-	pixel address sum register allocation (rect/depth registers)
+009f3390	RELOCATION_MATCH	72v72	PASS	width must come from an inline GetWidth() (register across the call)
+009f4330	RELOCATION_MATCH	39v39	PASS	Lock + UnlockRect bracket
+009f4360	RELOCATION_MATCH	39v39	PASS	byte-identical twin of 009f4330
+00a67480	RELOCATION_MATCH	43v43	PASS	mislabelled: CVolume::GetPixelFormat (GetDesc slot 8)
+00a67770	RELOCATION_MATCH	96v96	PASS	mislabelled: CVolume; Sizeof = default-initialised local + `size +=` under the test
+00a681f0	RELOCATION_MATCH	86v86	PASS	mislabelled: CVolumeTexture::GetByteLength(level); pixel format in the dead level slot
+00c53310	RELOCATION_MATCH	38v38	PASS	mislabelled: DirectSound Release + CoUninitialize (owner unidentified)
+00ca77f0	RELOCATION_MATCH	81v81	PASS	mislabelled: DirectShow CBaseFilter::QueryFilterInfo (__stdcall COM, IBaseFilter this)
+00ca7930	MATCH	67v67	PASS	mislabelled: DirectShow CBaseFilter::NotifyEvent (SDK source verbatim)
+00ca8b50	MATCH	49v49	PASS	mislabelled: DirectShow CBaseInputPin::BreakConnect (SDK source verbatim)
+00f38930	RELOCATION_MATCH	83v83	PASS	two GFGetSystemManager fetches kept in edi/ebx
+00f39a50	RELOCATION_MATCH	79v79	PASS	one-slot texture array local (push ecx frame)
+00c275e0	RELOCATION_MATCH	50v50	PASS	mislabelled: CODA source float setter under CProfileLock (+0xc source)
+00c27670	RELOCATION_MATCH	50v50	PASS	mislabelled: CODA source float setter under CProfileLock (+0xc source)
+00c49420	RELOCATION_MATCH	50v50	PASS	mislabelled: CODA source decibel setter under CProfileLock (+4 source)
+00a44620	RELOCATION_MATCH	62v62	PASS	optimize("", off) TU; vtable store, explicit base dtor
+00a44840	RELOCATION_MATCH	56v56	PASS	optimize("", off) TU; movzx bool tests
+00547360	RELOCATION_MATCH	29v29	PASS	base Initialise then two stores
+00991690	MATCH	39v39	PASS	0x24-record vector search (owner not PDB CSymbolMap)
+009916f0	MATCH	39v39	PASS	reverse lookup twin of 00991690
+00991720	MATCH	37v37	PASS	first non-zero value; second load in the found tail is natural
+009917e0	RELOCATION_MATCH	87v87	PASS	_stricmp search; end re-read per iteration, null-case-first text accessor
+009e5090	MATCH	39v39	PASS	SLONGMap walk returning &pair.second
+009e50c0	RELOCATION_MATCH	95v95	PASS	end + key block in locals inside the guard of a do/while (retail LICM across the call)
+009e5120	RELOCATION_MATCH	68v68	PASS	inline map Find reads end() once into a local (default result)
+009e51c0	RELOCATION_MATCH	61v61	PASS	same Find; long result via xor/setne
+004e06c3	DIFFER	62v62	-	mislabelled CShopDef ctor: member-ctor lea scheduled vs zero stores (wave-24i lane gap)
+009a4ed0	RELOCATION_MATCH	75v75	PASS	CCharString in the dead arg slot; MessageBoxW dllimport
+009a5270	MATCH	60v60	PASS	restore test must be a nested if (the && chain hoists a store)
