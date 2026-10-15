@@ -128,6 +128,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand101` | Hand chunk 101 (CTCSmashableBase .. CTCSwitchableNavigation): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand102` | Hand chunk 102 (CTCSwitchableNavigation .. CTCTavernGameCardBlackjack): 33 of 40 byte-exact | - | 6 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand103` | Hand chunk 103 (CTCTavernGameCardBlackjack .. CTCThingOwner): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand104` | Hand chunk 104 (CTCThingOwner .. CTCVolumeContainmentTracker): 36 of 40 byte-exact | - | 3 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -173,15 +174,14 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **156 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **159 parked rows** for the Fable retry pass.
 
-### Skipped rows (9 open of 22 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (8 open of 23 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
-| `004debf7` | multi | in-chunk:903 | 004debf7:5 004debfc:3 004debff:5 004dec04:5 004dec09:16 004dec19:3 | `2026-10-15_linux_hand102` | row holds six tiny functions back to back (jmp [eax+24h]; xor eax,eax ret; ret 0Ch; ret 4; a call forwarder; mov al,1 ret) |
+| `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
-| `0061b530` | multi | in-chunk:903 | 0061b530:40 0061b560:40 | `2026-10-15_linux_hand95` | row holds two functions (0x0061B530 + 0x0061B560) |
 | `007460d0` | multi | in-chunk:902 | 007460d0:5 007460e0:3 007460f0:9 | `2026-10-15_linux_hand98` | three functions in a 48-byte row (jmp [eax+24h] / mov al,1 / vtable getter) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
@@ -229,6 +229,12 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 #### `2026-10-15_linux_hand103` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand103/differ/`)
 - 007d3510 CTCTavernGameCoinGolf::vfunc_32 DIFFER(80v80): retail `mov ecx,[esi+4] ; mov ecx,[ecx+70h] ; lea eax,[esp+8] ; xor edi,edi ; push eax ; mov [esp+0Ch],edi` vs lane `mov ecx,[esi+4] ; xor edi,edi ; lea eax ; mov [esp+8],edi ; mov ecx,[ecx+70h] ; push eax` (the null out-pointer store scheduled between the two loads) | tried: raw-pointer out local, inline GetDefinition accessor, CDefPointer class with null constructor, definition pointer taken into a local first | next: lane gap: scheduling of a zero store against an address-chain load (same family as the 24i `lea ecx` after zero stores gap)
 - 007d7ec0 CTCTavernGameSpotTheAddition::vfunc_11 DIFFER(78v66): (1) the same null out-pointer store schedule as 007d3510; (2) the inlined CDefPointer release compiles to the 24h counted shape `mov esi,[eax+4] ; add eax,4 ; dec esi ; mov [eax],esi ; jne` where retail has `mov ecx,[esp+8] ; test ecx,ecx ; je ; dec [ecx+4] ; jne ; call [vt+4]` | tried: `m_p && --m_p->n` destructor, local copy with &&, Release() member on the pointee, nested ifs on a local copy | next: write the release in the body on a plain pointer copied from the out slot (`T* def = slot; if (def) { if (--def->m_refCount == 0) def->Destroy(); }` -- the open-coded form gave the clean `dec [edi+4] ; jne` in 007d3510); part (1) is probably a lane gap
+
+
+#### `2026-10-15_linux_hand104` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand104/differ/`)
+- 006dee80 CTCTrophy::UpdateGainedWitnessSounds DIFFER(92v94): ours `mov [esp+8],fps ; call ; mov [esp+0Ch],frame ; fild fps ; fmul [def+44h] ; fiadd frame`, retail `mov [esp+0Ch],fps ; call ; mov [esp+8],frame ; fild frame ; fild fps ; fmul ; faddp` | tried: plain expression, def/fps/frame named locals, explicit (float) casts, operands swapped | next: the frame as a named `float` local (`float frame = (float)GetWorldFrame();`) so it is converted and kept on the FPU stack before the product
+- 00659295 CTCVillage::InitialiseToggleTorchTypes DIFFER(79v77): ours `mov eax,[eax+4] ; cmp byte ptr [eax+1Ch],0 ; sete cl ; push ecx ; mov ecx,eax`, retail `mov ecx,[eax+4] ; cmp byte ptr [ecx+1Ch],0 ; sete al ; push eax` | tried: pointer-returning PeekTC + named light local, `__forceinline` PeekTC, inline CTCLight::ToggleActive on the returned pointer, out-parameter PeekTC | next: lane gap: register choice for the component (the 1-byte sete target), unless a `bool` local for `!Active` evaluated first changes it
+- 007ee370 CTCVillageMember::OnCreate DIFFER(88v86): ours zeroes the def local before the argument pushes and holds the def object in edi (extra push/pop), retail zeroes it after the pushes and reloads it into the dead `this` register esi after `add esi,0Ch ; push esi` | tried: CDefPointer local with destructor (re-reads the escaped local), plain holder + pointer local + inline release, the same under `/Os` (worse: frame), an inline SubDef-and-release helper | next: lane gap: retail treats the address-escaped local as unchanged across GetSubDef (whole-program / LTCG alias knowledge) -- try a `__fastcall`/`const` GetSubDef declaration or a by-value def holder returned from GetDef
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

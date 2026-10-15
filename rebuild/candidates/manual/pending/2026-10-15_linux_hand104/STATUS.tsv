@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0071b240	RELOCATION_MATCH	90v90	PASS	list erase loop; IS_THING_DEAD idiom
+0071b2a0	RELOCATION_MATCH	35v35	PASS	for_each(CSetThingAsDrawable) slot 16
+0071b2d0	RELOCATION_MATCH	35v35	PASS	for_each(CSetThingInLimbo); by-value iterators with copy ctor
+00787d4f	RELOCATION_MATCH	69v69	PASS	/Os: or byte [mem],2
+00787d94	RELOCATION_MATCH	40v40	PASS	base OnKill + IS_THING_ALIVE kill
+0078839a	RELOCATION_MATCH	41v41	PASS	frame size TU; bare CIntelligentPointer temporary
+0078888a	RELOCATION_MATCH	42v42	PASS	/Os; GetWorld()->static frame getter
+0078918d	RELOCATION_MATCH	94v94	PASS	/Os; STLport _Vector_base + alloc_proxy vectors
+007898a3	RELOCATION_MATCH	41v41	PASS	same body at +0x2C; class is the obstruction's TC (label)
+007badd0	MATCH	44v44	PASS	3-case switch
+004a1c8e	SKIP	-	-	catch-continuation fragment of an EH function, not an entry
+0059b039	RELOCATION_MATCH	33v33	PASS	really STLport deque::back() (label)
+006dda20	RELOCATION_MATCH	43v43	PASS	GetSubDef + list clear + !FakeTrophy
+006ddbf0	RELOCATION_MATCH	70v70	PASS	OnSerialise (slot 1): two Transfer calls
+006ddcd0	RELOCATION_MATCH	95v95	PASS	HasTC && inline GetInterface; invalid-handle global
+006dee80	DIFFER	92v94	-	fps/frame float conversion order
+007c7840	MATCH	38v38	PASS	OnInitialActivate (slot 6); resistance clamp
+007c75e0	RELOCATION_MATCH	60v60	PASS	IS_THING_ALIVE + tail StopTurncoatingEffects
+0059b576	RELOCATION_MATCH	76v76	PASS	really STLport deque _M_push_back_aux_v (label)
+007fec60	RELOCATION_MATCH	69v69	PASS	STLport vectors + PThing pointer
+005c2e68	RELOCATION_MATCH	24v24	PASS	really CTCInventoryWeapons::RemoveAllConfiscatedItems (label)
+00658a02	MATCH	51v51	PASS	/Os list walk, && of two virtuals
+00658acb	RELOCATION_MATCH	85v85	PASS	/Os + forceinline counted GetPDef copies
+00658c5b	RELOCATION_MATCH	91v91	PASS	really GetTavernTimes (label)
+00659104	RELOCATION_MATCH	71v71	PASS	/Os; bitset test + crate-task loop
+00659295	DIFFER	79v77	-	register choice of the light component (ecx vs eax)
+00659c32	RELOCATION_MATCH	76v76	PASS	really StartSecuritySweep(bool) (label); list size walk
+00659ea9	RELOCATION_MATCH	83v83	PASS	/Os; six RemoveThingFromTaskList<T>
+0065ce56	RELOCATION_MATCH	50v50	PASS	really RemoveApologiseableCrimes(long); it/next iterators
+0065ce88	RELOCATION_MATCH	19v19	PASS	OnInitialActivate (slot 6): SetVillageLimbo
+0065f01d	RELOCATION_MATCH	49v49	PASS	really CTCDummyVillager::Evict (label)
+009cfb70	RELOCATION_MATCH	69v69	PASS	really CBankFile (CVectorMap::Sort + PackRuntimeData); name inferred
+009f7910	RELOCATION_MATCH	40v40	PASS	unoptimised list begin() (label)
+009f7940	RELOCATION_MATCH	40v40	PASS	unoptimised list begin() twin (label)
+00ae34d0	RELOCATION_MATCH	59v59	PASS	CVectorMap::Sort + member call; owner class unknown (label)
+004daee9	RELOCATION_MATCH	46v46	PASS	/Os ctor; PVillage(0) out-of-line ctor
+007ee240	RELOCATION_MATCH	38v38	PASS	PVillage resolves || VillageUID != 0
+007ee370	DIFFER	88v86	-	def local zero-store order + edi vs esi
+0077c920	RELOCATION_MATCH	54v54	PASS	really CTCHighlightItem ctor (label)
+00785110	RELOCATION_MATCH	64v64	PASS	ctor; theme channel desc inline ctor
