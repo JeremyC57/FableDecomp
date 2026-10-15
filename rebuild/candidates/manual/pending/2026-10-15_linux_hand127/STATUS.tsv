@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00dcec70	RELOCATION_MATCH	157v157	PASS	nested script virtual pair shares one vtable load; void with a tail-jumped check
+00692aa0	DIFFER	132v132	-	scheduling only: `add esi,68h ; mov ecx,edi` before the two pushes in retail
+00692b30	RELOCATION_MATCH	130v130	PASS	inlined SetMoveToPos + C3DVector operator+ (step on the left)
+00692db0	RELOCATION_MATCH	149v149	PASS	inlined UpdateActionRunningTime; RunningTimeSeconds * g (fild first)
+00692ec0	DIFFER	95v97	-	retail keeps an explicit `xor al,al` block for the early false; the `&&` body matches
+007c3070	DIFFER	112v112	-	register choice only: def pointer loaded into esi directly, lea regs, release vtable reg
+00843f50	RELOCATION_MATCH	109v109	PASS	4-arg CCreatureActionBase ctor @ 0x00693C70; pack(1) layout
+0084c900	RELOCATION_MATCH	97v97	PASS	#pragma pack(1): CIntelligentPointer at +0xad
+007eb2d0	RELOCATION_MATCH	132v132	PASS	
+00843840	RELOCATION_MATCH	128v128	PASS	label: CCreatureAction_FillBucket (vtable 0x01274E2C)
+008438c0	RELOCATION_MATCH	124v124	PASS	label: CCreatureAction_ShowLove (vtable 0x01274F4C)
+00844b40	RELOCATION_MATCH	118v118	PASS	
+00718650	RELOCATION_MATCH	123v123	PASS	
+00718710	RELOCATION_MATCH	123v123	PASS	label: CCreatureAction_ReloadMissileWeapon (vtable 0x012656A4)
+00842370	RELOCATION_MATCH	121v121	PASS	
+008cc9c0	RELOCATION_MATCH	151v151	PASS	inline GetPhysics() accessor loads the component straight into ecx
+008cca60	RELOCATION_MATCH	151v151	PASS	
+008ccb00	RELOCATION_MATCH	116v116	PASS	inline GetGraphicAppearance() accessor; CThing +0x60/+0x64
+008c9410	RELOCATION_MATCH	119v119	PASS	
+008c8960	RELOCATION_MATCH	108v108	PASS	named def locals read before each creature fetch (fastcall right-to-left)
+008c94d0	RELOCATION_MATCH	132v132	PASS	8-byte CIntelligentPointer (vptr+item) for the +0x120 member
+008c9860	RELOCATION_MATCH	117v117	PASS	
+0078bd60	RELOCATION_MATCH	105v105	PASS	label: CCreatureAction_HeroLoadRangedWeapon copy ctor (vtable 0x0126B9D4)
+008ed850	RELOCATION_MATCH	111v111	PASS	GetInterface result ignored: manager read back from the frame slot
+00865940	RELOCATION_MATCH	114v114	PASS	
+008eda10	RELOCATION_MATCH	120v120	PASS	GetModeType() queried and dropped
+008e45b0	RELOCATION_MATCH	124v124	PASS	label: CCreatureAction_ScorpionTailWithdraw (vtable 0x01286334)
+008e4640	RELOCATION_MATCH	124v124	PASS	label: CCreatureAction_ScorpionTailPlunge (vtable 0x01286494)
+008c39a0	RELOCATION_MATCH	143v143	PASS	
+008bbe40	RELOCATION_MATCH	110v110	PASS	
+008bbeb0	RELOCATION_MATCH	110v110	PASS	label: CCreatureAction_FinishHealLifeSpell (vtable 0x0127CD34)
+00849140	RELOCATION_MATCH	158v158	PASS	hand-written def release after the message post; two creature locals (first dead)
+008cef50	RELOCATION_MATCH	153v153	PASS	
+008ce340	RELOCATION_MATCH	123v123	PASS	C3DVector memberwise user copy ctor for the three dword moves
+008cf020	RELOCATION_MATCH	111v111	PASS	
+00a44740	RELOCATION_MATCH	130v130	PASS	label: CSuspendableProcessMicrothread ctor; #pragma optimize("", off) + /EHsc
+008b9dd0	DIFFER	125v125	-	register swap only: this in edi / &PCreature in esi in retail
+008bb670	RELOCATION_MATCH	120v120	PASS	
+008e6400	RELOCATION_MATCH	142v142	PASS	scoped named AddTC name; this reused as &PCreature (add esi,8)
+008e6a70	RELOCATION_MATCH	97v97	PASS	
