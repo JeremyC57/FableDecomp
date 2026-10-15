@@ -233972,6 +233972,251 @@ $catalog = @(
         TestSource = '00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Init_00df1760_test.cpp'
         PassPattern = '00df1760_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00556200'
+        Module = 'NUISystem::CScrollableList'
+        Source = '00/55/NUISystemCScrollableList_OnActivate_00556200.cpp'
+        TestSource = '00/55/NUISystemCScrollableList_OnActivate_00556200_test.cpp'
+        PassPattern = '00556200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ed070'
+        Module = 'NCameraModes::CScriptModuleBase'
+        Source = '00/5e/NCameraModesCScriptModuleBase_CScriptModuleBase_005ed070.cpp'
+        TestSource = '00/5e/NCameraModesCScriptModuleBase_CScriptModuleBase_005ed070_test.cpp'
+        PassPattern = '005ed070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00618ca0'
+        Module = 'CRegionExitMarkerVector'
+        Source = '00/61/CRegionExitMarkerVector_pushback_00618ca0.cpp'
+        TestSource = '00/61/CRegionExitMarkerVector_pushback_00618ca0_test.cpp'
+        PassPattern = '00618ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00778210'
+        Module = 'CGoodsPlaceVector'
+        Source = '00/77/CGoodsPlaceVector_pushback_00778210.cpp'
+        TestSource = '00/77/CGoodsPlaceVector_pushback_00778210_test.cpp'
+        PassPattern = '00778210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00827040'
+        Module = 'CScriptedMapBrush'
+        Source = '00/82/CScriptedMapBrush_CScriptedMapBrush_00827040.cpp'
+        TestSource = '00/82/CScriptedMapBrush_CScriptedMapBrush_00827040_test.cpp'
+        PassPattern = '00827040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00852160'
+        Module = 'NCameraModes::CScriptModuleFOVZoom'
+        Source = '00/85/NCameraModesCScriptModuleFOVZoom_Update_00852160.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleFOVZoom_Update_00852160_test.cpp'
+        PassPattern = '00852160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008522b0'
+        Module = 'NCameraModes::CScriptModuleDolly'
+        Source = '00/85/NCameraModesCScriptModuleDolly_Update_008522b0.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleDolly_Update_008522b0_test.cpp'
+        PassPattern = '008522b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00852400'
+        Module = 'NCameraModes::CScriptModuleCameraOnAStick'
+        Source = '00/85/NCameraModesCScriptModuleCameraOnAStick_Update_00852400.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleCameraOnAStick_Update_00852400_test.cpp'
+        PassPattern = '00852400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00852560'
+        Module = 'NCameraModes::CScriptModuleFOVZoom'
+        Source = '00/85/NCameraModesCScriptModuleFOVZoom_CScriptModuleFOVZoom_00852560.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleFOVZoom_CScriptModuleFOVZoom_00852560_test.cpp'
+        PassPattern = '00852560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00852d10'
+        Module = 'NCameraModes::CScriptModuleGoToLookAt'
+        Source = '00/85/NCameraModesCScriptModuleGoToLookAt_CScriptModuleGoToLookAt_00852d10.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleGoToLookAt_CScriptModuleGoToLookAt_00852d10_test.cpp'
+        PassPattern = '00852d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00852d90'
+        Module = 'NCameraModes::CScriptModuleTransitionBetweenPoints'
+        Source = '00/85/NCameraModesCScriptModuleTransitionBetweenPoints_CScriptModuleTransitionBetweenPoints_00852d90.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleTransitionBetweenPoints_CScriptModuleTransitionBetweenPoints_00852d90_test.cpp'
+        PassPattern = '00852d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008530b0'
+        Module = 'NCameraModes::CScriptModuleOpenChest'
+        Source = '00/85/NCameraModesCScriptModuleOpenChest_CScriptModuleOpenChest_008530b0.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleOpenChest_CScriptModuleOpenChest_008530b0_test.cpp'
+        PassPattern = '008530b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00853120'
+        Module = 'NCameraModes::CScriptModuleUseLamp'
+        Source = '00/85/NCameraModesCScriptModuleUseLamp_CScriptModuleUseLamp_00853120.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleUseLamp_CScriptModuleUseLamp_00853120_test.cpp'
+        PassPattern = '00853120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00853290'
+        Module = 'NCameraModes::CScriptModuleBase'
+        Source = '00/85/NCameraModesCScriptModuleBase_GetTransformedPosition_00853290.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleBase_GetTransformedPosition_00853290_test.cpp'
+        PassPattern = '00853290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008534f0'
+        Module = 'NCameraModes::CScriptModuleGoToLookAt'
+        Source = '00/85/NCameraModesCScriptModuleGoToLookAt_Update_008534f0.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleGoToLookAt_Update_008534f0_test.cpp'
+        PassPattern = '008534f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088b610'
+        Module = 'CMorphTargetNameVector'
+        Source = '00/88/CMorphTargetNameVector_pushback_0088b610.cpp'
+        TestSource = '00/88/CMorphTargetNameVector_pushback_0088b610_test.cpp'
+        PassPattern = '0088b610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ec1a0'
+        Module = 'CHoverModeEntryVector'
+        Source = '00/8e/CHoverModeEntryVector_pushback_008ec1a0.cpp'
+        TestSource = '00/8e/CHoverModeEntryVector_pushback_008ec1a0_test.cpp'
+        PassPattern = '008ec1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00904310'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_ClearCommands_00904310.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_ClearCommands_00904310_test.cpp'
+        PassPattern = '00904310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00904ee0'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_IsPerformingScriptTask_00904ee0.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_IsPerformingScriptTask_00904ee0_test.cpp'
+        PassPattern = '00904ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009881f0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetWorldTransform_009881f0.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetWorldTransform_009881f0_test.cpp'
+        PassPattern = '009881f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009887b0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetVSMatrixConstantTransposed_009887b0.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetVSMatrixConstantTransposed_009887b0_test.cpp'
+        PassPattern = '009887b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00988840'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetVSMatrixConstantTransposed_00988840.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetVSMatrixConstantTransposed_00988840_test.cpp'
+        PassPattern = '00988840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00988990'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetD3DMatrix_00988990.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetD3DMatrix_00988990_test.cpp'
+        PassPattern = '00988990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009894b0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateWorldSpaceTextureTransform_009894b0.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateWorldSpaceTextureTransform_009894b0_test.cpp'
+        PassPattern = '009894b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00989640'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateWorldSpaceFogTransform_00989640.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateWorldSpaceFogTransform_00989640_test.cpp'
+        PassPattern = '00989640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098a7f0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetBoneTransform_0098a7f0.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetBoneTransform_0098a7f0_test.cpp'
+        PassPattern = '0098a7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098b390'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetPixelShaderConstant_0098b390.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetPixelShaderConstant_0098b390_test.cpp'
+        PassPattern = '0098b390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d8ad0'
+        Module = 'CShaderStatesScope'
+        Source = '00/9d/CShaderStatesScope_CShaderStatesScope_009d8ad0.cpp'
+        TestSource = '00/9d/CShaderStatesScope_CShaderStatesScope_009d8ad0_test.cpp'
+        PassPattern = '009d8ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a72690'
+        Module = 'CSkeletalMorphEntryVector'
+        Source = '00/a7/CSkeletalMorphEntryVector_pushback_00a72690.cpp'
+        TestSource = '00/a7/CSkeletalMorphEntryVector_pushback_00a72690_test.cpp'
+        PassPattern = '00a72690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b49320'
+        Module = 'CShaderPointLight'
+        Source = '00/b4/CShaderPointLight_CShaderPointLight_00b49320.cpp'
+        TestSource = '00/b4/CShaderPointLight_CShaderPointLight_00b49320_test.cpp'
+        PassPattern = '00b49320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b49950'
+        Module = 'CShaderDirectionalLight'
+        Source = '00/b4/CShaderDirectionalLight_CShaderDirectionalLight_00b49950.cpp'
+        TestSource = '00/b4/CShaderDirectionalLight_CShaderDirectionalLight_00b49950_test.cpp'
+        PassPattern = '00b49950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c34370'
+        Module = 'CEnginePrimitiveOcclusionManager'
+        Source = '00/c3/CEnginePrimitiveOcclusionManager_Set_00c34370.cpp'
+        TestSource = '00/c3/CEnginePrimitiveOcclusionManager_Set_00c34370_test.cpp'
+        PassPattern = '00c34370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d440'
+        Module = 'CRenderLayerWin32'
+        Source = '00/c4/CRenderLayerWin32_ApplySlotA_00c4d440.cpp'
+        TestSource = '00/c4/CRenderLayerWin32_ApplySlotA_00c4d440_test.cpp'
+        PassPattern = '00c4d440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d4b0'
+        Module = 'CRenderLayerWin32'
+        Source = '00/c4/CRenderLayerWin32_ApplySlotB_00c4d4b0.cpp'
+        TestSource = '00/c4/CRenderLayerWin32_ApplySlotB_00c4d4b0_test.cpp'
+        PassPattern = '00c4d4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2a0f0'
+        Module = 'CScytheNearOracle'
+        Source = '00/e2/CScytheNearOracle_Init_00e2a0f0.cpp'
+        TestSource = '00/e2/CScytheNearOracle_Init_00e2a0f0_test.cpp'
+        PassPattern = '00e2a0f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

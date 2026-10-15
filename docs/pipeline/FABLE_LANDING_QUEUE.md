@@ -181,6 +181,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand154` | Hand chunk 154 (CQ_HangingTreeGoodScript .. CQuestManager): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand155` | Hand chunk 155 (CQuestManager .. CRenderManagerCore): 29 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand156` | Hand chunk 156 (CRenderManagerCore .. CScriptGameResourceObjectScriptedThing): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand157` | Hand chunk 157 (CScriptGameResourceObjectScriptedThing .. CShaderRenderManager): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -235,7 +236,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **491 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **496 parked rows** for the Fable retry pass.
 
 ### Skipped rows (10 open of 34 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -781,6 +782,14 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 004381b0 CScreenMessage::IsHardCoded DIFFER(118v117): frame slots of the "(HC)" marker and the converted text swapped, text re-read from the frame instead of the returned pointer | tried: temporary in the call, named local, const& binding, inline StartsWith (not inlined) | next: `__forceinline bool StartsWith(const CCharString&)` on the conversion temporary
 - 00cb7c40 CScriptBase::RunSpawnedFunctions DIFFER(107v107): register allocation only (this ebx vs ebp, zero ebp vs ebx; count-block reload eax vs ecx) | tried: operator delete vs delete | next: lane gap: register allocation (scheduling-only)
 - 00cb88b0 CScriptBase::OnScriptedEntityDeactivated DIFFER(131v128): retail keeps the re-read key in edx/ebx and tests the bool with `cmp byte ptr [esp+1Ch],0`; ours ecx/edx + `mov esi,ecx` and `mov bl ; test bl` | tried: find(const&), __forceinline by-value find, open-coded LowerBound + const copy, const copy after find | next: register allocation; maybe the key compare inside a CKeyPairCompareLess functor
+
+
+#### `2026-10-15_linux_hand157` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand157/differ/`)
+- 00852750 NCameraModes::CScriptModuleBase::SetPThingOrigin DIFFER(154v152): retail keeps the placeholder (`[thing+60h]`) in ecx (`lea edx,[ecx+0Ch]` source, `lea eax,[esi+14h]` dest) so the slot-72 virtual needs no `mov ecx`; ours holds it in eax and adds `mov ecx,eax` | tried: inline accessors through the intelligent pointer, placeholder local, thing local, user C3DVector operator= / copy ctor | next: a CThing inline that returns the placeholder by reference, or the position/axis getters as placeholder members called on a `CPlaceholder&`
+- 008520f0 NCameraModes::CScriptModuleFOVZoom::CalculateIncrementVector DIFFER(130v106): retail keeps diff.x/diff.y on the x87 stack (only diff.z stored at [esp+14h]) and stores the 1/frames reciprocal in the dead `to` argument slot; ours spills the operator- result to a frame temporary and copies it | tried: operator- + operator*(1/frames), named inv local, operator/(float), scalar dx/dy/dz locals (84 bytes, no temporary at all) | next: `C3DVector diff(to.X - from.X, ...)` style or an operator- returning through a 3-float ctor; else lane gap: dead-argument-slot float local
+- 00852220 NCameraModes::CScriptModuleFullTransition::Update DIFFER(133v133): second sum's X term only: retail `fld [esi+4Ch] ; mov eax,[esi+38h] ; fadd [eax+10h]`, ours `mov eax ; fld [eax+10h] ; fadd [esi+4Ch]`; swapping the operands fixes X but flips Y/Z | tried: both operand orders | next: lane gap: scheduling
+- 008531e0 NCameraModes::CScriptModuleOpenGate::Update DIFFER(117v117): only the X term of `Pos += DeltaPos`: retail `fld [edi] ; fadd [esi+68h]`, ours `fld [esi+68h] ; fadd [edi]` | tried: direct call, appearance local, owner local (fixed the ebx shape), operator+ form | next: lane gap: scheduling (same X-term operand-order effect as 0x852220)
+- 00989830 CShaderRenderManager::InitialiseLight DIFFER(98v99): retail loads the attenuation table pointer, computes `(j>>2)<<5` and `j&3` from two `lea [ebx-1]`, adds, THEN loads Attenuation2; ours hoists the Attenuation2 load above the table load and shares one `lea` | tried: pointer + component locals, inline double index (folds to `[edx+eax*4]`), block reference, block member indexing | next: lane gap: scheduling
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

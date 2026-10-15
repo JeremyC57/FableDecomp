@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00904310	RELOCATION_MATCH	110v110	PASS	inlined GetInterface (__forceinline) over interface 0x1f
+00904ee0	RELOCATION_MATCH	125v125	PASS	as 0x904310; `!IsEmpty()` widened tail
+005ed070	RELOCATION_MATCH	107v107	PASS	NCameraModes::CScriptModuleBase ctor; init list, inline C3DVector(x,y,z)
+00852750	DIFFER	154v152	-	parked: placeholder register choice (ecx vs eax)
+00853290	RELOCATION_MATCH	131v131	PASS	C3DVector(x,y,z) return (Z summed first) + user copy ctor origin local
+00c34370	RELOCATION_MATCH	146v146	PASS	label fix: occlusion-manager Set, `if ((m = s->mode) != 0)`
+00852400	RELOCATION_MATCH	133v133	PASS	field-by-field named lookAt local
+008522b0	RELOCATION_MATCH	153v153	PASS	global fps read into a local BEFORE the owner stores
+008520f0	DIFFER	130v106	-	parked: diff kept on x87 / reciprocal in dead arg slot
+00852160	RELOCATION_MATCH	120v120	PASS	operator+ X = X + Increment
+00852560	RELOCATION_MATCH	130v130	PASS	C3DVector user copy ctor in init list
+00618ca0	RELOCATION_MATCH	111v111	PASS	label fix: STLport push_back, 28-byte record
+00852220	DIFFER	133v133	-	parked: X-term operand order of 2nd sum (scheduling)
+0088b610	RELOCATION_MATCH	97v97	PASS	label fix: STLport push_back, 20-byte record
+008ec1a0	RELOCATION_MATCH	100v100	PASS	label fix: STLport push_back, 24-byte record
+00a72690	RELOCATION_MATCH	97v97	PASS	label fix: STLport push_back, 20-byte record
+00852d10	RELOCATION_MATCH	125v125	PASS	thing + focal point named locals
+008534f0	RELOCATION_MATCH	141v141	PASS	as 0x852d10 inside nested alive test
+008530b0	RELOCATION_MATCH	102v102	PASS	OpenGate ctor shape, two intelligent pointers
+00853120	RELOCATION_MATCH	102v102	PASS	label fix: CScriptModuleUseLamp ctor (vtable 0x1275AE4)
+008531e0	DIFFER	117v117	-	parked: X term of Pos += DeltaPos operand order
+00778210	RELOCATION_MATCH	100v100	PASS	label fix: push_back of 36-byte POD; __forceinline memberwise copy
+00852d90	RELOCATION_MATCH	116v116	PASS	focal point passed twice to SetUpTransitionCamera
+00827040	RELOCATION_MATCH	123v123	PASS	copy ctor; C2DBoxI user copy ctor; retail containers 12 bytes
+00556200	RELOCATION_MATCH	147v147	PASS	secondary input-client base at +4
+00e2a0f0	RELOCATION_MATCH	120v120	PASS	by-value CScriptThing with embedded CCountedPointer PImp
+00c4d440	RELOCATION_MATCH	110v110	PASS	label fix: Win32 render layer member; returns helper result
+00c4d4b0	RELOCATION_MATCH	112v112	PASS	label fix: as 0xc4d440 for slot set 1
+00b49320	RELOCATION_MATCH	106v106	PASS	label fix: CShaderPointLight ctor (vtable 0x12A2114)
+00b49950	RELOCATION_MATCH	99v99	PASS	init list, C3DVector user copy ctor
+009881f0	MATCH	160v160	PASS	pointer local for memory-form or
+009887b0	MATCH	129v129	PASS	local transposed array + COM stdcall
+00988840	MATCH	157v157	PASS	4x4 variant
+00988990	MATCH	131v131	PASS	inline 16-float D3DXMATRIX ctor returned by value
+009894b0	MATCH	137v137	PASS	loop with clamp ternary
+00989640	MATCH	105v105	PASS	C4DVector user copy ctor
+00989830	DIFFER	98v99	-	parked: attenuation-slot scheduling
+0098a7f0	MATCH	104v104	PASS	bone reference local + pointer-local or
+0098b390	RELOCATION_MATCH	140v140	PASS	PSConstNames reference local
+009d8ad0	RELOCATION_MATCH	105v105	PASS	label fix: two-bool shader-state scope ctor; inline setters with old-value pointer
