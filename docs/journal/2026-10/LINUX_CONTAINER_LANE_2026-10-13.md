@@ -706,6 +706,29 @@ empty-tag slot, post-call re-reads, `fistp` asm_bake helpers, LTCG conventions),
 functions), the review items in each batch's LESSONS.md (local models beside headers whose PDB offsets miss retail's 12-byte
 containers; wrong propagated labels listed in NOTES.md). In flight: chunks 92–103 (12 agents); 104–108 prepared; pool ~1,040.
 
+### Wave 25, part 2 (chunks 92–111, ledger chunks 902–904, retries 1–3, the 97–160-byte pool)
+Fleet rules changed twice at the owner's request (12 Opus agents, then "no launches until fewer than 7 run and hold 7",
+then "hold 6 Opus plus one Fable 5.1 agent at medium effort"); the landing session keeps the count by launching only when a
+report arrives. Landed: chunks 92–111 (38, 39, 39, 39, 38, 38, 32, 37, 36, 33, 33, 38, 36, 37, 39, 38, 32, 32, 36, 36 of 40)
+and the ledger chunks 902 (3: the CTCPerceiveThing pieces; the two ~2 KB RenderPrimitive bodies inline the engine's assembly
+float-to-long rounding and are parked as asm_bake shapes with full hand-over notes), 903 (8 of 8: the six CTCTargetingSpirit
+vtable bodies of one 48-byte row, CTCInventoryQuests::ProcessInventoryInputUp/Down) and 904 (8 of 9: three propagated
+"CThingFilter_IsValid" rows holding slot forwarders, a six-argument record constructor, a word getter, the "MPRT" descriptor
+getter and three `return this` accessors; the __stdcall COM forwarder thunk is parked on an argument-slot re-store).
+Retries by the landing session: every parked differ source was re-graded as-is and under four pragma variants (1 win: a
+sibling-proven form the author left ungraded); the STLport subscript `*(begin() + n)` flipped chunk 91's three CTCInventory
+element-access rows; declaring the search cursor before its limit flipped CTCInventoryAbilities::GetButtonAbilityIsSetTo.
+Ten forms of the bilinear interpolation (one load placement), ResetTrap, GetCardDef and the def-pointer release rows
+(00663260, 0082d870: the hand-written pointer-local release still splits when the pointer is tested right after the load)
+stay parked. The class-labelled 17–96-byte pool is spent (80 rows); `mkchunk.py N K LO HI` now cuts a size band and chunks
+117–124 come from the 97–160-byte class pool (2,510 rows, then 1,971 at 161–256). Recurring agent lessons this part: VC7.1
+uses the register-clobber facts of callees compiled earlier in the same TU (so "LTCG register knowledge" parks are worth
+retrying with the callee body above the function); the STLport `_Vector_base` + `_STLP_alloc_proxy` model keeps fixing
+"24i" scheduling shapes; `optimize("s")` markers (`or byte ptr [m],imm`, `fld ; push ecx ; fstp [esp]`, shared zero
+registers, `lea` address formation); a virtual first declared by a secondary base compiles with `this` at that subobject;
+overloaded virtuals sit in reverse declaration order. Catalog 30,909 -> **31,659 (63.9%)**; ledger open: 2 ltcg, 2 cold,
+1 single EH tail, the 2 asm-rounding prefix bodies and the COM thunk.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
