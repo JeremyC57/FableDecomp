@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00918560	RELOCATION_MATCH	136v136	PASS	IP temp assign + GetInterface 0xd3
+009189c0	RELOCATION_MATCH	114v114	PASS	nested if + && full-register bool
+00918a40	DIFFER	114v116	-	the shop-keeper component is loaded straight into ecx (retail: mov eax,[eax+4] ; pop esi ; mov ecx,eax) and the shared 'xor al,al' false tail sits aft
+00918480	RELOCATION_MATCH	136v136	PASS	IP temp assign + GetInterface 0xd3
+00900173	RELOCATION_MATCH	99v99	PASS	ctor; optimize("s") caches shared vtable
+00947ca0	RELOCATION_MATCH	143v143	PASS	GetCreature() accessor fixes regs
+00947d30	RELOCATION_MATCH	114v114	PASS	bool failed=..!=2; return !failed
+00947db0	RELOCATION_MATCH	110v110	PASS	body stores + IP temp assign
+00947e20	DIFFER	132v132	-	only the Bind3.F1 = &IsOfType store is scheduled late (lane: right before the WaitForMessage pushes; retail: right after the first filter constructor)
+009492a0	DIFFER	118v116	-	register roles at the GetPickupSlot call: the lane keeps the component in eax and the creature in ecx then 'mov ecx,eax' (retail: brain in edx, compon
+0094a190	RELOCATION_MATCH	104v104	PASS	three explicit CCharString temps
+009777a0	DIFFER	128v128	-	scheduling only: 'lea edi,[esi+18h]' (&PEnemy, reused for the later GetPItem) is hoisted above the temporary's GetPItem call (retail: after it)
+0095a2c0	DIFFER	159v159	-	scheduling only: 'lea edi,[esi+14h]' (&PTargetThing, reused after the virtual call) is hoisted above the temporary's GetPItem call (retail: after it);
+0095a420	DIFFER	97v97	-	this/target registers swapped (retail this=edi, target/element=esi) and the merged `return false` tail placed after the second alive test (retail: rig
+0095b680	RELOCATION_MATCH	102v102	PASS	named string in inner block
+00624800	RELOCATION_MATCH	126v126	PASS	row is SGI __pop_heap<CTestQuest> (label wrong)
+00900647	RELOCATION_MATCH	119v119	PASS	ctor; optimize("s") caches shared vtable
+0094fe30	RELOCATION_MATCH	126v126	PASS	do/while frame wait
+00950bb0	RELOCATION_MATCH	120v120	PASS	if/else-if duplicated store (cross-jump)
+00972040	RELOCATION_MATCH	120v120	PASS	base forward + GetInterface result ignored
+00972110	DIFFER	143v141	-	retail loads the combat manager straight into ecx after the world call and then pushes the creature (`mov ecx,[eax+4Ch] ; push edi`); the lane either 
+00d72160	RELOCATION_MATCH	126v126	PASS	row is CHTG_Audience ctor (label wrong)
+00972340	DIFFER	168v142	-	the lane gives the GetInterface key temporary and the sub-def local separate frame slots (sub esp,8; retail shares one `push ecx` slot), and with the 
+00941cf0	RELOCATION_MATCH	127v127	PASS	inline random helper (float span)
+00941d70	RELOCATION_MATCH	130v130	PASS	InitStateGroup twin via GetPThingWorld
+009251e0	RELOCATION_MATCH	97v97	PASS	inline derived action ctor over CCombatActionBase
+009250f0	RELOCATION_MATCH	118v118	PASS	rotated while loop, action temp
+00925170	RELOCATION_MATCH	97v97	PASS	inline derived action ctor over CCombatActionBase
+00946690	RELOCATION_MATCH	157v157	PASS	const GetInterface + hand addref/release
+009191b0	DIFFER	144v140	-	the lane sinks the `% 120` (xor edx,edx ; div) below the GFGetCurrentFrame call, keeping the rotated seed in ebx; retail divides before the call and k
+00954980	DIFFER	159v157	-	the component (phi of the hit `[eax+4]` and miss `[esp+8]` arms) is allocated to eax and copied (`mov ecx,eax`) before the virtual GetTarget call; ret
+00954a20	DIFFER	131v129	-	the 0x00972110 gap -- retail loads the combat manager straight into ecx after the world call and then pushes the creature; the lane goes through eax (
+00954740	DIFFER	136v136	-	register allocation only: retail keeps `this` in edi and &PTargetThing / the map pointer in esi; the lane swaps them (same gap as 0x0095A420)
+00954900	RELOCATION_MATCH	124v124	PASS	IP temp shares key slot
+00954ab0	DIFFER	159v157	-	same gap as the twin 0x00954980 -- the component phi is allocated to eax and copied (`mov ecx,eax`) before the virtual GetTarget call; retail loads bo
+00954c60	RELOCATION_MATCH	105v105	PASS	predicate temp shares key slot
+00956460	RELOCATION_MATCH	127v127	PASS	GetCreature() accessor fixes regs
+0093e240	DIFFER	143v141	-	same gap as 0x00972110 -- retail loads the combat manager straight into ecx after the world call, then pushes the creature; the lane materialises it i
+0093e560	RELOCATION_MATCH	121v121	PASS	GetCombatManager chain + GetInterface
+0093d720	DIFFER	132v128	-	the add-ref is `mov ecx,[esi+4] ; mov al,[esi+9Dh] ; inc ecx ; test al,al ; mov [esi+4],ecx` in the lane (retail: `inc dword ptr [esi+4]` before the f

@@ -144,6 +144,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand117` | Hand chunk 117 (C2DBoxF .. C3DMeshFilePrimitiveChunk): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand118` | Hand chunk 118 (C3DMeshFileTransformationChunk .. CAIBrain): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand119` | Hand chunk 119 (CAIFilter_ShouldStillBeWorkingInWarehouse .. CAIStateGroup_Gaze): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand120` | Hand chunk 120 (CAIStateGroup_GazeAtHome .. CAIStateGroup_MeleeCombatNearbyBase): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -193,7 +194,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **224 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **239 parked rows** for the Fable retry pass.
 
 ### Skipped rows (8 open of 28 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -361,6 +362,24 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 009708a0 CAIStateGroup_CreatureUseCoverBase::RemoveThingFromCoverList DIFFER(143v143): `this` in ebp and the copy count in ebx in retail, swapped in the lane | tried: STLport erase + __copy loop (both `__forceinline` needed for the shape), a list reference local | next: lane gap: callee-saved register colouring
 - 00960f00 CAIStateGroup_DeedReactionRootFromSleep::IsRunnable DIFFER(118v118): retail pushes esi in the prologue (`push ecx ; push esi ; push edi`), the lane shrink-wraps `push esi` after the interface-bit test | tried: nested ifs, a result variable, optimize("s"), early `return false` | next: lane gap: shrink-wrapping
 - 009226b0 CAIStateGroup_Drunk::IsStillValid DIFFER(156v156): retail stores the Bind2 first pointer before the IsForThing constructor call and the 0x14 type after the creature push, with the creature in eax; the lane stores the type first, the pointer after the call and uses ecx/edx | tried: creature named locals, a member operator&& | next: lane gap: store scheduling around an out-of-line filter constructor
+
+
+#### `2026-10-15_linux_hand120` (15 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand120/differ/`)
+- 00918a40 CAIStateGroup_GazeAtWork::IsRunnable DIFFER(114v116): `mov ecx,[eax+4]` + `pop esi` after GetShopTC (retail `mov eax,[eax+4] ; pop esi ; mov ecx,eax`), shared `xor al,al` tail placed mid-body | tried: out-param GetInterface, HasTC + pointer GetTC (x2), bool local | next: `&&` single-expression form; else lane gap: shrink-wrap pop placement
+- 00947e20 CAIStateGroup_GoToPub::GetPaymentRequestReplyMessage DIFFER(132v132): `lea ecx,[esp+0Ch] ; mov [esp+24h],ecx` (Bind3.F1 = &IsOfType) stored right before the WaitForMessage pushes (retail: right after the first filter ctor) | tried: left-assoc `&&` chain, right-nested `A && (B && C)`, direct 3-ref Bind3 (best), by-value Bind2 | next: lane gap: argument/temporary scheduling of the filter chain
+- 009492a0 CAIStateGroup_GoToPub::GetPayPoint DIFFER(118v116): component kept in eax and creature in ecx then `mov ecx,eax` (retail brain in edx, component straight into ecx, creature in eax) | tried: direct PBrain->PCreature arg, HasTC + GetTC, creature local (best), GetTC local + creature local | next: lane gap: object-first evaluation of the member call
+- 009777a0 CAIStateGroup_Guildmaster::IsRunnable DIFFER(128v128): `lea edi,[esi+18h]` hoisted above the temporary's GetPItem call | tried: operator= from temp, optimize("s"), explicit SetPItem(temp.GetPItem()), scoped named temp | next: lane gap: scheduler hoists the CSE'd member lea above a call
+- 0095a2c0 CAIStateGroup_HoverAttackArea::IsRunnable DIFFER(159v159): `lea edi,[esi+14h]` hoisted above GetPItem (same as 009777a0) | tried: explicit temp, implicit conversion, void operator= | next: lane gap: as 009777a0
+- 0095a420 CAIStateGroup_HoverHornetQueen::IsStillRunnable DIFFER(97v97): this in esi / target in edi (retail swapped) and the merged `return false` placed after the second alive test | tried: nested-if alive helper, macro (re-reads the vector), `&&` helper + ternary tail (best), named target pointer | next: lane gap: callee-saved register choice + tail-merge placement
+- 00972110 CAIStateGroup_JackOfBladesBase::Cleanup DIFFER(143v141): `mov eax,[eax+4Ch] ; push edi ; mov ecx,eax` (retail `mov ecx,[eax+4Ch] ; push edi`) | tried: combat-manager local (best), direct chain (pushes before the world call, 139) | next: lane gap: object-first evaluation of `GetPWorld()->m_pCombatManager->Deregister(local)`
+- 0093e240 CAIStateGroup_MeleeCombatNearby2::Cleanup DIFFER(143v141): same as 00972110 (byte-identical shape) | tried: state-group GetPCombatManager() accessor | next: lane gap: as 00972110
+- 00954a20 CAIStateGroup_MazeDefensiveMeleeCombat::OnReplace DIFFER(131v129): same combat-manager instruction pair as 00972110; the HasMode/RemoveMode half matches | tried: manager local (1 grade, shape known) | next: lane gap: as 00972110
+- 00972340 CAIStateGroup_JackOfBladesStage1::HasHitsCausedRush DIFFER(168v142): `sub esp,8` (key temp and the GetSubDef pointer local in separate slots; retail one `push ecx` slot) and the releases go through `mov esi,[eax+4] ; add eax,4 ; dec esi` | tried: release on the address-taken local (166), pointer copy (168), Release() member + hits local | next: lane gap: QFE never shares a frame slot between the inline key temporary and a later address-taken local
+- 009191b0 CAIStateGroup_LookAtInterestingThings::OnReplace DIFFER(144v140): `xor edx,edx ; div` sunk below the GFGetCurrentFrame call | tried: one expression, random + fps locals (best), precomputed delay (136), frame local | next: lane gap: div scheduled past a call
+- 00954980 CAIStateGroup_MazeDefensiveMeleeCombat::IsRunnable DIFFER(159v157): GetInterface phi in eax then `mov ecx,eax` before the virtual call (retail both arms load ecx) | tried: out-param form, pointer-returning GetTC<T>() | next: lane gap: phi register preference
+- 00954ab0 CAIStateGroup_MazeTutorialBattle::IsRunnable DIFFER(159v157): byte-identical twin of 00954980, same diff | tried: the 00954980 forms (1 grade) | next: lane gap: as 00954980
+- 00954740 CAIStateGroup_MazeShieldedChase::IsStillRunnable DIFFER(136v136): this in esi / &PTargetThing + map in edi (retail swapped), everything else equal | tried: flat HasTC return, nested HasTC (best), template IS_THING_ALIVE + split tests, base IsStillValid() helper | next: lane gap: as 0095a420
+- 0093d720 CAIStateGroup_MeleeCombatNearbyBase::OnReadyToAttack DIFFER(132v128): add-ref split into `mov ecx,[esi+4] ; ... inc ecx ; mov [esi+4],ecx` around the +0x9d flag load (retail `inc dword ptr [esi+4]`) | tried: `++def->m_refCount`, inline AddRef, volatile count, CDefPointeeBase __forceinline AddRef | next: lane gap: RMW split; maybe the CDefPointer copy-constructor form with a hand guard
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

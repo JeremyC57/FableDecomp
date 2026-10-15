@@ -225404,6 +225404,181 @@ $catalog = @(
         TestSource = '00/95/CAIStateGroupBehaviourBase_IsTargetSeenWithinCloseRange_009576d0_test.cpp'
         PassPattern = '009576d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00624800'
+        Module = '_global'
+        Source = '00/62/global_popheap_00624800.cpp'
+        TestSource = '00/62/global_popheap_00624800_test.cpp'
+        PassPattern = '00624800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00900173'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/90/CAIStateGroupGoToPub_CAIStateGroupGoToPub_00900173.cpp'
+        TestSource = '00/90/CAIStateGroupGoToPub_CAIStateGroupGoToPub_00900173_test.cpp'
+        PassPattern = '00900173_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00900647'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/90/CAIStateGroupJackDragon_CAIStateGroupJackDragon_00900647.cpp'
+        TestSource = '00/90/CAIStateGroupJackDragon_CAIStateGroupJackDragon_00900647_test.cpp'
+        PassPattern = '00900647_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00918480'
+        Module = 'CAIStateGroup_GazeOutside'
+        Source = '00/91/CAIStateGroupGazeOutside_InitStateGroup_00918480.cpp'
+        TestSource = '00/91/CAIStateGroupGazeOutside_InitStateGroup_00918480_test.cpp'
+        PassPattern = '00918480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00918560'
+        Module = 'CAIStateGroup_GazeAtHome'
+        Source = '00/91/CAIStateGroupGazeAtHome_InitStateGroup_00918560.cpp'
+        TestSource = '00/91/CAIStateGroupGazeAtHome_InitStateGroup_00918560_test.cpp'
+        PassPattern = '00918560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009189c0'
+        Module = 'CAIStateGroup_GazeAtHome'
+        Source = '00/91/CAIStateGroupGazeAtHome_IsRunnable_009189c0.cpp'
+        TestSource = '00/91/CAIStateGroupGazeAtHome_IsRunnable_009189c0_test.cpp'
+        PassPattern = '009189c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009250f0'
+        Module = 'CAIStateGroup_KrakenTentacleIdle'
+        Source = '00/92/CAIStateGroupKrakenTentacleIdle_Update_009250f0.cpp'
+        TestSource = '00/92/CAIStateGroupKrakenTentacleIdle_Update_009250f0_test.cpp'
+        PassPattern = '009250f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00925170'
+        Module = 'CAIStateGroup_KrakenTentacleRise'
+        Source = '00/92/CAIStateGroupKrakenTentacleRise_Update_00925170.cpp'
+        TestSource = '00/92/CAIStateGroupKrakenTentacleRise_Update_00925170_test.cpp'
+        PassPattern = '00925170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009251e0'
+        Module = 'CAIStateGroup_KrakenTentacleAttack'
+        Source = '00/92/CAIStateGroupKrakenTentacleAttack_Update_009251e0.cpp'
+        TestSource = '00/92/CAIStateGroupKrakenTentacleAttack_Update_009251e0_test.cpp'
+        PassPattern = '009251e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093e560'
+        Module = 'CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose'
+        Source = '00/93/CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_Cleanup_0093e560.cpp'
+        TestSource = '00/93/CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_Cleanup_0093e560_test.cpp'
+        PassPattern = '0093e560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00941cf0'
+        Module = 'CAIStateGroup_KidReactToBlockage'
+        Source = '00/94/CAIStateGroupKidReactToBlockage_InitStateGroup_00941cf0.cpp'
+        TestSource = '00/94/CAIStateGroupKidReactToBlockage_InitStateGroup_00941cf0_test.cpp'
+        PassPattern = '00941cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00941d70'
+        Module = 'CAIStateGroup_KidReactToBlockage'
+        Source = '00/94/CAIStateGroupKidReactToBlockage_OnReplace_00941d70.cpp'
+        TestSource = '00/94/CAIStateGroupKidReactToBlockage_OnReplace_00941d70_test.cpp'
+        PassPattern = '00941d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00946690'
+        Module = 'CAIStateGroup_LightHomeCandle'
+        Source = '00/94/CAIStateGroupLightHomeCandle_ShouldBeLit_00946690.cpp'
+        TestSource = '00/94/CAIStateGroupLightHomeCandle_ShouldBeLit_00946690_test.cpp'
+        PassPattern = '00946690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00947ca0'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/94/CAIStateGroupGoToPub_SitIdle_00947ca0.cpp'
+        TestSource = '00/94/CAIStateGroupGoToPub_SitIdle_00947ca0_test.cpp'
+        PassPattern = '00947ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00947d30'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/94/CAIStateGroupGoToPub_Laugh_00947d30.cpp'
+        TestSource = '00/94/CAIStateGroupGoToPub_Laugh_00947d30_test.cpp'
+        PassPattern = '00947d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00947db0'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/94/CAIStateGroupGoToPub_InitStateGroup_00947db0.cpp'
+        TestSource = '00/94/CAIStateGroupGoToPub_InitStateGroup_00947db0_test.cpp'
+        PassPattern = '00947db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094a190'
+        Module = 'CAIStateGroup_GoToPub'
+        Source = '00/94/CAIStateGroupGoToPub_Listen_0094a190.cpp'
+        TestSource = '00/94/CAIStateGroupGoToPub_Listen_0094a190_test.cpp'
+        PassPattern = '0094a190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094fe30'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/94/CAIStateGroupJackDragon_StayIdle_0094fe30.cpp'
+        TestSource = '00/94/CAIStateGroupJackDragon_StayIdle_0094fe30_test.cpp'
+        PassPattern = '0094fe30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00950bb0'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/95/CAIStateGroupJackDragon_SetHeadTurning_00950bb0.cpp'
+        TestSource = '00/95/CAIStateGroupJackDragon_SetHeadTurning_00950bb0_test.cpp'
+        PassPattern = '00950bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00954900'
+        Module = 'CAIStateGroup_MazeShieldedChase'
+        Source = '00/95/CAIStateGroupMazeShieldedChase_Cleanup_00954900.cpp'
+        TestSource = '00/95/CAIStateGroupMazeShieldedChase_Cleanup_00954900_test.cpp'
+        PassPattern = '00954900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00954c60'
+        Module = 'CAIStateGroup_MazeTutorialBattleRespondToLightning'
+        Source = '00/95/CAIStateGroupMazeTutorialBattleRespondToLightning_FindHitEvent_00954c60.cpp'
+        TestSource = '00/95/CAIStateGroupMazeTutorialBattleRespondToLightning_FindHitEvent_00954c60_test.cpp'
+        PassPattern = '00954c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00956460'
+        Module = 'CAIStateGroup_MazeTutorialBattleUseShield'
+        Source = '00/95/CAIStateGroupMazeTutorialBattleUseShield_Update_00956460.cpp'
+        TestSource = '00/95/CAIStateGroupMazeTutorialBattleUseShield_Update_00956460_test.cpp'
+        PassPattern = '00956460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095b680'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/95/CAIStateGroupHoverHornetQueen_PlayIdle_0095b680.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueen_PlayIdle_0095b680_test.cpp'
+        PassPattern = '0095b680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00972040'
+        Module = 'CAIStateGroup_JackOfBladesBase'
+        Source = '00/97/CAIStateGroupJackOfBladesBase_Initialise_00972040.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesBase_Initialise_00972040_test.cpp'
+        PassPattern = '00972040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d72160'
+        Module = 'CHTG_Audience'
+        Source = '00/d7/CHTGAudience_CHTGAudience_00d72160.cpp'
+        TestSource = '00/d7/CHTGAudience_CHTGAudience_00d72160_test.cpp'
+        PassPattern = '00d72160_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
