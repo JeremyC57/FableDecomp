@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005dc650	DIFFER	209v210	-	parked: dead-arg-slot homing swapped
+005dba80	RELOCATION_MATCH	214v214	PASS	CAnimComponentCombatHandedness::TransferBinaryIn(CMemoryDataInputStream* stream)
+005dbcd0	RELOCATION_MATCH	201v201	PASS	CAnimComponentCombatMisc::TransferBinaryIn(CMemoryDataInputStream* stream)
+005dc9b0	RELOCATION_MATCH	170v170	PASS	CAnimComponentSetCreatureMode::Initialise(CPersistContext&, const CCharString&)
+0070c800	DIFFER	162v168	-	parked: short index load/movsx placement
+00710b80	RELOCATION_MATCH	196v196	PASS	CAnimSet::CAnimSet(const CAnimSet&)
+00a8ff50	DIFFER	217v231	-	parked: x87 vs dword vertex copies (graphics row)
+005ded00	RELOCATION_MATCH	188v188	PASS	CAnimationEntry::CAnimationEntry(long bankIndex, long transitionInTime, long flags, long delay)
+00a2b3c0	MATCH	197v197	PASS	C3DMeshInfo::operator=(const C3DMeshInfo&)
+00471865	DIFFER	222v239	-	parked: LTCG custom convention (Dinkumware vector op=)
+005dc070	RELOCATION_MATCH	178v178	PASS	CAnimationSet::TransferBinaryOut(CDataOutputStream& stream)
+00dcf920	RELOCATION_MATCH	233v233	PASS	NScript::CQ_OrchardFarmRaidScript::CArtefact::OnPredicateFail()
+00c72a40	DIFFER	170v170	-	parked: esi/edi rotation (audio row)
+00da4c90	RELOCATION_MATCH	174v174	PASS	NScript::CQ_MinionClifftopChaseScript::CBalverineFightingGuard::OnInterrupted()
+009cb960	DIFFER	211v218	-	parked: alignment kept in ebp
+009cbaa0	RELOCATION_MATCH	212v212	PASS	CBankFile::SplitSymbol(const CCharString& symbol, CCharString* pName, CCharString* pSuffix)
+009cbc50	RELOCATION_MATCH	188v188	PASS	CBankFile::GetLastModifiedTime(const CCharString& path)
+009cbfe0	RELOCATION_MATCH	207v207	PASS	CBankFile::GetRecoveryFilePath()
+009cc0b0	RELOCATION_MATCH	163v163	PASS	CBankFile::GetRandomValidationValue()
+009cccd0	RELOCATION_MATCH	229v229	PASS	CBankFile::InternalWriteEntryData(unsigned long index, unsigned long start, const void* data, unsigned long size)
+009cd3c0	RELOCATION_MATCH	184v184	PASS	CBankFile::DeleteEntry(unsigned long index)
+009d0ef0	RELOCATION_MATCH	203v203	PASS	CBankFile::FindEmptyBlockOffset(unsigned long size)
+009d0fc0	DIFFER	185v198	-	parked: offset homed in dead arg slot
+009d1090	RELOCATION_MATCH	204v204	PASS	CBankFile::OpenFileReadOnly(const CWideString& filename, unsigned long flags)
+009d1260	RELOCATION_MATCH	186v186	PASS	CBankFile::InternalResizeEntryData(unsigned long index, unsigned long size)
+009d4db0	RELOCATION_MATCH	224v224	PASS	CDefStringTable::CDefStringTable()
+009d5f80	RELOCATION_MATCH	224v224	PASS	CBankFileAsync::CBankFileAsync()
+009d6730	RELOCATION_MATCH	164v164	PASS	CBankFileAsync::ProcessDisposalList()
+009d67e0	RELOCATION_MATCH	180v180	PASS	CBankFileAsync::DiscardAsyncData(CCountedPointer<CBankFileAsyncData>& data)
+009d5d30	DIFFER	179v179	-	parked: flag-store scheduling
+009d5df0	DIFFER	183v183	-	parked: flag-store scheduling
+009d6350	DIFFER	191v196	-	parked: bl result / shared lock tail
+009d5970	DIFFER	191v191	-	parked: register rotation in sync arm
+009d6100	DIFFER	235v235	-	parked: register rotation
+009cc750	DIFFER	235v235	-	parked: loop register allocation
+009a7720	RELOCATION_MATCH	171v171	PASS	CBankFileManager::CreateRetailBank(const CWideString& path)
+009a78d0	RELOCATION_MATCH	187v187	PASS	CBankFileManager::CloseRetailBank(const CWideString& name)
+009a7e20	DIFFER	172v171	-	parked: cross-jumped alias copy
+009a7ed0	DIFFER	172v171	-	parked: cross-jumped alias copy (really GetRetailHeaderFilePath)
+0084cf80	MATCH	207v207	PASS	NCameraModes::CBase::TransferPersistantBaseData(const CBase&)

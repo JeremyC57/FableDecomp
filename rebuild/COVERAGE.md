@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-10-16T09:20:58+00:00`
+Generated: `2026-10-16T10:10:00+00:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|

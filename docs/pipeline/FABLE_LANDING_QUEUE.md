@@ -209,6 +209,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand182` | Hand chunk 182 (CAIStateGroup_Drunk .. CAIStateGroup_MeleeCombatNearbyBase): 29 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand183` | Hand chunk 183 (CAIStateGroup_MinionBehaviourGreetCreature .. CAIStateGroup_StealthSeekEnemy): 20 of 40 byte-exact | - | 20 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand184` | Hand chunk 184 (CAIStateGroup_SummonerSummon .. CAnimComponentCombatComboChain): 21 of 40 byte-exact | - | 19 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand185` | Hand chunk 185 (CAnimComponentCombatComboChain .. CBase): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -266,7 +267,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-16_linux_retry6` | Retry batch 6 (Fable 5.1, 2026-10-16): 8 parked rows from chunks 165-179 | - | 8 | 0 | landed; parked rows open |
 | `2026-10-16_linux_retry7` | Retry batch 7 (Fable 5.1, 2026-10-16): 8 near-miss parked rows from chunks 142-154 | - | 8 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **794 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **809 parked rows** for the Fable retry pass.
 
 ### Skipped rows (16 open of 41 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1185,6 +1186,24 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00717950 NTCScriptedControl::CActionTalkBase ctor DIFFER(198v198): UpdateCounter store placed among the fstp pair in retail | tried: init list, body assignment | next: lane gap: scheduling
 - 00717c50 NTCScriptedControl::CActionTalkToThing ctor (text-index overload) DIFFER(283v237): retail folds the STLport push_back capacity test on the fresh local | tried: inline push_back | next: call _M_insert_overflow directly; lane gap: dead-argument-slot tag
 - 005c2c65 STLport vector<CCategory>::_M_insert_overflow DIFFER(178v177): __false_type tags in the atEnd slot high byte (retail) | tried: implicit tag ctor, user tag ctor, __forceinline helpers | next: lane gap: dead-argument-slot temporary
+
+
+#### `2026-10-15_linux_hand185` (15 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand185/differ/`)
+- 005dc650 CAnimComponentCombatComboChain::Initialise DIFFER(209v210): first parsed value homed in the text slot instead of the context slot (and the "," temp reversed) | tried: named bool, inline if, id local | next: lane gap: dead-argument-slot temporaries
+- 0070c800 CAnimSet::GetInterpolatedTime DIFFER(162v168): retail `mov ax,[..] ... movsx eax,ax` after the engine chain, ours `movsx` from memory; helper arg loads scheduled differently | tried: plain index, short local, GetAnimation(short) | next: by-value inline short getter
+- 00a8ff50 N3DPrimitive::CAnimatedBlock::ConvertToVBFormatNonBump DIFFER(217v231): retail X/Y via fld/fstp, Z via a 0x1c frame temp, output pointer biased +8; ours dword copies | tried: copy-ctor getters, 3-float-ctor getters, POD getters | next: getter built from three floats with only a 3-float ctor + named vertex temp (graphics row)
+- 00471865 vector<pair<ulong,CAnimationEntry>>::operator= DIFFER(222v239): edx-passed helper ranges, `push 14h ; pop edi`, ebp frame | tried: Dinkumware op= under optimize("s") | next: lane gap: LTCG custom convention
+- 00c72a40 CAudioSource::SetSourceProperty DIFFER(170v170): esi/edi swapped | tried: ternary lookups, if lookups, inline AL wrappers | next: lane gap: register rotation (audio row)
+- 009cb960 CBankFile::OpenReadWrite DIFFER(211v218): retail keeps alignment in ebp across both arms | tried: return form, if/else, inverted test | next: lane gap: register allocation
+- 009d0fc0 CBankFile::GetAllocatedBlockSize DIFFER(185v198): offset spilled to the dead index slot in retail, ebp in ours | tried: bool/int found, return in loop | next: lane gap: dead-argument-slot homing
+- 009d5d30 CBankFileAsyncData ctor(buffer) DIFFER(179v179): +0x46/+0x47 flag stores scheduled around the lock pushes | tried: init list, body | next: lane gap: scheduling
+- 009d5df0 CBankFileAsyncData ctor(pool) DIFFER(183v183): same as 009d5d30 | tried: init list, body | next: lane gap: scheduling
+- 009d6350 CBankFileAsyncData::Abort DIFFER(191v196): retail bl result with one shared lock tail | tried: return form (194v196), || form (200v196), goto | next: result bool declared before the lock, assigned from the chain
+- 009d5970 CBankFileAsyncEntry::SetupRead DIFFER(191v191): eax/ecx swap in the sync arm | tried: PDst before test, per arm, shared readSize | next: lane gap: register rotation
+- 009d6100 CBankFileAsyncEntry::BeginReadDataAutoAlloc DIFFER(235v235): edx vs ecx for the bank/ctor args, SetupRead arg loads rotated | tried: named counted local | next: lane gap: register rotation
+- 009cc750 CBankFileEntryUpdateData::Equals DIFFER(235v235): loop element addressing order / registers | tried: plain, crc local, #pragma function(strcmp), null-first c_str (extra) | next: named element refs before strcmp
+- 009a7e20 CBankFileManager::GetDevHeaderFilePath DIFFER(172v171): retail cross-jumps two copy-ctor calls (push per arm, shared call) | tried: ternary, inline const& helper, per-name helpers | next: lane gap: cross-jumping
+- 009a7ed0 CBankFileManager::GetRetailHeaderFilePath DIFFER(172v171): twin of 009a7e20 (+0x20 field) | tried: same source shape | next: same
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
