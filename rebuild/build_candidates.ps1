@@ -238452,6 +238452,225 @@ $catalog = @(
         TestSource = '00/ee/CVTrophyDealerScript_Init_00ee6d60_test.cpp'
         PassPattern = '00ee6d60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049dd50'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_CopyFileInternal_0049dd50.cpp'
+        TestSource = '00/49/CWorld_CopyFileInternal_0049dd50_test.cpp'
+        PassPattern = '0049dd50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049e2c0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_SetAsLoadingRegion_0049e2c0.cpp'
+        TestSource = '00/49/CWorld_SetAsLoadingRegion_0049e2c0_test.cpp'
+        PassPattern = '0049e2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049ea40'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_IsCreatureGenerationEnabled_0049ea40.cpp'
+        TestSource = '00/49/CWorld_IsCreatureGenerationEnabled_0049ea40_test.cpp'
+        PassPattern = '0049ea40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049ebf0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_InitThingManager_0049ebf0.cpp'
+        TestSource = '00/49/CWorld_InitThingManager_0049ebf0_test.cpp'
+        PassPattern = '0049ebf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a00e0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_SaveHeroStateInternal_004a00e0.cpp'
+        TestSource = '00/4a/CWorld_SaveHeroStateInternal_004a00e0_test.cpp'
+        PassPattern = '004a00e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a0180'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_AutoSaveRegionLeaving_004a0180.cpp'
+        TestSource = '00/4a/CWorld_AutoSaveRegionLeaving_004a0180_test.cpp'
+        PassPattern = '004a0180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a0850'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_AutoSaveInternal_004a0850.cpp'
+        TestSource = '00/4a/CWorld_AutoSaveInternal_004a0850_test.cpp'
+        PassPattern = '004a0850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a2e90'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_Uninitialise_004a2e90.cpp'
+        TestSource = '00/4a/CWorld_Uninitialise_004a2e90_test.cpp'
+        PassPattern = '004a2e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fb880'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetMapNumberFromScriptName_004fb880.cpp'
+        TestSource = '00/4f/CWorldMap_GetMapNumberFromScriptName_004fb880_test.cpp'
+        PassPattern = '004fb880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fb920'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetMapNumberFromMapUID_004fb920.cpp'
+        TestSource = '00/4f/CWorldMap_GetMapNumberFromMapUID_004fb920_test.cpp'
+        PassPattern = '004fb920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc0c0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetMapNumberAt_004fc0c0.cpp'
+        TestSource = '00/4f/CWorldMap_GetMapNumberAt_004fc0c0_test.cpp'
+        PassPattern = '004fc0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc190'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetRegionNumberMapIsIn_004fc190.cpp'
+        TestSource = '00/4f/CWorldMap_GetRegionNumberMapIsIn_004fc190_test.cpp'
+        PassPattern = '004fc190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc210'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetRegionNumberFromName_004fc210.cpp'
+        TestSource = '00/4f/CWorldMap_GetRegionNumberFromName_004fc210_test.cpp'
+        PassPattern = '004fc210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc4d0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ClipAndConvertWorldMapAreaToLocalArea_004fc4d0.cpp'
+        TestSource = '00/4f/CWorldMap_ClipAndConvertWorldMapAreaToLocalArea_004fc4d0_test.cpp'
+        PassPattern = '004fc4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc600'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsPosInMap_004fc600.cpp'
+        TestSource = '00/4f/CWorldMap_IsPosInMap_004fc600_test.cpp'
+        PassPattern = '004fc600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc6c0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_DrawGetSizeZAt_004fc6c0.cpp'
+        TestSource = '00/4f/CWorldMap_DrawGetSizeZAt_004fc6c0_test.cpp'
+        PassPattern = '004fc6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc8a0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_SetRegionAsLoaded_004fc8a0.cpp'
+        TestSource = '00/4f/CWorldMap_SetRegionAsLoaded_004fc8a0_test.cpp'
+        PassPattern = '004fc8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc9c0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_SetMapPlacement_004fc9c0.cpp'
+        TestSource = '00/4f/CWorldMap_SetMapPlacement_004fc9c0_test.cpp'
+        PassPattern = '004fc9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fca50'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsMapPlacementPositionFree_004fca50.cpp'
+        TestSource = '00/4f/CWorldMap_IsMapPlacementPositionFree_004fca50_test.cpp'
+        PassPattern = '004fca50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b440'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_CWideString_0099b440.cpp'
+        TestSource = '00/99/CWideString_CWideString_0099b440_test.cpp'
+        PassPattern = '0099b440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b8d0'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_operator_0099b8d0.cpp'
+        TestSource = '00/99/CWideString_operator_0099b8d0_test.cpp'
+        PassPattern = '0099b8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f180'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_operator_0099f180.cpp'
+        TestSource = '00/99/CCharString_operator_0099f180_test.cpp'
+        PassPattern = '0099f180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0cc50'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadAsStringUntilNonWhitespace_00a0cc50.cpp'
+        TestSource = '00/a0/CWStringParser_ReadAsStringUntilNonWhitespace_00a0cc50_test.cpp'
+        PassPattern = '00a0cc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ccd0'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadAsStringUntilCharacter_00a0ccd0.cpp'
+        TestSource = '00/a0/CWStringParser_ReadAsStringUntilCharacter_00a0ccd0_test.cpp'
+        PassPattern = '00a0ccd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0cd40'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadAsStringUntilWhitespace_00a0cd40.cpp'
+        TestSource = '00/a0/CWStringParser_ReadAsStringUntilWhitespace_00a0cd40_test.cpp'
+        PassPattern = '00a0cd40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0ce90'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadNextString_00a0ce90.cpp'
+        TestSource = '00/a0/CWStringParser_ReadNextString_00a0ce90_test.cpp'
+        PassPattern = '00a0ce90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6d6e0'
+        Module = 'CWaterSeaStaticMapInfoBlock'
+        Source = '00/b6/CWaterSeaStaticMapInfoBlock_Load_00b6d6e0.cpp'
+        TestSource = '00/b6/CWaterSeaStaticMapInfoBlock_Load_00b6d6e0_test.cpp'
+        PassPattern = '00b6d6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c096e0'
+        Module = 'CWorldManager'
+        Source = '00/c0/CWorldManager_InitializeSteeringAfterSave_00c096e0.cpp'
+        TestSource = '00/c0/CWorldManager_InitializeSteeringAfterSave_00c096e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c096e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1c620'
+        Module = 'CWorld'
+        Source = '00/c1/CWorld_SetAsPaused_00c1c620.cpp'
+        TestSource = '00/c1/CWorld_SetAsPaused_00c1c620_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1c620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3aa50'
+        Module = 'CWorld'
+        Source = '00/c3/CWorld_SetDrawEnvironmentBounds_00c3aa50.cpp'
+        TestSource = '00/c3/CWorld_SetDrawEnvironmentBounds_00c3aa50_test.cpp'
+        PassPattern = '00c3aa50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec80c0'
+        Module = 'NScript::CV_SickChildScript::CWitch'
+        Source = '00/ec/NScriptCVSickChildScriptCWitch_Init_00ec80c0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCWitch_Init_00ec80c0_test.cpp'
+        PassPattern = '00ec80c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
