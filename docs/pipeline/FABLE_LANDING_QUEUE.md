@@ -212,6 +212,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand185` | Hand chunk 185 (CAnimComponentCombatComboChain .. CBase): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand186` | Hand chunk 186 (CBase .. CCombatAction_GenericStrikeResponseKnockdown): 28 of 40 byte-exact | - | 11 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand187` | Hand chunk 187 (CCombatAction_KickThingOnGround .. CCreatureAction_BanditKingStuckGetHit): 21 of 40 byte-exact | - | 19 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand188` | Hand chunk 188 (CCreatureAction_BanditKingThrowWeapons .. CCreatureAction_DragonStrafeInto): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -269,7 +270,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-16_linux_retry6` | Retry batch 6 (Fable 5.1, 2026-10-16): 8 parked rows from chunks 165-179 | - | 8 | 0 | landed; parked rows open |
 | `2026-10-16_linux_retry7` | Retry batch 7 (Fable 5.1, 2026-10-16): 8 near-miss parked rows from chunks 142-154 | - | 8 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **839 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **848 parked rows** for the Fable retry pass.
 
 ### Skipped rows (17 open of 42 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1243,6 +1244,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 009eaff0 CConsole::SetGuessMode DIFFER(219v221): (1) prologue order: retail copies CurrentLine into the temporary before forming ToLower's hidden result address, ours forms &lowered first; (2) the command-text temporary dies right after the CConsoleCommandLine ctor here, retail destroys it after the guess (one full expression, but that form addresses the source through the ctor's returned this) | tried: copy-init + one-expression assignment, direct-init + named guess local (fixed assignment addressing), named text local (worse) | next: lane gap: temporary lifetime / evaluation order
 - 00a75340 CContainmentVolume::PeekRoughProportionOfSphereContained DIFFER(176v176): X-term product operands swapped (ours fld [ecx];fmul [edi], retail fld [edi];fmul [ecx]) | tried: 3-term left sum, X-first grouped sum, Clamp01 inline (fixed duplicate tails) | next: centre.X * plane.Normal.X inside the X-first grouped form
 - 00a755c0 CContainmentVolume::Initialise DIFFER(174v174): block placement: retail falls through into the shared return-false block right after the AllocateResource call (jne success), ours places it apart | tried: combined || guard, MemoryPool-> reread for GetPointerFromHandle (fixed regs), split guards | next: forceinline AllocateChecked wrapper (guard + call returning bool) inside one if
+
+
+#### `2026-10-15_linux_hand188` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand188/differ/`)
+- 008bb6f0 CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell DIFFER(215v212): inline CCharString::operator==("") null-block strcmp gives `sete al ; test al,al` where retail branches on the repe cmpsb flags | tried: if/else either order, __forceinline operator== | next: lane gap: inline bool-return branch threading
+- 008bb130 CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell DIFFER(200v197): same `sete al` materialisation | tried: inline operator!=, ternary operator==, early return | next: lane gap: inline bool-return branch threading
+- 008bb200 CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell DIFFER(195v192): same | tried: #pragma optimize("s"), non-null-first operator== | next: lane gap: inline bool-return branch threading
+- 008cdc40 CCreatureAction_CastSkillMultiArrow::Initialise DIFFER(183v168): ours rotates the add-until-present loop (duplicated GetPItem + bit test at the bottom), retail keeps the test at the top with jmp back-edges | tried: for(;;)+return, while((owner=...)), goto | next: tail-recursive inline helper
+- 008e6690 CCreatureAction_CastStrengthMultiStrikeProper::Initialise DIFFER(230v226): retail caches the def object in ebx after GetDef and reuses its slot | tried: function-scope CDefPointer + block name | next: lane gap: CDefPointer kept in a register across calls
+- 008e6bb0 CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMultiStrikeProper DIFFER(222v215): def cached in edi, `dec [edi+4] ; jne` release without re-read | tried: as 008e6690 + temporary GetString arg | next: lane gap: CDefPointer kept in a register
+- 008e6c90 CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMultiStrikeProper DIFFER(217v210): same | tried: same | next: lane gap: CDefPointer kept in a register
+- 008f3020 CCreatureAction_DragonFlight::PerformAction DIFFER(219v212): ability def cached in ebx after GetSubDef (8-byte frame) | tried: function-scope CDefPointer + inline owner conversion | next: lane gap: CDefPointer kept in a register
+- 008f4480 CCreatureAction_DragonStrafeInto::Initialise DIFFER(233v233): ebx/ebp swap only (&PCreature vs mode manager) | tried: block float locals, named new-result local | next: lane gap: register allocation
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

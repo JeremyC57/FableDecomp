@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008c7fd0	RELOCATION_MATCH	175v175	PASS	ctor; body-assigned converting temp
+008ce4b0	RELOCATION_MATCH	182v182	PASS	ctor; by-value IP params
+008ce570	RELOCATION_MATCH	182v182	PASS	ctor; class is BattleChargeMiss (label)
+008552f0	RELOCATION_MATCH	194v194	PASS	x87 exp intrinsic
+00855430	RELOCATION_MATCH	208v208	PASS	sound play; ctor-body param order
+00855920	RELOCATION_MATCH	189v189	PASS	FindEntry + GetInterface
+00842ec0	RELOCATION_MATCH	163v163	PASS	two implicit literals
+008bf0f0	RELOCATION_MATCH	200v200	PASS	if/else tail-merge, inline forwarder
+008c1e80	RELOCATION_MATCH	225v225	PASS	inline operator CThing* arg (extra try)
+008ce040	RELOCATION_MATCH	179v179	PASS	counted ptr by value
+008ce100	RELOCATION_MATCH	165v165	PASS	counted ptr by value
+008ce1b0	RELOCATION_MATCH	221v221	PASS	counted ptr by value
+008bb6f0	DIFFER	215v212	-	inline operator== sete
+008cdc40	DIFFER	183v168	-	loop rotation
+008e6ae0	RELOCATION_MATCH	202v202	PASS	three named locals
+008e6690	DIFFER	230v226	-	CDefPointer in register
+008e6bb0	DIFFER	222v215	-	CDefPointer in register
+008e6c90	DIFFER	217v210	-	CDefPointer in register
+008cd730	RELOCATION_MATCH	229v229	PASS	by-value inline operator=
+008bb450	RELOCATION_MATCH	171v171	PASS	ctor
+008bb500	RELOCATION_MATCH	171v171	PASS	ctor
+008bb130	DIFFER	200v197	-	inline operator== sete
+008bb200	DIFFER	195v192	-	inline operator== sete
+008b9970	RELOCATION_MATCH	235v235	PASS	AddTC + target
+008b97e0	RELOCATION_MATCH	237v237	PASS	AddTC + target
+008bbcc0	RELOCATION_MATCH	179v179	PASS	null-first ternary literal
+008bbd80	RELOCATION_MATCH	179v179	PASS	null-first ternary literal
+008b9b00	RELOCATION_MATCH	230v230	PASS	AddTC + target
+008bb8f0	RELOCATION_MATCH	167v167	PASS	ctor
+008bb9a0	RELOCATION_MATCH	161v161	PASS	ctor
+00843790	RELOCATION_MATCH	169v169	PASS	ctor
+008f4320	RELOCATION_MATCH	218v218	PASS	inline operator CThing* arg
+009537b0	RELOCATION_MATCH	208v208	PASS	ctor
+00953df0	RELOCATION_MATCH	177v177	PASS	copy ctor
+008f41d0	RELOCATION_MATCH	199v199	PASS	inline operator CThing* args
+00af10e0	RELOCATION_MATCH	178v178	PASS	CParticleEmitter dtor (label)
+008f3020	DIFFER	219v212	-	CDefPointer in register
+008f3fd0	RELOCATION_MATCH	213v213	PASS	memberwise vector assign
+008f39a0	RELOCATION_MATCH	176v176	PASS	inline operator CThing* arg
+008f4480	DIFFER	233v233	-	ebx/ebp swap
