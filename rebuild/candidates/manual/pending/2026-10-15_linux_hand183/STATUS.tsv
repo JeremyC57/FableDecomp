@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009574d0	RELOCATION_MATCH	239v239	PASS	CAIStateGroup_MinionBehaviourGreetCreature::Update
+009575c0	RELOCATION_MATCH	170v170	PASS	CAIStateGroup_MinionBehaviourGreetCreature::IsRunnable
+0096f180	DIFFER	188v188	-	frame: retail is 0x1c bytes with the intelligent-pointer temporary overlapping the dead filter slot (+0xc) and the out thing at +0x14; ours 0x20 with 
+0092e890	RELOCATION_MATCH	179v179	PASS	IsSpaceInvader
+0090cb80	RELOCATION_MATCH	188v188	PASS	CAIStateGroup_MinionGossip::IsStillValid
+00ca52a0	RELOCATION_MATCH	191v191	PASS	OnActivate
+0094bdf0	RELOCATION_MATCH	173v173	PASS	CAIStateGroup_MinionHawkingFromStall::IsStillValid
+009347b0	RELOCATION_MATCH	180v180	PASS	CAIStateGroup_MinionKidGroupTag::Cleanup
+00910100	DIFFER	183v186	-	retail returns through eax (`mov eax,1` / `xor eax,eax`, an int-width result despite the bool mangling) and puts the out thing in the key slot (+0xc) 
+00933c10	RELOCATION_MATCH	165v165	PASS	?IsRunnable@CAIStateGroup_MinionMotherProtectFamily@@UAE_NXZ
+00744d00	DIFFER	163v166	-	retail keeps the sender pointer's GetPItem in a frame word followed by a constant-false `xor al,al ; jne` (an inlined template test), owner in ebx/ebp
+00957f20	RELOCATION_MATCH	212v212	PASS	?IsRunnable@CAIStateGroup_MinionReactToBurglary@@UAE_NXZ
+00958000	RELOCATION_MATCH	198v198	PASS	CAIStateGroup_MinionReactToBurglary::Update
+00958b20	DIFFER	219v224	-	the message-sender read is an inlined accessor leaving a dead frame store + constant-false `xor cl,cl ; jne` (same shape as 0x00744D00); also retail `
+00958c00	DIFFER	163v163	-	register swap only: retail holds the list node in edi and &node->value in esi, ours the reverse
+00958e20	DIFFER	218v216	-	the opinion component goes to eax then `mov ecx,eax` after the argument pushes (retail loads ecx straight from the entry before them)
+00930e20	DIFFER	195v186	-	only the unlock: retail `and byte ptr [eax+0D4h],0FEh` in place, ours `mov cl,[eax+0D4h] ; add eax,0D4h ; and cl,0FEh ; mov [eax],cl`
+00937f70	RELOCATION_MATCH	174v174	PASS	?IsRunnable@CAIStateGroup_MinionReactToEnemy@@UAE_NXZ
+0091ccc0	RELOCATION_MATCH	183v183	PASS	CAIStateGroup_MinionReactToNoise::Update
+0092f240	DIFFER	195v193	-	filter scheduling: retail stores Bind2.PFirst before the IsOriginatedByThing ctor call and IsOfType.Type after it, keeps the message in edi; later the
+00938f70	DIFFER	240v238	-	only the random tail: retail takes `rotated % 150` (div ecx, remainder in esi) BEFORE the GFGetCurrentFrame call; ours sinks the div after the call
+0092e130	DIFFER	229v229	-	register swap: retail keeps this in esi and the CTCSleep in edi (edi pushed after the HasTC test), ours the reverse
+00921630	RELOCATION_MATCH	175v175	PASS	?IsRunnable@CAIStateGroup_MinionWalkToMarker@@MAE_NXZ
+0091c130	RELOCATION_MATCH	236v236	PASS	?OnReplace@CAIStateGroup_NymphFloatAround@@UAEXXZ
+0095f580	RELOCATION_MATCH	219v219	PASS	?OnActivate@CAIStateGroup_OpinionReactionRoot@@UAEXXZ
+0095f6f0	RELOCATION_MATCH	223v223	PASS	CAIStateGroup_OpinionReactionRoot::Update
+00985f40	DIFFER	201v201	-	frame-slot swap only: retail puts the lookup key and the category out value in one word (+0xc) and the CCharString line at +8; ours shares the key wit
+0095e350	DIFFER	217v219	-	call order only: retail calls the world getter 0x008FCFA0 BEFORE pushing &filter (`mov eax,[eax+60h] ; lea edx ; push edx ; mov ecx,eax`), ours pushes
+00965210	DIFFER	170v165	-	frame 0x4c v 0x38: retail builds the In3DRange temporary in the slot the Bind4 block later reuses (dead Z store at +0x34) and copies it into the unary
+0097b780	DIFFER	235v236	-	two spots: the combat manager goes eax then `mov ecx,eax` (retail `mov ecx,[eax+4Ch]`), and the trap re-index is `mov ecx,[edi+1Ch] ; add ecx,ebp` whe
+0093bdf0	DIFFER	169v169	-	argument scheduling: retail loads the component into ecx between `mov edx,[ebx+4]` and `mov eax,[edx+18h]` (ours loads PBrain->PCreature through ecx/e
+0093bef0	RELOCATION_MATCH	172v172	PASS	?IsRunnable@CAIStateGroup_SeekScriptTarget@@UAE_NXZ
+0093c230	DIFFER	169v169	-	argument scheduling: retail loads the component into ecx between `mov edx,[ebx+4]` and `mov eax,[edx+18h]` (ours loads PBrain->PCreature through ecx/e
+00922fc0	DIFFER	175v175	-	lane gap: dead-argument-slot temporary -- retail keeps the look-at X/Y in the 0xC frame and stores Z into the dead pos.X argument slot ([esp+14h]); ou
+009239c0	RELOCATION_MATCH	224v224	PASS	CAIStateGroup_ServeFood::OnReplace
+00927df0	DIFFER	173v173	-	tail merge only: the two `return false` jumps (no shop / condition false) land on retail's SECOND SetStockState arm's `xor al,al` tail (0x927E93), our
+00945bd0	DIFFER	219v219	-	register only: retail tests the presence byte through eax (`mov eax,[eax+18h] ; test byte [eax+28h],40h`), ours through ecx
+0093c420	DIFFER	184v184	-	argument scheduling only (same as 0x0093BDF0): retail `mov ecx,[eax+4] ; mov eax,[edi+4] ; mov edx,[eax+18h]`, ours loads PBrain->PCreature through ec
+0093c600	RELOCATION_MATCH	196v196	PASS	SetWhatsThatSound
+0093c6d0	RELOCATION_MATCH	215v215	PASS	SetWhatsThatAnimation

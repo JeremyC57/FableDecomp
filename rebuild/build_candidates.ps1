@@ -239259,6 +239259,146 @@ $catalog = @(
         TestSource = '00/e5/CACOwner_GetRandomSpeech_00e53cb0_test.cpp'
         PassPattern = '00e53cb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0090cb80'
+        Module = 'CAIStateGroup_MinionGossip'
+        Source = '00/90/CAIStateGroupMinionGossip_IsStillValid_0090cb80.cpp'
+        TestSource = '00/90/CAIStateGroupMinionGossip_IsStillValid_0090cb80_test.cpp'
+        PassPattern = '0090cb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091c130'
+        Module = 'CAIStateGroup_NymphFloatAround'
+        Source = '00/91/CAIStateGroupNymphFloatAround_OnReplace_0091c130.cpp'
+        TestSource = '00/91/CAIStateGroupNymphFloatAround_OnReplace_0091c130_test.cpp'
+        PassPattern = '0091c130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091ccc0'
+        Module = 'CAIStateGroup_MinionReactToNoise'
+        Source = '00/91/CAIStateGroupMinionReactToNoise_Update_0091ccc0.cpp'
+        TestSource = '00/91/CAIStateGroupMinionReactToNoise_Update_0091ccc0_test.cpp'
+        PassPattern = '0091ccc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00921630'
+        Module = 'CAIStateGroup_MinionWalkToMarker'
+        Source = '00/92/CAIStateGroupMinionWalkToMarker_IsRunnable_00921630.cpp'
+        TestSource = '00/92/CAIStateGroupMinionWalkToMarker_IsRunnable_00921630_test.cpp'
+        PassPattern = '00921630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009239c0'
+        Module = 'CAIStateGroup_ServeFood'
+        Source = '00/92/CAIStateGroupServeFood_OnReplace_009239c0.cpp'
+        TestSource = '00/92/CAIStateGroupServeFood_OnReplace_009239c0_test.cpp'
+        PassPattern = '009239c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092e890'
+        Module = 'CAIStateGroup_MinionFindPersonalSpace'
+        Source = '00/92/CAIStateGroupMinionFindPersonalSpace_IsSpaceInvader_0092e890.cpp'
+        TestSource = '00/92/CAIStateGroupMinionFindPersonalSpace_IsSpaceInvader_0092e890_test.cpp'
+        PassPattern = '0092e890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00933c10'
+        Module = 'CAIStateGroup_MinionMotherProtectFamily'
+        Source = '00/93/CAIStateGroupMinionMotherProtectFamily_IsRunnable_00933c10.cpp'
+        TestSource = '00/93/CAIStateGroupMinionMotherProtectFamily_IsRunnable_00933c10_test.cpp'
+        PassPattern = '00933c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009347b0'
+        Module = 'CAIStateGroup_MinionKidGroupTag'
+        Source = '00/93/CAIStateGroupMinionKidGroupTag_Cleanup_009347b0.cpp'
+        TestSource = '00/93/CAIStateGroupMinionKidGroupTag_Cleanup_009347b0_test.cpp'
+        PassPattern = '009347b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00937f70'
+        Module = 'CAIStateGroup_MinionReactToEnemy'
+        Source = '00/93/CAIStateGroupMinionReactToEnemy_IsRunnable_00937f70.cpp'
+        TestSource = '00/93/CAIStateGroupMinionReactToEnemy_IsRunnable_00937f70_test.cpp'
+        PassPattern = '00937f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093bef0'
+        Module = 'CAIStateGroup_SeekScriptTarget'
+        Source = '00/93/CAIStateGroupSeekScriptTarget_IsRunnable_0093bef0.cpp'
+        TestSource = '00/93/CAIStateGroupSeekScriptTarget_IsRunnable_0093bef0_test.cpp'
+        PassPattern = '0093bef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093c600'
+        Module = 'CAIStateGroup_StealthSeekEnemy'
+        Source = '00/93/CAIStateGroupStealthSeekEnemy_SetWhatsThatSound_0093c600.cpp'
+        TestSource = '00/93/CAIStateGroupStealthSeekEnemy_SetWhatsThatSound_0093c600_test.cpp'
+        PassPattern = '0093c600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093c6d0'
+        Module = 'CAIStateGroup_StealthSeekEnemy'
+        Source = '00/93/CAIStateGroupStealthSeekEnemy_SetWhatsThatAnimation_0093c6d0.cpp'
+        TestSource = '00/93/CAIStateGroupStealthSeekEnemy_SetWhatsThatAnimation_0093c6d0_test.cpp'
+        PassPattern = '0093c6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094bdf0'
+        Module = 'CAIStateGroup_MinionHawkingFromStall'
+        Source = '00/94/CAIStateGroupMinionHawkingFromStall_IsStillValid_0094bdf0.cpp'
+        TestSource = '00/94/CAIStateGroupMinionHawkingFromStall_IsStillValid_0094bdf0_test.cpp'
+        PassPattern = '0094bdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009574d0'
+        Module = 'CAIStateGroup_MinionBehaviourGreetCreature'
+        Source = '00/95/CAIStateGroupMinionBehaviourGreetCreature_Update_009574d0.cpp'
+        TestSource = '00/95/CAIStateGroupMinionBehaviourGreetCreature_Update_009574d0_test.cpp'
+        PassPattern = '009574d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009575c0'
+        Module = 'CAIStateGroup_MinionBehaviourGreetCreature'
+        Source = '00/95/CAIStateGroupMinionBehaviourGreetCreature_IsRunnable_009575c0.cpp'
+        TestSource = '00/95/CAIStateGroupMinionBehaviourGreetCreature_IsRunnable_009575c0_test.cpp'
+        PassPattern = '009575c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00957f20'
+        Module = 'CAIStateGroup_MinionReactToBurglary'
+        Source = '00/95/CAIStateGroupMinionReactToBurglary_IsRunnable_00957f20.cpp'
+        TestSource = '00/95/CAIStateGroupMinionReactToBurglary_IsRunnable_00957f20_test.cpp'
+        PassPattern = '00957f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00958000'
+        Module = 'CAIStateGroup_MinionReactToBurglary'
+        Source = '00/95/CAIStateGroupMinionReactToBurglary_Update_00958000.cpp'
+        TestSource = '00/95/CAIStateGroupMinionReactToBurglary_Update_00958000_test.cpp'
+        PassPattern = '00958000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095f580'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/95/CAIStateGroupOpinionReactionRoot_OnActivate_0095f580.cpp'
+        TestSource = '00/95/CAIStateGroupOpinionReactionRoot_OnActivate_0095f580_test.cpp'
+        PassPattern = '0095f580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095f6f0'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/95/CAIStateGroupOpinionReactionRoot_Update_0095f6f0.cpp'
+        TestSource = '00/95/CAIStateGroupOpinionReactionRoot_Update_0095f6f0_test.cpp'
+        PassPattern = '0095f6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca52a0'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_ResetStreamingTimes_00ca52a0.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_ResetStreamingTimes_00ca52a0_test.cpp'
+        PassPattern = '00ca52a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
