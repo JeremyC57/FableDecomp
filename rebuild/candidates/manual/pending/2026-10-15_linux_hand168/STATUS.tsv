@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0071a9c0	DIFFER	111v118	-	register allocation (this esi/spill, time in ebp)
+007445e0	DIFFER	128v128	-	scheduling of the -1 store and ParentThing load
+007446b0	DIFFER	124v124	-	esi/edi register swap (member address formed before GetPItem)
+00744a00	RELOCATION_MATCH	104v104	PASS	
+00744a70	RELOCATION_MATCH	98v98	PASS	
+00744db0	RELOCATION_MATCH	128v128	PASS	
+00744ed0	DIFFER	157v157	-	lane gap: def out-pointer zero store after the GetDef pushes
+0055d520	RELOCATION_MATCH	97v97	PASS	
+0055d770	RELOCATION_MATCH	150v150	PASS	/GS
+0079e300	RELOCATION_MATCH	155v155	PASS	
+0079e3a0	RELOCATION_MATCH	126v126	PASS	
+007a0400	RELOCATION_MATCH	135v135	PASS	label: CTCWillLightning::ResumeForCutscene
+008da990	RELOCATION_MATCH	135v135	PASS	label: CModeThunderLightningStorm::ResumeForCutscene
+006af640	MATCH	139v139	PASS	
+006afbf0	RELOCATION_MATCH	100v100	PASS	vfunc_88 = GetPhysicsStateFlags
+006afd60	RELOCATION_MATCH	122v122	PASS	
+006afe60	DIFFER	145v145	-	lane gap: x87 dot-product term order + response/def register swap
+006b05a0	DIFFER	112v110	-	register choice for the graphic ref/type byte
+006b0850	RELOCATION_MATCH	130v130	PASS	
+00880220	RELOCATION_MATCH	118v118	PASS	
+00759870	RELOCATION_MATCH	124v124	PASS	
+00759900	RELOCATION_MATCH	101v101	PASS	vfunc_3 = ConstructFromParams
+0075aa80	RELOCATION_MATCH	111v111	PASS	
+0075b2d0	DIFFER	127v127	-	scheduling of the ParentThing load
+00723570	RELOCATION_MATCH	98v98	PASS	vfunc_3 = ConstructFromParams
+00723630	RELOCATION_MATCH	101v101	PASS	vfunc_36 = SetPhysicsEnabled
+00723760	RELOCATION_MATCH	117v117	PASS	
+007237e0	RELOCATION_MATCH	117v117	PASS	named SetFacingAngleYZ (slot 67)
+00723860	RELOCATION_MATCH	117v117	PASS	named SetFacingAngleXZ (slot 68)
+00723ac0	MATCH	98v98	PASS	
+008e5270	RELOCATION_MATCH	113v113	PASS	
+008e52f0	RELOCATION_MATCH	128v128	PASS	
+008e55e0	RELOCATION_MATCH	143v143	PASS	
+008e5750	DIFFER	129v127	-	lane gap: looked-up component moved eax->ecx before the tail call
+00a5b7d0	MATCH	117v117	PASS	label: C4DVector::Interpolate
+00729bc0	DIFFER	111v111	-	scheduling: add esi,20h before GetPItem (label: CTCActionUseScriptedHook helper)
+00800460	RELOCATION_MATCH	97v97	PASS	
+00702400	RELOCATION_MATCH	112v112	PASS	
+007025a0	DIFFER	134v131	-	inlined strcmp("")==0 materialised with sete
+00702630	RELOCATION_MATCH	112v112	PASS	label: GetSuccessSummary

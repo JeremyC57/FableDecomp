@@ -192,6 +192,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand165` | Hand chunk 165 (CTCHeroStats .. CTCInventoryBase): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand166` | Hand chunk 166 (CTCInventoryBase .. CTCKraken): 32 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand167` | Hand chunk 167 (CTCKraken .. CTCOwnedEntity): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand168` | Hand chunk 168 (CTCParticleAttachmentTracker .. CTCQuestCard): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -247,7 +248,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **603 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **613 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -933,6 +934,19 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00766140 CTCObjectAugmentations::GetDamageMultiplier DIFFER(119v113): same release gap | tried: member dtor, pointer-local dtor, member ReleaseReference(), optimize("s") | next: lane gap: def release register shape
 - 00766400 CTCObjectAugmentations::GetExperienceMultiplier DIFFER(119v113): same release gap | tried: hand release on a pointer local, member accessor + member release | next: lane gap: def release register shape
 - 00771770 CTCOpinionSource::CleanupSource DIFFER(150v151): register choice only, this in ebp and the next-node cursor in ebx (retail ebx/ebp) | tried: it/node loop forms, owner local, declaration order | next: lane gap: register choice (scheduling-only)
+
+
+#### `2026-10-15_linux_hand168` (10 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand168/differ/`)
+- 0071a9c0 CTCParticleAttachmentTracker::UpdateAttachedParticles DIFFER(111v118): retail this in esi spilled to the push-ecx slot + time in ebp, ours this in ebx and time re-read | tried: GetInterface out-pointer, HasTC/GetTC, self local, /Oa | next: lane gap: register allocation
+- 007445e0 CTCPerceiveThing::CTCPerceiveThing DIFFER(128v128): -1 store and ParentThing load scheduled differently | tried: body assignments in retail order, init list, UpdateOffset in init list | next: lane gap: store scheduling
+- 007446b0 CTCPerceiveThing::SetPerceivedThing DIFFER(124v124): this edi / &PerceivedThing esi swapped (member address formed before the temp's GetPItem) | tried: temporary, named local in a block | next: same as 00729bc0, try an inline member SetPerceivedThing helper on the pointer
+- 00744ed0 CTCPerceiveThing::OnCreate DIFFER(157v157): def out-pointer zero store after the GetDef pushes, def loaded into ebp first | tried: CDefPointer local, plain pointer, zeroing out struct | next: lane gap: CDefPointer zero store after the GetDef pushes
+- 006afe60 CTCPhysicsBase::RespondToCollision DIFFER(145v145): edx/ecx response/def swap and Z dot term `fld v.Z ; fmul N.Z` | tried: DotProduct(n,v), DotProduct(v,n), explicit sum | next: lane gap: x87 term order
+- 006b05a0 CTCPhysicsBase::CreatePPhysicsMeshInfo DIFFER(112v110): retail ref in edx + type in al, ours ref in eax + type in dl | tried: if/else, switch, type local, mesh local | next: lane gap: register choice
+- 0075b2d0 CTCPhysicsRigidBody::OnCreate DIFFER(127v127): ParentThing load hoisted above the last RHSet dword pair | tried: C2DVector temp, member zero stores, pre-declared graphic local | next: lane gap: scheduling
+- 008e5750 CTCPhysicsStandard::IsCollisionWithThingToCauseResponse DIFFER(129v127): component `mov eax,[eax+4] ... mov ecx,eax` before the tail jump | tried: GetTC()->F() (no tail call), filter local, GetInterface out-pointer | next: lane gap: looked-up component used as this loaded into ecx
+- 007025a0 CTCQuestCard::GetRegionName DIFFER(134v131): inlined strcmp(text,"")==0 gives `sete al ; test al,al` where retail branches on the repe cmpsb flags | tried: if/return and ternary operator== (inline, __forceinline), nested ifs | next: an operator== whose null arm is `return !*text;`-style or an intrinsic-free compare
+- 00729bc0 CTCActionUseScriptedHook::ResolveEntranceConnectedTo DIFFER(111v111): `add esi,20h` scheduled before the temp's GetPItem call | tried: temporary assignment, member-reference local | next: lane gap: scheduling (same as 007446b0)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

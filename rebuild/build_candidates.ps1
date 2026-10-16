@@ -236317,6 +236317,217 @@ $catalog = @(
         TestSource = '00/ee/CTHSnowTroll_CTHSnowTroll_00ee02c0_test.cpp'
         PassPattern = '00ee02c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0055d520'
+        Module = 'CTCPhotojournalCapture'
+        Source = '00/55/CTCPhotojournalCapture_CTCPhotojournalCapture_0055d520.cpp'
+        TestSource = '00/55/CTCPhotojournalCapture_CTCPhotojournalCapture_0055d520_test.cpp'
+        PassPattern = '0055d520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055d770'
+        Module = 'CTCPhotojournalCapture'
+        Source = '00/55/CTCPhotojournalCapture_ClosePhotojournalCapture_0055d770.cpp'
+        TestSource = '00/55/CTCPhotojournalCapture_ClosePhotojournalCapture_0055d770_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0055d770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006af640'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_GetBoundingInfo_006af640.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_GetBoundingInfo_006af640_test.cpp'
+        PassPattern = '006af640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006afbf0'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_GetPhysicsStateFlags_006afbf0.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_GetPhysicsStateFlags_006afbf0_test.cpp'
+        PassPattern = '006afbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006afd60'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_FrameUpdate_006afd60.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_FrameUpdate_006afd60_test.cpp'
+        PassPattern = '006afd60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b0850'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_GetPhysicsMeshObject_006b0850.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_GetPhysicsMeshObject_006b0850_test.cpp'
+        PassPattern = '006b0850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00702400'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_GetQuestSummary_00702400.cpp'
+        TestSource = '00/70/CTCQuestCard_GetQuestSummary_00702400_test.cpp'
+        PassPattern = '00702400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00702630'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_GetSuccessSummary_00702630.cpp'
+        TestSource = '00/70/CTCQuestCard_GetSuccessSummary_00702630_test.cpp'
+        PassPattern = '00702630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00723570'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_ConstructFromParams_00723570.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_ConstructFromParams_00723570_test.cpp'
+        PassPattern = '00723570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00723630'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_SetPhysicsEnabled_00723630.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_SetPhysicsEnabled_00723630_test.cpp'
+        PassPattern = '00723630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00723760'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_SetFacingAngleXY_00723760.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_SetFacingAngleXY_00723760_test.cpp'
+        PassPattern = '00723760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007237e0'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_SetFacingAngleYZ_007237e0.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_SetFacingAngleYZ_007237e0_test.cpp'
+        PassPattern = '007237e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00723860'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_SetFacingAngleXZ_00723860.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_SetFacingAngleXZ_00723860_test.cpp'
+        PassPattern = '00723860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00723ac0'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_UpdateCollisionGameInteractions_00723ac0.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_UpdateCollisionGameInteractions_00723ac0_test.cpp'
+        PassPattern = '00723ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00744a00'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_SetThingLineOfSight_00744a00.cpp'
+        TestSource = '00/74/CTCPerceiveThing_SetThingLineOfSight_00744a00_test.cpp'
+        PassPattern = '00744a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00744a70'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_SetThingExtendedLineOfSight_00744a70.cpp'
+        TestSource = '00/74/CTCPerceiveThing_SetThingExtendedLineOfSight_00744a70_test.cpp'
+        PassPattern = '00744a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00744db0'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_ResetPerceptionVariables_00744db0.cpp'
+        TestSource = '00/74/CTCPerceiveThing_ResetPerceptionVariables_00744db0_test.cpp'
+        PassPattern = '00744db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00759870'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_GetPossibleCollidedWithArea_00759870.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_GetPossibleCollidedWithArea_00759870_test.cpp'
+        PassPattern = '00759870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00759900'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_ConstructFromParams_00759900.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_ConstructFromParams_00759900_test.cpp'
+        PassPattern = '00759900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075aa80'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_CTCPhysicsRigidBody_0075aa80.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_CTCPhysicsRigidBody_0075aa80_test.cpp'
+        PassPattern = '0075aa80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079e300'
+        Module = 'CTCPhysicalShieldSpell'
+        Source = '00/79/CTCPhysicalShieldSpell_CancelMove_0079e300.cpp'
+        TestSource = '00/79/CTCPhysicalShieldSpell_CancelMove_0079e300_test.cpp'
+        PassPattern = '0079e300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079e3a0'
+        Module = 'CTCPhysicalShieldSpell'
+        Source = '00/79/CTCPhysicalShieldSpell_Pause_0079e3a0.cpp'
+        TestSource = '00/79/CTCPhysicalShieldSpell_Pause_0079e3a0_test.cpp'
+        PassPattern = '0079e3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a0400'
+        Module = 'CTCWillLightning'
+        Source = '00/7a/CTCWillLightning_ResumeForCutscene_007a0400.cpp'
+        TestSource = '00/7a/CTCWillLightning_ResumeForCutscene_007a0400_test.cpp'
+        PassPattern = '007a0400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00800460'
+        Module = 'CTCPreCalculatedNavigationRoute'
+        Source = '00/80/CTCPreCalculatedNavigationRoute_OnInitialActivate_00800460.cpp'
+        TestSource = '00/80/CTCPreCalculatedNavigationRoute_OnInitialActivate_00800460_test.cpp'
+        PassPattern = '00800460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00880220'
+        Module = 'CTCPhysicsBase'
+        Source = '00/88/CTCPhysicsBase_HasCollidedWithLandscapeAt_00880220.cpp'
+        TestSource = '00/88/CTCPhysicsBase_HasCollidedWithLandscapeAt_00880220_test.cpp'
+        PassPattern = '00880220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008da990'
+        Module = 'NCreatureMode::CModeThunderLightningStorm'
+        Source = '00/8d/NCreatureModeCModeThunderLightningStorm_ResumeForCutscene_008da990.cpp'
+        TestSource = '00/8d/NCreatureModeCModeThunderLightningStorm_ResumeForCutscene_008da990_test.cpp'
+        PassPattern = '008da990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e5270'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/8e/CTCPhysicsStandard_UpdateIsMoving_008e5270.cpp'
+        TestSource = '00/8e/CTCPhysicsStandard_UpdateIsMoving_008e5270_test.cpp'
+        PassPattern = '008e5270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e52f0'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/8e/CTCPhysicsStandard_CalculateNoStepsForStepBasedMovement_008e52f0.cpp'
+        TestSource = '00/8e/CTCPhysicsStandard_CalculateNoStepsForStepBasedMovement_008e52f0_test.cpp'
+        PassPattern = '008e52f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e55e0'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/8e/CTCPhysicsStandard_UpdateOnSurface_008e55e0.cpp'
+        TestSource = '00/8e/CTCPhysicsStandard_UpdateOnSurface_008e55e0_test.cpp'
+        PassPattern = '008e55e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5b7d0'
+        Module = 'C4DVector'
+        Source = '00/a5/C4DVector_Interpolate_00a5b7d0.cpp'
+        TestSource = '00/a5/C4DVector_Interpolate_00a5b7d0_test.cpp'
+        PassPattern = '00a5b7d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
