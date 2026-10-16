@@ -205,6 +205,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand178` | Hand chunk 178 (CWParsedItem .. CWorldMap): 32 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand179` | Hand chunk 179 (CWorldMap .. CZoomingComponent): 28 of 30 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand180` | Hand chunk 180 (C2DLineF .. C3DQuadricBasedMeshOptimiser): 29 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand181` | Hand chunk 181 (C3DSkeletalMorph .. CAIStateGroup_DeedReactionRoot): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -262,7 +263,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-16_linux_retry6` | Retry batch 6 (Fable 5.1, 2026-10-16): 8 parked rows from chunks 165-179 | - | 8 | 0 | landed; parked rows open |
 | `2026-10-16_linux_retry7` | Retry batch 7 (Fable 5.1, 2026-10-16): 8 near-miss parked rows from chunks 142-154 | - | 8 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **731 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **744 parked rows** for the Fable retry pass.
 
 ### Skipped rows (16 open of 41 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1106,6 +1107,22 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00a361a0 C3DMeshObject::GetHelperPointPositionStatic DIFFER(187v193): X row first, (z*Z + y*Y) + x*X + P, x kept on FPU | tried: reordered named rows, member-by-member result | next: lane gap: x87 term order
 - 00a2e760 C3DMeshStats::AllocateBuffers DIFFER(183v183): `add ebp,eax` v `add eax,ebp` for the volume pointer | tried: direct stores, cast sum, inline SetBuffer (fixed scheduling) | next: SetBuffer + `(unsigned char*)(dummyBytes + (unsigned long)base)`
 - 00a8eda0 C3DPrimitive2::SetupVertexBuffer DIFFER(166v165): `test byte ptr [esp+1Ch],1` v `mov bl ; mov edx,1 ; test dl,bl` | tried: chained/separate scale stores, buffer local | next: lane gap: in-place flag test
+
+
+#### `2026-10-15_linux_hand181` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand181/differ/`)
+- 00a44cd0 C3DSkeletalMorphTarget::GetBoneScaling DIFFER(179v175): identity local collapses to one reused frame word and both returns copy through `mov ecx,eax`; begin() loaded into ebx then moved to ebp | tried: returned temporary, named local, __forceinline copy ctor, body-assigning ctor | next: lane gap: return-value copy register / scalar replacement
+- 0097f690 CAIStateGroupBase::AIAction_MoveToPreCalcRoute DIFFER(226v226): callee-saved parameter registers assigned differently (ours ebx=anim, ebp=speed, edi=extra; retail ebx=speed, edi=anim, ebp=extra) and the result spills to the extra slot instead of the condition slot | tried: POD vector, user copy ctor (fixed the in-place argument build), float speed/extra | next: lane gap: register allocation
+- 0097f780 CAIStateGroupBase::AIAction_MoveToPreCalcRouteProximity DIFFER(233v233): same parameter-register assignment and result-spill-slot difference as 0x0097F690 | tried: POD vector, user copy ctor | next: lane gap: register allocation
+- 009577e0 CAIStateGroupBehaviourBase::IsRunnable DIFFER(181v181): `lea esi,[edi+14h]` scheduled before the first temporary's GetPItem call (retail after) | tried: SetPItem(GetPItem()), inline operator=, __forceinline SetTarget helper | next: lane gap: scheduling
+- 0092bcb0 CAIStateGroup_AvoidRegionExit::IsRunnable DIFFER(207v207): esi/edi swap for the 0x105 component and its PThing address (retail reuses the creature's edi) | tried: creature local + two GetInterface, component IsThingAlive accessor, out-pointers declared together, no creature local | next: lane gap: register allocation
+- 0094f090 CAIStateGroup_BalverineCornered::GetLandPos DIFFER(223v223): landing Z: `fld [pos.Z] ; fadd [tmp]` vs retail `fld [tmp] ; fadd [pos.Z]` (VC orders the operands by address) | tried: pos + dir*d, dir*d + pos, swapped operator+ operands, += form | next: lane gap: x87 operand order
+- 0094f640 CAIStateGroup_BalverineCornered::Update DIFFER(224v236): ours merges both arms' PerformActionAndWait call (+ lea ecx) into one; retail keeps a call per arm and merges at the dtor | tried: plain arms, creature locals per arm (fixed regs), 0x118 action size (fixed the frame) | next: lane gap: tail merging of call arms
+- 0094f730 CAIStateGroup_BalverineJumpAtFleeingEnemy::Update DIFFER(228v230): frame-rate/frame locals in their own slots (sub esp,124h) where retail overlaps them with the action temporaries (11Ch); retail keeps the dead second result in edi | tried: flat locals, block-scoped locals + creature locals (fixed the bl constant and creature regs), named action locals | next: lane gap: frame slot packing of block locals with temporaries
+- 009612f0 CAIStateGroup_BanditKingCharge::IsRunnable DIFFER(174v174): esi/edi swap: hero in esi and edi pushed late (retail hero edi, esi pushed late) | tried: inline dist helper (both arg orders), pointer IS_THING_ALIVE helper, member distance helper | next: lane gap: register allocation
+- 0095e790 CAIStateGroup_BoastingCrowdMember::IsRunnable DIFFER(209v209): esi/edi swap (hero vs interface-map register) | tried: GetInterface, group declared first (fixed the frame), HasTC+FindEntry, IS_THING_ALIVE<T>(T* const&) | next: lane gap: register allocation
+- 00917a10 CAIStateGroup_Clean::IsRunnable DIFFER(184v184): early-exit def release stores the decremented count before `mov edx,esi ; test edx,edx` (ours after) | tried: one  | next: 
+- 0091ea70 CAIStateGroup_CreatureRangedCombat2::IsAbleToFire DIFFER(240v240): ecx/edx/eax rotation: creature in ecx for the 0x34 test (retail eax), PBrain in edx (retail ecx), key address registers swapped | tried: early returns, nested single exits, inline GetCreature(), HasTC returning the masked word | next: lane gap: register allocation
+- 009713e0 CAIStateGroup_CreatureUseCoverBase::DuckBehindCover DIFFER(190v190): ebx/ebp swapped (&PTargetThing vs speech id), eax/ecx/edx rotation at the def release and action args, `add ecx,38h` after the pushes vs ours `lea ecx,[eax+38h]` | tried: direct chain, creature local before GetPWorld, dialogue-ref local, combat-manager local, inline GetCreature() | next: lane gap: register allocation
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

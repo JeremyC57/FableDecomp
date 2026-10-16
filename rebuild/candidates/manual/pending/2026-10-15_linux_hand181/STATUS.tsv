@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a45260	RELOCATION_MATCH	200v200	PASS	C3DSkeletalMorph::PeekCombinedMorph()
+00a454f0	RELOCATION_MATCH	172v172	PASS	C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& positive, const C3DSkeletalMorphTarget& negative)
+00a44cd0	DIFFER	179v175	-	identity local collapses to one reused frame word and both returns copy through `mov ecx,eax`; begin() loaded into ebx then moved to ebp
+00a13ce0	RELOCATION_MATCH	188v188	PASS	C2DVector::ToString() const
+00e2e440	RELOCATION_MATCH	213v213	PASS	CAC_Owner::GetRandomSpeech()
+00e362b0	RELOCATION_MATCH	210v210	PASS	CAC_Owner::GetRandomSpeech()
+00e53cb0	RELOCATION_MATCH	210v210	PASS	CAC_Owner::GetRandomSpeech()
+0088c160	RELOCATION_MATCH	218v218	PASS	CAIBrain::CAIBrain(CMainGameComponent*, CWorld*, CThingManager*, CPlayerManager*, CThingAICreature*, CDefPointer<const CBrainDef>)
+0097d8b0	RELOCATION_MATCH	203v203	PASS	CAIStateGroupBase::AIAction_PerformAction(CCreatureActionBase* action)
+0097d980	RELOCATION_MATCH	177v177	PASS	CAIStateGroupBase::AIAction_PumpCombatActions()
+0097f5b0	RELOCATION_MATCH	219v219	PASS	CAIStateGroupBase::SetUpPreCalcNav(const CThing* routeThing)
+0097f690	DIFFER	226v226	-	callee-saved parameter registers assigned differently (ours ebx=anim, ebp=speed, edi=extra; retail ebx=speed, edi=anim, ebp=extra) and the result spil
+0097f780	DIFFER	233v233	-	same parameter-register assignment and result-spill-slot difference as 0x0097F690
+00981350	RELOCATION_MATCH	181v181	PASS	CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(mode, speaker, target, speechName, a5, a6, a7)
+009577e0	DIFFER	181v181	-	`lea esi,[edi+14h]` scheduled before the first temporary's GetPItem call (retail after)
+00957940	RELOCATION_MATCH	216v216	PASS	CAIStateGroupBehaviourBase::Initialise(brain, creature, priorityValue, priority, name)
+0092bcb0	DIFFER	207v207	-	esi/edi swap for the 0x105 component and its PThing address (retail reuses the creature's edi)
+0094f090	DIFFER	223v223	-	landing Z: `fld [pos.Z] ; fadd [tmp]` vs retail `fld [tmp] ; fadd [pos.Z]` (VC orders the operands by address)
+0094f640	DIFFER	224v236	-	ours merges both arms' PerformActionAndWait call (+ lea ecx) into one; retail keeps a call per arm and merges at the dtor
+0094f730	DIFFER	228v230	-	frame-rate/frame locals in their own slots (sub esp,124h) where retail overlaps them with the action temporaries (11Ch); retail keeps the dead second 
+009612f0	DIFFER	174v174	-	esi/edi swap: hero in esi and edi pushed late (retail hero edi, esi pushed late)
+00961790	RELOCATION_MATCH	239v239	PASS	CAIStateGroup_BanditKingCharge::Update()
+009614a0	RELOCATION_MATCH	169v169	PASS	CAIStateGroup_BanditKingLunge::IsRunnable()
+00961550	RELOCATION_MATCH	240v240	PASS	CAIStateGroup_BanditKingThrowWeapons::IsRunnable()
+0093a7a0	RELOCATION_MATCH	227v227	PASS	CAIStateGroup_BanditSitRoundCampfire::Singsong()
+0095e790	DIFFER	209v209	-	esi/edi swap (hero vs interface-map register)
+00956ce0	RELOCATION_MATCH	170v170	PASS	CAIStateGroup_BriarRoseWillUse::IsRunnable()
+00917520	RELOCATION_MATCH	185v185	PASS	CAIStateGroup_Clean::OnActivate()
+00917a10	DIFFER	184v184	-	early-exit def release stores the decremented count before `mov edx,esi ; test edx,edx` (ours after)
+00978e60	RELOCATION_MATCH	172v172	PASS	CAIStateGroup_CreatureAdvanceInCover::IsRunnableLeaf()
+00978f10	RELOCATION_MATCH	187v187	PASS	CAIStateGroup_CreatureAdvanceInCover::IsStillRunnable()
+0091ea70	DIFFER	240v240	-	ecx/edx/eax rotation: creature in ecx for the 0x34 test (retail eax), PBrain in edx (retail ecx), key address registers swapped
+0091eb60	RELOCATION_MATCH	198v198	PASS	CAIStateGroup_CreatureRangedCombat2::IsRunnable()
+0095e260	RELOCATION_MATCH	199v199	PASS	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable()
+00979e90	RELOCATION_MATCH	221v221	PASS	CAIStateGroup_CreatureTakeCover::IsStillRunnable()
+00970ab0	RELOCATION_MATCH	168v168	PASS	CAIStateGroup_CreatureUseCoverBase::IsRunnable()
+00970b60	RELOCATION_MATCH	166v166	PASS	CAIStateGroup_CreatureUseCoverBase::ClearCoverThing()
+00970c10	RELOCATION_MATCH	192v192	PASS	CAIStateGroup_CreatureUseCoverBase::CleanupLeaf()
+009713e0	DIFFER	190v190	-	ebx/ebp swapped (&PTargetThing vs speech id), eax/ecx/edx rotation at the def release and action args, `add ecx,38h` after the pushes vs ours `lea ecx
+00960070	RELOCATION_MATCH	163v163	PASS	CAIStateGroup_DeedReactionRoot::OnActivate()

@@ -239070,6 +239070,195 @@ $catalog = @(
         TestSource = '00/ad/C3DBoundingBox_IntersectsSolid_00adecc0_test.cpp'
         PassPattern = '00adecc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0088c160'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_CAIBrain_0088c160.cpp'
+        TestSource = '00/88/CAIBrain_CAIBrain_0088c160_test.cpp'
+        PassPattern = '0088c160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00917520'
+        Module = 'CAIStateGroup_Clean'
+        Source = '00/91/CAIStateGroupClean_OnActivate_00917520.cpp'
+        TestSource = '00/91/CAIStateGroupClean_OnActivate_00917520_test.cpp'
+        PassPattern = '00917520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091eb60'
+        Module = 'CAIStateGroup_CreatureRangedCombat2'
+        Source = '00/91/CAIStateGroupCreatureRangedCombat2_IsRunnable_0091eb60.cpp'
+        TestSource = '00/91/CAIStateGroupCreatureRangedCombat2_IsRunnable_0091eb60_test.cpp'
+        PassPattern = '0091eb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093a7a0'
+        Module = 'CAIStateGroup_BanditSitRoundCampfire'
+        Source = '00/93/CAIStateGroupBanditSitRoundCampfire_Singsong_0093a7a0.cpp'
+        TestSource = '00/93/CAIStateGroupBanditSitRoundCampfire_Singsong_0093a7a0_test.cpp'
+        PassPattern = '0093a7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00956ce0'
+        Module = 'CAIStateGroup_BriarRoseWillUse'
+        Source = '00/95/CAIStateGroupBriarRoseWillUse_IsRunnable_00956ce0.cpp'
+        TestSource = '00/95/CAIStateGroupBriarRoseWillUse_IsRunnable_00956ce0_test.cpp'
+        PassPattern = '00956ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00957940'
+        Module = 'CAIStateGroupBehaviourBase'
+        Source = '00/95/CAIStateGroupBehaviourBase_Initialise_00957940.cpp'
+        TestSource = '00/95/CAIStateGroupBehaviourBase_Initialise_00957940_test.cpp'
+        PassPattern = '00957940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095e260'
+        Module = 'CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets'
+        Source = '00/95/CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_IsRunnable_0095e260.cpp'
+        TestSource = '00/95/CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_IsRunnable_0095e260_test.cpp'
+        PassPattern = '0095e260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00960070'
+        Module = 'CAIStateGroup_DeedReactionRoot'
+        Source = '00/96/CAIStateGroupDeedReactionRoot_OnActivate_00960070.cpp'
+        TestSource = '00/96/CAIStateGroupDeedReactionRoot_OnActivate_00960070_test.cpp'
+        PassPattern = '00960070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009614a0'
+        Module = 'CAIStateGroup_BanditKingLunge'
+        Source = '00/96/CAIStateGroupBanditKingLunge_IsRunnable_009614a0.cpp'
+        TestSource = '00/96/CAIStateGroupBanditKingLunge_IsRunnable_009614a0_test.cpp'
+        PassPattern = '009614a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00961550'
+        Module = 'CAIStateGroup_BanditKingThrowWeapons'
+        Source = '00/96/CAIStateGroupBanditKingThrowWeapons_IsRunnable_00961550.cpp'
+        TestSource = '00/96/CAIStateGroupBanditKingThrowWeapons_IsRunnable_00961550_test.cpp'
+        PassPattern = '00961550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00961790'
+        Module = 'CAIStateGroup_BanditKingCharge'
+        Source = '00/96/CAIStateGroupBanditKingCharge_Update_00961790.cpp'
+        TestSource = '00/96/CAIStateGroupBanditKingCharge_Update_00961790_test.cpp'
+        PassPattern = '00961790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00970ab0'
+        Module = 'CAIStateGroup_CreatureUseCoverBase'
+        Source = '00/97/CAIStateGroupCreatureUseCoverBase_IsRunnable_00970ab0.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureUseCoverBase_IsRunnable_00970ab0_test.cpp'
+        PassPattern = '00970ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00970b60'
+        Module = 'CAIStateGroup_CreatureUseCoverBase'
+        Source = '00/97/CAIStateGroupCreatureUseCoverBase_ClearCoverThing_00970b60.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureUseCoverBase_ClearCoverThing_00970b60_test.cpp'
+        PassPattern = '00970b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00970c10'
+        Module = 'CAIStateGroup_CreatureUseCoverBase'
+        Source = '00/97/CAIStateGroupCreatureUseCoverBase_CleanupLeaf_00970c10.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureUseCoverBase_CleanupLeaf_00970c10_test.cpp'
+        PassPattern = '00970c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00978e60'
+        Module = 'CAIStateGroup_CreatureAdvanceInCover'
+        Source = '00/97/CAIStateGroupCreatureAdvanceInCover_IsRunnableLeaf_00978e60.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureAdvanceInCover_IsRunnableLeaf_00978e60_test.cpp'
+        PassPattern = '00978e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00978f10'
+        Module = 'CAIStateGroup_CreatureAdvanceInCover'
+        Source = '00/97/CAIStateGroupCreatureAdvanceInCover_IsStillRunnable_00978f10.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureAdvanceInCover_IsStillRunnable_00978f10_test.cpp'
+        PassPattern = '00978f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00979e90'
+        Module = 'CAIStateGroup_CreatureTakeCover'
+        Source = '00/97/CAIStateGroupCreatureTakeCover_IsStillRunnable_00979e90.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureTakeCover_IsStillRunnable_00979e90_test.cpp'
+        PassPattern = '00979e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097d8b0'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_AIActionPerformAction_0097d8b0.cpp'
+        TestSource = '00/97/CAIStateGroupBase_AIActionPerformAction_0097d8b0_test.cpp'
+        PassPattern = '0097d8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097d980'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_AIActionPumpCombatActions_0097d980.cpp'
+        TestSource = '00/97/CAIStateGroupBase_AIActionPumpCombatActions_0097d980_test.cpp'
+        PassPattern = '0097d980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097f5b0'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_SetUpPreCalcNav_0097f5b0.cpp'
+        TestSource = '00/97/CAIStateGroupBase_SetUpPreCalcNav_0097f5b0_test.cpp'
+        PassPattern = '0097f5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00981350'
+        Module = 'CAIStateGroupBase'
+        Source = '00/98/CAIStateGroupBase_AIActionSpeakAISpeechToTarget_00981350.cpp'
+        TestSource = '00/98/CAIStateGroupBase_AIActionSpeakAISpeechToTarget_00981350_test.cpp'
+        PassPattern = '00981350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a13ce0'
+        Module = 'C2DVector'
+        Source = '00/a1/C2DVector_ToString_00a13ce0.cpp'
+        TestSource = '00/a1/C2DVector_ToString_00a13ce0_test.cpp'
+        PassPattern = '00a13ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a45260'
+        Module = 'C3DSkeletalMorph'
+        Source = '00/a4/C3DSkeletalMorph_PeekCombinedMorph_00a45260.cpp'
+        TestSource = '00/a4/C3DSkeletalMorph_PeekCombinedMorph_00a45260_test.cpp'
+        PassPattern = '00a45260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a454f0'
+        Module = 'C3DSkeletalMorphParameter'
+        Source = '00/a4/C3DSkeletalMorphParameter_C3DSkeletalMorphParameter_00a454f0.cpp'
+        TestSource = '00/a4/C3DSkeletalMorphParameter_C3DSkeletalMorphParameter_00a454f0_test.cpp'
+        PassPattern = '00a454f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2e440'
+        Module = 'CAC_Owner'
+        Source = '00/e2/CACOwner_GetRandomSpeech_00e2e440.cpp'
+        TestSource = '00/e2/CACOwner_GetRandomSpeech_00e2e440_test.cpp'
+        PassPattern = '00e2e440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e362b0'
+        Module = 'CAC_Owner'
+        Source = '00/e3/CACOwner_GetRandomSpeech_00e362b0.cpp'
+        TestSource = '00/e3/CACOwner_GetRandomSpeech_00e362b0_test.cpp'
+        PassPattern = '00e362b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e53cb0'
+        Module = 'CAC_Owner'
+        Source = '00/e5/CACOwner_GetRandomSpeech_00e53cb0.cpp'
+        TestSource = '00/e5/CACOwner_GetRandomSpeech_00e53cb0_test.cpp'
+        PassPattern = '00e53cb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,11 @@
+# Lessons from chunk 181 (for GOTCHAS)
+- Two interface lookups share one key slot only as out-parameter `GetInterface` calls written directly in the function body; inside an inline helper (or as HasTC + FindEntry) VC7.1 gives each its own slot.
+- A component used straight as `this` (`mov ecx,[eax+4] ; mov edx,[ecx]` for a virtual call) comes from an entry-returning FindEntry written `if (it == end) sel = end; else if (it->type <= key) sel = it; else sel = end;` -- the `||` form or a returned component keeps it in eax.
+- A known-type local whose virtual is called as `call [vtable]` (not a direct call) is a TEMPORARY (`Module(world, creature).IsRunnable()`); a named local is devirtualised to a direct call and gets its own frame slot. Members stored before the vtable store come from a `__declspec(novtable)` base ctor.
+- A by-value CIntelligentPointer argument built as base ctor, vtable store, then GetPItem is an inline converting copy ctor from the source pointer object; a `T*` ctor calls GetPItem first.
+- `GetString()` that preloads "" (`mov edx,offset "" ; je ; mov edx,[eax]`) is `const char* s = ""; if (data) s = data->Chars; return s;`; both `?:` forms branch.
+- Entity-script yield loops: `for (;;) { if (IsDone()) return x; ...; if (ok) break; yield; }` reproduces retail's single shared return tail; `while (!IsDone())` flips the in-branch IsDone layouts.
+- An out-of-line template ctor/operator= (call to 0x48BD00/0x4A96F0...) passed a temporary reuses the ctor's eax; retail's `lea` re-addressing comes from a named local in its own block.
+- `_Vector_base` + `_STLP_alloc_proxy` also fixes argument-load order in a big ctor init list (CAIBrain) and `lea ecx,[edi+N]` placement inside an inlined `new T` ctor.
+- A ctor/`new` row whose pushes look one argument short: count the bool of the outer AIAction_*AndWait call first (pushed before the ctor's arguments).
+- Read float pool constants from the exe for documentation (masked by the grader but needed for tests): 0x01295F5C 49.0, 0x01238164 16.0, 0x0123003C 25.0, 0x0125A690 1.2, 0x0129334C 5.0, 0x0122F59C 0.5.
