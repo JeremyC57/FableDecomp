@@ -237562,6 +237562,272 @@ $catalog = @(
         TestSource = '00/af/stdvectorstdpairNParticleEngineEPSCTypeNParticleEngineCComponentInstance_resize_00af7a10_test.cpp'
         PassPattern = '00af7a10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004a9da0'
+        Module = 'CThingSearchTools'
+        Source = '00/4a/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterHasTCCThing_004a9da0.cpp'
+        TestSource = '00/4a/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterHasTCCThing_004a9da0_test.cpp'
+        PassPattern = '004a9da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a9e50'
+        Module = 'CThingSearchTools'
+        Source = '00/4a/CThingSearchTools_GetPBestThingCFilterBind3CThingFilterHasTCCThing_004a9e50.cpp'
+        TestSource = '00/4a/CThingSearchTools_GetPBestThingCFilterBind3CThingFilterHasTCCThing_004a9e50_test.cpp'
+        PassPattern = '004a9e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00512ed0'
+        Module = 'CThingSearchTools'
+        Source = '00/51/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterInMapCThin_00512ed0.cpp'
+        TestSource = '00/51/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterInMapCThin_00512ed0_test.cpp'
+        PassPattern = '00512ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00512f60'
+        Module = 'CThingSearchTools'
+        Source = '00/51/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterHasScriptN_00512f60.cpp'
+        TestSource = '00/51/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterHasScriptN_00512f60_test.cpp'
+        PassPattern = '00512f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006156e0'
+        Module = 'CThingSearchTools'
+        Source = '00/61/CThingSearchTools_GetPFirstLeafThingCThingFilterAICreatureHasPrope_006156e0.cpp'
+        TestSource = '00/61/CThingSearchTools_GetPFirstLeafThingCThingFilterAICreatureHasPrope_006156e0_test.cpp'
+        PassPattern = '006156e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00615750'
+        Module = 'CThingSearchTools'
+        Source = '00/61/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterHasTCCThin_00615750.cpp'
+        TestSource = '00/61/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterHasTCCThin_00615750_test.cpp'
+        PassPattern = '00615750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065f744'
+        Module = 'CThingSearchTools'
+        Source = '00/65/CThingSearchTools_GetPBestThingCThingFilterHasTCCThingCompareNeare_0065f744.cpp'
+        TestSource = '00/65/CThingSearchTools_GetPBestThingCThingFilterHasTCCThingCompareNeare_0065f744_test.cpp'
+        PassPattern = '0065f744_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685ee0'
+        Module = 'CThingSearchTools'
+        Source = '00/68/CThingSearchTools_GetPFirstLeafThingCThingFilterAICreatureHasPrope_00685ee0.cpp'
+        TestSource = '00/68/CThingSearchTools_GetPFirstLeafThingCThingFilterAICreatureHasPrope_00685ee0_test.cpp'
+        PassPattern = '00685ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a98f0'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_SerialiseGameState_006a98f0.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_SerialiseGameState_006a98f0_test.cpp'
+        PassPattern = '006a98f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d3fb0'
+        Module = 'CThingSearchTools'
+        Source = '00/6d/CThingSearchTools_GetPFirstThingCThingFilterHasDefGlobalIndexCThin_006d3fb0.cpp'
+        TestSource = '00/6d/CThingSearchTools_GetPFirstThingCThingFilterHasDefGlobalIndexCThin_006d3fb0_test.cpp'
+        PassPattern = '006d3fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007461c0'
+        Module = 'CThingSearchTools'
+        Source = '00/74/CThingSearchTools_GetPBestLeafThingCFilterBind2CThingFilterNoiseCa_007461c0.cpp'
+        TestSource = '00/74/CThingSearchTools_GetPBestLeafThingCFilterBind2CThingFilterNoiseCa_007461c0_test.cpp'
+        PassPattern = '007461c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00777000'
+        Module = 'CThingSearchTools'
+        Source = '00/77/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterHasTCCThin_00777000.cpp'
+        TestSource = '00/77/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterHasTCCThin_00777000_test.cpp'
+        PassPattern = '00777000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00782670'
+        Module = 'CThingSearchTools'
+        Source = '00/78/CThingSearchTools_GetPBestThingCThingFilterHasTCCThingCompareNeare_00782670.cpp'
+        TestSource = '00/78/CThingSearchTools_GetPBestThingCThingFilterHasTCCThingCompareNeare_00782670_test.cpp'
+        PassPattern = '00782670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00783090'
+        Module = 'CThingSearchTools'
+        Source = '00/78/CThingSearchTools_GetPFirstThingCThingFilterHasScriptNameconstCThi_00783090.cpp'
+        TestSource = '00/78/CThingSearchTools_GetPFirstThingCThingFilterHasScriptNameconstCThi_00783090_test.cpp'
+        PassPattern = '00783090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00783110'
+        Module = 'CThingSearchTools'
+        Source = '00/78/CThingSearchTools_GetPBestThingCThingFilterNoneCThingCompareNeares_00783110.cpp'
+        TestSource = '00/78/CThingSearchTools_GetPBestThingCThingFilterNoneCThingCompareNeares_00783110_test.cpp'
+        PassPattern = '00783110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00799c40'
+        Module = 'CThingSearchTools'
+        Source = '00/79/CThingSearchTools_GetPFirstThingCThingFilterHasTCCThingAICreature_00799c40.cpp'
+        TestSource = '00/79/CThingSearchTools_GetPFirstThingCThingFilterHasTCCThingAICreature_00799c40_test.cpp'
+        PassPattern = '00799c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e6ec0'
+        Module = 'CThingSearchTools'
+        Source = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasDefGlobalIndexCThin_007e6ec0.cpp'
+        TestSource = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasDefGlobalIndexCThin_007e6ec0_test.cpp'
+        PassPattern = '007e6ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ee660'
+        Module = 'CThingSearchTools'
+        Source = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasScriptNameconstCThi_007ee660.cpp'
+        TestSource = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasScriptNameconstCThi_007ee660_test.cpp'
+        PassPattern = '007ee660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00836a50'
+        Module = 'CThingSoundEmitter'
+        Source = '00/83/CThingSoundEmitter_CThingSoundEmitter_00836a50.cpp'
+        TestSource = '00/83/CThingSoundEmitter_CThingSoundEmitter_00836a50_test.cpp'
+        PassPattern = '00836a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00836ee0'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_SetTrackName_00836ee0.cpp'
+        TestSource = '00/83/CThingTrackNode_SetTrackName_00836ee0_test.cpp'
+        PassPattern = '00836ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008374f0'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_DrawGetEditDrawInfo_008374f0.cpp'
+        TestSource = '00/83/CThingTrackNode_DrawGetEditDrawInfo_008374f0_test.cpp'
+        PassPattern = '008374f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00837830'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_OnInitialActivate_00837830.cpp'
+        TestSource = '00/83/CThingTrackNode_OnInitialActivate_00837830_test.cpp'
+        PassPattern = '00837830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083b610'
+        Module = 'CThingVillage'
+        Source = '00/83/CThingVillage_OnCreate_0083b610.cpp'
+        TestSource = '00/83/CThingVillage_OnCreate_0083b610_test.cpp'
+        PassPattern = '0083b610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083bd80'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_ConstructFromParams_0083bd80.cpp'
+        TestSource = '00/83/CThingSwitch_ConstructFromParams_0083bd80_test.cpp'
+        PassPattern = '0083bd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008abdf0'
+        Module = 'CThingSearchTools'
+        Source = '00/8a/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterHasScriptN_008abdf0.cpp'
+        TestSource = '00/8a/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterHasScriptN_008abdf0_test.cpp'
+        PassPattern = '008abdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009142b0'
+        Module = 'CThingSearchTools'
+        Source = '00/91/CThingSearchTools_GetPBestThingCThingFilterNoneCThingCompareNeares_009142b0.cpp'
+        TestSource = '00/91/CThingSearchTools_GetPBestThingCThingFilterNoneCThingCompareNeares_009142b0_test.cpp'
+        PassPattern = '009142b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00914aa0'
+        Module = 'CThingSearchTools'
+        Source = '00/91/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterIsNotCThin_00914aa0.cpp'
+        TestSource = '00/91/CThingSearchTools_GetPFirstThingCFilterBind2CThingFilterIsNotCThin_00914aa0_test.cpp'
+        PassPattern = '00914aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00914b20'
+        Module = 'CThingSearchTools'
+        Source = '00/91/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterIsNotCThing_00914b20.cpp'
+        TestSource = '00/91/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterIsNotCThing_00914b20_test.cpp'
+        PassPattern = '00914b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009223a0'
+        Module = 'CThingSearchTools'
+        Source = '00/92/CThingSearchTools_GetPBestThingCFilterBind3CThingFilterHasTCCThing_009223a0.cpp'
+        TestSource = '00/92/CThingSearchTools_GetPBestThingCFilterBind3CThingFilterHasTCCThing_009223a0_test.cpp'
+        PassPattern = '009223a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00936950'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestLeafThingCThingFilterNoneCThingCompareNe_00936950.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestLeafThingCThingFilterNoneCThingCompareNe_00936950_test.cpp'
+        PassPattern = '00936950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00939af0'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestLeafThingCIsNearCampfireWithSpaceCThingC_00939af0.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestLeafThingCIsNearCampfireWithSpaceCThingC_00939af0_test.cpp'
+        PassPattern = '00939af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093b640'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestThingCIsNearCampfireWithSpaceCThingCompa_0093b640.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestThingCIsNearCampfireWithSpaceCThingCompa_0093b640_test.cpp'
+        PassPattern = '0093b640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093f8a0'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterHasTCCThing_0093f8a0.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterHasTCCThing_0093f8a0_test.cpp'
+        PassPattern = '0093f8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093f930'
+        Module = 'CThingSearchTools'
+        Source = '00/93/CThingSearchTools_GetPBestThingCThingFilterHasDefGlobalIndexCThing_0093f930.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestThingCThingFilterHasDefGlobalIndexCThing_0093f930_test.cpp'
+        PassPattern = '0093f930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00941450'
+        Module = 'CThingSearchTools'
+        Source = '00/94/CThingSearchTools_GetPBestThingCIsHopscotchBoardCThingCompareNeare_00941450.cpp'
+        TestSource = '00/94/CThingSearchTools_GetPBestThingCIsHopscotchBoardCThingCompareNeare_00941450_test.cpp'
+        PassPattern = '00941450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00964230'
+        Module = 'CThingSearchTools'
+        Source = '00/96/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterObjectHasPr_00964230.cpp'
+        TestSource = '00/96/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterObjectHasPr_00964230_test.cpp'
+        PassPattern = '00964230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00986d90'
+        Module = 'CThingSearchTools'
+        Source = '00/98/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterIsNotCThing_00986d90.cpp'
+        TestSource = '00/98/CThingSearchTools_GetPBestThingCFilterBind2CThingFilterIsNotCThing_00986d90_test.cpp'
+        PassPattern = '00986d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00986e30'
+        Module = 'CThingSearchTools'
+        Source = '00/98/CThingSearchTools_GetPFirstThingCFilterBind3CThingFilterIsNotCThin_00986e30.cpp'
+        TestSource = '00/98/CThingSearchTools_GetPFirstThingCFilterBind3CThingFilterIsNotCThin_00986e30_test.cpp'
+        PassPattern = '00986e30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

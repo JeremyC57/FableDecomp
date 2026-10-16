@@ -198,6 +198,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand171` | Hand chunk 171 (CTCTavernGameCardPairs .. CTCWeapon): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand172` | Hand chunk 172 (CTCWeapon .. CThing): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand173` | Hand chunk 173 (CThing .. CThingFilter_HasScriptedControl): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand175` | Hand chunk 175 (CThingPhysicalSwitch .. CThingVillage): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -253,7 +254,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **662 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **664 parked rows** for the Fable retry pass.
 
 ### Skipped rows (15 open of 39 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1020,6 +1021,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 007f6f20 CThingCompare_BestCreatureToAttack::operator()<CThingCreatureBase> DIFFER(104v110): result-variable form hoists `xor eax,eax` (mask in cl); separate returns lay `return 0` inline | tried: 4 return arrangements | next: lane gap: block layout
 - 007f6fd0 CThingCompare_BestCreatureToAttack::operator()<CThingAICreature> DIFFER(104v110): same body as 0x7F6F20 | tried: goto, result variable | next: lane gap: block layout
 - 006a8560 CThingFilter_HasScriptedControl::operator() DIFFER(103v101): component `mov ecx,[eax+4] ; mov al,[ecx+18h]` vs ours eax/cl + `mov ecx,eax` | tried: GetTC, GetInterface, if-chain IsActive, reference local | next: lane gap: component used as this
+
+
+#### `2026-10-15_linux_hand175` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand175/differ/`)
+- 0083db60 CThingPhysicalSwitch::GetCurrentGraphic DIFFER(162v125): our CDefPointer dtor re-reads the escaped def after `dec [eax+4]` (retail `mov esi,[esp+4] ; test esi ; dec [esi+4] ; jne` then `lea eax,[esi+82h]`), and per-arm defs tail-merge | tried: one shared def, per-arm scoped defs (104v125), dtor via local, by-value GetSwitchDef helper inline/__forceinline | next: lane gap: CDefPointer release without re-read of the escaped local
+- 006ac390 CThingPlayerCreature::IsExpressionAvailable DIFFER(153v151): retail `mov ecx,[eax+4] ; mov eax,[edi+70h] ; push eax`, ours `mov ecx,[edi+70h] ; mov eax,[eax+4] ; push ecx ; mov ecx,eax` (only the inventory call; the def holder now matches) | tried: && chain, named inventory local, __forceinline Find with reference key | next: lane gap: looked-up component used as this loaded straight into ecx
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

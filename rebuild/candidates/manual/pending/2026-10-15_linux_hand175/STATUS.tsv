@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0083db60	DIFFER	162v125	-	CDefPointer dtor re-reads the escaped def after dec (lane gap)
+006a98f0	RELOCATION_MATCH	98v98	PASS	vtable slot 3 = SerialiseGameState
+006ac390	DIFFER	153v151	-	component loaded into ecx before the def argument (lane gap)
+004a9da0	RELOCATION_MATCH	143v143	PASS	shared CThingSearchTools template model (gen/)
+004a9e50	RELOCATION_MATCH	153v153	PASS	shared CThingSearchTools template model (gen/)
+00512ed0	RELOCATION_MATCH	133v133	PASS	shared CThingSearchTools template model (gen/)
+00512f60	RELOCATION_MATCH	128v128	PASS	shared CThingSearchTools template model (gen/)
+006156e0	RELOCATION_MATCH	104v104	PASS	shared CThingSearchTools template model (gen/)
+00615750	RELOCATION_MATCH	114v114	PASS	shared CThingSearchTools template model (gen/)
+0065f744	RELOCATION_MATCH	112v112	PASS	size TU: #pragma optimize("s", on)
+00685ee0	RELOCATION_MATCH	104v104	PASS	shared CThingSearchTools template model (gen/)
+006d3fb0	RELOCATION_MATCH	99v99	PASS	shared CThingSearchTools template model (gen/)
+007461c0	RELOCATION_MATCH	154v154	PASS	shared CThingSearchTools template model (gen/)
+00777000	RELOCATION_MATCH	114v114	PASS	shared CThingSearchTools template model (gen/)
+00782670	RELOCATION_MATCH	131v131	PASS	shared CThingSearchTools template model (gen/)
+00783090	RELOCATION_MATCH	119v119	PASS	shared CThingSearchTools template model (gen/)
+00783110	RELOCATION_MATCH	119v119	PASS	shared CThingSearchTools template model (gen/)
+00799c40	RELOCATION_MATCH	105v105	PASS	shared CThingSearchTools template model (gen/)
+007e6ec0	RELOCATION_MATCH	99v99	PASS	shared CThingSearchTools template model (gen/)
+007ee660	RELOCATION_MATCH	119v119	PASS	shared CThingSearchTools template model (gen/)
+008abdf0	RELOCATION_MATCH	128v128	PASS	shared CThingSearchTools template model (gen/)
+009142b0	RELOCATION_MATCH	116v116	PASS	shared CThingSearchTools template model (gen/)
+00914aa0	RELOCATION_MATCH	118v118	PASS	shared CThingSearchTools template model (gen/)
+00914b20	RELOCATION_MATCH	145v145	PASS	shared CThingSearchTools template model (gen/)
+009223a0	RELOCATION_MATCH	153v153	PASS	shared CThingSearchTools template model (gen/)
+00936950	RELOCATION_MATCH	100v100	PASS	shared CThingSearchTools template model (gen/)
+00939af0	RELOCATION_MATCH	116v116	PASS	shared CThingSearchTools template model (gen/)
+0093b640	RELOCATION_MATCH	137v137	PASS	shared CThingSearchTools template model (gen/)
+0093f8a0	RELOCATION_MATCH	143v143	PASS	shared CThingSearchTools template model (gen/)
+0093f930	RELOCATION_MATCH	124v124	PASS	shared CThingSearchTools template model (gen/)
+00941450	RELOCATION_MATCH	148v148	PASS	shared CThingSearchTools template model (gen/)
+00964230	RELOCATION_MATCH	156v156	PASS	shared CThingSearchTools template model (gen/)
+00986d90	RELOCATION_MATCH	150v150	PASS	shared CThingSearchTools template model (gen/)
+00986e30	RELOCATION_MATCH	148v148	PASS	shared CThingSearchTools template model (gen/)
+00836a50	RELOCATION_MATCH	115v115	PASS	cleared CIntelligentPointer, GetPItem result in a named local
+0083bd80	RELOCATION_MATCH	158v158	PASS	empty name as a block-scoped named local
+00836ee0	RELOCATION_MATCH	107v107	PASS	tail call becomes the loop
+008374f0	RELOCATION_MATCH	122v122	PASS	vtable slot 25 = DrawGetEditDrawInfo
+00837830	RELOCATION_MATCH	149v149	PASS	OnInitialActivate
+0083b610	RELOCATION_MATCH	157v157	PASS	vtable slot 8 = OnCreate; CEngineGraphic pack(2)
