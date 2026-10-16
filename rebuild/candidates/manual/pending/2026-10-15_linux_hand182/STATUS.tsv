@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00922600	DIFFER	166v166	-	CAIStateGroup_Drunk::IsRunnable(): the Bind2 first-pointer store (lea ecx,[esp+4] ; mov [esp+8],ecx) is scheduled after the IsOriginatedByThing ctor call instead of before it
+0096d2d0	DIFFER	161v175	-	CAIStateGroup_EatAtTavern::IsStaffed(): the GetBuilding result is held in ebx (push ebx) where retail spills it to a frame slot (sub esp,8 ; cmp eax,[esp+0x10]) and keeps a lea ecx,[ecx] loop-head pad
+0096d380	DIFFER	199v197	-	CAIStateGroup_EatAtTavern::IsTime(): register choice only -- retail keeps this in ebx and reuses bl for the result (mov bl,1 / xor bl,bl); ours keeps this in ebp and pushes ebx for the result
+0091db50	DIFFER	239v228	-	CAIStateGroup_EnemyCreatureBase::GetEnemy(): retail shares ONE key slot (push ecx) for both inlined GetInterface lookups and presets xor eax,eax for the first miss; ours gives two key slots (sub esp,8), keeps the creature in edi and the map end in ecx
+0094c850	DIFFER	169v169	-	CAIStateGroup_GameMaster::InitCreaturePosition(): scheduling only -- lea edi,[esi+0x14] (the PTarget address for the inline operator=) is hoisted above the temporary's GetPItem call; retail computes it after
+0094ca80	RELOCATION_MATCH	180v180	PASS	CAIStateGroup_GameMaster::OnReplace()
+009183a0	RELOCATION_MATCH	214v214	PASS	CAIStateGroup_Gaze::OnReplace()
+00918900	RELOCATION_MATCH	186v186	PASS	CAIStateGroup_GazeOutside::IsRunnable()
+0092d600	DIFFER	233v233	-	CAIStateGroup_GoToBed::InitCreaturePosition(): frame only -- retail shares the GetInterface key slot with sleepEnd (sub esp,8; both at [esp+0xc]); ours gives the key its own slot (sub esp,0xc) so every sleep-time offset is +4
+0092d6f0	DIFFER	196v198	-	CAIStateGroup_GoToBed::IsRunnable(): (1) retail loads the sleeper's +0x10 stamp into esi between the GetPWorld call and GFGetCurrentFrame (sub eax,esi), ours subtracts the memory operand after the call; (2) retail schedules mov ecx,edi between FindFreeBed's test al,al and jne, ours after the jne
+00947fb0	RELOCATION_MATCH	168v168	PASS	CAIStateGroup_GoToPub::IsStaffed()
+0094a0e0	RELOCATION_MATCH	165v165	PASS	CAIStateGroup_GoToPub::FallAsleep()
+0094a200	RELOCATION_MATCH	165v165	PASS	CAIStateGroup_GoToPub::FallAsleepAtTable()
+00911630	RELOCATION_MATCH	218v218	PASS	CAIStateGroup_Guard::Update()
+0095a890	RELOCATION_MATCH	163v163	PASS	CAIStateGroup_HoverHornetQueen::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&)
+0095b5a0	DIFFER	222v222	-	CAIStateGroup_HoverHornetQueen::IsRunnable(): scheduling only -- lea edi,[esi+0x14] (PTargetThing for the inline operator=) hoisted above the temporary's GetPItem call
+0095a7d0	DIFFER	188v188	-	CAIStateGroup_HoverHornetQueenTakeDamage::FindHitEvent(): scheduling only -- retail loads FrameOfLastHit (mov edx,[edi+0x24]) before the component (mov esi,[eax+4]); ours the other way round
+0095aa60	RELOCATION_MATCH	204v204	PASS	CAIStateGroup_HoverHornetQueenTakeDamage::IsRunnable()
+00961e80	RELOCATION_MATCH	177v177	PASS	CAIStateGroup_IceTrollPoundGroundAttack::IsRunnable()
+0094fff0	RELOCATION_MATCH	167v167	PASS	CAIStateGroup_JackDragon::ChooseHoverOrStrafeState()
+00950950	RELOCATION_MATCH	221v221	PASS	CAIStateGroup_JackDragon::WaitForAnimLoop(float seconds)
+00950a30	RELOCATION_MATCH	239v239	PASS	CAIStateGroup_JackDragon::ChooseIntoGroundState()
+00950c30	RELOCATION_MATCH	192v192	PASS	CAIStateGroup_JackDragon::StartFlying(CThingCreatureBase*, const vector<C3DVector>&, const C3DVector&, CCountedPointer<CCreatureActionBase>)
+00972280	RELOCATION_MATCH	185v185	PASS	CAIStateGroup_JackOfBladesStage1::IsRunnable()
+009723d0	RELOCATION_MATCH	186v186	PASS	CAIStateGroup_JackOfBladesStage2::IsRunnable()
+009725b0	RELOCATION_MATCH	186v186	PASS	CAIStateGroup_JackOfBladesStage3::IsRunnable()
+00915290	RELOCATION_MATCH	185v185	PASS	CAIStateGroup_KidHurtSelfRunToMother::SendMessageToMother()
+009415b0	RELOCATION_MATCH	222v222	PASS	CAIStateGroup_KidPlayHopscotch::Cleanup()
+00924420	RELOCATION_MATCH	170v170	PASS	CAIStateGroup_KrakenTentacleRise::IsRunnable()
+00946730	RELOCATION_MATCH	175v175	PASS	CAIStateGroup_LightHomeCandle::IsCandleInNeedOfChanging(CThing* candle)
+009190f0	RELOCATION_MATCH	184v184	PASS	CAIStateGroup_LookAtInterestingThings::InitStateGroup(const CWorld&, CThingAICreature&)
+00919440	RELOCATION_MATCH	199v199	PASS	CAIStateGroup_LookAtInterestingThings::InitCreaturePosition()
+00919510	RELOCATION_MATCH	179v179	PASS	CAIStateGroup_LookAtInterestingThings::IsRunnable()
+00954690	RELOCATION_MATCH	170v170	PASS	CAIStateGroup_MazeShieldedChase::IsRunnable()
+00956380	RELOCATION_MATCH	218v218	PASS	CAIStateGroup_MazeTutorialBattleRespondToLightning::Update()
+0096ea50	RELOCATION_MATCH	187v187	PASS	CAIStateGroup_MeleeCombatNearby::AttackEnemy()
+0096edb0	RELOCATION_MATCH	222v222	PASS	CAIStateGroup_MeleeCombatNearby::Cleanup()
+0093dcd0	DIFFER	219v219	-	CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition(): x87 operand order only -- retail squares dx first (fld st(1) ; fmul st(2) twice), ours dy first (fld st(0) ; fmul st(1) / fld st(2) ; fmul st(3))
+0093dc10	DIFFER	192v192	-	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable(bool) const: register order only -- after the second GetPItem retail loads the creature's collision record into edx first (mov edx,[edi+4] ; mov ecx,[edx+0x18] ; mov edx,[ecx+0x60] ; mov eax,[eax+0x60]), ours the enemy's first (mov edx,[eax+0x60] ; then the creature through eax/ecx)
+0093d180	RELOCATION_MATCH	236v236	PASS	CAIStateGroup_MeleeCombatNearbyBase::ShouldGoStraightIntoStrafe()
