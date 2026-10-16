@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004c04c0	DIFFER	155v155	-	register allocation (def staged in eax, sub-def in ebp)
+004c1060	DIFFER	126v126	-	actually GetFocalPos; lea eax/ecx + copy scheduling
+004c12d0	DIFFER	116v116	-	second GetHelperPoint lea register; needs callee body?
+00640f80	RELOCATION_MATCH	160v160	PASS	label fix: ~CTCLight (vtables 0x125A194/0x125A208)
+007b2bf0	RELOCATION_MATCH	113v113	PASS	unset-local GetTC accessor
+007b2c70	RELOCATION_MATCH	114v114	PASS	opinion component looked up on the village thing
+007475c0	RELOCATION_MATCH	150v150	PASS	two GetInterface lookups
+004e7cc3	RELOCATION_MATCH	120v120	PASS	label fix: CTCInventoryClothing ctor; optimize("s")
+006255b0	RELOCATION_MATCH	120v120	PASS	label fix: NInventory::CCategory::operator=
+00681a70	RELOCATION_MATCH	110v110	PASS	label fix: CTCCreatureOpinionOfHero::ClearAllKnownDeeds
+006ca0a0	RELOCATION_MATCH	116v116	PASS	tag read twice from the def
+006ca380	DIFFER	105v115	-	retail tail-jumps both arms
+00706c90	DIFFER	118v118	-	placement-copy load scheduling
+00707970	RELOCATION_MATCH	106v106	PASS	self = this local for the full-object arm
+0077d400	RELOCATION_MATCH	104v104	PASS	inline erase + virtual dtor tail jump
+0077dbc0	RELOCATION_MATCH	118v118	PASS	if (!empty()) {...return true;} return false;
+007bae00	RELOCATION_MATCH	98v98	PASS	label fix: CTCTrespasser ctor
+0077f5c0	RELOCATION_MATCH	141v141	PASS	CIntelligentPointer without user dtor
+0077f750	RELOCATION_MATCH	129v129	PASS	temporary intelligent pointer assignment
+006d6660	DIFFER	115v115	-	lane gap: entry push ebx placement
+006d66e0	MATCH	144v144	PASS	0x48-byte ability entries
+006d6ee0	RELOCATION_MATCH	115v115	PASS	slot 4 = OnCreate; CDefPointer op= + ReleaseTemporary dtor
+006d74b0	DIFFER	146v146	-	one dec eax scheduling
+006d8b50	RELOCATION_MATCH	159v159	PASS	running index stepped in the for header
+00856f00	DIFFER	121v123	-	label fix: CCombatActionBase::IsThingInStruckThingList; functor build regs
+0071c1f0	RELOCATION_MATCH	104v104	PASS	direct last-node test + back() via *--end()
+0071c2d0	DIFFER	158v140	-	hand release register/reread
+0071cd90	RELOCATION_MATCH	150v150	PASS	CCountedPointer op= + memberwise copy
+006aa100	RELOCATION_MATCH	103v103	PASS	label fix: CThingPlayerCreature::OnRegionChange (probable)
+006c5680	RELOCATION_MATCH	133v133	PASS	static _M_increment + end() local
+006c5920	DIFFER	116v117	-	node via [eax] vs frame
+006c5f80	DIFFER	132v130	-	lane gap: component straight into ecx
+00771bd0	RELOCATION_MATCH	151v151	PASS	literal -1.0f + inline GetPerpendicularXY
+00789b30	RELOCATION_MATCH	97v97	PASS	four GetPlayer calls
+00789c20	RELOCATION_MATCH	97v97	PASS	slot 4 = OnCreate
+007b2db0	RELOCATION_MATCH	100v100	PASS	label fix: CTCGuard ctor; deque alloc proxy
+007e0910	DIFFER	105v105	-	register order of the def out pointer
+0057a60a	DIFFER	71v116	-	lane gap: bare dword fistp round helper
+0057a6b8	RELOCATION_MATCH	120v120	PASS	optimize("s") float band chain
+0057a7b9	RELOCATION_MATCH	113v113	PASS	optimize("s"); CCharString temp + named symbol

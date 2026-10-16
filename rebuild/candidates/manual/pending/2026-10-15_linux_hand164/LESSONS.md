@@ -1,0 +1,11 @@
+# Chunk 164 lessons (for GOTCHAS)
+- In a virtual introduced by a secondary base (`this` at the subobject), retail's full-object accesses on one arm (`mov [esi+14h],al` with esi = this-0xc) come from a `T* self = this;` local used for that arm (0x707970).
+- A CIntelligentPointer temporary (`p = CIntelligentPointer<CThing>(x);`) matches only when the class has NO user dtor: an empty inline one stores the vtable before every base-dtor call (0x77F5C0 / 0x77F750).
+- A value retail copies register-to-register (`mov eax,ecx`) between a test and a push is the same member read twice (CSE), not a named local (0x6CA0A0).
+- STLport map iteration in retail inlines `_Rb_global<bool>::_M_increment(node)` returning the next node (computed in a copy, then stored back) and holds `end()` in a local (0x6C5680).
+- A `*--end()` back() gives `mov eax,[ecx+4] ; lea ecx,[eax+8]`; the direct `head->_M_prev->_M_data` gives `mov ecx,[eax+4] ; add ecx,8` (0x71C1F0 uses one of each).
+- STLport deque init: model `_M_map` as an `_STLP_alloc_proxy` or the `push 0` for `_M_initialize_map(0)` sinks below the last zero store (0x7B2DB0).
+- An inline C3DVector const member (`E_Y.GetPerpendicularXY()`) reads both components through the register that held `this` for the preceding member call; the same expression written in the caller reads one of them as `[this+N]` (0x771BD0).
+- A two-statement index pair `a[i] = s[index]` with the index stepped in the for header (`++i, ++index`) reproduces retail's `inc eax ; ... ; inc edx` order (0x6D8B50).
+- `CDefPointer` dtor releasing through a local (`p = Object; if (p) { if (--p->ref == 0) p->Delete(); Object = 0; }`) matches retail member dtors (0x640F80); the same as an operator= release (0x6255B0, 0x6D6EE0).
+- Lane gaps seen again: tail call with argument-slot rewrite after an inlined GetTC (0x6CA380); component straight into ecx (0x6C5F80); entry push placement (0x6D6660); bare dword fistp round (0x57A60A).

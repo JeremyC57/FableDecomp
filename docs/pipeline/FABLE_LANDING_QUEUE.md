@@ -188,6 +188,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand161` | Hand chunk 161 (CTCBuyableHouse .. CTCCreatureFlyInCircles): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand162` | Hand chunk 162 (CTCCreatureFlyInCircles .. CTCDPhysicalObstruction): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand163` | Hand chunk 163 (CTCDPhysicalObstruction .. CTCGraphicAppearance): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand164` | Hand chunk 164 (CTCGraphicAppearance .. CTCHeroStats): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -242,7 +243,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **553 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **566 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -872,6 +873,22 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 007eefe0 CTCExpression::OnCreate DIFFER(134v130): ours `lea ebp,[edi+0Ch]` (&PDef CSE, this in edi) and reloads the sub-def object; retail this in ebp, `lea eax,[ebp+0Ch]` at the push, sub-def object in edi from GetSubDef through its release | tried: CDefPointer local with dtor at the top / inside the if, /Oa, hand-released out pointer + object local (best) | next: same def-object-cached-across-calls shape as 0x730630; try the address of PDef only through an inline member (`GetDef(index, PDef)` by reference)
 - 007e7c00 CTCFireheartMinigame::Answer DIFFER(143v143): /GS frame 0x2c in retail with the AddUBYTE byte in the dead bool slot (`mov byte [esp+40h],bl ; lea eax,[esp+38h]`), ours `sub esp,30h` with its own frame byte | tried: by-value inline, `__forceinline`, const-reference AddUBYTE | next: lane gap: /GS one-byte local in a bool parameter slot
 - 00780c80 CTCFlammable::ExtinguishFire DIFFER(147v145): `mov ecx,[eax+74h]` in retail vs ours `mov eax,[eax+74h] ; ... ; mov ecx,eax` for the opinion manager | tried: direct chain (pushes before GetWorld), thing local + chain, thing + manager locals (best), inline GetOpinionReactionManager accessor | next: scheduling artefact (register choice of the manager)
+
+
+#### `2026-10-15_linux_hand164` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand164/differ/`)
+- 004c04c0 CTCGraphicAppearance::SetAsHighlighted DIFFER(155v155): retail `mov eax,[eax+70h] ... mov ecx,eax` and `mov ebp,[esp+10h]`; ours `mov ecx,[eax+70h]`, `lea edx`, def through ecx then `mov ebp,ecx`; arg loads ecx/edx swapped | tried: out pointer first, mode locals first, CDefPointer with dtor | next: GetSubDef as a template member / thing def through an inline GetDef() accessor
+- 004c1060 CTCGraphicAppearance::GetFocalPos DIFFER(126v126): second GetHelperPoint `lea ecx` (retail eax); fallback copy interleaved vs retail's three loads then three stores | tried: nested ifs, early return, Set(x,y,z), copy-ctor temp | next: real GetHelperPoint 0x4C0560 body above under auto_inline(off) (clobber knowledge)
+- 004c12d0 CTCGraphicAppearance::GetCameraFocalPos DIFFER(116v116): second GetHelperPoint `lea ecx` (retail eax), copy-out Y/Z via edx/ecx (retail ecx/edx) | tried: `||` + return, `&&` + return GetFocalPos, bool found chain | next: same as 0x4C1060
+- 006ca380 CTCHero::SetWeaponsAsUsable DIFFER(105v115): retail tail-jumps (`pop esi ; mov [esp+4],0 ; jmp`) on both arms and re-reads ParentThing into esi; ours `push 0 ; call ; ret 4` with one tail | tried: void callee, `return void-call`, key as the inline's own parameter | next: lane gap: tail call reusing the argument slot after an inlined GetTC (0x77D400's virtual-dtor tail jump does form)
+- 00706c90 CTCHeroAttachableAppearanceModifiers::GetMeshesUsed DIFFER(118v118): placement copy loads the third dword into edx before the first store (ours after the second) | tried: named CMeshInfo local, hand copy ctor | next: lane gap: copy scheduling
+- 006d6660 CTCHeroExperience::GetTotalStatLevel DIFFER(115v115): retail `push ebx` at entry with the first begin in ebx; ours loads edx and pushes ebx in the non-empty branch | tried: break form, `&&` loop | next: lane gap: callee-saved push placement
+- 006d74b0 CTCHeroExperience::GetNextFlourishLevel DIFFER(146v146): first temporary release `dec eax` after `push ebx ; mov bl,[ecx+0D0h]` in retail, before it in ours | tried: split decrement, named bool | next: lane gap: scheduling
+- 00856f00 CCombatActionBase::IsThingInStruckThingList DIFFER(121v123): retail loads FramesRunning and the list head first, `push ebx` at entry, ebx as the argument-area pointer, 0 / 1000000 stored from registers | tried: iterator/frame locals, three-argument functor ctor | next: functor built by an inline helper / for_each declared with a by-reference functor
+- 0071c2d0 CTCHeroMorph::HasAPermanentTattooCoveringArea DIFFER(158v140): out-pointer release registers swapped (retail ecx object, eax count hoisted above the branch) and ours re-reads the out pointer for the zero test | tried: hand release, Release() member, a no-null-test out-pointer dtor | next: out-pointer dtor through a local copy `o = Object; if (--o->m_refCount == 0) o->Delete();`
+- 006c5920 CTCHeroOpinionDeedLog::RemoveDeedStillSearchingForWitnesses DIFFER(116v117): node read `mov ebx,[eax]` (returned hidden pointer) vs retail `mov ebx,[esp+0Ch]` (frame) | tried: named iterator, const& binding (both drop ebx) | next: find() declared returning the iterator through an explicit out parameter
+- 006c5f80 CTCHeroOpinionDeedLog::RemoveCrimeFromVillage DIFFER(132v130): retail loads the village component straight into ecx (`mov ecx,[eax+4] ; mov al,[ecx+7Ch]`) and keeps it for RemoveCrime | tried: GetInterface out pointer, HasTC + check-free GetTC | next: lane gap: looked-up component used as `this` straight in ecx
+- 007e0910 CTCHeroSpecialMovement::OnCreate DIFFER(105v105): `mov edi,[esp+8] ; mov ecx,edi` (retail) vs `mov ecx,[esp+8] ; mov edi,ecx` | tried: out->GetSubDef + re-read release, sub-def pointer local | next: lane gap: register choice
+- 0057a60a CTCHeroStats::GetFatnessReducingFrequencyInFrames DIFFER(71v116): retail rounds with a bare dword `fistp` after storing/reloading the product and 0.5f/1.0f locals; ours calls __ftol2 | tried: plain C++ round helper | next: lane gap: inline-asm fistp round helper
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
