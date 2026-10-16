@@ -1,0 +1,11 @@
+# Chunk 174 lessons
+- A filter that repeats the same subtraction for two range tests (retail recomputes the deltas) is a file-static inline helper taking two `const C3DVector&`; a member helper or one body lets VC7.1 CSE the deltas by spilling them to the frame (0x6A7700).
+- `return a && b && c;` over bool calls/compares materialises every exit as an int (`mov eax,1` / `xor eax,eax`); an `if (...) return true; return false;` gives the byte constants. Mixed exits (`xor al,al` on an early null test, int on the compare) come from an `if (p) return <expr>; return false;`.
+- Out-parameter `__forceinline` GetInterface (not HasTC + GetTC) when retail reads the component as `mov eax,[eax+4] ; mov ecx,[eax+N]` (0x90C870, 0x7040E0).
+- A CCharString whose call result retail keeps in bl across the dtor with `lea ecx ; push ecx` is a named local in its own block assigning a bool local (0x805890, 0x83BAB0); a CCharString built before the other argument pushes is a named block local too (0x51E5A0).
+- `x.X*x.X + x.Y*x.Y` emits the Y product first in VC7.1; write source X-first when retail loads Y first (0x7FD830).
+- The intrusive CThing render/update lists (render prev/next +0x7C/+0x80, update prev/next +0x84/+0x88, CThingManager RenderList +0x84, UpdateLists begin +0x8C) match as plain C++ with the list as a named pointer.
+- Thing walks testing the dead bit with `not al ; test al,1` use an inline `m_dead ? false : true` accessor; a direct `!m_dead` gives `test byte ptr [..],1`.
+- `Width = GetWorldMap()->GetBounds().GetWidth() / 128` (inline box accessor) calls the chain once per extent; spelling `BRX - TLX` calls it twice (0x638540).
+- 0x83C230 is CThingSwitch (vtable 0x012453FC), not CThingPhysicalSwitch: check the vtable before trusting a class label on SerialiseGameState rows.
+- Lane gaps confirmed again: bare dword `fistp` round helpers (0x6A68F0 ModifyHealth, 0x6378E0 GetThingMapwhoLevel) and the CDefPointer release that does not re-read the escaped out slot (0x7F6D70, 0x8077B0, 0x703150).

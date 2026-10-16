@@ -237828,6 +237828,216 @@ $catalog = @(
         TestSource = '00/98/CThingSearchTools_GetPFirstThingCFilterBind3CThingFilterIsNotCThin_00986e30_test.cpp'
         PassPattern = '00986e30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0051e000'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_RemoveFromRenderList_0051e000.cpp'
+        TestSource = '00/51/CThingManager_RemoveFromRenderList_0051e000_test.cpp'
+        PassPattern = '0051e000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051e5a0'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_ActivateAfterLoading_0051e5a0.cpp'
+        TestSource = '00/51/CThingManager_ActivateAfterLoading_0051e5a0_test.cpp'
+        PassPattern = '0051e5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051ebd0'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_RenderUpdateThings_0051ebd0.cpp'
+        TestSource = '00/51/CThingManager_RenderUpdateThings_0051ebd0_test.cpp'
+        PassPattern = '0051ebd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051ec50'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_AddToUpdateList_0051ec50.cpp'
+        TestSource = '00/51/CThingManager_AddToUpdateList_0051ec50_test.cpp'
+        PassPattern = '0051ec50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051ecc0'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_RemoveFromUpdateList_0051ecc0.cpp'
+        TestSource = '00/51/CThingManager_RemoveFromUpdateList_0051ecc0_test.cpp'
+        PassPattern = '0051ecc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051f070'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_UpdateDeaths_0051f070.cpp'
+        TestSource = '00/51/CThingManager_UpdateDeaths_0051f070_test.cpp'
+        PassPattern = '0051f070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051fba0'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_DeleteAllThings_0051fba0.cpp'
+        TestSource = '00/51/CThingManager_DeleteAllThings_0051fba0_test.cpp'
+        PassPattern = '0051fba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051fc20'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_DeleteThingsWithSectionName_0051fc20.cpp'
+        TestSource = '00/51/CThingManager_DeleteThingsWithSectionName_0051fc20_test.cpp'
+        PassPattern = '0051fc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00637a10'
+        Module = 'NThingMap::CThingMapManager'
+        Source = '00/63/NThingMapCThingMapManager_DestroyMapwhoNode_00637a10.cpp'
+        TestSource = '00/63/NThingMapCThingMapManager_DestroyMapwhoNode_00637a10_test.cpp'
+        PassPattern = '00637a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00637da0'
+        Module = 'NThingMap::CThingMapManager'
+        Source = '00/63/NThingMapCThingMapManager_InitPos_00637da0.cpp'
+        TestSource = '00/63/NThingMapCThingMapManager_InitPos_00637da0_test.cpp'
+        PassPattern = '00637da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00638540'
+        Module = 'NThingMap::CThingMapManager'
+        Source = '00/63/NThingMapCThingMapManager_Init_00638540.cpp'
+        TestSource = '00/63/NThingMapCThingMapManager_Init_00638540_test.cpp'
+        PassPattern = '00638540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006689e0'
+        Module = 'CThingFilter_OverlappingSphere'
+        Source = '00/66/CThingFilterOverlappingSphere_operator_006689e0.cpp'
+        TestSource = '00/66/CThingFilterOverlappingSphere_operator_006689e0_test.cpp'
+        PassPattern = '006689e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00668ab0'
+        Module = 'CThingFindHeightZBelowAt'
+        Source = '00/66/CThingFindHeightZBelowAt_operator_00668ab0.cpp'
+        TestSource = '00/66/CThingFindHeightZBelowAt_operator_00668ab0_test.cpp'
+        PassPattern = '00668ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a7430'
+        Module = 'CThingFilter_IsAvailableForCreatureInteraction'
+        Source = '00/6a/CThingFilterIsAvailableForCreatureInteraction_operator_006a7430.cpp'
+        TestSource = '00/6a/CThingFilterIsAvailableForCreatureInteraction_operator_006a7430_test.cpp'
+        PassPattern = '006a7430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a7700'
+        Module = 'CThingFilter_In2DRangeLimit'
+        Source = '00/6a/CThingFilterIn2DRangeLimit_operator_006a7700.cpp'
+        TestSource = '00/6a/CThingFilterIn2DRangeLimit_operator_006a7700_test.cpp'
+        PassPattern = '006a7700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a7990'
+        Module = 'CThingFilter_InArea'
+        Source = '00/6a/CThingFilterInArea_operator_006a7990.cpp'
+        TestSource = '00/6a/CThingFilterInArea_operator_006a7990_test.cpp'
+        PassPattern = '006a7990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a7b20'
+        Module = 'CThingFilter_PosInContainmentVolume'
+        Source = '00/6a/CThingFilterPosInContainmentVolume_operator_006a7b20.cpp'
+        TestSource = '00/6a/CThingFilterPosInContainmentVolume_operator_006a7b20_test.cpp'
+        PassPattern = '006a7b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a7eb0'
+        Module = 'CThingFilter_IsNotList'
+        Source = '00/6a/CThingFilterIsNotList_operator_006a7eb0.cpp'
+        TestSource = '00/6a/CThingFilterIsNotList_operator_006a7eb0_test.cpp'
+        PassPattern = '006a7eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a84f0'
+        Module = 'CThingFilter_IsTargetable'
+        Source = '00/6a/CThingFilterIsTargetable_operator_006a84f0.cpp'
+        TestSource = '00/6a/CThingFilterIsTargetable_operator_006a84f0_test.cpp'
+        PassPattern = '006a84f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a8630'
+        Module = 'CThingFilter_IsAwareOfThing'
+        Source = '00/6a/CThingFilterIsAwareOfThing_operator_006a8630.cpp'
+        TestSource = '00/6a/CThingFilterIsAwareOfThing_operator_006a8630_test.cpp'
+        PassPattern = '006a8630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00703050'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_ConstructFromParams_00703050.cpp'
+        TestSource = '00/70/CThingObject_ConstructFromParams_00703050_test.cpp'
+        PassPattern = '00703050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007040e0'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_IsFrameUpdated_007040e0.cpp'
+        TestSource = '00/70/CThingObject_IsFrameUpdated_007040e0_test.cpp'
+        PassPattern = '007040e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fd830'
+        Module = 'CThingFilter_IsWithinArea'
+        Source = '00/7f/CThingFilterIsWithinArea_operator_007fd830.cpp'
+        TestSource = '00/7f/CThingFilterIsWithinArea_operator_007fd830_test.cpp'
+        PassPattern = '007fd830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00805890'
+        Module = 'CThingFilter_IsValidTargetForPlayerCreature'
+        Source = '00/80/CThingFilterIsValidTargetForPlayerCreature_CThingFilterIsValidTargetForPlayerCreature_00805890.cpp'
+        TestSource = '00/80/CThingFilterIsValidTargetForPlayerCreature_CThingFilterIsValidTargetForPlayerCreature_00805890_test.cpp'
+        PassPattern = '00805890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00838aa0'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_UpdateStandingOnThing_00838aa0.cpp'
+        TestSource = '00/83/CThingGameObject_UpdateStandingOnThing_00838aa0_test.cpp'
+        PassPattern = '00838aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083bab0'
+        Module = 'CThingHolySite'
+        Source = '00/83/CThingHolySite_ConstructFromParams_0083bab0.cpp'
+        TestSource = '00/83/CThingHolySite_ConstructFromParams_0083bab0_test.cpp'
+        PassPattern = '0083bab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083c230'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_SerialiseGameState_0083c230.cpp'
+        TestSource = '00/83/CThingSwitch_SerialiseGameState_0083c230_test.cpp'
+        PassPattern = '0083c230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083d070'
+        Module = 'CThingMarker'
+        Source = '00/83/CThingMarker_DrawGetEditDrawInfo_0083d070.cpp'
+        TestSource = '00/83/CThingMarker_DrawGetEditDrawInfo_0083d070_test.cpp'
+        PassPattern = '0083d070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085d010'
+        Module = 'NThingMap::CThingMap'
+        Source = '00/85/NThingMapCThingMap_GetAllThings_0085d010.cpp'
+        TestSource = '00/85/NThingMapCThingMap_GetAllThings_0085d010_test.cpp'
+        PassPattern = '0085d010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090c870'
+        Module = 'CThingFilter_IsValidGossipee'
+        Source = '00/90/CThingFilterIsValidGossipee_CThingFilterIsValidGossipee_0090c870.cpp'
+        TestSource = '00/90/CThingFilterIsValidGossipee_CThingFilterIsValidGossipee_0090c870_test.cpp'
+        PassPattern = '0090c870_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

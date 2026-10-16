@@ -198,6 +198,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand171` | Hand chunk 171 (CTCTavernGameCardPairs .. CTCWeapon): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand172` | Hand chunk 172 (CTCWeapon .. CThing): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand173` | Hand chunk 173 (CThing .. CThingFilter_HasScriptedControl): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand174` | Hand chunk 174 (CThingFilter_In2DRangeLimit .. CThingPhysicalSwitch): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand175` | Hand chunk 175 (CThingPhysicalSwitch .. CThingVillage): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
@@ -254,13 +255,14 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **664 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **673 parked rows** for the Fable retry pass.
 
-### Skipped rows (15 open of 39 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (16 open of 40 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
 | `0042e3ee` | prefix | open | 0042e3ee:1441 | `2026-10-15_linux_hand149` | prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function |
+| `0043e430` | multi | open | 0043e430:5 0043e440:7 0043e450:7 0043e460:7 0043e470:91 | `2026-10-15_linux_hand174` | CThingFilter_IsValid::operator(): row holds several functions (jmp [eax+4] thunk, int3 padding, then four more bodies) |
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `007da360` | multi | open | 007da360:50 007da3a0:92 | `2026-10-15_linux_hand170` | two functions in the row (FrameUpdate tail jumps, second body at +0x40) |
@@ -1021,6 +1023,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 007f6f20 CThingCompare_BestCreatureToAttack::operator()<CThingCreatureBase> DIFFER(104v110): result-variable form hoists `xor eax,eax` (mask in cl); separate returns lay `return 0` inline | tried: 4 return arrangements | next: lane gap: block layout
 - 007f6fd0 CThingCompare_BestCreatureToAttack::operator()<CThingAICreature> DIFFER(104v110): same body as 0x7F6F20 | tried: goto, result variable | next: lane gap: block layout
 - 006a8560 CThingFilter_HasScriptedControl::operator() DIFFER(103v101): component `mov ecx,[eax+4] ; mov al,[ecx+18h]` vs ours eax/cl + `mov ecx,eax` | tried: GetTC, GetInterface, if-chain IsActive, reference local | next: lane gap: component used as this
+
+
+#### `2026-10-15_linux_hand174` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand174/differ/`)
+- 008091a0 CThingFilter_IsTargetableBehind::operator() DIFFER(104v101): flag test `mov ecx,[eax+4] ; mov dl,[ecx+0Ch] ; mov al,1 ; test al,dl` + separate true exit vs retail `mov eax,[eax+4] ; test byte ptr [eax+0Ch],1 ; je` | tried: dword & 1, nested if, unsigned long bit field, __forceinline GetTC | next: out-parameter GetInterface or a CTCTargeted inline bool accessor
+- 007f6d70 CThingFilter_IsValidAttackTargetForCreature::ctor DIFFER(134v125): sub-def release re-reads the out slot after `dec [eax+4]` vs retail one ecx + `dec [ecx+4] ; jne` | tried: raw pointer local, holder dtor, CDefPointer-like out with dtor, Release() member | next: lane gap: CDefPointer release that does not re-read the escaped local
+- 008077b0 CThingFilter_ViableProjectileAimingTarget::operator() DIFFER(132v114): same escaped out-slot release (both arms) | tried: null-testing CDefPointer dtor, register copy in dtor, Release(), copied holder | next: lane gap: CDefPointer release re-read (same as 0x7F6D70)
+- 00839080 CThingGameObject::OnCollision DIFFER(125v123): looked-up component lands in eax and moves to ecx after the arg loads vs retail `mov ecx,[eax+4] ; mov eax,[ecx]` | tried: __forceinline GetTC, map Find member with by-ref LowerBound, Find with key local | next: lane gap: looked-up component loaded straight into ecx
+- 00520c80 CThingManager::OnThingKill DIFFER(112v113): section text re-reads SectionName and goes to edx with the empty arm first vs retail `jne ; mov eax,offset empty ; jmp ; mov eax,[eax] ; ... mov edx,eax` | tried: ternary/if accessors, local order | next: a single inline accessor returning both, or GetString through a CCharStringData* local
+- 006378e0 CThingMapManager::GetThingMapwhoLevel DIFFER(105v106): bare dword `fistp [ebp+8]` ceil helper | tried: (long) cast helper | next: lane gap: bare dword fistp
+- 00703150 CThingObject::PeekPMaterial DIFFER(111v105): local zero store before the pushes and copy-out re-reads the local vs retail merged `inc edx ; mov eax,edx ; dec eax` in ecx | tried: AddRef/Release members, /Oa | next: lane gap: temporary CDefPointer zero-store placement / escaped-local re-read
+- 006a4e90 CThingPhysical::DrawGetEditDrawInfo DIFFER(115v115): register/scheduling only (PhysicsTC into ecx before the pushes, copy through edx) | tried: inline operator=, user copy ctor | next: scheduling artefact
+- 006a68f0 CThingPhysical::ModifyHealth DIFFER(156v159): bare dword `fistp`/`fild` round-to-nearest helper | tried: (long) cast helpers | next: lane gap: bare dword fistp
 
 
 #### `2026-10-15_linux_hand175` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand175/differ/`)

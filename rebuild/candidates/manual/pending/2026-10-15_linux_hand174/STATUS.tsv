@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006a7700	MATCH	115v115	PASS	CThingFilter_In2DRangeLimit::operator()
+006a7990	MATCH	100v100	PASS	CThingFilter_InArea::operator()
+006a7430	RELOCATION_MATCH	102v102	PASS	CThingFilter_IsAvailableForCreatureInteraction::operator()
+006a8630	RELOCATION_MATCH	109v109	PASS	CThingFilter_IsAwareOfThing::operator()
+006a7eb0	RELOCATION_MATCH	123v123	PASS	CThingFilter_IsNotList::operator()
+006a84f0	RELOCATION_MATCH	104v104	PASS	CThingFilter_IsTargetable::operator()
+008091a0	DIFFER	104v101	-	CThingFilter_IsTargetableBehind::operator() parked
+0043e430	SKIP	-v155	-	CThingFilter_IsValid::operator(): row holds several functions (jmp [eax+4] thunk, int3 padding, then four more bodies)
+007f6d70	DIFFER	134v125	-	CThingFilter_IsValidAttackTargetForCreature::CThingFilter_IsValidAttackTargetForCreature parked
+0090c870	RELOCATION_MATCH	135v135	PASS	CThingFilter_IsValidGossipee::CThingFilter_IsValidGossipee
+00805890	RELOCATION_MATCH	110v110	PASS	CThingFilter_IsValidTargetForPlayerCreature::CThingFilter_IsValidTargetForPlayerCreature
+007fd830	RELOCATION_MATCH	116v116	PASS	CThingFilter_IsWithinArea::operator()
+006689e0	RELOCATION_MATCH	109v109	PASS	CThingFilter_OverlappingSphere::operator()
+006a7b20	RELOCATION_MATCH	98v98	PASS	CThingFilter_PosInContainmentVolume::operator()
+008077b0	DIFFER	132v114	-	CThingFilter_ViableProjectileAimingTarget::operator() parked
+00668ab0	RELOCATION_MATCH	144v144	PASS	CThingFindHeightZBelowAt::operator()
+00838aa0	RELOCATION_MATCH	128v128	PASS	CThingGameObject::UpdateStandingOnThing
+00839080	DIFFER	125v123	-	CThingGameObject::OnCollision parked
+0083bab0	RELOCATION_MATCH	131v131	PASS	CThingHolySite::ConstructFromParams
+0051e000	MATCH	117v117	PASS	CThingManager::RemoveFromRenderList
+0051e5a0	RELOCATION_MATCH	133v133	PASS	CThingManager::ActivateAfterLoading
+0051ebd0	MATCH	124v124	PASS	CThingManager::RenderUpdateThings
+0051ec50	MATCH	102v102	PASS	CThingManager::AddToUpdateList
+0051ecc0	MATCH	153v153	PASS	CThingManager::RemoveFromUpdateList
+0051f070	RELOCATION_MATCH	101v101	PASS	CThingManager::UpdateDeaths
+0051fba0	RELOCATION_MATCH	125v125	PASS	CThingManager::DeleteAllThings
+0051fc20	RELOCATION_MATCH	146v146	PASS	CThingManager::DeleteThingsWithSectionName
+00520c80	DIFFER	112v113	-	CThingManager::OnThingKill parked
+0085d010	RELOCATION_MATCH	138v138	PASS	CThingMap::GetAllThings
+006378e0	DIFFER	105v106	-	CThingMapManager::GetThingMapwhoLevel parked (lane gap: bare dword fistp)
+00637a10	RELOCATION_MATCH	108v108	PASS	NThingMap::CThingMapManager::DestroyMapwhoNode
+00637da0	RELOCATION_MATCH	158v158	PASS	CThingMapManager::InitPos
+00638540	RELOCATION_MATCH	114v114	PASS	CThingMapManager::Init
+0083d070	RELOCATION_MATCH	138v138	PASS	CThingMarker::DrawGetEditDrawInfo
+00703050	RELOCATION_MATCH	105v105	PASS	CThingObject::ConstructFromParams
+00703150	DIFFER	111v105	-	CThingObject::PeekPMaterial (catalog vfunc_58) parked
+007040e0	RELOCATION_MATCH	106v106	PASS	CThingObject::IsFrameUpdated (catalog vfunc_44)
+006a4e90	DIFFER	115v115	-	CThingPhysical::DrawGetEditDrawInfo parked
+006a68f0	DIFFER	156v159	-	CThingPhysical::ModifyHealth parked (lane gap: bare dword fistp)
+0083c230	RELOCATION_MATCH	158v158	PASS	CThingSwitch::SerialiseGameState (catalog says CThingPhysicalSwitch)
