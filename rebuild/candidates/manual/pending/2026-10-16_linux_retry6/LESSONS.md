@@ -1,0 +1,3 @@
+- A CDefPointer taken once before a `GameFinished` branch (not per arm) gives the retail `push ecx` frame with the CCharString temporary homed in the dead hidden-pointer slot; the release re-read after `dec [ecx+4]` is still unreproduced (seven dtor forms now).
+- An unsigned count halved by parity and converted once (`float half = (float)(odd ? n>>1 : (n>>1)-1)`) reproduces the shared `fld st(0)` product pair without /Op; the per-branch `fild` from the argument slot is the dead-argument-slot gap, not a source shape.
+- Two inline SetText arms that differ only in a constant tail-merge in our lane; retail's separate calls need a shape we have not found (font-in-eax + UI local vs font-in-ecx inline).
