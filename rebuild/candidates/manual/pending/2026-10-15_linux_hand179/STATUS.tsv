@@ -1,0 +1,31 @@
+address	status	bytes	test	note
+004fcac0	MATCH	100v100	PASS	grid rewrite; bounds re-divided each pass
+004fcb30	DIFFER	128v127	-	parked: Maps.begin load placement
+004fcbd0	RELOCATION_MATCH	108v108	PASS	inlined ConvertWorldMapCoordsToLocalCoords
+004fcc40	RELOCATION_MATCH	145v145	PASS	label fix: IsPosPassable(C3DVector)
+004fcce0	RELOCATION_MATCH	114v114	PASS	if(...) return true form
+004fcd60	RELOCATION_MATCH	145v145	PASS	C3DVector overload
+004ff310	DIFFER	124v123	-	parked: temp+tag in dead param slot
+00502460	RELOCATION_MATCH	152v152	PASS	map=0 sentinel + out-of-line resize
+00506bb0	RELOCATION_MATCH	142v142	PASS	scoped header holder; palettes 0x8400
+0063a300	RELOCATION_MATCH	133v133	PASS	named const CMap& after conversion
+0063a390	RELOCATION_MATCH	133v133	PASS	twin of 0x63A300, callee 0x8200B0
+0063a5f0	RELOCATION_MATCH	106v106	PASS	named const CMap&
+0063a660	RELOCATION_MATCH	127v127	PASS	C3DVector temporary for IsPosInMap
+0063a6e0	RELOCATION_MATCH	123v123	PASS	label fix: GetSoundAtBlock (inferred)
+0063a760	RELOCATION_MATCH	123v123	PASS	label fix: IsPassableAtBlock (inferred)
+0063a7e0	RELOCATION_MATCH	106v106	PASS	label fix: likely GetThemeSizeZAt
+0063ab10	RELOCATION_MATCH	115v115	PASS	(0,0,1) fallback
+0063adf0	RELOCATION_MATCH	121v121	PASS	direct call form, args before PeekMap
+0063b890	RELOCATION_MATCH	129v129	PASS	label fix: PointIsWithinCellBR (geometry)
+0063b920	RELOCATION_MATCH	129v129	PASS	truncated X on the left of ==
+0063b9b0	RELOCATION_MATCH	123v123	PASS	label fix: PointIsWithinCellBL (geometry)
+0063ba30	RELOCATION_MATCH	123v123	PASS	label fix: PointIsWithinCellTR (geometry)
+0063bab0	MATCH	142v142	PASS	min/max ternaries
+0063bb40	RELOCATION_MATCH	114v114	PASS	PeekMap twice
+00c1c1a0	RELOCATION_MATCH	100v100	PASS	label fix: __fastcall library helper, not SaveToFile
+007572d0	RELOCATION_MATCH	102v102	PASS	CTCWound::CWound
+00757340	RELOCATION_MATCH	121v121	PASS	float locals give fild+fdivp
+008f9780	RELOCATION_MATCH	147v147	PASS	label fix: LSocket::~LSocket
+00ad4a70	RELOCATION_MATCH	123v123	PASS	label fix: two-set record dtor
+005469e0	RELOCATION_MATCH	98v98	PASS	vtable 0x01247DC4 slot 48; merged tail

@@ -238671,6 +238671,202 @@ $catalog = @(
         TestSource = '00/ec/NScriptCVSickChildScriptCWitch_Init_00ec80c0_test.cpp'
         PassPattern = '00ec80c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004fcac0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ChangeMapPlacementValuesTo_004fcac0.cpp'
+        TestSource = '00/4f/CWorldMap_ChangeMapPlacementValuesTo_004fcac0_test.cpp'
+        PassPattern = '004fcac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fcbd0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsPosPassable_004fcbd0.cpp'
+        TestSource = '00/4f/CWorldMap_IsPosPassable_004fcbd0_test.cpp'
+        PassPattern = '004fcbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fcc40'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsPosPassable_004fcc40.cpp'
+        TestSource = '00/4f/CWorldMap_IsPosPassable_004fcc40_test.cpp'
+        PassPattern = '004fcc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fcce0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsPosCameraPassable_004fcce0.cpp'
+        TestSource = '00/4f/CWorldMap_IsPosCameraPassable_004fcce0_test.cpp'
+        PassPattern = '004fcce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fcd60'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsPosCameraPassable_004fcd60.cpp'
+        TestSource = '00/4f/CWorldMap_IsPosCameraPassable_004fcd60_test.cpp'
+        PassPattern = '004fcd60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00502460'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_AllocateNewMap_00502460.cpp'
+        TestSource = '00/50/CWorldMap_AllocateNewMap_00502460_test.cpp'
+        PassPattern = '00502460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00506bb0'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_GetLevelDimensions_00506bb0.cpp'
+        TestSource = '00/50/CWorldMap_GetLevelDimensions_00506bb0_test.cpp'
+        PassPattern = '00506bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005469e0'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_ChangeState_005469e0.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_ChangeState_005469e0_test.cpp'
+        PassPattern = '005469e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a300'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetGroundSizeZAt_0063a300.cpp'
+        TestSource = '00/63/CWorldMap_GetGroundSizeZAt_0063a300_test.cpp'
+        PassPattern = '0063a300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a390'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetGroundSizeZAt_0063a390.cpp'
+        TestSource = '00/63/CWorldMap_GetGroundSizeZAt_0063a390_test.cpp'
+        PassPattern = '0063a390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a5f0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetThemeMinCameraSizeZOffsetAt_0063a5f0.cpp'
+        TestSource = '00/63/CWorldMap_GetThemeMinCameraSizeZOffsetAt_0063a5f0_test.cpp'
+        PassPattern = '0063a5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a660'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetGroundSizeZAtBlock_0063a660.cpp'
+        TestSource = '00/63/CWorldMap_GetGroundSizeZAtBlock_0063a660_test.cpp'
+        PassPattern = '0063a660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a6e0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetSoundAtBlock_0063a6e0.cpp'
+        TestSource = '00/63/CWorldMap_GetSoundAtBlock_0063a6e0_test.cpp'
+        PassPattern = '0063a6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a760'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_IsPassableAtBlock_0063a760.cpp'
+        TestSource = '00/63/CWorldMap_IsPassableAtBlock_0063a760_test.cpp'
+        PassPattern = '0063a760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a7e0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetThemeMinCameraSizeZOffsetAt_0063a7e0.cpp'
+        TestSource = '00/63/CWorldMap_GetThemeMinCameraSizeZOffsetAt_0063a7e0_test.cpp'
+        PassPattern = '0063a7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063ab10'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetGroundFaceNormalAt_0063ab10.cpp'
+        TestSource = '00/63/CWorldMap_GetGroundFaceNormalAt_0063ab10_test.cpp'
+        PassPattern = '0063ab10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063adf0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetStrongestEngineThemeAt_0063adf0.cpp'
+        TestSource = '00/63/CWorldMap_GetStrongestEngineThemeAt_0063adf0_test.cpp'
+        PassPattern = '0063adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063b890'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_PointIsWithinCellBR_0063b890.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinCellBR_0063b890_test.cpp'
+        PassPattern = '0063b890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063b920'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_PointIsWithinCellTL_0063b920.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinCellTL_0063b920_test.cpp'
+        PassPattern = '0063b920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063b9b0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_PointIsWithinCellBL_0063b9b0.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinCellBL_0063b9b0_test.cpp'
+        PassPattern = '0063b9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063ba30'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_PointIsWithinCellTR_0063ba30.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinCellTR_0063ba30_test.cpp'
+        PassPattern = '0063ba30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063bab0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_PointIsWithinLineSegment_0063bab0.cpp'
+        TestSource = '00/63/CWorldMap_PointIsWithinLineSegment_0063bab0_test.cpp'
+        PassPattern = '0063bab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063bb40'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetThemeMinCameraSizeZOffsetAtBlock_0063bb40.cpp'
+        TestSource = '00/63/CWorldMap_GetThemeMinCameraSizeZOffsetAtBlock_0063bb40_test.cpp'
+        PassPattern = '0063bb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007572d0'
+        Module = 'CTCWound::CWound'
+        Source = '00/75/CTCWoundCWound_GetWoundStrength_007572d0.cpp'
+        TestSource = '00/75/CTCWoundCWound_GetWoundStrength_007572d0_test.cpp'
+        PassPattern = '007572d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00757340'
+        Module = 'CTCWound::CWound'
+        Source = '00/75/CTCWoundCWound_GetScarStrength_00757340.cpp'
+        TestSource = '00/75/CTCWoundCWound_GetScarStrength_00757340_test.cpp'
+        PassPattern = '00757340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f9780'
+        Module = 'LSocket'
+        Source = '00/8f/LSocket_LSocket_008f9780.cpp'
+        TestSource = '00/8f/LSocket_LSocket_008f9780_test.cpp'
+        PassPattern = '008f9780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad4a70'
+        Module = 'CTwoLongSets'
+        Source = '00/ad/CTwoLongSets_CTwoLongSets_00ad4a70.cpp'
+        TestSource = '00/ad/CTwoLongSets_CTwoLongSets_00ad4a70_test.cpp'
+        PassPattern = '00ad4a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1c1a0'
+        Module = '_global'
+        Source = '00/c1/global_StartTimer_00c1c1a0.cpp'
+        TestSource = '00/c1/global_StartTimer_00c1c1a0_test.cpp'
+        PassPattern = '00c1c1a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

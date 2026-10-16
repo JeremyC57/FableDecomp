@@ -203,6 +203,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand176` | Hand chunk 176 (CThreadedFileManager .. CV_SingingStonesScript): 31 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand177` | Hand chunk 177 (CV_StatueMasterScript .. CVsyncCallbackTimer): 26 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand178` | Hand chunk 178 (CWParsedItem .. CWorldMap): 32 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand179` | Hand chunk 179 (CWorldMap .. CZoomingComponent): 28 of 30 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -258,9 +259,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **702 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **704 parked rows** for the Fable retry pass.
 
-### Skipped rows (17 open of 41 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (16 open of 41 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -273,7 +274,6 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `007eec50` | multi | open | 007eec50:53 007eec90:93 | `2026-10-15_linux_hand170` | two functions in the row (OnDie ret at +0x34, second body at +0x40) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
 | `0080aad1` | single | open | 0080aad1:106 | `2026-10-15_linux_hand160` | not a function: the else-branch tail of 0x0080AA60 (je 0x80AAD1; pops edi/esi it never pushed) |
-| `0099b150` | single | open | 0099b150:121 | `2026-10-15_linux_hand178` | already landed (CWideString_NotEqualWide_0099b150.cpp); same shape |
 | `009f5d70` | prefix | open | 009f5d70:156 | `2026-10-15_linux_hand143` | CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B); fu |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
@@ -1084,6 +1084,11 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00629420 CWorld::EAUseFreeCamera DIFFER(115v113): flag byte in the dead 'event' argument slot (retail frame 0x30) vs own frame byte (ours 0x34); rest of the body follows | tried: named bool + '== true' normalise (one try, known gap) | next: lane gap: /GS one-byte local in a dead parameter slot
 - 0085ca80 CWorld::LEASetExclusiveMode DIFFER(103v103): only the frame layout differs (payload byte in the dead 'event' argument slot, frame 0x30 vs ours 0x34) | tried: unsigned char local passed as '!= 0' (one try, known gap) | next: lane gap: /GS one-byte local in a dead parameter slot
 - 0085caf0 CWorld::LEASetDisplayMode DIFFER(132v132): only the frame layout differs (retail puts the 2-byte height in the dead 'event' argument slot, frame 0x38 vs ours 0x3C) | tried: three named payload locals (one try, known gap) | next: lane gap: /GS small local in a dead parameter slot
+
+
+#### `2026-10-15_linux_hand179` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand179/differ/`)
+- 004fcb30 CWorldMap::GetMinPlayerDistanceFromMap DIFFER(128v127): retail loads only Maps.begin into edi before the two __ftol2 calls and forms `lea ecx,[edi+map*72]` after them, and the Set test is `lea esi,[ecx+eax] ; cmp byte [esi],0`; ours forms the whole element address before the calls and uses `mov esi ; add esi,eax` | tried: named block coord, temporary coord, non-const member, explicit C2DCoordI(const C3DVector&) ctor + named CMapInfo& | next: `const CMapInfo* maps = Maps.begin();` before the coord, then `maps[map].Area.GetDistanceTo(C2DCoordI(info.Pos))`.
+- 004ff310 CWorldMap::GetAllLoadedMapsInArea DIFFER(124v123): registers match; retail homes the long->unsigned long push_back temporary and the empty __true_type tag both in the dead `maps` parameter slot with no frame, ours opens a 4-byte frame (`push ecx`) for the temporary | tried: named unsigned long local, `*it` twice (conversion temp), named long local, __forceinline by-value helper | next: lane gap: temporary in a dead argument slot (function has a named local).
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
