@@ -189,6 +189,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand162` | Hand chunk 162 (CTCCreatureFlyInCircles .. CTCDPhysicalObstruction): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand163` | Hand chunk 163 (CTCDPhysicalObstruction .. CTCGraphicAppearance): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand164` | Hand chunk 164 (CTCGraphicAppearance .. CTCHeroStats): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand165` | Hand chunk 165 (CTCHeroStats .. CTCInventoryBase): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -243,7 +244,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **566 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **576 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -889,6 +890,19 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 006c5f80 CTCHeroOpinionDeedLog::RemoveCrimeFromVillage DIFFER(132v130): retail loads the village component straight into ecx (`mov ecx,[eax+4] ; mov al,[ecx+7Ch]`) and keeps it for RemoveCrime | tried: GetInterface out pointer, HasTC + check-free GetTC | next: lane gap: looked-up component used as `this` straight in ecx
 - 007e0910 CTCHeroSpecialMovement::OnCreate DIFFER(105v105): `mov edi,[esp+8] ; mov ecx,edi` (retail) vs `mov ecx,[esp+8] ; mov edi,ecx` | tried: out->GetSubDef + re-read release, sub-def pointer local | next: lane gap: register choice
 - 0057a60a CTCHeroStats::GetFatnessReducingFrequencyInFrames DIFFER(71v116): retail rounds with a bare dword `fistp` after storing/reloading the product and 0.5f/1.0f locals; ours calls __ftol2 | tried: plain C++ round helper | next: lane gap: inline-asm fistp round helper
+
+
+#### `2026-10-15_linux_hand165` (10 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand165/differ/`)
+- 0057b1db CTCHeroStats::ModifyStaminaBy DIFFER(148v148): eax/ecx swapped in the stamina clamp (retail stamina in eax, MaxStamina in ecx) | tried: plain if/else, `MaxStamina < Stamina`, `if ((Stamina += delta) < 0)`, inline GFLimit template | next: lane gap: register rotation (scheduling-only)
+- 0057b26f CTCHeroStats::ForceStaminaTo DIFFER(152v156): retail `fstp [ebp+8] ; fld [ebp+8] ; fistp [ebp-8]` float-to-long, ours calls __ftol2 and the GetInterface key moves | tried: cast forms | next: lane gap: bare dword fistp after a float store/reload
+- 0077cb60 CTCHighlightItem::OnInitialActivate DIFFER(116v116): zeroed CDefPointer store lands before the GetSubDef pushes (retail after `push eax`), def/thing loads rotate eax/ecx/edx | tried: direct ParentThing->PDef->GetSubDef, thingDef local via operator->, `__forceinline` GetHighlightDef() | next: lane gap: temporary CDefPointer zero store scheduled after the pushes
+- 0077cca0 CTCHighlightItem::DoStopRunning DIFFER(122v117): same CDefPointer zero-store gap, plus the def kept in ebp (extra push ebp) and a CSE'd `lea edi,[def+2Ch]` | tried: the three forms of 0x0077CB60 | next: lane gap: temporary CDefPointer zero store scheduled after the pushes
+- 0077cd50 CTCHighlightItem::FrameUpdate DIFFER(117v117): CDefPointer zero stored before `mov ecx,[eax+70h]`, plus an eax/edx swap in the release's vtable load | tried: the three forms of 0x0077CB60 | next: lane gap: temporary CDefPointer zero store scheduled after the pushes
+- 0047d21c CTCInGameMenu::CloseInGameMenuViaGameEvent DIFFER(105v109): our compiler drops the event ctor's dead `Player = -1` store (`mov byte ptr [ebp-28h],0FFh`) | tried: init-list ctor, body-assignment ctor, declared CMemoryBuffer::Copy, constructing before the alive test (109v109 but stores precede the test) | next: an out-of-line-looking ctor with the store through a volatile-free alias, else lane gap: dead-store elimination of a ctor field
+- 00582944 CTCInventory::OnCreate DIFFER(137v137): the zeroed sub-def CDefPointer's `and [ebp-4],0` lands before the def-chain load (retail after `mov edi,[eax+70h]`) | tried: named thingDef copy in a block, by-value GetDef() temporary, `__forceinline` GetInventorySubDef() | next: lane gap: CDefPointer zero-store scheduling
+- 0058400a CTCInventory::OnItemSelectedInHand DIFFER(156v156): retail reuses ebx (dead this) for the owner, ours takes esi (dead item) | tried: named owner local, static `__forceinline` SheatheIntoInventory(owner), inverted if/else | next: lane gap: register choice (scheduling-only)
+- 005ee418 CTCInventoryAbilities::FrameUpdate DIFFER(132v130): hero component loaded into eax, null-tested, then moved to ecx (retail `mov ecx,[eax+4] ; test ecx,ecx`) | tried: out-pointer GetInterface + `&& hero`, HasTC + GetTCUnchecked, `if ((hero = ...) != 0)`, out-pointer helper via named component | next: lane gap: looked-up component loaded straight into ecx
+- 005bdfb1 CTCInventoryBase::SelectItemWithDefIndex DIFFER(127v119): predicate word pushed from memory (`push [eax+3Ch]`) where retail loads ebx=item, eax=[ebx+3Ch], push eax; the thing-def CDefPointer dtor is `mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0` vs retail `mov ecx,[ebp-4] ; test ecx,ecx ; je ; dec [ecx+4] ; jne` | tried: end re-read vs `last` local, pointer-local dtor, inline Release(), named identifier local | next: a CDefPointer whose dtor null-tests and reads Object back from the frame (`if (Object && --Object->RefCount == 0)`) declared as a named local before GetDef
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

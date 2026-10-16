@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0057a989	RELOCATION_MATCH	146v146	PASS	CTCHeroStats::GetFavouriteRegion(long&) const
+0057ae53	RELOCATION_MATCH	97v97	PASS	CTCHeroStats::GetWivesInMarriageState(std::list<CThingCreatureBase*>&, EMarriageState) const
+0057b05f	RELOCATION_MATCH	152v152	PASS	CTCHeroStats::SetAge(float)
+0057b0f7	RELOCATION_MATCH	114v114	PASS	CTCHeroStats::SetSunTan(float)
+0057b169	RELOCATION_MATCH	114v114	PASS	CTCHeroStats::SetFatness(float)
+0057b1db	DIFFER	148v148	-	CTCHeroStats::ModifyStaminaBy(long): eax/ecx swapped in the stamina clamp (retail stamina in eax, MaxStamina in ecx); tried plain if/else, `MaxStam
+0057b26f	DIFFER	152v156	-	CTCHeroStats::ForceStaminaTo(float): retail rounds with `fstp [ebp+8] ; fld [ebp+8] ; fistp [ebp-8]` (inline-asm float-to-long, lane gap); ours cal
+0057b9d7	RELOCATION_MATCH	133v133	PASS	CTCHeroStats::GetRandomBeardName() const
+0057ba5c	RELOCATION_MATCH	120v120	PASS	CTCHeroStats::GetRandomHairName() const
+0057d1a4	RELOCATION_MATCH	151v151	PASS	CTCHeroStats::OnInitialActivate()
+0057d990	RELOCATION_MATCH	109v109	PASS	CTCHeroStats::SetHeroKickPositionForCurrentRegion(const C3DVector&, float, bool)
+00c44360	RELOCATION_MATCH	100v100	PASS	CEventDataBuffer::Allocate(long)
+00c6af50	MATCH	100v100	PASS	CStreamProgressMonitor::UpdateProgress(void*, bool, void*, long)
+0077cb60	DIFFER	116v116	-	CTCHighlightItem::OnInitialActivate(): the zeroed CDefPointer's store lands before the GetSubDef pushes (retail after `push eax`), and the def/thing 
+0077cca0	DIFFER	122v117	-	CTCHighlightItem::DoStopRunning(): same CDefPointer zero-store lane gap; ours also keeps the def in ebp (extra push ebp) and CSEs `lea edi,[def+2
+0077cd50	DIFFER	117v117	-	CTCHighlightItem::FrameUpdate(): same CDefPointer zero-store lane gap (zero stored before `mov ecx,[eax+70h]`), plus an eax/edx swap in the rel
+00801be0	RELOCATION_MATCH	112v112	PASS	CTCIdleScheduler::IsPreferredIdle(CAIStateGroupBase*)
+0047d1ac	RELOCATION_MATCH	112v112	PASS	CTCInGameMenu::DrawPreparePrimitivesForRendering(const CDrawPrepareContext&)
+0047d21c	DIFFER	105v109	-	CTCInGameMenu::CloseInGameMenuViaGameEvent(): our compiler drops the ctor's dead `Player = -1` store (`mov byte ptr [ebp-28h],0FFh`) that retail keeps befor
+0047d537	RELOCATION_MATCH	108v108	PASS	CTCInGameMenu::IsQuitMenuReceivingInput() const
+00582944	DIFFER	137v137	-	CTCInventory::OnCreate(): only the zeroed sub-def CDefPointer's `and [ebp-4],0` lands before the def-chain load (retail after `mov edi,[
+005836d2	RELOCATION_MATCH	154v154	PASS	CTCInventory::IsQuitMenuReceivingInput() const
+0058400a	DIFFER	156v156	-	CTCInventory::OnItemSelectedInHand(CThing*, bool*): register choice only: retail reuses ebx (this, dead in the sheathe arm) for the owner, ours takes esi (the dea
+005849ea	RELOCATION_MATCH	137v137	PASS	CTCInventory::IsQuickAccessItemUsable(long) const
+00584a73	RELOCATION_MATCH	131v131	PASS	CTCInventory::AddCloseInventoryEvent()
+0058502d	RELOCATION_MATCH	114v114	PASS	CTCInventory::AddContextSensitivePreferredItem(const CCharString&, long, long)
+00587b93	RELOCATION_MATCH	108v108	PASS	CTCInventory::OpenPCScoreboard()
+005ee183	RELOCATION_MATCH	132v132	PASS	CTCInventoryAbilities::GetNumAssignedAbilityRows() const
+005ee288	RELOCATION_MATCH	149v149	PASS	CTCInventoryAbilities::GetMenuEntryFromCategory(EUISpellCategory, CComponent*) const
+005ee418	DIFFER	132v130	-	CTCInventoryAbilities::FrameUpdate(): the hero component is loaded into eax, null-tested, then moved to ecx (retail `mov ecx,[eax+4] ; test ecx,ecx`
+005eeee6	RELOCATION_MATCH	158v158	PASS	CTCInventoryAbilities::UpgradeAbility(EHeroAbility)
+005f3dc6	RELOCATION_MATCH	120v120	PASS	CTCInventoryAbilities::Copy(const CTCInventoryBase*)
+005f4519	RELOCATION_MATCH	156v156	PASS	CTCInventoryAbilities::AssignAbilitySwappingPC(EHeroAbility, unsigned long, unsigned long, CComponent*, CComponent*)
+005f6b47	RELOCATION_MATCH	143v143	PASS	CTCInventoryAbilities::OnInitialActivate()
+005bc5c6	RELOCATION_MATCH	114v114	PASS	CTCInventoryBase::GetRightStickPosition(C2DVector&) const
+005bd630	MATCH	105v105	PASS	CTCInventoryBase::GetCategoryWithIdentifier(long)
+005bdb94	RELOCATION_MATCH	116v116	PASS	CTCInventoryBase::SelectNextCategory()
+005bdc08	RELOCATION_MATCH	111v111	PASS	CTCInventoryBase::SelectPreviousCategory()
+005bdfb1	DIFFER	127v119	-	CTCInventoryBase::SelectItemWithDefIndex(long): (1) the predicate word is pushed from memory (`push [eax+3Ch]`, item moved to ebx after) where retail loads eb
+005beaf5	RELOCATION_MATCH	98v98	PASS	CTCInventoryBase::GetAllSelectedItems(std::vector<long>&) const

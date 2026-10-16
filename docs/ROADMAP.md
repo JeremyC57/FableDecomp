@@ -139,3 +139,11 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - `functional` — behavior fixture passes vs local oracle; bytes differ (`DIFFER`) — never counted in byte totals
 - `matching` — `MATCH` (exact `.text`) or `RELOCATION_MATCH` (exact after masking COFF reloc slots) — the only "landed byte-exact" grades
 - `asm_bake` — `__declspec(naked)` / `_emit` byte-bake; byte-exact but NOT genuine C++; purity debt tracked by `crawl/purity.py`
+
+## Owner note (2026-10-16): graphics / rendering and audio will need new work
+The retail game's video and audio dependencies (Direct3D 9-era renderer, the old audio stack) are very
+outdated. Expect the rendering (`CShader*`, `CEnginePrimitive*`, `CSurface`, D3DX matrix code) and
+audio (`C3DSoundSource`, sound receivers, bank streaming) layers to need replacement or shim work in
+FableForge rather than plain byte-exact reconstruction. Keep those classes' reconstructed sources well
+labelled (true class names, verified vtables, documented retail offsets) so the replacement layer can
+be designed against them.
