@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007ddf90	RELOCATION_MATCH	156v156	PASS	ctor; scalar body assignments, CCardinalSpline inline ctor + resize(3)
+007dcfd0	RELOCATION_MATCH	130v130	PASS	inline CCountedPointer operator= + by-value param release
+007c98a0	RELOCATION_MATCH	114v114	PASS	unset-local GetInterface accessor
+00812e20	RELOCATION_MATCH	144v144	PASS	map::find returns node ptr in eax; header compared in memory
+00812eb0	RELOCATION_MATCH	97v97	PASS	label vfunc_31 = ActivateMember (slot 31)
+00813100	RELOCATION_MATCH	122v122	PASS	UID local + two __forceinline by-value find/erase helpers
+00784600	DIFFER	137v135	-	component lands in eax, retail ecx
+00784920	RELOCATION_MATCH	160v160	PASS	switch for state advance; fps local before seed call
+00784b30	RELOCATION_MATCH	158v158	PASS	inline CTCCreatureGroup base + STLport tree ctor
+0077d190	RELOCATION_MATCH	153v153	PASS	unchecked GetInterface; 12-byte frame record temp
+007f8300	RELOCATION_MATCH	135v135	PASS	component-wise position sum into named local
+007f83f0	RELOCATION_MATCH	157v157	PASS	parent local before stores; height store first; Set(x,y)
+007f84c0	RELOCATION_MATCH	118v118	PASS	label vfunc_31 = UpdateLevitationTarget; void Normalise
+00cbba60	RELOCATION_MATCH	104v104	PASS	label: __pop_heap<pair<ulong64,CCountedPointer<CActiveEntityScriptBase>>> (not AddMode)
+006cb620	DIFFER	114v114	-	x87 squared-distance term order
+006cb6e0	DIFFER	147v147	-	x87 XY squared-distance term order
+006cb840	DIFFER	155v155	-	x87 squared-distance term order
+006cc170	RELOCATION_MATCH	106v106	PASS	zero initialisers + -1/true body stores
+006827a0	RELOCATION_MATCH	99v99	PASS	HasTC returns masked word
+00683650	DIFFER	129v127	-	deed-log component lands in eax, retail ecx
+006836d0	RELOCATION_MATCH	152v152	PASS	list reference local
+007e49d0	RELOCATION_MATCH	121v121	PASS	label vfunc_11 = DrawPreparePrimitivesForRendering
+00749bf0	DIFFER	140v138	-	animation component lands in eax, retail ecx
+00778d60	RELOCATION_MATCH	127v127	PASS	CBaseClassNonCopyable polymorphic root; C3DVector user copy ctor
+007e88f0	RELOCATION_MATCH	140v140	PASS	label vfunc_1 = Persist; defaults in dead arg slot
+0080c250	RELOCATION_MATCH	127v127	PASS	byte twin of 0x778D60 (probably CTCDExplosion::Construct)
+0080c350	DIFFER	111v107	-	fps load/store order and setg al form (untried: ? true : false)
+00458994	RELOCATION_MATCH	153v153	PASS	label: CGlobalDef::CGlobalDef (vtable 0x1234C8C); optimize(s)
+007b7bc0	RELOCATION_MATCH	98v98	PASS	label: CTCOverheadDisplay ctor (vtable 0x126DA94); alloc-proxy vector
+006dff30	RELOCATION_MATCH	115v115	PASS	bitfield body assignments fold into byte store/and
+006e0480	RELOCATION_MATCH	122v122	PASS	interpolator temp pushed from ctor eax
+006e0500	RELOCATION_MATCH	142v142	PASS	inline C3DPositionInterpolator ctor; C3DVector user copy ctor
+006e0620	RELOCATION_MATCH	100v100	PASS	by-value getter C3DVector(x,y,z); user copy ctor
+006e0690	RELOCATION_MATCH	147v147	PASS	emitter ushort bitfield inline setters
+006e0a60	RELOCATION_MATCH	137v137	PASS	label vfunc_14 = OnKill
+006e0df0	RELOCATION_MATCH	138v138	PASS	early true exits; mode manager named local
+006e1080	RELOCATION_MATCH	143v143	PASS	intelligent-pointer temp assignment
+009cb350	RELOCATION_MATCH	137v137	PASS	label: NGameText::CTextEntry dtor (vtable 0x129B4A4); novtable + _Destroy
+004defa7	RELOCATION_MATCH	144v144	PASS	label: CTCKraken ctor (vtable 0x1241B94); y off + s; allocator temp in arg top byte
+005296b0	RELOCATION_MATCH	106v106	PASS	label: CThingPhysical ctor (vtable 0x1244E84)

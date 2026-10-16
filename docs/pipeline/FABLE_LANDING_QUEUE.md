@@ -186,6 +186,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand159` | Hand chunk 159 (CSplineRandomOffsetData .. CSurface): 26 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand160` | Hand chunk 160 (CSurface .. CTCBuyableHouse): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand161` | Hand chunk 161 (CTCBuyableHouse .. CTCCreatureFlyInCircles): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand162` | Hand chunk 162 (CTCCreatureFlyInCircles .. CTCDPhysicalObstruction): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -240,7 +241,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **537 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **544 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -848,6 +849,16 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 007366c0 CTCCombat::AddMeleeFlourishAbility DIFFER(157v149): scratch registers of the two tail pushes; CDefPointer release re-reads the escaped local after the dec | tried: one full expression (tags got a frame word), Release() member, pointer-local release, split statements (tags fixed) | next: def via a forceinline out-pointer helper so the object is enregistered (0x733950 lesson)
 - 008ed170 CTCContainer::AddItemsToInventory DIFFER(122v122): `this` ebx / index ebp in retail, swapped in ours | tried: early return, if-block, reference local | next: scheduling artefact (register swap)
 - 00729410 CTCCreatureExpression::SetExpression DIFFER(142v134): retail sub-def object read once into ebp, type in ebx, map in edi, release `dec [ebp+4] ; jne`; ours type in ebp, dtor re-reads the escaped local | tried: CDefPointer local, forceinline helper + raw release (counted form), adopting wrapper, map local | next: helper returning the object + a no-null-test CDefPointer-like dtor on an enregistered copy
+
+
+#### `2026-10-15_linux_hand162` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand162/differ/`)
+- 00784600 CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea DIFFER(137v135): `mov eax,[eax+4] ; test eax,eax ; ... mov ecx,eax` vs retail `mov ecx,[eax+4] ; test ecx,ecx` (the hero component register) | tried: out-param && test, inline accessor returning 0, pointer-returning lookup, preset-zero out-param | next: lane gap: GetInterface component in ecx (same in 00683650/00749bf0)
+- 006cb620 CTCCreatureNavigation::IsAbleToNavigateFromPosToPos DIFFER(114v114): squared distance squares dz,dy,dx where retail squares dz,dx,dy | tried: C3DVector operator- temp (spills), float locals in three orders, x+(y+z) grouping | next: lane gap: x87 sum-of-squares term order (VC canonicalises float-local sums)
+- 006cb6e0 CTCCreatureNavigation::GetNearbyWanderPosition DIFFER(147v147): XY squared distance squares dy then dx, retail dx then dy | tried: C3DVector temp, float locals both orders, CSE'd (a.X-b.X)^2 form | next: lane gap: x87 sum-of-squares term order
+- 006cb840 CTCCreatureNavigation::GetNearestFleePosition DIFFER(155v155): squares dz,dy,dx ((x+y)+z) or dy,dx,dz (z+(x+y)), retail dx,dz,dy | tried: C3DVector temp, float locals three orders, two groupings | next: try y+(x+z)-style groupings once more, else lane gap
+- 00683650 CTCCreatureOpinionOfHero::KnowsOfDeed DIFFER(129v127): deed-log component in eax then `mov ecx,eax` after `push esi`, retail ecx in both arms | tried: out-param GetInterface, accessor returning the out pointer, HasTC/GetTC unset-local accessor, early returns | next: lane gap: GetInterface component in ecx
+- 00749bf0 CTCCupboard::StartAnimation DIFFER(140v138): animation component in eax + `mov ecx,eax`, retail `mov ecx,[eax+4] ; jmp ; mov ecx,[esp+34h]` | tried: out-param, unset-local accessor, optimize("s"), declaration order | next: lane gap: GetInterface component in ecx (the landed CTCHive/CTCAnimatingObject retail use eax, so it is TU-dependent)
+- 0080c350 CTCDExplosion::IsDynamicExplosionFinished DIFFER(111v107): `mov eax,[g] ... mov [esp+10h],eax` after the pushes vs retail `mov ecx,[g] ; mov [esp+0Ch],ecx` at entry, and `xor ecx,ecx ; setg cl ; mov al,cl` vs `setg al` | tried: `<` vs `!=` loop (the `!=` form fixes the size test), declaration order, compare operand order | next: `return ExplosionEvolutionTimer > totalFrames ? true : false;` (bare setg; not tried within the 4-attempt budget)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
