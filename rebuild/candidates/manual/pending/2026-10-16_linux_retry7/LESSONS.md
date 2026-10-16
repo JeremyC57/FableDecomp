@@ -1,0 +1,2 @@
+- A reach that retail stores back into the float parameter slot before the call is `radius = member + radius + 15.0f` (assignment to the parameter), not a dead-slot temporary; VC7.1 still loads the parameter before the member for the sum whichever way it is written.
+- Pulling `this`-relative pointers into locals in a size body rotates `this` into esi and makes a scheduling-only differ worse.
