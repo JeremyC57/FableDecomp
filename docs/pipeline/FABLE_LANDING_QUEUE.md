@@ -197,6 +197,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand170` | Hand chunk 170 (CTCSmashableBase .. CTCTavernGameCardPairs): 28 of 40 byte-exact | - | 10 | 2 | landed; parked rows open |
 | `2026-10-15_linux_hand171` | Hand chunk 171 (CTCTavernGameCardPairs .. CTCWeapon): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand172` | Hand chunk 172 (CTCWeapon .. CThing): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand173` | Hand chunk 173 (CThing .. CThingFilter_HasScriptedControl): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -252,7 +253,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **653 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **662 parked rows** for the Fable retry pass.
 
 ### Skipped rows (15 open of 39 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1007,6 +1008,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 004c82a0 CThing::IsLevelPersistent DIFFER(91v104): retail stores GameStatePersisted into a frame byte (`push ecx`, `mov [esp+7],al`) with its own `mov al,1` exit; ours keeps it in al | tried: direct test, inline getter, accumulate-and-return, `return persistent` | next: a by-value bool handed to a `__forceinline` helper, or lane gap: dead bool frame byte
 - 004c8fb0 CThing::CopyTCIfExists DIFFER(116v114): component used as `this` via `mov eax,[eax+4] ; mov edx,[eax] ; push ; mov ecx,eax`, retail `mov ecx,[eax+4]` | tried: inline lookup, member/free/reference GetTC | next: lane gap: looked-up component as `this` (known)
 - 004c97b0 CThing::OnInitialActivate DIFFER(139v137): retail keeps the copied vector's begin in ebp (re-used by the final free) and end in ebx; ours re-reads _M_start from the frame | tried: plain loop, cached first/last, named component local, 16-byte CVectorMap copy | next: `__forceinline` dtor calling a deallocate(begin) helper, or iterate a `const` copy
+
+
+#### `2026-10-15_linux_hand173` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand173/differ/`)
+- 006772d0 CThingBaseDef::CThingBaseDef DIFFER(115v115): `mov byte [esi+42h],bl` stored after the zero dwords and `and dl,0E3h` placed before them (scheduling) | tried: init-list scalars, body scalars, CDefString(-1) body stores | next: write the +0x43 bit clears after the scalar assignments
+- 00663140 CThingCreatureBase::PreloadAnims DIFFER(117v117): ebx/edi swapped (holder vs entry pointer) | tried: holder, entry-pointer local, inline loop helper | next: lane gap: register choice
+- 006631c0 CThingCreatureBase::PreloadAnimation DIFFER(172v160): final def release `dec [ecx+4] ; jne` vs ours re-read / `add eax,4 ; dec esi ; mov [eax],esi` | tried: inline dtor, dtor local copy, hand release, Release() member | next: lane gap: CDefPointer release without re-read
+- 006632a0 CThingCreatureBase::IsCombatAnimationValid DIFFER(183v156): the three def releases as above | tried: inline dtor, Release() member | next: lane gap: CDefPointer release without re-read
+- 00663ba0 CThingCreatureBase::GetMovementSpeedFromCreatureMode DIFFER(154v151): optional mode manager in ecx (retail) vs eax + `mov ecx,eax` | tried: local, inline accessor, early return, out-param GetInterface | next: lane gap: component used as this
+- 00665510 CThingCreatureBase::UseAbility DIFFER(133v135): `mov eax,[eax+4] ; mov ecx,eax` component + esi/edi swap | tried: GetTC, component local, def-holder helper (fixed the dead-slot def) | next: lane gap: component used as this
+- 007f6f20 CThingCompare_BestCreatureToAttack::operator()<CThingCreatureBase> DIFFER(104v110): result-variable form hoists `xor eax,eax` (mask in cl); separate returns lay `return 0` inline | tried: 4 return arrangements | next: lane gap: block layout
+- 007f6fd0 CThingCompare_BestCreatureToAttack::operator()<CThingAICreature> DIFFER(104v110): same body as 0x7F6F20 | tried: goto, result variable | next: lane gap: block layout
+- 006a8560 CThingFilter_HasScriptedControl::operator() DIFFER(103v101): component `mov ecx,[eax+4] ; mov al,[ecx+18h]` vs ours eax/cl + `mov ecx,eax` | tried: GetTC, GetInterface, if-chain IsActive, reference local | next: lane gap: component used as this
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

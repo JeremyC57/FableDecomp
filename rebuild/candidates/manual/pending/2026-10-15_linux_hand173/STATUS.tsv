@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00878a80	RELOCATION_MATCH	119v119	PASS	NCameraModes::CProjectileWeapon::GetRotatedPosition (label CThing wrong)
+00830eb0	RELOCATION_MATCH	104v104	PASS	SetHasInformation
+00832840	RELOCATION_MATCH	141v141	PASS	CThingAICreature::OnCollision (vfunc_41)
+00833710	RELOCATION_MATCH	147v147	PASS	RequiresAutoPlacement (by-value CDefPointer temp + flag)
+006772d0	DIFFER	115v115	-	scheduling only: retail stores the +0x42 bit byte before the +0x44..+0x64 zero dwords and computes the +0x43 mask after 
+00432e60	RELOCATION_MATCH	137v137	PASS	CFrontEndDef::operator= (base chain inlined, __forceinline base ops)
+00453d46	RELOCATION_MATCH	129v129	PASS	CTattooDef::operator=
+004541df	RELOCATION_MATCH	105v105	PASS	CSnowTrollDef::operator=
+0045cc04	RELOCATION_MATCH	117v117	PASS	CAppearanceModifierDef::operator=
+004717c7	RELOCATION_MATCH	107v107	PASS	CAppearanceDef::operator= (pack-1 CEngineGraphic)
+004e0474	RELOCATION_MATCH	159v159	PASS	CTrophyDef::operator=
+004e1494	RELOCATION_MATCH	105v105	PASS	CKrakenTentacleDef::operator=
+004e2c52	RELOCATION_MATCH	141v141	PASS	CFishingDef::operator=
+004e2ecf	RELOCATION_MATCH	135v135	PASS	CExplosionDef::operator=
+004e316d	RELOCATION_MATCH	141v141	PASS	CKrakenDef::operator=
+004e4299	RELOCATION_MATCH	141v141	PASS	CQuestCardDef::operator=
+004e5c89	RELOCATION_MATCH	105v105	PASS	CTrapDef::operator=
+004e6f0b	RELOCATION_MATCH	105v105	PASS	CHeroMorphDef::operator= (__forceinline CVectorMap ops)
+004ebc16	RELOCATION_MATCH	147v147	PASS	CTavernGameCardBaseDef::operator=
+007f6f20	DIFFER	104v110	-	block layout: with separate returns VC7.1 lays the `return 0` inline after the first alive test (112 bytes, `je` sense f
+007f6fd0	DIFFER	104v110	-	same as 0x007F6F20 (identical body): result-variable form matches the block layout but hoists the zero result (`xor eax,
+007f9e70	RELOCATION_MATCH	131v131	PASS	GetThingCompareMultiplier (out-param GetInterface)
+0080a140	RELOCATION_MATCH	107v107	PASS	std::__median<CThing*,CThingCompare_BestForTargeting2> __fastcall (label wrong)
+00ad0100	MATCH	131v131	PASS	COptimisedFace implicit copy ctor (label wrong)
+0065da97	RELOCATION_MATCH	147v147	PASS	CThingCompare_Nearest::operator()<CThingAICreature>, /Os + y-off
+0051be20	RELOCATION_MATCH	147v147	PASS	vector<CMapInfo>::resize(n) (label wrong)
+00662210	MATCH	138v138	PASS	IsFreeToPerformAction
+00662550	RELOCATION_MATCH	98v98	PASS	AddToCreatureInteraction (operator= reads source words first)
+00663140	DIFFER	117v117	-	register swap only: retail keeps the sub-def holder in ebx and the entry pointer in edi, ours edi/ebx (same instructions
+006631c0	DIFFER	172v160	-	lane gap: only the final def release differs: retail `mov ecx,[esp+4] ; test ; je ; dec [ecx+4] ; jne ; call [vtbl+4]` (
+006632a0	DIFFER	183v156	-	lane gap (GOTCHAS retry 5: CDefPointer release without re-read): each of the three def releases is retail `mov ecx,[slot
+00663490	RELOCATION_MATCH	115v115	PASS	SetBodyReorienterActive (scoped_ptr reset)
+00663b10	RELOCATION_MATCH	132v132	PASS	GetShotAccuracyPercentage
+00663ba0	DIFFER	154v151	-	register choice only: retail holds the optional mode manager in ecx (`mov eax,[edi+24h] ; xor ecx,ecx ; test eax` ... `m
+00665510	DIFFER	133v135	-	lane gap: retail loads the component through `mov eax,[eax+4] ; mov ecx,eax` (ours `mov ecx,[eax+4]`) and keeps this in 
+00665df0	RELOCATION_MATCH	151v151	PASS	AutoPlaceNear (forceinline C3DVector copy ctor)
+00a35580	RELOCATION_MATCH	109v109	PASS	vector<pair<ulong,C3DMeshVolume>>::resize(n) (label wrong)
+00af7a10	RELOCATION_MATCH	122v122	PASS	vector<pair<EPSCType,CComponentInstance>>::resize(n) (label wrong)
+006a8300	RELOCATION_MATCH	111v111	PASS	CThingFilter_CanCollideWithThing::operator()
+006a8560	DIFFER	103v101	-	lane gap (component used as this): retail `mov ecx,[eax+4] ; mov al,[ecx+18h]` keeps the component in ecx for the inline
