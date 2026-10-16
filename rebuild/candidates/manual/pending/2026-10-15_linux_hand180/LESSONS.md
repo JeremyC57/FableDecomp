@@ -1,0 +1,8 @@
+# Lessons from chunk 180
+- Chunk ReadFromFile rows: wrap the inlined stream Read in by-value `ReadULong()/ReadFloat()/ReadBool()` helpers: their locals land in the dead stream-argument slot and an unused version read drops its fast-path copy (a named local or a parameter keeps the store). ReadBool = `unsigned char` read, `return v != 0`.
+- VC7.1 also uses escape knowledge from callee bodies defined earlier in the TU: a counted pointer filled by a same-TU getter defined above (auto_inline off) is treated as non-escaping (register `dec [reg] ; jne` release, its dtor zero stores dropped, words cached across calls), while one filled by another TU's function keeps the re-read release and zero stores. Check the callee's address range: adjacent = same TU, define it above.
+- Counted-pointer `operator=` that reads the source's count and object into locals before the compare matches retail's `mov esi,[eax+4] ; cmp ; mov ebp,[eax]`; a raw-pointer ctor that re-reads Object (`Count = Object ? new Block(Object) : 0`) gives retail's `mov ecx,[esp+8]` after the block new.
+- Two conversion forms: an upcast copy (`Object(o.Object), Count(o.Count)`, add-ref) and a downcast that adopts only a live block (`Object(0), Count(0) { if (o.Count) ... }`).
+- `if (x)` on an unsigned count before a loop/call emits `je`; retail's `jbe` / `ja` come from `x > 0`.
+- A struct holding C3DVector members copies dword by dword (no lea) when C3DVector has a memberwise user copy ctor; arrays still copy as lea blocks.
+- Inline storage setters (`SetBuffer(data, count)`) stop VC hoisting a later member compare above the stores.

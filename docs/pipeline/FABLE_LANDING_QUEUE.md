@@ -204,6 +204,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand177` | Hand chunk 177 (CV_StatueMasterScript .. CVsyncCallbackTimer): 26 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand178` | Hand chunk 178 (CWParsedItem .. CWorldMap): 32 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand179` | Hand chunk 179 (CWorldMap .. CZoomingComponent): 28 of 30 byte-exact | - | 2 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand180` | Hand chunk 180 (C2DLineF .. C3DQuadricBasedMeshOptimiser): 29 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -261,7 +262,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-16_linux_retry6` | Retry batch 6 (Fable 5.1, 2026-10-16): 8 parked rows from chunks 165-179 | - | 8 | 0 | landed; parked rows open |
 | `2026-10-16_linux_retry7` | Retry batch 7 (Fable 5.1, 2026-10-16): 8 near-miss parked rows from chunks 142-154 | - | 8 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **720 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **731 parked rows** for the Fable retry pass.
 
 ### Skipped rows (16 open of 41 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1091,6 +1092,20 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 #### `2026-10-15_linux_hand179` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand179/differ/`)
 - 004fcb30 CWorldMap::GetMinPlayerDistanceFromMap DIFFER(128v127): retail loads only Maps.begin into edi before the two __ftol2 calls and forms `lea ecx,[edi+map*72]` after them, and the Set test is `lea esi,[ecx+eax] ; cmp byte [esi],0`; ours forms the whole element address before the calls and uses `mov esi ; add esi,eax` | tried: named block coord, temporary coord, non-const member, explicit C2DCoordI(const C3DVector&) ctor + named CMapInfo& | next: `const CMapInfo* maps = Maps.begin();` before the coord, then `maps[map].Area.GetDistanceTo(C2DCoordI(info.Pos))`.
 - 004ff310 CWorldMap::GetAllLoadedMapsInArea DIFFER(124v123): registers match; retail homes the long->unsigned long push_back temporary and the empty __true_type tag both in the dead `maps` parameter slot with no frame, ours opens a 4-byte frame (`push ecx`) for the temporary | tried: named unsigned long local, `*it` twice (conversion temp), named long local, __forceinline by-value helper | next: lane gap: temporary in a dead argument slot (function has a named local).
+
+
+#### `2026-10-15_linux_hand180` (11 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand180/differ/`)
+- 00a57960 C2DLineF::GetInfiniteLineLineIntersection DIFFER(210v210): frame 0x14 v 0x20, y2/x4 copy slots, x2*y1 / x4*y3 load order | tried: float locals, member expressions, C2DVector p1..p4, p2/p4 only (retail frame, full copies) | next: p2/p4 with a __forceinline memberwise copy ctor
+- 0098b860 CShaderRenderManager::CreateResource DIFFER(242v205): __false_type tag in the live hidden-result slot (retail sub esp,8), counted words kept in edi/esi | tried: inline push_back model | next: lane gap: empty tag at a still-live argument slot
+- 00a4e250 C3DAnimation2::GetRotationAtTime DIFFER(171v171): quaternion X,Y,Z,W in edi,edx,ecx,esi v ours ecx,edx,esi,edi | tried: rotation local before/after duration, named identity | next: lane gap: register rotation
+- 00a3c1a0 C3DAnimationBlendState::MakeOwnCopyOfData DIFFER(182v189): retail re-reads and null-tests Data before `IVRefCount > 1`, pushes the copy source via edx | tried: `Data && n > 1`, null-safe GetRefCount, reinterpret re-read | next: CIVCountedPointer member accessor VC cannot value-number
+- 00a26c60 C3DAnimationInfo::GetAnimation DIFFER(224v224): key store before Data reload, `lea esi,[eax+1Ch]` v `add esi,1Ch` | tried: map reference, inline GetAnimations(), by-value Find | next: lane gap: scheduling
+- 00c6adb0 CReverbSettings00c6adb0::SetDefaults DIFFER(170v173): 0.04f kept as two immediates, zero stores in address order | tried: (float)0.04, optimize("s") | next: lane gap: constant CSE scheduling
+- 00a8b5f0 C3DMesh2::GetUsedBones DIFFER(183v194): ebx pushed at entry, second induction pointer for &it->BoneIndex | tried: begin/end walk | next: key/value pair walk (it->second.BoneIndex)
+- 00ac09a0 C3DMeshFileSubMeshChunk::FindNextBone DIFFER(207v209): found object loaded before the null-count je (ours sinks it) | tried: cast ctor, AdoptCast, count/object locals, else-arm | next: lane gap: load sinking
+- 00a361a0 C3DMeshObject::GetHelperPointPositionStatic DIFFER(187v193): X row first, (z*Z + y*Y) + x*X + P, x kept on FPU | tried: reordered named rows, member-by-member result | next: lane gap: x87 term order
+- 00a2e760 C3DMeshStats::AllocateBuffers DIFFER(183v183): `add ebp,eax` v `add eax,ebp` for the volume pointer | tried: direct stores, cast sum, inline SetBuffer (fixed scheduling) | next: SetBuffer + `(unsigned char*)(dummyBytes + (unsigned long)base)`
+- 00a8eda0 C3DPrimitive2::SetupVertexBuffer DIFFER(166v165): `test byte ptr [esp+1Ch],1` v `mov bl ; mov edx,1 ; test dl,bl` | tried: chained/separate scale stores, buffer local | next: lane gap: in-place flag test
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

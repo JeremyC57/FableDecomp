@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a57960	DIFFER	210v210	-	C2DLineF::GetInfiniteLineLineIntersection(const C2DLineF&, C2DVector&) const: frame 0x14 v 0x20 and slot placement of the y2/x4 copies (retail homes Point2 at +0x18 and other.Point2 at +0x10 as 8-byte pairs); the x2*y1 / x4*y3 o
+0098b860	DIFFER	242v205	-	CShaderRenderManager::CreateResource(): lane gap: the __false_type tag of _M_insert_overflow sits in retail's still-live hidden-result slot (sub esp,8) where ours opens a third frame word; w
+00a98e60	RELOCATION_MATCH	224v224	PASS	C3DAnimFile::C3DAnimFile()
+00a9ad80	RELOCATION_MATCH	224v224	PASS	C3DMeshFile::C3DMeshFile()
+00ab0790	RELOCATION_MATCH	224v224	PASS	C3DAnimFileBoneMaskChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+00a99420	RELOCATION_MATCH	240v240	PASS	C3DAnimFileLoader::LoadAnimFile(CDataInputStream&)
+00ab0130	RELOCATION_MATCH	176v176	PASS	C3DAnimFileObjectChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+00a98af0	RELOCATION_MATCH	240v240	PASS	C3DAnimFileRootChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+00a99610	RELOCATION_MATCH	192v192	PASS	C3DAnimFileRootChunk::GetNonLoopingDuration() const
+00aa4570	RELOCATION_MATCH	224v224	PASS	C3DAnimFileXAllocationSizeChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+00a4e250	DIFFER	171v171	-	C3DAnimation2::GetRotationAtTime(float): register rotation only: retail keeps the result quaternion's X,Y,Z,W in edi,edx,ecx,esi, ours in ecx,edx,esi,edi (clamp, call and both copy arms other
+00a4ee10	RELOCATION_MATCH	176v176	PASS	C3DAnimation2::C3DAnimation2()
+00a3c1a0	DIFFER	182v189	-	C3DAnimationBlendState::MakeOwnCopyOfData(): retail re-reads Data and re-tests it for null before the shared-count compare (mov eax,[edi+4] ; cmp eax,ebx ; je) and pushes the copy source through 
+00a26c60	DIFFER	224v224	-	C3DAnimationInfo::GetAnimation(const C3DMesh2&) const: scheduling only: retail stores the mesh key into the dead mesh slot before re-reading Data and forms &Animations with lea esi,[eax+1Ch]; ours loads Da
+00a4cdd0	RELOCATION_MATCH	198v198	PASS	C3DAnimationSequence::ReadCompressedFromFile(CDataInputStream&, unsigned long, C3DAnimationSequenceData*, CSimpleMemoryPool*)
+00adecc0	RELOCATION_MATCH	176v176	PASS	C3DBoundingBox::IntersectsSolid(const C3DBoundingSphere&) const
+00a42ce0	RELOCATION_MATCH	192v192	PASS	CLipSyncDataBank::~CLipSyncDataBank()
+00c6adb0	DIFFER	170v173	-	CReverbSettings00c6adb0::SetDefaults(): constant/zero scheduling: retail keeps 0.04f as two immediates (+0x30, +0x44) and stores the shared edx zero in address order (+8/+0xc after +4, +0x40
+00a8b5f0	DIFFER	183v194	-	C3DMesh2::GetUsedBones(CArray<bool>&) const: retail pushes ebx at entry (ours delays it into the primitive loop: lane gap) and strength-reduces the map walks into a second induction pointer (&it-
+00ac03f0	RELOCATION_MATCH	208v208	PASS	C3DMeshFileMapChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+00ac02d0	RELOCATION_MATCH	224v224	PASS	C3DMeshFileMaterialExtChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+00a9b460	RELOCATION_MATCH	240v240	PASS	C3DMeshFileRootChunk::CountVertices() const
+00a9b550	RELOCATION_MATCH	240v240	PASS	C3DMeshFileRootChunk::CountTriangles() const
+00ac09a0	DIFFER	207v209	-	C3DMeshFileSubMeshChunk::FindNextBone(const CCountedPointer<const C3DMeshFileBoneChunk>&) const: retail loads the found object (mov eax,[eax]) before the null-count je; ours sinks the load into the taken branch (mov ebx,[eax]); everything else mat
+00aa5720	RELOCATION_MATCH	208v208	PASS	C3DMeshFileXAnimatedPrimitiveBlockChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const
+00aa5370	RELOCATION_MATCH	240v240	PASS	C3DMeshFileXAnimatedPrimitiveChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+00aa52b0	RELOCATION_MATCH	192v192	PASS	C3DMeshFileXMappingInfoChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&)
+00680950	RELOCATION_MATCH	240v240	PASS	CSimVoice::TransferBinaryIn(CMemoryDataInputStream*)
+007020d0	RELOCATION_MATCH	238v238	PASS	COpinionSet::TransferBinaryIn(CMemoryDataInputStream&)
+00aa57f0	RELOCATION_MATCH	208v208	PASS	C3DMeshFileXUVTangentChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const
+00a249a0	RELOCATION_MATCH	208v208	PASS	C3DMeshInfo::RemoveLOD(unsigned long, bool) const
+00a2a400	RELOCATION_MATCH	178v178	PASS	C3DMeshInfo::C3DMeshInfo(const C3DMeshInfo&)
+00a361a0	DIFFER	187v193	-	C3DMeshObject::GetHelperPointPositionStatic(const CCharString&, long) const: x87 order: retail computes the X row first and each row as (z*Z + y*Y) + x*X + P, keeping the helper point's x on the FPU (fst) and copying y twice; o
+00a2e760	DIFFER	183v183	-	C3DMeshStats::AllocateBuffers(unsigned long, unsigned long, unsigned long): one commuted add: retail forms the volume pointer as add ebp,eax (dummy bytes + dummy data, result in ebp), ours add eax,ebp. The inline SetBuffer() s
+00a8eda0	DIFFER	166v165	-	C3DPrimitive2::SetupVertexBuffer(EVertexType, unsigned long, unsigned long, unsigned long): lane gap: retail tests the flag argument in place (test byte ptr [esp+1Ch],1) where ours builds mov bl,[esp+1Ch] ; mov edx,1 ; test dl,bl, which also 
+00a90f00	RELOCATION_MATCH	192v192	PASS	C3DPrimitive2::RemapBoneIndices(map<unsigned long, unsigned long>&)
+00a914b0	RELOCATION_MATCH	176v176	PASS	C3DPrimitive2::UploadToVertexBufferAnimated(unsigned long)
+00a91560	RELOCATION_MATCH	224v224	PASS	C3DPrimitive2::LoadVertexBuffer(CMemoryDataInputStream&, unsigned long, unsigned long, unsigned long, CVertexCompressionParams&)
+00a931f0	RELOCATION_MATCH	208v208	PASS	C3DPrimitive2::UploadToVertexBufferStatic(unsigned long)
+00aa4210	RELOCATION_MATCH	211v211	PASS	C3DQuadricBasedMeshOptimiser::BeginOptimisation(C3DMeshFile&, float)
