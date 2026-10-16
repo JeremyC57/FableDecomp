@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0087ebd0	DIFFER	218v218	-	register choice only: retail holds &PCreature in ebp (push ebp ; lea ebp,[esi+8]), ours ebx
+0087fd20	RELOCATION_MATCH	205v205	PASS	CCombatAction_KickThingOnGround::CCombatAction_KickThingOnGround(CThingCreatureBase* cr
+0087ecb0	RELOCATION_MATCH	185v185	PASS	CCombatAction_StabThing::Initialise()
+006e8c30	RELOCATION_MATCH	166v166	PASS	CCombatManager::ResetDefenderAttackPattern(CCombatantInfo& info, CDefPointer<const CAtt
+006e9d90	DIFFER	171v171	-	frame only: the two UID key copies get two 8-byte slots (sub esp,10h) where retail shares one (sub esp,8); every instruc
+006ea450	RELOCATION_MATCH	240v240	PASS	CCombatManager::SetAttackerAsReadyToAttack(const CThingCreatureBase& creature, bool kee
+006ea540	RELOCATION_MATCH	171v171	PASS	CCombatManager::SetCreatureAsAttemptedToPerformedAction(const CThingCreatureBase& creat
+00909fd0	DIFFER	211v211	-	register rotation only: second AddAction argument `lea ecx` (ours eax) and the count-block delete `mov edx` (ours ecx)
+009067b0	RELOCATION_MATCH	234v234	PASS	CCombatSequence_BanditAttackNear::OnCreate()
+00906c60	DIFFER	177v177	-	register rotation only: retail loads target/owner into eax/ecx and the string address into edx, ours ecx/edx and eax
+00906e40	DIFFER	177v177	-	register rotation only (same as 0x00906C60): target/owner eax/ecx + string address edx in retail, ours ecx/edx + eax
+00909070	DIFFER	213v206	-	retail caches the def pointer in edi right after GetSubDef and reuses it for the value read and the final release (dec [
+00907010	DIFFER	200v200	-	register rotation only (as 0x00909FD0): AddAction `lea ecx` (ours eax), count-block delete `mov edx` (ours ecx)
+00908c80	DIFFER	211v211	-	register rotation only (same as 0x00909FD0): second AddAction `lea ecx` (ours eax), delete `mov edx` (ours ecx)
+009091d0	DIFFER	231v231	-	register rotation only (as 0x00906C60): string address/owner/target registers and the later lea/delete registers rotated
+009098e0	RELOCATION_MATCH	204v204	PASS	CCombatSequence_WillForcePush::IsValid()
+006f4e40	RELOCATION_MATCH	237v237	PASS	CCombatantMap::erase(iterator first, iterator last)
+006f4d00	RELOCATION_MATCH	232v232	PASS	CCombatantMap::Insert
+007483e0	DIFFER	235v235	-	frame + x87 order: retail reserves 12 bytes (sub esp,0Ch; 4 unused beyond the spilled offset) and squares the spilled of
+0052ea30	DIFFER	181v181	-	scheduling only: retail loads both delta dwords before `sub esp,8` and stores the converted X after the UI-scale push; o
+0052eaf0	DIFFER	181v181	-	scheduling only (as 0x0052EA30): delta Y load and converted-X store placement
+0052ee00	DIFFER	185v192	-	structure/registers: retail keeps the target position in the frame (eax/ecx copy) and tests !parent and IsPositionAbsolu
+00530780	RELOCATION_MATCH	173v173	PASS	NUISystem::CComponent::FindChild(CCharString name)
+00530830	RELOCATION_MATCH	187v187	PASS	NUISystem::CComponent::FindChildForward(CCharString name)
+005308f0	DIFFER	184v189	-	register/loop shape: retail keeps name.PStringData in edi for the whole body (loaded before the first compare), caches f
+00996990	RELOCATION_MATCH	162v162	PASS	CCompressedMemoryDataInputStream::CCompressedMemoryDataInputStream(const void* source, 
+00996a40	RELOCATION_MATCH	167v167	PASS	CCompressedMemoryDataInputStream::OpenMemorySource(const void* source, long sourceSize,
+00a3aa40	RELOCATION_MATCH	192v192	PASS	CCompressorZlib::InternalCompress(const void* source, unsigned long sourceSize, void* d
+00434290	RELOCATION_MATCH	167v167	PASS	CConfigOptionsDefaultsDef::Transfer(CPersistContext& context)
+009eaff0	DIFFER	219v221	-	(1) prologue order: retail copies CurrentLine into the temporary before forming ToLower's hidden result address, ours fo
+009ea3c0	RELOCATION_MATCH	206v206	PASS	CConsoleVariable::GetHelp()
+00a75340	DIFFER	176v176	-	X-term product operands swapped (ours fld [ecx];fmul [edi], retail fld [edi];fmul [ecx])
+00a754e0	RELOCATION_MATCH	182v182	PASS	CContainmentVolume::LoadBinary(CDataInputStream& stream, CMovableResourceMemoryPool* po
+00a755c0	DIFFER	174v174	-	block placement: retail falls through into the shared return-false block right after the AllocateResource call (jne succ
+00dced10	RELOCATION_MATCH	212v212	PASS	CCrateTeamMember::IsThingCarryingCrate(const CScriptThing& thing)
+00694d10	RELOCATION_MATCH	181v181	PASS	CCreatureActionBase::Initialise()
+00843fc0	DIFFER	206v207	-	zero-extension only: retail `xor edx,edx ; mov dl,[edi+0ACh]` (scheduled after the manager reload) for the LoadResources
+008cc8e0	DIFFER	238v214	-	frame + def caching: retail shares one 4-byte slot (push ecx) between both string locals and the zeroed def pointer and 
+008c92c0	RELOCATION_MATCH	235v235	PASS	CCreatureAction_BanditKingGetHit::FinishAction()
+008c91e0	RELOCATION_MATCH	217v217	PASS	CCreatureAction_BanditKingStuckGetHit::FinishAction()

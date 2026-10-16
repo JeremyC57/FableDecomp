@@ -240120,6 +240120,153 @@ $catalog = @(
         TestSource = '00/e8/CVFisticuffsClubScript_ResetRegion00e82010_00e82010_test.cpp'
         PassPattern = '00e82010_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00434290'
+        Module = 'CConfigOptionsDefaultsDef'
+        Source = '00/43/CConfigOptionsDefaultsDef_Transfer_00434290.cpp'
+        TestSource = '00/43/CConfigOptionsDefaultsDef_Transfer_00434290_test.cpp'
+        PassPattern = '00434290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530780'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_FindChild_00530780.cpp'
+        TestSource = '00/53/NUISystemCComponent_FindChild_00530780_test.cpp'
+        PassPattern = '00530780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530830'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_FindChildForward_00530830.cpp'
+        TestSource = '00/53/NUISystemCComponent_FindChildForward_00530830_test.cpp'
+        PassPattern = '00530830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00694d10'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_Initialise_00694d10.cpp'
+        TestSource = '00/69/CCreatureActionBase_Initialise_00694d10_test.cpp'
+        PassPattern = '00694d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e8c30'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_ResetDefenderAttackPattern_006e8c30.cpp'
+        TestSource = '00/6e/CCombatManager_ResetDefenderAttackPattern_006e8c30_test.cpp'
+        PassPattern = '006e8c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ea450'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_SetAttackerAsReadyToAttack_006ea450.cpp'
+        TestSource = '00/6e/CCombatManager_SetAttackerAsReadyToAttack_006ea450_test.cpp'
+        PassPattern = '006ea450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ea540'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_SetCreatureAsAttemptedToPerformedAction_006ea540.cpp'
+        TestSource = '00/6e/CCombatManager_SetCreatureAsAttemptedToPerformedAction_006ea540_test.cpp'
+        PassPattern = '006ea540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f4d00'
+        Module = 'CCombatantMap::Insert -- STLport _Rb_tree<unsigned __int64, pair<const unsigned __int64, CCombatantInfo>>'
+        Source = '00/6f/CCombatantMapInsertSTLportRbtreeunsignedint64pairconstunsignedint64CCombatantInf_Minsert_006f4d00.cpp'
+        TestSource = '00/6f/CCombatantMapInsertSTLportRbtreeunsignedint64pairconstunsignedint64CCombatantInf_Minsert_006f4d00_test.cpp'
+        PassPattern = '006f4d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f4e40'
+        Module = 'CCombatantMap'
+        Source = '00/6f/CCombatantMap_erase_006f4e40.cpp'
+        TestSource = '00/6f/CCombatantMap_erase_006f4e40_test.cpp'
+        PassPattern = '006f4e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087ecb0'
+        Module = 'CCombatAction_StabThing'
+        Source = '00/87/CCombatActionStabThing_Initialise_0087ecb0.cpp'
+        TestSource = '00/87/CCombatActionStabThing_Initialise_0087ecb0_test.cpp'
+        PassPattern = '0087ecb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087fd20'
+        Module = 'CCombatAction_KickThingOnGround'
+        Source = '00/87/CCombatActionKickThingOnGround_CCombatActionKickThingOnGround_0087fd20.cpp'
+        TestSource = '00/87/CCombatActionKickThingOnGround_CCombatActionKickThingOnGround_0087fd20_test.cpp'
+        PassPattern = '0087fd20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c91e0'
+        Module = 'CCreatureAction_BanditKingStuckGetHit'
+        Source = '00/8c/CCreatureActionBanditKingStuckGetHit_FinishAction_008c91e0.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingStuckGetHit_FinishAction_008c91e0_test.cpp'
+        PassPattern = '008c91e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c92c0'
+        Module = 'CCreatureAction_BanditKingGetHit'
+        Source = '00/8c/CCreatureActionBanditKingGetHit_FinishAction_008c92c0.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingGetHit_FinishAction_008c92c0_test.cpp'
+        PassPattern = '008c92c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009067b0'
+        Module = 'CCombatSequence_BanditAttackNear'
+        Source = '00/90/CCombatSequenceBanditAttackNear_OnCreate_009067b0.cpp'
+        TestSource = '00/90/CCombatSequenceBanditAttackNear_OnCreate_009067b0_test.cpp'
+        PassPattern = '009067b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009098e0'
+        Module = 'CCombatSequence_WillForcePush'
+        Source = '00/90/CCombatSequenceWillForcePush_IsValid_009098e0.cpp'
+        TestSource = '00/90/CCombatSequenceWillForcePush_IsValid_009098e0_test.cpp'
+        PassPattern = '009098e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00996990'
+        Module = 'CCompressedMemoryDataInputStream'
+        Source = '00/99/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00996990.cpp'
+        TestSource = '00/99/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00996990_test.cpp'
+        PassPattern = '00996990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00996a40'
+        Module = 'CCompressedMemoryDataInputStream'
+        Source = '00/99/CCompressedMemoryDataInputStream_OpenMemorySource_00996a40.cpp'
+        TestSource = '00/99/CCompressedMemoryDataInputStream_OpenMemorySource_00996a40_test.cpp'
+        PassPattern = '00996a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ea3c0'
+        Module = 'CConsoleVariable'
+        Source = '00/9e/CConsoleVariable_GetHelp_009ea3c0.cpp'
+        TestSource = '00/9e/CConsoleVariable_GetHelp_009ea3c0_test.cpp'
+        PassPattern = '009ea3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3aa40'
+        Module = 'CCompressorZlib'
+        Source = '00/a3/CCompressorZlib_InternalCompress_00a3aa40.cpp'
+        TestSource = '00/a3/CCompressorZlib_InternalCompress_00a3aa40_test.cpp'
+        PassPattern = '00a3aa40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a754e0'
+        Module = 'CContainmentVolume'
+        Source = '00/a7/CContainmentVolume_LoadBinary_00a754e0.cpp'
+        TestSource = '00/a7/CContainmentVolume_LoadBinary_00a754e0_test.cpp'
+        PassPattern = '00a754e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dced10'
+        Module = 'CCrateTeamMember'
+        Source = '00/dc/CCrateTeamMember_IsThingCarryingCrate_00dced10.cpp'
+        TestSource = '00/dc/CCrateTeamMember_IsThingCarryingCrate_00dced10_test.cpp'
+        PassPattern = '00dced10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
