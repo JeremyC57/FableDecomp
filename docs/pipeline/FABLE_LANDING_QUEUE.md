@@ -193,6 +193,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand166` | Hand chunk 166 (CTCInventoryBase .. CTCKraken): 32 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand167` | Hand chunk 167 (CTCKraken .. CTCOwnedEntity): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand168` | Hand chunk 168 (CTCParticleAttachmentTracker .. CTCQuestCard): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand169` | Hand chunk 169 (CTCQuestCard .. CTCSmashableBarrier): 25 of 40 byte-exact | - | 14 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -248,15 +249,16 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **613 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **627 parked rows** for the Fable retry pass.
 
-### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (12 open of 36 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
 | `0042e3ee` | prefix | open | 0042e3ee:1441 | `2026-10-15_linux_hand149` | prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function |
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
+| `007eeb20` | multi | open | 007eeb20:86 007eeb80:6 007eeb90:10 007eeba0:4 | `2026-10-15_linux_hand169` | row holds Smash plus three more functions after int3 padding (0x007EEB80, 0x007EEB90, 0x007EEBA0) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
 | `0080aad1` | single | open | 0080aad1:106 | `2026-10-15_linux_hand160` | not a function: the else-branch tail of 0x0080AA60 (je 0x80AAD1; pops edi/esi it never pushed) |
 | `009f5d70` | prefix | open | 009f5d70:156 | `2026-10-15_linux_hand143` | CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B); fu |
@@ -947,6 +949,23 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 008e5750 CTCPhysicsStandard::IsCollisionWithThingToCauseResponse DIFFER(129v127): component `mov eax,[eax+4] ... mov ecx,eax` before the tail jump | tried: GetTC()->F() (no tail call), filter local, GetInterface out-pointer | next: lane gap: looked-up component used as this loaded into ecx
 - 007025a0 CTCQuestCard::GetRegionName DIFFER(134v131): inlined strcmp(text,"")==0 gives `sete al ; test al,al` where retail branches on the repe cmpsb flags | tried: if/return and ternary operator== (inline, __forceinline), nested ifs | next: an operator== whose null arm is `return !*text;`-style or an intrinsic-free compare
 - 00729bc0 CTCActionUseScriptedHook::ResolveEntranceConnectedTo DIFFER(111v111): `add esi,20h` scheduled before the temp's GetPItem call | tried: temporary assignment, member-reference local | next: lane gap: scheduling (same as 007446b0)
+
+
+#### `2026-10-15_linux_hand169` (14 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand169/differ/`)
+- 005e3df0 CTCQuestCompletionUI::Deactivate DIFFER(123v119): ours `mov eax,ecx ; mov cl,[eax+0Ch]` after the cookie load, AddGameEvent arg `lea ecx` after the push | tried: plain, optimize("s"), named component local, static event helper | next: lane gap: /GS parameter caching
+- 00639930 CTCRegionDisplay::FinishShowingRegionName DIFFER(115v115): fcompp operand load order (retail `fild elapsed` first) | tried: `>`, `!(<=)`, `!(<)`, `<` with the difference first | next: `elapsed < displayFrames - fadeFrames`
+- 00713740 CTCScriptedControl::vfunc_13 DIFFER(144v135): flag store `mov cl,[eax+94h] ; add eax,94h ; or cl,1 ; mov [eax],cl` vs `or byte ptr [eax+94h],1` | tried: char |=, char/long bitfield, optimize("s") | next: pointer-returning GetAnimation or inline setter on CAnimateThing
+- 00760870 CTCShapeManager::IsPosInAnyShape DIFFER(142v153): compares match; retail 8-byte frame (Y copy), early esi/edi pushes, loop `cmp edi,[ebx+10h]` re-read | tried: || chain, by-value C2DVector &&, (x,y) if-chain, (x,y) && with `<` | next: Contains(C2DVector p) by value with the &&/`<` form
+- 00762580 CTCShapeManager::AddNewShape DIFFER(181v150): retail caches by-value param words in esi/ebx across calls taking their address | tried: default, /GS, /Oa | next: lane gap: parameter caching in callee-saved registers
+- 007723f0 CTCShop::IsShopKeeperNearerThan DIFFER(153v153): hero edi / keeper ebp swapped; dx squared first in retail | tried: locals, __forceinline Distance2DSquared helper, both sum orders | next: lane gap: x87 sum-of-squares term order
+- 00772610 CTCShop::GetName DIFFER(166v151): late zero stores of both out pointers, def straight into esi, hit-arm release `mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax` | tried: raw pointers, CDefPointer outs | next: lane gap: mov/dec/mov release; try a by-value GetDef helper
+- 007726b0 CTCShop::GetMaxStock (reads Quantity) DIFFER(93v101): bare dword `fistp [ebp+8]` rounding | tried: (long) cast | next: lane gap: inline-asm fistp helper
+- 00772720 CTCShop::GetMaxStock DIFFER(93v101): same fistp rounding | tried: (long) cast | next: lane gap: inline-asm fistp helper
+- 00773aa0 CTCShop::IsShopKeeperAvailable DIFFER(118v118): component in eax / flag in cl vs ecx / al | tried: direct, named local, inline GetTC, single condition | next: scheduling artefact
+- 00773c00 CTCShop::SetStockState DIFFER(142v142): retail loads the component into ecx before `cmp edi,1 ; setne dl ; push edx` | tried: direct, named local, inline GetTC | next: lane gap: component `this` loaded before the argument
+- 007bdac7 CTCShotDefinitionDrainLife::UpdateCollision DIFFER(157v159): retail target in dead arg slot, hit in edi + [ebp-4] copy, finished in ebx, kill arm first | tried: locals, declaration swap, explicit template args, reference temporary | next: hit as derived pointer passed to IS_THING_ALIVE<CThing*> (converted temporary, 0x64B668)
+- 007be05c CTCShotDefinitionDrainLife::SetSoulEffect DIFFER(154v157): effect/emitter frame slots swapped ([ebp+8]/[ebp-4]) | tried: plain, top-declared emitter, named CCharString, nested blocks | next: lane gap: dead-argument-slot homing of a named local
+- 007868a0 CTCSkeletalMorph::vfunc_4 DIFFER(164v159): retail shares one frame word between the out pointer and each name string, keeps def in esi for loop and release | tried: plain, scoped-out helper, block, string block | next: CDefHolder release-by-destructor form of 0x00750240
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

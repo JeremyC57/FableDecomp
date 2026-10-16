@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007026a0	RELOCATION_MATCH	114v114	PASS	ctor, GetSubDef into PDef member
+005e3df0	DIFFER	123v119	-	/GS this kept in eax (lane gap /GS parameter caching)
+00625950	RELOCATION_MATCH	132v132	PASS	DrawPreparePrimitivesForRendering slot 11
+00639930	DIFFER	115v115	-	fcompp operand order; next form elapsed < display-fade
+006aecf0	RELOCATION_MATCH	137v137	PASS	copy-tested list erase
+0072a570	RELOCATION_MATCH	155v155	PASS	rotate orientation copy
+00712ce0	RELOCATION_MATCH	130v130	PASS	two-level inline CCharString ==
+00712d70	RELOCATION_MATCH	123v123	PASS	twin of TerminateActionByName
+00713740	DIFFER	144v135	-	flag or-byte store through returned reference
+007137d0	RELOCATION_MATCH	126v126	PASS	counted ptr temp + inline push_back, prev in a local
+00713850	RELOCATION_MATCH	125v125	PASS	GetCurrentAction inline, ptr = CIntelligentPointer(0)
+00713910	RELOCATION_MATCH	109v109	PASS	erase inside the null test
+00760870	DIFFER	142v153	-	bounds compares match; 8-byte by-value frame + loop end re-read
+00760910	RELOCATION_MATCH	121v121	PASS	counted ptr operator-> twice
+00762580	DIFFER	181v150	-	by-value param words cached in esi/ebx (lane gap)
+00762d80	RELOCATION_MATCH	135v135	PASS	CreateShape result built in AddNewShape arg area
+00762f50	RELOCATION_MATCH	108v108	PASS	split twin
+00762fd0	RELOCATION_MATCH	141v141	PASS	snap twin, size()==1
+00772120	RELOCATION_MATCH	124v124	PASS	swap-with-last + pop_back tail
+007723f0	DIFFER	153v153	-	hero/keeper register swap + x87 square order (lane gap)
+00772610	DIFFER	166v151	-	late zero stores + mov/dec/mov release (lane gap)
+007726b0	DIFFER	93v101	-	inline-asm fistp rounding (lane gap); reads Quantity, label GetMaxStock wrong
+00772720	DIFFER	93v101	-	inline-asm fistp rounding (lane gap)
+00773aa0	DIFFER	118v118	-	eax/ecx register choice for the component
+00773c00	DIFFER	142v142	-	component ecx load before the bool arg (lane gap)
+00799350	RELOCATION_MATCH	151v151	PASS	< compares, shared -1 push
+007bf3d0	RELOCATION_MATCH	139v139	PASS	packed TargetPos, GetPhysics out-ptr
+007bdac7	DIFFER	157v159	-	local homing (target arg slot, hit in edi + frame copy)
+007be05c	DIFFER	154v157	-	effect/emitter frame slot swap (arg slot homing)
+007bdcfc	RELOCATION_MATCH	123v123	PASS	IS_THING_ALIVE temp binding, fld1 local
+004dc9d2	RELOCATION_MATCH	104v104	PASS	novtable dtor, forceinline handle GetRefCount
+004de44d	RELOCATION_MATCH	101v101	PASS	is ~CTCStockItem (label wrong)
+00750240	RELOCATION_MATCH	130v130	PASS	is CTCChest::GetOpenAnimationForCreature; def holder dtor after RVO string
+006bf500	RELOCATION_MATCH	105v105	PASS	pair-map Add (label wrong)
+007865e0	RELOCATION_MATCH	96v96	PASS	ctor, Reset(new)
+007868a0	DIFFER	164v159	-	out-pointer/string frame-slot sharing + array pointer strength reduction
+00a42b80	RELOCATION_MATCH	118v118	PASS	is CLipSyncDataBank ctor (label wrong)
+00cb72a0	RELOCATION_MATCH	105v105	PASS	pair-map Add (label wrong)
+0092c3b0	RELOCATION_MATCH	99v99	PASS	fabs && chain ? true : false
+007eeb20	SKIP	-v144	-	row holds Smash plus three more functions after int3 padding (0x007EEB80, 0x007EEB90, 0x007EEBA0)
