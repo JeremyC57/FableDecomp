@@ -1,0 +1,8 @@
+# Chunk 172 lessons
+- The `mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax ; jne` CDefPointer release comes from the CDefPointer dtor calling the def's inline `Release() { if (--RefCount == 0) Destroy(); }`; writing the decrement in the dtor gives `dec eax` before the next field load (and in a TU where retail has `dec [ecx+4]` the same model still matches).
+- A CCharString symbol per arm plus the target pointer (`bank = g->TextBank`) read into a named local AFTER the symbol keeps each arm's ctor call; with the bank inline VC7.1 merges the two ctors into one call over a selected string.
+- VC7.1 canonicalises a single `a+b+c+d+e+f` float expression by operand address; retail's order is reproduced with `sum = a; sum += b; ...` statements.
+- DirectShow strmbase is linked into Fable.exe (CTextureRenderer = DX SDK Texture3D9 pattern): strmbase methods compile with `this` at the declaring interface subobject (IBaseFilter +0xC, IAMovieSetup +0x10); `riid == IID_x` is the memcmp intrinsic (`repe cmpsd`); CAutoLock gives the /EHsc frame; NAME() strings are wide (`unsigned short`, VC7.1 has no native wchar_t).
+- Entity-script vtables have no RTTI: follow the factory record (`push 1Ch`, name string, ctor address) to the ctor's vtable store and match the byte stores against the PDB class (CNOVI_*), not the propagated label.
+- A non-virtual member inlined into a sibling in the same TU (CThing::Kill inside DoActivationSequence) is reproduced by defining it inline in the class for that TU.
+- A by-value CScriptThing / CIntelligentPointer argument is built in the argument area when its copy ctor is user-declared (inline base ctor storing the base vtable, then the derived vtable).

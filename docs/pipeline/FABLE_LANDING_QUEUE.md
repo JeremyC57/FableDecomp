@@ -196,6 +196,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand169` | Hand chunk 169 (CTCQuestCard .. CTCSmashableBarrier): 25 of 40 byte-exact | - | 14 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand170` | Hand chunk 170 (CTCSmashableBase .. CTCTavernGameCardPairs): 28 of 40 byte-exact | - | 10 | 2 | landed; parked rows open |
 | `2026-10-15_linux_hand171` | Hand chunk 171 (CTCTavernGameCardPairs .. CTCWeapon): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand172` | Hand chunk 172 (CTCWeapon .. CThing): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -251,7 +252,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **646 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **653 parked rows** for the Fable retry pass.
 
 ### Skipped rows (15 open of 39 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -996,6 +997,16 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00658ec3 CTCVillage::BuildingContainsCorrectVillagers DIFFER(126v126): &villager / home in edi/ebx swapped | tried: template Get(), typed GetPItem, unrelated pointer type, inline GetHome() (fixed the lea) | next: lane gap: register assignment
 - 0065bffa CTCVillage::IsReportedOrUnreportedCrimeKnown DIFFER(146v144): component loaded into eax then `mov ecx,eax` before FindMostRecentDeed | tried: named local, GetTC as `this` with the filter first, GetInterface form | next: lane gap: looked-up component used as `this`
 - 005da6e0 CTCWeapon::OnCreate DIFFER(99v99): `mov ecx,[esp+0Ch] ... mov ebx,ecx` where retail loads ebx first | tried: holder, plain local + hand release, call through out.Object | next: lane gap: register rotation
+
+
+#### `2026-10-15_linux_hand172` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand172/differ/`)
+- 005dac50 CTCWeapon::SetProjectileWeaponLoaded DIFFER(156v156): block placement only, retail puts the `AimingTime=-1 ; AimingTimeOverride=false` arm last (je/je into it), ours right after the tests (jne over it) | tried: if/else-if, inverted if/else, early-return arm, analogue bool local | next: nested `if (analogue) { if (!loaded) {...; return;} }`
+- 009fa450 CTexture::Lock DIFFER(142v138): width/height loaded into eax/ecx then `mov ebx,eax ; mov ebp,ecx`, retail loads ebx/ebp straight from the desc | tried: plain, named w/h, CSurfaceLockedRect return ctor + empty failure ctor, C2DExtentsI local | next: hook call without the system-manager local, or a GetLevelDesc-wrapping inline GetSize()
+- 00a6a440 CTextureManager::~CTextureManager DIFFER(147v136): `this` spilled to the frame and element release through eax (null test re-reads [esi]); retail keeps this in ebx, Object in ecx | tried: forceinline element/vector/pool dtors, novtable pool, cached finish | next: element release as `if (Object) { Object->Release(); Object = 0; }` member, or ~CPreallocTexturePool body releasing Textures explicitly
+- 004c7da0 CThing::GetChecksum DIFFER(106v108): retail `mov edx,[ecx+60h] ; test edx,edx ; mov ecx,edx`, ours loads ecx directly | tried: one expression (VC reorders by address), inline physics sum, `sum +=` statements (fixed the float order) | next: PhysicsTC through a non-inline-looking accessor or a named local used after the test
+- 004c82a0 CThing::IsLevelPersistent DIFFER(91v104): retail stores GameStatePersisted into a frame byte (`push ecx`, `mov [esp+7],al`) with its own `mov al,1` exit; ours keeps it in al | tried: direct test, inline getter, accumulate-and-return, `return persistent` | next: a by-value bool handed to a `__forceinline` helper, or lane gap: dead bool frame byte
+- 004c8fb0 CThing::CopyTCIfExists DIFFER(116v114): component used as `this` via `mov eax,[eax+4] ; mov edx,[eax] ; push ; mov ecx,eax`, retail `mov ecx,[eax+4]` | tried: inline lookup, member/free/reference GetTC | next: lane gap: looked-up component as `this` (known)
+- 004c97b0 CThing::OnInitialActivate DIFFER(139v137): retail keeps the copied vector's begin in ebp (re-used by the final free) and end in ebx; ours re-reads _M_start from the frame | tried: plain loop, cached first/last, named component local, 16-byte CVectorMap copy | next: `__forceinline` dtor calling a deallocate(begin) helper, or iterate a `const` copy
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

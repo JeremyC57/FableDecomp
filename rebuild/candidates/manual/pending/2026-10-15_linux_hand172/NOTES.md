@@ -1,0 +1,35 @@
+# Hand chunk 172 (CTCWeapon .. CThing): 33 of 40 byte-exact
+
+## What matched (33)
+- CTCWeapon: 005da750 GetCreatedShotDefGlobalIndex (two by-value GetWeaponDef() copies; the `mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax ; jne` release needs the def's own inline `Release()` called from the CDefPointer dtor, and the "SHOT_CROSSBOW_BOLT" name is a named CCharString local); 005daaa0 GetAnimationSpeedValue (same model, `speed * mult`); 005dabe0 GetAnimationGroupName (iface 0x47 CTCCarryable carrier, empty global name).
+- CTCWife: 006cf810 IsCourtableAndNotBlockingIt (nested ifs ending in one `return false`; iface 4 = CTCHeroStats); 006cf890 IsCourtingHero (HasTC + inline GetTC returning an unset local); 006cfc00 OnGreet (PostDeed 0x50 through iface 0x51 into a named out pointer); 006d0020 Died; 006d0590 GetGreetConfirmationText (each arm: named CCharString symbol, then the text bank read into a named local AFTER it, which stops VC merging the two ctor calls).
+- CTCWillLightning: 0079f730 is really CLightningBeam::AllBeamsInactive (m_lChildren +0x4C), 0079f7a0 AllBeamsInactive (m_lbBeams +0x68), 007a0310 Deactivate (by-value CIntelligentPointer copy built in the argument area); STLport list = 4-byte sentinel pointer, CCountedPointer {Data, Info} with info-block deleter + operator delete.
+- CTCWound: 00757760 FrameUpdate (vfunc_9; inline STLport list erase with free); 00757f90 AddPossibleWoundGivenStrikePoint (world LCG seed advanced in place through a `__forceinline` helper, then GFROR13).
+- Entity scripts: 00dac4f0 CNOVI_Theresa::Init and 00db2a70 CNOVI_AffairWife::Init (both labelled CTalkingTrader1::Init); CScriptThing by value = inline CBase ctor + embedded CCountedPointer copy ctor; GSI slots from rtti-vtables.
+- NUISystem::CText 0054f5c0 ctor (CEnginePrimitiveHandle needs the polymorphic CBaseClass root with a virtual; retail = PDB - 0x30).
+- NGameText::CTextEntry: 009c7d90 Sizeof (running `size +=` sum, `(p ? p->Sizeof()+8 : 8) - 8`), 009c8250 ctor (qualified `CTextEntry::Sizeof()` call).
+- NUISystem::CTextSlider: 005491a0 RevertValue (chained `a = b = c = x`, operator[] as `*(begin()+i)`), 00549f60 ctor (shared `xor eax` init list).
+- CTexture 009f9fa0 UnswizzleAll (landed GetSurfaceLevel model inlined; D3D9 COM slots 13/18).
+- CTextureManager 00a69730 GetPoolIndex (inline lower_bound; PoolCount named local for the final unsigned test).
+- DirectShow strmbase (CTextureRenderer vtables): 00a3b510 CTextureRenderer ctor (5 vptrs, L"Texture Renderer"); 00ca6080 CBaseVideoRenderer::NonDelegatingQueryInterface (`riid == IID_x` = memcmp intrinsic); 00ca7680 / 00ca76f0 CBaseFilter::SetSyncSource / GetSyncSource (/EHsc, inline CAutoLock, `this` at the IBaseFilter subobject +0xC); 00caaea0 / 00caaf10 CBaseFilter::Register / Unregister (`this` at IAMovieSetup +0x10); 00cac890 CBaseFilter::EnumPins (/EHsc new).
+- CThing: 004c7b00 GetInfo(CThingInfo*) const (vfunc_24; definition manager in a named local first, string-table result a NAMED CCharString); 004c8c00 UpdateThingScanInclusion (if / else-if on the mapwho flag); 004c9b80 Kill(bool) and 004c9ca0 DoActivationSequence (Kill defined inline in that TU; third early-out bit is KillLocked).
+
+## Parked for Fable 5.1 (7)
+- 005dac50 CTCWeapon::SetProjectileWeaponLoaded DIFFER(156v156): block placement only, retail puts the `AimingTime=-1 ; AimingTimeOverride=false` arm last (je/je into it), ours right after the tests (jne over it) | tried: if/else-if, inverted if/else, early-return arm, analogue bool local | next: nested `if (analogue) { if (!loaded) {...; return;} }`
+- 009fa450 CTexture::Lock DIFFER(142v138): width/height loaded into eax/ecx then `mov ebx,eax ; mov ebp,ecx`, retail loads ebx/ebp straight from the desc | tried: plain, named w/h, CSurfaceLockedRect return ctor + empty failure ctor, C2DExtentsI local | next: hook call without the system-manager local, or a GetLevelDesc-wrapping inline GetSize()
+- 00a6a440 CTextureManager::~CTextureManager DIFFER(147v136): `this` spilled to the frame and element release through eax (null test re-reads [esi]); retail keeps this in ebx, Object in ecx | tried: forceinline element/vector/pool dtors, novtable pool, cached finish | next: element release as `if (Object) { Object->Release(); Object = 0; }` member, or ~CPreallocTexturePool body releasing Textures explicitly
+- 004c7da0 CThing::GetChecksum DIFFER(106v108): retail `mov edx,[ecx+60h] ; test edx,edx ; mov ecx,edx`, ours loads ecx directly | tried: one expression (VC reorders by address), inline physics sum, `sum +=` statements (fixed the float order) | next: PhysicsTC through a non-inline-looking accessor or a named local used after the test
+- 004c82a0 CThing::IsLevelPersistent DIFFER(91v104): retail stores GameStatePersisted into a frame byte (`push ecx`, `mov [esp+7],al`) with its own `mov al,1` exit; ours keeps it in al | tried: direct test, inline getter, accumulate-and-return, `return persistent` | next: a by-value bool handed to a `__forceinline` helper, or lane gap: dead bool frame byte
+- 004c8fb0 CThing::CopyTCIfExists DIFFER(116v114): component used as `this` via `mov eax,[eax+4] ; mov edx,[eax] ; push ; mov ecx,eax`, retail `mov ecx,[eax+4]` | tried: inline lookup, member/free/reference GetTC | next: lane gap: looked-up component as `this` (known)
+- 004c97b0 CThing::OnInitialActivate DIFFER(139v137): retail keeps the copied vector's begin in ebp (re-used by the final free) and end in ebx; ours re-reads _M_start from the frame | tried: plain loop, cached first/last, named component local, 16-byte CVectorMap copy | next: `__forceinline` dtor calling a deallocate(begin) helper, or iterate a `const` copy
+
+## Skipped
+- none
+
+## Label corrections
+- 0x0079F730 "CTCWillLightning::AllBeamsInactive" is CTCWillLightning::CLightningBeam::AllBeamsInactive (child list +0x4C).
+- 0x00757760 "CTCWound::vfunc_9" is CTCWound::FrameUpdate.
+- 0x00DAC4F0 "CTalkingTrader1::Init" is CNOVI_Theresa::Init (vtable 0x012D83A4, ctor 0x00DAC420, script name "NOVI_Theresa"); 0x00DB2A70 is CNOVI_AffairWife::Init (vtable 0x012D8C98, ctor 0x00DB29A0, "NOVI_AffairWife").
+- 0x00CA6080 "CTextureRenderer::vfunc_0" is CBaseVideoRenderer::NonDelegatingQueryInterface; 0x00CA7680 / 0x00CA76F0 / 0x00CAC890 vfunc_8/9/10 are CBaseFilter::SetSyncSource / GetSyncSource / EnumPins; 0x00CAAEA0 / 0x00CAAF10 vfunc_3/4 are CBaseFilter::Register / Unregister (DirectShow strmbase linked into Fable.exe).
+- 0x004C7B00 "CThing::vfunc_24" is CThing::GetInfo(CThingInfo*) const; 0x004C7DA0 "vfunc_23" is CThing::GetChecksum() const.
+- Callees: 0x00705170 "CGuiControlListBox::GetCurrentSelectedEntryData" is the CTCCarryable carrier getter; 0x009D5620 "CVertexBufferWin32::DoSizeof" is CBankFileAsyncData::Sizeof; 0x0049D810 "CVertexBufferWin32::DoSizeof" is the CWorld random-seed accessor; 0x009FC5C0 "Stack<unsigned long,64>::~Stack" is CResourceList::~CResourceList; 0x005202B0 "EditCyclePreviousKeyCamera" is a CThingManager member called on kill; 0x00CABE00 "CVsyncCallbackTimer" is CEnumPins::CEnumPins; 0x0099AED0 "CCharString" is CWideString::CWideString(); 0x00A0AA70 "$E2" is an empty `ret 8` texture-use hook.

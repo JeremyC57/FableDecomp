@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005da750	RELOCATION_MATCH	126v126	PASS	by-value GetWeaponDef twice; def inline Release() gives mov/dec/mov release
+005daaa0	RELOCATION_MATCH	109v109	PASS	speed * augmentation multiplier (iface 0xBF)
+005dabe0	RELOCATION_MATCH	103v103	PASS	carried by a creature that cannot use it -> empty name
+005dac50	DIFFER	156v156	-	block placement of the -1 arm
+006cf810	RELOCATION_MATCH	124v124	PASS	nested ifs, single return false; iface 4 = CTCHeroStats
+006cf890	RELOCATION_MATCH	98v98	PASS	HasTC + inline GetTC (unset local)
+006cfc00	RELOCATION_MATCH	140v140	PASS	PostDeed 0x50 via iface 0x51
+006d0020	RELOCATION_MATCH	120v120	PASS	Unmarry + SetMarriageState(parent,6)
+006d0590	RELOCATION_MATCH	148v148	PASS	named symbol + bank local per arm
+0079f730	RELOCATION_MATCH	104v104	PASS	really CTCWillLightning::CLightningBeam::AllBeamsInactive (m_lChildren +0x4C)
+0079f7a0	RELOCATION_MATCH	104v104	PASS	m_lbBeams +0x68
+007a0310	RELOCATION_MATCH	146v146	PASS	by-value CIntelligentPointer built in arg area
+00757760	RELOCATION_MATCH	132v132	PASS	CTCWound::FrameUpdate (slot 9), inline list erase
+00757f90	RELOCATION_MATCH	111v111	PASS	world LCG seed + GFROR13, 5% roll
+00dac4f0	RELOCATION_MATCH	142v142	PASS	really CNOVI_Theresa::Init (vtable 0x12D83A4)
+00db2a70	RELOCATION_MATCH	160v160	PASS	really CNOVI_AffairWife::Init (vtable 0x12D8C98)
+0054f5c0	RELOCATION_MATCH	131v131	PASS	NUISystem::CText ctor, polymorphic CBaseClass handle
+009c7d90	RELOCATION_MATCH	99v99	PASS	NGameText::CTextEntry::Sizeof running sum
+009c8250	RELOCATION_MATCH	106v106	PASS	NGameText::CTextEntry ctor
+005491a0	RELOCATION_MATCH	135v135	PASS	chained assignment + operator[] loop
+00549f60	RELOCATION_MATCH	114v114	PASS	init-list zeroes
+009f9fa0	RELOCATION_MATCH	143v143	PASS	GetSurfaceLevel inlined
+009fa450	DIFFER	142v138	-	width/height via eax/ecx then ebx/ebp
+00a69730	MATCH	99v99	PASS	inline lower_bound
+00a6a440	DIFFER	147v136	-	regalloc: this spilled, release via eax
+00a3b510	RELOCATION_MATCH	113v113	PASS	DirectShow CTextureRenderer ctor
+00ca6080	RELOCATION_MATCH	129v129	PASS	really CBaseVideoRenderer::NonDelegatingQueryInterface
+00ca7680	RELOCATION_MATCH	109v109	PASS	really CBaseFilter::SetSyncSource (/EHsc)
+00ca76f0	RELOCATION_MATCH	130v130	PASS	really CBaseFilter::GetSyncSource (/EHsc)
+00caaea0	RELOCATION_MATCH	107v107	PASS	really CBaseFilter::Register
+00caaf10	RELOCATION_MATCH	125v125	PASS	really CBaseFilter::Unregister
+00cac890	RELOCATION_MATCH	136v136	PASS	really CBaseFilter::EnumPins (/EHsc)
+004c7b00	RELOCATION_MATCH	123v123	PASS	really CThing::GetInfo(CThingInfo*) const
+004c7da0	DIFFER	106v108	-	really CThing::GetChecksum; PhysicsTC edx->ecx
+004c82a0	DIFFER	91v104	-	GameStatePersisted frame byte
+004c8c00	RELOCATION_MATCH	143v143	PASS	mapwho place/OnDie
+004c8fb0	DIFFER	116v114	-	component this via eax (lane gap)
+004c97b0	DIFFER	139v137	-	begin/end register allocation
+004c9b80	RELOCATION_MATCH	144v144	PASS	flag bitfields, KillLocked
+004c9ca0	RELOCATION_MATCH	121v121	PASS	Kill(false) inlined
