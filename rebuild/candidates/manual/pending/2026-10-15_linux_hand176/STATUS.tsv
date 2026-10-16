@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0098e0d0	RELOCATION_MATCH	150v150	PASS	Uninitialise: lock/event shutdown; CRITICAL_SECTION modelled with pointer members (4-aligned)
+0098eb20	RELOCATION_MATCH	156v156	PASS	RemoveObject; erase(iterator) by value with user copy ctor
+0098ebc0	RELOCATION_MATCH	121v121	PASS	OnFinishObject
+0098eff0	DIFFER	151v151	-	SetObjectPriority: regalloc of re-insert (key slot uid vs priority)
+0084eaf0	RELOCATION_MATCH	101v101	PASS	GetRollingAverage<C3DVector> (twin of landed 0x69BF30)
+00875e60	RELOCATION_MATCH	157v157	PASS	GetCollisionThing
+00877d20	RELOCATION_MATCH	106v106	PASS	FrameUpdate (CamTools of CGameCameraManager +0x78)
+00878390	DIFFER	160v160	-	GetThingsOfType<CThingBuilding>: filter-pointer store scheduling
+00dfb100	RELOCATION_MATCH	131v131	PASS	OnPredicateFail: named string/message locals
+00997800	RELOCATION_MATCH	122v122	PASS	label wrong: ReplacePathExtension (fastcall wide-path helper)
+004f97b3	DIFFER	122v126	-	label descriptive: CRetailTree_00461533 copy ctor; size-TU zero register
+00429e29	MATCH	97v97	PASS	CUIState copy ctor; forceinline CRGBColour copy
+006250b0	RELOCATION_MATCH	157v157	PASS	NUISystem::CUIStateDef copy ctor
+00630350	RELOCATION_MATCH	112v112	PASS	NUISystem::CUIStateDef default ctor
+00408900	RELOCATION_MATCH	143v143	PASS	GetMaxResolution
+00409140	DIFFER	128v126	-	ClampAntialiasing: unrotated step-down loop
+00e54310	RELOCATION_MATCH	147v147	PASS	label wrong: CV_BookCollectingScript ctor
+00e62830	RELOCATION_MATCH	126v126	PASS	label wrong: CV_ChickenKickingScript ctor
+00e4f5b0	RELOCATION_MATCH	101v101	PASS	CV_BeardyBaldyScript ctor
+00e5d900	RELOCATION_MATCH	155v155	PASS	CheckForHenchmanFiredOverride
+00e55c60	RELOCATION_MATCH	122v122	PASS	AddGossip
+00e3e6b0	RELOCATION_MATCH	100v100	PASS	GetHeroStatusTextTag
+00e6e120	DIFFER	136v136	-	GetVictimIsBandit: tail cross-jump lea
+00e6e1b0	DIFFER	125v125	-	GetVictimIsTrader: tail cross-jump lea
+008561c0	MATCH	120v120	PASS	label wrong: CCombatActionBase::ResetStrikeState
+00e755f0	RELOCATION_MATCH	142v142	PASS	CV_ExposeMayorScript ctor
+00e7f730	RELOCATION_MATCH	156v156	PASS	GenerateCompetitionEntry
+00cbe1aa	RELOCATION_MATCH	155	PASS	IsThingActive (char result form applied by the landing session)
+00cbe245	RELOCATION_MATCH	155v155	PASS	label wrong: global IsThingOutOfAction; char result
+00e82800	RELOCATION_MATCH	104v104	PASS	SetFightCount
+00e848e0	RELOCATION_MATCH	152v152	PASS	GetFighterName; inline by-value helper for the unused local
+00e84980	RELOCATION_MATCH	152v152	PASS	label dup: GetChampionName
+00e8a140	RELOCATION_MATCH	132v132	PASS	SetAllowedHits
+00ea12e0	RELOCATION_MATCH	118v118	PASS	WatchForGates
+00ea76e0	RELOCATION_MATCH	101v101	PASS	label wrong: CV_MazeResearchScript ctor
+00eae910	RELOCATION_MATCH	108v108	PASS	CV_MurderTwistFinalScript ctor
+00ec3270	DIFFER	123v123	-	GetCurrentPopulationLevel: default-arm jump threading
+006bc210	DIFFER	124v124	-	label wrong: CRegion::Reset; xor scheduling
+00caf500	RELOCATION_MATCH	124v124	PASS	label wrong: CSyncQueue_00caf500 ctor (strmbase-shaped, /EHsc)
+00ed0ec0	RELOCATION_MATCH	139v139	PASS	CV_SingingStonesScript::Init

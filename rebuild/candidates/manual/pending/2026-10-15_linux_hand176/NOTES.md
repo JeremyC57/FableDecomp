@@ -1,0 +1,39 @@
+# Hand chunk 176 (CThreadedFileManager .. CV_SingingStonesScript): 31 of 40 byte-exact
+
+## What matched (31)
+- CThreadedFileManager (retail layout: Objects map +0x13c, Initialised +0x148, CriticalSection +0x14c, Event +0x164): 0x98E0D0 Uninitialise (a `_RTL_CRITICAL_SECTION` modelled with pointer/long members -- a char[0x18] body is 1-aligned and shifts the lea), 0x98EB20 RemoveObject (map erase(iterator) by value: the iterator's user copy ctor rebuilds it in operator delete's dead argument slot), 0x98EBC0 OnFinishObject.
+- CTools: 0x84EAF0 GetRollingAverage<C3DVector> (3D twin of landed 0x69BF30), 0x875E60 GetCollisionThing (CPhysicsMeshObject by value, CMeshIntersectionData POD copy-out), 0x877D20 FrameUpdate (search tools read first into a named local; C2DBoxI temporary; empty CThingFilter_None in the frame).
+- CTraderToRescue 0xDFB100 OnPredicateFail: killed-by string as a named local in its own block + bool outside; the CWideString message a named local; SetQuestAsFailed is CGameScriptInterface slot 289.
+- 0x997800 (label CTrophyDef ctor) is a `__fastcall` CWideString path helper: SplitPath into three locals, `return MakePath(...)` straight into the hidden result.
+- CUIState 0x429E29 copy ctor: size TU with frame (`optimize("y",off)` + `("s",on)`); CRGBColour's user copy ctor forwarding to Set(r,g,b,a), both `__forceinline`, gives the A,B,G,R loads / +2/+1/+0/+3 stores with G parked in the argument slot's top byte.
+- NUISystem::CUIStateDef: 0x6250B0 copy ctor (inline CParentDefClassBase copy, pack(1) def bases, CVectorMap default-packed 16 bytes so members start at +0x3c); 0x630350 default ctor (novtable def bases; the zero-register's last use placed after the 1.0f stores so 1.0f takes ecx).
+- CUserProfileManager 0x408900 GetMaxResolution: capped branch first, `if (index != -1) return index; return 0;` for retail's block order.
+- Quest-script ctors (novtable argument base model of landed 0xD80C30): 0xE54310 CV_BookCollectingScript, 0xE62830 CV_ChickenKickingScript, 0xE4F5B0 CV_BeardyBaldyScript, 0xE755F0 CV_ExposeMayorScript, 0xEA76E0 CV_MazeResearchScript, 0xEAE910 CV_MurderTwistFinalScript (class from the factory record `push size` + "S_V.." name; vectors as `_Vector_base`, maps as the 12-byte header map).
+- Quest-script methods: 0xE5D900 CV_BodyGuardScript::CheckForHenchmanFiredOverride and 0xEA12E0 CV_KnotholeGladeGatesScript::WatchForGates (rotated `while (!terminating)` loops), 0xE55C60 CV_BookCollectingScript::AddGossip (four by-value CCharString parameters), 0xE3E6B0 CV_BordelloScript::GetHeroStatusTextTag (three constructed returns), 0xE7F730 CV_FishingCompetitionScript::GenerateCompetitionEntry (`"..." + GFIntToCharString(rand() % 3)` fastcall operator+), 0xED0EC0 CV_SingingStonesScript::Init.
+- CV_FisticuffsClubScript: 0xE82800 SetFightCount and 0xE8A140 SetAllowedHits (case 1 shares the default arm; cases in source order 1,4,2,3; full statements per case, VC cross-jumps the common x87 tail), 0xE848E0 GetFighterName and 0xE84980 GetChampionName (an unused "An error" local built by an inline by-value helper -- no NRVO gives build/copy/destroy).
+- 0xCBE245 (label IsKnotholeGladeNotAPunchClub) is a global script-thing helper IsThingOutOfAction: `""` passed as an IMPLICIT CCharString conversion temporary (`lea ecx ; push ecx`), the `||` chain stored in a `char` and returned through its implicit bool conversion (`cmp byte ptr [ebp-1],0 ; setne al`).
+- 0x8561C0 (label CV_ChickenKickingScript::Init) is CCombatActionBase::ResetStrikeState (descriptive): stores in retail order.
+- 0xCAF500 (label CV_SingingStonesScript::Init) is an EH-framed strmbase-shaped ctor (CCritSec, two CGenericList, CAMEvent): the lists need the inline CGenericList<T> wrapper over the out-of-line base ctor for `lea ecx` before the NULL-name push. /EHsc.
+
+## Parked for Fable 5.1 (9)
+- 0098eff0 CThreadedFileManager::SetObjectPriority DIFFER(151v151): re-insert regalloc (retail PFile in edx, row index in eax, key homed in the dead uid slot [esp+18h]; ours eax/ecx and the priority slot) | tried: temporary key, named key, reference to the operator[] slot, object->Priority index | next: lane gap: key-slot choice
+- 00878390 CTools::GetThingsOfType<CThingBuilding> DIFFER(160v160): the AND filter's two pointer stores land before the pushes in ours, after them in retail | tried: four-long box ctor, box temporary, two-vector box ctor, top-left box + `+= r` | next: lane gap: scheduling
+- 004f97b3 CRetailTree_00461533 copy ctor DIFFER(122v126): retail size TU keeps 0 in ebx (`mov [m],ebx`, `cmp [ecx+4],ebx`), ours `and [m],0`/`test` | tried: speed TU, size TU, `node* nil = 0` | next: lane gap: size-TU zero register (QFE-4035 toolset?)
+- 00409140 CUserProfileManager::ClampAntialiasing DIFFER(128v126): retail's step-down loop is unrotated (`cmp [eax+ecx*4],edx ; jle ; dec ; jmp`), ours rotates/strength-reduces it with ebx | tried: while, for(;;)+break, store inside the loop, named system local | next: lane gap: loop rotation
+- 00e6e120 CV_ChapelOfEvilScript::GetVictimIsBandit DIFFER(136v136): retail forms the param dtor's `lea ecx` before the terminating `jne` and cross-jumps past the false tail's lea | tried: `&&` if, early returns, nested ifs | next: lane gap: tail cross-jump
+- 00e6e1b0 CV_ChapelOfEvilScript::GetVictimIsTrader DIFFER(125v125): same tail cross-jump as 0xE6E120 | tried: `&&` if, `? true : false` | next: lane gap: tail cross-jump
+- 00cbe1aa IsThingActive (label IsKnotholeGladeNotAPunchClub) DIFFER(151v155): ours returns `mov al,[ebp-1]`, retail `cmp byte ptr [ebp-1],0 ; setne al` | tried: explicit temporaries, if/return, implicit "" temporaries, `? true : false` | next: `char result = chain; return result;` (matched the twin 0xCBE245; budget spent)
+- 00ec3270 CV_RandomPopulationSimScript::GetCurrentPopulationLevel DIFFER(123v123): retail's default arm jumps to the `> 1.0f` test, ours threads it past both clamp tests | tried: else-if, two ifs, inline Clamp, case 2 = -1.0f | next: lane gap: jump threading
+- 006bc210 CRegion::Reset (label CV_SingingStonesScript::Init) DIFFER(124v124): ours hoists `xor eax,eax` above the MiniMapScale 1.0f store | tried: member stores, C2DVector(0,0), chained `a = b = 0` | next: lane gap: scheduling
+
+## Skipped
+- none
+
+## Label corrections
+- 0x00E54310 "CV_BanditCampPathScript ctor" is CV_BookCollectingScript (factory 0xE57A50 "S_VBC"); 0x00E62830 is CV_ChickenKickingScript (factory 0xE68E60 "S_VCK"); 0x00EA76E0 "CV_MurderTwistFinalScript ctor" is CV_MazeResearchScript (factory 0xEA8690 "S_VMR").
+- 0x008561C0 "CV_ChickenKickingScript::Init" is a CCombatActionBase member (callers Initialise 0x857520, ctors 0x857E40/0x857F30).
+- 0x006BC210 "CV_SingingStonesScript::Init" is a CRegion member (Reset-like); 0x00CAF500 "CV_SingingStonesScript::Init" is an unreferenced strmbase-shaped ctor next to CVolume; 0x00ED0EC0 is the real CV_SingingStonesScript::Init (vtable 0x12F2B0C slot 3).
+- 0x00997800 "CTrophyDef::CTrophyDef" is a `__fastcall` CWideString path helper (SplitPath + MakePath).
+- 0x00CBE1AA / 0x00CBE245 "CV_FisticuffsClubScript::IsKnotholeGladeNotAPunchClub" are global CScriptThing helpers (alive/killed/knocked-out/unconscious and its complement).
+- 0x00E84980 duplicate "GetFighterName" returns the champions (GetChampionName); 0x004F97B3 "CUIBinaryTree::CopyConstructor" is the CRetailTree_00461533 copy ctor (its caller 0x4F9784 "CUIMiniMapMarker" does not fit the PDB).
+- 0x00410460 "std_vector_C2DLineF_Copy" is used as vector<CDisplayModeDesc> copy; 0x009C05C0 "CGuiControlTreePane_RebuildTreeFromArray" fills a vector<long> of antialiasing levels; 0x008780D0 "GetPBestThingInRoughArea<...>" is GetAllThingsInRoughArea<CThingBuilding const, list, AND filter>; 0x00E7F7D0 "GetFloatTableEntryByIndex" is a CV_FishingCompetitionScript prize-threshold getter.

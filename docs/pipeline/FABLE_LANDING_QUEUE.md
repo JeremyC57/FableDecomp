@@ -200,6 +200,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand173` | Hand chunk 173 (CThing .. CThingFilter_HasScriptedControl): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand174` | Hand chunk 174 (CThingFilter_In2DRangeLimit .. CThingPhysicalSwitch): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand175` | Hand chunk 175 (CThingPhysicalSwitch .. CThingVillage): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand176` | Hand chunk 176 (CThreadedFileManager .. CV_SingingStonesScript): 31 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -255,7 +256,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **673 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **681 parked rows** for the Fable retry pass.
 
 ### Skipped rows (16 open of 40 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1040,6 +1041,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 #### `2026-10-15_linux_hand175` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand175/differ/`)
 - 0083db60 CThingPhysicalSwitch::GetCurrentGraphic DIFFER(162v125): our CDefPointer dtor re-reads the escaped def after `dec [eax+4]` (retail `mov esi,[esp+4] ; test esi ; dec [esi+4] ; jne` then `lea eax,[esi+82h]`), and per-arm defs tail-merge | tried: one shared def, per-arm scoped defs (104v125), dtor via local, by-value GetSwitchDef helper inline/__forceinline | next: lane gap: CDefPointer release without re-read of the escaped local
 - 006ac390 CThingPlayerCreature::IsExpressionAvailable DIFFER(153v151): retail `mov ecx,[eax+4] ; mov eax,[edi+70h] ; push eax`, ours `mov ecx,[edi+70h] ; mov eax,[eax+4] ; push ecx ; mov ecx,eax` (only the inventory call; the def holder now matches) | tried: && chain, named inventory local, __forceinline Find with reference key | next: lane gap: looked-up component used as this loaded straight into ecx
+
+
+#### `2026-10-15_linux_hand176` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand176/differ/`)
+- 0098eff0 CThreadedFileManager::SetObjectPriority DIFFER(151v151): re-insert regalloc (retail PFile in edx, row index in eax, key homed in the dead uid slot [esp+18h]; ours eax/ecx and the priority slot) | tried: temporary key, named key, reference to the operator[] slot, object->Priority index | next: lane gap: key-slot choice
+- 00878390 CTools::GetThingsOfType<CThingBuilding> DIFFER(160v160): the AND filter's two pointer stores land before the pushes in ours, after them in retail | tried: four-long box ctor, box temporary, two-vector box ctor, top-left box + `+= r` | next: lane gap: scheduling
+- 004f97b3 CRetailTree_00461533 copy ctor DIFFER(122v126): retail size TU keeps 0 in ebx (`mov [m],ebx`, `cmp [ecx+4],ebx`), ours `and [m],0`/`test` | tried: speed TU, size TU, `node* nil = 0` | next: lane gap: size-TU zero register (QFE-4035 toolset?)
+- 00409140 CUserProfileManager::ClampAntialiasing DIFFER(128v126): retail's step-down loop is unrotated (`cmp [eax+ecx*4],edx ; jle ; dec ; jmp`), ours rotates/strength-reduces it with ebx | tried: while, for(;;)+break, store inside the loop, named system local | next: lane gap: loop rotation
+- 00e6e120 CV_ChapelOfEvilScript::GetVictimIsBandit DIFFER(136v136): retail forms the param dtor's `lea ecx` before the terminating `jne` and cross-jumps past the false tail's lea | tried: `&&` if, early returns, nested ifs | next: lane gap: tail cross-jump
+- 00e6e1b0 CV_ChapelOfEvilScript::GetVictimIsTrader DIFFER(125v125): same tail cross-jump as 0xE6E120 | tried: `&&` if, `? true : false` | next: lane gap: tail cross-jump
+- 00cbe1aa IsThingActive (label IsKnotholeGladeNotAPunchClub) DIFFER(151v155): ours returns `mov al,[ebp-1]`, retail `cmp byte ptr [ebp-1],0 ; setne al` | tried: explicit temporaries, if/return, implicit "" temporaries, `? true : false` | next: `char result = chain; return result;` (matched the twin 0xCBE245; budget spent)
+- 00ec3270 CV_RandomPopulationSimScript::GetCurrentPopulationLevel DIFFER(123v123): retail's default arm jumps to the `> 1.0f` test, ours threads it past both clamp tests | tried: else-if, two ifs, inline Clamp, case 2 = -1.0f | next: lane gap: jump threading
+- 006bc210 CRegion::Reset (label CV_SingingStonesScript::Init) DIFFER(124v124): ours hoists `xor eax,eax` above the MiniMapScale 1.0f store | tried: member stores, C2DVector(0,0), chained `a = b = 0` | next: lane gap: scheduling
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

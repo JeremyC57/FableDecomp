@@ -238038,6 +238038,231 @@ $catalog = @(
         TestSource = '00/90/CThingFilterIsValidGossipee_CThingFilterIsValidGossipee_0090c870_test.cpp'
         PassPattern = '0090c870_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00408900'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetMaxResolution_00408900.cpp'
+        TestSource = '00/40/CUserProfileManager_GetMaxResolution_00408900_test.cpp'
+        PassPattern = '00408900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00429e29'
+        Module = 'CUIState'
+        Source = '00/42/CUIState_CUIState_00429e29.cpp'
+        TestSource = '00/42/CUIState_CUIState_00429e29_test.cpp'
+        PassPattern = '00429e29_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006250b0'
+        Module = 'NUISystem::CUIStateDef'
+        Source = '00/62/NUISystemCUIStateDef_CUIStateDef_006250b0.cpp'
+        TestSource = '00/62/NUISystemCUIStateDef_CUIStateDef_006250b0_test.cpp'
+        PassPattern = '006250b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00630350'
+        Module = 'NUISystem::CUIStateDef'
+        Source = '00/63/NUISystemCUIStateDef_CUIStateDef_00630350.cpp'
+        TestSource = '00/63/NUISystemCUIStateDef_CUIStateDef_00630350_test.cpp'
+        PassPattern = '00630350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084eaf0'
+        Module = 'CTools'
+        Source = '00/84/CTools_GetRollingAverageC3DVector_0084eaf0.cpp'
+        TestSource = '00/84/CTools_GetRollingAverageC3DVector_0084eaf0_test.cpp'
+        PassPattern = '0084eaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008561c0'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_ResetStrikeState_008561c0.cpp'
+        TestSource = '00/85/CCombatActionBase_ResetStrikeState_008561c0_test.cpp'
+        PassPattern = '008561c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00875e60'
+        Module = 'CTools'
+        Source = '00/87/CTools_GetCollisionThing_00875e60.cpp'
+        TestSource = '00/87/CTools_GetCollisionThing_00875e60_test.cpp'
+        PassPattern = '00875e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00877d20'
+        Module = 'CTools'
+        Source = '00/87/CTools_FrameUpdate_00877d20.cpp'
+        TestSource = '00/87/CTools_FrameUpdate_00877d20_test.cpp'
+        PassPattern = '00877d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098e0d0'
+        Module = 'CThreadedFileManager'
+        Source = '00/98/CThreadedFileManager_Uninitialise_0098e0d0.cpp'
+        TestSource = '00/98/CThreadedFileManager_Uninitialise_0098e0d0_test.cpp'
+        PassPattern = '0098e0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098eb20'
+        Module = 'CThreadedFileManager'
+        Source = '00/98/CThreadedFileManager_RemoveObject_0098eb20.cpp'
+        TestSource = '00/98/CThreadedFileManager_RemoveObject_0098eb20_test.cpp'
+        PassPattern = '0098eb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098ebc0'
+        Module = 'CThreadedFileManager'
+        Source = '00/98/CThreadedFileManager_OnFinishObject_0098ebc0.cpp'
+        TestSource = '00/98/CThreadedFileManager_OnFinishObject_0098ebc0_test.cpp'
+        PassPattern = '0098ebc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00997800'
+        Module = '_global'
+        Source = '00/99/global_ReplacePathExtension_00997800.cpp'
+        TestSource = '00/99/global_ReplacePathExtension_00997800_test.cpp'
+        PassPattern = '00997800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caf500'
+        Module = 'CSyncQueue_00caf500'
+        Source = '00/ca/CSyncQueue00caf500_CSyncQueue00caf500_00caf500.cpp'
+        TestSource = '00/ca/CSyncQueue00caf500_CSyncQueue00caf500_00caf500_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00caf500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe1aa'
+        Module = '_global'
+        Source = '00/cb/global_IsThingActive_00cbe1aa.cpp'
+        TestSource = '00/cb/global_IsThingActive_00cbe1aa_test.cpp'
+        PassPattern = '00cbe1aa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbe245'
+        Module = '_global'
+        Source = '00/cb/global_IsThingOutOfAction_00cbe245.cpp'
+        TestSource = '00/cb/global_IsThingOutOfAction_00cbe245_test.cpp'
+        PassPattern = '00cbe245_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfb100'
+        Module = 'CTraderToRescue'
+        Source = '00/df/CTraderToRescue_OnPredicateFail_00dfb100.cpp'
+        TestSource = '00/df/CTraderToRescue_OnPredicateFail_00dfb100_test.cpp'
+        PassPattern = '00dfb100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3e6b0'
+        Module = 'CV_BordelloScript'
+        Source = '00/e3/CVBordelloScript_GetHeroStatusTextTag_00e3e6b0.cpp'
+        TestSource = '00/e3/CVBordelloScript_GetHeroStatusTextTag_00e3e6b0_test.cpp'
+        PassPattern = '00e3e6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4f5b0'
+        Module = 'CV_BeardyBaldyScript'
+        Source = '00/e4/CVBeardyBaldyScript_CVBeardyBaldyScript_00e4f5b0.cpp'
+        TestSource = '00/e4/CVBeardyBaldyScript_CVBeardyBaldyScript_00e4f5b0_test.cpp'
+        PassPattern = '00e4f5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e54310'
+        Module = 'CV_BookCollectingScript'
+        Source = '00/e5/CVBookCollectingScript_CVBookCollectingScript_00e54310.cpp'
+        TestSource = '00/e5/CVBookCollectingScript_CVBookCollectingScript_00e54310_test.cpp'
+        PassPattern = '00e54310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e55c60'
+        Module = 'CV_BookCollectingScript'
+        Source = '00/e5/CVBookCollectingScript_AddGossip_00e55c60.cpp'
+        TestSource = '00/e5/CVBookCollectingScript_AddGossip_00e55c60_test.cpp'
+        PassPattern = '00e55c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5d900'
+        Module = 'CV_BodyGuardScript'
+        Source = '00/e5/CVBodyGuardScript_CheckForHenchmanFiredOverride_00e5d900.cpp'
+        TestSource = '00/e5/CVBodyGuardScript_CheckForHenchmanFiredOverride_00e5d900_test.cpp'
+        PassPattern = '00e5d900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e62830'
+        Module = 'CV_ChickenKickingScript'
+        Source = '00/e6/CVChickenKickingScript_CVChickenKickingScript_00e62830.cpp'
+        TestSource = '00/e6/CVChickenKickingScript_CVChickenKickingScript_00e62830_test.cpp'
+        PassPattern = '00e62830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e755f0'
+        Module = 'CV_ExposeMayorScript'
+        Source = '00/e7/CVExposeMayorScript_CVExposeMayorScript_00e755f0.cpp'
+        TestSource = '00/e7/CVExposeMayorScript_CVExposeMayorScript_00e755f0_test.cpp'
+        PassPattern = '00e755f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7f730'
+        Module = 'CV_FishingCompetitionScript'
+        Source = '00/e7/CVFishingCompetitionScript_GenerateCompetitionEntry_00e7f730.cpp'
+        TestSource = '00/e7/CVFishingCompetitionScript_GenerateCompetitionEntry_00e7f730_test.cpp'
+        PassPattern = '00e7f730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e82800'
+        Module = 'CV_FisticuffsClubScript'
+        Source = '00/e8/CVFisticuffsClubScript_SetFightCount_00e82800.cpp'
+        TestSource = '00/e8/CVFisticuffsClubScript_SetFightCount_00e82800_test.cpp'
+        PassPattern = '00e82800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e848e0'
+        Module = 'CV_FisticuffsClubScript'
+        Source = '00/e8/CVFisticuffsClubScript_GetFighterName_00e848e0.cpp'
+        TestSource = '00/e8/CVFisticuffsClubScript_GetFighterName_00e848e0_test.cpp'
+        PassPattern = '00e848e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e84980'
+        Module = 'CV_FisticuffsClubScript'
+        Source = '00/e8/CVFisticuffsClubScript_GetChampionName_00e84980.cpp'
+        TestSource = '00/e8/CVFisticuffsClubScript_GetChampionName_00e84980_test.cpp'
+        PassPattern = '00e84980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8a140'
+        Module = 'CV_FisticuffsClubScript'
+        Source = '00/e8/CVFisticuffsClubScript_SetAllowedHits_00e8a140.cpp'
+        TestSource = '00/e8/CVFisticuffsClubScript_SetAllowedHits_00e8a140_test.cpp'
+        PassPattern = '00e8a140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea12e0'
+        Module = 'CV_KnotholeGladeGatesScript'
+        Source = '00/ea/CVKnotholeGladeGatesScript_WatchForGates_00ea12e0.cpp'
+        TestSource = '00/ea/CVKnotholeGladeGatesScript_WatchForGates_00ea12e0_test.cpp'
+        PassPattern = '00ea12e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea76e0'
+        Module = 'CV_MazeResearchScript'
+        Source = '00/ea/CVMazeResearchScript_CVMazeResearchScript_00ea76e0.cpp'
+        TestSource = '00/ea/CVMazeResearchScript_CVMazeResearchScript_00ea76e0_test.cpp'
+        PassPattern = '00ea76e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eae910'
+        Module = 'CV_MurderTwistFinalScript'
+        Source = '00/ea/CVMurderTwistFinalScript_CVMurderTwistFinalScript_00eae910.cpp'
+        TestSource = '00/ea/CVMurderTwistFinalScript_CVMurderTwistFinalScript_00eae910_test.cpp'
+        PassPattern = '00eae910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed0ec0'
+        Module = 'CV_SingingStonesScript'
+        Source = '00/ed/CVSingingStonesScript_Init_00ed0ec0.cpp'
+        TestSource = '00/ed/CVSingingStonesScript_Init_00ed0ec0_test.cpp'
+        PassPattern = '00ed0ec0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
