@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0096e540	RELOCATION_MATCH	208v208	PASS	CAIStateGroup_SummonerSummon::IsRunnable()
+009683a0	DIFFER	191v191	-	filter build scheduling: retail forms &type into the Bind2 slot and loads the creature into eax before the UID ctor call; ours keeps &type in edi unti
+00968460	DIFFER	172v172	-	register allocation: retail keeps &PPayee in edi and the creature filter's this in ebx (ebx pushed inside the if); ours uses ebx for &PPayee and edi f
+00968510	DIFFER	172v172	-	register allocation: retail keeps &PPayee in edi and the creature filter's this in ebx (ebx pushed inside the if); ours uses ebx for &PPayee and edi f
+00966cf0	DIFFER	174v174	-	the &def push precedes the jug GetPItem call (retail fetches the jug first) and the release loads the vtable into edx (retail eax)
+00967180	RELOCATION_MATCH	206v206	PASS	CAIStateGroup_TavernServer::GetJug()
+009672c0	RELOCATION_MATCH	233v233	PASS	CAIStateGroup_TavernServer::GetOldJugPoint()
+00967930	DIFFER	232v232	-	register swap only: retail keeps &PJug in edi (reused for the jug) and the creature in ebx (pushed late, then the setne bl result); ours swaps ebx/edi
+009687b0	DIFFER	174v174	-	twin of 0x00966CF0 (item id at +0x30); the &def push precedes the jug GetPItem call (retail fetches the jug first) and the release loads the vtable in
+00968860	RELOCATION_MATCH	229v229	PASS	CAIStateGroup_TavernKeeper::GetOldJugPoint()
+00938960	RELOCATION_MATCH	168v168	PASS	CAIStateGroup_UsesSeat::IsStillValid()
+00938bf0	RELOCATION_MATCH	220v220	PASS	landing retry: out-parameter GetInterface
+009431e0	RELOCATION_MATCH	220v220	PASS	landing retry: out-parameter GetInterface (twin)
+00940820	DIFFER	164v164	-	one register: retail loads the creature argument through ecx (mov ecx,[esi+4] ; mov ecx,[ecx+18h] ; push ecx), ours through edx
+00940180	RELOCATION_MATCH	182v182	PASS	CAIStateGroup_VillageTaskPickCrops::IsRunnable()
+00940240	RELOCATION_MATCH	208v208	PASS	landing retry: named creature local
+0093fbc0	DIFFER	175v173	-	one register: retail pushes the creature straight from ecx before mov ecx,eax; ours copies it to edx first (mov edx,ecx ; push edx), as in the Horn tw
+00946e70	RELOCATION_MATCH	178v178	PASS	CAIStateGroup_WanderAroundShops::OnReplace()
+0096a260	DIFFER	227v232	-	last search only: retail puts the shot out-slot at esp+0xc and the frame filter at esp+0x10 (ours swapped) and re-normalises the bool (test al,al ; se | landing retry: named filter + != 0 still DIFFER(233v232)
+00925f90	RELOCATION_MATCH	199v199	PASS	CAIStateGroup_WifeGiveYouGift::IsRunnable()
+009425f0	DIFFER	223v218	-	dead-argument-slot temporary: retail homes the uninitialised reached flag in the radius argument slot (lea ecx,[esp+38h]), ours gives it a push-ecx fr
+00942c70	RELOCATION_MATCH	193v193	PASS	CAIStateGroup_WorkAtSchool::StandAndTalk(float seconds)
+00944db0	DIFFER	206v206	-	esi/edi swap only: retail keeps this in edi and &PAnvil in esi (the WanderAroundShops::OnReplace 0x00946E70 assignment); ours swaps them
+00943b40	DIFFER	215v215	-	ebx/ebp swap (retail ebp = this, ebx = &PTaskThing) and the base-Cleanup this load scheduled after the temporary's dtor
+00943c20	DIFFER	206v206	-	register allocation only: retail tests the villager bit through eax and forms PBrain/creature/&key in ecx/eax/edx; ours uses ecx, then edx/eax/eax
+00a778d0	DIFFER	207v209	-	one instruction: retail re-reads the returned iterator from its (dead origin argument) slot, mov eax,[esp+28h]; ours dereferences the returned hidden 
+00f079d0	MATCH	169v169	PASS	CAT_BanditAlly::SwitchBanditAllegience()
+0053fd00	RELOCATION_MATCH	162v162	PASS	CAction::~CAction()
+007e71d0	DIFFER	162v162	-	scheduling only: in the second CScriptThing (PRouteThing +0x38) retail stores the vtable before the two PImp zeros, ours after them (the first member 
+00905360	RELOCATION_MATCH	190v190	PASS	NTCScriptedControl::CActionPerformExpression::CActionPerformExpression(CThing* target, const CCharString& expression,
+00712a80	DIFFER	216v216	-	register choice only: retail releases through edx (mov edx,[edi] ; call [edx]) and reads the idle-path creature through eax; ours eax / ecx
+00717950	DIFFER	198v198	-	scheduling only: retail stores UpdateCounter (+0x18) after the two fld/fstp time copies and loads the useCameraTags byte between them; ours stores it 
+00717aa0	RELOCATION_MATCH	219v219	PASS	NTCScriptedControl::CActionTalkToThing::CActionTalkToThing(CThing* target, const char* textName, const char* groupName,
+00717c50	DIFFER	283v237	-	retail folds the inline STLport push_back capacity test on the fresh local array (straight to _M_insert_overflow with pos 0 from edi); ours keeps the 
+006773f0	RELOCATION_MATCH	232v232	PASS	CActionUseDef::Transfer(CPersistContext&)
+00cb5b90	RELOCATION_MATCH	211v211	PASS	landing retry: inline clear() { erase(begin(), end()); }
+005c2c65	DIFFER	178v177	-	dead-argument-slot temporaries: retail puts all three __false_type tags in the high byte of the atEnd slot ([ebp+1Bh]); ours gives the first a frame b
+009c4330	RELOCATION_MATCH	173v173	PASS	CActiveFile::CActiveFile(const CCountedPointer<const CFileInstaller::CFileInfo>& fileInfo)
+004b0310	RELOCATION_MATCH	213v213	PASS	CActiveQuest::CActiveQuest(long id, const CCharString& questName, CScriptInfo* scriptInfo, CScriptBase* script,
+005dbb60	RELOCATION_MATCH	214v214	PASS	CAnimComponentCombatComboChain::TransferBinaryIn(CMemoryDataInputStream* stream)

@@ -208,6 +208,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand181` | Hand chunk 181 (C3DSkeletalMorph .. CAIStateGroup_DeedReactionRoot): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand182` | Hand chunk 182 (CAIStateGroup_Drunk .. CAIStateGroup_MeleeCombatNearbyBase): 29 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand183` | Hand chunk 183 (CAIStateGroup_MinionBehaviourGreetCreature .. CAIStateGroup_StealthSeekEnemy): 20 of 40 byte-exact | - | 20 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand184` | Hand chunk 184 (CAIStateGroup_SummonerSummon .. CAnimComponentCombatComboChain): 21 of 40 byte-exact | - | 19 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -265,7 +266,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-16_linux_retry6` | Retry batch 6 (Fable 5.1, 2026-10-16): 8 parked rows from chunks 165-179 | - | 8 | 0 | landed; parked rows open |
 | `2026-10-16_linux_retry7` | Retry batch 7 (Fable 5.1, 2026-10-16): 8 near-miss parked rows from chunks 142-154 | - | 8 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **775 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **794 parked rows** for the Fable retry pass.
 
 ### Skipped rows (16 open of 41 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1162,6 +1163,28 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00927df0 CAIStateGroup_SetupWares::IsRunnable DIFFER(173v173): tail merge only: the two `return false` jumps (no shop / condition false) land on retail's SECOND SetStockState arm's `xor al,al` tail (0x927E93), ours on the first arm's | tried: arm returns, if/else arms, early-return chain | next: lane gap: register/scheduling
 - 00945bd0 CAIStateGroup_SitForMeal::Update DIFFER(219v219): register only: retail tests the presence byte through eax (`mov eax,[eax+18h] ; test byte [eax+28h],40h`), ours through ecx | tried: while/return loop (231 bytes), do/while loop + chair branch order (all else fixed), raw bitset test | next: lane gap: register/scheduling
 - 0093c420 CAIStateGroup_StealthSeekEnemy::Cleanup DIFFER(184v184): argument scheduling only (same as 0x0093BDF0): retail `mov ecx,[eax+4] ; mov eax,[edi+4] ; mov edx,[eax+18h]`, ours loads PBrain->PCreature through ecx/edx before the component | tried: FindEntry inline, GetInterface for 0x45 (fixed that call), named component local, named creature local | next: lane gap: register/scheduling
+
+
+#### `2026-10-15_linux_hand184` (19 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand184/differ/`)
+- 009683a0 CAIStateGroup_TavernKeeper::GetPaymentRequest DIFFER(191v191): retail forms &type into the Bind2 slot and loads the creature via eax before the UID ctor; ours keeps &type in edi | tried: inline Bind2 ctor, named IsOfType, aggregate-assigned Bind2 | next: lane gap: scheduling
+- 00968460 CAIStateGroup_TavernKeeper::GetPaymentMessage(0x30) DIFFER(172v172): &PPayee edi / creature-filter this ebx swapped | tried: left-grouped chain, named creature filter, right-grouped `a && (b && c)` (fixes the build order) | next: lane gap: register allocation
+- 00968510 CAIStateGroup_TavernKeeper::GetPaymentCancelledMessage(0x31) DIFFER(172v172): as 00968460 | tried: same | next: lane gap: register allocation
+- 00966cf0 CAIStateGroup_TavernServer::IsCarryingJug DIFFER(174v174): &def pushed before the jug fetch; release vtable via edx (retail eax) | tried: flat locals, block-scoped def, named jug-def local | next: block-scoped def + `PJug.GetPItem()->PDef->` operator-> form
+- 009687b0 CAIStateGroup_TavernServer::IsCarryingJug (twin, item id +0x30) DIFFER(174v174): as 00966cf0 | tried: same source | next: as 00966cf0
+- 00967930 CAIStateGroup_TavernServer::PickUpJug DIFFER(232v232): ebx/edi swap only | tried: inline creature, named creature, named creature + jug | next: lane gap: register allocation
+- 00940820 CAIStateGroup_VillageTaskHorn::IsRunnable DIFFER(164v164): creature arg pushed through edx (retail ecx) | tried: horn local, direct assignment, brain local | next: lane gap: register allocation
+- 0093fbc0 CAIStateGroup_VillageTaskSecuritySweep::IsRunnable DIFFER(175v173): `mov edx,ecx ; push edx` v `push ecx` | tried: plain, const param | next: lane gap: register allocation (same as Horn)
+- 00943b40 CAIStateGroup_WorkInWarehouse::Cleanup DIFFER(215v215): ebx/ebp swap + base-Cleanup this load order | tried: double-if spill form, named creature local, base call in own test | next: lane gap: register allocation
+- 00943c20 CAIStateGroup_WorkInWarehouse::IsRunnable DIFFER(206v206): ecx/edx/eax rotation in the two villager tests | tried: masked-word HasTC, bool HasTC | next: lane gap: register rotation
+- 00944db0 CAIStateGroup_WorkHammerAnvil::OnReplace DIFFER(206v206): esi/edi swap only | tried: nested if, single && chain | next: lane gap: register allocation
+- 0096a260 CAIStateGroup_WhisperRetreat::FindHitEvent DIFFER(227v232): last search's out/frame slots swapped and the bool re-normalised (`test al,al ; setne al`) | tried: function locals, block hit locals, block shot local (frame fixed) | next: `return GetEvent(...) != 0` with the frame filter named | landing retry: named CIsEventCreatedAfter + `!= 0` -- DIFFER(233v232), out/frame slots still swapped
+- 009425f0 CAIStateGroup_WorkAtSchool::MoveAndFace DIFFER(223v218): `reached` homed in the radius arg slot (retail) v a push-ecx byte | tried: inline vector difference + sqrt | next: lane gap: dead-argument-slot temporary
+- 00a778d0 CANavQuadTreeNode::SaveToFile DIFFER(207v209): retail re-reads the returned iterator from its slot (`mov eax,[esp+28h]`), ours `mov eax,[eax]` | tried: temp iterator, named iterator, iterator with dtor | next: explicit out-parameter find
+- 007e71d0 NTCScriptedControl::CActionMoveTo ctor DIFFER(162v162): second CScriptThing's vtable store after its PImp zeros | tried: struct copy Pos, member-wise copy ctor, separate CScriptThing root symbol | next: lane gap: scheduling
+- 00712a80 NTCScriptedControl::CActionPlayCombatAnimation::Update DIFFER(216v216): release via edx and idle-path creature via eax in retail | tried: long param, bool param, early-return tail | next: lane gap: register allocation
+- 00717950 NTCScriptedControl::CActionTalkBase ctor DIFFER(198v198): UpdateCounter store placed among the fstp pair in retail | tried: init list, body assignment | next: lane gap: scheduling
+- 00717c50 NTCScriptedControl::CActionTalkToThing ctor (text-index overload) DIFFER(283v237): retail folds the STLport push_back capacity test on the fresh local | tried: inline push_back | next: call _M_insert_overflow directly; lane gap: dead-argument-slot tag
+- 005c2c65 STLport vector<CCategory>::_M_insert_overflow DIFFER(178v177): __false_type tags in the atEnd slot high byte (retail) | tried: implicit tag ctor, user tag ctor, __forceinline helpers | next: lane gap: dead-argument-slot temporary
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
