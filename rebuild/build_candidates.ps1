@@ -235890,6 +235890,13 @@ $catalog = @(
         TestSource = '00/c6/CStreamProgressMonitor_UpdateProgress_00c6af50_test.cpp'
         PassPattern = '00c6af50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0080c350'
+        Module = 'CTCDExplosion'
+        Source = '00/80/CTCDExplosion_IsDynamicExplosionFinished_0080c350.cpp'
+        TestSource = '00/80/CTCDExplosion_IsDynamicExplosionFinished_0080c350_test.cpp'
+        PassPattern = '0080c350_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

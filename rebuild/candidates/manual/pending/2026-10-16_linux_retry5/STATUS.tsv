@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+0080c350	RELOCATION_MATCH	107	PASS	CTCDExplosion::IsDynamicExplosionFinished (total declared before the frame-rate local, def in a local, ? true : false)
+007edd60	DIFFER			see differ/ grade line
+0069a8b0	DIFFER			see differ/ grade line
+007366c0	DIFFER			see differ/ grade line
+00729410	DIFFER			see differ/ grade line
+009f40a0	DIFFER			see differ/ grade line
+004c1060	DIFFER			see differ/ grade line
+0071c2d0	DIFFER			see differ/ grade line

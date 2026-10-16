@@ -1,0 +1,2 @@
+- A compare returned as bool with a bare `setg al` tail is `return a > b ? true : false;`; a frame-rate global copied through ecx before the first push means the accumulator local is declared before it.
+- The CDefPointer release that does not re-read the escaped local after `dec [ecx+4]` is still unreproduced after six dtor forms (local copy, &&, split decrement, DecRef helper): treat it as a lane gap.
