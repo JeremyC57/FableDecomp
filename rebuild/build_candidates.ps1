@@ -236703,6 +236703,202 @@ $catalog = @(
         TestSource = '00/cb/CStringKeyedRecordMap00cb72a0_Add_00cb72a0_test.cpp'
         PassPattern = '00cb72a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00558540'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_CKeyRedefiner_00558540.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_CKeyRedefiner_00558540_test.cpp'
+        PassPattern = '00558540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005eb510'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_PlayerHasBeenHit_005eb510.cpp'
+        TestSource = '00/5e/CTCTavernGame_PlayerHasBeenHit_005eb510_test.cpp'
+        PassPattern = '005eb510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ec5c0'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_ClearBox_005ec5c0.cpp'
+        TestSource = '00/5e/CTCTavernGame_ClearBox_005ec5c0_test.cpp'
+        PassPattern = '005ec5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066b300'
+        Module = 'CTCSoundPlayer'
+        Source = '00/66/CTCSoundPlayer_PlayAttachedSample_0066b300.cpp'
+        TestSource = '00/66/CTCSoundPlayer_PlayAttachedSample_0066b300_test.cpp'
+        PassPattern = '0066b300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2dc0'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_IsSpeechSampleLoadedAndPlaying_006e2dc0.cpp'
+        TestSource = '00/6e/CTCTalk_IsSpeechSampleLoadedAndPlaying_006e2dc0_test.cpp'
+        PassPattern = '006e2dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072b0d0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_SetupPhysicalShieldSpell_0072b0d0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_SetupPhysicalShieldSpell_0072b0d0_test.cpp'
+        PassPattern = '0072b0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072c3c0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_vfunc16_0072c3c0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_vfunc16_0072c3c0_test.cpp'
+        PassPattern = '0072c3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00731ca0'
+        Module = 'CTCSpotLight'
+        Source = '00/73/CTCSpotLight_GetDirection_00731ca0.cpp'
+        TestSource = '00/73/CTCSpotLight_GetDirection_00731ca0_test.cpp'
+        PassPattern = '00731ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00731d40'
+        Module = 'CTCSpotLight'
+        Source = '00/73/CTCSpotLight_CTCSpotLight_00731d40.cpp'
+        TestSource = '00/73/CTCSpotLight_CTCSpotLight_00731d40_test.cpp'
+        PassPattern = '00731d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00731e20'
+        Module = 'CTCSpotLight'
+        Source = '00/73/CTCSpotLight_OnCreate_00731e20.cpp'
+        TestSource = '00/73/CTCSpotLight_OnCreate_00731e20_test.cpp'
+        PassPattern = '00731e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00747110'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_vfunc16_00747110.cpp'
+        TestSource = '00/74/CTCStealth_vfunc16_00747110_test.cpp'
+        PassPattern = '00747110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00747790'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_IsAvailableToPerformStealthAttack_00747790.cpp'
+        TestSource = '00/74/CTCStealth_IsAvailableToPerformStealthAttack_00747790_test.cpp'
+        PassPattern = '00747790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00747820'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_CTCStealth_00747820.cpp'
+        TestSource = '00/74/CTCStealth_CTCStealth_00747820_test.cpp'
+        PassPattern = '00747820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00770e80'
+        Module = 'CTCSolidToThing'
+        Source = '00/77/CTCSolidToThing_FrameUpdate_00770e80.cpp'
+        TestSource = '00/77/CTCSolidToThing_FrameUpdate_00770e80_test.cpp'
+        PassPattern = '00770e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079a820'
+        Module = 'CTCSummonSpell'
+        Source = '00/79/CTCSummonSpell_CancelMove_0079a820.cpp'
+        TestSource = '00/79/CTCSummonSpell_CancelMove_0079a820_test.cpp'
+        PassPattern = '0079a820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079b650'
+        Module = 'CTCSummonSpell'
+        Source = '00/79/CTCSummonSpell_SetSummonCreatureGlobalDefNum_0079b650.cpp'
+        TestSource = '00/79/CTCSummonSpell_SetSummonCreatureGlobalDefNum_0079b650_test.cpp'
+        PassPattern = '0079b650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b80b0'
+        Module = 'CTCOverheadDisplay'
+        Source = '00/7b/CTCOverheadDisplay_CTCOverheadDisplay_007b80b0.cpp'
+        TestSource = '00/7b/CTCOverheadDisplay_CTCOverheadDisplay_007b80b0_test.cpp'
+        PassPattern = '007b80b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d60c0'
+        Module = 'CTCTavernGameCardPairs'
+        Source = '00/7d/CTCTavernGameCardPairs_vfunc29_007d60c0.cpp'
+        TestSource = '00/7d/CTCTavernGameCardPairs_vfunc29_007d60c0_test.cpp'
+        PassPattern = '007d60c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d6260'
+        Module = 'CTCTavernGameCardPairs'
+        Source = '00/7d/CTCTavernGameCardPairs_vfunc53_007d6260.cpp'
+        TestSource = '00/7d/CTCTavernGameCardPairs_vfunc53_007d6260_test.cpp'
+        PassPattern = '007d6260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007da120'
+        Module = 'CTCTavernGameCardBlackjack'
+        Source = '00/7d/CTCTavernGameCardBlackjack_vfunc53_007da120.cpp'
+        TestSource = '00/7d/CTCTavernGameCardBlackjack_vfunc53_007da120_test.cpp'
+        PassPattern = '007da120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007da810'
+        Module = 'CTCTavernGameCardBlackjack'
+        Source = '00/7d/CTCTavernGameCardBlackjack_ReorderCards_007da810.cpp'
+        TestSource = '00/7d/CTCTavernGameCardBlackjack_ReorderCards_007da810_test.cpp'
+        PassPattern = '007da810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e5f00'
+        Module = 'CTCOracleMinigame'
+        Source = '00/7e/CTCOracleMinigame_CTCOracleMinigame_007e5f00.cpp'
+        TestSource = '00/7e/CTCOracleMinigame_CTCOracleMinigame_007e5f00_test.cpp'
+        PassPattern = '007e5f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f4fc0'
+        Module = 'CTCStockItem'
+        Source = '00/7f/CTCStockItem_GetShopTC_007f4fc0.cpp'
+        TestSource = '00/7f/CTCStockItem_GetShopTC_007f4fc0_test.cpp'
+        PassPattern = '007f4fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f58e0'
+        Module = 'CTCTargetingBase'
+        Source = '00/7f/CTCTargetingBase_CTCTargetingBase_007f58e0.cpp'
+        TestSource = '00/7f/CTCTargetingBase_CTCTargetingBase_007f58e0_test.cpp'
+        PassPattern = '007f58e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f5950'
+        Module = 'CTCTargetingBase'
+        Source = '00/7f/CTCTargetingBase_GetTargetedPos_007f5950.cpp'
+        TestSource = '00/7f/CTCTargetingBase_GetTargetedPos_007f5950_test.cpp'
+        PassPattern = '007f5950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f5a70'
+        Module = 'CTCTargetingBase'
+        Source = '00/7f/CTCTargetingBase_IsTargetedThingOfType_007f5a70.cpp'
+        TestSource = '00/7f/CTCTargetingBase_IsTargetedThingOfType_007f5a70_test.cpp'
+        PassPattern = '007f5a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f9b90'
+        Module = 'CTCTargetingSpirit'
+        Source = '00/7f/CTCTargetingSpirit_FrameUpdate_007f9b90.cpp'
+        TestSource = '00/7f/CTCTargetingSpirit_FrameUpdate_007f9b90_test.cpp'
+        PassPattern = '007f9b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f1cd0'
+        Module = 'CTCTavernGameCardBase'
+        Source = '00/8f/CTCTavernGameCardBase_CTCTavernGameCardBase_008f1cd0.cpp'
+        TestSource = '00/8f/CTCTavernGameCardBase_CTCTavernGameCardBase_008f1cd0_test.cpp'
+        PassPattern = '008f1cd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

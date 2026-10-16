@@ -1,0 +1,11 @@
+# Chunk 170 lessons (for GOTCHAS)
+- Two GetInterface out-parameter lookups in one function share one key frame word and keep `test byte ptr [eax+N],imm`; mixing HasTC+GetTC with GetInterface gives two key slots and a `mov cl,[..]` byte load (0x747790).
+- A plain inline GetTC used once can still be emitted out of line in a TU with several inline helpers: mark it `__forceinline` (0x7F4FC0, 0x6E2DC0).
+- `!(a > b)` on floats gives the NaN-aware `test ah,5 ; jnp`; `a <= b` gives `test ah,1 ; jne` (0x6E2DC0).
+- A __fastcall function returning C3DVector gets its hidden result pointer in ecx (world in edx) only when C3DVector is non-POD (a user default ctor); with a POD vector VC7.1 pushes the hidden pointer (0x7F5950).
+- `if (GetRefCount() == 1)` with a null-safe `P ? P->count : 0` keeps the immediate compare inside the loop; `P && P->count == 1` hoists the 1 into a callee-saved register (0x5EC5C0).
+- A UID read before a static frame call (`uid + GetWorldFrame()`) must be a named local; with GetWorld() called first and result unused, write `CWorld* w = GetWorld(); uint64 uid = ...; uid + w->GetWorldFrame()` (0x770E80, 0x7F9B90).
+- STLport `v.erase(remove(begin, end, T(0)), end())` inlines remove as find(first,last,val,tag) + remove_copy(++hit,last,hit,val); STLport vector::erase(first,last) inlines `__copy(last, finish, first, random_access_iterator_tag(), (int*)0)` (0x770E80, 0x5EC5C0).
+- The for-header order of a paired counter matters for its register: `++index, ++hand` vs `++hand, ++index` (0x7DA810).
+- Several CTC slot labels: "vfunc_6" OnInitialActivate, "vfunc_29" on card games is an EnterGame override, slot 16 is a CTCBase bool notification.
+- Lane gaps seen: frame-slot reuse of a dead def/iterator slot (0x7F98E0, 0x7F50B0), per-arm CDefPointer release shapes (0x5EA100).
