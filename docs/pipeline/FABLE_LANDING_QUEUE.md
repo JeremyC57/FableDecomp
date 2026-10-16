@@ -210,6 +210,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand183` | Hand chunk 183 (CAIStateGroup_MinionBehaviourGreetCreature .. CAIStateGroup_StealthSeekEnemy): 20 of 40 byte-exact | - | 20 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand184` | Hand chunk 184 (CAIStateGroup_SummonerSummon .. CAnimComponentCombatComboChain): 21 of 40 byte-exact | - | 19 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand185` | Hand chunk 185 (CAnimComponentCombatComboChain .. CBase): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand186` | Hand chunk 186 (CBase .. CCombatAction_GenericStrikeResponseKnockdown): 28 of 40 byte-exact | - | 11 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -267,9 +268,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-16_linux_retry6` | Retry batch 6 (Fable 5.1, 2026-10-16): 8 parked rows from chunks 165-179 | - | 8 | 0 | landed; parked rows open |
 | `2026-10-16_linux_retry7` | Retry batch 7 (Fable 5.1, 2026-10-16): 8 near-miss parked rows from chunks 142-154 | - | 8 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **809 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **820 parked rows** for the Fable retry pass.
 
-### Skipped rows (16 open of 41 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (17 open of 42 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -282,6 +283,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `007eec50` | multi | open | 007eec50:53 007eec90:93 | `2026-10-15_linux_hand170` | two functions in the row (OnDie ret at +0x34, second body at +0x40) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
 | `0080aad1` | single | open | 0080aad1:106 | `2026-10-15_linux_hand160` | not a function: the else-branch tail of 0x0080AA60 (je 0x80AAD1; pops edi/esi it never pushed) |
+| `0099f2e0` | single | open | 0099f2e0:164 | `2026-10-15_linux_hand186` | already landed |
 | `009f5d70` | prefix | open | 009f5d70:156 | `2026-10-15_linux_hand143` | CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B); fu |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
@@ -1204,6 +1206,20 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 009cc750 CBankFileEntryUpdateData::Equals DIFFER(235v235): loop element addressing order / registers | tried: plain, crc local, #pragma function(strcmp), null-first c_str (extra) | next: named element refs before strcmp
 - 009a7e20 CBankFileManager::GetDevHeaderFilePath DIFFER(172v171): retail cross-jumps two copy-ctor calls (push per arm, shared call) | tried: ternary, inline const& helper, per-name helpers | next: lane gap: cross-jumping
 - 009a7ed0 CBankFileManager::GetRetailHeaderFilePath DIFFER(172v171): twin of 009a7e20 (+0x20 field) | tried: same source shape | next: same
+
+
+#### `2026-10-15_linux_hand186` (11 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand186/differ/`)
+- 00c915a0 CBitstream::ReadBits DIFFER(190v188): retail sets `or edi,-1` between the two compares, ours uses a separate `mov edi,-1 ; jmp` block | tried: if/else -1, -1 default with ||, offset local, first shift via member | next: a goto/flag form, or the value set to -1 inside the first-compare failure
+- 008eda90 CCombatAction_FallStunned::CCombatAction_FallStunned DIFFER(165v169): inline CCharString==("") materialises `sete al` where retail branches straight off it | tried: inline/forceinline ==, != with swapped arms, open-coded test | next: one ternary condition with a single default arm
+- 00c0e1f0 CString::Left DIFFER(210v208): dest CString in the dead count slot in retail, `sub esp,8` frame in ours | tried: Right-sibling model | next: lane gap: dead-argument-slot temporary
+- 00a5b650 CCachedFile::Copy DIFFER(179v184): ebx pushed in the prologue (retail scopes it to the memmove arm); the 0x009E9900 append uses the LTCG convention | tried: direct erase, begin()/end(), CopyTrivial helper | next: lane gap: LTCG custom convention + dead-slot temporaries
+- 00a5b0a0 CCachedFile::MovePosition DIFFER(232v239): ours CSEs Position+offset across the throw; retail recomputes it and keeps an 8-byte frame | tried: throw temporary, named exception, inline ThrowFileError | next: model the throw path as not noreturn, else lane gap: dead-slot temporaries
+- 00a0c2b0 CCamera::PointAt DIFFER(206v208): flag test in al and the pushes before the x87 stores in retail; dl and the pushes after the branch in ours | tried: ternary ctor arg, if/else Z, ternary Z | next: lane gap: scheduling (maybe a by-value SetForward helper)
+- 0099b9a0 CWideString::operator+=(wchar_t) DIFFER(212v203): retail keeps c in ebx and homes n=1 in c's dead slot; ours homes n in the frame | tried: inline append, __forceinline append, STLport length check + Max(const&) | next: lane gap: dead-argument-slot temporaries / register allocation
+- 00a37060 CClassFactory::GetClassNumberFromName DIFFER(199v199): `mov esi,[ecx+4] ; add esi,10h` v `mov ecx,[ecx+4] ; lea esi,[ecx+10h]` | tried: member loop, count+info locals, guarded do-while | next: iterate a pointer at &info->Name directly
+- 00761560 NShape::CClosedShapeBase::EditorDrawPreparePrimitivesForRendering DIFFER(186v186): loop copies load all three words before the stores in retail; ours interleaves | tried: user copy ctor (best), implicit copy, float-local operator= | next: lane gap: scheduling
+- 00465c54 CCombatAbilityBlockDefBase::Transfer DIFFER(185v226): ebp frame with speed-style zeroing (`xor ebx`) and the saving arm first in retail; /Os `and` zeroing and inverted arms in ours | tried: optimize(s), /O2, optimize(s)+tag ctors | next: speed with `#pragma optimize("y", off)`, one vector declared before the if
+- 004c9840 CThing::RemoveTC DIFFER(213v213): retail homes the discarded insert() result in the dead `type` slot (0x14 frame); ours uses a 0x18 frame | tried: base model, CTCBase +4 fix, POD result | next: lane gap: dead-argument-slot temporary
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

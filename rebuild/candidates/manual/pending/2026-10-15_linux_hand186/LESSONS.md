@@ -1,0 +1,8 @@
+- A compiler-generated operator= is emitted by a one-line `a = b` caller; leaf `??4<Class>`.
+- An inline `T Get(const CTimer& t)` reading a member through a reference gives `add eax,N ; mov eax,[eax]`.
+- CBase owns the vptr: model `virtual ~CBase()` so the base dtor runs on the object's own address, not +4.
+- A temporary CCharString argument after a vtable load: make it a scoped named local so it is built first.
+- An LTCG free function that returns a struct with its address in ecx (callee-clean) matches as a __thiscall member on the result object.
+- A user copy ctor on CCountedPointer makes a by-value argument build in place. The ctor's null test folds away when the pointer was already dereferenced.
+- Fetch a GetPItem() object into a named local before a call whose arguments must be pushed after it.
+- No-EH throw: `CCharString msg = CCharString("") + text; Trace(msg); throw E(code);`. An uninitialised named exception local gives the `mov al,[slot]` copy.
