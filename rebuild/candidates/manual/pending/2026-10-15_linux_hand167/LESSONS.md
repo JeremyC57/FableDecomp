@@ -1,0 +1,8 @@
+# Chunk 167 lessons (for GOTCHAS)
+- A class with a vptr and an `__int64` member that is modelled flat (vptr declared in the leaf) pads the vptr to 8 and shifts every member by 4; derive from a real CTCBase struct instead (0x007E83B0).
+- `HasTC(k)` must be `if (bits & mask) return true; return false;` -- a `return (bits & mask) != 0;` form gives `shr ; test cl,1` and reshuffles the registers of the whole function (0x0072E4C0).
+- A temporary CIntelligentPointer used to clear a member at function scope lets VC7.1 hoist a following member store above its dtor call; put the temporary in its own `{}` block (0x007F0810).
+- An unnamed CCharString temporary passed by const reference reuses the ctor's eax (`push eax`); retail `lea ecx,[esp+N] ; push ecx` is a named local (0x007E61B0).
+- The `_Vector_base` + `_STLP_alloc_proxy` model also fixes `lea edi,[esi+N] ; mov ecx,edi` placement for a non-vector three-word member (CCardinalSpline's control points, 0x004E3325) and inside multi-base TC ctors (CTCLight 0x00640F00).
+- Def-pointer release shape gap: retail `mov ecx,[slot] ... mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax ; jne` (CTCObjectAugmentations 0x00766050..0x00766400, CTCCreatureGenerator 0x0074A100) was not reproduced by a member dtor, a pointer-local dtor, a member release, a scoped holder or optimize("s"); ours gives `mov edx,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx`. Possibly a different compiler build for that TU.
+- RTTI type descriptors (vtable-4 -> complete object locator -> type descriptor) name constructors whose vtable is missing from rtti-vtables.tsv (CModeHoverBase, CTCHeroRangedAttacks); the 52-byte entity scripts were identified from PDB sizes plus neighbouring function names.

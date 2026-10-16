@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007fb610	DIFFER	137v133	-	CTCKraken::RaiseSunkenTentacles; fps global gets its own frame word (retail shares the GetInterface key slot)
+008d7bb0	RELOCATION_MATCH	112v112	PASS	really NCreatureMode::CModeDragonStrafeBurninate::EndBeamEffect (+0x98 beam pointer)
+004db2e7	RELOCATION_MATCH	102v102	PASS	CTCKrakenTentacle ctor; optimize("s", on)
+007f0810	RELOCATION_MATCH	120v120	PASS	CTCKrakenTentacle::RemoveObstruction; temp pointer in its own block
+008eac40	RELOCATION_MATCH	99v99	PASS	really NCreatureMode::CModeHoverBase ctor (RTTI vtable 0x01287D14)
+00640bb0	RELOCATION_MATCH	136v136	PASS	CTCLight::SetColour
+00640df0	RELOCATION_MATCH	99v99	PASS	CTCLight::SetOverridden
+00640e60	RELOCATION_MATCH	148v148	PASS	CTCLight::SetLightDef (inlined SetOverridden(true))
+00640f00	RELOCATION_MATCH	120v120	PASS	CTCLight ctor; _Vector_base model
+0062e900	RELOCATION_MATCH	123v123	PASS	really CCombatActionBase::~CCombatActionBase (novtable)
+00cdfeb0	RELOCATION_MATCH	102v102	PASS	really CEndGameBarrier ctor (entity script)
+00ee02c0	RELOCATION_MATCH	102v102	PASS	really CTH_SnowTroll ctor (entity script)
+00752120	DIFFER	91v112	-	really CTCLook::ChangeHeadAngleXY; K*0.5 folded and CSE'd
+00752190	DIFFER	100v100	-	CTCLook::ChangeHeadAngleYZ; scheduling only
+00752480	DIFFER	133v137	-	CTCLook::IsAbleToTurnViaAnimation; creature pointer via eax->ecx in retail
+007525c0	DIFFER	115v115	-	CTCLook::GetTurningAnglesAndCheckForTurningBody; test eax vs test al
+007528a0	RELOCATION_MATCH	124v124	PASS	CTCLook::CentreHead
+007530d0	RELOCATION_MATCH	150v150	PASS	CTCLook::FrameUpdateHeadLookAtPos
+00753ad0	RELOCATION_MATCH	101v101	PASS	CTCLook::IsLookTimeOver
+0082fd90	DIFFER	108v108	-	really CThingAICreature::WorldUpdateBulletTime; x87 sum-of-squares order
+0072e4c0	RELOCATION_MATCH	144v144	PASS	CTCMeshAutomaticEntityCreator::CatchMessage
+007cc120	RELOCATION_MATCH	102v102	PASS	CTCMultiArrow::RemoveEffectOnWeapon
+007cc190	RELOCATION_MATCH	154v154	PASS	CTCMultiArrow::CancelForCutscene
+007cc230	RELOCATION_MATCH	118v118	PASS	CTCMultiArrow::ResumeForCutscene
+007cc9e0	RELOCATION_MATCH	128v128	PASS	CTCMultiStrike::RemoveEffectOnWeapon
+007498e0	DIFFER	162v160	-	CTCNoise::OnCreate (vfunc_4); CDefPointer zero-store placement
+004e3325	RELOCATION_MATCH	97v97	PASS	CTCNymph ctor; optimize("s", on), alloc-proxy capacity word
+0080f190	RELOCATION_MATCH	122v122	PASS	CTCNymph::IsDecentAttackRange
+0080fd90	RELOCATION_MATCH	108v108	PASS	CTCNymph::OnInitialActivate
+0074a100	DIFFER	147v137	-	really CTCCreatureGenerator::GetNumGeneratedCreatures; def release shape
+00766050	DIFFER	116v110	-	CTCObjectAugmentations::HasCombinationOfAugmentations; sub-def release shape
+007660c0	DIFFER	131v116	-	CTCObjectAugmentations::HasAugmentationOfType; sub-def release shape
+00766140	DIFFER	119v113	-	CTCObjectAugmentations::GetDamageMultiplier; sub-def release shape
+00766400	DIFFER	119v113	-	really GetExperienceMultiplier; sub-def release shape
+00771770	DIFFER	150v151	-	CTCOpinionSource::CleanupSource; ebx/ebp swap
+00789bb0	RELOCATION_MATCH	101v101	PASS	really CTCHeroRangedAttacks ctor (RTTI vtable 0x0126BAF4)
+009b58b0	RELOCATION_MATCH	98v98	PASS	really STL __linear_insert<CWideString> (/Gr fastcall)
+007e61b0	RELOCATION_MATCH	125v125	PASS	CTCOracleMinigame::FireOutput
+007e6230	RELOCATION_MATCH	153v153	PASS	CTCOracleMinigame::SetText
+007e83b0	RELOCATION_MATCH	97v97	PASS	CTCOwnedEntity::OnInitialActivate

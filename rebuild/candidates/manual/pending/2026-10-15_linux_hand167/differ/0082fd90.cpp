@@ -1,0 +1,46 @@
+// CThingAICreature::WorldUpdateBulletTime() -- bullet-time world update of an AI creature: update its action, run the CThing bullet-time update, then update the animation with the creature's distance from the camera
+// Leaf: WorldUpdateBulletTime
+// Grade: DIFFER(108v108) -- x87 sum-of-squares order: ours z*z + x*x + y*y, retail z*z + y*y + x*x (invariant under source term order: tried X+Y+Z, Y+X+Z, X+Z+Y)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0082FD90, length 108 bytes. Catalog label "CTCLook::UpdateHeadPos" is propagated: the
+// address is slot 20 of CThingAICreature's vtable 0x0127293C (rtti-vtables.tsv), the CThing slot of WorldUpdateBulletTime (0x004C8BA0).
+// Callees: CThingCreatureBase::UpdateAction @ 0x006643C0, CThing::WorldUpdateBulletTime @ 0x004C8BA0 (direct base call), the camera
+// accessor @ 0x004C7AA0 (`mov eax,[0x013B8A1C] ; mov eax,[eax+24h]`: the world's current camera), the camera's virtual slot 8 (+0x20,
+// position returned by value through a hidden pointer), CThing::GetPosition @ 0x006A4D00, CThingCreatureBase::UpdateAnimation(float)
+// @ 0x00665860.
+// Shape: camera and position are named locals fetched in that order; the distance is `(cameraPos - pos).GetLength()` inlined.
+#include <math.h>
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector() { }
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
+    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
+    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
+};
+struct CCamera {
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+    virtual C3DVector GetPosition() const;      // slot 8 (+0x20)
+};
+struct CThing {
+    virtual void v00();
+    const C3DVector& GetPosition() const;       // 0x006A4D00
+    CCamera* GetCamera() const;                 // 0x004C7AA0
+    void WorldUpdateBulletTime();               // 0x004C8BA0 (slot 20)
+};
+struct CThingCreatureBase : CThing {
+    void UpdateAction();                        // 0x006643C0
+    void UpdateAnimation(float distanceToCamera);   // 0x00665860
+};
+struct CThingAICreature : CThingCreatureBase {  // vtable 0x0127293C
+    void WorldUpdateBulletTime();
+};
+
+void CThingAICreature::WorldUpdateBulletTime()
+{
+    UpdateAction();
+    CThing::WorldUpdateBulletTime();
+    CCamera* camera = GetCamera();
+    const C3DVector& pos = GetPosition();
+    UpdateAnimation((camera->GetPosition() - pos).GetLength());
+}

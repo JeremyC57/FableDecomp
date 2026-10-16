@@ -191,6 +191,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand164` | Hand chunk 164 (CTCGraphicAppearance .. CTCHeroStats): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand165` | Hand chunk 165 (CTCHeroStats .. CTCInventoryBase): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand166` | Hand chunk 166 (CTCInventoryBase .. CTCKraken): 32 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand167` | Hand chunk 167 (CTCKraken .. CTCOwnedEntity): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -246,7 +247,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **590 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **603 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -916,6 +917,22 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 005c311a CTCInventoryWeapons::GetItemOfTypeInInventory DIFFER(102v102): esi/edi swapped (this vs weapon address) | tried: two plain arms, weapon local + nested ifs, `||` with assignment, weapon local + separate returns | next: lane gap: register swap
 - 005c8101 CTCInventoryWeapons::PutWeaponsInSheathes DIFFER(117v117): discarded presence test `mov ecx,[esi+4] ; add ecx,20h` vs retail `mov eax,[esi+4] ; lea ecx,[eax+20h]`; retail pushes ebx only inside the melee block | tried: direct arguments, inline PutWeaponInSheathe helper (fixed owner order), dead GetInterface, presence-bits pointer local | next: lane gap: callee-saved push placement
 - 005c99fd CTCInventoryWeapons::ConfiscateItems DIFFER(152v152): ebx/edi swapped (melee address vs melee def index) | tried: layout fix, ranged index declared first, scoped melee pointer local | next: lane gap: register swap
+
+
+#### `2026-10-15_linux_hand167` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand167/differ/`)
+- 007fb610 CTCKraken::RaiseSunkenTentacles DIFFER(137v133): `sub esp,8` and the fps copy in its own frame word; retail `push ecx` shares one slot for the GetInterface key, the fps copy and the spilled world frame | tried: direct global, fps+def named locals, own `{}` block, `__forceinline` GetTC returning the out pointer | next: lane gap: frame-slot sharing of a short-lived local
+- 00752120 CTCLook::ChangeHeadAngleXY DIFFER(91v112): ours folds `* (1/360) * 0.5f` into one constant and CSEs the halved range for both limits; retail two fmuls, twice, bool in dl | tried: def local, inline GetHalfHeadRangeXY(), `/ 2.0f` | next: an inline DegreesToTurns(float) helper returning by value, or a non-literal 0.5 member
+- 00752190 CTCLook::ChangeHeadAngleYZ DIFFER(100v100): `fmul [esp+14h]` (speed*time) before the second `sub esp,8` in retail, after it in ours | tried: plain, def named local | next: lane gap: scheduling only
+- 00752480 CTCLook::IsAbleToTurnViaAnimation DIFFER(133v137): retail loads PParentCreature into eax, tests it there and `mov ecx,eax` before each call; ours loads ecx directly | tried: IS_ALIVE on CThingCreatureBase*/CThing*, inline accessor, Dead bit field + IsDead() | next: lane gap: looked-up pointer used as `this` loaded via eax
+- 007525c0 CTCLook::GetTurningAnglesAndCheckForTurningBody DIFFER(115v115): the negation tests `eax` where retail does `test al,al ; sete dl` after a full-register `mov eax,1 / xor eax,eax` | tried: bool local, bool helper, long helper + (bool), unsigned char helper | next: long helper with `? false : true`
+- 0082fd90 CThingAICreature::WorldUpdateBulletTime DIFFER(108v108): sum of squares z*z + x*x + y*y vs retail z*z + y*y + x*x | tried: X+Y+Z, Y+X+Z, X+Z+Y | next: lane gap: x87 sum-of-squares term order
+- 007498e0 CTCNoise::OnCreate DIFFER(162v160): the zeroed CDefPointer store before the GetDef pushes (retail after them) and the def read via eax then `mov ebp,eax` | tried: CDefPointer dtor, pointer local + hand release, `__forceinline` GetThingNoiseDef(), raw pointer out | next: lane gap: temporary CDefPointer zero store scheduled after the pushes
+- 0074a100 CTCCreatureGenerator::GetNumGeneratedCreatures DIFFER(147v137): CDefPointer dtor decrement compiles to `mov edx,[eax+4] ; add eax,4 ; dec edx ; mov [eax],edx` (or reloads Object), retail keeps the def in ecx with `dec dword ptr [ecx+4] ; jne` | tried: member dtor, pointer-local dtor (two forms), const/mutable vs plain | next: pointer local read once after GetDef with a hand release (the 0x007498E0 attempt-2 form gave `dec [ebp+4]`)
+- 00766050 CTCObjectAugmentations::HasCombinationOfAugmentations DIFFER(116v110): sub-def release `mov ecx,eax ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx` vs retail `mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax ; jne`, plus this/index in edi/ebx (retail esi/edi) | tried: dtor, scoped holder | next: lane gap: def release register shape (shared by the next three)
+- 007660c0 CTCObjectAugmentations::HasAugmentationOfType DIFFER(131v116): same release gap on both exits; type argument in ebp (retail ebx) | tried: dtor | next: lane gap: def release register shape
+- 00766140 CTCObjectAugmentations::GetDamageMultiplier DIFFER(119v113): same release gap | tried: member dtor, pointer-local dtor, member ReleaseReference(), optimize("s") | next: lane gap: def release register shape
+- 00766400 CTCObjectAugmentations::GetExperienceMultiplier DIFFER(119v113): same release gap | tried: hand release on a pointer local, member accessor + member release | next: lane gap: def release register shape
+- 00771770 CTCOpinionSource::CleanupSource DIFFER(150v151): register choice only, this in ebp and the next-node cursor in ebx (retail ebx/ebp) | tried: it/node loop forms, owner local, declaration order | next: lane gap: register choice (scheduling-only)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
