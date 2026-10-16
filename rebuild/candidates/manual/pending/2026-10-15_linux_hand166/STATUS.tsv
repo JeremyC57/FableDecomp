@@ -13,7 +13,7 @@ address	status	bytes	test	note
 00570161	RELOCATION_MATCH	121v121	PASS	CTCInventoryExperience::SaveExperienceValuesForCountDown()
 005d9bf0	RELOCATION_MATCH	97v97	PASS	CTCInventoryItem::Persist(CPersistContext* context, bool flag)
 0072db00	RELOCATION_MATCH	111v111	PASS	CTCInventoryMagic::GetScreenName() const
-0072dc70	DIFFER	108v108	-	scheduling only: retail stores the zeroed sub-def out pointer between `test esi,esi` and `je` of the owner-def add-ref, ours stores it before the load
+0072dc70	RELOCATION_MATCH	108	PASS	OnCreate (sibling form applied by the landing session)
 005fa990	DIFFER	112v111	-	x87 load order only: retail loads the copied position Z, Y, X (`fld [edi+15Ch]` before `add edi,154h`, X last from [edi]), ours X, Y, Z with identical
 005fbd20	RELOCATION_MATCH	98v98	PASS	CTCInventoryMap::TeleportHeroToTeleporter(CThing* teleporter)
 0061a2c0	RELOCATION_MATCH	153v153	PASS	CTCInventoryQuests::GetQuestPositionAndRemoveIt(long questDefIndex)
