@@ -234854,6 +234854,195 @@ $catalog = @(
         TestSource = '00/f3/CSurfaceCompositor_CSurfaceCompositor_00f38990_test.cpp'
         PassPattern = '00f38990_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00486f60'
+        Module = 'CTCContainerRewardHero'
+        Source = '00/48/CTCContainerRewardHero_AdjustTrajectoryVector_00486f60.cpp'
+        TestSource = '00/48/CTCContainerRewardHero_AdjustTrajectoryVector_00486f60_test.cpp'
+        PassPattern = '00486f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00670560'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_AddAppearanceParticle_00670560.cpp'
+        TestSource = '00/67/CTCCoopSpirit_AddAppearanceParticle_00670560_test.cpp'
+        PassPattern = '00670560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00670710'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_UpdateScore_00670710.cpp'
+        TestSource = '00/67/CTCCoopSpirit_UpdateScore_00670710_test.cpp'
+        PassPattern = '00670710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00670a10'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_vfunc9_00670a10.cpp'
+        TestSource = '00/67/CTCCoopSpirit_vfunc9_00670a10_test.cpp'
+        PassPattern = '00670a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a0ff0'
+        Module = 'CTCCarrying'
+        Source = '00/6a/CTCCarrying_OnKill_006a0ff0.cpp'
+        TestSource = '00/6a/CTCCarrying_OnKill_006a0ff0_test.cpp'
+        PassPattern = '006a0ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a10a0'
+        Module = 'CTCCarrying'
+        Source = '00/6a/CTCCarrying_IsCarryingThing_006a10a0.cpp'
+        TestSource = '00/6a/CTCCarrying_IsCarryingThing_006a10a0_test.cpp'
+        PassPattern = '006a10a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a1d60'
+        Module = 'CTCCarrying'
+        Source = '00/6a/CTCCarrying_UpdateCarriedObjects_006a1d60.cpp'
+        TestSource = '00/6a/CTCCarrying_UpdateCarriedObjects_006a1d60_test.cpp'
+        PassPattern = '006a1d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00705c30'
+        Module = 'CTCCarryable'
+        Source = '00/70/CTCCarryable_vfunc6_00705c30.cpp'
+        TestSource = '00/70/CTCCarryable_vfunc6_00705c30_test.cpp'
+        PassPattern = '00705c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007293a0'
+        Module = 'CTCCreatureExpression'
+        Source = '00/72/CTCCreatureExpression_ForcePrimaryExpression_007293a0.cpp'
+        TestSource = '00/72/CTCCreatureExpression_ForcePrimaryExpression_007293a0_test.cpp'
+        PassPattern = '007293a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00733950'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_HasAppropriateFollowingCombo_00733950.cpp'
+        TestSource = '00/73/CTCCombat_HasAppropriateFollowingCombo_00733950_test.cpp'
+        PassPattern = '00733950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074e460'
+        Module = 'CTCContainerRewardHero'
+        Source = '00/74/CTCContainerRewardHero_GetDynamicResurrectionDefIndex_0074e460.cpp'
+        TestSource = '00/74/CTCContainerRewardHero_GetDynamicResurrectionDefIndex_0074e460_test.cpp'
+        PassPattern = '0074e460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007506c0'
+        Module = 'CTCChest'
+        Source = '00/75/CTCChest_Close_007506c0.cpp'
+        TestSource = '00/75/CTCChest_Close_007506c0_test.cpp'
+        PassPattern = '007506c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075c210'
+        Module = 'CTCCameraPointDefinitionBase'
+        Source = '00/75/CTCCameraPointDefinitionBase_SetCoordSystem_0075c210.cpp'
+        TestSource = '00/75/CTCCameraPointDefinitionBase_SetCoordSystem_0075c210_test.cpp'
+        PassPattern = '0075c210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075cdf0'
+        Module = 'CTCCameraPointScripted'
+        Source = '00/75/CTCCameraPointScripted_vfunc17_0075cdf0.cpp'
+        TestSource = '00/75/CTCCameraPointScripted_vfunc17_0075cdf0_test.cpp'
+        PassPattern = '0075cdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075cfe0'
+        Module = 'CTCCameraPointScriptedSpline'
+        Source = '00/75/CTCCameraPointScriptedSpline_GetKeyCamera_0075cfe0.cpp'
+        TestSource = '00/75/CTCCameraPointScriptedSpline_GetKeyCamera_0075cfe0_test.cpp'
+        PassPattern = '0075cfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075d140'
+        Module = 'CTCCameraPointFixedPoint'
+        Source = '00/75/CTCCameraPointFixedPoint_vfunc33_0075d140.cpp'
+        TestSource = '00/75/CTCCameraPointFixedPoint_vfunc33_0075d140_test.cpp'
+        PassPattern = '0075d140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075d2b0'
+        Module = 'CTCCameraPointScriptedSpline'
+        Source = '00/75/CTCCameraPointScriptedSpline_HasMessage_0075d2b0.cpp'
+        TestSource = '00/75/CTCCameraPointScriptedSpline_HasMessage_0075d2b0_test.cpp'
+        PassPattern = '0075d2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075e3f0'
+        Module = 'CTCCameraPointScriptedSpline'
+        Source = '00/75/CTCCameraPointScriptedSpline_EditUpdateResetSelected_0075e3f0.cpp'
+        TestSource = '00/75/CTCCameraPointScriptedSpline_EditUpdateResetSelected_0075e3f0_test.cpp'
+        PassPattern = '0075e3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b66c0'
+        Module = 'CTCCrateStack'
+        Source = '00/7b/CTCCrateStack_AddCrate_007b66c0.cpp'
+        TestSource = '00/7b/CTCCrateStack_AddCrate_007b66c0_test.cpp'
+        PassPattern = '007b66c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b6790'
+        Module = 'CTCCrateStack'
+        Source = '00/7b/CTCCrateStack_RemoveNextCrate_007b6790.cpp'
+        TestSource = '00/7b/CTCCrateStack_RemoveNextCrate_007b6790_test.cpp'
+        PassPattern = '007b6790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b6a80'
+        Module = 'CTCCrateStack'
+        Source = '00/7b/CTCCrateStack_vfunc6_007b6a80.cpp'
+        TestSource = '00/7b/CTCCrateStack_vfunc6_007b6a80_test.cpp'
+        PassPattern = '007b6a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dd990'
+        Module = 'CTCCreatureFlyInCircles'
+        Source = '00/7d/CTCCreatureFlyInCircles_CheckForHits_007dd990.cpp'
+        TestSource = '00/7d/CTCCreatureFlyInCircles_CheckForHits_007dd990_test.cpp'
+        PassPattern = '007dd990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ece60'
+        Module = 'CTCCarriedActionUseBase'
+        Source = '00/7e/CTCCarriedActionUseBase_vfunc32_007ece60.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseBase_vfunc32_007ece60_test.cpp'
+        PassPattern = '007ece60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ed0a0'
+        Module = 'CTCCarriedActionUseDrop'
+        Source = '00/7e/CTCCarriedActionUseDrop_vfunc28_007ed0a0.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseDrop_vfunc28_007ed0a0_test.cpp'
+        PassPattern = '007ed0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007edcd0'
+        Module = 'CTCCarriedActionUseFish'
+        Source = '00/7e/CTCCarriedActionUseFish_vfunc32_007edcd0.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseFish_vfunc32_007edcd0_test.cpp'
+        PassPattern = '007edcd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eddf0'
+        Module = 'CTCCarriedActionUseWallMount'
+        Source = '00/7e/CTCCarriedActionUseWallMount_vfunc28_007eddf0.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseWallMount_vfunc28_007eddf0_test.cpp'
+        PassPattern = '007eddf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082dd90'
+        Module = 'CTCBuyableHouse'
+        Source = '00/82/CTCBuyableHouse_CountMoneyBags_0082dd90.cpp'
+        TestSource = '00/82/CTCBuyableHouse_CountMoneyBags_0082dd90_test.cpp'
+        PassPattern = '0082dd90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

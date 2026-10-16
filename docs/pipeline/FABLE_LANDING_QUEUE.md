@@ -185,6 +185,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand158` | Hand chunk 158 (CShaderRenderManager .. CSplinePosParamData): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand159` | Hand chunk 159 (CSplineRandomOffsetData .. CSurface): 26 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand160` | Hand chunk 160 (CSurface .. CTCBuyableHouse): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand161` | Hand chunk 161 (CTCBuyableHouse .. CTCCreatureFlyInCircles): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -239,7 +240,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **524 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **537 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -831,6 +832,22 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 007ebab0 CTCActionUseWindow::OnActionUse DIFFER(124v122): retail this=esi/user=edi and the camera vcall `mov ecx,[eax+34h] ; mov eax,[ecx] ; lea edx`; ours swapped registers and `mov eax,[eax+34h] ; mov edx,[eax] ; lea ecx ; mov ecx,eax` | tried: camera local, creature for the physics call, block 2 as an inline member | next: lane gap: register allocation (or the camera reached through an inline accessor)
 - 007f9010 CTCAnimatingObject::PlayAnimation DIFFER(131v131): priority in ebp where retail uses ebx, nothing else | tried: CAnimInit temporary vs named (named fixed the store order), default ctor + Set, early return | next: lane gap: callee-saved register choice
 - 0056a8c0 CTCBoastUI::DrawPreparePrimitivesForRendering DIFFER(104v104): retail spills the hoisted info.Renderer into the dead `info` argument slot (`mov [esp+14h],eax`) and reads each element at the loop top; ours keeps it only in ebp and rotates the first element load before the loop | tried: renderer local, per-call read, 4-byte struct by value, const member | next: lane gap: a short-lived local kept in a dead argument slot
+
+
+#### `2026-10-15_linux_hand161` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand161/differ/`)
+- 006bfb10 CTCBuyableHouse::IsHouseBeingUsed DIFFER(113v113): retail bool in cl / first in edx / ParentThing in ecx (push ecx,eax,edx), ours dl/ecx/edx | tried: inline args, first/last locals, ternary, list iterator structs | next: scheduling artefact (register swap)
+- 006c0f00 CTCBuyableHouse::CreateMainSignPost DIFFER(109v109): `lea ecx,[esp+8]` before `push edi` and `lea ecx,[esi+24h]` before `push eax` (ours push first; landed twin 0x6C0F70 has our order) | tried: nested ternary, if/else locals, ternary of calls | next: scheduling artefact
+- 00857dc0 CTCCameraPointScriptedSpline::RemoveAnimIndices DIFFER(129v120): element copy and push_back's __true_type() share one dead slot in retail; ours opens `push ecx` for the copy | tried: forceinline by-value helper, long(*it) temporary | next: lane gap: empty tag at a still-live slot
+- 0075c5f0 CTCCameraPointShapeActivationBase::vfunc_9 DIFFER(123v121): retail loads the world +0x34 object straight into ecx (arg lea in edx), ours via eax + `mov ecx,eax`; eax/edx swap through the body | tried: early return, nested if, optimize("s") | next: try the CDefPointer-member/operator-> style accessor for m_pCameraSource (0x705C30 lesson)
+- 007edd60 CTCCarriedActionUsePotion::vfunc_28 DIFFER(133v133): retail homes the GetSubDef out pointer in the dead `user` slot (then reuses it for the key), ours opens a frame word; component via eax in retail | tried: raw out pointer, by-value forceinline helper, out-param GetInterface | next: the 0x733950/0x670560 helper form (`__forceinline T* GetBonusDef(def) { CDefPointer out; def->GetSubDef(&out); return out.Object; }`) plus the 0x705C30 CDefPointer-member operator-> local and out-param GetInterface
+- 006a1120 CTCCarrying::GetCarriedThing DIFFER(129v129): offset in ebp / pointer in ebx in retail, reversed in ours (twin 0x6A10A0 matches) | tried: reference local, pointer local, direct CarrySlots[i] | next: scheduling artefact (register swap)
+- 00750470 CTCChest::UpdateAnimation DIFFER(110v110): retail `mov eax,ecx ; mov eax,[eax+4]` entry, thing in eax, null component preloaded in ecx; ours thing in edx, null in eax; time stored before the zeros | tried: init-list/body time, animation local, GetTC(this,k) helper | next: float zero members (0x732950 lesson) for the record; the entry looks like a helper taking `this`
+- 00732950 CTCClock::FrameUpdate DIFFER(135v133): component join: retail `mov ecx,[eax+4]` / stale `mov ecx,[esp+8]`, ours eax + `mov ecx,eax` | tried: out-param template, CTCBase** out-param, unset-local accessor | next: lane gap candidate: component join register (same as 0x733EE0)
+- 0069a8b0 CTCCombat::AddMeleeFlourishAbility DIFFER(108v100): retail pushes &def, then loads World->DefinitionManager, then pushes the index; CDefPointer release `dec [ecx+4] ; jne` without re-reading the escaped local | tried: index/manager locals, nested dtor, hand release | next: the 0x7B6A80 no-null-test dtor on a copy / a forceinline out-pointer helper so the def is not address-taken
+- 00733ee0 CTCCombat::IsMeleeFlourishValid DIFFER(131v129): component join eax vs ecx before the virtual call | tried: out-param template, GetTCIfPresent accessor, typed template accessor | next: lane gap candidate: component join register
+- 007366c0 CTCCombat::AddMeleeFlourishAbility DIFFER(157v149): scratch registers of the two tail pushes; CDefPointer release re-reads the escaped local after the dec | tried: one full expression (tags got a frame word), Release() member, pointer-local release, split statements (tags fixed) | next: def via a forceinline out-pointer helper so the object is enregistered (0x733950 lesson)
+- 008ed170 CTCContainer::AddItemsToInventory DIFFER(122v122): `this` ebx / index ebp in retail, swapped in ours | tried: early return, if-block, reference local | next: scheduling artefact (register swap)
+- 00729410 CTCCreatureExpression::SetExpression DIFFER(142v134): retail sub-def object read once into ebp, type in ebx, map in edi, release `dec [ebp+4] ; jne`; ours type in ebp, dtor re-reads the escaped local | tried: CDefPointer local, forceinline helper + raw release (counted form), adopting wrapper, map local | next: helper returning the object + a no-null-test CDefPointer-like dtor on an enregistered copy
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

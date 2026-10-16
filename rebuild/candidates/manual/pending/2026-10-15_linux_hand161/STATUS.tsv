@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006bfb10	DIFFER	113v113	-	register swap (bool cl / first edx / ParentThing ecx)
+006c0f00	DIFFER	109v109	-	scheduling: lea ecx before push for two SetPItem calls
+0082dd90	RELOCATION_MATCH	132v132	PASS	thing-side interface-0x21 live-thing count (label class propagated); unsigned long HasInterface
+0075c210	RELOCATION_MATCH	101v101	PASS	implicit C3DVector/CRightHandedSet assignment
+0075d140	RELOCATION_MATCH	128v128	PASS	Transfer<bool>/<float> persist with literal defaults
+0075cdf0	RELOCATION_MATCH	116v116	PASS	three early-return validity checks
+0075cfe0	RELOCATION_MATCH	101v101	PASS	unsigned size()-1 times t
+0075d2b0	RELOCATION_MATCH	110v110	PASS	list find+erase; real Compare body above
+0075e3f0	RELOCATION_MATCH	109v109	PASS	iterator local + C3DVector user copy ctor
+00857dc0	DIFFER	129v120	-	lane gap: element copy + __true_type share one dead slot
+0075c5f0	DIFFER	123v121	-	register rotation eax/edx/ecx (world +0x34 object into ecx)
+007ece60	RELOCATION_MATCH	123v123	PASS	action temporary from ctor
+007ed0a0	RELOCATION_MATCH	151v151	PASS	stale out-pointer GetInterface + whole-word bit test
+007edcd0	RELOCATION_MATCH	139v139	PASS	holder named local per arm
+007edd60	DIFFER	133v133	-	GetSubDef out pointer in dead arg slot; component via eax
+007eddf0	RELOCATION_MATCH	158v158	PASS	IsThingAlive raw pointer + GetTC direct
+00705c30	RELOCATION_MATCH	137v137	PASS	CDefPointer member operator-> read into a local before the out pointer
+006a0ff0	RELOCATION_MATCH	107v107	PASS	index loop over *(begin()+i)
+006a10a0	RELOCATION_MATCH	124v124	PASS	def-index overload of IsCarryingThing
+006a1120	DIFFER	129v129	-	register swap ebx/ebp vs twin 0x6A10A0
+006a1d60	RELOCATION_MATCH	158v158	PASS	out pointer declared outside the loop
+00750470	DIFFER	110v110	-	mov eax,ecx entry; preloaded null comp in ecx; record store order
+007506c0	RELOCATION_MATCH	97v97	PASS	inline COpenCloseHelper::Close + out-param GetInterface
+00732950	DIFFER	135v133	-	component join eax vs ecx
+0069a8b0	DIFFER	108v100	-	push order around World load; CDefPointer release re-read (label: CGameCameraManager)
+00733950	RELOCATION_MATCH	144v144	PASS	forceinline out-pointer helper; if/else max stage
+00733ee0	DIFFER	131v129	-	component join eax vs ecx
+007366c0	DIFFER	157v149	-	scratch register choice + CDefPointer release re-read (body removes the ability)
+008ed170	DIFFER	122v122	-	register swap ebx/ebp
+00486f60	RELOCATION_MATCH	144v144	PASS	C3DVector fast normalise (label propagated)
+0074e460	RELOCATION_MATCH	151v151	PASS	block-scoped CCharString; whole-word HasTC
+00670560	RELOCATION_MATCH	141v141	PASS	forceinline out-pointer helper + {} CCharString in dead slot
+00670710	RELOCATION_MATCH	135v135	PASS	out-param GetInterface in && chain
+00670a10	RELOCATION_MATCH	143v143	PASS	by-value CDefString::GetString temporary
+007b66c0	RELOCATION_MATCH	144v144	PASS	if/else-if temporary assignment, merged tails
+007b6790	RELOCATION_MATCH	119v119	PASS	zero result assigned in hit block, single return
+007b6a80	RELOCATION_MATCH	137v137	PASS	local CDefPointer copy, dtor without null test
+007293a0	RELOCATION_MATCH	99v99	PASS	front node pointer local; 0x14-byte state temporary
+00729410	DIFFER	142v134	-	sub-def object register (ebp) + release re-read
+007dd990	RELOCATION_MATCH	154v154	PASS	CFilter_Bind2 temporary over two temporaries
