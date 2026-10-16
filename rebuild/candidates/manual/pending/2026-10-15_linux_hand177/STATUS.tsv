@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ed4420	RELOCATION_MATCH	157v157	PASS	CV_StatueMasterScript::GetStatuePointingPosition()
+00ed4aa0	RELOCATION_MATCH	101v101	PASS	CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(void* data, CGameScriptInterface* game)
+00ed4b10	DIFFER	122v122	-	CV_SwordInTheStoneScript::Init(): scheduling only: the timer index load `mov edx,[esi+0x7c]` is hoisted above the first flag
+00ed9b40	RELOCATION_MATCH	103v103	PASS	CV_TalentlessBardScript::ProcessSongsQuestComplete()
+00ee4a00	RELOCATION_MATCH	108v108	PASS	CV_TourGuideScript::WatchForClosingTime()
+00ee6d60	RELOCATION_MATCH	142v142	PASS	CV_TrophyDealerScript::Init()
+007f9660	RELOCATION_MATCH	130	PASS	GetCompareValueForPoint (sum-chain GetLengthSquared applied by the landing session)
+0067d610	RELOCATION_MATCH	151v151	PASS	std::vector<CBlurredAttitudesDef>::resize(unsigned int n)
+0086f510	RELOCATION_MATCH	122v122	PASS	CVectorMap<long, CIntelligentPointer<CThing> >::FindRandomElement(long key, CRandomGenerator& random)
+00cbd5d0	DIFFER	168v145	-	CVectorMap<K, CCountedPointer<CEntryScriptBase> >::InsertEntry(const K& key, const CCountedPointer<CEntryScriptBase>& entry): the pair temporary's four words: retail keeps them in ecx/edx/ebp/esi for the inline place
+00661aa0	RELOCATION_MATCH	145v145	PASS	CThing::ComputeDistanceToMorphDummy()
+00ad8c30	DIFFER	117v108	-	CVertexGroupBlock::IsSubsetOf(const CVertexGroupBlock& other): register allocation: retail loads `other` into ebp and its begin into ebx (reused as the l
+00ad8ca0	DIFFER	117v108	-	CVertexGroupBlock::IsProperSubsetOf(const CVertexGroupBlock& other): register allocation: retail loads `other` into ebp and its begin into ebx (reused as the l
+00ad9260	RELOCATION_MATCH	114v114	PASS	CVertexGroupBlock::AddGroupsFrom(const CVertexGroupBlock& other)
+00ad92e0	RELOCATION_MATCH	153v153	PASS	CVertexGroupBlockOptimiser::InsertBlock(unsigned long index, unsigned long* added)
+00ad9380	RELOCATION_MATCH	130v130	PASS	CVertexGroupBlockOptimiser::PaintCurrentBlockSegment(unsigned long index)
+00ca9d00	DIFFER	106v108	-	CBase_00ca9d00::~CBase_00ca9d00(): EH frame: retail reserves an 8-byte frame (`sub esp,8`, this saved at [esp+8], one slot un
+00a3b130	RELOCATION_MATCH	112v112	PASS	CVideoSys::Play()
+00a3b2a0	RELOCATION_MATCH	128v128	PASS	CVideoSys::GetProgress()
+00a3b430	RELOCATION_MATCH	100v100	PASS	CVideoSys::Process()
+00a3b4a0	RELOCATION_MATCH	96v96	PASS	CVideoSys::TogglePause(bool pause)
+0069e870	MATCH	123v123	PASS	CView3DBase::UpdateCameraMovementInfo(const CCamera& camera)
+006819d0	RELOCATION_MATCH	149v149	PASS	CTCCreatureOpinionOfHero::UpdateHitTolerance(bool heavy)
+007021f0	RELOCATION_MATCH	137v137	PASS	CTCQuestCard::GetMarkerRegionName() const
+005517e0	RELOCATION_MATCH	119v119	PASS	NUISystem::CTable::CTable(long owner)
+004dff04	RELOCATION_MATCH	155v155	PASS	CVillageDef::CVillageDef()
+00861430	RELOCATION_MATCH	121v121	PASS	CVillageTaskCarryCrate::IsValid()
+008614b0	DIFFER	112v117	-	CVillageTaskCarryCrate::IsCreatureValidForTask(CThing* creature): retail materialises `true` in bl at entry (`push ebx 
+00860a50	RELOCATION_MATCH	125v125	PASS	CVillageTaskPatrol::GetNearestNode(const C3DVector& position)
+0065dce8	DIFFER	98v98	-	CVillageTaskSecuritySweep::CVillageTaskSecuritySweep(const C3DVector& position, float radius, const C3DVector& lookTowards, float angle): register scheduling only: retail copies each argument word through eax/ecx in strict load/
+00851920	RELOCATION_MATCH	121v121	PASS	CVirtualKeyboard::Confirm()
+00a67530	DIFFER	151v141	-	CVolume::ReadOnlyLock(CLockedVolume& out, unsigned long flags): the D3DBOX stores use immediates where retail shares an `xor eax,eax` zero (Front, Top, Le
+00a67670	RELOCATION_MATCH	151v151	PASS	CVolume::CopyFromVolume(const C3DBoxI* destBox, const CVolume& source, const C3DBoxI* sourceBox, unsigned long filter)
+00a677d0	DIFFER	148v138	-	CVolume::Lock(CLockedVolume& out, unsigned long flags): the D3DBOX stores use immediates where retail shares an `xor eax,eax` zero (Front, Top, Le
+00caefb0	DIFFER	113v118	-	CBase_00caefb0::~CBase_00caefb0(): base-destructor null checks: retail tests `this` (`test esi,esi`) and then the CUnknown po
+00caf480	DIFFER	95v122	-	CVtable_012bf8d4::~CVtable_012bf8d4(): only the base-destructor call: retail null-checks `this` before the CBaseObject call (`tes
+00a67f60	RELOCATION_MATCH	132v132	PASS	CVolumeTexture::ReleaseTexture()
+00a67ff0	RELOCATION_MATCH	101v101	PASS	CVolumeTexture::CalcByteLength()
+00a682e0	DIFFER	112v131	-	CVolumeTexture::InitialiseFromPreallocatedVolumeTexture(IDirect3DVolumeTexture9* texture): tail duplication only: in the second inlined GetMemorySize retail duplicates the function 
+009f7050	DIFFER	138v138	-	CVsyncCallbackTimer::GetInfo() const: /Od frame layout only: retail allocates the info local above the record pointer (info at e

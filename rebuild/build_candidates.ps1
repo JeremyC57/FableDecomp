@@ -238263,6 +238263,195 @@ $catalog = @(
         TestSource = '00/ed/CVSingingStonesScript_Init_00ed0ec0_test.cpp'
         PassPattern = '00ed0ec0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004dff04'
+        Module = 'CVillageDef'
+        Source = '00/4d/CVillageDef_CVillageDef_004dff04.cpp'
+        TestSource = '00/4d/CVillageDef_CVillageDef_004dff04_test.cpp'
+        PassPattern = '004dff04_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005517e0'
+        Module = 'NUISystem::CTable'
+        Source = '00/55/NUISystemCTable_CTable_005517e0.cpp'
+        TestSource = '00/55/NUISystemCTable_CTable_005517e0_test.cpp'
+        PassPattern = '005517e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00661aa0'
+        Module = 'CThing'
+        Source = '00/66/CThing_ComputeDistanceToMorphDummy_00661aa0.cpp'
+        TestSource = '00/66/CThing_ComputeDistanceToMorphDummy_00661aa0_test.cpp'
+        PassPattern = '00661aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067d610'
+        Module = 'std::vector<CBlurredAttitudesDef>'
+        Source = '00/67/stdvectorCBlurredAttitudesDef_resize_0067d610.cpp'
+        TestSource = '00/67/stdvectorCBlurredAttitudesDef_resize_0067d610_test.cpp'
+        PassPattern = '0067d610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006819d0'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_UpdateHitTolerance_006819d0.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_UpdateHitTolerance_006819d0_test.cpp'
+        PassPattern = '006819d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069e870'
+        Module = 'CView3DBase'
+        Source = '00/69/CView3DBase_UpdateCameraMovementInfo_0069e870.cpp'
+        TestSource = '00/69/CView3DBase_UpdateCameraMovementInfo_0069e870_test.cpp'
+        PassPattern = '0069e870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007021f0'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_GetMarkerRegionName_007021f0.cpp'
+        TestSource = '00/70/CTCQuestCard_GetMarkerRegionName_007021f0_test.cpp'
+        PassPattern = '007021f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f9660'
+        Module = 'CVectorCompare_BestForTargeting'
+        Source = '00/7f/CVectorCompareBestForTargeting_GetCompareValueForPoint_007f9660.cpp'
+        TestSource = '00/7f/CVectorCompareBestForTargeting_GetCompareValueForPoint_007f9660_test.cpp'
+        PassPattern = '007f9660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00851920'
+        Module = 'CVirtualKeyboard'
+        Source = '00/85/CVirtualKeyboard_Confirm_00851920.cpp'
+        TestSource = '00/85/CVirtualKeyboard_Confirm_00851920_test.cpp'
+        PassPattern = '00851920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00860a50'
+        Module = 'CVillageTaskPatrol'
+        Source = '00/86/CVillageTaskPatrol_GetNearestNode_00860a50.cpp'
+        TestSource = '00/86/CVillageTaskPatrol_GetNearestNode_00860a50_test.cpp'
+        PassPattern = '00860a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00861430'
+        Module = 'CVillageTaskCarryCrate'
+        Source = '00/86/CVillageTaskCarryCrate_IsValid_00861430.cpp'
+        TestSource = '00/86/CVillageTaskCarryCrate_IsValid_00861430_test.cpp'
+        PassPattern = '00861430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086f510'
+        Module = 'CVectorMap<long, CIntelligentPointer<CThing> >'
+        Source = '00/86/CVectorMaplongCIntelligentPointerCThing_FindRandomElement_0086f510.cpp'
+        TestSource = '00/86/CVectorMaplongCIntelligentPointerCThing_FindRandomElement_0086f510_test.cpp'
+        PassPattern = '0086f510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3b130'
+        Module = 'CVideoSys'
+        Source = '00/a3/CVideoSys_Play_00a3b130.cpp'
+        TestSource = '00/a3/CVideoSys_Play_00a3b130_test.cpp'
+        PassPattern = '00a3b130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3b2a0'
+        Module = 'CVideoSys'
+        Source = '00/a3/CVideoSys_GetProgress_00a3b2a0.cpp'
+        TestSource = '00/a3/CVideoSys_GetProgress_00a3b2a0_test.cpp'
+        PassPattern = '00a3b2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3b430'
+        Module = 'CVideoSys'
+        Source = '00/a3/CVideoSys_Process_00a3b430.cpp'
+        TestSource = '00/a3/CVideoSys_Process_00a3b430_test.cpp'
+        PassPattern = '00a3b430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3b4a0'
+        Module = 'CVideoSys'
+        Source = '00/a3/CVideoSys_TogglePause_00a3b4a0.cpp'
+        TestSource = '00/a3/CVideoSys_TogglePause_00a3b4a0_test.cpp'
+        PassPattern = '00a3b4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a67670'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_CopyFromVolume_00a67670.cpp'
+        TestSource = '00/a6/CVolume_CopyFromVolume_00a67670_test.cpp'
+        PassPattern = '00a67670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a67f60'
+        Module = 'CVolumeTexture'
+        Source = '00/a6/CVolumeTexture_ReleaseTexture_00a67f60.cpp'
+        TestSource = '00/a6/CVolumeTexture_ReleaseTexture_00a67f60_test.cpp'
+        PassPattern = '00a67f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a67ff0'
+        Module = 'CVolumeTexture'
+        Source = '00/a6/CVolumeTexture_CalcByteLength_00a67ff0.cpp'
+        TestSource = '00/a6/CVolumeTexture_CalcByteLength_00a67ff0_test.cpp'
+        PassPattern = '00a67ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9260'
+        Module = 'CVertexGroupBlock'
+        Source = '00/ad/CVertexGroupBlock_AddGroupsFrom_00ad9260.cpp'
+        TestSource = '00/ad/CVertexGroupBlock_AddGroupsFrom_00ad9260_test.cpp'
+        PassPattern = '00ad9260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad92e0'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_InsertBlock_00ad92e0.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_InsertBlock_00ad92e0_test.cpp'
+        PassPattern = '00ad92e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9380'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_PaintCurrentBlockSegment_00ad9380.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_PaintCurrentBlockSegment_00ad9380_test.cpp'
+        PassPattern = '00ad9380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4420'
+        Module = 'CV_StatueMasterScript'
+        Source = '00/ed/CVStatueMasterScript_GetStatuePointingPosition_00ed4420.cpp'
+        TestSource = '00/ed/CVStatueMasterScript_GetStatuePointingPosition_00ed4420_test.cpp'
+        PassPattern = '00ed4420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4aa0'
+        Module = 'CV_SwordInTheStoneScript'
+        Source = '00/ed/CVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed4aa0.cpp'
+        TestSource = '00/ed/CVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed4aa0_test.cpp'
+        PassPattern = '00ed4aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed9b40'
+        Module = 'CV_TalentlessBardScript'
+        Source = '00/ed/CVTalentlessBardScript_ProcessSongsQuestComplete_00ed9b40.cpp'
+        TestSource = '00/ed/CVTalentlessBardScript_ProcessSongsQuestComplete_00ed9b40_test.cpp'
+        PassPattern = '00ed9b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee4a00'
+        Module = 'CV_TourGuideScript'
+        Source = '00/ee/CVTourGuideScript_WatchForClosingTime_00ee4a00.cpp'
+        TestSource = '00/ee/CVTourGuideScript_WatchForClosingTime_00ee4a00_test.cpp'
+        PassPattern = '00ee4a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee6d60'
+        Module = 'CV_TrophyDealerScript'
+        Source = '00/ee/CVTrophyDealerScript_Init_00ee6d60.cpp'
+        TestSource = '00/ee/CVTrophyDealerScript_Init_00ee6d60_test.cpp'
+        PassPattern = '00ee6d60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

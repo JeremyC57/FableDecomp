@@ -201,6 +201,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand174` | Hand chunk 174 (CThingFilter_In2DRangeLimit .. CThingPhysicalSwitch): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand175` | Hand chunk 175 (CThingPhysicalSwitch .. CThingVillage): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand176` | Hand chunk 176 (CThreadedFileManager .. CV_SingingStonesScript): 31 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand177` | Hand chunk 177 (CV_StatueMasterScript .. CVsyncCallbackTimer): 26 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -256,7 +257,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **681 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **694 parked rows** for the Fable retry pass.
 
 ### Skipped rows (16 open of 40 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1053,6 +1054,23 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00cbe1aa IsThingActive (label IsKnotholeGladeNotAPunchClub) DIFFER(151v155): ours returns `mov al,[ebp-1]`, retail `cmp byte ptr [ebp-1],0 ; setne al` | tried: explicit temporaries, if/return, implicit "" temporaries, `? true : false` | next: `char result = chain; return result;` (matched the twin 0xCBE245; budget spent)
 - 00ec3270 CV_RandomPopulationSimScript::GetCurrentPopulationLevel DIFFER(123v123): retail's default arm jumps to the `> 1.0f` test, ours threads it past both clamp tests | tried: else-if, two ifs, inline Clamp, case 2 = -1.0f | next: lane gap: jump threading
 - 006bc210 CRegion::Reset (label CV_SingingStonesScript::Init) DIFFER(124v124): ours hoists `xor eax,eax` above the MiniMapScale 1.0f store | tried: member stores, C2DVector(0,0), chained `a = b = 0` | next: lane gap: scheduling
+
+
+#### `2026-10-15_linux_hand177` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand177/differ/`)
+- 00ed4b10 CV_SwordInTheStoneScript::Init DIFFER(122v122): timer index `mov edx,[esi+7Ch]` hoisted above the first flag stores | tried: direct SetTimer call, CTimer::SetTime helper, named locals | next: lane gap: scheduling
+- 007f9660 CVectorCompare_BestForTargeting::GetCompareValueForPoint DIFFER(130v130): x87 squares X first where retail squares Y first | tried: X+Y+Z, Dot(*this), Y+X+Z | next: `s = dy*dy; s += dx*dx; s += dz*dz;` chain (the 0x00860A50 fix)
+- 00cbd5d0 CVectorMap_EntryScriptBase::InsertEntry DIFFER(168v145): pair temporary words re-read from the frame after `inc [info]` where retail keeps them in ecx/edx/ebp/esi | tried: member-init copy ctor, local-pointer copy ctor, /Oa | next: build the pair words as by-value parameters of a __forceinline push helper
+- 00ad8c30 CVertexGroupBlock::IsSubsetOf DIFFER(117v108): register allocation (retail other in ebp, other.begin in ebx reused as index, this.begin edi) | tried: index form, pointer walk, if-block, operand swap | next: lane gap: regalloc
+- 00ad8ca0 CVertexGroupBlock::IsProperSubsetOf DIFFER(117v108): same as 0x00AD8C30 | tried: same | next: lane gap: regalloc
+- 00ca9d00 CBase_00ca9d00::~CBase_00ca9d00 DIFFER(106v108): retail 8-byte EH frame (`sub esp,8`) vs `push ecx`; DeleteCriticalSection arg via eax not edx | tried: CBaseObject empty/4-byte, inline virtual ~CUnknown | next: make CBaseObject a DIRECT base of the class (probe on 0x00CAF480 gave `sub esp,8`)
+- 008614b0 CVillageTaskCarryCrate::IsCreatureValidForTask DIFFER(112v117): retail keeps `true` in bl (`push ebx ; mov bl,1 ; cmp al,bl ; cmp [edi+18h],bl ; mov al,bl`) | tried: `== true` compares, bool local, optimize("s") | next: a non-constant bool source for the 1 (inline helper returning a bool member/argument)
+- 0065dce8 CVillageTaskSecuritySweep ctor DIFFER(98v98): argument word copies interleave through edx in ours, strict eax/ecx in retail | tried: init list, body assignments, user operator=, user copy ctor | next: lane gap: scheduling
+- 00a67530 CVolume::ReadOnlyLock DIFFER(151v141): D3DBOX zeros as immediates (retail shares xor eax); result copied via edx/ecx/esi in +4,+0,+0xc,+8,+0x10,+0x14 order with `out` in eax | tried: by-value return, named dimension locals, out reference | next: assign out fields one by one in retail order through a CLockedVolume& kept in eax
+- 00a677d0 CVolume::Lock DIFFER(148v138): same as 0x00A67530 without the READONLY flag | tried: same | next: same
+- 00caefb0 CBase_00caefb0::~CBase_00caefb0 DIFFER(113v118): retail null-checks `this` and the CUnknown pointer before ~CBaseObject, ours only the second | tried: CUnknown at +4 behind an interface | next: find the extra inline level (an intermediate class or explicit base conversion)
+- 00caf480 CVtable_012bf8d4::~CVtable_012bf8d4 DIFFER(95v122): retail null-checks `this` before the CBaseObject dtor call, ours none | tried: base order swap, direct CBaseObject base, polymorphic novtable CBaseObject | next: same as 0x00CAEFB0
+- 00a682e0 CVolumeTexture::InitialiseFromPreallocatedVolumeTexture DIFFER(112v131): retail tail-duplicates the second inline GetMemorySize's ByteLength arm | tried: ternary, multi-return, `g = g + size` | next: lane gap: tail duplication
+- 009f7050 CVsyncCallbackTimer::GetInfo DIFFER(138v138): /Od frame order (retail info above the record pointer, no pad) | tried: pointer, reference, nested block | next: lane gap: /Od local allocation order
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
