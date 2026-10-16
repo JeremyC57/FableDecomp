@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005bf32d	RELOCATION_MATCH	153v153	PASS	CTCInventoryBase::AddItemToInventory(long, long, bool, bool, long, bool)
+005bf9e3	RELOCATION_MATCH	97v97	PASS	CTCInventoryBase::InitialActivate()
+005bfb01	RELOCATION_MATCH	149v149	PASS	CTCInventoryBase::ConfiscateItems(vector<NInventory::CItem>& items)
+005c024a	RELOCATION_MATCH	119v119	PASS	CTCInventoryBase::AddCategory(CTCInventoryBase* inventory, long defIndex, CThing* owner)
+00736640	DIFFER	126v122	-	register allocation only: retail loads the def pointer straight into edi (copy + final release) and reuses edx for _M_end_of_storage; ours loads it in
+005b406d	RELOCATION_MATCH	121v121	PASS	CTCInventoryClothing::SetThingAsWearingSelectedClothes(CThing* thing)
+005b4340	RELOCATION_MATCH	98v98	PASS	CTCInventoryClothing::RemoveItemFromInventory(long itemType, long count)
+005b6881	RELOCATION_MATCH	138v138	PASS	CTCInventoryClothing::ConstructTitleString(CWideString& title)
+005b7049	RELOCATION_MATCH	111v111	PASS	CTCInventoryClothing::~CTCInventoryClothing()
+0056ed08	RELOCATION_MATCH	108v108	PASS	CTCInventoryExperience::GetExperienceStatCategoryName(long category)
+0056f615	RELOCATION_MATCH	138v138	PASS	CTCInventoryExperience::AddSoundAction(NUISystem::CGUIElement* element, CCharString soundName)
+00570161	RELOCATION_MATCH	121v121	PASS	CTCInventoryExperience::SaveExperienceValuesForCountDown()
+005d9bf0	RELOCATION_MATCH	97v97	PASS	CTCInventoryItem::Persist(CPersistContext* context, bool flag)
+0072db00	RELOCATION_MATCH	111v111	PASS	CTCInventoryMagic::GetScreenName() const
+0072dc70	DIFFER	108v108	-	scheduling only: retail stores the zeroed sub-def out pointer between `test esi,esi` and `je` of the owner-def add-ref, ours stores it before the load
+005fa990	DIFFER	112v111	-	x87 load order only: retail loads the copied position Z, Y, X (`fld [edi+15Ch]` before `add edi,154h`, X last from [edi]), ours X, Y, Z with identical
+005fbd20	RELOCATION_MATCH	98v98	PASS	CTCInventoryMap::TeleportHeroToTeleporter(CThing* teleporter)
+0061a2c0	RELOCATION_MATCH	153v153	PASS	CTCInventoryQuests::GetQuestPositionAndRemoveIt(long questDefIndex)
+0061a3b0	RELOCATION_MATCH	106v106	PASS	CTCInventoryQuests::GetCategoryNameFromAssociation(CThing* thing) const
+005bf414	DIFFER	112v110	-	the looked-up component used as `this`: retail loads it straight into ecx on both arms (`mov ecx,[eax+4]` / `mov ecx,[ebp-8]`), ours into eax plus `mo
+005bf4ed	RELOCATION_MATCH	105v105	PASS	NInventory::CTCInventoryBase::OnItemReturnedToInventory(CThing& item)
+005ccf0e	RELOCATION_MATCH	120v120	PASS	CTCInventoryStats::CreateTitle(const CWideString& text, NUISystem::CComponent* parent, bool statTitle)
+005ccf86	RELOCATION_MATCH	118v118	PASS	CTCInventoryStats::OpenInventory()
+005ccffc	RELOCATION_MATCH	120v120	PASS	CTCInventoryStats::CreateTitlePC(const CWideString& text, NUISystem::CComponent* parent, bool statTitle)
+005cd433	RELOCATION_MATCH	145v145	PASS	CTCInventoryStats::BuildRenownString()
+005d66ba	DIFFER	151v142	-	(1) the sub-def object is loaded into eax then copied to ebx after the lea (retail loads ebx directly); (2) the def dtor re-reads [ebp-4] after `dec` 
+00af1600	RELOCATION_MATCH	104v104	PASS	NParticleEngine::CParticleDataBank::~CParticleDataBank()
+0059c8f2	RELOCATION_MATCH	145v145	PASS	CTCInventoryTrade::OnCreate()
+0059cf49	RELOCATION_MATCH	116v116	PASS	CTCInventoryTrade::RemoveAllItemsFromCategory(EInventoryCategoryIdentifier category)
+005ae972	RELOCATION_MATCH	108v108	PASS	CTCInventoryTrade::OpenActualBuyInventoryPC()
+005c2f27	RELOCATION_MATCH	131v131	PASS	CTCInventoryWeapons::OpenInventory()
+005c2fe1	RELOCATION_MATCH	118v118	PASS	CTCInventoryWeapons::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
+005c3057	RELOCATION_MATCH	124v124	PASS	CTCInventoryWeapons::OnCreate()
+005c311a	DIFFER	102v102	-	register swap only: retail keeps `this` in edi and the weapon address in esi, ours the reverse; a single weapon-pointer local gets the registers right
+005c4769	RELOCATION_MATCH	108v108	PASS	CTCInventoryWeapons::GetActiveMeleeWeaponDamage() const
+005c8101	DIFFER	117v117	-	(1) the discarded presence test forms its this as `mov eax,[esi+4] ; lea ecx,[eax+20h]`, ours `mov ecx,[esi+4] ; add ecx,20h`; (2) retail pushes ebx o
+005c99fd	DIFFER	152v152	-	register swap only: retail keeps the melee pointer address in edi and the melee def index in ebx (ranged index in edi later), ours ebx/edi the other w
+00731610	RELOCATION_MATCH	103v103	PASS	CTCJackShield::CTCJackShield(CThing* owner)
+00619220	RELOCATION_MATCH	103v103	PASS	CRetailVector<SPersistRecord1C>::resize(unsigned int newSize)
+006193b0	RELOCATION_MATCH	104v104	PASS	CPersistContext_TransferableVector<SPersistRecord1C>::Resize(long count)

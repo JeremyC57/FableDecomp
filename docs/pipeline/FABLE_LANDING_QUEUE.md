@@ -190,6 +190,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand163` | Hand chunk 163 (CTCDPhysicalObstruction .. CTCGraphicAppearance): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand164` | Hand chunk 164 (CTCGraphicAppearance .. CTCHeroStats): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand165` | Hand chunk 165 (CTCHeroStats .. CTCInventoryBase): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand166` | Hand chunk 166 (CTCInventoryBase .. CTCKraken): 32 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -243,8 +244,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
+| `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **576 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **590 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -903,6 +905,17 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0058400a CTCInventory::OnItemSelectedInHand DIFFER(156v156): retail reuses ebx (dead this) for the owner, ours takes esi (dead item) | tried: named owner local, static `__forceinline` SheatheIntoInventory(owner), inverted if/else | next: lane gap: register choice (scheduling-only)
 - 005ee418 CTCInventoryAbilities::FrameUpdate DIFFER(132v130): hero component loaded into eax, null-tested, then moved to ecx (retail `mov ecx,[eax+4] ; test ecx,ecx`) | tried: out-pointer GetInterface + `&& hero`, HasTC + GetTCUnchecked, `if ((hero = ...) != 0)`, out-pointer helper via named component | next: lane gap: looked-up component loaded straight into ecx
 - 005bdfb1 CTCInventoryBase::SelectItemWithDefIndex DIFFER(127v119): predicate word pushed from memory (`push [eax+3Ch]`) where retail loads ebx=item, eax=[ebx+3Ch], push eax; the thing-def CDefPointer dtor is `mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0` vs retail `mov ecx,[ebp-4] ; test ecx,ecx ; je ; dec [ecx+4] ; jne` | tried: end re-read vs `last` local, pointer-local dtor, inline Release(), named identifier local | next: a CDefPointer whose dtor null-tests and reads Object back from the frame (`if (Object && --Object->RefCount == 0)`) declared as a named local before GetDef
+
+
+#### `2026-10-15_linux_hand166` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand166/differ/`)
+- 00736640 CTCCombat::AddMeleeFlourishAbility DIFFER(126v122): retail loads the def pointer straight into edi and reuses edx for _M_end_of_storage; ours loads edx, copies to edi and needs ebx | tried: (previous session, see differ header) | next: lane gap: register allocation
+- 0072dc70 CTCInventoryMagic::OnCreate DIFFER(108v108): the zeroed sub-def out store sits before the owner-def load instead of between `test esi,esi` and `je` | tried: zero before the copy block, zero inside the block, inline by-value GetDef() temporary | next: the hand-ordered form that matched 0x005C3057/0x0059C8F2 (`CDefClassBase* d = ParentThing->PDef.Object; out.Object = 0; if (d) ++d->m_refCount; d->GetSubDef(&out); if (d && --d->m_refCount == 0) d->Destroy();`) -- not tried here because the 4-attempt budget was spent; very likely MATCH
+- 005fa990 CTCInventoryMap::GetGuildSealRecallRegion DIFFER(112v111): x87 loads of the copied position Z,Y,X (`fld [edi+15Ch]` before `add edi,154h`) vs ours X,Y,Z | tried: memberwise copy ctor, 3-float ctor from members, reversed term order | next: lane gap: x87 sum-of-squares order
+- 005bf414 NInventory::CTCInventoryBase::UpdateItemStatsForThing DIFFER(112v110): looked-up component loaded into eax + `mov ecx,eax` where retail loads ecx on both arms | tried: out-pointer GetInterface, ident named local (fixed push order), inline GetTC helper | next: lane gap: component loaded straight into ecx on both arms
+- 005d66ba CTCInventoryStats::SetCreatureAsKilled DIFFER(151v142): sub-def loaded into eax then copied to ebx; the def dtor re-reads [ebp-4] after `dec` (retail one load into ecx) | tried: plain CDefPointer sub-def, hand release through a local, dtor through a pointer local, static Release helper | next: model the GetDef out pointer like the OnCreate rows (read the object into a register local once, hand-release it) for the def too
+- 005c311a CTCInventoryWeapons::GetItemOfTypeInInventory DIFFER(102v102): esi/edi swapped (this vs weapon address) | tried: two plain arms, weapon local + nested ifs, `||` with assignment, weapon local + separate returns | next: lane gap: register swap
+- 005c8101 CTCInventoryWeapons::PutWeaponsInSheathes DIFFER(117v117): discarded presence test `mov ecx,[esi+4] ; add ecx,20h` vs retail `mov eax,[esi+4] ; lea ecx,[eax+20h]`; retail pushes ebx only inside the melee block | tried: direct arguments, inline PutWeaponInSheathe helper (fixed owner order), dead GetInterface, presence-bits pointer local | next: lane gap: callee-saved push placement
+- 005c99fd CTCInventoryWeapons::ConfiscateItems DIFFER(152v152): ebx/edi swapped (melee address vs melee def index) | tried: layout fix, ranged index declared first, scoped melee pointer local | next: lane gap: register swap
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)
