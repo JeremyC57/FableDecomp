@@ -195,6 +195,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand168` | Hand chunk 168 (CTCParticleAttachmentTracker .. CTCQuestCard): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand169` | Hand chunk 169 (CTCQuestCard .. CTCSmashableBarrier): 25 of 40 byte-exact | - | 14 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand170` | Hand chunk 170 (CTCSmashableBase .. CTCTavernGameCardPairs): 28 of 40 byte-exact | - | 10 | 2 | landed; parked rows open |
+| `2026-10-15_linux_hand171` | Hand chunk 171 (CTCTavernGameCardPairs .. CTCWeapon): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -250,9 +251,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 | `2026-10-16_linux_retry5` | Retry batch 5 (Fable 5.1, 2026-10-16): 8 parked rows with untried ideas from chunks 160-164 | - | 7 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **637 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **646 parked rows** for the Fable retry pass.
 
-### Skipped rows (14 open of 38 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (15 open of 39 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -268,6 +269,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
 | `00bd71b0` | prefix | in-chunk:902 | 00bd71b0:2116 | `2026-10-14_linux_hand34` | bad family-scan row: the first 28 bytes of a ~2.1 KB function (sub esp,294h); author the whole function |
+| `00c8a4b0` | single | open | 00c8a4b0:109 | `2026-10-15_linux_hand171` | object received in esi (LTCG/library register convention, 0xC8xxxx); not CTCVillageMember |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
 | `00caef70` | multi | in-chunk:904 | 00caef70:9 00caef80:3 00caef90:3 00caefa0:3 | `2026-10-15_linux_hand110` | row holds four functions |
 
@@ -982,6 +984,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 007f98e0 CTCTargetingSpirit::OnInitialActivate DIFFER(114v114): retail 8-byte frame reuses the def slot for the find() iterator (zero store after the push), ours 12 bytes | tried: def in a block, __forceinline def getter, __forceinline find helper | next: lane gap: frame slot reuse
 - 007f50b0 CTCSoundAtmosphereVillage::vfunc_6 DIFFER(160v156): retail one frame dword shared by key, unset village and the by-value def, ours gives the def a second slot | tried: plain accessor, __forceinline accessor + GetTC, inline AddLivingSpaces helper, out-pointer village | next: lane gap: frame slot reuse
 - 005ea100 CTCTavernGame::vfunc_42 DIFFER(184v158): retail null-tests the def release only on the unfinished arm and keeps def.Object in edi on the finished arm (no test), zero store after the push | tried: null-safe dtor (best), pointer-local dtor + def local | next: two separately scoped def holders, or a GetDef accessor returning a reference
+
+
+#### `2026-10-15_linux_hand171` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand171/differ/`)
+- 008ef390 CTCTavernGameCoinBase::EnterGame DIFFER(108v105): ours keeps the def in ebx and CSEs &def->ArrowDefIndex into edi (extra push ebx); out-slot zero before the push | tried: member-form dtor, holder copy, plain local + hand release, holder + ctor zero | next: def accessor through a non-inline this-call wrapper to move the zero store
+- 007cf7e0 CTCTavernGameShoveHaPenny::NewRound DIFFER(127v127): out-slot zero before `mov ecx,[ecx+70h] ; push eax`; start vector Y copied through edx after X (retail fld Y first) | tried: CDefPointer with/without dtor, direct holder call, `0.5f*x`, C3DVector copy ctor, body-assigned ctor | next: lane gap: inline def-accessor zero placement
+- 007d80c0 CTCTavernGameSpotTheAddition::NewGame DIFFER(122v115): accessor zero store before the push; release reloads/retests instead of `mov ecx,[esp+8] ; cmp ecx,ebx ; dec [ecx+4]` | tried: member-form, local-copy and Release() dtors, bool accessor, named def-class local (fixes the zero placement but rotates eax/edx) | next: named def-class local + a dtor that copies Object once
+- 007b8680 CTCTavernTable::GetTankardName DIFFER(156v144): frame 0xc v 8, the dead GetSubDef out slot is not reused by the village-arm CCharString temporary; HQ byte via al | tried: member dtor, holder, forceinline pointer helper, helper returning the holder | next: ?: arms inside a __forceinline helper taking the def by value
+- 007dfe20 CTCTeleporter::~CTCTeleporter DIFFER(141v141): this/&PParticle in esi/edi swapped | tried: pointee Release() dtor (fixed the release), named reference local | next: lane gap: register assignment
+- 007bb150 CTCTrespasser::SeeIfAnyOccupantsKnowAboutDeed DIFFER(147v145): component loaded into eax then `mov ecx,eax` (retail straight into ecx) | tried: GetInterface out form, HasTC + GetTC expression | next: lane gap: looked-up component used as `this`
+- 00658ec3 CTCVillage::BuildingContainsCorrectVillagers DIFFER(126v126): &villager / home in edi/ebx swapped | tried: template Get(), typed GetPItem, unrelated pointer type, inline GetHome() (fixed the lea) | next: lane gap: register assignment
+- 0065bffa CTCVillage::IsReportedOrUnreportedCrimeKnown DIFFER(146v144): component loaded into eax then `mov ecx,eax` before FindMostRecentDeed | tried: named local, GetTC as `this` with the filter first, GetInterface form | next: lane gap: looked-up component used as `this`
+- 005da6e0 CTCWeapon::OnCreate DIFFER(99v99): `mov ecx,[esp+0Ch] ... mov ebx,ecx` where retail loads ebx first | tried: holder, plain local + hand release, call through out.Object | next: lane gap: register rotation
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007d7520	RELOCATION_MATCH	113v113	PASS	CTCTavernGameCardPairs::CTCTavernGameCardPairs(CThing* owner)
+007d4e30	RELOCATION_MATCH	153v153	PASS	CTCTavernGameCardSorting::EnterGame()
+007d4ed0	RELOCATION_MATCH	108v108	PASS	CTCTavernGameCardSorting::NewGame()
+007d5ad0	RELOCATION_MATCH	150v150	PASS	CTCTavernGameCardSorting::CTCTavernGameCardSorting(CThing* owner)
+008f09e0	RELOCATION_MATCH	136v136	PASS	CTCTavernGameCardBase::TurnAllCards()
+008f1250	RELOCATION_MATCH	119v119	PASS	CTCTavernGameCardBase::OnInitialActivate()
+008ef2f0	RELOCATION_MATCH	158v158	PASS	CTCTavernGameCoinBase::UpdateMeshes()
+008ef390	DIFFER	108v105	-	def kept in ebx + CSE of &ArrowDefIndex; zero store before push
+007cf740	RELOCATION_MATCH	156v156	PASS	CTCTavernGameShoveHaPenny::GetRequiredScore()
+007d09c0	RELOCATION_MATCH	122v122	PASS	CTCTavernGameShoveHaPenny::CTCTavernGameShoveHaPenny(CThing* owner)
+007d2c20	RELOCATION_MATCH	156v156	PASS	CTCTavernGameCoinGolf::GetRequiredScore()
+007d34a0	RELOCATION_MATCH	99v99	PASS	CTCTavernGameCoinGolf::EnterGame()
+007d49e0	RELOCATION_MATCH	122v122	PASS	CTCTavernGameCoinGolf::CTCTavernGameCoinGolf(CThing* owner)
+007cf530	RELOCATION_MATCH	123v123	PASS	CTCTavernGameShoveHaPenny::EnterGame()
+007cf7e0	DIFFER	127v127	-	out-slot zero before push; start vector Y via edx not x87
+007d7ba0	RELOCATION_MATCH	101v101	PASS	CTCTavernGameSpotTheAddition::vfunc_33()
+007d80c0	DIFFER	122v115	-	accessor zero-store placement + null-tested release form
+007d8da0	RELOCATION_MATCH	113v113	PASS	CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition(CThing* owner)
+007b8680	DIFFER	156v144	-	frame 0xc v 8: out slot not reused by the arm temporary
+007dfe20	DIFFER	141v141	-	esi/edi swap only
+007888b4	RELOCATION_MATCH	105v105	PASS	CTCTrapBase::FrameUpdate()
+007bae70	RELOCATION_MATCH	138v138	PASS	CTCTrespasser::IsCurrentlyTrespassing()
+007bb150	DIFFER	147v145	-	component not loaded straight into ecx (lane gap)
+006cebf0	RELOCATION_MATCH	117v117	PASS	CTCWife::SendPauseEvent(bool pause)
+006dd760	RELOCATION_MATCH	117v117	PASS	CTCTrophy::SendPauseEvent(bool pause)
+006dda50	RELOCATION_MATCH	144v144	PASS	CTCTrophy::EndMinigame()
+007c78c0	RELOCATION_MATCH	153v153	PASS	CTCTurncoat::CTCTurncoat(CThing* parent)
+00658ec3	DIFFER	126v126	-	ebx/edi swap only
+00658f41	RELOCATION_MATCH	97v97	PASS	CTCVillage::GetNumberOfGayVillagers()
+006592e2	RELOCATION_MATCH	124v124	PASS	CTCVillage::AddTorchToVillage(CThing* torch)
+0065a1fd	RELOCATION_MATCH	146v146	PASS	CTCVillage::IsHeroMurderer()
+0065a852	RELOCATION_MATCH	156v156	PASS	CTCVillage::SetEnemyToHeroStatus()
+0065ac0e	RELOCATION_MATCH	117v117	PASS	CTCVillage::BuildingContainsPlayer(CThing* building)
+0065b0b4	RELOCATION_MATCH	142v142	PASS	CTCVillage::OnKill()
+0065b2c4	RELOCATION_MATCH	133v133	PASS	CTCVillage::DetachFromDummyVillager(CThing* villager)
+0065bffa	DIFFER	146v144	-	component not loaded straight into ecx (lane gap)
+007ee4d0	RELOCATION_MATCH	106v106	PASS	CTCVillageMember::vfunc_14()
+00c8a4b0	SKIP	-v109	-	object received in esi (LTCG/library register convention, 0xC8xxxx); not CTCVillageMember
+007de530	RELOCATION_MATCH	147v147	PASS	CTCWallMount::OnSerialise(CPersistContext* context, bool flag)
+005da6e0	DIFFER	99v99	-	ebx/ecx rotation only
