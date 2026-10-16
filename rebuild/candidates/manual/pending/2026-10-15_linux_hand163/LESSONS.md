@@ -1,0 +1,11 @@
+# Chunk 163 lessons (for GOTCHAS)
+- A `bool` parameter fed from a memory byte is pushed as `xor ecx,ecx ; mov cl,[m] ; push ecx`; a long/int parameter gives `movzx ecx,byte ptr [m]` (0x8ECBE0).
+- A reference bound to a member of a by-value getter temporary (`const V& v = GetDefinition()->Degradations;`) gives retail's add-ref/release of the copy BEFORE the walk with the object then read unprotected (0x8EC940).
+- A C3DPositionInterpolator-style return copied as six direct dword moves needs C3DVector's memberwise user copy ctor; with the implicit one the copy goes through `lea` per vector (0x4BC0E0). File-static helpers (`?A0x...` PDB names) must be declared at global scope in the model or VC never emits them.
+- `out = T(args)` with T's empty virtual dtor defined out of line inlines the dtor (and member counted-pointer release) into the caller (0x4BD160, same rule as the landed 0x4C3250 deleting dtor).
+- A call result retail computes BEFORE the argument expressions (its call precedes the scale arithmetic / the pushes) is a named local declared first (0x4BD160 mesh info, 0x72F2F0 home building + def type, 0x780C80 ParentThing).
+- STLport map iteration inlines `_M_node = _M_increment(_M_node)` on a node copy (eax) moved back into the iterator register at the loop foot; an in-place `operator++` on the member gives a different register rotation (0x4C0430).
+- `for (long i = 0; i < (long)v.size(); ++i)` gives the signed `test eax,0FFFFFFF8h ; jle` / `jl` loop (0x7C5480); the unsigned form gives `jbe` / `jb`.
+- A list insert that reads `[head]` then uses it as the position is `push_front` (insert(begin(), x)), not push_back (0x8113C0).
+- A CRGBColour temporary passed by const reference is built in the `push ecx` frame word with body-assigned R,G,B,A (+2/+1/+0/+3 stores); a shared trailing argument (`this` owner) for both if/else calls is pushed once above the branch (0x7E33B0).
+- Open (3 rows): a temporary CDefPointer's zero store that retail schedules AFTER the GetDef argument pushes (just before the GetDefinitionManager call) and a def object retail keeps in edi across later calls; no source form tried moves our store below the pushes (0x8EC870, 0x730630, 0x7EEFE0; also agent104 0x7EE370).

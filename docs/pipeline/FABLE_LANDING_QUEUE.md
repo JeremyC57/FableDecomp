@@ -187,6 +187,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand160` | Hand chunk 160 (CSurface .. CTCBuyableHouse): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand161` | Hand chunk 161 (CTCBuyableHouse .. CTCCreatureFlyInCircles): 27 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand162` | Hand chunk 162 (CTCCreatureFlyInCircles .. CTCDPhysicalObstruction): 33 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand163` | Hand chunk 163 (CTCDPhysicalObstruction .. CTCGraphicAppearance): 31 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand61` | Hand chunk 61 (CNavigatorQueueManager .. COpinionReactionMaskDef): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand62` | Hand chunk 62 (COpinionSourceDef .. CParentDefClassBase): 37 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand63` | Hand chunk 63 (CParentDefClassBase .. CParticleEmitter): 40 of 40 byte-exact | - | 0 | 0 | done |
@@ -241,7 +242,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry4` | Retry batch 910 | - | 0 | 0 | done |
 
-Totals: **8 matched rows staged for landing**, **544 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **553 parked rows** for the Fable retry pass.
 
 ### Skipped rows (11 open of 35 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -859,6 +860,18 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00683650 CTCCreatureOpinionOfHero::KnowsOfDeed DIFFER(129v127): deed-log component in eax then `mov ecx,eax` after `push esi`, retail ecx in both arms | tried: out-param GetInterface, accessor returning the out pointer, HasTC/GetTC unset-local accessor, early returns | next: lane gap: GetInterface component in ecx
 - 00749bf0 CTCCupboard::StartAnimation DIFFER(140v138): animation component in eax + `mov ecx,eax`, retail `mov ecx,[eax+4] ; jmp ; mov ecx,[esp+34h]` | tried: out-param, unset-local accessor, optimize("s"), declaration order | next: lane gap: GetInterface component in ecx (the landed CTCHive/CTCAnimatingObject retail use eax, so it is TU-dependent)
 - 0080c350 CTCDExplosion::IsDynamicExplosionFinished DIFFER(111v107): `mov eax,[g] ... mov [esp+10h],eax` after the pushes vs retail `mov ecx,[g] ; mov [esp+0Ch],ecx` at entry, and `xor ecx,ecx ; setg cl ; mov al,cl` vs `setg al` | tried: `<` vs `!=` loop (the `!=` form fixes the size test), declaration order, compare operand order | next: `return ExplosionEvolutionTimer > totalFrames ? true : false;` (bare setg; not tried within the 4-attempt budget)
+
+
+#### `2026-10-15_linux_hand163` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand163/differ/`)
+- 008ec870 CTCDegradableBase::OnCreate DIFFER(98v98): temp def zero store `mov [esp+8],0` before the GetDef pushes (retail after them, just before the GetDefinitionManager call) and `mov ecx,[esp+8] ; mov edi,ecx` vs retail `mov edi,[esp+8] ; mov ecx,edi` | tried: def local + hand release, forceinline GetParentDef helper (fixes edi, release turns counted), index local first, CDefPointer with dtor | next: lane gap candidate: temp def zero store after the pushes (shared with 0x730630 and agent104's 0x7EE370)
+- 008eca50 CTCDegradableBase::ShowParticleEffects DIFFER(100v100): this in esi / index+emitter in edi in retail, swapped in ours | tried: nested ifs, inline GetTCDParticleEmitter accessor, early returns | next: scheduling artefact (register swap)
+- 00730630 CTCDoor::CTCDoor DIFFER(132v129): temp def zero store before the GetDef pushes; &PDef kept in ebp beside the def object in edi (retail reuses edi: `push edi ; mov edi,[esp+14h]`) | tried: hand release after the cutscene call, def Release() member, object local before GetSubDef (best), forceinline GetParentDef helper | next: lane gap candidate: temp def zero store after the pushes
+- 007bb800 CTCDrunkenness::CTCDrunkenness DIFFER(154v147): ability def release `mov ecx,[esp+0Ch] ; fmul [ecx+28h] ; mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax` vs ours the counted `add eax,4 ; mov edi,[eax] ; dec edi ; mov edx,edi ; test` form | tried: Release() member from the dtor, decrement in the dtor (simple form but object reloaded), pointer local in the dtor | next: lane gap: inline counted release
+- 007e0d00 CTCEffectOnDie::OnDie DIFFER(112v112): retail `mov ecx,[eax+4]` before the five PlaySound pushes (criteria address in edx), ours after them | tried: GetInterface()->PlaySound, named component local, GetTC(thing,k) map Find, inline PlaySound wrapper | next: try the out-parameter template GetInterface inside a `__forceinline` accessor returning the component
+- 008113c0 CTCEntityEvents::AddEvent DIFFER(143v143): retail pushes edi at entry, ours just before the node malloc (and pops it before the release test) | tried: push_back -> push_front fix (all else matches) | next: lane gap: callee-saved push delayed into the body
+- 007eefe0 CTCExpression::OnCreate DIFFER(134v130): ours `lea ebp,[edi+0Ch]` (&PDef CSE, this in edi) and reloads the sub-def object; retail this in ebp, `lea eax,[ebp+0Ch]` at the push, sub-def object in edi from GetSubDef through its release | tried: CDefPointer local with dtor at the top / inside the if, /Oa, hand-released out pointer + object local (best) | next: same def-object-cached-across-calls shape as 0x730630; try the address of PDef only through an inline member (`GetDef(index, PDef)` by reference)
+- 007e7c00 CTCFireheartMinigame::Answer DIFFER(143v143): /GS frame 0x2c in retail with the AddUBYTE byte in the dead bool slot (`mov byte [esp+40h],bl ; lea eax,[esp+38h]`), ours `sub esp,30h` with its own frame byte | tried: by-value inline, `__forceinline`, const-reference AddUBYTE | next: lane gap: /GS one-byte local in a bool parameter slot
+- 00780c80 CTCFlammable::ExtinguishFire DIFFER(147v145): `mov ecx,[eax+74h]` in retail vs ours `mov eax,[eax+74h] ; ... ; mov ecx,eax` for the opinion manager | tried: direct chain (pushes before GetWorld), thing local + chain, thing + manager locals (best), inline GetOpinionReactionManager accessor | next: scheduling artefact (register choice of the manager)
 
 
 #### `2026-10-15_linux_hand61` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand61/differ/`)

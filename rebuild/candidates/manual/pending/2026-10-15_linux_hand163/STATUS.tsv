@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0072f0f0	RELOCATION_MATCH	118v118	PASS	really the CTCDummyVillager ctor (vtable 0x1266CDC); declaration-order init list
+007791f0	RELOCATION_MATCH	97v97	PASS	twin of landed 0x729C50 + GetPItem null test, shared empty name
+00779260	RELOCATION_MATCH	100v100	PASS	GetDisplayName tail jmp through CRegion::GetDisplayName
+007792d0	RELOCATION_MATCH	97v97	PASS	byte twin of 0x7791F0
+008ec870	DIFFER	98v98	-	temp def zero store before pushes; def object ecx->edi rotation
+008ecbe0	RELOCATION_MATCH	151v151	PASS	OnInitialActivate; bool param from memory = xor ecx,ecx ; mov cl
+008ec940	MATCH	119v119	PASS	reference into a by-value GetDefinition temporary; trailing return 0
+008ec9c0	RELOCATION_MATCH	135v135	PASS	forceinline out-param GetInterface helper (stale arg slot on absent path)
+008eca50	DIFFER	100v100	-	esi/edi register swap only
+0078ebf0	RELOCATION_MATCH	131v131	PASS	CTCBulletTime PlaySoundW model + MakeNoise in its own block
+007940f0	RELOCATION_MATCH	131v131	PASS	byte twin of 0x78EBF0
+00730630	DIFFER	132v129	-	temp def zero store before GetDef pushes; &PDef in ebp
+007bb770	RELOCATION_MATCH	140v140	PASS	FrameUpdate; Drunk = D > threshold
+007bb800	DIFFER	154v147	-	ability def no-null-test release shape (counted form)
+0072f2f0	RELOCATION_MATCH	142v142	PASS	CIntelligentPointer temp assignment; locals read before call
+007e0d00	DIFFER	112v112	-	component load after pushes (retail before)
+0071ae90	RELOCATION_MATCH	147v147	PASS	landed CTCEmoteIcon handle Release model
+0076d460	RELOCATION_MATCH	132v132	PASS	unset-local component accessor sharing the dead arg slot
+008113c0	DIFFER	143v143	-	push edi delayed into body (lane gap)
+00750d30	RELOCATION_MATCH	157v157	PASS	OnSerialise slot 1; literal defaults in frame word / dead ctx slot
+007eefe0	DIFFER	134v130	-	def object cached in edi across calls; &PDef CSE in ebp
+006c3c30	RELOCATION_MATCH	112v112	PASS	_Vector_base model + CIntelligentPointer temp push_back
+007c8760	RELOCATION_MATCH	144v144	PASS	dtor: IsThingAlive kill + reverse member destruction
+007e7640	RELOCATION_MATCH	109v109	PASS	ScriptData CBaseObject + PImp words; PDef via operator->
+007e79c0	RELOCATION_MATCH	116v116	PASS	switch 0..3 + if/else-if clamps
+007e7a40	RELOCATION_MATCH	128v128	PASS	CCharString in own block before vector erase
+007e7c00	DIFFER	143v143	-	/GS byte local in dead bool slot (lane gap)
+007b0800	RELOCATION_MATCH	127v127	PASS	declaration-order init list with mid CCharString
+007b0150	RELOCATION_MATCH	106v106	PASS	CIntelligentPointer(0) members
+00780c80	DIFFER	147v145	-	opinion manager eax vs ecx only
+007e33b0	RELOCATION_MATCH	104v104	PASS	Timer-- == 0; CRGBColour(255,0,0,255) body-assign order
+006d4fd0	RELOCATION_MATCH	117v117	PASS	named component local; byte-tested presence word
+005edc00	RELOCATION_MATCH	141v141	PASS	two CIntelligentPointer temp assignment arms
+007c5480	RELOCATION_MATCH	112v112	PASS	signed-count ClearEffects loop
+007c54f0	RELOCATION_MATCH	112v112	PASS	signed-count ClearEffects loop
+004bc0e0	RELOCATION_MATCH	157v157	PASS	really GetRenderPositionInterpolateForThing (__fastcall static helper)
+004bd160	RELOCATION_MATCH	155v155	PASS	mesh info local first; inline C3DMeshObject dtor
+004bd620	RELOCATION_MATCH	112v112	PASS	unsigned short flags local
+004bfa50	RELOCATION_MATCH	110v110	PASS	product parked in dead scale slot
+004c0430	RELOCATION_MATCH	133v133	PASS	really InheritMeshEffectsFromCarrier; inlined STLport increment
