@@ -789,6 +789,16 @@ overloaded virtuals sit in reverse declaration order. Catalog 30,909 -> **31,659
   (pair reloaded from frame), 0x72abd0 (esi/edi swap). Review items still open: 0x704580 header address,
   0xA62960 is Unlock not a dtor, CCategory field naming 4 bytes off, CBulletTimeManager header offsets.
 
+## Part 6 (2026-10-15 to 2026-10-17): chunks 135–188, ledger 908–910, retries 5–7, the 161–240-byte band
+
+- Opus 5.5 agents at medium effort authored chunks 135–188 (40 rows each) with Fable 5.1 landing every report through `stage_pending.sh` / `land_pending.sh`; the 97–160-byte pool ran out after chunk 179, and 180 onward come from the 161–240-byte band (about 1,540 rows, cut with `mkchunk.py N 4 161 240`). Match rates in the new band run 17–31 of 40 (median about 27), lower than the 97–160 band because more rows die on register rotation, dead-argument-slot temporaries and the CDefPointer register gap.
+- Fleet rule moved from 2 agents to 1 on the owner's instruction (2026-10-16); one container restart killed chunks 165/166 and later chunk 186 mid-run, all resumed from PROGRESS.md with their src/ intact. Briefs now tell agents to write each test right after its row matches.
+- Landing-time promotions: asking the finished agent for exactly one extra try on parked rows whose `next:` idea already matched a sibling in the same chunk converted 2 of 3 (chunk 182), 4 of 5 (chunk 184) and 1 of 1 (chunks 186, 188); every brief since 185 carries that step.
+- Fable retried parked rows itself (retry batches 5–7, 24 rows, 3 tries each): 1 match. The remaining misses are single gaps that no source shape has reproduced: CDefPointer release re-read after `dec [ecx+4]`, x87 operand order for member + parameter sums, dead-argument-slot reuse for temporaries and spills, tail-merged inline arms, and LTCG custom conventions. Parked retries were stopped as poor use of credits.
+- Landing trap: `land_pending.sh` needs `source $S/wine/env.sh` in the same shell; with only `$S` exported it deleted the pending payload and landed nothing (chunk 180 was re-landed from `batches/<name>/payload.json`).
+- Owner note recorded in ROADMAP and every brief: graphics/rendering and audio/video layers will need replacement work because their dependencies are outdated; agents record true class names, verified vtables and retail offsets for such rows.
+- Catalog 32,812 (66.2%) → 34,098 (68.8%). Opus stopped on 2026-10-17 by the org monthly spend limit (resets 2026-10-20 02:00 UTC) with chunk 189 unstarted.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in
