@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0089af30	RELOCATION_MATCH	182v182	PASS	TU-local FindAllMessages/push_back bodies keep the sentinel in edi; locals in the unlink
+008a1b10	RELOCATION_MATCH	218v218	PASS	nested ifs; forceinline claim helper (locals homed in dead slot); no user C3DVector copy
+008a8010	DIFFER	219v218	-	box arithmetic scheduling only (in-place add vs lea); rest matches with TU-local query body
+008d0610	RELOCATION_MATCH	161v161	PASS	manager local first; inline quest-manager accessor; constant-0 type-mask template
+008d0730	DIFFER	233v233	-	Compare argument load order only (hand-split null-data case); natural form 236v233 with a sete merge
+00e7ef70	RELOCATION_MATCH	169v169	PASS	is CFishCompOrganiser ctor; landed entity-script model + STLport map/vectors
+00704a80	RELOCATION_MATCH	175v175	PASS	named CCountedPointer local copied into the by-value arg; if/else null Info
+009f8290	RELOCATION_MATCH	162v162	PASS	two-level CCharString ==, iterator with user copy ctor, break
+00a09dc0	RELOCATION_MATCH	162v162	PASS	is CMeshBankManager::CloseMeshBank (byte twin of 009f8290)
+009fd2b0	SKIP	-	-	row also holds the 16-aligned `ret 4` stub at 0x009FD390 after the jump table (two functions)
+009fc950	DIFFER	224v230	-	register allocation: Data kept in ebx vs spilled to the dead texture slot; folded dimension compares
+009fca40	DIFFER	167v218	-	lane gap: inline-asm fistp rounding through a pointer (TLX/TLY)
+006cd890	DIFFER	233v221	-	def release long form vs dec [ecx+4] ; jne (known lane gap)
+00a024c0	RELOCATION_MATCH	161v161	PASS	bucket hit block inside the loop with break; walks with compiled-out checks
+00a028f0	RELOCATION_MATCH	163v163	PASS	inline CHeader::RemoveFromFreeList; local model (retail Handles 12 bytes)
+00a02b30	DIFFER	201v201	-	FirstUnusedHandle store sunk below the MultiThreaded reload (scheduling only)
+00a030d0	RELOCATION_MATCH	176v176	PASS	success path as the if body, return false after
+008f63c0	DIFFER	207v229	-	zero-register vs immediate vector clears and ebp/spill allocation around the 64-bit count guard (four forms identical)
+00af4e10	RELOCATION_MATCH	194v194	PASS	is NParticleEngine::CParticleSystem ctor; STLport _Vector_base+alloc_proxy maps place the Name lea
+00dec7f0	RELOCATION_MATCH	175v175	PASS	is CQ_SecretPassageScript ctor (S_QSP); landed quest-script model
+00b0c9c0	RELOCATION_MATCH	195v195	PASS	is NParticleEngine::CPSCUpdateNormal ctor (vtable 0x129FC1C); all initialisers, folded bitfield word
+00789238	RELOCATION_MATCH	178v178	PASS	frame-pointer size TU (y off + s on); pack(1) record, all initialisers
+0055bc30	DIFFER	203v203	-	callee-saved ebx/edi shrink-wrapped into the if block by the lane; retail pushes them in the prologue
+009f52a0	RELOCATION_MATCH	234v234	PASS	(float)GFGetTime() - start sinks the fstp below the Write pushes
+009f4b10	RELOCATION_MATCH	240v240	PASS	per-type compares as event.X()==stored.X() if-return statements
+009f4d40	RELOCATION_MATCH	213v213	PASS	test written in the loop body (element re-read via begin()+i)
+00690c70	DIFFER	166v162	-	/GS lane gap: input cached in ebp, AddLong/AddUBYTE args not homed in the dead event slot
+00687ed0	RELOCATION_MATCH	171v171	PASS	case 1 else repeats the default body (cross-jumped); byte-indexed jump table
+00a0d530	RELOCATION_MATCH	179v179	PASS	landed CLinkedList scan-info model
+00a0d5f0	RELOCATION_MATCH	179v179	PASS	unreferenced byte-identical copy of 00a0d530
+0068f180	RELOCATION_MATCH	201v201	PASS	out-param GetInterface (eax); forceinline AddGameEvent(long) helper
+0068ff50	RELOCATION_MATCH	210v210	PASS	menu pointer preset null, called unconditionally
+00688c90	DIFFER	177v169	-	one CDefPointer dtor cannot give both the long temp release and the short local release
+00689050	RELOCATION_MATCH	222v222	PASS	unset-component accessor duplicates the call; click flag in bl
+009109b0	DIFFER	208v219	-	ownership ternary: retail merges both arms into one jne with a register compare
+00945e70	DIFFER	212v223	-	twin of 009109b0 (same ownership ternary gap)
+00942270	RELOCATION_MATCH	210v210	PASS	!(step > eps*eps) for test ah,5/jnp; landed C3DVector inline operators
+00bee070	DIFFER	206v206	-	esi/edi swap between result and first (register swap only)
+004e39e6	RELOCATION_MATCH	200v200	PASS	size TU; float/long typed transfers per member (def base 0x3c retail)
+00557a10	RELOCATION_MATCH	219v219	PASS	function-scope text/flag/colour, key name in the if block
