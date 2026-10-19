@@ -10,12 +10,12 @@
 
 namespace NTCScriptedControl {
 struct CThing;
-void __cdecl operator_delete(void* p); // 0x00bfea14
+void __cdecl free(void* p); // 0x00bfea14 is the MSVCR71 free import thunk, not operator delete
 struct CSubtitledMessage { unsigned char nativeFields[0x44]; CSubtitledMessage(); CSubtitledMessage(const CSubtitledMessage&); ~CSubtitledMessage(); };
 struct CSubtitledMessageArray {
     CSubtitledMessage* first; CSubtitledMessage* last; CSubtitledMessage* end;
     CSubtitledMessageArray() : first(0), last(0), end(0) {}
-    ~CSubtitledMessageArray() { CSubtitledMessage* e=last; CSubtitledMessage* p=first; for (; p!=e; ++p) p->~CSubtitledMessage(); if (first) operator_delete(first); }
+    ~CSubtitledMessageArray() { CSubtitledMessage* e=last; CSubtitledMessage* p=first; for (; p!=e; ++p) p->~CSubtitledMessage(); if (first) free(first); }
     CSubtitledMessageArray& operator=(const CSubtitledMessageArray& other);
     void resize(unsigned long, const CSubtitledMessage&); // 0x0071a5c0
 };

@@ -1,2 +1,0 @@
-#include <cstdio>
-struct S14{unsigned short v[7];};struct Base{unsigned char p[0x70];};struct CThingBaseDef:Base{long lead[2];S14 rec;long a[6];unsigned char f0:1;unsigned char f1:1;unsigned char f2:1;unsigned char f3:1;};int main(){CThingBaseDef a; CThingBaseDef b;b.lead[0]=4;b.a[2]=9;b.f1=1;a=b;if(a.a[2]!=9||!a.f1){printf("004643cf_TEST FAIL\n");return 1;}printf("004643cf_TEST PASS\n");return 0;}

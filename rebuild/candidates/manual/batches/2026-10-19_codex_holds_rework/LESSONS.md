@@ -1,0 +1,16 @@
+# agent990 lessons (held-row rework, 49 Codex rows)
+- RELOCATION_MATCH proves bytes only: run relocs.py and read every bound symbol; placeholder names (A/B/C, TransferAlt, ReleaseNode, CBase, *Calls, Nearby*) hide wrong callees.
+- CPersistContext::Transfer(float&) = 0x431061, Transfer(long&) = 0x431102, Transfer(bool&) = 0x43314A; dword enums/structs go through member-template instances emitted next to the caller (declare `template<class T> void Transfer(T&)`).
+- Stream writers: WriteLong(long) 0x993EB0 vs WriteULong(unsigned long) 0x993EA0 are byte-identical twins; split them by the PDB field's signedness to remove the CONFLICT.
+- Two byte-identical copies of one helper inside one function (CVectorMap LowerBound 0x40F020/0x4365B0) need two symbols; a const/non-const overload pair is a workable (documented) device.
+- Def classes: the TLC CDefClassBase/CParentDefClassBase prefix is 0x3c bytes (PDB 0x40) -> retail field offset = PDB - 4; the packed CParentDefClassBase (unaligned +0x25/+0x29) justifies pack(1) (landed 0x432E60 model).
+- STLport containers are 12 bytes in retail (PDB 16): recompute offsets after every vector/map/set; this alone explains most "unknown pad" gaps.
+- Identify propagated ctor/dtor/op= labels via rtti-vtables.tsv: scalar-deleting-dtor slot 0 or the slot-19 jmp thunk names the real class; quest-script ctors via the factory (`push size; call new; call ctor`) and its "S_xxx"/"Q_xxx" registration strings.
+- Hard-coded vtable immediates (`*(ulong*)this = 0x12...`) become real polymorphic members; the vptr store then binds ??_7<Class>@@6B@ (RELOCATION_MATCH, correct identity).
+- The engine C3DVector has a user-written member-wise copy ctor: implicit copies of classes holding C3DVectors only byte-match with it (flat dword moves instead of lea-based block copies).
+- VC7.1 folds literal float sums (0.3f + 1e-4f): separate .rdata operands mean named const float globals; it may also swap two memory fadds (no /Op), so match operand order against retail.
+- `return T(...)` temporaries vs named locals: retail that builds every temporary before pushing args used named locals.
+- CRT imports: 0xBFEA0E malloc, 0xBFEA14 free, 0xBFE9BC operator delete, 0xBFEB22/0xBFEB1C operator new[]/delete[] (declare the array forms yourself); KERNEL32 calls should be dllimport declarations (__imp__ relocs), never IAT addresses.
+- Tests: embed the exact source (mk.sh = src + harness) and stub only the dependencies; a CRT function spy (malloc/free) must forward to the process heap and be armed only around the call, or the CRT hangs/crashes.
+- Test pitfalls: `x == (bool)0xcd` compares 1; compare raw bytes. Float expectations computed in x87 must be stored to a float local first.
+- Generated engine/ headers are data-only; use the lane's `<Class>_Methods : <Class>` carrier for methods, and say so in the header comment when a header does not fit (donor offsets).

@@ -1,2 +1,0 @@
-#include <cstdio>
-struct S{long x[24]; long t1,t2; S(){for(int i=0;i<24;++i)x[i]=0;t1=7;t2=8;}}; int main(){S s;if(s.x[0]||s.x[23]!=0){std::printf("00daac00_TEST FAIL\n");return 1;}std::printf("00daac00_TEST PASS\n");return 0;}

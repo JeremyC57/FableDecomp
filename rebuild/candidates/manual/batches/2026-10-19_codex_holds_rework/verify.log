@@ -1,0 +1,227 @@
+addr       parity           behav  name
+00433fe0   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAM@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+00433fe0   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAJ@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+00433fe0   RELOCATION_MATCH PASS   CEngineDef::Transfer
+00434450   WARN RELOC_NAME: ??4CDefRootBase@@QAEAAU0@ABU0@@Z -> 00431f60 labelled 'CTCPhysicsBase::ConstructFromParams'
+00434450   RELOCATION_MATCH PASS   CEngineVideoOptionsDef::operator=
+004554c6   WARN RELOC_NAME: ??1CParentDefClassBase@@QAE@XZ -> 00430300 labelled 'CTCInventoryItem::OnDie'
+004554c6   RELOCATION_MATCH PASS   CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip
+00457537   RELOCATION_MATCH PASS   CSpecialAbilitiesBulletTimeDef::CSpecialAbilitiesBulletTimeDef
+004585fe   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAJ@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004585fe   WARN RELOC_NAME: ??$Transfer@W4EActionRegisteredType@@@CPersistContext@@QAEXAAW4EActionRegisteredType@@@Z -> 004586eb labelled 'CEngineLightingManager::UpdateShadowScene'
+004585fe   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAA_N@Z -> 0043314a labelled 'CEngineLightingManager::UpdateShadowScene'
+004585fe   WARN RELOC_NAME: ??$Transfer@W4EHitLocationCodelet@@@CPersistContext@@QAEXAAW4EHitLocationCodelet@@@Z -> 0045878f labelled 'CEngineLightingManager::UpdateShadowScene'
+004585fe   RELOCATION_MATCH PASS   CHitLocationDef::Transfer
+00459615   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAM@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+00459615   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAJ@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+00459615   RELOCATION_MATCH PASS   CPlayerMovementDef::Transfer
+004642fa   RELOCATION_MATCH PASS   CThingBaseDef::operator=
+004643cf   RELOCATION_MATCH PASS   CThingBaseDef::operator=
+004c3d30   RELOCATION_MATCH PASS   CEnginePrimitiveAnimation::CEnginePrimitiveAnimation -- initializes animation resource and frame data 
+004de122   WARN SHARED_HEADER_AVAILABLE CTrophyDef
+004de122   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAM@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004de122   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAJ@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004de122   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAA_N@Z -> 0043314a labelled 'CEngineLightingManager::UpdateShadowScene'
+004de122   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAUCDefString@@@Z -> 0045228f labelled 'CEngineLightingManager::UpdateShadowScene'
+004de122   RELOCATION_MATCH PASS   CTrophyDef::Transfer
+00519b80   RELOCATION_MATCH PASS   CRegion::operator=
+0051a900   WARN RELOC_NAME: ??0?$CRetailVector@J@@QAE@ABU0@@Z -> 00514160 labelled 'Std_Vector_Construct_Copy'
+0051a900   WARN RELOC_NAME: ??0?$CRetailMap@UCCharString@@UC2DVector@@@@QAE@ABU0@@Z -> 00518e80 labelled 'CRegion_Constructor'
+0051a900   RELOCATION_MATCH PASS   CRegion::CRegion
+00555390   WARN RELOC_NAME: ??0CDeletion@NUISystem@@QAE@ABU01@@Z -> 0042cd84 labelled '_unattributed::SPairLongCSecond_0042bf06'
+00555390   WARN RELOC_NAME: ??1CDeletionParents@NUISystem@@QAE@XZ -> 0042abca labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00555390   RELOCATION_MATCH PASS   NUISystem::CScrollableList::~CScrollableList
+0056e6b6   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+0056e6b6   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0056e6b6   RELOCATION_MATCH PASS   CTCInventoryExperience::GetExperienceStatMovieName
+0056fe7c   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+0056fe7c   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00692f30
+0056fe7c   RELOCATION_MATCH PASS   CTCInventoryExperience::GetExperienceAbilityDescription
+0058376c   WARN SHARED_HEADER_AVAILABLE CTCInventory
+0058376c   WARN RELOC_NAME: ??0CEntryList@@QAE@ABU?$CListAllocator@PAUCMenuEntry@@@@@Z -> 0042abaf labelled 'std::list::list'
+0058376c   WARN RELOC_NAME: ??1CEntryList@@QAE@XZ -> 0042abca labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+0058376c   RELOCATION_MATCH PASS   CTCInventory::IsSaveMenuReceivingInput
+00633420   WARN SHARED_HEADER_AVAILABLE CAInputProcess
+00633420   RELOCATION_MATCH PASS   CPlayer::UninitModeControlCreature
+006338d0   WARN SHARED_HEADER_AVAILABLE CAInputProcess
+006338d0   MATCH            PASS   CPlayer::InitModeBerserk
+006339b0   WARN SHARED_HEADER_AVAILABLE CAInputProcess
+006339b0   RELOCATION_MATCH PASS   CPlayer::UninitModeBerserk
+00687310   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00687310   RELOCATION_MATCH PASS   CMessageEvent::CMessageEvent
+007464a0   WARN RELOC_NAME: ??0CBaseClass@@QAE@XZ -> 0099a2d0 labelled 'NHeroInformationScreens::CBase::CBase'
+007464a0   WARN RELOC_CONFLICT: ??1CBaseClass@@UAE@XZ -> 0099a2e0 here, 0099a300 in landed 00418b7a
+007464a0   WARN RELOC_NAME: ??1CBaseClass@@UAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+007464a0   RELOCATION_MATCH PASS   CEnginePrimitiveHandleList::InsertDefault
+007b7a70   RELOCATION_MATCH PASS   CTCOverheadDisplay::vfunc_9
+007e3c70   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007e3c70   WARN SHARED_HEADER_AVAILABLE CWillResponseDef
+007e3c70   RELOCATION_MATCH PASS   CTCWillResponse::CTCWillResponse
+00845bc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00845bc0   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+00845bc0   RELOCATION_MATCH PASS   CCreatureAction_StopSneaking::PerformAction
+0084bd40   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0084bd40   RELOCATION_MATCH PASS   CCreatureAction_PerformExpression::CCreatureAction_PerformExpression
+008929d0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+008929d0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008929d0   RELOCATION_MATCH PASS   CGameScriptInterface::DisplayGameInfo
+00892a80   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+00892a80   WARN RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'
+00892a80   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+00892a80   RELOCATION_MATCH PASS   CGameScriptInterface::DisplayGameInfoText
+008c35d0   WARN SHARED_HEADER_AVAILABLE CModeStandBase
+008c35d0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008c35d0   RELOCATION_MATCH PASS   NCreatureMode::CModeBriarRoseTeleportInvulnerable::CModeBriarRoseTeleportInvulnerable
+008d0ba0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+008d0ba0   WARN SHARED_HEADER_AVAILABLE CGameScriptThing
+008d0ba0   RELOCATION_MATCH PASS   CGameScriptThing::IsAwareOfHero
+00914c60   WARN SHARED_HEADER_AVAILABLE CTCBase
+00914c60   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+00914c60   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase_Methods@@QAEPAUCWorld@@XZ -> 008fcfa0 labelled 'CPlayer::GetCurrentMode'
+00914c60   WARN RELOC_NAME: ?GetPRandomSeed@CWorld_Methods@@QAEPAIXZ -> 0049d810 labelled 'CVertexBufferWin32::DoSizeof'
+00914c60   RELOCATION_MATCH PASS   CAIStateGroup_KidWanderNearKids::?IsRunnable@CAIStateGroup_KidWanderNearKids@@UAE_NXZ
+00953bc0   WARN RELOC_NAME: ??0?$CRetailVector@UC3DVector@@@@QAE@ABU0@@Z -> 006f0810 labelled 'Vector_CopyFrom'
+00953bc0   RELOCATION_MATCH PASS   CCreatureAction_DragonTakeOffIntoFlying::CCreatureAction_DragonTakeOffIntoFlying
+0096e700   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0096e700   WARN RELOC_NAME: ?IsAttackingCombatant@CThingCreatureBase@@QAE_NXZ -> 00662410 labelled 'C3DAnimationBlendState::AddCombinationBlend'
+0096e700   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase_Methods@@QAEPAUCWorld@@XZ -> 008fcfc0 labelled 'CPlayer::GetCurrentMode'
+0096e700   WARN RELOC_NAME: ?GetPosition@CThingCreatureBase@@QAEABUC3DVector@@XZ -> 004c73d0 labelled 'CVertexBufferWin32::DoSizeof'
+0096e700   WARN RELOC_NAME: ?IsPositionOccupied@CCombatManager@@QAE_NPAUCThingCreatureBase@@@Z -> 006e9700 labelled 'CCombatWheel_ValidateSequencePosition'
+0096e700   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition
+009a0080   RELOCATION_MATCH PASS   Truncate
+00a3b380   WARN SHARED_HEADER_AVAILABLE CVideoSys
+00a3b380   RELOCATION_MATCH PASS   CVideoSys::Close
+00a75f10   WARN RELOC_UNCHECKED: no object block of the retail length (jump table or multi-block TU)
+00a75f10   RELOCATION_MATCH PASS   CNavQuadTreeNode::SetUpNeighboursWithLeaf
+00abf6b0   WARN RELOC_NAME: ?WriteLong@CDataOutputStreamMethods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+00abf6b0   WARN RELOC_NAME: ?WriteULong@CDataOutputStreamMethods@@QAEXK@Z -> 00993ea0 labelled 'CDataOutputStream::WriteCBYTE'
+00abf6b0   RELOCATION_MATCH PASS   C3DMeshMaterial::SaveBinary
+00ad7400   WARN RELOC_NAME: ?Erase@?$CRbTree@U?$CPair@$$CBKUCContractionReference@QuadricOptimiserInternals@@@QuadricOptimiserInternals@@@QuadricOptimiserInternals@@QAEXPAU?$CRbTreeNode@U?$CPair@$$CBKUCContractionReference@QuadricOptimiserInternals@@@QuadricOptimiserInternals@@@2@@Z -> 00ad5240 labelled 'TreeNode_DestructWithRefcount'
+00ad7400   WARN RELOC_NAME: ?Erase@?$CRbTree@U?$CPair@$$CBKM@QuadricOptimiserInternals@@@QuadricOptimiserInternals@@QAEXPAU?$CRbTreeNode@U?$CPair@$$CBKM@QuadricOptimiserInternals@@@2@@Z -> 00ad14e0 labelled '_unattributed::FreeTree_CTreeOwner_00ad14e0'
+00ad7400   WARN RELOC_NAME: ?Erase@?$CRbTree@K@QuadricOptimiserInternals@@QAEXPAU?$CRbTreeNode@K@2@@Z -> 004cf810 labelled '_unattributed::FreeTree_CTreeOwner_004cf810'
+00ad7400   RELOCATION_MATCH PASS   CWound::Kill
+00aed090   MATCH            PASS   CParticleEmitter::Set2DPosition
+00b16eb0   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::CPSCOrbit
+00b16f60   RELOCATION_MATCH PASS   CPSCOrbit::ReadBinary
+00b17f70   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+00b17f70   WARN RELOC_NAME: ?WriteULong@CDataOutputStream_Methods@@QAEXK@Z -> 00993ea0 labelled 'CDataOutputStream::WriteCBYTE'
+00b17f70   WARN RELOC_NAME: ?WriteFloat@CDataOutputStream_Methods@@QAEXM@Z -> 00993ee0 labelled 'CDataOutputStream::WriteCBYTE'
+00b17f70   RELOCATION_MATCH PASS   CPSCAttractor::WriteBinary
+00b45460   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveShadowedSpotLight
+00b45460   RELOCATION_MATCH PASS   CEngineInternalPrimitiveShadowedSpotLight::Update
+00b9d100   WARN SHARED_HEADER_AVAILABLE CVertexShader
+00b9d100   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+00b9d100   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerStaticMeshesBase
+00b9d100   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshesBase::FrameStart -- selects the static mesh buffer pointers for the active render mode 
+00bcea60   WARN SHARED_HEADER_AVAILABLE CVertexShader
+00bcea60   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+00bcea60   RELOCATION_MATCH PASS   CEnginePrimitiveManagerAnimatedMeshesBase::FrameStart -- selects the animated mesh frame pointer table by render mode 
+00d68f00   WARN RELOC_NAME: ??0CScriptBase@@QAE@XZ -> 00cb8110 labelled 'CVtable_012c1648::CVtable_012c1648'
+00d68f00   WARN RELOC_NAME: ??0CBaseClass@@QAE@XZ -> 0099a2d0 labelled 'NHeroInformationScreens::CBase::CBase'
+00d68f00   RELOCATION_MATCH PASS   CQ_HangingTreeEvilScript::CQ_HangingTreeEvilScript
+00daac00   WARN RELOC_NAME: ??0CScriptBase@@QAE@XZ -> 00cb8110 labelled 'CVtable_012c1648::CVtable_012c1648'
+00daac00   RELOCATION_MATCH PASS   CQ_NewOakValeIntroScript::CQ_NewOakValeIntroScript
+00e398f0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e398f0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00e398f0   WARN RELOC_NAME: ??0CScriptBase@@QAE@XZ -> 00cb8110 labelled 'CVtable_012c1648::CVtable_012c1648'
+00e398f0   WARN RELOC_NAME: ??0CBaseClass@@QAE@XZ -> 0099a2d0 labelled 'NHeroInformationScreens::CBase::CBase'
+00e398f0   WARN RELOC_NAME: ??0CBaseObject@@QAE@XZ -> 0099a380 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00e398f0   RELOCATION_MATCH PASS   CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript
+
+WINS: 47
+  00433fe0 RELOCATION_MATCH CEngineDef::Transfer
+  00434450 RELOCATION_MATCH CEngineVideoOptionsDef::operator=
+  004554c6 RELOCATION_MATCH CPatchTesselationEdgeStrip::??1CInventoryDef
+  00457537 RELOCATION_MATCH CSpecialAbilitiesBulletTimeDef::CSpecialAbilitiesBulletTimeDef
+  004585fe RELOCATION_MATCH CHitLocationDef::Transfer
+  00459615 RELOCATION_MATCH CPlayerMovementDef::Transfer
+  004642fa RELOCATION_MATCH CThingBaseDef::??4CThingObjectDef
+  004643cf RELOCATION_MATCH CThingBaseDef::??4CThingBuildingDef
+  004c3d30 RELOCATION_MATCH CEnginePrimitiveAnimation::??0CEnginePrimitiveAnimation
+  004de122 RELOCATION_MATCH CTrophyDef::Transfer
+  00519b80 RELOCATION_MATCH CRegion::operator=
+  0051a900 RELOCATION_MATCH CRegion::CRegion
+  00555390 RELOCATION_MATCH NUISystem::CScrollableList::??1CScrollableList
+  0056e6b6 RELOCATION_MATCH CTCInventoryExperience::GetExperienceStatMovieName
+  0056fe7c RELOCATION_MATCH CTCInventoryExperience::GetExperienceAbilityDescription
+  0058376c RELOCATION_MATCH CTCInventory::IsSaveMenuReceivingInput
+  00633420 RELOCATION_MATCH CPlayer::UninitModeControlCreature
+  006338d0 MATCH CPlayer::InitModeBerserk
+  006339b0 RELOCATION_MATCH CPlayer::UninitModeBerserk
+  00687310 RELOCATION_MATCH CMessageEvent::CMessageEvent
+  007464a0 RELOCATION_MATCH CEnginePrimitiveHandleList::InsertDefault
+  007b7a70 RELOCATION_MATCH CTCOverheadDisplay::vfunc_9
+  007e3c70 RELOCATION_MATCH CTCWillResponse::CTCWillResponse
+  00845bc0 RELOCATION_MATCH CCreatureAction_StopSneaking::PerformAction
+  0084bd40 RELOCATION_MATCH CCreatureAction_PerformExpression::CCreatureAction_PerformExpression
+  008929d0 RELOCATION_MATCH CGameScriptInterface::DisplayGameInfo
+  00892a80 RELOCATION_MATCH CGameScriptInterface::DisplayGameInfoText
+  008c35d0 RELOCATION_MATCH NCreatureMode::CModeBriarRoseTeleportInvulnerable::??0CModeBriarRoseTeleportInvulnerable
+  008d0ba0 RELOCATION_MATCH CGameScriptThing::IsAwareOfHero
+  00914c60 RELOCATION_MATCH CAIStateGroup_KidWanderNearKids::IsRunnable
+  00953bc0 RELOCATION_MATCH CCreatureAction_DragonTakeOffIntoFlying::CCreatureAction_DragonTakeOffIntoFlying
+  0096e700 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition
+  009a0080 RELOCATION_MATCH CBasicString<char>::Truncate
+  00a3b380 RELOCATION_MATCH CVideoSys::Close
+  00a75f10 RELOCATION_MATCH CNavQuadTreeNode::SetUpNeighboursWithLeaf
+  00abf6b0 RELOCATION_MATCH C3DMeshMaterial::SaveBinary
+  00ad7400 RELOCATION_MATCH CWound::??1COptimisedVertex
+  00aed090 MATCH CParticleEmitter::Set2DPosition
+  00b16eb0 RELOCATION_MATCH NParticleEngine::CPSCOrbit::CPSCOrbit
+  00b16f60 RELOCATION_MATCH CPSCOrbit::ReadBinary
+  00b17f70 RELOCATION_MATCH CPSCAttractor::WriteBinary
+  00b45460 RELOCATION_MATCH CEngineInternalPrimitiveShadowedSpotLight::Update
+  00b9d100 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::FrameStart
+  00bcea60 RELOCATION_MATCH CEnginePrimitiveManagerAnimatedMeshesBase::FrameStart
+  00d68f00 RELOCATION_MATCH CQ_HangingTreeEvilScript::??0CQ_HangingTreeEvilScript
+  00daac00 RELOCATION_MATCH CQ_NewOakValeIntroScript::??0CQ_NewOakValeIntroScript
+  00e398f0 RELOCATION_MATCH CQ_HangingTreeGoodScript::??0CV_BordelloScript
+
+LANDED 47 wins into src/compiled + tests + catalog + oracle
+  CEngineDef_Transfer_00433fe0
+  CEngineVideoOptionsDef_operator_00434450
+  CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004554c6
+  CSpecialAbilitiesBulletTimeDef_CSpecialAbilitiesBulletTimeDef_00457537
+  CHitLocationDef_Transfer_004585fe
+  CPlayerMovementDef_Transfer_00459615
+  CThingBaseDef_operator_004642fa
+  CThingBaseDef_operator_004643cf
+  CEnginePrimitiveAnimation_CEnginePrimitiveAnimationinitializesanimationres_004c3d30
+  CTrophyDef_Transfer_004de122
+  CRegion_operator_00519b80
+  CRegion_CRegion_0051a900
+  NUISystemCScrollableList_CScrollableList_00555390
+  CTCInventoryExperience_GetExperienceStatMovieName_0056e6b6
+  CTCInventoryExperience_GetExperienceAbilityDescription_0056fe7c
+  CTCInventory_IsSaveMenuReceivingInput_0058376c
+  CPlayer_UninitModeControlCreature_00633420
+  CPlayer_InitModeBerserk_006338d0
+  CPlayer_UninitModeBerserk_006339b0
+  CMessageEvent_CMessageEvent_00687310
+  CEnginePrimitiveHandleList_InsertDefault_007464a0
+  CTCOverheadDisplay_vfunc9_007b7a70
+  CTCWillResponse_CTCWillResponse_007e3c70
+  CCreatureActionStopSneaking_PerformAction_00845bc0
+  CCreatureActionPerformExpression_CCreatureActionPerformExpression_0084bd40
+  CGameScriptInterface_DisplayGameInfo_008929d0
+  CGameScriptInterface_DisplayGameInfoText_00892a80
+  NCreatureModeCModeBriarRoseTeleportInvulnerable_CModeBriarRoseTeleportInvulnerable_008c35d0
+  CGameScriptThing_IsAwareOfHero_008d0ba0
+  CAIStateGroupKidWanderNearKids_IsRunnableCAIStateGroupKidWanderNearKidsUAENXZ_00914c60
+  CCreatureActionDragonTakeOffIntoFlying_CCreatureActionDragonTakeOffIntoFlying_00953bc0
+  CAIStateGroupMeleeCombatNearby_IsEnemyCreatureInCombatPosition_0096e700
+  CBasicStringchar_Truncate_009a0080
+  CVideoSys_Close_00a3b380
+  CNavQuadTreeNode_SetUpNeighboursWithLeaf_00a75f10
+  C3DMeshMaterial_SaveBinary_00abf6b0
+  CWound_Kill_00ad7400
+  CParticleEmitter_Set2DPosition_00aed090
+  NParticleEngineCPSCOrbit_CPSCOrbit_00b16eb0
+  CPSCOrbit_ReadBinary_00b16f60
+  CPSCAttractor_WriteBinary_00b17f70
+  CEngineInternalPrimitiveShadowedSpotLight_Update_00b45460
+  CEnginePrimitiveManagerStaticMeshesBase_FrameStartselectsthestaticmeshbufferpointersfort_00b9d100
+  CEnginePrimitiveManagerAnimatedMeshesBase_FrameStartselectstheanimatedmeshframepointertabl_00bcea60
+  CQHangingTreeEvilScript_CQHangingTreeEvilScript_00d68f00
+  CQNewOakValeIntroScript_CQNewOakValeIntroScript_00daac00
+  CQHangingTreeGoodScript_CQHangingTreeGoodScript_00e398f0

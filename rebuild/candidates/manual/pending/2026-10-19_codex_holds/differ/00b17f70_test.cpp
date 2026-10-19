@@ -1,4 +1,0 @@
-#include <cstdio>
-struct V3{float x,y,z;}; struct Out{int e,b,l,f,v; Out():e(0),b(0),l(0),f(0),v(0){} void WriteEBOOL(bool){++e;} void WriteCBYTE(long){++b;} void WriteFloat(float){++f;} void Write3DVector(V3*){++v;}};
-struct A{unsigned char pad[12]; bool en:1; bool use:1; long fall,param,name; float radius,force; V3* first; V3* last; V3* end; void write(Out*o){o->WriteEBOOL(en);o->WriteEBOOL(use);o->WriteCBYTE(fall);o->WriteCBYTE(param);o->WriteCBYTE(name);o->WriteFloat(radius);o->WriteFloat(force); unsigned long n=(unsigned long)(last-first);o->WriteCBYTE(n);if(n<=0)return;{unsigned long off=0;do{o->Write3DVector((V3*)((unsigned char*)first+off));off+=sizeof(V3);--n;}while(n);}}};
-int main(){V3 p[2];A a={};a.en=true;a.first=p;a.last=p+2;Out o;a.write(&o);if(o.e!=2||o.b!=4||o.f!=2||o.v!=2){std::printf("00b17f70_TEST FAIL\n");return 1;}std::printf("00b17f70_TEST PASS\n");return 0;}

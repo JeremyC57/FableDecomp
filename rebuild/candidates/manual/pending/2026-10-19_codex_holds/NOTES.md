@@ -53,3 +53,7 @@
 | 00988490 | artificial volatile unsigned long m[16] forces store order |
 
 Held rows need: a test that runs the candidate implementation (not a stand-in), callee/constant bindings matching retail (RELOCATION_MATCH masks them), and no artificial volatile. Re-grade with the Fable lane before landing.
+
+
+## 2026-10-19 rework (Opus high, agent990): 47 of 49 landed via `batches/2026-10-19_codex_holds_rework/`
+- Still held: 00988490 (bytes match only with an artificial `volatile`; VC7.1 reorders the 16 dword moves in every clean form, best clean try DIFFER 180v173) and 00e32200 (retail destroys the by-value CScriptThing out of line on one exit and inline on the other; one dtor symbol cannot bind both, honest forms DIFFER 208v188 / 113v188).

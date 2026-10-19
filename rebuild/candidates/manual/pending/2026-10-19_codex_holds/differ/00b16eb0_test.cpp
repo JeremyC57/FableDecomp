@@ -1,4 +1,0 @@
-#include <cstdio>
-struct Orbit { long Type; bool Enabled; float Radius,Expand; bool CycleFlag; float CycleTime,SqueezeScale,SqueezeAngle,RotateSpeed,RotateStart,RotateSpeedRandom,RotateStartRandom; Orbit():Type(0),Enabled(false),Radius(1),Expand(0),CycleFlag(false),CycleTime(5),SqueezeScale(1),SqueezeAngle(0),RotateSpeed(.25f),RotateStart(0),RotateSpeedRandom(0),RotateStartRandom(0){} };
-struct CPSCOrbit { unsigned long CentreParam; Orbit Orbits[3]; unsigned char pad[0xcc]; unsigned long State; CPSCOrbit(){Orbits[0].Enabled=true; State=0;} };
-int main(){ CPSCOrbit x; if(!x.Orbits[0].Enabled||x.Orbits[1].Enabled||x.Orbits[2].Radius!=1||x.Orbits[0].CycleTime!=5||x.Orbits[0].RotateSpeed!=.25f||x.State!=0){std::printf("00b16eb0_TEST FAIL\n");return 1;} std::printf("00b16eb0_TEST PASS\n"); return 0; }
