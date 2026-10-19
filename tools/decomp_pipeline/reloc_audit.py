@@ -52,7 +52,7 @@ def main():
         findings = []; pairs = []
         if st.startswith(("MATCH", "RELOCATION")):
             try:
-                hard, warn, pairs = RI.check(V.ROOT, V.OBJDUMP, work / f"{a}.obj", leaf, a, retail)
+                hard, warn, pairs = RI.check(V.ROOT, V.OBJDUMP, work / f"{a}.obj", leaf, a, retail, built=built)
                 findings = hard + warn
                 RI.record_bindings(V.ROOT, a, [(p[2], p[3]) for p in pairs])
             except Exception as ex: findings = [f"RELOC_CHECK_ERROR: {ex}"]

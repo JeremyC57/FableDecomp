@@ -131,36 +131,64 @@ def label_agrees(sym, label):
     if not nl or not nll: return None
     return nl == nll or nl in nll or nll in nl
 
-def check(root, objdump, objpath, leaf, addr, retail, roff=0):
+CRT_TOKENS = ("new", "delete", "malloc", "free", "realloc", "calloc", "memcpy", "memset", "memmove", "memcmp", "strlen", "strcpy", "strcmp", "strncpy", "strcat", "sprintf")
+
+def _crt_claim(sym):
+    """What CRT function a symbol claims to be, from its identity or its alias tokens; None = no claim."""
+    kind, leaf, cls = sym_identity(sym)
+    n = leaf.lower()
+    if kind == "op" and ("new" in n or "delete" in n): return leaf
+    if kind == "c" and n in CRT_TOKENS: return n
+    flat = re.sub(r"[^a-z]", "", n)
+    if "delete" in flat: return "operator delete[]" if "array" in flat or "vector" in flat else "operator delete"
+    if "new" in flat and ("opnew" in flat or "operatornew" in flat or flat.endswith("new")): return "operator new"
+    if "malloc" in flat: return "malloc"
+    if flat == "free" or flat.startswith("free") or flat.endswith("free"): return "free"
+    return None
+
+def check(root, objdump, objpath, leaf, addr, retail, roff=0, built=None):
     """Return (hard_errors, warnings, pairs) for the graded function.
-    pairs = [(offset, kind, symbol, retail_target)]. Offsets are relative to the retail span."""
+    pairs = [(offset, kind, symbol, retail_target_base)]. Offsets are relative to the retail span.
+    `built` (the compiled bytes of the same span) supplies each relocation's addend so a struct
+    field reference (`sym+4`) resolves to the symbol base, not to the field address."""
     a = int(addr, 16)
     rel = function_relocs(objdump, objpath, leaf, len(retail) + roff)
-    if rel is None: return (["RELOC_IDENTITY: no object block of the retail length"], [], [])
+    if rel is None: return ([], ["RELOC_UNCHECKED: no object block of the retail length (jump table or multi-block TU)"], [])
     pairs = []; sym2t = {}; t2sym = {}
     for off, kind, sym in rel:
         off -= roff
         if off < 0 or off + 4 > len(retail) or sym.startswith(SKIP_PREFIXES): continue
-        if kind in ("DISP32", "REL32"): t = (a + off + 4 + struct.unpack_from("<i", retail, off)[0]) & 0xFFFFFFFF
-        else: t = struct.unpack_from("<I", retail, off)[0]
+        if kind in ("DISP32", "REL32"):
+            t = (a + off + 4 + struct.unpack_from("<i", retail, off)[0]) & 0xFFFFFFFF
+            if built is not None and len(built) >= off + 4: t = (t - struct.unpack_from("<i", built, off)[0]) & 0xFFFFFFFF
+        else:
+            t = struct.unpack_from("<I", retail, off)[0]
+            if built is not None and len(built) >= off + 4: t = (t - struct.unpack_from("<I", built, off)[0]) & 0xFFFFFFFF
         pairs.append((off, kind, sym, t)); sym2t.setdefault(sym, set()).add(t); t2sym.setdefault(t, set()).add(sym)
     hard, warn = [], []
     for sym, ts in sym2t.items():
         if len(ts) > 1: hard.append(f"RELOC_IDENTITY: symbol {sym} bound to {', '.join(f'{t:08x}' for t in sorted(ts))}")
     for t, syms in t2sym.items():
         if len(syms) > 1 and not all(s.startswith("??_7") for s in syms):
-            hard.append(f"RELOC_IDENTITY: retail {t:08x} bound to {', '.join(sorted(syms))}")
+            # two local models naming the same retail function the same way (CThingView::GetPosition
+            # and CThingAICreatureView::GetPosition) are consistent; two different identities are not
+            ids = {_norm(sym_identity(s)[1]) for s in syms}
+            (hard if len(ids) > 1 else warn).append(f"{'RELOC_IDENTITY' if len(ids) > 1 else 'RELOC_DUPLICATE'}: retail {t:08x} bound to {', '.join(sorted(syms))}")
     tbl = bindings_table(root); labs = labels(root)
     for sym, ts in sym2t.items():
         t = next(iter(ts))
         if sym in tbl and tbl[sym][0] != t and not sym.startswith("??_7"):
             warn.append(f"RELOC_CONFLICT: {sym} -> {t:08x} here, {tbl[sym][0]:08x} in landed {tbl[sym][1]}")
         lab = labs.get(t)
-        if lab:
-            ok = label_agrees(sym, lab.replace("operator_", "operator "))
-            if ok is False:
-                # an import thunk's identity is certain (the IAT names it): calling the wrong CRT
-                # function is a hard error, every other label is evidence and only warns
-                if ".DLL::" in lab.upper(): hard.append(f"RELOC_IDENTITY: {sym} -> {t:08x} is the import thunk '{lab}'")
-                else: warn.append(f"RELOC_NAME: {sym} -> {t:08x} labelled '{lab}'")
+        if not lab: continue
+        lab_cmp = lab.replace("operator_", "operator ")
+        if ".DLL::" in lab.upper():
+            # import thunks are certain identities: a symbol that claims a different CRT function is
+            # wrong (operator new vs malloc, operator delete vs free, scalar vs array forms); a
+            # descriptive alias with no CRT claim only warns (rename it to the real function)
+            claim = _crt_claim(sym); thunk = lab_cmp.split("::", 1)[1].lower()
+            if claim is None: warn.append(f"RELOC_ALIAS: {sym} -> {t:08x} is the import thunk '{lab}'")
+            elif _norm(claim.replace("[]", " array")) != _norm(thunk.replace("[]", " array")): hard.append(f"RELOC_IDENTITY: {sym} -> {t:08x} is the import thunk '{lab}'")
+            continue
+        if label_agrees(sym, lab_cmp) is False: warn.append(f"RELOC_NAME: {sym} -> {t:08x} labelled '{lab}'")
     return (hard, warn, pairs)

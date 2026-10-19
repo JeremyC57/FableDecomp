@@ -509,8 +509,9 @@ def main():
                         st=st2+(f"[{tag}]" if tag else ""); done=True; break
                 if done: break
         # recompile the winning (src, winflags) last so sobj holds the winning object
+        built_final=None
         if st.startswith(("MATCH","RELOCATION")):
-            parity_of(src, addr, leaf, retail, work, e, extra=winflags, text_extractor=ext)
+            _,built_final,_=parity_of(src, addr, leaf, retail, work, e, extra=winflags, text_extractor=ext)
         sobj=work/f"{addr}.obj"  # source object from the last parity_of(src) compile
         # Relocation-target identity: a RELOCATION_MATCH masks call/global operands, so the
         # source may still name the wrong callee, global or float pool (see reloc_identity.py).
@@ -518,7 +519,7 @@ def main():
         # (LANDVERIFY_STRICT_RELOCS=1 rejects those too). Funclet slices are not checked.
         relpairs=[]
         if st.startswith(("MATCH","RELOCATION")) and ext is None:
-            try: relh,relw,relpairs=reloc_identity.check(ROOT, OBJDUMP, sobj, leaf, addr, retail)
+            try: relh,relw,relpairs=reloc_identity.check(ROOT, OBJDUMP, sobj, leaf, addr, retail, built=built_final)
             except Exception as ex: relh,relw=[],[f"RELOC_CHECK_ERROR: {ex}"]
             for w_ in relw: print(f"{addr:10} WARN {w_}")
             for h_ in relh: print(f"{addr:10} {h_}")
