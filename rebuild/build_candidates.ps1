@@ -245930,6 +245930,55 @@ $catalog = @(
         TestSource = '00/bf/CEngineTexturePalette_CEngineTexturePalette_00bf90a0_test.cpp'
         PassPattern = '00bf90a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00845270'
+        Module = 'CCreatureAction_ShowItemToThing'
+        Source = '00/84/CCreatureActionShowItemToThing_PerformAction_00845270.cpp'
+        TestSource = '00/84/CCreatureActionShowItemToThing_PerformAction_00845270_test.cpp'
+        PassPattern = '00845270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b7ed0'
+        Module = 'CCreatureAction_UnsheatheWeapons'
+        Source = '00/8b/CCreatureActionUnsheatheWeapons_Initialise_008b7ed0.cpp'
+        TestSource = '00/8b/CCreatureActionUnsheatheWeapons_Initialise_008b7ed0_test.cpp'
+        PassPattern = '008b7ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b9e50'
+        Module = 'CCreatureAction_TeleportOut'
+        Source = '00/8b/CCreatureActionTeleportOut_Initialise_008b9e50.cpp'
+        TestSource = '00/8b/CCreatureActionTeleportOut_Initialise_008b9e50_test.cpp'
+        PassPattern = '008b9e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b9f20'
+        Module = 'CCreatureAction_TeleportIn'
+        Source = '00/8b/CCreatureActionTeleportIn_Initialise_008b9f20.cpp'
+        TestSource = '00/8b/CCreatureActionTeleportIn_Initialise_008b9f20_test.cpp'
+        PassPattern = '008b9f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ec320'
+        Module = 'CCreatureAction_UndeadReturnToEarth'
+        Source = '00/8e/CCreatureActionUndeadReturnToEarth_Initialise_008ec320.cpp'
+        TestSource = '00/8e/CCreatureActionUndeadReturnToEarth_Initialise_008ec320_test.cpp'
+        PassPattern = '008ec320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00994180'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteDateAndTime_00994180.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteDateAndTime_00994180_test.cpp'
+        PassPattern = '00994180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8d6c0'
+        Module = 'CEngineOcclusionManager'
+        Source = '00/b8/CEngineOcclusionManager_AllocateOccluderHandleWithRetrivalID_00b8d6c0.cpp'
+        TestSource = '00/b8/CEngineOcclusionManager_AllocateOccluderHandleWithRetrivalID_00b8d6c0_test.cpp'
+        PassPattern = '00b8d6c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

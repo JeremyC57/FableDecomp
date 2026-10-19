@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008c4170	DIFFER	218v218	-	frame 0xC v 8 (out-slot word not reused)
+008b8bc0	DIFFER	231v231	-	ebx/ebp swap
+00845270	RELOCATION_MATCH	212v212	PASS	conversion operator for the event's first arg; shared bl=1 mask
+008b7a20	DIFFER	236v236	-	esi/edi swap
+00845b10	DIFFER	165v165	-	esi/edi swap
+008b9f20	RELOCATION_MATCH	205v205	PASS	plain out-slot + named def pointer released by hand; named creature local; implicit string conversion
+008b9e50	RELOCATION_MATCH	205v205	PASS	TeleportIn body, flag +0x120
+008c67a0	DIFFER	190v190	-	esi/edi swap
+008bf1c0	DIFFER	178v178	-	vtable load scheduling
+008ec320	RELOCATION_MATCH	206v206	PASS	TeleportIn shape without gate; second named creature local for SetSuspendAnimation
+008ec260	DIFFER	188v188	-	esi/edi swap
+006a02b0	DIFFER	240v240	-	frame 0x10 v 0x14 (pair slot)
+008b7ed0	RELOCATION_MATCH	174v174	PASS	intelligent-pointer conversion operator fetches GetPItem before the plain args
+00994180	MATCH	163v163	PASS	typed inline writers homed in the dead arg slot
+009acd00	DIFFER	137v162	-	class iterator in frame + second IV
+009ad5f0	DIFFER	231v231	-	ebx/ebp swap + eax/ecx
+0099ac90	DIFFER	215v227	-	dead LARGE_INTEGER high store missing
+009be2d0	SKIP	-	-	row holds several functions (jump table + int3 padding + two more bodies)
+006451dd	DIFFER	172v173	-	ebx/edi swap
+00c43fd0	DIFFER	177v181	-	byte-narrowed state compare; Visible xor-merge
+0064e0da	DIFFER	228v228	-	ebx/edi swap
+0064b5c1	DIFFER	169v167	-	inventory pointer in eax not ecx (uninitialised absent path)
+00997880	DIFFER	172v168	-	scan registers + backward start search
+009e4cb0	DIFFER	180v179	-	twin of 00997880
+00b24400	DIFFER	223v238	-	view X spill / screen.Y preload
+00b2a010	DIFFER	163v163	-	push_back temp slot (arg slot choice)
+00bd2a90	DIFFER	197v218	-	draft: loop counter/IV shape
+00bc65d0	DIFFER	126v210	-	draft: CIVCountedPointer assignment collapsed
+00bdd2f0	DIFFER	163v169	-	signed /16 folded to shr (value-range) + arg regs
+00bf44a0	DIFFER	210v208	-	local copy store order + box copy addressing
+00b44f20	DIFFER	195v189	-	attenuation zeros not hoisted
+00b8d6c0	RELOCATION_MATCH	181v181	PASS	zeroed local COccluderEntry copied into the slot (two zero regs); inline lower_bound
+00bc5820	DIFFER	171v182	-	result bool in cl; begin in ebx
+00bd27f0	DIFFER	176v176	-	twin of 00ba6ef0
+00bca6b0	DIFFER	188v188	-	push esi / distance-load scheduling
+00ba6ef0	DIFFER	176v176	-	value temps not homed in the dead arg slot
+00bcc700	DIFFER	190v192	-	twin of 00bca6b0 + strip-0 load
+005954ad	DIFFER	213v213	-	pop edi scheduled before the base vtable store (label correction: ~CFrontEndManager)
+00cac4a0	DIFFER	194v194	-	lea ecx v eax for the CheckMediaType arg
+00b61cd0	DIFFER	201v209	-	ring Z not hoisted to ebp; IV registers

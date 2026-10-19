@@ -17876,3 +17876,8 @@ __imp__ShowCursor@4	01440350	00ab5d00
 ??0?$CArray@UC3DVector@@@@QAE@ABU0@@Z	006f0810	00b21630
 ?WriteBinary@CSplinePosParamData@NParticleEngine@@QAEXAAUCDataOutputStream@@@Z	00b20b10	00b21630
 ?WriteBinary@CSplineRandomOffsetData@NParticleEngine@@QAEXAAUCDataOutputStream@@@Z	00b20630	00b21630
+??0CEventShownItem@NEntityEvents@@QAE@PAUCThing@@0@Z	0084aee0	00845270
+?ShouldPlayUnsheatheWeaponAction@@YI_NPAUCThing@@W4EUnsheatheWeaponType@@PA_N2@Z	008b7cf0	008b7ed0
+??$GetSubDef@UCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAU?$CDefPointer@UCSpecialEffectsDef@@@@@Z	00669580	008b9e50
+?GetEffectFromString@CSpecialEffectsDef@@QBE_NABUCCharString@@AAJ@Z	00669d30	008b9e50
+?insert@CHandleMapper@@QAEPAUSHandlePair@@PAU2@ABU2@@Z	00b8f650	00b8d6c0

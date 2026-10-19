@@ -1,0 +1,14 @@
+address	name	evidence
+005954ad	NUISystem::CFrontEndManager::~CFrontEndManager	vtable 0x012521A8; not the displacement renderer dtor (chunk 199)
+00594fa9	NUISystem::CFrontEndManager::DestroyVirtualKeyboard	bool argument
+0042fb40	NUISystem::CManager::DeleteSingleton_0042fb40	deletes the NUISystem::CManager singleton
+00b49320	CShaderPointLight::CShaderPointLight	not CShaderDirectionalLight
+0084aee0	NEntityEvents::CEventShownItem::CEventShownItem	not CEventDied
+00cb1d60	CMediaType::CMediaType(const CMediaType&)	DirectShow base classes
+00cb1cc0	CMediaType::~CMediaType	DirectShow; landed as CComHolder_00cb1cc0::Release (sweep)
+00cb1d00	CMediaType::CMediaType	DirectShow default ctor
+00cac4a0	DirectShowBase_00cac4a0	DirectShow base-class code, not CEngineScreenEffectRenderer
+00669d30	CSpecialEffectsDef::GetEffectFromString	reads SpecialEffectsMap at +0x28; landed as CCRC::CalcAndLookup and NativeEffects::GetEffectFromString (sweep)
+00bf5fe0	CArray::push_back_00bf5fe0	CArray push_back copy
+00bf5ea0	CArray::push_back_00bf5ea0	CArray push_back copy
+009be2d0	CDisplayManager::CalculateD3DPresentationInterval	row holds a jump table, padding and two more bodies (SKIP, ledger)
