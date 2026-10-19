@@ -105,3 +105,19 @@ catalog/manifest surgery:
 
 and `/ENABLE` afterwards. Both defer while another pipeline PID file is live (see
 `rebuild/README.md`, "Regenerate").
+
+## Relocation-target identity check (added 2026-10-19)
+
+`verify_and_land.py` now runs `reloc_identity.check` on every MATCH/RELOCATION_MATCH before the
+behaviour test. It recovers each relocation of the graded function as (object symbol, retail
+target address) from the object file plus the retail bytes and rejects the row (`RELOC_IDENTITY`)
+when one symbol is bound to two retail targets, one target to two symbols, or a bound import thunk
+(`MSVCR71.DLL::malloc`, `operator_new[]`, ...) is not what the symbol names. Disagreements with a
+Ghidra label (`RELOC_NAME`) or with a binding already recorded by a landed row
+(`RELOC_CONFLICT`, table `rebuild/oracles/reloc_bindings.tsv`) are warnings; set
+`LANDVERIFY_STRICT_RELOCS=1` to reject them too. Funclet slices are not checked.
+
+Catalog-wide audit (resumable, hours): `python3 tools/decomp_pipeline/reloc_audit.py
+[--addrs file] [--out rebuild/oracles/reloc_audit.tsv] [--limit N]` recompiles each landed row
+with its recorded flags and writes the findings per row; `grep RELOC_IDENTITY` on the output is
+the list of landed rows that name the wrong callee, global or float pool.

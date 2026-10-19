@@ -29,6 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from artifact_layout import shard_directory
 from crawl import purity
+import reloc_identity
 GENERIC_STRUCT_NAMES = {"T", "Sub", "Owner", "Slot", "Info", "Obj", "S", "Self", "This", "Inner",
                         "Foo", "Holder", "Mid", "MidObj"}
 
@@ -511,12 +512,24 @@ def main():
         if st.startswith(("MATCH","RELOCATION")):
             parity_of(src, addr, leaf, retail, work, e, extra=winflags, text_extractor=ext)
         sobj=work/f"{addr}.obj"  # source object from the last parity_of(src) compile
+        # Relocation-target identity: a RELOCATION_MATCH masks call/global operands, so the
+        # source may still name the wrong callee, global or float pool (see reloc_identity.py).
+        # In-row inconsistencies reject; catalog conflicts and label disagreements warn
+        # (LANDVERIFY_STRICT_RELOCS=1 rejects those too). Funclet slices are not checked.
+        relpairs=[]
+        if st.startswith(("MATCH","RELOCATION")) and ext is None:
+            try: relh,relw,relpairs=reloc_identity.check(ROOT, OBJDUMP, sobj, leaf, addr, retail)
+            except Exception as ex: relh,relw=[],[f"RELOC_CHECK_ERROR: {ex}"]
+            for w_ in relw: print(f"{addr:10} WARN {w_}")
+            for h_ in relh: print(f"{addr:10} {h_}")
+            if relh or (relw and os.environ.get("LANDVERIFY_STRICT_RELOCS")=="1"):
+                print(f"{addr:10} {'RELOC_IDENTITY':16} {'-':6} {name}"); continue
         beh=behaviour_of(tst, addr, patt, work, e, sobj)
         print(f"{addr:10} {st:16} {beh:6} {name}")
         if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
             base=make_base(mod, name.rsplit("::",1)[-1], addr)   # file names use the display leaf, not the symbol selector
             wins.append({"addr":addr,"name":name,"leaf":leaf,"module":mod,"status":st,"pass":patt,"base":base,
-                         "src":src,"test":tst,"oracle_row":o,"flags":list(winflags)})
+                         "src":src,"test":tst,"oracle_row":o,"flags":list(winflags),"relocs":relpairs})
     print(f"\nWINS: {len(wins)}")
     for w in wins: print(f"  {w['addr']} {w['status']} {w['module']}::{w['leaf']}")
     if land and wins:
@@ -556,6 +569,8 @@ def main():
                 if w["addr"] not in existing_oracle_addresses:
                     r=w["oracle_row"]; f.write(f"{w['addr']}\t{r['name']}\t{r['length']}\t{r['bytes']}\n")
                     existing_oracle_addresses.add(w["addr"])
+        # remember every symbol->retail-target binding so later rows cannot rebind a symbol silently
+        for w in wins: reloc_identity.record_bindings(ROOT, w["addr"], [(p_[2],p_[3]) for p_ in w.get("relocs",[])])
         print(f"\nLANDED {len(wins)} wins into src/compiled + tests + catalog + oracle")
         for w in wins: print(f"  {w['base']}")
 
