@@ -1,0 +1,310 @@
+address	parity	findings	bindings
+00401296	RELOCATION_MATCH	RELOC_ALIAS: ___dllonexit -> 004013de is the import thunk 'MSVCR71.DLL::__dllonexit'	5
+004012bc	RELOCATION_MATCH	-	1
+004012ce	DIFFER(120v61)	-	0
+00401356	RELOCATION_MATCH	-	1
+0040135c	RELOCATION_MATCH	-	1
+00401377	MATCH	-	0
+0040138c	ASM_BAKE	-	0
+004013c7	ASM_BAKE	-	0
+004013de	RELOCATION_MATCH	RELOC_CONFLICT: ?__imp_free@@3P6AXPAX@ZA -> 01440174 here, 01440190 in landed 00401356	1
+00401490	RELOCATION_MATCH	-	1
+00401630	RELOCATION_MATCH	RELOC_NAME: ?sub_5992f0@@YIXPAX@Z -> 0099a920 labelled 'CDiskFileWin32::Close' | RELOC_NAME: ?sub_599ee0@@YIXPAX@Z -> 0099b510 labelled 'CCharString::~CCharString'	3
+00401650	MATCH	-	0
+00401660	MATCH	-	0
+00401670	MATCH	-	0
+00401680	MATCH	-	0
+00401690	RELOCATION_MATCH	-	1
+004016b0	RELOCATION_MATCH	RELOC_IDENTITY: ?EngineFree@@YAXPAX@Z -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete' | RELOC_NAME: ?Member599270@@YIXPAX@Z -> 0099a920 labelled 'CDiskFileWin32::Close' | RELOC_NAME: ?Member18Dtor@@YIXPAX@Z -> 0099b510 labelled 'CCharString::~CCharString'	5
+00401780	RELOCATION_MATCH	RELOC_NAME: ?Add@Obj@@QAEXPBDH@Z -> 0099cf10 labelled 'CSystemRegistry::CSystemRegistry' | RELOC_NAME: ?Set@Obj@@QAEXPBDH@Z -> 0099d100 labelled 'CSystemRegistry::WriteBOOL'	5
+00401c00	DIFFER(808v744)	-	0
+00401f30	RELOCATION_MATCH	RELOC_IDENTITY: symbol ?Destroy@CCharString@@QAEXXZ bound to 0099b510, 0099eae0 | RELOC_NAME: ?Destroy@CCharString@@QAEXXZ -> 0099b510 labelled 'CCharString::~CCharString' | RELOC_NAME: ?Construct@CDiskFileWin32@@QAEXABVCWideString@@HH@Z -> 0099ad80 labelled 'CDiskFileWin32::CDiskFileWin32' | RELOC_NAME: ?ConstructFromFile@CCharString@@QAEXPAVCAFile@@H@Z -> 0099fa50 labelled 'CCharString::CCharString' | RELOC_NAME: ?Assign@CCharString@@QAEPAV1@ABV1@@Z -> 0099efb0 labelled 'CCharString::operator='	14
+004022b0	RELOCATION_MATCH	-	38
+00403510	RELOCATION_MATCH	-	6
+00403600	MATCH	-	0
+00403630	MATCH	-	0
+00403650	MATCH	-	0
+004036a0	MATCH	-	0
+00403700	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+00403750	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+00403790	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+004038c0	MATCH	-	0
+00403a00	MATCH	-	0
+00403a10	RELOCATION_MATCH	-	1
+00403c20	RELOCATION_MATCH	-	3
+00403c60	MATCH	-	0
+00403cb0	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+00403d20	RELOCATION_MATCH	-	1
+00403d70	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+00403db0	RELOCATION_MATCH	-	3
+00403e20	MATCH	-	0
+00403e40	RELOCATION_MATCH	-	3
+00403f90	RELOCATION_MATCH	-	2
+00404280	DIFFER(67v64)	-	0
+004042d0	RELOCATION_MATCH	-	1
+00404310	ASM_BAKE	-	0
+00404490	RELOCATION_MATCH	-	6
+004044d0	MATCH	-	0
+00404690	RELOCATION_MATCH	-	1
+004046f0	RELOCATION_MATCH	-	1
+00404720	RELOCATION_MATCH	-	8
+004047a0	RELOCATION_MATCH	RELOC_CONFLICT: @dtorA@4 -> 004046b0 here, 0099b510 in landed 00403510	4
+004047d0	RELOCATION_MATCH	RELOC_NAME: ?Inner_dtor@@YIXPAX@Z -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>' | RELOC_NAME: ?CLBP_dtor@@YIXPAX@Z -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'	5
+00404860	RELOCATION_MATCH	-	1
+004048e0	MATCH	-	0
+00404940	MATCH	-	0
+00404970	RELOCATION_MATCH	RELOC_NAME: ?Append@NativeCharString@@QAEABVCCharString@@PBD@Z -> 0099f100 labelled 'CCharString::operator+='	6
+00404a80	RELOCATION_MATCH	-	1
+00404a90	ASM_BAKE	-	0
+00404b50	RELOCATION_MATCH	RELOC_NAME: ?CIME_sink@@YIX_N@Z -> 00cb2c60 labelled 'IME_ResetComposition'	1
+00404b80	RELOCATION_MATCH	RELOC_NAME: ?CIME_helper@@YIXPAXH@Z -> 00cb2860 labelled 'NPlayerGui::CDrawMouseCursor::Draw'	1
+00404ba0	RELOCATION_MATCH	RELOC_NAME: ?CNetworkClient_GetGameEventPackageSet_delegate@@YI_NPAUCNetworkClient@@H@Z -> 00cb2ec0 labelled 'CTCWeapon::IsMeleeWeaponClass'	1
+00404bb0	RELOCATION_MATCH	-	1
+00404c00	RELOCATION_MATCH	-	5
+00404c50	RELOCATION_MATCH	RELOC_NAME: ?IsImeEnabled@CIME@@QAE_NXZ -> 00cb28e0 labelled 'CAIStateGroup_Freeze::IsRunnable'	1
+00404f40	RELOCATION_MATCH	RELOC_NAME: ?CIME_cb_a@@YIXD@Z -> 00cb2c60 labelled 'IME_ResetComposition'	2
+00405650	RELOCATION_MATCH	RELOC_NAME: ?GFGetSystemManager@@YIPAUCSystemManagerNative@@XZ -> 009a4ec0 labelled 'CEngineInternalPrimitiveBase::AddChildPrimitive' | RELOC_NAME: ?GetRenderTargetDimensions@CDisplayManagerNative@@QBEPAUC2DExtentsI@@AAU2@@Z -> 009bedc0 labelled 'CMessageEventFilter_IsOriginatedByThing::CMessageEventFilter_IsOriginatedByThing' | RELOC_NAME: ?ImeUi_SetScreenDimension@@YIXII@Z -> 00cb2ee0 labelled '_global::SetCurrentPair_00cb2ee0' | RELOC_NAME: ?ImeUi_FinalizeString@@YIX_N@Z -> 00cb2c60 labelled 'IME_ResetComposition'	21
+00405730	MATCH	-	0
+004057a0	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+00405900	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+004059f0	RELOCATION_MATCH	-	1
+00405a10	RELOCATION_MATCH	RELOC_NAME: ?TransferOutLong@@YIXPAUCPersistContext@@PAUCCharString@@PAJ@Z -> 009e2560 labelled '_global::AppendLongToString'	1
+00405ba0	RELOCATION_MATCH	-	1
+00405c10	MATCH	-	0
+00405d30	MATCH	-	0
+00405f00	RELOCATION_MATCH	RELOC_NAME: ?FormatWideString@@YAXPAUCWideString@@PBGZZ -> 0099ba70 labelled 'CCharString::SetFromFormatV' | RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'	4
+00405f40	RELOCATION_MATCH	-	2
+00405fa0	MATCH	-	0
+00406070	RELOCATION_MATCH	RELOC_NAME: ??0CCharStringMember@@QAE@XZ -> 0099e4b0 labelled 'CCharString::CCharString'	1
+004060e0	RELOCATION_MATCH	RELOC_CONFLICT: ??0CCharStringMember@@QAE@XZ -> 0099aed0 here, 0099e4b0 in landed 00406070	1
+004065d0	RELOCATION_MATCH	RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'	1
+00406610	RELOCATION_MATCH	RELOC_NAME: _FmtWide_0099ba70 -> 0099ba70 labelled 'CCharString::SetFromFormatV' | RELOC_NAME: ?combine@CWSraw@@QAEXABU1@@Z -> 0099b720 labelled 'CWideString::CWideString' | RELOC_NAME: ?fromLit@CWSraw@@QAEXPBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide' | RELOC_NAME: ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z -> 0099be70 labelled 'CCharString::AssignFromData'	10
+00406690	RELOCATION_MATCH	RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'	1
+00406770	MATCH	-	0
+004067b0	MATCH	-	0
+004067c0	RELOCATION_MATCH	-	4
+004067f0	MATCH	-	0
+00406800	MATCH	-	0
+00406820	RELOCATION_MATCH	-	0
+00406880	MATCH	-	0
+00406890	RELOCATION_MATCH	-	2
+004069e0	RELOCATION_MATCH	RELOC_NAME: ??0CWideString@@QAE@PBGH@Z -> 0099ebf0 labelled 'CCharString::CCharString' | RELOC_NAME: ?Fmt@FmtObj@@QBE?AUCWideString@@ABU2@@Z -> 009c95e0 labelled 'NGameText::CDataBank::GetTextBySymbol' | RELOC_CONFLICT: ??1CWideString@@QAE@XZ -> 0099eae0 here, 0099b510 in landed 00405f00 | RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>' | RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'	12
+00406a80	RELOCATION_MATCH	RELOC_NAME: ??0CWideString@@QAE@PBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString' | RELOC_NAME: ?Format@SaveSub@@QAE?AUCWideString@@PAU2@@Z -> 009c95e0 labelled 'NGameText::CDataBank::GetTextBySymbol' | RELOC_CONFLICT: ??1CWideString@@QAE@XZ -> 0099eae0 here, 0099b510 in landed 00405f00 | RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>' | RELOC_CONFLICT: ??0CWideString@@QAE@PBD@Z -> 0099b6b0 here, 0099b720 in landed 00401690 | RELOC_NAME: ??0CWideString@@QAE@PBD@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'	5
+00406c20	RELOCATION_MATCH	RELOC_NAME: ??0CWideString@@QAE@PBGH@Z -> 0099ebf0 labelled 'CCharString::CCharString' | RELOC_NAME: ?Build@FmtA@@QAE?AUCWideString@@ABU2@@Z -> 009c95e0 labelled 'NGameText::CDataBank::GetTextBySymbol' | RELOC_CONFLICT: ??1CWideString@@QAE@XZ -> 0099eae0 here, 0099b510 in landed 00405f00 | RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>' | RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'	9
+00406df0	RELOCATION_MATCH	-	6
+00406f70	DIFFER(172v177)	-	0
+00407030	MATCH	-	0
+00407360	MATCH	-	0
+004075b0	RELOCATION_MATCH	-	1
+00408340	RELOCATION_MATCH	-	1
+00408360	RELOCATION_MATCH	-	1
+004083b0	RELOCATION_MATCH	-	1
+004083e0	RELOCATION_MATCH	RELOC_NAME: ?GetGameDefinitionManager@@YIPAUCDefinitionManager@@XZ -> 0044c6b0 labelled 'GFGetPreMainMemoryUsed' | RELOC_NAME: ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex' | RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>' | RELOC_NAME: ?GetFrontendDefinitionManager@@YIPAUCDefinitionManager@@XZ -> 0043368d labelled 'GFGetPreMainMemoryUsed'	13
+004088e0	RELOCATION_MATCH	-	1
+00408900	RELOCATION_MATCH	RELOC_NAME: ??0CDisplayModeVector@@QAE@ABU0@@Z -> 00410460 labelled 'std_vector_C2DLineF_Copy'	5
+0040af90	RELOCATION_MATCH	-	2
+0040afd0	RELOCATION_MATCH	-	2
+0040b010	RELOCATION_MATCH	-	2
+0040b050	RELOCATION_MATCH	-	2
+0040b090	RELOCATION_MATCH	-	2
+0040b0d0	RELOCATION_MATCH	-	2
+0040b110	RELOCATION_MATCH	-	2
+0040b150	RELOCATION_MATCH	-	2
+0040b190	RELOCATION_MATCH	-	2
+0040b1d0	RELOCATION_MATCH	-	2
+0040b210	RELOCATION_MATCH	-	2
+0040b250	RELOCATION_MATCH	-	2
+0040b290	RELOCATION_MATCH	-	2
+0040b310	RELOCATION_MATCH	-	2
+0040b3d0	RELOCATION_MATCH	-	2
+0040b410	RELOCATION_MATCH	-	2
+0040b450	RELOCATION_MATCH	-	2
+0040b490	RELOCATION_MATCH	-	2
+0040b4d0	RELOCATION_MATCH	-	2
+0040b510	RELOCATION_MATCH	-	2
+0040b690	RELOCATION_MATCH	-	2
+0040b6d0	RELOCATION_MATCH	-	2
+0040b710	RELOCATION_MATCH	-	2
+0040b750	RELOCATION_MATCH	-	2
+0040bb90	DIFFER(144v188)	-	0
+0040bc50	RELOCATION_MATCH	RELOC_NAME: ?Load@CBank@@QAEXH@Z -> 0099b7d0 labelled 'CWideString::operator='	2
+0040bc80	RELOCATION_MATCH	-	2
+0040d2a0	RELOCATION_MATCH	RELOC_ALIAS: ?FableUserProfileManagerAllocate@@YAPAXI@Z -> 00bfea1a is the import thunk 'MSVCR71.DLL::operator_new' | RELOC_NAME: ??4CCountedUserProfileManager@@QAEXPAVCUserProfileManager@@@Z -> 0040f1b0 labelled 'CCountedPointer_0040d830::Reset'	9
+0040d2f0	RELOCATION_MATCH	-	4
+0040d400	RELOCATION_MATCH	-	3
+0040d830	MATCH	-	0
+0040d850	MATCH	-	0
+0040d870	MATCH	-	0
+0040d8b0	MATCH	-	0
+0040d8d0	MATCH	-	0
+0040dca0	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+0040dce0	MATCH	-	0
+0040dd00	ASM_BAKE	-	0
+0040dd60	RELOCATION_MATCH	RELOC_NAME: ??0CElement4_0099b720@@QAE@ABU0@@Z -> 0099b720 labelled 'CWideString::CWideString'	1
+0040ddc0	MATCH	-	0
+0040de40	MATCH	-	0
+0040ded0	MATCH	-	0
+0040df00	MATCH	-	0
+0040e010	MATCH	-	0
+0040e090	MATCH	-	0
+0040e130	RELOCATION_MATCH	-	1
+0040e160	MATCH	-	0
+0040e170	ASM_BAKE	-	0
+0040e240	MATCH	-	0
+0040e250	RELOCATION_MATCH	-	1
+0040e260	MATCH	-	0
+0040e2d0	MATCH	-	0
+0040e480	MATCH	-	0
+0040e8f0	RELOCATION_MATCH	-	1
+0040e9a0	MATCH	-	0
+0040e9d0	MATCH	-	0
+0040ea50	MATCH	-	0
+0040ec50	RELOCATION_MATCH	RELOC_NAME: ?Dtor@T@@QAEXXZ -> 0099b510 labelled 'CCharString::~CCharString'	2
+0040ed10	RELOCATION_MATCH	-	6
+0040f0a0	RELOCATION_MATCH	-	1
+0040f0e0	RELOCATION_MATCH	RELOC_NAME: ?GetProvider@@YAPAUProvider@@XZ -> 009a4ec0 labelled 'CEngineInternalPrimitiveBase::AddChildPrimitive' | RELOC_NAME: ?GetDims@Device@@QAEXPAUDims@@@Z -> 009bedc0 labelled 'CMessageEventFilter_IsOriginatedByThing::CMessageEventFilter_IsOriginatedByThing'	4
+0040f110	MATCH	-	0
+0040f170	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+0040f1b0	RELOCATION_MATCH	-	3
+0040f220	MATCH	-	0
+0040f230	MATCH	-	0
+0040f270	MATCH	-	0
+0040f290	MATCH	-	0
+0040f2c0	RELOCATION_MATCH	RELOC_CONFLICT: _Free1 -> 00bfea14 here, 00bfe9bc in landed 00403700	1
+0040f390	RELOCATION_MATCH	-	1
+0040f470	RELOCATION_MATCH	RELOC_NAME: ?Inner@CBankFileAsyncData@@QAEXPAXI@Z -> 0040e130 labelled 'Vector_FreeElements' | RELOC_CONFLICT: ?EngineFree@@YAXPAX@Z -> 00bfea14 here, 00bfe9bc in landed 004016b0	2
+0040f560	RELOCATION_MATCH	-	1
+0040f5b0	RELOCATION_MATCH	RELOC_NAME: ?Assign@ULSlot@@QAEXK@Z -> 0099b720 labelled 'CWideString::CWideString'	1
+0040f870	RELOCATION_MATCH	RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	3
+0040f950	RELOCATION_MATCH	-	1
+0040fb60	MATCH	-	0
+0040fbd0	MATCH	-	0
+0040fe60	RELOCATION_MATCH	-	1
+0040fef0	RELOCATION_MATCH	-	1
+00410090	MATCH	-	0
+004107c0	RELOCATION_MATCH	-	1
+004107e0	RELOCATION_MATCH	-	1
+00410800	RELOCATION_MATCH	-	1
+00410820	RELOCATION_MATCH	-	1
+00410890	RELOCATION_MATCH	-	1
+00411010	RELOCATION_MATCH	RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	5
+00411060	RELOCATION_MATCH	RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'	5
+004110b0	RELOCATION_MATCH	-	1
+00411570	MATCH	-	0
+004115a0	MATCH	-	0
+00411980	MATCH	-	0
+00411b00	RELOCATION_MATCH	-	1
+00412020	RELOCATION_MATCH	-	5
+00412050	MATCH	-	0
+00412060	MATCH	-	0
+00412070	RELOCATION_MATCH	RELOC_NAME: ?ctor@CWideString@@QAEXPBX@Z -> 0099b720 labelled 'CWideString::CWideString'	1
+00412090	RELOCATION_MATCH	-	3
+004120c0	RELOCATION_MATCH	RELOC_NAME: ?Cleanup_5d72d0@@YIXPAX@Z -> 009e9390 labelled '?Close@CMemoryFile@@UAEXXZ' | RELOC_NAME: ?SubDtor_589450@@YIXPAX@Z -> 0099b510 labelled 'CCharString::~CCharString'	6
+00412130	RELOCATION_MATCH	-	2
+004121d0	RELOCATION_MATCH	RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00411a10 labelled 'Std_Vector_Insert_Range_Copies_4byte'	1
+00412880	RELOCATION_MATCH	-	1
+004128a0	RELOCATION_MATCH	RELOC_NAME: ?CopyConstruct@CWideString@@QAEXPAU1@@Z -> 0099b720 labelled 'CWideString::CWideString'	2
+00412970	RELOCATION_MATCH	RELOC_NAME: ?InsertGrow@CRetailVector_00412970@@QAEXPAUSInputRecord_00412970@@ABU2@ABUSScalarTag@@K_N@Z -> 004125a0 labelled 'Std_Vector_Insert_Range_Copies_28byte'	1
+004129f0	ASM_BAKE	-	0
+00412a50	ASM_BAKE	-	0
+00412aa0	ASM_BAKE	-	0
+00412b00	RELOCATION_MATCH	RELOC_CONFLICT: ?Dtor@T@@QAEXXZ -> 00408990 here, 0099b510 in landed 0040ec50	2
+00412b20	ASM_BAKE	-	0
+00412c10	ASM_BAKE	-	0
+00412c50	RELOCATION_MATCH	RELOC_NAME: ?Move@Elem@@QAEPAHPAH0@Z -> 00412a50 labelled 'std::vector<unsigned_int,std::allocator<unsigned_int>_>::resize'	1
+00412f60	RELOCATION_MATCH	RELOC_NAME: _ForwardTarget -> 0099a360 labelled 'CInitBaseClass::Uninitialise'	1
+004131a0	ASM_BAKE	-	0
+004131d0	RELOCATION_MATCH	RELOC_IDENTITY: symbol @CMacro_dtor@4 bound to 0099b510, 0099eae0	4
+00413200	RELOCATION_MATCH	-	2
+00413230	RELOCATION_MATCH	RELOC_CONFLICT: ?Dtor@T@@QAEXXZ -> 0099a410 here, 0099b510 in landed 0040ec50 | RELOC_NAME: ?Dtor@T@@QAEXXZ -> 0099a410 labelled 'CInitBaseClass::~CInitBaseClass'	2
+00413280	RELOCATION_MATCH	RELOC_NAME: ??0CCharStringMember@@QAE@XZ -> 0099e4b0 labelled 'CCharString::CCharString'	1
+004132f0	MATCH	-	0
+00413300	MATCH	-	0
+00413310	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+00413350	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete'	1
+004133a0	RELOCATION_MATCH	-	2
+00413480	RELOCATION_MATCH	RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_inner@@YIXPAUCInner@@@Z -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	2
+00413520	RELOCATION_MATCH	-	3
+00413590	RELOCATION_MATCH	RELOC_ALIAS: _FableFacesControlAllocate_00413590 -> 00bfea1a is the import thunk 'MSVCR71.DLL::operator_new'	3
+00413700	RELOCATION_MATCH	-	1
+00413780	RELOCATION_MATCH	RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_inner@@YIXPAUCInner@@@Z -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	2
+00414c90	ASM_BAKE	-	0
+00414de0	MATCH	-	0
+00414e00	ASM_BAKE	-	0
+00414e30	RELOCATION_MATCH	-	6
+00414ea0	RELOCATION_MATCH	RELOC_NAME: ?Reset@Ring@@QAEXXZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	2
+00414ef0	RELOCATION_MATCH	RELOC_NAME: ?Ring_dtor@@YIXPAURing@@@Z -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	2
+00414f30	RELOCATION_MATCH	RELOC_NAME: ??0CConsoleCommandParameters_Retail@@QAE@J@Z -> 009ebb30 labelled 'Vector_PushElementOrReallocate'	4
+00414f70	ASM_BAKE	-	0
+00414f90	ASM_BAKE	-	0
+00415050	RELOCATION_MATCH	RELOC_CONFLICT: ?Dtor@T@@QAEXXZ -> 00414f90 here, 0099b510 in landed 0040ec50 | RELOC_NAME: ?Dtor@T@@QAEXXZ -> 00414f90 labelled 'CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream'	2
+00415530	RELOCATION_MATCH	-	1
+00415830	MATCH	-	0
+00415890	RELOCATION_MATCH	-	1
+00415920	MATCH	-	0
+00415930	MATCH	-	0
+00415940	ASM_BAKE	-	0
+004159a0	MATCH	-	0
+004159b0	MATCH	-	0
+004159e0	RELOCATION_MATCH	-	1
+00415a60	MATCH	-	0
+00415ae0	MATCH	-	0
+00415b80	MATCH	-	0
+00415bd0	RELOCATION_MATCH	RELOC_NAME: ?GetRect@CSurface_Methods@@QAEPAURect@@PAU2@@Z -> 009f2f90 labelled 'CSurface::GetDimensions'	1
+00415bf0	RELOCATION_MATCH	RELOC_NAME: ?GetRect@T@@QAEPAURect@@PAU2@@Z -> 009f2f90 labelled 'CSurface::GetDimensions'	1
+00415c10	RELOCATION_MATCH	RELOC_CONFLICT: ??0CBase@@QAE@XZ -> 0099a2f0 here, 0099a2d0 in landed 00404720	2
+00415c30	RELOCATION_MATCH	RELOC_CONFLICT: ??0CBase@@QAE@XZ -> 0099a2f0 here, 0099a2d0 in landed 00404720	3
+00415cc0	MATCH	-	0
+00415d10	RELOCATION_MATCH	-	2
+00415d70	RELOCATION_MATCH	RELOC_NAME: ?Assign@Pool@@QAEXPAX0@Z -> 009d49b0 labelled 'CDefStringTable::GetString'	2
+00415d90	RELOCATION_MATCH	RELOC_NAME: ?ToWideString@CCharString@@QBE?AUCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>' | RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	4
+00415dd0	RELOCATION_MATCH	RELOC_NAME: ?Assign@Pool@@QAEXPAX0@Z -> 009d49b0 labelled 'CDefStringTable::GetString'	2
+00415e17	ASM_BAKE	-	0
+00415e50	RELOCATION_MATCH	-	2
+00415e67	RELOCATION_MATCH	RELOC_IDENTITY: _Free1 -> 00bfe9bc is the import thunk 'MSVCR71.DLL::operator_delete' | RELOC_CONFLICT: ?Dtor@T@@QAEXXZ -> 0099a410 here, 0099b510 in landed 0040ec50 | RELOC_NAME: ?Dtor@T@@QAEXXZ -> 0099a410 labelled 'CInitBaseClass::~CInitBaseClass'	2
+00415e83	MATCH	-	0
+00415e84	MATCH	-	0
+00415fbc	RELOCATION_MATCH	-	1
+00415fc1	RELOCATION_MATCH	-	2
+00415fd3	RELOCATION_MATCH	-	1
+00415fe0	MATCH	-	0
+00415ff2	MATCH	-	0
+00416005	ASM_BAKE	-	0
+00416047	RELOCATION_MATCH	RELOC_NAME: ?Add@Iface@@QAEXXZ -> 009f26d0 labelled 'CMemoryAllocator::ClearPerformanceStats'	2
+00416056	ASM_BAKE	-	0
+004160a6	ASM_BAKE	-	0
+004160cc	ASM_BAKE	-	0
+00416122	ASM_BAKE	-	0
+00416148	ASM_BAKE	-	0
+004161a7	ASM_BAKE	-	0
+00416202	ASM_BAKE	-	0
+00416219	ASM_BAKE	-	0
+00416225	MATCH	-	0
+00416231	RELOCATION_MATCH	-	1
+00416258	RELOCATION_MATCH	RELOC_NAME: ?ggt_helper@@YINPAUS@@@Z -> 00416231 labelled 'GetCurrentGameTime'	1
+00416268	RELOCATION_MATCH	RELOC_NAME: ?Begin@CLoader@@QAEXPBDH@Z -> 009f4cf0 labelled 'CInputManager::StreamInputsToFile'	3
+0041627f	RELOCATION_MATCH	RELOC_CONFLICT: ?Begin@CLoader@@QAEXPBDH@Z -> 009f5e10 here, 009f4cf0 in landed 00416268 | RELOC_NAME: ?Begin@CLoader@@QAEXPBDH@Z -> 009f5e10 labelled 'CInputManager::StreamInputsFromFile'	3
+00416296	ASM_BAKE	-	0
+004162b5	RELOCATION_MATCH	RELOC_NAME: ?GFGetSystemManager@@YIPAUCSystemManager@@XZ -> 009a4ec0 labelled 'CEngineInternalPrimitiveBase::AddChildPrimitive'	10
+00416359	MATCH	-	0
+00416365	ASM_BAKE	-	0
+00416392	ASM_BAKE	-	0
+004163b7	RELOCATION_MATCH	RELOC_NAME: ?GFGetSystemManager@@YIPAUCSystemManager@@XZ -> 009a4ec0 labelled 'CEngineInternalPrimitiveBase::AddChildPrimitive'	10
+0041649c	ASM_BAKE	-	0
+00416670	ASM_BAKE	-	0
+004166a8	ASM_BAKE	-	0
+004166e2	RELOCATION_MATCH	-	5
+0041674a	ASM_BAKE	-	0
+004167a7	ASM_BAKE	-	0
+004167c8	RELOCATION_MATCH	RELOC_CONFLICT: _ForwardTarget -> 0049d870 here, 0099a360 in landed 00412f60 | RELOC_NAME: _ForwardTarget -> 0049d870 labelled 'GFGetPreMainMemoryUsed'	1
+004167cd	RELOCATION_MATCH	RELOC_NAME: ?GetHelperTimeValue@CMainGameComponent@@QAENXZ -> 00416219 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	1
+004167da	ASM_BAKE	-	0
+00416832	RELOCATION_MATCH	RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	11
+004168dc	RELOCATION_MATCH	RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>' | RELOC_NAME: ??1?$CCountedPointer@UCFont@@@@QAE@XZ -> 004057a0 labelled 'std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>'	9
+00416c35	ASM_BAKE	-	0
+0041732a	ASM_BAKE	-	0
+0041735a	RELOCATION_MATCH	RELOC_NAME: ?GetPtr@GObj@@QAEPAXXZ -> 0099af00 labelled 'CCharString::operator_char_const*' | RELOC_NAME: ??0CCharString2@@QAE@HH@Z -> 0099ebf0 labelled 'CCharString::CCharString' | RELOC_NAME: ??1CCharString2@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	14
+00417418	RELOCATION_MATCH	RELOC_NAME: ?GetDefinitionManager@@YIPAUCGameDefinitionManager@@XZ -> 0044c6b0 labelled 'GFGetPreMainMemoryUsed' | RELOC_NAME: ?reset@?$scoped_ptr@UCDisplayEngine@@@@QAEXPAUCDisplayEngine@@@Z -> 0041940c labelled 'CCountedPointer<CEditTransactionBase>::DeleteData' | RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'	15
+004174f1	RELOCATION_MATCH	RELOC_NAME: ?GetEmitterDatabase@NParticleEngine@@YIPAUCParticleEmitterDatabase@@XZ -> 00aeaae0 labelled 'GFGetPreMainMemoryUsed' | RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>' | RELOC_NAME: ??1?$CCountedPointer@UCAEnvironmentInteraction@NParticleEngine@@@@QAE@XZ -> 004191c1 labelled 'std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>'	11
+004175da	ASM_BAKE	-	0
+0041799b	ASM_BAKE	-	0
