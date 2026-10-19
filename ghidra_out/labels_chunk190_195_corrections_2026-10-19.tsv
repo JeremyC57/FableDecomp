@@ -1,0 +1,67 @@
+address	name	evidence
+00783f00	_Rb_tree<unsigned __int64,pair<const unsigned __int64,CIntelligentPointer<CThing> > >::_M_insert	STLport tree insert; 0x783DD0 is its _M_create_node (chunk 190)
+008c5980	CCountedPointer<CModeScorpionKingVulnerable>::CCountedPointer(T*)	per-type counted-pointer ctor; manifest said CFileInstaller::CFileInfo
+008c58f0	CCountedPointer<CModeScorpionKingTailPlunge>::CCountedPointer(T*)	per-type counted-pointer ctor
+008d73e0	CModeScorpionKingVulnerable::SetTarget	caller/body; not CVillageTaskCarryCrate::AssignCreatureToTask
+0084aee0	NEntityEvents::CEventShownItem::CEventShownItem	stores vtable 0x012723D8; not CEventDied
+0084af90	NEntityEvents::CEventTalkedTo::CEventTalkedTo	stores vtable 0x01274228; not CEventFiredShot
+00692910	CCreatureActionBase::GetPDefinitionManager	STL label propagated
+00692940	CCreatureActionBase::GetPWorld	STL label propagated
+00466a75	CPersistTraits<vector<long> >::Transfer	serialises vector<long>, not <float>
+00466aa7	CPersistTraits<vector<long> >::Transfer	serialises vector<long>, not <CRGBColour>
+0040fe60	CPersistTraits<long>::TransferBinaryIn	body
+0062e900	CCombatActionBase::~CCombatActionBase	not ~CTCLightningOrb
+009c8fb0	NGameText::CDataBankTextEntry::BuildText	PFileData +0x38, CTextEntry::ReadFromDataStream 0x9C8DE0; BuildGroup is 0x9C8700
+009baa90	CPersistContext::ReportParseError	callback at +0xc; CDefinitionManager::Error is 0x9AC9F0
+00997880	NFile::GetItemFromPath	__fastcall free function (?GetItemFromPath@NFile@@YI_NPB_WKPA_W@Z); 0x9E4CB0 is the CDriveManager member
+00cafe90	CMediaTimelineList_00cafe90::InsertTrackNodeSorted	strmbase-shaped (CCritSec +8, CGenericList +0x20/+0x38); not CEditControlCentre
+009d5530	CBankFileAsyncData::PeekData	byte twin of GetData 0x9D5580 (landed 0xBE04C0 names that one GetData)
+0042be50	NUISystem::CAction::CAction	16-byte ctor; not CRumbleDef
+00b2a010	CEngine::AddEngineComponent<CEnginePrimitiveRenderer>	caller 0xB2671E: new 0x350, ctor 0xB33B50, global 0x1436E80; not CEngineLightingManager
+00770ac0	CTCWeaponTrail::~CTCWeaponTrail	vtable 0x0126A5B4 via ??_G 0x770AA0
+009fc810	CGraphicFrameData::GetUV_009fc810	landed 0x9FE550 layout; not CEngineInternalPrimitive2DStaticMesh::GetObjectTransform
+006866f0	CTCCreatureOpinionOfHero::~CTCCreatureOpinionOfHero	vtable 0x0125BC3C via ??_G 0x6866D0
+005954ad	NUISystem::CFrontEndManager::~CFrontEndManager	vtable 0x012521A8, base NUISystem::CObserver 0x1246020
+00706d10	CTCHeroAttachableAppearanceModifiers::CTCHeroAttachableAppearanceModifiers(CThing*)	vtables 0x01264F0C/0x01264EF4
+00798e70	CTCShopKeeper::CTCShopKeeper(CThing*)	vtable 0x0126C154
+00b2af50	CEngineSurfaceCompositionManager::CalcColourDifference	manifest "$E2"
+00bf90a0	CEngineTexturePalette::CEngineTexturePalette(bank,bool,defaultIndex)	manifest "CParticleMorphs::Initialize"
+004e2612	CWeaponDef::CWeaponDef	vtable 0x0124291C; not CEngineVSConstantLayoutLights
+0044c0c0	CSubDefClassBase::CSubDefClassBase	stores vtable 0x01231D54; landed rows call it CShoveHaPennyRegionDef
+0075b6c0	CMatrix3x4::operator*(float)	PDB ??DCMatrix3x4@@QAE?AV0@M@Z
+008735d0	NCameraModes::CFirstPerson::OnInit	body/vtable
+0084f1b0	NCameraModes::CBase::GetObservedThing	labelled _Cons_val
+0084e420	NCameraModes::CBase::CBase	labelled CActionParam_Constructor
+00811760	NEntityEvents::CEventHitBase::CEventHitBase(const CHitParameters&)	body
+00812280	CCountedPointer<CHitParameters>::Reset	body
+009fdcb0	CGraphicInfoFrame::CFrameData::member_009fdcb0	CFrameData member
+009fe460	CGraphicInfoFrame::CFrameData::member_009fe460	CFrameData member
+009f9e00	CTexture::GetSurface	returns CSurface by value; GetNoLevels is 0x9F9DF0
+00a00680	CGraphicInfoFrame::DiscardDeviceIndependentResources	labelled CAnimatedBlock
+0069dfe0	NCameraModes::CScriptedControl::CScriptedControl	(manager, def, CCountedPointer<CScriptModuleBase>&)
+0069de30	NCameraModes::CStringAndCage::CStringAndCage	body
+00449970	CPlayerManager::GetMainPlayer	non-const (calls GetPlayer 0x4498C0); 0x449960 is const (calls 0x449910)
+00404440	CTBaseSingleton<CFileInstaller>::Get	labelled CCodeSectionManager
+00b0c9c0	NParticleEngine::CPSCUpdateNormal::CPSCUpdateNormal	vtable 0x0129FC1C; not CHeroStatsDef
+00af4e10	NParticleEngine::CParticleSystem::CParticleSystem	vtable 0x0129F4E8; dtor 0xAF5900 landed
+00dec7f0	CQ_SecretPassageScript::CQ_SecretPassageScript	factory 0xDF1080 "S_QSP"
+00e7ef70	CFishCompOrganiser::CFishCompOrganiser	factory 0xE7EEF0 "FishCompOrganiser"
+00a09dc0	CMeshBankManager::CloseMeshBank	list +8, CMeshDataBankInfo; not CGraphicBankManager
+00bee070	__pop_heap<pair<long,CCompositeSurfaceInfo> >	SGI heap; not CItem::operator=
+00453554	map<EDamageAttribute,float>::map	labelled CopyBackBufferToTexture
+00663340	GetHeroCombatDef	labelled CEventKilledCreature
+00705170	CTCCarryable::GetCarrier	labelled CGuiControlListBox::GetCurrentSelectedEntryData
+00a03b90	CInputEvent::GetJoystickButton	labelled GetCanItemBeQuickAssigned
+006cd2f0	GetSubDef<CCreatureNavigationDef>	labelled <CAICreatureWillPowerIndicatorDef>
+0042971d	_Rb_global<bool>::_Rebalance	STLport; not CMemoryAllocatorVariableSize::BalanceTree
+0042951b	_Rb_global<bool>::_Rotate_left	both labelled RotateLeft
+0042955b	_Rb_global<bool>::_Rotate_right	both labelled RotateLeft
+007e7ed0	CTCFireheartMinigame::~CTCFireheartMinigame	deleting dtor 0x7E7EB0, vtable 0x012709CC; not ~CMeshData
+00686830	CTCBase::~CTCBase	not ~CChunkedFileChunk
+009e4a20	list<CMaintainedEvent>::insert	default value, iterator by hidden pointer; not CInputEvent_AllocNode
+00a03b40	CInputEvent::GetType	not CWorld::DrawGetEnvironment
+0042b467	map<CCharString,long>::find	labelled StdMap_FindLE
+00bd9ab0	CEngineLandscapeMemoryManager::SetMovableResourceHandler	manifest "$E2"
+0082a500	CMiniMapDisplay::AddAutoMarker	CMarkerInfo AutoMarker=true; labelled Map_InsertMarker
+0082e280	CScriptedMapBrush::GetGameArea	labelled CModeBlock::GetAnimFilter
+0082e250	CScriptedMapBrush::GetBrushName	labelled CModeBlock::GetAnimFilter
