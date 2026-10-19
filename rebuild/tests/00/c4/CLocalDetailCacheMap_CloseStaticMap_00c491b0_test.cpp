@@ -2,7 +2,7 @@
 
 static void* g_freed = (void*)0;
 
-extern "C" void __cdecl my_free(void* p) { g_freed = p; }
+ void operator delete[](void* p) { g_freed = p; }
 
 struct CLocalDetailCacheMap {
     char pad[0x10];

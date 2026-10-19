@@ -7,14 +7,14 @@ static int g_free = 0;
 static CTCMapwho* g_last = 0;
 
 void __fastcall CTCMapwho_Cleanup(CTCMapwho* self) { g_cleanup++; g_last = self; }
-void CTCMapwho_Free(void* p) { g_free++; }
+void operator delete(void* p) { g_free++; }
 
 void __fastcall CTCMapwho_OnDie(CTCMapwho* self)
 {
     if (self)
     {
         CTCMapwho_Cleanup(self);
-        CTCMapwho_Free(self);
+        operator delete(self);
     }
 }
 

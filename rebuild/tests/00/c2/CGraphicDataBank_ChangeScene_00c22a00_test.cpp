@@ -9,15 +9,15 @@ struct CGraphicDataBank {
 
 static void* g_freed[4];
 static int g_n = 0;
-extern "C" void FreeThing(void* p) { g_freed[g_n++] = p; }
+ void operator delete[](void* p) { g_freed[g_n++] = p; }
 
 #define VTBL_ADDR ((void*)0x12b3820)
 
 void ChangeScene(CGraphicDataBank* self)
 {
     self->vtbl = VTBL_ADDR;
-    FreeThing(self->p14);
-    FreeThing(self->p10);
+    operator delete[](self->p14);
+    operator delete[](self->p10);
 }
 
 int main() {

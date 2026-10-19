@@ -14,7 +14,7 @@
 // Shape: the singleton accessor is inline (`if (!p) p.Reset(new T); return p;`) and read before the by-value copy;
 // erase is out of line; the two vector destructors use by-value _Destroy(first, last) range helpers (end cached).
 void* __cdecl operator_new(unsigned int size);     // 0x00BFEA1A
-void __cdecl operator_delete(void* p);             // 0x00BFEA14
+void __cdecl free(void*);   // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
 struct CCharString {
@@ -61,7 +61,7 @@ struct CMorphNameVector {                           // STLport vector<CCharStrin
     {
         DestroyRange(m_first, m_last);
         if (m_first)
-            operator_delete(m_first);
+            free(m_first);
     }
 };
 
@@ -86,7 +86,7 @@ struct CMorphEntryVector {                          // STLport vector<CMorphEntr
     {
         DestroyRange(m_first, m_last);
         if (m_first)
-            operator_delete(m_first);
+            free(m_first);
     }
 };
 

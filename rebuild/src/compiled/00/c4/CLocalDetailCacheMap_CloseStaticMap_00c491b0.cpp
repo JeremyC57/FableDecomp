@@ -1,4 +1,4 @@
-extern "C" void __cdecl my_free(void* p);
+void operator delete[](void*);
 
 struct CLocalDetailCacheMap {
     char pad[0x10];
@@ -7,6 +7,6 @@ struct CLocalDetailCacheMap {
 
 void __fastcall CloseStaticMap(CLocalDetailCacheMap* self)
 {
-    my_free(self->f10);
+    operator delete[](self->f10);
     self->f10 = 0;
 }

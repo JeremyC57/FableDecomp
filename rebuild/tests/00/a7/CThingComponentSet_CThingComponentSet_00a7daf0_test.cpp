@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-void FreeBlock(void* p);
+void operator delete[](void*);
 
 struct CThingComponentSet {
     void* m_data;
@@ -11,14 +11,14 @@ struct CThingComponentSet {
 
 CThingComponentSet::~CThingComponentSet()
 {
-    FreeBlock(m_data);
+    operator delete[](m_data);
     m_data = 0;
     m_flag = 0;
 }
 
 static int g_freed = 0;
 static void* g_lastFreed = 0;
-void FreeBlock(void* p) { g_freed++; g_lastFreed = p; }
+void operator delete[](void* p) { g_freed++; g_lastFreed = p; }
 
 int main()
 {

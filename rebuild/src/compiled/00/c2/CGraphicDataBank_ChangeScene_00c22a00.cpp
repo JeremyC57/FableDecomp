@@ -9,7 +9,7 @@ struct CGraphicDataBank {
 };
 
 // cdecl free function target at 0xbfeb1c (operator delete / free-like).
-extern "C" void __cdecl FreeThing(void* p);
+void operator delete[](void*);
 
 // vtable address baked as a constant.
 #define VTBL_ADDR ((void*)0x12b3820)
@@ -17,6 +17,6 @@ extern "C" void __cdecl FreeThing(void* p);
 void __fastcall ChangeScene(CGraphicDataBank* self)
 {
     self->vtbl = VTBL_ADDR;
-    FreeThing(self->p14);
-    FreeThing(self->p10);
+    operator delete[](self->p14);
+    operator delete[](self->p10);
 }
