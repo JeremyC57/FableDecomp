@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b1a640	DIFFER	190v192	-	NParticleEngine::CPSCLight ctor; only the user-point array clear(): zero stores forwarded into the __copy args
+00b21630	RELOCATION_MATCH	185v185	PASS	NParticleEngine::CPSCSplineBase::WriteBinary; pointer walk over a local CArray copy inside if(count>0)
+009d0630	DIFFER	203v192	-	CPackedBlockAllocator::RebuildFreeList; address-taken index reloaded after the insert (retail keeps it in esi)
+00a62c90	DIFFER	238v238	-	CPackedUIntArray::PackArray; register allocation only (bits in edi, bias in ecx)
+0045c2e8	RELOCATION_MATCH	231v231	PASS	CCombatTypeDef::operator= (vtable 0x01233744 slot 19); pragma s
+0045cb1c	RELOCATION_MATCH	177v177	PASS	CHeroAbilityDef::operator= (vtable 0x01233974 slot 19); pragma s
+0045d63c	RELOCATION_MATCH	207v207	PASS	CExpressionDef::operator= (vtable 0x01233D1C slot 19); pragma s
+0045f635	RELOCATION_MATCH	195v195	PASS	CSpecialAbilitiesBattleChargeDef::operator= (vtable 0x012340C4 slot 19); pragma s
+0045fd53	RELOCATION_MATCH	186v186	PASS	CSpecialAbilitiesForcePushDef::operator= (vtable 0x012342CC slot 19); pragma s, float[3] loop
+004629fb	RELOCATION_MATCH	238v238	PASS	CEngineThemeDef::operator= (vtable 0x01235194 slot 19); pragma s, bool:1 Passable merge
+009b0200	RELOCATION_MATCH	209v209	PASS	CParentDefClassBase::InternalSaveBinary; inline CDefClassBase part + CVectorMap::Sort
+009b9770	DIFFER	177v181	-	CParsedItem::InitAsFloat; divisor in memory only via volatile (probe artefact), loop rotation
+00543d30	DIFFER	183v183	-	NUISystem::CParticleEffect::Initialise; scheduling only (axes temp stores vs third push)
+00543df0	DIFFER	217v217	-	NUISystem::CParticleEffect::ChangeState; scheduling only (same as Initialise)
+00543ee0	DIFFER	194v190	-	NUISystem::CParticleEffect::Draw; Position.X copy not dead-store-eliminated in ours
+00ae8a80	RELOCATION_MATCH	201v201	PASS	CParticleEmitterDatabase::GetEmitterTemplate_00ae8a80 (twin of 0x00AE89E0, renamed apart); callees named as the landed twin
+00af1480	RELOCATION_MATCH	204v204	PASS	NParticleEngine::CParticleEmitterInfo::GetEmitterTemplate; intrusive Release() inline
+00aeabe0	DIFFER	158v166	-	CParticleEmitterManager::CreateDecalEmitter; retail keeps null result in ebx (extra push, frame +4)
+00aeb4a0	RELOCATION_MATCH	174v174	PASS	CParticleEmitterManager::Update; inline list erase, bool accessors on the flag word
+00aeb550	RELOCATION_MATCH	168v168	PASS	CParticleEmitterManager::StartFrame; if/else of two StartFrame calls tail-merged
+00aeb600	DIFFER	202v202	-	CParticleEmitterManager::CreateInterpolatedEmitter; register allocation only
+00aeb6d0	DIFFER	201v192	-	CParticleEmitterManager::CreateEmitter; clone pointer load placement / esi-edi swap
+00aeb790	DIFFER	186v171	-	CParticleEmitterManager::Create2DEmitter; this/result register swap
+0081b160	DIFFER	189v181	-	CParticleMorphs::GetAllMorphsOfType; zero-fill of the blank CEntry spread over eax/edx/imm
+00bf90a0	RELOCATION_MATCH	171v171	PASS	CEngineTexturePalette ctor (label CParticleMorphs::Initialize wrong; caller CEngineLandscapeMap ctor)
+00ae1260	RELOCATION_MATCH	187v187	PASS	CParticleProgram::PrepareForRendering (11-arg overload)
+00ae1600	RELOCATION_MATCH	181v181	PASS	CParticleProgram::PrepareForRendering (4-arg overload); __forceinline SGI copy
+00ae1150	RELOCATION_MATCH	177v177	PASS	CParticleProgram::SetParticles (label class CParticleSimulation wrong); derives from landed CParticleArrayOwner
+00ae2050	RELOCATION_MATCH	171v171	PASS	CParticleSimulation::WriteToFile
+00af4240	DIFFER	219v219	-	NParticleEngine::CParticleSystem::WriteBinary; strength-reduced walk pointer bias (+0x14 vs +8)
+00af5380	DIFFER	170v167	-	NParticleEngine::CParticleSystem::AllocateDecal; scheduling only (edi push, inc mem)
+00b201d0	DIFFER	225v225	-	NParticleEngine::CParticleSystem::GetInverseSystemTransformWithTranslate; x87 operand order
+004c5da0	RELOCATION_MATCH	162v162	PASS	NGraphicAppearance::CTCGraphicAppearance dtor (label CPatchTesselationEdgeStrip wrong); novtable
+004e2170	RELOCATION_MATCH	182v182	PASS	CVillageDef dtor (label wrong); pragma s, novtable + inline CDefPointeeBase
+00589c55	RELOCATION_MATCH	219v219	PASS	CTCInventory dtor (label wrong); pragma s, two bases
+005f3cfe	RELOCATION_MATCH	200v200	PASS	CTCInventoryAbilities dtor (label wrong); pragma s, two bases
+00706e00	RELOCATION_MATCH	182v182	PASS	CTCHeroAttachableAppearanceModifiers dtor (label wrong)
+007223d0	RELOCATION_MATCH	204v204	PASS	CTCHeroMorph dtor (label wrong)
+009a7b70	RELOCATION_MATCH	229v229	PASS	CBankFileManager dtor (label wrong)
+009f5c80	RELOCATION_MATCH	226v226	PASS	CInputManager dtor (label wrong)

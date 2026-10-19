@@ -1,0 +1,10 @@
+address	name	evidence
+00bf90a0	CEngineTexturePalette::CEngineTexturePalette	not CParticleMorphs::Initialize (chunk 198)
+00ae1150	CParticleProgram::SetParticles_00ae1150	a CParticleProgram method, not CParticleSimulation::SetParticles
+00aeaaf0	NParticleEngine::CParticleEmitterManager::Get	not GFGetPreMainMemoryUsed
+00af1280	NParticleEngine::CParticleDataBank::GetEmitterInfo	
+00b20b10	CSplinePosParamData::WriteBinary	
+00aed010	NParticleEngine::CParticleEmitter::IsVisible	
+009fc550	CResourceBase::~CResourceBase_009fc550	CResource-style base destructor
+00ae8a80	GetEmitterTemplate_00ae8a80	same propagated label as 0x00AE89E0 CParticleEmitterDatabase::GetEmitterTemplate; no callers
+0045c2e8	/ 0x0045CB1C / 0x0045D63C / 0x0045F635 / 0x0045FD53 / 0x004629FB "CParentDefClassBase::operator=" are the Copy (slot 19) bodies of CCombatTypeDef / CHeroAbilityDef / CExpressionDef / CSpecialAbilitiesBattleChargeDef / CSpecialAbilitiesForcePushDef / CEngineThemeDef.	chunk 198 NOTES.md

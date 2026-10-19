@@ -245755,6 +245755,181 @@ $catalog = @(
         TestSource = '00/f3/CNoise_InitPerlinNoise_00f35e00_test.cpp'
         PassPattern = '00f35e00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0045c2e8'
+        Module = 'CCombatTypeDef'
+        Source = '00/45/CCombatTypeDef_operator_0045c2e8.cpp'
+        TestSource = '00/45/CCombatTypeDef_operator_0045c2e8_test.cpp'
+        PassPattern = '0045c2e8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045cb1c'
+        Module = 'CHeroAbilityDef'
+        Source = '00/45/CHeroAbilityDef_operator_0045cb1c.cpp'
+        TestSource = '00/45/CHeroAbilityDef_operator_0045cb1c_test.cpp'
+        PassPattern = '0045cb1c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045d63c'
+        Module = 'CExpressionDef'
+        Source = '00/45/CExpressionDef_operator_0045d63c.cpp'
+        TestSource = '00/45/CExpressionDef_operator_0045d63c_test.cpp'
+        PassPattern = '0045d63c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045f635'
+        Module = 'CSpecialAbilitiesBattleChargeDef'
+        Source = '00/45/CSpecialAbilitiesBattleChargeDef_operator_0045f635.cpp'
+        TestSource = '00/45/CSpecialAbilitiesBattleChargeDef_operator_0045f635_test.cpp'
+        PassPattern = '0045f635_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045fd53'
+        Module = 'CSpecialAbilitiesForcePushDef'
+        Source = '00/45/CSpecialAbilitiesForcePushDef_operator_0045fd53.cpp'
+        TestSource = '00/45/CSpecialAbilitiesForcePushDef_operator_0045fd53_test.cpp'
+        PassPattern = '0045fd53_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004629fb'
+        Module = 'CEngineThemeDef'
+        Source = '00/46/CEngineThemeDef_operator_004629fb.cpp'
+        TestSource = '00/46/CEngineThemeDef_operator_004629fb_test.cpp'
+        PassPattern = '004629fb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c5da0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4c/NGraphicAppearanceCTCGraphicAppearance_CTCGraphicAppearance_004c5da0.cpp'
+        TestSource = '00/4c/NGraphicAppearanceCTCGraphicAppearance_CTCGraphicAppearance_004c5da0_test.cpp'
+        PassPattern = '004c5da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e2170'
+        Module = 'CVillageDef'
+        Source = '00/4e/CVillageDef_CVillageDef_004e2170.cpp'
+        TestSource = '00/4e/CVillageDef_CVillageDef_004e2170_test.cpp'
+        PassPattern = '004e2170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00589c55'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_CTCInventory_00589c55.cpp'
+        TestSource = '00/58/CTCInventory_CTCInventory_00589c55_test.cpp'
+        PassPattern = '00589c55_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f3cfe'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_CTCInventoryAbilities_005f3cfe.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_CTCInventoryAbilities_005f3cfe_test.cpp'
+        PassPattern = '005f3cfe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00706e00'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_CTCHeroAttachableAppearanceModifiers_00706e00.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_CTCHeroAttachableAppearanceModifiers_00706e00_test.cpp'
+        PassPattern = '00706e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007223d0'
+        Module = 'CTCHeroMorph'
+        Source = '00/72/CTCHeroMorph_CTCHeroMorph_007223d0.cpp'
+        TestSource = '00/72/CTCHeroMorph_CTCHeroMorph_007223d0_test.cpp'
+        PassPattern = '007223d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a7b70'
+        Module = 'CBankFileManager'
+        Source = '00/9a/CBankFileManager_CBankFileManager_009a7b70.cpp'
+        TestSource = '00/9a/CBankFileManager_CBankFileManager_009a7b70_test.cpp'
+        PassPattern = '009a7b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b0200'
+        Module = 'CParentDefClassBase'
+        Source = '00/9b/CParentDefClassBase_InternalSaveBinary_009b0200.cpp'
+        TestSource = '00/9b/CParentDefClassBase_InternalSaveBinary_009b0200_test.cpp'
+        PassPattern = '009b0200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f5c80'
+        Module = 'CInputManager'
+        Source = '00/9f/CInputManager_CInputManager_009f5c80.cpp'
+        TestSource = '00/9f/CInputManager_CInputManager_009f5c80_test.cpp'
+        PassPattern = '009f5c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae1150'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_SetParticles_00ae1150.cpp'
+        TestSource = '00/ae/CParticleProgram_SetParticles_00ae1150_test.cpp'
+        PassPattern = '00ae1150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae1260'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_PrepareForRendering_00ae1260.cpp'
+        TestSource = '00/ae/CParticleProgram_PrepareForRendering_00ae1260_test.cpp'
+        PassPattern = '00ae1260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae1600'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_PrepareForRendering_00ae1600.cpp'
+        TestSource = '00/ae/CParticleProgram_PrepareForRendering_00ae1600_test.cpp'
+        PassPattern = '00ae1600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae2050'
+        Module = 'CParticleSimulation'
+        Source = '00/ae/CParticleSimulation_WriteToFile_00ae2050.cpp'
+        TestSource = '00/ae/CParticleSimulation_WriteToFile_00ae2050_test.cpp'
+        PassPattern = '00ae2050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae8a80'
+        Module = 'NParticleEngine::CParticleEmitterDatabase'
+        Source = '00/ae/NParticleEngineCParticleEmitterDatabase_GetEmitterTemplate00ae8a80_00ae8a80.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterDatabase_GetEmitterTemplate00ae8a80_00ae8a80_test.cpp'
+        PassPattern = '00ae8a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb4a0'
+        Module = 'CParticleEmitterManager'
+        Source = '00/ae/CParticleEmitterManager_Update_00aeb4a0.cpp'
+        TestSource = '00/ae/CParticleEmitterManager_Update_00aeb4a0_test.cpp'
+        PassPattern = '00aeb4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb550'
+        Module = 'CParticleEmitterManager'
+        Source = '00/ae/CParticleEmitterManager_StartFrame_00aeb550.cpp'
+        TestSource = '00/ae/CParticleEmitterManager_StartFrame_00aeb550_test.cpp'
+        PassPattern = '00aeb550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1480'
+        Module = 'NParticleEngine::CParticleEmitterInfo'
+        Source = '00/af/NParticleEngineCParticleEmitterInfo_GetEmitterTemplate_00af1480.cpp'
+        TestSource = '00/af/NParticleEngineCParticleEmitterInfo_GetEmitterTemplate_00af1480_test.cpp'
+        PassPattern = '00af1480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b21630'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b2/NParticleEngineCPSCSplineBase_WriteBinary_00b21630.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBase_WriteBinary_00b21630_test.cpp'
+        PassPattern = '00b21630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf90a0'
+        Module = 'CEngineTexturePalette'
+        Source = '00/bf/CEngineTexturePalette_CEngineTexturePalette_00bf90a0.cpp'
+        TestSource = '00/bf/CEngineTexturePalette_CEngineTexturePalette_00bf90a0_test.cpp'
+        PassPattern = '00bf90a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
