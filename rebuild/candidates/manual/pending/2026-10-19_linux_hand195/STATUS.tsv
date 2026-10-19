@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005580b0	RELOCATION_MATCH	189v189	PASS	CKeyRedefiner switch + memberwise copy ctor
+00a669e0	RELOCATION_MATCH	212v212	PASS	insert result homed in dead arg slot
+004e80e3	RELOCATION_MATCH	222v222	PASS	size TU persist chain
+00cf88c0	RELOCATION_MATCH	172v172	PASS	quest-script ctor, novtable arg base
+00be5ca0	SKIP	-	-	row spans InvalidateEdge + jump table + four more bodies
+00be5d80	RELOCATION_MATCH	206v206	PASS	manager local, counted loop
+00be5fa0	RELOCATION_MATCH	229v229	PASS	body assignments after vtable+strip loop
+00bf7f70	DIFFER	189v177	-	false-exit placement
+00bfb590	RELOCATION_MATCH	181v181	PASS	sibling model; Objects/count locals
+00873930	DIFFER	231v221	-	frame temporaries of the vector sum
+0041726d	DIFFER	189v189	-	ebx/edi swap
+00820b80	DIFFER	194v194	-	tag over live arg slot (lane gap)
+008f70f0	DIFFER	144v164	-	inline search register choice + merged tails
+00c461e0	DIFFER	135v163	-	x87 scheduling / factor homing
+00a560a0	RELOCATION_MATCH	209v209	PASS	&& chain, squared tolerance CSE
+00a56180	RELOCATION_MATCH	238v238	PASS	element-by-element frame matrix
+00a9d580	DIFFER	199v221	-	inline asm SSE arm (lane gap)
+00a5d000	DIFFER	211v211	-	x87 operand order of two products
+00a65ff0	DIFFER	167v169	-	zero register ebx vs ecx
+0042971d	RELOCATION_MATCH	190v190	PASS	STLport _Rb_global<bool>::_Rebalance verbatim, size TU
+00511430	RELOCATION_MATCH	179v179	PASS	STLport _M_insert instantiation
+00513880	RELOCATION_MATCH	178v178	PASS	STLport _M_insert instantiation
+0067b4a0	RELOCATION_MATCH	191v191	PASS	STLport _M_insert instantiation
+0085ded0	RELOCATION_MATCH	179v179	PASS	STLport _M_insert instantiation
+00869ca0	RELOCATION_MATCH	205v205	PASS	STLport _M_insert instantiation
+009c2350	RELOCATION_MATCH	225v225	PASS	STLport _M_insert instantiation
+009c2440	RELOCATION_MATCH	179v179	PASS	STLport _M_insert instantiation
+00a650f0	RELOCATION_MATCH	188v188	PASS	sorted free-list insert, break exits
+009e9140	RELOCATION_MATCH	219v219	PASS	CBBBFileException model of 0x0099AA90
+0053e0c0	DIFFER	190v190	-	vptr register eax vs edx
+007e7ed0	RELOCATION_MATCH	163v163	PASS	novtable TC dtor; STLport _Destroy by value; complete class before member pointer
+00a26660	RELOCATION_MATCH	201v201	PASS	inline type predicates + declaration order
+008ad050	DIFFER	199v202	-	prologue shrink-wrap
+0090e2e0	RELOCATION_MATCH	225v225	PASS	Bind4 filter, typed getter, message pointer local
+0090e4a0	RELOCATION_MATCH	225v225	PASS	same generator
+0082a890	DIFFER	206v206	-	esi/edi swap + push edi placement
+0082add0	DIFFER	171v171	-	scratch register choice
+0082ba00	RELOCATION_MATCH	233v233	PASS	scoped CCharString keys, node-returning find
+00642880	RELOCATION_MATCH	166v166	PASS	by-value surface temporary as this
+00642970	RELOCATION_MATCH	177v177	PASS	pixel loop over theme grid

@@ -1,0 +1,85 @@
+#include <cstdio>
+#include <cstring>
+#ifndef _MSC_VER
+#define __fastcall
+#define __stdcall
+#define __cdecl
+#define __forceinline inline
+#define __declspec(x)
+#endif
+// Behaviour test: the model and logic below are a copy of the src/ file; the callees are test doubles.
+// CEngineShadowRenderer::SetShadowClipVolumesToNeverShadow() -- empty both shadow clip volumes (no clip planes, no sphere test), then give each a bounding sphere of radius 0 at (-1e30, -1e30, -1e30) with the sphere test on, so nothing falls inside either volume
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00B4CE20, 173 bytes (+ int3 padding).
+// Layout (Ego_r.pdb, retail agrees): SceneData (CShadowRendererSceneData) at +0xc; its CasterClipVolume at +0x11c and
+//   RecieverClipVolume at +0x1b4 (CShadowClipVolume, 0x98 bytes: ClipPlanes[8] +0, ClipPlaneCount +0x80, BoundingSphere +0x84,
+//   ClipToSphere +0x94). engine/CEngineShadowRenderer.h keeps SceneData as opaque bytes, so the scene data is modelled locally
+//   with the PDB member names at the header's offset.
+// Shape: two inline Clear() calls (count 0, flag false; the zero register shared), then two inline SetBoundingSphere() calls
+//   taking a C3DBoundingSphere temporary built from a C3DVector temporary (memberwise user copy ctors: each word is stored
+//   into the 16-byte frame temporary and read back into the member; -1e30f is the immediate 0xF149F2CA).
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
+};
+struct C3DBoundingSphere {
+    C3DVector Center;                                  // +0x00
+    float     Radius;                                  // +0x0c
+    C3DBoundingSphere(const C3DVector& centre, float radius) : Center(centre), Radius(radius) { }
+};
+struct CPlane { float A, B, C, D; };
+
+struct CShadowClipVolume {                             // 0x98 bytes
+    CPlane            ClipPlanes[8];                   // +0x00
+    long              ClipPlaneCount;                  // +0x80
+    C3DBoundingSphere BoundingSphere;                  // +0x84
+    bool              ClipToSphere;                    // +0x94
+    void Clear()
+    {
+        ClipPlaneCount = 0;
+        ClipToSphere = false;
+    }
+    void SetBoundingSphere(const C3DBoundingSphere& sphere)
+    {
+        BoundingSphere = sphere;
+        ClipToSphere = true;
+    }
+};
+
+struct CShadowRendererSceneData {                      // 0x240 bytes
+    unsigned char     _pad000[0x110];                  // matrices, fades, light vector, camera position
+    CShadowClipVolume CasterClipVolume;                // +0x110
+    CShadowClipVolume RecieverClipVolume;              // +0x1a8
+};
+
+struct CEngineShadowRenderer {
+    unsigned char            _pad00[0x0c];
+    CShadowRendererSceneData SceneData;                // +0x0c
+    void SetShadowClipVolumesToNeverShadow();
+};
+
+void CEngineShadowRenderer::SetShadowClipVolumesToNeverShadow()
+{
+    SceneData.CasterClipVolume.Clear();
+    SceneData.RecieverClipVolume.Clear();
+    SceneData.CasterClipVolume.SetBoundingSphere(C3DBoundingSphere(C3DVector(-1.0e30f, -1.0e30f, -1.0e30f), 0.0f));
+    SceneData.RecieverClipVolume.SetBoundingSphere(C3DBoundingSphere(C3DVector(-1.0e30f, -1.0e30f, -1.0e30f), 0.0f));
+}
+
+// ---- test doubles and driver ----
+int main()
+{
+    static double raw[128];
+    CEngineShadowRenderer& r = *reinterpret_cast<CEngineShadowRenderer*>(raw);
+    CShadowClipVolume* v[2] = { &r.SceneData.CasterClipVolume, &r.SceneData.RecieverClipVolume };
+    for (int i = 0; i < 2; ++i) { v[i]->ClipPlaneCount = 5; v[i]->ClipToSphere = false; v[i]->ClipPlanes[0].A = 7.0f; }
+    r.SetShadowClipVolumesToNeverShadow();
+    bool ok = true;
+    for (int i = 0; ok && i < 2; ++i)
+        ok = v[i]->ClipPlaneCount == 0 && v[i]->ClipToSphere == true && v[i]->BoundingSphere.Radius == 0.0f
+            && v[i]->BoundingSphere.Center.X == -1.0e30f && v[i]->BoundingSphere.Center.Y == -1.0e30f
+            && v[i]->BoundingSphere.Center.Z == -1.0e30f && v[i]->ClipPlanes[0].A == 7.0f;
+    if (!ok) { std::printf("00b4ce20_TEST FAIL\n"); return 1; }
+    std::printf("00b4ce20_TEST PASS\n");
+    return 0;
+}

@@ -1,0 +1,117 @@
+// CCreatureAction_SummonerUnsheatheStrike::Initialise() -- the unsheathe-weapons Initialise, then look up the SUMMONER_ATTACK_STYLE def and hand it to the owner's combat component (interface 0x30)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB620, length 180 bytes (+ int3 padding), plain `ret` (virtual).
+// Callees: CCreatureAction_UnsheatheWeapons::Initialise @ 0x008B7ED0 (the direct base), CBaseIntelligentPointer::GetPItem
+// @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x30, bit 16 of +0x24), CCharString::CCharString
+// (const char*, long) @ 0x0099EBF0, CCreatureActionBase::GetPDefinitionManager @ 0x00692910 (manifest label is STL noise),
+// CDefinitionManager::GetDef<T>(const CCharString&, CDefPointer<T>*) @ 0x00669770, CCharString::~CCharString @ 0x0099EAE0,
+// the combat component's attack-style setter @ 0x007355F0 (takes the def pointer by address; manifest label is noise).
+// Shape: the UNCHECKED out-parameter lookup in an inline accessor (the absent path reads the lookup key's frame word, which
+// the block-scoped name string reuses); the CDefPointer local is zeroed inside the string construction and released at
+// the end through the def's inline ReleaseTemporary on its ref-count base at +4 (null test kept, null store elided).
+// Layout: owner CIntelligentPointer +8.
+struct CTCBase;
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);       // 0x0040F020
+};
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20
+    CInterfaceMap m_interfaces;                 // +0x44
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+};
+
+struct CCharString {
+    void* m_pData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                    // 0x0099EAE0
+};
+
+struct CRefCounted {                            // second base of the def: the count at +4
+    long m_count;
+    void DecRef() { --m_count; }
+    long GetRefCount() const { return m_count; }
+};
+struct CDefVirtual {
+    virtual void v00();
+    virtual void Destroy();                     // slot 1
+};
+struct CAttackStyleDef : CDefVirtual, CRefCounted {
+    void ReleaseTemporary()
+    {
+        DecRef();
+        if (GetRefCount() == 0)
+            Destroy();
+    }
+};
+template <class T> struct CDefPointer {
+    T* m_p;
+    CDefPointer() : m_p(0) { }
+    ~CDefPointer()
+    {
+        if (m_p) {
+            m_p->ReleaseTemporary();
+            m_p = 0;
+        }
+    }
+};
+
+struct CDefinitionManager {
+    bool GetDef(const CCharString& name, CDefPointer<CAttackStyleDef>* def);   // 0x00669770
+};
+
+struct CTCCombat {
+    void SetAttackStyleDef(const CDefPointer<CAttackStyleDef>* def);         // 0x007355F0
+};
+
+struct CBaseIntelligentPointer {
+    void*   __vftable;
+    CThing* m_pItem;                            // +0x04
+    CThing* GetPItem() const;                   // 0x00A01B50
+};
+
+class CCreatureAction_UnsheatheWeapons {
+public:
+    virtual void Initialise();                  // 0x008B7ED0
+    unsigned char           _pad04[4];
+    CBaseIntelligentPointer PCreature;          // +0x08
+    unsigned char           _pad10[0xa8 - 0x10];
+    CDefinitionManager* GetPDefinitionManager() const;   // 0x00692910
+    __forceinline CTCCombat* GetCombat() const
+    {
+        CTCCombat* combat;
+        PCreature.GetPItem()->GetInterface(&combat, 0x30);
+        return combat;
+    }
+};
+
+class CCreatureAction_SummonerUnsheatheStrike : public CCreatureAction_UnsheatheWeapons {
+public:
+    virtual void Initialise();
+};
+
+void CCreatureAction_SummonerUnsheatheStrike::Initialise()
+{
+    CCreatureAction_UnsheatheWeapons::Initialise();
+    CTCCombat* combat = GetCombat();
+    CDefPointer<CAttackStyleDef> def;
+    {
+        CCharString name("SUMMONER_ATTACK_STYLE", -1);
+        GetPDefinitionManager()->GetDef(name, &def);
+    }
+    combat->SetAttackStyleDef(&def);
+}

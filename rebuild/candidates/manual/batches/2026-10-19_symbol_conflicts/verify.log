@@ -12,3 +12,16 @@ addr       parity           behav  name
 WINS: 2
   00ac52f0 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::WriteToFile
   00905360 RELOCATION_MATCH NTCScriptedControl::CActionPerformExpression::??0CActionPerformExpression
+addr       parity           behav  name
+00418b7a   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled 'std::_Dest_val<std::allocator<CMacro>,CMacro>'
+00418b7a   WARN RELOC_NAME: ??1?$CCountedPointer@UCGraphicDataBank@@@@QAE@XZ -> 00419108 labelled 'std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>'
+00418b7a   WARN RELOC_NAME: ??1CFrameRateSmoother@@UAE@XZ -> 00419764 labelled 'CTCInventoryItem::OnDie'
+00418b7a   WARN RELOC_NAME: ??1CDiskFileWin32@@UAE@XZ -> 00401630 labelled 'CAIStateGroup_CreatureUseCoverBase::~CAIStateGroup_CreatureUseCoverBase'
+00418b7a   WARN RELOC_NAME: ??1?$CCountedPointer@UCFontBank@@@@QAE@XZ -> 004057a0 labelled 'std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>'
+00418b7a   WARN RELOC_NAME: ??1CNetworkClient@@UAE@XZ -> 00419352 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+00418b7a   WARN RELOC_NAME: ??1?$CCountedPointer@UCLUA@@@@QAE@XZ -> 004190b6 labelled 'std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>'
+00418b7a   WARN RELOC_NAME: ??1?$CCountedPointer@UCDataBank@NGameText@@@@QAE@XZ -> 00403750 labelled 'std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>'
+00418b7a   RELOCATION_MATCH PASS   ~CMainGameComponent
+
+WINS: 1
+  00418b7a RELOCATION_MATCH CMainGameComponent::~CMainGameComponent
