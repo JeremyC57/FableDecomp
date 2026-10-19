@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00bf9150	RELOCATION_MATCH	205v205	PASS	unsigned loop re-reading size(); default entry + assigned name; inline STLport push_back
+004e2612	RELOCATION_MATCH	164v164	PASS	is CWeaponDef ctor (vtable 0x124291C); size TU, member objects with inline ctors
+0075b6c0	MATCH	187v187	PASS	CMatrix3x4::operator*(float); __forceinline PostScale column order
+008852e0	DIFFER	183v183	-	same bytes count, store scheduling only (prev SF zeros, push esi, track pos stores)
+00811760	DIFFER	208v201	-	is NEntityEvents::CEventHitBase ctor; only the epilogue cross-jump differs (lane does not merge the two tails)
+009c3590	DIFFER	194v194	-	register choice of the dead volatile read (cl v al) and the lea for GetFileSize
+008735d0	RELOCATION_MATCH	186v186	PASS	is NCameraModes::CFirstPerson::OnInit; inline GetPhysics, stick copy after constants, inline manager CutCamera
+00e7bb30	RELOCATION_MATCH	162v162	PASS	entity-script prelude; handle local at function scope after early return (no frame sharing)
+00a636c0	DIFFER	208v203	-	push_back value/tag temporaries in the dead index slot (known lane gap)
+009fdcb0	RELOCATION_MATCH	226v226	PASS	is CGraphicInfoFrame::CFrameData; inline Sizeof copied into the result; two min statements; CSurface temp dtor
+009fe460	DIFFER	231v231	-	same size; scratch-register rotation in the threshold chain and the ReduceMipmapLevel call
+00f370c0	DIFFER	171v167	-	pool word stores per arm vs once after the join; register rotation
+00f372b0	DIFFER	229v224	-	enregistration of the address-taken index local (frame-only in our build)
+00f37660	DIFFER	234v206	-	retail has callee knowledge of the STL vector assignment (fields kept in registers, dead dtor dropped)
+006fd5e0	DIFFER	212v212	-	same size; one shared C3DVector local + scalar Lerp; only the Y/Z base register and one store order remain
+00698b50	DIFFER	221v218	-	argument evaluation order of the fastcall sound call (GetPItem hoisted) and cross-jump point
+00699130	DIFFER	183v183	-	register choice in the inline list clear() epilogue only
+00699a50	DIFFER	177v175	-	call order fixed with a def local; ebx/edi colouring and the shared constant-1 register remain
+00699b00	DIFFER	243v238	-	only the by-value parameter's counted release shape differs
+0069ad10	RELOCATION_MATCH	167v167	PASS	nested ifs, def local with null-tested inline ReleaseTemporary, flag store last
+0069adc0	DIFFER	193v177	-	register colouring + set-def release shape (attempt 1 had the dec [eax+4] form)
+0069e2e0	DIFFER	231v237	-	bool argument widened through a frame word in retail (lane widens with xor/mov cl)
+009f1ac0	DIFFER	223v221	-	/GS parameter load hoisted to entry (known /GS lane gap); everything else matches
+00445800	RELOCATION_MATCH	236v236	PASS	two || chains, ranges as >=&&<= terms
+00446a30	RELOCATION_MATCH	224v224	PASS	body wrapped in if(!Suspended) for the shared false tail; retail offsets PDB-0x10 after the containers
+004b1670	DIFFER	168v168	-	tag over live bool slot reproduced via (first,last,tag,val) fastcall order; iterator result slot is the lane frame-slot gap
+006e7740	RELOCATION_MATCH	173v173	PASS	init list in declaration order; inline CScriptThing ctor; STLport CRetailMap; retail map 12 bytes (PDB 16)
+006e7920	RELOCATION_MATCH	182v182	PASS	typed intelligent-pointer getter (IsThingOfType mask local -> xor al,al ; jne); World message manager via CCountedPointer operator->
+0088e620	RELOCATION_MATCH	193v193	PASS	nested validity tests, atan2/fmod intrinsics, wrap into [0,1)
+00891170	RELOCATION_MATCH	164v164	PASS	CSoundInit body assigns PlaybackType/GainFaderBits; inline GetSampleBank
+00891940	RELOCATION_MATCH	180v180	PASS	bank local; unnamed CCharString temp with inline GetCRC; entry in dead arg slot
+00891a00	RELOCATION_MATCH	180v180	PASS	twin of 00891940 (Text +0x54)
+00891ca0	RELOCATION_MATCH	173v173	PASS	if/else of whole-object assignments; inline CScriptThing dtor per arm merged at delete
+008930f0	DIFFER	186v186	-	same size; tools fetched via an inline helper fixed the order; register rotation + result-block layout remain
+008941a0	DIFFER	168v176	-	only the folded IS_THING_DEAD remnant differs (store + xor cl,cl ; jne)
+008967f0	DIFFER	203v205	-	else-if chain; hook arms need one shared local (next: else { if (!GetInterface(&hook)) {name; AddTC} hook->Usable=v; })
+008973a0	DIFFER	214v211	-	lane gap: inline CCharString=="" materialised with sete (chunk 188 gap)
+00897560	RELOCATION_MATCH	199v199	PASS	out-parameter GetInterface keeps the TC in eax; inline CDefString::GetString
+00898340	DIFFER	195v193	-	World read twice inline (CSE in esi) fixed the registers; def register eax vs ecx remains
+00898410	RELOCATION_MATCH	205v205	PASS	World read twice (VC CSEs it into esi), CCountedPointer from raw .Data with def AddRef/Release
