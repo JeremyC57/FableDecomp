@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008c4ea0	RELOCATION_MATCH	163v163	PASS	ctor: base + scoped name + two body assignments
+00783f00	RELOCATION_MATCH	163v163	PASS	STLport 64-bit-key map _M_insert (label propagated)
+008c4170	DIFFER	218v218	-	frame-slot sharing (string/out/string) RTM v DDK
+008c4990	RELOCATION_MATCH	237v237	PASS	mode via same-TU counted-pointer ctor (auto_inline off)
+008c48a0	RELOCATION_MATCH	239v239	PASS	twin of 008c4990 (target flag)
+008b8bc0	DIFFER	231v231	-	ebx/ebp swap (this vs target)
+00982210	RELOCATION_MATCH	194v194	PASS	ctor: implicit-conversion name, def/record/IP members
+0069ef80	RELOCATION_MATCH	218v218	PASS	ctor: CAnimationEntry temp + counted follow-up
+0069ffd0	RELOCATION_MATCH	240v240	PASS	ctor overload: GetAnimationToUse string in dead arg slot
+00842c70	RELOCATION_MATCH	206v206	PASS	ctor: memberwise vector/RH-set copies
+00845270	DIFFER	219v212	-	dead-bit bl=1 register + frame word
+00845850	RELOCATION_MATCH	176v176	PASS	two alive guards + unchecked GetInterface accessor
+008b7a20	DIFFER	236v236	-	esi/edi swap (this vs component)
+008cafa0	RELOCATION_MATCH	188v188	PASS	kill obstruction + explosion exclusion
+008cb1a0	RELOCATION_MATCH	175v175	PASS	BriarRose AddMode shape
+008cb500	RELOCATION_MATCH	189v189	PASS	checked RemoveMode + explosion exclusion
+008cb060	RELOCATION_MATCH	186v186	PASS	BriarRose AddMode shape after base FinishAction
+008cb620	RELOCATION_MATCH	180v180	PASS	unchecked combat lookup + GetDef + CDefPointer release
+00846660	RELOCATION_MATCH	165v165	PASS	creature local null test + checked events lookup
+00845b10	DIFFER	165v165	-	esi/edi swap (this vs pointer member)
+008b9f20	DIFFER	205v205	-	esi/edi swap (holder vs owner pointer)
+008b9e50	DIFFER	205v205	-	esi/edi swap, twin of 008b9f20
+008cf610	RELOCATION_MATCH	231v231	PASS	RemoveMode, unchecked flag, SetCurrentAction(temp idle)
+008cf700	RELOCATION_MATCH	203v203	PASS	AddMode, QueueStrikeDamage, SetCurrentAction(temp loop)
+008cf460	RELOCATION_MATCH	212v212	PASS	health/kraken interrupt; IsThingAlive(GetPItem())
+008cf540	RELOCATION_MATCH	201v201	PASS	RemoveMode + unchecked tentacle + name
+008c6430	RELOCATION_MATCH	187v187	PASS	CreateShot; CDefPointer in sibling block of the string
+008c67a0	DIFFER	190v190	-	GetPItem vs alpha push order
+008c6a50	RELOCATION_MATCH	207v207	PASS	two checked lookups sharing the key word
+008bf1c0	DIFFER	178v178	-	ebx/edi swap
+008ec320	DIFFER	205v206	-	edi/ebp swap (this vs holder)
+008ec260	DIFFER	187v188	-	esi/ebp swap, twin of 008ec320
+006a02b0	DIFFER	240v240	-	frame 0x14 v 0x10 (slot sharing)
+008b7ed0	DIFFER	174v174	-	scheduling/register naming
+008c52c0	RELOCATION_MATCH	165v165	PASS	cached-TC accessor + WaspQueenDie restart temp
+0074c5f0	RELOCATION_MATCH	218v218	PASS	def Transfer: vector switch + 3 scalar transfers
+00d25d80	RELOCATION_MATCH	176v176	PASS	entity script Main (filter, target, state wait, remove)
+00d25f50	RELOCATION_MATCH	176v176	PASS	byte twin of 00d25d80
+00e047d0	RELOCATION_MATCH	178v178	PASS	entity script Main (awareness wait, target, idle)
+00e04970	RELOCATION_MATCH	178v178	PASS	byte twin of 00e047d0
