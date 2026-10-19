@@ -1,0 +1,12 @@
+address	name	evidence
+00a7a7f0	CNavQuadTree::~CNavQuadTree	vtable 0x129DE64; propagated label ~CPatchTesselationEdgeStrip (chunk 200)
+0067d6b0	TransferVectorOfSubComponents<CBlurredAttitudesDef>	label said <CEngineLocalDetailObjectDef>
+007d2740	TransferVectorOfSubComponents<CShoveHaPennyRegionDef>	label said <CEngineLocalDetailObjectDef>
+00c1c330	AIMatrixPointHelper_00c1c330	LTCG custom register convention (eax/ecx/edx/esi in, plain ret); not a CPhysicsMeshObject method; lane gap
+00411980	std::vector<ETutorialCategory>::clear	label said SetParentColour
+0043336a	std::vector<CCharString>::erase	
+009baa90	CPersistContext::Error	label said CDefinitionManager::Error; called on the CPersistContext
+00b2af50	CMorphManager::ColourDistance_00b2af50	label $E2; the manager's colour-distance helper
+0040e2d0	std::__copy	STLport; label _Copy_impl
+00412e80	Transfer_00412e80	row holds a second function after the jump table (SKIP, ledger; body itself byte-identical in differ/)
+007b45a0	Transfer_007b45a0	row holds a second function after the jump table (SKIP, ledger; body itself byte-identical in differ/)

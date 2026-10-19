@@ -1,4 +1,5 @@
 address	row_len	batch	label	kind	status	pieces	note
+00412e80	224	2026-10-19_linux_hand200	CPersistContext::Transfer<signed_char>	multi	open	00412e80:27,00412e9b:17,00412eac:20,00412ec0:20,00412ed4:37,00412ef9:37,00412f1e:23,00412f40:9,00412f50:9	two functions in the row (two 9-byte zero-store stubs follow); Transfer body itself graded identical (180 bytes)
 0042e3ee	101	2026-10-15_linux_hand149	CNewFrontendGameComponent::Input	prefix	open	0042e3ee:1441	prefix row: body jumps past the row end (jmp 0x42e803 / 0x42e98c) inside an EH-framed function
 0043e430	160	2026-10-15_linux_hand174	CThingFilter_IsValid::operator()	multi	open	0043e430:5,0043e440:7,0043e450:7,0043e460:7,0043e470:91	CThingFilter_IsValid::operator(): row holds several functions (jmp [eax+4] thunk, int3 padding, then four more bodies)
 00455fa0	42	2026-10-15_linux_hand66	CPersistContext_TransferableSubComponent::CPersistContext_TransferableSubComponent::vfunc_0	multi	done	00455fa0:8,00455fa8:12,00455fb4:22	three functions with no padding (a jmp [eax+48h] thunk, a bit getter, a bit setter)
@@ -12,6 +13,7 @@ address	row_len	batch	label	kind	status	pieces	note
 0073a840	96	2026-10-14_linux_hand59	CNavQuadTreeNode::RemoveNeighbours	multi	done	0073a840:49,0073a880:18	two functions after the int3 padding
 007460d0	48	2026-10-15_linux_hand98	CTCPerceiveThing::CTCPerceiveThing::vfunc_10	multi	done	007460d0:5,007460e0:3,007460f0:9	three functions in a 48-byte row (jmp [eax+24h] / mov al,1 / vtable getter)
 00750960	32	2026-10-15_linux_hand84	CTCChest::CTCChest::vfunc_10	multi	done	00750960:5,00750970:3	two functions: jmp [eax+24h], int3 padding, then mov al,1 ; ret (chunk 84, paused before staging)
+007b45a0	224	2026-10-19_linux_hand200	CPersistContext::Transfer<signed_char>	multi	open	007b45a0:27,007b45bb:20,007b45cf:23,007b45e6:26,007b4600:37,007b4625:52,007b465c:23	two functions in the row (3-byte ret 4 stub after the jump table); Transfer body itself graded identical (208 bytes)
 007da360	160	2026-10-15_linux_hand170	CTCTavernGameCardBlackjack::FrameUpdate	multi	open	007da360:50,007da3a0:92	two functions in the row (FrameUpdate tail jumps, second body at +0x40)
 007eeb20	144	2026-10-15_linux_hand169	CTCSmashableBarrier::Smash	multi	open	007eeb20:86,007eeb80:6,007eeb90:10,007eeba0:4	row holds Smash plus three more functions after int3 padding (0x007EEB80, 0x007EEB90, 0x007EEBA0)
 007eec50	160	2026-10-15_linux_hand170	CTCSmashableBase::OnDie	multi	open	007eec50:53,007eec90:93	two functions in the row (OnDie ret at +0x34, second body at +0x40)

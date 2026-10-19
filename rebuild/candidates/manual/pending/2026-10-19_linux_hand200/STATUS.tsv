@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b2b050	DIFFER	208v197	-	register roles of the two morphs swapped in the loop set-up
+00a7a7f0	RELOCATION_MATCH	212v212	PASS	is ~CNavQuadTree (label propagated)
+00d2d830	RELOCATION_MATCH	202v202	PASS	effect handle function-scope after early return
+00404500	RELOCATION_MATCH	181v181	PASS	binary key CRC guard; by-value ReadULong + CRC of a CCharString temporary
+00412db0	RELOCATION_MATCH	196v196	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = inline erase via __copy
+00412e80	SKIP	180v217	-	two functions in the row (two 9-byte zero-store stubs follow); Transfer body itself graded identical (180 bytes)
+0049b8d0	RELOCATION_MATCH	188v188	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = inline clear over out-of-line erase
+004b8d70	RELOCATION_MATCH	208v208	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, empty traits in the dead value slot
+00569f20	RELOCATION_MATCH	180v180	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = out-of-line clear()
+00569fe0	RELOCATION_MATCH	180v180	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = out-of-line clear()
+006192f0	RELOCATION_MATCH	180v180	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = out-of-line clear()
+00619710	RELOCATION_MATCH	188v188	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = inline clear over out-of-line erase
+006197d0	RELOCATION_MATCH	188v188	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = inline clear over out-of-line erase
+0067d6b0	RELOCATION_MATCH	234v234	PASS	is TransferVectorOfSubComponents<CBlurredAttitudesDef>; switch with case 2 + default
+006c9ee0	RELOCATION_MATCH	180v180	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = out-of-line clear()
+0074de50	RELOCATION_MATCH	180v180	PASS	closed-mode switch (__assume(0) default), cases written 4..0; vector member, reset = out-of-line clear()
+007b45a0	SKIP	208v211	-	two functions in the row (3-byte ret 4 stub after the jump table); Transfer body itself graded identical (208 bytes)
+007d2740	RELOCATION_MATCH	234v234	PASS	is TransferVectorOfSubComponents<CShoveHaPennyRegionDef>
+009bac80	RELOCATION_MATCH	215v215	PASS	one subscript expression, five temporaries
+009bbbf0	DIFFER	207v207	-	frame 0x38 v 0x40 (8 unused retail bytes), all offsets shift
+00cdca70	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00cdcc20	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00cdcdd0	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00e257c0	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00e75840	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00e759f0	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00e9e270	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00eb65a0	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00eb6750	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00f2d4d0	RELOCATION_MATCH	216v216	PASS	closed-mode switch (__assume(0) default), cases written 4..0; enum member, zeroed traits hoisted before the jump
+00815770	MATCH	175v175	PASS	loop written i != 3
+00814ea0	DIFFER	238v238	-	x87 operand order in the z term only
+00a86030	MATCH	181v181	PASS	first try
+00a6c900	DIFFER	194v192	-	RootSegment load through eax+mov ecx vs straight into ecx
+00a262b0	RELOCATION_MATCH	191v191	PASS	implicit const char* -> CCharString for the progress text
+00a11ae0	DIFFER	168v185	-	retail keeps an extra copy of the halved centre (0x20 frame)
+00c1c330	DIFFER	111v192	-	lane gap: LTCG custom register convention (eax/ecx/edx/esi)
+00a422c0	RELOCATION_MATCH	165v165	PASS	point taken by value into the dot helper
+00487c20	RELOCATION_MATCH	193v193	PASS	nested success path, shared false epilogue
+00487cf0	DIFFER	207v207	-	scheduling only: flag byte store after the camera load
