@@ -7,4 +7,17 @@ address	name	evidence
 00aed010	NParticleEngine::CParticleEmitter::IsVisible	
 009fc550	CResourceBase::~CResourceBase_009fc550	CResource-style base destructor
 00ae8a80	GetEmitterTemplate_00ae8a80	same propagated label as 0x00AE89E0 CParticleEmitterDatabase::GetEmitterTemplate; no callers
-0045c2e8	/ 0x0045CB1C / 0x0045D63C / 0x0045F635 / 0x0045FD53 / 0x004629FB "CParentDefClassBase::operator=" are the Copy (slot 19) bodies of CCombatTypeDef / CHeroAbilityDef / CExpressionDef / CSpecialAbilitiesBattleChargeDef / CSpecialAbilitiesForcePushDef / CEngineThemeDef.	chunk 198 NOTES.md
+0045c2e8	CCombatTypeDef::Copy	def copy function, vtable slot 19; propagated label CParentDefClassBase::operator=
+0045cb1c	CHeroAbilityDef::Copy	slot 19
+0045d63c	CExpressionDef::Copy	slot 19
+0045f635	CSpecialAbilitiesBattleChargeDef::Copy	slot 19
+0045fd53	CSpecialAbilitiesForcePushDef::Copy	slot 19
+004629fb	CEngineThemeDef::Copy	slot 19
+004c5da0	CTCGraphicAppearance::~CTCGraphicAppearance	deleting dtor in vtable slot 0; propagated label ~CPatchTesselationEdgeStrip
+004e2170	CVillageDef::~CVillageDef	slot 0
+00589c55	CTCInventory::~CTCInventory	slot 0
+005f3cfe	CTCInventoryAbilities::~CTCInventoryAbilities	slot 0
+00706e00	CTCHeroAttachableAppearanceModifiers::~CTCHeroAttachableAppearanceModifiers	slot 0
+007223d0	CTCHeroMorph::~CTCHeroMorph	slot 0
+009a7b70	CBankFileManager::~CBankFileManager	slot 0
+009f5c80	CInputManager::~CInputManager	slot 0
