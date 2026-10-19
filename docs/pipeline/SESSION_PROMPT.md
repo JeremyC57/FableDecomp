@@ -83,7 +83,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
    failures of the same call).
 10. **Git**: `git add -A rebuild README.md docs tools` (never `work/`, scratch, PDBs, the game, retail
     bytes beyond per-function oracle rows); subjects `land:|docs:|tools:|fix:|hygiene:` with a human
-    sentence; author BuffJesus (`git -c user.name=BuffJesus -c user.email=69093219+BuffJesus@users.noreply.github.com commit`);
+    sentence; commit under the default git identity (Claude), never as the owner;
     `git push -u origin FullDecomp`; never open a PR; never force-push.
 
 ## 4. Agents (owner's rules)
