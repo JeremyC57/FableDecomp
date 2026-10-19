@@ -2,8 +2,8 @@
 struct CCharString { void* m_pStringData; };
 #include "engine/CDataOutputStream.h"
 struct CDataOutputStreamMethods : CDataOutputStream {
-    void WriteLong(long value); // 0x00993EA0: 4-byte stream write
-    void WriteLongSigned(long value); // 0x00993EB0
+    void WriteULong(unsigned long value); // 0x00993EA0
+    void WriteLong(long value);           // 0x00993EB0
     void WriteNullTerminatedString(const CCharString& value); // 0x00995AE0
     void WriteEBOOL(bool value); // 0x00993E30
 };
@@ -52,14 +52,14 @@ struct C3DMeshFileEngineMaterialChunk : C3DMeshFileChunk {
 void C3DMeshFileEngineMaterialChunk::WriteToFile(CDataOutputStream& destination, CChunkedFileSaver& saver) const
 {
     CDataOutputStreamMethods& stream=(CDataOutputStreamMethods&)destination;
-    stream.WriteLong(4);
-    stream.WriteLongSigned(MaterialIndex);
+    stream.WriteULong(4);
+    stream.WriteLong(MaterialIndex);
     stream.WriteNullTerminatedString(Name);
-    stream.WriteLong(MapFlags);
-    stream.WriteLong(DiffuseMapBankIndex);
-    stream.WriteLong(BumpMapBankIndex);
-    stream.WriteLong(ReflectionMapBankIndex);
-    stream.WriteLong(IlluminationMapBankIndex);
+    stream.WriteULong(MapFlags);
+    stream.WriteULong(DiffuseMapBankIndex);
+    stream.WriteULong(BumpMapBankIndex);
+    stream.WriteULong(ReflectionMapBankIndex);
+    stream.WriteULong(IlluminationMapBankIndex);
     if (MapFilenames) {
         stream.WriteEBOOL(true);
         stream.WriteNullTerminatedString(MapFilenames->Diffuse);
@@ -69,7 +69,7 @@ void C3DMeshFileEngineMaterialChunk::WriteToFile(CDataOutputStream& destination,
     } else {
         stream.WriteEBOOL(false);
     }
-    stream.WriteLong(SelfIllumination);
+    stream.WriteULong(SelfIllumination);
     stream.WriteEBOOL(TwoSided);
     stream.WriteEBOOL(Transparent);
     stream.WriteEBOOL(BooleanAlpha);

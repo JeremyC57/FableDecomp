@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00ac52f0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00ac52f0   WARN RELOC_NAME: ?WriteULong@CDataOutputStreamMethods@@QAEXK@Z -> 00993ea0 labelled 'CDataOutputStream::WriteCBYTE'
+00ac52f0   WARN RELOC_NAME: ?WriteLong@CDataOutputStreamMethods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+00ac52f0   RELOCATION_MATCH PASS   WriteToFile
+00905360   WARN RELOC_NAME: ??0CBaseClassNonCopyable@@QAE@XZ -> 0099a2f0 labelled 'NHeroInformationScreens::CBase::CBase'
+00905360   WARN RELOC_NAME: ??0CBaseClass@@QAE@XZ -> 0099a2d0 labelled 'NHeroInformationScreens::CBase::CBase'
+00905360   WARN RELOC_NAME: ?GetScriptThing@CThing@@QAE?AUCScriptThing@@XZ -> 004c7e50 labelled 'NScript::GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00905360   WARN RELOC_NAME: ??1CBaseClass@@QAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+00905360   RELOCATION_MATCH PASS   CActionPerformExpression
+
+WINS: 2
+  00ac52f0 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::WriteToFile
+  00905360 RELOCATION_MATCH NTCScriptedControl::CActionPerformExpression::??0CActionPerformExpression

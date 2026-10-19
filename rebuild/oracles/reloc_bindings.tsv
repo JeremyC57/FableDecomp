@@ -10173,9 +10173,6 @@ __imp__DeleteCriticalSection@4	0143fde4	00a3b380
 ?MakeScriptThing@CScriptThing@@QBE?AU1@XZ	004c7e50	00905130
 ??_7CActionFollowCreature@@6B@	0128d838	00905180
 ??_7CActionMoveTo@NTCScriptedControl@@6B@	0127091c	009051f0
-??0CScriptBase@@QAE@XZ	0099a2d0	00905360
-??1CScriptBase@@QAE@XZ	0099a2e0	00905360
-??_7CActionPerformExpression@@6B@	0128d8ec	00905360
 ??0CCombatAction_008bfb80@@QAE@PAUCThingCreatureBase@@PAUCThing@@@Z	008bfb80	00906150
 ?AddAction@CCombatSequenceBase_008b0650@@QAEXABUCCountedPointer@@@Z	008b0b10	00906150
 ?OnCreate@CCombatSequenceBase_008b0650@@UAEXXZ	008b0650	00906150
@@ -12721,10 +12718,6 @@ __chkstk	00bfea30	00ab6060
 ?erase@CRetailVector_simulation@@QAEPAUSSimulationEntry@@PAU2@0@Z	00abea40	00ac41d0
 ?insert@CRetailVector_simulation@@QAEXPAUSSimulationEntry@@KABU2@@Z	00ac42f0	00ac41d0
 ??_7CMapFilenames@C3DMeshFileEngineMaterialChunk@@6B@	0129efbc	00ac5190
-?WriteEBOOL@CDataOutputStreamMethods@@QAEX_N@Z	00993e30	00ac52f0
-?WriteLong@CDataOutputStreamMethods@@QAEXJ@Z	00993ea0	00ac52f0
-?WriteLongSigned@CDataOutputStreamMethods@@QAEXJ@Z	00993eb0	00ac52f0
-?WriteNullTerminatedString@CDataOutputStreamMethods@@QAEXABUCCharString@@@Z	00995ae0	00ac52f0
 ??_7C3DMeshFileEngineMaterialChunk@@6B@	0129efc8	00ac56f0
 ??0C3DMeshFileEngineMaterialChunk@@QAE@XZ	00ac56f0	00ac6180
 ??_7C3DMeshFileClothChunk@@6B@	0129f008	00ac66a0
@@ -17534,3 +17527,4 @@ _engine_copy	00bfeae6	009ad950
 ?g_pointer_013d2e24@@3UCCountedPointerStatic@@A	013d2e24	0122abf0
 ?g_pointer_013d2e2c@@3UCCountedPointerStatic@@A	013d2e2c	0122ac30
 ?g_pointer_0143e920@@3UCCountedPointerStatic@@A	0143e920	0122aeb0
+??_7CActionPerformExpression@@6B@	0128d8ec	00905360

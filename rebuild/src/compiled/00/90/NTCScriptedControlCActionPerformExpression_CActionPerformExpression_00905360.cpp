@@ -3,10 +3,10 @@
 // CScriptThing, not performed, the expression and the two extra data words; a live target is adopted.
 // Leaf: ??0CActionPerformExpression
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00905360, length 182 bytes (+ int3 padding), `ret 10h`.
-// Callees: CBase::CBase @ 0x0099A2F0 (action root), the CScriptThing root ctor @ 0x0099A2D0, CCharString copy ctor
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (action root, vtable 0x0129A7C4), CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root), CCharString copy ctor
 // @ 0x0099EC30, CThing::GetScriptThing @ 0x004C7E50 (CScriptThing by hidden pointer), CScriptThing::operator=
 // @ 0x008AB980, the temporary's inline destructor (vtable 0x01238C8C, counted pimpl release: destroy + operator delete
-// @ 0x00BFE9BC, CBase::~CBase @ 0x0099A2E0). Vtable 0x0128D8EC = NTCScriptedControl::CActionPerformExpression.
+// @ 0x00BFE9BC, CBaseClass::~CBaseClass @ 0x0099A2E0). Vtable 0x0128D8EC = NTCScriptedControl::CActionPerformExpression.
 // Ego_r.pdb CActionPerformExpression (0x28): PTargetThing +0x0c, Performed +0x18, Expression +0x1c, ExtraData1 +0x20,
 // ExtraData2 +0x24.
 // Shape: the landed CActionFireProjectileWeapon (0x00716790) / CM_HiddenBooty::Init (0x00E93080) models: novtable
@@ -19,15 +19,15 @@ struct CCharString {
     CCharString(const CCharString& other);          // 0x0099EC30
 };
 
-struct CBase {                                      // the action root
+struct CBaseClassNonCopyable {                      // the action root
     virtual void v00();
-    CBase();                                        // 0x0099A2F0
+    CBaseClassNonCopyable();                        // 0x0099A2F0
 };
 
-struct CScriptBase {                                // CScriptThing's root (manifest: CBase::CBase / ~CBase)
+struct CBaseClass {                                 // CScriptThing's root
     virtual void v00();
-    CScriptBase();                                  // 0x0099A2D0
-    ~CScriptBase();                                 // 0x0099A2E0
+    CBaseClass();                                   // 0x0099A2D0
+    ~CBaseClass();                                  // 0x0099A2E0
 };
 
 struct SCountBlock {
@@ -53,7 +53,7 @@ struct CScriptThingPImp {                           // CCountedPointer<CScriptTh
         Info = 0;
     }
 };
-struct CScriptThing : CScriptBase {                 // 12 bytes, vtable 0x01238C8C
+struct CScriptThing : CBaseClass {                 // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
     virtual void v00();
     CScriptThing() { }
@@ -67,11 +67,11 @@ struct CThing {
     CScriptThing GetScriptThing();                  // 0x004C7E50
 };
 
-struct __declspec(novtable) CAction : CBase {       // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead
+struct __declspec(novtable) CAction : CBaseClassNonCopyable {       // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead
     void*   PTCScript;                              // +0x04 CTCScriptedControl*
     bool    Activated;                              // +0x08
     bool    Terminated;                             // +0x09
-    CAction() : CBase(), PTCScript(0), Activated(false), Terminated(false) { }
+    CAction() : CBaseClassNonCopyable(), PTCScript(0), Activated(false), Terminated(false) { }
 };
 
 struct CActionPerformExpression : CAction {         // vtable 0x0128D8EC

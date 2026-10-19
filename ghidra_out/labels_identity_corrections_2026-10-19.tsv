@@ -8,3 +8,8 @@
 0043314a	CPersistContext::TransferBool	typed transfer
 0044c6b0	CDefinitionManager::Get	
 006e7510	CWorld::GetWorldFrame_6e7510	reads the +0x18 frame word; distinct from 0x006E7530 GetMaxWorldFrameForMessages (+0x1c)
+0099a2d0	CBaseClass::CBaseClass	stores vtable 0x01231710 (.?AVCBaseClass@@); label NHeroInformationScreens::CBase::CBase is propagated
+0099a2e0	CBaseClass::~CBaseClass	stores vtable 0x01231710 (.?AVCBaseClass@@); label propagated
+0099a2f0	CBaseClassNonCopyable::CBaseClassNonCopyable	stores vtable 0x0129A7C4 (.?AVCBaseClassNonCopyable@@); label propagated
+00993ea0	CDataOutputStream::WriteULong	writes an unsigned long; not WriteCBYTE
+004c7e50	CThing::GetScriptThing	returns CScriptThing by hidden pointer; the GFPredicateAnd label is propagated
