@@ -1,5 +1,5 @@
 // CGPUScratchBufferTextureManager::AllocResourceEntry(long page) -- take a free resource slot (or append a default
-// Grade: DIFFER(ours v retail) -- 229v224: retail keeps the address-taken index in esi as well as its frame home (this in edi, zero in ebx); our build keeps it only in the frame (this in esi, zero in edi) and reloads it for every use
+// Grade: DIFFER(228v224) -- the index kept in a register with an address-taken copy (listIndex) written at both definitions fixes this/zero (edi/ebx), the frame homes and every store; left: push_back fast path reloads the copy from its slot (retail stores the register: one address-taken variable cached in esi, which the lane never does)
 // entry), bind it to the memory page and list it on that page; returns the resource index
 // Leaf: AllocResourceEntry
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F372B0, length 224 bytes, `ret 4`.
@@ -80,17 +80,20 @@ public:
 long CGPUScratchBufferTextureManager::AllocResourceEntry(long page)
 {
     long index;
+    long listIndex;
     if (FreeTextureSlots.size()) {
         index = FreeTextureSlots[FreeTextureSlots.size() - 1];
+        listIndex = index;
         FreeTextureSlots.pop_back();
     } else {
         index = Resources.size();
+        listIndex = index;
         Resources.resize(index + 1, CResourceEntry());
     }
     CResourceEntry& entry = Resources[index];
     entry.PageIndex = page;
     entry.Surface = 0;
     entry.Texture = 0;
-    MemoryPages[page].ResourceList.push_back(index);
+    MemoryPages[page].ResourceList.push_back(listIndex);
     return index;
 }

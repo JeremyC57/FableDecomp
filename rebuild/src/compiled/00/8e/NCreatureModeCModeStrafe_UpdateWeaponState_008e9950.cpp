@@ -1,6 +1,6 @@
 // NCreatureMode::CModeStrafe::UpdateWeaponState() -- track the weapon in the creature's primary carrying slot: switch the strafe anims when the carried weapon (or its absence) differs from ActiveWeapon, and again whenever the weapon's usability for the creature flips
+// Grade: RELOCATION_MATCH -- the usability flip is one `(usable && !LastUsable) || (!usable && LastUsable)` test: VC7.1 lays it out as two tests entering one shared SetChangeOfWeapon block (the nested if/else gave two blocks, `usable != LastUsable` and the ternary fold it)
 // Leaf: UpdateWeaponState
-// Grade: DIFFER(ours v retail) -- tail only: retail shares one SetChangeOfWeapon(weapon) block between the usable / unusable arms of the usability-flip test, ours emits two (8 bytes longer); everything before matches. tried a ternary / || change test, out-parameter vs returned GetTC, an explicit if/else flip test; next: the `usable != LastUsable` form together with this GetTC
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9950, 215 bytes (`ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const instantiation: inlined const GetInterface for
 // CTCCarrying 0x46 and CTCWeapon 0x48); CTCCarrying::GetThingInPrimarySlot 0x006A1440; CTCWeapon::IsUsableBy(CThing*) 0x005DAB10;
@@ -96,11 +96,7 @@ void CModeStrafe::UpdateWeaponState()
     bool usable = true;
     if (weapon && !weapon->IsDead() && weapon->HasTC(0x48))
         usable = weapon->GetTC<CTCWeapon>(0x48)->IsUsableBy(ParentThing);
-    if (usable) {
-        if (!LastUsable)
-            SetChangeOfWeapon(weapon);
-    }
-    else if (LastUsable)
+    if ((usable && !LastUsable) || (!usable && LastUsable))
         SetChangeOfWeapon(weapon);
     LastUsable = usable;
 }

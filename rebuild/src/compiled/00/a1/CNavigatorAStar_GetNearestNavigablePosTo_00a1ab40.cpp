@@ -1,6 +1,6 @@
 // CNavigatorAStar::GetNearestNavigablePosTo(const C3DVector&, float, C3DVector&) const -- the position itself when its quad-tree node is open, else the centre of the nearest navigable node within the radius (Z from the external interface); false when there is no node at all or none in reach
+// Grade: RELOCATION_MATCH -- the nearest node's position is copied into a named C2DVector local through a user memberwise copy constructor and then handed to SetXY: the copy sends both floats through the FPU (Y loaded first), the plain member read moved X as a dword
 // Leaf: ?GetNearestNavigablePosTo@CNavigatorAStar
-// Grade: DIFFER(166v166) -- one copy: retail moves the nearest node's centre X through the FPU too (fld Y ; fld X ; fstp X ; fstp Y), the lane copies X with mov ecx/mov [edi] (tried member stores, an inline SetXY(float, float), float temporaries)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1AB40, 164 bytes (+ int3 padding; `ret 0Ch`). Public virtual const (UBE).
 // Callees: the external interface's (+0x14) virtual slots 16 GetLayerAt (+0x40) and 4 FindPosZAt (+0x10, float on the x87
 //   stack, called with `true`); CNavigatorManager::GetNodeAt(const C2DVector&, bool) 0x00A14F70 on NavigationManager (+0x1c);
@@ -17,7 +17,8 @@ struct C3DVector {
 };
 struct C2DVector {
     float X, Y;
-    C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame
+    C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
+    C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame
 };
 class CANavQuadTreeNode {
 public:
@@ -68,7 +69,8 @@ bool CNavigatorAStar::GetNearestNavigablePosTo(const C3DVector& pos, float radiu
         }
         CANavQuadTreeNode* nearest = FindNearestNavigableNode(LastNavigableNodeVisited, node, pos, radius, NavigationManager);
         if (nearest) {
-            out.SetXY(nearest->Position.X, nearest->Position.Y);
+            C2DVector p = nearest->Position;
+            out.SetXY(p.X, p.Y);
             out.Z = PInterface->FindPosZAt(out, true);
             return true;
         }

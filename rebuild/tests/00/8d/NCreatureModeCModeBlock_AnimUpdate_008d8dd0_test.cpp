@@ -1,25 +1,17 @@
-// NCreatureMode::CModeBlock::AnimUpdate(CAnimateThing&) -- while the creature is idle (no action), keep its main animation on the combat component's blocking animation: unless the block animation (type 0x1a) is already playing, start it with the entry's blend timings
-// Leaf: AnimUpdate
-// Grade: DIFFER(ours v retail) -- register allocation only: entry->AnimIndex is loaded into ecx (retail edx) and &init into edx (retail eax); tried pointer vs float zero pair in the CAnimInit record (the float pair fixed the immediate zero pushes/stores)
-// Retail: Fable.exe (TLC, VC7.1) @ 0x008D8DD0, 194 bytes (`ret 4`; vtable 0x01267C3C slot 2).
-// Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const instantiation: inlined const GetInterface,
-// CTCCombat = type 0x30, bit 16 of the dword at +0x24); CThingCreatureBase::IsPerformingAnyAction 0x006622A0;
-// CTCCombat::GetBlockingAnimationEntry 0x00733690; CAnimationEntry::GetAnimateThingFlags 0x005DC390,
-// GetAnimationTransitionInTime 0x005DC1F0 (manifest class "CCombatActionBase" is propagated), GetTimeToBlendIn(CThing*) 0x005DC230;
-// CAnimInit::Set 0x0070C050 (manifest "CInitRumble"; it fills the CAnimInit record); CAnimateThing::SetMainAnim(const CAnimInit&,
-// long, long) 0x0070D580.
-// Layout: CModeBlock = CModeBase 0x1c (ParentThing +0x04) + PCreature +0x1c. CAnimateThing: CurrentAnim's anim vector begin/end
-// +0x04/+0x08, current anim type byte +0x50, its flags byte +0x51 (bit 1: finishing). CAnimInit: 0x2c-byte frame record whose
-// +0x18 pair is zeroed by its member ctor before Set fills everything.
-// Shape: the record's ctor is inline (member zeroing, then Set); SetMainAnim's arguments are evaluated right to left (transition
-// time, then the blend-in time for the parent thing), the parent thing pointer is loaded once up front.
+#include <stdio.h>
+#ifndef _MSC_VER
+#define __forceinline inline
+#define __fastcall
+#endif
+#include <string.h>
+// Behaviour test for NCreatureMode::CModeBlock::AnimUpdate (0x008D8DD0).
 struct CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
+    const SEntry* LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
 
 struct CThing {
@@ -42,7 +34,8 @@ struct CThing {
 };
 
 struct CThingCreatureBase : CThing {
-    bool IsPerformingAnyAction();          // 0x006622A0
+    bool busy;
+    bool IsPerformingAnyAction() { return busy; }
 };
 
 struct CBlendPair {                        // the two floats at CAnimInit +0x18, zeroed by their ctor
@@ -51,7 +44,8 @@ struct CBlendPair {                        // the two floats at CAnimInit +0x18,
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
 
-struct CAnimInit {                         // 0x2c bytes
+struct CAnimInit {
+    CAnimInit() {}
     long          Mode;                    // +0x00
     unsigned char AnimType;                // +0x04
     bool          Flag05;                  // +0x05
@@ -61,7 +55,8 @@ struct CAnimInit {                         // 0x2c bytes
     unsigned long Flags;                   // +0x20
     long          Arg24;                   // +0x24
     long          Percent;                 // +0x28
-    void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x0070C050
+    void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
+    { AnimType = (unsigned char)animType; Arg24 = arg24; AnimIndex = animIndex; Mode = mode; Flag05 = flag05; Flags = flags; Percent = percent; }
     CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
     {
         Set(animType, arg24, animIndex, mode, flag05, flags, percent);
@@ -70,13 +65,15 @@ struct CAnimInit {                         // 0x2c bytes
 
 struct CAnimationEntry {
     long AnimIndex;                        // +0x00
-    unsigned long GetAnimateThingFlags();  // 0x005DC390
-    long GetAnimationTransitionInTime();   // 0x005DC1F0
-    long GetTimeToBlendIn(CThing* thing);  // 0x005DC230
+    CThing* lastThing;
+    unsigned long GetAnimateThingFlags() { return 0x55; }
+    long GetAnimationTransitionInTime() { return 7; }
+    long GetTimeToBlendIn(CThing* thing) { lastThing = thing; return 9; }
 };
 
 struct CTCCombat {                         // interface type 0x30
-    CAnimationEntry* GetBlockingAnimationEntry() const;   // 0x00733690
+    CAnimationEntry* entry;
+    CAnimationEntry* GetBlockingAnimationEntry() const { return entry; }
 };
 
 struct CAnimateThing {
@@ -86,11 +83,12 @@ struct CAnimateThing {
     unsigned char _pad0c[0x44];
     unsigned char CurrentAnimType;         // +0x50
     unsigned char CurrentAnimFlags;        // +0x51
-    void SetMainAnim(const CAnimInit& init, long blendIn, long transition);   // 0x0070D580
+    int calls; CAnimInit last; long b, t;
+    void SetMainAnim(const CAnimInit& init, long blendIn, long transition) { ++calls; last = init; b = blendIn; t = transition; }
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
-    virtual void v00();
+    virtual void v00() {}
     CThing*       ParentThing;             // +0x04
     unsigned char _body[0x14];
 };
@@ -111,10 +109,36 @@ void CModeBlock::AnimUpdate(CAnimateThing& animate)
                 return;
             CAnimationEntry* entry = combat->GetBlockingAnimationEntry();
             CThing* thing = ParentThing;
-            CAnimInit init(0x1a, 0, entry->AnimIndex, 1, false, entry->GetAnimateThingFlags(), 100);
-            animate.SetMainAnim(init, entry->GetTimeToBlendIn(thing), entry->GetAnimationTransitionInTime());
+            animate.SetMainAnim(CAnimInit(0x1a, 0, entry->AnimIndex, 1, false, entry->GetAnimateThingFlags(), 100), entry->GetTimeToBlendIn(thing), entry->GetAnimationTransitionInTime());
         }
     }
 }
 
+}
+
+using namespace NCreatureMode;
+int main()
+{
+    int ok = 1;
+    CThingCreatureBase creature; memset(&creature, 0, sizeof(creature)); creature.busy = false;
+    CAnimationEntry entry; entry.AnimIndex = 33; entry.lastThing = 0;
+    CTCCombat combat; combat.entry = &entry;
+    CInterfaceMap::SEntry e[1] = { { 0x30, (CTCBase*)&combat } }; creature.m_interfaces.first = e; creature.m_interfaces.last = e + 1;
+    CModeBlock mode; mode.ParentThing = &creature; mode.PCreature = &creature;
+    CAnimateThing anim; memset(&anim, 0, sizeof(anim)); anim.calls = 0;
+    mode.AnimUpdate(anim);                                 // no combat TC
+    if (anim.calls != 0) ok = 0;
+    creature.m_presentBits[1] |= 1UL << (0x30 & 31);
+    mode.AnimUpdate(anim);
+    if (anim.calls != 1 || anim.last.AnimIndex != 33 || anim.last.AnimType != 0x1a || anim.last.Mode != 1 || anim.last.Flags != 0x55 || anim.last.Percent != 100 || anim.last.Flag05) ok = 0;
+    if (anim.last.Blend.m_first != 0.0f || anim.b != 9 || anim.t != 7 || entry.lastThing != &creature) ok = 0;
+    anim.AnimsEnd = (void*)4; anim.CurrentAnimType = 0x1a;  // already blocking
+    mode.AnimUpdate(anim);
+    if (anim.calls != 1) ok = 0;
+    anim.CurrentAnimFlags = 2; mode.AnimUpdate(anim);       // blocking anim finishing: restart
+    if (anim.calls != 2) ok = 0;
+    creature.busy = true; mode.AnimUpdate(anim);
+    if (anim.calls != 2) ok = 0;
+    if (ok) { printf("008d8dd0_TEST PASS\n"); return 0; }
+    printf("008d8dd0_TEST FAIL\n"); return 1;
 }

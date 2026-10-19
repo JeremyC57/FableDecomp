@@ -1,6 +1,6 @@
 // CNavigatorAStar::IsNavLineOfSightClear(const C3DVector&, const C3DVector&) const -- both ends must sit on open quad-tree nodes; then the straight route between them (each end a removable way point on its node's layer) is tested with IsRouteClear
+// Grade: DIFFER(227v227) -- with the PDB constructors (CNavWayPoint(const C2DVector&, uchar, bool), C2DVector user copy ctor) and named way-point locals the FPU copies and frame match; only `lea ecx,[esp+1Ch]` of the second GetNodeAt temporary is scheduled before `push eax` in the lane
 // Leaf: ?IsNavLineOfSightClear@CNavigatorAStar
-// Grade: DIFFER(223v227) -- way-point build: retail copies each end's X/Y through the FPU (fld X ; fld Y ; fxch ; fstp) into two 12-byte way points beside two 8-byte conversion temporaries (0x28 frame, this in edi); the lane copies with mov and shares a temporary slot (0x20 frame, this in esi) (tried C2DVector temporaries, a float-pair CNavWayPoint ctor, flat early returns)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1AF00, 227 bytes (+ int3 padding; `ret 8`). Public virtual const (UBE), navigator slot 10.
 // Callees: the external interface's (+0x14) virtual slot 16 GetLayerAt (+0x40); CNavigatorManager::GetNodeAt(const C2DVector&,
 //   bool) 0x00A14F70 on NavigationManager (+0x1c); CNavigatorAStar::IsRouteClear(const CNavWayPoint&, const CNavWayPoint&, bool)
@@ -15,6 +15,7 @@ struct C2DVector {
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame
     C2DVector(float x, float y) : X(x), Y(y) { }
+    C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 class CANavQuadTreeNode {
 public:
@@ -41,7 +42,7 @@ struct CNavWayPoint {                              // 10 bytes
     C2DVector     Position;                        // +0x00
     unsigned char NavLayer;                        // +0x08
     bool          Removable;                       // +0x09
-    CNavWayPoint(float x, float y, unsigned char layer, bool removable) : Position(x, y), NavLayer(layer), Removable(removable) { }
+    CNavWayPoint(const C2DVector& p, unsigned char layer, bool removable) : Position(p), NavLayer(layer), Removable(removable) { }
 };
 class CNavigatorBase {
 public:
@@ -67,6 +68,7 @@ bool CNavigatorAStar::IsNavLineOfSightClear(const C3DVector& from, const C3DVect
     CANavQuadTreeNode* toNode = NavigationManager->GetNodeAt(to, PInterface->GetLayerAt(to));
     if (!toNode || toNode->Blocked)
         return false;
-    return IsRouteClear(CNavWayPoint(from.X, from.Y, fromNode->NavLayer, true),
-                        CNavWayPoint(to.X, to.Y, toNode->NavLayer, true), false);
+    CNavWayPoint start(C2DVector(from.X, from.Y), fromNode->NavLayer, true);
+    CNavWayPoint end(C2DVector(to.X, to.Y), toNode->NavLayer, true);
+    return IsRouteClear(start, end, false);
 }

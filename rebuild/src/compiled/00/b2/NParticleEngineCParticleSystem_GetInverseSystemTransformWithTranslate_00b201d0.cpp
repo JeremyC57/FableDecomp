@@ -1,5 +1,5 @@
-// Grade: DIFFER(225v225) -- x87 operand order only: the three dot-product terms of each translation component and the fld/fmul operand choice of some scale products come out in a different order (VC picks the order from the whole expression shape; three association forms tried)
 // NParticleEngine::CParticleSystem::GetInverseSystemTransformWithTranslate(CMatrix3x4*) -- the inverse of the system transform including its translation (minus the inverse rotation applied to the forward translation), with every rotation row scaled by the system's Scale
+// Grade: RELOCATION_MATCH -- re-graded unchanged against the registered retry oracle (the earlier x87-order DIFFER no longer reproduces)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B201D0, length 240 bytes (`ret 4`; manifest label correct).
 // Callees: CParticleSystem::GetSystemTransform @ 0x00AF3D80 (&PParentEmitter->Transform) and GetInverseSystemTransform
 //          @ 0x00AF3DA0 (&PParentEmitter->InverseTransform, emitter +0xe0); both labelled "CVertexBufferWin32::DoSizeof"

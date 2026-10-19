@@ -1,5 +1,5 @@
-// Grade: DIFFER(185v208) -- inline budget: retail inlines vector<CWaterPatchMesh*>::push_back for BOTH type 4 and type 5 (cross-jumped into one tail, ecx = list) and calls it out of line (0x00BF5EA0) only for the default list, and copies the type-8 box dword by dword into the frame record; the lane inlines only the first call site (type 4) and calls the rest (tried a switch, an if/else chain, one push_back site through a selected list reference)
 // CEngineLandscapePatch::RenderForegroundWater() -- queue the patch's water mesh with the water renderer: type 4 and type 5 meshes into their own lists, type 8 together with the patch bounding box, anything else into the general list
+// Grade: DIFFER(208v208) -- same size: a __forceinline copy of push_back at the type 4/5 sites (default list keeps the out-of-line 0x00BF5EA0 call), a __forceinline SBoxedWaterPatch ctor and the null test on the member before the local copy fix everything but one store: the water local is spilled to its frame word before the type load/compare, retail after the cmp
 // Leaf: RenderForegroundWater
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF44A0, 208 bytes.
 // Callees: the water renderer (global 0x01436E54) lists: vector<CWaterPatchMesh*>::push_back(const T&) 0x00BF5EA0 (out of
@@ -24,7 +24,8 @@ template <class T> struct CRetailVector {              // STLport vector (12 byt
     T* _M_finish;
     T* _M_end_of_storage;
     void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int fill, bool atEnd);
-    void push_back(const T& x)
+    void push_back(const T& x);                       // 0x00BF5EA0 (the out-of-line copy)
+    __forceinline void push_back_inline(const T& x)   // the same body, inlined at the first two call sites
     {
         if (_M_finish != _M_end_of_storage) {
             new (_M_finish) T(x);
@@ -43,7 +44,7 @@ struct C3DBoundingBox { C3DVector Min, Max; };
 struct SBoxedWaterPatch {                              // 28 bytes
     C3DBoundingBox   Box;
     CWaterPatchMesh* Mesh;
-    SBoxedWaterPatch(const C3DBoundingBox& box, CWaterPatchMesh* mesh) : Box(box), Mesh(mesh) { }
+    __forceinline SBoxedWaterPatch(const C3DBoundingBox& box, CWaterPatchMesh* mesh) : Box(box), Mesh(mesh) { }
 };
 struct CBoxedWaterPatchVector {
     SBoxedWaterPatch* _M_start;
@@ -78,14 +79,14 @@ struct CEngineLandscapePatch {
 
 void CEngineLandscapePatch::RenderForegroundWater()
 {
-    CWaterPatchMesh* water = WaterPatch;
-    if (!water)
+    if (!WaterPatch)
         return;
+    CWaterPatchMesh* water = WaterPatch;
     long type = water->Type;
     if (type == 4)
-        g_pEngineWaterRenderer->Type4Patches.push_back(water);
+        g_pEngineWaterRenderer->Type4Patches.push_back_inline(water);
     else if (type == 5)
-        g_pEngineWaterRenderer->Type5Patches.push_back(water);
+        g_pEngineWaterRenderer->Type5Patches.push_back_inline(water);
     else if (type == 8)
         g_pEngineWaterRenderer->BoxedPatches.push_back(SBoxedWaterPatch(BoundingBox, water));
     else

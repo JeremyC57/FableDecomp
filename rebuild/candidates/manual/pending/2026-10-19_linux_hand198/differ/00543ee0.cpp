@@ -1,5 +1,5 @@
-// Grade: DIFFER(194v190) -- the screen-override rescale: retail loads Position.X straight from the member into st0 and copies only Y into the local (DSE of the X copy), ours copies both halves and reloads X from the local; tried the plain copy, inline helpers, ternaries and a user copy ctor
 // NUISystem::CParticleEffect::Draw(long, long, long, long, long) -- keep the running emitter on the component: pick the front-end layer for its depth (offset by the draw depth unless the component is independent or suppressed) and move the emitter to its position, rescaled from the display to the virtual screen size when that override is on
+// Grade: DIFFER(192v190) -- by-value inline ScaleScreenX/Y helpers (X read straight from the member, Y from the copy) and `(v / W) * OW` fix the X load hoist and the divide/multiply order; left: the lane jump-threads the second override test (retail re-tests cl and shares one fstp per component)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543EE0, length 192 bytes (`ret 14h`). Virtual: slot 2 of
 // NUISystem::CParticleEffect's vtable 0x0124735C.
 // Callees: virtual slots 101 / 104 (bool queries), CFrontEndManager::GetInstance @ 0x0041E5F2 (x2) and its slot 36
@@ -258,6 +258,9 @@ extern float g_OverrideScreenWidth;                // 0x013B876C
 extern float g_OverrideScreenHeight;               // 0x013B8770
 extern float g_DisplayWidth;                       // 0x01375CD4
 extern float g_DisplayHeight;                      // 0x01375CD8
+static inline float ScaleScreenX(float x) { return g_bScreenSizeOverride ? (x / g_DisplayWidth) * g_OverrideScreenWidth : x; }
+static inline float ScaleScreenY(float y) { return g_bScreenSizeOverride ? (y / g_DisplayHeight) * g_OverrideScreenHeight : y; }
+
 
 void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long d)
 {
@@ -270,8 +273,8 @@ void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long d
         else
             layer = CFrontEndManager::GetInstance()->GetLayer(Depth);
         C2DVector position = Position;
-        position.X = g_bScreenSizeOverride ? position.X / g_DisplayWidth * g_OverrideScreenWidth : position.X;
-        position.Y = g_bScreenSizeOverride ? position.Y / g_DisplayHeight * g_OverrideScreenHeight : position.Y;
+        position.X = ScaleScreenX(Position.X);
+        position.Y = ScaleScreenY(position.Y);
         Emitter->Set2DPosition(&position, layer);
     }
 }

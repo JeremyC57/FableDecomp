@@ -1,5 +1,5 @@
 // CGameScriptInterface::SetThingAsUsable(const CScriptThing& thing, bool usable) const -- set the usable flag on the
-// Grade: DIFFER(ours v retail) -- 203v205: hook arms keep separate tails (ours mov eax,[eax+4] + store in each arm; retail one hook local in esi, AddTC result mov esi,eax before the string dtor)
+// Grade: DIFFER(205v205) -- same size now: the AddTC string in its own {} block puts the store after the string dtor like retail; only the hook arm keeps the component in eax (retail esi) and the AddTC lea uses edx/al. The nested `if (!GetInterface(&hook)) {...} hook->Usable = usable;` form fixes the registers but opens a push-ecx frame word for the second key
 // thing's usable component (TC 0x0D), else on its scripted-use hook (TC 0xC2), adding the hook when it has neither
 // Leaf: ?SetThingAsUsable@CGameScriptInterface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008967F0, length 208 bytes, `ret 8`.
@@ -99,8 +99,10 @@ void CGameScriptInterface::SetThingAsUsable(const CScriptThing& thing, bool usab
         } else if (t->GetInterface(&hook, 0xc2)) {
             hook->Usable = usable;
         } else {
-            CCharString name("CTCActionUseScriptedHook", -1);
-            hook = (CTCActionUseScriptedHook*)t->AddTC(name, false, 0);
+            {
+                CCharString name("CTCActionUseScriptedHook", -1);
+                hook = (CTCActionUseScriptedHook*)t->AddTC(name, false, 0);
+            }
             hook->Usable = usable;
         }
     }

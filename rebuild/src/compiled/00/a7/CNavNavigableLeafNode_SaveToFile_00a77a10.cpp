@@ -1,6 +1,6 @@
 // CNavNavigableLeafNode::SaveToFile(CAFile&, const map<const CANavQuadTreeNode*, long>&, bool, const C2DVector&) const -- save the base node, then the region ID (low 16 bits, 0 without a region), the preferability cost byte, the neighbour count and each neighbour's index from the node table
+// Grade: RELOCATION_MATCH -- the count and every neighbour index are written through an inline by-value `WriteLong(file, v)` helper: its parameter is what VC homes in the dead bool slot, leaving the dead origin slot to regionID (one shared `value` local took the other slot)
 // Leaf: ?SaveToFile@CNavNavigableLeafNode
-// Grade: DIFFER(226v226) -- frame-slot homing only: retail homes regionID in the dead origin-argument slot (+0x10) and the shared count/index long in the bool slot (+0xc); ours swaps the two slots (tried separate count/index locals, a cached key local, one shared value local, declaration order)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A77A10, 226 bytes (+ int3 padding; `ret 10h`). Protected virtual (MBE) slot 21.
 // Callees: CANavQuadTreeNode::SaveToFile @ 0x00A778D0 (qualified base call), CAFile::Write(const void*, long, long) (virtual slot 4,
 //   +0x10).
@@ -87,22 +87,20 @@ protected:
     virtual void SaveToFile(CAFile& file, const CNodeIndexTable& table, bool saveNeighbours, const C2DVector& origin) const;
 };
 
+static inline void WriteLong(CAFile& file, long v) { file.Write(&v, sizeof(v), 0); }
 void CNavNavigableLeafNode::SaveToFile(CAFile& file, const CNodeIndexTable& table, bool saveNeighbours, const C2DVector& origin) const
 {
     CANavQuadTreeNode::SaveToFile(file, table, saveNeighbours, origin);
     long regionID;
-    long value;
     if (PRegion)
         regionID = PRegion->RegionID & 0xffff;
     else
         regionID = 0;
     file.Write(&regionID, sizeof(regionID), 0);
     file.Write(&PreferabilityCost, sizeof(PreferabilityCost), 0);
-    value = Neighbours.size();
-    file.Write(&value, sizeof(value), 0);
+    WriteLong(file, Neighbours.size());
     for (const CANavQuadTreeNode* const* it = Neighbours.begin(); it != Neighbours.end(); ++it) {
         const CANavQuadTreeNode* neighbour = *it;
-        value = table.find(neighbour)->second;
-        file.Write(&value, sizeof(value), 0);
+        WriteLong(file, table.find(neighbour)->second);
     }
 }

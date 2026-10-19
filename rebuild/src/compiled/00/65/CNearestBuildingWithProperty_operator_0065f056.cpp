@@ -1,6 +1,6 @@
 // CNearestBuildingWithProperty::operator()(const CIntelligentPointer<CThing>&) -- building search functor: a building whose sim definition has the wanted property bit and lies nearer (squared distance) than the best so far becomes the nearest
+// Grade: RELOCATION_MATCH -- GetLengthSquared written as a `s = Z*Z; s += X*X; s += Y*Y;` chain in retail's term order (the single X*X + Y*Y + Z*Z expression is reordered z,y,x by VC7.1)
 // Leaf: ??RCNearestBuildingWithProperty
-// Grade: DIFFER(164v164) -- float sum order only: retail adds the squares as z*z + x*x + y*y, the lane always emits z*z + y*y + x*x (same for X*X+Y*Y+Z*Z and Y*Y+X*X+Z*Z; the GOTCHAS four-term reorder gap); everything else matches under optimize(y off, s on) with __forceinline vector helpers
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F056, 164 bytes (`ret 4`). Size-optimised TU with a frame pointer: `#pragma optimize("y",
 //   off)` + `#pragma optimize("s", on)` (GOTCHAS: a frame-pointer body ending in `leave` that still uses esi freely).
 // Callees: CBaseIntelligentPointer::GetPItem() 0x00A01B50 (three times), CThingBuilding::PeekPSimDefinition() 0x0082D2D0
@@ -16,7 +16,7 @@ struct C3DVector {
     float X, Y, Z;
     __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
+    __forceinline float GetLengthSquared() const { float s = Z * Z; s += X * X; s += Y * Y; return s; }
 };
 struct CRefCounted {                               // reference count base at +4 of a def
     long Count;

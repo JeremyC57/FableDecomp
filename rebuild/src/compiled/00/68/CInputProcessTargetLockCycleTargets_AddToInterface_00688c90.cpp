@@ -1,5 +1,5 @@
-// Grade: DIFFER(ours v retail) -- 177v169: only the final release of the def local differs: retail `dec dword ptr [edi+4] ; jne` (direct count), ours the long ReleaseTemporary form `mov ecx,[edi+4] ; dec ecx ; mov eax,ecx ; test ; mov [edi+4],ecx`. The getter temporary needs the ReleaseTemporary dtor (long form) while the local needs the direct form; with one CDefPointer dtor written the direct way (tried) the local matches and the temporary does not. Next: find the second release path (a different pointer type for the local, or an explicit release).
 // CInputProcessTargetLockCycleTargets::AddToInterface(CInputProcessManager& manager) -- reset the click detector (pressure 0, no pulse, pulses-only from the global setting), take the click threshold from the controlled creature's hero-combat def (0.75 without a live creature), then register through the base class
+// Grade: RELOCATION_MATCH -- the def local is a separate holder type whose destructor releases with a direct `if (--m_count == 0) Destroy();` (retail `dec [edi+4] ; jne`) while the getter's CDefPointer temporary keeps the ReleaseTemporary long form; the holder's assignment from CDefPointer is CDefPointer's own operator= (add-ref, old object known null)
 // Leaf: AddToInterface
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00688C90, 169 bytes, `ret 4`.
 // Callees: CPlayer::GetControlledCreature @ 0x00487DD0, the thing's hero-combat def getter @ 0x00663340 (CDefPointer by
@@ -93,12 +93,33 @@ public:
     virtual bool AddToInterface(CInputProcessManager& manager);
 };
 
+struct CHeroCombatDefHolder {
+    CHeroCombatDef* Object;
+    CHeroCombatDefHolder() : Object(0) { }
+    ~CHeroCombatDefHolder() { if (Object) { if (--Object->m_count == 0) Object->Destroy(); } }
+    CHeroCombatDefHolder& operator=(const CDefPointer<CHeroCombatDef>& o)
+    {
+        if (Object != o.Object) {
+            CHeroCombatDef* object = Object;
+            if (object) {
+                if (--object->m_count == 0)
+                    object->Destroy();
+                Object = 0;
+            }
+            Object = o.Object;
+            if (Object)
+                ++Object->m_count;
+        }
+        return *this;
+    }
+    CHeroCombatDef* operator->() const { return Object; }
+};
 bool CInputProcessTargetLockCycleTargets::AddToInterface(CInputProcessManager& manager)
 {
     LastButtonPressure = 0.0f;
     ClickAcceptancePulseTimer = -1;
     AllowPulsesOnly = g_targetLockAllowPulsesOnly;
-    CDefPointer<CHeroCombatDef> def;
+    CHeroCombatDefHolder def;
     CThing* creature = MyPlayer->GetControlledCreature();
     if (creature && !creature->Dead) {
         def = creature->GetHeroCombatDef();

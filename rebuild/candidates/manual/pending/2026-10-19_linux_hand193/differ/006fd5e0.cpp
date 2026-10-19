@@ -1,5 +1,5 @@
 // CGameCameraBase::GetRenderCamera(float interpolant) const -- the camera to render this frame: the current camera
-// Grade: DIFFER(ours v retail) -- 212v212: retail reads the current position's Y/Z as [esi+8]/[esi+0Ch] (X through edi, the copy-ctor argument) where ours uses [edi+4]/[edi+8], plus one store scheduled before the lea
+// Grade: DIFFER(212v212) -- per-component Lerp lines on the member paths fix the Y/Z addressing ([esi+8]/[esi+0Ch]); left: the copy store into camera.WorldPosition is scheduled before the fstp st(0) pop and the lea/push of the PointAt argument move (scheduling)
 // moved to the position interpolated from the last frame's camera and pointed at the interpolated look-at point
 // Leaf: ?GetRenderCamera@CGameCameraBase
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FD5E0, length 224 bytes, `ret 8` (hidden result, interpolant).
@@ -54,7 +54,9 @@ CCamera CGameCameraBase::GetRenderCamera(float interpolant) const
 {
     CCamera camera(InternalCam);
     C3DVector v;
-    v.SetInterpolated(LastInternalCam.WorldPosition, InternalCam.WorldPosition, interpolant);
+    v.X = Lerp(LastInternalCam.WorldPosition.X, InternalCam.WorldPosition.X, interpolant);
+    v.Y = Lerp(LastInternalCam.WorldPosition.Y, InternalCam.WorldPosition.Y, interpolant);
+    v.Z = Lerp(LastInternalCam.WorldPosition.Z, InternalCam.WorldPosition.Z, interpolant);
     camera.WorldPosition = v;
     v.SetInterpolated(LastPointingAt, PointingAt, interpolant);
     camera.PointAt(v);

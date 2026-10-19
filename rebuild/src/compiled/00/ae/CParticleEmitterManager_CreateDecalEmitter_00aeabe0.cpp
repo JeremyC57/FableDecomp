@@ -1,5 +1,5 @@
-// Grade: DIFFER(158v166) -- retail keeps the null result in ebx (xor ebx,ebx after the template fetch; both failure returns `mov eax,ebx`, so ebx is pushed and every frame offset is 4 higher); ours folds the constant; tried nested ifs, early returns, a named null local
 // CParticleEmitterManager::CreateDecalEmitter(long, const C3DVector&, long, const CRightHandedSet&) -- fetch the emitter template; if it may spawn here and is not a 2D emitter, return a placed clone that is not added to the active list; null otherwise
+// Grade: RELOCATION_MATCH -- a zero-initialised result local assigned the clone inside one `t && t->ShouldSpawn(p) && !t->Is2D()` test and returned once: the zero then stays in ebx and both failure exits keep their own `mov eax,ebx` tails in retail order (the early `return none` forms folded the constant)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEABE0, length 176 bytes (`ret 10h`).
 // Callees: CParticleEmitterDatabase::GetEmitterTemplate @ 0x00AE89E0 on the static counted pointer 0x013D2E14,
 //          CParticleEmitter::ShouldSpawn @ 0x00AECF90, DatabaseClone @ 0x00AF0650, SetPosition @ 0x00AEDDC0,
@@ -80,13 +80,11 @@ struct CParticleEmitterManager {
 CEmitter* CParticleEmitterManager::CreateDecalEmitter(long handle, const C3DVector& position, long flag, const CRightHandedSet& orientation)
 {
     CEmitter* emitterTemplate = g_ParticleEmitterDatabase->GetEmitterTemplate(handle, flag);
-    CEmitter* none = 0;
-    if (emitterTemplate == 0)
-        return none;
-    if (!emitterTemplate->ShouldSpawn(position) || emitterTemplate->Is2D())
-        return none;
-    CEmitter* emitter = emitterTemplate->DatabaseClone();
-    emitter->SetPosition(C3DPositionInterpolator(position, position));
-    emitter->SetOrientation(C3DOrientationInterpolator(orientation, orientation));
-    return emitter;
+    CEmitter* result = 0;
+    if (emitterTemplate && emitterTemplate->ShouldSpawn(position) && !emitterTemplate->Is2D()) {
+        result = emitterTemplate->DatabaseClone();
+        result->SetPosition(C3DPositionInterpolator(position, position));
+        result->SetOrientation(C3DOrientationInterpolator(orientation, orientation));
+    }
+    return result;
 }

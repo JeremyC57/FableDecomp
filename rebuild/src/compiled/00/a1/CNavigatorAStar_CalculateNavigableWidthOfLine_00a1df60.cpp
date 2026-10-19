@@ -1,6 +1,6 @@
 // CNavigatorAStar::CalculateNavigableWidthOfLine(const C3DVector&, const C3DVector&, float&, float&) -- find the layer of the node under each end (0 when off the map) and measure the line between the two removable way points with the way-point overload
+// Grade: RELOCATION_MATCH -- the PDB constructors CNavWayPoint(const C2DVector&, unsigned char, bool) and C2DVector(const C2DVector&) with each way point built from a C2DVector(x, y) temporary (both floats through the FPU, Y loaded first) as NAMED locals inside their own {} block (the block lets the way points share frame words with the dead lookup temporaries: 0x1c frame)
 // Leaf: ?CalculateNavigableWidthOfLine@CNavigatorAStar@@UAEXABVC3DVector@@0AAM1@Z
-// Grade: DIFFER(206v206) -- way-point build: retail copies each end's X/Y through the FPU (fld Y ; fld X ; fstp) and overlaps the C2DVector conversion temporary with a way point (0x1c frame); the lane copies with mov and keeps separate slots (0x24) (tried temporaries built from C2DVector(x, y), named way-point locals from a float-pair ctor)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1DF60, 206 bytes (+ int3 padding; `ret 10h`). Public virtual (UAE).
 // Callees: the external interface's (+0x14) slot 16 GetLayerAt (+0x40), CNavigatorManager::GetNodeAt 0x00A14F70 (twice),
 //   CNavigatorAStar::CalculateNavigableWidthOfLine(const CNavWayPoint&, const CNavWayPoint&, float&, float&, bool) 0x00A1D6E0
@@ -15,6 +15,7 @@ struct C2DVector {
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame
     C2DVector(float x, float y) : X(x), Y(y) { }
+    C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
 };
 class CANavQuadTreeNode {
 public:
@@ -41,7 +42,7 @@ struct CNavWayPoint {                              // 10 bytes
     C2DVector     Position;                        // +0x00
     unsigned char NavLayer;                        // +0x08
     bool          Removable;                       // +0x09
-    CNavWayPoint(float x, float y, unsigned char layer, bool removable) : Position(x, y), NavLayer(layer), Removable(removable) { }
+    CNavWayPoint(const C2DVector& p, unsigned char layer, bool removable) : Position(p), NavLayer(layer), Removable(removable) { }
 };
 class CNavigatorBase {
 public:
@@ -69,7 +70,9 @@ void CNavigatorAStar::CalculateNavigableWidthOfLine(const C3DVector& from, const
     CANavQuadTreeNode* toNode = NavigationManager->GetNodeAt(to, PInterface->GetLayerAt(to));
     if (toNode)
         toLayer = toNode->NavLayer;
-    CNavWayPoint start(from.X, from.Y, (unsigned char)fromLayer, true);
-    CNavWayPoint end(to.X, to.Y, (unsigned char)toLayer, true);
+    {
+    CNavWayPoint start(C2DVector(from.X, from.Y), (unsigned char)fromLayer, true);
+    CNavWayPoint end(C2DVector(to.X, to.Y), (unsigned char)toLayer, true);
     CalculateNavigableWidthOfLine(start, end, width1, width2, true);
+    }
 }

@@ -1,6 +1,6 @@
 // COptimisedPrimitive::ComputeSelfContraction(CVertexPairContraction&) const -- cost of collapsing an unsplit vertex pair (one position, two texture/normal seams): weighted squared texture and normal distances, plus the high penalty when the normals face apart; the pair collapses onto the first vertex at half weight
+// Grade: DIFFER(215v215) -- a `s = Z*o.Z; s += Y*o.Y; s += X*o.X` Dot called as v1.Normal.Dot(v2.Normal) fixes the z/y term order; left: the x term loads the first vertex (retail the second) and n*n*w is scaled before squaring (x87 operand-order lane gap; swapped operands, parentheses fold back)
 // Leaf: ComputeSelfContraction
-// Grade: DIFFER(215v215) -- x87 operand order only: retail squares the normal distance before scaling it (n*n*w) and loads the dot product's z/y terms from the second vertex but the x term from the first; the lane scales first and commutes the terms uniformly (tried squared locals, both Dot directions, a mixed-order Dot)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC7EB0, 215 bytes (`ret 4`).
 // Callees: none (fsqrt inline through `#pragma intrinsic(sqrt)`); 0.0f 0x0122DEDC.
 // Layout: retail COptimisedPrimitive (the landed RemapGroups 0x00AC99F0): Vertices at +0x10 of 0xb8-byte COptimisedVertex
@@ -18,7 +18,7 @@ struct C3DVector {
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
+    float Dot(const C3DVector& o) const { float s = Z * o.Z; s += Y * o.Y; s += X * o.X; return s; }
 };
 template <class T> struct CArray {                 // retail CArray (STLport vector): first / last / end
     T* m_first;
@@ -74,7 +74,7 @@ void COptimisedPrimitive::ComputeSelfContraction(CVertexPairContraction& contrac
     float normalDistance = (v2.Normal - v1.Normal).GetLength();
     textureDistance *= textureDistance;
     float cost = textureDistance * Parameters_UnsplitTextureWeight + normalDistance * normalDistance * Parameters_UnsplitNormalWeight;
-    if (v2.Normal.Dot(v1.Normal) < 0.0f)
+    if (v1.Normal.Dot(v2.Normal) < 0.0f)
         cost += Parameters_HighPenalty;
     contraction.Cost = cost;
     contraction.ResultingPosition = v1.Position;

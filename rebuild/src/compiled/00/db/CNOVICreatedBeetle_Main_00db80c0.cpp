@@ -1,6 +1,6 @@
 // CNOVI_CreatedBeetle::Main() -- the beetle spawned in Oakvale's intro: register an is-alive functor over Me, run a frame, then give it five seconds on a script timer and remove it (with effects) unless the script finished first
-// Grade: DIFFER(217v232) -- tail merge only: retail keeps two copies of DeregisterTimer+epilogue (loop's early return and the normal end); VC7.1 here cross-jumps the loop exit into the final call (tried explicit DeregisterTimer calls, an inline CTimer dtor, nesting under if(!IsDone()), pragma t)
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00DB80C0, 232 bytes (+ int3 padding). __thiscall, `ret`.
+// Grade: RELOCATION_MATCH -- the closing test is written `if (IsDone()) return; Game->RemoveThing(...)`: an early return there keeps a second CTimer-dtor + epilogue copy like retail, where `if (!IsDone()) RemoveThing` let VC cross-jump the loop exit into the final DeregisterTimer
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00DB80C0, 232 bytes (+ int3 padding). __fastcall, `ret`.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (the functor's member; the functor's inline dtor re-stores its
 //   vtable 0x012C2FE8 first), the entity script's functor registration 0x00F35B10 and IsDone 0x00F35B30 (on `this`; manifest
 //   labels "CWorldMap::AllocateMapThingUID" / "CCreatureAction_TrollWhackGroundBase::Initialise" are propagated, see landed
@@ -79,6 +79,7 @@ void CNOVI_CreatedBeetle::Main()
         if (IsDone())
             return;
     }
-    if (!IsDone())
-        Game->RemoveThing(Me, true, true);
+    if (IsDone())
+        return;
+    Game->RemoveThing(Me, true, true);
 }

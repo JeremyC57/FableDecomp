@@ -1,5 +1,5 @@
-// Grade: DIFFER(186v171) -- register allocation: retail keeps `this` in esi and the result in edi (ours the reverse), and pushes the Set2DPosition arguments interleaved with the result load; tried the result declared before/after the template fetch
 // CParticleEmitterManager::Create2DEmitter(long, const C2DVector*, EEngine2DLayer, long, const CRightHandedSet*) -- fetch the emitter template; if it is a 2D emitter, clone it into the active list, put it at the screen position on the layer and orient it; null otherwise
+// Grade: DIFFER(178v171) -- a block-pointer local in the counted-pointer dtor fixes this/result (esi/edi) like retail; left: the inlined release compares `dec [esi] ; cmp [esi],0` (lane: an inlined null-tested counted release never reuses the dec flags, probe-confirmed for five decrement forms; the out-of-line dtor does) and the result load into ecx+copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEB790, length 171 bytes (`ret 14h`).
 // Callees: CParticleEmitterDatabase::GetEmitterTemplate @ 0x00AE89E0 on the static counted pointer 0x013D2E14,
 //          CParticleEmitter::DatabaseClone @ 0x00AF0650, Set2DPosition @ 0x00AED090, SetOrientation @ 0x00AEDE60,
@@ -78,7 +78,7 @@ extern CEmitterDatabasePointer g_ParticleEmitterDatabase;   // 0x013D2E14
 struct CCountedItem { };
 struct SCountBlock {                               // the shared count block
     long m_count;                                  // +0x00
-    void (CCountedItem::*m_pfnDestroy)();          // +0x04 (called with the item as `this`)
+    void (__fastcall* m_pfnDestroy)(void* item);   // +0x04 (the per-type deleter, item in ecx)
     CCountedItem* m_pItem;                         // +0x08
 };
 
@@ -89,9 +89,10 @@ struct CEmitterPointer {                           // CCountedPointer<CParticleE
     ~CEmitterPointer()
     {
         if (Block) {
-            if (--Block->m_count == 0) {
-                (Block->m_pItem->*Block->m_pfnDestroy)();
-                operator delete(Block);
+            SCountBlock* block = Block;
+            if (--block->m_count == 0) {
+                block->m_pfnDestroy(block->m_pItem);
+                operator delete(block);
             }
         }
     }

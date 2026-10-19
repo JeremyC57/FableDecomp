@@ -1,5 +1,5 @@
-// Grade: DIFFER(189v181) -- the blank CEntry: retail zero-fills all nine dwords from one `xor edx,edx` (then -1 into LocationName) before pushing; `= { 0 }` gets the zero-fill but VC spreads it over eax/edx/imm and interleaves it with the pushes; CEntry() / CEntry() copy-init give no zero-fill at all
 // CParticleMorphs::GetAllMorphsOfType(long, vector<CEntry>&) -- copy every particle-morph entry of the given hero morph type into the output vector; false when there is none
+// Grade: RELOCATION_MATCH -- the blank CEntry is a value-initialised member (`CBlankEntry() : Entry() {}` wrapper temporary): VC7.1 zero-fills all nine dwords from one xor register and then runs the implicit ctor (CDefString -1) like retail; `CEntry()` / `= { 0 }` gave no or a scattered zero fill
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081B160, length 192 bytes (`ret 8`; callers 0x0071C7FB / 0x0071CB28).
 // Callees: the morph map's lower_bound @ 0x00819E60 and upper_bound @ 0x00819EC0 (landed as
 //          CVectorMap_00819ec0::UpperBound_CVectorMap_00819ec0; both take the key by const reference),
@@ -25,6 +25,11 @@ struct CParticleMorphsEntry {                      // CParticleMorphs::CEntry, 3
     long       SecondParticleIndex;                // +0x18
     float      StartAtMorphStrength;               // +0x1c
     float      EndAtMorphStrength;                 // +0x20
+};
+
+struct CBlankEntry {
+    CParticleMorphsEntry Entry;
+    CBlankEntry() : Entry() { }
 };
 
 struct SEntry {                                    // pair<EHeroMorphType, CEntry>, 40 bytes
@@ -59,8 +64,7 @@ bool CParticleMorphs::GetAllMorphsOfType(long type, CParticleMorphsEntryVector& 
     SEntry* last = Morphs.UpperBound_CVectorMap_00819ec0(type);
     if (first != last) {
         long count = last - first;
-        CParticleMorphsEntry blank = { 0 };
-        out.resize(count, blank);
+        out.resize(count, CBlankEntry().Entry);
         for (long i = 0; i < count; ++i)
             out[i] = first[i].second;
         return true;

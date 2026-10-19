@@ -1,5 +1,5 @@
 // CDrawAutoPickups::OnVisibilityChange(bool visible) -- advance the object's 7-bit state (0 -> 1 unless the pending-primitive check reports a result, 8 -> 16), then apply the visible flag (bit 8), marking it dirty and notifying the state callback on every change
-// Grade: DIFFER(181v181) -- the only difference is the re-read state test of SetState(1): retail `and ecx,7Fh ; cmp ecx,1`, the lane narrows it to `and cl,7Fh ; cmp cl,1` (long cast, local copy and a 7-bit bitfield all narrow; lane gap like the 24b `& 0xFFFFFF01` narrowing)
+// Grade: DIFFER(181v181) -- with SetState(unsigned long) and `state != (Flags & 0x7f)` only the width of the re-read state compare differs: retail `cmp ecx,1`, the lane `cmp cl,1` (the `and` now stays 32-bit like retail; bitfield, local, xor and signed forms narrow)
 // Leaf: OnVisibilityChange
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C43FD0, length 179 bytes (+ int3 padding), `ret 4`.
 // Identity: the catalog label (and "DrawAutoPickups_SelectAndDrawPrimitive" on the callee 0x00C43DE0) come from a
@@ -29,9 +29,9 @@ struct CStateObject {
         if (Callback)
             Callback(this, Flags & 0xffff, CallbackUser);
     }
-    void SetState(long state)
+    void SetState(unsigned long state)
     {
-        if ((long)(Flags & 0x7f) != state) {
+        if (state != (Flags & 0x7f)) {
             Flags = (Flags & ~0x7fUL) | state;
             Notify();
         }

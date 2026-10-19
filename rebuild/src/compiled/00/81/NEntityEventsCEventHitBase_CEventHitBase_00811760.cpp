@@ -1,5 +1,5 @@
 // NEntityEvents::CEventHitBase::CEventHitBase(const CHitParameters& params) -- a hit event: own a copy of the hit
-// Grade: DIFFER(ours v retail) -- 208v201: retail cross-jumps the outer failure exits into the inner epilogue (jump to the shared pop edi); our build emits a second pop edi/mov eax,ebp/pop ebp/ret 4 tail (nested-if and early-return forms identical)
+// Grade: RELOCATION_MATCH -- the two early exits are `break`s out of a `do { ... } while (0)` block: VC7.1 then cross-jumps them into the one epilogue after the inner `pop esi` like retail (the early-return and nested-if forms both emitted a second pop edi / mov eax,ebp / ret 4 tail)
 // parameters and, for a damage-attribute-4 hit by a live thing carrying TC 0x77 with a live weapon, record that weapon
 // Leaf: ??0CEventHitBase
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00811760, length 199 bytes (padded to 208), `ret 4`.
@@ -90,13 +90,15 @@ public:
 NEntityEvents::CEventHitBase::CEventHitBase(const CHitParameters& params)
 {
     PHitParams.Reset(new CHitParameters(params));
-    if (!PHitParams->HasDamageAttribute4())
-        return;
-    CThing* hitter = PHitParams->PThingHitting.GetPItem();
-    if (!hitter || hitter->m_dead || !hitter->HasTC(0x77))
-        return;
-    CTCWeaponHolder_77* holder = hitter->GetTC<CTCWeaponHolder_77>(0x77);
-    CThing* weapon = holder->GetPWeapon();
-    if (weapon && !weapon->m_dead)
-        PHitParams->SetWeapon(holder->GetPWeapon());
+    do {
+        if (!PHitParams->HasDamageAttribute4())
+            break;
+        CThing* hitter = PHitParams->PThingHitting.GetPItem();
+        if (!hitter || hitter->m_dead || !hitter->HasTC(0x77))
+            break;
+        CTCWeaponHolder_77* holder = hitter->GetTC<CTCWeaponHolder_77>(0x77);
+        CThing* weapon = holder->GetPWeapon();
+        if (weapon && !weapon->m_dead)
+            PHitParams->SetWeapon(holder->GetPWeapon());
+    } while (0);
 }

@@ -1,0 +1,81 @@
+addr       parity           behav  name
+0065f056   WARN RELOC_NAME: ?GetPosition@CThing@@QBEABUC3DVector@@XZ -> 004c73d0 labelled 'CVertexBufferWin32::DoSizeof'
+0065f056   RELOCATION_MATCH PASS   operator
+00688c90   RELOCATION_MATCH PASS   AddToInterface
+00811760   RELOCATION_MATCH PASS   CEventHitBase
+0081b160   RELOCATION_MATCH PASS   GetAllMorphsOfType
+00898340   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00898340   WARN SHARED_HEADER_AVAILABLE CRegion
+00898340   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00898340   WARN SHARED_HEADER_AVAILABLE CWorld
+00898340   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00898340   WARN RELOC_NAME: ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ -> 00449970 labelled 'Catch@0040d959'
+00898340   WARN RELOC_NAME: ?GetCurrentRegionNumber@CWorldMap@@QAEJXZ -> 004fb150 labelled 'CWorld::DrawGetEnvironment'
+00898340   WARN RELOC_NAME: ?GetRegionEntry@CWorldMap@@QAEAAUCRegion@@J@Z -> 004fb490 labelled 'NInventory::CTCInventoryBase::GetCategoryWithIndex'
+00898340   RELOCATION_MATCH PASS   SetHeroWillAsUsable
+008d8dd0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+008d8dd0   RELOCATION_MATCH PASS   AnimUpdate
+008e9950   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+008e9950   RELOCATION_MATCH PASS   UpdateWeaponState
+008ea220   WARN RELOC_NAME: ?GetChargeFraction@CTCProjectileCharge@@QBEMXZ -> 00789a70 labelled 'CMap::DrawGetSeaLevel'
+008ea220   RELOCATION_MATCH PASS   FrameUpdate
+00a1ab40   RELOCATION_MATCH PASS   GetNearestNavigablePosTo
+00a1df60   RELOCATION_MATCH PASS   CalculateNavigableWidthOfLine
+00a77a10   RELOCATION_MATCH PASS   SaveToFile
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aeabe0   WARN RELOC_NAME: ??1CBaseClass@@QAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+00aeabe0   RELOCATION_MATCH PASS   CreateDecalEmitter
+00b201d0   WARN RELOC_NAME: ?GetSystemTransform@CParticleSystem@NParticleEngine@@QBEPBUCMatrix3x4@@XZ -> 00af3d80 labelled 'CVertexBufferWin32::DoSizeof'
+00b201d0   WARN RELOC_NAME: ?GetInverseSystemTransform@CParticleSystem@NParticleEngine@@QBEPBUCMatrix3x4@@XZ -> 00af3da0 labelled 'CVertexBufferWin32::DoSizeof'
+00b201d0   RELOCATION_MATCH PASS   GetInverseSystemTransformWithTranslate
+00b44f20   RELOCATION_MATCH PASS   SetupShaderPointLights
+00bc65d0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bc65d0   WARN RELOC_NAME: ?Resize@CHandleVector@@QAEXJ@Z -> 00443f90 labelled 'CEnginePrimitiveRenderer::AddPrimitive'
+00bc65d0   RELOCATION_MATCH PASS   SetChildPrimitive
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bf7f70   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer
+00bf7f70   WARN RELOC_NAME: ??_GCLandscapeBackgroundLoadTask@@QAEPAXI@Z -> 00bf8c10 labelled 'CLandscapeBackgroundLoadTask::`scalar deleting destructor''
+00bf7f70   RELOCATION_MATCH PASS   FreeableResourceFreeBlock
+00db80c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00db80c0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00db80c0   WARN RELOC_NAME: ?IsDone@CNOVI_CreatedBeetle@@QAE_NXZ -> 00f35b30 labelled 'CCreatureAction_TrollWhackGroundBase::Initialise'
+00db80c0   RELOCATION_MATCH PASS   Main
+
+WINS: 17
+  0065f056 RELOCATION_MATCH CNearestBuildingWithProperty::??RCNearestBuildingWithProperty
+  00688c90 RELOCATION_MATCH CInputProcessTargetLockCycleTargets::AddToInterface
+  00811760 RELOCATION_MATCH NEntityEvents::CEventHitBase::??0CEventHitBase
+  0081b160 RELOCATION_MATCH CParticleMorphs::GetAllMorphsOfType
+  00898340 RELOCATION_MATCH CGameScriptInterface::SetHeroWillAsUsable
+  008d8dd0 RELOCATION_MATCH NCreatureMode::CModeBlock::AnimUpdate
+  008e9950 RELOCATION_MATCH NCreatureMode::CModeStrafe::UpdateWeaponState
+  008ea220 RELOCATION_MATCH NCreatureMode::CModeStrafe::FrameUpdate
+  00a1ab40 RELOCATION_MATCH CNavigatorAStar::?GetNearestNavigablePosTo@CNavigatorAStar
+  00a1df60 RELOCATION_MATCH CNavigatorAStar::?CalculateNavigableWidthOfLine@CNavigatorAStar@@UAEXABVC3DVector@@0AAM1@Z
+  00a77a10 RELOCATION_MATCH CNavNavigableLeafNode::?SaveToFile@CNavNavigableLeafNode
+  00aeabe0 RELOCATION_MATCH CParticleEmitterManager::CreateDecalEmitter
+  00b201d0 RELOCATION_MATCH NParticleEngine::CParticleSystem::GetInverseSystemTransformWithTranslate
+  00b44f20 RELOCATION_MATCH CEngineLightingManager::SetupShaderPointLights
+  00bc65d0 RELOCATION_MATCH CEngineInternalPrimitiveGroup::SetChildPrimitive
+  00bf7f70 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ
+  00db80c0 RELOCATION_MATCH CNOVI_CreatedBeetle::Main
+
+LANDED 17 wins into src/compiled + tests + catalog + oracle
+  CNearestBuildingWithProperty_operator_0065f056
+  CInputProcessTargetLockCycleTargets_AddToInterface_00688c90
+  NEntityEventsCEventHitBase_CEventHitBase_00811760
+  CParticleMorphs_GetAllMorphsOfType_0081b160
+  CGameScriptInterface_SetHeroWillAsUsable_00898340
+  NCreatureModeCModeBlock_AnimUpdate_008d8dd0
+  NCreatureModeCModeStrafe_UpdateWeaponState_008e9950
+  NCreatureModeCModeStrafe_FrameUpdate_008ea220
+  CNavigatorAStar_GetNearestNavigablePosTo_00a1ab40
+  CNavigatorAStar_CalculateNavigableWidthOfLine_00a1df60
+  CNavNavigableLeafNode_SaveToFile_00a77a10
+  CParticleEmitterManager_CreateDecalEmitter_00aeabe0
+  NParticleEngineCParticleSystem_GetInverseSystemTransformWithTranslate_00b201d0
+  CEngineLightingManager_SetupShaderPointLights_00b44f20
+  CEngineInternalPrimitiveGroup_SetChildPrimitive_00bc65d0
+  CLandscapeBackgroundTreeNode_FreeableResourceFreeBlock_00bf7f70
+  CNOVICreatedBeetle_Main_00db80c0

@@ -1,5 +1,5 @@
-// Grade: DIFFER(189v177) -- the shared `xor al,al ; ret` false exit of the five-test early-out is placed at the end of the body; retail places it right after the chain (before `push edi`) and keeps a second false exit for the later tests
 // CLandscapeBackgroundTreeNode::FreeableResourceFreeBlock() -- landscape memory pressure hook: drop this node's sub node (and its pending load task) unless the map is locked, the node is visible, still at the top band or needed for the camera range
+// Grade: RELOCATION_MATCH -- the five early-out tests are five separate `if (x) return false;` statements: VC7.1 then places their shared false exit inline right after the chain (before `push edi`) like retail; the single `||` test moved it to the end of the body
 // Leaf: ?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF7F70, length 177 bytes (`ret`, private virtual returning bool).
 // Callees: CLandscapeBackgroundTreeNode::GetPatch @ 0x00BF6130, GetSplitBranch @ 0x00BF6160 (result unused), the camera-range classifier
@@ -94,7 +94,15 @@ struct CLandscapeBackgroundTreeNode : CMovableResource {
 
 bool CLandscapeBackgroundTreeNode::FreeableResourceFreeBlock()
 {
-    if (Map->MemoryFreeingLocked || !SubNode || VisibleLastFrame || !VisibleLastFrameHasBeenUpdated || FirstNonSplitBand == 8)
+    if (Map->MemoryFreeingLocked)
+        return false;
+    if (!SubNode)
+        return false;
+    if (VisibleLastFrame)
+        return false;
+    if (!VisibleLastFrameHasBeenUpdated)
+        return false;
+    if (FirstNonSplitBand == 8)
         return false;
     CLandscapeBackgroundPatch* patch = GetPatch();
     GetSplitBranch();

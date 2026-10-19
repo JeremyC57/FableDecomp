@@ -1,6 +1,6 @@
 // NCreatureMode::CModeStrafe::FrameUpdate() -- refresh the weapon state, then for a creature with a projectile-charge component clamp the charge fraction to [0, 1] as PullBackAmount, cube it into RumbleParam and rumble the creature's joystick with it
+// Grade: RELOCATION_MATCH -- the joystick device is reached through an inline CInputManager::GetJoystick(n) accessor: the device then loads straight into ecx for the virtual Rumble call and the parameter strength is stored before `push 0`, like retail
 // Leaf: FrameUpdate
-// Grade: DIFFER(ours v retail) -- the rumble call: retail fetches the joystick device straight into ecx and stores the parameter strength before `push 0`, ours goes through eax (`mov ecx,eax` before the call) and stores it after the address push; tried a named device local, a named parameter object, a ctor-body CRumbleParams and an entry reference
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008EA220, 226 bytes (`ret`; vtable 0x01268588 slot 3).
 // Callees: CModeStrafe::UpdateWeaponState 0x008E9950; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (the const
 // instantiation: inlined const GetInterface, type 0x81 = bit 1 of +0x30); the component's charge-fraction getter 0x00789A70
@@ -71,6 +71,7 @@ struct CJoystickEntry {                    // 8 bytes
 struct CInputManager {
     unsigned char   _pad00[0x2c];
     CJoystickEntry* Joysticks;             // +0x2c (vector begin)
+    CJoystickDevice* GetJoystick(long n) const { return Joysticks[n].Device; }
 };
 
 extern CInputManager* g_pInputManager;     // 0x013B8388
@@ -103,7 +104,7 @@ void CModeStrafe::FrameUpdate()
             fraction = 1.0f;
         PullBackAmount = fraction;
         RumbleParam = (float)pow(fraction, 3.0);
-        g_pInputManager->Joysticks[ParentThing->GetJoystickDeviceNumber()].Device->Rumble(2, CRumbleParams(RumbleParam), 0);
+        g_pInputManager->GetJoystick(ParentThing->GetJoystickDeviceNumber())->Rumble(2, CRumbleParams(RumbleParam), 0);
     }
 }
 

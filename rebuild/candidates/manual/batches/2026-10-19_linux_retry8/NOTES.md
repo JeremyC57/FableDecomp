@@ -1,0 +1,119 @@
+# Retry 8 (chunks 190-198 parked rows) -- still parked
+
+One line per row that still grades DIFFER: what differs and what was tried this pass. `[differ/ improved]` marks rows whose
+closer (still DIFFER) source is in `differ/<addr>.cpp`; `src/` keeps the parked best source for every DIFFER row.
+All 112 parked rows were also swept with 8 pragma prefixes x 5 flag sets (s/t/g on, all off, y off, y off + s, gsy off + s;
+/GS, /Oa, /EHsc, /GS /EHsc): no hits.
+
+- 006a02b0: DIFFER(240v240) frame 0x10 v 0x14: the lane overlays the {key,value} insert temporary on the key/CTCHaste-string word; temporary string, named value, extra block, inline AddModifier (by value / by const ref) tried
+- 00845270: DIFFER(219v212) retail holds the dead-bit mask 1 in bl across both IsAlive tests with a push-ecx frame and shrink-wrapped ebx/ebp; ours tests immediates, sub esp,8 and spills this; bool/uchar bitfields, ternary and nested-if IsAlive tried
+- 00845b10: DIFFER(165v165) this/&PCreature esi/edi swap (retail keeps this in edi and re-forms &PTarget with lea; ours adds onto this); IsAlive helper, nested ifs, reference local in GetGameMaster tried
+- 008b7a20: DIFFER(236v236) this/summon edi/esi swap only; summon declared at the function top tried (earlier: plain, accessor, self-local forms)
+- 008b7ed0: DIFFER(174v174) not re-tried this pass (scheduling/register naming)
+- 008b8bc0: DIFFER(231v231) not re-tried this pass (ebx/ebp swap (this vs target))
+- 008b9e50: DIFFER(205v205) not re-tried this pass (esi/edi swap, twin of 008b9f20)
+- 008b9f20: DIFFER(205v205) register swap only (retail adds 8 onto this in esi and keeps the def holder in edi); PCreature reference local (two positions), inlined thingDef, declaration order tried
+- 008bf1c0: DIFFER(178v178) not re-tried this pass (ebx/edi swap)
+- 008c4170: DIFFER(218v218) not re-tried this pass (frame-slot sharing (string/out/string) RTM v DDK)
+- 008c67a0: DIFFER(190v190) shot fetched after the alpha push; an inline operator CThing*() / operator-> on the intelligent pointer fixes the fetch order but rotates this/esi,edi (reference local, carrying scope, declaration order tried)
+- 008ec260: DIFFER(187v188) not re-tried this pass (esi/ebp swap, twin of 008ec320)
+- 008ec320: DIFFER(205v206) not re-tried this pass (edi/ebp swap (this vs holder))
+- 006451dd: DIFFER(169v173) this/button*8 ebx/edi swap (retail one more callee-saved push) and the X member+parameter sum operand order (lane gap); split += and swapped operands tried
+- 0064b5c1: DIFFER(169v167) not re-tried this pass (component straight into ecx on both arms (known lane gap))
+- 0064e0da: DIFFER(228v228) this/0x11-kind ebx/edi colouring swap only; kind local, seal declared first, self local tried
+- 00994180: DIFFER(159v163) not re-tried this pass (xor/mov cx zero-extension vs movzx (lane gap))
+- 00997880: DIFFER(177v168) item-start search loop: lane rotates the top-tested loop (aligned head) and folds start+1 != -1 to cmp ecx,-2 (loop-rotation lane gap); sentinel while and explicit decrement forms tried
+- 0099ac90: DIFFER(222v227) retail keeps the dead LARGE_INTEGER high-half store (cdq into the dead delta slot, known lane gap) and forms Position+delta with lea/test/jge; seeking from the local and swapped operands tried
+- 009acd00: DIFFER(137v162) retail spills the class iterator and strength-reduces &it->GlobalIndices into edi (+0x18 steps, aligned inner loop); the lane keeps the iterator in edi; reference and pointer locals for the index vector fold back
+- 009ad5f0: DIFFER(231v231) not re-tried this pass (ebx/ebp colouring of offset/count)
+- 009e4cb0: DIFFER(179v179) twin of 00997880 (same loop rotation / start+1 fold lane gap) plus an eax/ecx swap; not re-tried beyond the twin's two forms
+- 00c43fd0: DIFFER(181v181) [differ/ improved] re-read state test `cmp ecx,1` narrowed to `cmp cl,1`; unsigned SetState(state != (Flags&0x7f)) fixed the `and` (now only the cmp width differs, in differ/); bitfield, local, xor, signed forms tried
+- 005954ad: DIFFER(213v213) not re-tried this pass (pop edi placement before the base vtable store (scheduling))
+- 00b24400: DIFFER(223v238) not re-tried this pass (x87 transform term order / X spill (lane gap))
+- 00b2a010: DIFFER(163v163) not re-tried this pass (push_back temp homed in globalPointer slot vs component slot (tag-over-live-slot lane gap))
+- 00b2b050: DIFFER(186v197) not re-tried this pass (loop strength reduction / register allocation)
+- 00b61cd0: DIFFER(209v209) not re-tried this pass (centre/ring pointer register naming)
+- 00b8d6c0: DIFFER(172v181) register allocation around the inlined lower_bound (retail this eax / key edi / end ebx, handle spilled; two zero registers); not re-tried beyond the earlier lower_bound/end/declaration forms
+- 00ba6ef0: DIFFER(176v176) not re-tried this pass (twin of 00bd27f0 (tag-over-live-slot lane gap))
+- 00bc5820: DIFFER(177v182) spilled bool result: retail ORs through cl (load/or/store) and returns cl, the lane ORs into memory and reloads al (+ ebx/edx for the vector first); uchar/char result and if-set forms tried
+- 00bca6b0: DIFFER(188v188) head Z copy through ecx before the camera load and the renderer global fetched into ecx before the argument pushes (retail); by-value GetPosition getter, renderer local, inline accessor, inline AddToRenderer member, new inside the call tried
+- 00bcc700: DIFFER(190v192) twin of 00bca6b0 (same scheduling of the Z copy / renderer fetch); not re-tried beyond the twin's forms
+- 00bd27f0: DIFFER(176v176) values 2/3 homed in the dead types slot with the tag in retail (tag-over-live-slot lane gap); literal, enum-conversion and by-value-helper rvalue arguments, block/named locals tried
+- 00bd2a90: DIFFER(197v218) register allocation: retail this/edi, mesh/ebx, count/esi with a count-down counter in the dead mesh slot and a re-read of StartState.Data; not re-tried (earlier forms: early returns, &&, null-safe accessor)
+- 00bdd2f0: DIFFER(163v169) not re-tried this pass (signed /16 of a zero-extended ushort (lane folds to shr) + register choice)
+- 00bf44a0: DIFFER(185v208) [differ/ improved] same size in differ/ (two-site __forceinline push_back copy, __forceinline record ctor, member null test first); only the water local's frame spill is scheduled before the type compare (retail after); type-first, switch, split declaration tried
+- 00cac4a0: DIFFER(194v194) setter argument address formed in eax (retail ecx) after the CMediaType ctor under /EHsc /GS; hr declared first, default phr, pointer local, reference parameter, no default arg tried
+- 004b1670: DIFFER(168v168) the __find result iterator gets its own frame word (lane frame-slot gap; retail homes it in the dead name slot); temporary result and hoisted bool forms tried
+- 00698b50: DIFFER(221v218) retail pushes the sound address before the arm merge and fetches PDef/GetPItem last (fastcall argument order); ours calls GetPItem right after each string ctor; def/thing locals in the inline helper and direct calls in both arms tried
+- 00699130: DIFFER(183v183) list clear() epilogue: retail reloads the head into eax for the second store, lane uses ebp (this dead); head local, __forceinline clear, list pointer local tried
+- 00699a50: DIFFER(177v175) ebx/edi colouring of &PObservedThing/def and the shared constant 1 in al vs cl; ternary dead test and inline def argument tried
+- 00699b00: DIFFER(243v238) by-value module parameter's inlined counted release re-compares after dec (lane: an inlined null-tested release never reuses the dec flags; probe-confirmed for !--, -=, <=, member Release, split forms)
+- 0069adc0: DIFFER(193v177) this/World/def register swap and the address-taken set-def release (retail mov ecx,[slot] ; dec [ecx+4] ; jne; ours long form or a slot re-read: CDefPointer-release lane gap); region reference local, direct --count dtor, pointer-copy dtor tried
+- 0069e2e0: DIFFER(231v237) bool ctor argument: retail parks the Flag4F byte in the dead key word after operator new and pushes the dword; ours pushes xor/mov cl; an inline/__forceinline factory homes every argument before new instead
+- 006fd5e0: DIFFER(212v212) [differ/ improved] in differ/: per-component Lerp on member paths fixes the Y/Z base register; left: store/fstp st(0)/lea scheduling; interleaved and chained assignment forms tried
+- 008852e0: DIFFER(183v183) store scheduling only: second SetToDefault zero stores and the two track-pos stores sink below later stores in the lane; split chained zeros, init-list Environment, swapped/moved track-pos stores tried
+- 008930f0: DIFFER(186v186) register rotation in the filter setup, push edi before the zero store, and the null/GetScriptThing result blocks in the opposite order; inverted test, nested ifs, separate early returns, ternary dead test tried
+- 008941a0: DIFFER(168v176) retail keeps an unfolded IS_THING_DEAD(CBaseObject* const&) remnant (reference temp stored to the dead arg slot, xor cl,cl ; jne); every constant-false body form folds in the lane (false local, x != x, uchar 0)
+- 008967f0: DIFFER(203v205) [differ/ improved] same size in differ/ (string block before the store); hook arm component in eax vs esi; the shared-store nested form fixes registers but adds a push-ecx key word (frame-slot gap); declaration orders tried
+- 008973a0: DIFFER(214v211) not re-tried this pass (lane gap: inline CCharString=="" materialised with sete (chunk 188 gap))
+- 009c3590: DIFFER(194v194) dead volatile ExitThread read in cl (retail al) and GetFileSize out-pointer in edx (retail ecx); installer reference local and if/else read forms tried
+- 009f1ac0: DIFFER(223v221) not re-tried this pass (/GS parameter load hoisted to entry (known /GS lane gap); everything else matches)
+- 009fe460: DIFFER(231v231) not re-tried this pass (same size; scratch-register rotation in the threshold chain and the ReduceMipmapLevel call)
+- 00a636c0: DIFFER(208v203) not re-tried this pass (push_back value/tag temporaries in the dead index slot (known lane gap))
+- 00f370c0: DIFFER(171v167) pool words: buffer/size locals set per arm and stored once after the join give retail's shape (173v167) but rotate size/buffer/bufferSize through edi/esi/eax (retail esi/edi/ecx); declaration order, aggregate init, inline Set tried
+- 00f372b0: DIFFER(229v224) [differ/ improved] in differ/ (228v224, 11 diff lines): register index + address-taken copy written at each definition reproduces registers and homes; retail's push_back fast path stores the cached register where the lane reloads the address-taken copy
+- 00f37660: DIFFER(234v206) retail has callee knowledge of the out-of-line vector<long>::operator= (pool fields kept in ebp/ebx, the local page's list dtor dropped); the same-TU auto_inline(off) callee body cannot give it because the callee allocates (GOTCHA 359); not re-tried
+- 0055bc30: DIFFER(203v203) not re-tried this pass (callee-saved ebx/edi shrink-wrapped into the if block by the lane; retail pushes them in the prologue)
+- 00690c70: DIFFER(166v162) not re-tried this pass (/GS lane gap: input cached in ebp, AddLong/AddUBYTE args not homed in the dead event slot)
+- 006cd890: DIFFER(233v221) def release long form (known CDefPointer-release lane gap) + out zero-store scheduling; holder dtor with direct --count, a pointer copy, and a hand release after the reads tried
+- 008a8010: DIFFER(219v218) box arithmetic: retail computes x-r, x+r, y-r, y+r into ecx/esi/edx/edi with in-place adds keeping r; ours mixes lea/add and consumes r; += forms, reordered stores, 4-arg and two-coord box ctors tried
+- 008d0730: DIFFER(233v233) Compare argument loads: retail loads edx (other text) before ecx; landed-style operator== with data locals, a static SameText, inline length test, local b, ?: / ! result forms tried
+- 008f63c0: DIFFER(207v229) not re-tried this pass (zero-register vs immediate vector clears and ebp/spill allocation around the 64-bit count guard (four forms identical))
+- 009109b0: DIFFER(208v219) ownership ternary: retail ends both arms in flags (cmp eax,ecx with POwner reloaded / test cl,cl) merged into one jne; the lane folds cmp eax,[ebx] and gives each arm an exit or materialises movzx; bool reject local, swapped compare, inline IsOwner tried
+- 00945e70: DIFFER(212v223) twin of 009109b0 (same ownership-ternary flag merge); not re-tried beyond the twin's forms
+- 009fc950: DIFFER(224v230) not re-tried this pass (register allocation: Data kept in ebx vs spilled to the dead texture slot; folded dimension compares)
+- 009fca40: DIFFER(167v218) not re-tried this pass (lane gap: inline-asm fistp rounding through a pointer (TLX/TLY))
+- 00a02b30: DIFFER(201v201) FirstUnusedHandle store sunk past the MultiThreaded reload into the epilogue; `== true`, bool local, uchar flag, inline Unlock() tried
+- 00bee070: DIFFER(206v206) not re-tried this pass (esi/edi swap between result and first (register swap only))
+- 0041726d: DIFFER(189v189) not re-tried this pass (ebx/edi swap)
+- 0053e0c0: DIFFER(190v190) vptr of the third lookup loaded into edx (retail eax, the dead null result) -- the 0x0053D000-family lane gap; nested lookups, explicit this->, ternary tried
+- 00820b80: DIFFER(194v194) not re-tried this pass (tag over live arg slot (lane gap))
+- 0082a890: DIFFER(206v206) not re-tried this pass (esi/edi swap + push edi placement)
+- 0082add0: DIFFER(171v171) movsx/vector-element register naming only (ecx/edx/eax rotation); region local, non-const operator[], reference local, raw pointer index, self local tried
+- 00873930: DIFFER(231v221) frame 0x48 v 0x3c: one extra 12-byte sum temporary copied into offset (retail forwards x/y into offset and shares temp slots); no operator=, no copy ctor, block-scoped facing, single-expression offset tried
+- 008ad050: DIFFER(199v202) not re-tried this pass (prologue shrink-wrap)
+- 008f70f0: DIFFER(144v164) two inline palette searches: retail cursor eax/index edx with an unfolded found-index test (mov al,dl), and two separate free-slot store tails that the lane merges; not re-tried (no new idea)
+- 00a5d000: DIFFER(211v211) x87 operand order of two old-translation products (lane gap); not re-tried (earlier: both operand orders)
+- 00a65ff0: DIFFER(167v169) zero register: retail holds the five zero stores' 0 in callee-saved ebx across the shift (push ebx), ours a fresh xor ecx before it; not re-tried
+- 00a9d580: DIFFER(199v221) not re-tried this pass (inline asm SSE arm (lane gap))
+- 00c461e0: DIFFER(135v163) not re-tried this pass (x87 scheduling / factor homing)
+- 008d6da0: DIFFER(222v222) ParentThing reload for GetTimeToBlendIn in edx (retail eax) and AnimIndex loaded after the flags push (retail edx before); CAnimInit temporary (fixed the 008d8dd0 twin), inline idle-entry helper, nested clamp tried
+- 008da2e0: DIFFER(200v195) frame 0xc v 8: retail reuses the dead GetSubDef out slot for the GetInterface key and loads the def straight into ebp; block-scoped out (with holder, helper, or hand release) makes VC spill a def copy (0x10 frame)
+- 008da7a0: DIFFER(227v227) register allocation only (this/&PDrainer edi/ebx vs retail ebx/edi, edi pushed after the state test); not re-tried beyond the earlier if/else-if and switch forms
+- 008ddfb0: DIFFER(202v202) not re-tried this pass (DragonStrafe ctor; push -1 scheduled before the spline zero stores)
+- 008e72d0: DIFFER(186v186) CRC null test register pair (retail ecx/eax, ours eax/ecx) though the base model matches in the 0x00741DB0 overload; operand order of the timer product and an explicit CCharString temp tried
+- 008e7f80: DIFFER(223v223) second-loop index/element ebp/edi swap only; index declared at function top / block top and an element reference tried
+- 006a2220: DIFFER(162v161) not re-tried this pass (really CTCCarrying (CarrySlots) collector; label COptimisedPrimitive::RemapGroups wrong; frame homing gap)
+- 00a156d0: DIFFER(236v237) same header reload as 00a157c0 plus scheduling; not re-tried beyond the twin
+- 00a157c0: DIFFER(194v196) one list-header reload: retail re-reads [edi] for insert(end()) after the scan, the lane reuses the scan's header register; inline HasMap scan helper tried (plus the earlier raw-node/iterator-class scans)
+- 00a1af00: DIFFER(223v227) [differ/ improved] only the second GetNodeAt conversion-temporary lea is hoisted above push eax (FPU copies + frame fixed by the PDB CNavWayPoint(const C2DVector&,uchar,bool) ctor, C2DVector copy ctor and named way points; in differ/); layer local, explicit C2DVector temp, nested ifs, inline lookup helper tried
+- 00a77b80: DIFFER(166v169) prologue shrink-wrap lane gap: retail pushes ebx/ebp/edi at entry with a separate refusal tail, the lane pushes them on the success path; not re-tried (earlier: flat early return, cached GetNeighbours, pragma s)
+- 00a780b0: DIFFER(236v238) ebx/ebp swap of Neighbour1/its data and the copied-then-lea end iterator; not re-tried beyond the earlier begin/end, data local, shared tag, end += size forms
+- 00a792e0: DIFFER(238v238) array release: retail compares the old block with the shared zero register (xor ecx ; cmp eax,ecx), memset form gives xor edx ; test; null local, explicit braces, cast, compare-with-member tried
+- 00ac7eb0: DIFFER(215v215) [differ/ improved] in differ/: chained Dot in z,y,x order fixes two of three terms; the x-term operand order and n*n*w association stay (x87 operand-order lane gap: swapped operands, parenthesised and local forms all canonicalise)
+- 00ac82a0: DIFFER(192v192) prologue: this spilled between the ebx/ebp pushes in the lane (after both in retail); index locals and a vector reference local tried
+- 00ac85d0: DIFFER(183v165) not re-tried this pass (CollapseSegments; empty allocator overlaid on the live threshold slot (lane gap))
+- 00b18060: DIFFER(170v170) bitfield merge: retail reads the destination flag byte once (bl), the lane re-reads it for the xor and the merge; unsigned short/char/signed char/unsigned long bitfields tried on top of the earlier bool/uchar/setter/mask forms
+- 00eb3ba0: DIFFER(186v187) handle-array index: retail builds the pointer with lea esi,[eax+edx] keeping this in esi, ours shl/add into esi (1 byte shorter); line-index local tried (earlier: begin()+n, _M_start[n], signed index)
+- 00543d30: DIFFER(183v183) scheduling only: the default CRightHandedSet temporary's six stores sink below the GetLayer vtable load / Depth push (retail before); body-assignment ctor and (long)Depth tried
+- 00543df0: DIFFER(217v217) same scheduling gap as 00543d30 (same inline CreateEmitter); not re-tried separately
+- 00543ee0: DIFFER(194v190) [differ/ improved] in differ/: inline by-value ScaleScreenX/Y helpers + parenthesised (v / W) * OW fix the X-copy DSE, load hoist and op order; the lane still jump-threads the second override test (retail re-tests cl)
+- 009b9770: DIFFER(177v181) not re-tried this pass (CParsedItem::InitAsFloat; divisor in memory only via volatile (probe artefact), loop rotation)
+- 009d0630: DIFFER(203v192) retail keeps the address-taken index in esi across push_back's InsertGrow call (re-homed only at its definitions; callee knowledge of a separately compiled allocating insert); a copied index local removes the reload but strength-reduces the block walk
+- 00a62c90: DIFFER(238v238) not re-tried this pass (CPackedUIntArray::PackArray; register allocation only (bits in edi, bias in ecx))
+- 00aeb600: DIFFER(202v202) same family as 00aeb790: clone loaded into ecx then copied to esi (retail straight into esi); not re-tried beyond the sibling's forms
+- 00aeb6d0: DIFFER(201v192) same family as 00aeb790 (counted-pointer clone load placement + esi/edi); its ~CEmitterPointer is out of line (0x00AE94A0); not re-tried beyond the sibling's forms
+- 00aeb790: DIFFER(186v171) [differ/ improved] in differ/: a block-pointer local in the counted-pointer dtor fixes this/result registers; left: the inlined null-tested release re-compares after `dec [esi]` (lane probe: !--, -=, <=, helper, __forceinline all keep the cmp; retail jne on the dec flags) and the result loaded via ecx
+- 00af4240: DIFFER(219v219) strength-reduced component walk pointer biased to +0x14 in retail (+8 in the lane); entry reference in a for loop and a guarded do/while tried
+- 00af5380: DIFFER(170v167) NoActiveDecals bump: retail inc dword ptr [ebp+4Ch] with edi pushed in the prologue, ours load/inc/store with the edi push shrink-wrapped; inline AddActiveDecal helper and += 1 tried
+- 00b1a640: DIFFER(190v192) user-point array clear(): the lane forwards the ctor's zero stores into the __copy arguments, retail re-loads first/last; begin()/end() accessors, body-assignment ctor, user dtor, s/g/y pragmas tried
