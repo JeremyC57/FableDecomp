@@ -7,7 +7,9 @@ void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* this
 static int g_deletes = 0;
 static int g_base = 0;
 
-extern "C" void __cdecl engine_op_delete(void* p) { if (p) g_deletes++; }
+// spy on the MSVCR71 free thunk (0x00BFEA14) the source calls; it never releases (test objects live on the stack)
+static int g_armed = 0;   // armed only around the call under test (CRT start-up/exit frees are ignored)
+extern "C" void __cdecl free(void* p_) { void* p = (void*)p_; if (!g_armed) return; if (p) g_deletes++; }
 void __fastcall CPatchTesselationEdgeStrip_base_dtor(CPatchTesselationEdgeStrip*) { g_base++; }
 
 int main()
@@ -23,7 +25,7 @@ int main()
     *(void**)(b + 0x48) = 0;
     *(void**)(b + 0x3c) = &v;
 
-    CPatchTesselationEdgeStrip_dtor(&obj);
+    g_armed = 1; CPatchTesselationEdgeStrip_dtor(&obj); g_armed = 0;
 
     if (g_deletes == 3 && g_base == 1)
         printf("OK_458476\n");

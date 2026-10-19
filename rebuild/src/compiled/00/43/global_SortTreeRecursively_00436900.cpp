@@ -20,7 +20,7 @@ struct TreeList
     TreeNode* head;   // +0x0
 };
 
-extern "C" void FABLE_CDECL fable_op_delete_7c8114(void* p);
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 void FABLE_FASTCALL SortTreeRecursively_00436900(TreeList* thisptr)
 {
@@ -30,7 +30,7 @@ void FABLE_FASTCALL SortTreeRecursively_00436900(TreeList* thisptr)
     {
         TreeNode* n = cur;            // mov eax,esi
         cur = cur->next;              // mov esi,[esi]
-        fable_op_delete_7c8114(n);    // push eax / call
+        free(n);    // push eax / call
     }
 
     thisptr->head->next = thisptr->head;   // mov eax,[edi] / mov [eax],eax
@@ -39,6 +39,6 @@ void FABLE_FASTCALL SortTreeRecursively_00436900(TreeList* thisptr)
     TreeNode* h = thisptr->head;      // mov edi,[edi]
     if (h != 0)                       // test edi,edi / je
     {
-        fable_op_delete_7c8114(h);    // push edi / call
+        free(h);    // push edi / call
     }
 }

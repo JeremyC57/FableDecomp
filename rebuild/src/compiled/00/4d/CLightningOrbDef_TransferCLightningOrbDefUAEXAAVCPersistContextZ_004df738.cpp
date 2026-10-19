@@ -1,8 +1,8 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
-struct CPersistContext {
-    void PersistA(void* p);
-    void PersistB(void* p);
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferLong(void* value);                 // 0x00431102 Transfer(long&)
+    void TransferFloat(void* value);                // 0x00431061 Transfer(float&)
 };
 struct CContextSensitiveItemDef {
     unsigned char _pad[0x28];
@@ -16,9 +16,9 @@ struct CContextSensitiveItemDef {
 
 void CContextSensitiveItemDef::Transfer(CPersistContext& ctx)
 {
-    ctx.PersistA(&f0);
-    ctx.PersistB(&f1);
-    ctx.PersistB(&f2);
-    ctx.PersistB(&f3);
-    ctx.PersistB(&f4);
+    ctx.TransferLong(&f0);
+    ctx.TransferFloat(&f1);
+    ctx.TransferFloat(&f2);
+    ctx.TransferFloat(&f3);
+    ctx.TransferLong(&f4);
 }

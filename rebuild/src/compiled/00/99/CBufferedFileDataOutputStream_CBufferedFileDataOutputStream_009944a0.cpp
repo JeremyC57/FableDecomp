@@ -11,6 +11,7 @@
 // Shape: the init list in declaration order; File and BufferSize (scalars from the arguments) are
 // stored before the allocation call, the two zeros from one register, FileSize from the virtual
 // call and FilePos copied from it (one call, one register).
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 struct CCharString {
     void* m_pStringData;
     CCharString(const char* text, long length); // 0x0099EBF0

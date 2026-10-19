@@ -1,6 +1,44 @@
 #include <stdio.h>
-#include "candidates/build_number_compiled.h"
-
+#include <stddef.h>
+// Behaviour spies for the callees GFGetBuildNumber2 (0x00401F30) binds: the two string classes' ctors and
+// destructors, CWideString::PathExists, the CDiskFileWin32 ctor/Close and the base destructor.
+class CAFile;
+class CWideString
+{
+public:
+    CWideString(const wchar_t* text);
+    ~CWideString();
+    bool PathExists() const;
+    void* PStringData;
+};
+class CCharString
+{
+public:
+    CCharString(CAFile* file, long length);
+    ~CCharString();
+    CCharString& operator=(const CCharString& other);
+    void* PStringData;
+};
+class CBaseClassNonCopyable
+{
+public:
+    ~CBaseClassNonCopyable();
+    void** Vftable;
+};
+class CAFile : public CBaseClassNonCopyable
+{
+};
+#pragma pack(push, 1)
+class CDiskFileWin32 : public CAFile
+{
+public:
+    CDiskFileWin32(const CWideString& path, int accessMode, int shareMode);
+    void Close();
+    unsigned char Unknown04[0x14];
+    CWideString Pathname;
+};
+#pragma pack(pop)
+void __cdecl GFGetBuildNumber2();
 enum BuildEvent
 {
     EVENT_ASSIGN_WIDE,
@@ -22,7 +60,7 @@ struct BuildCall
     int ValueB;
 };
 
-CCharString FableFullBuildVersion;
+CCharString FableFullBuildVersion(0, 0);
 void* FableDiskFileWin32Vftable[1];
 static BuildCall gCalls[20];
 static int gCallCount;
@@ -30,6 +68,7 @@ static bool gPathExists;
 
 static void Record(BuildEvent event, const void* self, const void* argument, int valueA, int valueB)
 {
+    if (gCallCount >= 20) return;
     BuildCall& call = gCalls[gCallCount++];
     call.Event = event;
     call.Self = self;
@@ -38,8 +77,9 @@ static void Record(BuildEvent event, const void* self, const void* argument, int
     call.ValueB = valueB;
 }
 
-void CCharString::AssignFromWide(const wchar_t* text)
+CWideString::CWideString(const wchar_t* text)
 {
+    if (text == 0) return;          // the spy file's own Pathname member below
     Record(EVENT_ASSIGN_WIDE, this, text, 0, 0);
 }
 
@@ -49,25 +89,30 @@ bool CWideString::PathExists() const
     return gPathExists;
 }
 
-void CCharString::Destroy()
+CWideString::~CWideString()
 {
     Record(EVENT_DESTROY, this, 0, 0, 0);
 }
 
-void CDiskFileWin32::Construct(const CWideString& path, int accessMode, int shareMode)
+CCharString::~CCharString()
+{
+    Record(EVENT_DESTROY, this, 0, 0, 0);
+}
+
+CDiskFileWin32::CDiskFileWin32(const CWideString& path, int accessMode, int shareMode) : Pathname(0)
 {
     Record(EVENT_DISK_CONSTRUCT, this, &path, accessMode, shareMode);
 }
 
-void CCharString::ConstructFromFile(CAFile* file, int length)
+CCharString::CCharString(CAFile* file, long length)
 {
     Record(EVENT_FILE_CONSTRUCT, this, file, length, 0);
 }
 
-CCharString* CCharString::Assign(const CCharString& other)
+CCharString& CCharString::operator=(const CCharString& other)
 {
     Record(EVENT_ASSIGN_STRING, this, &other, 0, 0);
-    return this;
+    return *this;
 }
 
 void CDiskFileWin32::Close()
@@ -75,13 +120,14 @@ void CDiskFileWin32::Close()
     Record(EVENT_DISK_CLOSE, this, Vftable, 0, 0);
 }
 
-void CDiskFileWin32::BaseCleanup()
+CBaseClassNonCopyable::~CBaseClassNonCopyable()
 {
     Record(EVENT_DISK_BASE_CLEANUP, this, 0, 0, 0);
 }
 
 int main()
 {
+    gCallCount = 0;
     gPathExists = false;
     GFGetBuildNumber2();
     if (gCallCount != 3) return 1;

@@ -11,6 +11,7 @@
 // Shape: one zero register (ebx) for every store and compare; `delete[] Patches` / `delete PatchTree` are unconditional with the
 // zero stores after them; the counted pointer is reset through an inline member (`Reset()`: the block re-read after each step,
 // both words zeroed) -- written inline in Clear the two zero stores sink below the next block.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 class CReleaseTarget { };
 typedef void (CReleaseTarget::*CReleaseMethod)();
 

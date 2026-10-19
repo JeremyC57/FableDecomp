@@ -8,9 +8,9 @@
 #undef CPlayerGui
 #include "engine/CSubtitleRenderer.h"
 
+extern "C" void __cdecl free(void* p);   // 0x00BFEA14 is the MSVCR71 free import thunk (the CRT free, not a namespace function)
 namespace NTCScriptedControl {
 struct CThing;
-void __cdecl free(void* p); // 0x00bfea14 is the MSVCR71 free import thunk, not operator delete
 struct CSubtitledMessage { unsigned char nativeFields[0x44]; CSubtitledMessage(); CSubtitledMessage(const CSubtitledMessage&); ~CSubtitledMessage(); };
 struct CSubtitledMessageArray {
     CSubtitledMessage* first; CSubtitledMessage* last; CSubtitledMessage* end;

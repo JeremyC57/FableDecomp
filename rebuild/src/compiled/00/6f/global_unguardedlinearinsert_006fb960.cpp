@@ -15,6 +15,7 @@
 // pair assignment as key move + the CSmallVector operator= self-test (`&other != this`) around the out-of-line
 // Copy, `last` in ecx and `next` / `&next->events` strength-reduced in esi / edi; finally the by-value
 // parameter's destructor (`delete[] m_pData`) runs in the callee.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 namespace NAnimationEvents { struct CEvent { long m_a, m_b; }; }
 
 struct CSmallVector_CEvent_32 {

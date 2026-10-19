@@ -10,6 +10,7 @@
 // +0x18..+0x40. The CCountedPointer block is {count, pointer-to-member release, object} (`mov ecx,[eax+8] ; call [eax+4]`).
 // Shape: the patch array is reset only when present (`if (Patches) { delete[] Patches; Patches = 0; }`: the store sits inside the
 // non-null arm), the tree unconditionally (`delete PatchTree; PatchTree = 0;`); the flag tests are `mov al,[..] ; test al,al`.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 class CReleaseTarget { };
 typedef void (CReleaseTarget::*CReleaseMethod)();
 

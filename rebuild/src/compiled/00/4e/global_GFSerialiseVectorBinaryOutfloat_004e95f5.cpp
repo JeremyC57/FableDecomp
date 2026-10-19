@@ -1,30 +1,25 @@
 #pragma optimize("s",on)
 #include "rebuild_abi.h"
-
-// GFSerialiseVectorBinaryOut<float>  @ 0x004720f1
-// this in ecx (ebp), vector range ptr in edx (edi).
-//   count = (end - begin) >> 2   (4-byte element stride)
-//   thisptr->WriteCount(count)             -> push esi; call
-//   for i in [0,count): push [first+i*4]; call  (element pushed BY VALUE as a raw dword)
-// The element sink takes the 4-byte value by value (plain integer push),
-// mirroring the landed GFSerialiseVectorBinaryOut<CAtmosBankEntry> Serialise(int) idiom.
-
+// GFSerialiseVectorBinaryOut<float> @ 0x004E95F5 (retail, 50 bytes): write a 4-byte-element vector to a binary stream.
+// The stream (a CDataOutputStream) arrives in ecx, the vector's {first, last} in edx.
+//   count = (last - first) >> 2 goes out through CDataOutputStream::WriteLong(long) @ 0x00993EB0,
+//   then every element's raw dword (`push [first+i*4] ; call`) through the same WriteLong.
+// engine/CDataOutputStream.h is data-only; CDataOutputStream_Methods is the lane's method carrier
+// (as in the landed 0x00B17F70). WriteULong(unsigned long) is the separate body at 0x00993EA0.
+#include "engine/CDataOutputStream.h"
+struct CDataOutputStream_Methods : CDataOutputStream {
+    void WriteLong(long value);                 // 0x00993EB0
+};
 struct FloatVecRange {
-    int* first;   // +0x00  begin
-    int* last;    // +0x04  end
+    long* first;   // +0x00  begin
+    long* last;    // +0x04  end
 };
-
-struct GFSerialiser {
-    void WriteCount(int count);
-    void WriteElem(int elem);
-};
-
-void __fastcall GFSerialiseVectorBinaryOut_float(GFSerialiser* thisptr, void* /*edx*/ vec)
+void __fastcall GFSerialiseVectorBinaryOut_float(CDataOutputStream_Methods* thisptr, void* /*edx*/ vec)
 {
     FloatVecRange* r = (FloatVecRange*)vec;
-    int count = (int)(((char*)r->last - (char*)r->first) >> 2);
-    thisptr->WriteCount(count);
-    for (int i = 0; i < count; ++i) {
-        thisptr->WriteElem(*(int*)((char*)r->first + i * 4));
+    long count = (long)(((char*)r->last - (char*)r->first) >> 2);
+    thisptr->WriteLong(count);
+    for (long i = 0; i < count; ++i) {
+        thisptr->WriteLong(*(long*)((char*)r->first + i * 4));
     }
 }

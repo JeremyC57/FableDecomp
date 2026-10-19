@@ -3,10 +3,9 @@ struct A { int x; };
 struct B { int x; };
 struct C { int x; };
 
-struct CPersistContext {
-    void PersistA(A* p);
-    void PersistB(B* p);
-    void PersistC(C* p);
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferLong(void* value);                 // 0x00431102 Transfer(long&)
+    void Transfer_00466a47(A* value);               // 0x00466A47 per-type transfer instantiation, element type not attributed
 };
 
 struct CCarrySlotDef {
@@ -19,8 +18,8 @@ struct CCarrySlotDef {
 
 void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* self, void* edx, CPersistContext* ctx)
 {
-    ctx->PersistA(&self->a);
-    ctx->PersistB(&self->b);
-    ctx->PersistC(&self->c);
-    ctx->PersistA(&self->a2);
+    ctx->TransferLong(&self->a);
+    ctx->TransferLong(&self->b);
+    ctx->TransferLong(&self->c);
+    ctx->Transfer_00466a47(&self->a2);
 }

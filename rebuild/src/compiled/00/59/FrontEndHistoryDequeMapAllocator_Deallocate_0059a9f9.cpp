@@ -4,8 +4,7 @@
 // map allocation itself; the number of slots is part of the allocator
 // interface but is not needed by the retail heap.
 
-extern "C" void __cdecl
-FrontEndHistoryDequeMapDelete_0059a9f9(void* allocation);
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 class FrontEndHistoryDequeMapAllocator_0059a9f9
 {
@@ -20,7 +19,7 @@ void FrontEndHistoryDequeMapAllocator_0059a9f9::Deallocate(
 {
     if (allocation != 0)
     {
-        FrontEndHistoryDequeMapDelete_0059a9f9(allocation);
+        free(allocation);
     }
 }
 #pragma optimize("s", off)

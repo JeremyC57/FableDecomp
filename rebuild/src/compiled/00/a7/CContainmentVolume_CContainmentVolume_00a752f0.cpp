@@ -12,6 +12,7 @@
 // base/derived pair is modelled locally with the same member names.
 // Shape: the plane pointer is pushed once before the pool test (shared argument of both calls),
 // the pool pointer is re-read for the Free call, then the pointer and the size are cleared.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct CPlane {                                // C3DVector Normal + float Distance
     float Normal_X;
     float Normal_Y;

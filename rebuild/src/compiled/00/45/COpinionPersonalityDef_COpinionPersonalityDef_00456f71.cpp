@@ -10,6 +10,7 @@
 // and goes through the non-EH vector constructor iterator. Shape: a size-optimised module (#pragma optimize("s", on):
 // `pop ecx` after operator new); the two scalar stores follow the member constructor, so they are body assignments.
 // Leaf: ??0COpinionPersonalityDef
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 #pragma optimize("s", on)
 class CParentDefClassBase {                        // 0x3C bytes in retail
 public:

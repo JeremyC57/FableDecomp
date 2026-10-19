@@ -9,12 +9,12 @@ struct CTCMapwho {
 };
 
 // cdecl free function, target 0x00bfe9bc
-void FreeThing(CTCMapwho* p);
+void __cdecl operator delete(void* block);   // MSVCR71 import thunk 0x00BFE9BC
 
 void __stdcall OnDie(CTCMapwho* p)
 {
     if (p) {
         p->Shutdown();
-        FreeThing(p);
+        operator delete(p);
     }
 }

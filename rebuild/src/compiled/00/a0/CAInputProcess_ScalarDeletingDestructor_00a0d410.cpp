@@ -17,8 +17,7 @@ struct CInputProcessManager {
 };
 
 struct CBaseClassNonCopyable {
-    virtual void v00();
-    ~CBaseClassNonCopyable();                   // 0x0099A300 (~CBaseClass body)
+    virtual ~CBaseClassNonCopyable();           // slot 0; 0x0099A300 (called directly from the derived dtor)
 };
 
 struct CAInputProcess : CBaseClassNonCopyable {

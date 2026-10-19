@@ -13,6 +13,7 @@
 // Shape (as the landed 0x00C48DB0): a virtual function plus a NON-virtual destructor gives the plain `??1`; the
 // `eh vector destructor iterator` form of `delete[]` needs /EHsc. The buffer's `delete[]` (a POD array) has no null
 // test and its argument is read before the vtable store; the entry array's `delete[]` carries the compiler's null test.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct SEntry_00c207f0 {                               // 0xb4 bytes with a destructor @ 0x00c207f0
     unsigned char _body[0xb4];
     ~SEntry_00c207f0();

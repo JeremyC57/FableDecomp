@@ -1,10 +1,7 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[0xc]; };
-struct CPersistContext {
-    void PersistA(void* p);
-    void PersistB(void* p);
-    void PersistC(void* p);
-    void PersistD(void* p);
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void Transfer_00464cbf(void* value);            // 0x00464CBF per-type transfer instantiation, element type not attributed
 };
 struct CSpecialAbilitiesDrainLifeDef {
     unsigned char _pad[0x3c];
@@ -18,9 +15,9 @@ struct CSpecialAbilitiesDrainLifeDef {
 
 void CSpecialAbilitiesDrainLifeDef::Transfer(CPersistContext& ctx)
 {
-    ctx.PersistA(&f0);
-    ctx.PersistB(&f1);
-    ctx.PersistA(&f2);
-    ctx.PersistC(&f3);
-    ctx.PersistD(&f4);
+    ctx.Transfer_00464cbf(&f0);
+    ctx.Transfer_00464cbf(&f1);
+    ctx.Transfer_00464cbf(&f2);
+    ctx.Transfer_00464cbf(&f3);
+    ctx.Transfer_00464cbf(&f4);
 }

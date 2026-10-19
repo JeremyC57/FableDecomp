@@ -1,7 +1,6 @@
 #pragma optimize("s",on)
-struct CPersistContext {
-    void PersistA(int& r);
-    void PersistB(int& r);
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferFloat(int& value);                 // 0x00431061 Transfer(float&)
 };
 
 struct CVillagerInteractionsDef {
@@ -13,7 +12,7 @@ struct CVillagerInteractionsDef {
 
 void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* self, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->PersistA(self->fieldA);
-    ctx->PersistA(self->fieldB);
-    ctx->PersistB(self->fieldC);
+    ctx->TransferFloat(self->fieldA);
+    ctx->TransferFloat(self->fieldB);
+    ctx->TransferFloat(self->fieldC);
 }

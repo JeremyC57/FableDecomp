@@ -10,6 +10,8 @@
 // `this` uses engine/CChunkedFileRawDataChunk.h (Data +0x10, ByteSize +0x14); the method (virtual in retail, the
 // flattened header carries no vtable declarations) is declared on a methods-only derivation of it.
 #include "engine/CChunkedFileRawDataChunk.h"
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)

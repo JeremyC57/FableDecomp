@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
-struct CPersistContext {
-    void PersistA(int& r);
-    void PersistB(int& r);
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferLong(int& value);                  // 0x00431102 Transfer(long&)
+    void Transfer_00452e01(int& value);             // 0x00452E01 per-type transfer instantiation, element type not attributed
 };
 
 struct CVillagerInteractionsDef {
@@ -13,7 +13,7 @@ struct CVillagerInteractionsDef {
 
 void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* self, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->PersistA(self->fieldA);
-    ctx->PersistA(self->fieldB);
-    ctx->PersistB(self->fieldC);
+    ctx->TransferLong(self->fieldA);
+    ctx->Transfer_00452e01(self->fieldB);
+    ctx->TransferLong(self->fieldC);
 }

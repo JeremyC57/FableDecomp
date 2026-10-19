@@ -8,6 +8,8 @@
 //   the sibling constructor 0x00996990.
 // Shape: `delete[] Buffer` sits under the combined `Buffer && size changed` test (no second null test); the buffer is
 //   re-tested through the member (`cmp [esi+0x18],0`) before reallocation.
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct CACompressor {                                           // landed 0x00A3AEA0 (vtable 0x0129B424)
     virtual ~CACompressor();                                    // slot 0: scalar deleting destructor (`delete` with flag 1)
     unsigned char _body[0x1c - 4];

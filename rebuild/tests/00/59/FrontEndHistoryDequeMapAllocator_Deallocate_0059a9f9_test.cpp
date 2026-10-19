@@ -9,9 +9,8 @@ public:
 static int g_DeleteCalls;
 static void* g_DeletedAllocation;
 
-extern "C" void __cdecl
-FrontEndHistoryDequeMapDelete_0059a9f9(void* allocation)
-{
+// spy on the MSVCR71 free thunk (0x00BFEA14) the source calls; it never releases (test objects live on the stack)
+extern "C" void __cdecl free(void* p_) { void* allocation = (void*)p_;
     ++g_DeleteCalls;
     g_DeletedAllocation = allocation;
 }

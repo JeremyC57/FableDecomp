@@ -1,8 +1,10 @@
-// CEventSubscription_00c239b0::CEventSubscription(count) -- EH-framed constructor (vtable 0x012B3A94; the manifest's "NScript_CEvent_InitializeSubscriptions"; the landed 0x00C23C10 is the plain-`malloc` twin): the count at +4, +8 / +0xc cleared; a zero count leaves the two tables at +0x10 / +0x14 empty; otherwise a 180-byte-per-entry table is built with `new[]` over the class allocator (`malloc`, the raw block freed on unwind; `__ehvec_ctor` with 0x00C21BA0 / 0x00C207F0) and a word-per-entry table `malloc`ed, each failure raising "EMEM"-style warnings ("Memory allocation failure", d:\dev\audio\ver_fable_1.5_b\libpk\PKCFrallocStatic.h lines 63 and 65: an MFC-style string in a nested block handed to the log sink at 0x0143BB2C, then the empty trace temporary @ 0x00C16750 -- the first string and trace in the dead argument slot, the second trace on a free frame byte; states 0 and 1), and every entry is initialised (@ 0x00C22840)
+// CEventSubscription_00c239b0::CEventSubscription(count) -- EH-framed constructor (vtable 0x012B3A94; the manifest's "NScript_CEvent_InitializeSubscriptions"; the landed 0x00C23C10 is the POD-entry twin): the count at +4, +8 / +0xc cleared; a zero count leaves the two tables at +0x10 / +0x14 empty; otherwise a 180-byte-per-entry table is built with `new[]` (MSVCR71 operator new[] @ 0x00BFEB22, the raw block freed on unwind; `__ehvec_ctor` with 0x00C21BA0 / 0x00C207F0) and a word-per-entry table allocated with `new long[]` (operator new[] @ 0x00BFEB22), each failure raising "EMEM"-style warnings ("Memory allocation failure", d:\dev\audio\ver_fable_1.5_b\libpk\PKCFrallocStatic.h lines 63 and 65: an MFC-style string in a nested block handed to the log sink at 0x0143BB2C, then the empty trace temporary @ 0x00C16750 -- the first string and trace in the dead argument slot, the second trace on a free frame byte; states 0 and 1), and every entry is initialised (@ 0x00C22840)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C239B0, oracle length 489 bytes. Built under /EHsc.
-// Retail bytes:  ... (as 0x00C23C10, the entry table from `imul eax,eax,0B4h ; add eax,4 ; push eax ; call malloc ; ... mov [eax],edi ; call __ehvec_ctor` with 0x00C21BA0 / 0x00C207F0, the block freed on unwind; the entries initialised @ 0x00C22840 every 0B4h bytes) ...
+// Retail bytes:  ... (as 0x00C23C10, the entry table from `imul eax,eax,0B4h ; add eax,4 ; push eax ; call operator new[] ; ... mov [eax],edi ; call __ehvec_ctor` with 0x00C21BA0 / 0x00C207F0, the block freed on unwind; the entries initialised @ 0x00C22840 every 0B4h bytes) ...
 // The class is named by address.
-void* __cdecl malloc(unsigned int size);
+// Both tables come from the global array allocator: retail calls MSVCR71 operator new[] (0x00BFEB22) for each.
+void* __cdecl operator new[](unsigned int size);     // 0x00BFEB22 (the lane <new> lacks it)
+void __cdecl operator delete[](void* block);        // 0x00BFEB1C
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c239b0)(const char* text);
 extern PFNLOGSINK_00c239b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
@@ -18,13 +20,10 @@ struct CTrace_00c239b0 {                   // empty temporary (a debug-break hel
     CTrace_00c239b0();                         // 0x00C16750
 };
 
-void __cdecl free(void* block);
 struct SEntry_00c239b0 {                    // 180 bytes per entry, built and torn down out of line
     unsigned char _body[0xb4];
     SEntry_00c239b0();                           // 0x00C21BA0
     ~SEntry_00c239b0();                          // 0x00C207F0
-    static void* operator new[](unsigned int size) { return malloc(size); }
-    static void operator delete[](void* block) { free(block); }
 };
 
 struct CEventSubscription_00c239b0 {
@@ -56,7 +55,7 @@ CEventSubscription_00c239b0::CEventSubscription_00c239b0(unsigned long count)
         }
         CTrace_00c239b0();
     }
-    m_pSlots = (long*)malloc(m_count * sizeof(long));
+    m_pSlots = new long[m_count];
     if (!m_pSlots) {
         {
             CString_00c239b0 line;

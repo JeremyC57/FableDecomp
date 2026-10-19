@@ -9,6 +9,7 @@
 // Layout (PDB): CInitBaseClass base {vptr, bool Valid}, Buffer +8, Locked +0xc, NoBytes +0x10 (vtable 0x0129C790, the
 // landed constructor 0x009F4A00). Shape: the nested-if form -- both failures share the `xor al,al` tail at the end
 // (early returns would duplicate it and push edi late).
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 struct CInitBaseClass {
     virtual void v00();
     bool Valid;                                // +0x04

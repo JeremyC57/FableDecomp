@@ -7,15 +7,15 @@ struct CCompressedMemoryDataInputStream {
     void* buf_b4;   // +0xb4
 };
 
-void __cdecl operator delete(void* p);
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 extern void __fastcall CBase_dtor(void* self);
 
 void __fastcall CCompressedMemoryDataInputStream_dtor(CCompressedMemoryDataInputStream* self)
 {
     if (self->buf_b4)
-        operator delete(self->buf_b4);
+        free(self->buf_b4);
     if (self->buf_a8)
-        operator delete(self->buf_a8);
+        free(self->buf_a8);
     self->vtbl = (void*)0x1230ba0;
     CBase_dtor(self);
 }

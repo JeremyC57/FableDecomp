@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C31810, oracle length 325 bytes. Built under /EHsc.
 // Retail bytes:  ... mov ebx,[esp+18h] ; push esi ; mov esi,ecx ; mov eax,[esi+4] ; cmp ebx,eax ; je done ; test ebx,ebx ; jne grow ; test eax,eax ; je a ; mov eax,[esi] ; push eax ; call free ; add esp,4 ; mov [esi],ebx ; a: mov dword ptr [esi+4],0 ; ... ret 4 ; grow: lea ecx,[ebx*4] ; push edi ; push ecx ; call malloc ; mov edi,eax ; add esp,4 ; test edi,edi ; jne copy ; mov edx,[g_pchNil] ; mov [esp+0Ch],edx ; mov edx,offset "d:\dev\audio\ver_fable_1.5_b\libpk\PKCAutoDeleteArray.h" ; lea ecx,[esp+0Ch] ; mov [esp+18h],eax ; call Append ; ... mov edx,39h ; ... call AppendNumber ; ... call Append ("EMEM") ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+0Ch] ; call eax ; skip: lea ecx,[esp+0Ch] ; mov dword ptr [esp+18h],-1 ; call ~CString ; lea ecx,[esp+20h] ; call CTrace::CTrace ; copy: mov eax,[esi+4] ; cmp eax,ebx ; mov ecx,ebx ; jae b ; mov ecx,eax ; b: test ecx,ecx ; je c ; xor eax,eax ; test ecx,ecx ; jbe c ; loop: mov edx,[esi] ; MOVvoid* ; inc eax ; cmp eax,ecx ; jb loop ; c: mov eax,[esi] ; test eax,eax ; je d ; push eax ; call free ; add esp,4 ; d: mov [esi],edi ; mov [esi+4],ebx ; pop edi ; done: ... ret 4
 // The twin at 0x00C169D0 resizes a `new[]`/`delete[]` array. The classes are named by address.
-extern "C" void* __cdecl malloc(unsigned int size);
-extern "C" void __cdecl free(void* block);
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c31810)(const char* text);
 extern PFNLOGSINK_00c31810 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
@@ -34,13 +34,13 @@ void CAutoDeleteArray_00c31810::Resize(unsigned long count)
         return;
     if (count == 0) {
         if (m_count) {
-            free(m_pData);
+            operator delete[](m_pData);
             m_pData = 0;
         }
         m_count = 0;
         return;
     }
-    void** block = (void**)malloc(count * 4);
+    void** block = (void**)operator new[](count * 4);
     if (!block) {
         {
             CString_00c31810 line;
@@ -56,7 +56,7 @@ void CAutoDeleteArray_00c31810::Resize(unsigned long count)
             block[i] = m_pData[i];
     }
     if (m_pData)
-        free(m_pData);
+        operator delete[](m_pData);
     m_pData = block;
     m_count = count;
 }

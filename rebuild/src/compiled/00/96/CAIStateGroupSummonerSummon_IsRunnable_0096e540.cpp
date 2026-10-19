@@ -14,12 +14,14 @@ struct CThing;
 struct CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
-// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
+// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound: the non-const
+// instantiation @ 0x0040F020 and the const one @ 0x004365B0 (two byte-identical bodies).
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type);       // 0x0040F020 (non-const instantiation)
+    SEntry* LowerBound(const long* type) const; // 0x004365B0 (const instantiation, byte-identical body)
 };
 
 struct CThing {
@@ -50,6 +52,31 @@ struct CThing {
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        CInterfaceMap::SEntry* sel;
+        if (it == map->last) sel = map->last;
+        else if (it->type <= interfaceType) sel = it;
+        else sel = map->last;
+        return sel;
+    }
+    // the same lookups through a const CThing (the const LowerBound instantiation)
+    template<class T> __forceinline bool GetInterfaceConst(T** ppOut, long interfaceType) const
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            const CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+    __forceinline CInterfaceMap::SEntry* FindEntryConst(long interfaceType) const
+    {
+        long type = interfaceType;
+        const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         CInterfaceMap::SEntry* sel;
         if (it == map->last) sel = map->last;
@@ -126,7 +153,7 @@ bool CAIStateGroup_SummonerSummon::IsRunnable()
     if (PBrain->PCreature->HasTC(8)) {
         CThing* target = ((CTCTargetSource*)PBrain->PCreature->FindEntry(8)->component)->GetEnemy();
         if (target != 0 && !(target->m_flags91 & 1) && PBrain->PCreature->HasTC(0xFA)
-            && ((CTCAISummon*)PBrain->PCreature->FindEntry(0xFA)->component)->GetMaxCreatureCount() != 0) {
+            && ((CTCAISummon*)PBrain->PCreature->FindEntryConst(0xFA)->component)->GetMaxCreatureCount() != 0) {
             CIntelligentPointerConstThing converted(target);
             PTarget.SetPItem(converted.GetPItem());
             return true;

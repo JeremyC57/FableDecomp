@@ -1,15 +1,26 @@
-// std::pair _Dest_val: release the second member, then tail-call the first
-// (this+0x0 and this+0x10). __fastcall this=ecx. pack(1) pins the offsets.
-#pragma pack(push,1)
-struct Part { void Release(); };
-struct Pair {
-    Part first;
-    char pad[0xf];
-    Part second;
-    void Destroy();
+// Leaf: DestroyMembers
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0043C3C0, 19 bytes. Catalog name: std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>.
+// Body: destroy the member at +0x10 (CCharString::~CCharString @ 0x0099EAE0), then tail-call
+// the +0x0 member CWideString::~CWideString @ 0x0099B510. __thiscall, this = ecx.
+struct CWideString {                        // one word: CWideStringData*
+    void* PStringData;
+    ~CWideString();                         // 0x0099B510 (NoRefs at data+0xc, free(), instance count 0x013BCA20)
+};
+struct CCharString {                        // one word: CCharStringData*
+    void* PStringData;
+    ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
+};
+#pragma pack(push, 1)
+struct CObject_0043c3c0 {
+    CWideString First;                          // +0x0
+    unsigned char _pad[0xc];
+    CCharString Second;                         // +0x10
+    void DestroyMembers();
 };
 #pragma pack(pop)
-void Pair::Destroy() {
-    this->second.Release();
-    this->first.Release();
+
+void CObject_0043c3c0::DestroyMembers()
+{
+    Second.~CCharString();
+    First.~CWideString();
 }

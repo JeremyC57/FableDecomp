@@ -807,6 +807,25 @@ overloaded virtuals sit in reverse declaration order. Catalog 30,909 -> **31,659
 - Landing: the other 503 went through `verify_and_land.py --land` on our tree (503 wins, 0 rejected), after retiring the two old rows (`global_Destval_00692940`, `CLandscapeBackgroundPatch_vectordeletingdestructor_009f1540`, both baked stubs) so the verifier re-landed them under their proven names. Catalog 34,098 → 34,599 (69.8%). Codex's 18 catalog path-field repairs were applied; its tool changes were not adopted (owner rule), though its lander guard against deleting staged inputs before the landing record exists is worth copying if our lander bites again.
 - Documentation verdicts: Codex's HANDOFF was a 2,200-word fleet log with sandbox-escalation instructions and a wrong remote; it was not merged. Its GOTCHAS additions were condensed to one-liners; the x87 compare-mask table was kept.
 
+## Part 8 (2026-10-19): the catalog relocation-identity audit and its repairs
+
+The Codex review showed that `RELOCATION_MATCH` never checked *which* function a masked `call`/`jmp` slot targets.
+`tools/decomp_pipeline/reloc_identity.py` (wired into `verify_and_land.py`) now reads the object's relocations, adds
+the retail addend back and compares the symbol the source names with the retail target: in-row symbol/target
+inconsistency and a CRT-thunk claim naming another CRT function reject; label and catalog-binding disagreements warn
+(`LANDVERIFY_STRICT_RELOCS=1` rejects). `reloc_audit.py` ran the check over the whole catalog
+(`rebuild/oracles/reloc_audit.tsv`, bindings in `reloc_bindings.tsv`): 2,949 landed rows flagged. 2,714 were
+CRT-thunk aliases (`free_engine`, `fable_op_delete_...`) renamed to the real import by `fix_crt_aliases.py` and
+re-verified (`reloc_alias_fixes.tsv`). The remaining 235 (semantic thunk mix-ups, one symbol bound to two targets,
+one target bound to two identities, 8 alias-tool test failures) went to one Opus 5.5 high agent
+(`batches/2026-10-19_reloc_audit_repairs/`): 235/235 repaired; the landing session re-ran every row through
+`verify_and_land.py --recheck-landed` (233 MATCH/RELOCATION_MATCH + PASS, 00495fe0 after inlining its test's relative
+`#include` of the repo source, 0059a9f9 through the repo-oracle grader because it sits outside the manifest) and wrote
+the pair back only then. 24 of the 235 were real byte defects the old grade had masked (23 static counted-pointer
+releases storing the two words in the wrong order, 00a0d410 reading vtable slot 4 instead of 3). Wrong propagated
+labels found on the way are in `ghidra_out/labels_identity_corrections_2026-10-19.tsv`; lessons in the batch's
+LESSONS.md and GOTCHAS. The audit and bindings tables were recomputed for all 2,949 repaired rows afterwards.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in

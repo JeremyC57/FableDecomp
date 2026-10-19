@@ -1,8 +1,9 @@
 #pragma optimize("s",on)
 struct CMember { int x; };
 
-struct CPersistContext {
-    void Persist(CMember* m);  // __fastcall: ecx=this, stack=m
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferFloat(CMember* value);             // 0x00431061 Transfer(float&)
+    void TransferDefString(CMember* value);         // 0x0045228F Transfer(CDefString&): dword write / CDefString read 0x0044FC00
 };
 
 struct CGuildMasterDef {
@@ -13,6 +14,6 @@ struct CGuildMasterDef {
 
 void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* self, void* edx, CPersistContext* ctx)
 {
-    ctx->Persist(&self->m28);
-    ctx->Persist(&self->m2c);
+    ctx->TransferFloat(&self->m28);
+    ctx->TransferDefString(&self->m2c);
 }

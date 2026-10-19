@@ -6,7 +6,8 @@ static int g_helper = 0;
 static CTCMapwho* g_freed = 0;
 
 extern "C" void helper_9f9020(void) { g_helper++; }
-extern "C" void free_bfe9bc(CTCMapwho* p) { g_freed = p; }
+// spy on operator delete (MSVCR71 thunk 0x00BFE9BC) the source calls; it never releases (test objects live on the stack)
+void __cdecl operator delete(void* p_) { CTCMapwho* p = (CTCMapwho*)p_; g_freed = p; }
 
 void __fastcall OnDie(CTCMapwho* self);
 

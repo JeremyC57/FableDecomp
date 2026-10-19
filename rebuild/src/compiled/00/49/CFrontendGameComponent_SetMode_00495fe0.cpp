@@ -2,10 +2,17 @@
 
 #include <cstring>
 
-class CFrontendModeList_00495fe0
+// The two lists are different types with different refresh bodies: the save list's Refresh is 0x00495830, the
+// profile list's (a disk enumeration with wide-string path pieces "*", ":", "\\") is 0x004959E0.
+class CFrontendSaveList_00495fe0
 {
 public:
-    void Refresh();
+    void Refresh();                 // 0x00495830
+};
+class CFrontendProfileList_00495fe0
+{
+public:
+    void Refresh();                 // 0x004959E0
 };
 
 class CFrontendModePointer_00495fe0
@@ -26,10 +33,10 @@ class CFrontendGameComponent_00495fe0
     long m_ResetValues[32];
     long m_Cursor;
     unsigned char m_Pad01ec[0x1c20];
-    CFrontendModeList_00495fe0 m_ProfileList;
+    CFrontendProfileList_00495fe0 m_ProfileList;
     unsigned char m_Pad1e0d[0x0b];
     long m_ProfileIndex;
-    CFrontendModeList_00495fe0 m_SaveList;
+    CFrontendSaveList_00495fe0 m_SaveList;
     unsigned char m_Pad1e1d[0x0b];
     long m_SaveIndex;
     unsigned char m_Pad1e2c[0x14];

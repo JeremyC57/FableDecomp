@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "rebuild_abi.h"
 
 struct TreeNode
@@ -15,10 +14,12 @@ struct TreeList
 
 static int g_deletes = 0;
 
-extern "C" void FABLE_CDECL fable_op_delete_7c8114(void* p)
+// spy on the MSVCR71 free thunk (0x00BFEA14) the source calls: counts only while armed around the
+// call under test and never releases (the nodes are static); CRT start-up/exit frees are ignored
+static int g_armed = 0;
+extern "C" void __cdecl free(void* p)
 {
-    ++g_deletes;
-    free(p);
+    if (g_armed) ++g_deletes;
 }
 
 void FABLE_FASTCALL SortTreeRecursively_00436900(TreeList* thisptr);
@@ -26,9 +27,10 @@ void FABLE_FASTCALL SortTreeRecursively_00436900(TreeList* thisptr);
 int main(void)
 {
     // Build a circular list: head <-> a <-> b <-> head
-    TreeNode* head = (TreeNode*)malloc(sizeof(TreeNode));
-    TreeNode* a = (TreeNode*)malloc(sizeof(TreeNode));
-    TreeNode* b = (TreeNode*)malloc(sizeof(TreeNode));
+    static TreeNode nodes[3];
+    TreeNode* head = &nodes[0];
+    TreeNode* a = &nodes[1];
+    TreeNode* b = &nodes[2];
 
     head->next = a;  head->prev = b;
     a->next = b;     a->prev = head;
@@ -37,7 +39,7 @@ int main(void)
     TreeList list;
     list.head = head;
 
-    SortTreeRecursively_00436900(&list);
+    g_armed = 1; SortTreeRecursively_00436900(&list); g_armed = 0;
 
     // Expect a, b, and head all freed => 3 deletes.
     if (g_deletes == 3)

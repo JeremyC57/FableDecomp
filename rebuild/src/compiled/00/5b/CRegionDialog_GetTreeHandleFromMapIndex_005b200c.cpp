@@ -4,6 +4,7 @@
 // CGuiControlTree sub-object (at +0x10) from the map index, returns it.
 
 #include "engine/CRegionDialog.h"  // retyped onto the PDB layout; byte parity re-verified
+extern "C" void* __cdecl malloc(unsigned int size);   // MSVCR71 import thunk 0x00BFEA0E
 struct CGuiControlTree;
 
 // callee at 0x5b1b20: __fastcall(ecx=CGuiControlTree* self, edx=long index)
@@ -27,7 +28,7 @@ struct CRegionDialog_Methods : CRegionDialog {
 
 TreeHandle* CRegionDialog_Methods::GetTreeHandleFromMapIndex(long mapIndex)
 {
-    TreeHandle* h = (TreeHandle*)::operator new(sizeof(TreeHandle));
+    TreeHandle* h = (TreeHandle*)malloc(sizeof(TreeHandle));
     SubInit_5b1b20(&h->tree, mapIndex);
     return h;
 }

@@ -12,7 +12,7 @@ struct CWideString
 };
 
 void __cdecl FreeStringBuffer(void* buffer);
-void __cdecl FreeStringData(CWideStringData* data);
+void __cdecl operator delete(void* block);   // MSVCR71 import thunk 0x00BFE9BC
 
 void __fastcall CWideString_UnassignString(CWideString* self)
 {
@@ -27,7 +27,7 @@ void __fastcall CWideString_UnassignString(CWideString* self)
                 void* buf = p->buffer;
                 if (buf)
                     FreeStringBuffer(buf);
-                FreeStringData(p);
+                operator delete(p);
             }
         }
         self->data = 0;

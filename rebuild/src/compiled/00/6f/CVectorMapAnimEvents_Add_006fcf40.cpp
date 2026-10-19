@@ -10,6 +10,7 @@
 // Shape: the pair temporary is built by an inline pair constructor (key word first, then the CSmallVector copy
 // constructor = two zero words + Copy(other)); it lives in an inner scope so its destructor (`delete[] m_pData`, the
 // out-of-line operator delete[] with `add esp,4`) runs before the Dirty store.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct CEvent;
 
 struct CSmallVector_CEvent32 {               // CSmallVector<NAnimationEvents::CEvent,32>: 8 bytes

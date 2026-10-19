@@ -8,7 +8,8 @@ static CTCMapwho *g_seen_inner = 0;
 static CTCMapwho *g_seen_free = 0;
 
 void __fastcall CTCMapwho_inner(CTCMapwho *self){ g_inner++; g_seen_inner=self; }
-void CTCMapwho_free(CTCMapwho *p){ g_free++; g_seen_free=p; }
+// spy on operator delete (MSVCR71 thunk 0x00BFE9BC) the source calls; it never releases (test objects live on the stack)
+void __cdecl operator delete(void* p_) { CTCMapwho * p = (CTCMapwho *)p_; g_free++; g_seen_free=p; }
 
 void __fastcall CTCMapwho_OnDie(CTCMapwho *self);
 

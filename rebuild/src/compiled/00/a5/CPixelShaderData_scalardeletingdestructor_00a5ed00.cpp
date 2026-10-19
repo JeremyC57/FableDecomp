@@ -11,6 +11,7 @@
 // PixelShader->Release()`), `delete[]` of the long array is a bare operator delete[] call; the
 // `??_G` needs the virtual destructor `__forceinline` and a `new CPixelShaderData` factory so the
 // TU emits the vtable.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct IDirect3DPixelShader9 {
     virtual long __stdcall QueryInterface(const void* iid, void** out);
     virtual unsigned long __stdcall AddRef();

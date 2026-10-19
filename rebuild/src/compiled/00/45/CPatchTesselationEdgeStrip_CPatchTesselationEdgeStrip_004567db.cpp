@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 struct CPatchTesselationEdgeStrip {
     char pad0[0x3c];
     void* p3c;
@@ -11,8 +12,8 @@ extern "C" void __fastcall BaseDtor(CPatchTesselationEdgeStrip* self);
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {
     if (self->p48)
-        operator delete(self->p48);
+        free(self->p48);
     if (self->p3c)
-        operator delete(self->p3c);
+        free(self->p3c);
     BaseDtor(self);
 }

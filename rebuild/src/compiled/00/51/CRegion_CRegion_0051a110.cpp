@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051A110, length 158 bytes.
 // Callees: _Rb_tree<CCharString, pair<const CCharString, C2DVector>, ...>::_M_erase(node*) @ 0x005149B0 (the
 // recursive node eraser: right subtree first, then the node's CCharString key, then the node, then left),
-// operator delete @ 0x00BFEA14, CCharString::~CCharString @ 0x0099EAE0, the def object's virtual slot 1.
+// free @ 0x00BFEA14 (MSVCR71 free thunk, not operator delete), CCharString::~CCharString @ 0x0099EAE0, the def object's virtual slot 1.
 // Label: the manifest's "~CAIStateGroup_SummonerCharge" is wrong (that state group is 0x24 bytes with an
 // intelligent pointer at +0x14). The body is the destructor of CRegion: its 39 callers sit in CWorldMap
 // (0x005066E0..) and the region vector code, and the member types match the CRegion PDB layout -- Maps and
@@ -18,6 +18,7 @@
 // bytes (everything after them sits 8 bytes lower, sizeof 0x58 = the `add edi,58h` stride of the CWorldMap
 // region loop), so the class is modelled locally with retail offsets.
 // Leaf: ??1CRegion
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 struct CCharString {
     void* m_pData;
@@ -50,7 +51,7 @@ struct CLongVector {                            // STLport vector<long>: {start,
     ~CLongVector()
     {
         if (_M_start != 0)
-            operator delete(_M_start);
+            free(_M_start);
     }
 };
 
@@ -83,7 +84,7 @@ struct CExitTextOffsetMap {                     // STLport map<CCharString, C2DV
     {
         clear();
         if (_M_header != 0)
-            operator delete(_M_header);
+            free(_M_header);
     }
 };
 

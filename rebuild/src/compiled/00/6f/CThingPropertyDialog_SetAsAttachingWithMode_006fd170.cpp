@@ -10,6 +10,7 @@
 // pointer the compiler folds to 0 (a pointer member of the element itself is re-read after the call,
 // and the other resize caller 0x006FA0AE shows the same null delete[]); its argument is popped with the
 // frame (`add esp,10h`). The holder is a modelling device: review at landing.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct SElement {                                        // C3DVector-like: three floats
     float x, y, z;
     SElement() : x(0.0f), y(0.0f), z(0.0f) {}

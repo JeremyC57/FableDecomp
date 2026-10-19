@@ -9,6 +9,7 @@
 // Shape: the `delete[] Data` of a byte array is a bare `operator delete[]` (no null test, no element
 // destructors); the data word is loaded and pushed before the vtable store. The intermediate
 // CChunkedFileChunk (vtable 0x0129E474) has an inline empty destructor (its vtable store follows).
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct CBase {                                     // root polymorphic base
     CBase();
     virtual ~CBase();                              // 0x0099A300

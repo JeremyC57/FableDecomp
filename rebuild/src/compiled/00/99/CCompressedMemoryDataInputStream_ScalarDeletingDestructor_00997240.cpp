@@ -8,6 +8,7 @@
 // destructor makes the lander grade the deleting body; MakeOne() constructs the class so its vtable
 // (and this destructor) are emitted; the constructor is declared only so that helper stays small.
 #include "engine/CCompressedMemoryDataInputStream.h"
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 
 struct CCompressorZlib_Calls {                                  // engine/CCompressorZlib.h holds data only: slot 0 is what `delete` calls
     virtual ~CCompressorZlib_Calls();                           // slot 0: scalar deleting destructor

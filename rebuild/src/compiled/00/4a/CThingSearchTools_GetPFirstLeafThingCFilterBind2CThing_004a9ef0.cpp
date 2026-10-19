@@ -1,8 +1,12 @@
+// CThingSearchTools::GetPFirstLeafThing<CFilter_Bind2<CThingFilter_HasTC,CThingFilter_InRegion>,CThing> @ 0x004A9EF0
+// (retail): walk the type-0xf thing list (0x0049C780) and return the first live leaf thing that passes both bound
+// filters -- CThingFilter_HasTC::operator() @ 0x006A80A0, then CThingFilter_InRegion::operator() @ 0x006A7960.
 
 struct Thing { char pad[0x91]; unsigned char flags; };
 struct Node { Node* next; void* pad4; Thing* thing; };
-struct SubFilter { bool Test(Thing* t); };
-struct Filter { SubFilter* f0; SubFilter* f1; };
+struct CThingFilter_HasTC { bool operator()(Thing* t) const; };       // 0x006A80A0 (the interface-bitset test)
+struct CThingFilter_InRegion { bool operator()(Thing* t) const; };    // 0x006A7960
+struct Filter { CThingFilter_HasTC* f0; CThingFilter_InRegion* f1; };  // CFilter_Bind2<HasTC, InRegion>
 struct List { Node* sentinel; };
 
 extern List* __stdcall GetThingList(int kind);
@@ -17,8 +21,8 @@ bool __fastcall CThingSearchTools_GetPFirstLeafThing(void* self, int edx, Filter
             unsigned char al = t->flags;
             unsigned char cl = ~al;
             if ((al & 4) && (al & 8) && (cl & 1) && !(al & 0x20)) {
-                if (filter->f0->Test(t)) {
-                    if (filter->f1->Test(t)) {
+                if ((*filter->f0)(t)) {
+                    if ((*filter->f1)(t)) {
                         *out = t;
                         return true;
                     }

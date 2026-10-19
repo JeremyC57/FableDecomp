@@ -1,0 +1,761 @@
+addr       parity           behav  name
+00401f30   WARN RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'
+00401f30   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+00401f30   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00401f30   RELOCATION_MATCH PASS   GFGetBuildNumber2
+004131d0   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+004131d0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+004131d0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<CMacro>,CMacro>
+0041d207   WARN RELOC_NAME: ??1CList_0042a141@@QAE@XZ -> 0042a141 labelled 'CGuiControlTreePane::SortTreeRecursively'
+0041d207   WARN RELOC_NAME: ??1CList_0042a168@@QAE@XZ -> 0042a168 labelled 'CGuiControlTreePane::SortTreeRecursively'
+0041d207   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00429e16   WARN RELOC_NAME: ??1CCountedPointer_004291de@@QAE@XZ -> 004291de labelled 'std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>'
+00429e16   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00429e16   RELOCATION_MATCH PASS   CMapStringToString::CPair::~CPair
+00436900   RELOCATION_MATCH PASS   CGuiControlTreePane::SortTreeRecursively
+0043c3c0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0043c3c0   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+0043c3c0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+0043f3a0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0043f3a0   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+0043f3a0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00444d70   RELOCATION_MATCH PASS   CTCMapwho::OnDie
+00453b15   WARN SHARED_HEADER_AVAILABLE CCompressedMemoryDataInputStream
+00453b15   WARN RELOC_NAME: ?CBase_dtor@@YIXPAX@Z -> 009fc550 labelled 'CSimpleMemoryPool::CMemoryBlock::~CMemoryBlock'
+00453b15   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream
+004567db   RELOCATION_MATCH PASS   CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip
+00456f71   WARN RELOC_NAME: ??0CAttitudeEnabledMap@@QAE@XZ -> 004534a6 labelled 'CDisplayManager::CopyBackBufferToTexture'
+00456f71   WARN RELOC_NAME: ??0COpinionPersonalityTraits@@QAE@XZ -> 0044c26d labelled 'InitializeFloatArray_Ones'
+00456f71   WARN RELOC_NAME: ??_H@YGXPAXIHP6EPAX0@Z@Z -> 004038c0 labelled '`vector_constructor_iterator''
+00456f71   RELOCATION_MATCH PASS   COpinionPersonalityDef::COpinionPersonalityDef
+00457ae4   WARN RELOC_NAME: ?CPatchTesselationEdgeStrip_base_dtor@@YIXPAUCPatchTesselationEdgeStrip@@@Z -> 00430300 labelled 'CTCInventoryItem::OnDie'
+00457ae4   RELOCATION_MATCH PASS   CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip
+00458476   WARN RELOC_NAME: ?CPatchTesselationEdgeStrip_base_dtor@@YIXPAUCPatchTesselationEdgeStrip@@@Z -> 00430300 labelled 'CTCInventoryItem::OnDie'
+00458476   RELOCATION_MATCH PASS   CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip
+00459582   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAUCSubA@@@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+00459582   WARN RELOC_NAME: ?TransferRGBColour@CPersistContext@@QAEXPAUCSubA@@@Z -> 004595a3 labelled 'CPersistContext::TransferColour_004595a3'
+00459582   RELOCATION_MATCH PASS   CEngine::?Transfer@CPlayerDef@@UAEXAAVCPersistContext@@@Z
+00459704   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXAAH@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+00459704   RELOCATION_MATCH PASS   CEngine::?Transfer@CSimBuildingDef@@UAEXAAVCPersistContext@@@Z
+00463f6a   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+00463f6a   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+0046486f   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+0046486f   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+00465662   WARN RELOC_NAME: ?Transfer_00464cbf@CPersistContext@@QAEXPAX@Z -> 00464cbf labelled 'CPersistContext::TransferBinary_00464cbf'
+00465662   RELOCATION_MATCH PASS   CGuiControlComboBox::?Transfer@CSpecialAbilitiesTurncoatSpellDef@@UAEXAAVCPersistContext@@@Z
+00465820   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+00465820   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+00466a75   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+00466a75   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+00467553   WARN RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAX@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+00467553   WARN RELOC_NAME: ?Transfer_00467597@CPersistContext@@QAEXPAX@Z -> 00467597 labelled 'CPersistContext::TransferBinary_00467597'
+00467553   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAX@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+00467553   RELOCATION_MATCH PASS   CGuiControlComboBox::?Transfer@CPlayerInventoryDef@@UAEXAAVCPersistContext@@@Z
+00469728   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+00469728   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+0046a742   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAH@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+0046a742   WARN RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAH@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+0046a742   RELOCATION_MATCH PASS   std::deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>::?Transfer@CSpecialAbilitiesBurntEffectDef@@UAEXAAVCPersistContext@@@Z
+0046cac2   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+0046cac2   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+00471c79   WARN RELOC_NAME: ??0SubObj@@QAE@J@Z -> 00471c9a labelled 'CNearestBuildingWithProperty::CNearestBuildingWithProperty'
+00471c79   RELOCATION_MATCH PASS   NScript::CDanyalTestScriptsData::Alloc
+004720f1   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+004720f1   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+00477bfc   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00477bfc   WARN RELOC_NAME: ?CActiveFile_Notify@@YIXPAXH@Z -> 004774b9 labelled 'std::vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::_Destroy'
+00477bfc   RELOCATION_MATCH PASS   CFileInstaller::CActiveFile::OnReadFinished
+004784e4   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXAAH@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004784e4   RELOCATION_MATCH PASS   CEngine::?Transfer@CAppearanceModifierScalingDef@@UAEXAAVCPersistContext@@@Z
+00478827   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXAAH@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+00478827   WARN RELOC_NAME: ?Transfer_00452e01@CPersistContext@@QAEXAAH@Z -> 00452e01 labelled 'CEngineLightingManager::UpdateShadowScene'
+00478827   RELOCATION_MATCH PASS   CEngine::?Transfer@CAbilityTrackLevelDef@@UAEXAAVCPersistContext@@@Z
+0047b330   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+0047b330   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00495fe0   WARN RELOC_NAME: ?PrepareModeTen@CFrontendGameComponent_00495fe0@@AAEXXZ -> 00495890 labelled 'NEditGui::CBrushLibraryDialog::FillInListBox'
+00495fe0   WARN RELOC_NAME: ?Refresh@CFrontendSaveList_00495fe0@@QAEXXZ -> 00495830 labelled 'CEngineLandscapeMap::RenderBackground'
+00495fe0   RELOCATION_MATCH TCC_FAIL CFrontendGameComponent::SetMode
+004a9ef0   WARN RELOC_NAME: ?GetThingList@@YGPAUList@@H@Z -> 0049c780 labelled 'CThingSearchTools::PeekTypeList'
+004a9ef0   WARN RELOC_NAME: ??RCThingFilter_HasTC@@QBE_NPAUThing@@@Z -> 006a80a0 labelled 'Bitset_Test'
+004a9ef0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstLeafThing<CFilter_Bind2<CThingFilter_HasTC,CThingFilter_InRegion>,CThing>
+004aa690   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+004aa690   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+004b7600   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+004b7600   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+004d607c   WARN RELOC_NAME: ??1CTCBase@@QAE@XZ -> 00686830 labelled 'CChunkedFileChunk::~CChunkedFileChunk'
+004d607c   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+004d6902   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+004d6902   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+004dc568   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+004dd999   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef
+004dd999   WARN RELOC_NAME: ?TransferDefString@CPersistContext@@QAEXPAX@Z -> 0045228f labelled 'CEngineLightingManager::UpdateShadowScene'
+004dd999   WARN RELOC_NAME: ?TransferBool@CPersistContext@@QAEXPAX@Z -> 0043314a labelled 'CEngineLightingManager::UpdateShadowScene'
+004dd999   RELOCATION_MATCH PASS   CGuiControlComboBox::?Transfer@CBedDef@@UAEXAAVCPersistContext@@@Z
+004dd9dd   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAUCMember@@@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004dd9dd   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAUCMember@@@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004dd9dd   RELOCATION_MATCH PASS   CEngine::?Transfer@CSmokeGeneratorDef@@UAEXAAVCPersistContext@@@Z
+004dd9fe   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAX@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004dd9fe   WARN RELOC_NAME: ?TransferBool@CPersistContext@@QAEXPAUA@@@Z -> 0043314a labelled 'CEngineLightingManager::UpdateShadowScene'
+004dd9fe   RELOCATION_MATCH PASS   std::deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>::?Transfer@CCreatureNavigationDef@@UAEXAAVCPersistContext@@@Z
+004ddeaa   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAUCMember@@@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004ddeaa   WARN RELOC_NAME: ?Transfer_004ddecb@CPersistContext@@QAEXPAUCMember@@@Z -> 004ddecb labelled 'CEngineLightingManager::UpdateShadowScene'
+004ddeaa   RELOCATION_MATCH PASS   CEngine::?Transfer@CHeroDef@@UAEXAAVCPersistContext@@@Z
+004de36b   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef
+004de36b   WARN RELOC_NAME: ?Transfer_004522f4@CPersistContext@@QAEXPAX@Z -> 004522f4 labelled 'CEngineLightingManager::UpdateShadowScene'
+004de36b   WARN RELOC_NAME: ?TransferBool@CPersistContext@@QAEXPAX@Z -> 0043314a labelled 'CEngineLightingManager::UpdateShadowScene'
+004de36b   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAX@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004de36b   RELOCATION_MATCH PASS   CGuiControlComboBox::?Transfer@COpinionOfHeroDef@@UAEXAAVCPersistContext@@@Z
+004de50c   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAX@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004de50c   RELOCATION_MATCH PASS   std::deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>::?Transfer@CTimeAppearanceFadeDef@@UAEXAAVCPersistContext@@@Z
+004de545   WARN RELOC_NAME: ?Transfer_004de566@CPersistContext@@QAEXPAUCMember@@@Z -> 004de566 labelled 'CEngineLightingManager::UpdateShadowScene'
+004de545   WARN RELOC_NAME: ?TransferBool@CPersistContext@@QAEXPAUCMember@@@Z -> 0043314a labelled 'CEngineLightingManager::UpdateShadowScene'
+004de545   RELOCATION_MATCH PASS   CEngine::?Transfer@CGiftDef@@UAEXAAVCPersistContext@@@Z
+004de891   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAUCMember@@@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004de891   WARN RELOC_NAME: ?TransferDefString@CPersistContext@@QAEXPAUCMember@@@Z -> 0045228f labelled 'CEngineLightingManager::UpdateShadowScene'
+004de891   RELOCATION_MATCH PASS   CEngine::?Transfer@CSummonableCreatureDef@@UAEXAAVCPersistContext@@@Z
+004dedac   WARN RELOC_NAME: ?Transfer_004dedda@CPersistContext@@QAEXPAH@Z -> 004dedda labelled 'CEngineLightingManager::UpdateShadowScene'
+004dedac   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAH@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004dedac   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAH@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004dedac   RELOCATION_MATCH PASS   CEngine::?Transfer@CWallMountEffectsDef@@UAEXAAVCPersistContext@@@Z
+004def0f   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAH@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004def0f   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAH@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004def0f   WARN RELOC_NAME: ?TransferBool@CPersistContext@@QAEXPAH@Z -> 0043314a labelled 'CEngineLightingManager::UpdateShadowScene'
+004def0f   RELOCATION_MATCH PASS   CEngine::?Transfer@CTeleporterDef@@UAEXAAVCPersistContext@@@Z
+004def3d   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAX@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004def3d   RELOCATION_MATCH PASS   std::deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>::?Transfer@CHeroSpecialMovementDef@@UAEXAAVCPersistContext@@@Z
+004df107   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef
+004df107   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAX@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004df107   RELOCATION_MATCH PASS   CGuiControlComboBox::?Transfer@CFishingRodDef@@UAEXAAVCPersistContext@@@Z
+004df6f4   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef
+004df6f4   WARN RELOC_NAME: ?TransferCharString@CPersistContext@@QAEXPAX@Z -> 00431143 labelled 'CPersistContext::TransferString'
+004df6f4   WARN RELOC_NAME: ?TransferULong@CPersistContext@@QAEXPAX@Z -> 00431020 labelled 'CEngineLightingManager::UpdateShadowScene'
+004df6f4   RELOCATION_MATCH PASS   CGuiControlComboBox::?Transfer@CFireheartMinigameDef@@UAEXAAVCPersistContext@@@Z
+004df738   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef
+004df738   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAX@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004df738   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAX@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004df738   RELOCATION_MATCH PASS   CGuiControlComboBox::?Transfer@CLightningOrbDef@@UAEXAAVCPersistContext@@@Z
+004df77c   WARN RELOC_NAME: ?TransferULong@CPersistContext@@QAEXPAH@Z -> 00431020 labelled 'CEngineLightingManager::UpdateShadowScene'
+004df77c   RELOCATION_MATCH PASS   CEngine::?Transfer@CHasNameDef@@UAEXAAVCPersistContext@@@Z
+004e38e4   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAH@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004e38e4   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAH@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004e38e4   RELOCATION_MATCH PASS   std::deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>::?Transfer@CThunderBattleDef@@UAEXAAVCPersistContext@@@Z
+004e3c24   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXAAH@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004e3c24   RELOCATION_MATCH PASS   CEngine::?Transfer@CBalverineBattleDef@@UAEXAAVCPersistContext@@@Z
+004e3c6e   WARN RELOC_NAME: ??1CMap_004e34b2@@QAE@XZ -> 004e34b2 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+004e3c6e   WARN RELOC_NAME: ??1CTCBase@@QAE@XZ -> 00686830 labelled 'CChunkedFileChunk::~CChunkedFileChunk'
+004e3c6e   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+004e3f7b   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAH@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004e3f7b   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAH@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004e3f7b   RELOCATION_MATCH PASS   std::deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>::?Transfer@CAreaOfEffectAttackDef@@UAEXAAVCPersistContext@@@Z
+004e599d   WARN SHARED_HEADER_AVAILABLE CContextSensitiveItemDef
+004e599d   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAX@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004e599d   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAX@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004e599d   WARN RELOC_NAME: ?Transfer_004e59e1@CPersistContext@@QAEXPAX@Z -> 004e59e1 labelled 'CFlammableDef::TransferHelper'
+004e599d   RELOCATION_MATCH PASS   CGuiControlComboBox::?Transfer@CFlammableDef@@UAEXAAVCPersistContext@@@Z
+004e7ea7   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAX@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004e7ea7   WARN RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAUA@@@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+004e7ea7   RELOCATION_MATCH PASS   std::deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>::?Transfer@CCreatureModeDef@@UAEXAAVCPersistContext@@@Z
+004e85dc   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+004e85dc   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+004e89c5   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+004e89c5   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+004e95f5   WARN RELOC_NAME: ?WriteLong@CDataOutputStream_Methods@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteCBYTE'
+004e95f5   RELOCATION_MATCH PASS   GFSerialiseVectorBinaryOut<float>
+004eac7b   WARN RELOC_NAME: ?TransferFloat@CPersistContext@@QAEXPAUCMember@@@Z -> 00431061 labelled 'CEngineLightingManager::UpdateShadowScene'
+004eac7b   WARN RELOC_NAME: ?TransferLong@CPersistContext@@QAEXPAUCMember@@@Z -> 00431102 labelled 'CEngineLightingManager::UpdateShadowScene'
+004eac7b   RELOCATION_MATCH PASS   CEngine::?Transfer@CPrizeScoreDef@@UAEXAAVCPersistContext@@@Z
+0051a110   WARN RELOC_NAME: ?_M_erase@CExitTextOffsetMap@@QAEXPAUSExitTextNode@@@Z -> 005149b0 labelled '_unattributed::FreeTree_CTreeOwner_005149b0'
+0051a110   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0051a110   RELOCATION_MATCH PASS   CRegion::~CRegion
+00526010   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+00526010   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00526010   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00565870   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00565870   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+00565870   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+005658a0   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+005658a0   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+00565bb0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00565bb0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+0057f4e3   WARN RELOC_CONFLICT: ??0SubObj@@QAE@J@Z -> 0057a3a2 here, 00471c9a in landed 00471c79
+0057f4e3   WARN RELOC_NAME: ??0SubObj@@QAE@J@Z -> 0057a3a2 labelled 'CHeroMarriageInfo::CHeroMarriageInfo'
+0057f4e3   RELOCATION_MATCH PASS   NScript::CDanyalTestScriptsData::Alloc
+0059a9f9   OUTSIDE_MANIFEST -      FrontEndHistoryDequeMapAllocator::Deallocate
+005b200c   RELOCATION_MATCH PASS   NEditGui::CRegionDialog::GetTreeHandleFromMapIndex
+00628f30   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00628f30   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00628f50   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00628f50   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00628f70   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00628f70   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00628f90   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00628f90   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00628fb0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00628fb0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00629000   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00629000   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+006290e0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+006290e0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+0065688f   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+0066a510   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+0066c000   RELOCATION_MATCH PASS   CPackedUIntArray::~CPackedUIntArray
+0066c150   RELOCATION_MATCH PASS   CPackedUIntArray::~CPackedUIntArray
+00676720   WARN SHARED_HEADER_AVAILABLE CTCMapwho
+00676720   RELOCATION_MATCH PASS   CTCMapwho::OnDie
+0067c350   RELOCATION_MATCH PASS   CSystemRegistry::~CSystemRegistry
+006872b0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00695450   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00695450   WARN RELOC_NAME: ??1CBaseClass@@QAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+00695450   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+006956e0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+006956e0   WARN RELOC_NAME: ??1CBaseClass@@QAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+006956e0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+006aecf0   RELOCATION_MATCH PASS   CTCRegionFollower::CullNullFollowers
+006bc1d0   WARN SHARED_HEADER_AVAILABLE CRegion
+006bc1d0   RELOCATION_MATCH PASS   CRegion::SetRegionDefName
+006fb960   RELOCATION_MATCH PASS   _global::__unguarded_linear_insert
+006fcf40   RELOCATION_MATCH PASS   CVectorMap_AnimEvents::Add
+006fd170   RELOCATION_MATCH PASS   CThingPropertyDialog::SetAsAttachingWithMode
+007120d0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007120d0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00717bc0   WARN RELOC_NAME: ??4CSubtitledMessageArray@@QAEAAU0@ABU0@@Z -> 0071a160 labelled 'CCombatWheel::CopyAssign'
+00717bc0   RELOCATION_MATCH PASS   NTCScriptedControl::CActionOverheadTalkToThing::CActionOverheadTalkToThing
+00717d40   WARN RELOC_NAME: ??0CCharStringValue@NTCScriptedControl@@QAE@ABU01@@Z -> 0099ec30 labelled 'CCharString::CCharString'
+00717d40   WARN RELOC_NAME: ??4CSubtitledMessageArray@NTCScriptedControl@@QAEAAU01@ABU01@@Z -> 0071a160 labelled 'CCombatWheel::CopyAssign'
+00717d40   RELOCATION_MATCH PASS   CActionTalkToThing::CActionTalkToThing
+00719120   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00733100   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00733100   WARN RELOC_CONFLICT: ?GetPlayer@CThing@@QAEPAUCPlayer@@XZ -> 004c7a10 here, 004c7a30 in landed 0069f480
+00733100   RELOCATION_MATCH PASS   CTCCombat::IsUsingUnarmedCombatIdle
+0073d770   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+00765d20   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00765d20   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00768ba0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00768ba0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007692a0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007692a0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+007692d0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007692d0   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+0076d900   WARN RELOC_NAME: ??1CList_004406a0@@QAE@XZ -> 004406a0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+0076d900   WARN RELOC_NAME: ??1CTCBase@@QAE@XZ -> 00686830 labelled 'CChunkedFileChunk::~CChunkedFileChunk'
+0076d900   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+007811d0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007811d0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+007b6c90   WARN RELOC_NAME: ??1CTCBase@@QAE@XZ -> 00686830 labelled 'CChunkedFileChunk::~CChunkedFileChunk'
+007b6c90   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+007df380   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007df380   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007e1c30   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007e1c30   WARN RELOC_NAME: ??1CTCBase@@QAE@XZ -> 00686830 labelled 'CChunkedFileChunk::~CChunkedFileChunk'
+007e1c30   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+007e5920   WARN RELOC_NAME: ??1CTCBase@@QAE@XZ -> 00686830 labelled 'CChunkedFileChunk::~CChunkedFileChunk'
+007e5920   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+007e7e40   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+007e7fa0   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+007e7fa0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007e7fa0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007eaf00   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007eaf00   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007eb2b0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007eb2b0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007eb470   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007eb470   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007eb990   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007eb990   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007ed420   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007ed420   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007edff0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007edff0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+007ee7a0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+007ee7a0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00854500   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00854540   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+0085edf0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+0085edf0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00893ec0   WARN SHARED_HEADER_AVAILABLE CWorld
+00893ec0   WARN RELOC_NAME: ?GetFrameForMessages_006e7510@CGameScriptInterface_Methods@@QBEJXZ -> 006e7510 labelled 'CGameScriptInterface::GetMaxWorldFrameForMessages'
+00893ec0   WARN RELOC_CONFLICT: ?GetMaxWorldFrameForMessages@CGameScriptInterface_Methods@@QBEJXZ -> 006e7530 here, 006e7510 in landed 00893ec0
+00893ec0   RELOCATION_MATCH PASS   ?MsgOnHeroSlept@CGameScriptInterface@@UBE_NAA_N@Z
+008e8c20   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00910b20   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00910b20   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00922eb0   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00922eb0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00935970   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00935970   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00957300   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+0095f6f0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095f6f0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095f6f0   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+0095f6f0   WARN RELOC_NAME: ?FinishUpdate@CAIStateGroup_OpinionReactionRoot@@QAEXXZ -> 008fcf40 labelled 'CXMVPlaybackInfo::CXMVPlaybackInfo'
+0095f6f0   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+0095f6f0   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::Update
+00966890   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00966890   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00968150   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00968150   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00968170   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+00968170   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+0096e540   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096e540   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096e540   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+0096e540   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@PAUCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer::CIntelligentPointer'
+0096e540   WARN RELOC_NAME: ??1CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+0096e540   RELOCATION_MATCH PASS   CAIStateGroup_SummonerSummon::IsRunnable
+0096edb0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096edb0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096edb0   WARN SHARED_HEADER_AVAILABLE CWorld
+0096edb0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0096edb0   WARN RELOC_NAME: ?IsRegisteredCombatant@CThingCreatureBase@@QAE_NXZ -> 00662410 labelled 'C3DAnimationBlendState::AddCombinationBlend'
+0096edb0   WARN RELOC_CONFLICT: ?GetPWorld@CAIStateGroupBase@@QAEPAUCWorld@@XZ -> 008fcfc0 here, 008fcfa0 in landed 009143e0
+0096edb0   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAUCWorld@@XZ -> 008fcfc0 labelled 'CPlayer::GetCurrentMode'
+0096edb0   WARN RELOC_CONFLICT: ?DeregisterCombatant@CCombatManager@@QAEXPAUCThingCreatureBase@@@Z -> 006ed9c0 here, 006ea430 in landed 00734050
+0096edb0   WARN RELOC_NAME: ?IsInCombatMode@CThingCreatureBase@@QAE_NXZ -> 006621a0 labelled 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>::AreDefaultValsApplied'
+0096edb0   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+0096edb0   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby::Cleanup
+0097d280   WARN RELOC_NAME: ??1CCreatureActionBase@@QAE@XZ -> 00693ef0 labelled 'CPhysicsMeshInfo::~CPhysicsMeshInfo'
+0097d280   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+0098cbb0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0098cbb0   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+009944a0   WARN RELOC_CONFLICT: ??0CBase@@QAE@XZ -> 0099a2f0 here, 0099a2d0 in landed 00404720
+009944a0   RELOCATION_MATCH PASS   CBufferedFileDataOutputStream::CBufferedFileDataOutputStream
+00994810   RELOCATION_MATCH PASS   CBufferedFileDataOutputStream::Close
+00995df0   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream
+00996990   WARN SHARED_HEADER_AVAILABLE CACompressor
+00996990   WARN RELOC_NAME: ??0CBaseClassNonCopyable@@QAE@XZ -> 0099a2f0 labelled 'NHeroInformationScreens::CBase::CBase'
+00996990   WARN RELOC_NAME: ?GetWorkspaceSize@CCompressorZlib@@SAJXZ -> 00a3a7d0 labelled 'CEngineInternalPrimitiveBase::AddChildPrimitive'
+00996990   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::CCompressedMemoryDataInputStream
+00996a40   WARN SHARED_HEADER_AVAILABLE CACompressor
+00996a40   WARN RELOC_NAME: ?GetWorkspaceSize@CCompressorZlib@@SAJXZ -> 00a3a7d0 labelled 'CEngineInternalPrimitiveBase::AddChildPrimitive'
+00996a40   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::OpenMemorySource
+00997240   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::ScalarDeletingDestructor
+0099b4d0   RELOCATION_MATCH PASS   CCharString::UnassignString
+0099e9b0   RELOCATION_MATCH PASS   CCharString::UnassignString
+0099ff20   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0099ff20   RELOCATION_MATCH PASS   CFileInstaller::CActiveFile::OnReadFinished
+009a0300   RELOCATION_MATCH PASS   CBasicString_AssignFromData
+009a0390   RELOCATION_MATCH PASS   CBasicString<char>::SetString
+009a73b0   WARN RELOC_NAME: _helper_9f9020 -> 009f9020 labelled 'CNavigableTextUIManager_Destructor'
+009a73b0   RELOCATION_MATCH PASS   CTCMapwho::OnDie
+009a99b0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+009a99b0   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+009c61b0   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+009c61b0   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+009cc6f0   RELOCATION_MATCH PASS   CBankFileEntryUpdateData::SetInfo
+009d3100   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+009d3100   RELOCATION_MATCH PASS   CLandscapeBackgroundPatch::ClearTextures
+009e60c0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+009e60c0   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+009ea320   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+009ea320   WARN RELOC_NAME: ??1CBaseClass@@QAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+009ea320   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+009f4910   RELOCATION_MATCH PASS   CScratchBuffer::Initialise
+009fd990   RELOCATION_MATCH PASS   CWorldMap::?PrepareDataForInclusion@CGraphicDataBank@@MAEXKABV?$CArray@VCCharString@@@@KV?$CCountedPointer@VCBankStateBlock@@@@AAVCDataOutputStream@@2@Z
+00a0be10   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00a0d410   RELOCATION_MATCH PASS   CAInputProcess::ScalarDeletingDestructor
+00a17510   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00a17510   RELOCATION_MATCH PASS   CFileInstaller::CActiveFile::OnReadFinished
+00a377a0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00a377a0   WARN RELOC_NAME: ??1CList_00a376a0@@QAE@XZ -> 00a376a0 labelled 'CGuiControlTreePane::SortTreeRecursively'
+00a377a0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00a3f700   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00a3f700   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+00a3f970   RELOCATION_MATCH PASS   _global::vfunc_2
+00a3f9a0   RELOCATION_MATCH PASS   _global::vfunc_2
+00a46d90   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay
+00a46d90   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00a46d90   RELOCATION_MATCH PASS   CMiniMapDisplay::ClearPrimitiveHandles
+00a47040   WARN RELOC_NAME: ?CTCMapwho_inner@@YIXPAUCTCMapwho@@@Z -> 00a46d90 labelled 'CMiniMapDisplay::ClearPrimitiveHandles'
+00a47040   RELOCATION_MATCH PASS   CTCMapwho::OnDie
+00a5ed00   RELOCATION_MATCH PASS   CPixelShaderData::`scalar deleting destructor'
+00a62d80   RELOCATION_MATCH PASS   CPackedUIntArray::Initialise
+00a752f0   RELOCATION_MATCH PASS   CContainmentVolume::~CContainmentVolume
+00a7dad0   RELOCATION_MATCH PASS   CThingComponentSet::~CThingComponentSet
+00a8e040   WARN RELOC_NAME: ??1CCountedPointer_00a8e000@@QAE@XZ -> 00a8e000 labelled 'std::_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>'
+00a8e040   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00a98910   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool
+00a98910   WARN RELOC_CONFLICT: ??1CBase@@QAE@XZ -> 0099a300 here, 0099a2e0 in landed 004979a0
+00a98910   WARN RELOC_NAME: ?Unlock@CScratchBuffer@@QAEXXZ -> 009f49a0 labelled 'CXMVPlaybackInfo::CXMVPlaybackInfo'
+00a98910   RELOCATION_MATCH PASS   CTemporaryBuffer::~CTemporaryBuffer
+00a989a0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00a989a0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00a989e0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00a989e0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00a9c8c0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00a9c8c0   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00a9c930   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00a9c930   RELOCATION_MATCH PASS   std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+00aa77a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00aa77a0   RELOCATION_MATCH PASS   CChunkedFileRawDataChunk::ReadFromFile
+00aa8d80   RELOCATION_MATCH PASS   CChunkedFileRawDataChunk::`scalar deleting destructor'
+00ac1960   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00ac1960   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00ae6070   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00ae6070   WARN RELOC_NAME: ?Reset@CParticleSimulation@@QAEXXZ -> 00adf1e0 labelled 'CLandscapeBackgroundPatch::ClearTextures'
+00ae6070   RELOCATION_MATCH PASS   CParticleSimulation::ScalarDeletingDestructor
+00aec6a0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00aec6a0   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+00bdc3c0   RELOCATION_MATCH PASS   CEngineLandscapeMap::OnMapVisibilityChanged
+00bdc450   RELOCATION_MATCH PASS   CEngineLandscapeMap::Clear
+00c0eb20   WARN GENERIC_STRUCT module=CTCMapwho (use engine/CTCMapwho.h)
+00c0eb20   WARN SHARED_HEADER_AVAILABLE CTCMapwho
+00c0eb20   WARN RELOC_NAME: ?Cleanup@Obj@@QAEXXZ -> 00c1e850 labelled 'CEngineScreenEffectOutlineGlow::FinishWithDynamicTextures'
+00c0eb20   RELOCATION_MATCH PASS   CTCMapwho::OnDie
+00c0ece0   WARN RELOC_NAME: ?Stop1@CCombatAbilityStrafeDef_00c0ece0@@QAEXXZ -> 00c0eb40 labelled 'CTCMapwho_ClearAllInventoryItemsFromUI'
+00c0ece0   WARN RELOC_NAME: ?Stop2@CCombatAbilityStrafeDef_00c0ece0@@QAEXXZ -> 00c0eaf0 labelled 'CTCMapwho_ClearAllMappedActorsFromUI'
+00c0ece0   WARN RELOC_NAME: ?Stop3@CCombatAbilityStrafeDef_00c0ece0@@QAEXXZ -> 00c0ec60 labelled 'CQueueOwner_00c0ec60::ClearAll'
+00c0ece0   WARN RELOC_NAME: ?Stop4@CCombatAbilityStrafeDef_00c0ece0@@QAEXXZ -> 00c0ea10 labelled 'CEngineVSConstantLayout_ClearAllEvents'
+00c0ece0   WARN RELOC_NAME: ??1CNode_00c0ece0@@QAE@XZ -> 00c19250 labelled '_global::Map_CheckEmpty'
+00c0ece0   WARN RELOC_NAME: ??1CSmallNode_00c0ece0@@QAE@XZ -> 00c17b10 labelled 'CPixelShaderData::~CPixelShaderData'
+00c0ece0   WARN RELOC_NAME: ??1CNavButton_00c0ece0@@QAE@XZ -> 00c10320 labelled 'CNavButton::IsAcceptButton'
+00c0ece0   RELOCATION_MATCH PASS   CEngineVSConstantLayoutLights::CEngineVSConstantLayoutLights
+00c0ef40   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00c0ef40   RELOCATION_MATCH PASS   CFileInstaller::CActiveFile::OnReadFinished
+00c1e600   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00c1e600   RELOCATION_MATCH PASS   CFileInstaller::CActiveFile::OnReadFinished
+00c239b0   WARN RELOC_NAME: ??1SEntry_00c239b0@@QAE@XZ -> 00c207f0 labelled 'VTable_InitAndCleanup'
+00c239b0   WARN RELOC_NAME: ??0SEntry_00c239b0@@QAE@XZ -> 00c21ba0 labelled 'CScriptModuleBase::CScriptModuleBase'
+00c239b0   WARN RELOC_NAME: ?Append@CString_00c239b0@@QAIPAU1@PBD@Z -> 00c0dec0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c239b0   WARN RELOC_NAME: ?AppendNumber@CString_00c239b0@@QAIPAU1@J@Z -> 00c0df00 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c239b0   WARN RELOC_NAME: ??1CString_00c239b0@@QAE@XZ -> 00c0ba40 labelled 'CCharStringData::Release'
+00c239b0   WARN RELOC_NAME: ?InitEntry@CEventSubscription_00c239b0@@QAEXPAUSEntry_00c239b0@@@Z -> 00c22840 labelled 'NScript_EventQueue_Push'
+00c239b0   RELOCATION_MATCH PASS   _global::NScript_CEvent_InitializeSubscriptions
+00c23ba0   WARN RELOC_NAME: ??1SEntry_00c207f0@@QAE@XZ -> 00c207f0 labelled 'VTable_InitAndCleanup'
+00c23ba0   WARN RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c23ba0   RELOCATION_MATCH PASS   CVtable_012b3a94::~CVtable_012b3a94
+00c23c10   WARN RELOC_NAME: ?Append@CString_00c23c10@@QAIPAU1@PBD@Z -> 00c0dec0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c23c10   WARN RELOC_NAME: ?AppendNumber@CString_00c23c10@@QAIPAU1@J@Z -> 00c0df00 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c23c10   WARN RELOC_NAME: ??1CString_00c23c10@@QAE@XZ -> 00c0ba40 labelled 'CCharStringData::Release'
+00c23c10   WARN RELOC_NAME: ?InitEntry@CEventSubscription_00c23c10@@QAEXPAUSEntry_00c23c10@@@Z -> 00c22920 labelled 'NScript_EventSubscription_Push'
+00c23c10   RELOCATION_MATCH PASS   _global::NScript_InitializeEventSubscription
+00c23e00   WARN RELOC_NAME: ??1SEntry_00c23e00@@QAE@XZ -> 00c271d0 labelled 'SoundObject_SetVtable_c271d0'
+00c23e00   WARN RELOC_NAME: ??0SEntry_00c23e00@@QAE@XZ -> 00c27af0 labelled 'InitVtablePtr_SoundLayer'
+00c23e00   WARN RELOC_NAME: ?Append@CString_00c23e00@@QAIPAU1@PBD@Z -> 00c0dec0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c23e00   WARN RELOC_NAME: ?AppendNumber@CString_00c23e00@@QAIPAU1@J@Z -> 00c0df00 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c23e00   WARN RELOC_NAME: ??1CString_00c23e00@@QAE@XZ -> 00c0ba40 labelled 'CCharStringData::Release'
+00c23e00   WARN RELOC_NAME: ?InitEntry@CEventSubscription_00c23e00@@QAEXPAUSEntry_00c23e00@@@Z -> 00c22a40 labelled 'NScript_EventSubscriptionSet_Push'
+00c23e00   RELOCATION_MATCH PASS   _global::NScript_CEvent_InitializeActionParameters
+00c23fe0   WARN RELOC_NAME: ??1SEntry_00c271d0@@QAE@XZ -> 00c271d0 labelled 'SoundObject_SetVtable_c271d0'
+00c23fe0   WARN RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c23fe0   RELOCATION_MATCH PASS   CVtable_012b3a9c::~CVtable_012b3a9c
+00c24050   WARN RELOC_NAME: ??1SEntry_00c24050@@QAE@XZ -> 00c29eb0 labelled 'Ctor_SetVtable_012b40a4'
+00c24050   WARN RELOC_NAME: ??0SEntry_00c24050@@QAE@XZ -> 00c29f50 labelled 'InitVtablePtr_WithInvalidFlag'
+00c24050   WARN RELOC_NAME: ?Append@CString_00c24050@@QAIPAU1@PBD@Z -> 00c0dec0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c24050   WARN RELOC_NAME: ?AppendNumber@CString_00c24050@@QAIPAU1@J@Z -> 00c0df00 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c24050   WARN RELOC_NAME: ??1CString_00c24050@@QAE@XZ -> 00c0ba40 labelled 'CCharStringData::Release'
+00c24050   WARN RELOC_NAME: ?InitEntry@CEventSubscription_00c24050@@QAEXPAUSEntry_00c24050@@@Z -> 00c22b40 labelled 'NScript_EventMessageSet_Push'
+00c24050   RELOCATION_MATCH PASS   _global::NScript_CEvent_InitializeMessageEvents
+00c24240   WARN RELOC_NAME: ??1SEntry_00c29eb0@@QAE@XZ -> 00c29eb0 labelled 'Ctor_SetVtable_012b40a4'
+00c24240   WARN RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c24240   RELOCATION_MATCH PASS   CVtable_012b3aa4::~CVtable_012b3aa4
+00c2baf0   WARN SHARED_HEADER_AVAILABLE CTCMapwho
+00c2baf0   WARN RELOC_NAME: ?Shutdown@CTCMapwho@@QAEXXZ -> 00c37da0 labelled '_global::CTCActivationTrigger_DestroyPredicates'
+00c2baf0   RELOCATION_MATCH PASS   CTCMapwho::OnDie
+00c31810   WARN RELOC_NAME: ?Append@CString_00c31810@@QAIPAU1@PBD@Z -> 00c0dec0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c31810   WARN RELOC_NAME: ?AppendNumber@CString_00c31810@@QAIPAU1@J@Z -> 00c0df00 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00c31810   WARN RELOC_NAME: ??1CString_00c31810@@QAE@XZ -> 00c0ba40 labelled 'CCharStringData::Release'
+00c31810   RELOCATION_MATCH PASS   PKCAutoDeleteArray::PKCAutoDeleteArray::Resize
+00c34d00   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00c34d00   RELOCATION_MATCH PASS   CFileInstaller::CActiveFile::OnReadFinished
+00c49af0   RELOCATION_MATCH PASS   ~CEngineLandscapeLODMap
+00cb6200   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00cb6200   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+00cd49f0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00cd49f0   RELOCATION_MATCH PASS   CLandscapeBackgroundPatch::`vector_deleting_destructor'
+00cd4a30   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00cd4a30   RELOCATION_MATCH PASS   CEngineSubPrimitiveText::`scalar_deleting_destructor'
+00ce0ec0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00cef9a0   WARN RELOC_NAME: ??1CCharStringVector@@QAE@XZ -> 00414ea0 labelled 'CDefendingCombatantInfo::CCombatWheel::ResetRings'
+00cef9a0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00d2d900   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00daabd0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00e0e7b0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00e5d110   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00e5de50   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00e9fba0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00ed0e30   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+00ee1be0   RELOCATION_MATCH PASS   CThingSwitch::`vector_deleting_destructor'
+012288d0   RELOCATION_MATCH PASS   _global::Release_013b7d4c
+01228b30   WARN RELOC_CONFLICT: ?g_pointer_013b8790@@3UCCountedPointerStatic@@A -> 013b8790 here, 013b878c in landed 01228b30
+01228b30   RELOCATION_MATCH PASS   _global::Release_013b8790
+01228bb0   WARN RELOC_CONFLICT: ?g_pointer_013b8998@@3UCCountedPointerStatic@@A -> 013b8998 here, 013b8994 in landed 01228bb0
+01228bb0   RELOCATION_MATCH PASS   _global::Release_013b8998
+01228bf0   WARN RELOC_CONFLICT: ?g_pointer_013b89a0@@3UCCountedPointerStatic@@A -> 013b89a0 here, 013b899c in landed 01228bf0
+01228bf0   RELOCATION_MATCH PASS   _global::Release_013b89a0
+01228c60   WARN RELOC_CONFLICT: ?g_pointer_013b89e0@@3UCCountedPointerStatic@@A -> 013b89e0 here, 013b89dc in landed 01228c60
+01228c60   RELOCATION_MATCH PASS   _global::Release_013b89e0
+01228ca0   WARN RELOC_CONFLICT: ?g_pointer_013b89fc@@3UCCountedPointerStatic@@A -> 013b89fc here, 013b89f8 in landed 01228ca0
+01228ca0   RELOCATION_MATCH PASS   _global::Release_013b89fc
+01228ce0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocks
+01229190   WARN RELOC_CONFLICT: ?g_pointer_013ba854@@3UCCountedPointerStatic@@A -> 013ba854 here, 013ba850 in landed 01229190
+01229190   RELOCATION_MATCH PASS   _global::Release_013ba854
+01229400   WARN RELOC_CONFLICT: ?g_pointer_013bab10@@3UCCountedPointerStatic@@A -> 013bab10 here, 013bab0c in landed 01229400
+01229400   RELOCATION_MATCH PASS   _global::Release_013bab10
+01229510   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocks
+01229560   WARN RELOC_CONFLICT: ?g_pointer_013babb4@@3UCCountedPointerStatic@@A -> 013babb4 here, 013babb0 in landed 01229560
+01229560   RELOCATION_MATCH PASS   _global::Release_013babb4
+012295a0   WARN RELOC_CONFLICT: ?g_pointer_013babbc@@3UCCountedPointerStatic@@A -> 013babbc here, 013babb8 in landed 012295a0
+012295a0   RELOCATION_MATCH PASS   _global::Release_013babbc
+01229e40   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocks
+01229e60   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocks
+01229ef0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocks
+0122a6c0   WARN RELOC_CONFLICT: ?g_pointer_013ca7f0@@3UCCountedPointerStatic@@A -> 013ca7f0 here, 013ca7ec in landed 0122a6c0
+0122a6c0   RELOCATION_MATCH PASS   _global::Release_013ca7f0
+0122a700   WARN RELOC_CONFLICT: ?g_pointer_013ca7f8@@3UCCountedPointerStatic@@A -> 013ca7f8 here, 013ca7f4 in landed 0122a700
+0122a700   RELOCATION_MATCH PASS   _global::Release_013ca7f8
+0122a740   RELOCATION_MATCH PASS   _global::Release_013ca818
+0122a830   WARN RELOC_CONFLICT: ?g_pointer_013caa28@@3UCCountedPointerStatic@@A -> 013caa28 here, 013caa24 in landed 0122a830
+0122a830   RELOCATION_MATCH PASS   _global::Release_013caa28
+0122a890   WARN RELOC_CONFLICT: ?g_pointer_013caa38@@3UCCountedPointerStatic@@A -> 013caa38 here, 013caa34 in landed 0122a890
+0122a890   RELOCATION_MATCH PASS   _global::Release_013caa38
+0122a900   WARN RELOC_CONFLICT: ?g_pointer_013caa40@@3UCCountedPointerStatic@@A -> 013caa40 here, 013caa3c in landed 0122a900
+0122a900   RELOCATION_MATCH PASS   _global::Release_013caa40
+0122a960   WARN RELOC_CONFLICT: ?g_pointer_013caa68@@3UCCountedPointerStatic@@A -> 013caa68 here, 013caa64 in landed 0122a960
+0122a960   RELOCATION_MATCH PASS   _global::Release_013caa68
+0122aa00   WARN RELOC_CONFLICT: ?g_pointer_013cb4fc@@3UCCountedPointerStatic@@A -> 013cb4fc here, 013cb4f8 in landed 0122aa00
+0122aa00   RELOCATION_MATCH PASS   _global::Release_013cb4fc
+0122ab70   WARN RELOC_CONFLICT: ?g_pointer_013d2e14@@3UCCountedPointerStatic@@A -> 013d2e14 here, 013d2e10 in landed 0122ab70
+0122ab70   RELOCATION_MATCH PASS   _global::Release_013d2e14
+0122abb0   WARN RELOC_CONFLICT: ?g_pointer_013d2e1c@@3UCCountedPointerStatic@@A -> 013d2e1c here, 013d2e18 in landed 0122abb0
+0122abb0   RELOCATION_MATCH PASS   _global::Release_013d2e1c
+0122abf0   WARN RELOC_CONFLICT: ?g_pointer_013d2e24@@3UCCountedPointerStatic@@A -> 013d2e24 here, 013d2e20 in landed 0122abf0
+0122abf0   RELOCATION_MATCH PASS   _global::Release_013d2e24
+0122ac30   WARN RELOC_CONFLICT: ?g_pointer_013d2e2c@@3UCCountedPointerStatic@@A -> 013d2e2c here, 013d2e28 in landed 0122ac30
+0122ac30   RELOCATION_MATCH PASS   _global::Release_013d2e2c
+0122aeb0   WARN RELOC_CONFLICT: ?g_pointer_0143e920@@3UCCountedPointerStatic@@A -> 0143e920 here, 0143e91c in landed 0122aeb0
+0122aeb0   RELOCATION_MATCH PASS   _global::Release_0143e920
+
+WINS: 233
+  00401f30 RELOCATION_MATCH _global::GFGetBuildNumber2
+  004131d0 RELOCATION_MATCH _Dest_val<std::allocator<CMacro>,CMacro>
+  0041d207 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00429e16 RELOCATION_MATCH CPair::DestroyMembers
+  00436900 RELOCATION_MATCH ::SortTreeRecursively
+  0043c3c0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  0043f3a0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00444d70 RELOCATION_MATCH CTCMapwho::OnDie
+  00453b15 RELOCATION_MATCH CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream
+  004567db RELOCATION_MATCH CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip
+  00456f71 RELOCATION_MATCH COpinionPersonalityDef::??0COpinionPersonalityDef
+  00457ae4 RELOCATION_MATCH ::~CPatchTesselationEdgeStrip
+  00458476 RELOCATION_MATCH ::~CPatchTesselationEdgeStrip
+  00459582 RELOCATION_MATCH CPlayerDef::?Transfer@CPlayerDef@@UAEXAAVCPersistContext@@@Z
+  00459704 RELOCATION_MATCH CSimBuildingDef::?Transfer@CSimBuildingDef@@UAEXAAVCPersistContext@@@Z
+  00463f6a RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  0046486f RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  00465662 RELOCATION_MATCH CSpecialAbilitiesTurncoatSpellDef::?Transfer@CSpecialAbilitiesTurncoatSpellDef@@UAEXAAVCPersistContext@@@Z
+  00465820 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  00466a75 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  00467553 RELOCATION_MATCH CPlayerInventoryDef::?Transfer@CPlayerInventoryDef@@UAEXAAVCPersistContext@@@Z
+  00469728 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  0046a742 RELOCATION_MATCH CSpecialAbilitiesBurntEffectDef::?Transfer@CSpecialAbilitiesBurntEffectDef@@UAEXAAVCPersistContext@@@Z
+  0046cac2 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  00471c79 RELOCATION_MATCH _global::Alloc
+  004720f1 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  00477bfc RELOCATION_MATCH CActiveFile::OnReadFinished
+  004784e4 RELOCATION_MATCH CAppearanceModifierScalingDef::?Transfer@CAppearanceModifierScalingDef@@UAEXAAVCPersistContext@@@Z
+  00478827 RELOCATION_MATCH CAbilityTrackLevelDef::?Transfer@CAbilityTrackLevelDef@@UAEXAAVCPersistContext@@@Z
+  0047b330 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  004a9ef0 RELOCATION_MATCH CThingSearchTools::GetPFirstLeafThing<CFilter_Bind2<CThingFilter_HasTC,CThingFilter_InRegion>,CThing>
+  004aa690 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  004b7600 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  004d607c RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  004d6902 RELOCATION_MATCH std::FableDestVal_004d6902
+  004dc568 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  004dd999 RELOCATION_MATCH CBedDef::?Transfer@CBedDef@@UAEXAAVCPersistContext@@@Z
+  004dd9dd RELOCATION_MATCH CSmokeGeneratorDef::?Transfer@CSmokeGeneratorDef@@UAEXAAVCPersistContext@@@Z
+  004dd9fe RELOCATION_MATCH CCreatureNavigationDef::?Transfer@CCreatureNavigationDef@@UAEXAAVCPersistContext@@@Z
+  004ddeaa RELOCATION_MATCH CHeroDef::?Transfer@CHeroDef@@UAEXAAVCPersistContext@@@Z
+  004de36b RELOCATION_MATCH COpinionOfHeroDef::?Transfer@COpinionOfHeroDef@@UAEXAAVCPersistContext@@@Z
+  004de50c RELOCATION_MATCH CTimeAppearanceFadeDef::?Transfer@CTimeAppearanceFadeDef@@UAEXAAVCPersistContext@@@Z
+  004de545 RELOCATION_MATCH CGiftDef::?Transfer@CGiftDef@@UAEXAAVCPersistContext@@@Z
+  004de891 RELOCATION_MATCH CSummonableCreatureDef::?Transfer@CSummonableCreatureDef@@UAEXAAVCPersistContext@@@Z
+  004dedac RELOCATION_MATCH CWallMountEffectsDef::?Transfer@CWallMountEffectsDef@@UAEXAAVCPersistContext@@@Z
+  004def0f RELOCATION_MATCH CTeleporterDef::?Transfer@CTeleporterDef@@UAEXAAVCPersistContext@@@Z
+  004def3d RELOCATION_MATCH CHeroSpecialMovementDef::?Transfer@CHeroSpecialMovementDef@@UAEXAAVCPersistContext@@@Z
+  004df107 RELOCATION_MATCH CFishingRodDef::?Transfer@CFishingRodDef@@UAEXAAVCPersistContext@@@Z
+  004df6f4 RELOCATION_MATCH CFireheartMinigameDef::?Transfer@CFireheartMinigameDef@@UAEXAAVCPersistContext@@@Z
+  004df738 RELOCATION_MATCH CLightningOrbDef::?Transfer@CLightningOrbDef@@UAEXAAVCPersistContext@@@Z
+  004df77c RELOCATION_MATCH CHasNameDef::?Transfer@CHasNameDef@@UAEXAAVCPersistContext@@@Z
+  004e38e4 RELOCATION_MATCH CThunderBattleDef::?Transfer@CThunderBattleDef@@UAEXAAVCPersistContext@@@Z
+  004e3c24 RELOCATION_MATCH CBalverineBattleDef::?Transfer@CBalverineBattleDef@@UAEXAAVCPersistContext@@@Z
+  004e3c6e RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  004e3f7b RELOCATION_MATCH CAreaOfEffectAttackDef::?Transfer@CAreaOfEffectAttackDef@@UAEXAAVCPersistContext@@@Z
+  004e599d RELOCATION_MATCH CFlammableDef::?Transfer@CFlammableDef@@UAEXAAVCPersistContext@@@Z
+  004e7ea7 RELOCATION_MATCH CCreatureModeDef::?Transfer@CCreatureModeDef@@UAEXAAVCPersistContext@@@Z
+  004e85dc RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  004e89c5 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  004e95f5 RELOCATION_MATCH _global::GFSerialiseVectorBinaryOut<float>
+  004eac7b RELOCATION_MATCH CPrizeScoreDef::?Transfer@CPrizeScoreDef@@UAEXAAVCPersistContext@@@Z
+  0051a110 RELOCATION_MATCH CRegion::??1CRegion
+  00526010 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00565870 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  005658a0 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  00565bb0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  0057f4e3 RELOCATION_MATCH _global::Alloc
+  005b200c RELOCATION_MATCH CRegionDialog::GetTreeHandleFromMapIndex
+  00628f30 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00628f50 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00628f70 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00628f90 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00628fb0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00629000 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  006290e0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  0065688f RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  0066a510 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  0066c000 RELOCATION_MATCH CPackedUIntArray::~CPackedUIntArray
+  0066c150 RELOCATION_MATCH CPackedUIntArray::~CPackedUIntArray
+  00676720 RELOCATION_MATCH CTCMapwho::OnDie
+  0067c350 RELOCATION_MATCH CSystemRegistry::~CSystemRegistry
+  006872b0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00695450 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  006956e0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  006aecf0 RELOCATION_MATCH CTCRegionFollower::CullNullFollowers
+  006bc1d0 RELOCATION_MATCH CRegion::SetRegionDefName
+  006fb960 RELOCATION_MATCH _global::__unguarded_linear_insert
+  006fcf40 RELOCATION_MATCH CVectorMap_AnimEvents::Add
+  006fd170 RELOCATION_MATCH CThingPropertyDialog::SetAsAttachingWithMode
+  007120d0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00717bc0 RELOCATION_MATCH NTCScriptedControl::CActionOverheadTalkToThing::??0CActionOverheadTalkToThing
+  00717d40 RELOCATION_MATCH CActionTalkToThing::CActionTalkToThing
+  00719120 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00733100 RELOCATION_MATCH CTCCombat::IsUsingUnarmedCombatIdle
+  0073d770 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  00765d20 RELOCATION_MATCH std::FableDestVal_00765d20
+  00768ba0 RELOCATION_MATCH std::FableDestVal_00768ba0
+  007692a0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  007692d0 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  0076d900 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  007811d0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  007b6c90 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  007df380 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  007e1c30 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  007e5920 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  007e7e40 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  007e7fa0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  007eaf00 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  007eb2b0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  007eb470 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  007eb990 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  007ed420 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  007edff0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  007ee7a0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00854500 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00854540 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  0085edf0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00893ec0 RELOCATION_MATCH CGameScriptInterface::?MsgOnHeroSlept@CGameScriptInterface@@UBE_NAA_N@Z
+  008e8c20 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00910b20 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00922eb0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00935970 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00957300 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  0095f6f0 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::Update
+  00966890 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00968150 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00968170 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  0096e540 RELOCATION_MATCH CAIStateGroup_SummonerSummon::IsRunnable
+  0096edb0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::Cleanup
+  0097d280 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  0098cbb0 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  009944a0 RELOCATION_MATCH CBufferedFileDataOutputStream::CBufferedFileDataOutputStream
+  00994810 RELOCATION_MATCH CBufferedFileDataOutputStream::Close
+  00995df0 RELOCATION_MATCH CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream
+  00996990 RELOCATION_MATCH CCompressedMemoryDataInputStream::??0CCompressedMemoryDataInputStream
+  00996a40 RELOCATION_MATCH CCompressedMemoryDataInputStream::OpenMemorySource
+  00997240 RELOCATION_MATCH CCompressedMemoryDataInputStream::ScalarDeletingDestructor
+  0099b4d0 RELOCATION_MATCH CWideString::UnassignString
+  0099e9b0 RELOCATION_MATCH CCharString::UnassignString
+  0099ff20 RELOCATION_MATCH CActiveFile::OnReadFinished
+  009a0300 RELOCATION_MATCH _global::CBasicString_AssignFromData
+  009a0390 RELOCATION_MATCH CBasicString<char>::SetString
+  009a73b0 RELOCATION_MATCH CTCMapwho::OnDie
+  009a99b0 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  009c61b0 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  009cc6f0 RELOCATION_MATCH CBankFileEntryUpdateData::SetInfo
+  009d3100 RELOCATION_MATCH CLandscapeBackgroundPatch::ClearTextures
+  009e60c0 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  009ea320 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  009f4910 RELOCATION_MATCH CScratchBuffer::?Initialise@CScratchBuffer
+  009fd990 RELOCATION_MATCH CGraphicDataBank::?PrepareDataForInclusion@CGraphicDataBank@@MAEXKABV?$CArray@VCCharString@@@@KV?$CCountedPointer@VCBankStateBlock@@@@AAVCDataOutputStream@@2@Z
+  00a0be10 RELOCATION_MATCH allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry> >::CRegisteredMusicEntry>_>
+  00a0d410 RELOCATION_MATCH CAInputProcess::ScalarDeletingDestructor
+  00a17510 RELOCATION_MATCH CActiveFile::OnReadFinished
+  00a377a0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00a3f700 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  00a3f970 RELOCATION_MATCH _global::vfunc_2
+  00a3f9a0 RELOCATION_MATCH _global::vfunc_2
+  00a46d90 RELOCATION_MATCH CMiniMapDisplay::ClearPrimitiveHandles
+  00a47040 RELOCATION_MATCH CTCMapwho::OnDie
+  00a5ed00 RELOCATION_MATCH CPixelShaderData::??_GCPixelShaderData
+  00a62d80 RELOCATION_MATCH CPackedUIntArray::Initialise
+  00a752f0 RELOCATION_MATCH CContainmentVolume::~CContainmentVolume
+  00a7dad0 RELOCATION_MATCH CThingComponentSet::~CThingComponentSet
+  00a8e040 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00a98910 RELOCATION_MATCH CTemporaryBuffer::??1CTemporaryBuffer
+  00a989a0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00a989e0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00a9c8c0 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00a9c930 RELOCATION_MATCH _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::DestroyMembers
+  00aa77a0 RELOCATION_MATCH CChunkedFileRawDataChunk::ReadFromFile
+  00aa8d80 RELOCATION_MATCH CChunkedFileRawDataChunk::??_GCChunkedFileRawDataChunk
+  00ac1960 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00ae6070 RELOCATION_MATCH CParticleSimulation::ScalarDeletingDestructor
+  00aec6a0 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  00bdc3c0 RELOCATION_MATCH CEngineLandscapeMap::OnMapVisibilityChanged
+  00bdc450 RELOCATION_MATCH CEngineLandscapeMap::Clear
+  00c0eb20 RELOCATION_MATCH CTCMapwho::OnDie
+  00c0ece0 RELOCATION_MATCH CCombatAbilityStrafeDef::CEngineVSConstantLayoutLights
+  00c0ef40 RELOCATION_MATCH CActiveFile::OnReadFinished
+  00c1e600 RELOCATION_MATCH CActiveFile::OnReadFinished
+  00c239b0 RELOCATION_MATCH _unattributed::NScript_CEvent_InitializeSubscriptions
+  00c23ba0 RELOCATION_MATCH CVtable_012b3a94::??1CVtable_012b3a94
+  00c23c10 RELOCATION_MATCH _unattributed::NScript_InitializeEventSubscription
+  00c23e00 RELOCATION_MATCH _unattributed::NScript_CEvent_InitializeActionParameters
+  00c23fe0 RELOCATION_MATCH CVtable_012b3a9c::??1CVtable_012b3a9c
+  00c24050 RELOCATION_MATCH _unattributed::NScript_CEvent_InitializeMessageEvents
+  00c24240 RELOCATION_MATCH CVtable_012b3aa4::??1CVtable_012b3aa4
+  00c2baf0 RELOCATION_MATCH CTCMapwho::OnDie
+  00c31810 RELOCATION_MATCH PKCAutoDeleteArray::Resize
+  00c34d00 RELOCATION_MATCH CActiveFile::OnReadFinished
+  00c49af0 RELOCATION_MATCH _unattributed::~CEngineLandscapeLODMap
+  00cb6200 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  00cd49f0 RELOCATION_MATCH CLandscapeBackgroundPatch::`vector_deleting_destructor'
+  00cd4a30 RELOCATION_MATCH CEngineSubPrimitiveText::`scalar_deleting_destructor'
+  00ce0ec0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00cef9a0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00d2d900 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00daabd0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00e0e7b0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00e5d110 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00e5de50 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00e9fba0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00ed0e30 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  00ee1be0 RELOCATION_MATCH CThingSwitch::`vector_deleting_destructor'
+  012288d0 RELOCATION_MATCH _global::Release_013b7d4c
+  01228b30 RELOCATION_MATCH _global::Release_013b8790
+  01228bb0 RELOCATION_MATCH _global::Release_013b8998
+  01228bf0 RELOCATION_MATCH _global::Release_013b89a0
+  01228c60 RELOCATION_MATCH _global::Release_013b89e0
+  01228ca0 RELOCATION_MATCH _global::Release_013b89fc
+  01228ce0 RELOCATION_MATCH _global::RenderMeshPrimitiveBlocks
+  01229190 RELOCATION_MATCH _global::Release_013ba854
+  01229400 RELOCATION_MATCH _global::Release_013bab10
+  01229510 RELOCATION_MATCH _global::RenderMeshPrimitiveBlocks
+  01229560 RELOCATION_MATCH _global::Release_013babb4
+  012295a0 RELOCATION_MATCH _global::Release_013babbc
+  01229e40 RELOCATION_MATCH _global::RenderMeshPrimitiveBlocks
+  01229e60 RELOCATION_MATCH _global::RenderMeshPrimitiveBlocks
+  01229ef0 RELOCATION_MATCH _global::RenderMeshPrimitiveBlocks
+  0122a6c0 RELOCATION_MATCH _global::Release_013ca7f0
+  0122a700 RELOCATION_MATCH _global::Release_013ca7f8
+  0122a740 RELOCATION_MATCH _global::Release_013ca818
+  0122a830 RELOCATION_MATCH _global::Release_013caa28
+  0122a890 RELOCATION_MATCH _global::Release_013caa38
+  0122a900 RELOCATION_MATCH _global::Release_013caa40
+  0122a960 RELOCATION_MATCH _global::Release_013caa68
+  0122aa00 RELOCATION_MATCH _global::Release_013cb4fc
+  0122ab70 RELOCATION_MATCH _global::Release_013d2e14
+  0122abb0 RELOCATION_MATCH _global::Release_013d2e1c
+  0122abf0 RELOCATION_MATCH _global::Release_013d2e24
+  0122ac30 RELOCATION_MATCH _global::Release_013d2e2c
+  0122aeb0 RELOCATION_MATCH _global::Release_0143e920

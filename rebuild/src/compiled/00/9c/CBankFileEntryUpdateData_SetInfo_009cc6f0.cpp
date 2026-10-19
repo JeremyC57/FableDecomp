@@ -12,6 +12,8 @@
 // element for a non-empty array and the array object's own address otherwise (`mov esi,ecx` is
 // skipped when end == first), which is why the source register is conditionally rewritten.  The
 // element count is re-read from the member for the copy length.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 struct CArray_char {                 // retail CArray<char>: 12 bytes
     char* m_pFirst;
     char* m_pLast;

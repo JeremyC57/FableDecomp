@@ -1,7 +1,8 @@
 #pragma optimize("s",on)
-struct CPersistContext {
-    void TransferA(int* v);
-    void TransferB(int* v);
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void Transfer_004dedda(int* value);             // 0x004DEDDA per-type transfer instantiation, element type not attributed
+    void TransferFloat(int* value);                 // 0x00431061 Transfer(float&)
+    void TransferLong(int* value);                  // 0x00431102 Transfer(long&)
 };
 
 struct CTCNoiseDef {
@@ -13,7 +14,7 @@ struct CTCNoiseDef {
 
 void __fastcall CTCNoiseDef_Transfer(CTCNoiseDef* self, void* edx, CPersistContext* ctx)
 {
-    ctx->TransferA(&self->a);
-    ctx->TransferB(&self->b);
-    ctx->TransferB(&self->c);
+    ctx->Transfer_004dedda(&self->a);
+    ctx->TransferFloat(&self->b);
+    ctx->TransferLong(&self->c);
 }

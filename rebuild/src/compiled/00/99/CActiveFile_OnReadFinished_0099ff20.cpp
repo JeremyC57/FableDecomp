@@ -1,5 +1,6 @@
 // CActiveFile::OnReadFinished @ 0x00c167c0
 #include <new>
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 
 struct CActiveFile {
     void* m_buffer;   // +0x00
@@ -8,7 +9,7 @@ struct CActiveFile {
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     if (self->m_buffer != 0) {
-        operator delete(self->m_buffer);
+        operator delete[](self->m_buffer);
         self->m_buffer = 0;
     }
 }

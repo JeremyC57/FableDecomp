@@ -2,7 +2,7 @@
 #include "rebuild_abi.h"
 
 // operator delete (relocation-masked target)
-extern "C" void __cdecl engine_op_delete(void* p);
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 // base-class destructor tail-called at end (relocation-masked target)
 struct CPatchTesselationEdgeStrip;
@@ -17,19 +17,19 @@ void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* this
     void* p;
 
     p = *(void**)((char*)thisptr + 0x6c);
-    if (p) engine_op_delete(p);
+    if (p) free(p);
 
     p = *(void**)((char*)thisptr + 0x60);
-    if (p) engine_op_delete(p);
+    if (p) free(p);
 
     p = *(void**)((char*)thisptr + 0x54);
-    if (p) engine_op_delete(p);
+    if (p) free(p);
 
     p = *(void**)((char*)thisptr + 0x48);
-    if (p) engine_op_delete(p);
+    if (p) free(p);
 
     p = *(void**)((char*)thisptr + 0x3c);
-    if (p) engine_op_delete(p);
+    if (p) free(p);
 
     CPatchTesselationEdgeStrip_base_dtor(thisptr);
 }

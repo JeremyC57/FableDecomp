@@ -4,7 +4,7 @@
 // GetMessagesFromTextName(CArray<CSubtitledMessage>*, const char*, const char*, ETextGroupSelectionMethod)
 // @ 0x004CEBB0 (__fastcall: array in ecx, name in edx), CArray<CSubtitledMessage>::operator= @ 0x0071A160
 // (manifest label "CCombatWheel::CopyAssign" is propagated), CSubtitledMessage::~CSubtitledMessage @ 0x004D1DB0
-// (manifest label "~CPatchTesselationEdgeStrip" is propagated), operator delete @ 0x00BFEA14.
+// (manifest label "~CPatchTesselationEdgeStrip" is propagated), free @ 0x00BFEA14 (MSVCR71 free thunk, not operator delete).
 // Label: the manifest's "CActionTalkBase::CActionTalkBase" is wrong: the body calls the CActionTalkBase
 // constructor (0x00717950) and stores vtable 0x012659FC = NTCScriptedControl::CActionOverheadTalkToThing.
 //
@@ -14,6 +14,7 @@
 // filled from the text group and assigned to Messages (+0x30); its inline destructor runs the 0x44-byte
 // element destructors over [first, last) with `last` cached in ebp, then frees the re-read buffer.
 // Leaf: ??0CActionOverheadTalkToThing
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 struct CThing;
 
@@ -33,7 +34,7 @@ struct CSubtitledMessageArray {                 // CArray<CSubtitledMessage>: {f
         for (CSubtitledMessage* p = m_pFirst; p != last; ++p)
             p->~CSubtitledMessage();
         if (m_pFirst != 0)
-            operator delete(m_pFirst);
+            free(m_pFirst);
     }
     CSubtitledMessageArray& operator=(const CSubtitledMessageArray& other);   // 0x0071A160
 };

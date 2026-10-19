@@ -5,7 +5,9 @@ struct CPatchTesselationEdgeStrip;
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* thisptr);
 
 static int g_freed = 0;
-extern "C" void __cdecl j_operator_delete(void* p) { if (p) ++g_freed; }
+// spy on the MSVCR71 free thunk (0x00BFEA14) the source calls; it never releases (test objects live on the stack)
+static int g_armed = 0;   // armed only around the call under test (CRT start-up/exit frees are ignored)
+extern "C" void __cdecl free(void* p_) { void* p = (void*)p_; if (!g_armed) return; if (p) ++g_freed; }
 
 struct CPatchTesselationEdgeStrip {
     char pad00[0x3c];
@@ -30,7 +32,7 @@ int main() {
     obj.p54 = 0;          // exercise the null-skip path
     obj.p60 = (void*)4;
     obj.p6c = (void*)5;
-    CPatchTesselationEdgeStrip_dtor(&obj);
+    g_armed = 1; CPatchTesselationEdgeStrip_dtor(&obj); g_armed = 0;
     if (g_freed == 4 && g_base == 1) {
         printf("OK_00457ae4_DTOR\n");
     } else {

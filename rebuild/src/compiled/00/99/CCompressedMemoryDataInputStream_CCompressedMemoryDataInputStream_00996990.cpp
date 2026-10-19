@@ -9,6 +9,7 @@
 //   CDataInputStream state names (+4..+0x14); modelled locally like the landed ctor 0x00995DC0 (the header is data only).
 // Shape: the scoped_ptr reset stores the new pointer before deleting the old one; the trailing ResetStream() is the
 //   inline position reset shared with OpenMemorySource (0x00996A40).
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 struct CACompressor {                                           // landed 0x00A3AEA0 (vtable 0x0129B424)
     virtual ~CACompressor();                                    // slot 0: scalar deleting destructor (`delete` with flag 1)
     unsigned char _body[0x1c - 4];

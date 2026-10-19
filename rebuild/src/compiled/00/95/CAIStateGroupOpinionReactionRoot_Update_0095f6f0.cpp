@@ -3,7 +3,7 @@
 // finish the update; bail straight out when the state group is no longer valid.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095F6F0, length 215 bytes (+ int3 padding).
 // Callees: own virtual slot 5 (+0x14, IsStillValid), the CurrentUpdateFunc member-function pointer at +0x78 (fn, this
-// adjustment at +0x7c), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x4F = CTCCreatureOpinionOfHero,
+// adjustment at +0x7c), CVectorMap::LowerBound @ 0x0040F020 (non-const) / 0x004365B0 (const) (inlined GetInterface, type 0x4F = CTCCreatureOpinionOfHero,
 // bit 15 of the dword at +0x28) and @ 0x004365B0 (type 0xF = CTCTalk, bit 15 of +0x20), CTCTalk::IsTalking
 // @ 0x006E28A0, CAIStateGroupBase::IsStopping @ 0x008FD010, the brain's virtual slot 2 (+0x08, yield), the finish call
 // @ 0x008FCF40.
@@ -16,12 +16,14 @@ struct CThing;
 struct CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
-// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
+// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound: the non-const
+// instantiation @ 0x0040F020 and the const one @ 0x004365B0 (two byte-identical bodies).
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x004365B0
+    SEntry* LowerBound(const long* type);       // 0x0040F020 (non-const instantiation)
+    SEntry* LowerBound(const long* type) const; // 0x004365B0 (const instantiation, byte-identical body)
 };
 
 struct CThing {
@@ -52,6 +54,31 @@ struct CThing {
     {
         long type = interfaceType;
         CInterfaceMap* map = &m_interfaces;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        CInterfaceMap::SEntry* sel;
+        if (it == map->last) sel = map->last;
+        else if (it->type <= interfaceType) sel = it;
+        else sel = map->last;
+        return sel;
+    }
+    // the same lookups through a const CThing (the const LowerBound instantiation)
+    template<class T> __forceinline bool GetInterfaceConst(T** ppOut, long interfaceType) const
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            const CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+    __forceinline CInterfaceMap::SEntry* FindEntryConst(long interfaceType) const
+    {
+        long type = interfaceType;
+        const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         CInterfaceMap::SEntry* sel;
         if (it == map->last) sel = map->last;
@@ -149,7 +176,7 @@ void CAIStateGroup_OpinionReactionRoot::Update()
         opinion->ReactionHandled = true;
     }
     CTCTalk* talk;
-    PBrain->PCreature->GetInterface(&talk, 0xf);
+    PBrain->PCreature->GetInterfaceConst(&talk, 0xf);
     while (talk->IsTalking()) {
         if (IsStopping())
             break;

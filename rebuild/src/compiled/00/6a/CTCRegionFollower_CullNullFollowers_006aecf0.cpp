@@ -4,7 +4,7 @@
 // CIntelligentPointer local, as in the landed CTCShopKeeper::EmptyCustomerList 0x00798E10).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, GetPItem @ 0x00A01B50 (x2), SetPItem @ 0x00A01B90,
 // ~CBaseIntelligentPointer @ 0x00A01C10, the element's virtual slot 0 (scalar deleting dtor, flag 0 = the explicit
-// `~T()` of STLport's _Destroy), operator delete/free @ 0x00BFEA14. Local vtable 0x01238C6C = CIntelligentPointer<CThing>.
+// `~T()` of STLport's _Destroy), free @ 0x00BFEA14. Local vtable 0x01238C6C = CIntelligentPointer<CThing>.
 // Layout = Ego_r.pdb CTCRegionFollower (0x18): Followers (STLport list<CIntelligentPointer<CThing>>) +0x0C, whose
 // first word is the sentinel node pointer; node = { next +0, prev +4, value +8 }.
 // Shape: a copy of each element (inline copy ctor: base ctor, vtable store, SetPItem(other.GetPItem())) is tested;
@@ -21,7 +21,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {    // CIntelligentPointer
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-void __cdecl operator delete(void* p);              // 0x00BFEA14
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 struct CFollowerNode {
     CFollowerNode*      _M_next;                    // +0
@@ -39,7 +39,7 @@ struct CFollowerList {                              // STLport list<CIntelligent
         prev->_M_next = next;
         next->_M_prev = prev;
         (&pos->_M_data)->~CIntelligentPointer();
-        operator delete(pos);
+        free(pos);
         return next;
     }
 };

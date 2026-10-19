@@ -1,14 +1,13 @@
 #pragma optimize("s",on)
 #include "engine/CHasNameDef.h"
 
-struct CPersistContext {
-    void TransferA(int* v);
-    void TransferB(int* v);
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferULong(int* value);                 // 0x00431020 Transfer(unsigned long&): PDB-typed ulong members
 };
 
 void __fastcall CHasNameDef_Transfer(CHasNameDef* self, void* /*edx*/, CPersistContext* ctx)
 {
-    ctx->TransferA((int*)&self->DefaultNameTag);
-    ctx->TransferB((int*)&self->Home);
-    ctx->TransferB((int*)&self->Occupation);
+    ctx->TransferULong((int*)&self->DefaultNameTag);
+    ctx->TransferULong((int*)&self->Home);
+    ctx->TransferULong((int*)&self->Occupation);
 }

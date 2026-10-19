@@ -1,11 +1,12 @@
 // CSystemRegistry destructor @ 0067c350
-// push esi; mov esi,ecx; mov eax,[esi+8]; test eax; je; push eax; call operator delete; add esp,4
+// push esi; mov esi,ecx; mov eax,[esi+8]; test eax; je; push eax; call free; add esp,4
 // mov [esi], 0x125b6d0 (vtable); pop esi; ret
 //
 // Non-virtual model so only ONE function is emitted (a virtual dtor makes MSVC also
 // emit a larger vector-deleting-destructor thunk that the harness would mis-select).
 // The trailing vtable store is modeled as an explicit assignment of the class vtable
 // address into [this+0] (a reloc slot, masked by the harness).
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 extern void* const CSystemRegistry_vftable[];
 
@@ -21,6 +22,6 @@ struct CSystemRegistry
 void CSystemRegistry::dtor()   // ~CSystemRegistry
 {
     if (buffer)
-        operator delete(buffer);
+        free(buffer);
     vtbl = (void*)CSystemRegistry_vftable;
 }

@@ -1,50 +1,34 @@
-// _Dest_val<std::allocator<CMacro>,CMacro> @ 0x004404b0 (leading function only).
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004131D0, 35 bytes. Catalog name: std::_Dest_val<std::allocator<CMacro>,CMacro>
+// (propagated: the PDB CMacro is {CCharString, CCharString, CArray<CCharString>, ...}, which this body is not).
 //
-// Genuine C++ reconstruction (real statements only, no inline assembly).
-//
-// The retail slice at 0x004404b0 holds ONE real function of 0x23 (35) bytes,
-// followed by int3 padding and several unrelated orphan functions; only the
-// leading function is reconstructed here (real_len = 35).
-//
-// The leading function is the unrolled destroy of four adjacent, identically
-// typed sub-objects of a host aggregate, each destroyed by the SAME single
-// element destructor at 0x0055b060 (this in ecx => __fastcall). MSVC (VC7.1)
-// destroys aggregate members in REVERSE declaration order, so the four calls
-// come out on +0xc, +0x8, +0x4, +0x0. The host pointer is parked in a
-// callee-saved register (esi) across the first three calls, and the final
-// destroy on the first member (offset 0) is emitted as a tail-call
-// (mov ecx,esi; pop esi; jmp 0x0055b060), because it is the last statement
-// and its argument is exactly `self`.
-//
-// Spelling that reproduces the retail bytes:
-//   push esi; mov esi,ecx
-//   lea ecx,[esi+0xc]; call 0x55b060
-//   lea ecx,[esi+0x8]; call 0x55b060
-//   lea ecx,[esi+0x4]; call 0x55b060
-//   mov ecx,esi; pop esi; jmp 0x55b060
-// A struct with four CMacro members whose destructor is 0x0055b060, invoked
-// via a compiler-generated aggregate destructor, yields exactly this. To keep
-// all four calls resolving to the SAME rel32 target we route every element
-// destroy through one extern __fastcall(this) shim (call/jmp rel32 are
-// relocation-masked in parity).
+// Body: the reverse-order destruction of a 16-byte record of four one-word string members:
+//   +0xc CWideString (~CWideString @ 0x0099B510), +0x8 CCharString (~CCharString @ 0x0099EAE0),
+//   +0x4 CWideString, then +0x0 CWideString as the tail jump (mov ecx,esi ; pop esi ; jmp 0x0099B510).
+// 0x0099B510 is the wide-string release (NoRefs at data+0xc, free(), instance count 0x013BCA20; the
+// CDiskFileWin32 Pathname is destroyed with it in GFGetBuildNumber2); 0x0099EAE0 is ~CCharString
+// (release 0x0099E9B0 with NoRefs at data+0xd as in the PDB CCharStringData, instance count 0x013BD800).
+// __fastcall, this in ecx.
 
-struct CMacro { char pad[4]; };   // 4-byte element (stride matches +0x4 spacing)
-
-// Single element destructor at 0x0055b060, __fastcall (this in ecx).
-extern "C" void __fastcall CMacro_dtor(CMacro* self);
-
-struct Host {
-    CMacro m_0;   // +0x00  (destroyed last, as tail-call)
-    CMacro m_4;   // +0x04
-    CMacro m_8;   // +0x08
-    CMacro m_c;   // +0x0c  (destroyed first)
+struct CWideString {
+    void* PStringData;
+    ~CWideString();                 // 0x0099B510
+};
+struct CCharString {
+    void* PStringData;
+    ~CCharString();                 // 0x0099EAE0
 };
 
-// _Dest_val destroys the four sub-objects in reverse: +0xc, +0x8, +0x4, +0x0.
-void __fastcall Dest_val(Host* self)
+struct CStringRecord_004131d0 {
+    CWideString m_0;                // +0x00  (destroyed last, as the tail jump)
+    CWideString m_4;                // +0x04
+    CCharString m_8;                // +0x08
+    CWideString m_c;                // +0x0c  (destroyed first)
+};
+
+void __fastcall Dest_val(CStringRecord_004131d0* self)
 {
-    CMacro_dtor(&self->m_c);
-    CMacro_dtor(&self->m_8);
-    CMacro_dtor(&self->m_4);
-    CMacro_dtor(&self->m_0);
+    self->m_c.~CWideString();
+    self->m_8.~CCharString();
+    self->m_4.~CWideString();
+    self->m_0.~CWideString();
 }

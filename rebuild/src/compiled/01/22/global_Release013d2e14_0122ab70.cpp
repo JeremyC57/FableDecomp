@@ -3,7 +3,7 @@
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
-// Retail bytes:  mov eax,[0x13d2e18] ; push esi ; xor esi,esi ; cmp eax,esi ; je Z ; dec dword ptr [eax] ; mov eax,[0x13d2e18] ; cmp [eax],esi ; jne Z ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[0x13d2e18] ; push eax ; call operator delete ; add esp,4 ; Z: mov [0x13d2e18],esi ; mov [0x13d2e14],esi ; pop esi ; ret
+// Retail bytes:  mov eax,[0x13d2e18] ; push esi ; xor esi,esi ; cmp eax,esi ; je Z ; dec dword ptr [eax] ; mov eax,[0x13d2e18] ; cmp [eax],esi ; jne Z ; mov ecx,[eax+8] ; call [eax+4] ; mov eax,[0x13d2e18] ; push eax ; call operator delete ; add esp,4 ; Z: mov [0x13d2e14],esi ; mov [0x13d2e18],esi ; pop esi ; ret
 // A static CCountedPointer {object @ 0x013D2E14, count block @ 0x013D2E18} being released: the
 // inlined Reset(0) decrements the block, destroys the object through the block's function pointer
 // and frees the block (operator delete @ 0x00BFE9BC) on the last reference, then nulls both
@@ -26,8 +26,8 @@ struct CCountedPointerStatic {
                 delete m_pCount;
             }
         }
+        m_pObject = object;                 // retail stores the object word first
         m_pCount = 0;
-        m_pObject = object;
     }
 };
 

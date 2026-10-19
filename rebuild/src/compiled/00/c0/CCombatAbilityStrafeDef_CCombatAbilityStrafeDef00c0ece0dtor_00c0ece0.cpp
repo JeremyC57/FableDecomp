@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0ECE0, oracle length 271 bytes. Built under /EHsc.
 // Retail bytes:  ... mov [esp+8],esi ; mov dword ptr [esi],12B25A8h ; mov dword ptr [esp+18h],6 ; call Stop1 ; mov ecx,esi ; call Stop2 ; mov ecx,esi ; call Stop3 ; mov ecx,esi ; call Stop4 ; mov eax,[esi+8] ; lea ecx,[eax+4] ; mov eax,[ecx] ; push esi ; call [eax+20h] ; lea edi,[esi+74h] ; mov [esp+0Ch],edi ; mov dword ptr [edi],12B23F0h ; lea ecx,[edi+8] ; mov byte ptr [esp+18h],7 ; call ~CNode ; mov dword ptr [edi],12B1AB0h ; ... (+60h / 8, +50h / 9, +38h / 0Ah with ~CSmallNode) ... mov eax,[esi+2Ch] ; test eax,eax ; je a ; push eax ; call free ; add esp,4 ; mov dword ptr [esi+2Ch],0 ; a: lea ecx,[esi+0Ch] ; mov byte ptr [esp+18h],0 ; call ~CNavButton ; ... mov dword ptr [esi],12B221Ch ; ... ret
 // The classes are named by address, matching the constructor's model.
-extern "C" void __cdecl free(void* block);
+void __cdecl operator delete[](void* block) throw();   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it; the CRT one does not throw)
 
 struct CCombatAbilityStrafeDef_00c0ece0;
 struct CRegistry_00c0ece0 {
@@ -30,7 +30,7 @@ struct CBuffer_00c0ece0 {                  // three words
     void* m_pData;
     long m_a;
     long m_b;
-    ~CBuffer_00c0ece0() { if (m_pData) { free(m_pData); m_pData = 0; } }
+    ~CBuffer_00c0ece0() { if (m_pData) { operator delete[](m_pData); m_pData = 0; } }
 };
 
 struct CSmallNode_00c0ece0 { unsigned char _body[8]; ~CSmallNode_00c0ece0(); };   // 0x00C17B10

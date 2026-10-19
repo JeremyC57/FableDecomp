@@ -9,6 +9,7 @@
 // A polymorphic class whose destructor re-points the vtable (the compiler's own store) and frees
 // the trivially-destructible buffer at +0x08 (operator delete[], landed-trusted identity). Three sibling bodies
 // differ only in the vtable address (0x012B2FC8 / 0x012B80C8 / 0x012B8364) and delete vs delete[].
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct CLODMapOwner_012B80C8 {
     virtual void v00();                     // polymorphic (the destructor stores the vtable)
     void* Reserved;                         // +0x04

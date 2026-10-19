@@ -1,4 +1,5 @@
 #pragma optimize("s",on)
+extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 // CActiveFile::OnReadFinished @ 0x00477bfc
 // __fastcall void OnReadFinished(CActiveFile* this)
 
@@ -14,5 +15,5 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     CActiveFile_Notify(self->stream, self->status);
     if (self->stream)
-        ::operator delete(self->stream);
+        free(self->stream);
 }

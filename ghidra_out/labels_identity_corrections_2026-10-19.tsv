@@ -1,0 +1,10 @@
+00693ef0	CCreatureActionBase::~CCreatureActionBase	stores vtable 0x01259D24 (.?AVCCreatureActionBase@@); not CPhysicsMeshInfo (forge-autoname)
+0099b510	CWideString::~CWideString	NoRefs at +0xc, free(), counter 0x013BCA20
+0099a300	CBaseClassNonCopyable::~CBaseClassNonCopyable	ctor 0x0099A2F0 stores .?AVCBaseClassNonCopyable@@; 0x0099A2E0 is ~CBaseClass
+00993eb0	CDataOutputStream::WriteLong	writes a long; not WriteCBYTE
+00431020	CPersistContext::TransferULong	typed transfer, PDB ulong member
+00431061	CPersistContext::TransferFloat	typed transfer; not UpdateShadowScene
+00431102	CPersistContext::TransferLong	typed transfer; not UpdateShadowScene
+0043314a	CPersistContext::TransferBool	typed transfer
+0044c6b0	CDefinitionManager::Get	
+006e7510	CWorld::GetWorldFrame_6e7510	reads the +0x18 frame word; distinct from 0x006E7530 GetMaxWorldFrameForMessages (+0x1c)

@@ -5,7 +5,7 @@
 // CMovableResource (rtti-vtables.tsv): the chunk label (~CEngineLandscapePatch) is propagated from the byte-identical shape @ 0x00BF3A40 (whose vtable is
 // CEngineLandscapePatch's). Shape: the counted pointer's release re-reads the block pointer after the decrement (`dec [eax] ; mov eax,[esi+8] ; cmp [eax],0`:
 // the decrement may alias the member) and again for the delete; the object and block words are zeroed after the test, before the base vtable store.
-extern "C" void __cdecl operator_delete_00bfe9bc(void* block);   // 0x00BFE9BC
+void __cdecl operator delete(void* block);   // MSVCR71 import thunk 0x00BFE9BC
 
 struct SCountBlock {                               // the counted pointer's shared block
     long         m_count;                          // +0x00
@@ -22,7 +22,7 @@ struct CCountedResourcePointer {
             --m_pBlock->m_count;
             if (m_pBlock->m_count == 0) {
                 m_pBlock->m_pfnDestroy(m_pBlock->m_pObject);
-                operator_delete_00bfe9bc(m_pBlock);
+                operator delete(m_pBlock);
             }
         }
         m_pObject = 0;

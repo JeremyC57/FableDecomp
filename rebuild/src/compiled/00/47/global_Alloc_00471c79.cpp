@@ -1,6 +1,7 @@
 #pragma optimize("s",on)
 // Reconstruction of Alloc @ 0x00471c79
 #include <new>
+extern "C" void* __cdecl malloc(unsigned int size);   // MSVCR71 import thunk 0x00BFEA0E
 
 struct CScriptDataBase;
 
@@ -11,7 +12,7 @@ struct SubObj {
 };
 
 CScriptDataBase* __stdcall Alloc(long a) {
-    void* base = ::operator new(0x20);
+    void* base = malloc(0x20);
     SubObj* p = (SubObj*)((char*)base + 8);
     if (p) {
         new (p) SubObj(a);   // placement construct -> native thiscall, arg on stack

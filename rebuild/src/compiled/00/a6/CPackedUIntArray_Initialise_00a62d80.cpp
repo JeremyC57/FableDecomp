@@ -7,6 +7,8 @@
 // Shape: the source width is clamped with `if (bits > 32) bits = 32;`; after `delete[]` the members are reset (their
 // stores scheduled between the next call's pushes); the word count `(Bits * Size + 31) >> 5` is reused as PackArray's
 // last argument.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 struct CPackedUIntArray {
     unsigned long* PackedInts;              // +0x00
     unsigned long  Size;                    // +0x04

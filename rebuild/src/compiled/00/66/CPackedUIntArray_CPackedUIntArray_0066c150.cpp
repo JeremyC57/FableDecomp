@@ -6,6 +6,7 @@
 // the first two words are touched, so this body is a two-word {buffer, count} array; the full
 // CPackedUIntArray destructor at 0x00A629D0 also clears +8/+0xc. The label is propagated over the
 // byte-identical twin at 0x0066C000 (no direct callers of either).
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct CPackedUIntArray {
     unsigned long* m_pData;                 // +0x00 packed words (new[])
     unsigned long  m_count;                 // +0x04

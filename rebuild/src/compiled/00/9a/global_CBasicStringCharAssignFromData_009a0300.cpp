@@ -1,10 +1,8 @@
-extern "C" void* malloc(unsigned int size);
-extern "C" void free(void* p);
 extern "C" void* memcpy(void*, const void*, unsigned int);
 extern "C" void* memset(void*, int, unsigned int);
 
-void* operator new[](unsigned int size) { return malloc(size); }
-void operator delete[](void* p) { free(p); }
+void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C
 
 struct CBasicStringChar
 {

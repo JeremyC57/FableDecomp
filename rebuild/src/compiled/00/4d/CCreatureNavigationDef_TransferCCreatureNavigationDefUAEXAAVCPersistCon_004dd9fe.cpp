@@ -3,10 +3,9 @@ struct A { int x; };
 struct B { int x; };
 struct C { int x; };
 
-struct CPersistContext {
-    void PersistA(A* p);
-    void PersistB(B* p);
-    void PersistC(C* p);
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferFloat(void* value);                // 0x00431061 Transfer(float&)
+    void TransferBool(A* value);                    // 0x0043314A Transfer(bool&)
 };
 
 struct CCarrySlotDef {
@@ -19,8 +18,8 @@ struct CCarrySlotDef {
 
 void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* self, void* edx, CPersistContext* ctx)
 {
-    ctx->PersistA(&self->a);
-    ctx->PersistB(&self->b);
-    ctx->PersistC(&self->c);
-    ctx->PersistA(&self->a2);
+    ctx->TransferFloat(&self->a);
+    ctx->TransferFloat(&self->b);
+    ctx->TransferFloat(&self->c);
+    ctx->TransferBool(&self->a2);
 }

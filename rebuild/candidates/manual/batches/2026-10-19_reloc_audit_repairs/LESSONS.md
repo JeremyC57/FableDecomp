@@ -1,0 +1,16 @@
+# Relocation-identity repair lessons (agent991, 235 rows)
+- The lane `<new>` lacks the array forms: VC7.1 lowers `delete[] p` / `new T[n]` of a POD to scalar `??3`/`??2` unless `void operator delete[](void*)` / `void* operator new[](unsigned int)` is declared; one declaration fixes the binding with identical bytes.
+- Under /EHsc an `extern "C"` CRT function is assumed nothrow; replacing `free(p)` with `operator delete[](p)` changes the EH state code unless the operator is declared `throw()` (00c0ece0).
+- A `malloc`/`free` spy in a behaviour test must not call into the CRT heap: make it record only while armed around the call under test and otherwise do nothing (leak); `_free_base` does not exist in VC7.1 libc and defining `free` that forwards elsewhere corrupts the heap. With that pattern no LINK_FAIL occurs.
+- RELOCATION_MATCH masks addend differences: the static counted-pointer releases (23 rows) stored the count word before the object word and 00a0d410 read vtable slot 4 instead of 3; the identity audit's base-target check exposed both as real byte differences.
+- 0x0099B510 is CWideString::~CWideString (NoRefs at data+0xc, free(), counter 0x013BCA20; CDiskFileWin32::Pathname) and 0x0099EAE0 is CCharString::~CCharString (release 0x0099E9B0, NoRefs at +0xd as in the PDB, counter 0x013BD800).
+- 0x0099A2E0 = ~CBaseClass (called by CBaseClass ??_G 0x004371F0), 0x0099A300 = ~CBaseClassNonCopyable (ctor 0x0099A2F0 stores .?AVCBaseClassNonCopyable@@); CTCBase (0x00686830) and CChunkedFileChunk (0x00AA75C0) tail-jump the latter.
+- 0x00693EF0 is ~CCreatureActionBase (stores vtable 0x01259D24 = .?AVCCreatureActionBase@@), not the label's CPhysicsMeshInfo; the 25 "_Dest_val" rows calling it are derived-action destructors with one member at +0xa8; 0x0062E900 ~CCombatActionBase tail-jumps it.
+- Read vtable RTTI (vtable-4 -> COL -> type descriptor name) to name destructor callees; it beats the propagated catalog labels.
+- No ICF in retail (duplicate bodies stay separate), so two source names bound to one retail address are one function (0096edb0 IsCreatureAttacking, 00733100 GetPlayer).
+- `push imm ; call A ; mov ecx,eax ; call B` with A ending in plain `ret` is `A()->B(imm)`: the argument of B is pushed before A runs (00733100 HasMode, 006bc1d0 GetDefGlobalIndexFromName).
+- Two byte-identical LowerBound instantiations: 0x0040F020 is the non-const, 0x004365B0 the const one; model a const accessor twin to bind the second call.
+- 0x006E7510 is not GetMaxWorldFrameForMessages (0x006E7530): same accessor path but reads the +0x18 frame word instead of +0x1c.
+- CPersistContext typed transfers: 0x00431061 float, 0x00431102 long, 0x00431020 unsigned long (PDB ulong member), 0x0043314A bool, 0x00431143 CCharString, 0x004595A3 CRGBColour, 0x0045228F CDefString; other `push 0x122d70e` helpers are per-type instantiations named by address.
+- Adding real ctor/dtor declarations can make the grader pick another emitted body; add a `// Leaf:` line naming the graded function.
+- Explicit-lifetime sequences (temporaries rebuilt in one slot, destroyed early) keep retail bytes with raw storage + placement new + explicit real destructor calls (00401f30) where scoped temporaries reorder pushes and use the ctor's eax.

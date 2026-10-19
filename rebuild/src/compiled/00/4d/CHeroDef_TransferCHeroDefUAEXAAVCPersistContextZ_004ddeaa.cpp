@@ -1,8 +1,9 @@
 #pragma optimize("s",on)
 struct CMember { int x; };
 
-struct CPersistContext {
-    void Persist(CMember* m);  // __fastcall: ecx=this, stack=m
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferLong(CMember* value);              // 0x00431102 Transfer(long&)
+    void Transfer_004ddecb(CMember* value);         // 0x004DDECB per-type transfer instantiation, element type not attributed
 };
 
 struct CGuildMasterDef {
@@ -13,6 +14,6 @@ struct CGuildMasterDef {
 
 void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* self, void* edx, CPersistContext* ctx)
 {
-    ctx->Persist(&self->m28);
-    ctx->Persist(&self->m2c);
+    ctx->TransferLong(&self->m28);
+    ctx->Transfer_004ddecb(&self->m2c);
 }

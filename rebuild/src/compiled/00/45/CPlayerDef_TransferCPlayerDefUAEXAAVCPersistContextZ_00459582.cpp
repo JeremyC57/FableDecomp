@@ -2,9 +2,9 @@
 struct CSubA { char b[4]; };
 struct CSubB { char b[4]; };
 
-struct CPersistContext {
-    // this=ecx=ctx, member pointer pushed on stack -> __fastcall push;call
-    void TransferA(CSubA* m);   // callee at 0x431102
+struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+    void TransferLong(CSubA* value);                // 0x00431102 Transfer(long&)
+    void TransferRGBColour(CSubA* value);           // 0x004595A3 Transfer(CRGBColour&)
 };
 
 struct CPlayerDef {
@@ -17,7 +17,7 @@ struct CPlayerDef {
 
 void CPlayerDef::Transfer(CPersistContext& ctx)
 {
-    ctx.TransferA(&this->m3c);
+    ctx.TransferLong(&this->m3c);
     // second call: this=ecx=ctx, pushes &self->m40, target 0x4595a3
-    reinterpret_cast<CPersistContext*>(&ctx)->TransferA(reinterpret_cast<CSubA*>(&this->m40));
+    reinterpret_cast<CPersistContext*>(&ctx)->TransferRGBColour(reinterpret_cast<CSubA*>(&this->m40));
 }

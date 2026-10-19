@@ -1,5 +1,5 @@
-extern "C" void free(void*);
-extern "C" void engine_op_delete(void*);
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
+void __cdecl operator delete(void* block);   // MSVCR71 import thunk 0x00BFE9BC
 
 struct CInner {
 };
@@ -17,13 +17,13 @@ struct CLandscapeBackgroundPatch {
 void* CLandscapeBackgroundPatch::CLandscapeBackgroundPatch_ClearTextures(int flag)
 {
   if (this->f8) {
-    free(this->f8);
+    operator delete[](this->f8);
     this->f8 = 0;
   }
   this->f4 = 0;
   CInner_dtor(&this->inner);
   if (flag & 1) {
-    engine_op_delete(this);
+    operator delete(this);
   }
   return this;
 }

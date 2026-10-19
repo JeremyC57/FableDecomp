@@ -9,7 +9,7 @@ struct Obj
 };
 
 // cdecl free function -> push esi; call 0xbfe9bc; add esp,4
-void FreeObj(Obj* p);
+void __cdecl operator delete(void* block);   // MSVCR71 import thunk 0x00BFE9BC
 
 struct CTCMapwho
 {
@@ -21,6 +21,6 @@ void CTCMapwho::OnDie(Obj* p)
     if (p)
     {
         p->Cleanup();
-        FreeObj(p);
+        operator delete(p);
     }
 }

@@ -9,6 +9,7 @@
 // Shape: a three-case `switch` lowered to `sub eax,0 ; je / dec eax ; je / dec eax ; jne` with the case bodies laid out
 // last-first; the pool and handle are re-read for the second pool call; each case ends in its own copy of the base
 // destructor tail-jump.
+void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 struct CHandleBasedMemoryPool {
     void Unlock(long handle);                      // 0x00A02710
     void Free(long handle);                        // 0x00A02B30
