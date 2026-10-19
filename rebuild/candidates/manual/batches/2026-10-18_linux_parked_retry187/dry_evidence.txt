@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004083e0   RELOCATION_MATCH PASS   GetConfigOptionsDefaultsDef
+0041da2d   RELOCATION_MATCH PASS   ScrollMenu
+00513bf0   RELOCATION_MATCH PASS   operator=
+006f9130   RELOCATION_MATCH PASS   GetEmbeddedEventTime
+
+WINS: 4
+  004083e0 RELOCATION_MATCH CUserProfileManager::GetConfigOptionsDefaultsDef
+  0041da2d RELOCATION_MATCH NUISystem_CManager::ScrollMenu
+  00513bf0 RELOCATION_MATCH CMapInfo::??4CMapInfo@@
+  006f9130 RELOCATION_MATCH NAnimationEvents_CManager::GetEmbeddedEventTime

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00434450   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  00434450 RELOCATION_MATCH CEngineVideoOptionsDef::operator=
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineVideoOptionsDef_operator_00434450

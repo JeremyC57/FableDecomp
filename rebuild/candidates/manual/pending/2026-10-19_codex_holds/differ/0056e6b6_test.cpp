@@ -1,0 +1,4 @@
+#include <cstdio>
+#include <cstring>
+const char* movie(long stat) { if(stat==1)return "Data\\Video\\exp_spend_health.wmv"; if(stat==0)return "Data\\Video\\exp_spend_strength.wmv"; if(stat==2)return "Data\\Video\\exp_spend_tough.wmv"; if(stat==3)return "Data\\Video\\exp_spend_speed.wmv"; if(stat==5)return "Data\\Video\\exp_spend_stealth.wmv"; if(stat==4)return "Data\\Video\\exp_spend_decapitation.wmv"; if(stat==9)return "Data\\Video\\exp_spend_will.wmv"; return ""; }
+int main(){ if(std::strcmp(movie(1),"Data\\Video\\exp_spend_health.wmv")||std::strcmp(movie(0),"Data\\Video\\exp_spend_strength.wmv")||std::strcmp(movie(9),"Data\\Video\\exp_spend_will.wmv")||movie(8)[0]){std::printf("0056e6b6_TEST FAIL\n");return 1;}std::printf("0056e6b6_TEST PASS\n");return 0; }

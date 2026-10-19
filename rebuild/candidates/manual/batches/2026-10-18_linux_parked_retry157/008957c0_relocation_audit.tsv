@@ -1,0 +1,12 @@
+offset	native_target	symbol
+00000052	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+0000007e	00bfea1a	??2@YAPAXI@Z
+0000009f	008ab8d0	??0EventStealing@@QAE@PAUCThingNative@@0@Z
+000000a7	008113c0	?AddEvent@EntityEventsMethods@@QAEXPAUEventBase@@@Z
+000000b4	00bfea1a	??2@YAPAXI@Z
+000000d1	008ab840	??0EventPickingLock@@QAE@PAUCThingNative@@0@Z
+000000d9	008113c0	?AddEvent@EntityEventsMethods@@QAEXPAUEventBase@@@Z
+000000e6	00bfea1a	??2@YAPAXI@Z
+00000103	008ab7b0	??0EventPickpocketing@@QAE@PAUCThingNative@@0@Z
+0000010b	008113c0	?AddEvent@EntityEventsMethods@@QAEXPAUEventBase@@@Z
+0000011b	008113c0	?AddEvent@EntityEventsMethods@@QAEXPAUEventBase@@@Z

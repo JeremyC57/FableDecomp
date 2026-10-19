@@ -1,0 +1,7 @@
+offset	native_target	symbol
+00000027	009fa620	?GetNextValidDimensions@CTexture@@SI?AUC2DExtentsI@@ABU2@ABUCPixelFormat@@@Z
+00000036	00bfea1a	??2@YAPAXI@Z
+00000046	0099a2d0	??0CBaseClass@@QAE@XZ
+00000054	0129dc18	??_7CVolumeTexture@@6B@
+00000065	00a6ae60	?Reset@?$CCountedPointer@UCVolumeTexture@@@@QAEXPAUCVolumeTexture@@@Z
+00000098	00a68370	?Initialise@CVolumeTexture@@QAE_NABUC3DExtentsI@@JABUCPixelFormat@@KW4EVolumePool@@_N@Z

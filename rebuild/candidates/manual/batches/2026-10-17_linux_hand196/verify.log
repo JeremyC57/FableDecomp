@@ -1,0 +1,15 @@
+addr       parity           behav  name
+004c3d30   MATCH            PASS   CEnginePrimitiveAnimation -- initializes animation resource and frame data 
+00b9d100   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerStaticMeshesBase
+00b9d100   RELOCATION_MATCH PASS   FrameStart -- selects the static mesh buffer pointers for the active render mode 
+00bcea60   RELOCATION_MATCH PASS   FrameStart -- selects the animated mesh frame pointer table by render mode 
+
+WINS: 3
+  004c3d30 MATCH CEnginePrimitiveAnimation::CEnginePrimitiveAnimation -- initializes animation resource and frame data 
+  00b9d100 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::FrameStart -- selects the static mesh buffer pointers for the active render mode 
+  00bcea60 RELOCATION_MATCH CEnginePrimitiveManagerAnimatedMeshesBase::FrameStart -- selects the animated mesh frame pointer table by render mode 
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveAnimation_CEnginePrimitiveAnimationinitializesanimationres_004c3d30
+  CEnginePrimitiveManagerStaticMeshesBase_FrameStartselectsthestaticmeshbufferpointersfort_00b9d100
+  CEnginePrimitiveManagerAnimatedMeshesBase_FrameStartselectstheanimatedmeshframepointertabl_00bcea60

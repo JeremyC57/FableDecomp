@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0055bde0   MATCH            PASS   EndDrag
+00915190   RELOCATION_MATCH PASS   Cleanup
+
+WINS: 2
+  0055bde0 MATCH NUISystem::CDraggableInto::EndDrag
+  00915190 RELOCATION_MATCH CAIStateGroup_KidHurtSelfRunToMother::Cleanup
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NUISystemCDraggableInto_EndDrag_0055bde0
+  CAIStateGroupKidHurtSelfRunToMother_Cleanup_00915190

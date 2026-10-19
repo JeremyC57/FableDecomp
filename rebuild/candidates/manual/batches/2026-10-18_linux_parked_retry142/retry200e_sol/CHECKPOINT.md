@@ -1,0 +1,8 @@
+# section200E checkpoint
+All five assigned rows completed/accounted. Four exact candidates submitted READY; root owns independent review and landing. No canonical/shared tool/header/git changes. No children or process kills. Existing root-owned Wine reaper only.
+
+New source/flag grades: C28120=1, C286F0=2, 8F60C0=3, 8F63C0=4, 469AB3=2. Each retains four uncertain historical reservations. No SRC_FAIL. Immutable snapshots/hashes/full commands recorded before every grade in ATTEMPTS.jsonl; full logs retained. No budget reset. Remaining allowances 5,4,3,2,4 respectively. First host fixture failed because the coord model lacked its genuine empty default constructor; the corrected whole candidate consumed 8F60C0 grade3 and passed both compilers. Native assertions retained in VC-expanded fixtures, disabled only for width-dependent donor/retail offsets on the 64-bit host. Source+fixture hashes in READY_HASHES.json.
+
+008f63c0 is DIFFER(207v229), exact candidate host/VC behavior PASS; two new allowances preserved. Genuine STLport allocator-proxy/vectorbase layout and int64 capacity guard established. Candidate retains zero in ECX across multiplication, chooses EBP and different spills; retail has three immediate zeros and SizeX cached in a dead argument slot. No justified next source change selected; do not spend filler grades. Every variant remains in snapshots.
+
+Root review correction: unsupported empty C2DCoordI default constructor removed in8F60C0 newgrade4; RELOCATION_MATCH, aligned preexisting-state exact fixture host+VC PASS. Two allowances remain. Updated hashes/payload frozen; previous source/test retained in snapshots/logs. Same-TU C286F0 InsertFreeArea separately byte-compared:81/81 exact nativeC27EF0. See REVIEW_CORRECTIONS.md.

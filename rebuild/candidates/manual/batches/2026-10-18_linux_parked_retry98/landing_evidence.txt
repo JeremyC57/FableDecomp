@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00d169e0   RELOCATION_MATCH PASS   Init
+
+WINS: 1
+  00d169e0 RELOCATION_MATCH CAT_Phase3Archer::Init
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CATPhase3Archer_Init_00d169e0

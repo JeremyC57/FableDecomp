@@ -1,0 +1,4 @@
+# Build daily environment themes
+
+00888410 (180 bytes): resizes daily blended themes from the initial definition count, destroys the default temporary before iteration, and builds each theme using freshly loaded source/destination arrays and colour-column base. The outer definition-manager argument is unused; the inner Build takes five parameters. Main inspected the native caller and callee, temporary destructor, PDB fields and actual aliased donor headers. Native definition stride196 and blended-theme stride500 differ from donor200/524 due to definition-base/container widths. Exact-source fixtures check empty, single and multiple themes, resize/temporary lifetime, callback replacement of both arrays and column base, argument identity and native layout. Three new source grades plus UNCERTAIN reservation4.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

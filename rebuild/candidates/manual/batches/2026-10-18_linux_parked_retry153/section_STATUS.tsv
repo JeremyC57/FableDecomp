@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+0087ff60	RELOCATION_MATCH	184v184	PASS	4 UNCERTAIN+2 new=6 total; complete source host98O2 and VC71O2 PASS
+0055b8f0	RELOCATION_MATCH	163v163	PASS	4 UNCERTAIN+5 new=9 total; complete source host98O2 and VC71O2 PASS
+00d9c4a0	RELOCATION_MATCH	187v187	PASS	4 UNCERTAIN+4 new=8 total; complete source host98O2 and VC71O2 PASS; new3 rejected actual string/bool/const mismatch, corrected new4
+0055bc30	DIFFER	203v203	PASS	4 UNCERTAIN+6 new=10 capped; best new4; shrink-wrapped EBX/EDI saves vs native eager prologue; new6 source-generation failure counted

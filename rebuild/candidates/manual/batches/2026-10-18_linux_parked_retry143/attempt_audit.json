@@ -1,0 +1,380 @@
+[
+  {
+    "address": "008a2770",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:12:41.242401+00:00",
+    "sha256": "a6fb4935b3ad811c48cbc07b51c67d6fee7be0730d74f2b834bc50a8d60f5a4b",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a2770",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a2770_1.cpp",
+      "GetWanderMinDistance"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a2a30",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:13:16.888900+00:00",
+    "sha256": "b6c5580b993416b1f9d8bc04f94eeb67723afeec3bc56c89f4decf4a32f08418",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a2a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a2a30_1.cpp",
+      "GetWanderMaxDistance"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a3a60",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:13:17.198519+00:00",
+    "sha256": "f37f29700b748facd4d7da75f2bde8bf7a7096c92b57080005ddf869f1d5e27b",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a3a60",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a3a60_1.cpp",
+      "GetMaxHeroReactionDistance"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a3fd0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:13:17.476923+00:00",
+    "sha256": "e143abd151190699d1f9aa2ee322867ef856d3fc218c05201877a22c0f73d96d",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a3fd0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a3fd0_1.cpp",
+      "GetActionFrequencyVariation"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a4ae0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:13:17.733508+00:00",
+    "sha256": "e940fab823ecc26da26b153e9a5181de5aecffcff8a501df700b6f6db0c31857",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a4ae0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a4ae0_1.cpp",
+      "GetFollowDistance"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a5300",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:13:18.010755+00:00",
+    "sha256": "69da82d08f87492c52cb0f407a9e8ecb141451b45150b8791367d364b1377783",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a5300",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a5300_1.cpp",
+      "GetCombatNearbyEnemyFleeingBreakOffRange"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a55c0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:13:18.343563+00:00",
+    "sha256": "036a88fe2e4930322ff98aa2fa3d4f576e62d96d2f180df74a3fcee646827b4c",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a55c0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a55c0_1.cpp",
+      "GetCombatNearbyBreakOffRange"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a76f0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:13:18.614863+00:00",
+    "sha256": "88f3c6690094a13bed943fd0be0808895dabf7bc1133410ea6af5e63d679a065",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a76f0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a76f0_1.cpp",
+      "GetTargetingDistanceOffset"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a2590",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:14:36.377842+00:00",
+    "sha256": "9e6104a6edc0a71e81b6b8fd6cf08a5a42889d85a66408b3aa82faca297807b0",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a2590",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a2590_1.cpp",
+      "ResetWanderCentrePoint"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a23b0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:14:36.705951+00:00",
+    "sha256": "daefc492df63d325c6b530fa956779962ad25a858317aefbb8f5d7ad0ff9a345",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a23b0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a23b0_1.cpp",
+      "SetWanderCentrePoint"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a23b0",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:14:50.524858+00:00",
+    "sha256": "9b91de0ce7f0ffe6940ff1efb4a837ce24b15a6195c11761d6eced3aff9afeaa",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a23b0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a23b0_2.cpp",
+      "SetWanderCentrePoint"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a41b0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:14:50.819954+00:00",
+    "sha256": "d0ba0a8696b69bd65ad301a33e56ae40b66031912241b38e7e8ea4698f4426ca",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a41b0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a41b0_1.cpp",
+      "SetAction"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a41b0",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:15:02.977882+00:00",
+    "sha256": "62ab981844c73f30e7c4651c4c903735099f50854617c96da0488707474b2639",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a41b0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a41b0_2.cpp",
+      "SetAction"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a4730",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:15:38.484620+00:00",
+    "sha256": "ce3eeb5e077c48f7853065c7137abc4232408b256557f3f1d510e1cd3dd9ab4e",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a4730",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a4730_1.cpp",
+      "SetTargetName"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a6570",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:15:38.814723+00:00",
+    "sha256": "ec18e08563f86922d773457d1623098d7d3c2512ac20fb06b88056bf0a73bed6",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a6570",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a6570_1.cpp",
+      "SetTableName"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a6840",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:15:39.142391+00:00",
+    "sha256": "48820a11a2719273bb9cbc2ec018c5f300272610e1ce58924c77f2679c03b57c",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a6840",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a6840_1.cpp",
+      "SetSeatName"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a5300",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:18:35.809727+00:00",
+    "sha256": "881afa78e04af8493c55c85871c49dd569da2c9d8da53b577eb94d7cb81f1649",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a5300",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a5300_2.cpp",
+      "GetCombatNearbyEnemyFleeingBreakOffRange"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a55c0",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:18:36.083499+00:00",
+    "sha256": "38dd111bab85cf4da793a08d017f217331059edaa9e0deb6a356b857f7055a34",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a55c0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a55c0_2.cpp",
+      "GetCombatNearbyBreakOffRange"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  }
+]

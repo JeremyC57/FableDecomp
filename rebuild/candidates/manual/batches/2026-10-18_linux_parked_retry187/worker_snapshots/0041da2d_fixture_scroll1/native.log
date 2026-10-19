@@ -1,0 +1,41 @@
+['/nologo', '/c', '/O2', '/W3', '/Fo/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/native.obj', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp']
+fixture.cpp
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(958) : error C2872: 'CComponent' : ambiguous symbol
+        could be 'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : CComponent'
+        or       'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(854) : NUISystem::CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(958) : error C2027: use of undefined type 'CComponent'
+        Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : see declaration of 'CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(958) : error C2061: syntax error : identifier 'DraggedMethod'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(959) : error C2872: 'CComponent' : ambiguous symbol
+        could be 'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : CComponent'
+        or       'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(854) : NUISystem::CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(959) : error C2027: use of undefined type 'CComponent'
+        Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : see declaration of 'CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(959) : error C2061: syntax error : identifier 'ScrollBarMethod'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(960) : error C2872: 'CComponent' : ambiguous symbol
+        could be 'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : CComponent'
+        or       'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(854) : NUISystem::CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(960) : error C2027: use of undefined type 'CComponent'
+        Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : see declaration of 'CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(960) : error C2061: syntax error : identifier 'ChangeVectorMethod'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2872: 'CComponent' : ambiguous symbol
+        could be 'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : CComponent'
+        or       'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(854) : NUISystem::CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2027: use of undefined type 'CComponent'
+        Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : see declaration of 'CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2065: 'DraggedMethod' : undeclared identifier
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2070: ''unknown-type'': illegal sizeof operand
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2872: 'CComponent' : ambiguous symbol
+        could be 'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : CComponent'
+        or       'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(854) : NUISystem::CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2027: use of undefined type 'CComponent'
+        Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : see declaration of 'CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2065: 'ScrollBarMethod' : undeclared identifier
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2070: ''unknown-type'': illegal sizeof operand
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2872: 'CComponent' : ambiguous symbol
+        could be 'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : CComponent'
+        or       'Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(854) : NUISystem::CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2027: use of undefined type 'CComponent'
+        Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(53) : see declaration of 'CComponent'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2065: 'ChangeVectorMethod' : undeclared identifier
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\0041da2d_fixture_scroll1\fixture.cpp(963) : error C2070: ''unknown-type'': illegal sizeof operand

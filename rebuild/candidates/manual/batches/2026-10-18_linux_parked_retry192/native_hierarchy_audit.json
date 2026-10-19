@@ -1,0 +1,30 @@
+{
+  "0x129c95c": {
+    "hierarchy": [
+      [
+        ".?AVCBaseIntelligentPointer@@",
+        0
+      ]
+    ],
+    "emitted_slots": [
+      "public: virtual void * __thiscall BaseIntelligentPointer::`vector deleting dtor'(unsigned int)"
+    ],
+    "native_destructor": "0xa01c50"
+  },
+  "0x1238c6c": {
+    "hierarchy": [
+      [
+        ".?AV?$CIntelligentPointer@VCThing@@@@",
+        0
+      ],
+      [
+        ".?AVCBaseIntelligentPointer@@",
+        0
+      ]
+    ],
+    "emitted_slots": [
+      "public: virtual void * __thiscall IntelligentThingPointer::`vector deleting dtor'(unsigned int)"
+    ],
+    "native_destructor": "0x4a9710"
+  }
+}

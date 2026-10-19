@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00bfaae0   RELOCATION_MATCH PASS   CLocalDetailPrimitiveRepeatedMesh
+00e33b00   RELOCATION_MATCH PASS   Main
+00e7b970   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00bfaae0 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::??1CLocalDetailPrimitiveRepeatedMesh@@
+  00e33b00 RELOCATION_MATCH CM_AC_DummyMoving::Main
+  00e7b970 RELOCATION_MATCH CM_FishermanWaspSpawn::Main
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CLocalDetailPrimitiveRepeatedMesh_CLocalDetailPrimitiveRepeatedMesh_00bfaae0
+  CMACDummyMoving_Main_00e33b00
+  CMFishermanWaspSpawn_Main_00e7b970

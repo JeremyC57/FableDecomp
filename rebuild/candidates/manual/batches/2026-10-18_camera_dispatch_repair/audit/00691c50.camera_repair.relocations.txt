@@ -1,0 +1,39 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/repair00691c50/dry_work/00/69/00691c50/00691c50.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             _sqrtf
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?sqrt@@YAMM@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0C2DVector@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetLength@C2DVector@@QBEMXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?SetNoControlMovement@CGameCameraManager@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000015 DISP32            ?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABUCInputEvent@@AAUC2DVector@@@Z
+00000047 dir32             __real@38d1b717
+00000054 dir32             __real@3f800000
+000000a3 dir32             __real@3f733333
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?ProcessInput@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXABUCInputEvent@@AAUCProcessedInput@@@Z

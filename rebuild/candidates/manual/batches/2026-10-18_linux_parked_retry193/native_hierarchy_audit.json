@@ -1,0 +1,251 @@
+{
+  "0x129a69c": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCDataStream@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x129a7c4": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x123675c": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCMemoryDataInputStream@@",
+        0
+      ],
+      [
+        ".?AVCDataInputStream@@",
+        0
+      ],
+      [
+        ".?AVCDataStream@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x129c888": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCGraphicBankStateBlock@@",
+        0
+      ],
+      [
+        ".?AVCBankStateBlock@@",
+        0
+      ]
+    ]
+  },
+  "0x129b54c": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCBankFile@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x129c8cc": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCGraphicDataBank@@",
+        0
+      ],
+      [
+        ".?AVCBankFileAsync@@",
+        0
+      ],
+      [
+        ".?AVCBankFile@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ],
+      [
+        ".?AVCResourceBank@@",
+        356
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        356
+      ],
+      [
+        ".?AVCBaseClass@@",
+        356
+      ]
+    ]
+  },
+  "0x129c82c": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCBankStateBlock@@",
+        0
+      ]
+    ]
+  },
+  "0x1231710": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x129a6b0": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCDataInputStream@@",
+        0
+      ],
+      [
+        ".?AVCDataStream@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x129b8d4": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCBankFileAsync@@",
+        0
+      ],
+      [
+        ".?AVCBankFile@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x129c814": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCResourceBank@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x129c938": {
+    "offset": 356,
+    "hierarchy": [
+      [
+        ".?AVCGraphicDataBank@@",
+        0
+      ],
+      [
+        ".?AVCBankFileAsync@@",
+        0
+      ],
+      [
+        ".?AVCBankFile@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ],
+      [
+        ".?AVCResourceBank@@",
+        356
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        356
+      ],
+      [
+        ".?AVCBaseClass@@",
+        356
+      ]
+    ]
+  },
+  "0x129c878": {
+    "offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCGraphicInfoFrame@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  }
+}

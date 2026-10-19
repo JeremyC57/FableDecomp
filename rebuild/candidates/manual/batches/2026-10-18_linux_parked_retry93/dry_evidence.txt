@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00713010   RELOCATION_MATCH PASS   IsCameraToBeSetupDueToMovedSetupPositions
+
+WINS: 1
+  00713010 RELOCATION_MATCH NTCScriptedControl::CActionTalkBase::IsCameraToBeSetupDueToMovedSetupPositions

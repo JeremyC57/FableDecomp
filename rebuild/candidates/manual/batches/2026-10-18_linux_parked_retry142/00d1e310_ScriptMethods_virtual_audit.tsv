@@ -1,0 +1,79 @@
+slot	native_target	emitted_symbol	declaration
+1	004aa8b0	?GetName@ScriptMethods@@UBEABVCCharString@@XZ	const CCharString& GetName() const
+2	004aa8d0	?GetDefName@ScriptMethods@@UBE?AVCCharString@@XZ	CCharString GetDefName() const
+3	004aa900	?GetDataString@ScriptMethods@@UBE?AVCCharString@@XZ	CCharString GetDataString() const
+4	004aa930	?SetDataString@ScriptMethods@@UAEXABVCCharString@@@Z	void SetDataString(const CCharString&)
+5	004aa940	?GetFocalPos@ScriptMethods@@UBE?AUC3DVector@@XZ	C3DVector GetFocalPos() const
+6	004aa980	?GetPos@ScriptMethods@@UBEABUC3DVector@@XZ	const C3DVector& GetPos() const
+7	004aa9a0	?GetHomePos@ScriptMethods@@UBE?AUC3DVector@@XZ	C3DVector GetHomePos() const
+8	004aa9e0	?GetCurrentMapName@ScriptMethods@@UBE?AVCCharString@@XZ	CCharString GetCurrentMapName() const
+9	004aaa10	?GetHomeMapName@ScriptMethods@@UBE?AVCCharString@@XZ	CCharString GetHomeMapName() const
+10	004aaa40	?GetAngleXY@ScriptMethods@@UBEMXZ	float GetAngleXY() const
+11	004aaa60	?GetPThing@ScriptMethods@@UBEPAUCThingNative@@XZ	CThingNative* GetPThing() const
+12	004aaa70	?GetPThingUniqueID@ScriptMethods@@UBE_KXZ	unsigned __int64 GetPThingUniqueID() const
+13	004aaa90	?GetCurrentStateGroupType@ScriptMethods@@UBEJXZ	EAIStateGroupTypeABI GetCurrentStateGroupType() const
+14	004aaaa0	?GetCurrentScriptPriority@ScriptMethods@@UBEJXZ	EScriptAIPriorityABI GetCurrentScriptPriority() const
+15	004aaab0	?IsSneaking@ScriptMethods@@UBE_NXZ	bool IsSneaking() const
+16	004aaac0	?IsAwareOfHero@ScriptMethods@@UBE_NXZ	bool IsAwareOfHero() const
+17	004aaad0	?MsgIsTriggeredBy@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsTriggeredBy(const CCharString&) const
+18	004aaaf0	?MsgIsKilledBy@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsKilledBy(const CCharString&) const
+19	004abe60	?MsgWhoKilledMe@ScriptMethods@@UBE?AU1@XZ	ScriptMethods MsgWhoKilledMe() const
+20	004aab10	?MsgIsUsedBy@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsUsedBy(const CCharString&) const
+21	004aab30	?MsgIsHitBy@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsHitBy(const CCharString&) const
+22	004aab50	?MsgIsHitByWithFlourish@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsHitByWithFlourish(const CCharString&) const
+23	004aab70	?MsgIsHitByWithDecapitate@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsHitByWithDecapitate(const CCharString&) const
+24	004aab90	?MsgIsHitByWithWeapon@ScriptMethods@@UBE_NABVCCharString@@0@Z	bool MsgIsHitByWithWeapon(const CCharString&,const CCharString&) const
+25	004aabb0	?MsgIsHitByWithProjectileWeapon@ScriptMethods@@UBE_NABVCCharString@@AAM@Z	bool MsgIsHitByWithProjectileWeapon(const CCharString&,float&) const
+26	004abec0	?MsgWhoHitMe@ScriptMethods@@UBE?AU1@XZ	ScriptMethods MsgWhoHitMe() const
+27	004aabd0	?MsgIsTalkedToBy@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsTalkedToBy(const CCharString&) const
+28	004abf00	?MsgWhoTalkedToMe@ScriptMethods@@UBE?AU1@XZ	ScriptMethods MsgWhoTalkedToMe() const
+29	004aabf0	?MsgExpressionPerformedTo@ScriptMethods@@UBE_NAAVCCharString@@@Z	bool MsgExpressionPerformedTo(CCharString&) const
+30	004abf40	?MsgWhoExpressedToMe@ScriptMethods@@UBE?AU1@XZ	ScriptMethods MsgWhoExpressedToMe() const
+31	004aac10	?MsgHowLongWasExpressionPerformed@ScriptMethods@@UBEJXZ	long MsgHowLongWasExpressionPerformed() const
+32	004aac20	?MsgIsKnockedOutBy@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsKnockedOutBy(const CCharString&) const
+33	004abf80	?MsgWhoKnockedMeOut@ScriptMethods@@UBE?AU1@XZ	ScriptMethods MsgWhoKnockedMeOut() const
+34	004aac40	?MsgReceivedMoney@ScriptMethods@@UBE_NAAJ@Z	bool MsgReceivedMoney(long&) const
+35	004aac60	?MsgIsPresentedWithItem@ScriptMethods@@UBE_NAAVCCharString@@@Z	bool MsgIsPresentedWithItem(CCharString&) const
+36	004aac80	?MsgReceivedInventoryItem@ScriptMethods@@UBE_NXZ	bool MsgReceivedInventoryItem() const
+37	004aaca0	?MsgPerformedSpecialAbility@ScriptMethods@@UBE_NJ@Z	bool MsgPerformedSpecialAbility(EHeroAbilityABI) const
+38	004aacc0	?MsgPerformedAnySpecialAbility@ScriptMethods@@UBE_NXZ	bool MsgPerformedAnySpecialAbility() const
+39	004aace0	?MsgPerformedAnyAggressiveSpecialAbility@ScriptMethods@@UBE_NXZ	bool MsgPerformedAnyAggressiveSpecialAbility() const
+40	004aad00	?MsgPerformedAnyNonAggressiveSpecialAbility@ScriptMethods@@UBE_NXZ	bool MsgPerformedAnyNonAggressiveSpecialAbility() const
+41	004aad20	?MsgIsHitBySpecialAbilityFrom@ScriptMethods@@UBE_NJABVCCharString@@@Z	bool MsgIsHitBySpecialAbilityFrom(EHeroAbilityABI,const CCharString&) const
+42	004aad40	?MsgIsHitByAnySpecialAbilityFrom@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsHitByAnySpecialAbilityFrom(const CCharString&) const
+43	004aad60	?MsgIsHitByAnyAggressiveSpecialAbilityFrom@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString&) const
+44	004aad80	?MsgIsHitByAnyNonAggressiveSpecialAbilityFrom@ScriptMethods@@UBE_NABVCCharString@@@Z	bool MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(const CCharString&) const
+45	004aada0	?MsgOpenedChest@ScriptMethods@@UBE_NXZ	bool MsgOpenedChest() const
+46	004aadc0	?MsgHitEnemyWithMeleeWeapon@ScriptMethods@@UBE_NXZ	bool MsgHitEnemyWithMeleeWeapon() const
+47	004aade0	?MsgHitFriendWithMeleeWeapon@ScriptMethods@@UBE_NXZ	bool MsgHitFriendWithMeleeWeapon() const
+48	004aae00	?MsgHitEnemyWithRangedWeapon@ScriptMethods@@UBE_NXZ	bool MsgHitEnemyWithRangedWeapon() const
+49	004aae20	?MsgHitFriendWithRangedWeapon@ScriptMethods@@UBE_NXZ	bool MsgHitFriendWithRangedWeapon() const
+50	004aae40	?MsgHitEnemyWithBareHands@ScriptMethods@@UBE_NXZ	bool MsgHitEnemyWithBareHands() const
+51	004aae60	?MsgHitFriendWithBareHands@ScriptMethods@@UBE_NXZ	bool MsgHitFriendWithBareHands() const
+52	004aae80	?MsgAttackedWithMeleeWeaponWithoutHittingAnything@ScriptMethods@@UBE_NXZ	bool MsgAttackedWithMeleeWeaponWithoutHittingAnything() const
+53	004aaea0	?MsgAttackedWithBareHandsWithoutHittingAnything@ScriptMethods@@UBE_NXZ	bool MsgAttackedWithBareHandsWithoutHittingAnything() const
+54	004aaec0	?MsgTalkedToAnyone@ScriptMethods@@UBE_NXZ	bool MsgTalkedToAnyone() const
+55	004aaee0	?MsgGetThingsKilled@ScriptMethods@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z	bool MsgGetThingsKilled(std::vector<unsigned long,std::allocator<unsigned long> >&) const
+56	004aaf00	?MsgPerformedFlourish@ScriptMethods@@UBE_NXZ	bool MsgPerformedFlourish() const
+57	004aaf20	?MsgPerformedSuccessfulFlourish@ScriptMethods@@UBE_NXZ	bool MsgPerformedSuccessfulFlourish() const
+58	004aaf40	?MsgOnMoralityChanged@ScriptMethods@@UBE_NAAJ@Z	bool MsgOnMoralityChanged(long&) const
+59	004aaf60	?MsgOnCutSceneAnimEvent@ScriptMethods@@UBE_NAAVCCharString@@@Z	bool MsgOnCutSceneAnimEvent(CCharString&) const
+60	004aaf80	?MsgIsKicked@ScriptMethods@@UBE_NXZ	bool MsgIsKicked() const
+61	004aafa0	?IsUnconscious@ScriptMethods@@UBE_NXZ	bool IsUnconscious() const
+62	004aafc0	?IsUsable@ScriptMethods@@UBE_NXZ	bool IsUsable() const
+63	004aafe0	?IsBeingCarriedBy@ScriptMethods@@UBE_NABVCCharString@@@Z	bool IsBeingCarriedBy(const CCharString&) const
+64	004ab000	?IsOpenDoor@ScriptMethods@@UBE_NXZ	bool IsOpenDoor() const
+65	004ab020	?IsSummonedCreature@ScriptMethods@@UBE_NXZ	bool IsSummonedCreature() const
+66	004ab040	?SetAsUsable@ScriptMethods@@UAEX_N@Z	void SetAsUsable(bool)
+67	004ab060	?SetFriendsWithEverythingFlag@ScriptMethods@@UAEX_N@Z	void SetFriendsWithEverythingFlag(bool)
+68	004ab080	?GetActivationTriggerStatus@ScriptMethods@@UBE_NXZ	bool GetActivationTriggerStatus() const
+69	004ab0a0	?SetActivationTriggerStatus@ScriptMethods@@UAEX_N@Z	void SetActivationTriggerStatus(bool)
+70	004ab0c0	?SetToKillOnLevelUnload@ScriptMethods@@UAEX_N@Z	void SetToKillOnLevelUnload(bool)
+71	004ab0e0	?UpdateThingAttachment@ScriptMethods@@UAEXXZ	void UpdateThingAttachment()
+72	004ab0f0	?IncrementScriptCounter@ScriptMethods@@UAEXXZ	void IncrementScriptCounter()
+73	004ab100	?DecrementScriptCounter@ScriptMethods@@UAEXXZ	void DecrementScriptCounter()
+74	004ab110	?GetScriptCounter@ScriptMethods@@UAEJXZ	long GetScriptCounter()
+75	004ab130	?IsAlive@ScriptMethods@@UBE_NXZ	bool IsAlive() const
+76	004aa890	?IsDead@ScriptMethods@@UBE_NXZ	bool IsDead() const
+77	004ab150	?IsNull@ScriptMethods@@UBE_NXZ	bool IsNull() const
+78	004aa8a0	?IsEqualTo@ScriptMethods@@UBE_NABU1@@Z	bool IsEqualTo(const ScriptMethods&) const

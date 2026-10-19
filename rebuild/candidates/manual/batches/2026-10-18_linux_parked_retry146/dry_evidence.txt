@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00ce4b70   RELOCATION_MATCH PASS   BoastHobbeCaveKillPerpetrator
+00ce5620   RELOCATION_MATCH PASS   BoastHobbeContestKillMoreHobbes
+00ce56e0   RELOCATION_MATCH PASS   BoastGraveyardKillAllInnocents
+00ce5e10   RELOCATION_MATCH PASS   BoastBountyHuntDecapitation
+00ce6a40   RELOCATION_MATCH PASS   BoastFireHeartFreeAllPrisoners
+
+WINS: 5
+  00ce4b70 RELOCATION_MATCH NScript::CHeroBoastsScript::BoastHobbeCaveKillPerpetrator
+  00ce5620 RELOCATION_MATCH NScript::CHeroBoastsScript::BoastHobbeContestKillMoreHobbes
+  00ce56e0 RELOCATION_MATCH NScript::CHeroBoastsScript::BoastGraveyardKillAllInnocents
+  00ce5e10 RELOCATION_MATCH NScript::CHeroBoastsScript::BoastBountyHuntDecapitation
+  00ce6a40 RELOCATION_MATCH NScript::CHeroBoastsScript::BoastFireHeartFreeAllPrisoners

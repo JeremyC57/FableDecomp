@@ -1,0 +1,11 @@
+addr       parity           behav  name
+008d7630   RELOCATION_MATCH PASS   OnActivate
+008e9a30   RELOCATION_MATCH PASS   OnActivate
+
+WINS: 2
+  008d7630 RELOCATION_MATCH CModeIceTrollGroundSmashIcicleAssault::OnActivate
+  008e9a30 RELOCATION_MATCH CModeStrafe::OnActivate
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CModeIceTrollGroundSmashIcicleAssault_OnActivate_008d7630
+  CModeStrafe_OnActivate_008e9a30

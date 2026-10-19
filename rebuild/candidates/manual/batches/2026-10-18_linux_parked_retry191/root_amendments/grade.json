@@ -1,0 +1,24 @@
+{
+  "address": "009fe8e0",
+  "author_grades": 3,
+  "root_grade": 1,
+  "cumulative": 4,
+  "source": "work/codex-lane/w22/coordinator_retry191/root_amendments/src/009fe8e0.cpp",
+  "sha256": "3b6ec7379110134ffef53dd84aa7642c4057fa0598be6ac9f6925af785f996c6",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "work/codex-lane/tools/q.py",
+    "009fe8e0",
+    "work/codex-lane/w22/coordinator_retry191/root_amendments/src/009fe8e0.cpp",
+    "UnloadFrame"
+  ],
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "reason": "Native CManagedTextureOwner baseVT129C848 has pure ReleaseTexture slot10; actual fixture base table must agree. FrameData genuine override retained.",
+  "utc": "2026-10-19T01:19:04.326139+00:00"
+}

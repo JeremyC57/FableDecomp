@@ -1,0 +1,17 @@
+addr       parity           behav  name
+009f50a0   RELOCATION_MATCH PASS   IsKeyboardEventInQueue
+009f5170   RELOCATION_MATCH PASS   CalculateInternalChecksum
+009f5bd0   RELOCATION_MATCH PASS   CInputManager
+00691c50   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 4
+  009f50a0 RELOCATION_MATCH CInputManager::IsKeyboardEventInQueue
+  009f5170 RELOCATION_MATCH CInputManager::CalculateInternalChecksum
+  009f5bd0 RELOCATION_MATCH CInputManager::??0CInputManager@@
+  00691c50 RELOCATION_MATCH CInputProcessCreatureMovementWatchForControlAngleChange::ProcessInput
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CInputManager_IsKeyboardEventInQueue_009f50a0
+  CInputManager_CalculateInternalChecksum_009f5170
+  CInputManager_CInputManager_009f5bd0
+  CInputProcessCreatureMovementWatchForControlAngleChange_ProcessInput_00691c50

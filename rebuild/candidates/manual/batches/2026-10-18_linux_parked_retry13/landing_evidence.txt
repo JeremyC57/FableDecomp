@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00c09920   RELOCATION_MATCH PASS   GetChecked
+
+WINS: 1
+  00c09920 RELOCATION_MATCH CAutoDeletePointer::GetChecked
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAutoDeletePointer_GetChecked_00c09920

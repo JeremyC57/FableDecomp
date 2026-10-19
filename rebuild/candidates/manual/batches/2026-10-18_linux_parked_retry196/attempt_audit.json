@@ -1,0 +1,115 @@
+[
+  {
+    "address": "00bbf380",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade01/source.cpp",
+    "sha256": "ee5d5be8ad664f9709d94ddf1d2516df61ac65a3912552eaccc82fda655c6e0b",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00bbf380 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade01/source.cpp BuildBuffers\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade01/stdout.txt",
+    "status": "00bbf380 BuildBuffers DIFFER(1360v279) flags= []"
+  },
+  {
+    "address": "00bbf380",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade02/source.cpp",
+    "sha256": "b088b0cdee21d17d48ae0fb9c193aa83444fcb0ddca8918a66cd112b87305c7d",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00bbf380 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade02/source.cpp BuildBuffers\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade02/stdout.txt",
+    "status": "00bbf380 BuildBuffers DIFFER(271v279) flags= []"
+  },
+  {
+    "address": "00bbf380",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade03/source.cpp",
+    "sha256": "647c6243a71787f32541a44e810901ceb0cf9f0f92b16c7615245fcb9b6aad05",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00bbf380 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade03/source.cpp BuildBuffers\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade03/stdout.txt",
+    "status": "00bbf380 BuildBuffers DIFFER(275v279) flags= []"
+  },
+  {
+    "address": "00bbf380",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade04/source.cpp",
+    "sha256": "aaee7b295421555b01d175c4369ec11dc6601bf51b1f8c3735f8cdffc98f4c2c",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00bbf380 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade04/source.cpp BuildBuffers\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00bbf380/grade04/stdout.txt",
+    "status": "00bbf380 BuildBuffers RELOCATION_MATCH flags= []"
+  },
+  {
+    "address": "00bc3e10",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00bc3e10/grade01/source.cpp",
+    "sha256": "a0ced1c37250ebf43de3c9696e62f7f838bc81ec651ac119fe39184121b0c647",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00bc3e10 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00bc3e10/grade01/source.cpp BuildBuffers\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00bc3e10/grade01/stdout.txt",
+    "status": "00bc3e10 BuildBuffers RELOCATION_MATCH flags= []"
+  },
+  {
+    "address": "00bbf380",
+    "author_grades": 4,
+    "root_grade": 1,
+    "cumulative": 5,
+    "source": "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bbf380.cpp",
+    "sha256": "c15bed73a779ecfeb385bac323b98f2044eebe98f303a60cc9bb2be7c67eab7c",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00bbf380",
+      "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bbf380.cpp",
+      "BuildBuffers"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "Original CIndexBuffer::GetSize() is const, PDB EgorBCEC50 QBEJXZ; declaration and dependency fixture both corrected.",
+    "utc": "2026-10-19T02:10:21.290899+00:00"
+  },
+  {
+    "address": "00bc3e10",
+    "author_grades": 1,
+    "root_grade": 1,
+    "cumulative": 2,
+    "source": "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bc3e10.cpp",
+    "sha256": "62d90b0b61ded24f9abd467441ecc48950f2c2659a4934776ed73e19c34b687d",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00bc3e10",
+      "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bc3e10.cpp",
+      "BuildBuffers"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "Original CIndexBuffer::GetSize() is const, PDB EgorBCEC50 QBEJXZ; declaration and dependency fixture both corrected.",
+    "utc": "2026-10-19T02:10:21.291367+00:00"
+  }
+]

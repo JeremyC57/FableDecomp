@@ -1,0 +1,9 @@
+offset	native_target	symbol
+0000001e	01436ea8	?g_pEngineGlobal_01436EA8@@3PAUCEngineGlobal_01436EA8@@A
+0000002e	00bd9ce0	?ClearTexturePool@CEngineLandscapeMemoryManagerCallView@@QAEXXZ
+00000034	01436e8c	?g_pEngineSceneState_01436E8C@@3PAUCEngineSceneState_01436E8C@@A
+00000065	012a1b28	__real@46293e5940000000
+00000075	00bdc180	?UpdateBackgroundLOD@CEngineLandscapeMapCallView@@QAE?AW4LS_LOADING_STATUS@@AAUCLandscapeGPUUpdateQueue@@N_N@Z
+000000a6	00bdc510	?UpdateForeground@CEngineLandscapeMapCallView@@QAE?AW4LS_LOADING_STATUS@@XZ
+000000e6	00bdc020	?UpdateBackgroundTesselation@CEngineLandscapeMapCallView@@QAEXXZ
+000000f5	00b68070	?LoadForegroundTextures@CEngineLandscapeRendererCallView@@QAE_N_N@Z

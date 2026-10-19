@@ -1,0 +1,543 @@
+{
+  "caller_relocations": [
+    {
+      "offset": "0x9",
+      "target": "0x122f180",
+      "compiled_symbol": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "demangled": "const CMainGameComponent::`vftable'{for `CBaseClassNonCopyable'}",
+      "identity": "CMainGameComponent primary native vtable, 10 slots"
+    },
+    {
+      "offset": "0x10",
+      "target": "0x122f174",
+      "compiled_symbol": "??_7CMainGameComponent@@6BCDeviceResetCallback@@@",
+      "demangled": "const CMainGameComponent::`vftable'{for `CDeviceResetCallback'}",
+      "identity": "CMainGameComponent CDeviceResetCallback secondary native vtable, 2 slots"
+    },
+    {
+      "offset": "0x17",
+      "target": "0x4175e5",
+      "compiled_symbol": "?Shutdown@CMainGameComponent@@QAEXXZ",
+      "demangled": "public: void __thiscall CMainGameComponent::Shutdown(void)",
+      "identity": "CMainGameComponent::Shutdown, native body clears Initialised and delegates teardown"
+    },
+    {
+      "offset": "0x22",
+      "target": "0x4131d0",
+      "compiled_symbol": "??1CMainGameComponentInit@@QAE@XZ",
+      "demangled": "public: __thiscall CMainGameComponentInit::~CMainGameComponentInit(void)",
+      "identity": "CMainGameComponentInit::~, native emits wide99B510, char99EAE0, wide99B510, wide99B510 destructors at +12/+8/+4/+0"
+    },
+    {
+      "offset": "0x2d",
+      "target": "0x419108",
+      "compiled_symbol": "??1?$CCountedPointer@UCGraphicDataBank@@@@QAE@XZ",
+      "demangled": "public: __thiscall CCountedPointer<struct CGraphicDataBank>::~CCountedPointer<struct CGraphicDataBank>(void)",
+      "identity": "CCountedPointer<CGraphicDataBank>::~, native reads control Info+4 refs0/callback4/data8, calls typed delete callback then scalar delete"
+    },
+    {
+      "offset": "0x38",
+      "target": "0x419764",
+      "compiled_symbol": "??1CFrameRateSmoother@@UAE@XZ",
+      "demangled": "public: virtual __thiscall CFrameRateSmoother::~CFrameRateSmoother(void)",
+      "identity": "CFrameRateSmoother::~, frees Times data+8 with BFEA14 then CInitBaseClass99A410 tail"
+    },
+    {
+      "offset": "0x43",
+      "target": "0x401630",
+      "compiled_symbol": "??1CDiskFileWin32@@UAE@XZ",
+      "demangled": "public: virtual __thiscall CDiskFileWin32::~CDiskFileWin32(void)",
+      "identity": "CDiskFileWin32::~, native sets own vtable, calls Close99A920 then WideString99B510 Pathname+18 and CBaseClass99A300 tail"
+    },
+    {
+      "offset": "0x4e",
+      "target": "0x4057a0",
+      "compiled_symbol": "??1?$CCountedPointer@UCFontBank@@@@QAE@XZ",
+      "demangled": "public: __thiscall CCountedPointer<struct CFontBank>::~CCountedPointer<struct CFontBank>(void)",
+      "identity": "CCountedPointer<CFontBank>::~, native refs0/callback4/data8 control block release"
+    },
+    {
+      "offset": "0x59",
+      "target": "0x4057a0",
+      "compiled_symbol": "??1?$CCountedPointer@UCFontBank@@@@QAE@XZ",
+      "demangled": "public: __thiscall CCountedPointer<struct CFontBank>::~CCountedPointer<struct CFontBank>(void)",
+      "identity": "CCountedPointer<CFontBank>::~, native refs0/callback4/data8 control block release"
+    },
+    {
+      "offset": "0x64",
+      "target": "0x419352",
+      "compiled_symbol": "??1CNetworkClient@@UAE@XZ",
+      "demangled": "public: virtual __thiscall CNetworkClient::~CNetworkClient(void)",
+      "identity": "CNetworkClient::~, native CNetworkServer+8 then CInitBaseClass tail99A410"
+    },
+    {
+      "offset": "0x6c",
+      "target": "0x4190b6",
+      "compiled_symbol": "??1?$CCountedPointer@UCLUA@@@@QAE@XZ",
+      "demangled": "public: __thiscall CCountedPointer<struct CLUA>::~CCountedPointer<struct CLUA>(void)",
+      "identity": "CCountedPointer<CLUA>::~, native refs0/callback4/data8 control block release"
+    },
+    {
+      "offset": "0xa8",
+      "target": "0x403750",
+      "compiled_symbol": "??1?$CCountedPointer@UCDataBank@NGameText@@@@QAE@XZ",
+      "demangled": "public: __thiscall CCountedPointer<struct NGameText::CDataBank>::~CCountedPointer<struct NGameText::CDataBank>(void)",
+      "identity": "CCountedPointer<NGameText::CDataBank>::~, native refs0/callback4/data8 control block release"
+    },
+    {
+      "offset": "0xae",
+      "target": "0x122ecb0",
+      "compiled_symbol": "??_7CGameComponent@@6BCBaseClassNonCopyable@@@",
+      "demangled": "const CGameComponent::`vftable'{for `CBaseClassNonCopyable'}",
+      "identity": "CGameComponent primary vtable, native 5 slots"
+    },
+    {
+      "offset": "0xb5",
+      "target": "0x122eca4",
+      "compiled_symbol": "??_7CGameComponent@@6BCDeviceResetCallback@@@",
+      "demangled": "const CGameComponent::`vftable'{for `CDeviceResetCallback'}",
+      "identity": "CGameComponent secondary CDeviceResetCallback vtable, native 2 pure slots"
+    },
+    {
+      "offset": "0xbd",
+      "target": "0x99a300",
+      "compiled_symbol": "??1CBaseClass@@UAE@XZ",
+      "demangled": "public: virtual __thiscall CBaseClass::~CBaseClass(void)",
+      "identity": "CBaseClass::~, native restores BaseClass vtable1231710"
+    }
+  ],
+  "emitted_native_fixture_tables": [
+    {
+      "vtable": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "native": "0x122f180",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0x4197b3",
+          "compiled_symbol": "??_ECMainGameComponent@@UAEPAXI@Z",
+          "demangled": "public: virtual void * __thiscall CMainGameComponent::`vector deleting dtor'(unsigned int)"
+        },
+        {
+          "slot": 1,
+          "native": "0x4184bd",
+          "compiled_symbol": "?Init@CMainGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CMainGameComponent::Init(void)"
+        },
+        {
+          "slot": 2,
+          "native": "0x4189c2",
+          "compiled_symbol": "?Run@CMainGameComponent@@UAE_NPAPAUCGameComponent@@@Z",
+          "demangled": "public: virtual bool __thiscall CMainGameComponent::Run(struct CGameComponent **)"
+        },
+        {
+          "slot": 3,
+          "native": "0x41799b",
+          "compiled_symbol": "?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z",
+          "demangled": "public: virtual void __thiscall CMainGameComponent::ChangeTextureColourDepth(long)"
+        },
+        {
+          "slot": 4,
+          "native": "0x4197a0",
+          "compiled_symbol": "?SetQuit@CMainGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CMainGameComponent::SetQuit(void)"
+        },
+        {
+          "slot": 5,
+          "native": "0x418289",
+          "compiled_symbol": "?Update@CMainGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CMainGameComponent::Update(void)"
+        },
+        {
+          "slot": 6,
+          "native": "0x416e78",
+          "compiled_symbol": "?GetInputs@CMainGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CMainGameComponent::GetInputs(void)"
+        },
+        {
+          "slot": 7,
+          "native": "0x417001",
+          "compiled_symbol": "?Render@CMainGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CMainGameComponent::Render(void)"
+        },
+        {
+          "slot": 8,
+          "native": "0x416953",
+          "compiled_symbol": "?PostInit@CMainGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CMainGameComponent::PostInit(void)"
+        },
+        {
+          "slot": 9,
+          "native": "0x4197b0",
+          "compiled_symbol": "?IsEditorActive@CMainGameComponent@@UBE_NXZ",
+          "demangled": "public: virtual bool __thiscall CMainGameComponent::IsEditorActive(void) const"
+        }
+      ]
+    },
+    {
+      "vtable": "??_7CMainGameComponent@@6BCDeviceResetCallback@@@",
+      "native": "0x122f174",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0x415e83",
+          "compiled_symbol": "?OnPreDeviceReset@CMainGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CMainGameComponent::OnPreDeviceReset(void)"
+        },
+        {
+          "slot": 1,
+          "native": "0x4175da",
+          "compiled_symbol": "?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ",
+          "demangled": "public: virtual bool __thiscall CMainGameComponent::OnPostDeviceReset(void)"
+        }
+      ]
+    },
+    {
+      "vtable": "??_7CGameComponent@@6BCBaseClassNonCopyable@@@",
+      "native": "0x122ecb0",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0x415940",
+          "compiled_symbol": "??_ECGameComponent@@UAEPAXI@Z",
+          "demangled": "public: virtual void * __thiscall CGameComponent::`vector deleting dtor'(unsigned int)"
+        },
+        {
+          "slot": 1,
+          "native": "0x415920",
+          "compiled_symbol": "?Init@CGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CGameComponent::Init(void)"
+        },
+        {
+          "slot": 2,
+          "native": "0xbfea08",
+          "compiled_symbol": "__purecall",
+          "demangled": "__purecall"
+        },
+        {
+          "slot": 3,
+          "native": "0xbfea08",
+          "compiled_symbol": "__purecall",
+          "demangled": "__purecall"
+        },
+        {
+          "slot": 4,
+          "native": "0x415930",
+          "compiled_symbol": "?SetQuit@CGameComponent@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CGameComponent::SetQuit(void)"
+        }
+      ]
+    },
+    {
+      "vtable": "??_7CGameComponent@@6BCDeviceResetCallback@@@",
+      "native": "0x122eca4",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0xbfea08",
+          "compiled_symbol": "__purecall",
+          "demangled": "__purecall"
+        },
+        {
+          "slot": 1,
+          "native": "0xbfea08",
+          "compiled_symbol": "__purecall",
+          "demangled": "__purecall"
+        }
+      ]
+    },
+    {
+      "vtable": "??_7CDiskFileWin32@@6B@",
+      "native": "0x122d06c",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0x4016b0",
+          "compiled_symbol": "??_ECDiskFileWin32@@UAEPAXI@Z",
+          "demangled": "public: virtual void * __thiscall CDiskFileWin32::`vector deleting dtor'(unsigned int)"
+        },
+        {
+          "slot": 1,
+          "native": "0x99a6a0",
+          "compiled_symbol": "?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z",
+          "demangled": "public: virtual void __thiscall CDiskFileWin32::Open(class CWideString const &, enum FileAccessType, unsigned long)"
+        },
+        {
+          "slot": 2,
+          "native": "0x99a920",
+          "compiled_symbol": "?Close@CDiskFileWin32@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CDiskFileWin32::Close(void)"
+        },
+        {
+          "slot": 3,
+          "native": "0x99a960",
+          "compiled_symbol": "?Read@CDiskFileWin32@@UAEXPAXJPAUCASuspendableProcess@@@Z",
+          "demangled": "public: virtual void __thiscall CDiskFileWin32::Read(void *, long, struct CASuspendableProcess *)"
+        },
+        {
+          "slot": 4,
+          "native": "0x99aa90",
+          "compiled_symbol": "?Write@CDiskFileWin32@@UAEXPBXJPAUCASuspendableProcess@@@Z",
+          "demangled": "public: virtual void __thiscall CDiskFileWin32::Write(void const *, long, struct CASuspendableProcess *)"
+        },
+        {
+          "slot": 5,
+          "native": "0x99abf0",
+          "compiled_symbol": "?SetPosition@CDiskFileWin32@@UAEXJ@Z",
+          "demangled": "public: virtual void __thiscall CDiskFileWin32::SetPosition(long)"
+        },
+        {
+          "slot": 6,
+          "native": "0x99ac90",
+          "compiled_symbol": "?MovePosition@CDiskFileWin32@@UAEXJ@Z",
+          "demangled": "public: virtual void __thiscall CDiskFileWin32::MovePosition(long)"
+        },
+        {
+          "slot": 7,
+          "native": "0x99abd0",
+          "compiled_symbol": "?GetPosition@CDiskFileWin32@@UBEJXZ",
+          "demangled": "public: virtual long __thiscall CDiskFileWin32::GetPosition(void) const"
+        },
+        {
+          "slot": 8,
+          "native": "0x99a560",
+          "compiled_symbol": "?SetLength@CDiskFileWin32@@UAEXJ@Z",
+          "demangled": "public: virtual void __thiscall CDiskFileWin32::SetLength(long)"
+        },
+        {
+          "slot": 9,
+          "native": "0x401670",
+          "compiled_symbol": "?GetLength@CDiskFileWin32@@UBEJXZ",
+          "demangled": "public: virtual long __thiscall CDiskFileWin32::GetLength(void) const"
+        },
+        {
+          "slot": 10,
+          "native": "0x401680",
+          "compiled_symbol": "?IsOpen@CDiskFileWin32@@UBE_NXZ",
+          "demangled": "public: virtual bool __thiscall CDiskFileWin32::IsOpen(void) const"
+        },
+        {
+          "slot": 11,
+          "native": "0x401690",
+          "compiled_symbol": "?GetPathname@CDiskFileWin32@@UBE?AVCWideString@@XZ",
+          "demangled": "public: virtual class CWideString __thiscall CDiskFileWin32::GetPathname(void) const"
+        },
+        {
+          "slot": 12,
+          "native": "0x401650",
+          "compiled_symbol": "?IsIOFinished@CAFile@@UBE_NXZ",
+          "demangled": "public: virtual bool __thiscall CAFile::IsIOFinished(void) const"
+        },
+        {
+          "slot": 13,
+          "native": "0x401660",
+          "compiled_symbol": "?GetAlignment@CAFile@@UBEJXZ",
+          "demangled": "public: virtual long __thiscall CAFile::GetAlignment(void) const"
+        },
+        {
+          "slot": 14,
+          "native": "0x99ae00",
+          "compiled_symbol": "?Clone@CDiskFileWin32@@UBEPAUCAFile@@XZ",
+          "demangled": "public: virtual struct CAFile * __thiscall CDiskFileWin32::Clone(void) const"
+        }
+      ]
+    },
+    {
+      "vtable": "??_7CNetworkClient@@6B@",
+      "native": "0x122edac",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0x419365",
+          "compiled_symbol": "??_ECNetworkClient@@UAEPAXI@Z",
+          "demangled": "public: virtual void * __thiscall CNetworkClient::`vector deleting dtor'(unsigned int)"
+        },
+        {
+          "slot": 1,
+          "native": "0x99a340",
+          "compiled_symbol": "?Validate@CInitBaseClass@@UBEXXZ",
+          "demangled": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+        }
+      ]
+    },
+    {
+      "vtable": "??_7CDisplayEngine@@6B@",
+      "native": "0x1231574",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0x437070",
+          "compiled_symbol": "??_ECDisplayEngine@@UAEPAXI@Z",
+          "demangled": "public: virtual void * __thiscall CDisplayEngine::`vector deleting dtor'(unsigned int)"
+        },
+        {
+          "slot": 1,
+          "native": "0x435190",
+          "compiled_symbol": "?InitEngine@CDisplayEngine@@UAE_NXZ",
+          "demangled": "public: virtual bool __thiscall CDisplayEngine::InitEngine(void)"
+        },
+        {
+          "slot": 2,
+          "native": "0x4354a0",
+          "compiled_symbol": "?UninitEngine@CDisplayEngine@@UAEXXZ",
+          "demangled": "public: virtual void __thiscall CDisplayEngine::UninitEngine(void)"
+        }
+      ]
+    },
+    {
+      "vtable": "??_7CFrameRateSmoother@@6B@",
+      "native": "0x122f168",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0x41977d",
+          "compiled_symbol": "??_ECFrameRateSmoother@@UAEPAXI@Z",
+          "demangled": "public: virtual void * __thiscall CFrameRateSmoother::`vector deleting dtor'(unsigned int)"
+        },
+        {
+          "slot": 1,
+          "native": "0x99a340",
+          "compiled_symbol": "?Validate@CInitBaseClass@@UBEXXZ",
+          "demangled": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+        }
+      ]
+    },
+    {
+      "vtable": "??_7CGame@@6B@",
+      "native": "0x122e59c",
+      "slots": [
+        {
+          "slot": 0,
+          "native": "0x413230",
+          "compiled_symbol": "??_ECGame@@UAEPAXI@Z",
+          "demangled": "public: virtual void * __thiscall CGame::`vector deleting dtor'(unsigned int)"
+        },
+        {
+          "slot": 1,
+          "native": "0x99a340",
+          "compiled_symbol": "?Validate@CInitBaseClass@@UBEXXZ",
+          "demangled": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+        }
+      ]
+    }
+  ],
+  "native_RTTI": [
+    {
+      "vtable": "0x122f180",
+      "bases": [
+        {
+          "name": ".?AVCMainGameComponent@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCGameComponent@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClassNonCopyable@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClass@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCDeviceResetCallback@@",
+          "this_offset": 4
+        }
+      ]
+    },
+    {
+      "vtable": "0x122ecb0",
+      "bases": [
+        {
+          "name": ".?AVCGameComponent@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClassNonCopyable@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClass@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCDeviceResetCallback@@",
+          "this_offset": 4
+        }
+      ]
+    },
+    {
+      "vtable": "0x122d06c",
+      "bases": [
+        {
+          "name": ".?AVCDiskFileWin32@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCAFile@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClassNonCopyable@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClass@@",
+          "this_offset": 0
+        }
+      ]
+    },
+    {
+      "vtable": "0x122edac",
+      "bases": [
+        {
+          "name": ".?AVCNetworkClient@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCInitBaseClass@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClass@@",
+          "this_offset": 0
+        }
+      ]
+    },
+    {
+      "vtable": "0x122f168",
+      "bases": [
+        {
+          "name": ".?AVCFrameRateSmoother@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCInitBaseClass@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClass@@",
+          "this_offset": 0
+        }
+      ]
+    },
+    {
+      "vtable": "0x122e59c",
+      "bases": [
+        {
+          "name": ".?AVCGame@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCInitBaseClass@@",
+          "this_offset": 0
+        },
+        {
+          "name": ".?AVCBaseClass@@",
+          "this_offset": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+offset	native_target	symbol
+00000004	00bddfb0	??1QuadTreeElement@@UAE@XZ
+00000010	01436ea8	?gEngine@@3PAUEngineGlobal@@A
+0000001c	00bd9b90	?Deallocate@LandscapeMemory@@QAEXPAX@Z

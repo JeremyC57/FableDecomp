@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00d68f00   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d68f00   RELOCATION_MATCH PASS   CQ_HangingTreeEvilScript
+00daac00   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00daac00   RELOCATION_MATCH PASS   CQ_NewOakValeIntroScript
+00e398f0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e398f0   RELOCATION_MATCH PASS   CQ_HangingTreeGoodScript
+
+WINS: 3
+  00d68f00 RELOCATION_MATCH CQ_HangingTreeEvilScript::CQ_HangingTreeEvilScript
+  00daac00 RELOCATION_MATCH CQ_NewOakValeIntroScript::CQ_NewOakValeIntroScript
+  00e398f0 RELOCATION_MATCH CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CQHangingTreeEvilScript_CQHangingTreeEvilScript_00d68f00
+  CQNewOakValeIntroScript_CQNewOakValeIntroScript_00daac00
+  CQHangingTreeGoodScript_CQHangingTreeGoodScript_00e398f0

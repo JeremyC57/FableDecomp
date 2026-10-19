@@ -1,0 +1,12 @@
+offset	native_target	symbol
+00000018	00bfea1a	??2@YAPAXI@Z
+0000002c	009fbec0	??0ResourceNative@@QAE@XZ
+00000032	0129d3a4	??_7DataResource@LipSyncEntry@@6B@
+0000006d	009d58d0	?CreateEntry@BankNative@@QAE?AU?$Counted@UAsyncEntry@@@@K@Z
+00000075	009cc240	?GetEntryDataSize@BankNative@@QBEKK@Z
+0000007b	01397700	?LipSyncLoadingPriority@@3W4EThreadedFilePriority@@A
+0000008e	009d6100	?BeginReadDataAutoAlloc@AsyncEntry@@QAE?AU?$Counted@UAsyncData@@@@KKW4EThreadedFilePriority@@@Z
+00000097	009a4440	??4?$Counted@UAsyncData@@@@QAEAAU0@ABU0@@Z
+000000b9	00bfe9bc	??3@YAXPAX@Z
+000000ca	009fc3d0	?AddResource@ResourceBankNative@@QAEXAAUResourceNative@@@Z
+000000ee	00bfe9bc	??3@YAXPAX@Z

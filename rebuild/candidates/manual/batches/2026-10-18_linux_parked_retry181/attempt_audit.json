@@ -1,0 +1,147 @@
+{
+  "invocations": [
+    {
+      "snapshot": 1,
+      "source_grade": 1,
+      "sha256": "f60be60172a037f4f6c35b3b8d3dab08a3c95225a2e0a23c9825a667a19cb438",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00a64230 work/codex-lane/w22/astra239_whole/src/00a64230.cpp ReadFromParserAsBool",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/00a64230_01"
+    },
+    {
+      "snapshot": 2,
+      "source_grade": 2,
+      "sha256": "514e98a3fda403afd3792a9dba7283afcf64cff0b5432ec5eb73050ae3f95ff7",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00a64230 work/codex-lane/w22/astra239_whole/src/00a64230.cpp ReadFromParserAsBool",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/00a64230_02"
+    },
+    {
+      "snapshot": 3,
+      "source_grade": 3,
+      "sha256": "c5593a653cc62ef9cdaf5eb6cea538575ed817804c149307b15616c745be6276",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00a64230 work/codex-lane/w22/astra239_whole/src/00a64230.cpp ReadFromParserAsBool",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/00a64230_03"
+    },
+    {
+      "snapshot": 1,
+      "source_grade": 1,
+      "sha256": "8220f70ce1c114331fe37ca9633918039ff51a9225bee8694873075331f7ffe1",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00a63db0 work/codex-lane/w22/astra239_whole/src/00a63db0.cpp ReadFromParserAsBool",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/00a63db0_01"
+    },
+    {
+      "snapshot": 2,
+      "source_grade": 2,
+      "sha256": "8691bbcc3cdc964ed49dab347c65d113549b8896b6b1033c2e785c8b50ee8de6",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00a63db0 work/codex-lane/w22/astra239_whole/src/00a63db0.cpp ReadFromParserAsBool",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/00a63db0_02"
+    },
+    {
+      "snapshot": 3,
+      "source_grade": 3,
+      "sha256": "c62d94c0e06d49fc9ccd309845084560e1e5edcd45a5501a538b2cdb9f051359",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00a63db0 work/codex-lane/w22/astra239_whole/src/00a63db0.cpp ReadFromParserAsBool",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/00a63db0_03"
+    },
+    {
+      "snapshot": 1,
+      "source_grade": 1,
+      "sha256": "acde7a30ac5f779d2d62727e2d160e02ac1af34bbe7101e0a9a71d006274db9e",
+      "command": "timeout 200 python3 -c \"import sys,csv;from pathlib import Path;sys.path.insert(0,'tools/decomp_pipeline');import verify_land_jumptable as J;V=J.val;p=Path('work/codex-lane/w22/astra239_whole');r=next(r for r in csv.DictReader(open(p/'chunk.tsv'),delimiter='\\t') if r['address']=='00a63fc0');d=p/'snapshots/00a63fc0_01';print(V.parity_of(V.vc71((d/'source.cpp').read_text()),'00a63fc0','ReadFromParser',bytes.fromhex(r['bytes']),d,V.env())[0])\"",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extractor": "verify_land_jumptable.raw_obj_text",
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/00a63fc0_01"
+    },
+    {
+      "snapshot": 2,
+      "source_grade": 2,
+      "sha256": "acde7a30ac5f779d2d62727e2d160e02ac1af34bbe7101e0a9a71d006274db9e",
+      "command": "timeout 200 python3 -c \"import sys,csv;from pathlib import Path;sys.path.insert(0,'tools/decomp_pipeline');import verify_land_jumptable as J;V=J.val;p=Path('work/codex-lane/w22/astra239_whole').resolve();r=next(r for r in csv.DictReader(open(p/'chunk.tsv'),delimiter='\\t') if r['address']=='00a63fc0');d=p/'snapshots/00a63fc0_02';print(V.parity_of(V.vc71((d/'source.cpp').read_text()),'00a63fc0','ReadFromParser',bytes.fromhex(r['bytes']),d,V.env())[0])\"",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extractor": "verify_land_jumptable.raw_obj_text",
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/00a63fc0_02"
+    },
+    {
+      "snapshot": 1,
+      "source_grade": 1,
+      "sha256": "b6b47090e9415c0fbba90ad960387dd24a0dcd1c29786bc3405a68436a868fb7",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009fcef0 work/codex-lane/w22/astra239_whole/src/009fcef0.cpp GetDefault",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/009fcef0_01"
+    },
+    {
+      "snapshot": 2,
+      "source_grade": 2,
+      "sha256": "453ddd51dc3a1a6eabbfbe825f4ef262dd08468bb642c214b318dac831b2c4b4",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009fcef0 work/codex-lane/w22/astra239_whole/src/009fcef0.cpp GetDefault",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/009fcef0_02"
+    },
+    {
+      "snapshot": 3,
+      "source_grade": 3,
+      "sha256": "695c43b6db0f77ec5cbaf6847b97cee2c38f0517dc3e30521c976c61239ea6e1",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009fcef0 work/codex-lane/w22/astra239_whole/src/009fcef0.cpp GetDefault",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/009fcef0_03"
+    }
+  ],
+  "counted_grades": 10,
+  "unchanged_verification": {
+    "source_sha256": "acde7a30ac5f779d2d62727e2d160e02ac1af34bbe7101e0a9a71d006274db9e",
+    "source_grades": 1,
+    "verification_count": 1,
+    "first_counted": true,
+    "second_counted": false,
+    "reason": "Identical source and effective /O2 /Oy /W3 flags; second invocation only corrected output path to absolute. Original invocation metadata retained."
+  }
+}

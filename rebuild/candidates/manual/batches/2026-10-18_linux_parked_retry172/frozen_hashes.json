@@ -1,0 +1,35 @@
+[
+  {
+    "address": "00b260b0",
+    "src": {
+      "path": "work/codex-lane/w22/astra235_whole/src/00b260b0.cpp",
+      "sha256": "69f6c00848b3eedb575c5dd3b62625e492208c080c4e736244efa00657f08f7a"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/astra235_whole/test/00b260b0.cpp",
+      "sha256": "9ee56184535eb9cc59ca88a4ccc4db5a81bce5c32f95a25386d252815658f524"
+    }
+  },
+  {
+    "address": "00caf8f0",
+    "src": {
+      "path": "work/codex-lane/w22/astra235_whole/src/00caf8f0.cpp",
+      "sha256": "f58e9f5f8914ae6e4d0a94a2f9d11b55d74d5ff9c25de0ee3abe6d4f72446bd7"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/astra235_whole/test/00caf8f0.canonical.cpp",
+      "sha256": "cc2b3848ca06230e6f3726e00f8b994d34afa7ce40f609e96bfaab361e8fc05b"
+    }
+  },
+  {
+    "address": "00afe9b0",
+    "src": {
+      "path": "work/codex-lane/w22/astra235_whole/src/00afe9b0.cpp",
+      "sha256": "41e12fe60dfa6b4fae4721cb1d56f2c744808c527e9e6cde10ed744eb12a5ed3"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/astra235_whole/test/00afe9b0.cpp",
+      "sha256": "6314400c4f12cc68a78b093124409d8fe8ecbe0502237b8e6b445b7eb8205e6c"
+    }
+  }
+]

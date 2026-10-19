@@ -1,0 +1,9 @@
+# Skipped Balverine update and fresh vector formatters
+
+0094f640 CAIStateGroup_BalverineCornered::Update (236 bytes): previously UNSTARTED, authored through five grades and a sixth integration cleanup. Shared state/brain layouts and already-landed combat-action constructors identify the behavior. A shared result variable is compared after action destruction, which reproduces retail's otherwise dead comparison and saved-register lifetime. The state invariant requires interface0x75; retail ignores the lookup failure result. Actual-source fixtures cover absent/dead target, inside/outside volume, action results0/2/4, valid and sentinel map lookup, refreshed brain creature after tracker update, exact constructor/perform/destructor/terminate order, arguments and jump destination. The temporary-address syntax is a VC7.1 extension; the identical host body passes with g++ -fpermissive. Canonical VC7.1 PASS.
+
+00aa9910 C3DMeshFileDummyObjectChunk::GetChunkInfo (263 bytes): recovered in two agent grades, followed by typed stream forward declarations/virtual-layout documentation in coordinator integration. The inherited helper-point text receives six-decimal Direction XYZ. Retail literal0129e5a0 is `, Direction: (`; there is no final closing parenthesis in this function. Local virtual chunk shells retain the known0x2c retail base rather than the donor0x34 layout.
+
+00a13da0 C3DVector::ToString (266 bytes): recovered on first grade; formats `(X, Y, Z)` with two decimals. Retail punctuation bytes independently audited at0122e028,012397cc,0122e020. Both formatter tests embed the actual source and cover mixed signs/rounding, zero components, exactly three formatting calls and correct precision; the chunk test also verifies its one qualified base callback and receiver. Dependencies alone are stubbed. g++ and canonical VC7.1/Wine PASS.
+
+All three independently RELOCATION_MATCH + PASS. Final evidence: landing_evidence.txt.

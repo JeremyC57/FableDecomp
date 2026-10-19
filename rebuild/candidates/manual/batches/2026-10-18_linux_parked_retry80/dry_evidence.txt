@@ -1,0 +1,5 @@
+addr       parity           behav  name
+006b8640   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 1
+  006b8640 RELOCATION_MATCH CEnvironmentSpellEffectInterpolator::?FrameUpdate@CEnvironmentSpellEffectInterpolator

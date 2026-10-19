@@ -1,0 +1,75 @@
+
+work/codex-lane/w22/repair00eed6b0/dry_work/00/ee/00eed6b0/00eed6b0.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000d dir32             ??_7CIsThingAlive@@6B@
+00000012 DISP32            ??0CAliveScriptThing@@QAE@ABUCScriptThing@@@Z
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??RCIsThingAlive@@UBE_NXZ
+00000004 dir32             ?Clone@CIsThingAlive@@UBEPAU1@XZ
+00000008 dir32             ??_ECIsThingAlive@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CIsThingAlive@@QAE@ABUCScriptThing@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CIsThingAlive@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCIsThingAlive@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?WardenUsed@@YA_NABUCScriptThing@@ABVCCharString@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?WardenFrame@@YAXPAUCGameScriptInterface@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?WardenInfo@@YAXPAUCGameScriptInterface@@ABVCCharString@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?WardenClicked@@YA_NPAUCGameScriptInterface@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000013 dir32             ??_7CIsThingAlive@@6B@
+00000018 DISP32            ??0CAliveScriptThing@@QAE@ABUCScriptThing@@@Z
+00000024 DISP32            ?SetPredicate@CExitWardensOffice@@QAEXABUCIsThingAlive@@@Z
+0000002d DISP32            ??1CIsThingAlive@@UAE@XZ
+0000003c DISP32            ?IsActiveThreadTerminating@CExitWardensOffice@@QBE_NXZ
+0000004b DISP32            ?IsActiveThreadTerminating@CExitWardensOffice@@QBE_NXZ
+00000063 dir32             ??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@
+0000006c DISP32            ??0CCharString@@QAE@PBDJ@Z
+00000083 DISP32            ??1CCharString@@QAE@XZ
+0000008e DISP32            ?IsActiveThreadTerminating@CExitWardensOffice@@QBE_NXZ
+00000099 dir32             ??_C@_0BK@JGNHKIMI@TEXT_QST_055_DIARY_LOCKED?$AA@
+000000a2 DISP32            ??0CCharString@@QAE@PBDJ@Z
+000000bb DISP32            ??1CCharString@@QAE@XZ
+000000db DISP32            ?IsActiveThreadTerminating@CExitWardensOffice@@QBE_NXZ
+000000f5 DISP32            ?IsActiveThreadTerminating@CExitWardensOffice@@QBE_NXZ
+00000108 DISP32            ?IsActiveThreadTerminating@CExitWardensOffice@@QBE_NXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Main@CExitWardensOffice@@QAEXXZ

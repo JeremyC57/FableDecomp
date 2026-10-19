@@ -1,0 +1,7 @@
+offset	type	retail_target	compiler_symbol
+001f	dir32	01238c8c	??_7ScriptMethods@@6B@
+0074	DISP32	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00a4	DISP32	0099efb0	??4CCharString@@QAEAAV0@ABV0@@Z
+00b2	dir32	01238c8c	??_7ScriptMethods@@6B@
+00ce	DISP32	00bfe9bc	??3@YAXPAX@Z
+00e2	DISP32	0099a2e0	??1CBaseClassNative@@UAE@XZ

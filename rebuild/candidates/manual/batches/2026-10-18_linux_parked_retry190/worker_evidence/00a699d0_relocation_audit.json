@@ -1,0 +1,115 @@
+{
+  "caller_relocations": [
+    {
+      "offset": 39,
+      "native_target": "0x9fa620",
+      "symbol": "?GetNextValidDimensions@CTexture@@SI?AUC2DExtentsI@@ABU2@ABUCPixelFormat@@@Z",
+      "demangled": "public: static struct C2DExtentsI __fastcall CTexture::GetNextValidDimensions(struct C2DExtentsI const &, struct CPixelFormat const &)",
+      "identity": "CTexture::GetNextValidDimensions(constC2DExtentsI&,constCPixelFormat&) __fastcall byvalue nonPOD result; PDBB6A3C0"
+    },
+    {
+      "offset": 54,
+      "native_target": "0xbfea1a",
+      "symbol": "??2@YAPAXI@Z",
+      "demangled": "void * __cdecl operator new(unsigned int)",
+      "identity": "CRT scalar operator new, allocation16 independently visible in native push10"
+    },
+    {
+      "offset": 70,
+      "native_target": "0x99a2d0",
+      "symbol": "??0CBaseClass@@QAE@XZ",
+      "demangled": "public: __thiscall CBaseClass::CBaseClass(void)",
+      "identity": "CBaseClass::CBaseClass() PDBB01F20; native writes basevtable1231710"
+    },
+    {
+      "offset": 84,
+      "native_target": "0x129dc18",
+      "symbol": "??_7CVolumeTexture@@6B@",
+      "demangled": "const CVolumeTexture::`vftable'",
+      "identity": "CVolumeTexture native primary vtable; exactlyone virtual destructor slot"
+    },
+    {
+      "offset": 101,
+      "native_target": "0xa6ae60",
+      "symbol": "?Reset@?$CCountedPointer@UCVolumeTexture@@@@QAEXPAUCVolumeTexture@@@Z",
+      "demangled": "public: void __thiscall CCountedPointer<struct CVolumeTexture>::Reset(struct CVolumeTexture *)",
+      "identity": "CCountedPointer<CVolumeTexture>::Reset(CVolumeTexture*) native blockRefs0/DeleteFuncfastcall4/Data8; actual release and scalar-block allocation inspected"
+    },
+    {
+      "offset": 152,
+      "native_target": "0xa68370",
+      "symbol": "?Initialise@CVolumeTexture@@QAE_NABUC3DExtentsI@@JABUCPixelFormat@@KW4EVolumePool@@_N@Z",
+      "demangled": "public: bool __thiscall CVolumeTexture::Initialise(struct C3DExtentsI const &, long, struct CPixelFormat const &, unsigned long, enum EVolumePool, bool)",
+      "identity": "CVolumeTexture::Initialise(constC3DExtentsI&,long,constCPixelFormat&,ulong,EVolumePool,bool), PDBBE9830"
+    }
+  ],
+  "fixture_actual_vtables": [
+    {
+      "table": "??_7CBaseClass@@6B@",
+      "slots": [
+        "??_ECBaseClass@@UAEPAXI@Z"
+      ],
+      "demangled_slots": [
+        "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)"
+      ]
+    },
+    {
+      "table": "??_7CVolumeTexture@@6B@",
+      "slots": [
+        "??_ECVolumeTexture@@UAEPAXI@Z"
+      ],
+      "demangled_slots": [
+        "public: virtual void * __thiscall CVolumeTexture::`vector deleting dtor'(unsigned int)"
+      ]
+    }
+  ],
+  "fixture_emitted_signatures": [
+    {
+      "symbol": "?Volume@CManagedTextureData@@QAEAAU?$CCountedPointer@UCVolumeTexture@@@@XZ",
+      "demangled": "public: struct CCountedPointer<struct CVolumeTexture> & __thiscall CManagedTextureData::Volume(void)"
+    },
+    {
+      "symbol": "??0CBaseClass@@QAE@XZ",
+      "demangled": "public: __thiscall CBaseClass::CBaseClass(void)"
+    },
+    {
+      "symbol": "??1CBaseClass@@UAE@XZ",
+      "demangled": "public: virtual __thiscall CBaseClass::~CBaseClass(void)"
+    },
+    {
+      "symbol": "??1CVolumeTexture@@UAE@XZ",
+      "demangled": "public: virtual __thiscall CVolumeTexture::~CVolumeTexture(void)"
+    },
+    {
+      "symbol": "?GetNextValidDimensions@CTexture@@SI?AUC2DExtentsI@@ABU2@ABUCPixelFormat@@@Z",
+      "demangled": "public: static struct C2DExtentsI __fastcall CTexture::GetNextValidDimensions(struct C2DExtentsI const &, struct CPixelFormat const &)"
+    },
+    {
+      "symbol": "?Initialise@CVolumeTexture@@QAE_NABUC3DExtentsI@@JABUCPixelFormat@@KW4EVolumePool@@_N@Z",
+      "demangled": "public: bool __thiscall CVolumeTexture::Initialise(struct C3DExtentsI const &, long, struct CPixelFormat const &, unsigned long, enum EVolumePool, bool)"
+    },
+    {
+      "symbol": "?Reset@?$CCountedPointer@UCVolumeTexture@@@@QAEXPAUCVolumeTexture@@@Z",
+      "demangled": "public: void __thiscall CCountedPointer<struct CVolumeTexture>::Reset(struct CVolumeTexture *)"
+    },
+    {
+      "symbol": "??0CVolumeTexture@@QAE@XZ",
+      "demangled": "public: __thiscall CVolumeTexture::CVolumeTexture(void)"
+    },
+    {
+      "symbol": "??_GCVolumeTexture@@UAEPAXI@Z",
+      "demangled": "public: virtual void * __thiscall CVolumeTexture::`scalar deleting dtor'(unsigned int)"
+    },
+    {
+      "symbol": "?CreateVolumeTexture@CManagedTextureData@@QAE_NKKKJABUCPixelFormat@@@Z",
+      "demangled": "public: bool __thiscall CManagedTextureData::CreateVolumeTexture(unsigned long, unsigned long, unsigned long, long, struct CPixelFormat const &)"
+    },
+    {
+      "symbol": "??_GCBaseClass@@UAEPAXI@Z",
+      "demangled": "public: virtual void * __thiscall CBaseClass::`scalar deleting dtor'(unsigned int)"
+    }
+  ],
+  "native_ctor_evidence": "8b5c241c8b6c24206a10e8105019008bf883c40485ff74198bcfe8b608f3ff33c089470489470cc70718dc29018bc7eb0233c0",
+  "native_pointee_destructor_evidence": "568bf1c70618dc2901e8c2eaffff8bcee83b0df3fff644240801740956e80a54190083c4048bc65ec20400",
+  "names": "CManagedTextureData/CreateVolumeTexture and fieldnames actual PDB/header. EVolumePool original enumtype proven; VolumePoolManaged spelling descriptive, native numeric1 proven. ConstructorPD3DVolumeTexture/PData zero; ByteLength intentionally uninitialised per native. Inputlevels ignored; actual Initialisemiplevels1,usage0,pool1,dynamicfalse."
+}

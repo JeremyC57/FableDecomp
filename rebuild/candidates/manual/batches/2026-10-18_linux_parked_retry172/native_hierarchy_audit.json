@@ -1,0 +1,2927 @@
+{
+  "0x12a0d24": {
+    "object_offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCIEngine@@",
+        0
+      ],
+      [
+        ".?AVCInitBaseClass@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x12a0f3c": {
+    "object_offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCEngine@@",
+        0
+      ],
+      [
+        ".?AVCIEngine@@",
+        0
+      ],
+      [
+        ".?AVCInitBaseClass@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ],
+      [
+        ".?AVCDeviceResetCallback@@",
+        12
+      ]
+    ]
+  },
+  "0x12a0f30": {
+    "object_offset": 12,
+    "hierarchy": [
+      [
+        ".?AVCEngine@@",
+        0
+      ],
+      [
+        ".?AVCIEngine@@",
+        0
+      ],
+      [
+        ".?AVCInitBaseClass@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ],
+      [
+        ".?AVCDeviceResetCallback@@",
+        12
+      ]
+    ]
+  },
+  "0x122de50": {
+    "object_offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCDeviceResetCallback@@",
+        0
+      ]
+    ]
+  },
+  "0x12a3d60": {
+    "object_offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCEnginePersistentPrimitiveBase@@",
+        0
+      ],
+      [
+        ".?AVCIVCountedPointeeBase@@",
+        0
+      ]
+    ]
+  },
+  "00b260b0.obj": {
+    "object": "work/codex-lane/w22/coordinator_retry172/dry_work/00/b2/00b260b0/00b260b0.obj",
+    "errors": [],
+    "slots": [
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 0,
+        "compiled": "??_ECIEngineNative@@UAEPAXI@Z",
+        "signature": "public: virtual void * __thiscall CIEngineNative::`vector deleting dtor'(unsigned int)",
+        "native": "`vector_deleting_destructor'",
+        "native_signature": "`vector_deleting_destructor'"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 1,
+        "compiled": "?Validate@NativeInitBaseClass@@UBEXXZ",
+        "signature": "public: virtual void __thiscall NativeInitBaseClass::Validate(void) const",
+        "native": "?Validate@CInitBaseClass@@UBEXXZ",
+        "native_signature": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 2,
+        "compiled": "?Initialise@CIEngineNative@@UAE_NABUCEngineInit@@@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::Initialise(struct CEngineInit const &)",
+        "native": "?Initialise@CIEngine@@UAE_NABVCEngineInit@@@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::Initialise(class CEngineInit const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 3,
+        "compiled": "?Release@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::Release(void)",
+        "native": "?Release@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::Release(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 4,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 5,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 6,
+        "compiled": "?SetEnvironmentalEffectsAlwaysUpdate@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetEnvironmentalEffectsAlwaysUpdate(bool)",
+        "native": "?SetEnvironmentalEffectsAlwaysUpdate@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetEnvironmentalEffectsAlwaysUpdate(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 7,
+        "compiled": "?SetWorld@CIEngineNative@@UAEXPBUCIDrawWorld@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetWorld(struct CIDrawWorld const *)",
+        "native": "?SetWorld@CIEngine@@UAEXPBVCIDrawWorld@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetWorld(class CIDrawWorld const *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 8,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 9,
+        "compiled": "?WorldFrameUpdate@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::WorldFrameUpdate(bool)",
+        "native": "?WorldFrameUpdate@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::WorldFrameUpdate(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 10,
+        "compiled": "?PausedWorldFrameUpdate@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::PausedWorldFrameUpdate(void)",
+        "native": "?PausedWorldFrameUpdate@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::PausedWorldFrameUpdate(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 11,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 12,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 13,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 14,
+        "compiled": "?SetVideoOptions@CIEngineNative@@UAE_NABUCEngineVideoOptions@@@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::SetVideoOptions(struct CEngineVideoOptions const &)",
+        "native": "?SetVideoOptions@CIEngine@@UAE_NABVCEngineVideoOptions@@@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::SetVideoOptions(class CEngineVideoOptions const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 15,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 16,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 17,
+        "compiled": "?Refresh@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::Refresh(void)",
+        "native": "?Refresh@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::Refresh(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 18,
+        "compiled": "?CheckPrimitiveVisibility@CIEngineNative@@UAE_N_K@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::CheckPrimitiveVisibility(unsigned __int64)",
+        "native": "?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::CheckPrimitiveVisibility(unsigned __int64)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 19,
+        "compiled": "?GetPrimitiveDrawDistanceFactor@CIEngineNative@@UBEMXZ",
+        "signature": "public: virtual float __thiscall CIEngineNative::GetPrimitiveDrawDistanceFactor(void) const",
+        "native": "?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ",
+        "native_signature": "public: virtual float __thiscall CIEngine::GetPrimitiveDrawDistanceFactor(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 20,
+        "compiled": "?AddPrimitive@CIEngineNative@@UAEXABUCEnginePrimitive@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::AddPrimitive(struct CEnginePrimitive const &)",
+        "native": "?AddPrimitive@CIEngine@@UAEXABVCEnginePrimitive@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::AddPrimitive(class CEnginePrimitive const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 21,
+        "compiled": "?ClipSphere@CIEngineNative@@UBE_NABUC3DBoundingSphere@@@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::ClipSphere(struct C3DBoundingSphere const &) const",
+        "native": "?ClipSphere@CIEngine@@UBE_NABVC3DBoundingSphere@@@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::ClipSphere(class C3DBoundingSphere const &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 22,
+        "compiled": "?ClipBox@CIEngineNative@@UBE_NABUC3DBoundingBox@@@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::ClipBox(struct C3DBoundingBox const &) const",
+        "native": "?ClipBox@CIEngine@@UBE_NABVC3DBoundingBox@@@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::ClipBox(class C3DBoundingBox const &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 23,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 24,
+        "compiled": "?SetPrimitiveAnimation@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitiveAnimation@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetPrimitiveAnimation(struct CEnginePrimitiveHandle &, struct CEnginePrimitiveAnimation const &)",
+        "native": "?SetPrimitiveAnimation@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetPrimitiveAnimation(class CEnginePrimitiveHandle &, class CEnginePrimitiveAnimation const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 25,
+        "compiled": "?SetPrimitivePosition@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitivePosition@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetPrimitivePosition(struct CEnginePrimitiveHandle &, struct CEnginePrimitivePosition const &)",
+        "native": "?SetPrimitivePosition@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetPrimitivePosition(class CEnginePrimitiveHandle &, class CEnginePrimitivePosition const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 26,
+        "compiled": "?AddChildPrimitive@CIEngineNative@@UAEKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual unsigned long __thiscall CIEngineNative::AddChildPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?AddChildPrimitive@CIEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual unsigned long __thiscall CIEngine::AddChildPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 27,
+        "compiled": "?SetChildPrimitive@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@K0ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetChildPrimitive(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 28,
+        "compiled": "?SetChildPrimitive@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@KABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetChildPrimitive(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 29,
+        "compiled": "?GetChildPrimitiveHandle@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@K0@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::GetChildPrimitiveHandle(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitiveHandle &)",
+        "native": "?GetChildPrimitiveHandle@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::GetChildPrimitiveHandle(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitiveHandle &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 30,
+        "compiled": "?ClearChildPrimitive@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@K@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::ClearChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long)",
+        "native": "?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::ClearChildPrimitive(class CEnginePrimitiveHandle &, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 31,
+        "compiled": "?ClearAllChildPrimitives@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::ClearAllChildPrimitives(struct CEnginePrimitiveHandle &)",
+        "native": "?ClearAllChildPrimitives@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::ClearAllChildPrimitives(class CEnginePrimitiveHandle &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 32,
+        "compiled": "?SetAttachedPrimitive@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@ABUCEnginePrimitiveAttachmentInfo@@ABU2@JK@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetAttachedPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, struct CEnginePrimitiveAttachmentInfo const &, struct CEnginePrimitiveHandle const &, long, unsigned long)",
+        "native": "?SetAttachedPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetAttachedPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, class CEnginePrimitiveAttachmentInfo const &, class CEnginePrimitiveHandle const &, long, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 33,
+        "compiled": "?CollectPrimitiveStatsForArea@CIEngineNative@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABUC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::CollectPrimitiveStatsForArea(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, struct C2DBoxF const &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+        "native": "?CollectPrimitiveStatsForArea@CIEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::CollectPrimitiveStatsForArea(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, class C2DBoxF const &, enum EEnginePrimitiveStatIndex, unsigned long) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 34,
+        "compiled": "?ProcessPrimitiveStats@CIEngineNative@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::ProcessPrimitiveStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> const &, enum EEnginePrimitiveStatIndex, unsigned long &, class CArray<class CCharString> &) const",
+        "native": "?ProcessPrimitiveStats@CIEngine@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::ProcessPrimitiveStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> const &, enum EEnginePrimitiveStatIndex, unsigned long &, class CArray<class CCharString> &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 35,
+        "compiled": "?GetEditorAnimation@CIEngineNative@@UBEPBUC3DAnimationInfo@@ABVCWideString@@@Z",
+        "signature": "public: virtual struct C3DAnimationInfo const * __thiscall CIEngineNative::GetEditorAnimation(class CWideString const &) const",
+        "native": "?GetEditorAnimation@CIEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z",
+        "native_signature": "public: virtual class C3DAnimationInfo const * __thiscall CIEngine::GetEditorAnimation(class CWideString const &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 36,
+        "compiled": "?AddCustomMorphTexture@CIEngineNative@@UBEKAAUCTexture@@ABVCCharString@@@Z",
+        "signature": "public: virtual unsigned long __thiscall CIEngineNative::AddCustomMorphTexture(struct CTexture &, class CCharString const &) const",
+        "native": "?AddCustomMorphTexture@CIEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z",
+        "native_signature": "public: virtual unsigned long __thiscall CIEngine::AddCustomMorphTexture(class CTexture &, class CCharString const &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 37,
+        "compiled": "?GetStaticMapUpdatePassCount@CIEngineNative@@UAEJXZ",
+        "signature": "public: virtual long __thiscall CIEngineNative::GetStaticMapUpdatePassCount(void)",
+        "native": "?GetStaticMapUpdatePassCount@CIEngine@@UAEJXZ",
+        "native_signature": "public: virtual long __thiscall CIEngine::GetStaticMapUpdatePassCount(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 38,
+        "compiled": "?StartStaticMapUpdatePass@CIEngineNative@@UAEXABVCWideString@@JABUCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::StartStaticMapUpdatePass(class CWideString const &, long, struct CStaticMapGenerationVisibiilityInfo const &, class CArray<class CCharString> const &)",
+        "native": "?StartStaticMapUpdatePass@CIEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::StartStaticMapUpdatePass(class CWideString const &, long, class CStaticMapGenerationVisibiilityInfo const &, class CArray<class CCharString> const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 39,
+        "compiled": "?IsStaticMapNeedingUpdate@CIEngineNative@@UBE_NJABVCCharString@@K@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::IsStaticMapNeedingUpdate(long, class CCharString const &, unsigned long) const",
+        "native": "?IsStaticMapNeedingUpdate@CIEngine@@UBE_NJABVCCharString@@K@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::IsStaticMapNeedingUpdate(long, class CCharString const &, unsigned long) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 40,
+        "compiled": "?UpdateStaticMap@CIEngineNative@@UAEXJABVCCharString@@KJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::UpdateStaticMap(long, class CCharString const &, unsigned long, long)",
+        "native": "?UpdateStaticMap@CIEngine@@UAEXJABVCCharString@@KJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::UpdateStaticMap(long, class CCharString const &, unsigned long, long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 41,
+        "compiled": "?CloseStaticMapFile@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::CloseStaticMapFile(void)",
+        "native": "?CloseStaticMapFile@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::CloseStaticMapFile(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 42,
+        "compiled": "?AddMap@CIEngineNative@@UAEXJJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::AddMap(long, long)",
+        "native": "?AddMap@CIEngine@@UAEXJJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::AddMap(long, long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 43,
+        "compiled": "?RemoveMap@CIEngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::RemoveMap(long)",
+        "native": "?RemoveMap@CIEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::RemoveMap(long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 44,
+        "compiled": "?SetMapAsLoaded@CIEngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetMapAsLoaded(long)",
+        "native": "?SetMapAsLoaded@CIEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetMapAsLoaded(long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 45,
+        "compiled": "?SetMapAsUnloaded@CIEngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetMapAsUnloaded(long)",
+        "native": "?SetMapAsUnloaded@CIEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetMapAsUnloaded(long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 46,
+        "compiled": "?SetMapVisibilityAllMaps@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetMapVisibilityAllMaps(bool)",
+        "native": "?SetMapVisibilityAllMaps@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetMapVisibilityAllMaps(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 47,
+        "compiled": "?SetMapVisibility@CIEngineNative@@UAEXJ_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetMapVisibility(long, bool)",
+        "native": "?SetMapVisibility@CIEngine@@UAEXJ_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetMapVisibility(long, bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 48,
+        "compiled": "?AreaChanged@CIEngineNative@@UAEXABUC2DBoxI@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::AreaChanged(struct C2DBoxI const &)",
+        "native": "?AreaChanged@CIEngine@@UAEXABVC2DBoxI@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::AreaChanged(class C2DBoxI const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 49,
+        "compiled": "?OnActivate@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::OnActivate(void)",
+        "native": "?OnActivate@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::OnActivate(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 50,
+        "compiled": "?OnDeactivate@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::OnDeactivate(void)",
+        "native": "?OnDeactivate@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::OnDeactivate(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 51,
+        "compiled": "?IsActive@CIEngineNative@@UBE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::IsActive(void) const",
+        "native": "?IsActive@CIEngine@@UBE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::IsActive(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 52,
+        "compiled": "?SetStaticMapFileForUse@CIEngineNative@@UAEXABVCWideString@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetStaticMapFileForUse(class CWideString const &)",
+        "native": "?SetStaticMapFileForUse@CIEngine@@UAEXABVCWideString@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetStaticMapFileForUse(class CWideString const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 53,
+        "compiled": "?SetLandscapeDebugTintColour@CIEngineNative@@UAEXJUCRGBColour@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetLandscapeDebugTintColour(long, struct CRGBColour)",
+        "native": "?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetLandscapeDebugTintColour(long, class CRGBColour)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 54,
+        "compiled": "?ReloadLocalDetailDefs@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::ReloadLocalDetailDefs(void)",
+        "native": "?ReloadLocalDetailDefs@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::ReloadLocalDetailDefs(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 55,
+        "compiled": "?StartNewScene@CIEngineNative@@UAEXKM@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::StartNewScene(unsigned long, float)",
+        "native": "?StartNewScene@CIEngine@@UAEXKM@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::StartNewScene(unsigned long, float)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 56,
+        "compiled": "?CutscenePreload@CIEngineNative@@UAEX_N0@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::CutscenePreload(bool, bool)",
+        "native": "?CutscenePreload@CIEngine@@UAEX_N0@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::CutscenePreload(bool, bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 57,
+        "compiled": "?CutsceneAddCameraAngle@CIEngineNative@@UAEXABUCCamera@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::CutsceneAddCameraAngle(struct CCamera const &)",
+        "native": "?CutsceneAddCameraAngle@CIEngine@@UAEXABVCCamera@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::CutsceneAddCameraAngle(class CCamera const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 58,
+        "compiled": "?ChangeCameraAngle@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::ChangeCameraAngle(void)",
+        "native": "?ChangeCameraAngle@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::ChangeCameraAngle(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 59,
+        "compiled": "?IsPreloaded@CIEngineNative@@UBE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::IsPreloaded(void) const",
+        "native": "?IsPreloaded@CIEngine@@UBE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::IsPreloaded(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 60,
+        "compiled": "?UpdateTextureMorphCache@CIEngineNative@@UAEXABV?$CArray@UCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::UpdateTextureMorphCache(class CArray<struct CEngineTextureMorph> const &, bool, float, class std::set<long, struct std::less<long>, class std::allocator<long>> const *)",
+        "native": "?UpdateTextureMorphCache@CIEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::UpdateTextureMorphCache(class CArray<class CEngineTextureMorph> const &, bool, float, class std::set<long, struct std::less<long>, class std::allocator<long>> const *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 61,
+        "compiled": "?SetScreenColourFilter@CIEngineNative@@UAEXABUCEngineColourFilterSettings@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetScreenColourFilter(struct CEngineColourFilterSettings const &)",
+        "native": "?SetScreenColourFilter@CIEngine@@UAEXABVCEngineColourFilterSettings@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetScreenColourFilter(class CEngineColourFilterSettings const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 62,
+        "compiled": "?SetSpotlightShadowMode@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetSpotlightShadowMode(bool)",
+        "native": "?SetSpotlightShadowMode@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetSpotlightShadowMode(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 63,
+        "compiled": "?SetSeaBodyToRender@CIEngineNative@@UAEXVCCharString@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetSeaBodyToRender(class CCharString)",
+        "native": "?SetSeaBodyToRender@CIEngine@@UAEXVCCharString@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetSeaBodyToRender(class CCharString)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 64,
+        "compiled": "?UpdateDebugOverlay@CIEngineNative@@UAEXJPBUCRGBColour@@ABUC2DBoxI@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::UpdateDebugOverlay(long, struct CRGBColour const *, struct C2DBoxI const &)",
+        "native": "?UpdateDebugOverlay@CIEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::UpdateDebugOverlay(long, class CRGBColour const *, class C2DBoxI const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 65,
+        "compiled": "?EnableDebugOverlay@CIEngineNative@@UAEXJ_N0@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::EnableDebugOverlay(long, bool, bool)",
+        "native": "?EnableDebugOverlay@CIEngine@@UAEXJ_N0@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::EnableDebugOverlay(long, bool, bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 66,
+        "compiled": "?SetGlobalLightingParameters@CIEngineNative@@UAEXABUC3DVector@@ABUCRGBFloatColour@@11@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetGlobalLightingParameters(struct C3DVector const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &)",
+        "native": "?SetGlobalLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetGlobalLightingParameters(class C3DVector const &, class CRGBFloatColour const &, class CRGBFloatColour const &, class CRGBFloatColour const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 67,
+        "compiled": "?Set2DPrimitiveLightingParameters@CIEngineNative@@UAEXABUC3DVector@@ABUCRGBFloatColour@@11@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::Set2DPrimitiveLightingParameters(struct C3DVector const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &)",
+        "native": "?Set2DPrimitiveLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::Set2DPrimitiveLightingParameters(class C3DVector const &, class CRGBFloatColour const &, class CRGBFloatColour const &, class CRGBFloatColour const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 68,
+        "compiled": "?SetRenderTargetTexture@CIEngineNative@@UAEXPBUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetRenderTargetTexture(struct CTexture const *)",
+        "native": "?SetRenderTargetTexture@CIEngine@@UAEXPBVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetRenderTargetTexture(class CTexture const *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 69,
+        "compiled": "?AllocateTextureFromEngineResourcePools@CIEngineNative@@UAEPAUCTexture@@KABUC2DExtentsI@@JABUCPixelFormat@@@Z",
+        "signature": "public: virtual struct CTexture * __thiscall CIEngineNative::AllocateTextureFromEngineResourcePools(unsigned long, struct C2DExtentsI const &, long, struct CPixelFormat const &)",
+        "native": "?AllocateTextureFromEngineResourcePools@CIEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z",
+        "native_signature": "public: virtual class CTexture * __thiscall CIEngine::AllocateTextureFromEngineResourcePools(unsigned long, class C2DExtentsI const &, long, class CPixelFormat const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 70,
+        "compiled": "?FreeTextureFromEngineResourcePools@CIEngineNative@@UAEXPAUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::FreeTextureFromEngineResourcePools(struct CTexture *)",
+        "native": "?FreeTextureFromEngineResourcePools@CIEngine@@UAEXPAVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::FreeTextureFromEngineResourcePools(class CTexture *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 71,
+        "compiled": "?GetLoadingMemoryPool@CIEngineNative@@UAEPAUCMovableResourceMemoryPool@@XZ",
+        "signature": "public: virtual struct CMovableResourceMemoryPool * __thiscall CIEngineNative::GetLoadingMemoryPool(void)",
+        "native": "?GetLoadingMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "native_signature": "public: virtual class CMovableResourceMemoryPool * __thiscall CIEngine::GetLoadingMemoryPool(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 72,
+        "compiled": "?GetAnimationMemoryPool@CIEngineNative@@UAEPAUCMovableResourceMemoryPool@@XZ",
+        "signature": "public: virtual struct CMovableResourceMemoryPool * __thiscall CIEngineNative::GetAnimationMemoryPool(void)",
+        "native": "?GetAnimationMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "native_signature": "public: virtual class CMovableResourceMemoryPool * __thiscall CIEngine::GetAnimationMemoryPool(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 73,
+        "compiled": "?GetScratchBufferTextureManager@CIEngineNative@@UAEPAUCGPUScratchBufferTextureManager@@XZ",
+        "signature": "public: virtual struct CGPUScratchBufferTextureManager * __thiscall CIEngineNative::GetScratchBufferTextureManager(void)",
+        "native": "?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ",
+        "native_signature": "public: virtual class CGPUScratchBufferTextureManager * __thiscall CIEngine::GetScratchBufferTextureManager(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 74,
+        "compiled": "?DeallocateShadowBuffer@CIEngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::DeallocateShadowBuffer(void)",
+        "native": "?DeallocateShadowBuffer@CIEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::DeallocateShadowBuffer(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 75,
+        "compiled": "?ReallocateShadowBuffer@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::ReallocateShadowBuffer(void)",
+        "native": "?ReallocateShadowBuffer@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::ReallocateShadowBuffer(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 76,
+        "compiled": "?Enable3DSceneRendering@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::Enable3DSceneRendering(bool)",
+        "native": "?Enable3DSceneRendering@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::Enable3DSceneRendering(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 77,
+        "compiled": "?Is3DSceneRenderingEnabled@CIEngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::Is3DSceneRenderingEnabled(void)",
+        "native": "?Is3DSceneRenderingEnabled@CIEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::Is3DSceneRenderingEnabled(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 78,
+        "compiled": "?Enable2DSceneRendering@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::Enable2DSceneRendering(bool)",
+        "native": "?Enable2DSceneRendering@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::Enable2DSceneRendering(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 79,
+        "compiled": "?Is2DSceneRenderingEnabled@CIEngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::Is2DSceneRenderingEnabled(void)",
+        "native": "?Is2DSceneRenderingEnabled@CIEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::Is2DSceneRenderingEnabled(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 80,
+        "compiled": "?OverrideRain@CIEngineNative@@UAEXM@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::OverrideRain(float)",
+        "native": "?OverrideRain@CIEngine@@UAEXM@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::OverrideRain(float)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 81,
+        "compiled": "?OverrideSnow@CIEngineNative@@UAEXM@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::OverrideSnow(float)",
+        "native": "?OverrideSnow@CIEngine@@UAEXM@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::OverrideSnow(float)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 82,
+        "compiled": "?RenderColorFilteredQuad@CIEngineNative@@UAEXMMABUC4DVector@@MMPAUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::RenderColorFilteredQuad(float, float, struct C4DVector const &, float, float, struct CTexture *)",
+        "native": "?RenderColorFilteredQuad@CIEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::RenderColorFilteredQuad(float, float, class C4DVector const &, float, float, class CTexture *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 83,
+        "compiled": "?PeekGlobalDiffuseColour@CIEngineNative@@UBE?BUCRGBFloatColour@@XZ",
+        "signature": "public: virtual struct CRGBFloatColour const __thiscall CIEngineNative::PeekGlobalDiffuseColour(void) const",
+        "native": "?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "native_signature": "public: virtual class CRGBFloatColour const __thiscall CIEngine::PeekGlobalDiffuseColour(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 84,
+        "compiled": "?PeekGlobalAmbientColour@CIEngineNative@@UBE?BUCRGBFloatColour@@XZ",
+        "signature": "public: virtual struct CRGBFloatColour const __thiscall CIEngineNative::PeekGlobalAmbientColour(void) const",
+        "native": "?PeekGlobalAmbientColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "native_signature": "public: virtual class CRGBFloatColour const __thiscall CIEngine::PeekGlobalAmbientColour(void) const"
+      },
+      {
+        "table": "??_7NativeDeviceResetCallback@@6B@",
+        "slot": 0,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7NativeDeviceResetCallback@@6B@",
+        "slot": 1,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7EngineNative@@6BNativeDeviceResetCallback@@@",
+        "slot": 0,
+        "compiled": "?OnPreDeviceReset@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::OnPreDeviceReset(void)",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7EngineNative@@6BNativeDeviceResetCallback@@@",
+        "slot": 1,
+        "compiled": "?OnPostDeviceReset@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::OnPostDeviceReset(void)",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 0,
+        "compiled": "??_EEngineNative@@UAEPAXI@Z",
+        "signature": "public: virtual void * __thiscall EngineNative::`vector deleting dtor'(unsigned int)",
+        "native": "`vector_deleting_destructor'",
+        "native_signature": "`vector_deleting_destructor'"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 1,
+        "compiled": "?Validate@NativeInitBaseClass@@UBEXXZ",
+        "signature": "public: virtual void __thiscall NativeInitBaseClass::Validate(void) const",
+        "native": "?Validate@CInitBaseClass@@UBEXXZ",
+        "native_signature": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 2,
+        "compiled": "?Initialise@EngineNative@@UAE_NABUCEngineInit@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::Initialise(struct CEngineInit const &)",
+        "native": "?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::Initialise(class CEngineInit const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 3,
+        "compiled": "?Release@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::Release(void)",
+        "native": "?Release@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::Release(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 4,
+        "compiled": "?SetCamera@EngineNative@@UAEXPBUCCamera@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetCamera(struct CCamera const *)",
+        "native": "?SetCamera@CEngine@@UAEXPBVCCamera@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetCamera(class CCamera const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 5,
+        "compiled": "?SetWindow@EngineNative@@UAEXPBUC2DBoxF@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetWindow(struct C2DBoxF const *)",
+        "native": "?SetWindow@CEngine@@UAEXPBVC2DBoxF@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetWindow(class C2DBoxF const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 6,
+        "compiled": "?SetEnvironmentalEffectsAlwaysUpdate@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetEnvironmentalEffectsAlwaysUpdate(bool)",
+        "native": "?SetEnvironmentalEffectsAlwaysUpdate@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetEnvironmentalEffectsAlwaysUpdate(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 7,
+        "compiled": "?SetWorld@EngineNative@@UAEXPBUCIDrawWorld@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetWorld(struct CIDrawWorld const *)",
+        "native": "?SetWorld@CEngine@@UAEXPBVCIDrawWorld@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetWorld(class CIDrawWorld const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 8,
+        "compiled": "?Render@EngineNative@@UAEXABUCEngineInterpolationInfo@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::Render(struct CEngineInterpolationInfo const &, unsigned long)",
+        "native": "?Render@CEngine@@UAEXABVCEngineInterpolationInfo@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::Render(class CEngineInterpolationInfo const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 9,
+        "compiled": "?WorldFrameUpdate@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::WorldFrameUpdate(bool)",
+        "native": "?WorldFrameUpdate@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::WorldFrameUpdate(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 10,
+        "compiled": "?PausedWorldFrameUpdate@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::PausedWorldFrameUpdate(void)",
+        "native": "?PausedWorldFrameUpdate@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::PausedWorldFrameUpdate(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 11,
+        "compiled": "?ConvertScreenPosToWorldPos@EngineNative@@UBE_NABUC2DVector@@AAUC3DVector@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ConvertScreenPosToWorldPos(struct C2DVector const &, struct C3DVector &) const",
+        "native": "?ConvertScreenPosToWorldPos@CEngine@@UBE_NABVC2DVector@@AAVC3DVector@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ConvertScreenPosToWorldPos(class C2DVector const &, class C3DVector &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 12,
+        "compiled": "?ConvertScreenPosToWorldPosAtViewDistance@EngineNative@@UBE_NMABUC2DVector@@AAUC3DVector@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ConvertScreenPosToWorldPosAtViewDistance(float, struct C2DVector const &, struct C3DVector &) const",
+        "native": "?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ConvertScreenPosToWorldPosAtViewDistance(float, class C2DVector const &, class C3DVector &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 13,
+        "compiled": "?ConvertWorldPosToScreenPos@EngineNative@@UBE_NABUC3DVector@@AAUC2DVector@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ConvertWorldPosToScreenPos(struct C3DVector const &, struct C2DVector &) const",
+        "native": "?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ConvertWorldPosToScreenPos(class C3DVector const &, class C2DVector &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 14,
+        "compiled": "?SetVideoOptions@EngineNative@@UAE_NABUCEngineVideoOptions@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::SetVideoOptions(struct CEngineVideoOptions const &)",
+        "native": "?SetVideoOptions@CEngine@@UAE_NABVCEngineVideoOptions@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::SetVideoOptions(class CEngineVideoOptions const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 15,
+        "compiled": "?PreChangeResolution@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::PreChangeResolution(void)",
+        "native": "?PreChangeResolution@CEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::PreChangeResolution(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 16,
+        "compiled": "?PostChangeResolution@EngineNative@@UAE_NKKK@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::PostChangeResolution(unsigned long, unsigned long, unsigned long)",
+        "native": "?PostChangeResolution@CEngine@@UAE_NKKK@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::PostChangeResolution(unsigned long, unsigned long, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 17,
+        "compiled": "?Refresh@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::Refresh(void)",
+        "native": "?Refresh@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::Refresh(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 18,
+        "compiled": "?CheckPrimitiveVisibility@CIEngineNative@@UAE_N_K@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::CheckPrimitiveVisibility(unsigned __int64)",
+        "native": "?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::CheckPrimitiveVisibility(unsigned __int64)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 19,
+        "compiled": "?GetPrimitiveDrawDistanceFactor@EngineNative@@UBEMXZ",
+        "signature": "public: virtual float __thiscall EngineNative::GetPrimitiveDrawDistanceFactor(void) const",
+        "native": "?GetPrimitiveDrawDistanceFactor@CEngine@@UBEMXZ",
+        "native_signature": "public: virtual float __thiscall CEngine::GetPrimitiveDrawDistanceFactor(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 20,
+        "compiled": "?AddPrimitive@EngineNative@@UAEXABUCEnginePrimitive@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::AddPrimitive(struct CEnginePrimitive const &)",
+        "native": "?AddPrimitive@CEngine@@UAEXABVCEnginePrimitive@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::AddPrimitive(class CEnginePrimitive const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 21,
+        "compiled": "?ClipSphere@EngineNative@@UBE_NABUC3DBoundingSphere@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ClipSphere(struct C3DBoundingSphere const &) const",
+        "native": "?ClipSphere@CEngine@@UBE_NABVC3DBoundingSphere@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ClipSphere(class C3DBoundingSphere const &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 22,
+        "compiled": "?ClipBox@EngineNative@@UBE_NABUC3DBoundingBox@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ClipBox(struct C3DBoundingBox const &) const",
+        "native": "?ClipBox@CEngine@@UBE_NABVC3DBoundingBox@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ClipBox(class C3DBoundingBox const &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 23,
+        "compiled": "?SetPersistentPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetPersistentPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetPersistentPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetPersistentPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 24,
+        "compiled": "?SetPrimitiveAnimation@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitiveAnimation@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetPrimitiveAnimation(struct CEnginePrimitiveHandle &, struct CEnginePrimitiveAnimation const &)",
+        "native": "?SetPrimitiveAnimation@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetPrimitiveAnimation(class CEnginePrimitiveHandle &, class CEnginePrimitiveAnimation const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 25,
+        "compiled": "?SetPrimitivePosition@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitivePosition@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetPrimitivePosition(struct CEnginePrimitiveHandle &, struct CEnginePrimitivePosition const &)",
+        "native": "?SetPrimitivePosition@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetPrimitivePosition(class CEnginePrimitiveHandle &, class CEnginePrimitivePosition const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 26,
+        "compiled": "?AddChildPrimitive@EngineNative@@UAEKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual unsigned long __thiscall EngineNative::AddChildPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?AddChildPrimitive@CEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual unsigned long __thiscall CEngine::AddChildPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 27,
+        "compiled": "?SetChildPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@K0ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetChildPrimitive(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 28,
+        "compiled": "?SetChildPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@KABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetChildPrimitive(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 29,
+        "compiled": "?GetChildPrimitiveHandle@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@K0@Z",
+        "signature": "public: virtual void __thiscall EngineNative::GetChildPrimitiveHandle(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitiveHandle &)",
+        "native": "?GetChildPrimitiveHandle@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::GetChildPrimitiveHandle(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitiveHandle &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 30,
+        "compiled": "?ClearChildPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::ClearChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long)",
+        "native": "?ClearChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::ClearChildPrimitive(class CEnginePrimitiveHandle &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 31,
+        "compiled": "?ClearAllChildPrimitives@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::ClearAllChildPrimitives(struct CEnginePrimitiveHandle &)",
+        "native": "?ClearAllChildPrimitives@CEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::ClearAllChildPrimitives(class CEnginePrimitiveHandle &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 32,
+        "compiled": "?SetAttachedPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@ABUCEnginePrimitiveAttachmentInfo@@ABU2@JK@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetAttachedPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, struct CEnginePrimitiveAttachmentInfo const &, struct CEnginePrimitiveHandle const &, long, unsigned long)",
+        "native": "?SetAttachedPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetAttachedPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, class CEnginePrimitiveAttachmentInfo const &, class CEnginePrimitiveHandle const &, long, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 33,
+        "compiled": "?CollectPrimitiveStatsForArea@EngineNative@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABUC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::CollectPrimitiveStatsForArea(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, struct C2DBoxF const &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+        "native": "?CollectPrimitiveStatsForArea@CEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::CollectPrimitiveStatsForArea(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, class C2DBoxF const &, enum EEnginePrimitiveStatIndex, unsigned long) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 34,
+        "compiled": "?ProcessPrimitiveStats@EngineNative@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::ProcessPrimitiveStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> const &, enum EEnginePrimitiveStatIndex, unsigned long &, class CArray<class CCharString> &) const",
+        "native": "?ProcessPrimitiveStats@CEngine@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::ProcessPrimitiveStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> const &, enum EEnginePrimitiveStatIndex, unsigned long &, class CArray<class CCharString> &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 35,
+        "compiled": "?GetEditorAnimation@EngineNative@@UBEPBUC3DAnimationInfo@@ABVCWideString@@@Z",
+        "signature": "public: virtual struct C3DAnimationInfo const * __thiscall EngineNative::GetEditorAnimation(class CWideString const &) const",
+        "native": "?GetEditorAnimation@CEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z",
+        "native_signature": "public: virtual class C3DAnimationInfo const * __thiscall CEngine::GetEditorAnimation(class CWideString const &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 36,
+        "compiled": "?AddCustomMorphTexture@EngineNative@@UBEKAAUCTexture@@ABVCCharString@@@Z",
+        "signature": "public: virtual unsigned long __thiscall EngineNative::AddCustomMorphTexture(struct CTexture &, class CCharString const &) const",
+        "native": "?AddCustomMorphTexture@CEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z",
+        "native_signature": "public: virtual unsigned long __thiscall CEngine::AddCustomMorphTexture(class CTexture &, class CCharString const &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 37,
+        "compiled": "?GetStaticMapUpdatePassCount@EngineNative@@UAEJXZ",
+        "signature": "public: virtual long __thiscall EngineNative::GetStaticMapUpdatePassCount(void)",
+        "native": "?GetStaticMapUpdatePassCount@CEngine@@UAEJXZ",
+        "native_signature": "public: virtual long __thiscall CEngine::GetStaticMapUpdatePassCount(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 38,
+        "compiled": "?StartStaticMapUpdatePass@EngineNative@@UAEXABVCWideString@@JABUCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::StartStaticMapUpdatePass(class CWideString const &, long, struct CStaticMapGenerationVisibiilityInfo const &, class CArray<class CCharString> const &)",
+        "native": "?StartStaticMapUpdatePass@CEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::StartStaticMapUpdatePass(class CWideString const &, long, class CStaticMapGenerationVisibiilityInfo const &, class CArray<class CCharString> const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 39,
+        "compiled": "?IsStaticMapNeedingUpdate@EngineNative@@UBE_NJABVCCharString@@K@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::IsStaticMapNeedingUpdate(long, class CCharString const &, unsigned long) const",
+        "native": "?IsStaticMapNeedingUpdate@CEngine@@UBE_NJABVCCharString@@K@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::IsStaticMapNeedingUpdate(long, class CCharString const &, unsigned long) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 40,
+        "compiled": "?UpdateStaticMap@EngineNative@@UAEXJABVCCharString@@KJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::UpdateStaticMap(long, class CCharString const &, unsigned long, long)",
+        "native": "?UpdateStaticMap@CEngine@@UAEXJABVCCharString@@KJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::UpdateStaticMap(long, class CCharString const &, unsigned long, long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 41,
+        "compiled": "?CloseStaticMapFile@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::CloseStaticMapFile(void)",
+        "native": "?CloseStaticMapFile@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::CloseStaticMapFile(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 42,
+        "compiled": "?AddMap@EngineNative@@UAEXJJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::AddMap(long, long)",
+        "native": "?AddMap@CEngine@@UAEXJJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::AddMap(long, long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 43,
+        "compiled": "?RemoveMap@EngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::RemoveMap(long)",
+        "native": "?RemoveMap@CEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::RemoveMap(long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 44,
+        "compiled": "?SetMapAsLoaded@EngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetMapAsLoaded(long)",
+        "native": "?SetMapAsLoaded@CEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetMapAsLoaded(long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 45,
+        "compiled": "?SetMapAsUnloaded@EngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetMapAsUnloaded(long)",
+        "native": "?SetMapAsUnloaded@CEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetMapAsUnloaded(long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 46,
+        "compiled": "?SetMapVisibilityAllMaps@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetMapVisibilityAllMaps(bool)",
+        "native": "?SetMapVisibilityAllMaps@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetMapVisibilityAllMaps(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 47,
+        "compiled": "?SetMapVisibility@EngineNative@@UAEXJ_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetMapVisibility(long, bool)",
+        "native": "?SetMapVisibility@CEngine@@UAEXJ_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetMapVisibility(long, bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 48,
+        "compiled": "?AreaChanged@EngineNative@@UAEXABUC2DBoxI@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::AreaChanged(struct C2DBoxI const &)",
+        "native": "?AreaChanged@CEngine@@UAEXABVC2DBoxI@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::AreaChanged(class C2DBoxI const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 49,
+        "compiled": "?OnActivate@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::OnActivate(void)",
+        "native": "?OnActivate@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::OnActivate(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 50,
+        "compiled": "?OnDeactivate@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::OnDeactivate(void)",
+        "native": "?OnDeactivate@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::OnDeactivate(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 51,
+        "compiled": "?IsActive@CIEngineNative@@UBE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::IsActive(void) const",
+        "native": "?IsActive@CIEngine@@UBE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::IsActive(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 52,
+        "compiled": "?SetStaticMapFileForUse@EngineNative@@UAEXABVCWideString@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetStaticMapFileForUse(class CWideString const &)",
+        "native": "?SetStaticMapFileForUse@CEngine@@UAEXABVCWideString@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetStaticMapFileForUse(class CWideString const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 53,
+        "compiled": "?SetLandscapeDebugTintColour@EngineNative@@UAEXJUCRGBColour@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetLandscapeDebugTintColour(long, struct CRGBColour)",
+        "native": "?SetLandscapeDebugTintColour@CEngine@@UAEXJVCRGBColour@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetLandscapeDebugTintColour(long, class CRGBColour)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 54,
+        "compiled": "?ReloadLocalDetailDefs@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::ReloadLocalDetailDefs(void)",
+        "native": "?ReloadLocalDetailDefs@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::ReloadLocalDetailDefs(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 55,
+        "compiled": "?StartNewScene@EngineNative@@UAEXKM@Z",
+        "signature": "public: virtual void __thiscall EngineNative::StartNewScene(unsigned long, float)",
+        "native": "?StartNewScene@CEngine@@UAEXKM@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::StartNewScene(unsigned long, float)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 56,
+        "compiled": "?CutscenePreload@EngineNative@@UAEX_N0@Z",
+        "signature": "public: virtual void __thiscall EngineNative::CutscenePreload(bool, bool)",
+        "native": "?CutscenePreload@CEngine@@UAEX_N0@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::CutscenePreload(bool, bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 57,
+        "compiled": "?CutsceneAddCameraAngle@EngineNative@@UAEXABUCCamera@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::CutsceneAddCameraAngle(struct CCamera const &)",
+        "native": "?CutsceneAddCameraAngle@CEngine@@UAEXABVCCamera@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::CutsceneAddCameraAngle(class CCamera const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 58,
+        "compiled": "?ChangeCameraAngle@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::ChangeCameraAngle(void)",
+        "native": "?ChangeCameraAngle@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::ChangeCameraAngle(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 59,
+        "compiled": "?IsPreloaded@EngineNative@@UBE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::IsPreloaded(void) const",
+        "native": "?IsPreloaded@CEngine@@UBE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::IsPreloaded(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 60,
+        "compiled": "?UpdateTextureMorphCache@EngineNative@@UAEXABV?$CArray@UCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::UpdateTextureMorphCache(class CArray<struct CEngineTextureMorph> const &, bool, float, class std::set<long, struct std::less<long>, class std::allocator<long>> const *)",
+        "native": "?UpdateTextureMorphCache@CEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::UpdateTextureMorphCache(class CArray<class CEngineTextureMorph> const &, bool, float, class std::set<long, struct std::less<long>, class std::allocator<long>> const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 61,
+        "compiled": "?SetScreenColourFilter@EngineNative@@UAEXABUCEngineColourFilterSettings@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetScreenColourFilter(struct CEngineColourFilterSettings const &)",
+        "native": "?SetScreenColourFilter@CEngine@@UAEXABVCEngineColourFilterSettings@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetScreenColourFilter(class CEngineColourFilterSettings const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 62,
+        "compiled": "?SetSpotlightShadowMode@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetSpotlightShadowMode(bool)",
+        "native": "?SetSpotlightShadowMode@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetSpotlightShadowMode(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 63,
+        "compiled": "?SetSeaBodyToRender@EngineNative@@UAEXVCCharString@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetSeaBodyToRender(class CCharString)",
+        "native": "?SetSeaBodyToRender@CEngine@@UAEXVCCharString@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetSeaBodyToRender(class CCharString)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 64,
+        "compiled": "?UpdateDebugOverlay@EngineNative@@UAEXJPBUCRGBColour@@ABUC2DBoxI@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::UpdateDebugOverlay(long, struct CRGBColour const *, struct C2DBoxI const &)",
+        "native": "?UpdateDebugOverlay@CEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::UpdateDebugOverlay(long, class CRGBColour const *, class C2DBoxI const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 65,
+        "compiled": "?EnableDebugOverlay@EngineNative@@UAEXJ_N0@Z",
+        "signature": "public: virtual void __thiscall EngineNative::EnableDebugOverlay(long, bool, bool)",
+        "native": "?EnableDebugOverlay@CEngine@@UAEXJ_N0@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::EnableDebugOverlay(long, bool, bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 66,
+        "compiled": "?SetGlobalLightingParameters@EngineNative@@UAEXABUC3DVector@@ABUCRGBFloatColour@@11@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetGlobalLightingParameters(struct C3DVector const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &)",
+        "native": "?SetGlobalLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetGlobalLightingParameters(class C3DVector const &, class CRGBFloatColour const &, class CRGBFloatColour const &, class CRGBFloatColour const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 67,
+        "compiled": "?Set2DPrimitiveLightingParameters@EngineNative@@UAEXABUC3DVector@@ABUCRGBFloatColour@@11@Z",
+        "signature": "public: virtual void __thiscall EngineNative::Set2DPrimitiveLightingParameters(struct C3DVector const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &)",
+        "native": "?Set2DPrimitiveLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::Set2DPrimitiveLightingParameters(class C3DVector const &, class CRGBFloatColour const &, class CRGBFloatColour const &, class CRGBFloatColour const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 68,
+        "compiled": "?SetRenderTargetTexture@EngineNative@@UAEXPBUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetRenderTargetTexture(struct CTexture const *)",
+        "native": "?SetRenderTargetTexture@CEngine@@UAEXPBVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetRenderTargetTexture(class CTexture const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 69,
+        "compiled": "?AllocateTextureFromEngineResourcePools@EngineNative@@UAEPAUCTexture@@KABUC2DExtentsI@@JABUCPixelFormat@@@Z",
+        "signature": "public: virtual struct CTexture * __thiscall EngineNative::AllocateTextureFromEngineResourcePools(unsigned long, struct C2DExtentsI const &, long, struct CPixelFormat const &)",
+        "native": "?AllocateTextureFromEngineResourcePools@CEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z",
+        "native_signature": "public: virtual class CTexture * __thiscall CEngine::AllocateTextureFromEngineResourcePools(unsigned long, class C2DExtentsI const &, long, class CPixelFormat const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 70,
+        "compiled": "?FreeTextureFromEngineResourcePools@EngineNative@@UAEXPAUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::FreeTextureFromEngineResourcePools(struct CTexture *)",
+        "native": "?FreeTextureFromEngineResourcePools@CEngine@@UAEXPAVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::FreeTextureFromEngineResourcePools(class CTexture *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 71,
+        "compiled": "?GetLoadingMemoryPool@EngineNative@@UAEPAUCMovableResourceMemoryPool@@XZ",
+        "signature": "public: virtual struct CMovableResourceMemoryPool * __thiscall EngineNative::GetLoadingMemoryPool(void)",
+        "native": "?GetLoadingMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "native_signature": "public: virtual class CMovableResourceMemoryPool * __thiscall CEngine::GetLoadingMemoryPool(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 72,
+        "compiled": "?GetAnimationMemoryPool@EngineNative@@UAEPAUCMovableResourceMemoryPool@@XZ",
+        "signature": "public: virtual struct CMovableResourceMemoryPool * __thiscall EngineNative::GetAnimationMemoryPool(void)",
+        "native": "?GetAnimationMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "native_signature": "public: virtual class CMovableResourceMemoryPool * __thiscall CEngine::GetAnimationMemoryPool(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 73,
+        "compiled": "?GetScratchBufferTextureManager@EngineNative@@UAEPAUCGPUScratchBufferTextureManager@@XZ",
+        "signature": "public: virtual struct CGPUScratchBufferTextureManager * __thiscall EngineNative::GetScratchBufferTextureManager(void)",
+        "native": "?GetScratchBufferTextureManager@CEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ",
+        "native_signature": "public: virtual class CGPUScratchBufferTextureManager * __thiscall CEngine::GetScratchBufferTextureManager(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 74,
+        "compiled": "?DeallocateShadowBuffer@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::DeallocateShadowBuffer(void)",
+        "native": "?DeallocateShadowBuffer@CEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::DeallocateShadowBuffer(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 75,
+        "compiled": "?ReallocateShadowBuffer@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::ReallocateShadowBuffer(void)",
+        "native": "?ReallocateShadowBuffer@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::ReallocateShadowBuffer(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 76,
+        "compiled": "?Enable3DSceneRendering@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::Enable3DSceneRendering(bool)",
+        "native": "?Enable3DSceneRendering@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::Enable3DSceneRendering(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 77,
+        "compiled": "?Is3DSceneRenderingEnabled@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::Is3DSceneRenderingEnabled(void)",
+        "native": "?Is3DSceneRenderingEnabled@CEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::Is3DSceneRenderingEnabled(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 78,
+        "compiled": "?Enable2DSceneRendering@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::Enable2DSceneRendering(bool)",
+        "native": "?Enable2DSceneRendering@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::Enable2DSceneRendering(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 79,
+        "compiled": "?Is2DSceneRenderingEnabled@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::Is2DSceneRenderingEnabled(void)",
+        "native": "?Is2DSceneRenderingEnabled@CEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::Is2DSceneRenderingEnabled(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 80,
+        "compiled": "?OverrideRain@EngineNative@@UAEXM@Z",
+        "signature": "public: virtual void __thiscall EngineNative::OverrideRain(float)",
+        "native": "?OverrideRain@CEngine@@UAEXM@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::OverrideRain(float)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 81,
+        "compiled": "?OverrideSnow@EngineNative@@UAEXM@Z",
+        "signature": "public: virtual void __thiscall EngineNative::OverrideSnow(float)",
+        "native": "?OverrideSnow@CEngine@@UAEXM@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::OverrideSnow(float)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 82,
+        "compiled": "?RenderColorFilteredQuad@EngineNative@@UAEXMMABUC4DVector@@MMPAUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::RenderColorFilteredQuad(float, float, struct C4DVector const &, float, float, struct CTexture *)",
+        "native": "?RenderColorFilteredQuad@CEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::RenderColorFilteredQuad(float, float, class C4DVector const &, float, float, class CTexture *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 83,
+        "compiled": "?PeekGlobalDiffuseColour@EngineNative@@UBE?BUCRGBFloatColour@@XZ",
+        "signature": "public: virtual struct CRGBFloatColour const __thiscall EngineNative::PeekGlobalDiffuseColour(void) const",
+        "native": "?PeekGlobalDiffuseColour@CEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "native_signature": "public: virtual class CRGBFloatColour const __thiscall CEngine::PeekGlobalDiffuseColour(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 84,
+        "compiled": "?PeekGlobalAmbientColour@EngineNative@@UBE?BUCRGBFloatColour@@XZ",
+        "signature": "public: virtual struct CRGBFloatColour const __thiscall EngineNative::PeekGlobalAmbientColour(void) const",
+        "native": "?PeekGlobalAmbientColour@CEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "native_signature": "public: virtual class CRGBFloatColour const __thiscall CEngine::PeekGlobalAmbientColour(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 85,
+        "compiled": "?Uninitialise@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::Uninitialise(void)",
+        "native": "?Uninitialise@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::Uninitialise(void)"
+      }
+    ]
+  },
+  "00b260b0.t.obj": {
+    "object": "work/codex-lane/w22/coordinator_retry172/dry_work/00/b2/00b260b0/00b260b0.t.obj",
+    "errors": [],
+    "slots": [
+      {
+        "table": "??_7EngineNative@@6BNativeDeviceResetCallback@@@",
+        "slot": 0,
+        "compiled": "?OnPreDeviceReset@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::OnPreDeviceReset(void)",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7EngineNative@@6BNativeDeviceResetCallback@@@",
+        "slot": 1,
+        "compiled": "?OnPostDeviceReset@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::OnPostDeviceReset(void)",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 0,
+        "compiled": "??_EEngineNative@@UAEPAXI@Z",
+        "signature": "public: virtual void * __thiscall EngineNative::`vector deleting dtor'(unsigned int)",
+        "native": "`vector_deleting_destructor'",
+        "native_signature": "`vector_deleting_destructor'"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 1,
+        "compiled": "?Validate@NativeInitBaseClass@@UBEXXZ",
+        "signature": "public: virtual void __thiscall NativeInitBaseClass::Validate(void) const",
+        "native": "?Validate@CInitBaseClass@@UBEXXZ",
+        "native_signature": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 2,
+        "compiled": "?Initialise@EngineNative@@UAE_NABUCEngineInit@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::Initialise(struct CEngineInit const &)",
+        "native": "?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::Initialise(class CEngineInit const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 3,
+        "compiled": "?Release@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::Release(void)",
+        "native": "?Release@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::Release(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 4,
+        "compiled": "?SetCamera@EngineNative@@UAEXPBUCCamera@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetCamera(struct CCamera const *)",
+        "native": "?SetCamera@CEngine@@UAEXPBVCCamera@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetCamera(class CCamera const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 5,
+        "compiled": "?SetWindow@EngineNative@@UAEXPBUC2DBoxF@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetWindow(struct C2DBoxF const *)",
+        "native": "?SetWindow@CEngine@@UAEXPBVC2DBoxF@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetWindow(class C2DBoxF const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 6,
+        "compiled": "?SetEnvironmentalEffectsAlwaysUpdate@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetEnvironmentalEffectsAlwaysUpdate(bool)",
+        "native": "?SetEnvironmentalEffectsAlwaysUpdate@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetEnvironmentalEffectsAlwaysUpdate(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 7,
+        "compiled": "?SetWorld@EngineNative@@UAEXPBUCIDrawWorld@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetWorld(struct CIDrawWorld const *)",
+        "native": "?SetWorld@CEngine@@UAEXPBVCIDrawWorld@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetWorld(class CIDrawWorld const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 8,
+        "compiled": "?Render@EngineNative@@UAEXABUCEngineInterpolationInfo@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::Render(struct CEngineInterpolationInfo const &, unsigned long)",
+        "native": "?Render@CEngine@@UAEXABVCEngineInterpolationInfo@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::Render(class CEngineInterpolationInfo const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 9,
+        "compiled": "?WorldFrameUpdate@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::WorldFrameUpdate(bool)",
+        "native": "?WorldFrameUpdate@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::WorldFrameUpdate(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 10,
+        "compiled": "?PausedWorldFrameUpdate@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::PausedWorldFrameUpdate(void)",
+        "native": "?PausedWorldFrameUpdate@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::PausedWorldFrameUpdate(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 11,
+        "compiled": "?ConvertScreenPosToWorldPos@EngineNative@@UBE_NABUC2DVector@@AAUC3DVector@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ConvertScreenPosToWorldPos(struct C2DVector const &, struct C3DVector &) const",
+        "native": "?ConvertScreenPosToWorldPos@CEngine@@UBE_NABVC2DVector@@AAVC3DVector@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ConvertScreenPosToWorldPos(class C2DVector const &, class C3DVector &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 12,
+        "compiled": "?ConvertScreenPosToWorldPosAtViewDistance@EngineNative@@UBE_NMABUC2DVector@@AAUC3DVector@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ConvertScreenPosToWorldPosAtViewDistance(float, struct C2DVector const &, struct C3DVector &) const",
+        "native": "?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ConvertScreenPosToWorldPosAtViewDistance(float, class C2DVector const &, class C3DVector &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 13,
+        "compiled": "?ConvertWorldPosToScreenPos@EngineNative@@UBE_NABUC3DVector@@AAUC2DVector@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ConvertWorldPosToScreenPos(struct C3DVector const &, struct C2DVector &) const",
+        "native": "?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ConvertWorldPosToScreenPos(class C3DVector const &, class C2DVector &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 14,
+        "compiled": "?SetVideoOptions@EngineNative@@UAE_NABUCEngineVideoOptions@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::SetVideoOptions(struct CEngineVideoOptions const &)",
+        "native": "?SetVideoOptions@CEngine@@UAE_NABVCEngineVideoOptions@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::SetVideoOptions(class CEngineVideoOptions const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 15,
+        "compiled": "?PreChangeResolution@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::PreChangeResolution(void)",
+        "native": "?PreChangeResolution@CEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::PreChangeResolution(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 16,
+        "compiled": "?PostChangeResolution@EngineNative@@UAE_NKKK@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::PostChangeResolution(unsigned long, unsigned long, unsigned long)",
+        "native": "?PostChangeResolution@CEngine@@UAE_NKKK@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::PostChangeResolution(unsigned long, unsigned long, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 17,
+        "compiled": "?Refresh@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::Refresh(void)",
+        "native": "?Refresh@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::Refresh(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 18,
+        "compiled": "?CheckPrimitiveVisibility@CIEngineNative@@UAE_N_K@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::CheckPrimitiveVisibility(unsigned __int64)",
+        "native": "?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::CheckPrimitiveVisibility(unsigned __int64)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 19,
+        "compiled": "?GetPrimitiveDrawDistanceFactor@EngineNative@@UBEMXZ",
+        "signature": "public: virtual float __thiscall EngineNative::GetPrimitiveDrawDistanceFactor(void) const",
+        "native": "?GetPrimitiveDrawDistanceFactor@CEngine@@UBEMXZ",
+        "native_signature": "public: virtual float __thiscall CEngine::GetPrimitiveDrawDistanceFactor(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 20,
+        "compiled": "?AddPrimitive@EngineNative@@UAEXABUCEnginePrimitive@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::AddPrimitive(struct CEnginePrimitive const &)",
+        "native": "?AddPrimitive@CEngine@@UAEXABVCEnginePrimitive@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::AddPrimitive(class CEnginePrimitive const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 21,
+        "compiled": "?ClipSphere@EngineNative@@UBE_NABUC3DBoundingSphere@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ClipSphere(struct C3DBoundingSphere const &) const",
+        "native": "?ClipSphere@CEngine@@UBE_NABVC3DBoundingSphere@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ClipSphere(class C3DBoundingSphere const &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 22,
+        "compiled": "?ClipBox@EngineNative@@UBE_NABUC3DBoundingBox@@@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::ClipBox(struct C3DBoundingBox const &) const",
+        "native": "?ClipBox@CEngine@@UBE_NABVC3DBoundingBox@@@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::ClipBox(class C3DBoundingBox const &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 23,
+        "compiled": "?SetPersistentPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetPersistentPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetPersistentPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetPersistentPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 24,
+        "compiled": "?SetPrimitiveAnimation@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitiveAnimation@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetPrimitiveAnimation(struct CEnginePrimitiveHandle &, struct CEnginePrimitiveAnimation const &)",
+        "native": "?SetPrimitiveAnimation@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetPrimitiveAnimation(class CEnginePrimitiveHandle &, class CEnginePrimitiveAnimation const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 25,
+        "compiled": "?SetPrimitivePosition@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitivePosition@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetPrimitivePosition(struct CEnginePrimitiveHandle &, struct CEnginePrimitivePosition const &)",
+        "native": "?SetPrimitivePosition@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetPrimitivePosition(class CEnginePrimitiveHandle &, class CEnginePrimitivePosition const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 26,
+        "compiled": "?AddChildPrimitive@EngineNative@@UAEKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual unsigned long __thiscall EngineNative::AddChildPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?AddChildPrimitive@CEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual unsigned long __thiscall CEngine::AddChildPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 27,
+        "compiled": "?SetChildPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@K0ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetChildPrimitive(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 28,
+        "compiled": "?SetChildPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@KABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetChildPrimitive(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 29,
+        "compiled": "?GetChildPrimitiveHandle@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@K0@Z",
+        "signature": "public: virtual void __thiscall EngineNative::GetChildPrimitiveHandle(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitiveHandle &)",
+        "native": "?GetChildPrimitiveHandle@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::GetChildPrimitiveHandle(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitiveHandle &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 30,
+        "compiled": "?ClearChildPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::ClearChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long)",
+        "native": "?ClearChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::ClearChildPrimitive(class CEnginePrimitiveHandle &, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 31,
+        "compiled": "?ClearAllChildPrimitives@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::ClearAllChildPrimitives(struct CEnginePrimitiveHandle &)",
+        "native": "?ClearAllChildPrimitives@CEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::ClearAllChildPrimitives(class CEnginePrimitiveHandle &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 32,
+        "compiled": "?SetAttachedPrimitive@EngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@ABUCEnginePrimitiveAttachmentInfo@@ABU2@JK@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetAttachedPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, struct CEnginePrimitiveAttachmentInfo const &, struct CEnginePrimitiveHandle const &, long, unsigned long)",
+        "native": "?SetAttachedPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetAttachedPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, class CEnginePrimitiveAttachmentInfo const &, class CEnginePrimitiveHandle const &, long, unsigned long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 33,
+        "compiled": "?CollectPrimitiveStatsForArea@EngineNative@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABUC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z",
+        "signature": "public: virtual void __thiscall EngineNative::CollectPrimitiveStatsForArea(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, struct C2DBoxF const &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+        "native": "?CollectPrimitiveStatsForArea@CEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::CollectPrimitiveStatsForArea(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, class C2DBoxF const &, enum EEnginePrimitiveStatIndex, unsigned long) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 34,
+        "compiled": "?ProcessPrimitiveStats@EngineNative@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::ProcessPrimitiveStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> const &, enum EEnginePrimitiveStatIndex, unsigned long &, class CArray<class CCharString> &) const",
+        "native": "?ProcessPrimitiveStats@CEngine@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::ProcessPrimitiveStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> const &, enum EEnginePrimitiveStatIndex, unsigned long &, class CArray<class CCharString> &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 35,
+        "compiled": "?GetEditorAnimation@EngineNative@@UBEPBUC3DAnimationInfo@@ABVCWideString@@@Z",
+        "signature": "public: virtual struct C3DAnimationInfo const * __thiscall EngineNative::GetEditorAnimation(class CWideString const &) const",
+        "native": "?GetEditorAnimation@CEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z",
+        "native_signature": "public: virtual class C3DAnimationInfo const * __thiscall CEngine::GetEditorAnimation(class CWideString const &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 36,
+        "compiled": "?AddCustomMorphTexture@EngineNative@@UBEKAAUCTexture@@ABVCCharString@@@Z",
+        "signature": "public: virtual unsigned long __thiscall EngineNative::AddCustomMorphTexture(struct CTexture &, class CCharString const &) const",
+        "native": "?AddCustomMorphTexture@CEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z",
+        "native_signature": "public: virtual unsigned long __thiscall CEngine::AddCustomMorphTexture(class CTexture &, class CCharString const &) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 37,
+        "compiled": "?GetStaticMapUpdatePassCount@EngineNative@@UAEJXZ",
+        "signature": "public: virtual long __thiscall EngineNative::GetStaticMapUpdatePassCount(void)",
+        "native": "?GetStaticMapUpdatePassCount@CEngine@@UAEJXZ",
+        "native_signature": "public: virtual long __thiscall CEngine::GetStaticMapUpdatePassCount(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 38,
+        "compiled": "?StartStaticMapUpdatePass@EngineNative@@UAEXABVCWideString@@JABUCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::StartStaticMapUpdatePass(class CWideString const &, long, struct CStaticMapGenerationVisibiilityInfo const &, class CArray<class CCharString> const &)",
+        "native": "?StartStaticMapUpdatePass@CEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::StartStaticMapUpdatePass(class CWideString const &, long, class CStaticMapGenerationVisibiilityInfo const &, class CArray<class CCharString> const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 39,
+        "compiled": "?IsStaticMapNeedingUpdate@EngineNative@@UBE_NJABVCCharString@@K@Z",
+        "signature": "public: virtual bool __thiscall EngineNative::IsStaticMapNeedingUpdate(long, class CCharString const &, unsigned long) const",
+        "native": "?IsStaticMapNeedingUpdate@CEngine@@UBE_NJABVCCharString@@K@Z",
+        "native_signature": "public: virtual bool __thiscall CEngine::IsStaticMapNeedingUpdate(long, class CCharString const &, unsigned long) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 40,
+        "compiled": "?UpdateStaticMap@EngineNative@@UAEXJABVCCharString@@KJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::UpdateStaticMap(long, class CCharString const &, unsigned long, long)",
+        "native": "?UpdateStaticMap@CEngine@@UAEXJABVCCharString@@KJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::UpdateStaticMap(long, class CCharString const &, unsigned long, long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 41,
+        "compiled": "?CloseStaticMapFile@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::CloseStaticMapFile(void)",
+        "native": "?CloseStaticMapFile@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::CloseStaticMapFile(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 42,
+        "compiled": "?AddMap@EngineNative@@UAEXJJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::AddMap(long, long)",
+        "native": "?AddMap@CEngine@@UAEXJJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::AddMap(long, long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 43,
+        "compiled": "?RemoveMap@EngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::RemoveMap(long)",
+        "native": "?RemoveMap@CEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::RemoveMap(long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 44,
+        "compiled": "?SetMapAsLoaded@EngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetMapAsLoaded(long)",
+        "native": "?SetMapAsLoaded@CEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetMapAsLoaded(long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 45,
+        "compiled": "?SetMapAsUnloaded@EngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetMapAsUnloaded(long)",
+        "native": "?SetMapAsUnloaded@CEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetMapAsUnloaded(long)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 46,
+        "compiled": "?SetMapVisibilityAllMaps@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetMapVisibilityAllMaps(bool)",
+        "native": "?SetMapVisibilityAllMaps@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetMapVisibilityAllMaps(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 47,
+        "compiled": "?SetMapVisibility@EngineNative@@UAEXJ_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetMapVisibility(long, bool)",
+        "native": "?SetMapVisibility@CEngine@@UAEXJ_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetMapVisibility(long, bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 48,
+        "compiled": "?AreaChanged@EngineNative@@UAEXABUC2DBoxI@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::AreaChanged(struct C2DBoxI const &)",
+        "native": "?AreaChanged@CEngine@@UAEXABVC2DBoxI@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::AreaChanged(class C2DBoxI const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 49,
+        "compiled": "?OnActivate@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::OnActivate(void)",
+        "native": "?OnActivate@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::OnActivate(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 50,
+        "compiled": "?OnDeactivate@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::OnDeactivate(void)",
+        "native": "?OnDeactivate@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::OnDeactivate(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 51,
+        "compiled": "?IsActive@CIEngineNative@@UBE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::IsActive(void) const",
+        "native": "?IsActive@CIEngine@@UBE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::IsActive(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 52,
+        "compiled": "?SetStaticMapFileForUse@EngineNative@@UAEXABVCWideString@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetStaticMapFileForUse(class CWideString const &)",
+        "native": "?SetStaticMapFileForUse@CEngine@@UAEXABVCWideString@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetStaticMapFileForUse(class CWideString const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 53,
+        "compiled": "?SetLandscapeDebugTintColour@EngineNative@@UAEXJUCRGBColour@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetLandscapeDebugTintColour(long, struct CRGBColour)",
+        "native": "?SetLandscapeDebugTintColour@CEngine@@UAEXJVCRGBColour@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetLandscapeDebugTintColour(long, class CRGBColour)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 54,
+        "compiled": "?ReloadLocalDetailDefs@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::ReloadLocalDetailDefs(void)",
+        "native": "?ReloadLocalDetailDefs@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::ReloadLocalDetailDefs(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 55,
+        "compiled": "?StartNewScene@EngineNative@@UAEXKM@Z",
+        "signature": "public: virtual void __thiscall EngineNative::StartNewScene(unsigned long, float)",
+        "native": "?StartNewScene@CEngine@@UAEXKM@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::StartNewScene(unsigned long, float)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 56,
+        "compiled": "?CutscenePreload@EngineNative@@UAEX_N0@Z",
+        "signature": "public: virtual void __thiscall EngineNative::CutscenePreload(bool, bool)",
+        "native": "?CutscenePreload@CEngine@@UAEX_N0@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::CutscenePreload(bool, bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 57,
+        "compiled": "?CutsceneAddCameraAngle@EngineNative@@UAEXABUCCamera@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::CutsceneAddCameraAngle(struct CCamera const &)",
+        "native": "?CutsceneAddCameraAngle@CEngine@@UAEXABVCCamera@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::CutsceneAddCameraAngle(class CCamera const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 58,
+        "compiled": "?ChangeCameraAngle@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::ChangeCameraAngle(void)",
+        "native": "?ChangeCameraAngle@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::ChangeCameraAngle(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 59,
+        "compiled": "?IsPreloaded@EngineNative@@UBE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::IsPreloaded(void) const",
+        "native": "?IsPreloaded@CEngine@@UBE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::IsPreloaded(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 60,
+        "compiled": "?UpdateTextureMorphCache@EngineNative@@UAEXABV?$CArray@UCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::UpdateTextureMorphCache(class CArray<struct CEngineTextureMorph> const &, bool, float, class std::set<long, struct std::less<long>, class std::allocator<long>> const *)",
+        "native": "?UpdateTextureMorphCache@CEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::UpdateTextureMorphCache(class CArray<class CEngineTextureMorph> const &, bool, float, class std::set<long, struct std::less<long>, class std::allocator<long>> const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 61,
+        "compiled": "?SetScreenColourFilter@EngineNative@@UAEXABUCEngineColourFilterSettings@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetScreenColourFilter(struct CEngineColourFilterSettings const &)",
+        "native": "?SetScreenColourFilter@CEngine@@UAEXABVCEngineColourFilterSettings@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetScreenColourFilter(class CEngineColourFilterSettings const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 62,
+        "compiled": "?SetSpotlightShadowMode@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetSpotlightShadowMode(bool)",
+        "native": "?SetSpotlightShadowMode@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetSpotlightShadowMode(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 63,
+        "compiled": "?SetSeaBodyToRender@EngineNative@@UAEXVCCharString@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetSeaBodyToRender(class CCharString)",
+        "native": "?SetSeaBodyToRender@CEngine@@UAEXVCCharString@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetSeaBodyToRender(class CCharString)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 64,
+        "compiled": "?UpdateDebugOverlay@EngineNative@@UAEXJPBUCRGBColour@@ABUC2DBoxI@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::UpdateDebugOverlay(long, struct CRGBColour const *, struct C2DBoxI const &)",
+        "native": "?UpdateDebugOverlay@CEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::UpdateDebugOverlay(long, class CRGBColour const *, class C2DBoxI const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 65,
+        "compiled": "?EnableDebugOverlay@EngineNative@@UAEXJ_N0@Z",
+        "signature": "public: virtual void __thiscall EngineNative::EnableDebugOverlay(long, bool, bool)",
+        "native": "?EnableDebugOverlay@CEngine@@UAEXJ_N0@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::EnableDebugOverlay(long, bool, bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 66,
+        "compiled": "?SetGlobalLightingParameters@EngineNative@@UAEXABUC3DVector@@ABUCRGBFloatColour@@11@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetGlobalLightingParameters(struct C3DVector const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &)",
+        "native": "?SetGlobalLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetGlobalLightingParameters(class C3DVector const &, class CRGBFloatColour const &, class CRGBFloatColour const &, class CRGBFloatColour const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 67,
+        "compiled": "?Set2DPrimitiveLightingParameters@EngineNative@@UAEXABUC3DVector@@ABUCRGBFloatColour@@11@Z",
+        "signature": "public: virtual void __thiscall EngineNative::Set2DPrimitiveLightingParameters(struct C3DVector const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &)",
+        "native": "?Set2DPrimitiveLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::Set2DPrimitiveLightingParameters(class C3DVector const &, class CRGBFloatColour const &, class CRGBFloatColour const &, class CRGBFloatColour const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 68,
+        "compiled": "?SetRenderTargetTexture@EngineNative@@UAEXPBUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::SetRenderTargetTexture(struct CTexture const *)",
+        "native": "?SetRenderTargetTexture@CEngine@@UAEXPBVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::SetRenderTargetTexture(class CTexture const *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 69,
+        "compiled": "?AllocateTextureFromEngineResourcePools@EngineNative@@UAEPAUCTexture@@KABUC2DExtentsI@@JABUCPixelFormat@@@Z",
+        "signature": "public: virtual struct CTexture * __thiscall EngineNative::AllocateTextureFromEngineResourcePools(unsigned long, struct C2DExtentsI const &, long, struct CPixelFormat const &)",
+        "native": "?AllocateTextureFromEngineResourcePools@CEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z",
+        "native_signature": "public: virtual class CTexture * __thiscall CEngine::AllocateTextureFromEngineResourcePools(unsigned long, class C2DExtentsI const &, long, class CPixelFormat const &)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 70,
+        "compiled": "?FreeTextureFromEngineResourcePools@EngineNative@@UAEXPAUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::FreeTextureFromEngineResourcePools(struct CTexture *)",
+        "native": "?FreeTextureFromEngineResourcePools@CEngine@@UAEXPAVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::FreeTextureFromEngineResourcePools(class CTexture *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 71,
+        "compiled": "?GetLoadingMemoryPool@EngineNative@@UAEPAUCMovableResourceMemoryPool@@XZ",
+        "signature": "public: virtual struct CMovableResourceMemoryPool * __thiscall EngineNative::GetLoadingMemoryPool(void)",
+        "native": "?GetLoadingMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "native_signature": "public: virtual class CMovableResourceMemoryPool * __thiscall CEngine::GetLoadingMemoryPool(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 72,
+        "compiled": "?GetAnimationMemoryPool@EngineNative@@UAEPAUCMovableResourceMemoryPool@@XZ",
+        "signature": "public: virtual struct CMovableResourceMemoryPool * __thiscall EngineNative::GetAnimationMemoryPool(void)",
+        "native": "?GetAnimationMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "native_signature": "public: virtual class CMovableResourceMemoryPool * __thiscall CEngine::GetAnimationMemoryPool(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 73,
+        "compiled": "?GetScratchBufferTextureManager@EngineNative@@UAEPAUCGPUScratchBufferTextureManager@@XZ",
+        "signature": "public: virtual struct CGPUScratchBufferTextureManager * __thiscall EngineNative::GetScratchBufferTextureManager(void)",
+        "native": "?GetScratchBufferTextureManager@CEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ",
+        "native_signature": "public: virtual class CGPUScratchBufferTextureManager * __thiscall CEngine::GetScratchBufferTextureManager(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 74,
+        "compiled": "?DeallocateShadowBuffer@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::DeallocateShadowBuffer(void)",
+        "native": "?DeallocateShadowBuffer@CEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::DeallocateShadowBuffer(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 75,
+        "compiled": "?ReallocateShadowBuffer@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::ReallocateShadowBuffer(void)",
+        "native": "?ReallocateShadowBuffer@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::ReallocateShadowBuffer(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 76,
+        "compiled": "?Enable3DSceneRendering@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::Enable3DSceneRendering(bool)",
+        "native": "?Enable3DSceneRendering@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::Enable3DSceneRendering(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 77,
+        "compiled": "?Is3DSceneRenderingEnabled@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::Is3DSceneRenderingEnabled(void)",
+        "native": "?Is3DSceneRenderingEnabled@CEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::Is3DSceneRenderingEnabled(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 78,
+        "compiled": "?Enable2DSceneRendering@EngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall EngineNative::Enable2DSceneRendering(bool)",
+        "native": "?Enable2DSceneRendering@CEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::Enable2DSceneRendering(bool)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 79,
+        "compiled": "?Is2DSceneRenderingEnabled@EngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall EngineNative::Is2DSceneRenderingEnabled(void)",
+        "native": "?Is2DSceneRenderingEnabled@CEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CEngine::Is2DSceneRenderingEnabled(void)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 80,
+        "compiled": "?OverrideRain@EngineNative@@UAEXM@Z",
+        "signature": "public: virtual void __thiscall EngineNative::OverrideRain(float)",
+        "native": "?OverrideRain@CEngine@@UAEXM@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::OverrideRain(float)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 81,
+        "compiled": "?OverrideSnow@EngineNative@@UAEXM@Z",
+        "signature": "public: virtual void __thiscall EngineNative::OverrideSnow(float)",
+        "native": "?OverrideSnow@CEngine@@UAEXM@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::OverrideSnow(float)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 82,
+        "compiled": "?RenderColorFilteredQuad@EngineNative@@UAEXMMABUC4DVector@@MMPAUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall EngineNative::RenderColorFilteredQuad(float, float, struct C4DVector const &, float, float, struct CTexture *)",
+        "native": "?RenderColorFilteredQuad@CEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CEngine::RenderColorFilteredQuad(float, float, class C4DVector const &, float, float, class CTexture *)"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 83,
+        "compiled": "?PeekGlobalDiffuseColour@EngineNative@@UBE?BUCRGBFloatColour@@XZ",
+        "signature": "public: virtual struct CRGBFloatColour const __thiscall EngineNative::PeekGlobalDiffuseColour(void) const",
+        "native": "?PeekGlobalDiffuseColour@CEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "native_signature": "public: virtual class CRGBFloatColour const __thiscall CEngine::PeekGlobalDiffuseColour(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 84,
+        "compiled": "?PeekGlobalAmbientColour@EngineNative@@UBE?BUCRGBFloatColour@@XZ",
+        "signature": "public: virtual struct CRGBFloatColour const __thiscall EngineNative::PeekGlobalAmbientColour(void) const",
+        "native": "?PeekGlobalAmbientColour@CEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "native_signature": "public: virtual class CRGBFloatColour const __thiscall CEngine::PeekGlobalAmbientColour(void) const"
+      },
+      {
+        "table": "??_7EngineNative@@6BCIEngineNative@@@",
+        "slot": 85,
+        "compiled": "?Uninitialise@EngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall EngineNative::Uninitialise(void)",
+        "native": "?Uninitialise@CEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CEngine::Uninitialise(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 0,
+        "compiled": "??_ECIEngineNative@@UAEPAXI@Z",
+        "signature": "public: virtual void * __thiscall CIEngineNative::`vector deleting dtor'(unsigned int)",
+        "native": "`vector_deleting_destructor'",
+        "native_signature": "`vector_deleting_destructor'"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 1,
+        "compiled": "?Validate@NativeInitBaseClass@@UBEXXZ",
+        "signature": "public: virtual void __thiscall NativeInitBaseClass::Validate(void) const",
+        "native": "?Validate@CInitBaseClass@@UBEXXZ",
+        "native_signature": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 2,
+        "compiled": "?Initialise@CIEngineNative@@UAE_NABUCEngineInit@@@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::Initialise(struct CEngineInit const &)",
+        "native": "?Initialise@CIEngine@@UAE_NABVCEngineInit@@@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::Initialise(class CEngineInit const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 3,
+        "compiled": "?Release@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::Release(void)",
+        "native": "?Release@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::Release(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 4,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 5,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 6,
+        "compiled": "?SetEnvironmentalEffectsAlwaysUpdate@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetEnvironmentalEffectsAlwaysUpdate(bool)",
+        "native": "?SetEnvironmentalEffectsAlwaysUpdate@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetEnvironmentalEffectsAlwaysUpdate(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 7,
+        "compiled": "?SetWorld@CIEngineNative@@UAEXPBUCIDrawWorld@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetWorld(struct CIDrawWorld const *)",
+        "native": "?SetWorld@CIEngine@@UAEXPBVCIDrawWorld@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetWorld(class CIDrawWorld const *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 8,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 9,
+        "compiled": "?WorldFrameUpdate@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::WorldFrameUpdate(bool)",
+        "native": "?WorldFrameUpdate@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::WorldFrameUpdate(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 10,
+        "compiled": "?PausedWorldFrameUpdate@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::PausedWorldFrameUpdate(void)",
+        "native": "?PausedWorldFrameUpdate@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::PausedWorldFrameUpdate(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 11,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 12,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 13,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 14,
+        "compiled": "?SetVideoOptions@CIEngineNative@@UAE_NABUCEngineVideoOptions@@@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::SetVideoOptions(struct CEngineVideoOptions const &)",
+        "native": "?SetVideoOptions@CIEngine@@UAE_NABVCEngineVideoOptions@@@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::SetVideoOptions(class CEngineVideoOptions const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 15,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 16,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 17,
+        "compiled": "?Refresh@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::Refresh(void)",
+        "native": "?Refresh@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::Refresh(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 18,
+        "compiled": "?CheckPrimitiveVisibility@CIEngineNative@@UAE_N_K@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::CheckPrimitiveVisibility(unsigned __int64)",
+        "native": "?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::CheckPrimitiveVisibility(unsigned __int64)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 19,
+        "compiled": "?GetPrimitiveDrawDistanceFactor@CIEngineNative@@UBEMXZ",
+        "signature": "public: virtual float __thiscall CIEngineNative::GetPrimitiveDrawDistanceFactor(void) const",
+        "native": "?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ",
+        "native_signature": "public: virtual float __thiscall CIEngine::GetPrimitiveDrawDistanceFactor(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 20,
+        "compiled": "?AddPrimitive@CIEngineNative@@UAEXABUCEnginePrimitive@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::AddPrimitive(struct CEnginePrimitive const &)",
+        "native": "?AddPrimitive@CIEngine@@UAEXABVCEnginePrimitive@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::AddPrimitive(class CEnginePrimitive const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 21,
+        "compiled": "?ClipSphere@CIEngineNative@@UBE_NABUC3DBoundingSphere@@@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::ClipSphere(struct C3DBoundingSphere const &) const",
+        "native": "?ClipSphere@CIEngine@@UBE_NABVC3DBoundingSphere@@@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::ClipSphere(class C3DBoundingSphere const &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 22,
+        "compiled": "?ClipBox@CIEngineNative@@UBE_NABUC3DBoundingBox@@@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::ClipBox(struct C3DBoundingBox const &) const",
+        "native": "?ClipBox@CIEngine@@UBE_NABVC3DBoundingBox@@@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::ClipBox(class C3DBoundingBox const &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 23,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 24,
+        "compiled": "?SetPrimitiveAnimation@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitiveAnimation@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetPrimitiveAnimation(struct CEnginePrimitiveHandle &, struct CEnginePrimitiveAnimation const &)",
+        "native": "?SetPrimitiveAnimation@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetPrimitiveAnimation(class CEnginePrimitiveHandle &, class CEnginePrimitiveAnimation const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 25,
+        "compiled": "?SetPrimitivePosition@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitivePosition@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetPrimitivePosition(struct CEnginePrimitiveHandle &, struct CEnginePrimitivePosition const &)",
+        "native": "?SetPrimitivePosition@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetPrimitivePosition(class CEnginePrimitiveHandle &, class CEnginePrimitivePosition const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 26,
+        "compiled": "?AddChildPrimitive@CIEngineNative@@UAEKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual unsigned long __thiscall CIEngineNative::AddChildPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?AddChildPrimitive@CIEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual unsigned long __thiscall CIEngine::AddChildPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 27,
+        "compiled": "?SetChildPrimitive@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@K0ABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetChildPrimitive(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitiveHandle &, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 28,
+        "compiled": "?SetChildPrimitive@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@KABUCEnginePrimitive@@K@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitive const &, unsigned long)",
+        "native": "?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetChildPrimitive(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitive const &, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 29,
+        "compiled": "?GetChildPrimitiveHandle@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@K0@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::GetChildPrimitiveHandle(struct CEnginePrimitiveHandle &, unsigned long, struct CEnginePrimitiveHandle &)",
+        "native": "?GetChildPrimitiveHandle@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::GetChildPrimitiveHandle(class CEnginePrimitiveHandle &, unsigned long, class CEnginePrimitiveHandle &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 30,
+        "compiled": "?ClearChildPrimitive@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@K@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::ClearChildPrimitive(struct CEnginePrimitiveHandle &, unsigned long)",
+        "native": "?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::ClearChildPrimitive(class CEnginePrimitiveHandle &, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 31,
+        "compiled": "?ClearAllChildPrimitives@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::ClearAllChildPrimitives(struct CEnginePrimitiveHandle &)",
+        "native": "?ClearAllChildPrimitives@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::ClearAllChildPrimitives(class CEnginePrimitiveHandle &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 32,
+        "compiled": "?SetAttachedPrimitive@CIEngineNative@@UAEXAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@ABUCEnginePrimitiveAttachmentInfo@@ABU2@JK@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetAttachedPrimitive(struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, struct CEnginePrimitiveAttachmentInfo const &, struct CEnginePrimitiveHandle const &, long, unsigned long)",
+        "native": "?SetAttachedPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetAttachedPrimitive(class CEnginePrimitiveHandle &, class CEnginePrimitive const &, class CEnginePrimitiveAttachmentInfo const &, class CEnginePrimitiveHandle const &, long, unsigned long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 33,
+        "compiled": "?CollectPrimitiveStatsForArea@CIEngineNative@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABUC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::CollectPrimitiveStatsForArea(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, struct C2DBoxF const &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+        "native": "?CollectPrimitiveStatsForArea@CIEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::CollectPrimitiveStatsForArea(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, class C2DBoxF const &, enum EEnginePrimitiveStatIndex, unsigned long) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 34,
+        "compiled": "?ProcessPrimitiveStats@CIEngineNative@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::ProcessPrimitiveStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> const &, enum EEnginePrimitiveStatIndex, unsigned long &, class CArray<class CCharString> &) const",
+        "native": "?ProcessPrimitiveStats@CIEngine@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::ProcessPrimitiveStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> const &, enum EEnginePrimitiveStatIndex, unsigned long &, class CArray<class CCharString> &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 35,
+        "compiled": "?GetEditorAnimation@CIEngineNative@@UBEPBUC3DAnimationInfo@@ABVCWideString@@@Z",
+        "signature": "public: virtual struct C3DAnimationInfo const * __thiscall CIEngineNative::GetEditorAnimation(class CWideString const &) const",
+        "native": "?GetEditorAnimation@CIEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z",
+        "native_signature": "public: virtual class C3DAnimationInfo const * __thiscall CIEngine::GetEditorAnimation(class CWideString const &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 36,
+        "compiled": "?AddCustomMorphTexture@CIEngineNative@@UBEKAAUCTexture@@ABVCCharString@@@Z",
+        "signature": "public: virtual unsigned long __thiscall CIEngineNative::AddCustomMorphTexture(struct CTexture &, class CCharString const &) const",
+        "native": "?AddCustomMorphTexture@CIEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z",
+        "native_signature": "public: virtual unsigned long __thiscall CIEngine::AddCustomMorphTexture(class CTexture &, class CCharString const &) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 37,
+        "compiled": "?GetStaticMapUpdatePassCount@CIEngineNative@@UAEJXZ",
+        "signature": "public: virtual long __thiscall CIEngineNative::GetStaticMapUpdatePassCount(void)",
+        "native": "?GetStaticMapUpdatePassCount@CIEngine@@UAEJXZ",
+        "native_signature": "public: virtual long __thiscall CIEngine::GetStaticMapUpdatePassCount(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 38,
+        "compiled": "?StartStaticMapUpdatePass@CIEngineNative@@UAEXABVCWideString@@JABUCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::StartStaticMapUpdatePass(class CWideString const &, long, struct CStaticMapGenerationVisibiilityInfo const &, class CArray<class CCharString> const &)",
+        "native": "?StartStaticMapUpdatePass@CIEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::StartStaticMapUpdatePass(class CWideString const &, long, class CStaticMapGenerationVisibiilityInfo const &, class CArray<class CCharString> const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 39,
+        "compiled": "?IsStaticMapNeedingUpdate@CIEngineNative@@UBE_NJABVCCharString@@K@Z",
+        "signature": "public: virtual bool __thiscall CIEngineNative::IsStaticMapNeedingUpdate(long, class CCharString const &, unsigned long) const",
+        "native": "?IsStaticMapNeedingUpdate@CIEngine@@UBE_NJABVCCharString@@K@Z",
+        "native_signature": "public: virtual bool __thiscall CIEngine::IsStaticMapNeedingUpdate(long, class CCharString const &, unsigned long) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 40,
+        "compiled": "?UpdateStaticMap@CIEngineNative@@UAEXJABVCCharString@@KJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::UpdateStaticMap(long, class CCharString const &, unsigned long, long)",
+        "native": "?UpdateStaticMap@CIEngine@@UAEXJABVCCharString@@KJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::UpdateStaticMap(long, class CCharString const &, unsigned long, long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 41,
+        "compiled": "?CloseStaticMapFile@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::CloseStaticMapFile(void)",
+        "native": "?CloseStaticMapFile@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::CloseStaticMapFile(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 42,
+        "compiled": "?AddMap@CIEngineNative@@UAEXJJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::AddMap(long, long)",
+        "native": "?AddMap@CIEngine@@UAEXJJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::AddMap(long, long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 43,
+        "compiled": "?RemoveMap@CIEngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::RemoveMap(long)",
+        "native": "?RemoveMap@CIEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::RemoveMap(long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 44,
+        "compiled": "?SetMapAsLoaded@CIEngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetMapAsLoaded(long)",
+        "native": "?SetMapAsLoaded@CIEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetMapAsLoaded(long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 45,
+        "compiled": "?SetMapAsUnloaded@CIEngineNative@@UAEXJ@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetMapAsUnloaded(long)",
+        "native": "?SetMapAsUnloaded@CIEngine@@UAEXJ@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetMapAsUnloaded(long)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 46,
+        "compiled": "?SetMapVisibilityAllMaps@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetMapVisibilityAllMaps(bool)",
+        "native": "?SetMapVisibilityAllMaps@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetMapVisibilityAllMaps(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 47,
+        "compiled": "?SetMapVisibility@CIEngineNative@@UAEXJ_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetMapVisibility(long, bool)",
+        "native": "?SetMapVisibility@CIEngine@@UAEXJ_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetMapVisibility(long, bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 48,
+        "compiled": "?AreaChanged@CIEngineNative@@UAEXABUC2DBoxI@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::AreaChanged(struct C2DBoxI const &)",
+        "native": "?AreaChanged@CIEngine@@UAEXABVC2DBoxI@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::AreaChanged(class C2DBoxI const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 49,
+        "compiled": "?OnActivate@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::OnActivate(void)",
+        "native": "?OnActivate@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::OnActivate(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 50,
+        "compiled": "?OnDeactivate@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::OnDeactivate(void)",
+        "native": "?OnDeactivate@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::OnDeactivate(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 51,
+        "compiled": "?IsActive@CIEngineNative@@UBE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::IsActive(void) const",
+        "native": "?IsActive@CIEngine@@UBE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::IsActive(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 52,
+        "compiled": "?SetStaticMapFileForUse@CIEngineNative@@UAEXABVCWideString@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetStaticMapFileForUse(class CWideString const &)",
+        "native": "?SetStaticMapFileForUse@CIEngine@@UAEXABVCWideString@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetStaticMapFileForUse(class CWideString const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 53,
+        "compiled": "?SetLandscapeDebugTintColour@CIEngineNative@@UAEXJUCRGBColour@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetLandscapeDebugTintColour(long, struct CRGBColour)",
+        "native": "?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetLandscapeDebugTintColour(long, class CRGBColour)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 54,
+        "compiled": "?ReloadLocalDetailDefs@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::ReloadLocalDetailDefs(void)",
+        "native": "?ReloadLocalDetailDefs@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::ReloadLocalDetailDefs(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 55,
+        "compiled": "?StartNewScene@CIEngineNative@@UAEXKM@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::StartNewScene(unsigned long, float)",
+        "native": "?StartNewScene@CIEngine@@UAEXKM@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::StartNewScene(unsigned long, float)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 56,
+        "compiled": "?CutscenePreload@CIEngineNative@@UAEX_N0@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::CutscenePreload(bool, bool)",
+        "native": "?CutscenePreload@CIEngine@@UAEX_N0@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::CutscenePreload(bool, bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 57,
+        "compiled": "?CutsceneAddCameraAngle@CIEngineNative@@UAEXABUCCamera@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::CutsceneAddCameraAngle(struct CCamera const &)",
+        "native": "?CutsceneAddCameraAngle@CIEngine@@UAEXABVCCamera@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::CutsceneAddCameraAngle(class CCamera const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 58,
+        "compiled": "?ChangeCameraAngle@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::ChangeCameraAngle(void)",
+        "native": "?ChangeCameraAngle@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::ChangeCameraAngle(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 59,
+        "compiled": "?IsPreloaded@CIEngineNative@@UBE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::IsPreloaded(void) const",
+        "native": "?IsPreloaded@CIEngine@@UBE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::IsPreloaded(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 60,
+        "compiled": "?UpdateTextureMorphCache@CIEngineNative@@UAEXABV?$CArray@UCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::UpdateTextureMorphCache(class CArray<struct CEngineTextureMorph> const &, bool, float, class std::set<long, struct std::less<long>, class std::allocator<long>> const *)",
+        "native": "?UpdateTextureMorphCache@CIEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::UpdateTextureMorphCache(class CArray<class CEngineTextureMorph> const &, bool, float, class std::set<long, struct std::less<long>, class std::allocator<long>> const *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 61,
+        "compiled": "?SetScreenColourFilter@CIEngineNative@@UAEXABUCEngineColourFilterSettings@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetScreenColourFilter(struct CEngineColourFilterSettings const &)",
+        "native": "?SetScreenColourFilter@CIEngine@@UAEXABVCEngineColourFilterSettings@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetScreenColourFilter(class CEngineColourFilterSettings const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 62,
+        "compiled": "?SetSpotlightShadowMode@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetSpotlightShadowMode(bool)",
+        "native": "?SetSpotlightShadowMode@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetSpotlightShadowMode(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 63,
+        "compiled": "?SetSeaBodyToRender@CIEngineNative@@UAEXVCCharString@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetSeaBodyToRender(class CCharString)",
+        "native": "?SetSeaBodyToRender@CIEngine@@UAEXVCCharString@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetSeaBodyToRender(class CCharString)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 64,
+        "compiled": "?UpdateDebugOverlay@CIEngineNative@@UAEXJPBUCRGBColour@@ABUC2DBoxI@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::UpdateDebugOverlay(long, struct CRGBColour const *, struct C2DBoxI const &)",
+        "native": "?UpdateDebugOverlay@CIEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::UpdateDebugOverlay(long, class CRGBColour const *, class C2DBoxI const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 65,
+        "compiled": "?EnableDebugOverlay@CIEngineNative@@UAEXJ_N0@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::EnableDebugOverlay(long, bool, bool)",
+        "native": "?EnableDebugOverlay@CIEngine@@UAEXJ_N0@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::EnableDebugOverlay(long, bool, bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 66,
+        "compiled": "?SetGlobalLightingParameters@CIEngineNative@@UAEXABUC3DVector@@ABUCRGBFloatColour@@11@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetGlobalLightingParameters(struct C3DVector const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &)",
+        "native": "?SetGlobalLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetGlobalLightingParameters(class C3DVector const &, class CRGBFloatColour const &, class CRGBFloatColour const &, class CRGBFloatColour const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 67,
+        "compiled": "?Set2DPrimitiveLightingParameters@CIEngineNative@@UAEXABUC3DVector@@ABUCRGBFloatColour@@11@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::Set2DPrimitiveLightingParameters(struct C3DVector const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &, struct CRGBFloatColour const &)",
+        "native": "?Set2DPrimitiveLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::Set2DPrimitiveLightingParameters(class C3DVector const &, class CRGBFloatColour const &, class CRGBFloatColour const &, class CRGBFloatColour const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 68,
+        "compiled": "?SetRenderTargetTexture@CIEngineNative@@UAEXPBUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::SetRenderTargetTexture(struct CTexture const *)",
+        "native": "?SetRenderTargetTexture@CIEngine@@UAEXPBVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::SetRenderTargetTexture(class CTexture const *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 69,
+        "compiled": "?AllocateTextureFromEngineResourcePools@CIEngineNative@@UAEPAUCTexture@@KABUC2DExtentsI@@JABUCPixelFormat@@@Z",
+        "signature": "public: virtual struct CTexture * __thiscall CIEngineNative::AllocateTextureFromEngineResourcePools(unsigned long, struct C2DExtentsI const &, long, struct CPixelFormat const &)",
+        "native": "?AllocateTextureFromEngineResourcePools@CIEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z",
+        "native_signature": "public: virtual class CTexture * __thiscall CIEngine::AllocateTextureFromEngineResourcePools(unsigned long, class C2DExtentsI const &, long, class CPixelFormat const &)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 70,
+        "compiled": "?FreeTextureFromEngineResourcePools@CIEngineNative@@UAEXPAUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::FreeTextureFromEngineResourcePools(struct CTexture *)",
+        "native": "?FreeTextureFromEngineResourcePools@CIEngine@@UAEXPAVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::FreeTextureFromEngineResourcePools(class CTexture *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 71,
+        "compiled": "?GetLoadingMemoryPool@CIEngineNative@@UAEPAUCMovableResourceMemoryPool@@XZ",
+        "signature": "public: virtual struct CMovableResourceMemoryPool * __thiscall CIEngineNative::GetLoadingMemoryPool(void)",
+        "native": "?GetLoadingMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "native_signature": "public: virtual class CMovableResourceMemoryPool * __thiscall CIEngine::GetLoadingMemoryPool(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 72,
+        "compiled": "?GetAnimationMemoryPool@CIEngineNative@@UAEPAUCMovableResourceMemoryPool@@XZ",
+        "signature": "public: virtual struct CMovableResourceMemoryPool * __thiscall CIEngineNative::GetAnimationMemoryPool(void)",
+        "native": "?GetAnimationMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "native_signature": "public: virtual class CMovableResourceMemoryPool * __thiscall CIEngine::GetAnimationMemoryPool(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 73,
+        "compiled": "?GetScratchBufferTextureManager@CIEngineNative@@UAEPAUCGPUScratchBufferTextureManager@@XZ",
+        "signature": "public: virtual struct CGPUScratchBufferTextureManager * __thiscall CIEngineNative::GetScratchBufferTextureManager(void)",
+        "native": "?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ",
+        "native_signature": "public: virtual class CGPUScratchBufferTextureManager * __thiscall CIEngine::GetScratchBufferTextureManager(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 74,
+        "compiled": "?DeallocateShadowBuffer@CIEngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::DeallocateShadowBuffer(void)",
+        "native": "?DeallocateShadowBuffer@CIEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::DeallocateShadowBuffer(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 75,
+        "compiled": "?ReallocateShadowBuffer@CIEngineNative@@UAEXXZ",
+        "signature": "public: virtual void __thiscall CIEngineNative::ReallocateShadowBuffer(void)",
+        "native": "?ReallocateShadowBuffer@CIEngine@@UAEXXZ",
+        "native_signature": "public: virtual void __thiscall CIEngine::ReallocateShadowBuffer(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 76,
+        "compiled": "?Enable3DSceneRendering@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::Enable3DSceneRendering(bool)",
+        "native": "?Enable3DSceneRendering@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::Enable3DSceneRendering(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 77,
+        "compiled": "?Is3DSceneRenderingEnabled@CIEngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::Is3DSceneRenderingEnabled(void)",
+        "native": "?Is3DSceneRenderingEnabled@CIEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::Is3DSceneRenderingEnabled(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 78,
+        "compiled": "?Enable2DSceneRendering@CIEngineNative@@UAEX_N@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::Enable2DSceneRendering(bool)",
+        "native": "?Enable2DSceneRendering@CIEngine@@UAEX_N@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::Enable2DSceneRendering(bool)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 79,
+        "compiled": "?Is2DSceneRenderingEnabled@CIEngineNative@@UAE_NXZ",
+        "signature": "public: virtual bool __thiscall CIEngineNative::Is2DSceneRenderingEnabled(void)",
+        "native": "?Is2DSceneRenderingEnabled@CIEngine@@UAE_NXZ",
+        "native_signature": "public: virtual bool __thiscall CIEngine::Is2DSceneRenderingEnabled(void)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 80,
+        "compiled": "?OverrideRain@CIEngineNative@@UAEXM@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::OverrideRain(float)",
+        "native": "?OverrideRain@CIEngine@@UAEXM@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::OverrideRain(float)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 81,
+        "compiled": "?OverrideSnow@CIEngineNative@@UAEXM@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::OverrideSnow(float)",
+        "native": "?OverrideSnow@CIEngine@@UAEXM@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::OverrideSnow(float)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 82,
+        "compiled": "?RenderColorFilteredQuad@CIEngineNative@@UAEXMMABUC4DVector@@MMPAUCTexture@@@Z",
+        "signature": "public: virtual void __thiscall CIEngineNative::RenderColorFilteredQuad(float, float, struct C4DVector const &, float, float, struct CTexture *)",
+        "native": "?RenderColorFilteredQuad@CIEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z",
+        "native_signature": "public: virtual void __thiscall CIEngine::RenderColorFilteredQuad(float, float, class C4DVector const &, float, float, class CTexture *)"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 83,
+        "compiled": "?PeekGlobalDiffuseColour@CIEngineNative@@UBE?BUCRGBFloatColour@@XZ",
+        "signature": "public: virtual struct CRGBFloatColour const __thiscall CIEngineNative::PeekGlobalDiffuseColour(void) const",
+        "native": "?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "native_signature": "public: virtual class CRGBFloatColour const __thiscall CIEngine::PeekGlobalDiffuseColour(void) const"
+      },
+      {
+        "table": "??_7CIEngineNative@@6B@",
+        "slot": 84,
+        "compiled": "?PeekGlobalAmbientColour@CIEngineNative@@UBE?BUCRGBFloatColour@@XZ",
+        "signature": "public: virtual struct CRGBFloatColour const __thiscall CIEngineNative::PeekGlobalAmbientColour(void) const",
+        "native": "?PeekGlobalAmbientColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "native_signature": "public: virtual class CRGBFloatColour const __thiscall CIEngine::PeekGlobalAmbientColour(void) const"
+      },
+      {
+        "table": "??_7NativeDeviceResetCallback@@6B@",
+        "slot": 0,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7NativeDeviceResetCallback@@6B@",
+        "slot": 1,
+        "compiled": "__purecall",
+        "signature": "__purecall",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7NativeInitBaseClass@@6B@",
+        "slot": 0,
+        "compiled": "??_ENativeInitBaseClass@@UAEPAXI@Z",
+        "signature": "public: virtual void * __thiscall NativeInitBaseClass::`vector deleting dtor'(unsigned int)",
+        "native": "",
+        "native_signature": ""
+      },
+      {
+        "table": "??_7NativeInitBaseClass@@6B@",
+        "slot": 1,
+        "compiled": "?Validate@NativeInitBaseClass@@UBEXXZ",
+        "signature": "public: virtual void __thiscall NativeInitBaseClass::Validate(void) const",
+        "native": "",
+        "native_signature": ""
+      }
+    ]
+  },
+  "queue_EH": {
+    "info": "01371AB0",
+    "states": 1,
+    "unwind": "01217300",
+    "lock_destructor": "00CA48C0",
+    "cpp_handler": "00BFEB34",
+    "fs0_operands": 4
+  }
+}

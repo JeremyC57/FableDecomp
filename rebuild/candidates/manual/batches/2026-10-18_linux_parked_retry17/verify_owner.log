@@ -1,0 +1,5 @@
+addr       parity           behav  name
+009f1540   RELOCATION_MATCH PASS   ScalarDeletingDestructor
+
+WINS: 1
+  009f1540 RELOCATION_MATCH CCodeSectionManager::ScalarDeletingDestructor

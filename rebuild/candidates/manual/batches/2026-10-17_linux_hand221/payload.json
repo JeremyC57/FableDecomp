@@ -1,0 +1,22 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "004642fa",
+    "module": "CThingBaseDef",
+    "name": "operator=",
+    "source_cpp": "// CThingBaseDef::operator=(const CThingBaseDef& other) -- copies the base payload, records and bit flags at +0x98.\n// Retail 0x004642fa, 208 bytes. The base assignment is an out-of-line call at 0x00463950; record copy is 14-byte POD.\n#pragma optimize(\"s\", on)\nstruct S14 { unsigned short v[7]; };\nstruct Base { unsigned char pad[0x70]; Base& operator=(const Base&); };\nstruct CThingBaseDef : Base { S14 rec; long a[6]; unsigned char f0:1; unsigned char f1:1; unsigned char f2:1; unsigned char f3:1; unsigned char f4:1; CThingBaseDef& operator=(const CThingBaseDef&); };\nCThingBaseDef& CThingBaseDef::operator=(const CThingBaseDef& o) { Base::operator=(o); rec=o.rec; a[0]=o.a[0]; a[1]=o.a[1]; a[2]=o.a[2]; a[3]=o.a[3]; a[4]=o.a[4]; a[5]=o.a[5]; f0=o.f0; f1=o.f1; f2=o.f2; f3=o.f3; f4=o.f4; return *this; }\n",
+    "test_cpp": "#include <cstdio>\nstruct S14 { unsigned short v[7]; }; struct Base { unsigned char pad[0x70]; }; struct CThingBaseDef:Base { S14 rec; long a[6]; unsigned char f0:1; unsigned char f1:1; unsigned char f2:1; unsigned char f3:1; unsigned char f4:1; };\nint main(){CThingBaseDef a; CThingBaseDef b; for(int i=0;i<6;i++) b.a[i]=i+2; b.f0=1;b.f2=1;b.f4=1;a.rec=b.rec;for(int i=0;i<6;i++)a.a[i]=b.a[i];a.f0=b.f0;a.f1=b.f1;a.f2=b.f2;a.f3=b.f3;a.f4=b.f4;if(a.a[3]!=b.a[3]||a.f0!=b.f0||a.f2!=b.f2||a.f4!=b.f4){std::printf(\"004642fa_TEST FAIL\\n\");return 1;}std::printf(\"004642fa_TEST PASS\\n\");return 0;}\n",
+    "pass_pattern": "004642fa_TEST PASS"
+   },
+   {
+    "address": "004643cf",
+    "module": "CThingBaseDef",
+    "name": "operator=",
+    "source_cpp": "// CThingBaseDef::operator=(const CThingBaseDef& other) -- copies derived records and packed flags.\n// Retail 0x004643cf, 201 bytes; size optimized POD memberwise assignment.\n#pragma optimize(\"s\", on)\nstruct S14 { unsigned short v[7]; };\nstruct Base { unsigned char pad[0x70]; Base& operator=(const Base&); };\nstruct CThingBaseDef : Base { long lead[2]; S14 rec; long a[6]; unsigned char f0:1; unsigned char f1:1; unsigned char f2:1; unsigned char f3:1; CThingBaseDef& operator=(const CThingBaseDef&); };\nCThingBaseDef& CThingBaseDef::operator=(const CThingBaseDef& o) { Base::operator=(o); lead[0]=o.lead[0]; lead[1]=o.lead[1]; rec=o.rec; a[0]=o.a[0]; a[1]=o.a[1]; a[2]=o.a[2]; a[3]=o.a[3]; a[4]=o.a[4]; a[5]=o.a[5]; f0=o.f0; f1=o.f1; f2=o.f2; f3=o.f3; return *this; }\n",
+    "test_cpp": "#include <cstdio>\nstruct S14{unsigned short v[7];};struct Base{unsigned char p[0x70];};struct CThingBaseDef:Base{long lead[2];S14 rec;long a[6];unsigned char f0:1;unsigned char f1:1;unsigned char f2:1;unsigned char f3:1;};int main(){CThingBaseDef a; CThingBaseDef b;b.lead[0]=4;b.a[2]=9;b.f1=1;a=b;if(a.a[2]!=9||!a.f1){printf(\"004643cf_TEST FAIL\\n\");return 1;}printf(\"004643cf_TEST PASS\\n\");return 0;}\n",
+    "pass_pattern": "004643cf_TEST PASS"
+   }
+  ]
+ }
+}

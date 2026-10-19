@@ -1,0 +1,50 @@
+{
+  "00417418": [
+    {
+      "path": "work/codex-lane/w22/agent202/differ/00417418.cpp",
+      "placeholder": true,
+      "size": 206
+    },
+    {
+      "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00417418.cpp",
+      "placeholder": true,
+      "size": 206
+    }
+  ],
+  "00418b7a": [
+    {
+      "path": "work/codex-lane/w22/agent202/differ/00418b7a.cpp",
+      "placeholder": true,
+      "size": 208
+    },
+    {
+      "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00418b7a.cpp",
+      "placeholder": true,
+      "size": 208
+    }
+  ],
+  "0041d8e7": [
+    {
+      "path": "work/codex-lane/w22/agent202/differ/0041d8e7.cpp",
+      "placeholder": true,
+      "size": 190
+    },
+    {
+      "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/0041d8e7.cpp",
+      "placeholder": true,
+      "size": 190
+    }
+  ],
+  "0041d98a": [
+    {
+      "path": "work/codex-lane/w22/agent202/differ/0041d98a.cpp",
+      "placeholder": true,
+      "size": 190
+    },
+    {
+      "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/0041d98a.cpp",
+      "placeholder": true,
+      "size": 190
+    }
+  ]
+}

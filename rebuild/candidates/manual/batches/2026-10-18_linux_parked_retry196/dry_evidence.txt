@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00bbf380   RELOCATION_MATCH PASS   BuildBuffers
+00bc3e10   RELOCATION_MATCH PASS   BuildBuffers
+
+WINS: 2
+  00bbf380 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers
+  00bc3e10 RELOCATION_MATCH CEnginePrimitiveManagerParticleLineGroup::BuildBuffers

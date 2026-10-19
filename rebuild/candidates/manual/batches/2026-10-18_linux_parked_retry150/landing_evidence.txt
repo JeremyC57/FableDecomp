@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00b5ece0   RELOCATION_MATCH PASS   InitialiseTextures
+00b51f60   RELOCATION_MATCH PASS   ClipBoxToCamera
+00f37170   RELOCATION_MATCH PASS   BeginShutdown
+
+WINS: 3
+  00b5ece0 RELOCATION_MATCH CGlowRendererMethods::InitialiseTextures
+  00b51f60 RELOCATION_MATCH CWeatherRendererMethods::ClipBoxToCamera
+  00f37170 RELOCATION_MATCH CGPUScratchBufferTextureManager::BeginShutdown
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CGlowRendererMethods_InitialiseTextures_00b5ece0
+  CWeatherRendererMethods_ClipBoxToCamera_00b51f60
+  CGPUScratchBufferTextureManager_BeginShutdown_00f37170

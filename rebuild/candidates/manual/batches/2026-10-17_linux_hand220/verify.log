@@ -1,0 +1,10 @@
+addr       parity           behav  name
+007e3c70   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007e3c70   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e3c70   RELOCATION_MATCH PASS   CTCWillResponse
+
+WINS: 1
+  007e3c70 RELOCATION_MATCH CTCWillResponse::CTCWillResponse
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCWillResponse_CTCWillResponse_007e3c70

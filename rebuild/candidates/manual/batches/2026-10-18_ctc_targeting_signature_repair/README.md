@@ -1,0 +1,7 @@
+# Correct retail CTC interface prefix for existing targeting function
+
+008A03F0 remains206 bytes, independently RELOCATION_MATCH and native/host C++98O2 PASS. Corrected slots13..20: removed donor-only editor methods; restored OnDie/OnKill/OnLevelUnload/OnSetInLimbo/Validate/IsFreeForDeletion and real IsSerialiseCreatable/IsSerialisableForHeroState. Copy takes const CTCBase&. All23 emitted prefix methods checked against native/PDB-derived base ordering, with7 native relocation operands and full target-class literal verified. Targeting slot22 used by this leaf remains GetClassTypeName. No catalog/oracle duplicate or function-count increment.
+
+Cumulative attempt8=4 UNCERTAIN historical reservations +3 prior observed +1 root declaration repair. Original accepted source/test, old worker snapshots and new source hash/command/stdout/stderr retained. Current allowance2 remains. This projection is a verified native method prefix, not a claim to reproduce engine construction.
+
+Normal host O2 and VC7.1 fixtures pass. The inherited old fixture fails when forcing no copy elision (FAIL2); the actual shared CCharString header lacks an owning copy constructor declaration and fixture expectations assume elided returned strings. That preexisting limitation is disclosed and preserved, not counted as a native production byte failure. No host no-elide pass is claimed for this row. This repair changes only the inherited virtual declarations and corresponding fixture stubs.

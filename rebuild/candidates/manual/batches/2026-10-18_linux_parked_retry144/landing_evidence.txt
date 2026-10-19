@@ -1,0 +1,14 @@
+addr       parity           behav  name
+008c4680   RELOCATION_MATCH PASS   Initialise
+008c74f0   RELOCATION_MATCH PASS   FinishAction
+008cbb90   RELOCATION_MATCH PASS   Initialise
+
+WINS: 3
+  008c4680 RELOCATION_MATCH CCreatureAction_ScorpionCharge::Initialise
+  008c74f0 RELOCATION_MATCH CCreatureAction_RockTrollFallToDeath::FinishAction
+  008cbb90 RELOCATION_MATCH CCreatureAction_SummonerFlameSlice::Initialise
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionScorpionCharge_Initialise_008c4680
+  CCreatureActionRockTrollFallToDeath_FinishAction_008c74f0
+  CCreatureActionSummonerFlameSlice_Initialise_008cbb90

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00898600   RELOCATION_MATCH PASS   RemoveAllHeroWeapons
+
+WINS: 1
+  00898600 RELOCATION_MATCH CGameScriptInterface::RemoveAllHeroWeapons
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_RemoveAllHeroWeapons_00898600

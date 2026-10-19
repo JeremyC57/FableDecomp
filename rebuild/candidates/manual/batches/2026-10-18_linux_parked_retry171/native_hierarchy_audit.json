@@ -1,0 +1,116 @@
+{
+  "0x129b860": {
+    "hierarchy": [
+      [
+        ".?AVCMovableResource@@",
+        0
+      ]
+    ],
+    "slots": [
+      "0x9d5110",
+      "0xbfea08",
+      "0x9d50f0",
+      "0x9d5100"
+    ]
+  },
+  "0x12a8014": {
+    "hierarchy": [
+      [
+        ".?AVCLandscapeBackgroundSubNodeBase@@",
+        0
+      ],
+      [
+        ".?AVCMovableResource@@",
+        0
+      ]
+    ],
+    "slots": [
+      "0xbe8d90",
+      "0xbfea08",
+      "0x9d50f0",
+      "0x9d5100",
+      "0xbfea08",
+      "0xbe8d50",
+      "0xbe8d60",
+      "0xbe8d70",
+      "0xbe8d80"
+    ]
+  },
+  "0x12a803c": {
+    "hierarchy": [
+      [
+        ".?AVCLandscapeBackgroundPatch@@",
+        0
+      ],
+      [
+        ".?AVCLandscapeBackgroundSubNodeBase@@",
+        0
+      ],
+      [
+        ".?AVCMovableResource@@",
+        0
+      ]
+    ],
+    "slots": [
+      "0xbe8e60",
+      "0xbe65a0",
+      "0xbe5e50",
+      "0x9d5100",
+      "0xbe8dc0",
+      "0xbe61b0",
+      "0xbe63f0",
+      "0xbe5d80",
+      "0xbe8db0"
+    ]
+  },
+  "0x12a8240": {
+    "hierarchy": [
+      [
+        ".?AVCLandscapeBackgroundTreeNode@@",
+        0
+      ],
+      [
+        ".?AVCEngineLandscapeFreeableResource@@",
+        0
+      ],
+      [
+        ".?AVCMovableResource@@",
+        0
+      ]
+    ],
+    "slots": [
+      "0xbf8ce0",
+      "0xbf6b40",
+      "0xbf6b50",
+      "0x9d5100",
+      "0xbf7f70"
+    ]
+  },
+  "0x12a8258": {
+    "hierarchy": [
+      [
+        ".?AVCLandscapeBackgroundSubNodeSplitBranch@@",
+        0
+      ],
+      [
+        ".?AVCLandscapeBackgroundSubNodeBase@@",
+        0
+      ],
+      [
+        ".?AVCMovableResource@@",
+        0
+      ]
+    ],
+    "slots": [
+      "0xbf8d10",
+      "0xbf8cd0",
+      "0x9d50f0",
+      "0x9d5100",
+      "0xbf8cc0",
+      "0xbf6c80",
+      "0xbf6cd0",
+      "0xbf6d10",
+      "0xbf6d30"
+    ]
+  }
+}

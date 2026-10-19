@@ -1,0 +1,19 @@
+{
+  "pointer_tables": [
+    "public: virtual void * __thiscall ThingPointer::`vector deleting dtor'(unsigned int)",
+    "public: virtual void * __thiscall CBaseIntelligentPointer::`vector deleting dtor'(unsigned int)"
+  ],
+  "PDB_direct_signatures": [
+    "public: __thiscall CHitParameters::CHitParameters(class CHitParameters const &)",
+    "public: bool __thiscall CHeroLogBook::AddObjectiveToQuest(unsigned long, unsigned long, class CCharString const &)",
+    "public: void __cdecl CCharString::Sprintf(char const *, ...)",
+    "public: class CCharString const & __thiscall CCharString::operator+=(class CCharString const &)",
+    "public: class CCharString const & __thiscall CCharString::operator=(char const *)",
+    "private: void __thiscall CDataInputStream::ReadWithSrcChunkOverflow(unsigned char *, long)",
+    "public: void __thiscall CResource::SetResourceSize(unsigned long)",
+    "public: void __thiscall CDataOutputStream::WriteSLONG(long)",
+    "public: void __thiscall CPersistTraits<class CHeroStatIncreaseData>::TransferBinaryOut(class CDataOutputStream &, class CHeroStatIncreaseData const &)"
+  ],
+  "actual_template": "void __fastcall GFSerialiseMapBinaryOut<class CHeroStatIncreaseData, enum EDamageAttribute, struct std::less<enum EDamageAttribute>>(class CDataOutputStream &, class std::map<enum EDamageAttribute, class CHeroStatIncreaseData, struct std::less<enum EDamageAttribute>, class std::allocator<struct std::pair<enum EDamageAttribute const, class CHeroStatIncreaseData>>> const &)",
+  "format": "member cdecl %d of native32bit ulong bit pattern; fixture high IDs80000000 andffffffff verified"
+}

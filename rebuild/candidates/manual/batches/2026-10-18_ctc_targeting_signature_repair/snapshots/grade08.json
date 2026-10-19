@@ -1,0 +1,20 @@
+{
+  "grade": 8,
+  "uncertain_prior": 4,
+  "observed_prior": 3,
+  "source_sha256": "103f7d2cfbaa9ddaeb7d800b7e1acd141f36c1e0aff937587abb5dca4a6de1af",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+    "008a03f0",
+    "work/codex-lane/w22/repair008a03f0/snapshots/grade08.cpp",
+    "ClearThingBestEnemyTarget"
+  ],
+  "flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ]
+}

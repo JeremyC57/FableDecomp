@@ -1,0 +1,4 @@
+offset	native_target	symbol
+00000062	00bf6130	?GetPatch@Tree@Native@@QAEPAUPatch@2@XZ
+0000006d	00bf6160	?GetSplitBranch@Tree@Native@@QAEPAUSplit@2@XZ
+00000083	00bf6d50	?IsBackgroundAtFullDetailInArea@Tree@Native@@QAE_NJJJJ@Z

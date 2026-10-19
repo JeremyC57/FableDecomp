@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0054e640   RELOCATION_MATCH PASS   Initialise
+0041a8d0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 2
+  0054e640 RELOCATION_MATCH NUISystem::CViewport::Initialise@CViewportInitialiseView
+  0041a8d0 RELOCATION_MATCH NUISystem::CSprite::Initialise@CSpriteInitialiseView

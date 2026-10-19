@@ -1,0 +1,7 @@
+offset	type	retail_target	compiler_symbol
+001f	dir32	01436ea8	?g_LandscapeRenderer@@3PAUNativeLandscapeRenderer@@A
+0037	DISP32	00bd9af0	?AllocVirtual@CEngineLandscapeMemoryManager_Methods@@QAEPAXHPAUCMovableResource@@@Z
+0070	dir32	01436ea8	?g_LandscapeRenderer@@3PAUNativeLandscapeRenderer@@A
+007c	DISP32	00bd9b90	?FreeVirtual@CEngineLandscapeMemoryManager_Methods@@QAEXPAX@Z
+0095	dir32	01436ea8	?g_LandscapeRenderer@@3PAUNativeLandscapeRenderer@@A
+00a1	DISP32	00bd9b90	?FreeVirtual@CEngineLandscapeMemoryManager_Methods@@QAEXPAX@Z

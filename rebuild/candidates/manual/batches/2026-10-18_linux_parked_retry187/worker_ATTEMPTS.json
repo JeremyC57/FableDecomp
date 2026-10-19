@@ -1,0 +1,267 @@
+[
+  {
+    "address": "00513bf0",
+    "new_grade": 1,
+    "historical_uncertain": 4,
+    "cumulative": 5,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_01.cpp",
+    "sha256": "c4227555ada8495b2007afffccd055cc2382d9ffeb5c2ed387a8731d17ba88d4",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00513bf0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_01.cpp",
+      "??4CMapInfo"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "RELOCATION_MATCH",
+    "returncode": 0,
+    "precompiler_infrastructure_failure": "Original logs/00513bf0_01.txt: Wine socket PermissionError before cl invocation; identical frozen source/flags retried with approved socket access."
+  },
+  {
+    "address": "004083e0",
+    "new_grade": 1,
+    "historical_uncertain": 4,
+    "cumulative": 5,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_01.cpp",
+    "sha256": "d8ad1619843e8adc15a1b1044b8b54336629b02861df61c52b87b2ba9adf0c3c",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "004083e0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_01.cpp",
+      "?GetIconsDef@CManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "004083e0 CManager::GetIconsDef DIFFER(203v194) flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "004083e0",
+    "new_grade": 2,
+    "historical_uncertain": 4,
+    "cumulative": 6,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_02.cpp",
+    "sha256": "491963f75995e03e59cfcf5dd702451eb291d556f37d0a22d4f4dbaf3cbd021e",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "004083e0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_02.cpp",
+      "?GetIconsDef@CManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "004083e0 CManager::GetIconsDef RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "004083e0",
+    "new_grade": 3,
+    "historical_uncertain": 4,
+    "cumulative": 7,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_03.cpp",
+    "sha256": "f7093f4c6c6abd4b0b5576270a910240450e9ce9f555c3c6d515afbcac611b58",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "004083e0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_03.cpp",
+      "?GetConfigOptionsDefaultsDef@CUserProfileManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "004083e0 CManager::GetIconsDef RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "006f9130",
+    "new_grade": 1,
+    "historical_uncertain": 4,
+    "cumulative": 5,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_01.cpp",
+    "sha256": "d1e894f74314a68eb56a39efc5074e910a1487d2ba3f3cde24ceeadbbb45b562",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "006f9130",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_01.cpp",
+      "?GetEmbeddedEventTime@CManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "006f9130 CManager::GetEmbeddedEventTime RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041da2d",
+    "new_grade": 1,
+    "historical_uncertain": 4,
+    "cumulative": 5,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_01.cpp",
+    "sha256": "ad50278fd3225fdf6405f94145da3b13a89ac667030caa6a1d3d587e22a98bb9",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041da2d",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_01.cpp",
+      "?ScrollMenu@CManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041da2d CManager::ScrollMenu DIFFER(251v240) flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041da2d",
+    "new_grade": 2,
+    "historical_uncertain": 4,
+    "cumulative": 6,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_02.cpp",
+    "sha256": "6ea21105ff713167c6bb4f1bd88664178dd31a7c9a2f17bdcc3a130a9622c429",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041da2d",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_02.cpp",
+      "?ScrollMenu@CManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041da2d CManager::ScrollMenu DIFFER(248v240) flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041da2d",
+    "new_grade": 3,
+    "historical_uncertain": 4,
+    "cumulative": 7,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_03.cpp",
+    "sha256": "8d3ae8a32440b4852a406a4fecc4144029f0fddb4b3227b2ce826bcc6ac1476d",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041da2d",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_03.cpp",
+      "?ScrollMenu@CManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041da2d CManager::ScrollMenu DIFFER(248v240) flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041da2d",
+    "new_grade": 4,
+    "historical_uncertain": 4,
+    "cumulative": 8,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_04.cpp",
+    "sha256": "3097ae649c16891ec633aea9c125e3291cbf7973f57f296b4e9109509bec1f49",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041da2d",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_04.cpp",
+      "?ScrollMenu@CManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041da2d CManager::ScrollMenu RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "004083e0",
+    "new_grade": 4,
+    "historical_uncertain": 4,
+    "cumulative": 8,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_04.cpp",
+    "sha256": "f28eb4ea38b0514dcf1218c7a52492ab9f9268f9c6be41aa077bb7e1d65dc7ba",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "004083e0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_04.cpp",
+      "?GetConfigOptionsDefaultsDef@CUserProfileManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "004083e0 CManager::GetIconsDef RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "006f9130",
+    "new_grade": 2,
+    "historical_uncertain": 4,
+    "cumulative": 6,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_02.cpp",
+    "sha256": "271f59e10c6628a94ef4e5d1006c12819732500e9dee17efe69d947e0b442135",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "006f9130",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_02.cpp",
+      "?GetEmbeddedEventTime@CManager"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "006f9130 CManager::GetEmbeddedEventTime RELOCATION_MATCH flags= []",
+    "returncode": 0
+  }
+]

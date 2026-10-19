@@ -1,0 +1,11 @@
+offset	native_target	symbol
+00000008	012a82ac	??_7CLocalDetailPrimitiveRepeatedMesh@@6B@
+0000000d	01436ea8	?g_LocalDetailEngine@@3PAULocalDetailEngine@@A
+0000001c	00bd9b90	?FreeVirtual@LandscapeMemoryMethods@@QAEXPAX@Z
+00000027	00bd9ca0	?FreeAlignedVirtual@LandscapeMemoryMethods@@QAEXPAX@Z
+00000032	00bd9ca0	?FreeAlignedVirtual@LandscapeMemoryMethods@@QAEXPAX@Z
+0000003d	00bd9b90	?FreeVirtual@LandscapeMemoryMethods@@QAEXPAX@Z
+00000048	00bd9ca0	?FreeAlignedVirtual@LandscapeMemoryMethods@@QAEXPAX@Z
+00000051	0122f598	??_7CEnginePrimitiveHandle@@6B@
+000000a4	0099a2e0	??1CBaseClass@@UAE@XZ
+000000ab	0129b860	??_7CMovableResource@@6B@

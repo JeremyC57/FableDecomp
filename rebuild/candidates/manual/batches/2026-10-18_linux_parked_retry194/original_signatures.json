@@ -1,0 +1,22 @@
+[
+  {
+    "symbol": "?BeginLoading@C3DMeshInfo@@QBEXK_N0@Z",
+    "undecorated": "public: void __thiscall C3DMeshInfo::BeginLoading(unsigned long, bool, bool) const"
+  },
+  {
+    "symbol": "?GetResult@CEngineOcclusionManager@@QAEKK_N@Z",
+    "undecorated": "public: unsigned long __thiscall CEngineOcclusionManager::GetResult(unsigned long, bool)"
+  },
+  {
+    "symbol": "?ClearHandles@CEnginePrimitiveOcclusionInfo@@AAEXXZ",
+    "undecorated": "private: void __thiscall CEnginePrimitiveOcclusionInfo::ClearHandles(void)"
+  },
+  {
+    "symbol": "?CheckVisibilityResult@CEnginePrimitiveOcclusionManager@@QAEXAAVCEnginePrimitiveOcclusionInfo@@@Z",
+    "undecorated": "public: void __thiscall CEnginePrimitiveOcclusionManager::CheckVisibilityResult(class CEnginePrimitiveOcclusionInfo &)"
+  },
+  {
+    "symbol": "?UpdateRepeatedStaticMesh@CEnginePrimitiveManagerRepeatedStaticMeshes@@QAEXABVCEnginePrimitiveHandle@@ABUCAddMeshDesc@NEnginePrimitiveManagerRepeatedStaticMeshes@@@Z",
+    "undecorated": "public: void __thiscall CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateRepeatedStaticMesh(class CEnginePrimitiveHandle const &, struct NEnginePrimitiveManagerRepeatedStaticMeshes::CAddMeshDesc const &)"
+  }
+]

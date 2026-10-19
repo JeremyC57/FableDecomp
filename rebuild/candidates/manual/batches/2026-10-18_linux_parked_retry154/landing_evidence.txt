@@ -1,0 +1,14 @@
+addr       parity           behav  name
+008e6940   RELOCATION_MATCH PASS   FinishAction
+00e03bf0   RELOCATION_MATCH PASS   Init
+0099aa90   RELOCATION_MATCH PASS   Write
+
+WINS: 3
+  008e6940 RELOCATION_MATCH CCreatureAction_ReleaseStrengthBerserk::FinishAction
+  00e03bf0 RELOCATION_MATCH CDarkwoodRockTroll::Init
+  0099aa90 RELOCATION_MATCH CDiskFileWriter::Write
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionReleaseStrengthBerserk_FinishAction_008e6940
+  CDarkwoodRockTroll_Init_00e03bf0
+  CDiskFileWriter_Write_0099aa90

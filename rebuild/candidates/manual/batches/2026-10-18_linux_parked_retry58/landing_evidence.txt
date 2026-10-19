@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b32230   RELOCATION_MATCH PASS   PostRenderLayer
+
+WINS: 1
+  00b32230 RELOCATION_MATCH CEnginePrimitiveRenderer::PostRenderLayer
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveRenderer_PostRenderLayer_00b32230

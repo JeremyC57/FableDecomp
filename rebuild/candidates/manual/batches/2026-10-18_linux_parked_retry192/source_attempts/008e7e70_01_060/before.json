@@ -1,0 +1,27 @@
+{
+  "address": "008e7e70",
+  "attempt": 1,
+  "kind": "grade",
+  "sha256": "a213823c65c92c689594ab9f5a9b9f4c40e452e29bda13c397ec73360188c19e",
+  "args": [
+    "OnDeactivate"
+  ],
+  "base_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "extra_flags": [],
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+    "008e7e70",
+    "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/008e7e70_01_060/source.cpp",
+    "OnDeactivate"
+  ],
+  "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+  "time": "2026-10-19T00:16:03.723685+00:00",
+  "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/008e7e70_01_060"
+}

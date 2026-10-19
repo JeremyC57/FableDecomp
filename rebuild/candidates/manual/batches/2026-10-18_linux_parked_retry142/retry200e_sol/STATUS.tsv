@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+00c28120	MATCH	210v210	PASS	4 UNCERTAIN + 1 new; 5 unused; exact expanded host C++98O2/noelision + VC7.1 PASS
+00c286f0	RELOCATION_MATCH	231v231	PASS	4 UNCERTAIN + 2 new; 4 unused; exact expanded host C++98O2/noelision + VC7.1 PASS
+008f60c0	RELOCATION_MATCH	165v165	PASS	4 UNCERTAIN + 4 new; 2 unused; exact expanded host C++98O2/noelision + VC7.1 PASS
+008f63c0	DIFFER	207v229	PASS	4 UNCERTAIN + 4 new; 2 unused; exact expanded host C++98O2/noelision + VC7.1 PASS
+00469ab3	RELOCATION_MATCH	215v215	PASS	4 UNCERTAIN + 2 new; 4 unused; exact expanded host C++98O2/noelision + VC7.1 PASS

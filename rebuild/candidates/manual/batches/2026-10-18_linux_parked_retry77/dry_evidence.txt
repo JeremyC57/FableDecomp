@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b6db80   RELOCATION_MATCH PASS   CloseStaticMap
+
+WINS: 1
+  00b6db80 RELOCATION_MATCH CEngineWaterRenderer::CloseStaticMap

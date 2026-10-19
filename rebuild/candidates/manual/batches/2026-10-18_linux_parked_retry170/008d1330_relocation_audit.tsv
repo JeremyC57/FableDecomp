@@ -1,0 +1,9 @@
+offset	native_target	symbol
+0000000c	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+0000001b	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+0000002d	013b89fc	?QuestManager@@3PAUQuestManagerNative@@A
+00000064	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+00000085	004365b0	?LowerBound@ComponentMap@@QBEPBUComponentEntry@@ABJ@Z
+000000b1	0099ec30	??0CCharString@@QAE@ABU0@@Z
+000000e2	008d4a90	?GetEvent@EntityEventsMethods@@QBE_NPAPAUHitByEvent@@ABUBind4@@@Z
+000000ed	0099eae0	??1CCharString@@QAE@XZ

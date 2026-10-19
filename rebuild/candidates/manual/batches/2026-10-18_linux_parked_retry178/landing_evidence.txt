@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00861d00   RELOCATION_MATCH PASS   OnDeactivate
+008d9530   RELOCATION_MATCH PASS   FrameUpdate
+008da890   RELOCATION_MATCH PASS   FrameUpdate
+008da690   RELOCATION_MATCH PASS   OnDeactivate
+
+WINS: 4
+  00861d00 RELOCATION_MATCH CModeStandBase::OnDeactivate
+  008d9530 RELOCATION_MATCH CModeBerserk::FrameUpdate
+  008da890 RELOCATION_MATCH CModeDrained::FrameUpdate
+  008da690 RELOCATION_MATCH CModeScreamerAggressive::OnDeactivate
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CModeStandBase_OnDeactivate_00861d00
+  CModeBerserk_FrameUpdate_008d9530
+  CModeDrained_FrameUpdate_008da890
+  CModeScreamerAggressive_OnDeactivate_008da690

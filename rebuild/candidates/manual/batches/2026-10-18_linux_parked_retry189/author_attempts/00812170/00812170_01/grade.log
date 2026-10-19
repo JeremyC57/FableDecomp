@@ -1,0 +1,189 @@
+00812170 CHitParameters DIFFER(274v266) flags= []
+--- retail (266 bytes)
+00812170  53                     push ebx
+00812171  56                     push esi
+00812172  8bf1                   mov esi, ecx
+00812174  57                     push edi
+00812175  8b7c2410               mov edi, dword ptr [esp + 0x10]
+00812179  8a07                   mov al, byte ptr [edi]
+0081217b  8806                   mov byte ptr [esi], al
+0081217d  8a4f01                 mov cl, byte ptr [edi + 1]
+00812180  884e01                 mov byte ptr [esi + 1], cl
+00812183  8b5702                 mov edx, dword ptr [edi + 2]
+00812186  895602                 mov dword ptr [esi + 2], edx
+00812189  8b4706                 mov eax, dword ptr [edi + 6]
+0081218c  894606                 mov dword ptr [esi + 6], eax
+0081218f  8b4f0a                 mov ecx, dword ptr [edi + 0xa]
+00812192  894e0a                 mov dword ptr [esi + 0xa], ecx
+00812195  8b570e                 mov edx, dword ptr [edi + 0xe]
+00812198  89560e                 mov dword ptr [esi + 0xe], edx
+0081219b  8b4712                 mov eax, dword ptr [edi + 0x12]
+0081219e  894612                 mov dword ptr [esi + 0x12], eax
+008121a1  8b4f16                 mov ecx, dword ptr [edi + 0x16]
+008121a4  894e16                 mov dword ptr [esi + 0x16], ecx
+008121a7  8a571a                 mov dl, byte ptr [edi + 0x1a]
+008121aa  88561a                 mov byte ptr [esi + 0x1a], dl
+008121ad  8a471b                 mov al, byte ptr [edi + 0x1b]
+008121b0  88461b                 mov byte ptr [esi + 0x1b], al
+008121b3  8a4f1c                 mov cl, byte ptr [edi + 0x1c]
+008121b6  884e1c                 mov byte ptr [esi + 0x1c], cl
+008121b9  8a571d                 mov dl, byte ptr [edi + 0x1d]
+008121bc  88561d                 mov byte ptr [esi + 0x1d], dl
+008121bf  8a471e                 mov al, byte ptr [edi + 0x1e]
+008121c2  88461e                 mov byte ptr [esi + 0x1e], al
+008121c5  8a4f1f                 mov cl, byte ptr [edi + 0x1f]
+008121c8  884e1f                 mov byte ptr [esi + 0x1f], cl
+008121cb  8a5720                 mov dl, byte ptr [edi + 0x20]
+008121ce  885620                 mov byte ptr [esi + 0x20], dl
+008121d1  8a4721                 mov al, byte ptr [edi + 0x21]
+008121d4  884621                 mov byte ptr [esi + 0x21], al
+008121d7  8a4f22                 mov cl, byte ptr [edi + 0x22]
+008121da  884e22                 mov byte ptr [esi + 0x22], cl
+008121dd  8a5723                 mov dl, byte ptr [edi + 0x23]
+008121e0  885623                 mov byte ptr [esi + 0x23], dl
+008121e3  8a4724                 mov al, byte ptr [edi + 0x24]
+008121e6  884624                 mov byte ptr [esi + 0x24], al
+008121e9  8a4f25                 mov cl, byte ptr [edi + 0x25]
+008121ec  884e25                 mov byte ptr [esi + 0x25], cl
+008121ef  8a5726                 mov dl, byte ptr [edi + 0x26]
+008121f2  885626                 mov byte ptr [esi + 0x26], dl
+008121f5  8a4727                 mov al, byte ptr [edi + 0x27]
+008121f8  884627                 mov byte ptr [esi + 0x27], al
+008121fb  8a4f28                 mov cl, byte ptr [edi + 0x28]
+008121fe  884e28                 mov byte ptr [esi + 0x28], cl
+00812201  8b572c                 mov edx, dword ptr [edi + 0x2c]
+00812204  8d4730                 lea eax, [edi + 0x30]
+00812207  50                     push eax
+00812208  8d4e30                 lea ecx, [esi + 0x30]
+0081220b  89562c                 mov dword ptr [esi + 0x2c], edx
+0081220e  e8a075ceff             call 0x4f97b3
+00812213  8d4f3c                 lea ecx, [edi + 0x3c]
+00812216  51                     push ecx
+00812217  8d4e3c                 lea ecx, [esi + 0x3c]
+0081221a  e821fbffff             call 0x811d40
+0081221f  8b5748                 mov edx, dword ptr [edi + 0x48]
+00812222  895648                 mov dword ptr [esi + 0x48], edx
+00812225  8b474c                 mov eax, dword ptr [edi + 0x4c]
+00812228  85c0                   test eax, eax
+0081222a  89464c                 mov dword ptr [esi + 0x4c], eax
+0081222d  7403                   je 0x812232
+0081222f  ff4004                 inc dword ptr [eax + 4]
+00812232  8d5e50                 lea ebx, [esi + 0x50]
+00812235  8bcb                   mov ecx, ebx
+00812237  e8d4f81e00             call 0xa01b10
+0081223c  8d4f50                 lea ecx, [edi + 0x50]
+0081223f  c7036c8c2301           mov dword ptr [ebx], 0x1238c6c
+00812245  e806f91e00             call 0xa01b50
+0081224a  50                     push eax
+0081224b  8bcb                   mov ecx, ebx
+0081224d  e83ef91e00             call 0xa01b90
+00812252  8d5e58                 lea ebx, [esi + 0x58]
+00812255  8bcb                   mov ecx, ebx
+00812257  e8b4f81e00             call 0xa01b10
+0081225c  8d4f58                 lea ecx, [edi + 0x58]
+0081225f  c7036c8c2301           mov dword ptr [ebx], 0x1238c6c
+00812265  e8e6f81e00             call 0xa01b50
+0081226a  50                     push eax
+0081226b  8bcb                   mov ecx, ebx
+0081226d  e81ef91e00             call 0xa01b90
+00812272  5f                     pop edi
+00812273  8bc6                   mov eax, esi
+00812275  5e                     pop esi
+00812276  5b                     pop ebx
+00812277  c20400                 ret 4
+--- built (274 bytes)
+00812170  53                     push ebx
+00812171  56                     push esi
+00812172  8bf1                   mov esi, ecx
+00812174  57                     push edi
+00812175  8b7c2410               mov edi, dword ptr [esp + 0x10]
+00812179  8a07                   mov al, byte ptr [edi]
+0081217b  8806                   mov byte ptr [esi], al
+0081217d  8a4f01                 mov cl, byte ptr [edi + 1]
+00812180  884e01                 mov byte ptr [esi + 1], cl
+00812183  8d5702                 lea edx, [edi + 2]
+00812186  8b0a                   mov ecx, dword ptr [edx]
+00812188  8d4602                 lea eax, [esi + 2]
+0081218b  8908                   mov dword ptr [eax], ecx
+0081218d  8b4a04                 mov ecx, dword ptr [edx + 4]
+00812190  894804                 mov dword ptr [eax + 4], ecx
+00812193  8b5208                 mov edx, dword ptr [edx + 8]
+00812196  895008                 mov dword ptr [eax + 8], edx
+00812199  8d470e                 lea eax, [edi + 0xe]
+0081219c  8b10                   mov edx, dword ptr [eax]
+0081219e  8d4e0e                 lea ecx, [esi + 0xe]
+008121a1  8911                   mov dword ptr [ecx], edx
+008121a3  8b5004                 mov edx, dword ptr [eax + 4]
+008121a6  895104                 mov dword ptr [ecx + 4], edx
+008121a9  8b4008                 mov eax, dword ptr [eax + 8]
+008121ac  894108                 mov dword ptr [ecx + 8], eax
+008121af  8a4f1a                 mov cl, byte ptr [edi + 0x1a]
+008121b2  884e1a                 mov byte ptr [esi + 0x1a], cl
+008121b5  8a571b                 mov dl, byte ptr [edi + 0x1b]
+008121b8  88561b                 mov byte ptr [esi + 0x1b], dl
+008121bb  8a471c                 mov al, byte ptr [edi + 0x1c]
+008121be  88461c                 mov byte ptr [esi + 0x1c], al
+008121c1  8a4f1d                 mov cl, byte ptr [edi + 0x1d]
+008121c4  884e1d                 mov byte ptr [esi + 0x1d], cl
+008121c7  8a571e                 mov dl, byte ptr [edi + 0x1e]
+008121ca  88561e                 mov byte ptr [esi + 0x1e], dl
+008121cd  8a471f                 mov al, byte ptr [edi + 0x1f]
+008121d0  88461f                 mov byte ptr [esi + 0x1f], al
+008121d3  8a4f20                 mov cl, byte ptr [edi + 0x20]
+008121d6  884e20                 mov byte ptr [esi + 0x20], cl
+008121d9  8a5721                 mov dl, byte ptr [edi + 0x21]
+008121dc  885621                 mov byte ptr [esi + 0x21], dl
+008121df  8a4722                 mov al, byte ptr [edi + 0x22]
+008121e2  884622                 mov byte ptr [esi + 0x22], al
+008121e5  8a4f23                 mov cl, byte ptr [edi + 0x23]
+008121e8  884e23                 mov byte ptr [esi + 0x23], cl
+008121eb  8a5724                 mov dl, byte ptr [edi + 0x24]
+008121ee  885624                 mov byte ptr [esi + 0x24], dl
+008121f1  8a4725                 mov al, byte ptr [edi + 0x25]
+008121f4  884625                 mov byte ptr [esi + 0x25], al
+008121f7  8a4f26                 mov cl, byte ptr [edi + 0x26]
+008121fa  884e26                 mov byte ptr [esi + 0x26], cl
+008121fd  8a5727                 mov dl, byte ptr [edi + 0x27]
+00812200  885627                 mov byte ptr [esi + 0x27], dl
+00812203  8a4728                 mov al, byte ptr [edi + 0x28]
+00812206  884628                 mov byte ptr [esi + 0x28], al
+00812209  8b4f2c                 mov ecx, dword ptr [edi + 0x2c]
+0081220c  8d5730                 lea edx, [edi + 0x30]
+0081220f  894e2c                 mov dword ptr [esi + 0x2c], ecx
+00812212  52                     push edx
+00812213  8d4e30                 lea ecx, [esi + 0x30]
+00812216  e800000000             call 0x81221b
+0081221b  8d473c                 lea eax, [edi + 0x3c]
+0081221e  50                     push eax
+0081221f  8d4e3c                 lea ecx, [esi + 0x3c]
+00812222  e800000000             call 0x812227
+00812227  8b4f48                 mov ecx, dword ptr [edi + 0x48]
+0081222a  894e48                 mov dword ptr [esi + 0x48], ecx
+0081222d  8b474c                 mov eax, dword ptr [edi + 0x4c]
+00812230  85c0                   test eax, eax
+00812232  89464c                 mov dword ptr [esi + 0x4c], eax
+00812235  7403                   je 0x81223a
+00812237  ff4004                 inc dword ptr [eax + 4]
+0081223a  8d5e50                 lea ebx, [esi + 0x50]
+0081223d  8bcb                   mov ecx, ebx
+0081223f  e800000000             call 0x812244
+00812244  8d4f50                 lea ecx, [edi + 0x50]
+00812247  c70300000000           mov dword ptr [ebx], 0
+0081224d  e800000000             call 0x812252
+00812252  50                     push eax
+00812253  8bcb                   mov ecx, ebx
+00812255  e800000000             call 0x81225a
+0081225a  8d5e58                 lea ebx, [esi + 0x58]
+0081225d  8bcb                   mov ecx, ebx
+0081225f  e800000000             call 0x812264
+00812264  8d4f58                 lea ecx, [edi + 0x58]
+00812267  c70300000000           mov dword ptr [ebx], 0
+0081226d  e800000000             call 0x812272
+00812272  50                     push eax
+00812273  8bcb                   mov ecx, ebx
+00812275  e800000000             call 0x81227a
+0081227a  5f                     pop edi
+0081227b  8bc6                   mov eax, esi
+0081227d  5e                     pop esi
+0081227e  5b                     pop ebx
+0081227f  c20400                 ret 4

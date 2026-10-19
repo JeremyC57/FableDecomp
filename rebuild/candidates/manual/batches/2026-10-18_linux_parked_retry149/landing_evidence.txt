@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00895ed0   RELOCATION_MATCH PASS   SetHouseOwnedByPlayer
+008976f0   RELOCATION_MATCH PASS   EntityGetThingInPrimarySlot
+008986d0   RELOCATION_MATCH PASS   ConfiscateAllHeroItems
+00898840   RELOCATION_MATCH PASS   ConfiscateItemsOfTypeFromHero
+00898940   RELOCATION_MATCH PASS   ReturnAllConfiscatedItemsToHero
+0089cd70   RELOCATION_MATCH PASS   CanThingBe_Heard_ByOtherThing
+0089faa0   RELOCATION_MATCH PASS   CreateLight
+
+WINS: 7
+  00895ed0 RELOCATION_MATCH CGameScriptInterfaceMethods::SetHouseOwnedByPlayer
+  008976f0 RELOCATION_MATCH CGameScriptInterfaceMethods::EntityGetThingInPrimarySlot
+  008986d0 RELOCATION_MATCH CGameScriptInterfaceMethods::ConfiscateAllHeroItems
+  00898840 RELOCATION_MATCH CGameScriptInterfaceMethods::ConfiscateItemsOfTypeFromHero
+  00898940 RELOCATION_MATCH CGameScriptInterfaceMethods::ReturnAllConfiscatedItemsToHero
+  0089cd70 RELOCATION_MATCH CGameScriptInterfaceMethods::CanThingBe_Heard_ByOtherThing
+  0089faa0 RELOCATION_MATCH CGameScriptInterfaceMethods::CreateLight
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterfaceMethods_SetHouseOwnedByPlayer_00895ed0
+  CGameScriptInterfaceMethods_EntityGetThingInPrimarySlot_008976f0
+  CGameScriptInterfaceMethods_ConfiscateAllHeroItems_008986d0
+  CGameScriptInterfaceMethods_ConfiscateItemsOfTypeFromHero_00898840
+  CGameScriptInterfaceMethods_ReturnAllConfiscatedItemsToHero_00898940
+  CGameScriptInterfaceMethods_CanThingBeHeardByOtherThing_0089cd70
+  CGameScriptInterfaceMethods_CreateLight_0089faa0

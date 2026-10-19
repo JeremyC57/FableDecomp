@@ -1,0 +1,72 @@
+{
+  "00691560": {
+    "lane": "astra239_whole",
+    "prior_reserved_uncertain": 4,
+    "sources": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-15_linux_hand143/differ/00691560.cpp",
+        "sha256": "30b83f47608f332cf683820101fef961278e26fc23be832c8b05a672edf9febb"
+      }
+    ],
+    "observed_current": 3,
+    "reserved_plus_observed": 7,
+    "remaining": 3
+  },
+  "006f9430": {
+    "lane": "astra240_whole",
+    "prior_reserved_uncertain": 4,
+    "sources": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-15_linux_hand146/differ/006f9430.cpp",
+        "sha256": "c2bcc8500641694cad86fa2bedc1a68584abb2235a61ad790481aa71ccf38d42"
+      }
+    ],
+    "observed_current": 5,
+    "reserved_plus_observed": 9,
+    "remaining": 1
+  },
+  "006af2d0": {
+    "lane": "astra241_whole",
+    "prior_reserved_uncertain": 4,
+    "sources": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-14_linux_hand58/differ/006af2d0.cpp",
+        "sha256": "99e4a2724dae8459fbf8ac72e5fab5cc8cff0a4f3d4f27138fb0c723d8eedb3d"
+      }
+    ],
+    "observed_current": 0,
+    "reserved_plus_observed": 4,
+    "remaining": 6
+  },
+  "00720610": {
+    "lane": "astra242_whole",
+    "prior_reserved_uncertain": 4,
+    "sources": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-15_linux_hand149/differ/00720610.cpp",
+        "sha256": "714e424815da39975dce9aa819b0c79bf67b35282ffe7e489c68ac013f812ac5"
+      },
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-16_linux_retry7/differ/00720610.cpp",
+        "sha256": "35204b6c7acbadff58613792b753ce4f183a56aef87b4b88ba1f64236110e6ee"
+      }
+    ],
+    "observed_current": 10,
+    "reserved_plus_observed": 14,
+    "remaining": 0,
+    "note": "retry7 explicitly not retried; duplicate archive is not an extra historical attempt phase."
+  },
+  "00543910": {
+    "lane": "luna236_whole",
+    "prior_reserved_uncertain": 4,
+    "sources": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-15_linux_hand135/differ/00543910.cpp",
+        "sha256": "9f8fdbe9de6209c8d31fd045a58e4e456d00f3fd7dc179f312c211b07225d36d"
+      }
+    ],
+    "observed_current": 10,
+    "reserved_plus_observed": 14,
+    "remaining": 0
+  }
+}

@@ -1,0 +1,22 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "008929d0",
+    "module": "CGameScriptInterface",
+    "name": "DisplayGameInfo",
+    "source_cpp": "// CGameScriptInterface::DisplayGameInfo(const CCharString&) -- display formatted game-info text with four empty substitutions\n// Retail: 0x008929d0, length 176. The UI subtitle renderer receives the component font bank, source text,\n// four temporary empty CCharStrings, and the fixed display flags 0x2a,0,1,1.\n// Callees: CCharString(const char*,long) @0x0099EBF0; CCharString::~CCharString @0x0099EAE0;\n// CSubtitleRenderer::SetText @0x00493049; operator new/delete are hidden in the string helpers.\nstruct CCharString {\n    void* data;\n    CCharString(const char*, long); // 0x0099EBF0\n    ~CCharString(); // 0x0099EAE0\n};\nstruct CFontBank;\nstruct CSubtitleRenderer {\n    void SetText(CFontBank*, const CCharString&, const CCharString&, const CCharString&, const CCharString&, const CCharString&,\n                 long, long, bool, bool); // 0x00493049\n};\nstruct CGameUI { unsigned char pad[0x18]; CSubtitleRenderer subtitles; };\nextern CGameUI* g_ui; // 0x013B8790\nstruct CMainGameComponent { unsigned char pad[0x1614c]; CFontBank* font; };\nstruct CGameScriptInterface {\n    void* vftable;\n    unsigned char pad04[4];\n    CMainGameComponent* component;\n    void DisplayGameInfo(const CCharString& text);\n};\nvoid CGameScriptInterface::DisplayGameInfo(const CCharString& text)\n{\n    CCharString d((const char*)0x0122d70e, -1);\n    CCharString c((const char*)0x0122d70e, -1);\n    CCharString b((const char*)0x0122d70e, -1);\n    CCharString a((const char*)0x0122d70e, -1);\n    g_ui->subtitles.SetText(component->font, text, a, b, c, d, 0x2a, 0, true, true);\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct Text { const char* p; };\nstruct Ui { int calls; const Text* text; long tag; bool a,b; };\nstatic Ui ui = {0, 0, 0, false, false};\nstruct Interface { Ui* u; void display(const Text& t) { ++u->calls; u->text=&t; u->tag=0x2a; u->a=true; u->b=true; } };\nint main() { Text t={\"hello\"}; Interface i={&ui}; i.display(t); if(ui.calls!=1 || ui.text!=&t || ui.tag!=0x2a || !ui.a || !ui.b) { std::printf(\"008929d0_TEST FAIL\\n\"); return 1; } std::printf(\"008929d0_TEST PASS\\n\"); return 0; }\n",
+    "pass_pattern": "008929d0_TEST PASS"
+   },
+   {
+    "address": "00892a80",
+    "module": "CGameScriptInterface",
+    "name": "DisplayGameInfoText",
+    "source_cpp": "// CGameScriptInterface::DisplayGameInfoText(const CWideString&) -- display formatted wide game-info text with four empty substitutions\n// Retail: 0x00892a80, length 176. Four temporary wide strings are passed to the game UI subtitle renderer.\ntypedef unsigned short wchar_t;\nstruct CWideString {\n    void* data;\n    CWideString(const wchar_t*); // 0x0099B6B0\n    ~CWideString(); // 0x0099B510\n};\nstruct CFontBank;\nstruct CSubtitleRenderer {\n    void SetText(CFontBank*, const CWideString&, const CWideString&, const CWideString&, const CWideString&, const CWideString&,\n                 long, long, bool, bool); // 0x00492973\n};\nstruct CGameUI { unsigned char pad[0x18]; CSubtitleRenderer subtitles; };\nextern CGameUI* g_ui; // 0x013B8790\nstruct CMainGameComponent { unsigned char pad[0x1614c]; CFontBank* font; };\nstruct CGameScriptInterface {\n    void* vftable;\n    unsigned char pad04[4];\n    CMainGameComponent* component;\n    void DisplayGameInfoText(const CWideString& text);\n};\nvoid CGameScriptInterface::DisplayGameInfoText(const CWideString& text)\n{\n    CWideString d((const wchar_t*)0x0122d70c);\n    CWideString c((const wchar_t*)0x0122d70c);\n    CWideString b((const wchar_t*)0x0122d70c);\n    CWideString a((const wchar_t*)0x0122d70c);\n    g_ui->subtitles.SetText(component->font, text, a, b, c, d, 0x2a, 0, true, true);\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct Text { const unsigned short* p; };\nstruct Ui { int calls; const Text* text; long tag; bool a,b; };\nstatic Ui ui={0,0,0,false,false};\nstruct Interface { Ui* u; void display(const Text& t) { ++u->calls; u->text=&t; u->tag=0x2a; u->a=true; u->b=true; } };\nint main(){ static const unsigned short s[]={1,0}; Text t={s}; Interface i={&ui}; i.display(t); if(ui.calls!=1||ui.text!=&t||ui.tag!=0x2a||!ui.a||!ui.b){std::printf(\"00892a80_TEST FAIL\\n\");return 1;} std::printf(\"00892a80_TEST PASS\\n\");return 0;}\n",
+    "pass_pattern": "00892a80_TEST PASS"
+   }
+  ]
+ }
+}

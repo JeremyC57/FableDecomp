@@ -1,0 +1,71 @@
+vtable	slot	native_target	method
+01285544	0	008d60f0	~CCreatureActionBase()
+01285544	1	0099a400	void Validate() const
+01285544	2	00692db0	void EditUpdate(float elapsed)
+01285544	3	008d5970	void PerformAction() = 0
+01285544	4	00694430	void FinishAction()
+01285544	5	00692850	bool IsPlayingAnimation() const
+01285544	6	00692460	long GetAnimDelayTime() const
+01285544	7	00692870	long GetAnimationIndex() const
+01285544	8	006929c0	long GetAnimationTransitionInTime() const
+01285544	9	006924c0	long GetAnimationTransitionOutTime() const
+01285544	10	006924d0	unsigned long GetAnimExtraFlags() const
+01285544	11	008d63c0	CCreatureActionBase* Clone() const = 0
+01285544	12	00694d10	void Initialise()
+01285544	13	006924e0	bool IsStrikeEvent(long event) const
+01285544	14	006924f0	bool IsStrikeEventActive() const
+01285544	15	00692500	bool IsStrikeAction() const
+01285544	16	006926b0	bool IsPartOfComboChain() const
+01285544	17	00692510	bool IsStrikeEventFinishedBeingActive() const
+01285544	18	00692530	bool IsVitalStrike() const
+01285544	19	00692520	bool IsKnockdownStrike() const
+01285544	20	006926c0	bool IsBlockCounter() const
+01285544	21	006926d0	bool IsMeleeFlourish() const
+01285544	22	006926e0	bool IsActionWithStrikeEventHelperName() const
+01285544	23	006926f0	CCharString GetStrikeEventHelperName() const
+01285544	24	00692540	bool IsOverrideableByActionOfSamePriority() const
+01285544	25	00692550	void OnFrameUpdate(float elapsed)
+01285544	26	00692560	bool IsQueuable() const
+01285544	27	00692570	bool IsActionReadyForInterruption() const
+01285544	28	00692710	bool IsActionReadyForInterruptionByMovement(const C3DVector& vector) const
+01285544	29	00692580	bool IsBlockable() const
+01285544	30	00692720	bool IsAffectedByHaste() const
+01285544	31	00692730	bool IsAffectedByHeroStats() const
+01285544	32	00692740	bool IsPhysicsPushableByHero() const
+01285544	33	00692750	bool IsAlwaysPhysicsPushableBySelfAvoidance() const
+01285544	34	00692760	bool IsAlwaysUseAnimationMovement() const
+01285544	35	00692770	bool IsClearingMovementVector() const
+01285544	36	00692780	bool IsToHaveEmptyHands() const
+01285544	37	00692790	bool IsToReplaceItemIfRemoved() const
+01285544	38	006927a0	bool IsAllowingAnimationMovementToMoveSpeakAndWaitCameras() const
+01285544	39	006927b0	bool IsPreventingQuickAccessItemUsage() const
+01285544	40	006927c0	void SetHitter(const CThing& thing)
+01285544	41	006927d0	void SetHitDirection(C3DVector direction)
+01285544	42	006927e0	void SetHitPosition(C3DVector position)
+01285544	43	00692590	CTCWeaponTrail* GetWeaponTrailUsedInStrikeAction(long& id) const
+01285544	44	00692960	float GetTotalTimeSeconds() const
+01285544	45	00692630	bool IsToEvadeAllHits() const
+01285544	46	00692640	bool IsToCauseRecoil() const
+01285544	47	00692650	bool IsAbleToBeAttacked() const
+01285544	48	00692660	bool IsPlayHitResponse() const
+01285544	49	00692a20	bool IsPreventingNormalMovement() const
+01285544	50	00692670	bool IsPreventingLookTurning() const
+01285544	51	006927f0	void OnBlowBlocked(bool blocked)
+01285544	52	00692800	void OnFollowUpActionFailedToAdd()
+01285544	53	00692480	void UpdateActionRunningTime()
+01285544	54	00692810	bool IsDecapitatingAttack() const
+01285544	55	00692820	bool PreventSneaking() const
+01285544	56	00694020	void FrameUpdate()
+01285544	57	00692680	bool IsUsingAnimationMovement() const
+01285544	58	00692690	bool IsUsingForcedMovement() const
+01285544	59	006926a0	bool IsMovementUsingPhysics() const
+01285544	60	00692b30	void UpdateActionMoveToPos()
+01285544	61	00692c80	void InitialiseActionMovement()
+01285544	62	00692bc0	float GetFrameUpdateTime() const
+01285544	63	00692c30	float GetActionSpeedParameter() const
+01285544	64	006923a0	float GetActionStartRunningTimeSeconds() const
+01285544	65	00692880	bool OverrideFaceWithDefault() const
+01285544	66	00692890	bool AllowsCombinationAnims() const
+01285544	67	006928b0	bool CanAnimationTransitionOut() const
+01285544	68	00692830	void OnAnimationLoaded()
+01285544	69	00692840	bool WaitForMeshToLoad() const

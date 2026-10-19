@@ -1,0 +1,11 @@
+offset	native_target	symbol
+00000005	00449970	?GetMainPlayer@PlayerManagerMethods@@QAEPAUPlayerMethods@@XZ
+0000000c	00487dc0	?GetHeroThing@PlayerMethods@@QAEPAUCThingNative@@XZ
+0000002e	0044c6b0	?Get@CGameDefinitionManager@@SIAAU1@XZ
+00000035	009ad410	?GetDefGlobalIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@@Z
+00000060	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00000079	005bfac6	?ConfiscateAllItemsOfType@InventoryMethods@@QAEXJ@Z
+00000099	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+000000b2	005bfac6	?ConfiscateAllItemsOfType@InventoryMethods@@QAEXJ@Z
+000000d2	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+000000eb	005bfac6	?ConfiscateAllItemsOfType@InventoryMethods@@QAEXJ@Z

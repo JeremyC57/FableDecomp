@@ -1,0 +1,6 @@
+# Resolve compressed filename extensions
+
+009c46b0 (240 bytes): splits the filename into stem/extension, converts and lowercases the lookup key, then replaces recognized compressed extensions with the map value while preserving unknown extensions. Native map offset94 and mapped string at node14 audited directly. Source uses actual fable_string storage through field-free method views; no generated file-installer or CAFile header exists. Main independently inspected native call order and all string/map helper identities, including by-value conversion results and cleanup before return.
+
+Final exact-source fixture expands the actual shared header and tracks narrow/wide ownership. Main passes optimized host and VC7.1 byte/behavior checks, with additional aliased input/output cases. Tests cover recognized uppercase extensions, unknown/no extensions, empty stem, case preservation, repeated assignment and complete cleanup. RELOCATION_MATCH plus PASS. Six new authored grades plus UNCERTAIN historical reservation4; no further authored allowance remains. Header integration caused two additional graded changes; verification executions remain separate.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

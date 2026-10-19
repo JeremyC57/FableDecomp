@@ -1,0 +1,1 @@
+0124f2b8 00000060fb211940 double=6.2831854820251465; matches float2pi promoted to double

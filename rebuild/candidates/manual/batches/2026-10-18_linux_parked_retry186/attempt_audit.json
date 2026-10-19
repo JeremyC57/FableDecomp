@@ -1,0 +1,96 @@
+[
+  {
+    "address": "004573fd",
+    "attempt": 1,
+    "sha256": "d86a8de81554552a3dc05af754112694935d21f769cc5e805158378f3a4a964a",
+    "base_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "extra_flags": [],
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "004573fd",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra242_whole/snapshots/004573fd/a01/source.cpp",
+      "??1CSpecialAbilitiesBerserkDef"
+    ]
+  },
+  {
+    "address": "004573fd",
+    "attempt": 2,
+    "sha256": "a6d1498e50543cb892ee2d26876778bd3f532f29079fe6a68fe4d6af9787cfa0",
+    "base_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "extra_flags": [],
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "004573fd",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra242_whole/snapshots/004573fd/a02/source.cpp",
+      "??1CSpecialAbilitiesBerserkDef"
+    ]
+  },
+  {
+    "address": "00457ca0",
+    "attempt": 1,
+    "sha256": "c7e09250fd5ad036b5cc82ad287a04da5503b0971f50bc967d9115393c3ac298",
+    "base_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "extra_flags": [],
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00457ca0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra242_whole/snapshots/00457ca0/a01/source.cpp",
+      "??1CSpecialAbilitiesLightningSpellDef"
+    ]
+  },
+  {
+    "address": "00457ca0",
+    "attempt": 2,
+    "sha256": "828cd8678bf79409dea04c07e47c13ec14061801e8edfe3efb9d285b2b521fcf",
+    "base_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "extra_flags": [],
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00457ca0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra242_whole/snapshots/00457ca0/a02/source.cpp",
+      "??1CSpecialAbilitiesLightningSpellDef"
+    ]
+  },
+  {
+    "address": "00bcc5f0",
+    "attempt": 1,
+    "sha256": "6335531920770f6df4b607052b93e90f1301c1744dcaa3281a0709621c139843",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00bcc5f0 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00bcc5f0/grade01/source.cpp CEnginePrimitiveManagerWeaponTrails\n",
+    "path": "work/codex-lane/w22/luna236_whole/attempts/00bcc5f0/grade01"
+  },
+  {
+    "address": "00bcc5f0",
+    "attempt": 2,
+    "sha256": "d1bc73f882770efa43b4079c7d03b2a71155304a4846b259d5e8140889cc6be5",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00bcc5f0 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00bcc5f0/grade02/source.cpp CEnginePrimitiveManagerWeaponTrails\n",
+    "path": "work/codex-lane/w22/luna236_whole/attempts/00bcc5f0/grade02"
+  }
+]

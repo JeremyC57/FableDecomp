@@ -1,0 +1,625 @@
+{
+  "slots": [
+    {
+      "address": "00417418",
+      "table": "??_7CBaseClass@@6B@",
+      "slot": 0,
+      "target": "0x4371f0",
+      "compiled": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00417418",
+      "table": "??_7CBaseClassNonCopyable@@6B@",
+      "slot": 0,
+      "target": "0x99a470",
+      "compiled": "public: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00417418",
+      "table": "??_7CDisplayEngine@@6B@",
+      "slot": 0,
+      "target": "0x437070",
+      "compiled": "public: virtual void * __thiscall CDisplayEngine::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00417418",
+      "table": "??_7CDisplayEngine@@6B@",
+      "slot": 1,
+      "target": "0x435190",
+      "compiled": "public: virtual bool __thiscall CDisplayEngine::InitEngine(void)",
+      "expected": "protected: virtual bool __thiscall CDisplayEngine::InitEngine(void)"
+    },
+    {
+      "address": "00417418",
+      "table": "??_7CDisplayEngine@@6B@",
+      "slot": 2,
+      "target": "0x4354a0",
+      "compiled": "public: virtual void __thiscall CDisplayEngine::UninitEngine(void)",
+      "expected": "protected: virtual void __thiscall CDisplayEngine::UninitEngine(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCDeviceResetCallback@@@",
+      "slot": 0,
+      "target": "0x415e83",
+      "compiled": "public: virtual void __thiscall CMainGameComponent::OnPreDeviceReset(void)",
+      "expected": "public: virtual void __thiscall CMainGameComponent::OnPreDeviceReset(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCDeviceResetCallback@@@",
+      "slot": 1,
+      "target": "0x4175da",
+      "compiled": "public: virtual bool __thiscall CMainGameComponent::OnPostDeviceReset(void)",
+      "expected": "public: virtual bool __thiscall CMainGameComponent::OnPostDeviceReset(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 0,
+      "target": "0x4197b3",
+      "compiled": "public: virtual void * __thiscall CMainGameComponent::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 1,
+      "target": "0x4184bd",
+      "compiled": "public: virtual void __thiscall CMainGameComponent::Init(void)",
+      "expected": "public: virtual void __thiscall CMainGameComponent::Init(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 2,
+      "target": "0x4189c2",
+      "compiled": "public: virtual bool __thiscall CMainGameComponent::Run(struct CGameComponent **)",
+      "expected": "public: virtual bool __thiscall CMainGameComponent::Run(class CGameComponent **)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 3,
+      "target": "0x41799b",
+      "compiled": "public: virtual void __thiscall CMainGameComponent::ChangeTextureColourDepth(long)",
+      "expected": "public: virtual void __thiscall CMainGameComponent::ChangeTextureColourDepth(long)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 4,
+      "target": "0x4197a0",
+      "compiled": "public: virtual void __thiscall CMainGameComponent::SetQuit(void)",
+      "expected": "public: virtual void __thiscall CMainGameComponent::SetQuit(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 5,
+      "target": "0x418289",
+      "compiled": "public: virtual void __thiscall CMainGameComponent::Update(void)",
+      "expected": "protected: virtual void __thiscall CMainGameComponent::Update(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 6,
+      "target": "0x416e78",
+      "compiled": "public: virtual void __thiscall CMainGameComponent::GetInputs(void)",
+      "expected": "protected: virtual void __thiscall CMainGameComponent::GetInputs(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 7,
+      "target": "0x417001",
+      "compiled": "public: virtual void __thiscall CMainGameComponent::Render(void)",
+      "expected": "protected: virtual void __thiscall CMainGameComponent::Render(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 8,
+      "target": "0x416953",
+      "compiled": "public: virtual void __thiscall CMainGameComponent::PostInit(void)",
+      "expected": "protected: virtual void __thiscall CMainGameComponent::PostInit(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 9,
+      "target": "0x4197b0",
+      "compiled": "public: virtual bool __thiscall CMainGameComponent::IsEditorActive(void) const",
+      "expected": "public: virtual bool __thiscall CMainGameComponent::IsEditorActive(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGameComponent@@6BCDeviceResetCallback@@@",
+      "slot": 0,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGameComponent@@6BCDeviceResetCallback@@@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 0,
+      "target": "0x415940",
+      "compiled": "public: virtual void * __thiscall CGameComponent::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 1,
+      "target": "0x415920",
+      "compiled": "public: virtual void __thiscall CGameComponent::Init(void)",
+      "expected": "public: virtual void __thiscall CGameComponent::Init(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 2,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 3,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGameComponent@@6BCBaseClassNonCopyable@@@",
+      "slot": 4,
+      "target": "0x415930",
+      "compiled": "public: virtual void __thiscall CGameComponent::SetQuit(void)",
+      "expected": "protected: virtual void __thiscall CGameComponent::SetQuit(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CBaseClass@@6B@",
+      "slot": 0,
+      "target": "0x4371f0",
+      "compiled": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CBaseClassNonCopyable@@6B@",
+      "slot": 0,
+      "target": "0x99a470",
+      "compiled": "public: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CInitBaseClass@@6B@",
+      "slot": 0,
+      "target": "0x99a490",
+      "compiled": "public: virtual void * __thiscall CInitBaseClass::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CInitBaseClass@@6B@",
+      "slot": 1,
+      "target": "0x99a340",
+      "compiled": "public: virtual void __thiscall CInitBaseClass::Validate(void) const",
+      "expected": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 0,
+      "target": "0x4192b0",
+      "compiled": "public: virtual void * __thiscall CAFile::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 2,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 3,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 4,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 5,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 6,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 7,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 8,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 9,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 10,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 11,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 12,
+      "target": "0x401650",
+      "compiled": "public: virtual bool __thiscall CAFile::IsIOFinished(void) const",
+      "expected": "public: virtual bool __thiscall CAFile::IsIOFinished(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 13,
+      "target": "0x401660",
+      "compiled": "public: virtual long __thiscall CAFile::GetAlignment(void) const",
+      "expected": "public: virtual long __thiscall CAFile::GetAlignment(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CAFile@@6B@",
+      "slot": 14,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDisplayEngine@@6B@",
+      "slot": 0,
+      "target": "0x437070",
+      "compiled": "public: virtual void * __thiscall CDisplayEngine::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDisplayEngine@@6B@",
+      "slot": 1,
+      "target": "0x435190",
+      "compiled": "public: virtual bool __thiscall CDisplayEngine::InitEngine(void)",
+      "expected": "protected: virtual bool __thiscall CDisplayEngine::InitEngine(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDisplayEngine@@6B@",
+      "slot": 2,
+      "target": "0x4354a0",
+      "compiled": "public: virtual void __thiscall CDisplayEngine::UninitEngine(void)",
+      "expected": "protected: virtual void __thiscall CDisplayEngine::UninitEngine(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CNetworkClient@@6B@",
+      "slot": 0,
+      "target": "0x419365",
+      "compiled": "public: virtual void * __thiscall CNetworkClient::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CNetworkClient@@6B@",
+      "slot": 1,
+      "target": "0x99a340",
+      "compiled": "public: virtual void __thiscall CInitBaseClass::Validate(void) const",
+      "expected": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 0,
+      "target": "0x4016b0",
+      "compiled": "public: virtual void * __thiscall CDiskFileWin32::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 1,
+      "target": "0x99a6a0",
+      "compiled": "public: virtual void __thiscall CDiskFileWin32::Open(class CWideString const &, enum FileAccessType, unsigned long)",
+      "expected": "public: virtual void __thiscall CDiskFileWin32::Open(class CWideString const &, enum FileAccessType, unsigned long)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 2,
+      "target": "0x99a920",
+      "compiled": "public: virtual void __thiscall CDiskFileWin32::Close(void)",
+      "expected": "public: virtual void __thiscall CDiskFileWin32::Close(void)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 3,
+      "target": "0x99a960",
+      "compiled": "public: virtual void __thiscall CDiskFileWin32::Read(void *, long, struct CASuspendableProcess *)",
+      "expected": "public: virtual void __thiscall CDiskFileWin32::Read(void *, long, class CASuspendableProcess *)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 4,
+      "target": "0x99aa90",
+      "compiled": "public: virtual void __thiscall CDiskFileWin32::Write(void const *, long, struct CASuspendableProcess *)",
+      "expected": "public: virtual void __thiscall CDiskFileWin32::Write(void const *, long, class CASuspendableProcess *)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 5,
+      "target": "0x99abf0",
+      "compiled": "public: virtual void __thiscall CDiskFileWin32::SetPosition(long)",
+      "expected": "public: virtual void __thiscall CDiskFileWin32::SetPosition(long)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 6,
+      "target": "0x99ac90",
+      "compiled": "public: virtual void __thiscall CDiskFileWin32::MovePosition(long)",
+      "expected": "public: virtual void __thiscall CDiskFileWin32::MovePosition(long)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 7,
+      "target": "0x99abd0",
+      "compiled": "public: virtual long __thiscall CDiskFileWin32::GetPosition(void) const",
+      "expected": "public: virtual long __thiscall CDiskFileWin32::GetPosition(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 8,
+      "target": "0x99a560",
+      "compiled": "public: virtual void __thiscall CDiskFileWin32::SetLength(long)",
+      "expected": "public: virtual void __thiscall CDiskFileWin32::SetLength(long)"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 9,
+      "target": "0x401670",
+      "compiled": "public: virtual long __thiscall CDiskFileWin32::GetLength(void) const",
+      "expected": "public: virtual long __thiscall CDiskFileWin32::GetLength(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 10,
+      "target": "0x401680",
+      "compiled": "public: virtual bool __thiscall CDiskFileWin32::IsOpen(void) const",
+      "expected": "public: virtual bool __thiscall CDiskFileWin32::IsOpen(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 11,
+      "target": "0x401690",
+      "compiled": "public: virtual class CWideString __thiscall CDiskFileWin32::GetPathname(void) const",
+      "expected": "public: virtual class CWideString __thiscall CDiskFileWin32::GetPathname(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 12,
+      "target": "0x401650",
+      "compiled": "public: virtual bool __thiscall CAFile::IsIOFinished(void) const",
+      "expected": "public: virtual bool __thiscall CAFile::IsIOFinished(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 13,
+      "target": "0x401660",
+      "compiled": "public: virtual long __thiscall CAFile::GetAlignment(void) const",
+      "expected": "public: virtual long __thiscall CAFile::GetAlignment(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CDiskFileWin32@@6B@",
+      "slot": 14,
+      "target": "0x99ae00",
+      "compiled": "public: virtual struct CAFile * __thiscall CDiskFileWin32::Clone(void) const",
+      "expected": "public: virtual class CAFile * __thiscall CDiskFileWin32::Clone(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CFrameRateSmoother@@6B@",
+      "slot": 0,
+      "target": "0x41977d",
+      "compiled": "public: virtual void * __thiscall CFrameRateSmoother::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CFrameRateSmoother@@6B@",
+      "slot": 1,
+      "target": "0x99a340",
+      "compiled": "public: virtual void __thiscall CInitBaseClass::Validate(void) const",
+      "expected": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGame@@6B@",
+      "slot": 0,
+      "target": "0x413230",
+      "compiled": "public: virtual void * __thiscall CGame::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00418b7a",
+      "table": "??_7CGame@@6B@",
+      "slot": 1,
+      "target": "0x99a340",
+      "compiled": "public: virtual void __thiscall CInitBaseClass::Validate(void) const",
+      "expected": "public: virtual void __thiscall CInitBaseClass::Validate(void) const"
+    },
+    {
+      "address": "0041d8e7",
+      "table": "??_7CIVCountedPointeeBase@@6B@",
+      "slot": 0,
+      "target": "0x4664e0",
+      "compiled": "public: virtual void * __thiscall CIVCountedPointeeBase::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "0041d8e7",
+      "table": "??_7CIVCountedPointeeBase@@6B@",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+      "expected": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "address": "0041d98a",
+      "table": "??_7CIVCountedPointeeBase@@6B@",
+      "slot": 0,
+      "target": "0x4664e0",
+      "compiled": "public: virtual void * __thiscall CIVCountedPointeeBase::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "0041d98a",
+      "table": "??_7CIVCountedPointeeBase@@6B@",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+      "expected": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    }
+  ],
+  "mismatches": [],
+  "excluded": [
+    [
+      "00418b7a",
+      "??_7CDeviceResetCallback@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "00418b7a",
+      "??_7CWorld@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "00418b7a",
+      "??_7CPlayerManager@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "00418b7a",
+      "??_7CGamePlayerInterface@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "00418b7a",
+      "??_7PlayerDouble@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "00418b7a",
+      "??_7InterfaceDouble@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "00418b7a",
+      "??_7WorldDouble@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "00418b7a",
+      "??_7DisplayDouble@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "0041d8e7",
+      "??_7DefinitionFixture@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ],
+    [
+      "0041d98a",
+      "??_7DefinitionFixture@@6B@",
+      "Destruction-only external interface view or fixture subclass; not a complete native object claim."
+    ]
+  ]
+}

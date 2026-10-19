@@ -1,0 +1,58 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/evidence/00a699d0.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0C2DExtentsI@@QAE@JJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0C3DExtentsI@@QAE@JJJ@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??0CBaseClass@@QAE@XZ
+00000012 dir32             ??_7CVolumeTexture@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECVolumeTexture@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CVolumeTexture@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CVolumeTexture@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCVolumeTexture@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Volume@CManagedTextureData@@QAEAAU?$CCountedPointer@UCVolumeTexture@@@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000027 DISP32            ?GetNextValidDimensions@CTexture@@SI?AUC2DExtentsI@@ABU2@ABUCPixelFormat@@@Z
+00000036 DISP32            ??2@YAPAXI@Z
+00000046 DISP32            ??0CBaseClass@@QAE@XZ
+00000054 dir32             ??_7CVolumeTexture@@6B@
+00000065 DISP32            ?Reset@?$CCountedPointer@UCVolumeTexture@@@@QAEXPAUCVolumeTexture@@@Z
+00000098 DISP32            ?Initialise@CVolumeTexture@@QAE_NABUC3DExtentsI@@JABUCPixelFormat@@KW4EVolumePool@@_N@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?CreateVolumeTexture@CManagedTextureData@@QAE_NKKKJABUCPixelFormat@@@Z

@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00aed090   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aed090   MATCH            PASS   Set2DPosition
+00988490   MATCH            PASS   SetProjectionTransform
+00ad7400   RELOCATION_MATCH PASS   Kill
+
+WINS: 3
+  00aed090 MATCH CParticleEmitter::Set2DPosition
+  00988490 MATCH CShaderRenderManager::SetProjectionTransform
+  00ad7400 RELOCATION_MATCH CWound::CTreeOwner
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CParticleEmitter_Set2DPosition_00aed090
+  CShaderRenderManager_SetProjectionTransform_00988490
+  CWound_Kill_00ad7400

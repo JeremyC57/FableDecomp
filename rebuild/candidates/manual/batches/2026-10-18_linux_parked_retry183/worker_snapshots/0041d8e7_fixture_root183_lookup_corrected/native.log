@@ -1,0 +1,5 @@
+['/nologo', '/c', '/O2', '/W3', '/Fo/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/native.obj', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp']
+fixture.cpp
+link ['/nologo', '/out:/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/native.exe', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/native.obj']
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+0041d8e7_TEST PASS

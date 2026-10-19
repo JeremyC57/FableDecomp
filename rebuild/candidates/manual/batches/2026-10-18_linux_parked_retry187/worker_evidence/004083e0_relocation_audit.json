@@ -1,0 +1,135 @@
+{
+  "caller": [
+    {
+      "offset": 4,
+      "native_target": "0x13b86a0",
+      "symbol": "?g_pMainGameComponent@@3PAXA",
+      "demangled": "void *g_pMainGameComponent",
+      "identity": "Runtime main component singleton presence"
+    },
+    {
+      "offset": 22,
+      "native_target": "0x122e078",
+      "symbol": "??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@",
+      "demangled": "\"CONFIG_OPTIONS_DEFAULTS_DEF\"",
+      "identity": "literal independently read through NUL",
+      "literal_hex": "434f4e4649475f4f5054494f4e535f44454641554c54535f44454600"
+    },
+    {
+      "offset": 31,
+      "native_target": "0x99ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "demangled": "public: __thiscall CCharString::CCharString(char const *, long)",
+      "identity": "owning CCharString(const char*,long)"
+    },
+    {
+      "offset": 43,
+      "native_target": "0x44c6b0",
+      "symbol": "?GetGameDefinitionManager@@YIPAUCDefinitionManager@@XZ",
+      "demangled": "struct CDefinitionManager * __fastcall GetGameDefinitionManager(void)",
+      "identity": "game definition accessor loads013B879C"
+    },
+    {
+      "offset": 50,
+      "native_target": "0x9ad390",
+      "symbol": "?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z",
+      "demangled": "public: long __thiscall CDefinitionManager::GetGlobalIndexFromClassIndex(struct CCharString const &, long) const",
+      "identity": "CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString&,long)const"
+    },
+    {
+      "offset": 61,
+      "native_target": "0x99eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "demangled": "public: __thiscall CCharString::~CCharString(void)",
+      "identity": "CCharString destructor"
+    },
+    {
+      "offset": 72,
+      "native_target": "0x44c6b0",
+      "symbol": "?GetGameDefinitionManager@@YIPAUCDefinitionManager@@XZ",
+      "demangled": "struct CDefinitionManager * __fastcall GetGameDefinitionManager(void)",
+      "identity": "game definition accessor loads013B879C"
+    },
+    {
+      "offset": 79,
+      "native_target": "0x13b871c",
+      "symbol": "?g_pFrontendRuntime@@3PAXA",
+      "demangled": "void *g_pFrontendRuntime",
+      "identity": "Runtime frontend singleton presence"
+    },
+    {
+      "offset": 90,
+      "native_target": "0x122e078",
+      "symbol": "??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@",
+      "demangled": "\"CONFIG_OPTIONS_DEFAULTS_DEF\"",
+      "identity": "literal independently read through NUL",
+      "literal_hex": "434f4e4649475f4f5054494f4e535f44454641554c54535f44454600"
+    },
+    {
+      "offset": 99,
+      "native_target": "0x99ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "demangled": "public: __thiscall CCharString::CCharString(char const *, long)",
+      "identity": "owning CCharString(const char*,long)"
+    },
+    {
+      "offset": 111,
+      "native_target": "0x43368d",
+      "symbol": "?GetFrontendDefinitionManager@@YIPAUCDefinitionManager@@XZ",
+      "demangled": "struct CDefinitionManager * __fastcall GetFrontendDefinitionManager(void)",
+      "identity": "frontend definition accessor loads013B8760"
+    },
+    {
+      "offset": 118,
+      "native_target": "0x9ad390",
+      "symbol": "?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z",
+      "demangled": "public: long __thiscall CDefinitionManager::GetGlobalIndexFromClassIndex(struct CCharString const &, long) const",
+      "identity": "CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString&,long)const"
+    },
+    {
+      "offset": 129,
+      "native_target": "0x99eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "demangled": "public: __thiscall CCharString::~CCharString(void)",
+      "identity": "CCharString destructor"
+    },
+    {
+      "offset": 140,
+      "native_target": "0x43368d",
+      "symbol": "?GetFrontendDefinitionManager@@YIPAUCDefinitionManager@@XZ",
+      "demangled": "struct CDefinitionManager * __fastcall GetFrontendDefinitionManager(void)",
+      "identity": "frontend definition accessor loads013B8760"
+    },
+    {
+      "offset": 147,
+      "native_target": "0x410890",
+      "symbol": "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@@Z",
+      "demangled": "public: bool __thiscall CDefinitionManager::GetDef(long, struct CDefPointer<struct CConfigOptionsDefaultsDef const> *)",
+      "identity": "mutable CDefPointer<const CConfigOptionsDefaultsDef> lookup helper; complete108-byte match below"
+    }
+  ],
+  "helper108_exact": true,
+  "helper_calls": [
+    {
+      "offset": 15,
+      "target": "0x9ad9e0",
+      "symbol": "?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AU?$CDefPointer@UCDefClassBase@@@@J@Z"
+    }
+  ],
+  "actual_fixture_vtables": [
+    {
+      "vtable": "??_7CIVCountedPointeeBase@@6B@",
+      "slots": [
+        "??_ECIVCountedPointeeBase@@UAEPAXI@Z",
+        "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+      ]
+    },
+    {
+      "vtable": "??_7DefinitionFixture@@6B@",
+      "slots": [
+        "??_EDefinitionFixture@@UAEPAXI@Z",
+        "?Delete@DefinitionFixture@@UBEXXZ"
+      ]
+    }
+  ]
+}

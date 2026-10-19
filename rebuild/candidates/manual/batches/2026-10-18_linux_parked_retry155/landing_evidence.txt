@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00405650   RELOCATION_MATCH PASS   Initialise
+00404970   RELOCATION_MATCH PASS   GetFontNameAndScale
+00542330   RELOCATION_MATCH PASS   CIconText
+
+WINS: 3
+  00405650 RELOCATION_MATCH CIME::Initialise
+  00404970 RELOCATION_MATCH CIMEFont::GetFontNameAndScale
+  00542330 RELOCATION_MATCH CIconText::??0CIconText@
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CIME_Initialise_00405650
+  CIMEFont_GetFontNameAndScale_00404970
+  CIconText_CIconText_00542330

@@ -1,0 +1,8 @@
+offset	native_target	symbol
+000000bf	0122ded8	?g_fOne_0122DED8@@3MA
+000000d1	0122ded8	?g_fOne_0122DED8@@3MA
+000000e0	01231724	?g_fReciprocal255_01231724@@3MA
+000000e6	0122ded8	?g_fOne_0122DED8@@3MA
+00000101	01436e80	?g_pViewRecord_01436E80@@3PAUSViewRecord_01436E80@@A
+00000115	00a256f0	?BeginLoading@C3DMeshInfoLoadingCallView@@QBEXK_N0@Z
+0000011e	00a23c50	?UnknownRet4@C3DMeshInfoRet4CallView@@QAEXK@Z

@@ -1,0 +1,221 @@
+[
+  {
+    "symbol": "?GetPos@CThing@@QBEABVC3DVector@@XZ",
+    "undecorated": "public: class C3DVector const & __thiscall CThing::GetPos(void) const",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        4226,
+        "004c9070"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        30545,
+        "01cf3c00"
+      ]
+    ]
+  },
+  {
+    "symbol": "?InitialiseMovementSpeeds@CThingPlayerCreature@@QAEXXZ",
+    "undecorated": "public: void __thiscall CThingPlayerCreature::InitialiseMovementSpeeds(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        7635,
+        "005469f0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        36016,
+        "01df76a0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?SuspendAI@CThingAICreature@@QAEX_NPAX@Z",
+    "undecorated": "public: void __thiscall CThingAICreature::SuspendAI(bool, void *)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        7378,
+        "0053a870"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        33521,
+        "01d6fb80"
+      ]
+    ]
+  },
+  {
+    "symbol": "?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z",
+    "undecorated": "public: class CAnimSet * __thiscall CAnimateThing::GetFirstCombinationAnimFromType(long)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        8562,
+        "00576120"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        39676,
+        "01e96e80"
+      ]
+    ]
+  },
+  {
+    "symbol": "?RemoveCombinationAnimsOfType@CAnimateThing@@QAEXJ@Z",
+    "undecorated": "public: void __thiscall CAnimateThing::RemoveCombinationAnimsOfType(long)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        8585,
+        "00577e70"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        39681,
+        "01e97560"
+      ]
+    ]
+  },
+  {
+    "symbol": "?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ",
+    "undecorated": "public: class CAnimateThing & __thiscall CTCAnimationComplex::GetAnimation(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        8646,
+        "0057a430"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        40360,
+        "01eadc00"
+      ]
+    ]
+  },
+  {
+    "symbol": "?GetValidPositions@NCreatureHiding@@YIXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z",
+    "undecorated": "void __fastcall NCreatureHiding::GetValidPositions(class std::vector<class C3DVector, class std::allocator<class C3DVector>> &, class CWorldMap const &, class CThingSearchTools const &, class C3DVector const &, float, bool, class CTCShapeManager const *)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        16668,
+        "0075c940"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        70712,
+        "025127e0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?OnActivate@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@UAEXXZ",
+    "undecorated": "public: virtual void __thiscall NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::OnActivate(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        20026,
+        "008189b0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        85230,
+        "02846fb0"
+      ]
+    ]
+  },
+  {
+    "symbol": "??$GetSubDef@VCSnowTrollDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSnowTrollDef@@@@@Z",
+    "undecorated": "public: bool __thiscall CDefClassBase::GetSubDef<class CSnowTrollDef>(class CDefPointer<class CSnowTrollDef const> *) const",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        20158,
+        "00825220"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        85527,
+        "0286c760"
+      ]
+    ]
+  },
+  {
+    "symbol": "?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z",
+    "undecorated": "class CCharString __fastcall NCreatureMode::GetStrafingAnimationName(class CThing const &, enum EMovementType)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        24503,
+        "0090f4a0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        96217,
+        "02ad6ac0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z",
+    "undecorated": "bool __fastcall NCreatureMode::GetAnimDistanceAndIndexFromAnimName(class CThingCreatureBase const &, class CCharString const &, long &, float &)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        24504,
+        "0090f530"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        96218,
+        "02ad6ba0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?OnActivate@CModeStrafe@NCreatureMode@@UAEXXZ",
+    "undecorated": "public: virtual void __thiscall NCreatureMode::CModeStrafe::OnActivate(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        24513,
+        "0090ffc0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        96226,
+        "02ad8350"
+      ]
+    ]
+  },
+  {
+    "symbol": "?FrameUpdate@CModeStrafe@NCreatureMode@@UAEXXZ",
+    "undecorated": "public: virtual void __thiscall NCreatureMode::CModeStrafe::FrameUpdate(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        24516,
+        "009107c0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        96230,
+        "02ad97c0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "undecorated": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "PDB_records": [
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        3886,
+        "01934d60"
+      ]
+    ]
+  }
+]

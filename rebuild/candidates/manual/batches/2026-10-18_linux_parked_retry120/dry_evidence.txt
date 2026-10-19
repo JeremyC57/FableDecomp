@@ -1,0 +1,7 @@
+addr       parity           behav  name
+009964e0   RELOCATION_MATCH PASS   ReadWithChunking
+0093cb20   RELOCATION_MATCH PASS   Update
+
+WINS: 2
+  009964e0 RELOCATION_MATCH CDataInputStream::ReadWithChunking
+  0093cb20 RELOCATION_MATCH CAIStateGroup_NonVillageGuardPatrol::Update

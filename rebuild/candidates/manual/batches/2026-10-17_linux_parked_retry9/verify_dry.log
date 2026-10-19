@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0045619e   RELOCATION_MATCH PASS   ~CHeroStatsDef
+00458111   RELOCATION_MATCH PASS   ~CSpecialAbilitiesDivineWrathDef
+004582d6   RELOCATION_MATCH PASS   ~CSpecialAbilitiesUnholyPowerDef
+008f5fa0   MATCH            PASS   AreaChanged
+
+WINS: 4
+  0045619e RELOCATION_MATCH CHeroStatsDef::??1CHeroStatsDef
+  00458111 RELOCATION_MATCH CSpecialAbilitiesDivineWrathDef::??1CSpecialAbilitiesDivineWrathDef
+  004582d6 RELOCATION_MATCH CSpecialAbilitiesUnholyPowerDef::??1CSpecialAbilitiesUnholyPowerDef
+  008f5fa0 MATCH CHeightMap::AreaChanged

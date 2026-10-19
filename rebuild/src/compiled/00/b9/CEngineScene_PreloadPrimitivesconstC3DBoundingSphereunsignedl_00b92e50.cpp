@@ -1,0 +1,147 @@
+// CEngineScene::PreloadPrimitives -- native 00b92e50, C3DBoundingSphere overload.
+// Leaf: PreloadPrimitives
+#ifndef CHUNK236_SCENE_NATIVE_RESUME_H
+#define CHUNK236_SCENE_NATIVE_RESUME_H
+// Native interfaces audited against table 012A3D7C (28 entries), RTTI hierarchy,
+// FableWin PDB named signatures and native field loads. Donor record headers
+// remain included; actual virtual classes replace their data-only projections.
+#define CIVCountedPointeeBase CIVCountedPointeeBase_PDB
+#include "engine/CIVCountedPointeeBase.h"
+#undef CIVCountedPointeeBase
+#define CEnginePersistentPrimitiveBase CEnginePersistentPrimitiveBase_PDB
+#include "engine/CEnginePersistentPrimitiveBase.h"
+#undef CEnginePersistentPrimitiveBase
+#define CEngineInternalPrimitiveBase CEngineInternalPrimitiveBase_PDB
+#include "engine/CEngineInternalPrimitiveBase.h"
+#undef CEngineInternalPrimitiveBase
+#include "engine/CEngineCamera.h"
+#include "engine/CEnginePrimitiveTypeInfo.h"
+#ifndef _MSC_VER
+#define __declspec(x)
+#endif
+struct C3DVector {float X,Y,Z;};
+struct C3DBoundingSphere {C3DVector Center;float Radius;};
+struct C3DBoundingBox {C3DVector MinCoord,MaxCoord;bool IntersectsSolid(const C3DBoundingSphere&) const;}; //00ADECC0
+struct CMatrix3x4 {float Values[12];};
+struct CEngineFadeDistance {float FadeBeginDistance,MaxDrawDistance;};
+struct C2DBoxF {float TLX,TLY,BRX,BRY;};
+struct CEngineCameraDesc {C2DBoxF Window;CMatrix3x4 RotationMatrix;C3DVector WorldPosition;float HorizontalFOV,VerticalFOV;bool Use2DFOV;float NearZPlane,FarZPlane,ZBufferStart,ZBufferEnd;bool StateValid;};
+struct CEngineCameraMethods:CEngineCamera {
+ bool ClipWorldSpaceBoundingBox(const C3DBoundingBox&,float,bool&) const; //00B308E0
+ const C3DVector& Position()const{return reinterpret_cast<const CEngineCameraDesc*>(CameraDesc)->WorldPosition;}
+};
+struct CEnginePrimitiveHandle;struct CEnginePrimitive;struct CEnginePrimitiveAnimation;struct CEnginePrimitivePosition;struct CEngineMeshEffect;struct CEngineInternalPrimitiveOcclusionBase;
+template<class T>struct CIVCountedPointer;
+namespace std {template<class T>struct less;template<class T>class allocator;template<class K,class V>struct pair;template<class K,class V,class C,class A>class map;}
+typedef std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > > PrimitiveStats;
+enum EEnginePrimitiveStatIndex {PrimitiveStatDefault=0};
+struct CIVCountedPointeeBase {
+ mutable unsigned long IVRefCount;
+ CIVCountedPointeeBase();virtual ~CIVCountedPointeeBase();virtual void Delete()const;
+};
+struct CEnginePersistentPrimitiveBase:CIVCountedPointeeBase {
+ long Type;
+ CEnginePersistentPrimitiveBase(long);virtual ~CEnginePersistentPrimitiveBase();
+ virtual void CollectStats(PrimitiveStats&,EEnginePrimitiveStatIndex,unsigned long)const=0;
+ virtual void NotifyReleased(const CEnginePrimitiveHandle&);
+ virtual bool WasRendered()const;
+};
+struct CEngineInternalPrimitiveBase:CEnginePersistentPrimitiveBase {
+ CEngineInternalPrimitiveBase(long,unsigned long);virtual ~CEngineInternalPrimitiveBase();
+ virtual void CollectStats(PrimitiveStats&,EEnginePrimitiveStatIndex,unsigned long)const;
+ virtual void NotifyReleased(const CEnginePrimitiveHandle&);virtual bool WasRendered()const;
+ virtual void Update(const CEnginePrimitive&,unsigned long);
+ virtual unsigned long AddChildPrimitive(const CEnginePrimitive&,unsigned long);
+ virtual void SetChildPrimitive(unsigned long,CEnginePrimitiveHandle&,const CEnginePrimitive&,unsigned long);
+ virtual void SetChildPrimitive(unsigned long,const CEnginePrimitive&,unsigned long);
+ virtual void GetChildPrimitiveHandle(unsigned long,CEnginePrimitiveHandle&);
+ virtual void ClearChildPrimitive(unsigned long);virtual void ClearAllChildPrimitives();
+ virtual CEnginePersistentPrimitiveBase* GetChildPrimitive(unsigned long);
+ virtual CEngineFadeDistance GetFadeDistance()const;virtual void PostRender();
+ virtual bool GetWorldPosition(C3DVector&);virtual bool GetBoundingBoxTransform(CMatrix3x4&);
+ virtual bool GetBoundingBoxWorldSpace(C3DBoundingBox&);virtual bool GetBoundingSphereWorldSpace(C3DBoundingSphere&);
+ virtual bool GetBoundingSphereRadiusWorldSpace(float&);virtual bool IsInsideFrustum(const CEngineCamera&,bool);
+ virtual bool GetObjectTransform(CMatrix3x4&)const;virtual bool SetObjectTransform(const CMatrix3x4&);
+ virtual void SetAnimation(const CEnginePrimitiveAnimation&);virtual void SetPosition(const CEnginePrimitivePosition&);
+ virtual void SetMeshEffect(const CIVCountedPointer<CEngineMeshEffect>&);virtual bool GetMeshEffect(CIVCountedPointer<CEngineMeshEffect>&)const;
+ virtual CEngineInternalPrimitiveOcclusionBase* GetAsOcclusionPrimitive();
+ unsigned long EnginePrimitiveFlags;float AlphaMipBias;CEngineFadeDistance FadeDistance;unsigned long OcclusionLayerBitMask;
+ CEngineSceneGridCell* GridCell;signed char GridLevel;unsigned char GridX,GridY,Alpha,AlphaRef,PreloadStat;
+ int InterpolationSet;unsigned long RenderLayerMask;
+ unsigned char Enable:1;unsigned char NonPersistent:1;unsigned char OverrideFadeDistance:1;unsigned char PostRenderEnable:1;
+ unsigned short LastFrameRendered;CEngineInternalPrimitiveBase* NextPrimitive;CEngineInternalPrimitiveBase** RefPrimitive;CEngineInternalPrimitiveBase* NextLayerMask;CEngineInternalPrimitiveBase** RefLayerMask;
+};
+struct CEngineScene;template<class T>struct CArray;
+struct CEngineSubPrimitiveBase;struct CEngineSubPrimitiveChain;struct CEnginePrimitiveTypeList;
+namespace NEngineShadowRenderer {struct CShadowSceneContext;}
+enum EEnginePrimitiveType{PrimitiveTypeDefault=0};enum EEngineRenderLayer{LayerDefault=0};enum ERendered{RenderedDefault=0};enum ERenderPassType{RenderPassDefault=0};enum ESubPrimitiveType{SubPrimitiveDefault=0};
+struct CBaseClass {CBaseClass();virtual ~CBaseClass();};
+struct CBaseClassNonCopyable:CBaseClass {protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
+struct CEnginePrimitiveRenderUtil:CBaseClassNonCopyable {CEnginePrimitiveRenderUtil();virtual ~CEnginePrimitiveRenderUtil();};
+struct CEnginePrimitiveManager:CEnginePrimitiveRenderUtil {
+ CEnginePrimitiveManager(CArray<CEngineScene*>&);virtual ~CEnginePrimitiveManager();
+ virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType)=0;
+ virtual void GetSupportedTypes(CEnginePrimitiveTypeList&)const=0;virtual void FrameStart();virtual void FrameEnd();
+ virtual void RenderSubPrimitive(CEngineSubPrimitiveBase&,ERenderPassType);virtual void RenderBoundingVolume(CEngineSubPrimitiveBase&);
+ virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&)=0;
+ virtual ERendered RenderPrimitiveToShadowBuffer(CEngineInternalPrimitiveBase&);
+ virtual bool PreloadPrimitive(CEngineInternalPrimitiveBase&,const C3DVector&,unsigned long);
+ virtual void Render2DPrimitive(CEngineInternalPrimitiveBase&,CEngineSubPrimitiveChain&,ESubPrimitiveType);
+ virtual void RenderNonsortedPrimitives();virtual void AddStaticShadowData(CEngineInternalPrimitiveBase&,NEngineShadowRenderer::CShadowSceneContext&);
+ CArray<CEngineScene*>* Scenes;bool Enable;
+};
+extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436E84
+struct CEnginePrimitiveHandle {void* NativeVTable;CEnginePersistentPrimitiveBase* Data;};
+struct CEngineSceneGridCell {
+ CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;C3DBoundingBox BoundingBox;float DrawDistance;
+ CEnginePrimitiveHandle GroupPrimitiveHandle[2];long LocalCount;unsigned long TotalCount,RenderMask,OccludedLayers;
+ unsigned char BoundingBoxValid:1;unsigned char TotalCountValid:1;unsigned char RenderMaskValid:1;unsigned char WasRendered:1;unsigned char HasOcclusionResults:1;
+ unsigned char OccludedFrames,PreloadFrames;
+};
+struct CEngineSceneRenderStats {unsigned long StaticPrimitivesRendered,MovingPrimitivesRendered,StaticPrimitivesTouched,MovingPrimitivesTouched,VisibleCells,BoundingBoxTests,BoundingSphereTests;};
+struct CShadowClipVolume {bool ClipBoundingBox(const C3DBoundingBox&,bool&)const;}; //00B4CED0
+struct CEngineSceneGrid {
+ void* NativeVTable;unsigned long Level;CEngineSceneGrid* LevelUp;CEngineSceneGrid* LevelDown;unsigned long Size;
+ CEngineSceneGridCell** GridCells;CEngineSceneGridCell** LastCell;CEngineSceneGridCell** EndCell;
+ bool GetCellBoundingBoxAndDrawDistance(C3DBoundingBox&,float&,unsigned long,unsigned long); //00B919C0
+ unsigned long GetCellRenderMask(unsigned long,unsigned long); //00B91DC0
+ bool PreloadPrimitives(unsigned long,unsigned long,const CEngineCamera&,unsigned long); //00B91F50
+ bool PreloadPrimitives(unsigned long,unsigned long,const C3DBoundingSphere&,unsigned long); //00B92D30
+ void RenderCellClippedShadowBuffer(unsigned long,unsigned long,EEngineRenderLayer,const CShadowClipVolume&,bool,CEngineSceneRenderStats&); //00B92660
+};
+struct TreeNodeBase {unsigned int Colour;TreeNodeBase* Parent;TreeNodeBase* Left;TreeNodeBase* Right;};
+inline TreeNodeBase* TreeNext(TreeNodeBase* node){if(node->Right){node=node->Right;while(node->Left)node=node->Left;}else{TreeNodeBase* parent=node->Parent;while(node==parent->Right){node=parent;parent=parent->Parent;}if(node->Right!=parent)node=parent;}return node;}
+template<class V>struct TreeNode:TreeNodeBase{int Key;V Value;};
+template<class V>struct RetailTree{TreeNodeBase* Header;unsigned long Count;unsigned char Comparator;struct iterator{TreeNodeBase* Node;iterator(TreeNodeBase*n):Node(n){}iterator&operator++(){Node=TreeNext(Node);return *this;}bool operator!=(const iterator&o)const{return Node!=o.Node;}V&value()const{return static_cast<TreeNode<V>*>(Node)->Value;}};iterator begin(){return iterator(Header->Left);}iterator end(){return iterator(Header);}};
+struct CCountedGrid{CEngineSceneGrid* Data;void* Info; CEngineSceneGrid& Get()const{return *Data;} };struct CGridArray{CCountedGrid* First;CCountedGrid* Last;CCountedGrid* End;};
+struct CEngineSceneMap{void* NativeVTable;C2DBoxF Area;unsigned long MaxLevels;CGridArray GridLevels;CEngineScene* Scene;};
+struct CCountedSceneMap{CEngineSceneMap* Data;void* Info;};
+struct CEngineScene{
+ void* NativeVTable;RetailTree<RetailTree<CCountedSceneMap> > MapList;float MapSize,OneOverMapSize;unsigned long MaxMapLevels,MapsRenderLayerMask;
+ CEngineInternalPrimitiveBase* FirstMovingPrimitive;CEngineInternalPrimitiveBase* FirstNonPersistentPrimitive;
+ bool PreloadPrimitives(const CEngineCamera&,unsigned long);bool PreloadPrimitives(const C3DBoundingSphere&,unsigned long);
+};
+#ifdef _MSC_VER
+FABLE_STATIC_ASSERT(sizeof(CEngineInternalPrimitiveBase)==0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveBase,Type)==8);
+FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveBase,NextPrimitive)==0x38);
+FABLE_STATIC_ASSERT(sizeof(CEngineSceneGridCell)==0x48);
+FABLE_STATIC_ASSERT(offsetof(CEngineScene,FirstMovingPrimitive)==0x20);
+FABLE_STATIC_ASSERT(sizeof(CEngineSceneGrid)==0x20);
+#endif
+#endif
+
+bool CEngineScene::PreloadPrimitives(const C3DBoundingSphere& volume,unsigned long flags){
+ bool result=false;
+ for(RetailTree<RetailTree<CCountedSceneMap> >::iterator x=MapList.begin();x!=MapList.end();++x)
+  for(RetailTree<CCountedSceneMap>::iterator y=x.value().begin();y!=x.value().end();++y)
+   result|=y.value().Data->GridLevels.First[0].Get().PreloadPrimitives(0,0,volume,flags);
+ for(CEngineInternalPrimitiveBase* primitive=FirstMovingPrimitive;primitive;primitive=primitive->NextPrimitive){
+  C3DBoundingBox bounds;
+  if(primitive->GetBoundingBoxWorldSpace(bounds)&&bounds.IntersectsSolid(volume)){
+   bool loaded=g_pEnginePrimitiveTypeInfo->PrimitiveManagers[primitive->Type]->PreloadPrimitive(*primitive,volume.Center,flags);
+   primitive->PreloadStat=loaded?2:1;result|=loaded;
+  }
+ }
+ return result;
+}

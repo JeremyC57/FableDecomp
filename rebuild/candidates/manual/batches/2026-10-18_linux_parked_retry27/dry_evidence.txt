@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00a9b640   RELOCATION_MATCH PASS   LoadMeshFile
+00abcf40   RELOCATION_MATCH PASS   ReadFromFile
+0070e520   RELOCATION_MATCH PASS   UpdateCachedAnims
+00947a30   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00947a30   RELOCATION_MATCH PASS   Update
+
+WINS: 4
+  00a9b640 RELOCATION_MATCH C3DMeshFileLoader::LoadMeshFile@C3DMeshFileLoader
+  00abcf40 RELOCATION_MATCH C3DMeshFilePrimitiveChunk::ReadFromFile@C3DMeshFilePrimitiveChunk
+  0070e520 RELOCATION_MATCH CAnimateThing::UpdateCachedAnims
+  00947a30 RELOCATION_MATCH CAIStateGroup_StayNearFoodHall::Update

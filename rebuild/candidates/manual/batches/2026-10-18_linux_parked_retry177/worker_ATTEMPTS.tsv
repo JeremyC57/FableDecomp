@@ -1,0 +1,19 @@
+address	new_grade	reserved_uncertain	cumulative	sha256	result	effective_flags	snapshot
+00bfaae0	1	4	5	77f2597d1f438e654a1a9abce9ec19178b6714aaf80cb077b478ceff6e868114	00bfaae0 CLocalDetailPrimitiveRepeatedMesh::~CLocalDetailPrimitiveRepeatedMesh RELOCATION_MATCH flags= []	/O2 /Oy /W3	snapshots/00bfaae0_5.cpp
+00e33b00	1	4	5	40c5447663f2b5d03bd5fbc80f38e021236248a8ff75f98d8f567255aa58351f	00e33b00 CM_AC_DummyMoving::Main SRC_FAIL flags= []	/O2 /Oy /W3	snapshots/00e33b00_5.cpp
+00e7b970	1	4	5	ac358c4d0f62facc76520560fdc3bd36bc16aa8f92ccf087eadcb56cbe459002	00e7b970 CM_FishermanWaspSpawn::Main SRC_FAIL flags= []	/O2 /Oy /W3	snapshots/00e7b970_5.cpp
+00e33b00	2	4	6	c245d98c9e19e0535926dd5352b406ebf7e0637d4cfafc160b7fea2d496bc84f	00e33b00 CM_AC_DummyMoving::Main DIFFER(185v190) flags= []	/O2 /Oy /W3	snapshots/00e33b00_6.cpp
+00e7b970	2	4	6	899c246419ba12504af6ce85ec71ce757d7f99429e7e13d66f5c8bdd38424556	00e7b970 CM_FishermanWaspSpawn::Main DIFFER(197v198) flags= []	/O2 /Oy /W3	snapshots/00e7b970_6.cpp
+00e33b00	3	4	7	47bd43c18f1beed95e7b62aedeae6ea4a08deea759d4f510935d8b50ad05c624	00e33b00 CM_AC_DummyMoving::Main RELOCATION_MATCH flags= []	/O2 /Oy /W3	snapshots/00e33b00_7.cpp
+00e7b970	3	4	7	9b21d8beb0fbb0f12a4529c75536b36a9241616476e2d4705176562d82d805c2	00e7b970 CM_FishermanWaspSpawn::Main DIFFER(219v198) flags= []	/O2 /Oy /W3	snapshots/00e7b970_7.cpp
+00e7b970	4	4	8	ff58ec5f1db935d8cdd023d2fca5ab25983414185c3f8d6e385fc35740acb6cf	00e7b970 CM_FishermanWaspSpawn::Main RELOCATION_MATCH flags= []	/O2 /Oy /W3	snapshots/00e7b970_8.cpp
+00e33b00	4	4	8	8eb4a487ff3d29d26061e1377d4b957b102a94d546f4f6349f9c279cfbb88691	00e33b00 CM_AC_DummyMoving::Main RELOCATION_MATCH flags= []	/O2 /Oy /W3	snapshots/00e33b00_8.cpp
+00e7b970	5	4	9	7f1e99966389558024b9e9c92f2dfa4e7fd1f3dfc5a8b5e37dbbb8f7fa012070	00e7b970 CM_FishermanWaspSpawn::Main RELOCATION_MATCH flags= []	/O2 /Oy /W3	snapshots/00e7b970_9.cpp
+00873930	1	4	5	70ae5479b563792f7632df1a1ebce7e3964c75c06d7e1a4ca9707a4a5a8c8388	00873930 CLookAtFrontInit::Alloc DIFFER(231v221) flags= []	/O2 /Oy /W3	snapshots/00873930_5.cpp
+00873930	2	4	6	322db30cab6a4bbdcc35d11a87d65d7a4e0a241f18e731ddc8faea6d3a9c7156	00873930 CLookAtFrontInit::Alloc DIFFER(263v221) flags= []	/O2 /Oy /W3	snapshots/00873930_6.cpp
+00873930	3	4	7	09a1753f7320cc812df48d61a46d43d04ebe390049b6e4a6a8a8f646c18035f1	00873930 CLookAtFrontInit::Alloc DIFFER(287v221) flags= []	/O2 /Oy /W3	snapshots/00873930_7.cpp
+00873930	4	4	8	e7a724a66e32de9aefd3e939fd8753c7180185d9297452d044b2a0aec6ebae6b	00873930 CLookAtFrontInit::Alloc DIFFER(237v221) flags= []	/O2 /Oy /W3	snapshots/00873930_8.cpp
+00873930	5	4	9	0e3399e995e60a5c18aeec816e2714cfabf97c0513a38a0771ae70e748ce52cd	00873930 CLookAtFrontInit::Alloc DIFFER(237v221) flags= []	/O2 /Oy /W3	snapshots/00873930_9.cpp
+00873930	6	4	10	8c2bb06df091b21547158f452cc5bb9ac10991a5e1b95ceb21ab7289f05e8148	00873930 CLookAtFrontInit::Alloc SRC_FAIL flags= []	/O2 /Oy /W3	snapshots/00873930_10.cpp
+00e33b00	5	4	9	2429b188cb2fb3f25843016a6525473dc0cf1b759facd0ab9197da2f9d1a8171	00e33b00 CM_AC_DummyMoving::Main RELOCATION_MATCH flags= []	/O2 /Oy /W3	snapshots/00e33b00_9.cpp
+00e7b970	6	4	10	4822422ea706a4e56488793ebef482963adf348c5b27d97ef63f968253cb7f77	00e7b970 CM_FishermanWaspSpawn::Main RELOCATION_MATCH flags= []	/O2 /Oy /W3	snapshots/00e7b970_10.cpp

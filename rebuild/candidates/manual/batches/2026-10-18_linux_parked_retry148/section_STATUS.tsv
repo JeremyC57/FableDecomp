@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00ce6b10	RELOCATION_MATCH	203v203	PASS	4 UNCERTAIN+1 new,5 unused; host98O2+VC71O2 actual-source PASS
+00af4e10	DIFFER	194v194	PASS	4 UNCERTAIN+6 new capped; LEA scheduling; allocation callee wrong (new vs native malloc), NOT ready

@@ -1,0 +1,6 @@
+offset	native_target	symbol
+0000000e	00bf9fa0	?SetupPrimitiveDesc@CLocalDetailPrimitiveMeshZSpriteBatch@@QAE?AUCAddPrimitiveDesc@@XZ
+0000001a	01436e80	?g_PrimitiveRenderer@@3PAUCLocalDetailRenderer@@A
+0000001f	00b32ff0	?AddRepeatedZSprite@CLocalDetailRenderer@@QAE?AUCEnginePrimitiveHandle@@ABUCAddPrimitiveDesc@@@Z
+00000087	0122f598	??_7CEnginePrimitiveHandle@@6B@
+000000c2	0099a2e0	??1CBaseClass@@UAE@XZ

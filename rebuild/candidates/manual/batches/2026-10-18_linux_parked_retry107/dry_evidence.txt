@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00896d20   RELOCATION_MATCH PASS   KickOffDeathScreen
+
+WINS: 1
+  00896d20 RELOCATION_MATCH CGameScriptInterface::KickOffDeathScreen

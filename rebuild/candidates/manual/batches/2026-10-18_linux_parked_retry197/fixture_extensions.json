@@ -1,0 +1,22 @@
+[
+  {
+    "address": "00b92f80",
+    "kind": "FIXTURE_ONLY_EXTENSION",
+    "source_grades": 0,
+    "original_fixture": "work/codex-lane/w22/coordinator_retry197/original_fixtures/00b92f80_test.cpp",
+    "original_sha256": "9eea60da316001f3fcc97e9101a8a0cae8fffb26e06170956be28b522a4d6545",
+    "fixture": "work/codex-lane/w22/coordinator_retry197/00b92f80_test.cpp",
+    "sha256": "4b36511bdb9f111aa4ed58ea6a5744dee47c92421239ef2c0149b17f9f49d94a",
+    "scenario": "3-node outer map x2-node inner maps: six root-grid callbacks, successor right-child descent and sentinel ascent; no moving primitives."
+  },
+  {
+    "address": "00b92e50",
+    "kind": "FIXTURE_ONLY_EXTENSION",
+    "source_grades": 0,
+    "original_fixture": "work/codex-lane/w22/coordinator_retry197/original_fixtures/00b92e50_test.cpp",
+    "original_sha256": "d9e52235b41204c40ecabafea12ebaf0e2f3ebf35e41a6ab5d5b5e99f116d9e7",
+    "fixture": "work/codex-lane/w22/coordinator_retry197/00b92e50_test.cpp",
+    "sha256": "6cf1e7c5ca1259c0339547578e00e77f6f51b42ab5ef9b9562d8dd5e16c22a59",
+    "scenario": "3-node outer map x2-node inner maps: six root-grid callbacks, successor right-child descent and sentinel ascent; no moving primitives."
+  }
+]

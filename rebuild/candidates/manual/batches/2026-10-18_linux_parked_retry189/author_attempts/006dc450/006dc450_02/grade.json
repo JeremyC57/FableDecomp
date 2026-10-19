@@ -1,0 +1,11 @@
+{
+  "snapshot": 2,
+  "source_grade": 2,
+  "sha256": "a145e58ba82a5b7a7072a1b5db8ec8e4ac8f9c08237e6148b91d833415cfeaf8",
+  "command": "timeout 200 python3 work/codex-lane/tools/q.py 006dc450 work/codex-lane/w22/astra239_whole/src/006dc450.cpp WriteStatIncreaseMap",
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ]
+}

@@ -1,0 +1,6 @@
+offset	native_target	symbol
+0000001a	00416225	?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ
+00000089	01375550	?g_GameFramesPerSecond@@3HA
+00000099	00416225	?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ
+000000ae	0122dcb4	__real@4f800000
+000000cb	00416225	?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ

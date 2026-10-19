@@ -1,0 +1,1946 @@
+[
+  {
+    "address": "009ff440",
+    "table": "??_7CBaseClass@@6B@",
+    "slot": 0,
+    "target": "0x4371f0",
+    "compiled": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBaseClassNonCopyable@@6B@",
+    "slot": 0,
+    "target": "0x99a470",
+    "compiled": "public: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 0,
+    "target": "0x9d47a0",
+    "compiled": "public: virtual void * __thiscall CBankFileNative::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 1,
+    "target": "0x9d06f0",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFile::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 2,
+    "target": "0x9cb960",
+    "compiled": "public: virtual void __thiscall CBankFileNative::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFile::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 3,
+    "target": "0x9d1090",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFile::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 4,
+    "target": "0x9d1160",
+    "compiled": "public: virtual void __thiscall CBankFileNative::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFile::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 5,
+    "target": "0x9ce360",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Close(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Close(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 8,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 10,
+    "target": "0x9cbbf0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 11,
+    "target": "0x9cbc00",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 12,
+    "target": "0x9cbc20",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 13,
+    "target": "0x9cbc10",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 14,
+    "target": "0x9cbc30",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 16,
+    "target": "0x9cc9f0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CBankFile::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 0,
+    "target": "0x9d81a0",
+    "compiled": "public: virtual void * __thiscall CBankFileAsync::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 1,
+    "target": "0x9d56c0",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 2,
+    "target": "0x9d51d0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 3,
+    "target": "0x9d5820",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 4,
+    "target": "0x9d5200",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 5,
+    "target": "0x9d58a0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::Close(void)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::Close(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 8,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 10,
+    "target": "0x9cbbf0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 11,
+    "target": "0x9cbc00",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 12,
+    "target": "0x9cbc20",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 13,
+    "target": "0x9cbc10",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 14,
+    "target": "0x9cbc30",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 16,
+    "target": "0x9cc9f0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CBankFile::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CResourceBank@@6B@",
+    "slot": 0,
+    "target": "0x9fc750",
+    "compiled": "public: virtual void * __thiscall CResourceBank::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCResourceBank@@@",
+    "slot": 0,
+    "target": "0xa013d0",
+    "compiled": "[thunk]: public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'`adjustor{356}'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 0,
+    "target": "0xa01800",
+    "compiled": "public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 1,
+    "target": "0x9d56c0",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 2,
+    "target": "0x9d51d0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 3,
+    "target": "0x9d5820",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 4,
+    "target": "0x9d5200",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 5,
+    "target": "0x9fece0",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::Close(void)",
+    "expected": "public: virtual void __thiscall CGraphicDataBank::Close(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 8,
+    "target": "0x9fd0b0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)",
+    "expected": "protected: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 10,
+    "target": "0x9ff8b0",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 11,
+    "target": "0x9ff580",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 12,
+    "target": "0x9ff590",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 13,
+    "target": "0x9fd910",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 14,
+    "target": "0x9fd970",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 16,
+    "target": "0x9fd990",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 20,
+    "target": "0xa013e0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 21,
+    "target": "0xa01430",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 22,
+    "target": "0xa01480",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 23,
+    "target": "0xa014d0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 24,
+    "target": "0xa01540",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 25,
+    "target": "0xa013c0",
+    "compiled": "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const",
+    "expected": "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const"
+  },
+  {
+    "address": "009ff440",
+    "table": "??_7GraphicInfoFrame@@6B@",
+    "slot": 0,
+    "target": "0xa009a0",
+    "compiled": "public: virtual void * __thiscall GraphicInfoFrame::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBaseClass@@6B@",
+    "slot": 0,
+    "target": "0x4371f0",
+    "compiled": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBaseClassNonCopyable@@6B@",
+    "slot": 0,
+    "target": "0x99a470",
+    "compiled": "public: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 0,
+    "target": "0x9d47a0",
+    "compiled": "public: virtual void * __thiscall CBankFileNative::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 1,
+    "target": "0x9d06f0",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFile::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 2,
+    "target": "0x9cb960",
+    "compiled": "public: virtual void __thiscall CBankFileNative::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFile::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 3,
+    "target": "0x9d1090",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFile::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 4,
+    "target": "0x9d1160",
+    "compiled": "public: virtual void __thiscall CBankFileNative::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFile::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 5,
+    "target": "0x9ce360",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Close(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Close(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 8,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 10,
+    "target": "0x9cbbf0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 11,
+    "target": "0x9cbc00",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 12,
+    "target": "0x9cbc20",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 13,
+    "target": "0x9cbc10",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 14,
+    "target": "0x9cbc30",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 16,
+    "target": "0x9cc9f0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CBankFile::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 0,
+    "target": "0x9d81a0",
+    "compiled": "public: virtual void * __thiscall CBankFileAsync::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 1,
+    "target": "0x9d56c0",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 2,
+    "target": "0x9d51d0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 3,
+    "target": "0x9d5820",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 4,
+    "target": "0x9d5200",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 5,
+    "target": "0x9d58a0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::Close(void)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::Close(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 8,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 10,
+    "target": "0x9cbbf0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 11,
+    "target": "0x9cbc00",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 12,
+    "target": "0x9cbc20",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 13,
+    "target": "0x9cbc10",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 14,
+    "target": "0x9cbc30",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 16,
+    "target": "0x9cc9f0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CBankFile::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CResourceBank@@6B@",
+    "slot": 0,
+    "target": "0x9fc750",
+    "compiled": "public: virtual void * __thiscall CResourceBank::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCResourceBank@@@",
+    "slot": 0,
+    "target": "0xa013d0",
+    "compiled": "[thunk]: public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'`adjustor{356}'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 0,
+    "target": "0xa01800",
+    "compiled": "public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 1,
+    "target": "0x9d56c0",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 2,
+    "target": "0x9d51d0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 3,
+    "target": "0x9d5820",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 4,
+    "target": "0x9d5200",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 5,
+    "target": "0x9fece0",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::Close(void)",
+    "expected": "public: virtual void __thiscall CGraphicDataBank::Close(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 8,
+    "target": "0x9fd0b0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)",
+    "expected": "protected: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 10,
+    "target": "0x9ff8b0",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 11,
+    "target": "0x9ff580",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 12,
+    "target": "0x9ff590",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 13,
+    "target": "0x9fd910",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 14,
+    "target": "0x9fd970",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 16,
+    "target": "0x9fd990",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 20,
+    "target": "0xa013e0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 21,
+    "target": "0xa01430",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 22,
+    "target": "0xa01480",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 23,
+    "target": "0xa014d0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 24,
+    "target": "0xa01540",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 25,
+    "target": "0xa013c0",
+    "compiled": "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const",
+    "expected": "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7DataStream@@6B@",
+    "slot": 0,
+    "target": "0x996ea0",
+    "compiled": "public: virtual void * __thiscall DataStream::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 0,
+    "target": "0x996ed0",
+    "compiled": "public: virtual void * __thiscall InputStream::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 1,
+    "target": "0x993bc0",
+    "compiled": "public: virtual void __thiscall InputStream::SetPosition(unsigned long)",
+    "expected": "public: virtual void __thiscall CDataInputStream::SetPosition(unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 2,
+    "target": "0x405fa0",
+    "compiled": "public: virtual unsigned long __thiscall InputStream::GetPosition(void) const",
+    "expected": "public: virtual unsigned long __thiscall CDataInputStream::GetPosition(void) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 3,
+    "target": "0x993c80",
+    "compiled": "public: virtual void __thiscall InputStream::Close(void)",
+    "expected": "public: virtual void __thiscall CDataInputStream::Close(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 4,
+    "target": "0x995fb0",
+    "compiled": "public: virtual void __thiscall InputStream::ReadCompressed(void *, long)",
+    "expected": "public: virtual void __thiscall CDataInputStream::ReadCompressed(void *, long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 5,
+    "target": "0x996230",
+    "compiled": "public: virtual void __thiscall InputStream::ReadZlibCompressed(void *, long)",
+    "expected": "public: virtual void __thiscall CDataInputStream::ReadZlibCompressed(void *, long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 6,
+    "target": "0x994c80",
+    "compiled": "public: virtual class CCharString __thiscall InputStream::ReadNullTerminatedString(void)",
+    "expected": "public: virtual class CCharString __thiscall CDataInputStream::ReadNullTerminatedString(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 7,
+    "target": "0x994d20",
+    "compiled": "public: virtual class CWideString __thiscall InputStream::ReadNullTerminatedWString(void)",
+    "expected": "public: virtual class CWideString __thiscall CDataInputStream::ReadNullTerminatedWString(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 8,
+    "target": "0x993b90",
+    "compiled": "public: virtual void __thiscall InputStream::InternalReadNextSourceChunk(unsigned char const *&, long &)",
+    "expected": "private: virtual void __thiscall CDataInputStream::InternalReadNextSourceChunk(unsigned char const *&, long &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 9,
+    "target": "0x993ba0",
+    "compiled": "public: virtual bool __thiscall InputStream::NeedsBufferedRead(long)",
+    "expected": "private: virtual bool __thiscall CDataInputStream::NeedsBufferedRead(long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7InputStream@@6B@",
+    "slot": 10,
+    "target": "0x993bb0",
+    "compiled": "public: virtual void __thiscall InputStream::InternalReadUnbuffered(unsigned char *, long)",
+    "expected": "private: virtual void __thiscall CDataInputStream::InternalReadUnbuffered(unsigned char *, long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 0,
+    "target": "0x485420",
+    "compiled": "public: virtual void * __thiscall MemoryInput::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 1,
+    "target": "0x993bc0",
+    "compiled": "public: virtual void __thiscall InputStream::SetPosition(unsigned long)",
+    "expected": "public: virtual void __thiscall CDataInputStream::SetPosition(unsigned long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 2,
+    "target": "0x405fa0",
+    "compiled": "public: virtual unsigned long __thiscall InputStream::GetPosition(void) const",
+    "expected": "public: virtual unsigned long __thiscall CDataInputStream::GetPosition(void) const"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 3,
+    "target": "0x993c80",
+    "compiled": "public: virtual void __thiscall InputStream::Close(void)",
+    "expected": "public: virtual void __thiscall CDataInputStream::Close(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 4,
+    "target": "0x995b10",
+    "compiled": "public: virtual void __thiscall MemoryInput::ReadCompressed(void *, long)",
+    "expected": "public: virtual void __thiscall CMemoryDataInputStream::ReadCompressed(void *, long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 5,
+    "target": "0x996230",
+    "compiled": "public: virtual void __thiscall InputStream::ReadZlibCompressed(void *, long)",
+    "expected": "public: virtual void __thiscall CDataInputStream::ReadZlibCompressed(void *, long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 6,
+    "target": "0x995d30",
+    "compiled": "public: virtual class CCharString __thiscall MemoryInput::ReadNullTerminatedString(void)",
+    "expected": "public: virtual class CCharString __thiscall CMemoryDataInputStream::ReadNullTerminatedString(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 7,
+    "target": "0x994960",
+    "compiled": "public: virtual class CWideString __thiscall MemoryInput::ReadNullTerminatedWString(void)",
+    "expected": "public: virtual class CWideString __thiscall CMemoryDataInputStream::ReadNullTerminatedWString(void)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 8,
+    "target": "0x993b90",
+    "compiled": "public: virtual void __thiscall InputStream::InternalReadNextSourceChunk(unsigned char const *&, long &)",
+    "expected": "private: virtual void __thiscall CDataInputStream::InternalReadNextSourceChunk(unsigned char const *&, long &)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 9,
+    "target": "0x993ba0",
+    "compiled": "public: virtual bool __thiscall InputStream::NeedsBufferedRead(long)",
+    "expected": "private: virtual bool __thiscall CDataInputStream::NeedsBufferedRead(long)"
+  },
+  {
+    "address": "009ff590",
+    "table": "??_7MemoryInput@@6B@",
+    "slot": 10,
+    "target": "0x993bb0",
+    "compiled": "public: virtual void __thiscall InputStream::InternalReadUnbuffered(unsigned char *, long)",
+    "expected": "private: virtual void __thiscall CDataInputStream::InternalReadUnbuffered(unsigned char *, long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCResourceBank@@@",
+    "slot": 0,
+    "target": "0xa013d0",
+    "compiled": "[thunk]: public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'`adjustor{356}'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 0,
+    "target": "0xa01800",
+    "compiled": "public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 1,
+    "target": "0x9d56c0",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 2,
+    "target": "0x9d51d0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 3,
+    "target": "0x9d5820",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 4,
+    "target": "0x9d5200",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 5,
+    "target": "0x9fece0",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::Close(void)",
+    "expected": "public: virtual void __thiscall CGraphicDataBank::Close(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 8,
+    "target": "0x9fd0b0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)",
+    "expected": "protected: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 10,
+    "target": "0x9ff8b0",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 11,
+    "target": "0x9ff580",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 12,
+    "target": "0x9ff590",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 13,
+    "target": "0x9fd910",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 14,
+    "target": "0x9fd970",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 16,
+    "target": "0x9fd990",
+    "compiled": "public: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 20,
+    "target": "0xa013e0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 21,
+    "target": "0xa01430",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 22,
+    "target": "0xa01480",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 23,
+    "target": "0xa014d0",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 24,
+    "target": "0xa01540",
+    "compiled": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const",
+    "expected": "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CGraphicDataBank@@6BCBankFileAsync@@@",
+    "slot": 25,
+    "target": "0xa013c0",
+    "compiled": "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const",
+    "expected": "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7GraphicBankState@@6B@",
+    "slot": 0,
+    "target": "0xa00920",
+    "compiled": "public: virtual void * __thiscall GraphicBankState::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7GraphicBankState@@6B@",
+    "slot": 1,
+    "target": "0x9fcef0",
+    "compiled": "public: virtual void __thiscall GraphicBankState::GetDefault(struct BankState &)",
+    "expected": "public: virtual void __thiscall CGraphicBankStateBlock::GetDefault(class CBankStateBlock &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7GraphicBankState@@6B@",
+    "slot": 2,
+    "target": "0xa00940",
+    "compiled": "public: virtual void __thiscall GraphicBankState::Set(struct BankState const *)",
+    "expected": "protected: virtual void __thiscall CGraphicBankStateBlock::Set(class CBankStateBlock const *)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7GraphicBankState@@6B@",
+    "slot": 3,
+    "target": "0x9fd020",
+    "compiled": "public: virtual unsigned long __thiscall GraphicBankState::CreateCRC(void)",
+    "expected": "public: virtual unsigned long __thiscall CGraphicBankStateBlock::CreateCRC(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7BankState@@6B@",
+    "slot": 0,
+    "target": "0x9fcca0",
+    "compiled": "public: virtual void * __thiscall BankState::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7BankState@@6B@",
+    "slot": 1,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7BankState@@6B@",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7BankState@@6B@",
+    "slot": 3,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBaseClass@@6B@",
+    "slot": 0,
+    "target": "0x4371f0",
+    "compiled": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBaseClassNonCopyable@@6B@",
+    "slot": 0,
+    "target": "0x99a470",
+    "compiled": "public: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 0,
+    "target": "0x9d47a0",
+    "compiled": "public: virtual void * __thiscall CBankFileNative::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 1,
+    "target": "0x9d06f0",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFile::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 2,
+    "target": "0x9cb960",
+    "compiled": "public: virtual void __thiscall CBankFileNative::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFile::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 3,
+    "target": "0x9d1090",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFile::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 4,
+    "target": "0x9d1160",
+    "compiled": "public: virtual void __thiscall CBankFileNative::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFile::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 5,
+    "target": "0x9ce360",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Close(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Close(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 8,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 10,
+    "target": "0x9cbbf0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 11,
+    "target": "0x9cbc00",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 12,
+    "target": "0x9cbc20",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 13,
+    "target": "0x9cbc10",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 14,
+    "target": "0x9cbc30",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 16,
+    "target": "0x9cc9f0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CBankFile::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileNative@@6B@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 0,
+    "target": "0x9d81a0",
+    "compiled": "public: virtual void * __thiscall CBankFileAsync::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 1,
+    "target": "0x9d56c0",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 2,
+    "target": "0x9d51d0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 3,
+    "target": "0x9d5820",
+    "compiled": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+    "expected": "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 4,
+    "target": "0x9d5200",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 5,
+    "target": "0x9d58a0",
+    "compiled": "public: virtual void __thiscall CBankFileAsync::Close(void)",
+    "expected": "public: virtual void __thiscall CBankFileAsync::Close(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 6,
+    "target": "0x9ce5e0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+    "expected": "public: virtual void __thiscall CBankFile::AddEntryMultipleFiles(class CCharString const &, unsigned long, class CArray<class CCharString> const &, class CCountedPointer<class CBankStateBlock>)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 7,
+    "target": "0x9cec60",
+    "compiled": "public: virtual void __thiscall CBankFileNative::Update(void)",
+    "expected": "public: virtual void __thiscall CBankFile::Update(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 8,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "expected": "native purecall"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 9,
+    "target": "0x9cba70",
+    "compiled": "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+    "expected": "protected: virtual unsigned long __thiscall CBankFile::AdjustUpdateEntries(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 10,
+    "target": "0x9cbbf0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankSize(unsigned long, class CArray<class CBankFileDataTypeCount> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 11,
+    "target": "0x9cbc00",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyBankOpened(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 12,
+    "target": "0x9cbc20",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryAdded(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 13,
+    "target": "0x9cbc10",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryUpdated(unsigned long, unsigned long, class CArray<char> const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 14,
+    "target": "0x9cbc30",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyEntryRemoved(unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 15,
+    "target": "0x50b440",
+    "compiled": "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+    "expected": "protected: virtual void __thiscall CBankFile::NotifyPostEntriesLoaded(void)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 16,
+    "target": "0x9cc9f0",
+    "compiled": "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+    "expected": "protected: virtual void __thiscall CBankFile::PrepareDataForInclusion(unsigned long, class CArray<class CCharString> const &, unsigned long, class CCountedPointer<class CBankStateBlock>, class CDataOutputStream &, class CDataOutputStream &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 17,
+    "target": "0x9cbc40",
+    "compiled": "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+    "expected": "protected: virtual bool __thiscall CBankFile::IsDiskFile(unsigned long, unsigned long)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 18,
+    "target": "0x9cbc50",
+    "compiled": "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+    "expected": "protected: virtual class CDateAndTime __thiscall CBankFile::GetLastModifiedTime(class CCharString const &)"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CBankFileAsync@@6B@",
+    "slot": 19,
+    "target": "0x9cbd10",
+    "compiled": "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+    "expected": "protected: virtual class CCharString __thiscall CBankFile::GetEnumerationType(unsigned long) const"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7CResourceBank@@6B@",
+    "slot": 0,
+    "target": "0x9fc750",
+    "compiled": "public: virtual void * __thiscall CResourceBank::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  },
+  {
+    "address": "009febc0",
+    "table": "??_7GraphicInfoFrame@@6B@",
+    "slot": 0,
+    "target": "0xa009a0",
+    "compiled": "public: virtual void * __thiscall GraphicInfoFrame::`vector deleting dtor'(unsigned int)",
+    "expected": "genuine deleting destructor; native RTTI table identity"
+  }
+]

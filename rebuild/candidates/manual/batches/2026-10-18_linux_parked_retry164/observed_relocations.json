@@ -1,0 +1,35 @@
+{
+  "006893d0": [
+    [
+      "0000001a",
+      "DISP32",
+      "?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ",
+      "0x416225"
+    ],
+    [
+      "00000089",
+      "dir32",
+      "?g_GameFramesPerSecond@@3HA",
+      "0x1375550"
+    ],
+    [
+      "00000099",
+      "DISP32",
+      "?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ",
+      "0x416225"
+    ],
+    [
+      "000000ae",
+      "dir32",
+      "__real@4f800000",
+      "0x122dcb4"
+    ],
+    [
+      "000000cb",
+      "DISP32",
+      "?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ",
+      "0x416225"
+    ]
+  ],
+  "00a0d6b0": []
+}

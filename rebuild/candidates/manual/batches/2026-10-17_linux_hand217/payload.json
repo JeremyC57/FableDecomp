@@ -1,0 +1,14 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "007b7a70",
+    "module": "CTCOverheadDisplay",
+    "name": "vfunc_9",
+    "source_cpp": "// CTCOverheadDisplay::vfunc_9() -- advances and removes expired overhead display entries in three lists\n// Retail: 0x007b7a70, 240 bytes; each list is a circular doubly-linked sentinel list.\nstruct COverheadNode { COverheadNode* next; COverheadNode* prev; long frames; };\nstruct CTCOverheadDisplay { virtual void v00(); unsigned char pad[8]; COverheadNode* first; COverheadNode* second; COverheadNode* third; void vfunc_9(); };\nextern float g_OverheadExpiry; // 0x013bae68\nextern void ReleaseNode(COverheadNode*); // 0x00bfea14\nvoid CTCOverheadDisplay::vfunc_9()\n{\n    COverheadNode* n = first->next;\n    while (n != first) {\n        --n->frames;\n        if ((float)n->frames <= -g_OverheadExpiry) {\n            COverheadNode* next=n->next; COverheadNode* prev=n->prev;\n            prev->next=next; next->prev=prev; ReleaseNode(n); n=next;\n        } else n=n->next;\n    }\n    n = second->next;\n    while (n != second) {\n        --n->frames;\n        if ((float)n->frames <= -g_OverheadExpiry) {\n            COverheadNode* next=n->next; COverheadNode* prev=n->prev;\n            prev->next=next; next->prev=prev; ReleaseNode(n); n=next;\n        } else n=n->next;\n    }\n    n = third->next;\n    while (n != third) {\n        --n->frames;\n        if ((float)n->frames <= -g_OverheadExpiry) {\n            COverheadNode* next=n->next; COverheadNode* prev=n->prev;\n            prev->next=next; next->prev=prev; ReleaseNode(n); n=next;\n        } else n=n->next;\n    }\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct Node { Node* next; Node* prev; long frames; };\nstatic void release(Node* n) { delete n; }\nstatic void tick(Node* sentinel, float expiry) {\n    Node* n=sentinel->next;\n    while(n!=sentinel) { --n->frames; if((float)n->frames <= -expiry) { Node* next=n->next; Node* prev=n->prev; prev->next=next; next->prev=prev; release(n); n=next; } else n=n->next; }\n}\nint main() {\n    Node s={&s,&s,0}; Node* a=new Node(); a->next=&s; a->prev=&s; a->frames=0; s.next=a; s.prev=a;\n    tick(&s,1.0f);\n    if(s.next!=&s || s.prev!=&s) { std::printf(\"007b7a70_TEST FAIL\\n\"); return 1; }\n    std::printf(\"007b7a70_TEST PASS\\n\"); return 0;\n}\n",
+    "pass_pattern": "007b7a70_TEST PASS"
+   }
+  ]
+ }
+}

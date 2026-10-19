@@ -1,0 +1,12 @@
+[
+  {
+    "table": "0x12a6140",
+    "owner": ".?AVCEnginePrimitiveManagerParticleSpriteGroup@@",
+    "constructor": "0xbc14e0"
+  },
+  {
+    "table": "0x12a6590",
+    "owner": ".?AVCEnginePrimitiveManagerParticleLineGroup@@",
+    "constructor": "0xbc4d90"
+  }
+]

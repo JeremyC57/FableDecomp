@@ -1,0 +1,20 @@
+[
+  {
+    "native": "0xbfea14",
+    "bytes": "ff2554014401",
+    "iat": "0x1440154",
+    "import_name": [
+      "MSVCR71.dll",
+      "free"
+    ]
+  },
+  {
+    "native": "0xbfe9bc",
+    "bytes": "ff2564014401",
+    "iat": "0x1440164",
+    "import_name": [
+      "MSVCR71.dll",
+      "??3@YAXPAX@Z"
+    ]
+  }
+]

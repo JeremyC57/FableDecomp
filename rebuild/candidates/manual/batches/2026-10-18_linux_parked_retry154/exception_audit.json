@@ -1,0 +1,28 @@
+{
+  "result": "PASS",
+  "throw_attributes": 0,
+  "unwind": 0,
+  "forward": 0,
+  "catchable_types": [
+    {
+      "name": ".?AVCBBBFileException@@",
+      "size": 4,
+      "adjustment": [
+        0,
+        -1,
+        0
+      ],
+      "copy": 0
+    },
+    {
+      "name": ".?AVCExceptionBase@@",
+      "size": 1,
+      "adjustment": [
+        0,
+        -1,
+        0
+      ],
+      "copy": 0
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00912700   RELOCATION_MATCH PASS   GetRandomFlightPos
+0091d190   RELOCATION_MATCH PASS   Update
+00cac9d0   RELOCATION_MATCH PASS   CreateInstance
+
+WINS: 3
+  00912700 RELOCATION_MATCH CAIStateGroup_FlyingThingBase::GetRandomFlightPos
+  0091d190 RELOCATION_MATCH CAIStateGroup_MinionReactToApology::Update
+  00cac9d0 RELOCATION_MATCH CMemAllocator::CreateInstance

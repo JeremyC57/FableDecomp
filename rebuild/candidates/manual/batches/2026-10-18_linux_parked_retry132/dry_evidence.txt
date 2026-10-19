@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00692c80   RELOCATION_MATCH PASS   InitialiseActionMovement
+008d16d0   RELOCATION_MATCH PASS   MsgPerformedFlourish
+008d17b0   RELOCATION_MATCH PASS   MsgPerformedSuccessfulFlourish
+008d08a0   RELOCATION_MATCH PASS   IsSummonedCreature
+
+WINS: 4
+  00692c80 RELOCATION_MATCH CCreatureActionBase::InitialiseActionMovement
+  008d16d0 RELOCATION_MATCH CGameScriptThing::MsgPerformedFlourish
+  008d17b0 RELOCATION_MATCH CGameScriptThing::MsgPerformedSuccessfulFlourish
+  008d08a0 RELOCATION_MATCH CGameScriptThing::IsSummonedCreature

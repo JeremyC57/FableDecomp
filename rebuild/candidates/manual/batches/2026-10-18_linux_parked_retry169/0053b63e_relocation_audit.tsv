@@ -1,0 +1,6 @@
+offset	native_target	symbol
+00000008	0052cc50	??0CChangingStateComponent@NUISystem@@QAE@J@Z
+00000012	012462e4	?CListPrimaryVTable@NUISystem@@3QBQBXB
+00000019	012462bc	?CListObserverVTable@NUISystem@@3QBQBXB
+00000020	012462b4	?CListCountedObserverVTable@NUISystem@@3QBQBXB
+000000cf	0053822b	?GetDataFromDef@CList@NUISystem@@QAEXXZ

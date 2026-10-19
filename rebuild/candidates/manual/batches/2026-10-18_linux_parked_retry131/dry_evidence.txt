@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00d2c530   RELOCATION_MATCH PASS   Main
+008cd470   RELOCATION_MATCH PASS   Initialise
+
+WINS: 2
+  00d2c530 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CBattleGuard::Main
+  008cd470 RELOCATION_MATCH CCreatureAction_CastAssassinRush::Initialise

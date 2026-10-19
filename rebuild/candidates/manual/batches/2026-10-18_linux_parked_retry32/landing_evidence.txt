@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00ed76e0   RELOCATION_MATCH PASS   CV_TalentlessBardScript
+009ccdf0   WARN SHARED_HEADER_AVAILABLE CBankFile
+009ccdf0   RELOCATION_MATCH PASS   FindIndexByFilename
+00970cd0   RELOCATION_MATCH PASS   GetHiddenCoverPosAndSetUpCoverThing
+0099b2c0   RELOCATION_MATCH PASS   ConvertToCharString
+
+WINS: 4
+  00ed76e0 RELOCATION_MATCH CV_TalentlessBardScript::??0CV_TalentlessBardScript
+  009ccdf0 RELOCATION_MATCH CBankFile::FindIndexByFilename
+  00970cd0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing
+  0099b2c0 RELOCATION_MATCH CWideString::ConvertToCharString
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CVTalentlessBardScript_CVTalentlessBardScript_00ed76e0
+  CBankFile_FindIndexByFilename_009ccdf0
+  CAIStateGroupCreatureUseCoverBase_GetHiddenCoverPosAndSetUpCoverThing_00970cd0
+  CWideString_ConvertToCharString_0099b2c0

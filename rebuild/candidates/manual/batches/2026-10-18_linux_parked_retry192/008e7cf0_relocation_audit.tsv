@@ -1,0 +1,8 @@
+offset	native_target	symbol
+00000009	00861d00	?OnDeactivate@ModeStandNative@@QAEXXZ
+00000020	00833a10	?SuspendAI@ThingNative@@QAEX_NPAX@Z
+00000043	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@PBH@Z
+00000079	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@PBH@Z
+000000bf	008e7790	?GetBriar@NativeDefinition@@QBE_NPAUBriarDefinitionPointer@@@Z
+000000e7	0073a680	?GetWorld@ModeBriar@@QBEAAUCWorld@@XZ
+000000f6	006b3950	?TransitionToDefaultThemeAllChannels@EnvironmentMethods@@QAEXJM@Z

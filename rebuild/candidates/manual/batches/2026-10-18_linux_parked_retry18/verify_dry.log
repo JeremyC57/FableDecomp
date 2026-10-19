@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00abf6b0   RELOCATION_MATCH PASS   SaveBinary
+00b8dbe0   RELOCATION_MATCH PASS   FrameStart
+
+WINS: 2
+  00abf6b0 RELOCATION_MATCH C3DMeshMaterial::SaveBinary
+  00b8dbe0 RELOCATION_MATCH CEngineOcclusionManager::FrameStart

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005deb40   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+005deb40   RELOCATION_MATCH PASS   AddComponent
+00bc5970   RELOCATION_MATCH PASS   RenderPrimitive
+
+WINS: 2
+  005deb40 RELOCATION_MATCH CAnimationEntry::AddComponent
+  00bc5970 RELOCATION_MATCH CEnginePrimitiveChangerManager::RenderPrimitive@CEnginePrimitiveChangerManager

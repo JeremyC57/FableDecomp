@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00abd150   RELOCATION_MATCH PASS   ReadFromFile
+00aa6960   RELOCATION_MATCH PASS   ReadFromFile
+0055e6b0   RELOCATION_MATCH PASS   GetScoreAsString
+
+WINS: 3
+  00abd150 RELOCATION_MATCH C3DMeshFileVerticesChunk::ReadFromFile@C3DMeshFileVerticesChunk
+  00aa6960 RELOCATION_MATCH C3DMeshFileXTriangleStripChunk::ReadFromFile@C3DMeshFileXTriangleStripChunk
+  0055e6b0 RELOCATION_MATCH CActivity::GetScoreAsString

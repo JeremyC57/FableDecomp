@@ -1,0 +1,28 @@
+// CTCInventoryExperience::GetExperienceStatMovieName(long stat) -- selects the stat spending movie path
+// Retail 0x0056E6B6, 169 bytes. The default CCharString is repeatedly assigned for each stat id.
+// The independent if statements preserve the retail fall-through checks and final copy construction.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+struct CCharStringData;
+struct CCharString {
+    CCharStringData* PStringData;
+    CCharString();                                      // 0x0099E4B0
+    CCharString(const CCharString& other);              // 0x0099EC30
+    ~CCharString();                                     // 0x0099EAE0
+    CCharString& operator=(const char* text);           // 0x0099EFE0
+};
+struct CTCInventoryExperience {
+    CCharString GetExperienceStatMovieName(long stat);
+};
+CCharString CTCInventoryExperience::GetExperienceStatMovieName(long stat)
+{
+    CCharString result;
+    if (stat == 1) result = "Data\\Video\\exp_spend_health.wmv";
+    if (stat == 0) result = "Data\\Video\\exp_spend_strength.wmv";
+    if (stat == 2) result = "Data\\Video\\exp_spend_tough.wmv";
+    if (stat == 3) result = "Data\\Video\\exp_spend_speed.wmv";
+    if (stat == 5) result = "Data\\Video\\exp_spend_stealth.wmv";
+    if (stat == 4) result = "Data\\Video\\exp_spend_decapitation.wmv";
+    if (stat == 9) result = "Data\\Video\\exp_spend_will.wmv";
+    return result;
+}

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00bdfa10   RELOCATION_MATCH PASS   ScalarDeletingDestructor
+00be6090   RELOCATION_MATCH PASS   ~CLandscapeBackgroundPatch
+00bf67f0   MATCH            PASS   InvalidateEdge
+00bf9bc0   MATCH            PASS   SetupPrimitiveDesc
+006f99b0   RELOCATION_MATCH PASS   GetAnimEventsBetweenTimes
+
+WINS: 5
+  00bdfa10 RELOCATION_MATCH CLocalDetailCacheMap_CQuadTreeElement::ScalarDeletingDestructor
+  00be6090 RELOCATION_MATCH CLandscapeBackgroundPatch::??1Patch@
+  00bf67f0 MATCH CLandscapeBackgroundTreeNode::InvalidateEdge
+  00bf9bc0 MATCH CLocalDetailPrimitiveRepeatedMesh::SetupPrimitiveDesc
+  006f99b0 RELOCATION_MATCH NAnimationEvents_CManager::GetAnimEventsBetweenTimes

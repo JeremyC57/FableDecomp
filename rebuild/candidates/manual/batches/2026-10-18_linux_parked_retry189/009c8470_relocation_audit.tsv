@@ -1,0 +1,6 @@
+offset	native_target	symbol
+0000005f	00993ca0	?ReadWithSrcChunkOverflow@InputReader@@AAEXPAEJ@Z
+00000077	004428f0	?Resize@LongArray@@QAEXKABJ@Z
+000000d1	00993ca0	?ReadWithSrcChunkOverflow@InputReader@@AAEXPAEJ@Z
+00000100	009d5620	?Sizeof@BankFileData@@QBEKXZ
+00000116	009fbf20	?SetResourceSize@ResourceMethods@@QAEXK@Z

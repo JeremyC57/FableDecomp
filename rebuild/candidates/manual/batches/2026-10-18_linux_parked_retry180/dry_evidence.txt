@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00a62b70   RELOCATION_MATCH PASS   CountBits
+00ae1030   RELOCATION_MATCH PASS   SetParticles
+00bde190   RELOCATION_MATCH PASS   LoadHeader
+00460657   RELOCATION_MATCH PASS   operator=
+00471a77   RELOCATION_MATCH PASS   operator=
+
+WINS: 5
+  00a62b70 RELOCATION_MATCH CPackedUIntArray::CountBits
+  00ae1030 RELOCATION_MATCH CParticleSimulation::SetParticles
+  00bde190 RELOCATION_MATCH CObjectCacheGroupCollection::LoadHeader
+  00460657 RELOCATION_MATCH CSpecialAbilitiesDivineWrathDef::??4CSpecialAbilitiesDivineWrathDef@@
+  00471a77 RELOCATION_MATCH COpinionDeedEffectsDef::??4COpinionDeedEffectsDef@@

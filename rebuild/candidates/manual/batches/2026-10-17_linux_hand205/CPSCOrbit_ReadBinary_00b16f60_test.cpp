@@ -1,0 +1,4 @@
+#include <cstdio>
+struct In{unsigned char* p;unsigned long pos;long len;const unsigned char* data;long cp,rem;void Read(void*d,long n){for(long i=0;i<n;++i)((unsigned char*)d)[i]=data[i];data+=n;rem-=n;pos+=n;}};
+struct O{long t; bool en; float r,e; bool c; float ct,ss,sa,rs,rt,rsr,rtr;}; struct X{unsigned char pad[12];unsigned long center;O orbits[3];void read(In*in){unsigned long v;in->Read(&v,sizeof(v));center=v;in->Read(orbits,sizeof(orbits));}};
+int main(){unsigned char b[sizeof(unsigned long)+sizeof(O)*3]={};unsigned long v=7;for(unsigned i=0;i<4;++i)b[i]=((unsigned char*)&v)[i]; X x={};In in={0,0,0,b,0,sizeof(b)};x.read(&in);if(x.center!=7||in.pos!=sizeof(b)){std::printf("00b16f60_TEST FAIL\n");return 1;}std::printf("00b16f60_TEST PASS\n");return 0;}

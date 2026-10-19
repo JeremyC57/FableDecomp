@@ -1,0 +1,12 @@
+offset	native_target	symbol
+0000000a	008621a0	?OnActivate@ModeStandNative@@QAEXXZ
+00000025	008c7a70	?GetSnowTroll@NativeDefinition@@QBE_NPAUSnowDefinitionPointer@@@Z
+00000053	00833a10	?SuspendAI@ThingNative@@QAEX_NPAX@Z
+0000005b	004c73d0	?GetPos@ThingNative@@QBEABUC3DVector@@XZ
+00000079	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+00000084	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+00000093	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+0000009a	004c73d0	?GetPos@ThingNative@@QBEABUC3DVector@@XZ
+000000b5	0073a680	?GetWorld@ModeIceTroll@@QBEAAUWorldNative@@XZ
+000000c1	0073a680	?GetWorld@ModeIceTroll@@QBEAAUWorldNative@@XZ
+000000e6	0074a5d0	?GetValidPositions@@YIXAAUPositionVector@@ABUCWorldMap@@ABUCThingSearchTools@@ABUC3DVector@@M_NPBUCTCShapeManager@@@Z

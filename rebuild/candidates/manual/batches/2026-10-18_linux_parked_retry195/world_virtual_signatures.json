@@ -1,0 +1,128 @@
+[
+  {
+    "slot": 0,
+    "native_target": "0x4ae8d0",
+    "compiled_symbol": "??_EWorldNative@@UAEPAXI@Z",
+    "compiled_signature": "public: virtual void * __thiscall WorldNative::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "??1CWorld@@UAE@XZ"
+    ]
+  },
+  {
+    "slot": 1,
+    "native_target": "0x49d970",
+    "compiled_symbol": "?PostLoadInit@WorldNative@@UAEXXZ",
+    "compiled_signature": "public: virtual void __thiscall WorldNative::PostLoadInit(void)",
+    "original_symbols": [
+      "?PostLoadInit@CWorld@@MAEXXZ"
+    ]
+  },
+  {
+    "slot": 2,
+    "native_target": "0x49e220",
+    "compiled_symbol": "?LoadWorldFromFile@WorldNative@@UAEXAAUCAFile@@J@Z",
+    "compiled_signature": "public: virtual void __thiscall WorldNative::LoadWorldFromFile(struct CAFile &, long)",
+    "original_symbols": [
+      "?LoadWorldFromFile@CWorld@@UAEXAAVCAFile@@J@Z"
+    ]
+  },
+  {
+    "slot": 3,
+    "native_target": "0x49e1b0",
+    "compiled_symbol": "?GetThingManager@WorldNative@@UAEAAUCThingManager@@XZ",
+    "compiled_signature": "public: virtual struct CThingManager & __thiscall WorldNative::GetThingManager(void)",
+    "original_symbols": [
+      "?GetThingManager@CWorld@@UAEAAVCThingManager@@XZ"
+    ]
+  },
+  {
+    "slot": 4,
+    "native_target": "0x49e1c0",
+    "compiled_symbol": "?PeekThingManager@WorldNative@@UBEABUCThingManager@@XZ",
+    "compiled_signature": "public: virtual struct CThingManager const & __thiscall WorldNative::PeekThingManager(void) const",
+    "original_symbols": [
+      "?PeekThingManager@CWorld@@UBEABVCThingManager@@XZ"
+    ]
+  },
+  {
+    "slot": 5,
+    "native_target": "0x49da00",
+    "compiled_symbol": "?GetCurrentRenderCamera@WorldNative@@UBE?AUCCamera@@ABUCInterpolationInfo@@@Z",
+    "compiled_signature": "public: virtual struct CCamera __thiscall WorldNative::GetCurrentRenderCamera(struct CInterpolationInfo const &) const",
+    "original_symbols": [
+      "?GetCurrentRenderCamera@CWorld@@UBE?AVCCamera@@ABVCInterpolationInfo@@@Z"
+    ]
+  },
+  {
+    "slot": 6,
+    "native_target": "0x49da60",
+    "compiled_symbol": "?GetCurrentRenderCamera@WorldNative@@UBE?AUCCamera@@XZ",
+    "compiled_signature": "public: virtual struct CCamera __thiscall WorldNative::GetCurrentRenderCamera(void) const",
+    "original_symbols": [
+      "?GetCurrentRenderCamera@CWorld@@UBE?AVCCamera@@XZ"
+    ]
+  },
+  {
+    "slot": 7,
+    "native_target": "0x4a6550",
+    "compiled_symbol": "?PostInit@WorldNative@@UAEXAAUCDisplayEngine@@@Z",
+    "compiled_signature": "public: virtual void __thiscall WorldNative::PostInit(struct CDisplayEngine &)",
+    "original_symbols": [
+      "?PostInit@CWorld@@UAEXAAVCDisplayEngine@@@Z"
+    ]
+  },
+  {
+    "slot": 8,
+    "native_target": "0x49dbe0",
+    "compiled_symbol": "?GetGameLODCentre@WorldNative@@UBE?AUC3DVector@@XZ",
+    "compiled_signature": "public: virtual struct C3DVector __thiscall WorldNative::GetGameLODCentre(void) const",
+    "original_symbols": [
+      "?GetGameLODCentre@CWorld@@UBE?AVC3DVector@@XZ"
+    ]
+  },
+  {
+    "slot": 9,
+    "native_target": "0x4a6e30",
+    "compiled_symbol": "?Init@WorldNative@@UAEXXZ",
+    "compiled_signature": "public: virtual void __thiscall WorldNative::Init(void)",
+    "original_symbols": [
+      "?Init@CWorld@@UAEXXZ"
+    ]
+  },
+  {
+    "slot": 10,
+    "native_target": "0x4a2e90",
+    "compiled_symbol": "?Uninitialise@WorldNative@@UAEXXZ",
+    "compiled_signature": "public: virtual void __thiscall WorldNative::Uninitialise(void)",
+    "original_symbols": [
+      "?Uninitialise@CWorld@@UAEXXZ"
+    ]
+  },
+  {
+    "slot": 11,
+    "native_target": "0x4a1cb0",
+    "compiled_symbol": "?PreparePrimitivesForEngine@WorldNative@@UAEXABUCEnginePrimitivePrepareInfo@@@Z",
+    "compiled_signature": "public: virtual void __thiscall WorldNative::PreparePrimitivesForEngine(struct CEnginePrimitivePrepareInfo const &)",
+    "original_symbols": [
+      "?PreparePrimitivesForEngine@CWorld@@UAEXABVCEnginePrimitivePrepareInfo@@@Z"
+    ]
+  },
+  {
+    "slot": 12,
+    "native_target": "0x4ae8b0",
+    "compiled_symbol": "?GetWorldMap@WorldNative@@UAEAAUCWorldMap@@XZ",
+    "compiled_signature": "public: virtual struct CWorldMap & __thiscall WorldNative::GetWorldMap(void)",
+    "original_symbols": [
+      "?GetWorldMap@CWorld@@UAEAAVCWorldMap@@XZ"
+    ]
+  },
+  {
+    "slot": 13,
+    "native_target": "0x4ae8c0",
+    "compiled_symbol": "?PeekWorldMap@WorldNative@@UBEABUCWorldMap@@XZ",
+    "compiled_signature": "public: virtual struct CWorldMap const & __thiscall WorldNative::PeekWorldMap(void) const",
+    "original_symbols": [
+      "?PeekWorldMap@CWorld@@UBEABVCWorldMap@@XZ"
+    ]
+  }
+]

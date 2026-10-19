@@ -1,0 +1,11 @@
+addr       parity           behav  name
+009c80f0   RELOCATION_MATCH PASS   BeginLoading
+009c8340   RELOCATION_MATCH PASS   BeginLoading
+
+WINS: 2
+  009c80f0 RELOCATION_MATCH NGameText::CDataBankGroupEntry::BeginLoading
+  009c8340 RELOCATION_MATCH NGameText::CDataBankTextEntry::BeginLoading
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NGameTextCDataBankGroupEntry_BeginLoading_009c80f0
+  NGameTextCDataBankTextEntry_BeginLoading_009c8340

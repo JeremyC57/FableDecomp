@@ -1,0 +1,307 @@
+[
+  {
+    "compiled": "?ClipBoundingBox@CShadowClipVolume@@QBE_NABUC3DBoundingBox@@AA_N@Z",
+    "signature": "public: bool __thiscall CShadowClipVolume::ClipBoundingBox(struct C3DBoundingBox const &, bool &) const",
+    "original_symbols": [
+      "?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          27940,
+          "009ed480"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          107544,
+          "02d732f0"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?ClipWorldSpaceBoundingBox@CEngineCameraMethods@@QBE_NABUC3DBoundingBox@@MAA_N@Z",
+    "signature": "public: bool __thiscall CEngineCameraMethods::ClipWorldSpaceBoundingBox(struct C3DBoundingBox const &, float, bool &) const",
+    "original_symbols": [
+      "?ClipWorldSpaceBoundingBox@CEngineCamera@@QBE_NABVC3DBoundingBox@@MAA_N@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          27647,
+          "009d1040"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          109243,
+          "02dc1b20"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?GetCellBoundingBoxAndDrawDistance@CEngineSceneGrid@@QAE_NAAUC3DBoundingBox@@AAMKK@Z",
+    "signature": "public: bool __thiscall CEngineSceneGrid::GetCellBoundingBoxAndDrawDistance(struct C3DBoundingBox &, float &, unsigned long, unsigned long)",
+    "original_symbols": [
+      "?GetCellBoundingBoxAndDrawDistance@CEngineSceneGrid@@QAE_NAAVC3DBoundingBox@@AAMKK@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          28757,
+          "00a44880"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          111085,
+          "02e1a4c0"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?GetCellRenderMask@CEngineSceneGrid@@QAEKKK@Z",
+    "signature": "public: unsigned long __thiscall CEngineSceneGrid::GetCellRenderMask(unsigned long, unsigned long)",
+    "original_symbols": [
+      "?GetCellRenderMask@CEngineSceneGrid@@AAEKKK@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          28760,
+          "00a44c80"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          111091,
+          "02e1aa50"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?IntersectsSolid@C3DBoundingBox@@QBE_NABUC3DBoundingSphere@@@Z",
+    "signature": "public: bool __thiscall C3DBoundingBox::IntersectsSolid(struct C3DBoundingSphere const &) const",
+    "original_symbols": [
+      "?IntersectsSolid@C3DBoundingBox@@QBE_NABVC3DBoundingSphere@@@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          35249,
+          "00bd0a90"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          138055,
+          "03314150"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABUC3DBoundingSphere@@K@Z",
+    "signature": "public: bool __thiscall CEngineSceneGrid::PreloadPrimitives(unsigned long, unsigned long, struct C3DBoundingSphere const &, unsigned long)",
+    "original_symbols": [
+      "?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABVC3DBoundingSphere@@K@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          28776,
+          "00a45bc0"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          111100,
+          "02e1b7a0"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABUCEngineCamera@@K@Z",
+    "signature": "public: bool __thiscall CEngineSceneGrid::PreloadPrimitives(unsigned long, unsigned long, struct CEngineCamera const &, unsigned long)",
+    "original_symbols": [
+      "?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABVCEngineCamera@@K@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          28763,
+          "00a44e60"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          111101,
+          "02e1bb60"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?RenderCellClippedShadowBuffer@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABUCShadowClipVolume@@_NAAUCEngineSceneRenderStats@@@Z",
+    "signature": "public: void __thiscall CEngineSceneGrid::RenderCellClippedShadowBuffer(unsigned long, unsigned long, enum EEngineRenderLayer, struct CShadowClipVolume const &, bool, struct CEngineSceneRenderStats &)",
+    "original_symbols": [
+      "?RenderCellClippedShadowBuffer@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABVCShadowClipVolume@@_NAAVCEngineSceneRenderStats@@@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          28771,
+          "00a45560"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          111079,
+          "02e19110"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?PreloadPrimitives@CEngineScene@@QAE_NABUCEngineCamera@@K@Z",
+    "original_symbols": [
+      "?PreloadPrimitives@CEngineScene@@QAE_NABVCEngineCamera@@K@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          28787,
+          "00a465b0"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          111153,
+          "02e201f0"
+        ]
+      ]
+    ]
+  },
+  {
+    "compiled": "?PreloadPrimitives@CEngineScene@@QAE_NABUC3DBoundingSphere@@K@Z",
+    "original_symbols": [
+      "?PreloadPrimitives@CEngineScene@@QAE_NABVC3DBoundingSphere@@K@Z"
+    ],
+    "records": [
+      [
+        [
+          "ghidra_out/egor_pdb_names.tsv",
+          28786,
+          "00a46460"
+        ],
+        [
+          "ghidra_out/fablewin_pdb_names.tsv",
+          111149,
+          "02e1fa90"
+        ]
+      ]
+    ]
+  },
+  {
+    "symbol": "??0CIVCountedPointeeBase@@QAE@XZ",
+    "signature": "public: __thiscall CIVCountedPointeeBase::CIVCountedPointeeBase(void)",
+    "records": [
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        9591,
+        "019f60f0"
+      ]
+    ]
+  },
+  {
+    "symbol": "??0CEnginePersistentPrimitiveBase@@QAE@J@Z",
+    "signature": "public: __thiscall CEnginePersistentPrimitiveBase::CEnginePersistentPrimitiveBase(long)",
+    "records": [
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        90195,
+        "029ae6b0"
+      ]
+    ]
+  },
+  {
+    "symbol": "??0CEngineInternalPrimitiveBase@@QAE@JK@Z",
+    "signature": "public: __thiscall CEngineInternalPrimitiveBase::CEngineInternalPrimitiveBase(long, unsigned long)",
+    "records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        28737,
+        "00a44400"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        111683,
+        "02e34a50"
+      ]
+    ]
+  },
+  {
+    "symbol": "??0CBaseClass@@QAE@XZ",
+    "signature": "public: __thiscall CBaseClass::CBaseClass(void)",
+    "records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        31024,
+        "00b01f20"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        122265,
+        "03044700"
+      ]
+    ]
+  },
+  {
+    "symbol": "??0CBaseClassNonCopyable@@IAE@XZ",
+    "signature": "protected: __thiscall CBaseClassNonCopyable::CBaseClassNonCopyable(void)",
+    "records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        31026,
+        "00b01f40"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        122267,
+        "03044740"
+      ]
+    ]
+  },
+  {
+    "symbol": "??0CEnginePrimitiveRenderUtil@@QAE@XZ",
+    "signature": "public: __thiscall CEnginePrimitiveRenderUtil::CEnginePrimitiveRenderUtil(void)",
+    "records": [
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        109211,
+        "02dbe420"
+      ]
+    ]
+  },
+  {
+    "symbol": "??0CEnginePrimitiveManager@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z",
+    "signature": "public: __thiscall CEnginePrimitiveManager::CEnginePrimitiveManager(class CArray<class CEngineScene *> &)",
+    "records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        28742,
+        "00a444e0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        111040,
+        "02e17490"
+      ]
+    ]
+  }
+]

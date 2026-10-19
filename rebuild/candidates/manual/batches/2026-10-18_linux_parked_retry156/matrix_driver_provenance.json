@@ -1,0 +1,20 @@
+{
+  "driver": "/workspace/FableDecomp/work/codex-lane/w22/astra235_whole/test/00705040.canonical.cpp",
+  "driver_sha256": "29fd82ec2e74b28b53f67519525a05c4bc4a6a0c0235df3ec189798d59318c97",
+  "source_sha256": "94b27cab390054908de713856fc5270c46e0e847b49832c43bf7362b63a5b0c0",
+  "source_object": "/workspace/FableDecomp/work/codex-lane/w22/astra235_whole/snapshots/00705040_05_117/compiled.obj",
+  "source_object_sha256": "11c40f2cd71548f721dbe18adb33f8b6fdb584d6c88041171d250b5f15add322",
+  "driver_flags": [
+    "/Od",
+    "/W3"
+  ],
+  "production_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "host": "PASS C++98 O2 verbatim production body",
+  "vc71": "PASS canonical /Od driver linked unchanged grade5 /O2 production object",
+  "coverage": "all six finite/alias/sentinel cases, native versus host FP cancellation order, NaN propagation unchanged; no assertions removed",
+  "canonical_behaviour_of": "PASS actual fallback source-object link"
+}

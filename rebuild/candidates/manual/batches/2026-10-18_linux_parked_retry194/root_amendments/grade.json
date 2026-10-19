@@ -1,0 +1,24 @@
+{
+  "address": "00b991d0",
+  "author_grades": 1,
+  "root_grade": 1,
+  "cumulative": 2,
+  "source": "work/codex-lane/w22/coordinator_retry194/root_amendments/src/00b991d0.cpp",
+  "sha256": "97be8f180e0d781aa2f34c40116a2002d9b507cdd15390b161dc3799242824a7",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "work/codex-lane/tools/q.py",
+    "00b991d0",
+    "work/codex-lane/w22/coordinator_retry194/root_amendments/src/00b991d0.cpp",
+    "UpdateRepeatedStaticMesh"
+  ],
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "reason": "Original C3DMeshInfo::BeginLoading(ulong,bool,bool) is const (EgorB618A0 QBEXK_N0). Correct both genuine declaration and fixture; native emptyRET4 is three bytes not two.",
+  "utc": "2026-10-19T01:50:08.387892+00:00"
+}

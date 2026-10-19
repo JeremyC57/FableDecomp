@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a45150   RELOCATION_MATCH PASS   Initialise
+
+WINS: 1
+  00a45150 RELOCATION_MATCH C3DSkeletalMorphTarget::Initialise
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DSkeletalMorphTarget_Initialise_00a45150

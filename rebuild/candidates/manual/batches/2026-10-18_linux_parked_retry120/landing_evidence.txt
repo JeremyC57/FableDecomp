@@ -1,0 +1,11 @@
+addr       parity           behav  name
+009964e0   RELOCATION_MATCH PASS   ReadWithChunking
+0093cb20   RELOCATION_MATCH PASS   Update
+
+WINS: 2
+  009964e0 RELOCATION_MATCH CDataInputStream::ReadWithChunking
+  0093cb20 RELOCATION_MATCH CAIStateGroup_NonVillageGuardPatrol::Update
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CDataInputStream_ReadWithChunking_009964e0
+  CAIStateGroupNonVillageGuardPatrol_Update_0093cb20

@@ -1,0 +1,19 @@
+
+work/codex-lane/wine/q/00bf3030/00bf3030.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Keys@CNodeHeader@@QAEPAIXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000011 DISP32            ??_U@YAPAXI@Z
+00000068 DISP32            ?LinkLeaf@CEngineTreeFilerBase@@QAEPAUCNodeHeader@@PAU2@0@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?AddNewKey@CEngineTreeFilerBase@@QAEPAUCNodeHeader@@PBI@Z
+
+

@@ -1,0 +1,3 @@
+offset	native_target	symbol
+00000078	00bfeae6	_memmove
+0000010d	00533bc0	?RemoveBaseChild@CDynamicList@NUISystem@@QAEXK@Z

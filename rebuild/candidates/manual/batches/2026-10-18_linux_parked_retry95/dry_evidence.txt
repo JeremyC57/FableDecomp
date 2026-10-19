@@ -1,0 +1,5 @@
+addr       parity           behav  name
+009c46b0   RELOCATION_MATCH PASS   IsCompressedFilename
+
+WINS: 1
+  009c46b0 RELOCATION_MATCH CFileInstaller::IsCompressedFilename

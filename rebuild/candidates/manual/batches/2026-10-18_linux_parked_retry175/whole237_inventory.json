@@ -1,0 +1,11 @@
+{
+  "counts": {
+    "LANDED": 27,
+    "BLOCKED_DIFFER": 9,
+    "CAPPED_DIFFER": 3,
+    "HELD_REVIEW": 1
+  },
+  "worker_grades": 179,
+  "root_extra_grades": 2,
+  "total": 181
+}

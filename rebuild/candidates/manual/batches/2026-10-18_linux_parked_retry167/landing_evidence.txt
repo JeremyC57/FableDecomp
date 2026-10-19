@@ -1,0 +1,14 @@
+addr       parity           behav  name
+005407b0   RELOCATION_MATCH PASS   EditBoxNative
+0081e810   RELOCATION_MATCH PASS   HeightAreaChanged
+006f9430   RELOCATION_MATCH PASS   EventExists
+
+WINS: 3
+  005407b0 RELOCATION_MATCH NUISystem_CEditBox::??0EditBoxNative@@
+  0081e810 RELOCATION_MATCH CMap::HeightAreaChanged
+  006f9430 RELOCATION_MATCH NAnimationEvents_CManager::EventExists
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NUISystemCEditBox_EditBoxNative_005407b0
+  CMap_HeightAreaChanged_0081e810
+  NAnimationEventsCManager_EventExists_006f9430

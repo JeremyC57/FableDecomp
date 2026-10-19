@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00729110   RELOCATION_MATCH PASS   Update
+00d9fd80   RELOCATION_MATCH PASS   PhaseMe
+00ddece0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00729110 RELOCATION_MATCH CExpressionState::Update
+  00d9fd80 RELOCATION_MATCH CFadeinSummoner::PhaseMe
+  00ddece0 RELOCATION_MATCH CExitWardensOffice::Main
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CExpressionState_Update_00729110
+  CFadeinSummoner_PhaseMe_00d9fd80
+  CExitWardensOffice_Main_00ddece0

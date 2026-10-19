@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b991d0   RELOCATION_MATCH PASS   UpdateRepeatedStaticMesh
+00b2f8e0   RELOCATION_MATCH PASS   CheckVisibilityResult
+
+WINS: 2
+  00b991d0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateRepeatedStaticMesh
+  00b2f8e0 RELOCATION_MATCH CEnginePrimitiveOcclusionManager::CheckVisibilityResult

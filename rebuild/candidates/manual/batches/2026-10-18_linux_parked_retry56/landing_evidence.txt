@@ -1,0 +1,8 @@
+addr       parity           behav  name
+005ed940   RELOCATION_MATCH PASS   AppendDefault
+
+WINS: 1
+  005ed940 RELOCATION_MATCH CEnginePrimitiveHandleVector::AppendDefault
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveHandleVector_AppendDefault_005ed940

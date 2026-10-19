@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00405650	RELOCATION_MATCH	206v206	PASS	new5+reserved4; actual header host98/O2 and VC/O2
+00404970	RELOCATION_MATCH	226v226	PASS	new2+reserved4; actual header host98/O2 and VC/O2
+00542330	RELOCATION_MATCH	178v178	PASS	new2+reserved4; actual header host98/O2 and VC/O2
+009f52a0	DIFFER	234v234	-	new6+reserved4 CAP10; best snapshot2; sole fstp scheduling difference

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004ff390   RELOCATION_MATCH PASS   UnloadAllMapsExceptPlayerPos
+
+WINS: 1
+  004ff390 RELOCATION_MATCH CWorldMap::UnloadAllMapsExceptPlayerPos

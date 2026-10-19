@@ -1,0 +1,42 @@
+{
+  "00a66450": [
+    [
+      "00000038",
+      "DISP32",
+      "?NewChunk@FixedSizeAllocator@@QAEPAUCMemoryAreaChunk@@XZ",
+      "0xa663d0"
+    ],
+    [
+      "000000cd",
+      "DISP32",
+      "?UnlinkChunk@FixedSizeAllocator@@QAEXPAUCMemoryAreaChunk@@@Z",
+      "0xa65e70"
+    ],
+    [
+      "000000d9",
+      "DISP32",
+      "?AppendChunk@FixedSizeAllocator@@QAEXPAUCMemoryAreaChunk@@@Z",
+      "0xa65f00"
+    ]
+  ],
+  "00a662a0": [
+    [
+      "000000c3",
+      "DISP32",
+      "?UnlinkChunk@FixedSizeAllocator@@QAEXPAUCMemoryAreaChunk@@@Z",
+      "0xa65e70"
+    ],
+    [
+      "000000c9",
+      "DISP32",
+      "?PrependChunk@FixedSizeAllocator@@QAEXPAUCMemoryAreaChunk@@@Z",
+      "0xa65ec0"
+    ],
+    [
+      "000000ea",
+      "DISP32",
+      "?DeleteEmptyChunk@FixedSizeAllocator@@QAEXPAUCMemoryAreaChunk@@@Z",
+      "0xa66160"
+    ]
+  ]
+}

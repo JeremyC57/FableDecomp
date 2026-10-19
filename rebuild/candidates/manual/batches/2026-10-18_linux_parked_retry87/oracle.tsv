@@ -1,0 +1,4 @@
+address	name	length	bytes
+004faee0	CTCTalk::GetDialogueVoice	22	568b74240883c138518bcee8403d4a008bc65ec20400
+0075c9b0	CTCCameraPointScriptedSpline::CKeyCamera::GetEventName	22	568b74240883c130518bcee8702224008bc65ec20400
+005b12f4	std::pair<CWideString,long>::pair	27	56578b7c240c578bf1e81ea43e008b47048946045f8bc65ec20400

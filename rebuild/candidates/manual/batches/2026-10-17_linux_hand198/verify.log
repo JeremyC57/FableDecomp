@@ -1,0 +1,15 @@
+addr       parity           behav  name
+008929d0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+008929d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008929d0   RELOCATION_MATCH PASS   DisplayGameInfo
+00892a80   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+00892a80   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00892a80   RELOCATION_MATCH PASS   DisplayGameInfoText
+
+WINS: 2
+  008929d0 RELOCATION_MATCH CGameScriptInterface::DisplayGameInfo
+  00892a80 RELOCATION_MATCH CGameScriptInterface::DisplayGameInfoText
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_DisplayGameInfo_008929d0
+  CGameScriptInterface_DisplayGameInfoText_00892a80

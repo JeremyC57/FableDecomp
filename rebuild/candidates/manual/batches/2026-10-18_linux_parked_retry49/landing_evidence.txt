@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00709a50   RELOCATION_MATCH PASS   CEnginePrimitiveMorphedAnimatingMesh
+00954e30   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 2
+  00709a50 RELOCATION_MATCH CEnginePrimitiveMorphedAnimatingMesh::??0CEnginePrimitiveMorphedAnimatingMesh
+  00954e30 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveMorphedAnimatingMesh_CEnginePrimitiveMorphedAnimatingMesh_00709a50
+  CAIStateGroupMazeTutorialBattleRespondToLightning_IsRunnable_00954e30

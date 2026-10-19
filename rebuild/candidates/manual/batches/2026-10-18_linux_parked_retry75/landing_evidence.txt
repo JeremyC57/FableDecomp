@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b52160   RELOCATION_MATCH PASS   SetCommonParticleShaderConstants
+
+WINS: 1
+  00b52160 RELOCATION_MATCH CEngineWeatherRenderer::SetCommonParticleShaderConstants
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineWeatherRenderer_SetCommonParticleShaderConstants_00b52160

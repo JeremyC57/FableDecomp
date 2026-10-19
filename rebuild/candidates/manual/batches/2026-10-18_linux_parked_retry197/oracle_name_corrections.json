@@ -1,0 +1,14 @@
+[
+  {
+    "address": "00b92f80",
+    "old": "CEnginePrimitiveRenderer::PreloadPrimitivesByCamera",
+    "new": "CEngineScene::PreloadPrimitives(const CEngineCamera&, unsigned long)",
+    "evidence": "original_signatures.json; native MapList+4 and FirstMovingPrimitive+20; source and root byte verification"
+  },
+  {
+    "address": "00b92e50",
+    "old": "CEnginePrimitiveRenderer::PreloadPrimitivesBySphere",
+    "new": "CEngineScene::PreloadPrimitives(const C3DBoundingSphere&, unsigned long)",
+    "evidence": "original_signatures.json; native MapList+4 and FirstMovingPrimitive+20; source and root byte verification"
+  }
+]

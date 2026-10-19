@@ -1,0 +1,15 @@
+['g++', '-std=c++98', '-O2', '-Wall', '-Wextra', '-fno-elide-constructors', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim2/fixture.cpp', '-o', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim2/noelide']
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim2/fixture.cpp:19:9: warning: #pragma once in main file
+   19 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim2/fixture.cpp:657:9: warning: #pragma once in main file
+  657 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim2/fixture.cpp: In member function ‘float C3DAnimationStats::GetEventTime(const CCharString&) const’:
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim2/fixture.cpp:823:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  823 |  if(mutate)stats.Duration=100.0f;return seconds;
+      |  ^~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim2/fixture.cpp:823:34: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  823 |  if(mutate)stats.Duration=100.0f;return seconds;
+      |                                  ^~~~~~
+006f9130_TEST PASS

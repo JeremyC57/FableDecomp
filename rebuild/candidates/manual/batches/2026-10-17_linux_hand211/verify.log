@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00457537   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+00457537   RELOCATION_MATCH PASS   CSpecialAbilitiesBulletTimeDef
+
+WINS: 1
+  00457537 RELOCATION_MATCH CSpecialAbilitiesBulletTimeDef::CSpecialAbilitiesBulletTimeDef
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CSpecialAbilitiesBulletTimeDef_CSpecialAbilitiesBulletTimeDef_00457537

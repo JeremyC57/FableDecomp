@@ -1,0 +1,8 @@
+offset	native_target	symbol
+00000044	00bfea0e	_malloc
+0000007e	00a01b10	??0CBaseIntelligentPointer@@QAE@XZ
+0000008b	01238c6c	??_7?$CIntelligentPointer@UCThing@@@@6B@
+00000090	00a01b90	?SetPItem@CBaseIntelligentPointer@@QAEXPAUCThing@@@Z
+0000009a	00a01b10	??0CBaseIntelligentPointer@@QAE@XZ
+000000a7	01238c6c	??_7?$CIntelligentPointer@UCThing@@@@6B@
+000000ac	00a01b90	?SetPItem@CBaseIntelligentPointer@@QAEXPAUCThing@@@Z

@@ -1,0 +1,13 @@
+offset	native_target	symbol
+00000019	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+00000037	0040f020	?LowerBound@CInterfaceMap@@QAEPAUEntry@1@PBJ@Z
+0000005d	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+0000007e	0040f020	?LowerBound@CInterfaceMap@@QAEPAUEntry@1@PBJ@Z
+000000b3	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+000000cb	00a01b10	??0CBaseIntelligentPointer@@QAE@XZ
+000000d8	01238c6c	??_7?$CIntelligentPointer@UCThing@@@@6B@
+000000dd	00a01b90	?SetPItem@CBaseIntelligentPointer@@QAEXPAUCBaseObject@@@Z
+000000ea	004ad520	?PushBack@IntelligentThingVector@@QAEXABU?$CIntelligentPointer@UCThing@@@@@Z
+000000f3	00a01c10	??1?$CIntelligentPointer@UCThing@@@@UAE@XZ
+0000010c	004ac0f0	?Erase@IntelligentThingVector@@QAEPAU?$CIntelligentPointer@UCThing@@@@PAU2@0@Z
+00000117	00859a20	?FinishAction@CCombatActionBase@@UAEXXZ

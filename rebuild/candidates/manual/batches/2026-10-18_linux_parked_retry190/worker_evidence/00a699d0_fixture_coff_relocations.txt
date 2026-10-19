@@ -1,0 +1,225 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/snapshots/00a699d0_fixture_texture2/native.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0C2DExtentsI@@QAE@JJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0C3DExtentsI@@QAE@JJJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Volume@CManagedTextureData@@QAEAAU?$CCountedPointer@UCVolumeTexture@@@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             _baseCtors
+0000000b dir32             ??_7CBaseClass@@6B@
+00000011 dir32             _baseCtors
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECBaseClass@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CBaseClass@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             ??_7CBaseClass@@6B@
+00000008 dir32             _baseDtors
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000001 dir32             _volumeDtors
+00000007 dir32             ??_7CBaseClass@@6B@
+0000000d dir32             _baseDtors
+00000014 dir32             _volumeDtors
+0000001a dir32             _baseDtors
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CVolumeTexture@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             _roundCalls
+0000000c dir32             _inputW
+00000012 dir32             _roundCalls
+00000022 dir32             _inputH
+0000002e dir32             _expectedFormat
+00000036 dir32             _good
+00000040 dir32             _expectedX
+00000046 dir32             _expectedY
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetNextValidDimensions@CTexture@@SI?AUC2DExtentsI@@ABU2@ABUCPixelFormat@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _initCalls
+0000000a dir32             _initCalls
+00000010 dir32             _owner
+0000001a dir32             _expectedX
+00000021 dir32             _expectedY
+00000039 dir32             _expectedZ
+00000052 dir32             _expectedFormat
+00000070 dir32             _good
+00000094 dir32             _good
+0000009d dir32             _initialiseResult
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Initialise@CVolumeTexture@@QAE_NABUC3DExtentsI@@JABUCPixelFormat@@KW4EVolumePool@@_N@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?DisposeVolume@@YIXPAX@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000d dir32             _resetCalls
+00000016 dir32             _resetCalls
+00000025 dir32             _good
+00000049 DISP32            ??3@YAXPAX@Z
+00000055 DISP32            ??2@YAPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Reset@?$CCountedPointer@UCVolumeTexture@@@@QAEXPAUCVolumeTexture@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             _baseCtors
+0000000c dir32             ??_7CVolumeTexture@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECVolumeTexture@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CVolumeTexture@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _volumeDtors
+0000000f dir32             _baseDtors
+00000019 dir32             _volumeDtors
+0000001f dir32             ??_7CBaseClass@@6B@
+00000025 dir32             _baseDtors
+0000002d DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCVolumeTexture@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _roundCalls
+00000010 dir32             _inputW
+00000019 dir32             _roundCalls
+00000025 dir32             _inputH
+00000031 dir32             _expectedFormat
+0000003b dir32             _good
+00000046 dir32             _expectedX
+0000004d dir32             _expectedY
+00000054 DISP32            ??2@YAPAXI@Z
+00000061 dir32             _baseCtors
+00000067 dir32             ??_7CVolumeTexture@@6B@
+0000007c DISP32            ?Reset@?$CCountedPointer@UCVolumeTexture@@@@QAEXPAUCVolumeTexture@@@Z
+00000082 dir32             _initCalls
+00000087 dir32             _owner
+0000009b dir32             _initCalls
+000000a1 dir32             _expectedY
+000000a9 dir32             _expectedX
+000000bd dir32             _expectedZ
+000000c9 dir32             _expectedFormat
+000000d1 dir32             _good
+000000f7 dir32             _good
+00000100 dir32             _initialiseResult
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?CreateVolumeTexture@CManagedTextureData@@QAE_NKKKJABUCPixelFormat@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000009 dir32             _baseDtors
+00000012 dir32             ??_7CBaseClass@@6B@
+00000018 dir32             _baseDtors
+00000020 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCBaseClass@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000c dir32             _owner
+00000022 dir32             _expectedFormat
+0000003b dir32             ?DisposeVolume@@YIXPAX@Z
+0000004a dir32             _inputW
+00000050 dir32             _inputH
+0000005c dir32             _expectedX
+00000068 dir32             _expectedY
+00000073 dir32             _initialiseResult
+0000008d dir32             _expectedZ
+00000092 DISP32            ?CreateVolumeTexture@CManagedTextureData@@QAE_NKKKJABUCPixelFormat@@@Z
+00000098 dir32             _initialiseResult
+000000af dir32             _good
+000000bd dir32             _baseCtors
+000000c9 dir32             _volumeDtors
+000000d5 dir32             _baseDtors
+000000e1 dir32             _roundCalls
+000000ed dir32             _resetCalls
+000000f9 dir32             _initCalls
+0000013e DISP32            ??3@YAXPAX@Z
+00000144 dir32             _volumeDtors
+00000156 dir32             _baseDtors
+0000015d dir32             _good
+00000174 dir32             _expectedX
+00000180 dir32             _expectedY
+0000019c dir32             ??_C@_0BD@HANMLPKI@00a699d0_TEST?5PASS?$AA@
+000001a1 DISP32            _puts
+000001bf dir32             ??_C@_0BL@OHMPLMMK@00a699d0_TEST?5FAIL?5line?$CFd?6?$AA@
+000001c4 DISP32            _printf
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             _main

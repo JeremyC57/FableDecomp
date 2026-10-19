@@ -1,0 +1,7 @@
+# Scoreboard canonical hold: incompatible retail virtual declarations
+
+Root175 accepted00562EC0 after production-byte and behavioral tests. Subsequent independent native signature cross-check by worker239 proved that the inherited CTCBase declarations at slots12..20 used a donor method ordering, despite correct table size and relocation targets. Examples: slot12 target6868D0 RET4 cannot be EditFrameUpdate(); slot17 target686920 returns bool/RET4 and cannot be OnLevelUnload(). Native base table125BE0C agrees with the scoreboard table in these entries. Full genuine mapping remains under corrective audit.
+
+Root verification checked addresses but failed to check every inherited callee signature. The function is withdrawn from canonical compiled source/tests/catalog/oracle and the verified count until a valid correction is authorized within the attempt rules. Exact previously accepted source, fixture, catalog entry and oracle are preserved here; historical root175 batch and commit remain available. All ten worker grades remain counted; no eleventh grade was performed. No attempt history reset. This is a semantic hold, not a byte mismatch.
+
+Updated count34572/49568=69.7466%,474 above Claude baseline34098. Genuine33988 functions/1645615 bytes. Root175 scratch oracle accounting now excludes this one withdrawn row; original oracle retained here and in historical committed batch. No other accepted function is removed by this operation. Related prior008A03F0 interface declarations are being audited separately.

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00927c80   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 1
+  00927c80 RELOCATION_MATCH CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable

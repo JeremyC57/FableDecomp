@@ -1,0 +1,140 @@
+[
+  {
+    "slot": 0,
+    "native": "0x4e0064",
+    "compiled": "public: virtual void * __thiscall TargetingMethods::`vector deleting dtor'(unsigned int)",
+    "retail_base_prototype": "~CTCBase()"
+  },
+  {
+    "slot": 1,
+    "native": "0x686960",
+    "compiled": "public: virtual void __thiscall TargetingMethods::OnSerialise(struct CPersistContext &, bool)",
+    "retail_base_prototype": "void OnSerialise(CPersistContext&,bool)"
+  },
+  {
+    "slot": 2,
+    "native": "0x6867f0",
+    "compiled": "public: virtual void __thiscall TargetingMethods::OnRemove(void)",
+    "retail_base_prototype": "void OnRemove()"
+  },
+  {
+    "slot": 3,
+    "native": "0x686840",
+    "compiled": "public: virtual void __thiscall TargetingMethods::ConstructFromParams(struct CTCParamsBase const &)",
+    "retail_base_prototype": "void ConstructFromParams(const CTCParamsBase&)"
+  },
+  {
+    "slot": 4,
+    "native": "0x686850",
+    "compiled": "public: virtual void __thiscall TargetingMethods::OnCreate(void)",
+    "retail_base_prototype": "void OnCreate()"
+  },
+  {
+    "slot": 5,
+    "native": "0x686860",
+    "compiled": "public: virtual void __thiscall TargetingMethods::InitialActivate(void)",
+    "retail_base_prototype": "void InitialActivate()"
+  },
+  {
+    "slot": 6,
+    "native": "0x7f59c0",
+    "compiled": "public: virtual void __thiscall TargetingMethods::OnInitialActivate(void)",
+    "retail_base_prototype": "void OnInitialActivate()"
+  },
+  {
+    "slot": 7,
+    "native": "0x686880",
+    "compiled": "public: virtual void __thiscall TargetingMethods::RenderUpdate(float)",
+    "retail_base_prototype": "void RenderUpdate(float)"
+  },
+  {
+    "slot": 8,
+    "native": "0x4ddaa9",
+    "compiled": "public: virtual bool __thiscall TargetingMethods::HasFrameUpdate(void) const",
+    "retail_base_prototype": "bool HasFrameUpdate()const"
+  },
+  {
+    "slot": 9,
+    "native": "0x7f69b0",
+    "compiled": "public: virtual void __thiscall TargetingMethods::FrameUpdate(void)",
+    "retail_base_prototype": "void FrameUpdate()"
+  },
+  {
+    "slot": 10,
+    "native": "0x4ddaa4",
+    "compiled": "public: virtual void __thiscall TargetingMethods::BulletTimeFrameUpdate(void)",
+    "retail_base_prototype": "void BulletTimeFrameUpdate()"
+  },
+  {
+    "slot": 11,
+    "native": "0x6868c0",
+    "compiled": "public: virtual void __thiscall TargetingMethods::DrawPreparePrimitivesForRendering(struct CEnginePrimitivePrepareInfo const &)",
+    "retail_base_prototype": "void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&)"
+  },
+  {
+    "slot": 12,
+    "native": "0x6868d0",
+    "compiled": "public: virtual void __thiscall TargetingMethods::Copy(struct CTCBase const &)",
+    "retail_base_prototype": "void Copy(const CTCBase&)"
+  },
+  {
+    "slot": 13,
+    "native": "0x6868e0",
+    "compiled": "public: virtual void __thiscall TargetingMethods::OnDie(void)",
+    "retail_base_prototype": "void OnDie()"
+  },
+  {
+    "slot": 14,
+    "native": "0x6868f0",
+    "compiled": "public: virtual void __thiscall TargetingMethods::OnKill(void)",
+    "retail_base_prototype": "void OnKill()"
+  },
+  {
+    "slot": 15,
+    "native": "0x686900",
+    "compiled": "public: virtual void __thiscall TargetingMethods::OnLevelUnload(void)",
+    "retail_base_prototype": "void OnLevelUnload()"
+  },
+  {
+    "slot": 16,
+    "native": "0x686910",
+    "compiled": "public: virtual void __thiscall TargetingMethods::OnSetInLimbo(bool)",
+    "retail_base_prototype": "void OnSetInLimbo(bool)"
+  },
+  {
+    "slot": 17,
+    "native": "0x686920",
+    "compiled": "public: virtual bool __thiscall TargetingMethods::Validate(class CCharString &) const",
+    "retail_base_prototype": "bool Validate(CCharString&)const"
+  },
+  {
+    "slot": 18,
+    "native": "0x686930",
+    "compiled": "public: virtual bool __thiscall TargetingMethods::IsFreeForDeletion(void) const",
+    "retail_base_prototype": "bool IsFreeForDeletion()const"
+  },
+  {
+    "slot": 19,
+    "native": "0x686940",
+    "compiled": "public: virtual bool __thiscall TargetingMethods::IsSerialiseCreatable(void) const",
+    "retail_base_prototype": "bool IsSerialiseCreatable()const"
+  },
+  {
+    "slot": 20,
+    "native": "0x686950",
+    "compiled": "public: virtual bool __thiscall TargetingMethods::IsSerialisableForHeroState(void) const",
+    "retail_base_prototype": "bool IsSerialisableForHeroState()const"
+  },
+  {
+    "slot": 21,
+    "native": "0x4dda7f",
+    "compiled": "public: virtual long __thiscall TargetingMethods::GetInterfaceType(void) const",
+    "retail_base_prototype": "ETCInterfaceType GetInterfaceType()const"
+  },
+  {
+    "slot": 22,
+    "native": "0x4dda94",
+    "compiled": "public: virtual class CCharString __thiscall TargetingMethods::GetClassTypeName(void) const",
+    "retail_base_prototype": "CCharString GetClassTypeName()const"
+  }
+]

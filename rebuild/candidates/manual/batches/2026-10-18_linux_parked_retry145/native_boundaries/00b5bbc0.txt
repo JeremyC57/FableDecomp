@@ -1,0 +1,35 @@
+00b5bbc0 b80000003f           mov eax, 0x3f000000
+00b5bbc5 bacdcc4c3f           mov edx, 0x3f4ccccd
+00b5bbca 8991a4010000         mov dword ptr [ecx + 0x1a4], edx
+00b5bbd0 8991a8010000         mov dword ptr [ecx + 0x1a8], edx
+00b5bbd6 8991ac010000         mov dword ptr [ecx + 0x1ac], edx
+00b5bbdc 33d2                 xor edx, edx
+00b5bbde 898198010000         mov dword ptr [ecx + 0x198], eax
+00b5bbe4 89819c010000         mov dword ptr [ecx + 0x19c], eax
+00b5bbea 8981a0010000         mov dword ptr [ecx + 0x1a0], eax
+00b5bbf0 c781b00100000000c040 mov dword ptr [ecx + 0x1b0], 0x40c00000
+00b5bbfa 8991b8010000         mov dword ptr [ecx + 0x1b8], edx
+00b5bc00 c781bc0100000000803f mov dword ptr [ecx + 0x1bc], 0x3f800000
+00b5bc0a 8991b4010000         mov dword ptr [ecx + 0x1b4], edx
+00b5bc10 898170010000         mov dword ptr [ecx + 0x170], eax
+00b5bc16 898174010000         mov dword ptr [ecx + 0x174], eax
+00b5bc1c 898178010000         mov dword ptr [ecx + 0x178], eax
+00b5bc22 89817c010000         mov dword ptr [ecx + 0x17c], eax
+00b5bc28 8891c0010000         mov byte ptr [ecx + 0x1c0], dl
+00b5bc2e 8891c1010000         mov byte ptr [ecx + 0x1c1], dl
+00b5bc34 c3                   ret 
+00b5bc35 cc                   int3 
+00b5bc36 cc                   int3 
+00b5bc37 cc                   int3 
+00b5bc38 cc                   int3 
+00b5bc39 cc                   int3 
+00b5bc3a cc                   int3 
+00b5bc3b cc                   int3 
+00b5bc3c cc                   int3 
+00b5bc3d cc                   int3 
+00b5bc3e cc                   int3 
+00b5bc3f cc                   int3 
+00b5bc40 8b442404             mov eax, dword ptr [esp + 4]
+00b5bc44 8b542408             mov edx, dword ptr [esp + 8]
+00b5bc48 898170010000         mov dword ptr [ecx + 0x170], eax
+00b5bc4e 899174010000         mov dword ptr [ecx + 0x174], edx

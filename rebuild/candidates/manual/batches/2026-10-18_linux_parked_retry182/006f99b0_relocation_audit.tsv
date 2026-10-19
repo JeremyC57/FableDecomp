@@ -1,0 +1,11 @@
+offset	native_target	symbol
+00000007	0122ded8	__real@3f800000
+00000027	01237f00	__real@3ff0000000000000
+0000002c	00bfeb28	__CIfmod
+0000004e	006f9820	?GetEmbeddedEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAU?$CSmallVector@UCEvent@NAnimationEvents@@$0CA@@@MM@Z
+0000005e	006f9820	?GetEmbeddedEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAU?$CSmallVector@UCEvent@NAnimationEvents@@$0CA@@@MM@Z
+00000075	006f95a0	?GetExtraEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAU?$CSmallVector@UCEvent@NAnimationEvents@@$0CA@@@MM@Z
+00000085	006f95a0	?GetExtraEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAU?$CSmallVector@UCEvent@NAnimationEvents@@$0CA@@@MM@Z
+00000095	0122ded8	__real@3f800000
+000000d2	006f9820	?GetEmbeddedEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAU?$CSmallVector@UCEvent@NAnimationEvents@@$0CA@@@MM@Z
+000000f2	006f95a0	?GetExtraEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAU?$CSmallVector@UCEvent@NAnimationEvents@@$0CA@@@MM@Z

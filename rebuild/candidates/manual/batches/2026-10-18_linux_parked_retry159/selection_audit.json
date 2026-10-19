@@ -1,0 +1,30 @@
+{
+  "009f50a0": [
+    {
+      "path": "work/codex-lane/w22/agent201/differ/009f50a0.cpp",
+      "sha256": "2dc8e87ea2680d92785c98b323f4f45938a64586df48035d70cbfdaab6ea78ca",
+      "placeholder_only": true
+    }
+  ],
+  "009f5170": [
+    {
+      "path": "work/codex-lane/w22/agent201/differ/009f5170.cpp",
+      "sha256": "0e742b2691526fa4f270904d0ccd8a424bc0560a6edd926d36bfba6d404c80af",
+      "placeholder_only": true
+    }
+  ],
+  "009f5bd0": [
+    {
+      "path": "work/codex-lane/w22/agent201/differ/009f5bd0.cpp",
+      "sha256": "16fa72d78e83d0564ea026c08c72ecc8628a904b61866dd77e921857a2f677b2",
+      "placeholder_only": true
+    }
+  ],
+  "00691c50": [
+    {
+      "path": "work/codex-lane/w22/agent201/differ/00691c50.cpp",
+      "sha256": "834ea836939c2d842a78e91136e298de99df8ab8d41e80f0b7f622a821799548",
+      "placeholder_only": true
+    }
+  ]
+}

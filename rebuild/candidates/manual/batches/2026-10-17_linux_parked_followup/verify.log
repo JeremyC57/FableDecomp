@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00687310   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00687310   RELOCATION_MATCH PASS   CMessageEvent
+00b45460   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveShadowedSpotLight
+00b45460   RELOCATION_MATCH PASS   Update
+
+WINS: 2
+  00687310 RELOCATION_MATCH CMessageEvent::CMessageEvent
+  00b45460 RELOCATION_MATCH CEngineInternalPrimitiveShadowedSpotLight::Update
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CMessageEvent_CMessageEvent_00687310
+  CEngineInternalPrimitiveShadowedSpotLight_Update_00b45460

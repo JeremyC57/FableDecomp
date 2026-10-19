@@ -1,0 +1,20 @@
+addr       parity           behav  name
+006eb600   RELOCATION_MATCH PASS   GetNextActionForCreature
+00866d80   RELOCATION_MATCH PASS   FrameUpdate
+00859d80   RELOCATION_MATCH PASS   FrameUpdate
+00857b70   RELOCATION_MATCH PASS   ProcessPlayerControl
+0069f0f0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory
+
+WINS: 5
+  006eb600 RELOCATION_MATCH CCombatManager::GetNextActionForCreature
+  00866d80 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FrameUpdate
+  00859d80 RELOCATION_MATCH CCombatActionBase::FrameUpdate
+  00857b70 RELOCATION_MATCH CCombatActionBase::ProcessPlayerControl
+  0069f0f0 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::??0CCreatureAction_UnsheatheItemFromInventory@@
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CCombatManager_GetNextActionForCreature_006eb600
+  CCombatActionGenericStrikeResponseKnockdownRecoverBase_FrameUpdate_00866d80
+  CCombatActionBase_FrameUpdate_00859d80
+  CCombatActionBase_ProcessPlayerControl_00857b70
+  CCreatureActionUnsheatheItemFromInventory_CCreatureActionUnsheatheItemFromInventory_0069f0f0

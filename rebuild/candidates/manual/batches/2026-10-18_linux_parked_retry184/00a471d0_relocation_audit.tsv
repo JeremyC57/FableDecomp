@@ -1,0 +1,5 @@
+offset	native_target	symbol
+00000088	00a14510	?AccurateNormalise@C2DVector@@QAEAAU1@XZ
+0000009d	0129ba3c	__real@38d1b717
+000000e0	00a75b30	?GetSize@CANavQuadTreeNode@@QBEMXZ
+000000fe	00a75b30	?GetSize@CANavQuadTreeNode@@QBEMXZ

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00887a30   RELOCATION_MATCH PASS   ProcessTransitions
+
+WINS: 1
+  00887a30 RELOCATION_MATCH NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::ProcessTransitions

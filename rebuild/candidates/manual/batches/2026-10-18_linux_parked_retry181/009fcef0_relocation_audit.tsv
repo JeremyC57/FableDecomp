@@ -1,0 +1,15 @@
+offset	native_target	symbol
+00000023	009e3790	?Initialise@PixelFormat@@QAEXJJJJ_N@Z
+00000034	009e3790	?Initialise@PixelFormat@@QAEXJJJJ_N@Z
+00000045	009e3790	?Initialise@PixelFormat@@QAEXJJJJ_N@Z
+00000056	009e3790	?Initialise@PixelFormat@@QAEXJJJJ_N@Z
+00000067	009e3790	?Initialise@PixelFormat@@QAEXJJJJ_N@Z
+00000078	009e3790	?Initialise@PixelFormat@@QAEXJJJJ_N@Z
+00000082	009e3830	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z
+0000008f	009e3830	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z
+0000009c	009e3830	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z
+000000a9	009e3830	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z
+000000b6	009e3830	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z
+000000c3	009e3830	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z
+000000d0	009e3830	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z
+000000da	009e3830	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z

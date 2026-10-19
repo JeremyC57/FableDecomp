@@ -1,0 +1,200 @@
+[
+  {
+    "slot": 72,
+    "name": "GetThingWithScriptName",
+    "native": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(class CCharString const &) const",
+    "emitted": "public: virtual struct CScriptThing __thiscall GameCalls::GetThingWithScriptName(class CCharString const &, class CCharString const &) const"
+  },
+  {
+    "slot": 73,
+    "name": "GetThingWithScriptName",
+    "native": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(class CCharString const &, class CCharString const &) const",
+    "emitted": "public: virtual struct CScriptThing __thiscall GameCalls::GetThingWithScriptName(class CCharString const &) const"
+  },
+  {
+    "slot": 97,
+    "name": "CreateObject",
+    "native": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateObject(class CCharString const &, class C3DVector const &, float, class CCharString const &) const",
+    "emitted": "public: virtual struct CScriptThing __thiscall GameCalls::CreateObject(class CCharString const &, struct C3DVector const &, class CCharString const &) const"
+  },
+  {
+    "slot": 98,
+    "name": "CreateObject",
+    "native": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateObject(class CCharString const &, class C3DVector const &, class CCharString const &) const",
+    "emitted": "public: virtual struct CScriptThing __thiscall GameCalls::CreateObject(class CCharString const &, struct C3DVector const &, float, class CCharString const &) const"
+  },
+  {
+    "slot": 100,
+    "name": "CreateEffect",
+    "native": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateEffect(class CCharString const &, class C3DVector const &, class CCharString const &, float, bool, bool) const",
+    "emitted": "public: virtual struct CScriptThing __thiscall GameCalls::CreateEffect(class CCharString const &, struct CScriptThing const &, class CCharString const &, class CCharString const &, bool, bool) const"
+  },
+  {
+    "slot": 101,
+    "name": "CreateEffect",
+    "native": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateEffect(class CCharString const &, class CScriptThing const &, class CCharString const &, class CCharString const &, bool, bool) const",
+    "emitted": "public: virtual struct CScriptThing __thiscall GameCalls::CreateEffect(class CCharString const &, struct C3DVector const &, class CCharString const &, float, bool, bool) const"
+  },
+  {
+    "slot": 109,
+    "name": "ShowOnScreenMessage",
+    "native": "public: virtual void __thiscall CGameScriptInterface::ShowOnScreenMessage(class C2DVector const &, class CCharString const &, class CRGBColour const &, class CCharString const &) const",
+    "emitted": "public: virtual void __thiscall GameCalls::ShowOnScreenMessage(class CCharString const &, float) const"
+  },
+  {
+    "slot": 110,
+    "name": "ShowOnScreenMessage",
+    "native": "public: virtual void __thiscall CGameScriptInterface::ShowOnScreenMessage(class CCharString const &, class CCharString const &, class CCharString const &, float) const",
+    "emitted": "public: virtual void __thiscall GameCalls::ShowOnScreenMessage(class CCharString const &, class CCharString const &, class CCharString const &, float) const"
+  },
+  {
+    "slot": 111,
+    "name": "ShowOnScreenMessage",
+    "native": "public: virtual void __thiscall CGameScriptInterface::ShowOnScreenMessage(class CCharString const &, float) const",
+    "emitted": "public: virtual void __thiscall GameCalls::ShowOnScreenMessage(struct C2DVector const &, class CCharString const &, struct CRGBColour const &, class CCharString const &) const"
+  },
+  {
+    "slot": 142,
+    "name": "MakeHeroCarryItemInHand",
+    "native": "public: virtual void __thiscall CGameScriptInterface::MakeHeroCarryItemInHand(class CScriptThing const &, bool, bool) const",
+    "emitted": "public: virtual void __thiscall GameCalls::MakeHeroCarryItemInHand(class CCharString const &) const"
+  },
+  {
+    "slot": 143,
+    "name": "MakeHeroCarryItemInHand",
+    "native": "public: virtual void __thiscall CGameScriptInterface::MakeHeroCarryItemInHand(class CCharString const &) const",
+    "emitted": "public: virtual void __thiscall GameCalls::MakeHeroCarryItemInHand(struct CScriptThing const &, bool, bool) const"
+  },
+  {
+    "slot": 327,
+    "name": "AddQuestInfoCounter",
+    "native": "public: virtual long __thiscall CGameScriptInterface::AddQuestInfoCounter(class CCharString const &, long, float) const",
+    "emitted": "public: virtual long __thiscall GameCalls::AddQuestInfoCounter(struct CCounter const &, class CCharString const &, float) const"
+  },
+  {
+    "slot": 328,
+    "name": "AddQuestInfoCounter",
+    "native": "public: virtual long __thiscall CGameScriptInterface::AddQuestInfoCounter(class CCounter const &, class CCharString const &, float) const",
+    "emitted": "public: virtual long __thiscall GameCalls::AddQuestInfoCounter(class CCharString const &, long, float) const"
+  },
+  {
+    "slot": 330,
+    "name": "AddQuestInfoTick",
+    "native": "public: virtual long __thiscall CGameScriptInterface::AddQuestInfoTick(enum EGameAction, bool, float) const",
+    "emitted": "public: virtual long __thiscall GameCalls::AddQuestInfoTick(class CCharString const &, bool, float) const"
+  },
+  {
+    "slot": 331,
+    "name": "AddQuestInfoTick",
+    "native": "public: virtual long __thiscall CGameScriptInterface::AddQuestInfoTick(class CCharString const &, bool, float) const",
+    "emitted": "public: virtual long __thiscall GameCalls::AddQuestInfoTick(long, bool, float) const"
+  },
+  {
+    "slot": 408,
+    "name": "CameraMoveBetweenLookingAt",
+    "native": "public: virtual void __thiscall CGameScriptInterface::CameraMoveBetweenLookingAt(class C3DVector const &, class C3DVector const &, class CScriptThing const &, float, float) const",
+    "emitted": "public: virtual void __thiscall GameCalls::CameraMoveBetweenLookingAt(struct C3DVector const &, struct C3DVector const &, struct C3DVector const &, float, float) const"
+  },
+  {
+    "slot": 409,
+    "name": "CameraMoveBetweenLookingAt",
+    "native": "public: virtual void __thiscall CGameScriptInterface::CameraMoveBetweenLookingAt(class C3DVector const &, class C3DVector const &, class C3DVector const &, float, float) const",
+    "emitted": "public: virtual void __thiscall GameCalls::CameraMoveBetweenLookingAt(struct C3DVector const &, struct C3DVector const &, struct CScriptThing const &, float, float) const"
+  },
+  {
+    "slot": 411,
+    "name": "CameraUseCameraPoint",
+    "native": "public: virtual void __thiscall CGameScriptInterface::CameraUseCameraPoint(class CScriptThing const &, class C3DVector const *, class CRightHandedSet const *, float, long, long) const",
+    "emitted": "public: virtual void __thiscall GameCalls::CameraUseCameraPoint(class CCharString const &, struct CScriptThing const &, float, long, long) const"
+  },
+  {
+    "slot": 412,
+    "name": "CameraUseCameraPoint",
+    "native": "public: virtual void __thiscall CGameScriptInterface::CameraUseCameraPoint(class CCharString const &, class C3DVector const *, class CRightHandedSet const *, float, long, long) const",
+    "emitted": "public: virtual void __thiscall GameCalls::CameraUseCameraPoint(struct CScriptThing const &, struct CScriptThing const &, float, long, long) const"
+  },
+  {
+    "slot": 413,
+    "name": "CameraUseCameraPoint",
+    "native": "public: virtual void __thiscall CGameScriptInterface::CameraUseCameraPoint(class CScriptThing const &, class CScriptThing const &, float, long, long) const",
+    "emitted": "public: virtual void __thiscall GameCalls::CameraUseCameraPoint(class CCharString const &, struct C3DVector const *, struct CRightHandedSet const *, float, long, long) const"
+  },
+  {
+    "slot": 414,
+    "name": "CameraUseCameraPoint",
+    "native": "public: virtual void __thiscall CGameScriptInterface::CameraUseCameraPoint(class CCharString const &, class CScriptThing const &, float, long, long) const",
+    "emitted": "public: virtual void __thiscall GameCalls::CameraUseCameraPoint(struct CScriptThing const &, struct C3DVector const *, struct CRightHandedSet const *, float, long, long) const"
+  },
+  {
+    "slot": 611,
+    "name": "EntitySetOpinionReactionMask",
+    "native": "public: virtual void __thiscall CGameScriptInterface::EntitySetOpinionReactionMask(class CScriptThing const &, class CCharString const &) const",
+    "emitted": "public: virtual void __thiscall GameCalls::EntitySetOpinionReactionMask(struct CScriptThing const &, long) const"
+  },
+  {
+    "slot": 612,
+    "name": "EntitySetOpinionReactionMask",
+    "native": "public: virtual void __thiscall CGameScriptInterface::EntitySetOpinionReactionMask(class CScriptThing const &, long) const",
+    "emitted": "public: virtual void __thiscall GameCalls::EntitySetOpinionReactionMask(struct CScriptThing const &, class CCharString const &) const"
+  },
+  {
+    "slot": 613,
+    "name": "EntitySetOpinionDeedMask",
+    "native": "public: virtual void __thiscall CGameScriptInterface::EntitySetOpinionDeedMask(class CScriptThing const &, class CCharString const &) const",
+    "emitted": "public: virtual void __thiscall GameCalls::EntitySetOpinionDeedMask(struct CScriptThing const &, long) const"
+  },
+  {
+    "slot": 614,
+    "name": "EntitySetOpinionDeedMask",
+    "native": "public: virtual void __thiscall CGameScriptInterface::EntitySetOpinionDeedMask(class CScriptThing const &, long) const",
+    "emitted": "public: virtual void __thiscall GameCalls::EntitySetOpinionDeedMask(struct CScriptThing const &, class CCharString const &) const"
+  },
+  {
+    "slot": 618,
+    "name": "EntitySetPersonalityOverride",
+    "native": "public: virtual void __thiscall CGameScriptInterface::EntitySetPersonalityOverride(class CScriptThing const &, long) const",
+    "emitted": "public: virtual void __thiscall GameCalls::EntitySetPersonalityOverride(struct CScriptThing const &, class CCharString const &) const"
+  },
+  {
+    "slot": 619,
+    "name": "EntitySetPersonalityOverride",
+    "native": "public: virtual void __thiscall CGameScriptInterface::EntitySetPersonalityOverride(class CScriptThing const &, class CCharString const &) const",
+    "emitted": "public: virtual void __thiscall GameCalls::EntitySetPersonalityOverride(struct CScriptThing const &, long) const"
+  },
+  {
+    "slot": 621,
+    "name": "EntitySetAsOpinionSource",
+    "native": "public: virtual void __thiscall CGameScriptInterface::EntitySetAsOpinionSource(class CScriptThing const &, long) const",
+    "emitted": "public: virtual void __thiscall GameCalls::EntitySetAsOpinionSource(struct CScriptThing const &, class CCharString const &) const"
+  },
+  {
+    "slot": 622,
+    "name": "EntitySetAsOpinionSource",
+    "native": "public: virtual void __thiscall CGameScriptInterface::EntitySetAsOpinionSource(class CScriptThing const &, class CCharString const &) const",
+    "emitted": "public: virtual void __thiscall GameCalls::EntitySetAsOpinionSource(struct CScriptThing const &, long) const"
+  },
+  {
+    "slot": 667,
+    "name": "RadialBlurFadeTo",
+    "native": "public: virtual void * __thiscall CGameScriptInterface::RadialBlurFadeTo(float, float, float, float, float, float, float) const",
+    "emitted": "public: virtual void * __thiscall GameCalls::RadialBlurFadeTo(float, struct C3DVector, float, struct C3DVector, float, float, float) const"
+  },
+  {
+    "slot": 668,
+    "name": "RadialBlurFadeTo",
+    "native": "public: virtual void * __thiscall CGameScriptInterface::RadialBlurFadeTo(float, class C3DVector, float, class C3DVector, float, float, float) const",
+    "emitted": "public: virtual void * __thiscall GameCalls::RadialBlurFadeTo(float, float, float, float, float, float, float) const"
+  },
+  {
+    "slot": 723,
+    "name": "SetIsGossipForPlayer",
+    "native": "public: virtual void __thiscall CGameScriptInterface::SetIsGossipForPlayer(class CCharString, bool)",
+    "emitted": "public: virtual void __thiscall GameCalls::SetIsGossipForPlayer(class CCharString const &, bool) const"
+  },
+  {
+    "slot": 724,
+    "name": "SetIsGossipForPlayer",
+    "native": "public: virtual void __thiscall CGameScriptInterface::SetIsGossipForPlayer(class CCharString const &, bool) const",
+    "emitted": "public: virtual void __thiscall GameCalls::SetIsGossipForPlayer(class CCharString, bool)"
+  }
+]

@@ -1,0 +1,10 @@
+# Stealth stab positioning, strike recovery and game-text group loading
+
+0087ED70 StabThing::GetNextPos (244bytes,g6) uses actual action/physics/Thing/Creature headers, documented native views and a typed real physics slot66 adapter with full-width host PMF storage. Preserves first-frame stealth lookup/target validity, returned position and angle, and owner reload after the stealth callback. Tests first/other frames, absent component, invalid target, sentinel maps, changed owner and intact pointer records.
+
+008663D0 GenericStrikeResponseBase::FinishAction (285bytes,g3) finishes base state first, uses actual mode type29, then constructs BeStunned or AlertToPlayer according to strict dazed threshold and flags. Root required actual const-reference SetCurrentAction signature and donor Thing/Creature headers, combined into one corrected grade. Externally constructed native opaque action prefixA8 retains genuine destructor693EF0 without fabricated virtual slots; actual donor baseB4 documented. Strict C++98 fixtures exercise null/dead, mode, equality/NaN thresholds, both flags, sentinel maps, captured receiver versus later constructor-owner reload, and constructor/action-set/destructor order.
+
+009C8890 GameText CDataBank::GetPGroupEntry (247bytes,g5) restores genuine10-slot resource interface with actual bank/resource headers and native container offsets. Audited loading helper9C8220 is BeginLoadingGroup(type1), despite propagated text label. Flush helper9D68B0 dispatches disposal then pending async updates. Test covers pending/existing/materialised groups, callback replacement, list touch/reload and shared ownership; root adds final-reference deletion as11th case.
+
+All38 masked body relocations independently checked, physics slot66 and20 resource/group vtable entries verified. Exact source+expanded headers pass host C++98 O2/no-elide and VC7.1 O2. Root source grades0; earlier source/fixture versions retained.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

@@ -1,0 +1,7 @@
+offset	native_target	symbol
+00000034	00bfeae6	_memmove
+00000047	01436e5c	?g_OcclusionManager@@3PAUCEngineOcclusionManager_Methods@@A
+0000008c	01436e5c	?g_OcclusionManager@@3PAUCEngineOcclusionManager_Methods@@A
+00000094	00b8d0b0	?GetResult@CEngineOcclusionManager_Methods@@QAEKK_N@Z
+000000d5	00bfeae6	_memmove
+000000f5	00b2f8b0	?ClearHandles@CEnginePrimitiveOcclusionInfo@@QAEXXZ

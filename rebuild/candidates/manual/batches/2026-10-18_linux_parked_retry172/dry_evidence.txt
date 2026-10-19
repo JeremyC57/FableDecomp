@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00b260b0   RELOCATION_MATCH PASS   EngineNative
+00caf8f0   RELOCATION_MATCH PASS   GetDueCommand
+00afe9b0   RELOCATION_MATCH PASS   SetPrimitiveID
+
+WINS: 3
+  00b260b0 RELOCATION_MATCH CEngine::??0EngineNative@@
+  00caf8f0 RELOCATION_MATCH CCmdQueue::GetDueCommand
+  00afe9b0 RELOCATION_MATCH CParticle::SetPrimitiveID

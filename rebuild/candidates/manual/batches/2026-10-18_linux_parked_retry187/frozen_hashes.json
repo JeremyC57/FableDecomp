@@ -1,0 +1,46 @@
+[
+  {
+    "address": "004083e0",
+    "src": {
+      "path": "work/codex-lane/w22/retry202g_sol/src/004083e0.cpp",
+      "sha256": "f28eb4ea38b0514dcf1218c7a52492ab9f9268f9c6be41aa077bb7e1d65dc7ba"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/retry202g_sol/test/004083e0.cpp",
+      "sha256": "8054310d53f698eb2a5f53a75fc5daec9698dae7c1cf9ee54b1e17100a7f4618"
+    }
+  },
+  {
+    "address": "0041da2d",
+    "src": {
+      "path": "work/codex-lane/w22/retry202g_sol/src/0041da2d.cpp",
+      "sha256": "3097ae649c16891ec633aea9c125e3291cbf7973f57f296b4e9109509bec1f49"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/retry202g_sol/test/0041da2d.cpp",
+      "sha256": "9cee061b00bf68a5795b92e391a4a22d70674a21524cff698aac6ea2da612b42"
+    }
+  },
+  {
+    "address": "00513bf0",
+    "src": {
+      "path": "work/codex-lane/w22/retry202g_sol/src/00513bf0.cpp",
+      "sha256": "c4227555ada8495b2007afffccd055cc2382d9ffeb5c2ed387a8731d17ba88d4"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/retry202g_sol/test/00513bf0.cpp",
+      "sha256": "d1e3a3dccf5368c58ec37e0e939e2fdb0facc34f491a9118e66d6057d91088e8"
+    }
+  },
+  {
+    "address": "006f9130",
+    "src": {
+      "path": "work/codex-lane/w22/retry202g_sol/src/006f9130.cpp",
+      "sha256": "271f59e10c6628a94ef4e5d1006c12819732500e9dee17efe69d947e0b442135"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/retry202g_sol/test/006f9130.cpp",
+      "sha256": "a7432efa1ff61adc8ad4ac30de8b70b287e944ddd92c73f44e87d6e9591f5bf0"
+    }
+  }
+]

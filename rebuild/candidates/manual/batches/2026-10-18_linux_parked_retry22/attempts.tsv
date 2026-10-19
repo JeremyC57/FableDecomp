@@ -1,0 +1,3 @@
+address	attempts	status
+0094f730	1 author grade	RELOCATION_MATCH; canonical behavior PASS
+00bc3410	6 author grades plus coordinator size_t/shared-header integration7	RELOCATION_MATCH PASS

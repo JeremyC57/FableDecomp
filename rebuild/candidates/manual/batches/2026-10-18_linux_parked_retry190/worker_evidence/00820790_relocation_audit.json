@@ -1,0 +1,83 @@
+{
+  "caller_relocations": [
+    {
+      "offset": 16,
+      "native_target": "0xbfea0e",
+      "symbol": "_malloc",
+      "demangled": "_malloc",
+      "identity": "CRT malloc, native IAT1440158 independently resolved"
+    },
+    {
+      "offset": 42,
+      "native_target": "0x82e9c0",
+      "symbol": "?GetThingsToAdd@CScriptedMapBrush@@QBEXAAUUIDList@@@Z",
+      "demangled": "public: void __thiscall CScriptedMapBrush::GetThingsToAdd(struct UIDList &) const",
+      "identity": "CScriptedMapBrush::GetThingsToAdd(list<ulong64>&)const; donor7355A0; native traversesThingsToAddtree+2C vs donor38; storesuidnode+8/+C fromtree+10/+14"
+    },
+    {
+      "offset": 77,
+      "native_target": "0x51ed80",
+      "symbol": "?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z",
+      "demangled": "public: struct CThing * __thiscall CThingManager::GetPThingWithUID(unsigned __int64)",
+      "identity": "CThingManager::GetPThingWithUID(ulong64); donor529000 mutable result; native lookupTree+58 returnsnode+18 ornull, ret8"
+    },
+    {
+      "offset": 90,
+      "native_target": "0x4c7770",
+      "symbol": "?SetAsActivated@CThing@@QAEX_N@Z",
+      "demangled": "public: void __thiscall CThing::SetAsActivated(bool)",
+      "identity": "CThing::SetAsActivated(bool); donor4C9330/fablewin1CF9A60; nativeflag91bit3 equalsdonorA1bit3 Activated. Existing canonicalGameStatePersistedlabel incorrect."
+    },
+    {
+      "offset": 118,
+      "native_target": "0xbfea14",
+      "symbol": "_free",
+      "demangled": "_free",
+      "identity": "CRT free, native IAT1440154 independently resolved"
+    },
+    {
+      "offset": 148,
+      "native_target": "0xbfea14",
+      "symbol": "_free",
+      "demangled": "_free",
+      "identity": "CRT free, native IAT1440154 independently resolved"
+    }
+  ],
+  "native_world_dispatch": {
+    "vtable": "012390F0",
+    "slot": 3,
+    "target": "0049E1B0",
+    "native_body": "8b4150c3",
+    "PDB": "CWorld::GetThingManager() returnsCThingManager& donor4A7360"
+  },
+  "native_imports": {
+    "0x1440158": "malloc",
+    "0x1440154": "free"
+  },
+  "fixture_emitted_signatures": [
+    {
+      "symbol": "?Number@WorldMapDouble@@QBEJABUC2DCoordI@@@Z",
+      "demangled": "public: long __thiscall WorldMapDouble::Number(struct C2DCoordI const &) const"
+    },
+    {
+      "symbol": "?Manager@WorldDouble@@QAEAAUCThingManager@@XZ",
+      "demangled": "public: struct CThingManager & __thiscall WorldDouble::Manager(void)"
+    },
+    {
+      "symbol": "?Map@WorldDouble@@QBEABUCWorldMap@@XZ",
+      "demangled": "public: struct CWorldMap const & __thiscall WorldDouble::Map(void) const"
+    },
+    {
+      "symbol": "?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z",
+      "demangled": "public: struct CThing * __thiscall CThingManager::GetPThingWithUID(unsigned __int64)"
+    },
+    {
+      "symbol": "?SetAsActivated@CThing@@QAEX_N@Z",
+      "demangled": "public: void __thiscall CThing::SetAsActivated(bool)"
+    }
+  ],
+  "native_setter": "8a4424048a9191000000c0e00332c2240832d0889191000000c20400",
+  "setter_identity_proof": "PDBstruct CThingbyte161bitsDead0/Activated3; nativeKill usesDead91bit0, offsetdelta10. Native4C7770 uses91bit3. PDBGameStatePersistedbyte162bit5 differs. NativecallersAdd8207E9true/capture8217EEfalse.",
+  "dispatch_model": "No synthetic C++ virtuals/vtables; typed PMF native4 asserted/fullhost width fixtureunion asserted. Complete used signatures recorded; genuine fixture interface-double constructors only, not engine constructors.",
+  "fixture_import_binding": "Expanded literal production body, only allocation importtokens malloc(sizeofNode)/free(old)/free(Head) rebound to FixtureAllocate/FixtureFree; wrappers call actualCRT and track eachnode/sentinel/clear-before-delete. Candidate branch/UIDiteration/cleanup implementation unchanged."
+}

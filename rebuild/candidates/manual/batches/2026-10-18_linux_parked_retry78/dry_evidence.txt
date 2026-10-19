@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00ac0c00   RELOCATION_MATCH PASS   CreateMap
+
+WINS: 1
+  00ac0c00 RELOCATION_MATCH C3DMeshFileMaterialChunk::CreateMap

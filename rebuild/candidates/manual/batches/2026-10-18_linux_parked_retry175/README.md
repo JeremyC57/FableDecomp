@@ -1,0 +1,12 @@
+# Scoreboard and DirectShow construction; water tessellation
+
+00562EC0 grade10: genuine CTCHeroOnlineScoreboard(CThing&) with actual CTCBase header and native 0x68 projection. Public STLport allocator-proxy layout preserves vector initialization. Root verifies all28 virtual slots, four-class RTTI, both full configuration strings and nineteen relocation operands. Fixtures exercise allocation order/sentinels, config states, existing string ownership, actual constructor chaining and cleanup.
+
+00CAC300 worker grade3, /GX: genuine Microsoft DirectShow CDynamicOutputPin constructor, all53 virtual slots across four interfaces and native MI offsets. SDK CBaseObject is unrelated to the same-named Fable header. Root verifies12 operands, real kernel imports, two EH cleanup entries, base and critical-section cleanup. Host tests five outcomes including injected exceptions; native tests the three Win32 return outcomes. Two unintended root flag configurations consume grades4/5 due to a root payload flag-array serialization error; initial artifacts and logging limitation are retained in FLAG_SERIALIZATION_INCIDENT.md. Correct /GX repeat matches; five attempts remain. Automated variant sweep disabled for subsequent verification/landing.
+
+00BFD290 grade1: actual water subpatch and renderer headers, explicit donor-to-native tessellator layout. Full256-byte function includes both embedded switch tables. Eight masked operands and every switch entry independently checked;22 fixture cases cover selection, false returns, copyback, truncation and untouched fields.
+
+All three expanded-header exact-source host C++98/O2 and no-elide fixtures pass, along with independently compiled production and native fixtures. Whole chunk237 audit verifies179 immutable worker source/hash/command/output snapshots, plus the two disclosed root flag attempts. Final inventory27 landed, one held for unproven camera constructor semantics, three capped differences and nine blocked differences with remaining attempts preserved. EED6B0 repair already committed separately without increasing function count. Fixtures use dependency doubles; they do not establish full-game integration.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.
+
+Subsequent correction:00562EC0 withdrawn from canonical verification; see sibling2026-10-18_scoreboard_ctc_abi_hold. The original acceptance evidence above is historical and does not imply current approval.

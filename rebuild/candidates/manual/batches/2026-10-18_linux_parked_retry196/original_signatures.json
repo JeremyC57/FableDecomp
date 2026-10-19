@@ -1,0 +1,194 @@
+[
+  {
+    "symbol": "?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ",
+    "undecorated": "public: unsigned long __thiscall CEngineResourceManager::GetVertexBufferUsage(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        27741,
+        "009d9680"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        109747,
+        "02dd43a0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?GetIndexBufferUsage@CEngineResourceManager@@QAEKXZ",
+    "undecorated": "public: unsigned long __thiscall CEngineResourceManager::GetIndexBufferUsage(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        27742,
+        "009d96a0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        109748,
+        "02dd43e0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ",
+    "undecorated": "public: enum EIndexBufferPool __thiscall CEngineResourceManager::GetIndexBufferMemPool(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        27744,
+        "009d96d0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        109750,
+        "02dd4440"
+      ]
+    ]
+  },
+  {
+    "symbol": "?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ",
+    "undecorated": "private: void __thiscall CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        29224,
+        "00a747d0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        113982,
+        "02eb4220"
+      ]
+    ]
+  },
+  {
+    "symbol": "?BuildBuffers@CEnginePrimitiveManagerParticleLineGroup@@AAEXXZ",
+    "undecorated": "private: void __thiscall CEnginePrimitiveManagerParticleLineGroup::BuildBuffers(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        29250,
+        "00a79030"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        114031,
+        "02eb8ed0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?Unlock@CIndexBuffer@@QAEXXZ",
+    "undecorated": "public: void __thiscall CIndexBuffer::Unlock(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        35189,
+        "00bcec40"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        137217,
+        "032f26d0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?GetSize@CIndexBuffer@@QBEJXZ",
+    "undecorated": "public: long __thiscall CIndexBuffer::GetSize(void) const",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        35190,
+        "00bcec50"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        137218,
+        "032f2960"
+      ]
+    ]
+  },
+  {
+    "symbol": "?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z",
+    "undecorated": "public: void __thiscall CIndexBuffer::Initialise(unsigned long, unsigned long, enum EIndexBufferFormat, enum EIndexBufferPool, enum EPrimitiveType)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        35194,
+        "00bcecb0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        137214,
+        "032f2090"
+      ]
+    ]
+  },
+  {
+    "symbol": "?Lock@CIndexBuffer@@QAEPAEKKK@Z",
+    "undecorated": "public: unsigned char * __thiscall CIndexBuffer::Lock(unsigned long, unsigned long, unsigned long)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        35195,
+        "00bcecf0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        137216,
+        "032f23e0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?DoUnlock@CVertexBufferWin32@@EAEXXZ",
+    "undecorated": "private: virtual void __thiscall CVertexBufferWin32::DoUnlock(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        35342,
+        "00bd6c20"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        138061,
+        "03314cc0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z",
+    "undecorated": "public: bool __thiscall CVertexBufferWin32::Initialise(enum EVertexType, long, long, unsigned long, enum EVertexBufferPool)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        35345,
+        "00bd6c50"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        138058,
+        "03314600"
+      ]
+    ]
+  },
+  {
+    "symbol": "?DoLock@CVertexBufferWin32@@EAEPAEKKK@Z",
+    "undecorated": "private: virtual unsigned char * __thiscall CVertexBufferWin32::DoLock(unsigned long, unsigned long, unsigned long)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        35347,
+        "00bd6d20"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        138060,
+        "033149d0"
+      ]
+    ]
+  }
+]

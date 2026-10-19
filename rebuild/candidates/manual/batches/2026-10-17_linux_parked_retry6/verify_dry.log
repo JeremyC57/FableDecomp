@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00c3e580   RELOCATION_MATCH PASS   Shutdown
+00850410   RELOCATION_MATCH PASS   CPhysicsForceModelBase
+
+WINS: 2
+  00c3e580 RELOCATION_MATCH CScriptDefinitionManager::Shutdown
+  00850410 RELOCATION_MATCH CPhysicsForceModelBase::CPhysicsForceModelBase

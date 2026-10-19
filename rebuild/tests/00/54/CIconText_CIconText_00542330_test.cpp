@@ -1,0 +1,459 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <new>
+#include <cstdio>
+#include <cstring>
+#ifndef _MSC_VER
+#define __forceinline inline
+#define __fastcall
+#define __cdecl
+#define __declspec(x)
+#define __int64 long long
+#endif
+// CIconText::CIconText(long) -- initialize UI text, font pointer, primitive handles and icon vectors
+// Retail00542330,178 bytes. Actual fable_string.h CWideString and actual donor UI base headers retained.
+// Actual global CComponent/CObserver donor views are348/24 bytes; native projections below
+// are308/20 bytes because of retail container layouts (RTTI base offsets0/4/18).
+// CIconText,CChangingStateComponent,CUIInterface,CActionParam,CBaseClass and handle headers do not exist.
+// RTTI12470CC confirms actual bases CChangingStateComponent/CComponent/CUIInterface+0/CObserver+4/CActionParam+18.
+// 0052CC50 is CChangingStateComponent ctor (manifest propagated CDraggableInto is wrong).
+// Native UI containers shrink CComponent348 donor ->308 retail and changing396 ->348.
+// Genuine virtual destructors in all3 bases create native vptr stores, no fake slots.
+// CWideString ctor0099AED0; CBaseClass ctor0099A2D0; UpdateFont00541FD0.
+#pragma once
+
+#include <stddef.h>
+
+#pragma once
+
+// ABI primitives for reconstructed FableTLC modules. Keep this header valid
+// under VC7.1; modern-only language/library features belong outside Tier 0.
+#if defined(_MSC_VER)
+#  define FABLE_CDECL __cdecl
+#  define FABLE_STDCALL __stdcall
+#  define FABLE_FASTCALL __fastcall
+#  define FABLE_THISCALL __fastcall
+#else
+#  define FABLE_CDECL
+#  define FABLE_STDCALL
+#  define FABLE_FASTCALL
+#  define FABLE_THISCALL
+#endif
+
+typedef signed char fable_i8;
+typedef unsigned char fable_u8;
+typedef signed short fable_i16;
+typedef unsigned short fable_u16;
+typedef signed int fable_i32;
+typedef unsigned int fable_u32;
+
+typedef char fable_require_i8[sizeof(fable_i8) == 1 ? 1 : -1];
+typedef char fable_require_i16[sizeof(fable_i16) == 2 ? 1 : -1];
+typedef char fable_require_i32[sizeof(fable_i32) == 4 ? 1 : -1];
+#ifdef _MSC_VER
+typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
+#endif
+
+#define FABLE_JOIN_INNER(a, b) a##b
+#define FABLE_JOIN(a, b) FABLE_JOIN_INNER(a, b)
+#ifndef _MSC_VER
+#define FABLE_STATIC_ASSERT(expression)
+#else
+#define FABLE_STATIC_ASSERT(expression) \
+    typedef char FABLE_JOIN(fable_abi_assert_, __LINE__)[(expression) ? 1 : -1]
+#endif
+
+
+struct CWideStringData
+{
+    wchar_t* text;
+    fable_u32 unknown04;
+    fable_u32 unknown08;
+    fable_i32 owners;
+};
+
+#pragma pack(push, 1)
+struct CCharStringData
+{
+    char* text;
+    fable_u32 unknown04;
+    fable_u32 unknown08;
+    fable_u8 flags0C;
+    fable_i32 owners;
+};
+#pragma pack(pop)
+
+class CCharString;
+
+class CWideString
+{
+public:
+    CWideString();
+    CWideString(const CWideString& other);
+    explicit CWideString(const wchar_t* text);
+    ~CWideString();
+    operator const wchar_t*() const;
+    long GetLength() const;
+    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const wchar_t* text);
+    const CWideString& operator+=(const CWideString& other);
+    const CWideString& operator+=(const wchar_t* text);
+    bool operator!=(const wchar_t* other) const;
+
+    static CWideString FABLE_FASTCALL CreateFromCharString(
+        const CCharString& text);
+
+private:
+    explicit CWideString(const CCharString& text);
+    void UnassignString();
+    CWideStringData* AllocStringData(
+        const wchar_t* text,
+        long length);
+
+    CWideStringData* storage_;
+};
+
+CWideString FABLE_FASTCALL operator+(
+    const CWideString& left,
+    const CWideString& right);
+CWideString FABLE_FASTCALL operator+(
+    const CWideString& left,
+    const wchar_t* right);
+CWideString FABLE_FASTCALL operator+(
+    const wchar_t* left,
+    const CWideString& right);
+
+class CCharString
+{
+public:
+    CCharString();
+    CCharString(const char* text, long length);
+    ~CCharString();
+    operator const char*() const;
+    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const char* text);
+    CWideString ToWideString() const;
+
+private:
+    void UnassignString();
+    CCharStringData* AllocStringData(
+        const char* text,
+        long length);
+
+    CCharStringData* storage_;
+};
+
+CCharString FABLE_FASTCALL operator+(
+    const CCharString& left,
+    const char* right);
+
+// Retail folds equivalent narrow/wide string lifetime helpers. These counters
+// remain separate because their addresses and object families are distinct.
+extern fable_i32 g_CWideStringInstanceCount_013BCA20;
+extern fable_i32 g_CCharStringInstanceCount_013BD800;
+extern wchar_t g_FableEmptyWideString_0129A8E0[1];
+
+FABLE_STATIC_ASSERT(sizeof(CWideStringData) == 0x10);
+FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
+FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
+FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
+
+#ifndef FABLE_ENGINE_CCOMPONENT_H
+#define FABLE_ENGINE_CCOMPONENT_H
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CComponent = 0x15c.
+// Retail evidence: 1 trusted landed function(s); reconciliation 3 conflict(s) in 1 file(s) vs 0 agreeing.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+
+
+struct CCharStringData;
+
+#pragma pack(push, 1)
+struct CComponent {
+    void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char    _pad_0x04[0x4];                         // +0x04
+    unsigned char    _pad_0x08[0x4];                         // +0x08
+    unsigned char    _pad_0x0c[0x4];                         // +0x0c
+    unsigned char    _pad_0x10[0x4];                         // +0x10
+    unsigned char    _pad_0x14[0x4];                         // +0x14
+    unsigned char    _pad_0x18[0x4];                         // +0x18
+    unsigned char    _pad_0x1c[0x4];                         // +0x1c
+    unsigned char    _pad_0x20[0x4];                         // +0x20
+    CCharStringData* Name_PStringData;                       // +0x24 CCharString::PStringData
+    unsigned char    States[0x10];                           // +0x28 map<unsigned_long,NUISystem::CUIState,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,NUISystem::CUIState>_>_>
+    float            Time;                                   // +0x38
+    float            Position_X;                             // +0x3c C2DVector::X
+    float            Position_Y;                             // +0x40 C2DVector::Y
+    float            TargetPosition_X;                       // +0x44 C2DVector::X
+    float            TargetPosition_Y;                       // +0x48 C2DVector::Y
+    float            InitialPosition_X;                      // +0x4c C2DVector::X
+    float            InitialPosition_Y;                      // +0x50 C2DVector::Y
+    float            ParentPosition_X;                       // +0x54 C2DVector::X
+    float            ParentPosition_Y;                       // +0x58 C2DVector::Y
+    float            RenderPosition_X;                       // +0x5c C2DVector::X
+    float            RenderPosition_Y;                       // +0x60 C2DVector::Y
+    float            Zoom_X;                                 // +0x64 C2DVector::X
+    float            Zoom_Y;                                 // +0x68 C2DVector::Y
+    float            TargetZoom_X;                           // +0x6c C2DVector::X
+    float            TargetZoom_Y;                           // +0x70 C2DVector::Y
+    float            InitialZoom_X;                          // +0x74 C2DVector::X
+    float            InitialZoom_Y;                          // +0x78 C2DVector::Y
+    float            ParentZoom_X;                           // +0x7c C2DVector::X
+    float            ParentZoom_Y;                           // +0x80 C2DVector::Y
+    float            RenderZoom_X;                           // +0x84 C2DVector::X
+    float            RenderZoom_Y;                           // +0x88 C2DVector::Y
+    unsigned char    Colour[0x4];                            // +0x8c CRGBColour
+    unsigned char    TargetColour[0x4];                      // +0x90 CRGBColour
+    unsigned char    InitialColour[0x4];                     // +0x94 CRGBColour
+    unsigned char    ParentColour[0x4];                      // +0x98 CRGBColour
+    unsigned char    RenderColour[0x4];                      // +0x9c CRGBColour
+    float            PositionTimeElapsed;                    // +0xa0
+    float            PositionTime;                           // +0xa4
+    float            ZoomTimeElapsed;                        // +0xa8
+    float            ZoomTime;                               // +0xac
+    float            ColourTimeElapsed;                      // +0xb0
+    float            ColourTime;                             // +0xb4
+    unsigned char    Children[0x10];                         // +0xb8 vector<CCountedPointer<NUISystem::CComponent>,std::allocator<CCountedPointer<NUISystem::CComponent>_>_>
+    unsigned char    ChildrenToDelete[0x10];                 // +0xc8 vector<CCountedPointer<NUISystem::CComponent>,std::allocator<CCountedPointer<NUISystem::CComponent>_>_>
+    CComponent*      PParent;                                // +0xd8
+    float            Size_X;                                 // +0xdc C2DVector::X
+    float            Size_Y;                                 // +0xe0 C2DVector::Y
+    unsigned char    Deletion[0x10];                         // +0xe4 CDeletion
+    CComponent*      PParentViewport;                        // +0xf4
+    unsigned char    ActionsIAmParamOf[0xc];                 // +0xf8 list<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction>_>_>
+    unsigned char    ShapeChildren[0x10];                    // +0x104 vector<unsigned_long,std::allocator<unsigned_long>_>
+    float            RenderPositionSave_X;                   // +0x114 C2DVector::X
+    float            RenderPositionSave_Y;                   // +0x118 C2DVector::Y
+    float            RelativeRenderPosition_X;               // +0x11c C2DVector::X
+    float            RelativeRenderPosition_Y;               // +0x120 C2DVector::Y
+    float            RelativeParentPosition_X;               // +0x124 C2DVector::X
+    float            RelativeParentPosition_Y;               // +0x128 C2DVector::Y
+    float            RelativeRenderZoom_X;                   // +0x12c C2DVector::X
+    float            RelativeRenderZoom_Y;                   // +0x130 C2DVector::Y
+    float            RelativeParentZoom_X;                   // +0x134 C2DVector::X
+    float            RelativeParentZoom_Y;                   // +0x138 C2DVector::Y
+    CComponent*      PPositionParent;                        // +0x13c
+    unsigned char    PositionChildren[0x10];                 // +0x140 set<NUISystem::CComponent_*,std::less<NUISystem::CComponent_*>,std::allocator<NUISystem::CComponent_*>_>
+    void*            PActionsOnDestruction;                  // +0x150 list<CCountedPointer<NUISystem::CAction>,std::allocator<CCountedPointer<NUISystem::CAction>_>_> *
+    unsigned char    Flags;                                  // +0x154
+    unsigned char    Type;                                   // +0x155
+    unsigned char    FlagsSetTwo;                            // +0x156
+    char             Layer;                                  // +0x157
+    long             DefIndex;                               // +0x158
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CComponent) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Name_PStringData) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CComponent, States) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Time) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Position_X) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Position_Y) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetPosition_X) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetPosition_Y) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialPosition_X) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialPosition_Y) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentPosition_X) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentPosition_Y) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPosition_X) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPosition_Y) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Zoom_X) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Zoom_Y) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetZoom_X) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetZoom_Y) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialZoom_X) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialZoom_Y) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentZoom_X) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentZoom_Y) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderZoom_X) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderZoom_Y) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Colour) == 0x8c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, TargetColour) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CComponent, InitialColour) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ParentColour) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderColour) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, PositionTimeElapsed) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CComponent, PositionTime) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ZoomTimeElapsed) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ZoomTime) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ColourTimeElapsed) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ColourTime) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Children) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ChildrenToDelete) == 0xc8);
+FABLE_STATIC_ASSERT(offsetof(CComponent, PParent) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Size_X) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Size_Y) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Deletion) == 0xe4);
+FABLE_STATIC_ASSERT(offsetof(CComponent, PParentViewport) == 0xf4);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ActionsIAmParamOf) == 0xf8);
+FABLE_STATIC_ASSERT(offsetof(CComponent, ShapeChildren) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPositionSave_X) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RenderPositionSave_Y) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderPosition_X) == 0x11c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderPosition_Y) == 0x120);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentPosition_X) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentPosition_Y) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderZoom_X) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeRenderZoom_Y) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentZoom_X) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CComponent, RelativeParentZoom_Y) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CComponent, PPositionParent) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CComponent, PositionChildren) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CComponent, PActionsOnDestruction) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Flags) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Type) == 0x155);
+FABLE_STATIC_ASSERT(offsetof(CComponent, FlagsSetTwo) == 0x156);
+FABLE_STATIC_ASSERT(offsetof(CComponent, Layer) == 0x157);
+FABLE_STATIC_ASSERT(offsetof(CComponent, DefIndex) == 0x158);
+
+#endif // FABLE_ENGINE_CCOMPONENT_H
+
+#ifndef FABLE_ENGINE_COBSERVER_H
+#define FABLE_ENGINE_COBSERVER_H
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CObserver = 0x18.
+// Retail evidence: 0 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+
+
+#pragma pack(push, 1)
+struct CObserver {
+    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char EventsToObserve[0x10];                     // +0x04 set<NUISystem::EEvent,std::less<NUISystem::EEvent>,std::allocator<NUISystem::EEvent>_>
+    bool          PreventObservation;                        // +0x14
+    unsigned char _pad_0x15[0x3];                            // +0x15
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CObserver) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CObserver, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CObserver, EventsToObserve) == 0x4);
+FABLE_STATIC_ASSERT(offsetof(CObserver, PreventObservation) == 0x14);
+
+#endif // FABLE_ENGINE_COBSERVER_H
+
+typedef ::CComponent CComponentDonorLayout;
+typedef ::CObserver CObserverDonorLayout;
+struct CBaseClass {
+ CBaseClass(); //0099A2D0 VT01231710
+ virtual ~CBaseClass();
+};
+class CEnginePersistentPrimitiveBase;
+struct CEnginePrimitiveHandle : CBaseClass {
+ CEnginePersistentPrimitiveBase* Data;
+ CEnginePrimitiveHandle() : Data(0) {} //own VT0122F598, genuine inline default ctor
+ virtual ~CEnginePrimitiveHandle();
+};
+template<class T> struct CNativeVector {
+ T *First,*Last,*End;
+ CNativeVector() : First(0),Last(0),End(0) {}
+};
+namespace NUISystem {
+struct CUIInterface { virtual ~CUIInterface(); };
+struct CObserver {
+ virtual ~CObserver();
+ void* EventsToObserve[3];
+ bool PreventObservation;
+};
+struct CActionParam {
+ virtual ~CActionParam();
+ fable_i32 ActionParamType;
+};
+struct CComponent : CUIInterface,CObserver,CActionParam {
+ unsigned char ComponentMembers[0x134-0x20]; //opaque native base data; unrelated to this constructor
+ virtual ~CComponent();
+};
+struct CChangingStateComponent : CComponent {
+ fable_i32 StatesBeingDone,StatesDone;
+ void* StatesToDo;
+ float ParentUpdateTime;
+ fable_u32 CurrentState,TargetState,RequestedState;
+ float UpdateTime;
+ bool PreviousUpdateChanged;
+ fable_u32 PreviousState;
+ CChangingStateComponent(long); //0052CC50
+ virtual ~CChangingStateComponent();
+};
+class CFontBank;
+struct CFontPointer { CFontBank* Data;void* Info;CFontPointer():Data(0),Info(0) {} };
+struct CIconText : CChangingStateComponent {
+ CWideString Text,DisplayText;
+ CFontPointer PFont;
+ bool Unavailable;
+ CEnginePrimitiveHandle TextHandle,DropShadowHandle;
+ CNativeVector<CEnginePrimitiveHandle> IconHandles;
+ struct CEmbeddedIcon;
+ CNativeVector<CEmbeddedIcon> Icons;
+ float Window[4],PositionOffset[2];
+ fable_u8 NoRenderNextFrame;
+ CIconText(long);
+ virtual ~CIconText();
+ void UpdateFont(); //00541FD0
+};
+FABLE_STATIC_ASSERT(sizeof(CChangingStateComponent)==0x15c);
+CIconText::CIconText(long parent) : CChangingStateComponent(parent) {
+ NoRenderNextFrame=0;
+ UpdateFont();
+ Unavailable=false;
+}
+}
+
+#include <assert.h>
+#include <stdio.h>
+static int stringLive,baseCalls,handleBaseCalls,updates;
+static long capturedParent;
+static char calls[32];static int cursor;
+static void record(char c) {calls[cursor++]=c;calls[cursor]=0;}
+CWideString::CWideString() : storage_(0) { ++stringLive;record('S'); }
+CWideString::~CWideString() {assert(storage_==0);--stringLive;}
+CBaseClass::CBaseClass() {++handleBaseCalls;record('H');}
+CBaseClass::~CBaseClass() {}
+CEnginePrimitiveHandle::~CEnginePrimitiveHandle() {}
+namespace NUISystem {
+CUIInterface::~CUIInterface() {}
+CObserver::~CObserver() {}
+CActionParam::~CActionParam() {}
+CComponent::~CComponent() {}
+CChangingStateComponent::~CChangingStateComponent() {}
+CChangingStateComponent::CChangingStateComponent(long parent) {
+ capturedParent=parent;++baseCalls;record('B');
+}
+CIconText::~CIconText() {}
+void CIconText::UpdateFont() {
+ ++updates;record('U');
+ assert(stringLive==2 && handleBaseCalls==2);
+ assert(PFont.Data==0 && PFont.Info==0 && TextHandle.Data==0 && DropShadowHandle.Data==0);
+ assert(IconHandles.First==0 && IconHandles.Last==0 && IconHandles.End==0);
+ assert(Icons.First==0 && Icons.Last==0 && Icons.End==0 && NoRenderNextFrame==0);
+ Unavailable=true;
+}
+}
+#ifdef _MSC_VER
+FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveHandle)==8);
+FABLE_STATIC_ASSERT(sizeof(NUISystem::CIconText)==0x1b4);
+#endif
+int main() {
+ for(int i=0;i<3;++i) {
+  cursor=0;handleBaseCalls=0;
+  { NUISystem::CIconText text(i==0?-1:(i==1?0:12345));
+   assert(capturedParent==(i==0?-1:(i==1?0:12345)));
+   assert(baseCalls==i+1 && updates==i+1 && stringLive==2);
+   assert(calls[0]=='B' && calls[1]=='S' && calls[2]=='S' && calls[3]=='H' && calls[4]=='H' && calls[5]=='U' && calls[6]==0);
+   assert(!text.Unavailable && text.NoRenderNextFrame==0);
+#ifdef _MSC_VER
+   assert((char*)static_cast<NUISystem::CUIInterface*>(&text)-(char*)&text==0);
+   assert((char*)static_cast<NUISystem::CObserver*>(&text)-(char*)&text==4);
+   assert((char*)static_cast<NUISystem::CActionParam*>(&text)-(char*)&text==0x18);
+   assert((char*)&text.Text-(char*)&text==0x15c);
+   assert((char*)&text.TextHandle-(char*)&text==0x170);
+#endif
+  } assert(stringLive==0);
+ }
+ puts("00542330_TEST PASS");return 0;
+}

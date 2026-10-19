@@ -1,0 +1,462 @@
+{
+  "slots": [
+    {
+      "address": "00bdfa10",
+      "table": "??_7QuadTreeElement@@6B@",
+      "slot": 0,
+      "target": "0xbdfa10",
+      "compiled": "public: virtual void * __thiscall QuadTreeElement::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bdfa10",
+      "table": "??_7QuadTreeElement@@6B@",
+      "slot": 1,
+      "target": "0xbde0c0",
+      "compiled": "public: virtual void __thiscall QuadTreeElement::RelocateData(long, void *, void *, long)",
+      "expected": "public: virtual void __thiscall CLocalDetailCacheMap::CQuadTreeElement::RelocateData(long, void *, void *, long)"
+    },
+    {
+      "address": "00bdfa10",
+      "table": "??_7QuadTreeElement@@6B@",
+      "slot": 2,
+      "target": "0xbddd10",
+      "compiled": "public: virtual bool __thiscall QuadTreeElement::CanRelocateData(long) const",
+      "expected": "public: virtual bool __thiscall CLocalDetailCacheMap::CQuadTreeElement::CanRelocateData(long) const"
+    },
+    {
+      "address": "00bdfa10",
+      "table": "??_7QuadTreeElement@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall MovableNative::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00bdfa10",
+      "table": "??_7MovableNative@@6B@",
+      "slot": 0,
+      "target": "0x9d5110",
+      "compiled": "public: virtual void * __thiscall MovableNative::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bdfa10",
+      "table": "??_7MovableNative@@6B@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bdfa10",
+      "table": "??_7MovableNative@@6B@",
+      "slot": 2,
+      "target": "0x9d50f0",
+      "compiled": "public: virtual bool __thiscall MovableNative::CanRelocateData(long) const",
+      "expected": "public: virtual bool __thiscall CMovableResource::CanRelocateData(long) const"
+    },
+    {
+      "address": "00bdfa10",
+      "table": "??_7MovableNative@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall MovableNative::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 0,
+      "target": "0xbe8e60",
+      "compiled": "public: virtual void * __thiscall Native::Patch::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 1,
+      "target": "0xbe65a0",
+      "compiled": "public: virtual void __thiscall Native::Patch::RelocateData(long, void *, void *, long)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundPatch::RelocateData(long, void *, void *, long)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 2,
+      "target": "0xbe5e50",
+      "compiled": "public: virtual bool __thiscall Native::Patch::CanRelocateData(long) const",
+      "expected": "public: virtual bool __thiscall CLandscapeBackgroundPatch::CanRelocateData(long) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall Native::Movable::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 4,
+      "target": "0xbe8dc0",
+      "compiled": "public: virtual bool __thiscall Native::Patch::IsPatch(void)",
+      "expected": "private: virtual bool __thiscall CLandscapeBackgroundPatch::IsPatch(void)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 5,
+      "target": "0xbe61b0",
+      "compiled": "public: virtual void __thiscall Native::Patch::UpdateTesselation(void)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundPatch::UpdateTesselation(void)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 6,
+      "target": "0xbe63f0",
+      "compiled": "public: virtual void __thiscall Native::Patch::InvalidateEdge(long, long, long, enum Native::LANDSCAPE_EDGE_STRIP_SIDE)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundPatch::InvalidateEdge(long, long, long, enum LANDSCAPE_EDGE_STRIP_SIDE)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 7,
+      "target": "0xbe5d80",
+      "compiled": "public: virtual void __thiscall Native::Patch::OnPostRelocation(void)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundPatch::OnPostRelocation(void)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Patch@Native@@6B@",
+      "slot": 8,
+      "target": "0xbe8db0",
+      "compiled": "public: virtual void __thiscall Native::Patch::OnPostParentRelocation(struct CLandscapeBackgroundTreeNode *)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundPatch::OnPostParentRelocation(class CLandscapeBackgroundTreeNode *)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Movable@Native@@6B@",
+      "slot": 0,
+      "target": "0x9d5110",
+      "compiled": "public: virtual void * __thiscall Native::Movable::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Movable@Native@@6B@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Movable@Native@@6B@",
+      "slot": 2,
+      "target": "0x9d50f0",
+      "compiled": "public: virtual bool __thiscall Native::Movable::CanRelocateData(long) const",
+      "expected": "public: virtual bool __thiscall CMovableResource::CanRelocateData(long) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Movable@Native@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall Native::Movable::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Water@Native@@6B@",
+      "slot": 0,
+      "target": "0xbfdc90",
+      "compiled": "public: virtual void * __thiscall Native::Water::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Water@Native@@6B@",
+      "slot": 1,
+      "target": "0xbfd5d0",
+      "compiled": "public: virtual void __thiscall Native::Water::RelocateData(long, void *, void *, long)",
+      "expected": "private: virtual void __thiscall CEngineWaterBackgroundSubPatch::RelocateData(long, void *, void *, long)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Water@Native@@6B@",
+      "slot": 2,
+      "target": "0xbfd390",
+      "compiled": "public: virtual bool __thiscall Native::Water::CanRelocateData(long) const",
+      "expected": "private: virtual bool __thiscall CEngineWaterBackgroundSubPatch::CanRelocateData(long) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7Water@Native@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall Native::Movable::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 0,
+      "target": "0xbe8d90",
+      "compiled": "public: virtual void * __thiscall Native::SubNodeBase::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 2,
+      "target": "0x9d50f0",
+      "compiled": "public: virtual bool __thiscall Native::Movable::CanRelocateData(long) const",
+      "expected": "public: virtual bool __thiscall CMovableResource::CanRelocateData(long) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall Native::Movable::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 4,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 5,
+      "target": "0xbe8d50",
+      "compiled": "public: virtual void __thiscall Native::SubNodeBase::UpdateTesselation(void)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundSubNodeBase::UpdateTesselation(void)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 6,
+      "target": "0xbe8d60",
+      "compiled": "public: virtual void __thiscall Native::SubNodeBase::InvalidateEdge(long, long, long, enum Native::LANDSCAPE_EDGE_STRIP_SIDE)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundSubNodeBase::InvalidateEdge(long, long, long, enum LANDSCAPE_EDGE_STRIP_SIDE)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 7,
+      "target": "0xbe8d70",
+      "compiled": "public: virtual void __thiscall Native::SubNodeBase::OnPostRelocation(void)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundSubNodeBase::OnPostRelocation(void)"
+    },
+    {
+      "address": "00be6090",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 8,
+      "target": "0xbe8d80",
+      "compiled": "public: virtual void __thiscall Native::SubNodeBase::OnPostParentRelocation(struct CLandscapeBackgroundTreeNode *)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundSubNodeBase::OnPostParentRelocation(class CLandscapeBackgroundTreeNode *)"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7FreeableResource@Native@@6B@",
+      "slot": 0,
+      "target": "0xbf8c60",
+      "compiled": "public: virtual void * __thiscall Native::FreeableResource::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7FreeableResource@Native@@6B@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7FreeableResource@Native@@6B@",
+      "slot": 2,
+      "target": "0x9d50f0",
+      "compiled": "public: virtual bool __thiscall Native::Movable::CanRelocateData(long) const",
+      "expected": "public: virtual bool __thiscall CMovableResource::CanRelocateData(long) const"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7FreeableResource@Native@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall Native::Movable::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7FreeableResource@Native@@6B@",
+      "slot": 4,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Movable@Native@@6B@",
+      "slot": 0,
+      "target": "0x9d5110",
+      "compiled": "public: virtual void * __thiscall Native::Movable::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Movable@Native@@6B@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Movable@Native@@6B@",
+      "slot": 2,
+      "target": "0x9d50f0",
+      "compiled": "public: virtual bool __thiscall Native::Movable::CanRelocateData(long) const",
+      "expected": "public: virtual bool __thiscall CMovableResource::CanRelocateData(long) const"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Movable@Native@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall Native::Movable::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Tree@Native@@6B@",
+      "slot": 0,
+      "target": "0xbf8ce0",
+      "compiled": "public: virtual void * __thiscall Native::Tree::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Tree@Native@@6B@",
+      "slot": 1,
+      "target": "0xbf6b40",
+      "compiled": "public: virtual void __thiscall Native::Tree::RelocateData(long, void *, void *, long)",
+      "expected": "private: virtual void __thiscall CLandscapeBackgroundTreeNode::RelocateData(long, void *, void *, long)"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Tree@Native@@6B@",
+      "slot": 2,
+      "target": "0xbf6b50",
+      "compiled": "private: virtual bool __thiscall Native::Tree::CanRelocateData(long) const",
+      "expected": "private: virtual bool __thiscall CLandscapeBackgroundTreeNode::CanRelocateData(long) const"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Tree@Native@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall Native::Movable::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7Tree@Native@@6B@",
+      "slot": 4,
+      "target": "0xbf7f70",
+      "compiled": "public: virtual bool __thiscall Native::Tree::FreeableResourceFreeBlock(void)",
+      "expected": "private: virtual bool __thiscall CLandscapeBackgroundTreeNode::FreeableResourceFreeBlock(void)"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 0,
+      "target": "0xbe8d90",
+      "compiled": "public: virtual void * __thiscall Native::SubNodeBase::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 2,
+      "target": "0x9d50f0",
+      "compiled": "public: virtual bool __thiscall Native::Movable::CanRelocateData(long) const",
+      "expected": "public: virtual bool __thiscall CMovableResource::CanRelocateData(long) const"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 3,
+      "target": "0x9d5100",
+      "compiled": "public: virtual unsigned long __thiscall Native::Movable::Verify(void) const",
+      "expected": "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 4,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 5,
+      "target": "0xbe8d50",
+      "compiled": "public: virtual void __thiscall Native::SubNodeBase::UpdateTesselation(void)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundSubNodeBase::UpdateTesselation(void)"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 6,
+      "target": "0xbe8d60",
+      "compiled": "public: virtual void __thiscall Native::SubNodeBase::InvalidateEdge(long, long, long, enum Native::LANDSCAPE_EDGE_STRIP_SIDE)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundSubNodeBase::InvalidateEdge(long, long, long, enum LANDSCAPE_EDGE_STRIP_SIDE)"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 7,
+      "target": "0xbe8d70",
+      "compiled": "public: virtual void __thiscall Native::SubNodeBase::OnPostRelocation(void)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundSubNodeBase::OnPostRelocation(void)"
+    },
+    {
+      "address": "00bf67f0",
+      "table": "??_7SubNodeBase@Native@@6B@",
+      "slot": 8,
+      "target": "0xbe8d80",
+      "compiled": "public: virtual void __thiscall Native::SubNodeBase::OnPostParentRelocation(struct CLandscapeBackgroundTreeNode *)",
+      "expected": "public: virtual void __thiscall CLandscapeBackgroundSubNodeBase::OnPostParentRelocation(class CLandscapeBackgroundTreeNode *)"
+    }
+  ],
+  "mismatches": [],
+  "excluded": "TestChild is a custom fixture subclass; inherited slot6 is identical audited SubNodeBase declaration."
+}

@@ -1,0 +1,31 @@
+{
+  "sha256": "68eaa99d6033dc6fe0ebfffb3ec5922b6e59f0f049eb496bfb99d90c38f76025",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+    "00eed6b0",
+    "work/codex-lane/w22/astra237_whole/src/00eed6b0.cpp",
+    "Main"
+  ],
+  "compiler_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+  "environment": {
+    "WINEARCH": "wow64",
+    "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+    "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+    "FABLE_OBJDUMP": "objdump",
+    "WINEDLLOVERRIDES": "mscoree,mshtml=",
+    "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+    "WINEDEBUG": "-all",
+    "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+    "FABLE_ROOT": "/workspace/FableDecomp"
+  }
+}

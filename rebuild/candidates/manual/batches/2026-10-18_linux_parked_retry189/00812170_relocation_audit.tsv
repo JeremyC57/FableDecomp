@@ -1,0 +1,11 @@
+offset	native_target	symbol
+0000009f	004f97b3	??0DamageMap@@QAE@ABU0@@Z
+000000ab	00811d40	??0AugmentationVector@@QAE@ABU0@@Z
+000000c8	00a01b10	??0CBaseIntelligentPointer@@QAE@XZ
+000000d1	01238c6c	??_7ThingPointer@@6B@
+000000d6	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+000000de	00a01b90	?SetPItem@CBaseIntelligentPointer@@QAEXPAUCBaseObject@@@Z
+000000e8	00a01b10	??0CBaseIntelligentPointer@@QAE@XZ
+000000f1	01238c6c	??_7ThingPointer@@6B@
+000000f6	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+000000fe	00a01b90	?SetPItem@CBaseIntelligentPointer@@QAEXPAUCBaseObject@@@Z

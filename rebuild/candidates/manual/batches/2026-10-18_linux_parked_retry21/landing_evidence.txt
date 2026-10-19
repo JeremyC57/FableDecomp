@@ -1,0 +1,15 @@
+addr       parity           behav  name
+0094f640   RELOCATION_MATCH PASS   Update
+00aa9910   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00aa9910   RELOCATION_MATCH PASS   GetChunkInfo
+00a13da0   RELOCATION_MATCH PASS   ToString
+
+WINS: 3
+  0094f640 RELOCATION_MATCH CAIStateGroup_BalverineCornered::Update
+  00aa9910 RELOCATION_MATCH C3DMeshFileDummyObjectChunk::GetChunkInfo
+  00a13da0 RELOCATION_MATCH C3DVector::ToString
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupBalverineCornered_Update_0094f640
+  C3DMeshFileDummyObjectChunk_GetChunkInfo_00aa9910
+  C3DVector_ToString_00a13da0

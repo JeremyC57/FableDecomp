@@ -1,0 +1,3 @@
+address	name	length	bytes
+006e71b0	CGameScriptInterface::CGameScriptInterface::IsActiveThreadTerminating	9	a138283d018a4005c3
+006b74b0	CGameMap::GetMemoryFootprint	11	8b41200faf411c6bc007c3

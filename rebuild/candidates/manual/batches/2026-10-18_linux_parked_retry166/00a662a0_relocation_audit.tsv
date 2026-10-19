@@ -1,0 +1,4 @@
+offset	native_target	symbol
+000000c3	00a65e70	?UnlinkChunk@FixedSizeAllocator@@QAEXPAUCMemoryAreaChunk@@@Z
+000000c9	00a65ec0	?PrependChunk@FixedSizeAllocator@@QAEXPAUCMemoryAreaChunk@@@Z
+000000ea	00a66160	?DeleteEmptyChunk@FixedSizeAllocator@@QAEXPAUCMemoryAreaChunk@@@Z

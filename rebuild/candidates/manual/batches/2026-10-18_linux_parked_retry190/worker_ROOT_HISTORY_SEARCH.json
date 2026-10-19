@@ -1,0 +1,437 @@
+{
+  "00a699d0": {
+    "filename_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00a699d0.cpp",
+        "placeholder": true,
+        "size": 209,
+        "sha256": "1f33eef3fbe676f8ffe28821943bd56783e3230032ab5efc56a16d0bf9385e54"
+      },
+      {
+        "path": "work/codex-lane/w22/agent202/differ/00a699d0.cpp",
+        "placeholder": true,
+        "size": 209,
+        "sha256": "1f33eef3fbe676f8ffe28821943bd56783e3230032ab5efc56a16d0bf9385e54"
+      }
+    ],
+    "metadata_history_files": [
+      "/workspace/FableDecomp/work/codex-lane/batch/chunk202_oracle.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/PROMPT.md",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/STATUS.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/chunk202.tsv"
+    ],
+    "content_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00a699d0.cpp",
+        "sha256": "1f33eef3fbe676f8ffe28821943bd56783e3230032ab5efc56a16d0bf9385e54",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CManagedTextureData::CreateVolumeTexture -- bounded reconstruction parked for the landing lane; retail @0x00a699d0, 176 bytes.\\n// Grade: DIFFER(0v176) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      },
+      {
+        "path": "/workspace/FableDecomp/work/codex-lane/w22/agent202/differ/00a699d0.cpp",
+        "sha256": "1f33eef3fbe676f8ffe28821943bd56783e3230032ab5efc56a16d0bf9385e54",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CManagedTextureData::CreateVolumeTexture -- bounded reconstruction parked for the landing lane; retail @0x00a699d0, 176 bytes.\\n// Grade: DIFFER(0v176) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      }
+    ],
+    "conclusion": "Only original agent202 comment-only placeholder and identical pending archive; no canonical implementation or later reservation/authored source. External caller references separately listed where present."
+  },
+  "006fa3f0": {
+    "filename_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/006fa3f0.cpp",
+        "placeholder": true,
+        "size": 193,
+        "sha256": "b259c311f9d6f01ee4d52f5f472e2790612d220a9b8c937b138b47795c3e2e60"
+      },
+      {
+        "path": "work/codex-lane/w22/agent202/differ/006fa3f0.cpp",
+        "placeholder": true,
+        "size": 193,
+        "sha256": "b259c311f9d6f01ee4d52f5f472e2790612d220a9b8c937b138b47795c3e2e60"
+      }
+    ],
+    "metadata_history_files": [
+      "/workspace/FableDecomp/work/codex-lane/batch/chunk202_oracle.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/PROMPT.md",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/STATUS.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/chunk202.tsv"
+    ],
+    "content_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/006fa3f0.cpp",
+        "sha256": "b259c311f9d6f01ee4d52f5f472e2790612d220a9b8c937b138b47795c3e2e60",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CManager::AddEventToAnim -- bounded reconstruction parked for the landing lane; retail @0x006fa3f0, 240 bytes.\\n// Grade: DIFFER(0v240) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      },
+      {
+        "path": "/workspace/FableDecomp/work/codex-lane/w22/agent202/differ/006fa3f0.cpp",
+        "sha256": "b259c311f9d6f01ee4d52f5f472e2790612d220a9b8c937b138b47795c3e2e60",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CManager::AddEventToAnim -- bounded reconstruction parked for the landing lane; retail @0x006fa3f0, 240 bytes.\\n// Grade: DIFFER(0v240) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      }
+    ],
+    "conclusion": "Only original agent202 comment-only placeholder and identical pending archive; no canonical implementation or later reservation/authored source. External caller references separately listed where present."
+  },
+  "00820790": {
+    "filename_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00820790.cpp",
+        "placeholder": true,
+        "size": 206,
+        "sha256": "786ca2f76686e44bcc118634c0227d74a01b0059b2f58c827bd71c1524038d58"
+      },
+      {
+        "path": "work/codex-lane/w22/agent202/differ/00820790.cpp",
+        "placeholder": true,
+        "size": 206,
+        "sha256": "786ca2f76686e44bcc118634c0227d74a01b0059b2f58c827bd71c1524038d58"
+      }
+    ],
+    "metadata_history_files": [
+      "/workspace/FableDecomp/work/codex-lane/batch/chunk202_oracle.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/PROMPT.md",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/STATUS.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/chunk202.tsv"
+    ],
+    "content_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00820790.cpp",
+        "sha256": "786ca2f76686e44bcc118634c0227d74a01b0059b2f58c827bd71c1524038d58",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMap::CMap::ScriptedMapBrushAddThings -- bounded reconstruction parked for the landing lane; retail @0x00820790, 176 bytes.\\n// Grade: DIFFER(0v176) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      },
+      {
+        "path": "/workspace/FableDecomp/work/codex-lane/w22/agent202/differ/00820790.cpp",
+        "sha256": "786ca2f76686e44bcc118634c0227d74a01b0059b2f58c827bd71c1524038d58",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMap::CMap::ScriptedMapBrushAddThings -- bounded reconstruction parked for the landing lane; retail @0x00820790, 176 bytes.\\n// Grade: DIFFER(0v176) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      }
+    ],
+    "conclusion": "Only original agent202 comment-only placeholder and identical pending archive; no canonical implementation or later reservation/authored source. External caller references separately listed where present."
+  },
+  "008209c0": {
+    "filename_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/008209c0.cpp",
+        "placeholder": true,
+        "size": 209,
+        "sha256": "91bbfe3d2b4319b55a60be762e9bebb653948b002ff1ebf36975a16c20545025"
+      },
+      {
+        "path": "work/codex-lane/w22/agent202/differ/008209c0.cpp",
+        "placeholder": true,
+        "size": 209,
+        "sha256": "91bbfe3d2b4319b55a60be762e9bebb653948b002ff1ebf36975a16c20545025"
+      }
+    ],
+    "metadata_history_files": [
+      "/workspace/FableDecomp/work/codex-lane/batch/chunk202_oracle.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/PROMPT.md",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/STATUS.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/chunk202.tsv"
+    ],
+    "content_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/008209c0.cpp",
+        "sha256": "91bbfe3d2b4319b55a60be762e9bebb653948b002ff1ebf36975a16c20545025",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMap::CMap::ScriptedMapBrushRemoveThings -- bounded reconstruction parked for the landing lane; retail @0x008209c0, 193 bytes.\\n// Grade: DIFFER(0v193) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      },
+      {
+        "path": "/workspace/FableDecomp/work/codex-lane/w22/agent202/differ/008209c0.cpp",
+        "sha256": "91bbfe3d2b4319b55a60be762e9bebb653948b002ff1ebf36975a16c20545025",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMap::CMap::ScriptedMapBrushRemoveThings -- bounded reconstruction parked for the landing lane; retail @0x008209c0, 193 bytes.\\n// Grade: DIFFER(0v193) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      }
+    ],
+    "conclusion": "Only original agent202 comment-only placeholder and identical pending archive; no canonical implementation or later reservation/authored source. External caller references separately listed where present."
+  },
+  "00820b80": {
+    "filename_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00820b80.cpp",
+        "placeholder": true,
+        "size": 196,
+        "sha256": "4ad4a1377437420dd86333c1c1d17836530011d030f8517b0acf1b95c1df23d2"
+      },
+      {
+        "path": "work/codex-lane/w22/agent202/differ/00820b80.cpp",
+        "placeholder": true,
+        "size": 196,
+        "sha256": "4ad4a1377437420dd86333c1c1d17836530011d030f8517b0acf1b95c1df23d2"
+      }
+    ],
+    "metadata_history_files": [
+      "/workspace/FableDecomp/work/codex-lane/batch/chunk202_oracle.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/PROMPT.md",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/STATUS.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/chunk202.tsv"
+    ],
+    "content_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00820b80.cpp",
+        "sha256": "4ad4a1377437420dd86333c1c1d17836530011d030f8517b0acf1b95c1df23d2",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMap::ApplyScriptedMapBrush -- bounded reconstruction parked for the landing lane; retail @0x00820b80, 194 bytes.\\n// Grade: DIFFER(0v194) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      },
+      {
+        "path": "rebuild/candidates/manual/batches/2026-10-14_linux_hand46/CMapBrushApplier00820c90_ApplyAll_00820c90.cpp",
+        "sha256": "8becc0ae19cc551faaddd667a319ff6fbd40a1545d855d875ee39b3cd072c0d8",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMapBrushApplier_00820c90::ApplyAll() -- for every node of the list whose sentinel is at +0xc, apply the scripted map brush (0x00820B80) of the node's mode block (+8, CModeBlock::GetAnimFilter @ 0x0082E250 with 1)"
+          },
+          {
+            "line": 3,
+            "text": "// Callees: CModeBlock::GetAnimFilter @ 0x0082E250 (on the node's +8, 1), CMap::ApplyScriptedMapBrush @ 0x00820B80 (on `this`, the filter). Shape: the sentinel-based"
+          },
+          {
+            "line": 17,
+            "text": "    void ApplyScriptedMapBrush(void* filter);      // 0x00820B80"
+          }
+        ]
+      },
+      {
+        "path": "rebuild/candidates/manual/batches/2026-10-14_linux_hand30/CMapBrushOwner004fe510_ApplyScriptedMapBrushByName_004fe510.cpp",
+        "sha256": "4533300b27658a77326a69dfbd2090208ffb10524c54f65e547fbb9ba097a201",
+        "matching_lines": [
+          {
+            "line": 4,
+            "text": "// (CCharString const&, long) @ 0x00820B80 on the entry's map pointer. The chunk label \"CDrawQuestInfo::OracleSymbolPushBack\" is propagated over a"
+          },
+          {
+            "line": 18,
+            "text": "    void ApplyScriptedMapBrush(const CCharString& name, long flags);   // 0x00820B80"
+          }
+        ]
+      },
+      {
+        "path": "rebuild/src/compiled/00/82/CMapBrushApplier00820c90_ApplyAll_00820c90.cpp",
+        "sha256": "739487d425474981654eceaf1ca3edc8b2f0f09bab7b8f37a7a589a8712e41c2",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMapBrushApplier_00820c90::ApplyAll() -- for every node of the list whose sentinel is at +0xc, apply the scripted map brush (0x00820B80) of the node's mode block (+8, CModeBlock::GetAnimFilter @ 0x0082E250 with 1)"
+          },
+          {
+            "line": 3,
+            "text": "// Callees: CModeBlock::GetAnimFilter @ 0x0082E250 (on the node's +8, 1), CMap::ApplyScriptedMapBrush @ 0x00820B80 (on `this`, the filter). Shape: the sentinel-based"
+          },
+          {
+            "line": 17,
+            "text": "    void ApplyScriptedMapBrush(void* filter);      // 0x00820B80"
+          }
+        ]
+      },
+      {
+        "path": "rebuild/src/compiled/00/4f/CMapBrushOwner004fe510_ApplyScriptedMapBrushByName_004fe510.cpp",
+        "sha256": "fdf6276e3e2e2a30306740faf4ec6f111c1b61521d71498afcd9a80d769c2962",
+        "matching_lines": [
+          {
+            "line": 4,
+            "text": "// (CCharString const&, long) @ 0x00820B80 on the entry's map pointer. The chunk label \"CDrawQuestInfo::OracleSymbolPushBack\" is propagated over a"
+          },
+          {
+            "line": 18,
+            "text": "    void ApplyScriptedMapBrush(const CCharString& name, long flags);   // 0x00820B80"
+          }
+        ]
+      },
+      {
+        "path": "/workspace/FableDecomp/work/codex-lane/w22/agent202/differ/00820b80.cpp",
+        "sha256": "4ad4a1377437420dd86333c1c1d17836530011d030f8517b0acf1b95c1df23d2",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMap::ApplyScriptedMapBrush -- bounded reconstruction parked for the landing lane; retail @0x00820b80, 194 bytes.\\n// Grade: DIFFER(0v194) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      }
+    ],
+    "conclusion": "Only original agent202 comment-only placeholder and identical pending archive; no canonical implementation or later reservation/authored source. External caller references separately listed where present."
+  },
+  "008f70f0": {
+    "filename_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/008f70f0.cpp",
+        "placeholder": true,
+        "size": 200,
+        "sha256": "5f5585b07b01db5483155a9f077ef0e5a4bf067ce8a7d2cefa1dbf7f8e62fb3e"
+      },
+      {
+        "path": "work/codex-lane/w22/agent202/differ/008f70f0.cpp",
+        "placeholder": true,
+        "size": 200,
+        "sha256": "5f5585b07b01db5483155a9f077ef0e5a4bf067ce8a7d2cefa1dbf7f8e62fb3e"
+      }
+    ],
+    "metadata_history_files": [
+      "/workspace/FableDecomp/work/codex-lane/batch/chunk202_oracle.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/PROMPT.md",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/STATUS.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/chunk202.tsv"
+    ],
+    "content_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/008f70f0.cpp",
+        "sha256": "5f5585b07b01db5483155a9f077ef0e5a4bf067ce8a7d2cefa1dbf7f8e62fb3e",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMap::AddThemeDefIndexToPalette -- bounded reconstruction parked for the landing lane; retail @0x008f70f0, 176 bytes.\\n// Grade: DIFFER(0v176) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      },
+      {
+        "path": "rebuild/candidates/manual/batches/2026-10-15_linux_hand146/CMap_SetEngineThemeAtIncludingExtraCells_0081ef30.cpp",
+        "sha256": "9f2c67ae064e36edc43966d057b8d7021b1530c569024b0aff652eefa5ae1a2d",
+        "matching_lines": [
+          {
+            "line": 3,
+            "text": "// Callees: CMap::AddThemeDefIndexToPalette @ 0x008F70F0 (returns the palette index as an unsigned char)."
+          },
+          {
+            "line": 53,
+            "text": "    unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex);   // 0x008F70F0"
+          }
+        ]
+      },
+      {
+        "path": "rebuild/src/compiled/00/81/CMap_SetEngineThemeAtIncludingExtraCells_0081ef30.cpp",
+        "sha256": "8d7f7c87c94adb1b495e9ccca5435b02d32aaf9585eef92b03601ec5078f3724",
+        "matching_lines": [
+          {
+            "line": 3,
+            "text": "// Callees: CMap::AddThemeDefIndexToPalette @ 0x008F70F0 (returns the palette index as an unsigned char)."
+          },
+          {
+            "line": 53,
+            "text": "    unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex);   // 0x008F70F0"
+          }
+        ]
+      },
+      {
+        "path": "/workspace/FableDecomp/work/codex-lane/w22/agent202/differ/008f70f0.cpp",
+        "sha256": "5f5585b07b01db5483155a9f077ef0e5a4bf067ce8a7d2cefa1dbf7f8e62fb3e",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMap::AddThemeDefIndexToPalette -- bounded reconstruction parked for the landing lane; retail @0x008f70f0, 176 bytes.\\n// Grade: DIFFER(0v176) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      }
+    ],
+    "conclusion": "Only original agent202 comment-only placeholder and identical pending archive; no canonical implementation or later reservation/authored source. External caller references separately listed where present."
+  },
+  "00c461e0": {
+    "filename_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00c461e0.cpp",
+        "placeholder": true,
+        "size": 206,
+        "sha256": "30cab27f1dd7e84ffcc4274d6ce7e9ae237a5dfe7c39c744b2d7bee8cb198bea"
+      },
+      {
+        "path": "work/codex-lane/w22/agent202/differ/00c461e0.cpp",
+        "placeholder": true,
+        "size": 206,
+        "sha256": "30cab27f1dd7e84ffcc4274d6ce7e9ae237a5dfe7c39c744b2d7bee8cb198bea"
+      }
+    ],
+    "metadata_history_files": [
+      "/workspace/FableDecomp/work/codex-lane/batch/chunk202_oracle.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/PROMPT.md",
+      "/workspace/FableDecomp/work/codex-lane/w22/agent202/STATUS.tsv",
+      "/workspace/FableDecomp/work/codex-lane/w22/chunk202.tsv"
+    ],
+    "content_history": [
+      {
+        "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00c461e0.cpp",
+        "sha256": "30cab27f1dd7e84ffcc4274d6ce7e9ae237a5dfe7c39c744b2d7bee8cb198bea",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMatrix::CMatrix::InterpolateViewport -- bounded reconstruction parked for the landing lane; retail @0x00c461e0, 163 bytes.\\n// Grade: DIFFER(0v163) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      },
+      {
+        "path": "rebuild/src/compiled/00/c3/CActionSummonerLightningAttackTarget_InitParticleMorphs_00c36430.cpp",
+        "sha256": "1590528ba8e03b92014f4b3ee4d296bdb73a101b28a9c6b597684839ae2c1ecb",
+        "matching_lines": [
+          {
+            "line": 4,
+            "text": "// propagated), CParticleMorphs::Init @ 0x00C461E0 (__fastcall(long, void*), labelled"
+          },
+          {
+            "line": 32,
+            "text": "    void Init(long morphType, void* morphTable);        // 0x00C461E0"
+          }
+        ]
+      },
+      {
+        "path": "rebuild/candidates/manual/batches/2026-10-14_linux_hand11/CActionSummonerLightningAttackTarget_InitParticleMorphs_00c36430.cpp",
+        "sha256": "ffe3c893ba51675dca7fd5dc4a397915d63b80ae91be6cb767339ca8e2991270",
+        "matching_lines": [
+          {
+            "line": 4,
+            "text": "// propagated), CParticleMorphs::Init @ 0x00C461E0 (__thiscall(long, void*), labelled"
+          },
+          {
+            "line": 32,
+            "text": "    void Init(long morphType, void* morphTable);        // 0x00C461E0"
+          }
+        ]
+      },
+      {
+        "path": "/workspace/FableDecomp/work/codex-lane/w22/agent202/differ/00c461e0.cpp",
+        "sha256": "30cab27f1dd7e84ffcc4274d6ce7e9ae237a5dfe7c39c744b2d7bee8cb198bea",
+        "matching_lines": [
+          {
+            "line": 1,
+            "text": "// CMatrix::CMatrix::InterpolateViewport -- bounded reconstruction parked for the landing lane; retail @0x00c461e0, 163 bytes.\\n// Grade: DIFFER(0v163) -- complex engine interaction and scheduling remain.\\n"
+          }
+        ]
+      }
+    ],
+    "conclusion": "Only original agent202 comment-only placeholder and identical pending archive; no canonical implementation or later reservation/authored source. External caller references separately listed where present."
+  }
+}

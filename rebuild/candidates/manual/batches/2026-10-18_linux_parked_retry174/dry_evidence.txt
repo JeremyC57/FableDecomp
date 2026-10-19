@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00bfaba0   RELOCATION_MATCH PASS   AddObjectsToPrimitiveRenderer
+00bfacc0   RELOCATION_MATCH PASS   AddObjectsToPrimitiveRenderer
+00bf9cc0   RELOCATION_MATCH PASS   RelocateData
+00bfb590   RELOCATION_MATCH PASS   ~CLocalDetailPrimitiveMeshZSpriteBatch
+
+WINS: 4
+  00bfaba0 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::?AddObjectsToPrimitiveRenderer@CLocalDetailPrimitiveRepeatedMesh@@
+  00bfacc0 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::?AddObjectsToPrimitiveRenderer@CLocalDetailPrimitiveMeshZSpriteBatch@@
+  00bf9cc0 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::?RelocateData@CLocalDetailPrimitiveRepeatedMesh@@
+  00bfb590 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::??1CLocalDetailPrimitiveMeshZSpriteBatch@@

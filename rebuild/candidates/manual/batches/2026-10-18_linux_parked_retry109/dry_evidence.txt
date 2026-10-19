@@ -1,0 +1,5 @@
+addr       parity           behav  name
+009cdf50   RELOCATION_MATCH[/GS] PASS   WriteRecoveryFile
+
+WINS: 1
+  009cdf50 RELOCATION_MATCH[/GS] CBankFile::WriteRecoveryFile

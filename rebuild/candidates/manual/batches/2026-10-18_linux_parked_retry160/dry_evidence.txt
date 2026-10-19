@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00b2ab80   MATCH            PASS   Render
+00b4aaa0   RELOCATION_MATCH PASS   ~CEnginePrimitiveRenderer2D
+00b870a0   RELOCATION_MATCH PASS   ~CEngineScreenEffectDisplacementRenderer
+
+WINS: 3
+  00b2ab80 MATCH CEngineLayerRenderer::?Render@CEngineLayerRenderer@@
+  00b4aaa0 RELOCATION_MATCH CEnginePrimitiveRenderer2D::??1CEnginePrimitiveRenderer2D@@
+  00b870a0 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::??1CEngineScreenEffectDisplacementRenderer@@

@@ -1,0 +1,17 @@
+offset	native_target	symbol
+0000000d	0099e4b0	??0CCharString@@QAE@XZ
+00000015	006a15a0	?IsThingCarryingMeleeWeapon@@YI_NPBUThingNative@@@Z
+0000003d	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@PBH@Z
+00000053	006a1440	?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ
+0000007f	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@PBH@Z
+00000095	005da7f0	?GetWeaponClass@WeaponMethods@@QBEJXZ
+0000009f	012859d4	??_C@_0BJ@CEEPHPEF@BERSERK_WITH_HEAVY_SWORD?$AA@
+000000a6	012859c0	??_C@_0BD@BNDGBJCC@BERSERK_WITH_SWORD?$AA@
+000000ad	01267f30	??_C@_0BC@FHCIGALL@BERSERK_NO_WEAPON?$AA@
+000000b6	0099efe0	??4CCharString@@QAEABV0@PBD@Z
+000000c3	0099ec30	??0NativeStringValue@@QAE@ABU0@@Z
+000000d1	0099e900	?NotEqual@NativeStringValue@@QBE_NABVCCharString@@@Z
+000000dc	0099eae0	??1CCharString@@QAE@XZ
+000000ed	0073dff0	?SetAndHash@AnimationGroupFilter@@QAEXABVCCharString@@@Z
+00000102	0073ac50	?BaseFrameUpdate@CModeBerserk@@QAEXXZ
+0000010b	0099eae0	??1CCharString@@QAE@XZ

@@ -1,0 +1,24 @@
+{
+  "address": "009c8470",
+  "author_grades": 4,
+  "root_grade": 1,
+  "cumulative": 5,
+  "source": "work/codex-lane/w22/coordinator_retry189/root_amendments/src/009c8470.cpp",
+  "sha256": "7adf9cffa3c462f93d8d995e04e46416077ca3e036a4945984a590e2b805bc95",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "work/codex-lane/tools/q.py",
+    "009c8470",
+    "work/codex-lane/w22/coordinator_retry189/root_amendments/src/009c8470.cpp",
+    "ReadFromDataStream"
+  ],
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "reason": "PDB ReadWithSrcChunkOverflow private visibility, root review amendment; original frozen worker source untouched",
+  "utc": "2026-10-19T01:07:46.943256+00:00"
+}

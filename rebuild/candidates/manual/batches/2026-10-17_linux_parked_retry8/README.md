@@ -1,0 +1,5 @@
+# Parked-row retry batch 8
+
+00557960 is a CKeyRedefiner action predicate; CanRedefineAction is a descriptive name. Its sole caller at 00557f51 in CKeyRedefiner::ProcessEvent supplies the action-control value and uses its bool result. Nearby RTTI-backed CKeyRedefiner methods corroborate ownership. The propagated CTCInventoryAbilities::GetCategory label is incorrect. No shared CKeyRedefiner header exists.
+
+Seven authoring grades recovered 175 bytes, including the 119-entry byte table and three jump targets. The corpus oracle already has 175 bytes; an earlier pending row reported 176 including trailing padding. Coordinator changes only correct identifier/comment attribution; the recovered algorithm is unchanged. Independent canonical verification uses verify_land_jumptable.py to preserve embedded data. The actual-source fixture exhausts action values -1 through 121 under flag values 0, 1 and 2, plus signed 32-bit extremes; both host g++ and VC7.1/Wine pass. Final results: landing_evidence.txt.

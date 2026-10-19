@@ -1,0 +1,11 @@
+offset	native_target	symbol
+00000017	00a01b50	?GetPItem@CCameraObservedPointer@@QBEPBUCThing@@XZ
+00000026	00a01b50	?GetPItem@CCameraObservedPointer@@QBEPBUCThing@@XZ
+0000007a	0056d0c0	?GetDef@CGameDefinitionManager@@QAE_NJPAUCCameraDefPointer@@@Z
+00000081	00a01b50	?GetPItem@CCameraObservedPointer@@QBEPBUCThing@@XZ
+0000009e	004365b0	?LowerBound@CCameraComponentMap@@QBEPAUCCameraComponentEntry@@ABH@Z
+000000bf	00789cc0	?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CCameraRangedMethods@@QBEMXZ
+000000cd	00bfea1a	??2@YAPAXI@Z
+000000e7	00879620	??0CProjectileWeapon@NCameraModes@@QAE@AAUCGameCameraManager@@ABUCCameraDefPointer@@MM@Z
+000000f6	0056c880	??0CCameraModePointer@@QAE@PAUCCameraMode@@@Z
+000000fd	00697e20	?SetCameraMode@CGameCameraManager@@QAEXUCCameraModePointer@@@Z

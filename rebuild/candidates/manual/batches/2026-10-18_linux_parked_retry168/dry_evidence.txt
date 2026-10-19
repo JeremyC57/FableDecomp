@@ -1,0 +1,19 @@
+addr       parity           behav  name
+008d3250   RELOCATION_MATCH PASS   MsgHitEnemyWithMeleeWeapon
+008d3350   RELOCATION_MATCH PASS   MsgHitFriendWithMeleeWeapon
+008d3450   RELOCATION_MATCH PASS   MsgHitEnemyWithRangedWeapon
+008d3550   RELOCATION_MATCH PASS   MsgHitFriendWithRangedWeapon
+008d3650   RELOCATION_MATCH PASS   MsgHitEnemyWithBareHands
+008d3750   RELOCATION_MATCH PASS   MsgHitFriendWithBareHands
+008d3af0   RELOCATION_MATCH PASS   MsgOnMoralityChanged
+008d3bf0   RELOCATION_MATCH PASS   MsgOnCutSceneAnimEvent
+
+WINS: 8
+  008d3250 RELOCATION_MATCH CGameScriptThing::MsgHitEnemyWithMeleeWeapon
+  008d3350 RELOCATION_MATCH CGameScriptThing::MsgHitFriendWithMeleeWeapon
+  008d3450 RELOCATION_MATCH CGameScriptThing::MsgHitEnemyWithRangedWeapon
+  008d3550 RELOCATION_MATCH CGameScriptThing::MsgHitFriendWithRangedWeapon
+  008d3650 RELOCATION_MATCH CGameScriptThing::MsgHitEnemyWithBareHands
+  008d3750 RELOCATION_MATCH CGameScriptThing::MsgHitFriendWithBareHands
+  008d3af0 RELOCATION_MATCH CGameScriptThing::MsgOnMoralityChanged
+  008d3bf0 RELOCATION_MATCH CGameScriptThing::MsgOnCutSceneAnimEvent

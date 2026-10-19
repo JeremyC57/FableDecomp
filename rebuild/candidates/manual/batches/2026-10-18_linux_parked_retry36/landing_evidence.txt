@@ -1,0 +1,11 @@
+addr       parity           behav  name
+009710d0   RELOCATION_MATCH PASS   RefreshCoverList
+0091e4b0   RELOCATION_MATCH PASS   Update
+
+WINS: 2
+  009710d0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::RefreshCoverList
+  0091e4b0 RELOCATION_MATCH CAIStateGroup_MinionLeaveRegion::Update
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupCreatureUseCoverBase_RefreshCoverList_009710d0
+  CAIStateGroupMinionLeaveRegion_Update_0091e4b0

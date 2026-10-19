@@ -1,0 +1,5 @@
+# Parked-row retry batch 12
+
+0094f090 CAIStateGroup_BalverineCornered::GetLandPos, 223 bytes, recovered on fifth total source-change grade. The apparent virtual-call scheduling difference exposed an incorrect inferred callee prototype: CWorld vtable 0x012390f0 slot13 is the no-argument PeekWorldMap getter at 004ae8c0 (landed source corroborates this); the position argument is consumed by the following GetHeightZBelowPos at 0063e480. Its entry reads the stack argument. The early push belongs to that later call. Correcting both declarations recovers the retail sequence and return-copy registers.
+
+Actual-source tests exercise diagonal, axial and negative directions, zero/nonzero combined radii, terrain height replacement, input preservation and exact helper ordering/receivers. The normalization stub follows the observed in-place nonzero-vector helper at 00a14440. Shared AI/brain/physics headers are used; method-only world/map views expose the observed virtual and direct calls. Host g++ and independent canonical VC7.1/Wine parity/behavior checks pass. Final evidence: landing_evidence.txt.

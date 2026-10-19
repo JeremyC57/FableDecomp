@@ -1,0 +1,10 @@
+# Parked-row retry batch 14
+
+Two new recoveries, 349 bytes, independently verified with actual-source tests under g++ and canonical VC7.1/Wine. Final results: landing_evidence.txt.
+
+- 00e32200: wait for a quest completion flag, then clear a live thing's information flag; early thread termination releases the copied CScriptThing argument. The owner is unresolved, so CQuestCompletionWorker00E32200 is a descriptive model rather than the unsupported propagated GuildTraining class. Registration at00e3018b identifies the body; the clean CScriptThing header matches its12-byte argument. RTTI01238c8c and destructor004aa840 identify the vptr reset/refcount cleanup, slot75 is IsAlive, and GSI slot361 is ClearThingHasInformation (0088e480). Tests cover ordinary completion, null/dead things, termination at each relevant phase, null/shared/final references, exact release/delete/destructor order and captured argument fields. They preserve the target function-pointer calling convention after canonical normalization. Source uses method-only GSI virtual declarations; the PDB layout header does not supply those virtual methods.
+- 0063a540: CWorldMap::GetThemeMinCameraSizeZOffsetAt(C3DVector), 161 bytes. Preserves both truncation stages, map-zero/unloaded/outside exits, world-to-local conversion, and map query order. Tests verify map IDs, positive/negative fractional coordinates, and returned offsets. The local world-map layout differs from the PDB's16-byte containers; CMap is available only as a quarantined header and the candidate uses its method declarations as an opaque view. Stale inherited source comments were corrected without changing code.
+
+The water query0063a850 was independently rechecked but already existed in the catalog. Any associated improved fixture is recorded separately and adds no function to this batch's landing count.
+
+The improved water-query fixture is applied in place after RELOCATION_MATCH + PASS. See water_recheck_payload.json, water_oracle.tsv and verify_water_recheck.log; it verifies all three inside-map coordinates, early exits and ground-plus-water query order.

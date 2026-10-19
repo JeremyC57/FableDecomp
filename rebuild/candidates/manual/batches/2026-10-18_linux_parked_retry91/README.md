@@ -1,0 +1,6 @@
+# Initialize blended environment theme storage
+
+008864a0 (281 bytes, exact MATCH without relocations): initializes the three embedded texture-set pairs of STLport arrays, then clears nineteen RGBA colour records and thirty scalers. The local PDB-named view follows the landed CThemeChannel vector construction model and CBlendedEnvironmentTheme assignment layout. No generated header exists for the modeled theme/texture-set types. Native arrays12, texture sets24, colours+4, scalers134, sets1ac and total size1f4 are checked. The colour cursor follows the target's contiguous RGBA storage representation.
+
+Exact-source fixtures verify every colour/scaler and every array pointer. Main's optimized host run exposed a test-only assumption: GCC lifetime dead-store elimination removes pre-construction poison bytes for the uninitialized TimeOfDay member. The poison-preservation assertion is now native-only; initialized-field checks run on both compilers. Production source is unchanged. Main independently passed hostO2 and canonical VC7.1 byte/behavior verification; native fixture confirms TimeOfDay bytes remain untouched. Seven HIGH authored grades, plus separate identical-source verification.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

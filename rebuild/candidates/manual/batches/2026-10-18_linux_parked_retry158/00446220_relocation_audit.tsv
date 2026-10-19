@@ -1,0 +1,4 @@
+offset	native_target	symbol
+00000036	00a0d300	?Clear@CProcessedInput@@QAEXXZ
+00000041	00449700	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ
+00000049	00a0d3a0	?SetPlayer@CProcessedInput@@QAEXK@Z

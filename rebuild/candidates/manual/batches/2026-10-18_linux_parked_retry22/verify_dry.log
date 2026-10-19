@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0094f730   RELOCATION_MATCH PASS   Update
+00bc3410   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bc3410   RELOCATION_MATCH PASS   CreateInternalPrimitive
+
+WINS: 2
+  0094f730 RELOCATION_MATCH CAIStateGroup_BalverineJumpAtFleeingEnemy::Update
+  00bc3410 RELOCATION_MATCH CEnginePrimitiveManagerParticleMeshGroup::CreateInternalPrimitive

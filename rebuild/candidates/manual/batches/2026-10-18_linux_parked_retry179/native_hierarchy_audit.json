@@ -1,0 +1,9 @@
+{
+  "bank_interface_prefix": {
+    "??_7CDataBank@NGameText@@6B@": [
+      "public: virtual void * __thiscall NGameText::CDataBank::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall NGameText::CDataBank::OpenReadOnly(struct CCharString const &, unsigned long)"
+    ]
+  },
+  "scope": "Method/data projections and prefix test doubles; no full game construction/integration claim"
+}

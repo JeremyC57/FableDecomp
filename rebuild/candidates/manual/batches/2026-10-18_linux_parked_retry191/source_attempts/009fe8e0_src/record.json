@@ -1,0 +1,22 @@
+{
+  "address": "009fe8e0",
+  "source": "work/codex-lane/w22/coordinator_retry191/root_amendments/src/009fe8e0.cpp",
+  "sha256": "3b6ec7379110134ffef53dd84aa7642c4057fa0598be6ac9f6925af785f996c6",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "work/codex-lane/tools/q.py",
+    "009fe8e0",
+    "work/codex-lane/w22/coordinator_retry191/root_amendments/src/009fe8e0.cpp",
+    "UnloadFrame"
+  ],
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "log": "work/codex-lane/w22/coordinator_retry191/root_amendments/grade.log",
+  "status": "009fe8e0 UnloadFrame RELOCATION_MATCH flags= []",
+  "kind": "root_source_grade"
+}

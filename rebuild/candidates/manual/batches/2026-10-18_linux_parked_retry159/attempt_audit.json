@@ -1,0 +1,156 @@
+[
+  {
+    "address": "009f50a0",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "c22ee760971a253eadb472766cc706547302867aeefeb6080ba92eff00a53aae",
+    "result": "009f50a0 CInputManager::IsKeyboardEventInQueue RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f50a0_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f50a0_01.pregrade.json"
+  },
+  {
+    "address": "009f50a0",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "d27dbb27d2656f062d23eb0cebf568110f1cebfa61232e254529e1ce27a2087c",
+    "result": "009f50a0 CInputManager::IsKeyboardEventInQueue RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f50a0_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f50a0_02.pregrade.json"
+  },
+  {
+    "address": "009f50a0",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "8146a7702e786ad4395a294e8ee4d477e48bad4b3a9c7f6f487f33cf82c0b54d",
+    "result": "009f50a0 CInputManager::IsKeyboardEventInQueue RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f50a0_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f50a0_03.pregrade.json"
+  },
+  {
+    "address": "009f5170",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "9a23de700a266dfa42f8854c1a459ff245fc54448a28384e32348ef4ea5a703e",
+    "result": "009f5170 CInputManager::CalculateInternalChecksum DIFFER(210v211) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5170_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5170_01.pregrade.json"
+  },
+  {
+    "address": "009f5170",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "43bafae530571c086ae5ec3c930dde24bfb9c13776f8c93afb5a2b48ec5b692b",
+    "result": "009f5170 CInputManager::CalculateInternalChecksum DIFFER(210v211) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5170_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5170_02.pregrade.json"
+  },
+  {
+    "address": "009f5170",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "db133038cefe22216566042ab26f1e6b6249d17b748d23d6db12e555a64cb5d1",
+    "result": "009f5170 CInputManager::CalculateInternalChecksum RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5170_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5170_03.pregrade.json"
+  },
+  {
+    "address": "009f5170",
+    "new_grade": "4",
+    "historical_reserved": "4",
+    "cumulative": "8",
+    "sha256": "20bf8377c6c8eff7fd107f53f3352ad6ae165f716ef64c27491bb35e6b748290",
+    "result": "009f5170 CInputManager::CalculateInternalChecksum RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5170_04.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5170_04.pregrade.json"
+  },
+  {
+    "address": "009f5bd0",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "df99cf4b052e8450a3dae8bf25ecc5d87bff86260c2b342dafd08120efa4ce1e",
+    "result": "009f5bd0 CInputManager::CInputManager DIFFER(161v161) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5bd0_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5bd0_01.pregrade.json"
+  },
+  {
+    "address": "009f5bd0",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "4f537358114b2410955873a97a0899f86e025699059a78f5b8d801e6ae21b03f",
+    "result": "009f5bd0 CInputManager::CInputManager DIFFER(161v161) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5bd0_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5bd0_02.pregrade.json"
+  },
+  {
+    "address": "009f5bd0",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "4f537358114b2410955873a97a0899f86e025699059a78f5b8d801e6ae21b03f",
+    "result": "009f5bd0 CInputManager::CInputManager DIFFER(161v161) flags= ['/Oa']",
+    "effective_flags": "/O2 /Oy /W3 /Oa",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5bd0_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5bd0_03.pregrade.json"
+  },
+  {
+    "address": "009f5bd0",
+    "new_grade": "4",
+    "historical_reserved": "4",
+    "cumulative": "8",
+    "sha256": "7b627311449d7cda9bd43b04dce6171b04fc74b57d584551dfd0138dcb7b03d2",
+    "result": "009f5bd0 CInputManager::CInputManager RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5bd0_04.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5bd0_04.pregrade.json"
+  },
+  {
+    "address": "009f5bd0",
+    "new_grade": "5",
+    "historical_reserved": "4",
+    "cumulative": "9",
+    "sha256": "18d9e43cb412793b9fffb448905dd18eac7c08b7708472a923676117b7d04ade",
+    "result": "009f5bd0 CInputManager::CInputManager RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/009f5bd0_05.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/009f5bd0_05.pregrade.json"
+  },
+  {
+    "address": "00691c50",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "67e2ef9c4960b5b7129482214759cad620d3f56b96bfa52ef6e568afda3d224f",
+    "result": "00691c50 CInputProcessCreatureMovementWatchForControlAngleChange::?ProcessInput@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/00691c50_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/00691c50_01.pregrade.json"
+  },
+  {
+    "address": "00691c50",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "a97e1a484e4191336f4624c75b352f2225263db29efc364be7c697c7dbdc8fe3",
+    "result": "00691c50 CInputProcessCreatureMovementWatchForControlAngleChange::?ProcessInput@CInputProcessCreatureMovementWatchForControlAngleChange@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/snapshots/00691c50_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201c_sol/logs/00691c50_02.pregrade.json"
+  }
+]

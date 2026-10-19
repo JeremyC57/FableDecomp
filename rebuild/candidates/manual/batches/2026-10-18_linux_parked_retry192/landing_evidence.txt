@@ -1,0 +1,14 @@
+addr       parity           behav  name
+008e7cf0   RELOCATION_MATCH PASS   OnDeactivate
+008e7e70   RELOCATION_MATCH PASS   OnDeactivate
+0053d3b0   RELOCATION_MATCH PASS   ChangeState
+
+WINS: 3
+  008e7cf0 RELOCATION_MATCH CModeBriarRoseTeleportIntangible::?OnDeactivate@ModeBriar@@
+  008e7e70 RELOCATION_MATCH CModeBriarRoseConcentrate::?OnDeactivate@ModeBriarConcentrate@@
+  0053d3b0 RELOCATION_MATCH NUISystem_CMenuEntry::?ChangeState@CMenuEntry@NUISystem@@
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CModeBriarRoseTeleportIntangible_OnDeactivate_008e7cf0
+  CModeBriarRoseConcentrate_OnDeactivate_008e7e70
+  NUISystemCMenuEntry_ChangeState_0053d3b0

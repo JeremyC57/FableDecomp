@@ -1,0 +1,49 @@
+// CAIStateGroup_BalverineJumpAtFleeingEnemy::Update() -- schedule next attempt, lunge at a live target, then break off after successful contact.
+// Retail0094F730,230 bytes. State/brain use shared headers; thing Dead is retail+91 vs donor+a1.
+// Actions have the verified0x114-byte retail combat base, rather than donor0x12c.
+#include "engine/CAIStateGroup_BalverineJumpAtFleeingEnemy.h"
+#include "engine/CAIBrain.h"
+struct CThing;
+struct CThingCreatureBase;
+struct CRetailThing { unsigned char _prefix[0x91]; unsigned char Dead:1; };
+struct CBaseIntelligentPointer {
+    void* __vftable; CThing* Object;
+    CThing* GetPItem() const; // 00A01B50
+};
+inline bool IsAlive(const CBaseIntelligentPointer& p) {
+    if(p.GetPItem()!=0) {if(!((CRetailThing*)p.GetPItem())->Dead) return true;}
+    return false;
+}
+struct CCombatActionBase {
+    virtual void v00(); unsigned char _body[0x110];
+    ~CCombatActionBase(); // 0062E900
+};
+struct CCreatureAction_BalverineLungeAttack : CCombatActionBase {
+    CCreatureAction_BalverineLungeAttack(CThingCreatureBase*,CThing*); // 008CCC70
+};
+struct CCreatureAction_BalverineBreakOffFromCombatLong : CCombatActionBase {
+    CCreatureAction_BalverineBreakOffFromCombatLong(CThingCreatureBase*,CThing*); // 008CCD30
+};
+extern long g_framesPerSecond; // 01375550
+struct CWorldClock {static long GetCurrentFrame();}; // 0049D870
+struct CJumpAtFleeingMethods : CAIStateGroup_BalverineJumpAtFleeingEnemy {
+    CAIBrain* Brain() const {return *(CAIBrain* const*)_pad_0x04;}
+    const CBaseIntelligentPointer& Target() const {return *(const CBaseIntelligentPointer*)PTarget;}
+    long PerformActionAndWait(const CCombatActionBase*,bool); // 0097DA40
+    void Terminate(); // 008FCF40
+    void Update();
+};
+void CJumpAtFleeingMethods::Update() {
+    long fps=g_framesPerSecond;
+    WaitUntilWorldFrameForNextAttempt=(long)(fps*5.0f+CWorldClock::GetCurrentFrame());
+    if(IsAlive(Target())) {
+        CThingCreatureBase* creature=(CThingCreatureBase*)Brain()->Creature;
+        long result=PerformActionAndWait(&CCreatureAction_BalverineLungeAttack(creature,Target().GetPItem()),false);
+        if(result==2 && IsAlive(Target())) {
+            CThingCreatureBase* creature=(CThingCreatureBase*)Brain()->Creature;
+            long result=PerformActionAndWait(&CCreatureAction_BalverineBreakOffFromCombatLong(creature,Target().GetPItem()),false);
+            if(result==2) {Terminate();return;}
+        }
+    }
+    Terminate();
+}

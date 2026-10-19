@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0093dc10   RELOCATION_MATCH PASS   IsStillRunnable
+
+WINS: 1
+  0093dc10 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_IsStillRunnable_0093dc10

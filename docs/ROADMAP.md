@@ -147,3 +147,7 @@ audio (`C3DSoundSource`, sound receivers, bank streaming) layers to need replace
 FableForge rather than plain byte-exact reconstruction. Keep those classes' reconstructed sources well
 labelled (true class names, verified vtables, documented retail offsets) so the replacement layer can
 be designed against them.
+
+## Codex review landing (2026-10-19)
+- Done: 503 Codex-authored rows re-verified on our lane and landed (catalog 34,098 → 34,599, 69.8%); 49 held in `rebuild/candidates/manual/pending/2026-10-19_codex_holds/` with per-row reasons.
+- Next: (1) rework the held rows: write tests that run the candidate, fix the wrong callee/constant bindings (`00433fe0`, `00555390`, `007464a0`, `009a0080`, `00e32200`, `00914c60`, `00abf6b0`, `0096e700`, `00b17f70`), drop the `volatile` in `00988490`; (2) **verifier gap:** `RELOCATION_MATCH` masks relocation operands without checking that each masked call/global/float-pool reference resolves to the same retail target the source names; the reviewers' `relocmap` check caught 8 wrong bindings in 552 rows, so the same audit should be run over the inherited catalog and added to `verify_and_land.py` as a per-row target-identity check (owner decision: tools change only if needed); (3) cross-row symbol conflicts noted by the review (`??0CBase` bound to three retail ctors, `LowerBound` const/non-const split, `0xF35B30` named three ways) must be resolved before any whole-image link.

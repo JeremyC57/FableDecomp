@@ -1,0 +1,13 @@
+addr       parity           behav  name
+008a24c0   RELOCATION_MATCH PASS   GetWanderCentrePoint
+008a4390   RELOCATION_MATCH PASS   ResetAction
+008a4910   RELOCATION_MATCH PASS   ResetTargetName
+008a6750   RELOCATION_MATCH PASS   ResetTableName
+00994b50   RELOCATION_MATCH PASS   ReadLine
+
+WINS: 5
+  008a24c0 RELOCATION_MATCH CGameScriptInterface::GetWanderCentrePoint
+  008a4390 RELOCATION_MATCH CGameScriptInterface::ResetAction
+  008a4910 RELOCATION_MATCH CGameScriptInterface::ResetTargetName
+  008a6750 RELOCATION_MATCH CGameScriptInterface::ResetTableName
+  00994b50 RELOCATION_MATCH CDataInputStream::ReadLine

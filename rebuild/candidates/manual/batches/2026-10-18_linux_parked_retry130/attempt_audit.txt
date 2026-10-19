@@ -1,0 +1,1 @@
+19 immutable source/hash/pregrade commands verified, counts9E6FA0=3/8A9020=2/8A99F0=4/8A8010=6/8D0610=4, plus4UNCERTAINeach. Two unused8D0610newgrades preserved. Firsttwo effectiveflags metadata corrected separately inFLAGS_CORRECTION.md; actualunchangedtoolBASE_FLAGS/O2/Oy/W3, fullcommands/hashesaccurate. No root sourcegrades.

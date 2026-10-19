@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00541120   RELOCATION_MATCH PASS   RemoveChild
+00541230   RELOCATION_MATCH PASS   DeleteChild
+00541390   RELOCATION_MATCH PASS   GetDataFromDef
+00705040   MATCH            PASS   TransformVectorPair
+
+WINS: 4
+  00541120 RELOCATION_MATCH CDynamicList::RemoveChild
+  00541230 RELOCATION_MATCH CDynamicList::DeleteChild
+  00541390 RELOCATION_MATCH CDynamicList::GetDataFromDef
+  00705040 MATCH NativeMatrix3x3::TransformVectorPair
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CDynamicList_RemoveChild_00541120
+  CDynamicList_DeleteChild_00541230
+  CDynamicList_GetDataFromDef_00541390
+  NativeMatrix3x3_TransformVectorPair_00705040

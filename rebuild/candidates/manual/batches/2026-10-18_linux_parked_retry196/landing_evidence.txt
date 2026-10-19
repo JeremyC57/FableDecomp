@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00bbf380   RELOCATION_MATCH PASS   BuildBuffers
+00bc3e10   RELOCATION_MATCH PASS   BuildBuffers
+
+WINS: 2
+  00bbf380 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::BuildBuffers
+  00bc3e10 RELOCATION_MATCH CEnginePrimitiveManagerParticleLineGroup::BuildBuffers
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveManagerParticleSpriteGroup_BuildBuffers_00bbf380
+  CEnginePrimitiveManagerParticleLineGroup_BuildBuffers_00bc3e10

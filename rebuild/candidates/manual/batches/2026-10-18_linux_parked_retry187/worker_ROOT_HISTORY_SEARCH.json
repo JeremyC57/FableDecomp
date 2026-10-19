@@ -1,0 +1,55 @@
+{
+  "004083e0": [
+    {
+      "path": "work/codex-lane/w22/agent202/differ/004083e0.cpp",
+      "placeholder": true,
+      "size": 190
+    },
+    {
+      "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/004083e0.cpp",
+      "placeholder": true,
+      "size": 190
+    }
+  ],
+  "0041da2d": [
+    {
+      "path": "work/codex-lane/w22/agent202/differ/0041da2d.cpp",
+      "placeholder": true,
+      "size": 189
+    },
+    {
+      "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/0041da2d.cpp",
+      "placeholder": true,
+      "size": 189
+    }
+  ],
+  "00513bf0": [
+    {
+      "path": "work/codex-lane/w22/agent202/differ/00513bf0.cpp",
+      "placeholder": true,
+      "size": 188
+    },
+    {
+      "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00513bf0.cpp",
+      "placeholder": true,
+      "size": 188
+    },
+    {
+      "path": "rebuild/src/compiled/00/51/global_CopyCElement7200513bf0005150e0_005150e0.cpp",
+      "placeholder": false,
+      "size": 1819
+    }
+  ],
+  "006f9130": [
+    {
+      "path": "work/codex-lane/w22/agent202/differ/006f9130.cpp",
+      "placeholder": true,
+      "size": 199
+    },
+    {
+      "path": "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/006f9130.cpp",
+      "placeholder": true,
+      "size": 199
+    }
+  ]
+}

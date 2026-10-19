@@ -1,0 +1,48 @@
+{
+  "0x1253dbc": [
+    [
+      ".?AVCTCInventoryBase@NInventory@@",
+      0
+    ],
+    [
+      ".?AVCTCBase@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x129ca38": [
+    [
+      ".?AVCInputProcessManager@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x129ca10": [
+    [
+      ".?AVCAInputProcess@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ]
+}

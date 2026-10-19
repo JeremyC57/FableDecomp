@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0087ed70   RELOCATION_MATCH PASS   GetNextPos
+008663d0   RELOCATION_MATCH PASS   FinishAction
+009c8890   RELOCATION_MATCH PASS   GetPGroupEntry
+
+WINS: 3
+  0087ed70 RELOCATION_MATCH CCombatAction_StabThing::GetNextPos
+  008663d0 RELOCATION_MATCH CCombatAction_GenericStrikeResponseBase::FinishAction
+  009c8890 RELOCATION_MATCH NGameText::CDataBank::GetPGroupEntry

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0047034b   RELOCATION_MATCH PASS   TransferBinaryOut
+0095b6f0   RELOCATION_MATCH PASS   KeepOutOfWay
+0093c4e0   RELOCATION_MATCH PASS   IsStillRunnable
+
+WINS: 3
+  0047034b RELOCATION_MATCH CSoundMap::TransferBinaryOut
+  0095b6f0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::KeepOutOfWay
+  0093c4e0 RELOCATION_MATCH CAIStateGroup_StealthSeekEnemy::IsStillRunnable

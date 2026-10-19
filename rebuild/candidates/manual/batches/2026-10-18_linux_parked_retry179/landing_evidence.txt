@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00da6240   RELOCATION_MATCH PASS   Main
+00da6740   RELOCATION_MATCH PASS   Main
+00416832   RELOCATION_MATCH PASS   InitialiseText
+
+WINS: 3
+  00da6240 RELOCATION_MATCH CM_Minion::Main
+  00da6740 RELOCATION_MATCH CM_NotThisWay::Main
+  00416832 RELOCATION_MATCH CMainGameComponent::InitialiseText
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CMMinion_Main_00da6240
+  CMNotThisWay_Main_00da6740
+  CMainGameComponent_InitialiseText_00416832

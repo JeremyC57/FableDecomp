@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00541390   RELOCATION_MATCH PASS   GetDataFromDef
+
+WINS: 1
+  00541390 RELOCATION_MATCH CDynamicList::GetDataFromDef

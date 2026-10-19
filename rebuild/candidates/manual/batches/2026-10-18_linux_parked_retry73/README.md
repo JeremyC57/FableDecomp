@@ -1,0 +1,8 @@
+# Surface-cache retention and frame-end cleanup
+
+00b2b820 (233 bytes): actual manager/frame headers with documented native component receiver+7c and bank/container offsets. Main corrected the refcount callback from a member pointer to CCPPointerInfo::DeleteFunc, void __fastcall(void*), independently confirmed by PDB ctor signature and native ECX argument. Retains caches only above one reference, sums frame memory including pointer storage, unlinks/decrements/calls deleter via Info.Data/reloads and deletes info/clears pointer/frees node, then finishes texture/resource/two graphic banks and increments live frame counter.
+
+Exact-source fixtures cover empty/mixed lists, null info, last/shared and zero refcounts, distinct Value.Data/Info.Data, both null/non-null frame data, list/parent neighbor integrity, callback-mutated cache total/frame counter, bank order, native layout checks and counter overflow. Count0 follows native unsigned underflow without calling the deleter, while removing the node. Individually allocated nodes avoid destructor lifetime duplication. Three new grades plus UNCERTAIN historical reservation4 (reserved7/10).
+
+Verifier notes an available CTextureManager header: this method only calls FrameEnd through that embedded receiver; its opaque native footprint5d4 differs from donor614. Likewise native graphic banks30c differ from donor388. The actual enclosing manager header and CGraphicFrame field header are included, with offset reconciliation documented; no donor helper fields are accessed through invented offsets.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

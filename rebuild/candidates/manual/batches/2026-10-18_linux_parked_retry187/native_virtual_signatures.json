@@ -1,0 +1,40 @@
+{
+  "typed_PMF_slots": [
+    {
+      "native_table": "0x1230134",
+      "slot": 0,
+      "native_target": "0x55cb10",
+      "fixture": "public: void __thiscall NUISystem::ManagerDouble::Event(enum NUISystem::EEvent)",
+      "PDB": "public: virtual void __thiscall NUISystem::CObservable::SetEvent(enum NUISystem::EEvent)"
+    },
+    {
+      "native_table": "0x12468d4",
+      "slot": 144,
+      "native_target": "0x53fc00",
+      "fixture": "public: float __thiscall NUISystem::ViewportDouble::Speed(void)",
+      "PDB": "public: virtual float __thiscall NUISystem::CScrollingViewport::GetScrollingSpeed(void)"
+    },
+    {
+      "native_table": "0x124b7e4",
+      "slot": 150,
+      "native_target": "0x55a330",
+      "fixture": "public: bool __thiscall NUISystem::ComponentDouble::Drag(void)",
+      "PDB": "public: virtual bool __thiscall NUISystem::CDraggable::IsDragged(void)"
+    },
+    {
+      "native_table": "0x12462e4",
+      "slot": 175,
+      "native_target": "0x53ce5f",
+      "fixture": "public: struct NUISystem::CComponent * __thiscall NUISystem::ComponentDouble::Bar(void)",
+      "PDB": "public: virtual class NUISystem::CComponent * __thiscall NUISystem::CList::GetScrollBar(void)"
+    },
+    {
+      "native_table": "0x124608c",
+      "slot": 33,
+      "native_target": "0x52eaf0",
+      "fixture": "public: void __thiscall NUISystem::ComponentDouble::Delta(struct C2DVector const &, float, bool)",
+      "PDB": "public: virtual void __thiscall NUISystem::CComponent::ChangePositionDelta(class C2DVector const &, float, bool)"
+    }
+  ],
+  "counted_base": "actual emitted dtor0/Deleteconst1; no fabricated UI intermediate virtual methods"
+}

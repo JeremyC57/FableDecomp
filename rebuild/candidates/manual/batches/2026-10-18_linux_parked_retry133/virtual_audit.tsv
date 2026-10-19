@@ -1,0 +1,6 @@
+vtable	slot	native_target	method
+0124608c	102	0052f1a0	IsPositionIndependent
+0124608c	117	0052f3b0	IsUsingRelativePosition
+0124608c	122	0052eec0	GetTargetRelativeRenderPosition
+0124608c	123	0052ecc0	GetTargetRelativeRenderZoom
+012a66e4	17	00bc5ff0	GetBoundingBoxWorldSpace

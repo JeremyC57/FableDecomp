@@ -1,0 +1,42 @@
+{
+  "slots": [
+    {
+      "slot": 0,
+      "target": "0x55cb10",
+      "compiled": "public: void __thiscall Receiver::SetEvent(enum PhotoInput::EEvent)",
+      "original": "public: virtual void __thiscall NUISystem::CObservable::SetEvent(enum NUISystem::EEvent)"
+    },
+    {
+      "slot": 12,
+      "target": "0x42d4f7",
+      "compiled": "public: void __thiscall Receiver::SetKeyPressed(unsigned short)",
+      "original": "public: virtual void __thiscall NUISystem::CManager::SetKeyPressed(wchar_t)"
+    },
+    {
+      "class": "ThingPointer",
+      "emitted": "public: virtual void * __thiscall LightningNative::ThingPointer::`vector deleting dtor'(unsigned int)",
+      "slots": 1
+    },
+    {
+      "class": "BaseIntelligentPointer",
+      "emitted": "public: virtual void * __thiscall LightningNative::BaseIntelligentPointer::`vector deleting dtor'(unsigned int)",
+      "slots": 1
+    }
+  ],
+  "direct_PDB_signatures": [
+    "public: class CThingPlayerCreature * __thiscall CPlayer::GetPControlledCreature(void) const",
+    "public: enum EInputEventType __thiscall CInputEvent::GetType(void) const",
+    "public: class C2DVector __thiscall CInputEvent::GetJoystickPosition(void) const",
+    "public: wchar_t __thiscall CInputEvent::GetChar(void) const",
+    "public: void __thiscall CTCTargetingPlayer::SetAsTargetNextThingInDirection(enum CTCTargetingPlayer::ETargetNextThingMethod)",
+    "protected: bool __thiscall CInputProcessGameBase::IsEventButtonHeld(class CInputEvent const &) const",
+    "public: bool __thiscall CInputProcessGameBase::IsEventGameAction(enum EGameAction, class CInputEvent const &) const",
+    "public: class C2DVector __thiscall CInputProcessGameBase::GetMouseMovement(class CInputEvent const &) const",
+    "public: static class NUISystem::CManager * __fastcall NUISystem::CManager::GetInstance(void)",
+    "public: __thiscall CTCWillLightning::CLightningBeam::CLightningBeam(class CThing *, class CThing *)",
+    "public: __thiscall CBaseIntelligentPointer::CBaseIntelligentPointer(void)",
+    "public: virtual __thiscall CBaseIntelligentPointer::~CBaseIntelligentPointer(void)",
+    "public: class CBaseObject * __thiscall CBaseIntelligentPointer::GetPItem(void) const",
+    "public: void __thiscall CBaseIntelligentPointer::SetPItem(class CBaseObject *)"
+  ]
+}

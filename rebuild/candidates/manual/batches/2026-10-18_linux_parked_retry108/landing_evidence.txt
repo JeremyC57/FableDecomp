@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00894aa0   RELOCATION_MATCH PASS   BeginLoadingMesh
+
+WINS: 1
+  00894aa0 RELOCATION_MATCH CGameScriptInterface::BeginLoadingMesh
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_BeginLoadingMesh_00894aa0

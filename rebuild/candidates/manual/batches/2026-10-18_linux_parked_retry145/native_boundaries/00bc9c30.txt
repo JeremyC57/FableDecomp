@@ -1,0 +1,41 @@
+00bc9c30 56                   push esi
+00bc9c31 8bf1                 mov esi, ecx
+00bc9c33 e8b806ddff           call 0x99a2f0
+00bc9c38 8b442408             mov eax, dword ptr [esp + 8]
+00bc9c3c 89460c               mov dword ptr [esi + 0xc], eax
+00bc9c3f c7461000000000       mov dword ptr [esi + 0x10], 0
+00bc9c46 c706d4692a01         mov dword ptr [esi], 0x12a69d4
+00bc9c4c 8bc6                 mov eax, esi
+00bc9c4e 5e                   pop esi
+00bc9c4f c20400               ret 4
+00bc9c52 cc                   int3 
+00bc9c53 cc                   int3 
+00bc9c54 cc                   int3 
+00bc9c55 cc                   int3 
+00bc9c56 cc                   int3 
+00bc9c57 cc                   int3 
+00bc9c58 cc                   int3 
+00bc9c59 cc                   int3 
+00bc9c5a cc                   int3 
+00bc9c5b cc                   int3 
+00bc9c5c cc                   int3 
+00bc9c5d cc                   int3 
+00bc9c5e cc                   int3 
+00bc9c5f cc                   int3 
+00bc9c60 8b410c               mov eax, dword ptr [ecx + 0xc]
+00bc9c63 c3                   ret 
+00bc9c64 cc                   int3 
+00bc9c65 cc                   int3 
+00bc9c66 cc                   int3 
+00bc9c67 cc                   int3 
+00bc9c68 cc                   int3 
+00bc9c69 cc                   int3 
+00bc9c6a cc                   int3 
+00bc9c6b cc                   int3 
+00bc9c6c cc                   int3 
+00bc9c6d cc                   int3 
+00bc9c6e cc                   int3 
+00bc9c6f cc                   int3 
+00bc9c70 8b4120               mov eax, dword ptr [ecx + 0x20]
+00bc9c73 83c120               add ecx, 0x20
+00bc9c76 ff20                 jmp dword ptr [eax]

@@ -1,0 +1,12 @@
+offset	native_target	symbol
+0000001d	008ac9d0	?Erase@ScriptVector@@QAEPAUScriptMethods@@PAU2@0@Z
+00000025	00449970	?GetMainPlayer@PlayerManagerMethods@@QAEPAUPlayerMethods@@XZ
+0000002c	00487dc0	?GetHeroThing@PlayerMethods@@QAEPAUCThingNative@@XZ
+00000059	013b8790	?g_HeroPerceptionManager@@3PAUHeroPerceptionManager@@A
+0000005f	00437910	?GetPerceivingThings@HeroPerceptionManager@@QBEXAAUThingVector@@@Z
+0000009d	004365b0	?LowerBound@ComponentMap@@QBEPBUComponentEntry@@ABJ@Z
+000000bb	0122dedc	__real@00000000
+000000da	004c7e50	?GetScriptThing@CThingNative@@QAE?AUScriptMethods@@XZ
+000000e2	008adf90	?PushBack@ScriptVector@@QAEXABUScriptMethods@@@Z
+000000eb	004aa840	??1ScriptMethods@@UAE@XZ
+0000010e	00bfea14	_free

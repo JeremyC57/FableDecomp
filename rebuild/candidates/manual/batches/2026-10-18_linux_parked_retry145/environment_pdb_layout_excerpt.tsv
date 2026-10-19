@@ -1,0 +1,20 @@
+@STRUCT	CEnvironmentGameTickState	3248	13
+CEnvironmentGameTickState	3248	0	CBlendedEnvironmentTheme[6]	BlendedTheme
+CEnvironmentGameTickState	3248	3144	float	Time
+CEnvironmentGameTickState	3248	3148	float	WindSpeed
+CEnvironmentGameTickState	3248	3152	C3DVector	WindDirection
+CEnvironmentGameTickState	3248	3164	float	ThemeWindSpeed
+CEnvironmentGameTickState	3248	3168	C3DVector	ThemeWindDirection
+CEnvironmentGameTickState	3248	3180	C3DVector	SunVector
+CEnvironmentGameTickState	3248	3192	C3DVector	MoonVector
+CEnvironmentGameTickState	3248	3204	C3DVector	DiffuseVector
+CEnvironmentGameTickState	3248	3216	C3DVector	ShadowVector
+CEnvironmentGameTickState	3248	3228	bool	OverrideWindDirection
+CEnvironmentGameTickState	3248	3229	C3DVector	OldWindDirection
+CEnvironmentGameTickState	3248	3244	float	OldWindSpeed
+@STRUCT	CBlendedEnvironmentTheme	524	4
+CBlendedEnvironmentTheme	524	0	float	TimeOfDay
+CBlendedEnvironmentTheme	524	4	CRGBFloatColour[19]	Colours
+CBlendedEnvironmentTheme	524	308	float[30]	Scalers
+CBlendedEnvironmentTheme	524	428	CIDrawEnvironmentTextureSet[3]	TextureSets
+@STRUCT	CRGBFloatColour	16	4

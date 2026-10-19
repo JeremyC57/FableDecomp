@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0087ff60   RELOCATION_MATCH PASS   CHitParameters
+0055b8f0   RELOCATION_MATCH PASS   IsHovered
+00d9c4a0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  0087ff60 RELOCATION_MATCH CHitParameters::??0CHitParameters@@
+  0055b8f0 RELOCATION_MATCH NUISystem::CHoverable::IsHovered
+  00d9c4a0 RELOCATION_MATCH NScript::CHobbeBarrel::Main

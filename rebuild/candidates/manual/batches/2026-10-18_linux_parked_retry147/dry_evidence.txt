@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00bcfcb0   RELOCATION_MATCH PASS   InitialiseSimulation
+00bcfde0   RELOCATION_MATCH PASS   InitialiseSimulation
+00b9de90   RELOCATION_MATCH PASS   InitialiseSimulation
+00ef3000   RELOCATION_MATCH PASS   Main
+00ec46b0   RELOCATION_MATCH PASS   Main
+00e4a060   RELOCATION_MATCH PASS   Main
+
+WINS: 6
+  00bcfcb0 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh_Methods::InitialiseSimulation
+  00bcfde0 RELOCATION_MATCH CEngineInternalPrimitive2DAnimatedMesh_Methods::InitialiseSimulation
+  00b9de90 RELOCATION_MATCH CEngineInternalPrimitiveStaticMesh_Methods::InitialiseSimulation
+  00ef3000 RELOCATION_MATCH CDoor::Main
+  00ec46b0 RELOCATION_MATCH CVtable012F16E0::Main
+  00e4a060 RELOCATION_MATCH CVtable012E4EF8::Main

@@ -1,0 +1,65 @@
+004083e0 83ec08               sub esp, 8
+004083e3 a1a0863b01           mov eax, dword ptr [0x13b86a0]
+004083e8 33c9                 xor ecx, ecx
+004083ea 85c0                 test eax, eax
+004083ec 56                   push esi
+004083ed 894c2404             mov dword ptr [esp + 4], ecx
+004083f1 743b                 je 0x40842e
+004083f3 6aff                 push -1
+004083f5 6878e02201           push 0x122e078
+004083fa 8d4c2410             lea ecx, [esp + 0x10]
+004083fe e8ed675900           call 0x99ebf0
+00408403 6a01                 push 1
+00408405 8d44240c             lea eax, [esp + 0xc]
+00408409 50                   push eax
+0040840a e8a1420400           call 0x44c6b0
+0040840f 8bc8                 mov ecx, eax
+00408411 e87a4f5a00           call 0x9ad390
+00408416 8d4c2408             lea ecx, [esp + 8]
+0040841a 8bf0                 mov esi, eax
+0040841c e8bf665900           call 0x99eae0
+00408421 8d4c2404             lea ecx, [esp + 4]
+00408425 51                   push ecx
+00408426 56                   push esi
+00408427 e884420400           call 0x44c6b0
+0040842c eb42                 jmp 0x408470
+0040842e a11c873b01           mov eax, dword ptr [0x13b871c]
+00408433 85c0                 test eax, eax
+00408435 7444                 je 0x40847b
+00408437 6aff                 push -1
+00408439 6878e02201           push 0x122e078
+0040843e 8d4c2410             lea ecx, [esp + 0x10]
+00408442 e8a9675900           call 0x99ebf0
+00408447 6a01                 push 1
+00408449 8d54240c             lea edx, [esp + 0xc]
+0040844d 52                   push edx
+0040844e e83ab20200           call 0x43368d
+00408453 8bc8                 mov ecx, eax
+00408455 e8364f5a00           call 0x9ad390
+0040845a 8d4c2408             lea ecx, [esp + 8]
+0040845e 8bf0                 mov esi, eax
+00408460 e87b665900           call 0x99eae0
+00408465 8d442404             lea eax, [esp + 4]
+00408469 50                   push eax
+0040846a 56                   push esi
+0040846b e81db20200           call 0x43368d
+00408470 8bc8                 mov ecx, eax
+00408472 e819840000           call 0x410890
+00408477 8b4c2404             mov ecx, dword ptr [esp + 4]
+0040847b 85c9                 test ecx, ecx
+0040847d 8b742410             mov esi, dword ptr [esp + 0x10]
+00408481 890e                 mov dword ptr [esi], ecx
+00408483 7414                 je 0x408499
+00408485 8b5104               mov edx, dword ptr [ecx + 4]
+00408488 42                   inc edx
+00408489 8bc2                 mov eax, edx
+0040848b 48                   dec eax
+0040848c 895104               mov dword ptr [ecx + 4], edx
+0040848f 894104               mov dword ptr [ecx + 4], eax
+00408492 7505                 jne 0x408499
+00408494 8b11                 mov edx, dword ptr [ecx]
+00408496 ff5204               call dword ptr [edx + 4]
+00408499 8bc6                 mov eax, esi
+0040849b 5e                   pop esi
+0040849c 83c408               add esp, 8
+0040849f c20400               ret 4

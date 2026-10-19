@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+00ef29e0	RELOCATION_MATCH	221v221	PASS	4 UNCERTAIN + 2 new; 4 unused; host C++98 O2 + VC PASS
+009fc950	DIFFER	216v230	PASS	4 UNCERTAIN + 6 new; 0 unused; host C++98 O2 + VC PASS
+009fca40	DIFFER	186v218	PASS	4 UNCERTAIN + 1 new; 5 unused; host C++98 O2 + VC PASS
+009fe550	RELOCATION_MATCH	208v208	PASS	4 UNCERTAIN + 2 new; 4 unused; host C++98 O2 + VC PASS
+006cd890	DIFFER	233v221	PASS	4 UNCERTAIN + 6 new; 0 unused; host C++98 O2 + VC PASS

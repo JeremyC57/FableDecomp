@@ -1,0 +1,7 @@
+offset	native_target	symbol
+00000014	00bfea0e	_malloc
+00000041	00993eb0	?WriteSLONG@OutputMethods@@QAEXJ@Z
+00000057	00993eb0	?WriteSLONG@OutputMethods@@QAEXJ@Z
+00000065	006db0f0	?TransferBinaryOut@StatTraits@@QAEXAAUOutputMethods@@ABUHeroStatIncreaseData@@@Z
+000000be	004da252	?Erase@InnerMap@@QAEXPAUInnerNode@@@Z
+000000e9	00bfea14	_free

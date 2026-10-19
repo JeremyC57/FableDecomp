@@ -1,0 +1,12 @@
+# Chest completion script and graphic-frame resource setup
+
+00EF29E0 (221 bytes, grade2) and 009FE550 (208 bytes, grade2) independently compile to RELOCATION_MATCH and pass exact-production-source host C++98/O2, no-elision and VC7.1 fixtures. Root audited all20 body relocations, the three emitted CIsThingAlive predicate slots, two script virtual slots and the hero-name literal. Actual headers and VC layout checks remain active.
+
+Chest logic preserves predicate installation/destruction, initial yield, repeated hero-use checks, each termination exit, and the final parent flag. MsgIsUsedBy returns a byte whose nonzero value is explicitly normalized. Main requested real counted ScriptThing copy/release in the fixture; null/shared/final-owner predicate cleanup is now tested across all four flow scenarios, with reference counts checked before the first frame. Source remained unchanged by that fixture correction.
+
+Graphic frame source models the native44-byte resource, shared graphic-frame destruction, texture assignment A69B20 and ClearHandle A69AD0. Main held the first candidate because its CIVCounted virtual call used a free-fastcall approximation. Grade2 replaces it with a genuine const member-pointer Delete slot and full-width host table, native4-byte assertion. New tests publish an old resource during CFrameData construction, proving the native reload/decrement/Delete path for last/shared owners. Other tests cover existing data, shared frames, initialized-frame cleanup, texture callback, null replacement and mip updates. These native external constructors and methods retain their actual dependencies.
+
+Whole retry200C accounting:17 new grades plus20 UNCERTAIN historical reservations. Ready rows use2 new each. 009FC950 and006CD890 retain best DIFFER sources after6 new grades each; all exact-source behavior tests pass. 009FCA40 has1 new semantic reconstruction with all four rounding-mode tests, but the retail bare-dword FISTP pattern remains unmatched without prohibited inline assembly; five allowances remain unused. No phases or histories reset, and no root source grades added. Only these two byte-matched rows are accepted.
+
+Immutable hashes, rejected first-version hashes, full grade ledger, masked-target audit and compiler evidence are retained. Isolated fixture success does not claim a linked whole-game runtime test.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

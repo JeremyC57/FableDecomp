@@ -1,0 +1,11 @@
+offset	native_target	symbol
+00000033	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00000076	004c73d0	?GetPosition@CThingNative@@QBEABUC3DVector@@XZ
+0000007f	006c6990	?PostDeed@HeroDeedLogMethods@@QAEJJABUC3DVector@@PBUCThing@@PAUCThingAICreature@@J_N3PBUCFaction@@3J@Z
+000000a3	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+000000c5	007712f0	?PostDeed@OpinionSourceMethods@@QAEXJM@Z
+000000d0	0123b61c	??_C@_0BB@MHGLABCB@CTCOpinionSource?$AA@
+000000d9	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+000000e9	004c9d60	?AddTC@CThingNative@@QAEPAUCTCBase@@ABVCCharString@@_NPAUCTCParamsBase@@@Z
+000000f4	0099eae0	??1CCharString@@QAE@XZ
+00000105	007712f0	?PostDeed@OpinionSourceMethods@@QAEXJM@Z

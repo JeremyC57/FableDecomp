@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00ce6b10   RELOCATION_MATCH PASS   BoastFireHeartKillAllPrisoners
+
+WINS: 1
+  00ce6b10 RELOCATION_MATCH NScript::CHeroBoastsScript::BoastFireHeartKillAllPrisoners

@@ -1,0 +1,845 @@
+slot	native_target	emitted_symbol	declaration
+1	0088de00	?Error@GameCalls@@UBEXABVCCharString@@00K@Z	void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const
+2	006e7d20	?TraceMessage@GameCalls@@UBEXABVCCharString@@@Z	void TraceMessage(CCharString const &) const
+3	006e72a0	?Validate@GameCalls@@UBEXXZ	void Validate(void) const
+4	0088e0f0	?SetDebugCameraType@GameCalls@@UBEXJ@Z	void SetDebugCameraType(long) const
+5	008a0c60	?DeactivateBoastUi@GameCalls@@UBEXXZ	void DeactivateBoastUi(void) const
+6	0088e100	?IsXbox@GameCalls@@UBE_NXZ	bool IsXbox(void) const
+7	006e7410	?NewScriptFrame@GameCalls@@UBEXXZ	void NewScriptFrame(void) const
+8	0089b5b0	?StartScriptingEntity@GameCalls@@UAE_NABUCScriptThing@@AAUCScriptGameResourceObjectScriptedThingBase@@J@Z	bool StartScriptingEntity(CScriptThing const &, CScriptGameResourceObjectScriptedThingBase &, EScriptAIPriority)
+9	008960c0	?IsEntityUnderScriptedControl@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityUnderScriptedControl(CScriptThing const &) const
+10	006e71b0	?IsActiveThreadTerminating@GameCalls@@UBE_NXZ	bool IsActiveThreadTerminating(void) const
+11	0088e2a0	?IsLevelLoaded@GameCalls@@UBE_NABVCCharString@@@Z	bool IsLevelLoaded(CCharString const &) const
+12	0088e300	?IsRegionLoaded@GameCalls@@UBE_NABVCCharString@@@Z	bool IsRegionLoaded(CCharString const &) const
+13	00890550	?IsRegionLoadedAndPreloaded@GameCalls@@UBE_NABVCCharString@@@Z	bool IsRegionLoadedAndPreloaded(CCharString const &) const
+14	00891db0	?IsRegionDefLoaded@GameCalls@@UBE_NABVCCharString@@@Z	bool IsRegionDefLoaded(CCharString const &) const
+15	0088e340	?GetRegionName@GameCalls@@UBEABVCCharString@@XZ	CCharString const & GetRegionName(void) const
+16	008931b0	?MsgIsLevelLoaded@GameCalls@@UBE_NABVCCharString@@@Z	bool MsgIsLevelLoaded(CCharString const &) const
+17	00893240	?MsgIsLevelUnloaded@GameCalls@@UBE_NABVCCharString@@@Z	bool MsgIsLevelUnloaded(CCharString const &) const
+18	0089ac10	?MsgOnLevelLoaded@GameCalls@@UBE_NAAV?$list@UCCharString@@V?$allocator@UCCharString@@@std@@@std@@@Z	bool MsgOnLevelLoaded(std::list<CCharString, std::allocator<CCharString> > &) const
+19	0089ac80	?MsgOnLevelUnloaded@GameCalls@@UBE_NAAV?$list@UCCharString@@V?$allocator@UCCharString@@@std@@@std@@@Z	bool MsgOnLevelUnloaded(std::list<CCharString, std::allocator<CCharString> > &) const
+20	008932d0	?MsgIsRegionLoaded@GameCalls@@UBE_NABVCCharString@@@Z	bool MsgIsRegionLoaded(CCharString const &) const
+21	00893360	?MsgIsRegionUnloaded@GameCalls@@UBE_NABVCCharString@@@Z	bool MsgIsRegionUnloaded(CCharString const &) const
+22	008933f0	?MsgOnRegionLoaded@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnRegionLoaded(CCharString &) const
+23	00893470	?MsgOnRegionUnloaded@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnRegionUnloaded(CCharString &) const
+24	008934f0	?MsgOnRegionPreunload@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnRegionPreunload(CCharString &) const
+25	00893570	?MsgOnQuestCompleted@GameCalls@@UBE_NABVCCharString@@@Z	bool MsgOnQuestCompleted(CCharString const &) const
+26	00893610	?MsgOnAnyQuestCompleted@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnAnyQuestCompleted(CCharString &) const
+27	00893690	?MsgOnQuestFailed@GameCalls@@UBE_NABVCCharString@@@Z	bool MsgOnQuestFailed(CCharString const &) const
+28	00893730	?MsgOnQuestCompletedBeforeScreenShown@GameCalls@@UBE_NABVCCharString@@@Z	bool MsgOnQuestCompletedBeforeScreenShown(CCharString const &) const
+29	008937d0	?MsgOnQuestFailedBeforeScreenShown@GameCalls@@UBE_NABVCCharString@@@Z	bool MsgOnQuestFailedBeforeScreenShown(CCharString const &) const
+30	00893870	?MsgOnQuestAccepted@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnQuestAccepted(CCharString &) const
+31	008938f0	?MsgOnFeatAccepted@GameCalls@@UBE_NAAJ@Z	bool MsgOnFeatAccepted(long &) const
+32	00893960	?MsgIsBoastMade@GameCalls@@UBE_NJ@Z	bool MsgIsBoastMade(long) const
+33	008939d0	?MsgOnBoastMade@GameCalls@@UBE_NAAJAAVCCharString@@@Z	bool MsgOnBoastMade(long &, CCharString &) const
+34	008a9ae0	?MsgOnBoastsMade@GameCalls@@UBE_NAAV?$vector@U?$pair@JUCCharString@@@std@@V?$allocator@U?$pair@JUCCharString@@@std@@@2@@std@@@Z	bool MsgOnBoastsMade(std::vector<std::pair<long, CCharString>, std::allocator<std::pair<long, CCharString> > > &) const
+35	00893a50	?RemoveBoastMessage@GameCalls@@UBEXXZ	void RemoveBoastMessage(void) const
+36	0089ad90	?IsQuestStartScreenActive@GameCalls@@UBE_NAAVCCharString@@@Z	bool IsQuestStartScreenActive(CCharString &) const
+37	0089ae30	?MsgOnLeavingQuestStartScreen@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnLeavingQuestStartScreen(CCharString &) const
+38	00893ab0	?MsgOnLeavingExperienceSpendingScreen@GameCalls@@UBE_NXZ	bool MsgOnLeavingExperienceSpendingScreen(void) const
+39	00894300	?MsgIsQuestionAnsweredYesOrNo@GameCalls@@UBEJXZ	long MsgIsQuestionAnsweredYesOrNo(void) const
+40	00894370	?MsgIsGameInfoClickedPast@GameCalls@@UBE_NXZ	bool MsgIsGameInfoClickedPast(void) const
+41	008943c0	?MsgIsTutorialClickedPast@GameCalls@@UBE_NXZ	bool MsgIsTutorialClickedPast(void) const
+42	00894440	?MsgIsActionModeButtonPressed@GameCalls@@UBE_NXZ	bool MsgIsActionModeButtonPressed(void) const
+43	00893b00	?MsgOnExpressionPerformed@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnExpressionPerformed(CCharString &) const
+44	00893ba0	?MsgIsCutSceneSkipped@GameCalls@@UBE_NXZ	bool MsgIsCutSceneSkipped(void) const
+45	0089af30	?RemoveAllCutSceneSkippedMessages@GameCalls@@UBEXXZ	void RemoveAllCutSceneSkippedMessages(void) const
+46	00893c00	?MsgOnHeroHairTypeChanged@GameCalls@@UBE_NJAAVCCharString@@@Z	bool MsgOnHeroHairTypeChanged(EClothingCoversArea, CCharString &) const
+47	00893d80	?MsgOnHeroUsedTeleporter@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnHeroUsedTeleporter(CCharString &) const
+48	00893e20	?MsgOnHeroUsedGuildSeal@GameCalls@@UBE_NXZ	bool MsgOnHeroUsedGuildSeal(void) const
+49	00893e70	?MsgOnGameSavedManually@GameCalls@@UBE_NXZ	bool MsgOnGameSavedManually(void) const
+50	00893ec0	?MsgOnHeroSlept@GameCalls@@UBE_NAA_N@Z	bool MsgOnHeroSlept(bool &) const
+51	00893f30	?MsgOnHeroFiredRangedWeapon@GameCalls@@UBE_NXZ	bool MsgOnHeroFiredRangedWeapon(void) const
+52	00893f80	?MsgOnHeroCastSpell@GameCalls@@UBE_NAAJ@Z	bool MsgOnHeroCastSpell(EHeroAbility &) const
+53	00893ff0	?MsgOnHeroPickedPocket@GameCalls@@UBE_NAAUCScriptThing@@@Z	bool MsgOnHeroPickedPocket(CScriptThing &) const
+54	00894080	?MsgOnHeroPickedLock@GameCalls@@UBE_NAAUCScriptThing@@@Z	bool MsgOnHeroPickedLock(CScriptThing &) const
+55	00894110	?MsgOnFishingGameFinished@GameCalls@@UBE_NAAUCScriptThing@@@Z	bool MsgOnFishingGameFinished(CScriptThing &) const
+56	008941a0	?MsgOnTavernGameFinished@GameCalls@@UBE_NABUCScriptThing@@@Z	bool MsgOnTavernGameFinished(CScriptThing const &) const
+57	00894250	?MsgOnHeroRewardedWithItemsFrom@GameCalls@@UBE_NAAVCCharString@@@Z	bool MsgOnHeroRewardedWithItemsFrom(CCharString &) const
+58	008942c0	?MsgOnChestOpeningCancelled@GameCalls@@UBE_NXZ	bool MsgOnChestOpeningCancelled(void) const
+59	0088e380	?DontPopulateNextLoadedRegion@GameCalls@@UBEXXZ	void DontPopulateNextLoadedRegion(void) const
+60	0088e390	?GetWanderingPopulationScriptDefNameInCurrentRegion@GameCalls@@UBEXAAVCCharString@@@Z	void GetWanderingPopulationScriptDefNameInCurrentRegion(CCharString &) const
+61	00891e30	?GetWanderingPopulationScriptDefNameInRegion@GameCalls@@UBEXABVCCharString@@AAV2@@Z	void GetWanderingPopulationScriptDefNameInRegion(CCharString const &, CCharString &) const
+62	00891ea0	?IsHeroAllowedHenchmenInCurrentRegion@GameCalls@@UBE_NXZ	bool IsHeroAllowedHenchmenInCurrentRegion(void) const
+63	00891ef0	?IsHeroAllowedHenchmenInRegion@GameCalls@@UBE_NABVCCharString@@@Z	bool IsHeroAllowedHenchmenInRegion(CCharString const &) const
+64	006e7460	?PostAddScriptedEntities@GameCalls@@UBEXXZ	void PostAddScriptedEntities(void) const
+65	008905b0	?IsPlayerHoldingUnsheatheRangedWeaponButton@GameCalls@@UBE_NXZ	bool IsPlayerHoldingUnsheatheRangedWeaponButton(void) const
+66	008905e0	?IsPlayerHoldingLockTargetButton@GameCalls@@UBE_NXZ	bool IsPlayerHoldingLockTargetButton(void) const
+67	00890610	?IsPlayerHoldingFireRangedWeaponButton@GameCalls@@UBE_NXZ	bool IsPlayerHoldingFireRangedWeaponButton(void) const
+68	00890640	?IsPlayerHoldingFirstPersonTargetingButton@GameCalls@@UBE_NXZ	bool IsPlayerHoldingFirstPersonTargetingButton(void) const
+69	00890670	?IsHeroInProjectileWeaponMode@GameCalls@@UBE_NXZ	bool IsHeroInProjectileWeaponMode(void) const
+70	00891ca0	?GetHero@GameCalls@@UAEAAUCScriptThing@@XZ	CScriptThing & GetHero(void)
+71	0089a490	?GetHeroTargetedThing@GameCalls@@UBE?AUCScriptThing@@XZ	CScriptThing GetHeroTargetedThing(void) const
+73	008930f0	?GetThingWithScriptName@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@0@Z	CScriptThing GetThingWithScriptName(CCharString const &, CCharString const &) const
+72	008a7d60	?GetThingWithScriptName@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@@Z	CScriptThing GetThingWithScriptName(CCharString const &) const
+74	008a7e00	?GetRandomThingWithScriptName@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@@Z	CScriptThing GetRandomThingWithScriptName(CCharString const &) const
+75	008a8570	?GetAllThingsWithScriptName@GameCalls@@UBEJABVCCharString@@AAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	long GetAllThingsWithScriptName(CCharString const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+76	008a86c0	?GetAllCreaturesInAreaWithScriptName@GameCalls@@UBEJABVCCharString@@ABUC3DVector@@MAAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	long GetAllCreaturesInAreaWithScriptName(CCharString const &, C3DVector const &, float, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+77	0089a510	?GetNearestWithScriptName@GameCalls@@UBE?AUCScriptThing@@ABU2@ABVCCharString@@@Z	CScriptThing GetNearestWithScriptName(CScriptThing const &, CCharString const &) const
+78	0089a6e0	?GetFurthestWithScriptName@GameCalls@@UBE?AUCScriptThing@@ABU2@ABVCCharString@@@Z	CScriptThing GetFurthestWithScriptName(CScriptThing const &, CCharString const &) const
+79	008a9c40	?GetAllThingsWithDefNameByDistanceFrom@GameCalls@@UBEJABUCScriptThing@@ABVCCharString@@AAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	long GetAllThingsWithDefNameByDistanceFrom(CScriptThing const &, CCharString const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+80	008a8890	?GetAllThingsWithDefName@GameCalls@@UBEJABVCCharString@@AAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	long GetAllThingsWithDefName(CCharString const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+81	0089a880	?GetNearestWithDefName@GameCalls@@UBE?AUCScriptThing@@ABU2@ABVCCharString@@@Z	CScriptThing GetNearestWithDefName(CScriptThing const &, CCharString const &) const
+82	0089aa70	?GetFurthestWithDefName@GameCalls@@UBE?AUCScriptThing@@ABU2@ABVCCharString@@@Z	CScriptThing GetFurthestWithDefName(CScriptThing const &, CCharString const &) const
+83	00891d50	?GetThingWithUID@GameCalls@@UBE?AUCScriptThing@@_K@Z	CScriptThing GetThingWithUID(unsigned __int64) const
+84	008a89d0	?GetAllCreaturesExcludingHero@GameCalls@@UBEJAAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	long GetAllCreaturesExcludingHero(std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+85	008a8af0	?GetAllThingsInLevel@GameCalls@@UBEJABVCCharString@@AAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	long GetAllThingsInLevel(CCharString const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+86	0088e260	?IsThingWithThisUIDAlive@GameCalls@@UBE_N_K@Z	bool IsThingWithThisUIDAlive(unsigned __int64) const
+87	006e79e0	?RegisterTimer@GameCalls@@UAEJXZ	long RegisterTimer(void)
+88	006e7690	?DeregisterTimer@GameCalls@@UAEXJ@Z	void DeregisterTimer(long)
+89	006e76e0	?SetTimer@GameCalls@@UAEXJJ@Z	void SetTimer(long, long)
+90	006e7710	?GetTimer@GameCalls@@UBEJJ@Z	long GetTimer(long) const
+91	008a9100	?CreateCreature@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABUC3DVector@@0_N@Z	CScriptThing CreateCreature(CCharString const &, C3DVector const &, CCharString const &, bool) const
+92	0089f300	?CreateCreatureNearby@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABUC3DVector@@M0_N@Z	CScriptThing CreateCreatureNearby(CCharString const &, C3DVector const &, float, CCharString const &, bool) const
+93	00894500	?CreateCreatureOnEntity@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABU2@0@Z	CScriptThing CreateCreatureOnEntity(CCharString const &, CScriptThing const &, CCharString const &) const
+94	0089f4a0	?TurnCreatureInto@GameCalls@@UBE?AUCScriptThing@@ABU2@ABVCCharString@@@Z	CScriptThing TurnCreatureInto(CScriptThing const &, CCharString const &) const
+95	006e7d30	?SetCreatureCreationDelayFrames@GameCalls@@UAEXJ@Z	void SetCreatureCreationDelayFrames(long)
+96	006e7d40	?ResetCreatureCreationDelayFrames@GameCalls@@UAEXXZ	void ResetCreatureCreationDelayFrames(void)
+98	00894820	?CreateObject@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABUC3DVector@@0@Z	CScriptThing CreateObject(CCharString const &, C3DVector const &, CCharString const &) const
+97	00894950	?CreateObject@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABUC3DVector@@M0@Z	CScriptThing CreateObject(CCharString const &, C3DVector const &, float, CCharString const &) const
+99	008946e0	?CreateObjectOnEntity@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABU2@0@Z	CScriptThing CreateObjectOnEntity(CCharString const &, CScriptThing const &, CCharString const &) const
+101	0089f910	?CreateEffect@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABU2@00_N2@Z	CScriptThing CreateEffect(CCharString const &, CScriptThing const &, CCharString const &, CCharString const &, bool, bool) const
+100	0089f9e0	?CreateEffect@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABUC3DVector@@0M_N2@Z	CScriptThing CreateEffect(CCharString const &, C3DVector const &, CCharString const &, float, bool, bool) const
+102	0089faa0	?CreateLight@GameCalls@@UBE?AUCScriptThing@@ABUC3DVector@@ABUCRGBColour@@ABVCCharString@@MM_N@Z	CScriptThing CreateLight(C3DVector const &, CRGBColour const &, CCharString const &, float, float, bool) const
+103	0089fbb0	?CreateExperienceOrb@GameCalls@@UBE?AUCScriptThing@@ABUC3DVector@@J@Z	CScriptThing CreateExperienceOrb(C3DVector const &, long) const
+104	0089fc80	?CreateExplosion@GameCalls@@UBE?AUCScriptThing@@ABVCCharString@@ABUC3DVector@@PBU4@V3@@Z	CScriptThing CreateExplosion(CCharString const &, C3DVector const &, C3DVector const *, CCharString) const
+105	0089fd20	?CreatePhysicalBarrier@GameCalls@@UBE?AUCScriptThing@@MABUC3DVector@@PBU3@VCCharString@@@Z	CScriptThing CreatePhysicalBarrier(float, C3DVector const &, C3DVector const *, CCharString) const
+106	0089fda0	?CreateRumble@GameCalls@@UBE?AUCScriptThing@@ABUC3DVector@@MMVCCharString@@@Z	CScriptThing CreateRumble(C3DVector const &, float, float, CCharString) const
+107	00892df0	?ClearAllRumbles@GameCalls@@UBEXXZ	void ClearAllRumbles(void) const
+108	008910d0	?RemoveThing@GameCalls@@UBEXABUCScriptThing@@_N1@Z	void RemoveThing(CScriptThing const &, bool, bool) const
+111	00892780	?ShowOnScreenMessage@GameCalls@@UBEXABVCCharString@@M@Z	void ShowOnScreenMessage(CCharString const &, float) const
+110	008927b0	?ShowOnScreenMessage@GameCalls@@UBEXABVCCharString@@00M@Z	void ShowOnScreenMessage(CCharString const &, CCharString const &, CCharString const &, float) const
+109	00892810	?ShowOnScreenMessage@GameCalls@@UBEXABUC2DVector@@ABVCCharString@@ABUCRGBColour@@1@Z	void ShowOnScreenMessage(C2DVector const &, CCharString const &, CRGBColour const &, CCharString const &) const
+112	00892850	?AddScreenMessage@GameCalls@@UBEXABVCCharString@@J@Z	void AddScreenMessage(CCharString const &, ETextGroupSelectionMethod) const
+113	0089e4c0	?AddScreenTitleMessage@GameCalls@@UBEXABVCCharString@@M_N@Z	void AddScreenTitleMessage(CCharString const &, float, bool) const
+114	0089e540	?GiveHeroYesNoQuestion@GameCalls@@UBEXABVCCharString@@000_N@Z	void GiveHeroYesNoQuestion(CCharString const &, CCharString const &, CCharString const &, CCharString const &, bool) const
+115	008929d0	?DisplayGameInfo@GameCalls@@UBEXABVCCharString@@@Z	void DisplayGameInfo(CCharString const &) const
+116	00892a80	?DisplayGameInfoText@GameCalls@@UBEXABVCWideString@@@Z	void DisplayGameInfoText(CWideString const &) const
+117	00892b30	?IsSafeToDisplayGameInfo@GameCalls@@UBE_NXZ	bool IsSafeToDisplayGameInfo(void) const
+118	0089e710	?DisplayTutorial@GameCalls@@UBE_NJ@Z	bool DisplayTutorial(ETutorialCategory) const
+119	0088f3e0	?IsTutorialSystemEnabled@GameCalls@@UBE_NXZ	bool IsTutorialSystemEnabled(void) const
+120	0088e130	?GiveHeroWeapon@GameCalls@@UBEXABVCCharString@@_N@Z	void GiveHeroWeapon(CCharString const &, bool) const
+121	008902e0	?GiveHeroObject@GameCalls@@UBEXABVCCharString@@J_N@Z	void GiveHeroObject(CCharString const &, long, bool) const
+122	00898b30	?SetWeaponAsHerosActiveWeapon@GameCalls@@UBEXABVCCharString@@@Z	void SetWeaponAsHerosActiveWeapon(CCharString const &) const
+123	00898bb0	?GiveHeroItem@GameCalls@@UBEXABUCScriptThing@@@Z	void GiveHeroItem(CScriptThing const &) const
+124	00898c40	?GiveHeroItemsFromContainer@GameCalls@@UBE_NABUCScriptThing@@_N@Z	bool GiveHeroItemsFromContainer(CScriptThing const &, bool) const
+125	00898db0	?TakeObjectFromHero@GameCalls@@UBEXABVCCharString@@@Z	void TakeObjectFromHero(CCharString const &) const
+126	00898f40	?GiveHeroGold@GameCalls@@UBEXJ@Z	void GiveHeroGold(long) const
+127	00898fa0	?GetHeroGold@GameCalls@@UBEJXZ	long GetHeroGold(void) const
+128	00899000	?GiveHeroExperience@GameCalls@@UBEXJ@Z	void GiveHeroExperience(long) const
+129	00899060	?SetHeroAbleToGainExperience@GameCalls@@UBEX_N@Z	void SetHeroAbleToGainExperience(bool) const
+130	008916a0	?SheatheHeroWeapons@GameCalls@@UBEXXZ	void SheatheHeroWeapons(void) const
+131	00898340	?SetHeroWillAsUsable@GameCalls@@UBEX_N@Z	void SetHeroWillAsUsable(bool) const
+132	00898410	?SetHeroWeaponsAsUsable@GameCalls@@UBEX_N@Z	void SetHeroWeaponsAsUsable(bool) const
+133	008984e0	?SetWeaponOutCrimeEnabled@GameCalls@@UBEX_N@Z	void SetWeaponOutCrimeEnabled(bool) const
+134	00898540	?SetGuardsIgnoreCrimes@GameCalls@@UBEX_N@Z	void SetGuardsIgnoreCrimes(bool) const
+135	00898600	?RemoveAllHeroWeapons@GameCalls@@UBEXXZ	void RemoveAllHeroWeapons(void) const
+136	008985a0	?IsReportedOrUnreportedCrimeKnown@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsReportedOrUnreportedCrimeKnown(CScriptThing const &) const
+137	008986d0	?ConfiscateAllHeroItems@GameCalls@@UBEXXZ	void ConfiscateAllHeroItems(void) const
+138	008987e0	?ConfiscateAllHeroWeapons@GameCalls@@UBEXXZ	void ConfiscateAllHeroWeapons(void) const
+139	00898840	?ConfiscateItemsOfTypeFromHero@GameCalls@@UBEXABVCCharString@@@Z	void ConfiscateItemsOfTypeFromHero(CCharString const &) const
+140	00898940	?ReturnAllConfiscatedItemsToHero@GameCalls@@UBEXXZ	void ReturnAllConfiscatedItemsToHero(void) const
+141	00898a50	?GiveHeroTutorial@GameCalls@@UBE_NJ@Z	bool GiveHeroTutorial(ETutorialCategory) const
+143	00897e10	?MakeHeroCarryItemInHand@GameCalls@@UBEXABVCCharString@@@Z	void MakeHeroCarryItemInHand(CCharString const &) const
+142	00897fa0	?MakeHeroCarryItemInHand@GameCalls@@UBEXABUCScriptThing@@_N1@Z	void MakeHeroCarryItemInHand(CScriptThing const &, bool, bool) const
+144	008981c0	?AddTattooToHero@GameCalls@@UBEXABVCCharString@@@Z	void AddTattooToHero(CCharString const &) const
+145	0088fcc0	?GiveHeroAbility@GameCalls@@UBEXJ_N@Z	void GiveHeroAbility(EHeroAbility, bool) const
+146	00899b10	?IsPlayerZTargetingThing@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsPlayerZTargetingThing(CScriptThing const &) const
+147	00899ba0	?IsPlayerCreatureBlocking@GameCalls@@UBE_NXZ	bool IsPlayerCreatureBlocking(void) const
+148	00899c10	?IsPlayerCreatureReadyToFireProjectileWeapon@GameCalls@@UBE_NAAM@Z	bool IsPlayerCreatureReadyToFireProjectileWeapon(float &) const
+149	00899c90	?GetPlayerCreatureCombatMultiplier@GameCalls@@UBEJXZ	long GetPlayerCreatureCombatMultiplier(void) const
+150	00899cf0	?GetPlayerCreatureCombatMultiplierRunningNumHits@GameCalls@@UBEJXZ	long GetPlayerCreatureCombatMultiplierRunningNumHits(void) const
+151	00899d50	?ResetPlayerCreatureCombatMultiplier@GameCalls@@UBEXXZ	void ResetPlayerCreatureCombatMultiplier(void) const
+152	00899db0	?IsPlayerCreatureFlourishEnabled@GameCalls@@UBE_NXZ	bool IsPlayerCreatureFlourishEnabled(void) const
+153	00899e10	?SetPlayerCreatureOnlyTarget@GameCalls@@UBEXABUCScriptThing@@@Z	void SetPlayerCreatureOnlyTarget(CScriptThing const &) const
+154	00899e90	?ResetPlayerCreatureOnlyTarget@GameCalls@@UBEXXZ	void ResetPlayerCreatureOnlyTarget(void) const
+155	0088e150	?RespawnHero@GameCalls@@UBEX_N@Z	void RespawnHero(bool) const
+156	00899ef0	?GiveHeroMorality@GameCalls@@UBEXM@Z	void GiveHeroMorality(float) const
+157	00899f90	?GetHeroMorality@GameCalls@@UBEMXZ	float GetHeroMorality(void) const
+158	0089a000	?GetHeroMoralityCategory@GameCalls@@UBEJXZ	EMorality GetHeroMoralityCategory(void) const
+159	0089a070	?ChangeHeroMoralityDueToTheft@GameCalls@@UBEXXZ	void ChangeHeroMoralityDueToTheft(void) const
+160	0089a0e0	?ChangeHeroMoralityDueToPicklock@GameCalls@@UBEXXZ	void ChangeHeroMoralityDueToPicklock(void) const
+161	008990c0	?GiveHeroRenownPoints@GameCalls@@UBEXJ@Z	void GiveHeroRenownPoints(long) const
+162	00899140	?GetHeroRenownLevel@GameCalls@@UBEJXZ	long GetHeroRenownLevel(void) const
+163	008991a0	?IsHeroRenownLevelFull@GameCalls@@UBE_NXZ	bool IsHeroRenownLevelFull(void) const
+164	00899220	?IncreaseHeroRenownLevel@GameCalls@@UBEXXZ	void IncreaseHeroRenownLevel(void) const
+165	00899390	?GetHeroStrengthLevel@GameCalls@@UBEJXZ	long GetHeroStrengthLevel(void) const
+166	00899400	?GetHeroSkillLevel@GameCalls@@UBEJXZ	long GetHeroSkillLevel(void) const
+167	00899470	?GetHeroWillLevel@GameCalls@@UBEJXZ	long GetHeroWillLevel(void) const
+168	00899290	?GetHeroStatLevel@GameCalls@@UBEJJ@Z	long GetHeroStatLevel(EHeroTrainableStatType) const
+169	00899310	?GetHeroStatMax@GameCalls@@UBEJJ@Z	long GetHeroStatMax(EHeroTrainableStatType) const
+170	008994e0	?SetHeroAge@GameCalls@@UBEXM@Z	void SetHeroAge(float) const
+171	00899560	?GetHeroAge@GameCalls@@UBEMXZ	float GetHeroAge(void) const
+172	008995d0	?SetHeroAsTeenager@GameCalls@@UBEX_N@Z	void SetHeroAsTeenager(bool) const
+173	00899680	?SetHeroAsApprentice@GameCalls@@UBEX_N@Z	void SetHeroAsApprentice(bool) const
+174	00899700	?GetDistanceHeroCanBeHeardFrom@GameCalls@@UBEMXZ	float GetDistanceHeroCanBeHeardFrom(void) const
+175	00899770	?GetHeroRoughExperienceLevel@GameCalls@@UBEJXZ	long GetHeroRoughExperienceLevel(void) const
+176	008997e0	?GetHeroExperienceAvailableToSpend@GameCalls@@UBEJXZ	long GetHeroExperienceAvailableToSpend(void) const
+177	00899850	?GetHeroFatness@GameCalls@@UBEMXZ	float GetHeroFatness(void) const
+178	008998c0	?GetHeroScariness@GameCalls@@UBEMXZ	float GetHeroScariness(void) const
+179	00899930	?GetHeroAttractiveness@GameCalls@@UBEMXZ	float GetHeroAttractiveness(void) const
+180	008999a0	?GetHeroWillEnergyLevel@GameCalls@@UBEMXZ	float GetHeroWillEnergyLevel(void) const
+181	00899a10	?SetHeroWillEnergyLevel@GameCalls@@UBEXM@Z	void SetHeroWillEnergyLevel(float) const
+182	00899a90	?SetHeroWillEnergyAsAbleToRefill@GameCalls@@UBEX_N@Z	void SetHeroWillEnergyAsAbleToRefill(bool) const
+183	00897190	?GetNumberOfItemsOfTypeInInventory@GameCalls@@UBEJABVCCharString@@@Z	long GetNumberOfItemsOfTypeInInventory(CCharString const &) const
+184	00897220	?IsObjectInThingsPossession@GameCalls@@UBE_NABVCCharString@@ABUCScriptThing@@@Z	bool IsObjectInThingsPossession(CCharString const &, CScriptThing const &) const
+185	00898e60	?IsHeroHandLampLit@GameCalls@@UBE_NXZ	bool IsHeroHandLampLit(void) const
+186	00898ec0	?SetHeroHandLampAsLit@GameCalls@@UBEX_N@Z	void SetHeroHandLampAsLit(bool) const
+187	0089b2b0	?IsWearingClothingItem@GameCalls@@UBE_NABUCScriptThing@@ABVCCharString@@@Z	bool IsWearingClothingItem(CScriptThing const &, CCharString const &) const
+188	0089b330	?IsHeroNaked@GameCalls@@UBE_NXZ	bool IsHeroNaked(void) const
+189	0089b390	?RemoveHeroClothing@GameCalls@@UBEXXZ	void RemoveHeroClothing(void) const
+190	0089b3f0	?SetHeroAsWearing@GameCalls@@UBEXABVCCharString@@@Z	void SetHeroAsWearing(CCharString const &) const
+191	0089b450	?ChangeHeroHairstyle@GameCalls@@UBEXABVCCharString@@@Z	void ChangeHeroHairstyle(CCharString const &) const
+192	0089b4d0	?RemoveHeroHairstyle@GameCalls@@UBEXXZ	void RemoveHeroHairstyle(void) const
+193	0089b530	?IsWearingHairstyle@GameCalls@@UBE_NAAUCScriptThing@@ABVCCharString@@@Z	bool IsWearingHairstyle(CScriptThing &, CCharString const &) const
+194	008973a0	?IsPlayerCarryingItemOfType@GameCalls@@UBE_NABVCCharString@@@Z	bool IsPlayerCarryingItemOfType(CCharString const &) const
+195	00897480	?IsPlayerWieldingWeapon@GameCalls@@UBE_NXZ	bool IsPlayerWieldingWeapon(void) const
+196	008974f0	?IsEntityWieldingWeapon@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityWieldingWeapon(CScriptThing const &) const
+197	00890220	?IsEntityWieldingMeleeWeapon@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityWieldingMeleeWeapon(CScriptThing const &) const
+198	00890250	?IsEntityWieldingRangedWeapon@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityWieldingRangedWeapon(CScriptThing const &) const
+199	00897560	?GetPreviouslyWieldedMeleeWeaponName@GameCalls@@UBE_NAAVCCharString@@@Z	bool GetPreviouslyWieldedMeleeWeaponName(CCharString &) const
+200	00897630	?GetPreviouslyWieldedRangedWeaponName@GameCalls@@UBE_NAAVCCharString@@@Z	bool GetPreviouslyWieldedRangedWeaponName(CCharString &) const
+201	00890280	?IsEntityAbleToAttack@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityAbleToAttack(CScriptThing const &) const
+202	008976f0	?EntityGetThingInPrimarySlot@GameCalls@@UBE?AUCScriptThing@@ABU2@@Z	CScriptThing EntityGetThingInPrimarySlot(CScriptThing const &) const
+203	008977f0	?ApplyHeroPenaltyForDeath@GameCalls@@UBEXXZ	void ApplyHeroPenaltyForDeath(void) const
+204	0088e110	?GiveHeroTitle@GameCalls@@UBEXABVCCharString@@@Z	void GiveHeroTitle(CCharString const &) const
+205	00897880	?GetHeroTitle@GameCalls@@UBEJXZ	EHeroTitle GetHeroTitle(void) const
+206	00894dd0	?EntitySetAsMarryable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsMarryable(CScriptThing const &, bool) const
+207	008978e0	?EntitySetAsAbleToRegionFollowWhenMarried@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsAbleToRegionFollowWhenMarried(CScriptThing const &, bool) const
+208	00897940	?EntityForceMarriageToHero@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntityForceMarriageToHero(CScriptThing const &, bool) const
+209	008979c0	?IsEntityMarriedToHero@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityMarriedToHero(CScriptThing const &) const
+210	00897a30	?IsEntityMarriable@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityMarriable(CScriptThing const &) const
+211	00897aa0	?GetHeroHasMarried@GameCalls@@UBE_NXZ	bool GetHeroHasMarried(void) const
+212	00897b10	?GetHeroHasCurrentMarriage@GameCalls@@UBE_NXZ	bool GetHeroHasCurrentMarriage(void) const
+213	00897b70	?GetHeroHasDivorcedMarriage@GameCalls@@UBE_NXZ	bool GetHeroHasDivorcedMarriage(void) const
+214	00897bd0	?GetHeroHasChildren@GameCalls@@UBE_NXZ	bool GetHeroHasChildren(void) const
+215	00897c30	?GetHeroHasMurderedWife@GameCalls@@UBE_NXZ	bool GetHeroHasMurderedWife(void) const
+216	008902b0	?IsHeroChild@GameCalls@@UBE_NXZ	bool IsHeroChild(void) const
+217	008a0820	?CancelHeroTeleportEffects@GameCalls@@UBEXXZ	void CancelHeroTeleportEffects(void) const
+218	00897c90	?GetNumberOfTimesHeroHasHadSex@GameCalls@@UBEJXZ	long GetNumberOfTimesHeroHasHadSex(void) const
+219	00897cf0	?SetNumberOfTimesHeroHasHadSex@GameCalls@@UBEXJ@Z	void SetNumberOfTimesHeroHasHadSex(long) const
+220	00897d50	?SetHeroAsHavingHadSex@GameCalls@@UBEX_N@Z	void SetHeroAsHavingHadSex(bool) const
+221	00897db0	?SetHeroAsHavingHadGaySex@GameCalls@@UBEX_N@Z	void SetHeroAsHavingHadGaySex(bool) const
+222	00898ac0	?GiveThingHeroRewardItem@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@1@Z	void GiveThingHeroRewardItem(CScriptThing const &, CCharString const &, CCharString const &) const
+223	0088de10	?GiveThingItemInHand@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@_N@Z	void GiveThingItemInHand(CScriptThing const &, CCharString const &, bool) const
+224	00895190	?GiveThingItemInSlot@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@1@Z	void GiveThingItemInSlot(CScriptThing const &, CCharString const &, CCharString const &) const
+225	0088fc60	?GiveHeroExpression@GameCalls@@UBEXABVCCharString@@J_N@Z	void GiveHeroExpression(CCharString const &, long, bool) const
+226	0088fc90	?HeroHasExpression@GameCalls@@UBE_NABVCCharString@@@Z	bool HeroHasExpression(CCharString const &) const
+227	008953a0	?IsHeroPerformingExpression@GameCalls@@UBE_NABVCCharString@@@Z	bool IsHeroPerformingExpression(CCharString const &) const
+228	00895430	?IsDPadButtonHeldForExpression@GameCalls@@UBE_NABVCCharString@@@Z	bool IsDPadButtonHeldForExpression(CCharString const &) const
+229	008954a0	?EntityFollowThing@GameCalls@@UBEXABUCScriptThing@@0M_N@Z	void EntityFollowThing(CScriptThing const &, CScriptThing const &, float, bool) const
+230	008a7980	?EntityStopFollowing@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityStopFollowing(CScriptThing const &) const
+231	008a80f0	?GetFollowingEntityList@GameCalls@@UBE_NABUCScriptThing@@AAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	bool GetFollowingEntityList(CScriptThing const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+232	008a8260	?GetHeroSummonedCreaturesList@GameCalls@@UBE_NAAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	bool GetHeroSummonedCreaturesList(std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+233	008a8440	?GetPerceivingHeroEntityList@GameCalls@@UBE_NAAV?$vector@UCScriptThing@@V?$allocator@UCScriptThing@@@std@@@std@@@Z	bool GetPerceivingHeroEntityList(std::vector<CScriptThing, std::allocator<CScriptThing> > &) const
+234	008955c0	?IsEntityFollowingHero@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityFollowingHero(CScriptThing const &) const
+235	0088de90	?EntitySetAsAllowedToFollowHero@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsAllowedToFollowHero(CScriptThing const &, bool) const
+236	0088ded0	?EntitySetAsAllowedToChangeRegionFollowingState@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsAllowedToChangeRegionFollowingState(CScriptThing const &, bool) const
+237	0088df20	?EntitySetAsRespondingToFollowAndWaitExpressions@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsRespondingToFollowAndWaitExpressions(CScriptThing const &, bool) const
+238	00895650	?EntitySetAsMirroringHeroEnemyRelationsWhileFollowing@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsMirroringHeroEnemyRelationsWhileFollowing(CScriptThing const &, bool) const
+239	008a7a70	?TeleportAllFollowersToHeroPosition@GameCalls@@UBEXXZ	void TeleportAllFollowersToHeroPosition(void) const
+240	008956b0	?EntityTeleportToHeroPosition@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityTeleportToHeroPosition(CScriptThing const &) const
+241	008957c0	?SendEntityEvent@GameCalls@@UBEXJABUCScriptThing@@0PAUCThing@@@Z	void SendEntityEvent(NEntityEvents::EEventType, CScriptThing const &, CScriptThing const &, CThing *) const
+242	0088df60	?GetWaterHeightAtPosition@GameCalls@@UBEMABUC3DVector@@@Z	float GetWaterHeightAtPosition(C3DVector const &) const
+243	008958f0	?IsFishingSpotEnabled@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsFishingSpotEnabled(CScriptThing const &) const
+244	00895950	?DisableFishingSpot@GameCalls@@UBEXABUCScriptThing@@@Z	void DisableFishingSpot(CScriptThing const &) const
+245	008959b0	?UpdateFishWeight@GameCalls@@UBEXABUCScriptThing@@@Z	void UpdateFishWeight(CScriptThing const &) const
+246	00895a10	?GetBestFishWeight@GameCalls@@UBEMABVCCharString@@@Z	float GetBestFishWeight(CCharString const &) const
+247	00895a90	?HeroGoFishing@GameCalls@@UBEX_N@Z	void HeroGoFishing(bool) const
+248	00895b00	?GetHeroFishingLevel@GameCalls@@UBEJXZ	long GetHeroFishingLevel(void) const
+249	0088df80	?HeroGoDigging@GameCalls@@UBEXXZ	void HeroGoDigging(void) const
+250	0088dfa0	?HeroStopDigging@GameCalls@@UBEXXZ	void HeroStopDigging(void) const
+251	00895b60	?HeroPlayOracleMinigame@GameCalls@@UBEXXZ	void HeroPlayOracleMinigame(void) const
+252	00895bc0	?IsHeroPlayingOracleMinigame@GameCalls@@UBE_NXZ	bool IsHeroPlayingOracleMinigame(void) const
+253	00895c30	?HasHeroWonOracleMinigame@GameCalls@@UBE_NXZ	bool HasHeroWonOracleMinigame(void) const
+254	00895c90	?HeroPlayFireheartMinigame@GameCalls@@UBEXXZ	void HeroPlayFireheartMinigame(void) const
+255	00895cf0	?HeroQuitFireheartMinigame@GameCalls@@UBEXXZ	void HeroQuitFireheartMinigame(void) const
+256	00895d50	?HasHeroForceQuitFireheartMinigame@GameCalls@@UBE_NXZ	bool HasHeroForceQuitFireheartMinigame(void) const
+257	00890370	?GetHeroHealth@GameCalls@@UBEMXZ	float GetHeroHealth(void) const
+258	008903a0	?GetHeroHealthMax@GameCalls@@UBEMXZ	float GetHeroHealthMax(void) const
+259	008903d0	?GetHeroHealthPercentage@GameCalls@@UBEMXZ	float GetHeroHealthPercentage(void) const
+260	0089a150	?GetHeroWillEnergy@GameCalls@@UBEJXZ	long GetHeroWillEnergy(void) const
+261	0089a1b0	?GetHeroWillEnergyMax@GameCalls@@UBEJXZ	long GetHeroWillEnergyMax(void) const
+262	0089a210	?GetHeroWillEnergyPercentage@GameCalls@@UBEJXZ	long GetHeroWillEnergyPercentage(void) const
+263	00891720	?ChangeHeroHealthBy@GameCalls@@UBEXM_N0@Z	void ChangeHeroHealthBy(float, bool, bool) const
+264	00890400	?GetHealth@GameCalls@@UBEMABUCScriptThing@@@Z	float GetHealth(CScriptThing const &) const
+265	00890430	?ModifyThingHealth@GameCalls@@UBEXABUCScriptThing@@M_N@Z	void ModifyThingHealth(CScriptThing const &, float, bool) const
+266	0088e1c0	?EntitySetMaxHealth@GameCalls@@UBEXABUCScriptThing@@M_N@Z	void EntitySetMaxHealth(CScriptThing const &, float, bool) const
+267	0089a270	?SetThingAsKilled@GameCalls@@UBEXABUCScriptThing@@@Z	void SetThingAsKilled(CScriptThing const &) const
+268	008917f0	?GiveHeroNewQuestObjective@GameCalls@@UBEXABVCCharString@@K@Z	void GiveHeroNewQuestObjective(CCharString const &, unsigned long) const
+269	00891800	?TellHeroQuestObjectiveCompleted@GameCalls@@UBEXK@Z	void TellHeroQuestObjectiveCompleted(unsigned long) const
+270	00891810	?TellHeroQuestObjectiveFailed@GameCalls@@UBEXK@Z	void TellHeroQuestObjectiveFailed(unsigned long) const
+271	00891820	?AddQuestRegion@GameCalls@@UBEXABVCCharString@@0@Z	void AddQuestRegion(CCharString const &, CCharString const &) const
+272	00891860	?SetQuestWorldMapOffset@GameCalls@@UBEXABVCCharString@@ABUC2DCoordI@@@Z	void SetQuestWorldMapOffset(CCharString const &, C2DCoordI const &) const
+273	00891870	?IsHeroOnQuest@GameCalls@@UBE_NXZ	bool IsHeroOnQuest(void) const
+274	008918c0	?HeroReceiveMessageFromGuildMaster@GameCalls@@UBEXABVCCharString@@0_N1@Z	void HeroReceiveMessageFromGuildMaster(CCharString const &, CCharString const &, bool, bool) const
+275	0088e200	?SetGuildMasterMessages@GameCalls@@UBEX_N@Z	void SetGuildMasterMessages(bool) const
+276	00892e80	?ActivateQuest@GameCalls@@UBEXABVCCharString@@@Z	void ActivateQuest(CCharString const &) const
+277	00892ea0	?ActivateMultipleQuests@GameCalls@@UBEXABU?$CArray@UCCharString@@@@@Z	void ActivateMultipleQuests(CArray<CCharString> const &) const
+278	00892ec0	?ActivateQuestWithoutLoadingResources@GameCalls@@UBEXABVCCharString@@@Z	void ActivateQuestWithoutLoadingResources(CCharString const &) const
+279	00892ee0	?ActivateMultipleQuestsWithoutLoadingResources@GameCalls@@UBEXABU?$CArray@UCCharString@@@@@Z	void ActivateMultipleQuestsWithoutLoadingResources(CArray<CCharString> const &) const
+280	00892f00	?DeactivateQuest@GameCalls@@UBEXABVCCharString@@K@Z	void DeactivateQuest(CCharString const &, unsigned long) const
+281	00892f10	?DeactivateQuestLater@GameCalls@@UBEXABVCCharString@@K@Z	void DeactivateQuestLater(CCharString const &, unsigned long) const
+282	00892f20	?PrepareQuestsWhenFinalQuestIsActivated@GameCalls@@UBEXABVCCharString@@@Z	void PrepareQuestsWhenFinalQuestIsActivated(CCharString const &) const
+283	00892f30	?PrepareQuestsWhenFinalQuestIsCompleted@GameCalls@@UBEXXZ	void PrepareQuestsWhenFinalQuestIsCompleted(void) const
+284	00892f40	?IsQuestActive@GameCalls@@UBE_NABVCCharString@@@Z	bool IsQuestActive(CCharString const &) const
+285	00892f50	?IsQuestRegistered@GameCalls@@UBE_NABVCCharString@@@Z	bool IsQuestRegistered(CCharString const &) const
+286	00892f60	?IsQuestCompleted@GameCalls@@UBE_NABVCCharString@@@Z	bool IsQuestCompleted(CCharString const &) const
+287	00892f70	?IsQuestFailed@GameCalls@@UBE_NABVCCharString@@@Z	bool IsQuestFailed(CCharString const &) const
+288	00892f80	?SetQuestAsCompleted@GameCalls@@UBEXABVCCharString@@_N11@Z	void SetQuestAsCompleted(CCharString const &, bool, bool, bool) const
+289	00892fd0	?SetQuestAsFailed@GameCalls@@UBEXABVCCharString@@_NABVCWideString@@1@Z	void SetQuestAsFailed(CCharString const &, bool, CWideString const &, bool) const
+290	00893020	?SetQuestAsPersistent@GameCalls@@UBEXABVCCharString@@_N@Z	void SetQuestAsPersistent(CCharString const &, bool) const
+291	00893030	?GetExclusiveQuestScriptName@GameCalls@@UBEABVCCharString@@XZ	CCharString const & GetExclusiveQuestScriptName(void) const
+292	008913f0	?AddQuestCard@GameCalls@@UBEXABVCCharString@@0_N1@Z	void AddQuestCard(CCharString const &, CCharString const &, bool, bool) const
+293	00891490	?RemoveQuestCardFromGuild@GameCalls@@UBEXABVCCharString@@@Z	void RemoveQuestCardFromGuild(CCharString const &) const
+294	008914e0	?RemoveQuestCardFromHero@GameCalls@@UBEXABVCCharString@@@Z	void RemoveQuestCardFromHero(CCharString const &) const
+295	008968c0	?GiveHeroQuestCardDirectly@GameCalls@@UBEXABVCCharString@@0_N@Z	void GiveHeroQuestCardDirectly(CCharString const &, CCharString const &, bool) const
+296	00896a30	?SetQuestCardObjective@GameCalls@@UBEXABVCCharString@@000@Z	void SetQuestCardObjective(CCharString const &, CCharString const &, CCharString const &, CCharString const &) const
+297	008914f0	?SetQuestCardGoldReward@GameCalls@@UBEXABVCCharString@@J@Z	void SetQuestCardGoldReward(CCharString const &, long) const
+298	00891500	?SetQuestCardRenownReward@GameCalls@@UBEXABVCCharString@@J@Z	void SetQuestCardRenownReward(CCharString const &, long) const
+299	00891510	?RemoveAllAvailableQuestCardsFromGuild@GameCalls@@UBEXXZ	void RemoveAllAvailableQuestCardsFromGuild(void) const
+300	00891520	?FailAllActiveQuests@GameCalls@@UBEXXZ	void FailAllActiveQuests(void) const
+301	00891530	?GetAllActiveQuestInfo@GameCalls@@UBEXAAV?$vector@UCCharString@@V?$allocator@UCCharString@@@std@@@std@@0@Z	void GetAllActiveQuestInfo(std::vector<CCharString, std::allocator<CCharString> > &, std::vector<CCharString, std::allocator<CCharString> > &) const
+302	00891540	?AddFeatCard@GameCalls@@UBEXJABVCCharString@@0@Z	void AddFeatCard(long, CCharString const &, CCharString const &) const
+303	00893060	?AddBoast@GameCalls@@UBEXABVCCharString@@JJJ_N0J@Z	void AddBoast(CCharString const &, long, long, long, bool, CCharString const &, long) const
+304	00891580	?RemoveBoast@GameCalls@@UBEXJABVCCharString@@@Z	void RemoveBoast(long, CCharString const &) const
+305	008915b0	?SetBoastAsFailed@GameCalls@@UBEXJABVCCharString@@@Z	void SetBoastAsFailed(long, CCharString const &) const
+306	008915e0	?SetBoastAsCompleted@GameCalls@@UBEXJABVCCharString@@@Z	void SetBoastAsCompleted(long, CCharString const &) const
+307	00891550	?IsBoastTaken@GameCalls@@UBE_NJABVCCharString@@@Z	bool IsBoastTaken(long, CCharString const &) const
+308	0088fe00	?AddLogBookEntry@GameCalls@@UBEXABVCWideString@@00J@Z	void AddLogBookEntry(CWideString const &, CWideString const &, CWideString const &, CHeroLogBook::CHeroLogBookEntry::ECategory) const
+309	00896b60	?KickOffQuestStartScreen@GameCalls@@UBEXABVCCharString@@_N1@Z	void KickOffQuestStartScreen(CCharString const &, bool, bool) const
+310	00896d20	?KickOffDeathScreen@GameCalls@@UBEXXZ	void KickOffDeathScreen(void) const
+311	00896df0	?KickOffCreditsScreen@GameCalls@@UBEXAAVCCharString@@@Z	void KickOffCreditsScreen(CCharString &) const
+312	00896e60	?SetPreferredQuickAccessItem@GameCalls@@UBEXABVCCharString@@JJ@Z	void SetPreferredQuickAccessItem(CCharString const &, long, long) const
+313	00896ee0	?GetDeathRecoveryMarkerName@GameCalls@@UBE?AVCCharString@@XZ	CCharString GetDeathRecoveryMarkerName(void) const
+314	00896f60	?SetDeathRecoveryMarkerName@GameCalls@@UBEXABVCCharString@@@Z	void SetDeathRecoveryMarkerName(CCharString const &) const
+315	00896fd0	?ResetDeathRecoveryMarkerNameToDefault@GameCalls@@UBEXXZ	void ResetDeathRecoveryMarkerNameToDefault(void) const
+316	00897030	?IsToFailQuestOnDeath@GameCalls@@UBE_NXZ	bool IsToFailQuestOnDeath(void) const
+317	00897090	?SetWhetherToFailQuestOnDeath@GameCalls@@UBEX_N@Z	void SetWhetherToFailQuestOnDeath(bool) const
+318	008970f0	?ResetWhetherToFailQuestOnDeathToDefault@GameCalls@@UBEXXZ	void ResetWhetherToFailQuestOnDeathToDefault(void) const
+319	00891610	?GetMostRecentValidUsedTarget@GameCalls@@UBE?AUCScriptThing@@XZ	CScriptThing GetMostRecentValidUsedTarget(void) const
+320	00891680	?GetMostRecentValidUsedTargetName@GameCalls@@UBE?AVCCharString@@XZ	CCharString GetMostRecentValidUsedTargetName(void) const
+321	00891920	?DisplayQuestInfo@GameCalls@@UBEX_N@Z	void DisplayQuestInfo(bool) const
+322	00891940	?SetQuestInfoName@GameCalls@@UBEXPBD@Z	void SetQuestInfoName(char const *) const
+323	00891a00	?SetQuestInfoText@GameCalls@@UBEXPBD@Z	void SetQuestInfoText(char const *) const
+324	00891ac0	?AddQuestInfoBar@GameCalls@@UBEJMMABUCRGBColour@@0ABVCCharString@@1M@Z	long AddQuestInfoBar(float, float, CRGBColour const &, CRGBColour const &, CCharString const &, CCharString const &, float) const
+325	00891ad0	?AddQuestInfoBarHealth@GameCalls@@UBEJABUCScriptThing@@ABUCRGBColour@@ABVCCharString@@M@Z	long AddQuestInfoBarHealth(CScriptThing const &, CRGBColour const &, CCharString const &, float) const
+326	00891b20	?AddQuestInfoTimer@GameCalls@@UBEJABUCTimer@@ABVCCharString@@M@Z	long AddQuestInfoTimer(CTimer const &, CCharString const &, float) const
+328	00891b30	?AddQuestInfoCounter@GameCalls@@UBEJABUCCounter@@ABVCCharString@@M@Z	long AddQuestInfoCounter(CCounter const &, CCharString const &, float) const
+327	00891b40	?AddQuestInfoCounter@GameCalls@@UBEJABVCCharString@@JM@Z	long AddQuestInfoCounter(CCharString const &, long, float) const
+329	00891b50	?AddQuestInfoCounterList@GameCalls@@UBEJABVCCharString@@JM@Z	long AddQuestInfoCounterList(CCharString const &, long, float) const
+331	00891b60	?AddQuestInfoTick@GameCalls@@UBEJABVCCharString@@_NM@Z	long AddQuestInfoTick(CCharString const &, bool, float) const
+330	00891b70	?AddQuestInfoTick@GameCalls@@UBEJJ_NM@Z	long AddQuestInfoTick(EGameAction, bool, float) const
+332	00891b80	?UpdateQuestInfoBar@GameCalls@@UBEXJMMM@Z	void UpdateQuestInfoBar(long, float, float, float) const
+333	00891ba0	?ChangeQuestInfoBarColour@GameCalls@@UBEXJABUCRGBColour@@0@Z	void ChangeQuestInfoBarColour(long, CRGBColour const &, CRGBColour const &) const
+334	00891bb0	?UpdateQuestInfoTimer@GameCalls@@UBEXJM@Z	void UpdateQuestInfoTimer(long, float) const
+335	00891bd0	?UpdateQuestInfoCounter@GameCalls@@UBEXJJJ@Z	void UpdateQuestInfoCounter(long, long, long) const
+336	00891be0	?UpdateQuestInfoCounterList@GameCalls@@UBEXJJJ@Z	void UpdateQuestInfoCounterList(long, long, long) const
+337	00891bf0	?UpdateQuestInfoTick@GameCalls@@UBEXJ_N@Z	void UpdateQuestInfoTick(long, bool) const
+338	00891c10	?RemoveQuestInfoElement@GameCalls@@UBEXJ@Z	void RemoveQuestInfoElement(long) const
+339	00891c30	?RemoveAllQuestInfoElements@GameCalls@@UBEXXZ	void RemoveAllQuestInfoElements(void) const
+340	0088e210	?DisplayTime@GameCalls@@UBEX_N@Z	void DisplayTime(bool) const
+341	00891c40	?DisplayMoneyBag@GameCalls@@UBEX_N@Z	void DisplayMoneyBag(bool) const
+342	00891c60	?DisplayMiniGameInfo@GameCalls@@UBEX_NJ@Z	void DisplayMiniGameInfo(bool, EMiniGameType) const
+343	00891c80	?UpdateMiniGameInfoBar@GameCalls@@UBEXM@Z	void UpdateMiniGameInfoBar(float) const
+344	0088e220	?IsEntityPickPocketable@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityPickPocketable(CScriptThing const &) const
+345	0089a2d0	?IsEntityPickLockable@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityPickLockable(CScriptThing const &) const
+346	0089a330	?IsEntityStealable@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityStealable(CScriptThing const &) const
+347	00890470	?EntitySetAsPickPocketed@GameCalls@@UBEXABUCScriptThing@@@Z	void EntitySetAsPickPocketed(CScriptThing const &) const
+348	0089a390	?EntitySetAsPickLocked@GameCalls@@UBEXABUCScriptThing@@@Z	void EntitySetAsPickLocked(CScriptThing const &) const
+349	008904e0	?EntitySetAsStolen@GameCalls@@UBEXABUCScriptThing@@@Z	void EntitySetAsStolen(CScriptThing const &) const
+350	00891f50	?MiniMapAddMarker@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void MiniMapAddMarker(CScriptThing const &, CCharString const &) const
+351	00891fa0	?MiniMapSetMarkerGraphic@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void MiniMapSetMarkerGraphic(CScriptThing const &, CCharString const &) const
+352	00891ff0	?MiniMapRemoveMarker@GameCalls@@UBEXABUCScriptThing@@@Z	void MiniMapRemoveMarker(CScriptThing const &) const
+353	00892030	?MiniMapRemoveAllMarkers@GameCalls@@UBEXXZ	void MiniMapRemoveAllMarkers(void) const
+354	0088e3d0	?MiniMapAllowRouteBetweenRegions@GameCalls@@UBEXABVCCharString@@0_N@Z	void MiniMapAllowRouteBetweenRegions(CCharString const &, CCharString const &, bool) const
+355	0088e400	?MiniMapSetAsEnabled@GameCalls@@UBEX_N@Z	void MiniMapSetAsEnabled(bool) const
+356	0088e410	?EntitySetAsHiddenOnMiniMap@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsHiddenOnMiniMap(CScriptThing const &, bool) const
+357	00892050	?SetHUDEnabled@GameCalls@@UBEX_N@Z	void SetHUDEnabled(bool) const
+358	00892070	?TextEntryExists@GameCalls@@UBE_NABVCCharString@@@Z	bool TextEntryExists(CCharString const &) const
+359	008920c0	?GetValidTextEntryNameWithAttitude@GameCalls@@UBE?AVCCharString@@ABUCScriptThing@@ABV2@@Z	CCharString GetValidTextEntryNameWithAttitude(CScriptThing const &, CCharString const &) const
+360	0088e440	?SetThingHasInformation@GameCalls@@UBEXABUCScriptThing@@_N11@Z	void SetThingHasInformation(CScriptThing const &, bool, bool, bool) const
+361	0088e480	?ClearThingHasInformation@GameCalls@@UBEXABUCScriptThing@@@Z	void ClearThingHasInformation(CScriptThing const &) const
+362	0089b050	?EntitySetWillBeUsingNarrator@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntitySetWillBeUsingNarrator(CScriptThing const &, CCharString const &) const
+363	0089b0b0	?EntityResetAsPureAINarrator@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityResetAsPureAINarrator(CScriptThing const &) const
+364	008906c0	?AddNewConversation@GameCalls@@UBEJABUCScriptThing@@_N1@Z	long AddNewConversation(CScriptThing const &, bool, bool) const
+365	00890710	?AddPersonToConversation@GameCalls@@UBEXJABUCScriptThing@@@Z	void AddPersonToConversation(long, CScriptThing const &) const
+366	00890750	?AddLineToConversation@GameCalls@@UBEXJABVCCharString@@_NABUCScriptThing@@2@Z	void AddLineToConversation(long, CCharString const &, bool, CScriptThing const &, CScriptThing const &) const
+367	008907c0	?RemoveConversation@GameCalls@@UBEXJ_N@Z	void RemoveConversation(long, bool) const
+368	008907d0	?IsConversationActive@GameCalls@@UBE_NJ@Z	bool IsConversationActive(long) const
+369	0088f890	?PlayAVIMovie@GameCalls@@UBEXABVCCharString@@@Z	void PlayAVIMovie(CCharString const &) const
+370	0089b110	?StartMovieSequence@GameCalls@@UAEXABVCCharString@@AAUCScriptGameResourceObjectMovieBase@@@Z	void StartMovieSequence(CCharString const &, CScriptGameResourceObjectMovieBase &)
+371	0088e500	?FixMovieSequenceCamera@GameCalls@@UBEX_N@Z	void FixMovieSequenceCamera(bool) const
+372	008907e0	?FadeScreenOutUntilNextCallToFadeScreenIn@GameCalls@@UAEXMM@Z	void FadeScreenOutUntilNextCallToFadeScreenIn(float, float)
+373	00890820	?FadeScreenOut@GameCalls@@UAE_NMMUCRGBColour@@@Z	bool FadeScreenOut(float, float, CRGBColour)
+374	0088e4c0	?FadeScreenIn@GameCalls@@UAEXXZ	void FadeScreenIn(void)
+375	0088e4d0	?IsScreenFadingOut@GameCalls@@UBE_NXZ	bool IsScreenFadingOut(void) const
+376	0088e4f0	?Pause@GameCalls@@UBEXM@Z	void Pause(float) const
+377	0088e520	?EndCutFade@GameCalls@@UAEXXZ	void EndCutFade(void)
+378	006e7290	?EndLetterBox@GameCalls@@UAEXXZ	void EndLetterBox(void)
+379	00890ab0	?PauseAllNonScriptedEntities@GameCalls@@UAEX_N@Z	void PauseAllNonScriptedEntities(bool)
+380	00890b00	?PauseAllEntities@GameCalls@@UAEX_N@Z	void PauseAllEntities(bool)
+381	0088e910	?SetAllowScreenFadingOnNextRegionChange@GameCalls@@UAEX_N@Z	void SetAllowScreenFadingOnNextRegionChange(bool)
+382	0088e920	?SetAllowScreenFadingIfAlreadyFaded@GameCalls@@UAEX_N@Z	void SetAllowScreenFadingIfAlreadyFaded(bool)
+383	00890b50	?SetToKeepHeroAbilitiesDuringCutscenes@GameCalls@@UBEX_N@Z	void SetToKeepHeroAbilitiesDuringCutscenes(bool) const
+384	0088e930	?SetToDisplayTutorialsDuringCutscenes@GameCalls@@UBEX_N@Z	void SetToDisplayTutorialsDuringCutscenes(bool) const
+385	0089d600	?SetCutsceneMode@GameCalls@@UBEX_N0@Z	void SetCutsceneMode(bool, bool) const
+386	00892270	?IsInCutscene@GameCalls@@UBE_NXZ	bool IsInCutscene(void) const
+387	00892280	?SetCutsceneSkippable@GameCalls@@UBEX_N@Z	void SetCutsceneSkippable(bool) const
+388	008922a0	?SetCutsceneSkippableWhilePaused@GameCalls@@UBEX_N@Z	void SetCutsceneSkippableWhilePaused(bool) const
+389	008922c0	?SetCutsceneActionMode@GameCalls@@UBEX_NABVCCharString@@@Z	void SetCutsceneActionMode(bool, CCharString const &) const
+390	00890b70	?PreloadNewScene@GameCalls@@UBEXM@Z	void PreloadNewScene(float) const
+391	0088e950	?StartProgressDisplay@GameCalls@@UBEXXZ	void StartProgressDisplay(void) const
+392	0088e970	?StopProgressDisplay@GameCalls@@UBEXXZ	void StopProgressDisplay(void) const
+393	008922d0	?SetScreenMessagesEnabled@GameCalls@@UBEX_N@Z	void SetScreenMessagesEnabled(bool) const
+394	0088e980	?IsHeroControlledByPlayer@GameCalls@@UBE_NXZ	bool IsHeroControlledByPlayer(void) const
+395	0088e9e0	?IsInMovieSequence@GameCalls@@UBE_NXZ	bool IsInMovieSequence(void) const
+396	0089d690	?CancelAbilitiesForCutscene@GameCalls@@UBEXXZ	void CancelAbilitiesForCutscene(void) const
+397	0089d6f0	?ResumeAbilitiesForCutscene@GameCalls@@UBEXXZ	void ResumeAbilitiesForCutscene(void) const
+398	0089d750	?CancelUsingAbility@GameCalls@@UBEXJ@Z	void CancelUsingAbility(EHeroAbility) const
+399	0089d7c0	?SetAbilityAvailability@GameCalls@@UBEXJ_N@Z	void SetAbilityAvailability(EHeroAbility, bool) const
+400	00890b90	?SetEnvironmentalEffectsAlwaysUpdate@GameCalls@@UBEX_N@Z	void SetEnvironmentalEffectsAlwaysUpdate(bool) const
+401	00894ec0	?SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHidden@GameCalls@@UBEX_N@Z	void SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHidden(bool) const
+402	00894490	?RemoveDeadCreature@GameCalls@@UBEXABVCCharString@@@Z	void RemoveDeadCreature(CCharString const &) const
+403	0088ec90	?CameraSetCameraPreloadFlag@GameCalls@@UBEX_N@Z	void CameraSetCameraPreloadFlag(bool) const
+404	00892b50	?CameraCircleAroundThing@GameCalls@@UBEXABUCScriptThing@@ABUC3DVector@@M@Z	void CameraCircleAroundThing(CScriptThing const &, C3DVector const &, float) const
+405	00892c20	?CameraCircleAroundPos@GameCalls@@UBEXABUC3DVector@@0M@Z	void CameraCircleAroundPos(C3DVector const &, C3DVector const &, float) const
+406	00892410	?CameraMoveToPosAndLookAtPos@GameCalls@@UBEXABUC3DVector@@0M@Z	void CameraMoveToPosAndLookAtPos(C3DVector const &, C3DVector const &, float) const
+407	008924b0	?CameraMoveToPosAndLookAtThing@GameCalls@@UBEXABUC3DVector@@ABUCScriptThing@@M@Z	void CameraMoveToPosAndLookAtThing(C3DVector const &, CScriptThing const &, float) const
+409	00892530	?CameraMoveBetweenLookingAt@GameCalls@@UBEXABUC3DVector@@00MM@Z	void CameraMoveBetweenLookingAt(C3DVector const &, C3DVector const &, C3DVector const &, float, float) const
+408	008926d0	?CameraMoveBetweenLookingAt@GameCalls@@UBEXABUC3DVector@@0ABUCScriptThing@@MM@Z	void CameraMoveBetweenLookingAt(C3DVector const &, C3DVector const &, CScriptThing const &, float, float) const
+410	00892610	?CameraMoveBetweenLookFromAndLookTo@GameCalls@@UBEXABUC3DVector@@000M@Z	void CameraMoveBetweenLookFromAndLookTo(C3DVector const &, C3DVector const &, C3DVector const &, C3DVector const &, float) const
+414	008922f0	?CameraUseCameraPoint@GameCalls@@UBEXABVCCharString@@ABUCScriptThing@@MJJ@Z	void CameraUseCameraPoint(CCharString const &, CScriptThing const &, float, long, long) const
+413	00891070	?CameraUseCameraPoint@GameCalls@@UBEXABUCScriptThing@@0MJJ@Z	void CameraUseCameraPoint(CScriptThing const &, CScriptThing const &, float, long, long) const
+412	00892380	?CameraUseCameraPoint@GameCalls@@UBEXABVCCharString@@PBUC3DVector@@PBUCRightHandedSet@@MJJ@Z	void CameraUseCameraPoint(CCharString const &, C3DVector const *, CRightHandedSet const *, float, long, long) const
+411	0089e190	?CameraUseCameraPoint@GameCalls@@UBEXABUCScriptThing@@PBUC3DVector@@PBUCRightHandedSet@@MJJ@Z	void CameraUseCameraPoint(CScriptThing const &, C3DVector const *, CRightHandedSet const *, float, long, long) const
+415	0088edc0	?CameraDoConversation@GameCalls@@UBEXABUCScriptThing@@0J_N@Z	void CameraDoConversation(CScriptThing const &, CScriptThing const &, ECameraOp, bool) const
+416	00890ff0	?CameraDefault@GameCalls@@UAEXXZ	void CameraDefault(void)
+417	00890fc0	?CameraResetToViewBehindHero@GameCalls@@UAEXM@Z	void CameraResetToViewBehindHero(float)
+418	0088ecc0	?IsCameraInScriptedMode@GameCalls@@UBE_NXZ	bool IsCameraInScriptedMode(void) const
+419	0088eda0	?CameraUseScreenEffect@GameCalls@@UBEXMMM@Z	void CameraUseScreenEffect(float, float, float) const
+420	0088edb0	?CameraCancelScreenEffect@GameCalls@@UBEXXZ	void CameraCancelScreenEffect(void) const
+421	006e7300	?IsCameraPosOnScreen@GameCalls@@UBE_NABUC3DVector@@@Z	bool IsCameraPosOnScreen(C3DVector const &) const
+422	006e7340	?GetGameAngleXY@GameCalls@@UBEMXZ	float GetGameAngleXY(void) const
+423	0088ed20	?CameraEarthquakeIntensityAtPos@GameCalls@@UBEXABUC3DVector@@MM@Z	void CameraEarthquakeIntensityAtPos(C3DVector const &, float, float) const
+424	0088ece0	?CameraShake@GameCalls@@UBEXMM@Z	void CameraShake(float, float) const
+425	00895db0	?OpenDoor@GameCalls@@UBEXABUCScriptThing@@@Z	void OpenDoor(CScriptThing const &) const
+426	00895de0	?CloseDoor@GameCalls@@UBEXABUCScriptThing@@@Z	void CloseDoor(CScriptThing const &) const
+427	0088dfd0	?OpenHouseDoors@GameCalls@@UBEXABUCScriptThing@@@Z	void OpenHouseDoors(CScriptThing const &) const
+428	0088e000	?CloseHouseDoors@GameCalls@@UBEXABUCScriptThing@@@Z	void CloseHouseDoors(CScriptThing const &) const
+429	00895e10	?JamDoor@GameCalls@@UBEXABUCScriptThing@@@Z	void JamDoor(CScriptThing const &) const
+430	00895e70	?SetDoorTriggerType@GameCalls@@UBEXABUCScriptThing@@J@Z	void SetDoorTriggerType(CScriptThing const &, EDoorTriggerType) const
+431	0088e030	?OverrideAutomaticHouseLocking@GameCalls@@UBEXABUCScriptThing@@_N@Z	void OverrideAutomaticHouseLocking(CScriptThing const &, bool) const
+432	00895ed0	?SetHouseOwnedByPlayer@GameCalls@@UBEXABUCScriptThing@@_N1@Z	void SetHouseOwnedByPlayer(CScriptThing const &, bool, bool) const
+433	00896000	?SetBuyableHouseAsScripted@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetBuyableHouseAsScripted(CScriptThing const &, bool) const
+434	00896330	?IsChestOpen@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsChestOpen(CScriptThing const &) const
+435	00896390	?OpenChest@GameCalls@@UBE_NABUCScriptThing@@_N@Z	bool OpenChest(CScriptThing const &, bool) const
+436	00896660	?CloseChest@GameCalls@@UBEXABUCScriptThing@@@Z	void CloseChest(CScriptThing const &) const
+437	008966c0	?GetNumberOfKeysNeededToUnlockChest@GameCalls@@UBEJABUCScriptThing@@AAVCCharString@@@Z	long GetNumberOfKeysNeededToUnlockChest(CScriptThing const &, CCharString &) const
+438	00896730	?DisplayLockedChestMessage@GameCalls@@UBEXABUCScriptThing@@@Z	void DisplayLockedChestMessage(CScriptThing const &) const
+439	00896790	?SetTrophyAsMountable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetTrophyAsMountable(CScriptThing const &, bool) const
+440	00896060	?SetVillageLimbo@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetVillageLimbo(CScriptThing const &, bool) const
+441	0088fd90	?SetCreatureNotReload@GameCalls@@UBEXABUCScriptThing@@@Z	void SetCreatureNotReload(CScriptThing const &) const
+442	00896210	?IsSleepingTime@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsSleepingTime(CScriptThing const &) const
+443	00896270	?EnableGuards@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EnableGuards(CScriptThing const &, bool) const
+444	008962d0	?EnableVillagerDefTypes@GameCalls@@UBEXABUCScriptThing@@_NABVCCharString@@@Z	void EnableVillagerDefTypes(CScriptThing const &, bool, CCharString const &) const
+445	00896120	?TryToRespawnDefNamed@GameCalls@@UBE?AUCScriptThing@@ABU2@ABVCCharString@@ABUC3DVector@@@Z	CScriptThing TryToRespawnDefNamed(CScriptThing const &, CCharString const &, C3DVector const &) const
+446	008961b0	?ClearHeroEnemyOfGuards@GameCalls@@UBEXABUCScriptThing@@@Z	void ClearHeroEnemyOfGuards(CScriptThing const &) const
+447	008967f0	?SetThingAsUsable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetThingAsUsable(CScriptThing const &, bool) const
+448	00892e30	?SetThingHomeBuilding@GameCalls@@UBEXABUCScriptThing@@0@Z	void SetThingHomeBuilding(CScriptThing const &, CScriptThing const &) const
+449	0089fe20	?SetVillageAttitude@GameCalls@@UBEXABUCScriptThing@@J@Z	void SetVillageAttitude(CScriptThing const &, EScriptVillageAttitude) const
+450	0089feb0	?AddCrimeCommitted@GameCalls@@UBEXABUCScriptThing@@J_NPBU2@2J@Z	void AddCrimeCommitted(CScriptThing const &, ECrime, bool, CScriptThing const *, CScriptThing const *, EOpinionPostDeedType) const
+451	008a0260	?GiveThingBestEnemyTarget@GameCalls@@UBEXABUCScriptThing@@0@Z	void GiveThingBestEnemyTarget(CScriptThing const &, CScriptThing const &) const
+452	008a03f0	?ClearThingBestEnemyTarget@GameCalls@@UBEXABUCScriptThing@@@Z	void ClearThingBestEnemyTarget(CScriptThing const &) const
+453	0088fd00	?EntitySetInLimbo@GameCalls@@UBEXABUCScriptThing@@_N1@Z	void EntitySetInLimbo(CScriptThing const &, bool, bool) const
+454	0088fd60	?IsEntityInLimbo@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsEntityInLimbo(CScriptThing const &) const
+455	0089df70	?EntityGetShotStrikePos@GameCalls@@UBE_NABUCScriptThing@@AAUC3DVector@@@Z	bool EntityGetShotStrikePos(CScriptThing const &, C3DVector &) const
+456	00890e80	?EntitySetNegateAllHits@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetNegateAllHits(CScriptThing const &, bool) const
+457	00890ec0	?EntitySetEvadeAllHits@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetEvadeAllHits(CScriptThing const &, bool) const
+458	00890f00	?EntitySetAbleToBeEngagedInCombat@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAbleToBeEngagedInCombat(CScriptThing const &, bool) const
+459	0089dff0	?EntitySetAlwaysBlockAttacksFromThing@GameCalls@@UBEXABUCScriptThing@@0_N@Z	void EntitySetAlwaysBlockAttacksFromThing(CScriptThing const &, CScriptThing const &, bool) const
+460	008a8eb0	?EntitySetAttackThingImmediately@GameCalls@@UBEXABUCScriptThing@@0_N1@Z	void EntitySetAttackThingImmediately(CScriptThing const &, CScriptThing const &, bool, bool) const
+461	0089e080	?EntitySetCombatType@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntitySetCombatType(CScriptThing const &, CCharString const &) const
+462	00890f40	?EntityResetCombatTypeToDefault@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityResetCombatTypeToDefault(CScriptThing const &) const
+463	0089e130	?EntitySetMaxNumberOfAttackers@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetMaxNumberOfAttackers(CScriptThing const &, long) const
+464	0088ec70	?EntityClearMaxNumberOfAttackers@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityClearMaxNumberOfAttackers(CScriptThing const &) const
+465	00890690	?EntityAttachToScript@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntityAttachToScript(CScriptThing const &, CCharString const &) const
+466	0089aff0	?EntitySetCombatAbility@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntitySetCombatAbility(CScriptThing const &, float) const
+467	008a04c0	?EntitySetRangedTarget@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntitySetRangedTarget(CScriptThing const &, CScriptThing const &) const
+468	008a0540	?EntityClearRangedTarget@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityClearRangedTarget(CScriptThing const &) const
+469	008a05a0	?EntitySetTargetable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetTargetable(CScriptThing const &, bool) const
+470	008a0600	?EntitySetTargetingType@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetTargetingType(CScriptThing const &, ETargetingType) const
+471	008a0660	?EntitySetTargetingValidTargetWithoutLOS@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetTargetingValidTargetWithoutLOS(CScriptThing const &, bool) const
+472	0088e540	?EntityTeleportToThing@GameCalls@@UBEXABUCScriptThing@@0_N@Z	void EntityTeleportToThing(CScriptThing const &, CScriptThing const &, bool) const
+473	0089b780	?EntityTeleportToPosition@GameCalls@@UBEXABUCScriptThing@@ABUC3DVector@@M_N2@Z	void EntityTeleportToPosition(CScriptThing const &, C3DVector const &, float, bool, bool) const
+474	0089bdf0	?EntitySetFacingAngle@GameCalls@@UBEXABUCScriptThing@@M_N@Z	void EntitySetFacingAngle(CScriptThing const &, float, bool) const
+475	0088e620	?EntitySetFacingAngleTowardsThing@GameCalls@@UBEXABUCScriptThing@@0_N@Z	void EntitySetFacingAngleTowardsThing(CScriptThing const &, CScriptThing const &, bool) const
+476	0089bf80	?EntitySetPerceptionVariables@GameCalls@@UBEXABUCScriptThing@@MMM@Z	void EntitySetPerceptionVariables(CScriptThing const &, float, float, float) const
+477	0088e5a0	?SetThingPersistent@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetThingPersistent(CScriptThing const &, bool) const
+478	0089bb30	?EntitySetThingAsWantingMoney@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetThingAsWantingMoney(CScriptThing const &, long) const
+479	008a0200	?EntitySetAppearanceMorphSeed@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetAppearanceMorphSeed(CScriptThing const &, long) const
+480	008a0b10	?SetEntityAsRegionFollowing@GameCalls@@UBEXABUCScriptThing@@0_N@Z	void SetEntityAsRegionFollowing(CScriptThing const &, CScriptThing const &, bool) const
+481	0088f670	?SetEntityAsFollowingHeroThroughTeleporters@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetEntityAsFollowingHeroThroughTeleporters(CScriptThing const &, bool) const
+482	008a0bc0	?EntitySetAppearanceSeed@GameCalls@@UBEXABUCScriptThing@@K@Z	void EntitySetAppearanceSeed(CScriptThing const &, unsigned long) const
+483	008a0c10	?EntityGetAppearanceSeed@GameCalls@@UBEXABUCScriptThing@@AAK@Z	void EntityGetAppearanceSeed(CScriptThing const &, unsigned long &) const
+484	008a00e0	?EntitySetAsForSale@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsForSale(CScriptThing const &, bool) const
+485	008a0140	?EntitySetStockItemPrice@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetStockItemPrice(CScriptThing const &, long) const
+486	008a01a0	?EntityGetStockItemPrice@GameCalls@@UBEJABUCScriptThing@@@Z	long EntityGetStockItemPrice(CScriptThing const &) const
+487	0089bbc0	?EntityPlayObjectAnimation@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@_N@Z	void EntityPlayObjectAnimation(CScriptThing const &, CCharString const &, bool) const
+488	0088e750	?EntitySetMaxRunningSpeed@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntitySetMaxRunningSpeed(CScriptThing const &, float) const
+489	0088e7b0	?EntitySetMaxWalkingSpeed@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntitySetMaxWalkingSpeed(CScriptThing const &, float) const
+490	0088e810	?EntityResetMaxRunningSpeed@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityResetMaxRunningSpeed(CScriptThing const &) const
+491	0088e870	?EntityResetMaxWalkingSpeed@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityResetMaxWalkingSpeed(CScriptThing const &) const
+492	0089d3a0	?EntityAttachToVillage@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntityAttachToVillage(CScriptThing const &, CScriptThing const &) const
+493	008a8c60	?EntitySetAsSittingOnFloor@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsSittingOnFloor(CScriptThing const &, bool) const
+494	0089d420	?EntitySetAsHavingBoundHands@GameCalls@@UBEXAAUCScriptThing@@_N@Z	void EntitySetAsHavingBoundHands(CScriptThing &, bool) const
+495	0088e8d0	?EntitySetAsRemoveAllMovementBlockingModes@GameCalls@@UBEXAAUCScriptThing@@@Z	void EntitySetAsRemoveAllMovementBlockingModes(CScriptThing &) const
+496	0089d4c0	?EntitySetAsScared@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsScared(CScriptThing const &, bool) const
+497	0089d560	?EntitySetAsDrunk@GameCalls@@UBEXAAUCScriptThing@@_N@Z	void EntitySetAsDrunk(CScriptThing &, bool) const
+498	0089d830	?EntityForceToLookAtThing@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntityForceToLookAtThing(CScriptThing const &, CScriptThing const &) const
+499	0089d8b0	?EntityForceToLookAtCamera@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntityForceToLookAtCamera(CScriptThing const &, bool) const
+500	0089d910	?EntityForceToLookAtNothing@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityForceToLookAtNothing(CScriptThing const &) const
+501	0089d970	?EntityResetForceToLookAt@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityResetForceToLookAt(CScriptThing const &) const
+502	0088e5f0	?EntitySetShotAccuracyPercentage@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetShotAccuracyPercentage(CScriptThing const &, long) const
+503	00892220	?EntityGetStandingOnThing@GameCalls@@UBE?AUCScriptThing@@ABU2@@Z	CScriptThing EntityGetStandingOnThing(CScriptThing const &) const
+504	0089bc50	?EntityGetStandingInsideBuilding@GameCalls@@UBE?AUCScriptThing@@ABU2@@Z	CScriptThing EntityGetStandingInsideBuilding(CScriptThing const &) const
+505	0089d9d0	?EntityDropGenericBox@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityDropGenericBox(CScriptThing const &) const
+506	00890ba0	?EntitySheatheWeapons@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySheatheWeapons(CScriptThing const &, bool) const
+507	00890c10	?EntityUnsheatheWeapons@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntityUnsheatheWeapons(CScriptThing const &, bool) const
+508	00890c80	?EntityUnsheatheMeleeWeapon@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntityUnsheatheMeleeWeapon(CScriptThing const &, bool) const
+509	00890d80	?EntityUnsheatheRangedWeapon@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntityUnsheatheRangedWeapon(CScriptThing const &, bool) const
+510	0089da70	?EntitySetAlpha@GameCalls@@UBEXABUCScriptThing@@M_N@Z	void EntitySetAlpha(CScriptThing const &, float, bool) const
+511	0088e9f0	?EntitySetAsDrawable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsDrawable(CScriptThing const &, bool) const
+512	0088ea20	?EntitySetCutsceneBehaviour@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetCutsceneBehaviour(CScriptThing const &, ECutsceneBehaviour) const
+513	0088ea50	?EntityGetSex@GameCalls@@UBEJABUCScriptThing@@@Z	ESex EntityGetSex(CScriptThing const &) const
+514	0089dbb0	?EntitySetAsAbleToWalkThroughSolidObjects@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsAbleToWalkThroughSolidObjects(CScriptThing const &, bool) const
+515	0088ea90	?EntitySetAsRespondToHit@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsRespondToHit(CScriptThing const &, bool) const
+516	0088ead0	?EntitySetAsDamageable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsDamageable(CScriptThing const &, bool) const
+517	0088eb30	?EntitySetAsKillable@GameCalls@@UBEXABUCScriptThing@@_N1@Z	void EntitySetAsKillable(CScriptThing const &, bool, bool) const
+518	0089dc10	?EntitySetAsLocked@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsLocked(CScriptThing const &, bool) const
+519	008a8e40	?EntityDecapitate@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityDecapitate(CScriptThing const &) const
+520	0089dc70	?EntityGiveGold@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntityGiveGold(CScriptThing const &, long) const
+521	0089dcd0	?EntitySetAllowBossPhaseChanges@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAllowBossPhaseChanges(CScriptThing const &, bool) const
+522	0089dd30	?EntityGetBossPhase@GameCalls@@UBEJABUCScriptThing@@@Z	long EntityGetBossPhase(CScriptThing const &) const
+523	0089dd90	?EntitySetBossPhase@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetBossPhase(CScriptThing const &, long) const
+524	0089ddf0	?EntityResetCreatureMode@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityResetCreatureMode(CScriptThing const &) const
+525	00895010	?EntitySetAsReceivingEvents@GameCalls@@UBE_NABUCScriptThing@@_N@Z	bool EntitySetAsReceivingEvents(CScriptThing const &, bool) const
+526	0088ebc0	?EntitySetAsToAddToComboMultiplierWhenHit@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsToAddToComboMultiplierWhenHit(CScriptThing const &, bool) const
+527	0088ebf0	?EntitySetAsToAddToStatChangesWhenHit@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsToAddToStatChangesWhenHit(CScriptThing const &, bool) const
+528	0089de50	?EntityLeaveCombatStance@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityLeaveCombatStance(CScriptThing const &) const
+529	0088ec20	?EntitySetAsUseMovementInActions@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsUseMovementInActions(CScriptThing const &, bool) const
+530	0089deb0	?EntitySetAsDisplayingEmoteIcon@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsDisplayingEmoteIcon(CScriptThing const &, bool) const
+531	00891120	?EntitySetAsCollidableToThings@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAsCollidableToThings(CScriptThing const &, bool) const
+532	0088f4d0	?EntityEnableGravity@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntityEnableGravity(CScriptThing const &, bool) const
+533	008a06c0	?EntitySetLightAsOn@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetLightAsOn(CScriptThing const &, bool) const
+534	008a0720	?EntityFadeOut@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntityFadeOut(CScriptThing const &, float) const
+535	008a07c0	?EntityFadeIn@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntityFadeIn(CScriptThing const &, float) const
+536	0088f500	?EntityBeginLoadingAnimation@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntityBeginLoadingAnimation(CScriptThing const &, CCharString const &) const
+537	0088f530	?EntityBeginLoadingBasicAnimations@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityBeginLoadingBasicAnimations(CScriptThing const &) const
+538	008a9320	?EntityCastForcePush@GameCalls@@UBE_NABUCScriptThing@@_N@Z	bool EntityCastForcePush(CScriptThing const &, bool) const
+539	0088f560	?EntityCastLightningAtTarget@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntityCastLightningAtTarget(CScriptThing const &, CScriptThing const &) const
+540	00894aa0	?BeginLoadingMesh@GameCalls@@UBEXABVCCharString@@@Z	void BeginLoadingMesh(CCharString const &) const
+541	008a93a0	?EntityWillTeleportToArea@GameCalls@@UBE_NABUCScriptThing@@UC3DVector@@MM@Z	bool EntityWillTeleportToArea(CScriptThing const &, C3DVector, float, float) const
+542	008a08a0	?EntityStartScreamerSuperAttackThing@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntityStartScreamerSuperAttackThing(CScriptThing const &, CScriptThing const &) const
+543	008a0950	?EntityEndScreamerSuperAttackThing@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityEndScreamerSuperAttackThing(CScriptThing const &) const
+544	0088ec60	?SetHeroGuideToShowQuestCardsWhenSpokenTo@GameCalls@@UAEX_N@Z	void SetHeroGuideToShowQuestCardsWhenSpokenTo(bool)
+545	0089df10	?SetLightColour@GameCalls@@UBEXABUCScriptThing@@ABUCRGBColour@@@Z	void SetLightColour(CScriptThing const &, CRGBColour const &) const
+546	008a9020	?CreatureGeneratorSetFamily@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void CreatureGeneratorSetFamily(CScriptThing const &, CCharString const &) const
+547	0089e8e0	?CreatureGeneratorTrigger@GameCalls@@UBEXABUCScriptThing@@@Z	void CreatureGeneratorTrigger(CScriptThing const &) const
+548	0089e950	?CreatureGeneratorSetAlwaysCreateCreaturesOnTrigger@GameCalls@@UBEXABUCScriptThing@@_N@Z	void CreatureGeneratorSetAlwaysCreateCreaturesOnTrigger(CScriptThing const &, bool) const
+549	0089e9c0	?CreatureGeneratorIsDepleted@GameCalls@@UBE_NABUCScriptThing@@@Z	bool CreatureGeneratorIsDepleted(CScriptThing const &) const
+550	0089ea30	?CreatureGeneratorIsDestroyed@GameCalls@@UBE_NABUCScriptThing@@@Z	bool CreatureGeneratorIsDestroyed(CScriptThing const &) const
+551	0089eaa0	?CreatureGeneratorSetGeneratedCreatureScriptName@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void CreatureGeneratorSetGeneratedCreatureScriptName(CScriptThing const &, CCharString const &) const
+552	0089eb10	?CreatureGeneratorSetNumTriggers@GameCalls@@UBEXABUCScriptThing@@J@Z	void CreatureGeneratorSetNumTriggers(CScriptThing const &, long) const
+553	0089eb80	?CreatureGeneratorGetNumGeneratedCreatures@GameCalls@@UBEJABUCScriptThing@@@Z	long CreatureGeneratorGetNumGeneratedCreatures(CScriptThing const &) const
+554	0089ebf0	?CreatureGeneratorAreAllCreaturesAlive@GameCalls@@UBE_NABUCScriptThing@@@Z	bool CreatureGeneratorAreAllCreaturesAlive(CScriptThing const &) const
+555	0089ec60	?CreatureGeneratorAddTriggerer@GameCalls@@UBEXABUCScriptThing@@0@Z	void CreatureGeneratorAddTriggerer(CScriptThing const &, CScriptThing const &) const
+556	0089ecc0	?CreatureGeneratorRemoveTriggerer@GameCalls@@UBEXABUCScriptThing@@0@Z	void CreatureGeneratorRemoveTriggerer(CScriptThing const &, CScriptThing const &) const
+557	0089ed20	?SetCreatureGeneratorEnabled@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetCreatureGeneratorEnabled(CScriptThing const &, bool) const
+558	00892cf0	?SetCreatureGeneratorsEnabled@GameCalls@@UBEXABVCCharString@@_N@Z	void SetCreatureGeneratorsEnabled(CCharString const &, bool) const
+559	00892d70	?SetCreatureGeneratorsEnabledDuringScript@GameCalls@@UBEXABVCCharString@@_N@Z	void SetCreatureGeneratorsEnabledDuringScript(CCharString const &, bool) const
+560	0088f400	?SetCreatureGeneratorsCreatureGroupAsEnabled@GameCalls@@UBEXJ_N@Z	void SetCreatureGeneratorsCreatureGroupAsEnabled(ECreatureGroup, bool) const
+561	00892d80	?IsCreatureGenerationEnabledForRegion@GameCalls@@UBE_NABVCCharString@@@Z	bool IsCreatureGenerationEnabledForRegion(CCharString const &) const
+562	0089ed80	?IsCreatureFlying@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsCreatureFlying(CScriptThing const &) const
+563	0089ee00	?SetTeleporterAsActive@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetTeleporterAsActive(CScriptThing const &, bool) const
+564	0089ee60	?IsTeleporterActive@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsTeleporterActive(CScriptThing const &) const
+565	0088f410	?SetTeleportingAsActive@GameCalls@@UBEX_N@Z	void SetTeleportingAsActive(bool) const
+566	0088f420	?IsTeleportingActive@GameCalls@@UBE_NXZ	bool IsTeleportingActive(void) const
+567	0089eec0	?SetRegionExitAsActive@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetRegionExitAsActive(CScriptThing const &, bool) const
+568	0089ef00	?SetRegionEntranceAsActive@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetRegionEntranceAsActive(CScriptThing const &, bool) const
+569	0088f430	?SetRegionTextDisplayAsActive@GameCalls@@UBEX_N@Z	void SetRegionTextDisplayAsActive(bool) const
+570	0088f440	?SetHeroSleepingAsEnabled@GameCalls@@UBEX_N@Z	void SetHeroSleepingAsEnabled(bool) const
+571	0088f450	?IsHeroSleepingEnabled@GameCalls@@UBE_NXZ	bool IsHeroSleepingEnabled(void) const
+572	0088f460	?SetExperienceSpendingAsEnabled@GameCalls@@UBEX_N@Z	void SetExperienceSpendingAsEnabled(bool) const
+573	0089ef30	?SetMoralityChangingAsEnabled@GameCalls@@UBEX_N@Z	void SetMoralityChangingAsEnabled(bool) const
+574	0088f470	?SetSummonerDeathExplosionAffectsHero@GameCalls@@UBEX_N@Z	void SetSummonerDeathExplosionAffectsHero(bool) const
+575	0089ef90	?GetNearestEnabledDiggingSpot@GameCalls@@UBE?AUCScriptThing@@ABU2@@Z	CScriptThing GetNearestEnabledDiggingSpot(CScriptThing const &) const
+576	0089f1e0	?IsDiggingSpotEnabled@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsDiggingSpotEnabled(CScriptThing const &) const
+577	0089f240	?IsDiggingSpotHidden@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsDiggingSpotHidden(CScriptThing const &) const
+578	0089f2a0	?SetDiggingSpotAsHidden@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetDiggingSpotAsHidden(CScriptThing const &, bool) const
+579	006e7920	?CheckForCameraMessage@GameCalls@@UBE_NABVCCharString@@@Z	bool CheckForCameraMessage(CCharString const &) const
+580	006e7820	?WaitForCameraMessage@GameCalls@@UBEXABVCCharString@@@Z	void WaitForCameraMessage(CCharString const &) const
+581	008a9610	?SetThingAsConscious@GameCalls@@UBEXABUCScriptThing@@_NABVCCharString@@@Z	void SetThingAsConscious(CScriptThing const &, bool, CCharString const &) const
+582	0089bcd0	?SetFireToThing@GameCalls@@UBEXABUCScriptThing@@@Z	void SetFireToThing(CScriptThing const &) const
+583	0089bd30	?ExtinguishFiresOnThing@GameCalls@@UBEXABUCScriptThing@@@Z	void ExtinguishFiresOnThing(CScriptThing const &) const
+584	0089bd90	?IsThingOnFire@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsThingOnFire(CScriptThing const &) const
+585	0089e780	?AddItemToContainer@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void AddItemToContainer(CScriptThing const &, CCharString const &) const
+586	0089e810	?RemoveItemFromContainer@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void RemoveItemFromContainer(CScriptThing const &, CCharString const &) const
+587	0089e880	?EntitySetDeathContainerAsEnabled@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetDeathContainerAsEnabled(CScriptThing const &, bool) const
+588	008a8f20	?GetItemDefNamesFromContainer@GameCalls@@UBEXABUCScriptThing@@AAV?$vector@UCCharString@@V?$allocator@UCCharString@@@std@@@std@@@Z	void GetItemDefNamesFromContainer(CScriptThing const &, std::vector<CCharString, std::allocator<CCharString> > &) const
+589	00894b90	?SetCreatureBrain@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void SetCreatureBrain(CScriptThing const &, CCharString const &) const
+590	0088f6b0	?EntitySetStategroupEnabled@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@_N@Z	void EntitySetStategroupEnabled(CScriptThing const &, CCharString const &, bool) const
+591	0088f6e0	?EntitySetAllStategroupsEnabled@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetAllStategroupsEnabled(CScriptThing const &, bool) const
+592	0088f710	?EntitySetCombatEnabled@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetCombatEnabled(CScriptThing const &, bool) const
+593	0088f7d0	?EntitySetSleepEnabled@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetSleepEnabled(CScriptThing const &, bool) const
+594	0088f810	?EntitySetOpinionReactionsEnabled@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetOpinionReactionsEnabled(CScriptThing const &, bool) const
+595	0088f850	?EntitySetDeedReactionsEnabled@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntitySetDeedReactionsEnabled(CScriptThing const &, bool) const
+596	008a0cb0	?DebugGetAllTextEntriesForTargetedThing@GameCalls@@UBEXAAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@Z	void DebugGetAllTextEntriesForTargetedThing(std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long> > &) const
+597	0089c000	?EntitySetThingAsEnemyOfThing@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntitySetThingAsEnemyOfThing(CScriptThing const &, CScriptThing const &) const
+598	0089c080	?EntityUnsetThingAsEnemyOfThing@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntityUnsetThingAsEnemyOfThing(CScriptThing const &, CScriptThing const &) const
+599	008a7ec0	?EntitySetThingAsAllyOfThing@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntitySetThingAsAllyOfThing(CScriptThing const &, CScriptThing const &) const
+600	008a7ee0	?EntityUnsetThingAsAllyOfThing@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntityUnsetThingAsAllyOfThing(CScriptThing const &, CScriptThing const &) const
+601	0089c190	?EntitySetInFaction@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntitySetInFaction(CScriptThing const &, CCharString const &) const
+602	00890870	?SetFactionAsAlliedToFaction@GameCalls@@UBEXABVCCharString@@0@Z	void SetFactionAsAlliedToFaction(CCharString const &, CCharString const &) const
+603	008908c0	?SetFactionAsNeutralToFaction@GameCalls@@UBEXABVCCharString@@0@Z	void SetFactionAsNeutralToFaction(CCharString const &, CCharString const &) const
+604	00890910	?SetFactionAsEnemyToFaction@GameCalls@@UBEXABVCCharString@@0@Z	void SetFactionAsEnemyToFaction(CCharString const &, CCharString const &) const
+605	0088e6f0	?AreEntitiesEnemies@GameCalls@@UBE_NABUCScriptThing@@0@Z	bool AreEntitiesEnemies(CScriptThing const &, CScriptThing const &) const
+606	00890960	?GetNextInOpinionAttitudeGraph@GameCalls@@UBEJJ@Z	EOpinionAttitudeType GetNextInOpinionAttitudeGraph(EOpinionAttitudeType) const
+607	00890970	?GetOpinionAttitudeAsString@GameCalls@@UBEXJAAVCCharString@@@Z	void GetOpinionAttitudeAsString(EOpinionAttitudeType, CCharString &) const
+608	00890990	?EntityGetOpinionAttitudeToPlayer@GameCalls@@UBEJABUCScriptThing@@@Z	EOpinionAttitudeType EntityGetOpinionAttitudeToPlayer(CScriptThing const &) const
+609	008909c0	?EntityGetOpinionAttitudeToPlayerAsString@GameCalls@@UBEXABUCScriptThing@@AAVCCharString@@@Z	void EntityGetOpinionAttitudeToPlayerAsString(CScriptThing const &, CCharString &) const
+610	008909f0	?EntityGetOpinionOfPlayer@GameCalls@@UBEMABUCScriptThing@@J@Z	float EntityGetOpinionOfPlayer(CScriptThing const &, EOpinion) const
+612	0089c1f0	?EntitySetOpinionReactionMask@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetOpinionReactionMask(CScriptThing const &, long) const
+611	0089c240	?EntitySetOpinionReactionMask@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntitySetOpinionReactionMask(CScriptThing const &, CCharString const &) const
+614	0089c290	?EntitySetOpinionDeedMask@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetOpinionDeedMask(CScriptThing const &, long) const
+613	0089c2e0	?EntitySetOpinionDeedMask@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntitySetOpinionDeedMask(CScriptThing const &, CCharString const &) const
+615	0089c330	?EntitySetOpinionDeedTypeEnabled@GameCalls@@UBEXABUCScriptThing@@J_N@Z	void EntitySetOpinionDeedTypeEnabled(CScriptThing const &, EOpinionDeedType, bool) const
+616	0089c380	?EntitySetOpinionAttitudeEnabled@GameCalls@@UBEXABUCScriptThing@@J_N@Z	void EntitySetOpinionAttitudeEnabled(CScriptThing const &, EOpinionAttitudeType, bool) const
+617	0089c3d0	?EntitySetOpinionReactionEnabled@GameCalls@@UBEXABUCScriptThing@@J_N@Z	void EntitySetOpinionReactionEnabled(CScriptThing const &, EOpinionReactionType, bool) const
+619	0089c420	?EntitySetPersonalityOverride@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntitySetPersonalityOverride(CScriptThing const &, CCharString const &) const
+618	0089c470	?EntitySetPersonalityOverride@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetPersonalityOverride(CScriptThing const &, long) const
+620	0089c4c0	?EntityClearPersonalityOverride@GameCalls@@UBEXABUCScriptThing@@@Z	void EntityClearPersonalityOverride(CScriptThing const &) const
+622	00890a20	?EntitySetAsOpinionSource@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void EntitySetAsOpinionSource(CScriptThing const &, CCharString const &) const
+621	00890a50	?EntitySetAsOpinionSource@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntitySetAsOpinionSource(CScriptThing const &, long) const
+623	00890a80	?EntityUnsetAsOpinionSource@GameCalls@@UBEXABUCScriptThing@@_N@Z	void EntityUnsetAsOpinionSource(CScriptThing const &, bool) const
+624	00894e60	?OpinionSourceSetAsExclusive@GameCalls@@UBEXABUCScriptThing@@_N@Z	void OpinionSourceSetAsExclusive(CScriptThing const &, bool) const
+625	0089c510	?OpinionSourceSetAsAttentionGrabbing@GameCalls@@UBEXABUCScriptThing@@_N@Z	void OpinionSourceSetAsAttentionGrabbing(CScriptThing const &, bool) const
+626	0089c560	?EntityPostOpinionDeedToAll@GameCalls@@UBEXABUCScriptThing@@J@Z	void EntityPostOpinionDeedToAll(CScriptThing const &, EOpinionDeedType) const
+627	0089c670	?EntityPostOpinionDeedToRecipient@GameCalls@@UBEXABUCScriptThing@@J0@Z	void EntityPostOpinionDeedToRecipient(CScriptThing const &, EOpinionDeedType, CScriptThing const &) const
+628	0089c710	?EntityPostOpinionDeedToRecipientVillage@GameCalls@@UBEXABUCScriptThing@@J0@Z	void EntityPostOpinionDeedToRecipientVillage(CScriptThing const &, EOpinionDeedType, CScriptThing const &) const
+629	0089c7b0	?EntityPostOpinionDeedKeepSearchingForWitnesses@GameCalls@@UBEJABUCScriptThing@@J0@Z	long EntityPostOpinionDeedKeepSearchingForWitnesses(CScriptThing const &, EOpinionDeedType, CScriptThing const &) const
+630	0089c850	?RemoveOpinionDeedStillSearchingForWitnesses@GameCalls@@UBEXABUCScriptThing@@J@Z	void RemoveOpinionDeedStillSearchingForWitnesses(CScriptThing const &, long) const
+631	0089c8a0	?IsDeedWitnessed@GameCalls@@UBE_NJ@Z	bool IsDeedWitnessed(long) const
+632	0089cd10	?CanThingBe_Seen_ByOtherThing@GameCalls@@UBE_NABUCScriptThing@@0@Z	bool CanThingBe_Seen_ByOtherThing(CScriptThing const &, CScriptThing const &) const
+633	0089cd30	?CanThingBe_NearlySeen_ByOtherThing@GameCalls@@UBE_NABUCScriptThing@@0@Z	bool CanThingBe_NearlySeen_ByOtherThing(CScriptThing const &, CScriptThing const &) const
+634	0089cd50	?CanThingBe_Smelled_ByOtherThing@GameCalls@@UBE_NABUCScriptThing@@0@Z	bool CanThingBe_Smelled_ByOtherThing(CScriptThing const &, CScriptThing const &) const
+635	0089cd70	?CanThingBe_Heard_ByOtherThing@GameCalls@@UBE_NABUCScriptThing@@0@Z	bool CanThingBe_Heard_ByOtherThing(CScriptThing const &, CScriptThing const &) const
+636	0089ce70	?IsThingAwareOfOtherThingInAnyWay@GameCalls@@UBE_NABUCScriptThing@@0@Z	bool IsThingAwareOfOtherThingInAnyWay(CScriptThing const &, CScriptThing const &) const
+637	0089d0e0	?EntitySetAsAwareOfThing@GameCalls@@UBEXABUCScriptThing@@0@Z	void EntitySetAsAwareOfThing(CScriptThing const &, CScriptThing const &) const
+638	0089d160	?EntitySetSoundRadius@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntitySetSoundRadius(CScriptThing const &, float) const
+639	0089d1c0	?EntitySetSmellRadius@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntitySetSmellRadius(CScriptThing const &, float) const
+640	0089d220	?EntitySetSightRadius@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntitySetSightRadius(CScriptThing const &, float) const
+641	0089d280	?EntitySetExtendedSightRadius@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntitySetExtendedSightRadius(CScriptThing const &, float) const
+642	0089d2e0	?EntitySetGiveUpChaseRadius@GameCalls@@UBEXABUCScriptThing@@M@Z	void EntitySetGiveUpChaseRadius(CScriptThing const &, float) const
+643	0089d340	?EntityGetHearingRadius@GameCalls@@UBEMABUCScriptThing@@@Z	float EntityGetHearingRadius(CScriptThing const &) const
+644	00895090	?ManuallyTriggerTrap@GameCalls@@UBE_NABUCScriptThing@@@Z	bool ManuallyTriggerTrap(CScriptThing const &) const
+645	008950e0	?ManuallyResetTrap@GameCalls@@UBE_NABUCScriptThing@@@Z	bool ManuallyResetTrap(CScriptThing const &) const
+646	0088fdc0	?SetTimeOfDay@GameCalls@@UBEXM@Z	void SetTimeOfDay(float) const
+647	0088fe30	?GetTimeOfDay@GameCalls@@UBEJXZ	long GetTimeOfDay(void) const
+648	0088fe80	?SetTimeAsStopped@GameCalls@@UBEX_NAAJ@Z	void SetTimeAsStopped(bool, long &) const
+649	0088fe90	?FastForwardTimeTo@GameCalls@@UBEXMM@Z	void FastForwardTimeTo(float, float) const
+650	0088fe40	?IsTimeOfDayBetween@GameCalls@@UBE_NJJ@Z	bool IsTimeOfDayBetween(long, long) const
+651	0088fe50	?GetDayOfWeek@GameCalls@@UBEJXZ	long GetDayOfWeek(void) const
+652	0088fe70	?GetDayCount@GameCalls@@UBEJXZ	long GetDayCount(void) const
+653	0088e070	?GetWorldFrame@GameCalls@@UBEJXZ	long GetWorldFrame(void) const
+654	0088e080	?GetConstantFPS@GameCalls@@UBEJXZ	long GetConstantFPS(void) const
+655	00891880	?GetActiveQuestName@GameCalls@@UBE?AVCCharString@@XZ	CCharString GetActiveQuestName(void) const
+656	0088fee0	?TransitionToTheme@GameCalls@@UBEXABVCCharString@@M@Z	void TransitionToTheme(CCharString const &, float) const
+657	0088ff10	?ResetToDefaultTheme@GameCalls@@UBEXM@Z	void ResetToDefaultTheme(float) const
+658	0088ff30	?TransitionToThemeAllInternals@GameCalls@@UBEXABVCCharString@@M@Z	void TransitionToThemeAllInternals(CCharString const &, float) const
+659	0088ff80	?ResetToDefaultThemeAllInternals@GameCalls@@UBEXM@Z	void ResetToDefaultThemeAllInternals(float) const
+660	0088ffb0	?TransitionToThemeExternals@GameCalls@@UBEXABVCCharString@@M@Z	void TransitionToThemeExternals(CCharString const &, float) const
+661	0088fff0	?ResetToDefaultThemeExternals@GameCalls@@UBEXM@Z	void ResetToDefaultThemeExternals(float) const
+662	00890010	?SetEnvironmentThemeWeightAllChannels@GameCalls@@UBEXABVCCharString@@M@Z	void SetEnvironmentThemeWeightAllChannels(CCharString const &, float) const
+663	00890040	?SetEnvironmentThemeWeightAllInternals@GameCalls@@UBEXABVCCharString@@M@Z	void SetEnvironmentThemeWeightAllInternals(CCharString const &, float) const
+664	00890090	?SetEnvironmentThemeWeightExternals@GameCalls@@UBEXABVCCharString@@M@Z	void SetEnvironmentThemeWeightExternals(CCharString const &, float) const
+665	0088e0b0	?SetSoundThemesAsEnabledForRegion@GameCalls@@UBEXABVCCharString@@_N@Z	void SetSoundThemesAsEnabledForRegion(CCharString const &, bool) const
+666	0088e090	?SetAllSoundsAsMuted@GameCalls@@UBEX_N@Z	void SetAllSoundsAsMuted(bool) const
+668	008900d0	?RadialBlurFadeTo@GameCalls@@UBEPAXMUC3DVector@@M0MMM@Z	void * RadialBlurFadeTo(float, C3DVector, float, C3DVector, float, float, float) const
+667	00890110	?RadialBlurFadeTo@GameCalls@@UBEPAXMMMMMMM@Z	void * RadialBlurFadeTo(float, float, float, float, float, float, float) const
+669	00890150	?RadialBlurFadeOut@GameCalls@@UBEXMPAX@Z	void RadialBlurFadeOut(float, void *) const
+670	00890170	?IsRadialBlurFadeActive@GameCalls@@UBE_NXZ	bool IsRadialBlurFadeActive(void) const
+671	00890180	?CancelRadialBlurFade@GameCalls@@UBEXXZ	void CancelRadialBlurFade(void) const
+672	008901a0	?RadialBlurSetCenterWorldPos@GameCalls@@UBEXPAXABUC3DVector@@@Z	void RadialBlurSetCenterWorldPos(void *, C3DVector const &) const
+673	008901c0	?DisplacementMonochromeEffectColourFadeTo@GameCalls@@UBEPAXMABUCRGBFloatColour@@@Z	void * DisplacementMonochromeEffectColourFadeTo(float, CRGBFloatColour const &) const
+674	008901e0	?DisplacementMonochromeEffectColourFadeOut@GameCalls@@UBEXMPAX@Z	void DisplacementMonochromeEffectColourFadeOut(float, void *) const
+675	008a9880	?ScreenFilterFadeTo@GameCalls@@UBEPAXMMMMMABUCRGBFloatColour@@ABV?$vector@UCScreenFilterSThingByPass@@V?$allocator@UCScreenFilterSThingByPass@@@std@@@std@@@Z	void * ScreenFilterFadeTo(float, float, float, float, float, CRGBFloatColour const &, std::vector<CScreenFilterSThingByPass, std::allocator<CScreenFilterSThingByPass> > const &) const
+676	00890200	?ScreenFilterFadeOut@GameCalls@@UBEXMPAX@Z	void ScreenFilterFadeOut(float, void *) const
+677	008a99f0	?SetThingAndCarriedItemsNotAffectedByScreenFilter@GameCalls@@UBEXAAUCScriptThing@@PAX@Z	void SetThingAndCarriedItemsNotAffectedByScreenFilter(CScriptThing &, void *) const
+678	00897150	?UnSetThingAndCarriedItemsNotAffectedByScreenFilter@GameCalls@@UBEXAAUCScriptThing@@@Z	void UnSetThingAndCarriedItemsNotAffectedByScreenFilter(CScriptThing &) const
+679	00894bf0	?IsGiftRomantic@GameCalls@@UBE_NABVCCharString@@@Z	bool IsGiftRomantic(CCharString const &) const
+680	00894c90	?IsGiftFriendly@GameCalls@@UBE_NABVCCharString@@@Z	bool IsGiftFriendly(CCharString const &) const
+681	00894d30	?IsGiftOffensive@GameCalls@@UBE_NABVCCharString@@@Z	bool IsGiftOffensive(CCharString const &) const
+682	008a0e80	?IsThingABed@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsThingABed(CScriptThing const &) const
+683	008a0eb0	?IsThingAChest@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsThingAChest(CScriptThing const &) const
+684	008a0ee0	?IsThingADoor@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsThingADoor(CScriptThing const &) const
+685	008a0f10	?IsThingSmashable@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsThingSmashable(CScriptThing const &) const
+686	008a0f40	?IsThingSearchable@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsThingSearchable(CScriptThing const &) const
+687	0088f480	?ApplyScriptBrush@GameCalls@@UBEXABVCCharString@@@Z	void ApplyScriptBrush(CCharString const &) const
+688	0088f4a0	?EnableDecals@GameCalls@@UBEX_N@Z	void EnableDecals(bool) const
+689	008a09b0	?PlayCriteriaSoundOnThing@GameCalls@@UBEKABUCScriptThing@@ABVCCharString@@@Z	unsigned long PlayCriteriaSoundOnThing(CScriptThing const &, CCharString const &) const
+690	008a0a20	?PlaySoundOnThing@GameCalls@@UBEKABUCScriptThing@@ABVCCharString@@@Z	unsigned long PlaySoundOnThing(CScriptThing const &, CCharString const &) const
+691	00891170	?PlaySoundAtPos@GameCalls@@UBEKABUC3DVector@@ABVCCharString@@@Z	unsigned long PlaySoundAtPos(C3DVector const &, CCharString const &) const
+692	0088f570	?Play2DSound@GameCalls@@UBEKABVCCharString@@@Z	unsigned long Play2DSound(CCharString const &) const
+693	0088f610	?IsSoundPlaying@GameCalls@@UBE_NK@Z	bool IsSoundPlaying(unsigned long) const
+694	0088f620	?EnableSounds@GameCalls@@UBEX_N@Z	void EnableSounds(bool) const
+695	0088f660	?StopSound@GameCalls@@UBEXK@Z	void StopSound(unsigned long) const
+696	00891220	?OverrideMusic@GameCalls@@UBEXJ_N0@Z	void OverrideMusic(EMusicSetType, bool, bool) const
+697	008912a0	?StopOverrideMusic@GameCalls@@UBEX_N@Z	void StopOverrideMusic(bool) const
+698	00891310	?CacheMusicSet@GameCalls@@UBEXJ@Z	void CacheMusicSet(EMusicSetType) const
+699	00891320	?EnableDangerMusic@GameCalls@@UBEX_N@Z	void EnableDangerMusic(bool) const
+700	00891330	?IsDangerMusicEnabled@GameCalls@@UBE_NXZ	bool IsDangerMusicEnabled(void) const
+701	0088f8d0	?StartCountdownTimer@GameCalls@@UBEXM@Z	void StartCountdownTimer(float) const
+702	0088f900	?GetCountdownTimer@GameCalls@@UBEMXZ	float GetCountdownTimer(void) const
+703	0088f910	?AutoSaveCheckPoint@GameCalls@@UBEXXZ	void AutoSaveCheckPoint(void) const
+704	0088f920	?AutoSaveQuestStart@GameCalls@@UBEXXZ	void AutoSaveQuestStart(void) const
+705	0088f930	?AutoSave@GameCalls@@UBEXXZ	void AutoSave(void) const
+706	0088f940	?SetSavingAsEnabled@GameCalls@@UBEX_N@Z	void SetSavingAsEnabled(bool) const
+707	0088f950	?IsSavingEnabled@GameCalls@@UBE_NXZ	bool IsSavingEnabled(void) const
+708	0088f960	?SetSaveGameMarkerPos@GameCalls@@UBEXABUC3DVector@@@Z	void SetSaveGameMarkerPos(C3DVector const &) const
+709	0088f970	?ResetToFrontEnd@GameCalls@@UBEXXZ	void ResetToFrontEnd(void) const
+710	0088f980	?SetGuildSealRecallLocation@GameCalls@@UBEXABUC3DVector@@M@Z	void SetGuildSealRecallLocation(C3DVector const &, float) const
+711	0088f9b0	?GetGuildSealRecallPos@GameCalls@@UBE?AUC3DVector@@XZ	C3DVector GetGuildSealRecallPos(void) const
+712	0088f9e0	?GetGuildSealRecallAngleXY@GameCalls@@UBEMXZ	float GetGuildSealRecallAngleXY(void) const
+713	008a0f70	?SetReadableObjectText@GameCalls@@UBEXABUCScriptThing@@ABVCWideString@@@Z	void SetReadableObjectText(CScriptThing const &, CWideString const &) const
+714	008a0fd0	?SetReadableObjectTextTag@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void SetReadableObjectTextTag(CScriptThing const &, CCharString const &) const
+715	00891340	?GetFormattedString@GameCalls@@UBE?AVCWideString@@ABVCCharString@@ABV?$vector@UCWideString@@V?$allocator@UCWideString@@@std@@@std@@@Z	CWideString GetFormattedString(CCharString const &, std::vector<CWideString, std::allocator<CWideString> > const &) const
+716	008913a0	?GetTextString@GameCalls@@UBE?AVCWideString@@ABVCCharString@@@Z	CWideString GetTextString(CCharString const &) const
+717	008a9db0	?AddRumourCategory@GameCalls@@UBEXABVCCharString@@@Z	void AddRumourCategory(CCharString const &) const
+718	008a9dd0	?AddNewRumourToCategory@GameCalls@@UBEXABVCCharString@@0@Z	void AddNewRumourToCategory(CCharString const &, CCharString const &) const
+719	008a9e00	?RemoveRumourCategory@GameCalls@@UBEXABVCCharString@@@Z	void RemoveRumourCategory(CCharString const &) const
+720	008a96c0	?SetCategoryActivity@GameCalls@@UBEXABVCCharString@@_N@Z	void SetCategoryActivity(CCharString const &, bool) const
+721	008a9e30	?AddGossipVillage@GameCalls@@UBEXABVCCharString@@0@Z	void AddGossipVillage(CCharString const &, CCharString const &) const
+722	008a9e60	?AddGossipFactionToCategory@GameCalls@@UBEXABVCCharString@@0@Z	void AddGossipFactionToCategory(CCharString const &, CCharString const &) const
+724	008a96f0	?SetIsGossipForPlayer@GameCalls@@UBEXABVCCharString@@_N@Z	void SetIsGossipForPlayer(CCharString const &, bool) const
+723	008a97d0	?SetIsGossipForPlayer@GameCalls@@UAEXVCCharString@@_N@Z	void SetIsGossipForPlayer(CCharString, bool)
+725	008a1040	?UpdateOnlineScore_Archery@GameCalls@@UBEXM@Z	void UpdateOnlineScore_Archery(float) const
+726	008a10c0	?UpdateOnlineScore_ChickenKick@GameCalls@@UBEXM@Z	void UpdateOnlineScore_ChickenKick(float) const
+727	008a1140	?UpdateOnlineScore_ChapelOrTemple@GameCalls@@UBEXM@Z	void UpdateOnlineScore_ChapelOrTemple(float) const
+728	008a11c0	?UpdateOnlineScore_FishingCompo@GameCalls@@UBEXM@Z	void UpdateOnlineScore_FishingCompo(float) const
+729	008a1240	?UpdateScore_FishingCompetition@GameCalls@@UBEXM@Z	void UpdateScore_FishingCompetition(float) const
+730	008a1590	?GetBestTimePairs@GameCalls@@UBEMXZ	float GetBestTimePairs(void) const
+731	008a15f0	?GetBestTimeSorting@GameCalls@@UBEMXZ	float GetBestTimeSorting(void) const
+732	008a1650	?GetBestScoreBlackjack@GameCalls@@UBEJXZ	long GetBestScoreBlackjack(void) const
+733	008a16b0	?GetBestScoreCoinGolfOakVale@GameCalls@@UBEJXZ	long GetBestScoreCoinGolfOakVale(void) const
+734	008a1710	?GetBestScoreCoinGolfSnowSpire@GameCalls@@UBEJXZ	long GetBestScoreCoinGolfSnowSpire(void) const
+735	008a1770	?GetBestScoreShoveHaPenny@GameCalls@@UBEJXZ	long GetBestScoreShoveHaPenny(void) const
+736	008a17d0	?GetBestTimeGuessTheAddition@GameCalls@@UBEMXZ	float GetBestTimeGuessTheAddition(void) const
+737	008913c0	?IsHeroInTavernGame@GameCalls@@UBE_NXZ	bool IsHeroInTavernGame(void) const
+738	008a12a0	?GetNumHousesOwned@GameCalls@@UBEJXZ	long GetNumHousesOwned(void) const
+739	008a1300	?StartSneaking@GameCalls@@UBEXXZ	void StartSneaking(void) const
+740	008a1360	?GetStealDuration@GameCalls@@UBEJABUCScriptThing@@@Z	long GetStealDuration(CScriptThing const &) const
+741	008a1830	?SetUseableByHero@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetUseableByHero(CScriptThing const &, bool) const
+742	008a18f0	?SetOwnedByHero@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetOwnedByHero(CScriptThing const &, bool) const
+743	008a1890	?SetTavernTableAvailableForUse@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetTavernTableAvailableForUse(CScriptThing const &, bool) const
+744	008a1950	?SetIsThingTurncoatable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetIsThingTurncoatable(CScriptThing const &, bool) const
+745	0088f9f0	?SetIsThingForcePushable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetIsThingForcePushable(CScriptThing const &, bool) const
+746	0088fa20	?SetIsThingLightningable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetIsThingLightningable(CScriptThing const &, bool) const
+747	0088fa50	?SetIsThingEpicSpellable@GameCalls@@UBEXABUCScriptThing@@_N@Z	void SetIsThingEpicSpellable(CScriptThing const &, bool) const
+748	008a19b0	?IsThingTurncoated@GameCalls@@UBE_NABUCScriptThing@@@Z	bool IsThingTurncoated(CScriptThing const &) const
+749	008a1a10	?AddCreatureScriptedMode@GameCalls@@UBEXABUCScriptThing@@ABVCCharString@@@Z	void AddCreatureScriptedMode(CScriptThing const &, CCharString const &) const
+750	008a1ab0	?RemoveCreatureScriptedMode@GameCalls@@UBEXABUCScriptThing@@@Z	void RemoveCreatureScriptedMode(CScriptThing const &) const
+751	008a7f60	?ForceShipsVisible@GameCalls@@UBEXXZ	void ForceShipsVisible(void) const
+752	008a1b10	?GetSleepingPositionAndOrientationFromBed@GameCalls@@UAE_NABUCScriptThing@@0AAUC3DVector@@1@Z	bool GetSleepingPositionAndOrientationFromBed(CScriptThing const &, CScriptThing const &, C3DVector &, C3DVector &)
+753	008a1bf0	?SetBedAvailability@GameCalls@@UAEXABUCScriptThing@@_N@Z	void SetBedAvailability(CScriptThing const &, bool)
+754	008a1c50	?RepopulateVillage@GameCalls@@UBEXABUCScriptThing@@@Z	void RepopulateVillage(CScriptThing const &) const
+755	008a8010	?SmashAllWindowsWithinRadiusOfPoint@GameCalls@@UAEXABUC3DVector@@M@Z	void SmashAllWindowsWithinRadiusOfPoint(C3DVector const &, float)
+756	008a1cc0	?SetResidency@GameCalls@@UAE?AUCScriptThing@@ABU2@_N@Z	CScriptThing SetResidency(CScriptThing const &, bool)
+757	008a1e50	?SetThankingPhrase@GameCalls@@UAEXUCScriptThing@@K@Z	void SetThankingPhrase(CScriptThing, unsigned long)
+758	008a1f30	?GetThankingPhrase@GameCalls@@UAEKUCScriptThing@@@Z	unsigned long GetThankingPhrase(CScriptThing)
+759	008a2020	?ResetThankingPhrase@GameCalls@@UAEXUCScriptThing@@@Z	void ResetThankingPhrase(CScriptThing)
+760	008a2100	?SetIgnoringPhrase@GameCalls@@UAEXUCScriptThing@@K@Z	void SetIgnoringPhrase(CScriptThing, unsigned long)
+761	008a21e0	?GetIgnoringPhrase@GameCalls@@UAEKUCScriptThing@@@Z	unsigned long GetIgnoringPhrase(CScriptThing)
+762	008a22d0	?ResetIgnoringPhrase@GameCalls@@UAEXUCScriptThing@@@Z	void ResetIgnoringPhrase(CScriptThing)
+763	008a23b0	?SetWanderCentrePoint@GameCalls@@UAEXUCScriptThing@@UC3DVector@@@Z	void SetWanderCentrePoint(CScriptThing, C3DVector)
+764	008a24c0	?GetWanderCentrePoint@GameCalls@@UAE?AUC3DVector@@UCScriptThing@@@Z	C3DVector GetWanderCentrePoint(CScriptThing)
+765	008a2590	?ResetWanderCentrePoint@GameCalls@@UAEXUCScriptThing@@@Z	void ResetWanderCentrePoint(CScriptThing)
+766	008a2690	?SetWanderMinDistance@GameCalls@@UAEXUCScriptThing@@M@Z	void SetWanderMinDistance(CScriptThing, float)
+767	008a2770	?GetWanderMinDistance@GameCalls@@UAEMUCScriptThing@@@Z	float GetWanderMinDistance(CScriptThing)
+768	008a2870	?ResetWanderMinDistance@GameCalls@@UAEXUCScriptThing@@@Z	void ResetWanderMinDistance(CScriptThing)
+769	008a2950	?SetWanderMaxDistance@GameCalls@@UAEXUCScriptThing@@M@Z	void SetWanderMaxDistance(CScriptThing, float)
+770	008a2a30	?GetWanderMaxDistance@GameCalls@@UAEMUCScriptThing@@@Z	float GetWanderMaxDistance(CScriptThing)
+771	008a2b30	?ResetWanderMaxDistance@GameCalls@@UAEXUCScriptThing@@@Z	void ResetWanderMaxDistance(CScriptThing)
+772	008a2c10	?SetGossipCounter@GameCalls@@UAEXUCScriptThing@@J@Z	void SetGossipCounter(CScriptThing, long)
+773	008a2cf0	?GetGossipCounter@GameCalls@@UAEJUCScriptThing@@@Z	long GetGossipCounter(CScriptThing)
+774	008a2de0	?ResetGossipCounter@GameCalls@@UAEXUCScriptThing@@@Z	void ResetGossipCounter(CScriptThing)
+775	008a2ec0	?SetMaxGossipPhrase@GameCalls@@UAEXUCScriptThing@@J@Z	void SetMaxGossipPhrase(CScriptThing, long)
+776	008a2fa0	?GetMaxGossipPhrase@GameCalls@@UAEJUCScriptThing@@@Z	long GetMaxGossipPhrase(CScriptThing)
+777	008a3090	?ResetMaxGossipPhrase@GameCalls@@UAEXUCScriptThing@@@Z	void ResetMaxGossipPhrase(CScriptThing)
+778	008a3170	?SetWarningPhrase@GameCalls@@UAEXUCScriptThing@@K@Z	void SetWarningPhrase(CScriptThing, unsigned long)
+779	008a3250	?GetWarningPhrase@GameCalls@@UAEKUCScriptThing@@@Z	unsigned long GetWarningPhrase(CScriptThing)
+780	008a3340	?ResetWarningPhrase@GameCalls@@UAEXUCScriptThing@@@Z	void ResetWarningPhrase(CScriptThing)
+781	008a3420	?SetBeerRequestPhrase@GameCalls@@UAEXUCScriptThing@@K@Z	void SetBeerRequestPhrase(CScriptThing, unsigned long)
+782	008a3500	?GetBeerRequestPhrase@GameCalls@@UAEKUCScriptThing@@@Z	unsigned long GetBeerRequestPhrase(CScriptThing)
+783	008a35f0	?ResetBeerRequestPhrase@GameCalls@@UAEXUCScriptThing@@@Z	void ResetBeerRequestPhrase(CScriptThing)
+784	008a36d0	?SetScriptingStateGroup@GameCalls@@UAEXUCScriptThing@@J@Z	void SetScriptingStateGroup(CScriptThing, EScriptingStateGroups)
+785	008a37b0	?GetScriptingStateGroup@GameCalls@@UAEJUCScriptThing@@@Z	EScriptingStateGroups GetScriptingStateGroup(CScriptThing)
+786	008a38a0	?ResetScriptingStateGroup@GameCalls@@UAEXUCScriptThing@@@Z	void ResetScriptingStateGroup(CScriptThing)
+787	008a3980	?SetMaxHeroReactionDistance@GameCalls@@UAEXUCScriptThing@@M@Z	void SetMaxHeroReactionDistance(CScriptThing, float)
+788	008a3a60	?GetMaxHeroReactionDistance@GameCalls@@UAEMUCScriptThing@@@Z	float GetMaxHeroReactionDistance(CScriptThing)
+789	008a3b60	?ResetMaxHeroReactionDistance@GameCalls@@UAEXUCScriptThing@@@Z	void ResetMaxHeroReactionDistance(CScriptThing)
+790	008a3c40	?SetActionFrequency@GameCalls@@UAEXUCScriptThing@@J@Z	void SetActionFrequency(CScriptThing, long)
+791	008a3d20	?GetActionFrequency@GameCalls@@UAEJUCScriptThing@@@Z	long GetActionFrequency(CScriptThing)
+792	008a3e10	?ResetActionFrequency@GameCalls@@UAEXUCScriptThing@@@Z	void ResetActionFrequency(CScriptThing)
+793	008a3ef0	?SetActionFrequencyVariation@GameCalls@@UAEXUCScriptThing@@M@Z	void SetActionFrequencyVariation(CScriptThing, float)
+794	008a3fd0	?GetActionFrequencyVariation@GameCalls@@UAEMUCScriptThing@@@Z	float GetActionFrequencyVariation(CScriptThing)
+795	008a40d0	?ResetActionFrequencyVariation@GameCalls@@UAEXUCScriptThing@@@Z	void ResetActionFrequencyVariation(CScriptThing)
+796	008a41b0	?SetAction@GameCalls@@UAEXUCScriptThing@@VCCharString@@@Z	void SetAction(CScriptThing, CCharString)
+797	008a42c0	?GetAction@GameCalls@@UAE?AVCCharString@@UCScriptThing@@@Z	CCharString GetAction(CScriptThing)
+798	008a4390	?ResetAction@GameCalls@@UAEXUCScriptThing@@@Z	void ResetAction(CScriptThing)
+799	008a4480	?SetFaceHeroForAction@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetFaceHeroForAction(CScriptThing, bool)
+800	008a4560	?GetFaceHeroForAction@GameCalls@@UAE_NUCScriptThing@@@Z	bool GetFaceHeroForAction(CScriptThing)
+801	008a4650	?ResetFaceHeroForAction@GameCalls@@UAEXUCScriptThing@@@Z	void ResetFaceHeroForAction(CScriptThing)
+802	008a4730	?SetTargetName@GameCalls@@UAEXUCScriptThing@@VCCharString@@@Z	void SetTargetName(CScriptThing, CCharString)
+803	008a4840	?GetTargetName@GameCalls@@UAE?AVCCharString@@UCScriptThing@@@Z	CCharString GetTargetName(CScriptThing)
+804	008a4910	?ResetTargetName@GameCalls@@UAEXUCScriptThing@@@Z	void ResetTargetName(CScriptThing)
+805	008a4a00	?SetFollowDistance@GameCalls@@UAEXUCScriptThing@@M@Z	void SetFollowDistance(CScriptThing, float)
+806	008a4ae0	?GetFollowDistance@GameCalls@@UAEMUCScriptThing@@@Z	float GetFollowDistance(CScriptThing)
+807	008a4be0	?ResetFollowDistance@GameCalls@@UAEXUCScriptThing@@@Z	void ResetFollowDistance(CScriptThing)
+808	008a4cc0	?SetAttackHeroOnSight@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetAttackHeroOnSight(CScriptThing, bool)
+809	008a4da0	?GetAttackHeroOnSight@GameCalls@@UAE_NUCScriptThing@@@Z	bool GetAttackHeroOnSight(CScriptThing)
+810	008a4e90	?ResetAttackHeroOnSight@GameCalls@@UAEXUCScriptThing@@@Z	void ResetAttackHeroOnSight(CScriptThing)
+811	008a4f70	?SetTimeToSpendHarassingHero@GameCalls@@UAEXUCScriptThing@@J@Z	void SetTimeToSpendHarassingHero(CScriptThing, long)
+812	008a5050	?GetTimeToSpendHarassingHero@GameCalls@@UAEJUCScriptThing@@@Z	long GetTimeToSpendHarassingHero(CScriptThing)
+813	008a5140	?ResetTimeToSpendHarassingHero@GameCalls@@UAEXUCScriptThing@@@Z	void ResetTimeToSpendHarassingHero(CScriptThing)
+814	008a5220	?SetCombatNearbyEnemyFleeingBreakOffRange@GameCalls@@UAEXUCScriptThing@@M@Z	void SetCombatNearbyEnemyFleeingBreakOffRange(CScriptThing, float)
+815	008a5300	?GetCombatNearbyEnemyFleeingBreakOffRange@GameCalls@@UAEMUCScriptThing@@@Z	float GetCombatNearbyEnemyFleeingBreakOffRange(CScriptThing)
+816	008a5400	?ResetCombatNearbyEnemyFleeingBreakOffRange@GameCalls@@UAEXUCScriptThing@@@Z	void ResetCombatNearbyEnemyFleeingBreakOffRange(CScriptThing)
+817	008a54e0	?SetCombatNearbyBreakOffRange@GameCalls@@UAEXUCScriptThing@@M@Z	void SetCombatNearbyBreakOffRange(CScriptThing, float)
+818	008a55c0	?GetCombatNearbyBreakOffRange@GameCalls@@UAEMUCScriptThing@@@Z	float GetCombatNearbyBreakOffRange(CScriptThing)
+819	008a56c0	?ResetCombatNearbyBreakOffRange@GameCalls@@UAEXUCScriptThing@@@Z	void ResetCombatNearbyBreakOffRange(CScriptThing)
+820	008a57b0	?SetStealStealableItems@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetStealStealableItems(CScriptThing, bool)
+821	008a5890	?GetStealStealableItems@GameCalls@@UAE_NUCScriptThing@@@Z	bool GetStealStealableItems(CScriptThing)
+822	008a5980	?ResetStealStealableItems@GameCalls@@UAEXUCScriptThing@@@Z	void ResetStealStealableItems(CScriptThing)
+823	008a5a70	?SetRecoverStealableItems@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetRecoverStealableItems(CScriptThing, bool)
+824	008a5b50	?GetRecoverStealableItems@GameCalls@@UAE_NUCScriptThing@@@Z	bool GetRecoverStealableItems(CScriptThing)
+825	008a5c40	?ResetRecoverStealableItems@GameCalls@@UAEXUCScriptThing@@@Z	void ResetRecoverStealableItems(CScriptThing)
+826	008a5d30	?SetTakeStealableItemToRandomDestination@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetTakeStealableItemToRandomDestination(CScriptThing, bool)
+827	008a5e10	?GetTakeStealableItemToRandomDestination@GameCalls@@UAE_NUCScriptThing@@@Z	bool GetTakeStealableItemToRandomDestination(CScriptThing)
+828	008a5f00	?ResetTakeStealableItemToRandomDestination@GameCalls@@UAEXUCScriptThing@@@Z	void ResetTakeStealableItemToRandomDestination(CScriptThing)
+829	008a5ff0	?SetKillSelfAndStealableItemAfterReachingDestination@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetKillSelfAndStealableItemAfterReachingDestination(CScriptThing, bool)
+830	008a60d0	?GetKillSelfAndStealableItemAfterReachingDestination@GameCalls@@UAE_NUCScriptThing@@@Z	bool GetKillSelfAndStealableItemAfterReachingDestination(CScriptThing)
+831	008a61c0	?ResetKillSelfAndStealableItemAfterReachingDestination@GameCalls@@UAEXUCScriptThing@@@Z	void ResetKillSelfAndStealableItemAfterReachingDestination(CScriptThing)
+832	008a62b0	?SetAllowedToFollow@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetAllowedToFollow(CScriptThing, bool)
+833	008a6390	?GetAllowedToFollow@GameCalls@@UAE_NUCScriptThing@@@Z	bool GetAllowedToFollow(CScriptThing)
+834	008a6480	?ResetAllowedToFollow@GameCalls@@UAEXUCScriptThing@@@Z	void ResetAllowedToFollow(CScriptThing)
+835	008a6570	?SetTableName@GameCalls@@UAEXUCScriptThing@@VCCharString@@@Z	void SetTableName(CScriptThing, CCharString)
+836	008a6680	?GetTableName@GameCalls@@UAE?AVCCharString@@UCScriptThing@@@Z	CCharString GetTableName(CScriptThing)
+837	008a6750	?ResetTableName@GameCalls@@UAEXUCScriptThing@@@Z	void ResetTableName(CScriptThing)
+838	008a6840	?SetSeatName@GameCalls@@UAEXUCScriptThing@@VCCharString@@@Z	void SetSeatName(CScriptThing, CCharString)
+839	008a6950	?GetSeatName@GameCalls@@UAE?AVCCharString@@UCScriptThing@@@Z	CCharString GetSeatName(CScriptThing)
+840	008a6a20	?ResetSeatName@GameCalls@@UAEXUCScriptThing@@@Z	void ResetSeatName(CScriptThing)
+841	008a6b10	?SetDisableHeadLooking@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetDisableHeadLooking(CScriptThing, bool)
+842	008a6bf0	?GetDisableHeadLooking@GameCalls@@UAE_NUCScriptThing@@@Z	bool GetDisableHeadLooking(CScriptThing)
+843	008a6ce0	?ResetDisableHeadLooking@GameCalls@@UAEXUCScriptThing@@@Z	void ResetDisableHeadLooking(CScriptThing)
+844	008a6dd0	?SetIsPushableByHero@GameCalls@@UAEXUCScriptThing@@_N@Z	void SetIsPushableByHero(CScriptThing, bool)

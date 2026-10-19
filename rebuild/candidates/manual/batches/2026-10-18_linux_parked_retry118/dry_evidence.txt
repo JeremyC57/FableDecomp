@@ -1,0 +1,9 @@
+addr       parity           behav  name
+008a0a20   RELOCATION_MATCH PASS   PlaySoundOnThing
+0089fbb0   RELOCATION_MATCH PASS   CreateExperienceOrb
+008a03f0   RELOCATION_MATCH PASS   ClearThingBestEnemyTarget
+
+WINS: 3
+  008a0a20 RELOCATION_MATCH CGameScriptInterface::PlaySoundOnThing
+  0089fbb0 RELOCATION_MATCH CGameScriptInterface::CreateExperienceOrb
+  008a03f0 RELOCATION_MATCH CGameScriptInterface::ClearThingBestEnemyTarget

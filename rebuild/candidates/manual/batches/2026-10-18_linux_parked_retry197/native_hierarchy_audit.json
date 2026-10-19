@@ -1,0 +1,101 @@
+{
+  "CIVCountedPointeeBase": {
+    "vtable": "0x12354d0",
+    "hierarchy": [
+      [
+        ".?AVCIVCountedPointeeBase@@",
+        0
+      ]
+    ]
+  },
+  "CEnginePersistentPrimitiveBase": {
+    "vtable": "0x12a3d60",
+    "hierarchy": [
+      [
+        ".?AVCEnginePersistentPrimitiveBase@@",
+        0
+      ],
+      [
+        ".?AVCIVCountedPointeeBase@@",
+        0
+      ]
+    ]
+  },
+  "CEngineInternalPrimitiveBase": {
+    "vtable": "0x12a3d7c",
+    "hierarchy": [
+      [
+        ".?AVCEngineInternalPrimitiveBase@@",
+        0
+      ],
+      [
+        ".?AVCEnginePersistentPrimitiveBase@@",
+        0
+      ],
+      [
+        ".?AVCIVCountedPointeeBase@@",
+        0
+      ]
+    ]
+  },
+  "CBaseClass": {
+    "vtable": "0x1231710",
+    "hierarchy": [
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "CBaseClassNonCopyable": {
+    "vtable": "0x129a7c4",
+    "hierarchy": [
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "CEnginePrimitiveRenderUtil": {
+    "vtable": "0x12a3bd0",
+    "hierarchy": [
+      [
+        ".?AVCEnginePrimitiveRenderUtil@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "CEnginePrimitiveManager": {
+    "vtable": "0x12a53e8",
+    "hierarchy": [
+      [
+        ".?AVCEnginePrimitiveManager@@",
+        0
+      ],
+      [
+        ".?AVCEnginePrimitiveRenderUtil@@",
+        0
+      ],
+      [
+        ".?AVCBaseClassNonCopyable@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  }
+}

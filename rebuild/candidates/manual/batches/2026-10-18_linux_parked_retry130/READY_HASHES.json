@@ -1,0 +1,38 @@
+[
+  {
+    "address": "008a9020",
+    "new_grades": 2,
+    "uncertain_reserved": 4,
+    "remaining_new": 4,
+    "source_sha256": "311a7a6596b63faf11bf544faaf1338c9486f6597cc9201cc764c4e0b213f844",
+    "test_sha256": "e88691b12f3f816deb49ea7dce5ca76b5857a4c1a7a8cb4c569356ed9da61408",
+    "source": "src/008a9020.cpp",
+    "test_log": "logs/008a9020_tests_full_2.log",
+    "grade_log": "logs/008a9020_2.log",
+    "leaf": "CreatureGeneratorSetFamily"
+  },
+  {
+    "address": "008a99f0",
+    "new_grades": 4,
+    "uncertain_reserved": 4,
+    "remaining_new": 2,
+    "source_sha256": "afb39d509a0c0557ad90ccbe815c49ad9972b01b26a5b6a1e4765dd178b02f39",
+    "test_sha256": "d8403832d0995032b105b54e4c598ad17a2cdf1105f6e9ee3ff72fb39ce69e40",
+    "source": "src/008a99f0.cpp",
+    "test_log": "logs/008a99f0_tests_full_2.log",
+    "grade_log": "logs/008a99f0_4.log",
+    "leaf": "SetThingAndCarriedItemsNotAffectedByScreenFilter"
+  },
+  {
+    "address": "009e6fa0",
+    "new_grades": 3,
+    "uncertain_reserved": 4,
+    "remaining_new": 3,
+    "source_sha256": "e7ac89027bd7eedbb55f695ab02df0d35a81b1e814a9770009b3d640f178e798",
+    "test_sha256": "dff94b53a3e480231842fec2eb7fe038aa5a1a66cc2de98b7a92164818d8416b",
+    "source": "src/009e6fa0.cpp",
+    "test_log": "logs/009e6fa0_tests_full_3.log",
+    "grade_log": "logs/009e6fa0_3.log",
+    "leaf": "LinearInsert"
+  }
+]

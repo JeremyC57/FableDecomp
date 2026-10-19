@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00443f90   RELOCATION_MATCH PASS   Resize
+
+WINS: 1
+  00443f90 RELOCATION_MATCH CEnginePrimitiveHandleVector::Resize

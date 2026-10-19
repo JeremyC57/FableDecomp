@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00b16eb0   RELOCATION_MATCH PASS   CPSCOrbit
+00b16f60   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b16f60   RELOCATION_MATCH PASS   ReadBinary
+00b17f70   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00b17f70   RELOCATION_MATCH PASS   WriteBinary
+
+WINS: 3
+  00b16eb0 RELOCATION_MATCH NParticleEngine::CPSCOrbit::CPSCOrbit
+  00b16f60 RELOCATION_MATCH CPSCOrbit::ReadBinary
+  00b17f70 RELOCATION_MATCH CPSCAttractor::WriteBinary
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCOrbit_CPSCOrbit_00b16eb0
+  CPSCOrbit_ReadBinary_00b16f60
+  CPSCAttractor_WriteBinary_00b17f70

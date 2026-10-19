@@ -1,0 +1,12 @@
+# Vertex-shader resource setup, sprite-trail construction and DirectShow queue destruction
+
+B3B5D0 grade6,242 bytes: actual resource-manager, bank and string headers with explicit native bank stride128 and resource extent3C. Factory98B860 proves twelve-byte counted record refs0/fastcallcallback4/data8; callback98BA10 and virtual bank OpenReadOnly slot1 audited. Tests cover replacement/shared/last ownership, callback behavior and all setup arguments. The two-slot bank projection is a verified native interface prefix.
+
+BCA770 grade9,271 bytes: root corrected missing RTTI ancestry before landing. Actual five-class chain SpriteTrails->PrimitiveManager->PrimitiveRenderUtil->NonCopyable->BaseClass, genuine constructors and destructors, complete thirteen-slot manager and shader interfaces. Fixture checks four base constructors and reverse destruction order. Actual Engine/Shader/Bank headers retained; explicit pool data-vptr view assigns no invented virtual signatures. Both full literals, pool vptr transitions, granularity400, tree key3 and shader hidden-result ABI independently audited. Original overcaptured boundary preserved; RET4 and next entry prove271 bytes.
+
+CAF580 grade5 /EHsc,251 bytes: genuine DirectShow CCmdQueue destructor. Root corrected LPUNKNOWN to IUnknown* and unified GUID before final grade. SDK nine-slot queue interface and actual COM method contracts; native alignment supplies opaque +4 prefix, class/member offsets independently asserted. Four EH cleanup states verified for lock8/lists20,38/event50. Tests exercise command-release/list/cache/event/critical-section order, clock Unadvise/reset/Release, null clock and no-advise paths. CDeferredCommand fixture is an explicit preexisting-interface offset double, not native engine construction.
+
+Independent final VC7.1 byte/native fixtures and expanded actual-header hostC++98/O2/no-elide pass for all3. Root audits37 relocated operands,2 full strings,37 native virtual targets,18 emitted signatures,3 RTTI hierarchies,4 unwind states and20 immutable worker grades. Dependency stubs test target behavior, not full-game integration.
+
+Previous root175 scoreboard acceptance has been withdrawn separately due incompatible inherited CTCBase method declarations; it is excluded from this checkpoint's count. Root175 original source/tests and10attempts remain preserved. Additional old-pending-history corrections are recorded separately; no attempt counts reset.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

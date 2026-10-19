@@ -1,0 +1,16 @@
+offset	native_target	symbol
+00000009	0122f180	??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+00000010	0122f174	??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+00000017	004175e5	?Shutdown@CMainGameComponent@@QAEXXZ
+00000022	004131d0	??1CMainGameComponentInit@@QAE@XZ
+0000002d	00419108	??1?$CCountedPointer@UCGraphicDataBank@@@@QAE@XZ
+00000038	00419764	??1CFrameRateSmoother@@UAE@XZ
+00000043	00401630	??1CDiskFileWin32@@UAE@XZ
+0000004e	004057a0	??1?$CCountedPointer@UCFontBank@@@@QAE@XZ
+00000059	004057a0	??1?$CCountedPointer@UCFontBank@@@@QAE@XZ
+00000064	00419352	??1CNetworkClient@@UAE@XZ
+0000006c	004190b6	??1?$CCountedPointer@UCLUA@@@@QAE@XZ
+000000a8	00403750	??1?$CCountedPointer@UCDataBank@NGameText@@@@QAE@XZ
+000000ae	0122ecb0	??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+000000b5	0122eca4	??_7CGameComponent@@6BCDeviceResetCallback@@@
+000000bd	0099a300	??1CBaseClass@@UAE@XZ

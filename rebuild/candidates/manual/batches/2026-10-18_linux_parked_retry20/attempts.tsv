@@ -1,0 +1,4 @@
+attempt	hypothesis	status
+1-8	agent228 author and layout integration grades	RELOCATION_MATCH at8
+9	coordinator confines portable stream adapter to host fixture; target source unchanged	RELOCATION_MATCH PASS
+10	forward declaration for unused input-stream type; document required virtual chunk model	RELOCATION_MATCH PASS

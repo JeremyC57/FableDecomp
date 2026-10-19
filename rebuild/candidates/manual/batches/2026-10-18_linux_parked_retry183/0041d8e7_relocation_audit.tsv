@@ -1,0 +1,13 @@
+offset	native_target	symbol
+00000019	01230018	??_C@_0BD@HLIOEIDB@UI_MISC_THINGS_DEF?$AA@
+0000001e	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000002c	009ad390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+00000036	0099eae0	??1CCharString@@QAE@XZ
+00000043	0042b312	?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIMiscThingsDef@NUISystem@@@@@Z
+0000004d	01230018	??_C@_0BD@HLIOEIDB@UI_MISC_THINGS_DEF?$AA@
+00000052	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000005d	0044c6b0	?GetDefinitionManager@@YIPAUCDefinitionManager@@XZ
+00000064	009ad390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+0000006e	0099eae0	??1CCharString@@QAE@XZ
+00000078	0044c6b0	?GetDefinitionManager@@YIPAUCDefinitionManager@@XZ
+0000007f	0042b312	?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIMiscThingsDef@NUISystem@@@@@Z

@@ -1,0 +1,7 @@
+offset	native_target	symbol
+00000039	00a01650	?Add@GraphicArray@@QAEXXZ
+00000072	00994930	??0MemoryInput@@QAE@PBXK@Z
+000000c5	009fd160	?Load@GraphicHeader@@QAEXAAUInputStream@@@Z
+000000d7	009fd700	??0GraphicInfo@@QAE@KPAUCGraphicDataBank@@ABUGraphicHeader@@@Z
+000000fc	009cbc20	?NotifyEntryAdded@CBankFileNative@@UAEXKKABUCharArray@@@Z
+00000105	00993b10	??1InputStream@@UAE@XZ

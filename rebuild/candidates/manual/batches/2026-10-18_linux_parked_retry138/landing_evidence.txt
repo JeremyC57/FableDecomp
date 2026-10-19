@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00ef29e0   RELOCATION_MATCH PASS   Main
+009fe550   RELOCATION_MATCH PASS   InitialiseFrame
+
+WINS: 2
+  00ef29e0 RELOCATION_MATCH CGoalChest::Main
+  009fe550 RELOCATION_MATCH CGraphicInfoFrame::InitialiseFrame
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CGoalChest_Main_00ef29e0
+  CGraphicInfoFrame_InitialiseFrame_009fe550

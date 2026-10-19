@@ -1,0 +1,107 @@
+{
+  "caller_relocations": [
+    {
+      "offset": 10,
+      "native_target": "0x13b8aac",
+      "symbol": "?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A",
+      "demangled": "struct NUISystem::CScrollingViewport *NUISystem::g_pActiveScrollingViewport"
+    },
+    {
+      "offset": 147,
+      "native_target": "0x13b8a98",
+      "symbol": "?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A",
+      "demangled": "struct NUISystem::ComponentNode *NUISystem::g_ActiveListHead"
+    },
+    {
+      "offset": 187,
+      "native_target": "0x13b8a98",
+      "symbol": "?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A",
+      "demangled": "struct NUISystem::ComponentNode *NUISystem::g_ActiveListHead"
+    },
+    {
+      "offset": 206,
+      "native_target": "0x123003c",
+      "symbol": "__real@41c80000",
+      "demangled": "__real@41c80000",
+      "native_float25_hex": "0000c841"
+    }
+  ],
+  "native_vtable_targets_and_PDB_signatures": [
+    {
+      "native_vtable": "0x1230134",
+      "slot": 0,
+      "target": "0x55cb10",
+      "PDB_signature": "void NUISystem::CObservable::SetEvent(NUISystem::EEvent)",
+      "donor_address": "005D5F30",
+      "native_prefix": "51568bf18b460885c05774238b7c24108bc88b01"
+    },
+    {
+      "native_vtable": "0x12468d4",
+      "slot": 144,
+      "target": "0x53fc00",
+      "PDB_signature": "float NUISystem::CScrollingViewport::GetScrollingSpeed()",
+      "donor_address": "005B9240",
+      "native_prefix": "d98174010000c3cccccccccccccccccc83e904e9"
+    },
+    {
+      "native_vtable": "0x124b7e4",
+      "slot": 150,
+      "target": "0x55a330",
+      "PDB_signature": "bool NUISystem::CDraggable::IsDragged()",
+      "donor_address": "005D36D0",
+      "native_prefix": "8a819c010000c3cccccccccccccccccc8b442404"
+    },
+    {
+      "native_vtable": "0x12462e4",
+      "slot": 175,
+      "target": "0x53ce5f",
+      "PDB_signature": "NUISystem::CComponent* NUISystem::CList::GetScrollBar()",
+      "donor_address": "005B621B",
+      "native_prefix": "8b81d8010000c38b81dc010000c38b4424048981"
+    },
+    {
+      "native_vtable": "0x124608c",
+      "slot": 33,
+      "target": "0x52eaf0",
+      "PDB_signature": "void NUISystem::CComponent::ChangePositionDelta(const C2DVector&,float,bool)",
+      "donor_address": "005A85E0",
+      "native_prefix": "83ec108b4424148b5004568bf18b088b06894c24"
+    }
+  ],
+  "fixture_emitted_methods": [
+    {
+      "symbol": "??0ComponentDouble@NUISystem@@QAE@XZ",
+      "demangled": "public: __thiscall NUISystem::ComponentDouble::ComponentDouble(void)"
+    },
+    {
+      "symbol": "?Drag@ComponentDouble@NUISystem@@QAE_NXZ",
+      "demangled": "public: bool __thiscall NUISystem::ComponentDouble::Drag(void)"
+    },
+    {
+      "symbol": "?Bar@ComponentDouble@NUISystem@@QAEPAUCComponent@2@XZ",
+      "demangled": "public: struct NUISystem::CComponent * __thiscall NUISystem::ComponentDouble::Bar(void)"
+    },
+    {
+      "symbol": "?Delta@ComponentDouble@NUISystem@@QAEXABUC2DVector@@M_N@Z",
+      "demangled": "public: void __thiscall NUISystem::ComponentDouble::Delta(struct C2DVector const &, float, bool)"
+    },
+    {
+      "symbol": "??0ViewportDouble@NUISystem@@QAE@XZ",
+      "demangled": "public: __thiscall NUISystem::ViewportDouble::ViewportDouble(void)"
+    },
+    {
+      "symbol": "?Speed@ViewportDouble@NUISystem@@QAEMXZ",
+      "demangled": "public: float __thiscall NUISystem::ViewportDouble::Speed(void)"
+    },
+    {
+      "symbol": "??0ManagerDouble@NUISystem@@QAE@XZ",
+      "demangled": "public: __thiscall NUISystem::ManagerDouble::ManagerDouble(void)"
+    },
+    {
+      "symbol": "?Event@ManagerDouble@NUISystem@@QAEXW4EEvent@2@@Z",
+      "demangled": "public: void __thiscall NUISystem::ManagerDouble::Event(enum NUISystem::EEvent)"
+    }
+  ],
+  "dispatch_model": "Explicit typed PMF native projection. Every used PMF is4 bytes under VC7.1, asserted. Host fixture slot stride is native host PMF width (16 here), asserted across all five signatures. No production C++ virtual declaration or vtable is emitted, so no overload-order claim or fabricated intermediate virtuals. Fixture arrays populate only used interface methods; do not claim to be complete engine vtables.",
+  "names": "ScrollForward/ScrollBackward values6/7 and g_ActiveListHead descriptive; exact original enumerator/global spellings unestablished. DescriptionScrollingOffset is donor PDB field+F4 projected to native+C4, consistent compact manager state; native read/write proven, original exact member association inferred."
+}

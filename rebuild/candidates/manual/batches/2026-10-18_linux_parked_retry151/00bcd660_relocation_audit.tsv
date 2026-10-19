@@ -1,0 +1,6 @@
+offset	native_target	symbol
+00000070	00bcde70	?resize@?$CNativeVector12@U?$CNativeVector12@UC3DVector@@@@@@QAEXKABU?$CNativeVector12@UC3DVector@@@@@Z
+0000007d	0075c040	?resize@?$CNativeVector12@UC3DVector@@@@QAEXKABUC3DVector@@@Z
+0000008d	0075c040	?resize@?$CNativeVector12@UC3DVector@@@@QAEXKABUC3DVector@@@Z
+000000a3	00442770	?resize@?$CNativeVector12@M@@QAEXKABM@Z
+00000128	00b8fd40	?SetFadeDistanceWithGamePrimitiveDefaults@CEngineInternalPrimitiveWeaponTrail@@QAEXM@Z

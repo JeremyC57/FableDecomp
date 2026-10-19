@@ -1,0 +1,1 @@
+{"snapshot": 1, "source_grade": 1, "sha256": "824233b2a14a80f2be5f340351ad5417e233c502c0a797a823f793cb1bc1fdba", "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream", "effective_flags": ["/O2", "/Oy", "/W3"]}

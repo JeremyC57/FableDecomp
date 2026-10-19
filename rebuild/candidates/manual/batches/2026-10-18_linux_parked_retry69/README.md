@@ -1,0 +1,6 @@
+# Simulation list cleanup at frame end
+
+00b819e0 (226 bytes): actual manager/counted-pointee layout references, documented native single-pointer circular lists at0c/10/14. Audited virtual release slot1 and freeBFEA14. Each loop captures successor before unlinking, removes only nonnull uniquely held items, decrements/releases/clears the counted pointer, then frees the node. Shared/null items remain. Exact-source tests cover all three lists, link integrity, unique release and freed addresses, repeated no-op, later shared-to-unique transition and empty lists. Main corrected fixture lifetimes to individually malloc/placement-new nodes and real frees; cleared pointer storage is checked by memcpy after member destruction. Remaining nodes/sentinels explicitly destroyed/freed. Observed new3 plus UNCERTAIN historical reservation4 (reserved7/10).
+
+Host validation uses -O2 -fno-lifetime-dse: ordinary GCC -O2 may eliminate the pointer-clear store after the member lifetime ends, while the native VC7.1 target retains it and the free hook inspects that storage. The first ordinary-O2 host check failed this assertion; the documented host flag and unchanged native fixture both pass.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

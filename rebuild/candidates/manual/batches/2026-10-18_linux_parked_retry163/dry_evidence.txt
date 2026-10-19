@@ -1,0 +1,7 @@
+addr       parity           behav  name
+009e2d00   RELOCATION_MATCH PASS   ~CFontManager
+008857e0   RELOCATION_MATCH PASS   GetRenderFrameInterpolatedRadialBlurParameters
+
+WINS: 2
+  009e2d00 RELOCATION_MATCH CFontManager::??1CFontManager@@
+  008857e0 RELOCATION_MATCH CEnvironmentSpellEffectInterface::GetRenderFrameInterpolatedRadialBlurParameters

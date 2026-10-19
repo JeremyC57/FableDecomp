@@ -1,0 +1,11 @@
+offset	native_target	symbol
+00000029	00cbe2ff	?IsWithinDistance@@YI_NABUScriptMethods@@ABUCScriptThing@@M@Z
+00000034	012d6788	??_C@_0BE@BPODFGED@Q_HobbeToothWhisper?$AA@
+0000003d	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+00000063	00cbe2ff	?IsWithinDistance@@YI_NABUScriptMethods@@ABUCScriptThing@@M@Z
+00000087	01238c8c	??_7ScriptMethods@@6B@
+000000a3	00bfe9bc	??3@YAXPAX@Z
+000000b7	0099a2e0	??1CBaseClassNative@@UAE@XZ
+000000c8	0099eae0	??1CCharString@@QAE@XZ
+000000df	00f35b30	?IsActiveThreadTerminating@CDrinkersReactMarker@@QAE_NXZ
+000000f6	00f35b30	?IsActiveThreadTerminating@CDrinkersReactMarker@@QAE_NXZ

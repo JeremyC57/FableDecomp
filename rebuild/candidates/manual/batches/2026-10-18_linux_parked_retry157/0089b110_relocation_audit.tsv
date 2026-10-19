@@ -1,0 +1,13 @@
+offset	native_target	symbol
+00000008	00449970	?GetMainPlayer@PlayerManagerMethods@@QAEPAUPlayerMethods@@XZ
+0000000f	00487dc0	?GetHeroThing@PlayerMethods@@QAEPAUCThingNative@@XZ
+0000003c	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00000059	0056a930	?AllowUIToOpen@BoastMethods@@QAEX_N@Z
+00000074	013b8790	?g_MovieTransitionState@@3PAUMovieTransitionState@@A
+0000008a	013b8790	?g_MovieTransitionState@@3PAUMovieTransitionState@@A
+000000ab	006e7280	?StartLetterBox@CGameScriptInterfaceMethods@@QAEXMMM@Z
+000000bc	00bfea1a	??2@YAPAXI@Z
+000000cd	006e7630	??0MovieResource@@QAE@PAUCGameScriptInterface@@_N@Z
+000000db	008ab970	?Reset@MovieResourceHandle@@QAEXPAUMovieResource@@@Z
+000000e1	01380c34	?g_MovieCameraID@@3JA
+000000eb	013bad00	?g_MovieState@@3JA

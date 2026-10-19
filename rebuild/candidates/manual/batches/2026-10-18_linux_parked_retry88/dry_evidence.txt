@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00729110   RELOCATION_MATCH PASS   Update
+00d9fd80   RELOCATION_MATCH PASS   PhaseMe
+00ddece0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00729110 RELOCATION_MATCH CExpressionState::Update
+  00d9fd80 RELOCATION_MATCH CFadeinSummoner::PhaseMe
+  00ddece0 RELOCATION_MATCH CExitWardensOffice::Main

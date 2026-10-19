@@ -1,0 +1,9 @@
+addr       parity           behav  name
+004de122   WARN SHARED_HEADER_AVAILABLE CTrophyDef
+004de122   RELOCATION_MATCH PASS   Transfer
+
+WINS: 1
+  004de122 RELOCATION_MATCH CTrophyDef::Transfer
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTrophyDef_Transfer_004de122

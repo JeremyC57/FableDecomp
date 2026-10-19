@@ -1,0 +1,77 @@
+00513bf0 53                   push ebx
+00513bf1 55                   push ebp
+00513bf2 56                   push esi
+00513bf3 57                   push edi
+00513bf4 8b7c2414             mov edi, dword ptr [esp + 0x14]
+00513bf8 8bf1                 mov esi, ecx
+00513bfa 8bc7                 mov eax, edi
+00513bfc 8b10                 mov edx, dword ptr [eax]
+00513bfe 8911                 mov dword ptr [ecx], edx
+00513c00 8b5004               mov edx, dword ptr [eax + 4]
+00513c03 895104               mov dword ptr [ecx + 4], edx
+00513c06 8b5008               mov edx, dword ptr [eax + 8]
+00513c09 895108               mov dword ptr [ecx + 8], edx
+00513c0c 8b400c               mov eax, dword ptr [eax + 0xc]
+00513c0f 89410c               mov dword ptr [ecx + 0xc], eax
+00513c12 8b5f14               mov ebx, dword ptr [edi + 0x14]
+00513c15 8b4614               mov eax, dword ptr [esi + 0x14]
+00513c18 3bc3                 cmp eax, ebx
+00513c1a 8b6f10               mov ebp, dword ptr [edi + 0x10]
+00513c1d 742c                 je 0x513c4b
+00513c1f 85c0                 test eax, eax
+00513c21 741c                 je 0x513c3f
+00513c23 ff08                 dec dword ptr [eax]
+00513c25 8b4614               mov eax, dword ptr [esi + 0x14]
+00513c28 833800               cmp dword ptr [eax], 0
+00513c2b 7512                 jne 0x513c3f
+00513c2d 8b4808               mov ecx, dword ptr [eax + 8]
+00513c30 ff5004               call dword ptr [eax + 4]
+00513c33 8b4e14               mov ecx, dword ptr [esi + 0x14]
+00513c36 51                   push ecx
+00513c37 e880ad6e00           call 0xbfe9bc
+00513c3c 83c404               add esp, 4
+00513c3f 85db                 test ebx, ebx
+00513c41 896e10               mov dword ptr [esi + 0x10], ebp
+00513c44 895e14               mov dword ptr [esi + 0x14], ebx
+00513c47 7402                 je 0x513c4b
+00513c49 ff03                 inc dword ptr [ebx]
+00513c4b 8d5718               lea edx, [edi + 0x18]
+00513c4e 52                   push edx
+00513c4f 8d4e18               lea ecx, [esi + 0x18]
+00513c52 e859b34800           call 0x99efb0
+00513c57 8d471c               lea eax, [edi + 0x1c]
+00513c5a 50                   push eax
+00513c5b 8d4e1c               lea ecx, [esi + 0x1c]
+00513c5e e84db34800           call 0x99efb0
+00513c63 8b4f20               mov ecx, dword ptr [edi + 0x20]
+00513c66 894e20               mov dword ptr [esi + 0x20], ecx
+00513c69 8a5724               mov dl, byte ptr [edi + 0x24]
+00513c6c 885624               mov byte ptr [esi + 0x24], dl
+00513c6f 8a4725               mov al, byte ptr [edi + 0x25]
+00513c72 884625               mov byte ptr [esi + 0x25], al
+00513c75 8a4f26               mov cl, byte ptr [edi + 0x26]
+00513c78 884e26               mov byte ptr [esi + 0x26], cl
+00513c7b 8a5727               mov dl, byte ptr [edi + 0x27]
+00513c7e 8d4f2c               lea ecx, [edi + 0x2c]
+00513c81 885627               mov byte ptr [esi + 0x27], dl
+00513c84 8a4728               mov al, byte ptr [edi + 0x28]
+00513c87 51                   push ecx
+00513c88 8d4e2c               lea ecx, [esi + 0x2c]
+00513c8b 884628               mov byte ptr [esi + 0x28], al
+00513c8e e81db34800           call 0x99efb0
+00513c93 8b5730               mov edx, dword ptr [edi + 0x30]
+00513c96 895630               mov dword ptr [esi + 0x30], edx
+00513c99 8b4734               mov eax, dword ptr [edi + 0x34]
+00513c9c 894634               mov dword ptr [esi + 0x34], eax
+00513c9f 8b4f38               mov ecx, dword ptr [edi + 0x38]
+00513ca2 894e38               mov dword ptr [esi + 0x38], ecx
+00513ca5 8b573c               mov edx, dword ptr [edi + 0x3c]
+00513ca8 89563c               mov dword ptr [esi + 0x3c], edx
+00513cab 8a4740               mov al, byte ptr [edi + 0x40]
+00513cae 5f                   pop edi
+00513caf 884640               mov byte ptr [esi + 0x40], al
+00513cb2 8bc6                 mov eax, esi
+00513cb4 5e                   pop esi
+00513cb5 5d                   pop ebp
+00513cb6 5b                   pop ebx
+00513cb7 c20400               ret 4

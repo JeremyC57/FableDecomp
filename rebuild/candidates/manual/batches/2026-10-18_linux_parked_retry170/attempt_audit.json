@@ -1,0 +1,238 @@
+[
+  {
+    "attempt": 1,
+    "sha256": "799e7164839c243925c1d7970913bc67cf74a33f8452f28a9e8b9d0bc2576d21",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1b80 work/codex-lane/w22/astra239_whole/probe/008d1b80_v01.cpp MsgWhoTalkedToMe",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1b80_01"
+  },
+  {
+    "attempt": 2,
+    "sha256": "eb3e088ec6b3f6330726b51255ec42a8f81d9f51ca00cf928273abc501d9c8b7",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1b80 work/codex-lane/w22/astra239_whole/probe/008d1b80_v02.cpp CGameScriptThingMethods::MsgWhoTalkedToMe",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1b80_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "4a4601de305c09ee2b572f818a041dcb873851319f109728b1747df690feb336",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1b80 work/codex-lane/w22/astra239_whole/src/008d1b80.cpp MsgWhoTalkedToMe",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine event and nested constructors, native HitBase virtual hierarchy",
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1b80_03"
+  },
+  {
+    "attempt": 1,
+    "sha256": "3960a926249f41d9bbbd671c080058c8105ecd3c420a5e74c76ec3259304c7a0",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1ca0 work/codex-lane/w22/astra239_whole/probe/008d1ca0_v01.cpp MsgExpressionPerformedTo",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1ca0_01"
+  },
+  {
+    "attempt": 2,
+    "sha256": "25d4b6ce0a913e4123aec7f14d388e400761110a979f30b8a6203c6c784e44b7",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1ca0 work/codex-lane/w22/astra239_whole/probe/008d1ca0_v02.cpp MsgExpressionPerformedTo",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1ca0_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "e1c518b9e0ff39064bc9ddc76a4e4f5435824db3f621e79767dde6b793a89dfb",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1ca0 work/codex-lane/w22/astra239_whole/src/008d1ca0.cpp MsgExpressionPerformedTo",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine event and nested constructors, native HitBase virtual hierarchy",
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1ca0_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 4,
+    "sha256": "7942279e38a0e3625d54c5edd42ee651c907250261ddb1617794709460804a52",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1ca0 work/codex-lane/w22/astra239_whole/src/008d1ca0.cpp MsgExpressionPerformedTo",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "include actual CParentDefClassBase donor header and document verified native projection",
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1ca0_04"
+  },
+  {
+    "attempt": 1,
+    "sha256": "9a3a582fa596b4339b532ae0fd85f57aa4ee3adb71cdf748da4fd988a0cce2ff",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1dd0 work/codex-lane/w22/astra239_whole/probe/008d1dd0_v01.cpp MsgWhoExpressedToMe@CGameScriptThingMethods",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1dd0_01"
+  },
+  {
+    "attempt": 2,
+    "sha256": "4779ce48f6b478e73a0c618cc1229acdbefbbe3f96eeb3b6ca15618cad3bbc82",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1dd0 work/codex-lane/w22/astra239_whole/probe/008d1dd0_v02.cpp MsgWhoExpressedToMe@CGameScriptThingMethods",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1dd0_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "f1fb7bc92624af3ffc65a2aac1c9a4cd5d76158d5530a51c953c5c58addce45a",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1dd0 work/codex-lane/w22/astra239_whole/src/008d1dd0.cpp MsgWhoExpressedToMe",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine event and nested constructors, native HitBase virtual hierarchy",
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1dd0_03"
+  },
+  {
+    "attempt": 1,
+    "sha256": "18c884aa0ead9488a1cf311fa5fc1616cac0e743dd220d0a895e671d79760ccd",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d21b0 work/codex-lane/w22/astra239_whole/probe/008d21b0_v01.cpp MsgWhoKnockedMeOut@CGameScriptThingMethods",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d21b0_01"
+  },
+  {
+    "attempt": 2,
+    "sha256": "6eb6b61086bfea91d18519fe61142ab8f980cbb1db876210875ccbe9dbb710e2",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d21b0 work/codex-lane/w22/astra239_whole/probe/008d21b0_v02.cpp MsgWhoKnockedMeOut@CGameScriptThingMethods",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d21b0_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "9ec373b5cf334242fed847e604b3f1f8d38ccd0976a4090b8d3f162bebdd38ac",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d21b0 work/codex-lane/w22/astra239_whole/src/008d21b0.cpp MsgWhoKnockedMeOut",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine event and nested constructors, native HitBase virtual hierarchy",
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d21b0_03"
+  },
+  {
+    "attempt": 1,
+    "sha256": "813182735794cb6f3afeda265a69253ca9a4288e90c8210c0586bd2f2deab886",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1890 work/codex-lane/w22/astra239_whole/probe/008d1890_v01.cpp MsgWhoHitMe@CGameScriptThingMethods",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1890_01"
+  },
+  {
+    "attempt": 2,
+    "sha256": "e875522bc3b8bcd3ab8704b6b02d6b21c4be3c7ba182762ef4f43dcb533e4637",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1890 work/codex-lane/w22/astra239_whole/probe/008d1890_v02.cpp MsgWhoHitMe@CGameScriptThingMethods",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1890_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "bb5f7b60e5b8053c1549ea153f79c8578e2464f0fc2f6470997d1759fe6ae59b",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1890 work/codex-lane/w22/astra239_whole/src/008d1890.cpp MsgWhoHitMe",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine event and nested constructors, native HitBase virtual hierarchy",
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1890_03"
+  },
+  {
+    "attempt": 1,
+    "sha256": "81ee0af9d6e8b1abf3e0e8ab4c67135eb135c3d4432340db12bd0b6a6f333ce4",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1330 work/codex-lane/w22/astra239_whole/probe/008d1330_v01.cpp MsgIsHitByWithFlourish",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1330_01"
+  },
+  {
+    "snapshot": 2,
+    "source_grade": 2,
+    "sha256": "a38531ee97d3c72bed86462914203760d500518fe3a1f3a5e966702b6e0ce0dc",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d1330 work/codex-lane/w22/astra239_whole/src/008d1330.cpp MsgIsHitByWithFlourish",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine event and nested constructors, native HitBase virtual hierarchy",
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d1330_02"
+  },
+  {
+    "attempt": 1,
+    "sha256": "a8010d9f5b3a97dd093142a6207e9bbe30b2b6242d3b3a07aefaf00928348b25",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d15b0 work/codex-lane/w22/astra239_whole/probe/008d15b0_v01.cpp MsgIsHitByWithProjectileWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d15b0_01"
+  },
+  {
+    "snapshot": 2,
+    "source_grade": 2,
+    "sha256": "039997d4c0ed3461b847167f667a76e82df8f6c9b56aa6d399090651b993e387",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d15b0 work/codex-lane/w22/astra239_whole/src/008d15b0.cpp MsgIsHitByWithProjectileWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine event and nested constructors, native HitBase virtual hierarchy",
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d15b0_02"
+  }
+]

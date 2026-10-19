@@ -1,0 +1,12 @@
+offset	native_target	symbol
+0000001f	00cbe2ff	?IsDistanceBetweenThingsUnder@@YI_NABUCScriptThing@@0M@Z
+00000032	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00000053	00cbe2ff	?IsDistanceBetweenThingsUnder@@YI_NABUCScriptThing@@0M@Z
+0000005e	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+0000006a	012d7274	??_C@_0BF@FNAHCCFC@MinionAttackingGuard?$AA@
+00000073	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000007a	012cb9f4	??_C@_0BH@LAOJIJNH@CREATURE_MINION_WARDOG?$AA@
+00000083	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+000000b3	004aa840	??1CScriptThing@@UAE@XZ
+000000bc	0099eae0	??1CCharString@@QAE@XZ
+000000c5	0099eae0	??1CCharString@@QAE@XZ

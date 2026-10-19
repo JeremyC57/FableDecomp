@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00914c60   WARN SHARED_HEADER_AVAILABLE CTCBase
+00914c60   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 1
+  00914c60 RELOCATION_MATCH CAIStateGroup_KidWanderNearKids::IsRunnable
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupKidWanderNearKids_IsRunnable_00914c60

@@ -1,0 +1,8 @@
+{
+  "symbol": "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@@Z",
+  "length": 108,
+  "masked_actual_call_offset": [
+    15
+  ],
+  "target": "009ad9e0"
+}

@@ -1,0 +1,5 @@
+# Animation combat parsers
+
+005dc550 Handedness (252 bytes),005dc7b0 Misc (256),005dc8b0 FlourishTargetOffset (248) independently verified RELOCATION_MATCH + PASS and landed. Source helper targets and pooled strings were audited. Parser layout follows landed00404720: Comments is one sentinel pointer at+14, callback+18, CursorPos[3]+1c, total0x28; donor header has a12-byte list and0x30 total. Virtual owner shells preserve Reset slot8 and Initialise slot3 without adding a second vptr to the generated data-only headers. Float offset fields are genuinely packed+9/+d, as both donor header and retail stores prove.
+
+Root fixtures embed every candidate verbatim and verify complete Reset/string/parser/transfer/marker/list/string/base cleanup order, exact receivers, arguments and field effects. Handedness commits both values only after the comma; Misc and target offset directly retain the first parsed value on marker failure. Fixtures cover both exits, all bool pairs, signed values and float values. Host and canonical VC7.1/Wine PASS. Retained author counts6/3/3; coordinator only corrected documentation and replaced fixtures, no body changes.

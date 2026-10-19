@@ -1,0 +1,41 @@
+address	status	grades	remaining	note	root_extra_grades	total_grades
+00b5ece0	LANDED	3	7	Root150 independently accepted	0	3
+00cac300	LANDED	3	5	Root173/175 independently accepted; original worker snapshots preserved. Root payload serialization caused two unintended flag attempts; see root175 incident record.	2	5
+00b5bbc0	LANDED	1	9	Root145 independently accepted	0	1
+00b620a0	LANDED	2	8	Root145 independently accepted	0	2
+004c00e0	LANDED	2	8	Exact source host/native fixtures PASS; root review pending	0	2
+00562ec0	LANDED	10	0	Root173/175 independently accepted; original worker snapshots preserved.	0	10
+00bc9c30	LANDED	2	8	Root145 independently accepted	0	2
+00b849f0	LANDED	5	5	Root173/175 independently accepted; original worker snapshots preserved.	0	5
+0078e1f0	LANDED	1	9	Root145 independently accepted	0	1
+00bf3030	LANDED	6	4	Root145 independently accepted	0	6
+00434120	LANDED	1	9	Root145 independently accepted	0	1
+00bfd290	LANDED	1	9	Root173/175 independently accepted; original worker snapshots preserved.	0	1
+00b51f60	LANDED	8	2	Root150 independently accepted	0	8
+00b54100	BLOCKED_DIFFER	8	2	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	8
+00b54210	BLOCKED_DIFFER	7	3	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	7
+00b428e0	LANDED	2	8	Root145 independently accepted	0	2
+00c64840	LANDED	2	8	Root145 independently accepted	0	2
+006b63c0	LANDED	1	9	Root145 independently accepted	0	1
+00886d70	BLOCKED_DIFFER	8	2	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	8
+00811470	BLOCKED_DIFFER	9	1	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	9
+008115a0	BLOCKED_DIFFER	3	7	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	3
+00eed6b0	LANDED	3	7	Existing canonical termination-helper const repair g3 committed df7e7d5e1; no added function count.	0	3
+004569a7	LANDED	1	9	Root145 independently accepted	0	1
+00d3abe0	LANDED	4	6	Root173/175 independently accepted; original worker snapshots preserved.	0	4
+00d3ae40	CAPPED_DIFFER	10	0	10/10; best g6 264v264 initial Resource address scheduling differs; full evidence in differ/	0	10
+008857e0	LANDED	6	4	Root163 accepted ba10cf979	0	6
+00efe8d0	BLOCKED_DIFFER	5	5	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	5
+009c3660	BLOCKED_DIFFER	6	4	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	6
+009c3ae0	CAPPED_DIFFER	10	0	10/10; bestg4 differs only baseline LEA SIB operand order; full evidence in differ/	0	10
+00780700	CAPPED_DIFFER	10	0	10/10; bestg10 correct signatures249v249 but register scheduling differs; preserved differ/	0	10
+009e2d00	LANDED	2	8	Root163 accepted ba10cf979	0	2
+00f37170	LANDED	3	7	Root150 independently accepted	0	3
+006fd8c0	HELD_REVIEW	5	5	g5 byte/fixtures pass; world-reference signature/base constructor vector arguments unresolved; do not land	0	5
+00697e20	LANDED	1	9	Root173/175 independently accepted; original worker snapshots preserved.	0	1
+00698d10	LANDED	4	6	Root173/175 independently accepted; original worker snapshots preserved.	0	4
+00698e40	BLOCKED_DIFFER	4	6	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	4
+00698f50	LANDED	10	0	Root173/175 independently accepted; original worker snapshots preserved.	0	10
+00699560	LANDED	3	7	Root173/175 independently accepted; original worker snapshots preserved.	0	3
+006b2960	BLOCKED_DIFFER	2	8	Supported approaches investigated; precise blocker and best snapshot preserved in differ/; allowance retained	0	2
+00446220	LANDED	5	5	Exact source host/native fixtures PASS; root review pending	0	5

@@ -1,0 +1,3 @@
+offset	native_target	symbol
+000000aa	01436e5c	?gOcclusionManager@Native@@3PAUOcclusionManager@1@A
+000000bb	00b8d420	?RenderOcclusionBox@OcclusionManager@Native@@QAEKABUMatrix@2@@Z

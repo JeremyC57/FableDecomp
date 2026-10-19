@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0092bcb0   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 1
+  0092bcb0 RELOCATION_MATCH CAIStateGroup_AvoidRegionExit::IsRunnable

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00f37440   RELOCATION_MATCH PASS   AllocateTexture
+
+WINS: 1
+  00f37440 RELOCATION_MATCH CGPUScratchBufferTextureManager::AllocateTexture

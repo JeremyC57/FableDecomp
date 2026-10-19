@@ -1,0 +1,6 @@
+address	reserved_uncertain	new_grade_limit	status	evidence
+00ce4b70	4	6	RESERVED_RETRY	Four historical placeholder copies, no genuine source; agent200 and retry196_200 ledgers record unauthored; no subsequent attempt history; preserve reservation
+00ce5620	4	6	RESERVED_RETRY	Four historical placeholder copies, no genuine source; agent200 and retry196_200 ledgers record unauthored; no subsequent attempt history; preserve reservation
+00ce56e0	4	6	RESERVED_RETRY	Four historical placeholder copies, no genuine source; agent200 and retry196_200 ledgers record unauthored; no subsequent attempt history; preserve reservation
+00ce5e10	4	6	RESERVED_RETRY	Four historical placeholder copies, no genuine source; agent200 and retry196_200 ledgers record unauthored; no subsequent attempt history; preserve reservation
+00ce6a40	4	6	RESERVED_RETRY	Four historical placeholder copies, no genuine source; agent200 and retry196_200 ledgers record unauthored; no subsequent attempt history; preserve reservation

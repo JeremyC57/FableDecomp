@@ -1,0 +1,5 @@
+offset	native_target	symbol
+00000015	00687d00	?GetControlMovementFromGameActionEvent@CInputProcessGameBase@@QBE_NW4EGameAction@@ABUCInputEvent@@AAUC2DVector@@@Z
+00000047	0129ba3c	__real@38d1b717
+00000054	0122ded8	__real@3f800000
+000000a3	0125c0b8	__real@3f733333

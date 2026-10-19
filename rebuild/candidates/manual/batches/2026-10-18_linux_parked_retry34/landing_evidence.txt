@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00965520   RELOCATION_MATCH PASS   IsStillValid
+009643d0   RELOCATION_MATCH PASS   IsStillValid
+
+WINS: 2
+  00965520 RELOCATION_MATCH CAIStateGroup_RecoverStealableItem::IsStillValid
+  009643d0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::IsStillValid
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupRecoverStealableItem_IsStillValid_00965520
+  CAIStateGroupStealStealableItem_IsStillValid_009643d0

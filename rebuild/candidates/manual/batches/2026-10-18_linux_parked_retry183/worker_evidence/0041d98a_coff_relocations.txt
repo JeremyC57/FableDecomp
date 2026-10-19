@@ -1,0 +1,62 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/evidence/0041d98a.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?AddReference@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?DecRef@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetRefCount@CIVCountedPointeeBase@@QBEJXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CDefPointer@UCUIIconsDef@NUISystem@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?RemoveReference@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CDefPointer@UCDefClassBase@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CDefPointer@UCUIIconsDef@NUISystem@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000011 DISP32            ?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AU?$CDefPointer@UCDefClassBase@@@@J@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000011 DISP32            ?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AU?$CDefPointer@UCDefClassBase@@@@J@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000019 dir32             ??_C@_0N@DHMGBONA@UI_ICONS_DEF?$AA@
+0000001e DISP32            ??0CCharString@@QAE@PBDJ@Z
+0000002c DISP32            ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+00000036 DISP32            ??1CCharString@@QAE@XZ
+00000043 DISP32            ?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIIconsDef@NUISystem@@@@@Z
+0000004d dir32             ??_C@_0N@DHMGBONA@UI_ICONS_DEF?$AA@
+00000052 DISP32            ??0CCharString@@QAE@PBDJ@Z
+0000005d DISP32            ?GetDefinitionManager@@YIPAUCDefinitionManager@@XZ
+00000064 DISP32            ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+0000006e DISP32            ??1CCharString@@QAE@XZ
+00000078 DISP32            ?GetDefinitionManager@@YIPAUCDefinitionManager@@XZ
+0000007f DISP32            ?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIIconsDef@NUISystem@@@@@Z

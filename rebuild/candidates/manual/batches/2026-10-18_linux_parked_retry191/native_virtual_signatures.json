@@ -1,0 +1,514 @@
+{
+  "slots": [
+    {
+      "table": "CountedNative",
+      "slot": 0,
+      "target": "0x4664e0",
+      "compiled": "public: virtual void * __thiscall CountedNative::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "actual deleting destructor slot"
+    },
+    {
+      "table": "CountedNative",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall CountedNative::Delete(void) const",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 0,
+      "target": "0x4664ff",
+      "compiled": "public: virtual void * __thiscall ResourceNative::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "actual deleting destructor slot"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall CountedNative::Delete(void) const",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 2,
+      "target": "0x42d940",
+      "compiled": "public: virtual bool __thiscall ResourceNative::UnloadResource(void)",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CResource::UnloadResource(void)"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 3,
+      "target": "0x9fbef0",
+      "compiled": "public: virtual unsigned long __thiscall ResourceNative::GetUnloadableMemory(void) const",
+      "PDB_or_native_evidence": "public: virtual unsigned long __thiscall CResource::GetUnloadableMemory(void) const"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 4,
+      "target": "0x42d950",
+      "compiled": "public: virtual bool __thiscall ResourceNative::IsResourceLoaded(void) const",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CResource::IsResourceLoaded(void) const"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 5,
+      "target": "0x42d960",
+      "compiled": "public: virtual void __thiscall ResourceNative::OnResourceLoaded(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CResource::OnResourceLoaded(void)"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 6,
+      "target": "0x42d970",
+      "compiled": "public: virtual bool __thiscall ResourceNative::CanAbortResourceLoad(long) const",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 7,
+      "target": "0x42d980",
+      "compiled": "public: virtual void __thiscall ResourceNative::OnResourceLoadAborted(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 8,
+      "target": "0x9fbf00",
+      "compiled": "public: virtual unsigned long __thiscall ResourceNative::GetDebugMemoryInUse(void) const",
+      "PDB_or_native_evidence": "public: virtual unsigned long __thiscall CResource::GetDebugMemoryInUse(void) const"
+    },
+    {
+      "table": "ResourceNative",
+      "slot": 9,
+      "target": "0x9fbf10",
+      "compiled": "public: virtual void __thiscall ResourceNative::ResetDebugMemoryInUse(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CResource::ResetDebugMemoryInUse(void)"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 0,
+      "target": "0x9ffb80",
+      "compiled": "public: virtual void * __thiscall ManagedTextureOwner::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "actual deleting destructor slot"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall CountedNative::Delete(void) const",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 2,
+      "target": "0x42d940",
+      "compiled": "public: virtual bool __thiscall ResourceNative::UnloadResource(void)",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CResource::UnloadResource(void)"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 3,
+      "target": "0x9fbef0",
+      "compiled": "public: virtual unsigned long __thiscall ResourceNative::GetUnloadableMemory(void) const",
+      "PDB_or_native_evidence": "public: virtual unsigned long __thiscall CResource::GetUnloadableMemory(void) const"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 4,
+      "target": "0x42d950",
+      "compiled": "public: virtual bool __thiscall ResourceNative::IsResourceLoaded(void) const",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CResource::IsResourceLoaded(void) const"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 5,
+      "target": "0x42d960",
+      "compiled": "public: virtual void __thiscall ResourceNative::OnResourceLoaded(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CResource::OnResourceLoaded(void)"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 6,
+      "target": "0x42d970",
+      "compiled": "public: virtual bool __thiscall ResourceNative::CanAbortResourceLoad(long) const",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 7,
+      "target": "0x42d980",
+      "compiled": "public: virtual void __thiscall ResourceNative::OnResourceLoadAborted(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 8,
+      "target": "0x9fbf00",
+      "compiled": "public: virtual unsigned long __thiscall ResourceNative::GetDebugMemoryInUse(void) const",
+      "PDB_or_native_evidence": "public: virtual unsigned long __thiscall CResource::GetDebugMemoryInUse(void) const"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 9,
+      "target": "0x9fbf10",
+      "compiled": "public: virtual void __thiscall ResourceNative::ResetDebugMemoryInUse(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CResource::ResetDebugMemoryInUse(void)"
+    },
+    {
+      "table": "ManagedTextureOwner",
+      "slot": 10,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "PDB_or_native_evidence": "actual native purecall"
+    },
+    {
+      "table": "FrameData",
+      "slot": 0,
+      "target": "0xa010a0",
+      "compiled": "public: virtual void * __thiscall FrameData::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "actual deleting destructor slot"
+    },
+    {
+      "table": "FrameData",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall CountedNative::Delete(void) const",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "table": "FrameData",
+      "slot": 2,
+      "target": "0x42d940",
+      "compiled": "public: virtual bool __thiscall ResourceNative::UnloadResource(void)",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CResource::UnloadResource(void)"
+    },
+    {
+      "table": "FrameData",
+      "slot": 3,
+      "target": "0x9fd830",
+      "compiled": "public: virtual unsigned long __thiscall FrameData::GetUnloadableMemory(void) const",
+      "PDB_or_native_evidence": "public: virtual unsigned long __thiscall CGraphicInfoFrame::CFrameData::GetUnloadableMemory(void) const"
+    },
+    {
+      "table": "FrameData",
+      "slot": 4,
+      "target": "0x9fd7f0",
+      "compiled": "public: virtual bool __thiscall FrameData::IsResourceLoaded(void) const",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CGraphicInfoFrame::CFrameData::IsResourceLoaded(void) const"
+    },
+    {
+      "table": "FrameData",
+      "slot": 5,
+      "target": "0x9ff860",
+      "compiled": "public: virtual void __thiscall FrameData::OnResourceLoaded(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CGraphicInfoFrame::CFrameData::OnResourceLoaded(void)"
+    },
+    {
+      "table": "FrameData",
+      "slot": 6,
+      "target": "0x42d970",
+      "compiled": "public: virtual bool __thiscall ResourceNative::CanAbortResourceLoad(long) const",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const"
+    },
+    {
+      "table": "FrameData",
+      "slot": 7,
+      "target": "0x42d980",
+      "compiled": "public: virtual void __thiscall ResourceNative::OnResourceLoadAborted(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)"
+    },
+    {
+      "table": "FrameData",
+      "slot": 8,
+      "target": "0x9fdcb0",
+      "compiled": "public: virtual unsigned long __thiscall FrameData::GetDebugMemoryInUse(void) const",
+      "PDB_or_native_evidence": "public: virtual unsigned long __thiscall CGraphicInfoFrame::CFrameData::GetDebugMemoryInUse(void) const"
+    },
+    {
+      "table": "FrameData",
+      "slot": 9,
+      "target": "0x9fd4d0",
+      "compiled": "public: virtual void __thiscall FrameData::ResetDebugMemoryInUse(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CGraphicInfoFrame::CFrameData::ResetDebugMemoryInUse(void)"
+    },
+    {
+      "table": "FrameData",
+      "slot": 10,
+      "target": "0x9fea00",
+      "compiled": "public: virtual void __thiscall FrameData::ReleaseTexture(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CGraphicInfoFrame::CFrameData::ReleaseTexture(void)"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 0,
+      "target": "0xbacde0",
+      "compiled": "public: virtual void * __thiscall CEnginePrimitiveManager::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "deleting destructor",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "PDB_or_native_evidence": "__purecall",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 2,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "PDB_or_native_evidence": "__purecall",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 3,
+      "target": "0xbacd90",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 4,
+      "target": "0xbacda0",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 5,
+      "target": "0xb4a450",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(class CEngineSubPrimitiveBase &, enum ERenderPassType)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 6,
+      "target": "0xb4a460",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(class CEngineSubPrimitiveBase &)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 7,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "PDB_or_native_evidence": "__purecall",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 8,
+      "target": "0xb38810",
+      "compiled": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+      "PDB_or_native_evidence": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(class CEngineInternalPrimitiveBase &)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 9,
+      "target": "0xb38820",
+      "compiled": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(class CEngineInternalPrimitiveBase &, class C3DVector const &, unsigned long)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 10,
+      "target": "0xb38830",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(class CEngineInternalPrimitiveBase &, class CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 11,
+      "target": "0xb38840",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManager",
+      "slot": 12,
+      "target": "0xb38850",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(class CEngineInternalPrimitiveBase &, class NEngineShadowRenderer::CShadowSceneContext &)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CVertexShader",
+      "slot": 0,
+      "target": "0x9c1ae0",
+      "compiled": "public: virtual void * __thiscall CVertexShader::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "deleting destructor",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CVertexShader",
+      "slot": 1,
+      "target": "0x987cf0",
+      "compiled": "public: virtual class CCharString __thiscall CVertexShader::GetDebugName(void) const",
+      "PDB_or_native_evidence": "public: virtual class CCharString __thiscall CVertexShader::GetDebugName(void) const",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CVertexShader",
+      "slot": 2,
+      "target": "0x9be210",
+      "compiled": "public: virtual unsigned long __thiscall CVertexShader::CountReferences(void)",
+      "PDB_or_native_evidence": "private: virtual unsigned long __thiscall CVertexShader::CountReferences(void)",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CShaderBase",
+      "slot": 0,
+      "target": "0x987d10",
+      "compiled": "protected: virtual void * __thiscall CShaderBase::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "deleting destructor",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CShaderBase",
+      "slot": 1,
+      "target": "0x987cf0",
+      "compiled": "protected: virtual class CCharString __thiscall CShaderBase::GetDebugName(void) const",
+      "PDB_or_native_evidence": "protected: virtual class CCharString __thiscall CShaderBase::GetDebugName(void) const",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CVertexShaderData",
+      "slot": 0,
+      "target": "0xa630d0",
+      "compiled": "public: virtual void * __thiscall CVertexShaderData::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "deleting destructor",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveRenderUtil",
+      "slot": 0,
+      "target": "0xb8b600",
+      "compiled": "public: virtual void * __thiscall CEnginePrimitiveRenderUtil::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "deleting destructor",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CBaseClassNonCopyable",
+      "slot": 0,
+      "target": "0x99a470",
+      "compiled": "protected: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "deleting destructor",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CBaseClass",
+      "slot": 0,
+      "target": "0x4371f0",
+      "compiled": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "deleting destructor",
+      "earlier_independent_audit": "coordinator_retry186/native_virtual_signatures.json"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 0,
+      "target": "0xb91460",
+      "compiled": "public: virtual void * __thiscall CEnginePrimitiveManagerOcclusionBase::`vector deleting dtor'(unsigned int)",
+      "PDB_or_native_evidence": "actual deleting destructor slot"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "PDB_or_native_evidence": "actual native purecall"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 2,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "PDB_or_native_evidence": "actual native purecall"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 3,
+      "target": "0xbacd90",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 4,
+      "target": "0xbacda0",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 5,
+      "target": "0xb4a450",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(class CEngineSubPrimitiveBase &, enum ERenderPassType)"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 6,
+      "target": "0xb91340",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManagerOcclusionBase::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManagerOcclusionBase::RenderBoundingVolume(class CEngineSubPrimitiveBase &)"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 7,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "PDB_or_native_evidence": "actual native purecall"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 8,
+      "target": "0xb38810",
+      "compiled": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+      "PDB_or_native_evidence": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(class CEngineInternalPrimitiveBase &)"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 9,
+      "target": "0xb38820",
+      "compiled": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+      "PDB_or_native_evidence": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(class CEngineInternalPrimitiveBase &, class C3DVector const &, unsigned long)"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 10,
+      "target": "0xb38830",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(class CEngineInternalPrimitiveBase &, class CEngineSubPrimitiveChain &, enum ESubPrimitiveType)"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 11,
+      "target": "0xb38840",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)"
+    },
+    {
+      "table": "CEnginePrimitiveManagerOcclusionBase",
+      "slot": 12,
+      "target": "0xb38850",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+      "PDB_or_native_evidence": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(class CEngineInternalPrimitiveBase &, class NEngineShadowRenderer::CShadowSceneContext &)"
+    }
+  ],
+  "abstract_concrete_tests": [
+    1,
+    2,
+    7
+  ]
+}

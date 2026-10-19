@@ -1,0 +1,30 @@
+[
+  [
+    "0041d8e7",
+    "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIMiscThingsDef@NUISystem@@@@@Z",
+    "0x42b312",
+    98,
+    1
+  ],
+  [
+    "0041d8e7",
+    "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIIconsDef@NUISystem@@@@@Z",
+    "0x42b374",
+    98,
+    1
+  ],
+  [
+    "0041d98a",
+    "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIMiscThingsDef@NUISystem@@@@@Z",
+    "0x42b312",
+    98,
+    1
+  ],
+  [
+    "0041d98a",
+    "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIIconsDef@NUISystem@@@@@Z",
+    "0x42b374",
+    98,
+    1
+  ]
+]

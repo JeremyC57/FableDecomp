@@ -1,0 +1,11 @@
+addr       parity           behav  name
+008717a0   RELOCATION_MATCH PASS   Dispatch
+00717d40   RELOCATION_MATCH PASS   CActionTalkToThing
+
+WINS: 2
+  008717a0 RELOCATION_MATCH CActionEventExplosion::Dispatch
+  00717d40 RELOCATION_MATCH CActionTalkToThing::??0CActionTalkToThing
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CActionEventExplosion_Dispatch_008717a0
+  CActionTalkToThing_CActionTalkToThing_00717d40

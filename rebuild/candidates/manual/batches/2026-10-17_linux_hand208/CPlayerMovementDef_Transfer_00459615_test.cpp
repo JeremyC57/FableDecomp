@@ -1,0 +1,4 @@
+#include <cstdio>
+struct Context { int normal[16]; int alt[16]; int n,a; Context():n(0),a(0){} void normalCall(int* p){normal[n++]=1;} void altCall(int* p){alt[a++]=1;} };
+struct Def { int f[16]; void run(Context& c){ c.normalCall(&f[0]);c.normalCall(&f[1]);c.normalCall(&f[2]);c.normalCall(&f[3]);c.normalCall(&f[4]);c.normalCall(&f[5]);c.altCall(&f[6]);c.altCall(&f[7]);c.normalCall(&f[8]);c.altCall(&f[9]);c.normalCall(&f[10]);c.normalCall(&f[11]);c.normalCall(&f[12]);c.normalCall(&f[13]);c.normalCall(&f[14]);c.normalCall(&f[15]); }};
+int main(){Context c;Def d;d.run(c);if(c.n!=13||c.a!=3){std::printf("00459615_TEST FAIL\n");return 1;}std::printf("00459615_TEST PASS\n");return 0;}

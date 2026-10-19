@@ -1,0 +1,362 @@
+[
+  {
+    "address": "0041d8e7",
+    "new_grade": 1,
+    "historical_uncertain": 4,
+    "cumulative": 5,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_01.cpp",
+    "sha256": "14acd276eebe876cee92bf376712007b62dba95f7bb2a84a2c64c89015da8737",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041d8e7",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_01.cpp",
+      "GetMiscThingsDef"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041d8e7 CManager::GetIconsDef SRC_FAIL flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041d8e7",
+    "new_grade": 2,
+    "historical_uncertain": 4,
+    "cumulative": 6,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_02.cpp",
+    "sha256": "0ea151edab914f037e7450232f93a768819c79a167e672ae24ccc74b8a42c8a9",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041d8e7",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_02.cpp",
+      "GetMiscThingsDef"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041d8e7 CManager::GetIconsDef DIFFER(167v163) flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041d8e7",
+    "new_grade": 3,
+    "historical_uncertain": 4,
+    "cumulative": 7,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_03.cpp",
+    "sha256": "2b57a997277ac44cc285094c2845476819b222239eac950a5a850dd704f1a35f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041d8e7",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_03.cpp",
+      "GetMiscThingsDef"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041d8e7 CManager::GetIconsDef DIFFER(173v163) flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041d8e7",
+    "new_grade": 4,
+    "historical_uncertain": 4,
+    "cumulative": 8,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_04.cpp",
+    "sha256": "a176a4c8d4da7bfb39fb0edc0326addc6a05fbc646038df3e05d96c0475626e1",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041d8e7",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_04.cpp",
+      "GetMiscThingsDef"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041d8e7 CManager::GetIconsDef RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041d98a",
+    "new_grade": 1,
+    "historical_uncertain": 4,
+    "cumulative": 5,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_01.cpp",
+    "sha256": "90afb20a1939c765ccf45fed06be444531b20387f70e273e6d49147e993f4c9e",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041d98a",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_01.cpp",
+      "GetIconsDef"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041d98a CManager::GetIconsDef RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "00417418",
+    "new_grade": 1,
+    "historical_uncertain": 4,
+    "cumulative": 5,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_01.cpp",
+    "sha256": "35078b485095603e941b88fda3e1ad611d312cfbeaa32c1a15aad3e1a99c75d7",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00417418",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_01.cpp",
+      "InitDisplayEngine"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "00417418 CMainGameComponent::InitDisplayEngine SRC_FAIL flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "00417418",
+    "new_grade": 2,
+    "historical_uncertain": 4,
+    "cumulative": 6,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_02.cpp",
+    "sha256": "f056d888d477079e47c12c01985797946e80dce740eb0d014ef14c33605a0460",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00417418",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_02.cpp",
+      "InitDisplayEngine"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "00417418 CMainGameComponent::InitDisplayEngine DIFFER(217v217) flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "00417418",
+    "new_grade": 3,
+    "historical_uncertain": 4,
+    "cumulative": 7,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_03.cpp",
+    "sha256": "125c75eb4708eff4beb49ad3fbd0fb549dd572ef0603032be8599c6e7cef52b2",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00417418",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_03.cpp",
+      "InitDisplayEngine"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "00417418 CMainGameComponent::InitDisplayEngine DIFFER(217v217) flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "00417418",
+    "new_grade": 4,
+    "historical_uncertain": 4,
+    "cumulative": 8,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_04.cpp",
+    "sha256": "651a80d2ed96f4b04dad885ebea57b80afe560add1258d4267bc272310ccd0d7",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00417418",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_04.cpp",
+      "InitDisplayEngine"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "00417418 CMainGameComponent::InitDisplayEngine RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "00418b7a",
+    "new_grade": 1,
+    "historical_uncertain": 4,
+    "cumulative": 5,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_01.cpp",
+    "sha256": "d0c935f63ae39361b27d0313b6bf7a8d1999ff517e6bb075cf5eab00358f4e46",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00418b7a",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_01.cpp",
+      "??1CMainGameComponent"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "00418b7a CMainGameComponent::~CMainGameComponent SRC_FAIL flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "00418b7a",
+    "new_grade": 2,
+    "historical_uncertain": 4,
+    "cumulative": 6,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_02.cpp",
+    "sha256": "431c041ec35ae8e5047d14db44896bbf2352c080449f794eb700b1e01a27b6df",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00418b7a",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_02.cpp",
+      "??1CMainGameComponent"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "00418b7a CMainGameComponent::~CMainGameComponent RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "00418b7a",
+    "new_grade": 3,
+    "historical_uncertain": 4,
+    "cumulative": 7,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_03.cpp",
+    "sha256": "3901570fb3a710fddacd3ebe302fb886e75dae3fb834629995d2d1d375c151ce",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00418b7a",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_03.cpp",
+      "??1CMainGameComponent"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "00418b7a CMainGameComponent::~CMainGameComponent RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "00418b7a",
+    "new_grade": 4,
+    "historical_uncertain": 4,
+    "cumulative": 8,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_04.cpp",
+    "sha256": "d3187c69c5a27d057fa5eb083b8e66ea4da622a3fa4aab5582a44002e1fb0d5b",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00418b7a",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_04.cpp",
+      "??1CMainGameComponent"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "00418b7a CMainGameComponent::~CMainGameComponent RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041d8e7",
+    "new_grade": 5,
+    "historical_uncertain": 4,
+    "cumulative": 9,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_05.cpp",
+    "sha256": "2b49dfdc63c33191e3609d68495bba1d985367bec20bce806c804a3759903073",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041d8e7",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_05.cpp",
+      "GetMiscThingsDef"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041d8e7 CManager::GetIconsDef RELOCATION_MATCH flags= []",
+    "returncode": 0
+  },
+  {
+    "address": "0041d98a",
+    "new_grade": 2,
+    "historical_uncertain": 4,
+    "cumulative": 6,
+    "source": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_02.cpp",
+    "sha256": "f98e02514145dd15eded9d17f3e59e4d3643a6b873ee1688c2d27f5df51f5673",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0041d98a",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_02.cpp",
+      "GetIconsDef"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "status": "0041d98a CManager::GetIconsDef RELOCATION_MATCH flags= []",
+    "returncode": 0
+  }
+]

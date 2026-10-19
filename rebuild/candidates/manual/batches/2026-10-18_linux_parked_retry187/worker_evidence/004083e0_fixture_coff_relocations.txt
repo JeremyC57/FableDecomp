@@ -1,0 +1,414 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_fixture_config2/native.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.data]:
+OFFSET   TYPE              VALUE
+0000000c dir32             _managerA
+00000010 dir32             _managerA
+00000014 dir32             _managerA
+00000018 dir32             ??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?AddReference@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?DecRef@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetRefCount@CIVCountedPointeeBase@@QBEJXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             ??_7CIVCountedPointeeBase@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECIVCountedPointeeBase@@UAEPAXI@Z
+00000004 dir32             ?Delete@CIVCountedPointeeBase@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CIVCountedPointeeBase@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a dir32             ??_7CIVCountedPointeeBase@@6B@
+00000012 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCIVCountedPointeeBase@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _deleted
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Delete@CIVCountedPointeeBase@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             ??_7CIVCountedPointeeBase@@6B@
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1DefinitionFixture@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CIVCountedPointeeBase@@6B@
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CIVCountedPointeeBase@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000c dir32             _good
+00000018 DISP32            ??2@YAPAXI@Z
+0000003c DISP32            ??2@YAPAXI@Z
+00000065 dir32             _strings
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CCharString@@QAE@PBDJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CCharString@@QAE@ABU0@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000015 DISP32            ??3@YAXPAX@Z
+0000001d DISP32            ??3@YAXPAX@Z
+00000022 dir32             _strings
+0000002b dir32             _strings
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CCharString@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _getglobal
+00000008 dir32             _gameGets
+0000000d dir32             _globalManager
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetGameDefinitionManager@@YIPAUCDefinitionManager@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _getglobal
+00000008 dir32             _frontGets
+0000000d dir32             _globalManager
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetFrontendDefinitionManager@@YIPAUCDefinitionManager@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _lookups
+00000007 dir32             _expectedLookup
+00000010 dir32             _lookups
+00000029 dir32             _expectedName
+00000065 dir32             _good
+0000006e dir32             _switchGlobal
+00000075 dir32             _lookupIndex
+0000007d dir32             _globalManager
+00000081 dir32             _managerB
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000003 dir32             _managerA
+00000008 dir32             _frontGets
+0000000d dir32             _gameGets
+00000012 dir32             _strings
+00000017 dir32             _getCalls
+0000001c dir32             _lookups
+00000021 dir32             _getglobal
+00000026 dir32             _deleted
+0000002c dir32             _lookupIndex
+00000036 dir32             _hasDef
+0000003d dir32             _globalManager
+00000043 dir32             _expectedLookup
+00000049 dir32             _expectedGet
+0000004e dir32             _switchGlobal
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?reset@@YAXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CDefPointer@UCDefClassBase@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CDefPointer@UCDefClassBase@@@@QAE@ABU0@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@QAE@ABU0@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?RemoveReference@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7DefinitionFixture@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_EDefinitionFixture@@UAEPAXI@Z
+00000004 dir32             ?Delete@DefinitionFixture@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0DefinitionFixture@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _deleted
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Delete@DefinitionFixture@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a dir32             ??_7CIVCountedPointeeBase@@6B@
+00000012 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GDefinitionFixture@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CDefPointer@UCDefClassBase@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _getCalls
+00000007 dir32             _expectedGet
+00000010 dir32             _getCalls
+0000001c dir32             _lookupIndex
+00000023 dir32             _strings
+0000002d dir32             _good
+00000037 dir32             _hasDef
+0000003c dir32             _returned
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AU?$CDefPointer@UCDefClassBase@@@@J@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000010 DISP32            ?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AU?$CDefPointer@UCDefClassBase@@@@J@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ?g_pMainGameComponent@@3PAXA
+00000017 dir32             ??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@
+00000020 DISP32            ??0CCharString@@QAE@PBDJ@Z
+00000026 dir32             _getglobal
+0000002c dir32             _gameGets
+00000032 dir32             _globalManager
+00000041 dir32             _getglobal
+00000047 dir32             _gameGets
+0000004c DISP32            ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+0000005f DISP32            ??3@YAXPAX@Z
+00000065 DISP32            ??3@YAXPAX@Z
+0000006a dir32             _strings
+00000073 dir32             _strings
+00000079 dir32             _getglobal
+0000007f dir32             _gameGets
+00000087 dir32             _gameGets
+00000091 dir32             ?g_pFrontendRuntime@@3PAXA
+000000a0 dir32             ??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@
+000000a9 DISP32            ??0CCharString@@QAE@PBDJ@Z
+000000af dir32             _getglobal
+000000b5 dir32             _frontGets
+000000bb dir32             _globalManager
+000000ca dir32             _getglobal
+000000d0 dir32             _frontGets
+000000d5 DISP32            ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+000000e8 DISP32            ??3@YAXPAX@Z
+000000ee DISP32            ??3@YAXPAX@Z
+000000f3 dir32             _strings
+000000fc dir32             _strings
+00000102 dir32             _getglobal
+00000108 dir32             _frontGets
+00000110 dir32             _frontGets
+00000116 dir32             _globalManager
+00000122 dir32             _getglobal
+00000127 DISP32            ?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000010 dir32             ??_7DefinitionFixture@@6B@
+0000001d dir32             _returned
+0000002a dir32             _managerA
+0000003f dir32             _frontGets
+00000045 dir32             _gameGets
+0000004b dir32             _strings
+00000051 dir32             _getCalls
+00000057 dir32             _lookups
+0000005d dir32             _getglobal
+0000006a dir32             _deleted
+00000070 dir32             _lookupIndex
+0000007a dir32             _hasDef
+00000080 dir32             _globalManager
+00000085 dir32             _expectedLookup
+0000008a dir32             _expectedGet
+00000090 dir32             _switchGlobal
+00000096 dir32             ?g_pMainGameComponent@@3PAXA
+0000009c dir32             ?g_pFrontendRuntime@@3PAXA
+000000a4 dir32             _switchGlobal
+000000ab dir32             _expectedGet
+000000af dir32             _managerB
+000000bd DISP32            ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@XZ
+000000e7 dir32             _strings
+000000ef dir32             _deleted
+000000f7 dir32             _lookups
+00000108 dir32             _getCalls
+0000010f dir32             _getglobal
+00000122 dir32             _good
+00000127 dir32             _gameGets
+00000135 dir32             _frontGets
+0000014b dir32             _good
+0000016b dir32             _good
+00000194 dir32             _deleted
+0000019c dir32             _good
+000001b8 dir32             _managerA
+000001c3 dir32             _frontGets
+000001c9 dir32             _gameGets
+000001cf dir32             _strings
+000001d5 dir32             _getCalls
+000001e2 dir32             _lookups
+000001e8 dir32             _getglobal
+000001ee dir32             _deleted
+000001f4 dir32             _lookupIndex
+000001fa dir32             _hasDef
+00000201 dir32             _globalManager
+00000207 dir32             _expectedLookup
+0000020d dir32             _expectedGet
+00000213 dir32             _switchGlobal
+00000219 dir32             ?g_pMainGameComponent@@3PAXA
+0000021f dir32             ?g_pFrontendRuntime@@3PAXA
+00000227 dir32             _lookupIndex
+00000234 dir32             _lookupIndex
+00000240 dir32             _hasDef
+0000024e DISP32            ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@XZ
+0000025c dir32             _strings
+0000026b dir32             _getCalls
+0000027f dir32             _good
+00000291 dir32             _deleted
+00000299 dir32             _good
+000002b2 dir32             _frontGets
+000002b8 dir32             _gameGets
+000002be dir32             _strings
+000002c4 dir32             _getCalls
+000002ca dir32             _lookups
+000002d0 dir32             _getglobal
+000002d6 dir32             _deleted
+000002dc dir32             _lookupIndex
+000002e2 dir32             _hasDef
+000002e9 dir32             _globalManager
+000002ef dir32             _expectedLookup
+000002f5 dir32             _expectedGet
+000002fb dir32             _switchGlobal
+00000305 dir32             ?g_pMainGameComponent@@3PAXA
+0000030a DISP32            ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@XZ
+0000031f dir32             _deleted
+00000327 dir32             _good
+00000345 dir32             _deleted
+0000034d dir32             _strings
+00000355 dir32             _good
+0000035d dir32             _good
+00000362 dir32             ??_C@_04NNAKGGAP@PASS?$AA@
+00000369 dir32             ??_C@_04OOEBCMBF@FAIL?$AA@
+0000036f dir32             ??_C@_0BC@PIFBKKLJ@004083e0_TEST?5?$CFs?6?$AA@
+00000374 DISP32            _printf
+0000037a dir32             _good
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             _main

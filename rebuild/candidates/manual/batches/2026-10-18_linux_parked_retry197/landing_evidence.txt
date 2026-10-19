@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00b91f50   RELOCATION_MATCH PASS   PreloadPrimitives
+00b92d30   RELOCATION_MATCH PASS   PreloadPrimitives
+00b92660   RELOCATION_MATCH PASS   RenderCellClippedShadowBuffer
+00b92f80   RELOCATION_MATCH PASS   PreloadPrimitives
+00b92e50   RELOCATION_MATCH PASS   PreloadPrimitives
+
+WINS: 5
+  00b91f50 RELOCATION_MATCH CEngineSceneGrid::PreloadPrimitives
+  00b92d30 RELOCATION_MATCH CEngineSceneGrid::PreloadPrimitives
+  00b92660 RELOCATION_MATCH CEngineSceneGrid::RenderCellClippedShadowBuffer
+  00b92f80 RELOCATION_MATCH CEngineScene::PreloadPrimitives
+  00b92e50 RELOCATION_MATCH CEngineScene::PreloadPrimitives
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CEngineSceneGrid_PreloadPrimitives_00b91f50
+  CEngineSceneGrid_PreloadPrimitives_00b92d30
+  CEngineSceneGrid_RenderCellClippedShadowBuffer_00b92660
+  CEngineScene_PreloadPrimitives_00b92f80
+  CEngineScene_PreloadPrimitives_00b92e50

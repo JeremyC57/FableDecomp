@@ -1,0 +1,12 @@
+# Layer rendering and renderer resource cleanup
+
+Three functions independently pass native compiler byte verification and exact-source C++98/O2 host/no-elision plus canonical VC7.1 fixtures. Root audits27 masked relocations,7 native RTTI hierarchies,6 virtual targets and the actual free/scalar-delete imports. Sixteen immutable source grades remain7/4/5; fixture-only corrections do not reset or inflate source counts.
+
+00B2AB80 runs pre/render/post passes with fresh component lookups after callbacks, scene-filter gating and render-only enabled flags. Actual component storage and genuine13-method dispatch prefix remain; native12-byte vector and parameter fields are asserted. Root recovered the full LayerRenderer->NonCopyable->BaseClass hierarchy and PDB constructor(EEngineRenderLayer,ERenderRenderLayerFlags,unsigned long), corroborated by nativeB29720. The corrected grade7 still MATCHes. Enum labels in the projection are descriptive; the fixture uses the genuine constructor signature and verifies base lifetime.
+
+00B4AAA0 clears both primitive lists, releases five counted manager owners and the manager array, then destroys its component base. Actual headers remain aliased to document native container shifts. Reference record refs0/fastcall callback4/data8 and real destructors preserve lifetimes without injected vtables. Default owner constructor is PDB-proven. Fixtures cover empty/list/last/shared references, cleanup order and clearing the external owner pointer.
+
+00B870A0 frees an allocated scratch page, closes an active capture, releases four shaders and destroys two embedded surfaces and the render-target base. Root rejected grade3 despite masked parity: two supposed base-destructor relocations actually call CSurface::Uninitialise9F2E20. Native RTTI proves CSurface is standalone; corrected destructor calls release COM slot2 with stdcall, clears surface/state only for a nonnull surface and preserves the allocation pointer. Real owner constructor(const CEngineInit&) replaces an invented default fixture construction; grade5 still matches. Fixtures cover page/capture guards, null/shared/last shaders, both surface releases and repeated/null Uninitialise behavior.
+
+Root also corrected both destructor fixtures' int-to-void** casts to genuine host-width owner-pointer storage. Original rejected evidence and hashes remain preserved. Dependency fixtures do not claim a live renderer/game integration run.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

@@ -1,0 +1,316 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/snapshots/00820790_fixture_brush3/native.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.data]:
+OFFSET   TYPE              VALUE
+00000004 dir32             _mapMethods
+00000008 dir32             _worldMethods
+0000000c dir32             _managerA
+00000010 dir32             _worldMethods
+00000014 dir32             _managerB
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetThingManager@CWorld@@QAEAAUCThingManager@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000006 DISP32            _malloc
+00000013 dir32             _allocs
+0000001f dir32             _owned
+00000026 dir32             _released
+00000031 dir32             _allocs
+00000037 DISP32            _abort
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?FixtureAllocate@@YAPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _allocs
+00000014 dir32             _owned
+00000026 dir32             _released
+00000030 dir32             _frees
+00000037 dir32             _released
+00000040 dir32             _sentinel
+00000049 dir32             _frees
+0000005a dir32             _good
+00000068 DISP32            _free
+0000006e dir32             _good
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?FixtureFree@@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             _owned
+00000009 dir32             _sentinel
+0000001a dir32             _good
+00000023 dir32             _count
+00000033 DISP32            _malloc
+00000040 dir32             _allocs
+0000004c dir32             _owned
+00000053 dir32             _released
+0000005e dir32             _allocs
+00000065 dir32             _ids
+0000006f dir32             _ids
+00000075 dir32             _sentinel
+0000008a dir32             _count
+00000096 DISP32            _abort
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Build@@YAXAAUUIDList@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 DISP32            ?Build@@YAXAAUUIDList@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetThingsToAdd@CScriptedMapBrush@@QBEXAAUUIDList@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 DISP32            ?Build@@YAXAAUUIDList@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetThingsToDelete@CScriptedMapBrush@@QBEXAAUUIDList@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             _mapMethods
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0WorldMapDouble@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _coordCalls
+00000007 dir32             _expectedMap
+00000026 dir32             _good
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Number@WorldMapDouble@@QBEJABUC2DCoordI@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000b dir32             _worldMethods
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0WorldDouble@@QAE@PAUCThingManager@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _managerCalls
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Manager@WorldDouble@@QAEAAUCThingManager@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _mapCalls
+00000007 dir32             _worldMap
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Map@WorldDouble@@QBEABUCWorldMap@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _count
+00000007 dir32             _lookups
+0000001b dir32             _ids
+00000024 dir32             _ids
+0000002c dir32             _expectedManager
+00000034 dir32             _good
+0000003e dir32             _lookups
+00000044 dir32             _ids
+0000004c dir32             _ids
+0000005a dir32             _ids
+00000062 dir32             _ids
+00000067 dir32             _dead
+0000006e dir32             _live
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _activationCalls
+00000010 dir32             _good
+00000019 dir32             _mutate
+00000022 dir32             _expectedMap
+00000029 dir32             _worldB
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?SetAsActivated@CThing@@QAEX_N@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000001 dir32             _killCalls
+00000008 dir32             _live
+0000000d dir32             _killCalls
+0000001d dir32             _good
+00000026 dir32             _mutate
+0000002f dir32             _expectedMap
+00000036 dir32             _worldB
+0000003c dir32             _expectedManager
+00000040 dir32             _managerB
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Kill@CThing@@QAEX_N@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000c DISP32            _malloc
+00000019 dir32             _allocs
+00000025 dir32             _owned
+0000002c dir32             _released
+00000040 dir32             _allocs
+00000047 DISP32            _abort
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0UIDList@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000016 DISP32            ?FixtureFree@@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Clear@UIDList@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000016 DISP32            ?FixtureFree@@YAXPAX@Z
+00000030 DISP32            ?FixtureFree@@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1UIDList@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000008 DISP32            _malloc
+0000001a dir32             _allocs
+0000002a dir32             _owned
+00000031 dir32             _released
+0000003b dir32             _allocs
+0000004d DISP32            ?Build@@YAXAAUUIDList@@@Z
+00000064 dir32             _mutate
+0000006b dir32             _activationCalls
+00000079 DISP32            ?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z
+00000088 dir32             _expectedMap
+0000008f dir32             _worldB
+0000009b dir32             _activationCalls
+000000ad DISP32            ?FixtureFree@@YAXPAX@Z
+000000bf DISP32            ?FixtureFree@@YAXPAX@Z
+000000cd DISP32            _abort
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?ScriptedMapBrushAddThings@CMap@@QAEXABUCScriptedMapBrush@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000006 DISP32            __chkstk
+0000000c dir32             _live
+00000014 dir32             _ids
+00000019 dir32             _ids
+00000024 dir32             _expectedMap
+00000029 dir32             _dead
+00000038 dir32             _worldMethods
+0000003c dir32             ?Manager@WorldDouble@@QAEAAUCThingManager@@XZ
+00000042 dir32             _worldMethods
+00000046 dir32             ?Map@WorldDouble@@QBEABUCWorldMap@@XZ
+0000004c dir32             _mapMethods
+00000050 dir32             ?Number@WorldMapDouble@@QBEJABUC2DCoordI@@@Z
+00000056 dir32             _ids
+0000005c dir32             _ids
+00000062 dir32             _ids
+0000006c dir32             _ids
+00000072 dir32             _ids
+0000007c dir32             _ids
+0000009c dir32             _live
+000000a1 dir32             _dead
+000000bb dir32             _mutate
+000000c6 dir32             _count
+000000cc dir32             _coordCalls
+000000d2 dir32             _mapCalls
+000000d8 dir32             _managerCalls
+000000de dir32             _killCalls
+000000e4 dir32             _activationCalls
+000000ea dir32             _lookups
+000000f0 dir32             _frees
+000000f6 dir32             _allocs
+000000fc dir32             _expectedManager
+00000100 dir32             _managerA
+00000108 dir32             _worldA
+0000010d DISP32            ?ScriptedMapBrushAddThings@CMap@@QAEXABUCScriptedMapBrush@@@Z
+00000113 dir32             _allocs
+00000121 dir32             _frees
+0000012d dir32             _lookups
+00000143 dir32             _released
+00000154 dir32             _managerCalls
+0000016a dir32             _activationCalls
+00000172 dir32             _killCalls
+0000017a dir32             _mapCalls
+00000182 dir32             _coordCalls
+0000019f dir32             _good
+000001ab dir32             ??_C@_0BL@KDNPJJIH@00820790_TEST?5FAIL?5line?$CFd?6?$AA@
+000001b0 DISP32            _printf
+000001d6 dir32             ??_C@_0BD@HMADJOJL@00820790_TEST?5PASS?$AA@
+000001db DISP32            _puts
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             _main

@@ -1,0 +1,20 @@
+addr       parity           behav  name
+008d28d0   RELOCATION_MATCH PASS   MsgPerformedAnyNonAggressiveSpecialAbility
+008d3cf0   RELOCATION_MATCH PASS   MsgIsKicked
+00a63ee0   RELOCATION_MATCH PASS   ReadFromParserAsString
+00f00ae0   RELOCATION_MATCH PASS   Main
+00a63c00   RELOCATION_MATCH PASS   PrintToString
+
+WINS: 5
+  008d28d0 RELOCATION_MATCH CGameScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility
+  008d3cf0 RELOCATION_MATCH CGameScriptThing::MsgIsKicked
+  00a63ee0 RELOCATION_MATCH CGenericVarRef::ReadFromParserAsString
+  00f00ae0 RELOCATION_MATCH CGamesmasterOracleMarker::Main
+  00a63c00 RELOCATION_MATCH CGenericVarRef::PrintToString
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CGameScriptThing_MsgPerformedAnyNonAggressiveSpecialAbility_008d28d0
+  CGameScriptThing_MsgIsKicked_008d3cf0
+  CGenericVarRef_ReadFromParserAsString_00a63ee0
+  CGamesmasterOracleMarker_Main_00f00ae0
+  CGenericVarRef_PrintToString_00a63c00

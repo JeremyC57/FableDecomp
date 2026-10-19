@@ -1,0 +1,52 @@
+{
+  "0x1238c6c": {
+    "hierarchy": [
+      [
+        ".?AV?$CIntelligentPointer@VCThing@@@@",
+        0
+      ],
+      [
+        ".?AVCBaseIntelligentPointer@@",
+        0
+      ]
+    ]
+  },
+  "0x129c95c": {
+    "hierarchy": [
+      [
+        ".?AVCBaseIntelligentPointer@@",
+        0
+      ]
+    ]
+  },
+  "0x1267f00": {
+    "hierarchy": [
+      [
+        ".?AVCModeBerserk@NCreatureMode@@",
+        0
+      ],
+      [
+        ".?AVCModeStandBase@@",
+        0
+      ],
+      [
+        ".?AVCModeBase@CTCCreatureModeManager@@",
+        0
+      ]
+    ]
+  },
+  "008da890": {
+    "emitted_virtuals": {
+      "??_7IntelligentThingPointer@@6B@": [
+        "public: virtual void * __thiscall IntelligentThingPointer::`vector deleting dtor'(unsigned int)"
+      ]
+    }
+  },
+  "008da690": {
+    "emitted_virtuals": {
+      "??_7IntelligentThingPointer@@6B@": [
+        "public: virtual void * __thiscall IntelligentThingPointer::`vector deleting dtor'(unsigned int)"
+      ]
+    }
+  }
+}

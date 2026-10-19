@@ -1,0 +1,12 @@
+{
+  "engine/CManagedTextureData.h": "b254bc5b7bf6cb2dc73254b0e1557141f8382f5520a01804564e12b9bbf79e1a",
+  "engine/CManager.h": "b16fc0b4a8fbf3693392e62ef43321c5331242e32ff36782853cac831560731a",
+  "engine/CPixelFormat.h": "2c3aac7057a29145f16e3a965da0abc18d0eb7d788ecbcae76d8005b751ffc4f",
+  "engine/CScriptedMapBrush.h": "743b9dda3fb79944348bb3b86379e3937735f1087993c97eaf92b539355dff09",
+  "engine/CTexture.h": "b270d1ab40a5507fe49a705b7936e4e388984bcefa68998a0d2b3826047462f3",
+  "engine/CWorld.h": "c3620fc62b6d86425c41a189b2a61a80b1f1b542966120cc948dcfa6461c6b9f",
+  "engine/CWorldMap.h": "fa7af9047a6842fc2ae55d9f7aae3cb65001036ec9e14f01a16e58890cefc2ec",
+  "engine/_quarantine/CMap.h": "6814218883cb5f908bfd12b207168c81a124eacbb35e92c43b952e88b9ae24fd",
+  "engine/_quarantine/CThing.h": "5c6080448997835e53e2e7db852fb8e87422331444cf248bbd5d93205bf0fbfe",
+  "rebuild_abi.h": "b0c8bc0a9088b2d7b8718f2424795576ca13bfe63a3a40412186f4f3b6eeeec4"
+}

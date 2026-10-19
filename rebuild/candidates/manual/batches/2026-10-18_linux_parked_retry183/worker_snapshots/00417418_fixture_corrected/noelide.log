@@ -1,0 +1,15 @@
+['g++', '-std=c++98', '-O2', '-Wall', '-Wextra', '-fno-elide-constructors', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_fixture_corrected/fixture.cpp', '-o', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_fixture_corrected/noelide']
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_fixture_corrected/fixture.cpp:11: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+   11 | #pragma optimize("s", on)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_fixture_corrected/fixture.cpp:12: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+   12 | #pragma optimize("y", off)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_fixture_corrected/fixture.cpp:19:9: warning: #pragma once in main file
+   19 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_fixture_corrected/fixture.cpp:22:9: warning: #pragma once in main file
+   22 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00417418_fixture_corrected/fixture.cpp:27:9: warning: #pragma once in main file
+   27 | #pragma once
+      |         ^~~~
+00417418_TEST PASS

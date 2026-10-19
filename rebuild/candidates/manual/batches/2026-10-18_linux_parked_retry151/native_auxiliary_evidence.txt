@@ -1,0 +1,1 @@
+WeaponTrailVT12A6B24slot5=BCD660;LandscapeRendererVT12A2B54slot3=B684F0. Constant12A1B28 is double widened from float1e30, not literal double1e30. Actual LoadNewScene/LoadForegroundTextures bool return types PDB egor_pdb_names.tsv27119/27120.

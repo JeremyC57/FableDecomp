@@ -1,0 +1,307 @@
+{
+  "009ff440": {
+    "??_7CBaseClass@@6B@": [
+      "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7CBaseClassNonCopyable@@6B@": [
+      "public: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7CBankFileNative@@6B@": [
+      "public: virtual void * __thiscall CBankFileNative::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileNative::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileNative::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const"
+    ],
+    "??_7CBankFileAsync@@6B@": [
+      "public: virtual void * __thiscall CBankFileAsync::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const"
+    ],
+    "??_7CResourceBank@@6B@": [
+      "public: virtual void * __thiscall CResourceBank::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7CGraphicDataBank@@6BCResourceBank@@@": [
+      "[thunk]: public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'`adjustor{356}'(unsigned int)"
+    ],
+    "??_7CGraphicDataBank@@6BCBankFileAsync@@@": [
+      "public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CGraphicDataBank::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const",
+      "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const"
+    ],
+    "??_7GraphicInfoFrame@@6B@": [
+      "public: virtual void * __thiscall GraphicInfoFrame::`vector deleting dtor'(unsigned int)"
+    ]
+  },
+  "009ff590": {
+    "??_7CBaseClass@@6B@": [
+      "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7CBaseClassNonCopyable@@6B@": [
+      "public: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7CBankFileNative@@6B@": [
+      "public: virtual void * __thiscall CBankFileNative::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileNative::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileNative::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const"
+    ],
+    "??_7CBankFileAsync@@6B@": [
+      "public: virtual void * __thiscall CBankFileAsync::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const"
+    ],
+    "??_7CResourceBank@@6B@": [
+      "public: virtual void * __thiscall CResourceBank::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7CGraphicDataBank@@6BCResourceBank@@@": [
+      "[thunk]: public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'`adjustor{356}'(unsigned int)"
+    ],
+    "??_7CGraphicDataBank@@6BCBankFileAsync@@@": [
+      "public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CGraphicDataBank::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const",
+      "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const"
+    ],
+    "??_7DataStream@@6B@": [
+      "public: virtual void * __thiscall DataStream::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7InputStream@@6B@": [
+      "public: virtual void * __thiscall InputStream::`vector deleting dtor'(unsigned int)",
+      "public: virtual void __thiscall InputStream::SetPosition(unsigned long)",
+      "public: virtual unsigned long __thiscall InputStream::GetPosition(void) const",
+      "public: virtual void __thiscall InputStream::Close(void)",
+      "public: virtual void __thiscall InputStream::ReadCompressed(void *, long)",
+      "public: virtual void __thiscall InputStream::ReadZlibCompressed(void *, long)",
+      "public: virtual class CCharString __thiscall InputStream::ReadNullTerminatedString(void)",
+      "public: virtual class CWideString __thiscall InputStream::ReadNullTerminatedWString(void)",
+      "public: virtual void __thiscall InputStream::InternalReadNextSourceChunk(unsigned char const *&, long &)",
+      "public: virtual bool __thiscall InputStream::NeedsBufferedRead(long)",
+      "public: virtual void __thiscall InputStream::InternalReadUnbuffered(unsigned char *, long)"
+    ],
+    "??_7MemoryInput@@6B@": [
+      "public: virtual void * __thiscall MemoryInput::`vector deleting dtor'(unsigned int)",
+      "public: virtual void __thiscall InputStream::SetPosition(unsigned long)",
+      "public: virtual unsigned long __thiscall InputStream::GetPosition(void) const",
+      "public: virtual void __thiscall InputStream::Close(void)",
+      "public: virtual void __thiscall MemoryInput::ReadCompressed(void *, long)",
+      "public: virtual void __thiscall InputStream::ReadZlibCompressed(void *, long)",
+      "public: virtual class CCharString __thiscall MemoryInput::ReadNullTerminatedString(void)",
+      "public: virtual class CWideString __thiscall MemoryInput::ReadNullTerminatedWString(void)",
+      "public: virtual void __thiscall InputStream::InternalReadNextSourceChunk(unsigned char const *&, long &)",
+      "public: virtual bool __thiscall InputStream::NeedsBufferedRead(long)",
+      "public: virtual void __thiscall InputStream::InternalReadUnbuffered(unsigned char *, long)"
+    ]
+  },
+  "009febc0": {
+    "??_7CGraphicDataBank@@6BCResourceBank@@@": [
+      "[thunk]: public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'`adjustor{356}'(unsigned int)"
+    ],
+    "??_7CGraphicDataBank@@6BCBankFileAsync@@@": [
+      "public: virtual void * __thiscall CGraphicDataBank::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CGraphicDataBank::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CGraphicDataBank::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CGraphicDataBank::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetNoFramesInGraphic(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameWidth(unsigned long, unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicFrameHeight(unsigned long, unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxWidth(unsigned long) const",
+      "public: virtual unsigned long __thiscall CGraphicDataBank::GetGraphicMaxHeight(unsigned long) const",
+      "public: virtual bool __thiscall CGraphicDataBank::IsUsingSurfaces(void) const"
+    ],
+    "??_7GraphicBankState@@6B@": [
+      "public: virtual void * __thiscall GraphicBankState::`vector deleting dtor'(unsigned int)",
+      "public: virtual void __thiscall GraphicBankState::GetDefault(struct BankState &)",
+      "public: virtual void __thiscall GraphicBankState::Set(struct BankState const *)",
+      "public: virtual unsigned long __thiscall GraphicBankState::CreateCRC(void)"
+    ],
+    "??_7BankState@@6B@": [
+      "public: virtual void * __thiscall BankState::`vector deleting dtor'(unsigned int)",
+      "__purecall",
+      "__purecall",
+      "__purecall"
+    ],
+    "??_7CBaseClass@@6B@": [
+      "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7CBaseClassNonCopyable@@6B@": [
+      "public: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7CBankFileNative@@6B@": [
+      "public: virtual void * __thiscall CBankFileNative::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileNative::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileNative::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const"
+    ],
+    "??_7CBankFileAsync@@6B@": [
+      "public: virtual void * __thiscall CBankFileAsync::`vector deleting dtor'(unsigned int)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenReadOnly(class CCharString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenReadWrite(class CCharString const &, unsigned long, unsigned long)",
+      "public: virtual bool __thiscall CBankFileAsync::OpenFileReadOnly(class CWideString const &, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::OpenFileReadWrite(class CWideString const &, unsigned long, unsigned long)",
+      "public: virtual void __thiscall CBankFileAsync::Close(void)",
+      "public: virtual void __thiscall CBankFileNative::AddEntryMultipleFiles(class CCharString const &, unsigned long, struct BankArrayView<class CCharString> const &, struct StatePointer)",
+      "public: virtual void __thiscall CBankFileNative::Update(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::GetDataFormatVersion(void)",
+      "public: virtual unsigned long __thiscall CBankFileNative::AdjustUpdateEntries(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankSize(unsigned long, struct BankArrayView<struct BankTypeCount> const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyBankOpened(void)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryAdded(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryUpdated(unsigned long, unsigned long, struct CharArray const &)",
+      "public: virtual void __thiscall CBankFileNative::NotifyEntryRemoved(unsigned long)",
+      "public: virtual void __thiscall CBankFileNative::NotifyPostEntriesLoaded(void)",
+      "public: virtual void __thiscall CBankFileNative::PrepareDataForInclusion(unsigned long, struct BankArrayView<class CCharString> const &, unsigned long, struct StatePointer, struct OutputStream &, struct OutputStream &)",
+      "public: virtual bool __thiscall CBankFileNative::IsDiskFile(unsigned long, unsigned long)",
+      "public: virtual struct CDateAndTime __thiscall CBankFileNative::GetLastModifiedTime(class CCharString const &)",
+      "public: virtual class CCharString __thiscall CBankFileNative::GetEnumerationType(unsigned long) const"
+    ],
+    "??_7CResourceBank@@6B@": [
+      "public: virtual void * __thiscall CResourceBank::`vector deleting dtor'(unsigned int)"
+    ],
+    "??_7GraphicInfoFrame@@6B@": [
+      "public: virtual void * __thiscall GraphicInfoFrame::`vector deleting dtor'(unsigned int)"
+    ]
+  }
+}

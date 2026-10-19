@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009d52d0   RELOCATION_MATCH PASS   SetupBuffer
+
+WINS: 1
+  009d52d0 RELOCATION_MATCH CBankFileAsyncData::SetupBuffer
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CBankFileAsyncData_SetupBuffer_009d52d0

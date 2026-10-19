@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00bacc50   RELOCATION_MATCH PASS   RenderPrimitive
+
+WINS: 1
+  00bacc50 RELOCATION_MATCH CEnginePrimitiveOcclusionGroupManager::RenderPrimitive

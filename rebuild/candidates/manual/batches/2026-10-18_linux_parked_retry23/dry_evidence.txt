@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00ac1160   RELOCATION_MATCH PASS   GetMap
+
+WINS: 1
+  00ac1160 RELOCATION_MATCH C3DMeshFileMaterialChunk::GetMap

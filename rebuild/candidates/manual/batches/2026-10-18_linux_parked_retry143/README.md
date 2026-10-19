@@ -1,0 +1,12 @@
+# Script scratchpad access, string ownership and wander-position updates
+
+Fourteen functions independently compile to RELOCATION_MATCH and pass exact-source host C++98/O2, no-elision and VC7.1 fixtures. Root audited110 masked body relocations,1106 emitted/native ScriptThing virtual slots, all eight float accessor offsets and the actual zero/5/10 constant pools. Eighteen immutable source/command/flag grades are verified: vector setter, SetAction and both combat-range getters use grade2; ten others use grade1. Earlier snapshots remain intact.
+
+Root rejected two initially submitted defaults after reading native relocation targets: GetCombatNearbyEnemyFleeingBreakOffRange returns5.0 for an empty/dead thing and GetCombatNearbyBreakOffRange returns10.0. The other six getters return0.0. Both corrected grade2 sources and fixtures now preserve those native defaults. Relocation-masked instruction matches alone had not detected the wrong values; none of the incorrect candidates was landed.
+
+Actual CGameScriptInterface, CScriptThing, CTCBase, CAIScratchpadDef and string headers are consumed. The complete79-slot native ScriptThing view restores the actual polymorphic ABI, with size/member assertions against the flattened generated header. CTCAIScratchpad has no generated header; its named132-byte PDB layout is explicit and checked. Component170 lookup preserves repeated GetPThing calls and the native unchecked missing-component precondition, including end/greater map selection behavior.
+
+Eight getters preserve arbitrary float values, signed zero and NaN from their individual scratchpad fields. Vector setter and reset preserve all three coordinates, native copy order and the definition source. Four string setters use an explicitly documented field-free view over actual CCharString to declare its missing genuine copy constructor99EC30; assignment99EFB0 and destruction99EAE0 retain native ownership. Tests execute the complete production source, exercise callback replacement between repeated thing lookups, map selection, empty/expired handles, retained/final-owner counted destruction, field updates, copies and string cleanup. Native layout assertions remain active under VC; host pointer representation stays full-width.
+
+These isolated compiler/fixture checks do not establish linked whole-game runtime behavior. Chunk238 continues with all remaining rows and attempt histories preserved.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

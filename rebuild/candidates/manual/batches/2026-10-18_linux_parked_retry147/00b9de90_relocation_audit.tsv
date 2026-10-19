@@ -1,0 +1,10 @@
+offset	native_target	symbol
+00000021	00bfea1a	??2@YAPAXI@Z
+0000002f	00b81e00	??0CEnginePrimitiveSimulationInfo@@QAE@XZ
+0000008b	00bfea1a	??2@YAPAXI@Z
+000000a3	00b81ea0	??0CEngineClothSimulationStaticMesh@@QAE@PBUC3DMeshInfo@@IPAUCEngineInternalPrimitiveStaticMesh@@@Z
+000000b1	00ba7cf0	??0SimulationPointer@@QAE@PAUCEngineSimulationBase@@@Z
+000000be	00b82330	?AddSimulation@CEnginePrimitiveSimulationInfo@@QAEXIABUSimulationPointer@@@Z
+000000e1	00bfe9bc	??3@YAXPAX@Z
+0000011a	01436e68	?g_SimulationManager@@3PAUCEngineSimulationManager_Methods@@A
+00000123	00b817d0	?AddSimulationInfo@CEngineSimulationManager_Methods@@QAEXABUSimulationInfoPointer@@_N1@Z

@@ -1,0 +1,3 @@
+offset	native_target	symbol
+00000043	00b91f50	?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABUCEngineCamera@@K@Z
+000000e7	01436e84	?g_pEnginePrimitiveTypeInfo@@3PAUCEnginePrimitiveTypeInfo@@A

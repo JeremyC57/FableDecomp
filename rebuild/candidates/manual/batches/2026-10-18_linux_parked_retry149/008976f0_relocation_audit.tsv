@@ -1,0 +1,12 @@
+offset	native_target	symbol
+0000000a	0099a2d0	??0CBaseClassNative@@QAE@XZ
+0000001c	01238c8c	??_7ScriptMethods@@6B@
+00000052	004365b0	?LowerBound@ComponentMap@@QBEPBUComponentEntry@@ABJ@Z
+00000068	006a1440	?GetPrimarySlotThing@CarryingMethods@@QAEPAUCThingNative@@XZ
+00000081	004c7e50	?GetScriptThing@CThingNative@@QAE?AUScriptMethods@@XZ
+0000008b	008ab980	??4ScriptMethods@@QAEAAU0@ABU0@@Z
+00000094	004aa840	??1ScriptMethods@@UAE@XZ
+000000a8	01238c8c	??_7ScriptMethods@@6B@
+000000c0	01238c8c	??_7ScriptMethods@@6B@
+000000dc	00bfe9bc	??3@YAXPAX@Z
+000000f0	0099a2e0	??1CBaseClassNative@@UAE@XZ

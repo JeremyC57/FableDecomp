@@ -1,0 +1,6 @@
+# Texture allocation with fallback initialization
+
+00f37440 (224 bytes): main independently audited the full native body and9FA280 helper. Actual CTexture and CPixelFormat headers retained; native resource entries2c and eight-byte texture storage confirmed. Root rejected the initial inferred shared-handle pointer argument: decorated PDB signature establishes CTexture::Initialise with ESurfacePool and two bools; helper pushes its own null shared handle to D3D and does not consume those final booleans. Final source uses a documented long-width pool ABI view and true,false arguments. Constructor zeroing now accesses the complete CTexture representation instead of crossing its three-byte ByteLength array subobject.
+
+Four new authored grades plus UNCERTAIN historical reservation4. Exact-source fixture covers headless operation, immediate success, fallback success, double failure/release, flags and constructor storage. Main added allocation-time backing-array replacement and initialization-time texture/pool replacement to verify both native reload points and retained usage flags. Optimized host PASS; canonical VC7.1 byte/behavior verification logged separately before landing.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

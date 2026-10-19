@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00562ec0   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard
+00cac300   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cac300   RELOCATION_MATCH PASS   CDynamicOutputPin
+00bfd290   RELOCATION_MATCH PASS   TesselatePatch
+
+WINS: 3
+  00562ec0 RELOCATION_MATCH CTCHeroOnlineScoreboard::??0CTCHeroOnlineScoreboard@@
+  00cac300 RELOCATION_MATCH CDynamicOutputPin::??0CDynamicOutputPin@@
+  00bfd290 RELOCATION_MATCH CEngineWaterBackgroundSubPatch::TesselatePatch

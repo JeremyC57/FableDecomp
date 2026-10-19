@@ -1,0 +1,4 @@
+# Simulation wind refresh and step counters
+
+00b80790 (172 bytes): shared manager identity with documented native container/layout shift, audited sibling00b80840 wind chain/global and native counters1068/106c. Source comment1070 on AlwaysUpdateStepsPending is stale; field and compiled operand are correctly106c. Refreshes direction and strength through separate global/provider queries, preserves direction snapshot, increments full-update counter conditionally and always-update counter unconditionally. Main expanded exact-source fixture covers false/true updates, positive/negative/zero strength, counter overflow on native32-bit and host native word widths, global/provider replacement, direction mutation during second query and current counters changed in callbacks. Observed new1 plus UNCERTAIN historical reservation4 (reserved5/10).
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

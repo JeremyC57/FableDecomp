@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00bcd660   RELOCATION_MATCH PASS   Update
+00b684f0   RELOCATION_MATCH PASS   LoadNewScene
+
+WINS: 2
+  00bcd660 RELOCATION_MATCH CEngineInternalPrimitiveWeaponTrail::Update
+  00b684f0 RELOCATION_MATCH CEngineLandscapeRendererCallView::LoadNewScene

@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00b2b820   WARN SHARED_HEADER_AVAILABLE CTextureManager
+00b2b820   RELOCATION_MATCH PASS   FrameEnd
+
+WINS: 1
+  00b2b820 RELOCATION_MATCH CEngineSurfaceCompositionManager::FrameEnd

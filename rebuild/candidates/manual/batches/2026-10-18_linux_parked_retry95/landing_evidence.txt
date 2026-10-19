@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009c46b0   RELOCATION_MATCH PASS   IsCompressedFilename
+
+WINS: 1
+  009c46b0 RELOCATION_MATCH CFileInstaller::IsCompressedFilename
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CFileInstaller_IsCompressedFilename_009c46b0

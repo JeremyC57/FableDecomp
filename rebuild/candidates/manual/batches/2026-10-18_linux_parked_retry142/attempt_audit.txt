@@ -1,0 +1,2 @@
+retry200d_sol: 19 immutable source/command/flag grades;20 UNCERTAIN historical reservation; 11 unused new allowances.
+retry200e_sol: 13 immutable source/command/flag grades;20 UNCERTAIN historical reservation; 17 unused new allowances.

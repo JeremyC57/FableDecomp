@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00ac52f0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00ac52f0   RELOCATION_MATCH PASS   WriteToFile
+
+WINS: 1
+  00ac52f0 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::WriteToFile
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DMeshFileEngineMaterialChunk_WriteToFile_00ac52f0

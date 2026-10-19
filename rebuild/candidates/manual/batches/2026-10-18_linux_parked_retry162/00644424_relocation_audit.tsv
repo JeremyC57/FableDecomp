@@ -1,0 +1,15 @@
+offset	native_target	symbol
+0000000f	013961e8	?g_CoordinateWidth@@3NA
+00000015	0125a288	__real@3fd99999a0000000
+00000021	013961f0	?g_CoordinateHeight@@3NA
+00000027	0125a280	__real@3fea8f5c20000000
+00000032	0099aed0	??0CWideString@@QAE@XZ
+0000003b	004498c0	?GetPlayer@PlayerManagerMethods@@QAEAAUCPlayer@@J@Z
+00000048	0044a2a0	?GetSpiritScoreText@PlayerManagerMethods@@QBE_NJAAVCWideString@@@Z
+0000005d	00449b60	?GetMultiplayerColour@PlayerManagerMethods@@QBE?AUCRGBColour@@J@Z
+00000063	0125a278	__real@437a0000
+000000ad	00438010	?Draw2DText@PlayerGuiMethods@@QAEXABUC2DVector@@ABVCWideString@@ABUCFontBank@@ABUCRGBColour@@MW4EEngine2DLayer@@_N@Z
+000000d4	00438010	?Draw2DText@PlayerGuiMethods@@QAEXABUC2DVector@@ABVCWideString@@ABUCFontBank@@ABUCRGBColour@@MW4EEngine2DLayer@@_N@Z
+000000da	013961e8	?g_CoordinateWidth@@3NA
+000000e0	0125a270	__real@3fbeb851e0000000
+000000ee	0099b510	??1CWideString@@QAE@XZ

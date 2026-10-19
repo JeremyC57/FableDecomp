@@ -1,0 +1,9 @@
+addr       parity           behav  name
+008a9020   RELOCATION_MATCH PASS   CreatureGeneratorSetFamily
+008a99f0   RELOCATION_MATCH PASS   SetThingAndCarriedItemsNotAffectedByScreenFilter
+009e6fa0   RELOCATION_MATCH PASS   LinearInsert
+
+WINS: 3
+  008a9020 RELOCATION_MATCH CGameScriptInterface::CreatureGeneratorSetFamily
+  008a99f0 RELOCATION_MATCH CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter
+  009e6fa0 RELOCATION_MATCH SymbolMapSort::LinearInsert

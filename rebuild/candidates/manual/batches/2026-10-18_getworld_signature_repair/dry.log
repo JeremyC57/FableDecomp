@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00692940   RELOCATION_MATCH PASS   GetWorld
+
+WINS: 1
+  00692940 RELOCATION_MATCH CCreatureActionBase::GetWorld

@@ -1,0 +1,6 @@
+offset	native_target	symbol
+0000000d	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+0000001c	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+0000002e	013b89fc	?QuestManager@@3PAUQuestManagerNative@@A
+00000069	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+00000086	004365b0	?LowerBound@ComponentMap@@QBEPBUComponentEntry@@ABJ@Z

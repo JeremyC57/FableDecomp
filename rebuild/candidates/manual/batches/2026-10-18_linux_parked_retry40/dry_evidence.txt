@@ -1,0 +1,7 @@
+addr       parity           behav  name
+009899b0   RELOCATION_MATCH PASS   SetShadowSpotLightFallloffParameters
+0098b2c0   RELOCATION_MATCH PASS   SetLightGlobal
+
+WINS: 2
+  009899b0 RELOCATION_MATCH CShaderRenderManager::SetShadowSpotLightFallloffParameters
+  0098b2c0 RELOCATION_MATCH CShaderRenderManager::SetLightGlobal

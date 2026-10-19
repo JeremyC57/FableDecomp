@@ -1,0 +1,1 @@
+Game7/396,Creature/Player77,three eventRTTI identities,new/freeimports,LOG_ENTRY/CTCOpinionSource literals,floatzero,StartLetterBox forwarding are independently checked.

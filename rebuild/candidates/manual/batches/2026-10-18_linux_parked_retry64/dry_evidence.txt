@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b4d2c0   RELOCATION_MATCH PASS   PostLayerRender
+
+WINS: 1
+  00b4d2c0 RELOCATION_MATCH CEngineShadowRenderer::PostLayerRender

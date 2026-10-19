@@ -1,0 +1,120 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/evidence/006fa3f0.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CEvent@NAnimationEvents@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000001d DISP32            ?Allocate@EventVector@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0EventVector@NAnimationEvents@@QAE@KABUCEvent@1@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000016 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0EventVector@NAnimationEvents@@QAE@ABU01@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??_V@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1EventVector@NAnimationEvents@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000013 DISP32            ?resize@EventVector@NAnimationEvents@@QAEXJABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?push_back@EventVector@NAnimationEvents@@QAEXABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000001f DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0EventPair@NAnimationEvents@@QAE@KABUEventVector@1@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000016 DISP32            ?SortEventPairs@NAnimationEvents@@YIXPAUEventPair@1@0UKeyPairCompareLess@1@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Sort@EventMap@NAnimationEvents@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 DISP32            ??_V@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1EventPair@NAnimationEvents@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a DISP32            ?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Find@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000022 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+0000002e DISP32            ?PushBack@EventMap@NAnimationEvents@@QAEXABUEventPair@2@@Z
+00000038 DISP32            ??_V@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Insert@EventMap@NAnimationEvents@@QAEXKABUEventVector@2@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000013 DISP32            ?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+00000048 DISP32            ?Allocate@EventVector@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+00000062 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+0000006e DISP32            ?PushBack@EventMap@NAnimationEvents@@QAEXABUEventPair@2@@Z
+00000078 DISP32            ??_V@YAXPAX@Z
+00000086 DISP32            ??_V@YAXPAX@Z
+000000a0 DISP32            ?SortEventPairs@NAnimationEvents@@YIXPAUEventPair@1@0UKeyPairCompareLess@1@@Z
+000000c5 DISP32            ?resize@EventVector@NAnimationEvents@@QAEXJABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?AddEventToAnim@CManager@NAnimationEvents@@QAEXKABUCEvent@2@@Z

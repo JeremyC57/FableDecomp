@@ -1,0 +1,119 @@
+[
+  {
+    "address": "00b91f50",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b91f50/grade01/source.cpp",
+    "sha256": "1792a9831f8ce6ada10e2337f6422edbc20be71822e7404b36beb68eb4cd154c",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b91f50 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b91f50/grade01/source.cpp PreloadPrimitives\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b91f50/grade01/stdout.txt",
+    "status": "00b91f50 PreloadPrimitives RELOCATION_MATCH flags= []"
+  },
+  {
+    "address": "00b92d30",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b92d30/grade01/source.cpp",
+    "sha256": "412900d819e52fb617da40bd040a8bb2ffa6ad7d7be5a5a90d0244203067114c",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b92d30 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b92d30/grade01/source.cpp PreloadPrimitives\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b92d30/grade01/stdout.txt",
+    "status": "00b92d30 PreloadPrimitives RELOCATION_MATCH flags= []"
+  },
+  {
+    "address": "00b92660",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b92660/grade01/source.cpp",
+    "sha256": "398b77a8884a11f7ef7ac643481e9ab747c538b42784de7455239695e13df6a6",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b92660 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b92660/grade01/source.cpp RenderCellClippedShadowBuffer\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b92660/grade01/stdout.txt",
+    "status": "00b92660 RenderCellClippedShadowBuffer RELOCATION_MATCH flags= []"
+  },
+  {
+    "address": "00b92f80",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade01/source.cpp",
+    "sha256": "1e33e1d78ad03505b5ed30289695c99481fcef7c9317f837306e60b3a73ae708",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b92f80 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade01/source.cpp PreloadPrimitives\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade01/stdout.txt",
+    "status": "00b92f80 CEnginePrimitiveRenderer::PreloadPrimitivesByCamera DIFFER(276v276) flags= []"
+  },
+  {
+    "address": "00b92f80",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade02/source.cpp",
+    "sha256": "7213045e1c17d6a9fdbfb4e008b4fa173ffb463a3e0965b833c2ffb8ebec3df8",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b92f80 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade02/source.cpp PreloadPrimitives\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade02/stdout.txt",
+    "status": "00b92f80 CEnginePrimitiveRenderer::PreloadPrimitivesByCamera DIFFER(276v276) flags= []"
+  },
+  {
+    "address": "00b92f80",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade03/source.cpp",
+    "sha256": "b95a1087fdf78f0dd75fc7519c4ed147aeb458d352d89521b19eb060c8a4e688",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b92f80 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade03/source.cpp PreloadPrimitives\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b92f80/grade03/stdout.txt",
+    "status": "00b92f80 CEnginePrimitiveRenderer::PreloadPrimitivesByCamera RELOCATION_MATCH flags= []"
+  },
+  {
+    "address": "00b92e50",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade01/source.cpp",
+    "sha256": "f59e772d08e741b7101601553476e5a20721836c60eee99e0043b37d97b7d94e",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b92e50 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade01/source.cpp PreloadPrimitives\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade01/stdout.txt",
+    "status": "00b92e50 CEnginePrimitiveRenderer::PreloadPrimitivesBySphere DIFFER(300v300) flags= []"
+  },
+  {
+    "address": "00b92e50",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade02/source.cpp",
+    "sha256": "f7b065ae44a38703417723f4c1d507be1535a3051d069193ff4fdca09ae3253a",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b92e50 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade02/source.cpp PreloadPrimitives\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade02/stdout.txt",
+    "status": "00b92e50 CEnginePrimitiveRenderer::PreloadPrimitivesBySphere DIFFER(300v300) flags= []"
+  },
+  {
+    "address": "00b92e50",
+    "source": "work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade03/source.cpp",
+    "sha256": "673a6a43df54c0d4567d3c5c458eca80ceb9e1dc839708c07d96fd5d22673d50",
+    "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b92e50 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade03/source.cpp PreloadPrimitives\n",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "log": "work/codex-lane/w22/luna236_whole/attempts/00b92e50/grade03/stdout.txt",
+    "status": "00b92e50 CEnginePrimitiveRenderer::PreloadPrimitivesBySphere RELOCATION_MATCH flags= []"
+  }
+]

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00698c30   RELOCATION_MATCH PASS   PushDownManualCameraList
+00616c30   RELOCATION_MATCH PASS   clear
+
+WINS: 2
+  00698c30 RELOCATION_MATCH CGameCameraManager::PushDownManualCameraList
+  00616c30 RELOCATION_MATCH std::vector<unsigned __int64>::clear
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CGameCameraManager_PushDownManualCameraList_00698c30
+  stdvectorunsignedint64_clear_00616c30

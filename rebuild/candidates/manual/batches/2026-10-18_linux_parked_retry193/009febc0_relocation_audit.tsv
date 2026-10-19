@@ -1,0 +1,13 @@
+offset	native_target	symbol
+0000000d	0129c8cc	??_7CGraphicDataBank@@6BCBankFileAsync@@@
+00000017	0129c938	??_7CGraphicDataBank@@6BCResourceBank@@@
+00000024	00a00e60	?erase@GraphicArray@@QAEPAUGraphicInfo@@PAU2@0@Z
+0000003f	00a00ed0	?erase@FrameArray@@QAEPAUGraphicInfoFrame@@PAU2@0@Z
+00000046	009ce360	?Close@CBankFileNative@@UAEXXZ
+0000005b	009f9f70	??1NativeTexture@@QAE@XZ
+00000087	00bfe9bc	??3@YAXPAX@Z
+000000a2	0129c82c	??_7BankState@@6B@
+000000c7	00bfea14	_free
+000000f9	00bfea14	_free
+00000107	009fc690	??1CResourceBank@@UAE@XZ
+00000112	009d6490	??1CBankFileAsync@@UAE@XZ

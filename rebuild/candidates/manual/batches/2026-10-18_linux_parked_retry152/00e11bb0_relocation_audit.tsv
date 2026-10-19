@@ -1,0 +1,16 @@
+offset	native_target	symbol
+00000013	012c32f0	??_7CIsThingAlive@NScript@@6B@
+00000018	004abe90	??0ScriptThingCopy@@QAE@ABUCScriptThing@@@Z
+00000024	00f35b10	?SetPredicate@CVtable012E04FC@@QAEXABUCPredicateBase@NScript@@@Z
+00000030	012c32f0	??_7CIsThingAlive@NScript@@6B@
+00000035	004aa840	??1ScriptThingCopy@@QAE@XZ
+00000044	00f35b30	?IsActiveThreadTerminating@CVtable012E04FC@@QAE_NXZ
+00000055	0099a380	?InitializeCBaseObject@ScriptResource@@QAEXXZ
+00000060	0127094c	?ResourceVTable@@3QBEB
+00000086	00cd23b9	?IsScripting@ScriptResource@@QAE_NXZ
+00000093	00cd2770	?Release@ScriptResource@@QAEXXZ
+000000bb	00f35b30	?IsActiveThreadTerminating@CVtable012E04FC@@QAE_NXZ
+000000da	00f35b30	?IsActiveThreadTerminating@CVtable012E04FC@@QAE_NXZ
+000000e7	00cd2770	?Release@ScriptResource@@QAEXXZ
+000000fb	00f35b30	?IsActiveThreadTerminating@CVtable012E04FC@@QAE_NXZ
+00000108	007e74d0	??1ScriptResource@@QAE@XZ

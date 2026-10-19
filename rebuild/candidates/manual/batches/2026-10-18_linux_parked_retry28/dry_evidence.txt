@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0065595c   RELOCATION_MATCH PASS   CEnginePrimitive2DClockSprite
+00550940   RELOCATION_MATCH PASS   CEnginePrimitive2DStaticMesh
+0099bc50   RELOCATION_MATCH PASS   SetLength
+009cd740   WARN SHARED_HEADER_AVAILABLE CBankFile
+009cd740   RELOCATION_MATCH PASS   PackRuntimeData
+
+WINS: 4
+  0065595c RELOCATION_MATCH CEnginePrimitive2DClockSprite::??0CEnginePrimitive2DClockSprite
+  00550940 RELOCATION_MATCH CEnginePrimitive2DStaticMesh::??0CEnginePrimitive2DStaticMesh
+  0099bc50 RELOCATION_MATCH CWideString::SetLength
+  009cd740 RELOCATION_MATCH CBankFile::PackRuntimeData

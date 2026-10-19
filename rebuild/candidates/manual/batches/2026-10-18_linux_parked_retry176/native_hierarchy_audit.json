@@ -1,0 +1,212 @@
+{
+  "emitted_slots": [
+    {
+      "vtable": "0x129a030",
+      "slot": 0,
+      "target": "0x987d10",
+      "symbol": "??_ECShaderBase@@MAEPAXI@Z",
+      "signature": "protected: virtual void * __thiscall CShaderBase::`vector deleting dtor'(unsigned int)"
+    },
+    {
+      "vtable": "0x129a030",
+      "slot": 1,
+      "target": "0x987cf0",
+      "symbol": "?GetDebugName@CShaderBase@@MBE?AVCCharString@@XZ",
+      "signature": "protected: virtual class CCharString __thiscall CShaderBase::GetDebugName(void) const"
+    },
+    {
+      "vtable": "0x129b3d0",
+      "slot": 0,
+      "target": "0x9c1ae0",
+      "symbol": "??_ECVertexShader@@UAEPAXI@Z",
+      "signature": "public: virtual void * __thiscall CVertexShader::`vector deleting dtor'(unsigned int)"
+    },
+    {
+      "vtable": "0x129b3d0",
+      "slot": 1,
+      "target": "0x987cf0",
+      "symbol": "?GetDebugName@CVertexShader@@UBE?AVCCharString@@XZ",
+      "signature": "public: virtual class CCharString __thiscall CVertexShader::GetDebugName(void) const"
+    },
+    {
+      "vtable": "0x129b3d0",
+      "slot": 2,
+      "target": "0x9be210",
+      "symbol": "?CountReferences@CVertexShader@@UAEKXZ",
+      "signature": "public: virtual unsigned long __thiscall CVertexShader::CountReferences(void)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 0,
+      "target": "0xbcbe80",
+      "symbol": "??_ECEnginePrimitiveManagerSpriteTrails@@UAEPAXI@Z",
+      "signature": "public: virtual void * __thiscall CEnginePrimitiveManagerSpriteTrails::`vector deleting dtor'(unsigned int)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 1,
+      "target": "0xbca8b0",
+      "symbol": "?CreateInternalPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAEPAUCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z",
+      "signature": "public: virtual struct CEngineInternalPrimitiveBase * __thiscall CEnginePrimitiveManagerSpriteTrails::CreateInternalPrimitive(enum EEnginePrimitiveType)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 2,
+      "target": "0xbca910",
+      "symbol": "?GetSupportedTypes@CEnginePrimitiveManagerSpriteTrails@@UBEXAAUCEnginePrimitiveTypeList@@@Z",
+      "signature": "public: virtual void __thiscall CEnginePrimitiveManagerSpriteTrails::GetSupportedTypes(struct CEnginePrimitiveTypeList &) const"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 3,
+      "target": "0xbacd90",
+      "symbol": "?FrameStart@CEnginePrimitiveManager@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 4,
+      "target": "0xbacda0",
+      "symbol": "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 5,
+      "target": "0xbcb800",
+      "symbol": "?RenderSubPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAEXAAUCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+      "signature": "public: virtual void __thiscall CEnginePrimitiveManagerSpriteTrails::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 6,
+      "target": "0xb4a460",
+      "symbol": "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@@Z",
+      "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 7,
+      "target": "0xbca6b0",
+      "symbol": "?RenderPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAE?AW4ERendered@@AAUCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAUCEngineSubPrimitiveChain@@@Z",
+      "signature": "public: virtual enum ERendered __thiscall CEnginePrimitiveManagerSpriteTrails::RenderPrimitive(struct CEngineInternalPrimitiveBase &, enum EEngineRenderLayer, struct CEngineSubPrimitiveChain &)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 8,
+      "target": "0xb38810",
+      "symbol": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAUCEngineInternalPrimitiveBase@@@Z",
+      "signature": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 9,
+      "target": "0xb38820",
+      "symbol": "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAUCEngineInternalPrimitiveBase@@ABUC3DVector@@K@Z",
+      "signature": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 10,
+      "target": "0xb38830",
+      "symbol": "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z",
+      "signature": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 11,
+      "target": "0xb38840",
+      "symbol": "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)"
+    },
+    {
+      "vtable": "0x12a6a10",
+      "slot": 12,
+      "target": "0xb38850",
+      "symbol": "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCShadowSceneContext@NEngineShadowRenderer@@@Z",
+      "signature": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)"
+    }
+  ],
+  "native_tables": {
+    "0x129a030": [
+      "0x987d10",
+      "0x987cf0"
+    ],
+    "0x129b3d0": [
+      "0x9c1ae0",
+      "0x987cf0",
+      "0x9be210"
+    ],
+    "0x12a6a10": [
+      "0xbcbe80",
+      "0xbca8b0",
+      "0xbca910",
+      "0xbacd90",
+      "0xbacda0",
+      "0xbcb800",
+      "0xb4a460",
+      "0xbca6b0",
+      "0xb38810",
+      "0xb38820",
+      "0xb38830",
+      "0xb38840",
+      "0xb38850"
+    ],
+    "0x12a53e8": [
+      "0xbacde0",
+      "0xbfea08",
+      "0xbfea08",
+      "0xbacd90",
+      "0xbacda0",
+      "0xb4a450",
+      "0xb4a460",
+      "0xbfea08",
+      "0xb38810",
+      "0xb38820",
+      "0xb38830",
+      "0xb38840",
+      "0xb38850"
+    ],
+    "0x12a69dc": [
+      "0xbca100",
+      "0xbca110",
+      "0xbca120"
+    ],
+    "0x12a69ec": [
+      "0xbca100",
+      "0xbca110",
+      "0xbca120"
+    ]
+  },
+  "hierarchies": [
+    {
+      "vtable": "0x129a030",
+      "offset": 0,
+      "classes": [
+        ".?AVCShaderBase@@"
+      ]
+    },
+    {
+      "vtable": "0x129b3d0",
+      "offset": 0,
+      "classes": [
+        ".?AVCVertexShader@@",
+        ".?AVCShaderBase@@"
+      ]
+    },
+    {
+      "vtable": "0x12a6a10",
+      "offset": 0,
+      "classes": [
+        ".?AVCEnginePrimitiveManagerSpriteTrails@@",
+        ".?AVCEnginePrimitiveManager@@",
+        ".?AVCEnginePrimitiveRenderUtil@@",
+        ".?AVCBaseClassNonCopyable@@",
+        ".?AVCBaseClass@@"
+      ]
+    }
+  ],
+  "queue": "Full SDK declarations reviewed. Native COM slots: Release2 and Unadvise6. Native ABI +4 prefix unknown, ctor CAF500 proves offsets; native fixture asserts actual class and member layout. Four cleanup states for lock8, presentation20, stream38,event50.",
+  "shader_bank": "Two-slot verified interface prefix, not complete reconstructed native class. Factory98B860 allocates60-byte resource and12-byte refs0/fastcallcallback4/data8 record.",
+  "hidden_result": "A5D5F0 const by-value shader getter returns provided hidden storage in EAX and RET8; explicit adapter preserves ABI."
+}

@@ -1,0 +1,233 @@
+[
+  {
+    "address": "00690c70",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "55b5eca8bab568b145030ebfed466d734cc1f6970d6b6795a7988765b9cb12d5",
+    "result": "00690c70 CInputProcessDigging::?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z DIFFER(166v162) flags= ['/GS']",
+    "effective_flags": "/O2 /Oy /W3 /GS",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00690c70_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00690c70_01.pregrade.json"
+  },
+  {
+    "address": "00690c70",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "55b5eca8bab568b145030ebfed466d734cc1f6970d6b6795a7988765b9cb12d5",
+    "result": "00690c70 CInputProcessDigging::?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z DIFFER(166v162) flags= ['/GS', '/Oa']",
+    "effective_flags": "/O2 /Oy /W3 /GS /Oa",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00690c70_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00690c70_02.pregrade.json"
+  },
+  {
+    "address": "00690c70",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "a8253f2e593f18d302243bddb01152aba9fbcf7f35e66e2490505f5137b0b833",
+    "result": "00690c70 CInputProcessDigging::?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z DIFFER(166v162) flags= ['/GS']",
+    "effective_flags": "/O2 /Oy /W3 /GS",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00690c70_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00690c70_03.pregrade.json"
+  },
+  {
+    "address": "00690c70",
+    "new_grade": "4",
+    "historical_reserved": "4",
+    "cumulative": "8",
+    "sha256": "6d79d80486d1f4f391b29615f148ec4eb2ebe1d548a7f1adf859daabf3e3b5ea",
+    "result": "00690c70 CInputProcessDigging::?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z DIFFER(64v162) flags= ['/GS']",
+    "effective_flags": "/O2 /Oy /W3 /GS",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00690c70_04.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00690c70_04.pregrade.json"
+  },
+  {
+    "address": "00690c70",
+    "new_grade": "5",
+    "historical_reserved": "4",
+    "cumulative": "9",
+    "sha256": "efd6b07662a35493e0c6645bc4f207109af3984473f9cb903f36d26796ab44bf",
+    "result": "00690c70 CInputProcessDigging::?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z DIFFER(166v162) flags= ['/GS']",
+    "effective_flags": "/O2 /Oy /W3 /GS",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00690c70_05.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00690c70_05.pregrade.json"
+  },
+  {
+    "address": "00690c70",
+    "new_grade": "6",
+    "historical_reserved": "4",
+    "cumulative": "10",
+    "sha256": "ddb516db0d9783c8015ff399e02e70b11d207ca378c39d52b25e34e355693465",
+    "result": "00690c70 CInputProcessDigging::?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z DIFFER(166v162) flags= ['/GS']",
+    "effective_flags": "/O2 /Oy /W3 /GS",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00690c70_06.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00690c70_06.pregrade.json"
+  },
+  {
+    "address": "006893d0",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "3320b9ff5f87d4b388383650314f70f7bb98703e21d2fe3baba2a3b97ae4a55d",
+    "result": "006893d0 CInputProcessInventoryBase::ChangeSelection DIFFER(224v230) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/006893d0_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/006893d0_01.pregrade.json"
+  },
+  {
+    "address": "006893d0",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "7f92156bf35d47b2d9024b8f582a0d33dca6531037e9e79e7914d9ae0a20c23d",
+    "result": "006893d0 CInputProcessInventoryBase::ChangeSelection RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/006893d0_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/006893d0_02.pregrade.json"
+  },
+  {
+    "address": "006893d0",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "8ac0f2c7f5f8fa1b16583e65a2a6775ed3c27f19e2ee46359cd7f4be862acbba",
+    "result": "006893d0 CInputProcessInventoryBase::ChangeSelection RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/006893d0_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/006893d0_03.pregrade.json"
+  },
+  {
+    "address": "00687ed0",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "fa1fd460583bdb711db3f1e08be58f4e3544f62b409445a72260ddf6040861c1",
+    "result": "00687ed0 CInputProcessMain::HandleDebugCameraAction DIFFER(147v171) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00687ed0_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00687ed0_01.pregrade.json"
+  },
+  {
+    "address": "00687ed0",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "409f45eeec303814f17479a2c35e69932fb4863d5b30980cc61b7e47d9e96afc",
+    "result": "00687ed0 CInputProcessMain::HandleDebugCameraAction DIFFER(171v171) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00687ed0_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00687ed0_02.pregrade.json"
+  },
+  {
+    "address": "00687ed0",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "3d58b574ab35cbffb79671fb8802df232ded7c9e9db7677d28dfc7d11d932faf",
+    "result": "00687ed0 CInputProcessMain::HandleDebugCameraAction RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00687ed0_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00687ed0_03.pregrade.json"
+  },
+  {
+    "address": "00687ed0",
+    "new_grade": "4",
+    "historical_reserved": "4",
+    "cumulative": "8",
+    "sha256": "7fa981ca6f26ec24025f8d506a54bf57c3d20bbee0288a6a33a25802fa261748",
+    "result": "00687ed0 CInputProcessMain::HandleDebugCameraAction RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00687ed0_04.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00687ed0_04.pregrade.json"
+  },
+  {
+    "address": "00687ed0",
+    "new_grade": "5",
+    "historical_reserved": "4",
+    "cumulative": "9",
+    "sha256": "f5a8b874b5b4a0796a249f12ea18efcde40cd24725384051a78ff0d6ff96b5bd",
+    "result": "00687ed0 CInputProcessMain::HandleDebugCameraAction RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00687ed0_05.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00687ed0_05.pregrade.json"
+  },
+  {
+    "address": "00687ed0",
+    "new_grade": "6",
+    "historical_reserved": "4",
+    "cumulative": "10",
+    "sha256": "7e83f3a29d5cd5c5b9ae29a2fdbe356ecae8baa6e45b8ec62d48c704e1452b7f",
+    "result": "00687ed0 CInputProcessMain::HandleDebugCameraAction RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00687ed0_06.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00687ed0_06.pregrade.json"
+  },
+  {
+    "address": "00a0d6b0",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "59858172f4b3b4586d6f10e791d2a1b83c6d3c94f1938fd9413cffe9c714e8bb",
+    "result": "00a0d6b0 CInputProcessManager::PreparePrimitivesForEngine DIFFER(175v197) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00a0d6b0_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00a0d6b0_01.pregrade.json"
+  },
+  {
+    "address": "00a0d6b0",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "3e95237355caf19bde748159930d85f20f2bd17d1543d6663be97a88bb0f187f",
+    "result": "00a0d6b0 CInputProcessManager::PreparePrimitivesForEngine DIFFER(166v197) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00a0d6b0_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00a0d6b0_02.pregrade.json"
+  },
+  {
+    "address": "00a0d6b0",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "31ca0b514eef2a4db51d37cd30281ad292bd18eaed3b3eb29da76fad26df2538",
+    "result": "00a0d6b0 CInputProcessManager::PreparePrimitivesForEngine DIFFER(170v197) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00a0d6b0_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00a0d6b0_03.pregrade.json"
+  },
+  {
+    "address": "00a0d6b0",
+    "new_grade": "4",
+    "historical_reserved": "4",
+    "cumulative": "8",
+    "sha256": "db4797eec9604898248f7c1bbcbefe722e8302f9ac0994afd2b73b8d613379a2",
+    "result": "00a0d6b0 CInputProcessManager::PreparePrimitivesForEngine DIFFER(170v197) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00a0d6b0_04.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00a0d6b0_04.pregrade.json"
+  },
+  {
+    "address": "00a0d6b0",
+    "new_grade": "5",
+    "historical_reserved": "4",
+    "cumulative": "9",
+    "sha256": "a1c059cc0a050bf3553d3c8bda9d65d4f1b2eef01909ff18c4224bba658758da",
+    "result": "00a0d6b0 CInputProcessManager::PreparePrimitivesForEngine DIFFER(197v197) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00a0d6b0_05.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00a0d6b0_05.pregrade.json"
+  },
+  {
+    "address": "00a0d6b0",
+    "new_grade": "6",
+    "historical_reserved": "4",
+    "cumulative": "10",
+    "sha256": "9988d9629f64df22c514ac32cfa1a3674b7b8839c3a5f213082811a69b3c5fed",
+    "result": "00a0d6b0 CInputProcessManager::PreparePrimitivesForEngine MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/snapshots/00a0d6b0_06.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry201d_sol/logs/00a0d6b0_06.pregrade.json"
+  }
+]

@@ -1,0 +1,14 @@
+['/nologo', '/c', '/O2', '/W3', '/Fo/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_first/native.obj', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_first/fixture.cpp']
+fixture.cpp
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(614) : error C2365: 'gets' : redefinition; previous definition was a 'function'
+        Z:\workspace\FableDecomp\work\wine-repair\vc71\include\stdio.h(299) : see declaration of 'gets'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(643) : error C2171: '++' : illegal on operands of type 'char *(__cdecl *)(char *)'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(643) : error C2105: '++' needs l-value
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(643) : warning C4550: expression evaluates to a function which is missing an argument list
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(646) : error C2659: '=' : overloaded function as left operand
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(655) : error C2446: '!=' : no conversion from 'int' to 'char *(__cdecl *)(char *)'
+        Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(655) : error C2040: '!=' : 'char *(__cdecl *)(char *)' differs in levels of indirection from 'int'
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(665) : error C2446: '!=' : no conversion from 'int' to 'char *(__cdecl *)(char *)'
+        Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202f_sol\snapshots\0041d8e7_fixture_first\fixture.cpp(665) : error C2040: '!=' : 'char *(__cdecl *)(char *)' differs in levels of indirection from 'int'

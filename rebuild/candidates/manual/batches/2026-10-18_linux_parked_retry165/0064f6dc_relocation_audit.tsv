@@ -1,0 +1,8 @@
+offset	native_target	symbol
+0000001d	00438570	?PeekGuiDef@@YIPAUGuiOracleDefView@@XZ
+0000003b	00443f90	?Resize@HandleArray@@QAEXK@Z
+00000049	00643ca1	?GFAnchorToTopRight@@YI?AUC2DVector@@ABU1@@Z
+0000008d	013b8790	?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A
+0000009b	01230014	__real@437f0000
+000000a3	00bfea70	__ftol2
+000000ca	00493ac2	??0CEnginePrimitive2DSprite@@QAE@_KABUC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z

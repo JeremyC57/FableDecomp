@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0046f7c8   RELOCATION_MATCH PASS   Transfer
+
+WINS: 1
+  0046f7c8 RELOCATION_MATCH CCombatTypeDef::Transfer
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCombatTypeDef_Transfer_0046f7c8

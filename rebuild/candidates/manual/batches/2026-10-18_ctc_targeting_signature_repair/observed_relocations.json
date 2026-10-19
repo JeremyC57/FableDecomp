@@ -1,0 +1,46 @@
+{
+  "008a03f0": [
+    [
+      "0000003e",
+      "DISP32",
+      "?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z",
+      "0x40f020"
+    ],
+    [
+      "00000057",
+      "dir32",
+      "??_C@_0P@NGBENEOE@CTCTargetingAI?$AA@",
+      "0x1239fb0"
+    ],
+    [
+      "00000060",
+      "DISP32",
+      "??0CCharString@@QAE@PBDJ@Z",
+      "0x99ebf0"
+    ],
+    [
+      "00000099",
+      "DISP32",
+      "?CompareStrings@@YIJPBD0@Z",
+      "0x411570"
+    ],
+    [
+      "000000ae",
+      "DISP32",
+      "??1CCharString@@QAE@XZ",
+      "0x99eae0"
+    ],
+    [
+      "000000b7",
+      "DISP32",
+      "??1CCharString@@QAE@XZ",
+      "0x99eae0"
+    ],
+    [
+      "000000c5",
+      "DISP32",
+      "?SetScriptTargetOverride@TargetingMethods@@QAEXPAUCThingNative@@@Z",
+      "0x8abba0"
+    ]
+  ]
+}

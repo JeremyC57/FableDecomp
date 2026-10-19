@@ -1,0 +1,106 @@
+{
+  "caller_relocations": [
+    {
+      "offset": 19,
+      "native_target": "0x6faf20",
+      "symbol": "?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z",
+      "demangled": "public: struct NAnimationEvents::EventPair * __thiscall NAnimationEvents::EventMap::LowerBound(unsigned long const &)",
+      "identity": "NativeLowerBound82-byte body exactly reproduced below; unsignedkey compare and signedbinarysearchcount"
+    },
+    {
+      "offset": 72,
+      "native_target": "0x6fafe0",
+      "symbol": "?Allocate@EventVector@NAnimationEvents@@QAEXKABUCEvent@2@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventVector::Allocate(unsigned long, struct NAnimationEvents::CEvent const &)",
+      "identity": "CSmallVector<CEvent,32>::Allocate(ulong,constCEvent&), PDB720690; native deletesoldarray/allocatescount*8/fills8-byteevents"
+    },
+    {
+      "offset": 98,
+      "native_target": "0x6fb5c0",
+      "symbol": "?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventVector::Copy(struct NAnimationEvents::EventVector const &)",
+      "identity": "CSmallVector<CEvent,32>::Copy(constCSmallVector&), PDB7206F0; genuine owning deep-copy after zero-initializedStart/Size"
+    },
+    {
+      "offset": 110,
+      "native_target": "0x6fcd90",
+      "symbol": "?PushBack@EventMap@NAnimationEvents@@QAEXABUEventPair@2@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventMap::PushBack(struct NAnimationEvents::EventPair const &)",
+      "identity": "Vector<EventPair>::push_back(constEventPair&); native copieskey and invokes6FB5C0 for owningvector"
+    },
+    {
+      "offset": 120,
+      "native_target": "0xbfeb1c",
+      "symbol": "??_V@YAXPAX@Z",
+      "demangled": "void __cdecl operator delete[](void *)",
+      "identity": "CRT operator delete[], independently resolved import??_V and emitted??_V signature"
+    },
+    {
+      "offset": 134,
+      "native_target": "0xbfeb1c",
+      "symbol": "??_V@YAXPAX@Z",
+      "demangled": "void __cdecl operator delete[](void *)",
+      "identity": "CRT operator delete[], independently resolved import??_V and emitted??_V signature"
+    },
+    {
+      "offset": 160,
+      "native_target": "0x6fd380",
+      "symbol": "?SortEventPairs@NAnimationEvents@@YIXPAUEventPair@1@0UKeyPairCompareLess@1@@Z",
+      "demangled": "void __fastcall NAnimationEvents::SortEventPairs(struct NAnimationEvents::EventPair *, struct NAnimationEvents::EventPair *, struct NAnimationEvents::KeyPairCompareLess)",
+      "identity": "std::sort specialization, __fastcall first/last inECX/EDX, sizeof1 comparisonfunctorstack argument; native introsort + final insertion sort"
+    },
+    {
+      "offset": 197,
+      "native_target": "0x6fade0",
+      "symbol": "?resize@EventVector@NAnimationEvents@@QAEXJABUCEvent@2@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventVector::resize(long, struct NAnimationEvents::CEvent const &)",
+      "identity": "CSmallVector<CEvent,32>::resize(long,constCEvent&), PDB720540; neweventslot later overwritten by exact candidate assignment"
+    }
+  ],
+  "complete_native_lowerbound82_equal": true,
+  "lowerbound_symbol": "?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z",
+  "native_array_delete_import": {
+    "iat": "0x1440120",
+    "name": "??_V@YAXPAX@Z"
+  },
+  "fixture_emitted_signatures": [
+    {
+      "symbol": "?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z",
+      "demangled": "public: struct NAnimationEvents::EventPair * __thiscall NAnimationEvents::EventMap::LowerBound(unsigned long const &)"
+    },
+    {
+      "symbol": "??_U@YAPAXI@Z",
+      "demangled": "void * __cdecl operator new[](unsigned int)"
+    },
+    {
+      "symbol": "??_V@YAXPAX@Z",
+      "demangled": "void __cdecl operator delete[](void *)"
+    },
+    {
+      "symbol": "?SortEventPairs@NAnimationEvents@@YIXPAUEventPair@1@0UKeyPairCompareLess@1@@Z",
+      "demangled": "void __fastcall NAnimationEvents::SortEventPairs(struct NAnimationEvents::EventPair *, struct NAnimationEvents::EventPair *, struct NAnimationEvents::KeyPairCompareLess)"
+    },
+    {
+      "symbol": "?Allocate@EventVector@NAnimationEvents@@QAEXKABUCEvent@2@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventVector::Allocate(unsigned long, struct NAnimationEvents::CEvent const &)"
+    },
+    {
+      "symbol": "?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventVector::Copy(struct NAnimationEvents::EventVector const &)"
+    },
+    {
+      "symbol": "?resize@EventVector@NAnimationEvents@@QAEXJABUCEvent@2@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventVector::resize(long, struct NAnimationEvents::CEvent const &)"
+    },
+    {
+      "symbol": "?push_back@EventVector@NAnimationEvents@@QAEXABUCEvent@2@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventVector::push_back(struct NAnimationEvents::CEvent const &)"
+    },
+    {
+      "symbol": "?PushBack@EventMap@NAnimationEvents@@QAEXABUEventPair@2@@Z",
+      "demangled": "public: void __thiscall NAnimationEvents::EventMap::PushBack(struct NAnimationEvents::EventPair const &)"
+    }
+  ],
+  "layouts": "PDB eventIndex30/ExternallyImported1/StopEvent1/Timefloat4,size8;SmallVectorStart0/Size4,size8;pairkey0/vector4,size12;VectorMap nativeFirst0/Last4/Limit8/CompareC/DirtyD,size10hex vsdonor14hex. ManagernativeMap2C/Different3C vsdonor34/48. All native offsets/sizes asserted.",
+  "names": "Manager::AddEventToAnim/PDB71F700 original. EventVector/EventPair/EventMap/SortEventPairs are readable native-template projections, not exact original typedef names; original templates CSmallVector<CEvent,32>, std::pair<ulong,...>, CVectorMap<ulong,...>, std::sort. KeyPairCompareLess corresponds originalCKeyPairCompareLess empty1bytefunctor."
+}

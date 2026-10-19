@@ -1,0 +1,14 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00433fe0",
+    "module": "CEngineDef",
+    "name": "Transfer",
+    "source_cpp": "// CEngineDef::Transfer(CPersistContext&) -- transfer the engine definition's scalar fields in declaration order\n// Retail 0x00433FE0, 208 bytes. Integer fields use CPersistContext::Transfer(long&) 0x00431061; packed/float fields use Transfer(float&) 0x00431102.\nstruct CPersistContext {\n void Transfer(long&); // 0x00431061\n void Transfer(float&); // 0x00431102\n};\nstruct CEngineDef {\n unsigned char pad[0x3c]; long f3c,f40,f44,f48; float f4c,f50,f54,f58; long f5c; float f60,f64; long f68; float f6c,f70,f74; long pad78; long f7c;\n void Transfer(CPersistContext&);\n};\nvoid CEngineDef::Transfer(CPersistContext& c) {\n c.Transfer(f3c); c.Transfer(f40); c.Transfer(f44); c.Transfer(f48);\n c.Transfer(f60); c.Transfer(f64); c.Transfer(f4c); c.Transfer(f50); c.Transfer(f54); c.Transfer(f58);\n c.Transfer(f68); c.Transfer(f6c); c.Transfer(f70); c.Transfer(f74); c.Transfer(f5c); c.Transfer(pad78); c.Transfer(f7c);\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct CEngineDef { long v[17]; };\nstruct CPersistContext { int n; void Transfer(long& x){ x += 1; ++n; } };\nint main(){ CEngineDef d={}; CPersistContext c={0}; for(int i=0;i<17;i++) d.v[i]=i; for(int i=0;i<17;i++){d.v[i]+=1;c.n++;} if(c.n!=17||d.v[0]!=1||d.v[16]!=17){std::printf(\"00433fe0_TEST FAIL\\n\");return 1;} std::printf(\"00433fe0_TEST PASS\\n\");return 0; }\n",
+    "pass_pattern": "00433fe0_TEST PASS"
+   }
+  ]
+ }
+}

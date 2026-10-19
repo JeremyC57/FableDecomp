@@ -1,0 +1,17 @@
+addr       parity           behav  name
+005dc550   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatHandedness
+005dc550   RELOCATION_MATCH PASS   Initialise
+005dc7b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatMisc
+005dc7b0   RELOCATION_MATCH PASS   Initialise
+005dc8b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatFlourishTargetOffset
+005dc8b0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 3
+  005dc550 RELOCATION_MATCH CAnimComponentCombatHandedness::?Initialise@CAnimComponentCombatHandedness@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc7b0 RELOCATION_MATCH CAnimComponentCombatMisc::?Initialise@CAnimComponentCombatMisc@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc8b0 RELOCATION_MATCH CAnimComponentCombatFlourishTargetOffset::?Initialise@CAnimComponentCombatFlourishTargetOffset@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CAnimComponentCombatHandedness_Initialise_005dc550
+  CAnimComponentCombatMisc_Initialise_005dc7b0
+  CAnimComponentCombatFlourishTargetOffset_Initialise_005dc8b0

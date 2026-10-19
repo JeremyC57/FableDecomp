@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00812170   RELOCATION_MATCH PASS   CHitParameters
+0047a8e0   RELOCATION_MATCH PASS   AddObjectiveToQuest
+009c8470   RELOCATION_MATCH PASS   ReadFromDataStream
+006dc450   RELOCATION_MATCH PASS   WriteStatIncreaseMap
+
+WINS: 4
+  00812170 RELOCATION_MATCH CHitParameters::??0CHitParameters@@QAE@ABU0@@Z
+  0047a8e0 RELOCATION_MATCH CHeroLogBook::?AddObjectiveToQuest@CHeroLogBook@@
+  009c8470 RELOCATION_MATCH NGameText_CGroupEntry::?ReadFromDataStream@CGroupEntry@@
+  006dc450 RELOCATION_MATCH GFSerialiseMapBinaryOut_CHeroStatIncreaseData_EDamageAttribute::?WriteStatIncreaseMap@@
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CHitParameters_CHitParameters_00812170
+  CHeroLogBook_AddObjectiveToQuest_0047a8e0
+  NGameTextCGroupEntry_ReadFromDataStream_009c8470
+  GFSerialiseMapBinaryOutCHeroStatIncreaseDataEDamageAttribute_WriteStatIncreaseMap_006dc450

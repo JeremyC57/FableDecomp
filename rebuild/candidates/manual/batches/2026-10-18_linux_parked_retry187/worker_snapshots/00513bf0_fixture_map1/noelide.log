@@ -1,0 +1,8 @@
+['g++', '-std=c++98', '-O2', '-Wall', '-Wextra', '-fno-elide-constructors', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/fixture.cpp', '-o', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/noelide']
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/fixture.cpp:5:9: warning: #pragma once in main file
+    5 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/fixture.cpp:10:9: warning: #pragma once in main file
+   10 | #pragma once
+      |         ^~~~
+00513bf0_TEST PASS

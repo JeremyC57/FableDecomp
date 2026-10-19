@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00bf6640   RELOCATION_MATCH PASS   MergeCameraUpdateThresholdWithChildren
+00bf6930   RELOCATION_MATCH PASS   GetEdgeStrip
+00bf6d50   RELOCATION_MATCH PASS   IsBackgroundAtFullDetailInArea
+00bf7100   RELOCATION_MATCH PASS   RenderOcclusionBox
+
+WINS: 4
+  00bf6640 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?MergeCameraUpdateThresholdWithChildren@Tree@Native
+  00bf6930 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?GetEdgeStrip@Tree@Native
+  00bf6d50 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?IsBackgroundAtFullDetailInArea@Tree@Native
+  00bf7100 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?RenderOcclusionBox@Tree@Native
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CLandscapeBackgroundTreeNode_MergeCameraUpdateThresholdWithChildren_00bf6640
+  CLandscapeBackgroundTreeNode_GetEdgeStrip_00bf6930
+  CLandscapeBackgroundTreeNode_IsBackgroundAtFullDetailInArea_00bf6d50
+  CLandscapeBackgroundTreeNode_RenderOcclusionBox_00bf7100

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+008cffe0   RELOCATION_MATCH PASS   InitFromThing
+
+WINS: 1
+  008cffe0 RELOCATION_MATCH CGameScriptThing::InitFromThing
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CGameScriptThing_InitFromThing_008cffe0

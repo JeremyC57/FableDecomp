@@ -1,0 +1,5 @@
+address	reserved_uncertain	new_grade_limit	status	evidence
+0087ff60	4	6	RESERVED_RETRY	original201 comment-only placeholder; no authored source or subsequent grade found; BC30 disassembly-only followup retained
+00d9c4a0	4	6	RESERVED_RETRY	original201 comment-only placeholder; no authored source or subsequent grade found; BC30 disassembly-only followup retained
+0055b8f0	4	6	RESERVED_RETRY	original201 comment-only placeholder; no authored source or subsequent grade found; BC30 disassembly-only followup retained
+0055bc30	4	6	RESERVED_RETRY	original201 comment-only placeholder; no authored source or subsequent grade found; BC30 disassembly-only followup retained

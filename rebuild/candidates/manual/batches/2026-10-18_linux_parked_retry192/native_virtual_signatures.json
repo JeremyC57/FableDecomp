@@ -1,0 +1,83 @@
+[
+  {
+    "address": "008e7cf0",
+    "table": "0x1239abc",
+    "slot": 28,
+    "target": "0x4c8e50",
+    "compiled": "public: void __thiscall ThingFixture::SetAsDrawable(bool)",
+    "original": "public: virtual void __thiscall CThing::SetAsDrawable(bool)",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  },
+  {
+    "address": "008e7e70",
+    "table": "0x125ac0c",
+    "slot": 65,
+    "target": "0x667d30",
+    "compiled": "public: void __thiscall CreatureFixture::Hit(struct HitParameters &)",
+    "original": "public: virtual void __thiscall CThingCreatureBase::OnHit(class CHitParameters &)",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  },
+  {
+    "address": "0053d3b0",
+    "table": "0x124662c",
+    "slot": 51,
+    "target": "0x52f330",
+    "compiled": "public: void __thiscall ChildFixture::Parent(struct NUISystem::CComponent *)",
+    "original": "public: virtual void __thiscall NUISystem::CComponent::SetParent(class NUISystem::CComponent *)",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  },
+  {
+    "address": "0053d3b0",
+    "table": "0x124662c",
+    "slot": 108,
+    "target": "0x530ec0",
+    "compiled": "public: struct NUISystem::DefinitionPointer __thiscall MenuFixture::Load(void) const",
+    "original": "public: virtual class CDefPointer<class NUISystem::CUIDef const> __thiscall NUISystem::CComponent::LoadAndReturnDef(void) const",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  },
+  {
+    "address": "0053d3b0",
+    "table": "0x124662c",
+    "slot": 131,
+    "target": "0x5309b0",
+    "compiled": "public: void __thiscall MenuFixture::Actions(struct NUISystem::ActionList *)",
+    "original": "public: virtual void __thiscall NUISystem::CComponent::ExecuteActions(class std::list<class CCountedPointer<class NUISystem::CAction>, class std::allocator<class CCountedPointer<class NUISystem::CAction>>> *)",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  },
+  {
+    "address": "0053d3b0",
+    "table": "0x124662c",
+    "slot": 144,
+    "target": "0x53d970",
+    "compiled": "public: void __thiscall MenuFixture::Unhover(void)",
+    "original": "protected: virtual void __thiscall NUISystem::CMenuEntry::OnUnhovered(void)",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  },
+  {
+    "address": "008e7cf0",
+    "table": "0x12354d0",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "public: void __thiscall DefinitionFixture::Delete(void) const",
+    "original": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  },
+  {
+    "address": "008e7cf0",
+    "table": "0x12354d0",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "public: void __thiscall BriarFixture::Delete(void) const",
+    "original": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  },
+  {
+    "address": "0053d3b0",
+    "table": "0x12354d0",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "public: void __thiscall DefFixture::Dispose(void) const",
+    "original": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "scope": "Typed PMF fixture interface with original parameter/return/const widths; aliases and access differences explicit, no full native class/constructor claim."
+  }
+]

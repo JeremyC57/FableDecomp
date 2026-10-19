@@ -1,0 +1,27 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/evidence/006f9130.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000001f DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CCountedPointer@$$CBUC3DAnimationStats@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000010 DISP32            ?GetAnimationInfo@CMeshDataBank@@QBEPBUC3DAnimationInfo@@K@Z
+00000017 DISP32            ?GetAnimationStats@C3DAnimationInfo@@QBE?AU?$CCountedPointer@$$CBUC3DAnimationStats@@@@XZ
+00000023 dir32             ?g_MinEmbeddedAnimationDuration@@3MA
+0000003b DISP32            ?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z
+00000066 DISP32            ??3@YAXPAX@Z
+00000096 DISP32            ??3@YAXPAX@Z
+0000009f dir32             __real@00000000
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetEmbeddedEventTime@CManager@NAnimationEvents@@QBEMKABVCCharString@@@Z

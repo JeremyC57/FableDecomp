@@ -1,0 +1,24 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/evidence/0041da2d.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?IsDragged@CComponent@NUISystem@@QAE_NXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetScrollBar@CComponent@NUISystem@@QAEPAU12@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetScrollingSpeed@CScrollingViewport@NUISystem@@QAEMXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a dir32             ?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A
+00000093 dir32             ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+000000bb dir32             ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+000000ce dir32             __real@41c80000

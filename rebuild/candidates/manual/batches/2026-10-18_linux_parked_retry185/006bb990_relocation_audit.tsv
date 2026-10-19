@@ -1,0 +1,7 @@
+offset	native_target	symbol
+00000029	0122ded8	__real@3f800000
+000000a1	006bb5b0	?IsTimeBetween@CGameTimeManager@@QBE_NMMM@Z
+000000d3	0122ded8	__real@3f800000
+000000e2	00bfea70	__ftol2
+00000100	0122ded8	__real@3f800000
+0000010f	00bfea70	__ftol2

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00bf2a10   MATCH            PASS   AddNode
+
+WINS: 1
+  00bf2a10 MATCH CEngineTreeFilerBase::AddNode
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineTreeFilerBase_AddNode_00bf2a10

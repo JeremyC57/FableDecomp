@@ -1,0 +1,4 @@
+#include <cstdio>
+struct Ctx { int n; const void* p[16]; void A(void* x){p[n++]=x;} void B(void* x){p[n++]=x;} void C(void* x){p[n++]=x;} void D(void* x){p[n++]=x;} void E(void* x){p[n++]=x;} };
+struct T { unsigned char pad[0x24]; unsigned long f28,f2c,f30; unsigned char f34,f35; unsigned long f38,f3c,f40,f44,f48,f4c,f50,f54,f58,f5c,f60; void go(Ctx& c){c.A(&f28);c.A(&f2c);c.B(&f30);c.C(&f34);c.C(&f35);c.B(&f38);c.D(&f3c);c.A(&f40);c.A(&f44);c.E(&f48);c.E(&f4c);c.E(&f50);c.E(&f54);c.E(&f58);c.E(&f5c);c.E(&f60);} };
+int main(){T t;Ctx c={0,{0}};t.go(c);if(c.n!=16||c.p[0]!=&t.f28||c.p[3]!=&t.f34||c.p[15]!=&t.f60){std::printf("004de122_TEST FAIL\n");return 1;}std::printf("004de122_TEST PASS\n");return 0;}

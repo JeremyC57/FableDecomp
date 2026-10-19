@@ -1,0 +1,4 @@
+offset	type	retail_target	compiler_symbol
+0060	dir32	01288be4	__real@44ffe000
+0075	dir32	0122dedc	__real@00000000
+0099	DISP32	00825440	?SetSizeZAt@CHeightMap@@QAEXABUC2DCoordI@@M@Z

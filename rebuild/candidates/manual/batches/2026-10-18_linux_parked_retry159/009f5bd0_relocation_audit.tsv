@@ -1,0 +1,8 @@
+offset	native_target	symbol
+00000007	0099a2d0	??0CBaseClass@@QAE@XZ
+0000000d	0129c79c	??_7CInputManager@@6B@
+00000053	0099a2f0	??0CBaseClassNonCopyable@@QAE@XZ
+0000005d	0122d06c	??_7CDiskFileWin32@@6B@
+00000062	0099aed0	??0CWideString@@QAE@XZ
+00000073	009f67e0	?erase@?$NativeVector@UCInputEvent@@@@QAEPAUCInputEvent@@PAU2@0@Z
+00000082	009f67e0	?erase@?$NativeVector@UCInputEvent@@@@QAEPAUCInputEvent@@PAU2@0@Z

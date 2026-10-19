@@ -1,0 +1,6 @@
+# Vertex-shader resource setup and scene-cell rendering
+
+00b3b6d0 (225 bytes): documented native resource-manager/bank view matches independently reviewed shutdown00b3b0c0. Root verified factory, bank OpenReadOnly slot1, resource bank/input callees, thiscall deletion callback and pointer-info reload after callback. Actual PDB const-reference signature and shared CCharString header retained. Verbatim fixtures test null/last/shared/same-info assignment, returned temporary reference ownership with host copy elision disabled, deletion-time info replacement and bank-open-time resource replacement. Four total grades including native string-header review correction.
+
+00b92c20 (237 bytes): actual primitive/type-info headers, native scene-grid/cell views, slot7 RenderPrimitive signature and two list-successor paths. Root checked layer mask, frame update only for result2, fresh empty subprimitive chains, ordered four-child recursion and final cell flag. Fixtures test null/masked cells, both successor chains, each render result, callback replacement of type-info/frame globals, child order/masking and preserved statistics/flags. One total grade.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

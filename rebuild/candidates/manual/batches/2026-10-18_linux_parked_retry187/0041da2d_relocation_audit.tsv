@@ -1,0 +1,5 @@
+offset	native_target	symbol
+0000000a	013b8aac	?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A
+00000093	013b8a98	?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+000000bb	013b8a98	?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+000000ce	0123003c	__real@41c80000

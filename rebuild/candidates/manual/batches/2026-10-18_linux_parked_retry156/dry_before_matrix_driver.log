@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00541120   RELOCATION_MATCH PASS   RemoveChild
+00541230   RELOCATION_MATCH PASS   DeleteChild
+00541390   RELOCATION_MATCH PASS   GetDataFromDef
+00705040   MATCH            FAIL   TransformVectorPair
+
+WINS: 3
+  00541120 RELOCATION_MATCH CDynamicList::RemoveChild
+  00541230 RELOCATION_MATCH CDynamicList::DeleteChild
+  00541390 RELOCATION_MATCH CDynamicList::GetDataFromDef

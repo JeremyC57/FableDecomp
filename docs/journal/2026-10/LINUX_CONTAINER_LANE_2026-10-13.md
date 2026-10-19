@@ -799,6 +799,14 @@ overloaded virtuals sit in reverse declaration order. Catalog 30,909 -> **31,659
 - Owner note recorded in ROADMAP and every brief: graphics/rendering and audio/video layers will need replacement work because their dependencies are outdated; agents record true class names, verified vtables and retail offsets for such rows.
 - Catalog 32,812 (66.2%) → 34,098 (68.8%). Opus stopped on 2026-10-17 by the org monthly spend limit (resets 2026-10-20 02:00 UTC) with chunk 189 unstarted.
 
+## Part 7 (2026-10-19): the Codex update, reviewed and landed
+
+- The owner ran Codex on the repo from `fbfaf9f9` (2026-10-17 to 10-19) and handed back a zip: 550 new rows, 2 rewritten rows, 228 batch-record dirs, tool changes, a rewritten HANDOFF, 691 MB of untracked `work/` evidence. Its own docs are archived in `docs/journal/2026-10/codex/`.
+- Fable checked the zip (SHA256SUMS clean, oracle a strict superset with 0 existing spans changed, no binaries, no asm tokens), then two Opus 5.5 high reviewers re-graded every row on our lane (`$S/codex_in/tools/qx.py`): 552/552 recompile to the retail bytes (25 MATCH, 527 RELOCATION_MATCH; 13 need their catalog flags, 2 need an explicit `// Leaf:`), every fixture passes with its catalog pass pattern.
+- Holds (49): RELOCATION_MATCH masks call/global/float-pool operands without checking the target, so a reviewer-built `relocmap` found 3 rows calling the wrong overload or import and 5 binding one symbol to two retail targets; 40 fixtures never execute the candidate (stand-in algorithms, unrelated structs, or `main` that only prints PASS); 1 source uses `volatile` to force store order. Held sources and tests sit in `pending/2026-10-19_codex_holds/` with the reason on each grade line.
+- Landing: the other 503 went through `verify_and_land.py --land` on our tree (503 wins, 0 rejected), after retiring the two old rows (`global_Destval_00692940`, `CLandscapeBackgroundPatch_vectordeletingdestructor_009f1540`, both baked stubs) so the verifier re-landed them under their proven names. Catalog 34,098 → 34,599 (69.8%). Codex's 18 catalog path-field repairs were applied; its tool changes were not adopted (owner rule), though its lander guard against deleting staged inputs before the landing record exists is worth copying if our lander bites again.
+- Documentation verdicts: Codex's HANDOFF was a 2,200-word fleet log with sandbox-escalation instructions and a wrong remote; it was not merged. Its GOTCHAS additions were condensed to one-liners; the x87 compare-mask table was kept.
+
 ## Resume
 
 1. Done in-container: all four batches graded and landed (118/122); the four DIFFERs are in

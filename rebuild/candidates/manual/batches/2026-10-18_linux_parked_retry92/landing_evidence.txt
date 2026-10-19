@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0084dfe0   RELOCATION_MATCH PASS   Reset
+
+WINS: 1
+  0084dfe0 RELOCATION_MATCH NCameraModes::CBase::Reset
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCBase_Reset_0084dfe0

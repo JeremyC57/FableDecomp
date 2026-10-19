@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004642fa   RELOCATION_MATCH PASS   operator=
+004643cf   RELOCATION_MATCH PASS   operator=
+
+WINS: 2
+  004642fa RELOCATION_MATCH CThingBaseDef::operator=
+  004643cf RELOCATION_MATCH CThingBaseDef::operator=
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CThingBaseDef_operator_004642fa
+  CThingBaseDef_operator_004643cf

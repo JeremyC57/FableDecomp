@@ -1,0 +1,89 @@
+{
+  "0x12462e4": {
+    "object_offset": 0,
+    "hierarchy": [
+      [
+        ".?AVCList@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCChangingStateComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCUIInterface@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCObserver@NUISystem@@",
+        4
+      ],
+      [
+        ".?AVCActionParam@NUISystem@@",
+        24
+      ]
+    ]
+  },
+  "0x12462bc": {
+    "object_offset": 4,
+    "hierarchy": [
+      [
+        ".?AVCList@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCChangingStateComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCUIInterface@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCObserver@NUISystem@@",
+        4
+      ],
+      [
+        ".?AVCActionParam@NUISystem@@",
+        24
+      ]
+    ]
+  },
+  "0x12462b4": {
+    "object_offset": 24,
+    "hierarchy": [
+      [
+        ".?AVCList@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCChangingStateComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCUIInterface@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCObserver@NUISystem@@",
+        4
+      ],
+      [
+        ".?AVCActionParam@NUISystem@@",
+        24
+      ]
+    ]
+  }
+}

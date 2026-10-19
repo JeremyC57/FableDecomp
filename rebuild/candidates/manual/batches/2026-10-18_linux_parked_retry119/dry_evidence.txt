@@ -1,0 +1,7 @@
+addr       parity           behav  name
+006a0d50   RELOCATION_MATCH PASS   CCreatureAction_UseObject
+008b94a0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 2
+  006a0d50 RELOCATION_MATCH CCreatureAction_UseObject::CCreatureAction_UseObject
+  008b94a0 RELOCATION_MATCH CCreatureAction_CastWillForceSpell::Initialise

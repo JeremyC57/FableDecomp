@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00b3b6d0   RELOCATION_MATCH PASS   SetupVertexShaderResource
+00b92c20   RELOCATION_MATCH PASS   RenderCellAll
+
+WINS: 2
+  00b3b6d0 RELOCATION_MATCH CEngineResourceManager::SetupVertexShaderResource
+  00b92c20 RELOCATION_MATCH CEngineSceneGrid::RenderCellAll
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEngineResourceManager_SetupVertexShaderResource_00b3b6d0
+  CEngineSceneGrid_RenderCellAll_00b92c20

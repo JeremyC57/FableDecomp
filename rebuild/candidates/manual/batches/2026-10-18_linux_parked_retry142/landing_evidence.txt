@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00d1e310   RELOCATION_MATCH PASS   Init
+00d864b0   RELOCATION_MATCH PASS   Main
+00a02020   MATCH            PASS   TestIfAreaIsGrowable
+00c28120   MATCH            PASS   TestIfAreaIsGrowable
+00c286f0   RELOCATION_MATCH PASS   GrowFreeArea
+008f60c0   RELOCATION_MATCH PASS   AlterHeightBy
+00469ab3   RELOCATION_MATCH PASS   Transfer
+
+WINS: 7
+  00d1e310 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::Init
+  00d864b0 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::Main
+  00a02020 MATCH CHandleBasedMemoryPool::TestIfAreaIsGrowable
+  00c28120 MATCH CHandleBasedMemoryPool::TestIfAreaIsGrowable
+  00c286f0 RELOCATION_MATCH CHandleBasedMemoryPool::GrowFreeArea
+  008f60c0 RELOCATION_MATCH CHeightMap::AlterHeightBy
+  00469ab3 RELOCATION_MATCH CHeroAbilityDef::Transfer
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  NScriptCQBreakSiegeScriptCGuardHoldingBandit_Init_00d1e310
+  NScriptCQHeroSoulsGuildmasterScriptCGuardInWoods_Main_00d864b0
+  CHandleBasedMemoryPool_TestIfAreaIsGrowable_00a02020
+  CHandleBasedMemoryPool_TestIfAreaIsGrowable_00c28120
+  CHandleBasedMemoryPool_GrowFreeArea_00c286f0
+  CHeightMap_AlterHeightBy_008f60c0
+  CHeroAbilityDef_Transfer_00469ab3

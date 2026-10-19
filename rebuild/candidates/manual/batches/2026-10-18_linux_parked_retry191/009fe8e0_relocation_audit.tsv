@@ -1,0 +1,6 @@
+offset	native_target	symbol
+00000042	009fdc20	?StopLoading@FrameData@@QAE_NXZ
+00000052	009fbf70	?GetUnusedFrames@ResourceNative@@QBEKXZ
+000000de	009fdc20	?StopLoading@FrameData@@QAE_NXZ
+000000ee	009fbf70	?GetUnusedFrames@ResourceNative@@QBEKXZ
+00000108	009fe460	?FreeTextureMemory@FrameData@@QAE_N_N@Z

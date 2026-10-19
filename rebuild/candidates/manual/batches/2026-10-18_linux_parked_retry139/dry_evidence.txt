@@ -1,0 +1,13 @@
+addr       parity           behav  name
+009bf350   RELOCATION_MATCH PASS   BlitRenderTargetSurfaceToTexture
+0055a3e0   RELOCATION_MATCH PASS   Update
+008d5970   RELOCATION_MATCH PASS   PerformAction
+0078b6b0   RELOCATION_MATCH PASS   SetWeaponLoaded
+0084a5f0   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 5
+  009bf350 RELOCATION_MATCH CDisplayManager::BlitRenderTargetSurfaceToTexture
+  0055a3e0 RELOCATION_MATCH NUISystem_CDraggable::Update
+  008d5970 RELOCATION_MATCH CCreatureAction_FireMissileWeaponTest::PerformAction
+  0078b6b0 RELOCATION_MATCH CCreatureAction_HeroLoadRangedWeapon::SetWeaponLoaded
+  0084a5f0 RELOCATION_MATCH CCreatureAction_PickupGameObject::PerformAction

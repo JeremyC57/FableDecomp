@@ -1,0 +1,579 @@
+{
+  "scoreboard_hierarchy": [
+    ".?AVCTCHeroOnlineScoreboard@@",
+    ".?AVCTCBase@@",
+    ".?AVCBaseClassNonCopyable@@",
+    ".?AVCBaseClass@@"
+  ],
+  "slots": [
+    {
+      "vtable": "0x124db34",
+      "slot": 0,
+      "target": "0x56a740",
+      "symbol": "??_ECTCHeroOnlineScoreboard@@UAEPAXI@Z",
+      "signature": "public: virtual void * __thiscall CTCHeroOnlineScoreboard::`vector deleting dtor'(unsigned int)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 1,
+      "target": "0x560720",
+      "symbol": "?OnSerialise@CTCHeroOnlineScoreboard@@UAEXAAUCPersistContext@@_N@Z",
+      "signature": "public: virtual void __thiscall CTCHeroOnlineScoreboard::OnSerialise(struct CPersistContext &, bool)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 2,
+      "target": "0x6867f0",
+      "symbol": "?OnRemove@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::OnRemove(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 3,
+      "target": "0x686840",
+      "symbol": "?ConstructFromParams@CTCBase@@UAEXABUCTCParamsBase@@@Z",
+      "signature": "public: virtual void __thiscall CTCBase::ConstructFromParams(struct CTCParamsBase const &)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 4,
+      "target": "0x686850",
+      "symbol": "?OnCreate@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::OnCreate(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 5,
+      "target": "0x686860",
+      "symbol": "?InitialActivate@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::InitialActivate(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 6,
+      "target": "0x686870",
+      "symbol": "?OnInitialActivate@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::OnInitialActivate(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 7,
+      "target": "0x686880",
+      "symbol": "?RenderUpdate@CTCBase@@UAEXM@Z",
+      "signature": "public: virtual void __thiscall CTCBase::RenderUpdate(float)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 8,
+      "target": "0x56a660",
+      "symbol": "?HasFrameUpdate@CTCHeroOnlineScoreboard@@UBE_NXZ",
+      "signature": "public: virtual bool __thiscall CTCHeroOnlineScoreboard::HasFrameUpdate(void) const"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 9,
+      "target": "0x6868a0",
+      "symbol": "?FrameUpdate@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::FrameUpdate(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 10,
+      "target": "0x6868b0",
+      "symbol": "?BulletTimeFrameUpdate@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::BulletTimeFrameUpdate(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 11,
+      "target": "0x6868c0",
+      "symbol": "?DrawPreparePrimitivesForRendering@CTCBase@@UAEXABUCEnginePrimitivePrepareInfo@@@Z",
+      "signature": "public: virtual void __thiscall CTCBase::DrawPreparePrimitivesForRendering(struct CEnginePrimitivePrepareInfo const &)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 12,
+      "target": "0x6868d0",
+      "symbol": "?EditFrameUpdate@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::EditFrameUpdate(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 13,
+      "target": "0x6868e0",
+      "symbol": "?EditorDrawPreparePrimitivesForRendering@CTCBase@@UAEXABUCEnginePrimitivePrepareInfo@@@Z",
+      "signature": "public: virtual void __thiscall CTCBase::EditorDrawPreparePrimitivesForRendering(struct CEnginePrimitivePrepareInfo const &)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 14,
+      "target": "0x6868f0",
+      "symbol": "?Copy@CTCBase@@UAEXABU1@@Z",
+      "signature": "public: virtual void __thiscall CTCBase::Copy(struct CTCBase const &)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 15,
+      "target": "0x686900",
+      "symbol": "?OnDie@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::OnDie(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 16,
+      "target": "0x686910",
+      "symbol": "?OnKill@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::OnKill(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 17,
+      "target": "0x686920",
+      "symbol": "?OnLevelUnload@CTCBase@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CTCBase::OnLevelUnload(void)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 18,
+      "target": "0x686930",
+      "symbol": "?OnSetInLimbo@CTCBase@@UAEX_N@Z",
+      "signature": "public: virtual void __thiscall CTCBase::OnSetInLimbo(bool)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 19,
+      "target": "0x686940",
+      "symbol": "?Validate@CTCBase@@UBE_NAAVCCharString@@@Z",
+      "signature": "public: virtual bool __thiscall CTCBase::Validate(class CCharString &) const"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 20,
+      "target": "0x686950",
+      "symbol": "?IsFreeForDeletion@CTCBase@@UBE_NXZ",
+      "signature": "public: virtual bool __thiscall CTCBase::IsFreeForDeletion(void) const"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 21,
+      "target": "0x56a630",
+      "symbol": "?GetInterfaceType@CTCHeroOnlineScoreboard@@UBEJXZ",
+      "signature": "public: virtual long __thiscall CTCHeroOnlineScoreboard::GetInterfaceType(void) const"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 22,
+      "target": "0x56a640",
+      "symbol": "?GetClassTypeName@CTCHeroOnlineScoreboard@@UBE?AVCCharString@@XZ",
+      "signature": "public: virtual class CCharString __thiscall CTCHeroOnlineScoreboard::GetClassTypeName(void) const"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 23,
+      "target": "0x56a670",
+      "symbol": "?IsComponentSerialisable@CTCHeroOnlineScoreboard@@UBE_NXZ",
+      "signature": "public: virtual bool __thiscall CTCHeroOnlineScoreboard::IsComponentSerialisable(void) const"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 24,
+      "target": "0x686980",
+      "symbol": "?IsDriver@CTCBase@@UBE_NXZ",
+      "signature": "public: virtual bool __thiscall CTCBase::IsDriver(void) const"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 25,
+      "target": "0x686990",
+      "symbol": "?IsCopyable@CTCBase@@UBE_NXZ",
+      "signature": "public: virtual bool __thiscall CTCBase::IsCopyable(void) const"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 26,
+      "target": "0x564570",
+      "symbol": "?GlobalUpdate@CTCHeroOnlineScoreboard@@UAEX_N@Z",
+      "signature": "public: virtual void __thiscall CTCHeroOnlineScoreboard::GlobalUpdate(bool)"
+    },
+    {
+      "vtable": "0x124db34",
+      "slot": 27,
+      "target": "0x6869b0",
+      "symbol": "?HandleMessage@CTCBase@@UAEXABUCMessageBase@NTCMessages@@@Z",
+      "signature": "public: virtual void __thiscall CTCBase::HandleMessage(struct NTCMessages::CMessageBase const &)"
+    },
+    {
+      "vtable": "0x12bf738",
+      "slot": 0,
+      "target": "0xcaa750",
+      "symbol": "?QueryInterface@CDynamicOutputPin@@WJE@AGJABUGUID@@PAPAX@Z",
+      "signature": "[thunk]: public: virtual long __stdcall CDynamicOutputPin::QueryInterface`adjustor{148}'(struct GUID const &, void **)"
+    },
+    {
+      "vtable": "0x12bf738",
+      "slot": 1,
+      "target": "0xcaa760",
+      "symbol": "?AddRef@CDynamicOutputPin@@WJE@AGKXZ",
+      "signature": "[thunk]: public: virtual unsigned long __stdcall CDynamicOutputPin::AddRef`adjustor{148}'(void)"
+    },
+    {
+      "vtable": "0x12bf738",
+      "slot": 2,
+      "target": "0xcaa770",
+      "symbol": "?Release@CDynamicOutputPin@@WJE@AGKXZ",
+      "signature": "[thunk]: public: virtual unsigned long __stdcall CDynamicOutputPin::Release`adjustor{148}'(void)"
+    },
+    {
+      "vtable": "0x12bf738",
+      "slot": 3,
+      "target": "0xcac920",
+      "symbol": "?Block@CDynamicOutputPin@@UAGJKPAX@Z",
+      "signature": "public: virtual long __stdcall CDynamicOutputPin::Block(unsigned long, void *)"
+    },
+    {
+      "vtable": "0x12bf748",
+      "slot": 0,
+      "target": "0xcaa720",
+      "symbol": "?QueryInterface@CDynamicOutputPin@@W3AGJABUGUID@@PAPAX@Z",
+      "signature": "[thunk]: public: virtual long __stdcall CDynamicOutputPin::QueryInterface`adjustor{4}'(struct GUID const &, void **)"
+    },
+    {
+      "vtable": "0x12bf748",
+      "slot": 1,
+      "target": "0xcaa730",
+      "symbol": "?AddRef@CDynamicOutputPin@@W3AGKXZ",
+      "signature": "[thunk]: public: virtual unsigned long __stdcall CDynamicOutputPin::AddRef`adjustor{4}'(void)"
+    },
+    {
+      "vtable": "0x12bf748",
+      "slot": 2,
+      "target": "0xcaa740",
+      "symbol": "?Release@CDynamicOutputPin@@W3AGKXZ",
+      "signature": "[thunk]: public: virtual unsigned long __stdcall CDynamicOutputPin::Release`adjustor{4}'(void)"
+    },
+    {
+      "vtable": "0x12bf748",
+      "slot": 3,
+      "target": "0xca8590",
+      "symbol": "?Notify@CBasePin@@UAGJPAUIBaseFilter@@UQuality@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::Notify(struct IBaseFilter *, struct Quality)"
+    },
+    {
+      "vtable": "0x12bf748",
+      "slot": 4,
+      "target": "0xca8560",
+      "symbol": "?SetSink@CBasePin@@UAGJPAUIQualityControl@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::SetSink(struct IQualityControl *)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 0,
+      "target": "0xca96f0",
+      "symbol": "?QueryInterface@CDynamicOutputPin@@UAGJABUGUID@@PAPAX@Z",
+      "signature": "public: virtual long __stdcall CDynamicOutputPin::QueryInterface(struct GUID const &, void **)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 1,
+      "target": "0xca9700",
+      "symbol": "?AddRef@CDynamicOutputPin@@UAGKXZ",
+      "signature": "public: virtual unsigned long __stdcall CDynamicOutputPin::AddRef(void)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 2,
+      "target": "0xca9710",
+      "symbol": "?Release@CDynamicOutputPin@@UAGKXZ",
+      "signature": "public: virtual unsigned long __stdcall CDynamicOutputPin::Release(void)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 3,
+      "target": "0xcab470",
+      "symbol": "?Connect@CBasePin@@UAGJPAUIPin@@PBUAM_MEDIA_TYPE@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::Connect(struct IPin *, struct AM_MEDIA_TYPE const *)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 4,
+      "target": "0xca8120",
+      "symbol": "?ReceiveConnection@CBasePin@@UAGJPAUIPin@@PBUAM_MEDIA_TYPE@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::ReceiveConnection(struct IPin *, struct AM_MEDIA_TYPE const *)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 5,
+      "target": "0xca97a0",
+      "symbol": "?Disconnect@CDynamicOutputPin@@UAGJXZ",
+      "signature": "public: virtual long __stdcall CDynamicOutputPin::Disconnect(void)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 6,
+      "target": "0xca8340",
+      "symbol": "?ConnectedTo@CBasePin@@UAGJPAPAUIPin@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::ConnectedTo(struct IPin **)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 7,
+      "target": "0xca8370",
+      "symbol": "?ConnectionMediaType@CBasePin@@UAGJPAUAM_MEDIA_TYPE@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::ConnectionMediaType(struct AM_MEDIA_TYPE *)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 8,
+      "target": "0xca8420",
+      "symbol": "?QueryPinInfo@CBasePin@@UAGJPAUPIN_INFO@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::QueryPinInfo(struct PIN_INFO *)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 9,
+      "target": "0xca8490",
+      "symbol": "?QueryDirection@CBasePin@@UAGJPAW4PIN_DIRECTION@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::QueryDirection(enum PIN_DIRECTION *)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 10,
+      "target": "0xca84b0",
+      "symbol": "?QueryId@CBasePin@@UAGJPAPAG@Z",
+      "signature": "public: virtual long __stdcall CBasePin::QueryId(unsigned short **)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 11,
+      "target": "0xca84c0",
+      "symbol": "?QueryAccept@CBasePin@@UAGJPBUAM_MEDIA_TYPE@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::QueryAccept(struct AM_MEDIA_TYPE const *)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 12,
+      "target": "0xcac170",
+      "symbol": "?EnumMediaTypes@CBasePin@@UAGJPAPAUIEnumMediaTypes@@@Z",
+      "signature": "public: virtual long __stdcall CBasePin::EnumMediaTypes(struct IEnumMediaTypes **)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 13,
+      "target": "0xca5260",
+      "symbol": "?QueryInternalConnections@CBasePin@@UAGJPAPAUIPin@@PAK@Z",
+      "signature": "public: virtual long __stdcall CBasePin::QueryInternalConnections(struct IPin **, unsigned long *)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 14,
+      "target": "0xca8880",
+      "symbol": "?EndOfStream@CBaseOutputPin@@UAGJXZ",
+      "signature": "public: virtual long __stdcall CBaseOutputPin::EndOfStream(void)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 15,
+      "target": "0xca8890",
+      "symbol": "?BeginFlush@CBaseOutputPin@@UAGJXZ",
+      "signature": "public: virtual long __stdcall CBaseOutputPin::BeginFlush(void)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 16,
+      "target": "0xca88a0",
+      "symbol": "?EndFlush@CBaseOutputPin@@UAGJXZ",
+      "signature": "public: virtual long __stdcall CBaseOutputPin::EndFlush(void)"
+    },
+    {
+      "vtable": "0x12bf760",
+      "slot": 17,
+      "target": "0xca85a0",
+      "symbol": "?NewSegment@CBasePin@@UAGJ_J0N@Z",
+      "signature": "public: virtual long __stdcall CBasePin::NewSegment(__int64, __int64, double)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 0,
+      "target": "0xca9750",
+      "symbol": "?NonDelegatingQueryInterface@CDynamicOutputPin@@UAGJABUGUID@@PAPAX@Z",
+      "signature": "public: virtual long __stdcall CDynamicOutputPin::NonDelegatingQueryInterface(struct GUID const &, void **)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 1,
+      "target": "0xca7d60",
+      "symbol": "?NonDelegatingAddRef@CBasePin@@UAGKXZ",
+      "signature": "public: virtual unsigned long __stdcall CBasePin::NonDelegatingAddRef(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 2,
+      "target": "0xca7d80",
+      "symbol": "?NonDelegatingRelease@CBasePin@@UAGKXZ",
+      "signature": "public: virtual unsigned long __stdcall CBasePin::NonDelegatingRelease(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 3,
+      "target": "0xcab750",
+      "symbol": "??_ECDynamicOutputPin@@UAEPAXI@Z",
+      "signature": "public: virtual void * __thiscall CDynamicOutputPin::`vector deleting dtor'(unsigned int)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 4,
+      "target": "0xca8500",
+      "symbol": "?GetMediaTypeVersion@CBasePin@@UAEJXZ",
+      "signature": "public: virtual long __thiscall CBasePin::GetMediaTypeVersion(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 5,
+      "target": "0xca9a90",
+      "symbol": "?Active@CDynamicOutputPin@@UAEJXZ",
+      "signature": "public: virtual long __thiscall CDynamicOutputPin::Active(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 6,
+      "target": "0xca9ae0",
+      "symbol": "?Inactive@CDynamicOutputPin@@UAEJXZ",
+      "signature": "public: virtual long __thiscall CDynamicOutputPin::Inactive(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 7,
+      "target": "0xca8530",
+      "symbol": "?Run@CBasePin@@UAEJ_J@Z",
+      "signature": "public: virtual long __thiscall CBasePin::Run(__int64)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 8,
+      "target": "0xbfea08",
+      "symbol": "__purecall",
+      "signature": "__purecall"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 9,
+      "target": "0xca80a0",
+      "symbol": "?SetMediaType@CBasePin@@UAEJPBUCMediaType@@@Z",
+      "signature": "public: virtual long __thiscall CBasePin::SetMediaType(struct CMediaType const *)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 10,
+      "target": "0xca8610",
+      "symbol": "?CheckConnect@CBaseOutputPin@@UAEJPAUIPin@@@Z",
+      "signature": "public: virtual long __thiscall CBaseOutputPin::CheckConnect(struct IPin *)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 11,
+      "target": "0xca8660",
+      "symbol": "?BreakConnect@CBaseOutputPin@@UAEJXZ",
+      "signature": "public: virtual long __thiscall CBaseOutputPin::BreakConnect(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 12,
+      "target": "0xca9c80",
+      "symbol": "?CompleteConnect@CDynamicOutputPin@@UAEJPAUIPin@@@Z",
+      "signature": "public: virtual long __thiscall CDynamicOutputPin::CompleteConnect(struct IPin *)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 13,
+      "target": "0xca84f0",
+      "symbol": "?GetMediaType@CBasePin@@UAEJHPAUCMediaType@@@Z",
+      "signature": "public: virtual long __thiscall CBasePin::GetMediaType(int, struct CMediaType *)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 14,
+      "target": "0xca86d0",
+      "symbol": "?DecideAllocator@CBaseOutputPin@@UAEJPAUIMemInputPin@@PAPAUIMemAllocator@@@Z",
+      "signature": "public: virtual long __thiscall CBaseOutputPin::DecideAllocator(struct IMemInputPin *, struct IMemAllocator **)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 15,
+      "target": "0xbfea08",
+      "symbol": "__purecall",
+      "signature": "__purecall"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 16,
+      "target": "0xca87c0",
+      "symbol": "?GetDeliveryBuffer@CBaseOutputPin@@UAEJPAPAUIMediaSample@@PA_J1K@Z",
+      "signature": "public: virtual long __thiscall CBaseOutputPin::GetDeliveryBuffer(struct IMediaSample **, __int64 *, __int64 *, unsigned long)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 17,
+      "target": "0xca87f0",
+      "symbol": "?Deliver@CBaseOutputPin@@UAEJPAUIMediaSample@@@Z",
+      "signature": "public: virtual long __thiscall CBaseOutputPin::Deliver(struct IMediaSample *)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 18,
+      "target": "0xca86b0",
+      "symbol": "?InitAllocator@CBaseOutputPin@@UAEJPAPAUIMemAllocator@@@Z",
+      "signature": "public: virtual long __thiscall CBaseOutputPin::InitAllocator(struct IMemAllocator **)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 19,
+      "target": "0xca8820",
+      "symbol": "?DeliverEndOfStream@CBaseOutputPin@@UAEJXZ",
+      "signature": "public: virtual long __thiscall CBaseOutputPin::DeliverEndOfStream(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 20,
+      "target": "0xca9b10",
+      "symbol": "?DeliverBeginFlush@CDynamicOutputPin@@UAEJXZ",
+      "signature": "public: virtual long __thiscall CDynamicOutputPin::DeliverBeginFlush(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 21,
+      "target": "0xca9b40",
+      "symbol": "?DeliverEndFlush@CDynamicOutputPin@@UAEJXZ",
+      "signature": "public: virtual long __thiscall CDynamicOutputPin::DeliverEndFlush(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 22,
+      "target": "0xca88f0",
+      "symbol": "?DeliverNewSegment@CBaseOutputPin@@UAEJ_J0N@Z",
+      "signature": "public: virtual long __thiscall CBaseOutputPin::DeliverNewSegment(__int64, __int64, double)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 23,
+      "target": "0xca98e0",
+      "symbol": "?StartUsingOutputPin@CDynamicOutputPin@@UAEJXZ",
+      "signature": "public: virtual long __thiscall CDynamicOutputPin::StartUsingOutputPin(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 24,
+      "target": "0xca9a00",
+      "symbol": "?StopUsingOutputPin@CDynamicOutputPin@@UAEXXZ",
+      "signature": "public: virtual void __thiscall CDynamicOutputPin::StopUsingOutputPin(void)"
+    },
+    {
+      "vtable": "0x12bf7a8",
+      "slot": 25,
+      "target": "0xca9a40",
+      "symbol": "?StreamingThreadUsingOutputPin@CDynamicOutputPin@@UAE_NXZ",
+      "signature": "public: virtual bool __thiscall CDynamicOutputPin::StreamingThreadUsingOutputPin(void)"
+    }
+  ],
+  "DirectShow_reference": "Microsoft public amfilter/combase/wxutil classes; CBaseObject SDK identity is unrelated to Fable engine/CBaseObject.h. Full 53 slots manually signature-reviewed against SDK; native MI offsets C/10/A0 validated by fixture.",
+  "EH": "2 cleanup entries: base pin dtor CA85E0; CCritSec dtor CA4870 at offset A4. Frame handler BFEB34. Native fixture covers3 real Win32 outcomes; host5 includes injected C++ exceptions."
+}

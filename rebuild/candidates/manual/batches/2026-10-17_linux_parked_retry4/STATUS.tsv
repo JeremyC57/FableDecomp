@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00aed090	MATCH	167v167	PASS	Raw layer-word view reproduces the masked XOR delta; canonical VC7.1 verifier passed.
+00988490	MATCH	173v173	PASS	Inline RAII tail OR reproduces retail scheduling; canonical verifier passed.
+00ad7400	RELOCATION_MATCH	197v197	PASS	Tree headers at +0x84/+0x9c/+0xa8 with +0x0c gap; canonical verifier passed.

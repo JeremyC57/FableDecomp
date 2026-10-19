@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00c466f0   RELOCATION_MATCH PASS   AddGridCorners
+004ff490   RELOCATION_MATCH PASS   GetLoadableSections
+0073e1d0   RELOCATION_MATCH PASS   Accepts
+00961880   RELOCATION_MATCH PASS   Update
+
+WINS: 4
+  00c466f0 RELOCATION_MATCH _unattributed::AddGridCorners
+  004ff490 RELOCATION_MATCH CWorldMap::GetLoadableSections
+  0073e1d0 RELOCATION_MATCH CAnimFilterOf3Groups::Accepts
+  00961880 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::Update
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  unattributed_AddGridCorners_00c466f0
+  CWorldMap_GetLoadableSections_004ff490
+  CAnimFilterOf3Groups_Accepts_0073e1d0
+  CAIStateGroupBanditKingLunge_Update_00961880

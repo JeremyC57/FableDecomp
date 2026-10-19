@@ -1,0 +1,13 @@
+{
+  "engine/C3DAnimationInfo.h": "801c9bcb1327fc154de360b26c71c7c73fa34a169c64e3b7c910384f711f63bd",
+  "engine/CDefinitionManager.h": "ee32cbbb2ed8f8691084f5da341b624574df1fbac187f04ae2fb9df70df9bea8",
+  "engine/CIVCountedPointeeBase.h": "2bcf05c3a6e9b3cc0f749b6a9369d1dc41a10977f17e045129912c9ebb143368",
+  "engine/CList.h": "a1acab82382743de74689163e19e7715a382b392b52dcf6789784b1589f250a4",
+  "engine/CManager.h": "b16fc0b4a8fbf3693392e62ef43321c5331242e32ff36782853cac831560731a",
+  "engine/CMeshDataBank.h": "0a8b3f3a774f7ae90b7eed554097aa8d4d5cba7d174fc67a973f939a7c64c5c1",
+  "engine/CScrollingComponent.h": "0bbe1271111b22005fe90a84c821e593172c85de5b4d650ad72cd7cc6b66bc91",
+  "engine/_quarantine/CComponent.h": "65236585c22f204a93e745c7a04fdfeb65642b31315a10eefe21f1ec0cdd35fa",
+  "engine/_quarantine/CConfigOptionsDefaultsDef.h": "664a52405248dd92cfcafb5af1c36d842d965a942c71fac5eebf05d08e52cfc0",
+  "fable_string.h": "a4e6558e52c53a15d535dc5626c0ac2307a69ca548a1a779473df275054eaaba",
+  "rebuild_abi.h": "b0c8bc0a9088b2d7b8718f2424795576ca13bfe63a3a40412186f4f3b6eeeec4"
+}

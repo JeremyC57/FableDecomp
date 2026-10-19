@@ -1,0 +1,7 @@
+offset	type	retail_target	compiler_symbol
+000c	DISP32	00a01b50	?GetPItem@PointerView@@QBEPAUCThingNative@@XZ
+001b	DISP32	00a01b50	?GetPItem@PointerView@@QBEPAUCThingNative@@XZ
+002d	dir32	013b89fc	?QuestManager@@3PAUQuestManagerNative@@A
+0064	DISP32	00a01b50	?GetPItem@PointerView@@QBEPAUCThingNative@@XZ
+0081	DISP32	004365b0	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00b9	DISP32	008d4d90	?GetFlourishEvent@EntityEventsMethods@@QAE_NPAPAUEventBase@@ABUBind2@@@Z

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+004faee0   RELOCATION_MATCH PASS   GetDialogueVoice
+0075c9b0   RELOCATION_MATCH PASS   GetEventName
+005b12f4   RELOCATION_MATCH PASS   pair
+
+WINS: 3
+  004faee0 RELOCATION_MATCH CTCTalk::GetDialogueVoice
+  0075c9b0 RELOCATION_MATCH CTCCameraPointScriptedSpline::CKeyCamera::GetEventName
+  005b12f4 RELOCATION_MATCH std::pair<CWideString,long>::pair

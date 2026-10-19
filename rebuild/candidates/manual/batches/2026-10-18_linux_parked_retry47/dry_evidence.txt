@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00a361a0   RELOCATION_MATCH PASS   GetHelperPointPositionStatic
+
+WINS: 1
+  00a361a0 RELOCATION_MATCH C3DMeshObject::GetHelperPointPositionStatic

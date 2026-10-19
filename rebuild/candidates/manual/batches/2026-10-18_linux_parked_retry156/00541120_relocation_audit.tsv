@@ -1,0 +1,4 @@
+offset	native_target	symbol
+00000047	00535fe4	?FindChild@NUISystem@@YIPAPAUCComponent@1@PAPAU21@0ABQAU21@ABURandomAccessTag@1@@Z
+0000006d	00bfeae6	_memmove
+00000101	00533bc0	?RemoveBaseChild@CDynamicList@NUISystem@@QAEXK@Z

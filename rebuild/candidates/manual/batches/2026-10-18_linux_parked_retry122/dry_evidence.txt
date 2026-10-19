@@ -1,0 +1,11 @@
+addr       parity           behav  name
+009ef750   RELOCATION_MATCH PASS   InsertNode
+009ec5e0   RELOCATION_MATCH PASS   AddInput
+00aa7c70   RELOCATION_MATCH PASS   SaveChunkedFile
+00a381d0   RELOCATION_MATCH PASS   Error
+
+WINS: 4
+  009ef750 RELOCATION_MATCH CConsoleInputMap::InsertNode
+  009ec5e0 RELOCATION_MATCH CConsole::AddInput
+  00aa7c70 RELOCATION_MATCH CChunkedFileSaver::SaveChunkedFile
+  00a381d0 RELOCATION_MATCH CCRCSymbolMap::Error

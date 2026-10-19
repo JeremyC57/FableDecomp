@@ -1,0 +1,24 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/evidence/00513bf0.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000002e DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??4?$CCountedPointer@UCMap@@@@QAEAAU0@ABU0@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000048 DISP32            ??3@YAXPAX@Z
+00000063 DISP32            ??4CCharString@@QAEAAV0@ABV0@@Z
+0000006f DISP32            ??4CCharString@@QAEAAV0@ABV0@@Z
+0000009f DISP32            ??4CCharString@@QAEAAV0@ABV0@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??4CMapInfo@@QAEAAU0@ABU0@@Z

@@ -1,0 +1,13 @@
+offset	native_target	symbol
+00000003	012170d6	__ehhandler$??0CDynamicOutputPin@@QAE@PBDPAUCBaseFilter@@PAUCCritSec@@PAJPBG@Z
+00000009	00000000	__except_list
+00000011	00000000	__except_list
+0000003d	00cac070	??0CBasePin@@QAE@PBDPAUCBaseFilter@@PAUCCritSec@@PAJPBGW4PIN_DIRECTION@@@Z
+0000005c	012bf7a8	??_7CDynamicOutputPin@@6BCUnknown@@@
+00000063	012bf760	??_7CDynamicOutputPin@@6BIPin@@@
+0000006a	012bf748	??_7CDynamicOutputPin@@6BIQualityControl@@@
+00000074	012bf738	??_7CDynamicOutputPin@@6B@
+0000007a	0143fee4	__imp__InitializeCriticalSection@4
+000000bb	0143fdc8	__imp__CreateEventW@16
+000000ca	00cb0bc0	?AmGetLastErrorToHResult@@YAJXZ
+000000e1	00000000	__except_list

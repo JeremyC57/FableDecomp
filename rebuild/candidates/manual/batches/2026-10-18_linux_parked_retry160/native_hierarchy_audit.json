@@ -1,0 +1,68 @@
+{
+  "0x12a0f04": [
+    [
+      ".?AVCEngineLayerRenderer@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x12a2308": [
+    [
+      ".?AVCEnginePrimitiveRenderer2D@@",
+      0
+    ],
+    [
+      ".?AVCEngineComponent@@",
+      0
+    ]
+  ],
+  "0x12a3a94": [
+    [
+      ".?AVCEngineScreenEffectDisplacementRenderer@@",
+      0
+    ],
+    [
+      ".?AVCEngineComponent@@",
+      0
+    ]
+  ],
+  "0x122f84c": [
+    [
+      ".?AVCSurface@@",
+      0
+    ]
+  ],
+  "0x129a030": [
+    [
+      ".?AVCShaderBase@@",
+      0
+    ]
+  ],
+  "0x129a054": [
+    [
+      ".?AVCPixelShader@@",
+      0
+    ],
+    [
+      ".?AVCShaderBase@@",
+      0
+    ]
+  ],
+  "0x129b3d0": [
+    [
+      ".?AVCVertexShader@@",
+      0
+    ],
+    [
+      ".?AVCShaderBase@@",
+      0
+    ]
+  ]
+}

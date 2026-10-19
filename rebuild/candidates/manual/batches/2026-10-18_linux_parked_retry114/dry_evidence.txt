@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00898db0   RELOCATION_MATCH PASS   TakeObjectFromHero
+0089e080   RELOCATION_MATCH PASS   EntitySetCombatType
+
+WINS: 2
+  00898db0 RELOCATION_MATCH CGameScriptInterface::TakeObjectFromHero
+  0089e080 RELOCATION_MATCH CGameScriptInterface::EntitySetCombatType

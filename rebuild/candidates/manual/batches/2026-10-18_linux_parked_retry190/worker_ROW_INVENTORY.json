@@ -1,0 +1,161 @@
+{
+  "section": "retry202H",
+  "new_source_grade_total": 12,
+  "immutable_source_grade_snapshots": 12,
+  "source_grades_by_address": {
+    "00a699d0": 2,
+    "006fa3f0": 2,
+    "00820790": 3,
+    "008209c0": 5
+  },
+  "root_accepted_rows": [],
+  "worker_ready_awaiting_root_review": [
+    "00a699d0",
+    "006fa3f0",
+    "00820790",
+    "008209c0"
+  ],
+  "near_match_or_differ_rows": [],
+  "rows": [
+    {
+      "address": "00a699d0",
+      "status": "RELOCATION_MATCH",
+      "length": 169,
+      "historical_uncertain": 4,
+      "new_grades": 2,
+      "cumulative": 6,
+      "source_sha256": "0076c57dbec5927cf5c59ec8317d1ea6303f15b3f720698e27ad878d64e796fc",
+      "fixture_sha256": "333a749ae0961cf1ba43d908b40ff60b57f45059871c6e708ded9cf1c589ff4d",
+      "tests": [
+        "host C++98 O2 PASS",
+        "host C++98 O2 noelide PASS",
+        "native VC7.1 O2 PASS"
+      ],
+      "evidence": "evidence/00a699d0_relocation_audit.json",
+      "limits": "Actual CManagedTextureData/CTexture/CPixelFormat headers retained and expanded. No CVolumeTexture/CBaseClass headers exist including quarantine. Genuine one-slot polymorphic base/derived constructors instantiated by native-sized scalar new16 and fixture; actual emitted destructor signatures/vtables independently audited. ByteLength remains uninitialised as native and never read by fixture. Exact production method executes; external rounding/volumeInitialise/countReset dependencies are fixture stubs observing inputs/constructor fields/replacement. Fixture covers six successful allocations, true/falseInitialise, rounded dimensions and ushorttruncation, ignored callerlevels, depth, formatidentity, resetoldobject through callback, final virtualdelete. Native method dereferences newly reset volume unconditionally: allocator and countblock success are genuine external preconditions; no OOM promise. Fixture countReset is a dependency stub, not a claim to reproduce all nativeResetfailure semantics.",
+      "recovered_function": "CManagedTextureData::CreateVolumeTexture",
+      "status_category": "WORKER_READY_AWAITING_ROOT_REVIEW",
+      "root_accepted": false,
+      "source_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/src/00a699d0.cpp",
+      "test_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/test/00a699d0.cpp",
+      "graded_snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/snapshots/00a699d0_02.cpp",
+      "graded_snapshot_sha256": "0076c57dbec5927cf5c59ec8317d1ea6303f15b3f720698e27ad878d64e796fc",
+      "attempt_ledger_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/ATTEMPTS.json",
+      "historical_attempt_status": "4 UNCERTAIN original202 reservations; not four proven compiler grades",
+      "remaining_new_grades": 4,
+      "cumulative_cap": 10,
+      "compiler_effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "fixtures_snapshot_directory": "snapshots/00a699d0_fixture_texture2",
+      "fixture_commands": "snapshots/00a699d0_fixture_texture2/commands.json"
+    },
+    {
+      "address": "006fa3f0",
+      "status": "RELOCATION_MATCH",
+      "length": 236,
+      "historical_uncertain": 4,
+      "new_grades": 2,
+      "cumulative": 6,
+      "source_sha256": "65882b275de9c16e1672867aa3daf0d93c41de807a977b43665fa203f2a463db",
+      "fixture_sha256": "e617395d3bb232944538c55a4bf4273f11ec6a9774f11bf5159dda441d54ac67",
+      "tests": [
+        "host C++98 O2 PASS",
+        "host C++98 O2 noelide PASS",
+        "native VC7.1 O2 PASS"
+      ],
+      "evidence": "evidence/006fa3f0_relocation_audit.json",
+      "limits": "Actual sharedCManager header retained; NAnimationEvents manager/Event/vector/map template headers absent inclquarantine. Explicit native data projection backed byPDB with nativeoffset/size assertions. Genuine owning EventVector constructors/copypair/destructors execute, nativearraydelete[] independentaudit; full emitted constructor/dependency signatures saved. Exact production method and genuine LowerBound82byte implementation execute, no duplicate fixtureLowerBound. ExternalAllocate/Copy/resize/PushBack/sort are dependencydoubles preserving ownedeventarrays; not full allocator/engine algorithms. Fixture12 keyinsert/existingcases plus emptymap/alreadydirtyexisting: unsignedkeys0/1/7/80000000/FFFFFFFE/FFFFFFFF, before/middle/end insertion, NaNTimebits/bitfields, originaleventsretained, resizecallbackmodifiesinput before candidatecopy, temporaryarraydeletecallbackcan clearDirty so sortskip honored; genuine deepcopies/arraydeleteeveryallocation/noelide. Nativeexternalresize defaultfill event uninitialised bydesign and immediately overwritten; fixture deliberately does not inspect uninitialisedfillpayload. Successful dependent allocations and valid sourceevent acrossresize are actual preconditions. No virtualhierarchy or externalengineconstructor claim; method has no virtualcalls.",
+      "recovered_function": "NAnimationEvents::CManager::AddEventToAnim",
+      "status_category": "WORKER_READY_AWAITING_ROOT_REVIEW",
+      "root_accepted": false,
+      "source_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/src/006fa3f0.cpp",
+      "test_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/test/006fa3f0.cpp",
+      "graded_snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/snapshots/006fa3f0_02.cpp",
+      "graded_snapshot_sha256": "65882b275de9c16e1672867aa3daf0d93c41de807a977b43665fa203f2a463db",
+      "attempt_ledger_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/ATTEMPTS.json",
+      "historical_attempt_status": "4 UNCERTAIN original202 reservations; not four proven compiler grades",
+      "remaining_new_grades": 4,
+      "cumulative_cap": 10,
+      "compiler_effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "fixtures_snapshot_directory": "snapshots/006fa3f0_fixture_events1",
+      "fixture_commands": "snapshots/006fa3f0_fixture_events1/commands.json"
+    },
+    {
+      "address": "00820790",
+      "status": "RELOCATION_MATCH",
+      "length": 161,
+      "historical_uncertain": 4,
+      "new_grades": 3,
+      "cumulative": 7,
+      "source_sha256": "8abb21a8e19f0209f04a1f49849af9c0e6611ff4aed9abf8340191a89486ac9a",
+      "fixture_sha256": "d719366c398f905a34e2b49dbea066b507e7690b7316e57bee4abe7d399e8240",
+      "tests": [
+        "host C++98 O2 PASS",
+        "host C++98 O2 noelide PASS",
+        "native VC7.1 O2 PASS"
+      ],
+      "evidence": "evidence/00820790_relocation_audit.json",
+      "limits": "Actual quarantined CMap/CThing plus CWorld/CWorldMap/CScriptedMapBrush headers retained/expanded; native mapWorld20 vs donor2C. ScriptedMapBrushAddThings identity donor67B630 exactconstbrushref. Native linkedUID64list sentinel16 and eachnode owned with CRTmalloc/free, exact constructor/clear/destructor execute; allocation-success precondition nativeunchecked. External brush/lookup/activation methods stubbed; ten fixtures(0..4UIDs x callbackWorldswitch), full64bit IDs includingFFFFFFFFFFFFFFFF/8000000100000002, missingthings/live/deadreturned all activated, manager capturedonceevenempty, allnodes/sentinel freedonce and sentinelresetbeforefree. Getter uses typed nativePMF4/fullhost; actual engine constructors/full hierarchy not claimed. Original CThingcallee label independently correctedSetAsActivated, notGameStatePersisted; allnativeglobals/relocs allocatoridentities audited.",
+      "recovered_function": "CMap::ScriptedMapBrushAddThings",
+      "status_category": "WORKER_READY_AWAITING_ROOT_REVIEW",
+      "root_accepted": false,
+      "source_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/src/00820790.cpp",
+      "test_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/test/00820790.cpp",
+      "graded_snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/snapshots/00820790_03.cpp",
+      "graded_snapshot_sha256": "8abb21a8e19f0209f04a1f49849af9c0e6611ff4aed9abf8340191a89486ac9a",
+      "attempt_ledger_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/ATTEMPTS.json",
+      "historical_attempt_status": "4 UNCERTAIN original202 reservations; not four proven compiler grades",
+      "remaining_new_grades": 3,
+      "cumulative_cap": 10,
+      "compiler_effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "fixtures_snapshot_directory": "snapshots/00820790_fixture_brush3",
+      "fixture_commands": "snapshots/00820790_fixture_brush3/commands.json"
+    },
+    {
+      "address": "008209c0",
+      "status": "RELOCATION_MATCH",
+      "length": 193,
+      "historical_uncertain": 4,
+      "new_grades": 5,
+      "cumulative": 9,
+      "source_sha256": "9ace593110f9bc7205c5284286443d81d295d763cca26716e7f29de3a9e55096",
+      "fixture_sha256": "c3113427c4a4e03360e653394ea4868b795c25ef7bdd9b6dbebfe5c8814b276a",
+      "tests": [
+        "host C++98 O2 PASS",
+        "host C++98 O2 noelide PASS",
+        "native VC7.1 O2 PASS"
+      ],
+      "evidence": "evidence/008209c0_relocation_audit.json",
+      "limits": "Actual quarantined CMap/CThing plus CWorld/CWorldMap/CScriptedMapBrush headers retained and expanded. Native projections mapWorld20/WorldPos1D24/ThingDead91bit0 PDBbacked; allPMFs4 native/fullhost stride asserted. Exact UIDList ctor/iteration/clear/dtor execute, importedmalloc/free tracked once pernode/sentinel and reset-beforefree. Ten fixtures0..4UIDsxcallbackWorldswitch: high64UIDs, nullthings, deadskip, Kill(false)onlylive, GetThingManagerreloaded perUID aftercallbackswitchesWorld, PeekWorldMap/GetMapNumberAt evenemptylist with actualWorldPosreference. Actualengineconstructors/fullhierarchy/dependencyalgorithms not claimed; doubles genuine own constructors/signatures. UIDlist allocation success externalprecondition originalunchecked. No duplicate candidate logic in tests; only externalimports/helpers stubbed. Grades1..3 same-length scheduling issue, grade4 namedUIDlocal extra register topology, grade5 naturalGetWorld().GetPThingWithUID() nestedinlinegetter matches exactly.",
+      "recovered_function": "CMap::ScriptedMapBrushRemoveThings",
+      "status_category": "WORKER_READY_AWAITING_ROOT_REVIEW",
+      "root_accepted": false,
+      "source_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/src/008209c0.cpp",
+      "test_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/test/008209c0.cpp",
+      "graded_snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/snapshots/008209c0_05.cpp",
+      "graded_snapshot_sha256": "9ace593110f9bc7205c5284286443d81d295d763cca26716e7f29de3a9e55096",
+      "attempt_ledger_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/ATTEMPTS.json",
+      "historical_attempt_status": "4 UNCERTAIN original202 reservations; not four proven compiler grades",
+      "remaining_new_grades": 1,
+      "cumulative_cap": 10,
+      "compiler_effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "fixtures_snapshot_directory": "snapshots/008209c0_fixture_brush4",
+      "fixture_commands": "snapshots/008209c0_fixture_brush4/commands.json"
+    }
+  ]
+}

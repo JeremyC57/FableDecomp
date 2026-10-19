@@ -1,0 +1,10 @@
+# FireHeart prisoner-killing boast retry
+
+CE6B10 independently passes VC7.1 RELOCATION_MATCH203, actual-source host C++98/O2 and no-elision fixtures and canonical VC behavior tests. Root audited all seven body relocation targets, five used Game virtual slots, active-thread termination field and all seven source/command snapshots from the completed two-row Sol section. Actual Game and string headers remain included, native PMF4/assertions preserved and host member pointers remain full width. One new source grade plus four UNCERTAIN historical reservations; five new allowances remain unused.
+
+PDB identifies CHeroBoastsScript::BoastFireHeartKillAllPrisoners, not the propagated BanditCamp name. Master byte130 and boast44 distinguish this from the adjacent already-landed FreeAllPrisoners function. Like that function, this polls and may report outcomes repeatedly until termination. Fixtures cover failure priority, completion and flag outcomes, initial/nested termination, changing callback results and parameter destruction on every exit. The shared CCharString header omits its genuine copy constructor; fixture explicitly models caller99EC30 retain before by-value transfer and does not claim implicit-copy ownership support in that header.
+
+The other owned row AF4E10 remains parked after six new grades plus four historical reservations. Native RTTI identifies NParticleEngine::CParticleSystem; its best graded body is DIFFER194v194, with a remaining LEA scheduling difference. Import review also discovered the graded source's new Node calls the wrong allocator: retail BFEA0E is MSVCR71 malloc through1440158. The source is therefore not accepted even apart from parity. All six snapshots, exact graded fixture, native-layout audit and an explicitly ungraded malloc correction proposal are preserved. No attempt budget was reset or silently extended.
+
+These isolated compiler/dependency fixtures do not establish linked whole-game runtime behavior. Only CE6B10 is landed.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

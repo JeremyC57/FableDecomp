@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00a65590   RELOCATION_MATCH PASS   ConsolidateAdjacentFreeAreas
+009fe8e0   RELOCATION_MATCH PASS   UnloadFrame
+00b90270   RELOCATION_MATCH PASS   CEnginePrimitiveManagerOcclusionBase
+
+WINS: 3
+  00a65590 RELOCATION_MATCH CMemoryAreaChunk::ConsolidateAdjacentFreeAreas
+  009fe8e0 RELOCATION_MATCH CGraphicInfo::UnloadFrame
+  00b90270 RELOCATION_MATCH CEnginePrimitiveManagerOcclusionBase::??0CEnginePrimitiveManagerOcclusionBase@@

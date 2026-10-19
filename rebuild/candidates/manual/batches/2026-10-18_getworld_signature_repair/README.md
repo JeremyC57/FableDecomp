@@ -1,0 +1,5 @@
+# Correct existing action GetWorld return signature
+
+The existing00692940 body was a propagated STL _Dest_val label with void return and anonymous helper declarations. Real callers consume EAX as CWorld; PDB signatures identify both CCreatureActionBase::GetWorld and CThing::GetWorld returning CWorld&. Native15-byte body loads PCreature at8 through00A01B50 then tailcalls004C7AA0 (main component global+24 world). Actual action/thing/world headers retained via field-free method adapters. Exact-source hostO2 andVC7.1 tests verify forwarded pointer identity and returned world identity across changed dependencies. Both masked call targets audited; RELOCATION_MATCH15 bytes.
+
+Replacement preserves the existing catalog address and oracle bytes; no increase to function/byte totals. Old source and test are retained here. Conservative repair ledger records a first preflight rejected for missing local oracle (no compiler invoked), followed by corrected signature/header source at grade2, exact on first actual compilation. No duplicate catalog entry or blind re-land.

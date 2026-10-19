@@ -1,0 +1,974 @@
+[
+  {
+    "address": "00697e20",
+    "grade": 1,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00697e20_01",
+    "metadata": {
+      "sha256": "7e74830b31bce9ad62033506966edaffc30b27fd93795017d1cb60f88167422d",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00697e20",
+        "work/codex-lane/w22/astra237_whole/src/00697e20.cpp",
+        "SetCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00699560",
+    "grade": 1,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00699560_01",
+    "metadata": {
+      "sha256": "93aa16ed2a3e855ab1009daa2af5c37b5f1d1c4bc4c812483fd571c7542838a4",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00699560",
+        "work/codex-lane/w22/astra237_whole/src/00699560.cpp",
+        "SetEarthquakeAt"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00699560",
+    "grade": 2,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00699560_02",
+    "metadata": {
+      "sha256": "883bfb3602eec1d199186f60ebe7deb065d0a58dab1ef69fb48bdf2c91846e35",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00699560",
+        "work/codex-lane/w22/astra237_whole/src/00699560.cpp",
+        "SetEarthquakeAt"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00699560",
+    "grade": 3,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00699560_03",
+    "metadata": {
+      "sha256": "d337ee95cff9c0716cb0bcc4b8e0a3347866efbe02b0aae98c115b327fea18b0",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00699560",
+        "work/codex-lane/w22/astra237_whole/src/00699560.cpp",
+        "SetEarthquakeAt"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00d3abe0",
+    "grade": 1,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00d3abe0_01",
+    "metadata": {
+      "sha256": "e7d65f4e79fb18bed287aa2858a5cfb7f353e310e90a8de00bf36ade10e71977",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00d3abe0",
+        "work/codex-lane/w22/astra237_whole/src/00d3abe0.cpp",
+        "GetEndSpeech"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00d3abe0",
+    "grade": 2,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00d3abe0_02",
+    "metadata": {
+      "sha256": "59ac822935840f9bb0cbf0867943332b200adb3625e24f3925960ef244571dc4",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00d3abe0",
+        "work/codex-lane/w22/astra237_whole/src/00d3abe0.cpp",
+        "GetEndSpeech"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00d3abe0",
+    "grade": 3,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00d3abe0_03",
+    "metadata": {
+      "sha256": "c7d326570efcafed53ffb563dbeab66222c4678bb5a628a72c98d9a4ec09c5cb",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00d3abe0",
+        "work/codex-lane/w22/astra237_whole/src/00d3abe0.cpp",
+        "GetSpeechID"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00d3abe0",
+    "grade": 4,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00d3abe0_04",
+    "metadata": {
+      "sha256": "3a9be633b7180e4633a995fb4ffae0800f83f350914bce2c46d9a5f813c9e856",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00d3abe0",
+        "work/codex-lane/w22/astra237_whole/src/00d3abe0.cpp",
+        "GetEndSpeech"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00b849f0",
+    "grade": 1,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00b849f0_01",
+    "metadata": {
+      "sha256": "7ff508256072dd5f420677553941e350d54f067f56433364728c6266ea0098bf",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00b849f0",
+        "work/codex-lane/w22/astra237_whole/src/00b849f0.cpp",
+        "RenderType"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00b849f0",
+    "grade": 2,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00b849f0_02",
+    "metadata": {
+      "sha256": "cb5aa668e7fc22a0a270bc2d3bdf23b3ecc17c63873411e64301936f711cf2a4",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00b849f0",
+        "work/codex-lane/w22/astra237_whole/src/00b849f0.cpp",
+        "RenderType"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00b849f0",
+    "grade": 3,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00b849f0_03",
+    "metadata": {
+      "sha256": "83f1f2c983303c6f5a8b6915e369ac342e45010107f38aa437bf75471a367c0f",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00b849f0",
+        "work/codex-lane/w22/astra237_whole/src/00b849f0.cpp",
+        "RenderType"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00b849f0",
+    "grade": 4,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00b849f0_04",
+    "metadata": {
+      "sha256": "0ba5d2cecfc3bc86e6cb351e6b536bd3e7e371f91c5ad00001d3fb45a496cd01",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00b849f0",
+        "work/codex-lane/w22/astra237_whole/src/00b849f0.cpp",
+        "RenderType"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00b849f0",
+    "grade": 5,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00b849f0_05",
+    "metadata": {
+      "sha256": "a8f0e9de2c6a9ad59958aa70c410644559555a7da7bb8f785a75d45b9f8e2350",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00b849f0",
+        "work/codex-lane/w22/astra237_whole/src/00b849f0.cpp",
+        "RenderType"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698d10",
+    "grade": 1,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698d10_01",
+    "metadata": {
+      "sha256": "706e9987231c7b3c27287a61f3fb2d0086d157da02dc40904c4ca7350135a711",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698d10",
+        "work/codex-lane/w22/astra237_whole/probe/00698d10_v1.cpp",
+        "PushProjectileWeaponMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698d10",
+    "grade": 2,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698d10_02",
+    "metadata": {
+      "sha256": "4f1014079a08531b3f0f7de1cabac2f4fb889bf3e186b77867d49f10743e23b8",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698d10",
+        "work/codex-lane/w22/astra237_whole/probe/00698d10_v2.cpp",
+        "PushProjectileWeaponMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698d10",
+    "grade": 3,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698d10_03",
+    "metadata": {
+      "sha256": "e822e2cced18ee3b1431178eac3550069575c69e3eb67a105dcddf4a4473371b",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698d10",
+        "work/codex-lane/w22/astra237_whole/src/00698d10.cpp",
+        "PushProjectileWeaponMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698d10",
+    "grade": 4,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698d10_04",
+    "metadata": {
+      "sha256": "cdf61f5c9024f32700bcc824dbc537f1237377a021a6f63095fe87ce5b37edee",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698d10",
+        "work/codex-lane/w22/astra237_whole/src/00698d10.cpp",
+        "PushProjectileWeaponMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 1,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_01",
+    "metadata": {
+      "sha256": "a22bbf9eb059cff2dd864ed96485f3ca2366f75faf272bb134da5184e09eae08",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/probe/00698f50_v1.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 2,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_02",
+    "metadata": {
+      "sha256": "4018a8148915f3350970e625a6ceaecc28c6aafc8cfda3a4ca0a0f2275393999",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/probe/00698f50_v2.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 3,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_03",
+    "metadata": {
+      "sha256": "11d2b2fc7d006ec9d8f15e9c05f473599ee15e90956e6d584b3097adffe7771b",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/probe/00698f50_v3.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 4,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_04",
+    "metadata": {
+      "sha256": "4580eb3eeb2e3b6ff1981589af6ff841c66a2b0cf795e377a6b49e8d0b41b412",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/probe/00698f50_v4.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 5,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_05",
+    "metadata": {
+      "sha256": "0808537ff2a78f0718828146269c9cc8417b3cc68cc8b28dd56d7f947ee1dc45",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/probe/00698f50_v5.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 6,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_06",
+    "metadata": {
+      "sha256": "4b31f30a6e088b0467615c0a833186a2710ea29f387a91a5d157fe5f027bcbca",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/probe/00698f50_v6.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 7,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_07",
+    "metadata": {
+      "sha256": "3849a432b2d2bac67ce98089fc95ebef316c83da6ddda4e111664104c988c4d3",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/src/00698f50.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 8,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_08",
+    "metadata": {
+      "sha256": "e03bfc37515987e3bc575bfc78385eb81ef0f7367905ef7e905de41dedc75550",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/src/00698f50.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 9,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_09",
+    "metadata": {
+      "sha256": "23a525a0d14891d8caa6e076e302cd9c644cdce84bdae5474867a9246f4d9163",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/src/00698f50.cpp",
+        "PushSpecialityMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  },
+  {
+    "address": "00698f50",
+    "grade": 10,
+    "snapshot": "work/codex-lane/w22/astra237_whole/snapshots/00698f50_10",
+    "metadata": {
+      "sha256": "281c078eacf651f1a712758d96dcd47489e7bb651e01d1538db5eced6daa20d3",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00698f50",
+        "work/codex-lane/w22/astra237_whole/src/00698f50.cpp",
+        "PushSpecialCameraMode"
+      ],
+      "compiler_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+      "environment": {
+        "WINEARCH": "wow64",
+        "WINEPREFIX": "/workspace/FableDecomp/work/wine-repair/prefix-wow64",
+        "FABLE_WINE_REAL": "/workspace/FableDecomp/work/wine-repair/wine-11.0-amd64-wow64/bin/wine",
+        "FABLE_OBJDUMP": "objdump",
+        "WINEDLLOVERRIDES": "mscoree,mshtml=",
+        "FABLE_VC71": "/workspace/FableDecomp/work/wine-repair/vc71",
+        "WINEDEBUG": "-all",
+        "FABLE_WINE": "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped",
+        "FABLE_ROOT": "/workspace/FableDecomp"
+      }
+    }
+  }
+]

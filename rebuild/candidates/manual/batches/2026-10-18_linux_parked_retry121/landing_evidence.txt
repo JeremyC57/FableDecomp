@@ -1,0 +1,11 @@
+addr       parity           behav  name
+008b95a0   RELOCATION_MATCH PASS   PerformAction
+008b9c90   RELOCATION_MATCH PASS   Initialise
+
+WINS: 2
+  008b95a0 RELOCATION_MATCH CCreatureAction_CastWillTurncoatSpell::PerformAction
+  008b9c90 RELOCATION_MATCH CCreatureAction_CastWillLightningSpell::Initialise
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionCastWillTurncoatSpell_PerformAction_008b95a0
+  CCreatureActionCastWillLightningSpell_Initialise_008b9c90

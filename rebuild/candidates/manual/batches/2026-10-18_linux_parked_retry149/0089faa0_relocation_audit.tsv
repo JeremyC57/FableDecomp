@@ -1,0 +1,16 @@
+offset	native_target	symbol
+00000008	012783b8	??_C@_0N@DKBLNEKL@MARKER_LIGHT?$AA@
+00000011	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000001e	009ad410	?GetDefGlobalIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@@Z
+00000029	0099eae0	??1CCharString@@QAE@XZ
+00000041	0083d460	?CreateMarker@@YIPAUCThingNative@@JABUC3DVector@@ABVCCharString@@@Z
+00000069	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00000087	00640df0	?SetOverridden@LightMethods@@QAEX_N@Z
+00000093	00640bb0	?SetColour@LightMethods@@QAEXABUCRGBColour@@@Z
+0000009f	00640c40	?SetInnerRadius@LightMethods@@QAEXM@Z
+000000ab	00640c70	?SetOuterRadius@LightMethods@@QAEXM@Z
+000000c3	00640ca0	?SetFlicker@LightMethods@@QAEXM@Z
+000000cc	006412b0	?SetActive@LightMethods@@QAEX_N@Z
+000000d8	004c7e50	?GetScriptThing@CThingNative@@QAE?AUScriptMethods@@XZ
+000000eb	0099a2d0	??0CBaseClassNative@@QAE@XZ
+000000f1	01238c8c	??_7ScriptMethods@@6B@

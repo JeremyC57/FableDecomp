@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00a66450   RELOCATION_MATCH PASS   Allocate
+00a662a0   RELOCATION_MATCH PASS   Deallocate
+0081e810   RELOCATION_MATCH PASS   HeightAreaChanged
+
+WINS: 3
+  00a66450 RELOCATION_MATCH CMemoryAllocatorFixedSize::Allocate
+  00a662a0 RELOCATION_MATCH CMemoryAllocatorFixedSize::Deallocate
+  0081e810 RELOCATION_MATCH CMap::HeightAreaChanged

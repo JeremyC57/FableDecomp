@@ -1,0 +1,20 @@
+{
+  "address": "00a471d0",
+  "attempt": 4,
+  "sha256": "02028bf4f81861d06bec2374a0a0b7308cf942e4455212fb6db386e196684c11",
+  "base_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "extra_flags": [],
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+    "00a471d0",
+    "/workspace/FableDecomp/work/codex-lane/w22/astra242_whole/snapshots/00a471d0/a04/source.cpp",
+    "IsAnyPartOfNodeWithinDistOfPos"
+  ]
+}

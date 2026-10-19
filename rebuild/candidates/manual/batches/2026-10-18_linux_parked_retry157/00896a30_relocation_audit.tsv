@@ -1,0 +1,17 @@
+offset	native_target	symbol
+00000018	013b89fc	?g_QuestManager@@3PAUQuestManagerMethods@@A
+0000001f	004b0d30	?SetQuestCardObjective@QuestManagerMethods@@QAE_NABVCCharString@@000@Z
+0000002d	013b89fc	?g_QuestManager@@3PAUQuestManagerMethods@@A
+00000033	004af610	?IsQuestCardActive@QuestManagerMethods@@QBE_NABVCCharString@@@Z
+00000041	013b89fc	?g_QuestManager@@3PAUQuestManagerMethods@@A
+00000047	004b0c80	?GetActiveQuestCardFromScriptName@QuestManagerMethods@@QBEPAUCThingNative@@ABVCCharString@@@Z
+0000007f	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00000095	007022e0	?IsVignette@QuestCardMethods@@QBE_NXZ
+000000a5	00449970	?GetMainPlayer@PlayerManagerMethods@@QAEPAUPlayerMethods@@XZ
+000000ac	00487dc0	?GetHeroThing@PlayerMethods@@QAEPAUCThingNative@@XZ
+000000bb	0043dbd0	?IsThingAlive@@YI_NABQAUCThing@@@Z
+000000df	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+000000f7	012366b8	??_C@_09JHGFBHBK@LOG_ENTRY?$AA@
+00000100	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+00000114	0066bd00	?PlaySoundEvent@SoundPlayerMethods@@QAEKABVCCharString@@_N11J@Z
+0000011d	0099eae0	??1CCharString@@QAE@XZ

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0094f090   RELOCATION_MATCH PASS   GetLandPos
+
+WINS: 1
+  0094f090 RELOCATION_MATCH CAIStateGroup_BalverineCornered::GetLandPos
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupBalverineCornered_GetLandPos_0094f090

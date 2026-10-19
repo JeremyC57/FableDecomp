@@ -1,0 +1,74 @@
+[
+  {
+    "address": "009ff440",
+    "author_grades": 4,
+    "root_grade": 2,
+    "cumulative": 6,
+    "source": "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009ff440.cpp",
+    "sha256": "4f0907914e8bb068f63a007334ff979c2502e48f33966b0433b7cfc7e9046854",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "009ff440",
+      "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009ff440.cpp",
+      "InitFrames"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "Native CBankFile and Async slot8 is purecall; genuine GetDataFormatVersion declaration must be pure, GraphicDataBank concreteoverride unchanged.",
+    "utc": "2026-10-19T01:43:37.885602+00:00"
+  },
+  {
+    "address": "009ff590",
+    "author_grades": 5,
+    "root_grade": 1,
+    "cumulative": 6,
+    "source": "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009ff590.cpp",
+    "sha256": "24fc0231973e112a460c0436846d1b56d27b0197a62885308f4df965d97a0c84",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "009ff590",
+      "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009ff590.cpp",
+      "?NotifyEntryAdded@CGraphicDataBank@@"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "Native CBankFile and Async slot8 is purecall; genuine GetDataFormatVersion declaration must be pure, GraphicDataBank concreteoverride unchanged.",
+    "utc": "2026-10-19T01:43:37.886090+00:00"
+  },
+  {
+    "address": "009febc0",
+    "author_grades": 2,
+    "root_grade": 1,
+    "cumulative": 3,
+    "source": "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009febc0.cpp",
+    "sha256": "e078b240a5c3f2b220486e2158e63a1141b0dd6222a11161fcbeeb052478168a",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "009febc0",
+      "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009febc0.cpp",
+      "??1CGraphicDataBank@@"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "Native CBankFile and Async slot8 is purecall; genuine GetDataFormatVersion declaration must be pure, GraphicDataBank concreteoverride unchanged.",
+    "utc": "2026-10-19T01:43:37.886303+00:00"
+  }
+]

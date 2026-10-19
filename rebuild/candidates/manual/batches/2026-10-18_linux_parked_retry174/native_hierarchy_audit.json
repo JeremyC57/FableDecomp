@@ -1,0 +1,154 @@
+{
+  "0x1231710": {
+    "slots": [
+      "0x4371f0"
+    ],
+    "hierarchy": [
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x122f598": {
+    "slots": [
+      "0x41c500"
+    ],
+    "hierarchy": [
+      [
+        ".?AVCEnginePrimitiveHandle@@",
+        0
+      ],
+      [
+        ".?AVCBaseClass@@",
+        0
+      ]
+    ]
+  },
+  "0x12354d0": {
+    "slots": [
+      "0x4664e0",
+      "0x42d930"
+    ],
+    "hierarchy": [
+      [
+        ".?AVCIVCountedPointeeBase@@",
+        0
+      ]
+    ]
+  },
+  "0x12a3d60": {
+    "slots": [
+      "0xb8ffe0",
+      "0x42d930",
+      "0xbfea08",
+      "0xb8ffc0",
+      "0xb8ffd0"
+    ],
+    "hierarchy": [
+      [
+        ".?AVCEnginePersistentPrimitiveBase@@",
+        0
+      ],
+      [
+        ".?AVCIVCountedPointeeBase@@",
+        0
+      ]
+    ]
+  },
+  "0x129b860": {
+    "slots": [
+      "0x9d5110",
+      "0xbfea08",
+      "0x9d50f0",
+      "0x9d5100"
+    ],
+    "hierarchy": [
+      [
+        ".?AVCMovableResource@@",
+        0
+      ]
+    ]
+  },
+  "0x12a82ac": {
+    "slots": [
+      "0xbfbc50",
+      "0xbf9cc0",
+      "0xbf9a80",
+      "0x9d5100",
+      "0xbdf6d0",
+      "0xbfaba0",
+      "0xbdf6e0",
+      "0xbf9b40",
+      "0xbfa2a0",
+      "0xbfbb90"
+    ],
+    "hierarchy": [
+      [
+        ".?AVCLocalDetailPrimitiveRepeatedMesh@@",
+        0
+      ],
+      [
+        ".?AVCLocalDetailPrimitiveBase@@",
+        0
+      ],
+      [
+        ".?AVCMovableResource@@",
+        0
+      ]
+    ]
+  },
+  "0x12a82d8": {
+    "slots": [
+      "0xbfbd80",
+      "0xbfa8a0",
+      "0xbf9a80",
+      "0x9d5100",
+      "0xbfad90",
+      "0xbfacc0",
+      "0xbfbba0",
+      "0xbf9b90",
+      "0xbfb210",
+      "0xbfbbb0"
+    ],
+    "hierarchy": [
+      [
+        ".?AVCLocalDetailPrimitiveMeshZSpriteBatch@@",
+        0
+      ],
+      [
+        ".?AVCLocalDetailPrimitiveBase@@",
+        0
+      ],
+      [
+        ".?AVCMovableResource@@",
+        0
+      ]
+    ]
+  },
+  "00bfaba0": {
+    "fresh_CO\u200bFF_virtuals": {}
+  },
+  "00bfacc0": {
+    "fresh_CO\u200bFF_virtuals": {}
+  },
+  "00bf9cc0": {
+    "fresh_CO\u200bFF_virtuals": {}
+  },
+  "00bfb590": {
+    "fresh_CO\u200bFF_virtuals": {
+      "??_7CLocalDetailPrimitiveMeshZSpriteBatch@@6B@": [
+        "public: virtual void * __thiscall CLocalDetailPrimitiveMeshZSpriteBatch::`vector deleting dtor'(unsigned int)",
+        "public: virtual void __thiscall CLocalDetailPrimitiveMeshZSpriteBatch::RelocateData(long, void *, void *, long)",
+        "public: virtual bool __thiscall CLocalDetailPrimitiveBase::CanRelocateData(long) const",
+        "public: virtual unsigned long __thiscall CMovableResource::Verify(void) const",
+        "public: virtual void __thiscall CLocalDetailPrimitiveMeshZSpriteBatch::RenderUpdate(struct CEngineCamera const &, bool, unsigned long, struct CLocalDetailObjectCollectionType const *, float)",
+        "public: virtual void __thiscall CLocalDetailPrimitiveMeshZSpriteBatch::AddObjectsToPrimitiveRenderer(void)",
+        "public: virtual bool __thiscall CLocalDetailPrimitiveMeshZSpriteBatch::NeedsRenderUpdate(void)",
+        "public: virtual void __thiscall CLocalDetailPrimitiveMeshZSpriteBatch::OnPostRelocation(void)",
+        "public: virtual bool __thiscall CLocalDetailPrimitiveMeshZSpriteBatch::Load(struct CDataInputStream &)",
+        "public: virtual enum LOCAL_DETAIL_PRIMITIVE_TYPE __thiscall CLocalDetailPrimitiveMeshZSpriteBatch::GetType(void) const"
+      ]
+    }
+  }
+}

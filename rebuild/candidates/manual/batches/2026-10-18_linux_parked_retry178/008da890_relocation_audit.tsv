@@ -1,0 +1,15 @@
+offset	native_target	symbol
+00000008	0073ac50	?BaseFrameUpdate@ModeDrained@@QAEXXZ
+00000012	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+00000021	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+00000035	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+0000005a	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@PBH@Z
+00000070	0073a6e0	?GetCurrentMode@ModeManager@@QBEAAUModeInterface@@XZ
+00000085	00a01b10	??0BaseIntelligentPointer@@QAE@XZ
+00000093	01238c6c	??_7IntelligentThingPointer@@6B@
+00000098	00a01b90	?SetPItem@BaseIntelligentPointer@@QAEXPAUThingNative@@@Z
+000000a1	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+000000a9	00a01b90	?SetPItem@BaseIntelligentPointer@@QAEXPAUThingNative@@@Z
+000000b2	00a01c10	??1BaseIntelligentPointer@@UAE@XZ
+000000d5	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@PBH@Z
+000000f5	0073aba0	?RemoveMode@ModeManager@@QAEXK@Z

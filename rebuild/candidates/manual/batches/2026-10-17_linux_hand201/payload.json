@@ -1,0 +1,14 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "004585fe",
+    "module": "CHitLocationDef",
+    "name": "Transfer -- serialize hit-location scalars in the retail persistence order\n// Retail: Fable.exe @ 0x004585FE, 237 bytes. Size-oriented definition TU; typed helpers are called at the addresses noted below.\n#pragma optimize",
+    "source_cpp": "// CHitLocationDef::Transfer -- serialize hit-location scalars in the retail persistence order\n// Retail: Fable.exe @ 0x004585FE, 237 bytes. Size-oriented definition TU; typed helpers are called at the addresses noted below.\n#pragma optimize(\"y\", off)\n#pragma optimize(\"s\", on)\nstruct SLocation { unsigned char data[4]; };\nstruct SFloat { float value; };\nstruct SLong { long value; };\nstruct SBool { bool value; };\nstruct CPersistContext {\n void Transfer(SLocation*); // 0x00458833\n void Transfer(SLong*); // 0x00431102\n void Transfer(SFloat*); // 0x004586EB\n void Transfer(SBool*); // 0x0043314A\n void TransferTail(unsigned char*); // 0x0045878F\n};\nstruct CHitLocationDef {\n virtual void v00();\n unsigned char base[0x38];\n SLocation loc; // +3c\n unsigned char pad40[4];\n SLong l44; SFloat f48; SFloat f4c; SFloat f50; SFloat f54; SFloat f58;\n SLong l5c; SLong l60; SLong l64; SLong l68;\n unsigned char b6c; unsigned char b6d; unsigned char b6e; unsigned char b6f; SLong l70; SBool b74; unsigned char b75; unsigned char pad76[2]; unsigned char tail[4];\n void Transfer(CPersistContext& context);\n};\nvoid CHitLocationDef::Transfer(CPersistContext& context) {\n context.Transfer(&loc); context.Transfer(&l44); context.Transfer(&l5c); context.Transfer(&l60); context.Transfer(&l64);\n context.Transfer(&f48); context.Transfer(&f4c); context.Transfer(&f50); context.Transfer(&f54); context.Transfer(&f58);\n long transferred = l68.value; context.Transfer((SLong*)&transferred); l68.value = transferred; context.Transfer((SBool*)&b6e); context.Transfer((SBool*)&b6f); context.Transfer(&l70);\n context.Transfer(&b74); context.Transfer((SBool*)&b6d); context.Transfer((SBool*)&b6c); context.Transfer((SBool*)&b75);\n context.TransferTail(tail);\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct CHitLocationDef { unsigned char b[0x7c]; };\nint main(){ CHitLocationDef x; if ((char*)&x.b[0x78]-(char*)x.b != 0x78) { std::printf(\"004585fe_TEST FAIL\\n\"); return 1; } std::printf(\"004585fe_TEST PASS\\n\"); return 0; }\n",
+    "pass_pattern": "004585fe_TEST PASS"
+   }
+  ]
+ }
+}

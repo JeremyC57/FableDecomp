@@ -1,0 +1,237 @@
+{
+  "kind": "CATALOG_PATH_METADATA_REPAIR",
+  "accepted_functions_changed": 0,
+  "source_grades": 0,
+  "compiler_invocations": 0,
+  "catalog_entries_validated": 34643,
+  "before_sha256": "d1a9c44f9ec698fbef5027878736c6609a27206f90fb31a2f333ad660a3d48a6",
+  "after_sha256": "cd88c55c1a123126f180da99070312ec72b4d67fa7aefe406893a9b92f6a2049",
+  "changes": [
+    {
+      "address": "00401356",
+      "changes": {
+        "Source": {
+          "old": "00/40/global_initterm_00401356.cpp",
+          "new": "00/40/Global_InitTerm_00401356.cpp"
+        },
+        "TestSource": {
+          "old": "00/40/global_initterm_00401356_test.cpp",
+          "new": "00/40/Global_InitTerm_00401356_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/40/Global_InitTerm_00401356.cpp",
+          "sha256": "8aa9a543e4d2286012b25a6cfc74171943a9e8403613e22bf7e15357c1c8edf3"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/40/Global_InitTerm_00401356_test.cpp",
+          "sha256": "466ea3121d57e24b9bb66ce2fe4c01485a5f9e7056c0a321ff2a7a47c133cab6"
+        }
+      ]
+    },
+    {
+      "address": "004013de",
+      "changes": {
+        "Source": {
+          "old": "00/40/global_dllonexit_004013de.cpp",
+          "new": "00/40/Global_DllOnExit_004013de.cpp"
+        },
+        "TestSource": {
+          "old": "00/40/global_dllonexit_004013de_test.cpp",
+          "new": "00/40/Global_DllOnExit_004013de_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/40/Global_DllOnExit_004013de.cpp",
+          "sha256": "53d4ebefd35f7a85952b745d612e27fb8faff36ef94b6d3589336f8eaf72cc91"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/40/Global_DllOnExit_004013de_test.cpp",
+          "sha256": "3b279cdec9b20aa5dc0515e6b276441c46f213eec253069fb351e3ab11d22698"
+        }
+      ]
+    },
+    {
+      "address": "00401c00",
+      "changes": {
+        "Source": {
+          "old": "00/40/global_GFHandleSystemInitError_00401c00.cpp",
+          "new": "00/40/Global_GFHandleSystemInitError_00401c00.cpp"
+        },
+        "TestSource": {
+          "old": "00/40/global_GFHandleSystemInitError_00401c00_test.cpp",
+          "new": "00/40/Global_GFHandleSystemInitError_00401c00_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/40/Global_GFHandleSystemInitError_00401c00.cpp",
+          "sha256": "f6aee67523b0965ddbcb68f7157a67f72666640a1f989fe99d5e121b48ece929"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/40/Global_GFHandleSystemInitError_00401c00_test.cpp",
+          "sha256": "ce09200ae5ea71244bd06a0344a59b0930ec1dc4974b1d6c7d26f8ac83b1018d"
+        }
+      ]
+    },
+    {
+      "address": "0040d2a0",
+      "changes": {
+        "Source": {
+          "old": "00/40/CTBaseSingletonCUserProfileManager_Get_0040d2a0.cpp",
+          "new": "00/40/CUserProfileManagerSingleton_Get_0040d2a0.cpp"
+        },
+        "TestSource": {
+          "old": "00/40/CTBaseSingletonCUserProfileManager_Get_0040d2a0_test.cpp",
+          "new": "00/40/CUserProfileManagerSingleton_Get_0040d2a0_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/40/CUserProfileManagerSingleton_Get_0040d2a0.cpp",
+          "sha256": "ba4c30ebd533a4423ae3513aabbc8365191b233f741d02897760527ff1b5032f"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/40/CUserProfileManagerSingleton_Get_0040d2a0_test.cpp",
+          "sha256": "acc67690f38b03bbfd872c27a7a6bb6b53c260b608a4a45529333fa0da5bb749"
+        }
+      ]
+    },
+    {
+      "address": "0098dfd0",
+      "changes": {
+        "Source": {
+          "old": "00/98/CThreadedFile_CThreadedFile_0098dfd0.cpp",
+          "new": "00/98/CThreadedFile_Constructor_0098dfd0.cpp"
+        },
+        "TestSource": {
+          "old": "00/98/CThreadedFile_CThreadedFile_0098dfd0_test.cpp",
+          "new": "00/98/CThreadedFile_Constructor_0098dfd0_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/98/CThreadedFile_Constructor_0098dfd0.cpp",
+          "sha256": "aa735e03c08cf8b39ba004d65945b9e3a2264431f2510b99cdf4e1892de95e28"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/98/CThreadedFile_Constructor_0098dfd0_test.cpp",
+          "sha256": "821171086aa7c260a9f364442596fc89d035ddaac57c4be16288166897a07520"
+        }
+      ]
+    },
+    {
+      "address": "00999230",
+      "changes": {
+        "Source": {
+          "old": "00/99/global_PathExists_00999230.cpp",
+          "new": "00/99/CAFile_PathExists_00999230.cpp"
+        },
+        "TestSource": {
+          "old": "00/99/global_PathExists_00999230_test.cpp",
+          "new": "00/99/CAFile_PathExists_00999230_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/99/CAFile_PathExists_00999230.cpp",
+          "sha256": "e95f67737069fb8c3e4523819aadb1ef41296926b8d2b72fe8d65f1cb7ef34ad"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/99/CAFile_PathExists_00999230_test.cpp",
+          "sha256": "2f538ccdf286b06db2915e11223d0a5cd47147e13b6c5f1cc80c25c0099928aa"
+        }
+      ]
+    },
+    {
+      "address": "0099af10",
+      "changes": {
+        "Source": {
+          "old": "00/99/CCharString_operatorcharconstptr2_0099af10.cpp",
+          "new": "00/99/CWideString_ConversionOperator_0099af10.cpp"
+        },
+        "TestSource": {
+          "old": "00/99/CCharString_operatorcharconstptr2_0099af10_test.cpp",
+          "new": "00/99/CWideString_ConversionOperator_0099af10_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/99/CWideString_ConversionOperator_0099af10.cpp",
+          "sha256": "57a4a02043ae33cc51024eb221859db3658f717f9991e2344a2dfdafcb62d5e2"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/99/CWideString_ConversionOperator_0099af10_test.cpp",
+          "sha256": "d2f6c4567115ba2f97b65344e962d2a83158d37c10e213ba93e3c88913086af8"
+        }
+      ]
+    },
+    {
+      "address": "0099b510",
+      "changes": {
+        "Source": {
+          "old": "00/99/CWideString_destructor_0099b510.cpp",
+          "new": "00/99/CWideString_Destructor_0099b510.cpp"
+        },
+        "TestSource": {
+          "old": "00/99/CWideString_destructor_0099b510_test.cpp",
+          "new": "00/99/CWideString_Destructor_0099b510_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp",
+          "sha256": "8913cec60c148872f039c9df04fd97ad2dfb72b059fa659e94e9f6e4c4e65553"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/99/CWideString_Destructor_0099b510_test.cpp",
+          "sha256": "ed83e27592e73c7b42b6d1145289b3661e4cc7be5f224456a8af8aa6e3d9450a"
+        }
+      ]
+    },
+    {
+      "address": "0099b6b0",
+      "changes": {
+        "Source": {
+          "old": "00/99/CWideString_CWideStringfromLiteral_0099b6b0.cpp",
+          "new": "00/99/CWideString_LiteralConstructor_0099b6b0.cpp"
+        },
+        "TestSource": {
+          "old": "00/99/CWideString_CWideStringfromLiteral_0099b6b0_test.cpp",
+          "new": "00/99/CWideString_LiteralConstructor_0099b6b0_test.cpp"
+        }
+      },
+      "source_unchanged": [
+        {
+          "path": "rebuild/src/compiled/00/99/CWideString_LiteralConstructor_0099b6b0.cpp",
+          "sha256": "6d9189f21657c705759a5bf863648547c3af9d6e4344bfbfc8b43de9e26e3dfc"
+        }
+      ],
+      "test_unchanged": [
+        {
+          "path": "rebuild/tests/00/99/CWideString_LiteralConstructor_0099b6b0_test.cpp",
+          "sha256": "8687e248153101068c642b598baa149d0ee2d24dd2449e43a1e98344abdb86e9"
+        }
+      ]
+    }
+  ],
+  "scope": "Repair nine inherited stale/case-mismatched Source and TestSource paths to existing unique address-matched canonical files. No source, fixture, symbol, oracle bytes or Grade tag changed. All catalog paths now exist; baseline compile/test suite was not rerun."
+}

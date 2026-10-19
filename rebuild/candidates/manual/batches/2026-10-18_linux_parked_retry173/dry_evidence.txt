@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00697e20   RELOCATION_MATCH PASS   SetCameraMode
+00699560   RELOCATION_MATCH PASS   SetEarthquakeAt
+00d3abe0   RELOCATION_MATCH PASS   GetEndSpeech
+00b849f0   RELOCATION_MATCH PASS   RenderType
+00698d10   RELOCATION_MATCH PASS   PushProjectileWeaponMode
+00698f50   RELOCATION_MATCH PASS   PushSpecialCameraMode
+
+WINS: 6
+  00697e20 RELOCATION_MATCH CGameCameraManager::SetCameraMode
+  00699560 RELOCATION_MATCH CGameCameraManager::SetEarthquakeAt
+  00d3abe0 RELOCATION_MATCH CFH_Prisoner::GetEndSpeech
+  00b849f0 RELOCATION_MATCH CEngineSubPrimitiveRenderer::RenderType
+  00698d10 RELOCATION_MATCH CGameCameraManager::PushProjectileWeaponMode
+  00698f50 RELOCATION_MATCH CGameCameraManager::PushSpecialCameraMode

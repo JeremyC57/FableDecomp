@@ -1,0 +1,8 @@
+offset	native_target	symbol
+00000036	01436e14	?g_pShaderRenderManager_01436e14@@3PAUCShaderRenderManager@@A
+0000003b	0098b860	?CreateResource@CShaderRenderManager@@QAE?AUCShaderResourcePointer@@XZ
+00000074	00bfe9bc	??3@YAXPAX@Z
+000000b2	00bfe9bc	??3@YAXPAX@Z
+000000c2	00a5d7c0	?OpenShaderBank@CShaderResource@@QAEXPBUCShaderDataBank@@@Z
+000000d3	00a5d4e0	?SetVertexShaderDeclaration@CShaderResource@@QAEXPBU_D3DVERTEXELEMENT9@@@Z
+000000e4	00a5d4f0	?SetVertexFormat@CShaderResource@@QAEXW4EVertexType@@@Z

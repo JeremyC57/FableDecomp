@@ -1,0 +1,12 @@
+offset	native_target	symbol
+0000000c	012c2fe8	??_7CIsThingConscious@NScript@@6B@
+0000001a	004abe90	??0ScriptThing@NScript@@QAE@ABU01@@Z
+00000026	00f35b10	?SetPredicate@CHobbeBarrel@NScript@@QAEXABUCPredicateBase@2@@Z
+00000033	004aa840	??1ScriptThing@NScript@@QAE@XZ
+00000042	00f35b30	?IsActiveThreadTerminating@CHobbeBarrel@NScript@@QBE_NXZ
+0000005f	00f35b30	?IsActiveThreadTerminating@CHobbeBarrel@NScript@@QBE_NXZ
+0000006a	0122d70e	??_C@_00CNPNBAHC@?$AA@
+00000073	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000008a	0099eae0	??1CCharString@@QAE@XZ
+00000095	00f35b30	?IsActiveThreadTerminating@CHobbeBarrel@NScript@@QBE_NXZ
+000000b0	00f35b30	?IsActiveThreadTerminating@CHobbeBarrel@NScript@@QBE_NXZ

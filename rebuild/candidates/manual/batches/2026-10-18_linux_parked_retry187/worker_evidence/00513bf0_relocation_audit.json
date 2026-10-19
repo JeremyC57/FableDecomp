@@ -1,0 +1,26 @@
+[
+  {
+    "offset": 72,
+    "native_target": "0xbfe9bc",
+    "symbol": "??3@YAXPAX@Z",
+    "demangled": "void __cdecl operator delete(void *)"
+  },
+  {
+    "offset": 99,
+    "native_target": "0x99efb0",
+    "symbol": "??4CCharString@@QAEAAV0@ABV0@@Z",
+    "demangled": "public: class CCharString & __thiscall CCharString::operator=(class CCharString const &)"
+  },
+  {
+    "offset": 111,
+    "native_target": "0x99efb0",
+    "symbol": "??4CCharString@@QAEAAV0@ABV0@@Z",
+    "demangled": "public: class CCharString & __thiscall CCharString::operator=(class CCharString const &)"
+  },
+  {
+    "offset": 159,
+    "native_target": "0x99efb0",
+    "symbol": "??4CCharString@@QAEAAV0@ABV0@@Z",
+    "demangled": "public: class CCharString & __thiscall CCharString::operator=(class CCharString const &)"
+  }
+]

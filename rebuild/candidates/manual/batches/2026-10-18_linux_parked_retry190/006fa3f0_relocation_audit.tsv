@@ -1,0 +1,9 @@
+offset	native_target	symbol
+00000013	006faf20	?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+00000048	006fafe0	?Allocate@EventVector@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+00000062	006fb5c0	?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+0000006e	006fcd90	?PushBack@EventMap@NAnimationEvents@@QAEXABUEventPair@2@@Z
+00000078	00bfeb1c	??_V@YAXPAX@Z
+00000086	00bfeb1c	??_V@YAXPAX@Z
+000000a0	006fd380	?SortEventPairs@NAnimationEvents@@YIXPAUEventPair@1@0UKeyPairCompareLess@1@@Z
+000000c5	006fade0	?resize@EventVector@NAnimationEvents@@QAEXJABUCEvent@2@@Z

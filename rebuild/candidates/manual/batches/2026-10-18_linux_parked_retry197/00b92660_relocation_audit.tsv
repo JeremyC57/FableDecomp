@@ -1,0 +1,6 @@
+offset	native_target	symbol
+00000030	00b91dc0	?GetCellRenderMask@CEngineSceneGrid@@QAEKKK@Z
+00000059	00b919c0	?GetCellBoundingBoxAndDrawDistance@CEngineSceneGrid@@QAE_NAAUC3DBoundingBox@@AAMKK@Z
+00000074	00b4ced0	?ClipBoundingBox@CShadowClipVolume@@QBE_NABUC3DBoundingBox@@AA_N@Z
+00000095	01436e84	?g_pEnginePrimitiveTypeInfo@@3PAUCEnginePrimitiveTypeInfo@@A
+000000fd	00b92660	?RenderCellClippedShadowBuffer@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABUCShadowClipVolume@@_NAAUCEngineSceneRenderStats@@@Z

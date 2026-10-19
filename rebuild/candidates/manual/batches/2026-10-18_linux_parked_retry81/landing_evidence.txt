@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00522530   RELOCATION_MATCH PASS   GetGamePersistentSaveData
+00523860   RELOCATION_MATCH PASS   SetGamePersistentSaveData
+
+WINS: 2
+  00522530 RELOCATION_MATCH CEntityRuntimePersistence::GetGamePersistentSaveData
+  00523860 RELOCATION_MATCH CEntityRuntimePersistence::SetGamePersistentSaveData
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEntityRuntimePersistence_GetGamePersistentSaveData_00522530
+  CEntityRuntimePersistence_SetGamePersistentSaveData_00523860

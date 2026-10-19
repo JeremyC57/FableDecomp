@@ -1,0 +1,12 @@
+addr       parity           behav  name
+009cc530   WARN SHARED_HEADER_AVAILABLE CBankFile
+009cc530   RELOCATION_MATCH PASS   CreateSymbolMap
+00978fd0   RELOCATION_MATCH PASS   GetCoverThingList
+00a63020   RELOCATION_MATCH PASS   CVertexShader
+00a63150   RELOCATION_MATCH PASS   Initialise
+
+WINS: 4
+  009cc530 RELOCATION_MATCH CBankFile::CreateSymbolMap
+  00978fd0 RELOCATION_MATCH CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList
+  00a63020 RELOCATION_MATCH CVertexShader::CVertexShaderConstructorView
+  00a63150 RELOCATION_MATCH CVertexBufferWin32::Initialise

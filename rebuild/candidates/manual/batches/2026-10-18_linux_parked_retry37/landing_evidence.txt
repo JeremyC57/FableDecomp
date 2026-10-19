@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00555390   RELOCATION_MATCH PASS   ~CScrollableList
+005559d0   RELOCATION_MATCH PASS   HideList
+00baba70   RELOCATION_MATCH PASS   CreatePrimitive
+
+WINS: 3
+  00555390 RELOCATION_MATCH NUISystem::CScrollableList::??1CScrollableList
+  005559d0 RELOCATION_MATCH NUISystem::CScrollableList::HideList
+  00baba70 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::CreatePrimitive
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NUISystemCScrollableList_CScrollableList_00555390
+  NUISystemCScrollableList_HideList_005559d0
+  CEnginePrimitiveManagerRepeatedZSprites_CreatePrimitive_00baba70

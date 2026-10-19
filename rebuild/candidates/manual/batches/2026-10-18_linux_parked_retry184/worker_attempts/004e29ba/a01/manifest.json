@@ -1,0 +1,20 @@
+{
+  "address": "004e29ba",
+  "attempt": 1,
+  "sha256": "afacf3ccdcd5814bd8e847c932232010d56d513fa83b7058b44a532e8e90670a",
+  "base_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "extra_flags": [],
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+    "004e29ba",
+    "/workspace/FableDecomp/work/codex-lane/w22/astra242_whole/snapshots/004e29ba/a01/source.cpp",
+    "??4CParticleAttachmentInfoVector"
+  ]
+}

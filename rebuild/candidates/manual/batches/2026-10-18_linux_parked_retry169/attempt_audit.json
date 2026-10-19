@@ -1,0 +1,178 @@
+[
+  {
+    "address": "0053633e",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "0635b54dbaa687168d4c9f12cafcf83ba137da92fdefff227d5bdb8cd940953c",
+    "result": "0053633e CList::ScrollToLastChild RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053633e_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053633e_01.pregrade.json"
+  },
+  {
+    "address": "0053633e",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "3c671d1bf95fdf74a89f84a6ce106c33bf394035d896a4a7c2c3c77bbbadd2ef",
+    "result": "0053633e CList::ScrollToLastChild RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053633e_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053633e_02.pregrade.json"
+  },
+  {
+    "address": "0053664c",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "40a211fdfc8214fd7672d476c6cedbccdff3491212db80b7eba45c20154f8d12",
+    "result": "0053664c CList::ComputeScrollBarZoom DIFFER(178v179) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053664c_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053664c_01.pregrade.json"
+  },
+  {
+    "address": "0053664c",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "30f26f69164da28b141b750ce74e9e56fe44b83021da6b712a41ffa08310292c",
+    "result": "0053664c CList::ComputeScrollBarZoom DIFFER(178v179) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053664c_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053664c_02.pregrade.json"
+  },
+  {
+    "address": "0053664c",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "05a0970af817c70c58ccf08981cbca1da4c4858640683db07c0e4b891451d136",
+    "result": "0053664c CList::ComputeScrollBarZoom DIFFER(239v179) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053664c_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053664c_03.pregrade.json"
+  },
+  {
+    "address": "0053664c",
+    "new_grade": "4",
+    "historical_reserved": "4",
+    "cumulative": "8",
+    "sha256": "aef5f00a4a863278587f4ee993b85d2b0ece17ac1796b1611d958ad976fa9c4d",
+    "result": "0053664c CList::ComputeScrollBarZoom RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053664c_04.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053664c_04.pregrade.json"
+  },
+  {
+    "address": "0053664c",
+    "new_grade": "5",
+    "historical_reserved": "4",
+    "cumulative": "9",
+    "sha256": "f4265fa75bb270f3a6483430c29edfd1c457e93d9678abaf8ec6fcf6d3d720f8",
+    "result": "0053664c CList::ComputeScrollBarZoom RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053664c_05.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053664c_05.pregrade.json"
+  },
+  {
+    "address": "0053b63e",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "37cb0b7c53784c032d5de6f9b084fdff88af51888789929eb905ee60b579aba6",
+    "result": "0053b63e CList::CList DIFFER(236v217) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053b63e_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053b63e_01.pregrade.json"
+  },
+  {
+    "address": "0053b63e",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "134e96b294ca3a21643bcfe293ec1d2383198fe422a8801c98eebea40b84050d",
+    "result": "0053b63e CList::CList RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053b63e_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053b63e_02.pregrade.json"
+  },
+  {
+    "address": "0053b63e",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "1d83922ad71dcd16a32cb4b88d99fccd69944311825302ff8f2a727839ee997a",
+    "result": "0053b63e CList::CList RELOCATION_MATCH flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/0053b63e_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/0053b63e_03.pregrade.json"
+  },
+  {
+    "address": "00bf7f70",
+    "new_grade": "1",
+    "historical_reserved": "4",
+    "cumulative": "5",
+    "sha256": "79c071aa7f63da9b6f3721a877e5f1279ef4bb9747caddc765587858ea89d67a",
+    "result": "00bf7f70 CLandscapeBackgroundTreeNode::?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ DIFFER(202v177) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/00bf7f70_01.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/00bf7f70_01.pregrade.json"
+  },
+  {
+    "address": "00bf7f70",
+    "new_grade": "2",
+    "historical_reserved": "4",
+    "cumulative": "6",
+    "sha256": "f1506141c1c375e8fc46d8ed411ba2d577e76ef75afd535d4f197e03e80ac21a",
+    "result": "00bf7f70 CLandscapeBackgroundTreeNode::?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ DIFFER(171v177) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/00bf7f70_02.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/00bf7f70_02.pregrade.json"
+  },
+  {
+    "address": "00bf7f70",
+    "new_grade": "3",
+    "historical_reserved": "4",
+    "cumulative": "7",
+    "sha256": "61bfa5b07f7125f85cfc2a13c816a325e06b16cbafcd52b04ee80dedfa3fb7af",
+    "result": "00bf7f70 CLandscapeBackgroundTreeNode::?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ DIFFER(230v177) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/00bf7f70_03.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/00bf7f70_03.pregrade.json"
+  },
+  {
+    "address": "00bf7f70",
+    "new_grade": "4",
+    "historical_reserved": "4",
+    "cumulative": "8",
+    "sha256": "a10efccee9d572b4743db3b54bf0acbe26d84e2d7e8e300919cd33c199c480e2",
+    "result": "00bf7f70 CLandscapeBackgroundTreeNode::?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ DIFFER(202v177) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/00bf7f70_04.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/00bf7f70_04.pregrade.json"
+  },
+  {
+    "address": "00bf7f70",
+    "new_grade": "5",
+    "historical_reserved": "4",
+    "cumulative": "9",
+    "sha256": "2494fe3afef22994f72c609a3f1a74ff5f16e2a901c97a38615d1817b3bda5e7",
+    "result": "00bf7f70 CLandscapeBackgroundTreeNode::?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ DIFFER(189v177) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/00bf7f70_05.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/00bf7f70_05.pregrade.json"
+  },
+  {
+    "address": "00bf7f70",
+    "new_grade": "6",
+    "historical_reserved": "4",
+    "cumulative": "10",
+    "sha256": "6545300e9d9df67d9a92be38a15bb6c0db2e226ac721d7340df9320a59aa7989",
+    "result": "00bf7f70 CLandscapeBackgroundTreeNode::?FreeableResourceFreeBlock@CLandscapeBackgroundTreeNode@@EAE_NXZ DIFFER(189v177) flags= []",
+    "effective_flags": "/O2 /Oy /W3",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/snapshots/00bf7f70_06.cpp",
+    "pregrade_record": "/workspace/FableDecomp/work/codex-lane/w22/retry202a_sol/logs/00bf7f70_06.pregrade.json"
+  }
+]

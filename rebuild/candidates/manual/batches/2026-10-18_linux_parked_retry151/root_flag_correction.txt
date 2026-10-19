@@ -1,0 +1,1 @@
+Initial root verification incorrectly remembered /Oa as winningflag. Actual workergrade07 immutable command/stdout records flags=[]; /Oa was an earlier failedflaggrade. Corrected rootpayload without changing source or author counts. Originalfailed rootdry preserved.

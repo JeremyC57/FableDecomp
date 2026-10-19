@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00433fe0   RELOCATION_MATCH PASS   Transfer
+
+WINS: 1
+  00433fe0 RELOCATION_MATCH CEngineDef::Transfer
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineDef_Transfer_00433fe0

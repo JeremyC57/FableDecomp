@@ -1,0 +1,11 @@
+offset	native_target	symbol
+0000000a	012d71d4	??_C@_0BA@FCFLOKI@GuardNotThisWay?$AA@
+00000013	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000001a	012d2548	??_C@_0BC@KANKGFIK@CREATURE_BS_GUARD?$AA@
+00000023	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000005a	01238c8c	??_7CScriptThing@@6B@
+00000077	00bfe9bc	??3@YAXPAX@Z
+00000093	0099a2e0	??1CBaseClass@@UAE@XZ
+0000009c	0099eae0	??1CCharString@@QAE@XZ
+000000a5	0099eae0	??1CCharString@@QAE@XZ
+000000bb	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ

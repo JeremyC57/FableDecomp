@@ -1,0 +1,20 @@
+addr       parity           behav  name
+008a6a20   RELOCATION_MATCH PASS   ResetSeatName
+008a77f0   RELOCATION_MATCH PASS   ResetTargetingDistanceOffset
+008a7980   RELOCATION_MATCH PASS   EntityStopFollowing
+008a7e00   RELOCATION_MATCH PASS   GetRandomThingWithScriptName
+008a7f60   RELOCATION_MATCH PASS   ForceShipsVisible
+
+WINS: 5
+  008a6a20 RELOCATION_MATCH CGameScriptInterface::ResetSeatName
+  008a77f0 RELOCATION_MATCH CGameScriptInterface::ResetTargetingDistanceOffset
+  008a7980 RELOCATION_MATCH CGameScriptInterface::EntityStopFollowing
+  008a7e00 RELOCATION_MATCH CGameScriptInterface::GetRandomThingWithScriptName
+  008a7f60 RELOCATION_MATCH CGameScriptInterface::ForceShipsVisible
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_ResetSeatName_008a6a20
+  CGameScriptInterface_ResetTargetingDistanceOffset_008a77f0
+  CGameScriptInterface_EntityStopFollowing_008a7980
+  CGameScriptInterface_GetRandomThingWithScriptName_008a7e00
+  CGameScriptInterface_ForceShipsVisible_008a7f60

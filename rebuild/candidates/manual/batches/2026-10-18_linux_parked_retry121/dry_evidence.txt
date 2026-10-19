@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008b95a0   RELOCATION_MATCH PASS   PerformAction
+008b9c90   RELOCATION_MATCH PASS   Initialise
+
+WINS: 2
+  008b95a0 RELOCATION_MATCH CCreatureAction_CastWillTurncoatSpell::PerformAction
+  008b9c90 RELOCATION_MATCH CCreatureAction_CastWillLightningSpell::Initialise

@@ -1,0 +1,1 @@
+20 immutable Sol source snapshots and full pregrade commands verified; 4 UNCERTAIN reservations per row retained. Counts2/2/5/5/6. Explicit-leaf same-source verifications separately recorded. No root source grades.

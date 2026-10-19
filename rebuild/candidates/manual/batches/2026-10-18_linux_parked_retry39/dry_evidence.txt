@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00547160   RELOCATION_MATCH PASS   Initialise
+005500b0   RELOCATION_MATCH PASS   GetDataFromDef
+0095a6c0   RELOCATION_MATCH PASS   GotoCirclePoint
+
+WINS: 3
+  00547160 RELOCATION_MATCH NUISystem::CScrollingComponent::Initialise@CScrollingComponentInitialiseView
+  005500b0 RELOCATION_MATCH NUISystem::CMesh::GetDataFromDef
+  0095a6c0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::GotoCirclePoint

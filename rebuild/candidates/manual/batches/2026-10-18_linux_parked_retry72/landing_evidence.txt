@@ -1,0 +1,12 @@
+addr       parity           behav  name
+009863e0   RELOCATION_MATCH PASS   CommentAboutHeroIsRunnable
+00458aa7   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00458aa7   RELOCATION_MATCH PASS   CHeroCombatDef
+
+WINS: 2
+  009863e0 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::CommentAboutHeroIsRunnable
+  00458aa7 RELOCATION_MATCH CHeroCombatDef::??0CHeroCombatDef
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupOpinionReactionRoot_CommentAboutHeroIsRunnable_009863e0
+  CHeroCombatDef_CHeroCombatDef_00458aa7

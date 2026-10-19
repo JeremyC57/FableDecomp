@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a92740   RELOCATION_MATCH PASS   ConvertToVBFormatStatic
+
+WINS: 1
+  00a92740 RELOCATION_MATCH C3DPrimitive2::ConvertToVBFormatStatic
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DPrimitive2_ConvertToVBFormatStatic_00a92740

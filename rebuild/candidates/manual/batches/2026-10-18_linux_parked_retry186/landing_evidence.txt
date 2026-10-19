@@ -1,0 +1,14 @@
+addr       parity           behav  name
+004573fd   RELOCATION_MATCH PASS   ~CSpecialAbilitiesBerserkDef
+00457ca0   RELOCATION_MATCH PASS   ~CSpecialAbilitiesLightningSpellDef
+00bcc5f0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerWeaponTrails
+
+WINS: 3
+  004573fd RELOCATION_MATCH CSpecialAbilitiesBerserkDef::??1CSpecialAbilitiesBerserkDef@@
+  00457ca0 RELOCATION_MATCH CSpecialAbilitiesLightningSpellDef::??1CSpecialAbilitiesLightningSpellDef@@
+  00bcc5f0 RELOCATION_MATCH CEnginePrimitiveManagerWeaponTrails::??0CEnginePrimitiveManagerWeaponTrails@@
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CSpecialAbilitiesBerserkDef_CSpecialAbilitiesBerserkDef_004573fd
+  CSpecialAbilitiesLightningSpellDef_CSpecialAbilitiesLightningSpellDef_00457ca0
+  CEnginePrimitiveManagerWeaponTrails_CEnginePrimitiveManagerWeaponTrails_00bcc5f0

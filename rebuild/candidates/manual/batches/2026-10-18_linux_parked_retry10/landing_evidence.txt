@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0092bcb0   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 1
+  0092bcb0 RELOCATION_MATCH CAIStateGroup_AvoidRegionExit::IsRunnable
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupAvoidRegionExit_IsRunnable_0092bcb0

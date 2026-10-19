@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00691c50   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 1
+  00691c50 RELOCATION_MATCH CInputProcessCreatureMovementWatchForControlAngleChange::ProcessInput

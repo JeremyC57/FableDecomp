@@ -1,0 +1,5 @@
+offset	native_target	symbol
+000000ac	00bfb750	?IsObjectOffsetsInRange@@YI_NPAPAUC4DVector@@PAXJ@Z
+000000d0	00bf9bc0	?SetupPrimitiveDesc@CLocalDetailPrimitiveRepeatedMesh@@QAE?AUCAddMeshDesc@@XZ
+000000db	01436e80	?g_PrimitiveRenderer@@3PAUCLocalDetailRenderer@@A
+000000e4	00b31fe0	?UpdateRepeatedStaticMesh@CLocalDetailRenderer@@QAEXAAUCEnginePrimitiveHandle@@ABUCAddMeshDesc@@@Z

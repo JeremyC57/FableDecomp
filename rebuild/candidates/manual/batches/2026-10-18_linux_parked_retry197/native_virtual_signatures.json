@@ -1,0 +1,2807 @@
+[
+  {
+    "address": "00b91f50",
+    "table": "CIVCountedPointeeBase",
+    "slot": 0,
+    "target": "0x4664e0",
+    "compiled": "??_ECIVCountedPointeeBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CIVCountedPointeeBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CIVCountedPointeeBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CIVCountedPointeeBase",
+    "slot": 0,
+    "target": "0x4664e0",
+    "compiled": "??_ECIVCountedPointeeBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CIVCountedPointeeBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CIVCountedPointeeBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CIVCountedPointeeBase",
+    "slot": 0,
+    "target": "0x4664e0",
+    "compiled": "??_ECIVCountedPointeeBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CIVCountedPointeeBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CIVCountedPointeeBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CIVCountedPointeeBase",
+    "slot": 0,
+    "target": "0x4664e0",
+    "compiled": "??_ECIVCountedPointeeBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CIVCountedPointeeBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CIVCountedPointeeBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CIVCountedPointeeBase",
+    "slot": 0,
+    "target": "0x4664e0",
+    "compiled": "??_ECIVCountedPointeeBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CIVCountedPointeeBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CIVCountedPointeeBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 0,
+    "target": "0xb8ffe0",
+    "compiled": "??_ECEnginePersistentPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePersistentPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ffc0",
+    "compiled": "?NotifyReleased@CEnginePersistentPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePersistentPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEnginePersistentPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 4,
+    "target": "0xb8ffd0",
+    "compiled": "?WasRendered@CEnginePersistentPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEnginePersistentPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEnginePersistentPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 0,
+    "target": "0xb8ffe0",
+    "compiled": "??_ECEnginePersistentPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePersistentPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ffc0",
+    "compiled": "?NotifyReleased@CEnginePersistentPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePersistentPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEnginePersistentPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 4,
+    "target": "0xb8ffd0",
+    "compiled": "?WasRendered@CEnginePersistentPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEnginePersistentPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEnginePersistentPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 0,
+    "target": "0xb8ffe0",
+    "compiled": "??_ECEnginePersistentPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePersistentPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ffc0",
+    "compiled": "?NotifyReleased@CEnginePersistentPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePersistentPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEnginePersistentPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 4,
+    "target": "0xb8ffd0",
+    "compiled": "?WasRendered@CEnginePersistentPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEnginePersistentPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEnginePersistentPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 0,
+    "target": "0xb8ffe0",
+    "compiled": "??_ECEnginePersistentPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePersistentPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ffc0",
+    "compiled": "?NotifyReleased@CEnginePersistentPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePersistentPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEnginePersistentPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 4,
+    "target": "0xb8ffd0",
+    "compiled": "?WasRendered@CEnginePersistentPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEnginePersistentPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEnginePersistentPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 0,
+    "target": "0xb8ffe0",
+    "compiled": "??_ECEnginePersistentPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePersistentPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ffc0",
+    "compiled": "?NotifyReleased@CEnginePersistentPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePersistentPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEnginePersistentPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePersistentPrimitiveBase",
+    "slot": 4,
+    "target": "0xb8ffd0",
+    "compiled": "?WasRendered@CEnginePersistentPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEnginePersistentPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEnginePersistentPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 0,
+    "target": "0xb90000",
+    "compiled": "??_ECEngineInternalPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEngineInternalPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 2,
+    "target": "0xb3aa90",
+    "compiled": "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::CollectStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+    "original_symbols": [
+      "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ff70",
+    "compiled": "?NotifyReleased@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 4,
+    "target": "0xb3aaa0",
+    "compiled": "?WasRendered@CEngineInternalPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 5,
+    "target": "0xb8fd80",
+    "compiled": "?Update@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::Update(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?Update@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 6,
+    "target": "0xb8fd90",
+    "compiled": "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual unsigned long __thiscall CEngineInternalPrimitiveBase::AddChildPrimitive(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 7,
+    "target": "0xb8fdb0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 8,
+    "target": "0xb8fda0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 9,
+    "target": "0xb8fdc0",
+    "compiled": "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::GetChildPrimitiveHandle(unsigned long, struct CEnginePrimitiveHandle &)",
+    "original_symbols": [
+      "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 10,
+    "target": "0xb8fdd0",
+    "compiled": "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 11,
+    "target": "0xb8fde0",
+    "compiled": "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearAllChildPrimitives(void)",
+    "original_symbols": [
+      "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 12,
+    "target": "0xb3a980",
+    "compiled": "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEnginePersistentPrimitiveBase@@K@Z",
+    "signature": "public: virtual struct CEnginePersistentPrimitiveBase * __thiscall CEngineInternalPrimitiveBase::GetChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 13,
+    "target": "0xb3a990",
+    "compiled": "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AUCEngineFadeDistance@@XZ",
+    "signature": "public: virtual struct CEngineFadeDistance __thiscall CEngineInternalPrimitiveBase::GetFadeDistance(void) const",
+    "original_symbols": [
+      "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 14,
+    "target": "0xb3a9b0",
+    "compiled": "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::PostRender(void)",
+    "original_symbols": [
+      "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 15,
+    "target": "0xb3a9c0",
+    "compiled": "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAUC3DVector@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetWorldPosition(struct C3DVector &)",
+    "original_symbols": [
+      "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAVC3DVector@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 16,
+    "target": "0xb3a9d0",
+    "compiled": "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxTransform(struct CMatrix3x4 &)",
+    "original_symbols": [
+      "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 17,
+    "target": "0xb3a9e0",
+    "compiled": "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingBox@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxWorldSpace(struct C3DBoundingBox &)",
+    "original_symbols": [
+      "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 18,
+    "target": "0xb3a9f0",
+    "compiled": "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingSphere@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereWorldSpace(struct C3DBoundingSphere &)",
+    "original_symbols": [
+      "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingSphere@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 19,
+    "target": "0xb3aa00",
+    "compiled": "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereRadiusWorldSpace(float &)",
+    "original_symbols": [
+      "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 20,
+    "target": "0xb3aa10",
+    "compiled": "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABUCEngineCamera@@_N@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::IsInsideFrustum(struct CEngineCamera const &, bool)",
+    "original_symbols": [
+      "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 21,
+    "target": "0xb3aa20",
+    "compiled": "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetObjectTransform(struct CMatrix3x4 &) const",
+    "original_symbols": [
+      "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 22,
+    "target": "0xb3aa30",
+    "compiled": "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::SetObjectTransform(struct CMatrix3x4 const &)",
+    "original_symbols": [
+      "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 23,
+    "target": "0xb3aa40",
+    "compiled": "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveAnimation@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetAnimation(struct CEnginePrimitiveAnimation const &)",
+    "original_symbols": [
+      "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 24,
+    "target": "0xb3aa50",
+    "compiled": "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitivePosition@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetPosition(struct CEnginePrimitivePosition const &)",
+    "original_symbols": [
+      "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 25,
+    "target": "0xb3aa60",
+    "compiled": "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> const &)",
+    "original_symbols": [
+      "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 26,
+    "target": "0xb3aa70",
+    "compiled": "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> &) const",
+    "original_symbols": [
+      "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 27,
+    "target": "0xb3aa80",
+    "compiled": "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEngineInternalPrimitiveOcclusionBase@@XZ",
+    "signature": "public: virtual struct CEngineInternalPrimitiveOcclusionBase * __thiscall CEngineInternalPrimitiveBase::GetAsOcclusionPrimitive(void)",
+    "original_symbols": [
+      "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 0,
+    "target": "0xb90000",
+    "compiled": "??_ECEngineInternalPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEngineInternalPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 2,
+    "target": "0xb3aa90",
+    "compiled": "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::CollectStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+    "original_symbols": [
+      "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ff70",
+    "compiled": "?NotifyReleased@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 4,
+    "target": "0xb3aaa0",
+    "compiled": "?WasRendered@CEngineInternalPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 5,
+    "target": "0xb8fd80",
+    "compiled": "?Update@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::Update(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?Update@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 6,
+    "target": "0xb8fd90",
+    "compiled": "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual unsigned long __thiscall CEngineInternalPrimitiveBase::AddChildPrimitive(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 7,
+    "target": "0xb8fdb0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 8,
+    "target": "0xb8fda0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 9,
+    "target": "0xb8fdc0",
+    "compiled": "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::GetChildPrimitiveHandle(unsigned long, struct CEnginePrimitiveHandle &)",
+    "original_symbols": [
+      "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 10,
+    "target": "0xb8fdd0",
+    "compiled": "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 11,
+    "target": "0xb8fde0",
+    "compiled": "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearAllChildPrimitives(void)",
+    "original_symbols": [
+      "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 12,
+    "target": "0xb3a980",
+    "compiled": "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEnginePersistentPrimitiveBase@@K@Z",
+    "signature": "public: virtual struct CEnginePersistentPrimitiveBase * __thiscall CEngineInternalPrimitiveBase::GetChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 13,
+    "target": "0xb3a990",
+    "compiled": "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AUCEngineFadeDistance@@XZ",
+    "signature": "public: virtual struct CEngineFadeDistance __thiscall CEngineInternalPrimitiveBase::GetFadeDistance(void) const",
+    "original_symbols": [
+      "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 14,
+    "target": "0xb3a9b0",
+    "compiled": "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::PostRender(void)",
+    "original_symbols": [
+      "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 15,
+    "target": "0xb3a9c0",
+    "compiled": "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAUC3DVector@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetWorldPosition(struct C3DVector &)",
+    "original_symbols": [
+      "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAVC3DVector@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 16,
+    "target": "0xb3a9d0",
+    "compiled": "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxTransform(struct CMatrix3x4 &)",
+    "original_symbols": [
+      "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 17,
+    "target": "0xb3a9e0",
+    "compiled": "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingBox@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxWorldSpace(struct C3DBoundingBox &)",
+    "original_symbols": [
+      "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 18,
+    "target": "0xb3a9f0",
+    "compiled": "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingSphere@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereWorldSpace(struct C3DBoundingSphere &)",
+    "original_symbols": [
+      "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingSphere@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 19,
+    "target": "0xb3aa00",
+    "compiled": "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereRadiusWorldSpace(float &)",
+    "original_symbols": [
+      "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 20,
+    "target": "0xb3aa10",
+    "compiled": "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABUCEngineCamera@@_N@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::IsInsideFrustum(struct CEngineCamera const &, bool)",
+    "original_symbols": [
+      "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 21,
+    "target": "0xb3aa20",
+    "compiled": "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetObjectTransform(struct CMatrix3x4 &) const",
+    "original_symbols": [
+      "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 22,
+    "target": "0xb3aa30",
+    "compiled": "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::SetObjectTransform(struct CMatrix3x4 const &)",
+    "original_symbols": [
+      "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 23,
+    "target": "0xb3aa40",
+    "compiled": "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveAnimation@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetAnimation(struct CEnginePrimitiveAnimation const &)",
+    "original_symbols": [
+      "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 24,
+    "target": "0xb3aa50",
+    "compiled": "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitivePosition@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetPosition(struct CEnginePrimitivePosition const &)",
+    "original_symbols": [
+      "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 25,
+    "target": "0xb3aa60",
+    "compiled": "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> const &)",
+    "original_symbols": [
+      "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 26,
+    "target": "0xb3aa70",
+    "compiled": "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> &) const",
+    "original_symbols": [
+      "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 27,
+    "target": "0xb3aa80",
+    "compiled": "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEngineInternalPrimitiveOcclusionBase@@XZ",
+    "signature": "public: virtual struct CEngineInternalPrimitiveOcclusionBase * __thiscall CEngineInternalPrimitiveBase::GetAsOcclusionPrimitive(void)",
+    "original_symbols": [
+      "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 0,
+    "target": "0xb90000",
+    "compiled": "??_ECEngineInternalPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEngineInternalPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 2,
+    "target": "0xb3aa90",
+    "compiled": "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::CollectStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+    "original_symbols": [
+      "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ff70",
+    "compiled": "?NotifyReleased@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 4,
+    "target": "0xb3aaa0",
+    "compiled": "?WasRendered@CEngineInternalPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 5,
+    "target": "0xb8fd80",
+    "compiled": "?Update@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::Update(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?Update@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 6,
+    "target": "0xb8fd90",
+    "compiled": "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual unsigned long __thiscall CEngineInternalPrimitiveBase::AddChildPrimitive(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 7,
+    "target": "0xb8fdb0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 8,
+    "target": "0xb8fda0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 9,
+    "target": "0xb8fdc0",
+    "compiled": "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::GetChildPrimitiveHandle(unsigned long, struct CEnginePrimitiveHandle &)",
+    "original_symbols": [
+      "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 10,
+    "target": "0xb8fdd0",
+    "compiled": "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 11,
+    "target": "0xb8fde0",
+    "compiled": "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearAllChildPrimitives(void)",
+    "original_symbols": [
+      "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 12,
+    "target": "0xb3a980",
+    "compiled": "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEnginePersistentPrimitiveBase@@K@Z",
+    "signature": "public: virtual struct CEnginePersistentPrimitiveBase * __thiscall CEngineInternalPrimitiveBase::GetChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 13,
+    "target": "0xb3a990",
+    "compiled": "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AUCEngineFadeDistance@@XZ",
+    "signature": "public: virtual struct CEngineFadeDistance __thiscall CEngineInternalPrimitiveBase::GetFadeDistance(void) const",
+    "original_symbols": [
+      "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 14,
+    "target": "0xb3a9b0",
+    "compiled": "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::PostRender(void)",
+    "original_symbols": [
+      "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 15,
+    "target": "0xb3a9c0",
+    "compiled": "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAUC3DVector@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetWorldPosition(struct C3DVector &)",
+    "original_symbols": [
+      "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAVC3DVector@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 16,
+    "target": "0xb3a9d0",
+    "compiled": "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxTransform(struct CMatrix3x4 &)",
+    "original_symbols": [
+      "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 17,
+    "target": "0xb3a9e0",
+    "compiled": "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingBox@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxWorldSpace(struct C3DBoundingBox &)",
+    "original_symbols": [
+      "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 18,
+    "target": "0xb3a9f0",
+    "compiled": "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingSphere@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereWorldSpace(struct C3DBoundingSphere &)",
+    "original_symbols": [
+      "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingSphere@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 19,
+    "target": "0xb3aa00",
+    "compiled": "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereRadiusWorldSpace(float &)",
+    "original_symbols": [
+      "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 20,
+    "target": "0xb3aa10",
+    "compiled": "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABUCEngineCamera@@_N@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::IsInsideFrustum(struct CEngineCamera const &, bool)",
+    "original_symbols": [
+      "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 21,
+    "target": "0xb3aa20",
+    "compiled": "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetObjectTransform(struct CMatrix3x4 &) const",
+    "original_symbols": [
+      "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 22,
+    "target": "0xb3aa30",
+    "compiled": "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::SetObjectTransform(struct CMatrix3x4 const &)",
+    "original_symbols": [
+      "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 23,
+    "target": "0xb3aa40",
+    "compiled": "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveAnimation@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetAnimation(struct CEnginePrimitiveAnimation const &)",
+    "original_symbols": [
+      "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 24,
+    "target": "0xb3aa50",
+    "compiled": "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitivePosition@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetPosition(struct CEnginePrimitivePosition const &)",
+    "original_symbols": [
+      "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 25,
+    "target": "0xb3aa60",
+    "compiled": "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> const &)",
+    "original_symbols": [
+      "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 26,
+    "target": "0xb3aa70",
+    "compiled": "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> &) const",
+    "original_symbols": [
+      "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 27,
+    "target": "0xb3aa80",
+    "compiled": "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEngineInternalPrimitiveOcclusionBase@@XZ",
+    "signature": "public: virtual struct CEngineInternalPrimitiveOcclusionBase * __thiscall CEngineInternalPrimitiveBase::GetAsOcclusionPrimitive(void)",
+    "original_symbols": [
+      "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 0,
+    "target": "0xb90000",
+    "compiled": "??_ECEngineInternalPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEngineInternalPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 2,
+    "target": "0xb3aa90",
+    "compiled": "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::CollectStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+    "original_symbols": [
+      "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ff70",
+    "compiled": "?NotifyReleased@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 4,
+    "target": "0xb3aaa0",
+    "compiled": "?WasRendered@CEngineInternalPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 5,
+    "target": "0xb8fd80",
+    "compiled": "?Update@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::Update(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?Update@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 6,
+    "target": "0xb8fd90",
+    "compiled": "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual unsigned long __thiscall CEngineInternalPrimitiveBase::AddChildPrimitive(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 7,
+    "target": "0xb8fdb0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 8,
+    "target": "0xb8fda0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 9,
+    "target": "0xb8fdc0",
+    "compiled": "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::GetChildPrimitiveHandle(unsigned long, struct CEnginePrimitiveHandle &)",
+    "original_symbols": [
+      "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 10,
+    "target": "0xb8fdd0",
+    "compiled": "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 11,
+    "target": "0xb8fde0",
+    "compiled": "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearAllChildPrimitives(void)",
+    "original_symbols": [
+      "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 12,
+    "target": "0xb3a980",
+    "compiled": "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEnginePersistentPrimitiveBase@@K@Z",
+    "signature": "public: virtual struct CEnginePersistentPrimitiveBase * __thiscall CEngineInternalPrimitiveBase::GetChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 13,
+    "target": "0xb3a990",
+    "compiled": "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AUCEngineFadeDistance@@XZ",
+    "signature": "public: virtual struct CEngineFadeDistance __thiscall CEngineInternalPrimitiveBase::GetFadeDistance(void) const",
+    "original_symbols": [
+      "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 14,
+    "target": "0xb3a9b0",
+    "compiled": "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::PostRender(void)",
+    "original_symbols": [
+      "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 15,
+    "target": "0xb3a9c0",
+    "compiled": "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAUC3DVector@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetWorldPosition(struct C3DVector &)",
+    "original_symbols": [
+      "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAVC3DVector@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 16,
+    "target": "0xb3a9d0",
+    "compiled": "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxTransform(struct CMatrix3x4 &)",
+    "original_symbols": [
+      "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 17,
+    "target": "0xb3a9e0",
+    "compiled": "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingBox@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxWorldSpace(struct C3DBoundingBox &)",
+    "original_symbols": [
+      "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 18,
+    "target": "0xb3a9f0",
+    "compiled": "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingSphere@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereWorldSpace(struct C3DBoundingSphere &)",
+    "original_symbols": [
+      "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingSphere@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 19,
+    "target": "0xb3aa00",
+    "compiled": "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereRadiusWorldSpace(float &)",
+    "original_symbols": [
+      "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 20,
+    "target": "0xb3aa10",
+    "compiled": "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABUCEngineCamera@@_N@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::IsInsideFrustum(struct CEngineCamera const &, bool)",
+    "original_symbols": [
+      "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 21,
+    "target": "0xb3aa20",
+    "compiled": "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetObjectTransform(struct CMatrix3x4 &) const",
+    "original_symbols": [
+      "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 22,
+    "target": "0xb3aa30",
+    "compiled": "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::SetObjectTransform(struct CMatrix3x4 const &)",
+    "original_symbols": [
+      "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 23,
+    "target": "0xb3aa40",
+    "compiled": "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveAnimation@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetAnimation(struct CEnginePrimitiveAnimation const &)",
+    "original_symbols": [
+      "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 24,
+    "target": "0xb3aa50",
+    "compiled": "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitivePosition@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetPosition(struct CEnginePrimitivePosition const &)",
+    "original_symbols": [
+      "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 25,
+    "target": "0xb3aa60",
+    "compiled": "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> const &)",
+    "original_symbols": [
+      "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 26,
+    "target": "0xb3aa70",
+    "compiled": "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> &) const",
+    "original_symbols": [
+      "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 27,
+    "target": "0xb3aa80",
+    "compiled": "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEngineInternalPrimitiveOcclusionBase@@XZ",
+    "signature": "public: virtual struct CEngineInternalPrimitiveOcclusionBase * __thiscall CEngineInternalPrimitiveBase::GetAsOcclusionPrimitive(void)",
+    "original_symbols": [
+      "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 0,
+    "target": "0xb90000",
+    "compiled": "??_ECEngineInternalPrimitiveBase@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEngineInternalPrimitiveBase::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 1,
+    "target": "0x42d930",
+    "compiled": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "signature": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "original_symbols": [
+      "?Delete@CIVCountedPointeeBase@@UBEXXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 2,
+    "target": "0xb3aa90",
+    "compiled": "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::CollectStats(class std::map<unsigned long, unsigned long, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, unsigned long>>> &, enum EEnginePrimitiveStatIndex, unsigned long) const",
+    "original_symbols": [
+      "?CollectStats@CEngineInternalPrimitiveBase@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 3,
+    "target": "0xb8ff70",
+    "compiled": "?NotifyReleased@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::NotifyReleased(struct CEnginePrimitiveHandle const &)",
+    "original_symbols": [
+      "?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 4,
+    "target": "0xb3aaa0",
+    "compiled": "?WasRendered@CEngineInternalPrimitiveBase@@UBE_NXZ",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::WasRendered(void) const",
+    "original_symbols": [
+      "?WasRendered@CEngineInternalPrimitiveBase@@MBE_NXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 5,
+    "target": "0xb8fd80",
+    "compiled": "?Update@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::Update(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?Update@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 6,
+    "target": "0xb8fd90",
+    "compiled": "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual unsigned long __thiscall CEngineInternalPrimitiveBase::AddChildPrimitive(struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?AddChildPrimitive@CEngineInternalPrimitiveBase@@UAEKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 7,
+    "target": "0xb8fdb0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 8,
+    "target": "0xb8fda0",
+    "compiled": "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@ABUCEnginePrimitive@@K@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetChildPrimitive(unsigned long, struct CEnginePrimitiveHandle &, struct CEnginePrimitive const &, unsigned long)",
+    "original_symbols": [
+      "?SetChildPrimitive@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 9,
+    "target": "0xb8fdc0",
+    "compiled": "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAUCEnginePrimitiveHandle@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::GetChildPrimitiveHandle(unsigned long, struct CEnginePrimitiveHandle &)",
+    "original_symbols": [
+      "?GetChildPrimitiveHandle@CEngineInternalPrimitiveBase@@UAEXKAAVCEnginePrimitiveHandle@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 10,
+    "target": "0xb8fdd0",
+    "compiled": "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?ClearChildPrimitive@CEngineInternalPrimitiveBase@@UAEXK@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 11,
+    "target": "0xb8fde0",
+    "compiled": "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::ClearAllChildPrimitives(void)",
+    "original_symbols": [
+      "?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 12,
+    "target": "0xb3a980",
+    "compiled": "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEnginePersistentPrimitiveBase@@K@Z",
+    "signature": "public: virtual struct CEnginePersistentPrimitiveBase * __thiscall CEngineInternalPrimitiveBase::GetChildPrimitive(unsigned long)",
+    "original_symbols": [
+      "?GetChildPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEnginePersistentPrimitiveBase@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 13,
+    "target": "0xb3a990",
+    "compiled": "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AUCEngineFadeDistance@@XZ",
+    "signature": "public: virtual struct CEngineFadeDistance __thiscall CEngineInternalPrimitiveBase::GetFadeDistance(void) const",
+    "original_symbols": [
+      "?GetFadeDistance@CEngineInternalPrimitiveBase@@UBE?AVCEngineFadeDistance@@XZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 14,
+    "target": "0xb3a9b0",
+    "compiled": "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::PostRender(void)",
+    "original_symbols": [
+      "?PostRender@CEngineInternalPrimitiveBase@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 15,
+    "target": "0xb3a9c0",
+    "compiled": "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAUC3DVector@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetWorldPosition(struct C3DVector &)",
+    "original_symbols": [
+      "?GetWorldPosition@CEngineInternalPrimitiveBase@@UAE_NAAVC3DVector@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 16,
+    "target": "0xb3a9d0",
+    "compiled": "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxTransform(struct CMatrix3x4 &)",
+    "original_symbols": [
+      "?GetBoundingBoxTransform@CEngineInternalPrimitiveBase@@UAE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 17,
+    "target": "0xb3a9e0",
+    "compiled": "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingBox@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingBoxWorldSpace(struct C3DBoundingBox &)",
+    "original_symbols": [
+      "?GetBoundingBoxWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingBox@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 18,
+    "target": "0xb3a9f0",
+    "compiled": "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAUC3DBoundingSphere@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereWorldSpace(struct C3DBoundingSphere &)",
+    "original_symbols": [
+      "?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAVC3DBoundingSphere@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 19,
+    "target": "0xb3aa00",
+    "compiled": "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetBoundingSphereRadiusWorldSpace(float &)",
+    "original_symbols": [
+      "?GetBoundingSphereRadiusWorldSpace@CEngineInternalPrimitiveBase@@UAE_NAAM@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 20,
+    "target": "0xb3aa10",
+    "compiled": "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABUCEngineCamera@@_N@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::IsInsideFrustum(struct CEngineCamera const &, bool)",
+    "original_symbols": [
+      "?IsInsideFrustum@CEngineInternalPrimitiveBase@@UAE_NABVCEngineCamera@@_N@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 21,
+    "target": "0xb3aa20",
+    "compiled": "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetObjectTransform(struct CMatrix3x4 &) const",
+    "original_symbols": [
+      "?GetObjectTransform@CEngineInternalPrimitiveBase@@UBE_NAAVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 22,
+    "target": "0xb3aa30",
+    "compiled": "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABUCMatrix3x4@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::SetObjectTransform(struct CMatrix3x4 const &)",
+    "original_symbols": [
+      "?SetObjectTransform@CEngineInternalPrimitiveBase@@UAE_NABVCMatrix3x4@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 23,
+    "target": "0xb3aa40",
+    "compiled": "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitiveAnimation@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetAnimation(struct CEnginePrimitiveAnimation const &)",
+    "original_symbols": [
+      "?SetAnimation@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitiveAnimation@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 24,
+    "target": "0xb3aa50",
+    "compiled": "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABUCEnginePrimitivePosition@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetPosition(struct CEnginePrimitivePosition const &)",
+    "original_symbols": [
+      "?SetPosition@CEngineInternalPrimitiveBase@@UAEXABVCEnginePrimitivePosition@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 25,
+    "target": "0xb3aa60",
+    "compiled": "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual void __thiscall CEngineInternalPrimitiveBase::SetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> const &)",
+    "original_symbols": [
+      "?SetMeshEffect@CEngineInternalPrimitiveBase@@UAEXABV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 26,
+    "target": "0xb3aa70",
+    "compiled": "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAU?$CIVCountedPointer@UCEngineMeshEffect@@@@@Z",
+    "signature": "public: virtual bool __thiscall CEngineInternalPrimitiveBase::GetMeshEffect(struct CIVCountedPointer<struct CEngineMeshEffect> &) const",
+    "original_symbols": [
+      "?GetMeshEffect@CEngineInternalPrimitiveBase@@UBE_NAAV?$CIVCountedPointer@VCEngineMeshEffect@@@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEngineInternalPrimitiveBase",
+    "slot": 27,
+    "target": "0xb3aa80",
+    "compiled": "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAUCEngineInternalPrimitiveOcclusionBase@@XZ",
+    "signature": "public: virtual struct CEngineInternalPrimitiveOcclusionBase * __thiscall CEngineInternalPrimitiveBase::GetAsOcclusionPrimitive(void)",
+    "original_symbols": [
+      "?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CBaseClass",
+    "slot": 0,
+    "target": "0x4371f0",
+    "compiled": "??_ECBaseClass@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CBaseClass",
+    "slot": 0,
+    "target": "0x4371f0",
+    "compiled": "??_ECBaseClass@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CBaseClass",
+    "slot": 0,
+    "target": "0x4371f0",
+    "compiled": "??_ECBaseClass@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CBaseClass",
+    "slot": 0,
+    "target": "0x4371f0",
+    "compiled": "??_ECBaseClass@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CBaseClass",
+    "slot": 0,
+    "target": "0x4371f0",
+    "compiled": "??_ECBaseClass@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CBaseClassNonCopyable",
+    "slot": 0,
+    "target": "0x99a470",
+    "compiled": "??_ECBaseClassNonCopyable@@MAEPAXI@Z",
+    "signature": "protected: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CBaseClassNonCopyable",
+    "slot": 0,
+    "target": "0x99a470",
+    "compiled": "??_ECBaseClassNonCopyable@@MAEPAXI@Z",
+    "signature": "protected: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CBaseClassNonCopyable",
+    "slot": 0,
+    "target": "0x99a470",
+    "compiled": "??_ECBaseClassNonCopyable@@MAEPAXI@Z",
+    "signature": "protected: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CBaseClassNonCopyable",
+    "slot": 0,
+    "target": "0x99a470",
+    "compiled": "??_ECBaseClassNonCopyable@@MAEPAXI@Z",
+    "signature": "protected: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CBaseClassNonCopyable",
+    "slot": 0,
+    "target": "0x99a470",
+    "compiled": "??_ECBaseClassNonCopyable@@MAEPAXI@Z",
+    "signature": "protected: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveRenderUtil",
+    "slot": 0,
+    "target": "0xb8b600",
+    "compiled": "??_ECEnginePrimitiveRenderUtil@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveRenderUtil::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveRenderUtil",
+    "slot": 0,
+    "target": "0xb8b600",
+    "compiled": "??_ECEnginePrimitiveRenderUtil@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveRenderUtil::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveRenderUtil",
+    "slot": 0,
+    "target": "0xb8b600",
+    "compiled": "??_ECEnginePrimitiveRenderUtil@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveRenderUtil::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveRenderUtil",
+    "slot": 0,
+    "target": "0xb8b600",
+    "compiled": "??_ECEnginePrimitiveRenderUtil@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveRenderUtil::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveRenderUtil",
+    "slot": 0,
+    "target": "0xb8b600",
+    "compiled": "??_ECEnginePrimitiveRenderUtil@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveRenderUtil::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 0,
+    "target": "0xbacde0",
+    "compiled": "??_ECEnginePrimitiveManager@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveManager::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 1,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 3,
+    "target": "0xbacd90",
+    "compiled": "?FrameStart@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+    "original_symbols": [
+      "?FrameStart@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 4,
+    "target": "0xbacda0",
+    "compiled": "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+    "original_symbols": [
+      "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 5,
+    "target": "0xb4a450",
+    "compiled": "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+    "original_symbols": [
+      "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 6,
+    "target": "0xb4a460",
+    "compiled": "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 7,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 8,
+    "target": "0xb38810",
+    "compiled": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAUCEngineInternalPrimitiveBase@@@Z",
+    "signature": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 9,
+    "target": "0xb38820",
+    "compiled": "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAUCEngineInternalPrimitiveBase@@ABUC3DVector@@K@Z",
+    "signature": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+    "original_symbols": [
+      "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 10,
+    "target": "0xb38830",
+    "compiled": "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+    "original_symbols": [
+      "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 11,
+    "target": "0xb38840",
+    "compiled": "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+    "original_symbols": [
+      "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b91f50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 12,
+    "target": "0xb38850",
+    "compiled": "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCShadowSceneContext@NEngineShadowRenderer@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+    "original_symbols": [
+      "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCShadowSceneContext@NEngineShadowRenderer@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 0,
+    "target": "0xbacde0",
+    "compiled": "??_ECEnginePrimitiveManager@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveManager::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 1,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 3,
+    "target": "0xbacd90",
+    "compiled": "?FrameStart@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+    "original_symbols": [
+      "?FrameStart@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 4,
+    "target": "0xbacda0",
+    "compiled": "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+    "original_symbols": [
+      "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 5,
+    "target": "0xb4a450",
+    "compiled": "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+    "original_symbols": [
+      "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 6,
+    "target": "0xb4a460",
+    "compiled": "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 7,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 8,
+    "target": "0xb38810",
+    "compiled": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAUCEngineInternalPrimitiveBase@@@Z",
+    "signature": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 9,
+    "target": "0xb38820",
+    "compiled": "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAUCEngineInternalPrimitiveBase@@ABUC3DVector@@K@Z",
+    "signature": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+    "original_symbols": [
+      "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 10,
+    "target": "0xb38830",
+    "compiled": "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+    "original_symbols": [
+      "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 11,
+    "target": "0xb38840",
+    "compiled": "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+    "original_symbols": [
+      "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92d30",
+    "table": "CEnginePrimitiveManager",
+    "slot": 12,
+    "target": "0xb38850",
+    "compiled": "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCShadowSceneContext@NEngineShadowRenderer@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+    "original_symbols": [
+      "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCShadowSceneContext@NEngineShadowRenderer@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 0,
+    "target": "0xbacde0",
+    "compiled": "??_ECEnginePrimitiveManager@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveManager::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 1,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 3,
+    "target": "0xbacd90",
+    "compiled": "?FrameStart@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+    "original_symbols": [
+      "?FrameStart@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 4,
+    "target": "0xbacda0",
+    "compiled": "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+    "original_symbols": [
+      "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 5,
+    "target": "0xb4a450",
+    "compiled": "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+    "original_symbols": [
+      "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 6,
+    "target": "0xb4a460",
+    "compiled": "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 7,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 8,
+    "target": "0xb38810",
+    "compiled": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAUCEngineInternalPrimitiveBase@@@Z",
+    "signature": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 9,
+    "target": "0xb38820",
+    "compiled": "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAUCEngineInternalPrimitiveBase@@ABUC3DVector@@K@Z",
+    "signature": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+    "original_symbols": [
+      "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 10,
+    "target": "0xb38830",
+    "compiled": "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+    "original_symbols": [
+      "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 11,
+    "target": "0xb38840",
+    "compiled": "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+    "original_symbols": [
+      "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92660",
+    "table": "CEnginePrimitiveManager",
+    "slot": 12,
+    "target": "0xb38850",
+    "compiled": "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCShadowSceneContext@NEngineShadowRenderer@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+    "original_symbols": [
+      "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCShadowSceneContext@NEngineShadowRenderer@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 0,
+    "target": "0xbacde0",
+    "compiled": "??_ECEnginePrimitiveManager@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveManager::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 1,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 3,
+    "target": "0xbacd90",
+    "compiled": "?FrameStart@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+    "original_symbols": [
+      "?FrameStart@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 4,
+    "target": "0xbacda0",
+    "compiled": "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+    "original_symbols": [
+      "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 5,
+    "target": "0xb4a450",
+    "compiled": "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+    "original_symbols": [
+      "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 6,
+    "target": "0xb4a460",
+    "compiled": "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 7,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 8,
+    "target": "0xb38810",
+    "compiled": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAUCEngineInternalPrimitiveBase@@@Z",
+    "signature": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 9,
+    "target": "0xb38820",
+    "compiled": "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAUCEngineInternalPrimitiveBase@@ABUC3DVector@@K@Z",
+    "signature": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+    "original_symbols": [
+      "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 10,
+    "target": "0xb38830",
+    "compiled": "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+    "original_symbols": [
+      "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 11,
+    "target": "0xb38840",
+    "compiled": "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+    "original_symbols": [
+      "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92f80",
+    "table": "CEnginePrimitiveManager",
+    "slot": 12,
+    "target": "0xb38850",
+    "compiled": "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCShadowSceneContext@NEngineShadowRenderer@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+    "original_symbols": [
+      "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCShadowSceneContext@NEngineShadowRenderer@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 0,
+    "target": "0xbacde0",
+    "compiled": "??_ECEnginePrimitiveManager@@UAEPAXI@Z",
+    "signature": "public: virtual void * __thiscall CEnginePrimitiveManager::`vector deleting dtor'(unsigned int)",
+    "original_symbols": [
+      "deleting destructor; original full hierarchy audited"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 1,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 2,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 3,
+    "target": "0xbacd90",
+    "compiled": "?FrameStart@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+    "original_symbols": [
+      "?FrameStart@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 4,
+    "target": "0xbacda0",
+    "compiled": "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+    "original_symbols": [
+      "?FrameEnd@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 5,
+    "target": "0xb4a450",
+    "compiled": "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+    "original_symbols": [
+      "?RenderSubPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 6,
+    "target": "0xb4a460",
+    "compiled": "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAUCEngineSubPrimitiveBase@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderBoundingVolume@CEnginePrimitiveManager@@UAEXAAVCEngineSubPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 7,
+    "target": "0xbfea08",
+    "compiled": "__purecall",
+    "signature": "__purecall",
+    "original_symbols": [
+      "native purecall"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 8,
+    "target": "0xb38810",
+    "compiled": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAUCEngineInternalPrimitiveBase@@@Z",
+    "signature": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+    "original_symbols": [
+      "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManager@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 9,
+    "target": "0xb38820",
+    "compiled": "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAUCEngineInternalPrimitiveBase@@ABUC3DVector@@K@Z",
+    "signature": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+    "original_symbols": [
+      "?PreloadPrimitive@CEnginePrimitiveManager@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 10,
+    "target": "0xb38830",
+    "compiled": "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+    "original_symbols": [
+      "?Render2DPrimitive@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 11,
+    "target": "0xb38840",
+    "compiled": "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+    "original_symbols": [
+      "?RenderNonsortedPrimitives@CEnginePrimitiveManager@@UAEXXZ"
+    ]
+  },
+  {
+    "address": "00b92e50",
+    "table": "CEnginePrimitiveManager",
+    "slot": 12,
+    "target": "0xb38850",
+    "compiled": "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAUCEngineInternalPrimitiveBase@@AAUCShadowSceneContext@NEngineShadowRenderer@@@Z",
+    "signature": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+    "original_symbols": [
+      "?AddStaticShadowData@CEnginePrimitiveManager@@UAEXAAVCEngineInternalPrimitiveBase@@AAVCShadowSceneContext@NEngineShadowRenderer@@@Z"
+    ]
+  }
+]

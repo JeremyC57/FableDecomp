@@ -1,0 +1,11 @@
+{
+  "snapshot": 5,
+  "source_grade": 5,
+  "sha256": "58ed64cd1adcedb8df9d043416bc136502871d759ebfc96dbcf150745b6df52e",
+  "command": "timeout 200 python3 work/codex-lane/tools/q.py 009ff590 work/codex-lane/w22/astra239_whole/src/009ff590.cpp NotifyEntryAdded@CGraphicDataBank",
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ]
+}

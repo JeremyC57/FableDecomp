@@ -1,0 +1,63 @@
+['g++', '-std=c++98', '-O2', '-Wall', '-Wextra', '-fno-elide-constructors', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp', '-o', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/noelide']
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:9: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+    9 | #pragma optimize("s", on)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:10: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+   10 | #pragma optimize("y", off)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:22:9: warning: #pragma once in main file
+   22 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:431:9: warning: #pragma once in main file
+  431 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:564: warning: ignoring ‘#pragma auto_inline ’ [-Wunknown-pragmas]
+  564 | #pragma auto_inline(off)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:575: warning: ignoring ‘#pragma auto_inline ’ [-Wunknown-pragmas]
+  575 | #pragma auto_inline(on)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:614:55: error: ‘int gets’ redeclared as different kind of entity
+  614 | static int good=1, deleted=0, getglobal=0, lookups=0, gets=0, strings=0;
+      |                                                       ^~~~
+In file included from /workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:612:
+/usr/include/stdio.h:667:14: note: previous declaration ‘char* gets(char*)’
+  667 | extern char *gets (char *__s) __wur __attribute_deprecated__;
+      |              ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp: In constructor ‘CCharString::CCharString(const char*, long int)’:
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:632:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  632 |  if(n!=-1)good=0;Data=new CCharStringData;Data->text=new char[strlen(s)+1];strcpy(Data->text,s);Data->owners=1;++strings;
+      |  ^~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:632:18: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  632 |  if(n!=-1)good=0;Data=new CCharStringData;Data->text=new char[strlen(s)+1];strcpy(Data->text,s);Data->owners=1;++strings;
+      |                  ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp: In member function ‘CDefPointer<CDefClassBase> CDefinitionManager::GetPDefFromGlobalIndex(long int)’:
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:643:4: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+  643 |  ++gets;if(this!=expectedGet||index!=lookupIndex||strings)good=0;
+      |    ^~~~
+/usr/include/stdio.h:667:14: note: declared here
+  667 | extern char *gets (char *__s) __wur __attribute_deprecated__;
+      |              ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:643:4: warning: ISO C++ forbids incrementing a pointer of type ‘char* (*)(char*)’ [-Wpointer-arith]
+  643 |  ++gets;if(this!=expectedGet||index!=lookupIndex||strings)good=0;
+      |    ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:643:4: error: lvalue required as increment operand
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp: In function ‘void reset()’:
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:646:51: error: assignment of function ‘char* gets(char*)’
+  646 | static void reset(){deleted=getglobal=lookups=gets=strings=0;lookupIndex=7;hasDef=true;globalManager=&managerA;expectedLookup=&managerA;expectedGet=&managerA;switchGlobal=false;}
+      |                                               ~~~~^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp: In function ‘int main()’:
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:655:101: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+  655 |    if(result.PObject!=&definition||definition.GetRefCount()!=2||strings||deleted||lookups!=1||gets!=1||getglobal!=(mode?2:0))good=0;
+      |                                                                                                     ^
+/usr/include/stdio.h:667:14: note: declared here
+  667 | extern char *gets (char *__s) __wur __attribute_deprecated__;
+      |              ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:655:99: error: ISO C++ forbids comparison between pointer and integer [-fpermissive]
+  655 |    if(result.PObject!=&definition||definition.GetRefCount()!=2||strings||deleted||lookups!=1||gets!=1||getglobal!=(mode?2:0))good=0;
+      |                                                                                               ~~~~^~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:665:137: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+  665 |  {CDefPointer<NUISystem::CUIIconsDef> result=ui.GetIconsDef();if(result.PObject||strings||definition.GetRefCount()!=1||gets!=(mode<2?0:1))good=0;}
+      |                                                                                                                                         ^
+/usr/include/stdio.h:667:14: note: declared here
+  667 | extern char *gets (char *__s) __wur __attribute_deprecated__;
+      |              ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d98a_fixture_first/fixture.cpp:665:124: error: ISO C++ forbids comparison between pointer and integer [-fpermissive]
+  665 |  {CDefPointer<NUISystem::CUIIconsDef> result=ui.GetIconsDef();if(result.PObject||strings||definition.GetRefCount()!=1||gets!=(mode<2?0:1))good=0;}
+      |                                                                                                                        ~~~~^~~~~~~~~~~~~~

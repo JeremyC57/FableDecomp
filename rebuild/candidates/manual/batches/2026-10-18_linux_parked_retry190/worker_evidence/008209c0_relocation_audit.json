@@ -1,0 +1,98 @@
+{
+  "caller_relocations": [
+    {
+      "offset": 16,
+      "native_target": "0xbfea0e",
+      "symbol": "_malloc",
+      "demangled": "_malloc",
+      "identity": "CRT malloc, IAT1440158"
+    },
+    {
+      "offset": 42,
+      "native_target": "0x82e910",
+      "symbol": "?GetThingsToDelete@CScriptedMapBrush@@QBEXAAUUIDList@@@Z",
+      "demangled": "public: void __thiscall CScriptedMapBrush::GetThingsToDelete(struct UIDList &) const",
+      "identity": "CScriptedMapBrush::GetThingsToDelete(list<ulong64>&)const, donor735500; native tree+14 vs donor18"
+    },
+    {
+      "offset": 99,
+      "native_target": "0x51ed80",
+      "symbol": "?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z",
+      "demangled": "public: struct CThing * __thiscall CThingManager::GetPThingWithUID(unsigned __int64)",
+      "identity": "CThingManager::GetPThingWithUID(ulong64), donor529000; actualret8/mapnode18"
+    },
+    {
+      "offset": 121,
+      "native_target": "0x4c9b80",
+      "symbol": "?Kill@CThing@@QAEX_N@Z",
+      "demangled": "public: void __thiscall CThing::Kill(bool)",
+      "identity": "CThing::Kill(bool), donorCThing::Kill signature; nativefalse argument, callerDeadguard91bit0"
+    },
+    {
+      "offset": 150,
+      "native_target": "0xbfea14",
+      "symbol": "_free",
+      "demangled": "_free",
+      "identity": "CRT free, IAT1440154"
+    },
+    {
+      "offset": 180,
+      "native_target": "0xbfea14",
+      "symbol": "_free",
+      "demangled": "_free",
+      "identity": "CRT free, IAT1440154"
+    }
+  ],
+  "native_virtual_slots": [
+    {
+      "vtable": "0x12390f0",
+      "slot": 3,
+      "native_target": "0x49e1b0",
+      "signature": "CThingManager& CWorld::GetThingManager()",
+      "donor_PDB_hint": "004A7360",
+      "native_prefix": "8b4150c3cccccccccccccccccccccccc8b4150c3"
+    },
+    {
+      "vtable": "0x12390f0",
+      "slot": 13,
+      "native_target": "0x4ae8c0",
+      "signature": "const CWorldMap& CWorld::PeekWorldMap()const",
+      "donor_PDB_hint": "fablewin01B34C80",
+      "native_prefix": "8b4114c3cccccccccccccccccccccccc568bf1e8"
+    },
+    {
+      "vtable": "0x1244aec",
+      "slot": 17,
+      "native_target": "0x4fc080",
+      "signature": "long CWorldMap::GetMapNumberAt(const C2DCoordI&)const",
+      "donor_PDB_hint": "004CEAE0",
+      "native_prefix": "8b4424048bd18b4a5c568b303bf17c2a3b72647d"
+    }
+  ],
+  "fixture_emitted_signatures": [
+    {
+      "symbol": "?Number@WorldMapDouble@@QBEJABUC2DCoordI@@@Z",
+      "demangled": "public: long __thiscall WorldMapDouble::Number(struct C2DCoordI const &) const"
+    },
+    {
+      "symbol": "?Manager@WorldDouble@@QAEAAUCThingManager@@XZ",
+      "demangled": "public: struct CThingManager & __thiscall WorldDouble::Manager(void)"
+    },
+    {
+      "symbol": "?Map@WorldDouble@@QBEABUCWorldMap@@XZ",
+      "demangled": "public: struct CWorldMap const & __thiscall WorldDouble::Map(void) const"
+    },
+    {
+      "symbol": "?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z",
+      "demangled": "public: struct CThing * __thiscall CThingManager::GetPThingWithUID(unsigned __int64)"
+    },
+    {
+      "symbol": "?Kill@CThing@@QAEX_N@Z",
+      "demangled": "public: void __thiscall CThing::Kill(bool)"
+    }
+  ],
+  "native_Kill_prefix": "568bf18a8691000000a801757ff68692000000047576a8407572538a5c240c84db740b8b068bceff",
+  "dispatch_model": "Explicit nativePMF projections, allthree nativePMF4 asserted and hostfullwidth unionstride asserted. No fabricated virtual slots. Interface doubles instantiate genuine own constructors, not engine constructors; production method invokes no ctorotherthan realUIDList sentinel/clear/dtor.",
+  "names": "GetWorld/GetPThingWithUID inline wrapper names are descriptive/native accessor projections; original inline spelling not established. World/WorldPos/Dead actual PDB names/offsets native20/1D24/91bit0 vsdonor2C/1D34/A1bit0. Actual dependencyPeekWorldMap/GetMapNumberAt prototypes originalPDB/nativeconfirmed. GetMapNumberAt result deliberately discarded, matching original nativecall.",
+  "fixture_import_binding": "Only externalmalloc/free calls rebound to tracking wrappers in expandedfixture, exactcandidate loops/branches/cleanup unmodified."
+}

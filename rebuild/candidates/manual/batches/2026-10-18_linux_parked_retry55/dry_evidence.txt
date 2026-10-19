@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0096e700   RELOCATION_MATCH PASS   IsEnemyCreatureInCombatPosition
+
+WINS: 1
+  0096e700 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition

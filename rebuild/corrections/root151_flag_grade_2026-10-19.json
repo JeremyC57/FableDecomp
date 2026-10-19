@@ -1,0 +1,40 @@
+{
+  "address": "00bcd660",
+  "kind": "HISTORICAL_ROOT_FLAG_GRADE_COUNT_CORRECTION",
+  "utc": "2026-10-19T02:54:39.031967+00:00",
+  "author_observed_source_grades": 7,
+  "additional_root_flag_grades_minimum": 1,
+  "additional_root_flag_grades_exact": null,
+  "total_observed_lower_bound": 8,
+  "remaining_budget": null,
+  "flags": "/Oa on final author grade7 source, instead of its winning default flags",
+  "source_sha256": "110cc2228fe0cf8839cae9fa2b7bfedfb5bf151753d31af605f964cc15cc4a3f",
+  "preserved_verdict": "DIFFER(300v310), behavior PASS",
+  "accepted_source_changed": false,
+  "new_compiler_grades_in_closeout": 0,
+  "evidence": [
+    {
+      "path": "work/codex-lane/w22/coordinator_retry151/initial_wrongflag_dry.log",
+      "sha256": "be77a42870e45e1f576c3eae9d92bbfc577ca49303788c532c370c9d05bdfdce"
+    },
+    {
+      "path": "work/codex-lane/w22/coordinator_retry151/root_flag_correction.txt",
+      "sha256": "684f57b94ffcfff01fa55c01b66c08e27f02941f172a8a7ab49b988829c8b8a3"
+    },
+    {
+      "path": "work/codex-lane/w22/coordinator_retry151/attempts.tsv",
+      "sha256": "b09984822bcf758620f8cdd70b9dbf2462a518c072c5e896f78ca8b494a545fb"
+    },
+    {
+      "path": "work/codex-lane/w22/coordinator_retry151/frozen_hashes.json",
+      "sha256": "0493ffa801dc29368d2e31b817f814c7cbde4b12485c505b871e5e730611b252"
+    },
+    {
+      "path": "work/codex-lane/w22/coordinator_retry151/REVIEW.md",
+      "sha256": "ef3f0978dc21406d0d8e7dc1902abe76259387203ea21976382c29240f599420"
+    }
+  ],
+  "reason": "Prior root151 attempts.tsv reports root_source_grades=0 and narrative says author budget unaffected. A changed production flag compilation is a grade even if accidental; at least one additional root grade is established by the preserved parity result and correction note.",
+  "uncertainty": "Generic historical verifier supports automatic pragma/flag sweeps. The original full invocation and per-variant immutable trace were not retained here; disabled sweep overrides versus full fallback execution cannot be established from the summary log. Do not fabricate an exact count or treat the old zero as proof no extra grades ran. No budget headroom is certified.",
+  "continuation": "Keep accepted source and all old evidence unchanged. Reconcile any recoverable original command/sweep trace before further grading. This correction does not withdraw the later independently verified winning default-flag source."
+}

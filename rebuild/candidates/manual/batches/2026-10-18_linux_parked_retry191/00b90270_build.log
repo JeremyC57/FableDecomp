@@ -1,0 +1,7 @@
+["g++", "-std=c++98", "-O2", "-fcheck-new", "work/codex-lane/w22/coordinator_retry191/00b90270_test.cpp", "-o", "work/codex-lane/w22/coordinator_retry191/00b90270_host"]
+work/codex-lane/w22/coordinator_retry191/00b90270_test.cpp:26:9: warning: #pragma once in main file
+   26 | #pragma once
+      |         ^~~~
+work/codex-lane/w22/coordinator_retry191/00b90270_test.cpp:705:9: warning: #pragma once in main file
+  705 | #pragma once
+      |         ^~~~

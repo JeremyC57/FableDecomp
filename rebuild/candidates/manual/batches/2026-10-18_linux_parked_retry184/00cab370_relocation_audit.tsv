@@ -1,0 +1,11 @@
+offset	native_target	symbol
+00000003	01216f53	__ehhandler$??0CBasePin@@QAE@PBGPAUCBaseFilter@@PAUCCritSec@@PAJ0W4PIN_DIRECTION@@@Z
+00000009	00000000	__except_list
+00000011	00000000	__except_list
+00000028	00cacb80	??0CUnknown@@QAE@PBGPAUIUnknown@@@Z
+00000062	00cb1d00	??0CMediaType@@QAE@XZ
+00000068	01237f00	__real@3ff0000000000000
+000000a3	0143fe48	__imp__lstrlenW@4
+000000ad	00bfea1a	??2@YAPAXI@Z
+000000da	00000000	__except_list
+000000f0	00000000	__except_list

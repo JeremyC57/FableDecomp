@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0089f910   RELOCATION_MATCH PASS   CreateEffect
+0089f9e0   RELOCATION_MATCH PASS   CreateEffect
+
+WINS: 2
+  0089f910 RELOCATION_MATCH CGameScriptInterface::CreateEffect
+  0089f9e0 RELOCATION_MATCH CGameScriptInterface::CreateEffect
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_CreateEffect_0089f910
+  CGameScriptInterface_CreateEffect_0089f9e0

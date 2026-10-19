@@ -1,0 +1,6 @@
+# Material map chunk factory
+
+00ac0c00 (222 bytes): genuine C3DMeshFileMaterialChunk::CreateMap(EMaterialMapType), corrected from propagated owner labels using PDB signature and native hierarchy. Allocates 0x3c-byte MMAP subclass, constructs real narrow CCharStrings, preserves uninitialized CRC, converts derived counted pointer to base for inherited AddSubChunk, returns shared ownership. Actual fable_string and parent headers retained; native superchunk 0x2c differs from donor0x34 because native arrays occupy12 bytes.
+
+Main independently audited native function, superchunk constructor/AddSubChunk, deletion callback, implicit string/superchunk destruction, all11 PE vtable slots and COFF relocation targets. Final grade6 reverses overloaded declarations to produce VC7.1 constGetAsSuperChunk slot5 and mutable slot6, matching retail; earlier byte-matched variants had incorrect slot order and are superseded. Tests execute exact source on host/VC7.1 and check constructor arguments, native sizes, returned shared ownership, virtual methods including numeric slots5/6, returned string lifetimes and final cleanup. Six new grades plus UNCERTAIN historical reservation4, not a proven historical count.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+008d1ef0   RELOCATION_MATCH PASS   MsgHowLongWasExpressionPerformed
+008d22d0   RELOCATION_MATCH PASS   MsgReceivedMoney
+008d2540   RELOCATION_MATCH PASS   MsgReceivedInventoryItem
+008d2610   RELOCATION_MATCH PASS   MsgPerformedSpecialAbility
+008d27e0   RELOCATION_MATCH PASS   MsgPerformedAnyAggressiveSpecialAbility
+
+WINS: 5
+  008d1ef0 RELOCATION_MATCH CGameScriptThing::MsgHowLongWasExpressionPerformed
+  008d22d0 RELOCATION_MATCH CGameScriptThing::MsgReceivedMoney
+  008d2540 RELOCATION_MATCH CGameScriptThing::MsgReceivedInventoryItem
+  008d2610 RELOCATION_MATCH CGameScriptThing::MsgPerformedSpecialAbility
+  008d27e0 RELOCATION_MATCH CGameScriptThing::MsgPerformedAnyAggressiveSpecialAbility

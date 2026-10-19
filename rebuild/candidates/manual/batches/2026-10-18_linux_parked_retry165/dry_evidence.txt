@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0064f6dc   RELOCATION_MATCH PASS   DrawOracleSymbols
+
+WINS: 1
+  0064f6dc RELOCATION_MATCH NPlayerGui_CDrawQuestInfo::DrawOracleSymbols

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b5bf10   RELOCATION_MATCH PASS   InitialiseTextures
+
+WINS: 1
+  00b5bf10 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::InitialiseTextures
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineScreenEffectRadialBlurRenderer_InitialiseTextures_00b5bf10

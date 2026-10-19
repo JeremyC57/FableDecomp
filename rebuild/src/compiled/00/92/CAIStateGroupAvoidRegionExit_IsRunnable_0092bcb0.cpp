@@ -1,0 +1,91 @@
+// CAIStateGroup_AvoidRegionExit::IsRunnable() -- recover the live entrance position unless walk-to-marker disallows it.
+// Grade: RELOCATION_MATCH -- compiler-generated vector assignment preserves the retail shared destination-address adjustment (207 bytes).
+#include "engine/CAIStateGroupBase.h"
+#include "engine/CAIBrain.h"
+#include "engine/CThingAICreature.h"
+#include "engine/CTCVillage.h"
+struct CTCVillager;
+struct CRetailInterfaceMap {
+    struct Entry { long Type; void* Component; };
+    Entry* First;
+    Entry* Last;
+    Entry* LowerBound(const long*); // 0x0040F020
+};
+// Retail CThing prefix: PDB UsingComponents name, compact component map; Dead is +0x91 vs donor +0xa1.
+struct CRetailThingView {
+    unsigned char _prefix[0x20];
+    unsigned long UsingComponents[9];
+    CRetailInterfaceMap Components;
+    unsigned char _beforeDead[0x91-0x4c];
+    unsigned char Dead:1;
+    bool HasTC(long type) const { if (UsingComponents[type>>5] & (1UL<<(type&31))) return true; return false; }
+    void* GetTC(long type) {
+      long key=type; CRetailInterfaceMap* map=&Components;
+      CRetailInterfaceMap::Entry* it=map->LowerBound(&key);
+      if(it==map->Last || type<it->Type) it=map->Last;
+      return it->Component;
+    }
+    template<class T> __forceinline bool GetInterface(T** out, long type) {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
+            long key = type;
+            CRetailInterfaceMap* map = &Components;
+            CRetailInterfaceMap::Entry* it = map->LowerBound(&key);
+            if (it == map->Last || type < it->Type) it = map->Last;
+            *out = (T*)it->Component;
+            return true;
+        }
+        return false;
+    }
+};
+struct CIntelligentPointerView {
+    void* __vftable;
+    CThingAICreature* Object;
+    CThingAICreature* GetPItem() const; // 0x00A01B50
+};
+struct CVillagePersonNode {
+    CVillagePersonNode* Next;
+    CVillagePersonNode* Previous;
+    CIntelligentPointerView Value;
+};
+// The engine village header retains donor 12-byte lists (+0x34 VillagePeople).
+// Retail lists are one head pointer, so VillagePeople is +0x2c; no header is redefined.
+struct CVillagePeopleList { CVillagePersonNode* Head; };
+struct CRetailVillagePeopleView {
+    unsigned char _beforePeople[0x2c];
+    CVillagePeopleList VillagePeople;
+};
+CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager*); // 0x007EE540
+inline CRetailThingView* ThingView(CThingAICreature* p) { return (CRetailThingView*)p; }
+
+
+#include "engine/CAIStateGroup_AvoidRegionExit.h"
+struct C3DVector {
+ float X,Y,Z;
+ C3DVector() {}
+ C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z) {}
+};
+// Retail CTCWalkToMarker bool fields; donor header is not available.
+struct CTCWalkToMarkerView {
+ unsigned char _before68[0x68]; bool Flag68;
+ unsigned char _before7b[0x12]; bool Flag7b;
+};
+struct CTCAvoidRegionExitView {
+ unsigned char _base[0xc]; CIntelligentPointerView EntranceMarker;
+ C3DVector GetPosition(); // 0092BD80
+};
+struct CAvoidStateView : CAIStateGroupBase { C3DVector Position; bool IsRunnable(); };
+bool CAvoidStateView::IsRunnable() {
+ CRetailThingView* creature=ThingView(PBrain->Creature);
+ if(creature->HasTC(0xaa)) {
+  CTCWalkToMarkerView* walk=(CTCWalkToMarkerView*)creature->GetTC(0xaa);
+  if(!walk->Flag7b || walk->Flag68) return false;
+ }
+ if(creature->HasTC(0x105)) {
+  CTCAvoidRegionExitView* avoid=(CTCAvoidRegionExitView*)creature->GetTC(0x105);
+  if(avoid->EntranceMarker.GetPItem() && !ThingView(avoid->EntranceMarker.GetPItem())->Dead) {
+   Position=avoid->GetPosition();
+   return true;
+  }
+ }
+ return false;
+}

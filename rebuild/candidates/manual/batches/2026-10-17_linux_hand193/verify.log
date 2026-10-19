@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00845bc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00845bc0   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 1
+  00845bc0 RELOCATION_MATCH CCreatureAction_StopSneaking::PerformAction
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionStopSneaking_PerformAction_00845bc0

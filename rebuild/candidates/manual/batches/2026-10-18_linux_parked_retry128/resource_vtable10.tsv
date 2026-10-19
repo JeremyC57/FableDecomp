@@ -1,0 +1,11 @@
+slot	CResource12354A4	CGroupEntry129B478	method
+0	004664ff	009cae40	deleting destructor
+1	0042d930	0042d930	Delete const
+2	0042d940	009c7eb0	UnloadResource
+3	009fbef0	009fbef0	GetUnloadableMemory const
+4	0042d950	0042d950	IsResourceLoaded
+5	0042d960	0042d960	OnResourceLoaded
+6	0042d970	0042d970	CanAbortResourceLoad
+7	0042d980	0042d980	OnResourceLoadAborted
+8	009fbf00	009fbf00	GetDebugMemoryInUse const
+9	009fbf10	009fbf10	ResetDebugMemoryInUse

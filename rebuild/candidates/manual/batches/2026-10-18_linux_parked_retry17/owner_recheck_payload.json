@@ -1,0 +1,14 @@
+{
+  "result": {
+    "authored": [
+      {
+        "address": "009f1540",
+        "module": "CCodeSectionManager",
+        "name": "ScalarDeletingDestructor",
+        "source_cpp": "// CCodeSectionManager::ScalarDeletingDestructor(unsigned flags) -- destroy the manager, optionally release its storage.\n// Retail009F1540,28 bytes after padding trim. RTTI0129C764 identifies the owner;\n// this wrapper calls the complete destructor009F1560 and operator delete00BFE9BC.\nstruct CCodeSectionManager;\nvoid __fastcall DestroyCodeSectionManager(CCodeSectionManager*); // 009F1560, member ABI\nvoid DeleteCodeSectionManagerStorage(void*); // 00BFE9BC, cdecl\nvoid* __fastcall CCodeSectionManager_ScalarDeletingDestructor(CCodeSectionManager* self,int,unsigned int flags) {\n DestroyCodeSectionManager(self);\n if(flags&1) DeleteCodeSectionManagerStorage(self);\n return self;\n}\n",
+        "test_cpp": "#include <cstdio>\n#ifndef _MSC_VER\n#define __fastcall\n#endif\n// CCodeSectionManager::ScalarDeletingDestructor(unsigned flags) -- destroy the manager, optionally release its storage.\n// Retail009F1540,28 bytes after padding trim. RTTI0129C764 identifies the owner;\n// this wrapper calls the complete destructor009F1560 and operator delete00BFE9BC.\nstruct CCodeSectionManager;\nvoid __fastcall DestroyCodeSectionManager(CCodeSectionManager*); // 009F1560, member ABI\nvoid DeleteCodeSectionManagerStorage(void*); // 00BFE9BC, cdecl\nvoid* __fastcall CCodeSectionManager_ScalarDeletingDestructor(CCodeSectionManager* self,int,unsigned int flags) {\n DestroyCodeSectionManager(self);\n if(flags&1) DeleteCodeSectionManagerStorage(self);\n return self;\n}\n\nstruct CCodeSectionManager { unsigned Marker; };\nstatic CCodeSectionManager* expected;\nstatic int calls; static bool bad;\nvoid __fastcall DestroyCodeSectionManager(CCodeSectionManager* self) {\n if(self!=expected || calls!=0 || self->Marker!=123) bad=true;\n ++calls; self->Marker=456;\n}\nvoid DeleteCodeSectionManagerStorage(void* self) {\n if(self!=expected || calls!=1 || expected->Marker!=456) bad=true;\n ++calls;\n}\nint main() {\n for(unsigned flags=0;flags<4;++flags) {\n  CCodeSectionManager manager; manager.Marker=123; expected=&manager; calls=0; bad=false;\n  void* result=CCodeSectionManager_ScalarDeletingDestructor(&manager,0,flags);\n  if(result!=&manager || bad || calls!=1+int(flags&1) || manager.Marker!=456) {\n   std::printf(\"009f1540_TEST FAIL\\n\");return 1;\n  }\n }\n std::printf(\"009f1540_TEST PASS\\n\");return 0;\n}\n",
+        "pass_pattern": "009f1540_TEST PASS"
+      }
+    ]
+  }
+}

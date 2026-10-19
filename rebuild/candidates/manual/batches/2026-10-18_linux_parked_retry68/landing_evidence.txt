@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00b80790   WARN SHARED_HEADER_AVAILABLE CEnvironment
+00b80790   RELOCATION_MATCH PASS   WorldFrameUpdate
+
+WINS: 1
+  00b80790 RELOCATION_MATCH CEngineSimulationManager::WorldFrameUpdate
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineSimulationManager_WorldFrameUpdate_00b80790

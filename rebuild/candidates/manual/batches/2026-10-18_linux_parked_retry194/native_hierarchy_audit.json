@@ -1,0 +1,64 @@
+{
+  "0x12a3e9c": [
+    [
+      ".?AVCEnginePrimitiveManagerRepeatedStaticMeshes@@",
+      0
+    ],
+    [
+      ".?AVCEnginePrimitiveManagerMeshBase@@",
+      0
+    ],
+    [
+      ".?AVCEnginePrimitiveManagerOcclusionBase@@",
+      0
+    ],
+    [
+      ".?AVCEnginePrimitiveManager@@",
+      0
+    ],
+    [
+      ".?AVCEnginePrimitiveRenderUtil@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x12a3f4c": [
+    [
+      ".?AVCEngineInternalPrimitiveRepeatedStaticMesh@@",
+      0
+    ],
+    [
+      ".?AVCEngineInternalPrimitiveOcclusionBase@@",
+      0
+    ],
+    [
+      ".?AVCEngineInternalPrimitiveBase@@",
+      0
+    ],
+    [
+      ".?AVCEnginePersistentPrimitiveBase@@",
+      0
+    ],
+    [
+      ".?AVCIVCountedPointeeBase@@",
+      0
+    ]
+  ],
+  "0x122f598": [
+    [
+      ".?AVCEnginePrimitiveHandle@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ]
+}

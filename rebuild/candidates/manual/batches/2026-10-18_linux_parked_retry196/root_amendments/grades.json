@@ -1,0 +1,50 @@
+[
+  {
+    "address": "00bbf380",
+    "author_grades": 4,
+    "root_grade": 1,
+    "cumulative": 5,
+    "source": "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bbf380.cpp",
+    "sha256": "c15bed73a779ecfeb385bac323b98f2044eebe98f303a60cc9bb2be7c67eab7c",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00bbf380",
+      "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bbf380.cpp",
+      "BuildBuffers"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "Original CIndexBuffer::GetSize() is const, PDB EgorBCEC50 QBEJXZ; declaration and dependency fixture both corrected.",
+    "utc": "2026-10-19T02:10:21.290899+00:00"
+  },
+  {
+    "address": "00bc3e10",
+    "author_grades": 1,
+    "root_grade": 1,
+    "cumulative": 2,
+    "source": "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bc3e10.cpp",
+    "sha256": "62d90b0b61ded24f9abd467441ecc48950f2c2659a4934776ed73e19c34b687d",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00bc3e10",
+      "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bc3e10.cpp",
+      "BuildBuffers"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "Original CIndexBuffer::GetSize() is const, PDB EgorBCEC50 QBEJXZ; declaration and dependency fixture both corrected.",
+    "utc": "2026-10-19T02:10:21.291367+00:00"
+  }
+]

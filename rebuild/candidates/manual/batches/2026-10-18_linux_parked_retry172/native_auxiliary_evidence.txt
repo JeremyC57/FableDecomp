@@ -1,0 +1,80 @@
+Root independent optimized native fixtures:
+[
+  {
+    "address": "00b260b0",
+    "source_sha256": "87f9993734b166b9db7b72199f22a82a02e12bd5a0b44c91875beaf584868573",
+    "flags": [
+      "/O2",
+      "/W3"
+    ],
+    "output": "00b260b0_TEST PASS 4 whole-object sentinel/construction-order/default cases\n",
+    "result": "PASS"
+  },
+  {
+    "address": "00caf8f0",
+    "source_sha256": "b51b0fa77389a64a48a10e02540ea49e6ac4f1325d64897b39dca9a6614750de",
+    "flags": [
+      "/O2",
+      "/W3",
+      "/EHsc"
+    ],
+    "output": "00caf8f0_TEST PASS 19 clock-order/tie/64-bit/wake/timeout/COM/EH-unlock cases\n",
+    "result": "PASS"
+  },
+  {
+    "address": "00afe9b0",
+    "source_sha256": "e024cec28358c05a9ef92cf131b1ea44e151e1f83b70bbf7e79c2ccb71cf856c",
+    "flags": [
+      "/O2",
+      "/W3"
+    ],
+    "output": "00afe9b0_TEST PASS 10 array/refcount/callback/self-alias cases\n",
+    "result": "PASS"
+  }
+]
+
+Review scope:
+{
+  "00afe9b0": "Existing-pointee leaf only: TestPersistent constructors create ABI dispatch/refcount test doubles, not native engine objects. Native PersistentBase(long) B8FFA0 / FableWin029AE6B0 and CIV default019F60F0 provide layout/construction provenance; native Persistent construction is neither modeled nor tested by this leaf.",
+  "00caf8f0": "Original author fixture stays frozen at ba69a2c0b24491f1b152d4a459eedd64987dc2a2c1a6cc8481f8c5ffb434e25f, all19 host/O2 and VC/O2/EHsc cases. Canonical fixture test/00caf8f0.canonical.cpp SHA cc2b3848ca06230e6f3726e00f8b994d34afa7ce40f609e96bfaab361e8fc05b skips only throwing modes14..16 under _MSC_VER&&!_CPPUNWIND and explicitly reports16; host/EHsc still19. Both VC modes independently pass. Original canonical no-EH failure retained by root172; no source change or grade spent."
+}
+
+Public DirectShow provenance:
+[
+  {
+    "path": "probe/directshow_ctlutil.cpp",
+    "url": "https://raw.githubusercontent.com/microsoft/Windows-classic-samples/main/Samples/Win7Samples/multimedia/directshow/baseclasses/ctlutil.cpp",
+    "sha256": "8bb02b6f6940abbb29581992f5fe9c5fe7613eb5973fd6a39c2e8ff3da548b29",
+    "usage": "Original public DirectShow class/algorithm provenance; local native layout remains separately asserted."
+  },
+  {
+    "path": "probe/directshow_ctlutil.h",
+    "url": "https://raw.githubusercontent.com/microsoft/Windows-classic-samples/main/Samples/Win7Samples/multimedia/directshow/baseclasses/ctlutil.h",
+    "sha256": "2f0188b624aeb02f839f54344252ab6a9cff521490335fdb1f63d3e5c15d125c",
+    "usage": "Original public DirectShow class/algorithm provenance; local native layout remains separately asserted."
+  },
+  {
+    "path": "probe/directshow_reftime.h",
+    "url": "https://raw.githubusercontent.com/microsoft/Windows-classic-samples/main/Samples/Win7Samples/multimedia/directshow/baseclasses/reftime.h",
+    "sha256": "dda8ce17126c1f7c6f9fa6ad64586b7f74922281b7879cf2dc3fe4b8fb5700b9",
+    "usage": "Original public DirectShow class/algorithm provenance; local native layout remains separately asserted."
+  },
+  {
+    "path": "probe/directshow_wxlist.cpp",
+    "url": "https://raw.githubusercontent.com/microsoft/Windows-classic-samples/main/Samples/Win7Samples/multimedia/directshow/baseclasses/wxlist.cpp",
+    "sha256": "0ded49ca55a9e5fa6897fa9cbd288555e0af30c969e2f2ea5a2bf67dc8c2586c",
+    "usage": "Original public DirectShow class/algorithm provenance; local native layout remains separately asserted."
+  },
+  {
+    "path": "probe/directshow_wxlist.h",
+    "url": "https://raw.githubusercontent.com/microsoft/Windows-classic-samples/main/Samples/Win7Samples/multimedia/directshow/baseclasses/wxlist.h",
+    "sha256": "5d6305a25f44a238b6d358ba2c0c40f469fec08b250c087be2b4ae837f33e634",
+    "usage": "Original public DirectShow class/algorithm provenance; local native layout remains separately asserted."
+  },
+  {
+    "path": "probe/directshow_wxutil.h",
+    "url": "https://raw.githubusercontent.com/microsoft/Windows-classic-samples/main/Samples/Win7Samples/multimedia/directshow/baseclasses/wxutil.h",
+    "sha256": "06bcb8348fe9cb5f1f29e59f4a2b7208f42ee569273fa9e5e8f4b9785489b4fa",
+    "usage": "Original public DirectShow class/algorithm provenance; local native layout remains separately asserted."
+  }
+]

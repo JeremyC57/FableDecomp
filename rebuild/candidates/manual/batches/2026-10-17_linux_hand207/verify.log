@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00633420   RELOCATION_MATCH PASS   UninitModeControlCreature
+006338d0   MATCH            PASS   InitModeBerserk
+
+WINS: 2
+  00633420 RELOCATION_MATCH CPlayer::UninitModeControlCreature
+  006338d0 MATCH CPlayer::InitModeBerserk
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CPlayer_UninitModeControlCreature_00633420
+  CPlayer_InitModeBerserk_006338d0

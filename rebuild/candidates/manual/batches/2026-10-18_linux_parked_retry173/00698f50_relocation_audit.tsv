@@ -1,0 +1,11 @@
+offset	native_target	symbol
+00000020	00a01b50	?GetPItem@CCameraObservedPointer@@QBEPBUCThing@@XZ
+0000002f	00a01b50	?GetPItem@CCameraObservedPointer@@QBEPBUCThing@@XZ
+00000067	0125c344	??_C@_0BM@NJEANHHA@PUSH_SPECIALITY_CAMERA_MODE?$AA@
+00000070	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+00000082	00a01b50	?GetPItem@CCameraObservedPointer@@QBEPBUCThing@@XZ
+0000008b	00698a30	?PlayCameraSoundThroughObservedThing@@YIXPBUCThing@@ABUCCameraManagerDef@@ABVCCharString@@@Z
+00000094	0099eae0	??1CCharString@@QAE@XZ
+000000ea	0069cf90	?Find@CCameraRegisteredMap@@QAE?AUCCameraRegisteredIterator@@ABW4EMode@NCameraModes@@@Z
+000000fc	0084d270	?AllocMain@CCameraBaseInit@@QBEPAUCCameraMode@@AAUCGameCameraManager@@ABUCCameraDefPointer@@@Z
+00000108	0069c2f0	?Reset@CCameraModePointer@@QAEXPAUCCameraMode@@@Z

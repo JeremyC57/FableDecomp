@@ -1,0 +1,10 @@
+{
+  "comparison": "same-TU InsertFreeArea versus retail00c27ef0",
+  "bytes": 81,
+  "byte_exact": true,
+  "built_sha256": "960743ca45c124ab150d4d6cca9f88b8f6309bb5bc5b99328c8391608852bc8c",
+  "retail_sha256": "960743ca45c124ab150d4d6cca9f88b8f6309bb5bc5b99328c8391608852bc8c",
+  "symbol": "?InsertFreeArea@CHandleBasedMemoryPool@@QAEXPAUCHeader@@@Z",
+  "object_sha256": "e2fab6b50204162525f13c7e80abf18c5f880a2e9b18e760cde3000d731ec9c2",
+  "source_snapshot_sha256": "acdbaa0a8b561e866fa885f53f37f56a01da482ada479941b08f7385a72b036f"
+}

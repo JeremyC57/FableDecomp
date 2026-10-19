@@ -1,0 +1,9 @@
+addr       parity           behav  name
+004c00e0   RELOCATION_MATCH PASS   CTCGraphicAppearance
+00446220   RELOCATION_MATCH PASS   GetInputProcessEventFromUpdate
+00eed6b0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  004c00e0 RELOCATION_MATCH CTCGraphicAppearance::??0CTCGraphicAppearance@@
+  00446220 RELOCATION_MATCH CGamePlayerInterface::GetInputProcessEventFromUpdate
+  00eed6b0 RELOCATION_MATCH CExitWardensOffice::Main

@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00bcfcb0   RELOCATION_MATCH PASS   InitialiseSimulation
+00bcfde0   RELOCATION_MATCH PASS   InitialiseSimulation
+00b9de90   RELOCATION_MATCH PASS   InitialiseSimulation
+00ef3000   RELOCATION_MATCH PASS   Main
+00ec46b0   RELOCATION_MATCH PASS   Main
+00e4a060   RELOCATION_MATCH PASS   Main
+
+WINS: 6
+  00bcfcb0 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh_Methods::InitialiseSimulation
+  00bcfde0 RELOCATION_MATCH CEngineInternalPrimitive2DAnimatedMesh_Methods::InitialiseSimulation
+  00b9de90 RELOCATION_MATCH CEngineInternalPrimitiveStaticMesh_Methods::InitialiseSimulation
+  00ef3000 RELOCATION_MATCH CDoor::Main
+  00ec46b0 RELOCATION_MATCH CVtable012F16E0::Main
+  00e4a060 RELOCATION_MATCH CVtable012E4EF8::Main
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CEngineInternalPrimitiveAnimatedMeshMethods_InitialiseSimulation_00bcfcb0
+  CEngineInternalPrimitive2DAnimatedMeshMethods_InitialiseSimulation_00bcfde0
+  CEngineInternalPrimitiveStaticMeshMethods_InitialiseSimulation_00b9de90
+  CDoor_Main_00ef3000
+  CVtable012F16E0_Main_00ec46b0
+  CVtable012E4EF8_Main_00e4a060

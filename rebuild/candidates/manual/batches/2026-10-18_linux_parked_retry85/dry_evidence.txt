@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00c43ec0   RELOCATION_MATCH PASS   AllocateMarks
+00c44170   RELOCATION_MATCH PASS   Close
+
+WINS: 2
+  00c43ec0 RELOCATION_MATCH CMarkedBufferOwner::AllocateMarks
+  00c44170 RELOCATION_MATCH CMarkedBufferOwner::Close

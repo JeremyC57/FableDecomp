@@ -1,0 +1,7 @@
+offset	type	native_target	symbol
+0020	dir32	0122dedc	__real@00000000
+0034	dir32	0122ded8	__real@3f800000
+0048	dir32	0122dedc	__real@00000000
+005c	dir32	01237f0c	__real@41200000
+006c	dir32	0122dedc	__real@00000000
+007c	dir32	01237f0c	__real@41200000

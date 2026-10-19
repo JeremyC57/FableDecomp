@@ -1,0 +1,19 @@
+addr       parity           behav  name
+004581f8   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+004581f8   RELOCATION_MATCH PASS   CSpecialAbilitiesDivineWrathDef
+00458033   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+00458033   RELOCATION_MATCH PASS   CSpecialAbilitiesDivineWrathDef
+0074e080   RELOCATION_MATCH PASS   AdjustTrajectoryVector
+0094c850   RELOCATION_MATCH PASS   InitCreaturePosition
+
+WINS: 4
+  004581f8 RELOCATION_MATCH CSpecialAbilitiesDivineWrathDef::CSpecialAbilitiesDivineWrathDef
+  00458033 RELOCATION_MATCH CSpecialAbilitiesDivineWrathDef::CSpecialAbilitiesDivineWrathDef
+  0074e080 RELOCATION_MATCH CTCContainerRewardHero::AdjustTrajectoryVector
+  0094c850 RELOCATION_MATCH CAIStateGroup_GameMaster::InitCreaturePosition
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CSpecialAbilitiesDivineWrathDef_CSpecialAbilitiesDivineWrathDef_004581f8
+  CSpecialAbilitiesDivineWrathDef_CSpecialAbilitiesDivineWrathDef_00458033
+  CTCContainerRewardHero_AdjustTrajectoryVector_0074e080
+  CAIStateGroupGameMaster_InitCreaturePosition_0094c850

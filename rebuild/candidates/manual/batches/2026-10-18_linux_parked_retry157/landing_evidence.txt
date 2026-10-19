@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00890c80   RELOCATION_MATCH PASS   EntityUnsheatheMeleeWeapon
+00890d80   RELOCATION_MATCH PASS   EntityUnsheatheRangedWeapon
+008957c0   RELOCATION_MATCH PASS   SendEntityEvent
+00896a30   RELOCATION_MATCH PASS   SetQuestCardObjective
+0089b110   RELOCATION_MATCH PASS   StartMovieSequence
+0089c560   RELOCATION_MATCH PASS   EntityPostOpinionDeedToAll
+008a8440   RELOCATION_MATCH PASS   GetPerceivingHeroEntityList
+
+WINS: 7
+  00890c80 RELOCATION_MATCH CGameScriptInterfaceMethods::EntityUnsheatheMeleeWeapon
+  00890d80 RELOCATION_MATCH CGameScriptInterfaceMethods::EntityUnsheatheRangedWeapon
+  008957c0 RELOCATION_MATCH CGameScriptInterfaceMethods::SendEntityEvent
+  00896a30 RELOCATION_MATCH CGameScriptInterfaceMethods::SetQuestCardObjective
+  0089b110 RELOCATION_MATCH CGameScriptInterfaceMethods::StartMovieSequence
+  0089c560 RELOCATION_MATCH CGameScriptInterfaceMethods::EntityPostOpinionDeedToAll
+  008a8440 RELOCATION_MATCH CGameScriptInterfaceMethods::GetPerceivingHeroEntityList
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterfaceMethods_EntityUnsheatheMeleeWeapon_00890c80
+  CGameScriptInterfaceMethods_EntityUnsheatheRangedWeapon_00890d80
+  CGameScriptInterfaceMethods_SendEntityEvent_008957c0
+  CGameScriptInterfaceMethods_SetQuestCardObjective_00896a30
+  CGameScriptInterfaceMethods_StartMovieSequence_0089b110
+  CGameScriptInterfaceMethods_EntityPostOpinionDeedToAll_0089c560
+  CGameScriptInterfaceMethods_GetPerceivingHeroEntityList_008a8440

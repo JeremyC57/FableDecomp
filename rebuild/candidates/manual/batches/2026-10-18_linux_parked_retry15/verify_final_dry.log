@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00a76580   RELOCATION_MATCH PASS   CNavQuadTreeNode
+00a8b4c0   RELOCATION_MATCH PASS   RelocateData
+00979d80   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureTakeCover
+00979d80   RELOCATION_MATCH PASS   IsRunnableLeaf
+
+WINS: 3
+  00a76580 RELOCATION_MATCH CNavQuadTreeNode::??0CNavQuadTreeNode
+  00a8b4c0 RELOCATION_MATCH C3DMesh2::RelocateData
+  00979d80 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::IsRunnableLeaf

@@ -1,0 +1,11 @@
+offset	native_target	symbol
+0000001b	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00000034	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+0000004d	00f35b30	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00000059	012ea06c	??_C@_0O@GKPBFKIE@FishermanWasp?$AA@
+00000062	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+00000068	0143e90c	?g_ScriptDef@@3PAUCScriptDef@@A
+00000078	00415d70	??BCDefString@@QBE?AUCCharString@@XZ
+000000aa	004aa840	??1CScriptThing@@UAE@XZ
+000000b3	0099eae0	??1CCharString@@QAE@XZ
+000000bc	0099eae0	??1CCharString@@QAE@XZ

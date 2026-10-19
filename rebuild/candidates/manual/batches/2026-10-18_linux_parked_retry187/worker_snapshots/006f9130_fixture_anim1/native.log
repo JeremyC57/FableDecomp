@@ -1,0 +1,6 @@
+['/nologo', '/c', '/O2', '/W3', '/Fo/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim1/native.obj', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim1/fixture.cpp']
+fixture.cpp
+Z:\workspace\FableDecomp\work\codex-lane\w22\retry202g_sol\snapshots\006f9130_fixture_anim1\fixture.cpp(847) : warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+link ['/nologo', '/out:/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim1/native.exe', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_fixture_anim1/native.obj']
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)
+006f9130_TEST FAIL line840

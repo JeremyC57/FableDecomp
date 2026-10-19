@@ -1,0 +1,271 @@
+[
+  {
+    "address": "0041726d",
+    "new_grade": 1,
+    "cumulative": 5,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_01.cpp",
+    "sha256": "4201c48b27f3edab6e2c8d257dda9d06d1170fa703b1ef9f2a3e5ef191cdff46",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "0041726d",
+      "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_01.cpp",
+      "UpdateFromEventPackageSet"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "gsy off",
+      "s on"
+    ]
+  },
+  {
+    "address": "0041726d",
+    "new_grade": 2,
+    "cumulative": 6,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_02.cpp",
+    "sha256": "958baec65b0c97ca22dd5453e390380dfd6d0c797c611bc73b851dacd5464adc",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "0041726d",
+      "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_02.cpp",
+      "UpdateFromEventPackageSet"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "y off",
+      "s on"
+    ]
+  },
+  {
+    "address": "0041726d",
+    "new_grade": 3,
+    "cumulative": 7,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_03.cpp",
+    "sha256": "4215880242582e1388b68d413e80e68d8668909e4beaba45b6a25e4c8c5454eb",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "0041726d",
+      "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_03.cpp",
+      "UpdateFromEventPackageSet"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "y off",
+      "s on"
+    ]
+  },
+  {
+    "address": "0041726d",
+    "new_grade": 4,
+    "cumulative": 8,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_04.cpp",
+    "sha256": "4300a07dce55ffe744515a142a67fdf35059f07214ef53a91b0f53645f2f785a",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "0041726d",
+      "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_04.cpp",
+      "UpdateFromEventPackageSet"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "y off",
+      "s on"
+    ]
+  },
+  {
+    "address": "0041726d",
+    "new_grade": 5,
+    "cumulative": 9,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_05.cpp",
+    "sha256": "d99d0e69845ebd6dee34b64157f3f4761821bd5bd4fda74980b19cbd07bdb419",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "0041726d",
+      "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_05.cpp",
+      "UpdateFromEventPackageSet"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "y off",
+      "s on"
+    ]
+  },
+  {
+    "address": "0041726d",
+    "new_grade": 6,
+    "cumulative": 10,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_06.cpp",
+    "sha256": "1dcc0f315c9f7d9fca69e42864e40ae1e3bb7465898031a47dbaab1c1cbe5b84",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "0041726d",
+      "work/codex-lane/w22/retry202e_sol/snapshots/0041726d_06.cpp",
+      "UpdateFromEventPackageSet"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "y off",
+      "s on"
+    ]
+  },
+  {
+    "address": "00416832",
+    "new_grade": 1,
+    "cumulative": 5,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/00416832_01.cpp",
+    "sha256": "f8b5420c121091675d222be1b2f76985ea803b13ccd0112f0ca6cb308268c9c4",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00416832",
+      "work/codex-lane/w22/retry202e_sol/snapshots/00416832_01.cpp",
+      "InitialiseText"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "s on",
+      "y off"
+    ]
+  },
+  {
+    "address": "00416832",
+    "new_grade": 2,
+    "cumulative": 6,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/00416832_02.cpp",
+    "sha256": "bdece74d671e30a5f79f5d372beeaa75744e0a128b4b209bf5802547999d2924",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00416832",
+      "work/codex-lane/w22/retry202e_sol/snapshots/00416832_02.cpp",
+      "InitialiseText"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "s on",
+      "y off"
+    ]
+  },
+  {
+    "address": "00416832",
+    "new_grade": 3,
+    "cumulative": 7,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/00416832_03.cpp",
+    "sha256": "036bf050a5a3c118a88b69330d7ab36884a37a58c564da98269552467ba73692",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00416832",
+      "work/codex-lane/w22/retry202e_sol/snapshots/00416832_03.cpp",
+      "InitialiseText"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": [
+      "s on",
+      "y off"
+    ]
+  },
+  {
+    "address": "00da6740",
+    "new_grade": 1,
+    "cumulative": 5,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/00da6740_01.cpp",
+    "sha256": "a850037e7a9587515ea74ca476a398c53ea8f6ef35266a43a5c17e87d555c803",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00da6740",
+      "work/codex-lane/w22/retry202e_sol/snapshots/00da6740_01.cpp",
+      "Main"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": []
+  },
+  {
+    "address": "00da6240",
+    "new_grade": 1,
+    "cumulative": 5,
+    "source": "work/codex-lane/w22/retry202e_sol/snapshots/00da6240_01.cpp",
+    "sha256": "9800015d528ccac10713bcdb769ab3f94e4c2f38799c1fe7f2a771f1d8c28fdc",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "work/codex-lane/tools/q.py",
+      "00da6240",
+      "work/codex-lane/w22/retry202e_sol/snapshots/00da6240_01.cpp",
+      "Main"
+    ],
+    "flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "pragma": []
+  }
+]

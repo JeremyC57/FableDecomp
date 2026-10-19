@@ -1,0 +1,16 @@
+# Combat sequence construction, unsheathing and local-detail definitions
+
+Seven production bodies independently compile to RELOCATION_MATCH and pass exact-source host C++98/O2, no-elision and VC7.1 tests:00908A20 grade9,00908B50 grade5,009092C0/009093F0 grade8 each,006EBDD0 grade7,0047756C grade3,00477964 grade8. Root added no source grades. All review corrections remain in the author ledgers; metadata-only908A20 address correction preserves its immutable grade9 source and compiled tokens.
+
+Main audited78 masked body relocation targets, two complete emitted81-slot InterruptableMidAttack vtables,81 native Unsheathe slots, four independently named local-detail RTTI slots, its explicit constructor vptr and two retail literals. Actual PDB headers are included under aliases where native layouts differ. VC layout assertions remain active.
+
+Villager sequences enqueue two real interruptable mid-attacks, then a knockdown action with true/false Blockable respectively. Native ActionBase70/A8 and Combat81/114 hierarchy is complete. The knockdown constructor takes two genuine Creature references; callbacks may change owner/target between actions. Exact-source fixtures verify those reloads, virtual dispatch and both retained/nonretained counted cleanup through free-fastcall callbacks.
+
+Physical-shield sequences use real reference constructor signatures and an implicit literal-conversion adapter over actual CCharString. Tests verify temporary lifetime before AddAction, captured FPS despite callback mutation, owner reload, action parameters and counted destruction. These external-constructor views do not emit synthetic action vtables.
+
+Unsheathing preserves every eligibility gate, component lookup, stack action construction, immediate/animated path, existing weapon state and destruction. Main required correction of IsFreeToPerformAction to a const method taking const Action&, and SetCurrentAction to const Action&, based on PDB signatures. Grade7 retains exact native bytes. Eleven scenarios pass. The implicit derived destructor calls genuine CombatActionBase ordinary destructor62E900.
+
+Local-detail copy construction/assignment use the native parent3C/object88 layout, actual headers and all eight PDB-named flags. Main rejected earlier fake virtual placeholders and fixture-only default constructors; corrected source has no such dependencies. The copy constructor calls genuine parent copy46EE98 and installs verified retail vptr123634C. Assignment calls parent431ED0 and preserves destination vptr. Both fixtures cover all256 flag values and native padding85..87; assignment also checks self-assignment. Aligned storage represents pre-existing engine state, and the parent stub tests delegation without claiming to reimplement the parent's internal ownership logic. Luna grade filenames include historical infrastructure/verification records; audited counted totals are3/8, not directory suffixes4/11.
+
+Compiler matches and isolated fixtures do not claim linked whole-game runtime validation. Frozen hashes, full native audits, corrected provenance and grade-ledger evidence are retained.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

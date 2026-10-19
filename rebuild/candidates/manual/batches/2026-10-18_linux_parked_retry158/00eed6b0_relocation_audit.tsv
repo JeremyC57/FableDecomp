@@ -1,0 +1,17 @@
+offset	native_target	symbol
+00000013	012c32f0	??_7CIsThingAlive@@6B@
+00000018	004abe90	??0CAliveScriptThing@@QAE@ABUCScriptThing@@@Z
+00000024	00f35b10	?SetPredicate@CExitWardensOffice@@QAEXABUCIsThingAlive@@@Z
+0000002d	00e241b0	??1CIsThingAlive@@UAE@XZ
+0000003c	00f35b30	?IsComplete@CExitWardensOffice@@QAE_NXZ
+0000004b	00f35b30	?IsComplete@CExitWardensOffice@@QAE_NXZ
+00000063	0125d1c8	??_C@_0BB@PABDMMLB@SCRIPT_NAME_HERO?$AA@
+0000006c	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+00000083	0099eae0	??1CCharString@@QAE@XZ
+0000008e	00f35b30	?IsComplete@CExitWardensOffice@@QAE_NXZ
+00000099	012dcc9c	??_C@_0BK@JGNHKIMI@TEXT_QST_055_DIARY_LOCKED?$AA@
+000000a2	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+000000bb	0099eae0	??1CCharString@@QAE@XZ
+000000db	00f35b30	?IsComplete@CExitWardensOffice@@QAE_NXZ
+000000f5	00f35b30	?IsComplete@CExitWardensOffice@@QAE_NXZ
+00000108	00f35b30	?IsComplete@CExitWardensOffice@@QAE_NXZ

@@ -1,0 +1,9 @@
+offset	native_target	symbol
+0000000c	012a82d8	??_7CLocalDetailPrimitiveMeshZSpriteBatch@@6B@
+00000011	01436ea8	?g_LocalDetailEngine@@3PAULocalDetailEngine@@A
+00000033	00bfbbf0	??1CObject@CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@XZ
+00000047	00bd9b90	?FreeVirtual@LandscapeMemoryMethods@@QAEXPAX@Z
+00000056	00bd9b90	?FreeVirtual@LandscapeMemoryMethods@@QAEXPAX@Z
+0000005f	0122f598	??_7CEnginePrimitiveHandle@@6B@
+000000a5	0099a2e0	??1CBaseClass@@UAE@XZ
+000000ab	0129b860	??_7CMovableResource@@6B@

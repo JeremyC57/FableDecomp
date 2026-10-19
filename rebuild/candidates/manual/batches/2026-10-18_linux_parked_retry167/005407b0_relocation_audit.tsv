@@ -1,0 +1,14 @@
+offset	native_target	symbol
+0000000b	0052cc50	?InitializeChangingStateComponent@EditBoxBaseNative@@QAEXJ@Z
+00000014	01246b8c	?EditBoxVTable@@3QBEB
+0000001a	01246b64	?EditBoxObserverVTable@@3QBEB
+00000021	01246b5c	?EditBoxSecondaryVTable@@3QBEB
+00000030	00bfea0e	?AllocateActionListNode@@YAPAXI@Z
+00000048	00bfea0e	?AllocateActionListNode@@YAPAXI@Z
+00000061	0099aed0	??0CWideString@@QAE@XZ
+000000a7	0099aed0	??0CWideString@@QAE@XZ
+000000b2	0099aed0	??0CWideString@@QAE@XZ
+000000b7	0041e5f2	?GetUIManager@@YIPAUManagerMethods@@XZ
+000000c8	0052da20	?ObserveEvent@ObserverNative@@QAEXW4EEvent@NUISystem@@@Z
+000000d1	0052da20	?ObserveEvent@ObserverNative@@QAEXW4EEvent@NUISystem@@@Z
+000000dd	00530ec0	?LoadAndReturnDefResultStorage@EditBoxNative@@QBEPAUDefinitionResultStorage@@PAU2@@Z

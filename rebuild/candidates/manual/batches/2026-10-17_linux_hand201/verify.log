@@ -1,0 +1,12 @@
+addr       parity           behav  name
+004585fe   RELOCATION_MATCH PASS   Transfer -- serialize hit-location scalars in the retail persistence order
+// Retail: Fable.exe @ 0x004585FE, 237 bytes. Size-oriented definition TU; typed helpers are called at the addresses noted below.
+#pragma optimize
+
+WINS: 1
+  004585fe RELOCATION_MATCH CHitLocationDef::Transfer -- serialize hit-location scalars in the retail persistence order
+// Retail: Fable.exe @ 0x004585FE, 237 bytes. Size-oriented definition TU; typed helpers are called at the addresses noted below.
+#pragma optimize
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CHitLocationDef_Transferserializehitlocationscalarsintheretailpe_004585fe

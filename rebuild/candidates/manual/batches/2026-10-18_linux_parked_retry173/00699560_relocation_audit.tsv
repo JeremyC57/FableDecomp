@@ -1,0 +1,11 @@
+offset	native_target	symbol
+0000003a	0049d810	?GetRandom@CQuakeWorld@@QAEAAUCQuakeRandom@@XZ
+00000046	004978a0	?FloatRandom@@YIMMPAUCQuakeRandom@@@Z
+00000057	00a13c60	?Rotate@CQuakeVector@@QAEXABU1@M@Z
+0000005c	0049d870	?GetQuakeFrame@@YIHXZ
+00000068	0049d810	?GetRandom@CQuakeWorld@@QAEAAUCQuakeRandom@@XZ
+0000007f	00497890	?RotateRandom@@YIII@Z
+00000096	0122dcb4	__real@4f800000
+0000009c	0122f59c	__real@3f000000
+000000db	0069c860	?ConstructQuake@@YIXPAUCQuake@@ABU1@@Z
+000000fe	0069d300	?Insert@CQuakeArray@@QAEXPAUCQuake@@ABU2@ABUCQuakePodTag@@I_N@Z

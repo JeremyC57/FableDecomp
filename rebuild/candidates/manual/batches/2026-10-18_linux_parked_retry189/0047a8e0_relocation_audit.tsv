@@ -1,0 +1,13 @@
+offset	native_target	symbol
+0000000e	0099e4b0	??0CCharString@@QAE@XZ
+0000002a	0122d70e	??_C@_00CNPNBAHC@?$AA@
+00000041	012366b4	??_C@_03CGKDEGPM@?$CFd?9?$AA@
+00000047	0099f1f0	?Sprintf@CCharString@@QAAXPBDZZ
+00000058	0099f0a0	??YCCharString@@QAEABU0@ABU0@@Z
+00000091	0122d70e	??_C@_00CNPNBAHC@?$AA@
+00000096	004115a0	??8BasicString@@QBE_NPBD@Z
+0000009f	01236688	??_C@_0CJ@NPNPINMA@This?5quest?5objective?5has?5no?5desc@
+000000a8	0099efe0	??4CCharString@@QAEABU0@PBD@Z
+000000d4	0099ec30	??0CCharString@@QAE@ABU0@@Z
+000000f7	0047c030	?InsertOverflow@ObjectiveVector@@QAEXPAUObjective@@ABU2@ABUAllocator@@K_N@Z
+00000100	0099eae0	??1CCharString@@QAE@XZ

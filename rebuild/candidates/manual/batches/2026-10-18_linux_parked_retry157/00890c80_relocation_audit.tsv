@@ -1,0 +1,12 @@
+offset	native_target	symbol
+00000004	0139c8a8	___security_cookie
+0000003c	006a15a0	?IsThingCarryingMeleeWeapon@@YI_NPAUCThingNative@@@Z
+00000059	00662650	?FinishCurrentAction@CThingNative@@QAEXXZ
+00000068	006649c0	?UnsheatheMeleeWeapon@CThingNative@@QAEXXZ
+00000073	00bfe9f9	@__security_check_cookie@4
+00000087	006ebdd0	?CreatureUnsheathWeapon@CCombatManager@@QAEXPAUCThingNative@@J@Z
+00000092	00bfe9f9	@__security_check_cookie@4
+000000cd	009f1760	?AddData@GameEventMethods@@QAEXJPBX@Z
+000000d8	013b86a0	?g_MainGameComponent@@3PAUCMainGameComponent@@A
+000000dd	0041649c	?AddGameEvent@CMainGameComponent@@QAEXABUCGameEvent@@@Z
+000000e8	00bfe9f9	@__security_check_cookie@4

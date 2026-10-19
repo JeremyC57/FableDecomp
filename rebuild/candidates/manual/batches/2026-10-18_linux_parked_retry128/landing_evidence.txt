@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0087ed70   RELOCATION_MATCH PASS   GetNextPos
+008663d0   RELOCATION_MATCH PASS   FinishAction
+009c8890   RELOCATION_MATCH PASS   GetPGroupEntry
+
+WINS: 3
+  0087ed70 RELOCATION_MATCH CCombatAction_StabThing::GetNextPos
+  008663d0 RELOCATION_MATCH CCombatAction_GenericStrikeResponseBase::FinishAction
+  009c8890 RELOCATION_MATCH NGameText::CDataBank::GetPGroupEntry
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CCombatActionStabThing_GetNextPos_0087ed70
+  CCombatActionGenericStrikeResponseBase_FinishAction_008663d0
+  NGameTextCDataBank_GetPGroupEntry_009c8890

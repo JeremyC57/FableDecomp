@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00547160   RELOCATION_MATCH PASS   Initialise
+005500b0   RELOCATION_MATCH PASS   GetDataFromDef
+0095a6c0   RELOCATION_MATCH PASS   GotoCirclePoint
+
+WINS: 3
+  00547160 RELOCATION_MATCH NUISystem::CScrollingComponent::Initialise@CScrollingComponentInitialiseView
+  005500b0 RELOCATION_MATCH NUISystem::CMesh::GetDataFromDef
+  0095a6c0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::GotoCirclePoint
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NUISystemCScrollingComponent_Initialise_00547160
+  NUISystemCMesh_GetDataFromDef_005500b0
+  CAIStateGroupHoverHornetQueen_GotoCirclePoint_0095a6c0

@@ -1,0 +1,14 @@
+00bca060 56                   push esi
+00bca061 8bf1                 mov esi, ecx
+00bca063 e89802ddff           call 0x99a300
+00bca068 f644240801           test byte ptr [esp + 8], 1
+00bca06d 7407                 je 0xbca076
+00bca06f 8bce                 mov ecx, esi
+00bca071 e8da140200           call 0xbeb550
+00bca076 8bc6                 mov eax, esi
+00bca078 5e                   pop esi
+00bca079 c20400               ret 4
+00bca07c cc                   int3 
+00bca07d cc                   int3 
+00bca07e cc                   int3 
+00bca07f cc                   int3 

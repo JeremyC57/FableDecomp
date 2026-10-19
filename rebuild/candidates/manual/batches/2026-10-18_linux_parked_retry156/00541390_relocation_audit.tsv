@@ -1,0 +1,3 @@
+offset	native_target	symbol
+0000007e	00535f5a	?FindIndex@NUISystem@@YIPBKPBK0ABKABURandomAccessTag@1@@Z
+000000c9	00485dbc	?InsertOverflow@ScrollingArray@NUISystem@@QAEXPAPAUCComponent@2@ABQAU32@ABUFalseType@2@K_N@Z

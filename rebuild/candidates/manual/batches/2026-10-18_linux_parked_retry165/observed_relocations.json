@@ -1,0 +1,46 @@
+{
+  "0064f6dc": [
+    [
+      "0000001d",
+      "DISP32",
+      "?PeekGuiDef@@YIPAUGuiOracleDefView@@XZ",
+      "0x438570"
+    ],
+    [
+      "0000003b",
+      "DISP32",
+      "?Resize@HandleArray@@QAEXK@Z",
+      "0x443f90"
+    ],
+    [
+      "00000049",
+      "DISP32",
+      "?GFAnchorToTopRight@@YI?AUC2DVector@@ABU1@@Z",
+      "0x643ca1"
+    ],
+    [
+      "0000008d",
+      "dir32",
+      "?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A",
+      "0x13b8790"
+    ],
+    [
+      "0000009b",
+      "dir32",
+      "__real@437f0000",
+      "0x1230014"
+    ],
+    [
+      "000000a3",
+      "DISP32",
+      "__ftol2",
+      "0xbfea70"
+    ],
+    [
+      "000000ca",
+      "DISP32",
+      "??0CEnginePrimitive2DSprite@@QAE@_KABUC2DVector@@W4EEngine2DLayer@@KKW4EEnginePrimitiveBlendMode@@W4EEngineInterpolationSet@@MMEEEEK11@Z",
+      "0x493ac2"
+    ]
+  ]
+}

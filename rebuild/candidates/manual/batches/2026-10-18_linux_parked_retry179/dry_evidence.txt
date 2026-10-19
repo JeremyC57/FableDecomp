@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00da6240   RELOCATION_MATCH PASS   Main
+00da6740   RELOCATION_MATCH PASS   Main
+00416832   RELOCATION_MATCH PASS   InitialiseText
+
+WINS: 3
+  00da6240 RELOCATION_MATCH CM_Minion::Main
+  00da6740 RELOCATION_MATCH CM_NotThisWay::Main
+  00416832 RELOCATION_MATCH CMainGameComponent::InitialiseText

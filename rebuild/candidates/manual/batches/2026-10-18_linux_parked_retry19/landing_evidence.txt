@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00b86b00   RELOCATION_MATCH PASS   SetEffectQuality
+00b91dc0   RELOCATION_MATCH PASS   GetCellRenderMask
+
+WINS: 2
+  00b86b00 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::SetEffectQuality
+  00b91dc0 RELOCATION_MATCH CEngineSceneGrid::GetCellRenderMask
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEngineScreenEffectDisplacementRenderer_SetEffectQuality_00b86b00
+  CEngineSceneGrid_GetCellRenderMask_00b91dc0

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0063a850   RELOCATION_MATCH PASS   GetWaterSizeZAtBlock
+
+WINS: 1
+  0063a850 RELOCATION_MATCH CWorldMap::GetWaterSizeZAtBlock

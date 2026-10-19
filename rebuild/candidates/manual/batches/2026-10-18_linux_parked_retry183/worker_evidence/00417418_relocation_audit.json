@@ -1,0 +1,140 @@
+{
+  "caller_relocations": [
+    {
+      "offset": "0xd",
+      "target": "0x419270",
+      "compiled_symbol": "??0CDisplayEngineInit@@QAE@XZ",
+      "demangled": "public: __thiscall CDisplayEngineInit::CDisplayEngineInit(void)",
+      "identity": "CDisplayEngineInit ctor, PDB ??0CDisplayEngineInit@@QAE@XZ, all36 native init bytes audited"
+    },
+    {
+      "offset": "0x13",
+      "target": "0x13b8390",
+      "compiled_symbol": "?g_DisplayDevice@@3PAUCDisplayDevice@@A",
+      "demangled": "struct CDisplayDevice *g_DisplayDevice",
+      "identity": "global CDisplayDevice*, back-surface +2c independently confirmed 9F2F90/9F2F60 use D3DSurface+4"
+    },
+    {
+      "offset": "0x21",
+      "target": "0x415bf0",
+      "compiled_symbol": "?GetHeight@CSurface@@QBEKXZ",
+      "demangled": "public: unsigned long __thiscall CSurface::GetHeight(void) const",
+      "identity": "CSurface::GetHeight()const, calls9F2F90 and reads Height+4"
+    },
+    {
+      "offset": "0x27",
+      "target": "0x13b8390",
+      "compiled_symbol": "?g_DisplayDevice@@3PAUCDisplayDevice@@A",
+      "demangled": "struct CDisplayDevice *g_DisplayDevice",
+      "identity": "global CDisplayDevice*, back-surface +2c independently confirmed 9F2F90/9F2F60 use D3DSurface+4"
+    },
+    {
+      "offset": "0x36",
+      "target": "0x9f2f90",
+      "compiled_symbol": "?GetDimensions@CSurface@@QBE?AUC2DExtentsI@@XZ",
+      "demangled": "public: struct C2DExtentsI __thiscall CSurface::GetDimensions(void) const",
+      "identity": "CSurface::GetDimensions()const, native hidden output pointer+8 bytes"
+    },
+    {
+      "offset": "0x3e",
+      "target": "0x13b8390",
+      "compiled_symbol": "?g_DisplayDevice@@3PAUCDisplayDevice@@A",
+      "demangled": "struct CDisplayDevice *g_DisplayDevice",
+      "identity": "global CDisplayDevice*, back-surface +2c independently confirmed 9F2F90/9F2F60 use D3DSurface+4"
+    },
+    {
+      "offset": "0x4d",
+      "target": "0x9f2f60",
+      "compiled_symbol": "?GetPixelFormat@CSurface@@QBE?AUCPixelFormat@@XZ",
+      "demangled": "public: struct CPixelFormat __thiscall CSurface::GetPixelFormat(void) const",
+      "identity": "CSurface::GetPixelFormat()const, native hidden output4 bytes"
+    },
+    {
+      "offset": "0x57",
+      "target": "0x44c6b0",
+      "compiled_symbol": "?GetDefinitionManager@@YIPAUCGameDefinitionManager@@XZ",
+      "demangled": "struct CGameDefinitionManager * __fastcall GetDefinitionManager(void)",
+      "identity": "GetDefinitionManager(), body loads013B879C"
+    },
+    {
+      "offset": "0x7f",
+      "target": "0xbfea1a",
+      "compiled_symbol": "??2@YAPAXI@Z",
+      "demangled": "void * __cdecl operator new(unsigned int)",
+      "identity": "ordinary scalar operator new, native import thunk; source emitted ??2@YAPAXI@Z and pushes256"
+    },
+    {
+      "offset": "0x8f",
+      "target": "0x434e10",
+      "compiled_symbol": "??0CDisplayEngine@@QAE@ABUCDisplayEngineInit@@@Z",
+      "demangled": "public: __thiscall CDisplayEngine::CDisplayEngine(struct CDisplayEngineInit const &)",
+      "identity": "CDisplayEngine(const CDisplayEngineInit&), PDB signature and RTTI-confirmed CBaseClassNonCopyable:CBaseClass"
+    },
+    {
+      "offset": "0x9e",
+      "target": "0x41940c",
+      "compiled_symbol": "?reset@?$scoped_ptr@UCDisplayEngine@@@@QAEXPAUCDisplayEngine@@@Z",
+      "demangled": "public: void __thiscall scoped_ptr<struct CDisplayEngine>::reset(struct CDisplayEngine *)",
+      "identity": "scoped_ptr<CDisplayEngine>::reset, stores replacement then virtual deletes prior pointer"
+    },
+    {
+      "offset": "0xa5",
+      "target": "0x122eeb4",
+      "compiled_symbol": "??_C@_0CC@LPCHKDPC@Init?5Display?5Engine?3?5Calling?5Ini@",
+      "demangled": "\"Init Display Engine: Calling Ini\"...",
+      "identity": "full literal independently read through NUL",
+      "literal_through_nul_hex": "496e697420446973706c617920456e67696e653a2043616c6c696e6720496e697400"
+    },
+    {
+      "offset": "0xad",
+      "target": "0x99ebf0",
+      "compiled_symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "demangled": "public: __thiscall CCharString::CCharString(char const *, long)",
+      "identity": "CCharString(const char*,long)"
+    },
+    {
+      "offset": "0xb3",
+      "target": "0x122dee0",
+      "compiled_symbol": "__real@bf800000",
+      "demangled": "__real@bf800000",
+      "identity": "independently read -1.0f",
+      "float_pool_hex": "000080bf"
+    },
+    {
+      "offset": "0xc3",
+      "target": "0x9e9f40",
+      "compiled_symbol": "?DisplayProgress@NProgressDisplay@@YIXABUCCharString@@M_N1@Z",
+      "demangled": "void __fastcall NProgressDisplay::DisplayProgress(struct CCharString const &, float, bool, bool)",
+      "identity": "NProgressDisplay::DisplayProgress(const CCharString&,float,bool,bool)"
+    },
+    {
+      "offset": "0xcb",
+      "target": "0x99eae0",
+      "compiled_symbol": "??1CCharString@@QAE@XZ",
+      "demangled": "public: __thiscall CCharString::~CCharString(void)",
+      "identity": "CCharString::~CCharString()"
+    },
+    {
+      "offset": "0xd2",
+      "target": "0x4350d0",
+      "compiled_symbol": "?Init@CDisplayEngine@@QAEXXZ",
+      "demangled": "public: void __thiscall CDisplayEngine::Init(void)",
+      "identity": "CDisplayEngine::Init(), uses constructor-initialized fields"
+    }
+  ],
+  "native_hierarchy": [
+    ".?AVCDisplayEngine@@",
+    ".?AVCBaseClassNonCopyable@@",
+    ".?AVCBaseClass@@"
+  ],
+  "emitted_fixture_CDisplayEngine_slots": [
+    "??_ECDisplayEngine@@UAEPAXI@Z",
+    "?InitEngine@CDisplayEngine@@UAE_NXZ",
+    "?UninitEngine@CDisplayEngine@@UAEXXZ"
+  ],
+  "native_slot_addresses": [
+    "0x437070",
+    "0x435190",
+    "0x4354a0"
+  ]
+}

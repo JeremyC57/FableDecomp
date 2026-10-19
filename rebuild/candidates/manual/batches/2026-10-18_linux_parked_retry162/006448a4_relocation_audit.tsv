@@ -1,0 +1,6 @@
+offset	native_target	symbol
+00000013	00438570	?PeekGuiDef@@YIPAUPlayerGuiDefNative@@XZ
+00000019	0122dedc	_g_FloatZero
+00000049	0122dedc	_g_FloatZero
+000000c5	01230014	_g_AlphaScale255
+000000cd	00bfea70	__ftol2

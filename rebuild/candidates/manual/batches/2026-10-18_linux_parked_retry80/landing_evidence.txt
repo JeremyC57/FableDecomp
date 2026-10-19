@@ -1,0 +1,8 @@
+addr       parity           behav  name
+006b8640   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 1
+  006b8640 RELOCATION_MATCH CEnvironmentSpellEffectInterpolator::?FrameUpdate@CEnvironmentSpellEffectInterpolator
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEnvironmentSpellEffectInterpolator_FrameUpdate_006b8640

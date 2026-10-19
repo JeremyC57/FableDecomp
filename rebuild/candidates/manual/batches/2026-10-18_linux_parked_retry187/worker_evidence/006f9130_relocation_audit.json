@@ -1,0 +1,61 @@
+{
+  "relocations": [
+    {
+      "offset": 16,
+      "target": "0xa242c0",
+      "symbol": "?GetAnimationInfo@CMeshDataBank@@QBEPBUC3DAnimationInfo@@K@Z",
+      "demangled": "public: struct C3DAnimationInfo const * __thiscall CMeshDataBank::GetAnimationInfo(unsigned long) const",
+      "identity": "Animation bank lookup: actual body reads pointer table+380 and returns[index]; propagated InventoryAbilities label incorrect. Compatible const AnimationInfo pointer getter projection, exact original inline spelling not established."
+    },
+    {
+      "offset": 23,
+      "target": "0xa269c0",
+      "symbol": "?GetAnimationStats@C3DAnimationInfo@@QBE?AU?$CCountedPointer@$$CBUC3DAnimationStats@@@@XZ",
+      "demangled": "public: struct CCountedPointer<struct C3DAnimationStats const> __thiscall C3DAnimationInfo::GetAnimationStats(void) const",
+      "identity": "C3DAnimationInfo::GetAnimationStats()const, PDB33056; nativeA26A2A..47 constructs8byte counted result from data+28 and incrementsInfo0"
+    },
+    {
+      "offset": 35,
+      "target": "0x129ba3c",
+      "symbol": "?g_MinEmbeddedAnimationDuration@@3MA",
+      "demangled": "float g_MinEmbeddedAnimationDuration",
+      "identity": "extern float epsilon, native bytes17B7D138",
+      "native_float_hex": "17b7d138"
+    },
+    {
+      "offset": 59,
+      "target": "0xa4eae0",
+      "symbol": "?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z",
+      "demangled": "public: float __thiscall C3DAnimationStats::GetEventTime(class CCharString const &) const",
+      "identity": "C3DAnimationStats::GetEventTime(const CCharString&)const, PDB34383; actual body applies map.find at+20 then returns pair.second+14"
+    },
+    {
+      "offset": 102,
+      "target": "0xbfe9bc",
+      "symbol": "??3@YAXPAX@Z",
+      "demangled": "void __cdecl operator delete(void *)",
+      "identity": "CRT scalar operator delete"
+    },
+    {
+      "offset": 150,
+      "target": "0xbfe9bc",
+      "symbol": "??3@YAXPAX@Z",
+      "demangled": "void __cdecl operator delete(void *)",
+      "identity": "CRT scalar operator delete"
+    },
+    {
+      "offset": 159,
+      "target": "0x122dedc",
+      "symbol": "__real@00000000",
+      "demangled": "__real@00000000",
+      "identity": "float zero pool, native bytes00000000",
+      "native_float_hex": "00000000"
+    }
+  ],
+  "native_evidence": {
+    "0xa242c0": "8b81800300008b4c24048b0488c20400",
+    "0xa26a2a": "8b4f0c8b51288b44240c83c12889108b490485c95f8948045e7402ff01c20400",
+    "0xa4eae0": "8b4424045083c120e823580000d94014c20400"
+  },
+  "layout_limit": "NativeA242C0 proves indexable pointer table+380. Exact donor member mapping unestablished; external method projection only."
+}

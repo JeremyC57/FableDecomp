@@ -1,0 +1,24 @@
+{
+  "address": "00cab370",
+  "attempt": 2,
+  "sha256": "32723bfe1a6db55001003f315ad6341048e7d8d76e7123ee1d36ba8d46c73921",
+  "base_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "extra_flags": [
+    "/GX"
+  ],
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+    "00cab370",
+    "/workspace/FableDecomp/work/codex-lane/w22/astra242_whole/snapshots/00cab370/a02/source.cpp",
+    "??0CBasePin",
+    "--flags",
+    "/GX"
+  ]
+}

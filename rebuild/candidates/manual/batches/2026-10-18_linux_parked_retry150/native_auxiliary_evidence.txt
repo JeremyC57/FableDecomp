@@ -1,0 +1,1 @@
+Surface VT122F84C slot0=41C9C0 actual deleting destructor;A0AF80 genuine no-op member. PDB ClipBox const at egor_pdb_names.tsv27646. Native arrays12/resources44/pages28/shutdown40 versus donor16/32/54. FreeMemoryPage int and AllocateTexture unsigned declarations are ABI-width projections of PDB long/unsignedlong on Win32.

@@ -1,0 +1,1 @@
+Grades1/2 metadata effective_base_flags was incorrectly hardcoded. Actual unchanged tools/decomp_pipeline/verify_and_land.py:347 BASE_FLAGS=["/O2","/Oy","/W3"], plus no extras. Commands and hashes are accurate. Corrected helper before further grades.

@@ -1,0 +1,408 @@
+[
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00405650-01",
+    "manifest": {
+      "address": "00405650",
+      "new_grade": 1,
+      "reserved_uncertain": 4,
+      "source_sha256": "87bfb0780628c5c17dc26ebe3cd62f1c366be0f3e6323860ae1c54296d3b66cf",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00405650",
+        "work/codex-lane/w22/retry201b_sol/probe/00405650.cpp",
+        "Initialise"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Initialise"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00405650-02",
+    "manifest": {
+      "address": "00405650",
+      "new_grade": 2,
+      "reserved_uncertain": 4,
+      "source_sha256": "1160294cacefbfc3b3ec585764ee397181628377f776d2d1713d05dee8d0fb2c",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00405650",
+        "work/codex-lane/w22/retry201b_sol/probe/00405650.cpp",
+        "Initialise"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Initialise"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00405650-03",
+    "manifest": {
+      "address": "00405650",
+      "new_grade": 3,
+      "reserved_uncertain": 4,
+      "source_sha256": "2bbdfec28d31b779f292ccff4814022b7aca42f208c7f2b5f09ab44b3b553185",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00405650",
+        "work/codex-lane/w22/retry201b_sol/probe/00405650.cpp",
+        "Initialise"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Initialise"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00405650-04",
+    "manifest": {
+      "address": "00405650",
+      "new_grade": 4,
+      "reserved_uncertain": 4,
+      "source_sha256": "f2b142dff87ba0124ef5df7153c0d856cb4fa44dbddc9dee4a0d5706d2db9013",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00405650",
+        "work/codex-lane/w22/retry201b_sol/probe/00405650.cpp",
+        "Initialise"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Initialise"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00405650-05",
+    "manifest": {
+      "address": "00405650",
+      "new_grade": 5,
+      "reserved_uncertain": 4,
+      "source_sha256": "2934df07a3d4e1f3392e02b166b75a6048d76781aead9617bbfe83fbe53ddbb1",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00405650",
+        "work/codex-lane/w22/retry201b_sol/probe/00405650.cpp",
+        "Initialise"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Initialise"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00404970-01",
+    "manifest": {
+      "address": "00404970",
+      "new_grade": 1,
+      "reserved_uncertain": 4,
+      "source_sha256": "dab59a4bb4cf699fafd0572a91f6816b5d675c72c59b8ada05246acf18f973d9",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00404970",
+        "work/codex-lane/w22/retry201b_sol/probe/00404970.cpp",
+        "GetFontNameAndScale"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "GetFontNameAndScale"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00404970-02",
+    "manifest": {
+      "address": "00404970",
+      "new_grade": 2,
+      "reserved_uncertain": 4,
+      "source_sha256": "53a5af2e20e88fbabd9557383ef3f07adae96a0eb64d4aa98edad9d5278425ae",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00404970",
+        "work/codex-lane/w22/retry201b_sol/probe/00404970.cpp",
+        "GetFontNameAndScale"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "GetFontNameAndScale"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00542330-01",
+    "manifest": {
+      "address": "00542330",
+      "new_grade": 1,
+      "reserved_uncertain": 4,
+      "source_sha256": "7f52cab9766e90c8e776f0e756f05496ea0523ce5673fa9c2d771628bbf45929",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00542330",
+        "work/codex-lane/w22/retry201b_sol/probe/00542330.cpp",
+        "??0CIconText"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "??0CIconText"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/00542330-02",
+    "manifest": {
+      "address": "00542330",
+      "new_grade": 2,
+      "reserved_uncertain": 4,
+      "source_sha256": "d6efaab5f8ee92172c8217e22cc589bb8e8774000c912d9dc942c097b1c334c4",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00542330",
+        "work/codex-lane/w22/retry201b_sol/probe/00542330.cpp",
+        "??0CIconText"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "??0CIconText"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/009f52a0-01",
+    "manifest": {
+      "address": "009f52a0",
+      "new_grade": 1,
+      "reserved_uncertain": 4,
+      "source_sha256": "e2e7d5c8021f64d2bdf4196a46e1e482be5ee7c01872d851e78fd11f3f6c9910",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "009f52a0",
+        "work/codex-lane/w22/retry201b_sol/probe/009f52a0.cpp",
+        "Save"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Save"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/009f52a0-02",
+    "manifest": {
+      "address": "009f52a0",
+      "new_grade": 2,
+      "reserved_uncertain": 4,
+      "source_sha256": "b0b4a4f0dae2e122dc65ab8c8a805360de1abb7054a25c8811ed258ff7230d22",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "009f52a0",
+        "work/codex-lane/w22/retry201b_sol/probe/009f52a0.cpp",
+        "Save"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Save"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/009f52a0-03",
+    "manifest": {
+      "address": "009f52a0",
+      "new_grade": 3,
+      "reserved_uncertain": 4,
+      "source_sha256": "b0b4a4f0dae2e122dc65ab8c8a805360de1abb7054a25c8811ed258ff7230d22",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "009f52a0",
+        "work/codex-lane/w22/retry201b_sol/probe/009f52a0.cpp",
+        "Save",
+        "--flags",
+        "/Oa"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Save",
+        "--flags",
+        "/Oa"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/009f52a0-04",
+    "manifest": {
+      "address": "009f52a0",
+      "new_grade": 4,
+      "reserved_uncertain": 4,
+      "source_sha256": "b0b4a4f0dae2e122dc65ab8c8a805360de1abb7054a25c8811ed258ff7230d22",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "009f52a0",
+        "work/codex-lane/w22/retry201b_sol/probe/009f52a0.cpp",
+        "Save",
+        "--flags",
+        "/G7"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Save",
+        "--flags",
+        "/G7"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/009f52a0-05",
+    "manifest": {
+      "address": "009f52a0",
+      "new_grade": 5,
+      "reserved_uncertain": 4,
+      "source_sha256": "b0b4a4f0dae2e122dc65ab8c8a805360de1abb7054a25c8811ed258ff7230d22",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "009f52a0",
+        "work/codex-lane/w22/retry201b_sol/probe/009f52a0.cpp",
+        "Save",
+        "--flags",
+        "/Op"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Save",
+        "--flags",
+        "/Op"
+      ]
+    }
+  },
+  {
+    "snapshot": "work/codex-lane/w22/retry201b_sol/snapshots/009f52a0-06",
+    "manifest": {
+      "address": "009f52a0",
+      "new_grade": 6,
+      "reserved_uncertain": 4,
+      "source_sha256": "b0b4a4f0dae2e122dc65ab8c8a805360de1abb7054a25c8811ed258ff7230d22",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "009f52a0",
+        "work/codex-lane/w22/retry201b_sol/probe/009f52a0.cpp",
+        "Save",
+        "--flags",
+        "/G5"
+      ],
+      "base_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "extra": [
+        "Save",
+        "--flags",
+        "/G5"
+      ]
+    }
+  }
+]

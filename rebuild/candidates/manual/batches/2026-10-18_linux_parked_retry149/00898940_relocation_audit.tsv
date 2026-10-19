@@ -1,0 +1,8 @@
+offset	native_target	symbol
+00000006	00449970	?GetMainPlayer@PlayerManagerMethods@@QAEPAUPlayerMethods@@XZ
+0000000d	00487dc0	?GetHeroThing@PlayerMethods@@QAEPAUCThingNative@@XZ
+00000045	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+0000007e	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+000000b7	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+000000ee	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00000108	0057c999	?SetMoneyAsConfiscated@HeroStatsMethods@@QAEX_N@Z

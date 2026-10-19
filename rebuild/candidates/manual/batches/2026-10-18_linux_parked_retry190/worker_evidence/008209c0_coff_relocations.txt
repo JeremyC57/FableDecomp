@@ -1,0 +1,77 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/evidence/008209c0.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000c DISP32            _malloc
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0UIDList@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000016 DISP32            _free
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Clear@UIDList@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000016 DISP32            _free
+00000030 DISP32            _free
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1UIDList@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetMapNumberAt@CWorldMap@@QBEJABUC2DCoordI@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetThingManager@CWorld@@QAEAAUCThingManager@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000012 DISP32            ?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetPThingWithUID@CWorld@@QAEPAUCThing@@_K@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?PeekWorldMap@CWorld@@QBEABUCWorldMap@@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetWorld@CMap@@QAEAAUCWorld@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000010 DISP32            _malloc
+0000002a DISP32            ?GetThingsToDelete@CScriptedMapBrush@@QBEXAAUUIDList@@@Z
+00000063 DISP32            ?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z
+00000079 DISP32            ?Kill@CThing@@QAEX_N@Z
+00000096 DISP32            _free
+000000b4 DISP32            _free
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?ScriptedMapBrushRemoveThings@CMap@@QAEXABUCScriptedMapBrush@@@Z

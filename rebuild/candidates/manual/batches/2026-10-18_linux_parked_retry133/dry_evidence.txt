@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0052eec0   RELOCATION_MATCH PASS   GetTargetRelativeRenderPosition
+00bc5ff0   MATCH            PASS   GetBoundingBoxWorldSpace
+00b2fc50   RELOCATION_MATCH PASS   RefreshD3DTransforms
+
+WINS: 3
+  0052eec0 RELOCATION_MATCH NUISystem::CComponent::GetTargetRelativeRenderPosition
+  00bc5ff0 MATCH CEngineInternalPrimitiveGroup::GetBoundingBoxWorldSpace
+  00b2fc50 RELOCATION_MATCH CEngineCamera::RefreshD3DTransforms

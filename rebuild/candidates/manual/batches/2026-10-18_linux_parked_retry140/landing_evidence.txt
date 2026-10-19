@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00908a20   RELOCATION_MATCH PASS   OnCreate
+00908b50   RELOCATION_MATCH PASS   OnCreate
+009092c0   RELOCATION_MATCH PASS   OnCreate
+009093f0   RELOCATION_MATCH PASS   OnCreate
+006ebdd0   RELOCATION_MATCH PASS   CreatureUnsheathWeapon
+0047756c   RELOCATION_MATCH PASS   CEngineLocalDetailObjectDef
+00477964   RELOCATION_MATCH PASS   operator=
+
+WINS: 7
+  00908a20 RELOCATION_MATCH CCombatSequence_VillagerCombo::OnCreate
+  00908b50 RELOCATION_MATCH CCombatSequence_VillagerComboUnblockable::OnCreate
+  009092c0 RELOCATION_MATCH CCombatSequence_WillPhysicalShield::OnCreate
+  009093f0 RELOCATION_MATCH CCombatSequence_WillPhysicalShieldNonMelee::OnCreate
+  006ebdd0 RELOCATION_MATCH CCombatManager::CreatureUnsheathWeapon
+  0047756c RELOCATION_MATCH CEngineLocalDetailObjectDef::??0CEngineLocalDetailObjectDef@@
+  00477964 RELOCATION_MATCH CEngineLocalDetailObjectDef::??4CEngineLocalDetailObjectDef@@
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CCombatSequenceVillagerCombo_OnCreate_00908a20
+  CCombatSequenceVillagerComboUnblockable_OnCreate_00908b50
+  CCombatSequenceWillPhysicalShield_OnCreate_009092c0
+  CCombatSequenceWillPhysicalShieldNonMelee_OnCreate_009093f0
+  CCombatManager_CreatureUnsheathWeapon_006ebdd0
+  CEngineLocalDetailObjectDef_CEngineLocalDetailObjectDef_0047756c
+  CEngineLocalDetailObjectDef_operator_00477964

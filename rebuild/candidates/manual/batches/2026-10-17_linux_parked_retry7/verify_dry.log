@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00992630   RELOCATION_MATCH PASS   UpdateCleanupFlags
+004ff390   WARN SHARED_HEADER_AVAILABLE CWorld
+004ff390   RELOCATION_MATCH PASS   UnloadAllMapsExceptPlayerPos
+009577e0   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 3
+  00992630 RELOCATION_MATCH CCamera::UpdateCleanupFlags
+  004ff390 RELOCATION_MATCH CWorldMap::UnloadAllMapsExceptPlayerPos
+  009577e0 RELOCATION_MATCH CAIStateGroupBehaviourBase::IsRunnable

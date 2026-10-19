@@ -1,0 +1,5 @@
+offset	type	retail_target	compiler_symbol
+002d	DISP32	0048d400	?GetAllWithTC@ThingSearchMethods@@QBEXABUHasTC@@AAUThingVector@@@Z
+006b	DISP32	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+0084	DISP32	00787740	?SetForceVisible@CTCBobNative@@QAEXXZ
+0096	DISP32	00bfea14	_free

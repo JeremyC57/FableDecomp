@@ -1,0 +1,13 @@
+offset	native_target	symbol
+00000003	01217308	__ehhandler$?GetDueCommand@NativeDeferredCommandQueue@@QAEJPAPAUDeferredCommandNative@@J@Z
+00000009	00000000	__except_list
+00000011	00000000	__except_list
+00000026	0143fe0c	__imp__EnterCriticalSection@4
+00000043	00cb13a0	?Get@NativeCommandList@@QBEPAUDeferredCommandNative@@PAUNativeCommandNode@@@Z
+0000005f	00cb13a0	?Get@NativeCommandList@@QBEPAUDeferredCommandNative@@PAUNativeCommandNode@@@Z
+0000009e	00cae170	?CheckTime@NativeDeferredCommandQueue@@QAEHVCRefTime@@H@Z
+000000b1	0143fe10	__imp__LeaveCriticalSection@4
+000000c0	0143feac	__imp__WaitForSingleObject@8
+000000dc	00000000	__except_list
+000000f9	0143fe10	__imp__LeaveCriticalSection@4
+0000010a	00000000	__except_list

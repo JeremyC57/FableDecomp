@@ -1,0 +1,170 @@
+owner	vtable	slot	target	declaration
+ScriptMethods	01238c8c	1	004aa8b0	const CCharString& GetName() const
+ScriptMethods	01238c8c	2	004aa8d0	CCharString GetDefName() const
+ScriptMethods	01238c8c	3	004aa900	CCharString GetDataString() const
+ScriptMethods	01238c8c	4	004aa930	void SetDataString(const CCharString&)
+ScriptMethods	01238c8c	5	004aa940	C3DVector GetFocalPos() const
+ScriptMethods	01238c8c	6	004aa980	const C3DVector& GetPos() const
+ScriptMethods	01238c8c	7	004aa9a0	C3DVector GetHomePos() const
+ScriptMethods	01238c8c	8	004aa9e0	CCharString GetCurrentMapName() const
+ScriptMethods	01238c8c	9	004aaa10	CCharString GetHomeMapName() const
+ScriptMethods	01238c8c	10	004aaa40	float GetAngleXY() const
+ScriptMethods	01238c8c	11	004aaa60	CThingNative* GetPThing() const
+ScriptMethods	01238c8c	12	004aaa70	unsigned __int64 GetPThingUniqueID() const
+ScriptMethods	01238c8c	13	004aaa90	EAIStateGroupTypeABI GetCurrentStateGroupType() const
+ScriptMethods	01238c8c	14	004aaaa0	EScriptAIPriorityABI GetCurrentScriptPriority() const
+ScriptMethods	01238c8c	15	004aaab0	bool IsSneaking() const
+ScriptMethods	01238c8c	16	004aaac0	bool IsAwareOfHero() const
+ScriptMethods	01238c8c	17	004aaad0	bool MsgIsTriggeredBy(const CCharString&) const
+ScriptMethods	01238c8c	18	004aaaf0	bool MsgIsKilledBy(const CCharString&) const
+ScriptMethods	01238c8c	19	004abe60	ScriptMethods MsgWhoKilledMe() const
+ScriptMethods	01238c8c	20	004aab10	bool MsgIsUsedBy(const CCharString&) const
+ScriptMethods	01238c8c	21	004aab30	bool MsgIsHitBy(const CCharString&) const
+ScriptMethods	01238c8c	22	004aab50	bool MsgIsHitByWithFlourish(const CCharString&) const
+ScriptMethods	01238c8c	23	004aab70	bool MsgIsHitByWithDecapitate(const CCharString&) const
+ScriptMethods	01238c8c	24	004aab90	bool MsgIsHitByWithWeapon(const CCharString&,const CCharString&) const
+ScriptMethods	01238c8c	25	004aabb0	bool MsgIsHitByWithProjectileWeapon(const CCharString&,float&) const
+ScriptMethods	01238c8c	26	004abec0	ScriptMethods MsgWhoHitMe() const
+ScriptMethods	01238c8c	27	004aabd0	bool MsgIsTalkedToBy(const CCharString&) const
+ScriptMethods	01238c8c	28	004abf00	ScriptMethods MsgWhoTalkedToMe() const
+ScriptMethods	01238c8c	29	004aabf0	bool MsgExpressionPerformedTo(CCharString&) const
+ScriptMethods	01238c8c	30	004abf40	ScriptMethods MsgWhoExpressedToMe() const
+ScriptMethods	01238c8c	31	004aac10	long MsgHowLongWasExpressionPerformed() const
+ScriptMethods	01238c8c	32	004aac20	bool MsgIsKnockedOutBy(const CCharString&) const
+ScriptMethods	01238c8c	33	004abf80	ScriptMethods MsgWhoKnockedMeOut() const
+ScriptMethods	01238c8c	34	004aac40	bool MsgReceivedMoney(long&) const
+ScriptMethods	01238c8c	35	004aac60	bool MsgIsPresentedWithItem(CCharString&) const
+ScriptMethods	01238c8c	36	004aac80	bool MsgReceivedInventoryItem() const
+ScriptMethods	01238c8c	37	004aaca0	bool MsgPerformedSpecialAbility(EHeroAbilityABI) const
+ScriptMethods	01238c8c	38	004aacc0	bool MsgPerformedAnySpecialAbility() const
+ScriptMethods	01238c8c	39	004aace0	bool MsgPerformedAnyAggressiveSpecialAbility() const
+ScriptMethods	01238c8c	40	004aad00	bool MsgPerformedAnyNonAggressiveSpecialAbility() const
+ScriptMethods	01238c8c	41	004aad20	bool MsgIsHitBySpecialAbilityFrom(EHeroAbilityABI,const CCharString&) const
+ScriptMethods	01238c8c	42	004aad40	bool MsgIsHitByAnySpecialAbilityFrom(const CCharString&) const
+ScriptMethods	01238c8c	43	004aad60	bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString&) const
+ScriptMethods	01238c8c	44	004aad80	bool MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(const CCharString&) const
+ScriptMethods	01238c8c	45	004aada0	bool MsgOpenedChest() const
+ScriptMethods	01238c8c	46	004aadc0	bool MsgHitEnemyWithMeleeWeapon() const
+ScriptMethods	01238c8c	47	004aade0	bool MsgHitFriendWithMeleeWeapon() const
+ScriptMethods	01238c8c	48	004aae00	bool MsgHitEnemyWithRangedWeapon() const
+ScriptMethods	01238c8c	49	004aae20	bool MsgHitFriendWithRangedWeapon() const
+ScriptMethods	01238c8c	50	004aae40	bool MsgHitEnemyWithBareHands() const
+ScriptMethods	01238c8c	51	004aae60	bool MsgHitFriendWithBareHands() const
+ScriptMethods	01238c8c	52	004aae80	bool MsgAttackedWithMeleeWeaponWithoutHittingAnything() const
+ScriptMethods	01238c8c	53	004aaea0	bool MsgAttackedWithBareHandsWithoutHittingAnything() const
+ScriptMethods	01238c8c	54	004aaec0	bool MsgTalkedToAnyone() const
+ScriptMethods	01238c8c	55	004aaee0	bool MsgGetThingsKilled(std::vector<unsigned long,std::allocator<unsigned long> >&) const
+ScriptMethods	01238c8c	56	004aaf00	bool MsgPerformedFlourish() const
+ScriptMethods	01238c8c	57	004aaf20	bool MsgPerformedSuccessfulFlourish() const
+ScriptMethods	01238c8c	58	004aaf40	bool MsgOnMoralityChanged(long&) const
+ScriptMethods	01238c8c	59	004aaf60	bool MsgOnCutSceneAnimEvent(CCharString&) const
+ScriptMethods	01238c8c	60	004aaf80	bool MsgIsKicked() const
+ScriptMethods	01238c8c	61	004aafa0	bool IsUnconscious() const
+ScriptMethods	01238c8c	62	004aafc0	bool IsUsable() const
+ScriptMethods	01238c8c	63	004aafe0	bool IsBeingCarriedBy(const CCharString&) const
+ScriptMethods	01238c8c	64	004ab000	bool IsOpenDoor() const
+ScriptMethods	01238c8c	65	004ab020	bool IsSummonedCreature() const
+ScriptMethods	01238c8c	66	004ab040	void SetAsUsable(bool)
+ScriptMethods	01238c8c	67	004ab060	void SetFriendsWithEverythingFlag(bool)
+ScriptMethods	01238c8c	68	004ab080	bool GetActivationTriggerStatus() const
+ScriptMethods	01238c8c	69	004ab0a0	void SetActivationTriggerStatus(bool)
+ScriptMethods	01238c8c	70	004ab0c0	void SetToKillOnLevelUnload(bool)
+ScriptMethods	01238c8c	71	004ab0e0	void UpdateThingAttachment()
+ScriptMethods	01238c8c	72	004ab0f0	void IncrementScriptCounter()
+ScriptMethods	01238c8c	73	004ab100	void DecrementScriptCounter()
+ScriptMethods	01238c8c	74	004ab110	long GetScriptCounter()
+ScriptMethods	01238c8c	75	004ab130	bool IsAlive() const
+ScriptMethods	01238c8c	76	004aa890	bool IsDead() const
+ScriptMethods	01238c8c	77	004ab150	bool IsNull() const
+ScriptMethods	01238c8c	78	004aa8a0	bool IsEqualTo(const ScriptMethods&) const
+GameMethods	01260f0c	1	0088de00	void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const
+GameMethods	01260f0c	2	006e7d20	void TraceMessage(CCharString const &) const
+GameMethods	01260f0c	3	006e72a0	void Validate(void) const
+GameMethods	01260f0c	4	0088e0f0	void SetDebugCameraType(long) const
+GameMethods	01260f0c	5	008a0c60	void DeactivateBoastUi(void) const
+GameMethods	01260f0c	6	0088e100	bool IsXbox(void) const
+GameMethods	01260f0c	7	006e7410	void NewScriptFrame(void) const
+GameMethods	01260f0c	8	0089b5b0	bool StartScriptingEntity(ScriptMethods const &, CScriptGameResourceObjectScriptedThingBase &, EScriptAIPriorityABI)
+GameMethods	01260f0c	9	008960c0	bool IsEntityUnderScriptedControl(ScriptMethods const &) const
+GameMethods	01260f0c	10	006e71b0	bool IsActiveThreadTerminating(void) const
+GameMethods	01260f0c	11	0088e2a0	bool IsLevelLoaded(CCharString const &) const
+GameMethods	01260f0c	12	0088e300	bool IsRegionLoaded(CCharString const &) const
+GameMethods	01260f0c	13	00890550	bool IsRegionLoadedAndPreloaded(CCharString const &) const
+GameMethods	01260f0c	14	00891db0	bool IsRegionDefLoaded(CCharString const &) const
+GameMethods	01260f0c	15	0088e340	CCharString const & GetRegionName(void) const
+GameMethods	01260f0c	16	008931b0	bool MsgIsLevelLoaded(CCharString const &) const
+GameMethods	01260f0c	17	00893240	bool MsgIsLevelUnloaded(CCharString const &) const
+GameMethods	01260f0c	18	0089ac10	bool MsgOnLevelLoaded(std::list<CCharString, std::allocator<CCharString> > &) const
+GameMethods	01260f0c	19	0089ac80	bool MsgOnLevelUnloaded(std::list<CCharString, std::allocator<CCharString> > &) const
+GameMethods	01260f0c	20	008932d0	bool MsgIsRegionLoaded(CCharString const &) const
+GameMethods	01260f0c	21	00893360	bool MsgIsRegionUnloaded(CCharString const &) const
+GameMethods	01260f0c	22	008933f0	bool MsgOnRegionLoaded(CCharString &) const
+GameMethods	01260f0c	23	00893470	bool MsgOnRegionUnloaded(CCharString &) const
+GameMethods	01260f0c	24	008934f0	bool MsgOnRegionPreunload(CCharString &) const
+GameMethods	01260f0c	25	00893570	bool MsgOnQuestCompleted(CCharString const &) const
+GameMethods	01260f0c	26	00893610	bool MsgOnAnyQuestCompleted(CCharString &) const
+GameMethods	01260f0c	27	00893690	bool MsgOnQuestFailed(CCharString const &) const
+GameMethods	01260f0c	28	00893730	bool MsgOnQuestCompletedBeforeScreenShown(CCharString const &) const
+GameMethods	01260f0c	29	008937d0	bool MsgOnQuestFailedBeforeScreenShown(CCharString const &) const
+GameMethods	01260f0c	30	00893870	bool MsgOnQuestAccepted(CCharString &) const
+GameMethods	01260f0c	31	008938f0	bool MsgOnFeatAccepted(long &) const
+GameMethods	01260f0c	32	00893960	bool MsgIsBoastMade(long) const
+GameMethods	01260f0c	33	008939d0	bool MsgOnBoastMade(long &, CCharString &) const
+GameMethods	01260f0c	34	008a9ae0	bool MsgOnBoastsMade(std::vector<std::pair<long, CCharString>, std::allocator<std::pair<long, CCharString> > > &) const
+GameMethods	01260f0c	35	00893a50	void RemoveBoastMessage(void) const
+GameMethods	01260f0c	36	0089ad90	bool IsQuestStartScreenActive(CCharString &) const
+GameMethods	01260f0c	37	0089ae30	bool MsgOnLeavingQuestStartScreen(CCharString &) const
+GameMethods	01260f0c	38	00893ab0	bool MsgOnLeavingExperienceSpendingScreen(void) const
+GameMethods	01260f0c	39	00894300	long MsgIsQuestionAnsweredYesOrNo(void) const
+GameMethods	01260f0c	40	00894370	bool MsgIsGameInfoClickedPast(void) const
+GameMethods	01260f0c	41	008943c0	bool MsgIsTutorialClickedPast(void) const
+GameMethods	01260f0c	42	00894440	bool MsgIsActionModeButtonPressed(void) const
+GameMethods	01260f0c	43	00893b00	bool MsgOnExpressionPerformed(CCharString &) const
+GameMethods	01260f0c	44	00893ba0	bool MsgIsCutSceneSkipped(void) const
+GameMethods	01260f0c	45	0089af30	void RemoveAllCutSceneSkippedMessages(void) const
+GameMethods	01260f0c	46	00893c00	bool MsgOnHeroHairTypeChanged(EClothingCoversArea, CCharString &) const
+GameMethods	01260f0c	47	00893d80	bool MsgOnHeroUsedTeleporter(CCharString &) const
+GameMethods	01260f0c	48	00893e20	bool MsgOnHeroUsedGuildSeal(void) const
+GameMethods	01260f0c	49	00893e70	bool MsgOnGameSavedManually(void) const
+GameMethods	01260f0c	50	00893ec0	bool MsgOnHeroSlept(bool &) const
+GameMethods	01260f0c	51	00893f30	bool MsgOnHeroFiredRangedWeapon(void) const
+GameMethods	01260f0c	52	00893f80	bool MsgOnHeroCastSpell(EHeroAbilityABI &) const
+GameMethods	01260f0c	53	00893ff0	bool MsgOnHeroPickedPocket(ScriptMethods &) const
+GameMethods	01260f0c	54	00894080	bool MsgOnHeroPickedLock(ScriptMethods &) const
+GameMethods	01260f0c	55	00894110	bool MsgOnFishingGameFinished(ScriptMethods &) const
+GameMethods	01260f0c	56	008941a0	bool MsgOnTavernGameFinished(ScriptMethods const &) const
+GameMethods	01260f0c	57	00894250	bool MsgOnHeroRewardedWithItemsFrom(CCharString &) const
+GameMethods	01260f0c	58	008942c0	bool MsgOnChestOpeningCancelled(void) const
+GameMethods	01260f0c	59	0088e380	void DontPopulateNextLoadedRegion(void) const
+GameMethods	01260f0c	60	0088e390	void GetWanderingPopulationScriptDefNameInCurrentRegion(CCharString &) const
+GameMethods	01260f0c	61	00891e30	void GetWanderingPopulationScriptDefNameInRegion(CCharString const &, CCharString &) const
+GameMethods	01260f0c	62	00891ea0	bool IsHeroAllowedHenchmenInCurrentRegion(void) const
+GameMethods	01260f0c	63	00891ef0	bool IsHeroAllowedHenchmenInRegion(CCharString const &) const
+GameMethods	01260f0c	64	006e7460	void PostAddScriptedEntities(void) const
+GameMethods	01260f0c	65	008905b0	bool IsPlayerHoldingUnsheatheRangedWeaponButton(void) const
+GameMethods	01260f0c	66	008905e0	bool IsPlayerHoldingLockTargetButton(void) const
+GameMethods	01260f0c	67	00890610	bool IsPlayerHoldingFireRangedWeaponButton(void) const
+GameMethods	01260f0c	68	00890640	bool IsPlayerHoldingFirstPersonTargetingButton(void) const
+GameMethods	01260f0c	69	00890670	bool IsHeroInProjectileWeaponMode(void) const
+GameMethods	01260f0c	70	00891ca0	ScriptMethods & GetHero(void)
+GameMethods	01260f0c	71	0089a490	ScriptMethods GetHeroTargetedThing(void) const
+GameMethods	01260f0c	72	008a7d60	ScriptMethods GetThingWithScriptName(CCharString const &) const
+GameMethods	01260f0c	73	008930f0	ScriptMethods GetThingWithScriptName(CCharString const &, CCharString const &) const
+GameMethods	01260f0c	74	008a7e00	ScriptMethods GetRandomThingWithScriptName(CCharString const &) const
+GameMethods	01260f0c	75	008a8570	long GetAllThingsWithScriptName(CCharString const &, std::vector<ScriptMethods, std::allocator<ScriptMethods> > &) const
+GameMethods	01260f0c	76	008a86c0	long GetAllCreaturesInAreaWithScriptName(CCharString const &, C3DVector const &, float, std::vector<ScriptMethods, std::allocator<ScriptMethods> > &) const
+GameMethods	01260f0c	77	0089a510	ScriptMethods GetNearestWithScriptName(ScriptMethods const &, CCharString const &) const
+GameMethods	01260f0c	78	0089a6e0	ScriptMethods GetFurthestWithScriptName(ScriptMethods const &, CCharString const &) const
+GameMethods	01260f0c	79	008a9c40	long GetAllThingsWithDefNameByDistanceFrom(ScriptMethods const &, CCharString const &, std::vector<ScriptMethods, std::allocator<ScriptMethods> > &) const
+GameMethods	01260f0c	80	008a8890	long GetAllThingsWithDefName(CCharString const &, std::vector<ScriptMethods, std::allocator<ScriptMethods> > &) const
+GameMethods	01260f0c	81	0089a880	ScriptMethods GetNearestWithDefName(ScriptMethods const &, CCharString const &) const
+GameMethods	01260f0c	82	0089aa70	ScriptMethods GetFurthestWithDefName(ScriptMethods const &, CCharString const &) const
+GameMethods	01260f0c	83	00891d50	ScriptMethods GetThingWithUID(unsigned __int64) const
+GameMethods	01260f0c	84	008a89d0	long GetAllCreaturesExcludingHero(std::vector<ScriptMethods, std::allocator<ScriptMethods> > &) const
+GameMethods	01260f0c	85	008a8af0	long GetAllThingsInLevel(CCharString const &, std::vector<ScriptMethods, std::allocator<ScriptMethods> > &) const
+GameMethods	01260f0c	86	0088e260	bool IsThingWithThisUIDAlive(unsigned __int64) const
+GameMethods	01260f0c	87	006e79e0	long RegisterTimer(void)
+GameMethods	01260f0c	88	006e7690	void DeregisterTimer(long)
+GameMethods	01260f0c	89	006e76e0	void SetTimer(long, long)
+GameMethods	01260f0c	90	006e7710	long GetTimer(long) const
+GameMethods	01260f0c	91	008a9100	ScriptMethods CreateCreature(CCharString const &, C3DVector const &, CCharString const &, bool) const

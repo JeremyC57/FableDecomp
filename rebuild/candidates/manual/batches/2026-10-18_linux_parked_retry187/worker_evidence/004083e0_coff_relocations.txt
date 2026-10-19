@@ -1,0 +1,75 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/evidence/004083e0.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?AddReference@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?DecRef@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetRefCount@CIVCountedPointeeBase@@QBEJXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@QAE@ABU0@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?RemoveReference@CIVCountedPointeeBase@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CDefPointer@UCDefClassBase@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000f DISP32            ?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AU?$CDefPointer@UCDefClassBase@@@@J@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ?g_pMainGameComponent@@3PAXA
+00000016 dir32             ??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@
+0000001f DISP32            ??0CCharString@@QAE@PBDJ@Z
+0000002b DISP32            ?GetGameDefinitionManager@@YIPAUCDefinitionManager@@XZ
+00000032 DISP32            ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+0000003d DISP32            ??1CCharString@@QAE@XZ
+00000048 DISP32            ?GetGameDefinitionManager@@YIPAUCDefinitionManager@@XZ
+0000004f dir32             ?g_pFrontendRuntime@@3PAXA
+0000005a dir32             ??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@
+00000063 DISP32            ??0CCharString@@QAE@PBDJ@Z
+0000006f DISP32            ?GetFrontendDefinitionManager@@YIPAUCDefinitionManager@@XZ
+00000076 DISP32            ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+00000081 DISP32            ??1CCharString@@QAE@XZ
+0000008c DISP32            ?GetFrontendDefinitionManager@@YIPAUCDefinitionManager@@XZ
+00000093 DISP32            ?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@XZ

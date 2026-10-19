@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00a66450   RELOCATION_MATCH PASS   Allocate
+00a662a0   RELOCATION_MATCH PASS   Deallocate
+
+WINS: 2
+  00a66450 RELOCATION_MATCH CMemoryAllocatorFixedSize::Allocate
+  00a662a0 RELOCATION_MATCH CMemoryAllocatorFixedSize::Deallocate
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CMemoryAllocatorFixedSize_Allocate_00a66450
+  CMemoryAllocatorFixedSize_Deallocate_00a662a0

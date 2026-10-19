@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b6d510   RELOCATION_MATCH PASS   InitialiseDynamicTextures
+00bf3380   RELOCATION_MATCH PASS   BuildNewBuffer
+
+WINS: 2
+  00b6d510 RELOCATION_MATCH CEngineWaterRenderer::InitialiseDynamicTextures
+  00bf3380 RELOCATION_MATCH CEngineVertexBufferPool::BuildNewBuffer

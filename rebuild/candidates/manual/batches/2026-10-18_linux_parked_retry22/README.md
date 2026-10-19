@@ -1,0 +1,9 @@
+# Two more skipped-row recoveries
+
+0094f730 CAIStateGroup_BalverineJumpAtFleeingEnemy::Update (230 bytes), matched on first author grade. The neighboring recovered action flow identifies lunge, break-off and temporary destruction; shared state/brain headers supply members. The five-second deadline uses the frame-rate snapshot before the frame getter. Actual-source fixtures check initial absent/dead target, first-action results0/2/4, target clearing/death during the first action, second-action results, refreshed creature, exact constructor/action/destructor/terminate order, and frame-rate mutation inside the clock callback. Host uses -fpermissive for the same VC7.1 temporary-address extension as retry21.
+
+00bc3410 CEnginePrimitiveManagerParticleMeshGroup::CreateInternalPrimitive (189 bytes), matched after correcting the bounding sphere to PDB-proven float members at author grade6. The earlier long-member model is rejected. RTTI confirms group/mesh/intermediate vtables. Local virtual base shells retain one compiler vptr, unlike the shared headers' explicit vptr data members. Retail containers explain group0xe8 versus donor0xfc. Coordinator integration grade7 uses target-equivalent size_t allocation signatures and actual shared manager storage in target tests.
+
+Factory fixtures execute the actual source, substituting only external allocation dependencies and the base constructor. They check both factory types, constructor arguments/receiver, allocation sizes and order, sentinel initialization, iterator/sphere zeros, failure of each outer new, and unsupported types. Host uses -fcheck-new to preserve VC7.1's null-returning new semantics. Memory starts poisoned; the second list allocation observes all prior initialization. Tests free all fixture allocations.
+
+Both host and canonical VC7.1/Wine fixtures PASS; independent RELOCATION_MATCH. Final landing evidence: landing_evidence.txt.

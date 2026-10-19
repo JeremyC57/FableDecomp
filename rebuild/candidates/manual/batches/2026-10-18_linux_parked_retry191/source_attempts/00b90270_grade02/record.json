@@ -1,0 +1,14 @@
+{
+  "address": "00b90270",
+  "source": "work/codex-lane/w22/luna236_whole/attempts/00b90270/grade02/source.cpp",
+  "sha256": "8e4c0118c549ba7237f9aa7ea4d74d4a87e0f7f217464ef1675940e8f3ae3017",
+  "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b90270 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b90270/grade02/source.cpp CEnginePrimitiveManagerOcclusionBase\n",
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "log": "work/codex-lane/w22/luna236_whole/attempts/00b90270/grade02/stdout.txt",
+  "status": "00b90270 CEnginePrimitiveManagerOcclusionBase RELOCATION_MATCH flags= []",
+  "kind": "source_grade"
+}

@@ -1,0 +1,24 @@
+{
+  "address": "0053d3b0",
+  "author_grades": 1,
+  "root_grade": 1,
+  "cumulative": 2,
+  "source": "work/codex-lane/w22/coordinator_retry192/root_amendments/src/0053d3b0.cpp",
+  "sha256": "b1ec65cf7e9c09d2b84390b240660466bc0fee47274852e26e85fa40924d6036",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "work/codex-lane/tools/q.py",
+    "0053d3b0",
+    "work/codex-lane/w22/coordinator_retry192/root_amendments/src/0053d3b0.cpp",
+    "ChangeState"
+  ],
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "reason": "Void local release helper renamed ReleaseReference: genuine original CIV pointee Release returns signed long, so descriptive void helper must not pretend that exact original signature. Algorithm unchanged.",
+  "utc": "2026-10-19T01:23:16.289133+00:00"
+}

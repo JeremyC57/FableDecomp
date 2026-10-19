@@ -1,0 +1,5 @@
+CThing	168	161	uchar:1	Dead
+CThing	168	161	uchar:1	Activated
+CThing	168	162	uchar:1	GameStatePersisted
+CThing	168	163	uchar:1	ActivatedScript
+Native setter91bit3; nativeKill testsDead91bit0. DonorA1 Activatedbit3 vsA2 GameStatePersistedbit5. Existing4C7770canonicalnameheldforseparatecorrection.

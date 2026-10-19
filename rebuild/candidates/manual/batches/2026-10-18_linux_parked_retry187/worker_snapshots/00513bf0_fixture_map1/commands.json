@@ -1,0 +1,41 @@
+[
+  {
+    "source_sha256": "d1e3a3dccf5368c58ec37e0e939e2fdb0facc34f491a9118e66d6057d91088e8",
+    "command": [
+      "g++",
+      "-std=c++98",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/fixture.cpp",
+      "-o",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/O2"
+    ]
+  },
+  {
+    "source_sha256": "d1e3a3dccf5368c58ec37e0e939e2fdb0facc34f491a9118e66d6057d91088e8",
+    "command": [
+      "g++",
+      "-std=c++98",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-fno-elide-constructors",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/fixture.cpp",
+      "-o",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/noelide"
+    ]
+  },
+  {
+    "source_sha256": "d1e3a3dccf5368c58ec37e0e939e2fdb0facc34f491a9118e66d6057d91088e8",
+    "command": [
+      "cl.exe",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/W3",
+      "/Fo/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/native.obj",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/fixture.cpp"
+    ]
+  }
+]

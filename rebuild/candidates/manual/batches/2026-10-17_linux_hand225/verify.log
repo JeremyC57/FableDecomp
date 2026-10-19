@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0063a540   DIFFER(134v161)  PASS   GetThemeMinCameraSizeZOffsetAt
+0063a850   RELOCATION_MATCH PASS   GetWaterSizeZAtBlock
+0063d8a0   DIFFER(157v183)  PASS   GetPGameMapCellAt
+009f1560   DIFFER(179v185)  PASS   Kill
+00ad7400   DIFFER(197v197)  PASS   KillLarge
+
+WINS: 1
+  0063a850 RELOCATION_MATCH CWorldMap::GetWaterSizeZAtBlock
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_GetWaterSizeZAtBlock_0063a850

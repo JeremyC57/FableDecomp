@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00519b80   WARN SHARED_HEADER_AVAILABLE CRegion
+00519b80   RELOCATION_MATCH PASS   operator=
+0051a900   WARN SHARED_HEADER_AVAILABLE CRegion
+0051a900   RELOCATION_MATCH PASS   CRegion
+
+WINS: 2
+  00519b80 RELOCATION_MATCH CRegion::operator=
+  0051a900 RELOCATION_MATCH CRegion::CRegion
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CRegion_operator_00519b80
+  CRegion_CRegion_0051a900

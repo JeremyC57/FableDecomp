@@ -1,0 +1,17 @@
+{
+  "engine/CManager.h": "b16fc0b4a8fbf3693392e62ef43321c5331242e32ff36782853cac831560731a",
+  "engine/CDefinitionManager.h": "ee32cbbb2ed8f8691084f5da341b624574df1fbac187f04ae2fb9df70df9bea8",
+  "engine/CIVCountedPointeeBase.h": "2bcf05c3a6e9b3cc0f749b6a9369d1dc41a10977f17e045129912c9ebb143368",
+  "fable_string.h": "a4e6558e52c53a15d535dc5626c0ac2307a69ca548a1a779473df275054eaaba",
+  "fable_game.h": "72319674fb08e5b7a82d4702aa675539b8b1453f8851f7e0cbdd75d918671c65",
+  "engine/CDisplayEngine.h": "fb734f9eeed7341fd19e97ea53d8edbc041454d87fc1af8b9e7a4ab7d540a4eb",
+  "engine/CSurface.h": "882e40c19516b507eac5f970af3e0351fafda40a40b29b91c344cfd46c7ca1f8",
+  "engine/CPixelFormat.h": "2c3aac7057a29145f16e3a965da0abc18d0eb7d788ecbcae76d8005b751ffc4f",
+  "engine/CWorld.h": "c3620fc62b6d86425c41a189b2a61a80b1f1b542966120cc948dcfa6461c6b9f",
+  "engine/_quarantine/CGameDefinitionManager.h": "675dec8554b99ded1bcb3ab6d4acb686524e972b924b8bfc1bd33ccef9ddbc5c",
+  "engine/CPlayerManager.h": "b9ee02034e9efa783c576dd7157873a3c32db6908b33555ea4d98a32891d65c7",
+  "engine/CGamePlayerInterface.h": "72c07e2ec94faccfbca6a2832274008e82af0af047be9af51382bae00dfd20b0",
+  "engine/CNetworkClient.h": "9bd5c0edd13ac17e7f0e0b6c86ff0af6c8fd2fc55cfa625d2a46f3b4fd685d99",
+  "engine/CDiskFileWin32.h": "1e42177e82cf02513eff878bd256f8982d8faa80a4c089c4de57c38350df4c33",
+  "engine/CFontBank.h": "bcdcc792165295262ba36b8f8c14ba3db634b60055d0a513130fed9d8bc6c888"
+}

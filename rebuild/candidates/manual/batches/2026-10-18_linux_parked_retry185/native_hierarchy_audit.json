@@ -1,0 +1,50 @@
+{
+  "0x129c0e0": [
+    [
+      ".?AVCMaintainedEvent@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x129c964": [
+    [
+      ".?AVCHandleBasedMemoryPool@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x129d3a4": [
+    [
+      ".?AVCData@CLipSyncDataBankEntry@@",
+      0
+    ],
+    [
+      ".?AVCResource@@",
+      0
+    ],
+    [
+      ".?AVCIVCountedPointeeBase@@",
+      0
+    ]
+  ],
+  "0x12354a4": [
+    [
+      ".?AVCResource@@",
+      0
+    ],
+    [
+      ".?AVCIVCountedPointeeBase@@",
+      0
+    ]
+  ]
+}

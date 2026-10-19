@@ -1,0 +1,161 @@
+{
+  "counted_source_grades": 9,
+  "per_address": {
+    "00a65590": 2,
+    "009fe8e0": 4,
+    "00b90270": 3
+  },
+  "excluded_infrastructure": "luna236_whole/attempts/00b90270/grade03: Wine socket PermissionError before compiler, preserved; directory04 is counted sourcegrade3.",
+  "records": [
+    {
+      "address": "00a65590",
+      "source": "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_01_001/source.cpp",
+      "sha256": "df5b60877261ebd2a5d0d46ca8b9038224a62f0c309d68dfc9923251d8b609c8",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00a65590",
+        "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_01_001/source.cpp",
+        "ConsolidateAdjacentFreeAreas"
+      ],
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_01_001/stdout.txt",
+      "status": "00a65590 ConsolidateAdjacentFreeAreas DIFFER(248v248) flags= []",
+      "kind": "source_grade"
+    },
+    {
+      "address": "00a65590",
+      "source": "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_02_002/source.cpp",
+      "sha256": "a5f2e520daf51dfd00a843db0c1f1a270f3f585ec5146da3cc9fcb6863fda7fd",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+        "00a65590",
+        "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_02_002/source.cpp",
+        "ConsolidateAdjacentFreeAreas"
+      ],
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_02_002/stdout.txt",
+      "status": "00a65590 ConsolidateAdjacentFreeAreas RELOCATION_MATCH flags= []",
+      "kind": "source_grade"
+    },
+    {
+      "address": "009fe8e0",
+      "source": "work/codex-lane/w22/astra239_whole/snapshots/009fe8e0_01/source.cpp",
+      "sha256": "eb9275d1483fd6479523ac74dbf88732a0dad46981b42fa277ac47ab25874e28",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009fe8e0 work/codex-lane/w22/astra239_whole/src/009fe8e0.cpp UnloadFrame",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "work/codex-lane/w22/astra239_whole/snapshots/009fe8e0_01/grade.log",
+      "status": "009fe8e0 UnloadFrame DIFFER(288v277) flags= []",
+      "kind": "source_grade"
+    },
+    {
+      "address": "009fe8e0",
+      "source": "work/codex-lane/w22/astra239_whole/snapshots/009fe8e0_02/source.cpp",
+      "sha256": "53d3e3f22a58fa6a14a0330e1a28e6a809a9ac739988e145cd557f990112b5b7",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009fe8e0 work/codex-lane/w22/astra239_whole/src/009fe8e0.cpp UnloadFrame",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "work/codex-lane/w22/astra239_whole/snapshots/009fe8e0_02/grade.log",
+      "status": "009fe8e0 UnloadFrame DIFFER(279v277) flags= []",
+      "kind": "source_grade"
+    },
+    {
+      "address": "009fe8e0",
+      "source": "work/codex-lane/w22/astra239_whole/snapshots/009fe8e0_03/source.cpp",
+      "sha256": "6575d254e264f5a4db27ff6a1ccd3ce47990e64c2b4989f5f1f508071dac1120",
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009fe8e0 work/codex-lane/w22/astra239_whole/src/009fe8e0.cpp UnloadFrame",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "work/codex-lane/w22/astra239_whole/snapshots/009fe8e0_03/grade.log",
+      "status": "009fe8e0 UnloadFrame RELOCATION_MATCH flags= []",
+      "kind": "source_grade"
+    },
+    {
+      "address": "00b90270",
+      "source": "work/codex-lane/w22/luna236_whole/attempts/00b90270/grade01/source.cpp",
+      "sha256": "77aad57c692790e13400e840c7652d54002a91e6abe3460c9321ebefb7be2489",
+      "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b90270 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b90270/grade01/source.cpp CEnginePrimitiveManagerOcclusionBase\n",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "work/codex-lane/w22/luna236_whole/attempts/00b90270/grade01/stdout.txt",
+      "status": "00b90270 CEnginePrimitiveManagerOcclusionBase DIFFER(272v274) flags= []",
+      "kind": "source_grade"
+    },
+    {
+      "address": "00b90270",
+      "source": "work/codex-lane/w22/luna236_whole/attempts/00b90270/grade02/source.cpp",
+      "sha256": "8e4c0118c549ba7237f9aa7ea4d74d4a87e0f7f217464ef1675940e8f3ae3017",
+      "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b90270 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b90270/grade02/source.cpp CEnginePrimitiveManagerOcclusionBase\n",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "work/codex-lane/w22/luna236_whole/attempts/00b90270/grade02/stdout.txt",
+      "status": "00b90270 CEnginePrimitiveManagerOcclusionBase RELOCATION_MATCH flags= []",
+      "kind": "source_grade"
+    },
+    {
+      "address": "00b90270",
+      "source": "work/codex-lane/w22/luna236_whole/attempts/00b90270/grade04/source.cpp",
+      "sha256": "269532ba0d46fa04dd546c57b50ea177d3a2818206fa758d17594e3c5ab81219",
+      "command": "timeout 200 python3 /workspace/FableDecomp/work/codex-lane/tools/q.py 00b90270 /workspace/FableDecomp/work/codex-lane/w22/luna236_whole/attempts/00b90270/grade04/source.cpp CEnginePrimitiveManagerOcclusionBase\n",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "work/codex-lane/w22/luna236_whole/attempts/00b90270/grade04/stdout.txt",
+      "status": "00b90270 CEnginePrimitiveManagerOcclusionBase RELOCATION_MATCH flags= []",
+      "kind": "source_grade"
+    },
+    {
+      "address": "009fe8e0",
+      "source": "work/codex-lane/w22/coordinator_retry191/root_amendments/src/009fe8e0.cpp",
+      "sha256": "3b6ec7379110134ffef53dd84aa7642c4057fa0598be6ac9f6925af785f996c6",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "work/codex-lane/tools/q.py",
+        "009fe8e0",
+        "work/codex-lane/w22/coordinator_retry191/root_amendments/src/009fe8e0.cpp",
+        "UnloadFrame"
+      ],
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "log": "work/codex-lane/w22/coordinator_retry191/root_amendments/grade.log",
+      "status": "009fe8e0 UnloadFrame RELOCATION_MATCH flags= []",
+      "kind": "root_source_grade"
+    }
+  ]
+}

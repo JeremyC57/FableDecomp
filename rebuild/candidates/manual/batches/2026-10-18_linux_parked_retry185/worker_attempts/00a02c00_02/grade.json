@@ -1,0 +1,11 @@
+{
+  "snapshot": 2,
+  "source_grade": 2,
+  "sha256": "16cc6af1d22f0aea85e01ec7e97c75e7c7eb5fea86ce7ae8362ec56efa78b3f1",
+  "command": "timeout 200 python3 work/codex-lane/tools/q.py 00a02c00 work/codex-lane/w22/astra239_whole/src/00a02c00.cpp GrowFreeArea",
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ]
+}

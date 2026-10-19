@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008717a0   RELOCATION_MATCH PASS   Dispatch
+00717d40   RELOCATION_MATCH PASS   CActionTalkToThing
+
+WINS: 2
+  008717a0 RELOCATION_MATCH CActionEventExplosion::Dispatch
+  00717d40 RELOCATION_MATCH CActionTalkToThing::??0CActionTalkToThing

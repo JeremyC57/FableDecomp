@@ -1,0 +1,13 @@
+[
+  {
+    "address": "00692f30",
+    "src": {
+      "path": "work/codex-lane/w22/luna233_whole/src/00692f30.cpp",
+      "sha256": "08c9f11c21ebefedd9fe58679859af17928b1d0dfdf059d7806edc643169e61b"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/luna233_whole/test/00692f30.cpp",
+      "sha256": "2edcde13da2a33be75a037757c8fbe383c0f8045eac46fa91f49c0532c8bfdcd"
+    }
+  }
+]

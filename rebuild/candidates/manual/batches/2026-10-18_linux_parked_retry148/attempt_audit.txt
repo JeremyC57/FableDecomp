@@ -1,0 +1,1 @@
+Seven new grades across two rows: CE6B10 new1 ready, AF4E10 new6 capped. Eight historical UNCERTAIN reservations, five unused new allowances. AF4E10 additionally has an audited malloc-versus-new semantic error; ungraded correction preserved.

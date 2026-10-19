@@ -1,0 +1,17 @@
+offset	native_target	symbol
+00000014	00833a10	?SuspendAI@ThingNative@@QAEX_NPAX@Z
+0000001e	007a3bc0	??0HitParameters@@QAE@XZ
+0000002e	00868ca0	?AddDamageWithAttribute@HitParameters@@QAEXW4EDamageAttribute@@M@Z
+0000003b	008685f0	?SetThingHitting@HitParameters@@QAEXAAUThingNative@@@Z
+00000053	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+00000074	004c9840	?RemoveTC@ThingNative@@QAEXW4ETCInterfaceType@@@Z
+0000009d	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+000000a9	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+000000bb	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+000000c2	004c9b80	?Kill@ThingNative@@QAEX_N@Z
+000000cf	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+000000da	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+000000ec	00a01b50	?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ
+000000f3	004c9b80	?Kill@ThingNative@@QAEX_N@Z
+000000fa	00861d00	?OnDeactivate@ModeStandNative@@QAEXXZ
+00000103	00789358	??1HitParameters@@QAE@XZ

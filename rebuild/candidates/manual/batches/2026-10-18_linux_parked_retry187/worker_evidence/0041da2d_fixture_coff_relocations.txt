@@ -1,0 +1,210 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll2/native.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?IsDragged@CComponent@NUISystem@@QAE_NXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetScrollBar@CComponent@NUISystem@@QAEPAU12@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetScrollingSpeed@CScrollingViewport@NUISystem@@QAEMXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a dir32             ?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A
+00000093 dir32             ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+000000bb dir32             ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+000000ce dir32             __real@41c80000
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             _componentTable
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0ComponentDouble@NUISystem@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _dragCalls
+00000008 dir32             _sequence
+0000000e dir32             _changeActive
+00000017 dir32             ?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A
+0000001d dir32             _dragged
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Drag@ComponentDouble@NUISystem@@QAE_NXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _barCalls
+00000008 dir32             _sequence
+0000000e dir32             _changeHead
+00000016 dir32             _replacementHead
+0000001b dir32             ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+00000020 dir32             _returnedBar
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Bar@ComponentDouble@NUISystem@@QAEPAUCComponent@2@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 dir32             _deltaCalls
+0000000b dir32             _sequence
+00000011 dir32             _expectedDeltaObject
+00000019 dir32             __real@00000000
+0000002d dir32             _expectedDelta
+0000003f dir32             __real@00000000
+00000057 dir32             _good
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000b dir32             _viewportTable
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0ViewportDouble@NUISystem@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _speedCalls
+00000008 dir32             _sequence
+0000000e dir32             _expectedViewport
+00000016 dir32             _good
+0000001d dir32             __real@40000000
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Speed@ViewportDouble@NUISystem@@QAEMXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             _managerTable
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0ManagerDouble@NUISystem@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 dir32             _eventCalls
+0000000e dir32             _sequence
+00000014 dir32             _expectedEvent
+0000001c dir32             _expectedOffset
+00000031 dir32             _good
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000003 dir32             _sequence
+00000008 dir32             _deltaCalls
+0000000d dir32             _eventCalls
+00000012 dir32             _speedCalls
+00000017 dir32             _barCalls
+0000001c dir32             _dragCalls
+00000021 dir32             _changeHead
+00000026 dir32             _changeActive
+0000002b dir32             _dragged
+00000030 dir32             _returnedBar
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?reset@NUISystem@@YAXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a dir32             _componentTable
+00000049 dir32             _componentTable
+0000004d dir32             ?Drag@ComponentDouble@NUISystem@@QAE_NXZ
+00000053 dir32             _componentTable
+00000057 dir32             ?Bar@ComponentDouble@NUISystem@@QAEPAUCComponent@2@XZ
+0000005d dir32             _componentTable
+00000061 dir32             ?Delta@ComponentDouble@NUISystem@@QAEXABUC2DVector@@M_N@Z
+00000067 dir32             _viewportTable
+0000006b dir32             ?Speed@ViewportDouble@NUISystem@@QAEMXZ
+00000071 dir32             _managerTable
+00000075 dir32             ?Event@ManagerDouble@NUISystem@@QAEXW4EEvent@2@@Z
+0000007f dir32             _viewportTable
+00000089 dir32             _managerTable
+0000008e dir32             _replacementHead
+000000ce DISP32            ?reset@NUISystem@@YAXXZ
+000000d9 dir32             ?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A
+000000de dir32             _expectedViewport
+0000011b dir32             _expectedOffset
+00000123 dir32             _expectedEvent
+0000012b dir32             _changeActive
+00000130 DISP32            ?ScrollMenu@CManager@NUISystem@@QAEXJ@Z
+00000136 dir32             _dragCalls
+00000142 dir32             _speedCalls
+0000014f dir32             _eventCalls
+0000015c dir32             _barCalls
+00000169 dir32             _deltaCalls
+0000017a dir32             __real@bf800000
+00000182 dir32             __real@42f60000
+000001b2 DISP32            ?reset@NUISystem@@YAXXZ
+000001d0 dir32             ?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A
+000001d6 dir32             _dragged
+000001e3 DISP32            ?ScrollMenu@CManager@NUISystem@@QAEXJ@Z
+000001e9 dir32             _dragCalls
+000001f7 dir32             _speedCalls
+00000203 dir32             _eventCalls
+0000020f dir32             __real@42b60000
+00000224 DISP32            ?reset@NUISystem@@YAXXZ
+00000234 dir32             ?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A
+00000239 dir32             ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+00000241 DISP32            ?ScrollMenu@CManager@NUISystem@@QAEXJ@Z
+00000247 dir32             _sequence
+00000292 DISP32            ?reset@NUISystem@@YAXXZ
+00000298 dir32             ?g_pActiveScrollingViewport@NUISystem@@3PAUCScrollingViewport@1@A
+000002a1 dir32             ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+000002ab dir32             _changeHead
+000002b1 dir32             _returnedBar
+000002be dir32             _expectedDeltaObject
+000002d5 dir32             __real@41c80000
+000002db dir32             _expectedDelta
+000002e0 DISP32            ?ScrollMenu@CManager@NUISystem@@QAEXJ@Z
+000002e6 dir32             _barCalls
+000002f3 dir32             _dragCalls
+000002ff dir32             _deltaCalls
+00000308 dir32             _speedCalls
+00000311 dir32             _eventCalls
+00000330 DISP32            ?reset@NUISystem@@YAXXZ
+00000338 dir32             ?g_ActiveListHead@NUISystem@@3PAUComponentNode@1@A
+00000348 dir32             _returnedBar
+0000034e dir32             _dragged
+00000354 DISP32            ?ScrollMenu@CManager@NUISystem@@QAEXJ@Z
+0000035d dir32             _barCalls
+00000365 dir32             _dragCalls
+0000036d dir32             _deltaCalls
+00000376 dir32             _good
+0000038a dir32             ??_C@_0BL@PMOEIPPF@0041da2d_TEST?5FAIL?5line?$CFd?6?$AA@
+0000038f DISP32            _printf
+00000399 dir32             ??_C@_0BD@MDELJNJC@0041da2d_TEST?5PASS?$AA@
+0000039e DISP32            _puts
+000003b3 dir32             ??_C@_0BL@PMOEIPPF@0041da2d_TEST?5FAIL?5line?$CFd?6?$AA@
+000003b8 DISP32            _printf

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b52160   RELOCATION_MATCH PASS   SetCommonParticleShaderConstants
+
+WINS: 1
+  00b52160 RELOCATION_MATCH CEngineWeatherRenderer::SetCommonParticleShaderConstants

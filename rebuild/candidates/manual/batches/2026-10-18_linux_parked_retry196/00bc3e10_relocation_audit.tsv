@@ -1,0 +1,14 @@
+offset	native_target	symbol
+00000009	01436e98	?g_ResourceManager@@3PAUCEngineResourceManager_Methods@@A
+00000017	00b3b030	?GetVertexBufferUsage@CEngineResourceManager_Methods@@QAEKXZ
+00000026	00a63150	?Initialise@CVertexBufferWin32_Retail@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z
+00000033	00ac20a0	?Lock@CVertexBufferWin32_Retail@@QAEPAEKKK@Z
+0000008f	00ac20b0	?Unlock@CVertexBufferWin32_Retail@@QAEXXZ
+00000095	01436e98	?g_ResourceManager@@3PAUCEngineResourceManager_Methods@@A
+0000009f	00b3b0a0	?GetIndexBufferMemPool@CEngineResourceManager_Methods@@QAE?AW4EIndexBufferPool@@XZ
+000000a5	01436e98	?g_ResourceManager@@3PAUCEngineResourceManager_Methods@@A
+000000ad	00b3b060	?GetIndexBufferUsage@CEngineResourceManager_Methods@@QAEKXZ
+000000b7	00ac1f70	?Initialise@CIndexBuffer_Methods@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z
+000000be	00ac1f10	?GetSize@CIndexBuffer_Methods@@QBEJXZ
+000000c8	00ac1fb0	?Lock@CIndexBuffer_Methods@@QAEPAEKKK@Z
+00000110	00ac1f00	?Unlock@CIndexBuffer_Methods@@QAEXXZ

@@ -1,0 +1,18 @@
+address	new_grade	reserved_uncertain	source_sha256	result	snapshot	effective_flags	note
+0055b8f0	1	4	416dc703d44ecef387851f60a4b7a2e38fea4e4d6c1d0eda912990464adb66e2	0055b8f0 CHoverable::IsHovered DIFFER(207v163) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055b8f0-01	/O2 /Oy /W3	
+0055b8f0	2	4	70a309969104bc141fc6b6b5043c185907380ca9e8ae536343ba0a186a7618ec	0055b8f0 CHoverable::IsHovered SRC_FAIL flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055b8f0-02	/O2 /Oy /W3	
+0055b8f0	3	4	bcfb9a3273c8378f3c8bf32bec09dcca30b94ac0587815df7c7ed1e730de31e7	0055b8f0 CHoverable::IsHovered DIFFER(216v163) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055b8f0-03	/O2 /Oy /W3	
+0055b8f0	4	4	cde4751e1e867d88b7ba1cd31b4403b9809e936104be8bd6b9a1927656ccc3ef	0055b8f0 CHoverable::IsHovered DIFFER(208v163) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055b8f0-04	/O2 /Oy /W3	
+0055b8f0	5	4	936b821076ab33313b4d7ccac71e46f6e9c55845a91cab8ffe557535b14fd2d8	0055b8f0 CHoverable::IsHovered RELOCATION_MATCH flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055b8f0-05	/O2 /Oy /W3	
+0055bc30	1	4	189ec9b68ec3b342da3e41f068b5b5b6cfba13ac140f39ad1d414060edf9762c	0055bc30 CHoverable::~CHoverable DIFFER(203v203) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055bc30-01	/O2 /Oy /W3	
+0055bc30	2	4	8c402dad54059235c0ecb55558acd55963c50703b2be67851eb8c78f80c235d0	0055bc30 CHoverable::~CHoverable DIFFER(204v203) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055bc30-02	/O2 /Oy /W3	
+0055bc30	3	4	e3d56ea2bddfdd9dfb2ddd27201ab645d6317f28fe5dbcfba4507a7af75a6f9b	0055bc30 CHoverable::~CHoverable DIFFER(203v203) flags= ['/Oa']	work/codex-lane/w22/retry201a_sol/snapshots/0055bc30-03	/O2 /Oy /W3 /Oa	
+0055bc30	4	4	c96024bcdbc249ef7afbb4cae65699aa6c25d1315259d24267b5b93330f8662d	0055bc30 CHoverable::~CHoverable DIFFER(203v203) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055bc30-04	/O2 /Oy /W3	
+0055bc30	5	4	c96024bcdbc249ef7afbb4cae65699aa6c25d1315259d24267b5b93330f8662d	0055bc30 CHoverable::~CHoverable DIFFER(316v203) flags= ['/Og-']	work/codex-lane/w22/retry201a_sol/snapshots/0055bc30-05	/O2 /Oy /W3 /Og-	
+0055bc30	6	4	f186ae37db1bd41c9cb91a06e27fcb2cf5087e20eb883a6a33e9f222dddc1071	0055bc30 CHoverable::~CHoverable SRC_FAIL flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0055bc30-06	/O2 /Oy /W3	
+0087ff60	1	4	d370ce0d980ab672a06987fe06ee05ea7bee9e0dee9ffe0b35e437f8fdac4a9c	0087ff60 CHitParameters::CHitParameters DIFFER(187v184) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0087ff60-01	/O2 /Oy /W3	
+0087ff60	2	4	2c07306e49ae451c6c9b409218dc287f1b7b17c08afeb153d60922ee615ece83	0087ff60 CHitParameters::CHitParameters RELOCATION_MATCH flags= []	work/codex-lane/w22/retry201a_sol/snapshots/0087ff60-02	/O2 /Oy /W3	
+00d9c4a0	1	4	a79a507113ae14e8fe1fd27579e1056dc1696ba14d554a1084a0058cd1179d21	00d9c4a0 CHobbeBarrel::Main DIFFER(184v187) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/00d9c4a0-01	/O2 /Oy /W3	
+00d9c4a0	2	4	c448b3974012f15b30b20f72df9a0ba1bb12fc32179c1c0107dbfcaca28497d4	00d9c4a0 CHobbeBarrel::Main DIFFER(184v187) flags= []	work/codex-lane/w22/retry201a_sol/snapshots/00d9c4a0-02	/O2 /Oy /W3	
+00d9c4a0	3	4	06ee887fe2ac08a56b366cd69b5eeb70c8961fef9b2fec3ed7696319699a2fbd	00d9c4a0 CHobbeBarrel::Main RELOCATION_MATCH flags= []	work/codex-lane/w22/retry201a_sol/snapshots/00d9c4a0-03	/O2 /Oy /W3	ROOT_REJECTED: replica string/nonconst frame/char flag and query; corrected new4
+00d9c4a0	4	4	421017978a4470562433e6574388fed7c75ad6b0f4865b8db02ad47618564b86	00d9c4a0 CHobbeBarrel::Main RELOCATION_MATCH flags= []	work/codex-lane/w22/retry201a_sol/snapshots/00d9c4a0-04	/O2 /Oy /W3	

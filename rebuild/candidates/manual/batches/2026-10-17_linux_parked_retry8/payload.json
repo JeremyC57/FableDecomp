@@ -1,0 +1,15 @@
+{
+  "result": {
+    "authored": [
+      {
+        "address": "00557960",
+        "module": "CKeyRedefiner",
+        "name": "CanRedefineAction",
+        "leaf": "CanRedefineAction",
+        "source_cpp": "// CKeyRedefiner::CanRedefineAction(long) -- classify category IDs through retail's dense switch table (0x00557960, 175 bytes).\n// Grade: RELOCATION_MATCH -- q.py verified the exact 175-byte body with embedded switch table.\n// Owner established by the CKeyRedefiner::ProcessEvent caller at 0x00557f51; method name is descriptive.\n// No shared CKeyRedefiner header exists; this helper does not access instance fields.\nstruct CKeyRedefiner { bool CanRedefineAction(long category); };\n#ifndef KEY_REDEFINER_FLAG_ADDRESS\n#define KEY_REDEFINER_FLAG_ADDRESS 0x013B864F\n#endif\nbool CKeyRedefiner::CanRedefineAction(long category)\n{\n    switch (category) {\n    case 1: case 89: case 90: case 91: case 98: case 118: case 119:\n        return false;\n    case 58:\n        if (*(volatile unsigned char*)KEY_REDEFINER_FLAG_ADDRESS == 0) break;\n        return false;\n    default:\n        break;\n    }\n    return true;\n}\n",
+        "test_cpp": "#include <cstdio>\nvolatile unsigned char g_redefineFlag=0;\n#define KEY_REDEFINER_FLAG_ADDRESS (&g_redefineFlag)\n// CKeyRedefiner::CanRedefineAction(long) -- classify category IDs through retail's dense switch table (0x00557960, 175 bytes).\n// Grade: RELOCATION_MATCH -- q.py verified the exact 175-byte body with embedded switch table.\n// Owner established by the CKeyRedefiner::ProcessEvent caller at 0x00557f51; method name is descriptive.\n// No shared CKeyRedefiner header exists; this helper does not access instance fields.\nstruct CKeyRedefiner { bool CanRedefineAction(long category); };\n#ifndef KEY_REDEFINER_FLAG_ADDRESS\n#define KEY_REDEFINER_FLAG_ADDRESS 0x013B864F\n#endif\nbool CKeyRedefiner::CanRedefineAction(long category)\n{\n    switch (category) {\n    case 1: case 89: case 90: case 91: case 98: case 118: case 119:\n        return false;\n    case 58:\n        if (*(volatile unsigned char*)KEY_REDEFINER_FLAG_ADDRESS == 0) break;\n        return false;\n    default:\n        break;\n    }\n    return true;\n}\n\nint main() {\n CKeyRedefiner object;\n for (int flag=0;flag<3;++flag) {\n  g_redefineFlag=(unsigned char)flag;\n  for (long action=-1;action<=121;++action) {\n   bool expected=!(action==1 || action==89 || action==90 || action==91 || action==98 || action==118 || action==119 || (action==58 && flag!=0));\n   if (object.CanRedefineAction(action)!=expected) { std::printf(\"00557960_TEST FAIL\\n\"); return 1; }\n  }\n  if (!object.CanRedefineAction(-2147483647L-1) || !object.CanRedefineAction(2147483647L)) { std::printf(\"00557960_TEST FAIL\\n\"); return 1; }\n }\n std::printf(\"00557960_TEST PASS\\n\"); return 0;\n}\n",
+        "pass_pattern": "00557960_TEST PASS"
+      }
+    ]
+  }
+}

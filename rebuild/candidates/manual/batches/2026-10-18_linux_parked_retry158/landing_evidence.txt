@@ -1,0 +1,14 @@
+addr       parity           behav  name
+004c00e0   RELOCATION_MATCH PASS   CTCGraphicAppearance
+00446220   RELOCATION_MATCH PASS   GetInputProcessEventFromUpdate
+00eed6b0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  004c00e0 RELOCATION_MATCH CTCGraphicAppearance::??0CTCGraphicAppearance@@
+  00446220 RELOCATION_MATCH CGamePlayerInterface::GetInputProcessEventFromUpdate
+  00eed6b0 RELOCATION_MATCH CExitWardensOffice::Main
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CTCGraphicAppearance_CTCGraphicAppearance_004c00e0
+  CGamePlayerInterface_GetInputProcessEventFromUpdate_00446220
+  CExitWardensOffice_Main_00eed6b0

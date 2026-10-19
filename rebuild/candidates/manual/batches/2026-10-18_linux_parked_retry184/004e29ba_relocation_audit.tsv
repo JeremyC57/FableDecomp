@@ -1,0 +1,3 @@
+offset	native_target	symbol
+0000003d	004e2aab	?AllocateAndCopy@CParticleAttachmentInfoVector@@QAEPAUParticleAttachmentInfo@@IPBU2@0@Z
+00000046	004e2aec	?Clear@CParticleAttachmentInfoVector@@QAEXXZ

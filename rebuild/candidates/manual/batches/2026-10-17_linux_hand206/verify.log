@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004554c6   RELOCATION_MATCH PASS   ~CPatchTesselationEdgeStrip
+
+WINS: 1
+  004554c6 RELOCATION_MATCH CPatchTesselationEdgeStrip::??1CPatchTesselationEdgeStrip
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004554c6

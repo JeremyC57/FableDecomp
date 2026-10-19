@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0096e700   RELOCATION_MATCH PASS   IsEnemyCreatureInCombatPosition
+
+WINS: 1
+  0096e700 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupMeleeCombatNearby_IsEnemyCreatureInCombatPosition_0096e700

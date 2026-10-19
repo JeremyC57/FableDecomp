@@ -1,0 +1,10 @@
+addr       parity           behav  name
+004e29ba   RELOCATION_MATCH PASS   operator=
+00a471d0   RELOCATION_MATCH PASS   IsAnyPartOfNodeWithinDistOfPos
+00cab370   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cab370   RELOCATION_MATCH PASS   CBasePin
+
+WINS: 3
+  004e29ba RELOCATION_MATCH CParticleAttachmentInfoVector::??4CParticleAttachmentInfoVector@@
+  00a471d0 RELOCATION_MATCH CNavigatorBase::IsAnyPartOfNodeWithinDistOfPos
+  00cab370 RELOCATION_MATCH CBasePin::??0CBasePin@@

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00f37390   RELOCATION_MATCH PASS   AllocateDepthBufferSurface
+009fe380   RELOCATION_MATCH PASS   CFrameData
+
+WINS: 2
+  00f37390 RELOCATION_MATCH CGPUScratchBufferTextureManager::AllocateDepthBufferSurface
+  009fe380 RELOCATION_MATCH CGraphicInfoFrame::CFrameData::??0CFrameData
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CGPUScratchBufferTextureManager_AllocateDepthBufferSurface_00f37390
+  CGraphicInfoFrameCFrameData_CFrameData_009fe380

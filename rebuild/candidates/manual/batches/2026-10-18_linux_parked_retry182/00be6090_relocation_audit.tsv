@@ -1,0 +1,16 @@
+offset	native_target	symbol
+00000008	012a803c	??_7Patch@Native@@6B@
+00000029	01436ea8	?gRenderer@Native@@3PAURenderer@1@A
+00000034	00bda0d0	?DeleteVertexBuffer@LandscapeMemory@Native@@QAEXPAUCVertexBufferWin32@@@Z
+00000043	01436ea8	?gRenderer@Native@@3PAURenderer@1@A
+0000004f	00bda090	?DeleteIndexBuffer@LandscapeMemory@Native@@QAEXPAUCIndexBuffer@@@Z
+00000067	01436ea8	?gRenderer@Native@@3PAURenderer@1@A
+00000073	00bda110	?DeleteTexture@LandscapeMemory@Native@@QAEXPAUCTexture@@@Z
+00000091	01436ea8	?gRenderer@Native@@3PAURenderer@1@A
+0000009c	00bda090	?DeleteIndexBuffer@LandscapeMemory@Native@@QAEXPAUCIndexBuffer@@@Z
+000000c8	01436ea8	?gRenderer@Native@@3PAURenderer@1@A
+000000d3	00bda0d0	?DeleteVertexBuffer@LandscapeMemory@Native@@QAEXPAUCVertexBufferWin32@@@Z
+000000ef	01436ea8	?gRenderer@Native@@3PAURenderer@1@A
+000000f5	00b677a0	?UnregisterSubPatchForZSorting@Renderer@Native@@QAEXAAJ@Z
+0000010a	00bfc410	??1EdgeStrip@Native@@QAE@XZ
+00000113	0129b860	??_7Movable@Native@@6B@

@@ -1,0 +1,35 @@
+[
+  {
+    "address": "009ff440",
+    "src": {
+      "path": "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009ff440.cpp",
+      "sha256": "4f0907914e8bb068f63a007334ff979c2502e48f33966b0433b7cfc7e9046854"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/coordinator_retry193/root_amendments/test/009ff440.cpp",
+      "sha256": "b4330616811e64086e1475ebf75a17379b41799d531a724b598b7c6f57744539"
+    }
+  },
+  {
+    "address": "009ff590",
+    "src": {
+      "path": "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009ff590.cpp",
+      "sha256": "24fc0231973e112a460c0436846d1b56d27b0197a62885308f4df965d97a0c84"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/coordinator_retry193/root_amendments/test/009ff590.cpp",
+      "sha256": "f6b7880b560e29bce24d3f06eae1f55229f857a7b5a51b3d84dc16d114753af4"
+    }
+  },
+  {
+    "address": "009febc0",
+    "src": {
+      "path": "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009febc0.cpp",
+      "sha256": "e078b240a5c3f2b220486e2158e63a1141b0dd6222a11161fcbeeb052478168a"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/coordinator_retry193/root_amendments/test/009febc0.cpp",
+      "sha256": "cb731557c9cc59f68d3d7baeb8e498ce2aa61e99b1ab5d7c2966298386d47356"
+    }
+  }
+]

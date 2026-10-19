@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0056e6b6   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+0056e6b6   RELOCATION_MATCH PASS   GetExperienceStatMovieName
+0056fe7c   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+0056fe7c   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+0056fe7c   RELOCATION_MATCH PASS   GetExperienceAbilityDescription
+0058376c   WARN SHARED_HEADER_AVAILABLE CTCInventory
+0058376c   RELOCATION_MATCH PASS   IsSaveMenuReceivingInput
+
+WINS: 3
+  0056e6b6 RELOCATION_MATCH CTCInventoryExperience::GetExperienceStatMovieName
+  0056fe7c RELOCATION_MATCH CTCInventoryExperience::GetExperienceAbilityDescription
+  0058376c RELOCATION_MATCH CTCInventory::IsSaveMenuReceivingInput
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryExperience_GetExperienceStatMovieName_0056e6b6
+  CTCInventoryExperience_GetExperienceAbilityDescription_0056fe7c
+  CTCInventory_IsSaveMenuReceivingInput_0058376c

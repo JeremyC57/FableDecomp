@@ -1,0 +1,34 @@
+0078e1f0 56                   push esi
+0078e1f1 8bf1                 mov esi, ecx
+0078e1f3 57                   push edi
+0078e1f4 8d7e04               lea edi, [esi + 4]
+0078e1f7 8d4f0c               lea ecx, [edi + 0xc]
+0078e1fa e8113a2700           call 0xa01c10
+0078e1ff 8bcf                 mov ecx, edi
+0078e201 e80a3a2700           call 0xa01c10
+0078e206 f644240c01           test byte ptr [esp + 0xc], 1
+0078e20b 7409                 je 0x78e216
+0078e20d 56                   push esi
+0078e20e e8a9074700           call 0xbfe9bc
+0078e213 83c404               add esp, 4
+0078e216 5f                   pop edi
+0078e217 8bc6                 mov eax, esi
+0078e219 5e                   pop esi
+0078e21a c20400               ret 4
+0078e21d cc                   int3 
+0078e21e cc                   int3 
+0078e21f cc                   int3 
+0078e220 8b442404             mov eax, dword ptr [esp + 4]
+0078e224 83c00c               add eax, 0xc
+0078e227 c3                   ret 
+0078e228 cc                   int3 
+0078e229 cc                   int3 
+0078e22a cc                   int3 
+0078e22b cc                   int3 
+0078e22c cc                   int3 
+0078e22d cc                   int3 
+0078e22e cc                   int3 
+0078e22f cc                   int3 
+0078e230 8b442404             mov eax, dword ptr [esp + 4]
+0078e234 83c010               add eax, 0x10
+0078e237 c3                   ret 

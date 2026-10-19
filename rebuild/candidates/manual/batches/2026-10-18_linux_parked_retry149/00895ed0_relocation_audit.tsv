@@ -1,0 +1,7 @@
+offset	native_target	symbol
+00000045	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+0000006e	006c17b0	?SetOwnedByPlayer@BuyableHouseMethods@@QAEX_N@Z
+0000007a	006c1150	?SetRented@BuyableHouseMethods@@QAEX_N@Z
+00000082	00449970	?GetMainPlayer@PlayerManagerMethods@@QAEPAUPlayerMethods@@XZ
+00000089	00487dc0	?GetHeroThing@PlayerMethods@@QAEPAUCThingNative@@XZ
+000000b7	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z

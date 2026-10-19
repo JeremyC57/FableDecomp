@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0094f730   RELOCATION_MATCH PASS   Update
+00bc3410   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bc3410   RELOCATION_MATCH PASS   CreateInternalPrimitive
+
+WINS: 2
+  0094f730 RELOCATION_MATCH CAIStateGroup_BalverineJumpAtFleeingEnemy::Update
+  00bc3410 RELOCATION_MATCH CEnginePrimitiveManagerParticleMeshGroup::CreateInternalPrimitive
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupBalverineJumpAtFleeingEnemy_Update_0094f730
+  CEnginePrimitiveManagerParticleMeshGroup_CreateInternalPrimitive_00bc3410

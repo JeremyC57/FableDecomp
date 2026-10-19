@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00bc5420   RELOCATION_MATCH PASS   Destructor
+00bbf1c0   RELOCATION_MATCH PASS   Destructor
+00baa6a0   RELOCATION_MATCH PASS   BuildBuffers
+009ccc00   RELOCATION_MATCH PASS   ClearEntries
+009580e0   RELOCATION_MATCH PASS   IsStillRunnable
+
+WINS: 5
+  00bc5420 RELOCATION_MATCH CEnginePrimitiveManagerParticleLineGroup::??1CEnginePrimitiveManagerParticleLineGroup_Retail
+  00bbf1c0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteTrailGroup::??1CEnginePrimitiveManagerParticleSpriteTrailGroupNativeView
+  00baa6a0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::BuildBuffers
+  009ccc00 RELOCATION_MATCH CBankFile::ClearEntries
+  009580e0 RELOCATION_MATCH CAIStateGroup_MinionReactToTrespassing::IsStillRunnable

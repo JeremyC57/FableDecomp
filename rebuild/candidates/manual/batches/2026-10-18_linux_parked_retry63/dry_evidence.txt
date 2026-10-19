@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b5bf10   RELOCATION_MATCH PASS   InitialiseTextures
+
+WINS: 1
+  00b5bf10 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::InitialiseTextures

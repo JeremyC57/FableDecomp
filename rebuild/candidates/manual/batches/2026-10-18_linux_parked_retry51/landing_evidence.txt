@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00bacc50   RELOCATION_MATCH PASS   RenderPrimitive
+
+WINS: 1
+  00bacc50 RELOCATION_MATCH CEnginePrimitiveOcclusionGroupManager::RenderPrimitive
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveOcclusionGroupManager_RenderPrimitive_00bacc50

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00c09920   RELOCATION_MATCH PASS   GetChecked
+
+WINS: 1
+  00c09920 RELOCATION_MATCH CWorldManager::GetChecked

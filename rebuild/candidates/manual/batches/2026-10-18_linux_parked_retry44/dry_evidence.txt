@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0094feb0   RELOCATION_MATCH PASS   StayIdleAndTurnToFace
+006380c0   RELOCATION_MATCH PASS   Clear
+
+WINS: 2
+  0094feb0 RELOCATION_MATCH CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+  006380c0 RELOCATION_MATCH NThingMap::CThingMapManager::Clear@CThingMapManagerClearView

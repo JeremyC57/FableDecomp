@@ -1,0 +1,26 @@
+addr       parity           behav  name
+008d1b80   RELOCATION_MATCH PASS   MsgWhoTalkedToMe
+008d1ca0   RELOCATION_MATCH PASS   MsgExpressionPerformedTo
+008d1dd0   RELOCATION_MATCH PASS   MsgWhoExpressedToMe
+008d21b0   RELOCATION_MATCH PASS   MsgWhoKnockedMeOut
+008d1890   RELOCATION_MATCH PASS   MsgWhoHitMe
+008d1330   RELOCATION_MATCH PASS   MsgIsHitByWithFlourish
+008d15b0   RELOCATION_MATCH PASS   MsgIsHitByWithProjectileWeapon
+
+WINS: 7
+  008d1b80 RELOCATION_MATCH CGameScriptThing::MsgWhoTalkedToMe
+  008d1ca0 RELOCATION_MATCH CGameScriptThing::MsgExpressionPerformedTo
+  008d1dd0 RELOCATION_MATCH CGameScriptThing::MsgWhoExpressedToMe
+  008d21b0 RELOCATION_MATCH CGameScriptThing::MsgWhoKnockedMeOut
+  008d1890 RELOCATION_MATCH CGameScriptThing::MsgWhoHitMe
+  008d1330 RELOCATION_MATCH CGameScriptThing::MsgIsHitByWithFlourish
+  008d15b0 RELOCATION_MATCH CGameScriptThing::MsgIsHitByWithProjectileWeapon
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CGameScriptThing_MsgWhoTalkedToMe_008d1b80
+  CGameScriptThing_MsgExpressionPerformedTo_008d1ca0
+  CGameScriptThing_MsgWhoExpressedToMe_008d1dd0
+  CGameScriptThing_MsgWhoKnockedMeOut_008d21b0
+  CGameScriptThing_MsgWhoHitMe_008d1890
+  CGameScriptThing_MsgIsHitByWithFlourish_008d1330
+  CGameScriptThing_MsgIsHitByWithProjectileWeapon_008d15b0

@@ -1,0 +1,7 @@
+// Grade: HELD(bytes match retail) -- test hand-transcribed with renamed types; WriteCBYTE bound to both 0x993ea0 and 0x993eb0 | Codex source 00/b1/CPSCAttractor_WriteBinary_00b17f70.cpp, flags , pass pattern 00b17f70_TEST PASS
+// CPSCAttractor::WriteBinary(CDataOutputStream*) -- serialize attractor settings and user points
+struct C3DVector { float x,y,z; };
+struct CDataOutputStream { void WriteEBOOL(bool); void WriteCBYTE(long); void WriteFloat(float); void Write3DVector(C3DVector*); };
+struct V { C3DVector* first; C3DVector* last; C3DVector* end; unsigned long size() const {return (unsigned long)(last-first);} };
+struct CPSCAttractor { unsigned char _base[0xc]; bool AttractorEnabled:1; bool AttractorUseParamPosition:1; long AttractorInfluenceFallOff; long AttractorPositionParam; long AttractorPositionParamName; float AttractorInfluenceRadius; float AttractorInfluenceForce; V AttractorUserPointsArray; void WriteBinary(CDataOutputStream*); };
+void CPSCAttractor::WriteBinary(CDataOutputStream* out){ out->WriteEBOOL(AttractorEnabled); out->WriteEBOOL(AttractorUseParamPosition); out->WriteCBYTE(AttractorInfluenceFallOff); out->WriteCBYTE(AttractorPositionParam); out->WriteCBYTE(AttractorPositionParamName); out->WriteFloat(AttractorInfluenceRadius); out->WriteFloat(AttractorInfluenceForce); unsigned long n=AttractorUserPointsArray.size(); out->WriteCBYTE(n); if(n<=0) return; { unsigned long offset=0; do {out->Write3DVector((C3DVector*)((unsigned char*)AttractorUserPointsArray.first+offset)); offset += sizeof(C3DVector); --n;} while(n); } }

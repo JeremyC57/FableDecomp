@@ -1,0 +1,6 @@
+offset	type	retail_target	compiler_symbol
+000b	DISP32	00a01b50	?GetPItem@PointerView@@QBEPAUCThingNative@@XZ
+001a	DISP32	00a01b50	?GetPItem@PointerView@@QBEPAUCThingNative@@XZ
+002c	dir32	013b89fc	?QuestManager@@3PAUQuestManagerNative@@A
+0063	DISP32	00a01b50	?GetPItem@PointerView@@QBEPAUCThingNative@@XZ
+0080	DISP32	004365b0	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z

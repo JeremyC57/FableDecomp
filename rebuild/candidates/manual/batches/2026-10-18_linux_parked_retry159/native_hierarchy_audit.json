@@ -1,0 +1,72 @@
+{
+  "0x129c79c": [
+    [
+      ".?AVCInputManager@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x122d06c": [
+    [
+      ".?AVCDiskFileWin32@@",
+      0
+    ],
+    [
+      ".?AVCAFile@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x129dbc4": [
+    [
+      ".?AVCMouse@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x129c0ec": [
+    [
+      ".?AVCJoystick@@",
+      0
+    ]
+  ],
+  "0x1237f74": [
+    [
+      ".?AVCInputProcessCreatureMovementWatchForControlAngleChange@@",
+      0
+    ],
+    [
+      ".?AVCInputProcessGameBase@@",
+      0
+    ],
+    [
+      ".?AVCAInputProcess@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ]
+}

@@ -1,0 +1,285 @@
+[
+  {
+    "symbol": "?SuspendAI@CThingAICreature@@QAEX_NPAX@Z",
+    "undecorated": "public: void __thiscall CThingAICreature::SuspendAI(bool, void *)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        7378,
+        "0053a870"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        33521,
+        "01d6fb80"
+      ]
+    ]
+  },
+  {
+    "symbol": "?TransitionToDefaultThemeAllChannels@CEnvironment@@QAEXJM@Z",
+    "undecorated": "public: void __thiscall CEnvironment::TransitionToDefaultThemeAllChannels(long, float)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        14246,
+        "006ef590"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        66222,
+        "02451b70"
+      ]
+    ]
+  },
+  {
+    "symbol": "?SetAsDrawable@CThing@@UAEX_N@Z",
+    "undecorated": "public: virtual void __thiscall CThing::SetAsDrawable(bool)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        4307,
+        "004cad50"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        30659,
+        "01cf9910"
+      ]
+    ]
+  },
+  {
+    "symbol": "?OnHit@CThingCreatureBase@@UAEXAAVCHitParameters@@@Z",
+    "undecorated": "public: virtual void __thiscall CThingCreatureBase::OnHit(class CHitParameters &)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        7569,
+        "00544c80"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        34069,
+        "01d8f090"
+      ]
+    ]
+  },
+  {
+    "symbol": "?SetParent@CComponent@NUISystem@@UAEXPAV12@@Z",
+    "undecorated": "public: virtual void __thiscall NUISystem::CComponent::SetParent(class NUISystem::CComponent *)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        9487,
+        "005a8ef0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        59445,
+        "0229f5b0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?LoadAndReturnDef@CComponent@NUISystem@@UBE?AV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@XZ",
+    "undecorated": "public: virtual class CDefPointer<class NUISystem::CUIDef const> __thiscall NUISystem::CComponent::LoadAndReturnDef(void) const",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        9516,
+        "005aa830"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        59467,
+        "022a4100"
+      ]
+    ]
+  },
+  {
+    "symbol": "?ExecuteActions@CComponent@NUISystem@@UAEXPAV?$list@V?$CCountedPointer@VCAction@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@std@@@std@@@Z",
+    "undecorated": "public: virtual void __thiscall NUISystem::CComponent::ExecuteActions(class std::list<class CCountedPointer<class NUISystem::CAction>, class std::allocator<class CCountedPointer<class NUISystem::CAction>>> *)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        9522,
+        "005aaff0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        59479,
+        "022a4c40"
+      ]
+    ]
+  },
+  {
+    "symbol": "?OnUnhovered@CMenuEntry@NUISystem@@MAEXXZ",
+    "undecorated": "protected: virtual void __thiscall NUISystem::CMenuEntry::OnUnhovered(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        9659,
+        "005b6cf0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        59088,
+        "02288da0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?Delete@CIVCountedPointeeBase@@UBEXXZ",
+    "undecorated": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+    "PDB_records": [
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        3886,
+        "01934d60"
+      ]
+    ]
+  },
+  {
+    "symbol": "??0CHitParameters@@QAE@XZ",
+    "undecorated": "public: __thiscall CHitParameters::CHitParameters(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        18002,
+        "007a92e0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        78708,
+        "026b2690"
+      ]
+    ]
+  },
+  {
+    "symbol": "??1CHitParameters@@QAE@XZ",
+    "undecorated": "public: __thiscall CHitParameters::~CHitParameters(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        17679,
+        "00790457"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        73474,
+        "025aacf0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?AddDamageWithAttribute@CHitParameters@@QAEXW4EDamageAttribute@@M@Z",
+    "undecorated": "public: void __thiscall CHitParameters::AddDamageWithAttribute(enum EDamageAttribute, float)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        20700,
+        "0083edd0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        84336,
+        "02810d00"
+      ]
+    ]
+  },
+  {
+    "symbol": "?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z",
+    "undecorated": "public: void __thiscall CHitParameters::SetThingHitting(class CThing &)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        20682,
+        "0083e4c0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        84329,
+        "02810420"
+      ]
+    ]
+  },
+  {
+    "symbol": "?RemoveTC@CThing@@QAEXW4ETCInterfaceType@@@Z",
+    "undecorated": "public: void __thiscall CThing::RemoveTC(enum ETCInterfaceType)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        4317,
+        "004cb990"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        30558,
+        "01cf5cb0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?Kill@CThing@@QAEX_N@Z",
+    "undecorated": "public: void __thiscall CThing::Kill(bool)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        4312,
+        "004cb630"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        30612,
+        "01cf7b10"
+      ]
+    ]
+  },
+  {
+    "symbol": "?ChangeState@CChangingStateComponent@NUISystem@@UAEXK@Z",
+    "undecorated": "public: virtual void __thiscall NUISystem::CChangingStateComponent::ChangeState(unsigned long)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        9397,
+        "005a79f0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        58990,
+        "02284440"
+      ]
+    ]
+  },
+  {
+    "symbol": "?OnDeactivate@CModeBriarRoseTeleportIntangible@NCreatureMode@@UAEXXZ",
+    "undecorated": "public: virtual void __thiscall NCreatureMode::CModeBriarRoseTeleportIntangible::OnDeactivate(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        20441,
+        "00830cb0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        84267,
+        "0280d0a0"
+      ]
+    ]
+  },
+  {
+    "symbol": "?OnDeactivate@CModeBriarRoseConcentrate@NCreatureMode@@UAEXXZ",
+    "undecorated": "public: virtual void __thiscall NCreatureMode::CModeBriarRoseConcentrate::OnDeactivate(void)",
+    "PDB_records": [
+      [
+        "ghidra_out/egor_pdb_names.tsv",
+        20445,
+        "00830fe0"
+      ],
+      [
+        "ghidra_out/fablewin_pdb_names.tsv",
+        84256,
+        "0280c140"
+      ]
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+offset	native_target	symbol
+0000000b	00a63fe8	$L547
+00000010	00a63d20	?ReadFromParserAsFloat@CGenericVarRef@@QAE_NAAUCStringParser@@@Z
+00000015	00a63ee0	?ReadFromParserAsString@CGenericVarRef@@QAE_NAAUCStringParser@@@Z
+0000001a	00a63db0	?ReadFromParserAsBool@CGenericVarRef@@QAE_NAAUCStringParser@@@Z
+0000001f	00a63cc0	?ReadFromParserAsSLONG@CGenericVarRef@@QAE_NAAUCStringParser@@@Z
+00000028	00a63fde	$L535
+0000002c	00a63fe3	$L536
+00000030	00a63fcf	$L532
+00000034	00a63fd9	$L534
+00000038	00a63fd4	$L533

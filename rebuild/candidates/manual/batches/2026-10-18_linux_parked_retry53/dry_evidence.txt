@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00954b50   RELOCATION_MATCH PASS   IsRunnable
+009547d0   RELOCATION_MATCH PASS   OnActivate
+
+WINS: 2
+  00954b50 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+  009547d0 RELOCATION_MATCH CAIStateGroup_MazeShieldedChase::OnActivate

@@ -1,0 +1,23 @@
+['g++', '-std=c++98', '-O2', '-Wall', '-Wextra', '-fno-elide-constructors', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp', '-o', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/noelide']
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp:9: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+    9 | #pragma optimize("s", on)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp:10: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+   10 | #pragma optimize("y", off)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp:22:9: warning: #pragma once in main file
+   22 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp:431:9: warning: #pragma once in main file
+  431 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp:564: warning: ignoring ‘#pragma auto_inline ’ [-Wunknown-pragmas]
+  564 | #pragma auto_inline(off)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp:575: warning: ignoring ‘#pragma auto_inline ’ [-Wunknown-pragmas]
+  575 | #pragma auto_inline(on)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp: In constructor ‘CCharString::CCharString(const char*, long int)’:
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp:632:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  632 |  if(n!=-1)good=0;Data=new CCharStringData;Data->text=new char[strlen(s)+1];strcpy(Data->text,s);Data->owners=1;++strings;
+      |  ^~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/0041d8e7_fixture_root183_lookup_corrected/fixture.cpp:632:18: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  632 |  if(n!=-1)good=0;Data=new CCharStringData;Data->text=new char[strlen(s)+1];strcpy(Data->text,s);Data->owners=1;++strings;
+      |                  ^~~~
+0041d8e7_TEST PASS

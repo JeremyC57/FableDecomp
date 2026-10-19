@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0053633e   RELOCATION_MATCH PASS   ScrollToLastChild
+0053664c   RELOCATION_MATCH PASS   ComputeScrollBarZoom
+0053b63e   RELOCATION_MATCH PASS   CList
+
+WINS: 3
+  0053633e RELOCATION_MATCH NUISystem_CList::ScrollToLastChild
+  0053664c RELOCATION_MATCH NUISystem_CList::ComputeScrollBarZoom
+  0053b63e RELOCATION_MATCH NUISystem_CList::??0CList@NUISystem@@

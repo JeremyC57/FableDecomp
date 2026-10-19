@@ -1,0 +1,7 @@
+offset	native_target	symbol
+00000013	009a4ec0	?GetScratchSystem@@YIPAUCScratchSystem@@XZ
+00000020	00a0af80	?PrepareShutdown@CScratchRenderMethods@@QAEXXZ
+0000002d	009a0cf0	?AttachTextureToStage@CScratchRenderMethods@@QAEXHPAUCTexture@@@Z
+00000074	009f9f70	?Uninitialise@CScratchTexture@@QAEXXZ
+0000007a	00bfe9bc	??3@YAXPAX@Z
+000000f9	00f37030	?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXH@Z

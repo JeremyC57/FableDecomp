@@ -1,0 +1,18 @@
+# Inventory, perception, property and light script interfaces
+
+Seven routines independently pass VC7.1 RELOCATION_MATCH, canonical behavior tests and exact-source host C++98/O2/no-elision checks. Main audited64 body relocation targets,316 emitted/native ScriptThing virtual slots, inventory slot73, the MARKER_LIGHT literal and perception radius accessor. Eighteen immutable source grades, flags and final source/fixture hashes are retained. Actual shared headers and native assertions remain active for VC; host-only width adaptation retains full member pointers.
+
+Review corrections were required before acceptance: inventory methods now derive from the existing quarantined CTCInventoryBase header (both grade4); BuyableHouse uses its clean actual header (grade2); primary-slot lookup restores the native const lower_bound signature4365B0 (grade2); light color uses native BGRA fields with unequal-channel/raw-byte checks (grade3). Hearing remains grade2 and inventory-return grade1. CGameDefinitionManager's quarantined header is internally invalid (vptr4 but size assertion1); a declaration-only external-method view is documented without disabling that assertion or accessing manager fields.
+
+Confiscation visits inventories17,19,18 in that order, with money component4 updated for all-item confiscation/return. Typed confiscation resolves the definition once through44C6B0/9AD410, requires a positive index and preserves the same order. Return calls the real inventory virtual slot73 (VT1253DBC ->5BF91A) through a native4-byte member pointer, then clears confiscated money. Fixtures exercise absent/deleted hero, missing flags, ordered calls and callback changes to later flags.
+
+Property ownership invokes the real house setters before retrieving hero stats, distinguishes shops by component83 and adjusts native statsE0/E4 (donorE8/EC). Fixtures cover absent/dead/null components, both ownership directions, rental arguments and callback mutation of shop classification.
+
+Primary-slot lookup checks script liveness and carrying component70, retrieves the carried thing and returns a properly copied ScriptThing only when live. Actual base construction, assignment8AB980, returned temporary destruction4AA840 and counted-pointer cleanup remain represented. Fixtures exercise missing/deleted paths and reference lifetimes, including no-elision.
+
+Hearing short-circuits dead scripts, reads listener perception component52 and honors a matching cached perceived thing/Heard byte before the distance fallback. Independently disassembled7446A0 retrieves the intelligent pointer at+C,744440 reads SoundRadius3C. Fixtures cover exact boundary, three-dimensional distance, negative radius, NaNs, cache hit/miss and native end-entry fallback semantics.
+
+CreateLight resolves the exact MARKER_LIGHT literal, creates the marker and configures component39 in order: override, color, inner radius, outer radius, flicker float and active. Correct native setters are640C40/640C70/640CA0. Missing definition/marker/component paths and returned script ownership are tested; unequal BGRA bytes pass unchanged. It uses no light data fields, and no CTCLight header exists.
+
+These are isolated compiler and dependency fixtures, not linked whole-game runtime tests. Unaccessed CThing storage uses documented native component-map/flag views. Source comments inherited from the scratchpad template do not establish class identity; the actual methods and dependencies above were audited independently.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

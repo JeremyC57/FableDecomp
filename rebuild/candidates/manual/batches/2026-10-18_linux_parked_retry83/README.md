@@ -1,0 +1,4 @@
+# Advance environment theme transitions
+
+00887a30 (203 bytes): preserves the strict completion deadline, signed theme ID routing, double elapsed-time calculation, float interpolation and ordered base-weight clamps. NaNs remain unordered and exact deadline equality interpolates. Main independently inspected native control flow, helper identities, PDB fields and native offsets. Donor array width16 differs from native12, requiring the documented native view; no generated class header exists. Exact-source fixtures cover inactive state, completed target/default, strict equality, interpolation, both clamps, NaN initial weight and zero duration at equality. One new source grade plus UNCERTAIN reservation4.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

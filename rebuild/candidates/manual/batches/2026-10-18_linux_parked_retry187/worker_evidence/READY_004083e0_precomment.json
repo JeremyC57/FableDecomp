@@ -1,0 +1,17 @@
+{
+  "address": "004083e0",
+  "status": "RELOCATION_MATCH",
+  "length": 194,
+  "historical_uncertain": 4,
+  "new_grades": 3,
+  "cumulative": 7,
+  "source_sha256": "f7093f4c6c6abd4b0b5576270a910240450e9ce9f555c3c6d515afbcac611b58",
+  "fixture_sha256": "8e48c6698ae1fa63b8dd57da5f9515c1f43f727cbcf9053311680120e22462ef",
+  "tests": [
+    "host C++98 O2 PASS",
+    "host C++98 O2 noelide PASS",
+    "native VC7.1 O2 PASS"
+  ],
+  "evidence": "evidence/004083e0_relocation_audit.json",
+  "limits": "Native CUserProfileManager::GetConfigOptionsDefaultsDef()const identity from PDB and independent literal. No CUserProfileManager header exists; actual quarantined CConfigOptionsDefaultsDef header included. Actual CManager/CDefinitionManager/CIVCountedPointeeBase/fable_string donor headers retained; explicit native projection as in accepted202F. This getter observes no CManager fields and emits no manager vtable. Pointer base genuine virtual destructor/Delete const tables instantiated and audited. Fixture covers neither/either/both runtime presence, main precedence, manager reload after lookup, zero/negative/missing definition and genuine owning copies/final Delete. String/global/index/result lookup are external stubs; candidate includes complete108byte GetDef body independently compared to native. Runtime singleton probes inspect presence only; names describe observed use rather than claim full pointee types."
+}

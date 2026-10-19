@@ -1,0 +1,7 @@
+attempt	hypothesis	status
+1	shared state and brain with typed action temporaries; known retail component map	DIFFER233v236
+2	direct temporary address and terminate/return on action completion, preserving post-dtor comparison	DIFFER237v236
+3	named action result compared after full-expression temporary destruction	DIFFER233v236
+4	shared termination label outside action scope for completion paths	DIFFER235v236
+5	shared result variable and completion gate after both action branches	RELOCATION_MATCH
+6	remove unused helper and document VC temporary syntax; mandatory canonical integration	RELOCATION_MATCH PASS

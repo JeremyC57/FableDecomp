@@ -1,0 +1,6 @@
+offset	native_target	symbol
+00000077	00a04160	?GetChecksum@CInputEvent@@QBEKXZ
+00000097	0122dcb4	__real@4f800000
+000000a4	00bfea70	__ftol2
+000000b6	0122dcb4	__real@4f800000
+000000c3	00bfea70	__ftol2

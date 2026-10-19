@@ -1,0 +1,13 @@
+[
+  {
+    "address": "008a03f0",
+    "src": {
+      "path": "work/codex-lane/w22/repair008a03f0/src/008a03f0.cpp",
+      "sha256": "103f7d2cfbaa9ddaeb7d800b7e1acd141f36c1e0aff937587abb5dca4a6de1af"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/repair008a03f0/test/008a03f0.cpp",
+      "sha256": "6137abc69a8dac799d6b107fed0008ffb7006a1d9d5c05f5a09038e4cb3876aa"
+    }
+  }
+]

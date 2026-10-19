@@ -1,0 +1,159 @@
+{
+  "section": "retry202G",
+  "new_source_grade_total": 11,
+  "immutable_source_grade_snapshots": 11,
+  "additional_q_requests_failed_before_compiler": 1,
+  "root_accepted_rows": [],
+  "worker_ready_awaiting_root_review": [
+    "004083e0",
+    "0041da2d",
+    "00513bf0",
+    "006f9130"
+  ],
+  "near_match_or_differ_rows": [],
+  "rows": [
+    {
+      "address": "004083e0",
+      "status": "RELOCATION_MATCH",
+      "length": 194,
+      "historical_uncertain": 4,
+      "new_grades": 4,
+      "cumulative": 8,
+      "source_sha256": "f28eb4ea38b0514dcf1218c7a52492ab9f9268f9c6be41aa077bb7e1d65dc7ba",
+      "fixture_sha256": "8054310d53f698eb2a5f53a75fc5daec9698dae7c1cf9ee54b1e17100a7f4618",
+      "tests": [
+        "host C++98 O2 PASS",
+        "host C++98 O2 noelide PASS",
+        "native VC7.1 O2 PASS"
+      ],
+      "evidence": "evidence/004083e0_relocation_audit.json",
+      "limits": "Native CUserProfileManager::GetConfigOptionsDefaultsDef()const identity from PDB and independent literal. No CUserProfileManager header exists; actual quarantined CConfigOptionsDefaultsDef header included. Actual CManager/CDefinitionManager/CIVCountedPointeeBase/fable_string donor headers retained; explicit native projection as in accepted202F. This getter observes no CManager fields and emits no manager vtable. Pointer base genuine virtual destructor/Delete const tables instantiated and audited. Fixture covers neither/either/both runtime presence, main precedence, manager reload after lookup, zero/negative/missing definition and genuine owning copies/final Delete. String/global/index/result lookup are external stubs; candidate includes complete108byte GetDef body independently compared to native. Runtime singleton probes inspect presence only; names describe observed use rather than claim full pointee types.",
+      "recovered_function": "CUserProfileManager::GetConfigOptionsDefaultsDef",
+      "status_category": "WORKER_READY_AWAITING_ROOT_REVIEW",
+      "root_accepted": false,
+      "source_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/src/004083e0.cpp",
+      "test_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/test/004083e0.cpp",
+      "graded_snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/004083e0_04.cpp",
+      "graded_snapshot_sha256": "f28eb4ea38b0514dcf1218c7a52492ab9f9268f9c6be41aa077bb7e1d65dc7ba",
+      "attempt_ledger_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/ATTEMPTS.json",
+      "historical_attempt_status": "4 UNCERTAIN reservations; not four proven authored grades",
+      "remaining_new_grades": 2,
+      "cumulative_cap": 10,
+      "compiler_effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "pragma_flags": [],
+      "fixtures_snapshot_directory": "004083e0_fixture_config2"
+    },
+    {
+      "address": "0041da2d",
+      "status": "RELOCATION_MATCH",
+      "length": 240,
+      "historical_uncertain": 4,
+      "new_grades": 4,
+      "cumulative": 8,
+      "source_sha256": "3097ae649c16891ec633aea9c125e3291cbf7973f57f296b4e9109509bec1f49",
+      "fixture_sha256": "9cee061b00bf68a5795b92e391a4a22d70674a21524cff698aac6ea2da612b42",
+      "tests": [
+        "host C++98 O2 PASS",
+        "host C++98 O2 noelide PASS",
+        "native VC7.1 O2 PASS"
+      ],
+      "evidence": "evidence/0041da2d_relocation_audit.json",
+      "limits": "Actual CManager/CList/CScrollingComponent and quarantined CComponent donor headers expanded. Native typed PMF4/fullhost interface projection (same model as241 MenuEntry) avoids invented virtuals; full engine hierarchy/constructors are not reconstructed. Genuine interface-double constructors and exact compiled method signatures recorded; native VTable targets for each used method independently decoded and mapped to exact PDB signatures. Fixture executes exact production body: active viewport bar absent/present/dragged, global mutation proving captured viewport, count0/positive/negative/32bit extrema excluding LONG_MIN, event observes scaled offset and mutates it to verify reset on positive only; empty fallback,listbar absent/present/dragged and lookup switching head proving reread; delta25*count and zero/nonlinear args. No ownership operations in row. Native signed LONG_MIN negation overflows C++ and is outside supported input precondition, preserved rather than silently invented. No full engine widget/event dependency behavior or engine constructor execution is claimed.",
+      "recovered_function": "NUISystem::CManager::ScrollMenu",
+      "status_category": "WORKER_READY_AWAITING_ROOT_REVIEW",
+      "root_accepted": false,
+      "source_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/src/0041da2d.cpp",
+      "test_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/test/0041da2d.cpp",
+      "graded_snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_04.cpp",
+      "graded_snapshot_sha256": "3097ae649c16891ec633aea9c125e3291cbf7973f57f296b4e9109509bec1f49",
+      "attempt_ledger_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/ATTEMPTS.json",
+      "historical_attempt_status": "4 UNCERTAIN reservations; not four proven authored grades",
+      "remaining_new_grades": 2,
+      "cumulative_cap": 10,
+      "compiler_effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "pragma_flags": [
+        "\"s\", on",
+        "\"y\", off"
+      ],
+      "fixtures_snapshot_directory": "0041da2d_fixture_scroll2"
+    },
+    {
+      "address": "00513bf0",
+      "status": "RELOCATION_MATCH",
+      "length": 202,
+      "historical_uncertain": 4,
+      "new_grades": 1,
+      "cumulative": 5,
+      "source_sha256": "c4227555ada8495b2007afffccd055cc2382d9ffeb5c2ed387a8731d17ba88d4",
+      "fixture_sha256": "d1e3a3dccf5368c58ec37e0e939e2fdb0facc34f491a9118e66d6057d91088e8",
+      "tests": [
+        "host C++98 O2 PASS",
+        "host C++98 O2 noelide PASS",
+        "native VC7.1 O2 PASS"
+      ],
+      "evidence": "evidence/00513bf0_relocation_audit.json",
+      "limits": "Native CMapInfo72 layout directly from PDB; actual fable_string.h included and expanded into fixture. No CMapInfo/C2DBoxI/CCPPointerInfo headers exist, including quarantine. Counted callback native fastcall pointer4 and scalar delete independently audited; nonvirtual types emit no vtable. Strings are external assignment dependencies stubbed to record copies, not reimplement candidate logic. Fixture executes entire exact production operator=, covering self/shared-info/null/replacement/decrement/final callback/scalar block delete and field copies. No new-expression or constructor body exists in native row; fixture instantiates genuine CMapInfo with actual CCharString constructor stubs. No copy-elision-sensitive return exists.",
+      "recovered_function": "CMapInfo::operator=",
+      "status_category": "WORKER_READY_AWAITING_ROOT_REVIEW",
+      "root_accepted": false,
+      "source_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/src/00513bf0.cpp",
+      "test_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/test/00513bf0.cpp",
+      "graded_snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_01.cpp",
+      "graded_snapshot_sha256": "c4227555ada8495b2007afffccd055cc2382d9ffeb5c2ed387a8731d17ba88d4",
+      "attempt_ledger_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/ATTEMPTS.json",
+      "historical_attempt_status": "4 UNCERTAIN reservations; not four proven authored grades",
+      "remaining_new_grades": 5,
+      "cumulative_cap": 10,
+      "compiler_effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "pragma_flags": [],
+      "fixtures_snapshot_directory": "00513bf0_fixture_map2"
+    },
+    {
+      "address": "006f9130",
+      "status": "RELOCATION_MATCH",
+      "length": 169,
+      "historical_uncertain": 4,
+      "new_grades": 2,
+      "cumulative": 6,
+      "source_sha256": "271f59e10c6628a94ef4e5d1006c12819732500e9dee17efe69d947e0b442135",
+      "fixture_sha256": "a7432efa1ff61adc8ad4ac30de8b70b287e944ddd92c73f44e87d6e9591f5bf0",
+      "tests": [
+        "host C++98 O2 PASS",
+        "host C++98 O2 noelide PASS",
+        "native VC7.1 O2 PASS"
+      ],
+      "evidence": "evidence/006f9130_relocation_audit.json",
+      "limits": "Actual CManager/CMeshDataBank/C3DAnimationInfo/string headers included, explicit native NAnimationEvents manager projection+4 and stats Duration+0C backed by PDB. Stats/CCPPointerInfo headers absent incl quarantine. No vtable synthesized or dispatched in this row. Actual returned counted-pointer copy/dtor executes, with owning native callbackInfo+4/scalarDelete. Fixture covers epsilon below/equal/above, signedzero, negatives, infinities, NaN, full animation ID0/FFFFFFFF, event identity, external duration mutation, nullInfo borrowed data and final-owner release on both branches. Requires valid external animation/statsData; native has no nullData validation. External lookup/stats/event functions stubbed. First native fixture failed because expected comparison retained x87 extended precision; final fixture compares rounded float object bytes and passes. Bank table original inline getter name/layout not established; declaration uses descriptive alias and independently proven pointertable+380.",
+      "recovered_function": "NAnimationEvents::CManager::GetEmbeddedEventTime",
+      "status_category": "WORKER_READY_AWAITING_ROOT_REVIEW",
+      "root_accepted": false,
+      "source_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/src/006f9130.cpp",
+      "test_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/test/006f9130.cpp",
+      "graded_snapshot": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/006f9130_02.cpp",
+      "graded_snapshot_sha256": "271f59e10c6628a94ef4e5d1006c12819732500e9dee17efe69d947e0b442135",
+      "attempt_ledger_path": "/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/ATTEMPTS.json",
+      "historical_attempt_status": "4 UNCERTAIN reservations; not four proven authored grades",
+      "remaining_new_grades": 4,
+      "cumulative_cap": 10,
+      "compiler_effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "pragma_flags": [],
+      "fixtures_snapshot_directory": "006f9130_fixture_anim3"
+    }
+  ]
+}

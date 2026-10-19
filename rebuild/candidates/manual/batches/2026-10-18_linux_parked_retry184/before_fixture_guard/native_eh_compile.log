@@ -1,0 +1,3 @@
+["/nologo", "/c", "/O2", "/GX", "/W3", "/Fo/workspace/FableDecomp/work/codex-lane/w22/coordinator_retry184/00cab370_eh.obj", "/workspace/FableDecomp/work/codex-lane/w22/coordinator_retry184/00cab370_test.cpp"]
+00cab370_test.cpp
+Z:\workspace\FableDecomp\work\codex-lane\w22\coordinator_retry184\00cab370_test.cpp(101) : warning C4355: 'this' : used in base member initializer list

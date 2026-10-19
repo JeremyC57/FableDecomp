@@ -1,0 +1,4 @@
+offset	native_target	symbol
+00000043	00b92d30	?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABUC3DBoundingSphere@@K@Z
+000000ed	00adecc0	?IntersectsSolid@C3DBoundingBox@@QBE_NABUC3DBoundingSphere@@@Z
+000000f9	01436e84	?g_pEnginePrimitiveTypeInfo@@3PAUCEnginePrimitiveTypeInfo@@A

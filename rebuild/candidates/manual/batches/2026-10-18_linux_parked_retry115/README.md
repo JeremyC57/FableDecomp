@@ -1,0 +1,6 @@
+# Matrix stream serialization
+
+00994070 (262 bytes): genuine CBaseClass -> CBaseClassNonCopyable -> CDataStream -> CDataOutputStream hierarchy, corroborated by retail RTTI, vtables129A69C/129A6E0, ordinary base destructors and donor size/field evidence. CDataStream is4 bytes with three pure stream operations after its virtual destructor; output owns CCharString NewLine at4 and adds Write at slot4. Actual production headers are retained and expanded into the fixture. No masked relocations in the target: all262 bytes match.
+
+Root independently reviewed all twelve sequential field loads and virtual Write(data,4) calls. Exact-source host O2 and VC7.1 fixtures cover serialization order, signed zero, quiet NaN payload, infinities, subnormal values, mutation of future source fields during the first callback, isolation of the current local copy, and complete derived/member/base destruction. Four HIGH grades; earlier three rejected hierarchy variants remain preserved. Root verification adds no source grade. Only this target function is claimed byte-exact; supporting declarations are ABI projections.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

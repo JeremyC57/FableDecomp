@@ -1,0 +1,62 @@
+{
+  "0053633e": [
+    [
+      "00000085",
+      "dir32",
+      "__real@4f800000",
+      "0x122dcb4"
+    ],
+    [
+      "0000008b",
+      "dir32",
+      "__real@c1c80000",
+      "0x12462a4"
+    ]
+  ],
+  "0053664c": [
+    [
+      "0000006e",
+      "dir32",
+      "__real@4f800000",
+      "0x122dcb4"
+    ],
+    [
+      "0000008d",
+      "dir32",
+      "__real@4f800000",
+      "0x122dcb4"
+    ]
+  ],
+  "0053b63e": [
+    [
+      "00000008",
+      "DISP32",
+      "??0CChangingStateComponent@NUISystem@@QAE@J@Z",
+      "0x52cc50"
+    ],
+    [
+      "00000012",
+      "dir32",
+      "?CListPrimaryVTable@NUISystem@@3QBQBXB",
+      "0x12462e4"
+    ],
+    [
+      "00000019",
+      "dir32",
+      "?CListObserverVTable@NUISystem@@3QBQBXB",
+      "0x12462bc"
+    ],
+    [
+      "00000020",
+      "dir32",
+      "?CListCountedObserverVTable@NUISystem@@3QBQBXB",
+      "0x12462b4"
+    ],
+    [
+      "000000cf",
+      "DISP32",
+      "?GetDataFromDef@CList@NUISystem@@QAEXXZ",
+      "0x53822b"
+    ]
+  ]
+}

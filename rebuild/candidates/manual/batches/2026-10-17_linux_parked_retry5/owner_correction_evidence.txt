@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004581f8   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+004581f8   RELOCATION_MATCH PASS   CSpecialAbilitiesUnholyPowerDef
+00458033   NO_ORACLE        -      CSpecialAbilitiesDivineWrathDef
+0074e080   NO_ORACLE        -      AdjustTrajectoryVector
+
+WINS: 1
+  004581f8 RELOCATION_MATCH CSpecialAbilitiesUnholyPowerDef::CSpecialAbilitiesUnholyPowerDef

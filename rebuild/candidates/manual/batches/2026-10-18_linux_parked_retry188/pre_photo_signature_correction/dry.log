@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00689130   RELOCATION_MATCH PASS   ProcessInput
+00691ae0   RELOCATION_MATCH PASS   ProcessInput
+007a0630   RELOCATION_MATCH PASS   CLightningBeam
+
+WINS: 3
+  00689130 RELOCATION_MATCH CInputProcessTargetLockRightStickTargetSelect::?ProcessInput@TargetSelect@
+  00691ae0 RELOCATION_MATCH CInputProcessPhotojournalCapture::?ProcessInput@PhotoCapture@
+  007a0630 RELOCATION_MATCH CTCWillLightning_CLightningBeam::??0LightningBeam@

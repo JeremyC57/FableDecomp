@@ -1,0 +1,16 @@
+offset	native_target	symbol
+00000004	013b86a0	?g_pMainGameComponent@@3PAXA
+00000016	0122e078	??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@
+0000001f	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000002b	0044c6b0	?GetGameDefinitionManager@@YIPAUCDefinitionManager@@XZ
+00000032	009ad390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+0000003d	0099eae0	??1CCharString@@QAE@XZ
+00000048	0044c6b0	?GetGameDefinitionManager@@YIPAUCDefinitionManager@@XZ
+0000004f	013b871c	?g_pFrontendRuntime@@3PAXA
+0000005a	0122e078	??_C@_0BM@HJMBMMMN@CONFIG_OPTIONS_DEFAULTS_DEF?$AA@
+00000063	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000006f	0043368d	?GetFrontendDefinitionManager@@YIPAUCDefinitionManager@@XZ
+00000076	009ad390	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z
+00000081	0099eae0	??1CCharString@@QAE@XZ
+0000008c	0043368d	?GetFrontendDefinitionManager@@YIPAUCDefinitionManager@@XZ
+00000093	00410890	?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@$$CBUCConfigOptionsDefaultsDef@@@@@Z

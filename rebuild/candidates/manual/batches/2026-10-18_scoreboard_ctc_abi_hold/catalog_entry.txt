@@ -1,0 +1,7 @@
+    [pscustomobject]@{
+        Address = '00562ec0'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_CTCHeroOnlineScoreboard_00562ec0.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_CTCHeroOnlineScoreboard_00562ec0_test.cpp'
+        PassPattern = '00562ec0 PASS 4 constructor/ownership/vtable cases'
+    }

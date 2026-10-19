@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b4f420   RELOCATION_MATCH PASS   BuildDepthPackingLookupTexture
+
+WINS: 1
+  00b4f420 RELOCATION_MATCH CEngineShadowRenderer::BuildDepthPackingLookupTexture

@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00e11bb0   RELOCATION_MATCH PASS   Main
+00d408b0   RELOCATION_MATCH PASS   Main
+00d2d060   RELOCATION_MATCH PASS   Main
+00cdff50   RELOCATION_MATCH PASS   OnPredicateFail
+00d9c2b0   RELOCATION_MATCH PASS   Main
+00b395e0   MATCH            PASS   GetParentWorldSpaceBoundingSphereAnimatedMesh
+
+WINS: 6
+  00e11bb0 RELOCATION_MATCH CVtable012E04FC::Main
+  00d408b0 RELOCATION_MATCH CVtable012CDF28::Main
+  00d2d060 RELOCATION_MATCH CVtable012CC428::Main
+  00cdff50 RELOCATION_MATCH CEndGameBarrier::OnPredicateFail
+  00d9c2b0 RELOCATION_MATCH CDrinkersReactMarker::Main
+  00b395e0 MATCH CEngineInternalAttachedPrimitive::GetParentWorldSpaceBoundingSphereAnimatedMesh
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CVtable012E04FC_Main_00e11bb0
+  CVtable012CDF28_Main_00d408b0
+  CVtable012CC428_Main_00d2d060
+  CEndGameBarrier_OnPredicateFail_00cdff50
+  CDrinkersReactMarker_Main_00d9c2b0
+  CEngineInternalAttachedPrimitive_GetParentWorldSpaceBoundingSphereAnimatedMesh_00b395e0

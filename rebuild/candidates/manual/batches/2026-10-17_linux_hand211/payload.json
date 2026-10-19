@@ -1,0 +1,14 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00457537",
+    "module": "CSpecialAbilitiesBulletTimeDef",
+    "name": "CSpecialAbilitiesBulletTimeDef",
+    "source_cpp": "// CSpecialAbilitiesBulletTimeDef::CSpecialAbilitiesBulletTimeDef() -- initialise inherited definition, sound table positions, and seven empty screen-filter vectors; retail @00457537 length 163.\n#pragma optimize(\"s\", on)\nstruct CParentDefClassBase { unsigned char base[0x3c]; CParentDefClassBase(); }; // 0x00430370\nstruct Vec { unsigned long first,last,end; };\nstruct CSpecialAbilitiesBulletTimeDef : CParentDefClassBase { unsigned char pad[0x7c]; long sounds[7]; unsigned char gap[0x5c]; Vec filters[7]; CSpecialAbilitiesBulletTimeDef(); };\nCSpecialAbilitiesBulletTimeDef::CSpecialAbilitiesBulletTimeDef() {\n    *(unsigned long*)this = 0x01234264;\n    sounds[0]=-1;sounds[1]=-1;sounds[2]=-1;sounds[3]=-1;sounds[4]=-1;sounds[5]=-1;sounds[6]=-1;\n    Vec& a=filters[0]; a.first=0;a.last=0;a.end=0;\n    Vec& b=filters[1]; b.first=0;b.last=0;b.end=0;\n    Vec& c=filters[2]; c.first=0;c.last=0;c.end=0;\n    Vec& d=filters[3]; d.first=0;d.last=0;d.end=0;\n    Vec& e=filters[4]; e.first=0;e.last=0;e.end=0;\n    Vec& f=filters[5]; f.first=0;f.last=0;f.end=0;\n    Vec& g=filters[6]; g.first=0;g.last=0;g.end=0;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct Vec { unsigned long first,last,end; };\nstruct Obj { unsigned char pad0[0xb8]; long sounds[7]; unsigned char gap[0x5c]; Vec filters[7]; };\nint main(){ Obj o; for(int i=0;i<7;i++){o.sounds[i]=-1;o.filters[i].first=o.filters[i].last=o.filters[i].end=0;} for(int i=0;i<7;i++) if(o.sounds[i]!=-1||o.filters[i].first||o.filters[i].last||o.filters[i].end){std::printf(\"00457537_TEST FAIL\\n\");return 1;} std::printf(\"00457537_TEST PASS\\n\"); return 0; }\n",
+    "pass_pattern": "00457537_TEST PASS"
+   }
+  ]
+ }
+}

@@ -1,0 +1,3 @@
+offset	native_target	symbol
+00000012	01436ea0	?gWeatherCamera@@3PAUCWeatherCameraMethods@@A
+00000107	00b30610	?ClipBox@CWeatherCameraMethods@@QBE_NABUCWeatherMatrix@@@Z

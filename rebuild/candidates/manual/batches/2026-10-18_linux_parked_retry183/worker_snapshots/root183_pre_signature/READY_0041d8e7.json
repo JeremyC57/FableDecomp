@@ -1,0 +1,18 @@
+{
+  "address": "0041d8e7",
+  "status": "RELOCATION_MATCH",
+  "length": 163,
+  "historical_uncertain": 4,
+  "new_grades": 4,
+  "cumulative": 8,
+  "source_sha256": "a176a4c8d4da7bfb39fb0edc0326addc6a05fbc646038df3e05d96c0475626e1",
+  "fixture_sha256": "ea00252e15fabd18128f8c171caa5599e335f46a8b98e0db4aeed0d0376d35dc",
+  "tests": [
+    "host C++98 O2 PASS",
+    "host C++98 O2 no-elide PASS",
+    "native VC7.1 O2 PASS"
+  ],
+  "identity": "GetMiscThingsDef",
+  "evidence": "/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/evidence/0041d8e7_relocation_audit.json",
+  "limits": "External lookup and GetPDefFromGlobalIndex dependencies stubbed; exact candidate GetDef helpers execute and independently match native 98-byte bodies. Definition type erased to actual CIVCountedPointeeBase for owning references; concrete definition content unused. CManager donor header included; explicit native member projection +64 vs donor+88. Caller virtual declaration omitted because no dispatch or native vtable is emitted; real pointee destructor/Delete const slot order retained. Tests cover local/global manager reload, missing definition, index zero, owning copies and final virtual Delete; noelide host included."
+}

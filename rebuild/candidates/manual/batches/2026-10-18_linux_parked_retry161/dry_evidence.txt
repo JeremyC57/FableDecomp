@@ -1,0 +1,5 @@
+addr       parity           behav  name
+008cffe0   RELOCATION_MATCH PASS   InitFromThing
+
+WINS: 1
+  008cffe0 RELOCATION_MATCH CGameScriptThing::InitFromThing

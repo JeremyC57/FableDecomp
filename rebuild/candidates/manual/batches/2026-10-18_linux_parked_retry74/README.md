@@ -1,0 +1,10 @@
+# Skeletal morph initialization after all worker review stages
+
+00a45150 (270 bytes): genuine C++ initialization preserves the name assignment, appends only records whose three IEEE scale words are not all exactly1.0, reloads input bounds after append callbacks, and sorts the entire retained output. PDB field names/layout identify unsigned BoneNameCRC+4 and20-byte records; native12-byte arrays differ from donor16. The actual shared CCharString header is used. No skeletal class header exists.
+
+Main corrected the inherited signed/cdecl comparator before Sol retries; native A44C90 is unsigned less in ECX/EDX. Its emitted helper independently matches all11 native bytes. Audited COFF relocations against assignment99EFB0, push_back88B610, introsortA46E00, insertionA46680 and tailA45F90; the latter helpers take first/last in registers and their comparator on the stack. Main attempt25 recovered exact scheduling using a standard template logarithm and direct algorithm expressions; no assembly, artificial storage, or masked behavioral mismatch.
+
+Ten HIGH, three XHIGH, ten post-Luna Sol and two final MAIN grades were used (25 total, third main allowance unused). All histories remain separately identified. Main24 was271v270; main25 RELOCATION_MATCH270. Source comment-only cleanup does not change the graded implementation.
+
+Expanded exact-implementation fixtures pass host g++98 -O2 and canonical VC7.1: all-identity filtering, changes on each scale axis including NaN words, unsigned CRC boundary7fffffff/80000000/ffffffff, empty input/output, retained output, all counts1..17 and23, depth and both sort ranges, exact comparator identity, append callback replacing both source bounds, and native class/record sizes. Fixture uses the shared string header on VC7.1 and a host-width declaration adapter; implementation text is identical. Tests model external array records in aligned storage with individually constructed string members and stub native helpers.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

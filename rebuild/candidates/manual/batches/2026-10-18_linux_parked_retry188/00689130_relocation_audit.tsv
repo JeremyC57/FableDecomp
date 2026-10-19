@@ -1,0 +1,13 @@
+offset	native_target	symbol
+0000000a	00487dc0	?GetPControlledCreature@Player@NativeInput@@QBEPAUThingPlayerCreature@2@XZ
+00000041	0040f020	?LowerBound@ComponentMap@NativeInput@@QAEPAUComponentEntry@2@ABW4ETCInterfaceType@2@@Z
+0000005e	00a03b40	?GetType@InputEvent@NativeInput@@QBE?AW4EInputEventType@2@XZ
+00000073	00a043a0	?GetJoystickPosition@InputEvent@NativeInput@@QBE?AUVector2@2@XZ
+0000007d	0125bec0	__real@3e800000
+00000092	01230c8c	__real@be800000
+000000a7	0125bebc	__real@3f266666
+000000be	008023c0	?SetAsTargetNextThingInDirection@TargetingPlayer@NativeInput@@QAEXW4ETargetNextThingMethod@12@@Z
+000000cb	00a0d390	?SetAsPerformedEvent@ProcessedInput@NativeInput@@QAEXXZ
+000000de	0125bec4	__real@bf266666
+000000f5	008023c0	?SetAsTargetNextThingInDirection@TargetingPlayer@NativeInput@@QAEXW4ETargetNextThingMethod@12@@Z
+00000102	00a0d390	?SetAsPerformedEvent@ProcessedInput@NativeInput@@QAEXXZ

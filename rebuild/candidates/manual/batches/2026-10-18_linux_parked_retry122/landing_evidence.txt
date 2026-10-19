@@ -1,0 +1,17 @@
+addr       parity           behav  name
+009ef750   RELOCATION_MATCH PASS   InsertNode
+009ec5e0   RELOCATION_MATCH PASS   AddInput
+00aa7c70   RELOCATION_MATCH PASS   SaveChunkedFile
+00a381d0   RELOCATION_MATCH PASS   Error
+
+WINS: 4
+  009ef750 RELOCATION_MATCH CConsoleInputMap::InsertNode
+  009ec5e0 RELOCATION_MATCH CConsole::AddInput
+  00aa7c70 RELOCATION_MATCH CChunkedFileSaver::SaveChunkedFile
+  00a381d0 RELOCATION_MATCH CCRCSymbolMap::Error
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CConsoleInputMap_InsertNode_009ef750
+  CConsole_AddInput_009ec5e0
+  CChunkedFileSaver_SaveChunkedFile_00aa7c70
+  CCRCSymbolMap_Error_00a381d0

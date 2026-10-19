@@ -1,0 +1,560 @@
+{
+  "author": [
+    {
+      "address": "009c8470",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_01",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_01/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_01/source.cpp",
+      "source_sha256": "824233b2a14a80f2be5f340351ad5417e233c502c0a797a823f793cb1bc1fdba",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_01/grade.log",
+      "log_sha256": "fed0f67d3461ea486917a995352109d42c229101e38571f148b09300a0cedcb9",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 1,
+        "source_grade": 1,
+        "sha256": "824233b2a14a80f2be5f340351ad5417e233c502c0a797a823f793cb1bc1fdba",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 283,
+      "native_length": 292
+    },
+    {
+      "address": "009c8470",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_02",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_02/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_02/source.cpp",
+      "source_sha256": "88fb34a4f3ed6e9c157fd4be894dace97d138ef7c7a4a345ac785cc2ef4c133b",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_02/grade.log",
+      "log_sha256": "f5f1fd058ff93a82032d3c7c415e64878b2abd359a0f19e1dec318feb595f1eb",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 2,
+        "source_grade": 2,
+        "sha256": "88fb34a4f3ed6e9c157fd4be894dace97d138ef7c7a4a345ac785cc2ef4c133b",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 292,
+      "native_length": 292
+    },
+    {
+      "address": "009c8470",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_03",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_03/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_03/source.cpp",
+      "source_sha256": "30b007402d301773b47e2f17848a470a318ebf1def95beb4fcb67acc7eebdb16",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_03/grade.log",
+      "log_sha256": "3ee058db04ee09273178be3b5c3b898e950fddddc0182d3afbb23c1cf6bacee5",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 3,
+        "source_grade": 3,
+        "sha256": "30b007402d301773b47e2f17848a470a318ebf1def95beb4fcb67acc7eebdb16",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "RELOCATION_MATCH",
+      "built_length": 292,
+      "native_length": 292
+    },
+    {
+      "address": "009c8470",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_04",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_04/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_04/source.cpp",
+      "source_sha256": "b181645379d789e7a1de71703157c84a2dbc3cdbd902959349417770ccee6e18",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/009c8470_04/grade.log",
+      "log_sha256": "3ee058db04ee09273178be3b5c3b898e950fddddc0182d3afbb23c1cf6bacee5",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 4,
+        "source_grade": 4,
+        "sha256": "b181645379d789e7a1de71703157c84a2dbc3cdbd902959349417770ccee6e18",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 009c8470 work/codex-lane/w22/astra239_whole/src/009c8470.cpp ReadFromDataStream",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "RELOCATION_MATCH",
+      "built_length": 292,
+      "native_length": 292
+    },
+    {
+      "address": "006dc450",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/006dc450_01",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/006dc450_01/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/006dc450_01/source.cpp",
+      "source_sha256": "2ab164c586678c1eb61ebf4aa65e9c749cb58157b29d2badc3e5255fa84f6f63",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/006dc450_01/grade.log",
+      "log_sha256": "e8bd80ca628b2164e0105bf51df99de28059fb924db28609f32cca227ed03162",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 006dc450 work/codex-lane/w22/astra239_whole/src/006dc450.cpp WriteStatIncreaseMap",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 1,
+        "source_grade": 1,
+        "sha256": "2ab164c586678c1eb61ebf4aa65e9c749cb58157b29d2badc3e5255fa84f6f63",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 006dc450 work/codex-lane/w22/astra239_whole/src/006dc450.cpp WriteStatIncreaseMap",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "RELOCATION_MATCH",
+      "built_length": 244,
+      "native_length": 244
+    },
+    {
+      "address": "006dc450",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/006dc450_02",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/006dc450_02/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/006dc450_02/source.cpp",
+      "source_sha256": "a145e58ba82a5b7a7072a1b5db8ec8e4ac8f9c08237e6148b91d833415cfeaf8",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/006dc450_02/grade.log",
+      "log_sha256": "e8bd80ca628b2164e0105bf51df99de28059fb924db28609f32cca227ed03162",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 006dc450 work/codex-lane/w22/astra239_whole/src/006dc450.cpp WriteStatIncreaseMap",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 2,
+        "source_grade": 2,
+        "sha256": "a145e58ba82a5b7a7072a1b5db8ec8e4ac8f9c08237e6148b91d833415cfeaf8",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 006dc450 work/codex-lane/w22/astra239_whole/src/006dc450.cpp WriteStatIncreaseMap",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "RELOCATION_MATCH",
+      "built_length": 244,
+      "native_length": 244
+    },
+    {
+      "address": "0047a8e0",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_01",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_01/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_01/source.cpp",
+      "source_sha256": "d1f6e414e640f26731a1aeb79ac12b8247f7e5d0dae4aa50d5cc981836566078",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_01/grade.log",
+      "log_sha256": "57ce81291156b414a6130d2b6b83c763397d98be38c58740b9b7c2fa5276b08c",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 1,
+        "source_grade": 1,
+        "sha256": "d1f6e414e640f26731a1aeb79ac12b8247f7e5d0dae4aa50d5cc981836566078",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 289,
+      "native_length": 272
+    },
+    {
+      "address": "0047a8e0",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_02",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_02/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_02/source.cpp",
+      "source_sha256": "96371abc91bf97daa6a97c7924cb2322dc127483982d5e9a4a888e341399f454",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_02/grade.log",
+      "log_sha256": "53c04b23dd4dcb61b1307ede13a364c657f8c893b84e7b554de133ca56ba226e",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 2,
+        "source_grade": 2,
+        "sha256": "96371abc91bf97daa6a97c7924cb2322dc127483982d5e9a4a888e341399f454",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 279,
+      "native_length": 272
+    },
+    {
+      "address": "0047a8e0",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_03",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_03/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_03/source.cpp",
+      "source_sha256": "769df5e8881324e65f5998bc0e4329c46d0331c062b49aced3a779729675133f",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_03/grade.log",
+      "log_sha256": "9d76317be378271e95d723b9c0d30d15dfbd8ce973c0301d14428dc3fc2346cb",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 3,
+        "source_grade": 3,
+        "sha256": "769df5e8881324e65f5998bc0e4329c46d0331c062b49aced3a779729675133f",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 272,
+      "native_length": 272
+    },
+    {
+      "address": "0047a8e0",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_04",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_04/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_04/source.cpp",
+      "source_sha256": "6afc41f8c472b6edf5fea119178d9639285ca14612e88305e786ededae95e389",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_04/grade.log",
+      "log_sha256": "f03ed86b0c3e3a9423a38b450f75817c40bcaa909771ff4a14284719886dfe28",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 4,
+        "source_grade": 4,
+        "sha256": "6afc41f8c472b6edf5fea119178d9639285ca14612e88305e786ededae95e389",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 277,
+      "native_length": 272
+    },
+    {
+      "address": "0047a8e0",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_05",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_05/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_05/source.cpp",
+      "source_sha256": "dbd184d53dc43cb986b48e8994019bb8a8e31a58d2993a2ffa7e3234631953eb",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_05/grade.log",
+      "log_sha256": "d63822eb0f2f2dd18c6b8ba1dc01fdd921ee65fc8d29cf8d10d6b6fde61a7dc7",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 5,
+        "source_grade": 5,
+        "sha256": "dbd184d53dc43cb986b48e8994019bb8a8e31a58d2993a2ffa7e3234631953eb",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 272,
+      "native_length": 272
+    },
+    {
+      "address": "0047a8e0",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_06",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_06/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_06/source.cpp",
+      "source_sha256": "e0948d241e3abdcf8488d4fca2731ab6bbe2cfed43310a645c9a6a7baf138c96",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_06/grade.log",
+      "log_sha256": "cee4270fe37f6697346a4ddcbc0dedfff7532c4a687a5277ada8bd34562670f4",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 6,
+        "source_grade": 6,
+        "sha256": "e0948d241e3abdcf8488d4fca2731ab6bbe2cfed43310a645c9a6a7baf138c96",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 276,
+      "native_length": 272
+    },
+    {
+      "address": "0047a8e0",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_07",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_07/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_07/source.cpp",
+      "source_sha256": "769df5e8881324e65f5998bc0e4329c46d0331c062b49aced3a779729675133f",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_07/grade.log",
+      "log_sha256": "d21c36dc822e984fb05b4dc728acec7b236664c26389b656892462bc83e758a4",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest --flags /Oa",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3",
+        "/Oa"
+      ],
+      "original_metadata": {
+        "snapshot": 7,
+        "source_grade": 7,
+        "sha256": "769df5e8881324e65f5998bc0e4329c46d0331c062b49aced3a779729675133f",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest --flags /Oa",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3",
+          "/Oa"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 274,
+      "native_length": 272
+    },
+    {
+      "address": "0047a8e0",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_08",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_08/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_08/source.cpp",
+      "source_sha256": "f606a99502d6e7e4be89fc6a2b140f0592bb6afc3cef484648acaa57f21c076e",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/0047a8e0_08/grade.log",
+      "log_sha256": "83a59e22cff3222dcc0849524caaf3422d755a9776f96341c790e3c00266ccc4",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 8,
+        "source_grade": 8,
+        "sha256": "f606a99502d6e7e4be89fc6a2b140f0592bb6afc3cef484648acaa57f21c076e",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "RELOCATION_MATCH",
+      "built_length": 272,
+      "native_length": 272
+    },
+    {
+      "address": "00812170",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/00812170_01",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/00812170_01/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/00812170_01/source.cpp",
+      "source_sha256": "5e33b62001e0b02c873ab06c6d6ccef311343ad4c6cd26d9a1e0a8fcd66c32b7",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/00812170_01/grade.log",
+      "log_sha256": "276841707bf8d1096c91407e51f5291a459f00daf0a947ac654f3d0f605c5dcb",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00812170 work/codex-lane/w22/astra239_whole/src/00812170.cpp CHitParameters",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 1,
+        "source_grade": 1,
+        "sha256": "5e33b62001e0b02c873ab06c6d6ccef311343ad4c6cd26d9a1e0a8fcd66c32b7",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 00812170 work/codex-lane/w22/astra239_whole/src/00812170.cpp CHitParameters",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "DIFFER",
+      "built_length": 274,
+      "native_length": 266
+    },
+    {
+      "address": "00812170",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/00812170_02",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/00812170_02/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/00812170_02/source.cpp",
+      "source_sha256": "26c9df9f83f535b7853348814ac143dcb2905fef7ebba7f41651933ebfd34ed7",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/00812170_02/grade.log",
+      "log_sha256": "07ccf100fee44f7e2838bd8ea8ed7355e1ff7f5de777648ea74d0df053100a79",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00812170 work/codex-lane/w22/astra239_whole/src/00812170.cpp CHitParameters",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 2,
+        "source_grade": 2,
+        "sha256": "26c9df9f83f535b7853348814ac143dcb2905fef7ebba7f41651933ebfd34ed7",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 00812170 work/codex-lane/w22/astra239_whole/src/00812170.cpp CHitParameters",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "RELOCATION_MATCH",
+      "built_length": 266,
+      "native_length": 266
+    },
+    {
+      "address": "00812170",
+      "snapshot": "work/codex-lane/w22/astra239_whole/snapshots/00812170_03",
+      "metadata": "work/codex-lane/w22/astra239_whole/snapshots/00812170_03/grade.json",
+      "source_path": "work/codex-lane/w22/astra239_whole/snapshots/00812170_03/source.cpp",
+      "source_sha256": "efb39312c27790a7e18dbc8b56b536a932fcdb0570539f696aa42dcd44232e2b",
+      "log_path": "work/codex-lane/w22/astra239_whole/snapshots/00812170_03/grade.log",
+      "log_sha256": "07ccf100fee44f7e2838bd8ea8ed7355e1ff7f5de777648ea74d0df053100a79",
+      "counted_source_grade": true,
+      "metadata_verification": false,
+      "command": "timeout 200 python3 work/codex-lane/tools/q.py 00812170 work/codex-lane/w22/astra239_whole/src/00812170.cpp CHitParameters",
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "original_metadata": {
+        "snapshot": 3,
+        "source_grade": 3,
+        "sha256": "efb39312c27790a7e18dbc8b56b536a932fcdb0570539f696aa42dcd44232e2b",
+        "command": "timeout 200 python3 work/codex-lane/tools/q.py 00812170 work/codex-lane/w22/astra239_whole/src/00812170.cpp CHitParameters",
+        "effective_flags": [
+          "/O2",
+          "/Oy",
+          "/W3"
+        ]
+      },
+      "verdict": "RELOCATION_MATCH",
+      "built_length": 266,
+      "native_length": 266
+    }
+  ],
+  "root": [
+    {
+      "address": "009c8470",
+      "author_grades": 4,
+      "root_grade": 1,
+      "cumulative": 5,
+      "source": "work/codex-lane/w22/coordinator_retry189/root_amendments/src/009c8470.cpp",
+      "sha256": "7adf9cffa3c462f93d8d995e04e46416077ca3e036a4945984a590e2b805bc95",
+      "command": [
+        "timeout",
+        "200",
+        "python3",
+        "work/codex-lane/tools/q.py",
+        "009c8470",
+        "work/codex-lane/w22/coordinator_retry189/root_amendments/src/009c8470.cpp",
+        "ReadFromDataStream"
+      ],
+      "effective_flags": [
+        "/O2",
+        "/Oy",
+        "/W3"
+      ],
+      "reason": "PDB ReadWithSrcChunkOverflow private visibility, root review amendment; original frozen worker source untouched",
+      "utc": "2026-10-19T01:07:46.943256+00:00"
+    }
+  ],
+  "fixture_only": "0047a8e0 native signed %d high IDs, no production change"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "address": "00bbf380",
+    "src": {
+      "path": "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bbf380.cpp",
+      "sha256": "c15bed73a779ecfeb385bac323b98f2044eebe98f303a60cc9bb2be7c67eab7c"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/coordinator_retry196/root_amendments/test/00bbf380.cpp",
+      "sha256": "d5dd40309d1e888184abb900ac38da498221d02d7f8318aaf0744cff7a65547e"
+    }
+  },
+  {
+    "address": "00bc3e10",
+    "src": {
+      "path": "work/codex-lane/w22/coordinator_retry196/root_amendments/src/00bc3e10.cpp",
+      "sha256": "62d90b0b61ded24f9abd467441ecc48950f2c2659a4934776ed73e19c34b687d"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/coordinator_retry196/root_amendments/test/00bc3e10.cpp",
+      "sha256": "2dd267c3695bcc9cb8f7da6da759447fc2890e0c2bae8bcf65cb09401e02f5d4"
+    }
+  }
+]

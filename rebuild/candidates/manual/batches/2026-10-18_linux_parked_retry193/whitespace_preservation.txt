@@ -1,0 +1,5 @@
+Two identical existing fixture-only linkage-stub trailing spaces retained to preserve frozen SHA256/source identity. No production-body whitespace finding. Diff check repeated with only blank-at-eol disabled; no other whitespace findings.
+rebuild/candidates/manual/batches/2026-10-18_linux_parked_retry193/root_amendments/test/009febc0.cpp:644: trailing whitespace.
++CBankFileNative::CBankFileNative(){} CBankFileAsync::CBankFileAsync(){} CResourceBank::CResourceBank(){}
+rebuild/tests/00/9f/CGraphicDataBank_CGraphicDataBank_009febc0_test.cpp:655: trailing whitespace.
++CBankFileNative::CBankFileNative(){} CBankFileAsync::CBankFileAsync(){} CResourceBank::CResourceBank(){}

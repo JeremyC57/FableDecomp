@@ -1,0 +1,1 @@
+Seven new immutable source grades (including one compiler failure and one DIFFER),20 UNCERTAIN historical reservations,23 unused new allowances. Final five source corrections are comments only; compiled tokens independently equal the final grade snapshots.

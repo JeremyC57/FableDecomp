@@ -1,0 +1,7 @@
+addr       parity           behav  name
+009710d0   RELOCATION_MATCH PASS   RefreshCoverList
+0091e4b0   RELOCATION_MATCH PASS   Update
+
+WINS: 2
+  009710d0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::RefreshCoverList
+  0091e4b0 RELOCATION_MATCH CAIStateGroup_MinionLeaveRegion::Update

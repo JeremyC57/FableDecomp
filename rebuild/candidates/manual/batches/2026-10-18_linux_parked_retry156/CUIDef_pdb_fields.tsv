@@ -1,0 +1,6 @@
+CUIDef	604	172	vector<unsigned_long,std::allocator<unsigned_long>_>	NonScrollingChildren
+CUIDef	604	340	long	UpLimit
+CUIDef	604	344	long	DownLimit
+CUIDef	604	348	bool	Wrapping
+CUIDef	604	349	bool	Inverted
+CUIDef	604	350	C2DVector	PositionOffset

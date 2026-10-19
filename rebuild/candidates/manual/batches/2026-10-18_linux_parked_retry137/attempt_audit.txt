@@ -1,0 +1,1 @@
+13 immutable source/command/flag grade records verified, including one compiler failure. 20 UNCERTAIN reservations preserved across five rows; 17 new allowances unused. Metadata-only correction retained separately; no root source grades.

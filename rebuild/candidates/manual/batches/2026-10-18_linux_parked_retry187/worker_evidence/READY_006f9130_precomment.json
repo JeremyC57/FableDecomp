@@ -1,0 +1,17 @@
+{
+  "address": "006f9130",
+  "status": "RELOCATION_MATCH",
+  "length": 169,
+  "historical_uncertain": 4,
+  "new_grades": 1,
+  "cumulative": 5,
+  "source_sha256": "d1e894f74314a68eb56a39efc5074e910a1487d2ba3f3cde24ceeadbbb45b562",
+  "fixture_sha256": "371ed2c5109e7733160cc2f0b49ce08ac1b98eaf1c9184e10ebb5bc63d74bbe1",
+  "tests": [
+    "host C++98 O2 PASS",
+    "host C++98 O2 noelide PASS",
+    "native VC7.1 O2 PASS"
+  ],
+  "evidence": "evidence/006f9130_relocation_audit.json",
+  "limits": "Actual CManager/CMeshDataBank/C3DAnimationInfo/string headers included, explicit native NAnimationEvents manager projection+4 and stats Duration+0C backed by PDB. Stats/CCPPointerInfo headers absent incl quarantine. No vtable synthesized or dispatched in this row. Actual returned counted-pointer copy/dtor executes, with owning native callbackInfo+4/scalarDelete. Fixture covers epsilon below/equal/above, signedzero, negatives, infinities, NaN, full animation ID0/FFFFFFFF, event identity, external duration mutation, nullInfo borrowed data and final-owner release on both branches. Requires valid external animation/statsData; native has no nullData validation. External lookup/stats/event functions stubbed. First native fixture failed because expected comparison retained x87 extended precision; final fixture compares rounded float object bytes and passes. Bank table original inline getter name/layout not established: source comment AnimationInfoBuffer is over-specific, evidence limits it to pointertable+380."
+}

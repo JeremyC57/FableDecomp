@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00e1f3e0   RELOCATION_MATCH PASS   Init
+
+WINS: 1
+  00e1f3e0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::CAttackingBandit::CAttackingBandit::Init

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0093dc10   RELOCATION_MATCH PASS   IsStillRunnable
+
+WINS: 1
+  0093dc10 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable

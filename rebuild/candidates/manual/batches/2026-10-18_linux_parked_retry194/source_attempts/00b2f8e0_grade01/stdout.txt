@@ -1,0 +1,218 @@
+00b2f8e0 CheckVisibilityResult DIFFER(260v262) flags= []
+--- retail (262 bytes)
+00b2f8e0  51                     push ecx
+00b2f8e1  56                     push esi
+00b2f8e2  8bf1                   mov esi, ecx
+00b2f8e4  8a4634                 mov al, byte ptr [esi + 0x34]
+00b2f8e7  84c0                   test al, al
+00b2f8e9  57                     push edi
+00b2f8ea  8b7c2410               mov edi, dword ptr [esp + 0x10]
+00b2f8ee  7436                   je 0xb2f926
+00b2f8f0  c7470800000000         mov dword ptr [edi + 8], 0
+00b2f8f7  8b4710                 mov eax, dword ptr [edi + 0x10]
+00b2f8fa  3bc0                   cmp eax, eax
+00b2f8fc  8b4f0c                 mov ecx, dword ptr [edi + 0xc]
+00b2f8ff  750b                   jne 0xb2f90c
+00b2f901  8bc1                   mov eax, ecx
+00b2f903  894710                 mov dword ptr [edi + 0x10], eax
+00b2f906  5f                     pop edi
+00b2f907  5e                     pop esi
+00b2f908  59                     pop ecx
+00b2f909  c20400                 ret 4
+00b2f90c  8bf0                   mov esi, eax
+00b2f90e  2bf0                   sub esi, eax
+00b2f910  56                     push esi
+00b2f911  50                     push eax
+00b2f912  51                     push ecx
+00b2f913  e8cef10c00             call 0xbfeae6
+00b2f918  83c40c                 add esp, 0xc
+00b2f91b  03c6                   add eax, esi
+00b2f91d  894710                 mov dword ptr [edi + 0x10], eax
+00b2f920  5f                     pop edi
+00b2f921  5e                     pop esi
+00b2f922  59                     pop ecx
+00b2f923  c20400                 ret 4
+00b2f926  a15c6e4301             mov eax, dword ptr [0x1436e5c]
+00b2f92b  8b8810400000           mov ecx, dword ptr [eax + 0x4010]
+00b2f931  8b471c                 mov eax, dword ptr [edi + 0x1c]
+00b2f934  8d5001                 lea edx, [eax + 1]
+00b2f937  3bd1                   cmp edx, ecx
+00b2f939  894c2408               mov dword ptr [esp + 8], ecx
+00b2f93d  0f858b000000           jne 0xb2f9ce
+00b2f943  8b470c                 mov eax, dword ptr [edi + 0xc]
+00b2f946  8b4f10                 mov ecx, dword ptr [edi + 0x10]
+00b2f949  3bc1                   cmp eax, ecx
+00b2f94b  0f848f000000           je 0xb2f9e0
+00b2f951  53                     push ebx
+00b2f952  55                     push ebp
+00b2f953  8be9                   mov ebp, ecx
+00b2f955  8bd0                   mov edx, eax
+00b2f957  2bea                   sub ebp, edx
+00b2f959  c1fd02                 sar ebp, 2
+00b2f95c  33db                   xor ebx, ebx
+00b2f95e  33f6                   xor esi, esi
+00b2f960  85ed                   test ebp, ebp
+00b2f962  761f                   jbe 0xb2f983
+00b2f964  8b4f0c                 mov ecx, dword ptr [edi + 0xc]
+00b2f967  8b04b1                 mov eax, dword ptr [ecx + esi*4]
+00b2f96a  8b0d5c6e4301           mov ecx, dword ptr [0x1436e5c]
+00b2f970  6a01                   push 1
+00b2f972  50                     push eax
+00b2f973  e838d70500             call 0xb8d0b0
+00b2f978  03d8                   add ebx, eax
+00b2f97a  46                     inc esi
+00b2f97b  3bf5                   cmp esi, ebp
+00b2f97d  72e5                   jb 0xb2f964
+00b2f97f  85db                   test ebx, ebx
+00b2f981  7505                   jne 0xb2f988
+00b2f983  ff4708                 inc dword ptr [edi + 8]
+00b2f986  eb07                   jmp 0xb2f98f
+00b2f988  c7470800000000         mov dword ptr [edi + 8], 0
+00b2f98f  8b4710                 mov eax, dword ptr [edi + 0x10]
+00b2f992  3bc0                   cmp eax, eax
+00b2f994  8b4f0c                 mov ecx, dword ptr [edi + 0xc]
+00b2f997  5d                     pop ebp
+00b2f998  5b                     pop ebx
+00b2f999  7512                   jne 0xb2f9ad
+00b2f99b  8b542408               mov edx, dword ptr [esp + 8]
+00b2f99f  8bc1                   mov eax, ecx
+00b2f9a1  894710                 mov dword ptr [edi + 0x10], eax
+00b2f9a4  89571c                 mov dword ptr [edi + 0x1c], edx
+00b2f9a7  5f                     pop edi
+00b2f9a8  5e                     pop esi
+00b2f9a9  59                     pop ecx
+00b2f9aa  c20400                 ret 4
+00b2f9ad  8bf0                   mov esi, eax
+00b2f9af  2bf0                   sub esi, eax
+00b2f9b1  56                     push esi
+00b2f9b2  50                     push eax
+00b2f9b3  51                     push ecx
+00b2f9b4  e82df10c00             call 0xbfeae6
+00b2f9b9  8b542414               mov edx, dword ptr [esp + 0x14]
+00b2f9bd  83c40c                 add esp, 0xc
+00b2f9c0  03c6                   add eax, esi
+00b2f9c2  894710                 mov dword ptr [edi + 0x10], eax
+00b2f9c5  89571c                 mov dword ptr [edi + 0x1c], edx
+00b2f9c8  5f                     pop edi
+00b2f9c9  5e                     pop esi
+00b2f9ca  59                     pop ecx
+00b2f9cb  c20400                 ret 4
+00b2f9ce  3bc1                   cmp eax, ecx
+00b2f9d0  740e                   je 0xb2f9e0
+00b2f9d2  8bcf                   mov ecx, edi
+00b2f9d4  e8d7feffff             call 0xb2f8b0
+00b2f9d9  8b460c                 mov eax, dword ptr [esi + 0xc]
+00b2f9dc  40                     inc eax
+00b2f9dd  894708                 mov dword ptr [edi + 8], eax
+00b2f9e0  5f                     pop edi
+00b2f9e1  5e                     pop esi
+00b2f9e2  59                     pop ecx
+00b2f9e3  c20400                 ret 4
+--- built (260 bytes)
+00b2f8e0  51                     push ecx
+00b2f8e1  56                     push esi
+00b2f8e2  8bf1                   mov esi, ecx
+00b2f8e4  8a4634                 mov al, byte ptr [esi + 0x34]
+00b2f8e7  84c0                   test al, al
+00b2f8e9  57                     push edi
+00b2f8ea  8b7c2410               mov edi, dword ptr [esp + 0x10]
+00b2f8ee  7436                   je 0xb2f926
+00b2f8f0  c7470800000000         mov dword ptr [edi + 8], 0
+00b2f8f7  8b4710                 mov eax, dword ptr [edi + 0x10]
+00b2f8fa  3bc0                   cmp eax, eax
+00b2f8fc  8b4f0c                 mov ecx, dword ptr [edi + 0xc]
+00b2f8ff  750b                   jne 0xb2f90c
+00b2f901  8bc1                   mov eax, ecx
+00b2f903  894710                 mov dword ptr [edi + 0x10], eax
+00b2f906  5f                     pop edi
+00b2f907  5e                     pop esi
+00b2f908  59                     pop ecx
+00b2f909  c20400                 ret 4
+00b2f90c  8bf0                   mov esi, eax
+00b2f90e  2bf0                   sub esi, eax
+00b2f910  56                     push esi
+00b2f911  50                     push eax
+00b2f912  51                     push ecx
+00b2f913  e800000000             call 0xb2f918
+00b2f918  83c40c                 add esp, 0xc
+00b2f91b  03c6                   add eax, esi
+00b2f91d  894710                 mov dword ptr [edi + 0x10], eax
+00b2f920  5f                     pop edi
+00b2f921  5e                     pop esi
+00b2f922  59                     pop ecx
+00b2f923  c20400                 ret 4
+00b2f926  a100000000             mov eax, dword ptr [0]
+00b2f92b  8b8810400000           mov ecx, dword ptr [eax + 0x4010]
+00b2f931  8b471c                 mov eax, dword ptr [edi + 0x1c]
+00b2f934  8d5001                 lea edx, [eax + 1]
+00b2f937  3bd1                   cmp edx, ecx
+00b2f939  894c2408               mov dword ptr [esp + 8], ecx
+00b2f93d  0f8589000000           jne 0xb2f9cc
+00b2f943  8b4f0c                 mov ecx, dword ptr [edi + 0xc]
+00b2f946  8b4710                 mov eax, dword ptr [edi + 0x10]
+00b2f949  3bc8                   cmp ecx, eax
+00b2f94b  0f848d000000           je 0xb2f9de
+00b2f951  2bc1                   sub eax, ecx
+00b2f953  53                     push ebx
+00b2f954  c1f802                 sar eax, 2
+00b2f957  55                     push ebp
+00b2f958  8be8                   mov ebp, eax
+00b2f95a  33db                   xor ebx, ebx
+00b2f95c  33f6                   xor esi, esi
+00b2f95e  85ed                   test ebp, ebp
+00b2f960  761f                   jbe 0xb2f981
+00b2f962  8b470c                 mov eax, dword ptr [edi + 0xc]
+00b2f965  8b0cb0                 mov ecx, dword ptr [eax + esi*4]
+00b2f968  6a01                   push 1
+00b2f96a  51                     push ecx
+00b2f96b  8b0d00000000           mov ecx, dword ptr [0]
+00b2f971  e800000000             call 0xb2f976
+00b2f976  03d8                   add ebx, eax
+00b2f978  46                     inc esi
+00b2f979  3bf5                   cmp esi, ebp
+00b2f97b  72e5                   jb 0xb2f962
+00b2f97d  85db                   test ebx, ebx
+00b2f97f  7505                   jne 0xb2f986
+00b2f981  ff4708                 inc dword ptr [edi + 8]
+00b2f984  eb07                   jmp 0xb2f98d
+00b2f986  c7470800000000         mov dword ptr [edi + 8], 0
+00b2f98d  8b4710                 mov eax, dword ptr [edi + 0x10]
+00b2f990  3bc0                   cmp eax, eax
+00b2f992  8b4f0c                 mov ecx, dword ptr [edi + 0xc]
+00b2f995  5d                     pop ebp
+00b2f996  5b                     pop ebx
+00b2f997  7512                   jne 0xb2f9ab
+00b2f999  8b542408               mov edx, dword ptr [esp + 8]
+00b2f99d  8bc1                   mov eax, ecx
+00b2f99f  894710                 mov dword ptr [edi + 0x10], eax
+00b2f9a2  89571c                 mov dword ptr [edi + 0x1c], edx
+00b2f9a5  5f                     pop edi
+00b2f9a6  5e                     pop esi
+00b2f9a7  59                     pop ecx
+00b2f9a8  c20400                 ret 4
+00b2f9ab  8bf0                   mov esi, eax
+00b2f9ad  2bf0                   sub esi, eax
+00b2f9af  56                     push esi
+00b2f9b0  50                     push eax
+00b2f9b1  51                     push ecx
+00b2f9b2  e800000000             call 0xb2f9b7
+00b2f9b7  8b542414               mov edx, dword ptr [esp + 0x14]
+00b2f9bb  83c40c                 add esp, 0xc
+00b2f9be  03c6                   add eax, esi
+00b2f9c0  894710                 mov dword ptr [edi + 0x10], eax
+00b2f9c3  89571c                 mov dword ptr [edi + 0x1c], edx
+00b2f9c6  5f                     pop edi
+00b2f9c7  5e                     pop esi
+00b2f9c8  59                     pop ecx
+00b2f9c9  c20400                 ret 4
+00b2f9cc  3bc1                   cmp eax, ecx
+00b2f9ce  740e                   je 0xb2f9de
+00b2f9d0  8bcf                   mov ecx, edi
+00b2f9d2  e800000000             call 0xb2f9d7
+00b2f9d7  8b460c                 mov eax, dword ptr [esi + 0xc]
+00b2f9da  40                     inc eax
+00b2f9db  894708                 mov dword ptr [edi + 8], eax
+00b2f9de  5f                     pop edi
+00b2f9df  5e                     pop esi
+00b2f9e0  59                     pop ecx
+00b2f9e1  c20400                 ret 4

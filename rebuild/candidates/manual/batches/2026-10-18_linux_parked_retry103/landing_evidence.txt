@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00906380   RELOCATION_MATCH PASS   OnCreate
+0069ab80   RELOCATION_MATCH PASS   CameraValidationCheck
+
+WINS: 2
+  00906380 RELOCATION_MATCH CCombatSequence_BanditUnblockableAttack::OnCreate
+  0069ab80 RELOCATION_MATCH CGameCameraManager::CameraValidationCheck
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CCombatSequenceBanditUnblockableAttack_OnCreate_00906380
+  CGameCameraManager_CameraValidationCheck_0069ab80

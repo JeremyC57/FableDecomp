@@ -1,0 +1,11 @@
+addr       parity           behav  name
+008a0b10   RELOCATION_MATCH PASS   SetEntityAsRegionFollowing
+008a08a0   RELOCATION_MATCH PASS   EntityStartScreamerSuperAttackThing
+
+WINS: 2
+  008a0b10 RELOCATION_MATCH CGameScriptInterface::SetEntityAsRegionFollowing
+  008a08a0 RELOCATION_MATCH CGameScriptInterface::EntityStartScreamerSuperAttackThing
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_SetEntityAsRegionFollowing_008a0b10
+  CGameScriptInterface_EntityStartScreamerSuperAttackThing_008a08a0

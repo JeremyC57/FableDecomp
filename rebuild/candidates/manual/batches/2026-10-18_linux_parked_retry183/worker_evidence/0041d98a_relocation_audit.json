@@ -1,0 +1,107 @@
+{
+  "caller_relocations": [
+    {
+      "offset": "0x19",
+      "target": "0x123002c",
+      "compiled_symbol": "??_C@_0N@DHMGBONA@UI_ICONS_DEF?$AA@",
+      "demangled": "\"UI_ICONS_DEF\"",
+      "identity": "independently read full literal through NUL",
+      "literal_through_nul_hex": "55495f49434f4e535f44454600"
+    },
+    {
+      "offset": "0x1e",
+      "target": "0x99ebf0",
+      "compiled_symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "demangled": "public: __thiscall CCharString::CCharString(char const *, long)",
+      "identity": "CCharString(const char*,long), owning string construction"
+    },
+    {
+      "offset": "0x2c",
+      "target": "0x9ad390",
+      "compiled_symbol": "?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z",
+      "demangled": "public: long __thiscall CDefinitionManager::GetGlobalIndexFromClassIndex(struct CCharString const &, long) const",
+      "identity": "CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString&,long)const; PDB FW030622E0; native9AD39D reads full stack dword index then9AD3A1 indexes array by*4; callers pass long1"
+    },
+    {
+      "offset": "0x36",
+      "target": "0x99eae0",
+      "compiled_symbol": "??1CCharString@@QAE@XZ",
+      "demangled": "public: __thiscall CCharString::~CCharString(void)",
+      "identity": "CCharString::~CCharString()"
+    },
+    {
+      "offset": "0x43",
+      "target": "0x42b374",
+      "compiled_symbol": "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIIconsDef@NUISystem@@@@@Z",
+      "demangled": "public: bool __thiscall CDefinitionManager::GetDef(long, struct CDefPointer<struct NUISystem::CUIIconsDef> *)",
+      "identity": "GetDef<CUIIconsDef>, exact 98-byte helper independently checked below"
+    },
+    {
+      "offset": "0x4d",
+      "target": "0x123002c",
+      "compiled_symbol": "??_C@_0N@DHMGBONA@UI_ICONS_DEF?$AA@",
+      "demangled": "\"UI_ICONS_DEF\"",
+      "identity": "independently read full literal through NUL",
+      "literal_through_nul_hex": "55495f49434f4e535f44454600"
+    },
+    {
+      "offset": "0x52",
+      "target": "0x99ebf0",
+      "compiled_symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "demangled": "public: __thiscall CCharString::CCharString(char const *, long)",
+      "identity": "CCharString(const char*,long), owning string construction"
+    },
+    {
+      "offset": "0x5d",
+      "target": "0x44c6b0",
+      "compiled_symbol": "?GetDefinitionManager@@YIPAUCDefinitionManager@@XZ",
+      "demangled": "struct CDefinitionManager * __fastcall GetDefinitionManager(void)",
+      "identity": "GetDefinitionManager(); body loads global 013b879c"
+    },
+    {
+      "offset": "0x64",
+      "target": "0x9ad390",
+      "compiled_symbol": "?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z",
+      "demangled": "public: long __thiscall CDefinitionManager::GetGlobalIndexFromClassIndex(struct CCharString const &, long) const",
+      "identity": "CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString&,long)const; PDB FW030622E0; native9AD39D reads full stack dword index then9AD3A1 indexes array by*4; callers pass long1"
+    },
+    {
+      "offset": "0x6e",
+      "target": "0x99eae0",
+      "compiled_symbol": "??1CCharString@@QAE@XZ",
+      "demangled": "public: __thiscall CCharString::~CCharString(void)",
+      "identity": "CCharString::~CCharString()"
+    },
+    {
+      "offset": "0x78",
+      "target": "0x44c6b0",
+      "compiled_symbol": "?GetDefinitionManager@@YIPAUCDefinitionManager@@XZ",
+      "demangled": "struct CDefinitionManager * __fastcall GetDefinitionManager(void)",
+      "identity": "GetDefinitionManager(); body loads global 013b879c"
+    },
+    {
+      "offset": "0x7f",
+      "target": "0x42b374",
+      "compiled_symbol": "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIIconsDef@NUISystem@@@@@Z",
+      "demangled": "public: bool __thiscall CDefinitionManager::GetDef(long, struct CDefPointer<struct NUISystem::CUIIconsDef> *)",
+      "identity": "GetDef<CUIIconsDef>, exact 98-byte helper independently checked below"
+    }
+  ],
+  "helper_checks": [
+    {
+      "symbol": "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIMiscThingsDef@NUISystem@@@@@Z",
+      "retail": "0x42b312",
+      "length": 98,
+      "relocation_target": "009ad9e0",
+      "masked_bytes_equal": true
+    },
+    {
+      "symbol": "?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCUIIconsDef@NUISystem@@@@@Z",
+      "retail": "0x42b374",
+      "length": 98,
+      "relocation_target": "009ad9e0",
+      "masked_bytes_equal": true
+    }
+  ],
+  "helper_signature_scope": "Native mutable helper projection, not a claim to exact original template spelling. Donor exports only GetDef<T>(long,CDefPointer<const T>*)const; native42B312/374 call9AD9E0 mutable GetPDefFromGlobalIndex and mutable UI getter returns are separately present in PDB01B0F276/01B0F9ED. Keep observed mutable copy/ref behavior and98-byte helper proof; do not force donorconst overload."
+}

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0092b800   RELOCATION_MATCH PASS   IsRunnable
+0093b8b0   RELOCATION_MATCH PASS   IsStillRunnable
+0097d360   RELOCATION_MATCH PASS   AIAction_WaitForMessage
+
+WINS: 3
+  0092b800 RELOCATION_MATCH CAIStateGroup_OnHeroPush::IsRunnable
+  0093b8b0 RELOCATION_MATCH CAIStateGroup_SeekEnemy::IsStillRunnable
+  0097d360 RELOCATION_MATCH CAIStateGroupBase::AIAction_WaitForMessage

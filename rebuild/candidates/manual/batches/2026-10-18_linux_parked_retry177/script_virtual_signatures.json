@@ -1,0 +1,2869 @@
+{
+  "slots": [
+    {
+      "address": "00e33b00",
+      "slot": 0,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab170",
+      "compiled": "public: virtual void * __thiscall CScriptThing::`vector deleting dtor'(unsigned int)",
+      "expected": "destructor"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 1,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa8b0",
+      "compiled": "public: virtual struct CCharString const & __thiscall CScriptThing::GetName(void) const",
+      "expected": "public: virtual class CCharString const & __thiscall CScriptThing::GetName(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 2,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa8d0",
+      "compiled": "public: virtual struct CCharString __thiscall CScriptThing::GetDefName(void) const",
+      "expected": "public: virtual class CCharString __thiscall CScriptThing::GetDefName(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 3,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa900",
+      "compiled": "public: virtual struct CCharString __thiscall CScriptThing::GetDataString(void) const",
+      "expected": "public: virtual class CCharString __thiscall CScriptThing::GetDataString(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 4,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa930",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetDataString(struct CCharString const &)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetDataString(class CCharString const &)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 5,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa940",
+      "compiled": "public: virtual struct C3DVector __thiscall CScriptThing::GetFocalPos(void) const",
+      "expected": "public: virtual class C3DVector __thiscall CScriptThing::GetFocalPos(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 6,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa980",
+      "compiled": "public: virtual struct C3DVector const & __thiscall CScriptThing::GetPos(void) const",
+      "expected": "public: virtual class C3DVector const & __thiscall CScriptThing::GetPos(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 7,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa9a0",
+      "compiled": "public: virtual struct C3DVector __thiscall CScriptThing::GetHomePos(void) const",
+      "expected": "public: virtual class C3DVector __thiscall CScriptThing::GetHomePos(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 8,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa9e0",
+      "compiled": "public: virtual struct CCharString __thiscall CScriptThing::GetCurrentMapName(void) const",
+      "expected": "public: virtual class CCharString __thiscall CScriptThing::GetCurrentMapName(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 9,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa10",
+      "compiled": "public: virtual struct CCharString __thiscall CScriptThing::GetHomeMapName(void) const",
+      "expected": "public: virtual class CCharString __thiscall CScriptThing::GetHomeMapName(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 10,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa40",
+      "compiled": "public: virtual float __thiscall CScriptThing::GetAngleXY(void) const",
+      "expected": "public: virtual float __thiscall CScriptThing::GetAngleXY(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 11,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa60",
+      "compiled": "public: virtual struct CThing * __thiscall CScriptThing::GetPThing(void) const",
+      "expected": "public: virtual class CThing * __thiscall CScriptThing::GetPThing(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 12,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa70",
+      "compiled": "public: virtual unsigned __int64 __thiscall CScriptThing::GetPThingUniqueID(void) const",
+      "expected": "public: virtual unsigned __int64 __thiscall CScriptThing::GetPThingUniqueID(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 13,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa90",
+      "compiled": "public: virtual long __thiscall CScriptThing::GetCurrentStateGroupType(void) const",
+      "expected": "public: virtual enum EAIStateGroupType __thiscall CScriptThing::GetCurrentStateGroupType(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 14,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaaa0",
+      "compiled": "public: virtual long __thiscall CScriptThing::GetCurrentScriptPriority(void) const",
+      "expected": "public: virtual enum EScriptAIPriority __thiscall CScriptThing::GetCurrentScriptPriority(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 15,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaab0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsSneaking(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsSneaking(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 16,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaac0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsAwareOfHero(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsAwareOfHero(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 17,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaad0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsTriggeredBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsTriggeredBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 18,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaaf0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsKilledBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsKilledBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 19,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abe60",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoKilledMe(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoKilledMe(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 20,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab10",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsUsedBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsUsedBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 21,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab30",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 22,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab50",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithFlourish(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithFlourish(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 23,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab70",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithDecapitate(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithDecapitate(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 24,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab90",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithWeapon(struct CCharString const &, struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithWeapon(class CCharString const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 25,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aabb0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithProjectileWeapon(struct CCharString const &, float &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithProjectileWeapon(class CCharString const &, float &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 26,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abec0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoHitMe(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoHitMe(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 27,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aabd0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsTalkedToBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsTalkedToBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 28,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abf00",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoTalkedToMe(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoTalkedToMe(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 29,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aabf0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgExpressionPerformedTo(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgExpressionPerformedTo(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 30,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abf40",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoExpressedToMe(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoExpressedToMe(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 31,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac10",
+      "compiled": "public: virtual long __thiscall CScriptThing::MsgHowLongWasExpressionPerformed(void) const",
+      "expected": "public: virtual long __thiscall CScriptThing::MsgHowLongWasExpressionPerformed(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 32,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac20",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsKnockedOutBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsKnockedOutBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 33,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abf80",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoKnockedMeOut(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoKnockedMeOut(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 34,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac40",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgReceivedMoney(long &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgReceivedMoney(long &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 35,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac60",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsPresentedWithItem(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsPresentedWithItem(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 36,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac80",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgReceivedInventoryItem(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgReceivedInventoryItem(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 37,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaca0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedSpecialAbility(enum EHeroAbility) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedSpecialAbility(enum EHeroAbility) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 38,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aacc0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnySpecialAbility(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnySpecialAbility(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 39,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aace0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnyAggressiveSpecialAbility(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnyAggressiveSpecialAbility(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 40,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad00",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 41,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad20",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitBySpecialAbilityFrom(enum EHeroAbility, struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitBySpecialAbilityFrom(enum EHeroAbility, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 42,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad40",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnySpecialAbilityFrom(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnySpecialAbilityFrom(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 43,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad60",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 44,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad80",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 45,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aada0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgOpenedChest(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgOpenedChest(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 46,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aadc0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithMeleeWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithMeleeWeapon(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 47,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aade0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithMeleeWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithMeleeWeapon(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 48,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae00",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithRangedWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithRangedWeapon(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 49,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae20",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithRangedWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithRangedWeapon(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 50,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae40",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithBareHands(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithBareHands(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 51,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae60",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithBareHands(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithBareHands(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 52,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae80",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgAttackedWithMeleeWeaponWithoutHittingAnything(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgAttackedWithMeleeWeaponWithoutHittingAnything(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 53,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaea0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgAttackedWithBareHandsWithoutHittingAnything(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgAttackedWithBareHandsWithoutHittingAnything(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 54,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaec0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgTalkedToAnyone(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgTalkedToAnyone(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 55,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaee0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgGetThingsKilled(class std::vector<unsigned long, class std::allocator<unsigned long>> &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgGetThingsKilled(class std::vector<unsigned long, class std::allocator<unsigned long>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 56,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf00",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedFlourish(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedFlourish(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 57,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf20",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedSuccessfulFlourish(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedSuccessfulFlourish(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 58,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf40",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgOnMoralityChanged(long &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgOnMoralityChanged(long &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 59,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf60",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgOnCutSceneAnimEvent(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgOnCutSceneAnimEvent(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 60,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf80",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsKicked(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsKicked(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 61,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aafa0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsUnconscious(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsUnconscious(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 62,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aafc0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsUsable(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsUsable(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 63,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aafe0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsBeingCarriedBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsBeingCarriedBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 64,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab000",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsOpenDoor(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsOpenDoor(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 65,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab020",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsSummonedCreature(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsSummonedCreature(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 66,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab040",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetAsUsable(bool)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetAsUsable(bool)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 67,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab060",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetFriendsWithEverythingFlag(bool)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetFriendsWithEverythingFlag(bool)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 68,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab080",
+      "compiled": "public: virtual bool __thiscall CScriptThing::GetActivationTriggerStatus(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::GetActivationTriggerStatus(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 69,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab0a0",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetActivationTriggerStatus(bool)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetActivationTriggerStatus(bool)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 70,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab0c0",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetToKillOnLevelUnload(bool)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetToKillOnLevelUnload(bool)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 71,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab0e0",
+      "compiled": "public: virtual void __thiscall CScriptThing::UpdateThingAttachment(void)",
+      "expected": "public: virtual void __thiscall CScriptThing::UpdateThingAttachment(void)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 72,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab0f0",
+      "compiled": "public: virtual void __thiscall CScriptThing::IncrementScriptCounter(void)",
+      "expected": "public: virtual void __thiscall CScriptThing::IncrementScriptCounter(void)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 73,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab100",
+      "compiled": "public: virtual void __thiscall CScriptThing::DecrementScriptCounter(void)",
+      "expected": "public: virtual void __thiscall CScriptThing::DecrementScriptCounter(void)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 74,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab110",
+      "compiled": "public: virtual long __thiscall CScriptThing::GetScriptCounter(void)",
+      "expected": "public: virtual long __thiscall CScriptThing::GetScriptCounter(void)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 75,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab130",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsAlive(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsAlive(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 76,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa890",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsDead(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsDead(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 77,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab150",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsNull(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsNull(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 78,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa8a0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsEqualTo(struct CScriptThing const &) const",
+      "expected": "protected: virtual bool __thiscall CScriptThing::IsEqualTo(class CScriptThing const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 0,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7d50",
+      "compiled": "public: virtual void * __thiscall CGameScriptInterface::`vector deleting dtor'(unsigned int)",
+      "expected": "destructor"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 1,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88de00",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::Error(struct CCharString const &, struct CCharString const &, struct CCharString const &, unsigned long) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::Error(class CCharString const &, class CCharString const &, class CCharString const &, unsigned long) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 2,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7d20",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::TraceMessage(struct CCharString const &) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::TraceMessage(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 3,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e72a0",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::Validate(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::Validate(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 4,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e0f0",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::SetDebugCameraType(long) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::SetDebugCameraType(long) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 5,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a0c60",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::DeactivateBoastUi(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::DeactivateBoastUi(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 6,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e100",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsXbox(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsXbox(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 7,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7410",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::NewScriptFrame(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::NewScriptFrame(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 8,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89b5b0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::StartScriptingEntity(struct CScriptThing const &, struct CScriptGameResourceObjectScriptedThingBase &, enum EScriptAIPriority)",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::StartScriptingEntity(class CScriptThing const &, class CScriptGameResourceObjectScriptedThingBase &, enum EScriptAIPriority)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 9,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8960c0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsEntityUnderScriptedControl(struct CScriptThing const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsEntityUnderScriptedControl(class CScriptThing const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 10,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e71b0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsActiveThreadTerminating(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsActiveThreadTerminating(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 11,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e2a0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsLevelLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsLevelLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 12,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e300",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsRegionLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsRegionLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 13,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x890550",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsRegionLoadedAndPreloaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsRegionLoadedAndPreloaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 14,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891db0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsRegionDefLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsRegionDefLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 15,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e340",
+      "compiled": "public: virtual struct CCharString const & __thiscall CGameScriptInterface::GetRegionName(void) const",
+      "expected": "public: virtual class CCharString const & __thiscall CGameScriptInterface::GetRegionName(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 16,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8931b0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsLevelLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsLevelLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 17,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893240",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsLevelUnloaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsLevelUnloaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 18,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89ac10",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLevelLoaded(class std::list<struct CCharString, class std::allocator<struct CCharString>> &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLevelLoaded(class std::list<class CCharString, class std::allocator<class CCharString>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 19,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89ac80",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLevelUnloaded(class std::list<struct CCharString, class std::allocator<struct CCharString>> &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLevelUnloaded(class std::list<class CCharString, class std::allocator<class CCharString>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 20,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8932d0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsRegionLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsRegionLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 21,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893360",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsRegionUnloaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsRegionUnloaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 22,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8933f0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionLoaded(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionLoaded(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 23,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893470",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionUnloaded(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionUnloaded(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 24,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8934f0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionPreunload(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionPreunload(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 25,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893570",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestCompleted(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestCompleted(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 26,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893610",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnAnyQuestCompleted(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnAnyQuestCompleted(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 27,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893690",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestFailed(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestFailed(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 28,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893730",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestCompletedBeforeScreenShown(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestCompletedBeforeScreenShown(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 29,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8937d0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestFailedBeforeScreenShown(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestFailedBeforeScreenShown(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 30,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893870",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestAccepted(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestAccepted(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 31,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8938f0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnFeatAccepted(long &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnFeatAccepted(long &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 32,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893960",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsBoastMade(long) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsBoastMade(long) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 33,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8939d0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnBoastMade(long &, struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnBoastMade(long &, class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 34,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a9ae0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnBoastsMade(class std::vector<struct std::pair<long, struct CCharString>, class std::allocator<struct std::pair<long, struct CCharString>>> &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnBoastsMade(class std::vector<struct std::pair<long, class CCharString>, class std::allocator<struct std::pair<long, class CCharString>>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 35,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893a50",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::RemoveBoastMessage(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::RemoveBoastMessage(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 36,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89ad90",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsQuestStartScreenActive(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsQuestStartScreenActive(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 37,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89ae30",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLeavingQuestStartScreen(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLeavingQuestStartScreen(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 38,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893ab0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLeavingExperienceSpendingScreen(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLeavingExperienceSpendingScreen(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 39,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894300",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::MsgIsQuestionAnsweredYesOrNo(void) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::MsgIsQuestionAnsweredYesOrNo(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 40,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894370",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsGameInfoClickedPast(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsGameInfoClickedPast(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 41,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8943c0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsTutorialClickedPast(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsTutorialClickedPast(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 42,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894440",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsActionModeButtonPressed(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsActionModeButtonPressed(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 43,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893b00",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnExpressionPerformed(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnExpressionPerformed(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 44,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893ba0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsCutSceneSkipped(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsCutSceneSkipped(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 45,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89af30",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::RemoveAllCutSceneSkippedMessages(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::RemoveAllCutSceneSkippedMessages(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 46,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893c00",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroHairTypeChanged(enum EClothingCoversArea, struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroHairTypeChanged(enum EClothingCoversArea, class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 47,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893d80",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroUsedTeleporter(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroUsedTeleporter(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 48,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893e20",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroUsedGuildSeal(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroUsedGuildSeal(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 49,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893e70",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnGameSavedManually(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnGameSavedManually(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 50,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893ec0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroSlept(bool &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroSlept(bool &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 51,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893f30",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroFiredRangedWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroFiredRangedWeapon(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 52,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893f80",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroCastSpell(enum EHeroAbility &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroCastSpell(enum EHeroAbility &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 53,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893ff0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroPickedPocket(struct CScriptThing &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroPickedPocket(class CScriptThing &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 54,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894080",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroPickedLock(struct CScriptThing &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroPickedLock(class CScriptThing &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 55,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894110",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnFishingGameFinished(struct CScriptThing &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnFishingGameFinished(class CScriptThing &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 56,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8941a0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnTavernGameFinished(struct CScriptThing const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnTavernGameFinished(class CScriptThing const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 57,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894250",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroRewardedWithItemsFrom(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroRewardedWithItemsFrom(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 58,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8942c0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnChestOpeningCancelled(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnChestOpeningCancelled(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 59,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e380",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::DontPopulateNextLoadedRegion(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::DontPopulateNextLoadedRegion(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 60,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e390",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::GetWanderingPopulationScriptDefNameInCurrentRegion(struct CCharString &) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::GetWanderingPopulationScriptDefNameInCurrentRegion(class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 61,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891e30",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::GetWanderingPopulationScriptDefNameInRegion(struct CCharString const &, struct CCharString &) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::GetWanderingPopulationScriptDefNameInRegion(class CCharString const &, class CCharString &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 62,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891ea0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsHeroAllowedHenchmenInCurrentRegion(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsHeroAllowedHenchmenInCurrentRegion(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 63,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891ef0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsHeroAllowedHenchmenInRegion(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsHeroAllowedHenchmenInRegion(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 64,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7460",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::PostAddScriptedEntities(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::PostAddScriptedEntities(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 65,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8905b0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingUnsheatheRangedWeaponButton(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingUnsheatheRangedWeaponButton(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 66,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8905e0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingLockTargetButton(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingLockTargetButton(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 67,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x890610",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingFireRangedWeaponButton(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingFireRangedWeaponButton(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 68,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x890640",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingFirstPersonTargetingButton(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingFirstPersonTargetingButton(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 69,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x890670",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsHeroInProjectileWeaponMode(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsHeroInProjectileWeaponMode(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 70,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891ca0",
+      "compiled": "public: virtual struct CScriptThing & __thiscall CGameScriptInterface::GetHero(void)",
+      "expected": "public: virtual class CScriptThing & __thiscall CGameScriptInterface::GetHero(void)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 71,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89a490",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetHeroTargetedThing(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetHeroTargetedThing(void) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 72,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a7d60",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 73,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8930f0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(struct CCharString const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(class CCharString const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 74,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a7e00",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetRandomThingWithScriptName(struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetRandomThingWithScriptName(class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 75,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a8570",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithScriptName(struct CCharString const &, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithScriptName(class CCharString const &, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 76,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a86c0",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(struct CCharString const &, struct C3DVector const &, float, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(class CCharString const &, class C3DVector const &, float, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 77,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89a510",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetNearestWithScriptName(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetNearestWithScriptName(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 78,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89a6e0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetFurthestWithScriptName(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetFurthestWithScriptName(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 79,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a9c40",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom(struct CScriptThing const &, struct CCharString const &, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom(class CScriptThing const &, class CCharString const &, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 80,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a8890",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithDefName(struct CCharString const &, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithDefName(class CCharString const &, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 81,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89a880",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetNearestWithDefName(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetNearestWithDefName(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 82,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89aa70",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetFurthestWithDefName(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetFurthestWithDefName(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 83,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891d50",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetThingWithUID(unsigned __int64) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetThingWithUID(unsigned __int64) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 84,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a89d0",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllCreaturesExcludingHero(class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllCreaturesExcludingHero(class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 85,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a8af0",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsInLevel(struct CCharString const &, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsInLevel(class CCharString const &, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 86,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e260",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsThingWithThisUIDAlive(unsigned __int64) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsThingWithThisUIDAlive(unsigned __int64) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 87,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e79e0",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::RegisterTimer(void)",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::RegisterTimer(void)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 88,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7690",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::DeregisterTimer(long)",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::DeregisterTimer(long)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 89,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e76e0",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::SetTimer(long, long)",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::SetTimer(long, long)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 90,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7710",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetTimer(long) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetTimer(long) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 91,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a9100",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateCreature(struct CCharString const &, struct C3DVector const &, struct CCharString const &, bool) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateCreature(class CCharString const &, class C3DVector const &, class CCharString const &, bool) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 92,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89f300",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateCreatureNearby(struct CCharString const &, struct C3DVector const &, float, struct CCharString const &, bool) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateCreatureNearby(class CCharString const &, class C3DVector const &, float, class CCharString const &, bool) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 93,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894500",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateCreatureOnEntity(struct CCharString const &, struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateCreatureOnEntity(class CCharString const &, class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 94,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89f4a0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::TurnCreatureInto(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::TurnCreatureInto(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 95,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7d30",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::SetCreatureCreationDelayFrames(long)",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::SetCreatureCreationDelayFrames(long)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 96,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7d40",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::ResetCreatureCreationDelayFrames(void)",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::ResetCreatureCreationDelayFrames(void)"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 97,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894950",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateObject(struct CCharString const &, struct C3DVector const &, float, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateObject(class CCharString const &, class C3DVector const &, float, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 98,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894820",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateObject(struct CCharString const &, struct C3DVector const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateObject(class CCharString const &, class C3DVector const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e33b00",
+      "slot": 99,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8946e0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateObjectOnEntity(struct CCharString const &, struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateObjectOnEntity(class CCharString const &, class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 0,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab170",
+      "compiled": "public: virtual void * __thiscall CScriptThing::`vector deleting dtor'(unsigned int)",
+      "expected": "destructor"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 1,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa8b0",
+      "compiled": "public: virtual struct CCharString const & __thiscall CScriptThing::GetName(void) const",
+      "expected": "public: virtual class CCharString const & __thiscall CScriptThing::GetName(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 2,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa8d0",
+      "compiled": "public: virtual struct CCharString __thiscall CScriptThing::GetDefName(void) const",
+      "expected": "public: virtual class CCharString __thiscall CScriptThing::GetDefName(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 3,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa900",
+      "compiled": "public: virtual struct CCharString __thiscall CScriptThing::GetDataString(void) const",
+      "expected": "public: virtual class CCharString __thiscall CScriptThing::GetDataString(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 4,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa930",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetDataString(struct CCharString const &)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetDataString(class CCharString const &)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 5,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa940",
+      "compiled": "public: virtual struct C3DVector __thiscall CScriptThing::GetFocalPos(void) const",
+      "expected": "public: virtual class C3DVector __thiscall CScriptThing::GetFocalPos(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 6,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa980",
+      "compiled": "public: virtual struct C3DVector const & __thiscall CScriptThing::GetPos(void) const",
+      "expected": "public: virtual class C3DVector const & __thiscall CScriptThing::GetPos(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 7,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa9a0",
+      "compiled": "public: virtual struct C3DVector __thiscall CScriptThing::GetHomePos(void) const",
+      "expected": "public: virtual class C3DVector __thiscall CScriptThing::GetHomePos(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 8,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa9e0",
+      "compiled": "public: virtual struct CCharString __thiscall CScriptThing::GetCurrentMapName(void) const",
+      "expected": "public: virtual class CCharString __thiscall CScriptThing::GetCurrentMapName(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 9,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa10",
+      "compiled": "public: virtual struct CCharString __thiscall CScriptThing::GetHomeMapName(void) const",
+      "expected": "public: virtual class CCharString __thiscall CScriptThing::GetHomeMapName(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 10,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa40",
+      "compiled": "public: virtual float __thiscall CScriptThing::GetAngleXY(void) const",
+      "expected": "public: virtual float __thiscall CScriptThing::GetAngleXY(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 11,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa60",
+      "compiled": "public: virtual struct CThing * __thiscall CScriptThing::GetPThing(void) const",
+      "expected": "public: virtual class CThing * __thiscall CScriptThing::GetPThing(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 12,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa70",
+      "compiled": "public: virtual unsigned __int64 __thiscall CScriptThing::GetPThingUniqueID(void) const",
+      "expected": "public: virtual unsigned __int64 __thiscall CScriptThing::GetPThingUniqueID(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 13,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaa90",
+      "compiled": "public: virtual long __thiscall CScriptThing::GetCurrentStateGroupType(void) const",
+      "expected": "public: virtual enum EAIStateGroupType __thiscall CScriptThing::GetCurrentStateGroupType(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 14,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaaa0",
+      "compiled": "public: virtual long __thiscall CScriptThing::GetCurrentScriptPriority(void) const",
+      "expected": "public: virtual enum EScriptAIPriority __thiscall CScriptThing::GetCurrentScriptPriority(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 15,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaab0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsSneaking(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsSneaking(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 16,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaac0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsAwareOfHero(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsAwareOfHero(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 17,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaad0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsTriggeredBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsTriggeredBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 18,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaaf0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsKilledBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsKilledBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 19,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abe60",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoKilledMe(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoKilledMe(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 20,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab10",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsUsedBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsUsedBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 21,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab30",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 22,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab50",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithFlourish(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithFlourish(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 23,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab70",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithDecapitate(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithDecapitate(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 24,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aab90",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithWeapon(struct CCharString const &, struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithWeapon(class CCharString const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 25,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aabb0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithProjectileWeapon(struct CCharString const &, float &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByWithProjectileWeapon(class CCharString const &, float &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 26,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abec0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoHitMe(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoHitMe(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 27,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aabd0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsTalkedToBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsTalkedToBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 28,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abf00",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoTalkedToMe(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoTalkedToMe(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 29,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aabf0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgExpressionPerformedTo(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgExpressionPerformedTo(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 30,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abf40",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoExpressedToMe(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoExpressedToMe(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 31,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac10",
+      "compiled": "public: virtual long __thiscall CScriptThing::MsgHowLongWasExpressionPerformed(void) const",
+      "expected": "public: virtual long __thiscall CScriptThing::MsgHowLongWasExpressionPerformed(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 32,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac20",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsKnockedOutBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsKnockedOutBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 33,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4abf80",
+      "compiled": "public: virtual struct CScriptThing __thiscall CScriptThing::MsgWhoKnockedMeOut(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CScriptThing::MsgWhoKnockedMeOut(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 34,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac40",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgReceivedMoney(long &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgReceivedMoney(long &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 35,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac60",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsPresentedWithItem(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsPresentedWithItem(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 36,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aac80",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgReceivedInventoryItem(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgReceivedInventoryItem(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 37,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaca0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedSpecialAbility(enum EHeroAbility) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedSpecialAbility(enum EHeroAbility) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 38,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aacc0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnySpecialAbility(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnySpecialAbility(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 39,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aace0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnyAggressiveSpecialAbility(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnyAggressiveSpecialAbility(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 40,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad00",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 41,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad20",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitBySpecialAbilityFrom(enum EHeroAbility, struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitBySpecialAbilityFrom(enum EHeroAbility, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 42,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad40",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnySpecialAbilityFrom(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnySpecialAbilityFrom(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 43,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad60",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 44,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aad80",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 45,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aada0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgOpenedChest(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgOpenedChest(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 46,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aadc0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithMeleeWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithMeleeWeapon(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 47,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aade0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithMeleeWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithMeleeWeapon(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 48,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae00",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithRangedWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithRangedWeapon(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 49,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae20",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithRangedWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithRangedWeapon(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 50,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae40",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithBareHands(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitEnemyWithBareHands(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 51,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae60",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithBareHands(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgHitFriendWithBareHands(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 52,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aae80",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgAttackedWithMeleeWeaponWithoutHittingAnything(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgAttackedWithMeleeWeaponWithoutHittingAnything(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 53,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaea0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgAttackedWithBareHandsWithoutHittingAnything(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgAttackedWithBareHandsWithoutHittingAnything(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 54,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaec0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgTalkedToAnyone(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgTalkedToAnyone(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 55,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaee0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgGetThingsKilled(class std::vector<unsigned long, class std::allocator<unsigned long>> &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgGetThingsKilled(class std::vector<unsigned long, class std::allocator<unsigned long>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 56,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf00",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedFlourish(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedFlourish(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 57,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf20",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgPerformedSuccessfulFlourish(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgPerformedSuccessfulFlourish(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 58,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf40",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgOnMoralityChanged(long &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgOnMoralityChanged(long &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 59,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf60",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgOnCutSceneAnimEvent(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgOnCutSceneAnimEvent(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 60,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aaf80",
+      "compiled": "public: virtual bool __thiscall CScriptThing::MsgIsKicked(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::MsgIsKicked(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 61,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aafa0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsUnconscious(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsUnconscious(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 62,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aafc0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsUsable(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsUsable(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 63,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aafe0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsBeingCarriedBy(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsBeingCarriedBy(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 64,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab000",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsOpenDoor(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsOpenDoor(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 65,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab020",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsSummonedCreature(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsSummonedCreature(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 66,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab040",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetAsUsable(bool)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetAsUsable(bool)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 67,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab060",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetFriendsWithEverythingFlag(bool)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetFriendsWithEverythingFlag(bool)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 68,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab080",
+      "compiled": "public: virtual bool __thiscall CScriptThing::GetActivationTriggerStatus(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::GetActivationTriggerStatus(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 69,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab0a0",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetActivationTriggerStatus(bool)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetActivationTriggerStatus(bool)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 70,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab0c0",
+      "compiled": "public: virtual void __thiscall CScriptThing::SetToKillOnLevelUnload(bool)",
+      "expected": "public: virtual void __thiscall CScriptThing::SetToKillOnLevelUnload(bool)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 71,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab0e0",
+      "compiled": "public: virtual void __thiscall CScriptThing::UpdateThingAttachment(void)",
+      "expected": "public: virtual void __thiscall CScriptThing::UpdateThingAttachment(void)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 72,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab0f0",
+      "compiled": "public: virtual void __thiscall CScriptThing::IncrementScriptCounter(void)",
+      "expected": "public: virtual void __thiscall CScriptThing::IncrementScriptCounter(void)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 73,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab100",
+      "compiled": "public: virtual void __thiscall CScriptThing::DecrementScriptCounter(void)",
+      "expected": "public: virtual void __thiscall CScriptThing::DecrementScriptCounter(void)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 74,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab110",
+      "compiled": "public: virtual long __thiscall CScriptThing::GetScriptCounter(void)",
+      "expected": "public: virtual long __thiscall CScriptThing::GetScriptCounter(void)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 75,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab130",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsAlive(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsAlive(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 76,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa890",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsDead(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsDead(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 77,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4ab150",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsNull(void) const",
+      "expected": "public: virtual bool __thiscall CScriptThing::IsNull(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 78,
+      "table": "??_7CScriptThing@@6B@",
+      "target": "0x4aa8a0",
+      "compiled": "public: virtual bool __thiscall CScriptThing::IsEqualTo(struct CScriptThing const &) const",
+      "expected": "protected: virtual bool __thiscall CScriptThing::IsEqualTo(class CScriptThing const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 0,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7d50",
+      "compiled": "public: virtual void * __thiscall CGameScriptInterface::`vector deleting dtor'(unsigned int)",
+      "expected": "destructor"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 1,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88de00",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::Error(struct CCharString const &, struct CCharString const &, struct CCharString const &, unsigned long) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::Error(class CCharString const &, class CCharString const &, class CCharString const &, unsigned long) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 2,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7d20",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::TraceMessage(struct CCharString const &) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::TraceMessage(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 3,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e72a0",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::Validate(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::Validate(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 4,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e0f0",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::SetDebugCameraType(long) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::SetDebugCameraType(long) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 5,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a0c60",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::DeactivateBoastUi(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::DeactivateBoastUi(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 6,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e100",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsXbox(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsXbox(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 7,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7410",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::NewScriptFrame(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::NewScriptFrame(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 8,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89b5b0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::StartScriptingEntity(struct CScriptThing const &, struct CScriptGameResourceObjectScriptedThingBase &, enum EScriptAIPriority)",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::StartScriptingEntity(class CScriptThing const &, class CScriptGameResourceObjectScriptedThingBase &, enum EScriptAIPriority)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 9,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8960c0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsEntityUnderScriptedControl(struct CScriptThing const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsEntityUnderScriptedControl(class CScriptThing const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 10,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e71b0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsActiveThreadTerminating(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsActiveThreadTerminating(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 11,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e2a0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsLevelLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsLevelLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 12,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e300",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsRegionLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsRegionLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 13,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x890550",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsRegionLoadedAndPreloaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsRegionLoadedAndPreloaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 14,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891db0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsRegionDefLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsRegionDefLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 15,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e340",
+      "compiled": "public: virtual struct CCharString const & __thiscall CGameScriptInterface::GetRegionName(void) const",
+      "expected": "public: virtual class CCharString const & __thiscall CGameScriptInterface::GetRegionName(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 16,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8931b0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsLevelLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsLevelLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 17,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893240",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsLevelUnloaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsLevelUnloaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 18,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89ac10",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLevelLoaded(class std::list<struct CCharString, class std::allocator<struct CCharString>> &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLevelLoaded(class std::list<class CCharString, class std::allocator<class CCharString>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 19,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89ac80",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLevelUnloaded(class std::list<struct CCharString, class std::allocator<struct CCharString>> &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLevelUnloaded(class std::list<class CCharString, class std::allocator<class CCharString>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 20,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8932d0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsRegionLoaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsRegionLoaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 21,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893360",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsRegionUnloaded(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsRegionUnloaded(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 22,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8933f0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionLoaded(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionLoaded(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 23,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893470",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionUnloaded(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionUnloaded(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 24,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8934f0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionPreunload(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnRegionPreunload(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 25,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893570",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestCompleted(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestCompleted(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 26,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893610",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnAnyQuestCompleted(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnAnyQuestCompleted(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 27,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893690",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestFailed(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestFailed(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 28,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893730",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestCompletedBeforeScreenShown(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestCompletedBeforeScreenShown(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 29,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8937d0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestFailedBeforeScreenShown(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestFailedBeforeScreenShown(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 30,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893870",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestAccepted(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnQuestAccepted(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 31,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8938f0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnFeatAccepted(long &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnFeatAccepted(long &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 32,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893960",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsBoastMade(long) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsBoastMade(long) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 33,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8939d0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnBoastMade(long &, struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnBoastMade(long &, class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 34,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a9ae0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnBoastsMade(class std::vector<struct std::pair<long, struct CCharString>, class std::allocator<struct std::pair<long, struct CCharString>>> &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnBoastsMade(class std::vector<struct std::pair<long, class CCharString>, class std::allocator<struct std::pair<long, class CCharString>>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 35,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893a50",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::RemoveBoastMessage(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::RemoveBoastMessage(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 36,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89ad90",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsQuestStartScreenActive(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsQuestStartScreenActive(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 37,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89ae30",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLeavingQuestStartScreen(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLeavingQuestStartScreen(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 38,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893ab0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLeavingExperienceSpendingScreen(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnLeavingExperienceSpendingScreen(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 39,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894300",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::MsgIsQuestionAnsweredYesOrNo(void) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::MsgIsQuestionAnsweredYesOrNo(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 40,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894370",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsGameInfoClickedPast(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsGameInfoClickedPast(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 41,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8943c0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsTutorialClickedPast(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsTutorialClickedPast(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 42,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894440",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsActionModeButtonPressed(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsActionModeButtonPressed(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 43,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893b00",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnExpressionPerformed(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnExpressionPerformed(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 44,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893ba0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgIsCutSceneSkipped(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgIsCutSceneSkipped(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 45,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89af30",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::RemoveAllCutSceneSkippedMessages(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::RemoveAllCutSceneSkippedMessages(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 46,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893c00",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroHairTypeChanged(enum EClothingCoversArea, struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroHairTypeChanged(enum EClothingCoversArea, class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 47,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893d80",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroUsedTeleporter(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroUsedTeleporter(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 48,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893e20",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroUsedGuildSeal(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroUsedGuildSeal(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 49,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893e70",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnGameSavedManually(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnGameSavedManually(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 50,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893ec0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroSlept(bool &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroSlept(bool &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 51,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893f30",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroFiredRangedWeapon(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroFiredRangedWeapon(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 52,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893f80",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroCastSpell(enum EHeroAbility &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroCastSpell(enum EHeroAbility &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 53,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x893ff0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroPickedPocket(struct CScriptThing &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroPickedPocket(class CScriptThing &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 54,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894080",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroPickedLock(struct CScriptThing &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroPickedLock(class CScriptThing &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 55,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894110",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnFishingGameFinished(struct CScriptThing &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnFishingGameFinished(class CScriptThing &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 56,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8941a0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnTavernGameFinished(struct CScriptThing const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnTavernGameFinished(class CScriptThing const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 57,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894250",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroRewardedWithItemsFrom(struct CCharString &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnHeroRewardedWithItemsFrom(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 58,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8942c0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::MsgOnChestOpeningCancelled(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::MsgOnChestOpeningCancelled(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 59,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e380",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::DontPopulateNextLoadedRegion(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::DontPopulateNextLoadedRegion(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 60,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e390",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::GetWanderingPopulationScriptDefNameInCurrentRegion(struct CCharString &) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::GetWanderingPopulationScriptDefNameInCurrentRegion(class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 61,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891e30",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::GetWanderingPopulationScriptDefNameInRegion(struct CCharString const &, struct CCharString &) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::GetWanderingPopulationScriptDefNameInRegion(class CCharString const &, class CCharString &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 62,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891ea0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsHeroAllowedHenchmenInCurrentRegion(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsHeroAllowedHenchmenInCurrentRegion(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 63,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891ef0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsHeroAllowedHenchmenInRegion(struct CCharString const &) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsHeroAllowedHenchmenInRegion(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 64,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7460",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::PostAddScriptedEntities(void) const",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::PostAddScriptedEntities(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 65,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8905b0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingUnsheatheRangedWeaponButton(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingUnsheatheRangedWeaponButton(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 66,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8905e0",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingLockTargetButton(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingLockTargetButton(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 67,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x890610",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingFireRangedWeaponButton(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingFireRangedWeaponButton(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 68,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x890640",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingFirstPersonTargetingButton(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsPlayerHoldingFirstPersonTargetingButton(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 69,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x890670",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsHeroInProjectileWeaponMode(void) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsHeroInProjectileWeaponMode(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 70,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891ca0",
+      "compiled": "public: virtual struct CScriptThing & __thiscall CGameScriptInterface::GetHero(void)",
+      "expected": "public: virtual class CScriptThing & __thiscall CGameScriptInterface::GetHero(void)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 71,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89a490",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetHeroTargetedThing(void) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetHeroTargetedThing(void) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 72,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a7d60",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 73,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8930f0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(struct CCharString const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetThingWithScriptName(class CCharString const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 74,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a7e00",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetRandomThingWithScriptName(struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetRandomThingWithScriptName(class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 75,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a8570",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithScriptName(struct CCharString const &, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithScriptName(class CCharString const &, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 76,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a86c0",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(struct CCharString const &, struct C3DVector const &, float, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(class CCharString const &, class C3DVector const &, float, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 77,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89a510",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetNearestWithScriptName(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetNearestWithScriptName(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 78,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89a6e0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetFurthestWithScriptName(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetFurthestWithScriptName(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 79,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a9c40",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom(struct CScriptThing const &, struct CCharString const &, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom(class CScriptThing const &, class CCharString const &, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 80,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a8890",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithDefName(struct CCharString const &, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsWithDefName(class CCharString const &, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 81,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89a880",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetNearestWithDefName(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetNearestWithDefName(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 82,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89aa70",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetFurthestWithDefName(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetFurthestWithDefName(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 83,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x891d50",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::GetThingWithUID(unsigned __int64) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::GetThingWithUID(unsigned __int64) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 84,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a89d0",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllCreaturesExcludingHero(class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllCreaturesExcludingHero(class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 85,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a8af0",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsInLevel(struct CCharString const &, class std::vector<struct CScriptThing, class std::allocator<struct CScriptThing>> &) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetAllThingsInLevel(class CCharString const &, class std::vector<class CScriptThing, class std::allocator<class CScriptThing>> &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 86,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x88e260",
+      "compiled": "public: virtual bool __thiscall CGameScriptInterface::IsThingWithThisUIDAlive(unsigned __int64) const",
+      "expected": "public: virtual bool __thiscall CGameScriptInterface::IsThingWithThisUIDAlive(unsigned __int64) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 87,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e79e0",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::RegisterTimer(void)",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::RegisterTimer(void)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 88,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7690",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::DeregisterTimer(long)",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::DeregisterTimer(long)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 89,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e76e0",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::SetTimer(long, long)",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::SetTimer(long, long)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 90,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7710",
+      "compiled": "public: virtual long __thiscall CGameScriptInterface::GetTimer(long) const",
+      "expected": "public: virtual long __thiscall CGameScriptInterface::GetTimer(long) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 91,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8a9100",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateCreature(struct CCharString const &, struct C3DVector const &, struct CCharString const &, bool) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateCreature(class CCharString const &, class C3DVector const &, class CCharString const &, bool) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 92,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89f300",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateCreatureNearby(struct CCharString const &, struct C3DVector const &, float, struct CCharString const &, bool) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateCreatureNearby(class CCharString const &, class C3DVector const &, float, class CCharString const &, bool) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 93,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894500",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateCreatureOnEntity(struct CCharString const &, struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateCreatureOnEntity(class CCharString const &, class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 94,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x89f4a0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::TurnCreatureInto(struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::TurnCreatureInto(class CScriptThing const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 95,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7d30",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::SetCreatureCreationDelayFrames(long)",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::SetCreatureCreationDelayFrames(long)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 96,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x6e7d40",
+      "compiled": "public: virtual void __thiscall CGameScriptInterface::ResetCreatureCreationDelayFrames(void)",
+      "expected": "public: virtual void __thiscall CGameScriptInterface::ResetCreatureCreationDelayFrames(void)"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 97,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894950",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateObject(struct CCharString const &, struct C3DVector const &, float, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateObject(class CCharString const &, class C3DVector const &, float, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 98,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x894820",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateObject(struct CCharString const &, struct C3DVector const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateObject(class CCharString const &, class C3DVector const &, class CCharString const &) const"
+    },
+    {
+      "address": "00e7b970",
+      "slot": 99,
+      "table": "??_7CGameScriptInterface@@6B@",
+      "target": "0x8946e0",
+      "compiled": "public: virtual struct CScriptThing __thiscall CGameScriptInterface::CreateObjectOnEntity(struct CCharString const &, struct CScriptThing const &, struct CCharString const &) const",
+      "expected": "public: virtual class CScriptThing __thiscall CGameScriptInterface::CreateObjectOnEntity(class CCharString const &, class CScriptThing const &, class CCharString const &) const"
+    }
+  ],
+  "mismatches": []
+}

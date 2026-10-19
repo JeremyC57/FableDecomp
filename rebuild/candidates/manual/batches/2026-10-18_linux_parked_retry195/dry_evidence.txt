@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008d7630   RELOCATION_MATCH PASS   OnActivate
+008e9a30   RELOCATION_MATCH PASS   OnActivate
+
+WINS: 2
+  008d7630 RELOCATION_MATCH CModeIceTrollGroundSmashIcicleAssault::OnActivate
+  008e9a30 RELOCATION_MATCH CModeStrafe::OnActivate

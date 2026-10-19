@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0063a540   RELOCATION_MATCH PASS   GetThemeMinCameraSizeZOffsetAt
+
+WINS: 1
+  0063a540 RELOCATION_MATCH CWorldMap::GetThemeMinCameraSizeZOffsetAt

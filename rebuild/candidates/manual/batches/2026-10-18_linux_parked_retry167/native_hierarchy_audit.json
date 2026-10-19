@@ -1,0 +1,127 @@
+{
+  "0x1246b8c": {
+    "complete_object_offset": 0,
+    "bases": [
+      [
+        ".?AVCEditBox@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCChangingStateComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCUIInterface@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCObserver@NUISystem@@",
+        4
+      ],
+      [
+        ".?AVCActionParam@NUISystem@@",
+        24
+      ]
+    ]
+  },
+  "0x1246b64": {
+    "complete_object_offset": 4,
+    "bases": [
+      [
+        ".?AVCEditBox@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCChangingStateComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCUIInterface@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCObserver@NUISystem@@",
+        4
+      ],
+      [
+        ".?AVCActionParam@NUISystem@@",
+        24
+      ]
+    ]
+  },
+  "0x1246b5c": {
+    "complete_object_offset": 24,
+    "bases": [
+      [
+        ".?AVCEditBox@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCChangingStateComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCUIInterface@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCObserver@NUISystem@@",
+        4
+      ],
+      [
+        ".?AVCActionParam@NUISystem@@",
+        24
+      ]
+    ]
+  },
+  "0x1245de4": {
+    "complete_object_offset": 0,
+    "bases": [
+      [
+        ".?AVCChangingStateComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCComponent@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCUIInterface@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCObserver@NUISystem@@",
+        4
+      ],
+      [
+        ".?AVCActionParam@NUISystem@@",
+        24
+      ]
+    ]
+  },
+  "0x1230134": {
+    "complete_object_offset": 0,
+    "bases": [
+      [
+        ".?AVCManager@NUISystem@@",
+        0
+      ],
+      [
+        ".?AVCObservable@NUISystem@@",
+        0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,1232 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_final_all_hierarchies/native.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _active
+0000000b dir32             _nEvents
+00000011 dir32             _nEvents
+00000018 dir32             _events
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?event@@YAXH@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CountedPayload@@QAE@H@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _callbackCount
+00000008 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?countedDelete@@YIXPAX@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CBaseClass@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECBaseClass@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CBaseClass@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _active
+00000009 dir32             ??_7CBaseClass@@6B@
+00000011 dir32             _owner
+0000001b DISP32            ?event@@YAXH@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CBaseClassNonCopyable@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECBaseClassNonCopyable@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CBaseClassNonCopyable@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CInitBaseClass@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECInitBaseClass@@UAEPAXI@Z
+00000004 dir32             ?Validate@CInitBaseClass@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CInitBaseClass@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000001 DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CInitBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Validate@CInitBaseClass@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?IsIOFinished@CAFile@@UBE_NXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetAlignment@CAFile@@UBEJXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CDeviceResetCallback@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             __purecall
+00000004 dir32             __purecall
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CDeviceResetCallback@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Init@CGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?SetQuit@CGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CWorld@@6B@
+0000000a DISP32            ?event@@YAXH@Z
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECWorld@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CWorld@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CWorld@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCWorld@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CPlayerManager@@6B@
+0000000a DISP32            ?event@@YAXH@Z
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECPlayerManager@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CPlayerManager@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CPlayerManager@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCPlayerManager@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CGamePlayerInterface@@6B@
+0000000a DISP32            ?event@@YAXH@Z
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECGamePlayerInterface@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CGamePlayerInterface@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CGamePlayerInterface@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCGamePlayerInterface@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?InitEngine@CDisplayEngine@@UAE_NXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?UninitEngine@CDisplayEngine@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000008 dir32             ??_7CNetworkClient@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECNetworkClient@@UAEPAXI@Z
+00000004 dir32             ?Validate@CInitBaseClass@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CNetworkClient@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000007 dir32             ??_7CNetworkClient@@6B@
+0000000c DISP32            ?event@@YAXH@Z
+00000013 DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CNetworkClient@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Close@CDiskFileWin32@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Read@CDiskFileWin32@@UAEXPAXJPAUCASuspendableProcess@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Write@CDiskFileWin32@@UAEXPBXJPAUCASuspendableProcess@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?SetPosition@CDiskFileWin32@@UAEXJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?MovePosition@CDiskFileWin32@@UAEXJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetPosition@CDiskFileWin32@@UBEJXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?SetLength@CDiskFileWin32@@UAEXJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetLength@CDiskFileWin32@@UBEJXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?IsOpen@CDiskFileWin32@@UBE_NXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Clone@CDiskFileWin32@@UBEPAUCAFile@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000008 dir32             ??_7CFrameRateSmoother@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECFrameRateSmoother@@UAEPAXI@Z
+00000004 dir32             ?Validate@CInitBaseClass@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CFrameRateSmoother@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000007 dir32             ??_7CFrameRateSmoother@@6B@
+0000000c DISP32            ?event@@YAXH@Z
+00000013 DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CFrameRateSmoother@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000006 DISP32            ??2@YAPAXI@Z
+0000000f DISP32            ??2@YAPAXI@Z
+00000015 dir32             _liveStrings
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CCharString@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CCharString@@QAE@ABU0@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000013 DISP32            ??3@YAXPAX@Z
+0000001a DISP32            ??3@YAXPAX@Z
+00000020 dir32             _liveStrings
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CCharString@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000006 DISP32            ??2@YAPAXI@Z
+0000000f DISP32            ??2@YAPAXI@Z
+00000025 dir32             _liveStrings
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CWideString@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CWideString@@QAE@ABV0@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000013 DISP32            ??3@YAXPAX@Z
+0000001a DISP32            ??3@YAXPAX@Z
+00000020 dir32             _liveStrings
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CWideString@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??0CWideString@@QAE@XZ
+0000000c DISP32            ??0CWideString@@QAE@XZ
+00000014 DISP32            ??0CCharString@@QAE@XZ
+0000001c DISP32            ??0CWideString@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CMainGameComponentInit@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CMainGameComponentInit@@QAE@ABU0@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000007 DISP32            ?event@@YAXH@Z
+0000000f DISP32            ??1CWideString@@QAE@XZ
+00000017 DISP32            ??1CCharString@@QAE@XZ
+0000001f DISP32            ??1CWideString@@QAE@XZ
+00000027 DISP32            ??1CWideString@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CMainGameComponentInit@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Init@CMainGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Run@CMainGameComponent@@UAE_NPAPAUCGameComponent@@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?SetQuit@CMainGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Update@CMainGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetInputs@CMainGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Render@CMainGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?PostInit@CMainGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 DISP32            ?event@@YAXH@Z
+0000000a dir32             _owner
+00000018 dir32             _good
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Shutdown@CMainGameComponent@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000009 dir32             ??_7CGame@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECGame@@UAEPAXI@Z
+00000004 dir32             ?Validate@CInitBaseClass@@UBEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CGame@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             ??_7CGame@@6B@
+00000007 DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CGame@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CPlayerManager@@6B@
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CPlayerManager@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CGamePlayerInterface@@6B@
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CGamePlayerInterface@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CWorld@@6B@
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CWorld@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CCountedPointer@UCDataBank@NGameText@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$scoped_ptr@UCPlayerManager@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$scoped_ptr@UCPlayerManager@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$scoped_ptr@UCGamePlayerInterface@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$scoped_ptr@UCGamePlayerInterface@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$scoped_ptr@UCWorld@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$scoped_ptr@UCWorld@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$scoped_ptr@UCDisplayEngine@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$scoped_ptr@UCDisplayEngine@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CCountedPointer@UCLUA@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CCountedPointer@UCFontBank@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0?$CCountedPointer@UCGraphicDataBank@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000006 dir32             _active
+0000000f dir32             _owner
+00000021 DISP32            ?event@@YAXH@Z
+0000005b dir32             _good
+00000079 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CCountedPointer@UCDataBank@NGameText@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000006 dir32             _active
+0000000f dir32             _owner
+00000021 DISP32            ?event@@YAXH@Z
+0000005b dir32             _good
+00000079 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CCountedPointer@UCLUA@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000006 dir32             _active
+0000000f dir32             _owner
+00000021 DISP32            ?event@@YAXH@Z
+0000005b dir32             _good
+00000079 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CCountedPointer@UCFontBank@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000006 dir32             _active
+0000000f dir32             _owner
+00000021 DISP32            ?event@@YAXH@Z
+0000005b dir32             _good
+00000079 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1?$CCountedPointer@UCGraphicDataBank@@@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??2@YAPAXI@Z
+00000015 dir32             ?countedDelete@@YIXPAX@Z
+0000001a DISP32            ??2@YAPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??$assignCounted@UCGraphicDataBank@@@@YAXAAU?$CCountedPointer@UCGraphicDataBank@@@@HH@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??2@YAPAXI@Z
+00000015 dir32             ?countedDelete@@YIXPAX@Z
+0000001a DISP32            ??2@YAPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??$assignCounted@UCFontBank@@@@YAXAAU?$CCountedPointer@UCFontBank@@@@HH@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??2@YAPAXI@Z
+00000015 dir32             ?countedDelete@@YIXPAX@Z
+0000001a DISP32            ??2@YAPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??$assignCounted@UCLUA@@@@YAXAAU?$CCountedPointer@UCLUA@@@@HH@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??2@YAPAXI@Z
+00000015 dir32             ?countedDelete@@YIXPAX@Z
+0000001a DISP32            ??2@YAPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??$assignCounted@UCDataBank@NGameText@@@@YAXAAU?$CCountedPointer@UCDataBank@NGameText@@@@HH@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000001 DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CBaseClassNonCopyable@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CBaseClass@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCBaseClass@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CBaseClass@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCBaseClassNonCopyable@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CBaseClass@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCInitBaseClass@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CAFile@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECAFile@@UAEPAXI@Z
+00000004 dir32             __purecall
+00000008 dir32             __purecall
+0000000c dir32             __purecall
+00000010 dir32             __purecall
+00000014 dir32             __purecall
+00000018 dir32             __purecall
+0000001c dir32             __purecall
+00000020 dir32             __purecall
+00000024 dir32             __purecall
+00000028 dir32             __purecall
+0000002c dir32             __purecall
+00000030 dir32             ?IsIOFinished@CAFile@@UBE_NXZ
+00000034 dir32             ?GetAlignment@CAFile@@UBEJXZ
+00000038 dir32             __purecall
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CAFile@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             ??_7CAFile@@6B@
+00000007 DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CAFile@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000009 dir32             ??_7CDeviceResetCallback@@6B@
+0000000f dir32             ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+00000016 dir32             ??_7CGameComponent@@6BCDeviceResetCallback@@@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             __purecall
+00000004 dir32             __purecall
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECGameComponent@@UAEPAXI@Z
+00000004 dir32             ?Init@CGameComponent@@UAEXXZ
+00000008 dir32             __purecall
+0000000c dir32             __purecall
+00000010 dir32             ?SetQuit@CGameComponent@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CGameComponent@@QAE@AAUCGame@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000007 dir32             ??_7CDisplayEngine@@6B@
+0000000c DISP32            ?event@@YAXH@Z
+00000013 DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECDisplayEngine@@UAEPAXI@Z
+00000004 dir32             ?InitEngine@CDisplayEngine@@UAE_NXZ
+00000008 dir32             ?UninitEngine@CDisplayEngine@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CDisplayEngine@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CDisplayEngine@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCDisplayEngine@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CNetworkClient@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCNetworkClient@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a dir32             ??_7CDiskFileWin32@@6B@
+0000001e DISP32            ??0CWideString@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECDiskFileWin32@@UAEPAXI@Z
+00000004 dir32             ?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z
+00000008 dir32             ?Close@CDiskFileWin32@@UAEXXZ
+0000000c dir32             ?Read@CDiskFileWin32@@UAEXPAXJPAUCASuspendableProcess@@@Z
+00000010 dir32             ?Write@CDiskFileWin32@@UAEXPBXJPAUCASuspendableProcess@@@Z
+00000014 dir32             ?SetPosition@CDiskFileWin32@@UAEXJ@Z
+00000018 dir32             ?MovePosition@CDiskFileWin32@@UAEXJ@Z
+0000001c dir32             ?GetPosition@CDiskFileWin32@@UBEJXZ
+00000020 dir32             ?SetLength@CDiskFileWin32@@UAEXJ@Z
+00000024 dir32             ?GetLength@CDiskFileWin32@@UBEJXZ
+00000028 dir32             ?IsOpen@CDiskFileWin32@@UBE_NXZ
+0000002c dir32             ?GetPathname@CDiskFileWin32@@UBE?AVCWideString@@XZ
+00000030 dir32             ?IsIOFinished@CAFile@@UBE_NXZ
+00000034 dir32             ?GetAlignment@CAFile@@UBEJXZ
+00000038 dir32             ?Clone@CDiskFileWin32@@UBEPAUCAFile@@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CDiskFileWin32@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000008 dir32             ??_7CDiskFileWin32@@6B@
+0000000d DISP32            ?event@@YAXH@Z
+00000015 DISP32            ??1CWideString@@QAE@XZ
+0000001b dir32             ??_7CAFile@@6B@
+00000023 DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CDiskFileWin32@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetPathname@CDiskFileWin32@@UBE?AVCWideString@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CFrameRateSmoother@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCFrameRateSmoother@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 dir32             ??_7CGame@@6B@
+0000000a DISP32            ??1CBaseClass@@UAE@XZ
+00000017 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCGame@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7PlayerDouble@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_EPlayerDouble@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0PlayerDouble@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7InterfaceDouble@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_EInterfaceDouble@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0InterfaceDouble@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7WorldDouble@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_EWorldDouble@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0WorldDouble@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CPlayerManager@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GPlayerDouble@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CGamePlayerInterface@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GInterfaceDouble@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CWorld@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GWorldDouble@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7CDisplayEngine@@6B@
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CDisplayEngine@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+00000009 dir32             ??_7CGameComponent@@6BCDeviceResetCallback@@@
+0000000e DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CGameComponent@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 dir32             ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+0000000c dir32             ??_7CGameComponent@@6BCDeviceResetCallback@@@
+00000011 DISP32            ??1CBaseClass@@UAE@XZ
+0000001e DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCGameComponent@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000009 dir32             ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+00000010 dir32             ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+00000017 DISP32            ?Shutdown@CMainGameComponent@@QAEXXZ
+00000022 DISP32            ??1CMainGameComponentInit@@QAE@XZ
+0000002d DISP32            ??1?$CCountedPointer@UCGraphicDataBank@@@@QAE@XZ
+00000038 DISP32            ??1CFrameRateSmoother@@UAE@XZ
+00000043 DISP32            ??1CDiskFileWin32@@UAE@XZ
+0000004e DISP32            ??1?$CCountedPointer@UCFontBank@@@@QAE@XZ
+00000059 DISP32            ??1?$CCountedPointer@UCFontBank@@@@QAE@XZ
+00000064 DISP32            ??1CNetworkClient@@UAE@XZ
+0000006c DISP32            ??1?$CCountedPointer@UCLUA@@@@QAE@XZ
+000000a8 DISP32            ??1?$CCountedPointer@UCDataBank@NGameText@@@@QAE@XZ
+000000ae dir32             ??_7CGameComponent@@6BCBaseClassNonCopyable@@@
+000000b5 dir32             ??_7CGameComponent@@6BCDeviceResetCallback@@@
+000000bd DISP32            ??1CBaseClass@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ?OnPreDeviceReset@CMainGameComponent@@UAEXXZ
+00000004 dir32             ?OnPostDeviceReset@CMainGameComponent@@UAE_NXZ
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECMainGameComponent@@UAEPAXI@Z
+00000004 dir32             ?Init@CMainGameComponent@@UAEXXZ
+00000008 dir32             ?Run@CMainGameComponent@@UAE_NPAPAUCGameComponent@@@Z
+0000000c dir32             ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+00000010 dir32             ?SetQuit@CMainGameComponent@@UAEXXZ
+00000014 dir32             ?Update@CMainGameComponent@@UAEXXZ
+00000018 dir32             ?GetInputs@CMainGameComponent@@UAEXXZ
+0000001c dir32             ?Render@CMainGameComponent@@UAEXXZ
+00000020 dir32             ?PostInit@CMainGameComponent@@UAEXXZ
+00000024 dir32             ?IsEditorActive@CMainGameComponent@@UBE_NXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CMainGameComponent@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CMainGameComponent@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCMainGameComponent@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 dir32             ??_7CAFile@@6B@
+0000000a DISP32            ??1CBaseClass@@UAE@XZ
+00000017 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCAFile@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CDiskFileWin32@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCDiskFileWin32@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000b DISP32            ??0CGameComponent@@QAE@AAUCGame@@@Z
+00000011 dir32             ??_7CMainGameComponent@@6BCBaseClassNonCopyable@@@
+00000018 dir32             ??_7CMainGameComponent@@6BCDeviceResetCallback@@@
+00000041 dir32             ??_7CNetworkClient@@6B@
+00000062 DISP32            ??0CDiskFileWin32@@QAE@XZ
+00000075 dir32             ??_7CFrameRateSmoother@@6B@
+0000008b DISP32            ??0CMainGameComponentInit@@QAE@ABU0@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CMainGameComponent@@QAE@AAUCGame@@ABUCMainGameComponentInit@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 dir32             ??_7DisplayDouble@@6B@
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_EDisplayDouble@@UAEPAXI@Z
+00000004 dir32             ?InitEngine@CDisplayEngine@@UAE_NXZ
+00000008 dir32             ?UninitEngine@CDisplayEngine@@UAEXXZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0DisplayDouble@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CDisplayEngine@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GDisplayDouble@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000009 DISP32            __chkstk
+00000020 dir32             ??_7CGame@@6B@
+00000032 DISP32            ??0CMainGameComponentInit@@QAE@XZ
+0000007a dir32             _active
+00000080 dir32             _nEvents
+00000086 dir32             _callbackCount
+0000008b DISP32            ??0CMainGameComponent@@QAE@AAUCGame@@ABUCMainGameComponentInit@@@Z
+00000099 dir32             _owner
+000000ab DISP32            ??2@YAPAXI@Z
+000000b6 dir32             ??_7PlayerDouble@@6B@
+000000d0 DISP32            ??2@YAPAXI@Z
+000000db dir32             ??_7InterfaceDouble@@6B@
+000000f5 DISP32            ??2@YAPAXI@Z
+00000100 dir32             ??_7WorldDouble@@6B@
+0000011a DISP32            ??2@YAPAXI@Z
+00000125 dir32             ??_7DisplayDouble@@6B@
+0000014d DISP32            ??2@YAPAXI@Z
+0000015a dir32             ?countedDelete@@YIXPAX@Z
+0000015f DISP32            ??2@YAPAXI@Z
+0000018c DISP32            ??$assignCounted@UCFontBank@@@@YAXAAU?$CCountedPointer@UCFontBank@@@@HH@Z
+0000019a DISP32            ??$assignCounted@UCFontBank@@@@YAXAAU?$CCountedPointer@UCFontBank@@@@HH@Z
+000001a1 DISP32            ??2@YAPAXI@Z
+000001a8 dir32             ?countedDelete@@YIXPAX@Z
+000001b4 DISP32            ??2@YAPAXI@Z
+000001db DISP32            ??2@YAPAXI@Z
+000001e9 DISP32            ??2@YAPAXI@Z
+00000258 dir32             _good
+00000267 dir32             _active
+0000026c DISP32            ??1CMainGameComponent@@UAE@XZ
+00000277 dir32             _active
+000002db dir32             _nEvents
+000002f1 dir32             _callbackCount
+000002f9 dir32             _liveStrings
+00000302 dir32             _good
+00000319 dir32             _good
+0000032e DISP32            ??3@YAXPAX@Z
+0000033b dir32             _callbackCount
+00000344 dir32             _good
+00000358 dir32             _events
+00000360 dir32             _good
+00000394 DISP32            ??1CMainGameComponentInit@@QAE@XZ
+0000039a dir32             _liveStrings
+000003a4 dir32             _good
+000003aa dir32             _good
+000003af dir32             ??_C@_04NNAKGGAP@PASS?$AA@
+000003b6 dir32             ??_C@_04OOEBCMBF@FAIL?$AA@
+000003bc dir32             ??_C@_0BC@PMMGFJNC@00418b7a_TEST?5?$CFs?6?$AA@
+000003c1 DISP32            _printf
+000003ce DISP32            ??1CBaseClass@@UAE@XZ
+000003d6 dir32             _good

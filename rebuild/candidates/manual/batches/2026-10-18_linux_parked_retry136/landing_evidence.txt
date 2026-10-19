@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00693b30   RELOCATION_MATCH PASS   CCreatureActionBase
+00693dc0   RELOCATION_MATCH PASS   CCreatureActionBase
+00693030   RELOCATION_MATCH PASS   SetAnimation
+00847ac0   RELOCATION_MATCH PASS   Initialise
+008d5790   RELOCATION_MATCH PASS   ReleaseMissile
+
+WINS: 5
+  00693b30 RELOCATION_MATCH CCreatureActionBase::??0CCreatureActionBase@@
+  00693dc0 RELOCATION_MATCH CCreatureActionBase::??0CCreatureActionBase@@
+  00693030 RELOCATION_MATCH CCreatureActionBase::SetAnimation
+  00847ac0 RELOCATION_MATCH CCreatureAction_Drink::Initialise
+  008d5790 RELOCATION_MATCH CCreatureAction_FireMissileWeapon::ReleaseMissile
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionBase_CCreatureActionBase_00693b30
+  CCreatureActionBase_CCreatureActionBase_00693dc0
+  CCreatureActionBase_SetAnimation_00693030
+  CCreatureActionDrink_Initialise_00847ac0
+  CCreatureActionFireMissileWeapon_ReleaseMissile_008d5790

@@ -1,0 +1,80 @@
+{
+  "0x129c89c": [
+    [
+      ".?AVCFrameData@CGraphicInfoFrame@@",
+      0
+    ],
+    [
+      ".?AVCManagedTextureOwner@@",
+      0
+    ],
+    [
+      ".?AVCResource@@",
+      0
+    ],
+    [
+      ".?AVCIVCountedPointeeBase@@",
+      0
+    ]
+  ],
+  "0x12a3e14": [
+    [
+      ".?AVCEnginePrimitiveManagerOcclusionBase@@",
+      0
+    ],
+    [
+      ".?AVCEnginePrimitiveManager@@",
+      0
+    ],
+    [
+      ".?AVCEnginePrimitiveRenderUtil@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ],
+  "0x129b3d0": [
+    [
+      ".?AVCVertexShader@@",
+      0
+    ],
+    [
+      ".?AVCShaderBase@@",
+      0
+    ]
+  ],
+  "0x129a030": [
+    [
+      ".?AVCShaderBase@@",
+      0
+    ]
+  ],
+  "0x129ce94": [
+    [
+      ".?AVCMeshDataBank@@",
+      0
+    ],
+    [
+      ".?AVCBankFileAsync@@",
+      0
+    ],
+    [
+      ".?AVCBankFile@@",
+      0
+    ],
+    [
+      ".?AVCBaseClassNonCopyable@@",
+      0
+    ],
+    [
+      ".?AVCBaseClass@@",
+      0
+    ]
+  ]
+}

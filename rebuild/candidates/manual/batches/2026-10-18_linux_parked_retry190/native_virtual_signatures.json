@@ -1,0 +1,39 @@
+{
+  "typed_slots": [
+    {
+      "table": "0x12390f0",
+      "slot": 3,
+      "target": "0x49e1b0",
+      "PDB": "public: virtual class CThingManager & __thiscall CWorld::GetThingManager(void)",
+      "fixture": "public: struct CThingManager & __thiscall WorldDouble::Manager(void)"
+    },
+    {
+      "table": "0x12390f0",
+      "slot": 13,
+      "target": "0x4ae8c0",
+      "PDB": "public: virtual class CWorldMap const & __thiscall CWorld::PeekWorldMap(void) const",
+      "fixture": "public: struct CWorldMap const & __thiscall WorldDouble::Map(void) const"
+    },
+    {
+      "table": "0x1244aec",
+      "slot": 17,
+      "target": "0x4fc080",
+      "PDB": "public: virtual long __thiscall CWorldMap::GetMapNumberAt(class C2DCoordI const &) const",
+      "fixture": "public: long __thiscall WorldMapDouble::Number(struct C2DCoordI const &) const"
+    }
+  ],
+  "volume_tables": [
+    "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+    "public: virtual void * __thiscall CVolumeTexture::`vector deleting dtor'(unsigned int)"
+  ],
+  "direct_PDB": [
+    "public: __thiscall CVolumeTexture::CVolumeTexture(void)",
+    "public: bool __thiscall CVolumeTexture::Initialise(class C3DExtentsI const &, long, class CPixelFormat const &, unsigned long, enum EVolumePool, bool)",
+    "public: static class C2DExtentsI __fastcall CTexture::GetNextValidDimensions(class C2DExtentsI const &, class CPixelFormat const &)",
+    "public: void __thiscall NAnimationEvents::CManager::AddEventToAnim(unsigned long, class NAnimationEvents::CEvent const &)",
+    "protected: virtual void __thiscall CMap::ScriptedMapBrushAddThings(class CScriptedMapBrush const &)",
+    "protected: virtual void __thiscall CMap::ScriptedMapBrushRemoveThings(class CScriptedMapBrush const &)",
+    "public: void __thiscall CThing::SetAsActivated(bool)",
+    "public: void __thiscall CThing::Kill(bool)"
+  ]
+}

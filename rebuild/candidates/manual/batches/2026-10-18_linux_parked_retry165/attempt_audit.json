@@ -1,0 +1,83 @@
+[
+  {
+    "address": "0064f6dc",
+    "attempt": 1,
+    "kind": "grade",
+    "sha256": "b0b6183b8156d4c3ab2ec8c35e6dc2edd8856fa666c9db044f768a1799b652b9",
+    "args": [
+      "DrawOracleSymbols"
+    ],
+    "base_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "extra_flags": [],
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0064f6dc",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra235_whole/snapshots/0064f6dc_01_184/source.cpp",
+      "DrawOracleSymbols"
+    ],
+    "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+    "time": "2026-10-18T22:41:52.980821+00:00",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/astra235_whole/snapshots/0064f6dc_01_184"
+  },
+  {
+    "address": "0064f6dc",
+    "attempt": 2,
+    "kind": "grade",
+    "sha256": "a2b6e39698e158760b14e372e5160b0043a2750fa71e923a2f883dee026c4ad6",
+    "args": [
+      "DrawOracleSymbols"
+    ],
+    "base_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "extra_flags": [],
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0064f6dc",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra235_whole/snapshots/0064f6dc_02_185/source.cpp",
+      "DrawOracleSymbols"
+    ],
+    "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+    "time": "2026-10-18T22:42:16.380370+00:00",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/astra235_whole/snapshots/0064f6dc_02_185"
+  },
+  {
+    "address": "0064f6dc",
+    "attempt": 3,
+    "kind": "grade",
+    "sha256": "8d9a8a52dd8a81a25d8231bf35fac8c8bd0c68e9439021b13dc58e2b27cb4b24",
+    "args": [
+      "DrawOracleSymbols"
+    ],
+    "base_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "extra_flags": [],
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0064f6dc",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra235_whole/snapshots/0064f6dc_03_186/source.cpp",
+      "DrawOracleSymbols"
+    ],
+    "compiler": "/workspace/FableDecomp/work/wine-repair/vc71/bin/cl.exe",
+    "time": "2026-10-18T22:42:31.807637+00:00",
+    "snapshot": "/workspace/FableDecomp/work/codex-lane/w22/astra235_whole/snapshots/0064f6dc_03_186"
+  }
+]

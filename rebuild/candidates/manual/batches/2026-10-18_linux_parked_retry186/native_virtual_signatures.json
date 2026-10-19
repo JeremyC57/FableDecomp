@@ -1,0 +1,694 @@
+{
+  "slots": [
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 0,
+      "target": "0x4573e1",
+      "compiled": "public: virtual void * __thiscall CSpecialAbilitiesBerserkDef::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+      "expected": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 2,
+      "target": "0x9ace90",
+      "compiled": "public: virtual bool __thiscall CDefClassBase::UnloadResource(void)",
+      "expected": "public: virtual bool __thiscall CDefClassBase::UnloadResource(void)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 3,
+      "target": "0x9fbef0",
+      "compiled": "public: virtual unsigned long __thiscall CResource::GetUnloadableMemory(void) const",
+      "expected": "public: virtual unsigned long __thiscall CResource::GetUnloadableMemory(void) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 4,
+      "target": "0x42d950",
+      "compiled": "public: virtual bool __thiscall CResource::IsResourceLoaded(void) const",
+      "expected": "public: virtual bool __thiscall CResource::IsResourceLoaded(void) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 5,
+      "target": "0x42d960",
+      "compiled": "public: virtual void __thiscall CResource::OnResourceLoaded(void)",
+      "expected": "public: virtual void __thiscall CResource::OnResourceLoaded(void)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 6,
+      "target": "0x42d970",
+      "compiled": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const",
+      "expected": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 7,
+      "target": "0x42d980",
+      "compiled": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)",
+      "expected": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 8,
+      "target": "0x9fbf00",
+      "compiled": "public: virtual unsigned long __thiscall CResource::GetDebugMemoryInUse(void) const",
+      "expected": "public: virtual unsigned long __thiscall CResource::GetDebugMemoryInUse(void) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 9,
+      "target": "0x9fbf10",
+      "compiled": "public: virtual void __thiscall CResource::ResetDebugMemoryInUse(void)",
+      "expected": "public: virtual void __thiscall CResource::ResetDebugMemoryInUse(void)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 10,
+      "target": "0x4303b0",
+      "compiled": "public: virtual struct CDefString __thiscall CParentDefClassBase::GetInstantiationName(void) const",
+      "expected": "public: virtual class CDefString __thiscall CParentDefClassBase::GetInstantiationName(void) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 11,
+      "target": "0x4303c0",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::SetInstantiationName(struct CDefString)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::SetInstantiationName(class CDefString)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 12,
+      "target": "0x9b00d0",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::AddSubDef(struct CCharString const &, long, long)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::AddSubDef(class CCharString const &, long, long)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 13,
+      "target": "0x9b0170",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::RemoveSubDef(struct CCharString const &)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::RemoveSubDef(class CCharString const &)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 14,
+      "target": "0x9ad4a0",
+      "compiled": "public: virtual struct CDefClassBase::CSubDefInfo * __thiscall CParentDefClassBase::GetPSubDefInfo(struct CCharString const &)",
+      "expected": "public: virtual class CDefClassBase::CSubDefInfo * __thiscall CParentDefClassBase::GetPSubDefInfo(class CCharString const &)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 15,
+      "target": "0x9ad510",
+      "compiled": "public: virtual struct CDefClassBase::CSubDefInfo const * __thiscall CParentDefClassBase::GetPSubDefInfo(struct CCharString const &) const",
+      "expected": "public: virtual class CDefClassBase::CSubDefInfo const * __thiscall CParentDefClassBase::GetPSubDefInfo(class CCharString const &) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 16,
+      "target": "0x4303d0",
+      "compiled": "public: virtual bool __thiscall CParentDefClassBase::IsParentDef(void) const",
+      "expected": "public: virtual bool __thiscall CParentDefClassBase::IsParentDef(void) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 17,
+      "target": "0x42da80",
+      "compiled": "public: virtual void __thiscall CDefClassBase::PostTransfer(void)",
+      "expected": "public: virtual void __thiscall CDefClassBase::PostTransfer(void)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 18,
+      "target": "0x46a2fc",
+      "compiled": "public: virtual void __thiscall CSpecialAbilitiesBerserkDef::Transfer(struct CPersistContext &)",
+      "expected": "public: virtual void __thiscall CSpecialAbilitiesBerserkDef::Transfer(class CPersistContext &)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 19,
+      "target": "0x45f84f",
+      "compiled": "public: virtual void __thiscall CSpecialAbilitiesBerserkDef::Copy(struct CDefClassBase const *)",
+      "expected": "public: virtual void __thiscall CSpecialAbilitiesBerserkDef::Copy(class CDefClassBase const *)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 20,
+      "target": "0x4573db",
+      "compiled": "public: virtual unsigned long __thiscall CSpecialAbilitiesBerserkDef::GetSizeofClass(void)",
+      "expected": "public: virtual unsigned long __thiscall CSpecialAbilitiesBerserkDef::GetSizeofClass(void)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 21,
+      "target": "0x9b0200",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::InternalSaveBinary(struct CDataOutputStream &)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::InternalSaveBinary(class CDataOutputStream &)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 22,
+      "target": "0x9aed70",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::InternalLoadBinary(struct CDataInputStream &)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::InternalLoadBinary(class CDataInputStream &)"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 23,
+      "target": "0x42da90",
+      "compiled": "public: virtual void __thiscall CDefClassBase::Validate(struct CValidateDefinitionInitBase const &, struct CCharString const &) const",
+      "expected": "public: virtual void __thiscall CDefClassBase::Validate(class CValidateDefinitionInitBase const &, class CCharString const &) const"
+    },
+    {
+      "address": "004573fd",
+      "table": "??_7CSpecialAbilitiesBerserkDef@@6B@",
+      "slot": 24,
+      "target": "0x4303e0",
+      "compiled": "public: virtual struct CVectorMap<unsigned long, struct CDefClassBase::CSubDefInfo, struct CKeyPairCompareLess<unsigned long, struct CDefClassBase::CSubDefInfo>> * __thiscall CParentDefClassBase::GetPSubDefInfoMap(void)",
+      "expected": "public: virtual class CVectorMap<unsigned long, class CDefClassBase::CSubDefInfo, class CKeyPairCompareLess<unsigned long, class CDefClassBase::CSubDefInfo>> * __thiscall CParentDefClassBase::GetPSubDefInfoMap(void)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 0,
+      "target": "0x457c84",
+      "compiled": "public: virtual void * __thiscall CSpecialAbilitiesLightningSpellDef::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const",
+      "expected": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 2,
+      "target": "0x9ace90",
+      "compiled": "public: virtual bool __thiscall CDefClassBase::UnloadResource(void)",
+      "expected": "public: virtual bool __thiscall CDefClassBase::UnloadResource(void)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 3,
+      "target": "0x9fbef0",
+      "compiled": "public: virtual unsigned long __thiscall CResource::GetUnloadableMemory(void) const",
+      "expected": "public: virtual unsigned long __thiscall CResource::GetUnloadableMemory(void) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 4,
+      "target": "0x42d950",
+      "compiled": "public: virtual bool __thiscall CResource::IsResourceLoaded(void) const",
+      "expected": "public: virtual bool __thiscall CResource::IsResourceLoaded(void) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 5,
+      "target": "0x42d960",
+      "compiled": "public: virtual void __thiscall CResource::OnResourceLoaded(void)",
+      "expected": "public: virtual void __thiscall CResource::OnResourceLoaded(void)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 6,
+      "target": "0x42d970",
+      "compiled": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const",
+      "expected": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 7,
+      "target": "0x42d980",
+      "compiled": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)",
+      "expected": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 8,
+      "target": "0x9fbf00",
+      "compiled": "public: virtual unsigned long __thiscall CResource::GetDebugMemoryInUse(void) const",
+      "expected": "public: virtual unsigned long __thiscall CResource::GetDebugMemoryInUse(void) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 9,
+      "target": "0x9fbf10",
+      "compiled": "public: virtual void __thiscall CResource::ResetDebugMemoryInUse(void)",
+      "expected": "public: virtual void __thiscall CResource::ResetDebugMemoryInUse(void)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 10,
+      "target": "0x4303b0",
+      "compiled": "public: virtual struct CDefString __thiscall CParentDefClassBase::GetInstantiationName(void) const",
+      "expected": "public: virtual class CDefString __thiscall CParentDefClassBase::GetInstantiationName(void) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 11,
+      "target": "0x4303c0",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::SetInstantiationName(struct CDefString)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::SetInstantiationName(class CDefString)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 12,
+      "target": "0x9b00d0",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::AddSubDef(struct CCharString const &, long, long)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::AddSubDef(class CCharString const &, long, long)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 13,
+      "target": "0x9b0170",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::RemoveSubDef(struct CCharString const &)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::RemoveSubDef(class CCharString const &)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 14,
+      "target": "0x9ad4a0",
+      "compiled": "public: virtual struct CDefClassBase::CSubDefInfo * __thiscall CParentDefClassBase::GetPSubDefInfo(struct CCharString const &)",
+      "expected": "public: virtual class CDefClassBase::CSubDefInfo * __thiscall CParentDefClassBase::GetPSubDefInfo(class CCharString const &)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 15,
+      "target": "0x9ad510",
+      "compiled": "public: virtual struct CDefClassBase::CSubDefInfo const * __thiscall CParentDefClassBase::GetPSubDefInfo(struct CCharString const &) const",
+      "expected": "public: virtual class CDefClassBase::CSubDefInfo const * __thiscall CParentDefClassBase::GetPSubDefInfo(class CCharString const &) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 16,
+      "target": "0x4303d0",
+      "compiled": "public: virtual bool __thiscall CParentDefClassBase::IsParentDef(void) const",
+      "expected": "public: virtual bool __thiscall CParentDefClassBase::IsParentDef(void) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 17,
+      "target": "0x42da80",
+      "compiled": "public: virtual void __thiscall CDefClassBase::PostTransfer(void)",
+      "expected": "public: virtual void __thiscall CDefClassBase::PostTransfer(void)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 18,
+      "target": "0x46a568",
+      "compiled": "public: virtual void __thiscall CSpecialAbilitiesLightningSpellDef::Transfer(struct CPersistContext &)",
+      "expected": "public: virtual void __thiscall CSpecialAbilitiesLightningSpellDef::Transfer(class CPersistContext &)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 19,
+      "target": "0x46029f",
+      "compiled": "public: virtual void __thiscall CSpecialAbilitiesLightningSpellDef::Copy(struct CDefClassBase const *)",
+      "expected": "public: virtual void __thiscall CSpecialAbilitiesLightningSpellDef::Copy(class CDefClassBase const *)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 20,
+      "target": "0x457c7e",
+      "compiled": "public: virtual unsigned long __thiscall CSpecialAbilitiesLightningSpellDef::GetSizeofClass(void)",
+      "expected": "public: virtual unsigned long __thiscall CSpecialAbilitiesLightningSpellDef::GetSizeofClass(void)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 21,
+      "target": "0x9b0200",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::InternalSaveBinary(struct CDataOutputStream &)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::InternalSaveBinary(class CDataOutputStream &)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 22,
+      "target": "0x9aed70",
+      "compiled": "public: virtual void __thiscall CParentDefClassBase::InternalLoadBinary(struct CDataInputStream &)",
+      "expected": "public: virtual void __thiscall CParentDefClassBase::InternalLoadBinary(class CDataInputStream &)"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 23,
+      "target": "0x42da90",
+      "compiled": "public: virtual void __thiscall CDefClassBase::Validate(struct CValidateDefinitionInitBase const &, struct CCharString const &) const",
+      "expected": "public: virtual void __thiscall CDefClassBase::Validate(class CValidateDefinitionInitBase const &, class CCharString const &) const"
+    },
+    {
+      "address": "00457ca0",
+      "table": "??_7CSpecialAbilitiesLightningSpellDef@@6B@",
+      "slot": 24,
+      "target": "0x4303e0",
+      "compiled": "public: virtual struct CVectorMap<unsigned long, struct CDefClassBase::CSubDefInfo, struct CKeyPairCompareLess<unsigned long, struct CDefClassBase::CSubDefInfo>> * __thiscall CParentDefClassBase::GetPSubDefInfoMap(void)",
+      "expected": "public: virtual class CVectorMap<unsigned long, class CDefClassBase::CSubDefInfo, class CKeyPairCompareLess<unsigned long, class CDefClassBase::CSubDefInfo>> * __thiscall CParentDefClassBase::GetPSubDefInfoMap(void)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 0,
+      "target": "0xbcd7a0",
+      "compiled": "public: virtual void * __thiscall CEnginePrimitiveManagerWeaponTrails::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 1,
+      "target": "0xbcd600",
+      "compiled": "public: virtual struct CEngineInternalPrimitiveBase * __thiscall CEnginePrimitiveManagerWeaponTrails::CreateInternalPrimitive(enum EEnginePrimitiveType)",
+      "expected": "public: virtual class CEngineInternalPrimitiveBase * __thiscall CEnginePrimitiveManagerWeaponTrails::CreateInternalPrimitive(enum EEnginePrimitiveType)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 2,
+      "target": "0xbcc7c0",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManagerWeaponTrails::GetSupportedTypes(struct CEnginePrimitiveTypeList &) const",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManagerWeaponTrails::GetSupportedTypes(class CEnginePrimitiveTypeList &) const"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 3,
+      "target": "0xbacd90",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 4,
+      "target": "0xbacda0",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 5,
+      "target": "0xbcd490",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManagerWeaponTrails::RenderSubPrimitive(class CEngineSubPrimitiveBase &, enum ERenderPassType)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 6,
+      "target": "0xb4a460",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(class CEngineSubPrimitiveBase &)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 7,
+      "target": "0xbcc700",
+      "compiled": "public: virtual enum ERendered __thiscall CEnginePrimitiveManagerWeaponTrails::RenderPrimitive(struct CEngineInternalPrimitiveBase &, enum EEngineRenderLayer, struct CEngineSubPrimitiveChain &)",
+      "expected": "public: virtual enum ERendered __thiscall CEnginePrimitiveManagerWeaponTrails::RenderPrimitive(class CEngineInternalPrimitiveBase &, enum EEngineRenderLayer, class CEngineSubPrimitiveChain &)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 8,
+      "target": "0xb38810",
+      "compiled": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+      "expected": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(class CEngineInternalPrimitiveBase &)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 9,
+      "target": "0xb38820",
+      "compiled": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+      "expected": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(class CEngineInternalPrimitiveBase &, class C3DVector const &, unsigned long)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 10,
+      "target": "0xb38830",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(class CEngineInternalPrimitiveBase &, class CEngineSubPrimitiveChain &, enum ESubPrimitiveType)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 11,
+      "target": "0xb38840",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManagerWeaponTrails@@6B@",
+      "slot": 12,
+      "target": "0xb38850",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(class CEngineInternalPrimitiveBase &, class NEngineShadowRenderer::CShadowSceneContext &)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CVertexShader@@6B@",
+      "slot": 0,
+      "target": "0x9c1ae0",
+      "compiled": "public: virtual void * __thiscall CVertexShader::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CVertexShader@@6B@",
+      "slot": 1,
+      "target": "0x987cf0",
+      "compiled": "public: virtual class CCharString __thiscall CVertexShader::GetDebugName(void) const",
+      "expected": "public: virtual class CCharString __thiscall CVertexShader::GetDebugName(void) const"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CVertexShader@@6B@",
+      "slot": 2,
+      "target": "0x9be210",
+      "compiled": "public: virtual unsigned long __thiscall CVertexShader::CountReferences(void)",
+      "expected": "private: virtual unsigned long __thiscall CVertexShader::CountReferences(void)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CShaderBase@@6B@",
+      "slot": 0,
+      "target": "0x987d10",
+      "compiled": "protected: virtual void * __thiscall CShaderBase::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CShaderBase@@6B@",
+      "slot": 1,
+      "target": "0x987cf0",
+      "compiled": "protected: virtual class CCharString __thiscall CShaderBase::GetDebugName(void) const",
+      "expected": "protected: virtual class CCharString __thiscall CShaderBase::GetDebugName(void) const"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CVertexShaderData@@6B@",
+      "slot": 0,
+      "target": "0xa630d0",
+      "compiled": "public: virtual void * __thiscall CVertexShaderData::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CShaderResource@@6B@",
+      "slot": 0,
+      "target": "0xa5ebe0",
+      "compiled": "public: virtual void * __thiscall CShaderResource::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 0,
+      "target": "0xbacde0",
+      "compiled": "public: virtual void * __thiscall CEnginePrimitiveManager::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 1,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 2,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 3,
+      "target": "0xbacd90",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::FrameStart(void)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 4,
+      "target": "0xbacda0",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::FrameEnd(void)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 5,
+      "target": "0xb4a450",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(struct CEngineSubPrimitiveBase &, enum ERenderPassType)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::RenderSubPrimitive(class CEngineSubPrimitiveBase &, enum ERenderPassType)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 6,
+      "target": "0xb4a460",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(struct CEngineSubPrimitiveBase &)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::RenderBoundingVolume(class CEngineSubPrimitiveBase &)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 7,
+      "target": "0xbfea08",
+      "compiled": "__purecall",
+      "expected": "__purecall"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 8,
+      "target": "0xb38810",
+      "compiled": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(struct CEngineInternalPrimitiveBase &)",
+      "expected": "public: virtual enum ERendered __thiscall CEnginePrimitiveManager::RenderPrimitiveToShadowBuffer(class CEngineInternalPrimitiveBase &)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 9,
+      "target": "0xb38820",
+      "compiled": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(struct CEngineInternalPrimitiveBase &, struct C3DVector const &, unsigned long)",
+      "expected": "public: virtual bool __thiscall CEnginePrimitiveManager::PreloadPrimitive(class CEngineInternalPrimitiveBase &, class C3DVector const &, unsigned long)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 10,
+      "target": "0xb38830",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(struct CEngineInternalPrimitiveBase &, struct CEngineSubPrimitiveChain &, enum ESubPrimitiveType)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::Render2DPrimitive(class CEngineInternalPrimitiveBase &, class CEngineSubPrimitiveChain &, enum ESubPrimitiveType)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 11,
+      "target": "0xb38840",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::RenderNonsortedPrimitives(void)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveManager@@6B@",
+      "slot": 12,
+      "target": "0xb38850",
+      "compiled": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(struct CEngineInternalPrimitiveBase &, struct NEngineShadowRenderer::CShadowSceneContext &)",
+      "expected": "public: virtual void __thiscall CEnginePrimitiveManager::AddStaticShadowData(class CEngineInternalPrimitiveBase &, class NEngineShadowRenderer::CShadowSceneContext &)"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CEnginePrimitiveRenderUtil@@6B@",
+      "slot": 0,
+      "target": "0xb8b600",
+      "compiled": "public: virtual void * __thiscall CEnginePrimitiveRenderUtil::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CBaseClassNonCopyable@@6B@",
+      "slot": 0,
+      "target": "0x99a470",
+      "compiled": "protected: virtual void * __thiscall CBaseClassNonCopyable::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00bcc5f0",
+      "table": "??_7CBaseClass@@6B@",
+      "slot": 0,
+      "target": "0x4371f0",
+      "compiled": "public: virtual void * __thiscall CBaseClass::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    }
+  ],
+  "mismatches": [],
+  "excluded": []
+}

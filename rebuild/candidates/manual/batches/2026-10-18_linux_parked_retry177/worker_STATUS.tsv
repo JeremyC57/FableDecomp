@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00bfaae0	RELOCATION_MATCH	177v177	PASS	1new+4UNCERTAIN=5; actual-source host98O2/noelide/nativeVC71
+00e33b00	RELOCATION_MATCH	190v190	PASS	5new+4UNCERTAIN=9; actual-source host98O2/noelide/nativeVC71
+00e7b970	RELOCATION_MATCH	198v198	PASS	6new+4UNCERTAIN=10; actual-source host98O2/noelide/nativeVC71
+00873930	DIFFER	237v221	-	6new+4UNCERTAIN=10 cap; bestgrade8/9; grade10 SRC_FAIL fully preserved

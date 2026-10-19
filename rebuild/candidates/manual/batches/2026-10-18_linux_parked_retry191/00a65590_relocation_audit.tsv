@@ -1,0 +1,13 @@
+offset	native_target	symbol
+00000021	013d28d4	?g_CurrentAlignment@@3KA
+00000027	013d28d8	?g_CurrentAlignmentShift@@3KA
+00000043	00a65060	?RemoveAreaFromFreeList@CMemoryAreaChunk@@QAEXPAUCMemoryArea@@@Z
+0000004b	00a65060	?RemoveAreaFromFreeList@CMemoryAreaChunk@@QAEXPAUCMemoryArea@@@Z
+00000050	013d28d4	?g_CurrentAlignment@@3KA
+00000056	013d28d8	?g_CurrentAlignmentShift@@3KA
+00000086	00a650f0	?InsertAreaIntoFreeList@CMemoryAreaChunk@@QAEXPAUCMemoryArea@@@Z
+0000009b	00a65060	?RemoveAreaFromFreeList@CMemoryAreaChunk@@QAEXPAUCMemoryArea@@@Z
+000000a3	00a65060	?RemoveAreaFromFreeList@CMemoryAreaChunk@@QAEXPAUCMemoryArea@@@Z
+000000a8	013d28d4	?g_CurrentAlignment@@3KA
+000000ae	013d28d8	?g_CurrentAlignmentShift@@3KA
+000000de	00a650f0	?InsertAreaIntoFreeList@CMemoryAreaChunk@@QAEXPAUCMemoryArea@@@Z

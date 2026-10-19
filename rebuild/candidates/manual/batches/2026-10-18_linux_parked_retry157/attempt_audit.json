@@ -1,0 +1,476 @@
+[
+  {
+    "address": "008957c0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:35:41.816902+00:00",
+    "sha256": "318767fc02c4adf6fd6d4a199f0015ecf1f68adc0bd4d7581c2190d787bdc7a1",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008957c0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008957c0_1.cpp",
+      "CGameScriptInterface_SendEntityEvent"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008957c0",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:36:11.226264+00:00",
+    "sha256": "1edbce972fd2932b78a8e8fa6094e4e18d163dad2f4b4a84935efbf1ff958a5a",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008957c0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008957c0_2.cpp",
+      "CGameScriptInterface_SendEntityEvent"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089b110",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:39:12.001069+00:00",
+    "sha256": "ab09093c57d1eee027d220e7be8e7cd3762ad3c2de6f662b07c53ddaf7d36839",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089b110",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089b110_1.cpp",
+      "CGameScriptInterface_StartMovieSequence"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089b110",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:39:34.594639+00:00",
+    "sha256": "db1ae0d11a1dbc00c3ff3e24234df94162baa62cc703960cd37ad8beac67d120",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089b110",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089b110_2.cpp",
+      "CGameScriptInterface_StartMovieSequence"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089b110",
+    "attempt": 3,
+    "prior": 0,
+    "utc": "2026-10-18T21:39:42.728710+00:00",
+    "sha256": "a1b556fdfafd8638f453d0da1dd146e8ff750e7584eda82bb375ef402a33e50d",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089b110",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089b110_3.cpp",
+      "CGameScriptInterface_StartMovieSequence"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00890c80",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:43:13.208277+00:00",
+    "sha256": "e617bdf5199ef98a4bd609d65536eec17fbf030349b6a6a59021bcc84ca4593f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00890c80",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00890c80_1.cpp",
+      "CGameScriptInterface_EntityUnsheatheMeleeWeapon",
+      "--flags",
+      "/GS"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3",
+      "/GS"
+    ]
+  },
+  {
+    "address": "00890c80",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:43:23.643894+00:00",
+    "sha256": "3e7aab024772f9d4504f098eed89cfc44d2c5ff11e1c5e8f5e8087f6411ccb88",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00890c80",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00890c80_2.cpp",
+      "CGameScriptInterface_EntityUnsheatheMeleeWeapon",
+      "--flags",
+      "/GS"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3",
+      "/GS"
+    ]
+  },
+  {
+    "address": "00890d80",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:43:35.010447+00:00",
+    "sha256": "a9de3a836a18698e3f004edc0b2fafd29befd63597d78eabd6ce493fb88e01f8",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00890d80",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00890d80_1.cpp",
+      "CGameScriptInterface_EntityUnsheatheRangedWeapon",
+      "--flags",
+      "/GS"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3",
+      "/GS"
+    ]
+  },
+  {
+    "address": "00890d80",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:43:47.960000+00:00",
+    "sha256": "0d7e73b3e91bbac03a208e6f126028af4690cac937f87b97354afc3c8b525710",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00890d80",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00890d80_2.cpp",
+      "CGameScriptInterface_EntityUnsheatheRangedWeapon",
+      "--flags",
+      "/GS"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3",
+      "/GS"
+    ]
+  },
+  {
+    "address": "0089c560",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:45:26.924131+00:00",
+    "sha256": "2a8bd06dd19bab41cd72edac130948ae5a99d133859923d91525e1d1996f9007",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089c560",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089c560_1.cpp",
+      "CGameScriptInterface_EntityPostOpinionDeedToAll"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00896a30",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:46:50.822429+00:00",
+    "sha256": "084ef24c9893e7e897ab3aeeebb44fb5765a47b15b8056def9799f3ff2471669",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00896a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00896a30_1.cpp",
+      "CGameScriptInterface_SetQuestCardObjective"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00896a30",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:47:04.401338+00:00",
+    "sha256": "a187ac0a796a5cb5116e5d10c7bb7554bef16879c4d26674b24305ad89f836af",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00896a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00896a30_2.cpp",
+      "CGameScriptInterface_SetQuestCardObjective"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00896a30",
+    "attempt": 3,
+    "prior": 0,
+    "utc": "2026-10-18T21:47:29.460237+00:00",
+    "sha256": "d2a3f78251488bdcf6789d402a326c499ea44760896f4f3e38e8450ead6ba908",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00896a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00896a30_3.cpp",
+      "CGameScriptInterface_SetQuestCardObjective"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00896a30",
+    "attempt": 4,
+    "prior": 0,
+    "utc": "2026-10-18T21:47:49.908390+00:00",
+    "sha256": "b6a5d9346a49db7fa1626782b69008a0649747c4cd72855356c4ec83128667f6",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00896a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00896a30_4.cpp",
+      "CGameScriptInterface_SetQuestCardObjective"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00896a30",
+    "attempt": 5,
+    "prior": 0,
+    "utc": "2026-10-18T21:48:03.305212+00:00",
+    "sha256": "69f9c0c563fa46da1afbf3091ac51a09e3d8aadbc7390f168596d7d1dacce706",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00896a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00896a30_5.cpp",
+      "CGameScriptInterface_SetQuestCardObjective"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00896a30",
+    "attempt": 6,
+    "prior": 0,
+    "utc": "2026-10-18T21:48:14.913972+00:00",
+    "sha256": "6e2dbf7c36dacb98fa92c3fd21cc3a363666628a3eae566f9ac3674d866ccb12",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00896a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00896a30_6.cpp",
+      "CGameScriptInterface_SetQuestCardObjective"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a8440",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:48:54.568725+00:00",
+    "sha256": "4df8df72ca3ce2e29eb286391c08ed1213b6eb8c18d2fd05baaa2a67896100ce",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a8440",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a8440_1.cpp",
+      "CGameScriptInterface_GetPerceivingHeroEntityList"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00896a30",
+    "attempt": 7,
+    "prior": 0,
+    "utc": "2026-10-18T22:06:00.371700+00:00",
+    "sha256": "43328a42375978da7930ef8ca4f6e3c2c3e53daf5583be11b7a91791af44ebe3",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00896a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00896a30_7.cpp",
+      "SetQuestCardObjective"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00896a30",
+    "attempt": 8,
+    "prior": 0,
+    "utc": "2026-10-18T22:06:19.996382+00:00",
+    "sha256": "ba2ed305ea43f1a531c7f719c5ce052edc6893a13e85d555e9330f5862b24eb5",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00896a30",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00896a30_8.cpp",
+      "SetQuestCardObjective"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089c560",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T22:14:00.457002+00:00",
+    "sha256": "7945347da0fa522216a0bac5007befcd60d65ba1f86cc231bd4b622e3268ee1b",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089c560",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089c560_2.cpp",
+      "EntityPostOpinionDeedToAll"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089b110",
+    "attempt": 4,
+    "prior": 0,
+    "utc": "2026-10-18T22:14:00.815590+00:00",
+    "sha256": "6ae478cca1af0c9fb3201ce99bae2a385f719da78c6b0e682add093e01472dea",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089b110",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089b110_4.cpp",
+      "StartMovieSequence"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008a8440",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T22:14:01.156180+00:00",
+    "sha256": "29d739bb17c7494d9587f4987fa465d6c05a9cb0697ffa0613048603994be189",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008a8440",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008a8440_2.cpp",
+      "GetPerceivingHeroEntityList"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00abd150   RELOCATION_MATCH PASS   ReadFromFile
+00aa6960   RELOCATION_MATCH PASS   ReadFromFile
+0055e6b0   RELOCATION_MATCH PASS   GetScoreAsString
+
+WINS: 3
+  00abd150 RELOCATION_MATCH C3DMeshFileVerticesChunk::ReadFromFile@C3DMeshFileVerticesChunk
+  00aa6960 RELOCATION_MATCH C3DMeshFileXTriangleStripChunk::ReadFromFile@C3DMeshFileXTriangleStripChunk
+  0055e6b0 RELOCATION_MATCH CActivity::GetScoreAsString
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  C3DMeshFileVerticesChunk_ReadFromFile_00abd150
+  C3DMeshFileXTriangleStripChunk_ReadFromFile_00aa6960
+  CActivity_GetScoreAsString_0055e6b0

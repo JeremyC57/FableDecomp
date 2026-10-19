@@ -1,0 +1,7 @@
+offset	native_target	symbol
+00000010	00bfea0e	_malloc
+0000002a	0082e910	?GetThingsToDelete@CScriptedMapBrush@@QBEXAAUUIDList@@@Z
+00000063	0051ed80	?GetPThingWithUID@CThingManager@@QAEPAUCThing@@_K@Z
+00000079	004c9b80	?Kill@CThing@@QAEX_N@Z
+00000096	00bfea14	_free
+000000b4	00bfea14	_free

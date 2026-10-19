@@ -1,0 +1,20 @@
+['g++', '-std=c++98', '-O2', '-Wall', '-Wextra', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/fixture.cpp', '-o', '/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/O2']
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/fixture.cpp:9: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+    9 | #pragma optimize("s", on)
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/fixture.cpp:16:9: warning: #pragma once in main file
+   16 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/fixture.cpp:19:9: warning: #pragma once in main file
+   19 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/fixture.cpp:24:9: warning: #pragma once in main file
+   24 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/fixture.cpp: In function ‘int main()’:
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/fixture.cpp:1952:2: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+ 1952 |  if(mask&8)expected[count++]=9;if(mask&4)expected[count++]=10;if(mask&2)expected[count++]=11;if(mask&1)expected[count++]=12;
+      |  ^~
+/workspace/FableDecomp/work/codex-lane/w22/retry202f_sol/snapshots/00418b7a_fixture_ownership_expanded/fixture.cpp:1952:32: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+ 1952 |  if(mask&8)expected[count++]=9;if(mask&4)expected[count++]=10;if(mask&2)expected[count++]=11;if(mask&1)expected[count++]=12;
+      |                                ^~
+00418b7a_TEST PASS

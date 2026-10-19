@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0084bd40   WARN SHARED_HEADER_AVAILABLE CBaseObject
+0084bd40   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0084bd40   RELOCATION_MATCH PASS   CCreatureAction_PerformExpression
+00953bc0   RELOCATION_MATCH PASS   CCreatureAction_DragonTakeOffIntoFlying
+
+WINS: 2
+  0084bd40 RELOCATION_MATCH CCreatureAction_PerformExpression::CCreatureAction_PerformExpression
+  00953bc0 RELOCATION_MATCH CCreatureAction_DragonTakeOffIntoFlying::CCreatureAction_DragonTakeOffIntoFlying
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionPerformExpression_CCreatureActionPerformExpression_0084bd40
+  CCreatureActionDragonTakeOffIntoFlying_CCreatureActionDragonTakeOffIntoFlying_00953bc0

@@ -1,0 +1,54 @@
+006f9130 8b542404             mov edx, dword ptr [esp + 4]
+006f9134 8b4904               mov ecx, dword ptr [ecx + 4]
+006f9137 83ec08               sub esp, 8
+006f913a 8d0424               lea eax, [esp]
+006f913d 50                   push eax
+006f913e 52                   push edx
+006f913f e87cb13200           call 0xa242c0
+006f9144 8bc8                 mov ecx, eax
+006f9146 e875d83200           call 0xa269c0
+006f914b 8b0c24               mov ecx, dword ptr [esp]
+006f914e d9410c               fld dword ptr [ecx + 0xc]
+006f9151 d81d3cba2901         fcomp dword ptr [0x129ba3c]
+006f9157 dfe0                 fnstsw ax
+006f9159 f6c441               test ah, 0x41
+006f915c 7549                 jne 0x6f91a7
+006f915e 8b542410             mov edx, dword ptr [esp + 0x10]
+006f9162 8b410c               mov eax, dword ptr [ecx + 0xc]
+006f9165 52                   push edx
+006f9166 89442410             mov dword ptr [esp + 0x10], eax
+006f916a e871593500           call 0xa4eae0
+006f916f d874240c             fdiv dword ptr [esp + 0xc]
+006f9173 8b442404             mov eax, dword ptr [esp + 4]
+006f9177 85c0                 test eax, eax
+006f9179 d95c240c             fstp dword ptr [esp + 0xc]
+006f917d 741e                 je 0x6f919d
+006f917f ff08                 dec dword ptr [eax]
+006f9181 8b442404             mov eax, dword ptr [esp + 4]
+006f9185 833800               cmp dword ptr [eax], 0
+006f9188 7513                 jne 0x6f919d
+006f918a 8b4808               mov ecx, dword ptr [eax + 8]
+006f918d ff5004               call dword ptr [eax + 4]
+006f9190 8b442404             mov eax, dword ptr [esp + 4]
+006f9194 50                   push eax
+006f9195 e822585000           call 0xbfe9bc
+006f919a 83c404               add esp, 4
+006f919d d944240c             fld dword ptr [esp + 0xc]
+006f91a1 83c408               add esp, 8
+006f91a4 c20800               ret 8
+006f91a7 8b442404             mov eax, dword ptr [esp + 4]
+006f91ab 85c0                 test eax, eax
+006f91ad 741e                 je 0x6f91cd
+006f91af ff08                 dec dword ptr [eax]
+006f91b1 8b442404             mov eax, dword ptr [esp + 4]
+006f91b5 833800               cmp dword ptr [eax], 0
+006f91b8 7513                 jne 0x6f91cd
+006f91ba 8b4808               mov ecx, dword ptr [eax + 8]
+006f91bd ff5004               call dword ptr [eax + 4]
+006f91c0 8b4c2404             mov ecx, dword ptr [esp + 4]
+006f91c4 51                   push ecx
+006f91c5 e8f2575000           call 0xbfe9bc
+006f91ca 83c404               add esp, 4
+006f91cd d905dcde2201         fld dword ptr [0x122dedc]
+006f91d3 83c408               add esp, 8
+006f91d6 c20800               ret 8

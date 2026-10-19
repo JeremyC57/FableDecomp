@@ -1,0 +1,38 @@
+{
+  "00a699d0": {
+    "root_checked_no_canonical_row": true,
+    "prior_cpp_placeholders_only": [
+      "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00a699d0.cpp",
+      "work/codex-lane/w22/agent202/differ/00a699d0.cpp"
+    ],
+    "reserved_uncertain": 4,
+    "max_new": 6
+  },
+  "006fa3f0": {
+    "root_checked_no_canonical_row": true,
+    "prior_cpp_placeholders_only": [
+      "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/006fa3f0.cpp",
+      "work/codex-lane/w22/agent202/differ/006fa3f0.cpp"
+    ],
+    "reserved_uncertain": 4,
+    "max_new": 6
+  },
+  "00820790": {
+    "root_checked_no_canonical_row": true,
+    "prior_cpp_placeholders_only": [
+      "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/00820790.cpp",
+      "work/codex-lane/w22/agent202/differ/00820790.cpp"
+    ],
+    "reserved_uncertain": 4,
+    "max_new": 6
+  },
+  "008209c0": {
+    "root_checked_no_canonical_row": true,
+    "prior_cpp_placeholders_only": [
+      "rebuild/candidates/manual/pending/2026-10-17_linux_hand202/differ/008209c0.cpp",
+      "work/codex-lane/w22/agent202/differ/008209c0.cpp"
+    ],
+    "reserved_uncertain": 4,
+    "max_new": 6
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "address": "00a65590",
+  "source": "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_01_001/source.cpp",
+  "sha256": "df5b60877261ebd2a5d0d46ca8b9038224a62f0c309d68dfc9923251d8b609c8",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+    "00a65590",
+    "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_01_001/source.cpp",
+    "ConsolidateAdjacentFreeAreas"
+  ],
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "log": "/workspace/FableDecomp/work/codex-lane/w22/astra241_whole/snapshots/00a65590_01_001/stdout.txt",
+  "status": "00a65590 ConsolidateAdjacentFreeAreas DIFFER(248v248) flags= []",
+  "kind": "source_grade"
+}

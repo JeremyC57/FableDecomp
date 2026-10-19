@@ -1,0 +1,41 @@
+# Retry201B native audit
+
+`logs/native-pe-audit.txt` records independent PE constant, import, RTTI/COL/base-descriptor reads. `logs/native-disassembly.txt` records native bodies/callees and boundaries. These are separate from q's relocation masking. PDB signature evidence below uses ghidra_out/fablewin_pdb_names.tsv; donor addresses are not native addresses.
+
+## 00404970
+
+Actual fable_string.h is retained. No CIMEFont header exists. Donor layout has Colour+4,Position+8,Height ulong+16, size20; native agrees. PDB18BCC20 `?GetFontNameAndScale@CIMEFont@NUISystem@@ABEXAAVCCharString@@AAM@Z` proves const, reference outputs. CIMEFont genuinely derives global class CImeUiFont_Base at offset0, donor/native base size4. Source now retains that real base with exactly five pure virtual methods and CIMEFont overrides. No base destructor is evidenced in PDB, and native slot0 is SetHeight, so no virtual destructor slot is added. PDB18BDCA0 identifies the real base default constructor; source leaves its implicit implementation (no fixture-added constructor). Retail font new20 emits only derived vptr initialization, consistent with an inlined base construction whose intermediate store is eliminated. Actual IMEUI_APPEARANCE.symbolFont has CImeUiFont_Base* type, now retained in source. Real SetHeight(unsigned int),SetColor(unsigned long),SetPosition(int,int),GetTextExtent(const wchar_t*,unsigned long*,unsigned long*),DrawTextW(const wchar_t*) match native VT122DCBC entries404940,404D20,404950,404F60,405020.
+
+0099EFE0 assignment unassigns previous storage and initializes narrow string; 0099F100 append preserves existing prefix and appends suffix. Actual shared header lacks narrow append; field-free NativeCharString member adapter retains actual storage and has zero pointer adjustment (native and full-width host fixture assertion). PDB2F619E0 `??YCCharString@@QAEABV0@PBD@Z` proves const CCharString& return and const char* argument. The adapter only declares the genuine missing member, not replica storage.
+
+Native literals122DCA8=ENG_ARIAL_,122DCA4=12,122DC9C=16,122DC94=18,122DC8C=24,122DC84=28. Float pools122DCA0=1/12,122DC98=1/16,122DC90=1/18,122DC88=1/24,122DC80=1/28;122DCB4=4294967296.0f for unsigned32 conversion. PE bytes retained. Fixtures cover every threshold and unsigned high values, preserving the font and real string lifetime/storage.
+
+## 00405650
+
+Actual fable_ime.h and fable_string.h retained. No CSystemManager/CDisplayManager headers exist anywhere under rebuild/include, including quarantine. The actual header has all64 appearance bytes. PDB IMEUI_APPEARANCE has symbolFont+16 and CIME.Appearance+12; native stores font atthis+28, not editBox_+76. Projection uses a real typed appearance view, without writing literal object bytes.
+
+Reset004051C0 is genuine nonvirtual CIME::Reset, missing from actual header; a field-free NativeCIME adapter preserves layout and zero adjustment. Native body resets prior IME and state, rather than manifest's unrelated allocator label. PDB18BD230 identifies Reset.
+
+Callback slots143CD64/143E514/143CF08/143CDFC/143E630 receive404D50/404A60/404A70/404E10/404F00 respectively. PDB18BCE50/18BD1E0/18BD200/18BCF10/18BD080 identifies DrawRect(int,int,int,int,unsigned long),malloc(unsigned int)->void*,free(void*),DrawFans(const IMEUI_VERTEX*,unsigned int),OnChar(wchar_t), all static fastcall. Callback_malloc genuinely calls mallocBFEA0E; callback_free calls freeBFEA14. The font allocation is separately operator newBFEA1A, size20, with VT122DCBC, not malloc or arraynew.
+
+ImeUi_InitializeCB5180 bool(HWND__*,bool), EnableImeCB5130 void(bool), FinalizeStringCB2C60 void(bool), SetAppearanceCB2E20 void(const IMEUI_APPEARANCE*), SetScreenDimensionCB2EE0 void(unsigned int,unsigned int). Native CB2EE0 stores ECX/EDX screen dimensions. The two bool arguments are genuine false. PDB357EE50/357ED50/3580DC0/3581110/3581520 supplies signatures. Native GFGetSystemManager9A4EC0 yields manager; display manager counted-pointer Data+60 matches donor layout.
+
+009BEDC0 genuine hidden-result ABI writes two dwords from display+194/198 through stack output address, returns that pointer in EAX, RET4. Source makes the implicit result explicit as C2DExtentsI* GetRenderTargetDimensions(C2DExtentsI&) const. This documents actual register/stack ABI without adding an invented value-type constructor. Fixture uses the exact output-pointer-returning projection on native and host. Named manager local reproduces native call before setting up the output argument.
+
+## 00542330
+
+Actual fable_string.h plus actual engine/_quarantine/CComponent.h and engine/CObserver.h retained unchanged. Header global donor aliases stay distinct from NUISystem's documented native projections: CComponent348->308 and CObserver24->20 reflect native STL containers. Other class headers (CIconText,CChangingStateComponent,CUIInterface,CActionParam,CBaseClass,CEnginePrimitiveHandle) do not exist.
+
+PE RTTI independently proves CIconText12470CC primary/CIconText12470A8 offset4/CIconText12470A0 offset24; hierarchy CIconText->CChangingStateComponent->CComponent->CUIInterface0,CObserver4,CActionParam24. Those are genuine polymorphic bases with virtual destructors, evidenced PDB2298450/2010580/1AAAEC9; source declares authentic destructor slots only, never fake vtable padding. Donor CObserver.EventsToObserve is16bytes versus retail12, giving native20-byte base. Native CChangingStateComponent is348 bytes with states at134 onward; Text15C,DisplayText160,PFont164/168,Unavailable16C,handles170/178,vectors180/18C,NoRender1B0.
+
+0052CC50 ctor stores VT1245DE4/DBC/DB4 whose RTTI identifies CChangingStateComponent; manifest CDraggableInto is wrong. 0099AED0 real CWideString default ctor clears storage and increments real instance counter13BCA20. CBaseClass ctor0099A2D0 stores VT1231710; real inline CEnginePrimitiveHandle ctor then stores own VT122F598 and clears Data. Handle RTTI confirms CEnginePrimitiveHandle->CBaseClass. UpdateFont00541FD0 is called after all initialization; native body looks up font and updates PFont. No constructor-body direct allocations. The fixture stubs exactly these existing declared dependencies, with no added constructors, and checks order B,S,S,H,H,U, font data, vector zeros, final Unavailable=false, three real base offsets and size1B4.
+
+## 009F52A0 parked
+
+PDB30D0AB0 confirms void Save(CAFile&). Actual fable_filesystem.h retains its incomplete statics-only CAFile declaration. Explicit separate native virtual view models authentic destructor/Open/Close/Read/Write slots0..4 from CDiskFileWin32 VT122D06C:4016B0/99A6A0/99A920/99A960/99AA90. PDB2FED1D0 Open(const CWideString&,FileAccessType,unsigned long),2FEDB60 Close(),2FEDBB0 Read(void*,long,CASuspendableProcess*),2FEDD B0 Write(const void*,long,CASuspendableProcess*) return void. Third parameter is explicitly0 at each native call, with no assumptions about unneeded defaults. Deriving from empty donor CAFile introduced a four-byte VC adjustment; best uses a separate genuine virtual view and explicit reinterpretation at the incoming address.
+
+CInputEvent copy009E4850 native copies complete52-byte event; destructorA03B30 empty; GFGetTime9E1BC0 double fastcall. Package native Events0,TimeStampC,Checksum10,Mouse20,Joystick28; donor vector extra allocator dword shifts later fields by4. Count is signed pointer difference by52. Metadata Write sizes4,4,16,8,8, then each copy's CurrentTime=0 and StartTime=float(GFGetTime()-double(original.StartTime)); originals remain unchanged. No modeled exception behavior. Best grade2 has all234 bytes except x87-store scheduling; capped after6 new plus4 uncertain. It is absent from payload and src.
+
+## Root155 production correction
+
+00404970 newgrade2/cumulative6 and00405650 newgrade5/cumulative9 retain actual CImeUiFont_Base hierarchy and pointer field, RELOCATION_MATCH unchanged. Both refreshed exact-source fixtures pass host98/O2 and VC/O2, assert zero base offset and exercise real base virtual SetHeight/SetColor/SetPosition dispatch; native retains base size4 and PMF4 assertions. logs/native-font-vt-signatures.txt records five native targets and exact donor PDB signature evidence. All earlier snapshots/hashes remain preserved.

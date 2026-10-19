@@ -1,0 +1,4 @@
+# Depth-packing lookup texture
+
+00b4f420 (231 bytes): native shadow/pixel/texture headers and justified CSurface virtual lifecycle view matching shared flattened fields. Main audited surface vtable0122f84c and deleting destructor0041c9c0, corrected propagated GetNoLevels/DoUnlock callee labels to surface retrieval/unlock using native COM slots18/14. The locked rectangle matches PDB dimensions/pitch/data. Builds 256-square RGBA8 texture, visits all65,536 pixels in row order with red/alpha0, green(row&~1), bluecolumn, then unlocks and uninitializes. Exact-source host and native fixture checks every pixel and API argument, stable surface/rectangle, call order and final cleanup. Observed new2 grades plus UNCERTAIN historical reservation4 (reserved6/10).
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

@@ -1,0 +1,380 @@
+[
+  {
+    "address": "00bfaae0",
+    "attempt": 5,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:33:07.164531+00:00",
+    "sha256": "77f2597d1f438e654a1a9abce9ec19178b6714aaf80cb077b478ceff6e868114",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfaae0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00bfaae0_5.cpp",
+      "??1CLocalDetailPrimitiveRepeatedMesh"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e33b00",
+    "attempt": 5,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:36:20.714074+00:00",
+    "sha256": "40c5447663f2b5d03bd5fbc80f38e021236248a8ff75f98d8f567255aa58351f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e33b00",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e33b00_5.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e7b970",
+    "attempt": 5,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:36:21.146692+00:00",
+    "sha256": "ac358c4d0f62facc76520560fdc3bd36bc16aa8f92ccf087eadcb56cbe459002",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e7b970",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e7b970_5.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e33b00",
+    "attempt": 6,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:36:31.556625+00:00",
+    "sha256": "c245d98c9e19e0535926dd5352b406ebf7e0637d4cfafc160b7fea2d496bc84f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e33b00",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e33b00_6.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e7b970",
+    "attempt": 6,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:36:31.841547+00:00",
+    "sha256": "899c246419ba12504af6ce85ec71ce757d7f99429e7e13d66f5c8bdd38424556",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e7b970",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e7b970_6.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e33b00",
+    "attempt": 7,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:36:56.663398+00:00",
+    "sha256": "47bd43c18f1beed95e7b62aedeae6ea4a08deea759d4f510935d8b50ad05c624",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e33b00",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e33b00_7.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e7b970",
+    "attempt": 7,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:36:56.921696+00:00",
+    "sha256": "9b21d8beb0fbb0f12a4529c75536b36a9241616476e2d4705176562d82d805c2",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e7b970",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e7b970_7.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e7b970",
+    "attempt": 8,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:37:07.026121+00:00",
+    "sha256": "ff58ec5f1db935d8cdd023d2fca5ab25983414185c3f8d6e385fc35740acb6cf",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e7b970",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e7b970_8.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e33b00",
+    "attempt": 8,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:37:51.320622+00:00",
+    "sha256": "8eb4a487ff3d29d26061e1377d4b957b102a94d546f4f6349f9c279cfbb88691",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e33b00",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e33b00_8.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e7b970",
+    "attempt": 9,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:37:51.684754+00:00",
+    "sha256": "7f1e99966389558024b9e9c92f2dfa4e7fd1f3dfc5a8b5e37dbbb8f7fa012070",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e7b970",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e7b970_9.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00873930",
+    "attempt": 5,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:40:32.391767+00:00",
+    "sha256": "70ae5479b563792f7632df1a1ebce7e3964c75c06d7e1a4ca9707a4a5a8c8388",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00873930",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00873930_5.cpp",
+      "Alloc"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00873930",
+    "attempt": 6,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:40:46.165001+00:00",
+    "sha256": "322db30cab6a4bbdcc35d11a87d65d7a4e0a241f18e731ddc8faea6d3a9c7156",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00873930",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00873930_6.cpp",
+      "Alloc"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00873930",
+    "attempt": 7,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:41:00.577528+00:00",
+    "sha256": "09a1753f7320cc812df48d61a46d43d04ebe390049b6e4a6a8a8f646c18035f1",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00873930",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00873930_7.cpp",
+      "Alloc"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00873930",
+    "attempt": 8,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:41:25.563709+00:00",
+    "sha256": "e7a724a66e32de9aefd3e939fd8753c7180185d9297452d044b2a0aec6ebae6b",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00873930",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00873930_8.cpp",
+      "Alloc"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00873930",
+    "attempt": 9,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:41:35.422144+00:00",
+    "sha256": "0e3399e995e60a5c18aeec816e2714cfabf97c0513a38a0771ae70e748ce52cd",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00873930",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00873930_9.cpp",
+      "Alloc"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00873930",
+    "attempt": 10,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:42:23.973582+00:00",
+    "sha256": "8c2bb06df091b21547158f452cc5bb9ac10991a5e1b95ceb21ab7289f05e8148",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00873930",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00873930_10.cpp",
+      "Alloc"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e33b00",
+    "attempt": 9,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:47:28.392435+00:00",
+    "sha256": "2429b188cb2fb3f25843016a6525473dc0cf1b759facd0ab9197da2f9d1a8171",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e33b00",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e33b00_9.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00e7b970",
+    "attempt": 10,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:47:28.667112+00:00",
+    "sha256": "4822422ea706a4e56488793ebef482963adf348c5b27d97ef63f968253cb7f77",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00e7b970",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202d_sol/snapshots/00e7b970_10.cpp",
+      "Main"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  }
+]

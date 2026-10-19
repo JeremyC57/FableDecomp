@@ -1,0 +1,10 @@
+# Script resets, follower cleanup and world queries
+
+Five parked Sol-only rows independently reviewed and byte-verified. Includes actual quarantined CThing header alongside documented retail views, genuine79-slot ScriptThing interface and actual shared script/player/world/event headers.32 masked body relocations checked against PE targets; emitted ScriptThing vtables checked against all79 native slots and PDB names.20 immutable pregrade snapshots/commands verified, four uncertain historical reservations retained per row. Observed grades2/2/5/5/6; root source grades0.
+
+008A6A20 ResetSeatName and008A77F0 ResetTargetingDistanceOffset preserve lookup and counted parameter lifetime. Root fixtures add owner replacement during GetThing, last-owner release during callback, and exact negative-zero/NaN/subnormal copying.008A7980 EntityStopFollowing uses the Followers list (not AIFollowers), ForceAIReset and event-type3 removal. Fixtures exercise guard combinations, callback-mutated event bits, captured follower identity and both sentinel paths.
+
+008A7E00 GetRandomThingWithScriptName and008A7F60 ForceShipsVisible retain native query definitions in the same translation unit for compiler escape analysis. Independently reviewed registry iteration/lifecycle mask, predicates, allocation growth, prefix copy, insert-before-free and final pointer publication against436AC0. Both use explicit leaf selection. Tests execute those exact query bodies, including lifecycle filtering, growth/preserved entries, callback mutation of iterator/sentinel, random seed/order, returned reference ownership, Bob visibility/death/component changes. Target random generator/seed/string/query callees independently confirmed.
+
+All five root exact-expanded-header fixtures pass C++98 O2 with and without copy elision and VC7.1 O2. Layout assertions retained on VC and disabled only on host. No shared-header changes.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

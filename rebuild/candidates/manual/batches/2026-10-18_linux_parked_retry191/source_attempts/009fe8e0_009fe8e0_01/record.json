@@ -1,0 +1,14 @@
+{
+  "address": "009fe8e0",
+  "source": "work/codex-lane/w22/astra239_whole/snapshots/009fe8e0_01/source.cpp",
+  "sha256": "eb9275d1483fd6479523ac74dbf88732a0dad46981b42fa277ac47ab25874e28",
+  "command": "timeout 200 python3 work/codex-lane/tools/q.py 009fe8e0 work/codex-lane/w22/astra239_whole/src/009fe8e0.cpp UnloadFrame",
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "log": "work/codex-lane/w22/astra239_whole/snapshots/009fe8e0_01/grade.log",
+  "status": "009fe8e0 UnloadFrame DIFFER(288v277) flags= []",
+  "kind": "source_grade"
+}

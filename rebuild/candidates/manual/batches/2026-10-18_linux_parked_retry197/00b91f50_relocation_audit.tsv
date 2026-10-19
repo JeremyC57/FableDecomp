@@ -1,0 +1,5 @@
+offset	native_target	symbol
+0000003b	00b919c0	?GetCellBoundingBoxAndDrawDistance@CEngineSceneGrid@@QAE_NAAUC3DBoundingBox@@AAMKK@Z
+0000005e	00b308e0	?ClipWorldSpaceBoundingBox@CEngineCameraMethods@@QBE_NABUC3DBoundingBox@@MAA_N@Z
+00000084	01436e84	?g_pEnginePrimitiveTypeInfo@@3PAUCEnginePrimitiveTypeInfo@@A
+000000e7	00b91f50	?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABUCEngineCamera@@K@Z

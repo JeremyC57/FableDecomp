@@ -1,0 +1,8 @@
+offset	native_target	symbol
+00000005	0099a310	??0NativeInitBaseClass@@QAE@XZ
+0000000b	0122ed70	?InitialPreloadTime@@3NB
+00000017	0122de50	??_7NativeDeviceResetCallback@@6B@
+0000001d	012a0f3c	??_7EngineNative@@6BCIEngineNative@@@
+00000024	012a0f30	??_7EngineNative@@6BNativeDeviceResetCallback@@@
+00000039	0122ed70	?InitialPreloadTime@@3NB
+000000d3	00a5c570	??0SimpleMemoryPoolNative@@QAE@KK@Z

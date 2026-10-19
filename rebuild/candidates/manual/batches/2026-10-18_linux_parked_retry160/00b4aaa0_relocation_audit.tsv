@@ -1,0 +1,12 @@
+offset	native_target	symbol
+0000000a	012a2308	??_7CEnginePrimitiveRenderer2D@@6B@
+0000000f	00b8fee0	?ClearPrimitiveList@@YIXPAUCEngineInternalPrimitiveBase@@@Z
+00000017	00b8fee0	?ClearPrimitiveList@@YIXPAUCEngineInternalPrimitiveBase@@@Z
+00000038	00bfe9bc	?FableOperatorDelete@@YAXPAX@Z
+00000060	00bfe9bc	?FableOperatorDelete@@YAXPAX@Z
+00000088	00bfe9bc	?FableOperatorDelete@@YAXPAX@Z
+000000b0	00bfe9bc	?FableOperatorDelete@@YAXPAX@Z
+000000d8	00bfe9bc	?FableOperatorDelete@@YAXPAX@Z
+000000f1	00b38930	?DestroyManagerRange@@YIXPAU?$CCountedPointer@UCEnginePrimitiveManager@@@@0PAUEmptyRangeTag@@@Z
+000000fe	00bfea14	?FableFree@@YAXPAX@Z
+00000108	00b59730	??1CEngineComponent@@UAE@XZ

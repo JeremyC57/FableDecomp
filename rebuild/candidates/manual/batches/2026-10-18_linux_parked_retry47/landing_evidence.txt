@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a361a0   RELOCATION_MATCH PASS   GetHelperPointPositionStatic
+
+WINS: 1
+  00a361a0 RELOCATION_MATCH C3DMeshObject::GetHelperPointPositionStatic
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DMeshObject_GetHelperPointPositionStatic_00a361a0

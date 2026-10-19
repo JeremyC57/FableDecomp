@@ -1,0 +1,114 @@
+['g++', '-std=c++98', '-O2', '-Wall', '-Wextra', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp', '-o', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/O2']
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:3: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+    3 | #pragma optimize("s", on)
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:4: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+    4 | #pragma optimize("y", off)
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:16:9: warning: #pragma once in main file
+   16 | #pragma once
+      |         ^~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp: In function ‘int main()’:
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:958:39: error: reference to ‘CComponent’ is ambiguous
+  958 |  componentTable[150].Drag=static_cast<CComponent::DraggedMethod>(&ComponentDouble::Drag);
+      |                                       ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:53:8: note: candidates are: ‘struct CComponent’
+   53 | struct CComponent;
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:854:8: note:                 ‘struct NUISystem::CComponent’
+  854 | struct CComponent {
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:958:49: error: expected ‘>’ before ‘::’ token
+  958 |  componentTable[150].Drag=static_cast<CComponent::DraggedMethod>(&ComponentDouble::Drag);
+      |                                                 ^~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:958:49: error: expected ‘(’ before ‘::’ token
+  958 |  componentTable[150].Drag=static_cast<CComponent::DraggedMethod>(&ComponentDouble::Drag);
+      |                                                 ^~
+      |                                                 (
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:958:51: error: ‘::DraggedMethod’ has not been declared
+  958 |  componentTable[150].Drag=static_cast<CComponent::DraggedMethod>(&ComponentDouble::Drag);
+      |                                                   ^~~~~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:958:89: error: expected ‘)’ before ‘;’ token
+  958 |  componentTable[150].Drag=static_cast<CComponent::DraggedMethod>(&ComponentDouble::Drag);
+      |                                                                                         ^
+      |                                                                                         )
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:959:38: error: reference to ‘CComponent’ is ambiguous
+  959 |  componentTable[175].Bar=static_cast<CComponent::ScrollBarMethod>(&ComponentDouble::Bar);
+      |                                      ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:53:8: note: candidates are: ‘struct CComponent’
+   53 | struct CComponent;
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:854:8: note:                 ‘struct NUISystem::CComponent’
+  854 | struct CComponent {
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:959:48: error: expected ‘>’ before ‘::’ token
+  959 |  componentTable[175].Bar=static_cast<CComponent::ScrollBarMethod>(&ComponentDouble::Bar);
+      |                                                ^~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:959:48: error: expected ‘(’ before ‘::’ token
+  959 |  componentTable[175].Bar=static_cast<CComponent::ScrollBarMethod>(&ComponentDouble::Bar);
+      |                                                ^~
+      |                                                (
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:959:50: error: ‘::ScrollBarMethod’ has not been declared
+  959 |  componentTable[175].Bar=static_cast<CComponent::ScrollBarMethod>(&ComponentDouble::Bar);
+      |                                                  ^~~~~~~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:959:89: error: expected ‘)’ before ‘;’ token
+  959 |  componentTable[175].Bar=static_cast<CComponent::ScrollBarMethod>(&ComponentDouble::Bar);
+      |                                                                                         ^
+      |                                                                                         )
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:960:39: error: reference to ‘CComponent’ is ambiguous
+  960 |  componentTable[33].Delta=static_cast<CComponent::ChangeVectorMethod>(&ComponentDouble::Delta);
+      |                                       ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:53:8: note: candidates are: ‘struct CComponent’
+   53 | struct CComponent;
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:854:8: note:                 ‘struct NUISystem::CComponent’
+  854 | struct CComponent {
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:960:49: error: expected ‘>’ before ‘::’ token
+  960 |  componentTable[33].Delta=static_cast<CComponent::ChangeVectorMethod>(&ComponentDouble::Delta);
+      |                                                 ^~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:960:49: error: expected ‘(’ before ‘::’ token
+  960 |  componentTable[33].Delta=static_cast<CComponent::ChangeVectorMethod>(&ComponentDouble::Delta);
+      |                                                 ^~
+      |                                                 (
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:960:51: error: ‘::ChangeVectorMethod’ has not been declared
+  960 |  componentTable[33].Delta=static_cast<CComponent::ChangeVectorMethod>(&ComponentDouble::Delta);
+      |                                                   ^~~~~~~~~~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:960:95: error: expected ‘)’ before ‘;’ token
+  960 |  componentTable[33].Delta=static_cast<CComponent::ChangeVectorMethod>(&ComponentDouble::Delta);
+      |                                                                                               ^
+      |                                                                                               )
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:963:38: error: reference to ‘CComponent’ is ambiguous
+  963 |  CHECK(sizeof(FixtureMethod)==sizeof(CComponent::DraggedMethod));CHECK(sizeof(FixtureMethod)==sizeof(CComponent::ScrollBarMethod));CHECK(sizeof(FixtureMethod)==sizeof(CComponent::ChangeVectorMethod));CHECK(sizeof(FixtureMethod)==sizeof(CScrollingViewport::SpeedMethod));CHECK(sizeof(FixtureMethod)==sizeof(CManager::EventMethod));
+      |                                      ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:956:26: note: in definition of macro ‘CHECK’
+  956 | #define CHECK(x) do{if(!(x)){printf("0041da2d_TEST FAIL line%d\n",__LINE__);return 1;}}while(0)
+      |                          ^
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:53:8: note: candidates are: ‘struct CComponent’
+   53 | struct CComponent;
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:854:8: note:                 ‘struct NUISystem::CComponent’
+  854 | struct CComponent {
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:963:102: error: reference to ‘CComponent’ is ambiguous
+  963 |  CHECK(sizeof(FixtureMethod)==sizeof(CComponent::DraggedMethod));CHECK(sizeof(FixtureMethod)==sizeof(CComponent::ScrollBarMethod));CHECK(sizeof(FixtureMethod)==sizeof(CComponent::ChangeVectorMethod));CHECK(sizeof(FixtureMethod)==sizeof(CScrollingViewport::SpeedMethod));CHECK(sizeof(FixtureMethod)==sizeof(CManager::EventMethod));
+      |                                                                                                      ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:956:26: note: in definition of macro ‘CHECK’
+  956 | #define CHECK(x) do{if(!(x)){printf("0041da2d_TEST FAIL line%d\n",__LINE__);return 1;}}while(0)
+      |                          ^
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:53:8: note: candidates are: ‘struct CComponent’
+   53 | struct CComponent;
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:854:8: note:                 ‘struct NUISystem::CComponent’
+  854 | struct CComponent {
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:963:168: error: reference to ‘CComponent’ is ambiguous
+  963 |  CHECK(sizeof(FixtureMethod)==sizeof(CComponent::DraggedMethod));CHECK(sizeof(FixtureMethod)==sizeof(CComponent::ScrollBarMethod));CHECK(sizeof(FixtureMethod)==sizeof(CComponent::ChangeVectorMethod));CHECK(sizeof(FixtureMethod)==sizeof(CScrollingViewport::SpeedMethod));CHECK(sizeof(FixtureMethod)==sizeof(CManager::EventMethod));
+      |                                                                                                                                                                        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:956:26: note: in definition of macro ‘CHECK’
+  956 | #define CHECK(x) do{if(!(x)){printf("0041da2d_TEST FAIL line%d\n",__LINE__);return 1;}}while(0)
+      |                          ^
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:53:8: note: candidates are: ‘struct CComponent’
+   53 | struct CComponent;
+      |        ^~~~~~~~~~
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll1/fixture.cpp:854:8: note:                 ‘struct NUISystem::CComponent’
+  854 | struct CComponent {
+      |        ^~~~~~~~~~

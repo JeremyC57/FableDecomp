@@ -1,0 +1,7 @@
+{
+  "kind": "PRECOMPILER_INFRASTRUCTURE_FAILURE",
+  "source_grades_added": 0,
+  "reason": "Runtime refresh ended reaper, leaving stale socket; explicit wrapper diagnostic returned ConnectionRefusedError. Land dry wrapper calls created no objects, no source or compiler flag change. Recovered only dead reaper connection; Wine server retained.",
+  "failed_log": "precompiler_wrapper_failure.log",
+  "same_source_retry_work": "land_work_recovered"
+}

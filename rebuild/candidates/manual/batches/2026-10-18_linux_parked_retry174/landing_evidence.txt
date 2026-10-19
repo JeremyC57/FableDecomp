@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00bfaba0   RELOCATION_MATCH PASS   AddObjectsToPrimitiveRenderer
+00bfacc0   RELOCATION_MATCH PASS   AddObjectsToPrimitiveRenderer
+00bf9cc0   RELOCATION_MATCH PASS   RelocateData
+
+WINS: 3
+  00bfaba0 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::?AddObjectsToPrimitiveRenderer@CLocalDetailPrimitiveRepeatedMesh@@
+  00bfacc0 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::?AddObjectsToPrimitiveRenderer@CLocalDetailPrimitiveMeshZSpriteBatch@@
+  00bf9cc0 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::?RelocateData@CLocalDetailPrimitiveRepeatedMesh@@
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CLocalDetailPrimitiveRepeatedMesh_AddObjectsToPrimitiveRenderer_00bfaba0
+  CLocalDetailPrimitiveMeshZSpriteBatch_AddObjectsToPrimitiveRenderer_00bfacc0
+  CLocalDetailPrimitiveRepeatedMesh_RelocateData_00bf9cc0

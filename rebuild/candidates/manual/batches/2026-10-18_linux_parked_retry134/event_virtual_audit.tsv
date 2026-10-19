@@ -1,0 +1,5 @@
+native_vtable	slot	native_method	type_value	event_class
+01274240	1	0084b070	3	CEventExpressionPerformedTo
+01274210	1	0084ae40	9	CEventReceivedMoney
+01253c8c	1	005bc3e3	40	CEventReceivedItemInInventory
+012723c0	1	00811ee0	26	CEventPerformedSpecialAbility

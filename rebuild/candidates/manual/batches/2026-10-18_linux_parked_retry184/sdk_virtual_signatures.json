@@ -1,0 +1,227 @@
+{
+  "slots": [
+    [
+      "??_7FixturePin@@6BIQualityControl@@@",
+      0,
+      "[thunk]: public: virtual long __stdcall CBasePin::QueryInterface`adjustor{4}'(struct GUID const &, void **)",
+      "[thunk]: public: virtual long __stdcall CDynamicOutputPin::QueryInterface`adjustor{4}'(struct GUID const &, void **)"
+    ],
+    [
+      "??_7FixturePin@@6BIQualityControl@@@",
+      1,
+      "[thunk]: public: virtual unsigned long __stdcall CBasePin::AddRef`adjustor{4}'(void)",
+      "[thunk]: public: virtual unsigned long __stdcall CDynamicOutputPin::AddRef`adjustor{4}'(void)"
+    ],
+    [
+      "??_7FixturePin@@6BIQualityControl@@@",
+      2,
+      "[thunk]: public: virtual unsigned long __stdcall CBasePin::Release`adjustor{4}'(void)",
+      "[thunk]: public: virtual unsigned long __stdcall CDynamicOutputPin::Release`adjustor{4}'(void)"
+    ],
+    [
+      "??_7FixturePin@@6BIQualityControl@@@",
+      3,
+      "public: virtual long __stdcall CBasePin::Notify(struct IBaseFilter *, struct Quality)",
+      "public: virtual long __stdcall CBasePin::Notify(struct IBaseFilter *, struct Quality)"
+    ],
+    [
+      "??_7FixturePin@@6BIQualityControl@@@",
+      4,
+      "public: virtual long __stdcall CBasePin::SetSink(struct IQualityControl *)",
+      "public: virtual long __stdcall CBasePin::SetSink(struct IQualityControl *)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      0,
+      "public: virtual long __stdcall CBasePin::QueryInterface(struct GUID const &, void **)",
+      "public: virtual long __stdcall CDynamicOutputPin::QueryInterface(struct GUID const &, void **)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      1,
+      "public: virtual unsigned long __stdcall CBasePin::AddRef(void)",
+      "public: virtual unsigned long __stdcall CDynamicOutputPin::AddRef(void)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      2,
+      "public: virtual unsigned long __stdcall CBasePin::Release(void)",
+      "public: virtual unsigned long __stdcall CDynamicOutputPin::Release(void)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      3,
+      "public: virtual long __stdcall CBasePin::Connect(struct IPin *, struct AM_MEDIA_TYPE const *)",
+      "public: virtual long __stdcall CBasePin::Connect(struct IPin *, struct AM_MEDIA_TYPE const *)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      4,
+      "public: virtual long __stdcall CBasePin::ReceiveConnection(struct IPin *, struct AM_MEDIA_TYPE const *)",
+      "public: virtual long __stdcall CBasePin::ReceiveConnection(struct IPin *, struct AM_MEDIA_TYPE const *)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      5,
+      "public: virtual long __stdcall CBasePin::Disconnect(void)",
+      "public: virtual long __stdcall CDynamicOutputPin::Disconnect(void)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      6,
+      "public: virtual long __stdcall CBasePin::ConnectedTo(struct IPin **)",
+      "public: virtual long __stdcall CBasePin::ConnectedTo(struct IPin **)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      7,
+      "public: virtual long __stdcall CBasePin::ConnectionMediaType(struct AM_MEDIA_TYPE *)",
+      "public: virtual long __stdcall CBasePin::ConnectionMediaType(struct AM_MEDIA_TYPE *)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      8,
+      "public: virtual long __stdcall CBasePin::QueryPinInfo(struct PIN_INFO *)",
+      "public: virtual long __stdcall CBasePin::QueryPinInfo(struct PIN_INFO *)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      9,
+      "public: virtual long __stdcall CBasePin::QueryDirection(enum PIN_DIRECTION *)",
+      "public: virtual long __stdcall CBasePin::QueryDirection(enum PIN_DIRECTION *)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      10,
+      "public: virtual long __stdcall CBasePin::QueryId(unsigned short **)",
+      "public: virtual long __stdcall CBasePin::QueryId(unsigned short **)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      11,
+      "public: virtual long __stdcall CBasePin::QueryAccept(struct AM_MEDIA_TYPE const *)",
+      "public: virtual long __stdcall CBasePin::QueryAccept(struct AM_MEDIA_TYPE const *)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      12,
+      "public: virtual long __stdcall CBasePin::EnumMediaTypes(struct IEnumMediaTypes **)",
+      "public: virtual long __stdcall CBasePin::EnumMediaTypes(struct IEnumMediaTypes **)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      13,
+      "public: virtual long __stdcall CBasePin::QueryInternalConnections(struct IPin **, unsigned long *)",
+      "public: virtual long __stdcall CBasePin::QueryInternalConnections(struct IPin **, unsigned long *)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      14,
+      "public: virtual long __stdcall CBasePin::EndOfStream(void)",
+      "public: virtual long __stdcall CBaseOutputPin::EndOfStream(void)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      15,
+      "public: virtual long __stdcall FixturePin::BeginFlush(void)",
+      "public: virtual long __stdcall CBaseOutputPin::BeginFlush(void)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      16,
+      "public: virtual long __stdcall FixturePin::EndFlush(void)",
+      "public: virtual long __stdcall CBaseOutputPin::EndFlush(void)"
+    ],
+    [
+      "??_7FixturePin@@6BIPin@@@",
+      17,
+      "public: virtual long __stdcall CBasePin::NewSegment(__int64, __int64, double)",
+      "public: virtual long __stdcall CBasePin::NewSegment(__int64, __int64, double)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      0,
+      "public: virtual long __stdcall CBasePin::NonDelegatingQueryInterface(struct GUID const &, void **)",
+      "public: virtual long __stdcall CDynamicOutputPin::NonDelegatingQueryInterface(struct GUID const &, void **)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      1,
+      "public: virtual unsigned long __stdcall CBasePin::NonDelegatingAddRef(void)",
+      "public: virtual unsigned long __stdcall CBasePin::NonDelegatingAddRef(void)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      2,
+      "public: virtual unsigned long __stdcall CBasePin::NonDelegatingRelease(void)",
+      "public: virtual unsigned long __stdcall CBasePin::NonDelegatingRelease(void)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      3,
+      "public: virtual void * __thiscall FixturePin::`vector deleting dtor'(unsigned int)",
+      "public: virtual void * __thiscall FixturePin::`vector deleting dtor'(unsigned int)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      4,
+      "public: virtual long __thiscall CBasePin::GetMediaTypeVersion(void)",
+      "public: virtual long __thiscall CBasePin::GetMediaTypeVersion(void)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      5,
+      "public: virtual long __thiscall CBasePin::Active(void)",
+      "public: virtual long __thiscall CDynamicOutputPin::Active(void)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      6,
+      "public: virtual long __thiscall CBasePin::Inactive(void)",
+      "public: virtual long __thiscall CDynamicOutputPin::Inactive(void)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      7,
+      "public: virtual long __thiscall CBasePin::Run(__int64)",
+      "public: virtual long __thiscall CBasePin::Run(__int64)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      8,
+      "public: virtual long __thiscall FixturePin::CheckMediaType(struct CMediaType const *)",
+      "public: virtual long __thiscall FixturePin::CheckMediaType(struct CMediaType const *)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      9,
+      "public: virtual long __thiscall CBasePin::SetMediaType(struct CMediaType const *)",
+      "public: virtual long __thiscall CBasePin::SetMediaType(struct CMediaType const *)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      10,
+      "public: virtual long __thiscall CBasePin::CheckConnect(struct IPin *)",
+      "public: virtual long __thiscall CBaseOutputPin::CheckConnect(struct IPin *)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      11,
+      "public: virtual long __thiscall CBasePin::BreakConnect(void)",
+      "public: virtual long __thiscall CBaseOutputPin::BreakConnect(void)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      12,
+      "public: virtual long __thiscall CBasePin::CompleteConnect(struct IPin *)",
+      "public: virtual long __thiscall CDynamicOutputPin::CompleteConnect(struct IPin *)"
+    ],
+    [
+      "??_7FixturePin@@6BCUnknown@@@",
+      13,
+      "public: virtual long __thiscall CBasePin::GetMediaType(int, struct CMediaType *)",
+      "public: virtual long __thiscall CBasePin::GetMediaType(int, struct CMediaType *)"
+    ]
+  ],
+  "scope": "37 emitted FixturePin slots checked against reviewed175 SDK hierarchy prefixes; owner-only override normalization; std::bad_alloc belongs to compiler library. No production native vtable emitted (SDK abstract novtable)."
+}

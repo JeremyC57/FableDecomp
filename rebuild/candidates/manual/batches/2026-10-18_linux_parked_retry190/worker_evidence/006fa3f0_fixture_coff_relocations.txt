@@ -1,0 +1,336 @@
+
+/workspace/FableDecomp/work/codex-lane/w22/retry202h_sol/snapshots/006fa3f0_fixture_events1/native.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CEvent@NAnimationEvents@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??2@YAPAXIPAX@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000f DISP32            _malloc
+0000001b DISP32            _abort
+00000021 dir32             _arrayAllocs
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_U@YAPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a dir32             _nullDeletes
+00000011 dir32             _arrayFrees
+00000016 dir32             _watching
+0000001f dir32             _arrayFrees
+00000026 dir32             _nonNullDeletes
+0000002f dir32             _nonNullDeletes
+00000036 dir32             _clearDirty
+0000003f dir32             _manager
+0000004c DISP32            _free
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_V@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _sortCalls
+00000007 dir32             _manager
+00000015 dir32             _good
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?SortEventPairs@NAnimationEvents@@YIXPAUEventPair@1@0UKeyPairCompareLess@1@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_H@YGXPAXIHP6EPAX0@Z@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?same@@YA_NABUCEvent@NAnimationEvents@@0@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??_V@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1EventVector@NAnimationEvents@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000000a DISP32            ?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Find@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000016 DISP32            ?SortEventPairs@NAnimationEvents@@YIXPAUEventPair@1@0UKeyPairCompareLess@1@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Sort@EventMap@NAnimationEvents@@QAEXXZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000005 DISP32            ??_V@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1EventPair@NAnimationEvents@@QAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000003 dir32             _allocCalls
+00000011 dir32             _allocCalls
+00000016 DISP32            ??_V@YAXPAX@Z
+00000033 DISP32            _malloc
+0000003f DISP32            _abort
+00000045 dir32             _arrayAllocs
+00000052 dir32             _arrayAllocs
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Allocate@EventVector@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000003 dir32             _copyCalls
+00000011 dir32             _copyCalls
+00000016 DISP32            ??_V@YAXPAX@Z
+00000032 DISP32            _malloc
+0000003e DISP32            _abort
+00000044 dir32             _arrayAllocs
+00000054 dir32             _arrayAllocs
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _resizeCalls
+0000001b dir32             _resizeCalls
+00000028 DISP32            _malloc
+00000036 DISP32            _abort
+0000003c dir32             _arrayAllocs
+0000004a dir32             _arrayAllocs
+00000074 dir32             _nullDeletes
+0000007c dir32             _arrayFrees
+00000082 dir32             _watching
+0000008b dir32             _arrayFrees
+00000093 dir32             _nonNullDeletes
+0000009d dir32             _nonNullDeletes
+000000a5 dir32             _clearDirty
+000000af dir32             _manager
+000000b9 DISP32            _free
+000000c1 dir32             _mutateInput
+000000cf dir32             _input
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?resize@EventVector@NAnimationEvents@@QAEXJABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000008 DISP32            ??_V@YAXPAX@Z
+00000019 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GEventPair@NAnimationEvents@@QAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000001d DISP32            ?Allocate@EventVector@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0EventVector@NAnimationEvents@@QAE@KABUCEvent@1@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000016 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0EventVector@NAnimationEvents@@QAE@ABU01@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000013 DISP32            ?resize@EventVector@NAnimationEvents@@QAEXJABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?push_back@EventVector@NAnimationEvents@@QAEXABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000001f DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0EventPair@NAnimationEvents@@QAE@KABUEventVector@1@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000002 dir32             _pushCalls
+00000014 dir32             _pushCalls
+0000001b DISP32            _abort
+00000040 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?PushBack@EventMap@NAnimationEvents@@QAEXABUEventPair@2@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000028 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+0000002e dir32             _pushCalls
+0000003d dir32             _pushCalls
+00000044 DISP32            _abort
+00000068 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+0000007b DISP32            ??_V@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?Insert@EventMap@NAnimationEvents@@QAEXKABUEventVector@2@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000013 DISP32            ?LowerBound@EventMap@NAnimationEvents@@QAEPAUEventPair@2@ABK@Z
+00000049 DISP32            ?Allocate@EventVector@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+00000056 DISP32            ?Insert@EventMap@NAnimationEvents@@QAEXKABUEventVector@2@@Z
+00000060 DISP32            ??_V@YAXPAX@Z
+0000007a DISP32            ?SortEventPairs@NAnimationEvents@@YIXPAUEventPair@1@0UKeyPairCompareLess@1@@Z
+0000009f DISP32            ?resize@EventVector@NAnimationEvents@@QAEXJABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?AddEventToAnim@CManager@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000001d dir32             _manager
+00000023 dir32             _input
+00000073 DISP32            _malloc
+00000079 dir32             _allocCalls
+0000007f dir32             _nullDeletes
+000000b9 dir32             _allocCalls
+000000bf dir32             _nullDeletes
+000000c4 DISP32            _malloc
+000000df dir32             _arrayAllocs
+000000f9 dir32             _arrayAllocs
+00000126 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+00000155 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+00000184 DISP32            ?Copy@EventVector@NAnimationEvents@@QAEXABU12@@Z
+0000018a dir32             _arrayFrees
+0000018f dir32             _watching
+00000198 dir32             _arrayFrees
+0000019f dir32             _nonNullDeletes
+000001a8 dir32             _nonNullDeletes
+000001af dir32             _clearDirty
+000001b8 dir32             _manager
+000001c2 DISP32            _free
+00000212 dir32             _nonNullDeletes
+00000218 dir32             _sortCalls
+0000021e dir32             _pushCalls
+00000224 dir32             _resizeCalls
+0000022a dir32             _copyCalls
+00000230 dir32             _allocCalls
+00000236 dir32             _clearDirty
+0000023c dir32             _mutateInput
+00000242 dir32             _watching
+00000248 DISP32            ?AddEventToAnim@CManager@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+00000257 dir32             _watching
+00000264 dir32             _pushCalls
+00000279 dir32             _resizeCalls
+0000028e dir32             _allocCalls
+00000299 dir32             _copyCalls
+000002c3 dir32             _sortCalls
+000003df dir32             _nullDeletes
+000003e7 dir32             _arrayFrees
+000003ed dir32             _watching
+000003f6 dir32             _arrayFrees
+000003fe dir32             _nonNullDeletes
+00000408 dir32             _nonNullDeletes
+00000410 dir32             _clearDirty
+0000041a dir32             _manager
+00000424 DISP32            _free
+0000043f DISP32            _free
+00000470 DISP32            _abort
+00000495 DISP32            _malloc
+000004db dir32             _clearDirty
+000004e2 dir32             _mutateInput
+000004e8 DISP32            ?AddEventToAnim@CManager@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+0000057a dir32             _sortCalls
+0000057f DISP32            ?AddEventToAnim@CManager@NAnimationEvents@@QAEXKABUCEvent@2@@Z
+00000594 dir32             _sortCalls
+000005c0 dir32             _nullDeletes
+000005c8 dir32             _arrayFrees
+000005ce dir32             _watching
+000005d7 dir32             _arrayFrees
+000005df dir32             _nonNullDeletes
+000005e9 dir32             _nonNullDeletes
+000005f1 dir32             _clearDirty
+000005fb dir32             _manager
+00000605 DISP32            _free
+00000623 DISP32            _free
+00000629 dir32             _arrayAllocs
+0000062e dir32             _arrayFrees
+0000063b dir32             _good
+00000642 dir32             ??_C@_0BD@CBHLLAGL@006fa3f0_TEST?5PASS?$AA@
+00000647 DISP32            _puts
+0000066c dir32             ??_C@_0BL@OEMEELNK@006fa3f0_TEST?5FAIL?5line?$CFd?6?$AA@
+00000671 DISP32            _printf

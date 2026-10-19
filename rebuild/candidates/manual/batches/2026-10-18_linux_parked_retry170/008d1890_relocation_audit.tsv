@@ -1,0 +1,11 @@
+offset	native_target	symbol
+0000000c	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+0000001b	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+0000002d	013b89fc	?QuestManager@@3PAUQuestManagerNative@@A
+00000064	00a01b50	?GetPItem@CBaseIntelligentPointer@@QBEPAUCBaseObject@@XZ
+00000081	004365b0	?LowerBound@ComponentMap@@QBEPBUComponentEntry@@ABJ@Z
+000000c1	008d4ed0	?GetEvent@EntityEventsMethods@@QBE_NPAPBUHitByEvent@@ABUBind3@@@Z
+000000d3	00810fc0	?GetPHitBy@HitEventBase@@QBEPAUCThingNative@@XZ
+000000da	004c7e50	?GetScriptThing@CThingNative@@QBE?AUScriptMethods@@XZ
+000000ea	013b89fc	?QuestManager@@3PAUQuestManagerNative@@A
+000000f7	00704730	?GetNullScriptThing@GameScriptThingManager@@QAE?AUScriptMethods@@XZ

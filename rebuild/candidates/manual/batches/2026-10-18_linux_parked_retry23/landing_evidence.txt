@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00ac1160   RELOCATION_MATCH PASS   GetMap
+
+WINS: 1
+  00ac1160 RELOCATION_MATCH C3DMeshFileMaterialChunk::GetMap
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  C3DMeshFileMaterialChunk_GetMap_00ac1160

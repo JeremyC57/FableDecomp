@@ -1,0 +1,17 @@
+{
+  "address": "00418b7a",
+  "status": "RELOCATION_MATCH",
+  "length": 193,
+  "historical_uncertain": 4,
+  "new_grades": 4,
+  "cumulative": 8,
+  "source_sha256": "d3187c69c5a27d057fa5eb083b8e66ea4da622a3fa4aab5582a44002e1fb0d5b",
+  "fixture_sha256": "5f56fc2d6f4752eb0d569957d6e40e8972a6382dd4821c1a96ff30c29a81ebaf",
+  "tests": [
+    "host C++98 O2 PASS",
+    "host C++98 O2 no-elide PASS",
+    "native VC7.1 O2 PASS"
+  ],
+  "evidence": "evidence/00418b7a_relocation_audit.json",
+  "limits": "Exact candidate destructor executes. External resource destructors and Shutdown are stubs.96 fixture combinations: Quit false/true x16 nullable scoped resource combinations x3 null/exclusive/shared counted-owner states; checks all destructor ordering, control-block refs0/callback4/data8 release, final callbacks, genuine copied Init strings, both interface dispatches, base completion. CMain constructor signature genuine CGame&,const Init& and CGameComponent(CGame&) base; actual CGame:CInitBaseClass:CBaseClass default constructor and callback default constructor; by-value members CNetworkClient and DiskFile restore actual hierarchy/default ctors and complete native2/15 slots; FrameRateSmoother has actual CInitBaseClass hierarchy/default ctor/two slots; native RTTI+COFF slots audited. Deleted World/Player/GameInterface pointer types are destructor-only interface views; fixture doubles represent pre-existing external objects and do not claim full native constructors/layout. Display pointer view has native3-slot hierarchy. Native actual header assertions remain; host uses full pointer widths."
+}

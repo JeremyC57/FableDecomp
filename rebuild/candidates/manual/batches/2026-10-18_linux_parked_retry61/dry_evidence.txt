@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b92450   RELOCATION_MATCH PASS   DeleteOcclusionGroup
+00b936e0   RELOCATION_MATCH PASS   CheckVisibilityResults
+
+WINS: 2
+  00b92450 RELOCATION_MATCH CEngineSceneGridCell::DeleteOcclusionGroup
+  00b936e0 RELOCATION_MATCH CEngineSceneGridCell::CheckVisibilityResults

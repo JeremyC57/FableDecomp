@@ -1,0 +1,475 @@
+[
+  {
+    "address": "008d3250",
+    "attempt": 1,
+    "sha256": "33c072b2ccbf11398b1f0b5b15f21f50ccf73cb9f39c6b6065cac7ad0d6e0fd1",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3250 work/codex-lane/w22/astra239_whole/probe/008d3250_v01.cpp MsgHitEnemyWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3250_01"
+  },
+  {
+    "address": "008d3250",
+    "attempt": 2,
+    "sha256": "89f98f9ee9e3a0a5787fd799db0fbc14a5a4ed01b5dcecfcfcf06bfecb45d9ab",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3250 work/codex-lane/w22/astra239_whole/probe/008d3250_v02.cpp MsgHitEnemyWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3250_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "73636ea62566a00d3a56d0ed4f6b9ac569a904e6c292a96581ca28a82a1fa344",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3250 work/codex-lane/w22/astra239_whole/src/008d3250.cpp MsgHitEnemyWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "actual const LowerBound; base intelligent pointer return+typed adapter; full event virtual hierarchy and enum return",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3250_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 4,
+    "sha256": "093cb986f318da4fd440d6ab027e016229be4e6743c49147deb9d40f916e5d93",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3250 work/codex-lane/w22/astra239_whole/src/008d3250.cpp MsgHitEnemyWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine EventBase and concrete event constructor declarations",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3250_04"
+  },
+  {
+    "snapshot": 5,
+    "source_grade": 5,
+    "sha256": "e180096afba057ee9285d309c8f040bf8bfe7f9c2f1405cffa6041db2699a680",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3250 work/codex-lane/w22/astra239_whole/src/008d3250.cpp MsgHitEnemyWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine nested CBaseIntelligentPointer default constructor declaration",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3250_05"
+  },
+  {
+    "address": "008d3350",
+    "attempt": 1,
+    "sha256": "64f5379d0ec04ba5a13392c5b88b78b9c1c85e4132889f84a5996b3d56929026",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3350 work/codex-lane/w22/astra239_whole/probe/008d3350_v01.cpp MsgHitFriendWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3350_01"
+  },
+  {
+    "snapshot": 2,
+    "source_grade": 2,
+    "sha256": "7212fb70f3ad27c99e964d778ae120751f97adc3df98f899fa5db24357a7850a",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3350 work/codex-lane/w22/astra239_whole/src/008d3350.cpp MsgHitFriendWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "actual const LowerBound; base intelligent pointer return+typed adapter; full event virtual hierarchy and enum return",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3350_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "0f724d82a2dcebd39d5c3fcd5dbb09add70f2582292aea94536fc6c11c023e0a",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3350 work/codex-lane/w22/astra239_whole/src/008d3350.cpp MsgHitFriendWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine EventBase and concrete event constructor declarations",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3350_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 4,
+    "sha256": "05504e356b366dc808c608e43bb2540adfe8faee3469a77d4a90b78412c31314",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3350 work/codex-lane/w22/astra239_whole/src/008d3350.cpp MsgHitFriendWithMeleeWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine nested CBaseIntelligentPointer default constructor declaration",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3350_04"
+  },
+  {
+    "address": "008d3450",
+    "attempt": 1,
+    "sha256": "27a921265c628923362100dd05fbaf396a6509f5a45ed8548c586174e42e18fd",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3450 work/codex-lane/w22/astra239_whole/probe/008d3450_v01.cpp MsgHitEnemyWithRangedWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3450_01"
+  },
+  {
+    "snapshot": 2,
+    "source_grade": 2,
+    "sha256": "99ba150f459f69f1636afe64ffcc9348039d26c80a45d0d9fff464b460fccf19",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3450 work/codex-lane/w22/astra239_whole/src/008d3450.cpp MsgHitEnemyWithRangedWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "actual const LowerBound; base intelligent pointer return+typed adapter; full event virtual hierarchy and enum return",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3450_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "0e3a981d14dd004a8cd86d2dbd176504888e8bcdfa7cd8f065c8175cdad19268",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3450 work/codex-lane/w22/astra239_whole/src/008d3450.cpp MsgHitEnemyWithRangedWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine EventBase and concrete event constructor declarations",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3450_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 4,
+    "sha256": "3692fe7e67eed51f9df2445cfc55dd3c78a434870dce197bbb38fb816c5fc7aa",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3450 work/codex-lane/w22/astra239_whole/src/008d3450.cpp MsgHitEnemyWithRangedWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine nested CBaseIntelligentPointer default constructor declaration",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3450_04"
+  },
+  {
+    "address": "008d3550",
+    "attempt": 1,
+    "sha256": "498a0db7c1674fa7f6165fb2f708dd6c2974b716b66509e9680a7c7d6e19be2d",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3550 work/codex-lane/w22/astra239_whole/probe/008d3550_v01.cpp MsgHitFriendWithRangedWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3550_01"
+  },
+  {
+    "snapshot": 2,
+    "source_grade": 2,
+    "sha256": "77c13a84f1757bb08bc5eb1768851710d2d8778d7f0b0fd3642dd0fc2ab7cf91",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3550 work/codex-lane/w22/astra239_whole/src/008d3550.cpp MsgHitFriendWithRangedWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "actual const LowerBound; base intelligent pointer return+typed adapter; full event virtual hierarchy and enum return",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3550_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "b18593ea568b082fea920688217be1a4e4ea3a047f3a89be75006708f88c5441",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3550 work/codex-lane/w22/astra239_whole/src/008d3550.cpp MsgHitFriendWithRangedWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine EventBase and concrete event constructor declarations",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3550_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 4,
+    "sha256": "c68bb057e08cea4d846e43d1e1a0333b26dd94e30f420dafd11fb00930876add",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3550 work/codex-lane/w22/astra239_whole/src/008d3550.cpp MsgHitFriendWithRangedWeapon",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine nested CBaseIntelligentPointer default constructor declaration",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3550_04"
+  },
+  {
+    "address": "008d3650",
+    "attempt": 1,
+    "sha256": "15264199661f4c2e21feaac508383bef0b25fa175d32ad4c87335907f1bf0b98",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3650 work/codex-lane/w22/astra239_whole/probe/008d3650_v01.cpp MsgHitEnemyWithBareHands",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3650_01"
+  },
+  {
+    "snapshot": 2,
+    "source_grade": 2,
+    "sha256": "ea68bd2cf59a40ffa20a7f55ecc4dec1ce3a3f7a8548f738b3b4238d863f6c36",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3650 work/codex-lane/w22/astra239_whole/src/008d3650.cpp MsgHitEnemyWithBareHands",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "actual const LowerBound; base intelligent pointer return+typed adapter; full event virtual hierarchy and enum return",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3650_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "d37ed198390eb846ace4b1ff0c157afc3b4371d3424c76795bb77f77239d209d",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3650 work/codex-lane/w22/astra239_whole/src/008d3650.cpp MsgHitEnemyWithBareHands",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine EventBase and concrete event constructor declarations",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3650_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 4,
+    "sha256": "29782ecb20d3dab323bca9c497c24e08665da6e7b835cf416f4e90ce94b942c9",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3650 work/codex-lane/w22/astra239_whole/src/008d3650.cpp MsgHitEnemyWithBareHands",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine nested CBaseIntelligentPointer default constructor declaration",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3650_04"
+  },
+  {
+    "address": "008d3750",
+    "attempt": 1,
+    "sha256": "9de3350e1dd983a53f61954cdfa0cdc13c8542c9a2af11b28c66637b1130d2d2",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3750 work/codex-lane/w22/astra239_whole/probe/008d3750_v01.cpp MsgHitFriendWithBareHands",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3750_01"
+  },
+  {
+    "snapshot": 2,
+    "source_grade": 2,
+    "sha256": "bfa40ea2bbbb290eb959f01daf60fb3d829e990313c4f68a3e7073140be8d4d0",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3750 work/codex-lane/w22/astra239_whole/src/008d3750.cpp MsgHitFriendWithBareHands",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "actual const LowerBound; base intelligent pointer return+typed adapter; full event virtual hierarchy and enum return",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3750_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "044d7e858dbc32fca8cad7330586d93d47f22a63541825e41dc08cb1dbfe0e1a",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3750 work/codex-lane/w22/astra239_whole/src/008d3750.cpp MsgHitFriendWithBareHands",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine EventBase and concrete event constructor declarations",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3750_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 4,
+    "sha256": "377a1db145bd4e9734d28dfdc761e9a8f36f4e036fb99aa5dad390303fd6edaa",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3750 work/codex-lane/w22/astra239_whole/src/008d3750.cpp MsgHitFriendWithBareHands",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine nested CBaseIntelligentPointer default constructor declaration",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3750_04"
+  },
+  {
+    "address": "008d3af0",
+    "attempt": 1,
+    "sha256": "196dc165b4d2197b49fb3422d646ca8081a3fe8ca2a8c0d888d02dc26c20b18d",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3af0 work/codex-lane/w22/astra239_whole/probe/008d3af0_v01.cpp MsgOnMoralityChanged",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3af0_01"
+  },
+  {
+    "attempt": 2,
+    "note": "comment correction only, conservatively counted",
+    "sha256": "f214eb54b6878afd744426beeecf4af5c5dfc17e6da6f38c8659302a31da1a5e",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3af0 work/codex-lane/w22/astra239_whole/src/008d3af0.cpp MsgOnMoralityChanged",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "count_correction": {
+      "counted": false,
+      "kind": "metadata-only verification",
+      "noncomment_sha256": "088a23f2fe8c54322510db13b0f894158387ca037887b24b108691b100efabc0",
+      "identical_noncomment_text": true,
+      "identical_flags": true,
+      "total_source_grades": 1
+    },
+    "counted": false,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3af0_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 2,
+    "sha256": "4e364cf07fddfbc68feb6256969d3280e6de82a202a3c41875625c21c92a74c7",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3af0 work/codex-lane/w22/astra239_whole/src/008d3af0.cpp MsgOnMoralityChanged",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "actual const LowerBound; base intelligent pointer return+typed adapter; full event virtual hierarchy and enum return",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3af0_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 3,
+    "sha256": "d34263ebe2a2993e9697c1b18b969da7e85f4c4091698d68d98cfbcbe24a3a78",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3af0 work/codex-lane/w22/astra239_whole/src/008d3af0.cpp MsgOnMoralityChanged",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine EventBase and concrete event constructor declarations",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3af0_04"
+  },
+  {
+    "snapshot": 5,
+    "source_grade": 4,
+    "sha256": "c45d1f95c0ae6c3a1f1382661a4d5a21f28f8e86132df076e3a459c9cb614411",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3af0 work/codex-lane/w22/astra239_whole/src/008d3af0.cpp MsgOnMoralityChanged",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine nested CBaseIntelligentPointer default constructor declaration",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3af0_05"
+  },
+  {
+    "attempt": 1,
+    "sha256": "5838f79ce4a2dc0e6940194192faf18418fe1e12d1eb613a1bb29167727e1d96",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3bf0 work/codex-lane/w22/astra239_whole/probe/008d3bf0_v01.cpp MsgOnCutSceneAnimEvent",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3bf0_01"
+  },
+  {
+    "snapshot": 2,
+    "source_grade": 2,
+    "sha256": "210a666becdfaf4ca5dd71af7c3cfe6257ec50e7aee87e62366ac1a7eb8f43e3",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3bf0 work/codex-lane/w22/astra239_whole/src/008d3bf0.cpp MsgOnCutSceneAnimEvent",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "actual const LowerBound; base intelligent pointer return+typed adapter; full event virtual hierarchy and enum return",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3bf0_02"
+  },
+  {
+    "snapshot": 3,
+    "source_grade": 3,
+    "sha256": "7f9bf792ff9c13b0201ee5288d7c0986f179cb53e322d3524df6c21d6de1dfdd",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3bf0 work/codex-lane/w22/astra239_whole/src/008d3bf0.cpp MsgOnCutSceneAnimEvent",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine EventBase and concrete event constructor declarations",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3bf0_03"
+  },
+  {
+    "snapshot": 4,
+    "source_grade": 4,
+    "sha256": "c92f1cacb6d1a7debde7bc91a2b9dc54ed39a9a366aca8a86197125d3b677626",
+    "command": "timeout 200 python3 work/codex-lane/tools/q.py 008d3bf0 work/codex-lane/w22/astra239_whole/src/008d3bf0.cpp MsgOnCutSceneAnimEvent",
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ],
+    "reason": "genuine nested CBaseIntelligentPointer default constructor declaration",
+    "counted": true,
+    "snapshot_path": "work/codex-lane/w22/astra239_whole/snapshots/008d3bf0_04"
+  }
+]

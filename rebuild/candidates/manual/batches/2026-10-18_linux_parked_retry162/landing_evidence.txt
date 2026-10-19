@@ -1,0 +1,11 @@
+addr       parity           behav  name
+006448a4   RELOCATION_MATCH PASS   Draw
+00644424   RELOCATION_MATCH PASS   Draw
+
+WINS: 2
+  006448a4 RELOCATION_MATCH NPlayerGui_CDrawMorality::Draw
+  00644424 RELOCATION_MATCH NPlayerGui_CDrawSpiritScores::Draw
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawMorality_Draw_006448a4
+  NPlayerGuiCDrawSpiritScores_Draw_00644424

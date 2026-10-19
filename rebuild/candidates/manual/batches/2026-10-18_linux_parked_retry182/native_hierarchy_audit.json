@@ -1,0 +1,76 @@
+{
+  "0x129b860": [
+    [
+      ".?AVCMovableResource@@",
+      0
+    ]
+  ],
+  "0x12a8014": [
+    [
+      ".?AVCLandscapeBackgroundSubNodeBase@@",
+      0
+    ],
+    [
+      ".?AVCMovableResource@@",
+      0
+    ]
+  ],
+  "0x12a803c": [
+    [
+      ".?AVCLandscapeBackgroundPatch@@",
+      0
+    ],
+    [
+      ".?AVCLandscapeBackgroundSubNodeBase@@",
+      0
+    ],
+    [
+      ".?AVCMovableResource@@",
+      0
+    ]
+  ],
+  "0x12a8228": [
+    [
+      ".?AVCEngineLandscapeFreeableResource@@",
+      0
+    ],
+    [
+      ".?AVCMovableResource@@",
+      0
+    ]
+  ],
+  "0x12a8240": [
+    [
+      ".?AVCLandscapeBackgroundTreeNode@@",
+      0
+    ],
+    [
+      ".?AVCEngineLandscapeFreeableResource@@",
+      0
+    ],
+    [
+      ".?AVCMovableResource@@",
+      0
+    ]
+  ],
+  "0x12a8334": [
+    [
+      ".?AVCEngineWaterBackgroundSubPatch@@",
+      0
+    ],
+    [
+      ".?AVCMovableResource@@",
+      0
+    ]
+  ],
+  "0x12a7df0": [
+    [
+      ".?AVCQuadTreeElement@CLocalDetailCacheMap@@",
+      0
+    ],
+    [
+      ".?AVCMovableResource@@",
+      0
+    ]
+  ]
+}

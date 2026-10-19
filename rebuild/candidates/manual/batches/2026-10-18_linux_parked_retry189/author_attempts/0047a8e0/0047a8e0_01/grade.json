@@ -1,0 +1,1 @@
+{"snapshot": 1, "source_grade": 1, "sha256": "d1f6e414e640f26731a1aeb79ac12b8247f7e5d0dae4aa50d5cc981836566078", "command": "timeout 200 python3 work/codex-lane/tools/q.py 0047a8e0 work/codex-lane/w22/astra239_whole/src/0047a8e0.cpp AddObjectiveToQuest", "effective_flags": ["/O2", "/Oy", "/W3"]}

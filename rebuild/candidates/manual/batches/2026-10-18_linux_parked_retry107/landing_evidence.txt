@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00896d20   RELOCATION_MATCH PASS   KickOffDeathScreen
+
+WINS: 1
+  00896d20 RELOCATION_MATCH CGameScriptInterface::KickOffDeathScreen
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_KickOffDeathScreen_00896d20

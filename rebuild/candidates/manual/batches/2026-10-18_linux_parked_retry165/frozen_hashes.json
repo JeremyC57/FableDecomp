@@ -1,0 +1,13 @@
+[
+  {
+    "address": "0064f6dc",
+    "src": {
+      "path": "work/codex-lane/w22/astra235_whole/src/0064f6dc.cpp",
+      "sha256": "8d9a8a52dd8a81a25d8231bf35fac8c8bd0c68e9439021b13dc58e2b27cb4b24"
+    },
+    "test": {
+      "path": "work/codex-lane/w22/astra235_whole/test/0064f6dc.cpp",
+      "sha256": "8d4b3e08c05802efe24bbf16abf07c903cf3a87407b52041d20328bc2ac53bce"
+    }
+  }
+]

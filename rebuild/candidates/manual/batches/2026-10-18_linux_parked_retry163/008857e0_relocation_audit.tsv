@@ -1,0 +1,4 @@
+offset	native_target	symbol
+00000021	008854a0	?InterpolateRadialBlurParams@CEnvironmentSpellEffectInterface@@SI?AUCBlurParams@@MABU2@0@Z
+00000035	00885680	?InterpolateRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@SI?AUCBlurPositionParams@@MABU2@0@Z
+00000106	00885a80	??0CIDrawEnvironmentRadialBlurParameters@@QAE@ABU0@@Z

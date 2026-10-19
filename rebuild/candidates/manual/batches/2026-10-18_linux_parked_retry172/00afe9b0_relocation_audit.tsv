@@ -1,0 +1,4 @@
+offset	native_target	symbol
+0000004e	00afe910	?resize@NestedIDs@@QAEXKABUPrimitiveIDs@@@Z
+00000080	004428f0	?resize@PrimitiveIDs@@QAEXKABJ@Z
+000000ad	00443f90	?resize@Handles@@QAEXK@Z

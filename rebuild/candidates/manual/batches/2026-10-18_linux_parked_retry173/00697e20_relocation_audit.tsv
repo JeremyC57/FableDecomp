@@ -1,0 +1,9 @@
+offset	native_target	symbol
+0000001c	0084d0a0	?Die@CBase@NCameraModes@@QAEXXZ
+0000002a	0084cf80	?TransferPersistantBaseData@CBase@NCameraModes@@QAEXABU12@@Z
+00000031	0084e110	?Init@CBase@NCameraModes@@QAEXXZ
+0000005e	00bfe9bc	??3@YAXPAX@Z
+0000009d	00bfe9bc	??3@YAXPAX@Z
+000000c3	013b86a0	?gModeGlobalRoot@@3PAUCModeGlobalRoot@@A
+000000eb	00697860	?TellEngineThatCameraHasMoved@CGameCameraManager@@QAEX_N@Z
+00000100	00bfe9bc	??3@YAXPAX@Z

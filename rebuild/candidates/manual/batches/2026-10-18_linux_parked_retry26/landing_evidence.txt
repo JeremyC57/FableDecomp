@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0041bf60   MATCH            PASS   CEnginePrimitive2DSprite
+0043fa20   MATCH            PASS   CEnginePrimitive2DSprite
+0041beb0   MATCH            PASS   CEnginePrimitive2DSprite
+
+WINS: 3
+  0041bf60 MATCH CEnginePrimitive2DSprite::??0CEnginePrimitive2DSprite
+  0043fa20 MATCH CEnginePrimitive2DSprite::??0CEnginePrimitive2DSprite
+  0041beb0 MATCH CEnginePrimitive2DSprite::??0CEnginePrimitive2DSprite
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitive2DSprite_CEnginePrimitive2DSprite_0041bf60
+  CEnginePrimitive2DSprite_CEnginePrimitive2DSprite_0043fa20
+  CEnginePrimitive2DSprite_CEnginePrimitive2DSprite_0041beb0

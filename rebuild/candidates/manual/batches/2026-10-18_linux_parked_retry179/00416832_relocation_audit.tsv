@@ -1,0 +1,16 @@
+offset	native_target	symbol
+0000000b	0122edd4	??_C@_09OKIOEAGL@Init?5Text?$AA@
+00000013	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+00000019	0122dee0	__real@bf800000
+00000029	009e9f40	?DisplayProgress@NProgressDisplay@@YIXABUCCharString@@M_N1@Z
+00000031	0099eae0	??1CCharString@@QAE@XZ
+0000003b	00bfea1a	??2@YAPAXI@Z
+00000047	009c85a0	??0CDataBank@NGameText@@QAE@XZ
+00000056	00403e40	?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z
+0000005d	0122edc0	??_C@_0BC@PDODNNOC@Opening?5Text?5Bank?$AA@
+00000065	0099ebf0	??0CCharString@@QAE@PBDJ@Z
+0000006b	0122dee0	__real@bf800000
+0000007b	009e9f40	?DisplayProgress@NProgressDisplay@@YIXABUCCharString@@M_N1@Z
+00000083	0099eae0	??1CCharString@@QAE@XZ
+00000094	00415260	?GetFontBankName@NLocalisation@@YI?AUCCharString@@XZ
+000000a2	0099eae0	??1CCharString@@QAE@XZ

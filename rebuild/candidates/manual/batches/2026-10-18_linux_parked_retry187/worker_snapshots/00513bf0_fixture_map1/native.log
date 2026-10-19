@@ -1,0 +1,6 @@
+['/nologo', '/c', '/O2', '/W3', '/Fo/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/native.obj', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/00513bf0_fixture_map1/fixture.cpp']
+Traceback (most recent call last):
+  File "/workspace/FableDecomp/work/wine-repair/reaper/wine-reaped", line 4, in <module>
+    s=socket.socket(socket.AF_UNIX);s.connect(str(Path(__file__).resolve().parent/'wine.sock'));s.sendall(json.dumps({'args':sys.argv[1:],'environment':dict(os.environ),'cwd':os.getcwd()}).encode()+b'\n');s.shutdown(socket.SHUT_WR)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted

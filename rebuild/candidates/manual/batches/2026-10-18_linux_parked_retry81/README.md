@@ -1,0 +1,8 @@
+# Persistent script save compression and retrieval
+
+00522530 (194 bytes) validates the game-persistent index and record, resizes output and decompresses only a positive saved size. 00523860 (173) resizes the record array to max(existing,index+1), stores the uncompressed size, optionally compresses, then marks the record valid. Zero-size writes retain existing packed storage, matching native. Actual CCharString and CCompressorZlib headers are included; documented native views preserve12-byte vectors versus16-byte donor vectors and24-byte script records.
+
+Main audited full caller bodies, compressor constructor/init/destructor, all8 PE virtual-table slots and emitted COFF relocations. InternalCompress/InternalDecompress are nonvirtual; derived const-input public overloads create new slots5–7 after the nonconst base methods. Earlier incorrect two-slot models are superseded. Base deleting destructor9C6F40 releases workspace then ABase cleanup99A2E0; the caller invokes the correct complete derived destructorA3ACC0.
+
+Verbatim-source host-O2/native fixtures check invalid/negative indices, valid positive/zero-size saves, byte arguments/output, construction and cleanup order, record growth/preservation, zero-size storage retention, native offsets, and re-reading saved size after output-resize callbacks. Retrieval retains native success even if decompression returns failure. Tests stub compression to test caller behavior; no end-to-end zlib validation claimed. New grades5/4 plusUNCERTAIN historical reservation4 each.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

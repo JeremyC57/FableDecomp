@@ -1,0 +1,380 @@
+[
+  {
+    "address": "0089cd70",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:16:25.331492+00:00",
+    "sha256": "844488e05d8e7dd700093a9c1a517ac1b65de13dfc71d57a5e8342d29f3c2ca1",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089cd70",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089cd70_1.cpp",
+      "CanThingBe_Heard_ByOtherThing"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089cd70",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:16:33.022911+00:00",
+    "sha256": "e5e1845395cf72251b3e40793160605b5483586590249e885f9601d935d60817",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089cd70",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089cd70_2.cpp",
+      "CanThingBe_Heard_ByOtherThing"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008986d0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:20:12.257629+00:00",
+    "sha256": "70ea2b6140d62afb8dd513937f1c5aa50e1bc4285e6d6d39abb9d6f24b4eea18",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008986d0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008986d0_1.cpp",
+      "ConfiscateAllHeroItems"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00898840",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:20:12.570887+00:00",
+    "sha256": "01dbaa9807c9bd4f4400ba88030e78dd4df03f7d3d338d2c2797af926d85f4fc",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00898840",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00898840_1.cpp",
+      "ConfiscateItemsOfTypeFromHero"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008986d0",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:20:35.238594+00:00",
+    "sha256": "6109635897bb123a35de49c39a81202bc74eb3792efb028b208b4b028fe63a1f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008986d0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008986d0_2.cpp",
+      "ConfiscateAllHeroItems"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00898840",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:20:35.790957+00:00",
+    "sha256": "2cc4da049f6a2077bc22be224a164f8790414026db8f54e9dad991e72c14aa83",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00898840",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00898840_2.cpp",
+      "ConfiscateItemsOfTypeFromHero"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008986d0",
+    "attempt": 3,
+    "prior": 0,
+    "utc": "2026-10-18T21:20:51.380984+00:00",
+    "sha256": "b6592d0147dd035218836e15522b032cc280b7dbc7d13c8d24bb165c6d0fb801",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008986d0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008986d0_3.cpp",
+      "ConfiscateAllHeroItems"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00898840",
+    "attempt": 3,
+    "prior": 0,
+    "utc": "2026-10-18T21:20:51.714925+00:00",
+    "sha256": "c45b57f727cf25299e4ac7ea462c7e9dd8d0f356419f6d086caa96388e283528",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00898840",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00898840_3.cpp",
+      "ConfiscateItemsOfTypeFromHero"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008976f0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:22:12.157849+00:00",
+    "sha256": "73fa8ab82aacf1a9f31eca39503a9f9a98fa195f3e2c047a8711f225da7dcf73",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008976f0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008976f0_1.cpp",
+      "EntityGetThingInPrimarySlot"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089faa0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:23:37.956928+00:00",
+    "sha256": "1401df5eeb3d3487b27ebb6aa7fb96f114621a0d91e02545dca934c40b750f53",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089faa0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089faa0_1.cpp",
+      "CreateLight"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089faa0",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:23:46.098575+00:00",
+    "sha256": "f6ca3513981ccfb0725631a5e3d64e7244e0690dd00e8119ec9b52098262cc34",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089faa0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089faa0_2.cpp",
+      "CreateLight"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00895ed0",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:28:05.319004+00:00",
+    "sha256": "de7590f41a2dc0c61a1174e22db293fb133015d8b80558e0c4098fe7ba9298d9",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00895ed0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00895ed0_1.cpp",
+      "SetHouseOwnedByPlayer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00898940",
+    "attempt": 1,
+    "prior": 0,
+    "utc": "2026-10-18T21:33:53.229439+00:00",
+    "sha256": "113d4aa5472b0a8d36351a0e9f7637465f170951b2dc0a093519f51cf8b8cdf7",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00898940",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00898940_1.cpp",
+      "CGameScriptInterface_ReturnAllConfiscatedItemsToHero"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008986d0",
+    "attempt": 4,
+    "prior": 0,
+    "utc": "2026-10-18T21:40:42.309578+00:00",
+    "sha256": "7fe65a3969acc198143403594955f1db7f8c061b9522e722097441ad9b0ecc87",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008986d0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008986d0_4.cpp",
+      "CGameScriptInterface_ConfiscateAllHeroItems"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00898840",
+    "attempt": 4,
+    "prior": 0,
+    "utc": "2026-10-18T21:40:42.639086+00:00",
+    "sha256": "00837e905d719fd94dafdfcba2651d46467b13da820d5fb2b1d54c79b14efe48",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00898840",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00898840_4.cpp",
+      "CGameScriptInterface_ConfiscateItemsOfTypeFromHero"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00895ed0",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:41:11.856127+00:00",
+    "sha256": "cf00983102a18986b186c35fdc1f48bb1c96e90bb74198d603c20a4832256806",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00895ed0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/00895ed0_2.cpp",
+      "CGameScriptInterface_SetHouseOwnedByPlayer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "008976f0",
+    "attempt": 2,
+    "prior": 0,
+    "utc": "2026-10-18T21:41:24.994086+00:00",
+    "sha256": "4e307091d2d9d2fbf090fded442516aab92e394675417e61833da833f602d328",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "008976f0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/008976f0_2.cpp",
+      "CGameScriptInterface_EntityGetThingInPrimarySlot"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "0089faa0",
+    "attempt": 3,
+    "prior": 0,
+    "utc": "2026-10-18T21:41:48.875518+00:00",
+    "sha256": "a4b29848cd09c6f71419a7be6b183b8f4dbb39e9e217e32f919e12050d52296a",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "0089faa0",
+      "/workspace/FableDecomp/work/codex-lane/w22/astra238_whole/snapshots/0089faa0_3.cpp",
+      "CGameScriptInterface_CreateLight"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  }
+]

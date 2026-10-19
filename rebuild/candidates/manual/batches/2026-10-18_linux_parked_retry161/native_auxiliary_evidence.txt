@@ -1,0 +1,1 @@
+VT1238C6C RTTI .?AV?$CIntelligentPointer@VCThing@@@@, dtor4A9710. PhysicsVT125D2C4slot63=6B1230 baseanglezero. Tolerance129BA3C exact38D1B717. BaseIntelligent ctorA01B10 zeroInfo/vptr129C95C; nativeGet/Set/dtor inspected directly.

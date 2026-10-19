@@ -1,0 +1,24 @@
+{
+  "address": "009ff440",
+  "author_grades": 4,
+  "root_grade": 1,
+  "cumulative": 5,
+  "source": "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009ff440.cpp",
+  "sha256": "f546eced78c1560bbe296639d5dd31bd09ead873ec7a273d19db7c1861fa9a75",
+  "command": [
+    "timeout",
+    "200",
+    "python3",
+    "work/codex-lane/tools/q.py",
+    "009ff440",
+    "work/codex-lane/w22/coordinator_retry193/root_amendments/src/009ff440.cpp",
+    "InitFrames"
+  ],
+  "effective_flags": [
+    "/O2",
+    "/Oy",
+    "/W3"
+  ],
+  "reason": "Include actual available CBankFile donor header alongside descriptive native bank projection, as required by session rules; source algorithm unchanged.",
+  "utc": "2026-10-19T01:38:44.434003+00:00"
+}

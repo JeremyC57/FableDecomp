@@ -1,0 +1,5 @@
+008e7cf0 OnDeactivate SRC_FAIL flags= []
+008e7cf0.cpp
+Z:\workspace\FableDecomp\work\codex-lane\wine\q\008e7cf0\008e7cf0.cpp(117) : error C2039: 'PEnvironment' : is not a member of 'CWorld'
+        Z:\workspace\FableDecomp\rebuild\include\engine\CWorld.h(38) : see declaration of 'CWorld'
+Z:\workspace\FableDecomp\work\codex-lane\wine\q\008e7cf0\008e7cf0.cpp(117) : error C2227: left of '->TransitionToDefaultThemeAllChannels' must point to class/struct/union

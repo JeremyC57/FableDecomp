@@ -1,0 +1,12 @@
+# Packed bits, particle arrays, cache headers and definition assignments
+
+A62B70 corrected grade9: actual const input and const CountBits method. All33 native low-bit masks independently verified; fixtures exercise widths0..32, random values, bias underflow, signed stride and boundary values.
+
+AE1030 corrected grade4: genuine C4DVector(const C3DVector&,float default0) and both SetParticles/AllocateArrays memory-pool reference signatures restored after root PDB review. Caller ignores allocator bool as native does, preserves repeated Size reads and input mutation. Fixtures check three position copies, zero acceleration/W, alphas, empty input, allocator size/input changes and valid storage despite false return. Allocation exhaustion beyond that precondition is not covered.
+
+BDE190 corrected grade4: true nested owner and CMemoryDataInputStream& argument with actual owner/memory/base headers. Explicit native projection restores pointer+0C and base inheritance; RTTI proves MemoryDataInputStream→DataInputStream→DataStream→NonCopyable→BaseClass. Real sphere default constructor zeros four floats. Fixtures cover fast40-byte read and fallback, target-field copy, Loading/other fields preserved. Invalid stream ranges leave native local fields undefined; no invented fallback result is tested. No full-engine object construction claim.
+
+460657 grade1 and471A77 grade1: definition assignment methods with actual headers and native packed parent39/vector12/list4 projections. Root checks parent/typed-container callees and native element sizes4/24/80. Fixtures verify member call ordering, all scalar fields, self assignment and destination vptr preservation; opinion fixture tests all2048 combinations of11 flags. Container dependency doubles validate caller behavior; full container allocation/integration is outside these fixtures.
+
+All five final sources independently pass VC7.1 production-byte checks, native fixtures and expanded actual-source host C++98/O2/no-elide. Root verifies22 masked operands,33 masks, genuine PDB signatures/math constructors, memory-stream RTTI and19 immutable worker grades. Original pre-correction source/fixture hashes and grade snapshots remain preserved. Root observer now selects the exact function's COFF section: BDE190 has a separate Read section with the same relocation count, so the old longest-relocation heuristic selected the wrong section; corrected operand87 targets993CA0.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

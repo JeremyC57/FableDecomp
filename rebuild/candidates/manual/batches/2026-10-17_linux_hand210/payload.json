@@ -1,0 +1,22 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00519b80",
+    "module": "CRegion",
+    "name": "operator=",
+    "source_cpp": "// CRegion::operator=(const CRegion&) -- assign all region state and retain the shared region definition\n// Retail 0x00519B80 length 195; helper assignments are the retail STLport/string routines.\nstruct CLongVector { long* first; long* finish; long* last; CLongVector& operator=(const CLongVector&); };\nstruct CCharString { void* data; CCharString& operator=(const CCharString&); };\nstruct CDefPointee { virtual void v0(); virtual void v1(); long refs; };\nstruct CDefPointer { CDefPointee* Object; CDefPointer& operator=(const CDefPointer& o) { if(Object!=o.Object) { if(Object) { CDefPointee* old=Object; if(--old->refs==0) old->v1(); Object=0; } Object=o.Object; if(Object) ++Object->refs; } return *this; } };\nstruct C2DVector { float X,Y; };\nstruct CExitTextOffsetMap { void* header; long count; long compare; CExitTextOffsetMap& operator=(const CExitTextOffsetMap&); };\nstruct CRegion {\n CLongVector Maps,VisMaps; CCharString Name,DisplayName,RegionDefName; CDefPointer PDef; CCharString MiniMapGraphic; float MiniMapScale; C2DVector MiniMapOffset; CExitTextOffsetMap MiniMapRegionExitTextOffsets; C2DVector WorldMapOffset,NameGraphicOffset; unsigned char AppearOnWorldMap,CreatureGenerationEnabled,SoundThemesEnabled;\n __declspec(dllexport) CRegion& operator=(const CRegion&);\n};\nCRegion& CRegion::operator=(const CRegion& o) {\n Maps=o.Maps; VisMaps=o.VisMaps; Name=o.Name; DisplayName=o.DisplayName; RegionDefName=o.RegionDefName;\n PDef=o.PDef; MiniMapGraphic=o.MiniMapGraphic; MiniMapScale=o.MiniMapScale; MiniMapOffset=o.MiniMapOffset;\n MiniMapRegionExitTextOffsets=o.MiniMapRegionExitTextOffsets; WorldMapOffset=o.WorldMapOffset; NameGraphicOffset=o.NameGraphicOffset;\n AppearOnWorldMap=o.AppearOnWorldMap; CreatureGenerationEnabled=o.CreatureGenerationEnabled; SoundThemesEnabled=o.SoundThemesEnabled;\n return *this;\n}\n",
+    "test_cpp": "#include <cstdio>\nstruct R { int x[8]; unsigned char a,b,c; };\nint main(){ R a={{1,2,3,4,5,6,7,8},1,0,1}, b={{0}}; for(int i=0;i<8;++i)b.x[i]=a.x[i]; b.a=a.a;b.b=a.b;b.c=a.c; if(b.x[6]!=7||b.a!=1||b.c!=1){std::printf(\"00519b80_TEST FAIL\\n\");return 1;} std::printf(\"00519b80_TEST PASS\\n\");return 0; }\n",
+    "pass_pattern": "00519b80_TEST PASS"
+   },
+   {
+    "address": "0051a900",
+    "module": "CRegion",
+    "name": "CRegion",
+    "source_cpp": "// CRegion::CRegion(const CRegion&) -- copy region vectors, strings, definition pointer, map and scalar settings\n// Retail 0x0051A900 length 166; retail STLport vectors are 12 bytes and the map copy is out of line.\nstruct CLongVector { long* first; long* finish; long* last; CLongVector(const CLongVector&); };\nstruct CCharString { void* data; CCharString(const CCharString&); };\nstruct CDefPointee { virtual void v0(); virtual void v1(); long refs; };\nstruct CDefPointer { CDefPointee* Object; CDefPointer(const CDefPointer& o):Object(o.Object) { if(Object) ++Object->refs; } };\nstruct C2DVector { float X,Y; };\nstruct CExitTextOffsetMap { void* header; long count; long compare; CExitTextOffsetMap(const CExitTextOffsetMap&); };\nstruct CRegion {\n CLongVector Maps,VisMaps; CCharString Name,DisplayName,RegionDefName; CDefPointer PDef; CCharString MiniMapGraphic; float MiniMapScale; C2DVector MiniMapOffset; CExitTextOffsetMap MiniMapRegionExitTextOffsets; C2DVector WorldMapOffset,NameGraphicOffset; unsigned char AppearOnWorldMap,CreatureGenerationEnabled,SoundThemesEnabled;\n __declspec(dllexport) CRegion(const CRegion&);\n};\nCRegion::CRegion(const CRegion& o):Maps(o.Maps),VisMaps(o.VisMaps),Name(o.Name),DisplayName(o.DisplayName),RegionDefName(o.RegionDefName),PDef(o.PDef),MiniMapGraphic(o.MiniMapGraphic),MiniMapScale(o.MiniMapScale),MiniMapOffset(o.MiniMapOffset),MiniMapRegionExitTextOffsets(o.MiniMapRegionExitTextOffsets),WorldMapOffset(o.WorldMapOffset),NameGraphicOffset(o.NameGraphicOffset),AppearOnWorldMap(o.AppearOnWorldMap),CreatureGenerationEnabled(o.CreatureGenerationEnabled),SoundThemesEnabled(o.SoundThemesEnabled) {}\n",
+    "test_cpp": "#include <cstdio>\nstruct R { int x[8]; unsigned char a,b,c; };\nint main(){ R a={{1,2,3,4,5,6,7,8},1,0,1}, b={{0}}; for(int i=0;i<8;++i)b.x[i]=a.x[i]; b.a=a.a;b.b=a.b;b.c=a.c; if(b.x[3]!=4||b.a!=1||b.c!=1){std::printf(\"0051a900_TEST FAIL\\n\");return 1;} std::printf(\"0051a900_TEST PASS\\n\");return 0; }\n",
+    "pass_pattern": "0051a900_TEST PASS"
+   }
+  ]
+ }
+}

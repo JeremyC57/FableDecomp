@@ -1,0 +1,9 @@
+offset	native_target	symbol
+00000068	00bfd388	$L806
+0000006f	00bfd37c	$L808
+00000075	01436e54	?gWaterRenderer@@3PAUCWaterRendererNative@@A
+00000083	01436e54	?gWaterRenderer@@3PAUCWaterRendererNative@@A
+00000090	00be3910	?TesselatePatch@CWaterTessellator@@QAE_NPAUCTesselationData@@PAUCMovableResource@@@Z
+000000ec	00bfd303	$L778
+000000f0	00bfd311	$L780
+000000f4	00bfd324	$L775

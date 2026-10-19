@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00d3ab00   RELOCATION_MATCH PASS   GetEndCutscene
+006b9560   RELOCATION_MATCH PASS   SaveGameState
+
+WINS: 2
+  00d3ab00 RELOCATION_MATCH CFH_Prisoner::GetEndCutscene
+  006b9560 RELOCATION_MATCH CFactionManager::SaveGameState
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CFHPrisoner_GetEndCutscene_00d3ab00
+  CFactionManager_SaveGameState_006b9560

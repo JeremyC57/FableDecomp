@@ -1,0 +1,29 @@
+slot	base_target	betting_target	corrected_prototype
+0	00687050	007e5920	~CTCBase()
+1	00686960	00686960	void OnSerialise(CPersistContext&,bool)
+2	006867f0	006867f0	void OnRemove()
+3	00686840	00686840	void ConstructFromParams(const CTCParamsBase&)
+4	00686850	00686850	void OnCreate()
+5	00686860	00686860	void InitialActivate()
+6	00686870	00686870	void OnInitialActivate()
+7	00686880	00686880	void RenderUpdate(float)
+8	00686890	007e5910	bool HasFrameUpdate()const
+9	006868a0	007e4e30	void FrameUpdate()
+10	006868b0	006868b0	void BulletTimeFrameUpdate()
+11	006868c0	007e5680	void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&)
+12	006868d0	006868d0	void Copy(const CTCBase&)
+13	006868e0	006868e0	void OnDie()
+14	006868f0	006868f0	void OnKill()
+15	00686900	00686900	void OnLevelUnload()
+16	00686910	00686910	void OnSetInLimbo(bool)
+17	00686920	00686920	bool Validate(CCharString&)const
+18	00686930	00686930	bool IsFreeForDeletion()const
+19	00686940	00686940	bool IsSerialiseCreatable()const
+20	00686950	00686950	bool IsSerialisableForHeroState()const
+21	00bfea08	007e58e0	ETCInterfaceType GetInterfaceType()const
+22	00bfea08	007e58f0	CCharString GetClassTypeName()const
+23	00686970	00686970	bool IsComponentSerialisable()const
+24	00686980	00686980	bool IsDriver()const
+25	00686990	00686990	bool IsCopyable()const
+26	006869a0	006869a0	void GlobalUpdate(bool)
+27	006869b0	006869b0	void HandleMessage(const NTCMessages::CMessageBase&)

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00bfbf40   RELOCATION_MATCH PASS   Resize
+00bfbe40   RELOCATION_MATCH PASS   Resize
+00bfc040   RELOCATION_MATCH PASS   Resize
+009beaa0   RELOCATION_MATCH[/GS] PASS   SetGamma
+
+WINS: 4
+  00bfbf40 RELOCATION_MATCH CEdgeStipVertexArray<CFanBaseVertex>::Resize
+  00bfbe40 RELOCATION_MATCH CEdgeStipVertexArray<CVertex>::Resize
+  00bfc040 RELOCATION_MATCH CEdgeStipVertexArray<CWaterVertex>::Resize
+  009beaa0 RELOCATION_MATCH[/GS] CDisplayManager::SetGamma

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+009d52d0   RELOCATION_MATCH PASS   SetupBuffer
+
+WINS: 1
+  009d52d0 RELOCATION_MATCH CBankFileAsyncData::SetupBuffer

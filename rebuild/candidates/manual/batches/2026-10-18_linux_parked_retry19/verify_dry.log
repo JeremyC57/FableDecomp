@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b86b00   RELOCATION_MATCH PASS   SetEffectQuality
+00b91dc0   RELOCATION_MATCH PASS   GetCellRenderMask
+
+WINS: 2
+  00b86b00 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::SetEffectQuality
+  00b91dc0 RELOCATION_MATCH CEngineSceneGrid::GetCellRenderMask

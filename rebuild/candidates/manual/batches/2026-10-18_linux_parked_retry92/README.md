@@ -1,0 +1,6 @@
+# Restore camera mode defaults and reset subcomponents
+
+0084dfe0 (194 bytes): native callers and donor PDB identify NCameraModes::CBase::Reset, correcting the propagated FirstPerson::OnDie label. Copies all fourteen camera words, restores six velocity components, FOV defaults, physics-culling flags, roll and observed-position offsets before invoking the counted subcomponent Reset traversal. Native physics lists occupy four bytes versus the donor's twelve; manager SingleCut is native+b0 versus donor+bc. Actual manager header retained with a documented native data view.
+
+Main expanded the actual header into the fixture, checked native field offsets, and independently passed optimized host and canonical VC7.1 byte/behavior checks. Fixture covers nonempty/empty ranges, copied camera contents, reset-before-callback, preserved positions/acceleration and repeated calls. RELOCATION_MATCH callee0084F280 is the audited counted-pointer for_each Reset specialization. Four new authored grades plus UNCERTAIN historical reservation4; identical-source checks are separate verification.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

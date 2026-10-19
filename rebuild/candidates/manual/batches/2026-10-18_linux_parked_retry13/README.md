@@ -1,0 +1,5 @@
+# Parked-row retry batch 13
+
+00c09920 is a checked auto-delete pointer accessor, 186 bytes, using descriptive owner/name CAutoDeletePointer::GetChecked. The propagated CWorldManager::OnShutdown label is unsupported: caller 00c08f0d uses a stack wrapper and passes the returned pointer onward, while sibling 00c099f0 logs the same PKCAutoDelete.h assertion and clears the wrapper before returning its old pointer. No vtable ownership reference or matching class header exists. The behavior is diagnostic logging for a null stored pointer, followed by returning the stored pointer.
+
+Recovered with /EHsc, which emits local stream cleanup. The self-contained actual-source fixture checks non-null access without side effects, null access with/without the global reporter, the full diagnostic, and report/stream-destruction/break order. Host g++ and independent canonical VC7.1/Wine checks pass. The dry-run log still shows stale payload module metadata; it was corrected to match the already-renamed source before landing, without changing source or test. Final results: landing_evidence.txt.

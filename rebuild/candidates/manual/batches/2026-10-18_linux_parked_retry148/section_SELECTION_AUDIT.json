@@ -1,0 +1,54 @@
+{
+  "00ce6b10": [
+    {
+      "path": "work/codex-lane/w22/retry196_200/best/00ce6b10.cpp",
+      "sha256": "e9712c661a117c2e067af2619d9d3ada2a2dd92be6528399986095d255f30b44",
+      "placeholder_only": true,
+      "length": 192
+    },
+    {
+      "path": "work/codex-lane/w22/retry196_200/wine/q/00ce6b10/00ce6b10.cpp",
+      "sha256": "1da7c6ed430770f93a23f1b783511547112ee023b867043725f722adb2a3f846",
+      "placeholder_only": true,
+      "length": 191
+    },
+    {
+      "path": "work/codex-lane/w22/agent200/differ/00ce6b10.cpp",
+      "sha256": "e9712c661a117c2e067af2619d9d3ada2a2dd92be6528399986095d255f30b44",
+      "placeholder_only": true,
+      "length": 192
+    },
+    {
+      "path": "work/codex-lane/wine/q/00ce6b10/00ce6b10.cpp",
+      "sha256": "1da7c6ed430770f93a23f1b783511547112ee023b867043725f722adb2a3f846",
+      "placeholder_only": true,
+      "length": 191
+    }
+  ],
+  "00af4e10": [
+    {
+      "path": "work/codex-lane/w22/retry196_200/best/00af4e10.cpp",
+      "sha256": "d8418ebab139bfa5946b49ffb1be44e80fad28f11dba77cd390f378f04a049ec",
+      "placeholder_only": true,
+      "length": 171
+    },
+    {
+      "path": "work/codex-lane/w22/retry196_200/wine/q/00af4e10/00af4e10.cpp",
+      "sha256": "51435b61292b9761365d064b534759fa709d38c750b9795ca83e049194b3aeae",
+      "placeholder_only": true,
+      "length": 170
+    },
+    {
+      "path": "work/codex-lane/w22/agent200/differ/00af4e10.cpp",
+      "sha256": "d8418ebab139bfa5946b49ffb1be44e80fad28f11dba77cd390f378f04a049ec",
+      "placeholder_only": true,
+      "length": 171
+    },
+    {
+      "path": "work/codex-lane/wine/q/00af4e10/00af4e10.cpp",
+      "sha256": "51435b61292b9761365d064b534759fa709d38c750b9795ca83e049194b3aeae",
+      "placeholder_only": true,
+      "length": 170
+    }
+  ]
+}

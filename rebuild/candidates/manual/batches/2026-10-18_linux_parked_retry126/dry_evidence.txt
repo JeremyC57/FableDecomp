@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00d7f250   RELOCATION_MATCH PASS   Main
+00deefc0   RELOCATION_MATCH PASS   Main
+008f40b0   RELOCATION_MATCH PASS   Initialise
+008b9010   RELOCATION_MATCH PASS   FinishAction
+009ca780   RELOCATION_MATCH PASS   ScalarDeletingDestructor
+
+WINS: 5
+  00d7f250 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::Main
+  00deefc0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CTortureDoorCourtyard::Main
+  008f40b0 RELOCATION_MATCH CCreatureAction_DragonHoverOutOf::Initialise
+  008b9010 RELOCATION_MATCH CCreatureAction_ScreamerDrainAttack::FinishAction
+  009ca780 RELOCATION_MATCH CNativeIntrusivePointer::ScalarDeletingDestructor

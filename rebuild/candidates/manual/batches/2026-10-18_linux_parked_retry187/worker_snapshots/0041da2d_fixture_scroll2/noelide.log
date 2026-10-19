@@ -1,0 +1,9 @@
+['g++', '-std=c++98', '-O2', '-Wall', '-Wextra', '-fno-elide-constructors', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll2/fixture.cpp', '-o', '/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll2/noelide']
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll2/fixture.cpp:3: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+    3 | #pragma optimize("s", on)
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll2/fixture.cpp:4: warning: ignoring ‘#pragma optimize ’ [-Wunknown-pragmas]
+    4 | #pragma optimize("y", off)
+/workspace/FableDecomp/work/codex-lane/w22/retry202g_sol/snapshots/0041da2d_fixture_scroll2/fixture.cpp:16:9: warning: #pragma once in main file
+   16 | #pragma once
+      |         ^~~~
+0041da2d_TEST PASS

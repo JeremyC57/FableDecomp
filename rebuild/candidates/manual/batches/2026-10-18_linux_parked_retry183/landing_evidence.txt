@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00417418   RELOCATION_MATCH PASS   InitDisplayEngine
+00418b7a   RELOCATION_MATCH PASS   ~CMainGameComponent
+0041d8e7   RELOCATION_MATCH PASS   GetMiscThingsDef
+0041d98a   RELOCATION_MATCH PASS   GetIconsDef
+
+WINS: 4
+  00417418 RELOCATION_MATCH CMainGameComponent::InitDisplayEngine
+  00418b7a RELOCATION_MATCH CMainGameComponent::??1CMainGameComponent@@
+  0041d8e7 RELOCATION_MATCH NUISystem_CManager::GetMiscThingsDef
+  0041d98a RELOCATION_MATCH NUISystem_CManager::GetIconsDef
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CMainGameComponent_InitDisplayEngine_00417418
+  CMainGameComponent_CMainGameComponent_00418b7a
+  NUISystemCManager_GetMiscThingsDef_0041d8e7
+  NUISystemCManager_GetIconsDef_0041d98a

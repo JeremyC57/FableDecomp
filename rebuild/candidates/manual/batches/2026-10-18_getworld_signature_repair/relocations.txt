@@ -1,0 +1,14 @@
+
+work/codex-lane/w22/repair00692940/dry_work/00/69/00692940/00692940.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ?GetPItem@CIntelligentPointerCalls@@QBEPAUCThingWorldCalls@@XZ
+0000000b DISP32            ?GetWorld@CThingWorldCalls@@QAEAAUCWorld@@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetWorld@CCreatureActionWorldCalls@@QAEAAUCWorld@@XZ
+
+

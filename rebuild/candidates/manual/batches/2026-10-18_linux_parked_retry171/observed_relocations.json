@@ -1,0 +1,58 @@
+{
+  "00bf6640": [
+    [
+      "00000098",
+      "dir32",
+      "__real@00000000",
+      "0x122dedc"
+    ],
+    [
+      "000000ab",
+      "dir32",
+      "__real@00000000",
+      "0x122dedc"
+    ]
+  ],
+  "00bf6930": [
+    [
+      "000000dc",
+      "DISP32",
+      "?GetEdgeStrip@Patch@Native@@QAEPAUCPatchTesselationEdgeStrip@@W4LANDSCAPE_EDGE_STRIP_SIDE@2@@Z",
+      "0xbe5c60"
+    ]
+  ],
+  "00bf6d50": [
+    [
+      "00000062",
+      "DISP32",
+      "?GetPatch@Tree@Native@@QAEPAUPatch@2@XZ",
+      "0xbf6130"
+    ],
+    [
+      "0000006d",
+      "DISP32",
+      "?GetSplitBranch@Tree@Native@@QAEPAUSplit@2@XZ",
+      "0xbf6160"
+    ],
+    [
+      "00000083",
+      "DISP32",
+      "?IsBackgroundAtFullDetailInArea@Tree@Native@@QAE_NJJJJ@Z",
+      "0xbf6d50"
+    ]
+  ],
+  "00bf7100": [
+    [
+      "000000aa",
+      "dir32",
+      "?gOcclusionManager@Native@@3PAUOcclusionManager@1@A",
+      "0x1436e5c"
+    ],
+    [
+      "000000bb",
+      "DISP32",
+      "?RenderOcclusionBox@OcclusionManager@Native@@QAEKABUMatrix@2@@Z",
+      "0xb8d420"
+    ]
+  ]
+}

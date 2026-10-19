@@ -1,0 +1,10 @@
+offset	native_target	symbol
+00000001	013cb508	?gSubBookmarkManager@@3PAUCSubRenderStateManager@@A
+0000002a	01436e18	?gSubRenderManager@@3PAUCSubRenderStateManager@@A
+00000030	01396de8	?gSubAlphaTestFunc@@3IA
+000000ba	00b84990	?SortList@CEngineSubPrimitiveRenderer@@QAEXAAUCSubList@@_N@Z
+000000f9	00b84320	?RenderListTwoPass@CEngineSubPrimitiveRenderer@@QAEXAAUCSubList@@HH@Z
+00000107	00b842d0	?RenderList@CEngineSubPrimitiveRenderer@@QAEXAAUCSubList@@H@Z
+00000117	00b84400	?DeleteList@CEngineSubPrimitiveRenderer@@QAEXAAUCSubList@@@Z
+0000011d	013cb508	?gSubBookmarkManager@@3PAUCSubRenderStateManager@@A
+00000122	00a05840	?PopBookmark@CSubRenderStateManager@@QAEXXZ

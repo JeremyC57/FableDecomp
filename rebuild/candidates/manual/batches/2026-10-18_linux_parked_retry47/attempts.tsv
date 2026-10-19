@@ -1,0 +1,11 @@
+attempt	hypothesis	status
+1	historical geometry reconstruction	DIFFER183v193
+2	historical geometry reconstruction	DIFFER185v193
+3	historical geometry reconstruction	DIFFER189v193
+4	historical copied point transform	DIFFER189v193
+5	actual shared string data plus native user-defined vector copy construction	DIFFER189v193
+6	direct memberwise vector copy constructor instead of Set call	DIFFER189v193
+7	compute scalar transformed coordinates then construct returned vector directly	DIFFER179v193
+8	transform the helper position by reference rather than copying it first	DIFFER151v193; paused for user-requested wrap-up, two grades remain
+9	in-place point transform preserving original X and Y (native duplicate scalar spills)	RELOCATION_MATCH193v193
+10	host-only fixture adapter; native source unchanged from matching grade9	RELOCATION_MATCH193v193; host and canonical VC fixtures PASS

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b2f7c0   RELOCATION_MATCH PASS   FrameStart
+
+WINS: 1
+  00b2f7c0 RELOCATION_MATCH CEnginePrimitiveOcclusionManager::FrameStart

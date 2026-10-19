@@ -1,0 +1,11 @@
+// Grade: HELD(bytes match retail) -- test exercises a hand-written stand-in, not the candidate | Codex source 00/45/CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004554c6.cpp, flags , pass pattern 004554c6_TEST PASS
+// CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip() -- release ten owned blocks, in the retail declaration order, then tail-call the base destructor
+// Retail: Fable.exe @ 0x004554c6, length 172 bytes. Size-optimised cleanup uses pop ecx.
+#pragma optimize("s", on)
+extern "C" void __cdecl free(void*); // 0x00BFEA14
+struct Base { unsigned char pad[0x58]; ~Base(); }; // 0x00430300
+struct CPatchTesselationEdgeStrip : Base {
+ unsigned char pre[4]; void* p5c; unsigned char g60[8]; void* p68; unsigned char g6c[8]; void* p74; unsigned char g78[8]; void* p80; unsigned char g84[0xd0]; void* p154; unsigned char g158[8]; void* p160; unsigned char g164[0x3f8]; void* p55c; unsigned char g560[8]; void* p568; unsigned char g56c[0x268]; void* p7d4; unsigned char g7d8[8]; void* p7e0;
+ ~CPatchTesselationEdgeStrip();
+};
+CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip() { if(p7e0)free(p7e0); if(p7d4)free(p7d4); if(p568)free(p568); if(p55c)free(p55c); if(p160)free(p160); if(p154)free(p154); if(p80)free(p80); if(p74)free(p74); if(p68)free(p68); if(p5c)free(p5c); }

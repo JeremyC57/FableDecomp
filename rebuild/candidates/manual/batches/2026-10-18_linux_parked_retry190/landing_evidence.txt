@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00a699d0   RELOCATION_MATCH PASS   CreateVolumeTexture
+006fa3f0   RELOCATION_MATCH PASS   AddEventToAnim
+00820790   RELOCATION_MATCH PASS   ScriptedMapBrushAddThings
+008209c0   RELOCATION_MATCH PASS   ScriptedMapBrushRemoveThings
+
+WINS: 4
+  00a699d0 RELOCATION_MATCH CManagedTextureData::CreateVolumeTexture
+  006fa3f0 RELOCATION_MATCH NAnimationEvents_CManager::AddEventToAnim
+  00820790 RELOCATION_MATCH CMap::ScriptedMapBrushAddThings
+  008209c0 RELOCATION_MATCH CMap::ScriptedMapBrushRemoveThings
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CManagedTextureData_CreateVolumeTexture_00a699d0
+  NAnimationEventsCManager_AddEventToAnim_006fa3f0
+  CMap_ScriptedMapBrushAddThings_00820790
+  CMap_ScriptedMapBrushRemoveThings_008209c0

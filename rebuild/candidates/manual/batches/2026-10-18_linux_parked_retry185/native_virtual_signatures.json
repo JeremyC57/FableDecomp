@@ -1,0 +1,246 @@
+{
+  "slots": [
+    {
+      "address": "009e4470",
+      "table": "??_7BaseClassNative@@6B@",
+      "slot": 0,
+      "target": "0x4371f0",
+      "compiled": "public: virtual void * __thiscall BaseClassNative::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "009e4470",
+      "table": "??_7MaintainedEvent@@6B@",
+      "slot": 0,
+      "target": "0x9e45f0",
+      "compiled": "public: virtual void * __thiscall MaintainedEvent::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00a02c00",
+      "table": "??_7BaseClass@@6B@",
+      "slot": 0,
+      "target": "0x4371f0",
+      "compiled": "public: virtual void * __thiscall BaseClass::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00a02c00",
+      "table": "??_7BaseNonCopyable@@6B@",
+      "slot": 0,
+      "target": "0x99a470",
+      "compiled": "public: virtual void * __thiscall BaseNonCopyable::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00a02c00",
+      "table": "??_7CHandleBasedMemoryPool@@6B@",
+      "slot": 0,
+      "target": "0xa03aa0",
+      "compiled": "public: virtual void * __thiscall CHandleBasedMemoryPool::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00a02c00",
+      "table": "??_7CHandleBasedMemoryPool@@6B@",
+      "slot": 1,
+      "target": "0xa02120",
+      "compiled": "public: virtual void __thiscall CHandleBasedMemoryPool::MoveResource(void *, long, void *, void *, unsigned long)",
+      "expected": "protected: virtual void __thiscall CHandleBasedMemoryPool::MoveResource(void *, long, void *, void *, unsigned long)"
+    },
+    {
+      "address": "00a02c00",
+      "table": "??_7CHandleBasedMemoryPool@@6B@",
+      "slot": 2,
+      "target": "0xa03a40",
+      "compiled": "public: virtual bool __thiscall CHandleBasedMemoryPool::CanMoveResource(void *, long)",
+      "expected": "protected: virtual bool __thiscall CHandleBasedMemoryPool::CanMoveResource(void *, long)"
+    },
+    {
+      "address": "00a02c00",
+      "table": "??_7CHandleBasedMemoryPool@@6B@",
+      "slot": 3,
+      "target": "0xa03a50",
+      "compiled": "public: virtual void __thiscall CHandleBasedMemoryPool::ValidateResource(void *)",
+      "expected": "protected: virtual void __thiscall CHandleBasedMemoryPool::ValidateResource(void *)"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 0,
+      "target": "0xa437b0",
+      "compiled": "public: virtual void * __thiscall LipSyncEntry::DataResource::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall IVNative::Delete(void) const",
+      "expected": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 2,
+      "target": "0xa42a80",
+      "compiled": "public: virtual bool __thiscall LipSyncEntry::DataResource::UnloadResource(void)",
+      "expected": "public: virtual bool __thiscall CLipSyncDataBankEntry::CData::UnloadResource(void)"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 3,
+      "target": "0x9fbef0",
+      "compiled": "public: virtual unsigned long __thiscall ResourceNative::GetUnloadableMemory(void) const",
+      "expected": "public: virtual unsigned long __thiscall CResource::GetUnloadableMemory(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 4,
+      "target": "0xa42810",
+      "compiled": "public: virtual bool __thiscall LipSyncEntry::DataResource::IsResourceLoaded(void) const",
+      "expected": "public: virtual bool __thiscall CLipSyncDataBankEntry::CData::IsResourceLoaded(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 5,
+      "target": "0xa42fb0",
+      "compiled": "public: virtual void __thiscall LipSyncEntry::DataResource::OnResourceLoaded(void)",
+      "expected": "public: virtual void __thiscall CLipSyncDataBankEntry::CData::OnResourceLoaded(void)"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 6,
+      "target": "0x42d970",
+      "compiled": "public: virtual bool __thiscall ResourceNative::CanAbortResourceLoad(long) const",
+      "expected": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 7,
+      "target": "0x42d980",
+      "compiled": "public: virtual void __thiscall ResourceNative::OnResourceLoadAborted(void)",
+      "expected": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 8,
+      "target": "0x9fbf00",
+      "compiled": "public: virtual unsigned long __thiscall ResourceNative::GetDebugMemoryInUse(void) const",
+      "expected": "public: virtual unsigned long __thiscall CResource::GetDebugMemoryInUse(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7DataResource@LipSyncEntry@@6B@",
+      "slot": 9,
+      "target": "0x9fbf10",
+      "compiled": "public: virtual void __thiscall ResourceNative::ResetDebugMemoryInUse(void)",
+      "expected": "public: virtual void __thiscall CResource::ResetDebugMemoryInUse(void)"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7IVNative@@6B@",
+      "slot": 0,
+      "target": "0x4664e0",
+      "compiled": "public: virtual void * __thiscall IVNative::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7IVNative@@6B@",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall IVNative::Delete(void) const",
+      "expected": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 0,
+      "target": "0x4664ff",
+      "compiled": "public: virtual void * __thiscall ResourceNative::`vector deleting dtor'(unsigned int)",
+      "expected": "deleting destructor"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 1,
+      "target": "0x42d930",
+      "compiled": "public: virtual void __thiscall IVNative::Delete(void) const",
+      "expected": "public: virtual void __thiscall CIVCountedPointeeBase::Delete(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 2,
+      "target": "0x42d940",
+      "compiled": "public: virtual bool __thiscall ResourceNative::UnloadResource(void)",
+      "expected": "public: virtual bool __thiscall CResource::UnloadResource(void)"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 3,
+      "target": "0x9fbef0",
+      "compiled": "public: virtual unsigned long __thiscall ResourceNative::GetUnloadableMemory(void) const",
+      "expected": "public: virtual unsigned long __thiscall CResource::GetUnloadableMemory(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 4,
+      "target": "0x42d950",
+      "compiled": "public: virtual bool __thiscall ResourceNative::IsResourceLoaded(void) const",
+      "expected": "public: virtual bool __thiscall CResource::IsResourceLoaded(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 5,
+      "target": "0x42d960",
+      "compiled": "public: virtual void __thiscall ResourceNative::OnResourceLoaded(void)",
+      "expected": "public: virtual void __thiscall CResource::OnResourceLoaded(void)"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 6,
+      "target": "0x42d970",
+      "compiled": "public: virtual bool __thiscall ResourceNative::CanAbortResourceLoad(long) const",
+      "expected": "public: virtual bool __thiscall CResource::CanAbortResourceLoad(long) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 7,
+      "target": "0x42d980",
+      "compiled": "public: virtual void __thiscall ResourceNative::OnResourceLoadAborted(void)",
+      "expected": "public: virtual void __thiscall CResource::OnResourceLoadAborted(void)"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 8,
+      "target": "0x9fbf00",
+      "compiled": "public: virtual unsigned long __thiscall ResourceNative::GetDebugMemoryInUse(void) const",
+      "expected": "public: virtual unsigned long __thiscall CResource::GetDebugMemoryInUse(void) const"
+    },
+    {
+      "address": "00a42980",
+      "table": "??_7ResourceNative@@6B@",
+      "slot": 9,
+      "target": "0x9fbf10",
+      "compiled": "public: virtual void __thiscall ResourceNative::ResetDebugMemoryInUse(void)",
+      "expected": "public: virtual void __thiscall CResource::ResetDebugMemoryInUse(void)"
+    }
+  ],
+  "mismatches": [],
+  "excluded": []
+}

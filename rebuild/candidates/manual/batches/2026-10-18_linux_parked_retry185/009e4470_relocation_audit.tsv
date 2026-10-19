@@ -1,0 +1,12 @@
+offset	native_target	symbol
+00000010	00a03b40	?GetType@InputEventNative@@QBE?AW4EInputEventType@@XZ
+00000032	009e4a20	?InsertDefault@EventList@@QAE?AUIterator@@U2@@Z
+00000046	00a043a0	?GetJoystickPosition@InputEventNative@@QBE?AUVector2@@XZ
+00000068	00a03ba0	?GetJoystickButtonPressureFraction@InputEventNative@@QBEMXZ
+00000073	00a03b90	?GetJoystickButton@InputEventNative@@QBEJXZ
+0000007c	00a040d0	?SetAsJoystickButtonHeld@InputEventNative@@QAEXJMABUVector2@@N@Z
+00000093	00a03b40	?GetType@InputEventNative@@QBE?AW4EInputEventType@@XZ
+000000b6	00a03b40	?GetType@InputEventNative@@QBE?AW4EInputEventType@@XZ
+000000c2	00a03b90	?GetJoystickButton@InputEventNative@@QBEJXZ
+000000cb	00a03b90	?GetJoystickButton@InputEventNative@@QBEJXZ
+000000fd	00bfea14	_free

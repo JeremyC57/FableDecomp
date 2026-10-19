@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00c43ec0   RELOCATION_MATCH PASS   AllocateMarks
+00c44170   RELOCATION_MATCH PASS   Close
+
+WINS: 2
+  00c43ec0 RELOCATION_MATCH CMarkedBufferOwner::AllocateMarks
+  00c44170 RELOCATION_MATCH CMarkedBufferOwner::Close
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CMarkedBufferOwner_AllocateMarks_00c43ec0
+  CMarkedBufferOwner_Close_00c44170

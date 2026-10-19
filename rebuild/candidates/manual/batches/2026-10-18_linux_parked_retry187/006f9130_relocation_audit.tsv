@@ -1,0 +1,8 @@
+offset	native_target	symbol
+00000010	00a242c0	?GetAnimationInfo@CMeshDataBank@@QBEPBUC3DAnimationInfo@@K@Z
+00000017	00a269c0	?GetAnimationStats@C3DAnimationInfo@@QBE?AU?$CCountedPointer@$$CBUC3DAnimationStats@@@@XZ
+00000023	0129ba3c	?g_MinEmbeddedAnimationDuration@@3MA
+0000003b	00a4eae0	?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z
+00000066	00bfe9bc	??3@YAXPAX@Z
+00000096	00bfe9bc	??3@YAXPAX@Z
+0000009f	0122dedc	__real@00000000

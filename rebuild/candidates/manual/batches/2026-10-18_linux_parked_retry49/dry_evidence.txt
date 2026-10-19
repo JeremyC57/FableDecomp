@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00709a50   RELOCATION_MATCH PASS   CEnginePrimitiveMorphedAnimatingMesh
+00954e30   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 2
+  00709a50 RELOCATION_MATCH CEnginePrimitiveMorphedAnimatingMesh::??0CEnginePrimitiveMorphedAnimatingMesh
+  00954e30 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable

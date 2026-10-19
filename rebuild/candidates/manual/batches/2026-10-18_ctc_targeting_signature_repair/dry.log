@@ -1,0 +1,5 @@
+addr       parity           behav  name
+008a03f0   RELOCATION_MATCH PASS   ClearThingBestEnemyTarget
+
+WINS: 1
+  008a03f0 RELOCATION_MATCH CGameScriptInterface::ClearThingBestEnemyTarget

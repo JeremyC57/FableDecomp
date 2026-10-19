@@ -1,0 +1,7 @@
+addr       parity           behav  name
+006448a4   RELOCATION_MATCH PASS   Draw
+00644424   RELOCATION_MATCH PASS   Draw
+
+WINS: 2
+  006448a4 RELOCATION_MATCH NPlayerGui_CDrawMorality::Draw
+  00644424 RELOCATION_MATCH NPlayerGui_CDrawSpiritScores::Draw

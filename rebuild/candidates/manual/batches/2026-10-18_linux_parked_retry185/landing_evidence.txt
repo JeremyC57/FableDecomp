@@ -1,0 +1,17 @@
+addr       parity           behav  name
+009e4470   RELOCATION_MATCH PASS   ProcessMaintainedEvents
+00a02c00   RELOCATION_MATCH PASS   GrowFreeArea
+006bb990   RELOCATION_MATCH PASS   Update
+00a42980   RELOCATION_MATCH PASS   BeginLoading
+
+WINS: 4
+  009e4470 RELOCATION_MATCH CJoystick::ProcessMaintainedEvents
+  00a02c00 RELOCATION_MATCH CHandleBasedMemoryPool::GrowFreeArea
+  006bb990 RELOCATION_MATCH CGameTimeManager::Update
+  00a42980 RELOCATION_MATCH CLipSyncDataBankEntry::BeginLoading
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CJoystick_ProcessMaintainedEvents_009e4470
+  CHandleBasedMemoryPool_GrowFreeArea_00a02c00
+  CGameTimeManager_Update_006bb990
+  CLipSyncDataBankEntry_BeginLoading_00a42980

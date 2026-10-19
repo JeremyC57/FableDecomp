@@ -1,0 +1,6 @@
+offset	native_target	symbol
+0000003b	00b919c0	?GetCellBoundingBoxAndDrawDistance@CEngineSceneGrid@@QAE_NAAUC3DBoundingBox@@AAMKK@Z
+00000052	00adecc0	?IntersectsSolid@C3DBoundingBox@@QBE_NABUC3DBoundingSphere@@@Z
+0000007b	00adecc0	?IntersectsSolid@C3DBoundingBox@@QBE_NABUC3DBoundingSphere@@@Z
+00000085	01436e84	?g_pEnginePrimitiveTypeInfo@@3PAUCEnginePrimitiveTypeInfo@@A
+000000e7	00b92d30	?PreloadPrimitives@CEngineSceneGrid@@QAE_NKKABUC3DBoundingSphere@@K@Z

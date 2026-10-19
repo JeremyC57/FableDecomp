@@ -1,0 +1,10 @@
+offset	native_target	symbol
+0000000f	01436e98	?gGlowResources@@3PAUCGlowResourceManager@@A
+0000001b	00f37030	?ReleaseMemoryPage@CGlowScratchManager@@QAEXJ@Z
+00000030	009e3830	?Initialise@CGlowPixelFormat@@QAEXI@Z
+00000036	01436e98	?gGlowResources@@3PAUCGlowResourceManager@@A
+00000047	00f37660	?AllocateMemoryPage@CGlowScratchManager@@QAEJJ_N@Z
+0000006f	00f37440	?AllocateTexture@CGlowScratchManager@@QAEJJABUCGlowExtents@@JABUCPixelFormat@@I_N@Z
+0000009a	00f37440	?AllocateTexture@CGlowScratchManager@@QAEJJABUCGlowExtents@@JABUCPixelFormat@@I_N@Z
+000000c0	00f37440	?AllocateTexture@CGlowScratchManager@@QAEJJABUCGlowExtents@@JABUCPixelFormat@@I_N@Z
+000000eb	00f37440	?AllocateTexture@CGlowScratchManager@@QAEJJABUCGlowExtents@@JABUCPixelFormat@@I_N@Z

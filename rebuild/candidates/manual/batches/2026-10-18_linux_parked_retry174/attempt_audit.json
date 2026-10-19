@@ -1,0 +1,443 @@
+[
+  {
+    "address": "00bf9cc0",
+    "attempt": 1,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:19:30.583134+00:00",
+    "sha256": "fc98f253cb6ed5110c2f93614b05e7d1f9e6a207d2d5e4e19bfad72856695b15",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bf9cc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bf9cc0_1.cpp",
+      "RelocateData"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bf9cc0",
+    "attempt": 2,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:19:42.923908+00:00",
+    "sha256": "a303810ca04a77d1d62e09644461d9590249954cbd2e38672a0f80ead7d870a3",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bf9cc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bf9cc0_2.cpp",
+      "RelocateData"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfaba0",
+    "attempt": 1,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:19:43.223259+00:00",
+    "sha256": "4c9e4dc2bc1c77ea31fe5e6b65c452353b6f20ccf230737c59a7935e4d464ebe",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfaba0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfaba0_1.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfacc0",
+    "attempt": 1,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:19:43.520517+00:00",
+    "sha256": "20453f495173a77285fa7b31eb778a2028bed27c56d585ba5e1459a5f6dc7c94",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfacc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfacc0_1.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfb590",
+    "attempt": 1,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:19:43.823732+00:00",
+    "sha256": "014b007413e6c95b6454e03d8505fd65a878663f0e39495d8b75cfbe54819dc8",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfb590",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfb590_1.cpp",
+      "??1CLocalDetailPrimitiveMeshZSpriteBatch"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfaba0",
+    "attempt": 2,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:20:08.331387+00:00",
+    "sha256": "3624eb99f1ee20b3acc88342a8450a60cabf18e4917bd4e1bb8bd5a113254a7f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfaba0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfaba0_2.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfacc0",
+    "attempt": 2,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:20:08.643092+00:00",
+    "sha256": "e10093150edb4115b65f0d914cb68e1219134771b66bd0f5e002e4775d74691f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfacc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfacc0_2.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfb590",
+    "attempt": 2,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:20:08.944891+00:00",
+    "sha256": "686f85688a5d09556662c56fd3707b393d3555407efb82f71a4420c66e0867b0",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfb590",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfb590_2.cpp",
+      "??1CLocalDetailPrimitiveMeshZSpriteBatch"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfaba0",
+    "attempt": 3,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:20:26.820413+00:00",
+    "sha256": "6de39492f645da99acb1b33e84cbaac8db10bc643be6a3e0fbfcaa36935cd39f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfaba0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfaba0_3.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfacc0",
+    "attempt": 3,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:20:27.113461+00:00",
+    "sha256": "9dde3a5b0d0a00e02d3f7ccb86f386af8744d122e2c82f804edb032af0c9a3e1",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfacc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfacc0_3.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfb590",
+    "attempt": 3,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:20:27.362889+00:00",
+    "sha256": "845096328d81aa7a65fc9f68d75db6bcdaced6fde694a530eca5f5a7053e3e37",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfb590",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfb590_3.cpp",
+      "??1CLocalDetailPrimitiveMeshZSpriteBatch"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bf9cc0",
+    "attempt": 3,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:20:27.664527+00:00",
+    "sha256": "3119292c3a94b1faa910acbd07d6410fb2dc1f5fb52b76c07523997ee2a681e3",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bf9cc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bf9cc0_3.cpp",
+      "RelocateData"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfaba0",
+    "attempt": 4,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:21:12.228193+00:00",
+    "sha256": "d42fe32a20260aa6327451d98008559f3bf45237b436ee3ecdeb59b42285474f",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfaba0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfaba0_4.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfacc0",
+    "attempt": 4,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:21:12.558205+00:00",
+    "sha256": "d50a441eae6a53bbfb6147268fed88f85199022b9c77e5d4cef8c87e0583d3a0",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfacc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfacc0_4.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfb590",
+    "attempt": 4,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:21:12.852353+00:00",
+    "sha256": "61c3439c93d6640baec8cf6e7f9a6ab23331faf3cab352bb04dec8838acaed51",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfb590",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfb590_4.cpp",
+      "??1CLocalDetailPrimitiveMeshZSpriteBatch"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bf9cc0",
+    "attempt": 4,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:21:13.129178+00:00",
+    "sha256": "d95ad8c89e4d678ce39ecebde1c702c9995f38945629e834a549596bb0682888",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bf9cc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bf9cc0_4.cpp",
+      "RelocateData"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfaba0",
+    "attempt": 5,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:21:46.167090+00:00",
+    "sha256": "7d54e9ff0a82d7b2cfa4f7e5495fd15c2c5a22fad5f83cb6968e194cd022e4c1",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfaba0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfaba0_5.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfacc0",
+    "attempt": 5,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:21:46.477079+00:00",
+    "sha256": "6cb5e0e0801a695b52f2722eb307a7adc14554a34d449ae6266993a32d0ae5ab",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfacc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfacc0_5.cpp",
+      "AddObjectsToPrimitiveRenderer"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfb590",
+    "attempt": 5,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:21:46.771729+00:00",
+    "sha256": "11595f557acfc748d6d5b4205a5b5a4595ae0ca38765eb98acc1b366a0faf249",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfb590",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfb590_5.cpp",
+      "??1CLocalDetailPrimitiveMeshZSpriteBatch"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bf9cc0",
+    "attempt": 5,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:21:47.082193+00:00",
+    "sha256": "05d5ef15c7ba09a74ce0f5d1c1c2db0e166755f4400ecc1dfc6858780ee30314",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bf9cc0",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bf9cc0_5.cpp",
+      "RelocateData"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  },
+  {
+    "address": "00bfb590",
+    "attempt": 6,
+    "prior_reserved_uncertain": 4,
+    "utc": "2026-10-18T23:22:10.180701+00:00",
+    "sha256": "1c61b566c30bd1ee67ba0dd730e8f679c42840baba5b113b979c88d16df9fd36",
+    "command": [
+      "timeout",
+      "200",
+      "python3",
+      "/workspace/FableDecomp/work/codex-lane/tools/q.py",
+      "00bfb590",
+      "/workspace/FableDecomp/work/codex-lane/w22/retry202c_sol/snapshots/00bfb590_6.cpp",
+      "??1CLocalDetailPrimitiveMeshZSpriteBatch"
+    ],
+    "effective_flags": [
+      "/O2",
+      "/Oy",
+      "/W3"
+    ]
+  }
+]

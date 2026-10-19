@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00b991d0   RELOCATION_MATCH PASS   UpdateRepeatedStaticMesh
+00b2f8e0   RELOCATION_MATCH PASS   CheckVisibilityResult
+
+WINS: 2
+  00b991d0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateRepeatedStaticMesh
+  00b2f8e0 RELOCATION_MATCH CEnginePrimitiveOcclusionManager::CheckVisibilityResult
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveManagerRepeatedStaticMeshes_UpdateRepeatedStaticMesh_00b991d0
+  CEnginePrimitiveOcclusionManager_CheckVisibilityResult_00b2f8e0

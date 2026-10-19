@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00965520   RELOCATION_MATCH PASS   IsStillValid
+009643d0   RELOCATION_MATCH PASS   IsStillValid
+
+WINS: 2
+  00965520 RELOCATION_MATCH CAIStateGroup_RecoverStealableItem::IsStillValid
+  009643d0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::IsStillValid

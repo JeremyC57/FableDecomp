@@ -1,0 +1,1 @@
+Whole40 inventory reviewed:17 accepted after this landing,23 DIFFER at10first-phase grades;289 total author grades preserved. No untouched/partial rows. FinalD2C530 at4 incl corrected overload slots and actual base. Older initial attempts without immutable snapshots remain recorded as historical evidence limitations, not invented. No root source grades.

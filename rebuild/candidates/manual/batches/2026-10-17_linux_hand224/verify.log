@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00a3b380   WARN SHARED_HEADER_AVAILABLE CVideoSys
+00a3b380   MATCH            PASS   Close
+
+WINS: 1
+  00a3b380 MATCH CVideoSys::Close
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CVideoSys_Close_00a3b380

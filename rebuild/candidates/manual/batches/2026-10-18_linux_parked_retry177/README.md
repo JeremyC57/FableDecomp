@@ -1,0 +1,12 @@
+# Repeated-mesh destruction and moving-dummy/fisherman scripts
+
+Three of four original parked202D rows accepted after independent root verification. BFAAE0 cumulative5=4 UNCERTAIN historical+1 observed; E33B00 cumulative9=4+5; E7B970 cumulative10=4+6. All eighteen observed compiler attempts across the section retain immutable source/hash/command/output; sixteen historical reservations remain explicitly uncertain.
+
+BFAAE0: actual landscape renderer and memory manager headers retained with donorF58/native6B0 pointer projection. Five native free operations use the correct virtual/aligned helper in order. Full local-detail and persistent-resource method signatures and six native RTTI hierarchies audited; unsigned stored refs, signed pointee accessor, const deletion. Tests cover nullable data, shared/final references, callback detach and ordered cleanup.
+
+E33B00: moving dummy is created on Me with both full literal strings; then Me's data string is copied to the returned dummy. Tests check exact arguments/direction, temporary lifetimes, null implementation and counted ownership. E7B970: waits for IntroPlayed, exits on native thread-termination checks, skips saved fisherman, otherwise creates the specified creature at Me's position. Tests cover all guards, multiple frames, full strings/definition conversion, result cleanup and callback-visible lifetimes. Actual ScriptThing/Game/string headers included; native layout and genuine owning copy signatures retained in method views.
+
+Root found overloaded Game method groups reversed in the worker's initial emitted vtables despite exact selected bytes. Worker corrected both groups and restored EHeroAbility enum within the remaining budgets. Independent final COFF-to-PDB comparison of all179 slots per fixture (358 checks) now has zero differences. Root verifies30 masked operands,3 complete literals, helper constness, selected virtual targets, all expanded-header hostC++98/O2/no-elide and VC7.1 fixtures. These are target behavior tests using preexisting-interface doubles, not engine construction or full-game integration claims.
+
+873930 remains capped10, not accepted. Best valid grade8/9 differs237v221. Final grade10 failed compilation because an inline comment swallowed closing braces; this avoidable source failure is counted, not excluded. Full history and best valid source remain in the worker directory and archived inventory. No extra grade or reset.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00a64230   RELOCATION_MATCH PASS   ReadFromParserAsBool
+00a63db0   RELOCATION_MATCH PASS   ReadFromParserAsBool
+00a63fc0   RELOCATION_MATCH PASS   ReadFromParser
+009fcef0   RELOCATION_MATCH PASS   GetDefault
+
+WINS: 4
+  00a64230 RELOCATION_MATCH CGenericVar::ReadFromParserAsBool
+  00a63db0 RELOCATION_MATCH CGenericVarRef::ReadFromParserAsBool
+  00a63fc0 RELOCATION_MATCH CGenericVarRef::ReadFromParser
+  009fcef0 RELOCATION_MATCH CGraphicBankStateBlock::GetDefault
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CGenericVar_ReadFromParserAsBool_00a64230
+  CGenericVarRef_ReadFromParserAsBool_00a63db0
+  CGenericVarRef_ReadFromParser_00a63fc0
+  CGraphicBankStateBlock_GetDefault_009fcef0

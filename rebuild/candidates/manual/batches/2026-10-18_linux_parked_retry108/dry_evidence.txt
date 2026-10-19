@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00894aa0   RELOCATION_MATCH PASS   BeginLoadingMesh
+
+WINS: 1
+  00894aa0 RELOCATION_MATCH CGameScriptInterface::BeginLoadingMesh

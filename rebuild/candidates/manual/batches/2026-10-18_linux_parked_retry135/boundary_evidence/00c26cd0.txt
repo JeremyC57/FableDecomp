@@ -1,0 +1,57 @@
+00c26cd0 6aff push -1
+00c26cd2 6808332101 push 0x1213308
+00c26cd7 64a100000000 mov eax, dword ptr fs:[0]
+00c26cdd 50 push eax
+00c26cde 64892500000000 mov dword ptr fs:[0], esp
+00c26ce5 83ec08 sub esp, 8
+00c26ce8 56 push esi
+00c26ce9 8bf1 mov esi, ecx
+00c26ceb 56 push esi
+00c26cec 8d4c2408 lea ecx, [esp + 8]
+00c26cf0 e8cb92feff call 0xc0ffc0
+00c26cf5 8b44241c mov eax, dword ptr [esp + 0x1c]
+00c26cf9 8d54241c lea edx, [esp + 0x1c]
+00c26cfd 52 push edx
+00c26cfe 89442420 mov dword ptr [esp + 0x20], eax
+00c26d02 8b4620 mov eax, dword ptr [esi + 0x20]
+00c26d05 6a01 push 1
+00c26d07 8d4e18 lea ecx, [esi + 0x18]
+00c26d0a 50 push eax
+00c26d0b c744242000000000 mov dword ptr [esp + 0x20], 0
+00c26d13 e858d5feff call 0xc14270
+00c26d18 8d4e28 lea ecx, [esi + 0x28]
+00c26d1b e830340000 call 0xc2a150
+00c26d20 8d4c2404 lea ecx, [esp + 4]
+00c26d24 c7442414ffffffff mov dword ptr [esp + 0x14], 0xffffffff
+00c26d2c e8af92feff call 0xc0ffe0
+00c26d31 8b4c240c mov ecx, dword ptr [esp + 0xc]
+00c26d35 5e pop esi
+00c26d36 64890d00000000 mov dword ptr fs:[0], ecx
+00c26d3d 83c414 add esp, 0x14
+00c26d40 c20400 ret 4
+00c26d43 cc int3 
+00c26d44 cc int3 
+00c26d45 cc int3 
+00c26d46 cc int3 
+00c26d47 cc int3 
+00c26d48 cc int3 
+00c26d49 cc int3 
+00c26d4a cc int3 
+00c26d4b cc int3 
+00c26d4c cc int3 
+00c26d4d cc int3 
+00c26d4e cc int3 
+00c26d4f cc int3 
+00c26d50 8bc1 mov eax, ecx
+00c26d52 c70020402b01 mov dword ptr [eax], 0x12b4020
+00c26d58 c3 ret 
+00c26d59 cc int3 
+00c26d5a cc int3 
+00c26d5b cc int3 
+00c26d5c cc int3 
+00c26d5d cc int3 
+00c26d5e cc int3 
+00c26d5f cc int3 
+00c26d60 56 push esi
+00c26d61 6800300000 push 0x3000
+00c26d66 8bf1 mov esi, ecx

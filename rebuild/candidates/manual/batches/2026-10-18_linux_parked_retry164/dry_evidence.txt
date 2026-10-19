@@ -1,0 +1,7 @@
+addr       parity           behav  name
+006893d0   RELOCATION_MATCH PASS   ChangeSelection
+00a0d6b0   MATCH            PASS   PreparePrimitivesForEngine
+
+WINS: 2
+  006893d0 RELOCATION_MATCH CInputProcessInventoryBase::ChangeSelection
+  00a0d6b0 MATCH CInputProcessManager::PreparePrimitivesForEngine

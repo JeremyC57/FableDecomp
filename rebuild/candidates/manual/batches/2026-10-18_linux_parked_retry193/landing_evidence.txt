@@ -1,0 +1,14 @@
+addr       parity           behav  name
+009ff440   RELOCATION_MATCH PASS   InitFrames
+009ff590   RELOCATION_MATCH PASS   NotifyEntryAdded
+009febc0   RELOCATION_MATCH PASS   ~CGraphicDataBank
+
+WINS: 3
+  009ff440 RELOCATION_MATCH CGraphicDataBank::InitFrames
+  009ff590 RELOCATION_MATCH CGraphicDataBank::?NotifyEntryAdded@CGraphicDataBank@@
+  009febc0 RELOCATION_MATCH CGraphicDataBank::??1CGraphicDataBank@@
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CGraphicDataBank_InitFrames_009ff440
+  CGraphicDataBank_NotifyEntryAdded_009ff590
+  CGraphicDataBank_CGraphicDataBank_009febc0

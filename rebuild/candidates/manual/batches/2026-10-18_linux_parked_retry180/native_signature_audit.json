@@ -1,0 +1,5 @@
+{
+  "00a62b70": "public: unsigned long __thiscall CPackedUIntArray::CountBits(void const *, unsigned long, long, unsigned long) const",
+  "00ae1030": "public: void __thiscall CParticleSimulation::SetParticles(struct CArray<struct C3DVector> const &, struct CArray<float> const &, struct CMovableResourceMemoryPool &)",
+  "00bde190": "public: void __thiscall CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadHeader(struct CMemoryDataInputStream &)"
+}

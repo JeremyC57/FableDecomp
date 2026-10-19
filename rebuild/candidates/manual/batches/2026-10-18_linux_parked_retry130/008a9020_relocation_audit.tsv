@@ -1,0 +1,6 @@
+offset	type	retail_target	compiler_symbol
+0042	DISP32	009ad410	?GetDefGlobalIndexFromName@DefinitionMethods@@QBEJABVCCharString@@@Z
+0073	DISP32	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00ae	DISP32	007ca160	?PushBack@IndexVector@@QAEXABUCDefIndex@@@Z
+00bb	DISP32	004e24ba	??4IndexVector@@QAEAAU0@ABU0@@Z
+00c9	DISP32	00bfea14	_free

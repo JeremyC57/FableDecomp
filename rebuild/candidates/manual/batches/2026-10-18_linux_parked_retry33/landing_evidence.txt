@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00bc7e90   RELOCATION_MATCH PASS   CEnginePrimitiveManagerLines
+00bce070   RELOCATION_MATCH PASS   CEnginePrimitiveManagerFlareSprites
+
+WINS: 2
+  00bc7e90 RELOCATION_MATCH CEnginePrimitiveManagerLines::CEnginePrimitiveManagerLines
+  00bce070 RELOCATION_MATCH CEnginePrimitiveManagerFlareSprites::CEnginePrimitiveManagerFlareSprites
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveManagerLines_CEnginePrimitiveManagerLines_00bc7e90
+  CEnginePrimitiveManagerFlareSprites_CEnginePrimitiveManagerFlareSprites_00bce070

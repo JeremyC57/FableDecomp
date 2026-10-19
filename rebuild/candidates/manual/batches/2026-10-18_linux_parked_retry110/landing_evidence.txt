@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0092b800   RELOCATION_MATCH PASS   IsRunnable
+0093b8b0   RELOCATION_MATCH PASS   IsStillRunnable
+0097d360   RELOCATION_MATCH PASS   AIAction_WaitForMessage
+
+WINS: 3
+  0092b800 RELOCATION_MATCH CAIStateGroup_OnHeroPush::IsRunnable
+  0093b8b0 RELOCATION_MATCH CAIStateGroup_SeekEnemy::IsStillRunnable
+  0097d360 RELOCATION_MATCH CAIStateGroupBase::AIAction_WaitForMessage
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupOnHeroPush_IsRunnable_0092b800
+  CAIStateGroupSeekEnemy_IsStillRunnable_0093b8b0
+  CAIStateGroupBase_AIActionWaitForMessage_0097d360

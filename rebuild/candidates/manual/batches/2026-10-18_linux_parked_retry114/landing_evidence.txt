@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00898db0   RELOCATION_MATCH PASS   TakeObjectFromHero
+0089e080   RELOCATION_MATCH PASS   EntitySetCombatType
+
+WINS: 2
+  00898db0 RELOCATION_MATCH CGameScriptInterface::TakeObjectFromHero
+  0089e080 RELOCATION_MATCH CGameScriptInterface::EntitySetCombatType
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_TakeObjectFromHero_00898db0
+  CGameScriptInterface_EntitySetCombatType_0089e080

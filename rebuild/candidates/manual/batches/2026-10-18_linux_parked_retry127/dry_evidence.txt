@@ -1,0 +1,9 @@
+addr       parity           behav  name
+008f2e00   RELOCATION_MATCH PASS   FrameUpdate
+008f3ad0   RELOCATION_MATCH PASS   Initialise
+008c5490   RELOCATION_MATCH PASS   FinishAction
+
+WINS: 3
+  008f2e00 RELOCATION_MATCH CCreatureAction_DragonFlight::FrameUpdate
+  008f3ad0 RELOCATION_MATCH CCreatureAction_DragonLand::Initialise
+  008c5490 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::FinishAction

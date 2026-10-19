@@ -1,0 +1,9 @@
+offset	native_target	symbol
+00000022	00a01e40	?CombineAreas@CHandleBasedMemoryPool@@QAEXPAUHeader@@0@Z
+00000055	00a01ed0	?FindFreeArea@CHandleBasedMemoryPool@@QAEPAUHeader@@J@Z
+00000070	00a028f0	?MoveArea@CHandleBasedMemoryPool@@QAEXPAUHeader@@0@Z
+0000007c	00a02470	?CombineAdjacentAreas@CHandleBasedMemoryPool@@QAEXAAPAUHeader@@@Z
+000000a7	00a01e40	?CombineAreas@CHandleBasedMemoryPool@@QAEXPAUHeader@@0@Z
+000000dc	00a01ed0	?FindFreeArea@CHandleBasedMemoryPool@@QAEPAUHeader@@J@Z
+000000f7	00a028f0	?MoveArea@CHandleBasedMemoryPool@@QAEXPAUHeader@@0@Z
+00000103	00a02470	?CombineAdjacentAreas@CHandleBasedMemoryPool@@QAEXAAPAUHeader@@@Z

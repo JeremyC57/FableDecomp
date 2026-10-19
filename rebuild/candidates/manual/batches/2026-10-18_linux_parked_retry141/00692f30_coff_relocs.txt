@@ -1,0 +1,88 @@
+
+work/codex-lane/w22/coordinator_retry141/dry_work/00/69/00692f30/00692f30.obj:     file format pe-i386
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??2@YAPAXIPAX@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+0000001b DISP32            ?LowerBound@CInterfaceMap@@QAEPAUEntry@1@PBJ@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetCarrying@CThingCreatureBase@@QAE_NPAPAUCTCCarrying@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??0CBaseIntelligentPointer@@QAE@XZ
+00000011 dir32             ??_7CIntelligentPointer_CThing@@6B@
+00000016 DISP32            ?SetPItem@CBaseIntelligentPointer@@QAEXPAUCThing@@@Z
+
+
+RELOCATION RECORDS FOR [.rdata]:
+OFFSET   TYPE              VALUE
+00000000 dir32             ??_ECIntelligentPointer_CThing@@UAEPAXI@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??0CIntelligentPointer_CThing@@QAE@PAUCThing@@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000001 DISP32            ??1CBaseIntelligentPointer@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??1CIntelligentPointer_CThing@@UAE@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000001 DISP32            ?GetPItem@CBaseIntelligentPointer@@QBEPAUCThing@@XZ
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetPItem@CIntelligentPointer_CThingCreatureBase@@QBEPAUCThingCreatureBase@@XZ
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000007 DISP32            ?HasPrecedingAction@CCreatureActionBase@@QBE_NXZ
+0000001b DISP32            ?GetPItem@CBaseIntelligentPointer@@QBEPAUCThing@@XZ
+00000038 DISP32            ?LowerBound@CInterfaceMap@@QAEPAUEntry@1@PBJ@Z
+00000054 DISP32            ?GetThingInPrimarySlot@CTCCarrying@@QBEPAUCThing@@XZ
+0000005f DISP32            ??0CBaseIntelligentPointer@@QAE@XZ
+0000006c dir32             ??_7CIntelligentPointer_CThing@@6B@
+00000071 DISP32            ?SetPItem@CBaseIntelligentPointer@@QAEXPAUCThing@@@Z
+0000007a DISP32            ?GetPItem@CBaseIntelligentPointer@@QBEPAUCThing@@XZ
+00000083 DISP32            ?SetPItem@CBaseIntelligentPointer@@QAEXPAUCThing@@@Z
+0000008c DISP32            ??1CBaseIntelligentPointer@@UAE@XZ
+00000096 DISP32            ??2@YAPAXI@Z
+000000aa DISP32            ?GetPItem@CBaseIntelligentPointer@@QBEPAUCThing@@XZ
+000000be DISP32            ??0CCreatureAction_SheatheItemToInventory@@QAE@AAUCThingCreatureBase@@PAUCCreatureActionBase@@J@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ?GetPrecedingAction@CCreatureActionBase@@QBEXAAPAU1@@Z
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET   TYPE              VALUE
+00000004 DISP32            ??1CBaseIntelligentPointer@@UAE@XZ
+00000011 DISP32            ??3@YAXPAX@Z
+
+
+RELOCATION RECORDS FOR [.debug$F]:
+OFFSET   TYPE              VALUE
+00000000 rva32             ??_GCIntelligentPointer_CThing@@UAEPAXI@Z
+
+

@@ -1,0 +1,3 @@
+phase	grade	sha256	command
+canonical_repair	1	ee4c9ea5ef54b50c0888e6bc783f7e6b655deabca348aefcb241f8af5acaabd7	timeout 200 python3 $S/tools/q.py 00692940 $S/w22/repair00692940/snapshot1.cpp GetWorld
+canonical_repair	2	93f38fe249769f9453a4628636dd46b7dc1ac15530b2f8e8703dd5956fc5e99c	timeout 200 python3 $S/w22/repair00692940/q_local.py 00692940 $S/w22/repair00692940/snapshot2.cpp GetWorld; default /O2 /Oy

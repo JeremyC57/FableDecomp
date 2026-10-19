@@ -1,0 +1,10 @@
+# Boolean parser paths, type dispatch and graphics defaults
+
+A64230 grade3 andA63DB0 grade3: parse exactly one item, require symbol type2, compare TRUE then FALSE through native case-insensitive CRT comparison, change owned/referenced boolean only on success and balance all temporary strings. Actual string/parser headers retained; native parser0x28 projection vs donor0x30. Genuine ParsedItem default constructor constructs only String as visible in retail body; native GetSymbol returns const string reference at8. Fixtures cover mixed case, invalid/null text, parser failure, wrong item type, preserved output, calls and cleanup.
+
+A63FC0 one counted grade plus one identical-source/flags verification: native60-byte function includes its five-entry switch table. Root verifies exact local COFF label offsets and native branches for type1,2default,3,4,5; fixtures cover unsupported/negative/extreme types, both dependency outcomes, original parser/reference identity and unchanged output.
+
+9FCEF0 grade3: real void GetDefault(CBankStateBlock&) writes defaults into the argument. Actual graphic-state/pixel headers plus fixed-width field view. Root verifies six channel-width Initialise calls and eight SDK-enum calls; tests initial96-byte zeroing,14-call order/addresses/arguments, every scalar/flag, preserved output vptr and untouched receiver. Explicit method/data projections do not claim full engine construction, virtual dispatch integration or pixel-format dependency internals.
+
+All four independently pass VC7.1 production-byte comparison/native fixtures and actual expanded-source host C++98/O2/no-elide. Root audit covers62 relocations including all jump-table operands, complete TRUE/FALSE/empty strings, CRT IAT identity and genuine PDB signatures. Ten immutable source grades and one documented same-source/flags verification preserved; no root source/flag changes or automatic sweeps.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

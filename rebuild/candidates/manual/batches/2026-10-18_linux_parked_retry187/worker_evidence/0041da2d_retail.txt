@@ -1,0 +1,86 @@
+0041da2d 55                   push ebp
+0041da2e 8bec                 mov ebp, esp
+0041da30 51                   push ecx
+0041da31 51                   push ecx
+0041da32 53                   push ebx
+0041da33 56                   push esi
+0041da34 57                   push edi
+0041da35 8b3dac8a3b01         mov edi, dword ptr [0x13b8aac]
+0041da3b 85ff                 test edi, edi
+0041da3d 8bf1                 mov esi, ecx
+0041da3f 747e                 je 0x41dabf
+0041da41 8b8f88010000         mov ecx, dword ptr [edi + 0x188]
+0041da47 85c9                 test ecx, ecx
+0041da49 743c                 je 0x41da87
+0041da4b 8b01                 mov eax, dword ptr [ecx]
+0041da4d ff9058020000         call dword ptr [eax + 0x258]
+0041da53 84c0                 test al, al
+0041da55 0f85bb000000         jne 0x41db16
+0041da5b 8b07                 mov eax, dword ptr [edi]
+0041da5d 8b5d08               mov ebx, dword ptr [ebp + 8]
+0041da60 8bcf                 mov ecx, edi
+0041da62 ff9040020000         call dword ptr [eax + 0x240]
+0041da68 85db                 test ebx, ebx
+0041da6a 8b06                 mov eax, dword ptr [esi]
+0041da6c 8bce                 mov ecx, esi
+0041da6e 7f2c                 jg 0x41da9c
+0041da70 f7db                 neg ebx
+0041da72 895d08               mov dword ptr [ebp + 8], ebx
+0041da75 da4d08               fimul dword ptr [ebp + 8]
+0041da78 6a07                 push 7
+0041da7a d99ec4000000         fstp dword ptr [esi + 0xc4]
+0041da80 ff10                 call dword ptr [eax]
+0041da82 e98f000000           jmp 0x41db16
+0041da87 8b07                 mov eax, dword ptr [edi]
+0041da89 8b5d08               mov ebx, dword ptr [ebp + 8]
+0041da8c 8bcf                 mov ecx, edi
+0041da8e ff9040020000         call dword ptr [eax + 0x240]
+0041da94 85db                 test ebx, ebx
+0041da96 8b06                 mov eax, dword ptr [esi]
+0041da98 8bce                 mov ecx, esi
+0041da9a 7e19                 jle 0x41dab5
+0041da9c da4d08               fimul dword ptr [ebp + 8]
+0041da9f 6a06                 push 6
+0041daa1 d99ec4000000         fstp dword ptr [esi + 0xc4]
+0041daa7 ff10                 call dword ptr [eax]
+0041daa9 c786c4000000000080bf mov dword ptr [esi + 0xc4], 0xbf800000
+0041dab3 eb61                 jmp 0x41db16
+0041dab5 f7db                 neg ebx
+0041dab7 895d08               mov dword ptr [ebp + 8], ebx
+0041daba da4d08               fimul dword ptr [ebp + 8]
+0041dabd ebb9                 jmp 0x41da78
+0041dabf a1988a3b01           mov eax, dword ptr [0x13b8a98]
+0041dac4 8b08                 mov ecx, dword ptr [eax]
+0041dac6 3bc8                 cmp ecx, eax
+0041dac8 744c                 je 0x41db16
+0041daca 8b4908               mov ecx, dword ptr [ecx + 8]
+0041dacd 8b01                 mov eax, dword ptr [ecx]
+0041dacf ff90bc020000         call dword ptr [eax + 0x2bc]
+0041dad5 85c0                 test eax, eax
+0041dad7 740e                 je 0x41dae7
+0041dad9 8b10                 mov edx, dword ptr [eax]
+0041dadb 8bc8                 mov ecx, eax
+0041dadd ff9258020000         call dword ptr [edx + 0x258]
+0041dae3 84c0                 test al, al
+0041dae5 752f                 jne 0x41db16
+0041dae7 a1988a3b01           mov eax, dword ptr [0x13b8a98]
+0041daec d9ee                 fldz
+0041daee d95df8               fstp dword ptr [ebp - 8]
+0041daf1 6a00                 push 0
+0041daf3 db4508               fild dword ptr [ebp + 8]
+0041daf6 8d55f8               lea edx, [ebp - 8]
+0041daf9 d80d3c002301         fmul dword ptr [0x123003c]
+0041daff d95dfc               fstp dword ptr [ebp - 4]
+0041db02 8b00                 mov eax, dword ptr [eax]
+0041db04 8b4808               mov ecx, dword ptr [eax + 8]
+0041db07 d9ee                 fldz
+0041db09 8b01                 mov eax, dword ptr [ecx]
+0041db0b 51                   push ecx
+0041db0c d91c24               fstp dword ptr [esp]
+0041db0f 52                   push edx
+0041db10 ff9084000000         call dword ptr [eax + 0x84]
+0041db16 5f                   pop edi
+0041db17 5e                   pop esi
+0041db18 5b                   pop ebx
+0041db19 c9                   leave
+0041db1a c20400               ret 4

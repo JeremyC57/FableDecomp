@@ -1,0 +1,12 @@
+offset	native_target	symbol
+0000000b	0052cc50	??0CChangingStateComponent@NUISystem@@QAE@J@Z
+00000017	012470cc	??_7CIconText@NUISystem@@6BCUIInterface@1@@
+0000001e	012470a8	??_7CIconText@NUISystem@@6BCObserver@1@@
+00000025	012470a0	??_7CIconText@NUISystem@@6BCActionParam@1@@
+0000002a	0099aed0	??0CWideString@@QAE@XZ
+00000035	0099aed0	??0CWideString@@QAE@XZ
+00000050	0099a2d0	??0CBaseClass@@QAE@XZ
+00000056	0122f598	??_7CEnginePrimitiveHandle@@6B@
+00000066	0099a2d0	??0CBaseClass@@QAE@XZ
+0000006c	0122f598	??_7CEnginePrimitiveHandle@@6B@
+000000a0	00541fd0	?UpdateFont@CIconText@NUISystem@@QAEXXZ

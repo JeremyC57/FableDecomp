@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00557960   RELOCATION_MATCH PASS   CanRedefineAction
+
+WINS: 1
+  00557960 RELOCATION_MATCH CKeyRedefiner::CanRedefineAction
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CKeyRedefiner_CanRedefineAction_00557960

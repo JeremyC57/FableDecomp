@@ -1,0 +1,6 @@
+# Water static-map cleanup
+
+00b6db80 (178 bytes): genuine C++ releases background vertex/index buffers in native order and zeroes each count after its own release, clears the geometry flag, then discards live async loading data and resets its two counted pointers. The bank-file pointer is cleared unconditionally; the neighboring entry prefix remains untouched. Shared water/index/vertex headers are included with field-free buffer method views and documented native offsets. Main independently audited native body, vertexA63200/indexAC1EE0 and async9D68A0 (single ECX pair-pointer argument), plus fastcall deletion callbacks using Info.Data.
+
+Exact-source fixtures cover geometry/no-geometry, absent loadingData preserving both references, nullInfo, final/shared/zero refcounts, callback deletion order, unchanged neighboring state, correct native offsets, and DiscardAsyncData clearing the live pointer before the subsequent reset. Count0 retains native unsigned underflow, while the caller pointer is cleared. Host-O2 and canonical VC7.1 checks pass. Three new source grades (firstSRC_FAIL included), plus UNCERTAIN original reservation4; no fabricated historical count.
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

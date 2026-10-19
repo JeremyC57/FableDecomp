@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00e32200   RELOCATION_MATCH PASS   EndMission
+0063a540   RELOCATION_MATCH PASS   GetThemeMinCameraSizeZOffsetAt
+
+WINS: 2
+  00e32200 RELOCATION_MATCH CQuestCompletionWorker00E32200::EndMission
+  0063a540 RELOCATION_MATCH CWorldMap::GetThemeMinCameraSizeZOffsetAt
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CQuestCompletionWorker00E32200_EndMission_00e32200
+  CWorldMap_GetThemeMinCameraSizeZOffsetAt_0063a540

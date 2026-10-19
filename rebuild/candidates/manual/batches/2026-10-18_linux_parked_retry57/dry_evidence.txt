@@ -1,0 +1,7 @@
+addr       parity           behav  name
+007464a0   RELOCATION_MATCH PASS   InsertDefault
+0077bd70   MATCH            PASS   CEnginePrimitiveStaticMesh
+
+WINS: 2
+  007464a0 RELOCATION_MATCH CEnginePrimitiveHandleList::InsertDefault
+  0077bd70 MATCH CEnginePrimitiveStaticMesh::??0CEnginePrimitiveStaticMesh

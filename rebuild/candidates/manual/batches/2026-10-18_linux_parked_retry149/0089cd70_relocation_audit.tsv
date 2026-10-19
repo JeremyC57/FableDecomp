@@ -1,0 +1,6 @@
+offset	native_target	symbol
+00000061	0040f020	?LowerBound@ComponentMap@@QAEPAUComponentEntry@@ABJ@Z
+00000079	007446a0	?GetPerceivedThing@PerceiveMethods@@QBEPBUCThingNative@@XZ
+00000091	00744440	?GetSoundRadius@PerceiveMethods@@QBEMXZ
+0000009c	004c73d0	?GetPosition@CThingNative@@QBEABUC3DVector@@XZ
+000000a5	004c73d0	?GetPosition@CThingNative@@QBEABUC3DVector@@XZ

@@ -1,0 +1,5 @@
+# Correct old pending-history reservations
+
+Initial fresh-chunk selection searched working lanes and canonical compiled sources, but omitted old rebuild/candidates/manual/pending candidates. This root preflight omission affected five rows. Existing source snapshots are preserved; four historical attempts per affected original row are reserved as UNCERTAIN, not falsely reconstructed as proven invocations. Current observed compiler grades are unchanged.
+
+691560:4 uncertain+3 new=7,3 remain. Landed6F9430:4+5=9,1 remains; its independently verified acceptance is unchanged.6AF2D0:4+0=4,6 remain.720610 and543910:4 uncertain+10 observed=14 reserved/observed, allowance exhausted; both remain failed candidates, no further grading. They are not14 proven historical compiler invocations.720610 retry7 explicitly says not retried, so its duplicate archive adds no phase. Workers informed and ledgers reconciled. Future root fresh-selection must include pending-source addresses before assigning zero-history rows.

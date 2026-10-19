@@ -1,0 +1,4 @@
+# Radix-tree ordered child insertion
+
+00bf2a10 (188 bytes): native/PDB CNodeHeader28 and tree8 layouts agree; no generated class headers exist. No masked relocations. Full native audit confirms radix descent by key word/bit range, nearest occupied predecessor search, ordered sibling insertion, head/tail links and native preservation of the initial PrevSibling on head insertion. Main expanded exact-source fixtures to all24 permutations of sparse16-slot insertion, nonzero key-word offset, high-bit extraction, three-level descent, ordered links/parents, retained Entry/key/tree data and untouched ancestor lists. Observed2 new grades plus explicitly UNCERTAIN historical reservation4 (reserved6/10).
+All independently byte-verified (MATCH or RELOCATION_MATCH) + PASS, with verbatim-source host and canonical VC7.1 fixtures.

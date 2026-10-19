@@ -1,0 +1,11 @@
+addr       parity           behav  name
+007464a0   RELOCATION_MATCH PASS   InsertDefault
+0077bd70   MATCH            PASS   CEnginePrimitiveStaticMesh
+
+WINS: 2
+  007464a0 RELOCATION_MATCH CEnginePrimitiveHandleList::InsertDefault
+  0077bd70 MATCH CEnginePrimitiveStaticMesh::??0CEnginePrimitiveStaticMesh
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveHandleList_InsertDefault_007464a0
+  CEnginePrimitiveStaticMesh_CEnginePrimitiveStaticMesh_0077bd70

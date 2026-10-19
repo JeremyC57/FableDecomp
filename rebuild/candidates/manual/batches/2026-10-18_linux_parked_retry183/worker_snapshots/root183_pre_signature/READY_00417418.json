@@ -1,0 +1,17 @@
+{
+  "address": "00417418",
+  "status": "RELOCATION_MATCH",
+  "length": 217,
+  "historical_uncertain": 4,
+  "new_grades": 4,
+  "cumulative": 8,
+  "source_sha256": "651a80d2ed96f4b04dad885ebea57b80afe560add1258d4267bc272310ccd0d7",
+  "fixture_sha256": "3f465793824ce1cc0bd73ce57b6c1e7668d389265c4cdb0759e61430e16ebafb",
+  "tests": [
+    "host C++98 O2 PASS",
+    "host C++98 O2 no-elide PASS",
+    "native VC7.1 O2 PASS"
+  ],
+  "evidence": "evidence/00417418_relocation_audit.json",
+  "limits": "Engine dependency bodies stubbed to check exact caller sequence and field/argument values. Fixture changes display device global after each surface call to verify three native reloads. Allocation-success path covered; allocation failure reaches unconditional Init and requires external allocation success precondition. Actual native CDisplayEngine constructor signature/hierarchy and three emitted slots checked. Quarantined CGameDefinitionManager header declares pointer but asserts sizeof1: only its invalid assertions suppressed, declaration preserved. Caller projection preserves native offsets, actual fable_game/World/DisplayEngine/Surface/PixelFormat headers expanded in fixtures; host uses full pointer widths."
+}

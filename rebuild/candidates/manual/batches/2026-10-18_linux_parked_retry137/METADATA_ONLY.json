@@ -1,0 +1,7 @@
+{
+  "address": "00f00ae0",
+  "before_sha256": "2220df4c4b13ce630eb6e1aa19020276bcd6f0a75a2bdce09c08b6503d8223b8",
+  "after_sha256": "1a5f064910015070fb44238d9e3965818cbc8d888d566c0ebde281fb48a428a0",
+  "compiled_tokens_equal": true,
+  "reason": "Remove unrelated inherited Retail008A9020 provenance comment; no code or flags changed"
+}

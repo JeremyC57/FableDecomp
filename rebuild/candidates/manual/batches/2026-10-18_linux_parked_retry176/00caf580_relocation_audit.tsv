@@ -1,0 +1,13 @@
+offset	native_target	symbol
+00000003	0121728c	__ehhandler$??1CCmdQueue@@UAE@XZ
+00000009	00000000	__except_list
+00000011	00000000	__except_list
+0000003f	00cb1380	?GetNextI@CBaseList@@QBEPAXAAPAUCNode@1@@Z
+00000058	00cb1340	?RemoveAll@CBaseList@@QAEXXZ
+00000078	00cb1380	?GetNextI@CBaseList@@QBEPAXAAPAUCNode@1@@Z
+00000091	00cb1340	?RemoveAll@CBaseList@@QAEXXZ
+000000c3	00cb01b0	??1CAMEvent@@QAE@XZ
+000000cf	00cb1890	??1CBaseList@@QAE@XZ
+000000db	00cb1890	??1CBaseList@@QAE@XZ
+000000e5	0143fde4	__imp__DeleteCriticalSection@4
+000000f3	00000000	__except_list

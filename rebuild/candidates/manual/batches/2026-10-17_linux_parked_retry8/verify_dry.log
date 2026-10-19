@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00557960   RELOCATION_MATCH PASS   CanRedefineAction
+
+WINS: 1
+  00557960 RELOCATION_MATCH CKeyRedefiner::CanRedefineAction

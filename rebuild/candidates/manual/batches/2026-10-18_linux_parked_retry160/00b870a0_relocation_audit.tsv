@@ -1,0 +1,17 @@
+offset	native_target	symbol
+0000000b	012a3a94	??_7CEngineScreenEffectDisplacementRenderer@@6B@
+00000013	01436e98	?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A
+0000001f	00f37030	?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z
+00000036	013cb508	?g_pRenderStateManager_013cb508@@3PAUCRenderStateManagerCaptureView@@A
+0000003b	00a05840	?RestoreCaptureBlockAtGlobal@@YIXPAUCRenderStateManagerCaptureView@@@Z
+0000004d	0129a054	??_7CPixelShader@@6B@
+0000005f	0129a030	??_7CShaderBase@@6B@
+00000077	0129b3d0	??_7CVertexShader@@6B@
+0000009c	0129a054	??_7CPixelShader@@6B@
+000000c1	0129b3d0	??_7CVertexShader@@6B@
+000000e3	0122f84c	??_7CSurface@@6B@
+000000e8	009f2e20	?Uninitialise@CSurface@@QAEXXZ
+000000f1	0122f84c	??_7CSurface@@6B@
+000000f6	009f2e20	?Uninitialise@CSurface@@QAEXXZ
+000000fd	0099a2e0	??1CBase@@UAE@XZ
+00000106	00b59730	??1CEngineComponent@@UAE@XZ
