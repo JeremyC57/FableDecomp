@@ -1,0 +1,14 @@
+address	name	evidence
+009d5a90	CBankFileAsync::RestartReads	not CMusicManager::UpdateRegistrations (chunk 197)
+00b423f0	CEngineWorldMap::CEngineWorldMap	vtable 0x012A1F50; not CNavigationLayer::Initialise
+00b59710	CEngineComponent::CEngineComponent	
+006a2220	CTCCarrying::CollectCarrySlots_006a2220	a CarrySlots collector; the real COptimisedPrimitive::RemapGroups is 0x00AC99F0
+00ad7050	QuadricOptimiserInternals::COptimisedVertex::operator=	compiler-generated
+00ad77f0	QuadricOptimiserInternals::COptimisedVertex::COptimisedVertex(const COptimisedVertex&)	compiler-generated copy ctor
+00a7a760	CNavQuadTree::CNavQuadTree	not CPSCOrbit
+00a762e0	CNavQuadTree::Activate	not CXMVPlaybackInfo
+00a76320	StaticHalfGetter_00a76320	static getter returning 0.5f; not GetCombatMinDistance
+00a17480	std::list<CNavQuadTreeMap>::insert	iterator insert
+00aea9f0	NParticleEngine::GetParticleUpdateRate	not GFGetPreMainMemoryUsed
+00a7f880	std::_Rb_tree<long,...>::find	landed as CRetailTree_longkey::find (sweep)
+00535cd0	C2DBoxF::ContainsPoint	returns bool (test al,al); landed declares long (sweep)

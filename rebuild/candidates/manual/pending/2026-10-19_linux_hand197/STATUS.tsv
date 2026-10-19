@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00eb1ec0	RELOCATION_MATCH	178v178	PASS	CMurderTwistSheriff::Init (seh_Sheriff of the parent); previous agent's source, re-graded, CBase renamed CBaseClass
+00eb3ba0	DIFFER	186v187	-	likely CMurderTwistSheriffGuard::Init (ID +0x30 indexes parent seh_Guards +0x7c); register allocation of the lea esi,[eax+edx]
+00eb53a0	RELOCATION_MATCH	166v166	PASS	Init + SetFriendsWithEverythingFlag(false); previous agent's source
+00eb6200	RELOCATION_MATCH	166v166	PASS	byte twin of 0x00EB53A0 (another entity class)
+009d5a90	RELOCATION_MATCH	200v200	PASS	really CBankFileAsync::RestartReads (label CMusicManager::UpdateRegistrations wrong)
+00db5260	RELOCATION_MATCH	167v167	PASS	CNOVI_BarrelMan::Init; parent quest modelled pack(1) (PDB C3DVector at odd offsets)
+00daed30	RELOCATION_MATCH	172v172	PASS	CNOVI_Bully::Init
+00db80c0	DIFFER	217v232	-	CNOVI_CreatedBeetle::Main; retail keeps two DeregisterTimer+epilogue copies, lane cross-jumps
+00a780b0	DIFFER	236v238	-	~CNavConnectorNode; ebx/ebp swap + tag push order (find tag is passed by const reference)
+00a77a10	DIFFER	226v226	-	CNavNavigableLeafNode::SaveToFile; two homed locals swap dead-argument slots
+00a792e0	DIFFER	238v238	-	CNavQuadTree::ClearNodes; xor edx/test vs xor ecx/cmp in the array release
+00a77ca0	RELOCATION_MATCH	187v187	PASS	CNavQuadTreeNode::ConvertIndexesToPointers; inline map::find over out-of-line _Rb_tree::find
+00a77b80	DIFFER	166v169	-	CNavSwitchableLeafNode::MakeRegion; lane shrink-wraps the callee-saved pushes
+00b423f0	RELOCATION_MATCH	223v223	PASS	really the CEngineWorldMap ctor (vtable 0x012A1F50); label CNavigationLayer::Initialise wrong
+00a1ab40	DIFFER	166v166	-	GetNearestNavigablePosTo; retail copies X through the FPU too
+00a1af00	DIFFER	223v227	-	IsNavLineOfSightClear; FPU way-point copies + temp slot sharing
+00a1b4e0	RELOCATION_MATCH	188v188	PASS	GetSpeedReducedForStartAndEnd (0.35f / 0.65f)
+00a1be10	RELOCATION_MATCH	208v208	PASS	SmoothCorners (8-aligned frame, results unused in retail)
+00a1bee0	RELOCATION_MATCH	220v220	PASS	UpdateLastPosition
+00a1df60	DIFFER	206v206	-	CalculateNavigableWidthOfLine(C3DVector) overload; FPU way-point copies + overlapping temp
+00a14fd0	RELOCATION_MATCH	200v200	PASS	CNavigatorManager::IsInSameMap (ftol of the first point hoisted by VC)
+00a156d0	DIFFER	236v237	-	AddNavigationMap(long, CNavigationAreaInit&); header reload before insert + scheduling
+00a157c0	DIFFER	194v196	-	AddNavigationMap(long, C2DBoxI, CCharString, CAFile&, process); one header reload before insert
+00a16050	RELOCATION_MATCH	165v165	PASS	ActivateNavigationMap (static 0.5f half-cell helper, debug focus)
+0065f056	DIFFER	164v164	-	CNearestBuildingWithProperty::operator(); float sum order z,x,y vs lane z,y,x
+0042ebb6	RELOCATION_MATCH	198v198	PASS	CNewFrontendGameComponent::Shutdown; pragma optimize("y",off)+("s",on)
+00f35e00	RELOCATION_MATCH	204v204	PASS	CNoise::InitPerlinNoise
+00dbfea0	RELOCATION_MATCH	210v210	PASS	COakValeBanditRaidBandit::Init (OVBR sight/sound radii, opens OakValeBanditRaidGate)
+00681680	RELOCATION_MATCH	202v202	PASS	COpinionTransientOffset(base, COpinionPersonalityTraits) ctor
+006a2220	DIFFER	162v161	-	really CTCCarrying (CarrySlots) collector; label COptimisedPrimitive::RemapGroups wrong; frame homing gap
+00ac7eb0	DIFFER	215v215	-	ComputeSelfContraction; x87 operand order in the normal term and dot product
+00ac82a0	DIFFER	192v192	-	ComputeSubContractionCost; prologue push/spill scheduling only
+00ac85d0	DIFFER	183v165	-	CollapseSegments; empty allocator overlaid on the live threshold slot (lane gap)
+00acd840	RELOCATION_MATCH	179v179	PASS	COptimisedPrimitive::PerformContraction
+00ad7050	RELOCATION_MATCH	196v196	PASS	really COptimisedVertex::operator= (compiler-generated); catalog says ctor
+00ad77f0	RELOCATION_MATCH	187v187	PASS	COptimisedVertex copy ctor (compiler-generated; C3DVector user copy ctor)
+007b7d20	RELOCATION_MATCH	184v184	PASS	COverheadDisplayDef::Transfer (three bools)
+00b18060	DIFFER	170v170	-	CPSCAttractor::DatabaseCopy; bitfield merge re-reads the destination byte
+00b1db00	RELOCATION_MATCH	219v219	PASS	CPSCDecalRenderer::Update(system, float, bool&) - param order from the arg-slot homing
+00b1ffc0	RELOCATION_MATCH	175v175	PASS	~CPSCDecalRenderer (novtable chain, two CEnginePrimitiveHandle members)

@@ -1,0 +1,73 @@
+// COptimisedPrimitive::CollapseSegments(float) -- mark every segment no longer than the threshold and, when any is marked, retire the faces that belong to a marked segment
+// Leaf: CollapseSegments
+// Grade: DIFFER(183v165) -- frame layout: retail overlays the empty allocator temporary on the live threshold argument slot (no frame slot of its own; GOTCHAS wave 24l lane gap) and keeps the byte array's data pointer in ebp for the whole body including the free; the lane gives the temporary a frame byte and reloads the pointer
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AC85D0, 163 bytes (+ int3 padding; `ret 4`).
+// Callees: CArray<unsigned char>::CArray(count, const unsigned char& fill, const allocator&) 0x009D2A40 (landed as CByteArray in
+//   CCachedFile::CCachedFile 0x00A5B590), free 0x00BFEA14 (the byte array's inline destructor).
+// Layout: retail COptimisedPrimitive (STLport 12-byte containers): Faces +0x1c (72-byte COptimisedFace: Exists +0x3c, Segment
+//   +0x44), SegmentCount +0x40, SegmentSizes +0x44 (float array start).
+// Shape: the marks are a byte array local filled with 0 (the fill byte a frame byte; the empty allocator temporary overlays the
+//   live threshold slot, as VC does for an unnamed empty temporary); `size <= threshold` (test ah,41h ; jp); the removed count is
+//   unsigned (`jbe`); the face walk takes size() once as a signed count.
+extern "C" void __cdecl free(void* block);           // 0x00BFEA14
+struct SAllocator { SAllocator() { } };              // empty allocator passed by const reference (no zero-init of the temporary)
+struct CByteArray {                                  // retail CArray<unsigned char>: {first, last, end}
+    unsigned char* m_first;
+    unsigned char* m_last;
+    unsigned char* m_end;
+    CByteArray(unsigned long count, const unsigned char& fill, const SAllocator& al = SAllocator());   // 0x009D2A40
+    ~CByteArray() { if (m_first) free(m_first); }
+    unsigned char& operator[](unsigned long n) { return m_first[n]; }
+};
+struct C3DVector { float X, Y, Z; };
+template <class T> struct CArray {                   // retail CArray (STLport vector): first / last / end
+    T* m_first;
+    T* m_last;
+    T* m_end;
+    unsigned long size() const { return m_last - m_first; }
+    T& operator[](unsigned long n) const { return m_first[n]; }
+};
+namespace QuadricOptimiserInternals {
+struct COptimisedFace {                              // 72 bytes
+    unsigned long VertexIndices[3];                  // +0x00
+    unsigned long UniqueVertexIndices[3];            // +0x0c
+    long          Edges[3];                          // +0x18
+    C3DVector     UTangent;                          // +0x24
+    C3DVector     VTangent;                          // +0x30
+    bool          Exists;                            // +0x3c
+    unsigned long OutputIndex;                       // +0x40
+    long          Segment;                           // +0x44
+};
+}
+using namespace QuadricOptimiserInternals;
+class COptimisedPrimitive {
+public:
+    long                   MaterialIndex;            // +0x00
+    unsigned char          UniqueVertices[0xc];      // +0x04
+    unsigned char          Vertices[0xc];            // +0x10
+    CArray<COptimisedFace> Faces;                    // +0x1c
+    unsigned char          Edges[0xc];               // +0x28
+    unsigned char          VertexPairContractions[0xc];   // +0x34
+    long                   SegmentCount;             // +0x40
+    CArray<float>          SegmentSizes;             // +0x44
+    void CollapseSegments(float threshold);
+};
+
+void COptimisedPrimitive::CollapseSegments(float threshold)
+{
+    unsigned long removed = 0;
+    CByteArray collapse(SegmentCount, 0);
+    for (long i = 0; i < SegmentCount; ++i) {
+        if (SegmentSizes[i] <= threshold) {
+            collapse[i] = 1;
+            ++removed;
+        }
+    }
+    if (removed > 0) {
+        long faceCount = Faces.size();
+        for (long j = 0; j < faceCount; ++j) {
+            if (collapse[Faces[j].Segment])
+                Faces[j].Exists = false;
+        }
+    }
+}

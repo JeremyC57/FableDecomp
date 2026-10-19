@@ -245594,6 +245594,167 @@ $catalog = @(
         TestSource = '00/eb/CMurderTwistAssassinGuard_Init_00eb5500_test.cpp'
         PassPattern = '00eb5500_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0042ebb6'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_Shutdown_0042ebb6.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_Shutdown_0042ebb6_test.cpp'
+        PassPattern = '0042ebb6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00681680'
+        Module = 'COpinionTransientOffset'
+        Source = '00/68/COpinionTransientOffset_COpinionTransientOffset_00681680.cpp'
+        TestSource = '00/68/COpinionTransientOffset_COpinionTransientOffset_00681680_test.cpp'
+        PassPattern = '00681680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b7d20'
+        Module = 'COverheadDisplayDef'
+        Source = '00/7b/COverheadDisplayDef_Transfer_007b7d20.cpp'
+        TestSource = '00/7b/COverheadDisplayDef_Transfer_007b7d20_test.cpp'
+        PassPattern = '007b7d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d5a90'
+        Module = 'CBankFileAsync'
+        Source = '00/9d/CBankFileAsync_RestartReads_009d5a90.cpp'
+        TestSource = '00/9d/CBankFileAsync_RestartReads_009d5a90_test.cpp'
+        PassPattern = '009d5a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a14fd0'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_IsInSameMap_00a14fd0.cpp'
+        TestSource = '00/a1/CNavigatorManager_IsInSameMap_00a14fd0_test.cpp'
+        PassPattern = '00a14fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a16050'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_ActivateNavigationMap_00a16050.cpp'
+        TestSource = '00/a1/CNavigatorManager_ActivateNavigationMap_00a16050_test.cpp'
+        PassPattern = '00a16050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1b4e0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_GetSpeedReducedForStartAndEnd_00a1b4e0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_GetSpeedReducedForStartAndEnd_00a1b4e0_test.cpp'
+        PassPattern = '00a1b4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1be10'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_SmoothCorners_00a1be10.cpp'
+        TestSource = '00/a1/CNavigatorAStar_SmoothCorners_00a1be10_test.cpp'
+        PassPattern = '00a1be10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1bee0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_UpdateLastPosition_00a1bee0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_UpdateLastPosition_00a1bee0_test.cpp'
+        PassPattern = '00a1bee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a77ca0'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_ConvertIndexesToPointers_00a77ca0.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_ConvertIndexesToPointers_00a77ca0_test.cpp'
+        PassPattern = '00a77ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00acd840'
+        Module = 'COptimisedPrimitive'
+        Source = '00/ac/COptimisedPrimitive_PerformContraction_00acd840.cpp'
+        TestSource = '00/ac/COptimisedPrimitive_PerformContraction_00acd840_test.cpp'
+        PassPattern = '00acd840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad7050'
+        Module = 'QuadricOptimiserInternals::COptimisedVertex'
+        Source = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_operator_00ad7050.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_operator_00ad7050_test.cpp'
+        PassPattern = '00ad7050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad77f0'
+        Module = 'QuadricOptimiserInternals::COptimisedVertex'
+        Source = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_COptimisedVertex_00ad77f0.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCOptimisedVertex_COptimisedVertex_00ad77f0_test.cpp'
+        PassPattern = '00ad77f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1db00'
+        Module = 'CPSCDecalRenderer'
+        Source = '00/b1/CPSCDecalRenderer_Update_00b1db00.cpp'
+        TestSource = '00/b1/CPSCDecalRenderer_Update_00b1db00_test.cpp'
+        PassPattern = '00b1db00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1ffc0'
+        Module = 'CPSCDecalRenderer'
+        Source = '00/b1/CPSCDecalRenderer_CPSCDecalRenderer_00b1ffc0.cpp'
+        TestSource = '00/b1/CPSCDecalRenderer_CPSCDecalRenderer_00b1ffc0_test.cpp'
+        PassPattern = '00b1ffc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b423f0'
+        Module = 'CEngineWorldMap'
+        Source = '00/b4/CEngineWorldMap_CEngineWorldMap_00b423f0.cpp'
+        TestSource = '00/b4/CEngineWorldMap_CEngineWorldMap_00b423f0_test.cpp'
+        PassPattern = '00b423f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daed30'
+        Module = 'CNOVI_Bully'
+        Source = '00/da/CNOVIBully_Init_00daed30.cpp'
+        TestSource = '00/da/CNOVIBully_Init_00daed30_test.cpp'
+        PassPattern = '00daed30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db5260'
+        Module = 'CNOVI_BarrelMan'
+        Source = '00/db/CNOVIBarrelMan_Init_00db5260.cpp'
+        TestSource = '00/db/CNOVIBarrelMan_Init_00db5260_test.cpp'
+        PassPattern = '00db5260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dbfea0'
+        Module = 'COakValeBanditRaidBandit'
+        Source = '00/db/COakValeBanditRaidBandit_Init_00dbfea0.cpp'
+        TestSource = '00/db/COakValeBanditRaidBandit_Init_00dbfea0_test.cpp'
+        PassPattern = '00dbfea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb1ec0'
+        Module = 'CMurderTwistSheriff'
+        Source = '00/eb/CMurderTwistSheriff_Init_00eb1ec0.cpp'
+        TestSource = '00/eb/CMurderTwistSheriff_Init_00eb1ec0_test.cpp'
+        PassPattern = '00eb1ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb53a0'
+        Module = 'CMurderTwistSheriff'
+        Source = '00/eb/CMurderTwistSheriff_Init_00eb53a0.cpp'
+        TestSource = '00/eb/CMurderTwistSheriff_Init_00eb53a0_test.cpp'
+        PassPattern = '00eb53a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6200'
+        Module = 'CMurderTwistSheriff'
+        Source = '00/eb/CMurderTwistSheriff_Init_00eb6200.cpp'
+        TestSource = '00/eb/CMurderTwistSheriff_Init_00eb6200_test.cpp'
+        PassPattern = '00eb6200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f35e00'
+        Module = 'CNoise'
+        Source = '00/f3/CNoise_InitPerlinNoise_00f35e00.cpp'
+        TestSource = '00/f3/CNoise_InitPerlinNoise_00f35e00_test.cpp'
+        PassPattern = '00f35e00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
