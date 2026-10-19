@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00eff4d0	RELOCATION_MATCH	226v226	PASS	entity-script Main (vtable 0x012F701C); functor temporary + early return
+00f01c50	RELOCATION_MATCH	205v205	PASS	entity-script Main (vtable 0x012F7338); sibling of 00eff4d0
+00b23a90	RELOCATION_MATCH	186v186	PASS	OffWorldTickProcessInfo at retail +0xF8 (PDB +0x100)
+00b24400	DIFFER	223v238	-	x87 transform term order / X spill (lane gap)
+00b2a010	DIFFER	163v163	-	push_back temp homed in globalPointer slot vs component slot (tag-over-live-slot lane gap)
+00b81ad0	RELOCATION_MATCH	236v236	PASS	identity fills in Current, Inverse, Last order
+00b81180	RELOCATION_MATCH	167v167	PASS	owner ObjectTransform read at each use
+00b3acf0	RELOCATION_MATCH	203v203	PASS	novtable chain; root CIVCountedPointeeBase vtable stored last
+00770ac0	RELOCATION_MATCH	231v231	PASS	is ~CTCWeaponTrail (vtable 0x0126A5B4)
+00bcf670	RELOCATION_MATCH	231v231	PASS	2D twin; centre built member-wise
+00be0de0	RELOCATION_MATCH	196v196	PASS	C3DVector memberwise copy ctor keeps the frame temporary
+009fc810	RELOCATION_MATCH	191v191	PASS	is a CGraphicFrameData UV getter; named float divisors
+00be2310	RELOCATION_MATCH	223v223	PASS	handle reference + bool enable local
+00be23f0	RELOCATION_MATCH	216v216	PASS	handle reference before the manager lookup
+00bcef80	RELOCATION_MATCH	187v187	PASS	inline C3DVector operators, float scale local
+00bcf430	RELOCATION_MATCH	191v191	PASS	counted pointer after the early return
+00bd2a90	DIFFER	197v218	-	register allocation / CSE of the shared-data pointer
+00bc65d0	DIFFER	210v210	-	manager-table global in edx vs ecx (register choice)
+006866f0	RELOCATION_MATCH	222v222	PASS	is ~CTCCreatureOpinionOfHero (vtable 0x0125BC3C)
+00bbd200	RELOCATION_MATCH	190v190	PASS	clear(); resize(0); inline-then-out-of-line erase
+00bdc2d0	RELOCATION_MATCH	237v237	PASS	indexed FrustrumPlanes[i] reference
+00bdd210	RELOCATION_MATCH	218v218	PASS	delete[] Patches / delete PatchTree, base CMovableResource
+00bdd2f0	DIFFER	163v169	-	signed /16 of a zero-extended ushort (lane folds to shr) + register choice
+00bf44a0	DIFFER	185v208	-	inline push_back at two call sites (retail) vs one (lane)
+00b44f20	DIFFER	195v189	-	hoisted zero stores / loop alignment
+00b59a30	RELOCATION_MATCH	205v205	PASS	camera global read into a loop-body local
+00b429e0	RELOCATION_MATCH	172v172	PASS	body-assignment order fixes the schedule
+00b8d6c0	DIFFER	172v181	-	register allocation around inlined lower_bound
+00bc5820	DIFFER	177v182	-	spilled bool result kept in cl (register allocation)
+00bd27f0	DIFFER	176v176	-	values 2/3 homed in the dead argument slot with the tag (tag-over-live-slot lane gap)
+00bca6b0	DIFFER	188v188	-	scheduling: Z copy / renderer fetch order
+00ba6ef0	DIFFER	176v176	-	twin of 00bd27f0 (tag-over-live-slot lane gap)
+00bcc700	DIFFER	190v192	-	twin of 00bca6b0 (scheduling)
+005954ad	DIFFER	213v213	-	pop edi placement before the base vtable store (scheduling)
+00cac4a0	DIFFER	194v194	-	lea ecx vs lea eax for the setter argument
+00b4ce20	MATCH	173v173	PASS	C3DBoundingSphere temporaries with memberwise copies
+00b61cd0	DIFFER	209v209	-	centre/ring pointer register naming
+00706d10	RELOCATION_MATCH	226v226	PASS	is the CTCHeroAttachableAppearanceModifiers ctor; explicit vector(3)
+00798e70	RELOCATION_MATCH	213v213	PASS	is the CTCShopKeeper ctor; explicit vector(3)
+00b2b050	DIFFER	186v197	-	loop strength reduction / register allocation
