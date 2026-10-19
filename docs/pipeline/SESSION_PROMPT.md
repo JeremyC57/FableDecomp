@@ -76,7 +76,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
    `rebuild/candidates/manual/pending/<batch>/differ/`.
 8. **Numbers**: never hand-edit coverage; run `python3 tools/write_decomp_dashboard.py` then
    `python3 tools/update_readme_progress.py`. Report one line per landing: landed/total, catalog count,
-   percentage (currently 34,795 landed, 70.2%).
+   percentage (currently 34826 landed, 70.3%).
 9. **Docs as you go**: `docs/HANDOFF.md` (one page, resume point), `docs/ROADMAP.md` (the only task
    list), `docs/pipeline/GOTCHAS.md` (one line per solved problem), `docs/journal/YYYY-MM/` (session
    notes), `docs/journal/FINDINGS_LOG.md` (cited technical truth; also record every gap after two
@@ -115,7 +115,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
   for a CRT call must be declared `throw()`.
 
 ## 6. Where things stand (2026-10-19) and what to do next
-- Catalog 34,795 rows landed (70.2%); chunks 190–195 landed, 196 in authoring, 197–198 cut (`$S/w22/agent197`, `agent198`). Last commits: `fix:` 235 audit-flagged rows repaired and
+- Catalog 34,795 rows landed (70.2%); chunks 190–196 landed, 197 in authoring, 198 cut (`$S/w22/agent197`, `agent198`). Last commits: `fix:` 235 audit-flagged rows repaired and
   re-verified, final relocation audit tables (0 hard rows). Codex's 552-row delivery is reviewed and
   landed except 2 held rows (`pending/2026-10-19_codex_holds/`: 00988490 volatile store order,
   00e32200 split dtor).

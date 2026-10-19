@@ -1,0 +1,14 @@
+address	name	evidence
+008d81f0	NCreatureMode::CModeScorpionKingTailPlunge::CModeScorpionKingTailPlunge	vtable 0x01285860; not CModeJackOfBladesFlash (chunk 196)
+00655f36	std::list<NPlayerGui::CMultiStatBar::CStatUpdate>::push_back	insert before the end node; not ListPushFrontWrapper
+0070c050	CAnimInit::Set	fills a CAnimInit record, 7 dword args; landed rows also call it CInitRumble::Set / CRumbleEffectBase::Initialise (sweep needed)
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	manifest said CPixelShader::CountReferences
+0073dff0	CAnimFilterOfGroup::SetGroup	manifest said CRCHashedString_SetAndHash
+00a66f20	CMouse::CMouse	manifest said NHeroInformationScreens_Mouse_Constructor
+00a66b10	CMouse::ClearStoredEvents	manifest said CGameEventPackage::Clear
+004aa840	CScriptThing::~CScriptThing	manifest said ~C3DPrimitive
+0070d8c0	CAnimateThing::RemoveCombinationAnimsOfType	manifest said CSpellContainerList::AddChild
+006d5ab0	CreatureBrainResetForwarder_006d5ab0	mov ecx,[ecx+1A8h] ; jmp 0x88BB60; manifest _Cons_val
+008c5a50	GetSubDef<CScorpionKingBattleDef>	manifest GetSubDef<CAICreatureWillPowerIndicatorDef>
+008e34c0	std::__copy<CIcicleData*>	STLport; manifest _Move<...>
+013b8388	g_pInputManager	data: input manager (joystick vector at +0x2c); landed rows also name it g_Loader (sweep needed)

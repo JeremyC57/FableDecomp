@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00da45c0	RELOCATION_MATCH	194v194	PASS	entity-script Main; alive-filter scope + do/while frame loop (landed 0xD69F50 shape)
+00ac5080	RELOCATION_MATCH	233v233	PASS	chunk ReadFromFile: by-value ReadULong + resize(count,0) (twin of 0xAB0790)
+0073aac0	RELOCATION_MATCH	219v219	PASS	CTCCreatureModeManager::CModeBase::OnActivate; const carried thing binds const LowerBound 0x4365B0; STAND arm inline SetGroup copy
+008d8ce0	RELOCATION_MATCH	231v231	PASS	CModeBlock::OnActivate; BlockBase sound block; CThingAnimatable root carries the vptr
+008d8dd0	DIFFER	196v196	-	CModeBlock::AnimUpdate; register allocation only (AnimIndex ecx v edx, &init edx v eax)
+00741ee0	RELOCATION_MATCH	205v205	PASS	BriarRose ctor (previous agent), regraded
+008e78c0	RELOCATION_MATCH	218v218	PASS	BriarRose ctor overload (previous agent), regraded
+008e7f80	DIFFER	223v223	-	GetRandomImposter; second-loop index/element register swap (edi/ebp)
+008d88a0	RELOCATION_MATCH	181v181	PASS	CarryingStandBase::FrameUpdate; if(type!=1){..}else Remove places the remove arm last
+008d6da0	DIFFER	222v222	-	CModeConversation::AnimUpdate; register allocation only
+008e08c0	RELOCATION_MATCH	203v203	PASS	Recover; knockdown-recover action temporary, implicit derived dtor
+008d8620	RELOCATION_MATCH	191v191	PASS	DragonFireBeam ctor (previous agent), regraded
+008d86e0	RELOCATION_MATCH	209v209	PASS	DragonFireBeam ctor overload (previous agent), regraded
+008ddfb0	DIFFER	202v202	-	DragonStrafe ctor; push -1 scheduled before the spline zero stores
+008e1580	RELOCATION_MATCH	234v234	PASS	StrafeBurninate path ctor; counted ptr with user copy ctor built in arg slot, C3DVector user operator=
+00868220	RELOCATION_MATCH	216v216	PASS	Drained(thing,drainer); out-param GetInterface + GetCurrentMode()->GetModeType()
+008da7a0	DIFFER	227v227	-	Drained::OnDeactivate; this/&PDrainer in edi/ebx (retail ebx/edi)
+00743be0	RELOCATION_MATCH	176v176	PASS	IceTroll ctor (previous agent), regraded; CIcicleData size corrected to 0x24
+008c7c00	RELOCATION_MATCH	188v188	PASS	IceTroll ctor overload (previous agent), regraded
+008d9650	RELOCATION_MATCH	232v232	PASS	IceTroll OnDeactivate; begin() cached in a local + inline STLport erase
+00741db0	RELOCATION_MATCH	226v226	PASS	Intangible ctor; CModeDragonBase inline ctor takes the "" temporary; inline counted-pointer ctor
+008e72d0	DIFFER	186v186	-	Intangible timed ctor; CRC null test eax/ecx swap only
+008d7e60	RELOCATION_MATCH	176v176	PASS	JackOfBladesFlash ctor; PCreature body assignment
+008d81f0	RELOCATION_MATCH	182v182	PASS	label fix: CModeScorpionKingTailPlunge ctor; pack(1) odd pointer offsets
+00740450	RELOCATION_MATCH	166v166	PASS	JackOfBladesScream ctor
+008d7270	RELOCATION_MATCH	171v171	PASS	OutOfActionBase::OnActivate; fps read into a local before the virtual call
+008d8f30	RELOCATION_MATCH	161v161	PASS	OutOfActionBase::OnDeactivate; HasTC + one-ternary GetTC + inline ClearFlag
+008da2e0	DIFFER	200v195	-	ScorpionKingExhausted::OnActivate; frame 0xc v 8 (out-slot reuse) + def register copy
+008d8120	RELOCATION_MATCH	203v203	PASS	ScorpionKingVulnerable ctor; pack(1) intelligent pointers, 4-aligned vector
+00741fe0	RELOCATION_MATCH	187v187	PASS	Strafe ctor; init list in declaration order
+007420e0	RELOCATION_MATCH	210v210	PASS	~CModeStrafe; novtable + counted-pointer dtors (landed 0x743000 model)
+008e9950	DIFFER	223v215	-	UpdateWeaponState; tail emits two SetChangeOfWeapon blocks (retail shares one)
+008ea220	DIFFER	228v226	-	Strafe FrameUpdate; rumble device via eax, strength store order
+008cc180	RELOCATION_MATCH	177v177	PASS	SummonerLightningOrb ctor
+008cc0b0	RELOCATION_MATCH	173v173	PASS	SummonerSummon ctor
+00740640	RELOCATION_MATCH	226v226	PASS	ThunderLightningStorm ctor
+00ab5d00	RELOCATION_MATCH	188v188	PASS	CMouseDX ctor; only InputManagerDX/CursorGraphic are initialisers
+00647457	RELOCATION_MATCH	186v186	PASS	AddStatUpdate; size+y-off TU, aggregate filled Change,Colour,Type
+00eb5500	RELOCATION_MATCH	207v207	PASS	AssassinGuard Init; early RemoveThing return
+00eaee80	RELOCATION_MATCH	173v173	PASS	Sheriff Init
