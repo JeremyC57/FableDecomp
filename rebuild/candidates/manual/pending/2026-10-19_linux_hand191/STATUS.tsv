@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00e03b00	RELOCATION_MATCH	226v226	PASS	single if condition; conditional temp
+009c8700	RELOCATION_MATCH	190v190	PASS	inline MarkAsUsed with GetHead accessor, size accessor, Clear()
+009c8fb0	RELOCATION_MATCH	190v190	PASS	is NGameText::CDataBankTextEntry::BuildText (label propagated)
+00994dc0	RELOCATION_MATCH	198v198	PASS	for(;;) with two breaks merges copy-out tail
+00994e90	RELOCATION_MATCH	205v205	PASS	char from inline ReadChar() in bl
+00994f60	RELOCATION_MATCH	205v205	PASS	char from inline ReadChar() in bl
+00996be0	RELOCATION_MATCH	219v219	PASS	inline memory stream; WriteUBYTE param homed in dead slot
+00994180	DIFFER	159v163	-	xor/mov cx zero-extension vs movzx (lane gap)
+009d4c30	RELOCATION_MATCH	164v164	PASS	local CDiskFileWin32 model
+009d4ce0	RELOCATION_MATCH	200v200	PASS	inline STLport map clear()
+009d4f90	RELOCATION_MATCH	204v204	PASS	GetLength()==0 early-out
+009ac9f0	RELOCATION_MATCH	175v175	PASS	line read into a local first
+009acd00	DIFFER	137v162	-	iterator spill + strength-reduced &it->GlobalIndices
+009ad5f0	DIFFER	231v231	-	ebx/ebp colouring of offset/count
+009ae5f0	RELOCATION_MATCH	182v182	PASS	two size() index loops
+009baa90	RELOCATION_MATCH	172v172	PASS	is CPersistContext::Error (callback +0xc)
+00a90450	MATCH	189v189	PASS	vertex-size local first; forceinline array Sizeof; leaf ?Sizeof@CDeviceIndependent@N3DPrimitive
+0099a5a0	RELOCATION_MATCH	222v222	PASS	in-place Initialise, temporary assignment on failure
+0099ac90	DIFFER	222v227	-	position add form and LARGE_INTEGER tail scheduling
+00880d50	RELOCATION_MATCH	174v174	PASS	remaining=1-weight local; ctor-returning colour operators
+009be2d0	SKIP	-	-	row holds the switch body + jump table, a ret-8 stub and the head of another function
+009be610	RELOCATION_MATCH	171v171	PASS	sibling model; alpha-min filter
+009be750	RELOCATION_MATCH	168v168	PASS	twin of 009be610 with alpha>0, usage 0
+009bff40	RELOCATION_MATCH	222v222	PASS	copy via memberwise copy ctor then overwrite
+009c00c0	RELOCATION_MATCH	207v207	PASS	NOTRESET work nested; ?true:false
+00558e10	RELOCATION_MATCH	174v174	PASS	null-tested CDefPointer dtor with +4 refcount base; counted action local
+006451dd	DIFFER	169v173	-	ebx/edi assignment of this/index; X sum operand load order
+00c43fd0	DIFFER	181v181	-	and ecx,7Fh;cmp ecx,1 narrowed to cl by the lane
+0064e0da	DIFFER	228v228	-	ebx/edi colouring swap only
+00657470	RELOCATION_MATCH	215v215	PASS	if/else-if clamp, width float local
+0064f885	RELOCATION_MATCH	184v184	PASS	list walk + AddBar creation (landed model)
+0064fb47	RELOCATION_MATCH	218v218	PASS	|| of two binding lookups; name in dead arg slot
+0064b5c1	DIFFER	169v167	-	component straight into ecx on both arms (known lane gap)
+00997880	DIFFER	177v168	-	start+1 != -1 folded to cmp ecx,-2 + loop alignment
+009e4cb0	DIFFER	179v179	-	same as 00997880 plus eax/ecx swap
+00540f50	MATCH	203v203	PASS	plain clamp + if/else-if scroll
+00cafe90	RELOCATION_MATCH	216v216	PASS	strmbase CAutoLock + CGenericList walk; /EHsc; label is not CEditControlCentre
+00af1360	RELOCATION_MATCH	223v223	PASS	counted locals, ternary size local
+00d2fb20	RELOCATION_MATCH	222v222	PASS	Prisoner Main model + while(flag != true) yield
+00efe700	RELOCATION_MATCH	226v226	PASS	BriarRose loop + local scripted-thing handle
