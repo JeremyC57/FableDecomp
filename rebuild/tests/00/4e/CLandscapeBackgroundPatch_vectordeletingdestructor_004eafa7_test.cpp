@@ -10,7 +10,7 @@ void __fastcall AutoTinyVectorDestructor(void*)
 {
     ++g_AutoTinyVectorDestructorCalls;
 }
-void __cdecl AutoTinyVectorDelete(void*)
+void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
@@ -19,7 +19,7 @@ void* __fastcall vector_deleting_destructor(AutoTinyVectorObject* self, int, uns
     self->vftable = (void*)&g_AutoTinyVectorVftable;
     AutoTinyVectorDestructor(self);
     if (flags & 1)
-        AutoTinyVectorDelete(self);
+        operator delete(self);
     return self;
 }
 int main()

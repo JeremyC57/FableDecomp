@@ -3,7 +3,7 @@
 static int g_freeCalls = 0;
 static void* g_lastFreed = 0;
 
-extern "C" void __cdecl FreeStreamBuffer(void* p)
+ void operator delete[](void* p)
 {
     g_freeCalls++;
     g_lastFreed = p;
@@ -48,7 +48,7 @@ void CFileDataInputStream::Close()
 {
     if (buffer != 0)
     {
-        FreeStreamBuffer(buffer);
+        operator delete[](buffer);
         buffer = 0;
         bufferCount = 0;
     }

@@ -23,7 +23,7 @@ struct RefBlock {
     void* payload;                               // +0x08
 };
 
-extern "C" void __cdecl FreeRefBlock(RefBlock* b);
+void operator delete(void*);
 
 template <class T>
 class CCountedPointer {
@@ -35,7 +35,7 @@ public:
         if (b) {
             if (--b->count == 0) {
                 b->release(b->payload);
-                FreeRefBlock(b);
+                operator delete(b);
             }
         }
     }

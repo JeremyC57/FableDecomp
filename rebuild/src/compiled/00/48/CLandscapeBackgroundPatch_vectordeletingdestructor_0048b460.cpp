@@ -8,7 +8,7 @@ struct CLandscapeBackgroundPatch
 };
 
 // operator delete equivalent at 0xbfe9bc (cdecl)
-extern "C" void FreeMem(void* p);
+void operator delete(void*);
 
 // scalar destructor body (external target)
 void __fastcall CLandscapeBackgroundPatch_Destroy(CLandscapeBackgroundPatch* self);
@@ -18,6 +18,6 @@ void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
 {
     CLandscapeBackgroundPatch_Destroy(self);
     if (flags & 1)
-        FreeMem(self);
+        operator delete(self);
     return self;
 }

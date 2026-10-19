@@ -19,7 +19,7 @@ struct RefBlock {
 // CCountedPointer<CBankStateBlock> by value: first member is the block ptr.
 struct CountedPtr { RefBlock* p; };
 
-extern "C" void __cdecl RefBlock_Free(void* p); // 0x00bfe9bc
+void operator delete(void*);   // 0x00bfe9bc
 
 struct CFontDataBank;
 
@@ -41,7 +41,7 @@ void __fastcall CFontDataBank_PrepareDataForInclusion(
     if (p) {
         if (--p->refcount == 0) {
             p->dtor(p->payload);
-            RefBlock_Free(p);
+            operator delete(p);
         }
     }
 }

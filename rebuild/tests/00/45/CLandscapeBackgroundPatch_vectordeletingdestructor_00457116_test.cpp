@@ -4,14 +4,14 @@ static int g_dtor_called = 0;
 static int g_free_called = 0;
 static void* g_last_self = 0;
 
-extern "C" void __cdecl eng_free(void* p) { g_free_called++; g_last_self = p; }
+ void operator delete(void* p) { g_free_called++; g_last_self = p; }
 void __fastcall CLandscapeBackgroundPatch_dtor(void* self) { g_dtor_called++; g_last_self = self; }
 
 void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(void* self, int edx, unsigned int flags)
 {
     CLandscapeBackgroundPatch_dtor(self);
     if (flags & 1)
-        eng_free(self);
+        operator delete(self);
     return self;
 }
 

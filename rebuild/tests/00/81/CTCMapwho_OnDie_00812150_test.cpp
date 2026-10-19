@@ -12,7 +12,7 @@ extern "C" void __fastcall Helper_die(CTCMapwho* self)
 {
     g_helper_called++;
 }
-extern "C" void __cdecl retail_free(void* p)
+ void operator delete(void* p)
 {
     g_freed++;
     free(p);

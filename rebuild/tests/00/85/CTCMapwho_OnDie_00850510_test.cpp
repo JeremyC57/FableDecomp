@@ -2,7 +2,7 @@
 struct CTCMapwho { int dummy; };
 static int g_pre=0, g_free=0;
 extern "C" void __fastcall Mapwho_PreDie(CTCMapwho* self){ g_pre++; }
-extern "C" void __cdecl Mapwho_Free(void* p){ g_free++; }
+ void operator delete(void* p){ g_free++; }
 void __fastcall OnDie_Mapwho(CTCMapwho* self);
 int main(){
     CTCMapwho m; m.dummy=1;

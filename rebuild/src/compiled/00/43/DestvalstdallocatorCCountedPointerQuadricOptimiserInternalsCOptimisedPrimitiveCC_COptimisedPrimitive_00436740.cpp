@@ -1,4 +1,4 @@
-extern "C" void ext_free(void* p);
+void operator delete(void*);
 
 struct RefBlock {
     int count;
@@ -19,7 +19,7 @@ void __fastcall Dest_val(CCountedPointer* self)
         r = self->ref;
         if (r->count == 0) {
             r->dtor(r->arg);
-            ext_free(self->ref);
+            operator delete(self->ref);
         }
     }
     self->ptr = 0;

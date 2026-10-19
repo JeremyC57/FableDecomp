@@ -6,7 +6,7 @@ int g_del = 0;
 int g_base = 0;
 
 void __fastcall CSub_dtor(CSub* self) { (void)self; g_sub++; }
-void __cdecl op_delete(void* p) { (void)p; g_del++; }
+void __cdecl free(void* p) { (void)p; g_del++; }
 void __fastcall CBase_dtor(void* self) { (void)self; g_base++; }
 
 struct CPatchTesselationEdgeStrip {
@@ -25,10 +25,10 @@ struct CPatchTesselationEdgeStrip {
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {
     CSub_dtor(&self->sub90);
-    if (self->p84) op_delete(self->p84);
-    if (self->p78) op_delete(self->p78);
-    if (self->p6c) op_delete(self->p6c);
-    if (self->p60) op_delete(self->p60);
+    if (self->p84) free(self->p84);
+    if (self->p78) free(self->p78);
+    if (self->p6c) free(self->p6c);
+    if (self->p60) free(self->p60);
     CBase_dtor(self);
 }
 

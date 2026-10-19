@@ -11,7 +11,7 @@ static int g_freed = 0;
 static void* g_freed_ptr = 0;
 
 void CLandscapeBackgroundPatch::Destroy() { g_destroyed++; }
-void FreeMem(void* p) { g_freed++; g_freed_ptr = p; }
+void operator delete(void* p) { g_freed++; g_freed_ptr = p; }
 
 void* __fastcall LandscapeBackgroundPatch_vector_deleting_destructor(
     CLandscapeBackgroundPatch* self, int edx, unsigned int flags);

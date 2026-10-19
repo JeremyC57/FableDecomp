@@ -23,7 +23,7 @@ struct CBankStateBlockRef {
 };
 
 // The dedicated deallocator (operator delete-ish) at 0x00bfe9bc.
-extern "C" void __cdecl BankStateBlockFree(CBankStateBlockRef* p);
+void operator delete(void*);
 
 
 // __fastcall member modelled as __fastcall(self, edxDummy, args...).
@@ -47,7 +47,7 @@ void __fastcall CLipSyncDataBank_PrepareDataForInclusion(
     if (ref) {
         if (--ref->refCount == 0) {
             ref->dtor(ref->object);
-            BankStateBlockFree(ref);
+            operator delete(ref);
         }
     }
 }

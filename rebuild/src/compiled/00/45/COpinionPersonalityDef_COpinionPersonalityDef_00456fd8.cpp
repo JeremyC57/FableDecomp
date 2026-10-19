@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 // ~COpinionPersonalityDef
-extern void __cdecl free_field(void* p);           // call 0x7a7b44 (operator delete / free, __cdecl 1-arg)
+void operator delete[](void*);   // call 0x7a7b44 (operator delete / free, __cdecl 1-arg)
 extern void __fastcall member_dtor(void* self);    // dtor of member at +0x44 (__fastcall)
 extern void __fastcall base_dtor(void* self);      // base class dtor (tail jmp)
 extern const int g_vtbl;                            // 0x1233f8c vtable
@@ -15,7 +15,7 @@ struct COpinionPersonalityDef {
 void __fastcall COpinionPersonalityDef_dtor(COpinionPersonalityDef* self)
 {
     self->vtbl = (void*)&g_vtbl;
-    free_field(self->ptr);
+    operator delete[](self->ptr);
     self->ptr = 0;
     member_dtor((char*)self + 0x44);
     base_dtor(self);

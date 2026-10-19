@@ -14,7 +14,7 @@
 // Shape: the local array's inline ctor/dtor (a by-value _Destroy(first, last) range helper -- the end pointer cached
 // in ebp -- with `add edi,44h`, then free); the cutscene flag stored
 // after the assignment, before the local's destructor.
-void __cdecl operator_delete(void* p);             // 0x00BFEA14 (operator delete)
+void __cdecl free(void*);   // 0x00BFEA14 (operator delete)
 
 struct CThing;
 
@@ -43,7 +43,7 @@ struct CSubtitledMessageArray {                     // retail CArray<CSubtitledM
     {
         DestroyRange(m_first, m_last);
         if (m_first)
-            operator_delete(m_first);
+            free(m_first);
     }
     CSubtitledMessageArray& operator=(const CSubtitledMessageArray& other);   // 0x0071A160
 };

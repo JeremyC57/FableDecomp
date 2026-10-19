@@ -9,7 +9,7 @@
 // null test + virtual deleting destructor, with the element re-read from the node (a cached local lets VC drop
 // delete's null test after the ownership read). No vtable store, so CAction is modelled without virtuals; the word at +0
 // is unknown. No engine header and no landed relatives; local model.
-void __cdecl operator_delete(void* p);         // 0x00BFEA14 (operator delete)
+void __cdecl free(void*);   // 0x00BFEA14 (operator delete)
 
 template<class T> struct CActionList {          // head-only doubly linked list
     struct SNode {
@@ -24,7 +24,7 @@ template<class T> struct CActionList {          // head-only doubly linked list
         while (node != head) {
             SNode* dead = node;
             node = node->next;
-            operator_delete(dead);
+            free(dead);
         }
         head->next = head;
         head->prev = head;
@@ -33,7 +33,7 @@ template<class T> struct CActionList {          // head-only doubly linked list
     {
         clear();
         if (head)
-            operator_delete(head);
+            free(head);
     }
 };
 

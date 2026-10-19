@@ -7,7 +7,7 @@ struct CCountedPointer {
     void* self;         /* +0 */
     RefCounted* p;      /* +4 */
 };
-extern "C" void __cdecl engine_free(void*);
+void operator delete(void*);
 
 void __fastcall _Dest_val(CCountedPointer* self)
 {
@@ -17,7 +17,7 @@ void __fastcall _Dest_val(CCountedPointer* self)
         p = self->p;
         if (p->count == 0) {
             p->dtor(p->arg);
-            engine_free(self->p);
+            operator delete(self->p);
         }
     }
     self->self = 0;

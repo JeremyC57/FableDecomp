@@ -5,7 +5,7 @@ struct SubObjAt90 {
 };
 
 // cdecl free function, takes the object pointer, cleans up 4 bytes
-void FreeMapwho(void* p);  // call 0xbfe9bc
+void operator delete(void*);   // call 0xbfe9bc
 
 struct CTCMapwho {
     char pad[0x90];
@@ -17,6 +17,6 @@ void CTCMapwho::OnDie()
 {
     if (this) {
         this->sub.Release();
-        FreeMapwho(this);
+        operator delete(this);
     }
 }

@@ -1,4 +1,4 @@
-extern void __cdecl eng_free(void* p);
+void operator delete[](void*);
 
 struct CThingComponentSet {
     void* m_ptr;
@@ -7,7 +7,7 @@ struct CThingComponentSet {
 
 void __fastcall CThingComponentSet_dtor(CThingComponentSet* self)
 {
-    eng_free(self->m_ptr);
+    operator delete[](self->m_ptr);
     self->m_ptr = 0;
     self->m_flag = 0;
 }

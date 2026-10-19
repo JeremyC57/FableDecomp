@@ -12,7 +12,7 @@ static int g_sub28 = 0;
 static int g_virt = 0;
 
 void ElemA_dtor(int) { ++g_elemDtors; }
-void op_delete(void*) { ++g_deletes; }
+void free(void*) { ++g_deletes; }
 void Sub28_clear(SubObj28*) { ++g_sub28; }
 
 struct Concrete : VBase { void slot0(int) { ++g_virt; } };
@@ -35,14 +35,14 @@ void model(CMiniMapDisplay* self)
     if (esi != ebx) {
         do { ElemA_dtor((int)&esi->member_c); esi = (ElemA*)((char*)esi + 0x10); } while (esi != ebx);
     }
-    if (self->vecA_begin) op_delete(self->vecA_begin);
+    if (self->vecA_begin) free(self->vecA_begin);
     Sub28_clear(&self->sub28);
     VBase* eb2 = self->vecB_end;
     VBase* es2 = self->vecB_begin;
     if (es2 != eb2) {
         do { es2->slot0(0); es2 = (VBase*)((char*)es2 + 8); } while (es2 != eb2);
     }
-    if (self->vecB_begin) op_delete(self->vecB_begin);
+    if (self->vecB_begin) free(self->vecB_begin);
 }
 
 int main()

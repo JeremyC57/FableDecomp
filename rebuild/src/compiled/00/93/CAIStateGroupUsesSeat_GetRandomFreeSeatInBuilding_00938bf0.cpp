@@ -100,7 +100,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 };
 
 
-void __cdecl operator_delete(void* p);         // 0x00BFEA14 (operator delete)
+void __cdecl free(void*);   // 0x00BFEA14 (operator delete)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CThingVector {                           // std::vector<CThing*> (first, last, end of storage)
@@ -108,7 +108,7 @@ struct CThingVector {                           // std::vector<CThing*> (first, 
     CThing** m_last;
     CThing** m_end;
     CThingVector() : m_first(0), m_last(0), m_end(0) { }
-    ~CThingVector() { if (m_first) operator_delete(m_first); }
+    ~CThingVector() { if (m_first) free(m_first); }
     long size() const { return m_last - m_first; }
 };
 

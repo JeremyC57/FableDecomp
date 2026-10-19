@@ -27,14 +27,14 @@ struct Slot {
     void DestVal();
 };
 // Engine heap release for the control block.
-extern "C" void __cdecl Free1(void* p);   // 0x00bfe9bc
+void operator delete(void*);   // 0x00bfe9bc
 void Slot::DestVal() {
     if (this->info) {
         // Last reference away: destroy the pointee and the block.
         --this->info->rc;
         if (this->info->rc == 0) {
             this->info->release(this->info->owner);
-            Free1(this->info);
+            operator delete(this->info);
         }
     }
     // Leave the slot empty.

@@ -6,7 +6,7 @@ struct Sub28 {
     void Cleanup();   // 0x6e2500, __fastcall
 };
 
-extern "C" void __cdecl free_it(void* p);   // stands in for operator delete 0xbfe9bc
+void operator delete(void*);   // stands in for operator delete 0xbfe9bc
 
 struct CTCMapwho {
     char pad0[0x28];
@@ -19,6 +19,6 @@ void CTCMapwho::OnDie()
     CTCMapwho* self = this;
     if (self != 0) {
         self->sub.Cleanup();
-        free_it(self);
+        operator delete(self);
     }
 }

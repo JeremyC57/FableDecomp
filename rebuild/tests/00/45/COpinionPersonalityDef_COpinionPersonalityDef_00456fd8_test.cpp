@@ -13,14 +13,14 @@ struct COpinionPersonalityDef {
     char member[8];
 };
 
-void __cdecl free_field(void* p) { if (p) g_freed = 1; }
+void __cdecl operator delete[](void* p) { if (p) g_freed = 1; }
 void __fastcall member_dtor(void* self) { g_member = 1; }
 void __fastcall base_dtor(void* self) { g_base = 1; }
 
 void __fastcall COpinionPersonalityDef_dtor(COpinionPersonalityDef* self)
 {
     self->vtbl = (void*)&g_vtbl;
-    free_field(self->ptr);
+    operator delete[](self->ptr);
     self->ptr = 0;
     member_dtor((char*)self + 0x44);
     base_dtor(self);

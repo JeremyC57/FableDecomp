@@ -14,7 +14,7 @@ struct RefBlock {
     void*         obj;      // +0x08
 };
 
-extern "C" void __cdecl EngineFree(void* p);   // retail 0x00bfe9bc
+void operator delete(void*);   // retail 0x00bfe9bc
 
 struct CWorldMap;
 struct CArrayStr;
@@ -43,7 +43,7 @@ void CMeshDataBank_Methods::PrepareDataForInclusion(
     if (blk) {
         if (--blk->count == 0) {
             blk->dtor(blk->obj);
-            EngineFree(blk);
+            operator delete(blk);
         }
     }
 }

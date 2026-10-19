@@ -14,7 +14,7 @@ void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self)
     self->destroyed = 1;
 }
 
-void free_engine(void* p)
+void operator delete(void* p)
 {
     g_freed = 1;
     (void)p;
@@ -24,7 +24,7 @@ void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscape
 {
     CLandscapeBackgroundPatch_dtor(self);
     if (flags & 1)
-        free_engine(self);
+        operator delete(self);
     return self;
 }
 

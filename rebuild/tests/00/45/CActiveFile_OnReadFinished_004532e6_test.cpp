@@ -11,7 +11,7 @@ void __fastcall Inner_Process(CInner* self, int edxparam, char* p) {
     if (self) self->calls++;
     *p = 1;
 }
-void __cdecl op_delete(void* p) { g_deleted = (CInner*)p; }
+void __cdecl free(void* p) { g_deleted = (CInner*)p; }
 
 struct CActiveFile {
     CInner* p;   /* +0x0 */
@@ -24,7 +24,7 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
     Inner_Process(self->p, self->f4, &local);
     CInner* q = self->p;
     if (q)
-        op_delete(q);
+        free(q);
 }
 
 int main() {

@@ -8,13 +8,13 @@ struct CLandscapeBackgroundPatch
 };
 
 // operator delete forwarder @ 0xbfe9bc
-void FreeMem(void* p);
+void operator delete(void*);
 
 void* __fastcall LandscapeBackgroundPatch_vector_deleting_destructor(
     CLandscapeBackgroundPatch* self, int /*edx*/, unsigned int flags)
 {
     self->Destroy();
     if (flags & 1)
-        FreeMem(self);
+        operator delete(self);
     return self;
 }

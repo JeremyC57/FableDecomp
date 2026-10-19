@@ -2,7 +2,7 @@
 
 static int g_freed = 0;
 static int g_dtored = 0;
-extern "C" void __cdecl fable_free(void* p){ (void)p; g_freed++; }
+ void operator delete(void* p){ (void)p; g_freed++; }
 
 struct Counter {
     long refcount;
@@ -25,7 +25,7 @@ void __fastcall _Dest_val(CCP* self)
         c = self->pctr;
         if (c->refcount == 0) {
             (c->dtor)(c->obj);
-            fable_free(self->pctr);
+            operator delete(self->pctr);
         }
     }
     self->p0 = 0;

@@ -1,5 +1,5 @@
 // CThingTrackNode::`vector deleting destructor'(unsigned int flags) -- destroy the node and free it when bit 0 of `flags` is set
-// Retail: Fable.exe (TLC, VC7.1) @ 0x004016B0, 51 bytes. Callees: Member599270, Member18Dtor, BaseDtor, EngineFree.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004016B0, 51 bytes. Callees: Member599270, Member18Dtor, BaseDtor, operator delete.
 //
 // The compiler-generated deleting destructor that sits in the vtable at 0x0122D06C. It re-points the
 // vtable at this class, runs the same teardown as the plain destructor at 0x00401630 (helper over the
@@ -25,7 +25,7 @@ extern void __fastcall Member18Dtor(void* p);
 // Base-class destructor.
 extern void __fastcall BaseDtor(void* self);
 // Engine heap release used by every deleting destructor.
-extern void __cdecl EngineFree(void* p);
+void operator delete(void*);
 
 void* __fastcall CThingTrackNode_vector_deleting_destructor(CThingTrackNode* self, int edx, unsigned int flags)
 {
@@ -37,7 +37,7 @@ void* __fastcall CThingTrackNode_vector_deleting_destructor(CThingTrackNode* sel
     BaseDtor(self);
     // Bit 0: the caller used `delete`, so release the storage as well.
     if (flags & 1) {
-        EngineFree(self);
+        operator delete(self);
     }
     return self;
 }

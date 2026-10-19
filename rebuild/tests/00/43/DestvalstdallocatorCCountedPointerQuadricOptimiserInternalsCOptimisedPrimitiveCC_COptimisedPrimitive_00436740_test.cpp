@@ -2,7 +2,7 @@
 
 static int g_freed = 0;
 static int g_dtor = 0;
-extern "C" void ext_free(void* p) { g_freed++; }
+ void operator delete(void* p) { g_freed++; }
 
 struct RefBlock {
     int count;
@@ -25,7 +25,7 @@ void __fastcall Dest_val(CCountedPointer* self)
         r = self->ref;
         if (r->count == 0) {
             r->dtor(r->arg);
-            ext_free(self->ref);
+            operator delete(self->ref);
         }
     }
     self->ptr = 0;

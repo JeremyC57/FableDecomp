@@ -33,7 +33,7 @@ struct CDefinitionManager {
     CDef** d_last;   // +0xa8
 };
 
-extern "C" void engine_free(void* p);
+void operator delete(void*);
 
 void __fastcall CDefinitionManager_ClearInstantiatedDefs(CDefinitionManager* self)
 {
@@ -48,7 +48,7 @@ void __fastcall CDefinitionManager_ClearInstantiatedDefs(CDefinitionManager* sel
                         r->OnZeroRefs();
                     d->ref = 0;
                 }
-                engine_free(d);
+                operator delete(d);
             }
             *p = 0;
             ++p;

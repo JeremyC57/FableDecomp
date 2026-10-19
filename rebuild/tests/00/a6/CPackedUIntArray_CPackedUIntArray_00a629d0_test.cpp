@@ -10,11 +10,11 @@ struct CPackedUIntArray {
     ~CPackedUIntArray();
 };
 
-void operator_delete_stub(void* p) { g_freed = p; }
+void operator delete[](void* p) { g_freed = p; }
 
 CPackedUIntArray::~CPackedUIntArray()
 {
-    operator_delete_stub(m_buffer);
+    operator delete[](m_buffer);
     m_buffer = 0;
     m_count = 0;
     m_flag = false;

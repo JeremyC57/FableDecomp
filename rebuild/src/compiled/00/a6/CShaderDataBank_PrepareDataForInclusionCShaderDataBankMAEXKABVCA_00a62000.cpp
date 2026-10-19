@@ -15,7 +15,7 @@ struct RefBlock {
 };
 
 // cdecl deleter (operator delete style free)
-extern "C" void __cdecl free_block(void* p);
+void operator delete(void*);
 
 
 // The by-value CCountedPointer arg lands as a stack dword = pointer to RefBlock.
@@ -36,7 +36,7 @@ void __fastcall PrepareDataForInclusion(
     if (ptr) {
         if (--ptr->refs == 0) {
             ptr->dtor(ptr->target);
-            free_block(ptr);
+            operator delete(ptr);
         }
     }
 }

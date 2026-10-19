@@ -7,7 +7,7 @@ static int g_free = 0;
 static void* g_freed = 0;
 
 extern "C" void __fastcall Mapwho_Dtor(CTCMapwho* self) { g_dtor++; }
-extern "C" void __cdecl Mapwho_Free(void* p) { g_free++; g_freed = p; }
+ void operator delete(void* p) { g_free++; g_freed = p; }
 
 void __fastcall OnDie(CTCMapwho* self);
 

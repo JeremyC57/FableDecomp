@@ -5,7 +5,7 @@ extern void __fastcall CMember_dtor(CMember* self);
 struct CBase { void dtor(); };
 extern void __fastcall CBase_dtor(CBase* self);
 
-extern void __cdecl op_delete(void* p);
+void __cdecl free(void*);
 
 struct CPatchTesselationEdgeStrip {
     char pad0[0x50];
@@ -25,10 +25,10 @@ struct CPatchTesselationEdgeStrip {
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {
     CMember_dtor(&self->m8c);
-    if (self->p80) op_delete(self->p80);
-    if (self->p74) op_delete(self->p74);
-    if (self->p68) op_delete(self->p68);
-    if (self->p5c) op_delete(self->p5c);
-    if (self->p50) op_delete(self->p50);
+    if (self->p80) free(self->p80);
+    if (self->p74) free(self->p74);
+    if (self->p68) free(self->p68);
+    if (self->p5c) free(self->p5c);
+    if (self->p50) free(self->p50);
     CBase_dtor((CBase*)self);
 }

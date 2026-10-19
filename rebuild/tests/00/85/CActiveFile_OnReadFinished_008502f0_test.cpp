@@ -4,7 +4,7 @@ static int g_helperCalls = 0;
 static void* g_deleted = 0;
 
 // local defs of the externs the source references
-void operator_delete_ext(void* p) { g_deleted = p; }
+void free(void* p) { g_deleted = p; }
 
 struct CActiveFile {
     void* field0;
@@ -19,7 +19,7 @@ void CActiveFile::OnReadFinished()
     this->HelperReadFinished();
     void* p = this->field0;
     if (p) {
-        operator_delete_ext(p);
+        free(p);
     }
 }
 

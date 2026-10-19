@@ -4,7 +4,7 @@ struct SubObjAt90 {
     void Release();
 };
 
-void FreeMapwho(void* p);
+void operator delete(void*);
 
 struct CTCMapwho {
     char pad[0x90];
@@ -18,13 +18,13 @@ static void* g_last_sub = 0;
 static void* g_last_free = 0;
 
 void SubObjAt90::Release() { g_release_called++; g_last_sub = this; }
-void FreeMapwho(void* p) { g_free_called++; g_last_free = p; }
+void operator delete(void* p) { g_free_called++; g_last_free = p; }
 
 void CTCMapwho::OnDie()
 {
     if (this) {
         this->sub.Release();
-        FreeMapwho(this);
+        operator delete(this);
     }
 }
 

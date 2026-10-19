@@ -4,12 +4,12 @@ struct CActiveFile { void* member0; };
 static int g_helper_called = 0;
 static void* g_deleted = (void*)0;
 void __fastcall CActiveFile_helper(CActiveFile* self) { g_helper_called++; }
-void __cdecl fable_delete(void* p) { g_deleted = p; }
+void __cdecl free(void* p) { g_deleted = p; }
 void __fastcall OnReadFinished_3(CActiveFile* self)
 {
     CActiveFile_helper(self);
     void* m = self->member0;
-    if (m) fable_delete(m);
+    if (m) free(m);
 }
 int main(){
     // non-null member -> delete called with member

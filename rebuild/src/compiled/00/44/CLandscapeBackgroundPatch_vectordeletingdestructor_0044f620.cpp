@@ -3,10 +3,10 @@
 // __fastcall this=ecx, flags=stack (ret 4).
 extern void* g_vtable[];              // 0x01230BA0
 struct T { void** vptr; void Dtor(); void* VecDel(unsigned flags); };
-extern "C" void __cdecl Free1(void* p);
+void operator delete(void*);
 void* T::VecDel(unsigned flags) {
     this->vptr = g_vtable;
     this->Dtor();
-    if (flags & 1) Free1(this);
+    if (flags & 1) operator delete(this);
     return this;
 }

@@ -17,7 +17,7 @@ static int g_freed = 0;
 
 void Sub28::Cleanup() { g_cleaned++; }
 
-extern "C" void __cdecl free_it(void* p) { g_freed++; free(p); }
+ void operator delete(void* p) { g_freed++; free(p); }
 
 int main()
 {

@@ -15,7 +15,7 @@ static int g_freed = 0;
 void __fastcall Member599270(void* self) { (void)self; g_599270++; }
 void __fastcall Member18Dtor(void* p) { (void)p; g_m18++; }
 void __fastcall BaseDtor(void* self) { (void)self; g_base++; }
-void __cdecl EngineFree(void* p) { (void)p; g_freed++; }
+void __cdecl operator delete(void* p) { (void)p; g_freed++; }
 
 void* __fastcall CThingTrackNode_vector_deleting_destructor(CThingTrackNode* self, int edx, unsigned int flags)
 {
@@ -25,7 +25,7 @@ void* __fastcall CThingTrackNode_vector_deleting_destructor(CThingTrackNode* sel
     Member18Dtor((char*)self + 0x18);
     BaseDtor(self);
     if (flags & 1) {
-        EngineFree(self);
+        operator delete(self);
     }
     return self;
 }

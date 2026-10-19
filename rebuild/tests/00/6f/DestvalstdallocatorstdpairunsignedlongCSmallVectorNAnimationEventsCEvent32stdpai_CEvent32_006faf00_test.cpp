@@ -8,7 +8,7 @@ struct SmallVec {
 
 static void* g_freed = (void*)0;
 
-extern "C" void __cdecl free_bfeb1c(void* p) { g_freed = p; }
+ void operator delete[](void* p) { g_freed = p; }
 
 void __fastcall _Dest_val_pair_ulong_CSmallVector(SmallVec* self);
 

@@ -1,7 +1,7 @@
 // CFileDataInputStream::Close  (retail 0x00994300)
 // Faithful VC7.1 reconstruction.
 
-extern "C" void __cdecl FreeStreamBuffer(void* p);
+void operator delete[](void*);
 
 // Abstract base with true (default) thiscall member-function calling
 // convention: this-in-ecx, remaining args pushed on the stack.
@@ -44,7 +44,7 @@ void CFileDataInputStream::Close()
 {
     if (buffer != 0)
     {
-        FreeStreamBuffer(buffer);
+        operator delete[](buffer);
         buffer = 0;
         bufferCount = 0;
     }

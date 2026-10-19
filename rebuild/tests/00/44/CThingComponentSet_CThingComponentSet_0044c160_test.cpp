@@ -2,7 +2,7 @@
 
 static bool g_freed = false;
 static void* g_freed_ptr = 0;
-void __cdecl eng_free(void* p) { g_freed = true; g_freed_ptr = p; }
+void __cdecl operator delete[](void* p) { g_freed = true; g_freed_ptr = p; }
 
 struct CThingComponentSet {
     void* m_ptr;
@@ -11,7 +11,7 @@ struct CThingComponentSet {
 
 void __fastcall CThingComponentSet_dtor(CThingComponentSet* self)
 {
-    eng_free(self->m_ptr);
+    operator delete[](self->m_ptr);
     self->m_ptr = 0;
     self->m_flag = 0;
 }

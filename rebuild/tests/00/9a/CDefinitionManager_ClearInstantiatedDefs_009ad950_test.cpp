@@ -15,7 +15,7 @@ struct Slot { char pad[0xc]; Vec v; };
 extern "C" char* engine_copy(char* dst, char* src, unsigned count) {
     (void)src; (void)count; return dst;
 }
-extern "C" void engine_free(void* p) { (void)p; ++g_freed; }
+ void operator delete(void* p) { (void)p; ++g_freed; }
 
 static inline char* erase_range(char* _First, char* _Last, char* _Dest)
 {
@@ -51,7 +51,7 @@ void __fastcall CDefinitionManager_ClearInstantiatedDefs(CDefinitionManager* sel
                         r->OnZeroRefs();
                     d->ref = 0;
                 }
-                engine_free(d);
+                operator delete(d);
             }
             *p = 0;
             ++p;

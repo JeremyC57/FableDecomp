@@ -9,7 +9,7 @@ struct RefBlock {
 static int g_freed = 0;
 static int g_dtored = 0;
 
-extern "C" void __cdecl EngineFree(void* p) { (void)p; ++g_freed; }
+ void operator delete(void* p) { (void)p; ++g_freed; }
 static void __fastcall fake_dtor(void* self, void* edx, int flags) {
     (void)self;(void)edx;(void)flags; ++g_dtored;
 }
@@ -19,7 +19,7 @@ static void release(RefBlock* blk) {
     if (blk) {
         if (--blk->count == 0) {
             blk->dtor(blk->obj, 0, 0);
-            EngineFree(blk);
+            operator delete(blk);
         }
     }
 }

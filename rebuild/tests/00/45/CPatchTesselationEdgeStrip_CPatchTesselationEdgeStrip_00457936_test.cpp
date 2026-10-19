@@ -17,14 +17,14 @@ struct CPatchTesselationEdgeStrip {
 static int g_sub60=0, g_base=0, g_freed=0;
 void CSub60::dtor(){ g_sub60++; }
 void CBase::dtor(){ g_base++; }
-void __cdecl op_delete(void* p){ if(p) g_freed++; }
+void __cdecl free(void* p){ if(p) g_freed++; }
 
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* self)
 {
     self->sub60.dtor();
-    if (self->p54) op_delete(self->p54);
-    if (self->p48) op_delete(self->p48);
-    if (self->p3c) op_delete(self->p3c);
+    if (self->p54) free(self->p54);
+    if (self->p48) free(self->p48);
+    if (self->p3c) free(self->p3c);
     ((CBase*)self)->dtor();
 }
 

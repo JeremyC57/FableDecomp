@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static void* g_freed = 0;
-extern "C" void eng_free(void* p) { g_freed = p; }
+ void operator delete[](void* p) { g_freed = p; }
 
 struct CThingComponentSet {
     void* buf;
@@ -10,7 +10,7 @@ struct CThingComponentSet {
 
 void CThingComponentSet_dtor(CThingComponentSet* self)
 {
-    eng_free(self->buf);
+    operator delete[](self->buf);
     self->buf = 0;
     self->flag = 0;
 }

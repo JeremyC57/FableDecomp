@@ -11,7 +11,7 @@ struct CCountedPointer {
 static int g_dtor_called = 0;
 static int g_freed = 0;
 static RefCounted* g_expect_free = 0;
-extern "C" void __cdecl engine_free(void* q) { g_freed = 1; if ((void*)g_expect_free == q) g_freed = 2; }
+ void operator delete(void* q) { g_freed = 1; if ((void*)g_expect_free == q) g_freed = 2; }
 static void __fastcall my_dtor(void* a) { g_dtor_called = 1; }
 
 void __fastcall _Dest_val(CCountedPointer* self)
@@ -22,7 +22,7 @@ void __fastcall _Dest_val(CCountedPointer* self)
         p = self->p;
         if (p->count == 0) {
             p->dtor(p->arg);
-            engine_free(self->p);
+            operator delete(self->p);
         }
     }
     self->self = 0;

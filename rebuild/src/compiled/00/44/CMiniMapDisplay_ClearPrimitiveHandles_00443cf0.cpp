@@ -27,7 +27,7 @@ struct CMiniMapDisplay {
 // element dtor 0x99eae0 (thiscall)
 extern "C" void __fastcall ElemA_dtor(int self);
 // operator delete 0xbfea14 (cdecl)
-extern "C" void __cdecl op_delete(void* p);
+void __cdecl free(void*);
 // subobject clear 0x442610 (thiscall)
 extern "C" void __fastcall Sub28_clear(SubObj28* self);
 
@@ -43,7 +43,7 @@ void __fastcall ClearPrimitiveHandles(CMiniMapDisplay* self)
     }
     ElemA* a = self->vecA_begin;
     if (a) {
-        op_delete(a);
+        free(a);
     }
     Sub28_clear(&self->sub28);
 
@@ -57,6 +57,6 @@ void __fastcall ClearPrimitiveHandles(CMiniMapDisplay* self)
     }
     VBase* b = self->vecB_begin;
     if (b) {
-        op_delete(b);
+        free(b);
     }
 }

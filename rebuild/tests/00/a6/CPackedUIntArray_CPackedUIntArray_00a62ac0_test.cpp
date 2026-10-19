@@ -4,7 +4,7 @@
 static int g_freed = 0;
 static void* g_lastFreed = (void*)0;
 
-void FreePackedUIntArrayBuffer(void* p)
+void operator delete[](void* p)
 {
     g_freed++;
     g_lastFreed = p;
@@ -24,7 +24,7 @@ struct CPackedUIntArray
 
 CPackedUIntArray::~CPackedUIntArray()
 {
-    FreePackedUIntArrayBuffer(this->buffer);
+    operator delete[](this->buffer);
     this->buffer = 0;
     this->f4 = 0;
     this->f8 = 0;

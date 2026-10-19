@@ -8,7 +8,7 @@ struct DestVal {
 
 static void* g_freed = (void*)0xDEAD;
 
-extern "C" void __cdecl free_bfeb1b(void* p) { g_freed = p; }
+ void operator delete[](void* p) { g_freed = p; }
 
 extern "C" void __fastcall _Dest_val_pair_ulong_CSmallVector_v2(DestVal* self);
 

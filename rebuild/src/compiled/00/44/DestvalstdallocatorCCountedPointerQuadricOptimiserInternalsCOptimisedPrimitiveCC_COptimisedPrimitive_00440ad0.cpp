@@ -1,4 +1,4 @@
-extern "C" void __cdecl fable_free(void* p);
+void operator delete(void*);
 
 struct Counter {
     long refcount;
@@ -19,7 +19,7 @@ void __fastcall _Dest_val(CCP* self)
         c = self->pctr;
         if (c->refcount == 0) {
             (c->dtor)(c->obj);
-            fable_free(self->pctr);
+            operator delete(self->pctr);
         }
     }
     self->p0 = 0;

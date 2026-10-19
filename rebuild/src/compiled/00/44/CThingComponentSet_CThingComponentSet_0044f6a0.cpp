@@ -1,4 +1,4 @@
-extern "C" void __cdecl fable_op_delete(void* p);
+void operator delete[](void*);
 
 struct CThingComponentSet {
     void* m_ptr;
@@ -7,7 +7,7 @@ struct CThingComponentSet {
 
 void __fastcall CThingComponentSet_dtor(CThingComponentSet* self)
 {
-    fable_op_delete(self->m_ptr);
+    operator delete[](self->m_ptr);
     self->m_ptr = 0;
     self->m_flag = 0;
 }

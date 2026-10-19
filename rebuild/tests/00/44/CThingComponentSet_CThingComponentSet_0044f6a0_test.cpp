@@ -8,11 +8,11 @@ struct CThingComponentSet {
 static int g_freed = 0;
 static void* g_last = 0;
 
-extern "C" void __cdecl fable_op_delete(void* p) { g_freed++; g_last = p; }
+ void operator delete[](void* p) { g_freed++; g_last = p; }
 
 void __fastcall CThingComponentSet_dtor(CThingComponentSet* self)
 {
-    fable_op_delete(self->m_ptr);
+    operator delete[](self->m_ptr);
     self->m_ptr = 0;
     self->m_flag = 0;
 }

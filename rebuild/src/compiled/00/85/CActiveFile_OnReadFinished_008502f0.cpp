@@ -3,7 +3,7 @@
 //   push esi; mov esi,ecx; call 0x850280 (this-method);
 //   esi = this->field0; if(esi){ operator delete(esi); }
 
-void operator_delete_ext(void* p);              // cdecl free/delete  @ 0xbfea14
+void __cdecl free(void*);   // cdecl free/delete  @ 0xbfea14
 
 struct CActiveFile {
     void* field0;               // +0x00
@@ -16,6 +16,6 @@ void CActiveFile::OnReadFinished()
     this->HelperReadFinished();
     void* p = this->field0;
     if (p) {
-        operator_delete_ext(p);
+        free(p);
     }
 }

@@ -12,7 +12,7 @@ void __fastcall CLandscapeBackgroundPatch_Destroy(CLandscapeBackgroundPatch* sel
     (void)self;
 }
 
-extern "C" void FreeMem(void* p)
+ void operator delete(void* p)
 {
     g_free_calls++;
     g_freed = p;
@@ -23,7 +23,7 @@ void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(
 {
     CLandscapeBackgroundPatch_Destroy(self);
     if (flags & 1)
-        FreeMem(self);
+        operator delete(self);
     return self;
 }
 

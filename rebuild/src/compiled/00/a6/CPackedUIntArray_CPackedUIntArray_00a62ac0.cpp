@@ -6,7 +6,7 @@
 //   [esi+0xc]  = dword -> 0
 
 // cdecl free helper at 0xbfeb1c
-void FreePackedUIntArrayBuffer(void* p);
+void operator delete[](void*);
 
 struct CPackedUIntArray
 {
@@ -23,7 +23,7 @@ struct CPackedUIntArray
 
 CPackedUIntArray::~CPackedUIntArray()
 {
-    FreePackedUIntArrayBuffer(this->buffer);
+    operator delete[](this->buffer);
     this->buffer = 0;
     this->f4 = 0;
     this->f8 = 0;
