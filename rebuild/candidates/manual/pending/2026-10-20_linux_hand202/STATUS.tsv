@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00d506b0	RELOCATION_MATCH	176v176	PASS	implicit marker-name temporary; result fields reset
+00e27ac0	RELOCATION_MATCH	233v233	PASS	label: CQS_GuardianTrophyDealerInfoScript::WaitForPieceOver
+00e32200	DIFFER	208v188	-	label: CV_AmbushScamScript::WatchForTricksterComplete; parameter dtor inline vs call at the common exit
+00ded0c0	RELOCATION_MATCH	205v205	PASS	label: CQ_SecretPassageScript::WatchForTermination
+00e16a80	RELOCATION_MATCH	199v199	PASS	label: CWB_ScaredVillager::Main
+00e16c40	RELOCATION_MATCH	199v199	PASS	label: CWB_Villager::Main
+00e1ad60	RELOCATION_MATCH	216v216	PASS	label: CQ_WizardBattleScript::WatchForTermination
+00d74f80	RELOCATION_MATCH	213v213	PASS	inline pop_back loop; HTG_Guard refill
+00d905c0	RELOCATION_MATCH	163v163	PASS	merged yield-test exits
+00dd0eb0	RELOCATION_MATCH	161v161	PASS	two implicit string temporaries right to left
+00e80c00	RELOCATION_MATCH	206v206	PASS	label: CV_FishingCompetitionScript::SuspendCompetition
+00dd5860	RELOCATION_MATCH	220v220	PASS	null listener CScriptThing() built first
+00ddcf50	RELOCATION_MATCH	220v220	PASS	label: CQ_PrisonRaceScript::MakeRacerComment
+00de0320	RELOCATION_MATCH	184v184	PASS	novtable intermediate base holds the argument pair
+00df06a0	RELOCATION_MATCH	162v162	PASS	unused scripted-thing handle local
+00e18480	RELOCATION_MATCH	236v236	PASS	label: CQ_WhiteBalverineWWScript::Init
+00e0e820	RELOCATION_MATCH	192v192	PASS	string temp before the C2DCoordI temp
+00e1c4d0	RELOCATION_MATCH	164v164	PASS	implicit "" temporary inside the && loop condition
+00edeba0	RELOCATION_MATCH	163v163	PASS	label: CV_TravellingHeroesScript ctor
+00a90790	RELOCATION_MATCH	197v197	PASS	label: ~C3DPrimitive2 (vtable 0x0129DF94)
+00ac70f0	DIFFER	231v237	-	operand-order lane gap in two products; E31/E13 copy shape
+00a88b60	MATCH	172v172	PASS	named local, W first, implicit copy-out
+00a88d10	DIFFER	144v196	-	lane gap: bare fistp (inline-asm FastFloatToInt)
+0064a568	RELOCATION_MATCH	209v209	PASS	size TU y-off+s; out-param GetInterface; implicit string temps
+004afb00	RELOCATION_MATCH	165v165	PASS	twin of landed OnActivateEntity; PDB CThing&
+004afca0	RELOCATION_MATCH	221v221	PASS	physics TC in a named local
+004b0aa0	RELOCATION_MATCH	238v238	PASS	inline completed-list search
+004b0b90	DIFFER	233v238	-	register allocation (this/name); label ok (RemoveActiveQuestCard body + unused bool)
+004b0c80	RELOCATION_MATCH	168v168	PASS	unchecked GetQuestCard helper
+004b0f10	RELOCATION_MATCH	165v165	PASS	unchecked GetQuestCard; World flag store duplicated
+004b0fc0	RELOCATION_MATCH	177v177	PASS	null/dead card skipped; TC local starts at null
+004b11a0	RELOCATION_MATCH	193v193	PASS	landed IsAnyQuestActive def-pointer shape
+004b1270	RELOCATION_MATCH	204v204	PASS	def compare in an inner block; bool in bl
+004b1590	DIFFER	223v223	-	register choice only (eax/ecx/ebp)
+004b26b0	RELOCATION_MATCH	232v232	PASS	GetAllThings body in the TU under auto_inline(off)
+009de890	RELOCATION_MATCH	164v164	PASS	copy ctor: init list + body; CRGBColour Set
+00b0a210	RELOCATION_MATCH	235v235	PASS	label: NParticleEngine::CRandomAcceleration; pack(2) per PDB
+0086b810	DIFFER	238v230	-	push_back block register/load order
+0086bd20	RELOCATION_MATCH	187v187	PASS	sibling of landed AddTextureMorphToBodyPart
+006ffe10	RELOCATION_MATCH	235v235	PASS	engine header + _Methods; `>=` cap, Clamp on a temporary

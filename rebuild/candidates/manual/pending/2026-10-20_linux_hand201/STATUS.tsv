@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00487de0	RELOCATION_MATCH	174v174	PASS	local CDefPointer copy, Release() without null test; action temporary
+00487ef0	RELOCATION_MATCH	181v181	PASS	camera out-pointer in a block (dead save slot); nested success path; inline PhysicsTC accessor
+00488620	DIFFER	196v196	-	argument build scheduling + key/out word in the filter slot (frame+4 v +0)
+004886f0	DIFFER	196v196	-	const twin of 00488620, same diff
+00633bf0	RELOCATION_MATCH	187v187	PASS	/GS; current mode in a local (offset in edi); 8-byte pmf via pointers_to_members pragma
+00633cb0	RELOCATION_MATCH	200v200	PASS	/GS; twin of 00633bf0 plus DisallowModeChanges lock
+00633f10	RELOCATION_MATCH	218v218	PASS	engine/CPlayer.h + CPlayer_Methods; new-expression into SetView; inline PhysicsTC accessor
+00635a50	RELOCATION_MATCH	217v217	PASS	zero-initialised out-parameter GetInterface (xor edi before the bitset test); camera out pointer zeroed + tested
+00635b30	DIFFER	185v185	-	register swap this edi/esi vs map pointer
+00c37840	RELOCATION_MATCH	232v232	PASS	library sound-loop record (label CPlayer::OnModeActivityUpdate propagated); 0x50-byte play params with inline ctor; filter setter is thiscall
+00438310	DIFFER	182v180	-	this copied to eax / flag in cl (retail: ecx / al)
+00449b60	SKIP	-	-	jump-table switch followed by two more bodies in the row
+00449d90	DIFFER	195v195	-	frame 0xC v 8 (out-slot word not reused for the name)
+00449f90	RELOCATION_MATCH	224v224	PASS	CPlayerSave frame local; literal-0 ulong64 default; inline by-value EmptyString() in the dead arg slot; inline GetPlayerCharacter accessor
+0044a070	RELOCATION_MATCH	202v202	PASS	__forceinline GetPlayer with the count in a local; STLport clear() = erase(begin,end) over __copy_trivial memmove
+00d43190	DIFFER	233v226	-	final wait loop: retail jump-to-bottom-test, lane duplicates the test on top
+00497a60	RELOCATION_MATCH	204v204	PASS	C2DBoxF::GetWidth with left read into a local (fsub st(1)); locals in dead arg slots reproduced
+009bc900	RELOCATION_MATCH	204v204	PASS	free __fastcall twin of 00497a60
+00878ce0	DIFFER	208v208	-	scheduling: ZAxis stores interleaved with the YAxis copy
+00ce5180	RELOCATION_MATCH	196v196	PASS	really CHeroBoastsScript::BoastBreakSiegeKilledLeader (label propagated); rotated watch loop
+00ce5ef0	RELOCATION_MATCH	203v203	PASS	really CHeroBoastsScript::BoastArenaShowNoMercy; generated from the 00ce5180 template
+00ce5fc0	RELOCATION_MATCH	203v203	PASS	really CHeroBoastsScript::BoastArenaShowMercy; generated from the 00ce5180 template
+00ce63a0	RELOCATION_MATCH	212v212	PASS	really CHeroBoastsScript::BoastTCGTimeLimit; taken-flag store first
+00ce6550	RELOCATION_MATCH	212v212	PASS	really CHeroBoastsScript::BoastTCETimeLimit; taken-flag store first
+00e1f2d0	RELOCATION_MATCH	198v198	PASS	named bool over one || chain with the "" conversion temporary (flag in ebx, bool in frame byte)
+00e24100	DIFFER	172v172	-	def base kept as field address (lea ebx,[eax+990h]) where retail keeps the base pointer
+00e255d0	RELOCATION_MATCH	184v184	PASS	inline helper with named region string + `? true : false`; quest name implicit conversion
+00f035e0	RELOCATION_MATCH	219v219	PASS	for(;;) with termination returns; rotated waits; closing discarded IsActiveThreadTerminating tail jmp
+00f036c0	RELOCATION_MATCH	214v214	PASS	while(!terminating) around two rotated waits; inline CTimer GetTime/SetTime over g_pGameScriptInterface
+00f0b890	RELOCATION_MATCH	197v197	PASS	one || chain over three conversion temporaries (constant-folded destruction mask 1/3/7)
+00f0b960	RELOCATION_MATCH	239v239	PASS	signed size() re-read per test; *(begin()+i) element; unsigned index jb; dead-count je
+00d17090	DIFFER	249v235	-	by-value CScriptThing dtor inlined at both exits (retail: inline once + out-of-line 0x4AA840)
+00d17da0	RELOCATION_MATCH	203v203	PASS	early-out `IsActiveThreadTerminating(); return;` arms give retail's shared tail jmp entry past mov ecx,esi
+00f02030	RELOCATION_MATCH	193v193	PASS	top-tested while with && chain; conversion temporary flag in a frame word, condition in bl
+00d36140	RELOCATION_MATCH	166v166	PASS	retail vector<bool> is byte-based and 12 bytes; Pattern[GoodRounds*5+EvilRounds].PadActive[i]
+00d361f0	DIFFER	184v186	-	register/operand order only (handle address add order, eax/edx swap around the GSI calls)
+00d38310	RELOCATION_MATCH	231v231	PASS	termination test hoisted above arm test; new-sun difference written twice (no local)
+00d38aa0	RELOCATION_MATCH	233v233	PASS	new-moon difference written twice (a named local swaps eax/ecx)
+00d3ad60	RELOCATION_MATCH	212v212	PASS	CSpawnedFunc0 new-expression with flag-guarded name temporary; by-value cutscene name built in arg slot
+00dbe2e0	RELOCATION_MATCH	212v212	PASS	really CQ_NewOakValeIntroScript::WatchForGotGold (label CQ_FireHeartScript::CheckGameEnding propagated)

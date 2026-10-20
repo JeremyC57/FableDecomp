@@ -88,7 +88,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
 
 ## 4. Agents (owner's rules)
 - The main session (Fable 5.1) coordinates, lands, retries parked rows, keeps docs. Chunk authoring is
-  delegated to **one Opus 5.5 agent at medium effort** at a time (Opus credits allowed); review work
+  delegated to **two Opus 5.5 agents at high effort** (owner, 2026-10-20), landed in the main session only when a batch is worth the verifier run (Opus credits allowed); review work
   (auditing external deliveries, hard repairs) uses Opus 5.5 at high effort. Agents never run git, never
   write under `rebuild/` or `docs/`, never kill processes; they write to `$S/w22/agentNN/` and the main
   session re-verifies everything before landing. Be efficient with tokens.
@@ -115,7 +115,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
   for a CRT call must be declared `throw()`.
 
 ## 6. Where things stand (2026-10-19) and what to do next
-- Catalog 34,795 rows landed (70.2%); chunks 190–200 landed, 201 in authoring, 202–204 cut (`$S/w22/agent202..204`); retry 8 recovered 17 of the 129 parked rows of 190–198 (`batches/2026-10-19_linux_retry8`); cut more with `mkchunk.py 202 K 161 240` (`$S/w22/agent197`, `agent198`). Last commits: `fix:` 235 audit-flagged rows repaired and
+- Catalog 34,795 rows landed (70.2%); chunks 190–202 landed, 203–204 in authoring (two Opus high agents, landed together in the main session); retry 8 recovered 17 of the 129 parked rows of 190–198 (`batches/2026-10-19_linux_retry8`); cut more with `mkchunk.py 202 K 161 240` (`$S/w22/agent197`, `agent198`). Last commits: `fix:` 235 audit-flagged rows repaired and
   re-verified, final relocation audit tables (0 hard rows). Codex's 552-row delivery is reviewed and
   landed except 2 held rows (`pending/2026-10-19_codex_holds/`: 00988490 volatile store order,
   00e32200 split dtor).

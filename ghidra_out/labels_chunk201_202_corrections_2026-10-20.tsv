@@ -1,0 +1,30 @@
+address	name	evidence
+00ce5180	CHeroBoastsScript::BoastThread_00ce5180	CHeroBoastsScript boast thread, not CQR_EscortTraderScript::WatchForRegionLoads (chunk 201)
+00ce5ef0	CHeroBoastsScript::BoastThread_00ce5ef0	as above
+00ce5fc0	CHeroBoastsScript::BoastThread_00ce5fc0	as above
+00ce63a0	CHeroBoastsScript::BoastThread_00ce63a0	as above
+00ce6550	CHeroBoastsScript::BoastThread_00ce6550	as above
+00dbe2e0	CQ_NewOakValeIntroScript::WatchForGotGold	not CQ_FireHeartScript::CheckGameEnding
+00c37840	CSoundLoop_00c37840::Update	library sound-loop code, not CPlayer::OnModeActivityUpdate; 0xC377E0/0xC377F0 its helpers; 0xC13140 the sound play request; 0xC20440 a thiscall setter; 0xC203A0/0xC20390 member ctors
+00d38400	CScriptBase::TriggerProphetComment	
+00d39330	CScriptBase::PlayCutscene	
+00cb7e50	CScriptBase::AddSpawnedFunction	landed callers spell it CQ_AmbushTradersScript::Add / CQR_EscortTraderScript::Add (sweep)
+00d17e70	CQ_BountyHuntScript::RemoveBoastQuestInfo_00d17e70	quest-info removal
+009bc900	WordWrapText	free __fastcall, not a CProgressDisplay member
+00d43190	CQ_AwakeningTheOracleScript::CPretendGuard::Main	
+00878ce0	NCameraModes::CProjectileWeapon::SetUpParams	
+00449b60	CPlayer::Switch_00449b60	row holds three functions (jump table, 0x449BF0, 0x449C10): SKIP, ledger
+00e32200	CV_AmbushScamScript::WatchForTricksterComplete	not CQ_GuildTrainingWoodsWillScript::EndMission (chunk 202)
+00e27ac0	CQS_GuardianTrophyDealerInfoScript::WaitForPieceOver	not CQ_GuildTrainingScript::WatchForSparrowKilled
+00ded0c0	CQ_SecretPassageScript::WatchForTermination	label said CQ_HangingTreeEvilScript::BanditYells
+00e16a80	CWB_ScaredVillager::Main	label said CQ_HangingTreeEvilScript::BanditYells
+00e16c40	CWB_Villager::Main	label said CQ_HangingTreeEvilScript::BanditYells
+00e1ad60	CQ_WizardBattleScript::WatchForTermination	label said CQ_HangingTreeEvilScript::BanditYells
+00e80c00	CV_FishingCompetitionScript::SuspendCompetition	not CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation
+00ddcf50	CQ_PrisonRaceScript::MakeRacerComment	not CQ_PrisonEscapeRescueMotherScript::MakePrisonerComment
+00e18480	CQ_WhiteBalverineWWScript::Init	not CQ_SecretPassageScript::Init
+00edeba0	CV_TravellingHeroesScript::CV_TravellingHeroesScript	not the CQ_WizardBattleScript ctor
+00a90790	C3DPrimitive2::~C3DPrimitive2	vtable 0x0129DF94, deleting dtor 0x00A98430 in slot 0; not CQuadTreeElement
+00ac70f0	QuadricOptimiserInternals::CQuadric::GetMatrixPart	
+00b0a210	NParticleEngine::CRandomAcceleration::CRandomAcceleration	
+004b8c50	std::list<CQuestManager::CObjective>::clear	not CGuiControlTreePane::SortTreeRecursively
