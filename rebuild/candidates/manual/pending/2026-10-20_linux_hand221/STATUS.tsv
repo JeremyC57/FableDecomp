@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006ec380	DIFFER	295v295	-	loop counter not homed in the dead argument slot (frame 0x3c vs 0x38)
+00909ba0	RELOCATION_MATCH	269v269	PASS	VillagerCombo model + inline reference getters
+00906050	RELOCATION_MATCH	246v246	PASS	inline GetCreature/GetTarget getters fix the register rotation
+009079c0	RELOCATION_MATCH	275v275	PASS	implicit CCharString conversion in new-expression + inline getters
+00907d00	RELOCATION_MATCH	246v246	PASS	same as 00906050
+00909520	RELOCATION_MATCH	276v276	PASS	same shape as 009079c0 (ebx flag reused as true)
+00432ee9	RELOCATION_MATCH	263v263	PASS	STLport vector<CCharString>::operator=, size-optimised TU (catalog label CCombatWheel propagated)
+0047be50	RELOCATION_MATCH	307v307	PASS	STLport vector<12-byte>::operator=; tag structs need user ctors
+00568d40	RELOCATION_MATCH	242v242	PASS	vector<8-byte>::operator= (gen from 0047be50)
+00719b30	RELOCATION_MATCH	242v242	PASS	vector<8-byte>::operator= twin of 00568d40
+0071a160	RELOCATION_MATCH	276v276	PASS	vector<0x44>::operator=, allocate_and_copy out of line
+009f6890	RELOCATION_MATCH	274v274	PASS	vector<0x34>::operator=, allocate_and_copy + __copy_ptrs out of line
+00c41a70	DIFFER	310v308	-	x87 operand order in the final lerp (far-1 evaluated before angle-min, +fxch)
+009ea7d0	RELOCATION_MATCH	313v313	PASS	inline signed GetNumParameters; landed CConsoleVariable::GetHelp shape
+008559e0	DIFFER	269v265	-	constant 1 CSEd into ebx (and/test) + this/side register swap
+008bae10	RELOCATION_MATCH	271v271	PASS	same-TU LowerBound 0x40F020 stand-in fixes the key/name/copy frame packing (5 grades)
+008e6780	DIFFER	254v244	-	loop rotation of the read-ahead HasTC loop (retail test-at-top + jmp)
+008baf20	RELOCATION_MATCH	271v271	PASS	twin of 008bae10
+008bc790	RELOCATION_MATCH	295v295	PASS	same-TU GetDef stand-in (auto_inline off) + named block strings; 5 grades
+008bc8c0	RELOCATION_MATCH	320v320	PASS	two-arg overload of 008bc790
+008bb320	RELOCATION_MATCH	300v300	PASS	switch with embedded 16-byte jump table (land with verify_land_jumptable)
+008b7350	DIFFER	278v278	-	this/target register swap (esi/edi) + arg push before GetPItem; needs GetSubDef stand-in
+00848500	DIFFER	277v275	-	component into eax vs ecx + player reg (needs GetSubDef/LowerBound stand-ins)
+008c7600	RELOCATION_MATCH	292v292	PASS	BriarRoseIntoInvulnerable model + boss-phase lookup
+008c0ea0	DIFFER	268v268	-	lookup key frame word (frame+0 vs retail frame+4); rest matches with GetSubDef stand-in
+008c0c00	RELOCATION_MATCH	270v270	PASS	counted-pointer ctor stand-in keeps the pointer in registers; named creature before arg pushes
+008444a0	DIFFER	242v242	-	ebx/edi swap for the two pointer members (register allocation only)
+008ca4a0	RELOCATION_MATCH	251v251	PASS	inline GetPhysics accessor puts the component straight into ecx
+008c9fe0	DIFFER	294v296	-	sub-def not cached in ebp (retail) -> frame offsets shift; GetSubDef stand-in present
+008b74d0	DIFFER	269v262	-	sub-def not cached in ebp (same gap as 008c9fe0)
+00848730	RELOCATION_MATCH	275v275	PASS	unchecked GetInterface x2 + GetSubDef/LowerBound stand-ins
+00849f70	DIFFER	318v302	-	constant-1 CSE into ebx (two dead-bit tests + true) forces a this spill; same gap as 008559e0
+008bcbe0	RELOCATION_MATCH	300v300	PASS	ReleaseWillLightningSpell ctor, same model
+008d5480	RELOCATION_MATCH	283v283	PASS	block-scoped stack CIntelligentPointer shares the key slot; pointer-returning lookup into ecx
+008bd3f0	DIFFER	312v312	-	ebx/edi swap (this vs target temporaries) only
+008cf7d0	DIFFER	265v287	-	operand/scheduling order around the frame-counter call + shared ebx zero
+008c7280	DIFFER	268v268	-	float range local frame word (frame+0 vs retail frame+4)
+006a0150	RELOCATION_MATCH	273v273	PASS	SheatheItemToInventory sibling model + GetAnimationToUse name temp
+0069f2b0	RELOCATION_MATCH	303v303	PASS	named creature local fetched before the AddTC argument pushes; inline GetPhysics
+00a42ea0	DIFFER	268v268	-	scheduling/register rotation (object load before arg push) only

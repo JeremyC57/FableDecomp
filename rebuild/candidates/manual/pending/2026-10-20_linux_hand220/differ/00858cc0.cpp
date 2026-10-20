@@ -1,0 +1,105 @@
+// CCombatActionBase::OnBlowBlocked(bool flag) -- after the creature-action handling, when both the target and the attacker are alive, the attacker's primary-slot weapon (if it carries anything) is alive, and the attacker is in state 2 or its combat type does not ignore blocks, finish this action and make the attacker recoil (CCreatureAction_GeneralInterruptedAttack "STRIKE_RECOIL")
+// Grade: DIFFER(321v317) -- register allocation: retail keeps `this` in ebp (the argument loaded before the frame is allocated), &PTarget in esi and &PCreature in edi with the constant 1 in bl, re-forming &PTarget with `lea` for the final read; ours keeps &PCreature in ebp and spills `this` to a fourth frame word; tried explicit tests and an IS_THING_ALIVE helper
+// Leaf: ?OnBlowBlocked@CCombatActionBase
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00858CC0, length 317 bytes (`ret 4`).
+// Callees: CCreatureActionBase::OnBlowBlocked(bool) 0x006927F0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::
+//          LowerBound const 0x004365B0 (interface 0x46 = CTCCarrying), CTCCarrying::GetThingInPrimarySlot 0x006A1440,
+//          CThingCreatureBase::GetCombatTypeDef 0x00666D10, this's slot 4 (+0x10, FinishAction), CCharString 0x0099EBF0,
+//          CCreatureAction_GeneralInterruptedAttack(CThingCreatureBase*, CThing*, CCharString) 0x0087CF90 (landed),
+//          CThingCreatureBase::SetCurrentAction 0x006644F0, ~CCombatActionBase 0x0062E900; literal 0x012764F0.
+// Layout: the retail CCombatActionBase (PCreature +8, PTarget +0xa8, 0x114 bytes); the creature's state byte +0x10;
+//          the combat type def's block response +0x98.
+struct CTCBase;
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* end;
+    SEntry* LowerBound(const long* type) const;  // 0x004365B0
+};
+struct CThing {
+    unsigned char _pad0[0x10];
+    unsigned char m_state;                       // +0x10
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long m_presentBits[9];              // +0x20
+    CInterfaceMap m_interfaces;                  // +0x44
+    unsigned char _pad50[0x91 - 0x50];
+    unsigned char m_flags91;                     // +0x91 bit 0: dead
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            const CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            return true;
+        }
+        return false;
+    }
+};
+struct CTCCarrying {
+    CThing* GetThingInPrimarySlot();             // 0x006A1440
+};
+struct CCombatTypeDef {
+    unsigned char _pad[0x98];
+    long          BlockedResponse;               // +0x98
+};
+struct CCharString {
+    void* m_pData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                              // 0x0099EAE0
+};
+struct CBaseIntelligentPointer {
+    void*   __vftable;
+    CThing* m_pItem;                             // +0x04
+    CThing* GetPItem() const;                    // 0x00A01B50
+};
+struct CSoundPair { long FirstSound, LastSound; };
+inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+{
+    if (p.GetPItem() != 0) {
+        if (!(p.GetPItem()->m_flags91 & 1))
+            return true;
+    }
+    return false;
+}
+struct CThingCreatureBase;
+struct CCombatActionBase {
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void FinishAction();                 // slot 4 (+0x10)
+    unsigned char           _pad04[4];
+    CBaseIntelligentPointer PCreature;           // +0x08
+    unsigned char           _pad10[0xa8 - 0x10];
+    CBaseIntelligentPointer PTarget;             // +0xa8
+    unsigned char           _padb0[0x114 - 0xb0];
+    ~CCombatActionBase();                        // 0x0062E900
+    void CreatureOnBlowBlocked(bool flag);       // 0x006927F0 (CCreatureActionBase::OnBlowBlocked)
+    void OnBlowBlocked(bool flag);
+};
+struct CCreatureAction_GeneralInterruptedAttack : CCombatActionBase {   // vtable 0x01277A14
+    CCreatureAction_GeneralInterruptedAttack(CThingCreatureBase* owner, CThing* target, CCharString animName);   // 0x0087CF90
+};
+struct CThingCreatureBase : CThing {
+    CCombatTypeDef* GetCombatTypeDef();          // 0x00666D10
+    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+};
+
+void CCombatActionBase::OnBlowBlocked(bool flag)
+{
+    CreatureOnBlowBlocked(flag);
+    if (IS_THING_ALIVE(PTarget) && IS_THING_ALIVE(PCreature)) {
+        bool canRecoil = true;
+        CTCCarrying* carrying;
+        if (PCreature.GetPItem()->GetInterface(&carrying, 0x46)) {
+            CThing* held = carrying->GetThingInPrimarySlot();
+            if (!held || (held->m_flags91 & 1))
+                canRecoil = false;
+        }
+        if ((PCreature.GetPItem()->m_state == 2 || ((CThingCreatureBase*)PCreature.GetPItem())->GetCombatTypeDef()->BlockedResponse != 2) && canRecoil) {
+            CThing* target = PTarget.GetPItem();
+            CThingCreatureBase* creature = (CThingCreatureBase*)PCreature.GetPItem();
+            FinishAction();
+            creature->SetCurrentAction(CCreatureAction_GeneralInterruptedAttack(creature, target, "STRIKE_RECOIL"));
+        }
+    }
+}

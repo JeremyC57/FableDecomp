@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00454467	RELOCATION_MATCH	287v287	PASS	vector<CDegradableInfo>::operator= (STLport, forceinline __copy)
+00461017	RELOCATION_MATCH	287v287	PASS	vector<CReverbEnvironmentEntry>::operator=
+004e5f70	RELOCATION_MATCH	280v280	PASS	vector<CEngineGraphic>::operator= (CReplaceableMeshes)
+00471cc5	RELOCATION_MATCH	303v303	PASS	vector<COpinionDeedReactionDef>::operator= (named __false_type tag)
+009c72b0	RELOCATION_MATCH	304v304	PASS	CActiveFile copy ctor (STLport list copy, iterator user copy ctor)
+00c90fc0	RELOCATION_MATCH	243v243	PASS	libpk bit writer (count param reused as total)
+0099ed10	RELOCATION_MATCH	271v271	PASS	ToLower (inline GetLength loop condition, same-TU UnassignString)
+0099ee20	DIFFER	277v278	-	ToUpper char address form add eax,edi vs [edi+ecx]
+0099ba70	DIFFER	265v265	-	CWideString::Format: vector zero stores vs wcslen call placement (label wrong: wide string)
+00c630d0	RELOCATION_MATCH	248v248	PASS	EAX slot enable (label wrong: CLight block); 5 grades
+00ee8100	RELOCATION_MATCH	266v266	PASS	quest script ctor (landed CV_ChickenKicking model)
+00857f30	RELOCATION_MATCH	254v254	PASS	CCombatActionBase(owner,target,code,sound) (landed 0x857E40 model)
+00858030	RELOCATION_MATCH	244v244	PASS	CCombatActionBase(owner,code,sound)
+0044fadc	RELOCATION_MATCH	284v284	PASS	three persist reads + CDefString read (template helper)
+00e2bd80	RELOCATION_MATCH	313v313	PASS	CAS_Trickster::Init (implicit CScriptThing copy, user C3DVector copy)
+0052caf0	RELOCATION_MATCH	243v243	PASS	ForceState (list clear inline, chained store order)
+009a77d0	RELOCATION_MATCH	255v255	PASS	ReadQuotedString (nested success path)
+00da26b0	RELOCATION_MATCH	244v244	PASS	DoOnHitSpeech (sibling DoOnSpeakToSpeech model)
+009d1160	RELOCATION_MATCH	252v252	PASS	OpenFileReadWrite (sibling OpenFileReadOnly model; store order)
+009cd140	DIFFER	267v268	-	FindIndexByPathname: start cached in ebp + count spilled (frame packing)
+00866e80	RELOCATION_MATCH	294v294	PASS	KnockdownRecover FinishAction (ternary GetInterface, GetBody accessor)
+008c4b80	DIFFER	304v302	-	ScorpionKing Initialise: frame packing (effectType/strings share words in retail)
+009a7f80	DIFFER	271v270	-	FindContainedBank: ternary arm push (mov eax,ebx vs push ebx)
+009d5bf0	DIFFER	305v314	-	HandleFailedAllocation: register allocation / frame order
+009f05a0	DIFFER	300v300	-	RegisterSection: this/handle register swap (edi/ebp)
+005dcb00	DIFFER	253v255	-	GetAnimsWithNameStartingWith: temp not homed in dead arg slot
+00942a00	RELOCATION_MATCH	304v304	PASS	WorkAtSchool IsRunnable (StayNearSchool model, forceinline HasTC)
+009473e0	RELOCATION_MATCH	266v266	PASS	WanderAroundShops InitCreaturePosition (implicit conversion temp in && chain)
+0093e8c0	DIFFER	320v318	-	VillageTaskTorch IsRunnable: lea ecx,[eax+8] vs mov+add
+0096a7a0	DIFFER	263v270	-	WhisperRetreat IsRunnableLeaf: frame packing + zero register
+0096ae50	DIFFER	262v258	-	UseWill: by-value counted pointer / argument scheduling
+00c36ea0	RELOCATION_MATCH	265v265	PASS	ExecuteAttackSequence (named-local inline getters, fastcall key builder; class unidentified)
+00c71f80	DIFFER	311v311	-	ComputePitchScale: final flags/state reload order (scheduling)
+009cc9f0	RELOCATION_MATCH	302v302	PASS	PrepareDataForInclusion (polymorphic CBase, memset fill_n, counted-pointer operator->)
+00a5b260	DIFFER	265v264	-	CCachedFile::Open: identical bytes + trailing int3 after final throw (grader artefact)
+00859660	DIFFER	317v311	-	ResetMeleeCombatAbilityEffects: effect def kept in edi (regalloc)
+00858cc0	DIFFER	321v317	-	OnBlowBlocked: register allocation (this/pointer members)
+006ed8c0	DIFFER	242v242	-	DeregisterAttackedCombatant: temp slot sharing + ebx/ebp swap
+006eb8a0	DIFFER	247v253	-	DebugGetAllProngVectors: x87 temporaries frame packing
+0070d780	DIFFER	291v305	-	AddCombinationAnim: cached InternalAlphas pointer across copy ctor (regalloc)
