@@ -115,7 +115,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
   for a CRT call must be declared `throw()`.
 
 ## 6. Where things stand (2026-10-19) and what to do next
-- Catalog 34,795 rows landed (70.2%); chunks 190–206 landed, 207–208 in authoring; a Fable 5.1 retry agent works the 184 parked rows of 190–204 in `$S/w22/retry9` (two Opus high agents, landed together in the main session); retry 8 recovered 17 of the 129 parked rows of 190–198 (`batches/2026-10-19_linux_retry8`); cut more with `mkchunk.py 202 K 161 240` (`$S/w22/agent197`, `agent198`). Last commits: `fix:` 235 audit-flagged rows repaired and
+- Catalog 34,795 rows landed (70.2%); chunks 190–208 landed, 209 (Fable 5.1 medium) and 210–212 (Opus high) in authoring; retry 9 (Fable 5.1) recovered 8 of 184 parked rows (`batches/2026-10-20_linux_retry9`) (two Opus high agents, landed together in the main session); retry 8 recovered 17 of the 129 parked rows of 190–198 (`batches/2026-10-19_linux_retry8`); cut more with `mkchunk.py 202 K 161 240` (`$S/w22/agent197`, `agent198`). Last commits: `fix:` 235 audit-flagged rows repaired and
   re-verified, final relocation audit tables (0 hard rows). Codex's 552-row delivery is reviewed and
   landed except 2 held rows (`pending/2026-10-19_codex_holds/`: 00988490 volatile store order,
   00e32200 split dtor).

@@ -1,0 +1,47 @@
+addr       parity           behav  name
+00487cf0   WARN SHARED_HEADER_AVAILABLE CDisplayViewManager
+00487cf0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+00487cf0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00487cf0   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+00487cf0   RELOCATION_MATCH PASS   SetControlledCreature
+0048f7c0   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0048f7c0   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+0048f7c0   WARN RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'
+0048f7c0   RELOCATION_MATCH PASS   SetButton1OverrideText
+0048f881   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0048f881   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+0048f881   WARN RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'
+0048f881   RELOCATION_MATCH PASS   SetButton2OverrideText
+00853580   WARN RELOC_NAME: ?GFGetCurrentFrame@@YIJXZ -> 0049d870 labelled 'GFGetPreMainMemoryUsed'
+00853580   RELOCATION_MATCH PASS   Update
+00878ce0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00878ce0   WARN SHARED_HEADER_AVAILABLE CThingGameObject
+00878ce0   WARN RELOC_NAME: ?GetObservedThing@CBase@NCameraModes@@QBEPBUCThingGameObject@@XZ -> 0084f1b0 labelled '_Cons_val_std::allocator_std::pair_EHeroMorphType,CParticleMorphs::CEntry___,std::pair_EHeroMorphType,CParticleMorphs::CEntry_,std::pair_enum_EHeroMorphType,class_CParticleMorphs::CEntry__const&_'
+00878ce0   RELOCATION_MATCH PASS   SetUpParams
+008973a0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+008973a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008973a0   WARN RELOC_NAME: ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ -> 00449970 labelled 'Catch@0040d959'
+008973a0   RELOCATION_MATCH PASS   IsPlayerCarryingItemOfType
+00a6c900   MATCH            PASS   Sizeof
+00e24100   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e24100   RELOCATION_MATCH PASS   GetSuccessType
+
+WINS: 8
+  00487cf0 RELOCATION_MATCH CPlayer::SetControlledCreature
+  0048f7c0 RELOCATION_MATCH CSubtitleRenderer::SetButton1OverrideText
+  0048f881 RELOCATION_MATCH CSubtitleRenderer::SetButton2OverrideText
+  00853580 RELOCATION_MATCH NCameraModes::CScriptModuleTransitionBetweenPoints::?Update@CScriptModuleTransitionBetweenPoints
+  00878ce0 RELOCATION_MATCH NCameraModes::CProjectileWeapon::SetUpParams
+  008973a0 RELOCATION_MATCH CGameScriptInterface::IsPlayerCarryingItemOfType
+  00a6c900 MATCH CPhysicsMesh::Sizeof
+  00e24100 RELOCATION_MATCH NScript::CQR_EscortTraderScript::GetSuccessType
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CPlayer_SetControlledCreature_00487cf0
+  CSubtitleRenderer_SetButton1OverrideText_0048f7c0
+  CSubtitleRenderer_SetButton2OverrideText_0048f881
+  NCameraModesCScriptModuleTransitionBetweenPoints_Update_00853580
+  NCameraModesCProjectileWeapon_SetUpParams_00878ce0
+  CGameScriptInterface_IsPlayerCarryingItemOfType_008973a0
+  CPhysicsMesh_Sizeof_00a6c900
+  NScriptCQREscortTraderScript_GetSuccessType_00e24100

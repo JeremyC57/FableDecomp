@@ -1,0 +1,147 @@
+# Retry 9 notes (chunks 190-204 parked rows) -- hypotheses and outcomes per row
+
+- 00d17090: DIFFER(249v235) by-value CScriptThing dtor inlined at both exits (retail: inline at the terminating return, out-of-line 0x4AA840 at the end). Hypothesis: VC7.1 "inline once" budget -- probed nested inline Release()/DecRef layers, out-of-class dtor without `inline`, __forceinline counted dtor, #pragma inline_depth(1/2/3): depth 1 drops both expansions (175 bytes), the rest are identical to the parked source. No landed function shows both an inline and an out-of-line ~CScriptThing in one body; the once-only expansion stays a lane gap.
+- 0066bd00: DIFFER(284v231) [differ/ improved 231v231] vector<CCharString> dtor inlined at both exits. Found the mechanism: VC7.1 inlines a callee at every site below a size band, once (end-of-block site first) in the next band, never above it (probes: 3 element loops -> never, +1 null-tested free -> once, dead member store -> once; nested _Destroy/_M_deallocate helpers, _Vector_base split, trait-tag arguments, dead size arguments, explicit guard+do/while, extra preceding TU functions and a smaller/bigger caller change nothing: the cost is per callee, post-front-end, pre-DSE). A dead `_M_start = 0` after the free plus the guard as an `if` body gives 231v231 with only the final null test's zero register (lane CSEs the entry zero) and the dtor cursor colour (edi v esi) left; the dead store is not faithful to 0x414EA0 so the row stays parked.
+- 00449d90: DIFFER(195v195) frame 0xC v 8. Retail homes the CDefString temporary in the dead "PLAYER_HERO" word and the character name in the dead GetDef out word. Tried: block-scoped `out` with the object copied to a holder outside the block, the same through a __forceinline helper returning the object, the names as unnamed temporaries (both arms / found arm only), the PLAYER_HERO string in its own block: the lane never re-uses the address-taken out word (and the block-scoped forms switch the holder's release to the long `mov/lea/dec/test` form). RTM-v-DDK frame-slot sharing of an address-taken block local (GOTCHA 23d).
+- 009b9e00: DIFFER(219v219) the recomputed quote-scan end pointer is `mov edx,edi(pos) ; add edx,[esi+4](String) ; add edx,ecx` in retail, `mov edx,[esi+4] ; add edx,edi ; add edx,ecx` here. Tried `pos + String + n`, `(pos + String) + n`, `n + pos + String`, integer casts, `&String[pos + n]`, position-typed CalcInQuotes(from, to), index loop (199), member reads without the pos local, `from + n` (201: the lane CSEs the bound and spills), `end` local (213): VC7.1 in the lane canonicalises the add to load the member first whatever the source order (operand-order lane gap).
+- 00a872f0: DIFFER(196v196) `mov al,[esp+30h] ; test al,al` hoisted above the `fadd` of the agent radius. Tried ternary return, `if (!relative) return`, named radii sum, `!= false`, assign-then-return, reusing the radius local: the lane always hoists the byte load above the x87 add (scheduling lane gap).
+- 00881690: DIFFER(229v229) the param `rep movsd` setup (`mov ecx,0Ch ; lea edi`) sits above the fadingout byte and vtable stores in retail, below them here. Tried: CRadialBlurParams as a first base (VC keeps the base order, so the layout moves), body-assigned param, non-virtual dtor: no change (scheduling gap; the landed Displacement twin copies 16 bytes through registers so never meets it).
+- 00c40590: DIFFER(192v192) [differ/ improved] dot product fixed by the `s = Z*v.Z; s += Y*v.Y; s += X*v.X` chain inside the inline Dot (front->Dot(*top)); the inline cross product's multiplies: retail loads per product f,f | r,f | f,r (source order, as the landed out-of-line SetCrossProduct 0xC40370 shows left-operand-first), the lane always loads the `this`-relative m_right first against the `front` pointer local (both spellings, pointer/reference locals for right fold back to this+0x3c); with both vectors as `this` members the order follows spelling but the dot product then flips. Operand-order lane gap.
+- 00878ce0 lesson applied; 00881690 see above.
+- 00903bc0: DIFFER(212v220) retail homes the interface-present bit in a frame byte (`and cl,1 ; mov [esp+0Fh],cl ; je`, never reloaded; same in MoveToThing 0x903E20). Tried: caller-level `bool found` (used in the wait test: flag rides in bl), unused caller bool, `unsigned char present`, `present == true`, assignment after declaration: the lane never keeps the dead byte store (frame byte homing gap).
+- 009dd960: DIFFER(227v229) the RHW global copied through the FPU (`fld ; fst ; fstp`) where retail reads it into edx and stores through eax/edx. Tried a float local, two reads of the global (233), adjacent stores: the lane always routes the float copy through the x87 (a dword-typed model would be untrue to the float global).
+- 00a11ae0: DIFFER(168v185) retail keeps a 0x20 frame with a partial extra copy of the halved centre (X by integer move, Y `fst` kept on the x87 stack, Z forwarded) and spills the transform's result X. Tried: named centre local, by-value (__forceinline) Transform parameter, named GetCentre result, copy-constructed local, named result, implicit copy ctor (100/220: different return shapes), assignment into a default-constructed local (196: all three words copied). The lane either elides the copy or makes it whole; the partial copy is not reproduced.
+- 00b21090: DIFFER(132v197) the lane sinks the two if/else arms' `out = X.ControlPoints[index]` copies into one shared tail (phi on the base); retail keeps three complete copy+ret tails. Same family as the tail-merged SetText arms (0x729B20) and the two-exit merge (0xCA67B0): the lane merges identical tails retail keeps (not re-tried beyond the parked user operator= / optimize(g,off) forms).
+- 007610d0: DIFFER(237v237) point/next esi/edx swap with the four edge loads reversed. Tried: named flatNext local, edge built from component differences (230: direct fsub), toPos before/after side, dot operands swapped, cross operands swapped (243): register swap only.
+- 00438310: DIFFER(182v180) under /GS: ours copies `this` to eax and keeps the mode byte in cl, retail keeps `this` in ecx and the byte in al. Tried a named bool mode local and `== false` spellings: no change (/GS caching gap family).
+- 00e32200: DIFFER(208v188) by-value CScriptThing dtor inlined at both exits (retail: inline at the loop's terminating return, out-of-line 0x4AA840 at the common exit) -- the inline-once band family of 00d17090 / 0066bd00; a duplicate `Data = 0` store is folded before costing. See the compiler-build gap statement in LESSONS.md.
+- 008d0730: DIFFER(233v233) only the inlined Compare argument loads: retail `mov edx,[eax] (carrier text) ; mov ecx,[ecx] (name text)`, the lane loads the name's text first whatever the form. Tried this pass: Compare operands swapped (loads the name into edx first), `carrier == name`, a file-static __forceinline Equal/SameText pair in all four operand orders: the lane always loads the first object's text first; retail evaluates the edx argument first (fastcall right-to-left). Evaluation-order gap.
+- 008852e0: DIFFER(183v183) [differ/ improved] `Tint.Set(1,1,1,1)` inside SetToDefault fixes the sunk screen-filter zero stores (the 00878ce0 lesson); left: `push esi` placement and the two track-position zero stores sunk to just before the position block copy (inline SetTrackPositions 187, chained assignment, init-list / body ctor stores 203: all keep the sink or add dead PrevFrame stores).
+
+## Rows not re-tried this pass (status from the parked source; reason = authoring agent / retry 8)
+- 00412e80: DIFFER(180v217) two functions in the row (two 9-byte zero-store stubs follow); Transfer body itself graded identical (180 bytes)
+- 0041726d: DIFFER(189v189) ebx/edi swap
+- 00488620: DIFFER(196v196) argument build scheduling + key/out word in the filter slot (frame+4 v +0)
+- 004886f0: DIFFER(196v196) const twin of 00488620, same diff
+- 004b0b90: DIFFER(233v238) register allocation (this/name); label ok (RemoveActiveQuestCard body + unused bool)
+- 004b1590: DIFFER(223v223) register choice only (eax/ecx/ebp)
+- 004b1670: DIFFER(168v168) tag over live bool slot reproduced via (first,last,tag,val) fastcall order; iterator result slot is the lane frame-slot gap
+- 0053e0c0: DIFFER(190v190) vptr register eax vs edx
+- 00543d30: DIFFER(183v183) NUISystem::CParticleEffect::Initialise; scheduling only (axes temp stores vs third push)
+- 00543df0: DIFFER(217v217) NUISystem::CParticleEffect::ChangeState; scheduling only (same as Initialise)
+- 00543ee0: DIFFER(192v190) NUISystem::CParticleEffect::Draw; Position.X copy not dead-store-eliminated in ours
+- 0055bc30: DIFFER(203v203) callee-saved ebx/edi shrink-wrapped into the if block by the lane; retail pushes them in the prologue
+- 005954ad: DIFFER(213v213) pop edi scheduled before the base vtable store (label correction: ~CFrontEndManager)
+- 00635b30: DIFFER(185v185) register swap this edi/esi vs map pointer
+- 006451dd: DIFFER(172v173) ebx/edi swap
+- 0064b5c1: DIFFER(169v167) inventory pointer in eax not ecx (uninitialised absent path)
+- 0064e0da: DIFFER(228v228) ebx/edi swap
+- 00680a40: DIFFER(172v162) loop-invariant pair.first store hoisting + this/&Voices register split (lane); 3 forms tried
+- 00690c70: DIFFER(166v162) /GS lane gap: input cached in ebp, AddLong/AddUBYTE args not homed in the dead event slot
+- 00698b50: DIFFER(221v218) argument evaluation order of the fastcall sound call (GetPItem hoisted) and cross-jump point
+- 00699130: DIFFER(183v183) register choice in the inline list clear() epilogue only
+- 00699a50: DIFFER(177v175) call order fixed with a def local; ebx/edi colouring and the shared constant-1 register remain
+- 00699b00: DIFFER(243v238) only the by-value parameter's counted release shape differs
+- 0069adc0: DIFFER(193v177) register colouring + set-def release shape (attempt 1 had the dec [eax+4] form)
+- 0069e2e0: DIFFER(231v237) bool argument widened through a frame word in retail (lane widens with xor/mov cl)
+- 006a02b0: DIFFER(240v240) frame 0x10 v 0x14 (pair slot)
+- 006a2220: DIFFER(162v161) really CTCCarrying (CarrySlots) collector; label COptimisedPrimitive::RemapGroups wrong; frame homing gap
+- 006cd890: DIFFER(233v221) def release long form vs dec [ecx+4] ; jne (known lane gap)
+- 006fd5e0: DIFFER(212v212) same size; one shared C3DVector local + scalar Lerp; only the Y/Z base register and one store order remain
+- 007b45a0: DIFFER(208v211) two functions in the row (3-byte ret 4 stub after the jump table); Transfer body itself graded identical (208 bytes)
+- 00820b80: DIFFER(194v194) tag over live arg slot (lane gap)
+- 0082a890: DIFFER(206v206) esi/edi swap + push edi placement
+- 0082add0: DIFFER(171v171) scratch register choice
+- 00845b10: DIFFER(165v165) esi/edi swap
+- 0086b810: DIFFER(238v230) push_back block register/load order
+- 00873930: DIFFER(231v221) frame temporaries of the vector sum
+- 008930f0: DIFFER(186v186) same size; tools fetched via an inline helper fixed the order; register rotation + result-block layout remain
+- 008941a0: DIFFER(168v176) only the folded IS_THING_DEAD remnant differs (store + xor cl,cl ; jne)
+- 008967f0: DIFFER(205v205) else-if chain; hook arms need one shared local (next: else { if (!GetInterface(&hook)) {name; AddTC} hook->Usable=v; })
+- 008a8010: DIFFER(219v218) box arithmetic scheduling only (in-place add vs lea); rest matches with TU-local query body
+- 008ad050: DIFFER(199v202) prologue shrink-wrap
+- 008b7a20: DIFFER(236v236) esi/edi swap
+- 008b8bc0: DIFFER(231v231) ebx/ebp swap
+- 008bf1c0: DIFFER(178v178) vtable load scheduling
+- 008c4170: DIFFER(218v218) frame 0xC v 8 (out-slot word not reused)
+- 008c67a0: DIFFER(190v190) esi/edi swap
+- 008d6da0: DIFFER(222v222) CModeConversation::AnimUpdate; register allocation only
+- 008da2e0: DIFFER(200v195) ScorpionKingExhausted::OnActivate; frame 0xc v 8 (out-slot reuse) + def register copy
+- 008da7a0: DIFFER(227v227) Drained::OnDeactivate; this/&PDrainer in edi/ebx (retail ebx/edi)
+- 008ddfb0: DIFFER(202v202) DragonStrafe ctor; push -1 scheduled before the spline zero stores
+- 008e72d0: DIFFER(186v186) Intangible timed ctor; CRC null test eax/ecx swap only
+- 008e7f80: DIFFER(223v223) GetRandomImposter; second-loop index/element register swap (edi/ebp)
+- 008ec260: DIFFER(188v188) esi/edi swap
+- 008f63c0: DIFFER(207v229) zero-register vs immediate vector clears and ebp/spill allocation around the 64-bit count guard (four forms identical)
+- 008f70f0: DIFFER(144v164) inline search register choice + merged tails
+- 00903d60: DIFFER(186v183) register colouring (PThing esi / target-thing reuse of edi)
+- 00904380: DIFFER(176v163) loop rotation lane gap
+- 009109b0: DIFFER(208v219) ownership ternary: retail merges both arms into one jne with a register compare
+- 00945e70: DIFFER(212v223) twin of 009109b0 (same ownership ternary gap)
+- 00997880: DIFFER(172v168) scan registers + backward start search
+- 0099ac90: DIFFER(215v227) dead LARGE_INTEGER high store missing
+- 009a6370: DIFFER(220v227) only volatile WindowsQuit matches (RELOCATION_MATCH in probe); brief bans volatile
+- 009acd00: DIFFER(137v162) class iterator in frame + second IV
+- 009ad5f0: DIFFER(231v231) ebx/ebp swap + eax/ecx
+- 009b9770: DIFFER(177v181) CParsedItem::InitAsFloat; divisor in memory only via volatile (probe artefact), loop rotation
+- 009bbbf0: DIFFER(207v207) frame 0x38 v 0x40 (8 unused retail bytes), all offsets shift
+- 009c3590: DIFFER(194v194) register choice of the dead volatile read (cl v al) and the lea for GetFileSize
+- 009d0630: DIFFER(203v192) CPackedBlockAllocator::RebuildFreeList; address-taken index reloaded after the insert (retail keeps it in esi)
+- 009e4cb0: DIFFER(180v179) twin of 00997880
+- 009f1ac0: DIFFER(223v221) /GS parameter load hoisted to entry (known /GS lane gap); everything else matches
+- 009f3470: DIFFER(153v162) shrink-wrapped callee-saved pushes inside the row guard + hoisted row size; 4 forms
+- 009f3520: DIFFER(162v162) is CSurface::CopyToMemoryAutoUnswizzle (PDB; label copied from 0x9F3470); same shrink-wrap gap
+- 009f3ff0: DIFFER(155v161) this register edi vs esi + per-row width re-read placement; 3 forms
+- 009fc950: DIFFER(224v230) register allocation: Data kept in ebx vs spilled to the dead texture slot; folded dimension compares
+- 009fca40: DIFFER(167v218) lane gap: inline-asm fistp rounding through a pointer (TLX/TLY)
+- 009fe460: DIFFER(231v231) same size; scratch-register rotation in the threshold chain and the ReduceMipmapLevel call
+- 00a156d0: DIFFER(236v237) AddNavigationMap(long, CNavigationAreaInit&); header reload before insert + scheduling
+- 00a157c0: DIFFER(194v196) AddNavigationMap(long, C2DBoxI, CCharString, CAFile&, process); one header reload before insert
+- 00a1af00: DIFFER(227v227) IsNavLineOfSightClear; FPU way-point copies + temp slot sharing
+- 00a3f250: DIFFER(236v236) register naming only (edx/ecx, eax/edx) around the inlined CVectorMap::Add; 2 forms
+- 00a44880: DIFFER(172v172) /Od TU; only the frame differs (0x30 unused bytes after the temporaries); unused-array placements tried
+- 00a5f430: DIFFER(218v213) same push_back value+tag dead-slot overlay gap as 00a623d0
+- 00a623d0: DIFFER(183v174) push_back(0) value+tag overlaid on one dead arg slot in retail (24l lane gap); by-value forceinline push_back tried
+- 00a62c90: DIFFER(238v238) CPackedUIntArray::PackArray; register allocation only (bits in edi, bias in ecx)
+- 00a636c0: DIFFER(208v203) push_back value/tag temporaries in the dead index slot (known lane gap)
+- 00a65ff0: DIFFER(167v169) zero register ebx vs ecx
+- 00a77b80: DIFFER(166v169) CNavSwitchableLeafNode::MakeRegion; lane shrink-wraps the callee-saved pushes
+- 00a780b0: DIFFER(236v238) ~CNavConnectorNode; ebx/ebp swap + tag push order (find tag is passed by const reference)
+- 00a792e0: DIFFER(238v238) CNavQuadTree::ClearNodes; xor edx/test vs xor ecx/cmp in the array release
+- 00a887b0: DIFFER(217v211) loop-invariant z=0 store hoist + zero-register forwarding not reproduced
+- 00a88d10: DIFFER(144v196) lane gap: bare fistp (inline-asm FastFloatToInt)
+- 00a9d580: DIFFER(199v221) inline asm SSE arm (lane gap)
+- 00ac70f0: DIFFER(231v237) operand-order lane gap in two products; E31/E13 copy shape
+- 00ac7eb0: DIFFER(215v215) ComputeSelfContraction; x87 operand order in the normal term and dot product
+- 00ac82a0: DIFFER(192v192) ComputeSubContractionCost; prologue push/spill scheduling only
+- 00ac85d0: DIFFER(183v165) CollapseSegments; empty allocator overlaid on the live threshold slot (lane gap)
+- 00aeb600: DIFFER(202v202) CParticleEmitterManager::CreateInterpolatedEmitter; register allocation only
+- 00aeb6d0: DIFFER(201v192) CParticleEmitterManager::CreateEmitter; clone pointer load placement / esi-edi swap
+- 00aeb790: DIFFER(178v171) CParticleEmitterManager::Create2DEmitter; this/result register swap
+- 00af4240: DIFFER(219v219) NParticleEngine::CParticleSystem::WriteBinary; strength-reduced walk pointer bias (+0x14 vs +8)
+- 00af5380: DIFFER(170v167) NParticleEngine::CParticleSystem::AllocateDecal; scheduling only (edi push, inc mem)
+- 00b18060: DIFFER(170v170) CPSCAttractor::DatabaseCopy; bitfield merge re-reads the destination byte
+- 00b1a640: DIFFER(190v192) NParticleEngine::CPSCLight ctor; only the user-point array clear(): zero stores forwarded into the __copy args
+- 00b24400: DIFFER(223v238) view X spill / screen.Y preload
+- 00b2a010: DIFFER(163v163) push_back temp slot (arg slot choice)
+- 00b2b050: DIFFER(208v197) register roles of the two morphs swapped in the loop set-up
+- 00b61cd0: DIFFER(201v209) ring Z not hoisted to ebp; IV registers
+- 00ba6ef0: DIFFER(176v176) value temps not homed in the dead arg slot
+- 00bc5820: DIFFER(171v182) result bool in cl; begin in ebx
+- 00bca6b0: DIFFER(188v188) push esi / distance-load scheduling
+- 00bcc700: DIFFER(190v192) twin of 00bca6b0 + strip-0 load
+- 00bd27f0: DIFFER(176v176) twin of 00ba6ef0
+- 00bd2a90: DIFFER(197v218) draft: loop counter/IV shape
+- 00bdd2f0: DIFFER(163v169) signed /16 folded to shr (value-range) + arg regs
+- 00bee070: DIFFER(206v206) esi/edi swap between result and first (register swap only)
+- 00bf44a0: DIFFER(210v208) local copy store order + box copy addressing
+- 00c1c330: DIFFER(111v192) lane gap: LTCG custom register convention (eax/ecx/edx/esi)
+- 00c43fd0: DIFFER(177v181) byte-narrowed state compare; Visible xor-merge
+- 00c461e0: DIFFER(135v163) x87 scheduling / factor homing
+- 00cac4a0: DIFFER(194v194) lea ecx v eax for the CheckMediaType arg
+- 00d361f0: DIFFER(184v186) register/operand order only (handle address add order, eax/edx swap around the GSI calls)
+- 00d43190: DIFFER(233v226) final wait loop: retail jump-to-bottom-test, lane duplicates the test on top
+- 00eb3ba0: DIFFER(186v187) likely CMurderTwistSheriffGuard::Init (ID +0x30 indexes parent seh_Guards +0x7c); register allocation of the lea esi,[eax+edx]
+- 00f370c0: DIFFER(171v167) pool word stores per arm vs once after the join; register rotation
+- 00f372b0: DIFFER(228v224) enregistration of the address-taken index local (frame-only in our build)
+- 00f37660: DIFFER(234v206) retail has callee knowledge of the STL vector assignment (fields kept in registers, dead dtor dropped)

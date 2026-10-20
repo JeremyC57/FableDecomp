@@ -1,5 +1,9 @@
 // CEnvironmentSpellEffectInterface::CEnvironmentSpellEffectInterface(CEnvironment* environment) -- default all current
-// Grade: DIFFER(ours v retail) -- 183v183 scheduling only: prev-frame screen-filter zero stores after the tint, push esi earlier, track-mode zero stores after the second lea
+// Grade: DIFFER(183v183) (retry 9, differ/) -- the inline `Tint.Set(1,1,1,1)` keeps the second SetToDefault's zero stores
+// ahead of the tint stores as in retail; left: `push esi` scheduled after the Environment store (retail after the
+// threshold-colour zero stores) and the two track-position zero stores sunk to just before the position block copy
+// (retail keeps them in source order before the first `rep movsd`; an inline setter, chained assignment and ctor
+// initialisation of the two enums do not move them)
 // and previous-frame screen-effect parameter blocks
 // Leaf: ??0CEnvironmentSpellEffectInterface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008852E0, length 192 bytes, `ret 4`.
@@ -57,10 +61,7 @@ public:
         {
             Alpha = Contrast = Brightness = 0.0f;
             Saturation = 1.0f;
-            Tint.R = 1.0f;
-            Tint.G = 1.0f;
-            Tint.B = 1.0f;
-            Tint.A = 1.0f;
+            Tint.Set(1.0f, 1.0f, 1.0f, 1.0f);
         }
     };
 

@@ -1,8 +1,10 @@
 // CRightHandedSet::NormalizeOrientationFrame() -- publish the frame's dirty bits, and when the orientation changed renormalise front/top and rebuild the frame
 // Leaf: NormalizeOrientationFrame
-// Grade: DIFFER(192v192) -- x87 operand order only: the dot product's first two terms come out Y,Z where retail has Z,Y, and four of
-// the six cross-product multiplies load the member operand first where retail loads the front vector first; swapping the
-// source operands, a pointer/inline-member form and an inline Dot/SetCross pair did not move them (canonicalised by the lane).
+// Grade: DIFFER(192v192) (retry 9, differ/) -- the dot product now matches as the chain `s = Z*v.Z; s += Y*v.Y; s += X*v.X`
+// inside the inline Dot; left: four of the six inline cross-product multiplies load the `this`-relative right vector
+// first where retail loads the front pointer local first (retail keeps the source order per product, f,f | r,f | f,r;
+// the lane ranks `this` members above pointer locals whatever the spelling, and ranks by spelling only when both operands
+// are `this` members -- the operand-order lane gap).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C40590, length 192 bytes (`ret`).
 // Callees: C3DVector::Normalise() @ 0x00C402E0 (returns the old length, dropped: `fstp st(0)`), C3DVector::SetCrossProduct
 // (const C3DVector&, const C3DVector&) @ 0x00C40370 (landed; manifest label "CRightHandedSet::GetRight" is propagated).
@@ -19,7 +21,7 @@ struct C3DVector {
     float X, Y, Z;
     float Normalise();                                           // 0x00C402E0
     void SetCrossProduct(const C3DVector& a, const C3DVector& b);   // 0x00C40370
-    float Dot(const C3DVector& v) const { return X * v.X + Y * v.Y + Z * v.Z; }
+    float Dot(const C3DVector& v) const { float s = Z * v.Z; s += Y * v.Y; s += X * v.X; return s; }
     void SetCross(const C3DVector& a, const C3DVector& b)         // inline twin: this = a x b
     {
         X = b.Z * a.Y - b.Y * a.Z;

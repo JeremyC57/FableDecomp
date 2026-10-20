@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00793d20	RELOCATION_MATCH	220v220	PASS	CTCUnholyPower::SetPTarget (label said CTCDivineWrath); named block local for out-of-line pointer ctor
+00793e00	RELOCATION_MATCH	190v190	PASS	CTCUnholyPower::ResetCreatureHitState (label said CTCDivineWrath); out-param GetInterface
+007949f0	RELOCATION_MATCH	193v193	PASS	CTCUnholyPower::OnCreate (vtable 0x0126BFDC slot 4; label said CTCDivineWrath); named physics/driver locals
+00730a00	DIFFER	212v210	-	CTCDoor::PlaySoundW; base-def load order + holder copy through ecx (4 grades)
+007310c0	DIFFER	163v163	-	CTCDoor::UpdateOpenStatusTriggerTypeScript; out-def zero store placement (4 grades)
+007c30e0	RELOCATION_MATCH	219v219	PASS	CTCDrainLife ctor (leaf ??0CTCDrainLife); CCharString in dead arg slot
+007a54a0	RELOCATION_MATCH	222v222	PASS	CTCForcePushPower ctor (leaf ??0CTCForcePushPower); DrainLife twin, HasTC+GetTC
+007e2600	RELOCATION_MATCH	219v219	PASS	CTCElectrocuteOnTouch::OnHit; member-wise direction + owner local (4 grades)
+0071ac70	RELOCATION_MATCH	164v164	PASS	CTCEmoteIcon::SetEmoteText; EmoteType store before EmoteScale (4 grades)
+0076cc00	RELOCATION_MATCH	210v210	PASS	CTCEnemy::RemoveEnemyThing; two nested named bools share a frame byte (4 grades)
+00750be0	DIFFER	242v234	-	CTCExplodingObject ctor; out-slot assignment + shared ebp zero (4 grades)
+007c8fd0	RELOCATION_MATCH	196v196	PASS	CTCFireballSpell::CancelMove; parent local in edi
+007e76b0	RELOCATION_MATCH	167v167	PASS	CTCFireheartMinigame::FrameUpdate (slot 9, leaf FrameUpdate); unset-result GetScriptedControl accessor
+007e78e0	RELOCATION_MATCH	221v221	PASS	CTCFireheartMinigame::PlayGame; nested loops + physics local
+007b0880	RELOCATION_MATCH	200v200	PASS	CTCFishing::GetPFishingRodDef; forceinline def copy with AddRef/Release pointee members (4 grades)
+006d50c0	RELOCATION_MATCH	181v181	PASS	CTCFollowed::AddFollower; first try
+006d5180	RELOCATION_MATCH	218v218	PASS	CTCFollowed::RemoveFollower; single-fetch forceinline alive test
+00798570	RELOCATION_MATCH	170v170	PASS	CTCForcePushed ctor (leaf ??0CTCForcePushed); first try
+007986a0	DIFFER	202v202	-	CTCForcePushed::SetUpForcePush; x87 result store before the component pops (4 grades)
+007ffeb0	RELOCATION_MATCH	167v167	PASS	CTCGatherPointBase::AddAsUser; push in if-arm, return false in else
+007c5710	RELOCATION_MATCH	175v175	PASS	CTCGhostSword::CancelMove; *(begin()+i) operator[] loop
+007c6460	DIFFER	256v240	-	CTCGhostSword::FrameUpdate; register allocation in both loops (4 grades)
+00706450	DIFFER	216v187	-	CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBodyArea (label said CTCGold::GetGold); hoisted zero register (4 grades)
+007cbdc0	DIFFER	204v166	-	CTCGold::GetGold; out-slot sharing + long release form (4 grades)
+006ca4e0	RELOCATION_MATCH	185v185	PASS	CTCHero::OnInitialActivate; plain vptr word (int64 member), block-scoped out declared after base-def read (4 grades)
+006ca400	RELOCATION_MATCH	214v214	PASS	CTCHero::SetTitle; world/thing locals, type byte != 2 (3 grades)
+00706370	DIFFER	190v187	-	CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifier (label said AddAppearanceModifier); ebx/ebp/esi allocation (4 grades)
+00706880	DIFFER	211v202	-	CTCHeroAttachableAppearanceModifiers::AddAppearanceModifier; frame-slot sharing + register rotation (3 grades)
+007a69f0	RELOCATION_MATCH	180v180	PASS	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::ReplaceMeshByIndex; first try
+0077c160	DIFFER	171v169	-	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::GetMeshesUsed; def pointer via eax->esi (4 grades)
+007e1990	DIFFER	214v214	-	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::GetMeshesUsed; load scheduling only (2 grades)
+004bc750	RELOCATION_MATCH	173v173	PASS	NGraphicAppearance::CTCGraphicAppearance::GetRenderMeshObject; bank named local (3 grades)
+004bc800	DIFFER	217v217	-	NGraphicAppearance::CTCGraphicAppearance::GetPositionMatrix; vtable-store scheduling only (2 grades)
+004bd200	RELOCATION_MATCH	211v211	PASS	NGraphicAppearance::CTCGraphicAppearance::WasRenderedLastFrame; conditional def temporaries, split returns (3 grades)
+004bd2e0	RELOCATION_MATCH	175v175	PASS	NGraphicAppearance::CTCGraphicAppearance::IsToReduceLODForDummiesAndHelpers; inline distance helper, !f() tail (4 grades)
+004be3e0	DIFFER	175v173	-	NGraphicAppearance::CTCGraphicAppearance::IsResourcesLoaded; start pointer eax->edi copy (4 grades)
+004c11f0	RELOCATION_MATCH	219v219	PASS	NGraphicAppearance::CTCGraphicAppearance::GetStaticFocalPosIfLoaded; named-result operators, sum operand order (2 grades)
+004bc340	DIFFER	209v202	-	NGraphicAppearance::CTCGraphicAppearance::RefreshPrimitivePos; x87 spill placement (4 grades)
+007e7c90	DIFFER	230v230	-	CTCFireheartMinigame::DrawPreparePrimitivesForRendering: zero-store scheduling of C2DBoxF TopLeft vs uv C2DVector temps
+004bc410	RELOCATION_MATCH	224v224	PASS	NGraphicAppearance::CTCGraphicAppearance::GetFirstPrimitiveWithDummyObject (Leaf; mesh info named local before the hidden-return temp)

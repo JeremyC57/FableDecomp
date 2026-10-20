@@ -1,4 +1,11 @@
-// Grade: DIFFER(284v231) -- retail inlines vector<CCharString>::~vector only on the fall-through path and calls it out of line (0x00414EA0) on the early return; the lane inlines it on both paths (in-class inline, out-of-class inline and a split _Destroy helper all inline twice). The prologue/loop/arguments line up.
+// Grade: DIFFER(231v231) (retry 9, differ/) -- VC7.1 expands an inline callee at every site while its cost is below a band,
+//   exactly once (end-of-block site first, the early return then calls the out-of-line copy 0x00414EA0) in the next band,
+//   never above it. The plain dtor sits in the always band; a dead member store after the free (`_M_start = 0`, DSE'd)
+//   moves it into the once band and gives retail's site assignment and length, and the guard written as an `if` body
+//   (`if (enabled && state) { ... } return invalid;`) merges the refusal exits into the shared tail with all four
+//   callee-saved pushes in the prologue. Left: the lane keeps the zero register for the final `_M_start` null test
+//   (`xor esi,esi ; cmp edi,esi` v `test esi,esi`) and colours the dtor cursor edi instead of esi. The dead store is not
+//   in the retail out-of-line copy, so this stays in differ/.
 // CTCSoundPlayer::PlayAttachedCriteria(const CCharString& criteria, bool a, bool b, bool c, long d) -- expand the criteria into its candidate sound-event names and play the first one that starts, attached to the owner; the invalid handle when sound is off or nothing plays
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066BD00, 229 bytes (+ int3 padding), `ret 14h`. Ego_r.pdb
 //   `?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z`; the catalog label "CSoundInfo::PlaySound" is a
@@ -32,6 +39,7 @@ struct CCharStringVector {                             // STLport vector<CCharSt
             p->~CCharString();
         if (_M_start)
             free(_M_start);
+        _M_start = 0;
     }
     CCharString* begin() { return _M_start; }
     CCharString* end() { return _M_finish; }
@@ -62,15 +70,15 @@ public:
 
 unsigned long CTCSoundPlayer::PlayAttachedCriteria(const CCharString& criteria, bool a, bool b, bool c, long d)
 {
-    if (!g_bSoundEnabled_0137e974 || !g_pGameState)
-        return g_InvalidSoundHandle;
-    CASoundBank& bank = ParentThing->GetSampleBank();
-    CCharStringVector names;
-    GetPotentialCriteriaStrings(criteria, names);
-    for (CCharString* it = names.begin(); it != names.end(); ++it) {
-        unsigned long handle = InternalPlaySoundEvent(bank, *it, a, b, c, d);
-        if (handle != g_InvalidSoundHandle)
-            return handle;
+    if (g_bSoundEnabled_0137e974 && g_pGameState) {
+        CASoundBank& bank = ParentThing->GetSampleBank();
+        CCharStringVector names;
+        GetPotentialCriteriaStrings(criteria, names);
+        for (CCharString* it = names.begin(); it != names.end(); ++it) {
+            unsigned long handle = InternalPlaySoundEvent(bank, *it, a, b, c, d);
+            if (handle != g_InvalidSoundHandle)
+                return handle;
+        }
     }
     return g_InvalidSoundHandle;
 }

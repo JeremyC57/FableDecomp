@@ -1,0 +1,23 @@
+address	name	evidence
+00793d20	CTCUnholyPower::Method_00793d20	vtable 0x0126BFDC: CTCUnholyPower, not CTCDivineWrath (chunk 207)
+00793e00	CTCUnholyPower::Method_00793e00	vtable 0x0126BFDC
+007949f0	CTCUnholyPower::Method_007949f0	vtable 0x0126BFDC
+00706450	CTCHeroAttachableAppearanceModifiers::IsWearingAppearanceModifierCoveringBodyArea	not CTCGold::GetGold
+00706370	CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifier	not AddAppearanceModifier
+007e76b0	CTCFireheartMinigame::FrameUpdate	vfunc_9
+007e7c90	CTCFireheartMinigame::DrawPreparePrimitivesForRendering	vfunc_11
+005c39f0	CTCInventoryWeapons::~CTCInventoryWeapons	not ~CTCInventoryAbilities (chunk 208)
+0075dd10	CTCCameraPointScriptedSpline::CTCCameraPointScriptedSpline	CThing* ctor; the CTCHeroRangedAttacks ctor is 0x00789BB0
+00b61ff0	CEngineSkyRenderer::BuildStarFieldVB	landed BuildBuffers (0xB620A0) calls it BuildSolidBaseBand (sweep); ContinueAimingRangedWeapon is 0x00789FD0
+0047d648	CTCInGameMenu::IsLoadMenuReceivingInput	const; IsQuitMenuReceivingInput is 0x0047D537; landed 0x47D6F2 "IsSaveComponentReceivingInput" is probably IsSaveMenuReceivingInput
+00c21620	CSteeringAgent_c21620::OnCreate	AI-steering library code, not CTCInventory::OnCreate
+00c3c4e0	CVtable_012b4f74::Method_00c3c4e0	no-RTTI library class (vtable 0x12B4F74), not CTCHeroStats
+00c3cd00	CVtable_012b4f84::CreateCombatAction	no-RTTI library class (ctor 0x00C3C660), not CTCHeroStats
+006d8e30	CTCHeroExperience::OnSerialise	vfunc_1
+007079e0	CTCHeroAttachableAppearanceModifiers::OnCreate	vfunc_4
+006d6520	CTCHeroExperience::GetTrainableStatLevel	
+00661ff0	CThingCreatureBase::GetSex	
+00593666	GetDef_00593666	GetDef instantiation
+005bade1	GetDef_005bade1	GetDef instantiation
+00485815	GetDef_00485815	GetDef instantiation
+00a22f80	CRightHandedSet::Method_00a22f80	operates on a CRightHandedSet, not a CMatrix3x3

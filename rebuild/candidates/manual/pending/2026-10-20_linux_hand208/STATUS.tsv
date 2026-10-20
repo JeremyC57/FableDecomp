@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0047d012	RELOCATION_MATCH	195v195	PASS	ConfirmedVideoOptionsChanged; manager slot 10 name unproven
+0047d483	RELOCATION_MATCH	180v180	PASS	IsAnySliderReceivingInput, twin of landed 0x47D537
+0047d648	RELOCATION_MATCH	170v170	PASS	label fix: IsLoadMenuReceivingInput (PDB), twin of landed 0x47D6F2
+0047dbb8	DIFFER	181v177	-	CloseInGameMenuPC: this/vector register swap + begin CSE at the delete loop entry
+0055ee20	RELOCATION_MATCH	211v211	PASS	OnOkClicked, raw HasTC + GetTC(0x11 inventory)
+0055f3b0	RELOCATION_MATCH	206v206	PASS	UpdateScoreForActivity, block-scoped find iterator
+0057b327	RELOCATION_MATCH	187v187	PASS	AddMoney, __forceinline GFLimit + unchecked GetInterface(0x10D)
+0057bad4	RELOCATION_MATCH	185v185	PASS	GetRandomSuitName, twin of landed GetRandomHairName
+0057bb8d	RELOCATION_MATCH	225v225	PASS	AddNewMarriage, first try
+0057c239	DIFFER	173v173	-	GetTradeSkill: interface select register (esi vs eax) after HasTC+GetTC
+0057d8be	RELOCATION_MATCH	210v210	PASS	AddRenown, def local + direct first-pointer index
+00581b33	DIFFER	194v170	-	HasScreenshots: biased /GS ebp frame (lea ebp,[esp-1ACh]) not produced by the lane
+00582a16	DIFFER	184v184	-	IsButtonHeldForExpression: edi/ebx swap only (GetDef stand-in body fixes the def caching)
+005840a6	DIFFER	177v177	-	UseQuickAccessItem: converted-temporary frame slot [ebp-4] vs retail [ebp+8]
+00584157	RELOCATION_MATCH	162v162	PASS	SetThingAsQuickAccessItem, HasTC + ternary GetTC
+00584f15	RELOCATION_MATCH	206v206	PASS	UnAssignThingPC, pair by value + colour alpha + implicit string conversion
+00591e8c	DIFFER	214v214	-	CTCInventory::GlobalUpdate: dec/fmul scheduling only
+005c39f0	RELOCATION_MATCH	165v165	PASS	label fix: ~CTCInventoryWeapons (vtables 0x1253FF4/0x1253FE0), not ~CTCInventoryAbilities
+005ee02e	DIFFER	185v185	-	IsAbilityPotentiallyAvailable: ecx/esi swap only
+005ee6bf	RELOCATION_MATCH	189v189	PASS	GetAbilityMaximumLevelWithRenown, morality declared first + two ifs
+005f4a86	DIFFER	172v170	-	Abilities OnCreate: def load into eax+copy vs straight into edi
+005f6a6f	DIFFER	223v216	-	ResetAssignedAbilitiesPC: final null-tested def release dec/cmp lane gap
+006c5e90	RELOCATION_MATCH	227v227	PASS	IsDeedWitnessed, GetAllThings stand-in body above (auto_inline off)
+006d8300	DIFFER	173v173	-	AddTrainableStatExperience: lea operand order [ecx+edx] vs [edx+ecx] only
+006d8980	DIFFER	182v183	-	UpgradeTrainableStat: size() first-pointer register load + level base caching
+006d8e30	RELOCATION_MATCH	221v221	PASS	CTCHeroExperience::OnSerialise (vtable slot 1; catalog vfunc_1)
+007079e0	DIFFER	234v234	-	Attachable modifiers OnCreate: loop strength reduction / shrink-wrapped ebx
+0071ce80	DIFFER	238v238	-	GetTattooNames: tag temporary over live string slot (lane gap), frame +4
+0071e180	DIFFER	220v220	-	CTCHeroMorph ctor: scheduling of push/mov ecx vs last inline zero store
+0075dd10	RELOCATION_MATCH	221v221	PASS	label fix: CTCCameraPointScriptedSpline ctor (vtable 0x126A0BC), not CTCHeroRangedAttacks
+00771de0	RELOCATION_MATCH	225v225	PASS	CTCHeroPodium::FrameUpdate
+0077cbe0	RELOCATION_MATCH	186v186	PASS	DoStartRunning, GetSubDef stand-in body above (auto_inline off) keeps def in edi
+0078a2c0	RELOCATION_MATCH	207v207	PASS	LoadRangedWeapon, action temporary to SetCurrentAction
+0078a5d0	RELOCATION_MATCH	178v178	PASS	AttemptToFireRangedWeapon
+007e1b10	RELOCATION_MATCH	201v201	PASS	CTCInfoDisplay::OnSerialise, inline by-value EmptyString default
+008169b0	RELOCATION_MATCH	234v234	PASS	HitLocations triangle query, indexed record stores + vertices local
+00b61ff0	RELOCATION_MATCH	165v165	PASS	label fix: CEngineSkyRenderer::BuildStarFieldVB (PDB), not ContinueAimingRangedWeapon; 176 incl. int3 pad
+00c21620	RELOCATION_MATCH	167v167	PASS	label fix: AI-steering library object, not CTCInventory::OnCreate; state-helper stand-ins keep ecx
+00c3c4e0	RELOCATION_MATCH	166v166	PASS	label fix: no-RTTI library vtable 0x12B4F74 slot 2 (not CTCHeroStats); 176 incl. pad
+00c3cd00	RELOCATION_MATCH	222v222	PASS	/EHsc; label fix: library class (vtables 0x12B4F84/0x12B4F74), not CTCHeroStats; goto single exit
