@@ -18240,3 +18240,8 @@ __aullshr	00bfecf0	00779340
 ?GetTextFromTextTag@CSubtitleRenderer@@QAE_NABVCWideString@@AAV2@@Z	0048f6bd	0048f7c0
 _s_Default	0123817c	0048f7c0
 _s_oneOver360	01238e00	00878ce0
+??0CMediaType@@QAE@ABUAM_MEDIA_TYPE@@PAJ@Z	00cb1d60	00cac4a0
+??1CMediaType@@QAE@XZ	00cb1cc0	00cac4a0
+?SetMediaType@CEngineScreenEffectRenderer@@QAEJPAUCMediaType@@@Z	00cab990	00cac4a0
+?AddEvent@CGameEventPackage@@QAEXPBVCGameEvent@@@Z	009f1650	009f1ac0
+?InitFromCompressedBuffer@CGameEvent@@QAEJPBE@Z	009f1870	009f1ac0

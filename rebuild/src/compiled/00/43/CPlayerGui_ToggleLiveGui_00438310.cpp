@@ -1,5 +1,5 @@
 // CPlayerGui::ToggleLiveGui() -- flip the live-GUI mode (refused while it is off and the hero-information screens are open) and report the change to the game as an event: show-GUI event 0x1A carrying 0x2B, or hide event 0x42, for the main player
-// Grade: DIFFER(182v180) -- register choice only: ours copies `this` to eax (`mov eax,ecx`) and keeps the flag in cl, retail keeps `this` in ecx and the flag in al
+// Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00438310, length 192 bytes, plain `ret`; /GS frame (cookie 0x0139C8A8,
 // __security_check_cookie 0x00BFE9F9).

@@ -1,0 +1,28 @@
+addr       parity           behav  name
+00cac4a0   WARN RELOC_NAME: ?SetMediaType@CEngineScreenEffectRenderer@@QAEJPAUCMediaType@@@Z -> 00cab990 labelled '_global::CAudioBank_LoadAsync'
+00cac4a0   WARN RELOC_NAME: ??1CMediaType@@QAE@XZ -> 00cb1cc0 labelled 'CComHolder_00cb1cc0::Release'
+00cac4a0   RELOCATION_MATCH PASS   Grade: RELOCATION_MATCH with cl 13.10.3077 
+009f1ac0   RELOCATION_MATCH PASS   InitFromCompressedBuffer
+00690c70   WARN RELOC_NAME: ?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z -> 00687cf0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00690c70   RELOCATION_MATCH PASS   Grade: RELOCATION_MATCH with cl 13.10.3077 
+00438310   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00438310   WARN SHARED_HEADER_AVAILABLE CManager
+00438310   WARN RELOC_NAME: ?GetMainPlayerNumber@CPlayerManager@@QAEJXZ -> 00449700 labelled 'CWorld::DrawGetEnvironment'
+00438310   RELOCATION_MATCH PASS   ToggleLiveGui
+0099d000   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af10 labelled 'CCharString::operator_char_const*'
+0099d000   WARN RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'
+0099d000   RELOCATION_MATCH PASS   GetString
+
+WINS: 5
+  00cac4a0 RELOCATION_MATCH _global::OnRenderEffect
+  009f1ac0 RELOCATION_MATCH CGameEventPackageSet::?InitFromCompressedBuffer@CGameEventPackageSet
+  00690c70 RELOCATION_MATCH _global::?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00438310 RELOCATION_MATCH CPlayerGui::ToggleLiveGui
+  0099d000 RELOCATION_MATCH CSystemRegistry::GetString
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  global_GradeRELOCATIONMATCHwithcl13103077_00cac4a0
+  CGameEventPackageSet_InitFromCompressedBuffer_009f1ac0
+  global_GradeRELOCATIONMATCHwithcl13103077_00690c70
+  CPlayerGui_ToggleLiveGui_00438310
+  CSystemRegistry_GetString_0099d000

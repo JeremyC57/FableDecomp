@@ -363,3 +363,11 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
   rows (00cac4a0 /EHsc /GS, 009f1ac0, 00690c70, 00438310, 0099d000); the other 251 stay DIFFER with the same shapes. Landed
   re-grade under 3052: 30/30 ordinary rows still match; 16/20 landed /GS rows match, 009cdf50 and 00c7b8f0 need 4035. So the
   toolkit is a third compiler for the /GS band only (`--toolkit`, `Compiler = 'vctk3052'`), not an RTM substitute.
+- Addendum 2 (2026-10-20, RTM 3077 obtained): `visual-studio-2003-unpacked` on archive.org carries the unpacked VS .NET 2003
+  disc (`VisualStudio2003.zip`, SHA-1 `298398e607a8e6033abe261987b94cab8fb57c24`) with `Vc7/bin/cl.exe` **13.10.3077**.
+  Stood up as `$S/wine/vc71rtm` (bin from the disc + mspdb71/msobj71 from Common7/IDE, include/lib from the DDK tree).
+  Results: the five parked /GS rows match and were landed; the inventory band (21 rows), the inline-once destructor rows
+  (00d17090 249v235, 0066bd00 284v231, 00e32200 208v188) and the biased /GS frame (00581b33) give the same bytes as 3052,
+  so retry 9's "QFE inliner cost band" explanation is refuted: retail used 3077 and 3077 reproduces our shape, so the
+  difference is in the source (callee bodies retail saw in the TU), not the compiler build. The 3052 toolkit lane was
+  removed as redundant.

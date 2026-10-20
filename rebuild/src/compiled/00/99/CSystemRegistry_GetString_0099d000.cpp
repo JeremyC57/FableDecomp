@@ -1,5 +1,5 @@
 // CSystemRegistry::GetString(const CWideString&, const CWideString&) -- read a REG_SZ value, or return the default
-// Grade: DIFFER(ours v retail) -- /GS lane gap: our build caches the hidden-result and default pointers in ebx/esi at entry where retail re-reads the argument slots
+// Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099D000, length 177 bytes (+ int3 padding).
 // Callees: CWideString::operator const wchar_t* @ 0x0099AF10, CWideString(const wchar_t*) @ 0x0099B6B0,

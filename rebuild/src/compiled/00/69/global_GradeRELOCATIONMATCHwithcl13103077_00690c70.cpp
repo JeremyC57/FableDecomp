@@ -1,4 +1,4 @@
-// Grade: DIFFER(ours v retail) -- 166v162 [/GS]: the known /GS lane gap (GOTCHAS chunks 143/144): our compiler caches `input` in ebp at entry and gives the AddLong/AddUBYTE arguments their own frame words (0x34 frame), retail re-reads the slot at the end and homes both in the dead `event` slot (0x2c frame). Tried: plain event + AddLong/AddUBYTE in the body, this `__forceinline AddGameEvent(type, long, byte)` helper (it gives retail's shared `xor al,al` zero bytes), the HasTC byte-test form.
+// Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // CInputProcessDigging::ProcessInput(const CInputEvent& event, CProcessedInput& input) -- when the digging action button (game action 3) is pressed and the hero thing has component kind 0xc6, queue game event 0x1a carrying the long 0x17 and the byte 1
 // Leaf: ?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // Flags: /GS

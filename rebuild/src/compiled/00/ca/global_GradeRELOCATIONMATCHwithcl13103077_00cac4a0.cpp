@@ -1,4 +1,4 @@
-// Grade: DIFFER(194v194) -- register choice only: retail forms the CMediaType address for the setter with `lea ecx,[esp+8] ; push ecx`, ours with eax (tried CMediaType*, const CMediaType*, const AM_MEDIA_TYPE* parameters); flags /EHsc /GS
+// Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // CEngineScreenEffectRenderer::OnRenderEffect(const AM_MEDIA_TYPE*, long, long, long, long, double) -- copy the media type into a CMediaType local, apply it through the object's type setter and, when that succeeds, hand the remaining arguments to virtual slot 22; returns the first failing HRESULT, else S_OK
 // Leaf: OnRenderEffect
 // Flags: /EHsc /GS

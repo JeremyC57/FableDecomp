@@ -1,5 +1,5 @@
 // CGameEventPackageSet::InitFromCompressedBuffer(const unsigned char* buffer) -- rebuild the package set from its
-// Grade: DIFFER(ours v retail) -- 223v221 under /GS: our build loads the buffer parameter into ebp at entry (before the ctor loop), retail after it; the loop-alignment padding moves with it (lane gap: /GS parameter caching)
+// Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // compressed form: a package count byte, then per package an event count byte, a 32-bit time stamp and the
 // compressed events
 // Leaf: ?InitFromCompressedBuffer@CGameEventPackageSet

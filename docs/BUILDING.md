@@ -134,3 +134,17 @@ the two that need 4035 are from the QFE-built objects). Install it beside the ot
 then `wine VCToolkitSetup.exe /s /v"/qn INSTALLDIR=C:\VCTK"`). `verify_and_land.py --toolkit` grades and lands with it
 and tags the catalog entry `Compiler = 'vctk3052'`; `build_candidates.ps1` and `reloc_audit.py` honour the tag. Use it
 only for rows the default compiler cannot reproduce (same rule as `--qfe`).
+
+## The RTM compiler on the Linux lane (cl 13.10.3077)
+
+Retail `Fable.exe` was compiled by cl 13.10.3077 (1,369 C++ objects) plus five objects by the 4035 QFE and linked by
+linker 3052 (Rich header, FINDINGS_LOG 2026-10-20). The Linux lane originally had only the DDK 4035 build; the free
+"Visual C++ Toolkit 2003" turned out to be a pre-RTM 13.10.3052 (tested and discarded). The real 3077 comes from the
+VS .NET 2003 disc (archive.org item `visual-studio-2003-unpacked`, `VisualStudio2003.zip`, SHA-1
+`298398e607a8e6033abe261987b94cab8fb57c24`, already unpacked): copy `Vc7/bin` to `$S/wine/vc71rtm/bin`, add
+`mspdb71.dll` and `msobj71.dll` from `Common7/IDE`, symlink `include` and `lib` to the DDK tree, keep
+`LINK=bufferoverflowu.lib`. `FABLE_VC71=$S/wine/vc71rtm` grades with it; the 4035 build stays reachable as `--qfe`
+(`VC71_QFE=$S/wine/vc71`), matching the Windows layout. What 3077 changed: the parked `/GS` rows whose stack-cookie
+prologue 4035 could not reproduce now match (5 landed, `batches/2026-10-20_linux_gs_rtm3077`); the inventory frame-slot
+and zero-register rows, the inline-once destructor band and the biased /GS frame (00581b33) do not change, so those are
+source-formulation questions, not compiler-build ones.
