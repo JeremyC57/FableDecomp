@@ -383,3 +383,8 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
   differ identically under 3077. At 33,457 rows: 154 DIFFER, of which exactly two match only under 4035, the known
   QFE-object /GS rows 009cdf50 (CBankFile::WriteRecoveryFile) and 00c7b8f0 (CBitfield::RightShift); they now carry
   `Compiler = 'qfe4035'` in the catalog (they were untagged). The other 152 are q.py artefacts (DIFFER under both).
+  Final (35,463 rows): 9,556 MATCH, 24,205 RELOCATION_MATCH, 573 ASM_BAKE, 934 DIFFER of which 780 are the 0x0121xxxx EH
+  funclet region (q.py cannot grade unwind funclets; the verifier grades them by funclet offset) and the remaining 154
+  are the rows above. Every DIFFER row was re-graded under 4035: only the two QFE rows change. Conclusion: cl 13.10.3077
+  is the retail compiler for the whole landed catalog and the lane default; 4035 is needed for exactly the Rich-header
+  QFE objects.
