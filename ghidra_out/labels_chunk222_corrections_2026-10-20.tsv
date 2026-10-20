@@ -1,0 +1,10 @@
+address	name	evidence
+00550a70	CEnginePrimitive2DAnimatingMesh::CEnginePrimitive2DAnimatingMesh	not CEnginePrimitiveAnimation ctor (chunk 222)
+00cac070	CBasePin::CBasePin	DirectShow strmbase, not CEnginePrimitiveTypeInfo::InitializeEntry (chunk 222)
+00562ec0	CTCHeroOnlineScoreboard::CTCHeroOnlineScoreboard	"fableclangw.lionhead.com", not CEngineSubPrimitive2DClockSprite ctor (chunk 222)
+00464931	CArray::resize	not push_back (chunk 222)
+00443f90	std::vector::Resize	not CEnginePrimitiveRenderer::AddPrimitive (chunk 222)
+00b94540	CEngineSceneMap::ResizeGrid	belongs to CEngineSceneMap (chunk 222)
+00bec8d0	CMorphInfo::BuildHiddenMaterials	hidden-material builder, not UpdateVisibilityVector (chunk 222)
+00cb1d00	CMediaType::CMediaType	not CEntry (chunk 222)
+00cac260	CBaseInputPin::CBaseInputPin	landed as CEntryRecord (chunk 222)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b5bd70	RELOCATION_MATCH	262v262	PASS	env radial-blur record copy
+00b990b0	DIFFER	276v276	-	scheduling only: fld scale hoisted above wind-record lea (X product)
+00b81050	DIFFER	297v297	-	x87 fmul operand order in 8 cofactor products (canonicalised, source order ignored)
+00ba7820	RELOCATION_MATCH	262v262	PASS	mesh-base counted pointers as member objects stop cross-jumping
+00b9ab30	RELOCATION_MATCH	256v256	PASS	sibling ZSprites CreatePrimitive model + NonPersistent bit
+00bc7f70	RELOCATION_MATCH	241v241	PASS	line descriptor copy + __forceinline bank frame getter
+00550a70	RELOCATION_MATCH	272v272	PASS	label fix: CEnginePrimitive2DAnimatingMesh ctor; sibling 0x550940 model
+007088f0	RELOCATION_MATCH	304v304	PASS	descriptor ctor, copied interpolators, 1-bit Lit init-list member
+00b3c4b0	RELOCATION_MATCH	279v279	PASS	counted-up column loop unrolls by 4; explicit byte swap
+00b947e0	DIFFER	236v246	-	lane gap: inline-asm fistp float->long (asm_bake FtoL family)
+00b27ee0	RELOCATION_MATCH	289v289	PASS	inlined HighestSetBit + cached depth surface
+00b480e0	DIFFER	258v255	-	lane gap: new pointer + empty tag share the dead arg slot (lane adds a frame slot); heap entry eax->ecx copy
+00b47fd0	DIFFER	268v262	-	lane gap: pushed pointer not packed into the dead arg/float-home slot (sub esp,8 v push ecx)
+009acb20	RELOCATION_MATCH	292v292	PASS	three block-scoped bool locals share the dead arg slot
+00b93f40	RELOCATION_MATCH	283v283	PASS	same-TU auto_inline(off) stand-in map operator[] keeps layer in ebp
+00b94060	RELOCATION_MATCH	283v283	PASS	shadow twin of 00b93f40 (same stand-in)
+00b94d30	DIFFER	316v308	-	x87 evaluation order of the two centre copies vs extents, frame 0x30 v 0x34
+00b5ee80	RELOCATION_MATCH	279v279	PASS	non-virtual dtor over inline shader member dtors + base tail call
+00baca70	MATCH	270v270	PASS	if/else + inline Contains keeps the separate epilogue
+00be0cd0	DIFFER	258v258	-	one SIB operand order [eax+ecx+320h] v [ecx+eax+320h]
+00bbbf70	RELOCATION_MATCH	307v307	PASS	delta as C3DVector local fixes the 0x1c frame
+00bc5c50	DIFFER	272v272	-	register choice: descriptor pointer in edx (lane) v eax (retail)
+009c9170	DIFFER	269v268	-	ebp/ebx colouring of this vs loop/text pointer (stand-ins fix the frame)
+00cac070	RELOCATION_MATCH	248v248	PASS	/EHsc; label fix: DirectShow CBasePin ctor (ANSI name), landed twin 0xCAB370 model
+009e4da0	DIFFER	294v294	-	esi/edi colouring + add -40h folded to imm32 0FFC0h
+0067e290	DIFFER	276v273	-	register rotation in later Transfer arms; fix-up loop dword hoist
+00562ec0	RELOCATION_MATCH	291v291	PASS	label fix: CTCHeroOnlineScoreboard ctor; STLport map/list/vector models
+00b905a0	DIFFER	272v280	-	lane gap: callee-saved pushes after the early-outs (shrink-wrapped prologue)
+00b94bf0	DIFFER	295v311	-	lane gap: inline-asm fistp floor (asm_bake FtoL family)
+00b242d0	DIFFER	297v293	-	screen-coordinate tail: X spill slot / Y on FPU (frame packing)
+0064d92a	DIFFER	305v306	-	ebx/edi colouring of hero vs lookup; second key frame slot
+0064d6a8	DIFFER	250v254	-	game-event ctor dead store (-1 Player) dropped and ctor stores sunk
+0065196c	RELOCATION_MATCH	274v274	PASS	goto-joined failure store; ternary component lookup into ecx
+0064a1ae	DIFFER	301v301	-	scheduling only: two adjacent loads swapped
+00ba6dc0	DIFFER	291v291	-	hidden-table select through eax then ebp (one mov)
+00b39fb0	DIFFER	284v284	-	scheduling only: fadd/fstp of the grown radius v the argument pushes
+00b451d0	DIFFER	302v306	-	frame placement of the fog matrix v its by-value copy
+00bc2480	DIFFER	374v294	-	structural only: frame/copy layout of the orientation-set temporaries
+009ae6b0	RELOCATION_MATCH	268v268	PASS	_stricmp type-name filter; +1/+1/-1 triple = by-value pass-through copy; old-pointer local in operator=
+009c1050	RELOCATION_MATCH	317v317	PASS	block-scoped bitDepth in the dead arg slot; LastDeviceCreationParameters +0x268 in retail (PDB +0x270: STLport list is 4 bytes)

@@ -302,8 +302,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand219` | Hand chunk 219 (CAIStateGroup_KidHurtSelfRunToMother .. CAIStateGroup_VersusRockTroll): 15 of 40 byte-exact | - | 25 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand220` | Hand chunk 220 (CAIStateGroup_VillageTaskTorch .. CCombatRing): 22 of 40 byte-exact | - | 18 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand221` | Hand chunk 221 (CCombatRing .. CData): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
+| `2026-10-20_linux_hand222` | Hand chunk 222 (CDataBank .. CEngineSubPrimitive2DClockSprite): 19 of 40 byte-exact | - | 21 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **1132 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **1153 parked rows** for the Fable retry pass.
 
 ### Skipped rows (25 open of 50 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -2096,5 +2097,29 @@ Groups: register-assignment/scheduling only (0056ef6f, 005d9070, 0061a9d0, 0061a
 - 008bd3f0 CCreatureAction_TeleportOut::FinishAction DIFFER(312v312): ebx/edi swap (this vs the target temporaries) only | tried: C2DVector then C3DVector delta (fixed the frame), GetPhysics accessor | next: lane gap: register allocation order
 - 008cf7d0 CCreatureAction_TentacleStrikeLoop::FinishAction DIFFER(265v287): retail reads g_framesPerSecond and the tentacle def before the GFGetCurrentFrame call (global parked in the frame), compares Interrupt against a shared ebx zero and keeps the tentacle in eax | tried: limit on the left of the compare, an inline GetStrikeFrames helper | next: a named `long fps` local, or the comparison inside an inline predicate
 - 00a42ea0 CLipSyncDataBankEntry::CData::BuildLipSync DIFFER(268v268): retail loads the sample object into ecx before `lea eax,[stream] ; push eax` (ours pushes first via ecx), then eax/ecx/edx rotate | tried: inline operator->, named sample local, base-class reference parameter | next: lane gap: scheduling of a call object vs its address argument
+
+
+#### `2026-10-20_linux_hand222` (21 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand222/differ/`)
+- 009c9170 CDataBank::Validate DIFFER(269v268): this in ebx/index in ebp (retail swaps them); `lea edx,[eax+4]` v `add eax,4` group release | tried: member v local-copy releases, DecRefToZero, getter stand-ins | next: release through a pointee DecRef accessor with the index declared first
+- 0067e290 CDegradableDef::Transfer DIFFER(276v273): register rotation in the later Transfer arms (edx/eax v eax/edx); fix-up loop byte load v hoisted DWORD load | tried: if/else vector, enum v long traits, non-static TransferBinaryOut | next: GraphicType read into a local before the loop
+- 0064a1ae CDrawPerceivers::Update DIFFER(301v301): two adjacent loads swapped (`mov eax,[esi+38h]` / `mov ecx,[ebp-4]`) | tried: const bitset test, mutable bitset, separate perceiver local | next: lane gap: scheduling
+- 0064d6a8 CDrawQuickAccessIcons::Update DIFFER(250v254): the game-event ctor's dead `Player=-1` store is dropped and its other stores sink below the Copy arguments | tried: `>` (jne), `!(<=)` (jnp) | next: out-of-line event ctor stand-in, or the event built in a block before the Copy call
+- 0064d92a CDrawQuickAccessIcons::ToggleCharge DIFFER(305v306): hero ebx v edi colouring; sound key in the freed item-def slot v the dead `start` slot | tried: local-copy release, condition temporary (fixes colouring, adds sete), early-declared key | next: block-scoped key in its own scope after the item-def release
+- 009e4da0 CDriveManager::CreateDirectoryW DIFFER(294v294): esi/edi swap; `add esi,0FFC0h` (imm32 16-bit) v `add edi,-40h` (imm8 int) | tried: self-subtraction, separate `letter + -0x40`, 32-bit variable with 16-bit views | next: int drive number computed from `(int)letter - 0x40`
+- 00b242d0 CEngine::ConvertWorldPosToScreenPos DIFFER(297v293): screen X spilled into the dead transform-result slot with Y kept on the FPU | tried: named C2DVector result, named floats, direct member stores | next: a C2DVector result temporary that reuses the transform result slot
+- 00b81050 CEngineClothSimulationMeshBase::UpdateTransform DIFFER(297v297): fmul operand order in 8 cofactor products | tried: swapped source operand order (VC canonicalises) | next: lane gap: x87 operand canonicalisation
+- 00bc5c50 CEngineInternalPrimitiveChanger::SetChildPrimitive DIFFER(272v272): descriptor pointer in edx v eax (`mov eax,[esp+1Ch] ; mov eax,[eax]`) | tried: named type local, inline manager getter, enable bit computed first | next: type read through a `const CEnginePrimitive&` reference local
+- 00bc2480 CEngineInternalPrimitiveParticleMesh::Update DIFFER(374v294): 0x48 frame with a full orientation-set copy v a 0x24 frame | tried: structural model only | next: drop the set copy (read Up/Forward through a reference), build the right vector in place, negate at the stores
+- 00b451d0 CEngineLightingManager::CalculateFogTransformMatrix DIFFER(302v306): fog matrix and by-value parameter copy swap frame blocks (+0 v +0x30) | tried: by-value result + C4DVector assign, out-param product, direct component stores, result declared first | next: parameter taken by reference and copied into a named local declared after the fog matrix
+- 00b47fd0 CEngineLightingManager::AddLightPrimitive DIFFER(268v262): `sub esp,8` v `push ecx` (new pointer not packed into the dead arg slot) | tried: named-local form (identical) | next: lane gap: frame packing (push_back pointer/tag in the dead arg slot)
+- 00b480e0 CEngineLightingManager::AddLightPrimitive DIFFER(258v255): pointer gets its own `push ecx` slot v sharing the dead `light` slot with the tag; heap entry eax->ecx copy | tried: named-local form | next: lane gap: frame packing (push_back pointer/tag in the dead arg slot)
+- 00b39fb0 CEnginePrimitiveAttachmentManager::UpdatePrimitives DIFFER(284v284): `fadd`/`fstp` of the grown radius scheduled after both argument pushes | tried: unsigned refcount, null-safe GetRefCount, type local + switch, decl order | next: `sphere.Radius += radius * 2.0f`
+- 00be0cd0 CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive DIFFER(258v258): `[ecx+eax+320h]` v `[eax+ecx+320h]` | tried: subscript order, inline IsLayerEnabled, raw byte offset | next: lane gap: SIB operand order
+- 00b905a0 CEnginePrimitiveManagerOcclusionBase::PrepareOcclusionTest DIFFER(272v280): `push ebx` in the prologue v after the early-outs (shrink-wrapped) | tried: the current form only (the allocation helper matches) | next: lane gap: callee-saved pushes after early-outs
+- 00b990b0 CEnginePrimitiveManagerRepeatedStaticMeshes::UpdateBoneMatrixForWindSheer DIFFER(276v276): `fld [primitive+0xa0]` hoisted above the wind-record lea | tried: the current statement order | next: lane gap: scheduling
+- 00ba6dc0 CEnginePrimitiveManagerStaticMeshesBase::DrawImmediately DIFFER(291v291): select in eax then `mov ebp,eax` v straight into ebp | tried: data local inside GetData, select written in place | next: named `const T* table` local assigned in an if/else
+- 00b94bf0 CEngineScene::GetMapAt DIFFER(295v311): `call __ftol2` v bare `fld ; fsub 0.5 ; fistp` floor | tried: C cast (one grade) | next: lane gap: inline-asm fistp (asm_bake FtoL family)
+- 00b94d30 CEngineScene::AddPrimitive DIFFER(316v308): extents evaluated before the centre sums, 0x30 v 0x34 frame | tried: named centre/extents, helpers called twice, named centre + explicit copy | next: centre computed into a named local before the extents record, passed by value twice
+- 00b947e0 CEngineSceneMap::Update DIFFER(236v246): `call __ftol2` v bare `fstp ; fld ; fistp` | tried: C cast | next: lane gap: inline-asm fistp (asm_bake FtoL family)
 
 <!-- queue:end -->

@@ -250966,6 +250966,140 @@ $catalog = @(
         TestSource = '00/f2/CCutsceneDef_CCutsceneDef_00f29d00_test.cpp'
         PassPattern = '00f29d00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00550a70'
+        Module = 'CEnginePrimitive2DAnimatingMesh'
+        Source = '00/55/CEnginePrimitive2DAnimatingMesh_CEnginePrimitive2DAnimatingMesh_00550a70.cpp'
+        TestSource = '00/55/CEnginePrimitive2DAnimatingMesh_CEnginePrimitive2DAnimatingMesh_00550a70_test.cpp'
+        PassPattern = '00550a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00562ec0'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_CTCHeroOnlineScoreboard_00562ec0.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_CTCHeroOnlineScoreboard_00562ec0_test.cpp'
+        PassPattern = '00562ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065196c'
+        Module = 'NPlayerGui::CDrawGuildSeal'
+        Source = '00/65/NPlayerGuiCDrawGuildSeal_Update_0065196c.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawGuildSeal_Update_0065196c_test.cpp'
+        PassPattern = '0065196c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007088f0'
+        Module = 'CEnginePrimitiveAnimatingMesh'
+        Source = '00/70/CEnginePrimitiveAnimatingMesh_CEnginePrimitiveAnimatingMesh_007088f0.cpp'
+        TestSource = '00/70/CEnginePrimitiveAnimatingMesh_CEnginePrimitiveAnimatingMesh_007088f0_test.cpp'
+        PassPattern = '007088f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009acb20'
+        Module = 'CDefClassBase'
+        Source = '00/9a/CDefClassBase_InternalLoadBinary_009acb20.cpp'
+        TestSource = '00/9a/CDefClassBase_InternalLoadBinary_009acb20_test.cpp'
+        PassPattern = '009acb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ae6b0'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_ClearDefsForRecompile_009ae6b0.cpp'
+        TestSource = '00/9a/CDefinitionManager_ClearDefsForRecompile_009ae6b0_test.cpp'
+        PassPattern = '009ae6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c1050'
+        Module = 'CDisplayManager'
+        Source = '00/9c/CDisplayManager_SetClientWindow_009c1050.cpp'
+        TestSource = '00/9c/CDisplayManager_SetClientWindow_009c1050_test.cpp'
+        PassPattern = '009c1050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b27ee0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_GetScratchZBufferD24S8_00b27ee0.cpp'
+        TestSource = '00/b2/CEngine_GetScratchZBufferD24S8_00b27ee0_test.cpp'
+        PassPattern = '00b27ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3c4b0'
+        Module = 'CEngineResourceManager'
+        Source = '00/b3/CEngineResourceManager_BuildHWStipplePatterns_00b3c4b0.cpp'
+        TestSource = '00/b3/CEngineResourceManager_BuildHWStipplePatterns_00b3c4b0_test.cpp'
+        PassPattern = '00b3c4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5bd70'
+        Module = 'CEngineScreenEffectRadialBlurRenderer'
+        Source = '00/b5/CEngineScreenEffectRadialBlurRenderer_CaptureEnvironmentParameters_00b5bd70.cpp'
+        TestSource = '00/b5/CEngineScreenEffectRadialBlurRenderer_CaptureEnvironmentParameters_00b5bd70_test.cpp'
+        PassPattern = '00b5bd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5ee80'
+        Module = 'CEngineScreenEffectGlowRenderer'
+        Source = '00/b5/CEngineScreenEffectGlowRenderer_CEngineScreenEffectGlowRenderer_00b5ee80.cpp'
+        TestSource = '00/b5/CEngineScreenEffectGlowRenderer_CEngineScreenEffectGlowRenderer_00b5ee80_test.cpp'
+        PassPattern = '00b5ee80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b93f40'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_RenderLayerCells_00b93f40.cpp'
+        TestSource = '00/b9/CEngineScene_RenderLayerCells_00b93f40_test.cpp'
+        PassPattern = '00b93f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b94060'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_RenderLayerCellsShadow_00b94060.cpp'
+        TestSource = '00/b9/CEngineScene_RenderLayerCellsShadow_00b94060_test.cpp'
+        PassPattern = '00b94060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9ab30'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_CreatePrimitive_00b9ab30.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_CreatePrimitive_00b9ab30_test.cpp'
+        PassPattern = '00b9ab30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba7820'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_CreateInternalPrimitive_00ba7820.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_CreateInternalPrimitive_00ba7820_test.cpp'
+        PassPattern = '00ba7820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00baca70'
+        Module = 'CEngineScenePrimitiveStatsEnumerator'
+        Source = '00/ba/CEngineScenePrimitiveStatsEnumerator_ProcessPrimitive_00baca70.cpp'
+        TestSource = '00/ba/CEngineScenePrimitiveStatsEnumerator_ProcessPrimitive_00baca70_test.cpp'
+        PassPattern = '00baca70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbbf70'
+        Module = 'CEnginePrimitiveManagerParticleGroup'
+        Source = '00/bb/CEnginePrimitiveManagerParticleGroup_RenderPrimitive_00bbbf70.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManagerParticleGroup_RenderPrimitive_00bbbf70_test.cpp'
+        PassPattern = '00bbbf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc7f70'
+        Module = 'CEngineInternalPrimitiveLine'
+        Source = '00/bc/CEngineInternalPrimitiveLine_Update_00bc7f70.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveLine_Update_00bc7f70_test.cpp'
+        PassPattern = '00bc7f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cac070'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_CBasePin_00cac070.cpp'
+        TestSource = '00/ca/CBasePin_CBasePin_00cac070_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00cac070_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
