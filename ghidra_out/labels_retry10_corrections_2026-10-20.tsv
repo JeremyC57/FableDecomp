@@ -1,0 +1,8 @@
+address	name	evidence
+0082fd90	CThingAICreature::WorldUpdateBulletTime	slot 20 of vtable 0x0127293C; labelled CTCLook::UpdateHeadPos (retry 10)
+00987bf0	CMatrix34::Transform	3x4 row-matrix transform, not CQuaternion::operator* (retry 10)
+00addfe0	CMatrix34::Transform	twin of 00987bf0 (retry 10)
+00c6adb0	CAudioReverbEnvironment::SetDefaults	0x68-byte audio reverb SetDefaults, not C3DDummyObject ctor; caller 0x00C6B1DE (retry 10)
+0076aae0	std::__linear_insert	STLport, ret 14h, not CCompressorZlib::SetupStream (retry 10)
+00a69ad0	CFrameDataHandle::Clear	11 call sites, not CViewport::ClearHandle (retry 10)
+00686d20	CTCBase::GetWorldMap	reads a global; manifest GetDisplayEngine is propagated (retry 10)
