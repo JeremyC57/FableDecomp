@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b54100	RELOCATION_MATCH	262v262	PASS	real name RenderRainBox; inlined PrepareForRender(5) (__forceinline)
+00b54210	RELOCATION_MATCH	242v242	PASS	RenderSnowBox; same inline PrepareForRender(5)
+00b42ed0	RELOCATION_MATCH	276v276	PASS	inline CEngineMap::OnGameMapLoaded with a named CDrawMapInfo local; local model (header has PDB offsets)
+00886d70	DIFFER	263v263	-	push placement + tag slot (bool vs weight); 4 forms
+00811470	RELOCATION_MATCH	297v297	PASS	real owner CEventKnockedOut::OnAdd (CKnockedThingUnconscious vtable); twin of 008115a0
+008115a0	RELOCATION_MATCH	297v297	PASS	same-TU stand-ins (LowerBound x2, GetDef, GetSubDef) + accessor-form def index
+00d3ae40	DIFFER	264v264	-	lea vs mov+add for the scythe handle address (4 forms)
+00efe8d0	RELOCATION_MATCH	277v277	PASS	CBenTestScriptsScript::CFader::Main; WatchForFailure waiting-bool loop
+009c3660	DIFFER	299v305	-	dead ExitThread byte load in inlined SetDirtyDiscError (|| / | / ?: / volatile tried)
+009c3ae0	DIFFER	308v308	-	lea operand order in the final rounding (4 forms)
+00780700	RELOCATION_MATCH	249v249	PASS	NFire::CFirePoint::Reset; forceinline GetTC with map local + one-ternary end/hit
+00e7f030	RELOCATION_MATCH	266v266	PASS	CV_FishingCompetitionScript::CFishCompOrganiser::OnPredicateFail; spawn-thread new with folded flag mask
+006fd8c0	RELOCATION_MATCH	294v294	PASS	CGameCameraBase(CWorld&) ctor; local model (retail 4-byte lists)
+00698e40	DIFFER	270v269	-	bl=1 constant register + ebx/edi/ebp allocation (4 forms)
+006b2960	DIFFER	231v250	-	inline-asm fistp rounding + stack-imbalanced slot-13 calls (lane gap, 1 grade)
+006e7820	RELOCATION_MATCH	243v243	PASS	CheckForCameraMessage model in a yield loop, inlined FindMostRecentMessage, one-ternary GetInterface
+00894820	DIFFER	294v290	-	def release loads eax not ecx (known long/short release gap; 4 forms)
+008946e0	DIFFER	319v315	-	def release loads eax not ecx (same residue as 00894820; 4 forms)
+008954a0	DIFFER	276v274	-	def release eax vs ecx (short-release residue; 4 forms)
+008956b0	DIFFER	250v262	-	register allocation + x87 delta homing (3 forms)
+0089ae30	RELOCATION_MATCH	250v250	PASS	Msg family filter frame + manager local, forceinline CCharString ==, Compare stand-in
+0089da70	DIFFER	311v314	-	alpha byte enregistered in ebp vs re-read from the dead slot (3 forms)
+008a8890	DIFFER	317v317	-	one hoisted lea (scheduling) after GetAllThings stand-in (4 forms)
+008a8f20	DIFFER	248v245	-	dead-arg-slot packing of key/temp/name (lane gap, 4 forms)
+008d04e0	RELOCATION_MATCH	299v299	PASS	MsgWhoKilledMe filter + hand-split == "" goto-joined + conditional temporary flag
+008d3dd0	RELOCATION_MATCH	289v289	PASS	quest-manager frame helpers, rvalue push_back arg in dead slot
+00cf0180	DIFFER	278v282	-	real name Tutorial_LowMagic; ebx/edi swap for cooldown/def (3 forms)
+00805a90	RELOCATION_MATCH	263v263	PASS	CGetBestTargetInDirection::operator(); += chains in retail term order
+00751610	DIFFER	260v260	-	one x87 operand order in the perpendicular dot (4 forms)
+00cdf620	RELOCATION_MATCH	260v260	PASS	WatchForFailure/CFader waiting-bool loop
+00c28400	DIFFER	285v310	-	register allocation + unfolded handle-table index (2 forms)
+00efb8c0	RELOCATION_MATCH	243v243	PASS	CHitSwitchTestScript::CHitSwitch::Main; __fastcall FoundMessageIsThingHitBy helper
+009f5690	DIFFER	264v262	-	is the CInputEventPackage(CAFile&) ctor, not Save; push_back cmp register form + edi push placement (4 forms)
+009f4f70	DIFFER	304v295	-	element-address form + match-block layout (4 forms incl. 1 SRC_FAIL)
+009f53c0	RELOCATION_MATCH	261v261	PASS	STLport _Destroy(first,last) + free dtor; joystick via operator[]+operator-> each time
+0068e8f0	RELOCATION_MATCH	275v275	PASS	/GS; three else-if arms each building its own event (retail tail-merges)
+006909a0	RELOCATION_MATCH	288v288	PASS	/GS; mangled leaf; event built before SetHandled; message arms tail-merged
+00688a80	RELOCATION_MATCH	283v283	PASS	/GS; mangled leaf; event built before the creature test; AddUID/AddFloat/AddLong homing
+0089ac80	DIFFER	258v258	-	esi/edi swap (this vs list node) + deferred ebp push; FindAllMessages same-TU stand-in (4 forms)
+00b81bc0	RELOCATION_MATCH	294v294	PASS	is CEngineSimulationManager ctor (catalog CGuiControlNumberInit); body store order (3 forms)

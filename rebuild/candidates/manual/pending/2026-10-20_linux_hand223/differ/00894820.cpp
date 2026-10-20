@@ -1,0 +1,102 @@
+// Grade: DIFFER(294v290) -- only the final def release: retail `mov ecx,[esp+2Ch] ; cmp ecx,ebx ; je ; dec [ecx+4] ; jne ; mov edx,[ecx]`, ours loads the def into eax (`dec [eax+4]` then `mov ecx,eax`); the CScriptThing temporaries, copy-out and frame all match
+// CGameScriptInterface::CreateObject(const CCharString& defName, const C3DVector& position, const CCharString& scriptName) const -- create a thing object from the named def at the position (player 4, default orientation) and return its script thing, the null script thing when creation failed
+// Leaf: ?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00894820, length 290 bytes (+ int3 padding), `ret 10h` (hidden result + 3).
+// Signature from Ego_r.pdb: ?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z
+//   (the overload without the float).
+// Callees: CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CDefinitionManager::GetDef<CThingObjectDef>
+//   @ 0x0042B040, CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*, unsigned long, const
+//   CCharString&) @ 0x00703210 (static __fastcall), CThing::GetScriptThing() @ 0x004C7E50 (by value), CScriptThing::
+//   operator= @ 0x008AB980, CBaseClass ctor/dtor @ 0x0099A2D0 / 0x0099A2E0, operator delete @ 0x00BFE9BC, the def's slot 1.
+//   CScriptThing vtable 0x01238C8C.
+// Layout: CGameScriptInterface DefinitionManager +0x10 (Ego_r.pdb); CScriptThing = CBaseClass vptr + PImp {Data, Info}
+//   (the landed GetHero 0x00891CA0 model, with PImp an embedded counted pointer with its own copy ctor).
+// Shape: the def pointer is homed in the dead `defName` slot and released at the end (DecRefToZero); the result
+//   is a named local default-constructed after the Create call, assigned from the by-value GetScriptThing temporary
+//   (both destructors inline), copied into the hidden result and destroyed (no NRVO in VC7.1).
+void __cdecl operator delete(void* p);                  // 0x00BFE9BC
+struct CCharString {
+    void* PStringData;
+};
+struct C3DVector { float X, Y, Z; };
+struct CRightHandedSet;
+
+struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
+};
+struct CCPPointerInfo {
+    unsigned long RefCount;
+    void (__fastcall* DeleteFunc)(void*);
+    void* Data;
+};
+struct CCountedScriptImp {                              // CCountedPointer<CScriptThingImp>
+    void* Data;
+    CCPPointerInfo* Info;
+    CCountedScriptImp() : Data(0), Info(0) {}
+    CCountedScriptImp(const CCountedScriptImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedScriptImp()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
+};
+struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+    CCountedScriptImp PImp;                             // +0x04
+    CScriptThing() {}
+    virtual ~CScriptThing() {}
+    CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
+};
+
+static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
+struct CThingObjectDef {
+    virtual void v00();
+    virtual void Destroy();                             // slot 1
+    long RefCount;                                      // +0x04
+};
+struct CDefPointerThingObjectDef {
+    CThingObjectDef* Object;
+    CDefPointerThingObjectDef() : Object(0) {}
+    ~CDefPointerThingObjectDef() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
+};
+struct CGameDefinitionManager {
+    long GetDefGlobalIndexFromName(const CCharString& name);                     // 0x009AD410
+    bool GetDef(long globalIndex, CDefPointerThingObjectDef* out);               // 0x0042B040
+};
+struct CThing {
+    CScriptThing GetScriptThing();                      // 0x004C7E50
+};
+struct CThingObject : CThing {
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
+                                           const CRightHandedSet* orientation, unsigned long uid,
+                                           const CCharString& scriptName);   // 0x00703210
+};
+
+struct CGameScriptInterface {
+    void*                   _vptr;                      // +0x00
+    void*                   World;                      // +0x04
+    void*                   Component;                  // +0x08
+    void*                   DisplayEngine;              // +0x0c
+    CGameDefinitionManager* DefinitionManager;          // +0x10
+    CScriptThing CreateObject(const CCharString& defName, const C3DVector& position, const CCharString& scriptName) const;
+};
+
+CScriptThing CGameScriptInterface::CreateObject(const CCharString& defName, const C3DVector& position,
+                                                const CCharString& scriptName) const
+{
+    long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
+    CDefPointerThingObjectDef def;
+    DefinitionManager->GetDef(index, &def);
+    CThingObject* object = CThingObject::Create(index, position, 4, 0, 0, scriptName);
+    CScriptThing result;
+    if (object)
+        result = object->GetScriptThing();
+    return result;
+}

@@ -251100,6 +251100,156 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00cac070_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00688a80'
+        Module = 'CInputProcessStrafe'
+        Source = '00/68/CInputProcessStrafe_ProcessInput_00688a80.cpp'
+        TestSource = '00/68/CInputProcessStrafe_ProcessInput_00688a80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00688a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068e8f0'
+        Module = 'CInputProcessCombat'
+        Source = '00/68/CInputProcessCombat_ProcessUnarmedInput_0068e8f0.cpp'
+        TestSource = '00/68/CInputProcessCombat_ProcessUnarmedInput_0068e8f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068e8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006909a0'
+        Module = 'CInputProcessCutScene'
+        Source = '00/69/CInputProcessCutScene_ProcessInput_006909a0.cpp'
+        TestSource = '00/69/CInputProcessCutScene_ProcessInput_006909a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '006909a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e7820'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_WaitForCameraMessage_006e7820.cpp'
+        TestSource = '00/6e/CGameScriptInterface_WaitForCameraMessage_006e7820_test.cpp'
+        PassPattern = '006e7820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fd8c0'
+        Module = 'CGameCameraBase'
+        Source = '00/6f/CGameCameraBase_CGameCameraBase_006fd8c0.cpp'
+        TestSource = '00/6f/CGameCameraBase_CGameCameraBase_006fd8c0_test.cpp'
+        PassPattern = '006fd8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00780700'
+        Module = 'NFire::CFirePoint'
+        Source = '00/78/NFireCFirePoint_Reset_00780700.cpp'
+        TestSource = '00/78/NFireCFirePoint_Reset_00780700_test.cpp'
+        PassPattern = '00780700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00805a90'
+        Module = 'CGetBestTargetInDirection'
+        Source = '00/80/CGetBestTargetInDirection_operator_00805a90.cpp'
+        TestSource = '00/80/CGetBestTargetInDirection_operator_00805a90_test.cpp'
+        PassPattern = '00805a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00811470'
+        Module = 'NEntityEvents::CEventKnockedOut'
+        Source = '00/81/NEntityEventsCEventKnockedOut_OnAdd_00811470.cpp'
+        TestSource = '00/81/NEntityEventsCEventKnockedOut_OnAdd_00811470_test.cpp'
+        PassPattern = '00811470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008115a0'
+        Module = 'NEntityEvents::CEventDied'
+        Source = '00/81/NEntityEventsCEventDied_OnAdd_008115a0.cpp'
+        TestSource = '00/81/NEntityEventsCEventDied_OnAdd_008115a0_test.cpp'
+        PassPattern = '008115a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089ae30'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_MsgOnLeavingQuestStartScreen_0089ae30.cpp'
+        TestSource = '00/89/CGameScriptInterface_MsgOnLeavingQuestStartScreen_0089ae30_test.cpp'
+        PassPattern = '0089ae30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d04e0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsKilledBy_008d04e0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsKilledBy_008d04e0_test.cpp'
+        PassPattern = '008d04e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d3dd0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgGetThingsKilled_008d3dd0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgGetThingsKilled_008d3dd0_test.cpp'
+        PassPattern = '008d3dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f53c0'
+        Module = 'CInputManager'
+        Source = '00/9f/CInputManager_SaveEventPackage_009f53c0.cpp'
+        TestSource = '00/9f/CInputManager_SaveEventPackage_009f53c0_test.cpp'
+        PassPattern = '009f53c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b42ed0'
+        Module = 'CEngineWorldMap'
+        Source = '00/b4/CEngineWorldMap_SetWorld_00b42ed0.cpp'
+        TestSource = '00/b4/CEngineWorldMap_SetWorld_00b42ed0_test.cpp'
+        PassPattern = '00b42ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b54100'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_RenderRainBox_00b54100.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_RenderRainBox_00b54100_test.cpp'
+        PassPattern = '00b54100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b54210'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_RenderSnowBox_00b54210.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_RenderSnowBox_00b54210_test.cpp'
+        PassPattern = '00b54210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b81bc0'
+        Module = 'CEngineSimulationManager'
+        Source = '00/b8/CEngineSimulationManager_CEngineSimulationManager_00b81bc0.cpp'
+        TestSource = '00/b8/CEngineSimulationManager_CEngineSimulationManager_00b81bc0_test.cpp'
+        PassPattern = '00b81bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf620'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCHEROGUILDTELEPORTMARKER_Main_00cdf620.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCHEROGUILDTELEPORTMARKER_Main_00cdf620_test.cpp'
+        PassPattern = '00cdf620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7f030'
+        Module = 'NScript::CV_FishingCompetitionScript::CFishCompOrganiser'
+        Source = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_OnPredicateFail_00e7f030.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_OnPredicateFail_00e7f030_test.cpp'
+        PassPattern = '00e7f030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb8c0'
+        Module = 'NScript::CHitSwitchTestScript::CHitSwitch'
+        Source = '00/ef/NScriptCHitSwitchTestScriptCHitSwitch_Main_00efb8c0.cpp'
+        TestSource = '00/ef/NScriptCHitSwitchTestScriptCHitSwitch_Main_00efb8c0_test.cpp'
+        PassPattern = '00efb8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efe8d0'
+        Module = 'NScript::CBenTestScriptsScript::CFader'
+        Source = '00/ef/NScriptCBenTestScriptsScriptCFader_Main_00efe8d0.cpp'
+        TestSource = '00/ef/NScriptCBenTestScriptsScriptCFader_Main_00efe8d0_test.cpp'
+        PassPattern = '00efe8d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
