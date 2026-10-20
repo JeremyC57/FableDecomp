@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00457776	RELOCATION_MATCH	179v179	PASS	size TU; local model (PDB-4, 12-byte vectors); inline CDefString ctor for lone members
+0048de8a	RELOCATION_MATCH	237v237	PASS	y-off/s-on; implicit (HC) temp in dead slot; one null-first prefix test assigning both values; ? false : true
+0048f7c0	DIFFER	197v193	-	inline operator==("") sete materialisation (chunk 188 lane gap); swapped-arm form tried
+0048f881	DIFFER	197v184	-	same operator==("") lane gap as 0048f7c0
+004930d7	RELOCATION_MATCH	197v197	PASS	s-on (no frame); shared MaxDisplayTime != 0 compare; profile ternary accessor
+0049319c	RELOCATION_MATCH	227v227	PASS	y-off/s-on; GUI def local first; implicit "" temps; inline fade BeginClose (Closing/Opening at +0xf4/+0xf5)
+0054abe0	RELOCATION_MATCH	167v167	PASS	C2DVector twin of landed CTextSlider::RevertValue; chained right-to-left assignment; pack(1) members
+00633a60	RELOCATION_MATCH	172v172	PASS	is CPlayer::UninitModeQuickAccessMenu (mode hook table; label ~CSpecialAbilitiesDivineWrathDef propagated)
+0066bd00	DIFFER	284v231	-	is CTCSoundPlayer::PlayAttachedCriteria (PDB); lane inlines the vector dtor at both returns, retail only at the fall-through
+00680a40	DIFFER	172v162	-	loop-invariant pair.first store hoisting + this/&Voices register split (lane); 3 forms tried
+007610d0	DIFFER	237v237	-	esi/edx swap for point vs successor; x87 body matches; 4 forms
+00872050	RELOCATION_MATCH	183v183	PASS	named bound locals in the if block + inline Clamp(float&, lo, hi); GetCamTools result unused
+00988490	MATCH	173v173	PASS	16-float overload; inline private SetD3DMatrix(D3DMATRIX&,16 floats) with transposed args
+0098ab00	RELOCATION_MATCH	232v232	PASS	STLport _Vector_base+alloc proxy vectors and rb-tree map header; 0xA5EC00 is CPixelShader ctor (label CBaseIntelligentPointer propagated)
+009a6370	DIFFER	220v227	-	only volatile WindowsQuit matches (RELOCATION_MATCH in probe); brief bans volatile
+009b95f0	RELOCATION_MATCH	170v170	PASS	one chained operator+ expression; __fastcall callback
+009b9e00	DIFFER	219v219	-	cached-pos MoveStringPos fixed the frame; only the end-pointer add operand order differs (pos+String vs String+pos); 4 grades
+009b9ee0	RELOCATION_MATCH	223v223	PASS	start local for the text; MoveStringPos caches StringPos in a local across the out-of-line CalcInQuotes
+009b9fc0	RELOCATION_MATCH	191v191	PASS	sibling of 009b9ee0; inline CParsedItem::InitAsString
+009e5420	RELOCATION_MATCH	182v182	PASS	CVectorMap::Add inlined (__forceinline Add/pair ctor/CSymbolInfo copy); default group g_CCharString_013caa30
+009e54e0	RELOCATION_MATCH	182v182	PASS	two-string overload of 009e5420 (group, name, val)
+009f3470	DIFFER	153v162	-	shrink-wrapped callee-saved pushes inside the row guard + hoisted row size; 4 forms
+009f3520	DIFFER	153v162	-	is CSurface::CopyToMemoryAutoUnswizzle (PDB; label copied from 0x9F3470); same shrink-wrap gap
+009f3ff0	DIFFER	155v161	-	this register edi vs esi + per-row width re-read placement; 3 forms
+00a3e330	SKIP	-	-	row holds six functions (0xA3E330/350/380/3A0/3B0/3C0, int3-separated)
+00a3f250	DIFFER	236v236	-	register naming only (edx/ecx, eax/edx) around the inlined CVectorMap::Add; 2 forms
+00a44880	DIFFER	172v172	-	/Od TU; only the frame differs (0x30 unused bytes after the temporaries); unused-array placements tried
+00a5d510	RELOCATION_MATCH	213v213	PASS	inline CVertexShader copy ctor (shared tail); new-expression args right to left with by-value getter temp; mutable cache
+00a5ef50	RELOCATION_MATCH	178v178	PASS	inline counted-pointer operator= (both source words first) + temp release; GetAsyncEntry/FindIndexBySymbol PDB names
+00a5f2f0	RELOCATION_MATCH	161v161	PASS	CloseShaders sibling: indexed walk, IsLoaded->CanUnload/Unload, SGI erase(begin,end); retail bank base 0x164
+00a5f430	DIFFER	218v213	-	same push_back value+tag dead-slot overlay gap as 00a623d0
+00a623d0	DIFFER	183v174	-	push_back(0) value+tag overlaid on one dead arg slot in retail (24l lane gap); by-value forceinline push_back tried
+00aac340	RELOCATION_MATCH	182v182	PASS	vfunc_9/StopSoundsContaining sibling: stop+mark matches, prune, query remaining (float result dropped)
+00b21090	DIFFER	132v197	-	three identical out=point[index] tails cross-jumped into one by the lane (retail keeps three); user C3DVector operator=, optimize(g,off) tried
+00b21dd0	RELOCATION_MATCH	181v181	PASS	STLport alloc-proxy CArray; CArray copy ctor = zero + out-of-line operator=
+00b38600	RELOCATION_MATCH	213v213	PASS	implicit copy ctor emitted by a placement-new copy site; C3DVector memberwise user copy
+00cbe87f	RELOCATION_MATCH	225v225	PASS	is AddLogbookStoryEntry(long) __fastcall global (PDB); label propagated; chained tag expression
+00dc7100	RELOCATION_MATCH	184v184	PASS	CIsThingConscious scoped predicate + yield-until-distance loop; GravekeeperCutsceneStart +0x4e
+00dc72a0	RELOCATION_MATCH	184v184	PASS	is CUndeadSpawnCutscene::Main (factory 0xDC71C0 'UndeadSpawnCutscene'; label copied from sibling)
+00ebfc10	RELOCATION_MATCH	210v210	PASS	MsgIsKilledBy("") implicit temp + four implicit literal temps; ParanoidState +0x48

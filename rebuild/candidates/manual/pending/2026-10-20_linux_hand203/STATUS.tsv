@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006ffa40	RELOCATION_MATCH	194v194	PASS	TransferBinaryIn (one float local in the dead stream slot)
+00700400	RELOCATION_MATCH	161v161	PASS	Match (rolled 5-axis loop, VC unrolls; reference Clamp)
+0066cb00	RELOCATION_MATCH	179v179	PASS	InitialiseTexture (system-manager local before the pushes)
+009dd960	DIFFER	227v229	-	Draw2DLine: RHW global copied through the FPU instead of edx/eax integer moves
+00a0b320	MATCH	186v186	PASS	SetPerspectiveTransform(4 floats) via inline SetD3DMatrix
+00c40590	DIFFER	192v192	-	x87 commutative operand order in the dot/cross products (lane canonicalises)
+0075ba30	RELOCATION_MATCH	196v196	PASS	CRigidBodyConfig implicit operator= (C3DVector user copy ctor, no op=)
+004af450	RELOCATION_MATCH	228v228	PASS	SaveToGameStateScript (two CVectorMap loops)
+00a872f0	DIFFER	196v196	-	scheduling only: bool argument load before vs after one fadd
+00a887b0	DIFFER	217v211	-	loop-invariant z=0 store hoist + zero-register forwarding not reproduced
+00ded380	RELOCATION_MATCH	208v208	PASS	CSP_NymphTrigger::Main (implicit string temporaries, named result)
+00d891f0	RELOCATION_MATCH	175v175	PASS	CSUMMONED_CREATURE::Main (Nostro; scoped predicate)
+00881690	DIFFER	229v229	-	scheduling only: rep movsd setup vs byte/vtable stores
+00c40750	RELOCATION_MATCH	173v173	PASS	audio-library effect owner Reset (label CScreenEffectPriorityStack::Reset propagated)
+00cb7950	RELOCATION_MATCH	169v169	PASS	UpdateSpawnedFunction (PDB inline accessors, bl interrupt flag)
+00cb7cb0	RELOCATION_MATCH	171v171	PASS	DoScriptDataPersist (scoped save/load contexts)
+00cb7da0	RELOCATION_MATCH	175v175	PASS	DoEntityScriptPersist (same shape on the entity script)
+00cb8230	RELOCATION_MATCH	189v189	PASS	AddEntityScriptBinding (__forceinline CVectorMap::Add)
+009039d0	RELOCATION_MATCH	234v234	PASS	scripted-thing ctor (GetTC one-ternary)
+00903bc0	DIFFER	212v220	-	presence-bit bool frame store
+00903ca0	RELOCATION_MATCH	180v180	PASS	SummonerLightningOrbAttackTarget
+00903d60	DIFFER	186v183	-	register colouring (PThing esi / target-thing reuse of edi)
+00904030	RELOCATION_MATCH	190v190	PASS	FollowThing
+009040f0	RELOCATION_MATCH	168v168	PASS	IsFollowActionRunning
+00904380	DIFFER	176v163	-	loop rotation lane gap
+009046a0	RELOCATION_MATCH	213v213	PASS	Speak(ulong)
+00904780	RELOCATION_MATCH	213v213	PASS	Speak(const char*)
+00904860	RELOCATION_MATCH	218v218	PASS	AskHeroQuestion
+00904940	RELOCATION_MATCH	173v173	PASS	PerformExpression
+00904af0	RELOCATION_MATCH	224v224	PASS	PlayCombatAnimation
+00904e20	RELOCATION_MATCH	180v180	PASS	DropGenericBox
+00904f60	RELOCATION_MATCH	199v199	PASS	UnsheatheWeapons (conditional temporary)
+00cb5d80	RELOCATION_MATCH	182v182	PASS	CScriptInfoManager::Init (implicit progress strings, inline sort-if-dirty)
+00f2a0f0	RELOCATION_MATCH	220v220	PASS	RegisterDefs (implicit CCharString conversions into CDefClassInit)
+00852350	RELOCATION_MATCH	172v172	PASS	DollyThing::Update (position on the left of operator+, owner local)
+00852fd0	RELOCATION_MATCH	211v211	PASS	FOVZoomStayRelative::Update (accessor into ecx, owner local, shared base Update)
+00852b70	RELOCATION_MATCH	199v199	PASS	ThingLookAtFace::Update (operators return constructed temporaries)
+00852c40	RELOCATION_MATCH	199v199	PASS	ThingLookAtUpperBody::Update (catalog says LookAtFace; PDB pairing)
+00853580	DIFFER	233v233	-	x87 operand order of the LookAtPos += LookAtIncrement drift (lane canonicalises)
+00e29f50	RELOCATION_MATCH	195v195	PASS	CScytheMarker::Main (inline ~CScriptThing in this module)

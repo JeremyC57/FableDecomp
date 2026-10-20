@@ -1,0 +1,24 @@
+address	name	evidence
+00c40590	AudioLib_NormalizeOrientationFrame_00c40590	audio library code, not CRightHandedSet (chunk 203)
+00c40750	CEffectOwner_00c40750::Reset	audio library code, not CScreenEffectPriorityStack
+00852c40	CScriptModuleThingLookAtUpperBody::Update	the PDB has exactly two ThingLookAt Update methods; not a second LookAtFace
+00f35a30	CSpawnedFuncBase::RemovePredicate	
+00cb8d30	CCountedPointer<CEntityScriptBindingBase>::DeleteData	
+00cd3f40	GFSetPDefinitionManager	
+00cd52d0	RegisterScripts	
+009e1e10	StdcallHelper_009e1e10	__stdcall, not __fastcall
+009e1e40	StdcallHelper_009e1e40	__stdcall, not __fastcall
+0066e370	std::vector<C3DVector>::_M_insert_overflow	
+009f9e00	CTexture::GetSurface	
+00dc72a0	CUndeadSpawnCutscene::Main	(chunk 204)
+00cbe87f	AddLogbookStoryEntry	__fastcall global, long argument
+009f3520	CSurface::CopyToMemoryAutoUnswizzle	not CopyFromMemoryAutoSwizzle
+0066bd00	CTCSoundPlayer::PlayAttachedCriteria	
+00a5ec00	CPixelShader::CPixelShader	RTTI; landed as CBaseIntelligentPointer (sweep)
+009d58d0	CBankFileAsync::GetAsyncEntry	PDB name; two landed rows call it CreateEntry (sweep)
+00a61fa0	CShaderDataBank::GetVertexShader	
+0048f6bd	CSubtitleRenderer::GetTextFromTextTag	
+0099bdb0	CWideString::GetSubString	
+0099b220	CWideString::GetLength	
+0099af10	CWideString::operator const wchar_t*	returns the empty wide literal; landed 0048daa2 binds ??BCCharString to it (sweep; the CCharString one is 0x99E4C0)
+00a3e330	CSoundManagerLH_00a3e330	row holds six int3-separated functions: SKIP, ledger
