@@ -1,0 +1,14 @@
+# Lessons (chunk 236)
+- Bit fields set before a later member's inline ctor (e.g. an STLport set's header malloc) are mem-initializers, not body assignments (legal C++; the landed CThing ctor 0x004C9030 does it): fixed the 0x00831F80 flag-byte scheduling.
+- A def field read *after* the by-value CDefPointer temporary's release (`mov edi,[eax]` ; release ; `fld [edi+N]`) is an inline raw-pointer helper `const T* GetX() const { return GetPX(); }` (operator T*), one call per access (0x00667C00).
+- The `mov e?x,[eax+4] ; mov ecx,eax ; add eax,4 ; dec ; cmp ; mov [eax],e?x` release is the ref-count base's DecRef()+GetRefCount() pair inside ~CDefPointer; `dec dword ptr [ecx+4] ; jne` is a plain `if (--m_count == 0)` Release on a pointer held in a register.
+- A string literal passed straight to a `const CCharString&` parameter (implicit conversion) builds its temporary before the other arguments; an explicit `CCharString("X")` builds it after the pushes it precedes (0x00662B10).
+- A null-def early `return false` that retail routes to the function's single final exit is `if (def) { ...; release; } return false;` (0x00665E90).
+- VC7.1 folds `return a; return b;` pairs at the end of nested ifs into a `mov eax,b ; jne ; mov eax,a` select; retail's jump back into an earlier return-b block was not reproducible (0x00934F20).
+- An unused STLport-vector-of-C3DVector style `x*x+y*y+z*z` CSE across two length computations keeps the squares on the x87 stack; the stack order of the CSE'd squares did not follow any operand order tried (0x006A7270).
+- A def field used both in an if-test and as the following call's argument is reloaded in retail (`mov ecx,[eax+N] ; test ; ... mov edx,[eax+N]`) when the argument goes through an inline const accessor `const T* GetCreatureDef() const { return PDef; }` (0x00833A70, 0x008338D0).
+- `cdq ; xor eax,edx ; sub eax,edx` is the `abs` intrinsic (`extern "C" int __cdecl abs(int); #pragma intrinsic(abs)`); a hand-written `v < 0 ? -v : v` emits `test ; jge ; neg` (0x00A3B5F0).
+- `fld Y ; fadd X ; fmul 0.0f ; fadd Z ; fcomp k` is an inline dot product with the constant vector (0, 0, 1): VC7.1 drops `*1` and merges the two `*0` products into one multiply (0x00667310).
+- An action temporary passed straight to `SetCurrentAction(T(...))` sizes the frame exactly: a 4-byte frame-size miss is the local model's sizeof (padding included), so size the model from `sub esp` (0x00667310: retail knockdown action 0x13c).
+- An ebp-framed body whose x87 tail is `fld f ; fadd [0.5 slot] ; fistp i ; fild i ; fsub [1.0 slot] ; fstp t ; cmp ; dec i` with the constants written into frame slots is an `__asm` rounding helper inlined into C++ -- lane gap, park at once (0x007E2DF0).
+- Do not redeclare `operator new(unsigned int)` in a source: the implicit declaration masks the same and the g++ test lane rejects a non-size_t first parameter.

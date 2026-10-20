@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0079f810	RELOCATION_MATCH	247v247	PASS	local model (retail layout PDB-0xC)
+004ead07	RELOCATION_MATCH	279v279	PASS	is CTavernGameShoveHaPennyDef::operator=
+004e7fd8	RELOCATION_MATCH	267v267	PASS	
+00831f80	RELOCATION_MATCH	319v319	PASS	bit fields as mem-initializers (before the set malloc)
+00830150	DIFFER	241v241	-	CDefString temp frame slot + colour store order
+0082d0d0	DIFFER	241v241	-	twin of 00830150 (same gap)
+006a7270	DIFFER	260v262	-	x87 stack order of CSE'd squares + one fxch in the dot
+006a7150	RELOCATION_MATCH	286v286	PASS	FOV body assignment; memberwise C3DVector copy ctor
+00978790	DIFFER	286v286	-	scheduling only (load/spill and pop esi order)
+0097abf0	DIFFER	286v286	-	twin of 00978790, same scheduling gap
+00934f20	DIFFER	281v281	-	final return pair folded into a select (retail tail-merges into the earlier return-b block)
+00662b10	RELOCATION_MATCH	242v242	PASS	holder dtor + plain "DEFAULT" literal
+00662a00	RELOCATION_MATCH	259v259	PASS	first try on the 00662b10 model
+00662fa0	RELOCATION_MATCH	297v297	PASS	same model, sub-def before filter
+00664d40	DIFFER	268v268	-	register allocation only (eax/ecx/edx roles in the name arm and final release)
+00665e90	RELOCATION_MATCH	241v241	PASS	single shared false exit; same-TU GetSubDef stand-in
+00665f90	DIFFER	258v246	-	key frame slot + def release codegen (dec [ecx+4] v load/dec/store)
+00667c00	RELOCATION_MATCH	298v298	PASS	inline raw-pointer helper over the by-value def temporary
+004c9560	RELOCATION_MATCH	293v293	PASS	inline GetDefinitionManager copy; CVectorMap copy via same-TU stand-in
+004c9690	RELOCATION_MATCH	274v274	PASS	conditional-temporary bool; OnCreate loop model
+00833a70	RELOCATION_MATCH	299v299	PASS	const GetCreatureDef accessor for the GetDef argument
+008338d0	RELOCATION_MATCH	313v313	PASS	const GetCreatureDef accessor; per-arm def locals
+00830360	RELOCATION_MATCH	305v305	PASS	first try; intelligent-pointer operator= from raw temporaries
+0082d9c0	DIFFER	312v308	-	door spill does not share the key word (frame 8 v 4) + lensq order
+00857250	RELOCATION_MATCH	312v312	PASS	landed 0x006A8370 sibling body + two pass tests
+0080dc90	DIFFER	242v242	-	x87 keep/spill choice of the travel X/Y components
+00549a00	RELOCATION_MATCH	280v280	PASS	empty allocator tag needs a user ctor
+006cff10	RELOCATION_MATCH	269v269	PASS	first try on the landed Died model (local: header leaves ParentThing as padding)
+007a43a0	RELOCATION_MATCH	281v281	PASS	ForcePush ctor twin; non-const then const GetTC
+00ee06b0	RELOCATION_MATCH	298v298	PASS	is CTH_Trigger_Oakvale_Gossip::Main (factory record)
+00ee0a20	RELOCATION_MATCH	307v307	PASS	discarded CreateCreature temporary
+00eeed20	RELOCATION_MATCH	274v274	PASS	FireHeart spawned-thread model
+00863280	DIFFER	262v290	-	difference memory-resident in retail, delta on the x87 stack (/Op spills both)
+009fa4e0	RELOCATION_MATCH	289v289	PASS	inline GetSurfaceLevel + min by reference (replaces a naked-asm oracle)
+009fbbd0	RELOCATION_MATCH	250v250	PASS	inline GetPixelFormat/GetDimensions; rect store order
+009fa340	RELOCATION_MATCH	256v256	PASS	named device local; two separate return-false tests
+00a6aaa0	DIFFER	304v306	-	register allocation only (this/specs esi/edi swapped; zero-register store)
+00a3b5f0	RELOCATION_MATCH	305v305	PASS	abs intrinsic (cdq/xor/sub); local CVideoSys model (+0x84/+0x88)
+00667310	RELOCATION_MATCH	307v307	PASS	inline dot with constant up vector; knockdown temporary (retail size 0x13c)
+007e2df0	DIFFER	260v257	-	lane gap: inline-asm fistp rounding helper (ebp frame, 0.5/1.0 in frame slots)

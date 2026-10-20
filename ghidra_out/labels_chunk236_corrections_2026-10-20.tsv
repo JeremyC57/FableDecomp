@@ -1,0 +1,13 @@
+address	name	evidence
+004ead07	CTavernGameShoveHaPennyDef::operator=	slot-19 thunk 0x4ead02, vtable 0x01242524 (chunk 236)
+00830150	CThingAICreature::DrawGetEditDrawInfo	was vfunc_25 (chunk 236)
+0082d0d0	CThingAICreature::DrawGetEditDrawInfo_twin	was vfunc_25, byte twin of 00830150 (chunk 236)
+00ee06b0	CTH_Trigger_Oakvale_Gossip::Main	factory 0x00EDF119, vtable 0x012F4304; 00ee0a20 is CTH_Trigger_Oakvale::Main (chunk 236)
+0088e5a0	CGSI::SetThingPersistent	CGSI slot 477; cgsi_vtable_slots.tsv is shifted at that point (chunk 236)
+006c1150	CTCBuyableHouse::SetRented	chunk 236
+004cc290	CVectorMap::CVectorMap	copy ctor (chunk 236)
+009f37e0	CSurface::CopyFromSurface	chunk 236
+0044c6b0	CGameDefinitionManager::Get	chunk 236
+00eeec00	CTestTheInventoryScript::TestForLampOn	chunk 236
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	propagated CPixelShader::CountReferences label (chunk 236)
+008679c0	CCombatAction_GenericStrikeResponseKnockdown::CCombatAction_GenericStrikeResponseKnockdown	ctor (chunk 236)
