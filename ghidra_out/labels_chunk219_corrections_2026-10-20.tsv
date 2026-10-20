@@ -1,0 +1,8 @@
+address	name	evidence
+00661cc0	CThingCreatureBase::GetStaticFloat_00661cc0	static float getter, no this; propagated label (chunk 219)
+006a4d00	CThingCreatureBase::GetPhysicsPosition	physics-position accessor, not DoSizeof (chunk 219)
+0090c780	CAIStateGroup::Method_0090c780	propagated AssignCreatureToTask label is wrong (chunk 219)
+0087c390	CTCSinglePersonOccupiable::Method_0087c390	propagated AssignCreatureToTask label is wrong (chunk 219)
+006cbe30	CTCCreatureNavigation::SetThingToIgnore	propagated AssignCreatureToTask/AssignTarget label is wrong (chunk 219)
+007ffdb0	CTCPub::RemoveCustomer	(chunk 219)
+00a55a30	C2DBoxF::ToBoxI	float box to C2DBoxI, not GetPenArea (chunk 219)

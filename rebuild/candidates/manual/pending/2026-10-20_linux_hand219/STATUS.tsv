@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00915080	DIFFER	266v266	-	one fadd operand swap in the C3DVector sum (x only)
+00946b50	RELOCATION_MATCH	252v252	PASS	CDefPointer temp needs __forceinline dtor/release
+0093d270	DIFFER	297v295	-	PEnemy address hoisted into esi before the temporary GetPItem
+00957db0	DIFFER	266v266	-	esi/edi swap + Terminate tail block order
+0096f050	RELOCATION_MATCH	301v301	PASS	separate Terminate exits tail-merge inline
+0092e950	DIFFER	323v308	-	zero-in-ebp register shape + box arithmetic
+00921870	RELOCATION_MATCH	286v286	PASS	if(HasTC)+GetInterfaceV keeps this in edi; bool param xor/mov al
+0090ca60	DIFFER	287v287	-	scheduling: filter-bind store before the UID ctor call
+0090c1a0	DIFFER	293v293	-	scheduling: position copy store after the first push
+0090c540	DIFFER	299v299	-	esi/edi colouring + two bool frame bytes swapped
+0090c670	DIFFER	251v249	-	lookup result in eax not ecx (2 bytes)
+00926a10	RELOCATION_MATCH	274v274	PASS	forceinline shared helper; constant 1 in bl; !open passed directly
+00926b30	RELOCATION_MATCH	274v274	PASS	twin of 00926a10 returning false
+0095ee70	RELOCATION_MATCH	259v259	PASS	first try: packed IP + two speech overloads
+00946190	DIFFER	259v259	-	slot-pointer register (ecx v eax) for the by-value sum
+00946400	DIFFER	283v284	-	register roles + hoisted member address + alive-test tail fold
+0095d3a0	DIFFER	287v285	-	lookup result in eax not ecx (2 bytes)
+0095d0e0	DIFFER	283v285	-	scheduling: loop filter temporary stored before the pushes
+0095d200	RELOCATION_MATCH	267v267	PASS	first try: tail-merged Terminate exits
+0094dac0	DIFFER	243v243	-	register colouring permutation only
+0094d9c0	RELOCATION_MATCH	246v246	PASS	first try: filter-bind chains, per-search event local
+0094b740	RELOCATION_MATCH	246v246	PASS	global read before seed store (or /Oa); HasTC+GetInterfaceV on named building
+009167f0	RELOCATION_MATCH	286v286	PASS	forceinline bool range helper negated into bl; CDefPointer release
+00916910	RELOCATION_MATCH	300v300	PASS	do/while with tail-merged Terminate exits; GetInterfaceT in the condition
+00964ca0	DIFFER	244v245	-	zero-register choice (ebx constant v edi result)
+0093c830	DIFFER	322v318	-	frame: two lookup key slots not shared
+00938280	DIFFER	248v248	-	register colouring (mode/seed) + ctor-arg register
+00962c10	DIFFER	323v313	-	frame slot packing + ebx/edi roles
+00937c20	DIFFER	253v253	-	scheduling: C3DVector copy loads-before-stores (same as 0090c1a0)
+00937b10	DIFFER	261v261	-	scheduling: same copy as 00937c20
+00936a60	DIFFER	307v307	-	scheduling of the compare copy + register roles
+00967a20	RELOCATION_MATCH	288v288	PASS	implicit CCharString conversion in the derived action's mem-initializer
+00930ee0	DIFFER	294v297	-	lookup end-pointer register (ecx v esi) + map lea CSE
+0092bf50	DIFFER	317v287	-	frame temporaries layout + FPU spill of the away vector
+0094b8b0	RELOCATION_MATCH	245v245	PASS	implicit IP conversion for out-of-line operator=; GetCreature accessor; if/else SetSeat
+0093c2f0	DIFFER	303v303	-	frame: lookup key slots not shared + brain-load registers
+0090f320	RELOCATION_MATCH	313v313	PASS	named float locals for the compare; split tail-merged Terminate exits
+0094d680	DIFFER	249v251	-	register roles + final sum component order + lead store scheduling
+0094dc40	RELOCATION_MATCH	255v255	PASS	brain-output model; action temporary by pointer to an inline helper (virtual Clone on ctor eax)
+00969e70	DIFFER	324v311	-	first attempt: box/filter scheduling + zero register
