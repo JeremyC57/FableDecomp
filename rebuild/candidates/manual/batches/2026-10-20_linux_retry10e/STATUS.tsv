@@ -1,0 +1,438 @@
+00d17090	RELOCATION_MATCH	WatchForLeaderKilled	three dtor sites (loop return + post-loop return + end): inline once, out-of-line ~CScriptThing tail-merged
+00e32200	RELOCATION_MATCH	WatchForTricksterComplete	same: split the && guard into an early return so the by-value param has three dtor sites
+0066bd00	DIFFER(231v231)	PlayAttachedCriteria	once-band reached (dead store or if(!empty) guard) but cursor colouring edi/esi and xor-esi zero reg remain; 3-site trick gives wrong site assignment for a local
+0059da10	RELOCATION_MATCH	IsItemAffordable	named bool local for the returned compare (direct `return a >= b` zero-extends with xor eax,eax)
+007525c0	RELOCATION_MATCH	GetTurningAnglesAndCheckForTurningBody	`!(unsigned char)LongHelper()` gives retail `test al,al` after the helper's full-register 1/0
+005c3180	DIFFER(188v186)	GetActiveProjectileWeaponDamage	sibling-block / inlined-helper scoping of the def lookup grows the frame (193); slot sharing not reproduced
+005cdccb	DIFFER(187v187)	FrameUpdate	inner-block frame local, temporary pair, flag sweep: frame stays 0x24 v 0x1c (no slot sharing of type/frame nor key/pair)
+005cbc36	DIFFER(194v180)	OnItemAdded	CDefPointer-with-dtor (two-base count) models zero the out slots through a register and still spill; hand release form stays 198
+0057adb8	DIFFER(69v63)	ResetTrainingStatus	two-base (CDefVirtual+CRefCounted) Release(): still the long `add eax,4 ; dec [eax] ; cmp [eax],0` release
+006c5630	DIFFER(84v78)	GetDeedDef	two-base Release() model: long release form, out slot re-read
+009f0570	DIFFER(39v39)	Contains	end!=node, if/return, named bool, (unsigned char): compare always before the param dtor (setne bl); retail compares after it
+0096a260	DIFFER(232v232)	FindHitEvent	`? true : false` reproduces retail test/setne; only the shot out-slot (+0xc) and filter temp (+0x10) remain swapped under every declaration order
+0056ef6f	DIFFER(210v206)	UpdateExperienceSpendPool	compare via vector expr + RMW via pointer fixes the category arm; the general-pool arm forwards (mov edi,[esi+24h] ; sub edi ; mov) unless split, which then reloads the start
+005786b5	DIFFER(230v226)	BuyStat	biased `lea ebp,[esp-70h]` frame: /EHa /EHsc /GX- /Gy /Ge /Gm /Oa /Ow /Zi /Gs0 /Gs /Oy- /O1 /Ox never bias
+005d9070	DIFFER(172v172)	GetDescription	text id read before/after the global: lane keeps it in eax and pushes before the lea; retail edx
+0061a9d0	DIFFER(168v168)	MoveToNextTestQuest	named index/count locals, dtor first/last locals, size() spellings: this stays edi, diff in esi, first via ecx (retail this=esi, first=ebp, diff=ecx)
+0061aa80	DIFFER(182v176)	MoveToPreviousTestQuest	same family as 0061a9d0, not retried separately
+008bb130	RELOCATION_MATCH	CCreatureAction_CastWillForceSpell	hand-split `== ""` (strcmp on null block / block compare, goto-joined arms) + default name as implicit conversion `SetAnimationName("...")`
+008bb200	RELOCATION_MATCH	CCreatureAction_CastWillForceSpell	same idiom as 008bb130
+008bb6f0	RELOCATION_MATCH	CCreatureAction_CastPhysicalShieldSpell	same idiom as 008bb130
+00892cf0	RELOCATION_MATCH	SetCreatureGeneratorsEnabled	hand-split `== ""` with goto-joined arms (the region arm first, the global switch at the label)
+00811100	RELOCATION_MATCH	operator()	hand-split `== ""`, both true exits goto one label, attacker test in its own block, hit record in a local
+007025a0	DIFFER(131v131)	GetRegionName	hand-split `== ""` fixes the sete; left: retail `push ebp ; mov ecx,esi` for the RegionName copy ctor, lane `mov ecx,esi ; push ebp` (this->, *&, reference-local forms identical)
+00574576	DIFFER(182v182)	OpenInventoryOld	reference local, function-top screen, block-local name, chained GetInstance(): temp/component slots stay swapped
+004310a7	DIFFER(91v91)	TransferWideString	explicit temp, default before CheckCRC (93), if/else (94): default local stays at [ebp-8]
+007f2410	DIFFER(204v205)	OnDie	inline GetSubDefInto helper (sub-def read into a register local right after the call) fixes the hoist and short release; this/effects colouring edi<->ebp remains
+00733ee0	DIFFER(131v129)	IsMeleeFlourishValid	component join for a VIRTUAL call: retail joins in ecx, lane in eax + mov ecx,eax (component local/ternary/if-else store forms and a reference alias all join in eax)
+006882f0	RELOCATION_MATCH	ProcessInput	unchanged source under RTM + /GS (the parked gap was the QFE compiler)
+0068c6e0	RELOCATION_MATCH	ProcessInput	unchanged source under RTM + /GS
+0068c760	RELOCATION_MATCH	ProcessInput	unchanged source under RTM + /GS
+0068c7f0	RELOCATION_MATCH	ProcessInput	unchanged source under RTM + /GS
+00688260	DIFFER(137v137)	ProcessInput	RTM+/GS closes the shadowing; left: two `false` byte stores via a shared `xor al,al` in retail, immediates in the lane (helper, ternary/if forms identical)
+005840a6	DIFFER(177v177)	UseQuickAccessItem	item read once into a local (so slot dies) swaps esi/edi and drops to 160; the converted temporary keeps [ebp-4]
+0072a970	DIFFER(63v63)	SetupBulletTime	creature local before the bit test (60) and the string as an argument temporary (59) both change more than the load order
+0053e0c0	DIFFER(190v190)	MakeUnavailable	nested-if and `== 0`/this-> forms keep the slot-97 vptr in edx (retail reuses dead eax)
+00894bf0	DIFFER(170v159)	IsGiftRomantic	known gap: retail pushes ebx inside the found branch (`push ebx ; sete bl`) and homes the out slot in the dead defName slot; the lane spills the bool to that slot and opens a frame word (twins 00894c90/00894d30)
+005b3c95	DIFFER(240v229)	OnItemAdded	known gaps: retail pushes ebx inside the OBJECT branch and zeroes the two def slots with `and [..],0` (objectDef in the dead assignQuickAccess slot); the lane xor-ebx zero register and swapped slots
+005beb57	DIFFER(231v233)	RemoveCreatureFromFaction	third lookup key as implicit conversion closest (231v233); retail reuses one CCharString temp slot across two lookups, ours allocates two
+00449d90	DIFFER(195v195)	InitCharacterAsHero	else-arm InitCharacterAs("CREATURE_HERO") keeps size; left: literal slot colouring ecx v edx on the second push
+008d6780	RELOCATION_MATCH	AnimUpdate	GetAnimFilter() takes no arg, GetAnimFromName(name, filter, 0) third long; CAnimInit as a temporary passed straight to SetMainAnim
+008d6cb0	RELOCATION_MATCH	AnimUpdate	CAnimInit temporary argument of SetMainAnim (named local hoists BankIndex into a callee-saved reg)
+008d6e80	RELOCATION_MATCH	AnimUpdate	same CAnimInit-temporary idiom
+008d6f20	RELOCATION_MATCH	AnimUpdate	same CAnimInit-temporary idiom
+008d6da0	RELOCATION_MATCH	AnimUpdate	`CThing* thing = ParentThing` local + CAnimInit temporary argument of SetMainAnim
+007f9010	DIFFER(131v131)	PlayAnimation	named CAnimInit keeps push-0x64 order; `priority` coloured ebp in ours v ebx in retail (push ebx/pop ebx); temporary, early-return and QueuedAnims.clear() forms do not move it
+00752f30	DIFFER(226v226)	UpdateHeadCreatureAnim	`type` ebx / `this` edi in retail v edi / ebx in ours; switch form worse (sub/dec chain)
+007f8f30	DIFFER(222v222)	PlayDefaultAnimation	GetSubDef out-pointer zero store before the [+0x70] load; CAnimInit temporary makes it worse (second zero store moves too)
+006820e0	RELOCATION_MATCH	SetPersonalityOverride	hand-split `== ""` with every true exit `goto set` and a bare return between (idiom of 00892cf0)
+008eda90	DIFFER(169v169)	??0CCombatAction_FallStunned	hand-split + implicit-conversion default fixes the shape; left: `mov ebp,ecx` (this) / `mov ebx,[esp+20h]` (animName) swapped ebx<->ebp; ternary spellings and a forceinline helper do not move it
+0095d070	DIFFER(108v108)	AttackEnemy	known lane gap: retail pushes ebx/edi lazily inside the attack branch after an inline `xor al,al ; pop esi ; ret`; &&-joined, nested-if and result-local forms all keep the merged exit at the end
+008d0730	DIFFER(233v233)	IsBeingCarriedBy	only the Compare (fastcall) argument loads swap: retail `mov edx,[eax] ; mov ecx,[ecx]`, ours ecx first; local-pointer, !Compare, ternary and reference forms do not move it
+0069a920	DIFFER(106v104)	RemoveCombatCameraMode	count-reference release form removes the 12-byte long release; left: `mov eax,[esp+4] ; test eax,eax ; mov ecx,eax` v `mov ecx,[esp+4] ; test ecx,ecx`, and the CDefPointer zero store before the index load v after `push eax`
+00591e8c	RELOCATION_MATCH	GlobalUpdate	def release as `DecRefToZero(Object->RefCount)` (forceinline `long&` helper) gives `dec [ecx+4] ; jne` after the fmul
+0069ac90	DIFFER(130v124)		DecRefToZero(long&) release helper (was 136v124); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+005f6a6f	DIFFER(218v216)	ResetAssignedAbilitiesPC	DecRefToZero(long&) release helper (was 223v216); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+00663260	DIFFER(55v49)		DecRefToZero(long&) release helper (was 59v49); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+006cd890	DIFFER(227v221)	??0CGroundNavigatorExternalInterface	DecRefToZero(long&) release helper (was 233v221); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+006a1490	DIFFER(175v173)		DecRefToZero(long&) release helper (was 181v173); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+0071c2d0	DIFFER(148v140)	HasAPermanentTattooCoveringArea	DecRefToZero(long&) release helper (was 158v140); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+0066b040	DIFFER(64v61)	OnInitialActivate	DecRefToZero(long&) release helper (was 69v61); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+00699b00	DIFFER(243v238)	PreloadScriptedCamera	DecRefToZero(long&) release helper (was 243v238); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+0069a8b0	DIFFER(103v100)		DecRefToZero(long&) release helper (was 108v100); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+00703150	DIFFER(106v105)	?PeekPMaterial@CThingObject	DecRefToZero(long&) release helper (was 111v105); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+007366c0	DIFFER(152v149)		DecRefToZero(long&) release helper (was 157v149); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+00729410	DIFFER(141v134)		DecRefToZero(long&) release helper (was 142v134); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+005d66ba	DIFFER(147v142)		DecRefToZero(long&) release helper (was 151v142); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+005ea100	DIFFER(174v158)	vfunc_42	DecRefToZero(long&) release helper (was 184v158); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+005e3c60	DIFFER(70v68)	?resize@CAnimationPairVector@@QAEXK@Z	DecRefToZero + local-copy dtor (was 78); left: slot load into eax + `mov ecx,eax` v retail ecx
+00543d30	RELOCATION_MATCH	Initialise	GetInstance() inline as the GetLayer object expression (named local hoisted the vtable load above the temporary CRightHandedSet stores)
+00543df0	RELOCATION_MATCH	ChangeState	same fix as 00543d30
+00724f80	RELOCATION_MATCH	OnCreate	ImpulseVelocity.Set(0,0,0) inline member storing Z,Y,X (stores through a member-function this keep the flag loads after them)
+00458c19	RELOCATION_MATCH	??0CMeleeCombatAbilityDef	STLport _Vector_base model: _M_end_of_storage as an _STLP_alloc_proxy with its own ctor fixes the member-ctor lea placement
+00457da9	RELOCATION_MATCH	??0CSpecialAbilitiesSummonSpellDef	same STLport alloc-proxy vector model
+004e00bc	RELOCATION_MATCH	??0CQuestCardDef	same STLport alloc-proxy vector model
+004570d3	RELOCATION_MATCH	??0CSpecialAbilitiesBattleChargeDef	same STLport alloc-proxy vector model
+004df14b	RELOCATION_MATCH	??0CTCDPhysicalObstruction	STLport alloc-proxy vector model
+004e06c3	RELOCATION_MATCH	??0CShopDef	STLport alloc-proxy vector model
+0064f659	RELOCATION_MATCH	??0CDrawQuestInfo	STLport alloc-proxy vector model
+00724fc0	MATCH	ClearMovement	ImpulseVelocity.Set(0,0,0) inline member storing Z,Y,X
+007268d0	RELOCATION_MATCH	OnCreate	AdditionalImpulse.Set(0,0,0) inline member storing Z,Y,X
+00652f0a	RELOCATION_MATCH	??0CDrawQuickAccessIcons	STLport alloc-proxy model on every vector (EffectPositions too)
+0071e180	RELOCATION_MATCH	??0CTCHeroMorph	CMeshMorphSet as two STLport alloc-proxy vectors
+0059d1b1	DIFFER(194v191)	FinalRefreshSubtitles	map as pointer, non-const key ref, converting key temp (lands in [ebp+8] too): map stays in ebx for the body and the two by-value temporaries get [ebp-4] (retail [ebp+8])
+00f29d00	RELOCATION_MATCH	CCutsceneDef	CDefIndex-style member record (inline ctor -1) + scalar band in an intermediate novtable base keep the bit clear / -1 store above the vtable store
+007437c0	RELOCATION_MATCH	??0CModeDragonFlying	CArray modelled as STLport _Vector_base with alloc-proxy end-of-storage: push -1 lands after the spline zero stores
+007438a0	RELOCATION_MATCH	??0CModeDragonStrafe	same CArray alloc-proxy model
+008ddfb0	RELOCATION_MATCH	??0CModeDragonStrafe	same CArray alloc-proxy model
+0086c4d0	RELOCATION_MATCH	??0CRandomAppearanceMorph	CArray alloc-proxy end-of-storage model places lea edi,[esi+0Ch] between the +0x1c/+0x20 zero stores
+006772d0	DIFFER(115v115)	??0CThingBaseDef	alloc-proxy map + moving the +0x43 bit clears after the scalars (114): the +0x42 byte store still sinks below the +0x44..+0x64 zero dwords and the +0x43 `and dl,0E3h` rises above them
+00717950	DIFFER(198v198)	??0CActionTalkBase	alloc-proxy Messages, CGameTime record, UpdateCounter in body (goes to the end), scalars in body: retail stores UpdateCounter after the two fld/fstp copies, the lane before them
+007445e0	RELOCATION_MATCH	??0CTCPerceiveThing	PDef as a CDefPointer record (inline ctor) anchors the -1 store above +0x34; UpdateOffset assigned in the body sinks its and edx,3 below the radius stores
+007e71d0	RELOCATION_MATCH	??0CActionMoveTo	CScriptThing::PImp as the PDB CCountedPointer<CScriptThing> record (one inline ctor): the second CScriptThing vtable store stays above its zeros
+00543910	DIFFER(114v114)	??0CEnginePrimitive2DText	C2DVector ctor body Y-then-X, Set() member, init-list permutations: the X store `mov [esi+0Ch],edx` stays one pair above retail (before the depth load)
+004c7f40	RELOCATION_MATCH	InitFromThingInfo	hand-split inline operator==("NULL"): two tests goto the out-of-line DefGlobalIndex=0 arm, lookup arm in line
+00e6a000	DIFFER(165v168)	WatchForExpressions	hand-split goto form (158), named bool in the caller, named result in CCharString::operator== / CBasicString::operator==: none homes the compare result byte at [esp+0Fh]
+008955c0	RELOCATION_MATCH	IsEntityFollowingHero	HasInterface + ternary GetTC model (landed 00584157 idiom) instead of GetInterface(&out): component loads straight into ecx
+00896120	RELOCATION_MATCH	TryToRespawnDefNamed	same HasInterface + ternary GetTC model
+004c8c90	RELOCATION_MATCH	IsUnderScriptControl	HasTC + ternary GetTC model: component straight into ecx
+005bf414	RELOCATION_MATCH	BuildRenownString	HasTC + ternary GetTC into a zero-initialised local (both arms into ecx)
+006c5f80	RELOCATION_MATCH	RemoveCrimeFromVillage	HasTC + ternary GetTC model (GetPItem called twice as retail)
+00749bf0	RELOCATION_MATCH	StartAnimation	HasTC + ternary GetTC into an UNINITIALISED local: the miss arm reads the slot like retail
+008c4a80	DIFFER(119v117)	Initialise	HasTC + ternary GetTC (uninitialised local, thing local, declaration after the base call, enum argument): the hit/miss phi still lands in eax + `mov ecx,eax` after `push 38h` (00848fd0 with the same shape matched)
+0090fc50	DIFFER(127v127)	InitCreaturePosition	HasTC + ternary GetTC fixes the villager ecx load; left: the lane loads PBrain->PCreature (`mov edx,[edi+4] ; mov esi,[edx+18h]`) before the GFGetPVillageInterface/IsSchoolTime calls, retail after them (inline re-read 130, if-split 113)
+00784600	RELOCATION_MATCH	OnHeroApproachBoastingArea	HasTC + ternary GetTC on a GetPItem() thing local (hero = 0 preload)
+00847fb0	RELOCATION_MATCH	PerformAction	HasTC + ternary GetTC on a GetPItem() thing local
+00848fd0	RELOCATION_MATCH	PerformAction	HasTC + ternary GetTC into an uninitialised local (miss arm reads the key slot)
+009492a0	RELOCATION_MATCH	GetPayPoint	HasTC + ternary GetTC on a GetPItem() thing local
+0093c420	DIFFER(184v184)	Cleanup	HasTC+GetTC on the stealth lookup goes to 182 (retail keeps the out-pointer eax form there); the seek call: retail loads the component into ecx BEFORE the PBrain->PCreature argument, the lane after it (named local, inline FindEntry/GetTC expression all the same)
+00958e20	DIFFER(218v216)	IsStillValid	HasTC+GetTC on the opinion lookup breaks the PCreature CSE (frame +4); original form keeps the eax + `mov ecx,eax` after the two lea pushes
+00954980	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_MazeDefensiveMeleeCombat@@UAE_NXZ	HasTC + ternary GetTC into an uninitialised local (miss arm reads the key slot)
+00954ab0	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_MazeTutorialBattle@@UAE_NXZ	same as 00954980
+0095ebf0	RELOCATION_MATCH	OnReplace	HasInterface + ternary GetTC on a GetPItem() thing local
+007bb150	RELOCATION_MATCH	SeeIfAnyOccupantsKnowAboutDeed	HasTC + ternary GetTC model (opinion in a named local)
+00972110	RELOCATION_MATCH	?Cleanup@CAIStateGroup_JackOfBladesBase@@UAEXXZ	world in a named local, combat manager chained from it: manager straight into ecx after GetPWorld
+00954a20	RELOCATION_MATCH	OnReplace	same named-world chain
+0093e240	RELOCATION_MATCH	?Cleanup@CAIStateGroup_MeleeCombatNearby2@@UAEXXZ	same named-world chain
+0072b330	DIFFER(116v118)	SetupSummonSpell	spell = 0 preload, && spell test (124), reference alias, if/else, if-form FindInterface accessor: the lane loads the component straight into ecx where retail has `mov eax,[eax+4] ; mov ecx,eax` (the reverse of the family gap)
+00918a40	DIFFER(114v116)	IsRunnable	if-form FindInterface accessor and inline expression: lane `mov ecx,[eax+4]` where retail `mov eax,[eax+4] ; pop esi ; mov ecx,eax`, plus the early `xor al,al` tail not merged
+00ab6180	RELOCATION_MATCH	GetKeyName	/GS + one nested if with a single trailing return false (failure tail after the success path)
+0047d21c	DIFFER(105v109)	CloseInGameMenuViaGameEvent	inline accessor, named component local, reference alias: the lane still hoists the PlayerNumber load above the event ctor and drops the dead Player=-1 store retail keeps
+00659295	RELOCATION_MATCH	InitialiseToggleTorchTypes	PeekTC as the ternary entry pick: light straight into ecx, bool in al
+00773c00	DIFFER(142v142)	SetStockState	ternary GetTC, named/reference component, named bool: the lane computes `state != 1` (setne cl ; push ecx) before loading the component, retail loads the component into ecx first
+0079e420	DIFFER(211v211)	PlayShieldEffects	ternary GetTC, inline/reference component, named bool arg: retail loads the appearance into ecx before the seven pushes, the lane after them
+0091f050	RELOCATION_MATCH	IsRunnable	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+0090fb60	RELOCATION_MATCH	GetSeat	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+00933470	RELOCATION_MATCH	IsStillValid	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+00683650	RELOCATION_MATCH	?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJ_N@Z	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+005ee418	RELOCATION_MATCH	FrameUpdate	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+0065bffa	RELOCATION_MATCH	IsReportedOrUnreportedCrimeKnown	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+004c8fb0	RELOCATION_MATCH	CopyTCIfExists	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+00663ba0	RELOCATION_MATCH	GetMovementSpeedFromCreatureMode	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+006a8560	RELOCATION_MATCH	??RCThingFilter_HasScriptedControl	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+00839080	RELOCATION_MATCH	OnCollision	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+0064b5c1	RELOCATION_MATCH	GetActivationTimeForButton	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+0064e0da	RELOCATION_MATCH	AddMessage	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+006a8370	RELOCATION_MATCH	??RCThingFilter_CanCollideOrInteractWithThing	mechanical ternary sweep: GetInterface(&out,t) rewritten as HasTC + ternary GetTC entry pick (component straight into ecx); test PASS
+0072a9b0	DIFFER(68v68)	SetupForcePush	AddTC this-load scheduling: retail `mov ecx,[esi+18h]` right after the CCharString ctor and before `push 0 ; push 1 ; lea eax`; lane loads ecx after `lea ecx ; push ecx` (12 spellings on 0072a9b0, see NOTES)
+0072aa00	DIFFER(68v68)	SetupHealLife	AddTC this-load scheduling: retail `mov ecx,[esi+18h]` right after the CCharString ctor and before `push 0 ; push 1 ; lea eax`; lane loads ecx after `lea ecx ; push ecx` (12 spellings on 0072a9b0, see NOTES)
+0072aa50	DIFFER(72v72)	SetupGhostSwordSpell	AddTC this-load scheduling: retail `mov ecx,[esi+18h]` right after the CCharString ctor and before `push 0 ; push 1 ; lea eax`; lane loads ecx after `lea ecx ; push ecx` (12 spellings on 0072a9b0, see NOTES)
+0072aaa0	DIFFER(67v67)	SetupMultiArrow	AddTC this-load scheduling: retail `mov ecx,[esi+18h]` right after the CCharString ctor and before `push 0 ; push 1 ; lea eax`; lane loads ecx after `lea ecx ; push ecx` (12 spellings on 0072a9b0, see NOTES)
+0072c680	DIFFER(83v83)	SetupLightningSpell	AddTC this-load scheduling: retail `mov ecx,[esi+18h]` right after the CCharString ctor and before `push 0 ; push 1 ; lea eax`; lane loads ecx after `lea ecx ; push ecx` (12 spellings on 0072a9b0, see NOTES)
+00b1b4d0	MATCH	??0SDecalRequest	the +8 flag byte as a record with an inline zeroing ctor anchors the 0x1E immediate store after the +4 zero store; test PASS
+00a5c570	RELOCATION_MATCH	??0CSimpleMemoryPool	CArea without inline ctor, root words + FirstMemoryBlock/Capacity assigned in the body: zero register set before the GrowthGranularity store; test PASS
+00b8ff00	RELOCATION_MATCH	??0CEngineInternalPrimitiveBase	zero/-1 words in the init list, bit-field writes spread (Enable=1 first, three clears after InterpolationSet); test PASS
+004016f0	RELOCATION_MATCH	??0CDisplayManagerInit	the five 1/true members assigned first, then the zero group, then +0x18/+0x19/sizes; test PASS
+00779ca0	RELOCATION_MATCH	??0CTCDExperienceOrb	the two -1 indices as records with inline (-1) ctor; test PASS
+00bddf30	DIFFER(119v119)	??0CQuadTreeElement	bit-field load now early (first clear before hand-unrolled child stores, three after +4); only MaxFadeDistance zero store hoisted above the merged flag store
+00a5f290	RELOCATION_MATCH	??0CStreamingFontDataBank	CArray as STLport _Vector_base (start, finish, alloc-proxy end with own ctor): mov ecx,edi between 2nd and 3rd zero store; test PASS
+00def6a0	RELOCATION_MATCH	??0CVtable_012ddf3c	the three zero words at +0x1c as a 12-byte STLport vector (alloc-proxy third member); test PASS
+009badd0	DIFFER(60v60)	??0CPersistContext	argument copies: retail one register (edx) strict load/store order, lane hoists the next arg load into ecx; Init by-reference params, direct body, init list all identical
+0065dce8	DIFFER(98v98)	??0CVillageTaskSecuritySweep	retail loads the radius arg only after the vector stores; lane hoists `mov ecx,[esp+10h]` above the Y store (body assignment/inline Init give the 102-byte lea form)
+009d5d30	DIFFER(179v179)	??0CBankFileAsyncData@@	four flag byte stores: retail splits them 2/2 around `push edx ; lea ecx` of the lock ctor, lane sinks all four after the lea; init-list/body splits (2+2, 3+1, 1+3) identical
+0082d6b0	DIFFER(66v64)	?GetMaterial@CThingBuilding	release now `dec [eax+4] ; jne` via local copy + long& count; only the load register (retail esi direct, lane eax then mov esi/ecx) remains -- release-family gap
+0072ac40	RELOCATION_MATCH	FadeOutEffect	HasTC + ternary GetTC with zero preload (the sweep missed the `GetInterface(&out, t)` __fastcall spelling); test PASS
+00584b42	RELOCATION_MATCH	ClosePCInventoryMenu	named thing local + HasTC + ternary GetTC (the sweep missed the `GetInterface(t, &out)` arg order); test PASS
+00853260	RELOCATION_MATCH	IsFinished	two separate `return true` early exits instead of one `||`: shared `mov al,1` placed after the dead-bit test; test PASS
+006e2cf0	RELOCATION_MATCH	SetAsUsingNarrator	tagged 4-arg FindString called directly (no by-value inline wrapper): first pointer straight into ecx after the tag push; test PASS
+007fe670	RELOCATION_MATCH	?Validate@CVillageDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	tagged 4-arg find on the raw _M_start (no wrapper/accessor): first pointer loaded into ecx after the pushes; test PASS
+0057de14	DIFFER(67v67)	ApplyPenaltyForDeath	second def chain middle load in ecx (retail eax); inline expression and two locals identical
+0040fba0	DIFFER(37v37)	TransferOut	retail loads the index before the vector first pointer; reference local, raw member, unsigned operator[], pointer local all identical
+00662c70	DIFFER(72v72)	HasAnim	retail loads the def object into esi after both argument loads (lane between them); operator-> + dtor form is worse (82)
+006cba50	DIFFER(38v38)	IsPosNavigable	retail hoists the pos argument load to the top before push esi; named reference locals change the shape (33/35)
+004b2fe0	DIFFER(114v114)	AddActivatedQuestName	`lea esi,[edi+4Ch]` (push_back this) placed before the tag push, retail between the tag push and the key push; direct tagged find, no reference local, named last, alloc-proxy vector all identical or worse
+008a0720	RELOCATION_MATCH	EntityFadeOut	map Find as the ternary entry pick: component straight into ecx, fade pointer tested in ecx; test PASS
+006ac390	DIFFER(153v151)	IsExpressionAvailable	component-before-argument family: retail `mov ecx,[eax+4] ; mov eax,[edi+70h] ; push eax`, lane loads the argument first then `mov ecx,eax`; ternary Find identical
+0089bbc0	RELOCATION_MATCH	?EntityPlayObjectAnimation@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@_N@Z	map Find as the ternary entry pick (sweep 2); test PASS
+0089fe20	RELOCATION_MATCH	?SetVillageAttitude@CGameScriptInterface@@UBEXABVCScriptThing@@W4EScriptVillageAttitude@@@Z	map Find as the ternary entry pick (sweep 2); test PASS
+00691560	RELOCATION_MATCH	ProcessInput	map Find as the ternary entry pick (sweep 2); test PASS
+00438ff0	RELOCATION_MATCH	DrawSaveScreen	map Find as the ternary entry pick (sweep 2); test PASS
+0051e4f0	MATCH	GetPhysicsDebugInfo	thing in a named local, `thing->PPhysics` written twice (CSEd): the vtable loads into eax as retail; test PASS
+00669390	DIFFER(58v58)	ClearHandle	vtable register only (`mov edx,[eax]` vs retail `mov ecx,eax ; mov eax,[ecx]`); re-read member forms change the shape (56/60)
+005e9b20	DIFFER(74v74)	SetState	state-47 arm vtable in edx (retail eax): state stays allocated to eax across the arm; prior if/else/switch forms identical
+009fbd00	DIFFER(66v60)	??_GCRenderTarget	retail stores no CRenderTarget vtable in the deleting dtor; novtable emits no ??_G at all, an explicit empty dtor stores it
+00c202f0	DIFFER(74v74)	??1CVtable_012b3420_Derived_00c202f0	(--flags /EHsc) only the two closing vtable stores swapped (+0,+8 lane; +8,+0 retail); non-polymorphic first base changes the layout, base dtor form adds a null test
+0048dc3c	RELOCATION_MATCH	GetTextOffsetFromEmbeddedTagGraphic	the thumb-click `||` pair split into two separate `if (..) return` statements: the shared return sits right after its tests; test PASS
+00d9fe40	DIFFER(112v112)	GetAlphaChange	shared `return 0.0f` placement: retail inside the <=0 arm with the >0 arm jumping back; else-if/shared-tail, IsDone-first, inverted-arm forms all keep it in the later arm
+00ab6450	DIFFER(131v131)	?SetExclusiveMode@CKeyboardDX@@UAE_N_N@Z	window/device register swap for SetCooperativeLevel; inline window expression adds a push (141)
+0090bbf0	DIFFER(100v100)	IsRunnable	creature re-read chained through ecx in retail (lane edx) + release vtable eax/edx; dropping the creature local changes nothing
+006621c0	MATCH	IsFreeToFinishAction	the three `return true` conditions as one `||` chain: the true tail is placed after the false tail with `jl` into it; test PASS
+009578a0	DIFFER(148v148)	UpdateFocusAttentionOnThingActive	tail block order only (retail `je turn ; xor al,al ; ret ; turn: call TurnToFace`); `!=`-first early return and a ternary identical
+005dac50	DIFFER(156v156)	SetProjectileWeaponLoaded	the AimingTime=-1 arm placement (retail last, je/je into it); if/else, inverted condition, inverted early-return identical
+00692ec0	DIFFER(95v97)	HasPrecedingAction	early `return false` materialised as its own tail in retail; nested-if (89) and result-variable (100) forms differ more
+00a755c0	DIFFER(174v174)	Initialise	shared return-false block placed after the AllocateResource call in retail; `&&` if/else and nested if/else only move the jump targets
+00927df0	RELOCATION_MATCH	IsRunnable	permanently-stocked arm as if/else SetStockState + one return false; shared false tail after the second arm
+00802590	DIFFER(64v64)	SetAsTargetNextThing	method-0 arm placement: retail places it last; nested if/else (67) and early-return (64) both differ only in block order
+00c564f0	DIFFER(127v127)	SetEAXGlobalProperty	default-case arm placement; if/else-if chain (119), grouped cases (121) and flat ifs (119) all shorter than retail (extra test eax,eax in retail)
+0063ef50	RELOCATION_MATCH	??RCThingFilter_OverlappingCircle	squared distance accumulated in two statements (d2 = dx*dx; d2 += dy*dy) squares dx first as retail
+00bb6ab0	RELOCATION_MATCH	RenderPrimitive	squared distance accumulated as d2 = dy*dy; d2 += dz*dz; d2 += dx*dx (retail x87 order Y,Z,X)
+007483e0	RELOCATION_MATCH	??RCCompare_FurthestFromInitPos2D	12-byte offset temporary (X,Y,Z with Z unwritten) gives the 0xC frame; length accumulated r = Y*Y; r += X*X
+00cbe583	DIFFER(61v61)	GetSquaredDistanceBetweenThings	square order fixed by accumulator form; only the vptr edx-vs-eax of the second virtual call remains (improved source installed)
+00a75340	DIFFER(176v176)	PeekRoughProportionOfSphereContained	X-term operand order: retail fld [edi](centre.X) ; fmul [ecx](Normal.X); every spelling (both operand orders, accumulator, grouped) loads the plane first; accumulator form also drops the rotated-loop jmp/lea pad
+00814ea0	DIFFER(238v238)	GetClosestPointToPos2D	z term only: retail fld radius ; fmul z and fld tmp ; fadd centre.z (both commuted v x/y); centre+offset*radius, free operator*(float,v), scaled local, component-wise form (254) all identical or worse
+00b24400	DIFFER(223v238)	ConvertScreenPosToWorldPosAtViewDistance	prologue/term-order lane gap: accumulator and grouped (y*Up+d*Look)+x*Right forms give 221 with the same prologue difference (retail spills camera-space X, preloads screen Y)
+006cb620	RELOCATION_MATCH	IsAbleToNavigateFromPosToPos	squared distance accumulated r = dz*dz; r += dx*dx; r += dy*dy (retail x87 order dz, dx, dy)
+006cb6e0	RELOCATION_MATCH	GetNearbyWanderPosition	XY squared distance accumulated r = dx*dx; r += dy*dy (retail squares dx first)
+006cb840	RELOCATION_MATCH	GetNearestFleePosition	squared distance accumulated r = dx*dx; r += dz*dz; r += dy*dy (retail order dx, dz, dy)
+00987bf0	MATCH	Transform	rows 1/2 as float y = Dot3(t); y += T*w; out.Y = y (keeps the w term last)
+00addfe0	MATCH	Transform	twin of 00987bf0: accumulator statement for the w term
+0082fd90	RELOCATION_MATCH	WorldUpdateBulletTime	GetLength accumulated s = Z*Z; s += Y*Y; s += X*X (retail z, y, x)
+0075c530	RELOCATION_MATCH	IsAngleValid	2D dot accumulated d = ax*cx; d += ay*cy (retail X term first)
+005fa990	DIFFER(111v111)	GetGuildSealRecallRegion	copy loaded Z,Y,X then squared X first in retail; accumulator forms fix the squaring order but the copy load order (fld [edi+15Ch] before add edi,154h) stays X,Y,Z (3-float ctor body order, reversed copy ctor body tried)
+007723f0	DIFFER(153v153)	IsShopKeeperNearerThan	accumulator r = dx*dx; r += dy*dy fixes the x87 order; only the hero/keeper edi/ebp register swap remains (lane gap)
+006afe60	DIFFER(145v145)	RespondToCollision	response/def edx-ecx swap and the Z term operand order survive accumulator (both orders) and grouped forms
+00733020	RELOCATION_MATCH	??RCThingFilter_HasBuildingAsHome	named local for the call result then `home == m_building` gives cmp eax,edx
+0076ef40	DIFFER(92v91)	OnCreate	movzx vs xor/mov cl widening of the +0x6c flag byte: explicit (f >> 2) & 2, != 0, == 8 (99) and unsigned long cast forms all give xor/mov cl
+00702c60	RELOCATION_MATCH	DrawIsDrawable	parity as (x & 1) ? true : false narrows to mov al ; and al,1
+008091a0	DIFFER(104v101)	??RCThingFilter_IsTargetableBehind	flag test: retail test byte ptr [eax+0Ch],1 ; je; byte/bool member, ? true : false and != 0 forms still give mov dl ; mov al,1 ; test al,dl
+008614b0	DIFFER(97v117)	?IsCreatureValidForTask@CVillageTaskCarryCrate@@	retail keeps true in bl (push ebx ; mov bl,1) for two compares and the result; named bool local, == true nested form and hasItem == Pickup all fold the constant
+00c6adb0	RELOCATION_MATCH	SetDefaults	body assignments in address order; the compiler hoists the shared 1.0f itself and keeps both 0.04f immediates
+00a65ff0	DIFFER(167v169)	??0CMemoryAllocatorFixedSize	zero stores inside the shr/shl pair with the zero in callee-saved ebx in retail; zeros after ChunkHeaderSize (165) or after a headerSize local (167) do not move them
+00a67530	DIFFER(151v141)	?ReadOnlyLock@CVolume@@	chained box.Left = box.Top = box.Front = 0 gives retail store order but still immediates; retail keeps width/height/depth straight in edi/ebx/ebp and zero in eax; direct out-field assignment 155
+00965f30	DIFFER(115v115)	FindPCrate	position copy: retail loads ecx,edx,eax then stores; scalar locals in the ctor body (fld, 117) and a memberwise C3DVector copy member interleave as before
+0076aae0	DIFFER(105v105)	__linear_insert	key word of the by-value copy stored last in the lane (retail first); body-assignment copy ctor identical, implicit copy changes the copy shape
+00c915a0	RELOCATION_MATCH	ReadBits	-1 default assigned inside the first range test (goto advance / comma form), placing or edi,-1 between the two compares
+00812340	DIFFER(36v35)	Search	retail re-reads the member after the clamp store (mov eax,[ecx+1Ch] ; test); plain statements (27), named remaining + reload (36), Max() (47), store-then-clamp (31) all fold the reload
+00520c80	DIFFER(112v113)	OnThingKill	section text select: retail re-tests the data pointer (jne ; mov eax,empty ; jmp ; mov eax,[eax]); shared data local with ternaries (105), if-length + ternary (107), inline ternary text (114)
+004b64e0	RELOCATION_MATCH	?SaveGameState@CQuestManager@@QAEXAAUCPersistContext@@@Z	bool writing = (Mode == 2 || Mode == 3); if (writing) lays the write arm first and duplicates the WriteBuffer tail per string arm
+007f6f20	DIFFER(104v110)	??R	result-variable form keeps retail layout but hoists xor eax,eax (mask in cl); else-arm zero (110, inline return-0 tail after the second test), early-return-0 and bool-local forms (107) flip the first tests
+006399b0	DIFFER(193v218)	GlobalUpdate	lane cross-jumps the two fdiv/fmul/ftol/store/ret alpha tails; no-local second alpha and early-return forms identical
+00a682e0	DIFFER(112v131)	?InitialiseFromPreallocatedVolumeTexture@CVolumeTexture@@	retail duplicates the second GetMemorySize ByteLength arm as its own load/add/store tail; g = g + size, a size local and both statements in load/add form merge as before
+00639930	RELOCATION_MATCH	FinishShowingRegionName	fade test written elapsed < displayFrames - fadeFrames (the parked source had the inverted condition)
+009109b0	DIFFER(214v219)	??RCIsSeatWithSpaceOwnedBy	nested if/else bool for the ownership test gets the layout; the owner-arm compare stays cmp eax,[ebx] (retail mov ecx,[ebx] ; cmp eax,ecx ; jmp JOIN ; jne) under found/owner locals and both operand orders
+00752120	DIFFER(91v112)	ChangeHeadAngleXY	retail computes MaxHeadAngleXY * (1/360) * 0.5 twice with two memory constants; literal constants fold and CSE (91), extern-float constants stop the fold but load the constant first (fmul [eax+30h], 97)
+00729b20	DIFFER(125v150)	?OnActionUse@CTCActionUseScriptedHook@@QAEXAAVCThing@@@Z	lane cross-jumps the two SetText call tails; bool-local condition and swapped arms identical
+00b21090	DIFFER(132v197)	GetPointAtIndex	lane sinks the three control-point copies into one tail; bool local, if/else chain and an inline CopyPoint helper (142) keep one tail
+009f3010	DIFFER(138v144)	ReadOnlyLock	failure arm: retail xor eax,eax ; mov edx,eax ; mov eax,[result] then stores +8/+0xc first; named zero extents, long zero local and fail-arm-first (separate epilogue) do not reproduce the eax-copied zero
+00a792e0	DIFFER(238v238)	ClearNodes	ClearAndFree: retail xor ecx,ecx ; cmp eax,ecx with three ecx stores after the erase store; plain zero stores (233, DSE of the erase store and a reshaped capacity test) and a zero pointer local identical; memset form keeps the store but tests with test eax,eax
+0099f4d0	DIFFER(120v135)	RemoveWhiteSpaceEnd	lane jump-threads the GetText/GetLength null tests from GetLength() > 0 (retail keeps test edx,edx before each ternary); not retried beyond inspection
+00e503d0	RELOCATION_MATCH	WatchForBeardyBaldyDeath	three destructor sites (second if-terminating return after the loop) + CCountedPointer PImp model: inline dtor at site 1 only, out-of-line ~CScriptThing at the merged sites 2/3
+00d1cac0	DIFFER(141v214)	WatchForAllLeaderChargeGruntsKilled	three-exit shape applied (sites 2/3 now merge as retail) but the vector dtor (loop of virtual element dtors + null-tested free) is inlined at no site: plain, dead _M_start=0, alloc-proxy, split _Vector_base all 141; __forceinline inlines all (256)
+00e9d800	RELOCATION_MATCH	Main	three destructor sites (if (IsDone()) return; after the loop, then RemoveThing): inline ~CScriptThing at the in-loop site only, out-of-line 0x004AA840 at the merged sites 2/3
+00e6e050	RELOCATION_MATCH	GetVictimIsGuard	named bool for the || + three return sites (true / terminating false inside the block / not-found false): lea hoisted above the terminating jne, site 2 cross-jumps into site 3
+00e6e120	RELOCATION_MATCH	GetVictimIsBandit	three return sites inside the named-bool found block (true / terminating false / not-found false)
+00e6e1b0	RELOCATION_MATCH	GetVictimIsTrader	three return sites inside the named-bool found block (replaces found && !term)
+007bd2a7	DIFFER(45v42)	GetWeaponTrailGraphic	DecRefToZero + local copy gives dec [eax+4] ; jne but the def stays in eax with mov ecx,eax before the jne (retail mov ecx,[ebp-4] direct); T* const member, free/member Release, inline getter, non-const pointee, speed TU all identical (open def-release register gap)
+0075cd30	DIFFER(81v81)	GetEndPos	member operator+ (this = GetPosition()) gives retail's X term and store order but loads EndPos first for Y/Z; free operator+ loads pos first for all three; operand order in the source never moves the x87 order (open X-term gap)
+007ee370	DIFFER(88v86)	OnCreate	T* const CDefPointer member + direct def.Object->GetSubDef(&PDef) re-reads the slot after the call; the def must be loaded into esi AFTER push &PDef (retail) -- the lane hoists the load above the push into ecx then edi
+007d3510	DIFFER(80v80)	vfunc_32	an inline GetSubDef wrapper (out->m_p = 0 inside, empty CDefPointer ctor) puts the zero store after the push as retail; left: ParentThing loaded into eax (retail ecx chain) and lea edx/eax, mov eax/edx for the par copy -- named def class, thing local, accessor, free wrapper with out first all identical
+006e3780	DIFFER(79v77)	GetPhonemeAnim	same wrapper fixes the zero store; left: ecx chain for ParentThing->PBaseDef and the def loaded into eax then copied to edi (retail mov edi,[esp+8]); reference/pointer/dtor spellings 87 or 75
+00c35e30	DIFFER(106v110)	ActivateCurrentTarget	retail's dead re-test (test eax,eax ; je) of the entry word: 14 spellings fold it (int/long/pointer/bool casts, nested ifs, base-class accessor, ternary); only a narrowing cast keeps a re-test, as test ax,ax (111)
+00780c80	RELOCATION_MATCH	ExtinguishFire	named GetWorld() call result, member chained in the call expression (world->POpinionReactionManager->Clear...) keeps the manager in ecx
+009777a0	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_Guildmaster	CIntelligentPointer operator= with a named GetPItem() result (item = other.GetPItem(); SetPItem(item)) keeps lea edi,[esi+18h] after the temporary's GetPItem call
+0095a2c0	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_HoverAttackArea	same named-result operator=
+00729bc0	RELOCATION_MATCH	ResolveEntranceConnectedTo	same named-result operator=
+006f17a0	RELOCATION_MATCH	SetPOccupyingAttacker	same rule inside the SetPOccupierItem helper (occupier = pointer.GetPItem(); POccupier.SetPItem(occupier))
+00965fb0	RELOCATION_MATCH	IsRunnable	named-result CIntelligentPointer operator= (add esi,14h after the temporary's GetPItem)
+007446b0	RELOCATION_MATCH	SetPerceivedThing	named-result operator= (lea after GetPItem; this in edi, member in esi as retail)
+0095b5a0	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_HoverHornetQueen	named-result operator= on the creature pointer
+0093d270	DIFFER(297v295)	?IsRunnable@CAIStateGroup_MeleeCombatNearbyBase	named-result operator= fixes the &PEnemy lea but the lane still pushes ebp up front (lea ebp,[ebx+14h]); kept the parked text
+00946400	DIFFER(283v284)	?IsRunnable@CAIStateGroup_PrepareMeal	named-result operator= applied, ebx/ebp roles and the &PCookingPot order remain; kept the parked text
+0097b780	RELOCATION_MATCH	Cleanup	named GetPWorld() call result + member chain (mov ecx,[eax+4Ch]) and STLport operator[] as *(begin()+i) (lea ecx,[eax+ebp])
+0075c5f0	RELOCATION_MATCH	vfunc_9	named GetWorld() call result + member chain (mov ecx,[eax+34h])
+00645f8d	DIFFER(124v131)	ClearGraphics	retail keeps i*8 in edi across the calls (shl edi,3 ; lea ecx,[edi+eax]); *(begin()+i), long index (loop reshaped), byte-offset at(), m_pFirst[i] all fold to lea ecx,[eax+ebx*8]
+00e24260	DIFFER(95v97)	GetTraderRandomSpeechEnabled	back() materialised (sub eax,4 ; mov eax,[eax]): *(end()-1) with end() by reference, decremented copy, byte-offset cast all fold to [edx-4]
+0090c670	DIFFER(251v249)	OnReplace	HasTC + ternary GetTC (uninitialised and zero-preloaded) keep the villager in eax; retail mov ecx,[eax+4] / miss arm mov ecx,[esp+8] (open GetTC eax-form gap)
+0095d3a0	DIFFER(287v285)	OnReplace	same: ternary GetTC forms keep the fire point in eax (open GetTC eax-form gap)
+00a36df0	DIFFER(113v113)	GetEventTime	hidden-result lea pushed before the GetInfo call; named GetInfo result (113, different regs) and a direct return (113) keep it
+00692aa0	DIFFER(132v132)	UpdateActionMovement	add esi,68h ; mov ecx,edi before the two pushes in retail; named physics local identical, named frame local reshapes the vcall
+00de19f0	DIFFER(94v94)	Init	lea edi,[esi+8] hoisted between the vtable stores; dropping the father local is identical
+006bc210	RELOCATION_MATCH	Reset	zero offsets written through an inline C2DVector::Set(x, y) member keep xor eax,eax after the 1.0f immediate store
+009708a0	RELOCATION_MATCH	RemoveThingFromCoverList	named-result operator= (sweep): this in ebp, count in ebx as retail
+007509d0	RELOCATION_MATCH	SetDiscovered	named-result operator= (sweep)
+006ac140	RELOCATION_MATCH	ResetThingReactions	named-result operator= (sweep)
+0094e6b0	RELOCATION_MATCH	IsRunnable	named-result operator= (sweep)
+0094dac0	RELOCATION_MATCH	?IsRunnable@CAIStateGroup_RockTroll	named-result operator= (sweep): this=esi / enemy=ebx / position=edi as retail
+00acd900	RELOCATION_MATCH	DetectFoldOver	operator[] as *(begin()+i) through an inline accessor (sweep): element address from the accessor's pointer, registers as retail
+006d6590	MATCH	SpendExperience	operator[] as *(begin()+i) (sweep): the jns/sub-flags shape follows
+006d6f60	MATCH	SpendExperience(stat)	operator[] as *(begin()+i) (sweep)
+005bd5db	RELOCATION_MATCH	GetCategoryWithAssociationThing	operator[] as *(begin()+i) (sweep): stride offset in ebx as retail
+004ff080	RELOCATION_MATCH	?LoadTopologyFromFile@CWorldMap	operator[] as *(begin()+i) (sweep): Maps.Start / process load order as retail
+006c0120	RELOCATION_MATCH	?GetPrice@CTCBuyableHouse	size() as inline _Last-_First member + prices local AFTER the size compare (retail loads last into edx before first into edi)
+00681790	DIFFER(40v43)	?TransformForcedOpinion@CTCCreatureOpinionOfHero	retail re-reads PPersonalityDef [ecx+20h] into ecx after testing it in eax; param-write, early-return, operand-swap and named-def forms all CSE to one load (open gap: dead re-read)
+006817c0	DIFFER(40v43)	?TransformForcedOpinion@CTCCreatureOpinionOfHero	byte-identical twin of 00681790, same gap
+00436500	DIFFER(64v66)	?GetMapwhoArea@CThingSearchTools	retail materialises &g_mapwhoLevels[level] (`shl eax,4 ; add eax,137DAD8h ; mov ecx,[eax+4]`); member accessor, pointer accessor, static inline GetLevel() and table-struct GetLevel() all fold to `mov ecx,[eax+137DADCh]`
+0082d7d0	DIFFER(74v64)	?GetFloorMaterial@CThingBuilding	def-release load register (open gap): holder/base-typed Object/DecRefToZero variants (8 probes) all load the def into eax and copy to esi/ecx; retail mov esi,[esp+4]
+00c40590	DIFFER(192v192)	NormalizeOrientationFrame	x87 operand order of the inline cross product (open gap): pointer-local right + retail spelling, named float locals (3 decl orders) -- spelling never changes which operand is fld first
+00a4e150	RELOCATION_MATCH	?GetMovementAtTime@C3DAnimation2	operator+= copies the source components into named float locals first (x = o.X; X += x): fixes the X-term fld/fadd commutation
+008531e0	RELOCATION_MATCH	Update	Pos += DeltaPos as a free inline Add(a,b) helper (both by reference): X term loads Pos first as retail; member operator+= commutes X
+0075cd90	DIFFER(81v81)	?GetEndPos@CTCCameraPointScripted	x87 X-term commutation: free ctor operator+ matches Y/Z, member form matches X only; 11 more forms (named result, locals, X-only locals, EndPos+pos) never mix
+004cb6e0	MATCH	GetMapwhoPosition	OffsetBy2D as a MEMBER of the position (this = Position, offset by reference): the offset operand is loaded first as retail
+006afcb0	MATCH	GetMapwhoPosition	same member OffsetBy2D with the named-result body (twin of 004cb6e0)
+00852220	RELOCATION_MATCH	Update	member operator+ in CONSTRUCTOR form (return C3DVector(X + o.X, ...)): named-result member body commuted the X term, free forms flip Y/Z
+006b0b30	DIFFER(217v217)	?InitialActivate@CTCPhysicsBase	x87 X/Y commutation of offset+Position: free (offset,position) named ctor flips Y, member/this=position flips X, pure ctor returns change the frame (6 forms)
+00b9dbd0	DIFFER(130v130)	?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveStaticMesh	Radius*m_scale operand order (open x87 gap): locals (either/both), member/free helpers, float-returning getter (8 forms) all load m_scale first
+00915080	DIFFER(266v266)	?IsRunnable@CAIStateGroup_KidHurtSelfRunToMother	x87 X-term: member ctor operator+ flips X, free flips Y/Z, named-result members change the frame (4 forms)
+00a17620	DIFFER(99v99)	HasBoundingSphereIntersectedFromTo	Radius + radius: member-first in retail; param local, free Add, member GetReach, free Reach(sphere,r), accumulator, sphere reference (6 forms) all load the parameter first
+00ac7eb0	DIFFER(215v215)	ComputeSelfContraction	Dot X-term commutation + n*n*w association: named o-locals in Dot (all/X-only), n2 local, accumulated cost (8 combos) leave both
+0075b2d0	RELOCATION_MATCH	OnCreate	OffsetVector.Set(0,0) inline member keeps the ParentThing load after the zero stores (the 00724f80 rule)
+007cc710	DIFFER(180v180)	?ReleaseShot@CTCMultiArrow	empty() as _M_start==_M_finish fixes the test; back() as *(end()-1) swaps ebx/edi roles, *(_M_finish-1) keeps the roles but folds the -8 into sub edi,8 before the base ctor call (9 forms)
+00be24d0	DIFFER(36v54)	?Init@CVO_OracleMarker	retail keeps four zero stores to a 16-byte frame temporary after the member copy: memset ctor/Clear/by-value-return/memcpy/aggregate forms (11) all DSE the temporary (twin 00be2540)
+007e7c90	RELOCATION_MATCH	DrawPreparePrimitivesForRendering	named C2DBoxF box local (uv vectors stay temporaries) pins the TopLeft zero stores above the uv zero stores
+00aee8c0	RELOCATION_MATCH	Kill	vectors zeroed through Set(x,y,z) storing Z,Y,X (keeps the two bit RMWs in place) + PDB unsigned short bit group (and byte ptr form)
+007310c0	DIFFER(163v163)	?UpdateOpenStatusTriggerTypeScript@CTCDoor	zero-store placement fixed by the inline GetSubDef wrapper; left: def-chain scratch registers (ecx/ecx/eax/edx v eax/ecx/edx/eax), 7 forms
+008ec870	DIFFER(98v98)	OnCreate	zero store + release fixed (CTCBase wrapper + forceinline GetParentDef + DecRefToZero); left: ParentThing/index scratch registers, 10 forms
+0077cd50	DIFFER(117v117)	FrameUpdate	zero store + release fixed by the GetSubDef wrapper + DecRefToZero; left: def-chain scratch registers and the release vtable register (4 forms)
+00730630	DIFFER(132v129)	??0CTCDoor	CTCBase wrapper + GetParentDef helper moves the zero store but spills &PDef to ebp (extra push); retail reuses edi for &PDef then the def (2 forms)
+007498e0	DIFFER(162v160)	OnCreate	CTCBase wrapper + GetParentDef helper (with/without DecRefToZero) re-reads the def slot for the release and grows the frame (2 forms, worse)
+007cf7e0	DIFFER(127v127)	NewRound	zeroing inside GetShoveDef (with/without a holder local) moves the zero store but breaks the x87 Y copy (2 forms, worse)
+00c25860	DIFFER(57v57)	?CrossProduct@C3DVector	Y second product operand order: other-locals, this-locals, *this reference, named result (4 forms) all keep other.Z first or change the frame
+0082d7d0	DIFFER(66v64)	?GetFloorMaterial@CThingBuilding	(re-probe) caller-side release on the helper result + DecRefToZero: dec [eax+4] with the esi copy; the direct esi load needs a call before the null test (008ec870 shape), absent here
+00ec3270	DIFFER(123v123)	GetCurrentPopulationLevel	default-arm jump threading past the >1 clamp (open gap): ternary clamps, else-if, !(<=) forms, explicit default arm, swapped compare operands (10 forms) -- jne +56 v retail +41
+00a0c1b0	DIFFER(158v152)	?MoveSideways@CCamera	free-arm cross product operand order (b.Z*a.Y first) under free operator*, named right local, direct CrossProduct, Scale/Add helpers, named-local += (5 forms): the hoisted common product never forms
+00ed4b10	RELOCATION_MATCH	?Init@CV_SwordInTheStoneScript@@	the three leading members cleared through an inline Reset() of an unpadded (pack 1) sub-record: the timer Index load stays after them
+00a763f0	DIFFER(116v116)	??8CANavQuadTreeNode	other-node pointer load v fld order: other.X local, dx local, pointer local, swapped operands (4 forms) keep the lane order or flip the fsub
+007da760	DIFFER(164v164)	?GetPosition@CTCTavernGameCardBlackjack	mixed-axis x87 commutation (retail this-first on X and Y): member ctor flips X, free ctor flips Y, +=/Add/locals/named results (12 forms) never give both
+00caf480	DIFFER(95v122)	??1CVtable_012bf8d4	retail null-checks this before the CBaseObject base dtor (test esi ; je ; xor ecx,ecx tail): out-of-class/inline/forceinline ~CUnknown, novtable removal, an intermediate class, a virtual CBaseObject dtor, an empty CBaseObject (8 forms) never emit the check
+00caefb0	DIFFER(113v118)	??1CBase_00caefb0	same family: the lane checks only the inner CUnknown->CBaseObject conversion; out-of-class ~CUnknown and an empty CBaseObject (3 forms) do not add the outer this check
+0090ee20	DIFFER(134v134)	?FindCallHomeEvent@CAIStateGroup_MinionKidCalledToMother	binder first-pointer store scheduled after the IsOriginatedByThing ctor call (retail before): member operator&&, body-assignment Bind2, by-value Bind2, named Bind2 result, right-associated chain, named IsOfType local (7 forms)
+00728470	RELOCATION_MATCH	?vfunc_4@CTCRandomAppearanceMorph	out-pointer GetInterface into a LOCAL, assigned to the member only when found: the component lands in eax for the store (member address as out pointer: ecx)
+00732950	DIFFER(135v133)	?FrameUpdate@CTCClock	component join into ecx (retail) v eax+mov ecx,eax: inline ternary GetTC with HasTC, helper-less, thing local, reference-returning GetAnimation (5 forms) all join in eax
+00caef70	MATCH	??_9@$BDA@AG	compiler-generated vcall thunk for a pointer to the __stdcall virtual slot 12 (+0x30): a pointer-to-member initialiser in the TU emits it byte-exact; wrong label CThingFilter_IsValid
+005bc6d6	DIFFER(20v23)	RenderBackground	float argument copied through the FPU in retail (fld ; push ecx ; fstp [esp]): inline wrapper, float local, *1.0f, +0.0f (folded), double casts, unary +, by-value record getter, ternary (9 forms) all push the dword
+009bee40	DIFFER(101v101)	SetupDepthAndBackBufferTextures	sunk X store below push 1 (retail before): a Set(x,y) member of the extents in either store order does not pin it (2 forms)
+0082abd0	RELOCATION_MATCH	InitialiseTeleportMarkers	sibling getter model (GetMapIndex, current==region) + the component read through an out-pointer GetInterface into a local (lesson 161): component in eax with no copy
+0082acd0	RELOCATION_MATCH	InitialiseHouseMarkers	sibling getter model + the component through the CInterfaceMap Find(kind) member ternary (lesson 127 spelling): component lands straight in ecx for the byte test and IsForSale
+008dcb60	RELOCATION_MATCH	ExtinguishFlames	nearby-things half in its own {} block (filter shares the GetTC key word) + a same-TU stand-in GetAllThings body under auto_inline(off) so the vector address does not escape (start stays in ebp across RemoveTC and the inline free)
+0079fd90	RELOCATION_MATCH	IsTargetValid	same-TU stand-in CInterfaceMap::LowerBound body under auto_inline(off) (the landed 0x00848730 idiom): both inlined GetInterface keys then share one frame word (frame 8)
+0093c830	RELOCATION_MATCH	Update	same-TU stand-in LowerBound body (auto_inline off): the two inlined lookup keys share one frame word
+00945b10	RELOCATION_MATCH	GetPFreeChair	LowerBound stand-in sweep: lookup key and returned iterator share one push-ecx word
+00946380	RELOCATION_MATCH	GetPCookingPot	LowerBound stand-in sweep: lookup key and returned iterator share one push-ecx word
+007fb610	RELOCATION_MATCH	RaiseSunkenTentacles	LowerBound stand-in sweep (frame packing of the inlined key)
+007f50b0	RELOCATION_MATCH	vfunc_6	LowerBound stand-in sweep (frame packing of the inlined key with the def temporary)
+0092d600	RELOCATION_MATCH	?InitCreaturePosition@CAIStateGroup_GoToBed@@UAE_NXZ	LowerBound stand-in sweep (key shares the sleep-time words)
+0095a7d0	RELOCATION_MATCH	FindHitEvent	LowerBound stand-in sweep (key shares the filter words)
+0082de20	RELOCATION_MATCH	CountMoneyBags	LowerBound stand-in sweep (const LowerBound copy; two keys in one word)
+007babe0	RELOCATION_MATCH	GetFreeSeat	LowerBound stand-in sweep (non-const LowerBound body; the const GetTC lookup packs with it)
+009613a0	RELOCATION_MATCH	CanLungeAtPlayer	LowerBound stand-in sweep (key shares the min() temporaries)
+00956b00	RELOCATION_MATCH	IsRunnable@CAIStateGroup_BriarRose	LowerBound stand-in sweep (pv.py showed only the vtable relocation)
+00966290	RELOCATION_MATCH	IsExpressionPerfomedTo@CAIStateGroup_CarryCrateAndFollow	LowerBound stand-in sweep (pv.py showed only the vtable relocation)
+00945a90	RELOCATION_MATCH	GetPCookingPot	LowerBound stand-in + the begin() iterator as a NAMED local before the find call (its head->next load then precedes the value-initialised empty predicate store)
+008a7d60	RELOCATION_MATCH	GetThingWithScriptName	same-TU __declspec(noinline) stand-in FindThingsWithScriptName body (push_back loop touching the vector inline): the vector start then stays in edi across both returns with their own epilogues; the Leaf line must be the plain name (the mangled oracle name never substring-matches)
+00525cd0	RELOCATION_MATCH	OnLevelsUnload	same-TU stand-in SaveThingsOnLevelReadyForUnloading body: the vector begin/end stay in ebx/edi across both for_each walks and the binder bool packs into the dead _M_finish slot
+00725b70	DIFFER(205v201)	UpdateAdditionalImpulse	stand-in search body closes the register gap (vector start cached in edi, free through it); left: the first for_each result temporary overlays the dead vector words in retail (frame 0x28), the area box in the lane (0x24); area temp in the call, named filter, tools local, no block (0x34) all keep it
+0082a340	RELOCATION_MATCH	SetMarkerGraphic	same-TU __declspec(noinline) stand-in __find_if body (tag by const reference, iterators and predicate by value): the result iterator then packs into the dead graphicIndex argument slot with the tag
+00835bd0	RELOCATION_MATCH	PreloadDeadAnimation	same-TU stand-ins for GetSubDef (out by reference) and the for_each (functor by value) pack the result temporary into the dead def slot; the surviving null test before the release is the deref through a const CAnimationSet& to the def member (a deref straight through the pointer lets VC7.1 drop the test)
+0082d870	RELOCATION_MATCH	UsesHighDetailQuadTree	def stand-in sweep: a same-TU noinline GetDef body writing the out slot inline drops the dead detach store (the slot no longer escapes)
+0083d280	RELOCATION_MATCH	GetProperties	def stand-in sweep (GetDef with the out pointer by reference): the def stays in esi for the add-ref/release pair
+00666850	RELOCATION_MATCH	vfunc_71	def stand-in sweep (GetSubDef out pointer): the def loads straight into edi
+005b3d7a	RELOCATION_MATCH	SetThingAsWearingClothingSuit	def stand-in sweep (GetDef + GetSubDef stand-ins, /Os TU): the suit def stays in a register and the map address is no longer hoisted/spilled
+008f0b20	RELOCATION_MATCH	GetCardDef	def stand-in sweep: the local def object stays in esi through the assignment and the destructor
+007d7ec0	RELOCATION_MATCH	vfunc_11	def stand-in sweep: the null out-pointer store schedules after the def-class load
+0082d8c0	RELOCATION_MATCH	GetReverbEnvironment	def stand-in sweep: the def object loads straight into esi and the release is dec [esi+4] ; jne (oracle name says GetFloorMaterial; the body copies the reverb type/level pair)
+0083c1e0	RELOCATION_MATCH	GetSwitchDef	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CThingSwitch::GetSwitchDef: the switch's def, fetched from the definition manager by the thing's def index and returne
+00662c10	RELOCATION_MATCH	GetAnimsWithNameStartingWith	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ -- CThingCreatureBase::GetAnimsWithNameStartingWith: collect the appearance definition's animations whose names start with the prefix, with no 
+00835b90	RELOCATION_MATCH	PeekDefinition	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CThingDeadCreature::PeekDefinition: the creature definition of this dead creature, fetched through a temporary counted def poi
+0083d900	RELOCATION_MATCH	PeekDefinition	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CThingDeadCreature::PeekDefinition: the creature definition of this dead creature, fetched through a temporary counted def poi
+007c3070	RELOCATION_MATCH	GetActionSpeedParameter	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ -- CCreatureActionBase::GetActionSpeedParameter: the creature's "SOUL_EFFECT" sub-definition parameter: looks the sub-def up through the cr
+005bd82e	RELOCATION_MATCH	GetInventoryItemDef	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CItem::GetInventoryItemDef: the counted CInventoryItemDef of a non-empty slot: the item type's def from the global def
+007eb110	RELOCATION_MATCH	?OnActionUse@CTCActionUsePickUp@@UAEXAAVCThing@@@Z	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCActionUsePickUp::OnActionUse: base OnActionUse; if the user is a live creature, fetch the pick-up sub-def of the owner's
+007eb1a0	RELOCATION_MATCH	?OnActionUse@CTCActionUsePickUpGenericBox@@UAEXAAVCThing@@@Z	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCActionUsePickUpGenericBox::OnActionUse: base OnActionUse; if the user is a live creature, fetch the sub-def of the owner's base de
+007bb800	RELOCATION_MATCH	??0CTCDrunkenness	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ -- CTCDrunkenness::CTCDrunkenness: CTCBase(thing), never sobered, seconds per frame from the frame rate, and a per-creature d
+007eefe0	RELOCATION_MATCH	OnCreate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCExpression::OnCreate: when no expression def is set yet, take the parent def's expression sub-def and, if it nam
+007e0910	RELOCATION_MATCH	OnCreate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCHeroSpecialMovement::OnCreate: look up the parent thing's def by its def index and take its hero special-movement sub-def
+00582944	RELOCATION_MATCH	OnCreate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCInventory::OnCreate: registers the inventory screen with the GUI manager, resolves its inventory def from the t
+0077cb60	RELOCATION_MATCH	OnInitialActivate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCHighlightItem::OnInitialActivate: remembers the start position and, for defs that wait for the camera, holds the start until
+0077cca0	RELOCATION_MATCH	DoStopRunning	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCHighlightItem::DoStopRunning: kills the particle emitter, spawns the def's end effect at the thing and clears Running
+00766050	RELOCATION_MATCH	HasCombinationOfAugmentations	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCObjectAugmentations::HasCombinationOfAugmentations: whether the OR of the Type bits of every attached augmentation def covers all the requeste
+007660c0	RELOCATION_MATCH	HasAugmentationOfType	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCObjectAugmentations::HasAugmentationOfType: whether any attached augmentation def has exactly this Type
+00766140	RELOCATION_MATCH	GetDamageMultiplier	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCObjectAugmentations::GetDamageMultiplier: product of the DamageMultiplier of every augmentation def attached to the object (1.0 with
+007868a0	RELOCATION_MATCH	vfunc_4	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ -- CTCSkeletalMorph::OnCreate: when the thing has a def with a skeletal-morph sub-def, add every listed morph by name at 
+00747480	RELOCATION_MATCH	UpdateViewability	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCStealth::UpdateViewability: the owner is viewable, except while sneaking in an engine theme whose def's stealth factor
+007f98e0	RELOCATION_MATCH	OnInitialActivate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCTargetingSpirit::OnInitialActivate: the base targeting activation, then take the maximum targeting distance from the owner's t
+005da6e0	RELOCATION_MATCH	OnCreate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCWeapon::OnCreate: when the owner has a def class index, fetch that def class, take its weapon sub-def into W
+007d80c0	RELOCATION_MATCH	?NewGame@CTCTavernGameSpotTheAddition	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCTavernGameSpotTheAddition::NewGame: tavern-game NewGame, round/time/cover state cleared, the cover fully raised, first round f
+008ef390	RELOCATION_MATCH	?EnterGame@CTCTavernGameCoinBase	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCTavernGameCoinBase::EnterGame: tavern-game EnterGame, then create the three arrow pieces from the coin def's arrow model
+007f6d70	RELOCATION_MATCH	??0CThingFilter_IsValidAttackTargetForCreature	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CThingFilter_IsValidAttackTargetForCreature::CThingFilter_IsValidAttackTargetForCreature: builds the composite attack-target filter and records whether the creature's def flags it 
+008077b0	RELOCATION_MATCH	??RCThingFilter_ViableProjectileAimingTarget	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CThingFilter_ViableProjectileAimingTarget::operator: rejects things of class 0x0D and things whose creature sub-def has the +0xe4 flag set (the
+007e3040	RELOCATION_MATCH	vfunc_4	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ -- CTCCameraCollision::vfunc_4: vtable slot 4: run the base slot, look the parent thing's def up by its global index and f
+006a1330	RELOCATION_MATCH	IsSlotPrimarySlot	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCCarrying::IsSlotPrimarySlot: fetches the slot's definition from the game definition manager and returns its IsPrimary f
+007e1eb0	RELOCATION_MATCH	vfunc_28	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCCarriedActionUseRead::vfunc_28: the first read of a book applies its bonus-item def to the reader's hero stats, then the b
+008ed1f0	RELOCATION_MATCH	InsertItem	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCContainer::InsertItem: append (def index, name) to the container's item list; a container whose thing does not pe
+005f4a86	RELOCATION_MATCH	OnCreate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCInventoryAbilities::OnCreate: registers the abilities screen, points the inventory at its def, runs the base OnCreate an
+007079e0	RELOCATION_MATCH	OnCreate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ; the GetDefGlobalIndexFromName stand-in the sweep also added was dropped (not needed) -- CTCHeroAttachableAppearanceModifiers::OnCreate: applies the creature def's initial appearance modifiers (unless already loaded) plus the h
+007275c0	RELOCATION_MATCH	OnCreate	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCSimpleAppearanceMorph::OnCreate: give the component a fresh mesh morph set and add one base-type (3) composite blend per te
+00658fa2	RELOCATION_MATCH	GetNextGuardTypeAndIncrement	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CTCVillage::GetNextGuardTypeAndIncrement: picks the def index of the next respawned guard: the respawn counter (post-incremented) wa
+006648d0	RELOCATION_MATCH	UnsheatheWeapon	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ -- CThingCreatureBase::UnsheatheWeapon: take the weapon of that def out of the carrying component (or create one at the creature's
+0082d2d0	RELOCATION_MATCH	PeekPSimDefinition	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CThingBuilding::PeekPSimDefinition: resolves the building def's sim-building def index through the definition manager into a c
+0082d5c0	RELOCATION_MATCH	PeekPMaterial	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU -- CThingBuilding::PeekPMaterial: resolves the building def's wall material index through the definition manager into a coun
+00962c10	RELOCATION_MATCH	IsRunnable	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ -- CAIStateGroup_VersusRockTroll::IsRunnable: runnable against a live enemy whose definition carries an ability
+00894820	RELOCATION_MATCH	?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z	def stand-in sweep: GetSubDef/GetDef noinline stand-in body (*(void**)out = def) in the TU; only vtable/function-address immediates differ; the GetDefGlobalIndexFromName stand-in the sweep also added was dropped (not needed) -- CGameScriptInterface::CreateObject: create a thing object from the named def at the position (player 4, default orientation) a
+007b8680	RELOCATION_MATCH	GetTankardName	def stand-in sweep near miss: pv.py diff lines were string-address immediates only (push offset "OBJECT_TG_TANKARD_01"); g.sh grades it RELOCATION_MATCH
+007884f5	RELOCATION_MATCH	ResetTrap	def stand-in sweep near miss: pv.py diff lines were the g_TrapResetAnimationName / CAnimFilterNoGroup vtable immediates only; the def now loads straight into ebx
+008c4170	RELOCATION_MATCH	Initialise	def stand-in sweep near miss: pv.py diff lines were the "FALL_TO_DEATH"/"DEATH" string immediates only
+004c9840	RELOCATION_MATCH	RemoveTC	LowerBound stand-in sweep near miss: immediates only (vtable 0x01238C6C, g_TCRemovalList); the find key shares the frame word
+0094a2b0	RELOCATION_MATCH	TellStory@CAIStateGroup_GoToPub	LowerBound stand-in sweep near miss: immediates only (the three TELLING_STORY_* string addresses)
+00811830	RELOCATION_MATCH	??0CEventHitBySpecialAbility	def stand-in sweep near miss: immediates only ("HERO_ABILITY" string, vtable 0x012723F0) with the GetDef_005f89f2 stand-in
+008946e0	RELOCATION_MATCH	?CreateObjectOnEntity@CGameScriptInterface	def stand-in sweep near miss: immediates only (vtable 0x01238C8C); the bogus GetDefGlobalIndexFromName stand-in dropped, GetDef stand-in kept
+00766400	RELOCATION_MATCH	GetExperienceMultiplier	byte twin of the matched 00766140: the same TU text (CDefPointer dtor with Object->ReleaseReference(), direct member read) with ExperienceMultiplier; the earlier pointer-local hand release gave the eax/edx release gap
+00772610	RELOCATION_MATCH	GetName	def stand-ins + null-tested CDefPointer destructors with a direct `return shopDef->Name` (the found path drops the sub-def null test after the dereference, the not-found path keeps it); the hand-written release pair scheduled dec eax before push edi
+00894c90	RELOCATION_MATCH	IsGiftFriendly	def stand-ins + zeroed null-tested CDefPointer destructors with `return giftDef->m_giftType == 0` inside the nested ifs: both out slots share the dead argument word, the result forms test edx,edx ; push ebx ; sete bl (the hand-written releases coloured the type load into ebx); bogus GetDefGlobalIndexFromName stand-in dropped
+00894d30	RELOCATION_MATCH	IsGiftOffensive	byte twin of 00894c90 (type 2), same TU text
+00894bf0	RELOCATION_MATCH	IsGiftRomantic	byte twin of 00894c90 (type 1), same TU text
+005ea010	RELOCATION_MATCH	UpdateValues	def stand-in + statement order: `TotalWinnings += ...; prizeWon = true;` and `TotalWinnings -= BaseBet; NumConsecutiveRoundsWon = 0;` (retail schedules the bool store / zero store after the arithmetic, so the source had the arithmetic first)
+008fa280	RELOCATION_MATCH	IsGiftOfType	def stand-in + null-tested CDefPointer dtor + the thing def reached through a getter returning a reference to the CDefPointer member (GetPDef()->GetSubDef): ParentThing in eax, def in ecx, compare before the count load (plain ->PBaseDef-> chain keeps ecx); `CThingBaseDef& base = *ParentThing->PBaseDef` matches too
+008d8330	DIFFER(285v285)	OnActivate	def3 stand-in + pointer-first thing def (var/008d8330_vA.cpp installed): only the ORDER of the two zero stores differs (retail `mov [esp+10h],0` effectType then `mov [esp+8],0` slot, ours slot first); 5 declaration orders / an add-ref holder all worse
+008c0ea0	DIFFER(268v268)	Initialise	def3 stand-in (var/008c0ea0_def3.cpp): frame slot ORDER only -- retail puts the 0x31 lookup key in the `effect` word [esp+0Ch] and the effects out slot at [esp+8]; ours packs the key with the out slot at [esp+8]; swapping/hoisting the declarations grows the frame or drops the zero store
+008c7280	DIFFER(268v268)	Initialise	def3 stand-in (var/008c7280_def3.cpp): frame slot order only -- the float temporary `fstp [esp+14h]` / `fmul [esp+18h]` sits one word lower in ours (same frame size)
+00972340	RELOCATION_MATCH	HasHitsCausedRush	combined sweep: LowerBound stand-in + GetSubDef stand-in in one TU (each alone left 44 / 10 diff lines); the component lookup key and the def out word pack as retail
+007f4d50	RELOCATION_MATCH	?OnActionUse@CTCCarriedActionUseAbility@@UAEXAAVCThing@@@Z	combined sweep (LowerBound + GetSubDef stand-ins) + the thing def taken into a NAMED pointer local (`const CDefClassBase* thingDef = ParentThing->PDef;`) before the lookup: retail reuses ecx for the chain, the inline chain put ParentThing in edx
+00773e10	RELOCATION_MATCH	?RemoveStockItemsFromShop@CTCShop	combined sweep (LowerBound + GetSubDef stand-ins) + the per-item CDefPointer declared at the top of the loop body BEFORE the alive test (retail zeroes it at the loop head: `mov [esp+10h],ebx` before GetPItem)
+007edbe0	RELOCATION_MATCH	?OnActionUse@CTCCarriedActionUseFish@@UAEXAAVCThing@@@Z	combined sweep + named def pointer (`const CDefClassBase* thingDef = ParentThing->PDef`) + the wall-mount branch passing `GetParentThing()` (a reference-returning accessor) so ParentThing overwrites the dead `this` register (`mov edi,[edi+4] ; push edi`); `*ParentThing` loads it into eax
+00966cf0	DIFFER(174v174)	?IsCarryingJug@CAIStateGroup_TavernServer	combined stand-ins + GetPDef() reference chain + null-tested dtor (var/00966cf0_vG.cpp installed): only the Delete call vtable register differs (retail `mov eax,[esi] ; mov ecx,esi ; call [eax+4]`, ours edx); 6 result/release spellings
+009687b0	DIFFER(174v174)	?IsCarryingJug@CAIStateGroup_TavernServer	byte twin of 00966cf0, same residual (vtable load register edx v eax on the dtor Delete call)
+00744ed0	RELOCATION_MATCH	OnCreate	def stand-ins (GetDef + GetSubDef) + the parent thing taken into a NAMED pointer local before GetDef (`CThing* thing = ParentThing; GetDef(thing->DefGlobalIndex, ..)`): retail loads ParentThing into eax, the inline chain used ecx
+00773aa0	RELOCATION_MATCH	IsShopKeeperAvailable	LowerBound stand-in + the component read through the out-pointer GetInterface into a local (00728470 rule: component in eax, `mov cl,[eax+42h]`) instead of the GetTC ternary (ecx)
+0079cf30	DIFFER(228v228)	?Pause@CTCBulletTime	LowerBound stand-in + ternary lookup (var/0079cf30_vA.cpp installed): one register -- the out-pointer push `lea ecx,[esp+4] ; push ecx` is `lea eax` in ours (6 lookup spellings, zero-init local); vtable immediate aside
+00962b80	DIFFER(129v129)	?OnReplace@CAIStateGroup_VersusEnemyBase	LowerBound stand-in (var/00962b80_lb.cpp): the two PBrain->PCreature chains use eax/edx in the opposite order to retail (edx then eax); named creature local keeps it
+0093bdf0	DIFFER(169v169)	?Cleanup@CAIStateGroup_SeekEnemy	LowerBound stand-in (var/0093bdf0_lb.cpp): the RemoveSeeker argument chain PBrain->PCreature uses ecx/edx where retail uses edx/eax; named creature / named target / getter forms keep it
+0093c230	DIFFER(169v169)	?Cleanup@CAIStateGroup_SeekScriptTarget	twin of 0093bdf0, same residual
+00713740	RELOCATION_MATCH	vfunc_13	LowerBound stand-in + the bit-field write through a NAMED reference to the returned animation (`CAnimateThing& a = GetAnimation(); a.m_changed = 1;`): retail `or byte ptr [eax+94h],1`; the chained `GetAnimation().m_changed = 1` splits into load / add eax,94h / or / store
+0064a1ae	RELOCATION_MATCH	Update	generic reference-parameter stand-in sweep (refsweep): same-TU noinline bodies for IS_THING_ALIVE<T>, AreThingsEnemies/Allies writing a word through their reference/pointer parameters; frame-pointer size TU
+00658ec3	RELOCATION_MATCH	BuildingContainsCorrectVillagers	refsweep: stand-ins for IsPointInside(const C3DVector&) and the two IS_THING_ALIVE overloads
+006bc4a0	RELOCATION_MATCH	push_back	refsweep: stand-in for the vector InsertGrow (the SScalarTag temporary no longer escapes)
+008f0b80	RELOCATION_MATCH	GetPackPosition	refsweep: stand-in for GetCardDef(CDefPointer*) (a non-GetSubDef-named def lookup the def sweep regex missed)
+0059d761	RELOCATION_MATCH	FinalRefreshSubtitles	refsweep: stand-in for CSubtitleMap::find(CComponent* const&) -- the key reference no longer escapes; only vtable/string immediates differ
+007714b0	RELOCATION_MATCH	PushNewSourceDef	refsweep: stand-in for the vector InsertGrow (SScalarTag temporary)
+0081fa20	RELOCATION_MATCH	GetThemeMinCameraSizeZOffsetAt	refsweep: stand-ins for GetDominantEngineThemeAt(const C2DCoordI&, long*) and GetDef(long, CEngineThemeDef**); NOTE the catalog name is propagated from 0081fa90 -- this copy reads CEngineThemeDef::Height (+0x80), the twin reads MinCameraHeight (+0x84)
+0081fa90	RELOCATION_MATCH	GetThemeMinCameraSizeZOffsetAt	refsweep: stand-ins for GetDominantEngineThemeAt and GetDef; reads MinCameraHeight
+00f37030	RELOCATION_MATCH	FreeMemoryPage	refsweep: stand-in for the vector InsertGrow (SScalarTag temporary)
+004b3810	RELOCATION_MATCH	SetCreatureGenerationEnabledDuringScript	refsweep stand-in + no store through the empty SRandomAccessIteratorTag param (tag temp overlays the live enabled slot)
+00820b80	RELOCATION_MATCH	ApplyScriptedMapBrush	refsweep stand-ins + no store through the empty __false_type param of _M_insert_overflow
+007e2f00	RELOCATION_MATCH	FrameUpdate	refsweep stand-in + angle written -DirectionLastRotated * AngleOfWobble (not -(a*b)): lea ecx for up computed before the float arg store
+00569330	RELOCATION_MATCH	Substr	refsweep stand-in, no store through the SForwardIteratorTag param, min(n,size()-pos) in a named len before the pointer sums (add eax,esi ; add eax,edx)
+006d6870	RELOCATION_MATCH	GetMeleeStrikeAnimationSpeedMultiplier	refsweep stand-in (no tag store) + LowValue/HighValue read directly through PHeroCombatDef-> twice instead of a CFloatRange reference or GetValue member
+005c2c65	RELOCATION_MATCH	AllocateAndInitializeCategoryNodes	tagsweep2: refsweep stand-ins minus the store through the empty-struct tag param
+0071ce80	RELOCATION_MATCH	GetTattooNames	tagsweep2: refsweep stand-ins minus the store through the empty-struct tag param
+00cbc850	RELOCATION_MATCH	_M_insert_overflow	tagsweep2: refsweep stand-ins minus the store through the empty-struct tag param
+008a8f20	RELOCATION_MATCH	GetItemDefNamesFromContainer	tagsweep2: refsweep stand-ins minus the tag-param store; pv residual was the string-table global immediate only
+009b0170	RELOCATION_MATCH	RemoveSubDef	tagsweep2: refsweep stand-ins minus the tag-param store; pv residual was a global immediate only
+00706c90	RELOCATION_MATCH	GetMeshesUsed	rdsweep: growth stand-in READS the const& value param (a store through it made the temporary's word-0 init a dead store)
+0070d100	RELOCATION_MATCH	ProcessLoading	rdsweep: InsertGrow stand-in reads the const& value param instead of storing through it
+00b2a010	RELOCATION_MATCH	AddEngineComponent	rdsweep: _M_insert_overflow stand-in reads the const& value param instead of storing through it (restores mov [esp+14h],esi)
+00857dc0	RELOCATION_MATCH	RemoveAnimIndices	rdsweep: _M_insert_overflow stand-in given a read of the const long& value (the empty stand-in left the temporary store dead)
+005e3620	RELOCATION_MATCH	CKeyedCountedList	rdsweep: stand-ins read (not write) through const& IN params
+00736640	RELOCATION_MATCH	AddMeleeFlourishAbility	rdsweep: stand-ins read (not write) through const& IN params
+00a1d5d0	RELOCATION_MATCH	CalculateRouteFromTo	rdsweep: stand-ins read (not write) through const& IN params
+0098b860	RELOCATION_MATCH	CreateResource	rdsweep (notag2 + read-through const& params); pv residual was an immediate only
+00bb6b50	RELOCATION_MATCH	RenderSubPrimitive	rdsweep: stand-ins read (not write) through const& IN params
