@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006c3f40	RELOCATION_MATCH	265v265	PASS	FrameUpdate (slot 9); direction * (amount / frames) x87 order
+007e5b90	RELOCATION_MATCH	301v301	PASS	FrameUpdate (slot 9); two sequential if(!QuitOut) blocks keep esi push at entry
+007e7760	DIFFER	275v273	-	SetHeroPos; register allocation around the GSI call (gsi spilled, out ptr slot)
+006ca5a0	SKIP	-	-	row holds OnCreate (0x006CA5A0..0x006CA64A, 171 bytes) plus four small bodies at 0x006CA650..
+007b01c0	RELOCATION_MATCH	317v317	PASS	RemoveParticles; __forceinline per-pointer helper x3, temp CIntelligentPointer(0) assign
+00c3d160	RELOCATION_MATCH	301v301	PASS	no-RTTI vtable 0x012B5870 Cleanup (label CTCFishingSpot propagated); if(p){delete[] p;p=0;}
+007c5560	RELOCATION_MATCH	241v241	PASS	GhostSword ctor; DrainLife ctor family, 12-byte vectors
+007c4bd0	RELOCATION_MATCH	264v264	PASS	HealLife ctor; STLport list sentinel + alloc-proxy vectors
+004bda30	RELOCATION_MATCH	264v264	PASS	is GetAllHelperPointNames (label wrong); inlined GetAllMeshes + block C3DMeshObject
+004bdb40	RELOCATION_MATCH	264v264	PASS	GetAllDummyObjectNames; twin of 004bda30
+004bdd70	RELOCATION_MATCH	276v276	PASS	GetDummyObjectNamesStartingWith; same family, prefix in ebp
+004be2c0	RELOCATION_MATCH	284v284	PASS	HasDummyObject; named mesh-info local before the counted temporary
+004bfb40	RELOCATION_MATCH	272v272	PASS	SetLightingChannel; GetInterface with the end/hit ternary inside the out store (component straight into ecx)
+004bfd10	DIFFER	264v264	-	CatchMessage(CMessageOnSetThingOwner); register-choice only after GetSubDef stand-in
+004bfe20	RELOCATION_MATCH	311v311	PASS	ClearMeshEffect; same-TU find stand-in keeps the owner arg in ebp
+007b2ab0	DIFFER	306v306	-	CTCGuard::OnDie; scheduling-only (string lea vs ParentThing load, key lea register)
+007f4b60	DIFFER	284v284	-	GetNPCNameAndFullTitle; register rotation only
+007dfb20	RELOCATION_MATCH	292v292	PASS	CTCFish ctor; inline LCG GFRandom(range, seed) with right-to-left args
+007b0ba0	DIFFER	276v276	-	ReelInButtonPressed; frame-slot of the lookup key only
+0047df8a	RELOCATION_MATCH	245v245	PASS	CTCInGameMenu ctor; optimize(s) + STLport alloc-proxy vectors
+0047da50	RELOCATION_MATCH	291v291	PASS	ConfirmedVideoOptionsNotAccepted; sibling 0x47D012 model + y-off/s-on
+0057c9c4	RELOCATION_MATCH	293v293	PASS	CTCHeroStats::Copy (vfunc_12); optimize(s), retail -8/-4 offsets
+0057d9fd	RELOCATION_MATCH	248v248	PASS	UpdateOutstandingCrimes; y-off/s-on, operator-> on the def temporary
+0057daf5	RELOCATION_MATCH	301v301	PASS	GetOutstandingFineAndFramesLeft; same model, Dinkumware Max on a temporary
+0057de57	DIFFER	308v302	-	PrepareToKickHeroToMostRecentSafeRegion; bool materialisation + marker scope
+008168b0	RELOCATION_MATCH	244v244	PASS	WithFiniteLine twin of landed WithTriangle 0x8169B0
+00801920	DIFFER	320v297	-	RegisterIdleStateGroup; frame homing, release form, iterator reads
+0077d4b0	RELOCATION_MATCH	254v254	PASS	OpenTrainingScreen /GS; CTCShop event model, ternary-store GetInterface
+0055fb80	RELOCATION_MATCH	260v260	PASS	UpdateTransaction; jump table 100..104 with case 100 explicit, fall-through states
+005625f0	RELOCATION_MATCH	275v275	PASS	OnPlayerSelectedClan; same-TU LowerBound stand-in homes the key in the dead arg slot
+00683b00	DIFFER	249v261	-	CTCCreatureOpinionOfHero::ClearPendingDeeds (label wrong); push placement + register rotation
+0062b7c0	DIFFER	280v280	-	CWorld::EAControlledCreatureSheatheWeapon (label wrong); esi/edi swap only
+0077f650	RELOCATION_MATCH	254v254	PASS	DoorMarker OnSerialise; if/else IsSaving homes the save-arm default in the dead arg slot
+006d7b80	DIFFER	289v297	-	GetAbilityPossibleLevelUpAmount; register allocation (this/experience in ebp vs ebx + memory)
+006d7cb0	RELOCATION_MATCH	294v294	PASS	IsReadyToLevelUp const; stat-track loop 0..5 then const GetInterface + abilities 1..19, stat xp read into a local before the cost call
+0071bcd0	DIFFER	298v298	-	CreateAlphaChannel; frame layout only (sub esp 0x20 vs 0x38: retail shares the Lock return temporaries with the GetDimensions temps)
+0071d940	DIFFER	299v300	-	AddTattoo(CDefPointer&); ebx/ebp swap only (this vs iterator), GetSubDef stand-in in place
+00c3da60	DIFFER	261v282	-	CreateEnvironmentCombatAction (/EHsc; label class CTCHeroStats propagated, owner is the combat-action manager); join-block placement + error-arm tails
+007e7ac0	RELOCATION_MATCH	308v308	PASS	DelayedQuit /GS; three sibling blocks share frame slots, def/font/gui locals before the pushes, named sound string
+00706510	DIFFER	304v304	-	UpdateHiddenMaterials; frame layout only (insert result temp not packed into the sub-def slot: 0x20 vs 0x18)

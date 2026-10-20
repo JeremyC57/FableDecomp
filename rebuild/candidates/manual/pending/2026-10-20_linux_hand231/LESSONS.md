@@ -1,0 +1,44 @@
+# Chunk 231 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- **Ternary-store GetInterface (0x004BFB40, 0x0077D4B0).**
+  - Writing the end/hit choice as one ternary inside the out store, `*pp = (T*)((it == map->last || k < it->type) ? map->last : it)->component;`, puts the component straight into ecx.
+  - The two-statement `if (...) it = last; *pp = it->component;` form leaves it in eax.
+- **Same-TU stand-ins under `#pragma auto_inline(off)` give VC7.1 what retail's LTCG knew.**
+  - A LowerBound stand-in homes the lookup key in the dead argument slot (0x005625F0).
+  - A map `find` stand-in keeps a by-reference argument in ebp (0x004BFE20).
+  - A GetSubDef stand-in keeps the out def in a register to its release, instead of re-reading the frame word (0x0071D940: 325 -> 299 bytes; 0x00706510).
+- **IsSaving split (0x0077F650).** `if (IsSaving) { ... } else { ... }` with the symbol map in a named local homes the save arm's default value in the dead argument slot.
+- **Inline-once GFRandom (0x007DFB20).** The inline LCG GFRandom is inlined at its first call site and called out of line at the second; its arguments are evaluated right to left.
+- **`operator->` on a returned CDefPointer temporary (0x0057D9FD)** loads the def before the next call. VC7.1 has no NRVO, so a behaviour test must not count on the extra copy and release disappearing.
+- **Sibling blocks share frame slots (0x007E7AC0).** A function that builds a string for one call, then several temporaries for a second call, then a game event packs them into one frame when each phase is its own `{ }` block. A function-scope local keeps its own slot.
+- **Named locals before the pushes (0x007E7AC0).**
+  - A CCharString passed by `const&` and re-addressed with `lea` (not pushed from the constructor's eax) is a named local.
+  - Globals and def pointers loaded into ebx/ebp/edi before a run of argument pushes and calls are named locals taken first.
+- **Read before the call (0x006D7CB0).** `x = vec[f(a)]; if (x + avail >= g(a))` reads the element before the g call. Folding the read into the comparison loads it after the call.
+- **Max evaluated before level (0x006D7B80, 0x006D7CB0).** The retail `max` call before the `level` call comes from `long maxLevel = GetMax(a); if (GetLevel(a) < maxLevel) { ... }` (one shared return-0 tail). Early `return 0` statements duplicate the tails.
+- **Def from a global index (0x00706510).** The pattern `CDefPointerBase result = mgr->GetPDefFromGlobalIndex(i); def = result;` uses a typed `operator=(const CDefPointerBase&)` (release old, store, add-ref) on a zero-initialised typed pointer. It gives retail's single null test shared by the add-ref and the temporary's release (`cmp eax,0 ; je ; inc [eax+4] ; mov ebx,eax ; mov eax,[tmp] ; ...release... ; mov [tmp],0`).
+- **No null test after a dereference (0x00706510, as in the landed 0x0071CE80).** A sub-def that the body dereferences before its CDefPointer destructor runs loses the destructor's null test.
+- **Empty-pool error edge (0x00C3DA60).** In the combat-action factories an empty-pool error edge cannot be written as `budget > 0 && (p = Take())`, because `m_budget` is re-read after the call; caching it in a local moves it into ebx. The landed sibling 0x00C3DCD0 (plain if / else-if / else) is the base to extend.
+- **Lane gaps seen twice: call-result temporaries are not packed (0x0071BCD0, 0x00706510).**
+  - Retail overlaps a struct-returning call's temporary (CSurfaceLockedRect, set-insert `pair`) with other dead slots: other temporaries, or a sub-def pointer already moved into a register.
+  - Our RTM lane gives such temporaries their own slots, so the frame is 0x38 vs 0x20 and 0x20 vs 0x18 with identical instructions.
+  - The QFE compiler behaves the same.
+
+Review at landing:
+- **0055fb80** UpdateTransaction has a jump table (states 100..104). Land it with `verify_land_jumptable.py`.
+- **Landed source error: OnOkClicked 0x0055EE20.** It names +0x60 as PScoreboardScreen, but retail PScoreboardScreen is +0x58 (005625f0 reads it there), so +0x60 is PConnectingMessage. Please re-check that source's member names.
+- **Same-TU stand-in bodies in matched sources:** 004bfe20 (map find) and 005625f0 (LowerBound). Only the leaf function is graded.
+  - In the parked rows: 004bfd10 (GetSubDef<CAppearanceDef>), 0071d940 (GetSubDef<CTattooDef>), 00706510 (GetSubDef<CAppearanceModifierDef>).
+- **Flags and leaves:**
+  - `/GS`: 0077d4b0, 007e7ac0. The parked 00c3da60 needs `/EHsc`.
+  - Constructor leaves: `??0CTCGhostSword`, `??0CTCHealLife`, `??0CTCFish`, `??0CTCInGameMenu`.
+  - `?Copy@CTCHeroStats` (0057c9c4).
+  - The parked 0071d940 uses `?AddTattoo@CTCHeroMorph@@QAEXAAV?$CDefPointer`, because AddTattoo has three overloads.
+- **Local base models next to an existing engine header.** The headers carry PDB (16-byte vector) offsets that disagree with retail's 12-byte containers. Each class below is modelled locally with retail offsets:
+  - CTCHeroExperience (006d7cb0: TrainableStatLevels +0x24, PHeroStatsDef +0x5C).
+  - CTCHeroCentre (0077d4b0: WaitingForTutorialToFinish +0x30).
+  - CTCHeroStats (0057c9c4, 0057d9fd, 0057daf5).
+  - CTCInGameMenu (0047df8a, 0047da50).
+  - CTCHeroAttachableAppearanceModifiers (parked 00706510; same choice as the landed 0x00706000).
+- **Catalog row with several functions:** 006ca5a0 (OnCreate plus four small bodies), skipped.
+- **Wrong catalog labels on matched rows:** 004bda30 (GetAllHelperPointNames) and 00c3d160 (CVtable_012B5870::Cleanup). Name the landed files from line 1, not from the catalog.

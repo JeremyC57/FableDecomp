@@ -253572,6 +253572,183 @@ $catalog = @(
         TestSource = '00/61/CTCInventoryQuests_DeactivateSelectedTestQuest_0061ac60_test.cpp'
         PassPattern = '0061ac60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0047da50'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_ConfirmedVideoOptionsNotAccepted_0047da50.cpp'
+        TestSource = '00/47/CTCInGameMenu_ConfirmedVideoOptionsNotAccepted_0047da50_test.cpp'
+        PassPattern = '0047da50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047df8a'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_CTCInGameMenu_0047df8a.cpp'
+        TestSource = '00/47/CTCInGameMenu_CTCInGameMenu_0047df8a_test.cpp'
+        PassPattern = '0047df8a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bda30'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetAllHelperPointNames_004bda30.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetAllHelperPointNames_004bda30_test.cpp'
+        PassPattern = '004bda30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bdb40'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetAllDummyObjectNames_004bdb40.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetAllDummyObjectNames_004bdb40_test.cpp'
+        PassPattern = '004bdb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bdd70'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetDummyObjectNamesStartingWith_004bdd70.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetDummyObjectNamesStartingWith_004bdd70_test.cpp'
+        PassPattern = '004bdd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004be2c0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_HasDummyObject_004be2c0.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_HasDummyObject_004be2c0_test.cpp'
+        PassPattern = '004be2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bfb40'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_SetLightingChannel_004bfb40.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_SetLightingChannel_004bfb40_test.cpp'
+        PassPattern = '004bfb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bfe20'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_ClearMeshEffect_004bfe20.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_ClearMeshEffect_004bfe20_test.cpp'
+        PassPattern = '004bfe20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055fb80'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/55/CTCHeroOnlineScoreboard_UpdateTransaction_0055fb80.cpp'
+        TestSource = '00/55/CTCHeroOnlineScoreboard_UpdateTransaction_0055fb80_test.cpp'
+        PassPattern = '0055fb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005625f0'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_OnPlayerSelectedClan_005625f0.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_OnPlayerSelectedClan_005625f0_test.cpp'
+        PassPattern = '005625f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057c9c4'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_Copy_0057c9c4.cpp'
+        TestSource = '00/57/CTCHeroStats_Copy_0057c9c4_test.cpp'
+        PassPattern = '0057c9c4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057d9fd'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_UpdateOutstandingCrimes_0057d9fd.cpp'
+        TestSource = '00/57/CTCHeroStats_UpdateOutstandingCrimes_0057d9fd_test.cpp'
+        PassPattern = '0057d9fd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057daf5'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_GetOutstandingFineAndFramesLeft_0057daf5.cpp'
+        TestSource = '00/57/CTCHeroStats_GetOutstandingFineAndFramesLeft_0057daf5_test.cpp'
+        PassPattern = '0057daf5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c3f40'
+        Module = 'CTCFadeOutAndIn'
+        Source = '00/6c/CTCFadeOutAndIn_FrameUpdate_006c3f40.cpp'
+        TestSource = '00/6c/CTCFadeOutAndIn_FrameUpdate_006c3f40_test.cpp'
+        PassPattern = '006c3f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d7cb0'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_IsReadyToLevelUp_006d7cb0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_IsReadyToLevelUp_006d7cb0_test.cpp'
+        PassPattern = '006d7cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077d4b0'
+        Module = 'CTCHeroCentre'
+        Source = '00/77/CTCHeroCentre_OpenTrainingScreen_0077d4b0.cpp'
+        TestSource = '00/77/CTCHeroCentre_OpenTrainingScreen_0077d4b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0077d4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077f650'
+        Module = 'CTCHeroCentreDoorMarker'
+        Source = '00/77/CTCHeroCentreDoorMarker_OnSerialise_0077f650.cpp'
+        TestSource = '00/77/CTCHeroCentreDoorMarker_OnSerialise_0077f650_test.cpp'
+        PassPattern = '0077f650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b01c0'
+        Module = 'CTCFishingSpot'
+        Source = '00/7b/CTCFishingSpot_RemoveParticles_007b01c0.cpp'
+        TestSource = '00/7b/CTCFishingSpot_RemoveParticles_007b01c0_test.cpp'
+        PassPattern = '007b01c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c4bd0'
+        Module = 'CTCHealLife'
+        Source = '00/7c/CTCHealLife_CTCHealLife_007c4bd0.cpp'
+        TestSource = '00/7c/CTCHealLife_CTCHealLife_007c4bd0_test.cpp'
+        PassPattern = '007c4bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c5560'
+        Module = 'CTCGhostSword'
+        Source = '00/7c/CTCGhostSword_CTCGhostSword_007c5560.cpp'
+        TestSource = '00/7c/CTCGhostSword_CTCGhostSword_007c5560_test.cpp'
+        PassPattern = '007c5560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dfb20'
+        Module = 'CTCFish'
+        Source = '00/7d/CTCFish_CTCFish_007dfb20.cpp'
+        TestSource = '00/7d/CTCFish_CTCFish_007dfb20_test.cpp'
+        PassPattern = '007dfb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e5b90'
+        Module = 'CTCFireRangedWeaponOnLeavingStateGroup'
+        Source = '00/7e/CTCFireRangedWeaponOnLeavingStateGroup_FrameUpdate_007e5b90.cpp'
+        TestSource = '00/7e/CTCFireRangedWeaponOnLeavingStateGroup_FrameUpdate_007e5b90_test.cpp'
+        PassPattern = '007e5b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7ac0'
+        Module = 'CTCFireheartMinigame'
+        Source = '00/7e/CTCFireheartMinigame_DelayedQuit_007e7ac0.cpp'
+        TestSource = '00/7e/CTCFireheartMinigame_DelayedQuit_007e7ac0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '007e7ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008168b0'
+        Module = 'CTCHitLocations'
+        Source = '00/81/CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_008168b0.cpp'
+        TestSource = '00/81/CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_008168b0_test.cpp'
+        PassPattern = '008168b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3d160'
+        Module = 'CVtable_012B5870'
+        Source = '00/c3/CVtable012B5870_Cleanup_00c3d160.cpp'
+        TestSource = '00/c3/CVtable012B5870_Cleanup_00c3d160_test.cpp'
+        PassPattern = '00c3d160_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
