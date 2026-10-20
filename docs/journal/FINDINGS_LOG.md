@@ -378,4 +378,6 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
   and all 12 DIFFER identically under 4035 (q.py artefacts on early landings: 004012ce, 00401c00, 00404280, 0040bb90,
   0041d207, 00429e16, 0043c3c0, 0043f3a0, 00449d20, 0046649a, 0049bb60, 004af220), so no compiler-caused change.
   The lane default was switched to 3077 (`$S/wine/env.sh`, `env.sh.template`); running agents pick it up on their next
-  call; the DDK 4035 stays as `--qfe`.
+  call; the DDK 4035 stays as `--qfe`. Continued re-grade (16,026 rows): 74 DIFFER, every one DIFFER under 4035 as well
+  (`$S/w22/rtm3077/landed_differ_4035.tsv`), so still no compiler-caused change; the chunks 209–217 parked rows (55) also
+  differ identically under 3077.

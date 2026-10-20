@@ -1,0 +1,166 @@
+addr       parity           behav  name
+004570d3   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+004570d3   RELOCATION_MATCH PASS   Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base 
+00457da9   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+00457da9   RELOCATION_MATCH PASS   Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base 
+00458c19   WARN SHARED_HEADER_AVAILABLE CParentDefClassBase
+00458c19   WARN RELOC_NAME: ??0CHeroAbilityStatPackage@@QAE@XZ -> 0045324f labelled 'CDisplayManager::CopyBackBufferToTexture'
+00458c19   RELOCATION_MATCH PASS   CMeleeCombatAbilityDef
+004df14b   WARN RELOC_NAME: ??0CTCDriverBase_Calls@@QAE@PAUCThing@@@Z -> 00771200 labelled 'CTCDriverBase::CTCDriverBase'
+004df14b   WARN RELOC_NAME: ??0CBaseClass@@QAE@XZ -> 0099a2d0 labelled 'NHeroInformationScreens::CBase::CBase'
+004df14b   RELOCATION_MATCH PASS   CTCDPhysicalObstruction
+004e00bc   WARN RELOC_NAME: ??0CDefBase_0044c0c0@@QAE@XZ -> 0044c0c0 labelled 'CSubDefClassBase::CSubDefClassBase'
+004e00bc   WARN RELOC_NAME: ??0CPrerequisiteMap@@QAE@XZ -> 004df7d3 labelled 'CDisplayManager::CopyBackBufferToTexture'
+004e00bc   RELOCATION_MATCH PASS   Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base 
+004e06c3   WARN RELOC_NAME: ??0CDefBase_0044c0c0@@QAE@XZ -> 0044c0c0 labelled 'CSubDefClassBase::CSubDefClassBase'
+004e06c3   WARN RELOC_NAME: ??0CAttitudeMultiplierMap@@QAE@XZ -> 004df92a labelled 'CDisplayManager::CopyBackBufferToTexture'
+004e06c3   RELOCATION_MATCH PASS   CShopDef
+00543d30   RELOCATION_MATCH PASS   Initialise
+00543df0   RELOCATION_MATCH PASS   ChangeState
+00591e8c   WARN RELOC_NAME: ?RotateAboutAxis_00a22f80@CRightHandedSet@@QAEXABUC3DVector@@M@Z -> 00a22f80 labelled 'CRightHandedSet::Method_00a22f80'
+00591e8c   RELOCATION_MATCH PASS   GlobalUpdate
+0059da10   WARN SHARED_HEADER_AVAILABLE CPlayer
+0059da10   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0059da10   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059da10   WARN RELOC_NAME: ?GetTradingThing@CTCInventoryTrade@NInventory@@QAEPAUCThing@@XZ -> 005bc4c4 labelled 'CWorld::DrawGetEnvironment'
+0059da10   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+0059da10   WARN RELOC_NAME: ?GetCurrentBuyPrice@CTCShop@@QAEJJJ@Z -> 007743b0 labelled 'CTCShop::GetCurrentSellPrice'
+0059da10   WARN RELOC_CONFLICT: ?GetMainPlayer@CPlayerManager@@QBEPAUCPlayer@@XZ -> 00449960 here, 00449970 in landed 0051fba0
+0059da10   WARN RELOC_NAME: ?GetMainPlayer@CPlayerManager@@QBEPAUCPlayer@@XZ -> 00449960 labelled 'Catch@0040d959'
+0059da10   RELOCATION_MATCH PASS   IsItemAffordable
+0064f659   WARN RELOC_NAME: ??0CRetailLongList@NPlayerGui@@QAE@ABUSAllocator@@@Z -> 0042ab58 labelled 'std::list::list'
+0064f659   WARN RELOC_NAME: ??0CRetailElementList@NPlayerGui@@QAE@ABUSAllocator@@@Z -> 00655b33 labelled 'std_list_allocate_sentinel_0x10'
+0064f659   WARN RELOC_NAME: ?Resize@CRetailHandleVector@NPlayerGui@@QAEXJ@Z -> 00443f90 labelled 'CEnginePrimitiveRenderer::AddPrimitive'
+0064f659   RELOCATION_MATCH PASS   CDrawQuestInfo
+00652f0a   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00652f0a   WARN RELOC_NAME: ??0CFadeInFadeOutBase@NPlayerGui@@QAE@XZ -> 00436560 labelled 'CTCHeroStats::SoberUp'
+00652f0a   WARN RELOC_NAME: ?resize@CRetailCoordVector@NPlayerGui@@QAEXKABUC2DCoordI@@@Z -> 00656fab labelled 'CArray<std::pair<long,long>_>::push_back'
+00652f0a   RELOCATION_MATCH PASS   CDrawQuickAccessIcons
+006820e0   WARN SHARED_HEADER_AVAILABLE CWorld
+006820e0   WARN RELOC_CONFLICT: ?GetWorld@CTCCreatureOpinionOfHero@@QBEPAUCWorld@@XZ -> 00686a70 here, 00686a80 in landed 00681940
+006820e0   WARN RELOC_NAME: ?GetWorld@CTCCreatureOpinionOfHero@@QBEPAUCWorld@@XZ -> 00686a70 labelled 'NDisplayView::CViewBase::GetDisplayEngine'
+006820e0   RELOCATION_MATCH PASS   SetPersonalityOverride
+006882f0   WARN RELOC_NAME: ?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z -> 00687cf0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+006882f0   RELOCATION_MATCH PASS   ProcessInput
+0068c6e0   WARN RELOC_NAME: ?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z -> 00687cf0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0068c6e0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068c6e0   RELOCATION_MATCH PASS   ProcessInput
+0068c760   WARN RELOC_NAME: ?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z -> 00687cf0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0068c760   RELOCATION_MATCH PASS   ProcessInput
+0068c7f0   WARN RELOC_NAME: ?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z -> 00687cf0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0068c7f0   WARN RELOC_NAME: ?GetControllerIndex@CInputEvent@@QBEJXZ -> 00a03b70 labelled 'CInputEvent::GetKey'
+0068c7f0   RELOCATION_MATCH PASS   ProcessInput
+0071e180   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071e180   RELOCATION_MATCH PASS   CTCHeroMorph
+00724f80   RELOCATION_MATCH PASS   OnCreate
+00724fc0   MATCH            PASS   ClearMovement
+007268d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007268d0   RELOCATION_MATCH PASS   OnCreate
+007525c0   WARN SHARED_HEADER_AVAILABLE CLookDef
+007525c0   RELOCATION_MATCH PASS   GetTurningAnglesAndCheckForTurningBody
+00811100   RELOCATION_MATCH PASS   operator
+00892cf0   WARN RELOC_NAME: ?GetRegionEntry@CWorldMap_Retail@@QAEAAUCRegion_Retail@@J@Z -> 004fb490 labelled 'NInventory::CTCInventoryBase::GetCategoryWithIndex'
+00892cf0   RELOCATION_MATCH PASS   SetCreatureGeneratorsEnabled
+008bb130   WARN RELOC_NAME: ?SetAnimationName@CCombatActionBase@@QAEXABVCCharString@@@Z -> 008574d0 labelled 'CCombatActionBase::SetCombatAnimation'
+008bb130   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008bb130   RELOCATION_MATCH PASS   CCreatureAction_CastWillForceSpell
+008bb200   WARN RELOC_NAME: ?SetAnimationName@CCombatActionBase@@QAEXABVCCharString@@@Z -> 008574d0 labelled 'CCombatActionBase::SetCombatAnimation'
+008bb200   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008bb200   RELOCATION_MATCH PASS   CCreatureAction_CastWillForceSpell
+008bb6f0   WARN RELOC_NAME: ?SetAnimationName@CCombatActionBase@@QAEXABVCCharString@@@Z -> 008574d0 labelled 'CCombatActionBase::SetCombatAnimation'
+008bb6f0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008bb6f0   RELOCATION_MATCH PASS   CCreatureAction_CastPhysicalShieldSpell
+008d6780   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008d6780   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008d6780   RELOCATION_MATCH PASS   AnimUpdate
+008d6cb0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008d6cb0   RELOCATION_MATCH PASS   AnimUpdate
+008d6da0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008d6da0   RELOCATION_MATCH PASS   AnimUpdate
+008d6e80   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008d6e80   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008d6e80   RELOCATION_MATCH PASS   AnimUpdate
+008d6f20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008d6f20   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008d6f20   RELOCATION_MATCH PASS   AnimUpdate
+00d17090   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d17090   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00d17090   WARN RELOC_CONFLICT: ??1CBaseClass@@UAE@XZ -> 0099a2e0 here, 0099a300 in landed 00418b7a
+00d17090   WARN RELOC_NAME: ??1CBaseClass@@UAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+00d17090   RELOCATION_MATCH PASS   WatchForLeaderKilled
+00e32200   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e32200   WARN RELOC_CONFLICT: ??1CBaseClass@@UAE@XZ -> 0099a2e0 here, 0099a300 in landed 00418b7a
+00e32200   WARN RELOC_NAME: ??1CBaseClass@@UAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+00e32200   RELOCATION_MATCH PASS   WatchForTricksterComplete
+
+WINS: 34
+  004570d3 RELOCATION_MATCH _global::Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base 
+  00457da9 RELOCATION_MATCH _global::Retry 10: RELOCATION_MATCH -- the vector modelled as STLport _Vector_base 
+  00458c19 RELOCATION_MATCH CMeleeCombatAbilityDef::??0CMeleeCombatAbilityDef
+  004df14b RELOCATION_MATCH CTCDPhysicalObstruction::CTCDPhysicalObstruction
+  004e00bc RELOCATION_MATCH _global::??0CQuestCardDef
+  004e06c3 RELOCATION_MATCH CShopDef::??0CShopDef
+  00543d30 RELOCATION_MATCH NUISystem::CParticleEffect::Initialise
+  00543df0 RELOCATION_MATCH NUISystem::CParticleEffect::ChangeState
+  00591e8c RELOCATION_MATCH CTCInventory::GlobalUpdate
+  0059da10 RELOCATION_MATCH CTCInventoryTrade::IsItemAffordable
+  0064f659 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CDrawQuestInfo
+  00652f0a RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::CDrawQuickAccessIcons
+  006820e0 RELOCATION_MATCH CTCCreatureOpinionOfHero::SetPersonalityOverride
+  006882f0 RELOCATION_MATCH CInputProcessControlCreatureActivateZTargetOnPress::ProcessInput
+  0068c6e0 RELOCATION_MATCH CInputProcessClickPastText::ProcessInput
+  0068c760 RELOCATION_MATCH CInputProcessBButtonExitMode::ProcessInput
+  0068c7f0 RELOCATION_MATCH CInputProcessToggleViewHeroMode::ProcessInput
+  0071e180 RELOCATION_MATCH CTCHeroMorph::??0CTCHeroMorph
+  00724f80 RELOCATION_MATCH CTCPhysicsControlled::OnCreate
+  00724fc0 MATCH CTCPhysicsControlled::ClearMovement
+  007268d0 RELOCATION_MATCH CTCPhysicsNavigator::OnCreate
+  007525c0 RELOCATION_MATCH CTCLook::GetTurningAnglesAndCheckForTurningBody
+  00811100 RELOCATION_MATCH CIsHitEventHitByThingWithScriptName::??RCIsHitEventHitByThingWithScriptName
+  00892cf0 RELOCATION_MATCH CGameScriptInterface::SetCreatureGeneratorsEnabled
+  008bb130 RELOCATION_MATCH CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell
+  008bb200 RELOCATION_MATCH CCreatureAction_CastWillForceSpell::CCreatureAction_CastWillForceSpell
+  008bb6f0 RELOCATION_MATCH CCreatureAction_CastPhysicalShieldSpell::CCreatureAction_CastPhysicalShieldSpell
+  008d6780 RELOCATION_MATCH NCreatureMode::CModeExplosiveForcePushed::AnimUpdate
+  008d6cb0 RELOCATION_MATCH NCreatureMode::CModeSleepBed::AnimUpdate
+  008d6da0 RELOCATION_MATCH NCreatureMode::CModeConversation::AnimUpdate
+  008d6e80 RELOCATION_MATCH NCreatureMode::CModeForcePushed::AnimUpdate
+  008d6f20 RELOCATION_MATCH NCreatureMode::CModeRockTrollVulnerable::AnimUpdate
+  00d17090 RELOCATION_MATCH NScript::CQ_BountyHuntScript::WatchForLeaderKilled
+  00e32200 RELOCATION_MATCH CV_AmbushScamScript::WatchForTricksterComplete
+
+LANDED 34 wins into src/compiled + tests + catalog + oracle
+  global_Retry10RELOCATIONMATCHthevectormodelledasSTLport_004570d3
+  global_Retry10RELOCATIONMATCHthevectormodelledasSTLport_00457da9
+  CMeleeCombatAbilityDef_CMeleeCombatAbilityDef_00458c19
+  CTCDPhysicalObstruction_CTCDPhysicalObstruction_004df14b
+  global_Retry10RELOCATIONMATCHthevectormodelledasSTLport_004e00bc
+  CShopDef_CShopDef_004e06c3
+  NUISystemCParticleEffect_Initialise_00543d30
+  NUISystemCParticleEffect_ChangeState_00543df0
+  CTCInventory_GlobalUpdate_00591e8c
+  CTCInventoryTrade_IsItemAffordable_0059da10
+  NPlayerGuiCDrawQuestInfo_CDrawQuestInfo_0064f659
+  NPlayerGuiCDrawQuickAccessIcons_CDrawQuickAccessIcons_00652f0a
+  CTCCreatureOpinionOfHero_SetPersonalityOverride_006820e0
+  CInputProcessControlCreatureActivateZTargetOnPress_ProcessInput_006882f0
+  CInputProcessClickPastText_ProcessInput_0068c6e0
+  CInputProcessBButtonExitMode_ProcessInput_0068c760
+  CInputProcessToggleViewHeroMode_ProcessInput_0068c7f0
+  CTCHeroMorph_CTCHeroMorph_0071e180
+  CTCPhysicsControlled_OnCreate_00724f80
+  CTCPhysicsControlled_ClearMovement_00724fc0
+  CTCPhysicsNavigator_OnCreate_007268d0
+  CTCLook_GetTurningAnglesAndCheckForTurningBody_007525c0
+  CIsHitEventHitByThingWithScriptName_operator_00811100
+  CGameScriptInterface_SetCreatureGeneratorsEnabled_00892cf0
+  CCreatureActionCastWillForceSpell_CCreatureActionCastWillForceSpell_008bb130
+  CCreatureActionCastWillForceSpell_CCreatureActionCastWillForceSpell_008bb200
+  CCreatureActionCastPhysicalShieldSpell_CCreatureActionCastPhysicalShieldSpell_008bb6f0
+  NCreatureModeCModeExplosiveForcePushed_AnimUpdate_008d6780
+  NCreatureModeCModeSleepBed_AnimUpdate_008d6cb0
+  NCreatureModeCModeConversation_AnimUpdate_008d6da0
+  NCreatureModeCModeForcePushed_AnimUpdate_008d6e80
+  NCreatureModeCModeRockTrollVulnerable_AnimUpdate_008d6f20
+  NScriptCQBountyHuntScript_WatchForLeaderKilled_00d17090
+  CVAmbushScamScript_WatchForTricksterComplete_00e32200

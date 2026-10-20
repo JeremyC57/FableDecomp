@@ -1,0 +1,82 @@
+00d17090	RELOCATION_MATCH	WatchForLeaderKilled	three dtor sites (loop return + post-loop return + end): inline once, out-of-line ~CScriptThing tail-merged
+00e32200	RELOCATION_MATCH	WatchForTricksterComplete	same: split the && guard into an early return so the by-value param has three dtor sites
+0066bd00	DIFFER(231v231)	PlayAttachedCriteria	once-band reached (dead store or if(!empty) guard) but cursor colouring edi/esi and xor-esi zero reg remain; 3-site trick gives wrong site assignment for a local
+0059da10	RELOCATION_MATCH	IsItemAffordable	named bool local for the returned compare (direct `return a >= b` zero-extends with xor eax,eax)
+007525c0	RELOCATION_MATCH	GetTurningAnglesAndCheckForTurningBody	`!(unsigned char)LongHelper()` gives retail `test al,al` after the helper's full-register 1/0
+005c3180	DIFFER(188v186)	GetActiveProjectileWeaponDamage	sibling-block / inlined-helper scoping of the def lookup grows the frame (193); slot sharing not reproduced
+005cdccb	DIFFER(187v187)	FrameUpdate	inner-block frame local, temporary pair, flag sweep: frame stays 0x24 v 0x1c (no slot sharing of type/frame nor key/pair)
+005cbc36	DIFFER(194v180)	OnItemAdded	CDefPointer-with-dtor (two-base count) models zero the out slots through a register and still spill; hand release form stays 198
+0057adb8	DIFFER(69v63)	ResetTrainingStatus	two-base (CDefVirtual+CRefCounted) Release(): still the long `add eax,4 ; dec [eax] ; cmp [eax],0` release
+006c5630	DIFFER(84v78)	GetDeedDef	two-base Release() model: long release form, out slot re-read
+009f0570	DIFFER(39v39)	Contains	end!=node, if/return, named bool, (unsigned char): compare always before the param dtor (setne bl); retail compares after it
+0096a260	DIFFER(232v232)	FindHitEvent	`? true : false` reproduces retail test/setne; only the shot out-slot (+0xc) and filter temp (+0x10) remain swapped under every declaration order
+0056ef6f	DIFFER(210v206)	UpdateExperienceSpendPool	compare via vector expr + RMW via pointer fixes the category arm; the general-pool arm forwards (mov edi,[esi+24h] ; sub edi ; mov) unless split, which then reloads the start
+005786b5	DIFFER(230v226)	BuyStat	biased `lea ebp,[esp-70h]` frame: /EHa /EHsc /GX- /Gy /Ge /Gm /Oa /Ow /Zi /Gs0 /Gs /Oy- /O1 /Ox never bias
+005d9070	DIFFER(172v172)	GetDescription	text id read before/after the global: lane keeps it in eax and pushes before the lea; retail edx
+0061a9d0	DIFFER(168v168)	MoveToNextTestQuest	named index/count locals, dtor first/last locals, size() spellings: this stays edi, diff in esi, first via ecx (retail this=esi, first=ebp, diff=ecx)
+0061aa80	DIFFER(182v176)	MoveToPreviousTestQuest	same family as 0061a9d0, not retried separately
+008bb130	RELOCATION_MATCH	CCreatureAction_CastWillForceSpell	hand-split `== ""` (strcmp on null block / block compare, goto-joined arms) + default name as implicit conversion `SetAnimationName("...")`
+008bb200	RELOCATION_MATCH	CCreatureAction_CastWillForceSpell	same idiom as 008bb130
+008bb6f0	RELOCATION_MATCH	CCreatureAction_CastPhysicalShieldSpell	same idiom as 008bb130
+00892cf0	RELOCATION_MATCH	SetCreatureGeneratorsEnabled	hand-split `== ""` with goto-joined arms (the region arm first, the global switch at the label)
+00811100	RELOCATION_MATCH	operator()	hand-split `== ""`, both true exits goto one label, attacker test in its own block, hit record in a local
+007025a0	DIFFER(131v131)	GetRegionName	hand-split `== ""` fixes the sete; left: retail `push ebp ; mov ecx,esi` for the RegionName copy ctor, lane `mov ecx,esi ; push ebp` (this->, *&, reference-local forms identical)
+00574576	DIFFER(182v182)	OpenInventoryOld	reference local, function-top screen, block-local name, chained GetInstance(): temp/component slots stay swapped
+004310a7	DIFFER(91v91)	TransferWideString	explicit temp, default before CheckCRC (93), if/else (94): default local stays at [ebp-8]
+007f2410	DIFFER(204v205)	OnDie	inline GetSubDefInto helper (sub-def read into a register local right after the call) fixes the hoist and short release; this/effects colouring edi<->ebp remains
+00733ee0	DIFFER(131v129)	IsMeleeFlourishValid	component join for a VIRTUAL call: retail joins in ecx, lane in eax + mov ecx,eax (component local/ternary/if-else store forms and a reference alias all join in eax)
+006882f0	RELOCATION_MATCH	ProcessInput	unchanged source under RTM + /GS (the parked gap was the QFE compiler)
+0068c6e0	RELOCATION_MATCH	ProcessInput	unchanged source under RTM + /GS
+0068c760	RELOCATION_MATCH	ProcessInput	unchanged source under RTM + /GS
+0068c7f0	RELOCATION_MATCH	ProcessInput	unchanged source under RTM + /GS
+00688260	DIFFER(137v137)	ProcessInput	RTM+/GS closes the shadowing; left: two `false` byte stores via a shared `xor al,al` in retail, immediates in the lane (helper, ternary/if forms identical)
+005840a6	DIFFER(177v177)	UseQuickAccessItem	item read once into a local (so slot dies) swaps esi/edi and drops to 160; the converted temporary keeps [ebp-4]
+0072a970	DIFFER(63v63)	SetupBulletTime	creature local before the bit test (60) and the string as an argument temporary (59) both change more than the load order
+0053e0c0	DIFFER(190v190)	MakeUnavailable	nested-if and `== 0`/this-> forms keep the slot-97 vptr in edx (retail reuses dead eax)
+00894bf0	DIFFER(170v159)	IsGiftRomantic	known gap: retail pushes ebx inside the found branch (`push ebx ; sete bl`) and homes the out slot in the dead defName slot; the lane spills the bool to that slot and opens a frame word (twins 00894c90/00894d30)
+005b3c95	DIFFER(240v229)	OnItemAdded	known gaps: retail pushes ebx inside the OBJECT branch and zeroes the two def slots with `and [..],0` (objectDef in the dead assignQuickAccess slot); the lane xor-ebx zero register and swapped slots
+005beb57	DIFFER(231v233)	RemoveCreatureFromFaction	third lookup key as implicit conversion closest (231v233); retail reuses one CCharString temp slot across two lookups, ours allocates two
+00449d90	DIFFER(195v195)	InitCharacterAsHero	else-arm InitCharacterAs("CREATURE_HERO") keeps size; left: literal slot colouring ecx v edx on the second push
+008d6780	RELOCATION_MATCH	AnimUpdate	GetAnimFilter() takes no arg, GetAnimFromName(name, filter, 0) third long; CAnimInit as a temporary passed straight to SetMainAnim
+008d6cb0	RELOCATION_MATCH	AnimUpdate	CAnimInit temporary argument of SetMainAnim (named local hoists BankIndex into a callee-saved reg)
+008d6e80	RELOCATION_MATCH	AnimUpdate	same CAnimInit-temporary idiom
+008d6f20	RELOCATION_MATCH	AnimUpdate	same CAnimInit-temporary idiom
+008d6da0	RELOCATION_MATCH	AnimUpdate	`CThing* thing = ParentThing` local + CAnimInit temporary argument of SetMainAnim
+007f9010	DIFFER(131v131)	PlayAnimation	named CAnimInit keeps push-0x64 order; `priority` coloured ebp in ours v ebx in retail (push ebx/pop ebx); temporary, early-return and QueuedAnims.clear() forms do not move it
+00752f30	DIFFER(226v226)	UpdateHeadCreatureAnim	`type` ebx / `this` edi in retail v edi / ebx in ours; switch form worse (sub/dec chain)
+007f8f30	DIFFER(222v222)	PlayDefaultAnimation	GetSubDef out-pointer zero store before the [+0x70] load; CAnimInit temporary makes it worse (second zero store moves too)
+006820e0	RELOCATION_MATCH	SetPersonalityOverride	hand-split `== ""` with every true exit `goto set` and a bare return between (idiom of 00892cf0)
+008eda90	DIFFER(169v169)	??0CCombatAction_FallStunned	hand-split + implicit-conversion default fixes the shape; left: `mov ebp,ecx` (this) / `mov ebx,[esp+20h]` (animName) swapped ebx<->ebp; ternary spellings and a forceinline helper do not move it
+0095d070	DIFFER(108v108)	AttackEnemy	known lane gap: retail pushes ebx/edi lazily inside the attack branch after an inline `xor al,al ; pop esi ; ret`; &&-joined, nested-if and result-local forms all keep the merged exit at the end
+008d0730	DIFFER(233v233)	IsBeingCarriedBy	only the Compare (fastcall) argument loads swap: retail `mov edx,[eax] ; mov ecx,[ecx]`, ours ecx first; local-pointer, !Compare, ternary and reference forms do not move it
+0069a920	DIFFER(106v104)	RemoveCombatCameraMode	count-reference release form removes the 12-byte long release; left: `mov eax,[esp+4] ; test eax,eax ; mov ecx,eax` v `mov ecx,[esp+4] ; test ecx,ecx`, and the CDefPointer zero store before the index load v after `push eax`
+00591e8c	RELOCATION_MATCH	GlobalUpdate	def release as `DecRefToZero(Object->RefCount)` (forceinline `long&` helper) gives `dec [ecx+4] ; jne` after the fmul
+0069ac90	DIFFER(130v124)		DecRefToZero(long&) release helper (was 136v124); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+005f6a6f	DIFFER(218v216)	ResetAssignedAbilitiesPC	DecRefToZero(long&) release helper (was 223v216); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+00663260	DIFFER(55v49)		DecRefToZero(long&) release helper (was 59v49); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+006cd890	DIFFER(227v221)	??0CGroundNavigatorExternalInterface	DecRefToZero(long&) release helper (was 233v221); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+006a1490	DIFFER(175v173)		DecRefToZero(long&) release helper (was 181v173); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+0071c2d0	DIFFER(148v140)	HasAPermanentTattooCoveringArea	DecRefToZero(long&) release helper (was 158v140); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+0066b040	DIFFER(64v61)	OnInitialActivate	DecRefToZero(long&) release helper (was 69v61); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+00699b00	DIFFER(243v238)	PreloadScriptedCamera	DecRefToZero(long&) release helper (was 243v238); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+0069a8b0	DIFFER(103v100)		DecRefToZero(long&) release helper (was 108v100); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+00703150	DIFFER(106v105)	?PeekPMaterial@CThingObject	DecRefToZero(long&) release helper (was 111v105); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+007366c0	DIFFER(152v149)		DecRefToZero(long&) release helper (was 157v149); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+00729410	DIFFER(141v134)		DecRefToZero(long&) release helper (was 142v134); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+005d66ba	DIFFER(147v142)		DecRefToZero(long&) release helper (was 151v142); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+005ea100	DIFFER(174v158)	vfunc_42	DecRefToZero(long&) release helper (was 184v158); remaining: pointer loaded into eax with `mov ecx,eax` v retail ecx, plus the row's other notes
+005e3c60	DIFFER(70v68)	?resize@CAnimationPairVector@@QAEXK@Z	DecRefToZero + local-copy dtor (was 78); left: slot load into eax + `mov ecx,eax` v retail ecx
+00543d30	RELOCATION_MATCH	Initialise	GetInstance() inline as the GetLayer object expression (named local hoisted the vtable load above the temporary CRightHandedSet stores)
+00543df0	RELOCATION_MATCH	ChangeState	same fix as 00543d30
+00724f80	RELOCATION_MATCH	OnCreate	ImpulseVelocity.Set(0,0,0) inline member storing Z,Y,X (stores through a member-function this keep the flag loads after them)
+00458c19	RELOCATION_MATCH	??0CMeleeCombatAbilityDef	STLport _Vector_base model: _M_end_of_storage as an _STLP_alloc_proxy with its own ctor fixes the member-ctor lea placement
+00457da9	RELOCATION_MATCH	??0CSpecialAbilitiesSummonSpellDef	same STLport alloc-proxy vector model
+004e00bc	RELOCATION_MATCH	??0CQuestCardDef	same STLport alloc-proxy vector model
+004570d3	RELOCATION_MATCH	??0CSpecialAbilitiesBattleChargeDef	same STLport alloc-proxy vector model
+004df14b	RELOCATION_MATCH	??0CTCDPhysicalObstruction	STLport alloc-proxy vector model
+004e06c3	RELOCATION_MATCH	??0CShopDef	STLport alloc-proxy vector model
+0064f659	RELOCATION_MATCH	??0CDrawQuestInfo	STLport alloc-proxy vector model
+00724fc0	MATCH	ClearMovement	ImpulseVelocity.Set(0,0,0) inline member storing Z,Y,X
+007268d0	RELOCATION_MATCH	OnCreate	AdditionalImpulse.Set(0,0,0) inline member storing Z,Y,X
+00652f0a	RELOCATION_MATCH	??0CDrawQuickAccessIcons	STLport alloc-proxy model on every vector (EffectPositions too)
+0071e180	RELOCATION_MATCH	??0CTCHeroMorph	CMeshMorphSet as two STLport alloc-proxy vectors
