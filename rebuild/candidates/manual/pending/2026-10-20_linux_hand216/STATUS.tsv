@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00e81f60	RELOCATION_MATCH	167v167	PASS	CV_FisticuffsClubScript ctor (novtable arg base, CTimer/CScriptThing members, CCharString[5] loop)
+00d9e210	RELOCATION_MATCH	197v197	PASS	label wrong: CQ_MinionCampScript ctor (S_QMC, 0xac); VC6 list sentinel ctors
+00e8a1d0	RELOCATION_MATCH	216v216	PASS	unused local from inline by-value getter (build/copy/destroy); dense switch 1..4
+00e8af70	RELOCATION_MATCH	162v162	PASS	implicit literal temporaries + CRGBColour(r,g,b,a) body stores
+00df1230	RELOCATION_MATCH	174v174	PASS	label wrong: CQ_SummoningTheShipScript::Init (vtable 0x12DE10C slot 3)
+00ea2d20	RELOCATION_MATCH	177v177	PASS	CV_LostTraderScript::Init (vtable 0x12EDCE8 slot 3)
+00ea5690	RELOCATION_MATCH	236v236	PASS	unused local via inline getter; switch rand()%10 tail-merged ctor
+00eb6bd0	RELOCATION_MATCH	222v222	PASS	field clears in source order; inline counted operator= from a returned CScriptThing temporary
+00ea1630	RELOCATION_MATCH	232v232	PASS	spawned-func thread (flagged name temp), implicit region temp first, yield loops
+00eb0700	RELOCATION_MATCH	197v197	PASS	CTimer local; post-loop early return (not if(!x) guard) keeps the in-loop dtor tail separate
+00ec3ad0	RELOCATION_MATCH	232v232	PASS	unused getter local; switch assigns merged; temp in dead arg slot
+00eda8c0	DIFFER	238v236	-	inline-once band: retail inlines push_back at 1 of 3 sites, ours at all 3
+00edaad0	RELOCATION_MATCH	196v196	PASS	implicit conversion temporaries get one frame word each (named locals share)
+00cbc850	DIFFER	234v230	-	STLport _M_insert_overflow; tag temporaries over the live atend slot (known lane gap)
+00ad8d10	MATCH	181v181	PASS	locals before reverse walk; __forceinline ContainsAll stepping a by-value pointer (4 grades)
+00ac7b00	MATCH	188v188	PASS	index loops + inline STLport erase with SGI __copy loop
+00a90630	DIFFER	203v202	-	consecutive same-condition choices jump-threaded by ours, separate tests in retail
+00a90560	RELOCATION_MATCH	195v195	PASS	if/else of whole calls (push imm per arm), defaulted local for the mov-eax choice
+00860950	RELOCATION_MATCH	162v162	PASS	null CIntelligentPointer<T> temporaries assigned (two template vtables)
+00860430	RELOCATION_MATCH	206v206	PASS	by-value copy of const& position; named delta locals; left-first float compare
+00860ed0	RELOCATION_MATCH	205v205	PASS	twin of IsBetterThan with 1.5625f literal factor
+00ef49a0	RELOCATION_MATCH	191v191	PASS	label refined: NScript::CPersonalScript_EmptyScript::CVillager::Init; MayorsInvitation model
+00851770	RELOCATION_MATCH	234v234	PASS	by-value CCharString in slot; implicit L"." temp; CObserver base at +4
+00a67860	DIFFER	227v237	-	nested strength-reduced copy loops; frame-slot reuse and hoisted height load differ
+00a67950	DIFFER	188v194	-	count-down texel loops; retail reloads bounds per loop entry, ours hoists the width
+00a685e0	DIFFER	171v167	-	box fill register allocation/store order
+00a68130	RELOCATION_MATCH	178v178	PASS	min over const refs; args before object expression; 8-aligned frame natural
+00e15830	RELOCATION_MATCH	182v182	PASS	named CScriptThing local from by-value lookup; label refined to CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine
+00a0ca90	DIFFER	176v187	-	x87 register allocation of the divisor; read-ahead loop avoids the 4x unroll
+00a0cdd0	DIFFER	175v178	-	edi/ebp swap for cursor/char
+00a0d1a0	SKIP	-	-	row holds ReadAsString + ReadAsSymbol + a 5-byte stub (three functions)
+00a0cfc0	RELOCATION_MATCH	211v211	PASS	register cursor published on item start; returned sub-reader calls
+00c351b0	DIFFER	211v211	-	edi/ebx swap only (chained member/local assignments fixed the rest)
+00ecd390	RELOCATION_MATCH	177v177	PASS	bool = !flag && f(""): frame-byte bool + conditional temp flag; label refined to CV_SickChildScript::CWomanToAttract
+0049d550	RELOCATION_MATCH	190v190	PASS	label wrong: CWorld::ConvertWorldToStaticMapPath (.stb); four full statements cross-jumped
+0049d6b0	RELOCATION_MATCH	190v190	PASS	ConvertWorldToISMThingyPath(name, xbox, runtime); twin of 0049d550
+0049dbe0	RELOCATION_MATCH	163v163	PASS	mutable LOD cache; C3DVector user copy ctor + implicit op= (lea copy); local CWorld model (header has PDB offsets)
+0049dfb0	RELOCATION_MATCH	198v198	PASS	inline ProcessEvent with MI pointer-to-member; constant-folded type-1 entry
+0049e8c0	RELOCATION_MATCH	212v212	PASS	rotated while; dllimport Sleep in esi; inline Clear zeroes Info first
+0049f3f0	RELOCATION_MATCH	194v194	PASS	manager local before the vector local; inline SetAsPaused

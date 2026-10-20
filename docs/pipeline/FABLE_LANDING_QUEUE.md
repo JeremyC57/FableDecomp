@@ -296,10 +296,11 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand213` | Hand chunk 213 (CTargetingDef .. CThingBuilding): 20 of 40 byte-exact | - | 20 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand214` | Hand chunk 214 (CThingBuildingDef .. CThingPlayerCreature): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand215` | Hand chunk 215 (CThingPlayerCreature .. CV_FishingCompetitionScript): 23 of 40 byte-exact | - | 17 | 0 | landed; parked rows open |
+| `2026-10-20_linux_hand216` | Hand chunk 216 (CV_FisticuffsClubScript .. CWorld): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **1151 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **1160 parked rows** for the Fable retry pass.
 
-### Skipped rows (24 open of 49 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (25 open of 50 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -319,6 +320,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `009be2d0` | multi | open | 009be2d0:64 009be310:21 009be330:3 009be340:54 009be380:11 | `2026-10-19_linux_hand191` | row holds the switch body + jump table, a ret-8 stub and the head of another function |
 | `009f5d70` | prefix | open | 009f5d70:156 | `2026-10-15_linux_hand143` | CInputManager::LoadAllEventPackages: row is a prefix of the EH function (body continues past the catch funclet 0x009F5DE9 to 0x009F5E0B); fu |
 | `009fd2b0` | multi | open | 009fd2b0:196 009fd374:17 009fd390:3 | `2026-10-19_linux_hand194` | row also holds the 16-aligned `ret 4` stub at 0x009FD390 after the jump table (two functions) |
+| `00a0d1a0` | multi | open | 00a0d1a0:95 00a0d200:95 00a0d260:5 | `2026-10-20_linux_hand216` | row holds ReadAsString + ReadAsSymbol + a 5-byte stub (three functions) |
 | `00a3e330` | multi | open | 00a3e330:23 00a3e350:41 00a3e380:30 00a3e3a0:4 00a3e3b0:4 00a3e3c0:24 | `2026-10-20_linux_hand204` | row holds six functions (0xA3E330/350/380/3A0/3B0/3C0, int3-separated) |
 | `00a446fa` | cold | open | 00a446ce:0 | `2026-10-14_linux_hand49` | continuation of Catch@00a446f4 inside NScript_CIngredientOwner_RunThread 0x00A446CE (referenced only by an absolute address from the parent) |
 | `00ba1140` | prefix | in-chunk:902 | 00ba1140:2344 | `2026-10-14_linux_hand35` | bad family-scan row: the first 28 bytes of a ~2.3 KB function; author the whole function |
@@ -1992,5 +1994,17 @@ Groups: register-assignment/scheduling only (0056ef6f, 005d9070, 0061a9d0, 0061a
 - 0087b840 NCameraModes::CTrack::OnInitLeaf DIFFER(199v199): ebx/edi swap (retail &m_target in edi, &PTrack in ebx) | tried: reassigning kind check (fixed the selection), pointer locals in both declaration orders | next: lane gap: register colouring
 - 0052f440 CUIState::CUIState DIFFER(141v183): retail rounds each colour channel with a bare `fistp` after a store/reload (inline-asm FtoL) | tried: `(long)` casts (one grade) | next: lane gap: inline-asm float->int (PackVertexNormal family)
 - 00408820 CUserProfileManager::ResetAssignedInputsWASD DIFFER(185v185): register allocation only (retail this=edi, def=esi, inputs=ebx; ours this=ebx, def=edi) | tried: duplicated arms, `__forceinline` lookup with constant returns (size), raw def pointer released by hand (shape), inputs reference local | next: lane gap: register colouring
+
+
+#### `2026-10-20_linux_hand216` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand216/differ/`)
+- 00eda8c0 CV_TalentlessBardScript::ProcessSongsAge DIFFER(238v236): ours inlines the in-class STLport push_back at all three sites (two cross-jumped), retail inlines only the first and calls 0x0044BFF0 for the other two | tried: named locals, full STLport _Vector_base/_STLP_alloc_proxy/_Construct nesting, implicit temporaries, def pointer locals per branch | next: lane gap: inline-once band (callee cost) or a different source shape for the else-arms
+- 00cbc850 vector<pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>>::_M_insert_overflow DIFFER(234v230): retail homes every `__false_type()` tag in the still-live `atend` slot (`lea ecx,[esp+28h]`), ours opens `sub esp,8` | tried: STLport form with tag temporaries | next: lane gap: empty tag over a live argument slot
+- 00a90630 N3DPrimitive::CVertexShaderInputAnimated::Initialise DIFFER(203v202): ours jump-threads the consecutive `compressed` choices (normal/uv) into one test, retail re-tests esi per element | tried: ternaries (branchless sbb), if/else calls, `cond ? call : call` expressions | next: a per-element inline helper taking the flag by value, or an `unsigned long` re-read of `flags & 4` per statement
+- 00a67860 CVolume::CopyFromMemoryAutoSwizzle DIFFER(227v237): frame word reuse (retail keeps bytes-per-pixel in the reused pixel-format slot, hoists the first slice's height above the sunk pushes) | tried: for loops, count-down loops, explicit `if (depth > 0) do {} while` guard with inner locals | next: height as a do-while with the bound read at the loop bottom; bytes-per-pixel declared before the format local
+- 00a67950 CVolume::Clear DIFFER(188v194): ours treats the Lock result box as unaliased and hoists the width load (reloading after each row), retail re-reads box.Dimensions.X at each row top and Y per slice | tried: up-counting for, count-down for, const reference to the returned box | next: pass &box through a helper so it escapes, or loop bounds via an inline accessor on the box
+- 00a685e0 CVolumeTexture::Lock DIFFER(171v167): retail loads desc.Width/Height straight into ebx/ebp and stores the box zeros first (Front, Top, Left); ours copies through eax/ecx | tried: member-wise box fill, width/height locals, system-manager local (fixed the call placement), ToD3DBox store order | next: build the D3DBOX through an inline ctor/helper taking (0, 0, w, h, 0, d)
+- 00a0ca90 CWParsedItem::InitAsFloat DIFFER(176v187): x87 allocation — retail keeps only the integer part and fraction on the FPU stack and the divisor in the push-ecx word, ours keeps all three; bl/cl flag swap | tried: for loop (unrolled x4), read-ahead while loop (fixed the unroll), declaration orders | next: divisor written as `divisor *= 10.0` or declared as the first local after the flags
+- 00a0cdd0 CWStringParser::ReadNextNumber DIFFER(175v178): cursor/char register swap (retail ebp/edi) plus a 3-byte digit-tail difference | tried: while-condition form, break form, returns inside the loop (closest), declaration orders | next: an inline Consume() helper shared by the digit/'.'/'-' arms
+- 00c351b0 CWeaponDrawState::Initialize DIFFER(211v211): register swap only (retail &source->Info in edi, intro length in ebx) | tried: reference local, pointer local, no local, `local = Member = value` chains (fixed everything else) | next: lane gap: register colouring (scheduling-only)
 
 <!-- queue:end -->
