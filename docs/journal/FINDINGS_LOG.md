@@ -342,3 +342,20 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
 - **Hand EH passes 22–26, parked bodies (2026-10-14, DDK 13.10.4035 vs retail RTM; re-grade on the Windows box)** — instruction multiset identical, layout or allocation differs: 0x00C16E10 / 0x00C31F60 / 0x00C3CD00 (the DDK duplicates the first early-return epilogue and places the merged block at the last return site; retail at the first), 0x00C14560 / 0x00C14630 (retail materialises a constant shared by two state stores in a register, `mov ebx,2` / `or edi,-1`; 0x00C4CC90 did match with the register), 0x00C0E1F0 (the DDK will not home an EH-tracked `CString` in the argument slot the trace temporary also uses), 0x00CAC4A0 (the final `return 0` `xor eax,eax` hoisted above the `test` and `lea eax` for the resolver address where retail uses ecx), 0x00CAC9D0 (init-list zero stores of +0x28/+0x2c sunk past the CreateSemaphore pushes, or hoisted above InitializeCriticalSection when written in the body; retail keeps them between the two imports), 0x00C101D0 (the empty-string temporary's data loaded into edi, its own address register, before the `Equals` push; the DDK picks ecx in four spellings), 0x00CAFE90 (the node's +0x1c key materialised into a register for the three-way compare; retail `cmp reg,mem`), 0x00C425E0 / 0x00CAADB0 (register roles), 0x00C32060 (hoisted state store), 0x00C34B80 / 0x00C34E60 (indexed search loops strength-reduced). Best sources: `$S/w23/e_<addr>.cpp` and `v_<addr>_*.cpp`; one-liners in `$S/w23/parked_notes.txt`.
 
 - 2026-10-19 (Codex review): the verifier accepts a RELOCATION_MATCH without checking relocation-target identity; 8 of 552 reviewed rows byte-matched while naming the wrong callee or float pool. Proposed fix in ROADMAP (per-row relocation-target audit); until then every landing review must run `relocmap`-style target checks.
+
+## 2026-10-20 — Retail toolchain builds (Fable.exe Rich header) and the Visual C++ Toolkit 2003 test
+
+- **Rich header of the retail `Fable.exe`** (decoded from the file, XOR key applied, entries listed oldest first): C++ objects
+  `Utc1310_CPP` build **3077** × 1,369, C objects `Utc1310_C` 3077 × 51, `Utc1310_C`/`Utc1310_CPP` build **4035** × 4 + 1,
+  MASM 3077 × 5 / 2179 × 18 / 2067 × 2 / 4035 × 6, older CRT objects (C 2179 × 5), imports 422, and the **linker build 3052**.
+  So retail is VS .NET 2003 RTM `cl` 13.10.3077 for the game code, with five objects from the 4035 QFE (the "~11 QFE objects"
+  of BUILDING.md are these plus their MASM), linked with linker 3052. Optional-header linker version 7.10.
+- **The free "Visual C++ Toolkit 2003"** (archive.org item `microsoft-visual-c-toolkit-2003`, `VCToolkitSetup.exe`, 32,952,488
+  bytes, SHA-1 `956c81c3106b97042c4126b23c81885c4b5211f4`, MD5 `3e1e1cad2e4b4e2427dbe4616cccaa02`, matching the item's
+  metadata) is an InstallShield wrapper; under Wine it stops at its .NET 1.1 prerequisite unless
+  `HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v1.1.4322\Install=1` is set, then `/s /v"/qn INSTALLDIR=..."` installs it.
+  Its compiler is **13.10.3052** (pre-RTM), not 3077. Graded against our parked rows it changes nothing for the chunk-209
+  inventory band (21/21 still DIFFER, same shapes) and moves the compiler-attributed gap rows further from retail
+  (0066bd00 284 vs 231 bytes under 4035; 00d17090 249; 00e32200 208; the biased /GS frame 00581b33 unchanged). The toolkit is
+  therefore not a substitute for 3077; the DDK 4035 lane stays the closest available build. Full sweep results in the
+  2026-10 journal; a true 3077 `cl`/`c2.dll` needs a VS .NET 2003 RTM installation.
