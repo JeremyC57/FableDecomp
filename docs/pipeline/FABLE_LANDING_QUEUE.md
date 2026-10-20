@@ -308,10 +308,11 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand225` | Hand chunk 225 (CModeJackOfBladesScream .. CParticleEmitterList): 25 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand226` | Hand chunk 226 (CParticleEmitterManager .. CPlane): 18 of 40 byte-exact | - | 13 | 9 | landed; parked rows open |
 | `2026-10-20_linux_hand227` | Hand chunk 227 (CPlayer .. CRandomAppearanceMorph): 31 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
+| `2026-10-20_linux_hand228` | Hand chunk 228 (CRandomAppearanceMorph .. CSplinePosParamData): 24 of 40 byte-exact | - | 15 | 1 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **1077 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **1092 parked rows** for the Fable retry pass.
 
-### Skipped rows (34 open of 60 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (35 open of 61 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -347,6 +348,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `00be5ca0` | multi | open | 00be5ca0:50 00be5cd2:21 00be5cf0:29 00be5d10:15 00be5d20:20 00be5d40:26 00be5d60:26 | `2026-10-19_linux_hand195` | row spans InvalidateEdge + jump table + four more bodies |
 | `00c8a4b0` | single | open | 00c8a4b0:109 | `2026-10-15_linux_hand171` | object received in esi (LTCG/library register convention, 0xC8xxxx); not CTCVillageMember |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
+| `00ca53f0` | multi | open | 00ca53f0:16 00ca5400:262 | `2026-10-20_linux_hand228` | two functions: 13-byte adjustor/vcall thunk (jmp [ecx+4]) + body at 0x00CA5400 |
 | `00d80ae0` | multi | open | 00d80ae0:159 00d80b80:124 | `2026-10-20_linux_hand227` | row holds GetJackSpeech (0x00D80AE0..0x00D80B7C), its jump table and the factory 0x00D80BA0 |
 | `00f333b0` | multi | open | 00f333b0:27 00f333cb:24 00f333e3:20 00f333f7:20 00f3340b:37 00f33430:37 00f33458:21 00f33470:12 00f33480:25 00f334a0:25 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
 
@@ -2222,5 +2224,23 @@ Groups: register-assignment/scheduling only (0056ef6f, 005d9070, 0061a9d0, 0061a
 - 00439e00 CPlayerGui::UpdateRenown DIFFER(276v278): one `mov eax,edi` register copy before the fabs(OldValue - CurrentValue) loads | tried: member access, inline GetValueChange, PRenown re-read, named bar local | next: lane gap: register copy (CSE'd reload)
 - 00878be0 NCameraModes::CProjectileWeapon::GetPosFromParams (catalog CProjectileWeapon) DIFFER(222v244): x87 sum order, unfolded `* 0.5f * 0.0f + 1.0f`, split position copy (X/Y on the FPU, Z as an integer) | tried: one probe | next: an inline Lerp(1.0f, 1.0f, t) for the scale, a named rotated-position local, the retry-10 vector-operand forms
 - 00bdda80 CLocalDetailCacheMap::CQuadTreeElement::RenderUpdate DIFFER(277v269): retail keeps the distance on the x87 stack after fsqrt (`fstp st(2) ; fstp st(0) ; fst [slot]`) where the lane stores and re-loads it, plus a `lea esp,[esp]` pad before the child loop | tried: statement-order sum, Length() helper, inline fade condition, pointer child loop | next: lane gap: fst vs fstp/fld spill (chunk 214 shape) and loop-head alignment
+
+
+#### `2026-10-20_linux_hand228` (15 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand228/differ/`)
+- 009fc250 CResourceList::ProcessLoadingQueue DIFFER(260v260): register rotation in the CanAbortResourceLoad argument (retail loads LastUsedFrame into ecx before CurrentFrame into eax) and in the inlined ListRemove relink | tried: operand order of the subtraction, named frame locals, inline ListRemove | next: lane gap: register allocation
+- 00903f30 CScriptGameResourceObjectScriptedThing::FollowPreCalculatedRoute DIFFER(254v254): routeThing/movement type swapped between ebx and ebp | tried: const bool& HasTC spill (reproduced), declaration orders | next: lane gap: register allocation
+- 009049f0 CScriptGameResourceObjectScriptedThing::PlayAnimation DIFFER(250v250): `this`/&PThing swapped between ebx and edi | tried: thing pointer local, inline Thing() accessor, a `self` local declared first, PThing as a real member | next: lane gap: register allocation
+- 00904bd0 CScriptGameResourceObjectScriptedThing::PlayLoopingAnimation DIFFER(253v253): `this`/&PThing swapped between ebx and edi, same shape as 009049f0 | tried: the 009049f0 forms | next: lane gap: register allocation
+- 004b4f30 NQuestManager::CRuntimeQuestPersistence::SetQuestMasterDataPersistScript DIFFER(255v255): the `Dirty = true` store sinks below the comparator load (retail stores it right after the pair dtors) | tried: the +0 twin's source (004b4e30 matches from it), statement order | next: lane gap: scheduling
+- 004b01b0 CQuestManager::IsRegionValidInRegionLockingMode DIFFER(281v277): loop 1 loads the iterator start into ebx and copies it to edi (retail: edi, then ebx); loop 2 builds the malloc size with `lea edx,[eax*4]` (retail `shl eax,2`) and rotates eax/ecx/edx | tried: a same-TU `__find` stand-in under auto_inline(off) (fixed the tag slot), named locals | next: hold n in a narrower scope for the copy size
+- 00547050 NUISystem::CScrollingComponent::UpdatePosition DIFFER(261v261): the X parent-offset add is `fld PP.X ; fadd RP.X` (retail `fld RP.X ; fadd PP.X`; Y is the other way round) | tried: PP.X+RP.X, RP.X+PP.X, member += with named locals | next: an inline C2DVector operator+ on the whole vector
+- 0087bf40 NCameraModes::CRotateAround::OnInit DIFFER(296v295): retail computes both XAxis differences on the FPU before storing (`fxch`, two fstp) and reads XAxis.Y through edi; ours stores X first and re-addresses [esi+0B0h] | tried: a reused C3DVector local (fixed the frame), a temporary per axis | next: a C2DVector XY difference temporary
+- 0087ba90 NCameraModes::CScriptedControl::OnInit DIFFER(294v294): the module vtable is loaded into edx before the module stores (retail eax, after the PCameraManager store), which rotates eax/ecx/edx through the rest of the body | tried: direct member stores, a module local, an inline SetOwner | next: lane gap: register allocation
+- 007621c0 NShape::CShape::UpdateSelectedPoint DIFFER(243v243): this/iterator are in ebx/ebp (retail ebp/ebx); the dx spill is squared from the FPU (retail `fld [x] ; fmul [x]`); the push_back tag sits in a frame byte (retail: in the dead `position` argument slot) | tried: inline AddUnique + `__find` stand-in (fixed the frame), const C3DVector& param per the PDB | next: a dx local bound by reference
+- 007622c0 NShape::CShape::UpdateSplit DIFFER(242v274): the midpoint adds straight from the points (24-byte frame); retail copies b.Y, b.Z and a.Z into frame words (36-byte frame) | tried: member const& operator+, free by-value operator+, named point copies | next: an operator+ taking both C3DVectors by value with a user copy ctor
+- 009db700 CRenderManager2D::AddText DIFFER(266v266): the colour is copied through edx->eax with the flags load hoisted (retail eax->ecx, flags loaded last) | tried: member order, colour/scale/font/flags statement order | next: lane gap: scheduling
+- 0086be40 CRandomAppearanceMorph::GetRandomBodyParts DIFFER(292v294): the empty test forms the element address with `add eax,ebx` first (retail folds [eax+ebx]/[eax+ebx+4] loads before the add) | tried: !empty(), begin() != end(), `part != 3` (fixed jl to jne) | next: a `const CArray<CBodyPartMesh>*` row pointer stepped by ++
+- 00f3a5d0 CRangeCompressor::TestRangeBias DIFFER(318v318): the prologue spill of maxU lands one slot early, and the epilogue pops are hoisted between the Flags test and the RangeBias store | tried: unsigned-first declarations (322v318), comparison orientation, ternary min/max, signed-first copies (318v318) | next: lane gap: scheduling (or store the RangeBias after the flag update)
+- 0056eb48 CSliderAnimator::Update DIFFER(305v305): the fabs(step) spill `fstp [ebp-4]` comes before `push ecx; mov ecx,esp; push -1` (retail after) | tried: a named step local (spilled before the test), fabs before the test, the test on the unnamed expression (305v305), `if (!Play)` first | next: lane gap: scheduling
 
 <!-- queue:end -->

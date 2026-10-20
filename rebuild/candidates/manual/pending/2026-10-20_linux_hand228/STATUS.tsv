@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00c55b70	MATCH	268v268	PASS	CAudioContext::Reset (label propagated), separate entry-point members
+00ca53f0	SKIP	-	-	two functions: 13-byte adjustor/vcall thunk (jmp [ecx+4]) + body at 0x00CA5400
+004572ce	RELOCATION_MATCH	269v269	PASS	STLport vector model, optimize("s")
+00457b8b	RELOCATION_MATCH	243v243	PASS	STLport vector model, optimize("s") (lea only where shorter)
+00465258	RELOCATION_MATCH	312v312	PASS	explicit per-element Transfer calls, optimize("s")
+006ff810	RELOCATION_MATCH	285v285	PASS	Sphere TransferBinaryIn inline Read x3, one float local
+00b21c90	RELOCATION_MATCH	313v313	PASS	twin of landed ReadFromFile 0xAC5080 plus inline ReadBool
+00989540	MATCH	247v247	PASS	three-term dots written x+y+z (VC loads the right inner operand first)
+0054a5d0	RELOCATION_MATCH	274v274	PASS	inline counted-pointer dtor (block re-read), plain nested virtual calls
+00556810	RELOCATION_MATCH	279v279	PASS	child scan with re-read element null test; by-value C2DVector in arg area
+005566a0	RELOCATION_MATCH	257v257	PASS	null-tested CDefPointer + ReleaseTemporary on ref base (+4), counted-pointer local
+009fc250	DIFFER	260v260	-	register rotation only (argument subtraction operand load order, ListRemove reload registers)
+00903ac0	RELOCATION_MATCH	256v256	PASS	__forceinline action ctors in new; implicit intermediate dtor + inline PImp release
+00903e20	RELOCATION_MATCH	258v258	PASS	HasTC bool bound to const& in GetInterface (frame byte spill); local polymorphic model
+00903f30	DIFFER	254v254	-	ebx/ebp swap for routeThing vs movement type (const bool& spill reproduced)
+00904430	RELOCATION_MATCH	270v270	PASS	two complete AddAction(new CActionWait(frames)) arms; __forceinline action ctors
+009049f0	DIFFER	250v250	-	this/thing ebx<->edi swap only
+00904bd0	DIFFER	253v253	-	this/thing ebx<->edi swap only (same shape as 009049f0)
+004b4e30	RELOCATION_MATCH	244v244	PASS	SetQuestScriptPersistScript (label fix); inline Find/Add/SortIfDirty, CPersistInfo local
+004b4f30	DIFFER	255v255	-	Dirty=true store scheduled one slot later (scheduling only)
+006e5690	RELOCATION_MATCH	242v242	PASS	IsValid loop; out-param GetInterface (eax) + HasTC/ternary GetTC (ecx)
+006e61a0	RELOCATION_MATCH	275v275	PASS	insert(make_pair(index, conversation)) with inline ctor; implicit copy inlined once, out of line once
+004380a0	RELOCATION_MATCH	269v269	PASS	inline BeginsWith on the converted temporary (one null test, ?false:true), block-scoped prefix
+004b01b0	DIFFER	281v277	-	CQuestManager::IsRegionValidInRegionLockingMode (label fix); iterator-start register order and copy-size register
+00c0dab0	RELOCATION_MATCH	253v253	PASS	library CString copy ctor (label fix), LIB_ASSERT GetData model of 0xC0BEE0
+00a5d620	RELOCATION_MATCH	251v251	PASS	CPixelShader by value: inline copy ctor/dtor, data Release on ref base +8 with delete this
+00544c10	RELOCATION_MATCH	259v259	PASS	inline CCountedPointer<CAction>(new CAction) chain all __forceinline; vector free; base dtor
+00547050	DIFFER	261v261	-	single x87 operand order on the X parent-offset add (mixed per-axis order)
+006ffb10	RELOCATION_MATCH	279v279	PASS	ControlledCount twin; cube in statement order (f = t*t; f *= t)
+008525f0	RELOCATION_MATCH	288v288	PASS	operator/(float) via reciprocal (CSEd across both increments), implicit operator= copies
+0087bf40	DIFFER	296v295	-	frame matched via reused C3DVector local; FPU pairing of the XAxis differences + edi-relative XAxis.Y read remain
+0087ba90	DIFFER	294v294	-	register rotation from the vtable-load placement after the module stores
+0087bbf0	RELOCATION_MATCH	298v298	PASS	distance float local preset 1.0f; C3DVector value ops + implicit operator= lea copies; inline CutCamera
+007621c0	DIFFER	243v243	-	this/iterator ebp-ebx swap, dx spill, push_back tag over the live argument slot
+007622c0	DIFFER	242v274	-	midpoint temporaries: retail partial by-value copies (36-byte frame) not reproduced; a/b register swap
+00aac1d0	RELOCATION_MATCH	266v266	PASS	nested success path (shared -1 tail), unnamed counted-pointer temp to push_back, sized CActiveSound
+009db700	DIFFER	266v266	-	scalar-store scheduling (flags load hoisted, colour copy registers)
+0086be40	DIFFER	292v294	-	empty-test loads folded [eax+ebx] before the element address add; ours adds first
+00f3a5d0	DIFFER	318v318	-	scheduling only: maxU prologue spill one slot early; epilogue pops hoisted between Flags test and RangeBias store
+0056eb48	DIFFER	305v305	-	scheduling only: fabs(step) spill one slot before the argument-slot CCharString setup

@@ -1,0 +1,13 @@
+address	name	evidence
+00c55b70	CAudioContext::Reset	not CScreenEffectPriorityStack (chunk 228)
+004b4e30	CQuestManager::SetQuestScriptPersistScript	not SetQuestMasterDataPersistScript (chunk 228)
+004b01b0	CQuestManager::IsRegionValidInRegionLockingMode	not CScriptBase::ProcessQuestRegions (chunk 228)
+00c0dab0	CString::CString	library CString copy ctor, not CShaderResource::Assign (chunk 228)
+0056e545	CSliderAnimator::CSliderAnimator	landed as CRecord_0056e545 "CDateAndTime"; layout matches PDB CSliderAnimator (chunk 228)
+00405f00	IntToWideString	__fastcall, not CGuiControlNumber::SetSLongValue (chunks 209/228)
+00557940	CKeyRedefiner::IsUndefined	not a CTCKraken label (chunk 228)
+00555eb0	CScrollableList::Initialise	(chunk 228)
+00a61fb0	CShaderRenderManager::LookupShaderData	shader-data lookup, not GetAbilityLevel; descriptive name (chunk 228)
+00a0aaa0	GetViewportBoxFloat	not DoSizeof (chunk 228)
+0084d070	GetCamera	(chunk 228)
+00a3ed30	CSoundBank::FindSample	(chunk 228)
