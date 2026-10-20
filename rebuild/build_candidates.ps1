@@ -251544,6 +251544,83 @@ $catalog = @(
         TestSource = '00/e4/CMTollBandit_Main_00e48a30_test.cpp'
         PassPattern = '00e48a30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004cb6e0'
+        Module = 'CTCPhysicsBase'
+        Source = '00/4c/CTCPhysicsBase_GetMapwhoPosition_004cb6e0.cpp'
+        TestSource = '00/4c/CTCPhysicsBase_GetMapwhoPosition_004cb6e0_test.cpp'
+        PassPattern = '004cb6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006afcb0'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_GetMapwhoPosition_006afcb0.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_GetMapwhoPosition_006afcb0_test.cpp'
+        PassPattern = '006afcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00728470'
+        Module = 'CTCRandomAppearanceMorph'
+        Source = '00/72/CTCRandomAppearanceMorph_vfunc4_00728470.cpp'
+        TestSource = '00/72/CTCRandomAppearanceMorph_vfunc4_00728470_test.cpp'
+        PassPattern = '00728470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075b2d0'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_OnCreate_0075b2d0.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_OnCreate_0075b2d0_test.cpp'
+        PassPattern = '0075b2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7c90'
+        Module = 'CTCFireheartMinigame'
+        Source = '00/7e/CTCFireheartMinigame_DrawPreparePrimitivesForRendering_007e7c90.cpp'
+        TestSource = '00/7e/CTCFireheartMinigame_DrawPreparePrimitivesForRendering_007e7c90_test.cpp'
+        PassPattern = '007e7c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00852220'
+        Module = 'NCameraModes::CScriptModuleFullTransition'
+        Source = '00/85/NCameraModesCScriptModuleFullTransition_Update_00852220.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleFullTransition_Update_00852220_test.cpp'
+        PassPattern = '00852220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008531e0'
+        Module = 'NCameraModes::CScriptModuleOpenGate'
+        Source = '00/85/NCameraModesCScriptModuleOpenGate_Update_008531e0.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleOpenGate_Update_008531e0_test.cpp'
+        PassPattern = '008531e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4e150'
+        Module = 'C3DAnimation2'
+        Source = '00/a4/C3DAnimation2_GetMovementAtTime_00a4e150.cpp'
+        TestSource = '00/a4/C3DAnimation2_GetMovementAtTime_00a4e150_test.cpp'
+        PassPattern = '00a4e150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aee8c0'
+        Module = 'CParticleEmitter'
+        Source = '00/ae/CParticleEmitter_Kill_00aee8c0.cpp'
+        TestSource = '00/ae/CParticleEmitter_Kill_00aee8c0_test.cpp'
+        PassPattern = '00aee8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caef70'
+        Module = 'IComObject_Retail'
+        Source = '00/ca/IComObjectRetail_vcall48_00caef70.cpp'
+        TestSource = '00/ca/IComObjectRetail_vcall48_00caef70_test.cpp'
+        PassPattern = '00caef70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4b10'
+        Module = 'CV_SwordInTheStoneScript'
+        Source = '00/ed/CVSwordInTheStoneScript_Init_00ed4b10.cpp'
+        TestSource = '00/ed/CVSwordInTheStoneScript_Init_00ed4b10_test.cpp'
+        PassPattern = '00ed4b10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,13 +1,13 @@
 // CTCRandomAppearanceMorph::vfunc_4() -- fetch the parent thing's skeletal-morph component (TC kind 120) into PTCSkeletalMorph when the thing has one; then rebuild the morph set
-// Grade: DIFFER(ours v retail) -- 71v71, one register: retail loads the found entry's TC pointer into eax (`mov eax,[eax+4] ; mov [edi+28h],eax`), the lane into ecx. Tried HasTC + GetTC (find returning the TC), a named thing local, an entry-returning find, the out-parameter GetInterface with the member as out pointer (inline and __forceinline)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00728470, length 71 bytes (slot 4 of the CTCRandomAppearanceMorph vtable 0x0126653C,
 // rtti-vtables.tsv).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the thing's component map at +0x44),
 // CTCRandomAppearanceMorph::UpdateMorphSet() @ 0x007280C0.
-// Shape: the thing's inline OUT-PARAMETER GetInterface(type, &out) (the landed 0x007504E0 shape) with the MEMBER's address as
-// the out pointer: the presence bitset word tested raw (kind 120 = word 3, bit 24: `test dword ptr [eax+2Ch],1000000h`), the
-// key in the `push ecx` frame slot, the map pointer a named local (esi, then overwritten by `last`), and the component loaded
-// into eax for the store.
+// Shape: the thing's inline OUT-PARAMETER GetInterface(type, &out) (the landed 0x007504E0 shape) into a LOCAL out pointer,
+// assigned to the member only when the lookup succeeds (`if (GetInterface(120, &morph)) PTCSkeletalMorph = morph;`): the
+// presence bitset word tested raw (kind 120 = word 3, bit 24: `test dword ptr [eax+2Ch],1000000h`), the key in the `push ecx`
+// frame slot, the map pointer a named local (esi, then overwritten by `last`), and the component loaded into eax for the
+// store (the member's own address as the out pointer loads it into ecx).
 // Layout = Ego_r.pdb CTCRandomAppearanceMorph with the 12-byte retail vector: CTCBase ParentThing +0x04, PMeshMorphSet +0x10,
 // Seed +0x18, PrimHandles +0x1c, PTCSkeletalMorph +0x28.
 struct CTCBase;
@@ -49,6 +49,8 @@ struct CTCRandomAppearanceMorph {
 
 void CTCRandomAppearanceMorph::vfunc_4()
 {
-    ParentThing->GetInterface(120, &PTCSkeletalMorph);
+    CTCBase* morph;
+    if (ParentThing->GetInterface(120, &morph))
+        PTCSkeletalMorph = morph;
     UpdateMorphSet();
 }

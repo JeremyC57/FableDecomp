@@ -1,11 +1,11 @@
 // NCameraModes::CScriptModuleOpenGate::Update() -- put the owning camera at Pos, aim it at the gate's helper point, then advance Pos by DeltaPos
-// Grade: DIFFER(117v117) -- only the X term of `Pos += DeltaPos`: retail `fld [edi] ; fadd [esi+68h]`, ours `fld [esi+68h] ; fadd [edi]` (Y/Z match). Tried direct call, appearance local, owner local (fixed the ebx/owner shape), operator+ form (adds a temporary). Scheduling-only.
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008531E0, length 128 bytes (117 + int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the graphic appearance's helper-point getter
 // @ 0x004C1060 (manifest "CTCGraphicAppearance::GetHelperPointOr"; C3DVector by hidden pointer, float arg).
 // Shape: plain implicit copies to the owner's Position (+0x54) and, from the returned temporary (read
-// through eax, no named local), LookAt (+0x10); then `Pos += DeltaPos` through an inline member operator+=.
+// through eax, no named local), LookAt (+0x10); then `Pos += DeltaPos` through an inline FREE Add(a, b) helper (both operands by
+// reference: the X term loads Pos first, `fld [edi] ; fadd [esi+68h]`; a member operator+= commutes it).
 // Layout: PDB NCameraModes::CScriptModuleOpenGate (0x74 bytes): PGate +0x54, Pos +0x5c, DeltaPos +0x68,
 // over CScriptModuleSelfTerminateBase (0x54 bytes; POwner +0x38). The gate's graphic appearance is
 // cached at CThing +0x64.
@@ -13,13 +13,6 @@ struct CBaseObject;
 
 struct C3DVector {
     float X, Y, Z;
-    C3DVector& operator+=(const C3DVector& other)
-    {
-        X += other.X;
-        Y += other.Y;
-        Z += other.Z;
-        return *this;
-    }
 };
 
 struct CTCGraphicAppearance {
@@ -49,6 +42,7 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
     const CThing* operator->() const { return (const CThing*)GetPItem(); }
 };
 
+static inline void Add(C3DVector& a, const C3DVector& b) { a.X += b.X; a.Y += b.Y; a.Z += b.Z; }
 namespace NCameraModes {
 
 struct CScriptModuleOpenGate {
@@ -68,7 +62,7 @@ void CScriptModuleOpenGate::Update()
     CTCGraphicAppearance* appearance = PGate->m_pGraphicAppearance;
     CCameraState* owner = POwner;
     owner->LookAt = appearance->GetHelperPointOrCentre(1.0f);
-    Pos += DeltaPos;
+    Add(Pos, DeltaPos);
 }
 
 }

@@ -8,3 +8,4 @@ address	name	evidence
 00686d20	CTCBase::GetWorldMap	reads a global; manifest GetDisplayEngine is propagated (retry 10)
 00729bc0	CTCActionUseScriptedHook::ResolveEntranceConnectedTo	CIntelligentPointer operator= body; propagated CTCPreCalculatedNavigationRoute label (retry 10)
 006c77e0	std::map<long,COpinionDeed*>::find	CTCHeroOpinionDeedLog::OpinionDeedMap; propagated BinaryTree_FindInsertPos label (retry 10)
+00caef70	??_9@$BDA@AG	VC7.1 vcall thunk, slot 12 of a __stdcall COM interface (DirectShow region); not CThingFilter_IsValid (retry 10)

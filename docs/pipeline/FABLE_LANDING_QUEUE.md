@@ -175,13 +175,13 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand148` | Hand chunk 148 (CModeDragonFlying .. CMouseDX): 26 of 40 byte-exact | - | 7 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand149` | Hand chunk 149 (CMovableResource .. CObjectTypeCollectionPalette): 34 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand150` | Hand chunk 150 (COpenCloseHelper .. CParentDefClassBase): 32 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
-| `2026-10-15_linux_hand151` | Hand chunk 151 (CParentDefClassBase .. CPatchTesselationEdgeStrip): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand151` | Hand chunk 151 (CParentDefClassBase .. CPatchTesselationEdgeStrip): 30 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand152` | Hand chunk 152 (CPatchTesselationEdgeStrip .. CPlayer): 36 of 40 byte-exact | - | 4 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand153` | Hand chunk 153 (CPlayer .. CQ_HangingTreeEvilScript): 33 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand154` | Hand chunk 154 (CQ_HangingTreeGoodScript .. CQuestManager): 33 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand155` | Hand chunk 155 (CQuestManager .. CRenderManagerCore): 29 of 40 byte-exact | - | 8 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand156` | Hand chunk 156 (CRenderManagerCore .. CScriptGameResourceObjectScriptedThing): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
-| `2026-10-15_linux_hand157` | Hand chunk 157 (CScriptGameResourceObjectScriptedThing .. CShaderRenderManager): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand157` | Hand chunk 157 (CScriptGameResourceObjectScriptedThing .. CShaderRenderManager): 35 of 40 byte-exact | - | 3 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand158` | Hand chunk 158 (CShaderRenderManager .. CSplinePosParamData): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand159` | Hand chunk 159 (CSplineRandomOffsetData .. CSurface): 26 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand160` | Hand chunk 160 (CSurface .. CTCBuyableHouse): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
@@ -192,7 +192,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand165` | Hand chunk 165 (CTCHeroStats .. CTCInventoryBase): 30 of 40 byte-exact | - | 9 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand166` | Hand chunk 166 (CTCInventoryBase .. CTCKraken): 32 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand167` | Hand chunk 167 (CTCKraken .. CTCOwnedEntity): 27 of 40 byte-exact | - | 11 | 0 | landed; parked rows open |
-| `2026-10-15_linux_hand168` | Hand chunk 168 (CTCParticleAttachmentTracker .. CTCQuestCard): 30 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand168` | Hand chunk 168 (CTCParticleAttachmentTracker .. CTCQuestCard): 30 of 40 byte-exact | - | 6 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand169` | Hand chunk 169 (CTCQuestCard .. CTCSmashableBarrier): 25 of 40 byte-exact | - | 12 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand170` | Hand chunk 170 (CTCSmashableBase .. CTCTavernGameCardPairs): 28 of 40 byte-exact | - | 10 | 2 | landed; parked rows open |
 | `2026-10-15_linux_hand171` | Hand chunk 171 (CTCTavernGameCardPairs .. CTCWeapon): 30 of 40 byte-exact | - | 7 | 1 | landed; parked rows open |
@@ -201,7 +201,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand174` | Hand chunk 174 (CThingFilter_In2DRangeLimit .. CThingPhysicalSwitch): 30 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand175` | Hand chunk 175 (CThingPhysicalSwitch .. CThingVillage): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand176` | Hand chunk 176 (CThreadedFileManager .. CV_SingingStonesScript): 31 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
-| `2026-10-15_linux_hand177` | Hand chunk 177 (CV_StatueMasterScript .. CVsyncCallbackTimer): 26 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand177` | Hand chunk 177 (CV_StatueMasterScript .. CVsyncCallbackTimer): 26 of 40 byte-exact | - | 12 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand178` | Hand chunk 178 (CWParsedItem .. CWorldMap): 32 of 40 byte-exact | - | 5 | 1 | landed; parked rows open |
 | `2026-10-15_linux_hand179` | Hand chunk 179 (CWorldMap .. CZoomingComponent): 28 of 30 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand180` | Hand chunk 180 (C2DLineF .. C3DQuadricBasedMeshOptimiser): 29 of 40 byte-exact | - | 7 | 0 | landed; parked rows open |
@@ -246,7 +246,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand901` | Chunk 901 -- the skipped-row ledger pieces (34 bodies from 15 multi-function catalogue rows) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand902` | Hand chunk 902 (CTCPerceiveThing .. CEnginePrimitiveManagerAnimatedMeshesBase): 3 of 5 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand903` | Chunk 903 -- skipped-ledger pieces (8 bodies from 2 multi-function rows), hand-authored by the coordinator (Fable 5.1) | 8 | 0 | 0 | STAGED: land it |
-| `2026-10-15_linux_hand904` | Chunk 904 -- skipped-ledger pieces (9 bodies from 3 multi-function rows), hand-authored by the coordinator (Fable 5.1) | - | 1 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand904` | Chunk 904 -- skipped-ledger pieces (9 bodies from 3 multi-function rows), hand-authored by the coordinator (Fable 5.1) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand905` | Chunk 905 (skipped-row ledger: the two functions of catalogue row 00837040) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand906` | Chunk 906 (skipped-row ledger: the two functions of catalogue row 009576c0) | - | 0 | 0 | done |
 | `2026-10-15_linux_hand907` | Chunk 907 (skipped-row ledger: the five functions of catalogue row 00f36ca0) | - | 0 | 0 | done |
@@ -260,8 +260,8 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-15_linux_hand95` | Hand chunk 95 (CTCInventoryMap .. CTCJackShield): 39 of 40 byte-exact | - | 0 | 1 | done |
 | `2026-10-15_linux_hand96` | Hand chunk 96 (CTCKraken .. CTCMeleeTrap): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
 | `2026-10-15_linux_hand97` | Hand chunk 97 (CTCMeleeTrap .. CTCParticleAttachmentTracker): 38 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
-| `2026-10-15_linux_hand98` | Hand chunk 98 (CTCParticleAttachmentTracker .. CTCPhysicsNavigator): 32 of 40 byte-exact | - | 4 | 1 | landed; parked rows open |
-| `2026-10-15_linux_hand99` | Hand chunk 99 (CTCPhysicsNavigator .. CTCRockTrollShield): 37 of 40 byte-exact | - | 2 | 0 | landed; parked rows open |
+| `2026-10-15_linux_hand98` | Hand chunk 98 (CTCParticleAttachmentTracker .. CTCPhysicsNavigator): 32 of 40 byte-exact | - | 2 | 1 | landed; parked rows open |
+| `2026-10-15_linux_hand99` | Hand chunk 99 (CTCPhysicsNavigator .. CTCRockTrollShield): 37 of 40 byte-exact | - | 1 | 0 | landed; parked rows open |
 | `2026-10-15_linux_retry1` | Retry batch 1 (Fable landing session) | - | 0 | 0 | done |
 | `2026-10-15_linux_retry2` | Retry batch 2 (Fable landing session): chunk 91 element-access rows | - | 0 | 0 | done |
 | `2026-10-15_linux_retry3` | Retry batch 3 (Fable landing session) | - | 0 | 0 | done |
@@ -287,7 +287,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand204` | Hand chunk 204 (CSecretWhisperingMan .. CSystemManager): 24 of 40 byte-exact | - | 13 | 1 | landed; parked rows open |
 | `2026-10-20_linux_hand205` | Hand chunk 205 (CSystemRegistry .. CTCCarriedActionUseFood): 22 of 40 byte-exact | - | 16 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand206` | Hand chunk 206 (CTCCarriedActionUseLamp .. CTCDivineWrath): 30 of 40 byte-exact | - | 10 | 0 | landed; parked rows open |
-| `2026-10-20_linux_hand207` | Hand chunk 207 (CTCDivineWrath .. CTCHeroAttachableAppearanceModifiers): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
+| `2026-10-20_linux_hand207` | Hand chunk 207 (CTCDivineWrath .. CTCHeroAttachableAppearanceModifiers): 25 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand208` | Hand chunk 208 (CTCHeroAttachableAppearanceModifiers .. CTCInventoryAbilities): 26 of 40 byte-exact | - | 12 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand209` | Hand chunk 209 (CTCInventoryBase .. CTCMeleeTrap): 19 of 40 byte-exact | - | 20 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand210` | Hand chunk 210 (CTCMeleeTrap .. CTCResurrectionItem): 26 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
@@ -298,7 +298,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand215` | Hand chunk 215 (CThingPlayerCreature .. CV_FishingCompetitionScript): 23 of 40 byte-exact | - | 13 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand216` | Hand chunk 216 (CV_FisticuffsClubScript .. CWorld): 30 of 40 byte-exact | - | 9 | 1 | landed; parked rows open |
 | `2026-10-20_linux_hand217` | Hand chunk 217 (CWorld .. CZTargetNew): 18 of 24 byte-exact | - | 5 | 0 | landed; parked rows open |
-| `2026-10-20_linux_hand218` | Hand chunk 218 (C2DLineF .. CAIStateGroup_HoverHornetQueen): 16 of 40 byte-exact | - | 23 | 0 | landed; parked rows open |
+| `2026-10-20_linux_hand218` | Hand chunk 218 (C2DLineF .. CAIStateGroup_HoverHornetQueen): 16 of 40 byte-exact | - | 22 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand219` | Hand chunk 219 (CAIStateGroup_KidHurtSelfRunToMother .. CAIStateGroup_VersusRockTroll): 15 of 40 byte-exact | - | 24 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand220` | Hand chunk 220 (CAIStateGroup_VillageTaskTorch .. CCombatRing): 22 of 40 byte-exact | - | 18 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand221` | Hand chunk 221 (CCombatRing .. CData): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
@@ -306,7 +306,7 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand223` | Hand chunk 223 (CEngineWeatherRenderer .. CInputProcessStrafe): 21 of 40 byte-exact | - | 19 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand224` | Hand chunk 224 (CIsHouseLargerThan .. CModeJackOfBladesScream): 15 of 40 byte-exact | - | 25 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **1170 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **1159 parked rows** for the Fable retry pass.
 
 ### Skipped rows (25 open of 50 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -799,7 +799,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00a62ae0 CPackedUIntArray::CalculateBias DIFFER(132v130): retail has no frame (counter in the dead `bits` slot, mask in the dead `count` slot, `data` in ebx at entry), ours opens `push ecx` for the mask/counter | tried: plain form, mask stored over `bits` | next: lane gap: several locals in dead argument slots
 
 
-#### `2026-10-15_linux_hand151` (9 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand151/differ/`)
+#### `2026-10-15_linux_hand151` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand151/differ/`)
 - 009b00d0 CParentDefClassBase::AddSubDef DIFFER(163v155): placement copy of the pair reads `second` back from the frame (`mov edx,[esp+14h] ; mov [ecx+4],edx` x2) where retail stores edi/ebx | tried: field-wise pair, pair ctor from CSubDefInfo temp, Add(key, def, parent) with CSubDefInfo ctor, memberwise CSubDefInfo copy ctor | next: pair built with a by-value ctor of three scalars, or `make_pair(key, CSubDefInfo(d, p))` passed by value
 - 009b0170 CParentDefClassBase::RemoveSubDef DIFFER(140v138): key and random_access_iterator_tag both homed in the dead `name` slot by retail; lane opens a `push ecx` word for the key | tried: key local, by-value inline Remove, const& Remove | next: lane gap: several short-lived locals sharing one dead argument slot
 - 009b9700 CParsedItem::InitAsInteger DIFFER(91v103): retail threads the zero-length path (own `mov [ecx],3 ; ret` exit, `xor bl,bl` with edx as shared zero/index) where the lane keeps one tail with `cmp bl,1`; `[edx+edi+1]` operand order | tried: bool / unsigned char flag, preloaded char with `text[i+1]`, declaration order | next: an explicit `if (length == 0) { Type = 3; return; }` guard or a do/while form
@@ -865,7 +865,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00cb88b0 CScriptBase::OnScriptedEntityDeactivated DIFFER(131v128): retail keeps the re-read key in edx/ebx and tests the bool with `cmp byte ptr [esp+1Ch],0`; ours ecx/edx + `mov esi,ecx` and `mov bl ; test bl` | tried: find(const&), __forceinline by-value find, open-coded LowerBound + const copy, const copy after find | next: register allocation; maybe the key compare inside a CKeyPairCompareLess functor
 
 
-#### `2026-10-15_linux_hand157` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand157/differ/`)
+#### `2026-10-15_linux_hand157` (3 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand157/differ/`)
 - 00852750 NCameraModes::CScriptModuleBase::SetPThingOrigin DIFFER(154v152): retail keeps the placeholder (`[thing+60h]`) in ecx (`lea edx,[ecx+0Ch]` source, `lea eax,[esi+14h]` dest) so the slot-72 virtual needs no `mov ecx`; ours holds it in eax and adds `mov ecx,eax` | tried: inline accessors through the intelligent pointer, placeholder local, thing local, user C3DVector operator= / copy ctor | next: a CThing inline that returns the placeholder by reference, or the position/axis getters as placeholder members called on a `CPlaceholder&`
 - 008520f0 NCameraModes::CScriptModuleFOVZoom::CalculateIncrementVector DIFFER(130v106): retail keeps diff.x/diff.y on the x87 stack (only diff.z stored at [esp+14h]) and stores the 1/frames reciprocal in the dead `to` argument slot; ours spills the operator- result to a frame temporary and copies it | tried: operator- + operator*(1/frames), named inv local, operator/(float), scalar dx/dy/dz locals (84 bytes, no temporary at all) | next: `C3DVector diff(to.X - from.X, ...)` style or an operator- returning through a 3-float ctor; else lane gap: dead-argument-slot float local
 - 00852220 NCameraModes::CScriptModuleFullTransition::Update DIFFER(133v133): second sum's X term only: retail `fld [esi+4Ch] ; mov eax,[esi+38h] ; fadd [eax+10h]`, ours `mov eax ; fld [eax+10h] ; fadd [esi+4Ch]`; swapping the operands fixes X but flips Y/Z | tried: both operand orders | next: lane gap: scheduling
@@ -994,7 +994,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00771770 CTCOpinionSource::CleanupSource DIFFER(150v151): register choice only, this in ebp and the next-node cursor in ebx (retail ebx/ebp) | tried: it/node loop forms, owner local, declaration order | next: lane gap: register choice (scheduling-only)
 
 
-#### `2026-10-15_linux_hand168` (7 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand168/differ/`)
+#### `2026-10-15_linux_hand168` (6 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand168/differ/`)
 - 0071a9c0 CTCParticleAttachmentTracker::UpdateAttachedParticles DIFFER(111v118): retail this in esi spilled to the push-ecx slot + time in ebp, ours this in ebx and time re-read | tried: GetInterface out-pointer, HasTC/GetTC, self local, /Oa | next: lane gap: register allocation
 - 007445e0 CTCPerceiveThing::CTCPerceiveThing DIFFER(128v128): -1 store and ParentThing load scheduled differently | tried: body assignments in retail order, init list, UpdateOffset in init list | next: lane gap: store scheduling
 - 007446b0 CTCPerceiveThing::SetPerceivedThing DIFFER(124v124): this edi / &PerceivedThing esi swapped (member address formed before the temp's GetPItem) | tried: temporary, named local in a block | next: same as 00729bc0, try an inline member SetPerceivedThing helper on the pointer
@@ -1100,7 +1100,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 006bc210 CRegion::Reset (label CV_SingingStonesScript::Init) DIFFER(124v124): ours hoists `xor eax,eax` above the MiniMapScale 1.0f store | tried: member stores, C2DVector(0,0), chained `a = b = 0` | next: lane gap: scheduling
 
 
-#### `2026-10-15_linux_hand177` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand177/differ/`)
+#### `2026-10-15_linux_hand177` (12 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand177/differ/`)
 - 00ed4b10 CV_SwordInTheStoneScript::Init DIFFER(122v122): timer index `mov edx,[esi+7Ch]` hoisted above the first flag stores | tried: direct SetTimer call, CTimer::SetTime helper, named locals | next: lane gap: scheduling
 - 007f9660 CVectorCompare_BestForTargeting::GetCompareValueForPoint DIFFER(130v130): x87 squares X first where retail squares Y first | tried: X+Y+Z, Dot(*this), Y+X+Z | next: `s = dy*dy; s += dx*dx; s += dz*dz;` chain (the 0x00860A50 fix)
 - 00cbd5d0 CVectorMap_EntryScriptBase::InsertEntry DIFFER(168v145): pair temporary words re-read from the frame after `inc [info]` where retail keeps them in ecx/edx/ebp/esi | tried: member-init copy ctor, local-pointer copy ctor, /Oa | next: build the pair words as by-value parameters of a __forceinline push helper
@@ -1482,10 +1482,6 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00bd71b0 CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitive DIFFER(2121v2116): retail `fstp [esp+34h] ; fld [esp+34h] ; mov edx,[esp+58h] ; fistp dword [edx]` (inline-asm FtoL) v `call __ftol2`; retail loads the sphere radius first (`fld [eax+34h]` ... `fadd st(1)` ... `fstp st(0)`), so the transform terms then start z*m20 v lane y*m10; `sub esp,294h` v `290h` with slots shifted (`this` +0Ch v +10h, radius +10h v +18h); ebx/ebp swapped (retail ebx = view/visibility, ebp = new record/mesh kept across the loop; lane spills the mesh pointer); plane dot-product order; `movzx esi,al` form | tried: v1 from the static model (504 lines), v2 if/else type chain 11/38 (best: 486 lines); radius forms probed (by value, by reference, local radius, sphere copy, member helper, explicit sqrt) all load R last | next: lane gap: inline asm (FtoL) + compiler-build x87 scheduling (hoisted radius load)
 
 
-#### `2026-10-15_linux_hand904` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand904/differ/`)
-- 00caef70 func_00caef70 DIFFER(13v9): argument-slot re-store before a tail-called __stdcall method | tried: __stdcall/__cdecl free function, static member, __stdcall member, C-style COM tables (typed / void*), size pragma | next: lane gap (argument-slot reuse)
-
-
 #### `2026-10-15_linux_hand91` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand91/differ/`)
 - 0057de14 CTCHeroStats::ApplyPenaltyForDeath DIFFER(67v67): second def-object load `mov ecx,[eax+0DCh] ; mov eax,[ecx+58h]` where retail keeps eax (`mov eax,[eax+0DCh] ; mov eax,[eax+58h]`) | tried: inline `-abs(...)` args, `-abs` local, `abs` local, raw-value local | next: lane gap: register allocation (scheduling-only)
 - 00584b42 CTCInventory::ClosePCInventoryMenu DIFFER(70v68): ours `mov eax,[eax+4] ; mov edx,[eax] ; mov ecx,eax ; call [edx+7Ch]`, retail `mov ecx,[eax+4] ; mov eax,[ecx] ; call [eax+7Ch]` | tried: T** out, T*& out, split HasInterface/FindInterface helpers, no "s" | next: lane gap: register choice at a virtual call (sibling rows 00584af6/00584fe3 with the same template match)
@@ -1509,7 +1505,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0071a850 CTCParticleAttachmentTracker::vfunc_16 DIFFER(78v78): retail node in edi / value address in esi (push edi, ebx, esi), lane node in esi / value in edi | tried: reference local, pointer locals in both declaration orders, direct member path, VC6 list iterator object | next: lane gap: callee-saved register colouring in a list walk
 
 
-#### `2026-10-15_linux_hand98` (4 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand98/differ/`)
+#### `2026-10-15_linux_hand98` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand98/differ/`)
 - 00724fc0 CTCPhysicsControlled::ClearMovement (vfunc_35) DIFFER(48v48): lane hoists `mov dl,[ecx+0A0h] ; and dl,0FEh ; or dl,2` above the three `xor`-register ImpulseVelocity zero stores (retail keeps source order: stores, bit RMW, Velocity stores) | tried: separate Z/Y/X stores, chained `X = Y = Z = 0`, bool:1 vs unsigned char:1 bitfields | next: lane gap: load scheduling across independent stores (same as 00724f80)
 - 00724f80 CTCPhysicsControlled::OnCreate DIFFER(53v53): lane hoists `mov cl,[esi+3Ch]` above the three ImpulseVelocity zero stores (retail loads both flag bytes after them) | tried: bool:1 / unsigned char:1 bit-field views (give `or byte ptr [m],1` memory RMW, 41 bytes), /G5 /G6 /G7, plain byte `|=`/`&=` (best, same instruction set), C3DVector temporary assignment (89 bytes) | next: lane gap: load scheduling across independent stores
 - 004cb6e0 CTCPhysicsBase::GetMapwhoPosition DIFFER(51v51): `fld [esi+10h] ; fadd [eax+4]` / `fld [esi+0Ch] ; fadd [eax]` where retail loads the returned offset first (`fld [eax+4] ; fadd [esi+10h]`) | tried: named C2DVector local (retail operand order but reads the frame, 54 bytes), const-ref local, inline helper taking the call result by reference (both operand orders: VC commutes), helper taking floats by value (67 bytes) | next: helper parameter order (offset first, position second) or an inline `C2DVector + C3DVector` operator
@@ -1519,7 +1515,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 00c462e0 _unattributed::CFloatQuad::Interpolate (catalogued CTCPhysicsControlled::GetRenderZOffset) DIFFER(40v51): retail loads all four corners, spills the first row's lerp to an 8-byte frame (`sub esp,8 ; fstp [esp] ; fstp st(0)`) and re-reads it twice (`fsub [esp]`, `fadd [esp]`); the lane keeps it on the x87 stack | tried: value locals + by-value Lerp, reference-parameter Lerp (35 bytes), value locals + reference Lerp, target-first helper nested call; /Op (86 bytes) | next: an 8-byte two-float struct local (C2DVector of the two row results) -- the frame size suggests one
 
 
-#### `2026-10-15_linux_hand99` (2 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand99/differ/`)
+#### `2026-10-15_linux_hand99` (1 parked; sources in `rebuild/candidates/manual/pending/2026-10-15_linux_hand99/differ/`)
 - 007268d0 CTCPhysicsNavigator::OnCreate DIFFER(69v69): retail `mov byte [esi+88h],1 ; xor eax,eax`, lane `xor eax,eax ; mov byte [esi+88h],1` | tried: Z/Y/X member stores, X=Y=Z and Z=Y=X chains, inline ClearImpulse helper, Navigating before ForcedMoveToPosSet, C3DVector(0,0,0) temporary | next: lane gap: scheduling (zero-register hoist)
 - 00c6b720 SBodyRecord_00c55030::Reset DIFFER(35v37): retail copies through edx (source) / esi (dest) / edi (carrier) with `xor eax,eax` inside the copy, lane uses eax / edx / esi and zeroes after | tried: float zeros, long zeros, named source pointer, zero-constructed C3DVector temporary | next: lane gap: register allocation (try the record as part of its 0x24-byte owner TU or a differently typed rest vector)
 - 00728470 CTCRandomAppearanceMorph::vfunc_4 DIFFER(71v71): retail `mov eax,[eax+4] ; mov [edi+28h],eax`, lane `mov ecx,[eax+4] ; mov [edi+28h],ecx` | tried: HasTC + GetTC find, named thing local, entry-returning find, out-parameter GetInterface with the member as the out pointer (inline and __forceinline) | next: lane gap: register choice for the found component (try GetInterface into a local then a separate member store)
@@ -1812,7 +1808,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 - 0078e820 CTCDivineWrath::SetPTarget DIFFER(218v220): one instruction: the explicit CIntelligentPointerConstThing(target) temporary reuses eax as this where retail re-addresses it with `lea ecx,[esp+8]` | tried: base operator=, copy+converting operator=, GetPItem local, forceinline operator= | next: `PTarget = target;` (implicit conversion temporary, GOTCHAS wave 11) -- very likely MATCH
 
 
-#### `2026-10-20_linux_hand207` (15 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand207/differ/`)
+#### `2026-10-20_linux_hand207` (14 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand207/differ/`)
 - 00730a00 CTCDoor::PlaySoundW DIFFER(212v210): base-def load after the component load; sub-def copied ecx->edi where retail forms `lea ecx,[edi+28h]` | tried: const vs non-const Destroy/RefCount, inline ~CDefPointer, named holder local (4 grades) | next: hand the holder copy a forceinline accessor that returns the def pointer by value
 - 007310c0 CTCDoor::UpdateOpenStatusTriggerTypeScript DIFFER(163v163): only the out def pointer's zero store (retail right before GetSubDef, ours before Open(true)) | tried: out local before/after Open, block scope (4 grades) | next: declare the out pointer inside the GetSubDef call's condition (`if (CDefPointer<..> p = ..)`-style init)
 - 00750be0 CTCExplodingObject::CTCExplodingObject DIFFER(242v234): sub-def out slots swapped and zeroed by immediates where retail shares the ebp zero | tried: declaration order swaps, explosion pointer init 0 before/after (4 grades) | next: init the explosion pointer from a shared zero local declared first
@@ -2003,7 +1999,7 @@ Groups: register-assignment/scheduling only (0056ef6f, 005d9070, 0061a9d0, 0061a
 - 00757440 CWound::UpdateDecal DIFFER(179v179): retail calls _ftol2 for the alpha before the TextureIndex/BlendType/colour stores (alpha in al, stores through ecx); ours stores first then converts, and the AddDecal argument loads rotate | tried: blend-desc ctor with colour temporaries (195), member-wise fill + inline Set, alpha named local (uchar and long) | next: lane gap: call/store scheduling (or a CCompositeBlendDesc member function taking the alpha)
 
 
-#### `2026-10-20_linux_hand218` (23 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand218/differ/`)
+#### `2026-10-20_linux_hand218` (22 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand218/differ/`)
 - 00a57030 C2DLineF::Intersects2D DIFFER(271v265): this in edx / other in esi (retail esi/edx), first OnLeft pair laid out with the a-true arm falling into the second pair | tried: static/forceinline/member IsSame, ==, (a&&!b)||(!a&&b), (a&&b)||(!a&&!b), nested if/else; OnLeft real body above under auto_inline(off) (gives retail's no-reload ecx/edx) | next: other point compare order (other.IsSame(this)), named const C2DLineF& local
 - 00a4e150 C3DAnimation2::GetMovementAtTime DIFFER(256v256): X term of the keyframe add is `fld [esp+4] ; fadd [esp+38h]` (retail loads the key first; Y, Z match) | tried: inline operator+= `X = o.X + X` (all three reversed), `X += o.X` (X only reversed), body-level `m.X = key.X + m.X` (all reversed) | next: body-level `movement.X += keyframe.Position.X;` per component, or `movement = movement + key` via a by-value operator+
 - 00a26730 C3DAnimationInfo::BeginLoading DIFFER(250v249): register rotation only -- ours keeps the size in eax past the CreateEntry pushes (`mov ecx,[esi+8] ; ... ; mov ebx,eax`), loads the priority global into ecx and the entry object early, Reset uses eax for the vtable; retail eax/ecx/edx | tried: landed CEmitterData::BeginLoading model, Reset with/without the local copy, operator= void, named new-data local | next: lane gap: register allocation (same shape as the landed 0x00AF1360, which matched)

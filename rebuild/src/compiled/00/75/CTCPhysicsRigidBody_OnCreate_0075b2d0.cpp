@@ -1,5 +1,4 @@
 // CTCPhysicsRigidBody::OnCreate() -- start with OldRHSet = RHSet and a zero offset, build the physics mesh info from the parent's graphic data when it has a graphic appearance, take the offset from the mesh info's centre (XY), run the base OnCreate and set up the rigid body
-// Grade: DIFFER(ours v retail) -- 127v127 scheduling only: retail loads ParentThing (mov edx,[esi+4]) after the two zero stores, ours hoists it above the last RHSet dword pair; tried a pre-declared graphic local
 // Leaf: OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075B2D0, 127 bytes. CTCPhysicsRigidBody vtable 0x0126996C slot 4 (OnCreate).
 // Callees: CTCPhysicsBase::CreatePPhysicsMeshInfo(const CGraphicDataRef&) @ 0x006B05A0, virtual slot 93 (+0x174,
@@ -7,14 +6,17 @@
 //   non-virtually), CTCPhysicsRigidBody::InitialiseBody @ 0x0075B000 (tail jump).
 // Layout: as the ctor 0x0075AA80: PPhysicsMeshInfo +0x64, RHSet +0x68, OldRHSet +0x80, OffsetVector +0x98 (C2DVector);
 //   CThing +0x64 PGraphicAppearance, whose graphic data reference sits at +0x44; CThingPhysicsMeshInfo ToCentre +0x08.
-// Shape: the set copy is an implicit POD assignment; the zero offset is two member stores from one zero register (a
-//   `C2DVector(0, 0)` temporary goes through the frame); the offset copy takes &info->ToCentre and copies X, Y.
+// Shape: the set copy is an implicit POD assignment; the zero offset is an inline `OffsetVector.Set(0.0f, 0.0f)` member
+//   (two stores from one zero register; stores through the member's `this` keep the ParentThing load AFTER them, as
+//   retail -- direct member stores let VC hoist `mov edx,[esi+4]` above the last RHSet pair; a `C2DVector(0, 0)`
+//   temporary goes through the frame); the offset copy takes &info->ToCentre and copies X, Y as dwords.
 struct C3DVector { float X, Y, Z; };
 struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
 struct C2DVector {
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
+    void Set(float x, float y) { X = x; Y = y; }
 };
 struct CThingPhysicsMeshInfo {
     unsigned short BankIndex;                   // +0x00
@@ -68,8 +70,7 @@ struct CTCPhysicsRigidBody : CTCPhysicsBase {
 void CTCPhysicsRigidBody::OnCreate()
 {
     OldRHSet = RHSet;
-    OffsetVector.X = 0;
-    OffsetVector.Y = 0;
+    OffsetVector.Set(0.0f, 0.0f);
     CTCGraphicAppearance* graphic = ParentThing->PGraphicAppearance;
     if (graphic)
         CreatePPhysicsMeshInfo(*(const CGraphicDataRef*)graphic->GraphicData);

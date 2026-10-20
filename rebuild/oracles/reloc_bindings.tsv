@@ -19040,3 +19040,12 @@ __imp__realloc	01440054	00c90fc0
 ?IsDone@CKrakenMinion@@QAE_NXZ	00f35b30	00df4610
 ?RegisterFilter@CKrakenMinion@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00df4610
 ?IsDone@CM_TollBandit@@QAE_NXZ	00f35b30	00e48a30
+?CreatePPhysicsMeshInfo@CTCPhysicsBase@@QAEXABUCGraphicDataRef@@@Z	006b05a0	0075b2d0
+?InitialiseBody@CTCPhysicsRigidBody@@QAEXXZ	0075b000	0075b2d0
+?OnCreate@CTCPhysicsBase@@UAEXXZ	006b0780	0075b2d0
+??0CEnginePrimitive2DSprite@@QAE@_KABUC2DBoxF@@JKKJJMMEEEEKABUC2DVector@@2@Z	0041beb0	007e7c90
+?GetRenderTargetDimensions@CDisplayManager@@QBE?AUC2DExtentsI@@XZ	009bedc0	007e7c90
+?erase@?$CRetailVector@VCEnginePrimitiveHandle@@@@QAEXPAVCEnginePrimitiveHandle@@0@Z	00440d70	007e7c90
+?push_back_default@?$CRetailVector@VCEnginePrimitiveHandle@@@@QAEXXZ	005ed940	007e7c90
+?GetHelperPointOrCentre@CTCGraphicAppearance@@QBE?AUC3DVector@@M@Z	004c1060	008531e0
+?Kill@CParticleSystem@@QAEXXZ	00af5870	00aee8c0

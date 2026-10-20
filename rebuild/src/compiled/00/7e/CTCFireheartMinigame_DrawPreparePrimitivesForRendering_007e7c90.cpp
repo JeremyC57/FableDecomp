@@ -1,13 +1,15 @@
-// Grade: DIFFER(230v230) -- only diff: the box's TopLeft zero stores are scheduled after the uv-vector zero stores (retail before); registers/frame/pushes match
 // CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- drop last frame's primitives; while the delayed quit runs, cover the render target with a full-screen sprite
 // Leaf: DrawPreparePrimitivesForRendering
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E7C90, length 230 bytes (+ int3 padding). __thiscall, `ret 4`.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E7C90, length 230 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         CTCFireheartMinigame vtable slot 11 (the catalog's "vfunc_11"); Ego_r.pdb
 //         `?DrawPreparePrimitivesForRendering@CTCFireheartMinigame@@UAEXABVCEnginePrimitivePrepareInfo@@@Z`.
 // Callees: vector<CEnginePrimitiveHandle>::erase(first, last) @ 0x00440D70, CDisplayManager::GetRenderTargetDimensions()
 //          const @ 0x009BEDC0 (C2DExtentsI by hidden pointer) on g_pDisplayDevice @ 0x013B8390,
 //          CEnginePrimitive2DSprite ctor (16 arguments) @ 0x0041BEB0, the handle vector's grow-by-one @ 0x005ED940, the
 //          renderer's virtual slot 23 (+0x5C) on info +0x34.
+// Shape: the box is a NAMED local (`C2DBoxF box(0, 0, w, h)`) and the two uv C2DVector(0, 0) are temporaries in the
+//   sprite constructor call: the named box pins its TopLeft zero stores ABOVE the uv zero stores (a box temporary sinks
+//   them below).
 // Layout: retail CTCFireheartMinigame: QuitWithDelay +0x88, Handles +0x8C (12-byte STLport vector of 8-byte handles).
 class CEnginePrimitiveHandle {
 public:
@@ -78,8 +80,8 @@ void CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimit
     Handles.clear();
     if (QuitWithDelay) {
         C2DExtentsI size = g_pDisplayDevice->GetRenderTargetDimensions();
-        CEnginePrimitive2DSprite sprite(0, C2DBoxF(0.0f, 0.0f, (float)size.X, (float)size.Y), 0x4a, 0, 0, 2,
-                                        0, 0.0f, 0.0f, 0xff, 0, 0, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
+        C2DBoxF box(0.0f, 0.0f, (float)size.X, (float)size.Y);
+        CEnginePrimitive2DSprite sprite(0, box, 0x4a, 0, 0, 2, 0, 0.0f, 0.0f, 0xff, 0, 0, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         Handles.push_back_default();
         info.Renderer->AddPrimitive(Handles._M_finish - 1, sprite, 0x40);
     }

@@ -1,0 +1,45 @@
+addr       parity           behav  name
+004cb6e0   MATCH            PASS   GetMapwhoPosition
+006afcb0   MATCH            PASS   GetMapwhoPosition
+00728470   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+00728470   RELOCATION_MATCH PASS   vfunc_4
+0075b2d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0075b2d0   RELOCATION_MATCH PASS   OnCreate
+007e7c90   WARN RELOC_NAME: ?GetRenderTargetDimensions@CDisplayManager@@QBE?AUC2DExtentsI@@XZ -> 009bedc0 labelled 'CMessageEventFilter_IsOriginatedByThing::CMessageEventFilter_IsOriginatedByThing'
+007e7c90   WARN RELOC_NAME: ?push_back_default@?$CRetailVector@VCEnginePrimitiveHandle@@@@QAEXXZ -> 005ed940 labelled 'CEnginePrimitiveRenderer::AddPrimitive'
+007e7c90   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+00852220   WARN RELOC_NAME: ?GFGetCurrentFrame@@YIJXZ -> 0049d870 labelled 'GFGetPreMainMemoryUsed'
+00852220   RELOCATION_MATCH PASS   Update
+008531e0   RELOCATION_MATCH PASS   Update
+00a4e150   RELOCATION_MATCH PASS   GetMovementAtTime
+00aee8c0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aee8c0   RELOCATION_MATCH PASS   Kill
+00caef70   MATCH            PASS   vcall{48}
+00ed4b10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ed4b10   RELOCATION_MATCH PASS   Init
+
+WINS: 11
+  004cb6e0 MATCH CTCPhysicsBase::GetMapwhoPosition
+  006afcb0 MATCH CTCPhysicsBase::GetMapwhoPosition
+  00728470 RELOCATION_MATCH CTCRandomAppearanceMorph::vfunc_4
+  0075b2d0 RELOCATION_MATCH CTCPhysicsRigidBody::OnCreate
+  007e7c90 RELOCATION_MATCH CTCFireheartMinigame::DrawPreparePrimitivesForRendering
+  00852220 RELOCATION_MATCH NCameraModes::CScriptModuleFullTransition::Update
+  008531e0 RELOCATION_MATCH NCameraModes::CScriptModuleOpenGate::Update
+  00a4e150 RELOCATION_MATCH C3DAnimation2::GetMovementAtTime
+  00aee8c0 RELOCATION_MATCH CParticleEmitter::Kill
+  00caef70 MATCH IComObject_Retail::??_9@$BDA@AG
+  00ed4b10 RELOCATION_MATCH CV_SwordInTheStoneScript::?Init@CV_SwordInTheStoneScript@@
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  CTCPhysicsBase_GetMapwhoPosition_004cb6e0
+  CTCPhysicsBase_GetMapwhoPosition_006afcb0
+  CTCRandomAppearanceMorph_vfunc4_00728470
+  CTCPhysicsRigidBody_OnCreate_0075b2d0
+  CTCFireheartMinigame_DrawPreparePrimitivesForRendering_007e7c90
+  NCameraModesCScriptModuleFullTransition_Update_00852220
+  NCameraModesCScriptModuleOpenGate_Update_008531e0
+  C3DAnimation2_GetMovementAtTime_00a4e150
+  CParticleEmitter_Kill_00aee8c0
+  IComObjectRetail_vcall48_00caef70
+  CVSwordInTheStoneScript_Init_00ed4b10
