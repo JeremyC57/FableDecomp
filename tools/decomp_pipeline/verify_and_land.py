@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Verify authored candidates (byte-match + behaviour) and auto-land the wins.
 Usage: python verify_and_land.py <workflow_output.json> <oracle.tsv>
-       [--land] [--prune-outside-manifest] [--recheck-landed]
+       [--land] [--prune-outside-manifest] [--recheck-landed] [--qfe | --toolkit]
 Env:   FABLE_ROOT, FABLE_VC71, FABLE_OBJDUMP override the Windows paths; FABLE_WINE=wine runs the
        VC7.1 tools through Wine (FABLE_VC71_LIB adds library directories, os.pathsep-separated).
        python verify_and_land.py --prune-fragment-report <report.md>
@@ -20,7 +20,10 @@ WINE = os.environ.get("FABLE_WINE")
 # Alternate 13.10.4035 QFE toolset (WinDDK 3790.1830 c1xx.dll+c2.dll). --qfe swaps the
 # compiler binaries only; headers/libs stay RTM. See docs/pipeline/QFE4035_COMPILER_GATE.md.
 QFE = Path(os.environ.get("VC71_QFE", r"D:\Tools\vc71-qfe4035"))
-CL_EXE = VC / "bin" / "cl.exe"   # active compiler (reset by use_qfe())
+# Visual C++ Toolkit 2003 (cl 13.10.3052, pre-RTM). --toolkit swaps the compiler binaries only.
+# Its /GS code generation matches retail where the 4035 build does not (2026-10-20, FINDINGS_LOG).
+TOOLKIT = Path(os.environ.get("VC71_TOOLKIT", r"D:\Tools\vctk2003"))
+CL_EXE = VC / "bin" / "cl.exe"   # active compiler (reset by use_qfe()/use_toolkit())
 CC_BIN = VC / "bin"             # active compiler's bin dir (for PATH)
 SP = ROOT / "rebuild" / "build"
 WORK_ROOT = Path(os.environ.get("LANDVERIFY_WORK", SP / "landverify"))
@@ -147,6 +150,21 @@ def use_qfe():
             f"(c1xx.dll+c2.dll+cl.exe from WinDDK 3790.1830) there, or set $VC71_QFE. "
             f"See docs/pipeline/QFE4035_COMPILER_GATE.md")
     CL_EXE, CC_BIN = clexe, QFE / "bin"
+
+def use_toolkit():
+    """Switch the parity compiler to the Visual C++ Toolkit 2003 (13.10.3052). Fails loudly if absent."""
+    global CL_EXE, CC_BIN
+    clexe = TOOLKIT / "bin" / "cl.exe"
+    if not clexe.exists():
+        raise FileNotFoundError(
+            f"Visual C++ Toolkit 2003 not found: {clexe}\nInstall VCToolkitSetup.exe (archive.org item "
+            f"microsoft-visual-c-toolkit-2003, SHA-1 956c81c3106b97042c4126b23c81885c4b5211f4) there or set $VC71_TOOLKIT.")
+    CL_EXE, CC_BIN = clexe, TOOLKIT / "bin"
+
+def use_default():
+    """Back to the default parity compiler (FABLE_VC71)."""
+    global CL_EXE, CC_BIN
+    CL_EXE, CC_BIN = VC / "bin" / "cl.exe", VC / "bin"
 
 def wpath(p):
     """A path as the VC7.1 tools must see it: unchanged on Windows, Z:\\... under Wine."""
@@ -411,9 +429,13 @@ def main():
     outf=Path(sys.argv[1]); oraclef=Path(sys.argv[2]); land="--land" in sys.argv
     prune="--prune-outside-manifest" in sys.argv
     qfe="--qfe" in sys.argv
+    toolkit="--toolkit" in sys.argv
     recheck="--recheck-landed" in sys.argv   # dry-run already-landed rows again (lane control)
+    if qfe and toolkit: raise SystemExit("--qfe and --toolkit are exclusive")
     if qfe:
         use_qfe(); print(f"[toolset] QFE-4035 compiler: {CL_EXE}")
+    if toolkit:
+        use_toolkit(); print(f"[toolset] Visual C++ Toolkit 2003 compiler: {CL_EXE}")
     data=json.loads(outf.read_text(encoding="utf-8"))["result"]["authored"]
     oracle_rows=list(csv.DictReader(open(oraclef,encoding="utf-8-sig"),delimiter="\t"))
     required_oracle_fields={"address", "name", "length", "bytes"}
@@ -548,7 +570,7 @@ def main():
                 flagline=f"        CompilerFlags = '{' '.join(BASE_FLAGS+w['flags'])}'\n"
             # Record the toolset so the real build recompiles QFE wins with 13.10.4035
             # (RTM cannot reproduce their bytes). See docs/pipeline/QFE4035_COMPILER_GATE.md.
-            compilerline="        Compiler = 'qfe4035'\n" if qfe else ""
+            compilerline="        Compiler = 'qfe4035'\n" if qfe else ("        Compiler = 'vctk3052'\n" if toolkit else "")
             entries.append("    [pscustomobject]@{\n"
                 f"        Address = '{w['addr']}'\n        Module = '{w['module']}'\n"
                 f"        Source = '{source_rel}'\n        TestSource = '{test_rel}'\n"

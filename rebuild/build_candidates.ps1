@@ -12,6 +12,9 @@ $vcRoot = 'D:\Tools\vc71'
 # (~11 retail objects RTM 3077 cannot reproduce) compile with this cl.exe; headers/libs stay
 # RTM. Override with $env:VC71_QFE. See docs/pipeline/QFE4035_COMPILER_GATE.md.
 $vcQfeRoot = if ($env:VC71_QFE) { $env:VC71_QFE } else { 'D:\Tools\vc71-qfe4035' }
+# Visual C++ Toolkit 2003 (cl 13.10.3052, pre-RTM). Entries tagged Compiler='vctk3052' (/GS rows whose
+# stack-cookie codegen neither RTM 3077 on this box nor QFE 4035 reproduces) compile with it.
+$vcToolkitRoot = if ($env:VC71_TOOLKIT) { $env:VC71_TOOLKIT } else { 'D:\Tools\vctk2003' }
 $sourceRoot = Join-Path $rebuildRoot 'src\compiled'
 $outDir = Join-Path $rebuildRoot "build\candidates-$Configuration"
 $reportDir = Join-Path $rebuildRoot 'compile-gate'
@@ -248018,6 +248021,11 @@ try {
                 throw "Entry $($entry.Address) needs the QFE-4035 toolset but $vcQfeRoot\bin\cl.exe is missing (see docs/pipeline/QFE4035_COMPILER_GATE.md)"
             }
             $vcQfeRoot
+        } elseif ($entry.PSObject.Properties['Compiler'] -and $entry.Compiler -eq 'vctk3052') {
+            if (-not (Test-Path -LiteralPath (Join-Path $vcToolkitRoot 'bin\cl.exe'))) {
+                throw "Entry $($entry.Address) needs the Visual C++ Toolkit 2003 compiler but $vcToolkitRoot\bin\cl.exe is missing (see docs/BUILDING.md)"
+            }
+            $vcToolkitRoot
         } else { $vcRoot }
         $output = & (Join-Path $entryCompilerRoot 'bin\cl.exe') /nologo /c @entryFlags /Fo$object $source 2>&1
         $exitCode = $LASTEXITCODE

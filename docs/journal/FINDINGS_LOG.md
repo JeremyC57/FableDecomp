@@ -359,3 +359,7 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
   (0066bd00 284 vs 231 bytes under 4035; 00d17090 249; 00e32200 208; the biased /GS frame 00581b33 unchanged). The toolkit is
   therefore not a substitute for 3077; the DDK 4035 lane stays the closest available build. Full sweep results in the
   2026-10 journal; a true 3077 `cl`/`c2.dll` needs a VS .NET 2003 RTM installation.
+- Addendum (2026-10-20, full sweep): of 268 parked sources graded under 3052, 5 unique rows became RELOCATION_MATCH, all `/GS`
+  rows (00cac4a0 /EHsc /GS, 009f1ac0, 00690c70, 00438310, 0099d000); the other 251 stay DIFFER with the same shapes. Landed
+  re-grade under 3052: 30/30 ordinary rows still match; 16/20 landed /GS rows match, 009cdf50 and 00c7b8f0 need 4035. So the
+  toolkit is a third compiler for the /GS band only (`--toolkit`, `Compiler = 'vctk3052'`), not an RTM substitute.

@@ -44,6 +44,10 @@ def main():
         m = re.search(r"^//\s*Leaf:\s*(\S+)", src, re.M)
         leaf = m.group(1) if m else orc[a]["name"].rsplit("::", 1)[-1]
         extra = [f for f in d.get("CompilerFlags", "").split() if f not in V.BASE_FLAGS]
+        comp = d.get("Compiler", "")
+        if comp == "vctk3052": V.use_toolkit()
+        elif comp == "qfe4035": V.use_qfe()
+        else: V.use_default()
         work = V.shard_directory(V.WORK_ROOT / "reloc_audit", a, leaf=True); work.mkdir(parents=True, exist_ok=True)
         try:
             st, built, sec = V.parity_of(V.vc71(src), a, leaf, retail, work, e, extra=tuple(extra))
