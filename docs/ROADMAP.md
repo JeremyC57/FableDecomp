@@ -58,6 +58,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## (c) Byte-parity reconstruction — `docs/pipeline/FULL_DECOMP.md`, `docs/pipeline/DEBAKE_WORKLIST.md`
 
+- [x] 2026-10-20 RTM 3077 on the Linux lane (Rich-header confirmed; /GS rows landed; other parked rows unchanged = formulation gaps)
 - [x] VC7.1 RTM 13.10.3077 harness; `verify_and_land.py` oracle->author->verify->land loop
 - [x] Byte-identical 8,082 (16.3%); functional-or-matching 18,579 (37.5%) as of 2026-08-28
 - [x] Manifest gap recovery: 7,529 xref-confirmed starts merged (functions.tsv 49,568 -> 57,097) — `docs/pipeline/MANIFEST_GAP_RECOVERY.md`

@@ -152,3 +152,12 @@ ISOLATED-function reconstruction for MSVC x86 — not a missing technique. Keep 
 reachable ~95% (where we land hundreds); accept the ~5% as documented defers. Full-TU reconstruction
 (isledecomp-style) is the only path to the last 5%, and it's a different, much larger methodology.
 Ref: github.com/isledecomp/isle CONTRIBUTING.md; github.com/isledecomp/reccmp.
+
+## Addendum 2026-10-20: RTM 3077 on the Linux lane
+
+The Rich header of retail `Fable.exe` (decoded with `tools/decomp_pipeline/rich_header.py`) gives cl 13.10.3077 for 1,369
+C++ objects, 4035 for 11 (4 C, 1 C++, 6 MASM) and linker 3052. The Linux lane, which had graded everything with the DDK
+4035 build, now has the genuine 3077 (`$S/wine/vc71rtm`, see BUILDING.md). Differences found between the two on our
+sources: the `/GS` stack-cookie prologue (3077 reproduces retail's for the five parked /GS rows, 4035 does not; two landed
+/GS rows 009cdf50 and 00c7b8f0 go the other way and belong to the QFE objects); nothing else in the parked set or the
+landed sample. The codegen-equality claim of this gate therefore holds outside `/GS`.

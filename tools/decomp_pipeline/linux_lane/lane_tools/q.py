@@ -16,7 +16,7 @@ if "--flags" in args:
     i = args.index("--flags"); extra = args[i+1:]; args = args[:i]
 leaf = args[0] if args else None
 retail = None; name = None
-for f in list(glob.glob(str(S/"batch"/"*_oracle.tsv"))) + list(glob.glob("/home/user/FableDecomp/rebuild/candidates/manual/batches/*/oracle.tsv")):
+for f in ["/home/user/FableDecomp/rebuild/oracles/auto-re-candidates.tsv"] + list(glob.glob(str(S/"batch"/"*_oracle.tsv"))) + list(glob.glob("/home/user/FableDecomp/rebuild/candidates/manual/batches/*/oracle.tsv")):   # catalog oracle first (authoritative for landed rows)
     for r in csv.DictReader(open(f, encoding="utf-8-sig"), delimiter="\t"):
         if r["address"].lower().replace("0x","") == addr:
             retail = bytes.fromhex(r["bytes"]); name = r["name"]; break

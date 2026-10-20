@@ -39,6 +39,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
   `pip install capstone`; copy `tools/decomp_pipeline/linux_lane/lane_tools/` scripts to `$S/tools`, `$S/w22`,
   `$S/w23` as the README there describes; regenerate `$S/batch/families512.json` (`famscan.py 512`) and
   the EH oracle (`mk_eh_oracle.py`).
+- Compilers: `FABLE_VC71=$S/wine/vc71rtm` is the RTM cl 13.10.3077 (the retail build; install recipe in BUILDING.md), `VC71_QFE=$S/wine/vc71` the DDK 4035 used by `--qfe`; keep `LINK=bufferoverflowu.lib` for /GS test links.
 - Day-to-day tools (see `lane_tools/README.md`): `q.py <addr8> <src> [leaf] [--flags /EHsc]` grades one
   source; `udiff.py` shows only differing instructions; `xdis.py <va> <len>` disassembles retail;
   `xref.py`, `fun.py`, `rstr.py`, `iat.py` for callers, EH frames, strings, imports;
