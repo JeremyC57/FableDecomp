@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00e53f60	RELOCATION_MATCH	249v249	PASS	by-value CScriptThing copies + C3DVector user copy ctor
+00eda9b0	RELOCATION_MATCH	276v276	PASS	dense switch, implicit literal temporaries
+00edaba0	RELOCATION_MATCH	287v287	PASS	push_back inlined at first site only (__forceinline copy)
+00ed9bb0	DIFFER	298v306	-	retail entry zero store of the string frame word
+00e97ea0	RELOCATION_MATCH	294v294	PASS	seven implicit literal temporaries
+00ec3130	RELOCATION_MATCH	252v252	PASS	rand switch, block arrays share slots, tail-merged operator=
+00ee4a70	RELOCATION_MATCH	313v313	PASS	two wait loops, inline dtor at first site only
+00ec5010	RELOCATION_MATCH	293v293	PASS	CIsThingAlive predicate temporary, by-value param inline dtor once
+00d27c00	RELOCATION_MATCH	288v288	PASS	wait loops + nested GetThingWithScriptName (class label doubtful)
+00f058d0	DIFFER	280v308	-	real class CQ_AmbushTradersScript::WatchForRegionChange; frame-byte bool of the block compares
+00e84a20	RELOCATION_MATCH	297v297	PASS	named bool over || chain of temporaries (flag mask in ebx)
+0049e620	RELOCATION_MATCH	285v285	PASS	counted-pointer operator= with source words in locals, inline getter
+0049eaf0	RELOCATION_MATCH	252v252	PASS	/GS event payload reads, char flags setne
+00629b10	RELOCATION_MATCH	298v298	PASS	/GS; inline by-value ReadChar puts flag+bool in dead event slot
+00629c40	DIFFER	275v275	-	edi/ebp register swap (event vs creature)
+00629f50	RELOCATION_MATCH	255v255	PASS	CSoundInit ctor + PlaySoundEvent, subtitle flags
+0062c1c0	RELOCATION_MATCH	305v305	PASS	/GS; sibling EACloseHeroCentreDoor PeekTC idiom, const LowerBound for hero
+004a0bb0	RELOCATION_MATCH	285v285	PASS	HasTC+GetTC x3 inside alive test, AutoSave sibling model
+0049f2d0	DIFFER	282v283	-	register permutation + fild temp in dead out slot
+0049daa0	RELOCATION_MATCH	291v291	PASS	named physics local before pushes; render-camera overload slots reversed
+00506e30	DIFFER	252v247	-	new-expression argument load order / register rotation
+00506c40	RELOCATION_MATCH	249v249	PASS	counted pointer from new-expression (flag ebx), inlined GetLevelDimensions body
+0050af10	RELOCATION_MATCH	260v260	PASS	CNavigationAreaInit local: inline zero ctor, inline derived dtor + ool base dtor
+00506f30	RELOCATION_MATCH	314v314	PASS	slot search with null-init pointer, box translate
+004feb70	DIFFER	260v261	-	zero-register hoisting (ebx) lane gap
+004ff920	DIFFER	319v319	-	callback local store above vs below the loop guard
+00860650	RELOCATION_MATCH	247v247	PASS	real class CVillageTaskTorch; SecuritySweep sibling form
+00860840	RELOCATION_MATCH	247v247	PASS	CVillageTaskHorn; byte twin of 0x00860650
+00861530	RELOCATION_MATCH	313v313	PASS	real class CVillageTaskCarryCrate; Pickup re-read keeps both compare arms
+00860ad0	DIFFER	302v302	-	scheduling-only (copy load/store order, fnstsw placement)
+00860d00	RELOCATION_MATCH	282v282	PASS	SecuritySweep IsBetterThan sibling form
+00e11450	DIFFER	291v291	-	lea ecx hoisted above loop-exit jne in retail (cross-jump)
+00ddc6c0	RELOCATION_MATCH	259v259	PASS	inline CCharString == "0" into named frame-byte bool
+00ad8dd0	DIFFER	240v243	-	outer-loop register allocation (count in ebp)
+00ad89b0	DIFFER	306v314	-	register allocation (sizes in edx, slot pointer spilled to dead start slot)
+00ad9770	DIFFER	292v280	-	loop register allocation (walking pointer/finish in ebp)
+00c3a7d0	DIFFER	304v273	-	x87 value merge through the angle wrap; class unidentified (audio lib)
+0067cb20	RELOCATION_MATCH	257v257	PASS	real: vector<CBlurredAttitudesDef>::_M_insert_overflow; same-TU fastcall stand-ins
+0049ffd0	DIFFER	259v258	-	scheduling only (vector copy load order, filter stores, found-thing register)
+004fce20	DIFFER	343v318	-	count/range register swap and retry-path layout

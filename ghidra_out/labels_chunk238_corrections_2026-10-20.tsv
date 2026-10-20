@@ -1,0 +1,21 @@
+address	name	evidence
+00860650	CVillageTaskTorch::IsCreatureMoreAppropriateForTask	byte twin of the Horn row 0x00860840, labelled CVillageTaskHorn (chunk 238)
+00861530	CVillageTaskCarryCrate::IsCreatureMoreAppropriateForTask	reads Pickup +0x18, calls 0x008614B0; labelled CVillageTaskHorn (chunk 238)
+00f058d0	CQ_AmbushTradersScript::WatchForRegionChange	calls RefreshSpyAllegiences 0x00F05A10 for Gibbet Woods / Deserted Farm / Bowerstone Jail; labelled CV_ChapelOfEvilScript::WatchForLeaving (chunk 238)
+00d27c00	GuildQuestScript_EndMission_00d27c00	not CV_ChapelOfEvilScript (no bool at +0x51 there); guild region / map / hero guide body, owner unidentified (chunk 238)
+0067cb20	std::vector<CBlurredAttitudesDef>::_M_insert_overflow	labelled CVectorBase::resize_realloc (chunk 238)
+00c3a7d0	AudioLib_ApplyGainEnvelope_00c3a7d0	audio-library gain envelope on a 16-bit sample buffer, not CWorld::AnimationCurve_ApplyTiming (chunk 238)
+005bcf51	CTCInventoryBase::IncrementQuestPersistentRefCountForNonPersistentItems	labelled _Dest_val<...CFlash>; false twin 0x005BCF59 (chunk 238)
+004bbfd0	NGraphicAppearance::CTCGraphicAppearance::SetMeshBank	labelled SetCurrentThingManager (chunk 238)
+0049d9b0	CWorld::GetSampleBank	labelled CPixelShader::CountReferences (chunk 238)
+00437a10	CPlayerGui::ToggleQuickAccessCharge	labelled _Cons_val (chunk 238)
+004379b0	CPlayerGui::OnEventAttack	labelled _Cons_val (chunk 238)
+00640560	CEngineManager::AddChangedArea	labelled std_vector_push_back (chunk 238)
+00a14e40	CNavigatorManager::UpdateNavigationMapArea	(long, const C2DBoxF&), labelled $E2 (chunk 238)
+00436fb0	CTBaseSingleton<CEngineManager>::Get	labelled CGameJoystickManager Get (chunk 238)
+0051d530	CNavigationAreaUpdate::~CNavigationAreaUpdate	landed as CVectorQuad_0051d530 (chunk 238)
+00cb7920	CScriptBase::SetPredicate	labelled _Cons_val (chunk 238)
+00ed9cf0	CV_TalentlessBardScript::IsHeroDressedInArmour	chunk 238
+00eda0c0	CV_TalentlessBardScript::IsHeroDressedInWillRobe	chunk 238
+00eda490	CV_TalentlessBardScript::IsHeroDressedAsApprentice	chunk 238
+00eda5e0	CV_TalentlessBardScript::IsHeroDressedAsAWoman	chunk 238
