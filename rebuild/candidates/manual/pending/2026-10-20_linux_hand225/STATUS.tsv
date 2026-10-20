@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008d9870	DIFFER	312v312	-	frame-slot sharing only (4 forms: helper/block slot, block effect type, named strings)
+008d8330	DIFFER	285v285	-	one zero-store scheduled above the def load (4 forms; stand-in GetSubDef fixed the rest)
+0073d860	RELOCATION_MATCH	278v278	PASS	novtable CModeStandBase over inline ~CModeBase (CModeSleepBed model); local model, header is flat
+008e9850	RELOCATION_MATCH	251v251	PASS	inline SetGroup expanded at the 2nd site only; components local + inline GetAnimBank accessor
+00547e40	RELOCATION_MATCH	284v284	PASS	NUISystem::CMovie; inline handle Clear (0xAF70D0 model); local bases (header flat)
+00eb3d10	RELOCATION_MATCH	300v300	PASS	slots from cgsi_slots_aligned.tsv: SetQuestCardObjective(GetActiveQuestName(), 3 literals) (2nd form)
+00cbc130	DIFFER	291v284	-	STLport _M_insert_overflow (label wrong); frame-slot + register colouring (3 forms)
+00dac650	RELOCATION_MATCH	272v272	PASS	Theresa model; C3DVector user copy ctor builds GetHomePos result in the arg area
+00a77d60	RELOCATION_MATCH	284v284	PASS	sibling blocks with a named find iterator; index local at function scope (4th form)
+00446be0	RELOCATION_MATCH	296v296	PASS	real class CGamePlayerInterface (vtable 0x01231BDC); inline file dtor + STLport vector dtors
+00441ee0	DIFFER	307v297	-	sibling of matched 0x00441CB0; constant 1 hoisted into ebx (known lane gap)
+00441cb0	RELOCATION_MATCH	296v296	PASS	unidentified record dtor (catalog CObject wrong); inline STLport vector + handle Clear dtors
+00afbbd0	RELOCATION_MATCH	272v272	PASS	real class CPSCRenderSprite (vtable 0x0129F67C); body = two inline handle Clear()
+00b017f0	RELOCATION_MATCH	272v272	PASS	CPSCRenderMesh, twin of 0x00AFBBD0
+004608c6	RELOCATION_MATCH	309v309	PASS	real class CSpecialAbilitiesUnholyPowerDef (slot-19 thunk 0x004608C1, vtable 0x012348E4); optimize(s)
+00dbff80	RELOCATION_MATCH	259v259	PASS	Init-sibling model; __forceinline CScriptThing/CCountedPointer operator= (source words read first)
+0074aa00	RELOCATION_MATCH	248v248	PASS	real class CTCCreatureGenerator (vtable 0x01268C24); STLport base models; body assignments in retail store order
+007009d0	DIFFER	264v272	-	fild from the member vs a frame copy (3 forms: long local, stores before the conversion)
+0087c150	RELOCATION_MATCH	252v252	PASS	two unchecked out-param GetInterface lookups sharing the key word; zero store written first (2nd form)
+0042ddb3	RELOCATION_MATCH	274v274	PASS	size TU (s on, y off); system-manager local per picker call; bank name in its own block
+0042ea8f	RELOCATION_MATCH	295v295	PASS	size TU; both STLport vectors through _Vector_base + alloc proxy (fixed the lea placement, 2nd form)
+00b22530	RELOCATION_MATCH	308v308	PASS	inline settings operator= on both data records; Clear() zeroes Info before Data
+00aeb060	DIFFER	301v301	-	one mov scheduled above the size-loop entry test (4 forms of size/distance)
+00a786c0	DIFFER	269v265	-	push placement only after the loop fix (2 forms)
+00af9310	MATCH	250v250	PASS	trail blend op/mode locals declared op-first (edi/ebp)
+00aff0a0	RELOCATION_MATCH	266v266	PASS	real CPSCRenderMesh::Initialise (vtable slot 28); &temporary mesh record, identity block, blend locals
+00a1bca0	RELOCATION_MATCH	297v297	PASS	named C2DVector locals; final && chain gives the int exits; Find(from node, blocked node, ...)
+00a1d5d0	DIFFER	257v259	-	push_back temp/byte register allocation only (4 forms)
+00a772d0	RELOCATION_MATCH	258v258	PASS	inline CANavQuadTreeNode base ctor; SGI __advance (n > 0 form) over the region list
+00a79a30	DIFFER	249v245	-	loop temp store placement + arg-slot homing (4 forms)
+00a76a80	RELOCATION_MATCH	260v260	PASS	same-TU find/resize stand-ins (auto_inline off) let the loop-invariant key/fill temporaries hoist; list local for resize
+00a79930	RELOCATION_MATCH	255v255	PASS	same-TU stand-ins for _M_insert_overflow/sort (2nd form); inline navigable-leaf base chain
+00a76640	RELOCATION_MATCH	289v289	PASS	early empty return + box before loop; first two corners via an inline float-pair Contains, last two out-of-line ContainsPoint
+00a76cc0	RELOCATION_MATCH	305v305	PASS	cell walk nested under the layer/non-empty test (single return-true exit keeps pushes at entry, 2nd form)
+00a76e00	DIFFER	255v298	-	asm_bake fistp family (1 form)
+00a85420	DIFFER	352v316	-	register allocation of the inlined triple vector copy
+00a1de30	DIFFER	298v298	-	2 instructions: owner register + tail fstp/pop order
+00a198c0	DIFFER	289v289	-	fadd operand order in the 3-float sum
+00f35c60	DIFFER	312v316	-	x87/integer scheduling of the last corner
+00b18820	DIFFER	313v304	-	asm_bake fistp family

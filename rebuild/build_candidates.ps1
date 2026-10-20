@@ -251621,6 +251621,181 @@ $catalog = @(
         TestSource = '00/ed/CVSwordInTheStoneScript_Init_00ed4b10_test.cpp'
         PassPattern = '00ed4b10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0042ddb3'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_InitialiseGraphics_0042ddb3.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_InitialiseGraphics_0042ddb3_test.cpp'
+        PassPattern = '0042ddb3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042ea8f'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f_test.cpp'
+        PassPattern = '0042ea8f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00441cb0'
+        Module = 'CPrimitiveHandleSet_00441cb0'
+        Source = '00/44/CPrimitiveHandleSet00441cb0_CPrimitiveHandleSet00441cb0_00441cb0.cpp'
+        TestSource = '00/44/CPrimitiveHandleSet00441cb0_CPrimitiveHandleSet00441cb0_00441cb0_test.cpp'
+        PassPattern = '00441cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00446be0'
+        Module = 'CGamePlayerInterface'
+        Source = '00/44/CGamePlayerInterface_CGamePlayerInterface_00446be0.cpp'
+        TestSource = '00/44/CGamePlayerInterface_CGamePlayerInterface_00446be0_test.cpp'
+        PassPattern = '00446be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004608c6'
+        Module = 'CSpecialAbilitiesUnholyPowerDef'
+        Source = '00/46/CSpecialAbilitiesUnholyPowerDef_operator_004608c6.cpp'
+        TestSource = '00/46/CSpecialAbilitiesUnholyPowerDef_operator_004608c6_test.cpp'
+        PassPattern = '004608c6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547e40'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_Update_00547e40.cpp'
+        TestSource = '00/54/NUISystemCMovie_Update_00547e40_test.cpp'
+        PassPattern = '00547e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073d860'
+        Module = 'CModeStandBase'
+        Source = '00/73/CModeStandBase_CModeStandBase_0073d860.cpp'
+        TestSource = '00/73/CModeStandBase_CModeStandBase_0073d860_test.cpp'
+        PassPattern = '0073d860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074aa00'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_CTCCreatureGenerator_0074aa00.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_CTCCreatureGenerator_0074aa00_test.cpp'
+        PassPattern = '0074aa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087c150'
+        Module = 'NCameraModes::COrbitGame'
+        Source = '00/87/NCameraModesCOrbitGame_Update_0087c150.cpp'
+        TestSource = '00/87/NCameraModesCOrbitGame_Update_0087c150_test.cpp'
+        PassPattern = '0087c150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e9850'
+        Module = 'NCreatureMode::CModeStrafe'
+        Source = '00/8e/NCreatureModeCModeStrafe_SetChangeOfWeapon_008e9850.cpp'
+        TestSource = '00/8e/NCreatureModeCModeStrafe_SetChangeOfWeapon_008e9850_test.cpp'
+        PassPattern = '008e9850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1bca0'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_CanNavigateToPos_00a1bca0.cpp'
+        TestSource = '00/a1/CNavigatorAStar_CanNavigateToPos_00a1bca0_test.cpp'
+        PassPattern = '00a1bca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76640'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_GoToHigherDetail_00a76640.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_GoToHigherDetail_00a76640_test.cpp'
+        PassPattern = '00a76640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76a80'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_CNavNavigableLeafNode_00a76a80.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_CNavNavigableLeafNode_00a76a80_test.cpp'
+        PassPattern = '00a76a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76cc0'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_IsAreaAllSamePreferability_00a76cc0.cpp'
+        TestSource = '00/a7/CNavQuadTree_IsAreaAllSamePreferability_00a76cc0_test.cpp'
+        PassPattern = '00a76cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a772d0'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_CNavNavigableLeafNode_00a772d0.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_CNavNavigableLeafNode_00a772d0_test.cpp'
+        PassPattern = '00a772d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a77d60'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_SaveToFile_00a77d60.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_SaveToFile_00a77d60_test.cpp'
+        PassPattern = '00a77d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a79930'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a7/CNavSwitchableLeafNode_CNavSwitchableLeafNode_00a79930.cpp'
+        TestSource = '00/a7/CNavSwitchableLeafNode_CNavSwitchableLeafNode_00a79930_test.cpp'
+        PassPattern = '00a79930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af9310'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_Initialise_00af9310.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_Initialise_00af9310_test.cpp'
+        PassPattern = '00af9310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afbbd0'
+        Module = 'NParticleEngine::CPSCRenderSprite'
+        Source = '00/af/NParticleEngineCPSCRenderSprite_CPSCRenderSprite_00afbbd0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderSprite_CPSCRenderSprite_00afbbd0_test.cpp'
+        PassPattern = '00afbbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aff0a0'
+        Module = 'NParticleEngine::CPSCRenderMesh'
+        Source = '00/af/NParticleEngineCPSCRenderMesh_Initialise_00aff0a0.cpp'
+        TestSource = '00/af/NParticleEngineCPSCRenderMesh_Initialise_00aff0a0_test.cpp'
+        PassPattern = '00aff0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b017f0'
+        Module = 'NParticleEngine::CPSCRenderMesh'
+        Source = '00/b0/NParticleEngineCPSCRenderMesh_CPSCRenderMesh_00b017f0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCRenderMesh_CPSCRenderMesh_00b017f0_test.cpp'
+        PassPattern = '00b017f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b22530'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b2/NParticleEngineCPSCSplineBase_DatabaseCopy_00b22530.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBase_DatabaseCopy_00b22530_test.cpp'
+        PassPattern = '00b22530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dac650'
+        Module = 'CNOVI_Guard'
+        Source = '00/da/CNOVIGuard_Init_00dac650.cpp'
+        TestSource = '00/da/CNOVIGuard_Init_00dac650_test.cpp'
+        PassPattern = '00dac650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dbff80'
+        Module = 'COakValeBanditRaidBandit'
+        Source = '00/db/COakValeBanditRaidBandit_OnPredicateFail_00dbff80.cpp'
+        TestSource = '00/db/COakValeBanditRaidBandit_OnPredicateFail_00dbff80_test.cpp'
+        PassPattern = '00dbff80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb3d10'
+        Module = 'CMurderTwistAssassin'
+        Source = '00/eb/CMurderTwistAssassin_OnPredicateFail_00eb3d10.cpp'
+        TestSource = '00/eb/CMurderTwistAssassin_OnPredicateFail_00eb3d10_test.cpp'
+        PassPattern = '00eb3d10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

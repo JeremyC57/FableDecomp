@@ -1,0 +1,103 @@
+// NCameraModes::COrbitGame::Update() -- while the hero is playing a tavern game, take the coin-golf game's camera position and target into the camera's go-to and look-at positions (and clear the observed-position Z offset)
+// Leaf: Update
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0087C150, 252 bytes, plain `ret`.
+// Callees: NCameraModes::CBase::GetWorld 0x0084D050, CWorld::GetMainPlayer 0x0049D9D0, CPlayer::GetHeroThing 0x00487DC0,
+//   CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (two inlined unchecked out-parameter GetInterface lookups:
+//   CTCGamePlayer 0xd0, CTCTavernGameCoinGolf 0xcf), CTCGamePlayer::GetGame 0x005EDC90 (twice),
+//   CTCTavernGameCoinGolf::GetCamera(C3DVector&, C3DVector&) 0x007D3560.
+// Layout (retail NCameraModes::CBase, Ego_r.pdb less the 0x10-byte smaller CPhysicsState and the 12-byte vector):
+//   LookAt +0x10 (position first), CameraManager +0x40, GoTo +0x54 (position first), ObservedPositionZOffset +0x8c.
+//   Thing: interface bitset +0x20, map +0x44; CTCBase ParentThing +4.
+// Shape: the GetInterface template's out pointer is never initialised (the absent arm reads the shared key word); the
+//   C3DVector copies go through the implicit assignment of a class with a user copy constructor (`lea` destination).
+struct CTCBase;
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector() { }
+    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
+};
+struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);       // 0x0040F020
+};
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20 interface-present bitset
+    CInterfaceMap m_interfaces;                 // +0x44
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+};
+struct CTCTavernGame {
+    void*   __vftable;
+    CThing* ParentThing;                        // +0x04 (CTCBase)
+};
+struct CTCGamePlayer {
+    CTCTavernGame* GetGame() const;             // 0x005EDC90
+};
+struct CTCTavernGameCoinGolf {
+    void GetCamera(C3DVector& position, C3DVector& target);   // 0x007D3560
+};
+struct CPlayer {
+    CThing* GetHeroThing() const;               // 0x00487DC0
+};
+struct CWorld {
+    CPlayer* GetMainPlayer() const;             // 0x0049D9D0
+};
+struct CPhysicsState {                          // retail 0x30 bytes
+    C3DVector     Position;
+    unsigned char _rest[0x30 - 0x0c];
+};
+
+namespace NCameraModes {
+
+struct CBase {
+    virtual void v00();
+    float         DefaultFOV;                   // +0x04
+    float         DefaultRollAngle;             // +0x08
+    float         DefaultObservedPositionZOffset;   // +0x0c
+    CPhysicsState LookAt;                       // +0x10
+    void*         CameraManager;                // +0x40
+    void*         PCameraModeDef;               // +0x44
+    void*         SubComponents[3];             // +0x48
+    CPhysicsState GoTo;                         // +0x54
+    float         CameraFOV;                    // +0x84
+    float         RollAngle;                    // +0x88
+    float         ObservedPositionZOffset;      // +0x8c
+    const CWorld& GetWorld() const;             // 0x0084D050
+};
+
+struct COrbitGame : CBase {
+    virtual void Update();
+};
+
+void COrbitGame::Update()
+{
+    CThing* hero = GetWorld().GetMainPlayer()->GetHeroThing();
+    CTCGamePlayer* player;
+    hero->GetInterface(&player, 0xd0);
+    if (player && player->GetGame()) {
+        CTCTavernGameCoinGolf* golf;
+        player->GetGame()->ParentThing->GetInterface(&golf, 0xcf);
+        C3DVector position;
+        C3DVector target;
+        golf->GetCamera(position, target);
+        ObservedPositionZOffset = 0.0f;
+        GoTo.Position = position;
+        LookAt.Position = target;
+    }
+}
+
+}

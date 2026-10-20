@@ -1,0 +1,9 @@
+address	name	evidence
+00cbc130	std::vector::_M_insert_overflow	STLport, not CMusicEntry::LoadFromScript (chunk 225)
+00446be0	CGamePlayerInterface::~CGamePlayerInterface	(chunk 225)
+00afbbd0	CPSCRenderSprite::~CPSCRenderSprite	labelled ~CPSCRenderMesh (chunk 225)
+00b017f0	CPSCRenderMesh::~CPSCRenderMesh	(chunk 225)
+004608c6	CSpecialAbilitiesUnholyPowerDef::operator=	(chunk 225)
+0074aa00	CTCCreatureGenerator::CTCCreatureGenerator	(CThing*) ctor (chunk 225)
+00aff0a0	CPSCRenderMesh::Initialise	(chunk 225)
+00a85420	std::__uninitialized_copy	40-byte record; not CNavQuadTree::CopyAllLayers (chunk 225)
