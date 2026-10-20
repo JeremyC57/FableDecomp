@@ -1,0 +1,339 @@
+# Retry 10 -- lessons (fold into GOTCHAS at landing)
+
+- The "inline-once destructor band" is not a cost band: VC7.1 (RTM 3077 and QFE alike) expands an inline destructor at
+  EVERY site while the object has two destructor sites, and at exactly ONE site once it has three or more live sites
+  (unreachable sites do not count). For a by-value parameter the expanded site is the first one in source order (the
+  `return` inside the wait loop) and the later sites call the out-of-line copy and tail-merge; for a block-local (the
+  vector in 0066bd00) the expanded site is the block end and the earlier returns call out of line. So a script thread
+  with "both exits inlined" (00d17090, 00e32200) is written with a THIRD exit: `if (IsActiveThreadTerminating())
+  return;` after the loop instead of folding that test into the final `&&` / `if (!...)`. Retail's tail (`jne` past the
+  flag store straight onto `call ~CScriptThing`) is the merged sites 2 and 3.
+- Per-callee, not per-caller: inline accessors, extra sibling functions in the TU, and wrappers around the other callees
+  never changed the destructor decision; a dead member store in the callee can (vector `_M_start = 0` -> once,
+  CCountedPointer `Info = 0` -> never), but it perturbs the register colouring (zero register kept for the null test).
+- A bool function whose result is a comparison: `return a >= b;` emits `xor eax,eax ; cmp ; setge al` (int-width);
+  retail's bare `setge al` is a NAMED bool (`bool ok = a >= b; return ok;`), `if (..) return true; return false;` or
+  the `? true : false` ternary (0059da10).
+- A long-returning inline helper (`return 1; / return 0;`) negated into a bool result: `!(unsigned char)Helper()`
+  gives retail's `mov eax,1 ; ... ; test al,al ; sete dl` (byte test of the full-register constant); `!(bool)Helper()`
+  tests eax, a bool helper emits `mov al,1` (007525c0).
+- The inline `CCharString == ""` family (sete materialised): write the null-block `strcmp("", "")` and the block compare as
+  two tests joined by `goto` into the SAME arm (the landed 0x0048F7C0 idiom), keep the non-empty arm in line and put the
+  empty arm at the label; a default literal passed to a `const CCharString&` is an implicit conversion
+  (`SetAnimationName("LIT")`), not a named local -- the named local is homed in a different dead argument slot
+  (008bb130, 008bb200, 008bb6f0, 00892cf0).
+
+## CAnimInit passed as a temporary (008d6780, 008d6cb0, 008d6e80, 008d6f20 -- NCreatureMode::*::AnimUpdate)
+`anim.SetMainAnim(CAnimInit(type, 0, entry->BankIndex, 1, looping, flags, 100), blendIn, 0);` -- the record is a
+temporary bound to the `const CAnimInit&` parameter, not a named local. With a named `CAnimInit init(...)` VC7.1 treats
+the inline ctor's `anim` parameter as a variable: the BankIndex load is hoisted and coloured into a callee-saved register
+(esi/ecx) and `&init` goes through the leftover scratch register; as a temporary the load is a scratch temp (edx, or eax
+loaded lazily after the flags push) and `lea eax,[esp+14h]` follows. Same instructions, different registers -- the
+"register colouring only" family note for these rows was this idiom. Also: the slot-4 virtual `GetAnimFilter()` of
+CModeBase takes NO argument; the `push 0` before `call [eax+10h]` is the third (long) argument of
+CThingCreatureBase::GetAnimFromName(const CCharString&, const CAnimFilterBase*, long) @ 0x00662B10.
+
+## CDefPointer release through a `long&` (00591e8c, and 5-12 bytes closer on 20 more release-family rows)
+`--Object->RefCount == 0` written directly makes VC7.1 either re-read the pointer slot after the `dec` (member form:
+`dec [eax+4] ; mov ecx,[slot] ; mov eax,[ecx+4] ; test`) or materialise the count in a register (local-copy form:
+`mov edx,[eax+4] ; add eax,4 ; dec edx ; test edx,edx ; mov [eax],edx`). Decrementing through a reference,
+`static __forceinline bool DecRefToZero(long& count) { return --count == 0; }` (or `long& count = p->RefCount; if (--count == 0)`),
+gives retail's `dec dword ptr [reg+4] ; jne`. With a local copy of the pointer in the destructor the remaining gap on the
+other rows is only `mov eax,[slot] ; test eax,eax ; mov ecx,eax` versus retail's `mov ecx,[slot] ; test ecx,ecx`.
+
+## Call result used directly as the object of a virtual call (00543d30, 00543df0 -- CParticleEffect::CreateEmitter)
+`CFrontEndManager::GetInstance()->GetLayer(Depth)` inside the argument list, not `CFrontEndManager* frontEnd = GetInstance(); ... frontEnd->GetLayer(Depth)`.
+With the named local VC7.1 hoists the vtable load (`mov edx,[eax]`) right after the call, which lets the temporary
+CRightHandedSet's constructor stores sink past the next push; written inline the vtable load stays at the call site
+and the stores land between `push 1` and the GetLayer call as in retail. Same family as the CAnimInit lesson: a named
+local for a value used once changes scheduling/colouring, a temporary or inline expression does not.
+
+## STLport vector model: the end-of-storage pointer is an _STLP_alloc_proxy (00458c19, 00457da9, 004e00bc, 004570d3)
+A 12-byte vector modelled as three plain pointers zeroed in one ctor (`first(0), last(0), end(0)`) makes VC7.1 schedule
+the next member constructor's `lea ecx,[this+N]` one or two zero stores too early ("24i lea-scheduling lane gap").
+Model it as STLport does: `T* _M_start; T* _M_finish; CAllocProxy<T> _M_end_of_storage;` with
+`template<class T> struct CAllocProxy { T* p; CAllocProxy(T* v) : p(v) {} };` -- the third store then comes from a
+member-object constructor and the lea lands between the second and third store exactly as retail.
+
+## Zeroing a vector member through an inline member function (00724f80 -- CTCPhysicsControlled::OnCreate)
+`ImpulseVelocity.Set(0.0f, 0.0f, 0.0f)` with `void Set(float x, float y, float z) { Z = z; Y = y; X = x; }` reproduces
+retail's Z,Y,X store order AND keeps the following bit-field loads (`mov cl,[esi+3Ch]`) after the stores: stores through
+the member function's `this` pointer may alias, so the loads are not hoisted. Direct member stores
+(`ImpulseVelocity.X = ... = 0.0f`) let the lane hoist the first flag load above them.
+
+## Def-constructor store order: a -1 member is a record with an inline ctor, the scalar band goes in a novtable base (00f29d00)
+In `CCutsceneDef::CCutsceneDef` the lane sank the bit-field clear (`and cl,0F8h ; mov [esi+24h],cl`) and the `-1` store below the
+vtable store, retail keeps declaration order. A plain `long m_index(-1)` is the trigger: modelling it as `struct CDefIndex { long
+Index; CDefIndex() : Index(-1) {} }` (the chunk-212 CDefIndex lesson) restores the -1 and bit stores, and putting the scalar band
+(+0x25..+0x36) in an intermediate `__declspec(novtable)` base with its own inline ctor puts the vtable store after them, right before
+the vectors, as retail. Alloc-proxy vectors alone did nothing here (all stores are `mov [esi+N],eax` without a lea).
+
+## A retail `CArray<T>` member in a constructor is the STLport _Vector_base shape too (007437c0, 007438a0, 008ddfb0)
+`CCardinalSpline::ControlPoints` (CArray, 12 bytes) modelled as three plain words zeroed in one init list lets the `push -1` of
+the next member's string literal float above the three zero stores; with the alloc-proxy third member (`CArrayAllocProxy<T>
+_M_end_of_storage` with its own ctor) the push lands after them as retail. Same rule as the def vectors: any 12-byte
+start/finish/end record retail built from the STL gets the proxy, whatever the project called it.
+
+## Constructor store order: every member that retail built with an inline ctor is a scheduling anchor (007445e0, 00f29d00)
+VC7.1's scheduler sinks immediate stores (`mov [esi+1Ch],-1`) and RMW bit stores below the zero-register stores that follow
+them, but never across the inline constructor of a member object. So a `CDefPointer<T>` member must be a record with an inline
+ctor (`Object(0)`), not a plain pointer initialised with 0: the -1 store then stays just above the CDefPointer store as in retail.
+A derived value computed from a base member (`UpdateOffset = ParentThing->m_uidLow & 3`) that retail computes after the last
+init-list store is a body assignment (in the init list its `and` is computed right after the load).
+- CScriptThing (12 bytes) is `CScriptBase` + `CCountedPointer<CScriptThing> PImp` (Ego_r.pdb): model PImp as ONE record with an inline
+  ctor, not two raw `void*` words -- the record keeps the member's vtable store above its two zero stores (007e71d0; the first of
+  two CScriptThing members happened to match either way, the second did not).
+
+## "component loaded into eax then `mov ecx,eax`" = the GetInterface out-pointer model (008955c0, 00896120)
+When retail has `mov ecx,[eax+4] ; test ecx,ecx ; je ; call` after the interface-map join (`mov eax,esi`) and the lane gives
+`mov eax,[eax+4] ; test eax,eax ; je ; mov ecx,eax ; call`, the source used `GetInterface(&out, type)` (out-pointer, two joins).
+Write it as the landed 0x00584157 idiom: `if (thing->HasInterface(type)) { T* tc = thing->GetTC<T>(type); if (tc) tc->M(); }`
+with `GetTC` = `(T*)((it == map->last || wanted < it->type) ? map->last : it)->component` (a __forceinline template member).
+A probe shows every other spelling of the null-tested call (named local, if/else, early return, && / ternary return without
+the model) keeps eax; the ternary GetTC with HasInterface outside is what retail inlined.
+- The same model when the component is used without a null test: `T* tc = 0; if (HasTC) tc = GetTC();` when retail preloads the
+  register (`xor ecx,ecx`), and an UNINITIALISED `T* tc; if (HasTC) tc = GetTC();` when retail's miss arm reads the slot
+  (`mov ecx,[esp+34h]`, 00749bf0). `cvt.py <src> <dst>` in the retry10 workspace adds the GetTC/HasTC members to any parked
+  source with the GetInterface template; only the call site needs rewriting by hand.
+- When the thing comes from an out-of-line GetPItem(), read it ONCE into a local (`CThing* t = P.GetPItem(); if (t->HasTC(x)) tc = t->GetTC<T>(x);`): HasTC and GetTC on separate GetPItem() calls add a third call (00784600, 00847fb0, 00848fd0, 009492a0).
+- Retail mixes the two lookup spellings per call site: a call with several pushed arguments can keep the eax + `mov ecx,eax` out-pointer form (0093c420 SetState with 5 args, 008c4a80) while its neighbours use the ternary GetTC; convert one call site at a time and keep whichever matches.
+
+## A call result's member used as `this`: name the CALL result, chain the member (00972110, 00954a20, 0093e240)
+`CCombatManager* combat = GetPWorld()->m_pCombatManager; combat->Deregister(creature);` gives `mov eax,[eax+4Ch] ; mov ecx,eax`;
+the direct chain `GetPWorld()->m_pCombatManager->Deregister(creature)` pushes the creature before the world call; retail
+(`call GetPWorld ; mov ecx,[eax+4Ch] ; push edi ; call`) is `CWorld* world = GetPWorld(); world->m_pCombatManager->Deregister(creature);`
+-- the named local is the call result, the member read stays in the call expression. Complements the CAnimInit/GetInstance lessons:
+what gets a name decides which load is hoisted.
+
+## The def-release `mov ecx,[slot] ; test ecx,ecx` register (probe result, still open on ~20 release rows)
+Probing 30 spellings of the CDefPointer destructor (named/unnamed local, pointee inline Release/DecRef members, free helpers,
+base-class reference, && / early-return forms): the loaded pointer only lands in ecx when the slot is WRITTEN after the load
+(`T* o = p; p = 0; if (o) ...` or the clear inside the if), which also emits the store retail does not have (the slot escaped
+to GetDef, so VC7.1 keeps a store that precedes the Destroy call; a clear after the last call is dead-store-eliminated but
+then eax comes back). So retail's shape needs the pointer held in a register without a visible store -- not found yet.
+- CDefPointer zero-store placement (0069a920, 00730630 family): an inline GetDef wrapper `out.m_pObject = 0; return GetDefRaw(idx, &out.m_pObject);` with an EMPTY CDefPointer ctor puts the zero store after the argument pushes as retail; it also changes which of this/index is loaded first (open).
+- A `return false` early exit that retail places AFTER the success path (shared epilogue at the end) is one nested `if (ok) { ...; return true; } return false;` (00ab6180 under /GS; the chunk-209 lesson, confirmed on the RTM compiler).
+- Mechanical ternary sweep (retry 10): every remaining parked row whose source still used the out-pointer `GetInterface(&tc, t)` form was rewritten with `$W/cvt.py` to `if (thing->HasTC(t)) { T* tc = thing->GetTC<T>(t); ... }` with `GetTC` = `(T*)((it == map->last || t < it->type) ? map->last : it)->component`. 13 of 36 regraded RELOCATION_MATCH on the RTM compiler with no other change (list in `$W/var/tern_rows.txt`: 0091f050 0090fb60 00933470 00683650 005ee418 0065bffa 004c8fb0 00663ba0 006a8560 00839080 0064b5c1 0064e0da 006a8370). The 23 others differ only in where the component lands (eax form kept, or the component loaded before/after pushes) -- those keep their old sources. A missing-entry lookup dereferences `last`, so behaviour tests must keep the presence bit and the entry consistent (004c8fb0: an out-of-range bitset position must map to a clear word).
+- 00b1b4d0 (SDecalRequest ctor): an immediate store (`mov [eax],1Eh`) that retail keeps between two zero stores is pinned by making the NEXT member (the +8 byte) a record with an inline zeroing constructor: VC7.1 sinks immediates below zero-register stores but never across a member-object constructor, so the anchor goes on the member after the immediate, not on the immediate itself (MATCH).
+- 00a5c570 (CSimpleMemoryPool ctor): the opposite case -- when retail sets the zero register BEFORE an unrelated init-list store, the zeroed sub-object (CArea Root) has NO inline constructor; its words and the other zero members are plain body assignments after the init list, which lets VC hoist `xor ecx,ecx` above the init-list store (RELOCATION_MATCH).
+- 00b8ff00 (CEngineInternalPrimitiveBase ctor): a bit-field byte whose retail load sits early and whose merged store sits late is several bit-field assignments SPREAD through the body (the load belongs to the first one, the store to the last); VC7.1 merges them into one and/or pair across intervening plain stores, but NOT across a for-loop (00bddf30: a `for` over Children splits the merge into two `and`s; hand-unrolled stores keep it merged).
+- 004016f0 (CDisplayManagerInit ctor): when retail materialises two constants at the top (`xor eax,eax ; mov ecx,1`) and stores the zero group BEFORE the one group, the SOURCE assigned the `true`/1 members first: VC7.1 floats the zero-register stores above the 1-register stores, and the +0x18 immediate then stays before the +0x19 register store.
+- 00779ca0 (CTCDExperienceOrb ctor): `xor ecx,ecx` before `or eax,-1` with the zero stored first = the -1 members modelled as records with an inline (-1) constructor (or the zero member as a zero record); both plain in the init list gives `or` first.
+- 00def6a0 / 00c0a790 (open): a `mov ecx,edi` (this of a member ctor) interleaved between zero stores, and a float constant materialised lazily before its first store, do not move with init-list/body/record spellings (3 each tried).
+- 00a5f290 / 00def6a0 (ctors): a `mov ecx,edi` (the this of the NEXT member's out-of-line constructor) that retail places between the second and third of three zero stores means the three words are an STLport vector (start, finish, alloc-proxy end-of-storage with its own inline constructor), not a flat 3-word record: the proxy's constructor is a member-object boundary and the scheduler slides the `mov` across it. Any unexplained 12-byte triple-zero group in a constructor should be tried as `CArray`/vector with the alloc proxy first.
+- 0072ac40 / 00584b42: the ternary-GetTC sweep (cvt.py) only caught `GetInterface(T** out, long type)`; the same fix applies to the other spellings (`GetInterface(long type, T** out)`, a `__fastcall` static caller). Any remaining row whose source still writes an out-pointer interface lookup should be converted by hand.
+- 00853260 (IsFinished): when retail places the shared `mov al,1` exit right after the second test (`je A ; ... ; je A` with A in the middle), the source has TWO separate early `return true;` statements (`if (!p) return true; if (p->dead) return true;`), not one `||` condition (which puts the exit last, `jne`).
+- 006e2cf0 / 007fe670 (STLport find): when retail loads the `first` iterator straight into ecx AFTER the tag/value pushes (`lea ecx,[esp+10h] ; push ecx ; mov ecx,[esi+28h] ; mov edx,edi ; call`), write the call to the tagged four-argument `find(first, last, value, random_access_iterator_tag())` directly on the raw vector words (`_M_start`/`_M_finish`); an inline by-value wrapper (`find(first,last,val)` forwarding) or an inline `begin()` accessor makes VC7.1 evaluate `first` early into eax and copy it to ecx (`mov eax,[..] ; ... ; mov ecx,eax`). A wrapper taking its iterators by const reference also matches.
+- Ternary sweep 2 (retry 10): the same rewrite applied to the OTHER if-form spelling, a map `Find(kind)` method (`if (it == last || kind < it->kind) it = last; return it->tc;` -> `return ((it == last || kind < it->kind) ? last : it)->tc;`), regraded 43 remaining rows (`$W/var/tern2_rows.txt`): 5 more RELOCATION_MATCH (008a0720 0089bbc0 0089fe20 00691560 00438ff0). The remaining 38 keep their other gaps (component-before-argument, eax form, frame slots); the ternary itself never made a row worse by more than the register choice, so it is safe as the default spelling of every interface lookup.
+- 0051e4f0 (GetPhysicsDebugInfo): a virtual call whose vtable retail loads into eax but the lane into edx (`mov edx,[ecx] ; call [edx+N]`) means the object pointer was NOT held in a named local: write the member expression twice (`CThing* thing = it->PThing; if (thing->PPhysics) thing->PPhysics->Call(..)`); VC7.1 CSEs the second load and eax is free for the vtable (MATCH). A named `physics` local keeps eax reserved.
+- 0048dc3c (GetTextOffsetFromEmbeddedTagGraphic): same rule as 00853260 generalised -- a return that retail places right after a PAIR of equality tests (`je A ; cmp ; jne next ; A: add eax,.. ; jmp`) is two separate `if (x == a) return r; if (x == b) return r;` statements; the `||` form moves that return below the default return.
+- 006621c0 (IsFreeToFinishAction): the mirror of the 00853260/0048dc3c rule -- when retail's `mov al,1` tail sits AFTER the `xor al,al` tail and every test jumps to it (`je true ... jl true`), the early `return true`s are ONE `||` chain; separate `if (..) return true;` statements inline the last `mov al,1 ; pop ; ret` before the false tail. (Separate statements = the shared exit placed right after its own tests; a chain = the exit at the end.)
+- 00927df0 (CAIStateGroup_SetupWares::IsRunnable): when two call arms each end in `return false` in retail with one shared `xor al,al` tail after the SECOND arm, write them as `if (c) A(); else B(); return false;` inside the guard; two separate `return false;` statements put the shared tail after the first arm.
+- 0063ef50 (CThingFilter_OverlappingCircle::operator()): x87 square order follows statement order, not operand order. `dx*dx + dy*dy` in one expression squares the RIGHT term first; `float d2 = dx*dx; d2 += dy*dy;` squares dx first. Pick the accumulator form whose statement order equals retail's fmul order.
+- 00bb6ab0 (CEnginePrimitiveManagerWeatherMask::RenderPrimitive): three-term squared distance with retail order Y,Z,X = `float d2 = dy*dy; d2 += dz*dz; d2 += dx*dx;` (`d2 = dy*dy; d2 += dz*dz + dx*dx;` also matches). The single-expression sum always squares the last term first.
+- 007483e0 (CCompare_FurthestFromInitPos2D::operator()): a frame 4 bytes larger than the live locals with a "2D" vector temporary means retail's temporary was 12 bytes (C3DVector-sized, Z never written); model it as `struct { float X, Y, Z; ctor(x, y) : X(x), Y(y) {} }`. Pair with the accumulator form (`r = Y*Y; r += X*X`) for the x87 square order.
+- 006cb620 / 006cb6e0 / 006cb840 (CTCCreatureNavigation distance tests): every "squared-distance term order" park is fixed by the accumulator form: `float r = a*a; r += b*b; r += c*c;` in retail's fmul order. The single-expression sum (any grouping, any operand order) is reassociated by VC7.1 so the written order never reaches the x87 code.
+- 00987bf0 / 00addfe0 (CMatrix34 Transform): `Dot3(t) + T * w` reassociates to z,y,w,x; `float y = Dot3(t); y += T * w;` keeps w last (z,y,x,w). A `+=` statement is a sequence point the reassociation does not cross.
+- 0082fd90 (CThingAICreature::WorldUpdateBulletTime) / 0075c530 (CTCCameraPointDefinitionBase::IsAngleValid): same rule as 006cb620: any parked "x87 sum-of-squares / dot-product term order" row is an accumulator (`s = t1; s += t2; s += t3;`) in retail's fmul order; works inside an inline GetLength()/dot helper too.
+- 00733020 (CThingFilter_HasBuildingAsHome::operator()): for `cmp <call result>,<member>` (retail `cmp eax,edx`) hold the call result in a named local and write `local == member`; `member == f()` gives `cmp edx,eax` and `f() == member` inline folds into `sub ; neg ; sbb ; inc`.
+- 00702c60 (CThingObject::DrawIsDrawable): a bool return of the low bit that retail computes as `mov al,[m] ; and al,1` is `return (m & 1) ? true : false;`; `(bool)(m & 1)`, `(m & 1) != 0` and byte casts all go through `mov eax ; and eax,1` or `xor eax,eax ; mov al`.
+- 00c6adb0 (reverb SetDefaults, 22 constant stores): when retail's store sequence is in ADDRESS order except for a hoisted shared-register constant (1.0f in eax, 0 in edx), write the body assignments in address order and let the scheduler hoist; writing the shared-constant members first makes the lane also CSE another repeated constant (0.04f) into a register that retail keeps as immediates.
+- 00c915a0 (CBitstream::ReadBits): when retail materialises the default result (`or edi,-1`) BETWEEN two compares of an `A && B` guard, the assignment sits inside the first test in the source: `if (A) { value = -1; if (B) goto advance; }` (or `if (!A || (value = -1, !B))`); `if (A && B) value = -1; else {...}` gives a separate `mov edi,-1 ; jmp` block.
+- 004b64e0 (CQuestManager::SaveGameState): when retail lays the then-arm of an `a || b` test first (`cmp 2 ; je THEN ; cmp 3 ; jne ELSE ; THEN:`) but `if (a || b) {then} else {else}` builds `je THEN ; je THEN ; ELSE ; jmp ; THEN:`, put the condition in a named bool (`bool writing = a || b; if (writing)`); the same change let the compiler duplicate the call tail of a pair of null-tested string accessors (two WriteBuffer calls) instead of merging the arms.
+- 00639930 (CTCRegionDisplay::FinishShowingRegionName): an x87 compare whose `fild`/`fld` order is swapped against retail with the SAME `test ah,41h ; jne` is a sign the parked condition is inverted, not a scheduling gap: `fild elapsed ; fld d ; fsub ; fcompp ; test ah,41h ; jne` skips when d <= elapsed, i.e. the source is `elapsed < d`. Check the semantics before shuffling operands.
+- 00e6e050 / 00e6e120 / 00e6e1b0 (CV_ChapelOfEvilScript::GetVictimIs*, by-value CCharString + terminating test): when retail hoists the parameter destructor's `lea ecx,[slot]` ABOVE the terminating `jne` and the jne lands in the false tail PAST its own lea, the by-value parameter has THREE destructor sites: `bool found = A || B; if (found) { if (!IsActiveThreadTerminating()) return true; return false; } return false;`. The named bool is required (an inline `||` condition with the same three returns keeps the lea after the jne); the two-site forms (`if (!term) return true; } return false;` and `found && !term`) never hoist it. Same rule as the script-thread "third exit" lesson, applied to a bool result.
+- 00e503d0 / 00e9d800 (wait loops with a local CScriptThing): the third exit `if (IsActiveThreadTerminating()) return;` / `if (IsDone()) return;` after the loop (then the unconditional flag store / RemoveThing) reproduces the inline-once destructor split (in-loop return inlined, sites 2/3 merged onto the out-of-line ~CScriptThing) for LOCALS as well as by-value parameters. For a local vector<CScriptThing> (00d1cac0) the lane never inlines the dtor at any of the three sites (open).
+- 009777a0 / 0095a2c0 / 00729bc0 / 006f17a0 (CIntelligentPointer assignment through a temporary): when retail forms the member's address (`lea edi,[esi+18h]` / `add esi,14h`, the `this` of SetPItem) AFTER the temporary's GetPItem call and the lane hoists it above, the operator= / helper NAMES the call result: `T* item = other.GetPItem(); SetPItem(item);`. The inline expression `SetPItem(other.GetPItem())` evaluates the inlined member's `this` first. Same family as 00972110 (name the call result, chain the member) -- 00780c80 landed with exactly that: `CWorld* world = GetWorld(); world->POpinionReactionManager->ClearOpinionSource(thing, true);`.
+- 006bc210 (CRegion::Reset): when retail's `xor eax,eax` (zero register for a group of float/vector zero stores) sits AFTER an immediate store (`mov [esi+2Ch],3F800000h`) and the lane hoists it above, write the zero group through an inline member function of the vector type (`MiniMapOffset.Set(0.0f, 0.0f)` with `void Set(float x, float y) { X = x; Y = y; }`): stores through the member's `this` are not reordered above the preceding immediate store (the 00724f80 rule, now for scheduling of the zero register, not only loads). Direct member stores, chained `a = b = 0.0f` and a C2DVector(0,0) temporary all hoist the xor.
+- operator[] sweep (00acd900 006d6590 006d6f60 005bd5db 004ff080, plus 0097b780): every parked vector/CArray model whose `operator[]` was `first[n]` was regraded with `T* begin_() const { return first; } T& operator[](n) { return *(begin_() + n); }` -- an INLINE ACCESSOR call plus the index, not `*(first + n)` (identical IR to `first[n]`). 5 of 42 matched outright (the "jns vs jge", "stride in ebx", "load scheduling only" and "register colouring only" reasons were all this); the element address is formed from the accessor's returned pointer plus the scaled index exactly as retail's STLport `*(begin() + n)`. Safe as the default spelling of every indexed STL/CArray access.
+- named-result operator= sweep (009708a0 007509d0 006ac140 0094e6b0 0094dac0): 5 of 68 remaining rows with the inline `SetPItem(other.GetPItem())` spelling matched with the named-result form and no other change; the "register swap only / colouring only" reasons on CIntelligentPointer assignments are this idiom. Default spelling for every CIntelligentPointer operator= / copy helper.
+- 006c0120 (CTCBuyableHouse::GetPrice): STLport-style size() as an inline member `_Last - _First` loads `_Last` first (edx) and `_First` second (edi); take the first-pointer local AFTER the size compare so it CSEs onto edi and survives the call. A local taken before the compare forces first-then-last load order.
+- 00a4e150 (C3DAnimation2::GetMovementAtTime): the "single-term x87 commutation" of a vector `+=` (retail `fld key.X ; fadd sum.X` on all three terms, the lane commuting only X) is a member operator+= that copies the source components into NAMED float locals first: `void operator+=(const C3DVector& o) { float x = o.X; float y = o.Y; float z = o.Z; X += x; Y += y; Z += z; }`. The plain `X += o.X` body, `X = o.X + X`, `X = X + o.X` and a ctor-based operator+ all keep the commuted X term.
+- 008531e0 (CScriptModuleOpenGate::Update): the mirror case -- retail loads the LEFT vector first on the X term (`fld [edi] ; fadd [esi+68h]`, Y/Z right first) when `Pos += DeltaPos` is a FREE inline `Add(C3DVector& a, const C3DVector& b) { a.X += b.X; ... }` (both operands by reference); the member operator+= (this + reference) commutes the X term, named locals inside the member load all three first. Rule of thumb for the single-term x87 commutation family: the X term's operand order is decided by HOW the two operands are reached (this-member, reference parameter, named local), not by the spelling -- try the free-function, member and named-local forms in turn.
+- 004cb6e0 / 006afcb0 (CTCPhysicsBase::GetMapwhoPosition): the operand the x87 lane loads FIRST in `a + b` is the one reached through a reference parameter when the other is reached through `this`: a free `OffsetBy2D(const C3DVector& position, const C2DVector& offset)` loads position first, the MEMBER `Position.OffsetBy2D(offset)` (this = position) loads the offset first (retail `fld [eax+4] ; fadd [esi+10h]`). Switching free <-> member flips every term together; it matched both the ctor-form and the named-result-form twins.
+- 00852220 (CScriptModuleFullTransition::Update): within the member operator+ the BODY form also decides the X term: the constructor form `return C3DVector(X + o.X, Y + o.Y, Z + o.Z)` loads the right operand first on all three terms (retail), the named-result body (`C3DVector r; r.X = X + o.X; ...`) commutes the X term only. So the x87 operand-order family has three levers: free v member, ctor v named result, and named float locals; try all combinations before parking.
+- 0075b2d0 (CTCPhysicsRigidBody::OnCreate): the 00724f80 / 006bc210 rule once more -- a load (`mov edx,[esi+4]` ParentThing) that retail keeps AFTER two member zero stores is pinned by writing the zeros through an inline member `OffsetVector.Set(0.0f, 0.0f)`; direct member stores let the lane hoist the load above them. Apply whenever the reason says 'retail loads X after the zero stores'.
+- 007e7c90 (CTCFireheartMinigame::DrawPreparePrimitivesForRendering): a constructor-argument temporary whose immediate zero stores retail keeps ABOVE the stores of temporaries evaluated earlier (right-to-left) is a NAMED local (`C2DBoxF box(0, 0, w, h)` declared before the call) while the others stay temporaries; naming all of them, or only the later ones, reorders the other way.
+- 00aee8c0 (CParticleEmitter::Kill): two single-bit writes that retail keeps as memory RMWs on either side of a run of zero stores (`or byte ptr [+40h],20h` ... zeros ... `and byte ptr [+41h],0FEh`) need (1) the zeros written through an inline `Set(x, y, z)` member of the vector (so the bit loads are not hoisted above them, the 00724f80 rule) and (2) the bit-field group typed as the PDB `unsigned short` run (with `unsigned char` units the last clear splits into load/and/store around `pop edi`).
+- 008ec870: for the 'temporary def pointer zero store before the GetDef pushes' family the wrapper that zeroes the slot must sit on the CALLER's class (CTCBase member calling GetDefinitionManager()->GetDef inside), not on CDefinitionManager: an inline member of the manager evaluates its `this` (the GetDefinitionManager call) before the pushes. A __forceinline helper returning the raw `def.Object` makes the def load straight into the callee-saved register (`mov edi,[esp+8]`), and DecRefToZero(long&) then gives `dec [edi+4] ; jne` -- the long-release gap closes when the def is held by a helper's return value rather than read from the escaped local at the release site.
+- 00ed4b10 (CV_SwordInTheStoneScript::Init): the 00724f80 rule in the LOAD direction -- a member load (the timer's Index inside an inline SetTime) that retail keeps BELOW a run of plain member stores is pinned by writing those stores through an inline member function of a sub-record (`Attempt.Reset()` over `#pragma pack(1) struct { long Count; bool Cutscene; bool CrowdPulling; }`); plain stores let the load hoist above them, every spelling of the loading inline (named locals, inline expression, free helper) is hoisted the same.
+- Mixed-axis x87 commutation (0075cd90, 00915080, 006b0b30, 007da760, 00bc7db0): when retail's per-component operand order is NOT uniform across X/Y/Z, no single spelling reproduces it -- the member ctor form and the free ctor form each fix a different axis and every other lever (named results, named locals, +=, free Add) lands on one of those two patterns. Treat as a lane gap once both the member and the free form have been graded; the uniform cases (00852220 all-right-first, 004cb6e0 offset-first, 008531e0 left-first-on-X-only via free Add, 00a4e150 via named-local +=) are the solvable ones.
+- 00728470 (CTCRandomAppearanceMorph::vfunc_4): when retail stores a looked-up component into a MEMBER with `mov eax,[eax+4] ; mov [edi+28h],eax`, the out-pointer GetInterface was called on a LOCAL and the member assigned only on success (`CTCBase* tc; if (thing->GetInterface(120, &tc)) Member = tc;`); passing the member's own address as the out pointer loads the component into ecx, and HasTC/GetTC, entry-returning finds and named thing locals keep ecx too. Complements the GetTC ternary rule (which covers components used as `this`).
+- 00caef70 (9-byte `mov eax,[esp+4] ; mov eax,[eax] ; jmp [eax+30h]`): a tiny function that loads `this` from the stack, fetches the vtable and tail-jumps to a slot WITHOUT touching the argument slot is a compiler-generated vcall thunk (`??_9@$B<offset>@AG`, `[thunk]: __stdcall 'vcall'{N,{flat}}`) for a pointer to a __stdcall virtual member; write `typedef long (__stdcall I::*PFN)(); PFN g = &I::slot;` in the TU and grade the thunk leaf (`??_9@$BDA@AG` for offset 0x30 = 48: hex digits A..P, trailing @, AG = __stdcall). Hand-written forwarders always re-store the object into its slot (11-13 bytes). The thiscall variant is `mov eax,[ecx] ; jmp [eax+N]` (`??_9@$B<off>@AE`). Offsets 1..10 encode as the digits 0..9 without @.
+- 0082abd0 / 0082acd0 (CMiniMapDisplay::Initialise*Markers): two spellings of the same inline interface lookup pick the component's register. When retail reads a byte of the component and never calls on it (`mov eax,[eax+4] ; mov cl,[eax+10h]`), the out-pointer `GetInterface(&tc, type)` into a LOCAL gives eax with no copy (the 00728470 rule); when the component is later `this` of a call (`mov ecx,[eax+4] ; mov al,[ecx+11h] ... call IsForSale`), the CInterfaceMap `Find(kind)` member ternary (`return ((it == last || kind < it->type) ? last : it)->component;` called from a one-line GetTC) gives ecx, where the open-coded ternary in GetTC itself gives eax + `mov ecx,eax`. Try both before parking a "component register" row.
+- 008dcb60 (CModeJackOfBladesFlash::ExtinguishFlames) / 0079fd90 (CLightningBeam::IsTargetValid): the "frame packing" family (two inlined lookup keys in one word, a local vector's start kept in a callee-saved register across calls and into the inline free) is retail's same-TU knowledge, not a spelling: give the out-of-line callee a STAND-IN body in the TU under `#pragma auto_inline(off)` (CInterfaceMap::LowerBound as STLport lower_bound; GetAllThings as a push_back loop that touches the vector only inline, the landed 0x00848730 / 0x007FD580 idioms). VC7.1 then knows the key's / vector's address does not escape and packs the words / enregisters the pointer. A `{}` block around the second half is still needed when a function-scope local must share a word with the first half's inline key.
+- LowerBound stand-in sweep (retry 10, `$W/var/lbsweep.py`): adding the same-TU `#pragma auto_inline(off)` STLport lower_bound body for every parked source that only DECLARED CInterfaceMap::LowerBound regraded 146 rows: 10 RELOCATION_MATCH with no other change (0093c830 00945b10 00946380 007fb610 007f50b0 0092d600 0095a7d0 0082de20 007babe0 009613a0) -- every one was a "frame only / key slot / sub esp,8 v push ecx" park. The stand-in never changed the parked function's instructions (only frame offsets), so it is safe as the default for every TU with an inlined interface lookup; the body goes after the map struct and before CThing. Rows where only the vector/filter words still differ need the matching stand-in for the OTHER address-taking callee (GetAllThings, for_each, find).
+- 00945a90 (SitForMeal::GetPCookingPot, empty predicate WITHOUT a user ctor): when retail loads `begin()` (`mov ecx,[eax]`) BEFORE the value-initialised empty predicate's zero byte store and the lane sinks it to its push, name the first iterator (`SThingListIterator first = list.begin(); FindIf(first, list.end(), Pred());`); a reference to the list or the inline call-site form keeps the sunk load. (Its twin 00946380 with a user-ctor predicate has no store and matched without the local.)
+- pv.py's normaliser leaves vtable-address immediates (`mov [esp+14h],offset vtable` v `0`) as diff lines: a "diff lines: 2" whose only lines are such immediates is a RELOCATION_MATCH under g.sh (00956b00, 00966290).
+- VC7.1 DROPS a null test on a register value that was dereferenced earlier in the function (probe: `Use(p->a, p->b); if (p) ...` emits no `test`), even across calls, unless the pointer is re-read from an escaped slot. When retail keeps `test esi,esi ; je` on a CSE'd def pointer after using its members, the members were reached through the ADDRESS of a sub-object (`const CAnimationSet& anims = def.m_pObject->m_anims; ForEach(anims.m_first, anims.m_last, ..)` -- the base of the loads is then `esi+34h`, a different value, so the test on esi survives; same instructions). Found on 00835bd0 together with the stand-in GetSubDef + for_each bodies (frame `push ecx`, result temporary over the dead def slot).
+- Stand-in bodies for NON-template out-of-line callees need `__declspec(noinline)` in addition to `#pragma auto_inline(off)` (VC7.1 still inlined a small member body under the pragma alone: 008a7d60). And a `// Leaf:` line must be a plain substring of the symbol (a mangled oracle name never matches and the grader then takes the LARGEST function of the object, i.e. the stand-in).
+- __find_if / for_each stand-ins (0082a340, 00835bd0): a stand-in body of the algorithm (iterators/functor by value, tag by const reference, loop calling a declared per-element helper) lets VC7.1 pack the hidden result iterator / functor into a dead argument slot or the dead def slot exactly as retail; the "hidden-result slot" family of parks is this.
+- GetSubDef/GetDef stand-in sweep (retry 10, `$W/var/defsweep.py`): for every parked TU that only DECLARED an out-of-line `GetSubDef*` / `GetDef*` (CDefClassBase or CDefinitionManager, non-template declaration), appending a same-TU `#pragma auto_inline(off)` + `__declspec(noinline)` body `{ void* def = FindDef_<Struct>_<Name>_<n>(); if (!def) return false; *(void**)out = def; return true; }` (the out slot written ONLY through the inline store, the def coming from a declared helper) regraded 144 rows: 42 RELOCATION_MATCH with no other change (0082d870 0083d280 00666850 005b3d7a 008f0b20 007d7ec0 0082d8c0 0083c1e0 00835b90 0083d900 005bd82e 007eb110 007eb1a0 007eefe0 007e0910 00582944 0077cb60 0077cca0 00766050 007660c0 00766140 00747480 007f98e0 005da6e0 007d80c0 008ef390 007f6d70 008077b0 006a1330 007e1eb0 008ed1f0 005f4a86 007275c0 00658fa2 0082d2d0 0082d5c0 + the relocation-only 00662c10 007c3070 007bb800 007868a0 007e3040 007079e0 006648d0 00962c10 00894820). The families it closes: "def loads straight into esi/edi (mov esi,[esp+x]) v eax+copy", "dec [esi+4] ; jne release register", "null out-pointer store scheduled after the def-class load", "hidden-result temporary over the dead def slot", "frame word count (push ecx v sub esp,8)". VC7.1 then knows the CDefPointer's address does not escape the call, so the def is read from the slot once into the callee-saved register and the release decrements through it. Safe default for every TU with a declared GetSubDef/GetDef; the sweep's regex also matched `GetDefGlobalIndexFromName(const CCharString&)` (a bogus stand-in writing into the string) -- that one is never needed, drop it (007079e0, 00894820 match without it). Rows left at "diff lines: 4" after the sweep (00894c90 007b8680 007884f5 008c4170 005ea010 00667b30) need the matching stand-in for ANOTHER address-taking callee in the same TU (a second def lookup through a different struct, LowerBound, a string temporary).
+- pv.py "diff lines: 4" rows (007b8680 007884f5 008c4170 004c9840 0094a2b0 00811830 008946e0): the normaliser also leaves STRING-literal addresses (`push offset "OBJECT_TG_TANKARD_01"` v `push 0`) and global-object addresses as diff lines, so a sweep hit at 4 lines whose pairs are all `0x12xxxxx`/`0x13xxxxx` v `0` immediates is a RELOCATION_MATCH under g.sh. Always install-and-grade every sweep row with <= 8 diff lines and equal instruction counts before reading the diff (7 of 22 such rows matched outright).
+- 00894c90 / 00894d30 / 00894bf0 (IsGiftFriendly/Offensive/Romantic) and 008fa280 (IsGiftOfType), 00772610 (CTCShop::GetName): the "bool result in bl / sete bl inside the branch / type load register" family is the DESTRUCTOR form -- zeroed CDefPointer locals with a null-tested dtor and `return def->Field == x;` straight out of the nested ifs, plus the same-TU GetDef/GetSubDef stand-ins. Hand-written release pairs (with `long count = def->m_refCount - 1` tricks) reproduce the instructions but colour the type load into ebx / schedule `dec eax` early. With destructors the success path drops the sub-def null test (dereferenced by the return expression) and the failure path keeps it, exactly as retail. When the `this` chain still differs (`mov eax,[ecx+4] ; mov ecx,[eax+70h]` v `mov ecx,[ecx+4] ; mov ecx,[ecx+70h]`), reach the thing's def through a getter returning a REFERENCE to the CDefPointer member (`ParentThing->GetPDef()->GetSubDef(&def)`) or `CThingBaseDef& base = *ParentThing->PBaseDef;` (the address-of-sub-object rule).
+- 005ea010 (CTCTavernGame::UpdateValues): a flag store (`mov bl,1`) or zero store (`mov [esi+0A4h],edi`) that retail emits AFTER the neighbouring arithmetic (`add eax,ecx` / `sub eax,edx`) while the lane emits it before is a statement-order gap: put the arithmetic statement first in the source (`TotalWinnings += ...; prizeWon = true;`). VC7.1 keeps simple stores in source order relative to the surrounding RMW arithmetic.
+- 00766400 (GetExperienceMultiplier): a byte twin of an already-matched sibling (00766140) is matched by copying the sibling's WHOLE TU text and changing only the member read; the twin's own earlier "pointer-local hand release" text had the same bytes as its own park reason. Always diff a parked row against its matched twin's source before probing.
+- combined sweep (`$W/var/combosweep.py`, 27 rows declaring BOTH CInterfaceMap::LowerBound and a GetSubDef/GetDef): 00972340 matched with both stand-ins where each alone left 44/10 diff lines; 007f4d50 and 00773e10 followed with one statement change each. When a TU has two address-taking callees, the frame only packs as retail once BOTH have same-TU stand-in bodies -- run the lb and def conversions together before judging a row.
+- 00773e10 (CTCShop::RemoveStockItemsFromShop): a zeroed CDefPointer that retail stores at the LOOP HEAD (`mov [esp+10h],ebx` before the item's GetPItem/alive test) is declared at the top of the loop body, before the `if (alive)` that uses it; declaring it inside the if moves the zero store after the test.
+- 007f4d50 (CTCCarriedActionUseAbility::OnActionUse): the thing-def chain `ParentThing->PDef->GetSubDef(&out)` coloured ParentThing into edx (`mov edx,[ebx+4] ; lea ecx ; push ecx ; mov ecx,[edx+70h]`) where retail reuses ecx (`mov ecx,[ebx+4] ; mov ecx,[ecx+70h] ; lea edx ; push edx`): take the def into a NAMED pointer local first (`const CDefClassBase* thingDef = ParentThing->PDef; thingDef->GetSubDef(&out)`). The mirror of 008fa280 (where retail used eax for ParentThing and the GetPDef()-reference getter was needed): try both spellings for a "this chain register" diff.
+- 007edbe0 (CTCCarriedActionUseFish::OnActionUse): when retail loads a member pointer INTO the dead `this` register before pushing it as a reference argument (`mov edi,[edi+4] ; push edi`) and the lane uses a scratch register (`mov eax,[edi+4] ; push eax`), pass the member through a reference-returning accessor (`CThing& GetParentThing() const { return *ParentThing; }`) instead of `*ParentThing`; a named `CThing&` local or a named action temporary do not do it.
+- Generic reference-parameter stand-in sweep (`$W/var/refsweep.py`, run over all 868 remaining rows on top of the lb/def conversions): for EVERY out-of-line declared callee (member or free, template or not) with a class-type reference/pointer parameter, a same-TU `#pragma auto_inline(off)` + `__declspec(noinline)` body that writes one word through each such parameter (`*(void**)&ref = p;`) and returns a default. 8 rows matched outright (0064a1ae 00658ec3 006bc4a0 007714b0 0081fa20 0081fa90 008f0b80 00f37030) and 1 more with the grader (0059d761): the callees were IS_THING_ALIVE<T>, AreThingsEnemies/Allies, IsPointInside(const C3DVector&), the STLport vector `_M_insert_overflow` (SScalarTag temporary), CSubtitleMap::find(key const&), GetCardDef(CDefPointer*), GetDominantEngineThemeAt(const C2DCoordI&, long*). The families this closes are "temporary tag object in a frame word", "hidden argument slot reuse", "key reference" parks. Run it before hand-probing any row whose reason mentions a temporary, a tag, a key or a vector word.
+- 00713740 (CTCScriptedControl::OnRemove): a bit-field set that retail emits as a direct RMW (`or byte ptr [eax+94h],1`) on an object returned BY REFERENCE from a call is written through a NAMED reference local (`CAnimateThing& a = tc->GetAnimation(); a.m_changed = 1;`) or an inline member setter; the chained `GetAnimation().m_changed = 1` forms the field address first (`add eax,94h`) and splits into load/or/store.
+
+## Empty tag parameters: never store through them in a stand-in (004b3810, 00820b80)
+A stand-in callee body that does `*(void**)&tag = p;` on an empty-struct parameter (`SRandomAccessIteratorTag`,
+`__false_type`, `CIteratorTag`, ...) tells VC7.1 the tag object is written through, so the empty temporary gets
+its own frame slot. Retail never wrote it: with the store dropped (keep the stores through the real out/ref
+params) the empty temporary is homed on an existing slot, even a live argument slot (004b3810: `lea eax,[esp+14h]`
+is the live `enabled` argument, re-read after the call; 00820b80: `lea ecx,[esp+24h]`). `var/tagsweep2.py`
+applies this to every row whose stand-in has a parameter of an empty struct type.
+
+## Unary minus placement (007e2f00)
+`-(a * b)` and `-a * b` both give `fld ; fmul ; fchs`, but with `-a * b` the `lea ecx` for the `this` of the call
+that consumes the product is computed before the float argument store (retail), with `-(a * b)` after it.
+When the only diff is a `lea reg,[esp+n]` moving across a push/fstp, re-spell the arithmetic of the neighbouring
+argument rather than the call.
+
+## Growth-callee stand-ins must READ the pushed value, not write it (00706c90, 0070d100, 00b2a010)
+`push_back(T(temp))` inlines to "store the temporary; if (finish != end) construct in place else _M_insert_overflow(finish, x, tag, 1, true)".
+When the `_M_insert_overflow` / `InsertGrow` stand-in does `*(void**)&x = p;` VC7.1 sees the callee overwrite word 0 of the
+temporary, so the caller's own initialising store of that word becomes dead on the overflow path and is dropped
+(the diff is one missing `mov [esp+n],reg` before the branch and a 4-byte-shorter body). Replace the store with a read
+(`if (*(void**)&x != p) return;`): the temporary still does not escape, and the init store stays. Rule of thumb: stand-ins
+write through OUT parameters (pointers, non-const references) and read through IN parameters (`const T&`).
+
+## Read a def's sub-struct fields through the def pointer, not through a reference or a member getter (006d6870)
+`def->Range.GetValue(t)` and `const CFloatRange& r = def->Range;` both make VC7.1 form the member address
+(`add eax,0F0h ; fld [eax]`). Retail's `fld [edi+0F4h] ; fld [edi+0F0h]` (and the def pointer reloaded into the dead
+`this` register) comes from reading `PHeroCombatDef->Range.LowValue` and `PHeroCombatDef->Range.HighValue` as two plain
+member chains (`float low = ...LowValue; return low + (...HighValue - low) * t;`).
+
+## Name the clamped length before the pointer sums (00569330)
+`CNetString(start + pos, start + pos + Min(n, size() - pos))` folds `pos + min` first (`add eax,ecx`); retail's
+`add eax,esi ; add eax,edx` comes from `unsigned int len = Min(n, size() - pos); CNetString(start + pos, start + pos + len);`.
+
+## Sweep order that paid off this segment (for a later agent)
+refsweep (stand-ins) -> tagsweep2 (drop stores through empty-struct tag params; `var/tagsweep2.py`) -> rdsweep (turn stores
+through `const T&` IN params into reads; `var/rdsweep.py`). Each sweep's 0-diff rows are installed and graded automatically;
+its 2-line rows are often immediates-only and match under g.sh when installed by hand (`var/inst.sh`/the try() helper).
+
+## Segment 7 (retry 10, higher effort): new rules for the "hard" families
+
+### Callee-saved push placement: a join on an uninitialised/flag value keeps the push in the prologue (00960f00)
+VC7.1 sinks a callee-saved `push` past an early exit (shrink-wrap) when the variable coloured into that register is not live at
+function entry. Retail's prologue `push esi` (with the lane sinking it after the first test) is a source where the early-exit
+path flows through a JOIN that is only threaded late: `CTCSleep* sleep; bool asleep = false; if (GetInterface(&sleep, T))
+asleep = sleep->m_bAsleep; if (!asleep) return false; ...` -- `sleep` (esi) is uninitialised on the miss edge into the join, so
+it is live from entry and esi is pushed in the prologue; the miss path is threaded straight to the exit afterwards, leaving no
+trace but the push. The test must be its OWN `if (!flag) return` statement (an `if (flag && ...)` condition is threaded early
+and the push sinks again); a `T* p = 0; ... if (!p) return` join does the same but keeps a `test esi,esi`.
+Duplicated tails that VC7.1 cross-jumps after register allocation also keep the pushes at the top (00af5010 with two copies of
+the append), but they change the colouring; not a match there.
+
+### Def-release load register (`mov ecx,[slot] ; test ecx,ecx`): EVERY callee that receives the holder's address needs a body
+The long-standing "slot loaded into eax + `mov ecx,eax`" release gap is the address of the CDefPointer (or of a temporary that
+CONTAINS one) escaping into an out-of-line callee the TU only declares. Give each such callee a same-TU `#pragma auto_inline(off)`
++ `__declspec(noinline)` body:
+- GetDef/GetSubDef out slots: the defsweep body (`void* def = FindDef_x(); if (!def) return false; *(void**)out = def;`) -- 17
+  more rows matched in segment 7 just by running defsweep.py over rows it had never been run on (list in STATUS).
+- a `const T&` consumer of the holder (0069a920 SetCameraManagerDef: paste the landed body; 005e3c60 vector::resize(n, value)):
+  the body must MAY-WRITE a NON-CONSTANT pointer into the holder's pointer field (`if (value.first == n)
+  const_cast<T&>(value).second.Components.Object = (X*)Last;`). A read-only body lets VC7.1 prove the field is still 0 and it
+  deletes the release; the generic refsweep body writes word 0 of the parameter, which is the wrong word when the pointer sits
+  at a non-zero offset.
+- after the stand-ins, the remaining "register for the index / this chain" diffs are source ORDER: read the GetDef argument
+  (`long index = slot->first;`, `CThing* thing = ParentThing;`, the find key, a by-value predicate) into a named local BEFORE the
+  zeroed CDefPointer is declared (006a1490, 007eac10, 005bdf08, 005bdfb1), or declare the zeroed CDefPointer before the named
+  thing-def local (007e0e70) -- whichever puts the zero register after the chain as in retail.
+- retail re-reading a member it just tested (`cmp word ptr [eax+8Ch],0 ; je ; movzx edx,word ptr [eax+8Ch]`, 007ee370;
+  `mov edx,[eax+84h] ; test ; je ; mov eax,[eax+84h]`, 00703150) where the lane CSEs it: fetch the chain again through a named
+  pointer local declared AFTER the zeroed CDefPointer (`CThing* thing = Thing; GetDef(thing->DefIndex, &def)`).
+- a by-value class result passed straight to a `const&` parameter (`SetAnimationName(table.GetString(i))`) pushes the returned
+  eax; retail's `lea eax,[esp+N] ; push eax` is a block-scoped NAMED local initialised from the call
+  (`{ CCharString animation = table.GetString(i); SetAnimationName(animation); }`) -- 008e6bb0, 008e6c90, 008e6690.
+
+### VC7.1 uses SAME-TU callee register kill sets at call sites (00a07900) -- a new lever for "register" diffs
+Retail `call SetDefaultRenderStates ; call ForceResendRenderStatesToHardware` WITHOUT re-loading `mov ecx,esi` before the
+second call: the first callee (0x00A059E0, same .cpp) keeps `this` in ecx throughout its body, and VC7.1 -- even without LTCG --
+records the registers a function compiled EARLIER in the TU actually clobbers and lets the caller keep values in the untouched
+scratch registers across the call. A same-TU `#pragma auto_inline(off)` + `__declspec(noinline)` stand-in placed BEFORE the
+caller whose body leaves ecx alone (stores through `this` only) reproduces it (diff 0). So any parked row whose residual is a
+scratch-register reload/copy around a call to a same-class / same-file callee (or a value retail keeps in eax/ecx/edx across
+such a call) should get a stand-in body with the callee's real register footprint (disassemble the callee to see which of
+eax/ecx/edx it touches).
+
+### Segment 7 (cont.): the vector growth member body closes the tag/temporary-over-dead-argument-slot gap (25 rows)
+GOTCHAS 24l ("empty tag temporary overlaid on a live/dead argument slot", "retail homes the value AND the __true_type tag in the
+one dead argument slot", "frame packing only") was a TU gap, not a lane gap: retail compiled the STLport growth member
+(`_M_insert_overflow` / `InsertGrow` / `InsertOverflow`, an instantiation, so its body is in the TU) and VC7.1 sees that it reads
+the value only through its const reference and never touches the empty tag. Add an out-of-class same-TU body after the vector
+class (`#pragma auto_inline(off)` + `__declspec(noinline)`): `T* p = (T*)GrowVectorStorage_s7(this, count); if (p) new (p) T(x);`
+(placement copy; `*p = x` and a first-word copy give the same bytes; a realistic full reallocation body was checked on 005202b0
+and also matches). Generators: `s7/growsweep.py` (simple decls) and `s7/grow2.py <addr> copy|assign|word` (brace-matched class,
+multi-line decls). Landed by it: 00b59c70 005202b0 00778b30 007f7810 007fef40 00ba6ef0 00bd27f0 00f370c0 00f372b0 009d0630
+0086b810 00a623d0 007e1990 00667b30 006eb8a0 00547500 004b2b70 006aee40 006d5850 006ec380 00a5f430 00a636c0 00aeef40 00b3a110
+00727c20. Test stub for `GrowVectorStorage_s7`: advance `finish` by count and return the old finish (or grow heap storage when
+the vector starts empty -- 006ec380, 00b3a110).
+
+### The out-of-line copy of an inlined template member needs its body too (00bf44a0)
+When retail inlines `push_back` at the first call sites and calls the same template out of line at a later one (inliner budget),
+the out-of-line instance (0x00BF5EA0) is still compiled in the TU: give it the same body out of class (noinline). That alone moved
+the address-taken local's slot store below the type compare (diff 2 -> 0). Same for a sibling vector's declared-only push_back.
+
+### Def-release load register: give GetSubDef/GetDef the operator= body (13 rows)
+The defsweep stand-in (`*(void**)out = def;`, write only) was too weak. Retail's GetSubDef<T>/GetDef<T> bodies (landed, e.g.
+0x0087C490) assign the found def through `CDefPointer::operator=`, which READS the old out pointer, releases it when different,
+then stores the new one. A stand-in with exactly that mod/ref shape
+`void* old = *(void**)out; if (old != def) { if (old) ReleaseDef_s7(old); *(void**)out = def; }` matched 00663140 006632a0
+006631c0 0073af60 0077c160 006b0780 00768120 005bec92 0079dcc0 007310c0 007713c0 and cut many others (0087c420 44->20,
+008cc8e0 50->15, 007f6df0 64->14). Generator: `s7/defreal.py <addr> <suffix> [real|addref|clear]` (template and nested members,
+rewrites an existing FindDef_ stand-in). Tests: FindDef stub returns the def without a reference, ReleaseDef_s7 counts.
+
+### Copy loops: a named pointer to the source array flips the base/index order (007713c0)
+`ReactionFlags[i] = def->ReactionFlags[i]` gives `mov cl,[edi+eax+78h]`; retail `[eax+edi+78h]` is
+`const bool* flags = def->ReactionFlags; ... ReactionFlags[i] = flags[i];`.
+
+### Map find: same-TU body + a NAMED, copy-initialised iterator (006c59a0, 006c5920, 00772790)
+`STLport map::find` returns its iterator through a hidden pointer. With the body in the TU (lower_bound walk reading the key
+through its const reference; `s7/mapfind.py` writes one over raw node offsets) AND the result copy-initialised into a named
+iterator (`CDeedMap::iterator it = map.find(key);`, not `it = ...` and not `map.find(key)._M_node`), VC7.1 reads the node back
+from the iterator's frame slot as retail does (`mov eax,[esp+4]`, the ebx/esi pair of 00772790). Either change alone is not enough.
+
+### Near callees (same .obj, within ~0x1000 of the row) get a no-escape stand-in (00965f30 00964360 00965210 00cb88b0 00936a60)
+A declared-only callee whose retail address sits next to the parked function is in the same TU (the thing-search template
+instantiations GetPBestThing / GetPBestLeafThing / GetPFirstThingInRoughArea, a map's LowerBound, a sibling method). Give it a
+same-TU noinline body that reads its const-reference arguments, CLEARS then stores its out pointer, and lets no argument
+escape: `*out = 0; long best = NearSink(this, *(const long*)&compare); if (best) *(long*)out = best; return *out != 0;`.
+`s7/nearbody.py <addr> <suffix>` writes one for every near declaration (then hand-clean the body as above; a body that only
+reads the old out value works too but is semantically odd). Lifted 4 rows to 0 in one sweep, cut others (0096f180 32->8).
+- An EMPTY filter struct passed by const reference (`CThingFilter_HasFreeActionPoint()`) is value-initialised (`mov byte ptr
+  [esp+7],0`) unless it has a user constructor: give it `CThingFilter_HasFreeActionPoint() { }` (00965210).
+- `PCorpse = CIntelligentPointerDead(thing)`: retail computes `&PCorpse` after the temporary's GetPItem call: write the
+  CIntelligentPointer operator= as `{ CThing* item = other.GetPItem(); SetPItem(item); return *this; }` (00936a60).
+- A leaf callee in the same TU (C2DBoxI::Overlapping, 004ff310) needs its body too even though it only reads; with the growth
+  body it fixed the eax/edx/ecx assignment of the call setup.
+- Rows that need TWO bodies (0071dd50: operator=-shaped GetSubDef AND the vector's InsertGrow) show no gain from either alone:
+  `s7/combo.sh <addr>` chains all generators (SRCF= lets each one read the previous output).
+
+### Template instantiations are in the caller's TU at ANY address distance (0064639c, 004afdd0)
+COMDAT folding keeps one copy of an instantiation somewhere in the image (0x00655CDC is 0xF940 bytes from its caller), but
+retail compiled the caller with the template body visible. So every declared-only STL algorithm / container member the
+parked row calls (find, __find, erase, insert, lower_bound, __copy, ...) deserves a same-TU body regardless of its address.
+`s7/tmplbody.py <addr> <suffix>` writes no-escape stand-ins for those names (free functions included; a by-value iterator
+result returns first-or-last); then replace the generic body with the real loop (`for (; first != last; ++first) if (*first ==
+value) return first; return last;`) -- both matched 004afdd0. The list find + erase bodies matched 0064639c (the `CThing*
+const&` value temporary's arg-slot store moved after `lea esi,[ecx+3Ch]`).
+- Template sweep (`s7/tmplbody.py`, all unmatched rows): lifted 00762580 (vector insert + overflow), 00922600 (LowerBound +
+  FindMostRecentMessage<filter>), 006e9d90 (map<u64>::find: the two UID key copies then share one 8-byte slot), 004b1670
+  (input-iterator __find + list insert), 0082def0 / 007b0ba0 / 006c0160 (CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound),
+  00536a30 (list find). Every generic stand-in was then replaced by the real body (binary search, lower_bound walk, list walk,
+  node insert) and still matched -- what matters is that the value/key is only READ through its reference and nothing escapes.
+  `s7/lbreal.py` / `s7/lbreal2.py` add the real CInterfaceMap::LowerBound body.
+- 009e99c0: an STLport vector member's third word is `_STLP_alloc_proxy<pointer, ...> _M_end_of_storage` -- a member OBJECT
+  with a constructor. Modelling it as a plain pointer lets VC7.1 schedule the next member's `mov ecx,ebp` (ctor this) above the
+  zero stores; the proxy struct with a ctor keeps retail's order (same rule as the 00b1b4d0 constructor pin).
+- A stand-in's own opaque helper matters too: `GetSubDef` stand-ins that call a DECLARED-ONLY `FindDef_s7r_N()` did not match
+  00730a00 / 005b4795 / 005b5be6 / 005bf654; giving `FindDef_s7r_N` a same-TU body (`return (void*)TmplSink(0, 0);`, an
+  opaque external call with no pointer arguments) did. VC7.1's per-function side-effect summary is weaker for a direct call to
+  an undefined function than for a call to a defined one -- so make every helper of a stand-in a defined same-TU function whose
+  only external call takes no caller pointers. `s7/combo.sh` (defreal + tmplbody) does this automatically.

@@ -1,0 +1,59 @@
+// CPointerListOwner_005202b0::Add(CListItem* item) -- appends the item pointer to the 4-byte-element vector at +0x48 through the inlined retail push_back
+// Leaf: Add
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005202B0, length 55 bytes.
+// Callees: the vector's reallocating insert @ 0x00436AC0 (landed callers: (where, const T&, const tag&, count, noTail)).
+// Label: the manifest's "CTCCameraPointScriptedSpline::EditCyclePreviousKeyCamera" is propagated and rejected
+// (that class's key cameras are 0x38-byte records); the owner is named by address.
+// Shape: `this` advanced to the member vector (`add ecx,48h`); the argument is re-stored into its own slot,
+// so the source passes an rvalue (a pointer conversion) to push_back(const T&).
+// Tried: an rvalue argument (the cast / inline accessor that retail copies into the dead argument slot),
+// the landed SScalarTag-with-user-constructor push_back. The lane gives the value temporary its own `push ecx`
+// slot and the tag the dead argument slot (or, for an lvalue parameter, the tag its own frame byte), never
+// both on the same live slot. Next: lane gap (GOTCHAS 24l: empty tag temporary overlaid on a live argument
+// slot; same as the parked CTCRegionFollower/CTCFollowed GetFollowers 0x006AEE40 / 0x006D5850).
+#include <new>
+
+struct SScalarTag { SScalarTag() { } };             // empty pod-type tag (STLport __true_type), bound to a const reference
+
+template <class T> struct CRetailVector {           // retail std::vector: {first, last, end}
+    T* first;
+    T* last;
+    T* end;
+    void InsertGrow(T* where, const T& value, const SScalarTag& tag, unsigned long count, bool noTail);
+    void push_back(const T& value)
+    {
+        if (last != end) {
+            new (last) T(value);
+            ++last;
+        }
+        else
+            InsertGrow(last, value, SScalarTag(), 1, true);
+    }
+};
+void* GrowVectorStorage_s7(void* vector, unsigned long count);
+#pragma auto_inline(off)
+// Same-TU body of the vector growth template (InsertGrow, instantiated in retail's TU): reads the value through its const
+// reference into the new storage and never touches the empty tag (the landed push_back idiom).
+template <class T>
+__declspec(noinline) void CRetailVector<T>::InsertGrow(T* where, const T& value, const SScalarTag& tag, unsigned long count, bool noTail)
+{
+    T* p = (T*)GrowVectorStorage_s7(this, count);
+    if (p)
+        *p = value;
+    
+}
+#pragma auto_inline(on)
+
+struct CListItem;
+struct CListItemBase;
+
+struct CPointerListOwner_005202b0 {
+    unsigned char                  _pad[0x48];
+    CRetailVector<CListItemBase*>  m_items;         // +0x48 (InsertGrow @ 0x00436AC0)
+    void Add(CListItem* item);
+};
+
+void CPointerListOwner_005202b0::Add(CListItem* item)
+{
+    m_items.push_back((CListItemBase*)item);
+}
