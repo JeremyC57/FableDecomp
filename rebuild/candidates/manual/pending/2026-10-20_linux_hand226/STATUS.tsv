@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004ab710	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+004cc3f0	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+00619890	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+006420f0	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+00685f80	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+006d4c00	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+007ad6d0	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+00800b90	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+00f333b0	SKIP	-	-	row holds the Transfer jump-table body plus following function(s) after int3 padding
+004109a0	DIFFER	280v280	-	Transfer<CCharString> (label wrong); pop ebx before traits dtor in case 0
+00410ac0	DIFFER	280v280	-	Transfer<CWideString> (label wrong); same pop ebx placement as 004109a0
+00476e3e	DIFFER	271v273	-	TransferVectorOfSubComponents<CEnvironmentThemeDef> (label wrong); this-spill vs offset register allocation
+00477cd2	DIFFER	278v280	-	TransferVectorOfSubComponents<CEngineLocalDetailObjectDef> (label wrong); same allocation as 00476e3e
+00632e00	RELOCATION_MATCH	263v263	PASS	TransferVectorOfSubComponents<NUISystem::CUIStateDef> (label wrong); landed 0067d6b0 template + resize(n, T())
+006c9a10	DIFFER	288v284	-	Transfer<CIntelligentPointer<CThing>>; operator= inlined at both sites (retail: once, second call out of line)
+00ae3550	RELOCATION_MATCH	285v285	PASS	CParticleProgram ctor; local retail-offset model (header has PDB offsets); STLport alloc-proxy vectors place the Constraints lea
+00adf610	RELOCATION_MATCH	286v286	PASS	CParticleSimulation::InitializeFromTemplate; first try
+00af3dc0	RELOCATION_MATCH	273v273	PASS	GetSystemCost; per-iteration instance reference gives the second IV, share decl order fixes store order (3 grades)
+00af4100	RELOCATION_MATCH	312v312	PASS	CParticleSystem::InterpolateTo; first try (retail offsets from PDB minus container shrink)
+00af43b0	MATCH	270v270	PASS	CParticleSystem::GetParticleStats; first try
+00af59a0	DIFFER	269v280	-	CParticleSystem::Update; callee-saved register colouring (params/UpdateParameters/iterator/instance) + loop alignment
+00af4ee0	RELOCATION_MATCH	299v299	PASS	CParticleSystem::DatabaseCopy; inline IsSameType helper fixes call order (3 grades)
+00af5770	RELOCATION_MATCH	253v253	PASS	CParticleSystem::DeleteAllDecals (catalog DestroyDecals); stand-in same-TU ClearDecal body + by-value _Destroy (3 grades)
+00af4530	DIFFER	298v298	-	CParticleSystem::AddComponent; type local homed in arg1 slot vs retail arg3 slot
+00aeb990	RELOCATION_MATCH	244v244	PASS	CParticleEmitterManager::PreparePrimitives; stand-in same-TU FindVisible + real list clear above, if/else of two calls (3 grades)
+00562ff0	RELOCATION_MATCH	320v320	PASS	~CTCHeroOnlineScoreboard (label wrong); STLport 4.x container dtors inline; first try
+0098abf0	RELOCATION_MATCH	246v246	PASS	~CShaderRenderManager (label wrong); first try
+00f35ed0	DIFFER	307v307	-	CPerlinNoise::Initialise; scheduling only (fmul vs next LCG argument)
+00ef8bc0	RELOCATION_MATCH	254v254	PASS	NScript::CPersonalScript_EmptyScript::ChangeAlpha; GSI slots 654/510/7 (cgsi table 4 rows high)
+00693ef0	RELOCATION_MATCH	289v289	PASS	~CCreatureActionBase (label wrong); local retail-offset model (header has PDB container sizes); first try
+00a11610	RELOCATION_MATCH	317v317	PASS	CPhysicsMeshObject::IsRigidBodyBoundingPointsValid; unrolled sum loop reproduced; bool helper + unsigned index (2 grades)
+00a17690	DIFFER	262v262	-	CPhysicsMesh::HasBoundingBoxIntersectedFromTo; one x87 operand order (centre.X)
+00a6da40	RELOCATION_MATCH	255v255	PASS	CPhysicsMesh ctor; 6-byte triangles, STLport alloc-proxy CArray (3 grades)
+009bebb0	DIFFER	236v253	-	CDisplayManager::GetClosestDepthBufferFormat (label wrong); one IV vs retail two, bestDifference enregistered
+00a42170	DIFFER	269v269	-	CPlane::Initialise(a,b,c); scheduling only (cross-product copy loads)
+008fcc60	DIFFER	265v263	-	NCameraModes::CPhysicsCoordRigid::FrameUpdate; C3DVector copy form (lea vs three-register) at entry
+004fdab0	RELOCATION_MATCH	269v269	PASS	CWorldMap::SetAsUsingWAD (label wrong); goto-split CWideString == L"" test; first try
+00adf300	RELOCATION_MATCH	256v256	PASS	CParticleSimulation::ApplyDragging; forceinline 3x4->4x4 ctor + inline self-interpolate wrapper (3 grades)
+00815aa0	RELOCATION_MATCH	256v256	PASS	NHitLocations::CPhysicalPrimitiveCylinder::GetBoundingSphere; inline height/radius getters, top in inner block for frame layout (4 grades)
+009e3b60	DIFFER	199v280	-	CPixelFormat::ConvertPFDToRGB; retail re-reads the table fields per channel (no CSE), ours CSEs
