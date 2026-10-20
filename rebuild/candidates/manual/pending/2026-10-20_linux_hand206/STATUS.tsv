@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007ecee0	RELOCATION_MATCH	211v211	PASS	light zero-init before HasTC; def out ptr in dead arg slot, null-tested ReleaseTemporary dtor
+007e1eb0	DIFFER	187v187	-	register colouring: this ebx/def edi vs retail edi/ebx (ebx pushed inside the block)
+007f03d0	RELOCATION_MATCH	187v187	PASS	pack(1) on the intelligent-pointer classes only (action stays 4-aligned); novtable action temporary
+007edee0	RELOCATION_MATCH	202v202	PASS	unchecked out-param GetInterface (dead-slot local); one-ternary GetTC puts the component in ecx for a virtual call
+00705190	DIFFER	168v168	-	flags/position esi-edi swap and dummy/temporary frame-slot order
+00705b60	RELOCATION_MATCH	197v197	PASS	(float)fabs(..) > eps || chain; reference local for GetPosition
+006a1370	RELOCATION_MATCH	200v200	PASS	inline intelligent-pointer copy ctor per slot; *(begin()+i) index; VC aligns the frame
+006a1490	DIFFER	181v173	-	def Release shape (address-of-count form vs load/dec/store) after the flag read
+00750050	DIFFER	199v186	-	frame-slot sharing: string temp in the dead out-pointer word (QFE/RTM sharing gap); OpenerObject reload
+00750780	RELOCATION_MATCH	205v205	PASS	inline IsIdle(); if/else-if with the UpdateAnimation tail duplicated by VC; GetWorld()->static frame time
+00733690	RELOCATION_MATCH	184v184	PASS	local STLport vector freed by if(first) free; WorldRandomRange pick through *(begin()+n)
+007337e0	RELOCATION_MATCH	182v182	PASS	local model (retail Blocking +0x63, header PDB +0x6f); HasTC+GetTC named local; unchecked out-param mode manager
+00733e10	RELOCATION_MATCH	208v208	PASS	bool preset declared first (bl); block-scoped name shares the dead arg slot with the lookup key
+00735540	RELOCATION_MATCH	170v170	PASS	local retail model (12-byte containers); _Vector_base+alloc proxy; _Rb_tree header malloc; leaf ??0CTCCombat
+00736590	DIFFER	176v176	-	register choice only (eax/ecx/edx) after the same-TU _M_insert_overflow body fixed the def caching
+008ed090	RELOCATION_MATCH	220v220	PASS	STLport exception-free bitset::test (puts+abort, abort noreturn keeps the hero in eax); unset result local
+008ed1f0	DIFFER	194v184	-	def release form vs def register load (two forms each fix one half)
+007ddcc0	RELOCATION_MATCH	212v212	PASS	switch cases in retail layout order (2,1,0); novtable action local; long duration local (fidiv)
+007c9920	RELOCATION_MATCH	204v204	PASS	pack(1) pointer classes; intelligent-pointer operator= takes GetPItem() into a local first
+00813010	DIFFER	250v238	-	frame-slot sharing between the find key and the make_pair key (+8 bytes) and the false-tail placement
+00784bd0	RELOCATION_MATCH	196v196	PASS	local retail model (PHero +0x24, PDB +0x28); manager named local before pushes; leaf ??1
+0073a8e0	RELOCATION_MATCH	200v200	PASS	upper bound in a named local (left operand first); thing local before the lookup; raw-pointer CCountedPointer ctor in the return slot
+0073aba0	RELOCATION_MATCH	170v170	PASS	idle delay as a named local (inline sum calls GetWorldFrame first and folds to a sub of -30)
+006cb780	RELOCATION_MATCH	180v180	PASS	length squared z-first (s=Z*Z; s+=X*X; s+=Y*Y) on a named-local delta; also the fix for the parked 0x6CB620/6E0/840 siblings
+00682310	RELOCATION_MATCH	188v188	PASS	const LowerBound GetTC with the wife in a named local; block-scoped names with returns
+00683590	RELOCATION_MATCH	179v179	PASS	unchecked out-param deed log in edi; CDefPointer temporary's .Object read through the returned pointer; leaf mangled (overload)
+0093a3c0	RELOCATION_MATCH	228v228	PASS	sentinel cached in a local per walk (this spilled); two found returns merged by VC; explicit template instantiation
+007e4a90	RELOCATION_MATCH	193v193	PASS	vfunc_9 = FrameUpdate (slot 9); delete per index; inline erase with the early-out trivial copy
+007e4b60	RELOCATION_MATCH	165v165	PASS	same-TU _M_insert_overflow stand-in body (auto_inline off) keeps the component in esi (retail LTCG knowledge)
+00749b40	RELOCATION_MATCH	163v163	PASS	unset-local accessor over a one-ternary GetTC puts the component straight in ecx; frame-time record zero-built before the test
+00779d20	DIFFER	239v239	-	params-temporary vtable/Rhs stores sunk below the push; out pointer frame word (helper form fixes the slot, adds an eax copy)
+0080cc40	RELOCATION_MATCH	162v162	PASS	intelligent-pointer temporary per element into the inline STLport push_back; PDB+0x78 at retail +0x6c
+006dfe70	DIFFER	178v178	-	scheduling only: stack temporary's vptr store sunk below the call setup (as 00779d20)
+006e0af0	RELOCATION_MATCH	225v225	PASS	OnKill-shaped alive/interface test; AttachmentFlags assigned before the merged bit-field RMW
+007795a0	RELOCATION_MATCH	167v167	PASS	user dtor; pack(1) pointer at +0x2a; unchecked out-param region display; leaf ??1
+00702b10	RELOCATION_MATCH	176v176	PASS	vfunc_6 = OnInitialActivate; inline CCharString == with the landed Compare body under auto_inline(off)
+0078e820	DIFFER	218v220	-	explicit temporary reuses eax as this; next: implicit conversion 'PTarget = target'
+0078e900	RELOCATION_MATCH	192v192	PASS	by-value intelligent pointer destroyed by the callee; IS_THING_ALIVE then two out-param lookups on fresh GetPItem
+0078f4d0	RELOCATION_MATCH	193v193	PASS	inline GetPhysics() accessor fixes the radius register; driver named local before the push_back temporary
+007fd580	RELOCATION_MATCH	194v194	PASS	CFilter_Bind3 temporaries in the search call; for_each + STAND-IN search bodies under auto_inline(off) keep the vector start in esi (review)

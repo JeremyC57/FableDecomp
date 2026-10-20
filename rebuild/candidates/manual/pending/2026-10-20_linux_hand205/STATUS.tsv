@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0099d000	DIFFER	152v177	-	/GS lane gap: our build caches the hidden-result and default pointers in ebx/esi at entry where retail re-reads the argument slots
+00ed8120	RELOCATION_MATCH	240v240	PASS	CreateCreature into parent stBard; source counted fields read into locals before compare
+007e0e70	DIFFER	176v168	-	inline null-tested def release: ours mov edx,[eax+4];add eax,4;dec edx;test;mov [eax],edx where retail has dec [eax+4];jne (retry-8 lane gap), plus mov eax vs mov ecx for the first ParentThing load
+007ef600	DIFFER	203v187	-	frame 0xc0 v 0xbc (GetSubDef out word not shared with the script-name string), user/def in ebx/esi v esi/ebx, def release mov edx,[esi+4];lea;dec;test;mov v dec [ebx+4];jne
+0072e710	RELOCATION_MATCH	221v221	PASS	two complete SetText arms tail-merged by VC7.1; temporaries in dead arg slots
+00779340	RELOCATION_MATCH	224v224	PASS	class is CTCDRegionExit; 64-bit map-UID local + split if/else clear gives the ebx zero
+0077b0d0	RELOCATION_MATCH	232v232	PASS	CTCBase header base keeps the vptr 4 bytes next to the __int64; separate save/load Transfer arms
+007f8c20	DIFFER	224v221	-	escaped-out-slot def release re-read after dec (0x006631C0 gap); list insert prev read twice; register push placement
+007f8f30	DIFFER	222v222	-	scheduling only: the GetSubDef out-pointer zero store sits before the [+0x70] load in ours, after the push in retail (a base-def local first renames registers)
+007f90b0	DIFFER	172v174	-	frame 8 v 4 (first filter not homed in the GetSubDef out word), def copied edi->ebp and set via add edi,28h where retail loads ebp then lea edi,[ebp+28h], second filter's base-vtable dtor store missing; the def release itself matches (dec [ebp+4];jne)
+0070b4d0	RELOCATION_MATCH	216v216	PASS	by-value def temporary read through .Object (AddRef/Release members pick ecx); def read inside the name block
+007a6e20	RELOCATION_MATCH	222v222	PASS	__forceinline fast Normalise (0x486F60 body) + inline dot with (0,0,1) + intrinsic cos
+007a9870	RELOCATION_MATCH	222v222	PASS	byte twin of 007a6e20 in another TU
+007a9c80	RELOCATION_MATCH	221v221	PASS	C3DVector user copy ctor + return-ctor operator-; inline camera-manager accessor loads ecx
+007aa5c0	RELOCATION_MATCH	225v225	PASS	CTCMultiArrow::CancelForCutscene model, preset-0 out-parameter GetInterface per trail
+007e36a0	RELOCATION_MATCH	192v192	PASS	inline by-value EmptyString() default; def-name handle saved through Transfer<long>
+00686e10	RELOCATION_MATCH	191v191	PASS	inline CStringParser default ctor with String = 0 as a body assignment
+007469c0	RELOCATION_MATCH	169v169	PASS	HasTC + one-ternary GetTC into an unset local (ecx), named animator reference
+00746a70	RELOCATION_MATCH	166v166	PASS	is StartGetOutOfBedAnimation (catalog name wrong); same shape
+0078bf00	DIFFER	169v187	-	lane gap: retail rounds with a bare fistp inside a frame-pointer body (inline-asm float-to-long helper in the original ceil); plain C++ gives __ftol2
+0078c150	DIFFER	202v192	-	frame 0xc v 8: the effect-name strings do not reuse the block-scoped GetSubDef out word (QFE sibling-scope slot sharing, wave 23d), and the def release is the long mov/lea/dec/test/mov form in esi
+00813b80	RELOCATION_MATCH	198v198	PASS	size() re-evaluated per pass, *(begin()+i), unchecked out-parameter GetInterface
+00813c50	RELOCATION_MATCH	168v168	PASS	parameter order (boastId, hero); quest manager read into a local inside inline helpers
+00781e40	RELOCATION_MATCH	202v202	PASS	is OnInitialActivate (slot 6); checked out-parameter GetInterface; f()?false:true; member-by-member named C3DVector temp
+00781f10	RELOCATION_MATCH	207v207	PASS	named effect string in its own block; intelligent-pointer temp; checked GetInterface
+0079cf30	DIFFER	228v228	-	register only: the interface-0x46 lookup key address is formed in eax (lea eax,[esp+4]; push eax) where retail uses ecx; everything else matches
+0079d020	RELOCATION_MATCH	239v239	PASS	in-class inline StopSound (out of line at 0x79CEE0 for Pause); inline CWorld forwarder; world local for the filter call
+006c04d0	RELOCATION_MATCH	164v164	PASS	component-side twin of landed 0x82DD90; HasInterface(0xCC) mask hoisted into ebx
+0082de20	DIFFER	212v203	-	frame 8 v 4: the two inlined GetInterface lookup keys (const 0x4365B0 instantiation for the owner, non-const 0x40F020 for each element) get separate frame words where retail shares one (QFE sibling-slot gap), so the first presence test becomes mov al/test al
+007e30a0	RELOCATION_MATCH	206v206	PASS	def and bank named locals; named object copied out (no NRVO); pointee DecRef/GetRefCount release gives the long release form
+0075daa0	DIFFER	229v229	-	frame-slot order only: the camera-manager and owner-building out pointers swap words (retail camera at esp+8, thing at esp+0xC); declaration order does not move them; everything else matches
+0075c420	DIFFER	205v205	-	scheduling only: in the origin copy (offset = *origin) ours stores Y before loading Z, retail loads Y and Z then stores both
+0075c530	DIFFER	196v192	-	x87 term order only: ours multiplies the Y term first (fld tc.Y; fmul st(1)), retail multiplies the X difference by toCamera.X first then the Y term; next: the sum as d = x*x'; d += y*y'
+0075d1c0	RELOCATION_MATCH	235v235	PASS	is OnSerialseLeaf (PDB, sic); eight Transfer calls with literal defaults
+0075cf00	RELOCATION_MATCH	220v220	PASS	size() re-evaluated, unsigned (size-1) to float, i != size() loop
+0075e270	DIFFER	160v172	-	two known lane gaps: the X term of Pos + position loads its operands the other way (camera-module sum gap, 0x852220), and the inlined InitialiseSpline(0, -1) dead NodeToEndOn = -1 store retail keeps is dropped (0x47D21C gap)
+007f4d50	DIFFER	188v186	-	retail homes both lookup keys and the GetSubDef out pointer in the dead user argument slot (no frame), ours opens a push ecx frame word (0x81FA20 lane gap); abilities/def in edi/esi v esi/edi
+007edbe0	DIFFER	235v235	-	frame 0xb8 v 0xb4 (the HeroStats lookup key does not reuse the dead GetSubDef out word, QFE slot-sharing gap) and this/def in ebx/edi v edi/ebx with ebx pushed only on the def path in retail (shrink-wrapped)
+007f01f0	DIFFER	189v189	-	register allocation only: user/this in edi/esi v retail esi/edi (and the &expression lea in eax v ecx); frame, slot sharing and the action temporary match; tried declaration orders and a self local
+007eda90	DIFFER	233v239	-	the escaped def out pointer (homed in the dead user slot) is re-read into esi at the end of each path in retail (before the ApplyBonus push, on the skip path, after the sound block) and kept for the release; ours reads it into ecx for the push and once before Kill

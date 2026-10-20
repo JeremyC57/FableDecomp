@@ -1,0 +1,25 @@
+address	name	evidence
+00779340	CTCDRegionExit::Method_00779340	class is CTCDRegionExit, not CTCActionUseScriptedHook (chunk 205)
+00746a70	CTCCreatureSleeping::StartGetOutOfBedAnimation	long argument
+00781e40	OnInitialActivate_00781e40	component slot: OnInitialActivate
+0075d1c0	OnSerialseLeaf_0075d1c0	PDB spelling (sic)
+00843610	CCreatureAction_UseWallMount::CCreatureAction_UseWallMount	
+0069e1f0	CGameCameraManager::PeekCurrentPos	vtable slot 11 (RTTI)
+0069e1d0	CGameCameraManager::GetCameraManager	vtable slot 10 (RTTI)
+0079cee0	CTCBulletTime::StopSound_0079cee0	out-of-line sound stop
+005d8e50	CTCShowableItem::OnShowEnded	shared no-argument hook of the interface-0x1a component (chunk 206)
+00686d40	CTCBase::GetPlayerManager	non-const
+00686d50	CTCBase::GetPlayerManager	const
+00686d60	CTCBase::GetGameSubsystem	not GetWorld (GetWorld is 0x686A70/0x686A80)
+00663340	CThing::GetHeroCombatDef	
+006925b0	CCreatureActionBase::GetTotalTime	
+008f4cb0	CCreatureAction_DragonFlight::CCreatureAction_DragonFlight	
+006c5630	CDeedLog::GetEffectsDef_006c5630	deed log effects-def getter
+007fda80	std::for_each<CThingCreatureBase**,CKeepOutOffSmearedOutLine>	
+007fdb10	CThingSearchTools::GetAllThingsInRoughArea<CFilter_Bind3<IsNotList,IsWithinArea,IsAffectedByObstructions>>	
+00485dbc	std::vector::_M_insert_overflow_00485dbc	
+004ac940	std::vector::_M_insert_overflow_004ac940	
+0074fce0	std::vector::_M_insert_overflow_0074fce0	
+00739bc0	std::vector::_M_insert_overflow_00739bc0	
+004e5c71	CTCCreatureGroup::~CTCCreatureGroup	
+004349d0	CDisplayEngine::EndLetterBox	landed under the name CTCCreditsUI::Deactivate (sweep)
