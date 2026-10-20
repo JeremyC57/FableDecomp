@@ -249503,6 +249503,138 @@ $catalog = @(
         TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCVillager_Init_00ef49a0_test.cpp'
         PassPattern = '00ef49a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004a0ae0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_AutoSave_004a0ae0.cpp'
+        TestSource = '00/4a/CWorld_AutoSave_004a0ae0_test.cpp'
+        PassPattern = '004a0ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a0cd0'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_AutoSaveQuestStart_004a0cd0.cpp'
+        TestSource = '00/4a/CWorld_AutoSaveQuestStart_004a0cd0_test.cpp'
+        PassPattern = '004a0cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fb160'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_AreaCoversOneLevel_004fb160.cpp'
+        TestSource = '00/4f/CWorldMap_AreaCoversOneLevel_004fb160_test.cpp'
+        PassPattern = '004fb160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fdbc0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_LoadLoadableGlobalThings_004fdbc0.cpp'
+        TestSource = '00/4f/CWorldMap_LoadLoadableGlobalThings_004fdbc0_test.cpp'
+        PassPattern = '004fdbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fede0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_UnloadLevel_004fede0.cpp'
+        TestSource = '00/4f/CWorldMap_UnloadLevel_004fede0_test.cpp'
+        PassPattern = '004fede0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00502500'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_StartMovePlayerPos_00502500.cpp'
+        TestSource = '00/50/CWorldMap_StartMovePlayerPos_00502500_test.cpp'
+        PassPattern = '00502500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005063e0'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_SetPlayerPos_005063e0.cpp'
+        TestSource = '00/50/CWorldMap_SetPlayerPos_005063e0_test.cpp'
+        PassPattern = '005063e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00506d40'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_LoadRegionGraph_00506d40.cpp'
+        TestSource = '00/50/CWorldMap_LoadRegionGraph_00506d40_test.cpp'
+        PassPattern = '00506d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006295c0'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EAMoveCreature_006295c0.cpp'
+        TestSource = '00/62/CWorld_EAMoveCreature_006295c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '006295c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062ad90'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EAUseQuickAccessItemInCutscene_0062ad90.cpp'
+        TestSource = '00/62/CWorld_EAUseQuickAccessItemInCutscene_0062ad90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0062ad90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062c0e0'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EAMoveSpirit_0062c0e0.cpp'
+        TestSource = '00/62/CWorld_EAMoveSpirit_0062c0e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0062c0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062c300'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EACloseHeroCentreDoor_0062c300.cpp'
+        TestSource = '00/62/CWorld_EACloseHeroCentreDoor_0062c300_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0062c300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062c3e0'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EACreatureSprint_0062c3e0.cpp'
+        TestSource = '00/62/CWorld_EACreatureSprint_0062c3e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0062c3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062c4b0'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EARemoveCurrentMode_0062c4b0.cpp'
+        TestSource = '00/62/CWorld_EARemoveCurrentMode_0062c4b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0062c4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063d8a0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetPGameMapCellAt_0063d8a0.cpp'
+        TestSource = '00/63/CWorldMap_GetPGameMapCellAt_0063d8a0_test.cpp'
+        PassPattern = '0063d8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063e3c0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetImpassabilityFactorAround_0063e3c0.cpp'
+        TestSource = '00/63/CWorldMap_GetImpassabilityFactorAround_0063e3c0_test.cpp'
+        PassPattern = '0063e3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00757570'
+        Module = 'CWound'
+        Source = '00/75/CWound_Update_00757570.cpp'
+        TestSource = '00/75/CWound_Update_00757570_test.cpp'
+        PassPattern = '00757570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00872a20'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_OnInit_00872a20.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_OnInit_00872a20_test.cpp'
+        PassPattern = '00872a20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

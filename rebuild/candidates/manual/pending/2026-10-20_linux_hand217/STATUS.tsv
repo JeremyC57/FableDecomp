@@ -1,0 +1,25 @@
+address	status	bytes	test	note
+004a0780	DIFFER	205v200	-	CWorld::SaveGameStateManual: hidden-pointer push not hoisted out of the inline source-path helper arms (register choice)
+004a0ae0	RELOCATION_MATCH	195v195	PASS	CWorld::AutoSave: bool result local in bl, quest-start path in dead arg slot
+004a0cd0	RELOCATION_MATCH	176v176	PASS	CWorld::AutoSaveQuestStart: first try
+006295c0	RELOCATION_MATCH	225v225	PASS	CWorld::EAMoveCreature /GS: named C3DVector before the lookup, X in dead event slot
+0062ad90	RELOCATION_MATCH	184v184	PASS	CWorld::EAUseQuickAccessItemInCutscene /GS: GetData before HasTC, inline GetTC
+0062c0e0	RELOCATION_MATCH	217v217	PASS	CWorld::EAMoveSpirit /GS: payload in a block opened after the GetTC lookup shares the dead event slot
+0062c300	RELOCATION_MATCH	216v216	PASS	CWorld::EACloseHeroCentreDoor /GS: unchecked PeekTC (unset local reads dead UID word)
+0062c3e0	RELOCATION_MATCH	208v208	PASS	CWorld::EACreatureSprint /GS: payload read in its own block so the GetTC key reuses the event slot
+0062c4b0	RELOCATION_MATCH	189v189	PASS	CWorld::EARemoveCurrentMode /GS: payload block before the GetTC lookup
+004fb160	MATCH	233v233	PASS	CWorldMap::AreaCoversOneLevel: overloaded virtuals laid out in reverse declaration order
+004fbf60	DIFFER	240v240	-	CWorldMap::LoadLoadableGlobalThingsForLevel: eax/ecx/edx rotation only (after Reset body above caller + block-scoped file)
+004fc7c0	DIFFER	221v221	-	CWorldMap::DrawGetMapInfo: one store scheduled after the lea in the copy-out (UID vs Extents.Y)
+004fdbc0	RELOCATION_MATCH	233v233	PASS	CWorldMap::LoadLoadableGlobalThings: signed index vs unsigned size(), implicit CCharString conversion
+004fea30	DIFFER	195v195	-	CWorldMap::GetAdjacentMaps: register allocation in the inline vector clear and the area copy
+004fede0	RELOCATION_MATCH	222v222	PASS	CWorldMap::UnloadLevel: find body above (auto_inline off) + const-ref tag with user ctor -> tag at live map slot, map kept in edi
+004ff080	DIFFER	198v198	-	CWorldMap::LoadTopologyFromFile: argument-load scheduling only (5 grades; 4th fixed a misread call target)
+00502500	RELOCATION_MATCH	172v172	PASS	CWorldMap::StartMovePlayerPos: STLport operator[] as *(begin()+n), packed 13-byte position info
+005063e0	RELOCATION_MATCH	196v196	PASS	CWorldMap::SetPlayerPos: same model as 00502500, first try
+00506d40	RELOCATION_MATCH	237v237	PASS	CWorldMap::LoadRegionGraph: first try (CopyFileInternal disk-file model)
+0063d8a0	RELOCATION_MATCH	183v183	PASS	CWorldMap::GetPGameMapCellAt: cell coordinate as a C2DCoordI temporary into an inline const& accessor (X truncated first)
+0063e3c0	RELOCATION_MATCH	177v177	PASS	CWorldMap::GetImpassabilityFactorAround: C2DCoordI centre local (frame slot, only Y stored), early-out vector clear
+00757440	DIFFER	179v179	-	CWound::UpdateDecal: _ftol2 scheduled after the blend-desc stores (retail before)
+00757570	RELOCATION_MATCH	206v206	PASS	CWound::Update: same-TU strength getters defined above (auto_inline off) keep the index in edi
+00872a20	RELOCATION_MATCH	206v206	PASS	NCameraModes::CZTargetNew::OnInit: ctor-form operator*, Y axis via inline XAxis member
