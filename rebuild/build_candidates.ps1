@@ -249877,6 +249877,119 @@ $catalog = @(
         TestSource = '00/e3/CVAmbushScamScript_WatchForTricksterComplete_00e32200_test.cpp'
         PassPattern = '00e32200_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009207a0'
+        Module = 'CAIStateGroup_CreatureSeekEnemyUnderground'
+        Source = '00/92/CAIStateGroupCreatureSeekEnemyUnderground_IsRunnable_009207a0.cpp'
+        TestSource = '00/92/CAIStateGroupCreatureSeekEnemyUnderground_IsRunnable_009207a0_test.cpp'
+        PassPattern = '009207a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093ad70'
+        Module = 'CAIStateGroup_BanditSitRoundCampfire'
+        Source = '00/93/CAIStateGroupBanditSitRoundCampfire_SitMain_0093ad70.cpp'
+        TestSource = '00/93/CAIStateGroupBanditSitRoundCampfire_SitMain_0093ad70_test.cpp'
+        PassPattern = '0093ad70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093ae80'
+        Module = 'CAIStateGroup_BanditSitRoundCampfire'
+        Source = '00/93/CAIStateGroupBanditSitRoundCampfire_IsRunnable_0093ae80.cpp'
+        TestSource = '00/93/CAIStateGroupBanditSitRoundCampfire_IsRunnable_0093ae80_test.cpp'
+        PassPattern = '0093ae80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093d030'
+        Module = 'CAIStateGroup_ButterflyWander'
+        Source = '00/93/CAIStateGroupButterflyWander_Update_0093d030.cpp'
+        TestSource = '00/93/CAIStateGroupButterflyWander_Update_0093d030_test.cpp'
+        PassPattern = '0093d030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096c880'
+        Module = 'CAIStateGroup_EatAtTable'
+        Source = '00/96/CAIStateGroupEatAtTable_WalkTo_0096c880.cpp'
+        TestSource = '00/96/CAIStateGroupEatAtTable_WalkTo_0096c880_test.cpp'
+        PassPattern = '0096c880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097da40'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_AIActionCombatPerformActionAndWait_0097da40.cpp'
+        TestSource = '00/97/CAIStateGroupBase_AIActionCombatPerformActionAndWait_0097da40_test.cpp'
+        PassPattern = '0097da40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097db70'
+        Module = 'CAIStateGroupBase'
+        Source = '00/97/CAIStateGroupBase_AIActionPerformActionAndWait_0097db70.cpp'
+        TestSource = '00/97/CAIStateGroupBase_AIActionPerformActionAndWait_0097db70_test.cpp'
+        PassPattern = '0097db70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999850'
+        Module = 'CAFile'
+        Source = '00/99/CAFile_FindNextFileSequential_00999850.cpp'
+        TestSource = '00/99/CAFile_FindNextFileSequential_00999850_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS (security cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).'
+        PassPattern = '00999850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a99510'
+        Module = 'C3DAnimFileLoader'
+        Source = '00/a9/C3DAnimFileLoader_LoadAnimFileCompressed_00a99510.cpp'
+        TestSource = '00/a9/C3DAnimFileLoader_LoadAnimFileCompressed_00a99510_test.cpp'
+        PassPattern = '00a99510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9b740'
+        Module = 'C3DMeshFileLoader'
+        Source = '00/a9/C3DMeshFileLoader_LoadMeshFileCompressed_00a9b740.cpp'
+        TestSource = '00/a9/C3DMeshFileLoader_LoadMeshFileCompressed_00a9b740_test.cpp'
+        PassPattern = '00a9b740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9f0d0'
+        Module = 'C3DAnimationManager'
+        Source = '00/a9/C3DAnimationManager_AddLipSyncAnimation_00a9f0d0.cpp'
+        TestSource = '00/a9/C3DAnimationManager_AddLipSyncAnimation_00a9f0d0_test.cpp'
+        PassPattern = '00a9f0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aae2c0'
+        Module = 'C3DAnimFileMovementVectorChunk'
+        Source = '00/aa/C3DAnimFileMovementVectorChunk_ReadFromFile_00aae2c0.cpp'
+        TestSource = '00/aa/C3DAnimFileMovementVectorChunk_ReadFromFile_00aae2c0_test.cpp'
+        PassPattern = '00aae2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abc080'
+        Module = 'C3DMeshFileSubMeshChunk'
+        Source = '00/ab/C3DMeshFileSubMeshChunk_CountVertices_00abc080.cpp'
+        TestSource = '00/ab/C3DMeshFileSubMeshChunk_CountVertices_00abc080_test.cpp'
+        PassPattern = '00abc080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac1020'
+        Module = 'C3DMeshFileMaterialChunk'
+        Source = '00/ac/C3DMeshFileMaterialChunk_GetMap_00ac1020.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialChunk_GetMap_00ac1020_test.cpp'
+        PassPattern = '00ac1020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adebc0'
+        Module = 'C3DBoundingBox'
+        Source = '00/ad/C3DBoundingBox_CalculateMatrix_00adebc0.cpp'
+        TestSource = '00/ad/C3DBoundingBox_CalculateMatrix_00adebc0_test.cpp'
+        PassPattern = '00adebc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c35770'
+        Module = 'CSoundTemplateRecord'
+        Source = '00/c3/CSoundTemplateRecord_FillPlayParameters_00c35770.cpp'
+        TestSource = '00/c3/CSoundTemplateRecord_FillPlayParameters_00c35770_test.cpp'
+        PassPattern = '00c35770_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

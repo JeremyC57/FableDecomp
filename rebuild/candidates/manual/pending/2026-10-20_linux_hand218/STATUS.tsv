@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a57030	DIFFER	271v265	-	this/other register swap + XOR block layout
+00a99510	RELOCATION_MATCH	250v250	PASS	LoadAnimFile body above under auto_inline(off); memcmp tag intrinsic
+00a9b740	RELOCATION_MATCH	250v250	PASS	mesh twin (label was LoadAnimFileCompressed); LoadMeshFile body above
+00aae2c0	RELOCATION_MATCH	310v310	PASS	ReadFloat helpers; retail vector +0x2C (PDB +0x34)
+00a4e150	DIFFER	256v256	-	X-term operand order of the keyframe add
+00a26730	DIFFER	250v249	-	eax/ecx/edx register rotation (allocation only)
+00a9f0d0	RELOCATION_MATCH	243v243	PASS	named symbol copy in its own block (dead frame slot)
+00a9f1d0	DIFFER	276v277	-	eax/edx swap in the type-0 block
+00c35770	RELOCATION_MATCH	309v309	PASS	audio library record -> play parameters (label wrong); bit fields split with :0
+00adebc0	RELOCATION_MATCH	242v242	PASS	C3DVector value operators; epsilon as extern variable
+00b49810	DIFFER	294v282	-	SSE path is inline asm in the original (asm_bake family)
+00b9c500	DIFFER	300v286	-	SSE path is inline asm (asm_bake family); really CalcShortestDistanceToPoint
+00ac1020	RELOCATION_MATCH	310v310	PASS	landed const twin model, non-const finders above under auto_inline(off)
+00abc980	DIFFER	291v289	-	push_back value/__true_type dead-slot sharing (known lane gap) + this register
+00abcaf0	DIFFER	291v289	-	twin of 00abc980 (same gap)
+00abc080	RELOCATION_MATCH	294v294	PASS	const finders/PeekVertices stand-ins above under auto_inline(off)
+00abd280	DIFFER	308v308	-	frame size: resize T() temp overlaps the start local in retail
+00a26170	DIFFER	277v279	-	loop not rotated in retail (top-tested lod < 4)
+00a357b0	DIFFER	253v318	-	scale folded into row stores; cross operand order
+00999850	RELOCATION_MATCH	243v243	PASS	/GS; function-scope buffers; Finished stored before _findclose
+0097da40	RELOCATION_MATCH	299v299	PASS	sibling models; direct creature casts (an inline accessor rotated eax/edx; 4th grade)
+0097db70	RELOCATION_MATCH	293v293	PASS	PerformAction model + wait loop; out-of-line ~CBrainOutput
+0092afe0	DIFFER	301v304	-	global store scheduling + false-return block layout
+009613a0	DIFFER	258v250	-	min() operand homed in the dead arg slot (frame packing)
+0093aa40	DIFFER	306v298	-	list sentinel cached in esi across calls (retail)
+0093ad70	RELOCATION_MATCH	260v260	PASS	in-place binary search on one iterator (4th grade)
+0093ae80	RELOCATION_MATCH	313v313	PASS	named bool + named fps local + GetPItem-first operator= (4th grade)
+009210a0	DIFFER	290v290	-	this/creature callee-saved register swap
+00956b00	DIFFER	242v242	-	uninitialised out-pointer home shared with the lookup keys (frame packing)
+0093d030	RELOCATION_MATCH	241v241	PASS	PlayAnimation temp model; first failure as its own Terminate+return
+0094e6b0	DIFFER	243v243	-	callee-saved register assignment (this in ebx)
+009207a0	RELOCATION_MATCH	308v308	PASS	one-ternary GetInterface; distance straight in the comparison
+0094a2b0	DIFFER	241v241	-	lookup key not shared with a later string temporary (frame packing)
+00922750	DIFFER	260v264	-	timer store scheduled into the merged epilogue
+0096c880	RELOCATION_MATCH	277v277	PASS	scalar look-target sums (right operand first); literal 0.0027777f
+00966290	DIFFER	258v258	-	lookup key not shared with the receiver spill (frame packing)
+00977b10	DIFFER	317v298	-	filter slot sharing + loop register/caching shape
+00970790	DIFFER	264v264	-	eax-vs-ecx temporaries and this/target register swap
+00970df0	DIFFER	307v307	-	away temp vs Bind2 frame slot sharing (frame only)
+0095c0b0	DIFFER	307v307	-	esi/edi swap between the in-loop boss lookup and the circle-marker pointer
