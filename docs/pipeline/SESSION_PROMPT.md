@@ -77,7 +77,7 @@ PC `Fable.exe` (Fable: The Lost Chapters, Steam build, Microsoft Visual C++ 7.1 
    `rebuild/candidates/manual/pending/<batch>/differ/`.
 8. **Numbers**: never hand-edit coverage; run `python3 tools/write_decomp_dashboard.py` then
    `python3 tools/update_readme_progress.py`. Report one line per landing: landed/total, catalog count,
-   percentage (currently 35920 landed, 72.5%).
+   percentage (currently 35944 landed, 72.5%).
 9. **Docs as you go**: `docs/HANDOFF.md` (one page, resume point), `docs/ROADMAP.md` (the only task
    list), `docs/pipeline/GOTCHAS.md` (one line per solved problem), `docs/journal/YYYY-MM/` (session
    notes), `docs/journal/FINDINGS_LOG.md` (cited technical truth; also record every gap after two

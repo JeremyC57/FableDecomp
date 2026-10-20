@@ -309,11 +309,12 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand226` | Hand chunk 226 (CParticleEmitterManager .. CPlane): 18 of 40 byte-exact | - | 13 | 9 | landed; parked rows open |
 | `2026-10-20_linux_hand227` | Hand chunk 227 (CPlayer .. CRandomAppearanceMorph): 31 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-20_linux_hand228` | Hand chunk 228 (CRandomAppearanceMorph .. CSplinePosParamData): 24 of 40 byte-exact | - | 15 | 1 | landed; parked rows open |
+| `2026-10-20_linux_hand229` | Hand chunk 229 (CStatBar .. CTCBuyableHouse): 24 of 40 byte-exact | - | 15 | 1 | landed; parked rows open |
 | `2026-10-20_linux_hand230` | Hand chunk 230 (CTCCameraPointBuilding .. CTCExpression): 25 of 40 byte-exact | - | 13 | 2 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **1105 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **1120 parked rows** for the Fable retry pass.
 
-### Skipped rows (37 open of 63 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (38 open of 64 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -336,6 +337,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `007da360` | multi | open | 007da360:50 007da3a0:92 | `2026-10-15_linux_hand170` | two functions in the row (FrameUpdate tail jumps, second body at +0x40) |
 | `007eeb20` | multi | open | 007eeb20:86 007eeb80:6 007eeb90:10 007eeba0:4 | `2026-10-15_linux_hand169` | row holds Smash plus three more functions after int3 padding (0x007EEB80, 0x007EEB90, 0x007EEBA0) |
 | `007eec50` | multi | open | 007eec50:53 007eec90:93 | `2026-10-15_linux_hand170` | two functions in the row (OnDie ret at +0x34, second body at +0x40) |
+| `007f7870` | multi | open | 007f7870:174 007f791e:194 | `2026-10-20_linux_hand229` | row holds FrameUpdate (with its jump table) plus a second function at 0x007F7940 (STLport remove_copy-like) |
 | `007fa26c` | cold | open | 007fa160:0 | `2026-10-15_linux_hand79` | not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that  |
 | `00800b90` | multi | open | 00800b90:27 00800bab:26 00800bc5:21 00800bda:15 00800be9:37 00800c0e:58 00800c48:21 00800c60:38 00800c90:14 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
 | `0080aad1` | single | open | 0080aad1:106 | `2026-10-15_linux_hand160` | not a function: the else-branch tail of 0x0080AA60 (je 0x80AAD1; pops edi/esi it never pushed) |
@@ -2245,6 +2247,24 @@ Groups: register-assignment/scheduling only (0056ef6f, 005d9070, 0061a9d0, 0061a
 - 0086be40 CRandomAppearanceMorph::GetRandomBodyParts DIFFER(292v294): the empty test forms the element address with `add eax,ebx` first (retail folds [eax+ebx]/[eax+ebx+4] loads before the add) | tried: !empty(), begin() != end(), `part != 3` (fixed jl to jne) | next: a `const CArray<CBodyPartMesh>*` row pointer stepped by ++
 - 00f3a5d0 CRangeCompressor::TestRangeBias DIFFER(318v318): the prologue spill of maxU lands one slot early, and the epilogue pops are hoisted between the Flags test and the RangeBias store | tried: unsigned-first declarations (322v318), comparison orientation, ternary min/max, signed-first copies (318v318) | next: lane gap: scheduling (or store the RangeBias after the flag update)
 - 0056eb48 CSliderAnimator::Update DIFFER(305v305): the fabs(step) spill `fstp [ebp-4]` comes before `push ecx; mov ecx,esp; push -1` (retail after) | tried: a named step local (spilled before the test), fabs before the test, the test on the unnamed expression (305v305), `if (!Play)` first | next: lane gap: scheduling
+
+
+#### `2026-10-20_linux_hand229` (15 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand229/differ/`)
+- 007cdfe0 CTCBurntEffect::CTCBurntEffect DIFFER(284v284): `lea ecx,[esp+20h]` vs retail `lea ecx,[esp+34h]` for the __copy hidden result (dead index slot vs dead parent slot) | tried: GetInterface forms, named/temporary results, block scopes | next: lane gap: hidden-result slot choice
+- 007cf110 CTCCreatureTintEffect::CTCCreatureTintEffect DIFFER(278v278): the same __copy hidden-result slot as 007cdfe0 | tried: as 007cdfe0 (more than 4 grades across the twins) | next: lane gap: hidden-result slot choice
+- 00490927 CSubtitleRenderer::IsAllowedToSetText DIFFER(251v251): exit layout; retail puts `mov al,1 ; jmp` before the shared `xor al,al` | tried: flat early returns, speed TU, bool flags, do/while(0)+break | next: the nested success form (fixed 009f35d0 and 007eacb0)
+- 0048f40a CSubtitleRenderer::DrawTextEmbeddedHighlights DIFFER(258v258): `lea edx,[ebp-18h]` / `lea ecx,[ebp-10h]` scheduled after, not between, the Y `fld`/`fadd` | tried: member sums, member and free operator+ | next: lane gap: scheduling
+- 009f36e0 CSurface::CopyFromUnsignedDataToSignedSurface DIFFER(246v253): frame 0x58 vs 0x4c; the lock result's 16 bytes are not reused for the inner loop's locals | tried: strides at the top of the row loop, the lock result in its own block | next: lane gap: frame-slot sharing
+- 006c0160 CTCBuyableHouse::GetCurrentCollectableRentValue DIFFER(271v271): the 0x21 lookup key gets its own frame word (0x10 vs 0x0c frame) | tried: out-parameter GetInterface, implicit name temporary, `__forceinline` contents accessor | next: same-TU stand-in GetDefGlobalIndexFromName body (the 004d1360 trick)
+- 007aa370 CTCAssassinRush::CleanUpEffects DIFFER(218v268): retail keeps STLport erase's counted copy loop (`finish - finish`); ours folds it | tried: plain pointer erase (254v268), `__forceinline` copy/_Destroy, iterator forms | next: the real STLport `__copy` with random-access tag dispatch in the TU
+- 00729f60 CTCActionUseScriptedHook::OnInitialActivate DIFFER(290v290): retail loads the thing into ecx before the `push 0 ; push 0` of each AddTC | tried: inline GetParentThing, named parent local, inline forwarding helper | next: lane gap: Setup*-family AddTC this-load
+- 007e5570 CTCBetting::GetPlayersMoney DIFFER(292v262): frame packing; the def pointer is not homed in the hero lookup's key word (0x10 vs 0x0c frame) | tried: lookup inline, static/forceinline GetHeroMoney helper, named result | next: stand-in GetSubDef body (fixed the 007e5680 frame)
+- 007e5680 CTCBetting::DrawPreparePrimitivesForRendering DIFFER(320v320): register rotation only (eax/ecx/edx) once the stand-in GetSubDef fixed the frame | tried: def via operator-> at each use, named def local | next: inline GetBaseDef accessor
+- 006c06d0 CTCBuyableHouse::GetRentMoneyPos DIFFER(312v312): normalised Y as `fld st(1) ; fmul [Forward.Y]` vs retail `fld [Forward.Y] ; fmul st(2)` | tried: early return, nested form, `r * Y`, named result | next: lane gap: x87 single-term commutation
+- 00871ec0 CStringAndCageBase::OnReset DIFFER(270v270): `sub esp,48h` vs retail `3Ch`; the named focal-point result does not share the dead raise temporary's words | tried: direct assignment, named focal, named thing, thing + named focal | next: the focal point in an inner block; lane gap: dead-temporary slot sharing
+- 006bf9e0 CTCBuyableHouse::OnCreate DIFFER(301v301): `mov ax,[eax+8Ch] ; test ax,ax ; movzx edx,ax` vs retail `cmp word ptr [eax+8Ch],0 ; movzx edx,word ptr [eax+8Ch]` | tried: direct test, early return, a `const unsigned short&` accessor, an /Os probe | next: an index accessor returning by value for the push
+- 006bfb90 CTCBuyableHouse::NeedsMainSignPost DIFFER(324v311): the village def copies re-test the copy (`setne bl`) and home the flag in a frame byte where retail uses `xor bl,bl` and an `inc`/`dec` copy through registers; plus `(x >> 11) & 0xFFFFFF01` | tried: flat early returns (328), nested success form | next: a counted pointer with CDefPointer-style copy/dtor and no null re-test; lane gap: `& 0xFFFFFF01` narrowing
+- 00ab7b00 CStaticFontBank::GetStringExtents DIFFER(287v287): the FP stack holds the line width (`fstp st(0) ; fld 0`) where retail holds the widest height; ebx/ebp are shrink-wrapped (0x10 vs 0x14 frame) | tried: compound adds, `height = lineHeight + height`, `width = Offset + width + Advance`, declaration order | next: the return object built up front, or a for(;;) loop with a bottom test; lane gap: x87 variable allocation
 
 
 #### `2026-10-20_linux_hand230` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand230/differ/`)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a1c950	RELOCATION_MATCH	283v283	PASS	STLport 4-byte lists; delete+null loops then implicit list dtors (leaf ??1CSteeringAgent)
+00403b10	RELOCATION_MATCH	265v265	PASS	retail-only 0x20 block as record with ordered ctor body; body assignments in store order
+007cdfe0	DIFFER	284v284	-	__copy hidden result slot: index slot vs dead parent slot (shared with tag)
+007cf110	DIFFER	278v278	-	CTCCreatureTintEffect ctor (label wrong); same __copy result-slot gap as 007cdfe0
+009b9aa0	RELOCATION_MATCH	241v241	PASS	one long local for pos then offset; hit pointer starts as String+pos
+009ba1d0	RELOCATION_MATCH	255v255	PASS	inline CalcInQuotes; MoveStringPos reads members directly; String[i] re-indexed
+00490927	DIFFER	251v251	-	only exit-block order (mov al,1 before shared xor al,al)
+0048dc8b	RELOCATION_MATCH	265v265	PASS	frame size TU; width from named left/right float locals (left loaded first)
+0048f40a	DIFFER	258v258	-	scheduling only: two lea argument setups vs the Y fld/fadd
+004d1360	RELOCATION_MATCH	247v247	PASS	STLport _M_insert_overflow for pair<float,CCameraTag> (label wrong); same-TU stand-in callees home the tags
+00d7dd80	RELOCATION_MATCH	253v253	PASS	Arena CSummonerToKill::Main (parent flags PlayedArenaCS/FirstWaveAttack); block-local scripted handle
+009f35d0	RELOCATION_MATCH	271v271	PASS	nested success path; first GetPixelFormat/GetWidth calls through inline helpers (inline-once band)
+009f36e0	DIFFER	246v253	-	frame packing: lock result slot not shared with the inner desc (0x58 v 0x4c frame)
+009e4f80	RELOCATION_MATCH	270v270	PASS	/GS; varargs member (cdecl this); explicit CCharString("") chain
+009a5340	RELOCATION_MATCH	274v274	PASS	/GS; memset intrinsic; terminator declared before memset (ebx scheduling); copy loop -> rep movsw
+007ad880	RELOCATION_MATCH	312v312	PASS	memberwise copy from GetSubDef<CAIScratchpadDef>; PDB offsets = retail
+007eacb0	RELOCATION_MATCH	275v275	PASS	nested success path; forceinline HasTC; const GetInterface + ternary GetTC
+0072ed10	RELOCATION_MATCH	280v280	PASS	OnActionUse(CThing&) slot 28; out-param GetInterface + reference to the owner pointer
+0072ee30	RELOCATION_MATCH	255v255	PASS	nested ifs; manager named local; filter temporary
+0072e810	RELOCATION_MATCH	290v290	PASS	implicit CCharString key temporaries; inline GetTextBank accessor; engine/CTCBuyableHouse.h
+006c0160	DIFFER	271v271	-	frame packing: 0x21 lookup key not shared with the def-name word (0x10 v 0x0c frame)
+007f7870	SKIP	-	-	row holds FrameUpdate (with its jump table) plus a second function at 0x007F7940 (STLport remove_copy-like)
+007468c0	RELOCATION_MATCH	245v245	PASS	landed CTCBed sibling model; named progress float; 1.0f - g_epsilon
+007f8e20	RELOCATION_MATCH	267v267	PASS	FrameUpdate (slot 9); STLport pop_front; ternary-built CAnimFrameTime
+007a9b70	RELOCATION_MATCH	267v267	PASS	pack(1) PDB layout (-4 after vector); intelligent-pointer op= from a (0) temporary
+007a6f00	RELOCATION_MATCH	241v241	PASS	sibling of 007a9b70; retail = PDB - 4 after PeopleHit
+007aa370	DIFFER	218v268	-	STLport clear: retail keeps the finish-finish copy loop, ours folds it
+0079c750	RELOCATION_MATCH	298v298	PASS	three named locals (spell effects homed in the arg slot, blurs edi, parent ebp)
+00729f60	DIFFER	290v290	-	AddTC this-load before the argument pushes (known Setup*-family gap)
+007efe70	RELOCATION_MATCH	256v256	PASS	OnActionUse slot 28; action temporary by address; 0x843610 is CCreatureAction_UseWallMount
+007e5570	DIFFER	292v262	-	frame packing: def pointer not sharing the lookup key word (0x10 v 0x0c frame)
+007a7bf0	RELOCATION_MATCH	278v278	PASS	action temporaries by address; by-value intelligent pointers built in the argument area
+007e5680	DIFFER	320v320	-	register rotation only (eax/ecx/edx) after the stand-in GetSubDef fixed the frame
+006c06d0	DIFFER	312v312	-	one x87 operand order in the normalised Y term (single-term commutation gap)
+00871ec0	DIFFER	270v270	-	CStringAndCageBase::OnReset; frame only (focal result not sharing the raise temp slot) after 4 tries
+0048f6bd	RELOCATION_MATCH	259v259	PASS	CSubtitleRenderer::GetTextFromTextTag; text call in both arms (cross-jump) + named items pointer; 0x9C9070 is GetPTextEntry (landed rows call it GetPGroupEntry)
+006bf9e0	DIFFER	301v301	-	CTCBuyableHouse::OnCreate (vfunc_4 = OnCreate); def-index load CSEd into ax vs retail cmp-mem + re-read
+006bfb90	DIFFER	324v311	-	CTCBuyableHouse::NeedsMainSignPost; counted-pointer copy shape + residential flag homing; lane gap & 0xFFFFFF01 narrowing
+00ab7b00	DIFFER	287v287	-	CStaticFontBank::GetStringExtents; x87 variable allocation (which float lives on the FP stack) + shrink-wrap
+00646b12	RELOCATION_MATCH	306v306	PASS	CStatBar::UpdateChangeTexts; size TU, assigned delta, `+=` value test written !(t >= x), iterator copy ctor
