@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0055d5d0	RELOCATION_MATCH	227v227	PASS	DrawPreparePrimitivesForRendering slot 11
+0055d6c0	RELOCATION_MATCH	173v173	PASS	/GS; STLport erase via memmove
+0061a420	RELOCATION_MATCH	221v221	PASS	is CTCInventoryQuests ctor (label wrong)
+006399b0	DIFFER	193v218	-	lane tail-merges two identical alpha tails
+00639a90	RELOCATION_MATCH	224v224	PASS	GetWorld()->static GetWorldFrame; chained alpha store
+006b0780	DIFFER	198v198	-	def load ebx/ecx role swap only
+006b0b30	DIFFER	217v217	-	x87 operand order of second Y sum (next idea recorded)
+00702310	RELOCATION_MATCH	234v234	PASS	def index read twice (5th grade: twin shape from 00702470)
+00702470	RELOCATION_MATCH	234v234	PASS	is GetQuestObjective (label wrong)
+00702720	RELOCATION_MATCH	232v232	PASS	OnSerialise slot 1
+0071dd50	DIFFER	217v196	-	is CTCHeroMorph::GetTattoos; dead-slot def+tag lane gap
+007234c0	MATCH	176v176	PASS	SetInteractionFlags slot 43; merged bool:1 stores
+00725b70	DIFFER	205v201	-	frame-slot sharing of for_each temps (lane gap)
+00727c20	DIFFER	214v214	-	placement-copy load schedule only
+00728000	RELOCATION_MATCH	188v188	PASS	two-base ctor; inline world-seed step
+00745c70	RELOCATION_MATCH	220v220	PASS	FrameUpdate slot 9; bl melee flag
+00759ec0	RELOCATION_MATCH	183v183	PASS	named rotated local; *(begin()+i)
+00766260	DIFFER	210v199	-	lane gap: inline-asm fistp rounding helper
+00766330	DIFFER	210v199	-	lane gap: inline-asm fistp rounding (is GetStaminaToAddThisFrame)
+007673c0	RELOCATION_MATCH	222v222	PASS	STLport tree/vector bases; inline resize(n)
+00768120	DIFFER	178v166	-	register colouring + slot release form
+007713c0	DIFFER	236v219	-	def register copy + loop operand order (next idea recorded)
+00771540	RELOCATION_MATCH	221v221	PASS	scoped_ptr operator->; outer witness if
+00787ca5	RELOCATION_MATCH	170v170	PASS	y-off+s; forceinline def release
+00788555	RELOCATION_MATCH	194v194	PASS	y-off+s; unchecked lookup; ctor-body time
+0079dcc0	DIFFER	178v178	-	out-slot def loaded via ecx then esi (register choice)
+0079e250	RELOCATION_MATCH	166v166	PASS	forceinline out-param GetInterface
+0079e420	DIFFER	211v211	-	component ecx load scheduled after pushes (lane gap)
+0079eb30	RELOCATION_MATCH	209v209	PASS	CancelMove tail verbatim
+007cc060	RELOCATION_MATCH	182v182	PASS	named colour; mirror of RemoveEffectOnWeapon
+007cc710	DIFFER	185v180	-	empty() compare form vs CSE of end pointer
+007e60f0	RELOCATION_MATCH	183v183	PASS	bank local; ctor temporaries
+007f04c0	RELOCATION_MATCH	203v203	PASS	def local; implicit "" conversion
+007fefe0	DIFFER	220v216	-	find value+tag on live start slot (lane gap)
+007ff0c0	RELOCATION_MATCH	199v199	PASS	named Bind3 + search-tools local
+00880640	RELOCATION_MATCH	230v230	PASS	swept sphere v mesh; named raised points
+00880730	RELOCATION_MATCH	195v195	PASS	HasCollidedWithThingFromTo slot 90
+008e5670	RELOCATION_MATCH	217v217	PASS	|| gravity guard; inline GetLengthSquared
+008e57d0	RELOCATION_MATCH	164v164	PASS	Bind3 filters; C3DVector memberwise copy
+008e5f00	RELOCATION_MATCH	168v168	PASS	gravity-only twin (no refs found)

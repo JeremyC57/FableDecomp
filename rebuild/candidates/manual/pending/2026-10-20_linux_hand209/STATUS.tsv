@@ -1,0 +1,41 @@
+0056ef6f	DIFFER	207v206	-	RMW vs forwarded compare value (lane); direct/ref/pointer/g-off forms tried
+0056fdc3	RELOCATION_MATCH	185v185	PASS	unchecked GetInterface twin of 0056fe7c; y-off+s
+005721fa	RELOCATION_MATCH	161v161	PASS	STLport *(begin()+n) operator[] reads start before the call; y-off+s
+00574576	DIFFER	182v182	-	frame slot order (string temp vs component local); plain/chain/block/inline-helper forms tried
+005746f7	RELOCATION_MATCH	172v172	PASS	reference + named current/initial locals; y-off+s
+005747a3	RELOCATION_MATCH	226v226	PASS	category in dead arg slot; s only (no frame)
+0057713f	RELOCATION_MATCH	215v215	PASS	OnCreate twin of Trade/Weapons; GetSubDef<CCreatureDef>
+005786b5	DIFFER	230v226	-	lane gap: biased ebp frame (lea ebp,[esp-70h]); body otherwise identical; tuning flags tried
+0059d1b1	DIFFER	194v191	-	QFE/RTM frame-slot sharing (string local in the dead map slot, temporaries in the dead component slot); 2 forms tried
+0059d761	DIFFER	194v191	-	byte twin of 0059d1b1 (PC_SUBTITLE); same gap
+0059da10	DIFFER	173v171	-	bool return: lane zero-extends (xor eax,eax) with the price in ecx; retail setge al with the price in eax; 3 compare forms tried
+0059dabb	RELOCATION_MATCH	199v199	PASS	display engine as a named local before the pushes; immediate key in the frame; y-off+s
+005aebfe	RELOCATION_MATCH	194v194	PASS	two-case switch; by-value card defs with the manager long-form release (DecRef/GetRefCount); y-off+s
+005b3c95	DIFFER	236v229	-	zero-register CSE of two and-zero stores (lane); 4 forms tried
+005b3d7a	DIFFER	225v212	-	loop-invariant map address hoisted + suit def spilled (retail keeps def in edi); map/flat-header/CDefPointer-walk forms tried
+005bd273	RELOCATION_MATCH	181v181	PASS	CWideString by value; && over counted temp; y-off+s
+005bd4ea	RELOCATION_MATCH	173v173	PASS	raw AddRef/Release hold on PDef (CDefPointer local forces a frame pointer); FirstRenderFrame store before the addref; pack(4)
+005bdf08	DIFFER	178v169	-	def out-slot release form: dtor (outlined/inline/member Release/local copy) and hand-written releases tried; remaining: zero-register liveness + RMW dec on the re-read slot
+005beb57	DIFFER	233v233	-	frame slot of the third key local ([ebp-8] vs dead arg slot [ebp+8]); temp/scoped/pointer-def/hero-block forms tried
+005c3180	DIFFER	188v186	-	QFE/RTM frame-slot sharing (temporary reuses the out-slot word); forceinline dtor form
+005cbc36	DIFFER	198v180	-	weapon def spilled + class address hoisted (retail keeps it in ebx); 3 forms tried
+005ccbbd	RELOCATION_MATCH	212v212	PASS	one return per arm; head/tail merge gives push imm per arm (if-chain on const char* = 213)
+005cdccb	DIFFER	187v187	-	slot sharing gap: type/frame share [ebp-4] in retail; long creature gives the conversion temporaries
+005d8d50	RELOCATION_MATCH	208v208	PASS	DeathPersistent bit; thing local dying at the call; speed TU
+005d9070	DIFFER	172v172	-	text id register/push order around the bank lookup (scheduling); chain/locals/order forms tried
+005d9c90	RELOCATION_MATCH	215v215	PASS	OnInitialActivate: inline bitset::test with noreturn abort; function-scope locals
+005fcb10	RELOCATION_MATCH	208v208	PASS	OnInitialActivate: named __int64 uid local; CCountedPointer Reset inline
+005fd0f0	RELOCATION_MATCH	224v224	PASS	inline STLport clear/push_back; list by reference; node declared before quest
+00602f30	RELOCATION_MATCH	208v208	PASS	world + gui named locals before the pushes; tail jumps
+0061a9d0	DIFFER	168v168	-	register assignment swap only (this/index/first); size via size()/begin-end, dtor local forms, named index local tried
+0061aa80	DIFFER	182v176	-	register assignment swap only (sibling of 0061a9d0); 2 forms tried
+00751bc0	DIFFER	171v169	-	QFE/RTM frame-slot order + def load sunk below the call; named-local/temporary/reference forms tried
+00752f30	DIFFER	226v226	-	register assignment swap (type ebx/this edi); 2 forms tried
+00753840	RELOCATION_MATCH	232v232	PASS	unsigned state word (shr); re-read on every return; speed TU
+00753ba0	RELOCATION_MATCH	208v208	PASS	unchecked GetInterface 0x5a; named animation reference; == 0.0f tests; speed TU
+00788406	DIFFER	236v239	-	register allocation (vtables/name in regs, this spilled); 1 form
+007f1410	RELOCATION_MATCH	211v211	PASS	one nested condition with a single return false; unchecked GetInterface 0x31; speed TU
+007f14f0	RELOCATION_MATCH	221v221	PASS	FrameUpdate (vfunc_9): inline IS_THING_ALIVE early return; fraction < 1.0f (test ah,5 ; jp); speed TU
+007f2410	DIFFER	224v205	-	conditional-temporary guard flags: by-value GetPDef copy + string temp inside &&; the lane drops the addref/guard shape; 1 form tried
+007fba20	DIFFER	222v222	-	register assignment (this ebp vs argument cached); 3 forms tried
+address	status	bytes	test	note

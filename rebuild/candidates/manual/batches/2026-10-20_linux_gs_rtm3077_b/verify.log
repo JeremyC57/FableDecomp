@@ -82,3 +82,32 @@ LANDED 7 wins into src/compiled + tests + catalog + oracle
   CGameScriptInterface_RespawnHero_0088e150
   C3DAnimFileSequenceChunk_GetChunkInfo_00aaf5b0
   CMirroredTextureHighlightsChunk_GetChunkInfo_00ac4ec0
+addr       parity           behav  name
+005e3df0   RELOCATION_MATCH PASS   CTCQuestCompletionUI::Deactivate
+00629390   WARN SHARED_HEADER_AVAILABLE CGameEvent
+00629390   WARN SHARED_HEADER_AVAILABLE CPlayer
+00629390   WARN SHARED_HEADER_AVAILABLE CWorld
+00629390   WARN RELOC_NAME: ?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z -> 009f17a0 labelled 'CEventPacket::CopyToBuffer'
+00629390   WARN RELOC_NAME: ?GetPlayer@CWorld@@QAEPAUCPlayer@@J@Z -> 0049d850 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00629390   RELOCATION_MATCH PASS   CWorld::EASetFreeCameraMode
+0085ca80   WARN SHARED_HEADER_AVAILABLE CGameEvent
+0085ca80   WARN SHARED_HEADER_AVAILABLE CWorld
+0085ca80   WARN RELOC_NAME: ?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z -> 009f17a0 labelled 'CEventPacket::CopyToBuffer'
+0085ca80   RELOCATION_MATCH PASS   CWorld::LEASetExclusiveMode
+0085caf0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+0085caf0   WARN SHARED_HEADER_AVAILABLE CWorld
+0085caf0   WARN RELOC_NAME: ?GetData@CGameEvent@@QBEJAAUCMemoryBuffer@@@Z -> 009f17a0 labelled 'CEventPacket::CopyToBuffer'
+0085caf0   WARN RELOC_NAME: ?SetDisplayMode@CMainGameComponent@@QAEXKKE@Z -> 0041641f labelled 'CMainGameComponent_ChangeDisplayMode'
+0085caf0   RELOCATION_MATCH PASS   CWorld::LEASetDisplayMode
+
+WINS: 4
+  005e3df0 RELOCATION_MATCH CTCQuestCompletionUI::Deactivate
+  00629390 RELOCATION_MATCH CWorld::EASetFreeCameraMode
+  0085ca80 RELOCATION_MATCH CWorld::LEASetExclusiveMode
+  0085caf0 RELOCATION_MATCH CWorld::LEASetDisplayMode
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCQuestCompletionUI_Deactivate_005e3df0
+  CWorld_EASetFreeCameraMode_00629390
+  CWorld_LEASetExclusiveMode_0085ca80
+  CWorld_LEASetDisplayMode_0085caf0

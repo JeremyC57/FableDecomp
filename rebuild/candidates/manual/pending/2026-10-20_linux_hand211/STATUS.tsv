@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005e9f30	MATCH	200v200	PASS	three inline handle Reset loops; release as pointee Release() keeps ecx for the dec/virtual call
+00760990	RELOCATION_MATCH	219v219	PASS	frame C3DVector copy; C2DBoxF bounds (>= TL, < BR) then closed-shape loop re-reading _M_finish
+00762ab0	RELOCATION_MATCH	230v230	PASS	frame point-list copy; inline new CBasicShape ctor chain; raw-pointer counted ctor in the argument area
+00706290	DIFFER	233v215	-	label: CTCHeroAttachableAppearanceModifiers::IsNaked (not CTCShop::GetName); lane hoists the zero into ebx and spills the list pointer
+007721a0	DIFFER	194v170	-	lane gap: callee-saved push sunk into the found branch (bool in bl)
+00773b20	RELOCATION_MATCH	210v210	PASS	/GS; __forceinline out-parameter GetInterface (component in eax); inline by-value AddULONG before the player store
+00773e10	DIFFER	214v202	-	lane: out-pointer does not share the lookup-key frame word; zero-register long release
+007742c0	DIFFER	254v233	-	lane gap: push ebx sunk into the found branch; zero-register long release
+007743b0	DIFFER	264v238	-	label: GetCurrentSellPrice (sell multiplier +0x5c); same push-sinking lane gap as 007742c0
+00774c60	DIFFER	175v188	-	register colouring + unaligned loop head (same instruction mix)
+00798f50	RELOCATION_MATCH	163v163	PASS	per-arm HasTC+GetTC assigned to a zero-initialised result (ebx) with the return tail-duplicated
+00799000	RELOCATION_MATCH	181v181	PASS	third GetPItem in a named local for HasTC+GetTC; scoped clearing CIntelligentPointer; flag in bl
+007996b0	RELOCATION_MATCH	216v216	PASS	arg-first change test; HasTC+one-ternary GetTC; deed-mask byte vector entry = !repress; block-scoped strings
+00799aa0	RELOCATION_MATCH	206v206	PASS	vfunc_9 = FrameUpdate; id read before the static frame call, unsigned 64-bit % 15; HasTC+GetTC village test
+007bf460	RELOCATION_MATCH	172v172	PASS	init-list ctor; STLport _Vector_base+alloc_proxy hit list fixes the mov ecx,edi placement
+007ca830	RELOCATION_MATCH	169v169	PASS	label: CTCHeroReceiveItems ctor (vtable 0x126EBFC); STLport list sentinel + vector base/alloc proxy; pack(1) intelligent pointer at +0x29
+00bd92e0	RELOCATION_MATCH	220v220	PASS	label: CEngineInternalPrimitiveAnimatedMesh ctor; novtable mesh base, CBaseClass interpolators, STLport _Rb_tree header init
+00bd9830	RELOCATION_MATCH	226v226	PASS	label: CEngineInternalPrimitiveAnimatedMeshFromFile ctor; __forceinline (type, flags) base ctor
+00bd9940	RELOCATION_MATCH	237v237	PASS	label: CEngineInternalPrimitiveMorphedAnimatedMesh ctor; + out-of-line MorphInfo member ctor
+007bdd77	DIFFER	189v186	-	zero register ebx vs retail and/push 0; frame slot order; next: CDefPointer dtor without null test
+007275c0	DIFFER	252v240	-	register colouring around the replacement def (holder form strength-reduces &Entries)
+007e50c0	DIFFER	207v177	-	label: CTCBetting::GetBetText (not CTCSinglePersonOccupiable::IsOfType); def out pointer register tracking / miss-path merge
+00811830	DIFFER	233v211	-	label: NEntityEvents::CEventHitBySpecialAbility ctor; lane long release on a null-test-elided def (eax)
+007feaf0	RELOCATION_MATCH	192v192	PASS	slot 28 (4 args, not OnActionUse); C2DCoordI truncation; filter temporaries in dead arg slots; search tools local in a __forceinline helper
+007864c0	RELOCATION_MATCH	184v184	PASS	CCountedPointer local from new (raw-pointer ctor); Reset-style release re-reading the block
+00722740	DIFFER	236v228	-	register allocation in the aligned frame (ebp as induction reg) + out-slot reuse
+0066aef0	RELOCATION_MATCH	167v167	PASS	IsPosInMap arg pushed before the GetWorldMap virtual; non-null emitter stored via CIntelligentPointer temporary
+0066b1d0	RELOCATION_MATCH	164v164	PASS	holder for the entity sound def; thing-def local sinks the out zero; owner local before the forwarded call
+0072b260	DIFFER	198v198	-	scheduling only: ecx=Creature before the AddTC pushes
+0072b870	RELOCATION_MATCH	196v196	PASS	two-case switch (0x10 body first); out-parameter GetInterface; getter result straight into the hidden pointer
+0072c9c0	DIFFER	211v224	-	lane folds two same-word bit tests into test ch,3; retail keeps a 0x100 mask register
+00731bf0	RELOCATION_MATCH	169v169	PASS	engine header + __fastcall free function (SetAngle precedent); double 0.1 product stored to a named float; if/else-if clamp
+00747b80	DIFFER	242v240	-	lane gap: push ebp sunk into the miss branch; tag temporary slot choice
+006e2c00	DIFFER	166v165	-	vfunc_4 = OnCreate; register colouring, count CSE, out-slot/temporary frame sharing
+004e2250	RELOCATION_MATCH	186v186	PASS	size TU; init list in declaration order; STLport vector base; C3DVector(0,0,0) members; mixed out-of-line/inline intelligent pointer ctors
+007f67c0	DIFFER	236v235	-	box arithmetic lea vs in-place add (memberwise C3DVector copy fixed the position copies)
+007babe0	DIFFER	227v227	-	frame only: out pointer does not share the first lookup key word
+005ea010	DIFFER	236v238	-	register colouring + TotalWinnings tail cross-jump
+005ea1a0	DIFFER	166v166	-	frame word sharing of the two string temporaries + def release order
+005ea250	DIFFER	178v178	-	twin of 005ea1a0 (frame word sharing + release order)
