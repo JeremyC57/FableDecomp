@@ -1,0 +1,9 @@
+address	name	evidence
+00547500	NUISystem::CSwappingStateComponent::GetDataFromDef	not CList (chunk 224)
+00536a30	NUISystem::CList::Method_00536a30	UI list component, not a container (chunk 224)
+0053b7f0	NUISystem::CList::Method_0053b7f0	UI list component, not a container (chunk 224)
+0054eac0	NUISystem::CViewport::~CViewport	not CMesh (chunk 224)
+0081f910	CMap::GetHeaviestCellTheme	returns the most weighted of a cell's three engine themes; not CopyPos; descriptive name (chunk 224)
+0079fd90	CTCWillLightning::CLightningBeam::Method_0079fd90	(chunk 224)
+006f9820	NAnimationEvents::CManager::Method_006f9820	catalog says CManager (chunk 224)
+0041cfb2	Callee_0041cfb2_edi_result	link-time custom calling convention: result pointer in edi (chunk 224)

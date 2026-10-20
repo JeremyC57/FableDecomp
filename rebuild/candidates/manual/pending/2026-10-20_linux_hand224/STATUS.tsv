@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00512410	RELOCATION_MATCH	292v292	PASS	CDefPointer && temporaries, landed CRefCounted release model
+005bec92	DIFFER	325v313	-	frame-slot sharing of the out slot; def release form
+00cdf260	RELOCATION_MATCH	250v250	PASS	entity script Main; implicit CCharString quest names
+00df4610	RELOCATION_MATCH	281v281	PASS	entity script Main with scripted-thing handle start loop
+00cf8970	RELOCATION_MATCH	248v248	PASS	quest Init; implicit CScriptThing operator= over CCountedPointer::operator=
+00ce0150	RELOCATION_MATCH	269v269	PASS	entity script waits on MsgIsUsedBy / MsgOnHeroSlept
+00be5e70	DIFFER	302v302	-	store order only (same length)
+0079fd90	DIFFER	253v253	-	two inlined lookup keys not packed into one slot
+00536a30	DIFFER	242v242	-	find temp store order + erase result slot
+00547500	DIFFER	241v241	-	pair stores scheduled above the size compare
+00d9eb30	DIFFER	288v288	-	SetTarget arg lea register
+00e338e0	RELOCATION_MATCH	319v319	PASS	entity script; inline virtual SetDataString devirtualised on a local
+00e48a30	RELOCATION_MATCH	263v263	PASS	entity script; CDefString conversion + discarded CreateCreature temp
+00418dca	RELOCATION_MATCH	294v294	PASS	ctor in a size TU (pragma optimize s), PDB layout
+004164e0	DIFFER	264v264	-	x87 fsub/fstp scheduled before the integer stores
+00da4350	RELOCATION_MATCH	317v317	PASS	entity Init; inline counted-pointer operator= reading both words first
+0082abd0	DIFFER	246v250	-	register choice in arg/key loads and the icon arms
+0082ae80	RELOCATION_MATCH	277v277	PASS	minimap marker loop; right operand of int == first; inline long getter for the short map index
+0082b520	RELOCATION_MATCH	262v262	PASS	minimap marker loop (Trader model)
+0082b630	RELOCATION_MATCH	278v278	PASS	minimap marker loop with hero guard and CDefString compare
+0082acd0	DIFFER	258v256	-	component register (eax+mov ecx) before IsForSale
+008d77a0	RELOCATION_MATCH	316v316	PASS	named RHS/position locals; inline placement getter puts the component in ecx
+008dcb60	DIFFER	282v279	-	filter/vector not packed with the GetTC key slot
+008d9740	DIFFER	295v293	-	temporaries not packed into dead named locals
+008d70a0	DIFFER	290v289	-	esi/edi swap between the animate param and the anim entries
+00a64ef0	DIFFER	309v305	-	edi/ebp swap + child-colour tail duplication
+00a65480	DIFFER	265v265	-	size-arg load order and register rotation
+00a65720	DIFFER	268v269	-	minSize vs regionSize in ebp
+0054eac0	DIFFER	241v243	-	member dtor: Data load hoisted above the vtable store into ecx
+009e9220	RELOCATION_MATCH	258v258	PASS	MovePosition exception model; inline CArray operator[] with the buffer param as cursor
+009e95f0	DIFFER	316v316	-	end computation lea form + throw-path register rotation
+008f6fc0	DIFFER	303v297	-	x counter in edx; grid not loop-carried
+0081f910	DIFFER	257v263	-	callee-saved register rotation
+00a25d20	DIFFER	312v312	-	load order at the Load call + pool arg register
+0053b7f0	DIFFER	288v302	-	Die's registry gap + delete through ??_G
+00a9d480	DIFFER	83v243	-	inline-asm SSE body (asm_bake)
+00a5cee0	DIFFER	136v285	-	inline-asm SSE body (asm_bake)
+006f9820	RELOCATION_MATCH	311v311	PASS	inline Duration getter; named CEvent local; STLport _Destroy vector dtor
+0041db84	DIFFER	280v281	-	LTCG edi-result call to GetTextBySymbol
+00be37e0	DIFFER	285v287	-	x/y spill choice + zero-register compare

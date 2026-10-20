@@ -251439,6 +251439,111 @@ $catalog = @(
         TestSource = '00/e9/CTrophiesBriarTrophy_Main_00e9d800_test.cpp'
         PassPattern = '00e9d800_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00418dca'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_CMainGameComponent_00418dca.cpp'
+        TestSource = '00/41/CMainGameComponent_CMainGameComponent_00418dca_test.cpp'
+        PassPattern = '00418dca_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00512410'
+        Module = 'CIsHouseLargerThan'
+        Source = '00/51/CIsHouseLargerThan_operator_00512410.cpp'
+        TestSource = '00/51/CIsHouseLargerThan_operator_00512410_test.cpp'
+        PassPattern = '00512410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f9820'
+        Module = 'NAnimationEvents::CManager'
+        Source = '00/6f/NAnimationEventsCManager_GetEmbeddedEventsBetweenTimes_006f9820.cpp'
+        TestSource = '00/6f/NAnimationEventsCManager_GetEmbeddedEventsBetweenTimes_006f9820_test.cpp'
+        PassPattern = '006f9820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082ae80'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_InitialiseTraderMarkers_0082ae80.cpp'
+        TestSource = '00/82/CMiniMapDisplay_InitialiseTraderMarkers_0082ae80_test.cpp'
+        PassPattern = '0082ae80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082b520'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_InitialiseAttractionMarkers_0082b520.cpp'
+        TestSource = '00/82/CMiniMapDisplay_InitialiseAttractionMarkers_0082b520_test.cpp'
+        PassPattern = '0082b520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082b630'
+        Module = 'CMiniMapDisplay'
+        Source = '00/82/CMiniMapDisplay_InitialiseEnemyMarkers_0082b630.cpp'
+        TestSource = '00/82/CMiniMapDisplay_InitialiseEnemyMarkers_0082b630_test.cpp'
+        PassPattern = '0082b630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d77a0'
+        Module = 'CModeJackOfBladesScream'
+        Source = '00/8d/CModeJackOfBladesScream_FrameUpdate_008d77a0.cpp'
+        TestSource = '00/8d/CModeJackOfBladesScream_FrameUpdate_008d77a0_test.cpp'
+        PassPattern = '008d77a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9220'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_Read_009e9220.cpp'
+        TestSource = '00/9e/CMemoryFile_Read_009e9220_test.cpp'
+        PassPattern = '009e9220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf260'
+        Module = 'CKG_Gate'
+        Source = '00/cd/CKGGate_Main_00cdf260.cpp'
+        TestSource = '00/cd/CKGGate_Main_00cdf260_test.cpp'
+        PassPattern = '00cdf260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0150'
+        Module = 'CLadyGreysBed'
+        Source = '00/ce/CLadyGreysBed_Main_00ce0150.cpp'
+        TestSource = '00/ce/CLadyGreysBed_Main_00ce0150_test.cpp'
+        PassPattern = '00ce0150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf8970'
+        Module = 'CLadyGreyWifeManagerScript'
+        Source = '00/cf/CLadyGreyWifeManagerScript_Init_00cf8970.cpp'
+        TestSource = '00/cf/CLadyGreyWifeManagerScript_Init_00cf8970_test.cpp'
+        PassPattern = '00cf8970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da4350'
+        Module = 'CMapKeeper'
+        Source = '00/da/CMapKeeper_Init_00da4350.cpp'
+        TestSource = '00/da/CMapKeeper_Init_00da4350_test.cpp'
+        PassPattern = '00da4350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df4610'
+        Module = 'CKrakenMinion'
+        Source = '00/df/CKrakenMinion_Main_00df4610.cpp'
+        TestSource = '00/df/CKrakenMinion_Main_00df4610_test.cpp'
+        PassPattern = '00df4610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e338e0'
+        Module = 'CM_AC_DummyStatic'
+        Source = '00/e3/CMACDummyStatic_Main_00e338e0.cpp'
+        TestSource = '00/e3/CMACDummyStatic_Main_00e338e0_test.cpp'
+        PassPattern = '00e338e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e48a30'
+        Module = 'CM_TollBandit'
+        Source = '00/e4/CMTollBandit_Main_00e48a30.cpp'
+        TestSource = '00/e4/CMTollBandit_Main_00e48a30_test.cpp'
+        PassPattern = '00e48a30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
