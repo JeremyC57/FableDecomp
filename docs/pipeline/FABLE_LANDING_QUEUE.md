@@ -307,10 +307,11 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand224` | Hand chunk 224 (CIsHouseLargerThan .. CModeJackOfBladesScream): 15 of 40 byte-exact | - | 25 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand225` | Hand chunk 225 (CModeJackOfBladesScream .. CParticleEmitterList): 25 of 40 byte-exact | - | 15 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand226` | Hand chunk 226 (CParticleEmitterManager .. CPlane): 18 of 40 byte-exact | - | 13 | 9 | landed; parked rows open |
+| `2026-10-20_linux_hand227` | Hand chunk 227 (CPlayer .. CRandomAppearanceMorph): 31 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **1187 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **1195 parked rows** for the Fable retry pass.
 
-### Skipped rows (33 open of 59 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (34 open of 60 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -346,6 +347,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `00be5ca0` | multi | open | 00be5ca0:50 00be5cd2:21 00be5cf0:29 00be5d10:15 00be5d20:20 00be5d40:26 00be5d60:26 | `2026-10-19_linux_hand195` | row spans InvalidateEdge + jump table + four more bodies |
 | `00c8a4b0` | single | open | 00c8a4b0:109 | `2026-10-15_linux_hand171` | object received in esi (LTCG/library register convention, 0xC8xxxx); not CTCVillageMember |
 | `00c8a520` | ltcg | open |  | `2026-10-14_linux_hand57` | a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG |
+| `00d80ae0` | multi | open | 00d80ae0:159 00d80b80:124 | `2026-10-20_linux_hand227` | row holds GetJackSpeech (0x00D80AE0..0x00D80B7C), its jump table and the factory 0x00D80BA0 |
 | `00f333b0` | multi | open | 00f333b0:27 00f333cb:24 00f333e3:20 00f333f7:20 00f3340b:37 00f33430:37 00f33458:21 00f33470:12 00f33480:25 00f334a0:25 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
 
 ### Parked rows per batch (hand-over lines written by the authoring agents)
@@ -2209,5 +2211,16 @@ Groups: register-assignment/scheduling only (0056ef6f, 005d9070, 0061a9d0, 0061a
 - 00a42170 CPlane::Initialise(const C3DVector&, const C3DVector&, const C3DVector&) DIFFER(269v269): scheduling only -- `mov ecx,[esp+20h]` / `mov edx,[esp+24h]` (copying the cross-product temporary into Normal) sit before the next `fld` in ours, after it in retail | tried: copy-initialised edges (temporary elided, 221 bytes), user copy ctor, default-constructed edges assigned the operator results (fixes everything else), both | next: lane gap: integer copy / x87 interleave
 - 008fcc60 NCameraModes::CPhysicsCoordRigid::FrameUpdate DIFFER(265v263): the entry copy `target = state->Acceleration` is `lea eax,[esi+18h] ; mov ecx,[eax] ; mov [esp+0Ch],ecx ...` in ours, retail loads eax/ecx/edx first and stores after (and the final Position copy is scheduled around `mov byte [esi+2Ch],0` differently) | tried: implicit copy (lea), memberwise user copy ctor (load/store pairs), default-construct + assign with a named manager local and weight (fixes the call setup), POD vector (worse) | next: a by-value inline getter for the target, or a 3-float ctor copy `C3DVector target(a.X, a.Y, a.Z)`
 - 009e3b60 CPixelFormat::ConvertPFDToRGB DIFFER(199v280): retail re-reads AlphaBits/RBits/GBits/BBits from the format table for every channel (e.g. `mov ebx,[eax+129BA58h]` and `mov edi,[eax+129BA58h]` back to back) and parks the alpha byte in a frame word; ours CSEs the four fields into registers | tried: inline channel extractor feeding a (b, g, r, a) colour ctor, `optimize("g", off)` (frame-pointer /Od-like, 300 bytes) | next: per-channel inline members of the format re-indexing the table (`GetFormatInfo().RBits` each time), or a lane gap (missing CSE in retail)
+
+
+#### `2026-10-20_linux_hand227` (8 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand227/differ/`)
+- 00edd060 CV_TempleOfLightScript::WatchForAcolyteExit (catalog CQ_BountyHuntScript::WatchForAllGruntsKilled) DIFFER(230v270): retail inlines the local vector<CScriptThing> dtor at the wait-loop return (others merge onto out-of-line 0x008AC970), the lane calls the out-of-line copy everywhere | tried: plain inline dtor, forceinline _Destroy, STLport _Vector_base/vector split dtor, dead `_M_start = 0` store | next: lane gap: inline-once of a local vector destructor (retry10c open shape; forceinline expands at all sites)
+- 00cfcca0 CPretendGuard::Main DIFFER(280v274): retail enters the final `while (!IsDone()) NewScriptFrame();` with `jmp` to its bottom test; the lane duplicates the IsDone call+test after the StartScriptingEntity loop | tried: while, for(;;)+break, loop nested in the start loop, goto into a do/while | next: lane gap: loop-entry tail duplication
+- 004b1a80 CQuestManager::SetBoastAsMade DIFFER(277v277): this/list-head registers swapped (retail ebx=this, edi=head) and the zero C3DVector stores sit before the AddMessage pushes (retail: after `push 0x32`) | tried: hand push_back with n/p locals, STLport insert(end()) iterator form (fixes the registers, breaks the link order), prev-first links, named position local | next: insert(end()) form with `_Node_base* p` read after _M_create_node, and the position from an inline `C3DVector Zero()` returning a named local
+- 004b2b70 CQuestManager::GetAllActiveQuestInfo DIFFER(290v290): frame packing only -- retail keeps an 8-byte frame (find key in the dead second-argument slot, def-name string and __false_type tag in the first); the lane keeps 0x10 | tried: named local, block-scoped local, temporary argument, GetQuestCard helper | next: lane gap: dead-argument-slot packing
+- 004887c0 CPlayer::SetupInitialPlayerMode DIFFER(246v251): retail duplicates `xor ebx,ebx` into both front-end arms (zero for AddMode(0x1b,false)), stores the vector zeros after the pushes, keeps the vector start in edi and the spirit in the key frame word | tried: compare operand order, `long number` local, hoisted spirit local, out-parameter GetInterface | next: `bool frontEnd = GetCurrentMode() == 0x1b;` form and the STLport _Vector_base/_STLP_alloc_proxy vector model
+- 00439e00 CPlayerGui::UpdateRenown DIFFER(276v278): one `mov eax,edi` register copy before the fabs(OldValue - CurrentValue) loads | tried: member access, inline GetValueChange, PRenown re-read, named bar local | next: lane gap: register copy (CSE'd reload)
+- 00878be0 NCameraModes::CProjectileWeapon::GetPosFromParams (catalog CProjectileWeapon) DIFFER(222v244): x87 sum order, unfolded `* 0.5f * 0.0f + 1.0f`, split position copy (X/Y on the FPU, Z as an integer) | tried: one probe | next: an inline Lerp(1.0f, 1.0f, t) for the scale, a named rotated-position local, the retry-10 vector-operand forms
+- 00bdda80 CLocalDetailCacheMap::CQuadTreeElement::RenderUpdate DIFFER(277v269): retail keeps the distance on the x87 stack after fsqrt (`fstp st(2) ; fstp st(0) ; fst [slot]`) where the lane stores and re-loads it, plus a `lea esp,[esp]` pad before the child loop | tried: statement-order sum, Length() helper, inline fade condition, pointer child loop | next: lane gap: fst vs fstp/fld spill (chunk 214 shape) and loop-head alignment
 
 <!-- queue:end -->

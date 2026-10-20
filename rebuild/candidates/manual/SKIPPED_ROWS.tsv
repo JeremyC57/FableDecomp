@@ -55,6 +55,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00c8a520	32	2026-10-14_linux_hand57	CMemoryDataOutputStream::Clear	ltcg	open		a real function with 7 callers that takes its object in esi (LTCG register argument, no prologue): needs /GL+LTCG
 00ca5510	96	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	00ca5510:16,00ca5520:8,00ca5530:7,00ca5540:44	row spans four functions
 00caef70	64	2026-10-15_linux_hand110	CThingFilter_IsValid::operator()	multi	done	00caef70:9,00caef80:3,00caef90:3,00caefa0:3	row holds four functions
+00d80ae0	288	2026-10-20_linux_hand227	CQ_HeroSoulsArenaScript::GetJackSpeech	multi	open	00d80ae0:159,00d80b80:124	row holds GetJackSpeech (0x00D80AE0..0x00D80B7C), its jump table and the factory 0x00D80BA0
 00d9f1b0	160	2026-10-15_linux_hand145	CMC_Minion::OnPredicateFail	multi	done	00d9f1b0:75,00d9f200:69	row holds two CQ_MinionCampScript members under a propagated CMC_Minion label (0x00D9F1A0 is the real CMC_Minion::OnPredicateFail thunk: mov ecx,[ecx+14h] ; jmp): the minion-died handler and the spawn-timer restart it tail-calls
 00f333b0	272	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	00f333b0:27,00f333cb:24,00f333e3:20,00f333f7:20,00f3340b:37,00f33430:37,00f33458:21,00f33470:12,00f33480:25,00f334a0:25	row holds the Transfer jump-table body plus following function(s) after int3 padding
 00f36ca0	144	2026-10-15_linux_hand133	CDynamicObjectHeapBase::RefCountedRelease	multi	done	00f36ca0:17,00f36cc0:43,00f36cf0:31,00f36d10:16,00f36d20:1	row spans 4 functions (int3 padding then more bodies)

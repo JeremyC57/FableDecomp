@@ -251922,6 +251922,223 @@ $catalog = @(
         TestSource = '00/ef/NScriptCPersonalScriptEmptyScript_ChangeAlpha_00ef8bc0_test.cpp'
         PassPattern = '00ef8bc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00439ab0'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_GetButtonAlpha_00439ab0.cpp'
+        TestSource = '00/43/CPlayerGui_GetButtonAlpha_00439ab0_test.cpp'
+        PassPattern = '00439ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00449e60'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_LoadGameState_00449e60.cpp'
+        TestSource = '00/44/CPlayerManager_LoadGameState_00449e60_test.cpp'
+        PassPattern = '00449e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044a2a0'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_DrawGetEnvironmentInfo_0044a2a0.cpp'
+        TestSource = '00/44/CPlayerManager_DrawGetEnvironmentInfo_0044a2a0_test.cpp'
+        PassPattern = '0044a2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048a070'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_InitCharacterAs_0048a070.cpp'
+        TestSource = '00/48/CPlayer_InitCharacterAs_0048a070_test.cpp'
+        PassPattern = '0048a070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b0d30'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_SetQuestCardObjective_004b0d30.cpp'
+        TestSource = '00/4b/CQuestManager_SetQuestCardObjective_004b0d30_test.cpp'
+        PassPattern = '004b0d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b1340'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_IsActiveQuestBetweenQuestStartAndFinishScreensIn_004b1340.cpp'
+        TestSource = '00/4b/CQuestManager_IsActiveQuestBetweenQuestStartAndFinishScreensIn_004b1340_test.cpp'
+        PassPattern = '004b1340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b4490'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_Update_004b4490.cpp'
+        TestSource = '00/4b/CQuestManager_Update_004b4490_test.cpp'
+        PassPattern = '004b4490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006366b0'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_UninitModeLightning_006366b0.cpp'
+        TestSource = '00/63/CPlayer_UninitModeLightning_006366b0_test.cpp'
+        PassPattern = '006366b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00636e90'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_InitModeViewHero_00636e90.cpp'
+        TestSource = '00/63/CPlayer_InitModeViewHero_00636e90_test.cpp'
+        PassPattern = '00636e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086b6d0'
+        Module = 'CRandomAppearanceMorph'
+        Source = '00/86/CRandomAppearanceMorph_TransferBinaryOut_0086b6d0.cpp'
+        TestSource = '00/86/CRandomAppearanceMorph_TransferBinaryOut_0086b6d0_test.cpp'
+        PassPattern = '0086b6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6a540'
+        Module = 'CPreallocTexturePool'
+        Source = '00/a6/CPreallocTexturePool_Initialise_00a6a540.cpp'
+        TestSource = '00/a6/CPreallocTexturePool_Initialise_00a6a540_test.cpp'
+        PassPattern = '00a6a540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bde290'
+        Module = 'CLocalDetailCacheMap::CQuadTreeElement'
+        Source = '00/bd/CLocalDetailCacheMapCQuadTreeElement_LoadHeader_00bde290.cpp'
+        TestSource = '00/bd/CLocalDetailCacheMapCQuadTreeElement_LoadHeader_00bde290_test.cpp'
+        PassPattern = '00bde290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d17340'
+        Module = 'CQ_BountyHuntScript'
+        Source = '00/d1/CQBountyHuntScript_WatchForAllGruntsKilled_00d17340.cpp'
+        TestSource = '00/d1/CQBountyHuntScript_WatchForAllGruntsKilled_00d17340_test.cpp'
+        PassPattern = '00d17340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6ef20'
+        Module = 'CQ_HangingTreeGoodScript'
+        Source = '00/d6/CQHangingTreeGoodScript_CQHangingTreeGoodScript_00d6ef20.cpp'
+        TestSource = '00/d6/CQHangingTreeGoodScript_CQHangingTreeGoodScript_00d6ef20_test.cpp'
+        PassPattern = '00d6ef20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d74e80'
+        Module = 'CQ_HangingTreeGoodScript'
+        Source = '00/d7/CQHangingTreeGoodScript_UpdateWayPoint_00d74e80.cpp'
+        TestSource = '00/d7/CQHangingTreeGoodScript_UpdateWayPoint_00d74e80_test.cpp'
+        PassPattern = '00d74e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d766c0'
+        Module = 'CQ_HangingTreeGoodScript'
+        Source = '00/d7/CQHangingTreeGoodScript_SetGuardsHealth_00d766c0.cpp'
+        TestSource = '00/d7/CQHangingTreeGoodScript_SetGuardsHealth_00d766c0_test.cpp'
+        PassPattern = '00d766c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da0b30'
+        Module = 'CQ_MinionCampScript'
+        Source = '00/da/CQMinionCampScript_AddNewHeroAttacker_00da0b30.cpp'
+        TestSource = '00/da/CQMinionCampScript_AddNewHeroAttacker_00da0b30_test.cpp'
+        PassPattern = '00da0b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dbe3c0'
+        Module = 'CQ_NewOakValeIntroScript'
+        Source = '00/db/CQNewOakValeIntroScript_AttackStuff_00dbe3c0.cpp'
+        TestSource = '00/db/CQNewOakValeIntroScript_AttackStuff_00dbe3c0_test.cpp'
+        PassPattern = '00dbe3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc25b0'
+        Module = 'CQ_SecretPassageScript'
+        Source = '00/dc/CQSecretPassageScript_Init_00dc25b0.cpp'
+        TestSource = '00/dc/CQSecretPassageScript_Init_00dc25b0_test.cpp'
+        PassPattern = '00dc25b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcda80'
+        Module = 'CQ_OrchardFarmRaidScript'
+        Source = '00/dc/CQOrchardFarmRaidScript_MakeTeamMemberComment_00dcda80.cpp'
+        TestSource = '00/dc/CQOrchardFarmRaidScript_MakeTeamMemberComment_00dcda80_test.cpp'
+        PassPattern = '00dcda80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd9180'
+        Module = 'CPrisonKeyDoor'
+        Source = '00/dd/CPrisonKeyDoor_Main_00dd9180.cpp'
+        TestSource = '00/dd/CPrisonKeyDoor_Main_00dd9180_test.cpp'
+        PassPattern = '00dd9180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df0a50'
+        Module = 'CQ_SecretPassageScript'
+        Source = '00/df/CQSecretPassageScript_EndMission_00df0a50.cpp'
+        TestSource = '00/df/CQSecretPassageScript_EndMission_00df0a50_test.cpp'
+        PassPattern = '00df0a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df20f0'
+        Module = 'CQ_SummoningTheShipScript'
+        Source = '00/df/CQSummoningTheShipScript_MakeBriarRoseComment_00df20f0.cpp'
+        TestSource = '00/df/CQSummoningTheShipScript_MakeBriarRoseComment_00df20f0_test.cpp'
+        PassPattern = '00df20f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1d690'
+        Module = 'CQ_WizardBattleScript'
+        Source = '00/e1/CQWizardBattleScript_CleanUp_00e1d690.cpp'
+        TestSource = '00/e1/CQWizardBattleScript_CleanUp_00e1d690_test.cpp'
+        PassPattern = '00e1d690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1db00'
+        Module = 'CQR_EscortTraderScript'
+        Source = '00/e1/CQREscortTraderScript_CQREscortTraderScript_00e1db00.cpp'
+        TestSource = '00/e1/CQREscortTraderScript_CQREscortTraderScript_00e1db00_test.cpp'
+        PassPattern = '00e1db00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1e670'
+        Module = 'CQR_EscortTraderScript'
+        Source = '00/e1/CQREscortTraderScript_EndMission_00e1e670.cpp'
+        TestSource = '00/e1/CQREscortTraderScript_EndMission_00e1e670_test.cpp'
+        PassPattern = '00e1e670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3a030'
+        Module = 'CV_BordelloScript'
+        Source = '00/e3/CVBordelloScript_WatchForBordelloStatus_00e3a030.cpp'
+        TestSource = '00/e3/CVBordelloScript_WatchForBordelloStatus_00e3a030_test.cpp'
+        PassPattern = '00e3a030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb360'
+        Module = 'CProximityPodium'
+        Source = '00/ef/CProximityPodium_Main_00efb360.cpp'
+        TestSource = '00/ef/CProximityPodium_Main_00efb360_test.cpp'
+        PassPattern = '00efb360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f060d0'
+        Module = 'CQ_AmbushTradersScript'
+        Source = '00/f0/CQAmbushTradersScript_SetBanditAllegiences_00f060d0.cpp'
+        TestSource = '00/f0/CQAmbushTradersScript_SetBanditAllegiences_00f060d0_test.cpp'
+        PassPattern = '00f060d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f07a80'
+        Module = 'CQ_AmbushTradersScript'
+        Source = '00/f0/CQAmbushTradersScript_AddBanditHealthBar_00f07a80.cpp'
+        TestSource = '00/f0/CQAmbushTradersScript_AddBanditHealthBar_00f07a80_test.cpp'
+        PassPattern = '00f07a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f25840'
+        Module = 'CQ_ArenaScript'
+        Source = '00/f2/CQArenaScript_InitialiseVariables_00f25840.cpp'
+        TestSource = '00/f2/CQArenaScript_InitialiseVariables_00f25840_test.cpp'
+        PassPattern = '00f25840_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

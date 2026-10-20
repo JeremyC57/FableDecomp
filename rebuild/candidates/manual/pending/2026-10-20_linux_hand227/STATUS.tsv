@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00f25840	RELOCATION_MATCH	305v305	PASS	vector operator= + 20 CCharString literal assignments
+00dc25b0	RELOCATION_MATCH	241v241	PASS	three AddQuestRegion literal pairs; class label doubtful (vtable 0x012DA11C)
+00dbe3c0	RELOCATION_MATCH	285v285	PASS	objective strings as block-scoped named locals share the temporaries slot
+00df0a50	RELOCATION_MATCH	287v287	PASS	CRGBColour built in arg slot; named CScriptThing marker with inline dtor
+00e1e670	RELOCATION_MATCH	293v293	PASS	per-arm IsActiveThreadTerminating returns; L"" implicit CWideString temporary
+00d6ef20	RELOCATION_MATCH	246v246	PASS	landed script-ctor model (novtable base, PImp member object, STLport vectors)
+00e1db00	RELOCATION_MATCH	291v291	PASS	arena ctor model: CTimer self-registering, two vector[3] arrays
+00e3a030	RELOCATION_MATCH	263v263	PASS	really CV_BordelloScript::WatchForBordelloStatus (Leaf line); rotated while loops
+00edd060	DIFFER	230v270	-	really CV_TempleOfLightScript::WatchForAcolyteExit; local vector dtor never inlined once (retry10c open gap)
+00d17340	RELOCATION_MATCH	294v294	PASS	__forceinline vector dtor expanded at all four returns
+00d74e80	RELOCATION_MATCH	249v249	PASS	CScriptThing operator= forwarding to the counted pointer operator=
+00e1d690	RELOCATION_MATCH	286v286	PASS	forceinline vector dtor + named CScriptThing village
+00df20f0	RELOCATION_MATCH	254v254	PASS	named conversation local in edi; out-of-line ~CScriptThing
+00dcda80	RELOCATION_MATCH	251v251	PASS	chained operator+ temporaries, last in the dead argument slot
+00da0b30	RELOCATION_MATCH	266v266	PASS	inline Assign helper (PImp forceinline operator=) at the first slot, out-of-line operator= at the second (4 grades)
+00d766c0	RELOCATION_MATCH	291v291	PASS	reference local for the health vector, clear() via erase(begin,end)
+00f060d0	RELOCATION_MATCH	270v270	PASS	member (not reference) access fixes [edi+edx] order (4 grades)
+00f07a80	RELOCATION_MATCH	251v251	PASS	CRGBColour temporary by const ref; cross-jumped terminating exits
+00efb360	RELOCATION_MATCH	256v256	PASS	entity Main: scoped predicate, rotated nested wait loops
+00cfcca0	DIFFER	280v274	-	final wait loop: retail jmp-to-test, lane duplicates the IsDone test (tail-duplication gap)
+00dd9180	RELOCATION_MATCH	302v302	PASS	entity Main with rotated wait loops
+00d80ae0	SKIP	-	-	row holds GetJackSpeech (0x00D80AE0..0x00D80B7C), its jump table and the factory 0x00D80BA0
+00bde290	RELOCATION_MATCH	247v247	PASS	sibling LoadHeader model (forceinline stream Read, zeroed sphere header local)
+004b4490	RELOCATION_MATCH	254v254	PASS	inline STLport list clear; retail offsets (header is PDB-offset)
+004b0d30	RELOCATION_MATCH	282v282	PASS	nested ifs + single false exit; conditional temp destruction flag
+004b1340	RELOCATION_MATCH	270v270	PASS	nested ifs (no temp flag) + nested inline IsEqual in operator== (3 grades)
+004b1a80	DIFFER	277v277	-	this/head register swap + zero-vector store scheduling (4 forms)
+004b2b70	DIFFER	290v290	-	frame packing (dead argument slot reuse) only
+0086b6d0	RELOCATION_MATCH	308v308	PASS	fixed 3-part loops + size() loops; fastcall map dump helper
+0044a2a0	RELOCATION_MATCH	256v256	PASS	uninitialised TC local; wide-string temporaries in dead argument slots
+00449e60	RELOCATION_MATCH	297v297	PASS	inline GetPlayer body (count cached) at the two main-player sites (2 grades)
+006366b0	RELOCATION_MATCH	255v255	PASS	engine/CPlayer.h; T* p = 0; if (HasTC) p = GetTC preload (2 grades)
+00636e90	RELOCATION_MATCH	299v299	PASS	by-value counted pointer in arg area; pointee Release long form; forceinline mode ctor
+004887c0	DIFFER	246v251	-	loop register allocation / zero-register tail duplication / vector zero-store placement
+0048a070	RELOCATION_MATCH	297v297	PASS	named number local (ebx sunk push); engine/CPlayer.h carrier (2 grades)
+00a6a540	RELOCATION_MATCH	290v290	PASS	forceinline ctors in new-expressions; intrusive operator= via pointee Release (2 grades)
+00439ab0	RELOCATION_MATCH	244v244	PASS	goto to the shared final return makes alpha spill/reload (4 grades)
+00439e00	DIFFER	276v278	-	single register copy (mov eax,edi) before the fabs operands
+00878be0	DIFFER	222v244	-	x87 vector sum order / unfolded Lerp constants / split position copy (1 probe)
+00bdda80	DIFFER	277v269	-	x87 fst vs fstp/fld spill of the distance + child-loop alignment padding
