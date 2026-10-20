@@ -309,10 +309,11 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand226` | Hand chunk 226 (CParticleEmitterManager .. CPlane): 18 of 40 byte-exact | - | 13 | 9 | landed; parked rows open |
 | `2026-10-20_linux_hand227` | Hand chunk 227 (CPlayer .. CRandomAppearanceMorph): 31 of 40 byte-exact | - | 8 | 1 | landed; parked rows open |
 | `2026-10-20_linux_hand228` | Hand chunk 228 (CRandomAppearanceMorph .. CSplinePosParamData): 24 of 40 byte-exact | - | 15 | 1 | landed; parked rows open |
+| `2026-10-20_linux_hand230` | Hand chunk 230 (CTCCameraPointBuilding .. CTCExpression): 25 of 40 byte-exact | - | 13 | 2 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **1092 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **1105 parked rows** for the Fable retry pass.
 
-### Skipped rows (35 open of 61 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
+### Skipped rows (37 open of 63 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
 | address | kind | status | pieces (addr:len) | from | note |
 |---|---|---|---|---|---|
@@ -323,6 +324,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `004a1c8e` | single | open | 004a1c8e:27 | `2026-10-15_linux_hand104` | catch-continuation fragment of an EH function, not an entry |
 | `004ab710` | multi | open | 004ab710:27 004ab72b:20 004ab73f:28 004ab75b:26 004ab775:37 004ab79a:52 004ab7ce:23 004ab7f0:32 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
 | `004cc3f0` | multi | open | 004cc3f0:27 004cc40b:22 004cc421:24 004cc439:26 004cc453:37 004cc478:54 004cc4ae:23 004cc4d0:66 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
+| `00567d60` | multi | open | 00567d60:280 00567e80:13 | `2026-10-20_linux_hand230` | two functions: append copy (0x567D60) + 13-byte thunk after int3 padding |
 | `005c150b` | ltcg | open |  | `2026-10-14_linux_hand51` | CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /G |
 | `00619890` | multi | open | 00619890:27 006198ab:17 006198bc:20 006198d0:20 006198e4:37 00619909:37 0061992e:23 00619950:67 006199a0:46 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
 | `006420f0` | multi | open | 006420f0:27 0064210b:20 0064211f:21 00642134:29 00642151:37 00642176:52 006421aa:68 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
@@ -330,6 +332,7 @@ Rows an agent could not author as one function. Work them with `skipped_ledger.p
 | `006d4c00` | multi | open | 006d4c00:27 006d4c1b:24 006d4c33:20 006d4c47:20 006d4c5b:37 006d4c80:37 006d4ca8:21 006d4cc0:9 006d4cd0:14 006d4ce0:21 006d4d00:5 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
 | `007ad6d0` | multi | open | 007ad6d0:35 007ad6f3:20 007ad707:23 007ad71e:26 007ad738:37 007ad75d:52 007ad794:20 007ad7b0:32 007ad7d0:30 | `2026-10-20_linux_hand226` | row holds the Transfer jump-table body plus following function(s) after int3 padding |
 | `007b45a0` | multi | open | 007b45a0:27 007b45bb:20 007b45cf:23 007b45e6:26 007b4600:37 007b4625:52 007b465c:23 | `2026-10-19_linux_hand200` | two functions in the row (3-byte ret 4 stub after the jump table); Transfer body itself graded identical (208 bytes) |
+| `007c977c` | single | open | 007c977c:288 | `2026-10-20_linux_hand230` | row starts mid-function: the body begins at 0x007C9770 (mov al,[esp+8]; sub esp,10h; push ebx; xor ebx,ebx; cmp al,bl) |
 | `007da360` | multi | open | 007da360:50 007da3a0:92 | `2026-10-15_linux_hand170` | two functions in the row (FrameUpdate tail jumps, second body at +0x40) |
 | `007eeb20` | multi | open | 007eeb20:86 007eeb80:6 007eeb90:10 007eeba0:4 | `2026-10-15_linux_hand169` | row holds Smash plus three more functions after int3 padding (0x007EEB80, 0x007EEB90, 0x007EEBA0) |
 | `007eec50` | multi | open | 007eec50:53 007eec90:93 | `2026-10-15_linux_hand170` | two functions in the row (OnDie ret at +0x34, second body at +0x40) |
@@ -2242,5 +2245,21 @@ Groups: register-assignment/scheduling only (0056ef6f, 005d9070, 0061a9d0, 0061a
 - 0086be40 CRandomAppearanceMorph::GetRandomBodyParts DIFFER(292v294): the empty test forms the element address with `add eax,ebx` first (retail folds [eax+ebx]/[eax+ebx+4] loads before the add) | tried: !empty(), begin() != end(), `part != 3` (fixed jl to jne) | next: a `const CArray<CBodyPartMesh>*` row pointer stepped by ++
 - 00f3a5d0 CRangeCompressor::TestRangeBias DIFFER(318v318): the prologue spill of maxU lands one slot early, and the epilogue pops are hoisted between the Flags test and the RangeBias store | tried: unsigned-first declarations (322v318), comparison orientation, ternary min/max, signed-first copies (318v318) | next: lane gap: scheduling (or store the RangeBias after the flag update)
 - 0056eb48 CSliderAnimator::Update DIFFER(305v305): the fabs(step) spill `fstp [ebp-4]` comes before `push ecx; mov ecx,esp; push -1` (retail after) | tried: a named step local (spilled before the test), fabs before the test, the test on the unnamed expression (305v305), `if (!Play)` first | next: lane gap: scheduling
+
+
+#### `2026-10-20_linux_hand230` (13 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand230/differ/`)
+- 00567400 std::basic_string<char>::append(first,last,forward_iterator_tag) DIFFER(281v280): only the int3 VC emits after the final noreturn _M_throw_length_error call | tried: exact STLport body (otherwise byte-identical) | next: lane gap: grader trims retail padding but not ours (same as 00a5b260); land by hand with Leaf `append`
+- 0076c8a0 CTCEnemy::CTCEnemy DIFFER(254v254): ebp<->edi swap between the thing-def and enemy-def locals | tried: holder/holder, raw/holder-in-block, raw/raw direct if | next: lane gap: register allocation
+- 0077d230 CTCCreatureHive::Open DIFFER(243v243): inlined GetInterface key homed in [esp+0Ch] (dead out word) v retail [esp+14h] (dead name word) | tried: stand-in GetSubDef, named filter | next: named filter WITHOUT the stand-in (out escaping)
+- 00750110 CTCChest::DisplayLockedMessage DIFFER(299v298): ParentThing / g_pMainGameComponent loaded into ecx v retail eax | tried: plain, named thing-def local (fixes prologue, scrambles arms) | next: lane gap: register allocation
+- 0075d9a0 CTCCameraPointBuilding::vfunc_17 DIFFER(255v256): esi push sunk below the HasTC branch v retail at entry | tried: plain HasTC, if/else, else-if chain, out-param GetInterface (best) | next: lane gap: callee-saved push placement
+- 00734210 CTCCombat::SetBlockPercentageChance DIFFER(256v261): retail reloads header/root ([ecx+70h],[esi+4]) for the second tree walk, ours CSEs them and pushes ebp/edi at entry | tried: plain/alloc-proxy header, user iterator copy ctor | next: separate inline helper per walk with its own map reference
+- 00739360 CTCCombat::ResetBlockPercentageChance<CCombatAbilityBlockHeavyWeaponAttackDef> DIFFER(259v262): equal_range key temp stored early + edx compare v retail immediate compare + late store | tried: stand-in GetSubDef, separate upper/lower statements, static _M_increment | next: by-value key parameter to an out-of-line lower_bound model
+- 0071ab20 CTCEmoteIcon::DrawEmoteTypeText DIFFER(244v244): eax/ecx/edx rotation at focal-point call, text-primitive pushes and renderer vcall | tried: inline font arg (reorders colour stores), named locals | next: lane gap: register allocation (vptr-in-eax family)
+- 006a2540 CTCCarrying::OnCreate DIFFER(308v312): ebp/edi swap between the sub-def and the CIntelligentPointer vtable constant | tried: holder and raw-pointer defs, stand-in GetSubDef (required), __fastcall sort 0x006A3F20 | next: lane gap: register allocation
+- 007ceb00 CTCElectrocutedEffect::CTCElectrocutedEffect DIFFER(299v299): discarded __copy hidden-return temp homed in [esp+10h] v retail [esp+24h] | tried: __fastcall __copy model (0x007CE1F0), tag user ctor, alloc-proxy TintList | next: scope the __copy call in a block after the index local dies
+- 00c14f90 CDiceGameHost_00c14f90::~CDiceGameHost_00c14f90 DIFFER(248v248): `lea ebx,[esi+40h]` scheduled before the first handle vtable store v retail between the 2nd and 3rd | tried: inline COwnedPointer::Delete pin (fixed zero stores) | next: lane gap: scheduling; class identity unresolved (no RTTI)
+- 00730f90 CTCDoor::UpdateOpenStatusTriggerTypePerson DIFFER(293v292): C2DBox/filter build: one extra frame word, fxch v `fld st0 ; fadd st3`, late 1.0 z-range store | tried: by-value C2DVector with user copy ctor (fixed x/y loads) | next: build the box from min/max locals in retail order
+- 0080c590 CTCDExplosion::UpdateExplosiveAdditionalImpulse DIFFER(342v305): functor layouts, transform result slot and ring-radius selects | tried: __fastcall models of the three LTCG callees (1 grade) | next: decode 0x0080EBE0/0x0080E530/0x0080E5D0 prologues to pin the functor shapes
 
 <!-- queue:end -->

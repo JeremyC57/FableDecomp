@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004e160c	RELOCATION_MATCH	278v278	PASS	size TU, implicit dtor (no vtable reset), null-safe GetRefCount ternary
+00666090	RELOCATION_MATCH	273v273	PASS	label: really CThingCreatureBase ctor (vtable 0x125AC0C); alloc-proxy vector anchors stores
+00567400	DIFFER	281v280	-	STLport basic_string<char>::append(const char*,const char*,fwd_tag); only the trailing int3 after noreturn throw differs (grader gap)
+00567d60	SKIP	-	-	two functions: append copy (0x567D60) + 13-byte thunk after int3 padding
+00784500	RELOCATION_MATCH	245v245	PASS	forceinline OffPodium predicate, inline IsHeroAlive bool helper, named manager local in loop
+0073afc0	RELOCATION_MATCH	271v271	PASS	same-TU GetSubDef stand-in lets the key share the out slot; CDefCopy AddRef holder
+0076c8a0	DIFFER	254v254	-	register swap ebp<->edi between the two def locals only
+007dd430	RELOCATION_MATCH	261v261	PASS	named RHSet local + named physics TC local; member-from-fields ctor
+00730ae0	RELOCATION_MATCH	286v286	PASS	nested HasTC/GetTC; owner fetched again into a named local
+007308f0	RELOCATION_MATCH	263v263	PASS	zero-preload HasTC/GetTC; float frame-time words avoid zero register
+007c977c	SKIP	-	-	row starts mid-function: the body begins at 0x007C9770 (mov al,[esp+8]; sub esp,10h; push ebx; xor ebx,ebx; cmp al,bl)
+0077d230	DIFFER	243v243	-	GetTC key frame slot only (out word vs name word)
+00750110	DIFFER	299v298	-	register choice eax vs ecx in prologue and single-key arm
+00732850	RELOCATION_MATCH	247v247	PASS	AnimationComplex::OnCreate block + Cupboard GetTCIfPresent, first try
+0075d9a0	DIFFER	255v256	-	esi push sunk below the first branch (retail at entry); layout matches with GetInterface form
+00734210	DIFFER	256v261	-	second tree walk reloads header/root in retail; ours CSEs them (callee-saved pushes at entry)
+0079e990	RELOCATION_MATCH	268v268	PASS	label: really ~CTCPhysicalShieldSpell; forceinline FadeOrKillEffect helper
+006e13e0	RELOCATION_MATCH	251v251	PASS	named thing local before the named identity RHSet
+006e14e0	RELOCATION_MATCH	309v309	PASS	named thing/params locals; emitter inline bit setters; inline counted clear
+008ecac0	RELOCATION_MATCH	287v287	PASS	IsFullyDegraded inline at first use only; positive Degradable test
+0078f6e0	RELOCATION_MATCH	319v319	PASS	named times + world locals; bl=1 reused as dead mask; out-param GetInterface for emitter
+007e0bf0	RELOCATION_MATCH	267v267	PASS	local-then-member decrement; carrying local before the vector; cached loop bounds
+0071ab20	DIFFER	244v244	-	eax/ecx/edx rotation only (vptr-in-eax family)
+007ef070	RELOCATION_MATCH	305v305	PASS	AtmosPlayer OnSerialise pattern; inline CDefString::GetString; named def local
+008128f0	RELOCATION_MATCH	275v275	PASS	inline static _M_increment(node); best initialised to 0
+00812a10	RELOCATION_MATCH	287v287	PASS	twin of 008128f0 with the IsActive test
+00739360	DIFFER	259v262	-	equal_range key temp: early store + edx compare vs retail immediate + late store
+006705f0	RELOCATION_MATCH	282v282	PASS	AddAppearanceParticle attach block; IntelligentPointer temp assign; first try
+00728ff0	RELOCATION_MATCH	280v280	PASS	short-lived named bool sinks the ebx push; inline seed step; first try
+006701a0	RELOCATION_MATCH	312v312	PASS	by-value inline position accessor + C3DVector user copy ctor (half-FPU temp)
+0066fb80	RELOCATION_MATCH	261v261	PASS	named spirit local for the subtraction
+0080d750	RELOCATION_MATCH	243v243	PASS	erase(remove_if(...,pred(temp)),end) one statement; fastcall remove_if model; empty() via vector this
+0092e630	RELOCATION_MATCH	285v285	PASS	landed 0x0093A3C0 body + Bind2 functor; named target local
+006610c7	RELOCATION_MATCH	304v304	PASS	size TU y-off+s; forceinline GetInterface; counted outer loop strength-reduced
+007ed170	RELOCATION_MATCH	252v252	PASS	UseDrop pattern; named item local; map-before-key GetTC
+006a2540	DIFFER	308v312	-	ebp/edi swap between the def and the vtable constant only
+007ceb00	DIFFER	299v299	-	one frame slot (discarded __copy return temp) only
+00c14f90	DIFFER	248v248	-	scheduling only (lea of the next member being destroyed); no-RTTI class, names descriptive
+00730f90	DIFFER	293v292	-	C2DBox/filter FPU order and one frame word; search + tail match (2 tries)
+0080c590	DIFFER	342v305	-	approximation: LTCG-style callee functor shapes unresolved (1 try)

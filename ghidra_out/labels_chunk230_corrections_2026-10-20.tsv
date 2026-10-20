@@ -1,0 +1,9 @@
+address	name	evidence
+00666090	CThingCreatureBase::CThingCreatureBase	vtable 0x0125AC0C, not CTCDParticleEmitter (chunk 230)
+0079e990	CTCPhysicalShieldSpell::~CTCPhysicalShieldSpell	vtable 0x0126C53C, not CTCElectrocutedEffect (chunk 230)
+00567400	std::basic_string<char>::append	STLport, not CTCElectrocutedEffect (chunk 230)
+00567d60	std::basic_string<char>::append	STLport copy + 13-byte thunk in the row (chunk 230)
+00c14f90	Unidentified_00c14f90::~Unidentified	no RTTI; not CTCDiceGame (chunk 230)
+004e15f0	CTCDPhysicalObstruction::`scalar_deleting_destructor'	calls the CTCDPhysicalObstruction dtor; labelled CLandscapeBackgroundPatch (chunk 230)
+0070d920	CTCAnimation::SetMainAnim	1 argument; not operator_delete (chunk 230)
+0070d8e0	CTCAnimation::RemoveCombinationAnim	not CSpellContainerList::AddChild (chunk 230)
