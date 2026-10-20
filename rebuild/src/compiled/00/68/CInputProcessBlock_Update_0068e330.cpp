@@ -1,10 +1,11 @@
-// CInputProcessBlock::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press that is game action 0x56 (block), queue a "block" game event (type 0x3d)
-// Grade: DIFFER(107v103) -- /GS lane gap: the lane caches `processed` in ebx at entry, retail re-reads `[esp+3Ch]`; without /GS (or with an unnamed temporary, which loses the cookie) the caching disappears
-// Leaf: ProcessInput
+// CInputProcessBlock::Update(CProcessedInput& processed) -- every frame queue a block game event: "keep blocking" (type 0xd) while game action 7 still has a held-button event (kind 2) in the queue, else "stop blocking" (type 0x3d)
+// Grade: DIFFER(111v103) -- /GS lane gap: the lane caches `processed` in esi at entry (`push esi ; mov esi,[esp+34h]`); without /GS the body is the retail one minus the cookie
+// Leaf: Update
 // Flags: /GS
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E2C0, length 103 bytes.
-// Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
-// CProcessedInput::AddGameEvent @ 0x00A0D340.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E330, length 103 bytes.
+// Callees: CInputProcessGameBase::IsGameActionEventInQueue(long, long) @ 0x00687D50, CProcessedInput::AddGameEvent @ 0x00A0D340.
+// Shape: one event per arm sharing the frame slot (VC hoists the common Player/Valid stores above the branch and
+// tail-merges the AddGameEvent call); the ternary-argument form becomes `neg/sbb/and/add` arithmetic instead.
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes:
 // Type +0, Player +4, Data[32] +5, EndPos +0x25, Valid +0x26, Replacement +0x27, over an empty CMemoryBuffer
 // whose Copy(length, data) @ 0x009F1760 appends to Data); the input-process base as engine/CInputProcessGameBase.h
@@ -55,9 +56,12 @@ public:
     virtual void Update(CProcessedInput& processed);
 };
 
-void CInputProcessBlock::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
+void CInputProcessBlock::Update(CProcessedInput& processed)
 {
-    if (IsEventButtonPressed(event) && IsEventGameAction(0x56, event)) {
+    if (IsGameActionEventInQueue(7, 2)) {
+        CGameEvent gameEvent(0xd);
+        processed.AddGameEvent(gameEvent);
+    } else {
         CGameEvent gameEvent(0x3d);
         processed.AddGameEvent(gameEvent);
     }

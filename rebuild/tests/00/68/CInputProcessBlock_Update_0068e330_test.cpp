@@ -1,16 +1,12 @@
-// CInputProcessBlock::Update(CProcessedInput& processed) -- every frame queue a block game event: "keep blocking" (type 0xd) while game action 7 still has a held-button event (kind 2) in the queue, else "stop blocking" (type 0x3d)
-// Grade: DIFFER(111v103) -- /GS lane gap: the lane caches `processed` in esi at entry (`push esi ; mov esi,[esp+34h]`); without /GS the body is the retail one minus the cookie
-// Leaf: Update
-// Flags: /GS
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E330, length 103 bytes.
-// Callees: CInputProcessGameBase::IsGameActionEventInQueue(long, long) @ 0x00687D50, CProcessedInput::AddGameEvent @ 0x00A0D340.
-// Shape: one event per arm sharing the frame slot (VC hoists the common Player/Valid stores above the branch and
-// tail-merges the AddGameEvent call); the ternary-argument form becomes `neg/sbb/and/add` arithmetic instead.
-// Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes:
-// Type +0, Player +4, Data[32] +5, EndPos +0x25, Valid +0x26, Replacement +0x27, over an empty CMemoryBuffer
-// whose Copy(length, data) @ 0x009F1760 appends to Data); the input-process base as engine/CInputProcessGameBase.h
-// (MyPlayer +0x18) with the helpers of the landed CInputProcessFirstPersonTargeting 0x00690390.
-// /GS: the event's char array gets the cookie frame (cookie @ 0x0139C8A8, __security_check_cookie @ 0x00BFE9F9).
+// Behaviour test for CInputProcessBlock::Update @ 0x0068E330: every call queues exactly one block game event on the
+// processed input -- type 0xd ("keep blocking") when game action 7 still has a held-button event (kind 2) in the
+// queue, else type 0x3d ("stop blocking"). Checks both arms, the (7, 2) query arguments, and the event's default
+// fields (player -1, empty data, valid, not a replacement).
+#include <cstdio>
+#include <cstring>
+static int g_fail = 0;
+#define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
+
 class CInputEvent;
 class CProcessedInput;
 struct CMemoryBuffer {
@@ -65,4 +61,44 @@ void CInputProcessBlock::Update(CProcessedInput& processed)
         CGameEvent gameEvent(0x3d);
         processed.AddGameEvent(gameEvent);
     }
+}
+
+// ---- instrumented stubs ----
+class CInputEvent { public: int unused; };
+void CInputProcessGameBase::v00() { }
+void CInputProcessBlock::ProcessInput(const CInputEvent&, CProcessedInput&) { g_fail = 1; }
+static int g_events = 0, g_queueCalls = 0;
+static long g_qAction = 0, g_qKind = 0;
+static bool g_inQueue = false;
+static CGameEvent g_last(0);
+static CProcessedInput* g_expectProcessed = 0;
+static CInputProcessGameBase* g_expectThis = 0;
+void CProcessedInput::AddGameEvent(const CGameEvent& e) { if (this != g_expectProcessed) g_fail = 1; ++g_events; g_last = e; }
+void CProcessedInput::SetHandled() { g_fail = 1; }
+bool CInputProcessGameBase::IsGameActionEventInQueue(long action, long kind)
+{ ++g_queueCalls; g_qAction = action; g_qKind = kind; if (this != g_expectThis) g_fail = 1; return g_inQueue; }
+
+static void reset() { g_events = g_queueCalls = 0; g_qAction = g_qKind = 0; g_last = CGameEvent(0); }
+static bool defaultsOk() { return g_last.Player == -1 && g_last.EndPos == 0 && g_last.Valid && !g_last.Replacement; }
+
+int main()
+{
+    CInputProcessBlock proc; CProcessedInput processed;
+    g_expectThis = &proc; g_expectProcessed = &processed;
+
+    reset(); g_inQueue = true;
+    proc.Update(processed);
+    CHECK(g_queueCalls == 1 && g_qAction == 7 && g_qKind == 2 && g_events == 1 && g_last.Type == 0xd && defaultsOk());
+
+    reset(); g_inQueue = false;
+    proc.Update(processed);
+    CHECK(g_queueCalls == 1 && g_qAction == 7 && g_qKind == 2 && g_events == 1 && g_last.Type == 0x3d && defaultsOk());
+
+    reset(); g_inQueue = true;
+    proc.Update(processed);
+    CHECK(g_events == 1 && g_last.Type == 0xd && defaultsOk());
+
+    if (g_fail) { std::printf("0068e330_TEST FAIL\n"); return 1; }
+    std::printf("0068e330_TEST PASS\n");
+    return 0;
 }

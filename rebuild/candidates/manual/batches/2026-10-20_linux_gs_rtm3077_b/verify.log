@@ -1,0 +1,84 @@
+addr       parity           behav  name
+004165e8   WARN RELOC_NAME: ?GetNoPackets@CEventPackage@@QBEKXZ -> 009f16e0 labelled 'CWorld::DrawGetEnvironment'
+004165e8   WARN RELOC_NAME: ?GetPacket@CEventPackage@@QBEPBUCEventPacket@@K@Z -> 009f16d0 labelled 'CGraphicDataBank::GetBlankTexture'
+004165e8   RELOCATION_MATCH PASS   CMainGameComponent::CheckSync
+0048dd94   RELOCATION_MATCH PASS   CSubtitleRenderer::Pause
+006294a0   WARN SHARED_HEADER_AVAILABLE CWorld
+006294a0   WARN RELOC_NAME: ?ReadBytes@SPacketBuffer@@QAEXJPAX@Z -> 009f18f0 labelled 'CircularBuffer_Read'
+006294a0   RELOCATION_MATCH PASS   CRenderManager2D::AddLineToDrawBuffer
+00688ba0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00688ba0   DIFFER(149v160)  PASS   CInputProcessZTarget::DeactivateZTarget
+0068e2c0   DIFFER(103v112)  PASS   CInputProcessBlock::ProcessInput
+0068e330   RELOCATION_MATCH PASS   CInputProcessBlock::Update
+0068fee0   DIFFER(98v112)   PASS   CInputProcessLightning::Update
+006a4040   WARN RELOC_NAME: ?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z -> 00687cf0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+006a4040   RELOCATION_MATCH PASS   CInputProcessJumpingAndRolling::ProcessJumping
+007e7c00   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e7c00   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e7c00   DIFFER(143v144)  PASS   CTCFireheartMinigame::Answer
+0088e150   DIFFER(111v112)  PASS   CGameScriptInterface::RespawnHero
+00a4fd70   WARN SHARED_HEADER_AVAILABLE CChunkedFileSuperChunk
+00a4fd70   WARN RELOC_NAME: ?AddMatrix@C3DAnimFileSequenceChunk@@QAEXABUCMatrix3x4@@@Z -> 00aaf800 labelled 'CRecordOwner_00aaf800::AddRecord'
+00a4fd70   WARN RELOC_NAME: ?InitialiseFromChunk@C3DAnimationSequenceData@@QAEXABUC3DAnimFileSequenceChunk@@J@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fd70   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00a4fd70   RELOCATION_MATCH PASS   C3DAnimationSequenceData::InitialiseAsConstant
+00aaf5b0   DIFFER(149v160)  PASS   C3DAnimFileSequenceChunk::GetChunkInfo
+00abae50   RELOCATION_MATCH PASS   C3DMeshFileGroupChunk::GetChunkInfo
+00abbe90   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00abbe90   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00abbe90   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00abbe90   RELOCATION_MATCH PASS   C3DMeshFileTrianglesChunk::GetChunkInfo
+00ac4ec0   WARN SHARED_HEADER_AVAILABLE CMirroredTextureHighlightsChunk
+00ac4ec0   DIFFER(92v96)    PASS   CMirroredTextureHighlightsChunk::GetChunkInfo
+
+WINS: 8
+  004165e8 RELOCATION_MATCH CMainGameComponent::CheckSync
+  0048dd94 RELOCATION_MATCH CSubtitleRenderer::Pause
+  006294a0 RELOCATION_MATCH CRenderManager2D::HandleLeaveWorldPacket
+  0068e330 RELOCATION_MATCH CInputProcessBlock::Update
+  006a4040 RELOCATION_MATCH CInputProcessJumpingAndRolling::ProcessJumping
+  00a4fd70 RELOCATION_MATCH C3DAnimationSequenceData::InitialiseAsConstant
+  00abae50 RELOCATION_MATCH C3DMeshFileGroupChunk::GetChunkInfo
+  00abbe90 RELOCATION_MATCH C3DMeshFileTrianglesChunk::GetChunkInfo
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CMainGameComponent_CheckSync_004165e8
+  CSubtitleRenderer_Pause_0048dd94
+  CRenderManager2D_AddLineToDrawBuffer_006294a0
+  CInputProcessBlock_Update_0068e330
+  CInputProcessJumpingAndRolling_ProcessJumping_006a4040
+  C3DAnimationSequenceData_InitialiseAsConstant_00a4fd70
+  C3DMeshFileGroupChunk_GetChunkInfo_00abae50
+  C3DMeshFileTrianglesChunk_GetChunkInfo_00abbe90
+addr       parity           behav  name
+00688ba0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00688ba0   RELOCATION_MATCH PASS   CInputProcessZTarget::DeactivateZTarget
+0068e2c0   WARN RELOC_NAME: ?IsEventGameAction@CInputProcessGameBase@@QAE_NJABVCInputEvent@@@Z -> 00687cf0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0068e2c0   RELOCATION_MATCH PASS   CInputProcessBlock::ProcessInput
+0068fee0   RELOCATION_MATCH PASS   CInputProcessLightning::Update
+007e7c00   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e7c00   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e7c00   RELOCATION_MATCH PASS   CTCFireheartMinigame::Answer
+0088e150   WARN RELOC_NAME: ?GetMainPlayerNumber@CPlayerManager_Retail@@QAEJXZ -> 00449700 labelled 'CWorld::DrawGetEnvironment'
+0088e150   RELOCATION_MATCH PASS   CGameScriptInterface::RespawnHero
+00aaf5b0   RELOCATION_MATCH PASS   C3DAnimFileSequenceChunk::GetChunkInfo
+00ac4ec0   WARN SHARED_HEADER_AVAILABLE CMirroredTextureHighlightsChunk
+00ac4ec0   RELOCATION_MATCH PASS   CMirroredTextureHighlightsChunk::GetChunkInfo
+
+WINS: 7
+  00688ba0 RELOCATION_MATCH CInputProcessZTarget::DeactivateZTarget
+  0068e2c0 RELOCATION_MATCH CInputProcessBlock::ProcessInput
+  0068fee0 RELOCATION_MATCH CInputProcessLightning::Update
+  007e7c00 RELOCATION_MATCH CTCFireheartMinigame::Answer
+  0088e150 RELOCATION_MATCH CGameScriptInterface::RespawnHero
+  00aaf5b0 RELOCATION_MATCH C3DAnimFileSequenceChunk::GetChunkInfo
+  00ac4ec0 RELOCATION_MATCH CMirroredTextureHighlightsChunk::GetChunkInfo
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CInputProcessZTarget_DeactivateZTarget_00688ba0
+  CInputProcessBlock_ProcessInput_0068e2c0
+  CInputProcessLightning_Update_0068fee0
+  CTCFireheartMinigame_Answer_007e7c00
+  CGameScriptInterface_RespawnHero_0088e150
+  C3DAnimFileSequenceChunk_GetChunkInfo_00aaf5b0
+  CMirroredTextureHighlightsChunk_GetChunkInfo_00ac4ec0

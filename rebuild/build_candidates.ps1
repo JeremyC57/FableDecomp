@@ -247961,6 +247961,126 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '0099d000_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004165e8'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_CheckSync_004165e8.cpp'
+        TestSource = '00/41/CMainGameComponent_CheckSync_004165e8_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '004165e8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048dd94'
+        Module = 'CSubtitleRenderer'
+        Source = '00/48/CSubtitleRenderer_Pause_0048dd94.cpp'
+        TestSource = '00/48/CSubtitleRenderer_Pause_0048dd94_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0048dd94_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006294a0'
+        Module = 'CRenderManager2D'
+        Source = '00/62/CRenderManager2D_AddLineToDrawBuffer_006294a0.cpp'
+        TestSource = '00/62/CRenderManager2D_AddLineToDrawBuffer_006294a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '006294a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068e330'
+        Module = 'CInputProcessBlock'
+        Source = '00/68/CInputProcessBlock_Update_0068e330.cpp'
+        TestSource = '00/68/CInputProcessBlock_Update_0068e330_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068e330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a4040'
+        Module = 'CInputProcessJumpingAndRolling'
+        Source = '00/6a/CInputProcessJumpingAndRolling_ProcessJumping_006a4040.cpp'
+        TestSource = '00/6a/CInputProcessJumpingAndRolling_ProcessJumping_006a4040_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '006a4040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4fd70'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/a4/C3DAnimationSequenceData_InitialiseAsConstant_00a4fd70.cpp'
+        TestSource = '00/a4/C3DAnimationSequenceData_InitialiseAsConstant_00a4fd70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00a4fd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abae50'
+        Module = 'C3DMeshFileGroupChunk'
+        Source = '00/ab/C3DMeshFileGroupChunk_GetChunkInfo_00abae50.cpp'
+        TestSource = '00/ab/C3DMeshFileGroupChunk_GetChunkInfo_00abae50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00abae50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abbe90'
+        Module = 'C3DMeshFileTrianglesChunk'
+        Source = '00/ab/C3DMeshFileTrianglesChunk_GetChunkInfo_00abbe90.cpp'
+        TestSource = '00/ab/C3DMeshFileTrianglesChunk_GetChunkInfo_00abbe90_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00abbe90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00688ba0'
+        Module = 'CInputProcessZTarget'
+        Source = '00/68/CInputProcessZTarget_DeactivateZTarget_00688ba0.cpp'
+        TestSource = '00/68/CInputProcessZTarget_DeactivateZTarget_00688ba0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00688ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068e2c0'
+        Module = 'CInputProcessBlock'
+        Source = '00/68/CInputProcessBlock_ProcessInput_0068e2c0.cpp'
+        TestSource = '00/68/CInputProcessBlock_ProcessInput_0068e2c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068e2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068fee0'
+        Module = 'CInputProcessLightning'
+        Source = '00/68/CInputProcessLightning_Update_0068fee0.cpp'
+        TestSource = '00/68/CInputProcessLightning_Update_0068fee0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068fee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7c00'
+        Module = 'CTCFireheartMinigame'
+        Source = '00/7e/CTCFireheartMinigame_Answer_007e7c00.cpp'
+        TestSource = '00/7e/CTCFireheartMinigame_Answer_007e7c00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '007e7c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e150'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_RespawnHero_0088e150.cpp'
+        TestSource = '00/88/CGameScriptInterface_RespawnHero_0088e150_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0088e150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaf5b0'
+        Module = 'C3DAnimFileSequenceChunk'
+        Source = '00/aa/C3DAnimFileSequenceChunk_GetChunkInfo_00aaf5b0.cpp'
+        TestSource = '00/aa/C3DAnimFileSequenceChunk_GetChunkInfo_00aaf5b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00aaf5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac4ec0'
+        Module = 'CMirroredTextureHighlightsChunk'
+        Source = '00/ac/CMirroredTextureHighlightsChunk_GetChunkInfo_00ac4ec0.cpp'
+        TestSource = '00/ac/CMirroredTextureHighlightsChunk_GetChunkInfo_00ac4ec0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00ac4ec0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

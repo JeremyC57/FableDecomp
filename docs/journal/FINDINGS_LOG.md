@@ -371,3 +371,7 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
   so retry 9's "QFE inliner cost band" explanation is refuted: retail used 3077 and 3077 reproduces our shape, so the
   difference is in the source (callee bodies retail saw in the TU), not the compiler build. The 3052 toolkit lane was
   removed as redundant.
+- Addendum 3 (2026-10-20, full parked sweep under 3077, first 365 of 1,079 rows): 16 rows RELOCATION_MATCH, all
+  `/GS` cookie-prologue rows except 009b98b0 (already landed; stale parked copy). 15 landed with agent-written tests
+  (`batches/2026-10-20_linux_gs_rtm3077_b`). Every other row DIFFERs with the same byte counts as under 4035. The rest of
+  the sweep and the landed-catalog spot check are recorded here when they finish.
