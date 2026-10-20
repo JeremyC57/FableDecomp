@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0056e75f	RELOCATION_MATCH	263v263	PASS	if-chain of returns into hidden CWideString, tail-merged ctor
+005edd04	RELOCATION_MATCH	307v307	PASS	dense switch 1..19 in source order, jump table in row
+0056edd2	RELOCATION_MATCH	248v248	PASS	three local id tables, != loop bounds (strength scan stops at 5)
+0056f177	RELOCATION_MATCH	248v248	PASS	if-chain picName, implicit CCharString temp in dead arg slot, bank counted-pointer copy
+00499fb0	RELOCATION_MATCH	256v256	PASS	is ~CProgressDisplay (label wrong); inline STLport vector dtors + user inline base dtor
+0047e07f	RELOCATION_MATCH	263v263	PASS	local 12-byte-vector model; inline clear() keeps end() through edi
+005d9380	SKIP	-v304	-	three functions in one row (0x005D9380 + bodies at 0x005D93B0 and 0x005D9430 after int3 padding)
+005fbea0	DIFFER	242v248	-	8-byte filter temporaries inside a loop force an and-esp-8 aligned frame under 3077; function-scope filters fix the frame but not slot sharing
+005fbd90	DIFFER	258v258	-	list via local head + same-TU stand-in search; search-tools pointer register only
+005fbfa0	DIFFER	274v277	-	same filter-loop family as 005fbea0 (retail slot packing of found/key/TC; 8-byte loop temporaries align the frame)
+00602e30	RELOCATION_MATCH	256v256	PASS	vfunc_4 is OnCreate; CTCInventoryWeapons::OnCreate def dance + inline clear()
+005fb7e0	DIFFER	276v270	-	all but the trailing def release (eax long form vs retail ecx short dec [ecx+4])
+0056fad7	RELOCATION_MATCH	278v278	PASS	SaveExperienceValuesForCountDown GetInterface model; uninit out local
+0057229b	RELOCATION_MATCH	244v244	PASS	def copy local + nested if/else clamp chain
+0057238f	RELOCATION_MATCH	318v318	PASS	ability twin of 0057229b; size TU without frame pointer (optimize s only)
+005785b3	DIFFER	262v258	-	biased ebp frame (lea ebp,[esp-70h]) lane gap; register rotation
+005ee77c	DIFFER	258v267	-	inline-asm fistp rounding (asm_bake family)
+005ee887	RELOCATION_MATCH	278v278	PASS	GetInterface entry pick as one ternary
+005ee99d	DIFFER	269v254	-	this kept in edx across an LTCG callee (lane gap) + register allocation of item/def
+005eede2	DIFFER	279v260	-	literal address CSE into a register + sunk callee-saved push / register map
+005f3bcf	DIFFER	303v303	-	fill-value temporary slot (frame vs dead arg slot) + one lea scheduled earlier
+005f4b30	DIFFER	300v277	-	null CDefPointer padding temp: retail folds its dtor and hoists the zero store
+005f694d	DIFFER	292v290	-	final def release loads eax not ecx (known gap); rest matches
+005bcd2d	DIFFER	268v258	-	size TU builds an ebp frame where retail omits it (address-taken 24-byte result); register map follows
+005be028	DIFFER	236v241	-	register allocation (this spilled to frame in retail)
+005b6767	DIFFER	282v282	-	scheduling only (global load vs difference load order)
+005b690b	DIFFER	290v290	-	edi/ebx register swap in the second loop only
+005bfb96	RELOCATION_MATCH	250v250	PASS	forceinline CDefPointer operator=; size() then named item pointer walk
+005c0121	DIFFER	296v297	-	register map (literal CSE register ebx vs edi; def load through eax)
+005be284	DIFFER	298v301	-	esi/edi register swap for this vs hero
+005bf654	DIFFER	301v297	-	only the def-release load register (eax vs ecx) at both exits
+005b36e9	DIFFER	280v270	-	loop element/position evaluation order + def-release form
+00583bd5	RELOCATION_MATCH	255v255	PASS	const GetInterface via inline const-parent getter for the first two lookups
+00591a66	DIFFER	281v281	-	one instruction: cmp al,bl vs test al,al on the saved IsSaving bool
+005b4795	DIFFER	272v269	-	frame packing of the modifier out slot + esi/edi swap
+0061ac60	RELOCATION_MATCH	252v252	PASS	same-TU stand-in GetTestQuestsToDisplay (reads+writes via out ptr) keeps vector start in edi
+0061ab30	RELOCATION_MATCH	304v304	PASS	twin of 0061ac60 with the same stand-in
+0061a8a0	DIFFER	283v290	-	loop register allocation (finish vs element offset in ebx)
+005b5be6	DIFFER	285v274	-	register allocation (param vs fetched def in edi)
+005b413d	DIFFER	311v286	-	frame packing of four def pointers (dead arg slot reuse)

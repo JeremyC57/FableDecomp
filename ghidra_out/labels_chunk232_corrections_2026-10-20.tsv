@@ -1,0 +1,16 @@
+address	name	evidence
+00499fb0	CProgressDisplay::~CProgressDisplay	only caller is scalar-deleting dtor 0x0049B7D0 = slot 0 of CProgressDisplay vtable 0x012388B4, not CTCInventoryMap::ResetPrimitiveHandles (chunk 232)
+00602e30	CTCInventoryMap::OnCreate	vtable 0x01257A9C slot 4, calls CTCInventoryBase::OnCreate (chunk 232)
+00485aa7	std::vector<NUISystem::CComponent*>::erase	range erase body, not CGuiControlListBox::SelectEntryFromData (chunk 232)
+005bc6ed	CTCInventoryBase::ScreenHook_5bc6ed	called from CTCInventoryExperience::OpenInventory; not a _Dest_val<CRegisteredMusicEntry> (chunk 232)
+005795c3	std::map<...>::clear	clears CTCInventoryExperience::TutorialSoundHandles (+0x134), not CTCCarryable::OnKill (chunk 232)
+005ee3b3	CTCInventoryAbilities::GetUIMiscThingsDef	returns CDefPointer by value, not a CCreatureAction ctor (chunk 232)
+005f9df8	std::vector<EHeroAbility>::resize	not CArray<pair<long,long>>::push_back (chunk 232)
+005f8f89	std::vector<EHeroAbility>::erase	range erase, not CRGBColour copy-assign (chunk 232)
+005f9bcd	std::vector<EHeroAbility>::push_back	chunk 232
+005bd993	NInventory::CCategory::GetMaxItemsPerSlot	per-slot item maximum getter, not CRenderTarget::DetachTarget (chunk 232)
+006d6520	CTCHeroExperience::GetStatLevel_6d6520	called on the 0x68 component, not CTCInventoryAbilities::GetAbilityLevel (chunk 232)
+0071be80	CTCHeroMorph::SetWillMorphAmount_71be80	used as the will-morph amount setter, not SetAge; name unproven (chunk 232)
+004a0940	CWorld::LoadHSP_4a0940	called on CTCBase::GetWorld() with the test quest HSP name, not NQuestManager_ActivateQuestWithFilters (chunk 232)
+0057914c	std::map<EHeroAbility,SExpSpendUndo>::find	node-pointer result, not BinaryTree_FindLowerBound_Ability (chunk 232)
+00416359	CMainGameComponent::GetGamePlayerInterface	mov eax,[ecx+20h], not CWorld::DrawGetEnvironment (chunk 232)

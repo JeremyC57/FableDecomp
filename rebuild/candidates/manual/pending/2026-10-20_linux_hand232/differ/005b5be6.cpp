@@ -1,0 +1,102 @@
+// Grade: DIFFER(285v274) -- register allocation: ours keeps itemDefIndex in edi (and homes the def out slot in its dead argument slot), retail keeps the index in [ebp+8] and caches the fetched def in edi (re-read from its slot after the modifier path). Tried: named thingDef local (282v274, extra frame word).
+// CTCInventoryClothing::OnItemHighlighted(long itemDefIndex) -- while the inventory is open, previews the highlighted clothing on the mannequin: a whole suit directly, otherwise the selected clothes with the highlighted piece in its suit part
+// Retail 0x005B5BE6, 274 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on).
+// Callees: CTCInventoryBase::OnItemHighlighted(long) 0x005BC4C0 (manifest "$E2"), CTCBase::GetDefinitionManager
+// 0x006869D0, CDefinitionManager::GetDef<T>(long, CDefPointer*) 0x0042AF3C, CDefClassBase::GetSubDef<CHeroSuitDef>
+// 0x005935C4 and GetSubDef<CAppearanceModifierDef> 0x0057FF92, SetThingAsWearingClothingSuit(CThing*, long) 0x005B3D7A,
+// SetUpSelectedClothes() 0x005B4795, map<EClothingSuitPart, long>::operator[] 0x005BBBF3,
+// SetThingAsWearingSelectedClothes(CThing*) 0x005B406D, the defs' slot 1 on release.
+// Shape: the def and the appearance modifier are out slots released by hand (the modifier without a null test, the def
+// re-read from its slot with one), the suit sub-def a CDefPointer with an inline null-tested release; every compare
+// uses the shared zero register (ebx); a non-positive index only re-applies the selected clothes.
+// Layout (retail): InventoryOpen +0x58, CurrentClothingSelected +0x140, PMannequin +0x158, UseMannequin +0x15C (as the
+// landed ctor 0x005B7049); CAppearanceModifierDef suit part +0x4C.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+
+class CThing;
+struct CDefPointeeBase {
+    virtual void v00();
+    virtual void Destroy();                          // slot 1
+    long RefCount;                                   // +0x04
+    void Release() { if (--RefCount == 0) Destroy(); }
+};
+template <class T> struct CDefPointer {
+    T* Object;
+    CDefPointer() : Object(0) {}
+    CDefPointer(const CDefPointer& other);
+    ~CDefPointer() { if (Object) Object->Release(); }
+};
+template <class T> struct CDefPointerSlot {         // the out-parameter view of a CDefPointer (released by hand)
+    T* Object;
+};
+struct CHeroSuitDef : CDefPointeeBase {};
+struct CAppearanceModifierDef : CDefPointeeBase {
+    unsigned char _pad_0x08[0x4c - 0x08];
+    long SuitPart;                                   // +0x4c EClothingSuitPart
+};
+struct CThingDef : CDefPointeeBase {
+    bool GetSubDef(CDefPointer<CHeroSuitDef>* out);                 // 0x005935C4
+    bool GetSubDef(CDefPointerSlot<CAppearanceModifierDef>* out);   // 0x0057FF92
+};
+struct CDefinitionManager {
+    bool GetDef(long index, CDefPointerSlot<CThingDef>* out);       // 0x0042AF3C
+};
+struct CSuitPartMap {                                // map<EClothingSuitPart, long>
+    void* _M_header; unsigned long _M_node_count; long _M_key_compare;
+    long& operator[](const long& part);              // 0x005BBBF3
+};
+
+struct CTCInventoryClothing {
+    unsigned char _pad_0x000[0x58];
+    bool InventoryOpen;                              // +0x58
+    unsigned char _pad_0x059[0x140 - 0x59];
+    CSuitPartMap CurrentClothingSelected;            // +0x140
+    unsigned char _pad_0x14c[0x158 - 0x14c];
+    CThing* PMannequin;                              // +0x158
+    bool UseMannequin;                               // +0x15c
+    void BaseOnItemHighlighted(long itemDefIndex);   // 0x005BC4C0 (CTCInventoryBase::OnItemHighlighted)
+    CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)
+    void SetThingAsWearingClothingSuit(CThing* thing, long suitDefIndex);   // 0x005B3D7A
+    void SetUpSelectedClothes();                     // 0x005B4795
+    void SetThingAsWearingSelectedClothes(CThing* thing);   // 0x005B406D
+    void OnItemHighlighted(long itemDefIndex);
+};
+
+void CTCInventoryClothing::OnItemHighlighted(long itemDefIndex)
+{
+    if (!InventoryOpen)
+        return;
+    BaseOnItemHighlighted(itemDefIndex);
+    if (!PMannequin)
+        return;
+    if (itemDefIndex > 0) {
+        CDefPointerSlot<CThingDef> def;
+        def.Object = 0;
+        GetDefinitionManager()->GetDef(itemDefIndex, &def);
+        {
+            CDefPointer<CHeroSuitDef> suit;
+            if (def.Object->GetSubDef(&suit)) {
+                if (UseMannequin)
+                    SetThingAsWearingClothingSuit(PMannequin, itemDefIndex);
+            } else {
+                SetUpSelectedClothes();
+                CDefPointerSlot<CAppearanceModifierDef> modifierSlot;
+                modifierSlot.Object = 0;
+                def.Object->GetSubDef(&modifierSlot);
+                CAppearanceModifierDef* modifier = modifierSlot.Object;
+                if (modifier->SuitPart != 0)
+                    CurrentClothingSelected[modifier->SuitPart] = itemDefIndex;
+                if (UseMannequin)
+                    SetThingAsWearingSelectedClothes(PMannequin);
+                modifier->Release();
+            }
+        }
+        if (def.Object)
+            def.Object->Release();
+    } else {
+        SetUpSelectedClothes();
+        if (UseMannequin)
+            SetThingAsWearingSelectedClothes(PMannequin);
+    }
+}
