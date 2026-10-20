@@ -380,4 +380,6 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
   The lane default was switched to 3077 (`$S/wine/env.sh`, `env.sh.template`); running agents pick it up on their next
   call; the DDK 4035 stays as `--qfe`. Continued re-grade (16,026 rows): 74 DIFFER, every one DIFFER under 4035 as well
   (`$S/w22/rtm3077/landed_differ_4035.tsv`), so still no compiler-caused change; the chunks 209–217 parked rows (55) also
-  differ identically under 3077.
+  differ identically under 3077. At 33,457 rows: 154 DIFFER, of which exactly two match only under 4035, the known
+  QFE-object /GS rows 009cdf50 (CBankFile::WriteRecoveryFile) and 00c7b8f0 (CBitfield::RightShift); they now carry
+  `Compiler = 'qfe4035'` in the catalog (they were untagged). The other 152 are q.py artefacts (DIFFER under both).

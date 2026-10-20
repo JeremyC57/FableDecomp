@@ -196378,6 +196378,7 @@ $catalog = @(
         Source = '00/c7/CBitfield_RightShift_00c7b8f0.cpp'
         TestSource = '00/c7/CBitfield_RightShift_00c7b8f0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
+        Compiler = 'qfe4035'
         PassPattern = '00c7b8f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -242665,6 +242666,7 @@ $catalog = @(
         Source = '00/9c/CBankFile_WriteRecoveryFile_009cdf50.cpp'
         TestSource = '00/9c/CBankFile_WriteRecoveryFile_009cdf50_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
+        Compiler = 'qfe4035'
         PassPattern = '009cdf50_TEST PASS'
     }
     [pscustomobject]@{
