@@ -33067,6 +33067,7 @@ $catalog = @(
         Source = '00/66/CInputTypeMouseButtonEvent_GetControlDirection_0066f6b0.cpp'
         TestSource = '00/66/CInputTypeMouseButtonEvent_GetControlDirection_0066f6b0_test.cpp'
         PassPattern = 'PASS CInputTypeMouseButtonEvent::GetControlDirection 0x0066F6B0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f6d0'; Module = 'CInputTypeMouseButtonEvent'
@@ -33215,6 +33216,7 @@ $catalog = @(
         Source = '00/66/C2DVector_DivideByScalar_0066f990.cpp'
         TestSource = '00/66/C2DVector_DivideByScalar_0066f990_test.cpp'
         PassPattern = 'PASS C2DVector divide-by-scalar helper 0x0066F990'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f9b0'; Module = 'CTCPhysicsRigidBody'
@@ -33228,12 +33230,14 @@ $catalog = @(
         Source = '00/66/StoreFieldB4_0066f9e0.cpp'
         TestSource = '00/66/StoreFieldB4_0066f9e0_test.cpp'
         PassPattern = 'PASS field-0xB4 setter 0x0066F9E0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066f9f0'; Module = 'math'
         Source = '00/66/x87_Exp_0066f9f0.cpp'
         TestSource = '00/66/x87_Exp_0066f9f0_test.cpp'
         PassPattern = 'PASS x87 exponential helper 0x0066F9F0'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '004a0220'; Module = 'CWorld'
@@ -33309,12 +33313,14 @@ $catalog = @(
         Source = '00/66/CCharString_ConstructCCoopSpiritDef_0066fa10.cpp'
         TestSource = '00/66/CCharString_ConstructCCoopSpiritDef_0066fa10_test.cpp'
         PassPattern = 'PASS CCoopSpiritDef CCharString wrapper 0x0066FA10'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fa30'; Module = 'runtime'
         Source = '00/66/ZeroFields_0C_10_14_18_1C_20_24_0066fa30.cpp'
         TestSource = '00/66/ZeroFields_0C_10_14_18_1C_20_24_0066fa30_test.cpp'
         PassPattern = 'PASS seven-field zero initializer 0x0066FA30'
+        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0066fa50'; Module = 'CObservable'
