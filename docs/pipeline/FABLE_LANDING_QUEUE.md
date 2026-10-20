@@ -292,8 +292,9 @@ Chunks 92-108 are cut and prepared (`$S/w22/agentNN/PROMPT.md`) but were never l
 | `2026-10-20_linux_hand209` | Hand chunk 209 (CTCInventoryBase .. CTCMeleeTrap): 19 of 40 byte-exact | - | 21 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand210` | Hand chunk 210 (CTCMeleeTrap .. CTCResurrectionItem): 26 of 40 byte-exact | - | 14 | 0 | landed; parked rows open |
 | `2026-10-20_linux_hand211` | Hand chunk 211 (CTCShapeManager .. CTCTavernGame): 20 of 40 byte-exact | - | 20 | 0 | landed; parked rows open |
+| `2026-10-20_linux_hand212` | Hand chunk 212 (CTCTavernGame .. CTCWeapon): 35 of 40 byte-exact | - | 5 | 0 | landed; parked rows open |
 
-Totals: **8 matched rows staged for landing**, **1094 parked rows** for the Fable retry pass.
+Totals: **8 matched rows staged for landing**, **1099 parked rows** for the Fable retry pass.
 
 ### Skipped rows (24 open of 49 in the ledger `rebuild/candidates/manual/SKIPPED_ROWS.tsv`)
 Rows an agent could not author as one function. Work them with `skipped_ledger.py to-chunk <NN>` (multi/prefix pieces become an ordinary chunk for any agent); see the "Skipped rows" section above.
@@ -1919,5 +1920,13 @@ Groups: register-assignment/scheduling only (0056ef6f, 005d9070, 0061a9d0, 0061a
 - 005ea010 CTCTavernGame::UpdateValues DIFFER(236v238): register colouring (GameWon in al, def straight into ebp, money through ebx) and the cross-jumped TotalWinnings store | tried: thing-def local, money local, statement order | next: lane gap: cross-jumping
 - 005ea1a0 CTCTavernGame::GetBet DIFFER(166v166): retail keeps four frame words, zeroes the out slot after the push and releases the def after the amount | tried: holder before/after the amount, CDefPointer, the amount as a temporary | next: lane gap: LTCG-informed def load sinking
 - 005ea250 CTCTavernGame::GetPlayersMoney DIFFER(178v178): twin of 005ea1a0 | tried: the same forms | next: lane gap: as 005ea1a0
+
+
+#### `2026-10-20_linux_hand212` (5 parked; sources in `rebuild/candidates/manual/pending/2026-10-20_linux_hand212/differ/`)
+- 007da760 CTCTavernGameCardBlackjack::GetPosition DIFFER(164v164): retail hoists `fld [ebx]` (card offset X) above the size division, ours emits `fld [eax] ; fadd [ebx]` at the sum | tried: card+hand / hand+card through inline operator+, swapped component order in operator+, const-reference locals | next: lane gap: x87 load scheduling
+- 0084a720 CCreatureAction_AlertAllNearbyToThing::AlertAllNearby DIFFER(188v190): search-box corner scheduling -- retail `mov ecx,edi ; sub ecx,eax ; mov edx,esi ; sub edx,eax ; add edi,eax ; add esi,eax` with TopLeft stored before the filter temporaries and BottomRight after the pushes, ours computes the corners in the other order | tried: box temporary with a 4-long ctor, named box local (4-long ctor), named box from two C2DCoordI temporaries; a stand-in GetAllTCsInRoughArea body fixed the esi-held vector storage | next: C2DBoxI built from a C2DCoordI centre +/- an extent (operator-/operator+ helpers), or corner members assigned in the body
+- 00658fa2 CTCVillage::GetNextGuardTypeAndIncrement DIFFER(236v227): the people def lives in eax (index in ecx) where retail keeps it in ecx (index in eax), so the shared final release is `mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],0` instead of `dec [ecx+4] ; jne` | tried: index declared before the def, a raw def-pointer local for every access, a pointer local in the CDefPointer dtor | next: lane gap: register allocation (try the GetSubDef stand-in body above under auto_inline(off), or a for loop over a quantity pointer local)
+- 0065b349 CTCVillage::TryToRespawnDefNamed DIFFER(184v183): the IS_THING_DEAD argument temporary takes its own frame word (`sub esp,0Ch`, [ebp-8]) where retail reuses the dead `defName` slot [ebp+8] already shared by the IS_THING_ALIVE temporary and the GetTC key (`push ecx ; push ecx`) | tried: `&&` condition, nested ifs, a named villager-pointer local, IS_THING_DEAD over CBaseObject* const& | next: lane gap: dead-argument-slot sharing for a second temporary (QFE/RTM frame packing)
+- 0065c146 CTCVillage::RemoveCrime DIFFER(182v182): register choice only -- retail `push 51h ; pop edi` and `push ebx ; mov ebx,[ebp+8]` after the lookup, ours `push ebx ; push 51h ; pop ebx` before it (edi then left to the witness) | tried: parameter used directly (this then stays in ebx), a handle copy after the lookup, the copy declared first (the register is right but its load moves above the lookup), declared first and assigned after | next: lane gap: callee-saved register colouring; try the deed loop in an inline helper taking the log and handle
 
 <!-- queue:end -->

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007da900	RELOCATION_MATCH	168v168	PASS	inline GetHandValue, first call inlined, second out of line
+007da9b0	MATCH	168v168	PASS	both GetHandValue calls inlined
+007da290	RELOCATION_MATCH	207v207	PASS	for-walk re-reading end(), SetState tail-duplicated
+007da760	DIFFER	164v164	-	x87 load scheduling of the C2DVector sum
+007dab60	RELOCATION_MATCH	163v163	PASS	UpdateValues (slot 40); unchecked out-param GetInterface, long local parked for fild
+007cf690	RELOCATION_MATCH	159v159	PASS	ShoveHaPenny::GetCurrentScore (slot 44; catalog label CardBase is propagated)
+007d2b70	RELOCATION_MATCH	159v159	PASS	CoinGolf::GetCurrentScore (slot 44; twin of 007cf690)
+007cf5b0	RELOCATION_MATCH	216v216	PASS	ShoveHaPenny::GetBestScore; stats out pointer zero-initialised
+007d7c80	RELOCATION_MATCH	212v212	PASS	SpotTheAddition::GetBestScore; stats out pointer uninitialised
+005ea310	RELOCATION_MATCH	166v166	PASS	GetTotalWinnings (slot 49; catalog GetBet is wrong); stand-in GetSubDef body under auto_inline(off)
+005ec7c0	RELOCATION_MATCH	220v220	PASS	inline CEnginePrimitive2DText ctor (Pos in init list), CRGBColour copy via Set
+005ec8a0	RELOCATION_MATCH	217v217	PASS	ctor; STLport vector model, body clears + Resize(5) x3
+005ec990	RELOCATION_MATCH	177v177	PASS	DrawBox; stand-in GetSubDef, (float)size.Y CSE temp in dead def slot
+008f1720	RELOCATION_MATCH	171v171	PASS	EndRound; preloaded-zero HasTC + one-ternary GetTC, STLport clear via __copy_trivial
+008f17d0	RELOCATION_MATCH	225v225	PASS	TurnCardsBack; inline CCard::Turn, one-ternary GetTC
+008f1d40	RELOCATION_MATCH	240v240	PASS	FrameUpdate; dense switch + jump table, cases in retail block order
+008f2580	RELOCATION_MATCH	218v218	PASS	AddPointerParticleEffect; forceinline GetParticleEmitter, dead-slot sharing
+007d5a00	RELOCATION_MATCH	199v199	PASS	CardSorting::NewRound; order local before def deref, inline STLport push_back
+008ef950	RELOCATION_MATCH	171v171	PASS	ClearBoard; pack(1) intelligent pointer at Coin+0x25, inline STLport erase
+007d2920	RELOCATION_MATCH	203v203	PASS	CoinGolf::EndRound; inline ParentThing accessor loads ecx first
+007d7f10	RELOCATION_MATCH	187v187	PASS	PositionCover; unrounded float locals, stand-in GetSubDef
+007d7fd0	RELOCATION_MATCH	234v234	PASS	SpotTheAddition::EnterGame; stand-in GetSubDef, pack(1) vector classes at odd offsets
+007c6da0	RELOCATION_MATCH	167v167	PASS	StopTurncoatingEffects; out-param GetInterface in if, IS_THING_ALIVE x2
+007bb070	RELOCATION_MATCH	219v219	PASS	ForceTrespass; zeroed out-param GetInterface && handle test, two complete PostDeed arms
+007887be	RELOCATION_MATCH	204v204	PASS	UpdateTriggerOnProximity; y off + s on, forceinline C3DVector copy, float delta locals
+0084a720	DIFFER	188v190	-	AlertAllNearby (label UpdateTriggerThings wrong); box-corner scheduling
+00658fa2	DIFFER	236v227	-	register choice of the def pointer (eax vs ecx)
+0065a5bb	RELOCATION_MATCH	203v203	PASS	GetRegionLeavingDurationForCurrentCrimes; y off + s on, forceinline temp def dtor
+0065a7a9	RELOCATION_MATCH	169v169	PASS	RemoveTimedoutCrimes; out-param GetInterface, separate next iterator in the key slot
+0065ac83	RELOCATION_MATCH	180v180	PASS	HomeUsersAreAsleep; inline home accessor, unchecked out-param GetInterface
+0065b349	DIFFER	184v183	-	IS_THING_DEAD temporary gets its own frame word
+0065c08a	RELOCATION_MATCH	188v188	PASS	UpdateSecuritySweepTasks; world + fps locals before the static frame call
+0065c146	DIFFER	182v182	-	register swap ebx/edi for the GetTC key
+0065c1fc	RELOCATION_MATCH	210v210	PASS	RemoveCrimeIfApologisable; member-address local, forceinline def temp dtor
+0065c36e	RELOCATION_MATCH	236v236	PASS	SetVillageLimbo; inline persist setter for the or-byte store
+007ee270	RELOCATION_MATCH	183v183	PASS	SetPVillage; intelligent-pointer temporaries, operator= with GetPItem local
+007ee5a0	RELOCATION_MATCH	182v182	PASS	VillageMember OnInitialActivate; unchecked out-param GetInterface, debug-check search kept
+005c3947	RELOCATION_MATCH	169v169	PASS	CTCInventoryWeapons::CTCInventoryWeapons (catalog label CTCWallMountEffects ctor is wrong); Leaf ??0CTCInventoryWeapons; y off + s on; CDefIndex members
+007df6a0	RELOCATION_MATCH	201v201	PASS	switch on Effect; T* p = 0 preload GetTC for the teleporter; slot 59 = CThingPhysical::ModifyHealth
+005dab10	RELOCATION_MATCH	179v179	PASS	Leaf ?IsUsableBy@CTCWeapon_Getters (landed sibling model over engine/CTCWeapon.h); one shared return false keeps the prologue pushes; 4 grades
