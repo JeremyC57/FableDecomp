@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008f1bd0	DIFFER	254v256	-	scheduling: component load into eax above the scale push
+007da640	DIFFER	274v274	-	GetBet: frame-slot permutation + esi/ecx (274v274)
+007d5450	RELOCATION_MATCH	261v261	PASS	really CardSorting::GetRequiredScore (slot 45); one-case switch
+007d5fb0	RELOCATION_MATCH	272v272	PASS	SelectCard (slot 59)
+007d6150	DIFFER	262v262	-	EndRound (slot 33): release store/copy scheduling only
+007d6560	RELOCATION_MATCH	268v268	PASS	GetBestScore (slot 43); zero-initialised stats
+007d6720	RELOCATION_MATCH	261v261	PASS	really GetRequiredScore (slot 45), twin of 007d5450
+007d70e0	RELOCATION_MATCH	244v244	PASS	NewRound (slot 32), landed CardSorting NewRound model
+007d4f40	DIFFER	295v295	-	EndRound: release store/copy scheduling only
+007d5290	RELOCATION_MATCH	260v260	PASS	GetBestScore (slot 43); return inside the case
+008efa00	DIFFER	250v250	-	overflow tag frame byte (retail homes it on the arg slot)
+007cff40	RELOCATION_MATCH	290v290	PASS	really ShoveHaPenny::GetAdditionalInfo (slot 46); same-TU GetSubDef stand-in
+007d2ef0	DIFFER	242v242	-	register rotation / GetPItem lea placement
+007d3700	RELOCATION_MATCH	287v287	PASS	GetAdditionalInfo (slot 46); GetSubDef stand-in
+007da400	DIFFER	280v280	-	really Blackjack::GetCurrentScore; int->double temp slot
+007da520	DIFFER	286v286	-	really Blackjack::GetRequiredScore; int->double temp slot
+007cf860	DIFFER	313v313	-	x87 order of the hoisted invariant sum
+007d8160	RELOCATION_MATCH	299v299	PASS	GetAdditionalInfo (slot 46); GetSubDef stand-in
+007d8290	RELOCATION_MATCH	291v291	PASS	GetSubDef stand-in; named radius local
+007b8710	RELOCATION_MATCH	303v303	PASS	inline-length temporaries; member-ctor vectors
+007dfcf0	RELOCATION_MATCH	295v295	PASS	/GS; inline AddFloat/AddBool payload
+007dff90	RELOCATION_MATCH	314v314	PASS	/GS; out-param GetInterface left uninitialised
+0071b380	RELOCATION_MATCH	309v309	PASS	really OnLevelUnload (slot 15); inline lower_bound
+007786f0	RELOCATION_MATCH	252v252	PASS	GetSubDef + GFGetValPositionInLimitsLooping stand-ins
+006dd7e0	RELOCATION_MATCH	257v257	PASS	implicit L"" conversion temporary
+006df480	RELOCATION_MATCH	292v292	PASS	implicit symbol conversion; by-value dialog strings
+007c6940	RELOCATION_MATCH	243v243	PASS	local model (header PDB offsets 4 high); named def local
+0072c230	RELOCATION_MATCH	318v318	PASS	FrameUpdate (slot 9); zero-preload targeted lookup
+007fecb0	RELOCATION_MATCH	291v291	PASS	vector<long> stand-ins (insert_overflow, operator=); named owner + continue
+0059eb0c	RELOCATION_MATCH	316v316	PASS	really CTCInventoryTrade ctor; frame-pointer size TU
+00658620	RELOCATION_MATCH	246v246	PASS	frame-pointer size TU; param slot reused for HHMM conversion
+0065890b	RELOCATION_MATCH	247v247	PASS	remove(0) implicit conversion temporaries
+00659164	RELOCATION_MATCH	305v305	PASS	GetDef/GetSubDef/IS_THING_ALIVE stand-ins
+00659efc	RELOCATION_MATCH	241v241	PASS	six-case switch in source order crate..torch
+0065a686	RELOCATION_MATCH	291v291	PASS	landed GetRegionLeavingDuration model; named refusal bool
+00785b40	DIFFER	237v318	-	asm_bake: inline-asm fistp rounding helper
+007de5d0	RELOCATION_MATCH	311v311	PASS	inline GetPhysicsTC getter
+007b5ba0	RELOCATION_MATCH	243v243	PASS	cleared(0) idiom, sibling blocks
+0076e150	DIFFER	267v267	-	register choice eax/ecx on the first inline Reset
+006cfc90	RELOCATION_MATCH	261v261	PASS	named definitions local + inline bool helper

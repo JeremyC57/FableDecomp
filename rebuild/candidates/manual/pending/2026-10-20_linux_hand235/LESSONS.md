@@ -1,0 +1,11 @@
+- A one-case `switch` gives `dec eax ; je` (an `if (x == 1)` hoists the constant into a register when it is reused, e.g. as FormatDouble's digit count).
+- A `return text;` inside the case (rather than `break`) lets the default arm's string temporary take the dead hidden-result slot.
+- Same-TU typed GetSubDef stand-ins (write only the out pointer) keep a sub-def in a callee-saved register across the whole function; link-time callees (GetDef 0x0042AF3C, GetSubDef 0x00512FE0, IS_THING_ALIVE 0x0043DBD0, vector<long> operator= 0x00454886) need the same stand-ins.
+- A stand-in that only touches eax/ecx (GFGetValPositionInLimitsLooping) teaches VC7.1 that edx survives the call.
+- IS_THING_ALIVE<const CThing*>(hero) with a `CThing*` hero makes a converted temporary: hero stays in a register and its copy's slot is reused later (with a stand-in body).
+- `list.remove(0)` / `GetTextBySymbol("...")` implicit conversion temporaries are re-addressed with `lea`; an explicit temporary pushes the ctor's eax.
+- When retail calls a getter before the argument loads, fetch it into a named local (`CDefinitionHolder* d = GetDefinitions();`, `CThing* thing = PThing.GetPItem();`).
+- `cond ? 3 : 4` over a named bool gives setle/neg/sbb/add; over the bare compare VC folds it to `setcc + 3`.
+- An inline physics getter (`GetPhysicsTC()`) loads the component straight into ecx for a virtual call and can flip the register allocation of the whole function.
+- A six-case switch's test chain is sorted by value, the bodies follow source order: write the cases in retail's body order.
+- In tests, give a by-value returned counted pointer a copy ctor that addrefs, or VC7.1's missing NRVO double-releases it.
