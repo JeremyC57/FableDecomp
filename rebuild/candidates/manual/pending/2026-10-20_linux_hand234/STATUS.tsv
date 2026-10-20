@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008e5370	RELOCATION_MATCH	258v258	PASS	really CTCPhysicsStandard::GetPossibleCollidedWithArea; named float locals
+007ee3d0	DIFFER	244v244	-	the &UID lea is hoisted above the GetPItem null-test branch (retail recomputes it in each arm and reuses esi f
+00800a60	DIFFER	297v301	-	the &UID lea is hoisted above the GetPItem null-test branch (retail recomputes it in each arm and reuses esi f
+00787e12	DIFFER	280v279	-	the CIntelligentPointer conversion temporary gets its own frame slot [ebp-0Ch] (sub esp,0Ch); retail overlaps 
+005e4740	RELOCATION_MATCH	277v277	PASS	CTCQuestCompletionUI::Activate
+006aebf0	RELOCATION_MATCH	250v250	PASS	stand-in GetSubDef; long& count bump
+00762e10	DIFFER	326v311	-	retail caches the point list's _M_start in ebx across the virtual/erase/CreateShape calls for the final free (
+007729a0	DIFFER	319v319	-	register swap only in the 0x21 list loop: retail keeps the node in edi and &node->item in esi, ours the revers
+00773c90	RELOCATION_MATCH	299v299	PASS	CTCShop::SetAlarm
+00774b40	RELOCATION_MATCH	274v274	PASS	3 same-TU stand-ins (vector copy/push_back/insert_overflow)
+00775b40	DIFFER	274v274	-	register swap only: retail keeps this in esi and the parent / interface map / &PShopKeeper temporaries in edi,
+007c2480	RELOCATION_MATCH	284v284	PASS	!(a>b) for jnp
+00bd94e0	RELOCATION_MATCH	253v253	PASS	really CEngineInternalPrimitive2DAnimatedMesh ctor
+00bd9710	RELOCATION_MATCH	264v264	PASS	really CEngineInternalPrimitive2DMorphedAnimatedMesh ctor
+007be3e0	DIFFER	246v256	-	frame packing: retail overlaps the PEffect conversion temporary [ebp-0Ch] with the later emitter word [ebp-8] 
+007be4e0	DIFFER	246v256	-	byte twin of 0x007BE3E0 (same frame-packing gap: conversion temporary overlapping the later emitter word, edi 
+005814e5	RELOCATION_MATCH	241v241	PASS	really CTCHeroStats::~CTCHeroStats; optimize s
+007bbb3b	DIFFER	268v268	-	frame packing: retail gives the scattered-direction temporary (-40h) and the CRightHandedSet temporary (-58h) 
+007bc8fc	DIFFER	308v308	-	scheduling only: the AddTC call loads ParentThing (mov ecx,[edi+4]) before the lea of the implicit name tempor
+007eed20	DIFFER	275v275	-	register swap only at the last store: retail keeps the 0x4E component in eax and LastWorldFrameHit in edx, our
+0072af30	DIFFER	256v256	-	scheduling only: the IsUsableBy argument (ParentThing) is loaded and pushed before the weapon component is mov
+0072b160	RELOCATION_MATCH	247v247	PASS	CTCSpecialAbilities::SetupTurncoatSpell
+0072bec0	RELOCATION_MATCH	248v248	PASS	CTCSpecialAbilities::ResumeAbilitiesForCutscene
+0072caa0	DIFFER	291v252	-	VC7.1 merges the 0xA9/0xA8 presence tests into one test ch,3 and keeps 8 in ebx where retail re-reads the word
+0072cd00	RELOCATION_MATCH	286v286	PASS	CTCSpecialAbilities::SetupDivineWrath
+0072ce20	RELOCATION_MATCH	286v286	PASS	really SetupUnholyPower
+007471f0	DIFFER	308v308	-	frame packing: ours homes the ToWideString argument temporary in the dead viewport argument slot (frame 40h), 
+00747330	RELOCATION_MATCH	279v279	PASS	virtual base dtor
+00747660	RELOCATION_MATCH	289v289	PASS	out-param GetInterface keeps comp in eax
+00747890	RELOCATION_MATCH	278v278	PASS	InsertGrow stand-in
+00747c70	DIFFER	303v303	-	register allocation: retail tests begin/end in eax/ecx and re-reads end into esi, keeps &DangerThings in ebp a
+0079a6e0	RELOCATION_MATCH	305v305	PASS	CTCSummonSpell::CTCSummonSpell
+007f68b0	DIFFER	256v255	-	frame packing: the 0x34 lookup key shares the perception pointer's word (retail: the result word) and the box/
+007f69b0	RELOCATION_MATCH	306v306	PASS	really CTCTargetingAI::FrameUpdate; inline IS_THING_ALIVE bool
+007ba3c0	RELOCATION_MATCH	292v292	PASS	CTCTavernBar::GetRandomBarSlot
+005e9c50	RELOCATION_MATCH	268v268	PASS	/GS
+005e9d60	RELOCATION_MATCH	272v272	PASS	/GS
+005eaf46	SKIP	-	-	mid-function: entry 0x005EAF30 SetStateAfterYesNo
+005eb08d	SKIP	-	-	mid-function: entry 0x005EB080 SetStateAfterOK
+005eb3a0	RELOCATION_MATCH	264v264	PASS	CTCTavernGame::GetTextWithNarrator

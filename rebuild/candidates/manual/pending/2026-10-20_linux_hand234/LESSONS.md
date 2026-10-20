@@ -1,0 +1,14 @@
+# Lessons (chunk 234) -- one line each, GOTCHAS candidates
+- HasTC as a `bool` (`!= 0`) compiles to `shr ecx,N`; return the raw masked `unsigned long` to get retail's `test ch,N`.
+- GetTC through the end/hit ternary leaves the component in ecx; the out-param `GetInterface(key, &comp)` form keeps it in eax. Pick by which register retail uses.
+- Floats that retail converts all at once (all fld/fst, then one ftol run) need named float locals; inline expressions interleave the ftol calls.
+- `!(a > b)` gives `fcompp ; test ah,5 ; jnp` (NaN takes the body); `a <= b` gives a different mask.
+- A base class with an inline *virtual* dtor gives the implicit derived dtor its vtable restore; a non-virtual base dtor drops the store.
+- A CDefPointer released through a local copy of the pointer matches; releasing through the member reloads it.
+- A `long&` refcount bump (`long& c = p->count; ++c;`) keeps the load after the store that retail does first.
+- Retail's LTCG non-escape (vector copy, push_back, _M_insert_overflow, GetSubDef) can be reproduced with same-TU stand-in bodies under `#pragma auto_inline(off)`.
+- Block order of an `if (!alive) erase` loop depends on the liveness form: an inline `bool IS_THING_ALIVE(...)` helper matches, while an open-coded `!t || dead` moves the erase block.
+- An action temporary passed to a `const&` setter (SetCurrentAction(CCast(...))) reuses eax as the address. The cast class must not declare its own dtor; the base owns the intelligent-pointer member.
+- Size-TU rows (`optimize("y",off)` + `("s",on)`) need `__forceinline` on inline helpers and `__declspec(novtable)` when the vtable is never re-stored.
+- The manifest's propagated labels were wrong for 10 of 40 rows here (vfunc_N slots, sibling-class ctors, a ForcePushBall/DrainLife twin). Check vtable slots and RTTI before trusting the class.
+- Lane gaps seen (park early): CSE hoisting of an address lea above a null-test branch; conversion temporaries not overlapping a dead local's slot; edi/esi swaps in list loops.

@@ -13,6 +13,8 @@ address	row_len	batch	label	kind	status	pieces	note
 00581ab3	78	2026-10-15_linux_hand91	CTCInventory::CTCInventory::vfunc_59	multi	done	00581ab3:46,00581ae1:32	two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging)
 005c150b	44	2026-10-14_linux_hand51	CIsSameItemType::operator()	ltcg	open		CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /GL+LTCG or the Windows RTM re-grade
 005d9380	304	2026-10-20_linux_hand232	CTCInventoryItem::CTCInventoryItem::vfunc_4	multi	open	005d9380:44,005d93b0:128,005d9430:128	three functions in one row (0x005D9380 + bodies at 0x005D93B0 and 0x005D9430 after int3 padding)
+005eaf46	314	2026-10-20_linux_hand234	CTCTavernGame::SetStateAfterYesNoAlt	single	open	005eaf46:304	mid-function: entry 0x005EAF30 SetStateAfterYesNo
+005eb08d	243	2026-10-20_linux_hand234	CTCTavernGame::SetStateAfterOK	single	open	005eb08d:243	mid-function: entry 0x005EB080 SetStateAfterOK
 00619890	320	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	00619890:27,006198ab:17,006198bc:20,006198d0:20,006198e4:37,00619909:37,0061992e:23,00619950:67,006199a0:46	row holds the Transfer jump-table body plus following function(s) after int3 padding
 0061b530	96	2026-10-15_linux_hand95	CTCInventoryQuests::CTCInventoryQuests::vfunc_38	multi	done	0061b530:40,0061b560:40	row holds two functions (0x0061B530 + 0x0061B560)
 006420f0	256	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	006420f0:27,0064210b:20,0064211f:21,00642134:29,00642151:37,00642176:52,006421aa:68	row holds the Transfer jump-table body plus following function(s) after int3 padding

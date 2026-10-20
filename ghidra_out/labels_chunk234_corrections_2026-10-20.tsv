@@ -1,0 +1,13 @@
+address	name	evidence
+008e5370	CTCPhysicsStandard::GetPossibleCollidedWithArea	CTCPhysicsStandard vtable slot 98, not CTCPhysicsRigidBody (chunk 234)
+007ee3d0	CTCVillageMember::OnSerialise	chunk 234
+00775b40	CTCShop::FrameUpdate	was vfunc_9 (chunk 234)
+00bd94e0	CEngineInternalPrimitive2DAnimatedMesh::CEngineInternalPrimitive2DAnimatedMesh	constructor (chunk 234)
+00bd9710	CEngineInternalPrimitive2DMorphedAnimatedMesh::CEngineInternalPrimitive2DMorphedAnimatedMesh	constructor (chunk 234)
+007be3e0	CTCShotDefinitionForcePushBall::InitAttachedEffects	byte twin of 007be4e0, which is the DrainLife one (chunk 234)
+005814e5	CTCHeroStats::~CTCHeroStats	chunk 234
+0072ce20	CTCSpecialAbilities::SetupUnholyPower	not SetupDivineWrath (chunk 234)
+007471f0	CTCStealth::DrawPreparePrimitivesForRendering	was vfunc_11 (chunk 234)
+007f69b0	CTCTargetingAI::FrameUpdate	was vfunc_9 (chunk 234)
+005eaf46	CTCInventoryMap::SetStateAfterYesNo_mid	mid-function row; real entry 0x005EAF30 SetStateAfterYesNo (chunk 234, skipped)
+005eb08d	CTCInventoryMap::SetStateAfterOK_mid	mid-function row; real entry 0x005EB080 SetStateAfterOK (chunk 234, skipped)
