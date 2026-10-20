@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0045d729	RELOCATION_MATCH	213v213	PASS	CTargetingDef::operator= (slot-19 thunk 0x45d724), size TU
+004e2e0d	RELOCATION_MATCH	189v189	PASS	CTavernGameSpotTheAdditionDef::operator= (thunk 0x4e2e08), size TU
+004ec174	RELOCATION_MATCH	165v165	PASS	CObjectAugmentationsDef::operator= (thunk 0x4ec16f), size TU
+004345a0	RELOCATION_MATCH	192v192	PASS	CConfigOptionsDefaultsDef::operator= (thunk 0x434590), inlined CDefClassBase chain
+006cfda0	RELOCATION_MATCH	158v158	PASS	CTCWife::OnHeroViolence, unchecked GetInterface then two ApplyOpinionTransientOffset
+006cef20	RELOCATION_MATCH	185v185	PASS	CTCWife::InitiateDivorce, /GS; by-value AddBool(bool) folds the constant flag
+00a98860	RELOCATION_MATCH	157v157	PASS	CTemporaryBuffer ctor: scratch / pool / heap routes
+00ee3ee0	RELOCATION_MATCH	258v258	PASS	CTH_Trigger_Guild_Rose::Main; scoped CCharString block before the slot-108 call
+009fa280	RELOCATION_MATCH	181v181	PASS	CTexture::Initialise; inline CPixelFormat::GetD3DFormat() table lookup
+00a6a360	RELOCATION_MATCH	219v219	PASS	CTextureManager ctor; pools' vector as STLport vector(0) (double end-of-storage store)
+00ca66d0	RELOCATION_MATCH	219v219	PASS	CBaseRenderer::Stop (catalog CTextureRenderer::vfunc_4), /EHsc; CBaseFilter is 0x50 (8-aligned)
+006d00a0	DIFFER	217v217	-	CTCWife::Murdered: final SetMarriageState arg/component load order
+006cf3b0	DIFFER	206v206	-	CTCWife::InitWifeAtEndOfMarriageFrescoStartFadeIn: ParentThing arg loaded before component in 4 calls
+006cf480	DIFFER	175v163	-	CTCWife::InitWifeAtEndOfMarriageFrescoEndFadeIn: this copied to ebx + def address CSE, 8-byte frame
+007e2f00	DIFFER	199v199	-	CTCWobble::FrameUpdate: lea ecx,[esp+8] placed across a neighbouring push
+00757680	DIFFER	216v217	-	~CTCWound: ebp/ebx colouring of this/zero
+006238a0	DIFFER	218v225	-	CTestQuestNameCompare::operator(): lea/push order + esi threading of nameB data pointer
+00a69b70	DIFFER	170v176	-	CTextureManager::AllocateTexture: callee-saved colouring + unfolded add-ref
+00a69c20	DIFFER	180v186	-	CTextureManager::AllocateVolumeTexture: same as 00a69b70
+0081b0a0	DIFFER	178v177	-	CTextureMorphs::GetAllMorphsOfType: zero kept in ebx across resize, out in ebp
+0054ecb0	RELOCATION_MATCH	207v207	PASS	NUISystem::CText::CanScroll; C2DVector extent local keeps the unused X word (0x10 frame)
+0054fb10	RELOCATION_MATCH	173v173	PASS	NUISystem::CText::ForceWidth; inline CWideString::operator[] temp before the fastcall arg
+004c72d0	RELOCATION_MATCH	159v159	PASS	CThing::SaveSerialiseCreatableTCs; three string temporaries, component re-read after slot 19
+004c8cf0	RELOCATION_MATCH	173v173	PASS	CThing::SetInLimbo; InLimbo bit compare/merge, CMessageClearPrimitives on the frame
+004c8da0	RELOCATION_MATCH	161v161	PASS	CThing::OnCollision; presence bits for 0xA9/0xA8 in word 5, other thing = 4th arg
+004c9030	RELOCATION_MATCH	237v237	PASS	CThing ctor; memset bitset, STLport list header, vector-map, bitfield init list
+004ca930	RELOCATION_MATCH	204v204	PASS	CThing::CreateFromDef; packed def (TCs +0x39, NoTCs +0x3d, bits +0x41)
+004c9f60	DIFFER	168v166	-	CThing::AddAndCopyTC: this/type colouring + component loaded via eax (retail bug: unset tc read when absent)
+004c7e90	DIFFER	165v169	-	CThing::IsUnderScriptSupervision: virtual call on the temporary via eax vs frame address
+004c7f40	DIFFER	175v167	-	CThing::InitFromThingInfo: inlined operator==("NULL") materialises a bool
+00830dd0	RELOCATION_MATCH	212v212	PASS	CThingAICreature::InitialiseMovementSpeeds; scoped name + named CAnimFilterAnyGroup local
+0082d1d0	RELOCATION_MATCH	187v187	PASS	CThingBuilding slot 34 (catalog vfunc_34, GetHighlightInfo); landed twin 0x6a9d10 model
+00830cb0	DIFFER	201v201	-	CThingAICreature slot 34: fcom/fst order after the normalised-time call (twin-model form 206v201)
+00830f20	DIFFER	231v183	-	CThingAICreature slot 73 (HasAnimation): table address taken after the filter call, holder re-read per release
+008328d0	DIFFER	220v218	-	CThingAICreature::OnHeroPush: name temporary in a frame slot vs the dead pusher slot shared with the key
+00833010	DIFFER	176v178	-	CThingAICreature::SetNewBrain: g_pThingManager load hoisted above GetPlayerManager in retail (/GL-style)
+0082d2d0	DIFFER	254v221	-	CThingBuilding::PeekPSimDefinition (catalog PeekPMaterial): pack(1) def makes the release unaligned-style
+0082d5c0	DIFFER	260v227	-	CThingBuilding::PeekPMaterial (wall material): same pack(1) release shape
+0082d6f0	DIFFER	238v218	-	CThingBuilding::OnCreate (catalog vfunc_8): pack(1) release shape + ebx/edi colouring
+0082def0	DIFFER	201v193	-	CThingBuilding::IsUnlocked: two key slots vs one shared slot; entry test split around the frame setup

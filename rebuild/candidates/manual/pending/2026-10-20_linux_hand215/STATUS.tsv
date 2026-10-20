@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00e6a9e0	RELOCATION_MATCH	210v210	PASS	region wait via inline helper with named CCharString + ?true:false
+00edc640	RELOCATION_MATCH	210v210	PASS	is CV_TempleOfLightScript::EndMission (twin of 00e6a9e0)
+00e6a000	DIFFER	165v168	-	extra frame dword: operator== result byte homed at [esp+0Fh], null arm branch-threaded
+00e6e050	DIFFER	202v202	-	lea ecx hoist above jne into the shared false tail (1 insn order)
+00e32f30	RELOCATION_MATCH	164v164	PASS	outer while(!term){if(flag){...;return;} frame;} keeps flag test at loop head
+00e33120	RELOCATION_MATCH	193v193	PASS	phase if/else-if with per-action terminating checks
+00e33040	RELOCATION_MATCH	222v222	PASS	implicit CCharString conversions; named long for fild
+00e36ca0	RELOCATION_MATCH	175v175	PASS	distance-band if/else-if
+00e5d140	RELOCATION_MATCH	174v174	PASS	ChickenKicking ctor model + CCounter/CTimer member ctors + counted CTimer[4] loop
+00e399d0	RELOCATION_MATCH	195v195	PASS	source-order flag clears + Fisticuffs CScriptThing reset model
+00e503d0	DIFFER	257v232	-	retail calls out-of-line ~CScriptThing at the end, inlines it on the loop return; ours inlines both
+00e6f040	RELOCATION_MATCH	169v169	PASS	named door handle with inline dtor; __fastcall FadeOutAndKillEntity
+00e7f330	DIFFER	218v218	-	scheduling only: two stores one slot apart around faddp/fstp
+00d1cac0	DIFFER	141v214	-	is CQ_BountyHuntScript (flag AllLeaderChargeGruntsKilled); inline-once vector dtor split
+006ac140	DIFFER	182v182	-	esi/edi swap only (list head vs iterator); needs callee body in TU
+006698d0	RELOCATION_MATCH	206v206	PASS	landed template family; __forceinline Bind2 operator() and sphere filter
+00965e80	RELOCATION_MATCH	166v166	PASS	landed GetPBestThing template, CThingObject mask 0x807
+0083b520	DIFFER	250v228	-	def-pointer frame/register allocation; release via dec [reg+4] not reproduced
+0083d190	DIFFER	280v227	-	is CThingMarker::GetCurrentGraphic (by value); same issues as 0083b520
+0098f1e0	RELOCATION_MATCH	179v179	PASS	__forceinline lookup helper shares one iterator word
+0098f0f0	DIFFER	240v240	-	eax/edx swap in the pending-queue index (uid copy + reference local fixed the rest)
+00875040	DIFFER	220v220	-	frame-slot order of two vector locals only
+00875120	RELOCATION_MATCH	164v164	PASS	right-operand-first FPU order: dot written y,x,z; cos intrinsic over fov*0.5f*(double)TWO_PI
+008754a0	RELOCATION_MATCH	165v165	PASS	two flag-arm calls tail-merged; d=dx*dx; d+=dy*dy
+00875550	RELOCATION_MATCH	197v197	PASS	ternary over inline HigherOf keeps height on the FPU
+00875f00	DIFFER	159v175	-	six components preloaded onto the FPU in retail
+00877c40	DIFFER	228v215	-	retail enregisters the local vector finish pointer; tag over a live arg slot
+00761f40	DIFFER	210v208	-	is NShape::CTrack ctor; one extra mov edx,ecx before the first point copy
+0087b910	RELOCATION_MATCH	209v209	PASS	CFixedDolly GetInterface model; kind check reassigns the component
+0087b840	DIFFER	199v199	-	ebx/edi swap (target vs &PTrack)
+0052f440	DIFFER	141v183	-	inline-asm fistp float->int rounding (PackVertexNormal family)
+00760da0	RELOCATION_MATCH	195v195	PASS	do/while over the fraction; d<best copy-out
+00e9d800	DIFFER	193v211	-	inline-at-return / out-of-line-at-end dtor split (lane merges the exits)
+00e0d6a0	RELOCATION_MATCH	179v179	PASS	PermanentBarrier CreateEffect model, named effect local
+006dcb20	RELOCATION_MATCH	198v198	PASS	VC6 _Tree::_Insert, in-class _Buynode inlined once then out of line
+004068d0	RELOCATION_MATCH	202v202	PASS	forceinline clamp helper expanded twice, tails cross-jumped
+00406cc0	RELOCATION_MATCH	204v204	PASS	global chain re-read per call; rep movsd info copy
+0040d350	RELOCATION_MATCH	164v164	PASS	block-scoped CDiskFileWin32 with inline virtual dtor
+0040a740	RELOCATION_MATCH	175v175	PASS	block-scoped CMemoryFile with inline virtual dtor
+00408820	DIFFER	185v185	-	register allocation only (this/def/inputs)

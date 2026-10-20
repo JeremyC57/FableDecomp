@@ -1,0 +1,24 @@
+# Chunk 213 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+- A constant bool argument built through `Copy(1,&value)` lands at frame byte 0 only when the helper takes the bool BY VALUE (`AddBool(bool value){ value = value ? true : false; Copy(1,&value); }`); `bool pause = true` lands at byte 3 and `AddBool(bool&)` leaves an unfolded setne (0x006CEF20).
+- A CCharString temporary followed by a virtual call in the same scope sinks its destructor below the call; put the string in its own `{}` block to keep the retail order (0x00EE3EE0).
+- strmbase CBaseFilter is 0x50 bytes (the __int64 m_tStart aligns the class to 8); model CBaseRenderer members from +0x5C, not +0x4C (0x00CA66D0).
+- The retail STLport `vector(n)` with n = 0 (CSTLportVector(count) landed model) is what writes end-of-storage twice in an array-of-pools constructor; the plain `_Vector_base(alloc)` ctor writes it once (0x00A6A360).
+- CIVCountedPointer<CManagedTextureData> is {vptr, Object}: the Object word is +4 (0x00A69B70).
+- A C2DVector-returning call whose result is only partly used leaves the unused word in the frame (`C2DVector extent; extent.Y = ...` gives the 0x10 frame of 0x0054ECB0); a hidden-result temporary shared by two calls in different arms is one `lea ; push` hoisted above the branch.
+- A `__fastcall` taking `unsigned short` from an inline accessor compiles `movzx eax ; mov ecx,eax`; reading the character inline directly gives `movzx ecx` (0x0054FB10 needs `CWideString::operator[]`).
+- std::bitset<274> construction is `memset(words, 0, 36)` through the member's address with a fresh zero register (0x004C9030, needs `#pragma intrinsic(memset)`).
+- The bitset range check (`puts("bitset") ; abort()`) marks `UsingComponents.test(type)`; the unchecked presence test is `operator[]` / the presence-bits mask (0x004C9F60 vs every other lookup).
+- CThing::OnCollision's colliding thing is the FOURTH argument (`[esp+18h]` after two pushes), not the second (0x004C8DA0).
+- Def classes pack to 1 (CDefClassBase is 0x25) but do NOT model a def as a pack(1) class when releasing its refcount through it: VC emits unaligned-style `add eax,4 ; mov [eax],edx` for `--RefCount`; keep the def unpacked when every field used is 4-aligned and pack only the 14-byte CEngineGraphic (0x0082D2D0/0x0082D5C0/0x0082D6F0 are parked on exactly this).
+- A named local filter (`CAnimFilterAnyGroup anyGroup;`) declared after a scoped CCharString reproduces the "name constructed first, filter vtable stored just before the call, filter destroyed first" shape; a temporary filter is evaluated first (0x00830DD0).
+- CRGBColour is {B, G, R, A} in memory with a (r,g,b,a) constructor (landed twin 0x006A9D10); the three-byte-copy-plus-0xFF form is `CRGBColour(def->Colour.R, def->Colour.G, def->Colour.B, 255)`.
+- RTM vs QFE lane: every parked row re-graded identically under cl 13.10.3077; the parked gaps are scheduling/colouring (argument-before-component load, esp-relative lea placement, callee-saved colouring, constant-zero CSE across a call, unfolded add-ref on a forwarded store, dead-parameter slot sharing between if/else arms, a global load hoisted above a call as /GL would).
+- 0x004C9F60 reads an unset component pointer when the type is absent (retail bug): the model keeps the uninitialised local; its test must stay on the present path.
+Review at landing:
+- 0x00EE3EE0 uses the PDB names SetPredicate/IsActiveThreadTerminating for 0xF35B10/0xF35B30 (landed also as RegisterFilter/IsDone) and placeholder slot names GetHero_slot70 / ReleaseThing_slot108 / SetQuestAsFailed_slot293 / MarkThing_slot477 for the CGSI vtable.
+- 0x004C8DA0 names the TC-0xA8 component `CTCCollisionHandler_0xA8` (descriptive) and its 0x004CC000 method `OnThingCollision`; the manifest label is propagated.
+- 0x004C9030 declares `g_thingCount` for 0x013B8A20 (descriptive) and models CClass(CClassFactory&, unsigned long, bool) per the landed decl.
+- 0x004CA930 names CWorld +0x102 `m_loadingSavedGame` (descriptive) and CThingDef bit 2 of +0x41 `KillLocked`.
+- 0x0082D1D0 / 0x00830DD0 name the slot-34 record `SThingHighlightInfo` (landed twin: CThingHighlightInfo with Value/Enabled) and the +0xE0 pointee `CCreatureSpeedSource` (descriptive).
+- Pragmas: `#pragma optimize("s", on)` on the three def operator= rows; `#pragma intrinsic(memset)` in the CThing ctor; flags /GS (0x006CEF20) and /EHsc (0x00CA66D0) are on `// Flags:` lines.
+- CText rows declare `extern const float g_zero` (0x0122DEDC) and `g_epsilon_0129ba3c` (1e-4f) as landed.
