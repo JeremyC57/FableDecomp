@@ -122,19 +122,6 @@ Catalog-wide audit (resumable, hours): `python3 tools/decomp_pipeline/reloc_audi
 with its recorded flags and writes the findings per row; `grep RELOC_IDENTITY` on the output is
 the list of landed rows that name the wrong callee, global or float pool.
 
-## Third compiler: Visual C++ Toolkit 2003 (cl 13.10.3052) for /GS rows
-
-Retail `Fable.exe` was compiled by cl 13.10.3077 (1,369 C++ objects) plus five objects by the 4035 QFE and linked by
-linker 3052 (Rich header, FINDINGS_LOG 2026-10-20). The free toolkit (archive.org `microsoft-visual-c-toolkit-2003`,
-`VCToolkitSetup.exe`, SHA-1 `956c81c3106b97042c4126b23c81885c4b5211f4`) ships cl **13.10.3052**, a pre-RTM build. On
-ordinary rows it generates the same code as 4035 (30/30 landed sample) but its `/GS` stack-cookie code generation
-matches retail where 4035 does not (5 parked /GS rows flipped to RELOCATION_MATCH; 16/20 landed /GS rows still match;
-the two that need 4035 are from the QFE-built objects). Install it beside the other toolsets
-(`D:\Tools\vctk2003`, or `$VC71_TOOLKIT`; under Wine: set `HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v1.1.4322\Install=1`,
-then `wine VCToolkitSetup.exe /s /v"/qn INSTALLDIR=C:\VCTK"`). `verify_and_land.py --toolkit` grades and lands with it
-and tags the catalog entry `Compiler = 'vctk3052'`; `build_candidates.ps1` and `reloc_audit.py` honour the tag. Use it
-only for rows the default compiler cannot reproduce (same rule as `--qfe`).
-
 ## The RTM compiler on the Linux lane (cl 13.10.3077)
 
 Retail `Fable.exe` was compiled by cl 13.10.3077 (1,369 C++ objects) plus five objects by the 4035 QFE and linked by
