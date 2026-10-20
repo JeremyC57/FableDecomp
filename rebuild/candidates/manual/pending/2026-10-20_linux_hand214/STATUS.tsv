@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+004f914a	RELOCATION_MATCH	189v189	PASS	CHeroExperienceDef::operator= (slot-19 thunk)
+0067ce50	RELOCATION_MATCH	240v240	PASS	COpinionReactionManagerDef::operator= (slot-19 thunk)
+006f1280	RELOCATION_MATCH	215v215	PASS	STLport _Rb_tree<u64,pair<u64,CThing*>>::_M_insert
+007f6bf0	RELOCATION_MATCH	179v179	PASS	GetCompareValueForThing<CThingAICreature>
+007f6cb0	RELOCATION_MATCH	179v179	PASS	byte twin; modelled as the <CThingCreatureBase> instantiation
+008098b0	DIFFER	183v183	-	scheduling: mov ecx,esi vs fstp order before the 2nd GetCompareValueForPoint
+007a2f90	RELOCATION_MATCH	167v167	PASS	plain X*X+Y*Y+Z*Z (VC ranks terms per operand location)
+006622d0	RELOCATION_MATCH	186v186	PASS	local model (retail offsets)
+00662ef0	DIFFER	175v169	-	register allocation (def spilled vs name re-read); 4 forms tried
+00663510	DIFFER	179v183	-	fst vs fstp+fld spill of the distance
+006643c0	RELOCATION_MATCH	208v208	PASS	local model; counted copy + list promotion
+006647f0	RELOCATION_MATCH	215v215	PASS	__forceinline GetTC (else emitted out of line)
+006648d0	DIFFER	239v235	-	weapon/def register swap and string/out frame homes swapped
+00664ba0	DIFFER	207v184	-	null-tested inline release long form (lane gap) + key/out slot sharing
+006650e0	RELOCATION_MATCH	173v173	PASS	angle call nested in the AngleDifference argument
+00665190	RELOCATION_MATCH	208v208	PASS	lenSq <= r*r tail-calls the angle test
+006b1960	RELOCATION_MATCH	185v185	PASS	label wrong: CAtmosProcess::CAtmosProcess (ctor)
+006c8de0	DIFFER	170v172	-	full-register sete for the AlwaysAwareOf test
+006a8370	DIFFER	226v224	-	component-into-ecx before the argument load (2 bytes)
+006a8c60	RELOCATION_MATCH	195v195	PASS	(!a&&!b)||(a&&b) term order
+006a8930	RELOCATION_MATCH	162v162	PASS	nested ifs, named owner
+00960fc0	RELOCATION_MATCH	188v188	PASS	nested ifs; inline by-value flag helpers
+00809030	DIFFER	166v166	-	scheduling of lea ecx for the facing copy
+008090e0	DIFFER	192v192	-	argument-load scheduling and lock register (scheduling only)
+00799d80	RELOCATION_MATCH	173v173	PASS	implicit CCharString conversion for the volume name
+007f6df0	DIFFER	289v239	-	long-form def release on each exit (lane gap)
+006a8240	RELOCATION_MATCH	178v178	PASS	reference Min, HasTC wrapping the body
+0051e210	RELOCATION_MATCH	174v174	PASS	64-bit region mask, per-arm lookups
+00525cd0	DIFFER	192v179	-	register allocation (this spill / vector words in ebx-edi)
+006ab770	RELOCATION_MATCH	172v172	PASS	by-value Magnitude helper, inline *=
+00663e90	RELOCATION_MATCH	175v175	PASS	ternary GetTC into ecx; CAnimInit temp
+00662cc0	RELOCATION_MATCH	181v181	PASS	def holder released per exit; restricted false last
+006a9d10	RELOCATION_MATCH	172v172	PASS	by-value CDefPointer copy; if/else-if clamp
+007038d0	RELOCATION_MATCH	199v199	PASS	component-wise spin, implicit "" name
+00704150	RELOCATION_MATCH	215v215	PASS	slot 19 = WorldUpdate; out-param const GetInterface for TC 0x47
+00637e70	RELOCATION_MATCH	191v191	PASS	engine header via _PDB rename; C2DCoordI temps, BL declared first
+006626e0	DIFFER	160v178	-	retail keeps a partial second copy of the movement vector (X in dead arg slot, Y in extra frame word)
+00667b30	DIFFER	218v206	-	long-form release + push_back value/tag slot sharing (two known lane gaps); label wrong (not GetCombatAnimationSet)
+006a7fb0	DIFFER	220v220	-	frame-slot assignment of the coordinate copies
+0085cde0	DIFFER	229v214	-	loop register allocation; speculative empty walk body

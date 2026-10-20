@@ -1,0 +1,13 @@
+address	name	evidence
+004f914a	CHeroExperienceDef::operator=	catalogued CThingBuildingDef::operator= (chunk 214)
+0067ce50	COpinionReactionManagerDef::operator=	catalogued CThingBuildingDef::operator= (chunk 214)
+006b1960	CAtmosProcess::CAtmosProcess	constructor, not GetCombatAnimationSet (chunk 214)
+00667b30	CThingCreatureBase::GetAppropriateCombatAnimation	returns a picked animation entry, descriptive name (chunk 214)
+00704150	CThingObject::WorldUpdate	vtable slot 19 (chunk 214)
+00662430	CThingCreatureBase::IsCombatant	propagated label (chunk 214)
+004c7ae0	CThing::GetRandomSeed	random-seed getter (chunk 214)
+004c79f0	CThing::GetPlayerManager	player-manager getter (chunk 214)
+007445d0	CTCPerceiveThing::GetFOV	FOV getter (chunk 214)
+00838ba0	CThingGameObject::WorldUpdate	(chunk 214)
+00a01b50	CBaseIntelligentPointer::GetPItem	returns CBaseObject* const; 432 landed files say CThing* (chunk 214)
+0087c420	CTCSinglePersonOccupiable::IsOfType	(EOccupyType) (chunk 214)
