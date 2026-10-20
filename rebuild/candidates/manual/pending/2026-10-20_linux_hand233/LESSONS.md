@@ -1,0 +1,20 @@
+# Chunk 233 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- IS_THING_ALIVE on a raw member pointer is `template<class T> bool IS_THING_ALIVE(T* const& p) { if (p != 0) { if (!(p->m_flags91 & 1)) return true; } return false; }`: retail tests the pointer in eax and re-reads the member into ecx for the following call; a macro or a by-value helper keeps it in ecx (00751c70, 00751e80).
+- Two named float locals instead of a C2DVector local stop VC7.1 sharing frame words between a short-lived vector and a later address-taken box (0x18 v 0x20 frame) and decide which value is homed in a dead argument slot (00725a30, 007267c0).
+- A copy of two C3DVector members into frame locals reproduces retail's direct `[ebx+N]` loads only with a user copy ctor; the implicit POD copy goes through a carrier register (00724290, 0075a350).
+- `C3DVector d = pos - other->Position;` through an inline operator- (instead of the component ctor) changes which dead argument slots the squared terms are homed in (008802b0).
+- A single-expression `X*X + Y*Y + Z*Z` lets VC7.1 order the squares by x87 stack position (ZZ,XX,+,YY for one vector, ZZ,YY,+,XX for another in the same function); `x*x + (y*y + z*z)` pins ZZ,YY,+,XX (00752000, 006b0610).
+- A `cos()` result assigned to a float local before the compare gives retail's `fxch ; fxch` before fcompp; comparing against the cos expression drops it (006b0610).
+- Equality tests between a member and a saved local follow source operand order in fucompp: write `Member == old` for retail's `fld [member]` second (00752200).
+- Nested outer ifs with a single shared `return false`, but per-arm `if (!Call()) return false;` in an if/else of two calls: a merged `bool ok = cond ? A() : B()` lets VC7.1 tail-merge both calls into one test (006223c0).
+- The inventory dtor (0059ec48) needs `#pragma optimize("s", on)`: under speed a `for (i = 0; i < v.size(); ++i)` entry test is `test ; jbe`, retail's sar-flags `je` comes from the size TU; emptying the vector through an inline `clear() { erase(begin(), end()); }` pushes the range from the vector register (`push [edi+4] ; push [edi]`).
+- A polymorphic manager whose CreateComponent comes from a non-polymorphic base makes VC7.1 adjust `this` (`lea ecx,[edi+4]`); put the virtual slots in the base that owns CreateComponent (005ae86b).
+- `name += GetXString() + IntToWideString(count);` evaluates the right operand first, so IntToWideString's temporary is built before GetXString's (0059ca95).
+- A component pointer that retail calls without a null test after `xor reg,reg` is `T* p = 0; if (thing->test(k)) p = Find(k); p->F();`; when retail reads the key's frame word instead it is the uninitialised GetTCIfPresent form (005c4671 draft, 006223c0).
+- `CThing* thing = ParentThing;` declared after a block-scoped CCharString puts the parent reload into the dead `this` register before the AddTC pushes (007e59b0).
+- A load arm whose version local retail never stores is `long version;` uninitialised; `= 0` moves it to another frame word (007e8460).
+- Review at landing: 00724290 / 0075a350 / 00725a30 / 007267c0 / 008802b0 / 006b0610 model CTCPhysicsBase locally (engine/CTCPhysicsBase.h, CTCPhysicsStandard.h, CTCPhysicsNavigator.h flatten the C3DVector members into floats and have no virtuals); 0059ec48 / 0059ca95 / 0059cfbd / 0059d0b8 / 0059d65a / 005ae86b model CTCInventoryTrade locally next to engine/CTCInventoryTrade.h (PDB 16-byte containers, flattened pads).
+- Review at landing: 0059d0b8 / 0059d65a carry the same-TU noinline `find` stand-in body copied from the landed FinalRefreshSubtitles 0x0059D761 (accepted precedent); the leaf is the larger function.
+- Review at landing: the landed FrameUpdateHeadLookAtPos (0x007530D0) declares GetAnglesFromBodyToPos with pointers; FableWin.pdb has `(const C3DVector&, bool, float&, float&) const` (0x00751C70 here uses the PDB signature; same code, different mangled name).
+- Review at landing: both RefreshNameAndTitle rows carry the same catalog name; 0x0059CA95 is the PC variant (see NOTES label corrections) -- make sure the two land under distinct names.

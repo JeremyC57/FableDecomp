@@ -253749,6 +253749,160 @@ $catalog = @(
         TestSource = '00/c3/CVtable012B5870_Cleanup_00c3d160_test.cpp'
         PassPattern = '00c3d160_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0059ca95'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_RefreshNameAndTitlePC_0059ca95.cpp'
+        TestSource = '00/59/CTCInventoryTrade_RefreshNameAndTitlePC_0059ca95_test.cpp'
+        PassPattern = '0059ca95_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059cfbd'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_RefreshNameAndTitle_0059cfbd.cpp'
+        TestSource = '00/59/CTCInventoryTrade_RefreshNameAndTitle_0059cfbd_test.cpp'
+        PassPattern = '0059cfbd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059d0b8'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_FinalConstructSubtitles_0059d0b8.cpp'
+        TestSource = '00/59/CTCInventoryTrade_FinalConstructSubtitles_0059d0b8_test.cpp'
+        PassPattern = '0059d0b8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059d65a'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_FinalConstructSubtitlesPC_0059d65a.cpp'
+        TestSource = '00/59/CTCInventoryTrade_FinalConstructSubtitlesPC_0059d65a_test.cpp'
+        PassPattern = '0059d65a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059ec48'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_CTCInventoryTrade_0059ec48.cpp'
+        TestSource = '00/59/CTCInventoryTrade_CTCInventoryTrade_0059ec48_test.cpp'
+        PassPattern = '0059ec48_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ae86b'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_OpenInventoryPC_005ae86b.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_OpenInventoryPC_005ae86b_test.cpp'
+        PassPattern = '005ae86b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006223c0'
+        Module = 'CTCInventoryQuests'
+        Source = '00/62/CTCInventoryQuests_vfunc70_006223c0.cpp'
+        TestSource = '00/62/CTCInventoryQuests_vfunc70_006223c0_test.cpp'
+        PassPattern = '006223c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b0610'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_ModifyResponseForNearVerticalSlopes_006b0610.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_ModifyResponseForNearVerticalSlopes_006b0610_test.cpp'
+        PassPattern = '006b0610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00724290'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_OnSerialise_00724290.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_OnSerialise_00724290_test.cpp'
+        PassPattern = '00724290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00725a30'
+        Module = 'CTCPhysicsControlled'
+        Source = '00/72/CTCPhysicsControlled_GetPossibleCollidedWithArea_00725a30.cpp'
+        TestSource = '00/72/CTCPhysicsControlled_GetPossibleCollidedWithArea_00725a30_test.cpp'
+        PassPattern = '00725a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007267c0'
+        Module = 'CTCPhysicsNavigator'
+        Source = '00/72/CTCPhysicsNavigator_GetPossibleCollidedWithAreaWithImpulse_007267c0.cpp'
+        TestSource = '00/72/CTCPhysicsNavigator_GetPossibleCollidedWithAreaWithImpulse_007267c0_test.cpp'
+        PassPattern = '007267c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00751970'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_GetBodySettingsSlowInFastOut_00751970.cpp'
+        TestSource = '00/75/CTCLook_GetBodySettingsSlowInFastOut_00751970_test.cpp'
+        PassPattern = '00751970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00751c70'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_GetAnglesFromBodyToPos_00751c70.cpp'
+        TestSource = '00/75/CTCLook_GetAnglesFromBodyToPos_00751c70_test.cpp'
+        PassPattern = '00751c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00751e80'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_GetTurningAngles_00751e80.cpp'
+        TestSource = '00/75/CTCLook_GetTurningAngles_00751e80_test.cpp'
+        PassPattern = '00751e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00752000'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_UpdateHeadPos_00752000.cpp'
+        TestSource = '00/75/CTCLook_UpdateHeadPos_00752000_test.cpp'
+        PassPattern = '00752000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00752200'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_ChangeEyeAngles_00752200.cpp'
+        TestSource = '00/75/CTCLook_ChangeEyeAngles_00752200_test.cpp'
+        PassPattern = '00752200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00753170'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_CTCLook_00753170.cpp'
+        TestSource = '00/75/CTCLook_CTCLook_00753170_test.cpp'
+        PassPattern = '00753170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075a350'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_OnSerialise_0075a350.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_OnSerialise_0075a350_test.cpp'
+        PassPattern = '0075a350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e59b0'
+        Module = 'CTCLifeTimer'
+        Source = '00/7e/CTCLifeTimer_FrameUpdate_007e59b0.cpp'
+        TestSource = '00/7e/CTCLifeTimer_FrameUpdate_007e59b0_test.cpp'
+        PassPattern = '007e59b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e8460'
+        Module = 'CTCOwnedEntity'
+        Source = '00/7e/CTCOwnedEntity_OnSerialise_007e8460.cpp'
+        TestSource = '00/7e/CTCOwnedEntity_OnSerialise_007e8460_test.cpp'
+        PassPattern = '007e8460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fb500'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_HasTargetBeenHitByKraken_007fb500.cpp'
+        TestSource = '00/7f/CTCKraken_HasTargetBeenHitByKraken_007fb500_test.cpp'
+        PassPattern = '007fb500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008802b0'
+        Module = 'CTCPhysicsBase'
+        Source = '00/88/CTCPhysicsBase_HasSphereCylinderCollidedAt_008802b0.cpp'
+        TestSource = '00/88/CTCPhysicsBase_HasSphereCylinderCollidedAt_008802b0_test.cpp'
+        PassPattern = '008802b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

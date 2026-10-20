@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006223c0	RELOCATION_MATCH	242v242	PASS	InventoryQuests vfunc_70; nested outer ifs, per-arm false returns
+005cd33f	DIFFER	246v244	-	InventoryStats OnCreate: this esi v edi (push sunk) + def release through eax (known gap)
+0059c983	DIFFER	240v274	-	IsSpecialCase: release chains shared (retail duplicates per exit); first draft
+0059ca95	RELOCATION_MATCH	251v251	PASS	RefreshNameAndTitlePC (catalog label is the console name)
+0059cfbd	RELOCATION_MATCH	251v251	PASS	RefreshNameAndTitle (console twin)
+0059d0b8	RELOCATION_MATCH	249v249	PASS	FinalConstructSubtitles (FinalRefreshSubtitles + CreateTitlePC models)
+0059d65a	RELOCATION_MATCH	263v263	PASS	FinalConstructSubtitlesPC twin
+0059ec48	RELOCATION_MATCH	250v250	PASS	~CTCInventoryTrade; optimize(s) + inline clear()
+0059fafe	DIFFER	284v281	-	RefreshEntriesAmountsAndAvailabilitiesPC: frame word layout
+005ae86b	RELOCATION_MATCH	263v263	PASS	OpenInventoryPC (Experience::OpenInventory model)
+005c4671	DIFFER	248v248	-	GetFreeAugmentationSlotForWeapon: register permutation only (this edi v esi)
+007fb500	RELOCATION_MATCH	262v262	PASS	HasTargetBeenHitByKraken
+007fbb00	DIFFER	294v299	-	CreateHeadEffect: temp not packed over the dead def out-slot (frame 0x10 v 0xc)
+007e59b0	RELOCATION_MATCH	283v283	PASS	CTCLifeTimer::FrameUpdate; named thing local for AddTC
+00751970	RELOCATION_MATCH	254v254	PASS	GetBodySettingsSlowInFastOut (snaps to target)
+00751c70	RELOCATION_MATCH	297v297	PASS	GetAnglesFromBodyToPos; IS_THING_ALIVE(T* const&) template
+00751e80	RELOCATION_MATCH	304v304	PASS	GetTurningAngles; nested ifs, forceinline operator!= and WrapAngle
+00752000	RELOCATION_MATCH	280v280	PASS	UpdateHeadPos; single-expression MagnitudeSquared
+00752200	RELOCATION_MATCH	242v242	PASS	ChangeEyeAngles
+00752e00	DIFFER	272v296	-	SetBodyMoving: temporaries not homed in dead local words (frame 0xc v 8)
+00753170	RELOCATION_MATCH	284v284	PASS	CTCLook ctor (CTCLight model)
+00753380	DIFFER	298v297	-	FrameUpdateHeadInterested: camera-block placement + dead zero init
+0078809b	DIFFER	-v253	-	not attempted: 0x3c frame, CAnimInit build + def dance + by-value vtable functor; no source
+007cce20	DIFFER	-v299	-	not attempted: CGameEvent-style 0x5c local, new(0x18) action, combat timing; no source
+00771660	DIFFER	-v265	-	not attempted: new of a vector-in-struct, list push_back of an intelligent pointer; no source
+007e5ff0	DIFFER	-v255	-	not attempted: function-static CWideString with atexit guard, conditional temporary dtor flag; no source
+007e8460	RELOCATION_MATCH	297v297	PASS	CTCOwnedEntity::OnSerialise; uninitialised load version
+00745730	DIFFER	263v272	-	UpdatePerception: tail-call block placement and timer spill
+006afaf0	DIFFER	249v249	-	x87 operand order in XY length sum and dot spill
+006b0460	DIFFER	-v310	-	not attempted: orientation interpolator with 4 virtual RH-set getters and idiv frame math; no source
+006b0610	RELOCATION_MATCH	286v286	PASS	ModifyResponseForNearVerticalSlopes; float limit local gives fxch pair
+008802b0	RELOCATION_MATCH	291v291	PASS	C3DVector operator- for the offset fixes the argument-slot homing
+008803e0	DIFFER	305v301	-	last Normalise product keeps r alive (fld;fmul st1;fstp st0) vs retail fmul [mem]
+00880510	DIFFER	299v301	-	Normalise reciprocal kept on x87 stack (fst/fmul st2) vs retail fstp + fmul [mem]
+00725a30	RELOCATION_MATCH	307v307	PASS	GetPossibleCollidedWithArea; float locals, radius + (Pos.Y + Max)
+00726be0	DIFFER	-v254	-	not attempted: thing search into a vector + by-value 24-byte for_each functor (template callees); no source
+00724290	RELOCATION_MATCH	300v300	PASS	CTCPhysicsStandard::OnSerialise (label propagated); user C3DVector copy ctor
+007267c0	RELOCATION_MATCH	267v267	PASS	CTCPhysicsNavigator::GetPossibleCollidedWithAreaWithImpulse (label propagated)
+0075a350	RELOCATION_MATCH	300v300	PASS	CTCPhysicsRigidBody::OnSerialise twin
+0075aec0	DIFFER	-v306	-	not attempted: 3x3 matrix-vector x87 body around two virtual calls; no source

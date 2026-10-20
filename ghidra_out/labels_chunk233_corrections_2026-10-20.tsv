@@ -1,0 +1,10 @@
+address	name	evidence
+00724290	CTCPhysicsStandard::OnSerialise	vtable 0x01265F84 slot 1, not CTCPhysicsRigidBody::OnSerialise (chunk 233)
+0075a350	CTCPhysicsRigidBody::OnSerialise	slot 1, was vfunc_1 (chunk 233)
+007267c0	CTCPhysicsNavigator::GetPossibleCollidedWithAreaWithImpulse	FableWin.pdb, callers in UpdateAdditionalImpulse; not CTCPhysicsRigidBody::GetPossibleCollidedWithArea (chunk 233)
+00725a30	CTCPhysicsControlled::GetPossibleCollidedWithArea	was vfunc_98 (chunk 233)
+007e59b0	CTCLifeTimer::FrameUpdate	was vfunc_9 (chunk 233)
+0059ca95	CTCInventoryTrade::RefreshNameAndTitlePC	PC_SUBTITLE_INDEPENDANT, called from BuyItemPC 0x005B0AAC; 0059cfbd is the console RefreshNameAndTitle (chunk 233)
+00880510	CTCPhysicsBase::HasSphereSphereCollidedAt_4arg	(other, from, to, response) overload calling the 3-arg 0x008803E0 (chunk 233)
+0065de8a	std::list<CIntelligentPointer<CThing>>::remove	not CEditControlCentre::SetScriptBrushThingsToMove (chunk 233)
+005b1a43	std::map<CComponent*,CList*>::find	not std::set_FindLE (chunk 233)
