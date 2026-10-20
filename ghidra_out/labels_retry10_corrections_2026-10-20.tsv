@@ -6,3 +6,5 @@ address	name	evidence
 0076aae0	std::__linear_insert	STLport, ret 14h, not CCompressorZlib::SetupStream (retry 10)
 00a69ad0	CFrameDataHandle::Clear	11 call sites, not CViewport::ClearHandle (retry 10)
 00686d20	CTCBase::GetWorldMap	reads a global; manifest GetDisplayEngine is propagated (retry 10)
+00729bc0	CTCActionUseScriptedHook::ResolveEntranceConnectedTo	CIntelligentPointer operator= body; propagated CTCPreCalculatedNavigationRoute label (retry 10)
+006c77e0	std::map<long,COpinionDeed*>::find	CTCHeroOpinionDeedLog::OpinionDeedMap; propagated BinaryTree_FindInsertPos label (retry 10)
