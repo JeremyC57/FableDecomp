@@ -130,8 +130,11 @@ linker 3052 (Rich header, FINDINGS_LOG 2026-10-20). The Linux lane originally ha
 VS .NET 2003 disc (archive.org item `visual-studio-2003-unpacked`, `VisualStudio2003.zip`, SHA-1
 `298398e607a8e6033abe261987b94cab8fb57c24`, already unpacked): copy `Vc7/bin` to `$S/wine/vc71rtm/bin`, add
 `mspdb71.dll` and `msobj71.dll` from `Common7/IDE`, symlink `include` and `lib` to the DDK tree, keep
-`LINK=bufferoverflowu.lib`. `FABLE_VC71=$S/wine/vc71rtm` grades with it; the 4035 build stays reachable as `--qfe`
-(`VC71_QFE=$S/wine/vc71`), matching the Windows layout. What 3077 changed: the parked `/GS` rows whose stack-cookie
-prologue 4035 could not reproduce now match (5 landed, `batches/2026-10-20_linux_gs_rtm3077`); the inventory frame-slot
+`LINK=bufferoverflowu.lib`. **Since 2026-10-20 it is the lane default** (`FABLE_VC71=$S/wine/vc71rtm` in
+`$S/wine/env.sh` / `env.sh.template`); the 4035 build stays reachable as `--qfe` (`VC71_QFE=$S/wine/vc71`), matching
+the Windows layout. The switch was made after the full parked-row sweep (1,079 rows) and a 3,400-row landed-catalog
+re-grade under 3077 showed no compiler-caused difference anywhere except the `/GS` prologue. What 3077 changed: the
+parked `/GS` rows whose stack-cookie prologue 4035 could not reproduce now match (24 landed,
+`batches/2026-10-20_linux_gs_rtm3077` and `_b`); the inventory frame-slot
 and zero-register rows, the inline-once destructor band and the biased /GS frame (00581b33) do not change, so those are
 source-formulation questions, not compiler-build ones.

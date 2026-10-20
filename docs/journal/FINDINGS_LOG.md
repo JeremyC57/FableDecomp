@@ -373,5 +373,9 @@ Shapes that resist VC7.1 under every lander sweep setting (pragmas "", s, t, g, 
   removed as redundant.
 - Addendum 3 (2026-10-20, full parked sweep under 3077, all 1,079 rows): 20 rows RELOCATION_MATCH, all
   `/GS` cookie-prologue rows except 009b98b0 (already landed; stale parked copy). 19 landed with agent-written tests
-  (`batches/2026-10-20_linux_gs_rtm3077_b`). Every other row DIFFERs with the same byte counts as under 4035. The rest of
-  the sweep and the landed-catalog spot check are recorded here when they finish.
+  (`batches/2026-10-20_linux_gs_rtm3077_b`). Every other row DIFFERs with the same byte counts as under 4035. Landed
+  catalog re-grade under 3077 (first 3,693 rows, 266 asm_bake excluded): 917 MATCH, 2,486 RELOCATION_MATCH, 12 DIFFER,
+  and all 12 DIFFER identically under 4035 (q.py artefacts on early landings: 004012ce, 00401c00, 00404280, 0040bb90,
+  0041d207, 00429e16, 0043c3c0, 0043f3a0, 00449d20, 0046649a, 0049bb60, 004af220), so no compiler-caused change.
+  The lane default was switched to 3077 (`$S/wine/env.sh`, `env.sh.template`); running agents pick it up on their next
+  call; the DDK 4035 stays as `--qfe`.
