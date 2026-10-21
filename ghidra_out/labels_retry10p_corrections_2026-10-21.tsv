@@ -1,0 +1,12 @@
+address	name	evidence
+0054e980	NUISystem::CScrollingViewport::RemoveChild	propagated CParticleEmitter::ClearAllPrimitives was wrong (retry 10p)
+006a2220	CTCCarrying::GetAllCarriedThings	propagated COptimisedPrimitive::RemapGroups was wrong (retry 10p)
+006e5790	CScriptConversation::AddPersonToConversation	forge-autoname had CConversation and the wrong parameter (retry 10p)
+00a0e680	std::uninitialized_copy	not DequeIterator_CopySegments (retry 10p)
+00a0e790	std::__copy_aux	not CNavigatorAStar::MoveToNavLineOfSightProximity (retry 10p)
+00a0ed80	std::__copy_aux	not CNavigatorAStar::MoveToNavLineOfSightProximity (retry 10p)
+00a0eb40	std::copy	not CEnginePrimitiveRenderer::AddStaticMesh (retry 10p)
+00a0ef90	std::copy	not CEnginePrimitiveRenderer::AddStaticMesh (retry 10p)
+00c2d800	CAudioFormat::BytesToSamples	manifest label CTCHeroExperience::AddSuccessfulBlockParry propagated from an unrelated body (retry 10p)
+00c2d820	CAudioFormat::SamplesToBytes	manifest label propagated from an unrelated body (retry 10p)
+00c21330	CPlayer::IsFirstPersonTargeting	catalog label doubtful; see the Identity comment in the source (retry 10p)
