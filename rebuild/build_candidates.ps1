@@ -264561,6 +264561,97 @@ $catalog = @(
         TestSource = '00/80/CTCPreCalculatedNavigationRoute_SaveRoute_008006d0_test.cpp'
         PassPattern = '008006d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00587847'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ClosePCInventory_00587847.cpp'
+        TestSource = '00/58/CTCInventory_ClosePCInventory_00587847_test.cpp'
+        PassPattern = '00587847_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00730c00'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_Open_00730c00.cpp'
+        TestSource = '00/73/CTCDoor_Open_00730c00_test.cpp'
+        PassPattern = '00730c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00730dd0'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_Close_00730dd0.cpp'
+        TestSource = '00/73/CTCDoor_Close_00730dd0_test.cpp'
+        PassPattern = '00730dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cc2b0'
+        Module = 'CTCMultiArrow'
+        Source = '00/7c/CTCMultiArrow_CreateAmmoEffect_007cc2b0.cpp'
+        TestSource = '00/7c/CTCMultiArrow_CreateAmmoEffect_007cc2b0_test.cpp'
+        PassPattern = '007cc2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008201e0'
+        Module = 'CMap'
+        Source = '00/82/CMap_InitPassabilityFromThemesIfNecessary_008201e0.cpp'
+        TestSource = '00/82/CMap_InitPassabilityFromThemesIfNecessary_008201e0_test.cpp'
+        PassPattern = '008201e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c8180'
+        Module = 'CCreatureAction_BanditKingLunge'
+        Source = '00/8c/CCreatureActionBanditKingLunge_PerformAction_008c8180.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingLunge_PerformAction_008c8180_test.cpp'
+        PassPattern = '008c8180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d1130'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsHitByWithWeapon_008d1130.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsHitByWithWeapon_008d1130_test.cpp'
+        PassPattern = '008d1130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008da0f0'
+        Module = 'NCreatureMode::CModeScorpionKingTailPlunge'
+        Source = '00/8d/NCreatureModeCModeScorpionKingTailPlunge_Spike_008da0f0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeScorpionKingTailPlunge_Spike_008da0f0_test.cpp'
+        PassPattern = '008da0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008dacb0'
+        Module = 'NCreatureMode::CModeThunderLightningStorm'
+        Source = '00/8d/NCreatureModeCModeThunderLightningStorm_CreateHandGlow_008dacb0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeThunderLightningStorm_CreateHandGlow_008dacb0_test.cpp'
+        PassPattern = '008dacb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008db620'
+        Module = 'CModeDragonFireBeam'
+        Source = '00/8d/CModeDragonFireBeam_StartBeamEffect_008db620.cpp'
+        TestSource = '00/8d/CModeDragonFireBeam_StartBeamEffect_008db620_test.cpp'
+        PassPattern = '008db620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008dc900'
+        Module = 'NCreatureMode::CModeDragonStrafeBurninate'
+        Source = '00/8d/NCreatureModeCModeDragonStrafeBurninate_UpdateBeam_008dc900.cpp'
+        TestSource = '00/8d/NCreatureModeCModeDragonStrafeBurninate_UpdateBeam_008dc900_test.cpp'
+        PassPattern = '008dc900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e7a00'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportInvulnerable'
+        Source = '00/8e/NCreatureModeCModeBriarRoseTeleportInvulnerable_OnActivate_008e7a00.cpp'
+        TestSource = '00/8e/NCreatureModeCModeBriarRoseTeleportInvulnerable_OnActivate_008e7a00_test.cpp'
+        PassPattern = '008e7a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a755c0'
+        Module = 'CContainmentVolume'
+        Source = '00/a7/CContainmentVolume_Initialise_00a755c0.cpp'
+        TestSource = '00/a7/CContainmentVolume_Initialise_00a755c0_test.cpp'
+        PassPattern = '00a755c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
