@@ -1,0 +1,7 @@
+address	name	evidence
+00ec5140	CV_RockTrollFirstEncounterScript::WatchForRockTrollHit	(chunk 267)
+00d34470	CQ_FireHeartScript::CQ_FireHeartScript	ctor (chunk 267)
+00e1fef0	WatchForExpressionWait	catalog repeats WatchForExpressionFollow (chunk 267)
+00e6b750	CV_ChapelOfEvilScript::WatchForRegionEntry	(chunk 267)
+0099a350	CInitBaseClass::Init	labelled CXMVPlaybackInfo (chunk 267)
+009b9c00	CStringParser::SeekToName	seek-to-name method, not SerialiseGameState (chunk 267)

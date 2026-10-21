@@ -1919,3 +1919,23 @@ address	module	name	length	chunk	reason
 00687540	CMessageEventManager	AddMessage	496	hand265	DIFFER(486v486) -- esi/edi swap (originator/target)
 00687730	CMessageEventManager	AddMessage	480	hand265	DIFFER(477v477) -- faction key temporary in pos v def param slot
 008db620	CModeDragonFireBeam	StartBeamEffect	496	hand265	DIFFER(490v481) -- frame slot packing only (R-0x2c shared slot)
+004888c0	CPlayer	SwitchPlayerCharactersWith	448	hand267	DIFFER(443v443) -- register swap only (this in ebx v ebp); parked
+00488b20	CPlayer	LocateCharacterStartHolySite	496	hand267	DIFFER(494v494) -- one instruction: find_if tag pushed as lea/push (address) v mov (value); parked
+00499aa0	CProgressDisplay	CProgressDisplay::StartProgress	432	hand267	DIFFER(410v418) -- two dead stores of the GetFont temporary (Data=0/Info=0) missing; parked
+00815ce0	CPhysicalPrimitiveCylinder	IsPosInside	416	hand267	DIFFER(420v409) -- x87 scheduling of the cylinder inside test; one attempt
+00816150	CPhysicalPrimitiveCylinder	Init	416	hand267	DIFFER(400v406) -- float traits this/value CSE (mov ecx,edx) + second ',' marker slot; parked after 9 grades
+008faa80	CPhysicsForceModelBase	DoCreatureEvasion	432	hand267	DIFFER(411v417) -- x87 spill/fadd [mem] scheduling of the evasion sample loop; parked
+008fadb0	CPhysicsForceModelBase	DoGroundEvasion	448	hand267	DIFFER(504v446) -- shared evasion loop schedule + result clamp tail; parked
+008faf70	CPhysicsForceModelBase	DoThingEvasion	512	hand267	DIFFER(482v510) -- sketch; evasion loop + thing/mesh list order; parked
+00a11d10	CPhysicsMeshObject	GetNavigationLevelAt	432	hand267	DIFFER(491v422) -- inline affine inverse: returned-matrix temporary (frame 0x70 v 0x40) + per-product fld/fmul order; parked
+00a11f20	CPhysicsMeshObject	IsSpherePartContainedInBoundingBox	432	hand267	DIFFER(491v428) -- sketch, same inverse family as 00a11d10; callee shape guessed
+00a128e0	CPhysicsMeshObject	IsInContainmentVolume	464	hand267	DIFFER(538v464) -- sketch, same inverse family as 00a11d10
+00a12ab0	CPhysicsMeshObject	PeekRoughProportionOfSphereContainedInVolume	480	hand267	DIFFER(539v468) -- sketch, same inverse family as 00a11d10
+00d91740	CQ_HobbeCaveScript	RescuedBandit	496	hand267	DIFFER(372v481) -- local vector<CScriptThing> dtor inline at early returns v out of line; lane gap (inline-once family)
+00d97170	CQ_HobbeCaveScript	CheckJamesKilled	496	hand267	DIFFER(469v491) -- inline-once ~CScriptThing lane gap (00f09260 family)
+00e1fcf0	CQR_EscortTraderScript	WatchForExpressionFollow	448	hand267	DIFFER(388v435) -- inline-once ~CScriptThing lane gap + == bool frame temp
+00e1fef0	CQR_EscortTraderScript	WatchForExpressionFollow	435	hand267	DIFFER(388v435) -- same as 00e1fcf0; really WatchForExpressionWait (label duplicated)
+00e6b750	CQ_BountyHuntScript	WatchForEnableFisherCreekHutDoor	432	hand267	DIFFER(390v424) -- inline-once ~CScriptThing lane gap; really CV_ChapelOfEvilScript::WatchForRegionEntry
+00f081e0	CQ_AmbushTradersScript	BanditHireSetup	448	hand267	DIFFER(440v440) -- frame layout only ("" region string slot); parked
+00f09260	CQ_AmbushTradersScript	WatchForHeroAttackOnSentry	448	hand267	DIFFER(424v445) -- inline-once ~CScriptThing lane gap (advisor shape e4, one site left)
+00f09950	CQ_AmbushTradersScript	WatchForHeroAttackOnContact	448	hand267	DIFFER(424v437) -- same as 00f09260 (twin body)

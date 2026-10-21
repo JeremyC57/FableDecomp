@@ -1,0 +1,90 @@
+// Grade: DIFFER(411v417) -- x87 scheduling: retail spills the sample's y/z into frame temporaries and adds `offset*0.1f` then the camera position (fadd [mem]); ours keeps them on the FPU stack (fadd st(2)); the focal-point copy for push_back also uses different frame slots
+// NCameraModes::CPhysicsForceModelBase::DoCreatureEvasion() -- potential-field push away from the owner creature's focal point: samples 1/distance around the camera position and returns the scaled gradient
+// Leaf: ?DoCreatureEvasion@CPhysicsForceModelBase@
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008FAA80, 417 bytes, `ret 4` (C3DVector by hidden pointer).
+// Callees: 0x0084F1B0 (the owner's thing; manifest label "_Cons_val<...>" propagated), CTCGraphicAppearance::GetCameraFocalPos
+//   0x004C12D0 (thing +0x64), malloc 0x00BFEA0E (list header and node, 0x14 bytes), the list<C3DVector> destructor 0x0048CA60
+//   (manifest "SortTreeRecursively"). Constants: offsets table 0x013893AC {0, X, Y, Z}, 0.1f 0x0122EE58, 50.0f 0x0124E7F8,
+//   10.0f 0x01237F0C.
+// Layout: retail Owner +0xA4 (PDB +0xEC: each CPhysicsCollisionPointsObject is 0x18 bytes narrower in retail).
+extern "C" void* __cdecl malloc(unsigned int size); // 0x00BFEA0E
+inline void* __cdecl operator new(unsigned int, void* place) { return place; }
+float __cdecl sqrtf_(float);
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector() { }
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
+    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
+    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
+    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
+    float MagSquared() const { return X * X + Y * Y + Z * Z; }
+};
+float Sqrt(float x);
+#pragma intrinsic(sqrt)
+extern "C" double __cdecl sqrt(double);
+inline float Magnitude(const C3DVector& v) { return (float)sqrt(v.Z * v.Z + v.Y * v.Y + v.X * v.X); }
+
+struct SVectorNode { SVectorNode* _M_next; SVectorNode* _M_prev; C3DVector _M_data; };
+struct CVectorList {                               // STLport list<C3DVector>: 4-byte header pointer
+    SVectorNode* _M_node;
+    CVectorList()
+    {
+        SVectorNode* head = (SVectorNode*)malloc(sizeof(SVectorNode));
+        head->_M_next = head;
+        head->_M_prev = head;
+        _M_node = head;
+    }
+    ~CVectorList();                                // 0x0048CA60
+    void push_back(const C3DVector& value)
+    {
+        SVectorNode* position = _M_node;
+        SVectorNode* node = (SVectorNode*)malloc(sizeof(SVectorNode));
+        new (&node->_M_data) C3DVector(value);
+        SVectorNode* prev = position->_M_prev;
+        node->_M_next = position;
+        node->_M_prev = prev;
+        prev->_M_next = node;
+        position->_M_prev = node;
+    }
+};
+
+extern const C3DVector g_EvasionSampleOffsets[4];  // 0x013893AC: 0, X, Y, Z
+struct CTCGraphicAppearance {
+    C3DVector GetCameraFocalPos(float t) const;    // 0x004C12D0
+};
+struct CThing {
+    unsigned char         _pad00[0x64];
+    CTCGraphicAppearance* Appearance;              // +0x64
+};
+namespace NCameraModes {
+struct CBase {
+    CThing* GetThing() const;                      // 0x0084F1B0
+};
+struct CPhysicsState {
+    C3DVector Position;                            // +0x00
+};
+struct CPhysicsForceModelBase {
+    virtual void v00();
+    CPhysicsState* LinkedState;                    // +0x04
+    unsigned char  _pad08[0xa4 - 0x08];
+    CBase*         Owner;                          // +0xa4 (PDB +0xEC)
+    C3DVector DoCreatureEvasion();
+};
+
+C3DVector CPhysicsForceModelBase::DoCreatureEvasion()
+{
+    CThing* thing = Owner->GetThing();
+    C3DVector focal = thing->Appearance->GetCameraFocalPos(1.0f);
+    C3DVector position = LinkedState->Position;
+    CVectorList creatures;
+    creatures.push_back(focal);
+    float potential[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+    for (SVectorNode* it = creatures._M_node->_M_next; it != creatures._M_node; it = it->_M_next) {
+        for (long i = 0; i < 4; ++i) {
+            C3DVector sample = g_EvasionSampleOffsets[i] * 0.1f + position;
+            potential[i] += 50.0f / Magnitude(sample - it->_M_data);
+        }
+    }
+    return C3DVector((potential[1] - potential[0]) * 10.0f, (potential[2] - potential[0]) * 10.0f, (potential[3] - potential[0]) * 10.0f);
+}
+}

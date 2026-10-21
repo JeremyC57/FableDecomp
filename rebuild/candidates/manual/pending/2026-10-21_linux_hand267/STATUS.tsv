@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00437ae0	RELOCATION_MATCH	483v483	PASS	CPlayerGui::UpdateStat; clamps as inline ref helpers, frame timeout as __forceinline helper (fps local first, start frame by const&)
+004387f0	RELOCATION_MATCH	406v406	PASS	CPlayerGui::RenderUpdateGuiTimers; first try with the landed GetPlayerGuiDef helper
+004888c0	DIFFER	443v443	-	register swap only (this in ebx v ebp); parked
+00488b20	DIFFER	494v494	-	one instruction: find_if tag pushed as lea/push (address) v mov (value); parked
+0048a210	RELOCATION_MATCH	410v410	PASS	CPlayer::PlayerInit; retail-view CPlayer (PlayerModes 4-byte list), const CPlayerInit*
+00499880	RELOCATION_MATCH	489v489	PASS	CProgressDisplay::RenderProgress; scoped capture-block object, C2DBoxI user copy ctor
+00499aa0	DIFFER	410v418	-	two dead stores of the GetFont temporary (Data=0/Info=0) missing; parked
+00815ce0	DIFFER	420v409	-	x87 scheduling of the cylinder inside test; one attempt
+00816150	DIFFER	400v406	-	float traits this/value CSE (mov ecx,edx) + second ',' marker slot; parked after 9 grades
+008faa80	DIFFER	411v417	-	x87 spill/fadd [mem] scheduling of the evasion sample loop; parked
+008fadb0	DIFFER	504v446	-	shared evasion loop schedule + result clamp tail; parked
+008faf70	DIFFER	482v510	-	sketch; evasion loop + thing/mesh list order; parked
+009bba40	RELOCATION_MATCH	417v417	PASS	CPersistContext::TransferObjectLoadText; implicit name conversion in the loop test, block-local error string
+00a11d10	DIFFER	491v422	-	inline affine inverse: returned-matrix temporary (frame 0x70 v 0x40) + per-product fld/fmul order; parked
+00a11f20	DIFFER	491v428	-	sketch, same inverse family as 00a11d10; callee shape guessed
+00a128e0	DIFFER	538v464	-	sketch, same inverse family as 00a11d10
+00a12ab0	DIFFER	539v468	-	sketch, same inverse family as 00a11d10
+00a86b30	RELOCATION_MATCH	409v409	PASS	CPhysicsFacesSegmentBranch ctor; CPlane member-wise user copy ctor
+00d129c0	RELOCATION_MATCH	416v416	PASS	CQ_BanditCampHoldingScriptScript::Main
+00d255e0	RELOCATION_MATCH	468v468	PASS	CQ_DragonBossFightScript::Main; SpawnFunction __forceinline wrapper
+00d26cc0	RELOCATION_MATCH	401v401	PASS	CQ_DragonBossFightScript::SpawnMinions
+00d26e60	RELOCATION_MATCH	496v496	PASS	CQ_DragonBossFightScript::SpawnSummoners
+00d34470	RELOCATION_MATCH	489v489	PASS	really CQ_FireHeartScript ctor (manifest label CQ_HangingTreeGoodScript propagated)
+00d66ca0	RELOCATION_MATCH	487v487	PASS	CQ_GuildTrainingWoodsMeleeScript::DoMission
+00d88260	RELOCATION_MATCH	438v438	PASS	CQ_HeroSoulsNostroScript::WatchForNostroHit
+00d91740	DIFFER	372v481	-	local vector<CScriptThing> dtor inline at early returns v out of line; lane gap (inline-once family)
+00d97170	DIFFER	469v491	-	inline-once ~CScriptThing lane gap (00f09260 family)
+00e1fcf0	DIFFER	388v435	-	inline-once ~CScriptThing lane gap + == bool frame temp
+00e1fef0	DIFFER	388v435	-	same as 00e1fcf0; really WatchForExpressionWait (label duplicated)
+00e2a900	RELOCATION_MATCH	499v499	PASS	CQS_ScytheInfoScript::PlayCutscene; implicit map key, operator= copies Data/Info first, block-local "" name
+00e6b750	DIFFER	390v424	-	inline-once ~CScriptThing lane gap; really CV_ChapelOfEvilScript::WatchForRegionEntry
+00ec5140	RELOCATION_MATCH	421v421	PASS	really CV_RockTrollFirstEncounterScript::WatchForRockTrollHit (manifest label propagated)
+00f081e0	DIFFER	440v440	-	frame layout only ("" region string slot); parked
+00f09260	DIFFER	424v445	-	inline-once ~CScriptThing lane gap (advisor shape e4, one site left)
+00f09950	DIFFER	424v437	-	same as 00f09260 (twin body)
+00f27ea0	SKIP	-	-	row holds several Transfer<signed_char> bodies
+00f28610	SKIP	-	-	row holds several Transfer<signed_char> bodies
+00f33b90	SKIP	-	-	row holds several Transfer<signed_char> bodies
+00f349f0	SKIP	-	-	row holds several Transfer<signed_char> bodies
+00f351f0	SKIP	-	-	row holds several Transfer<signed_char> bodies
