@@ -263501,6 +263501,27 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca9d00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006d7e10'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetExperienceMultiplierFallbackIndex_006d7e10.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetExperienceMultiplierFallbackIndex_006d7e10_test.cpp'
+        PassPattern = '006d7e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00779d20'
+        Module = 'CTCDExperienceOrb'
+        Source = '00/77/CTCDExperienceOrb_Construct_00779d20.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_Construct_00779d20_test.cpp'
+        PassPattern = '00779d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b74d0'
+        Module = 'CCreatureAction_OnGenerate'
+        Source = '00/8b/CCreatureActionOnGenerate_Initialise_008b74d0.cpp'
+        TestSource = '00/8b/CCreatureActionOnGenerate_Initialise_008b74d0_test.cpp'
+        PassPattern = '008b74d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

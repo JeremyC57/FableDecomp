@@ -23111,3 +23111,4 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?GetParticleEngine@@YAPAVCIEngine@@XZ	00aeab10	00aee9f0
 ?Initialise@CParticleEmitter@@QAE_NPAVCIEngine@@@Z	00aee240	00aee9f0
 ?Update@CParticleSystem@NParticleEngine@@QAEXPAUCParticleUpdateParameters@@@Z	00af59a0	00aee9f0
+?GetSubDef@CDefClassBase@@QAE_NPAU?$CDefPointer@UCAppearanceDef@@@@@Z	0042b0a2	00779d20
