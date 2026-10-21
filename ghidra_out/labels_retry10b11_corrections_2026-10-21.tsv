@@ -1,0 +1,2 @@
+address	name	evidence
+00cf0180	NScript::CGameflowAssistanceScript::Tutorial_LowMagic	catalogued Tutorial_LowHealth; the thread registration at 0x00CEFBD0 stores this address under "Tutorial_LowMagic"; RELOCATION_MATCH (retry 10b11)

@@ -259470,6 +259470,48 @@ $catalog = @(
         TestSource = '00/8f/CTCTavernGameCardBase_LeaveGame_008f20f0_test.cpp'
         PassPattern = '008f20f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00663510'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_InitialiseMovementSpeed_00663510.cpp'
+        TestSource = '00/66/CThingCreatureBase_InitialiseMovementSpeed_00663510_test.cpp'
+        PassPattern = '00663510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0730'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_IsBeingCarriedBy_008d0730.cpp'
+        TestSource = '00/8d/CGameScriptThing_IsBeingCarriedBy_008d0730_test.cpp'
+        PassPattern = '008d0730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0cbb0'
+        Module = 'CWStringParser'
+        Source = '00/a0/CWStringParser_ReadAsStringUntilCharacter_00a0cbb0.cpp'
+        TestSource = '00/a0/CWStringParser_ReadAsStringUntilCharacter_00a0cbb0_test.cpp'
+        PassPattern = '00a0cbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a763f0'
+        Module = 'CANavQuadTreeNode'
+        Source = '00/a7/CANavQuadTreeNode_operator_00a763f0.cpp'
+        TestSource = '00/a7/CANavQuadTreeNode_operator_00a763f0_test.cpp'
+        PassPattern = '00a763f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc5c50'
+        Module = 'CEngineInternalPrimitiveChanger'
+        Source = '00/bc/CEngineInternalPrimitiveChanger_SetChildPrimitive_00bc5c50.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveChanger_SetChildPrimitive_00bc5c50_test.cpp'
+        PassPattern = '00bc5c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf0180'
+        Module = 'NScript::CGameflowAssistanceScript'
+        Source = '00/cf/NScriptCGameflowAssistanceScript_TutorialLowMagic_00cf0180.cpp'
+        TestSource = '00/cf/NScriptCGameflowAssistanceScript_TutorialLowMagic_00cf0180_test.cpp'
+        PassPattern = '00cf0180_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

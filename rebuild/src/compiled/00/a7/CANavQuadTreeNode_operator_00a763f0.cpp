@@ -1,0 +1,44 @@
+// CANavQuadTreeNode::operator==(const CANavQuadTreeNode&) -- same position (within 1e-4), level, layer, flags and virtual key
+// Leaf: ??8CANavQuadTreeNode
+// Retry 10b: Position is a C2DVector member and the 1e-4 position test is its inline member helper (`Position.IsNear(other.Position)`);
+// reached through the member's reference VC7.1 loads the other node's pointer before `fld [esi+4]` as retail (flat floats load it after).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00A763F0, length 116 bytes.
+// Callees: the nodes' virtual slot 5 (+0x14), called on the other node first, then on this one.
+//
+// Shape: `fabs(a - b) <= 0.0001f` per coordinate (`fsub ; fabs ; fcomp [eps] ; test ah,41h ; jp` to the false
+// tail = the negated `<=`), then the four byte members compared in source order QuadTreeLevel (+0xc),
+// LeafNode (+0xe), Blocked (+0xf), NavLayer (+0xd) with alternating al/dl loads, then the virtual key:
+// the other node's value is fetched first into edi (`long key = other.GetKey();`) and compared as
+// `GetKey() == key` (`cmp eax,edi`). The result is a full-register int (`mov eax,1` / `xor eax,eax`).
+// The engine header CANavQuadTreeNode.h is data-only (a void* vptr word); the virtual call needs a
+// polymorphic local model, members carry the header's names and offsets.
+#include <math.h>
+#pragma intrinsic(fabs)
+
+struct C2DVector {
+    float X, Y;
+    bool IsNear(const C2DVector& o) const { return fabs(X - o.X) <= 0.0001f && fabs(Y - o.Y) <= 0.0001f; }
+};
+class CANavQuadTreeNode {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+    virtual long GetKey() const;                // slot 5 (+0x14)
+    C2DVector Position;                         // +0x04
+    unsigned char QuadTreeLevel;                // +0x0c
+    unsigned char NavLayer;                     // +0x0d
+    bool LeafNode;                              // +0x0e
+    bool Blocked;                               // +0x0f
+    int operator==(const CANavQuadTreeNode& other) const;
+};
+
+int CANavQuadTreeNode::operator==(const CANavQuadTreeNode& other) const
+{
+    if (Position.IsNear(other.Position)
+        && QuadTreeLevel == other.QuadTreeLevel && LeafNode == other.LeafNode && Blocked == other.Blocked
+        && NavLayer == other.NavLayer) {
+        long key = other.GetKey();
+        if (GetKey() == key)
+            return 1;
+    }
+    return 0;
+}

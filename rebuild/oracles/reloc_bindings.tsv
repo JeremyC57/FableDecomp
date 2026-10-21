@@ -21373,3 +21373,4 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?GetTargetingRangeForTargetType@@YIMKPBUCTargetingDef@@PAVCThing@@1@Z	008028d0	008039a0
 ?GetGroundHeight@CTCPhysicsBase@@QAEMABUC3DVector@@@Z	00880200	008e5480
 ?KillThing@CTCTavernGame@@QAEXPAUCThing@@@Z	005e9a60	008f20f0
+?GetCarrier@CTCCarryable@@QBEPAUCThingRetail@@XZ	00705170	008d0730
