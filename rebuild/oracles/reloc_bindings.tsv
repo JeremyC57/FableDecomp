@@ -21469,3 +21469,16 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?IsActiveThreadTerminating@CCheckTheSilverKeyChest@CQ_HobbeCaveScript@NScript@@QAE_NXZ	00f35b30	00d91320
 ?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABUCCharString@@ABUCScriptThing@@@Z	00d905c0	00d91320
 ?RefreshSpyAllegiences@CQ_AmbushTradersScript@@QAEXXZ	00f05a10	00f058d0
+??0SRecordTail@@QAE@ABU0@@Z	005ba48a	00720cb0
+?AddMode@CTCCreatureModeManager@@QAE_NUCModePointer@@@Z	0073acc0	0073ae10
+?AllocateMode@CTCCreatureModeManager@@QAE?AUCModePointer@@J@Z	0073a8e0	0073ae10
+?Find@CAnimationTable@@QBE_NABVCCharString@@PBUCAnimFilterBase@@@Z	005dc2e0	00830f20
+?GetCurrentMode@CModeManager@@QAEPAUCMode@@XZ	0073a6e0	00830f20
+?GetSubDef@CDefClassBase@@QBE_NPAX@Z	0042b0a2	00830f20
+?GetDef@CDefinitionManager@@QAE_NJPAU?$CDefPointer@UCThingVillageDef@@@@@Z	0083b970	0083b520
+?GetSubDef@CThingBaseDef@@QBE_NPAU?$CDefPointer@UCVillageStateDef@@@@@Z	0042b0a2	0083b520
+??$GetSubDef@UCLungeDef@@@CDefClassBase@@QAE_NAAU?$CDefPointer@UCLungeDef@@@@@Z	008cd0d0	008cc8e0
+?SetLungedThisFrame@@YIXXZ	009054f0	008cc8e0
+?CreateShot@@YIPAUCThing@@JPAU1@00MMMPAUCDefPointerMelee@@PAUC3DVector@@PAUCRightHandedSet@@@Z	007c0ad0	008f3020
+?GetShotAccuracyPercentage@CThing@@QAEJXZ	00663b10	008f3020
+?GetSubDef@CDefClassBase@@QAE_NPAUCDefPointerAbility@@@Z	0042b1a6	008f3020

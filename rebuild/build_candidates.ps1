@@ -259723,6 +259723,76 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScript_WatchForRegionChange_00f058d0_test.cpp'
         PassPattern = '00f058d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005308f0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_FindChildNonRecursive_005308f0.cpp'
+        TestSource = '00/53/NUISystemCComponent_FindChildNonRecursive_005308f0_test.cpp'
+        PassPattern = '005308f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006238a0'
+        Module = 'CTestQuestNameCompare'
+        Source = '00/62/CTestQuestNameCompare_operator_006238a0.cpp'
+        TestSource = '00/62/CTestQuestNameCompare_operator_006238a0_test.cpp'
+        PassPattern = '006238a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00720cb0'
+        Module = '_global'
+        Source = '00/72/global_linearinsert_00720cb0.cpp'
+        TestSource = '00/72/global_linearinsert_00720cb0_test.cpp'
+        PassPattern = '00720cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073ae10'
+        Module = 'CTCCreatureModeManager'
+        Source = '00/73/CTCCreatureModeManager_AddMode_0073ae10.cpp'
+        TestSource = '00/73/CTCCreatureModeManager_AddMode_0073ae10_test.cpp'
+        PassPattern = '0073ae10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00830f20'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_HasAnimationslot73_00830f20.cpp'
+        TestSource = '00/83/CThingAICreature_HasAnimationslot73_00830f20_test.cpp'
+        PassPattern = '00830f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083b520'
+        Module = 'CThingVillage'
+        Source = '00/83/CThingVillage_GetCurrentGraphic_0083b520.cpp'
+        TestSource = '00/83/CThingVillage_GetCurrentGraphic_0083b520_test.cpp'
+        PassPattern = '0083b520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cc8e0'
+        Module = 'CCreatureAction_BalverineLungeAttack'
+        Source = '00/8c/CCreatureActionBalverineLungeAttack_Initialise_008cc8e0.cpp'
+        TestSource = '00/8c/CCreatureActionBalverineLungeAttack_Initialise_008cc8e0_test.cpp'
+        PassPattern = '008cc8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f3020'
+        Module = 'CCreatureAction_DragonFlight'
+        Source = '00/8f/CCreatureActionDragonFlight_PerformAction_008f3020.cpp'
+        TestSource = '00/8f/CCreatureActionDragonFlight_PerformAction_008f3020_test.cpp'
+        PassPattern = '008f3020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cc750'
+        Module = 'CBankFileEntryUpdateData'
+        Source = '00/9c/CBankFileEntryUpdateData_Equals_009cc750.cpp'
+        TestSource = '00/9c/CBankFileEntryUpdateData_Equals_009cc750_test.cpp'
+        PassPattern = '009cc750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab15f0'
+        Module = 'CBoneInfo'
+        Source = '00/ab/CBoneInfo_FindChildIndex_00ab15f0.cpp'
+        TestSource = '00/ab/CBoneInfo_FindChildIndex_00ab15f0_test.cpp'
+        PassPattern = '00ab15f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
