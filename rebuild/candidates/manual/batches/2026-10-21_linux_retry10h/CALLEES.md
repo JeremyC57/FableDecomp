@@ -1,0 +1,10 @@
+- callee: 0x005BA48A CCompositeBlendDesc::CCompositeBlendDesc(const&) -- landed rebuild/src/compiled/00/5b/CCompositeBlendDesc_CCompositeBlendDesc_005ba48a.cpp (used in 00720610)
+- 0x00A677D0 CVolume::Lock(unsigned long) -- reconstructed from the retail disassembly (GetDesc slot 8, D3DBOX over the whole volume, LockBox slot 9, result filled on success only); used in 00a67950
+- 0x009F33E0 CSurface::Lock(unsigned long) -- reconstructed from the retail disassembly; used in 009f3ff0, 009f36e0 (and 009f40a0, still differing)
+- 0x007E9AE0 map<CThing*,float>::equal_range -- STLport lower/upper bound walks written from the node layout (stand-in quality, real algorithm); used in 007e9360, 007e93c0, 007e9410
+- 0x007CE1F0 __copy<CThing**, back_insert_iterator<vector<CIntelligentPointer<CThing>>>> -- same-TU stand-in (walk first..last, append through result.container); used in 007cdfe0, 007cf110
+- 0x004AC380 set<CCharString>::insert -- same-TU stand-in returning the pair by hidden pointer; used in 00706510
+- 0x0042B040 GetDef<CThingObjectDef>, 0x0057FF92 GetSubDef<CAppearanceModifierDef>, 0x00708E40 vector<CModifierEntry>::_M_insert_overflow -- same-TU stand-ins (the growth one a real copy/append/free); used in 00706880
+- 0x00F3EA50 CTriangleStripifier2::GenerateStrips -- non-escaping stand-in (push_back into the outputs) replacing the parked address-leaking one; plus a real growth body for 0x005135D0; used in 00f3f5a0
+- 0x008E3240 GetSubDef<CThunderBattleDef> -- no-escape stand-in; used in 00909070
+- 0x0091A670 AIAction_WaitForMessage -- the matched source of 0091a670 as a same-TU stand-in in 00919a70 (still differing)

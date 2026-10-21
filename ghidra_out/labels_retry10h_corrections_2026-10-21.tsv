@@ -1,0 +1,5 @@
+address	name	evidence
+00a040d0	CInputEvent::SetAsJoystickButtonHeld	ret 14h, stamps event type 0x14 between siblings 0x13/0x15; not SetAsJoystickPosition2 (retry 10h)
+00a04060	CInputEvent::SetAsJoystickPosition	ret 0Ch, event type 0x12 (retry 10h)
+00a03b90	CInputEvent::GetJoystickButton	PDB QBEJXZ; CTCInventoryBase/CMap labels propagated from byte twins (retry 10h)
+00a03ba0	CInputEvent::GetJoystickButtonPressureFraction	body (retry 10h)

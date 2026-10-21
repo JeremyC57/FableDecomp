@@ -1,0 +1,115 @@
+addr       parity           behav  name
+004bc340   RELOCATION_MATCH PASS   RefreshPrimitivePos
+004fc7c0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+004fc7c0   RELOCATION_MATCH PASS   DrawGetMapInfo
+00706510   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00706510   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers
+00706510   WARN RELOC_NAME: ?GetDefinitions@CTCHeroAttachableAppearanceModifiers@@QBEPAUCDefinitionManager@@XZ -> 006869d0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00706510   WARN RELOC_CONFLICT: ?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AUCDefPointerBase@@J@Z -> 009ad9e0 here, 009ada10 in landed 0042af9e
+00706510   RELOCATION_MATCH PASS   UpdateHiddenMaterials
+00706880   WARN SHARED_HEADER_AVAILABLE CWorld
+00706880   WARN RELOC_NAME: ?GetDefinitions@CTCHeroAttachableAppearanceModifiers@@QBEPBVCDefinitionHolder@@XZ -> 006869d0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00706880   WARN RELOC_NAME: ?_M_insert_overflow@?$CRetailVector@UCModifierEntry@@@@QAEXPAUCModifierEntry@@ABU2@ABU__true_type@@K_N@Z -> 00708e40 labelled 'Vector_Reallocate_Pair'
+00706880   WARN RELOC_NAME: ?GetWorld@CTCHeroAttachableAppearanceModifiers@@QBEPAUCWorld@@XZ -> 00686a80 labelled 'NDisplayView::CViewBase::GetDisplayEngine'
+00706880   WARN RELOC_NAME: ?GetWorldFrame@CWorld@@SAJXZ -> 0049d870 labelled 'GFGetPreMainMemoryUsed'
+00706880   RELOCATION_MATCH PASS   AddAppearanceModifier
+00761f40   WARN RELOC_NAME: ??0CPointVector@@QAE@ABU0@@Z -> 006f0810 labelled 'Vector_CopyFrom'
+00761f40   RELOCATION_MATCH PASS   CTrack
+007986a0   WARN RELOC_NAME: ?GetPosition@CThing@@QBEABVC3DVector@@XZ -> 004c73d0 labelled 'CVertexBufferWin32::DoSizeof'
+007986a0   RELOCATION_MATCH PASS   SetUpForcePush
+007cdfe0   WARN RELOC_NAME: ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+007cdfe0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007cdfe0   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+007cdfe0   WARN RELOC_NAME: ?GetCarriedThings@CTCCarrying@@QAEXAAU?$CRetailVector@PAVCThing@@@@@Z -> 006a2220 labelled 'CTCCarrying::CollectCarrySlots_006a2220'
+007cdfe0   WARN RELOC_NAME: ??$__copy@PAPAVCThing@@U?$back_insert_iterator@U?$CRetailVector@U?$CIntelligentPointer@VCThing@@@@@@@@J@@YI?AU?$back_insert_iterator@U?$CRetailVector@U?$CIntelligentPointer@VCThing@@@@@@@@PAPAVCThing@@0U0@ABUrandom_access_iterator_tag@@PAJ@Z -> 007ce1f0 labelled 'Vector_InsertElements_SmartPtr'
+007cdfe0   RELOCATION_MATCH PASS   CTCBurntEffect
+007cf110   WARN RELOC_NAME: ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABUCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+007cf110   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+007cf110   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+007cf110   WARN RELOC_NAME: ?GetCarriedThings@CTCCarrying@@QAEXAAU?$CRetailVector@PAVCThing@@@@@Z -> 006a2220 labelled 'CTCCarrying::CollectCarrySlots_006a2220'
+007cf110   WARN RELOC_NAME: ??$__copy@PAPAVCThing@@U?$back_insert_iterator@U?$CRetailVector@U?$CIntelligentPointer@VCThing@@@@@@@@J@@YI?AU?$back_insert_iterator@U?$CRetailVector@U?$CIntelligentPointer@VCThing@@@@@@@@PAPAVCThing@@0U0@ABUrandom_access_iterator_tag@@PAJ@Z -> 007ce1f0 labelled 'Vector_InsertElements_SmartPtr'
+007cf110   RELOCATION_MATCH PASS   CTCCreatureTintEffect
+007d4f40   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007d4f40   RELOCATION_MATCH PASS   EndRound
+007d6150   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007d6150   RELOCATION_MATCH PASS   EndRound
+00858400   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 0040f020 here, 004365b0 in landed 00435000
+00858400   WARN RELOC_NAME: ?GetPActiveStrikeEvent@CCombatActionBase@@QAEPAUCStrikeEvent@1@XZ -> 00856e50 labelled 'CCombatActionBase_GetFirstActiveStrikeEvent'
+00858400   WARN RELOC_NAME: ?_M_insert_overflow@?$CVector@PAUCThingGameObject@@@@QAEXPAPAUCThingGameObject@@ABQAU2@ABU__true_type@@I_N@Z -> 00788ffc labelled 'Vector_Assign'
+00858400   WARN RELOC_NAME: ?HasPerformedAction@CCombatActionBase@@QBE_NXZ -> 006925a0 labelled 'NInventory::CTCInventoryBase::GetCanItemBeQuickAssigned'
+00858400   RELOCATION_MATCH PASS   ProcessPossibleProneThingsStrikeEvent
+008f63c0   WARN SHARED_HEADER_AVAILABLE CHeightMapCell
+008f63c0   WARN RELOC_NAME: ??0CBaseClassNonCopyable@@QAE@XZ -> 0099a2f0 labelled 'NHeroInformationScreens::CBase::CBase'
+008f63c0   RELOCATION_MATCH PASS   CHeightMap
+00909070   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00909070   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00909070   WARN RELOC_NAME: ?GetCurrentFrame@CWorld_Retail@@QAEJXZ -> 004167c8 labelled 'GFGetPreMainMemoryUsed'
+00909070   WARN RELOC_NAME: ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z -> 008b0b10 labelled 'std::vector::push_back'
+00909070   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled 'CXMVPlaybackInfo::CXMVPlaybackInfo'
+00909070   RELOCATION_MATCH PASS   OnCreate
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0094a6d0   WARN RELOC_CONFLICT: ?GetPosition@CThing@@QBEABUC3DVector@@XZ -> 006a4d00 here, 004c73d0 in landed 005da540
+0094a6d0   WARN RELOC_NAME: ?GetPosition@CThing@@QBEABUC3DVector@@XZ -> 006a4d00 labelled 'CVertexBufferWin32::DoSizeof'
+0094a6d0   RELOCATION_MATCH PASS   WalkToPoint
+00a69ad0   RELOCATION_MATCH PASS   Clear
+00ae2cb0   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ae2cb0   RELOCATION_MATCH PASS   SimulationStep
+00ae2d20   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ae2d20   RELOCATION_MATCH PASS   SimulationStep
+00b1a640   WARN RELOC_NAME: ??0CBaseClass@@QAE@XZ -> 0099a2d0 labelled 'NHeroInformationScreens::CBase::CBase'
+00b1a640   RELOCATION_MATCH PASS   CPSCLight
+00bdda80   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00bdda80   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap
+00bdda80   RELOCATION_MATCH PASS   RenderUpdate
+00e24210   RELOCATION_MATCH PASS   InFinalRegion
+00e24260   RELOCATION_MATCH PASS   GetTraderRandomSpeechEnabled
+00f3f5a0   WARN RELOC_NAME: ?InsertGrow@?$CArray@G@@QAEXPAGABGABUSScalarTag@@K_N@Z -> 005135d0 labelled 'Vector_InsertN_uint16'
+00f3f5a0   RELOCATION_MATCH PASS   ReorderTriangleListInPlace
+
+WINS: 22
+  004bc340 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::RefreshPrimitivePos
+  004fc7c0 RELOCATION_MATCH CWorldMap::?DrawGetMapInfo@CWorldMap@@UBE?AUCDrawMapInfo@@J@Z
+  00706510 RELOCATION_MATCH CTCHeroAttachableAppearanceModifiers::UpdateHiddenMaterials
+  00706880 RELOCATION_MATCH CTCHeroAttachableAppearanceModifiers::AddAppearanceModifier
+  00761f40 RELOCATION_MATCH NShape::CTrack::??0CTrack
+  007986a0 RELOCATION_MATCH CTCForcePushed::SetUpForcePush
+  007cdfe0 RELOCATION_MATCH CTCBurntEffect::??0CTCBurntEffect
+  007cf110 RELOCATION_MATCH CTCCreatureTintEffect::??0CTCCreatureTintEffect
+  007d4f40 RELOCATION_MATCH CTCTavernGameCardSorting::?EndRound@CTCTavernGameCardSorting
+  007d6150 RELOCATION_MATCH CTCTavernGameCardPairs::?EndRound@CTCTavernGameCardPairs
+  00858400 RELOCATION_MATCH CCombatActionBase::?ProcessPossibleProneThingsStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+  008f63c0 RELOCATION_MATCH CHeightMap::??0CHeightMap
+  00909070 RELOCATION_MATCH CCombatSequence_BattleCharge::OnCreate
+  0094a6d0 RELOCATION_MATCH CAIStateGroup_GoToPub::WalkToPoint
+  00a69ad0 RELOCATION_MATCH CFrameDataHandle::Clear
+  00ae2cb0 RELOCATION_MATCH CParticleProgram::?SimulationStep@CParticleProgram@@QAEXPAUCParticleSimulation@@PAUCParticleContext@@@Z
+  00ae2d20 RELOCATION_MATCH CParticleProgram::?SimulationStep@CParticleProgram@@QAEXPAUCParticleSimulation@@PAUCParticleContext@@PAUC3DAnimationBlendState
+  00b1a640 RELOCATION_MATCH NParticleEngine::CPSCLight::??0CPSCLight
+  00bdda80 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::RenderUpdate
+  00e24210 RELOCATION_MATCH CQR_EscortTraderScript::InFinalRegion
+  00e24260 RELOCATION_MATCH CQR_EscortTraderScript::GetTraderRandomSpeechEnabled
+  00f3f5a0 RELOCATION_MATCH CTriangleStripifier2::ReorderTriangleListInPlace
+
+LANDED 22 wins into src/compiled + tests + catalog + oracle
+  NGraphicAppearanceCTCGraphicAppearance_RefreshPrimitivePos_004bc340
+  CWorldMap_DrawGetMapInfo_004fc7c0
+  CTCHeroAttachableAppearanceModifiers_UpdateHiddenMaterials_00706510
+  CTCHeroAttachableAppearanceModifiers_AddAppearanceModifier_00706880
+  NShapeCTrack_CTrack_00761f40
+  CTCForcePushed_SetUpForcePush_007986a0
+  CTCBurntEffect_CTCBurntEffect_007cdfe0
+  CTCCreatureTintEffect_CTCCreatureTintEffect_007cf110
+  CTCTavernGameCardSorting_EndRound_007d4f40
+  CTCTavernGameCardPairs_EndRound_007d6150
+  CCombatActionBase_ProcessPossibleProneThingsStrikeEvent_00858400
+  CHeightMap_CHeightMap_008f63c0
+  CCombatSequenceBattleCharge_OnCreate_00909070
+  CAIStateGroupGoToPub_WalkToPoint_0094a6d0
+  CFrameDataHandle_Clear_00a69ad0
+  CParticleProgram_SimulationStep_00ae2cb0
+  CParticleProgram_SimulationStep_00ae2d20
+  NParticleEngineCPSCLight_CPSCLight_00b1a640
+  CLocalDetailCacheMapCQuadTreeElement_RenderUpdate_00bdda80
+  CQREscortTraderScript_InFinalRegion_00e24210
+  CQREscortTraderScript_GetTraderRandomSpeechEnabled_00e24260
+  CTriangleStripifier2_ReorderTriangleListInPlace_00f3f5a0
