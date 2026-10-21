@@ -23411,3 +23411,11 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?_M_erase@CContractionMultimap@QuadricOptimiserInternals@@QAEXPAUCTreeNode@2@@Z	00ad3fb0	00ad84d0
 ?KSPROPSETID_Connection@@3UGUID@@B	012b90d8	00c5ead0
 ?SetProperty@CKsObject@@QAE_NABUGUID@@KPAXK@Z	00c5e050	00c5ead0
+??$IS_THING_ALIVE@UCIntelligentPointer@@@@YI_NABUCIntelligentPointer@@@Z	004cc340	005c3180
+?GetDefinitions@CTCInventoryWeapons@NInventory@@QAEPAUCDefinitionManager@@XZ	006869d0	005c3180
+?GetPDefFromGlobalIndex@CDefinitionManager@@QAE?AUCDefPointerTemp@@J@Z	009ad9e0	005c3180
+?GetSubDef@CDefClassBase@@QAE_NPAU?$CDefPointer@UCWeaponDef@@@@@Z	0042b1a6	005c3180
+??$GetDef@UCExpressionDef@@@CDefinitionManager@@QAE_NABUCCharString@@PAU?$CDefPointer@$$CBUCExpressionDef@@@@@Z	00593666	006ac390
+?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@ABK@Z	004365b0	006ac390
+?AutoPlaceNearBuilding@CThingCreatureHome@@QAE_NPAUCThingBuilding@@M@Z	00666ef0	0090fc50
+?IsSchoolTime@CTCVillage@@QAE_NXZ	00658a35	0090fc50

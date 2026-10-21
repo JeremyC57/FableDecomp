@@ -264505,6 +264505,34 @@ $catalog = @(
         TestSource = '00/c5/CWound00c5eca0_Kill_00c5ead0_test.cpp'
         PassPattern = '00c5ead0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005c3180'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_GetActiveProjectileWeaponDamage_005c3180.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_GetActiveProjectileWeaponDamage_005c3180_test.cpp'
+        PassPattern = '005c3180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ac390'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_IsExpressionAvailable_006ac390.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_IsExpressionAvailable_006ac390_test.cpp'
+        PassPattern = '006ac390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090f9c0'
+        Module = 'CAIStateGroup_MinionSitOnSeatBase'
+        Source = '00/90/CAIStateGroupMinionSitOnSeatBase_IsRunnable_0090f9c0.cpp'
+        TestSource = '00/90/CAIStateGroupMinionSitOnSeatBase_IsRunnable_0090f9c0_test.cpp'
+        PassPattern = '0090f9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090fc50'
+        Module = 'CAIStateGroup_MinionSitAtSchool'
+        Source = '00/90/CAIStateGroupMinionSitAtSchool_InitCreaturePosition_0090fc50.cpp'
+        TestSource = '00/90/CAIStateGroupMinionSitAtSchool_InitCreaturePosition_0090fc50_test.cpp'
+        PassPattern = '0090fc50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
