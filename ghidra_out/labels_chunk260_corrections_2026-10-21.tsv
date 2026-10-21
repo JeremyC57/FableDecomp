@@ -1,0 +1,12 @@
+address	name	evidence
+00b6d0b0	std::vector::InsertGrow	STLport vector insert-grow body, not CActiveFile::ExpandAndFillVertices (chunk 260)
+00c0df50	CString::Mid	MFC-style Mid, not CCharString::SubstringToNewString (chunk 260)
+006f3a30	std::list::sort	STLport list sort, not CBinaryTree_Alt::Rebuild (chunk 260)
+0070cad0	CAnimSet::GetLastMeshAnim	not a second GetStartMeshAnim (chunk 260)
+0070e710	CAnimateThing::CAnimateThing	ctor, not CAnimSet::Ctor (chunk 260)
+004c9d60	CThing::AddTC	(const CCharString&, bool, const CPhysicsSnapshot&) overload (chunk 260)
+00f08590	CQ_AmbushTradersScript::WatchForEnemyDeath	callee identity from 00f083a0 (chunk 260)
+00f35b30	CEntityScriptBase::IsActiveThreadTerminating	callee identity (chunk 260)
+0099b6b0	CWideString::CWideString	(const char*) ctor (chunk 260)
+00ef7ab0	CIsThing::~CIsThing	filter dtor (chunk 260)
+00ef8740	CAnd::CAnd	filter ctor (chunk 260)

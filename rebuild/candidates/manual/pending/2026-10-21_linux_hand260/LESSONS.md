@@ -1,0 +1,15 @@
+# Lessons, chunk 260
+- A virtual call result that the retail never uses still has to be modelled with the right signature. CActionMoveTo::OnCleanup matched only after re-typing the callees as GetName() + the 3-arg CThing::AddTC(name, bool, snapshot).
+- A named `CCharString name("...")` local builds the string before the argument pushes. An implicit-conversion temporary builds it between the pushes.
+- In STLport loops, `for (i = 0; i < (unsigned)(v._M_finish - v._M_start); i++) f(v._M_start[i])` reproduces retail's common-subexpression of _M_start.
+- To reproduce a cached global chain, take a bank local: `CMeshDataBank* bank = g->PWorld->PMainMeshBank;`.
+- CPhysicsSnapshot is CBaseClassNonCopyable with members {C3DVector Position; CBoundingBox}. It needs an `__forceinline` ctor, and C3DVector needs a user copy ctor, to match the stack-temp copies.
+- IV counted-pointer dtor (`add eax,4` shape): `if (Object) { Object->Release(); Object = 0; }`, where Release is DecRef, then a test of the count, then Delete.
+- Filter dtors that store their vptr inline, such as CAnd over base vptr 0x12C2FF4, need user-written empty inline dtors (`~CAnd() { }`, `~CFilterBase() { }`). The implicit dtor emits no vptr store.
+- Inline-once dtor band: retail inlines the first instance of a dtor and calls the out-of-line copy for later ones (0x48C5C0, 0x4AA840). The lane cannot reproduce it, so park it.
+- The lane does not cache a dllimport (GetProcAddress) in a callee-saved register. LTCG esi-result callees such as 0x9C33A0 are also a lane gap.
+- When retail puts the CString destination in a dead argument slot, scope the work in a `{}` block.
+- wchar_t is not a builtin type in the lane; use `unsigned short`.
+- mk.py: `@VT 0:~X();` gives a virtual dtor in slot 0, so `delete p` dispatches virtually.
+- An empty struct is 1 byte and shifts the offsets of later members. Give placeholder structs a real member.
+- Back-to-back `if (IsActiveThreadTerminating()) return;` at the end of a scope leaves a bare call with no test, because both arms reach the same epilogue.

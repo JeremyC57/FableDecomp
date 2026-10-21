@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00f083a0	RELOCATION_MATCH	496	PASS(g++,vc71)	src/00f083a0.cpp
+00871290	DIFFER(408v408)	416	-	parked: esi vs ecx load register only
+00870e00	DIFFER(438v438)	448	-	parked: esi vs ecx load register only (twin of 00871290)
+00715110	DIFFER(505v477)	480	-	parked: inline-once destructor band: retail calls ~CCountedPointer 0x0048C5C0 out of line for the reload temporary and inlines it for the aim/fire temporaries; ours inlines all three
+00715710	RELOCATION_MATCH	480	PASS(g++,vc71)	src/00715710.cpp
+00410120	RELOCATION_MATCH	468	PASS(g++,vc71)	src/00410120.cpp
+00714730	RELOCATION_MATCH	464	PASS(g++,vc71)	src/00714730.cpp
+00712e40	DIFFER(464v464)	464	-	parked: only reg alloc: or esi,-1 scheduled before mov edi,[current]; Start[6].Kind store temp in eax/ecx vs retail edx/eax
+009c38c0	DIFFER(414v409)	416	-	parked: MakeBackupName 0x009C33A0 is an LTCG esi-result callee (lane gap); also GetFileTime/SetFileTime argument scheduling
+00b6d0b0	RELOCATION_MATCH	416	PASS(g++,vc71)	src/00b6d0b0.cpp
+0070c900	DIFFER(457v455)	464	-	parked: inline C3DAnimationState base stores scheduled before the GetAnimTime fstp; &Anims[1] materialised with add esi,2 (retail movsx [esi+2])
+0070cad0	DIFFER(405v405)	416	-	parked: only register choice: retail loads InternalAlphas start into the dead this register esi for the alpha push, cascading eax/edx swaps in the vtable loads
+0070cc70	DIFFER(405v405)	416	-	parked: twin of 0070cad0 (current completion / CurrentAlpha); same esi alpha-load register gap
+0070ce10	DIFFER(475v495)	495	-	parked: empty allocator temp gets its own frame byte (retail reuses the distance arg slot); speeds start cached in ebp but retail stores then reloads
+0070e710	DIFFER(404v416)	416	-	parked: first-pass model: retail keeps 0 in edi and the blend-state pointer in ebx, 4-byte frame (push ecx), and a different push_back/temporary shape for the delayed queue
+0070c590	RELOCATION_MATCH	480	PASS(g++,vc71)	src/0070c590.cpp
+0070d580	DIFFER(512v504)	512	-	parked: first-pass model: the argument's flag word sits at +0x20 and +8 is tested for null (argument type not CCompleteAnimation as modelled); for_each(0x007100A0) and float-slot reuse unmodelled
+00a8eb10	RELOCATION_MATCH	464	PASS(g++,vc71)	src/00a8eb10.cpp
+00a90040	DIFFER(384v403)	416	-	parked: first-pass model: retail copies position/normal through stack temporaries (frame 0x2c, ebx count, edx out+8 cursor); ours keeps them in registers
+00a24d70	DIFFER(413v414)	414	-	parked: retail caches the bank (edi) and decoder (ebx) before PeekData and passes a different hidden-result slot to Decode 0x00A99510 (frame accounting unresolved)
+00726160	DIFFER(473v469)	480	-	parked: frame now matches; remaining: 2nd Contains loads ecx=component before reloading the owner thing, Y*Y/X*X operand slots, push vs GetVelocity temp slot swap, sign=-1 store scheduled before the modulo
+00dcdc50	DIFFER(423v454)	464	-	parked: inline-once dtor band
+006f2c00	DIFFER(462v468)	480	-	parked: first-pass model: frame layout (retail 0x2c with a saved side local and dead target GetPosition), FP schedule and stack slots differ
+00c4dc40	DIFFER(451v446)	448	-	parked: retail caches the GetProcAddress dllimport in ebp; lane does not
+00c71430	RELOCATION_MATCH	416	PASS(g++,vc71)	src/00c71430.cpp
+009cd480	RELOCATION_MATCH	416	PASS(g++,vc71)	src/009cd480.cpp
+009ce8d0	RELOCATION_MATCH	416	PASS(g++,vc71)	src/009ce8d0.cpp
+00a8e8a0	RELOCATION_MATCH	464	PASS(g++,vc71)	src/00a8e8a0.cpp
+00ef3200	RELOCATION_MATCH	448	PASS(g++,vc71)	src/00ef3200.cpp
+006f3a30	DIFFER(496v481)	496	-	parked: STLport list sort: retail keeps carry.Node in ebx with frame 0x10c
+00887830	RELOCATION_MATCH	512	PASS(g++,vc71)	src/00887830.cpp
+00e7fb80	RELOCATION_MATCH	464	PASS(g++,vc71)	src/00e7fb80.cpp
+00e9dac0	RELOCATION_MATCH	448	PASS(g++,vc71)	src/00e9dac0.cpp
+00ef3aa0	RELOCATION_MATCH	448	PASS(g++,vc71)	src/00ef3aa0.cpp
+00ef84d0	DIFFER(415v499)	512	-	parked: frame, filter temps and CAnd inline dtor match; retail inlines ~CScriptThing (leader) once on the early terminate return and calls 0x4AA840 at the end (inline-once dtor band)
+009a08b0	DIFFER(458v491)	491	-	parked: retail keeps 0 in ebp and the block in esi across the strip loop, cross-jumps the two Format pushes and inlines the block release twice; ours folds the zero constant to push imm and allocates differently
+00c0df50	RELOCATION_MATCH	416	PASS(g++,vc71)	src/00c0df50.cpp
+00e1af30	RELOCATION_MATCH	464	PASS(g++,vc71)	src/00e1af30.cpp
+00a60fb0	DIFFER(412v411)	416	-	parked: register permutation only
+0062f3b0	RELOCATION_MATCH	480	PASS(g++,vc71)	src/0062f3b0.cpp

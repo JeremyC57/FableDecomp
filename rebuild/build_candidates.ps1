@@ -261289,6 +261289,141 @@ $catalog = @(
         TestSource = '00/f0/CATBanditContact_Init_00f09640_test.cpp'
         PassPattern = '00f09640_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00410120'
+        Module = 'CActionInputControl'
+        Source = '00/41/CActionInputControl_TransferBinaryIn_00410120.cpp'
+        TestSource = '00/41/CActionInputControl_TransferBinaryIn_00410120_test.cpp'
+        PassPattern = '00410120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062f3b0'
+        Module = 'CCombatActionBase'
+        Source = '00/62/CCombatActionBase_CCombatActionBase_0062f3b0.cpp'
+        TestSource = '00/62/CCombatActionBase_CCombatActionBase_0062f3b0_test.cpp'
+        PassPattern = '0062f3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070c590'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_PreloadAnims_0070c590.cpp'
+        TestSource = '00/70/CAnimateThing_PreloadAnims_0070c590_test.cpp'
+        PassPattern = '0070c590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00714730'
+        Module = 'NTCScriptedControl::CActionMoveTo'
+        Source = '00/71/NTCScriptedControlCActionMoveTo_OnCleanup_00714730.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionMoveTo_OnCleanup_00714730_test.cpp'
+        PassPattern = '00714730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00715710'
+        Module = 'NTCScriptedControl::CActionFollowCreature'
+        Source = '00/71/NTCScriptedControlCActionFollowCreature_OnActivate_00715710.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionFollowCreature_OnActivate_00715710_test.cpp'
+        PassPattern = '00715710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00887830'
+        Module = 'CBlendedEnvironmentTheme'
+        Source = '00/88/CBlendedEnvironmentTheme_BlendTextureSets_00887830.cpp'
+        TestSource = '00/88/CBlendedEnvironmentTheme_BlendTextureSets_00887830_test.cpp'
+        PassPattern = '00887830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cd480'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_CBankFile_009cd480.cpp'
+        TestSource = '00/9c/CBankFile_CBankFile_009cd480_test.cpp'
+        PassPattern = '009cd480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ce8d0'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_BeginUpdateEntries_009ce8d0.cpp'
+        TestSource = '00/9c/CBankFile_BeginUpdateEntries_009ce8d0_test.cpp'
+        PassPattern = '009ce8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8e8a0'
+        Module = 'CBaseBlock'
+        Source = '00/a8/CBaseBlock_LoadBinary_00a8e8a0.cpp'
+        TestSource = '00/a8/CBaseBlock_LoadBinary_00a8e8a0_test.cpp'
+        PassPattern = '00a8e8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8eb10'
+        Module = 'CAnimatedBlock'
+        Source = '00/a8/CAnimatedBlock_LoadBinary_00a8eb10.cpp'
+        TestSource = '00/a8/CAnimatedBlock_LoadBinary_00a8eb10_test.cpp'
+        PassPattern = '00a8eb10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6d0b0'
+        Module = 'CRetailVector_SRecord24'
+        Source = '00/b6/CRetailVectorSRecord24_InsertGrow_00b6d0b0.cpp'
+        TestSource = '00/b6/CRetailVectorSRecord24_InsertGrow_00b6d0b0_test.cpp'
+        PassPattern = '00b6d0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0df50'
+        Module = 'CString_00c0e0f0'
+        Source = '00/c0/CString00c0e0f0_Mid_00c0df50.cpp'
+        TestSource = '00/c0/CString00c0e0f0_Mid_00c0df50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c0df50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c71430'
+        Module = 'CAudioMixer'
+        Source = '00/c7/CAudioMixer_EnumerateAndOpenDevice_00c71430.cpp'
+        TestSource = '00/c7/CAudioMixer_EnumerateAndOpenDevice_00c71430_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c71430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1af30'
+        Module = 'CChasingScreamer'
+        Source = '00/e1/CChasingScreamer_Main_00e1af30.cpp'
+        TestSource = '00/e1/CChasingScreamer_Main_00e1af30_test.cpp'
+        PassPattern = '00e1af30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7fb80'
+        Module = 'CBountyHuntActivationChecker'
+        Source = '00/e7/CBountyHuntActivationChecker_RemoveFishermen_00e7fb80.cpp'
+        TestSource = '00/e7/CBountyHuntActivationChecker_RemoveFishermen_00e7fb80_test.cpp'
+        PassPattern = '00e7fb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9dac0'
+        Module = 'NScript::CBriarRose'
+        Source = '00/e9/NScriptCBriarRose_Init_00e9dac0.cpp'
+        TestSource = '00/e9/NScriptCBriarRose_Init_00e9dac0_test.cpp'
+        PassPattern = '00e9dac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3200'
+        Module = 'CBeggar'
+        Source = '00/ef/CBeggar_Main_00ef3200.cpp'
+        TestSource = '00/ef/CBeggar_Main_00ef3200_test.cpp'
+        PassPattern = '00ef3200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef3aa0'
+        Module = 'CCham'
+        Source = '00/ef/CCham_Main_00ef3aa0.cpp'
+        TestSource = '00/ef/CCham_Main_00ef3aa0_test.cpp'
+        PassPattern = '00ef3aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f083a0'
+        Module = 'NScript::CAT_Phase1Guard'
+        Source = '00/f0/NScriptCATPhase1Guard_Init_00f083a0.cpp'
+        TestSource = '00/f0/NScriptCATPhase1Guard_Init_00f083a0_test.cpp'
+        PassPattern = '00f083a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
