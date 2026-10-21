@@ -1833,3 +1833,23 @@ address	module	name	length	chunk	reason
 00b53f60	CEngineWeatherRenderer	CEngineWeatherRenderer::FrameStart	416	hand263	DIFFER(418v411) -- lane gap: retail keeps this in ecx across the same-TU inline-asm UpdateBoxPositions call (callee register knowledge)
 0051eda0	CEntityRuntimePersistence	SaveToGameStateScript	501	hand263	DIFFER(485v501) -- level loop: retail keeps the Valid-then-null test pair on the bounds-checked element; ours drops the null test; one push placement
 00520390	CEntityRuntimePersistence	ClearPersistenceDataForSection	480	hand263	DIFFER(464v465) -- the two script loops swap register shapes (base kept from size test vs reloaded; ebp push placement)
+008c6860	CCreatureAction_TrollThrowProjectile	?PerformAction@CCreatureAction_TrollThrowProjectile@@UAEXXZ	496	hand262	DIFFER(493v482) -- frame + ownership model
+008c61c0	CCreatureAction_TrollWhackGroundBase	WhackGround	464	hand262	DIFFER(456v457) -- frame + register allocation
+00847df0	CCreatureAction_UseLamp	?Initialise@CCreatureAction_UseLamp@@UAEXXZ	448	hand262	DIFFER(436v442) -- argument order + registers in the camera branch
+0064619f	CCrimeStatBar	DrawStatBox	509	hand262	DIFFER(509v509) -- frame slot + x87 scheduling
+009adae0	CDefinitionManager	InstantiateSubDef	432	hand262	DIFFER(402v417) -- frame + register allocation
+00a90900	CDeviceIndependent	AddTriangleList	480	hand262	DIFFER(487v471) -- register allocation + frame
+00649e8b	CDrawFishingGame	Draw	469	hand262	DIFFER(469v469) -- frame slots + one scheduling pair
+00644677	CDrawLetterBoxBlackBars	Draw	454	hand262	DIFFER(438v454) -- x87 scheduling/frame
+006572a0	CDrawNPCName	Draw	464	hand262	DIFFER(462v462) -- frame slot only
+0064fc23	CDrawQuestInfo	AddMiniGameBar	401	hand262	DIFFER(401v401) -- frame slot only
+0064546f	CDrawQuickAccessIcons	DrawEffectAtPos	406	hand262	DIFFER(408v406) -- register/schedule
+0064c869	CDrawSpiritTargetingCursor	Draw	428	hand262	DIFFER(435v428) -- register allocation
+0064ca15	CDrawWorldTime	Draw	508	hand262	DIFFER(507v508) -- frame slots only
+00b81f30	CEngineClothSimulationStaticMesh	?RunSimulation@CEngineClothSimulationStaticMesh@@UAEXXZ	464	hand262	DIFFER(472v455) -- LOD loop rotated; out-of-line counted-ptr dtor
+00b8ccf0	CEngineEnvironment	CEngineEnvironment::WorldFrameUpdate	496	hand262	DIFFER(491v487) -- x87: final + wind*speed spills products
+00b396e0	CEngineInternalAttachedPrimitive	Update	497	hand262	DIFFER(497v497) -- register only
+00b99bb0	CEngineInternalPrimitiveRepeatedStaticMesh	CEngineInternalPrimitiveRepeatedStaticMesh::IsInsideFrustum	480	hand262	DIFFER(461v475) -- lane gap: inline-asm SSE distance block
+00b67ec0	CEngineLandscapeRenderer	AddFrameForegroundTexturesUsed	432	hand262	DIFFER(422v422) -- frame slots only
+00b41a80	CEngineMap	PeekWaterHeight	432	hand262	DIFFER(329v424) -- lane gap: inline-asm fistp rounding helper
+00b8d0d0	CEngineOcclusionManager	CEngineOcclusionManager::InitializeOcclusionBuffers	432	hand262	DIFFER(414v429) -- VC7.1 unrolls the inner 2x2 vertex loop

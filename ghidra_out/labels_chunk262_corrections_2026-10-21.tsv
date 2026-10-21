@@ -1,0 +1,12 @@
+address	name	evidence
+00a14440	C3DVector::Normalise	not GetScaled (chunk 262)
+00ac20a0	CVertexBuffer::Lock	vertex-buffer Lock (chunk 262)
+00ac20b0	CVertexBuffer::Unlock	vertex-buffer Unlock (chunk 262)
+009bff10	CDisplayManager::SetPresentParameters	not AddLearnedExpression (chunk 262)
+00b840a0	std::vector<CCountedPointer<CParticleSimulation>>::resize	(chunk 262)
+00ae0600	CParticleSimulation::CParticleSimulation	ctor (chunk 262)
+004378c0	CPlayerGui::Refresh	hidden behind a _Cons_val label (chunk 262)
+00438010	CGameUI::Draw2DText	hidden behind a _Cons_val label (chunk 262)
+00487dd0	CPlayer::GetCharacterThing	hidden behind a _Cons_val label (chunk 262)
+00449970	CPlayerManager::GetMainPlayer	(chunk 262)
+009b9490	std::sort<ClassInfoPair24>	std::sort over the 24-byte class-info pairs (chunk 262)

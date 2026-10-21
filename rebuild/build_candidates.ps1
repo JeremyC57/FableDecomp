@@ -261907,6 +261907,146 @@ $catalog = @(
         TestSource = '00/c6/CEntity_SetVFXComponentsProperty_00c65690_test.cpp'
         PassPattern = '00c65690_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00645292'
+        Module = 'NPlayerGui::CDrawQuickAccessIcons'
+        Source = '00/64/NPlayerGuiCDrawQuickAccessIcons_DrawIcon_00645292.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawQuickAccessIcons_DrawIcon_00645292_test.cpp'
+        PassPattern = '00645292_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064b6da'
+        Module = 'NPlayerGui::CDraw2DText'
+        Source = '00/64/NPlayerGuiCDraw2DText_AddText_0064b6da.cpp'
+        TestSource = '00/64/NPlayerGuiCDraw2DText_AddText_0064b6da_test.cpp'
+        PassPattern = '0064b6da_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ec4f0'
+        Module = 'CCreatureAction_UndeadIdleUnderground'
+        Source = '00/8e/CCreatureActionUndeadIdleUnderground_Initialise_008ec4f0.cpp'
+        TestSource = '00/8e/CCreatureActionUndeadIdleUnderground_Initialise_008ec4f0_test.cpp'
+        PassPattern = '008ec4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b0ac0'
+        Module = 'CDefinitionManager'
+        Source = '00/9b/CDefinitionManager_AddDefClass_009b0ac0.cpp'
+        TestSource = '00/9b/CDefinitionManager_AddDefClass_009b0ac0_test.cpp'
+        PassPattern = '009b0ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bf600'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_GetClosestMode_009bf600.cpp'
+        TestSource = '00/9b/CDisplayManager_GetClosestMode_009bf600_test.cpp'
+        PassPattern = '009bf600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c0e50'
+        Module = 'CDisplayManager'
+        Source = '00/9c/CDisplayManager_Init_009c0e50.cpp'
+        TestSource = '00/9c/CDisplayManager_Init_009c0e50_test.cpp'
+        PassPattern = '009c0e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b24690'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_SetVideoOptions_00b24690.cpp'
+        TestSource = '00/b2/CEngine_SetVideoOptions_00b24690_test.cpp'
+        PassPattern = '00b24690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b38ed0'
+        Module = 'CEnginePrimitiveAttachmentManager'
+        Source = '00/b3/CEnginePrimitiveAttachmentManager_IsVisible_00b38ed0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveAttachmentManager_IsVisible_00b38ed0_test.cpp'
+        PassPattern = '00b38ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b44fe0'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_ClipLightCountAndBuildLightArray_00b44fe0.cpp'
+        TestSource = '00/b4/CEngineLightingManager_ClipLightCountAndBuildLightArray_00b44fe0_test.cpp'
+        PassPattern = '00b44fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b47980'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_FrameEnd_00b47980.cpp'
+        TestSource = '00/b4/CEngineLightingManager_FrameEnd_00b47980_test.cpp'
+        PassPattern = '00b47980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b68610'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_FrameStart_00b68610.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_FrameStart_00b68610_test.cpp'
+        PassPattern = '00b68610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6b0b0'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_Render_00b6b0b0.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_Render_00b6b0b0_test.cpp'
+        PassPattern = '00b6b0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9d980'
+        Module = 'CEngineInternalPrimitiveStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveStaticMesh_GetBoundingBoxTransform_00b9d980.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveStaticMesh_GetBoundingBoxTransform_00b9d980_test.cpp'
+        PassPattern = '00b9d980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9e290'
+        Module = 'CEngineInternalPrimitive2DStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitive2DStaticMesh_GetBoundingBoxTransform_00b9e290.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitive2DStaticMesh_GetBoundingBoxTransform_00b9e290_test.cpp'
+        PassPattern = '00b9e290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00baa4e0'
+        Module = 'CEngineInternalPrimitiveRepeatedZSprite'
+        Source = '00/ba/CEngineInternalPrimitiveRepeatedZSprite_IsInsideFrustum_00baa4e0.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitiveRepeatedZSprite_IsInsideFrustum_00baa4e0_test.cpp'
+        PassPattern = '00baa4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbcf70'
+        Module = 'CEngineInternalPrimitiveParticleGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleGroup_SetChildPrimitive_00bbcf70.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_SetChildPrimitive_00bbcf70_test.cpp'
+        PassPattern = '00bbcf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcf760'
+        Module = 'CEngineInternalPrimitive2DAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_GetTransformFrameStart_00bcf760.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_GetTransformFrameStart_00bcf760_test.cpp'
+        PassPattern = '00bcf760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcf930'
+        Module = 'CEngineInternalPrimitive2DAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_GetTransformFrameEnd_00bcf930.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitive2DAnimatedMesh_GetTransformFrameEnd_00bcf930_test.cpp'
+        PassPattern = '00bcf930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e01760'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_OnPredicateFail_00e01760.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_OnPredicateFail_00e01760_test.cpp'
+        PassPattern = '00e01760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e72f00'
+        Module = 'CDF_ThreeSuits'
+        Source = '00/e7/CDFThreeSuits_DressedAsBandit_00e72f00.cpp'
+        TestSource = '00/e7/CDFThreeSuits_DressedAsBandit_00e72f00_test.cpp'
+        PassPattern = '00e72f00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

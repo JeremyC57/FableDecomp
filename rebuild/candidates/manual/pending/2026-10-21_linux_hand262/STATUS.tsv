@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008c6860	DIFFER	493v482	-	frame + ownership model
+008c61c0	DIFFER	456v457	-	frame + register allocation
+008ec4f0	RELOCATION_MATCH	430v430	PASS	HasTC + one-ternary GetTC; ternary GetInterface picks
+00847df0	DIFFER	436v442	-	argument order + registers in the camera branch
+0064619f	DIFFER	509v509	-	frame slot + x87 scheduling
+00e72f00	RELOCATION_MATCH	402v402	PASS	&& chain of implicit-literal temporaries
+00e01760	RELOCATION_MATCH	405v405	PASS	implicit-literal CCharString args; flag-mask dtors
+009adae0	DIFFER	402v417	-	frame + register allocation
+009b0ac0	RELOCATION_MATCH	404v404	PASS	implicit progress string; split Add/Sort flag; null-first CCharString getters
+00a90900	DIFFER	487v471	-	register allocation + frame
+009bf600	RELOCATION_MATCH	469v469	PASS	mode count re-queried in the inner loop
+009c0e50	RELOCATION_MATCH	500v500	PASS	auto-pointer operator=; w/h/depth locals; empty exception class
+0064b6da	RELOCATION_MATCH	473v473	PASS	"s"-only pragma (biased frame); one assigned shadow position
+00649e8b	DIFFER	469v469	-	frame slots + one scheduling pair
+00644677	DIFFER	438v454	-	x87 scheduling/frame
+006572a0	DIFFER	462v462	-	frame slot only
+0064fc23	DIFFER	401v401	-	frame slot only
+00645292	RELOCATION_MATCH	477v477	PASS	reference-ternary handle vector; sprite 0x54
+0064546f	DIFFER	408v406	-	register/schedule
+0064c869	DIFFER	435v428	-	register allocation
+0064ca15	DIFFER	507v508	-	frame slots only
+00b24690	RELOCATION_MATCH	443v443	PASS	bool result in the dead options slot
+00b81f30	DIFFER	472v455	-	LOD loop rotated; out-of-line counted-ptr dtor
+00b8ccf0	DIFFER	491v487	-	x87: final + wind*speed spills products
+00b396e0	DIFFER	497v497	-	register only
+00bcf760	RELOCATION_MATCH	464v464	PASS	scoped orientation copy (rep movsd)
+00bcf930	RELOCATION_MATCH	464v464	PASS	scoped orientation copy (rep movsd)
+00b9e290	RELOCATION_MATCH	510v510	PASS	scoped box copy + user copy ctor
+00bbcf70	RELOCATION_MATCH	476v476	PASS	push_front with prev read once
+00b99bb0	DIFFER	461v475	-	lane gap: inline-asm SSE distance block
+00baa4e0	RELOCATION_MATCH	446v446	PASS	by-value radius inline helper
+00b9d980	RELOCATION_MATCH	510v510	PASS	scoped box copy + user copy ctor
+00b67ec0	DIFFER	422v422	-	frame slots only
+00b68610	RELOCATION_MATCH	440v440	PASS	long& stack index, member increment
+00b6b0b0	RELOCATION_MATCH	489v489	PASS	landed CShaderStatesScope
+00b44fe0	RELOCATION_MATCH	485v485	PASS	MAX macro computes the distance twice
+00b47980	RELOCATION_MATCH	457v457	PASS	column-major grid walk
+00b41a80	DIFFER	329v424	-	lane gap: inline-asm fistp rounding helper
+00b8d0d0	DIFFER	414v429	-	VC7.1 unrolls the inner 2x2 vertex loop
+00b38ed0	MATCH	420v420	PASS	invariant hoisted into the dead sphere slot

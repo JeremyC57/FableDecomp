@@ -1,0 +1,138 @@
+# Hand chunk 262 (CCreatureAction_TrollThrowProjectile .. CEnginePrimitiveAttachmentManager): 20 of 40 byte-exact
+
+## What matched (20)
+- **NPlayerGui (CDraw region):** 0x0064B6DA CDraw2DText::AddText, using a `"s"`-only pragma (biased `lea ebp` frame) and one assigned shadow position. 0x00645292 CDrawQuickAccessIcons::DrawIcon, using `y` off + `s` on, a reference-ternary handle vector and a 0x54 sprite.
+- **Creature actions:** 0x008EC4F0 CCreatureAction_UndeadIdleUnderground::Initialise, using HasTC + one-ternary GetTC into an uninitialised local and ternary GetInterface picks.
+- **Quest scripts (no EH):** 0x00E72F00 CDF_ThreeSuits::DressedAsBandit and 0x00E01760 CQ_TraderEscortScript::CDarkwoodTrader::OnPredicateFail. Both use implicit-literal CCharString temporaries in the landed 0x00E33660 flag-mask model.
+- **CDefinitionManager:** 0x009B0AC0 AddDefClass. Four things were needed:
+  - the progress text is an implicit conversion;
+  - the class-info map's Add (sets the unsorted flag) and Sort (re-tests it) are separate forceinline members;
+  - CCharString GetString/GetLength are written null-first;
+  - the CDefClassInfo constructor assigns in its body.
+- **CDisplayManager:**
+  - 0x009BF600 GetClosestMode.
+  - 0x009C0E50 Init. Its owned pointers are auto pointers that delete the old object after the store. Width, height and bit depth are read into locals before the clamps. The exception is an empty class with a user ctor. The render-manager base is polymorphic.
+- **CEngine:** 0x00B24690 SetVideoOptions.
+- **CEngineInternalPrimitive\*:** 0x00B9D980 and 0x00B9E290 GetBoundingBoxTransform, 0x00BCF760 GetTransformFrameStart, 0x00BCF930 GetTransformFrameEnd, 0x00BAA4E0 IsInsideFrustum, 0x00BBCF70 SetChildPrimitive.
+- **CEngineLandscapeRenderer:** 0x00B68610 FrameStart, 0x00B6B0B0 Render.
+- **CEngineLightingManager:** 0x00B44FE0 ClipLightCountAndBuildLightArray, 0x00B47980 FrameEnd.
+- **CEnginePrimitiveAttachmentManager:** 0x00B38ED0 IsVisible (plain MATCH).
+
+## Parked for Fable 5.1 (20)
+- 0x00B8CCF0 CEngineEnvironment::WorldFrameUpdate DIFFER(491v487)
+  - diff: on the final `+ wind * speed`, retail adds the products in x87 registers; VC7.1 spills n.z and the x/y products.
+  - tried: member, non-member and by-value operator+; operator+=; both operand orders; no copy ctor.
+  - next: try a different order for the 0.75/0.9 skew terms (term order, not operand order), or a named partial sum that is never stored.
+- 0x00B8D0D0 CEngineOcclusionManager::InitializeOcclusionBuffers DIFFER(414v429)
+  - diff: VC7.1 unrolls the inner j loop of the 2x2 vertex grid; retail keeps both loops, with the bound in edi = the shared constant 2.
+  - tried: a named size local, index form, `<=`, float locals, pragma s.
+  - next: make the bound a member or argument the compiler cannot see as constant (for example a `static const` read through a pointer).
+- 0x00B67EC0 CEngineLandscapeRenderer::AddFrameForegroundTexturesUsed DIFFER(422v422)
+  - diff: the empty `__true_type` tag takes local +0x13; retail aliases it onto the `priority` parameter slot.
+  - tried: unsigned short texture (the tag then lands right, but the push_back temporary costs a slot).
+  - next: an empty-ctor `__true_type`, so the temp is uninitialised and can alias a param.
+- 0x00B396E0 CEngineInternalAttachedPrimitive::Update DIFFER(497v497)
+  - diff: register only; &PrimitiveTransform lands in ebp where retail uses ebx.
+  - tried: named transform pointer or reference, an inverted final test, child unnamed, manager/output declaration order.
+  - next: lane gap: register allocation.
+- 0x00B81F30 CEngineClothSimulationStaticMesh::RunSimulation DIFFER(472v455)
+  - diff: retail does not rotate the best-LOD loop and calls the counted-pointer dtor out of line (0x00A36EC0); i and count swap frame/register.
+  - tried: for, while, for(;;), goto, do-while and pointer-walk loops; `#pragma optimize("s")`.
+  - next: a non-inline dtor declaration for that CCountedPointer instantiation, plus a loop whose bound is a call.
+- 0x00B41A80 CEngineMap::PeekWaterHeight DIFFER(329v424)
+  - diff: an inline-asm `fistp` rounding helper, plus frame size, neighbour lookup and early-out layout.
+  - tried: one structural attempt.
+  - next: lane gap: inline-asm fistp (GOTCHAS wave 25).
+- 0x00B99BB0 CEngineInternalPrimitiveRepeatedStaticMesh::IsInsideFrustum DIFFER(461v475)
+  - diff: retail's SSE distance block is inlined inline-asm (pointers homed, no aligned frame); intrinsics force an `and esp` aligned frame.
+  - tried: the intrinsic forms.
+  - next: lane gap: inline-asm SSE.
+- 0x0064FC23 CDrawQuestInfo::AddMiniGameBar DIFFER(401v401)
+  - diff: the TC-0x1a lookup key is homed at [ebp+0xc]; retail uses [ebp+8].
+  - tried: named copy, conversion temporary, nested ifs, key by value / const ref / named, GetInterface vs GetTC, pragma variants.
+  - next: an empty-ctor or derived->base conversion temp so the IS_THING_ALIVE temp and the key share the dead `type` slot.
+- 0x0064546F CDrawQuickAccessIcons::DrawEffectAtPos DIFFER(408v406)
+  - diff: retail computes index*8 into edi before the epsilon compare and keeps pos in ebx; the kill-path temporary's slot also differs.
+  - tried: a forceinline CVector2 `!=`, `pos != EffectPositions[index]`.
+  - next: a named `CVector2& effect = EffectPositions[index]` before the compare.
+- 0x00644677 CDrawLetterBoxBlackBars::Draw DIFFER(438v454)
+  - diff: x87 scheduling; retail stores the top box after the uv temps and stages BR.Y through a temp word.
+  - tried: a named topBox via the 4-float ctor; a temporary box (which loses the biased frame).
+  - next: build the box from two C2DVector corners in the sprite call.
+- 0x006572A0 CDrawNPCName::Draw DIFFER(462v462)
+  - diff: the font text-extent by-value return slot is [esp+0x1c] (shared with `width`); retail uses [esp+0x24].
+  - tried: unsigned short wide literal, named width.
+  - next: put the extent in its own scope, or read it through a const-ref binding.
+- 0x0064C869 CDrawSpiritTargetingCursor::Draw DIFFER(435v428)
+  - diff: retail keeps the hero in edi and CSEs i*8 once (ebx = &Targets[i]).
+  - tried: POD vs copy-constructible C3DVector (462 -> 435).
+  - next: a named `CIntelligentPointer<CThing>& target = Targets[i]` reference.
+- 0x0064CA15 CDrawWorldTime::Draw DIFFER(507v508)
+  - diff: retail homes both GFAnchorToTopRight results in one [ebp-0x1c] pair.
+  - tried: a named position per sprite, one reassigned position, a scoped named position, the first result as a temporary.
+  - next: one named C2DVector assigned twice, with each sprite taking a C2DCoordF conversion copy.
+- 0x0064619F CCrimeStatBar::DrawStatBox DIFFER(509v509)
+  - diff: retail returns the first GetRenderTargetDimensions result into [ebp-0xc] (the clock-position slot); the icon X stays on x87 until after the uv stores.
+  - tried: named scale (512 -> 509), an inline centred-X helper, the icon position as a temporary, a named float X.
+  - next: an unknown 4-byte local at [ebp-0x24] (modelled as a 0x58 sprite); find what it is.
+- 0x00649E8B CDrawFishingGame::Draw DIFFER(469v469)
+  - diff: retail gives the two implicit CCharString temps distinct slots, and loads quest-info ecx before the colour B/A stores.
+  - tried: early returns vs nested ifs; explicit vs implicit temps (implicit reached 469); temp vs named colour; reference-bound wide strings; an inline GetText helper; a nested block.
+  - next: declare both wide strings before either GetTextBySymbol (assign), or wrap the strain part in an inline helper.
+- 0x00847DF0 CCreatureAction_UseLamp::Initialise DIFFER(436v442)
+  - diff: retail evaluates the open-chest module ctor args as object, creature, environment; ours right to left. The camera owner also goes through eax.
+  - tried: an explicit CCountedPointer temp, the lookup chained into the name call.
+  - next: the third ctor argument may be a by-reference or defaulted param computed inside an inline wrapper ctor; try `new CScriptModuleOpenChest(creature, object)` with an inline ctor that calls GetCameraEnvironment.
+- 0x008C6860 CCreatureAction_TrollThrowProjectile::PerformAction DIFFER(493v482)
+  - diff: retail frame 0x10. The shot def lives in ebp and its out slot is reused for the TC-name string and the melee def; HasTC is a stored bool byte; the ability-def release has no null test.
+  - tried: one structural attempt.
+  - next: a by-value GetShotDef wrapper returning CDefPointer, and a CDefPointer dtor without a null check for the ability def.
+- 0x008C61C0 CCreatureAction_TrollWhackGroundBase::WhackGround DIFFER(456v457)
+  - diff: retail frame 0x4c (separate diff / normalised / direction vector slots, direction copied through eax); this in edi, &PCreature in esi.
+  - tried: plain inline helpers (out-of-line, 357), forceinline helpers (456).
+  - next: a C3DVector with a user copy ctor and a named diff vector.
+- 0x009ADAE0 CDefinitionManager::InstantiateSubDef DIFFER(402v417)
+  - diff: retail spills class info into the dead className slot (frame 8) and the tag into the parentIndex slot; flag RMW split; null-path copy+release goes through edx/eax.
+  - tried: `__true_type()` value vs empty ctor, bool/uchar bit-fields, by-value CDefString, dtor through a named count, long global index (417 -> 402).
+  - next: CInstantiatedDefInfo built by an out-of-class inline ctor taking the CDefPointer; null path via the landed GetPDefFromGlobalIndex shape.
+- 0x00A90900 CDeviceIndependent::AddTriangleList DIFFER(487v471)
+  - diff: register allocation and frame (0x18 vs 0x20); retail keeps a second list-pointer copy at [esp+0x1c] for push_back.
+  - tried: one smart pointer, then a raw pointer plus smart pointer.
+  - next: push_back a separate `CRefPtr<CTriangleList>` copy built right before the call.
+
+## Skipped
+- None.
+
+## Label corrections
+- 0x00A14440 is C3DVector::Normalise, not "GetScaled".
+- 0x00AC20A0 / 0x00AC20B0 are vertex-buffer Lock / Unlock, not "CThingFilter_IsValid::operator()". 0x00AC1F00 is the index-buffer Unlock, not "CVertexBufferWin32::DoUnlock".
+- 0x00BAA460 is the repeated-Z-sprite fade-in range getter (hidden-pointer 8-byte return), not "engine_get_clamped_z_coordinate".
+- 0x009BFF10 is CDisplayManager SetPresentParameters(bool, bool, bool), not "CTCInventoryAbilities::AddLearnedExpression".
+- 0x00B32010 is a video-option quality apply on 0x01436E80 (not "Catch@0040d88c"). 0x00B2F740 is the video-options-changed sink on 0x01436E58 (not the CXMVPlaybackInfo ctor).
+- 0x00BACDD0 is an engine primitive-manager call (primitive, flag), not "_Cons_val<...CParticleMorphs...>".
+- 0x00B840A0 is vector<CCountedPointer<CParticleSimulation>>::resize, not "_Umove<EWeaponClass*>". 0x00AE0600 is the CParticleSimulation ctor, not "GetDefaultVal<CPhysicalPrimitiveInit>". 0x00ADF5B0 is CParticleSimulation SavePositions, not "COpinionPersonalityDef::operator=".
+- 0x00A36EC0 is the CCountedPointer<const C3DMesh2> dtor, not "_Dest_val<...COptimisedPrimitive...>".
+- 0x00B671A0 is CEngineLandscapeRenderer::UpdateLighting (manifest says `_global`).
+- 0x00BBCF70: the catalog's SetChildPrimitive is the same function the landed 0x00BBC310 / 0x00BBD1A0 call AddChildPrimitiveWithID.
+- The landed CAC_Owner 0x00E33660 names CScriptThing slot 18 "Accepts"; it is MsgIsKilledBy.
+- 0x00E01900 is CQ_TraderEscortScript::MakeTraderComment.
+- 0x006A2220 is CTCCarrying (fill vector<CThing*>), 0x0073AE10 is CTCCreatureModeManager::AddMode and 0x0076E150 is CTCWeaponTrail::ClearAllWeaponTrails.
+- `_Cons_val` labels hide several real functions:
+  - 0x004378C0 is CPlayerGui::Refresh.
+  - 0x00438010 is CGameUI::Draw2DText.
+  - 0x00643D5D is the CDrawBase faded-alpha helper.
+  - 0x00487DD0 is CPlayer::GetCharacterThing.
+- 0x00449970 is CPlayerManager::GetMainPlayer, not "Catch@0040d959".
+- 0x00AEAAF0 is CParticleEmitterManager::Get and 0x004167C8 is a CMainGameComponent tick getter; neither is "GFGetPreMainMemoryUsed".
+- 0x004349F0 / 0x00434A00 are view width/height getters, not DrawGetSeaLevel / `_Cons_val`.
+- 0x00437860 / 0x00437880 are game-UI world-time visible/alpha getters.
+- 0x0099B220 / 0x0099AF10 are CWideString methods, not CCharString.
+- 0x005CBDD2 is a __fastcall target compare, not SetLungedThisFrame.
+- 0x009D5060 is CDefString's set-from-CCharString; it returns the index, not `this`. It is not "CRegion::SetMiniMapRegionExitTextOffsetX".
+- 0x009AD580 / 0x009AD2E0 are CDefinitionManager class-info lookups, not "CVectorMap_FindByKey" / "CFactionDatabase::FindFactionBySymbolName".
+- 0x009B9490 is std::sort over the 24-byte class-info pairs, not "Heap_MakePriority_24byte".
+- 0x009F70E0 / 0x009F7330 are the dynamic-texture list ctor and dtor, not "Init_ListHeads" / "CEngineScreenEffectOutlineGlow::FinishWithDynamicTextures".
+- 0x00692940 is a CCreatureActionBase game-context getter (not `_Dest_val`). 0x006925B0 is a CCreatureActionBase getter (not "CWorld::DrawGetEnvironment").
+- 0x00669D30 is a troll-def whack-effect lookup, not "CCRC::CalcAndLookup".
+- 0x00414EA0 is an STLport vector dtor (not "CCombatWheel::ResetRings"), and 0x004C73D0 is a CThing position getter (not "CVertexBufferWin32::DoSizeof").
+- Two chunk-file getters are propagated labels: 0x00ABC440 (manifest "GetBridgeVertexBufferAsCArray") and 0x00ABA370 (manifest "CWorldMap::DrawGetNoMaps").
