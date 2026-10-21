@@ -260328,6 +260328,69 @@ $catalog = @(
         TestSource = '00/94/CAIStateGroupTrollBase_GetEnemyPredictedPos_0094d680_test.cpp'
         PassPattern = '0094d680_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0069adc0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_SetUpMainCameraManagerSetDef_0069adc0.cpp'
+        TestSource = '00/69/CGameCameraManager_SetUpMainCameraManagerSetDef_0069adc0_test.cpp'
+        PassPattern = '0069adc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cf480'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_InitWifeAtEndOfMarriageFrescoEndFadeIn_006cf480.cpp'
+        TestSource = '00/6c/CTCWife_InitWifeAtEndOfMarriageFrescoEndFadeIn_006cf480_test.cpp'
+        PassPattern = '006cf480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00706450'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_IsWearingAppearanceModifierCoveringBodyArea_00706450.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_IsWearingAppearanceModifierCoveringBodyArea_00706450_test.cpp'
+        PassPattern = '00706450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007366c0'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_RemoveMeleeFlourishAbility_007366c0.cpp'
+        TestSource = '00/73/CTCCombat_RemoveMeleeFlourishAbility_007366c0_test.cpp'
+        PassPattern = '007366c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007721a0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_IsPermanentlyStocked_007721a0.cpp'
+        TestSource = '00/77/CTCShop_IsPermanentlyStocked_007721a0_test.cpp'
+        PassPattern = '007721a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007742c0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_GetCurrentBuyPrice_007742c0.cpp'
+        TestSource = '00/77/CTCShop_GetCurrentBuyPrice_007742c0_test.cpp'
+        PassPattern = '007742c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007743b0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_GetCurrentSellPrice_007743b0.cpp'
+        TestSource = '00/77/CTCShop_GetCurrentSellPrice_007743b0_test.cpp'
+        PassPattern = '007743b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096a7a0'
+        Module = 'CAIStateGroup_WhisperRetreat'
+        Source = '00/96/CAIStateGroupWhisperRetreat_IsRunnableLeaf_0096a7a0.cpp'
+        TestSource = '00/96/CAIStateGroupWhisperRetreat_IsRunnableLeaf_0096a7a0_test.cpp'
+        PassPattern = '0096a7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00706290'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_IsNaked_00706290.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_IsNaked_00706290_test.cpp'
+        PassPattern = '00706290_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

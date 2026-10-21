@@ -1,0 +1,3 @@
+address	name	evidence
+007366c0	CTCCombat::RemoveMeleeFlourishAbility	catalogued AddMeleeFlourishAbility; Ego_r.pdb name; RELOCATION_MATCH (retry 10b16)
+00706290	CTCHeroAttachableAppearanceModifiers::IsNaked	Ego_r.pdb `?IsNaked@CTCHeroAttachableAppearanceModifiers@@QBE_NXZ`; RELOCATION_MATCH (retry 10b16)
