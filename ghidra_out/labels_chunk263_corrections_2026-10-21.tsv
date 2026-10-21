@@ -1,0 +1,5 @@
+address	name	evidence
+005e4030	CTCQuestCompletionUI::CTCQuestCompletionUI	ctor, not CEngineSubPrimitive2DClockSprite (chunk 263)
+00684420	CTCCreatureOpinionOfHero::CTCCreatureOpinionOfHero	ctor, not CEngineSubPrimitive2DClockSprite (chunk 263)
+00b3b030	GetVertexBufferUsage_COMDAT	COMDAT-folded body labelled GetIndexBufferUsage; 00b6d940 calls it as the vertex-buffer usage getter on 0x01436E98 (chunk 263)
+00b2fa40	CEnginePrimitiveOcclusionManager::Unknown_00b2fa40	member called on 0x01436E58, not CV_BanditTollScript::Init (landed file keeps the old name pending a confirmed member name) (chunk 263)

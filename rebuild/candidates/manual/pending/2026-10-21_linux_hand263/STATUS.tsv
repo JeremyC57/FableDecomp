@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00b3a180	RELOCATION_MATCH	407v407	PASS	STLport list insert(end(),x)+create_node keeps pushes at entry; prev local
+00bc9800	DIFFER	430v428	-	only the bool->state value conversion (cmp mem,bl/setne vs mov dl/test)
+00b900b0	RELOCATION_MATCH	446v446	PASS	inline CMatrix3x4 product, only Z column survives
+00b903d0	DIFFER	456v464	-	loop register allocation (primitive/stride in ebp/ebx swapped)
+00b91140	DIFFER	512v510	-	register swap primitive/vector (ebx vs edi) + handle copy store placement + true_type tag slot
+00bb99a0	RELOCATION_MATCH	427v427	PASS	compiler-generated dtor (no user ~T)
+00bbc130	RELOCATION_MATCH	468v468	PASS	switch with stack CEngineSubPrimitiveBase per case
+00bbcc70	DIFFER	411v415	-	SetState register allocation (retail scoped push/pop ebp temp)
+00b9d730	DIFFER	429v429	-	one fmul operand order for the scaled radius (scale loaded first)
+00ba4a40	DIFFER	466v463	-	register allocation (primitive ebp vs ebx; bank array base reload)
+00ba50a0	DIFFER	441v441	-	one byte-store position (failed=false scheduled earlier than retail)
+00b32300	RELOCATION_MATCH	402v402	PASS	forceinline manager SetState; CRGBColour temporaries
+00b32660	RELOCATION_MATCH	434v434	PASS	by-value C2DExtentsI result in a named local
+00b36ce0	RELOCATION_MATCH	466v466	PASS	member sub-object ctors in declaration order
+00b930a0	RELOCATION_MATCH	484v484	PASS	function-scope sphere zeroed member-wise; named grid pointer
+00b92070	RELOCATION_MATCH	479v479	PASS	inside declared at function scope; sphere zeroed member-wise
+00b92790	RELOCATION_MATCH	437v437	PASS	two separate return-false tests keep retail block layout
+00b87680	RELOCATION_MATCH	486v486	PASS	scoped named CRenderTarget; inline core SetState
+00b5f8c0	RELOCATION_MATCH	495v495	PASS	CRGBColour locals from (uchar)(x*255)
+00b89a20	RELOCATION_MATCH	450v450	PASS	scoped named CRenderTarget; inline capture block
+00b4b8b0	DIFFER	421v421	-	one x87 operand form (fld st(2);fmul mem) + rep-movsd setup scheduling
+00b81820	DIFFER	433v433	-	scheduling only: callee-saved push vs saved-frame store order
+00b61b30	DIFFER	414v410	-	lower-ring colour -1 not hoisted into ebx (u lands in ebx instead of ebp)
+00b62440	DIFFER	389v405	-	layer-0 C3DVector wind*speed temp/copy chain (retail one more stack copy, 0x1c frame)
+00b58de0	RELOCATION_MATCH	451v451	PASS	four tracked render states on the core
+005e4030	RELOCATION_MATCH	420v420	PASS	CTCQuestCompletionUI ctor (label fix); container ctors as CTCBoastUI
+00684420	RELOCATION_MATCH	493v493	PASS	CTCCreatureOpinionOfHero ctor (label fix); memset byte masks, counted list-head loop
+00b847d0	DIFFER	444v444	-	register allocation in the histogram loop (memset zero reused as index)
+00bf2e50	RELOCATION_MATCH	467v467	PASS	MIN/MAX macros; key reads inside the bit loop
+00b6d940	RELOCATION_MATCH	421v421	PASS	value-returning ReadLong; compressor declared first
+00b71fb0	RELOCATION_MATCH	455v455	PASS	clear() as erase(begin,end) with __copy_trivial
+00b52990	DIFFER	387v406	-	lane gap: inline-asm fistp floor helper (ebp frame, fistp/fild); not byte-pure reproducible
+00b53f60	DIFFER	418v411	-	lane gap: retail keeps this in ecx across the same-TU inline-asm UpdateBoxPositions call (callee register knowledge)
+00c64fb0	RELOCATION_MATCH	437v437	PASS	size/24 entries; validate then if-chain store pass
+00c65690	RELOCATION_MATCH	478v478	PASS	size/24 entries; validate then if-chain store pass
+0051eda0	DIFFER	485v501	-	level loop: retail keeps the Valid-then-null test pair on the bounds-checked element; ours drops the null test; one push placement
+00520390	DIFFER	464v465	-	the two script loops swap register shapes (base kept from size test vs reloaded; ebp push placement)
+004732e0	RELOCATION_MATCH	438v438	PASS	Transfer: members in declaration order, context in edi
+00886200	RELOCATION_MATCH	501v501	PASS	forceinline erase calling separate inline copy helper
+0081b510	RELOCATION_MATCH	406v406	PASS	size <= remaining operand order; one shared count slot
