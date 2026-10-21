@@ -21170,3 +21170,10 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?GetCrowdGroup@CTCBoastingCrowdControl@@QAE_NPAUCThing@@PAPAUCCrowdGroup@@@Z	00783730	0095e790
 ?GetEventTime@C3DAnimationStats@@QBEMJ@Z	00a4eae0	00a36df0
 ?GetInfo@C3DAnimationBank@@QAEPAUC3DAnimationInfo@@J@Z	00a242c0	00a36df0
+?LoadRoute@CTCPreCalculatedNavigationRoute@@QAEXAAUCPersistContext@@J@Z	008008b0	00800a60
+?SaveRoute@CTCPreCalculatedNavigationRoute@@QAEXAAUCPersistContext@@@Z	008006d0	00800a60
+??0CCreatureAction_GeneralInterruptedAttack@@QAE@PAUCThingCreatureBase@@PAUCThing@@UCCharString@@@Z	0087cf90	00858cc0
+?CreatureOnBlowBlocked@CCombatActionBase@@QAEX_N@Z	006927f0	00858cc0
+??0CActionFireProjectileWeapon@NTCScriptedControl@@QAE@PAUCThing_Retail@@@Z	00716790	00903d60
+??0CActionPlayAnimation@NTCScriptedControl@@QAE@ABVCCharString@@_N1J1J11111@Z	009034f0	009049f0
+?GetPosition@CThingCreature@@QAEABUC3DVector@@XZ	004c73d0	00915080

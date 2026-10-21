@@ -258780,6 +258780,62 @@ $catalog = @(
         TestSource = '00/a3/C3DMeshObject_GetEventTime_00a36df0_test.cpp'
         PassPattern = '00a36df0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007ee3d0'
+        Module = 'CTCVillageMember'
+        Source = '00/7e/CTCVillageMember_OnSerialise_007ee3d0.cpp'
+        TestSource = '00/7e/CTCVillageMember_OnSerialise_007ee3d0_test.cpp'
+        PassPattern = '007ee3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00800a60'
+        Module = 'CTCPreCalculatedNavigationRoute'
+        Source = '00/80/CTCPreCalculatedNavigationRoute_OnSerialise_00800a60.cpp'
+        TestSource = '00/80/CTCPreCalculatedNavigationRoute_OnSerialise_00800a60_test.cpp'
+        PassPattern = '00800a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00858cc0'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_OnBlowBlocked_00858cc0.cpp'
+        TestSource = '00/85/CCombatActionBase_OnBlowBlocked_00858cc0_test.cpp'
+        PassPattern = '00858cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b8bc0'
+        Module = 'CCreatureAction_ScreamerDrainAttack'
+        Source = '00/8b/CCreatureActionScreamerDrainAttack_Initialise_008b8bc0.cpp'
+        TestSource = '00/8b/CCreatureActionScreamerDrainAttack_Initialise_008b8bc0_test.cpp'
+        PassPattern = '008b8bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00903d60'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_FireProjectileWeaponAtTarget_00903d60.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_FireProjectileWeaponAtTarget_00903d60_test.cpp'
+        PassPattern = '00903d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009049f0'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_PlayAnimation_009049f0.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_PlayAnimation_009049f0_test.cpp'
+        PassPattern = '009049f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00904bd0'
+        Module = 'CScriptGameResourceObjectScriptedThing'
+        Source = '00/90/CScriptGameResourceObjectScriptedThing_PlayLoopingAnimation_00904bd0.cpp'
+        TestSource = '00/90/CScriptGameResourceObjectScriptedThing_PlayLoopingAnimation_00904bd0_test.cpp'
+        PassPattern = '00904bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00915080'
+        Module = 'CAIStateGroup_KidHurtSelfRunToMother'
+        Source = '00/91/CAIStateGroupKidHurtSelfRunToMother_IsRunnable_00915080.cpp'
+        TestSource = '00/91/CAIStateGroupKidHurtSelfRunToMother_IsRunnable_00915080_test.cpp'
+        PassPattern = '00915080_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
