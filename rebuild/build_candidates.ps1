@@ -260694,6 +260694,76 @@ $catalog = @(
         TestSource = '00/8f/CTCTavernGameCardBase_UpdatePointerScale_008f1bd0_test.cpp'
         PassPattern = '008f1bd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00635b30'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_UninitModeFirstPersonTargeting_00635b30.cpp'
+        TestSource = '00/63/CPlayer_UninitModeFirstPersonTargeting_00635b30_test.cpp'
+        PassPattern = '00635b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071a9c0'
+        Module = 'CTCParticleAttachmentTracker'
+        Source = '00/71/CTCParticleAttachmentTracker_UpdateAttachedParticles_0071a9c0.cpp'
+        TestSource = '00/71/CTCParticleAttachmentTracker_UpdateAttachedParticles_0071a9c0_test.cpp'
+        PassPattern = '0071a9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00733ee0'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_IsMeleeFlourishValid_00733ee0.cpp'
+        TestSource = '00/73/CTCCombat_IsMeleeFlourishValid_00733ee0_test.cpp'
+        PassPattern = '00733ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00757680'
+        Module = 'CTCWound'
+        Source = '00/75/CTCWound_CTCWound_00757680.cpp'
+        TestSource = '00/75/CTCWound_CTCWound_00757680_test.cpp'
+        PassPattern = '00757680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b7a20'
+        Module = 'CCreatureAction_SummonCreatures'
+        Source = '00/8b/CCreatureActionSummonCreatures_Initialise_008b7a20.cpp'
+        TestSource = '00/8b/CCreatureActionSummonCreatures_Initialise_008b7a20_test.cpp'
+        PassPattern = '008b7a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c67a0'
+        Module = 'CCreatureAction_TrollThrowProjectile'
+        Source = '00/8c/CCreatureActionTrollThrowProjectile_FrameUpdate_008c67a0.cpp'
+        TestSource = '00/8c/CCreatureActionTrollThrowProjectile_FrameUpdate_008c67a0_test.cpp'
+        PassPattern = '008c67a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f4480'
+        Module = 'CCreatureAction_DragonStrafeInto'
+        Source = '00/8f/CCreatureActionDragonStrafeInto_Initialise_008f4480.cpp'
+        TestSource = '00/8f/CCreatureActionDragonStrafeInto_Initialise_008f4480_test.cpp'
+        PassPattern = '008f4480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00944db0'
+        Module = 'CAIStateGroup_WorkHammerAnvil'
+        Source = '00/94/CAIStateGroupWorkHammerAnvil_OnReplace_00944db0.cpp'
+        TestSource = '00/94/CAIStateGroupWorkHammerAnvil_OnReplace_00944db0_test.cpp'
+        PassPattern = '00944db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00958e20'
+        Module = 'CAIStateGroup_MinionReactToCrime'
+        Source = '00/95/CAIStateGroupMinionReactToCrime_IsStillValid_00958e20.cpp'
+        TestSource = '00/95/CAIStateGroupMinionReactToCrime_IsStillValid_00958e20_test.cpp'
+        PassPattern = '00958e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096d380'
+        Module = 'CAIStateGroup_EatAtTavern'
+        Source = '00/96/CAIStateGroupEatAtTavern_IsTime_0096d380.cpp'
+        TestSource = '00/96/CAIStateGroupEatAtTavern_IsTime_0096d380_test.cpp'
+        PassPattern = '0096d380_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

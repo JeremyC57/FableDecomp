@@ -21771,3 +21771,14 @@ _wcsncmp	00bfeb0a	004071c0
 ??$GetSubDef@UCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAU?$CDefPointerSlot@UCSpecialEffectsDef@@@@@Z	00669580	007f2410
 ?GetSubDef@CDefClassBase@@QAE_NAAU?$CDefSlot@UCSpecialEffectsDef@@@@@Z	00669580	008c4cb0
 ?GetSubDef@CDefClassBase@@QAE_NAAU?$CDefPointer@UCSpecialEffectsDef@@@@@Z	00669580	008d8330
+?UpdateEmitterThingAttachment@CTCDParticleEmitter@@QAEX_NM@Z	006dffb0	0071a9c0
+?IsThingVulnerableToMeleeStrikesFromThing@@YI_NPAUCThing@@0@Z	007f59f0	00733ee0
+??1CWoundList@@QAE@XZ	00758b00	00757680
+?SummonCreatures@CTCAISummon@@QAEJPBUC3DVector@@@Z	007fe040	008b7a20
+??0CModeDragonStrafe@@QAE@PAUCThing@@MMMM@Z	008ddfb0	008f4480
+?DestroyItem@CAIStateGroupBaseI@@QAEXABUCCharString@@@Z	008fd1b0	00944db0
+?SetPushableByHero@CAIStateGroupBaseI@@QAEX_N@Z	0097e330	00944db0
+?IsCrimeHandled@CTCVillage@@QAE_NJ@Z	0065914b	00958e20
+?IsGuardOnLevel@CAIStateGroup_MinionReactToCrime@@QAE_NXZ	00958c00	00958e20
+?IsStaffed@CAIStateGroup_EatAtTavern@@QAE_NXZ	0096d2d0	0096d380
+?IsTimeBetween@CTCVillage@@QAE_NPAXJ@Z	00658620	0096d380
