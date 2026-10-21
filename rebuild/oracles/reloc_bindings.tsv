@@ -23092,3 +23092,9 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?GetDefGlobalIndex@CGameDefinitionManager@@QAEJABUCCharString@@_N@Z	009ad390	0096c4f0
 ?GetState@CTCThunderCombat@@QAEJXZ	007aed10	0096c4f0
 ?Reset@CTCThunderCombat@@QAEXXZ	007aed50	0096c4f0
+?TreeFind@CObjectMap@@QAE?AUCObjectIterator@@ABK@Z	009902d0	0098eff0
+?__uninitialized_copy@@YIPAUSNavCell@@PBU1@0PAU1@ABU__false_type@@@Z	00a82730	00a85420
+?__uninitialized_copy@@YIPAUSNavPair@@PBU1@0PAU1@ABU__false_type@@@Z	00a83340	00a85420
+?find@CGroupToIndexMap@@QBE?AUSGroupMapIterator@@ABK@Z	006699c0	00ad8c30
+?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QAEXPAUC3DMesh2@@@Z	00bd2a90	00b83750
+?TreeFind@CCache@@QAE?AUiterator@1@ABK@Z	00b83520	00b83750

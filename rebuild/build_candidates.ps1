@@ -263402,6 +263402,41 @@ $catalog = @(
         TestSource = '00/96/CAIStateGroupThunder_Update_0096c4f0_test.cpp'
         PassPattern = '0096c4f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0098eff0'
+        Module = 'CThreadedFileManager'
+        Source = '00/98/CThreadedFileManager_SetObjectPriority_0098eff0.cpp'
+        TestSource = '00/98/CThreadedFileManager_SetObjectPriority_0098eff0_test.cpp'
+        PassPattern = '0098eff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a85420'
+        Module = '_global'
+        Source = '00/a8/global_uninitializedcopy_00a85420.cpp'
+        TestSource = '00/a8/global_uninitializedcopy_00a85420_test.cpp'
+        PassPattern = '00a85420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad8c30'
+        Module = 'CVertexGroupBlock'
+        Source = '00/ad/CVertexGroupBlock_IsSubsetOf_00ad8c30.cpp'
+        TestSource = '00/ad/CVertexGroupBlock_IsSubsetOf_00ad8c30_test.cpp'
+        PassPattern = '00ad8c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad8ca0'
+        Module = 'CVertexGroupBlock'
+        Source = '00/ad/CVertexGroupBlock_IsProperSubsetOf_00ad8ca0.cpp'
+        TestSource = '00/ad/CVertexGroupBlock_IsProperSubsetOf_00ad8ca0_test.cpp'
+        PassPattern = '00ad8ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b83750'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/b8/CEngineInternalPrimitiveAnimatedMesh_GetBoneScalings_00b83750.cpp'
+        TestSource = '00/b8/CEngineInternalPrimitiveAnimatedMesh_GetBoneScalings_00b83750_test.cpp'
+        PassPattern = '00b83750_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
