@@ -1,0 +1,4 @@
+address	name	evidence
+00a52450	C3DKeyframe::ToMatrix	FableWin symbol ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix3x4@@_N@Z; catalog had CQuaternion::ToMatrix (retry A)
+00a773e0	CNavSwitchableLeafNode::IsEveryUniqueIDOpen	manifest PrepareForLoad is propagated (retry A)
+00a7df60	CVectorMap<unsigned __int64,bool>::LowerBound	callee of 00a78800 (retry A)

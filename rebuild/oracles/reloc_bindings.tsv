@@ -23419,3 +23419,12 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@ABK@Z	004365b0	006ac390
 ?AutoPlaceNearBuilding@CThingCreatureHome@@QAE_NPAUCThingBuilding@@M@Z	00666ef0	0090fc50
 ?IsSchoolTime@CTCVillage@@QAE_NXZ	00658a35	0090fc50
+?IsEveryUniqueIDOpen@CNavSwitchableLeafNode@@QBE_NXZ	00a773e0	00a78800
+?LowerBound@CSwitchMap@@QAEPAUSSwitchEntry@@AB_K@Z	00a7df60	00a78800
+?RemoveConnectionToRegion@CNavRegion@@QAEXPAU1@@Z	00a78060	00a78800
+?Unlock@CNavSwitchableLeafNode@@QAEXPAUCNavRegion@@@Z	00a77420	00a78800
+?_M_insert_overflow@CRegionVector@@QAEXPAPAUCNavRegion@@ABQAU2@ABUSScalarTag@@K_N@Z	00a814b0	00a78800
+?CalculateRouteFromTo@CTCPreCalculatedNavigationRoute@@QAEXABUC3DVector@@0AAUCNavStepVector@@@Z	00800540	008006d0
+?ConvertWorldMapCoordsToLocalCoords@CWorldMap@@QAE?AUC2DVector@@JABU2@@Z	004fc330	008006d0
+?ToConstChar@CCharString@@QBEPBDXZ	0099e4c0	008006d0
+?Transfer@CPersistContext@@QAEXPBDAAEABE@Z	00405a60	008006d0

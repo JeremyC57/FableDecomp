@@ -264533,6 +264533,34 @@ $catalog = @(
         TestSource = '00/90/CAIStateGroupMinionSitAtSchool_InitCreaturePosition_0090fc50_test.cpp'
         PassPattern = '0090fc50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00853320'
+        Module = 'NCameraModes::CScriptModuleBase'
+        Source = '00/85/NCameraModesCScriptModuleBase_GetViewPosInFocalPlane_00853320.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleBase_GetViewPosInFocalPlane_00853320_test.cpp'
+        PassPattern = '00853320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a78800'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a7/CNavSwitchableLeafNode_SetAsBlocked_00a78800.cpp'
+        TestSource = '00/a7/CNavSwitchableLeafNode_SetAsBlocked_00a78800_test.cpp'
+        PassPattern = '00a78800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00815ce0'
+        Module = 'NHitLocations::CPhysicalPrimitiveCylinder'
+        Source = '00/81/NHitLocationsCPhysicalPrimitiveCylinder_IsPosInside_00815ce0.cpp'
+        TestSource = '00/81/NHitLocationsCPhysicalPrimitiveCylinder_IsPosInside_00815ce0_test.cpp'
+        PassPattern = '00815ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008006d0'
+        Module = 'CTCPreCalculatedNavigationRoute'
+        Source = '00/80/CTCPreCalculatedNavigationRoute_SaveRoute_008006d0.cpp'
+        TestSource = '00/80/CTCPreCalculatedNavigationRoute_SaveRoute_008006d0_test.cpp'
+        PassPattern = '008006d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
