@@ -263522,6 +263522,34 @@ $catalog = @(
         TestSource = '00/8b/CCreatureActionOnGenerate_Initialise_008b74d0_test.cpp'
         PassPattern = '008b74d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007e50c0'
+        Module = 'CTCBetting'
+        Source = '00/7e/CTCBetting_GetBetText_007e50c0.cpp'
+        TestSource = '00/7e/CTCBetting_GetBetText_007e50c0_test.cpp'
+        PassPattern = '007e50c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00833010'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_SetNewBrain_00833010.cpp'
+        TestSource = '00/83/CThingAICreature_SetNewBrain_00833010_test.cpp'
+        PassPattern = '00833010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26c60'
+        Module = 'C3DAnimationInfo'
+        Source = '00/a2/C3DAnimationInfo_GetAnimation_00a26c60.cpp'
+        TestSource = '00/a2/C3DAnimationInfo_GetAnimation_00a26c60_test.cpp'
+        PassPattern = '00a26c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abd280'
+        Module = 'C3DMeshFileTrianglesChunk'
+        Source = '00/ab/C3DMeshFileTrianglesChunk_ReadFromFile_00abd280.cpp'
+        TestSource = '00/ab/C3DMeshFileTrianglesChunk_ReadFromFile_00abd280_test.cpp'
+        PassPattern = '00abd280_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

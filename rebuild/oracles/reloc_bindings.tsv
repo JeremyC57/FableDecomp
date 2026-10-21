@@ -23112,3 +23112,15 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?Initialise@CParticleEmitter@@QAE_NPAVCIEngine@@@Z	00aee240	00aee9f0
 ?Update@CParticleSystem@NParticleEngine@@QAEXPAUCParticleUpdateParameters@@@Z	00af59a0	00aee9f0
 ?GetSubDef@CDefClassBase@@QAE_NPAU?$CDefPointer@UCAppearanceDef@@@@@Z	0042b0a2	00779d20
+?GetSubDef_007e5820@CDefClassBase@@QAE_NAAU?$CDefPointer@UCBettingDef@@@@@Z	007e5820	007e50c0
+?GetText@CTCBetting@@QAE?AVCWideString@@K@Z	007e4d70	007e50c0
+?IntToWideString@@YI?AVCWideString@@J@Z	00405f00	007e50c0
+??0CAIBrain@@QAE@PAUCDisplayEngine@@PAUCWorld@@PAUCThingManager@@PAUCPlayerManager@@PAUCThingAICreature@@UCDefPointer@@@Z	0088c160	00833010
+?GetDisplayEngine@CThingAICreature@@QAEPAUCDisplayEngine@@XZ	004c7a70	00833010
+?GetPlayerManager@CThingAICreature@@QAEPAUCPlayerManager@@XZ	004c7a00	00833010
+?OnNewBrain_008018b0@CTCIdleScheduler@@QAEXXZ	008018b0	00833010
+?PeekWorld@CThingAICreature@@QAEPAUCWorld@@XZ	004c7aa0	00833010
+?Reset@CBrainPointer@@QAEXPAUCAIBrain@@@Z	00834e40	00833010
+?BuildAnimationInstance@C3DAnimationInfo@@QBE?AU?$CCountedPointer@UC3DAnimation2@@@@ABUC3DMesh2@@@Z	00a26ad0	00a26c60
+?TreeFind@CAnimationMap@@QAE?AUiterator@1@ABK@Z	00a2adc0	00a26c60
+?resize@?$CArray@UC3DTriangle2@@@@QAEXKABUC3DTriangle2@@@Z	00a97a50	00abd280
