@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006d77c0	RELOCATION_MATCH	407v407	PASS	AddExperience; ternary GetInterface pick + list tail local
+006d7f20	RELOCATION_MATCH	435v435	PASS	UpdateComboMultiplier; first try
+006d83b0	RELOCATION_MATCH	447v447	PASS	OnStatLevelChange; same-TU real GetTotalStatLevel body keeps ecx
+006d68d0	DIFFER	495v495	-	Handedness (label wrong); one fmul/store swap at stat-5 join (advisor)
+006d6cb0	DIFFER	495v495	-	IsToAutoBlock (label wrong); same residual swap as 006d68d0
+005bff07	RELOCATION_MATCH	409v409	PASS	CTCInventoryBase ctor; manager pointer as named local before the call
+00730c00	DIFFER	456v456	-	Open; one reg pick (ecx vs edx) in base-def temp copy+release
+00730dd0	DIFFER	446v446	-	Close; same single reg pick as Open
+007c8de0	RELOCATION_MATCH	485v485	PASS	ProcessLevellingUpFX; implicit-literal && temp + uninit emitter (OnDie/Kraken shapes)
+007c93b0	RELOCATION_MATCH	444v444	PASS	FrameUpdate (vtable slot 9); first try on the 8de0 model
+007c87f0	RELOCATION_MATCH	510v510	PASS	fireball ctor; (float)stamina inside the loop condition (hoisted via stack slot + loop align)
+00750e30	SKIP	-	-	lane gap: inline fistp rounding helper (fadd 0.5 ; fistp ; fild ; fsub 1.0 compare)
+00c6b050	SKIP	-	-	lane gap: inline fstp/fld/fistp rounding (audio reverb; catalog name wrong)
+00798770	DIFFER	453v453	-	FinishBeingForcePushed; position-copy load/push scheduling only
+00815420	DIFFER	498v498	-	GetBoundingSphere; this/iterator register assignment (edi/ebx) + extra ebx save
+005bd699	DIFFER	405v405	-	UpdateInventoryAnim; dec of GetPDef temp scheduled before fmul (retail between fmul/fdivr)
+007f4990	DIFFER	448v449	-	GetNPCShortName; UID arg load order + stored-name frame slot
+00706950	RELOCATION_MATCH	444v444	PASS	AddAppearanceModifierWithReplace; twin of landed 0x00706880 + named world local per message
+00789ff0	DIFFER	451v451	-	CancelAimingWeapon; sound component load sunk past the id test (retail loads first)
+0057aeb4	DIFFER	427v427	-	GetFavouriteWeapon; lane gap: def slots cached in edi/ebx across calls (whole-program), ours spills one copy
+0057dc22	DIFFER	498v498	-	GetCrimeReport; esi/edi swap (crime index v newline literal) + one dead-arg temp slot
+0077c960	DIFFER	502v502	-	DoMovement; only the bbox-centre fld/fadd operand order differs (everything else incl. frame and filter scope matches)
+0047d296	DIFFER	482v482	-	PCSetQuitToFrontEnd; one push/fsubp scheduling swap at the SetPosition call
+0047dd9d	DIFFER	493v493	-	PCSetToLoad; twin of 0047d296, same push/fsubp swap
+00582754	RELOCATION_MATCH	496v496	PASS	RevertVideoChanges; first try (size TU, no frame pointer, loop index in the push-ecx slot)
+00583e26	DIFFER	465v484	-	OnItemSelected; temporaries/keys not homed in the dead item argument slot (retail reuses [ebp+8])
+00587847	DIFFER	506v506	-	ClosePCInventory; only the two result-less bitset tests load the thing via eax+lea (ours ecx+add)
+00590d32	RELOCATION_MATCH	473v473	PASS	CTCInventory ctor; STLport alloc-proxy vector ctors fix the map lea scheduling
+005f05e5	RELOCATION_MATCH	410v410	PASS	Abilities OpenInventory; first try (uninit interface local + landed GetPDef box twin)
+005f6793	DIFFER	440v442	-	CycleAssignedExpressions; this/zero register pick (edi/esi in retail) + early-empty free not tail-merged
+005f64dd	DIFFER	510v508	-	CycleAssignedAbilities; this spilled in ours v page-start iterator memory-resident in retail
+0057770a	DIFFER	448v448	-	Experience vfunc_89 (undo spend + close); only ability-loop esi/edi swap
+005778ca	DIFFER	502v502	-	Experience vfunc_90 twin; same ability-loop esi/edi swap only
+005b3aef	DIFFER	438v422	-	Clothing OnInitialActivate; this/def register choice (retail this memory-only, def cached in edi)
+005bfd5e	DIFFER	421v425	-	CTCInventoryBase OnSerialise; unexplained early zero store to the name-temp slot + this/zero register pick
+005be8f3	DIFFER	483v482	-	CreateInventoryObject; ParentThing hoisted before the name temp in ours (retail keeps thing=0 in ebx for the zero pushes)
+007800b0	DIFFER	466v466	-	OpenQuestSelectInterface (/GS); shape matches, frame 0x40 v 0x3c (text temp not sharing the key slot)
+004c0240	SKIP	-	-	lane gap: no-frame speed TU with bool temps homed in dead argument slots (SetPMeshEffect, recursive)
+007e8a40	DIFFER	482v482	-	Flourish ProcessActionMovementDelta; x87 temp/frame packing (0x34 v 0x3c) + side-dot term order
+00c11d00	DIFFER	507v507	-	unnamed audio ctor (label CTCHero::Initialize wrong); EH ctor, vptr/push scheduling only

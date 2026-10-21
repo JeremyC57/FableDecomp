@@ -1,0 +1,16 @@
+address	name	evidence
+006d68d0	IsBlockRecoilAnimToConserveAnimationHandedness	catalog ComboChain label is propagated (chunk 270)
+006d6cb0	IsToAutoBlock	catalog ComboChain label is propagated (chunk 270)
+007c93b0	CTCFireballSpell::FrameUpdate	catalog places this label on 0x7C9180 (chunk 270)
+00c11d00	audio library 7-arg constructor (vtable 0x012B2748)	not CTCHero::Initialize (chunk 270)
+0057770a	CTCInventoryExperience vtable slot 89	chunk 270
+005778ca	CTCInventoryExperience vtable slot 90	chunk 270
+005edcf0	GetNumberOfAssignableSlots	chunk 270
+005f66d9	SetAssignedExpression	chunk 270
+005f6423	SetAssignedAbility	chunk 270
+004c7a80	GetSampleBank	chunk 270
+005ee01a	SetAbilityLevel	chunk 270
+005bd597	OnInventoryClosed	chunk 270
+00a14440	C3DVector::Normalise (in place)	chunk 270
+006869d0	GetDefinitions	chunk 270
+00686d20	GetWorldMap	chunk 270

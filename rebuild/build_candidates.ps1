@@ -263114,6 +263114,83 @@ $catalog = @(
         TestSource = '00/80/CTCTargetingPlayer_OnInitialActivate_008026a0_test.cpp'
         PassPattern = '008026a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00582754'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_RevertVideoChanges_00582754.cpp'
+        TestSource = '00/58/CTCInventory_RevertVideoChanges_00582754_test.cpp'
+        PassPattern = '00582754_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00590d32'
+        Module = 'CTCInventory'
+        Source = '00/59/CTCInventory_CTCInventory_00590d32.cpp'
+        TestSource = '00/59/CTCInventory_CTCInventory_00590d32_test.cpp'
+        PassPattern = '00590d32_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bff07'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_CTCInventoryBase_005bff07.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_CTCInventoryBase_005bff07_test.cpp'
+        PassPattern = '005bff07_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f05e5'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_OpenInventory_005f05e5.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_OpenInventory_005f05e5_test.cpp'
+        PassPattern = '005f05e5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d77c0'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_AddExperience_006d77c0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_AddExperience_006d77c0_test.cpp'
+        PassPattern = '006d77c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d7f20'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_UpdateComboMultiplier_006d7f20.cpp'
+        TestSource = '00/6d/CTCHeroExperience_UpdateComboMultiplier_006d7f20_test.cpp'
+        PassPattern = '006d7f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d83b0'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_OnStatLevelChange_006d83b0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_OnStatLevelChange_006d83b0_test.cpp'
+        PassPattern = '006d83b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00706950'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_AddAppearanceModifierWithReplace_00706950.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_AddAppearanceModifierWithReplace_00706950_test.cpp'
+        PassPattern = '00706950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c87f0'
+        Module = 'CTCFireballSpell'
+        Source = '00/7c/CTCFireballSpell_CTCFireballSpell_007c87f0.cpp'
+        TestSource = '00/7c/CTCFireballSpell_CTCFireballSpell_007c87f0_test.cpp'
+        PassPattern = '007c87f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c8de0'
+        Module = 'CTCFireballSpell'
+        Source = '00/7c/CTCFireballSpell_ProcessLevellingUpFX_007c8de0.cpp'
+        TestSource = '00/7c/CTCFireballSpell_ProcessLevellingUpFX_007c8de0_test.cpp'
+        PassPattern = '007c8de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c93b0'
+        Module = 'CTCFireballSpell'
+        Source = '00/7c/CTCFireballSpell_FrameUpdate_007c93b0.cpp'
+        TestSource = '00/7c/CTCFireballSpell_FrameUpdate_007c93b0_test.cpp'
+        PassPattern = '007c93b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

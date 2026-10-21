@@ -1992,3 +1992,29 @@ address	module	name	length	chunk	reason
 00753e90	CTCLook	LookAtPos	448	hand271	DIFFER(447v447) -- lengthSq not homed in the dead pos-arg slot; pos in edi vs ebp
 00788617	CTCMeleeTrap	ProcessPossibleStrike	423	hand271	DIFFER(-v423) -- not attempted: /Os TU (push 7Fh/pop, leave), heavy STL (time)
 0078891d	CTCMeleeTrap	PerformPossibleTrapDamage	466	hand271	DIFFER(-v466) -- not attempted: /Os TU, heavy STL (time)
+006d68d0	CTCHeroExperience	IsBlockRecoilAnimToConserveAnimationComboChain	495	hand270	DIFFER(495v495) -- Handedness (label wrong); one fmul/store swap at stat-5 join (advisor)
+006d6cb0	CTCHeroExperience	IsBlockRecoilAnimToConserveAnimationComboChain	496	hand270	DIFFER(495v495) -- IsToAutoBlock (label wrong); same residual swap as 006d68d0
+00730c00	CTCDoor	Open	464	hand270	DIFFER(456v456) -- Open; one reg pick (ecx vs edx) in base-def temp copy+release
+00730dd0	CTCDoor	Close	448	hand270	DIFFER(446v446) -- Close; same single reg pick as Open
+00798770	CTCForcePushed	FinishBeingForcePushed	464	hand270	DIFFER(453v453) -- FinishBeingForcePushed; position-copy load/push scheduling only
+00815420	CTCHitLocations	GetBoundingSphere	512	hand270	DIFFER(498v498) -- GetBoundingSphere; this/iterator register assignment (edi/ebx) + extra ebx save
+005bd699	CTCInventoryBase	UpdateInventoryAnim	405	hand270	DIFFER(405v405) -- UpdateInventoryAnim; dec of GetPDef temp scheduled before fmul (retail between fmul/fdivr)
+007f4990	CTCHasName	GetNPCShortName	464	hand270	DIFFER(448v449) -- GetNPCShortName; UID arg load order + stored-name frame slot
+00789ff0	CTCHeroRangedAttacks	CancelAimingWeapon	451	hand270	DIFFER(451v451) -- CancelAimingWeapon; sound component load sunk past the id test (retail loads first)
+0057aeb4	CTCHeroStats	GetFavouriteWeapon	427	hand270	DIFFER(427v427) -- GetFavouriteWeapon; lane gap: def slots cached in edi/ebx across calls (whole-program), ours spills one copy
+0057dc22	CTCHeroStats	GetCrimeReport	498	hand270	DIFFER(498v498) -- GetCrimeReport; esi/edi swap (crime index v newline literal) + one dead-arg temp slot
+0077c960	CTCHighlightItem	DoMovement	512	hand270	DIFFER(502v502) -- DoMovement; only the bbox-centre fld/fadd operand order differs (everything else incl. frame and filter scope matches)
+0047d296	CTCInGameMenu	PCSetQuitToFrontEnd	482	hand270	DIFFER(482v482) -- PCSetQuitToFrontEnd; one push/fsubp scheduling swap at the SetPosition call
+0047dd9d	CTCInGameMenu	PCSetToLoad	493	hand270	DIFFER(493v493) -- PCSetToLoad; twin of 0047d296, same push/fsubp swap
+00583e26	CTCInventory	OnItemSelected	484	hand270	DIFFER(465v484) -- OnItemSelected; temporaries/keys not homed in the dead item argument slot (retail reuses [ebp+8])
+00587847	CTCInventory	ClosePCInventory	506	hand270	DIFFER(506v506) -- ClosePCInventory; only the two result-less bitset tests load the thing via eax+lea (ours ecx+add)
+005f6793	CTCInventoryAbilities	CycleAssignedExpressions	442	hand270	DIFFER(440v442) -- CycleAssignedExpressions; this/zero register pick (edi/esi in retail) + early-empty free not tail-merged
+005f64dd	CTCInventoryAbilities	CycleAssignedAbilities	508	hand270	DIFFER(510v508) -- CycleAssignedAbilities; this spilled in ours v page-start iterator memory-resident in retail
+0057770a	CTCInventoryExperience	CTCInventoryExperience::vfunc_89	448	hand270	DIFFER(448v448) -- Experience vfunc_89 (undo spend + close); only ability-loop esi/edi swap
+005778ca	CTCInventoryExperience	CTCInventoryExperience::vfunc_90	502	hand270	DIFFER(502v502) -- Experience vfunc_90 twin; same ability-loop esi/edi swap only
+005b3aef	CTCInventoryClothing	OnInitialActivate	422	hand270	DIFFER(438v422) -- Clothing OnInitialActivate; this/def register choice (retail this memory-only, def cached in edi)
+005bfd5e	CTCInventoryBase	OnSerialise	425	hand270	DIFFER(421v425) -- CTCInventoryBase OnSerialise; unexplained early zero store to the name-temp slot + this/zero register pick
+005be8f3	CTCInventoryBase	CreateInventoryObject	482	hand270	DIFFER(483v482) -- CreateInventoryObject; ParentThing hoisted before the name temp in ours (retail keeps thing=0 in ebx for the zero pushes)
+007800b0	CTCHeroGuide	OpenQuestSelectInterface	480	hand270	DIFFER(466v466) -- OpenQuestSelectInterface (/GS); shape matches, frame 0x40 v 0x3c (text temp not sharing the key slot)
+007e8a40	CTCFlourishTarget	ProcessActionMovementDelta	482	hand270	DIFFER(482v482) -- Flourish ProcessActionMovementDelta; x87 temp/frame packing (0x34 v 0x3c) + side-dot term order
+00c11d00	CTCHero	CTCHero::Initialize	512	hand270	DIFFER(507v507) -- unnamed audio ctor (label CTCHero::Initialize wrong); EH ctor, vptr/push scheduling only
