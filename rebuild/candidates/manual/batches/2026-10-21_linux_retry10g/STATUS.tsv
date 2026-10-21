@@ -1,0 +1,99 @@
+007f9f00	RELOCATION_MATCH	??RCThingCompare_BestForTargeting2	both compare values as named float locals (pop/fnstsw interleave)
+006f9790	DIFFER(2)	GetEventTimeInSeconds	fst of the product into the dead animation slot scheduled after pop edi/pop esi (retail before all three pops); 6 spellings of the product/dtor/ternary
+0041d03c	RELOCATION_MATCH	RenderErrorMessage	implicit double->float conversion of the delta (explicit cast moves fld above push ecx)
+00720610	RELOCATION_MATCH	__pop_heap	same-TU body of the CCompositeBlendDesc copy ctor (0x005BA48A, landed text)
+007767a0	DIFFER(2)	Set	z word store hoisted above fxch/fstp x; 11 operator=/copy-ctor/cross spellings
+009b9ce0	DIFFER(2)	SkipUntilWhitespace	count n computed in esi then copied to eax (retail: esi=p-String, eax=esi-pos); 10 spellings
+009e42e0	RELOCATION_MATCH	UpdateMaintainedEventPositions	GetJoystickButton returns long (PDB QBEJXZ); callee is SetAsJoystickButtonHeld(long,float,const C2DVector&,double)
+00a42df0	DIFFER(2)	NotifyEntryAdded	fstp of the entry length after push id (retail between push index and push id); resize body + 6 reinterpret spellings
+00aacfb0	DIFFER(2)	UpdateFogColour	c.y store mov [esp+4],edx sunk below the device load; 6 copy/ctor spellings
+00b47fd0	RELOCATION_MATCH	AddLightPrimitive	sweep: same-TU _M_insert_overflow body (grow2)
+00b480e0	RELOCATION_MATCH	AddLightPrimitive	growth body + heap Alloc re-reading FreeList (entry in eax at the merge)
+00947280	RELOCATION_MATCH	IsRunnable	named-result CIntelligentPointer operator= (sweep s2)
+005f4b30	RELOCATION_MATCH	GetPrioritisedAbilityDefs	sweep: same-TU push_back stand-in reading value through its const ref (refsweep+rd)
+0065b349	RELOCATION_MATCH	TryToRespawnDefNamed	same-TU LowerBound + IS_THING_ALIVE/IS_THING_DEAD const-ref bodies
+006ed8c0	RELOCATION_MATCH	?DeregisterAttackedCombatant@CCombatManager	sweep: named-result op= + same-TU map find/erase + near DeregisterAttackingCombatant stand-ins
+00787e12	RELOCATION_MATCH	UpdateTrap	same-TU LowerBound + IS_THING_ALIVE (both instantiations) + LookAtPos const-ref bodies
+007ceb00	RELOCATION_MATCH	??0CTCElectrocutedEffect	same-TU GetDef (operator= shape), LowerBound, __copy and Reset bodies (combo sweep)
+00858400	RELOCATION_MATCH	?ProcessPossibleProneThingsStrikeEvent@CCombatActionBase	same-TU _M_insert_overflow + LowerBound bodies (combo sweep)
+0093cc60	RELOCATION_MATCH	IsRunnable	same-TU near stand-in for GetPBestThingInRoughArea (0x0093CDB0)
+005fb7e0	RELOCATION_MATCH	ConstructRegionDescriptionMapKeys	same-TU GetDef<T> operator= body (combo sweep)
+006a2370	RELOCATION_MATCH	OnSetInLimbo	same-TU GetAllCarriedThings body reading+writing the vector finish/end words
+00cbd5d0	DIFFER(141v145)	InsertEntry	read-only overflow stand-in: only the post-call reload mov esi,[esp+18h] missing; may-write/escape stand-ins regress (149/168)
+005ee3b3	RELOCATION_MATCH	GetMiscThingsDef	GetDef operator= body + __fastcall CGameDefinitionManager::Get
+00680a40	RELOCATION_MATCH	?Add@CSimVoice	STLport pair user copy ctor + same-TU growth body
+005b413d	RELOCATION_MATCH	SetAsWearing	combo stand-ins + sub-def CDefPointer declared at function scope beside the def
+00665510	RELOCATION_MATCH	UseAbility	combo stand-ins + out-pointer GetInterface for the ranged component
+00860ad0	DIFFER(2)	IsCreatureMoreAppropriateForTask	GetNearestNode stand-in: only fnstsw/test scheduled before the two leftover fstp st(0) (retail after)
+006a2540	RELOCATION_MATCH	OnCreate	def slot vector as a sub-object (keeps the release null test) + named-result pointer copy
+005be284	DIFFER(298v301)	SetNumberOfSelectedItemOwned	IS_THING_ALIVE stand-in: write-only drops the hero slot store (9 lines); any reading body keeps it but swaps this/hero (esi/edi)
+00a778d0	RELOCATION_MATCH	SaveToFile	same-TU map find body + named copy-initialised iterator
+00ac09a0	DIFFER(207v209)	FindNextBone	found object load sunk into the non-null arm (retail hoists mov eax,[eax] above je); 9 adopt-cast spellings
+0070d1a0	RELOCATION_MATCH	Init	growth bodies + `CurrentAlpha = LastAlpha = alpha;` chained store
+0096f180	DIFFER(2)	FoundDeadSpouse	near stand-in: filter.PCreature store scheduled before the box adds (retail after, just before GetPWorld)
+006ca380	DIFFER(2)	SetWeaponsAsUsable	ParentThing loaded into eax + lea esi (retail reuses esi: mov esi,[esi+4] ; add esi,44h); 8 access/GetTC spellings
+009425f0	RELOCATION_MATCH	MoveAndFace	named float sum in GetLength + `? true : false` + reached-writing stand-in
+00ac7eb0	DIFFER(2)	ComputeSelfContraction	named sqrt sum fixes the fsqrt order; left: nd*nd*weight reassociated (ours fmul [w] before fmul st(2))
+00978790	DIFFER(2)	operator()	named sqrt sum fixes pop/fnstsw; left: fstp of score A before loading thing b (retail after)
+0097abf0	DIFFER(2)	operator()	byte twin of 00978790, same residue
+006808c0	DIFFER(61v73)	TransferBinaryOut	retail computes GetData() first then re-reads first/last for the byte count (no CSE, push ebx); ours CSEs the size
+009a6370	RELOCATION_MATCH	UpdateActive	top-tested while (!WindowsQuit) loop keeps the flag re-reads
+00a3c1a0	DIFFER(182v189)	MakeOwnCopyOfData	retail re-reads and re-tests Data before the shared-count test after an early-returning null arm; 5 structures
+00a67950	RELOCATION_MATCH	Clear	same-TU CVolume::Lock body (0x00A677D0, from retail disassembly)
+00a02b30	DIFFER(2)	Free	same-TU InsertFreeArea/CombineAreas bodies change nothing; final FirstUnusedHandle store sunk past the MultiThreaded reload
+00439e00	DIFFER(276v278)	UpdateRenown	not retried beyond the parked forms (retail mov eax,edi copy before the fabs loads)
+004be3e0	DIFFER(175v173)	IsResourcesLoaded	scan start loaded via eax + mov edi,eax (retail mov edi direct); reserve body, begin/end, alloc proxy, order (5)
+009f3ff0	RELOCATION_MATCH	Clear	same-TU CSurface::Lock body (0x009F33E0 reconstructed)
+009f36e0	RELOCATION_MATCH	CopyFromUnsignedDataToSignedSurface	same-TU CSurface::Lock body (0x009F33E0 reconstructed)
+009f40a0	DIFFER(2)	Clear	Lock body fixes the frame; left: imul by desc.Height/Width order (9 product spellings)
+005eede2	DIFFER(264v260)	InitialiseAbilities	triage only: the pooled HERO_ABILITY literal address is CSEd into ebx across the loop (retail pushes the immediate twice)
+007e93c0	RELOCATION_MATCH	vfunc_2	same-TU equal_range body (0x007E9AE0)
+007e9410	RELOCATION_MATCH	OnKill	same-TU equal_range body (0x007E9AE0)
+007e9360	RELOCATION_MATCH	vfunc_16	same-TU equal_range body (0x007E9AE0)
+0075c420	RELOCATION_MATCH	TransformPosition	same-TU TransformVector stand-in (C3DVector by hidden pointer)
+007e50c0	DIFFER(2)	GetBetText	triage: named thing local fixes the def chain registers (20->16); left: arg pushes order around GetText (same-TU GetText 0x7E4D70 not reconstructed)
+009fc950	DIFFER(224v230)	InitialiseAsSurface	landed GetDimensions body in the TU: no change (other TU); counted-pointer op= register map differs
+005f694d	RELOCATION_MATCH	ResetAssignedAbilities	same-TU GetUIMiscThingsDef body (CDefPointer by hidden pointer) fixes the release register
+007037d0	RELOCATION_MATCH	OnCollision	Kill(true) written in both type arms (tail-merged; mov ecx,esi before push 1)
+00917a10	DIFFER(2)	IsRunnable	release store mov [eax],esi scheduled after the test (retail before); 5 release spellings; callee label corrected
+00c1c3f0	DIFFER(116v110)	GetHelperPointPositionStatic	LTCG custom convention: hidden result pointer in eax, no stack args (plain ret); no source convention gives it
+0045cfad	DIFFER(2)	operator=	second Dirty byte copied through cl (retail al); implicit operator= forms (3) unchanged
+0046313e	DIFFER(2)	operator=	twin shape of 0045cfad (dl v al), not retried
+00c40450	MATCH	SetPosition	C3DVector user operator= keeps the flag RMW merged
+00c404a0	MATCH	SetDirection	C3DVector user operator= keeps the flag RMW merged
+00c404f0	MATCH	SetOrientationVectors	C3DVector user operator= (op= sweep)
+00493ac2	DIFFER(2)	CEnginePrimitive2DSprite	vector op= halves the diff; left: lea ecx,[esi+0Ch] (bounds ctor this) hoisted above the type/interp stores
+00567400	DIFFER(281v280)	append	grader artefact: identical bytes + the int3 VC7.1 emits after the noreturn _M_throw_length_error call (retail padding)
+00c44ab0	RELOCATION_MATCH	Initialize	GetPressed returns a 16-bit mask (unsigned short), Render takes it as such
+00af56e0	DIFFER(2)	DeleteAllParticles	current=it store uses ebx (retail the edi copy); 4 spellings
+00ac8540	DIFFER(2)	PaintSegments	malloc add esp sunk below the head-node stores (not retried beyond the parked forms)
+00906c60	RELOCATION_MATCH	OnCreate	inline GetCreature()/GetTarget() accessors fix the eax/ecx/edx rotation (family fix)
+00906e40	RELOCATION_MATCH	OnCreate	inline GetCreature()/GetTarget() accessors fix the eax/ecx/edx rotation (family fix)
+00909fd0	RELOCATION_MATCH	OnCreate	inline GetCreature()/GetTarget() accessors fix the eax/ecx/edx rotation (family fix)
+00908c80	RELOCATION_MATCH	OnCreate	inline GetCreature()/GetTarget() accessors fix the eax/ecx/edx rotation (family fix)
+009091d0	RELOCATION_MATCH	OnCreate	inline GetCreature()/GetTarget() accessors fix the eax/ecx/edx rotation (family fix)
+00907010	RELOCATION_MATCH	OnCreate	inline GetCreature()/GetTarget() accessors fix the eax/ecx/edx rotation (family fix)
+006af2d0	DIFFER(58v66)	operator()	constant-false type check: retail keeps `xor al,al ; jne`, ours folds it (5 forms)
+007447e0	DIFFER(77v77)	UpdateDistanceFromPerceivedThing	x87 fstp/pop interleave (4 forms)
+00c0a790	DIFFER(106v106)	CAnimatedMeshCreateParams	1.0f register load hoisted (10 forms)
+00c27fd0	MATCH	FindFreeArea	MIN-macro clamp spelling (size >> 9 written twice)
+00a01ed0	MATCH	FindFreeArea	MIN-macro clamp spelling (as 00c27fd0)
+00c462e0	DIFFER(51v51)	Interpolate	corner-1 fld placement (x87 scheduling, 15 forms)
+00a1af00	DIFFER(227v227)	IsNavLineOfSightClear	second GetNodeAt temp lea scheduled before push eax (9 forms)
+004b4f30	DIFFER(255v255)	SetQuestMasterDataPersistScript	Dirty=true store sinks below the sort loads (9 forms)
+00ac2160	DIFFER(123v125)	BuildSubElement	null arm of new reuses zero register edi; retail xor eax,eax (9 forms)
+008b6e60	RELOCATION_MATCH	Initialise	named CCombatManager* local for the def copy removes the dead add eax,44h
+00b9e4e0	DIFFER(130v130)	GetBoundingSphereWorldSpace	radius fmul operand order (14 forms)
+0091a670	RELOCATION_MATCH	WaitForMessageEvent	result local set to 4 at loop bottom, break with 2/1
+00969760	RELOCATION_MATCH	WaitForMessageEvent	result local set to 4 at loop bottom, break with 2/1
+00947e20	DIFFER(132v132)	GetPaymentRequestReplyMessage	Bind3.F1 store scheduled late (6 more forms)
+00a2e760	RELOCATION_MATCH	AllocateBuffers	typed pointer arithmetic (T*)base + count fixes the commuted add
+0051d870	DIFFER(104v104)	resize	inner vector first pointer loaded to ecx then copied to edi; retail edi then ecx (12 forms)
+0082a3e0	DIFFER(118v118)	IsReversedOnMap	key temp lea scheduled before the map lea (8 forms)
+00487aa0	RELOCATION_MATCH	InitJoystickDeviceNumber	if/else-if chain instead of ?: fixes the commuted and
+006d8300	DIFFER(173v173)	AddTrainableStatExperience	commuted lea [ecx+edx] for the first vector element address (10 forms)
+007cf860	DIFFER(313v313)	CalcScores	hoisted sum x87 operand order (4 more forms)
+00ae2cb0	RELOCATION_MATCH	SimulationStep	double local for the float time delta narrowed into the pushed slot
+00ae2d20	RELOCATION_MATCH	SimulationStep	double local for the float time delta narrowed into the pushed slot
+00a69ad0	RELOCATION_MATCH	Clear	CIVCountedPointer as a +4 member sub-object: inline accessors on this+4 defeat the CSE
+004afc60	DIFFER(65v63)	IsCreatureGenerationEnabled	entry size calc copies the first pointer (10 forms)

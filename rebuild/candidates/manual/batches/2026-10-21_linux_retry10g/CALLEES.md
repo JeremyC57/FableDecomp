@@ -1,0 +1,4 @@
+- callee: 0x005BA48A CCompositeBlendDesc::CCompositeBlendDesc(const&) -- landed rebuild/src/compiled/00/5b/CCompositeBlendDesc_CCompositeBlendDesc_005ba48a.cpp (used in 00720610)
+- 0x00A677D0 CVolume::Lock(unsigned long) -- reconstructed from the retail disassembly (GetDesc slot 8, D3DBOX over the whole volume, LockBox slot 9, result filled on success only); used in 00a67950
+- 0x009F33E0 CSurface::Lock(unsigned long) -- reconstructed from the retail disassembly; used in 009f3ff0, 009f36e0 (and 009f40a0, still differing)
+- 0x007E9AE0 map<CThing*,float>::equal_range -- STLport lower/upper bound walks written from the node layout (stand-in quality, real algorithm); used in 007e9360, 007e93c0, 007e9410

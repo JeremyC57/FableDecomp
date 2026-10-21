@@ -1,0 +1,328 @@
+// Behaviour test for 007037d0: src/007037d0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
+// declared callees stubbed below so calls and arguments are observable. CThingObject::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other)
+#include <cstdio>
+#include <cstring>
+static int fails = 0;
+#define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+// ---- source (verbatim) ----
+// CThingObject::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other) -- after the game-object handler, a breakable object hit hard enough (or by a flagged thing) is killed and spawns its def's debris thing
+// Leaf: OnCollision
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x007037D0, length 247 bytes (+ int3 padding), `ret 10h`.
+// Callees: CThingGameObject::OnCollision @ 0x00839080 (landed), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const
+// @ 0x004365B0 (the inlined GetTC of kind 0x47 = bit 7 of CThing+0x28), CThing virtual slot 54 (+0xd8, bool),
+// CThing::Kill(bool) @ 0x004C9B80, CDefClassBase::GetSubDef<T> @ 0x005CC10E on the base def (+0x70),
+// CThing::GetPosition() const @ 0x004C73D0, the thing factory @ 0x006E0880 (`__fastcall`, (long, const C3DVector*, bool)
+// as the landed CTCResurrectionItem::OnItemUsed 0x007F04C0), the sub-def's virtual slot 1 (destroy) on the last release.
+// Layout (retail CThing, local model): component bits +0x20, interface map +0x44, the other thing's component +0x60
+// (flag bit 0 of +0x3c), PBaseDef +0x70, Dead bit +0x91; the kind-0x47 component's +0x0c byte and +0x10 word.
+// Shape: the component is preloaded with zero (`T* tc = 0; if (HasTC) tc = GetTC;`, the lookup key homed in the dead
+// `normal` slot) and the ternary entry pick; the sub-def is a zeroed CDefPointer homed in the dead `other` slot and
+// released through the short DecRefToZero form.
+class CTCBase;
+class CThing;
+struct C3DVector { float X, Y, Z; };
+enum ECollideType { ECT_NONE = 0, ECT_PHYSICS = 1, ECT_WEAPON = 3 };
+
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    const SEntry* LowerBound(const long& type) const;          // 0x004365B0
+};
+#pragma auto_inline(off)
+// Same-TU stand-in for CVectorMap::LowerBound const 0x004365B0 (its retail body: STLport lower_bound over the 8-byte
+// {type, component} entries): VC7.1 then knows the key's address does not escape (retail's LTCG knowledge).
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long& type) const
+{
+    const SEntry* it = first;
+    int len = int(last - first);
+    while (len > 0) {
+        int half = len / 2;
+        const SEntry* middle = it + half;
+        if (middle->type < type) {
+            it = middle + 1;
+            len = len - half - 1;
+        } else
+            len = half;
+    }
+    return it;
+}
+#pragma auto_inline(on)
+
+struct CBreakableComponent {                                   // the kind-0x47 component
+    unsigned char _pad00[0x0c];
+    bool          BreakOnAnyCollision;                         // +0x0c
+    unsigned char _pad0d[0x10 - 0x0d];
+    void*         PBreakBlocker;                               // +0x10
+};
+struct COtherComponent {
+    unsigned char _pad00[0x3c];
+    unsigned char DoesNotBreakObjects : 1;                     // +0x3c bit 0
+};
+
+struct CDefObject {
+    virtual void v00();
+    virtual void Destroy();                                    // slot 1 (+0x04)
+    long m_refCount;                                           // +0x04
+};
+struct CDebrisDef : CDefObject {
+    unsigned char _pad08[0x34 - 0x08];
+    long          DebrisThingDef;                              // +0x34
+};
+__forceinline bool DecRefToZero(long& count) { return --count == 0; }
+template<class T> struct CDefPointer {
+    T* Object;
+    CDefPointer() : Object(0) { }
+    ~CDefPointer() { if (Object && DecRefToZero(Object->m_refCount)) Object->Destroy(); }
+    T* operator->() const { return Object; }
+    CDefPointer& operator=(const CDefPointer& other)
+    {
+        if (Object != other.Object) {
+            if (Object) {
+                if (--Object->m_refCount == 0)
+                    Object->Destroy();
+                Object = 0;
+            }
+            Object = other.Object;
+            if (Object)
+                ++Object->m_refCount;
+        }
+        return *this;
+    }
+};
+struct CCharString {
+    void* PStringData;
+    CCharString(const char* text, long length = -1);           // 0x0099EBF0
+    ~CCharString();                                            // 0x0099EAE0
+};
+struct CDefinitionManager {
+    CDefPointer<CDebrisDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
+};
+struct CDefClassBase {
+    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
+    virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
+    virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
+    virtual long* GetSubDefIndex(const CCharString& name);     // slot 14 (+0x38)
+    unsigned char _pad04[0x1c - 4];
+    CDefinitionManager* m_pManager;                            // +0x1c
+    bool GetSubDef(CDefPointer<CDebrisDef>* out);              // 0x005CC10E
+};
+#pragma auto_inline(off)
+// Same-TU stand-in for GetSubDef<T> 0x005CC10E (the landed GetSubDef body shape, as in 0x00848730): VC7.1 then knows
+// the def pointer's address does not escape (retail's LTCG knowledge), so the def stays in edi across the calls.
+bool CDefClassBase::GetSubDef(CDefPointer<CDebrisDef>* out)
+{
+    long* pIndex;
+    {
+        CCharString name("CDebrisDef");
+        pIndex = GetSubDefIndex(name);
+    }
+    if (pIndex) {
+        CDefPointer<CDebrisDef> result = m_pManager->GetPDefFromGlobalIndex(*pIndex);
+        *out = result;
+        return true;
+    }
+    return false;
+}
+#pragma auto_inline(on)
+
+CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, bool flag);   // 0x006E0880
+
+class CThing {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
+    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
+    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
+    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
+    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
+    virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53();
+    virtual bool IsBreakable();                                // slot 54 (+0xd8)
+    unsigned char    _pad04[0x20 - 0x04];
+    unsigned long    m_presentBits[9];                         // +0x20
+    CInterfaceMap    m_interfaces;                             // +0x44
+    unsigned char    _pad4c[0x60 - 0x4c];
+    COtherComponent* PComponent60;                             // +0x60
+    unsigned char    _pad64[0x70 - 0x64];
+    CDefClassBase*   PBaseDef;                                 // +0x70
+    unsigned char    _pad74[0x91 - 0x74];
+    unsigned char    Dead : 1;                                 // +0x91 bit 0
+    bool HasTC(long interfaceType) const
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
+            return true;
+        return false;
+    }
+    __forceinline CTCBase* GetTC(long interfaceType) const
+    {
+        long type = interfaceType;
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+    }
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
+    {
+        if (HasTC(interfaceType)) {
+            *ppOut = (T*)GetTC(interfaceType);
+            return true;
+        }
+        return false;
+    }
+    const C3DVector& GetPosition() const;                      // 0x004C73D0
+    void Kill(bool immediately);                               // 0x004C9B80
+};
+class CThingGameObject : public CThing {
+public:
+    void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other);   // 0x00839080
+};
+class CThingObject : public CThingGameObject {
+public:
+    void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other);
+};
+
+void CThingObject::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other)
+{
+    if (Dead)
+        return;
+    CThingGameObject::OnCollision(type, position, normal, other);
+    CBreakableComponent* breakable = 0;
+    bool blocked;
+    if (GetInterface(&breakable, 0x47) && breakable->PBreakBlocker)
+        blocked = true;
+    else
+        blocked = false;
+    if (!IsBreakable() && !(breakable && breakable->BreakOnAnyCollision))
+        return;
+    if (blocked)
+        return;
+    if (type == ECT_PHYSICS) {
+        if (other->PComponent60->DoesNotBreakObjects)
+            return;
+        Kill(true);
+    } else if (type == ECT_WEAPON)
+        Kill(true);
+    else
+        return;
+    CDefPointer<CDebrisDef> def;
+    if (PBaseDef->GetSubDef(&def) && def->DebrisThingDef)
+        CreateThing(def->DebrisThingDef, &GetPosition(), false);
+}
+
+// ---- stubs and driver ----
+void CDefObject::v00() {}
+void CDefClassBase::v00() {}
+void CDefClassBase::v04() {}
+void CDefClassBase::v08() {}
+void CDefClassBase::v0c() {}
+void CDefClassBase::v10() {}
+void CDefClassBase::v14() {}
+void CDefClassBase::v18() {}
+void CDefClassBase::v1c() {}
+void CDefClassBase::v20() {}
+void CDefClassBase::v24() {}
+void CDefClassBase::v28() {}
+void CDefClassBase::v2c() {}
+void CDefClassBase::v30() {}
+void CDefClassBase::v34() {}
+void CThing::v00() {}
+void CThing::v01() {}
+void CThing::v02() {}
+void CThing::v03() {}
+void CThing::v04() {}
+void CThing::v05() {}
+void CThing::v06() {}
+void CThing::v07() {}
+void CThing::v08() {}
+void CThing::v09() {}
+void CThing::v10() {}
+void CThing::v11() {}
+void CThing::v12() {}
+void CThing::v13() {}
+void CThing::v14() {}
+void CThing::v15() {}
+void CThing::v16() {}
+void CThing::v17() {}
+void CThing::v18() {}
+void CThing::v19() {}
+void CThing::v20() {}
+void CThing::v21() {}
+void CThing::v22() {}
+void CThing::v23() {}
+void CThing::v24() {}
+void CThing::v25() {}
+void CThing::v26() {}
+void CThing::v27() {}
+void CThing::v28() {}
+void CThing::v29() {}
+void CThing::v30() {}
+void CThing::v31() {}
+void CThing::v32() {}
+void CThing::v33() {}
+void CThing::v34() {}
+void CThing::v35() {}
+void CThing::v36() {}
+void CThing::v37() {}
+void CThing::v38() {}
+void CThing::v39() {}
+void CThing::v40() {}
+void CThing::v41() {}
+void CThing::v42() {}
+void CThing::v43() {}
+void CThing::v44() {}
+void CThing::v45() {}
+void CThing::v46() {}
+void CThing::v47() {}
+void CThing::v48() {}
+void CThing::v49() {}
+void CThing::v50() {}
+void CThing::v51() {}
+void CThing::v52() {}
+void CThing::v53() {}
+static int g_destroyed = 0;
+void CDefObject::Destroy() { ++g_destroyed; }
+CCharString::CCharString(const char* text, long length) { PStringData = (void*)text; }
+CCharString::~CCharString() {}
+static CDebrisDef g_debris; static bool g_haveDebris = true;
+CDefPointer<CDebrisDef> CDefinitionManager::GetPDefFromGlobalIndex(long index)
+{
+    CDefPointer<CDebrisDef> r; r.Object = &g_debris; ++g_debris.m_refCount; ++g_debris.m_refCount; return r;   // one ref for the copy, one for r
+}
+static long g_index = 5;
+long* CDefClassBase::GetSubDefIndex(const CCharString& name) { return g_haveDebris ? &g_index : 0; }
+static int g_created = 0; static long g_createdDef = 0; static const C3DVector* g_createdAt = 0;
+CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, bool flag) { ++g_created; g_createdDef = defIndex; g_createdAt = position; return 0; }
+static bool g_breakable = false;
+bool CThing::IsBreakable() { return g_breakable; }
+static C3DVector g_pos;
+const C3DVector& CThing::GetPosition() const { return g_pos; }
+static int g_kills = 0;
+void CThing::Kill(bool immediately) { if (immediately) ++g_kills; }
+static int g_baseCollisions = 0;
+void CThingGameObject::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other) { ++g_baseCollisions; }
+int main()
+{
+    static CThingObject obj; static CDefClassBase baseDef; static CDefinitionManager mgr; baseDef.m_pManager = &mgr; obj.PBaseDef = &baseDef;
+    static CThingObject other; static COtherComponent comp; other.PComponent60 = &comp;
+    static CBreakableComponent breakable; static CInterfaceMap::SEntry entries[1]; entries[0].type = 0x47; entries[0].component = (CTCBase*)&breakable;
+    obj.m_interfaces.first = entries; obj.m_interfaces.last = entries + 1;
+    g_debris.m_refCount = 100; g_debris.DebrisThingDef = 77;
+    C3DVector p = { 0, 0, 0 };
+    obj.Dead = 1; obj.OnCollision(ECT_PHYSICS, p, p, &other); CHECK(g_baseCollisions == 0);            // dead: nothing
+    obj.Dead = 0; obj.OnCollision(ECT_PHYSICS, p, p, &other); CHECK(g_baseCollisions == 1); CHECK(g_kills == 0);   // not breakable
+    g_breakable = true; comp.DoesNotBreakObjects = 1; obj.OnCollision(ECT_PHYSICS, p, p, &other); CHECK(g_kills == 0);   // other does not break
+    comp.DoesNotBreakObjects = 0; obj.OnCollision(ECT_PHYSICS, p, p, &other);
+    CHECK(g_kills == 1); CHECK(g_created == 1); CHECK(g_createdDef == 77); CHECK(g_createdAt == &g_pos);
+    obj.OnCollision((ECollideType)2, p, p, &other); CHECK(g_kills == 1);                                // other collision types ignored
+    obj.OnCollision(ECT_WEAPON, p, p, &other); CHECK(g_kills == 2); CHECK(g_created == 2);
+    g_haveDebris = false; obj.OnCollision(ECT_WEAPON, p, p, &other); CHECK(g_kills == 3); CHECK(g_created == 2);   // no debris def
+    // a break blocker on the component stops it; BreakOnAnyCollision makes a non-breakable thing break
+    obj.m_presentBits[0x47 >> 5] |= 1UL << (0x47 & 31); breakable.PBreakBlocker = &breakable;
+    obj.OnCollision(ECT_WEAPON, p, p, &other); CHECK(g_kills == 3);
+    breakable.PBreakBlocker = 0; g_breakable = false; breakable.BreakOnAnyCollision = true;
+    obj.OnCollision(ECT_WEAPON, p, p, &other); CHECK(g_kills == 4);
+    CHECK(g_destroyed == 0);
+    if (fails == 0) printf("007037d0_TEST PASS\n"); else printf("007037d0_TEST FAIL\n");
+    return fails;
+}
