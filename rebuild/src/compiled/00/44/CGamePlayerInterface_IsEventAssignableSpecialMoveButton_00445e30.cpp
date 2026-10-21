@@ -1,93 +1,48 @@
-extern "C" __declspec(naked) void cand_00445e30(void)
+// CGamePlayerInterface::IsEventAssignableSpecialMoveButton(const CInputEvent& event) const -- does any assignable special-move button input recognise the event
+// Leaf: ?IsEventAssignableSpecialMoveButton@CGamePlayerInterface@@QBE_NABVCInputEvent@@@Z
+// Retail: Fable.exe @ 0x00445E30, 87 bytes, `ret 4`; reached by a tail jmp from 0x00687C73 (the CInputProcessGameBase
+// forwarder); Ego_r.pdb ?IsEventAssignableSpecialMoveButton@CGamePlayerInterface@@QBE_NABVCInputEvent@@@Z.
+// Body: for (unsigned i = 0; i < AssignableSpecialMoveButtons.size(); ++i) if (AssignableSpecialMoveButtons[i]->
+// IsEventOfThisType(event)) (virtual slot 3, +0xc) return true; return false (size re-read every pass).
+// Layout: retail CGamePlayerInterface -- AssignableSpecialMoveButtons (12-byte STLport vector<CCountedPointer<const
+// CInputTypeBase> >) +0x7b8 (Ego_r.pdb +0x7bc; its vectors are 16 bytes), as the matched 0x00445E90 row.
+// Shape: /O2 (16-aligned entry, `mov edi,edi` loop-head pad).
+class CInputEvent;
+class CInputTypeBase {
+public:
+    virtual ~CInputTypeBase();
+    virtual void _slot01() const;
+    virtual void _slot02() const;
+    virtual bool IsEventOfThisType(const CInputEvent& event) const;   // slot 3 (+0xc)
+};
+template <class T> class CCountedPointer {
+public:
+    T*    Data;                                          // +0x00
+    void* Info;                                          // +0x04
+    T* operator->() const { return Data; }
+};
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;                                         // +0x00
+    T* _M_finish;                                        // +0x04
+    T* _M_end_of_storage;                                // +0x08
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+    const T& operator[](unsigned int n) const { return _M_start[n]; }
+};
+}
+class CGamePlayerInterface {
+public:
+    unsigned char _pad0000[0x7b8];
+    std::vector<CCountedPointer<const CInputTypeBase> > AssignableSpecialMoveButtons;   // +0x7b8
+    bool IsEventAssignableSpecialMoveButton(const CInputEvent& event) const;
+};
+bool CGamePlayerInterface::IsEventAssignableSpecialMoveButton(const CInputEvent& event) const
 {
-    __asm
+    for (unsigned long i = 0; i < AssignableSpecialMoveButtons.size(); ++i)
     {
-        _emit 0x53
-        _emit 0x56
-        _emit 0x8B
-        _emit 0xF1
-        _emit 0x8B
-        _emit 0x86
-        _emit 0xBC
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x2B
-        _emit 0x86
-        _emit 0xB8
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x57
-        _emit 0xC1
-        _emit 0xF8
-        _emit 0x03
-        _emit 0x33
-        _emit 0xFF
-        _emit 0x85
-        _emit 0xC0
-        _emit 0x76
-        _emit 0x2D
-        _emit 0x8B
-        _emit 0x5C
-        _emit 0x24
-        _emit 0x10
-        _emit 0x8B
-        _emit 0xFF
-        _emit 0x8B
-        _emit 0x8E
-        _emit 0xB8
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x0C
-        _emit 0xF9
-        _emit 0x8B
-        _emit 0x11
-        _emit 0x53
-        _emit 0xFF
-        _emit 0x52
-        _emit 0x0C
-        _emit 0x84
-        _emit 0xC0
-        _emit 0x75
-        _emit 0x1C
-        _emit 0x8B
-        _emit 0x86
-        _emit 0xBC
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x2B
-        _emit 0x86
-        _emit 0xB8
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x47
-        _emit 0xC1
-        _emit 0xF8
-        _emit 0x03
-        _emit 0x3B
-        _emit 0xF8
-        _emit 0x72
-        _emit 0xD9
-        _emit 0x5F
-        _emit 0x5E
-        _emit 0x32
-        _emit 0xC0
-        _emit 0x5B
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
-        _emit 0x5F
-        _emit 0x5E
-        _emit 0xB0
-        _emit 0x01
-        _emit 0x5B
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
+        if (AssignableSpecialMoveButtons[i]->IsEventOfThisType(event))
+            return true;
     }
+    return false;
 }

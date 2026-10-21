@@ -1,77 +1,56 @@
-extern "C" void __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Construct(
-    void* event, void*);
-extern "C" unsigned char __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Query(
-    void* manager, void*, long kind, long button, void* event, long index);
-extern "C" float __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_GetStrength(
-    void* event, void*);
-extern "C" void __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Destroy(
-    void* event, void*);
-extern "C" void*
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Manager;
+// CInputTypeXboxPadButtonEvent::IsEventOfThisTypeInQueue(EInputButtonEventType, long, float&) const -- is a matching pad-button event queued for this player? value = its pressure fraction if so
+// Leaf: ?IsEventOfThisTypeInQueue@CInputTypeXboxPadButtonEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+// Retail: Fable.exe @ 0x0066F750, 125 bytes, `ret 0xc`; vtable 0x012317A8 slot 5 (slot 4 is the matched 0x0066F730). Local
+// CInputEvent (ctor 0xA04410, dtor 0xA03B30, 0x34 bytes); GetEventTypeFromGeneralButtonType inlined (1 -> 0x13, 2 -> 0x14,
+// 3 -> 0x15, else 0); CInputManager::IsJoystickEventInQueue 0x009F4C60 (type, Button, event, player) on g_pInputManager
+// 0x013B8388 (Ego_r.pdb ?IsJoystickEventInQueue@CInputManager@@QBE_NW4EInputEventType@@JAAVCInputEvent@@J@Z); value =
+// event.GetJoystickButtonPressureFraction() (0x00A03BA0, labelled CMap::DrawGetSeaLevel -- a folded float getter).
+// Layout: Ego_r.pdb CInputTypeXboxPadButtonEvent (8 bytes): vptr, Button +0x04; CInputEvent 0x34 bytes.
+enum EInputButtonEventType { EINPUTBUTTONEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EInputEventType { EINPUTEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EXboxControllerButton { EXBOXCONTROLLERBUTTON_FORCE_DWORD = 0x7fffffff };
 
-extern "C" __declspec(naked) unsigned char __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750(
-    void* input_type, void*, long general_type, long index, float* strength)
-{
-    __asm
+class CInputEvent {
+public:
+    CInputEvent();
+    ~CInputEvent();
+    float GetJoystickButtonPressureFraction() const;     // 0x00A03BA0
+    char Data[0x34];
+};
+
+class CInputManager {
+public:
+    bool IsJoystickEventInQueue(EInputEventType type, long button, CInputEvent& event, long player) const;   // 0x009F4C60
+};
+extern CInputManager* g_pInputManager;
+
+class CInputTypeXboxPadButtonEvent {
+public:
+    virtual void _v00();
+    virtual void _v01();
+    virtual void _v02();
+    virtual void _v03();
+    virtual void _v04();
+    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const;   // slot 5
+    EXboxControllerButton Button; // +0x04
+private:
+    EInputEventType GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const
     {
-        sub esp, 34h
-        push esi
-        mov esi, ecx
-        lea ecx, [esp + 4]
-        call CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Construct
-        mov eax, [esp + 3ch]
-        dec eax
-        je state_one
-        dec eax
-        je state_two
-        dec eax
-        je state_three
-        xor eax, eax
-        jmp query
-
-    state_three:
-        mov eax, 15h
-        jmp query
-
-    state_two:
-        mov eax, 14h
-        jmp query
-
-    state_one:
-        mov eax, 13h
-
-    query:
-        mov ecx, [esp + 40h]
-        push ecx
-        mov ecx, [esi + 4]
-        lea edx, [esp + 8]
-        push edx
-        push ecx
-        mov ecx, dword ptr [CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Manager]
-        push eax
-        call CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Query
-        test al, al
-        pop esi
-        lea ecx, [esp]
-        je not_found
-        call CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_GetStrength
-        mov edx, [esp + 40h]
-        lea ecx, [esp]
-        fstp dword ptr [edx]
-        call CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Destroy
-        mov al, 1
-        add esp, 34h
-        ret 0ch
-
-    not_found:
-        call CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Destroy
-        xor al, al
-        add esp, 34h
-        ret 0ch
+        switch (type) {
+        case 1: return (EInputEventType)0x13;
+        case 2: return (EInputEventType)0x14;
+        case 3: return (EInputEventType)0x15;
+        }
+        return (EInputEventType)0;
     }
+};
+
+bool CInputTypeXboxPadButtonEvent::IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const
+{
+    CInputEvent event;
+    if (g_pInputManager->IsJoystickEventInQueue(GetEventTypeFromGeneralButtonType(type), Button, event, player)) {
+        value = event.GetJoystickButtonPressureFraction();
+        return true;
+    }
+    return false;
 }

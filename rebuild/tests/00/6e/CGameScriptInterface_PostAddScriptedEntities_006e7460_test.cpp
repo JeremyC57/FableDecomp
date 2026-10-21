@@ -1,38 +1,47 @@
-#include <cstdio>
+// behaviour test for 0x006E7460 CGameScriptInterface::PostAddScriptedEntities
+#include <stdio.h>
+class CScriptBase { public: int Id; };
 
-// Behavioural model: PostAddScriptedEntities loads a global singleton,
-// walks *(g+0x88) then +8, and forwards that pointer to Callee_4b26b0.
+class CScriptInfo;
+struct CCPPointerInfo;
+template <class T> class CCountedPointer {
+public:
+    T*              Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+class CQuestManager {
+public:
+    class CActiveQuest {
+    public:
+        long                         ID;                 // +0x00
+        CScriptInfo*                 PScriptInfo;        // +0x04
+        CCountedPointer<CScriptBase> PScript;            // +0x08
+    };
+    unsigned char _pad00[0x88];
+    CActiveQuest* PQuestCurrentlyRunning;                // +0x88
+    void AttachExistingScriptedEntitiesToScript(CScriptBase& script);   // 0x004B26B0
+};
+CQuestManager* g_pQuestManager;
+class CGameScriptInterface {
+public:
+    virtual void PostAddScriptedEntities() const;
+};
 
-struct Inner { char pad[8]; void* f8; };
-struct Mid { char pad[0x88]; Inner* f88; };
-
-static void* g_captured = 0;
-static void Callee_model(void* p){ g_captured = p; }
-
-static Mid* g_singleton;
-
-static void PostAddScriptedEntities_model()
+void CGameScriptInterface::PostAddScriptedEntities() const
 {
-    Mid* g = g_singleton;
-    Inner* i = g->f88;
-    Callee_model(i->f8);
+    g_pQuestManager->AttachExistingScriptedEntitiesToScript(*g_pQuestManager->PQuestCurrentlyRunning->PScript);
 }
-
-int main(){
-    // case 1: normal chain
-    Inner innerA; innerA.f8 = (void*)0xDEADBEEF;
-    Mid midA; midA.f88 = &innerA;
-    g_singleton = &midA;
-    PostAddScriptedEntities_model();
-    if(g_captured != (void*)0xDEADBEEF){ printf("FAIL1\n"); return 1; }
-
-    // case 2: different payload propagates
-    Inner innerB; innerB.f8 = (void*)0x12345678;
-    Mid midB; midB.f88 = &innerB;
-    g_singleton = &midB;
-    PostAddScriptedEntities_model();
-    if(g_captured != (void*)0x12345678){ printf("FAIL2\n"); return 1; }
-
-    printf("OK_006e7460\n");
-    return 0;
+static CScriptBase* g_attached;
+void CQuestManager::AttachExistingScriptedEntitiesToScript(CScriptBase& script) { g_attached = &script; }
+int main()
+{
+    CScriptBase script; script.Id = 4;
+    CQuestManager::CActiveQuest quest; quest.PScript.Data = &script; quest.PScript.Info = 0;
+    CQuestManager qm; qm.PQuestCurrentlyRunning = &quest; g_pQuestManager = &qm;
+    CGameScriptInterface gsi; const CGameScriptInterface* p = &gsi;
+    p->PostAddScriptedEntities();
+    int ok = g_attached == &script;
+    printf(ok ? "006e7460_TEST PASS\n" : "006e7460_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

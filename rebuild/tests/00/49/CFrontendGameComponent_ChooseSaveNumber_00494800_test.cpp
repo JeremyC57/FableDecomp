@@ -1,102 +1,66 @@
 #include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/49/CFrontendGameComponent_ChooseSaveNumber_00494800.cpp"
-
-static int g_Sequence;
-static int g_AssignSequence;
-static int g_CommitSequence;
-static FrontEndWideString_00494800* g_AssignDestination;
-static const FrontEndWideString_00494800* g_AssignSource;
-static CFrontendGameComponent_00494800* g_CommitThis;
-
-extern "C" FrontEndWideString_00494800* __fastcall
-FrontEndWideStringAssign_00494800(
-    FrontEndWideString_00494800* destination,
-    void*,
-    const FrontEndWideString_00494800* source)
+class CWideString {
+public:
+    void* PData;
+    CWideString& operator=(const CWideString& s);        // 0x0099B7D0
+};
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;                                         // +0x00
+    T* _M_finish;                                        // +0x04
+    T* _M_end_of_storage;                                // +0x08
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+    T& operator[](unsigned int n) { return _M_start[n]; }
+};
+}
+class CFrontendGameComponent {
+public:
+    virtual ~CFrontendGameComponent();
+    virtual void _slot01(); virtual void _slot02(); virtual void _slot03();
+    virtual void _slot04();                              // vtable +0x10
+    unsigned char            _pad0004[0x1e1c - 4];
+    std::vector<CWideString> SaveNames;                  // +0x1e1c
+    long                     SaveNamesOffset;            // +0x1e28
+    CWideString              SaveToLoad;                 // +0x1e2c
+private:
+    void ChooseSaveNumber(long number);
+    friend struct CFrontendGameComponent_Test;           // behaviour-test hook
+};
+void CFrontendGameComponent::ChooseSaveNumber(long number)
 {
-    g_AssignSequence = ++g_Sequence;
-    g_AssignDestination = destination;
-    g_AssignSource = source;
-    destination->data = source->data;
-    return destination;
+    unsigned long index = SaveNamesOffset + number - 1;
+    if (index < SaveNames.size())
+    {
+        SaveToLoad = SaveNames[index];
+        _slot04();
+    }
 }
 
-extern "C" void __fastcall
-FrontEndSaveCommit_00494800(
-    CFrontendGameComponent_00494800* component,
-    void*)
-{
-    g_CommitSequence = ++g_Sequence;
-    g_CommitThis = component;
-}
-
-static void ResetProbe()
-{
-    g_Sequence = 0;
-    g_AssignSequence = 0;
-    g_CommitSequence = 0;
-    g_AssignDestination = 0;
-    g_AssignSource = 0;
-    g_CommitThis = 0;
-}
-
+static int g_slot4 = 0;
+CWideString& CWideString::operator=(const CWideString& s) { PData = s.PData; return *this; }
+CFrontendGameComponent::~CFrontendGameComponent() {}
+void CFrontendGameComponent::_slot01() {} void CFrontendGameComponent::_slot02() {} void CFrontendGameComponent::_slot03() {}
+void CFrontendGameComponent::_slot04() { ++g_slot4; }
+struct CFrontendGameComponent_Test {
+    static bool Run()
+    {
+        static CWideString names[3];
+        names[0].PData = (void*)1; names[1].PData = (void*)2; names[2].PData = (void*)3;
+        CFrontendGameComponent* c = new CFrontendGameComponent;
+        c->SaveNames._M_start = names; c->SaveNames._M_finish = names + 3; c->SaveNamesOffset = 1; c->SaveToLoad.PData = 0;
+        c->ChooseSaveNumber(2);
+        bool ok = c->SaveToLoad.PData == (void*)3 && g_slot4 == 1;
+        c->ChooseSaveNumber(3);
+        ok = ok && c->SaveToLoad.PData == (void*)3 && g_slot4 == 1;
+        c->SaveNamesOffset = 0; c->ChooseSaveNumber(0);
+        ok = ok && g_slot4 == 1;
+        c->ChooseSaveNumber(1);
+        return ok && c->SaveToLoad.PData == (void*)1 && g_slot4 == 2;
+    }
+};
 int main()
 {
-    int failures = 0;
-    int unchanged = 0;
-    void* vtable[5] = { 0, 0, 0, 0, (void*)&FrontEndSaveCommit_00494800 };
-    FrontEndWideString_00494800 saves[5];
-    CFrontendGameComponent_00494800 component;
-
-    std::memset(&component, 0, sizeof(component));
-    component.vtable = vtable;
-    component.saves_begin = saves;
-    component.saves_end = saves + 5;
-    component.saves_capacity = saves + 5;
-    component.first_visible_save = 2;
-    saves[3].data = (void*)"save_four";
-    ResetProbe();
-
-    component.ChooseSaveNumber(2);
-    if (g_AssignSequence != 1 ||
-        g_CommitSequence != 2 ||
-        g_AssignDestination != &component.selected_save ||
-        g_AssignSource != saves + 3 ||
-        g_CommitThis != &component ||
-        component.selected_save.data != saves[3].data)
-    {
-        std::printf("valid save selection/order failed\n");
-        ++failures;
-    }
-
-    component.selected_save.data = &unchanged;
-    ResetProbe();
-    component.ChooseSaveNumber(4);
-    if (g_Sequence != 0 || component.selected_save.data != &unchanged)
-    {
-        std::printf("out-of-range save selection failed\n");
-        ++failures;
-    }
-
-    component.first_visible_save = 0;
-    ResetProbe();
-    component.ChooseSaveNumber(0);
-    if (g_Sequence != 0)
-    {
-        std::printf("save selection unsigned underflow guard failed\n");
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "FRONTEND_00494800_TEST FAIL count=%d\n",
-            failures);
-        return 1;
-    }
-
-    std::printf("FRONTEND_00494800_TEST PASS\n");
+    if (CFrontendGameComponent_Test::Run()) std::printf("00494800_TEST PASS\n");
     return 0;
 }

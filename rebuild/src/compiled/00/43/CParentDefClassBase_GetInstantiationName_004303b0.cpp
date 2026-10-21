@@ -1,17 +1,30 @@
-// CParentDefClassBase::GetInstantiationName  @ 0x004303b0
-// __thiscall (this in ECX), returns a CDefString (4-byte wrapper) by value
-// via hidden return-struct pointer passed on the stack at [esp+4].
-// Retail (12 bytes):
-//   8b 49 25         mov ecx, [ecx+0x25]   ; load field this+0x25
-//   8b 44 24 04      mov eax, [esp+4]      ; hidden return-struct ptr
-//   89 08            mov [eax], ecx        ; store into return struct
-//   c2 04 00         ret 4
-__declspec(naked) void GetInstantiationName_004303b0()
+// CParentDefClassBase::GetInstantiationName() const -- returns the def's instantiation name (the CDefString member at +0x25) by value
+// Retail: Fable.exe @ 0x004303B0, 12 bytes, `ret 4` (hidden result pointer). Virtual (manifest mangled name
+// ?GetInstantiationName@CParentDefClassBase@@UBE?AVCDefString@@XZ).
+// Layout: Ego_r.pdb CParentDefClassBase (61 bytes, packed): InstantiationName (CDefString) at +37 = +0x25, unaligned;
+// the CDefClassBase part (vptr and 0x21 more bytes) is opaque here.
+// Shape: CDefString has a user copy constructor (a non-POD 4-byte handle), so the result goes through the hidden
+// pointer and the copy is one dword move.
+#pragma pack(push, 1)
+class CDefString {
+public:
+    long TablePos;
+    CDefString(const CDefString& other) : TablePos(other.TablePos) {}
+};
+class CDefClassBase {
+public:
+    virtual ~CDefClassBase();
+    unsigned char _body[0x21];                           // +0x04
+};
+class CParentDefClassBase : public CDefClassBase {
+public:
+    CDefString InstantiationName;                        // +0x25
+    unsigned char SubDefInfoMap[0x14];                   // +0x29
+    virtual CDefString GetInstantiationName() const;
+};
+#pragma pack(pop)
+
+CDefString CParentDefClassBase::GetInstantiationName() const
 {
-    __asm {
-        mov ecx, [ecx+0x25]
-        mov eax, [esp+4]
-        mov [eax], ecx
-        ret 4
-    }
+    return InstantiationName;
 }

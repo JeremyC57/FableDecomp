@@ -1,38 +1,31 @@
-extern "C" __declspec(naked) void candidate_00437950(void)
+// CPlayerGui::OnHeroHit(float damage) -- forwards a non-trivial hit to the quick-access icon drawer
+// Leaf: OnHeroHit@CPlayerGui
+// Retail: Fable.exe @ 0x00437950, 33 bytes, `ret 4`; Ego_r.pdb ?OnHeroHit@CPlayerGui@@QAEXM@Z. Body: unless damage equals
+// 0.0001f (float pool 0x0129BA3C; `fucompp ; test ah,44h ; jnp` skips on equality), call
+// NPlayerGui::CDrawQuickAccessIcons::OnHeroHit (0x0064DA5C) through PDrawQuickAccessIcons. Only caller 0x006AB2E0
+// (CThingPlayerCreature).
+// Layout: PDrawQuickAccessIcons (CCountedPointer, Data first) at retail +0x1d8 (Ego_r.pdb +0x1e0; retail CPlayerGui is 8
+// below the PDB here, as in 0x00437820), so the class is modelled locally.
+namespace NPlayerGui {
+class CDrawQuickAccessIcons {
+public:
+    void OnHeroHit();                                    // 0x0064DA5C
+};
+}
+struct CCPPointerInfo;
+template <class T> struct CCountedPointer {
+    T*              Data;
+    CCPPointerInfo* Info;
+    T* operator->() const { return Data; }
+};
+class CPlayerGui {
+public:
+    unsigned char                                  _pad00[0x1d8];
+    CCountedPointer<NPlayerGui::CDrawQuickAccessIcons> PDrawQuickAccessIcons;   // +0x1d8
+    void OnHeroHit(float damage);
+};
+void CPlayerGui::OnHeroHit(float damage)
 {
-    __asm {
-        _emit 0xd9
-        _emit 0x05
-        _emit 0x3c
-        _emit 0xba
-        _emit 0x29
-        _emit 0x01
-        _emit 0xd9
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0xda
-        _emit 0xe9
-        _emit 0xdf
-        _emit 0xe0
-        _emit 0xf6
-        _emit 0xc4
-        _emit 0x44
-        _emit 0x7b
-        _emit 0x0b
-        _emit 0x8b
-        _emit 0x89
-        _emit 0xd8
-        _emit 0x01
-        _emit 0x00
-        _emit 0x00
-        _emit 0xe8
-        _emit 0xee
-        _emit 0x60
-        _emit 0x21
-        _emit 0x00
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
+    if (damage != 0.0001f)
+        PDrawQuickAccessIcons->OnHeroHit();
 }

@@ -1,137 +1,62 @@
-#include <stdio.h>
+#include <cstdio>
+enum EInputButtonEventType { EINPUTBUTTONEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EInputEventType { EINPUTEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EMouseButtonControl { EMOUSEBUTTONCONTROL_FORCE_DWORD = 0x7fffffff };
 
-extern "C" unsigned char __fastcall
-CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0(
-    void* input_type, void*, long general_type, long index, float* strength);
-
-struct InputType
-{
-    void* vtable;
-    long button;
+class CInputEvent {
+public:
+    CInputEvent();
+    ~CInputEvent();
+    char Data[0x34];
 };
 
-static long g_manager_storage;
-extern "C" void*
-CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0_Manager =
-    &g_manager_storage;
+class CInputManager {
+public:
+    bool IsMouseEventInQueue(EInputEventType type, CInputEvent& event) const;
+};
+extern CInputManager* g_pInputManager;
 
-static int g_sequence;
-static int g_construct_order;
-static int g_translate_order;
-static int g_query_order;
-static int g_destroy_order;
-static void* g_temporary;
-static void* g_translate_input;
-static long g_general_type;
-static long g_translated_type;
-static void* g_query_manager;
-static unsigned char g_query_result;
+class CInputTypeMouseButtonEvent {
+public:
+    virtual void _v00();
+    virtual void _v01();
+    virtual void _v02();
+    virtual void _v03();
+    virtual void _v04();
+    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const;   // slot 5
+    EMouseButtonControl Button;   // +0x04
+    float ControlDirection[2];    // +0x08
+private:
+    EInputEventType GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const;
+};
 
-extern "C" void __fastcall
-CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0_Construct(
-    void* event, void*)
+bool CInputTypeMouseButtonEvent::IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const
 {
-    g_construct_order = ++g_sequence;
-    g_temporary = event;
-}
-
-extern "C" long __fastcall
-CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0_Translate(
-    void* input_type, void*, long general_type)
-{
-    g_translate_order = ++g_sequence;
-    g_translate_input = input_type;
-    g_general_type = general_type;
-    return g_translated_type;
-}
-
-extern "C" unsigned char __fastcall
-CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0_Query(
-    void* manager, void*, long event_type, void* event)
-{
-    g_query_order = ++g_sequence;
-    g_query_manager = manager;
-    if (event != g_temporary || event_type != g_translated_type)
-        return 0;
-    return g_query_result;
-}
-
-extern "C" void __fastcall
-CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0_Destroy(
-    void* event, void*)
-{
-    g_destroy_order = ++g_sequence;
-    if (event != g_temporary)
-        g_destroy_order = -1;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
+    CInputEvent event;
+    if (g_pInputManager->IsMouseEventInQueue(GetEventTypeFromGeneralButtonType(type), event)) {
+        value = 1.0f;
+        return true;
     }
-    return 1;
+    return false;
 }
 
-static void Reset(long translated_type, unsigned char result)
-{
-    g_sequence = 0;
-    g_construct_order = 0;
-    g_translate_order = 0;
-    g_query_order = 0;
-    g_destroy_order = 0;
-    g_temporary = 0;
-    g_translate_input = 0;
-    g_general_type = -1;
-    g_translated_type = translated_type;
-    g_query_manager = 0;
-    g_query_result = result;
-}
-
-static int RunCase(
-    InputType& input_type, long general_type, long translated_type,
-    unsigned char result)
-{
-    int ok = 1;
-    float strength = 4.25f;
-
-    Reset(translated_type, result);
-    ok &= Check(
-        CInputTypeMouseButtonEvent_IsEventOfThisTypeInQueue_0066f6d0(
-            &input_type, 0, general_type, 71, &strength) == result,
-        "queue result must be returned");
-    ok &= Check(g_construct_order == 1 &&
-                g_translate_order == 2 &&
-                g_query_order == 3 &&
-                g_destroy_order == 4,
-                "construct, translate, query, and destroy order must match");
-    ok &= Check(g_translate_input == &input_type &&
-                g_general_type == general_type,
-                "translator must receive this and the general event type");
-    ok &= Check(g_query_manager == &g_manager_storage,
-                "query must use the global input manager");
-    ok &= Check(strength == (result ? 1.0f : 4.25f),
-                "only a successful query may write unit strength");
-    return ok;
-}
+static int g_ctor, g_dtor; static EInputEventType g_seenType; static CInputEvent* g_seenEvent; static bool g_inQueue;
+CInputEvent::CInputEvent() { ++g_ctor; }
+CInputEvent::~CInputEvent() { ++g_dtor; }
+bool CInputManager::IsMouseEventInQueue(EInputEventType type, CInputEvent& event) const { g_seenType = type; g_seenEvent = &event; return g_inQueue; }
+static CInputManager g_mgr; CInputManager* g_pInputManager = &g_mgr;
+void CInputTypeMouseButtonEvent::_v00() {} void CInputTypeMouseButtonEvent::_v01() {} void CInputTypeMouseButtonEvent::_v02() {}
+void CInputTypeMouseButtonEvent::_v03() {} void CInputTypeMouseButtonEvent::_v04() {}
+EInputEventType CInputTypeMouseButtonEvent::GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const { return (EInputEventType)(type * 10 + Button); }
 
 int main()
 {
-    int ok = 1;
-    InputType input_type;
-
-    input_type.vtable = 0;
-    input_type.button = 2;
-
-    ok &= RunCase(input_type, 1, 10, 1);
-    ok &= RunCase(input_type, 3, 12, 0);
-    ok &= RunCase(input_type, 0, 0, 1);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeMouseButtonEvent::IsEventOfThisTypeInQueue 0x0066F6D0");
-    return 0;
+    CInputTypeMouseButtonEvent o; o.Button = (EMouseButtonControl)3; const CInputTypeMouseButtonEvent* p = &o;
+    float v = 0.0f;
+    g_inQueue = false;
+    int ok = !p->IsEventOfThisTypeInQueue((EInputButtonEventType)2, 0, v) && v == 0.0f && g_seenType == 23 && g_seenEvent && g_ctor == 1 && g_dtor == 1;
+    g_inQueue = true;
+    ok = ok && p->IsEventOfThisTypeInQueue((EInputButtonEventType)1, 5, v) && v == 1.0f && g_seenType == 13 && g_ctor == 2 && g_dtor == 2;
+    printf(ok ? "0066f6d0_TEST PASS\n" : "0066f6d0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

@@ -1,89 +1,68 @@
+// CGameScriptInterface::IsHeroAllowedHenchmenInRegion(const CCharString& region_name) const -- the named region's def AllowHenchmen flag (true for no region / no def)
+// Leaf: ?IsHeroAllowedHenchmenInRegion@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+// Retail: Fable.exe @ 0x00891EF0, 90 bytes, `ret 4`; Ego_r.pdb ?IsHeroAllowedHenchmenInRegion@CGameScriptInterface@@UBE_NABVCCharString@@@Z.
+// Body: World (+0x04)'s world map (CWorld virtual slot 13, called twice) -> GetRegionNumberFromName(name) (0x004FC210,
+// Ego_r.pdb ?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z); index <= 0 -> true; else GetRegion(index)
+// (0x004FC180) and, as in IsHeroAllowedHenchmenInCurrentRegion 0x00891EA0, the region's PDef copied, AllowHenchmen (+0x89)
+// read, the copy released; no def -> true.
+// Layout: as 0x00891EA0: retail CRegion PDef +0x24, CRegionDef AllowHenchmen +0x89, CGameScriptInterface World +0x04.
+// Shape: /O2 (16-aligned entry).
 class CCharString;
-
-class CWorldMap
-{
+class CResource {
 public:
-    long GetRegionNumberFromName(const CCharString& regionName);
+    virtual ~CResource();
+    virtual void DeleteThis();                           // slot 1 (+0x04)
+    unsigned long IVRefCount;                            // +0x04
+    void AddRef() { ++IVRefCount; }
+    void Release() { if (--IVRefCount == 0) DeleteThis(); }
 };
-
-class CGSIHenchmenRegion_State
-{
+class CRegionDef : public CResource {
 public:
-    virtual void Slot00() = 0;
-    virtual void Release() = 0;
-
-    long m_RefCount;
-    unsigned char m_Pad08[0x81];
-    bool m_IsAllowed;
+    unsigned char _pad08[0x89 - 8];                      // CResource tail (+0x08..+0x1b) and the def fields before AllowHenchmen
+    bool AllowHenchmen;                                  // +0x89
 };
-
-struct CGSIHenchmenRegion_Category
-{
-    unsigned char m_Pad00[0x24];
-    CGSIHenchmenRegion_State* m_pState;
-};
-
-namespace NInventory
-{
-class CTCInventoryBase
-{
+template <class T> class CDefPointer {
 public:
-    CGSIHenchmenRegion_Category* GetCategoryWithIndex(long index);
+    T* Data;
+    CDefPointer(const CDefPointer& other) : Data(other.Data) { if (Data) const_cast<CResource*>(static_cast<const CResource*>(Data))->AddRef(); }
+    ~CDefPointer() { if (Data) const_cast<CResource*>(static_cast<const CResource*>(Data))->Release(); }
+    T* operator->() const { return Data; }
+    operator bool() const { return Data != 0; }
 };
-}
-
-class CGameScriptInterface
-{
+class CRegion {
 public:
-    virtual bool IsHeroAllowedHenchmenInRegion(
-        const CCharString& regionName) const;
+    unsigned char                  _pad00[0x24];
+    CDefPointer<const CRegionDef>  PDef;                 // +0x24
 };
-
-__declspec(naked)
-bool CGameScriptInterface::IsHeroAllowedHenchmenInRegion(
-    const CCharString& regionName) const
+class CWorldMap {
+public:
+    CRegion& GetRegion(long index);                      // 0x004FC180
+    long GetRegionNumberFromName(const CCharString& name) const;   // 0x004FC210
+};
+class CWorld {
+public:
+    virtual void _slot00(); virtual void _slot01(); virtual void _slot02(); virtual void _slot03();
+    virtual void _slot04(); virtual void _slot05(); virtual void _slot06(); virtual void _slot07();
+    virtual void _slot08(); virtual void _slot09(); virtual void _slot10(); virtual void _slot11();
+    virtual void _slot12();
+    virtual CWorldMap* GetWorldMap();                    // slot 13 (+0x34)
+};
+class CGameScriptInterface {
+public:
+    virtual bool IsHeroAllowedHenchmenInRegion(const CCharString& region_name) const;
+    CWorld* World;                                       // +0x04
+};
+bool CGameScriptInterface::IsHeroAllowedHenchmenInRegion(const CCharString& region_name) const
 {
-    __asm
+    long index = World->GetWorldMap()->GetRegionNumberFromName(region_name);
+    if (index > 0)
     {
-        mov eax, dword ptr [esp + 4]
-        push esi
-        mov esi, ecx
-        mov ecx, dword ptr [esi + 4]
-        mov edx, dword ptr [ecx]
-        push eax
-        call dword ptr [edx + 34h]
-        mov ecx, eax
-        call CWorldMap::GetRegionNumberFromName
-        test eax, eax
-        jle default_allowed
-        mov ecx, dword ptr [esi + 4]
-        push eax
-        mov eax, dword ptr [ecx]
-        call dword ptr [eax + 34h]
-        mov ecx, eax
-        call NInventory::CTCInventoryBase::GetCategoryWithIndex
-        mov ecx, dword ptr [eax + 24h]
-        test ecx, ecx
-        je default_allowed
-        mov edx, dword ptr [ecx + 4]
-        inc edx
-        mov eax, edx
-        mov dword ptr [ecx + 4], edx
-        push ebx
-        mov bl, byte ptr [ecx + 89h]
-        dec eax
-        mov dword ptr [ecx + 4], eax
-        jne retained_state
-        mov edx, dword ptr [ecx]
-        call dword ptr [edx + 4]
-retained_state:
-        mov al, bl
-        pop ebx
-        pop esi
-        ret 4
-default_allowed:
-        mov al, 1
-        pop esi
-        ret 4
+        const CRegion& region = World->GetWorldMap()->GetRegion(index);
+        if (region.PDef)
+        {
+            CDefPointer<const CRegionDef> def = region.PDef;
+            return def->AllowHenchmen;
+        }
     }
+    return true;
 }

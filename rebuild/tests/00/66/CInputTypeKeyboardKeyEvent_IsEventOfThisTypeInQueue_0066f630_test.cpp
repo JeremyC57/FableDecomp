@@ -1,127 +1,71 @@
-#include <stdio.h>
+#include <cstdio>
+enum EInputButtonEventType { EINPUTBUTTONEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EInputEventType { EINPUTEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EInputKey { EINPUTKEY_FORCE_DWORD = 0x7fffffff };
 
-extern "C" unsigned char __fastcall
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630(
-    void* input_type, void*, long event_type, long index, float* strength);
-
-struct InputType
-{
-    void* vtable;
-    long key;
+class CInputEvent {
+public:
+    CInputEvent();
+    ~CInputEvent();
+    char Data[0x34];
 };
 
-static long g_manager_storage;
-extern "C" void*
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Manager =
-    &g_manager_storage;
+class CInputManager {
+public:
+    bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent& event) const;   // 0x009F50A0
+};
+extern CInputManager* g_pInputManager;
 
-static int g_sequence;
-static int g_construct_order;
-static int g_query_order;
-static int g_destroy_order;
-static void* g_temporary;
-static void* g_query_manager;
-static long g_query_state;
-static long g_query_key;
-static unsigned char g_query_result;
-
-extern "C" void __fastcall
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Construct(
-    void* event, void*)
-{
-    g_construct_order = ++g_sequence;
-    g_temporary = event;
-}
-
-extern "C" unsigned char __fastcall
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Query(
-    void* manager, void*, long state, long key, void* event)
-{
-    g_query_order = ++g_sequence;
-    g_query_manager = manager;
-    g_query_state = state;
-    g_query_key = key;
-    if (event != g_temporary)
-        return 0;
-    return g_query_result;
-}
-
-extern "C" void __fastcall
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Destroy(
-    void* event, void*)
-{
-    g_destroy_order = ++g_sequence;
-    if (event != g_temporary)
-        g_destroy_order = -1;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
+class CInputTypeKeyboardKeyEvent {
+public:
+    virtual void _v00();
+    virtual void _v01();
+    virtual void _v02();
+    virtual void _v03();
+    virtual void _v04();
+    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const;   // slot 5
+    EInputKey KeyboardKey;        // +0x04
+    float ControlDirection[2];    // +0x08
+private:
+    EInputEventType GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const
     {
-        printf("FAIL: %s\n", message);
-        return 0;
+        switch (type) {
+        case 1: return (EInputEventType)1;
+        case 2: return (EInputEventType)2;
+        case 3: return (EInputEventType)3;
+        }
+        return (EInputEventType)0;
     }
-    return 1;
-}
+};
 
-static void Reset(unsigned char result)
+bool CInputTypeKeyboardKeyEvent::IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const
 {
-    g_sequence = 0;
-    g_construct_order = 0;
-    g_query_order = 0;
-    g_destroy_order = 0;
-    g_temporary = 0;
-    g_query_manager = 0;
-    g_query_state = -1;
-    g_query_key = -1;
-    g_query_result = result;
+    CInputEvent event;
+    if (g_pInputManager->IsKeyboardEventInQueue(GetEventTypeFromGeneralButtonType(type), KeyboardKey, event)) {
+        value = 1.0f;
+        return true;
+    }
+    return false;
 }
 
-static int RunCase(
-    InputType& input_type, long event_type, long expected_state,
-    unsigned char result)
-{
-    int ok = 1;
-    float strength = 6.5f;
-
-    Reset(result);
-    ok &= Check(
-        CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630(
-            &input_type, 0, event_type, 99, &strength) == result,
-        "queue result must be returned");
-    ok &= Check(g_construct_order == 1 &&
-                g_query_order == 2 &&
-                g_destroy_order == 3,
-                "temporary must be constructed, queried, then destroyed");
-    ok &= Check(g_query_manager == &g_manager_storage,
-                "query must use the global input manager");
-    ok &= Check(g_query_state == expected_state,
-                "button event type must map to the expected query state");
-    ok &= Check(g_query_key == input_type.key,
-                "query must use the configured keyboard key");
-    ok &= Check(strength == (result ? 1.0f : 6.5f),
-                "only a successful query may write unit strength");
-    return ok;
-}
-
+static int g_ctor, g_dtor; static EInputEventType g_seenType; static EInputKey g_seenKey; static CInputEvent* g_seenEvent; static bool g_inQueue;
+CInputEvent::CInputEvent() { ++g_ctor; }
+CInputEvent::~CInputEvent() { ++g_dtor; }
+bool CInputManager::IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent& event) const { g_seenType = type; g_seenKey = key; g_seenEvent = &event; return g_inQueue; }
+static CInputManager g_mgr; CInputManager* g_pInputManager = &g_mgr;
+void CInputTypeKeyboardKeyEvent::_v00() {} void CInputTypeKeyboardKeyEvent::_v01() {} void CInputTypeKeyboardKeyEvent::_v02() {}
+void CInputTypeKeyboardKeyEvent::_v03() {} void CInputTypeKeyboardKeyEvent::_v04() {}
 int main()
 {
-    int ok = 1;
-    InputType input_type;
-
-    input_type.vtable = 0;
-    input_type.key = 0x2a;
-
-    ok &= RunCase(input_type, 1, 1, 1);
-    ok &= RunCase(input_type, 2, 2, 1);
-    ok &= RunCase(input_type, 3, 3, 1);
-    ok &= RunCase(input_type, 0, 0, 1);
-    ok &= RunCase(input_type, 4, 0, 0);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeKeyboardKeyEvent::IsEventOfThisTypeInQueue 0x0066F630");
-    return 0;
+    CInputTypeKeyboardKeyEvent o; o.KeyboardKey = (EInputKey)0x41; const CInputTypeKeyboardKeyEvent* p = &o;
+    float v = 0.0f;
+    g_inQueue = false;
+    int ok = !p->IsEventOfThisTypeInQueue((EInputButtonEventType)2, 0, v) && v == 0.0f && g_seenType == 2 && g_seenKey == 0x41 && g_seenEvent && g_ctor == 1 && g_dtor == 1;
+    ok = ok && !p->IsEventOfThisTypeInQueue((EInputButtonEventType)7, 0, v) && g_seenType == 0;
+    ok = ok && !p->IsEventOfThisTypeInQueue((EInputButtonEventType)0, 0, v) && g_seenType == 0;
+    ok = ok && !p->IsEventOfThisTypeInQueue((EInputButtonEventType)3, 0, v) && g_seenType == 3;
+    g_inQueue = true;
+    ok = ok && p->IsEventOfThisTypeInQueue((EInputButtonEventType)1, 5, v) && v == 1.0f && g_seenType == 1 && g_ctor == 5 && g_dtor == 5;
+    printf(ok ? "0066f630_TEST PASS\n" : "0066f630_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

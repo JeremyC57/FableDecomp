@@ -1,101 +1,28 @@
-extern "C" __declspec(naked) void F_00434870(void)
+// CFadeInFadeOutBase::Update(float timeDelta) -- advance the fade: opening counts OpenTimer up to FadeInTime, closing counts CloseTimer down to zero and then deactivates
+// Leaf: ?Update@CFadeInFadeOutBase_Methods@@QAEXM@Z (Ego_r.pdb ?Update@CFadeInFadeOutBase@@QAEXM@Z; modelled through CFadeInFadeOutBase_Methods)
+// Retail: Fable.exe @ 0x00434870, 95 bytes, thiscall `ret 4`; 0.0f is the float at 0x0122DEDC; edx = 0 serves false and 0.0f.
+// Body: Opening: OpenTimer += dt, Opening = false once OpenTimer >= FadeInTime. Else Closing: CloseTimer -= dt; when
+// CloseTimer <= 0 clamp a negative timer to 0 and clear Active, Closing, Opening.
+// Layout: engine/CFadeInFadeOutBase.h (Ego_r layout, 0x1c bytes).
+// Names: Ego_r.pdb member names.
+// Shape: else-if chain; the clamp nested inside the <= 0 test (fcom/fst then fcomp).
+// Opt: /O2.
+#include "engine/CFadeInFadeOutBase.h"
+struct CFadeInFadeOutBase_Methods : CFadeInFadeOutBase {
+    void Update(float timeDelta);
+};
+void CFadeInFadeOutBase_Methods::Update(float timeDelta)
 {
-    __asm
-    {
-        _emit 0x8a
-        _emit 0x41
-        _emit 0x0d
-        _emit 0x33
-        _emit 0xd2
-        _emit 0x3a
-        _emit 0xc2
-        _emit 0x74
-        _emit 0x1a
-        _emit 0xd9
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0xd8
-        _emit 0x41
-        _emit 0x10
-        _emit 0xd9
-        _emit 0x51
-        _emit 0x10
-        _emit 0xd8
-        _emit 0x59
-        _emit 0x04
-        _emit 0xdf
-        _emit 0xe0
-        _emit 0xf6
-        _emit 0xc4
-        _emit 0x01
-        _emit 0x75
-        _emit 0x3f
-        _emit 0x88
-        _emit 0x51
-        _emit 0x0d
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-        _emit 0x38
-        _emit 0x51
-        _emit 0x0c
-        _emit 0x74
-        _emit 0x34
-        _emit 0xd9
-        _emit 0x41
-        _emit 0x14
-        _emit 0xd8
-        _emit 0x64
-        _emit 0x24
-        _emit 0x04
-        _emit 0xd8
-        _emit 0x15
-        _emit 0xdc
-        _emit 0xde
-        _emit 0x22
-        _emit 0x01
-        _emit 0xd9
-        _emit 0x51
-        _emit 0x14
-        _emit 0xdf
-        _emit 0xe0
-        _emit 0xf6
-        _emit 0xc4
-        _emit 0x41
-        _emit 0x7a
-        _emit 0x1b
-        _emit 0xd8
-        _emit 0x1d
-        _emit 0xdc
-        _emit 0xde
-        _emit 0x22
-        _emit 0x01
-        _emit 0xdf
-        _emit 0xe0
-        _emit 0xf6
-        _emit 0xc4
-        _emit 0x05
-        _emit 0x7a
-        _emit 0x03
-        _emit 0x89
-        _emit 0x51
-        _emit 0x14
-        _emit 0x88
-        _emit 0x11
-        _emit 0x88
-        _emit 0x51
-        _emit 0x0c
-        _emit 0x88
-        _emit 0x51
-        _emit 0x0d
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-        _emit 0xdd
-        _emit 0xd8
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
+    if (Opening) {
+        OpenTimer += timeDelta;
+        if (OpenTimer >= FadeInTime) Opening = false;
+    } else if (Closing) {
+        CloseTimer -= timeDelta;
+        if (CloseTimer <= 0.0f) {
+            if (CloseTimer < 0.0f) CloseTimer = 0.0f;
+            Active = false;
+            Closing = false;
+            Opening = false;
+        }
     }
 }

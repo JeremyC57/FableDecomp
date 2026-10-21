@@ -1,98 +1,33 @@
-#include <stdio.h>
-
-extern "C" unsigned char __fastcall
-CInputTypeMouseWheelMovementUpEvent_IsEventOfThisType_0066f540(
-    void* input_type, void*, const void* event);
-
-struct Event
-{
-    long kind;
-    float delta;
+#include <cstdio>
+#include "engine/CInputTypeMouseWheelMovementUpEvent.h"
+enum EInputEventType { INPUT_EVENT_TYPE_MOUSE_WHEEL_MOVEMENT = 14 };
+class CInputEvent {
+public:
+    EInputEventType GetType() const;                     // 0x00A03B40
+    float GetMouseWheelMovement() const;                 // 0x00A03BB0
 };
-
-extern "C" float
-CInputTypeMouseWheelMovementUpEvent_IsEventOfThisType_0066f540_Threshold =
-    0.0001f;
-
-static int g_kind_calls;
-static int g_delta_calls;
-static void* g_last_kind_event;
-static void* g_last_delta_event;
-
-extern "C" long __fastcall
-CInputTypeMouseWheelMovementUpEvent_IsEventOfThisType_0066f540_GetKind(
-    void* event, void*)
+struct CInputTypeMouseWheelMovementUpEvent_Methods : CInputTypeMouseWheelMovementUpEvent {
+    bool IsEventOfThisType(const CInputEvent& event) const;
+};
+bool CInputTypeMouseWheelMovementUpEvent_Methods::IsEventOfThisType(const CInputEvent& event) const
 {
-    ++g_kind_calls;
-    g_last_kind_event = event;
-    return ((Event*)event)->kind;
+    if (event.GetType() == INPUT_EVENT_TYPE_MOUSE_WHEEL_MOVEMENT && event.GetMouseWheelMovement() > 0.0001f)
+        return true;
+    return false;
 }
 
-extern "C" float __fastcall
-CInputTypeMouseWheelMovementUpEvent_IsEventOfThisType_0066f540_GetDelta(
-    void* event, void*)
+struct Ev { int type; float wheel; };
+EInputEventType CInputEvent::GetType() const { return (EInputEventType)((const Ev*)this)->type; }
+float CInputEvent::GetMouseWheelMovement() const { return ((const Ev*)this)->wheel; }
+static bool T(int type, float w)
 {
-    ++g_delta_calls;
-    g_last_delta_event = event;
-    return ((Event*)event)->delta;
+    Ev e = { type, w };
+    CInputTypeMouseWheelMovementUpEvent_Methods m; m.__vftable = 0;
+    return m.IsEventOfThisType(*(const CInputEvent*)&e);
 }
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
-}
-
-static int RunCase(
-    Event& event, unsigned char expected, int expected_delta_calls)
-{
-    int ok = 1;
-    g_kind_calls = 0;
-    g_delta_calls = 0;
-    g_last_kind_event = 0;
-    g_last_delta_event = 0;
-    ok &= Check(
-        CInputTypeMouseWheelMovementUpEvent_IsEventOfThisType_0066f540(
-            0, 0, &event) == expected,
-        "predicate return must match");
-    ok &= Check(g_kind_calls == 1 && g_last_kind_event == &event,
-                "kind helper must receive the event once");
-    ok &= Check(g_delta_calls == expected_delta_calls,
-                "delta query count must match the short-circuit path");
-    if (expected_delta_calls)
-    {
-        ok &= Check(g_last_delta_event == &event,
-                    "delta helper must receive the event");
-    }
-    return ok;
-}
-
 int main()
 {
-    int ok = 1;
-    Event event;
-
-    event.kind = 0x0e;
-    event.delta = 0.25f;
-    ok &= RunCase(event, 1, 1);
-
-    event.delta = 0.0001f;
-    ok &= RunCase(event, 0, 1);
-
-    event.delta = -0.25f;
-    ok &= RunCase(event, 0, 1);
-
-    event.kind = 0x0d;
-    event.delta = 1.0f;
-    ok &= RunCase(event, 0, 0);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeMouseWheelMovementUpEvent::IsEventOfThisType 0x0066F540");
+    bool ok = T(14, 1.0f) && !T(14, 0.0f) && !T(14, -1.0f) && !T(14, 0.0001f) && T(14, 0.0002f) && !T(13, 1.0f) && !T(15, 1.0f);
+    std::printf(ok ? "0066f540_TEST PASS\n" : "FAIL\n");
     return 0;
 }

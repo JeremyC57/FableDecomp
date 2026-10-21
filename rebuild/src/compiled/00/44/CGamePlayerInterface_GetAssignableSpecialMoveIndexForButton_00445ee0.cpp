@@ -1,94 +1,56 @@
-extern "C" __declspec(naked) void cand_00445ee0(void)
+// CGamePlayerInterface::GetAssignableSpecialMoveIndexForButton(EXboxControllerButton button) const -- index of the first assignable special-move button input for which IsInputTypeWithButton holds, else -1
+// Leaf: ?GetAssignableSpecialMoveIndexForButton@CGamePlayerInterface@@QBEJW4EXboxControllerButton@@@Z
+// Retail: Fable.exe @ 0x00445EE0, 88 bytes, `ret 4`; caller 0x00643FDC; Ego_r.pdb
+// ?GetAssignableSpecialMoveIndexForButton@CGamePlayerInterface@@QBEJW4EXboxControllerButton@@@Z; label correct.
+// Body: for (unsigned i = 0; i < AssignableSpecialMoveButtons.size(); ++i) if (AssignableSpecialMoveButtons[i]->IsInputTypeWithButton(button))
+// (virtual slot 6, +0x18) return i; return -1 (size re-read every pass). One of three byte siblings 0x00445EE0 / 0x00445F40 /
+// 0x00445FA0 that differ only in the virtual slot (6 / 7 / 3).
+// Layout: retail CGamePlayerInterface -- AssignableSpecialMoveButtons (12-byte STLport vector<CCountedPointer<const
+// CInputTypeBase> >) +0x7b8 (Ego_r.pdb +0x7bc; its vectors are 16 bytes), as the matched 0x00445E90 / 0x00445E30 rows.
+// CInputTypeBase slots from the PDB virtual names and the retail vtables.
+// Shape: /O2 (16-aligned entry, `mov edi,edi` loop-head pad).
+enum EXboxControllerButton { XBOX_CONTROLLER_BUTTON_NONE };
+enum EMouseButtonControl { MOUSE_BUTTON_CONTROL_NONE };
+class CInputEvent;
+class CInputTypeBase {
+public:
+    virtual ~CInputTypeBase();
+    virtual void _slot01() const;                        // GetType
+    virtual void _slot02() const;                        // GetControlDirection
+    virtual bool IsEventOfThisType(const CInputEvent& event) const;                    // slot 3 (+0xc)
+    virtual void _slot04() const;
+    virtual void _slot05() const;                        // IsEventOfThisTypeInQueue
+    virtual bool IsInputTypeWithButton(EXboxControllerButton button) const;            // slot 6 (+0x18)
+    virtual bool IsInputTypeWithMouseButton(EMouseButtonControl button) const;         // slot 7 (+0x1c)
+};
+template <class T> class CCountedPointer {
+public:
+    T*    Data;                                          // +0x00
+    void* Info;                                          // +0x04
+    T* operator->() const { return Data; }
+};
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;                                         // +0x00
+    T* _M_finish;                                        // +0x04
+    T* _M_end_of_storage;                                // +0x08
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+    const T& operator[](unsigned int n) const { return _M_start[n]; }
+};
+}
+class CGamePlayerInterface {
+public:
+    unsigned char _pad0000[0x7b8];
+    std::vector<CCountedPointer<const CInputTypeBase> > AssignableSpecialMoveButtons;   // +0x7b8
+    long GetAssignableSpecialMoveIndexForButton(EXboxControllerButton button) const;
+};
+long CGamePlayerInterface::GetAssignableSpecialMoveIndexForButton(EXboxControllerButton button) const
 {
-    __asm
+    for (unsigned long i = 0; i < AssignableSpecialMoveButtons.size(); ++i)
     {
-        _emit 0x53
-        _emit 0x56
-        _emit 0x8B
-        _emit 0xF1
-        _emit 0x8B
-        _emit 0x86
-        _emit 0xBC
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x2B
-        _emit 0x86
-        _emit 0xB8
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x57
-        _emit 0xC1
-        _emit 0xF8
-        _emit 0x03
-        _emit 0x33
-        _emit 0xFF
-        _emit 0x85
-        _emit 0xC0
-        _emit 0x76
-        _emit 0x2D
-        _emit 0x8B
-        _emit 0x5C
-        _emit 0x24
-        _emit 0x10
-        _emit 0x8B
-        _emit 0xFF
-        _emit 0x8B
-        _emit 0x8E
-        _emit 0xB8
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x0C
-        _emit 0xF9
-        _emit 0x8B
-        _emit 0x11
-        _emit 0x53
-        _emit 0xFF
-        _emit 0x52
-        _emit 0x18
-        _emit 0x84
-        _emit 0xC0
-        _emit 0x75
-        _emit 0x1D
-        _emit 0x8B
-        _emit 0x86
-        _emit 0xBC
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x2B
-        _emit 0x86
-        _emit 0xB8
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x47
-        _emit 0xC1
-        _emit 0xF8
-        _emit 0x03
-        _emit 0x3B
-        _emit 0xF8
-        _emit 0x72
-        _emit 0xD9
-        _emit 0x5F
-        _emit 0x5E
-        _emit 0x83
-        _emit 0xC8
-        _emit 0xFF
-        _emit 0x5B
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
-        _emit 0x8B
-        _emit 0xC7
-        _emit 0x5F
-        _emit 0x5E
-        _emit 0x5B
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
+        if (AssignableSpecialMoveButtons[i]->IsInputTypeWithButton(button))
+            return i;
     }
+    return -1;
 }

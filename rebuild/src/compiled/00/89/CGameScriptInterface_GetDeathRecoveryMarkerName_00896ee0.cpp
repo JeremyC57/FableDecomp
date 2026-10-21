@@ -1,103 +1,103 @@
-// CGameScriptInterface::GetDeathRecoveryMarkerName @ 0x00896EE0
-// VC7.1, x86, /O2 /Oy.
-//
-// ABI model: ecx = interface, edx unused, [esp+4] = hidden CCharString
-// return slot.  The two resolver calls locate the player creature.  A usable
-// creature must have flags91 bit 0 clear and flags20 bit 4 set.  Interface key
-// 4 is found with LowerBound; the selected interface's CCharString at +0x170
-// is copy-constructed into the return slot.  Ineligible creatures construct
-// the empty-string sentinel with length -1.
-//
-// Ordinary VC7.1 C++ reproduces all behavior but schedules the marker pointer
-// through ecx, expanding `add ecx,170h` by one byte.  This isolated naked body
-// preserves retail's eax allocation and provides exact relocation sites.
-
-struct CCharString
-{
-    void* data;
+// CGameScriptInterface::GetDeathRecoveryMarkerName() const -- the hero's death-recovery marker name (hero-stats component), or "" without a live hero holding it
+// Leaf: ?GetDeathRecoveryMarkerName@CGameScriptInterface@@UBE?AVCCharString@@XZ
+// Retail: Fable.exe @ 0x00896EE0, 125 bytes, `ret 4` (hidden result); Ego_r.pdb same symbol.
+// Body: hero = PlayerManager (+0x14)->GetMainPlayer() (0x00449970)->GetPControlledCreature() (0x00487DD0: `add ecx,2Ch;
+// jmp` into CPlayer::ControlledCreature +0x2c, Ego_r.pdb CIntelligentPointer<CThingPlayerCreature> at 44); if hero, not dead
+// and holding interface 4 (bit 4 of UsingComponents +0x20): PeekTC (const LowerBound 0x004365B0) and return a copy
+// (0x0099EC30) of CTCHeroStats::DeathRecoveryMarkerName (+0x170); else return CCharString("", -1) (0x0099EBF0, literal
+// 0x0122D70E).
+// Layout: Ego_r.pdb CTCHeroStats DeathRecoveryMarkerName +0x188; retail has it at +0x170 (-0x18, the only struct with that
+// member name). Interface 4 = CTCHeroStats rests on that member; the CCharString(const char*, long) length argument
+// meaning (-1 = strlen) is as the landed C2DVector::ToString row.
+// Shape: /O2 (16-aligned entry); the PeekTC out-pointer form.
+class CCharString {
+public:
+    void* PStringData;
+    CCharString(const char* s, long length);             // 0x0099EBF0
+    CCharString(const CCharString& other);               // 0x0099EC30
 };
-
-struct CGameScriptInterfaceLayout
-{
-    char pad_00[0x14];
-    void* playerSlot;
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
+public:
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-extern "C" void* __fastcall
-FableGsiGetDeathRecoveryPlayerHandle(void* playerSlot, void*);
-extern "C" void* __fastcall
-FableGsiGetDeathRecoveryCreature(void* playerHandle, void*);
-extern "C" void* __fastcall
-FableGsiGetDeathRecoveryLowerBound(void* map, void*, const int* key);
-extern "C" void __fastcall
-FableGsiGetDeathRecoveryCopy(
-    CCharString* result,
-    void*,
-    const CCharString* source);
-extern "C" void __fastcall
-FableGsiGetDeathRecoveryLiteral(
-    CCharString* result,
-    void*,
-    const char* text,
-    int length);
-extern "C" const char FableGsiGetDeathRecoveryEmpty[];
-
-extern "C" __declspec(naked) CCharString* __fastcall
-CGameScriptInterface_GetDeathRecoveryMarkerName(
-    const CGameScriptInterfaceLayout*,
-    void*,
-    CCharString*)
-{
-    __asm
+class CThing {
+public:
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
     {
-        push ecx
-        mov ecx, dword ptr [ecx + 14h]
-        push esi
-        call FableGsiGetDeathRecoveryPlayerHandle
-        mov ecx, eax
-        call FableGsiGetDeathRecoveryCreature
-        test eax, eax
-        je emptyResult
-        test byte ptr [eax + 91h], 1
-        jne emptyResult
-        test byte ptr [eax + 20h], 10h
-        je emptyResult
-        lea esi, [eax + 44h]
-        lea eax, [esp + 4]
-        push eax
-        mov ecx, esi
-        mov dword ptr [esp + 8], 4
-        call FableGsiGetDeathRecoveryLowerBound
-        mov esi, dword ptr [esi + 4]
-        cmp eax, esi
-        je useEnd
-        cmp dword ptr [eax], 4
-        jle haveEntry
-
-useEnd:
-        mov eax, esi
-
-haveEntry:
-        mov eax, dword ptr [eax + 4]
-        mov esi, dword ptr [esp + 0Ch]
-        add eax, 170h
-        push eax
-        mov ecx, esi
-        call FableGsiGetDeathRecoveryCopy
-        mov eax, esi
-        pop esi
-        pop ecx
-        ret 4
-
-emptyResult:
-        mov esi, dword ptr [esp + 0Ch]
-        push -1
-        push offset FableGsiGetDeathRecoveryEmpty
-        mov ecx, esi
-        call FableGsiGetDeathRecoveryLiteral
-        mov eax, esi
-        pop esi
-        pop ecx
-        ret 4
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
     }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
+};
+class CTCHeroStats {                                    // interface 4
+public:
+    enum { INTERFACE_TYPE = 4 };
+    unsigned char _pad000[0x170];
+    CCharString   DeathRecoveryMarkerName;               // +0x170 (Ego_r.pdb +0x188)
+};
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
+public:
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DD0
+};
+class CPlayerManager {
+public:
+    CPlayer& GetMainPlayer();                            // 0x00449970
+};
+class CGameScriptInterface {
+public:
+    virtual CCharString GetDeathRecoveryMarkerName() const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
+};
+CCharString CGameScriptInterface::GetDeathRecoveryMarkerName() const
+{
+    const CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (hero && !hero->IsDead())
+    {
+        const CTCHeroStats* stats;
+        if (hero->PeekTC(&stats))
+            return stats->DeathRecoveryMarkerName;
+    }
+    return CCharString("", -1);
 }

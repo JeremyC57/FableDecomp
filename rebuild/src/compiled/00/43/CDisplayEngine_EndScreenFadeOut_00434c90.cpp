@@ -1,65 +1,26 @@
-extern "C" __declspec(naked) void F_00434c90(void)
+// CDisplayEngine::EndScreenFadeOut() -- cancel the initial fade and, unless the fade-out is locked, start fading the screen back in
+// Leaf: ?EndScreenFadeOut@CDisplayEngine_Methods@@QAEXXZ
+// Retail: Fable.exe @ 0x00434C90, 59 bytes, `ret`; Ego_r.pdb ?EndScreenFadeOut@CDisplayEngine@@QAEXXZ.
+// Body: InitialFadeActive (+0xec) and the file-scope flag at 0x01375CDC (written only here and at 0x00434C08, always
+// together with InitialFadeActive) are cleared; if ScreenFadeOutInfo.Active (+0xbc) && !ScreenFadeOutLocked (+0xd8):
+// ScreenFadeDuration = -1.0f, TimeSinceFadeStarted = 0, ScreenFadeOutInfo.Opening = false (+0xc9), .Closing = true (+0xc8).
+// Layout: engine/CDisplayEngine.h (ScreenFadeOutInfo is CFadeInFadeOutBase, engine/CFadeInFadeOutBase.h).
+#include "engine/CDisplayEngine.h"
+#include "engine/CFadeInFadeOutBase.h"
+extern bool g_InitialFadeActiveMirror;                   // 0x01375CDC
+struct CDisplayEngine_Methods : CDisplayEngine {
+    CFadeInFadeOutBase& GetScreenFadeOutInfo() { return *reinterpret_cast<CFadeInFadeOutBase*>(ScreenFadeOutInfo); }
+    void EndScreenFadeOut();
+};
+void CDisplayEngine_Methods::EndScreenFadeOut()
 {
-    __asm
+    InitialFadeActive = false;
+    g_InitialFadeActiveMirror = false;
+    if (GetScreenFadeOutInfo().Active && !ScreenFadeOutLocked)
     {
-        _emit 0x33
-        _emit 0xc0
-        _emit 0x88
-        _emit 0x81
-        _emit 0xec
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xa2
-        _emit 0xdc
-        _emit 0x5c
-        _emit 0x37
-        _emit 0x01
-        _emit 0x38
-        _emit 0x81
-        _emit 0xbc
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x74
-        _emit 0x25
-        _emit 0x38
-        _emit 0x81
-        _emit 0xd8
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x75
-        _emit 0x1d
-        _emit 0xc7
-        _emit 0x81
-        _emit 0xf0
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x80
-        _emit 0xbf
-        _emit 0x89
-        _emit 0x81
-        _emit 0xf4
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x88
-        _emit 0x81
-        _emit 0xc9
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xc6
-        _emit 0x81
-        _emit 0xc8
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x01
-        _emit 0xc3
+        ScreenFadeDuration = -1.0f;
+        TimeSinceFadeStarted = 0.0f;
+        GetScreenFadeOutInfo().Opening = false;
+        GetScreenFadeOutInfo().Closing = true;
     }
 }

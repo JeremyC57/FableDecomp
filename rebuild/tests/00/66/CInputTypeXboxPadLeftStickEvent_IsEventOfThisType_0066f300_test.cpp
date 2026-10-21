@@ -1,69 +1,29 @@
+// behaviour test for 0x0066F300 CInputTypeXboxPadLeftStickEvent::IsEventOfThisType
 #include <stdio.h>
-
-extern "C" unsigned char __fastcall
-CInputTypeXboxPadLeftStickEvent_IsEventOfThisType_0066f300(
-    void* input_type, void*, const void* event);
-
-struct Event
-{
-    long kind;
+enum EInputEventType { INPUT_EVENT_TYPE_PAD_LEFT_STICK = 0x11, INPUT_EVENT_TYPE_FORCE_DWORD = 0x7fffffff };
+class CInputEvent {
+public:
+    EInputEventType Type;
+    EInputEventType GetType() const;
 };
-
-static int g_kind_calls;
-static void* g_last_event;
-
-extern "C" long __fastcall
-CInputTypeXboxPadLeftStickEvent_IsEventOfThisType_0066f300_GetKind(
-    void* event, void*)
+EInputEventType CInputEvent::GetType() const { return Type; }
+class CInputTypeXboxPadLeftStickEvent {
+public:
+    virtual void _v00() {}
+    virtual void _v01() {}
+    virtual void _v02() {}
+    virtual bool IsEventOfThisType(const CInputEvent& event) const;
+};
+bool CInputTypeXboxPadLeftStickEvent::IsEventOfThisType(const CInputEvent& event) const
 {
-    ++g_kind_calls;
-    g_last_event = event;
-    return ((Event*)event)->kind;
+    return event.GetType() == INPUT_EVENT_TYPE_PAD_LEFT_STICK;
 }
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
-}
-
-static int RunCase(Event& event, unsigned char expected)
-{
-    int ok = 1;
-    g_kind_calls = 0;
-    g_last_event = 0;
-    ok &= Check(
-        CInputTypeXboxPadLeftStickEvent_IsEventOfThisType_0066f300(
-            0, 0, &event) == expected,
-        "predicate return must match");
-    ok &= Check(g_kind_calls == 1,
-                "event kind must be queried once");
-    ok &= Check(g_last_event == &event,
-                "kind helper must receive the event argument");
-    return ok;
-}
-
 int main()
 {
-    int ok = 1;
-    Event event;
-
-    event.kind = 0x11;
-    ok &= RunCase(event, 1);
-
-    event.kind = 0x10;
-    ok &= RunCase(event, 0);
-
-    event.kind = 0x12;
-    ok &= RunCase(event, 0);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeXboxPadLeftStickEvent::IsEventOfThisType 0x0066F300");
-    return 0;
+    CInputTypeXboxPadLeftStickEvent o; const CInputTypeXboxPadLeftStickEvent* p = &o; CInputEvent e; int ok = 1;
+    e.Type = INPUT_EVENT_TYPE_PAD_LEFT_STICK; ok &= p->IsEventOfThisType(e) == true;
+    e.Type = (EInputEventType)(0x11 + 1); ok &= p->IsEventOfThisType(e) == false;
+    e.Type = (EInputEventType)0; ok &= p->IsEventOfThisType(e) == false;
+    printf(ok ? "0066f300_TEST PASS\n" : "0066f300_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

@@ -1,212 +1,100 @@
 #include <cstdio>
-
-class CCharString
-{
+class CCharString;
+class CResource {
 public:
-    unsigned long m_Marker;
+    virtual ~CResource();
+    virtual void DeleteThis();                           // slot 1 (+0x04)
+    unsigned long IVRefCount;                            // +0x04
+    void AddRef() { ++IVRefCount; }
+    void Release() { if (--IVRefCount == 0) DeleteThis(); }
 };
-
-class CWorldMap
-{
+class CRegionDef : public CResource {
 public:
-    long GetRegionNumberFromName(const CCharString& regionName);
+    unsigned char _pad08[0x89 - 8];                      // CResource tail (+0x08..+0x1b) and the def fields before AllowHenchmen
+    bool AllowHenchmen;                                  // +0x89
 };
-
-class CGSIHenchmenRegion_InterfaceSource
-{
+template <class T> class CDefPointer {
 public:
-    virtual void Slot00() {}
-    virtual void Slot04() {}
-    virtual void Slot08() {}
-    virtual void Slot0C() {}
-    virtual void Slot10() {}
-    virtual void Slot14() {}
-    virtual void Slot18() {}
-    virtual void Slot1C() {}
-    virtual void Slot20() {}
-    virtual void Slot24() {}
-    virtual void Slot28() {}
-    virtual void Slot2C() {}
-    virtual void Slot30() {}
-    virtual void* GetInterface();
+    T* Data;
+    CDefPointer(const CDefPointer& other) : Data(other.Data) { if (Data) const_cast<CResource*>(static_cast<const CResource*>(Data))->AddRef(); }
+    ~CDefPointer() { if (Data) const_cast<CResource*>(static_cast<const CResource*>(Data))->Release(); }
+    T* operator->() const { return Data; }
+    operator bool() const { return Data != 0; }
 };
-
-class CGSIHenchmenRegion_State
-{
+class CRegion {
 public:
-    virtual void Slot00();
-    virtual void Release();
-
-    long m_RefCount;
-    unsigned char m_Pad08[0x81];
-    bool m_IsAllowed;
+    unsigned char                  _pad00[0x24];
+    CDefPointer<const CRegionDef>  PDef;                 // +0x24
 };
-
-struct CGSIHenchmenRegion_Category
-{
-    unsigned char m_Pad00[0x24];
-    CGSIHenchmenRegion_State* m_pState;
-};
-
-namespace NInventory
-{
-class CTCInventoryBase
-{
+class CWorldMap {
 public:
-    CGSIHenchmenRegion_Category* GetCategoryWithIndex(long index);
+    CRegion& GetRegion(long index);                      // 0x004FC180
+    long GetRegionNumberFromName(const CCharString& name) const;   // 0x004FC210
 };
-}
-
-struct CGSIHenchmenRegion_InterfaceOverlay
-{
-    unsigned char m_Pad00[0x04];
-    CGSIHenchmenRegion_InterfaceSource* m_pInterfaceSource;
-};
-
-class CGameScriptInterface
-{
+class CWorld {
 public:
-    virtual bool IsHeroAllowedHenchmenInRegion(
-        const CCharString& regionName) const;
+    virtual void _slot00(); virtual void _slot01(); virtual void _slot02(); virtual void _slot03();
+    virtual void _slot04(); virtual void _slot05(); virtual void _slot06(); virtual void _slot07();
+    virtual void _slot08(); virtual void _slot09(); virtual void _slot10(); virtual void _slot11();
+    virtual void _slot12();
+    virtual CWorldMap* GetWorldMap();                    // slot 13 (+0x34)
 };
-
-static unsigned long g_InterfaceCalls;
-static unsigned long g_RegionCalls;
-static unsigned long g_CategoryCalls;
-static unsigned long g_ReleaseCalls;
-static bool g_ReturnWorldMapNext;
-static CWorldMap* g_pExpectedWorldMap;
-static NInventory::CTCInventoryBase* g_pExpectedInventory;
-static const CCharString* g_pExpectedRegionName;
-static long g_RegionNumber;
-static CGSIHenchmenRegion_Category* g_pCategory;
-
-void* CGSIHenchmenRegion_InterfaceSource::GetInterface()
+class CGameScriptInterface {
+public:
+    virtual bool IsHeroAllowedHenchmenInRegion(const CCharString& region_name) const;
+    CWorld* World;                                       // +0x04
+};
+bool CGameScriptInterface::IsHeroAllowedHenchmenInRegion(const CCharString& region_name) const
 {
-    ++g_InterfaceCalls;
-    if (g_ReturnWorldMapNext)
+    long index = World->GetWorldMap()->GetRegionNumberFromName(region_name);
+    if (index > 0)
     {
-        g_ReturnWorldMapNext = false;
-        return g_pExpectedWorldMap;
+        const CRegion& region = World->GetWorldMap()->GetRegion(index);
+        if (region.PDef)
+        {
+            CDefPointer<const CRegionDef> def = region.PDef;
+            return def->AllowHenchmen;
+        }
     }
-    return g_pExpectedInventory;
+    return true;
 }
 
-long CWorldMap::GetRegionNumberFromName(const CCharString& regionName)
-{
-    if (this != g_pExpectedWorldMap)
-    {
-        std::printf("world-map this mismatch\n");
-        return 0;
-    }
-    if (&regionName != g_pExpectedRegionName)
-    {
-        std::printf("region-name mismatch\n");
-        return 0;
-    }
-    ++g_RegionCalls;
-    return g_RegionNumber;
-}
 
-CGSIHenchmenRegion_Category*
-NInventory::CTCInventoryBase::GetCategoryWithIndex(long index)
-{
-    if (this != g_pExpectedInventory)
-    {
-        std::printf("inventory this mismatch\n");
-        return 0;
-    }
-    if (index != g_RegionNumber)
-    {
-        std::printf("region-index mismatch\n");
-        return 0;
-    }
-    ++g_CategoryCalls;
-    return g_pCategory;
-}
 
-void CGSIHenchmenRegion_State::Slot00()
-{
-}
-
-void CGSIHenchmenRegion_State::Release()
-{
-    ++g_ReleaseCalls;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf("FSE2_00891ef0_TEST FAIL: %s\n", pMessage);
-    return 1;
-}
-
+static int g_deleted;
+CResource::~CResource() {}
+void CResource::DeleteThis() { ++g_deleted; }
+static unsigned char g_raw[3 * sizeof(CRegion)]; static CRegion* const g_regions = (CRegion*)g_raw; 
+CRegion& CWorldMap::GetRegion(long index) { return g_regions[index]; }
+class CCharString { public: long Index; };
+long CWorldMap::GetRegionNumberFromName(const CCharString& name) const { return name.Index; }
+static CWorldMap g_map;
+void CWorld::_slot00() {} void CWorld::_slot01() {} void CWorld::_slot02() {} void CWorld::_slot03() {}
+void CWorld::_slot04() {} void CWorld::_slot05() {} void CWorld::_slot06() {} void CWorld::_slot07() {}
+void CWorld::_slot08() {} void CWorld::_slot09() {} void CWorld::_slot10() {} void CWorld::_slot11() {}
+void CWorld::_slot12() {}
+CWorldMap* CWorld::GetWorldMap() { return 0; }
+class CTestWorld : public CWorld {
+public:
+    virtual void _slot00() {} virtual void _slot01() {} virtual void _slot02() {} virtual void _slot03() {}
+    virtual void _slot04() {} virtual void _slot05() {} virtual void _slot06() {} virtual void _slot07() {}
+    virtual void _slot08() {} virtual void _slot09() {} virtual void _slot10() {} virtual void _slot11() {}
+    virtual void _slot12() {}
+    virtual CWorldMap* GetWorldMap() { return &g_map; }
+};
+class CTestDef : public CRegionDef {};
+CTestDef* MakeDef(bool allow, unsigned long rc) { CTestDef* d = new CTestDef; d->AllowHenchmen = allow; d->IVRefCount = rc; return d; }
 int main()
 {
-    CGSIHenchmenRegion_InterfaceSource interfaceSource;
-    CGSIHenchmenRegion_InterfaceOverlay interfaceStorage = {};
-    CGSIHenchmenRegion_Category category = {};
-    CGSIHenchmenRegion_State state;
-    CCharString regionName;
-    CGameScriptInterface& interfaceObject =
-        reinterpret_cast<CGameScriptInterface&>(interfaceStorage);
-
-    g_pExpectedWorldMap = reinterpret_cast<CWorldMap*>(0x12345678);
-    g_pExpectedInventory =
-        reinterpret_cast<NInventory::CTCInventoryBase*>(0x23456789);
-    g_pExpectedRegionName = &regionName;
-    g_pCategory = &category;
-    interfaceStorage.m_pInterfaceSource = &interfaceSource;
-    category.m_pState = &state;
-    regionName.m_Marker = 0xA5A5A5A5;
-
-    g_RegionNumber = -17;
-    g_ReturnWorldMapNext = true;
-    bool allowed =
-        interfaceObject.CGameScriptInterface::
-            IsHeroAllowedHenchmenInRegion(regionName);
-    if (!allowed || g_CategoryCalls != 0)
-        return Fail("negative region default");
-
-    g_RegionNumber = 0;
-    g_ReturnWorldMapNext = true;
-    allowed =
-        interfaceObject.CGameScriptInterface::
-            IsHeroAllowedHenchmenInRegion(regionName);
-    if (!allowed || g_CategoryCalls != 0)
-        return Fail("zero region default");
-
-    g_RegionNumber = 23;
-    category.m_pState = 0;
-    g_ReturnWorldMapNext = true;
-    allowed =
-        interfaceObject.CGameScriptInterface::
-            IsHeroAllowedHenchmenInRegion(regionName);
-    if (!allowed || g_CategoryCalls != 1)
-        return Fail("missing state default");
-
-    category.m_pState = &state;
-    state.m_RefCount = 9;
-    state.m_IsAllowed = false;
-    g_ReturnWorldMapNext = true;
-    allowed =
-        interfaceObject.CGameScriptInterface::
-            IsHeroAllowedHenchmenInRegion(regionName);
-    if (allowed || state.m_RefCount != 9 || g_ReleaseCalls != 0)
-        return Fail("retained false state");
-
-    state.m_RefCount = 0;
-    state.m_IsAllowed = true;
-    g_ReturnWorldMapNext = true;
-    allowed =
-        interfaceObject.CGameScriptInterface::
-            IsHeroAllowedHenchmenInRegion(regionName);
-    if (!allowed || state.m_RefCount != 0 || g_ReleaseCalls != 1)
-        return Fail("released true state");
-
-    if (g_InterfaceCalls != 8 || g_RegionCalls != 5 ||
-        g_CategoryCalls != 3)
-        return Fail("call counts");
-
-    std::printf("FSE2_00891ef0_TEST PASS\n");
+    CTestWorld world; CGameScriptInterface gsi; gsi.World = &world;
+    CTestDef* yes = MakeDef(true, 1); CTestDef* no = MakeDef(false, 0);
+    g_regions[2].PDef.Data = no;
+    CCharString n0 = {0}, n1 = {1}, n2 = {2}, nm = {-1};
+    g_regions[0].PDef.Data = yes;
+    bool ok = gsi.IsHeroAllowedHenchmenInRegion(n0) && gsi.IsHeroAllowedHenchmenInRegion(nm) && yes->IVRefCount == 1;
+    g_regions[1].PDef.Data = 0; ok = ok && gsi.IsHeroAllowedHenchmenInRegion(n1);
+    g_regions[1].PDef.Data = yes; ok = ok && gsi.IsHeroAllowedHenchmenInRegion(n1) && yes->IVRefCount == 1 && g_deleted == 0;
+    ok = ok && !gsi.IsHeroAllowedHenchmenInRegion(n2) && no->IVRefCount == 0 && g_deleted == 1;
+    if (ok) std::printf("00891ef0_TEST PASS\n");
     return 0;
 }

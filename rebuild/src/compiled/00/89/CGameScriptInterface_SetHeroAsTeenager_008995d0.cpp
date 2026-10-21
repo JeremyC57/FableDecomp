@@ -1,118 +1,103 @@
-class CGSIHeroTeenager_Player;
-class CGSIHeroTeenager_Node;
-
-class CGSIHeroTeenager_Manager
-{
+// CGameScriptInterface::SetHeroAsTeenager(bool) const -- switch the live hero's morph to (or from) the teenage look and, with hero stats present, reset its age and training state
+// Leaf: ?SetHeroAsTeenager@CGameScriptInterface@@UBEX_N@Z
+// Retail: Fable.exe @ 0x008995D0, 176 bytes, `ret 4`; Ego_r.pdb same symbol.
+// Body: hero = PlayerManager (+0x14)->GetMainPlayer() (0x00449970).GetPControlledCreature() (0x00487DC0); if hero and not
+// Dead: GetTC<interface 3>(&morph) (LowerBound 0x0040F020; the result is used unchecked -- when the bit is clear retail
+// reads the uninitialised local, which shares the argument slot) ->SetAsTeenager(teenager) (0x0071BA40); if
+// GetTC<interface 4>(&stats): stats->SetAge(1.0f) (0x0057B26F) and stats->ResetTrainingStatus() (0x0057A5BE).
+// Names: CTCHeroMorph::SetAsTeenager(bool) is an Ego_r.pdb symbol; interface 4 is modelled as CTCHeroStats (its code sits
+// beside CTCHeroStats::GetMoralityCategory 0x0057A6B8) and both of its method names are guesses among the PDB's
+// CTCHeroStats QAEXM / QAEXXZ members.
+// Layout: CThing as the matched 0x00899B10 row (UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0).
+// Shape: /O2 (16-aligned entry); GetTC uses the one-ternary component store (the 0x00899B10 idiom).
+#include "engine/CPlayer.h"
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CGSIHeroTeenager_Player* GetPlayer();
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CGSIHeroTeenager_Player
-{
+class CThing {
 public:
-    void* GetHero();
-};
-
-class CGSIHeroTeenager_Container
-{
-public:
-    CGSIHeroTeenager_Node* LowerBound(
-        const long* pKey);
-};
-
-class CGSIHeroTeenager_Morph
-{
-public:
-    void SetAsTeenager(bool teenager);
-};
-
-class CGSIHeroTeenager_Stats
-{
-public:
-    void ForceStaminaTo(float stamina);
-    void SoberUp();
-};
-
-class CGameScriptInterface
-{
-public:
-    virtual void SetHeroAsTeenager(
-        bool teenager) const;
-};
-
-__declspec(naked)
-void CGameScriptInterface::SetHeroAsTeenager(
-    bool teenager) const
-{
-    __asm
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
     {
-        push ecx
-        mov ecx, dword ptr [ecx + 14h]
-        push edi
-        call CGSIHeroTeenager_Manager::GetPlayer
-        mov ecx, eax
-        call CGSIHeroTeenager_Player::GetHero
-        mov edi, eax
-        test edi, edi
-        je finished
-        test byte ptr [edi + 91h], 1
-        jne finished
-
-        test byte ptr [edi + 20h], 8
-        push esi
-        je fallback_morph
-        lea eax, [esp + 8]
-        lea esi, [edi + 44h]
-        push eax
-        mov ecx, esi
-        mov dword ptr [esp + 0Ch], 3
-        call CGSIHeroTeenager_Container::LowerBound
-        mov esi, dword ptr [esi + 4]
-        cmp eax, esi
-        je use_morph_sentinel
-        cmp dword ptr [eax], 3
-        jle have_morph
-use_morph_sentinel:
-        mov eax, esi
-have_morph:
-        mov eax, dword ptr [eax + 4]
-        jmp dispatch_morph
-
-fallback_morph:
-        mov eax, dword ptr [esp + 10h]
-dispatch_morph:
-        mov ecx, dword ptr [esp + 10h]
-        push ecx
-        mov ecx, eax
-        call CGSIHeroTeenager_Morph::SetAsTeenager
-
-        test byte ptr [edi + 20h], 10h
-        je finished_components
-        lea edx, [esp + 10h]
-        lea esi, [edi + 44h]
-        push edx
-        mov ecx, esi
-        mov dword ptr [esp + 14h], 4
-        call CGSIHeroTeenager_Container::LowerBound
-        mov esi, dword ptr [esi + 4]
-        cmp eax, esi
-        je use_stats_sentinel
-        cmp dword ptr [eax], 4
-        jle have_stats
-use_stats_sentinel:
-        mov eax, esi
-have_stats:
-        mov esi, dword ptr [eax + 4]
-        push 3F800000h
-        mov ecx, esi
-        call CGSIHeroTeenager_Stats::ForceStaminaTo
-        mov ecx, esi
-        call CGSIHeroTeenager_Stats::SoberUp
-finished_components:
-        pop esi
-finished:
-        pop edi
-        pop ecx
-        ret 4
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        *out = (T*)((it == map->last || T::INTERFACE_TYPE < it->type) ? map->last : it)->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        *out = (const T*)((it == map->last || T::INTERFACE_TYPE < it->type) ? map->last : it)->component;
+        return true;
+    }
+};
+class CTCHeroMorph {                                    // interface 3
+public:
+    enum { INTERFACE_TYPE = 3 };
+    void SetAsTeenager(bool teenager);                   // 0x0071BA40 (Ego_r.pdb ?SetAsTeenager@CTCHeroMorph@@QAEX_N@Z)
+};
+class CTCHeroStats {                                    // interface 4
+public:
+    enum { INTERFACE_TYPE = 4 };
+    void SetAge(float age);                              // 0x0057B26F (clamped to [0, 1]; name not confirmed)
+    void ResetTrainingStatus();                          // 0x0057A5BE (name not confirmed)
+};
+class CThingPlayerCreature : public CThing { };
+struct CPlayer_Methods : CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const; // 0x00487DC0
+};
+struct CPlayerManager {
+public:
+    CPlayer_Methods& GetMainPlayer();                    // 0x00449970
+};
+class CGameScriptInterface {
+public:
+    virtual void SetHeroAsTeenager(bool teenager) const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
+};
+void CGameScriptInterface::SetHeroAsTeenager(bool teenager) const
+{
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (hero && !hero->IsDead())
+    {
+        CTCHeroMorph* morph;
+        hero->GetTC(&morph);
+        morph->SetAsTeenager(teenager);
+        CTCHeroStats* stats;
+        if (hero->GetTC(&stats))
+        {
+            stats->SetAge(1.0f);
+            stats->ResetTrainingStatus();
+        }
     }
 }

@@ -1,255 +1,123 @@
-// Real-object behavior harness for
-// CGameScriptInterface::GetDeathRecoveryMarkerName @ 0x00896EE0.
-// The candidate body is supplied by the separately compiled source object.
-
 #include <cstdio>
-#include <cstring>
-
-struct CCharString
-{
-    void* data;
+class CCharString {
+public:
+    void* PStringData;
+    CCharString(const char* s, long length);             // 0x0099EBF0
+    CCharString(const CCharString& other);               // 0x0099EC30
 };
-
-struct DeathRecoveryInterface
-{
-    char pad_000[0x170];
-    CCharString markerName;
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
+public:
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-struct TCInterfaceEntry
-{
-    int key;
-    DeathRecoveryInterface* value;
+class CThing {
+public:
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
 };
-
-struct TCInterfaceMap
-{
-    TCInterfaceEntry* begin;
-    TCInterfaceEntry* end;
+class CTCHeroStats {                                    // interface 4
+public:
+    enum { INTERFACE_TYPE = 4 };
+    unsigned char _pad000[0x170];
+    CCharString   DeathRecoveryMarkerName;               // +0x170 (Ego_r.pdb +0x188)
 };
-
-struct PlayerCreature
-{
-    char pad_00[0x20];
-    unsigned char flags20;
-    char pad_21[0x23];
-    TCInterfaceMap interfaces;
-    char pad_4c[0x45];
-    unsigned char flags91;
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
+public:
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DD0
 };
-
-struct CGameScriptInterfaceLayout
-{
-    char pad_00[0x14];
-    void* playerSlot;
+class CPlayerManager {
+public:
+    CPlayer& GetMainPlayer();                            // 0x00449970
 };
-
-extern "C" CCharString* __fastcall
-CGameScriptInterface_GetDeathRecoveryMarkerName(
-    const CGameScriptInterfaceLayout* self,
-    void*,
-    CCharString* result);
-
-extern "C" const char FableGsiGetDeathRecoveryEmpty[] = "";
-
-static void* g_playerHandle = (void*)0x11112222;
-static PlayerCreature* g_creature;
-static int g_getHandleCalls;
-static int g_getCreatureCalls;
-static int g_lowerBoundCalls;
-static int g_copyCalls;
-static int g_literalCalls;
-static void* g_getHandleThis;
-static void* g_getCreatureThis;
-static TCInterfaceMap* g_lowerBoundThis;
-static int g_lowerBoundKey;
-static TCInterfaceEntry* g_lowerBoundResult;
-static const CCharString* g_copySource;
-static const char* g_literalText;
-static int g_literalLength;
-
-extern "C" void* __fastcall
-FableGsiGetDeathRecoveryPlayerHandle(void* playerSlot, void*)
+class CGameScriptInterface {
+public:
+    virtual CCharString GetDeathRecoveryMarkerName() const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
+};
+CCharString CGameScriptInterface::GetDeathRecoveryMarkerName() const
 {
-    ++g_getHandleCalls;
-    g_getHandleThis = playerSlot;
-    return g_playerHandle;
+    const CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+    if (hero && !hero->IsDead())
+    {
+        const CTCHeroStats* stats;
+        if (hero->PeekTC(&stats))
+            return stats->DeathRecoveryMarkerName;
+    }
+    return CCharString("", -1);
 }
 
-extern "C" void* __fastcall
-FableGsiGetDeathRecoveryCreature(void* playerHandle, void*)
-{
-    ++g_getCreatureCalls;
-    g_getCreatureThis = playerHandle;
-    return g_creature;
-}
-
-extern "C" void* __fastcall
-FableGsiGetDeathRecoveryLowerBound(
-    void* map,
-    void*,
-    const int* key)
-{
-    ++g_lowerBoundCalls;
-    g_lowerBoundThis = (TCInterfaceMap*)map;
-    g_lowerBoundKey = *key;
-    return g_lowerBoundResult;
-}
-
-extern "C" void __fastcall
-FableGsiGetDeathRecoveryCopy(
-    CCharString* result,
-    void*,
-    const CCharString* source)
-{
-    ++g_copyCalls;
-    g_copySource = source;
-    result->data = source->data;
-}
-
-extern "C" void __fastcall
-FableGsiGetDeathRecoveryLiteral(
-    CCharString* result,
-    void*,
-    const char* text,
-    int length)
-{
-    ++g_literalCalls;
-    g_literalText = text;
-    g_literalLength = length;
-    result->data = 0;
-}
-
-static void ResetCalls()
-{
-    g_getHandleCalls = 0;
-    g_getCreatureCalls = 0;
-    g_lowerBoundCalls = 0;
-    g_copyCalls = 0;
-    g_literalCalls = 0;
-    g_getHandleThis = 0;
-    g_getCreatureThis = 0;
-    g_lowerBoundThis = 0;
-    g_lowerBoundKey = -1;
-    g_copySource = 0;
-    g_literalText = 0;
-    g_literalLength = 0;
-}
-
-static int CheckEmptyResult(
-    CGameScriptInterfaceLayout& self,
-    PlayerCreature* creature,
-    int failureBase)
-{
-    ResetCalls();
-    g_creature = creature;
-    CCharString result;
-    result.data = (void*)0xffffffff;
-
-    CCharString* returned =
-        CGameScriptInterface_GetDeathRecoveryMarkerName(&self, 0, &result);
-    if (returned != &result)
-        return failureBase;
-    if (g_getHandleCalls != 1 || g_getCreatureCalls != 1)
-        return failureBase + 1;
-    if (g_getHandleThis != self.playerSlot ||
-        g_getCreatureThis != g_playerHandle)
-        return failureBase + 2;
-    if (g_lowerBoundCalls != 0 || g_copyCalls != 0)
-        return failureBase + 3;
-    if (g_literalCalls != 1 || g_literalLength != -1)
-        return failureBase + 4;
-    if (g_literalText == 0 ||
-        std::strcmp(g_literalText, "") != 0 ||
-        result.data != 0)
-        return failureBase + 5;
-    return 0;
-}
-
+static CInterfaceMap::SEntry g_entries[3];
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+static int g_copies, g_literals; static long g_len;
+CCharString::CCharString(const char* s, long length) { PStringData = (void*)s; g_len = length; ++g_literals; }
+CCharString::CCharString(const CCharString& o) { PStringData = o.PStringData; ++g_copies; }
+static CThingPlayerCreature g_hero; static CThingPlayerCreature* g_heroPtr;
+CThingPlayerCreature* CPlayer::GetPControlledCreature() const { return g_heroPtr; }
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
 int main()
 {
-    CGameScriptInterfaceLayout self;
-    std::memset(&self, 0, sizeof(self));
-    self.playerSlot = (void*)0x33334444;
-
-    PlayerCreature creature;
-    std::memset(&creature, 0, sizeof(creature));
-
-    int failure = CheckEmptyResult(self, 0, 1);
-    if (failure != 0)
-        return failure;
-
-    creature.flags20 = 0x10;
-    creature.flags91 = 1;
-    failure = CheckEmptyResult(self, &creature, 10);
-    if (failure != 0)
-        return failure;
-
-    creature.flags20 = 0;
-    creature.flags91 = 0;
-    failure = CheckEmptyResult(self, &creature, 20);
-    if (failure != 0)
-        return failure;
-
-    char recoveryStorage[sizeof(DeathRecoveryInterface) * 2];
-    DeathRecoveryInterface* recovery =
-        (DeathRecoveryInterface*)recoveryStorage;
-    std::memset(recoveryStorage, 0, sizeof(recoveryStorage));
-    recovery[0].markerName.data = (void*)0x12345678;
-    recovery[1].markerName.data = (void*)0x87654321;
-
-    TCInterfaceEntry entries[2];
-    entries[0].key = 4;
-    entries[0].value = &recovery[0];
-    entries[1].key = 7;
-    entries[1].value = &recovery[1];
-    creature.flags20 = 0x10;
-    creature.flags91 = 0;
-    creature.interfaces.begin = entries;
-    creature.interfaces.end = entries + 1;
-
-    ResetCalls();
-    g_creature = &creature;
-    g_lowerBoundResult = entries;
-    CCharString exact;
-    exact.data = 0;
-    CCharString* returned =
-        CGameScriptInterface_GetDeathRecoveryMarkerName(&self, 0, &exact);
-    if (returned != &exact ||
-        g_lowerBoundCalls != 1 ||
-        g_lowerBoundThis != &creature.interfaces ||
-        g_lowerBoundKey != 4)
-        return 30;
-    if (g_copyCalls != 1 ||
-        g_copySource != &recovery[0].markerName ||
-        exact.data != recovery[0].markerName.data)
-        return 31;
-    if (g_literalCalls != 0)
-        return 32;
-
-    ResetCalls();
-    g_creature = &creature;
-    g_lowerBoundResult = entries + 1;
-    CCharString atEnd;
-    atEnd.data = 0;
-    CGameScriptInterface_GetDeathRecoveryMarkerName(&self, 0, &atEnd);
-    if (g_copyCalls != 1 ||
-        g_copySource != &recovery[1].markerName ||
-        atEnd.data != recovery[1].markerName.data)
-        return 40;
-
-    ResetCalls();
-    g_creature = &creature;
-    g_lowerBoundResult = entries;
-    entries[0].key = 5;
-    CCharString aboveKey;
-    aboveKey.data = 0;
-    CGameScriptInterface_GetDeathRecoveryMarkerName(&self, 0, &aboveKey);
-    if (g_copyCalls != 1 ||
-        g_copySource != &recovery[1].markerName ||
-        aboveKey.data != recovery[1].markerName.data)
-        return 50;
-
-    std::printf("FSE2_00896ee0_TEST PASS\n");
-    return 0;
+    static unsigned char raw[sizeof(CTCHeroStats)]; CTCHeroStats& stats = *(CTCHeroStats*)raw; stats.DeathRecoveryMarkerName.PStringData = (void*)"MK_RECOVER";
+    for (int i = 0; i < 9; ++i) g_hero.UsingComponents[i] = 0;
+    g_hero.Dead = 0;
+    g_entries[0].type = 2; g_entries[0].component = 0;
+    g_entries[1].type = 4; g_entries[1].component = (CTCBase*)&stats;
+    g_hero.Components.first = g_entries; g_hero.Components.last = g_entries + 2;
+    CPlayerManager pm; CGameScriptInterface gsi; gsi.PlayerManager = &pm;
+    g_heroPtr = 0; CCharString a = gsi.GetDeathRecoveryMarkerName();
+    bool ok = g_literals == 1 && g_len == -1 && *(const char*)a.PStringData == 0 && g_copies == 0;
+    g_heroPtr = &g_hero; CCharString b = gsi.GetDeathRecoveryMarkerName();
+    ok = ok && g_literals == 2 && g_copies == 0;                          // no interface 4
+    g_hero.UsingComponents[0] = 1u << 4; g_hero.Dead = 1; CCharString c = gsi.GetDeathRecoveryMarkerName();
+    ok = ok && g_literals == 3;                                           // dead
+    g_hero.Dead = 0; CCharString d = gsi.GetDeathRecoveryMarkerName();
+    ok = ok && g_literals == 3 && g_copies == 1 && d.PStringData == stats.DeathRecoveryMarkerName.PStringData;
+    std::printf(ok ? "00896ee0_TEST PASS\n" : "00896ee0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

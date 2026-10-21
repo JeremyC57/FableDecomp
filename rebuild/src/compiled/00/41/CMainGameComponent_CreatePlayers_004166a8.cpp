@@ -1,63 +1,39 @@
-extern "C" __declspec(naked) void fn_004166a8(void)
+// CMainGameComponent::CreatePlayers() -- create the players, then bring the network client up as a local game (uninitialise it again if that fails half way)
+// Leaf: ?CreatePlayers@CMainGameComponent@@IAEXXZ
+// Retail: Fable.exe @ 0x004166A8, 58 bytes, `ret`; one caller (0x00418834); Ego_r.pdb ?CreatePlayers@CMainGameComponent@@IAEXXZ.
+// Body: CGameDefinitionManager::Get() (0x0044C6B0, static __fastcall, result unused); PPlayerManager->CreatePlayers()
+// (0x0044A530); Client.InitialiseAsLocal(this) (0x004AE940); on failure, if Client.IsValid() (CInitBaseClass, 0x0099A330:
+// `mov al,[ecx+4]`) tail-jump to Client.Uninitialise() (0x004AE990).
+// Layout: PDB CMainGameComponent: scoped_ptr<CPlayerManager> PPlayerManager +0x1c, CNetworkClient Client +0x13ab8 (80568);
+// no engine/CMainGameComponent.h exists. CNetworkClient from engine/CNetworkClient.h (CInitBaseClass base: vptr +0, valid flag +4).
+// Opt: size TU (unaligned entry).
+#pragma optimize("s", on)
+#include "engine/CNetworkClient.h"
+#include "engine/CPlayerManager.h"
+struct CGameDefinitionManager_Methods {
+    static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
+};
+struct CPlayerManager_Methods : CPlayerManager {
+    void CreatePlayers();                                // 0x0044A530
+};
+struct CNetworkClient_Methods : CNetworkClient {
+    bool InitialiseAsLocal(CMainGameComponent* component);  // 0x004AE940
+    bool IsValid() const;                                // 0x0099A330 (CInitBaseClass)
+    void Uninitialise();                                 // 0x004AE990
+};
+struct CMainGameComponent {
+    unsigned char            _pad00[0x1c];
+    CPlayerManager_Methods*  PPlayerManager;             // +0x1c scoped_ptr<CPlayerManager>
+    unsigned char            _pad20[0x13ab8 - 0x20];
+    CNetworkClient_Methods   Client;                     // +0x13ab8
+protected:
+    void CreatePlayers();
+    friend struct CMainGameComponent_Test;               // behaviour-test hook
+};
+void CMainGameComponent::CreatePlayers()
 {
-    __asm {
-        _emit 0x56
-        _emit 0x57
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0xff
-        _emit 0x5f
-        _emit 0x03
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x4e
-        _emit 0x1c
-        _emit 0xe8
-        _emit 0x77
-        _emit 0x3e
-        _emit 0x03
-        _emit 0x00
-        _emit 0x8d
-        _emit 0xbe
-        _emit 0xb8
-        _emit 0x3a
-        _emit 0x01
-        _emit 0x00
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x79
-        _emit 0x82
-        _emit 0x09
-        _emit 0x00
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x75
-        _emit 0x14
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x5e
-        _emit 0x3c
-        _emit 0x58
-        _emit 0x00
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x74
-        _emit 0x09
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xe9
-        _emit 0xb1
-        _emit 0x82
-        _emit 0x09
-        _emit 0x00
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc3
-    }
+    const CGameDefinitionManager& definitions = CGameDefinitionManager_Methods::Get();
+    PPlayerManager->CreatePlayers();
+    if (!Client.InitialiseAsLocal(this) && Client.IsValid())
+        Client.Uninitialise();
 }

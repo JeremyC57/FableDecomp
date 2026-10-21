@@ -1,113 +1,43 @@
-#include <stdio.h>
-
-extern "C" unsigned char __fastcall
-CInputTypeXboxPadRightStickEvent_IsEventOfThisTypeInQueue_0066f3b0(
-    void* input_type, void*, long event_type, long index, float* strength);
-
-static long g_manager_storage;
-extern "C" void*
-CInputTypeXboxPadRightStickEvent_IsEventOfThisTypeInQueue_0066f3b0_Manager =
-    &g_manager_storage;
-
-static int g_sequence;
-static int g_construct_order;
-static int g_query_order;
-static int g_destroy_order;
-static void* g_temporary;
-static void* g_query_manager;
-static long g_query_kind;
-static long g_query_state;
-static long g_query_index;
-static unsigned char g_query_result;
-
-extern "C" void __fastcall
-CInputTypeXboxPadRightStickEvent_IsEventOfThisTypeInQueue_0066f3b0_Construct(
-    void* event, void*)
+#include <cstdio>
+#include "engine/CInputTypeXboxPadRightStickEvent.h"
+enum EInputEventType { INPUT_EVENT_TYPE_XBOX_PAD_RIGHT_STICK = 18 };
+enum EInputButtonEventType { INPUT_BUTTON_EVENT_TYPE_NONE };
+class CInputEvent {
+public:
+    CInputEvent();                                       // 0x00A04410
+    ~CInputEvent();                                      // 0x00A03B30
+    unsigned char _body[0x34];
+};
+class CInputManager {
+public:
+    bool IsJoystickEventInQueue(EInputEventType type, long index, CInputEvent& event, long player) const;  // 0x009F4C60
+};
+extern CInputManager* g_pInputManager;                   // 0x013B8388
+struct CInputTypeXboxPadRightStickEvent_Methods : CInputTypeXboxPadRightStickEvent {
+    bool IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const;
+};
+bool CInputTypeXboxPadRightStickEvent_Methods::IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const
 {
-    g_construct_order = ++g_sequence;
-    g_temporary = event;
+    CInputEvent event;
+    return g_pInputManager->IsJoystickEventInQueue(INPUT_EVENT_TYPE_XBOX_PAD_RIGHT_STICK, 0, event, player);
 }
 
-extern "C" unsigned char __fastcall
-CInputTypeXboxPadRightStickEvent_IsEventOfThisTypeInQueue_0066f3b0_Query(
-    void* manager, void*, long kind, long state, void* event, long index)
-{
-    g_query_order = ++g_sequence;
-    g_query_manager = manager;
-    g_query_kind = kind;
-    g_query_state = state;
-    g_query_index = index;
-    if (event != g_temporary)
-        return 0;
-    return g_query_result;
-}
-
-extern "C" void __fastcall
-CInputTypeXboxPadRightStickEvent_IsEventOfThisTypeInQueue_0066f3b0_Destroy(
-    void* event, void*)
-{
-    g_destroy_order = ++g_sequence;
-    if (event != g_temporary)
-        g_destroy_order = -1;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
-}
-
-static void Reset(unsigned char result)
-{
-    g_sequence = 0;
-    g_construct_order = 0;
-    g_query_order = 0;
-    g_destroy_order = 0;
-    g_temporary = 0;
-    g_query_manager = 0;
-    g_query_kind = 0;
-    g_query_state = -1;
-    g_query_index = -1;
-    g_query_result = result;
-}
-
-static int RunCase(long index, unsigned char result)
-{
-    int ok = 1;
-    float strength = 3.25f;
-
-    Reset(result);
-    ok &= Check(
-        CInputTypeXboxPadRightStickEvent_IsEventOfThisTypeInQueue_0066f3b0(
-            0, 0, 0x55, index, &strength) == result,
-        "query result must be returned after cleanup");
-    ok &= Check(g_construct_order == 1 &&
-                g_query_order == 2 &&
-                g_destroy_order == 3,
-                "temporary must be constructed, queried, then destroyed");
-    ok &= Check(g_query_manager == &g_manager_storage,
-                "query must use the global input manager");
-    ok &= Check(g_query_kind == 0x12 && g_query_state == 0,
-                "query must request the right-stick event kind and state");
-    ok &= Check(g_query_index == index,
-                "query must forward the queue index");
-    return ok;
-}
-
+static int g_ctor = 0, g_dtor = 0, g_type = -1; static long g_index = -1, g_player = -1; static const CInputEvent* g_ev = 0; static bool g_ret = false;
+CInputEvent::CInputEvent() { ++g_ctor; }
+CInputEvent::~CInputEvent() { ++g_dtor; }
+bool CInputManager::IsJoystickEventInQueue(EInputEventType type, long index, CInputEvent& event, long player) const
+{ g_type = type; g_index = index; g_player = player; g_ev = &event; return g_ret; }
+static CInputManager g_mgr;
+CInputManager* g_pInputManager = &g_mgr;
+static CInputTypeXboxPadRightStickEvent_Methods g_obj;
 int main()
 {
-    int ok = 1;
-
-    ok &= RunCase(2, 1);
-    ok &= RunCase(7, 0);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeXboxPadRightStickEvent::IsEventOfThisTypeInQueue 0x0066F3B0");
+    float f = 0.0f; bool ok = true;
+    g_ret = true;
+    if (!g_obj.IsEventOfThisTypeInQueue(INPUT_BUTTON_EVENT_TYPE_NONE, 3, f)) ok = false;
+    if (g_type != 18 || g_index != 0 || g_player != 3 || g_ctor != 1 || g_dtor != 1 || !g_ev) ok = false;
+    g_ret = false;
+    if (g_obj.IsEventOfThisTypeInQueue(INPUT_BUTTON_EVENT_TYPE_NONE, 1, f) || g_player != 1 || g_dtor != 2) ok = false;
+    if (ok) std::printf("0066f3b0_TEST PASS\n");
     return 0;
 }

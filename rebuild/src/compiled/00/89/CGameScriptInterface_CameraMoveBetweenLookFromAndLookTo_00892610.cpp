@@ -1,121 +1,79 @@
+// CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo(const C3DVector& lookFrom1, const C3DVector& lookFrom2, const C3DVector& lookTo1, const C3DVector& lookTo2, float time) const -- hand the camera manager a scripted camera mode that moves both the eye and the target
+// Leaf: ?CameraMoveBetweenLookFromAndLookTo@CGameScriptInterface@@UBEXABVC3DVector@@000M@Z
+// Retail: Fable.exe @ 0x00892610, 184 bytes, `ret 0x14`; Ego_r.pdb same symbol.
+// Body: World (+0x04)->PCurrentGameCamera (+0x34)->GetCameraManager(&manager) (slot 9);
+// manager->SetScriptedCameraMode(CCountedPointer<CScriptModuleBase>(new <0x80-byte mode>(arg3, arg1, arg4, arg2,
+// ConvertSecondsToWF(time)))) -- operator new 0x00BFEA1A, mode ctor 0x008525F0, SetScriptedCameraMode 0x00699E60.
+// Layout: as the matched 0x00892410.
+// Names: parameter names are descriptive (the ctor takes argument 3, 1, 4, 2); mode class name not recovered.
+// Shape: 0x00892410 model (__forceinline CCountedPointer(T*)); ConvertSecondsToWF inline (long)(WFPS * seconds).
+// Opt: /O2.
 class C3DVector;
-
-extern long CGSICameraLookFromTo_Scale;
-extern unsigned char CGSICameraLookFromTo_Callback;
-
-void* __cdecl CGSICameraLookFromTo_Allocate(unsigned long size);
-long __cdecl CGSICameraLookFromTo_FloatToLong();
-
-class CGSICameraLookFromTo_Interpolator
-{
+namespace NCameraModes {
+class CScriptModuleBase {
 public:
-    CGSICameraLookFromTo_Interpolator* Construct(
-        const C3DVector& thirdPosition,
-        const C3DVector& firstPosition,
-        const C3DVector& fourthPosition,
-        const C3DVector& secondPosition,
-        long scaledDuration);
+    virtual ~CScriptModuleBase();
 };
-
-class CGSICameraLookFromTo_Receiver
-{
+class CScriptModuleMoveBetweenLookFromAndLookTo : public CScriptModuleBase {
 public:
-    void SetScriptedCameraMode(
-        CGSICameraLookFromTo_Interpolator* pInterpolator,
-        void* pCallbackState);
+    unsigned char _pad04[0x80 - 4];
+    CScriptModuleMoveBetweenLookFromAndLookTo(const C3DVector& lookTo1, const C3DVector& lookFrom1, const C3DVector& lookTo2,
+        const C3DVector& lookFrom2, long frames);   // 0x008525F0
 };
-
-class CGameScriptInterface
-{
+}
+struct CCPPointerInfo {
+    long  RefCount;
+    void  (__fastcall* DeleteFunc)(void* data);
+    void* Data;
+    CCPPointerInfo(void (__fastcall* deleteFunc)(void*), void* data) : RefCount(1), DeleteFunc(deleteFunc), Data(data) {}
+};
+template <class T> class CCountedPointer {
 public:
-    virtual void CameraMoveBetweenLookFromAndLookTo(
-        const C3DVector& firstPosition,
-        const C3DVector& secondPosition,
-        const C3DVector& thirdPosition,
-        const C3DVector& fourthPosition,
-        float duration) const;
-};
-
-__declspec(naked)
-void CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo(
-    const C3DVector& firstPosition,
-    const C3DVector& secondPosition,
-    const C3DVector& thirdPosition,
-    const C3DVector& fourthPosition,
-    float duration) const
-{
-    __asm
+    T*              Object;
+    CCPPointerInfo* Info;
+    static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
+    __forceinline CCountedPointer(T* object) : Object(object)
     {
-        push ecx
-        mov eax, dword ptr [ecx + 4]
-        mov ecx, dword ptr [eax + 34h]
-        mov edx, dword ptr [ecx]
-        push esi
-        lea eax, [esp + 4]
-        push eax
-        call dword ptr [edx + 24h]
-
-        push 80h
-        call CGSICameraLookFromTo_Allocate
-        mov esi, eax
-        add esp, 4
-        test esi, esi
-        je no_interpolator_storage
-        fild dword ptr [CGSICameraLookFromTo_Scale]
-        fmul dword ptr [esp + 1Ch]
-        call CGSICameraLookFromTo_FloatToLong
-        mov ecx, dword ptr [esp + 10h]
-        mov edx, dword ptr [esp + 18h]
-        push eax
-        mov eax, dword ptr [esp + 10h]
-        push ecx
-        mov ecx, dword ptr [esp + 1Ch]
-        push edx
-        push eax
-        push ecx
-        mov ecx, esi
-        call CGSICameraLookFromTo_Interpolator::Construct
-        jmp have_interpolator
-no_interpolator_storage:
-        xor eax, eax
-have_interpolator:
-        sub esp, 8
-        test eax, eax
-        mov esi, esp
-        mov dword ptr [esi], eax
-        je no_interpolator
-
-        push 0Ch
-        call CGSICameraLookFromTo_Allocate
-        add esp, 4
-        test eax, eax
-        je no_callback_storage
-        mov ecx, dword ptr [esi]
-        mov dword ptr [eax], 1
-        mov dword ptr [eax + 4], offset CGSICameraLookFromTo_Callback
-        mov dword ptr [eax + 8], ecx
-        mov dword ptr [esi + 4], eax
-        mov ecx, dword ptr [esp + 0Ch]
-        call CGSICameraLookFromTo_Receiver::SetScriptedCameraMode
-        pop esi
-        pop ecx
-        ret 14h
-
-no_callback_storage:
-        xor eax, eax
-        mov dword ptr [esi + 4], eax
-        mov ecx, dword ptr [esp + 0Ch]
-        call CGSICameraLookFromTo_Receiver::SetScriptedCameraMode
-        pop esi
-        pop ecx
-        ret 14h
-
-no_interpolator:
-        mov dword ptr [esi + 4], 0
-        mov ecx, dword ptr [esp + 0Ch]
-        call CGSICameraLookFromTo_Receiver::SetScriptedCameraMode
-        pop esi
-        pop ecx
-        ret 14h
+        if (object)
+            Info = new CCPPointerInfo(DeleteObject, Object);
+        else
+            Info = 0;
     }
+    CCountedPointer(const CCountedPointer& other);
+    ~CCountedPointer();
+};
+class CGameCameraManager {
+public:
+    void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
+};
+class CAIGameCameraBase {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08();
+    virtual bool GetCameraManager(CGameCameraManager** manager);   // slot 9 (+0x24)
+};
+extern long g_WorldFramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+public:
+    static long ConvertSecondsToWF(float seconds) { return (long)(g_WorldFramesPerSecond * seconds); }
+};
+class CWorld {
+public:
+    unsigned char      _pad00[0x34];
+    CAIGameCameraBase* PCurrentGameCamera;               // +0x34
+};
+class CGameScriptInterface {
+public:
+    virtual void CameraMoveBetweenLookFromAndLookTo(const C3DVector& lookFrom1, const C3DVector& lookFrom2, const C3DVector& lookTo1,
+        const C3DVector& lookTo2, float time) const;
+    CWorld* World;                                       // +0x04
+};
+void CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo(const C3DVector& lookFrom1, const C3DVector& lookFrom2,
+    const C3DVector& lookTo1, const C3DVector& lookTo2, float time) const
+{
+    CGameCameraManager* manager;
+    World->PCurrentGameCamera->GetCameraManager(&manager);
+    manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(
+        new NCameraModes::CScriptModuleMoveBetweenLookFromAndLookTo(lookTo1, lookFrom1, lookTo2, lookFrom2,
+            CMainGameComponent::ConvertSecondsToWF(time))));
 }

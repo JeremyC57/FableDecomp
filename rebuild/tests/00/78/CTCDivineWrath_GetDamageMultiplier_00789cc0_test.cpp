@@ -1,25 +1,30 @@
-#include <cstdio>
-struct Inner { char pad[0x128]; float* arr; };
-struct CTCDivineWrath { char pad0[0x10]; Inner* f10; char pad1[0x30]; int f44; };
-float g_dwConst = 2.0f;
-static float model(CTCDivineWrath* self) {
-    return self->f10->arr[self->f44] * g_dwConst;
+// behaviour test for 0x00789CC0
+#include <stdio.h>
+class CSpecialAbilitiesDivineWrathDef {
+public:
+    unsigned char _pad00[0x128];
+    float*        DamageTakenMultiplier;                 // +0x128 vector<float> begin
+};
+class CTCDivineWrath {
+public:
+    unsigned char                          _pad00[0x10];
+    const CSpecialAbilitiesDivineWrathDef* PDef;         // +0x10
+    unsigned char                          _pad14[0x44 - 0x14];
+    long                                   SpellLevel;   // +0x44
+    float GetDamageMultiplier() const;
+};
+float CTCDivineWrath::GetDamageMultiplier() const
+{
+    return PDef->DamageTakenMultiplier[SpellLevel] * (1.0f / 360.0f);
 }
-int main() {
-    float data[4] = {1.0f, 3.0f, 5.0f, 7.0f};
-    Inner inr;
-    float* pdata = data;
-    inr.arr = pdata;
-    Inner* pin = &inr;
-    CTCDivineWrath w;
-    w.f10 = pin;
-    CTCDivineWrath* pw = &w;
-    w.f44 = 2;
-    if (model(pw) != 10.0f) { printf("FAIL2\n"); return 1; }
-    w.f44 = 0;
-    if (model(pw) != 2.0f) { printf("FAIL0\n"); return 1; }
-    w.f44 = 3;
-    if (model(pw) != 14.0f) { printf("FAIL3\n"); return 1; }
-    printf("OK_00789cc0\n");
-    return 0;
+int main()
+{
+    float mults[3] = { 360.0f, 720.0f, 180.0f };
+    static CSpecialAbilitiesDivineWrathDef def; def.DamageTakenMultiplier = mults;
+    static CTCDivineWrath w; w.PDef = &def; int ok = 1;
+    w.SpellLevel = 0; ok &= w.GetDamageMultiplier() > 0.9999f && w.GetDamageMultiplier() < 1.0001f;
+    w.SpellLevel = 1; ok &= w.GetDamageMultiplier() > 1.9999f && w.GetDamageMultiplier() < 2.0001f;
+    w.SpellLevel = 2; ok &= w.GetDamageMultiplier() > 0.4999f && w.GetDamageMultiplier() < 0.5001f;
+    printf(ok ? "00789cc0_TEST PASS\n" : "00789cc0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

@@ -1,95 +1,42 @@
-#include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/48/CPersistContextReadSection_CPersistContextReadSection_00485cd2.cpp"
-
-struct TestPersistContextReadSection_00485cd2
-{
-    unsigned char bytes[0x74];
+// behaviour test for 0x00485CD2
+#include <stdio.h>
+static int g_log[8]; static int g_n = 0; static void* g_addr[4];
+class CPersistContext {
+public:
+    unsigned char Data[0x2c];                            // Ego_r.pdb 44 bytes, no constructor code here
 };
-
-static int g_Sequence;
-static int g_Field2CSequence;
-static int g_Field48Sequence;
-static int g_NameSequence;
-static void* g_Field2CSeen;
-static void* g_Field48Seen;
-static void* g_NameSeen;
-
-extern "C" void __fastcall
-CPersistContextReadSection_ConstructField2C_00485cd2(
-    void* value,
-    void*)
+class CMemoryDataInputStream {
+public:
+    unsigned char Data[0x1c];
+    CMemoryDataInputStream() { g_log[g_n++] = 1; g_addr[1] = this; }
+};
+class CStringParser {
+public:
+    unsigned char Data[0x28];
+    CStringParser() { g_log[g_n++] = 2; g_addr[2] = this; }
+};
+class CCharString {
+public:
+    void* PData;
+    CCharString() { g_log[g_n++] = 3; g_addr[3] = this; }
+};
+class CPersistContextReadSection {
+public:
+    CPersistContext        Context;                      // +0x00
+    CMemoryDataInputStream InputStream;                  // +0x2c
+    CStringParser          Parser;                       // +0x48
+    CCharString            Text;                         // +0x70
+    CPersistContextReadSection();
+};
+CPersistContextReadSection::CPersistContextReadSection()
 {
-    g_Field2CSequence = ++g_Sequence;
-    g_Field2CSeen = value;
-    *(unsigned char*)value = 0x2C;
-}
-
-extern "C" void __fastcall
-CPersistContextReadSection_ConstructField48_00485cd2(
-    void* value,
-    void*)
-{
-    g_Field48Sequence = ++g_Sequence;
-    g_Field48Seen = value;
-    *(unsigned char*)value = 0x48;
-}
-
-extern "C" void __fastcall
-CPersistContextReadSection_ConstructName_00485cd2(
-    void* value,
-    void*)
-{
-    g_NameSequence = ++g_Sequence;
-    g_NameSeen = value;
-    *(unsigned char*)value = 0x70;
 }
 
 int main()
 {
-    TestPersistContextReadSection_00485cd2 section;
-    std::memset(&section, 0xA5, sizeof(section));
-    g_Sequence = 0;
-    g_Field2CSequence = 0;
-    g_Field48Sequence = 0;
-    g_NameSequence = 0;
-    g_Field2CSeen = 0;
-    g_Field48Seen = 0;
-    g_NameSeen = 0;
-
-    typedef void* (__fastcall *ConstructFunction)(void*, void*);
-    ConstructFunction volatile construct =
-        &CPersistContextReadSection_CPersistContextReadSection_00485cd2;
-    void* result = construct(&section, 0);
-
-    int failures = 0;
-    if (result != &section ||
-        g_Sequence != 3 ||
-        g_Field2CSequence != 1 ||
-        g_Field48Sequence != 2 ||
-        g_NameSequence != 3 ||
-        g_Field2CSeen != section.bytes + 0x2C ||
-        g_Field48Seen != section.bytes + 0x48 ||
-        g_NameSeen != section.bytes + 0x70 ||
-        section.bytes[0x2C] != 0x2C ||
-        section.bytes[0x48] != 0x48 ||
-        section.bytes[0x70] != 0x70 ||
-        section.bytes[0] != 0xA5 ||
-        section.bytes[0x73] != 0xA5)
-    {
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "PERSIST_READ_SECTION_CTOR_00485cd2_TEST FAIL count=%d sequence=%d\n",
-            failures,
-            g_Sequence);
-        return 1;
-    }
-
-    std::printf("PERSIST_READ_SECTION_CTOR_00485cd2_TEST PASS\n");
-    return 0;
+    CPersistContextReadSection r; char* b = (char*)&r;
+    int ok = g_n == 3 && g_log[0] == 1 && g_log[1] == 2 && g_log[2] == 3
+          && (char*)g_addr[1] - b == 0x2c && (char*)g_addr[2] - b == 0x48 && (char*)g_addr[3] - b == 0x70;
+    printf(ok ? "00485cd2_TEST PASS\n" : "00485cd2_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

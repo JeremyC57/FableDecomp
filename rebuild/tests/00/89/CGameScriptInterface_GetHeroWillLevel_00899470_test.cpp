@@ -1,168 +1,146 @@
-#include <cstdio>
-
-class CGSIHeroWill_Player;
-class CGSIHeroWill_Node;
-class CGSIHeroWill_Manager
-{
+// behaviour test for 0x00899470 CGameScriptInterface::GetHeroWillLevel
+#include <stdio.h>
+#include <string.h>
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CGSIHeroWill_Player* GetPlayer();
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-class CGSIHeroWill_Player
-{
+class CThing {
 public:
-    void* GetHero();
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
 };
-class CGSIHeroWill_Container
-{
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
 public:
-    CGSIHeroWill_Node* LowerBound(const long*);
-    CGSIHeroWill_Node* m_pFirst;
-    CGSIHeroWill_Node* m_pEnd;
+    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
 };
-class CGSIHeroWill_Component
-{
+class CPlayerManager {
 public:
-    long GetCategoryLevel(long);
-    long m_Result;
+    CPlayer& GetMainPlayer();                                       // 0x00449970
 };
-class CGSIHeroWill_Node
-{
+enum EHeroExperienceStatCategory { HERO_EXPERIENCE_STAT_STRENGTH = 0, HERO_EXPERIENCE_STAT_SKILL = 1, HERO_EXPERIENCE_STAT_WILL = 2,
+                                   HERO_EXPERIENCE_STAT_FORCE_DWORD = 0x7fffffff };
+enum EHeroTrainableStatType { HERO_TRAINABLE_STAT_FORCE_DWORD = 0x7fffffff };
+class CTCHeroExperience {
 public:
-    long m_Key;
-    CGSIHeroWill_Component* m_pComponent;
+    enum { INTERFACE_TYPE = 0x68 };
+    unsigned char _pad00[0x14];
+    long          ExperiencePointsAvailableToSpend;      // +0x14
+    long GetExperiencePointsAvailableToSpend() const { return ExperiencePointsAvailableToSpend; }
+    long GetRoughExperienceLevel() const;                                         // 0x006D64B0
+    long GetTotalStatLevel(EHeroExperienceStatCategory category) const;          // 0x006D6660
+    long GetTrainableStatLevel(EHeroTrainableStatType stat) const;               // 0x006D6520
+    long GetTrainableStatMaxLevel(EHeroTrainableStatType stat) const;            // 0x006D6770
 };
-class CGameScriptInterface
-{
+class CGameScriptInterface {
 public:
     virtual long GetHeroWillLevel() const;
-};
-struct InterfaceStorage
-{
-    void* m_pVTable;
-    unsigned char m_Pad04[0x10];
-    CGSIHeroWill_Manager* m_pManager;
-};
-struct EntityStorage
-{
-    unsigned char m_Pad00[0x2C];
-    unsigned long m_Flags2C;
-    unsigned char m_Pad30[0x14];
-    CGSIHeroWill_Container m_Container;
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
 };
 
-static CGSIHeroWill_Player* g_pPlayer;
-static EntityStorage* g_pHero;
-static CGSIHeroWill_Node* g_pLowerBoundResult;
-static void* g_pFallback;
-static long g_FallbackResult;
-static CGSIHeroWill_Component* g_pObservedComponent;
-static CGSIHeroWill_Container* g_pObservedContainer;
-static long g_ObservedKey;
-static long g_ObservedCategory;
-
-CGSIHeroWill_Player* CGSIHeroWill_Manager::GetPlayer()
+long CGameScriptInterface::GetHeroWillLevel() const
 {
-    return g_pPlayer;
-}
-void* CGSIHeroWill_Player::GetHero()
-{
-    return g_pHero;
-}
-CGSIHeroWill_Node*
-CGSIHeroWill_Container::LowerBound(const long* pKey)
-{
-    g_pObservedContainer = this;
-    g_ObservedKey = *pKey;
-    return g_pLowerBoundResult;
-}
-long CGSIHeroWill_Component::GetCategoryLevel(long category)
-{
-    g_pObservedComponent = this;
-    g_ObservedCategory = category;
-    return this == g_pFallback ? g_FallbackResult : m_Result;
-}
-static void Reset()
-{
-    g_pObservedComponent = 0;
-    g_pObservedContainer = 0;
-    g_ObservedKey = -1;
-    g_ObservedCategory = -1;
-}
-static int Fail(const char* message)
-{
-    std::printf("FSE2_00899470_TEST FAIL: %s\n", message);
-    return 1;
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPPlayerCharacter();
+    if (hero && !hero->IsDead())
+    {
+        const CTCHeroExperience* tc;
+        hero->PeekTC(&tc);
+        return tc->GetTotalStatLevel(HERO_EXPERIENCE_STAT_WILL);
+    }
+    return -1;
 }
 
+static CThingPlayerCreature* g_hero;
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
+CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return g_hero; }
+const CThingPlayerCreature* CPlayer::PeekPPlayerCharacter() const { return g_hero; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+{
+    SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
+}
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+{
+    const SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
+}
+static long g_arg = -99;
+long CTCHeroExperience::GetRoughExperienceLevel() const { return 3; }
+long CTCHeroExperience::GetTotalStatLevel(EHeroExperienceStatCategory category) const { g_arg = category; return 10 + category; }
+long CTCHeroExperience::GetTrainableStatLevel(EHeroTrainableStatType stat) const { g_arg = stat; return 20 + stat; }
+long CTCHeroExperience::GetTrainableStatMaxLevel(EHeroTrainableStatType stat) const { g_arg = stat; return 30 + stat; }
+
+static unsigned char g_tcmem[0x1000];
+static unsigned char g_thingmem[0x200];
+static CInterfaceMap::SEntry g_entries[3];
 int main()
 {
-    InterfaceStorage iface = {};
-    CGSIHeroWill_Manager manager;
-    CGSIHeroWill_Player player;
-    EntityStorage hero = {};
-    CGSIHeroWill_Component found = {};
-    CGSIHeroWill_Component end = {};
-    CGSIHeroWill_Node foundNode = {};
-    CGSIHeroWill_Node endNode = {};
-    iface.m_pManager = &manager;
-    CGameScriptInterface* pInterface =
-        reinterpret_cast<CGameScriptInterface*>(&iface);
-    g_pFallback = &iface;
-    g_FallbackResult = 14;
-    g_pPlayer = &player;
-    foundNode.m_pComponent = &found;
-    endNode.m_pComponent = &end;
-    hero.m_Container.m_pEnd = &endNode;
+    int ok = 1;
+    CPlayerManager pm; CGameScriptInterface gsi; gsi.PlayerManager = &pm;
+    const CGameScriptInterface* p = &gsi;
+    CTCHeroExperience* tc = (CTCHeroExperience*)g_tcmem;
+    CThingPlayerCreature* hero = (CThingPlayerCreature*)g_thingmem;
+    g_entries[0].type = 1; g_entries[0].component = 0;
+    g_entries[1].type = CTCHeroExperience::INTERFACE_TYPE; g_entries[1].component = (CTCBase*)tc;
+    g_entries[2].type = 0x100; g_entries[2].component = 0;
+    hero->Components.first = g_entries; hero->Components.last = g_entries + 3;
+    hero->UsingComponents[CTCHeroExperience::INTERFACE_TYPE >> 5] |= 1UL << (CTCHeroExperience::INTERFACE_TYPE & 31);
+    g_hero = hero;
+    tc->ExperiencePointsAvailableToSpend = 450;
+    ok &= (p->GetHeroWillLevel() == 12 && g_arg == 2);
+    g_hero = 0;
+    ok &= (p->GetHeroWillLevel() == -1);
+    g_hero = hero; hero->Dead = 1;
+    ok &= (p->GetHeroWillLevel() == -1);
 
-    g_pHero = 0;
-    if (pInterface->CGameScriptInterface::
-            GetHeroWillLevel() != -1)
-        return Fail("null hero");
-    g_pHero = &hero;
-    hero.m_Flags91 = 1;
-    if (pInterface->CGameScriptInterface::
-            GetHeroWillLevel() != -1)
-        return Fail("dead hero");
-
-    Reset();
-    hero.m_Flags91 = 0;
-    hero.m_Flags2C = 0;
-    if (pInterface->CGameScriptInterface::
-            GetHeroWillLevel() != 14 ||
-        g_pObservedComponent !=
-            reinterpret_cast<CGSIHeroWill_Component*>(&iface) ||
-        g_ObservedCategory != 2)
-        return Fail("fallback category two");
-
-    Reset();
-    hero.m_Flags2C = 0x100;
-    foundNode.m_Key = 0x68;
-    found.m_Result = 28;
-    g_pLowerBoundResult = &foundNode;
-    if (pInterface->CGameScriptInterface::
-            GetHeroWillLevel() != 28 ||
-        g_pObservedContainer != &hero.m_Container ||
-        g_ObservedKey != 0x68 ||
-        g_pObservedComponent != &found ||
-        g_ObservedCategory != 2)
-        return Fail("found component");
-
-    Reset();
-    foundNode.m_Key = 0x69;
-    end.m_Result = 42;
-    g_pLowerBoundResult = &foundNode;
-    if (pInterface->CGameScriptInterface::
-            GetHeroWillLevel() != 42 ||
-        g_pObservedComponent != &end)
-        return Fail("greater-key sentinel");
-    Reset();
-    g_pLowerBoundResult = &endNode;
-    if (pInterface->CGameScriptInterface::
-            GetHeroWillLevel() != 42)
-        return Fail("direct sentinel");
-
-    std::printf("FSE2_00899470_TEST PASS\n");
-    return 0;
+    printf(ok ? "00899470_TEST PASS\n" : "00899470_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

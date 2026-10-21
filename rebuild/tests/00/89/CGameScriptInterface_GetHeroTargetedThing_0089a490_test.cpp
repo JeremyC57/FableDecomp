@@ -1,285 +1,130 @@
 #include <cstdio>
-
-class CScriptThing
-{
+class CScriptThing;
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CScriptThing();
-    void Construct();
-
-    void** m_pVTable;
-    unsigned long m_Field04;
-    unsigned long m_Field08;
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CGSIHeroTarget_Player;
-
-class CGSIHeroTarget_Manager
-{
+class CThing {
 public:
-    CGSIHeroTarget_Player* GetPlayer();
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    CScriptThing GetScriptThing();                       // 0x004C7E50 (by value through the hidden result pointer)
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        *out = (const T*)((it == map->last || T::INTERFACE_TYPE < it->type) ? map->last : it)->component;
+        return true;
+    }
 };
-
-class CGSIHeroTarget_Player
-{
+class CScriptThing {
 public:
-    void* GetHero();
+    CScriptThing();                                      // 0x008CFF40
+    CScriptThing(const CScriptThing& other);
+    virtual ~CScriptThing();
+    void* Data;
 };
-
-class CGSIHeroTarget_Node;
-
-class CGSIHeroTarget_Container
-{
+class CTCTargetingBase {                                // interface 8 (class not confirmed)
 public:
-    CGSIHeroTarget_Node* LowerBound(const long* pKey);
-
-    CGSIHeroTarget_Node* m_pFirst;
-    CGSIHeroTarget_Node* m_pEnd;
+    enum { INTERFACE_TYPE = 8 };
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
+    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
+    virtual void v30(); virtual void v31(); virtual void v32();
+    virtual CThing* GetTarget() const;                   // slot 33 (+0x84, name not confirmed)
 };
-
-class CGSIHeroTarget_Thing
-{
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
 public:
-    CScriptThing BuildScriptThing();
+    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
 };
-
-class CGSIHeroTarget_Provider
-{
+class CPlayerManager {
 public:
-    void** m_pVTable;
+    CPlayer& GetMainPlayer();                            // 0x00449970
 };
-
-class CGSIHeroTarget_Node
-{
-public:
-    long m_Key;
-    CGSIHeroTarget_Provider* m_pProvider;
-};
-
-class CGameScriptInterface
-{
+class CGameScriptInterface {
 public:
     virtual CScriptThing GetHeroTargetedThing() const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
 };
-
-struct InterfaceStorage
+CScriptThing CGameScriptInterface::GetHeroTargetedThing() const
 {
-    void* m_pVTable;
-    unsigned char m_Pad04[0x10];
-    CGSIHeroTarget_Manager* m_pManager;
-};
-
-struct EntityStorage
-{
-    unsigned char m_Pad00[0x20];
-    unsigned long m_Flags20;
-    unsigned char m_Pad24[0x20];
-    CGSIHeroTarget_Container m_Container;
-};
-
-static void* g_ResultVTable[34];
-static void* g_ProviderVTable[34];
-static CGSIHeroTarget_Player* g_pPlayer;
-static EntityStorage* g_pHero;
-static CGSIHeroTarget_Node* g_pLowerBoundResult;
-static CGSIHeroTarget_Thing* g_pResolvedThing;
-static CGSIHeroTarget_Manager* g_pObservedManager;
-static CGSIHeroTarget_Player* g_pObservedPlayer;
-static CGSIHeroTarget_Container* g_pObservedContainer;
-static CGSIHeroTarget_Provider* g_pObservedProvider;
-static CGSIHeroTarget_Thing* g_pObservedBuildThing;
-static long g_ObservedKey;
-static unsigned long g_ConstructCalls;
-static unsigned long g_ManagerCalls;
-static unsigned long g_PlayerCalls;
-static unsigned long g_LowerBoundCalls;
-static unsigned long g_ProviderCalls;
-static unsigned long g_BuildCalls;
-
-static CGSIHeroTarget_Thing* __fastcall ResolveProvider(
-    CGSIHeroTarget_Provider* pProvider)
-{
-    g_pObservedProvider = pProvider;
-    ++g_ProviderCalls;
-    return g_pResolvedThing;
-}
-
-CScriptThing::CScriptThing()
-{
-    Construct();
-}
-
-void CScriptThing::Construct()
-{
-    m_pVTable = g_ResultVTable;
-    m_Field04 = 0;
-    m_Field08 = 0;
-    ++g_ConstructCalls;
-}
-
-CGSIHeroTarget_Player* CGSIHeroTarget_Manager::GetPlayer()
-{
-    g_pObservedManager = this;
-    ++g_ManagerCalls;
-    return g_pPlayer;
-}
-
-void* CGSIHeroTarget_Player::GetHero()
-{
-    g_pObservedPlayer = this;
-    ++g_PlayerCalls;
-    return g_pHero;
-}
-
-CGSIHeroTarget_Node*
-CGSIHeroTarget_Container::LowerBound(const long* pKey)
-{
-    g_pObservedContainer = this;
-    g_ObservedKey = *pKey;
-    ++g_LowerBoundCalls;
-    return g_pLowerBoundResult;
-}
-
-CScriptThing CGSIHeroTarget_Thing::BuildScriptThing()
-{
-    g_pObservedBuildThing = this;
-    ++g_BuildCalls;
-    CScriptThing result;
-    result.m_Field04 = 0x12345678;
-    result.m_Field08 = 0x9ABCDEF0;
-    return result;
-}
-
-static void __declspec(naked) CallInto(
-    CGameScriptInterface*,
-    CScriptThing*)
-{
-    __asm
+    CThing* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    if (hero)
     {
-        mov ecx, dword ptr [esp + 4]
-        push dword ptr [esp + 8]
-        call CGameScriptInterface::GetHeroTargetedThing
-        ret
+        const CTCTargetingBase* tc;
+        hero->PeekTC(&tc);
+        CThing* target = tc->GetTarget();
+        if (target)
+            return target->GetScriptThing();
     }
+    return CScriptThing();
 }
 
-static void ResetObservations()
-{
-    g_pObservedManager = 0;
-    g_pObservedPlayer = 0;
-    g_pObservedContainer = 0;
-    g_pObservedProvider = 0;
-    g_pObservedBuildThing = 0;
-    g_ObservedKey = 0;
-    g_ConstructCalls = 0;
-    g_ManagerCalls = 0;
-    g_PlayerCalls = 0;
-    g_LowerBoundCalls = 0;
-    g_ProviderCalls = 0;
-    g_BuildCalls = 0;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf("FSE2_0089a490_TEST FAIL: %s\n", pMessage);
-    return 1;
-}
-
-static bool IsBuiltResult(const CScriptThing& result)
-{
-    return result.m_pVTable == g_ResultVTable &&
-        result.m_Field04 == 0x12345678 &&
-        result.m_Field08 == 0x9ABCDEF0;
-}
-
+static CInterfaceMap::SEntry g_entries[3];
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+CScriptThing::CScriptThing() { Data = 0; }
+CScriptThing::CScriptThing(const CScriptThing& o) { Data = o.Data; }
+CScriptThing::~CScriptThing() {}
+CScriptThing CThing::GetScriptThing() { CScriptThing s; s.Data = this; return s; }
+static CThingPlayerCreature g_hero; static CThingPlayerCreature* g_heroPtr; static CThing g_target; static CThing* g_aimed;
+CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return g_heroPtr; }
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
+static CThing* __fastcall TcGetTarget(const void*, int) { return g_aimed; }
 int main()
 {
-    g_ResultVTable[33] =
-        reinterpret_cast<void*>(ResolveProvider);
-    g_ProviderVTable[33] =
-        reinterpret_cast<void*>(ResolveProvider);
-
-    InterfaceStorage interfaceStorage = {};
-    CGSIHeroTarget_Manager manager;
-    CGSIHeroTarget_Player player;
-    EntityStorage hero = {};
-    CGSIHeroTarget_Node foundNode = {};
-    CGSIHeroTarget_Node endNode = {};
-    CGSIHeroTarget_Provider foundProvider = {};
-    CGSIHeroTarget_Provider endProvider = {};
-    CGSIHeroTarget_Thing targetThing;
-    CScriptThing result;
-
-    interfaceStorage.m_pManager = &manager;
-    CGameScriptInterface* const pInterface =
-        reinterpret_cast<CGameScriptInterface*>(&interfaceStorage);
-    g_pPlayer = &player;
-    foundProvider.m_pVTable = g_ProviderVTable;
-    endProvider.m_pVTable = g_ProviderVTable;
-    foundNode.m_pProvider = &foundProvider;
-    endNode.m_pProvider = &endProvider;
-    hero.m_Container.m_pEnd = &endNode;
-
-    ResetObservations();
-    g_pHero = 0;
-    result.m_Field04 = 1;
-    result.m_Field08 = 2;
-    CallInto(pInterface, &result);
-    if (result.m_Field04 != 0 || result.m_Field08 != 0 ||
-        g_ConstructCalls != 1 ||
-        g_ManagerCalls != 1 || g_PlayerCalls != 1 ||
-        g_LowerBoundCalls != 0 || g_ProviderCalls != 0 ||
-        g_BuildCalls != 0)
-        return Fail("null hero fallback");
-
-    ResetObservations();
-    g_pHero = &hero;
-    hero.m_Flags20 = 0x100;
-    foundNode.m_Key = 8;
-    g_pLowerBoundResult = &foundNode;
-    g_pResolvedThing = 0;
-    CallInto(pInterface, &result);
-    if (g_pObservedContainer != &hero.m_Container ||
-        g_ObservedKey != 8 || g_pObservedProvider != &foundProvider ||
-        g_ConstructCalls != 1 || g_LowerBoundCalls != 1 ||
-        g_ProviderCalls != 1 || g_BuildCalls != 0)
-        return Fail("found provider null target");
-
-    ResetObservations();
-    foundNode.m_Key = 9;
-    g_pLowerBoundResult = &foundNode;
-    g_pResolvedThing = &targetThing;
-    CallInto(pInterface, &result);
-    if (!IsBuiltResult(result) ||
-        g_pObservedProvider != &endProvider ||
-        g_pObservedBuildThing != &targetThing ||
-        g_LowerBoundCalls != 1 || g_ProviderCalls != 1 ||
-        g_BuildCalls != 1)
-        return Fail("sentinel provider success");
-
-    ResetObservations();
-    g_pLowerBoundResult = &endNode;
-    CallInto(pInterface, &result);
-    if (!IsBuiltResult(result) ||
-        g_pObservedProvider != &endProvider ||
-        g_BuildCalls != 1)
-        return Fail("direct sentinel");
-
-    ResetObservations();
-    hero.m_Flags20 = 0;
-    result.m_pVTable = g_ResultVTable;
-    CallInto(pInterface, &result);
-    if (!IsBuiltResult(result) ||
-        g_pObservedProvider !=
-            reinterpret_cast<CGSIHeroTarget_Provider*>(&result) ||
-        g_LowerBoundCalls != 0 || g_ProviderCalls != 1 ||
-        g_pObservedBuildThing != &targetThing ||
-        g_BuildCalls != 1)
-        return Fail("result provider path");
-
-    if (g_pObservedManager != &manager ||
-        g_pObservedPlayer != &player)
-        return Fail("manager/player dispatch");
-
-    std::printf("FSE2_0089a490_TEST PASS\n");
-    return 0;
+    static void* tvt[34]; tvt[33] = (void*)TcGetTarget; void* tobj = tvt;
+    for (int i = 0; i < 9; ++i) g_hero.UsingComponents[i] = 0;
+    g_hero.UsingComponents[0] = 1u << 8;
+    g_entries[0].type = 4; g_entries[0].component = 0;
+    g_entries[1].type = 8; g_entries[1].component = (CTCBase*)&tobj;
+    g_hero.Components.first = g_entries; g_hero.Components.last = g_entries + 2;
+    CPlayerManager pm; CGameScriptInterface gsi; gsi.PlayerManager = &pm;
+    g_heroPtr = &g_hero; g_aimed = &g_target;
+    CScriptThing a = gsi.GetHeroTargetedThing();
+    bool ok = a.Data == &g_target;
+    g_aimed = 0; CScriptThing b = gsi.GetHeroTargetedThing(); ok = ok && b.Data == 0;
+    g_heroPtr = 0; g_aimed = &g_target; CScriptThing c = gsi.GetHeroTargetedThing(); ok = ok && c.Data == 0;
+    std::printf(ok ? "0089a490_TEST PASS\n" : "0089a490_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

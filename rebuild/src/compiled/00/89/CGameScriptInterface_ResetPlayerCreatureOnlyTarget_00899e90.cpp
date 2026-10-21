@@ -1,94 +1,95 @@
-enum ETCInterfaceType { ETC_DUMMY = 0 };
-
-class CGSIOnlyTarget_Component
-{
+// CGameScriptInterface::ResetPlayerCreatureOnlyTarget() const -- clear the hero creature's only-target (interface 8 component)
+// Leaf: ?ResetPlayerCreatureOnlyTarget@CGameScriptInterface@@UBEXXZ
+// Retail: Fable.exe @ 0x00899E90, 93 bytes, plain `ret`; Ego_r.pdb ?ResetPlayerCreatureOnlyTarget@CGameScriptInterface@@UBEXXZ.
+// Body: hero = Component (+0x08)->PPlayerManager (+0x1c)->GetMainPlayer() (0x00449970)->GetPPlayerCharacter() (0x00487DC0);
+// if hero, not dead (bit 0 of +0x91) and holding interface 8 (bit 8 of UsingComponents +0x20), the component from the
+// Components map (LowerBound 0x0040F020, key in the `push ecx` slot) gets 0x008ABC90(NULL).
+// Layout: CThing as the matched 0x0089AFF0 / 0x00897AA0 rows; CMainGameComponent PPlayerManager +0x1c (Ego_r.pdb, retail
+// agrees below +0x24). The interface-8 component (modelled CTCTargetingBase at 0x0089D8B0) and the callee name
+// (0x008ABC90, takes one pointer and wraps it in a counted handle) are not confirmed.
+// Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    void SetOnlyTarget(void* pThing);
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-struct CKeyPair
-{
-    ETCInterfaceType m_Key;   // 0x00
-    void*            m_Value; // 0x04
-};
-
-struct CVectorMap
-{
-    CKeyPair* m_pBegin; // 0x00
-    CKeyPair* m_pEnd;   // 0x04
-
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
-};
-
-struct CThingOverlay
-{
-    unsigned char m_Pad00[0x20];
-    unsigned int  m_Flags20;       // 0x20
-    unsigned char m_Pad24[0x20];
-    CVectorMap    m_InterfaceMap44; // 0x44
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;        // 0x91
-};
-
-struct CGameScriptContext
-{
-    unsigned char m_Pad00[0x1c];
-    void*         m_Manager; // 0x1c
-};
-
-struct CGameScriptInterface
-{
-    unsigned char       m_Pad00[0x08];
-    CGameScriptContext* m_Context; // 0x08
-};
-
-extern "C" void* __fastcall Sub_ResolveA(void* self);
-extern "C" void* __fastcall Sub_ResolveB(void* obj);
-
-const ETCInterfaceType kTargetType = (ETCInterfaceType)8;
-
-__declspec(naked)
-void __fastcall CGameScriptInterface_ResetPlayerCreatureOnlyTarget(
-    const CGameScriptInterface* self)
-{
-    __asm
+class CThing {
+public:
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
     {
-        push ecx
-        mov eax, dword ptr [ecx + 8]
-        mov ecx, dword ptr [eax + 1Ch]
-        call Sub_ResolveA
-        mov ecx, eax
-        call Sub_ResolveB
-        test eax, eax
-        je finished
-        test byte ptr [eax + 91h], 1
-        jne finished
-        mov ecx, dword ptr [eax + 20h]
-        test ch, 1
-        je finished
-
-        push esi
-        lea ecx, [esp + 4]
-        lea esi, [eax + 44h]
-        push ecx
-        mov ecx, esi
-        mov dword ptr [esp + 8], 8
-        call CVectorMap::LowerBound
-        mov esi, dword ptr [esi + 4]
-        cmp eax, esi
-        je use_sentinel
-        cmp dword ptr [eax], 8
-        jle have_component
-use_sentinel:
-        mov eax, esi
-have_component:
-        mov eax, dword ptr [eax + 4]
-        push 0
-        mov ecx, eax
-        call CGSIOnlyTarget_Component::SetOnlyTarget
-        pop esi
-finished:
-        pop ecx
-        ret
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
+};
+class CTCTargetingBase {                                // interface 8 (class not confirmed)
+public:
+    enum { INTERFACE_TYPE = 8 };
+    void SetOnlyTarget(CThing* target);                  // 0x008ABC90 (name not confirmed)
+};
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
+public:
+    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+};
+class CPlayerManager {
+public:
+    CPlayer& GetMainPlayer();                            // 0x00449970
+};
+class CMainGameComponent {
+public:
+    unsigned char   _pad00[0x1c];
+    CPlayerManager* PPlayerManager;                      // +0x1c (scoped_ptr)
+};
+class CGameScriptInterface {
+public:
+    virtual void ResetPlayerCreatureOnlyTarget() const;
+    void*               World;                           // +0x04
+    CMainGameComponent* Component;                       // +0x08
+};
+void CGameScriptInterface::ResetPlayerCreatureOnlyTarget() const
+{
+    CThing* hero = Component->PPlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    if (hero && !hero->IsDead())
+    {
+        CTCTargetingBase* tc;
+        if (hero->GetTC(&tc))
+            tc->SetOnlyTarget(0);
     }
 }

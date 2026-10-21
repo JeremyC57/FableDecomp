@@ -1,113 +1,43 @@
-#include <stdio.h>
-
-extern "C" unsigned char __fastcall
-CInputTypeMouseMovementEvent_IsEventOfThisTypeInQueue_0066f440(
-    void* input_type, void*, long event_type, long index, float* strength);
-
-static long g_manager_storage;
-extern "C" void*
-CInputTypeMouseMovementEvent_IsEventOfThisTypeInQueue_0066f440_Manager =
-    &g_manager_storage;
-
-static int g_sequence;
-static int g_construct_order;
-static int g_query_order;
-static int g_destroy_order;
-static void* g_temporary;
-static void* g_query_manager;
-static long g_query_kind;
-static long g_query_state;
-static long g_query_index;
-static unsigned char g_query_result;
-
-extern "C" void __fastcall
-CInputTypeMouseMovementEvent_IsEventOfThisTypeInQueue_0066f440_Construct(
-    void* event, void*)
+#include <cstdio>
+#include "engine/CInputTypeMouseMovementEvent.h"
+enum EInputEventType { INPUT_EVENT_TYPE_MOUSE_MOVEMENT = 13 };
+enum EInputButtonEventType { INPUT_BUTTON_EVENT_TYPE_NONE };
+class CInputEvent {
+public:
+    CInputEvent();                                       // 0x00A04410
+    ~CInputEvent();                                      // 0x00A03B30
+    unsigned char _body[0x34];
+};
+class CInputManager {
+public:
+    bool IsJoystickEventInQueue(EInputEventType type, long index, CInputEvent& event, long player) const;  // 0x009F4C60
+};
+extern CInputManager* g_pInputManager;                   // 0x013B8388
+struct CInputTypeMouseMovementEvent_Methods : CInputTypeMouseMovementEvent {
+    bool IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const;
+};
+bool CInputTypeMouseMovementEvent_Methods::IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const
 {
-    g_construct_order = ++g_sequence;
-    g_temporary = event;
+    CInputEvent event;
+    return g_pInputManager->IsJoystickEventInQueue(INPUT_EVENT_TYPE_MOUSE_MOVEMENT, 0, event, player);
 }
 
-extern "C" unsigned char __fastcall
-CInputTypeMouseMovementEvent_IsEventOfThisTypeInQueue_0066f440_Query(
-    void* manager, void*, long kind, long state, void* event, long index)
-{
-    g_query_order = ++g_sequence;
-    g_query_manager = manager;
-    g_query_kind = kind;
-    g_query_state = state;
-    g_query_index = index;
-    if (event != g_temporary)
-        return 0;
-    return g_query_result;
-}
-
-extern "C" void __fastcall
-CInputTypeMouseMovementEvent_IsEventOfThisTypeInQueue_0066f440_Destroy(
-    void* event, void*)
-{
-    g_destroy_order = ++g_sequence;
-    if (event != g_temporary)
-        g_destroy_order = -1;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
-}
-
-static void Reset(unsigned char result)
-{
-    g_sequence = 0;
-    g_construct_order = 0;
-    g_query_order = 0;
-    g_destroy_order = 0;
-    g_temporary = 0;
-    g_query_manager = 0;
-    g_query_kind = 0;
-    g_query_state = -1;
-    g_query_index = -1;
-    g_query_result = result;
-}
-
-static int RunCase(long index, unsigned char result)
-{
-    int ok = 1;
-    float strength = 8.0f;
-
-    Reset(result);
-    ok &= Check(
-        CInputTypeMouseMovementEvent_IsEventOfThisTypeInQueue_0066f440(
-            0, 0, 0x44, index, &strength) == result,
-        "query result must be returned after cleanup");
-    ok &= Check(g_construct_order == 1 &&
-                g_query_order == 2 &&
-                g_destroy_order == 3,
-                "temporary must be constructed, queried, then destroyed");
-    ok &= Check(g_query_manager == &g_manager_storage,
-                "query must use the global input manager");
-    ok &= Check(g_query_kind == 0x0d && g_query_state == 0,
-                "query must request mouse movement and state zero");
-    ok &= Check(g_query_index == index,
-                "query must forward the queue index");
-    return ok;
-}
-
+static int g_ctor = 0, g_dtor = 0, g_type = -1; static long g_index = -1, g_player = -1; static const CInputEvent* g_ev = 0; static bool g_ret = false;
+CInputEvent::CInputEvent() { ++g_ctor; }
+CInputEvent::~CInputEvent() { ++g_dtor; }
+bool CInputManager::IsJoystickEventInQueue(EInputEventType type, long index, CInputEvent& event, long player) const
+{ g_type = type; g_index = index; g_player = player; g_ev = &event; return g_ret; }
+static CInputManager g_mgr;
+CInputManager* g_pInputManager = &g_mgr;
+static CInputTypeMouseMovementEvent_Methods g_obj;
 int main()
 {
-    int ok = 1;
-
-    ok &= RunCase(1, 1);
-    ok &= RunCase(6, 0);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeMouseMovementEvent::IsEventOfThisTypeInQueue 0x0066F440");
+    float f = 0.0f; bool ok = true;
+    g_ret = true;
+    if (!g_obj.IsEventOfThisTypeInQueue(INPUT_BUTTON_EVENT_TYPE_NONE, 3, f)) ok = false;
+    if (g_type != 13 || g_index != 0 || g_player != 3 || g_ctor != 1 || g_dtor != 1 || !g_ev) ok = false;
+    g_ret = false;
+    if (g_obj.IsEventOfThisTypeInQueue(INPUT_BUTTON_EVENT_TYPE_NONE, 1, f) || g_player != 1 || g_dtor != 2) ok = false;
+    if (ok) std::printf("0066f440_TEST PASS\n");
     return 0;
 }

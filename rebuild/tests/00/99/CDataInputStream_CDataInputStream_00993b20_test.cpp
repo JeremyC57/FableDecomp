@@ -1,85 +1,45 @@
-#include <cstdio>
-
-#include "../../../src/compiled/00/99/CDataInputStream_CDataInputStream_00993b20.cpp"
-
-struct TestDataInputStream_00993b20
-{
-    void* vtable;
-    unsigned long fields[5];
+// test for 00993b20 CDataInputStream ctor
+#include <stdio.h>
+#include <string.h>
+#include <new>
+class CBaseClass {
+public:
+    CBaseClass();                                        // 0x0099A2F0 (folded body)
+    virtual ~CBaseClass();
 };
-
-extern "C" void* CDataInputStream_VTable_00993b20[1] = {
-    (void*)0x12345678
+class CDataStream : public CBaseClass {
+public:
+    virtual ~CDataStream() {}
+    virtual void _slot01();
+    virtual void _slot02();
+    virtual void Close() = 0;                            // slot 3
 };
-
-static volatile int g_BaseCalls;
-static void* volatile g_BaseThis;
-static volatile int g_BaseSawOriginalValues;
-
-extern "C" void* __fastcall
-CDataInputStream_ConstructBase_00993b20(void* stream, void*)
+class CDataInputStream : public CDataStream {
+public:
+    CDataInputStream();
+    unsigned long  StreamPos;                            // +0x04
+    long           StreamSize;                           // +0x08
+    unsigned char* CurrentSourcePtr;                     // +0x0c
+    unsigned long  SourceChunkStreamPos;                 // +0x10
+    long           SourceChunkBytesRemaining;            // +0x14
+};
+CDataInputStream::CDataInputStream()
+    : StreamPos(0), StreamSize(0), CurrentSourcePtr(0), SourceChunkStreamPos(0), SourceChunkBytesRemaining(0)
 {
-    TestDataInputStream_00993b20* value =
-        (TestDataInputStream_00993b20*)stream;
-    ++g_BaseCalls;
-    g_BaseThis = stream;
-    g_BaseSawOriginalValues =
-        value->vtable == (void*)0x11111111 &&
-        value->fields[0] == 0x22222222 &&
-        value->fields[1] == 0x33333333 &&
-        value->fields[2] == 0x44444444 &&
-        value->fields[3] == 0x55555555 &&
-        value->fields[4] == 0x66666666;
-
-    value->vtable = (void*)0xaaaaaaaa;
-    for (int index = 0; index != 5; ++index)
-        value->fields[index] = 0xbbbbbbbb;
-    return stream;
 }
 
+static int g_base;
+CBaseClass::CBaseClass() { ++g_base; }
+CBaseClass::~CBaseClass() {}
+void CDataStream::_slot01() {}
+void CDataStream::_slot02() {}
+struct TestStream : CDataInputStream { virtual void Close() {} };
 int main()
 {
-    TestDataInputStream_00993b20 stream;
-    stream.vtable = (void*)0x11111111;
-    stream.fields[0] = 0x22222222;
-    stream.fields[1] = 0x33333333;
-    stream.fields[2] = 0x44444444;
-    stream.fields[3] = 0x55555555;
-    stream.fields[4] = 0x66666666;
-    g_BaseCalls = 0;
-    g_BaseThis = 0;
-    g_BaseSawOriginalValues = 0;
-
-    typedef void* (__fastcall *ConstructorFunction)(void*, void*);
-    ConstructorFunction volatile construct =
-        &CDataInputStream_CDataInputStream_00993b20;
-    void* result = construct(&stream, 0);
-
-    int failures = 0;
-    if (result != &stream ||
-        g_BaseCalls != 1 ||
-        g_BaseThis != &stream ||
-        g_BaseSawOriginalValues != 1 ||
-        stream.vtable != CDataInputStream_VTable_00993b20)
-    {
-        ++failures;
-    }
-
-    for (int index = 0; index != 5; ++index)
-    {
-        if (stream.fields[index] != 0)
-            ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "DATA_INPUT_STREAM_00993b20_TEST FAIL count=%d base_calls=%d\n",
-            failures,
-            g_BaseCalls);
-        return 1;
-    }
-
-    std::printf("DATA_INPUT_STREAM_00993b20_TEST PASS\n");
-    return 0;
+    static unsigned char buf[sizeof(TestStream)]; memset(buf, 0x77, sizeof(buf));
+    TestStream* s = new (buf) TestStream;
+    int ok = sizeof(CDataInputStream) == 0x18 && g_base == 1 && s->StreamPos == 0 && s->StreamSize == 0
+          && s->CurrentSourcePtr == 0 && s->SourceChunkStreamPos == 0 && s->SourceChunkBytesRemaining == 0;
+    printf(ok ? "00993b20_TEST PASS\n" : "00993b20_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

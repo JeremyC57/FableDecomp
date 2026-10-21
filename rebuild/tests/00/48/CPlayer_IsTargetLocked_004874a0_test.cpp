@@ -1,45 +1,22 @@
+// behaviour test for 0x004874A0
 #include <stdio.h>
-
-struct CPlayer {
-    char pad[0x20a];
-    bool lockA;   // +0x20a
-    bool lockB;   // +0x20b
-    bool lockC;   // +0x20c
+#include <string.h>
+struct CPlayer { unsigned char _pad[0x20a]; bool ZTargeting; bool ProjectileTargetLocked; bool RightTriggerTargetLocked; };
+struct CPlayer_Methods : CPlayer {
+    bool IsTargetLocked() const;
 };
-
-bool __fastcall IsTargetLocked(CPlayer *this_ptr)
+bool CPlayer_Methods::IsTargetLocked() const
 {
-    return this_ptr->lockA || this_ptr->lockB || this_ptr->lockC;
-}
-
-// __fastcall passes 'this' in ecx; use an explicit __asm shim to guarantee ecx = this.
-static bool call_it(CPlayer *p)
-{
-    bool r;
-    __asm {
-        mov ecx, p
-        call IsTargetLocked
-        mov  r, al
-    }
-    return r;
+    return ZTargeting ? true : ProjectileTargetLocked ? true : RightTriggerTargetLocked ? true : false;
 }
 
 int main()
 {
-    CPlayer p;
-    for (int a = 0; a < 2; ++a)
-    for (int b = 0; b < 2; ++b)
-    for (int c = 0; c < 2; ++c) {
-        p.lockA = (a != 0);
-        p.lockB = (b != 0);
-        p.lockC = (c != 0);
-        bool expected = (a || b || c);
-        bool got = call_it(&p);
-        if (got != expected) {
-            printf("FAIL a=%d b=%d c=%d expected=%d got=%d\n", a, b, c, (int)expected, (int)got);
-            return 1;
-        }
-    }
-    printf("OK_0x004874a0\n");
-    return 0;
+    static CPlayer_Methods p; memset(&p, 0, sizeof(p));
+    int ok = !p.IsTargetLocked();
+    p.ZTargeting = true; ok &= p.IsTargetLocked(); p.ZTargeting = false;
+    p.ProjectileTargetLocked = true; ok &= p.IsTargetLocked(); p.ProjectileTargetLocked = false;
+    p.RightTriggerTargetLocked = true; ok &= p.IsTargetLocked();
+    printf(ok ? "004874a0_TEST PASS\n" : "004874a0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

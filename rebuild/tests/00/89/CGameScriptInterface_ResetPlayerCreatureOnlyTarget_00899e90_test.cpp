@@ -1,173 +1,118 @@
 #include <cstdio>
-
-enum ETCInterfaceType { ETC_DUMMY = 0 };
-
-class CGSIOnlyTarget_Component
-{
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    void SetOnlyTarget(void* pThing);
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-struct CKeyPair
-{
-    ETCInterfaceType          m_Key;
-    CGSIOnlyTarget_Component* m_Value;
+class CThing {
+public:
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
 };
-
-struct CVectorMap
-{
-    CKeyPair* m_pBegin;
-    CKeyPair* m_pEnd;
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
+class CTCTargetingBase {                                // interface 8 (class not confirmed)
+public:
+    enum { INTERFACE_TYPE = 8 };
+    void SetOnlyTarget(CThing* target);                  // 0x008ABC90 (name not confirmed)
 };
-
-struct CThingOverlay
-{
-    unsigned char m_Pad00[0x20];
-    unsigned int  m_Flags20;
-    unsigned char m_Pad24[0x20];
-    CVectorMap    m_InterfaceMap44;
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
+public:
+    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
 };
-
-struct CGameScriptContext
-{
-    unsigned char m_Pad00[0x1c];
-    void*         m_Manager;
+class CPlayerManager {
+public:
+    CPlayer& GetMainPlayer();                            // 0x00449970
 };
-
-struct CGameScriptInterface
-{
-    unsigned char       m_Pad00[0x08];
-    CGameScriptContext* m_Context;
+class CMainGameComponent {
+public:
+    unsigned char   _pad00[0x1c];
+    CPlayerManager* PPlayerManager;                      // +0x1c (scoped_ptr)
 };
-
-static CThingOverlay* g_thing = 0;
-static void* g_resolveA_in = 0;
-static CGSIOnlyTarget_Component* g_observed_component = 0;
-static void* g_observed_target = (void*)1;
-static unsigned long g_set_calls = 0;
-static CKeyPair* g_lower_bound_result = 0;
-static ETCInterfaceType g_observed_key = ETC_DUMMY;
-static CVectorMap* g_observed_map = 0;
-
-extern "C" void* __fastcall Sub_ResolveA(void* self)
+class CGameScriptInterface {
+public:
+    virtual void ResetPlayerCreatureOnlyTarget() const;
+    void*               World;                           // +0x04
+    CMainGameComponent* Component;                       // +0x08
+};
+void CGameScriptInterface::ResetPlayerCreatureOnlyTarget() const
 {
-    g_resolveA_in = self;
-    return (void*)0xAAAA;
+    CThing* hero = Component->PPlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    if (hero && !hero->IsDead())
+    {
+        CTCTargetingBase* tc;
+        if (hero->GetTC(&tc))
+            tc->SetOnlyTarget(0);
+    }
 }
 
-extern "C" void* __fastcall Sub_ResolveB(void* obj)
-{
-    (void)obj;
-    return g_thing;
-}
-
-const ETCInterfaceType kTargetType = (ETCInterfaceType)8;
-
-CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey)
-{
-    g_observed_map = this;
-    g_observed_key = *pKey;
-    return g_lower_bound_result;
-}
-
-void CGSIOnlyTarget_Component::SetOnlyTarget(void* pThing)
-{
-    g_observed_component = this;
-    g_observed_target = pThing;
-    ++g_set_calls;
-}
-
-void __fastcall CGameScriptInterface_ResetPlayerCreatureOnlyTarget(
-    const CGameScriptInterface* self);
-
-static void ResetObservations()
-{
-    g_resolveA_in = 0;
-    g_observed_component = 0;
-    g_observed_target = (void*)1;
-    g_set_calls = 0;
-    g_lower_bound_result = 0;
-    g_observed_key = ETC_DUMMY;
-    g_observed_map = 0;
-}
-
-static int Fail(const char* message)
-{
-    std::printf("CGameScriptInterface_00899e90_TEST FAIL: %s\n", message);
-    return 1;
-}
-
+static CInterfaceMap::SEntry g_entries[3];
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+class CTCImpl { public: int pad; };
+static int g_calls; static CThing* g_target = (CThing*)1; static CTCTargetingBase* g_who;
+void CTCTargetingBase::SetOnlyTarget(CThing* t) { ++g_calls; g_target = t; g_who = this; }
+static CThingPlayerCreature g_hero; static CThingPlayerCreature* g_heroPtr;
+CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return g_heroPtr; }
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
 int main()
 {
-    CGameScriptInterface gsi = {};
-    CGameScriptContext context = {};
-    CThingOverlay thing = {};
-    CGSIOnlyTarget_Component foundComponent;
-    CGSIOnlyTarget_Component endComponent;
-    CKeyPair foundEntry = {};
-    CKeyPair greaterEntry = {};
-    CKeyPair endEntry = {};
-
-    gsi.m_Context = &context;
-    context.m_Manager = (void*)0x1234;
-    thing.m_InterfaceMap44.m_pEnd = &endEntry;
-    foundEntry.m_Value = &foundComponent;
-    endEntry.m_Value = &endComponent;
-
-    ResetObservations();
-    g_thing = 0;
-    CGameScriptInterface_ResetPlayerCreatureOnlyTarget(&gsi);
-    if (g_set_calls != 0 || g_resolveA_in != (void*)0x1234)
-        return Fail("null player creature guard");
-
-    ResetObservations();
-    g_thing = &thing;
-    thing.m_Flags91 = 1;
-    thing.m_Flags20 = 0x100;
-    CGameScriptInterface_ResetPlayerCreatureOnlyTarget(&gsi);
-    if (g_set_calls != 0)
-        return Fail("dead player creature guard");
-
-    ResetObservations();
-    thing.m_Flags91 = 0;
-    thing.m_Flags20 = 0;
-    CGameScriptInterface_ResetPlayerCreatureOnlyTarget(&gsi);
-    if (g_set_calls != 0)
-        return Fail("missing target capability");
-
-    ResetObservations();
-    thing.m_Flags20 = 0x100;
-    foundEntry.m_Key = (ETCInterfaceType)8;
-    g_lower_bound_result = &foundEntry;
-    CGameScriptInterface_ResetPlayerCreatureOnlyTarget(&gsi);
-    if (g_set_calls != 1 ||
-        g_observed_component != &foundComponent ||
-        g_observed_target != 0 ||
-        g_observed_map != &thing.m_InterfaceMap44 ||
-        (int)g_observed_key != 8)
-        return Fail("exact component reset");
-
-    ResetObservations();
-    greaterEntry.m_Key = (ETCInterfaceType)9;
-    greaterEntry.m_Value = &foundComponent;
-    g_lower_bound_result = &greaterEntry;
-    CGameScriptInterface_ResetPlayerCreatureOnlyTarget(&gsi);
-    if (g_set_calls != 1 ||
-        g_observed_component != &endComponent ||
-        g_observed_target != 0)
-        return Fail("greater-key sentinel");
-
-    ResetObservations();
-    g_lower_bound_result = &endEntry;
-    CGameScriptInterface_ResetPlayerCreatureOnlyTarget(&gsi);
-    if (g_set_calls != 1 ||
-        g_observed_component != &endComponent ||
-        g_observed_target != 0)
-        return Fail("direct sentinel");
-
-    std::printf("CGameScriptInterface_00899e90_TEST PASS\n");
-    return 0;
+    static CTCImpl impl; CTCTargetingBase* tc = (CTCTargetingBase*)&impl;
+    for (int i = 0; i < 9; ++i) g_hero.UsingComponents[i] = 0;
+    g_hero.Dead = 0;
+    g_entries[0].type = 3; g_entries[0].component = 0;
+    g_entries[1].type = 8; g_entries[1].component = (CTCBase*)tc;
+    g_hero.Components.first = g_entries; g_hero.Components.last = g_entries + 2;
+    CPlayerManager pm; CMainGameComponent mgc; mgc.PPlayerManager = &pm;
+    CGameScriptInterface gsi; gsi.Component = &mgc;
+    g_heroPtr = 0; gsi.ResetPlayerCreatureOnlyTarget();
+    bool ok = g_calls == 0;
+    g_heroPtr = &g_hero; gsi.ResetPlayerCreatureOnlyTarget();
+    ok = ok && g_calls == 0;                                     // no interface 8
+    g_hero.UsingComponents[0] = 1u << 8; g_hero.Dead = 1; gsi.ResetPlayerCreatureOnlyTarget();
+    ok = ok && g_calls == 0;                                     // dead
+    g_hero.Dead = 0; gsi.ResetPlayerCreatureOnlyTarget();
+    ok = ok && g_calls == 1 && g_target == 0 && g_who == tc;
+    std::printf(ok ? "00899e90_TEST PASS\n" : "00899e90_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

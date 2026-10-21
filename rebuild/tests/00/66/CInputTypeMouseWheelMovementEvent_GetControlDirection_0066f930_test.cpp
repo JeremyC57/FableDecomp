@@ -1,84 +1,36 @@
+// behaviour test for 0x0066F930
 #include <stdio.h>
-
-extern "C" void* __fastcall
-CInputTypeMouseWheelMovementEvent_GetControlDirection_0066f930(
-    void* input_type, void*, void* result, const void* event);
-
-struct Direction
-{
-    float x;
-    float y;
+class C2DVector {                                       // Ego_r.pdb C2DVector, 8 bytes; non-POD (returned through a hidden pointer)
+public:
+    float X;
+    float Y;
+    C2DVector() {}
+    C2DVector(float x, float y) : X(x), Y(y) {}
+};
+class CInputEvent {
+public:
+    float wheel;
+    float GetMouseWheelMovement() const { return wheel; }
+};
+class CInputTypeMouseWheelMovementEvent {
+public:
+    virtual void _v00() {}
+    virtual void _v01() {}
+    virtual void _v02() {}
+    virtual void _v03() {}
+    virtual C2DVector GetControlDirection(const CInputEvent& event) const;   // slot 4
 };
 
-struct Event
+C2DVector CInputTypeMouseWheelMovementEvent::GetControlDirection(const CInputEvent& event) const
 {
-    float delta;
-};
-
-static int g_delta_calls;
-static void* g_last_event;
-
-extern "C" float __fastcall
-CInputTypeMouseWheelMovementEvent_GetControlDirection_0066f930_GetDelta(
-    void* event, void*)
-{
-    ++g_delta_calls;
-    g_last_event = event;
-    return ((Event*)event)->delta;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
-}
-
-static int RunCase(Event& event)
-{
-    int ok = 1;
-    Direction result;
-    long input_marker = 0x13572468;
-    void* returned;
-
-    g_delta_calls = 0;
-    g_last_event = 0;
-    result.x = 99.0f;
-    result.y = 99.0f;
-    returned =
-        CInputTypeMouseWheelMovementEvent_GetControlDirection_0066f930(
-            &input_marker, 0, &result, &event);
-    ok &= Check(returned == &result,
-                "hidden result buffer must be returned");
-    ok &= Check(g_delta_calls == 1 && g_last_event == &event,
-                "delta helper must receive the event once");
-    ok &= Check(result.x == 0.0f && result.y == event.delta,
-                "direction must contain zero X and the wheel delta in Y");
-    ok &= Check(input_marker == 0x13572468,
-                "input type object must be ignored");
-    return ok;
+    return C2DVector(0.0f, event.GetMouseWheelMovement());
 }
 
 int main()
 {
-    int ok = 1;
-    Event event;
-
-    event.delta = 2.5f;
-    ok &= RunCase(event);
-
-    event.delta = -3.75f;
-    ok &= RunCase(event);
-
-    event.delta = 0.0f;
-    ok &= RunCase(event);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeMouseWheelMovementEvent::GetControlDirection 0x0066F930");
-    return 0;
+    CInputTypeMouseWheelMovementEvent t; CInputEvent e; e.wheel = -2.5f;
+    C2DVector d = t.GetControlDirection(e);
+    int ok = d.X == 0.0f && d.Y == -2.5f;
+    printf(ok ? "0066f930_TEST PASS\n" : "0066f930_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

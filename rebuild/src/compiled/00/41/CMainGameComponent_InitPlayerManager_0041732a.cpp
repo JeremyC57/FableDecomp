@@ -1,53 +1,36 @@
-extern "C" __declspec(naked) void fn_0041732a(void)
+// CMainGameComponent::InitPlayerManager() -- create the player manager for this game component and hand it to PPlayerManager
+// Leaf: ?InitPlayerManager@CMainGameComponent@@IAEXXZ
+// Retail: Fable.exe @ 0x0041732A, 48 bytes; Ego_r.pdb ?InitPlayerManager@CMainGameComponent@@IAEXXZ (protected); caller
+// 0x004186E4. Body: operator new(0x2c) (0x00BFEA1A); when it succeeds, CPlayerManager::CPlayerManager(CMainGameComponent&,
+// const CGameDefinitionManager&) (0x0044A3B0; Ego_r.pdb ??0CPlayerManager@@QAE@AAVCMainGameComponent@@ABVCGameDefinitionManager@@@Z)
+// with the definition manager from CGameDefinitionManager::Get (0x0044C6B0, evaluated first); then scoped_ptr::reset
+// (0x004193A0: store the new pointer, virtual-delete the old one) on PPlayerManager (+0x1c).
+// Layout: Ego_r.pdb CMainGameComponent PPlayerManager +0x1c (retail agrees below +0x24, as PWorld +0x24 in 0x00416392).
+// Opt: size TU (unaligned entry, `pop ecx` after the cdecl operator new); no EH frame around the new-expression.
+#pragma optimize("s", on)
+class CMainGameComponent;
+class CGameDefinitionManager {
+public:
+    static const CGameDefinitionManager& Get();          // 0x0044C6B0
+};
+class CPlayerManager {
+public:
+    unsigned char _body[0x2c];
+    CPlayerManager(CMainGameComponent& component, const CGameDefinitionManager& defs);   // 0x0044A3B0
+};
+template <class T> class scoped_ptr {
+public:
+    T* Ptr;
+    void reset(T* p);                                    // 0x004193A0
+};
+class CMainGameComponent {
+public:
+    unsigned char              _pad00[0x1c];
+    scoped_ptr<CPlayerManager> PPlayerManager;           // +0x1c
+protected:
+    void InitPlayerManager();
+};
+void CMainGameComponent::InitPlayerManager()
 {
-    __asm {
-        _emit 0x56
-        _emit 0x57
-        _emit 0x6a
-        _emit 0x2c
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0xe5
-        _emit 0x76
-        _emit 0x7e
-        _emit 0x00
-        _emit 0x8b
-        _emit 0xf8
-        _emit 0x85
-        _emit 0xff
-        _emit 0x59
-        _emit 0x74
-        _emit 0x10
-        _emit 0xe8
-        _emit 0x6f
-        _emit 0x53
-        _emit 0x03
-        _emit 0x00
-        _emit 0x50
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x66
-        _emit 0x30
-        _emit 0x03
-        _emit 0x00
-        _emit 0xeb
-        _emit 0x02
-        _emit 0x33
-        _emit 0xc0
-        _emit 0x50
-        _emit 0x8d
-        _emit 0x4e
-        _emit 0x1c
-        _emit 0xe8
-        _emit 0x49
-        _emit 0x20
-        _emit 0x00
-        _emit 0x00
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc3
-    }
+    PPlayerManager.reset(new CPlayerManager(*this, CGameDefinitionManager::Get()));
 }

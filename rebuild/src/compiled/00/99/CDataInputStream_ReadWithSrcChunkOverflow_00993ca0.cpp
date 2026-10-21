@@ -1,189 +1,98 @@
-// CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0.
-//
-// The save loader reaches this helper when a framing value straddles the
-// current CFileDataInputStream source window.  Retail first drains any bytes
-// left in that window, then either performs one unbuffered read or repeatedly
-// acquires and consumes source chunks.
+// CDataInputStream::ReadWithSrcChunkOverflow(unsigned char* buffer, long size) -- slow path of the inline stream Read when the request straddles the current source chunk: drain what is left of the chunk, then either pull further chunks through InternalReadNextSourceChunk until the request is satisfied or, when NeedsBufferedRead says no, read the rest unbuffered and drop the chunk window
+// Leaf: ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z (Ego_r.pdb, private non-virtual)
+// Retail: Fable.exe @ 0x00993CA0, 351 bytes, `ret 8`, recursive through the inline Read's overflow branch.
+// Body: remaining = SourceChunkBytesRemaining; > 0 -> copy it out (range-checked), buffer/size advanced. NeedsBufferedRead
+// (vslot 9, +0x24) -> loop while size > 0 { SourceChunkStreamPos = StreamPos; InternalReadNextSourceChunk (vslot 8,
+// +0x20)(CurrentSourcePtr, SourceChunkBytesRemaining); n = min(size, remaining); Read(buffer, n); advance }; else
+// InternalReadUnbuffered (vslot 10, +0x28)(buffer, size); StreamPos += size; window cleared.
+// Layout: offsets of engine/CDataInputStream.h (StreamPos +4, StreamSize +8, CurrentSourcePtr +0xC, SourceChunkStreamPos
+// +0x10, SourceChunkBytesRemaining +0x14); the generated header models the vptr as `void*`, so this TU declares the
+// class with its virtual slots (Ego_r.pdb order: InternalReadNextSourceChunk / NeedsBufferedRead /
+// InternalReadUnbuffered are slots 8-10; slots 0-7 are placeholders) to dispatch through them.
+// Names: CDataInputStream members from Ego_r.pdb.
+// Shape: the inline Read is the one of the landed ReadZlibCompressed de-bake (0x00996230): size <= 0 guard, 64-bit
+// position range check with a zero high word, `size <= SourceChunkBytesRemaining` chunk memcpy, else recurse. The drain is
+// open-coded (not the inline Read): next/left locals computed before the range check give retail's hoisted buffer/size
+// arithmetic and the zero-register high word; the unbuffered branch caches StreamPos in a local before the virtual call
+// (retail loads [ebx+4] before `call [edx+28h]`). Probes: v/rc/a..n.
+// Opt: /O2 (16-aligned entry).
+extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
+#pragma intrinsic(memcpy)
 
-extern "C" __declspec(naked) void __fastcall
-CDataInputStream_ReadWithSrcChunkOverflow_00993ca0(
-    void*,
-    void*,
-    unsigned char*,
-    long)
-{
-    __asm
+class CDataInputStream {
+public:
+    virtual void _slot0();
+    virtual void _slot1();
+    virtual void _slot2();
+    virtual void _slot3();
+    virtual void _slot4();
+    virtual void _slot5();
+    virtual void _slot6();
+    virtual void _slot7();
+private:
+    virtual void InternalReadNextSourceChunk(const unsigned char*& sourcePtr, long& sourceBytes);   // +0x20
+    virtual bool NeedsBufferedRead(long size);                                                     // +0x24
+    virtual void InternalReadUnbuffered(unsigned char* buffer, long size);                         // +0x28
+protected:
+    unsigned long StreamPos;                                 // +0x04
+    long StreamSize;                                         // +0x08
+    const unsigned char* CurrentSourcePtr;                   // +0x0c
+    unsigned long SourceChunkStreamPos;                      // +0x10
+    long SourceChunkBytesRemaining;                          // +0x14
+
+    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+public:
+    __forceinline void Read(void* buffer, long size)
     {
-        push ebx
-        push ebp
-        push esi
-        mov ebx, ecx
-        mov eax, dword ptr [ebx + 14h]
-        xor esi, esi
-        cmp eax, esi
-        push edi
-        jle no_initial_chunk
+        if (size <= 0)
+            return;
+        __int64 newPosition = (__int64)(StreamPos + size);
+        if (!IsValidPosition(newPosition))
+            return;
+        if (size <= SourceChunkBytesRemaining) {
+            memcpy(buffer, CurrentSourcePtr, size);
+            CurrentSourcePtr += size;
+            SourceChunkBytesRemaining -= size;
+            StreamPos += size;
+        }
+        else
+            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+    }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);
+};
 
-        mov edi, dword ptr [esp + 14h]
-        mov edx, dword ptr [esp + 18h]
-        lea ecx, dword ptr [eax + edi]
-        mov dword ptr [esp + 14h], ecx
-        mov ecx, dword ptr [ebx + 4]
-        sub edx, eax
-        add ecx, eax
-        cmp esi, esi
-        jl initial_copy_rejected
-        jg initial_high_valid
-        cmp ecx, esi
-        jb initial_copy_rejected
-
-    initial_high_valid:
-        cmp esi, esi
-        jg initial_copy_rejected
-        jl initial_copy_valid
-        cmp ecx, 7FFFFFFFh
-        ja initial_copy_rejected
-
-    initial_copy_valid:
-        mov esi, dword ptr [ebx + 0Ch]
-        mov ecx, eax
-        mov ebp, ecx
-        shr ecx, 2
-        rep movsd
-        mov ecx, ebp
-        and ecx, 3
-        rep movsb
-        mov esi, dword ptr [ebx + 14h]
-        mov edi, dword ptr [ebx + 0Ch]
-        mov ecx, dword ptr [ebx + 4]
-        sub esi, eax
-        add edi, eax
-        add ecx, eax
-        mov dword ptr [ebx + 14h], esi
-        mov dword ptr [ebx + 0Ch], edi
-        mov dword ptr [ebx + 4], ecx
-        xor esi, esi
-
-    initial_copy_rejected:
-        mov eax, dword ptr [esp + 14h]
-        mov edi, edx
-        mov dword ptr [esp + 14h], eax
-        mov dword ptr [esp + 18h], edi
-        jmp choose_read_path
-
-    no_initial_chunk:
-        mov edi, dword ptr [esp + 18h]
-
-    choose_read_path:
-        mov edx, dword ptr [ebx]
-        push edi
-        mov ecx, ebx
-        call dword ptr [edx + 24h]
-        test al, al
-        jz read_unbuffered
-        cmp edi, esi
-        jle final_done
-
-    read_next_chunk:
-        mov eax, dword ptr [ebx + 4]
-        mov edx, dword ptr [ebx]
-        mov dword ptr [ebx + 10h], eax
-        lea esi, dword ptr [ebx + 14h]
-        push esi
-        lea eax, dword ptr [ebx + 0Ch]
-        push eax
-        mov ecx, ebx
-        call dword ptr [edx + 20h]
-        mov esi, dword ptr [esi]
-        cmp edi, esi
-        mov ebp, edi
-        jl have_copy_size
-        mov ebp, esi
-
-    have_copy_size:
-        test ebp, ebp
-        jle advance_destination
-        mov eax, dword ptr [ebx + 4]
-        add eax, ebp
-        xor ecx, ecx
-        jl advance_destination
-        jg copy_high_valid
-        test eax, eax
-        jb advance_destination
-
-    copy_high_valid:
-        test ecx, ecx
-        jg advance_destination
-        jl copy_bounds_valid
-        cmp eax, 7FFFFFFFh
-        ja advance_destination
-
-    copy_bounds_valid:
-        cmp ebp, esi
-        jg recurse_for_copy
-        mov esi, dword ptr [ebx + 0Ch]
-        mov edi, dword ptr [esp + 14h]
-        mov ecx, ebp
-        mov eax, ecx
-        shr ecx, 2
-        rep movsd
-        mov ecx, eax
-        and ecx, 3
-        rep movsb
-        mov edx, dword ptr [ebx + 0Ch]
-        mov ecx, dword ptr [ebx + 14h]
-        mov eax, dword ptr [ebx + 4]
-        mov edi, dword ptr [esp + 18h]
-        add edx, ebp
-        sub ecx, ebp
-        add eax, ebp
-        mov dword ptr [ebx + 0Ch], edx
-        mov dword ptr [ebx + 14h], ecx
-        mov dword ptr [ebx + 4], eax
-        jmp advance_destination
-
-    recurse_for_copy:
-        mov ecx, dword ptr [esp + 14h]
-        push ebp
-        push ecx
-        mov ecx, ebx
-        call CDataInputStream_ReadWithSrcChunkOverflow_00993ca0
-
-    advance_destination:
-        mov edx, dword ptr [esp + 14h]
-        sub edi, ebp
-        add edx, ebp
-        test edi, edi
-        mov dword ptr [esp + 14h], edx
-        mov dword ptr [esp + 18h], edi
-        jg read_next_chunk
-
-    read_done:
-        pop edi
-        pop esi
-        pop ebp
-        pop ebx
-        ret 8
-
-    read_unbuffered:
-        mov eax, dword ptr [esp + 14h]
-        mov edx, dword ptr [ebx]
-        mov ebp, dword ptr [ebx + 4]
-        push edi
-        push eax
-        mov ecx, ebx
-        call dword ptr [edx + 28h]
-        add ebp, edi
-        mov dword ptr [ebx + 4], ebp
-        mov dword ptr [ebx + 14h], esi
-        mov dword ptr [ebx + 0Ch], esi
-        mov dword ptr [ebx + 10h], esi
-
-    final_done:
-        pop edi
-        pop esi
-        pop ebp
-        pop ebx
-        ret 8
+void CDataInputStream::ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
+{
+    long remaining = SourceChunkBytesRemaining;
+    if (remaining > 0) {
+        unsigned char* next = buffer + remaining;
+        long left = size - remaining;
+        if (IsValidPosition((__int64)(StreamPos + remaining))) {
+            memcpy(buffer, CurrentSourcePtr, remaining);
+            CurrentSourcePtr += remaining;
+            SourceChunkBytesRemaining -= remaining;
+            StreamPos += remaining;
+        }
+        buffer = next;
+        size = left;
+    }
+    if (NeedsBufferedRead(size)) {
+        while (size > 0) {
+            SourceChunkStreamPos = StreamPos;
+            InternalReadNextSourceChunk(CurrentSourcePtr, SourceChunkBytesRemaining);
+            long chunk = size < SourceChunkBytesRemaining ? size : SourceChunkBytesRemaining;
+            Read(buffer, chunk);
+            buffer += chunk;
+            size -= chunk;
+        }
+    }
+    else {
+        unsigned long position = StreamPos;
+        InternalReadUnbuffered(buffer, size);
+        StreamPos = position + size;
+        SourceChunkBytesRemaining = 0;
+        CurrentSourcePtr = 0;
+        SourceChunkStreamPos = 0;
     }
 }

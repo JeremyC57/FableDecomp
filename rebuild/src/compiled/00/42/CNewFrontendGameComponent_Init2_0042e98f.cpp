@@ -1,127 +1,121 @@
-// CNewFrontendGameComponent::Init2 @ 0x0042E98F
-//
-// Exact retail startup coordinator. The helper bodies remain named seams
-// until native bank/manager ownership is linked into the executable. This
-// preserves the retail stack choreography around the compressed font stream
-// and the two temporary bank-pointer constructors.
-
-extern "C" unsigned char FableInit2FrontendFlag_01375448;
-extern "C" void* FableInit2DisplayManager_013b8390;
-
-extern "C" void FableInit2GetManager_00595582();
-extern "C" void FableInit2InitialiseGraphics_0042ddb3();
-extern "C" void FableInit2InitFrontendSounds_0042e17c();
-extern "C" void FableInit2InitialiseInput_0042dec5();
-extern "C" void FableInit2SetCurrentThingManager_00aeaa80();
-extern "C" void* FableInit2OperatorNew_00bfea1a();
-extern "C" void FableInit2CompressedDataCtor_009c85a0();
-extern "C" void FableInit2CountedPointerReset_00403e40();
-extern "C" void* FableInit2GetFontBankName_00415260();
-extern "C" void FableInit2StringCons_0099eae0();
-extern "C" void FableInit2StringPairSwap_0042fb40();
-extern "C" void* FableInit2GetPreMainMemoryUsed_0043368d();
-extern "C" void FableInit2BankPointerCtor_00428905();
-extern "C" void FableInit2BankPointerCtor_0041ba30();
-extern "C" void FableInit2ManagerInit_005958f5();
-extern "C" void FableInit2ManagerInit2_00598a1c();
-extern "C" void FableInit2SetDisplayMode_009bff40();
-
-extern "C" __declspec(naked) void __fastcall
-CNewFrontendGameComponent_Init2_0042e98f(void*)
+// CNewFrontendGameComponent::Init2() -- second-stage front-end start-up: create the front-end manager, graphics/sounds/input, load the localised text bank, initialise the UI and set the 1024x768 display mode
+// Leaf: ?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)
+// Retail: Fable.exe @ 0x0042E98F, 256 bytes, plain `ret` after `leave`.
+// Body: m_pFrontEndManager = CFrontEndManager::GetInstance() (0x00595582, static fastcall, creates the 0xe0-byte
+// singleton); its PGameComponent (+0x1c) = this; its +0xc0 flag = !g_byte_01375448; InitialiseGraphics() (0x0042DDB3);
+// InitialiseSounds() (0x0042E17C); InitialiseInput() (0x0042DEC5); a fastcall global setter (0x00AEAA80, stores ecx to
+// 0x013D2E08) gets m_pFrontEndGraphicBank's object; m_pTextBank.Reset(new NGameText::CDataBank) (0x214 bytes, ctor
+// 0x009C85A0, Reset 0x00403E40); m_pTextBank->OpenReadOnly(NLocalisation::GetTextBankName(), 0x100) (slot 1, +4;
+// GetTextBankName 0x00415260 is __fastcall with the hidden result in ecx; ~CCharString 0x0099EAE0);
+// NUISystem::CManager::Clear() (0x0042FB40); m_pFrontEndManager->Init(m_pFrontEndGraphicBank, m_pMeshBank,
+// m_pInputManager, GetDefinitionManager()) (0x005958F5; by-value CCountedPointer copies 0x0041BA30 / 0x00428905; the
+// getter 0x0043368D returns the global 0x013B8760); m_pFrontEndManager->BuildComponents(!WindowsMediaPlayerInstalled)
+// (0x00598A1C); g_pDisplayManager (0x013B8390)->SetDisplayMode(C2DExtentsI(1024, 768), 16, 0, 60) (0x009BFF40).
+// Names: PDB symbols except the 0x00AEAA80 setter (labelled SetCurrentThingManager by body folding; it publishes the
+// front-end graphic bank), the 0x01375448 flag and the CFrontEndManager +0xc0 flag (m_bQuitFromGame in the matched
+// 0x005953E2 layout); OpenReadOnly is the CBankFile slot-1 name (Ego_r.pdb ?OpenReadOnly@CBankFile@@UAE_NABVCCharString@@K@Z).
+// Layout: retail CNewFrontendGameComponent (Ego_r.pdb, 8 lower after the two STLport vectors at +0x6c):
+// m_pFrontEndGraphicBank +0x40, m_pMeshBank +0x48, m_pTextBank +0x60, m_pInputManager +0x68, m_pFrontEndManager +0xb4
+// (Ego_r +0xbc), WindowsMediaPlayerInstalled +0x144 (Ego_r +0x14c). CFrontEndManager PGameComponent +0x1c.
+// Opt: size TU (unaligned entry) with a frame pointer (`leave`).
+#pragma optimize("s", on)
+#pragma optimize("y", off)
+class CCharString {
+public:
+    void* PStringData;
+    ~CCharString();                                      // 0x0099EAE0
+};
+namespace NLocalisation {
+CCharString __fastcall GetTextBankName();                // 0x00415260
+}
+struct CCPPointerInfo;
+template <class T> class CCountedPointer {
+public:
+    T*              Object;
+    CCPPointerInfo* Info;
+    CCountedPointer(const CCountedPointer& other);       // 0x0041BA30 (CGraphicDataBank) / 0x00428905 (CMeshDataBank)
+    void Reset(T* object);                               // 0x00403E40 for NGameText::CDataBank
+    T* operator->() const { return Object; }
+};
+class CGraphicDataBank;
+class CMeshDataBank;
+class CInputManager;
+class CDefinitionManager;
+CDefinitionManager* GetDefinitionManager();              // 0x0043368D
+void __fastcall SetCurrentGraphicBank(CGraphicDataBank* bank);   // 0x00AEAA80
+namespace NGameText {
+class CDataBank {
+public:
+    CDataBank();                                         // 0x009C85A0
+    virtual ~CDataBank();
+    virtual bool OpenReadOnly(const CCharString& name, unsigned long flags);   // slot 1 (+4)
+    unsigned char _pad004[0x214 - 4];
+};
+}
+class C2DExtentsI {
+public:
+    long X;
+    long Y;
+    C2DExtentsI(long x, long y) : X(x), Y(y) {}
+};
+enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE = 0 };
+class CDisplayManager {
+public:
+    enum ECreateDeviceSuccess { CREATE_DEVICE_0 };
+    ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample,
+                                        unsigned long refreshRate);   // 0x009BFF40
+};
+extern CDisplayManager* g_pDisplayManager;               // 0x013B8390
+extern bool g_bFrontEndFlag_01375448;                    // 0x01375448 (name not recovered)
+class CNewFrontendGameComponent;
+namespace NUISystem {
+class CManager {
+public:
+    static void __fastcall Clear();                      // 0x0042FB40
+};
+class CFrontEndManager {
+public:
+    unsigned char               _pad00[0x1c];
+    CNewFrontendGameComponent*  PGameComponent;          // +0x1c
+    unsigned char               _pad20[0xc0 - 0x20];
+    bool                        m_bQuitFromGame;         // +0xc0
+    static CFrontEndManager* __fastcall GetInstance();   // 0x00595582
+    void Init(CCountedPointer<CGraphicDataBank> graphics, CCountedPointer<CMeshDataBank> meshes, CInputManager* input,
+              CDefinitionManager* defs);                 // 0x005958F5
+    void BuildComponents(bool flag);                     // 0x00598A1C
+};
+}
+class CNewFrontendGameComponent {
+public:
+    virtual ~CNewFrontendGameComponent();
+    unsigned char                         _pad004[0x40 - 4];
+    CCountedPointer<CGraphicDataBank>     m_pFrontEndGraphicBank;   // +0x40
+    CCountedPointer<CMeshDataBank>        m_pMeshBank;              // +0x48
+    unsigned char                         _pad050[0x60 - 0x50];
+    CCountedPointer<NGameText::CDataBank> m_pTextBank;              // +0x60
+    CInputManager*                        m_pInputManager;          // +0x68
+    unsigned char                         _pad06c[0xb4 - 0x6c];
+    NUISystem::CFrontEndManager*          m_pFrontEndManager;       // +0xb4
+    unsigned char                         _pad0b8[0x144 - 0xb8];
+    bool                                  WindowsMediaPlayerInstalled;   // +0x144
+    bool InitialiseGraphics();                           // 0x0042DDB3
+    void InitialiseSounds();                             // 0x0042E17C
+    void InitialiseInput();                              // 0x0042DEC5
+    void Init2();
+};
+void CNewFrontendGameComponent::Init2()
 {
-    __asm
-    {
-        push ebp
-        mov ebp, esp
-        push ecx
-        push ecx
-        push ebx
-        push esi
-        push edi
-        mov esi, ecx
-
-        call FableInit2GetManager_00595582
-        mov dword ptr [esi + 0b4h], eax
-        mov dword ptr [eax + 01ch], esi
-        cmp byte ptr [FableInit2FrontendFlag_01375448], 0
-        mov ecx, dword ptr [esi + 0b4h]
-        sete al
-        mov byte ptr [ecx + 0c0h], al
-
-        mov ecx, esi
-        call FableInit2InitialiseGraphics_0042ddb3
-        mov ecx, esi
-        call FableInit2InitFrontendSounds_0042e17c
-        mov ecx, esi
-        call FableInit2InitialiseInput_0042dec5
-        mov ecx, dword ptr [esi + 040h]
-        call FableInit2SetCurrentThingManager_00aeaa80
-
-        push 0214h
-        call FableInit2OperatorNew_00bfea1a
-        test eax, eax
-        pop ecx
-        je init2_no_stream
-        mov ecx, eax
-        call FableInit2CompressedDataCtor_009c85a0
-        jmp short init2_stream_ready
-init2_no_stream:
-        xor eax, eax
-init2_stream_ready:
-        lea edi, [esi + 060h]
-        push eax
-        mov ecx, edi
-        call FableInit2CountedPointerReset_00403e40
-        mov edi, dword ptr [edi]
-        mov ebx, dword ptr [edi]
-        push 0100h
-        lea ecx, [ebp - 04h]
-        call FableInit2GetFontBankName_00415260
-        push eax
-        mov ecx, edi
-        call dword ptr [ebx + 04h]
-        lea ecx, [ebp - 04h]
-        call FableInit2StringCons_0099eae0
-        call FableInit2StringPairSwap_0042fb40
-
-        call FableInit2GetPreMainMemoryUsed_0043368d
-        push eax
-        push dword ptr [esi + 068h]
-        lea eax, [esi + 048h]
-        push ecx
-        push ecx
-        mov ecx, esp
-        push eax
-        call FableInit2BankPointerCtor_00428905
-        push ecx
-        push ecx
-        lea eax, [esi + 040h]
-        mov ecx, esp
-        push eax
-        call FableInit2BankPointerCtor_0041ba30
-
-        mov ecx, dword ptr [esi + 0b4h]
-        call FableInit2ManagerInit_005958f5
-        cmp byte ptr [esi + 0144h], 0
-        mov ecx, dword ptr [esi + 0b4h]
-        sete al
-        push eax
-        call FableInit2ManagerInit2_00598a1c
-
-        mov ecx, dword ptr [FableInit2DisplayManager_013b8390]
-        push 03ch
-        push 0
-        push 010h
-        lea eax, [ebp - 08h]
-        push eax
-        mov dword ptr [ebp - 08h], 0400h
-        mov dword ptr [ebp - 04h], 0300h
-        call FableInit2SetDisplayMode_009bff40
-
-        pop edi
-        pop esi
-        pop ebx
-        leave
-        ret
-    }
+    m_pFrontEndManager = NUISystem::CFrontEndManager::GetInstance();
+    m_pFrontEndManager->PGameComponent = this;
+    m_pFrontEndManager->m_bQuitFromGame = !g_bFrontEndFlag_01375448;
+    InitialiseGraphics();
+    InitialiseSounds();
+    InitialiseInput();
+    SetCurrentGraphicBank(m_pFrontEndGraphicBank.Object);
+    m_pTextBank.Reset(new NGameText::CDataBank);
+    m_pTextBank->OpenReadOnly(NLocalisation::GetTextBankName(), 0x100);
+    NUISystem::CManager::Clear();
+    m_pFrontEndManager->Init(m_pFrontEndGraphicBank, m_pMeshBank, m_pInputManager, GetDefinitionManager());
+    m_pFrontEndManager->BuildComponents(!WindowsMediaPlayerInstalled);
+    g_pDisplayManager->SetDisplayMode(C2DExtentsI(1024, 768), 16, SURFACE_MULTISAMPLE_NONE, 60);
 }

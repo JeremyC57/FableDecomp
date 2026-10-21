@@ -1,80 +1,52 @@
-class CScriptThing
-{
+// CGameScriptInterface::EntitySetAttackThingImmediately(const CScriptThing& attacker, const CScriptThing& target, bool, bool) const -- when both things are alive and the attacker carries flag bit 3 of +0x6c, make an attack-thing action its current action
+// Leaf: ?EntitySetAttackThingImmediately@CGameScriptInterface@@UBEXABVCScriptThing@@0_N1@Z
+// Retail: Fable.exe @ 0x008A8EB0, 102 bytes, `ret 0x10`; Ego_r.pdb same symbol. The two bool arguments are not read.
+// Body: a = attacker.GetThing(), t = target.GetThing() (CScriptThing slot 11, both fetched first); if a alive (non-null,
+// bit 0 of +0x91 clear), t alive, and a's +0x6c bit 3: a->SetCurrentAction(<action>(a, t)) (0x006644F0) on a 0x118-byte
+// temporary built by 0x008AE160 (owner, target), destroyed by ~CCombatActionBase 0x0062E900.
+// Layout: CThing +0x6c flag byte / +0x91 dead bit and CCombatActionBase (retail 0x114 bytes) as the landed
+// CCreatureAction_BanditKingGetHit::FinishAction 0x008C92C0. The action class (ctor 0x008AE160, callers 0x008A8EF6,
+// 0x00962FEE, 0x00963C84) is not named; modelled as CCreatureAction_AttackThing.
+// Shape: /O2 (16-aligned entry).
+struct CThing {
+    unsigned char _pad00[0x6c];
+    unsigned char m_flags6c;                    // +0x6c bit 3
+    unsigned char _pad6d[0x91 - 0x6d];
+    unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
-
-class CGSISetAttack_Entity;
-
-class CGSISetAttack_Action
+inline bool IS_THING_ALIVE(const CThing* t)
 {
+    return t != 0 && !(t->m_flags91 & 1);
+}
+struct CCombatActionBase {                      // retail sizeof 0x114
+    virtual void v00();
+    unsigned char _pad04[0x114 - 4];
+    ~CCombatActionBase();                       // 0x0062E900
+};
+struct CThingCreatureBase : CThing {
+    bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
+};
+struct CCreatureAction_AttackThing : CCombatActionBase {      // retail sizeof 0x118 (name not recovered)
+    unsigned char _body[4];
+    CCreatureAction_AttackThing(CThingCreatureBase* owner, CThing* target);   // 0x008AE160
+};
+class CScriptThing {
 public:
-    CGSISetAttack_Action* Construct(
-        CGSISetAttack_Entity* pAttacker,
-        CGSISetAttack_Entity* pTarget);
-    void Destruct();
+    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
+    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
+    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
 };
-
-class CGSISetAttack_Entity
-{
+class CGameScriptInterface {
 public:
-    void Dispatch(CGSISetAttack_Action* pAction);
+    virtual void EntitySetAttackThingImmediately(const CScriptThing& attacker, const CScriptThing& target, bool, bool) const;
 };
-
-class CGameScriptInterface
+void CGameScriptInterface::EntitySetAttackThingImmediately(const CScriptThing& attacker, const CScriptThing& target, bool, bool) const
 {
-public:
-    virtual void EntitySetAttackThingImmediately(
-        const CScriptThing& attacker,
-        const CScriptThing& target,
-        bool unknown0,
-        bool unknown1) const;
-};
-
-__declspec(naked)
-void CGameScriptInterface::EntitySetAttackThingImmediately(
-    const CScriptThing& attacker,
-    const CScriptThing& target,
-    bool unknown0,
-    bool unknown1) const
-{
-    __asm
+    CThing* a = attacker.GetThing();
+    CThing* t = target.GetThing();
+    if (IS_THING_ALIVE(a) && IS_THING_ALIVE(t) && (a->m_flags6c & 8))
     {
-        mov ecx, dword ptr [esp + 4]
-        mov eax, dword ptr [ecx]
-        sub esp, 118h
-        push esi
-        call dword ptr [eax + 2Ch]
-
-        mov ecx, dword ptr [esp + 124h]
-        mov edx, dword ptr [ecx]
-        mov esi, eax
-        call dword ptr [edx + 2Ch]
-
-        test esi, esi
-        je finished
-        mov dl, byte ptr [esi + 91h]
-        mov cl, 1
-        test dl, cl
-        jne finished
-        test eax, eax
-        je finished
-        test byte ptr [eax + 91h], cl
-        jne finished
-        test byte ptr [esi + 6Ch], 8
-        je finished
-
-        push eax
-        push esi
-        lea ecx, [esp + 0Ch]
-        call CGSISetAttack_Action::Construct
-        push eax
-        mov ecx, esi
-        call CGSISetAttack_Entity::Dispatch
-        lea ecx, [esp + 4]
-        call CGSISetAttack_Action::Destruct
-
-finished:
-        pop esi
-        add esp, 118h
-        ret 10h
+        CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(a);
+        creature->SetCurrentAction(CCreatureAction_AttackThing(creature, t));
     }
 }

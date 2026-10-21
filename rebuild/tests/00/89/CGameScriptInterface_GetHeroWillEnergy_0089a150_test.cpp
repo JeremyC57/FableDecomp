@@ -1,151 +1,183 @@
-#include <cstdio>
-
-enum ETCInterfaceType { ETC_DUMMY = 0 };
-
-struct CGSIWillEnergyComponent
-{
-    unsigned char m_Pad00[0x58];
-    long          m_CurrentEnergy;
+// behaviour test for 0x0089A150 CGameScriptInterface::GetHeroWillEnergy
+#include <stdio.h>
+#include <string.h>
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
+public:
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
+};
+class CThing {
+public:
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
+};
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
+public:
+    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
+};
+class CPlayerManager {
+public:
+    CPlayer& GetMainPlayer();                                       // 0x00449970
+};
+class CCharStringData;
+class CCharString { public: CCharStringData* PStringData; };
+struct CMarriageNode { CMarriageNode* _M_next; CMarriageNode* _M_prev; };
+class CMarriageList {                                    // std::list<CHeroMarriageInfo> (STLport: one node pointer)
+public:
+    CMarriageNode* _M_node;
+    bool empty() const { return _M_node->_M_next == _M_node; }
+};
+enum EMarriageState { MARRIAGE_STATE_1 = 1, MARRIAGE_STATE_2 = 2, MARRIAGE_STATE_HAS_CHILDREN = 4, MARRIAGE_STATE_DIVORCED = 5,
+                      MARRIAGE_STATE_WIFE_MURDERED = 7, MARRIAGE_STATE_FORCE_DWORD = 0x7fffffff };
+class CTCHeroStats {
+public:
+    enum { INTERFACE_TYPE = 0x4 };
+    unsigned char _pad_0x000[0x30];
+    float Age;                                  // +0x030
+    float SunTan;                               // +0x034
+    float Fatness;                              // +0x038
+    unsigned char _pad_0x03c[0x1c];
+    long Stamina;                               // +0x058
+    long MaxStamina;                            // +0x05c
+    unsigned char _pad_0x060[0x10];
+    long RenownLevel;                           // +0x070
+    long RenownMaxLevel;                        // +0x074
+    unsigned char _pad_0x078[0x24];
+    float Attractiveness;                       // +0x09c
+    float Scariness;                            // +0x0a0
+    unsigned char _pad_0x0a4[0xcc];
+    CCharString DeathRecoveryMarkerName;        // +0x170
+    unsigned char _pad_0x174[0x4];
+    float BestTimePairs;                        // +0x178
+    float BestTimeSorting;                      // +0x17c
+    unsigned char _pad_0x180[0x10];
+    float BestTimeGuessTheAddition;             // +0x190
+    unsigned char _pad_0x194[0x44];
+    CMarriageList Marriages;                    // +0x1d8
+    float GetAge() const { return Age; }
+    float GetFatness() const { return Fatness; }
+    long  GetStamina() const { return Stamina; }
+    long  GetMaxStamina() const { return MaxStamina; }
+    float GetStaminaPercentage() const { return (float)Stamina / MaxStamina; }
+    long  GetRenownLevel() const { return RenownLevel; }
+    float GetAttractiveness() const { return Attractiveness; }
+    float GetScariness() const { return Scariness; }
+    float GetBestTimePairs() const { return BestTimePairs; }
+    float GetBestTimeSorting() const { return BestTimeSorting; }
+    float GetBestTimeGuessTheAddition() const { return BestTimeGuessTheAddition; }
+    const CCharString& GetDeathRecoveryMarkerName() const { return DeathRecoveryMarkerName; }
+    bool  HasMarriageInState(EMarriageState state) const;          // 0x0057AC29
+    bool  HasCurrentMarriage() const;                              // 0x0057AC4B
+    float GetPercentageThroughRenownLevel() const;                 // 0x0057AAD9
+};
+class CGameScriptInterface {
+public:
+    virtual long GetHeroWillEnergy() const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
 };
 
-struct CKeyPair
+long CGameScriptInterface::GetHeroWillEnergy() const
 {
-    ETCInterfaceType         m_Key;
-    CGSIWillEnergyComponent* m_Value;
-};
-
-struct CVectorMap
-{
-    CKeyPair* m_pBegin;
-    CKeyPair* m_pEnd;
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey);
-};
-
-struct CThingOverlay
-{
-    unsigned char m_Pad00[0x20];
-    unsigned char m_Flags20;
-    unsigned char m_Pad21[0x23];
-    CVectorMap    m_InterfaceMap44;
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;
-};
-
-struct CGameScriptInterface
-{
-    unsigned char m_Pad00[0x14];
-    void*         m_Field14;
-};
-
-static CThingOverlay* g_thing = 0;
-static void* g_resolve_a_input = 0;
-static CKeyPair* g_lower_bound_result = 0;
-static CVectorMap* g_observed_map = 0;
-static ETCInterfaceType g_observed_key = ETC_DUMMY;
-static unsigned long g_lower_bound_calls = 0;
-
-extern "C" void* __fastcall Sub_ResolveA(void* self)
-{
-    g_resolve_a_input = self;
-    return (void*)0xAAAA;
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    const CTCHeroStats* stats;
+    if (hero && !hero->IsDead() && hero->PeekTC(&stats))
+        return stats->GetStamina();
+    return 0;
 }
 
-extern "C" CThingOverlay* __fastcall Sub_ResolveB(void* obj)
+static CThingPlayerCreature* g_hero;
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
+CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return g_hero; }
+const CThingPlayerCreature* CPlayer::PeekPPlayerCharacter() const { return g_hero; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 {
-    (void)obj;
-    return g_thing;
+    SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
 }
-
-const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
-
-CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey)
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 {
-    g_observed_map = this;
-    g_observed_key = *pKey;
-    ++g_lower_bound_calls;
-    return g_lower_bound_result;
+    const SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
 }
+static int g_state_seen;
+bool CTCHeroStats::HasMarriageInState(EMarriageState state) const { g_state_seen = state; return state == MARRIAGE_STATE_DIVORCED || state == MARRIAGE_STATE_HAS_CHILDREN || state == MARRIAGE_STATE_WIFE_MURDERED; }
+bool CTCHeroStats::HasCurrentMarriage() const { return Age == 21.5f; }
+float CTCHeroStats::GetPercentageThroughRenownLevel() const { return (float)RenownLevel / 10.0f; }
+static CMarriageNode g_node, g_node2;
 
-long __fastcall CGameScriptInterface_GetHeroWillEnergy(
-    const CGameScriptInterface* self);
-
-static void ResetObservations()
-{
-    g_resolve_a_input = 0;
-    g_lower_bound_result = 0;
-    g_observed_map = 0;
-    g_observed_key = ETC_DUMMY;
-    g_lower_bound_calls = 0;
-}
-
-static int Fail(const char* message)
-{
-    std::printf("CGameScriptInterface_0089a150_TEST FAIL: %s\n", message);
-    return 1;
-}
-
+static unsigned char g_tcmem[0x1000];
+static unsigned char g_thingmem[0x200];
+static CInterfaceMap::SEntry g_entries[3];
 int main()
 {
-    CGameScriptInterface gsi = {};
-    CThingOverlay hero = {};
-    CGSIWillEnergyComponent foundComponent = {};
-    CGSIWillEnergyComponent endComponent = {};
-    CKeyPair foundEntry = {};
-    CKeyPair greaterEntry = {};
-    CKeyPair endEntry = {};
-
-    gsi.m_Field14 = (void*)0x1234;
-    hero.m_InterfaceMap44.m_pEnd = &endEntry;
-    foundEntry.m_Value = &foundComponent;
-    endEntry.m_Value = &endComponent;
-
-    ResetObservations();
-    g_thing = 0;
-    if (CGameScriptInterface_GetHeroWillEnergy(&gsi) != 0 ||
-        g_lower_bound_calls != 0 ||
-        g_resolve_a_input != (void*)0x1234)
-        return Fail("null hero guard");
-
-    ResetObservations();
-    g_thing = &hero;
-    hero.m_Flags91 = 1;
-    hero.m_Flags20 = 0x10;
-    if (CGameScriptInterface_GetHeroWillEnergy(&gsi) != 0 ||
-        g_lower_bound_calls != 0)
-        return Fail("dead hero guard");
-
-    ResetObservations();
-    hero.m_Flags91 = 0;
-    hero.m_Flags20 = 0;
-    if (CGameScriptInterface_GetHeroWillEnergy(&gsi) != 0 ||
-        g_lower_bound_calls != 0)
-        return Fail("missing HeroStats capability");
-
-    ResetObservations();
-    hero.m_Flags20 = 0x10;
-    foundEntry.m_Key = (ETCInterfaceType)4;
-    foundComponent.m_CurrentEnergy = 73;
-    g_lower_bound_result = &foundEntry;
-    if (CGameScriptInterface_GetHeroWillEnergy(&gsi) != 73 ||
-        g_observed_map != &hero.m_InterfaceMap44 ||
-        (int)g_observed_key != 4 ||
-        g_lower_bound_calls != 1)
-        return Fail("exact HeroStats energy");
-
-    ResetObservations();
-    greaterEntry.m_Key = (ETCInterfaceType)5;
-    greaterEntry.m_Value = &foundComponent;
-    endComponent.m_CurrentEnergy = 29;
-    g_lower_bound_result = &greaterEntry;
-    if (CGameScriptInterface_GetHeroWillEnergy(&gsi) != 29)
-        return Fail("greater-key sentinel");
-
-    ResetObservations();
-    endComponent.m_CurrentEnergy = -4;
-    g_lower_bound_result = &endEntry;
-    if (CGameScriptInterface_GetHeroWillEnergy(&gsi) != -4)
-        return Fail("direct sentinel");
-
-    std::printf("CGameScriptInterface_0089a150_TEST PASS\n");
-    return 0;
+    int ok = 1;
+    CPlayerManager pm; CGameScriptInterface gsi; gsi.PlayerManager = &pm;
+    const CGameScriptInterface* p = &gsi;
+    CTCHeroStats* tc = (CTCHeroStats*)g_tcmem;
+    CThingPlayerCreature* hero = (CThingPlayerCreature*)g_thingmem;
+    g_entries[0].type = 1; g_entries[0].component = 0;
+    g_entries[1].type = CTCHeroStats::INTERFACE_TYPE; g_entries[1].component = (CTCBase*)tc;
+    g_entries[2].type = 0x100; g_entries[2].component = 0;
+    hero->Components.first = g_entries; hero->Components.last = g_entries + 3;
+    hero->UsingComponents[CTCHeroStats::INTERFACE_TYPE >> 5] |= 1UL << (CTCHeroStats::INTERFACE_TYPE & 31);
+    g_hero = hero;
+    tc->Age = 21.5f; tc->Stamina = 30; tc->MaxStamina = 120; tc->RenownLevel = 7; tc->Attractiveness = 0.25f; tc->Scariness = 0.75f;
+    tc->BestTimePairs = 11.0f; tc->BestTimeSorting = 12.0f; tc->BestTimeGuessTheAddition = 13.0f;
+    g_node._M_next = &g_node2; g_node2._M_next = &g_node; tc->Marriages._M_node = &g_node;
+    ok &= (p->GetHeroWillEnergy() == 30);
+    g_hero = 0;
+    ok &= (p->GetHeroWillEnergy() == 0);
+    g_hero = hero; hero->Dead = 1;
+    ok &= (p->GetHeroWillEnergy() == 0);
+    hero->Dead = 0; hero->UsingComponents[CTCHeroStats::INTERFACE_TYPE >> 5] = 0;
+    ok &= (p->GetHeroWillEnergy() == 0);
+    printf(ok ? "0089a150_TEST PASS\n" : "0089a150_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

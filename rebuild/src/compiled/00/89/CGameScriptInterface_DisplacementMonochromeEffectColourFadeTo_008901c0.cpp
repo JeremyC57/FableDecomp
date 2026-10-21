@@ -1,36 +1,37 @@
-// CGameScriptInterface::DisplacementMonochromeEffectColourFadeTo
-// __fastcall (this in ecx) + 2 stack params; forwards to an engine
-// thiscall on self->mid->p18 (member at +0x1964), callee-cleaned (ret 8).
-// Written naked because the harness rewrites __fastcall->__fastcall, which
-// cannot express "this in ecx + 3 pure stack args".
-struct Inner {
-    unsigned char pad[0x1964];
-    void* target; // +0x1964
+// CGameScriptInterface::DisplacementMonochromeEffectColourFadeTo(float, const CRGBFloatColour&) const -- starts the displacement-monochrome screen effect's colour fade at script priority
+// Leaf: DisplacementMonochromeEffectColourFadeTo@CGameScriptInterface
+// Retail: Fable.exe @ 0x008901C0, 32 bytes, `ret 8`. Calls CEnvironmentSpellEffectInterpolator::DisplacementMonochromeEffectColourFadeTo
+// (float, NScreenEffect::ScreenEffectPriority, const CRGBFloatColour&) @ 0x006B8370 (catalogued as a std::_Ucopy) with priority 1 and
+// returns its handle (Ego_r.pdb: both return void*).
+// Shape: the pointer chain goes through inline const getters; direct member reads load the arguments before World.
+// Layout: CGameScriptInterface World +0x04 (engine/CGameScriptInterface.h); CWorld PEnvironment +0x18 (Ego_r.pdb, scoped_ptr);
+// retail CEnvironment SpellEffectInterpolator +0x1964 (Ego_r.pdb +0x1a90; the 0x12c gap is the retail STL shrink before it).
+class CRGBFloatColour;
+namespace NScreenEffect { enum ScreenEffectPriority { SCREEN_EFFECT_PRIORITY_SCRIPT = 1, SCREEN_EFFECT_PRIORITY_FORCE_DWORD = 0x7fffffff }; }
+class CEnvironmentSpellEffectInterpolator {
+public:
+    void* DisplacementMonochromeEffectColourFadeTo(float time, NScreenEffect::ScreenEffectPriority priority, const CRGBFloatColour& colour);   // 0x006B8370
 };
-struct CMid {
-    unsigned char pad[0x18];
-    Inner* p18; // +0x18
+class CEnvironment {
+public:
+    unsigned char                        _pad00[0x1964];
+    CEnvironmentSpellEffectInterpolator* SpellEffectInterpolator;   // +0x1964
+    CEnvironmentSpellEffectInterpolator* GetSpellEffectInterpolator() const { return SpellEffectInterpolator; }
 };
-struct CGameScriptInterface {
-    void* vt;    // +0x0
-    CMid* mid;   // +0x4
+class CWorld {
+public:
+    unsigned char _pad00[0x18];
+    CEnvironment* PEnvironment;                          // +0x18
+    CEnvironment* GetEnvironment() const { return PEnvironment; }
+};
+class CGameScriptInterface {
+public:
+    virtual void* DisplacementMonochromeEffectColourFadeTo(float time, const CRGBFloatColour& colour) const;
+    CWorld* World;                                       // +0x04
+    CWorld* GetWorld() const { return World; }
 };
 
-extern "C" void __fastcall CalleeColourFadeTo(void* thisptr, int a, int b, int c);
-
-void __declspec(naked) __fastcall CGameScriptInterface_DisplacementMonochromeEffectColourFadeTo(
-    CGameScriptInterface* self /*ecx*/, int p1, int p2)
+void* CGameScriptInterface::DisplacementMonochromeEffectColourFadeTo(float time, const CRGBFloatColour& colour) const
 {
-    __asm {
-        mov eax, DWORD PTR [ecx+0x4]
-        mov edx, DWORD PTR [esp+0x8]
-        mov ecx, DWORD PTR [eax+0x18]
-        mov eax, DWORD PTR [esp+0x4]
-        mov ecx, DWORD PTR [ecx+0x1964]
-        push edx
-        push 0x1
-        push eax
-        call CalleeColourFadeTo
-        ret 0x8
-    }
+    return GetWorld()->GetEnvironment()->GetSpellEffectInterpolator()->DisplacementMonochromeEffectColourFadeTo(time, NScreenEffect::SCREEN_EFFECT_PRIORITY_SCRIPT, colour);
 }

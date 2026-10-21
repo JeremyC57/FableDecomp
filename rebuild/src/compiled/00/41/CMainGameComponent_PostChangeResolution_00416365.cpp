@@ -1,50 +1,29 @@
-extern "C" __declspec(naked) void fn_00416365(void)
+// CMainGameComponent::PostChangeResolution(unsigned long, unsigned long, unsigned long) -- pass a resolution change on to the display engine, then the world
+// Leaf: ?PostChangeResolution@CMainGameComponent@@QAEXKKK@Z
+// Retail: Fable.exe @ 0x00416365, 45 bytes, `ret 0Ch`; Ego_r.pdb / FableWin.pdb ?PostChangeResolution@CMainGameComponent@@QAEXKKK@Z.
+// Forwards its three arguments to CDisplayEngine::PostChangeResolution (0x00434A20; Ego_r.pdb ...@CDisplayEngine@@QAEXKKK@Z)
+// on PDisplayEngine (+0x28), then to the world's handler (0x0049D820, an empty `ret 0Ch`; name descriptive) on PWorld (+0x24).
+// Layout: retail CMainGameComponent PWorld +0x24, PDisplayEngine +0x28 (as 0x00416392 / 0x004160A6).
+// Opt: size TU with frame pointers (`optimize("y", off)`: push ebp / mov ebp,esp; `push dword ptr [ebp+x]` re-reads).
+#pragma optimize("s", on)
+#pragma optimize("y", off)
+class CDisplayEngine {
+public:
+    void PostChangeResolution(unsigned long width, unsigned long height, unsigned long depth);   // 0x00434A20
+};
+class CWorld {
+public:
+    void PostChangeResolution(unsigned long width, unsigned long height, unsigned long depth);   // 0x0049D820
+};
+class CMainGameComponent {
+public:
+    void PostChangeResolution(unsigned long width, unsigned long height, unsigned long depth);
+    unsigned char   _pad00[0x24];
+    CWorld*         PWorld;                              // +0x24 scoped_ptr<CWorld>
+    CDisplayEngine* PDisplayEngine;                      // +0x28 scoped_ptr<CDisplayEngine>
+};
+void CMainGameComponent::PostChangeResolution(unsigned long width, unsigned long height, unsigned long depth)
 {
-    __asm {
-        _emit 0x55
-        _emit 0x8b
-        _emit 0xec
-        _emit 0x56
-        _emit 0xff
-        _emit 0x75
-        _emit 0x10
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xff
-        _emit 0x75
-        _emit 0x0c
-        _emit 0x8b
-        _emit 0x4e
-        _emit 0x28
-        _emit 0xff
-        _emit 0x75
-        _emit 0x08
-        _emit 0xe8
-        _emit 0xa4
-        _emit 0xe6
-        _emit 0x01
-        _emit 0x00
-        _emit 0xff
-        _emit 0x75
-        _emit 0x10
-        _emit 0x8b
-        _emit 0x4e
-        _emit 0x24
-        _emit 0xff
-        _emit 0x75
-        _emit 0x0c
-        _emit 0xff
-        _emit 0x75
-        _emit 0x08
-        _emit 0xe8
-        _emit 0x93
-        _emit 0x74
-        _emit 0x08
-        _emit 0x00
-        _emit 0x5e
-        _emit 0x5d
-        _emit 0xc2
-        _emit 0x0c
-        _emit 0x00
-    }
+    PDisplayEngine->PostChangeResolution(width, height, depth);
+    PWorld->PostChangeResolution(width, height, depth);
 }

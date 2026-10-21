@@ -1,79 +1,44 @@
-extern "C" __declspec(naked) void cand_004498c0(void)
+// CPlayerManager::GetPlayer(long number) -- the player whose Number matches, else the neutral player
+// Leaf: ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@J@Z
+// Retail: Fable.exe @ 0x004498C0, 73 bytes, `ret 4`; Ego_r.pdb ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@J@Z. 0x004498C0 and 0x00449910
+// are byte-identical (the const and non-const overloads); which address is which overload is not recoverable from the bytes.
+// Layout: retail CPlayerManager -- Players (12-byte STLport vector<CPlayer*>) +0x0c, PlayerNeutral +0x18 (Ego_r.pdb +0x1c with a
+// 16-byte vector; engine/CPlayerManager.h carries the PDB offsets), modelled locally as at 0x00449990. CPlayer from
+// engine/CPlayer.h (Number +0x28).
+// Shape: /O2 (16-aligned entry, `lea ecx,[ecx]` loop pad); size() read once into a local count, `long` index.
+#include "engine/CPlayer.h"
+struct CPlayer_Methods : CPlayer {
+    long GetJoystickDeviceNumber() const;                // 0x00487510
+};
+class CMainGameComponent;
+class CGameDefinitionManager;
+template <class T> class CVector {                       // STLport vector, 12 bytes
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    unsigned int size() const { return _M_finish - _M_start; }
+    T& operator[](unsigned int n) { return _M_start[n]; }
+    const T& operator[](unsigned int n) const { return _M_start[n]; }
+};
+class CPlayerManager {
+public:
+    void*                     _vfptr_or_pad;             // +0x00
+    CMainGameComponent*       Component;                 // +0x04
+    CGameDefinitionManager*   DefinitionManager;         // +0x08
+    CVector<CPlayer_Methods*> Players;                   // +0x0c
+    long                      PlayerNeutral;             // +0x18
+    long                      MainPlayer;                // +0x1c
+    CPlayer& GetPlayer(long number);
+    const CPlayer& GetPlayer(long number) const;
+};
+CPlayer& CPlayerManager::GetPlayer(long number)
 {
-    __asm
+    const long count = Players.size();
+    for (long i = 0; i < count; ++i)
     {
-        _emit 0x8B
-        _emit 0x41
-        _emit 0x10
-        _emit 0x53
-        _emit 0x8B
-        _emit 0x59
-        _emit 0x0C
-        _emit 0x2B
-        _emit 0xC3
-        _emit 0x55
-        _emit 0xC1
-        _emit 0xF8
-        _emit 0x02
-        _emit 0x56
-        _emit 0x33
-        _emit 0xD2
-        _emit 0x85
-        _emit 0xC0
-        _emit 0x57
-        _emit 0x7E
-        _emit 0x1A
-        _emit 0x8B
-        _emit 0xFB
-        _emit 0x8B
-        _emit 0x5C
-        _emit 0x24
-        _emit 0x14
-        _emit 0x8B
-        _emit 0xF7
-        _emit 0x8D
-        _emit 0x49
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x2E
-        _emit 0x39
-        _emit 0x5D
-        _emit 0x28
-        _emit 0x74
-        _emit 0x18
-        _emit 0x42
-        _emit 0x83
-        _emit 0xC6
-        _emit 0x04
-        _emit 0x3B
-        _emit 0xD0
-        _emit 0x7C
-        _emit 0xF1
-        _emit 0x8B
-        _emit 0x41
-        _emit 0x18
-        _emit 0x8B
-        _emit 0x49
-        _emit 0x0C
-        _emit 0x8B
-        _emit 0x04
-        _emit 0x81
-        _emit 0x5F
-        _emit 0x5E
-        _emit 0x5D
-        _emit 0x5B
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x04
-        _emit 0x97
-        _emit 0x5F
-        _emit 0x5E
-        _emit 0x5D
-        _emit 0x5B
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
+        if (Players[i]->Number == number)
+            return *Players[i];
     }
+    return *Players[PlayerNeutral];
 }

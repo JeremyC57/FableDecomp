@@ -1,40 +1,39 @@
 #include <stdio.h>
-
-#pragma pack(push,1)
-struct CDefString {
-    unsigned long value;
+#include <stddef.h>
+static int g_copies;
+#pragma pack(push, 1)
+class CDefString {
+public:
+    long TablePos;
+    CDefString(long p) : TablePos(p) {}
+    CDefString(const CDefString& other) : TablePos(other.TablePos) { ++g_copies; }
 };
-struct CParentDefClassBase {
-    char pad[0x25];
-    unsigned long instantiationName; // at +0x25
+class CDefClassBase {
+public:
+    virtual ~CDefClassBase() {}
+    unsigned char _body[0x21];
+};
+class CParentDefClassBase : public CDefClassBase {
+public:
+    CDefString InstantiationName;
+    unsigned char SubDefInfoMap[0x14];
+    CParentDefClassBase() : InstantiationName(0) {}
+    virtual CDefString GetInstantiationName() const;
 };
 #pragma pack(pop)
 
-CDefString GetInstantiationName(CParentDefClassBase *this_)
+CDefString CParentDefClassBase::GetInstantiationName() const
 {
-    CDefString r;
-    r.value = this_->instantiationName;
-    return r;
+    return InstantiationName;
 }
 
 int main()
 {
-    CParentDefClassBase obj;
-    for (int i = 0; i < (int)sizeof(obj); ++i) ((char*)&obj)[i] = 0;
-    obj.instantiationName = 0xDEADBEEFu;
-
-    CDefString got = GetInstantiationName(&obj);
-    if (got.value != 0xDEADBEEFu) {
-        printf("FAIL got=%08lx\n", got.value);
-        return 1;
-    }
-
-    // field must be read from offset 0x25
-    if ((char*)&obj.instantiationName - (char*)&obj != 0x25) {
-        printf("FAIL offset\n");
-        return 1;
-    }
-
-    printf("OK_0x004303b0\n");
-    return 0;
+    CParentDefClassBase d; d.InstantiationName.TablePos = 1234;
+    CDefString n = d.GetInstantiationName();
+    bool ok = n.TablePos == 1234 && offsetof(CParentDefClassBase, InstantiationName) == 0x25 && g_copies >= 1;
+    d.InstantiationName.TablePos = -1;
+    ok = ok && d.GetInstantiationName().TablePos == -1;
+    printf(ok ? "004303b0_TEST PASS\n" : "004303b0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

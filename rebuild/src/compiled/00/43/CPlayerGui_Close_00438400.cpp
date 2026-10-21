@@ -1,60 +1,27 @@
-extern "C" __declspec(naked) void cand_00438400(void)
+// CPlayerGui::Close(bool fade) -- start the GUI closing (fade from zero) or mark it closed outright, then clear it
+// Leaf: ?Close@CPlayerGui@@QAEX_N@Z
+// Retail: Fable.exe @ 0x00438400, 52 bytes, `ret 4`; Ego_r.pdb ?Close@CPlayerGui@@QAEX_N@Z; 7 callers (0x00483176,
+// 0x0055D4B6, ...). fade: GuiMode = 1, FadeInTimer = 0.0f; else GuiMode = 3; both arms end in CPlayerGui::ClearGui
+// (0x00438230, tail-duplicated). The EPlayerGuiMode enumerator names are not recovered.
+// Layout: retail CPlayerGui -- GuiMode +0x294, FadeInTimer +0x298 (engine/CPlayerGui.h carries Ego_r.pdb +0x2a8/+0x2ac:
+// 8 higher past SubtitleRenderer plus 12 for the three 16-byte vectors AbilityButtons..QuickAccessButtonsAlpha).
+// Shape: /O2.
+enum EPlayerGuiMode { PLAYER_GUI_MODE_1 = 1, PLAYER_GUI_MODE_3 = 3 };
+class CPlayerGui {
+public:
+    unsigned char  _pad000[0x294];
+    EPlayerGuiMode GuiMode;                              // +0x294
+    float          FadeInTimer;                          // +0x298
+    void Close(bool fade);
+    void ClearGui();                                     // 0x00438230
+};
+void CPlayerGui::Close(bool fade)
 {
-    __asm
-    {
-        _emit 0x8A
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x84
-        _emit 0xC0
-        _emit 0x74
-        _emit 0x1C
-        _emit 0xC7
-        _emit 0x81
-        _emit 0x94
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x01
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xC7
-        _emit 0x81
-        _emit 0x98
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xE8
-        _emit 0x0F
-        _emit 0xFE
-        _emit 0xFF
-        _emit 0xFF
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
-        _emit 0xC7
-        _emit 0x81
-        _emit 0x94
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x03
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xE8
-        _emit 0xFD
-        _emit 0xFD
-        _emit 0xFF
-        _emit 0xFF
-        _emit 0xC2
-        _emit 0x04
-        _emit 0x00
+    if (fade) {
+        GuiMode = PLAYER_GUI_MODE_1;
+        FadeInTimer = 0.0f;
     }
+    else
+        GuiMode = PLAYER_GUI_MODE_3;
+    ClearGui();
 }

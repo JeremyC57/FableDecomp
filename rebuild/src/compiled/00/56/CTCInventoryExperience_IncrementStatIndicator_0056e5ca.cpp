@@ -1,19 +1,20 @@
-// CTCInventoryExperience::IncrementStatIndicator @ 0x0056e5ca
-// __fastcall (this=ecx), no stack args, void return.
-// Exact-byte naked transcription of retail disassembly (no relocations).
-struct CTCInventoryExperience { char pad[0x1c4]; };
+// CTCInventoryExperience::IncrementStatIndicator() -- moves the stat-spending indicator down one entry, stopping at the last
+// Leaf: IncrementStatIndicator@CTCInventoryExperience
+// Retail: Fable.exe @ 0x0056E5CA, 20 bytes; called from CTCInventoryExperience::ProcessInventoryInputDown 0x0056ECCB.
+// Shape: size TU (`lea eax,[ecx+0x1bc]` and a memory compare); /O2 loads both fields first.
+// Layout: retail CTCInventoryExperience = Ego_r.pdb minus 0x44 here (STLport containers before it): statIndicatorPos +0x1bc,
+// statIndicatorMax +0x1c0 (PDB +0x200/+0x204); engine/CTCInventoryExperience.h carries the PDB offsets.
+class CTCInventoryExperience {
+public:
+    unsigned char _pad00[0x1bc];
+    long          statIndicatorPos;                      // +0x1bc
+    long          statIndicatorMax;                      // +0x1c0
+    void IncrementStatIndicator();
+};
 
-__declspec(naked) void __fastcall IncrementStatIndicator(CTCInventoryExperience *thisp)
+#pragma optimize("s", on)
+void CTCInventoryExperience::IncrementStatIndicator()
 {
-    (void)thisp;
-    __asm {
-        lea eax, [ecx+0x1bc]
-        mov edx, [eax]
-        inc edx
-        cmp edx, [ecx+0x1c0]
-        jge skip
-        mov [eax], edx
-    skip:
-        ret
-    }
+    if (statIndicatorPos + 1 < statIndicatorMax)
+        ++statIndicatorPos;
 }

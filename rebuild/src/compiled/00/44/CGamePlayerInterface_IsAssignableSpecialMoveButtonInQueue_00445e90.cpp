@@ -1,78 +1,49 @@
-extern "C" __declspec(naked) void cand_00445e90(void)
+// CGamePlayerInterface::IsAssignableSpecialMoveButtonInQueue(long index, EInputButtonEventType button_event_type, long player) -- is the indexed AssignableSpecialMoveButtons input waiting in the queue
+// Leaf: ?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z
+// Retail: Fable.exe @ 0x00445E90, 72 bytes, `ret 0Ch`; Ego_r.pdb ?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z;
+// label correct.
+// Body: index in range (`jl` on the sign, then unsigned `jae` against size()) -> a zeroed float local (stored in the dead
+// index slot) and AssignableSpecialMoveButtons[index].Data->IsEventOfThisTypeInQueue(button_event_type, player, value) (virtual slot 5,
+// +0x14); else false.
+// Layout: retail CGamePlayerInterface -- AssignableSpecialMoveButtons (12-byte STLport vector<CCountedPointer<const CInputTypeBase>>) +0x7b8
+// (Ego_r.pdb +0x7bc; its vectors are 16 bytes); CCountedPointer {Data, Info} 8 bytes. Modelled locally: only that member is read.
+// Shape: /O2 (16-aligned entry); the element pointer bound to a local before the float, so the zero store follows the pushes.
+enum EInputButtonEventType { INPUT_BUTTON_EVENT_TYPE_NONE };
+class CInputTypeBase {
+public:
+    virtual ~CInputTypeBase();
+    virtual void _slot01() const; virtual void _slot02() const; virtual void _slot03() const; virtual void _slot04() const;
+    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const;   // +0x14
+};
+template <class T> class CCountedPointer {
+public:
+    T*    Data;                                          // +0x00
+    void* Info;                                          // +0x04
+    T* operator->() const { return Data; }
+};
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;                                         // +0x00
+    T* _M_finish;                                        // +0x04
+    T* _M_end_of_storage;                                // +0x08
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+    const T& operator[](unsigned int n) const { return _M_start[n]; }
+};
+}
+class CGamePlayerInterface {
+public:
+    unsigned char _pad0000[0x7b8];
+    std::vector<CCountedPointer<const CInputTypeBase> > AssignableSpecialMoveButtons;   // +0x7b8
+    bool IsAssignableSpecialMoveButtonInQueue(long index, EInputButtonEventType button_event_type, long player) const;
+};
+bool CGamePlayerInterface::IsAssignableSpecialMoveButtonInQueue(long index, EInputButtonEventType button_event_type, long player) const
 {
-    __asm
+    if (index >= 0 && (unsigned long)index < AssignableSpecialMoveButtons.size())
     {
-        _emit 0x8B
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x85
-        _emit 0xC0
-        _emit 0x7C
-        _emit 0x3B
-        _emit 0x8B
-        _emit 0x91
-        _emit 0xBC
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x2B
-        _emit 0x91
-        _emit 0xB8
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0xC1
-        _emit 0xFA
-        _emit 0x03
-        _emit 0x3B
-        _emit 0xC2
-        _emit 0x73
-        _emit 0x28
-        _emit 0x8B
-        _emit 0x89
-        _emit 0xB8
-        _emit 0x07
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x0C
-        _emit 0xC1
-        _emit 0x8D
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x50
-        _emit 0x8B
-        _emit 0x44
-        _emit 0x24
-        _emit 0x10
-        _emit 0x50
-        _emit 0x8B
-        _emit 0x44
-        _emit 0x24
-        _emit 0x10
-        _emit 0xC7
-        _emit 0x44
-        _emit 0x24
-        _emit 0x0C
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8B
-        _emit 0x11
-        _emit 0x50
-        _emit 0xFF
-        _emit 0x52
-        _emit 0x14
-        _emit 0xC2
-        _emit 0x0C
-        _emit 0x00
-        _emit 0x32
-        _emit 0xC0
-        _emit 0xC2
-        _emit 0x0C
-        _emit 0x00
+        const CInputTypeBase* input = AssignableSpecialMoveButtons[index].Data;
+        float value = 0.0f;
+        return input->IsEventOfThisTypeInQueue(button_event_type, player, value);
     }
+    return false;
 }

@@ -1,268 +1,139 @@
 #include <cstdio>
-
-class CScriptThing
-{
-};
-
-class CGSIZTarget_Player;
-class CGSIZTarget_Node;
-
-class CGSIZTarget_Manager
-{
+#include "engine/CPlayer.h"
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CGSIZTarget_Player* GetPlayer();
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CGSIZTarget_Player
-{
+class CThing {
 public:
-    void* GetHero();
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        *out = (const T*)((it == map->last || T::INTERFACE_TYPE < it->type) ? map->last : it)->component;
+        return true;
+    }
 };
-
-class CGSIZTarget_Container
-{
+class CScriptThing {
 public:
-    CGSIZTarget_Node* LowerBound(
-        const long* pKey);
-
-    CGSIZTarget_Node* m_pFirst;
-    CGSIZTarget_Node* m_pEnd;
+    virtual ~CScriptThing();
+    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
+    virtual CThing* GetPThing() const;                   // slot 11 (+0x2c)
 };
-
-class CGameScriptInterface
-{
+class CTCTargetingBase {                                // interface 8 (class not confirmed)
 public:
-    virtual bool IsPlayerZTargetingThing(
-        const CScriptThing& thing) const;
+    enum { INTERFACE_TYPE = 8 };
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
+    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
+    virtual void v30(); virtual void v31(); virtual void v32();
+    virtual CThing* GetTarget() const;                   // slot 33 (+0x84, name not confirmed)
 };
-
-struct CGSIZTarget_InterfaceStorage
-{
-    void* m_pVTable;
-    unsigned char m_Pad04[0x10];
-    CGSIZTarget_Manager* m_pManager;
+class CThingPlayerCreature : public CThing { };
+struct CPlayer_Methods : CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const; // 0x00487DC0
 };
-
-struct CGSIZTarget_PlayerStorage
-{
-    unsigned char m_Pad00[0x20A];
-    unsigned char m_ZTargetingActive;
-};
-
-struct CGSIZTarget_HeroStorage
-{
-    unsigned char m_Pad00[0x20];
-    unsigned long m_Flags20;
-    unsigned char m_Pad24[0x20];
-    CGSIZTarget_Container m_Container;
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;
-};
-
-struct CGSIZTarget_EntityStorage
-{
-    unsigned char m_Pad00[0x91];
-    unsigned char m_Flags91;
-};
-
-struct CGSIZTarget_ScriptThingStorage
-{
-    void** m_pVTable;
-};
-
-struct CGSIZTarget_ComponentStorage
-{
-    void** m_pVTable;
-};
-
-class CGSIZTarget_Node
-{
+struct CPlayerManager {
 public:
-    long m_Key;
-    CGSIZTarget_ComponentStorage* m_pComponent;
+    CPlayer_Methods& GetMainPlayer();                    // 0x00449970
 };
-
-static CGSIZTarget_PlayerStorage* g_pPlayerStorage;
-static CGSIZTarget_HeroStorage* g_pHero;
-static CGSIZTarget_EntityStorage* g_pResolvedThing;
-static CGSIZTarget_EntityStorage* g_pComponentTarget;
-static CGSIZTarget_Node* g_pLowerBoundResult;
-static CGSIZTarget_Container* g_pObservedContainer;
-static CGSIZTarget_ComponentStorage* g_pObservedComponent;
-static long g_ObservedKey;
-static unsigned long g_ResolveCalls;
-static unsigned long g_LowerBoundCalls;
-static unsigned long g_GetTargetCalls;
-
-CGSIZTarget_Player* CGSIZTarget_Manager::GetPlayer()
+class CGameScriptInterface {
+public:
+    virtual bool IsPlayerZTargetingThing(const CScriptThing& thing) const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
+};
+bool CGameScriptInterface::IsPlayerZTargetingThing(const CScriptThing& thing) const
 {
-    return reinterpret_cast<CGSIZTarget_Player*>(
-        g_pPlayerStorage);
+    CPlayer_Methods& player = PlayerManager->GetMainPlayer();
+    CThing* target = thing.GetPThing();
+    if (player.ZTargeting && target && !target->IsDead())
+    {
+        CThing* hero = player.GetPControlledCreature();
+        if (hero && !hero->IsDead())
+        {
+            const CTCTargetingBase* tc;
+            if (hero->PeekTC(&tc) && tc->GetTarget() == target)
+                return true;
+        }
+    }
+    return false;
 }
 
-void* CGSIZTarget_Player::GetHero()
-{
-    return g_pHero;
-}
-
-CGSIZTarget_Node*
-CGSIZTarget_Container::LowerBound(const long* pKey)
-{
-    g_pObservedContainer = this;
-    g_ObservedKey = *pKey;
-    ++g_LowerBoundCalls;
-    return g_pLowerBoundResult;
-}
-
-static CGSIZTarget_EntityStorage* __fastcall
-ResolveScriptThing(CGSIZTarget_ScriptThingStorage*)
-{
-    ++g_ResolveCalls;
-    return g_pResolvedThing;
-}
-
-static CGSIZTarget_EntityStorage* __fastcall
-GetComponentTarget(CGSIZTarget_ComponentStorage* pThis)
-{
-    g_pObservedComponent = pThis;
-    ++g_GetTargetCalls;
-    return g_pComponentTarget;
-}
-
-static void ResetObservations()
-{
-    g_pObservedContainer = 0;
-    g_pObservedComponent = 0;
-    g_ObservedKey = -1;
-    g_ResolveCalls = 0;
-    g_LowerBoundCalls = 0;
-    g_GetTargetCalls = 0;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf(
-        "FSE2_00899b10_TEST FAIL: %s\n",
-        pMessage);
-    return 1;
-}
-
+static CInterfaceMap::SEntry g_entries[3];
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+static CThingPlayerCreature g_hero; static CThingPlayerCreature* g_heroPtr; static CThing g_target, g_other;
+static CThing* g_scriptPThing; static CThing* g_aimed;
+CThingPlayerCreature* CPlayer_Methods::GetPControlledCreature() const { return g_heroPtr; }
+static unsigned char g_playerRaw[sizeof(CPlayer_Methods)];
+CPlayer_Methods& CPlayerManager::GetMainPlayer() { return *(CPlayer_Methods*)g_playerRaw; }
+static CThing* __fastcall ScriptGetPThing(const void*, int) { return g_scriptPThing; }
+static CThing* __fastcall TcGetTarget(const void*, int) { return g_aimed; }
 int main()
 {
-    void* scriptThingVTable[12] = {};
-    void* componentVTable[34] = {};
-    CGSIZTarget_InterfaceStorage interfaceStorage = {};
-    CGSIZTarget_Manager manager;
-    CGSIZTarget_PlayerStorage player = {};
-    CGSIZTarget_HeroStorage hero = {};
-    CGSIZTarget_EntityStorage target = {};
-    CGSIZTarget_EntityStorage other = {};
-    CGSIZTarget_ScriptThingStorage scriptThingStorage = {};
-    CGSIZTarget_ComponentStorage foundComponent = {};
-    CGSIZTarget_ComponentStorage endComponent = {};
-    CGSIZTarget_Node foundNode = {};
-    CGSIZTarget_Node endNode = {};
-
-    scriptThingVTable[11] =
-        reinterpret_cast<void*>(ResolveScriptThing);
-    componentVTable[33] =
-        reinterpret_cast<void*>(GetComponentTarget);
-    scriptThingStorage.m_pVTable = scriptThingVTable;
-    foundComponent.m_pVTable = componentVTable;
-    endComponent.m_pVTable = componentVTable;
-    interfaceStorage.m_pManager = &manager;
-    CGameScriptInterface* const pInterface =
-        reinterpret_cast<CGameScriptInterface*>(
-            &interfaceStorage);
-    const CScriptThing& scriptThing =
-        reinterpret_cast<const CScriptThing&>(
-            scriptThingStorage);
-    g_pPlayerStorage = &player;
-    g_pHero = &hero;
-    g_pResolvedThing = &target;
-    foundNode.m_pComponent = &foundComponent;
-    endNode.m_pComponent = &endComponent;
-    hero.m_Container.m_pEnd = &endNode;
-
-    ResetObservations();
-    player.m_ZTargetingActive = 0;
-    if (pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing) ||
-        g_ResolveCalls != 1 ||
-        g_LowerBoundCalls != 0)
-        return Fail("inactive targeting guard");
-
-    ResetObservations();
-    player.m_ZTargetingActive = 1;
-    g_pResolvedThing = 0;
-    if (pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing))
-        return Fail("null script target guard");
-
-    ResetObservations();
-    g_pResolvedThing = &target;
-    target.m_Flags91 = 1;
-    if (pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing))
-        return Fail("dead script target guard");
-
-    ResetObservations();
-    target.m_Flags91 = 0;
-    g_pHero = 0;
-    if (pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing))
-        return Fail("null hero guard");
-
-    ResetObservations();
-    g_pHero = &hero;
-    hero.m_Flags91 = 1;
-    if (pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing))
-        return Fail("dead hero guard");
-
-    ResetObservations();
-    hero.m_Flags91 = 0;
-    hero.m_Flags20 = 0;
-    if (pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing))
-        return Fail("targeting capability guard");
-
-    ResetObservations();
-    hero.m_Flags20 = 0x100;
-    foundNode.m_Key = 8;
-    g_pLowerBoundResult = &foundNode;
-    g_pComponentTarget = &target;
-    if (!pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing) ||
-        g_pObservedContainer != &hero.m_Container ||
-        g_ObservedKey != 8 ||
-        g_pObservedComponent != &foundComponent ||
-        g_LowerBoundCalls != 1 ||
-        g_GetTargetCalls != 1)
-        return Fail("matching component target");
-
-    ResetObservations();
-    g_pComponentTarget = &other;
-    if (pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing))
-        return Fail("nonmatching component target");
-
-    ResetObservations();
-    foundNode.m_Key = 9;
-    g_pLowerBoundResult = &foundNode;
-    g_pComponentTarget = &target;
-    if (!pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing) ||
-        g_pObservedComponent != &endComponent)
-        return Fail("greater-key sentinel");
-
-    ResetObservations();
-    g_pLowerBoundResult = &endNode;
-    if (!pInterface->CGameScriptInterface::
-            IsPlayerZTargetingThing(scriptThing) ||
-        g_pObservedComponent != &endComponent)
-        return Fail("direct sentinel");
-
-    std::printf("FSE2_00899b10_TEST PASS\n");
-    return 0;
+    static void* svt[12]; svt[11] = (void*)ScriptGetPThing; void* sobj = svt;
+    static void* tvt[34]; tvt[33] = (void*)TcGetTarget; void* tobj = tvt;
+    const CScriptThing& thing = *(const CScriptThing*)&sobj;
+    CPlayer_Methods& player = *(CPlayer_Methods*)g_playerRaw;
+    for (int i = 0; i < 9; ++i) g_hero.UsingComponents[i] = 0;
+    g_hero.UsingComponents[0] = 1u << 8; g_hero.Dead = 0; g_target.Dead = 0;
+    g_entries[0].type = 4; g_entries[0].component = 0;
+    g_entries[1].type = 8; g_entries[1].component = (CTCBase*)&tobj;
+    g_hero.Components.first = g_entries; g_hero.Components.last = g_entries + 2;
+    CPlayerManager pm; CGameScriptInterface gsi; gsi.PlayerManager = &pm;
+    player.ZTargeting = true; g_heroPtr = &g_hero; g_scriptPThing = &g_target; g_aimed = &g_target;
+    bool ok = gsi.IsPlayerZTargetingThing(thing);
+    g_aimed = &g_other; ok = ok && !gsi.IsPlayerZTargetingThing(thing);            // aimed elsewhere
+    g_aimed = &g_target;
+    player.ZTargeting = false; ok = ok && !gsi.IsPlayerZTargetingThing(thing);   // not z-targeting
+    player.ZTargeting = true;
+    g_target.Dead = 1; ok = ok && !gsi.IsPlayerZTargetingThing(thing); g_target.Dead = 0;
+    g_scriptPThing = 0; ok = ok && !gsi.IsPlayerZTargetingThing(thing); g_scriptPThing = &g_target;
+    g_heroPtr = 0; ok = ok && !gsi.IsPlayerZTargetingThing(thing); g_heroPtr = &g_hero;
+    g_hero.Dead = 1; ok = ok && !gsi.IsPlayerZTargetingThing(thing); g_hero.Dead = 0;
+    g_hero.UsingComponents[0] = 0; ok = ok && !gsi.IsPlayerZTargetingThing(thing); g_hero.UsingComponents[0] = 1u << 8;
+    ok = ok && gsi.IsPlayerZTargetingThing(thing);
+    std::printf(ok ? "00899b10_TEST PASS\n" : "00899b10_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

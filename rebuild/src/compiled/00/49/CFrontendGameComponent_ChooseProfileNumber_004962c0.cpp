@@ -1,117 +1,96 @@
-// CFrontendGameComponent::ChooseProfileNumber @ 0x004962C0.
-
-class CFrontendProfileValue_004962c0
-{
+// CFrontendGameComponent::ChooseProfileNumber(long) -- load the chosen debug-front-end profile (row 11 = default profile, row 12 = a new profile, else a listed one) and switch mode
+// Leaf: ?ChooseProfileNumber@CFrontendGameComponent@@QAEXJ@Z (Ego_r.pdb AAEXJ @ 0x0049F070, private; modelled public)
+// Retail: Fable.exe @ 0x004962C0, 219 bytes, `ret 4`.
+// Body: index = ProfileNamesOffset + number - 1. Row 11: LoadProfile(Get().GetDefaultProfileName() (0x004065D0), true);
+// row 12: LoadProfile(CreateNewProfile() (0x004945B0), false); otherwise if 0 <= index < ProfileNames.size():
+// LoadProfile(ProfileNames[index], true); each followed by SetMode(1). LoadProfile (inline here) is
+// CTBaseSingleton<CUserProfileManager>::Get() (0x0040D2A0).SetProfileName(name, load) (0x0040D400);
+// SetMode (inline) stores Mode, CursorHighlight = 1, ClearString() (String[128] zeroed, StringPos = 0), and if Mode is 10
+// calls GetWorldNames() (0x00495890; the manifest's PopulateProfiles / FillInListBox labels are stale -- it fills
+// WorldNames +0x1e30, the mode-10 list). CWideString temporaries die via ~CWideString 0x0099B510.
+// Names: LoadProfile / SetMode / ClearString / GetWorldNames / GetDefaultProfileName are Ego_r.pdb symbols; their
+// inlined bodies here are reconstructed from retail.
+// Shape: each branch is { LoadProfile(temp, flag); SetMode(1); } with both helpers forced inline: the CWideString temporary
+// dies before SetMode, and the backend cross-jumps the three SetMode copies into one tail (each branch materialises the
+// shared constant 1 in edi itself). A single SetMode after the if-chain hoists `mov edi,1` and merges the row-11/12 call
+// tails; SetMode inside LoadProfile destroys the temporary after SetMode. ClearString must be memset then StringPos = 0;
+// vector::operator[] must be STLport's *(begin() + n) (the begin pointer is copied to ecx); _M_start[n] differs.
+// Layout: retail CFrontendGameComponent: Mode +0x1c, String +0x168, StringPos +0x1e8 (Ego_r offsets), ProfileNames
+// +0x1e0c, then the STLport vector shrink (0x10 -> 0xc): ProfileNamesOffset +0x1e18 (Ego_r +0x1e1c), CursorHighlight
+// +0x1e44 (Ego_r +0x1e50).
+// Opt: /O2 (16-aligned entry).
+#include <string.h>
+class CWideString {
 public:
-    long m_Value;
-
-    CFrontendProfileValue_004962c0();
-    CFrontendProfileValue_004962c0(
-        const CFrontendProfileValue_004962c0&);
-    ~CFrontendProfileValue_004962c0();
-    void Destroy();
+    void* PStringData;
+    ~CWideString();                                      // 0x0099B510
 };
-
-class CFrontendProfileActionManager_004962c0
-{
+class CUserProfileManager {
 public:
-    void* GetDefaultProfileAction();
-    void DispatchProfileAction(void*, long);
+    CWideString GetDefaultProfileName() const;           // 0x004065D0
+    void SetProfileName(const CWideString& name, bool load);   // 0x0040D400
 };
-
-extern CFrontendProfileActionManager_004962c0* __cdecl
-GetFrontendProfileActionManager_004962c0();
-
-class CFrontendGameComponent_004962c0
-{
-    unsigned char m_Data[0x1e48];
-
-    CFrontendProfileValue_004962c0 CreateNewProfile();
-    void PopulateProfiles();
-
+template <class T> class CTBaseSingleton {
 public:
-    void ChooseProfileNumber(long);
+    static T& __fastcall Get();                          // 0x0040D2A0 for CUserProfileManager
 };
-
-__declspec(naked)
-void CFrontendGameComponent_004962c0::ChooseProfileNumber(long)
-{
-    __asm
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+    T* begin() { return _M_start; }
+    T& operator[](unsigned int n) { return *(begin() + n); }
+};
+}
+enum EGameMode { GAME_MODE_1 = 1, GAME_MODE_10 = 10 };
+class CFrontendGameComponent {
+public:
+    unsigned char            _pad0000[0x1c];
+    EGameMode                Mode;                       // +0x1c
+    unsigned char            _pad0020[0x168 - 0x20];
+    char                     String[128];                // +0x168
+    long                     StringPos;                  // +0x1e8
+    unsigned char            _pad01ec[0x1e0c - 0x1ec];
+    std::vector<CWideString> ProfileNames;               // +0x1e0c
+    long                     ProfileNamesOffset;         // +0x1e18
+    unsigned char            _pad1e1c[0x1e44 - 0x1e1c];
+    long                     CursorHighlight;            // +0x1e44
+    CWideString CreateNewProfile();                      // 0x004945B0
+    void GetWorldNames();                                // 0x00495890
+    void ClearString() { memset(String, 0, sizeof(String)); StringPos = 0; }
+    __forceinline void SetMode(EGameMode mode)
     {
-        push esi
-        mov esi, ecx
-        mov eax, dword ptr [esi + 1e18h]
-        mov ecx, dword ptr [esp + 8]
-        lea eax, [eax + ecx - 1]
-        cmp eax, 0bh
-        push edi
-        jne check_create_profile
-        lea edx, [esp + 0ch]
-        push edx
-        call GetFrontendProfileActionManager_004962c0
-        mov ecx, eax
-        call CFrontendProfileActionManager_004962c0::GetDefaultProfileAction
-        mov edi, 1
-        push edi
-        push eax
-        call GetFrontendProfileActionManager_004962c0
-        mov ecx, eax
-        call CFrontendProfileActionManager_004962c0::DispatchProfileAction
-        lea ecx, [esp + 0ch]
-        call CFrontendProfileValue_004962c0::Destroy
-        jmp selection_made
-
-    check_create_profile:
-        cmp eax, 0ch
-        jne check_existing_profile
-        lea eax, [esp + 0ch]
-        push eax
-        mov ecx, esi
-        call CFrontendGameComponent_004962c0::CreateNewProfile
-        push 0
-        push eax
-        call GetFrontendProfileActionManager_004962c0
-        mov ecx, eax
-        call CFrontendProfileActionManager_004962c0::DispatchProfileAction
-        lea ecx, [esp + 0ch]
-        call CFrontendProfileValue_004962c0::Destroy
-        mov edi, 1
-        jmp selection_made
-
-    check_existing_profile:
-        test eax, eax
-        jl selection_invalid
-        mov ecx, dword ptr [esi + 1e10h]
-        mov edx, dword ptr [esi + 1e0ch]
-        sub ecx, edx
-        sar ecx, 2
-        cmp eax, ecx
-        jae selection_invalid
-        mov ecx, edx
-        mov edi, 1
-        push edi
-        lea edx, [ecx + eax*4]
-        push edx
-        call GetFrontendProfileActionManager_004962c0
-        mov ecx, eax
-        call CFrontendProfileActionManager_004962c0::DispatchProfileAction
-
-    selection_made:
-        mov dword ptr [esi + 1ch], edi
-        mov dword ptr [esi + 1e44h], edi
-        xor eax, eax
-        lea edi, [esi + 168h]
-        mov ecx, 20h
-        rep stos dword ptr es:[edi]
-        cmp dword ptr [esi + 1ch], 0ah
-        mov dword ptr [esi + 1e8h], 0
-        jne selection_invalid
-        mov ecx, esi
-        call CFrontendGameComponent_004962c0::PopulateProfiles
-
-    selection_invalid:
-        pop edi
-        pop esi
-        ret 4
+        Mode = mode;
+        CursorHighlight = 1;
+        ClearString();
+        if (Mode == GAME_MODE_10)
+            GetWorldNames();
+    }
+    __forceinline void LoadProfile(const CWideString& name, bool load)
+    {
+        CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, load);
+    }
+    void ChooseProfileNumber(long number);
+};
+void CFrontendGameComponent::ChooseProfileNumber(long number)
+{
+    long index = ProfileNamesOffset + number - 1;
+    if (index == 11)
+    {
+        LoadProfile(CTBaseSingleton<CUserProfileManager>::Get().GetDefaultProfileName(), true);
+        SetMode(GAME_MODE_1);
+    }
+    else if (index == 12)
+    {
+        LoadProfile(CreateNewProfile(), false);
+        SetMode(GAME_MODE_1);
+    }
+    else if (index >= 0 && index < ProfileNames.size())
+    {
+        LoadProfile(ProfileNames[index], true);
+        SetMode(GAME_MODE_1);
     }
 }

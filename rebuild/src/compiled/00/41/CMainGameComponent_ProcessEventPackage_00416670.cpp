@@ -1,61 +1,24 @@
-extern "C" __declspec(naked) void fn_00416670(void)
+// CMainGameComponent::ProcessEventPackage(const CGameEventPackage* package) -- process each event of the package in order
+// Leaf: ?ProcessEventPackage@CMainGameComponent@@IAEXPBVCGameEventPackage@@@Z
+// Retail: Fable.exe @ 0x00416670, 54 bytes, `ret 4`; Ego_r.pdb ?ProcessEventPackage@CMainGameComponent@@IAEXPBVCGameEventPackage@@@Z;
+// one caller (0x004172A3). Loops i over CGameEventPackage::GetNoEvents (0x009F16E0) calling
+// CMainGameComponent::ProcessEvent(package->GetEvent(i)) (0x00415FE0 / 0x009F16D0), the count re-read every pass.
+// Layout: only `this` and the package pointer are used; no members touched.
+// Shape: /O2.
+class CGameEvent;
+class CGameEventPackage {
+public:
+    const CGameEvent* GetEvent(unsigned long index) const;   // 0x009F16D0
+    unsigned long GetNoEvents() const;                   // 0x009F16E0
+};
+class CMainGameComponent {
+protected:
+    void ProcessEvent(const CGameEvent* event);          // 0x00415FE0
+    void ProcessEventPackage(const CGameEventPackage* package);
+    friend struct CMainGameComponent_Test;               // behaviour-test hook (both members are protected)
+};
+void CMainGameComponent::ProcessEventPackage(const CGameEventPackage* package)
 {
-    __asm {
-        _emit 0x53
-        _emit 0x56
-        _emit 0x57
-        _emit 0x8b
-        _emit 0x7c
-        _emit 0x24
-        _emit 0x10
-        _emit 0x8b
-        _emit 0xd9
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0x33
-        _emit 0xf6
-        _emit 0xe8
-        _emit 0x5e
-        _emit 0xb0
-        _emit 0x5d
-        _emit 0x00
-        _emit 0x85
-        _emit 0xc0
-        _emit 0x76
-        _emit 0x1c
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x42
-        _emit 0xb0
-        _emit 0x5d
-        _emit 0x00
-        _emit 0x50
-        _emit 0x8b
-        _emit 0xcb
-        _emit 0xe8
-        _emit 0x4a
-        _emit 0xf9
-        _emit 0xff
-        _emit 0xff
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0x46
-        _emit 0xe8
-        _emit 0x42
-        _emit 0xb0
-        _emit 0x5d
-        _emit 0x00
-        _emit 0x3b
-        _emit 0xf0
-        _emit 0x72
-        _emit 0xe4
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0x5b
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
+    for (unsigned long i = 0; i < package->GetNoEvents(); ++i)
+        ProcessEvent(package->GetEvent(i));
 }

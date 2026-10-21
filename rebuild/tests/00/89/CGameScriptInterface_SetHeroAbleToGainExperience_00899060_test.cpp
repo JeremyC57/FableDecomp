@@ -1,190 +1,134 @@
-#include <cstdio>
-
-class CGSIGainExperience_Player;
-class CGSIGainExperience_Node;
-
-class CGSIGainExperience_Manager
-{
+// behaviour test for 0x00899060 CGameScriptInterface::SetHeroAbleToGainExperience
+#include <stdio.h>
+#include <string.h>
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CGSIGainExperience_Player* GetPlayer();
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CGSIGainExperience_Player
-{
+class CThing {
 public:
-    void* GetHero();
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
 };
-
-class CGSIGainExperience_Container
-{
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
 public:
-    CGSIGainExperience_Node* LowerBound(
-        const long* pKey);
-
-    CGSIGainExperience_Node* m_pFirst;
-    CGSIGainExperience_Node* m_pEnd;
+    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
 };
-
-class CGSIGainExperience_Component
-{
+class CPlayerManager {
 public:
-    unsigned char m_Pad00[0x3C];
-    unsigned char m_AbleToGainExperience;
+    CPlayer& GetMainPlayer();                                       // 0x00449970
 };
-
-class CGSIGainExperience_Node
-{
+enum EHeroExperienceStatCategory { HERO_EXPERIENCE_STAT_STRENGTH = 0, HERO_EXPERIENCE_STAT_SKILL = 1, HERO_EXPERIENCE_STAT_WILL = 2,
+                                   HERO_EXPERIENCE_STAT_FORCE_DWORD = 0x7fffffff };
+enum EHeroTrainableStatType { HERO_TRAINABLE_STAT_FORCE_DWORD = 0x7fffffff };
+class CTCHeroExperience {
 public:
-    long m_Key;
-    CGSIGainExperience_Component* m_pComponent;
+    enum { INTERFACE_TYPE = 0x68 };
+    unsigned char _pad00[0x3c];
+    bool          AbleToGainExperience;                  // +0x3c
+    void SetAbleToGainExperience(bool able) { AbleToGainExperience = able; }
 };
-
-class CGameScriptInterface
-{
+class CGameScriptInterface {
 public:
-    virtual void SetHeroAbleToGainExperience(
-        bool ableToGainExperience) const;
+    virtual void SetHeroAbleToGainExperience(bool able) const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
 };
 
-struct CGSIGainExperience_InterfaceStorage
+void CGameScriptInterface::SetHeroAbleToGainExperience(bool able) const
 {
-    void* m_pVTable;
-    unsigned char m_Pad04[0x10];
-    CGSIGainExperience_Manager* m_pManager;
-};
-
-struct CGSIGainExperience_HeroStorage
-{
-    unsigned char m_Pad00[0x2C];
-    unsigned long m_Flags2C;
-    unsigned char m_Pad30[0x14];
-    CGSIGainExperience_Container m_Container;
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;
-};
-
-static CGSIGainExperience_Player* g_pPlayer;
-static CGSIGainExperience_HeroStorage* g_pHero;
-static CGSIGainExperience_Node* g_pLowerBoundResult;
-static CGSIGainExperience_Container* g_pObservedContainer;
-static long g_ObservedKey;
-static unsigned long g_LowerBoundCalls;
-
-CGSIGainExperience_Player*
-CGSIGainExperience_Manager::GetPlayer()
-{
-    return g_pPlayer;
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CTCHeroExperience* tc;
+    if (hero && !hero->IsDead() && hero->GetTC(&tc))
+        tc->SetAbleToGainExperience(able);
 }
 
-void* CGSIGainExperience_Player::GetHero()
+static CThingPlayerCreature* g_hero;
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
+CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return g_hero; }
+const CThingPlayerCreature* CPlayer::PeekPPlayerCharacter() const { return g_hero; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 {
-    return g_pHero;
+    SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
+}
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+{
+    const SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
 }
 
-CGSIGainExperience_Node*
-CGSIGainExperience_Container::LowerBound(
-    const long* pKey)
-{
-    g_pObservedContainer = this;
-    g_ObservedKey = *pKey;
-    ++g_LowerBoundCalls;
-    return g_pLowerBoundResult;
-}
-
-static void ResetObservations()
-{
-    g_pObservedContainer = 0;
-    g_ObservedKey = -1;
-    g_LowerBoundCalls = 0;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf(
-        "FSE2_00899060_TEST FAIL: %s\n",
-        pMessage);
-    return 1;
-}
-
+static unsigned char g_tcmem[0x1000];
+static unsigned char g_thingmem[0x200];
+static CInterfaceMap::SEntry g_entries[3];
 int main()
 {
-    CGSIGainExperience_InterfaceStorage
-        interfaceStorage = {};
-    CGSIGainExperience_Manager manager;
-    CGSIGainExperience_Player player;
-    CGSIGainExperience_HeroStorage hero = {};
-    CGSIGainExperience_Component foundComponent = {};
-    CGSIGainExperience_Component endComponent = {};
-    CGSIGainExperience_Node foundNode = {};
-    CGSIGainExperience_Node endNode = {};
-
-    interfaceStorage.m_pManager = &manager;
-    CGameScriptInterface* const pInterface =
-        reinterpret_cast<CGameScriptInterface*>(
-            &interfaceStorage);
-    g_pPlayer = &player;
-    foundNode.m_pComponent = &foundComponent;
-    endNode.m_pComponent = &endComponent;
-    hero.m_Container.m_pEnd = &endNode;
-
-    ResetObservations();
-    g_pHero = 0;
-    pInterface->CGameScriptInterface::
-        SetHeroAbleToGainExperience(true);
-    if (g_LowerBoundCalls != 0)
-        return Fail("null hero guard");
-
-    g_pHero = &hero;
-    ResetObservations();
-    hero.m_Flags91 = 1;
-    pInterface->CGameScriptInterface::
-        SetHeroAbleToGainExperience(true);
-    if (g_LowerBoundCalls != 0)
-        return Fail("dead hero guard");
-
-    ResetObservations();
-    hero.m_Flags91 = 0;
-    hero.m_Flags2C = 0;
-    pInterface->CGameScriptInterface::
-        SetHeroAbleToGainExperience(true);
-    if (g_LowerBoundCalls != 0)
-        return Fail("progression capability guard");
-
-    ResetObservations();
-    hero.m_Flags2C = 0x100;
-    foundNode.m_Key = 0x68;
-    foundComponent.m_AbleToGainExperience = 0;
-    g_pLowerBoundResult = &foundNode;
-    pInterface->CGameScriptInterface::
-        SetHeroAbleToGainExperience(true);
-    if (g_pObservedContainer != &hero.m_Container ||
-        g_ObservedKey != 0x68 ||
-        g_LowerBoundCalls != 1 ||
-        foundComponent.m_AbleToGainExperience != 1)
-        return Fail("found component true");
-
-    ResetObservations();
-    pInterface->CGameScriptInterface::
-        SetHeroAbleToGainExperience(false);
-    if (foundComponent.m_AbleToGainExperience != 0)
-        return Fail("found component false");
-
-    ResetObservations();
-    foundNode.m_Key = 0x69;
-    endComponent.m_AbleToGainExperience = 0;
-    g_pLowerBoundResult = &foundNode;
-    pInterface->CGameScriptInterface::
-        SetHeroAbleToGainExperience(true);
-    if (endComponent.m_AbleToGainExperience != 1)
-        return Fail("greater-key sentinel");
-
-    ResetObservations();
-    g_pLowerBoundResult = &endNode;
-    pInterface->CGameScriptInterface::
-        SetHeroAbleToGainExperience(false);
-    if (endComponent.m_AbleToGainExperience != 0)
-        return Fail("direct sentinel");
-
-    std::printf("FSE2_00899060_TEST PASS\n");
-    return 0;
+    int ok = 1;
+    CPlayerManager pm; CGameScriptInterface gsi; gsi.PlayerManager = &pm;
+    const CGameScriptInterface* p = &gsi;
+    CTCHeroExperience* tc = (CTCHeroExperience*)g_tcmem;
+    CThingPlayerCreature* hero = (CThingPlayerCreature*)g_thingmem;
+    g_entries[0].type = 1; g_entries[0].component = 0;
+    g_entries[1].type = CTCHeroExperience::INTERFACE_TYPE; g_entries[1].component = (CTCBase*)tc;
+    g_entries[2].type = 0x100; g_entries[2].component = 0;
+    hero->Components.first = g_entries; hero->Components.last = g_entries + 3;
+    hero->UsingComponents[CTCHeroExperience::INTERFACE_TYPE >> 5] |= 1UL << (CTCHeroExperience::INTERFACE_TYPE & 31);
+    g_hero = hero;
+    tc->AbleToGainExperience = true;
+    ok &= ((p->SetHeroAbleToGainExperience(false), tc->AbleToGainExperience == false) && (p->SetHeroAbleToGainExperience(true), tc->AbleToGainExperience == true));
+    g_hero = 0;
+    ok &= ((tc->AbleToGainExperience = true, p->SetHeroAbleToGainExperience(false), tc->AbleToGainExperience == true));
+    g_hero = hero; hero->Dead = 1;
+    ok &= ((tc->AbleToGainExperience = true, p->SetHeroAbleToGainExperience(false), tc->AbleToGainExperience == true));
+    hero->Dead = 0; hero->UsingComponents[CTCHeroExperience::INTERFACE_TYPE >> 5] = 0;
+    ok &= ((tc->AbleToGainExperience = true, p->SetHeroAbleToGainExperience(false), tc->AbleToGainExperience == true));
+    printf(ok ? "00899060_TEST PASS\n" : "00899060_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

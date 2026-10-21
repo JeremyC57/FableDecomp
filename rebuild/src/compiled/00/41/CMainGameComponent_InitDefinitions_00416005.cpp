@@ -1,72 +1,39 @@
-extern "C" __declspec(naked) void F_00416005(void)
+// CMainGameComponent::InitDefinitions(bool flag) -- bracket the definition manager's init/compile with two calls on a global service, optionally run a follow-up step
+// Leaf: ?InitDefinitions@CMainGameComponent@@IAE_N_N@Z
+// Retail: Fable.exe @ 0x00416005, 66 bytes, `ret 4` (thiscall, `this` unused); one caller (0x004185D9); Ego_r.pdb
+// ?InitDefinitions@CMainGameComponent@@IAE_N_N@Z.
+// Body: if the global at 0x013CAA90 is set, call 0x009F2450 on it; CGameDefinitionManager::Get() (0x0044C6B0, static
+// __fastcall) -> virtual slot 2 (+8; taken as InitAndCompile, Ego_r.pdb ?InitAndCompile@CGameDefinitionManager@@UAEXXZ);
+// if (flag) Get() -> 0x009ACB10 (forwards to its +0x58 member); the global call again; return true.
+// The global's class and both non-virtual callees are not identified; their names here are placeholders.
+// Opt: size TU (unaligned entry).
+#pragma optimize("s", on)
+class CGlobalService {                                   // object behind 0x013CAA90 (class not identified)
+public:
+    void Step();                                         // 0x009F2450
+};
+extern CGlobalService* g_pGlobalService_13CAA90;         // 0x013CAA90
+class CGameDefinitionManager {
+public:
+    static CGameDefinitionManager& __fastcall Get();     // 0x0044C6B0
+    virtual ~CGameDefinitionManager();
+    virtual void _slot01();
+    virtual void InitAndCompile();                       // slot 2 (+8)
+    void FollowUp_9ACB10();                              // 0x009ACB10
+};
+class CMainGameComponent {
+protected:
+    bool InitDefinitions(bool flag);
+    friend struct CMainGameComponent_Test;               // behaviour-test hook
+};
+bool CMainGameComponent::InitDefinitions(bool flag)
 {
-    __asm
-    {
-        _emit 0x8b
-        _emit 0x0d
-        _emit 0x90
-        _emit 0xaa
-        _emit 0x3c
-        _emit 0x01
-        _emit 0x85
-        _emit 0xc9
-        _emit 0x74
-        _emit 0x05
-        _emit 0xe8
-        _emit 0x3c
-        _emit 0xc4
-        _emit 0x5d
-        _emit 0x00
-        _emit 0xe8
-        _emit 0x97
-        _emit 0x66
-        _emit 0x03
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x10
-        _emit 0x8b
-        _emit 0xc8
-        _emit 0xff
-        _emit 0x52
-        _emit 0x08
-        _emit 0x80
-        _emit 0x7c
-        _emit 0x24
-        _emit 0x04
-        _emit 0x00
-        _emit 0x74
-        _emit 0x0c
-        _emit 0xe8
-        _emit 0x84
-        _emit 0x66
-        _emit 0x03
-        _emit 0x00
-        _emit 0x8b
-        _emit 0xc8
-        _emit 0xe8
-        _emit 0xdd
-        _emit 0x6a
-        _emit 0x59
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x0d
-        _emit 0x90
-        _emit 0xaa
-        _emit 0x3c
-        _emit 0x01
-        _emit 0x85
-        _emit 0xc9
-        _emit 0x74
-        _emit 0x05
-        _emit 0xe8
-        _emit 0x0e
-        _emit 0xc4
-        _emit 0x5d
-        _emit 0x00
-        _emit 0xb0
-        _emit 0x01
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
+    if (g_pGlobalService_13CAA90)
+        g_pGlobalService_13CAA90->Step();
+    CGameDefinitionManager::Get().InitAndCompile();
+    if (flag)
+        CGameDefinitionManager::Get().FollowUp_9ACB10();
+    if (g_pGlobalService_13CAA90)
+        g_pGlobalService_13CAA90->Step();
+    return true;
 }

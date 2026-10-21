@@ -1,49 +1,26 @@
-extern "C" __declspec(naked) void candidate_004382e0(void)
+// CPlayerGui::SetButtonAlpha(long, bool, float) -- store a HUD button's alpha in the ability (special) or quick-access table
+// Leaf: ?SetButtonAlpha@CPlayerGui@@QAEXJ_NM@Z
+// Retail: Fable.exe @ 0x004382E0, 44 bytes, `ret 0Ch`; Ego_r.pdb / FableWin.pdb ?SetButtonAlpha@CPlayerGui@@QAEXJ_NM@Z.
+// Callers 0x0064BDD4 / 0x0064BE12. The write-side twin of the landed CPlayerGui::GetButtonAlpha (0x00439AB0), which reads
+// the same two vectors with the same `special` selector.
+// Layout: retail, as landed 0x00439AB0 -- AbilityButtonsAlpha (STLport vector<float>, 12 bytes) +0x260,
+// QuickAccessButtonsAlpha +0x26c; engine/CPlayerGui.h carries the Ego_r.pdb offsets (+0x26c / +0x27c, 16-byte vectors).
+struct vector_float {                                  // STLport vector<float> (12 bytes)
+    float* _M_start;
+    float* _M_finish;
+    float* _M_end_of_storage;
+    float& operator[](long n) { return *(_M_start + n); }
+};
+struct CPlayerGui {
+    unsigned char _pad000[0x260];
+    vector_float  AbilityButtonsAlpha;                   // +0x260
+    vector_float  QuickAccessButtonsAlpha;               // +0x26c
+    void SetButtonAlpha(long button, bool special, float alpha);
+};
+void CPlayerGui::SetButtonAlpha(long button, bool special, float alpha)
 {
-    __asm {
-        _emit 0x8a
-        _emit 0x44
-        _emit 0x24
-        _emit 0x08
-        _emit 0xd9
-        _emit 0x44
-        _emit 0x24
-        _emit 0x0c
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x74
-        _emit 0x10
-        _emit 0x8b
-        _emit 0x81
-        _emit 0x60
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x4c
-        _emit 0x24
-        _emit 0x04
-        _emit 0xd9
-        _emit 0x1c
-        _emit 0x88
-        _emit 0xc2
-        _emit 0x0c
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x91
-        _emit 0x6c
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0xd9
-        _emit 0x1c
-        _emit 0x82
-        _emit 0xc2
-        _emit 0x0c
-        _emit 0x00
-    }
+    if (special)
+        AbilityButtonsAlpha[button] = alpha;
+    else
+        QuickAccessButtonsAlpha[button] = alpha;
 }

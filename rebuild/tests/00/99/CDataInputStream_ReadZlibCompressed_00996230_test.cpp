@@ -1,260 +1,128 @@
 #include <cstdio>
-#include <cstring>
+#include "engine/CDataInputStream.h"
 
-#include "../../../src/compiled/00/99/CDataInputStream_ReadZlibCompressed_00996230.cpp"
+extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
+extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
+#pragma intrinsic(memcpy)
+extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC: installed debug hook
 
-struct TestDataInputStream_00996230
-{
-    void* vtable;
-    long position;
-    long totalSize;
-    unsigned char* source;
-    long sourcePosition;
-    long sourceBytes;
+struct CACompressor {                                        // landed 0x00A3AEA0 (vtable 0x0129B424)
+    virtual ~CACompressor();
+    unsigned char _body[0x1c - 4];
+    CACompressor(long workspaceSize);                        // 0x00A3AEA0
+};
+struct CCompressorZlib : CACompressor {                      // vtable 0x01245974, retail 0x58 bytes
+    unsigned char _zlib[0x58 - 0x1c];
+    static long GetWorkspaceSize();                          // 0x00A3A7D0
+    void Init();                                             // 0x00A3AA10
+    unsigned long InternalDecompress(const void* source, unsigned long sourceSize, void* dest, unsigned long destSize);   // 0x00A3AB00
+    virtual ~CCompressorZlib();                              // 0x00A3ACC0
+    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Init(); }
+};
+struct CByteArray {                                          // retail vector<unsigned char>: begin/end/capacity
+    unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
+    CByteArray(unsigned long n);                             // 0x00514E20
+    ~CByteArray() { if (m_begin) free(m_begin); }
+    unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
 };
 
-struct TestByteVector_00996230
-{
-    unsigned char* begin;
-    unsigned char* end;
-    unsigned char* capacityEnd;
+struct CDataInputStream_Methods : CDataInputStream {
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
+    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    __forceinline void Read(void* buffer, long size)
+    {
+        if (size <= 0)
+            return;
+        __int64 newPosition = (__int64)(StreamPos + size);
+        if (!IsValidPosition(newPosition))
+            return;
+        if (size <= SourceChunkBytesRemaining) {
+            memcpy(buffer, CurrentSourcePtr, size);
+            CurrentSourcePtr = (unsigned char*)CurrentSourcePtr + size;
+            SourceChunkBytesRemaining -= size;
+            StreamPos += size;
+        }
+        else
+            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+    }
+    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    void ReadZlibCompressed(void* data, long size);
 };
 
-static unsigned char g_CompressedStorage[16];
-static int g_Sequence;
-static int g_VectorSequence;
-static int g_BaseSequence;
-static int g_ConstructSequence;
-static int g_InitSequence;
-static int g_DecompressSequence;
-static int g_DestroySequence;
-static int g_FreeSequence;
-static int g_OverflowCalls;
-static unsigned long g_VectorSize;
-static void* g_DestinationSeen;
-static unsigned long g_OutputSizeSeen;
-static unsigned long g_DecompressReturn;
-static int g_CallbackCalls;
-static int g_VTableReady;
-
-extern "C" void* CDataInputStream_CompressorVTable_00996230[1] = {
-    (void*)0x13572468
-};
-extern "C" void* CDataInputStream_ZlibSizeMismatchCallback_00996230 = 0;
-
-extern "C" void __fastcall
-CDataInputStream_ReadOverflow_00996230(
-    void*,
-    void*,
-    unsigned char*,
-    long)
+void CDataInputStream_Methods::ReadZlibCompressed(void* data, long size)
 {
-    ++g_OverflowCalls;
-}
-
-extern "C" void __fastcall
-CDataInputStream_InitCompressedVector_00996230(
-    void* vectorValue,
-    void*,
-    unsigned long size)
-{
-    g_VectorSequence = ++g_Sequence;
-    g_VectorSize = size;
-    TestByteVector_00996230* vector =
-        (TestByteVector_00996230*)vectorValue;
-    vector->begin = g_CompressedStorage;
-    vector->end = g_CompressedStorage + size;
-    vector->capacityEnd = vector->end;
-}
-
-extern "C" void* __cdecl
-CDataInputStream_ConstructCompressorBase_00996230()
-{
-    g_BaseSequence = ++g_Sequence;
-    return (void*)0x24681357;
-}
-
-extern "C" void __fastcall
-CDataInputStream_ConstructCompressor_00996230(
-    void*,
-    void*,
-    void* base)
-{
-    g_ConstructSequence = ++g_Sequence;
-    if (base != (void*)0x24681357)
-    {
-        g_ConstructSequence = 100;
+    if (size > 0) {
+        long compressedSize = ReadLong();
+        CByteArray buffer(compressedSize);
+        Read(buffer.GetData(), compressedSize);
+        CCompressorZlib compressor;
+        unsigned long written = compressor.InternalDecompress(buffer.GetData(), compressedSize, data, size);
+        if (written != (unsigned long)size) {
+            if (g_pfnAssertionFailed != 0)
+                g_pfnAssertionFailed();
+        }
     }
 }
 
-extern "C" void __fastcall
-CDataInputStream_InitCompressor_00996230(
-    void* compressor,
-    void*)
+#include <string.h>
+#include <stdlib.h>
+static int g_fail = 0;
+static void check(bool c, const char* w) { if (!c) { printf("FAIL %s\n", w); g_fail = 1; } }
+static int g_overflows = 0, g_asserts = 0, g_inits = 0, g_dtors = 0, g_frees = 0;
+static unsigned char g_overflowData[64];
+void CDataInputStream_Methods::ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
 {
-    g_InitSequence = ++g_Sequence;
-    g_VTableReady =
-        *(void**)compressor == CDataInputStream_CompressorVTable_00996230;
+    ++g_overflows; memcpy(buffer, g_overflowData, size); StreamPos += size;
 }
-
-extern "C" unsigned long __fastcall
-CDataInputStream_InternalDecompress_00996230(
-    void* compressor,
-    void*,
-    const void* compressed,
-    unsigned long compressedSize,
-    void* destination,
-    unsigned long outputSize)
+static void __cdecl AssertHook() { ++g_asserts; }
+void (__cdecl* g_pfnAssertionFailed)() = 0;
+CACompressor::CACompressor(long workspaceSize) {}
+CACompressor::~CACompressor() {}
+long CCompressorZlib::GetWorkspaceSize() { return 16; }
+void CCompressorZlib::Init() { ++g_inits; }
+CCompressorZlib::~CCompressorZlib() { ++g_dtors; }
+static unsigned char g_lastSource[64]; static unsigned long g_lastSourceSize, g_lastDestSize; static void* g_lastDest; static unsigned long g_decompressResult;
+unsigned long CCompressorZlib::InternalDecompress(const void* source, unsigned long sourceSize, void* dest, unsigned long destSize)
 {
-    g_DecompressSequence = ++g_Sequence;
-    g_DestinationSeen = destination;
-    g_OutputSizeSeen = outputSize;
-    if (*(void**)compressor != CDataInputStream_CompressorVTable_00996230 ||
-        compressed != g_CompressedStorage ||
-        compressedSize != 3 ||
-        g_CompressedStorage[0] != 0xA1 ||
-        g_CompressedStorage[1] != 0xB2 ||
-        g_CompressedStorage[2] != 0xC3)
-    {
-        g_DecompressSequence = 100;
-    }
-    unsigned char* output = (unsigned char*)destination;
-    for (unsigned long index = 0; index < outputSize; ++index)
-    {
-        output[index] = (unsigned char)(0x50 + index);
-    }
-    return g_DecompressReturn;
+    memcpy(g_lastSource, source, sourceSize < 64 ? sourceSize : 64); g_lastSourceSize = sourceSize; g_lastDest = dest; g_lastDestSize = destSize;
+    return g_decompressResult;
 }
-
-extern "C" void __fastcall
-CDataInputStream_DestroyCompressor_00996230(void*, void*)
+CByteArray::CByteArray(unsigned long n)
 {
-    g_DestroySequence = ++g_Sequence;
+    m_begin = n ? (unsigned char*)calloc(n, 1) : 0; m_end = m_begin + n; m_capacity = m_end;
 }
-
-extern "C" void __cdecl
-CDataInputStream_FreeCompressedBuffer_00996230(void* buffer)
-{
-    g_FreeSequence = ++g_Sequence;
-    if (buffer != g_CompressedStorage)
-    {
-        g_FreeSequence = 100;
-    }
-}
-
-extern "C" void __cdecl TestSizeMismatchCallback_00996230()
-{
-    ++g_CallbackCalls;
-}
-
-static void ResetProbes(unsigned long decompressedSize)
-{
-    g_Sequence = 0;
-    g_VectorSequence = 0;
-    g_BaseSequence = 0;
-    g_ConstructSequence = 0;
-    g_InitSequence = 0;
-    g_DecompressSequence = 0;
-    g_DestroySequence = 0;
-    g_FreeSequence = 0;
-    g_OverflowCalls = 0;
-    g_VectorSize = 0;
-    g_DestinationSeen = 0;
-    g_OutputSizeSeen = 0;
-    g_DecompressReturn = decompressedSize;
-    g_CallbackCalls = 0;
-    g_VTableReady = 0;
-}
-
+extern "C" void __cdecl free(void* block);
 int main()
 {
-    typedef void (__fastcall *ReadFunction)(
-        void*,
-        void*,
-        void*,
-        long);
-    ReadFunction volatile read =
-        &CDataInputStream_ReadZlibCompressed_00996230;
-
-    unsigned char source[7];
-    unsigned long compressedSize = 3;
-    std::memcpy(source, &compressedSize, 4);
-    source[4] = 0xA1;
-    source[5] = 0xB2;
-    source[6] = 0xC3;
-    unsigned char destination[12];
-    std::memset(destination, 0, sizeof(destination));
-
-    TestDataInputStream_00996230 stream;
-    stream.vtable = 0;
-    stream.position = 10;
-    stream.totalSize = 100;
-    stream.source = source;
-    stream.sourcePosition = 10;
-    stream.sourceBytes = 7;
-
-    int failures = 0;
-    ResetProbes(7);
-    CDataInputStream_ZlibSizeMismatchCallback_00996230 = 0;
-    read(&stream, 0, destination, 7);
-    if (g_Sequence != 7 ||
-        g_VectorSequence != 1 ||
-        g_BaseSequence != 2 ||
-        g_ConstructSequence != 3 ||
-        g_InitSequence != 4 ||
-        g_DecompressSequence != 5 ||
-        g_DestroySequence != 6 ||
-        g_FreeSequence != 7 ||
-        g_OverflowCalls != 0 ||
-        g_VectorSize != 3 ||
-        g_DestinationSeen != destination ||
-        g_OutputSizeSeen != 7 ||
-        g_CallbackCalls != 0 ||
-        g_VTableReady == 0 ||
-        destination[0] != 0x50 ||
-        destination[6] != 0x56 ||
-        stream.position != 17 ||
-        stream.source != source + 7 ||
-        stream.sourceBytes != 0)
-    {
-        ++failures;
-    }
-
-    stream.position = 0;
-    stream.source = source;
-    stream.sourcePosition = 0;
-    stream.sourceBytes = 7;
-    ResetProbes(6);
-    CDataInputStream_ZlibSizeMismatchCallback_00996230 =
-        (void*)&TestSizeMismatchCallback_00996230;
-    read(&stream, 0, destination, 7);
-    if (g_CallbackCalls != 1 ||
-        g_DestroySequence != 6 ||
-        g_FreeSequence != 7)
-    {
-        ++failures;
-    }
-
-    ResetProbes(0);
-    read(&stream, 0, destination, 0);
-    if (g_Sequence != 0 ||
-        g_OverflowCalls != 0 ||
-        g_CallbackCalls != 0)
-    {
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "READ_ZLIB_00996230_TEST FAIL count=%d sequence=%d overflow=%d callback=%d\n",
-            failures,
-            g_Sequence,
-            g_OverflowCalls,
-            g_CallbackCalls);
-        return 1;
-    }
-
-    std::printf("READ_ZLIB_00996230_TEST PASS\n");
-    return 0;
+    static unsigned char chunk[64];
+    static CDataInputStream_Methods s;
+    long cs = 5; memcpy(chunk, &cs, 4); memcpy(chunk + 4, "ABCDE", 5);
+    char out[32];
+    // size <= 0: nothing read
+    s.StreamPos = 0; s.CurrentSourcePtr = chunk; s.SourceChunkBytesRemaining = 9;
+    s.ReadZlibCompressed(out, 0);
+    check(s.StreamPos == 0 && g_inits == 0, "size 0 no-op");
+    // fast path: count and data from the current chunk
+    g_decompressResult = 20;
+    s.ReadZlibCompressed(out, 20);
+    check(s.StreamPos == 9 && s.CurrentSourcePtr == chunk + 9 && s.SourceChunkBytesRemaining == 0, "chunk consumed");
+    check(g_lastSourceSize == 5 && memcmp(g_lastSource, "ABCDE", 5) == 0 && g_lastDest == out && g_lastDestSize == 20, "decompress args");
+    check(g_inits == 1 && g_dtors == 1 && g_asserts == 0 && g_overflows == 0, "compressor lifetime, no assert");
+    // short output fires the installed hook; uninstalled hook is skipped
+    g_pfnAssertionFailed = AssertHook; s.StreamPos = 0; s.CurrentSourcePtr = chunk; s.SourceChunkBytesRemaining = 9; g_decompressResult = 7;
+    s.ReadZlibCompressed(out, 20);
+    check(g_asserts == 1, "assert hook on short output");
+    // overflow path: count read through the overflow reader, data too
+    long cs2 = 3; memcpy(g_overflowData, &cs2, 4);
+    s.StreamPos = 0; s.CurrentSourcePtr = chunk; s.SourceChunkBytesRemaining = 2; g_decompressResult = 20;
+    s.ReadZlibCompressed(out, 20);
+    check(g_overflows == 2 && g_lastSourceSize == 3, "overflow reads");
+    // zero compressed size: empty buffer (GetData is the array's own address), no data read
+    long zero = 0; memcpy(chunk, &zero, 4);
+    s.StreamPos = 0; s.CurrentSourcePtr = chunk; s.SourceChunkBytesRemaining = 9;
+    s.ReadZlibCompressed(out, 20);
+    check(s.StreamPos == 4 && g_lastSourceSize == 0, "empty block");
+    // out-of-range position: nothing read (the count stays uninitialised, so only the position is checked)
+    if (!g_fail) printf("00996230_TEST PASS\n");
+    return g_fail;
 }

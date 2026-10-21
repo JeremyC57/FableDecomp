@@ -1,92 +1,43 @@
+// test for 0057fc46 GetTypeBalancedAttractiveness
 #include <stdio.h>
 #include <string.h>
-
-// ---- function under test (identical to source_cpp) ----
-__declspec(naked) float GetTypeBalancedAttractiveness()
-{
-    __asm {
-        mov eax, dword ptr [esp+4]
-        push esi
-        mov esi, dword ptr [eax]
-        mov eax, dword ptr [eax+4]
-        push edi
-        sub eax, esi
-        push 0x48
-        cdq
-        pop edi
-        idiv edi
-        cmp eax, 5
-        jne notfive
-        fld dword ptr [esi+0x15c]
-        fmul dword ptr [ecx+0x54]
-        jmp done
-    notfive:
-        fld dword ptr [ecx+0x54]
-    done:
-        pop edi
-        pop esi
-        ret 4
-    }
+#include "engine/CTattooDef.h"
+class CAppearanceModifierScalingDef {
+public:
+    unsigned char _base[0x3c];                           // CDefClassBase and the leading members
+    float         Attractiveness;                        // +0x3c
+    float         Scariness;                             // +0x40
+    float         Goodstrength;                          // +0x44
+};
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+    const T& operator[](unsigned int n) const { return *(_M_start + n); }
+};
 }
-
-// vector-like {begin,end}
-struct Vec { char* begin; char* end; };
-
-// helper: invoke with this=ecx, one stack arg (p), ret 4 cleans stack
-static float call_it(void* thisp, Vec* p)
+struct CTattooDef_Methods : CTattooDef {
+    float GetTypeBalancedAttractiveness(const std::vector<CAppearanceModifierScalingDef>& scalings) const;
+};
+float CTattooDef_Methods::GetTypeBalancedAttractiveness(const std::vector<CAppearanceModifierScalingDef>& scalings) const
 {
-    float out;
-    void* pp = p;
-    void* tp = thisp;
-    __asm {
-        mov ecx, tp
-        push pp
-        call GetTypeBalancedAttractiveness
-        fstp out
-    }
-    return out;
+    if (scalings.size() == 5)
+        return scalings[4].Attractiveness * Attractiveness;
+    return Attractiveness;
 }
 
 int main()
 {
-    const int ELEM = 0x48;
-
-    // this object: float at +0x54
-    char thisbuf[0x60];
-    memset(thisbuf, 0, sizeof(thisbuf));
-    float base = 3.0f;
-    *(float*)(thisbuf + 0x54) = base;
-
-    // ---- count == 5 branch ----
-    // need begin[0x15c] readable -> allocate enough room past begin.
-    char* backing = new char[0x200 + ELEM * 5];
-    memset(backing, 0, 0x200 + ELEM * 5);
-    float factor = 2.5f;
-    *(float*)(backing + 0x15c) = factor;
-
-    Vec v5;
-    v5.begin = backing;
-    v5.end   = backing + ELEM * 5;   // exactly 5 elements
-
-    float r5 = call_it(thisbuf, &v5);
-    float exp5 = factor * base;      // 7.5
-    if (r5 != exp5) { printf("FAIL five: got %f exp %f\n", r5, exp5); return 1; }
-
-    // ---- count != 5 branch (e.g. 3) ----
-    Vec v3;
-    v3.begin = backing;
-    v3.end   = backing + ELEM * 3;
-    float r3 = call_it(thisbuf, &v3);
-    if (r3 != base) { printf("FAIL notfive: got %f exp %f\n", r3, base); return 1; }
-
-    // ---- count 0 branch ----
-    Vec v0;
-    v0.begin = backing;
-    v0.end   = backing;
-    float r0 = call_it(thisbuf, &v0);
-    if (r0 != base) { printf("FAIL zero: got %f exp %f\n", r0, base); return 1; }
-
-    printf("OK_0x0057fc46 five=%f notfive=%f zero=%f\n", r5, r3, r0);
-    delete[] backing;
+    CAppearanceModifierScalingDef s[5]; memset(s, 0, sizeof s);
+    s[4].Attractiveness = 3.0f; s[0].Attractiveness = 100.0f;
+    std::vector<CAppearanceModifierScalingDef> v5; v5._M_start = s; v5._M_finish = s + 5; v5._M_end_of_storage = s + 5;
+    std::vector<CAppearanceModifierScalingDef> v4; v4._M_start = s; v4._M_finish = s + 4; v4._M_end_of_storage = s + 5;
+    CTattooDef_Methods t; memset(&t, 0, sizeof t); t.Attractiveness = 2.5f;
+    int ok = sizeof(CAppearanceModifierScalingDef) == 0x48 && offsetof(CTattooDef, Attractiveness) == 0x54
+          && t.GetTypeBalancedAttractiveness(v5) == 7.5f && t.GetTypeBalancedAttractiveness(v4) == 2.5f;
+    printf(ok ? "0057fc46_TEST PASS\n" : "0057fc46_TEST FAIL\n");
     return 0;
 }

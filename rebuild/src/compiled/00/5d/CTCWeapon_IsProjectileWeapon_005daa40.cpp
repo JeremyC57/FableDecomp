@@ -1,24 +1,41 @@
-__declspec(naked) bool IsProjectileWeapon()
+// CTCWeapon::IsProjectileWeapon() const -- the weapon definition's Class is the projectile class (3)
+// Leaf: ?IsProjectileWeapon@CTCWeapon@@QBE_NXZ
+// Retail: Fable.exe @ 0x005DAA40, 38 bytes; Ego_r.pdb same symbol. Body: a CDefPointer copy of WeaponDef (+0x0c), read
+// Class (+0x2c), release the copy, then `cmp esi,3 ; sete al`. Ego_r.pdb also has the static
+// ?IsProjectileWeaponClass@CTCWeapon@@SI_NW4EWeaponClass@@@Z, modelled inline here; the enumerator name is behavioural.
+// Layout: Ego_r.pdb CTCWeapon WeaponDef +0x0c; CWeaponDef Class +0x2c (retail = PDB here, as landed IsMeleeWeapon
+// 0x005DAA00).
+// Shape: /O2; the class comes from the inline GetWeaponClass() (copy, read, release) so the compare follows the release
+// (`xor eax,eax ; cmp esi,3 ; sete al`); comparing inside the def-pointer scope computes it before the release into bl.
+enum EWeaponType { WEAPON_TYPE_NONE };
+enum EWeaponClass { WEAPON_CLASS_NONE, WEAPON_CLASS_1, WEAPON_CLASS_2, WEAPON_CLASS_PROJECTILE };
+struct CDefPointeeBase {
+    virtual ~CDefPointeeBase();
+    virtual void Delete() const;                         // slot 1 (+4)
+    unsigned long IVRefCount;                            // +0x04
+    __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
+};
+template <class T> struct CDefPointer {
+    T* Object;
+    CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
+    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    T* operator->() const { return Object; }
+};
+struct CWeaponDef : CDefPointeeBase {
+    unsigned char _pad08[0x1c];                          // +0x08
+    unsigned char _pad08b[0x04];                         // +0x24
+    EWeaponType   Type;                                  // +0x28
+    EWeaponClass  Class;                                 // +0x2c
+};
+class CTCWeapon {
+public:
+    unsigned char           _pad00[0xc];                 // +0x00 CTCBase
+    CDefPointer<CWeaponDef> WeaponDef;                   // +0x0c
+    static bool IsProjectileWeaponClass(EWeaponClass weapon_class) { return weapon_class == WEAPON_CLASS_PROJECTILE; }
+    EWeaponClass GetWeaponClass() const { CDefPointer<CWeaponDef> def(WeaponDef); return def->Class; }
+    bool IsProjectileWeapon() const;
+};
+bool CTCWeapon::IsProjectileWeapon() const
 {
-    __asm {
-        mov     ecx, dword ptr [ecx+0x0c]
-        test    ecx, ecx
-        je      L1
-        inc     dword ptr [ecx+0x04]
-    L1:
-        mov     eax, dword ptr [ecx+0x04]
-        push    esi
-        mov     esi, dword ptr [ecx+0x2c]
-        dec     eax
-        mov     dword ptr [ecx+0x04], eax
-        jne     L2
-        mov     eax, dword ptr [ecx]
-        call    dword ptr [eax+0x04]
-    L2:
-        xor     eax, eax
-        cmp     esi, 0x03
-        sete    al
-        pop     esi
-        ret
-    }
+    return IsProjectileWeaponClass(GetWeaponClass());
 }

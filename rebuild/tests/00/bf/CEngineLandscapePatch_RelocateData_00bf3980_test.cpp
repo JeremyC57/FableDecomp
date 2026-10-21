@@ -1,85 +1,84 @@
-#include <stdio.h>
-#include <string.h>
-#include "candidates/landscape_patch_relocation_compiled.h"
-
-static int g_priorityCalls;
-static int g_postRelocationCalls;
-static CBankFileAsyncData* g_lastAsyncData;
-static CLandscapeLayerMesh* g_lastLayerMesh;
-
-void CBankFileAsyncData::ChangeLoadingPriority()
+#include <cstdio>
+class CEngineLandscapeMap;
+class CWaterPatchMesh {
+public:
+    void OnPostRelocation();                             // 0x00BEAA30
+};
+class CLandscapeLayerMesh {
+public:
+    unsigned char        _pad00[0x3c];
+    CLandscapeLayerMesh* Next;                           // +0x3c
+    void OnPostRelocation();                             // 0x00BFDD70
+};
+template <class T> inline void RelocatePointer(T*& p, void* oldData, void* newData)
 {
-    ++g_priorityCalls;
-    g_lastAsyncData = this;
+    if (p)
+        p = (T*)((char*)p - (char*)oldData + (char*)newData);
+}
+class CEngineLandscapePatch {
+public:
+    CEngineLandscapeMap*  Map;                           // +0x04
+    CLandscapeLayerMesh*  LayerMeshList;                 // +0x08
+    unsigned short*       FastAccessTextureIDs;          // +0x0c
+    unsigned short        FastAccessTextureIDCount;      // +0x10
+    CWaterPatchMesh*      WaterPatch;                    // +0x14
+private:
+    virtual void RelocateData(long handle, void* oldData, void* newData, long size);
+};
+
+void CEngineLandscapePatch::RelocateData(long handle, void* oldData, void* newData, long size)
+{
+    if (oldData == FastAccessTextureIDs)
+    {
+        RelocatePointer(FastAccessTextureIDs, oldData, newData);
+        return;
+    }
+    if (oldData == WaterPatch)
+    {
+        RelocatePointer(WaterPatch, oldData, newData);
+        WaterPatch->OnPostRelocation();
+        return;
+    }
+    CLandscapeLayerMesh* prev = 0;
+    for (CLandscapeLayerMesh* mesh = LayerMeshList; mesh; mesh = mesh->Next)
+    {
+        if (oldData == mesh)
+        {
+            RelocatePointer(mesh, oldData, newData);
+            if (prev)
+                prev->Next = mesh;
+            else
+                LayerMeshList = mesh;
+            mesh->OnPostRelocation();
+            return;
+        }
+        prev = mesh;
+    }
 }
 
-void CLandscapeLayerMesh::OnPostRelocation()
-{
-    ++g_postRelocationCalls;
-    g_lastLayerMesh = this;
-}
-
-static void ResetPatch(CEngineLandscapePatch& patch)
-{
-    memset(&patch, 0, sizeof(patch));
-    g_priorityCalls = 0;
-    g_postRelocationCalls = 0;
-    g_lastAsyncData = 0;
-    g_lastLayerMesh = 0;
-}
-
+static void* g_water; static void* g_mesh; static int g_waterCalls, g_meshCalls;
+void CWaterPatchMesh::OnPostRelocation() { g_water = this; ++g_waterCalls; }
+void CLandscapeLayerMesh::OnPostRelocation() { g_mesh = this; ++g_meshCalls; }
+typedef void (__fastcall* RelocFn)(void* self, int, long handle, void* oldData, void* newData, long size);
+static CEngineLandscapePatch g_patch;
+static void Reloc(void* o, void* n) { RelocFn f = (RelocFn)(*(void***)&g_patch)[0]; f(&g_patch, 0, 1, o, n, 2); }
 int main()
 {
-    CEngineLandscapePatch patch;
-    CLandscapeLayerMesh oldMesh;
-    CLandscapeLayerMesh newMesh;
-    CLandscapeLayerMesh head;
-    CLandscapeLayerMesh missing;
-    CBankFileAsyncData oldAsyncData;
-    CBankFileAsyncData newAsyncData;
-    memset(&oldMesh, 0, sizeof(oldMesh));
-    memset(&newMesh, 0, sizeof(newMesh));
-    memset(&head, 0, sizeof(head));
-    memset(&missing, 0, sizeof(missing));
-
-    ResetPatch(patch);
-    patch.RelocatedLayerMesh = &oldMesh;
-    patch.RelocateData(1, &oldMesh, &newMesh, sizeof(oldMesh));
-    if (patch.RelocatedLayerMesh != &newMesh) return 1;
-    if (g_priorityCalls != 0 || g_postRelocationCalls != 0) return 2;
-
-    ResetPatch(patch);
-    patch.AsyncData = &oldAsyncData;
-    patch.RelocateData(2, &oldAsyncData, &newAsyncData, sizeof(oldAsyncData));
-    if (patch.AsyncData != &newAsyncData) return 3;
-    if (g_priorityCalls != 1 || g_lastAsyncData != &newAsyncData) return 4;
-
-    ResetPatch(patch);
-    patch.LayerMeshes = &oldMesh;
-    patch.RelocateData(3, &oldMesh, &newMesh, sizeof(oldMesh));
-    if (patch.LayerMeshes != &newMesh) return 5;
-    if (g_postRelocationCalls != 1 || g_lastLayerMesh != &newMesh) return 6;
-
-    ResetPatch(patch);
-    head.Next = &oldMesh;
-    patch.LayerMeshes = &head;
-    patch.RelocateData(4, &oldMesh, &newMesh, sizeof(oldMesh));
-    if (patch.LayerMeshes != &head || head.Next != &newMesh) return 7;
-    if (g_postRelocationCalls != 1 || g_lastLayerMesh != &newMesh) return 8;
-
-    ResetPatch(patch);
-    head.Next = &oldMesh;
-    oldMesh.Next = 0;
-    patch.LayerMeshes = &head;
-    patch.RelocateData(5, &missing, &newMesh, sizeof(missing));
-    if (patch.LayerMeshes != &head || head.Next != &oldMesh) return 9;
-    if (g_postRelocationCalls != 0) return 10;
-
-    ResetPatch(patch);
-    patch.AsyncData = 0;
-    patch.RelocateData(6, 0, &newAsyncData, 0);
-    if (g_priorityCalls != 0 || patch.AsyncData != 0) return 11;
-
-    printf("LANDSCAPE_PATCH_RELOCATE_DATA_TEST PASS\n");
-    return 0;
+    static unsigned short ids[8]; static unsigned short ids2[8];
+    static CWaterPatchMesh water[2];
+    static CLandscapeLayerMesh m[5];                     // m[0..2] in the list; m[3], m[4] are the new homes
+    m[0].Next = &m[1]; m[1].Next = &m[2]; m[2].Next = 0;
+    g_patch.LayerMeshList = &m[0]; g_patch.FastAccessTextureIDs = ids; g_patch.WaterPatch = &water[0];
+    Reloc(ids, ids2);
+    bool ok = g_patch.FastAccessTextureIDs == ids2 && g_waterCalls == 0 && g_meshCalls == 0;
+    Reloc(&water[0], &water[1]);
+    ok = ok && g_patch.WaterPatch == &water[1] && g_waterCalls == 1 && g_water == &water[1];
+    m[3] = m[1]; Reloc(&m[1], &m[3]);                    // middle node: previous Next rebased
+    ok = ok && m[0].Next == &m[3] && g_meshCalls == 1 && g_mesh == &m[3] && g_patch.LayerMeshList == &m[0];
+    m[4] = m[0]; Reloc(&m[0], &m[4]);                    // head node: list head rebased
+    ok = ok && g_patch.LayerMeshList == &m[4] && g_meshCalls == 2 && g_mesh == &m[4];
+    static CLandscapeLayerMesh stray; Reloc(&stray, &m[0]); // not owned: nothing happens
+    ok = ok && g_meshCalls == 2 && g_waterCalls == 1 && g_patch.LayerMeshList == &m[4];
+    std::printf(ok ? "00bf3980_TEST PASS\n" : "00bf3980_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

@@ -1,50 +1,31 @@
-// CMainGameComponentInit::CMainGameComponentInit(copy) @ 0x00415E17.
-//
-// The transition record is copied in field order: wide +0, wide +4,
-// narrow +8, wide +0xC.  Each string copy constructor consumes one source
-// pointer from the stack and the constructor returns the destination record.
-
-extern "C" void* __fastcall
-CMainGameComponentInit_WideCopyCtor_00415e17(
-    void* destination,
-    void*,
-    const void* source);
-
-extern "C" void* __fastcall
-CMainGameComponentInit_NarrowCopyCtor_00415e17(
-    void* destination,
-    void*,
-    const void* source);
-
-extern "C" __declspec(naked) void* __fastcall
-CMainGameComponentInit_CMainGameComponentInit_00415e17(
-    void*,
-    void*,
-    const void*)
+// CMainGameComponentInit::CMainGameComponentInit(const CMainGameComponentInit& other) -- member-wise copy of the four start-up names
+// Leaf: ??0CMainGameComponentInit@@QAE@ABV0@@Z
+// Retail: Fable.exe @ 0x00415E17, 55 bytes, `ret 4`, returns this; one caller (0x00418EBB). Ego_r.pdb
+// ??0CMainGameComponentInit@@QAE@ABV0@@Z. The implicit copy constructor: CWideString copy constructor (0x0099B720) for
+// InitialWorldName (+0) and InitialWorldHolySiteName (+4), CCharString copy constructor (0x0099EC30) for
+// InitialQuestName (+8), CWideString again for SaveGameName (+0xc).
+// Layout: Ego_r.pdb CMainGameComponentInit (16 bytes, names above); no engine/ header.
+// Opt: size TU (unaligned entry); the implicit copy constructor is emitted out of line through CopyMainGameComponentInit.
+#pragma optimize("s", on)
+#include <new>
+class CWideString {
+public:
+    void* PData;
+    CWideString(const CWideString& s);                   // 0x0099B720
+};
+class CCharString {
+public:
+    void* PData;
+    CCharString(const CCharString& s);                   // 0x0099EC30
+};
+class CMainGameComponentInit {
+public:
+    CWideString InitialWorldName;                        // +0x00
+    CWideString InitialWorldHolySiteName;                // +0x04
+    CCharString InitialQuestName;                        // +0x08
+    CWideString SaveGameName;                            // +0x0c
+};
+void CopyMainGameComponentInit(void* p, const CMainGameComponentInit& init)   // emission helper, not a retail function
 {
-    __asm
-    {
-        push esi
-        push edi
-        mov edi, dword ptr [esp + 0Ch]
-        push edi
-        mov esi, ecx
-        call CMainGameComponentInit_WideCopyCtor_00415e17
-        lea eax, dword ptr [edi + 4]
-        push eax
-        lea ecx, dword ptr [esi + 4]
-        call CMainGameComponentInit_WideCopyCtor_00415e17
-        lea eax, dword ptr [edi + 8]
-        push eax
-        lea ecx, dword ptr [esi + 8]
-        call CMainGameComponentInit_NarrowCopyCtor_00415e17
-        add edi, 0Ch
-        push edi
-        lea ecx, dword ptr [esi + 0Ch]
-        call CMainGameComponentInit_WideCopyCtor_00415e17
-        pop edi
-        mov eax, esi
-        pop esi
-        ret 4
-    }
+    new (p) CMainGameComponentInit(init);
 }

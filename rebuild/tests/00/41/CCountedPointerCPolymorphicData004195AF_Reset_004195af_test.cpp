@@ -1,0 +1,46 @@
+#include <cstdio>
+#include <new>
+class CPolymorphicData_004195AF {
+public:
+    virtual ~CPolymorphicData_004195AF();
+};
+struct CCPPointerInfo {
+    long  RefCount;
+    void  (__fastcall* DeleteFunc)(void* data);
+    void* Data;
+    CCPPointerInfo(long ref_count, void (__fastcall* delete_func)(void*), void* data)
+        : RefCount(ref_count), DeleteFunc(delete_func), Data(data) {}
+};
+template <class T> class CCountedPointer {
+public:
+    T*              Data;
+    CCPPointerInfo* Info;
+    void Release();                                      // 0x0041915A
+    static void __fastcall DeleteData(void* data);       // 0x00419091
+    void Reset(T* data);
+};
+template <class T> void CCountedPointer<T>::Reset(T* data)
+{
+    Release();
+    Data = data;
+    if (Data)
+        Info = new CCPPointerInfo(1, &DeleteData, Data);
+}
+template void CCountedPointer<CPolymorphicData_004195AF>::Reset(CPolymorphicData_004195AF* data);
+
+static int g_released = 0, g_deleted = 0;
+CPolymorphicData_004195AF::~CPolymorphicData_004195AF() {}
+template <class T> void CCountedPointer<T>::Release() { ++g_released; if (Info && --Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } Info = 0; Data = 0; }
+template <class T> void __fastcall CCountedPointer<T>::DeleteData(void* data) { ++g_deleted; delete static_cast<T*>(data); }
+int main()
+{
+    CCountedPointer<CPolymorphicData_004195AF> p; p.Data = 0; p.Info = 0;
+    CPolymorphicData_004195AF* a = new CPolymorphicData_004195AF;
+    p.Reset(a);
+    bool ok = g_released == 1 && p.Data == a && p.Info && p.Info->RefCount == 1 && p.Info->Data == a
+        && p.Info->DeleteFunc == &CCountedPointer<CPolymorphicData_004195AF>::DeleteData;
+    p.Reset(0);
+    ok = ok && g_released == 2 && g_deleted == 1 && p.Data == 0 && p.Info == 0;
+    if (ok) std::printf("004195af_TEST PASS\n");
+    return 0;
+}

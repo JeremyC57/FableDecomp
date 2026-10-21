@@ -1,198 +1,180 @@
-// CGameScriptInterface::GetAllCreaturesInAreaWithScriptName @ 0x008a86c0
-// Exact byte-led rough-area/search/vector coordinator.
-
-extern "C" void Script_FloatToLong_00bfea70();
-extern "C" void Script_StringCopyCtor_0099ec30();
-extern "C" void Script_StringDtor_0099eae0();
-extern "C" void Script_StringEquals_004115a0();
-extern "C" void Script_SearchNamedCreatures_008ad950();
-extern "C" void Script_SearchPotentialCustomers_008ad710();
-extern "C" void ScriptThingVector_Reserve_008acd30();
-extern "C" void ScriptThing_FromCreature_004c7e50();
-extern "C" void ScriptThingVector_Insert_008ad5f0();
-extern "C" void ScriptThing_Reset_0099a2e0();
-extern "C" void ScriptThingRef_Free_00bfe9bc();
-extern "C" void CreaturePointerArray_Free_00bfea14();
-extern "C" unsigned long ScriptThing_Vftable_01238c8c;
-extern "C" char Script_EmptyString_0122d70e;
-
-extern "C" __declspec(naked) long __fastcall
-CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0(
-    void* self, void*, void* scriptName, void* position, float radius, void* out)
-{
-    __asm {
-        sub esp, 1ch
-        push ebx
-        push ebp
-        push esi
-        push edi
-        mov edi, [esp+34h]
-        fld dword ptr [edi]
-        mov ebp, ecx
-        call Script_FloatToLong_00bfea70
-        fld dword ptr [edi+4]
-        mov esi, eax
-        call Script_FloatToLong_00bfea70
-        fld dword ptr [esp+38h]
-        mov edi, eax
-        call Script_FloatToLong_00bfea70
-        mov ebx, [esp+30h]
-        mov ecx, esi
-        sub ecx, eax
-        mov edx, edi
-        sub edx, eax
-        add esi, eax
-        add edi, eax
-        xor eax, eax
-        mov [esp+1ch], ecx
-        mov ecx, [ebx]
-        cmp ecx, eax
-        mov [esp+20h], edx
-        mov [esp+24h], esi
-        mov [esp+28h], edi
-        mov [esp+10h], eax
-        mov [esp+14h], eax
-        mov [esp+18h], eax
-        jne string_object
-        mov edi, offset Script_EmptyString_0122d70e
-        mov esi, edi
-        mov ecx, 1
-        xor eax, eax
-        repe cmps byte ptr [esi], byte ptr [edi]
-        je empty_name_search
-named_search:
-        push ebx
-        lea ecx, [esp+38h]
-        call Script_StringCopyCtor_0099ec30
-        lea edx, [esp+10h]
-        push edx
-        mov edx, [ebp+4]
-        lea eax, [esp+38h]
-        push eax
-        lea ecx, [esp+24h]
-        push ecx
-        mov ecx, [edx+20h]
-        call Script_SearchNamedCreatures_008ad950
-        lea ecx, [esp+34h]
-        call Script_StringDtor_0099eae0
-search_complete:
-        mov ebx, [esp+10h]
-        mov ebp, [esp+14h]
-        cmp ebx, ebp
-        jne have_results
-        test ebx, ebx
-        je empty_return
-        push ebx
-        call CreaturePointerArray_Free_00bfea14
-        add esp, 4
-empty_return:
-        pop edi
-        pop esi
-        pop ebp
-        xor eax, eax
-        pop ebx
-        add esp, 1ch
-        ret 10h
-string_object:
-        push offset Script_EmptyString_0122d70e
-        call Script_StringEquals_004115a0
-        test al, al
-        je named_search
-empty_name_search:
-        lea ecx, [esp+10h]
-        push ecx
-        mov ecx, [ebp+4]
-        mov ecx, [ecx+20h]
-        lea edx, [esp+38h]
-        push edx
-        lea eax, [esp+24h]
-        push eax
-        call Script_SearchPotentialCustomers_008ad710
-        jmp search_complete
-have_results:
-        mov esi, [esp+3ch]
-        mov eax, ebp
-        sub eax, ebx
-        sar eax, 2
-        push eax
-        mov ecx, esi
-        call ScriptThingVector_Reserve_008acd30
-        mov edi, ebx
-loop_body:
-        mov ecx, [edi]
-        lea edx, [esp+10h]
-        push edx
-        call ScriptThing_FromCreature_004c7e50
-        mov ecx, [esi+4]
-        cmp ecx, [esi+8]
-        je grow_output
-        test ecx, ecx
-        je append_done
-        mov dword ptr [ecx], offset ScriptThing_Vftable_01238c8c
-        mov edx, [eax+4]
-        mov [ecx+4], edx
-        mov eax, [eax+8]
-        test eax, eax
-        mov [ecx+8], eax
-        je append_done
-        inc dword ptr [eax]
-append_done:
-        add dword ptr [esi+4], 0ch
-        jmp release_temporary
-grow_output:
-        push 1
-        push 1
-        lea edx, [esp+3ch]
-        push edx
-        push eax
-        push ecx
-        mov ecx, esi
-        call ScriptThingVector_Insert_008ad5f0
-release_temporary:
-        mov eax, [esp+18h]
-        test eax, eax
-        mov dword ptr [esp+10h], offset ScriptThing_Vftable_01238c8c
-        je reset_temporary
-        dec dword ptr [eax]
-        mov eax, [esp+18h]
-        cmp dword ptr [eax], 0
-        jne reset_temporary
-        mov ecx, [eax+8]
-        call dword ptr [eax+4]
-        mov eax, [esp+18h]
-        push eax
-        call ScriptThingRef_Free_00bfe9bc
-        add esp, 4
-reset_temporary:
-        xor eax, eax
-        lea ecx, [esp+10h]
-        mov [esp+14h], eax
-        mov [esp+18h], eax
-        call ScriptThing_Reset_0099a2e0
-        add edi, 4
-        cmp edi, ebp
-        jne loop_body
-        mov eax, [esi]
-        mov ecx, [esi+4]
-        sub ecx, eax
-        mov eax, 2aaaaaabh
-        imul ecx
-        sar edx, 1
-        mov esi, edx
-        shr esi, 1fh
-        add esi, edx
-        test ebx, ebx
-        je free_done
-        push ebx
-        call CreaturePointerArray_Free_00bfea14
-        add esp, 4
-free_done:
-        pop edi
-        mov eax, esi
-        pop esi
-        pop ebp
-        pop ebx
-        add esp, 1ch
-        ret 10h
+// CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, std::vector<CScriptThing>& things) const -- script: collect the AI creatures in the square of half-size radius around position (all of them when the script name is empty, else those with that script name) and append their script things; returns the output vector's size (0 without touching it when none match)
+// Leaf: ?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+// Retail: Fable.exe @ 0x008A86C0, 452 bytes, `ret 10h`.
+// Body: centre = C2DCoordI((long) position.X, (long) position.Y), r = (long) radius (_ftol 0x00BFEA70);
+// box = C2DBoxI(centre, centre) grown by r on every side;
+// scriptName == "" (inline CCharString::operator==(const char*), CBasicString<char>::operator== 0x004115A0) ->
+// ThingSearchTools->GetAllThingsInRoughArea<CThingAICreature, vector, CThingFilter_None> (0x008AD710), else
+// <.., CThingFilter_HasScriptName> (0x008AD950; filter = a CCharString copy 0x0099EC30 / ~ 0x0099EAE0); then as the
+// sibling GetAllThingsWithScriptName: empty -> 0; reserve (0x008ACD30); push_back(creature->GetScriptThing()) per
+// creature (0x004C7E50); return things.size().
+// Layout: models of the landed sibling GetAllThingsWithScriptName 0x008A8570 and the de-bake 0x008A9C40 (CScriptThing,
+// counted PImp, vector<CThingAICreature*> over malloc, World +0x04, ThingSearchTools +0x20); C2DBoxI {TopLeft, BottomRight}.
+// Shape: write-only same-TU stand-ins for both search templates keep the found vector unescaped and pass the box and
+// filter addresses on (escape, as 0x008A9C40); both filters live in the dead `position` argument slot; the CCharString
+// compare is the landed 0x008EDA90 model. The box is built from the centre twice and expanded in place (an inline
+// Expand(r): x0 / y0 into copies, x1 / y1 added in place, retail's order); explicit corner forms reorder. Probes v/ga.
+// Opt: /O2 (16-aligned entry).
+#include <string.h>
+void __cdecl operator delete(void* p);                  // 0x00BFE9BC
+inline void* operator new(unsigned int, void* where) { return where; }
+extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
+struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
+};
+struct CCPPointerInfo {
+    unsigned long RefCount;
+    void (__fastcall* DeleteFunc)(void*);
+    void* Data;
+};
+struct CCountedScriptImp {                              // CCountedPointer<CScriptThingImp>
+    void* Data;
+    CCPPointerInfo* Info;
+    CCountedScriptImp() : Data(0), Info(0) {}
+    CCountedScriptImp(const CCountedScriptImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedScriptImp()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
     }
+};
+struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+    CCountedScriptImp PImp;                             // +0x04
+    CScriptThing() {}
+    virtual ~CScriptThing() {}
+};
+struct __false_type { __false_type() {} };
+struct CScriptThingVector {                             // STLport vector<CScriptThing> (12-byte elements)
+    CScriptThing* _M_start;
+    CScriptThing* _M_finish;
+    CScriptThing* _M_end_of_storage;
+    long size() const { return _M_finish - _M_start; }
+    void reserve(unsigned long n);                      // 0x008ACD30
+    void _M_insert_overflow(CScriptThing* position, const CScriptThing& x, const __false_type&,
+                            unsigned long fill_len, bool atend);   // 0x008AD5F0
+    void push_back(const CScriptThing& x)
+    {
+        if (_M_finish != _M_end_of_storage) {
+            new (_M_finish) CScriptThing(x);
+            ++_M_finish;
+        }
+        else
+            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
+    }
+};
+struct CThing_Retail;
+struct CThingVector {                                   // STLport vector<CThingAICreature*> (malloc allocator)
+    CThing_Retail** _M_start;
+    CThing_Retail** _M_finish;
+    CThing_Retail** _M_end_of_storage;
+    CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    ~CThingVector() { if (_M_start) free(_M_start); }
+    bool empty() const { return _M_start == _M_finish; }
+    unsigned long size() const { return _M_finish - _M_start; }
+};
+#pragma pack(push, 1)
+struct CBasicStringChar {                               // CBasicString<char>, 13 bytes
+    char*         PData;
+    unsigned long StringLength;
+    unsigned long DataLength : 31;
+    bool          UseFastExtend : 1;
+    bool operator==(const char* text) const;            // 0x004115A0
+};
+struct CCharStringData {                                // 17 bytes
+    CBasicStringChar Data;
+    long             NoRefs;
+};
+#pragma pack(pop)
+class CCharString {
+public:
+    CCharStringData* PStringData;
+    CCharString(const CCharString& other);              // 0x0099EC30
+    ~CCharString();                                     // 0x0099EAE0
+    bool operator==(const char* text) const
+    {
+        if (PStringData == 0) {
+            if (strcmp(text, "") == 0)
+                return true;
+            return false;
+        }
+        return PStringData->Data == text;
+    }
+};
+struct C3DVector { float X, Y, Z; };
+struct C2DCoordI {
+    long X, Y;
+    C2DCoordI(long x, long y) : X(x), Y(y) {}
+};
+struct C2DBoxI {
+    C2DCoordI TopLeft, BottomRight;
+    C2DBoxI(const C2DCoordI& tl, const C2DCoordI& br) : TopLeft(tl), BottomRight(br) {}
+    void Expand(long d) { TopLeft.X -= d; TopLeft.Y -= d; BottomRight.X += d; BottomRight.Y += d; }
+};
+struct CThingFilter_None {
+    CThingFilter_None() {}
+};
+struct CThingFilter_HasScriptName {
+    CCharString m_name;
+    CThingFilter_HasScriptName(const CCharString& name) : m_name(name) {}
+};
+struct CThing_Retail {
+    CScriptThing GetScriptThing();                      // 0x004C7E50
+};
+CThing_Retail** FindThings_None(const C2DBoxI* box, const CThingFilter_None* filter, CThing_Retail** capacity);
+CThing_Retail** FindThings_HasScriptName(const C2DBoxI* box, const CThingFilter_HasScriptName* filter, CThing_Retail** capacity);
+struct CThingSearchTools {
+    void GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_None& filter, CThingVector& out);            // 0x008AD710
+    void GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_HasScriptName& filter, CThingVector& out);   // 0x008AD950
+};
+// Same-TU stand-ins (see the sibling): read the box and only write the output vector's words.
+#pragma auto_inline(off)
+void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_None& filter, CThingVector& out)
+{
+    CThing_Retail** p = FindThings_None(&box, &filter, out._M_end_of_storage);
+    out._M_start = p;
+    out._M_finish = p;
+}
+void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_HasScriptName& filter, CThingVector& out)
+{
+    CThing_Retail** p = FindThings_HasScriptName(&box, &filter, out._M_end_of_storage);
+    out._M_start = p;
+    out._M_finish = p;
+}
+#pragma auto_inline(on)
+struct CWorld_Retail {
+    unsigned char      _pad00[0x20];
+    CThingSearchTools* ThingSearchTools;                // +0x20
+};
+struct CGameScriptInterface {
+    virtual long GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, CScriptThingVector& things) const;
+    CWorld_Retail*   World;                             // +0x04 (engine/CGameScriptInterface.h)
+};
+
+long CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, CScriptThingVector& things) const
+{
+    C2DCoordI centre((long)position.X, (long)position.Y);
+    long r = (long)radius;
+    C2DBoxI box(centre, centre);
+    box.Expand(r);
+    CThingVector found;
+    if (scriptName == "")
+        World->ThingSearchTools->GetAllThingsInRoughArea(box, CThingFilter_None(), found);
+    else
+        World->ThingSearchTools->GetAllThingsInRoughArea(box, CThingFilter_HasScriptName(scriptName), found);
+    if (found.empty())
+        return 0;
+    things.reserve(found.size());
+    for (CThing_Retail** it = found._M_start; it != found._M_finish; ++it) {
+        CThing_Retail* creature = *it;
+        things.push_back(creature->GetScriptThing());
+    }
+    return things.size();
 }

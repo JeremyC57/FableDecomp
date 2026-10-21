@@ -1,191 +1,68 @@
-// CFrontendGameComponent::InitGraphics @ 0x00494840.
-
-class CFrontendGraphicsContext_00494840
-{
+// CFrontendGameComponent::InitGraphics() -- debug front end: take the ENG_ARIAL_16 font from the global font bank into MainFont; always succeeds
+// Leaf: ?InitGraphics@CFrontendGameComponent@@AAE_NXZ (Ego_r.pdb, private; modelled public)
+// Retail: Fable.exe @ 0x00494840, 187 bytes, plain `ret`.
+// Body: MainFont = g_pFontBank->GetFont("ENG_ARIAL_16") (implicit conversion: the temporary is addressed with lea) -- CCharString(const char*, long) 0x0099EBF0
+// (literal 0x01231168), CFontBank::GetFont(const CCharString&) 0x009E2C80 (bank pointer 0x013B838C, CCountedPointer by
+// hidden pointer); inline CCountedPointer operator= (source words into ebx/edi first, count-block compare, release
+// re-reading the member, add-ref) and the temporary's inline release (destroy + operator delete 0x00BFE9BC, then both
+// words cleared); ~CCharString 0x0099EAE0. Returns true.
+// Layout: CFrontendGameComponent MainFont +0x1E04 (Data) / +0x1E08 (Info), as Ego_r.pdb (no container precedes it).
+// Shape: the counted-pointer model of the landed CText::GetDataFromDef 0x0054ED90.
+// Opt: /O2 (16-aligned entry).
+class CCharString {
 public:
-    void Destroy();
+    void* PStringData;
+    CCharString(const char* text, long length = -1);    // 0x0099EBF0
+    ~CCharString();                                     // 0x0099EAE0
 };
-
-typedef void (CFrontendGraphicsContext_00494840::*
-    CFrontendGraphicsDestroy_00494840)();
-
-struct CFrontendGraphicsControl_00494840
-{
-    long m_References;
-    CFrontendGraphicsDestroy_00494840 m_Destroy;
-    CFrontendGraphicsContext_00494840* m_Context;
+struct CCPPointerInfo {                                 // CCountedPointer count block
+    long References;                                    // +0
+    void (__fastcall* Destroy)(void* object);           // +4
+    void* Object;                                       // +8
 };
-
-extern void __cdecl FrontendGraphicsDelete_00494840(void*);
-
-static __forceinline void ClearFrontendGraphicsPointer_00494840(
-    void** data, CFrontendGraphicsControl_00494840** control)
-{
-    *data = 0;
-    *control = 0;
-}
-
-struct CFrontendGraphicsPointer_00494840
-{
-    void* m_Data;
-    CFrontendGraphicsControl_00494840* m_Control;
-
-    CFrontendGraphicsPointer_00494840()
-        : m_Data(0), m_Control(0)
+template <class T> struct CCountedPointer {
+    T*              Data;                               // +0
+    CCPPointerInfo* Info;                               // +4
+    void Release()
     {
-    }
-
-    CFrontendGraphicsPointer_00494840(
-        const CFrontendGraphicsPointer_00494840& other)
-        : m_Data(other.m_Data), m_Control(other.m_Control)
-    {
-        if (m_Control != 0)
-            ++m_Control->m_References;
-    }
-
-    ~CFrontendGraphicsPointer_00494840()
-    {
-        if (m_Control != 0)
-        {
-            --m_Control->m_References;
-            if (m_Control->m_References == 0)
-            {
-                (m_Control->m_Context->*(m_Control->m_Destroy))();
-                FrontendGraphicsDelete_00494840(m_Control);
+        if (Info) {
+            --Info->References;
+            if (Info->References == 0) {
+                Info->Destroy(Info->Object);
+                operator delete(Info);
             }
         }
-
-        ClearFrontendGraphicsPointer_00494840(&m_Data, &m_Control);
     }
-
-    void ShareData(
-        void* data, CFrontendGraphicsControl_00494840* control)
+    ~CCountedPointer() { Release(); Data = 0; Info = 0; }
+    CCountedPointer& operator=(const CCountedPointer& other)
     {
-        if (m_Control != control)
-        {
-            if (m_Control != 0)
-            {
-                --m_Control->m_References;
-                if (m_Control->m_References == 0)
-                {
-                    (m_Control->m_Context->*(m_Control->m_Destroy))();
-                    FrontendGraphicsDelete_00494840(m_Control);
-                }
-            }
-
-            m_Data = data;
-            m_Control = control;
-            if (m_Control != 0)
-                ++m_Control->m_References;
+        T* data = other.Data;
+        CCPPointerInfo* info = other.Info;
+        if (Info != info) {
+            Release();
+            Data = data;
+            Info = info;
+            if (info)
+                ++info->References;
         }
-    }
-
-    CFrontendGraphicsPointer_00494840& operator=(
-        const CFrontendGraphicsPointer_00494840& other)
-    {
-        ShareData(other.m_Data, other.m_Control);
         return *this;
     }
 };
-
-class CFrontendGraphicsName_00494840
-{
-    void* m_Data;
-
+class CFontBank {
 public:
-    void Construct(const char*, long);
-    void Destroy();
+    CCountedPointer<const CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
 };
+extern CFontBank* g_pFontBank;                          // 0x013B838C
 
-class CFrontendGraphicsRegistry_00494840
-{
+class CFrontendGameComponent {
 public:
-    CFrontendGraphicsPointer_00494840 Find(
-        const CFrontendGraphicsName_00494840&);
-};
-
-extern const char g_FrontendGraphicsName_00494840[];
-extern CFrontendGraphicsRegistry_00494840*
-    g_FrontendGraphicsRegistry_00494840;
-
-class CFrontendGameComponent_00494840
-{
-    unsigned char m_Pad0000[0x1e04];
-    CFrontendGraphicsPointer_00494840 m_Graphics;
-
-public:
+    unsigned char                    _pad0000[0x1e04];
+    CCountedPointer<const CFontBank> MainFont;          // +0x1e04
     bool InitGraphics();
 };
 
-__declspec(naked) bool CFrontendGameComponent_00494840::InitGraphics()
+bool CFrontendGameComponent::InitGraphics()
 {
-    __asm
-    {
-        sub esp, 0ch
-        push ebx
-        push esi
-        push edi
-        push -1
-        mov esi, ecx
-        push offset g_FrontendGraphicsName_00494840
-        lea ecx, [esp + 14h]
-        call CFrontendGraphicsName_00494840::Construct
-        lea eax, [esp + 0ch]
-        push eax
-        lea ecx, [esp + 14h]
-        push ecx
-        mov ecx, dword ptr [g_FrontendGraphicsRegistry_00494840]
-        call CFrontendGraphicsRegistry_00494840::Find
-        mov edi, dword ptr [eax + 4]
-        mov ebx, dword ptr [eax]
-        mov eax, dword ptr [esi + 1e08h]
-        cmp eax, edi
-        je assignment_done
-        test eax, eax
-        je install_pointer
-        dec dword ptr [eax]
-        mov eax, dword ptr [esi + 1e08h]
-        cmp dword ptr [eax], 0
-        jne install_pointer
-        mov ecx, dword ptr [eax + 8]
-        call dword ptr [eax + 4]
-        mov edx, dword ptr [esi + 1e08h]
-        push edx
-        call FrontendGraphicsDelete_00494840
-        add esp, 4
-
-    install_pointer:
-        test edi, edi
-        mov dword ptr [esi + 1e04h], ebx
-        mov dword ptr [esi + 1e08h], edi
-        je assignment_done
-        inc dword ptr [edi]
-
-    assignment_done:
-        mov eax, dword ptr [esp + 14h]
-        test eax, eax
-        pop edi
-        pop esi
-        pop ebx
-        je temporary_cleared
-        dec dword ptr [eax]
-        mov eax, dword ptr [esp + 8]
-        cmp dword ptr [eax], 0
-        jne temporary_cleared
-        mov ecx, dword ptr [eax + 8]
-        call dword ptr [eax + 4]
-        mov eax, dword ptr [esp + 8]
-        push eax
-        call FrontendGraphicsDelete_00494840
-        add esp, 4
-
-    temporary_cleared:
-        lea ecx, [esp]
-        mov dword ptr [esp + 4], 0
-        mov dword ptr [esp + 8], 0
-        call CFrontendGraphicsName_00494840::Destroy
-        mov al, 1
-        add esp, 0ch
-        ret
-    }
+    MainFont = g_pFontBank->GetFont("ENG_ARIAL_16");
+    return true;
 }

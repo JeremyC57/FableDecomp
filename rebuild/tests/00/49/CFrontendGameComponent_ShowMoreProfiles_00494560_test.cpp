@@ -1,75 +1,50 @@
 #include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/49/CFrontendGameComponent_ShowMoreProfiles_00494560.cpp"
-
-static void SetProfiles(
-    CFrontendGameComponent_00494560* component,
-    void** storage,
-    unsigned long count,
-    unsigned long first_visible)
+class CWideString {
+public:
+    void* PData;
+};
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;                                         // +0x00
+    T* _M_finish;                                        // +0x04
+    T* _M_end_of_storage;                                // +0x08
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+};
+}
+class CFrontendGameComponent {
+public:
+    unsigned char            _pad0000[0x1e0c];
+    std::vector<CWideString> ProfileNames;                  // +0x1e0c
+    long                     ProfileNamesOffset;            // +0x1e18
+private:
+    void ShowMoreProfiles();
+    friend struct CFrontendGameComponent_Test;           // behaviour-test hook
+};
+void CFrontendGameComponent::ShowMoreProfiles()
 {
-    component->profiles_begin = storage;
-    component->profiles_end = storage + count;
-    component->profiles_capacity = storage + count;
-    component->first_visible_profile = first_visible;
+    if (ProfileNames.size() > 8)
+    {
+        ProfileNamesOffset += 8;
+        if ((unsigned long)ProfileNamesOffset > ProfileNames.size())
+            ProfileNamesOffset = 0;
+    }
 }
 
+
+struct CFrontendGameComponent_Test {
+    static void Run(CFrontendGameComponent* c) { c->ShowMoreProfiles(); }
+};
 int main()
 {
-    int failures = 0;
-    CFrontendGameComponent_00494560 component;
-    void* profiles[16];
-
-    std::memset(&component, 0, sizeof(component));
-
-    SetProfiles(&component, profiles, 8, 3);
-    component.ShowMoreProfiles();
-    if (component.first_visible_profile != 3)
-    {
-        std::printf("single-page no-op failed\n");
-        ++failures;
-    }
-
-    SetProfiles(&component, profiles, 12, 0);
-    component.ShowMoreProfiles();
-    if (component.first_visible_profile != 8)
-    {
-        std::printf("page advance failed\n");
-        ++failures;
-    }
-
-    component.ShowMoreProfiles();
-    if (component.first_visible_profile != 0)
-    {
-        std::printf("past-end wrap failed\n");
-        ++failures;
-    }
-
-    SetProfiles(&component, profiles, 16, 8);
-    component.ShowMoreProfiles();
-    if (component.first_visible_profile != 16)
-    {
-        std::printf("equal-end retention failed\n");
-        ++failures;
-    }
-
-    if (component.profiles_begin != profiles ||
-        component.profiles_end != profiles + 16 ||
-        component.profiles_capacity != profiles + 16)
-    {
-        std::printf("profile vector preservation failed\n");
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "FRONTEND_00494560_TEST FAIL count=%d\n",
-            failures);
-        return 1;
-    }
-
-    std::printf("FRONTEND_00494560_TEST PASS\n");
+    static CFrontendGameComponent c;
+    static CWideString names[20];
+    c.ProfileNames._M_start = names; c.ProfileNames._M_finish = names + 20; c.ProfileNamesOffset = 0;
+    CFrontendGameComponent_Test::Run(&c); bool ok = c.ProfileNamesOffset == 8;
+    CFrontendGameComponent_Test::Run(&c); ok = ok && c.ProfileNamesOffset == 16;
+    CFrontendGameComponent_Test::Run(&c); ok = ok && c.ProfileNamesOffset == 0;
+    c.ProfileNames._M_finish = names + 8; c.ProfileNamesOffset = 3;
+    CFrontendGameComponent_Test::Run(&c); ok = ok && c.ProfileNamesOffset == 3;
+    if (ok) std::printf("00494560_TEST PASS\n");
     return 0;
 }

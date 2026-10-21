@@ -1,159 +1,127 @@
-#include <stdio.h>
-
-class CCharStringData
-{
+#include <cstdio>
+struct CCharStringData {
+    const char*   Chars;                                 // +0x00
+    unsigned long Length;                                // +0x04
+};
+long __fastcall Compare(const char* a, const char* b);   // 0x00411570
+class CCharString {
 public:
-    char* m_psz;
-    long m_nLength;
-};
-
-class CCharString
-{
-public:
-    CCharStringData* m_pString;
-};
-
-struct Pair
-{
-    long m_Key;
-    void* m_Value;
-};
-
-static Pair* g_lowerBoundResult;
-
-struct InterfaceMap
-{
-    Pair* m_pBegin;
-    Pair* m_pEnd;
-
-    Pair* LowerBound(const long*)
+    CCharStringData* PStringData;
+    __forceinline bool operator==(const CCharString& other) const
     {
-        return g_lowerBoundResult;
+        if (PStringData == other.PStringData)
+            return true;
+        if (PStringData && other.PStringData && PStringData->Length == other.PStringData->Length)
+            return Compare(PStringData->Chars, other.PStringData->Chars) == 0;
+        return false;
     }
 };
-
-struct Registry
-{
-    unsigned char m_Pad00[0x3C];
-    unsigned long m_Flags3C;
-    unsigned char m_Pad40[0x04];
-    InterfaceMap m_Map44;
-};
-
-struct CTCBase
-{
-    unsigned char m_Pad00[0x0C];
-    unsigned char m_Flag0C;
-    unsigned char m_Pad0D[0x0F];
-    unsigned char m_Flag1C;
-    unsigned char m_Pad1D[0x03];
-    unsigned long m_Value20;
-    unsigned char m_Pad24[0x2C];
-    CCharStringData* m_String50;
-};
-
-class CGameScriptInterface
-{
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    bool IsQuestStartScreenActive(CCharString& value) const;
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);                // 0x0040F020
+};
+class CThing {
+public:
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline T* GetTC()
+    {
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        return (T*)((it == map->last || T::INTERFACE_TYPE < it->type) ? map->last : it)->component;
+    }
+};
+class CTCQuestCompletionUI {
+public:
+    enum { INTERFACE_TYPE = 0xfc };
+    unsigned char _pad00[0x0c];
+    bool          Active;                                // +0x0c
+    bool          ReallyActive;                          // +0x0d
+    unsigned char _pad0e[0x1c - 0x0e];
+    bool          Quitting;                              // +0x1c
+    unsigned char _pad1d[3];
+    long          Completion;                            // +0x20 CompletionType
+    unsigned char _pad24[0x50 - 0x24];
+    CCharString   ScriptName;                            // +0x50
+};
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
+public:
+    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+};
+class CPlayerManager {
+public:
+    CPlayer& GetMainPlayer();                            // 0x00449970
+};
+class CMainGameComponent {
+public:
+    unsigned char   _pad00[0x1c];
+    CPlayerManager* PPlayerManager;                      // +0x1c
+    CPlayerManager* GetPlayerManager() const { return PPlayerManager; }
+};
+extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
+class CGameScriptInterface {
+public:
+    virtual bool IsQuestStartScreenActive(CCharString& questName) const;
 };
 
-static Registry* g_registry;
-static int g_compareCalls;
-
-extern "C" void* __fastcall Helper00449970(void* value)
+bool CGameScriptInterface::IsQuestStartScreenActive(CCharString& questName) const
 {
-    return value;
-}
-
-extern "C" Registry* __fastcall Helper00487DC0(void*)
-{
-    return g_registry;
-}
-
-long __fastcall Compare00411570(const char* lhs, const char* rhs)
-{
-    ++g_compareCalls;
-    while (*lhs != 0 && *lhs == *rhs)
+    CThingPlayerCreature* hero = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer().GetPPlayerCharacter();
+    if (hero->HasTC(CTCQuestCompletionUI::INTERFACE_TYPE))
     {
-        ++lhs;
-        ++rhs;
-    }
-    return (unsigned char)*lhs - (unsigned char)*rhs;
-}
-
-bool CGameScriptInterface::IsQuestStartScreenActive(CCharString& value) const
-{
-    Registry* registry = Helper00487DC0(Helper00449970(g_registry));
-    if ((registry->m_Flags3C & 0x10000000UL) != 0)
-    {
-        long questStartScreenType = 0xFC;
-        Pair* entry = registry->m_Map44.LowerBound(&questStartScreenType);
-        if (entry == registry->m_Map44.m_pEnd || 0xFC < entry->m_Key)
-            entry = registry->m_Map44.m_pEnd;
-        CTCBase* tcBase = (CTCBase*)entry->m_Value;
-        if (tcBase->m_Flag0C != 0 &&
-            tcBase->m_Flag1C == 0 &&
-            tcBase->m_Value20 == 0)
-        {
-            CCharStringData* lhs = tcBase->m_String50;
-            CCharStringData* rhs = value.m_pString;
-            if (lhs == rhs)
-                return true;
-            if (lhs != 0 && rhs != 0 && lhs->m_nLength == rhs->m_nLength)
-                return Compare00411570(lhs->m_psz, rhs->m_psz) == 0;
-        }
+        CTCQuestCompletionUI* ui = hero->GetTC<CTCQuestCompletionUI>();
+        if (ui->Active && !ui->Quitting && ui->Completion == 0 && ui->ScriptName == questName)
+            return true;
     }
     return false;
 }
 
+#include <cstring>
+long __fastcall Compare(const char* a, const char* b) { return std::strcmp(a, b); }
+static CInterfaceMap::SEntry g_entries[3];
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+static CThingPlayerCreature g_hero;
+CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return &g_hero; }
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
+static unsigned char g_mgcRaw[sizeof(CMainGameComponent)];
+CMainGameComponent* g_pMainGameComponent = (CMainGameComponent*)g_mgcRaw;
 int main()
 {
-    Registry registry;
-    Pair entry;
-    Pair end;
-    CTCBase base;
-    CCharStringData stored;
-    CCharStringData equal;
-    CCharStringData different;
-    CCharString name;
-    char storedText[] = "quest_start";
-    char equalText[] = "quest_start";
-    char differentText[] = "other";
-    CGameScriptInterface object;
-
-    g_registry = &registry;
-    g_lowerBoundResult = &entry;
-    registry.m_Flags3C = 0x10000000UL;
-    registry.m_Map44.m_pEnd = &end;
-    entry.m_Key = 0xFC;
-    entry.m_Value = &base;
-    end.m_Key = 0;
-    end.m_Value = &base;
-    base.m_Flag0C = 1;
-    base.m_Flag1C = 0;
-    base.m_Value20 = 0;
-    base.m_String50 = &stored;
-    stored.m_psz = storedText;
-    stored.m_nLength = 11;
-    equal.m_psz = equalText;
-    equal.m_nLength = 11;
-    different.m_psz = differentText;
-    different.m_nLength = 5;
-
-    name.m_pString = &stored;
-    if (!object.IsQuestStartScreenActive(name))
-        return 1;
-    name.m_pString = &equal;
-    if (!object.IsQuestStartScreenActive(name) || g_compareCalls != 1)
-        return 2;
-    name.m_pString = &different;
-    if (object.IsQuestStartScreenActive(name))
-        return 3;
-    registry.m_Flags3C = 0;
-    if (object.IsQuestStartScreenActive(name))
-        return 4;
-
-    printf("FSE2_0089ad90_TEST PASS\n");
-    return 0;
+    CPlayerManager pm; g_pMainGameComponent->PPlayerManager = &pm;
+    static CTCQuestCompletionUI ui;
+    static CCharStringData d1 = { "Q_Start", 7 }, d2 = { "Q_Start", 7 }, d3 = { "Q_Other", 7 }, d4 = { "Q_Sta", 5 };
+    ui.Active = true; ui.Quitting = false; ui.Completion = 0; ui.ScriptName.PStringData = &d1;
+    for (int i = 0; i < 9; ++i) g_hero.UsingComponents[i] = 0;
+    g_hero.UsingComponents[7] = 1u << 28;
+    g_entries[0].type = 4; g_entries[0].component = 0;
+    g_entries[1].type = 0xfc; g_entries[1].component = (CTCBase*)&ui;
+    g_hero.Components.first = g_entries; g_hero.Components.last = g_entries + 2;
+    CGameScriptInterface gsi; CCharString q; q.PStringData = &d2;
+    bool ok = gsi.IsQuestStartScreenActive(q);
+    q.PStringData = &d1; ok = ok && gsi.IsQuestStartScreenActive(q);          // same block
+    q.PStringData = &d3; ok = ok && !gsi.IsQuestStartScreenActive(q);         // other name
+    q.PStringData = &d4; ok = ok && !gsi.IsQuestStartScreenActive(q);         // other length
+    q.PStringData = 0;   ok = ok && !gsi.IsQuestStartScreenActive(q);         // null name
+    q.PStringData = &d2;
+    ui.Active = false; ok = ok && !gsi.IsQuestStartScreenActive(q); ui.Active = true;
+    ui.Quitting = true; ok = ok && !gsi.IsQuestStartScreenActive(q); ui.Quitting = false;
+    ui.Completion = 1; ok = ok && !gsi.IsQuestStartScreenActive(q); ui.Completion = 0;
+    g_hero.UsingComponents[7] = 0; ok = ok && !gsi.IsQuestStartScreenActive(q); g_hero.UsingComponents[7] = 1u << 28;
+    ok = ok && gsi.IsQuestStartScreenActive(q);
+    std::printf(ok ? "0089ad90_TEST PASS\n" : "0089ad90_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

@@ -1,87 +1,38 @@
-extern "C" __declspec(naked) void F_00437580(void)
+// CPlayerGui::SetSpecialAbilityButtonsAsDisplaying(bool show, bool show_abilities) -- start the normal <-> special button transition when the state changes (not while paused)
+// Leaf: ?SetSpecialAbilityButtonsAsDisplaying@CPlayerGui@@QAEX_N0@Z
+// Retail: Fable.exe @ 0x00437580, 81 bytes, `ret 8`; callers 0x0062608E, 0x006284F1, 0x0068FF6B, 0x0068FF98, 0x0069000E;
+// Ego_r.pdb ?SetSpecialAbilityButtonsAsDisplaying@CPlayerGui@@QAEX_N0@Z.
+// Body: nothing while World->Paused or when both flags already match; else store the abilities flag, the show flag,
+// NormalToSpecial = show, SpecialToNormal = !show, AbilityButtonScale = 0.1f.
+// Layout: retail CPlayerGui -- World +0x04, ShowSpecialAbilityButtons +0x250, ShowSpecialAbilityButtonsAbilities +0x251,
+// AbilityButtonScale +0x278, NormalToSpecial +0x27c, SpecialToNormal +0x27d (Ego_r.pdb +0x258.. with 16-byte vectors; the
+// three vectors before AbilityButtonScale are 12 bytes in retail); CWorld from engine/CWorld.h (Paused +0xa4).
+// Shape: /O2 (16-aligned entry).
+#include "engine/CWorld.h"
+class CPlayerGui {
+public:
+    void*         _vfptr;                                // +0x000
+    CWorld*       World;                                 // +0x004
+    unsigned char _pad008[0x250 - 0x8];
+    bool          ShowSpecialAbilityButtons;             // +0x250
+    bool          ShowSpecialAbilityButtonsAbilities;    // +0x251
+    bool          SpecialSelected;                       // +0x252
+    bool          SpecialDeselected;                     // +0x253
+    unsigned char _pad254[0x278 - 0x254];                // AbilityButtons / AbilityButtonsAlpha / QuickAccessButtonsAlpha (12-byte STLport vectors)
+    float         AbilityButtonScale;                    // +0x278
+    bool          NormalToSpecial;                       // +0x27c
+    bool          SpecialToNormal;                       // +0x27d
+    void SetSpecialAbilityButtonsAsDisplaying(bool show, bool show_abilities);
+};
+void CPlayerGui::SetSpecialAbilityButtonsAsDisplaying(bool show, bool show_abilities)
 {
-    __asm
-    {
-        _emit 0x8b
-        _emit 0x41
-        _emit 0x04
-        _emit 0x8a
-        _emit 0x90
-        _emit 0xa4
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x84
-        _emit 0xd2
-        _emit 0x75
-        _emit 0x41
-        _emit 0x8a
-        _emit 0x91
-        _emit 0x50
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8a
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x3a
-        _emit 0xd0
-        _emit 0x8a
-        _emit 0x54
-        _emit 0x24
-        _emit 0x08
-        _emit 0x75
-        _emit 0x08
-        _emit 0x38
-        _emit 0x91
-        _emit 0x51
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x74
-        _emit 0x27
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x88
-        _emit 0x91
-        _emit 0x51
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x0f
-        _emit 0x94
-        _emit 0xc2
-        _emit 0x88
-        _emit 0x81
-        _emit 0x50
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x88
-        _emit 0x81
-        _emit 0x7c
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0x88
-        _emit 0x91
-        _emit 0x7d
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0xc7
-        _emit 0x81
-        _emit 0x78
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0xcd
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0x3d
-        _emit 0xc2
-        _emit 0x08
-        _emit 0x00
-    }
+    if (World->Paused)
+        return;
+    if (ShowSpecialAbilityButtons == show && ShowSpecialAbilityButtonsAbilities == show_abilities)
+        return;
+    ShowSpecialAbilityButtonsAbilities = show_abilities;
+    ShowSpecialAbilityButtons = show;
+    NormalToSpecial = show;
+    SpecialToNormal = !show;
+    AbilityButtonScale = 0.1f;
 }

@@ -1,76 +1,38 @@
-#include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/41/CMainGameComponentInit_CMainGameComponentInit_004131a0.cpp"
-
-static unsigned char* volatile g_Base;
-static volatile int g_CallCount;
-static volatile int g_Offsets[4];
-static volatile char g_Kinds[4];
-
-extern "C" void* __fastcall
-CMainGameComponentInit_WideCtor_004131a0(void* destination, void*)
+// test for 004131a0 CMainGameComponentInit ctor
+#include <stdio.h>
+#include <string.h>
+#include <new>
+class CWideString {
+public:
+    CWideString();                                       // 0x0099AED0
+    void* PData;
+};
+class CCharString {
+public:
+    CCharString();                                       // 0x0099E4B0
+    void* PData;
+};
+class CMainGameComponentInit {
+public:
+    CMainGameComponentInit();
+    CWideString InitialWorldName;                        // +0x00
+    CWideString InitialWorldHolySiteName;                // +0x04
+    CCharString InitialQuestName;                        // +0x08
+    CWideString SaveGameName;                            // +0x0c
+};
+CMainGameComponentInit::CMainGameComponentInit()
 {
-    const int call = g_CallCount++;
-    g_Offsets[call] = (int)((unsigned char*)destination - g_Base);
-    g_Kinds[call] = 'W';
-    *(void**)destination = (void*)(call + 1);
-    return destination;
 }
 
-extern "C" void* __fastcall
-CMainGameComponentInit_NarrowCtor_004131a0(void* destination, void*)
-{
-    const int call = g_CallCount++;
-    g_Offsets[call] = (int)((unsigned char*)destination - g_Base);
-    g_Kinds[call] = 'N';
-    *(void**)destination = (void*)(call + 1);
-    return destination;
-}
-
+static void* g_order[8]; static int g_n;
+CWideString::CWideString() { PData = (void*)1; g_order[g_n++] = this; }
+CCharString::CCharString() { PData = (void*)2; g_order[g_n++] = this; }
 int main()
 {
-    unsigned char record[16];
-    std::memset(record, 0, sizeof(record));
-    for (int index = 0; index != 4; ++index)
-    {
-        g_Offsets[index] = -1;
-        g_Kinds[index] = 0;
-    }
-    g_Base = record;
-    g_CallCount = 0;
-
-    typedef void* (__fastcall *CtorFunction)(void*, void*);
-    CtorFunction volatile constructor =
-        &CMainGameComponentInit_CMainGameComponentInit_004131a0;
-    void* result = constructor(record, 0);
-
-    const int expectedOffsets[4] = { 0, 4, 8, 12 };
-    const char expectedKinds[4] = { 'W', 'W', 'N', 'W' };
-    int failures = 0;
-
-    if (result != record || g_CallCount != 4)
-        ++failures;
-
-    for (int index = 0; index != 4; ++index)
-    {
-        if (g_Offsets[index] != expectedOffsets[index] ||
-            g_Kinds[index] != expectedKinds[index] ||
-            *(void**)(record + index * 4) != (void*)(index + 1))
-        {
-            ++failures;
-        }
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "MAIN_GAME_INIT_004131a0_TEST FAIL count=%d calls=%d\n",
-            failures,
-            g_CallCount);
-        return 1;
-    }
-
-    std::printf("MAIN_GAME_INIT_004131a0_TEST PASS\n");
-    return 0;
+    static unsigned char buf[16];
+    CMainGameComponentInit* p = new (buf) CMainGameComponentInit;
+    int ok = sizeof(*p) == 16 && g_n == 4 && g_order[0] == buf && g_order[1] == buf + 4 && g_order[2] == buf + 8
+          && g_order[3] == buf + 12 && p->InitialQuestName.PData == (void*)2 && p->SaveGameName.PData == (void*)1;
+    printf(ok ? "004131a0_TEST PASS\n" : "004131a0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

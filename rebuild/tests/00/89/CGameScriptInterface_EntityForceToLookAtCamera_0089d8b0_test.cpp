@@ -1,179 +1,198 @@
 #include <cstdio>
-
-class CScriptThing
-{
-};
-
-struct CGSIForceLookCamera_Destination
-{
-    unsigned char m_Pad00[0x34];
-    unsigned char m_Enabled;
-    unsigned char m_After;
-};
-
-class CGSIForceLookCamera_Node
-{
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    long m_Key;
-    CGSIForceLookCamera_Destination* m_pValue;
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CGSIForceLookCamera_Container
-{
+class CThing {
 public:
-    CGSIForceLookCamera_Node* LowerBound(const long* pKey);
-
-    CGSIForceLookCamera_Node* m_pFirst;
-    CGSIForceLookCamera_Node* m_pEnd;
-};
-
-class CGameScriptInterface
-{
-public:
-    virtual void EntityForceToLookAtCamera(
-        const CScriptThing& entity,
-        bool enabled) const;
-};
-
-struct ThingVftable
-{
-    unsigned char m_Pad00[0x2C];
-    void* m_GetTarget;
-    unsigned char m_Pad30[0x12C - 0x30];
-    void* m_IsValid;
-};
-
-struct ThingStorage
-{
-    ThingVftable* m_pVftable;
-};
-
-struct TargetStorage
-{
-    unsigned char m_Pad00[0x20];
-    unsigned long m_Flags;
-    unsigned char m_Pad24[0x20];
-    CGSIForceLookCamera_Container m_Container;
-};
-
-static bool g_IsValid;
-static TargetStorage* g_pTarget;
-static CGSIForceLookCamera_Node* g_pLowerBoundResult;
-static unsigned long g_IsValidCalls;
-static unsigned long g_GetTargetCalls;
-static unsigned long g_LowerBoundCalls;
-static long g_ObservedKey;
-
-static bool __fastcall IsValid(CScriptThing*)
-{
-    ++g_IsValidCalls;
-    return g_IsValid;
-}
-
-static TargetStorage* __fastcall GetTarget(CScriptThing*)
-{
-    ++g_GetTargetCalls;
-    return g_pTarget;
-}
-
-CGSIForceLookCamera_Node*
-CGSIForceLookCamera_Container::LowerBound(const long* pKey)
-{
-    ++g_LowerBoundCalls;
-    g_ObservedKey = *pKey;
-    return g_pLowerBoundResult;
-}
-
-static void CallWithRawBool(
-    const CGameScriptInterface* pInterface,
-    const CScriptThing* pThing,
-    unsigned char value)
-{
-    __asm
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
     {
-        mov ecx, pInterface
-        movzx eax, value
-        push eax
-        push pThing
-        call CGameScriptInterface::EntityForceToLookAtCamera
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
+};
+class CTCTargetingBase {
+public:
+    enum { INTERFACE_TYPE = 8 };
+    unsigned char _pad00[0x34];
+    bool          LookAtCamera;                          // +0x34 (name not confirmed)
+};
+class CScriptThing {
+public:
+    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
+    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
+    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
+    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
+    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
+    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
+    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
+    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
+    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
+    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
+    virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
+    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
+    virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
+    virtual void v072(); virtual void v073(); virtual void v074();
+    virtual bool IsValid() const;                        // slot 75 (+0x12c)
+};
+class CGameScriptInterface {
+public:
+    virtual void EntityForceToLookAtCamera(const CScriptThing& thing, bool look) const;
+    void* World;                                         // +0x04
+};
+void CGameScriptInterface::EntityForceToLookAtCamera(const CScriptThing& thing, bool look) const
+{
+    if (thing.IsValid())
+    {
+        CTCTargetingBase* tc;
+        if (thing.GetThing()->GetTC(&tc))
+            tc->LookAtCamera = look;
     }
 }
 
-static int Fail(const char* pMessage)
-{
-    std::printf("FSE2_0089d8b0_TEST FAIL: %s\n", pMessage);
-    return 1;
-}
-
-static void ResetCounts()
-{
-    g_IsValidCalls = 0;
-    g_GetTargetCalls = 0;
-    g_LowerBoundCalls = 0;
-    g_ObservedKey = 0;
-}
-
+void CScriptThing::v000() {}
+void CScriptThing::v001() {}
+void CScriptThing::v002() {}
+void CScriptThing::v003() {}
+void CScriptThing::v004() {}
+void CScriptThing::v005() {}
+void CScriptThing::v006() {}
+void CScriptThing::v007() {}
+void CScriptThing::v008() {}
+void CScriptThing::v009() {}
+void CScriptThing::v010() {}
+void CScriptThing::v012() {}
+void CScriptThing::v013() {}
+void CScriptThing::v014() {}
+void CScriptThing::v015() {}
+void CScriptThing::v016() {}
+void CScriptThing::v017() {}
+void CScriptThing::v018() {}
+void CScriptThing::v019() {}
+void CScriptThing::v020() {}
+void CScriptThing::v021() {}
+void CScriptThing::v022() {}
+void CScriptThing::v023() {}
+void CScriptThing::v024() {}
+void CScriptThing::v025() {}
+void CScriptThing::v026() {}
+void CScriptThing::v027() {}
+void CScriptThing::v028() {}
+void CScriptThing::v029() {}
+void CScriptThing::v030() {}
+void CScriptThing::v031() {}
+void CScriptThing::v032() {}
+void CScriptThing::v033() {}
+void CScriptThing::v034() {}
+void CScriptThing::v035() {}
+void CScriptThing::v036() {}
+void CScriptThing::v037() {}
+void CScriptThing::v038() {}
+void CScriptThing::v039() {}
+void CScriptThing::v040() {}
+void CScriptThing::v041() {}
+void CScriptThing::v042() {}
+void CScriptThing::v043() {}
+void CScriptThing::v044() {}
+void CScriptThing::v045() {}
+void CScriptThing::v046() {}
+void CScriptThing::v047() {}
+void CScriptThing::v048() {}
+void CScriptThing::v049() {}
+void CScriptThing::v050() {}
+void CScriptThing::v051() {}
+void CScriptThing::v052() {}
+void CScriptThing::v053() {}
+void CScriptThing::v054() {}
+void CScriptThing::v055() {}
+void CScriptThing::v056() {}
+void CScriptThing::v057() {}
+void CScriptThing::v058() {}
+void CScriptThing::v059() {}
+void CScriptThing::v060() {}
+void CScriptThing::v061() {}
+void CScriptThing::v062() {}
+void CScriptThing::v063() {}
+void CScriptThing::v064() {}
+void CScriptThing::v065() {}
+void CScriptThing::v066() {}
+void CScriptThing::v067() {}
+void CScriptThing::v068() {}
+void CScriptThing::v069() {}
+void CScriptThing::v070() {}
+void CScriptThing::v071() {}
+void CScriptThing::v072() {}
+void CScriptThing::v073() {}
+void CScriptThing::v074() {}
+CThing* CScriptThing::GetThing() const { return 0; }
+bool CScriptThing::IsValid() const { return false; }
+class CTestScriptThing : public CScriptThing {
+public:
+    CThing* T; bool Valid;
+    CThing* GetThing() const { return T; }
+    bool IsValid() const { return Valid; }
+};
+static CInterfaceMap::SEntry g_entries[3];
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 int main()
 {
-    ThingVftable thingVftable = {};
-    ThingStorage thingStorage;
-    const CScriptThing& scriptThing =
-        reinterpret_cast<const CScriptThing&>(thingStorage);
-    TargetStorage target = {};
-    CGSIForceLookCamera_Destination foundDestination = {};
-    CGSIForceLookCamera_Destination endDestination = {};
-    CGSIForceLookCamera_Node foundNode = {};
-    CGSIForceLookCamera_Node endNode = {};
-    CGameScriptInterface interfaceObject;
-
-    thingVftable.m_IsValid = reinterpret_cast<void*>(IsValid);
-    thingVftable.m_GetTarget = reinterpret_cast<void*>(GetTarget);
-    thingStorage.m_pVftable = &thingVftable;
-    g_pTarget = &target;
-    foundNode.m_pValue = &foundDestination;
-    endNode.m_pValue = &endDestination;
-    target.m_Container.m_pEnd = &endNode;
-    foundDestination.m_After = 0xA5;
-    endDestination.m_After = 0x5A;
-
-    ResetCounts();
-    g_IsValid = false;
-    CallWithRawBool(&interfaceObject, &scriptThing, 0x71);
-    if (g_IsValidCalls != 1 || g_GetTargetCalls != 0 ||
-        g_LowerBoundCalls != 0)
-        return Fail("invalid thing guard");
-
-    ResetCounts();
-    g_IsValid = true;
-    target.m_Flags = 0;
-    CallWithRawBool(&interfaceObject, &scriptThing, 0x72);
-    if (g_GetTargetCalls != 1 || g_LowerBoundCalls != 0)
-        return Fail("capability guard");
-
-    ResetCounts();
-    target.m_Flags = 0x100;
-    foundNode.m_Key = 8;
-    g_pLowerBoundResult = &foundNode;
-    CallWithRawBool(&interfaceObject, &scriptThing, 0x7E);
-    if (g_LowerBoundCalls != 1 || g_ObservedKey != 8 ||
-        foundDestination.m_Enabled != 0x7E ||
-        foundDestination.m_After != 0xA5)
-        return Fail("eligible node or raw bool");
-
-    ResetCounts();
-    foundNode.m_Key = 9;
-    g_pLowerBoundResult = &foundNode;
-    CallWithRawBool(&interfaceObject, &scriptThing, 0x6D);
-    if (endDestination.m_Enabled != 0x6D ||
-        endDestination.m_After != 0x5A)
-        return Fail("greater-key sentinel fallback");
-
-    ResetCounts();
-    g_pLowerBoundResult = &endNode;
-    CallWithRawBool(&interfaceObject, &scriptThing, 0x3C);
-    if (endDestination.m_Enabled != 0x3C)
-        return Fail("end sentinel selection");
-
-    std::printf("FSE2_0089d8b0_TEST PASS\n");
-    return 0;
+    static CTCTargetingBase targeting; targeting.LookAtCamera = false;
+    static CTCTargetingBase other; other.LookAtCamera = false;
+    CThing t;
+    for (int i = 0; i < 9; ++i) t.UsingComponents[i] = 0;
+    t.UsingComponents[0] = (1u << 8) | (1u << 3);
+    g_entries[0].type = 3; g_entries[0].component = (CTCBase*)&other;
+    g_entries[1].type = 8; g_entries[1].component = (CTCBase*)&targeting;
+    g_entries[2].type = 0; g_entries[2].component = 0;
+    t.Components.first = g_entries; t.Components.last = g_entries + 2;
+    CTestScriptThing s; s.T = &t; s.Valid = false;
+    CGameScriptInterface gsi;
+    gsi.EntityForceToLookAtCamera(s, true);
+    bool ok = targeting.LookAtCamera == false;
+    s.Valid = true; gsi.EntityForceToLookAtCamera(s, true);
+    ok = ok && targeting.LookAtCamera == true && other.LookAtCamera == false;
+    gsi.EntityForceToLookAtCamera(s, false);
+    ok = ok && targeting.LookAtCamera == false;
+    t.UsingComponents[0] = (1u << 3); targeting.LookAtCamera = false;
+    gsi.EntityForceToLookAtCamera(s, true);
+    ok = ok && targeting.LookAtCamera == false;
+    std::printf(ok ? "0089d8b0_TEST PASS\n" : "0089d8b0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

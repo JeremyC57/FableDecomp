@@ -1,45 +1,40 @@
-// CFrontendGameComponent::ShowMoreProfiles @ 0x00494560.
-//
-// Profile pagination advances the first-visible index by eight when the list
-// has more than one page.  An index strictly beyond the profile count wraps to
-// zero; equality with the count is retained by retail.
-
-class CFrontendGameComponent_00494560
-{
+// CFrontendGameComponent::ShowMoreProfiles() -- page the front-end profiles list forward by 8, wrapping to the start
+// Leaf: ?ShowMoreProfiles@CFrontendGameComponent@@AAEXXZ
+// Retail: Fable.exe @ 0x00494560, 69 bytes, `ret` (thiscall, no args); Ego_r.pdb ?ShowMoreProfiles@CFrontendGameComponent@@AAEXXZ;
+// ShowMoreProfiles (label correct).
+// Body: if more than 8 names, advance ProfileNamesOffset by 8 and reset it to 0 once it passes the end (unsigned compares, the
+// size re-read after the store).
+// Layout: retail CFrontendGameComponent -- ProfileNames (12-byte STLport vector<CWideString>) +0x1e0c, ProfileNamesOffset +0x1e18
+// (Ego_r.pdb +0x1e0c / +0x1e1c, its vectors are 16 bytes); same block as ChooseSaveNumber 0x00494800; no engine/ header.
+// Shape: /O2 (16-aligned entry).
+class CWideString {
 public:
-    unsigned char padding_0000[0x1e0c];
-    void** profiles_begin;
-    void** profiles_end;
-    void** profiles_capacity;
-    unsigned long first_visible_profile;
-
-    void ShowMoreProfiles();
+    void* PData;
 };
-
-__declspec(naked)
-void CFrontendGameComponent_00494560::ShowMoreProfiles()
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;                                         // +0x00
+    T* _M_finish;                                        // +0x04
+    T* _M_end_of_storage;                                // +0x08
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+};
+}
+class CFrontendGameComponent {
+public:
+    unsigned char            _pad0000[0x1e0c];
+    std::vector<CWideString> ProfileNames;                  // +0x1e0c
+    long                     ProfileNamesOffset;            // +0x1e18
+private:
+    void ShowMoreProfiles();
+    friend struct CFrontendGameComponent_Test;           // behaviour-test hook
+};
+void CFrontendGameComponent::ShowMoreProfiles()
 {
-    __asm
+    if (ProfileNames.size() > 8)
     {
-        mov eax, dword ptr [ecx + 1e10h]
-        sub eax, dword ptr [ecx + 1e0ch]
-        sar eax, 2
-        cmp eax, 8
-        jbe done
-        mov eax, dword ptr [ecx + 1e18h]
-        add eax, 8
-        push esi
-        mov dword ptr [ecx + 1e18h], eax
-        mov esi, dword ptr [ecx + 1e0ch]
-        mov edx, dword ptr [ecx + 1e10h]
-        sub edx, esi
-        sar edx, 2
-        cmp eax, edx
-        pop esi
-        jbe done
-        mov dword ptr [ecx + 1e18h], 0
-
-    done:
-        ret
+        ProfileNamesOffset += 8;
+        if ((unsigned long)ProfileNamesOffset > ProfileNames.size())
+            ProfileNamesOffset = 0;
     }
 }

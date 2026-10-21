@@ -1,290 +1,241 @@
 #include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/4a/CWorld_PrepareForLoad_004a0220.cpp"
-
-static int g_GlobalInterface;
-static int g_PlayerOwner;
-static int g_Player;
-static int g_Environment;
-static int g_Subsystem18;
-static int g_Subsystem60;
-static int g_Subsystem68;
-static int g_Subsystem6c;
-static int g_WorldMap;
-static int g_PlayerGui;
-static int g_GuiOwner;
-static int g_CountedObject;
-extern "C" void* CWorld_PrepareForLoad_Global_004a0220 =
-    &g_GlobalInterface;
-
-static volatile int g_Sequence;
-static volatile int g_GetPlayerCalls;
-static volatile int g_RemoveMode;
-static volatile int g_Subsystem4Argument;
-static volatile int g_EnvironmentArgument;
-static volatile int g_ThemeChannels[3];
-static volatile int g_ThemeValues[3];
-static volatile int g_ThemeCalls;
-static volatile int g_ReleaseCalls;
-static volatile int g_DeleteCalls;
-static volatile int g_EraseCalls;
-static void* volatile g_EraseFirst;
-static void* volatile g_EraseLast;
-static unsigned char* volatile g_World;
-static volatile int g_LateFieldsReady;
-static volatile int g_LastSequence;
-
-static void Step()
-{
-    g_LastSequence = ++g_Sequence;
+struct CCPPointerInfo {
+    long  RefCount;
+    void  (__fastcall* DeleteFunc)(void* data);
+    void* Data;
+};
+class CPlayer {
+public:
+    void RemoveMode(long mode);                         // 0x00634190 (EPlayerMode)
+    void PrepareForLoad();                              // 0x00487550
+};
+class CPlayerManager {
+public:
+    CPlayer* GetMainPlayer();                           // 0x00449970
+};
+namespace NHeroInformationScreens {
+class CManager {
+public:
+    void Close();                                       // 0x0066E73D (name unconfirmed)
+};
 }
-
-extern "C" void* __fastcall CWorld_Prepare_GetPlayer_004a0220(
-    void* owner,
-    void*)
-{
-    Step();
-    if (owner == &g_PlayerOwner)
-        ++g_GetPlayerCalls;
-    return &g_Player;
-}
-
-extern "C" void __fastcall CWorld_Prepare_RemovePlayerMode_004a0220(
-    void* player,
-    void*,
-    int mode)
-{
-    Step();
-    if (player == &g_Player)
-        g_RemoveMode = mode;
-}
-
-extern "C" void __fastcall CWorld_Prepare_ResetPlayer_004a0220(
-    void* player,
-    void*)
-{
-    Step();
-    if (player != &g_Player)
-        g_GetPlayerCalls = -100;
-}
-
-extern "C" void* __fastcall CWorld_Prepare_GetEnvironment_004a0220(
-    void* owner,
-    void*)
-{
-    Step();
-    return owner == &g_GlobalInterface ? &g_Environment : 0;
-}
-
-extern "C" void __fastcall CWorld_Prepare_ResetEnvironment_004a0220(
-    void* environment,
-    void*)
-{
-    Step();
-    if (environment != &g_Environment)
-        g_GetPlayerCalls = -101;
-}
-
-extern "C" void __fastcall CWorld_Prepare_ResetGlobalInterface_004a0220(
-    void* owner,
-    void*)
-{
-    Step();
-    if (owner != &g_GlobalInterface)
-        g_GetPlayerCalls = -102;
-}
-
-#define DEFINE_NOARG_STEP(name, expected) \
-extern "C" void __fastcall name(void* receiver, void*) \
-{ Step(); if (receiver != expected) g_GetPlayerCalls = -103; }
-
-DEFINE_NOARG_STEP(CWorld_Prepare_Subsystem1_004a0220, &g_Subsystem6c)
-DEFINE_NOARG_STEP(CWorld_Prepare_Subsystem2_004a0220, &g_Subsystem6c)
-DEFINE_NOARG_STEP(CWorld_Prepare_Subsystem3_004a0220, &g_Subsystem6c)
-DEFINE_NOARG_STEP(CWorld_Prepare_Subsystem5_004a0220, &g_Subsystem6c)
-DEFINE_NOARG_STEP(CWorld_Prepare_WorldMap_004a0220, &g_WorldMap)
-DEFINE_NOARG_STEP(CWorld_Prepare_Subsystem6_004a0220, &g_Subsystem68)
-DEFINE_NOARG_STEP(CWorld_Prepare_PlayerGui_004a0220, &g_PlayerGui)
-
-extern "C" void __fastcall CWorld_Prepare_Subsystem7_004a0220(
-    void* receiver,
-    void*)
-{
-    Step();
-    if (receiver != (unsigned char*)&g_Subsystem60 + 4)
-        g_GetPlayerCalls = -104;
-}
-
-extern "C" void __fastcall CWorld_Prepare_Subsystem4_004a0220(
-    void* receiver,
-    void*,
-    int argument)
-{
-    Step();
-    if (receiver != &g_Subsystem6c)
-        g_GetPlayerCalls = -105;
-    g_Subsystem4Argument = argument;
-}
-
-extern "C" void __fastcall CWorld_Prepare_SetEnvironmentState_004a0220(
-    void* receiver,
-    void*,
-    int argument)
-{
-    Step();
-    if (receiver != &g_Subsystem18)
-        g_GetPlayerCalls = -106;
-    g_EnvironmentArgument = argument;
-}
-
-extern "C" void __fastcall CWorld_Prepare_SetTheme_004a0220(
-    void* receiver,
-    void*,
-    int channel,
-    int value)
-{
-    Step();
-    if (receiver != &g_Subsystem18)
-        g_GetPlayerCalls = -107;
-    const int call = g_ThemeCalls++;
-    g_ThemeChannels[call] = channel;
-    g_ThemeValues[call] = value;
-}
-
-extern "C" void __cdecl CWorld_Prepare_DeleteCountedBlock_004a0220(
-    void*)
-{
-    Step();
-    ++g_DeleteCalls;
-}
-
-extern "C" void __fastcall CWorld_Prepare_EraseRange_004a0220(
-    void* range,
-    void*,
-    void* first,
-    void* last)
-{
-    Step();
-    ++g_EraseCalls;
-    g_EraseFirst = first;
-    g_EraseLast = last;
-    unsigned char* world = g_World;
-    g_LateFieldsReady =
-        range == world + 0x168 &&
-        *(unsigned long*)(world + 0x8c) == 0 &&
-        world[0xd8] == 0 && world[0xdb] == 1 &&
-        world[0xdc] == 0 && world[0xdf] == 1 &&
-        world[0xe2] == 0 &&
-        *(unsigned long*)(world + 0xe4) == 0 &&
-        *(unsigned long*)(world + 0x124) == 0 &&
-        world[0x140] == 0 && world[0x164] == 0 &&
-        *(unsigned long*)(world + 0x178) == 0x77777777;
-}
-
-extern "C" void __fastcall CountedRelease_004a0220(void* object, void*)
-{
-    Step();
-    if (object == &g_CountedObject)
-        ++g_ReleaseCalls;
-}
-
-extern "C" void* __fastcall WorldGetMap_004a0220(void*, void*)
-{
-    Step();
-    return &g_WorldMap;
-}
-
-static int RunCase(long initialCount, int expectedRelease, int expectedDelete)
-{
-    unsigned char world[0x17c];
-    unsigned char owner8[0x2c];
-    unsigned long vtable[13];
-    unsigned long counted[3];
-    int rangeValues[2];
-    std::memset(world, 0x55, sizeof(world));
-    std::memset(owner8, 0, sizeof(owner8));
-    std::memset(vtable, 0, sizeof(vtable));
-
-    vtable[12] = (unsigned long)&WorldGetMap_004a0220;
-    counted[0] = initialCount;
-    counted[1] = (unsigned long)&CountedRelease_004a0220;
-    counted[2] = (unsigned long)&g_CountedObject;
-    rangeValues[0] = 10;
-    rangeValues[1] = 20;
-
-    *(unsigned long**)(world + 0) = vtable;
-    *(void**)(world + 0x0c) = &g_PlayerOwner;
-    *(void**)(world + 0x18) = &g_Subsystem18;
-    *(void**)(world + 0x24) = (void*)0x24242424;
-    *(unsigned long**)(world + 0x28) = counted;
-    *(void**)(world + 0x60) = &g_Subsystem60;
-    *(void**)(world + 0x68) = &g_Subsystem68;
-    *(void**)(world + 0x6c) = &g_Subsystem6c;
-    *(unsigned char**)(world + 0x08) = owner8;
-    *(void**)(owner8 + 0x28) = &g_PlayerGui;
-    *(void**)(world + 0x168) = &rangeValues[0];
-    *(void**)(world + 0x16c) = &rangeValues[2];
-    *(unsigned long*)(world + 0x178) = 0x77777777;
-
-    g_Sequence = 0;
-    g_GetPlayerCalls = 0;
-    g_RemoveMode = -1;
-    g_Subsystem4Argument = -1;
-    g_EnvironmentArgument = -1;
-    g_ThemeCalls = 0;
-    g_ReleaseCalls = 0;
-    g_DeleteCalls = 0;
-    g_EraseCalls = 0;
-    g_EraseFirst = 0;
-    g_EraseLast = 0;
-    g_World = world;
-    g_LateFieldsReady = 0;
-
-    typedef void (__fastcall *PrepareFunction)(void*, void*);
-    PrepareFunction volatile prepare = &CWorld_PrepareForLoad_004a0220;
-    prepare(world, 0);
-
-    int failures = 0;
-    if (g_GetPlayerCalls != 2 ||
-        g_RemoveMode != 0x2b ||
-        g_Subsystem4Argument != 0 ||
-        g_EnvironmentArgument != 1 ||
-        g_ThemeCalls != 3 ||
-        g_ThemeChannels[0] != 1 || g_ThemeValues[0] != 0 ||
-        g_ThemeChannels[1] != 2 || g_ThemeValues[1] != 0 ||
-        g_ThemeChannels[2] != 3 || g_ThemeValues[2] != 0 ||
-        g_ReleaseCalls != expectedRelease ||
-        g_DeleteCalls != expectedDelete ||
-        g_EraseCalls != 1 ||
-        g_EraseFirst != &rangeValues[0] ||
-        g_EraseLast != &rangeValues[2] ||
-        g_LateFieldsReady != 1)
+class CPlayerGui {
+public:
+    NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
+    void PrepareForLoad();                              // 0x00438460
+};
+extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
+class CMusicManager {
+public:
+    void ResetMusicEntriesOffsets();                    // 0x006BD870 (unconfirmed)
+    void EnableDangerMusic(bool enable);                // 0x006BDE50
+    void ClearOverridingMusicSet();                     // 0x006BDEF0
+    void ClearCinematicOverridingMusicSet();            // 0x006BDF90
+    void ClearUIOverridingMusicSet();                   // 0x006BE030
+};
+class CEnvironment {
+public:
+    void SetStatic(bool on);                            // 0x006B32B0 (bool argument; name unconfirmed)
+    void TransitionToDefaultTheme(long channel, float time);   // 0x006B3950
+};
+class CAtmosProcess;
+template <class T> struct CCountedPointer {
+    T*              Data;
+    CCPPointerInfo* Info;
+    void Clear()
     {
-        ++failures;
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Info = 0;
+        Data = 0;
     }
-
-    if (*(void**)(world + 0x24) != 0 ||
-        *(void**)(world + 0x28) != 0 ||
-        *(unsigned long*)(world + 0x178) != 0)
-    {
-        ++failures;
-    }
-
-    return failures;
+};
+class CWorldMap {
+public:
+    void PrepareForLoad();                              // 0x004FF560
+};
+class CBulletTimeManager {
+public:
+    void PrepareForLoad();                              // 0x004C6080
+};
+class CDisplayEngine {
+public:
+    void PrepareForLoad();                              // 0x00434AD0
+};
+struct CMainGameComponent {
+    unsigned char   _pad00[0x28];
+    CDisplayEngine* PDisplayEngine;                     // +0x28
+};
+struct CMessageList {
+    void clear();                                       // 0x004A9CF0
+};
+struct CMessageEventManager {
+    void*        _vptr;
+    CMessageList Messages;                              // +0x04
+};
+struct CEnginePrimitiveHandle;
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    T* begin() { return _M_start; }
+    T* end() { return _M_finish; }
+    T* erase(T* first, T* last);                        // 0x00440D70 for CEnginePrimitiveHandle
+    void clear() { erase(begin(), end()); }
+};
 }
 
+class CWorld {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual CWorldMap* GetWorldMap();                   // slot 12 (+0x30)
+    unsigned char         _base04[0x4];
+    CMainGameComponent*   Component;                    // +0x08
+    CPlayerManager*       PlayerManager;                // +0x0c
+    unsigned char         _pad10[0x8];
+    CEnvironment*         PEnvironment;                 // +0x18
+    unsigned char         _pad1c[0x8];
+    CCountedPointer<CAtmosProcess> PAtmosProcessor;     // +0x24
+    unsigned char         _pad2c[0x34];
+    CMessageEventManager* PMessageEventManager;         // +0x60
+    unsigned char         _pad64[0x4];
+    CBulletTimeManager*   PBulletTimeManager;           // +0x68
+    CMusicManager*        PMusicManager;                // +0x6c
+    unsigned char         _pad70[0x1c];
+    long                  FrameStarted3DRendering;      // +0x8c
+    unsigned char         _pad90[0x48];
+    bool                  DontPopulateNextLoadedRegion; // +0xd8
+    unsigned char         _padd9[0x2];
+    bool                  ScreenToFadeInOnNextRegionChange;   // +0xdb
+    bool                  DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn;   // +0xdc
+    unsigned char         _paddd[0x2];
+    bool                  RegionLoadDisplayRegionName;  // +0xdf
+    unsigned char         _pade0[0x2];
+    bool                  WaitingForInventoryTutorialToFinish;   // +0xe2
+    unsigned char         _pade3[0x1];
+    long                  HeroInformationScreenModeAfterTutorial;   // +0xe4
+    unsigned char         _pade8[0x3c];
+    long                  PreviousRegion;               // +0x124
+    unsigned char         _pad128[0x18];
+    bool                  AutoSaveCheckPointExists;     // +0x140
+    unsigned char         _pad141[0x23];
+    bool                  WeatherMaskingPrimitivesSent; // +0x164
+    unsigned char         _pad165[0x3];
+    std::vector<CEnginePrimitiveHandle> WeatherMaskingPrimitiveHandles;   // +0x168
+    unsigned char         _pad174[0x4];
+    long                  PlayerSpawnStatus;            // +0x178
+    void PrepareForLoad();
+};
+
+void CWorld::PrepareForLoad()
+{
+    PlayerManager->GetMainPlayer()->RemoveMode(0x2b);
+    PlayerManager->GetMainPlayer()->PrepareForLoad();
+    g_pPlayerGui->GetPHeroInfoScreensManager()->Close();
+    g_pPlayerGui->PrepareForLoad();
+    PMusicManager->ClearUIOverridingMusicSet();
+    PMusicManager->ClearCinematicOverridingMusicSet();
+    PMusicManager->ClearOverridingMusicSet();
+    PMusicManager->EnableDangerMusic(false);
+    PMusicManager->ResetMusicEntriesOffsets();
+    PEnvironment->SetStatic(true);
+    PAtmosProcessor.Clear();
+    PEnvironment->TransitionToDefaultTheme(1, 0.0f);
+    PEnvironment->TransitionToDefaultTheme(2, 0.0f);
+    PEnvironment->TransitionToDefaultTheme(3, 0.0f);
+    GetWorldMap()->PrepareForLoad();
+    PBulletTimeManager->PrepareForLoad();
+    Component->PDisplayEngine->PrepareForLoad();
+    PMessageEventManager->Messages.clear();
+    FrameStarted3DRendering = 0;
+    DontPopulateNextLoadedRegion = false;
+    ScreenToFadeInOnNextRegionChange = true;
+    DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn = false;
+    RegionLoadDisplayRegionName = true;
+    WaitingForInventoryTutorialToFinish = false;
+    HeroInformationScreenModeAfterTutorial = 0;
+    PreviousRegion = 0;
+    AutoSaveCheckPointExists = false;
+    WeatherMaskingPrimitivesSent = false;
+    WeatherMaskingPrimitiveHandles.clear();
+    PlayerSpawnStatus = 0;
+}
+
+#include <string.h>
+static int g_fail = 0;
+static void check(bool c, const char* w) { if (!c) { printf("FAIL %s\n", w); g_fail = 1; } }
+static char g_log[1024];
+static void L(const char* s) { strcat(g_log, s); strcat(g_log, ";"); }
+static char tmp[64];
+static CPlayer g_player;
+void CPlayer::RemoveMode(long mode) { sprintf(tmp, "RemoveMode%ld", mode); L(tmp); }
+void CPlayer::PrepareForLoad() { L("Player"); }
+CPlayer* CPlayerManager::GetMainPlayer() { L("Main"); return &g_player; }
+static NHeroInformationScreens::CManager g_his;
+void NHeroInformationScreens::CManager::Close() { L("HISClose"); }
+NHeroInformationScreens::CManager* CPlayerGui::GetPHeroInfoScreensManager() const { return &g_his; }
+void CPlayerGui::PrepareForLoad() { L("Gui"); }
+static CPlayerGui g_gui;
+CPlayerGui* g_pPlayerGui = &g_gui;
+void CMusicManager::ResetMusicEntriesOffsets() { L("MusicReset"); }
+void CMusicManager::EnableDangerMusic(bool e) { L(e ? "Danger1" : "Danger0"); }
+void CMusicManager::ClearOverridingMusicSet() { L("ClrOver"); }
+void CMusicManager::ClearCinematicOverridingMusicSet() { L("ClrCine"); }
+void CMusicManager::ClearUIOverridingMusicSet() { L("ClrUI"); }
+void CEnvironment::SetStatic(bool on) { L(on ? "Static1" : "Static0"); }
+void CEnvironment::TransitionToDefaultTheme(long channel, float time) { sprintf(tmp, "Theme%ld:%g", channel, time); L(tmp); }
+void CWorldMap::PrepareForLoad() { L("Map"); }
+void CBulletTimeManager::PrepareForLoad() { L("Bullet"); }
+void CDisplayEngine::PrepareForLoad() { L("Display"); }
+void CMessageList::clear() { L("Msgs"); }
+static int g_deleted = 0;
+static void __fastcall DeleteAtmos(void* d) { ++g_deleted; L("AtmosDelete"); }
+namespace std { template <class T> T* vector<T>::erase(T* first, T* last) { sprintf(tmp, "Erase%d", (int)(last - first)); L(tmp); _M_finish = first; return first; } }
+struct CEnginePrimitiveHandle { long h; };
+static CWorldMap g_map;
+void CWorld::v00() {} void CWorld::v01() {} void CWorld::v02() {} void CWorld::v03() {} void CWorld::v04() {} void CWorld::v05() {}
+void CWorld::v06() {} void CWorld::v07() {} void CWorld::v08() {} void CWorld::v09() {} void CWorld::v10() {} void CWorld::v11() {}
+CWorldMap* CWorld::GetWorldMap() { return &g_map; }
 int main()
 {
-    const int failures = RunCase(1, 1, 1) + RunCase(2, 0, 0);
-    if (failures != 0)
-    {
-        std::printf(
-            "PREPARE_FOR_LOAD_004a0220_TEST FAIL count=%d\n",
-            failures);
-        return 1;
-    }
-
-    std::printf("PREPARE_FOR_LOAD_004a0220_TEST PASS\n");
-    return 0;
+    static CWorld w; static CPlayerManager pm; static CMusicManager mm; static CEnvironment env; static CBulletTimeManager bt;
+    static CDisplayEngine de; static CMainGameComponent mgc; static CMessageEventManager mem;
+    static CEnginePrimitiveHandle handles[3];
+    w.PlayerManager = &pm; w.PMusicManager = &mm; w.PEnvironment = &env; w.PBulletTimeManager = &bt;
+    mgc.PDisplayEngine = &de; w.Component = &mgc; w.PMessageEventManager = &mem;
+    w.WeatherMaskingPrimitiveHandles._M_start = handles; w.WeatherMaskingPrimitiveHandles._M_finish = handles + 3;
+    CCPPointerInfo* info = new CCPPointerInfo; info->RefCount = 1; info->DeleteFunc = DeleteAtmos; info->Data = 0;
+    w.PAtmosProcessor.Data = (CAtmosProcess*)0x10; w.PAtmosProcessor.Info = info;
+    w.FrameStarted3DRendering = 9; w.DontPopulateNextLoadedRegion = true; w.ScreenToFadeInOnNextRegionChange = false;
+    w.DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn = true; w.RegionLoadDisplayRegionName = false;
+    w.WaitingForInventoryTutorialToFinish = true; w.HeroInformationScreenModeAfterTutorial = 4; w.PreviousRegion = 5;
+    w.AutoSaveCheckPointExists = true; w.WeatherMaskingPrimitivesSent = true; w.PlayerSpawnStatus = 2;
+    w.PrepareForLoad();
+    check(strcmp(g_log, "Main;RemoveMode43;Main;Player;HISClose;Gui;ClrUI;ClrCine;ClrOver;Danger0;MusicReset;Static1;AtmosDelete;"
+                        "Theme1:0;Theme2:0;Theme3:0;Map;Bullet;Display;Msgs;Erase3;") == 0, "call order");
+    check(w.PAtmosProcessor.Data == 0 && w.PAtmosProcessor.Info == 0 && g_deleted == 1, "atmos released");
+    check(w.FrameStarted3DRendering == 0 && !w.DontPopulateNextLoadedRegion && w.ScreenToFadeInOnNextRegionChange
+          && !w.DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn && w.RegionLoadDisplayRegionName
+          && !w.WaitingForInventoryTutorialToFinish && w.HeroInformationScreenModeAfterTutorial == 0 && w.PreviousRegion == 0
+          && !w.AutoSaveCheckPointExists && !w.WeatherMaskingPrimitivesSent && w.PlayerSpawnStatus == 0, "flags reset");
+    // shared atmos pointer: only the count drops
+    g_log[0] = 0;
+    info = new CCPPointerInfo; info->RefCount = 2; info->DeleteFunc = DeleteAtmos; info->Data = 0;
+    w.PAtmosProcessor.Info = info; w.PAtmosProcessor.Data = (CAtmosProcess*)0x10;
+    w.PrepareForLoad();
+    check(info->RefCount == 1 && g_deleted == 1 && w.PAtmosProcessor.Info == 0, "shared atmos kept alive");
+    // no atmos pointer
+    w.PrepareForLoad();
+    check(g_deleted == 1, "null atmos");
+    if (!g_fail) printf("004a0220_TEST PASS\n");
+    else printf("%s\n", g_log);
+    return g_fail;
 }

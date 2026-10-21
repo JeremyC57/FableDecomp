@@ -1,259 +1,107 @@
 #include <cstdio>
-
-class C3DVector
-{
+class C3DVector;
+namespace NCameraModes {
+class CScriptModuleBase {
 public:
-    unsigned long m_Marker;
+    virtual ~CScriptModuleBase();
 };
-
-class CGSICameraLookFromTo_Interpolator
-{
+class CScriptModuleMoveBetweenLookFromAndLookTo : public CScriptModuleBase {
 public:
-    CGSICameraLookFromTo_Interpolator* Construct(
-        const C3DVector& thirdPosition,
-        const C3DVector& firstPosition,
-        const C3DVector& fourthPosition,
-        const C3DVector& secondPosition,
-        long scaledDuration);
+    unsigned char _pad04[0x80 - 4];
+    CScriptModuleMoveBetweenLookFromAndLookTo(const C3DVector& lookTo1, const C3DVector& lookFrom1, const C3DVector& lookTo2,
+        const C3DVector& lookFrom2, long frames);   // 0x008525F0
 };
-
-class CGSICameraLookFromTo_Receiver
-{
+}
+struct CCPPointerInfo {
+    long  RefCount;
+    void  (__fastcall* DeleteFunc)(void* data);
+    void* Data;
+    CCPPointerInfo(void (__fastcall* deleteFunc)(void*), void* data) : RefCount(1), DeleteFunc(deleteFunc), Data(data) {}
+};
+template <class T> class CCountedPointer {
 public:
-    void SetScriptedCameraMode(
-        CGSICameraLookFromTo_Interpolator* pInterpolator,
-        void* pCallbackState);
+    T*              Object;
+    CCPPointerInfo* Info;
+    static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
+    __forceinline CCountedPointer(T* object) : Object(object)
+    {
+        if (object)
+            Info = new CCPPointerInfo(DeleteObject, Object);
+        else
+            Info = 0;
+    }
+    CCountedPointer(const CCountedPointer& other);
+    ~CCountedPointer();
 };
-
-class CGameScriptInterface
-{
+class CGameCameraManager {
 public:
-    virtual void CameraMoveBetweenLookFromAndLookTo(
-        const C3DVector& firstPosition,
-        const C3DVector& secondPosition,
-        const C3DVector& thirdPosition,
-        const C3DVector& fourthPosition,
-        float duration) const;
+    void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
 };
-
-struct ResolverVftable
-{
-    unsigned char m_Pad00[0x24];
-    void* m_Resolve;
+class CAIGameCameraBase {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08();
+    virtual bool GetCameraManager(CGameCameraManager** manager);   // slot 9 (+0x24)
 };
-
-struct Resolver
-{
-    ResolverVftable* m_pVftable;
+extern long g_WorldFramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+public:
+    static long ConvertSecondsToWF(float seconds) { return (long)(g_WorldFramesPerSecond * seconds); }
 };
-
-struct Owner
-{
-    unsigned char m_Pad00[0x34];
-    Resolver* m_pResolver;
+class CWorld {
+public:
+    unsigned char      _pad00[0x34];
+    CAIGameCameraBase* PCurrentGameCamera;               // +0x34
 };
-
-struct InterfaceStorage
-{
-    unsigned char m_Pad00[0x04];
-    Owner* m_pOwner;
+class CGameScriptInterface {
+public:
+    virtual void CameraMoveBetweenLookFromAndLookTo(const C3DVector& lookFrom1, const C3DVector& lookFrom2, const C3DVector& lookTo1,
+        const C3DVector& lookTo2, float time) const;
+    CWorld* World;                                       // +0x04
 };
-
-struct CallbackState
+void CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo(const C3DVector& lookFrom1, const C3DVector& lookFrom2,
+    const C3DVector& lookTo1, const C3DVector& lookTo2, float time) const
 {
-    long m_Kind;
-    void* m_pCallback;
-    CGSICameraLookFromTo_Interpolator* m_pInterpolator;
-};
-
-long CGSICameraLookFromTo_Scale = 15;
-unsigned char CGSICameraLookFromTo_Callback;
-
-static CGSICameraLookFromTo_Receiver* g_pReceiver;
-static CGSICameraLookFromTo_Interpolator* g_pInterpolatorStorage;
-static CallbackState* g_pCallbackStorage;
-static const C3DVector* g_pExpectedFirst;
-static const C3DVector* g_pExpectedSecond;
-static const C3DVector* g_pExpectedThird;
-static const C3DVector* g_pExpectedFourth;
-static long g_ExpectedScaledDuration;
-static unsigned long g_ResolveCalls;
-static unsigned long g_AllocateCalls;
-static unsigned long g_ConstructCalls;
-static unsigned long g_SetModeCalls;
-static unsigned long g_FirstSize;
-static unsigned long g_SecondSize;
-static CGSICameraLookFromTo_Interpolator* g_pReceivedInterpolator;
-static void* g_pReceivedCallback;
-
-static void __cdecl ResolveHelper(
-    Resolver* pResolver,
-    CGSICameraLookFromTo_Receiver** ppReceiver)
-{
-    if (pResolver == 0 || ppReceiver == 0)
-        std::printf("resolver arguments mismatch\n");
-    ++g_ResolveCalls;
-    *ppReceiver = g_pReceiver;
+    CGameCameraManager* manager;
+    World->PCurrentGameCamera->GetCameraManager(&manager);
+    manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(
+        new NCameraModes::CScriptModuleMoveBetweenLookFromAndLookTo(lookTo1, lookFrom1, lookTo2, lookFrom2,
+            CMainGameComponent::ConvertSecondsToWF(time))));
 }
 
-static void __declspec(naked) ResolveThunk()
+void CAIGameCameraBase::v00() {} void CAIGameCameraBase::v01() {} void CAIGameCameraBase::v02() {} void CAIGameCameraBase::v03() {}
+void CAIGameCameraBase::v04() {} void CAIGameCameraBase::v05() {} void CAIGameCameraBase::v06() {} void CAIGameCameraBase::v07() {}
+void CAIGameCameraBase::v08() {}
+static int g_ctors, g_dtors, g_sets; static void* g_obj; static CGameCameraManager* g_mgrThis; static long g_seenRef;
+NCameraModes::CScriptModuleBase::~CScriptModuleBase() { ++g_dtors; }
+template <class T> void __fastcall CCountedPointer<T>::DeleteObject(void* data) { delete (T*)data; }
+template <class T> CCountedPointer<T>::CCountedPointer(const CCountedPointer& o) { Object = o.Object; Info = o.Info; if (Info) ++Info->RefCount; }
+template <class T> CCountedPointer<T>::~CCountedPointer()
 {
-    __asm
-    {
-        push dword ptr [esp + 4]
-        push ecx
-        call ResolveHelper
-        add esp, 8
-        ret 4
-    }
+    if (Info && --Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; }
+    Object = 0; Info = 0;
 }
-
-void* __cdecl CGSICameraLookFromTo_Allocate(unsigned long size)
+void CGameCameraManager::SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode)
 {
-    ++g_AllocateCalls;
-    if (g_AllocateCalls == 1)
-    {
-        g_FirstSize = size;
-        return g_pInterpolatorStorage;
-    }
-    g_SecondSize = size;
-    return g_pCallbackStorage;
+    ++g_sets; g_mgrThis = this; if (mode.Object != g_obj) g_sets += 100;
+    g_seenRef = mode.Info ? mode.Info->RefCount : -1;
 }
-
-long __declspec(naked) __cdecl
-CGSICameraLookFromTo_FloatToLong()
-{
-    __asm
-    {
-        sub esp, 4
-        fistp dword ptr [esp]
-        mov eax, dword ptr [esp]
-        add esp, 4
-        ret
-    }
-}
-
-CGSICameraLookFromTo_Interpolator*
-CGSICameraLookFromTo_Interpolator::Construct(
-    const C3DVector& thirdPosition,
-    const C3DVector& firstPosition,
-    const C3DVector& fourthPosition,
-    const C3DVector& secondPosition,
-    long scaledDuration)
-{
-    ++g_ConstructCalls;
-    if (this != g_pInterpolatorStorage ||
-        &firstPosition != g_pExpectedFirst ||
-        &secondPosition != g_pExpectedSecond ||
-        &thirdPosition != g_pExpectedThird ||
-        &fourthPosition != g_pExpectedFourth ||
-        scaledDuration != g_ExpectedScaledDuration)
-    {
-        std::printf("constructor arguments mismatch\n");
-    }
-    return this;
-}
-
-void CGSICameraLookFromTo_Receiver::SetScriptedCameraMode(
-    CGSICameraLookFromTo_Interpolator* pInterpolator,
-    void* pCallbackState)
-{
-    if (this != g_pReceiver)
-        std::printf("receiver this mismatch\n");
-    ++g_SetModeCalls;
-    g_pReceivedInterpolator = pInterpolator;
-    g_pReceivedCallback = pCallbackState;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf("FSE2_00892610_TEST FAIL: %s\n", pMessage);
-    return 1;
-}
-
-static void ResetCalls()
-{
-    g_AllocateCalls = 0;
-    g_ConstructCalls = 0;
-    g_SetModeCalls = 0;
-    g_FirstSize = 0;
-    g_SecondSize = 0;
-    g_pReceivedInterpolator = 0;
-    g_pReceivedCallback = 0;
-}
-
+static CGameCameraManager g_mgr;
+bool CAIGameCameraBase::GetCameraManager(CGameCameraManager** m) { *m = &g_mgr; return true; }
+long g_WorldFramesPerSecond = 30;
+static const C3DVector *g_a, *g_b, *g_c, *g_d; static long g_frames;
+NCameraModes::CScriptModuleMoveBetweenLookFromAndLookTo::CScriptModuleMoveBetweenLookFromAndLookTo(const C3DVector& a, const C3DVector& b,
+    const C3DVector& c, const C3DVector& d, long frames)
+{ ++g_ctors; g_a = &a; g_b = &b; g_c = &c; g_d = &d; g_frames = frames; g_obj = this; }
 int main()
 {
-    ResolverVftable resolverVftable = {};
-    Resolver resolver;
-    Owner owner = {};
-    InterfaceStorage storage = {};
-    CGameScriptInterface& interfaceObject =
-        reinterpret_cast<CGameScriptInterface&>(storage);
-    C3DVector first = {0x11};
-    C3DVector second = {0x22};
-    C3DVector third = {0x33};
-    C3DVector fourth = {0x44};
-    unsigned char interpolatorBytes[0x80] = {};
-    CallbackState callback = {};
-
-    resolverVftable.m_Resolve = reinterpret_cast<void*>(ResolveThunk);
-    resolver.m_pVftable = &resolverVftable;
-    owner.m_pResolver = &resolver;
-    storage.m_pOwner = &owner;
-    g_pReceiver =
-        reinterpret_cast<CGSICameraLookFromTo_Receiver*>(
-            0x12345678);
-    g_pExpectedFirst = &first;
-    g_pExpectedSecond = &second;
-    g_pExpectedThird = &third;
-    g_pExpectedFourth = &fourth;
-
-    ResetCalls();
-    g_pInterpolatorStorage = 0;
-    g_pCallbackStorage = &callback;
-    interfaceObject.CGameScriptInterface::
-        CameraMoveBetweenLookFromAndLookTo(
-            first, second, third, fourth, 2.0f);
-    if (g_AllocateCalls != 1 || g_FirstSize != 0x80 ||
-        g_ConstructCalls != 0 || g_SetModeCalls != 1 ||
-        g_pReceivedInterpolator != 0 || g_pReceivedCallback != 0)
-        return Fail("interpolator allocation fallback");
-
-    ResetCalls();
-    g_pInterpolatorStorage =
-        reinterpret_cast<CGSICameraLookFromTo_Interpolator*>(
-            interpolatorBytes);
-    g_pCallbackStorage = 0;
-    g_ExpectedScaledDuration = -30;
-    interfaceObject.CGameScriptInterface::
-        CameraMoveBetweenLookFromAndLookTo(
-            first, second, third, fourth, -2.0f);
-    if (g_AllocateCalls != 2 || g_FirstSize != 0x80 ||
-        g_SecondSize != 0x0C || g_ConstructCalls != 1 ||
-        g_SetModeCalls != 1 ||
-        g_pReceivedInterpolator != g_pInterpolatorStorage ||
-        g_pReceivedCallback != 0)
-        return Fail("callback allocation fallback");
-
-    ResetCalls();
-    g_pCallbackStorage = &callback;
-    callback.m_Kind = 0;
-    callback.m_pCallback = 0;
-    callback.m_pInterpolator = 0;
-    g_ExpectedScaledDuration = 45;
-    interfaceObject.CGameScriptInterface::
-        CameraMoveBetweenLookFromAndLookTo(
-            first, second, third, fourth, 3.0f);
-    if (g_ConstructCalls != 1 || g_SetModeCalls != 1 ||
-        g_pReceivedCallback != &callback ||
-        callback.m_Kind != 1 ||
-        callback.m_pCallback != &CGSICameraLookFromTo_Callback ||
-        callback.m_pInterpolator != g_pInterpolatorStorage)
-        return Fail("successful callback state");
-    if (g_ResolveCalls != 3)
-        return Fail("resolver calls");
-
-    std::printf("FSE2_00892610_TEST PASS\n");
-    return 0;
+    CAIGameCameraBase cam; static unsigned char raw[sizeof(CWorld) + 8]; CWorld& w = *(CWorld*)raw; w.PCurrentGameCamera = &cam;
+    CGameScriptInterface gsi; gsi.World = &w;
+    const C3DVector& p1 = *(const C3DVector*)(raw + 1); const C3DVector& p2 = *(const C3DVector*)(raw + 2);
+    const C3DVector& p3 = *(const C3DVector*)(raw + 3); const C3DVector& p4 = *(const C3DVector*)(raw + 4);
+    gsi.CameraMoveBetweenLookFromAndLookTo(p1, p2, p3, p4, 3.0f);
+    bool ok = g_ctors == 1 && g_a == &p3 && g_b == &p1 && g_c == &p4 && g_d == &p2 && g_frames == 90 && g_sets == 1
+           && g_mgrThis == &g_mgr && g_seenRef == 1 && g_dtors == 1;
+    std::printf(ok ? "00892610_TEST PASS\n" : "00892610_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

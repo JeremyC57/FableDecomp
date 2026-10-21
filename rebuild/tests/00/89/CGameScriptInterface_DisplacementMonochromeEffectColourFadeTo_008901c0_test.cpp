@@ -1,60 +1,48 @@
-#include <cstdio>
-struct Inner {
-    unsigned char pad[0x1964];
-    void* target;
+// behaviour test for 0x008901C0 CGameScriptInterface::DisplacementMonochromeEffectColourFadeTo
+#include <stdio.h>
+class CRGBFloatColour { public: float R, G, B, A; };
+
+namespace NScreenEffect { enum ScreenEffectPriority { SCREEN_EFFECT_PRIORITY_SCRIPT = 1, SCREEN_EFFECT_PRIORITY_FORCE_DWORD = 0x7fffffff }; }
+class CEnvironmentSpellEffectInterpolator {
+public:
+    void* DisplacementMonochromeEffectColourFadeTo(float time, NScreenEffect::ScreenEffectPriority priority, const CRGBFloatColour& colour);   // 0x006B8370
 };
-struct CMid {
-    unsigned char pad[0x18];
-    Inner* p18;
+class CEnvironment {
+public:
+    unsigned char                        _pad00[0x1964];
+    CEnvironmentSpellEffectInterpolator* SpellEffectInterpolator;   // +0x1964
+    CEnvironmentSpellEffectInterpolator* GetSpellEffectInterpolator() const { return SpellEffectInterpolator; }
 };
-struct CGameScriptInterface {
-    void* vt;
-    CMid* mid;
+class CWorld {
+public:
+    unsigned char _pad00[0x18];
+    CEnvironment* PEnvironment;                          // +0x18
+    CEnvironment* GetEnvironment() const { return PEnvironment; }
 };
-static int g_calls = 0;
-static void* g_this; static int g_a, g_b, g_c;
-extern "C" void __declspec(naked) CalleeColourFadeTo(void*, int, int, int) {
-    __asm {
-        mov g_this, ecx
-        mov eax, DWORD PTR [esp+0x4]
-        mov g_a, eax
-        mov eax, DWORD PTR [esp+0x8]
-        mov g_b, eax
-        mov eax, DWORD PTR [esp+0x0C]
-        mov g_c, eax
-        inc g_calls
-        ret 0x0C
-    }
-}
-void __declspec(naked) __fastcall Fn(CGameScriptInterface* self, int p1, int p2)
+class CGameScriptInterface {
+public:
+    virtual void* DisplacementMonochromeEffectColourFadeTo(float time, const CRGBFloatColour& colour) const;
+    CWorld* World;                                       // +0x04
+    CWorld* GetWorld() const { return World; }
+};
+
+void* CGameScriptInterface::DisplacementMonochromeEffectColourFadeTo(float time, const CRGBFloatColour& colour) const
 {
-    __asm {
-        mov eax, DWORD PTR [ecx+0x4]
-        mov edx, DWORD PTR [esp+0x8]
-        mov ecx, DWORD PTR [eax+0x18]
-        mov eax, DWORD PTR [esp+0x4]
-        mov ecx, DWORD PTR [ecx+0x1964]
-        push edx
-        push 0x1
-        push eax
-        call CalleeColourFadeTo
-        ret 0x8
-    }
+    return GetWorld()->GetEnvironment()->GetSpellEffectInterpolator()->DisplacementMonochromeEffectColourFadeTo(time, NScreenEffect::SCREEN_EFFECT_PRIORITY_SCRIPT, colour);
 }
-int main(){
-    Inner inr; inr.target = (void*)0xABCD;
-    CMid md; md.p18 = &inr;
-    CGameScriptInterface gsi; gsi.mid = &md;
-    __asm {
-        push 0x22
-        push 0x11
-        lea ecx, gsi
-        call Fn
-    }
-    if (g_calls==1 && g_this==(void*)0xABCD && g_a==0x11 && g_b==1 && g_c==0x22) {
-        std::printf("CGameScriptInterface_008901c0_TEST PASS\n");
-        return 0;
-    }
-    std::printf("FAIL calls=%d this=%p a=%d b=%d c=%d\n", g_calls,g_this,g_a,g_b,g_c);
-    return 1;
+static float g_time; static int g_prio; static const CRGBFloatColour* g_col; static int g_handle;
+void* CEnvironmentSpellEffectInterpolator::DisplacementMonochromeEffectColourFadeTo(float time, NScreenEffect::ScreenEffectPriority priority, const CRGBFloatColour& colour)
+{ g_time = time; g_prio = priority; g_col = &colour; return &g_handle; }
+static unsigned char g_envmem[0x2000];
+int main()
+{
+    CEnvironmentSpellEffectInterpolator interp;
+    CEnvironment* env = (CEnvironment*)g_envmem; env->SpellEffectInterpolator = &interp;
+    CWorld world; world.PEnvironment = env;
+    CGameScriptInterface gsi; gsi.World = &world; const CGameScriptInterface* p = &gsi;
+    CRGBFloatColour c = { 1.0f, 0.5f, 0.25f, 1.0f };
+    void* h = p->DisplacementMonochromeEffectColourFadeTo(2.5f, c);
+    int ok = h == &g_handle && g_time == 2.5f && g_prio == 1 && g_col == &c;
+    printf(ok ? "008901c0_TEST PASS\n" : "008901c0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

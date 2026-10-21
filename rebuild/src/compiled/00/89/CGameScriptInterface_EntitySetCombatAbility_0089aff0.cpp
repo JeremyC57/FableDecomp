@@ -1,81 +1,97 @@
-enum ETCInterfaceType
-{
-    ETCInterfaceType_CombatAbility = 0x30
+// CGameScriptInterface::EntitySetCombatAbility(const CScriptThing& thing, float ability) const -- for a live thing with interface 0x30, forward the ability to that component
+// Leaf: ?EntitySetCombatAbility@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+// Retail: Fable.exe @ 0x0089AFF0, 90 bytes, `ret 8`; Ego_r.pdb ?EntitySetCombatAbility@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z.
+// Body: t = thing.GetThing() (slot 11, +0x2c); if t, not dead (bit 0 of +0x91) and holding interface 0x30 (bit 16 of
+// UsingComponents +0x24), the component from the Components map (LowerBound 0x0040F020, key in the dead `thing` slot)
+// gets 0x00734210(ability, true). No IsValid call.
+// Layout: CThing as the matched 0x0089B0B0 / 0x0089D8B0 rows. The interface-0x30 component class and the callee name
+// (0x00734210, walks a std::map at +0x70) are not confirmed.
+// Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
+public:
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-struct CCombatAbilityKeyPair
-{
-    ETCInterfaceType m_Key;
-    void*             m_pValue;
-};
-
-struct CCombatAbilityMap
-{
-    CCombatAbilityKeyPair* m_pBegin;
-    CCombatAbilityKeyPair* m_pEnd;
-};
-
-struct CScriptThing
-{
-    void** m_pVTable;
-};
-
-struct CGameScriptInterface;
-
-extern "C" CCombatAbilityKeyPair* __fastcall
-Sub_FindCombatAbilityInterface(
-    CCombatAbilityMap* pMap,
-    int edxUnused,
-    const ETCInterfaceType* pKey);
-
-extern "C" void __fastcall Sub_SetCombatAbility(
-    void* pInterface,
-    int edxUnused,
-    float ability,
-    int enabled);
-
-__declspec(naked)
-void __fastcall CGameScriptInterface_EntitySetCombatAbility(
-    const CGameScriptInterface* self,
-    int edxUnused,
-    const CScriptThing* pThing,
-    float ability)
-{
-    __asm
+class CThing {
+public:
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
     {
-        mov ecx, dword ptr [esp + 4]
-        mov eax, dword ptr [ecx]
-        call dword ptr [eax + 2Ch]
-        test eax, eax
-        je finished
-        test byte ptr [eax + 91h], 1
-        jne finished
-        test dword ptr [eax + 24h], 10000h
-        je finished
-
-        push esi
-        lea ecx, [esp + 8]
-        lea esi, [eax + 44h]
-        push ecx
-        mov ecx, esi
-        mov dword ptr [esp + 0Ch], 30h
-        call Sub_FindCombatAbilityInterface
-        mov esi, dword ptr [esi + 4]
-        cmp eax, esi
-        je use_sentinel
-        cmp dword ptr [eax], 30h
-        jle have_entry
-use_sentinel:
-        mov eax, esi
-have_entry:
-        mov eax, dword ptr [eax + 4]
-        mov edx, dword ptr [esp + 0Ch]
-        push 1
-        push edx
-        mov ecx, eax
-        call Sub_SetCombatAbility
-        pop esi
-finished:
-        ret 8
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
+};
+class CTCInterface30 {                                  // interface 0x30 (class not confirmed)
+public:
+    enum { INTERFACE_TYPE = 0x30 };
+    void SetCombatAbility(float ability, bool flag);     // 0x00734210 (name not confirmed)
+};
+class CScriptThing {
+public:
+    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
+    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
+    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
+    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
+    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
+    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
+    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
+    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
+    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
+    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
+    virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
+    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
+    virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
+    virtual void v072(); virtual void v073(); virtual void v074();
+    virtual bool IsValid() const;                        // slot 75 (+0x12c)
+};
+class CGameScriptInterface {
+public:
+    virtual void EntitySetCombatAbility(const CScriptThing& thing, float ability) const;
+    void* World;                                         // +0x04
+};
+void CGameScriptInterface::EntitySetCombatAbility(const CScriptThing& thing, float ability) const
+{
+    CThing* t = thing.GetThing();
+    if (t && !t->IsDead())
+    {
+        CTCInterface30* tc;
+        if (t->GetTC(&tc))
+            tc->SetCombatAbility(ability, true);
     }
 }

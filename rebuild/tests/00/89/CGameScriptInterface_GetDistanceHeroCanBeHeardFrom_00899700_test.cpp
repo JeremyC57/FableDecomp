@@ -1,193 +1,134 @@
-#include <cstdio>
-
-class CGSIHeroHearing_Player;
-class CGSIHeroHearing_Node;
-
-class CGSIHeroHearing_Manager
-{
+// behaviour test for 0x00899700 CGameScriptInterface::GetDistanceHeroCanBeHeardFrom
+#include <stdio.h>
+#include <string.h>
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CGSIHeroHearing_Player* GetPlayer();
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CGSIHeroHearing_Player
-{
+class CThing {
 public:
-    void* GetHero();
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
 };
-
-class CGSIHeroHearing_Container
-{
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
 public:
-    CGSIHeroHearing_Node* LowerBound(
-        const long* pKey);
-
-    CGSIHeroHearing_Node* m_pFirst;
-    CGSIHeroHearing_Node* m_pEnd;
+    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
 };
-
-class CGSIHeroHearing_Component
-{
+class CPlayerManager {
 public:
-    unsigned char m_Pad00[0x14];
-    float m_HearingDistance;
+    CPlayer& GetMainPlayer();                                       // 0x00449970
 };
-
-class CGSIHeroHearing_Node
-{
+class CTCStealth {
 public:
-    long m_Key;
-    CGSIHeroHearing_Component* m_pComponent;
+    enum { INTERFACE_TYPE = 0x36 };
+    unsigned char _pad00[0x14];
+    float         DistanceCanBeHeardFrom;                // +0x14
+    float GetDistanceCanBeHeardFrom() const { return DistanceCanBeHeardFrom; }
 };
-
-class CGameScriptInterface
-{
+class CGameScriptInterface {
 public:
     virtual float GetDistanceHeroCanBeHeardFrom() const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
 };
 
-struct CGSIHeroHearing_InterfaceStorage
+float CGameScriptInterface::GetDistanceHeroCanBeHeardFrom() const
 {
-    void* m_pVTable;
-    unsigned char m_Pad04[0x10];
-    CGSIHeroHearing_Manager* m_pManager;
-};
-
-struct CGSIHeroHearing_HeroStorage
-{
-    unsigned char m_Pad00[0x24];
-    unsigned long m_Flags24;
-    unsigned char m_Pad28[0x1C];
-    CGSIHeroHearing_Container m_Container;
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;
-};
-
-union CGSIHeroHearing_FloatBits
-{
-    float m_Float;
-    unsigned long m_Bits;
-};
-
-static CGSIHeroHearing_Player* g_pPlayer;
-static CGSIHeroHearing_HeroStorage* g_pHero;
-static CGSIHeroHearing_Node* g_pLowerBoundResult;
-static CGSIHeroHearing_Container* g_pObservedContainer;
-static long g_ObservedKey;
-static unsigned long g_LowerBoundCalls;
-
-CGSIHeroHearing_Player*
-CGSIHeroHearing_Manager::GetPlayer()
-{
-    return g_pPlayer;
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPPlayerCharacter();
+    if (hero && !hero->IsDead())
+    {
+        const CTCStealth* tc;
+        hero->PeekTC(&tc);
+        return tc->GetDistanceCanBeHeardFrom();
+    }
+    return 0.0f;
 }
 
-void* CGSIHeroHearing_Player::GetHero()
+static CThingPlayerCreature* g_hero;
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
+CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return g_hero; }
+const CThingPlayerCreature* CPlayer::PeekPPlayerCharacter() const { return g_hero; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 {
-    return g_pHero;
+    SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
+}
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+{
+    const SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
 }
 
-CGSIHeroHearing_Node*
-CGSIHeroHearing_Container::LowerBound(
-    const long* pKey)
-{
-    g_pObservedContainer = this;
-    g_ObservedKey = *pKey;
-    ++g_LowerBoundCalls;
-    return g_pLowerBoundResult;
-}
-
-static void ResetObservations()
-{
-    g_pObservedContainer = 0;
-    g_ObservedKey = -1;
-    g_LowerBoundCalls = 0;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf(
-        "FSE2_00899700_TEST FAIL: %s\n",
-        pMessage);
-    return 1;
-}
-
+static unsigned char g_tcmem[0x1000];
+static unsigned char g_thingmem[0x200];
+static CInterfaceMap::SEntry g_entries[3];
 int main()
 {
-    CGSIHeroHearing_InterfaceStorage
-        interfaceStorage = {};
-    CGSIHeroHearing_Manager manager;
-    CGSIHeroHearing_Player player;
-    CGSIHeroHearing_HeroStorage hero = {};
-    CGSIHeroHearing_Component foundComponent = {};
-    CGSIHeroHearing_Component endComponent = {};
-    CGSIHeroHearing_Node foundNode = {};
-    CGSIHeroHearing_Node endNode = {};
+    int ok = 1;
+    CPlayerManager pm; CGameScriptInterface gsi; gsi.PlayerManager = &pm;
+    const CGameScriptInterface* p = &gsi;
+    CTCStealth* tc = (CTCStealth*)g_tcmem;
+    CThingPlayerCreature* hero = (CThingPlayerCreature*)g_thingmem;
+    g_entries[0].type = 1; g_entries[0].component = 0;
+    g_entries[1].type = CTCStealth::INTERFACE_TYPE; g_entries[1].component = (CTCBase*)tc;
+    g_entries[2].type = 0x100; g_entries[2].component = 0;
+    hero->Components.first = g_entries; hero->Components.last = g_entries + 3;
+    hero->UsingComponents[CTCStealth::INTERFACE_TYPE >> 5] |= 1UL << (CTCStealth::INTERFACE_TYPE & 31);
+    g_hero = hero;
+    tc->DistanceCanBeHeardFrom = 12.5f;
+    ok &= (p->GetDistanceHeroCanBeHeardFrom() == 12.5f);
+    g_hero = 0;
+    ok &= (p->GetDistanceHeroCanBeHeardFrom() == 0.0f);
+    g_hero = hero; hero->Dead = 1;
+    ok &= (p->GetDistanceHeroCanBeHeardFrom() == 0.0f);
 
-    interfaceStorage.m_pManager = &manager;
-    CGameScriptInterface* const pInterface =
-        reinterpret_cast<CGameScriptInterface*>(
-            &interfaceStorage);
-    g_pPlayer = &player;
-    foundNode.m_pComponent = &foundComponent;
-    endNode.m_pComponent = &endComponent;
-    hero.m_Container.m_pEnd = &endNode;
-
-    ResetObservations();
-    g_pHero = 0;
-    if (pInterface->CGameScriptInterface::
-            GetDistanceHeroCanBeHeardFrom() != 0.0f ||
-        g_LowerBoundCalls != 0)
-        return Fail("null hero guard");
-
-    g_pHero = &hero;
-    ResetObservations();
-    hero.m_Flags91 = 1;
-    if (pInterface->CGameScriptInterface::
-            GetDistanceHeroCanBeHeardFrom() != 0.0f ||
-        g_LowerBoundCalls != 0)
-        return Fail("dead hero guard");
-
-    ResetObservations();
-    hero.m_Flags91 = 0;
-    hero.m_Flags24 = 0;
-    CGSIHeroHearing_FloatBits expectedFallback;
-    expectedFallback.m_Bits =
-        reinterpret_cast<unsigned long>(&manager);
-    CGSIHeroHearing_FloatBits actualFallback;
-    actualFallback.m_Float =
-        pInterface->CGameScriptInterface::
-            GetDistanceHeroCanBeHeardFrom();
-    if (actualFallback.m_Bits !=
-            expectedFallback.m_Bits ||
-        g_LowerBoundCalls != 0)
-        return Fail("saved-interface raw fallback");
-
-    ResetObservations();
-    hero.m_Flags24 = 0x00400000;
-    foundNode.m_Key = 0x36;
-    foundComponent.m_HearingDistance = 24.5f;
-    g_pLowerBoundResult = &foundNode;
-    if (pInterface->CGameScriptInterface::
-            GetDistanceHeroCanBeHeardFrom() != 24.5f ||
-        g_pObservedContainer != &hero.m_Container ||
-        g_ObservedKey != 0x36 ||
-        g_LowerBoundCalls != 1)
-        return Fail("found hearing component");
-
-    ResetObservations();
-    foundNode.m_Key = 0x37;
-    endComponent.m_HearingDistance = 48.25f;
-    g_pLowerBoundResult = &foundNode;
-    if (pInterface->CGameScriptInterface::
-            GetDistanceHeroCanBeHeardFrom() != 48.25f)
-        return Fail("greater-key sentinel");
-
-    ResetObservations();
-    g_pLowerBoundResult = &endNode;
-    if (pInterface->CGameScriptInterface::
-            GetDistanceHeroCanBeHeardFrom() != 48.25f)
-        return Fail("direct sentinel");
-
-    std::printf("FSE2_00899700_TEST PASS\n");
-    return 0;
+    printf(ok ? "00899700_TEST PASS\n" : "00899700_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

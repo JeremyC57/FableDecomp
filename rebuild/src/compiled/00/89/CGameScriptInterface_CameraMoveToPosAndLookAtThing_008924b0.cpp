@@ -1,98 +1,86 @@
+// CGameScriptInterface::CameraMoveToPosAndLookAtThing(const C3DVector& pos, const CScriptThing& thing, float) const -- hand the camera manager a scripted go-to-and-look-at camera mode for a valid thing
+// Leaf: ?CameraMoveToPosAndLookAtThing@CGameScriptInterface@@UBEXABVC3DVector@@ABVCScriptThing@@M@Z
+// Retail: Fable.exe @ 0x008924B0, 116 bytes, `ret 0xc`; Ego_r.pdb same symbol. The float argument is unused.
+// Body: if thing.IsValid() (slot 75) and bit 2 of the thing's ThingTypeFlags (+0x6c): t = thing.GetThing() (slot 11, called
+// again); World (+0x04)->PCurrentGameCamera (+0x34)->GetCameraManager(&manager) (slot 9, +0x24, Ego_r.pdb
+// ?GetCameraManager@CAIGameCameraBase@@UAE_NPAPAVCGameCameraManager@@@Z; `manager` lives in the dead `thing` slot);
+// manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(
+// pos, *t))) -- operator new 0x00BFEA1A (0x6c bytes), ctor 0x00852D10, CCountedPointer(T*) 0x005ED270 (folded label),
+// SetScriptedCameraMode 0x00699E60 (by-value CCountedPointer).
+// Layout: CThing::ThingTypeFlags +0x6c (Ego_r.pdb +0x7c under the retail -0x10 shift); CWorld::PCurrentGameCamera +0x34
+// (Ego_r.pdb). CCountedPointer is 8 bytes (object, count). The meaning of type-flag bit 2 is not recovered.
+// Shape: /O2 (16-aligned entry). CCountedPointer needs its declared copy constructor: without it VC7.1 builds the temporary
+// in the frame and copies it to the argument area (137v116); with it the pointer is constructed in place (`sub esp,8; mov ecx,esp`).
 class C3DVector;
-class CScriptThing;
-
-void* __cdecl CGSICameraMoveToThing_Allocate(unsigned long size);
-
-class CGSICameraMoveToThing_Interpolator
-{
+class CThing {
 public:
-    CGSICameraMoveToThing_Interpolator* Construct(
-        const C3DVector& position,
-        void* pTarget);
+    unsigned char _pad00[0x6c];
+    unsigned long ThingTypeFlags;                        // +0x6c
 };
-
-class CGSICameraMoveToThing_ModeArguments
-{
+namespace NCameraModes {
+class CScriptModuleBase {
 public:
-    void Construct(
-        CGSICameraMoveToThing_Interpolator* pInterpolator);
+    virtual ~CScriptModuleBase();
 };
-
-class CGSICameraMoveToThing_Receiver
-{
+class CScriptModuleGoToLookAt : public CScriptModuleBase {
 public:
-    void SetScriptedCameraMode(
-        CGSICameraMoveToThing_Interpolator* pInterpolator,
-        void* pCallbackState);
+    unsigned char _pad04[0x6c - 4];
+    CScriptModuleGoToLookAt(const C3DVector& pos, const CThing& target);   // 0x00852D10
 };
-
-class CGameScriptInterface
-{
+}
+template <class T> class CCountedPointer {
 public:
-    virtual void CameraMoveToPosAndLookAtThing(
-        const C3DVector& position,
-        const CScriptThing& target,
-        float duration) const;
+    T*    Object;
+    long* Count;
+    CCountedPointer(T* object);                          // 0x005ED270 (instance shared by folding)
+    CCountedPointer(const CCountedPointer& other);
+    ~CCountedPointer();
 };
-
-__declspec(naked)
-void CGameScriptInterface::CameraMoveToPosAndLookAtThing(
-    const C3DVector& position,
-    const CScriptThing& target,
-    float duration) const
+class CGameCameraManager {
+public:
+    void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
+};
+class CAIGameCameraBase {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08();
+    virtual bool GetCameraManager(CGameCameraManager** manager);   // slot 9 (+0x24)
+};
+class CWorld {
+public:
+    unsigned char      _pad00[0x34];
+    CAIGameCameraBase* PCurrentGameCamera;               // +0x34
+};
+class CScriptThing {
+public:
+    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
+    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
+    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
+    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
+    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
+    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
+    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
+    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
+    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
+    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
+    virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
+    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
+    virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
+    virtual void v072(); virtual void v073(); virtual void v074();
+    virtual bool IsValid() const;                        // slot 75 (+0x12c)
+};
+class CGameScriptInterface {
+public:
+    virtual void CameraMoveToPosAndLookAtThing(const C3DVector& pos, const CScriptThing& thing, float time) const;
+    CWorld* World;                                       // +0x04
+};
+void CGameScriptInterface::CameraMoveToPosAndLookAtThing(const C3DVector& pos, const CScriptThing& thing, float time) const
 {
-    __asm
+    if (thing.IsValid() && (thing.GetThing()->ThingTypeFlags & 4))
     {
-        push esi
-        mov esi, dword ptr [esp + 0Ch]
-        mov eax, dword ptr [esi]
-        push edi
-        mov edi, ecx
-        mov ecx, esi
-        call dword ptr [eax + 12Ch]
-        test al, al
-        je finished
-
-        mov edx, dword ptr [esi]
-        mov ecx, esi
-        call dword ptr [edx + 2Ch]
-        test byte ptr [eax + 6Ch], 4
-        je finished
-
-        mov eax, dword ptr [esi]
-        mov ecx, esi
-        call dword ptr [eax + 2Ch]
-        mov ecx, dword ptr [edi + 4]
-        mov ecx, dword ptr [ecx + 34h]
-        mov edx, dword ptr [ecx]
-        mov esi, eax
-        lea eax, [esp + 10h]
-        push eax
-        call dword ptr [edx + 24h]
-
-        push 6Ch
-        call CGSICameraMoveToThing_Allocate
-        add esp, 4
-        test eax, eax
-        je no_interpolator_storage
-        mov ecx, dword ptr [esp + 0Ch]
-        push esi
-        push ecx
-        mov ecx, eax
-        call CGSICameraMoveToThing_Interpolator::Construct
-        jmp have_interpolator
-no_interpolator_storage:
-        xor eax, eax
-have_interpolator:
-        sub esp, 8
-        mov ecx, esp
-        push eax
-        call CGSICameraMoveToThing_ModeArguments::Construct
-        mov ecx, dword ptr [esp + 18h]
-        call CGSICameraMoveToThing_Receiver::SetScriptedCameraMode
-finished:
-        pop edi
-        pop esi
-        ret 0Ch
+        CThing* t = thing.GetThing();
+        CGameCameraManager* manager;
+        World->PCurrentGameCamera->GetCameraManager(&manager);
+        manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(new NCameraModes::CScriptModuleGoToLookAt(pos, *t)));
     }
 }

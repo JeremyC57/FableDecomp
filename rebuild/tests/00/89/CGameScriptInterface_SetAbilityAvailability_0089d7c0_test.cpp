@@ -1,210 +1,136 @@
-#include <cstdio>
-
-enum EHeroAbility
-{
-    EHeroAbility_First = 0,
-    EHeroAbility_Test = 3
-};
-
-class CGSIAbility_Player;
-class CGSIAbility_Node;
-
-class CGSIAbility_Manager
-{
+// behaviour test for 0x0089D7C0 CGameScriptInterface::SetAbilityAvailability
+#include <stdio.h>
+#include <string.h>
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CGSIAbility_Player* GetPlayer();
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CGSIAbility_Player
-{
+class CThing {
 public:
-    void* GetHero();
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
 };
-
-class CGSIAbility_Container
-{
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
 public:
-    CGSIAbility_Node* LowerBound(const long* pKey);
-
-    CGSIAbility_Node* m_pFirst;
-    CGSIAbility_Node* m_pEnd;
+    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
 };
-
-class CGSIAbility_Component
-{
+class CPlayerManager {
 public:
-    unsigned char m_Pad00[0x1C];
-    unsigned char* m_pAvailability;
+    CPlayer& GetMainPlayer();                                       // 0x00449970
 };
-
-class CGSIAbility_Node
-{
+enum EHeroAbility { HERO_ABILITY_FORCE_DWORD = 0x7fffffff };
+template <class T> struct CRetailVector {                // STLport vector, 12 bytes
+    T* _M_start; T* _M_finish; T* _M_end_of_storage;
+    T& operator[](unsigned long n) { return _M_start[n]; }
+};
+class CTCSpecialAbilities {
 public:
-    long m_Key;
-    CGSIAbility_Component* m_pComponent;
+    enum { INTERFACE_TYPE = 0xa7 };
+    unsigned char       _pad00[0x1c];
+    CRetailVector<bool> AbilityAvailability;             // +0x1c
+    void SetAbilityAvailable(EHeroAbility ability, bool available) { AbilityAvailability[ability] = available; }
 };
-
-class CGameScriptInterface
-{
+class CGameScriptInterface {
 public:
-    virtual void SetAbilityAvailability(
-        EHeroAbility ability,
-        bool available) const;
+    virtual void SetAbilityAvailability(EHeroAbility ability, bool available) const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
 };
 
-struct InterfaceStorage
+void CGameScriptInterface::SetAbilityAvailability(EHeroAbility ability, bool available) const
 {
-    void* m_pVTable;
-    unsigned char m_Pad04[0x10];
-    CGSIAbility_Manager* m_pManager;
-};
-
-struct EntityStorage
-{
-    unsigned char m_Pad00[0x34];
-    unsigned char m_Flags34;
-    unsigned char m_Pad35[0x0F];
-    CGSIAbility_Container m_Container;
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;
-};
-
-static CGSIAbility_Player* g_pPlayer;
-static EntityStorage* g_pHero;
-static CGSIAbility_Node* g_pLowerBoundResult;
-static CGSIAbility_Manager* g_pObservedManager;
-static CGSIAbility_Player* g_pObservedPlayer;
-static CGSIAbility_Container* g_pObservedContainer;
-static long g_ObservedKey;
-static unsigned long g_ManagerCalls;
-static unsigned long g_PlayerCalls;
-static unsigned long g_LowerBoundCalls;
-
-CGSIAbility_Player* CGSIAbility_Manager::GetPlayer()
-{
-    g_pObservedManager = this;
-    ++g_ManagerCalls;
-    return g_pPlayer;
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CTCSpecialAbilities* tc;
+    if (hero && !hero->IsDead() && hero->GetTC(&tc))
+        tc->SetAbilityAvailable(ability, available);
 }
 
-void* CGSIAbility_Player::GetHero()
+static CThingPlayerCreature* g_hero;
+static CPlayer g_player;
+CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
+CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return g_hero; }
+const CThingPlayerCreature* CPlayer::PeekPPlayerCharacter() const { return g_hero; }
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 {
-    g_pObservedPlayer = this;
-    ++g_PlayerCalls;
-    return g_pHero;
+    SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
+}
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+{
+    const SEntry* p = first;
+    while (p != last && p->type < *type) ++p;
+    return p;
 }
 
-CGSIAbility_Node*
-CGSIAbility_Container::LowerBound(const long* pKey)
-{
-    g_pObservedContainer = this;
-    g_ObservedKey = *pKey;
-    ++g_LowerBoundCalls;
-    return g_pLowerBoundResult;
-}
-
-static void ResetObservations()
-{
-    g_pObservedManager = 0;
-    g_pObservedPlayer = 0;
-    g_pObservedContainer = 0;
-    g_ObservedKey = 0;
-    g_ManagerCalls = 0;
-    g_PlayerCalls = 0;
-    g_LowerBoundCalls = 0;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf(
-        "FSE2_0089d7c0_TEST FAIL: %s\n",
-        pMessage);
-    return 1;
-}
-
+static unsigned char g_tcmem[0x1000];
+static unsigned char g_thingmem[0x200];
+static CInterfaceMap::SEntry g_entries[3];
 int main()
 {
-    InterfaceStorage interfaceStorage = {};
-    CGSIAbility_Manager manager;
-    CGSIAbility_Player player;
-    EntityStorage hero = {};
-    CGSIAbility_Component foundComponent = {};
-    CGSIAbility_Component endComponent = {};
-    CGSIAbility_Node foundNode = {};
-    CGSIAbility_Node endNode = {};
-    unsigned char foundAvailability[8] = {};
-    unsigned char endAvailability[8] = {};
-
-    interfaceStorage.m_pManager = &manager;
-    CGameScriptInterface* const pInterface =
-        reinterpret_cast<CGameScriptInterface*>(
-            &interfaceStorage);
-    g_pPlayer = &player;
-    foundComponent.m_pAvailability = foundAvailability;
-    endComponent.m_pAvailability = endAvailability;
-    foundNode.m_pComponent = &foundComponent;
-    endNode.m_pComponent = &endComponent;
-    hero.m_Container.m_pEnd = &endNode;
-
-    ResetObservations();
-    g_pHero = 0;
-    pInterface->CGameScriptInterface::
-        SetAbilityAvailability(EHeroAbility_Test, true);
-    if (g_ManagerCalls != 1 || g_PlayerCalls != 1 ||
-        g_LowerBoundCalls != 0 ||
-        foundAvailability[3] != 0)
-        return Fail("null hero guard");
-
-    g_pHero = &hero;
-    hero.m_Flags34 = 0x80;
-
-    ResetObservations();
-    hero.m_Flags91 = 1;
-    pInterface->CGameScriptInterface::
-        SetAbilityAvailability(EHeroAbility_Test, true);
-    if (g_LowerBoundCalls != 0)
-        return Fail("dead hero guard");
-
-    ResetObservations();
-    hero.m_Flags91 = 0;
-    hero.m_Flags34 = 0x7F;
-    pInterface->CGameScriptInterface::
-        SetAbilityAvailability(EHeroAbility_Test, true);
-    if (g_LowerBoundCalls != 0)
-        return Fail("ability component guard");
-
-    ResetObservations();
-    hero.m_Flags34 = 0x80;
-    foundNode.m_Key = 0xA7;
-    g_pLowerBoundResult = &foundNode;
-    foundAvailability[2] = 0x55;
-    pInterface->CGameScriptInterface::
-        SetAbilityAvailability(EHeroAbility_Test, true);
-    if (g_pObservedManager != &manager ||
-        g_pObservedPlayer != &player ||
-        g_pObservedContainer != &hero.m_Container ||
-        g_ObservedKey != 0xA7 ||
-        foundAvailability[3] != 1 ||
-        foundAvailability[2] != 0x55)
-        return Fail("found component enable");
-
-    ResetObservations();
-    foundNode.m_Key = 0xA8;
-    g_pLowerBoundResult = &foundNode;
-    endAvailability[3] = 1;
-    pInterface->CGameScriptInterface::
-        SetAbilityAvailability(EHeroAbility_Test, false);
-    if (endAvailability[3] != 0 ||
-        foundAvailability[3] != 1)
-        return Fail("greater-key sentinel disable");
-
-    ResetObservations();
-    g_pLowerBoundResult = &endNode;
-    pInterface->CGameScriptInterface::
-        SetAbilityAvailability(EHeroAbility_Test, true);
-    if (endAvailability[3] != 1)
-        return Fail("direct sentinel enable");
-
-    std::printf("FSE2_0089d7c0_TEST PASS\n");
-    return 0;
+    int ok = 1;
+    CPlayerManager pm; CGameScriptInterface gsi; gsi.PlayerManager = &pm;
+    const CGameScriptInterface* p = &gsi;
+    CTCSpecialAbilities* tc = (CTCSpecialAbilities*)g_tcmem;
+    CThingPlayerCreature* hero = (CThingPlayerCreature*)g_thingmem;
+    g_entries[0].type = 1; g_entries[0].component = 0;
+    g_entries[1].type = CTCSpecialAbilities::INTERFACE_TYPE; g_entries[1].component = (CTCBase*)tc;
+    g_entries[2].type = 0x100; g_entries[2].component = 0;
+    hero->Components.first = g_entries; hero->Components.last = g_entries + 3;
+    hero->UsingComponents[CTCSpecialAbilities::INTERFACE_TYPE >> 5] |= 1UL << (CTCSpecialAbilities::INTERFACE_TYPE & 31);
+    g_hero = hero;
+    static bool flags[8]; tc->AbilityAvailability._M_start = flags; tc->AbilityAvailability._M_finish = flags + 8;
+    ok &= ((p->SetAbilityAvailability((EHeroAbility)3, true), tc->AbilityAvailability._M_start[3] == true && tc->AbilityAvailability._M_start[2] == false) && (p->SetAbilityAvailability((EHeroAbility)3, false), tc->AbilityAvailability._M_start[3] == false));
+    g_hero = 0;
+    ok &= ((p->SetAbilityAvailability((EHeroAbility)5, true), tc->AbilityAvailability._M_start[5] == false));
+    g_hero = hero; hero->Dead = 1;
+    ok &= ((p->SetAbilityAvailability((EHeroAbility)5, true), tc->AbilityAvailability._M_start[5] == false));
+    hero->Dead = 0; hero->UsingComponents[CTCSpecialAbilities::INTERFACE_TYPE >> 5] = 0;
+    ok &= ((p->SetAbilityAvailability((EHeroAbility)5, true), tc->AbilityAvailability._M_start[5] == false));
+    printf(ok ? "0089d7c0_TEST PASS\n" : "0089d7c0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

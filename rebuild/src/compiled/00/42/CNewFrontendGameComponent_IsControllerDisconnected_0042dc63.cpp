@@ -1,53 +1,35 @@
-extern "C" __declspec(naked) void f_0042dc63(void) {
-__asm {
-_emit 0xe8
-_emit 0x28
-_emit 0xdf
-_emit 0x06
-_emit 0x00
-_emit 0x8b
-_emit 0xc8
-_emit 0xe8
-_emit 0xe1
-_emit 0xde
-_emit 0x06
-_emit 0x00
-_emit 0x84
-_emit 0xc0
-_emit 0x74
-_emit 0x1e
-_emit 0xe8
-_emit 0x18
-_emit 0xdf
-_emit 0x06
-_emit 0x00
-_emit 0x8b
-_emit 0xc8
-_emit 0xe8
-_emit 0xc1
-_emit 0xde
-_emit 0x06
-_emit 0x00
-_emit 0x8b
-_emit 0x0d
-_emit 0x88
-_emit 0x83
-_emit 0x3b
-_emit 0x01
-_emit 0x50
-_emit 0xe8
-_emit 0xc5
-_emit 0x75
-_emit 0x5c
-_emit 0x00
-_emit 0xf6
-_emit 0xd8
-_emit 0x1b
-_emit 0xc0
-_emit 0x40
-_emit 0xc3
-_emit 0x32
-_emit 0xc0
-_emit 0xc3
-}
+// CNewFrontendGameComponent::IsControllerDisconnected() -- true when an explicit main-player joystick is set and that device is no longer active
+// Leaf: ?IsControllerDisconnected@CNewFrontendGameComponent@@AAE_NXZ
+// Retail: Fable.exe @ 0x0042DC63, 49 bytes; Ego_r.pdb / FableWin.pdb ?IsControllerDisconnected@CNewFrontendGameComponent@@AAE_NXZ
+// (private); caller 0x0042DCBF (CNewFrontendGameComponent::Update). Body: CGameJoystickManager::Get (0x0049BB90, static
+// __fastcall) -> HasExplicitMainPlayerJoystickDeviceNumber (0x0049BB50, `mov al,[ecx+8]`); if set,
+// !g_pInputManager (0x013B8388) -> CInputManager::IsJoystickDeviceNumberActive(GetMainPlayerJoystickDeviceNumber()
+// 0x0049BB40) (0x009F5250); else false. `this` is unused.
+// Layout: no members of `this` are read; CGameJoystickManager / CInputManager are modelled by their called methods only
+// (as the landed users of 0x0049BB90 / 0x013B8388).
+// Opt: size TU (unaligned entry after the 1-3 byte virtuals at 0x0042DC5C..0x0042DC60).
+#pragma optimize("s", on)
+class CGameJoystickManager {
+public:
+    static CGameJoystickManager& __fastcall Get();       // 0x0049BB90
+    bool HasExplicitMainPlayerJoystickDeviceNumber() const;   // 0x0049BB50
+    long GetMainPlayerJoystickDeviceNumber() const;      // 0x0049BB40
+};
+class CInputManager {
+public:
+    bool IsJoystickDeviceNumberActive(long device_number) const;   // 0x009F5250
+};
+extern CInputManager* g_pInputManager;                   // 0x013B8388
+class CNewFrontendGameComponent {
+public:
+    unsigned char _body[0x10];
+private:
+    bool IsControllerDisconnected();
+    friend struct CNewFrontendGameComponent_Test;        // behaviour-test hook (the method is private)
+};
+bool CNewFrontendGameComponent::IsControllerDisconnected()
+{
+    if (CGameJoystickManager::Get().HasExplicitMainPlayerJoystickDeviceNumber())
+        return !g_pInputManager->IsJoystickDeviceNumberActive(CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber());
+    return false;
 }

@@ -1,20 +1,149 @@
-#include <cstdio>
-typedef void (__fastcall *GiveHeroTitleFn)(void*, int, int, int);
-struct CGameScriptInterface { void* vt; };
-static int g_title = 0; static int g_a = 0; static int g_b = 0;
-void __fastcall target(void* self, int title, int a, int b){ g_title = title; g_a = a; g_b = b; }
-void __fastcall CGameScriptInterface_GiveHeroTitle(CGameScriptInterface* self, void* /*edx*/, int title)
+// behaviour test for 0x0088E110
+#include <stdio.h>
+class CCharString { public: int Id; };
+class CGameScriptInterface {
+public:
+    virtual ~CGameScriptInterface() {}                      // slot 0
+    virtual void _v001() const {}
+    virtual void _v002() const {}
+    virtual void _v003() const {}
+    virtual void _v004() const {}
+    virtual void _v005() const {}
+    virtual void _v006() const {}
+    virtual void _v007() const {}
+    virtual void _v008() const {}
+    virtual void _v009() const {}
+    virtual void _v010() const {}
+    virtual void _v011() const {}
+    virtual void _v012() const {}
+    virtual void _v013() const {}
+    virtual void _v014() const {}
+    virtual void _v015() const {}
+    virtual void _v016() const {}
+    virtual void _v017() const {}
+    virtual void _v018() const {}
+    virtual void _v019() const {}
+    virtual void _v020() const {}
+    virtual void _v021() const {}
+    virtual void _v022() const {}
+    virtual void _v023() const {}
+    virtual void _v024() const {}
+    virtual void _v025() const {}
+    virtual void _v026() const {}
+    virtual void _v027() const {}
+    virtual void _v028() const {}
+    virtual void _v029() const {}
+    virtual void _v030() const {}
+    virtual void _v031() const {}
+    virtual void _v032() const {}
+    virtual void _v033() const {}
+    virtual void _v034() const {}
+    virtual void _v035() const {}
+    virtual void _v036() const {}
+    virtual void _v037() const {}
+    virtual void _v038() const {}
+    virtual void _v039() const {}
+    virtual void _v040() const {}
+    virtual void _v041() const {}
+    virtual void _v042() const {}
+    virtual void _v043() const {}
+    virtual void _v044() const {}
+    virtual void _v045() const {}
+    virtual void _v046() const {}
+    virtual void _v047() const {}
+    virtual void _v048() const {}
+    virtual void _v049() const {}
+    virtual void _v050() const {}
+    virtual void _v051() const {}
+    virtual void _v052() const {}
+    virtual void _v053() const {}
+    virtual void _v054() const {}
+    virtual void _v055() const {}
+    virtual void _v056() const {}
+    virtual void _v057() const {}
+    virtual void _v058() const {}
+    virtual void _v059() const {}
+    virtual void _v060() const {}
+    virtual void _v061() const {}
+    virtual void _v062() const {}
+    virtual void _v063() const {}
+    virtual void _v064() const {}
+    virtual void _v065() const {}
+    virtual void _v066() const {}
+    virtual void _v067() const {}
+    virtual void _v068() const {}
+    virtual void _v069() const {}
+    virtual void _v070() const {}
+    virtual void _v071() const {}
+    virtual void _v072() const {}
+    virtual void _v073() const {}
+    virtual void _v074() const {}
+    virtual void _v075() const {}
+    virtual void _v076() const {}
+    virtual void _v077() const {}
+    virtual void _v078() const {}
+    virtual void _v079() const {}
+    virtual void _v080() const {}
+    virtual void _v081() const {}
+    virtual void _v082() const {}
+    virtual void _v083() const {}
+    virtual void _v084() const {}
+    virtual void _v085() const {}
+    virtual void _v086() const {}
+    virtual void _v087() const {}
+    virtual void _v088() const {}
+    virtual void _v089() const {}
+    virtual void _v090() const {}
+    virtual void _v091() const {}
+    virtual void _v092() const {}
+    virtual void _v093() const {}
+    virtual void _v094() const {}
+    virtual void _v095() const {}
+    virtual void _v096() const {}
+    virtual void _v097() const {}
+    virtual void _v098() const {}
+    virtual void _v099() const {}
+    virtual void _v100() const {}
+    virtual void _v101() const {}
+    virtual void _v102() const {}
+    virtual void _v103() const {}
+    virtual void _v104() const {}
+    virtual void _v105() const {}
+    virtual void _v106() const {}
+    virtual void _v107() const {}
+    virtual void _v108() const {}
+    virtual void _v109() const {}
+    virtual void _v110() const {}
+    virtual void _v111() const {}
+    virtual void _v112() const {}
+    virtual void _v113() const {}
+    virtual void _v114() const {}
+    virtual void _v115() const {}
+    virtual void _v116() const {}
+    virtual void _v117() const {}
+    virtual void _v118() const {}
+    virtual void _v119() const {}
+    virtual void _v120() const {}
+    virtual void GiveHeroObject(const CCharString& name, long count, bool equip) const {}// slot 121 (+0x1e4)
+    virtual void GiveHeroTitle(const CCharString& name) const;
+};
+
+void CGameScriptInterface::GiveHeroTitle(const CCharString& name) const
 {
-    GiveHeroTitleFn fn = *(GiveHeroTitleFn*)(*(char**)self + 0x1e4);
-    fn(self, title, -1, 1);
+    GiveHeroObject(name, -1, true);
 }
-int main(){
-    static char blob[0x400];
-    GiveHeroTitleFn tp = target;
-    *(GiveHeroTitleFn*)(blob + 0x1e4) = tp;
-    void* vt = blob;
-    CGameScriptInterface obj; obj.vt = vt;
-    CGameScriptInterface_GiveHeroTitle(&obj, 0, 42);
-    if (g_title==42 && g_a==-1 && g_b==1) { std::printf("CGameScriptInterface_0088e110_TEST PASS\n"); return 0; }
-    std::printf("FAIL title=%d a=%d b=%d\n", g_title, g_a, g_b); return 1;
+
+static const CCharString* g_name; static long g_count; static bool g_equip;
+class CTest : public CGameScriptInterface {
+public:
+    void GiveHeroObject(const CCharString& name, long count, bool equip) const { g_name = &name; g_count = count; g_equip = equip; }
+};
+int main()
+{
+    int ok = 1;
+    CCharString n; n.Id = 3; CTest t; const CGameScriptInterface* p = &t;
+    p->GiveHeroTitle(n);
+    ok = g_name == &n && g_count == -1 && g_equip == true;
+    printf(ok ? "0088e110_TEST PASS\n" : "0088e110_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

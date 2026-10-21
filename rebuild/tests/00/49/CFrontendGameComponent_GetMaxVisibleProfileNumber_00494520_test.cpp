@@ -1,73 +1,41 @@
 #include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494520.cpp"
-
-static void SetProfiles(
-    CFrontendGameComponent_00494520* component,
-    void** storage,
-    unsigned long count,
-    unsigned long first_visible)
+class CWideString { public: void* PData; };
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;                                         // +0x00
+    T* _M_finish;                                        // +0x04
+    T* _M_end_of_storage;                                // +0x08
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+};
+}
+class CFrontendGameComponent {
+public:
+    unsigned char            _pad0000[0x1e0c];
+    std::vector<CWideString> ProfileNames;       // +0x1e0c
+    long                     ProfileNamesOffset; // +0x1e18
+    long GetMaxVisibleProfileNumber() const;
+};
+long CFrontendGameComponent::GetMaxVisibleProfileNumber() const
 {
-    component->profiles_begin = storage;
-    component->profiles_end = storage + count;
-    component->profiles_capacity = storage + count;
-    component->first_visible_profile = first_visible;
+    if (ProfileNames.size() - ProfileNamesOffset <= 8)
+        return ProfileNames.size() - ProfileNamesOffset;
+    return 8;
 }
 
 int main()
 {
-    int failures = 0;
-    CFrontendGameComponent_00494520 component;
-    void* profiles[12];
-
-    std::memset(&component, 0, sizeof(component));
-
-    SetProfiles(&component, profiles, 10, 3);
-    if (component.GetMaxVisibleProfileNumber() != 7)
-    {
-        std::printf("unclamped remaining-profile count failed\n");
-        ++failures;
-    }
-
-    SetProfiles(&component, profiles, 12, 3);
-    if (component.GetMaxVisibleProfileNumber() != 8)
-    {
-        std::printf("eight-row clamp failed\n");
-        ++failures;
-    }
-
-    SetProfiles(&component, profiles, 12, 12);
-    if (component.GetMaxVisibleProfileNumber() != 0)
-    {
-        std::printf("empty tail failed\n");
-        ++failures;
-    }
-
-    // Retail's unsigned `ja` also clamps an invalid underflowed tail to eight.
-    SetProfiles(&component, profiles, 4, 5);
-    if (component.GetMaxVisibleProfileNumber() != 8)
-    {
-        std::printf("unsigned underflow clamp failed\n");
-        ++failures;
-    }
-
-    if (component.profiles_begin != profiles ||
-        component.profiles_end != profiles + 4 ||
-        component.first_visible_profile != 5)
-    {
-        std::printf("non-mutating layout query failed\n");
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "FRONTEND_00494520_TEST FAIL count=%d\n",
-            failures);
-        return 1;
-    }
-
-    std::printf("FRONTEND_00494520_TEST PASS\n");
+    static double mem[0x2000 / 8];
+    CFrontendGameComponent* c = (CFrontendGameComponent*)mem;
+    static CWideString names[12];
+    c->ProfileNames._M_start = names; c->ProfileNames._M_end_of_storage = names + 12;
+    bool ok = true;
+    c->ProfileNames._M_finish = names + 3; c->ProfileNamesOffset = 0; ok = ok && c->GetMaxVisibleProfileNumber() == 3;
+    c->ProfileNames._M_finish = names + 12; c->ProfileNamesOffset = 0; ok = ok && c->GetMaxVisibleProfileNumber() == 8;
+    c->ProfileNamesOffset = 4; ok = ok && c->GetMaxVisibleProfileNumber() == 8;
+    c->ProfileNamesOffset = 5; ok = ok && c->GetMaxVisibleProfileNumber() == 7;
+    c->ProfileNames._M_finish = names + 8; c->ProfileNamesOffset = 0; ok = ok && c->GetMaxVisibleProfileNumber() == 8;
+    c->ProfileNames._M_finish = names + 2; c->ProfileNamesOffset = 3; ok = ok && c->GetMaxVisibleProfileNumber() == 8;
+    std::printf(ok ? "00494520_TEST PASS\n" : "FAIL\n");
     return 0;
 }

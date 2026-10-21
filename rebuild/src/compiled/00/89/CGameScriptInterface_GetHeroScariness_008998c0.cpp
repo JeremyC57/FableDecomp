@@ -1,80 +1,140 @@
-class CGSIHeroScariness_Player;
-class CGSIHeroScariness_Node;
-
-class CGSIHeroScariness_Manager
-{
+// CGameScriptInterface::GetHeroScariness() const -- the hero's scariness; 0.0f when there is no live hero
+// Leaf: GetHeroScariness@CGameScriptInterface
+// Retail: Fable.exe @ 0x008998C0, 104 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::PeekPPlayerCharacter 0x00487DD0,
+// then CThing::PeekTC<CTCHeroStats> (Ego_r.pdb bool/out-pointer form; const Components lower_bound 0x004365B0).
+// Shape: PeekTC's result is not tested -- without the TC bit retail reads through the uninitialised out pointer.
+// Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
+// Components +0x44, Dead +0x91 bit 0).
+// CTCHeroStats retail = Ego_r.pdb minus 8 through +0x118 (12-byte STLport map and vector), minus 0x18 after the four vectors
+// (Age +0x30, Stamina +0x58, RenownLevel +0x70, Attractiveness +0x9c, BestTimePairs +0x178, Marriages +0x1d8); engine/CTCHeroStats.h
+// carries the PDB offsets.
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CGSIHeroScariness_Player* GetPlayer();
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CGSIHeroScariness_Player
-{
+class CThing {
 public:
-    void* GetHero();
+    unsigned char _pad00[0x20];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
 };
-
-class CGSIHeroScariness_Container
-{
+class CThingPlayerCreature : public CThing { };
+class CPlayer {
 public:
-    CGSIHeroScariness_Node* LowerBound(
-        const long* pKey);
+    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
 };
-
-class CGameScriptInterface
-{
+class CPlayerManager {
+public:
+    CPlayer& GetMainPlayer();                                       // 0x00449970
+};
+class CCharStringData;
+class CCharString { public: CCharStringData* PStringData; };
+struct CMarriageNode { CMarriageNode* _M_next; CMarriageNode* _M_prev; };
+class CMarriageList {                                    // std::list<CHeroMarriageInfo> (STLport: one node pointer)
+public:
+    CMarriageNode* _M_node;
+    bool empty() const { return _M_node->_M_next == _M_node; }
+};
+enum EMarriageState { MARRIAGE_STATE_1 = 1, MARRIAGE_STATE_2 = 2, MARRIAGE_STATE_HAS_CHILDREN = 4, MARRIAGE_STATE_DIVORCED = 5,
+                      MARRIAGE_STATE_WIFE_MURDERED = 7, MARRIAGE_STATE_FORCE_DWORD = 0x7fffffff };
+class CTCHeroStats {
+public:
+    enum { INTERFACE_TYPE = 0x4 };
+    unsigned char _pad_0x000[0x30];
+    float Age;                                  // +0x030
+    float SunTan;                               // +0x034
+    float Fatness;                              // +0x038
+    unsigned char _pad_0x03c[0x1c];
+    long Stamina;                               // +0x058
+    long MaxStamina;                            // +0x05c
+    unsigned char _pad_0x060[0x10];
+    long RenownLevel;                           // +0x070
+    long RenownMaxLevel;                        // +0x074
+    unsigned char _pad_0x078[0x24];
+    float Attractiveness;                       // +0x09c
+    float Scariness;                            // +0x0a0
+    unsigned char _pad_0x0a4[0xcc];
+    CCharString DeathRecoveryMarkerName;        // +0x170
+    unsigned char _pad_0x174[0x4];
+    float BestTimePairs;                        // +0x178
+    float BestTimeSorting;                      // +0x17c
+    unsigned char _pad_0x180[0x10];
+    float BestTimeGuessTheAddition;             // +0x190
+    unsigned char _pad_0x194[0x44];
+    CMarriageList Marriages;                    // +0x1d8
+    float GetAge() const { return Age; }
+    float GetFatness() const { return Fatness; }
+    long  GetStamina() const { return Stamina; }
+    long  GetMaxStamina() const { return MaxStamina; }
+    float GetStaminaPercentage() const { return (float)Stamina / MaxStamina; }
+    long  GetRenownLevel() const { return RenownLevel; }
+    float GetAttractiveness() const { return Attractiveness; }
+    float GetScariness() const { return Scariness; }
+    float GetBestTimePairs() const { return BestTimePairs; }
+    float GetBestTimeSorting() const { return BestTimeSorting; }
+    float GetBestTimeGuessTheAddition() const { return BestTimeGuessTheAddition; }
+    const CCharString& GetDeathRecoveryMarkerName() const { return DeathRecoveryMarkerName; }
+    bool  HasMarriageInState(EMarriageState state) const;          // 0x0057AC29
+    bool  HasCurrentMarriage() const;                              // 0x0057AC4B
+    float GetPercentageThroughRenownLevel() const;                 // 0x0057AAD9
+};
+class CGameScriptInterface {
 public:
     virtual float GetHeroScariness() const;
+    void*           World;                               // +0x04
+    void*           Component;                           // +0x08
+    void*           DisplayEngine;                       // +0x0c
+    void*           DefinitionManager;                   // +0x10
+    CPlayerManager* PlayerManager;                       // +0x14
 };
 
-static const float g_CGSIHeroScariness_Zero = 0.0f;
-
-__declspec(naked)
 float CGameScriptInterface::GetHeroScariness() const
 {
-    __asm
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPPlayerCharacter();
+    if (hero && !hero->IsDead())
     {
-        push ecx
-        mov ecx, dword ptr [ecx + 14h]
-        call CGSIHeroScariness_Manager::GetPlayer
-        mov ecx, eax
-        call CGSIHeroScariness_Player::GetHero
-        test eax, eax
-        je invalid_hero
-        test byte ptr [eax + 91h], 1
-        jne invalid_hero
-        test byte ptr [eax + 20h], 10h
-        je fallback_component
-
-        push esi
-        lea esi, [eax + 44h]
-        lea eax, [esp + 4]
-        push eax
-        mov ecx, esi
-        mov dword ptr [esp + 8], 4
-        call CGSIHeroScariness_Container::LowerBound
-        mov esi, dword ptr [esi + 4]
-        cmp eax, esi
-        je use_sentinel
-        cmp dword ptr [eax], 4
-        jle have_component
-use_sentinel:
-        mov eax, esi
-have_component:
-        mov eax, dword ptr [eax + 4]
-        fld dword ptr [eax + 0A0h]
-        pop esi
-        pop ecx
-        ret
-
-fallback_component:
-        mov eax, dword ptr [esp]
-        fld dword ptr [eax + 0A0h]
-        pop ecx
-        ret
-
-invalid_hero:
-        fld dword ptr [g_CGSIHeroScariness_Zero]
-        pop ecx
-        ret
+        const CTCHeroStats* stats;
+        hero->PeekTC(&stats);
+        return stats->GetScariness();
     }
+    return 0.0f;
 }

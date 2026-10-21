@@ -1,0 +1,69 @@
+addr       parity           behav  name
+00404310   RELOCATION_MATCH PASS   GetCRC
+00404a90   RELOCATION_MATCH PASS   ResetToDefaultSettings
+0040e170   MATCH            PASS   __find
+0041e5f2   RELOCATION_MATCH PASS   GetInstance
+0042e98f   WARN RELOC_CONFLICT: ?GetInstance@CFrontEndManager@NUISystem@@SIPAV12@XZ -> 00595582 here, 0041e5f2 in landed 00543d30
+0042e98f   WARN RELOC_NAME: ?InitialiseSounds@CNewFrontendGameComponent@@QAEXXZ -> 0042e17c labelled 'Init_FrontendSounds'
+0042e98f   WARN RELOC_NAME: ?SetCurrentGraphicBank@@YIXPAVCGraphicDataBank@@@Z -> 00aeaa80 labelled '_global::SetCurrentThingManager'
+0042e98f   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0042e98f   WARN RELOC_NAME: ?Clear@CManager@NUISystem@@SIXXZ -> 0042fb40 labelled 'std::pair<CCharString,CTCBase::CRegisteredTCInfo>::swap'
+0042e98f   WARN RELOC_NAME: ?GetDefinitionManager@@YAPAVCDefinitionManager@@XZ -> 0043368d labelled 'GFGetPreMainMemoryUsed'
+0042e98f   WARN RELOC_NAME: ?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z -> 00598a1c labelled 'CFrontEndManager::Init2'
+0042e98f   RELOCATION_MATCH PASS   Init2
+005360b1   RELOCATION_MATCH PASS   SetSelectedChild
+0053673b   RELOCATION_MATCH PASS   ProcessEvent
+00550c60   WARN RELOC_NAME: ?_M_erase@?$map@W4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAEXPAU_Rb_tree_node_base@2@@Z -> 00553690 labelled 'TreeNode_DestroyRecursiveWithRefcount'
+00550c60   RELOCATION_MATCH PASS   Initialise
+005955ab   WARN RELOC_NAME: ??H@YI?AUCWideString@@ABU0@PBG@Z -> 0099bf30 labelled 'CCharString::AssignFromValue'
+005955ab   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+005955ab   WARN RELOC_NAME: ??0CWideString@@QAE@PBG@Z -> 0099b6b0 labelled 'CCharString::AssignFromWide'
+005955ab   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+005955ab   WARN RELOC_NAME: ??YCWideString@@QAEAAU0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+005955ab   RELOCATION_MATCH PASS   GetProfileNames
+00597b20   WARN RELOC_NAME: ??G?$_Deque_iterator@PAVCComponent@NUISystem@@@std@@QBEHABU01@@Z -> 0059a8f3 labelled 'NThingMap::CThingMapManager::GetMemoryFootprint'
+00597b20   WARN RELOC_NAME: ?pop_back@?$deque@PAVCComponent@NUISystem@@@std@@QAEXXZ -> 0059aee5 labelled '_unattributed::PopValue'
+00597b20   WARN RELOC_NAME: ?push_back@?$deque@PAVCComponent@NUISystem@@@std@@QAEXABQAVCComponent@NUISystem@@@Z -> 0059b61c labelled 'CCreatureAction_FireMissileWeapon::FrameUpdate'
+00597b20   RELOCATION_MATCH PASS   GotoProfileMenu
+0059aae3   OUTSIDE_MANIFEST -      DistanceThunk
+0066f060   DIFFER(424v280)  PASS   GetEventTypeFromGeneralButtonType
+0066f990   OUTSIDE_MANIFEST -      operator/=
+0066f9e0   OUTSIDE_MANIFEST -      StoreFieldB4
+0066f9f0   OUTSIDE_MANIFEST -      x87_Exp
+0066fa10   OUTSIDE_MANIFEST -      StatGetTypeName
+0066fa30   OUTSIDE_MANIFEST -      Reset
+0082e330   MATCH            PASS   GetTheme
+00994700   WARN RELOC_CONFLICT: ??0CBase@@QAE@XZ -> 0099a2f0 here, 0099a2d0 in landed 00404720
+00994700   WARN RELOC_CONFLICT: ??2@YAPAXI@Z -> 00bfeb22 here, 00bfea1a in landed 00403d20
+00994700   RELOC_IDENTITY: ??2@YAPAXI@Z -> 00bfeb22 is the import thunk 'MSVCR71.DLL::operator_new[]'
+00994700   RELOC_IDENTITY   -      CFileDataInputStream
+00bf3980   WARN RELOC_NAME: ?OnPostRelocation@CWaterPatchMesh@@QAEXXZ -> 00beaa30 labelled 'CBankFileAsyncData::ChangeLoadingPriority'
+00bf3980   RELOCATION_MATCH PASS   RelocateData
+00bf5c20   MATCH            PASS   GetForegroundVertexShader
+00bf5c60   MATCH            PASS   GetForegroundSpotLightVertexShader
+00bf5ca0   MATCH            PASS   GetForegroundShadowedVertexShader
+00bf5cd0   MATCH            PASS   GetForegroundBumpShadowedVertexShader
+00bf5d00   MATCH            PASS   GetForegroundSpotShadowedVertexShader
+00c48db0   WARN RELOC_NAME: ??_M@YGXPAXIHP6EX0@Z@Z -> 00bfeed8 labelled '`eh_vector_destructor_iterator''
+00c48db0   WARN RELOC_CONFLICT: ??3@YAXPAX@Z -> 00bfeb1c here, 00bfe9bc in landed 00403db0
+00c48db0   RELOC_IDENTITY: ??3@YAXPAX@Z -> 00bfeb1c is the import thunk 'MSVCR71.DLL::operator_delete[]'
+00c48db0   RELOC_IDENTITY   -      ~CEntryTableOwner_00c48db0
+
+WINS: 17
+  00404310 RELOCATION_MATCH CCharString::?GetCRC@CCharString@@QBEKXZ
+  00404a90 RELOCATION_MATCH NUISystem::CIME::?ResetToDefaultSettings@CIME@NUISystem@@SIXXZ
+  0040e170 MATCH std::??$__find@PAJJ@std@@YIPAJPAJ0ABJABUrandom_access_iterator_tag@0@@Z
+  0041e5f2 RELOCATION_MATCH NUISystem::CManager::GetInstance
+  0042e98f RELOCATION_MATCH CNewFrontendGameComponent::Init2
+  005360b1 RELOCATION_MATCH NUISystem::CList::SetSelectedChild
+  0053673b RELOCATION_MATCH NUISystem::CList::?ProcessEvent@CList@NUISystem@@UAEXW4EEventType@2@@Z
+  00550c60 RELOCATION_MATCH NUISystem::CTable::Initialise
+  005955ab RELOCATION_MATCH NUISystem::CFrontEndManager::?GetProfileNames@CFrontEndManager@NUISystem@@
+  00597b20 RELOCATION_MATCH NUISystem::CFrontEndManager::GotoProfileMenu
+  0082e330 MATCH CScriptedMapBrush::?GetTheme@CScriptedMapBrush@@QBEKJJK@Z
+  00bf3980 RELOCATION_MATCH CEngineLandscapePatch::?RelocateData@CEngineLandscapePatch@@EAEXJPAX0J@Z
+  00bf5c20 MATCH CEngineLandscapeRenderer::?GetForegroundVertexShader@CEngineLandscapeRenderer@@QAEAAVCVertexShader@@J@Z
+  00bf5c60 MATCH CEngineLandscapeRenderer::?GetForegroundSpotLightVertexShader@CEngineLandscapeRenderer@@QAEAAVCVertexShader@@J@Z
+  00bf5ca0 MATCH CEngineLandscapeRenderer::?GetForegroundShadowedVertexShader@CEngineLandscapeRenderer@@QAEAAVCVertexShader@@J@Z
+  00bf5cd0 MATCH CEngineLandscapeRenderer::?GetForegroundBumpShadowedVertexShader@CEngineLandscapeRenderer@@QAEAAVCVertexShader@@J@Z
+  00bf5d00 MATCH CEngineLandscapeRenderer::?GetForegroundSpotShadowedVertexShader@CEngineLandscapeRenderer@@QAEAAVCVertexShader@@J@Z

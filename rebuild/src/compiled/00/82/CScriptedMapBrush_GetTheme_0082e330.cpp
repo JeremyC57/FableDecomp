@@ -1,58 +1,46 @@
-// CScriptedMapBrush::GetTheme  retail 0x0082e330  (77 bytes)
-// __thiscall member: unsigned long GetTheme(long x, long y, unsigned long layer) const
-//   -> ret 0xc.  self in ecx.
-//
-// Retail body (annotated):
-//   edx = x                     ; [esp+4]
-//   if (x <  self->minX) fail   ; [ecx+0x38]     (push esi spills between checks)
-//   if (x >= self->maxX) fail   ; [ecx+0x40]
-//   eax = y                     ; [esp+0xc]
-//   if (y <  self->minY) fail   ; [ecx+0x3c]
-//   if (y >= self->maxY) fail   ; [ecx+0x44]
-//   eax = (y - minY)*(maxX - minX) - minX + x
-//   edx = layer + eax*5         ; layer = [esp+0x14]  (after 2 pushes)
-//   return ((u32*)self->cells)[edx + 1]   ; self->cells = [ecx+8]
-//   fail: return 0
-//
-// The retail stream interleaves the esi/edi register spills with the four
-// bounds compares and shares one xor-eax fail tail.  A plain-C++ reimplement
-// reorders the spills and lands at 81 bytes (DIFFER); emit the exact retail
-// instruction stream as naked asm.  All branches are internal, no externs.
-
-extern "C" __declspec(naked) unsigned long CScriptedMapBrush_GetTheme()
+// CScriptedMapBrush::GetTheme(long x, long y, unsigned long layer) const -- theme index of a layer in the brush cell at (x, y), 0 outside the game area
+// Leaf: ?GetTheme@CScriptedMapBrush@@QBEKJJK@Z
+// Retail: Fable.exe @ 0x0082E330, 77 bytes, `ret 0Ch`; one caller 0x0082068F; Ego_r.pdb ?GetTheme@CScriptedMapBrush@@QBEKJJK@Z.
+// Body: (helper names IsInside / Width are descriptive) x in [GameArea.TLX, BRX) and y in [TLY, BRY) (signed), else 0; cell = (y - TLY) * (BRX - TLX) + x - TLX;
+// Cells[cell].Theme[layer].
+// Layout: retail CScriptedMapBrush -- Cells (12-byte STLport vector<CScriptedMapCell>) +0x08, GameArea (C2DBoxI) +0x38
+// (Ego_r.pdb +0x48 with 16-byte containers); CScriptedMapCell (Ego_r.pdb, 20 bytes): Height +0, Theme[3] +4, ThemeBlend[2] +0x10.
+// Shape: /O2 (16-aligned entry); the bounds test is an inline C2DBoxI::IsInside guarding the lookup (the box fields are
+// re-read after it), the column offset bracketed as (x - TLX).
+class CScriptedMapCell {
+public:
+    float         Height;                                // +0x00
+    unsigned long Theme[3];                              // +0x04
+    unsigned char ThemeBlend[2];                         // +0x10
+};
+class C2DBoxI {
+public:
+    bool IsInside(long x, long y) const { return x >= TLX && x < BRX && y >= TLY && y < BRY; }
+    long Width() const { return BRX - TLX; }
+    long TLX;                                            // +0x00
+    long TLY;                                            // +0x04
+    long BRX;                                            // +0x08
+    long BRY;                                            // +0x0c
+};
+template <class T> class CVector {                       // STLport vector, 12 bytes
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    const T& operator[](unsigned int n) const { return _M_start[n]; }
+};
+class CScriptedMapBrush {
+public:
+    void*                     _vfptr;                    // +0x00
+    long                      _pad04;                    // +0x04
+    CVector<CScriptedMapCell> Cells;                     // +0x08
+    unsigned char             _pad14[0x38 - 0x14];       // +0x14 ThingsToDelete / ThingsToMove / ThingsToAdd (12-byte STLport set/map each)
+    C2DBoxI                   GameArea;                  // +0x38
+    unsigned long GetTheme(long x, long y, unsigned long layer) const;
+};
+unsigned long CScriptedMapBrush::GetTheme(long x, long y, unsigned long layer) const
 {
-    __asm {
-        mov     edx, dword ptr [esp+4]      // x
-        cmp     edx, dword ptr [ecx+0x38]   // minX
-        push    esi
-        jl      fail
-        cmp     edx, dword ptr [ecx+0x40]   // maxX
-        jge     fail
-        mov     eax, dword ptr [esp+0x0c]   // y  (esp shifted by push esi)
-        cmp     eax, dword ptr [ecx+0x3c]   // minY
-        jl      fail
-        cmp     eax, dword ptr [ecx+0x44]   // maxY
-        jge     fail
-        sub     eax, dword ptr [ecx+0x3c]   // y - minY
-        mov     esi, dword ptr [ecx+0x40]   // maxX
-        push    edi
-        mov     edi, dword ptr [ecx+0x38]   // minX
-        sub     esi, edi                    // maxX - minX
-        imul    eax, esi                    // (y-minY)*(maxX-minX)
-        mov     esi, edi
-        sub     eax, esi                    // - minX
-        add     eax, edx                    // + x
-        mov     edx, dword ptr [esp+0x14]   // layer (after 2 pushes)
-        lea     edx, [edx+eax*4]
-        add     edx, eax                    // layer + idx*5
-        mov     eax, dword ptr [ecx+8]      // cells
-        mov     eax, dword ptr [eax+edx*4+4]
-        pop     edi
-        pop     esi
-        ret     0x0c
-fail:
-        xor     eax, eax
-        pop     esi
-        ret     0x0c
-    }
+    if (GameArea.IsInside(x, y))
+        return Cells[(y - GameArea.TLY) * GameArea.Width() + (x - GameArea.TLX)].Theme[layer];
+    return 0;
 }

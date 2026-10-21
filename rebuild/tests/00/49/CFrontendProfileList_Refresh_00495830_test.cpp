@@ -1,86 +1,70 @@
 #include <cstdio>
-
-#include "../../../src/compiled/00/49/CFrontendProfileList_Refresh_00495830.cpp"
-
-static CFrontendProfileManager_00495830 g_Manager;
-static unsigned long g_ClearCalls;
-static unsigned long g_GetCalls;
-static unsigned long g_PopulateCalls;
-static unsigned long g_FreeCalls;
-static CFrontendProfileRange_00495830* g_ClearThis;
-static void* g_ClearBegin;
-static void* g_ClearEnd;
-static CFrontendProfileRange_00495830* g_PopulateList;
-static bool g_TemporaryWasZero;
-static void* g_Freed;
-static bool g_AllocateTemporary;
-static unsigned long g_TemporaryStorage;
-
-void CFrontendProfileRange_00495830::Clear(void* begin, void* end)
+#include <stdlib.h>
+class CWideString;
+struct CFileListInfo {                                   // 28-byte element filled by LoadFileList (type not identified)
+    unsigned long Data[7];
+};
+namespace std {
+template <class T> class vector {                        // STLport vector<T>
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    T* begin() { return _M_start; }
+    T* end() { return _M_finish; }
+    T* erase(T* first, T* last);                         // 0x00412450 for CWideString
+};
+}
+template <class T> class CMallocVector {                  // STLport vector<T> over the malloc allocator
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    CMallocVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    ~CMallocVector() { if (_M_start) free(_M_start); }
+};
+class CUserProfileManager {
+public:
+    void LoadFileList(std::vector<CWideString>& names, CMallocVector<CFileListInfo>& infos);   // 0x004091C0
+};
+template <class T> class CTBaseSingleton {
+public:
+    static T& Get();                                     // 0x0040D2A0
+};
+class CFrontendProfileList {
+public:
+    std::vector<CWideString> Names;                      // +0x00
+    void Refresh();
+};
+void CFrontendProfileList::Refresh()
 {
-    ++g_ClearCalls;
-    g_ClearThis = this;
-    g_ClearBegin = begin;
-    g_ClearEnd = end;
+    Names.erase(Names.begin(), Names.end());
+    CMallocVector<CFileListInfo> infos;
+    CTBaseSingleton<CUserProfileManager>::Get().LoadFileList(Names, infos);
 }
 
-CFrontendProfileManager_00495830* __cdecl
-GetFrontendProfileManager_00495830()
+class CWideString { public: int V; };
+static int g_erase, g_load;
+static void* g_infos_seen;
+template <> CWideString* std::vector<CWideString>::erase(CWideString* first, CWideString* last) { ++g_erase; _M_finish = first; return first; }
+static CUserProfileManager g_upm;
+template <> CUserProfileManager& CTBaseSingleton<CUserProfileManager>::Get() { return g_upm; }
+void CUserProfileManager::LoadFileList(std::vector<CWideString>& names, CMallocVector<CFileListInfo>& infos)
 {
-    ++g_GetCalls;
-    return &g_Manager;
+    ++g_load;
+    bool empty_infos = infos._M_start == 0 && infos._M_finish == 0 && infos._M_end_of_storage == 0;
+    if (!empty_infos || names._M_finish != names._M_start) return;
+    names._M_finish = names._M_start + 2;                // two names found
+    infos._M_start = (CFileListInfo*)malloc(2 * sizeof(CFileListInfo));
+    infos._M_finish = infos._M_end_of_storage = infos._M_start + 2;
+    g_infos_seen = infos._M_start;
 }
-
-void CFrontendProfileManager_00495830::PopulateList(
-    CFrontendProfileRange_00495830* list,
-    CFrontendProfileRange_00495830* temporary)
-{
-    ++g_PopulateCalls;
-    g_PopulateList = list;
-    g_TemporaryWasZero =
-        temporary->m_Begin == 0 &&
-        temporary->m_End == 0 &&
-        temporary->m_Capacity == 0;
-    if (g_AllocateTemporary)
-        temporary->m_Begin = &g_TemporaryStorage;
-}
-
-void __cdecl FrontendProfileListFree_00495830(void* allocation)
-{
-    ++g_FreeCalls;
-    g_Freed = allocation;
-}
-
 int main()
 {
-    unsigned long values[3] = { 1, 2, 3 };
-    CFrontendProfileRange_00495830 list = {
-        values, values + 3, values + 3
-    };
-
-    g_AllocateTemporary = true;
-    list.Refresh();
-
-    if (g_ClearCalls != 1 || g_ClearThis != &list ||
-        g_ClearBegin != values || g_ClearEnd != values + 3 ||
-        g_GetCalls != 1 || g_PopulateCalls != 1 ||
-        g_PopulateList != &list || !g_TemporaryWasZero ||
-        g_FreeCalls != 1 || g_Freed != &g_TemporaryStorage)
-    {
-        std::printf("CFrontendProfileList_Refresh_00495830_test FAIL\n");
-        return 1;
-    }
-
-    g_AllocateTemporary = false;
-    list.Refresh();
-    if (g_ClearCalls != 2 || g_GetCalls != 2 ||
-        g_PopulateCalls != 2 || !g_TemporaryWasZero ||
-        g_FreeCalls != 1)
-    {
-        std::printf("CFrontendProfileList_Refresh_00495830_test FAIL\n");
-        return 1;
-    }
-
-    std::printf("CFrontendProfileList_Refresh_00495830_test PASS\n");
-    return 0;
+    static CWideString storage[4];
+    CFrontendProfileList l; l.Names._M_start = storage; l.Names._M_finish = storage + 3; l.Names._M_end_of_storage = storage + 4;
+    l.Refresh();
+    bool ok = g_erase == 1 && g_load == 1 && l.Names._M_finish == storage + 2 && g_infos_seen != 0 && sizeof(CFileListInfo) == 0x1c;
+    std::printf(ok ? "00495830_TEST PASS\n" : "00495830_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

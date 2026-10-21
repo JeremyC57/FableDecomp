@@ -1,58 +1,44 @@
 #include <stdio.h>
+struct C3DVector { float X, Y, Z; };
+struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() {} };
+struct CIDrawWorldMap {
+    virtual ~CIDrawWorldMap() {}
+    virtual void Draw1() const = 0;
+    virtual void Draw2() const = 0;
+    virtual void Draw3() const = 0;
+    virtual void Draw4() const = 0;
+    virtual void Draw5() const = 0;
+    virtual void Draw6() const = 0;
+    virtual void Draw7() const = 0;
+    virtual bool DrawFindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const = 0;
+    virtual bool DrawFindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const = 0;
+};
+static const void* g_this; static const C3DVector* g_from; static const C3DVector* g_to; static C3DVector* g_out;
+struct CWorldMap : CBaseClassNonCopyable, CIDrawWorldMap {
+    bool result;
+    virtual void Draw1() const {} virtual void Draw2() const {} virtual void Draw3() const {} virtual void Draw4() const {}
+    virtual void Draw5() const {} virtual void Draw6() const {} virtual void Draw7() const {}
+    bool FindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const
+    { g_this = this; g_from = &from; g_to = &to; g_out = &lastUnblocked; lastUnblocked.X = to.X; return result; }
+    virtual bool DrawFindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const;
+    virtual bool DrawFindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const;
+};
 
-// Captured `this` (ecx) as seen by the real target after the thunk adjusts it.
-static unsigned int g_seen_ecx = 0;
-
-// Stub for the real method body the thunk tail-jumps to.
-// It records ecx (the adjusted this pointer) then returns.
-extern "C" __declspec(naked) void DrawFindLastUnblockedThemePositionAndReportCollision_target(void)
+bool CWorldMap::DrawFindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const
 {
-    __asm
-    {
-        mov     g_seen_ecx, ecx
-        ret
-    }
+    return FindLastUnblockedThemePositionAndReportCollision(from, to, lastUnblocked);
 }
-
-// The function-under-test (adjustor thunk).
-extern "C" __declspec(naked) void DrawFindLastUnblockedThemePositionAndReportCollision(void)
-{
-    __asm
-    {
-        add     ecx, -4
-        jmp     DrawFindLastUnblockedThemePositionAndReportCollision_target
-    }
-}
+bool CWorldMap::DrawFindLastUnblockedGroundPositionAndReportCollision(const C3DVector&, const C3DVector&, C3DVector&) const { return false; }
 
 int main()
 {
-    unsigned int base = 0x00100000u;
-    // Call the thunk with ecx = base; expect target to see base - 4.
-    __asm
-    {
-        mov     ecx, base
-        call    DrawFindLastUnblockedThemePositionAndReportCollision
-    }
-
-    if (g_seen_ecx != base - 4u)
-    {
-        printf("FAIL seen=0x%08X expected=0x%08X\n", g_seen_ecx, base - 4u);
-        return 1;
-    }
-
-    // Second value to confirm it is a real subtraction, not a fixed constant.
-    unsigned int base2 = 0x00200008u;
-    __asm
-    {
-        mov     ecx, base2
-        call    DrawFindLastUnblockedThemePositionAndReportCollision
-    }
-    if (g_seen_ecx != base2 - 4u)
-    {
-        printf("FAIL2 seen=0x%08X expected=0x%08X\n", g_seen_ecx, base2 - 4u);
-        return 1;
-    }
-
-    printf("OK_0x004fb2a0 this_adjust=-4 verified\n");
-    return 0;
+    CWorldMap m; m.result = true;
+    C3DVector a = { 1, 2, 3 }, b = { 4, 5, 6 }, c = { 0, 0, 0 };
+    const CIDrawWorldMap* i = &m;
+    bool r1 = i->DrawFindLastUnblockedThemePositionAndReportCollision(a, b, c);
+    bool ok = r1 && g_this == &m && (const void*)i != (const void*)&m && g_from == &a && g_to == &b && g_out == &c && c.X == 4;
+    m.result = false;
+    ok = ok && !i->DrawFindLastUnblockedThemePositionAndReportCollision(a, b, c);
+    printf(ok ? "004fb2a0_TEST PASS\n" : "004fb2a0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

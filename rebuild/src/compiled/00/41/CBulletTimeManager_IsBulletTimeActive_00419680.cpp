@@ -1,28 +1,23 @@
-extern "C" __declspec(naked) void fn_00419680(void)
+// CBulletTimeManager::IsBulletTimeActive() const -- bullet time is on if overridden or any bullet-time source is registered
+// Leaf: IsBulletTimeActive@CBulletTimeManager
+// Retail: Fable.exe @ 0x00419680, 23 bytes; Ego_r.pdb ?IsBulletTimeActive@CBulletTimeManager@@QBE_NXZ.
+// Layout: retail BulletTimeInfoMap is a 12-byte STLport map (header +0x00, node count +0x04), so Override sits at +0x0c
+// (Ego_r.pdb / engine/CBulletTimeManager.h: 16-byte map, Override +0x10).
+// Shape: `a || b` returning bool gives the `mov eax,1 / xor eax,eax` returns under /O2.
+class CBulletTimeInfoMap {                               // STLport map<void*, CBulletTimeInfo>
+public:
+    void*         _M_header;                             // +0x00
+    unsigned long _M_node_count;                         // +0x04
+    unsigned long _M_key_compare_pad;                    // +0x08
+    bool empty() const { return _M_node_count == 0; }
+};
+class CBulletTimeManager {
+public:
+    CBulletTimeInfoMap BulletTimeInfoMap;                // +0x00
+    bool               Override;                         // +0x0c
+    bool IsBulletTimeActive() const;
+};
+bool CBulletTimeManager::IsBulletTimeActive() const
 {
-    __asm {
-        _emit 0x8a
-        _emit 0x41
-        _emit 0x0c
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x75
-        _emit 0x0a
-        _emit 0x8b
-        _emit 0x41
-        _emit 0x04
-        _emit 0x85
-        _emit 0xc0
-        _emit 0x75
-        _emit 0x03
-        _emit 0x33
-        _emit 0xc0
-        _emit 0xc3
-        _emit 0xb8
-        _emit 0x01
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xc3
-    }
+    return Override || !BulletTimeInfoMap.empty();
 }

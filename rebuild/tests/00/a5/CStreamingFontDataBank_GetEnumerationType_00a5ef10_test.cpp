@@ -1,23 +1,33 @@
+// behaviour test for 0x00A5EF10
 #include <stdio.h>
-
-static void* g_lastA; static void* g_lastB;
-static void* helper(void* a, void* b){ g_lastA=a; g_lastB=b; return (void*)0; }
-
-static void* model(void* a, void* b){
-    void* r = helper(b, a);
-    (void)r;
-    return b;
+static int g_copies = 0; static unsigned long g_type = 0;
+class CCharStringData;
+class CCharString {
+public:
+    CCharStringData* PStringData;
+    CCharString(long v) : PStringData((CCharStringData*)v) {}
+    CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }
+    ~CCharString() {}
+};
+class CBankFile {
+public:
+    virtual CCharString GetEnumerationType(unsigned long type) const { g_type = type; return CCharString(0x1234); }
+};
+class CBankFileAsync : public CBankFile { };
+class CStreamingFontDataBank : public CBankFileAsync {
+public:
+    virtual CCharString GetEnumerationType(unsigned long type) const;
+};
+CCharString CStreamingFontDataBank::GetEnumerationType(unsigned long type) const
+{
+    return CBankFile::GetEnumerationType(type);
 }
 
-int main(){
-    int x, y;
-    void* pa=&x; void* pb=&y;
-    void* ret = model(pa, pb);
-    if(ret!=pb){ printf("FAIL ret\n"); return 1; }
-    if(g_lastA!=pb){ printf("FAIL argA\n"); return 1; }
-    if(g_lastB!=pa){ printf("FAIL argB\n"); return 1; }
-    void* ret2 = model(0,0);
-    if(ret2!=0){ printf("FAIL null\n"); return 1; }
-    printf("OK_00a5ef10\n");
-    return 0;
+int main()
+{
+    CStreamingFontDataBank b;
+    CCharString s = b.GetEnumerationType(7);
+    int ok = (long)s.PStringData == 0x1234 && g_type == 7;
+    printf(ok ? "00a5ef10_TEST PASS\n" : "00a5ef10_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

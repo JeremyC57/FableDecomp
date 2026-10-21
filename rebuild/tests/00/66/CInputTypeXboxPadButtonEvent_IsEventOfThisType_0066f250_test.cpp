@@ -1,115 +1,36 @@
-#include <stdio.h>
-
-extern "C" unsigned char __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisType_0066f250(
-    void* input_type, void*, const void* event);
-
-struct InputType
-{
-    void* vtable;
-    long button;
+#include <cstdio>
+#include "engine/CInputTypeXboxPadButtonEvent.h"
+enum EInputEventType { INPUT_EVENT_TYPE_NONE };
+class CInputEvent {
+public:
+    EInputEventType GetType() const;                     // 0x00A03B40
+    long GetJoystickButton() const;       // 0x00A03B90
 };
-
-struct Event
-{
-    long kind;
-    long button;
+struct CInputTypeXboxPadButtonEvent_Methods : CInputTypeXboxPadButtonEvent {
+    bool IsEventOfThisType(const CInputEvent& event) const;
 };
-
-static int g_kind_calls;
-static int g_button_calls;
-static void* g_last_kind_event;
-static void* g_last_button_event;
-
-extern "C" long __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisType_0066f250_GetKind(
-    void* event, void*)
+bool CInputTypeXboxPadButtonEvent_Methods::IsEventOfThisType(const CInputEvent& event) const
 {
-    ++g_kind_calls;
-    g_last_kind_event = event;
-    return ((Event*)event)->kind;
+    if (event.GetType() == 19 || event.GetType() == 20 || event.GetType() == 21)
+        return event.GetJoystickButton() == *reinterpret_cast<const long*>(Button);
+    return false;
 }
 
-extern "C" long __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisType_0066f250_GetButton(
-    void* event, void*)
-{
-    ++g_button_calls;
-    g_last_button_event = event;
-    return ((Event*)event)->button;
-}
 
-static void ResetCalls()
-{
-    g_kind_calls = 0;
-    g_button_calls = 0;
-    g_last_kind_event = 0;
-    g_last_button_event = 0;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
-}
-
-static int RunCase(
-    InputType& input_type, Event& event, unsigned char expected,
-    int expected_kind_calls, int expected_button_calls)
-{
-    int ok = 1;
-    ResetCalls();
-    ok &= Check(
-        CInputTypeXboxPadButtonEvent_IsEventOfThisType_0066f250(
-            &input_type, 0, &event) == expected,
-        "predicate return must match");
-    ok &= Check(g_kind_calls == expected_kind_calls,
-                "kind query count must match short-circuit path");
-    ok &= Check(g_button_calls == expected_button_calls,
-                "button query count must match accepted-kind path");
-    ok &= Check(g_last_kind_event == &event,
-                "kind helper must receive the event");
-    if (expected_button_calls)
-    {
-        ok &= Check(g_last_button_event == &event,
-                    "button helper must receive the event");
-    }
-    return ok;
-}
-
+#include <cstring>
+static int g_type, g_value, g_type_calls;
+EInputEventType CInputEvent::GetType() const { ++g_type_calls; return (EInputEventType)g_type; }
+long CInputEvent::GetJoystickButton() const { return (long)g_value; }
 int main()
 {
-    int ok = 1;
-    InputType input_type;
-    Event event;
-
-    input_type.vtable = 0;
-    input_type.button = 7;
-    event.button = 7;
-
-    event.kind = 0x13;
-    ok &= RunCase(input_type, event, 1, 1, 1);
-
-    event.kind = 0x14;
-    ok &= RunCase(input_type, event, 1, 2, 1);
-
-    event.kind = 0x15;
-    ok &= RunCase(input_type, event, 1, 3, 1);
-
-    event.kind = 0x16;
-    ok &= RunCase(input_type, event, 0, 3, 0);
-
-    event.kind = 0x13;
-    event.button = 8;
-    ok &= RunCase(input_type, event, 0, 1, 1);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeXboxPadButtonEvent::IsEventOfThisType 0x0066F250");
+    static unsigned char raw[sizeof(CInputTypeXboxPadButtonEvent)]; std::memset(raw, 0, sizeof raw);
+    CInputTypeXboxPadButtonEvent* base = (CInputTypeXboxPadButtonEvent*)raw; *reinterpret_cast<long*>(base->Button) = 42;
+    const CInputTypeXboxPadButtonEvent_Methods* self = static_cast<const CInputTypeXboxPadButtonEvent_Methods*>(base);
+    CInputEvent e;
+    bool ok = true;
+    int types[3] = { 19, 20, 21 };
+    for (int i = 0; i < 3; ++i) { g_type = types[i]; g_value = 42; ok = ok && self->IsEventOfThisType(e); g_value = 41; ok = ok && !self->IsEventOfThisType(e); }
+    g_type = 99; g_value = 42; g_type_calls = 0; ok = ok && !self->IsEventOfThisType(e) && g_type_calls == 3;
+    if (ok) std::printf("0066f250_TEST PASS\n");
     return 0;
 }

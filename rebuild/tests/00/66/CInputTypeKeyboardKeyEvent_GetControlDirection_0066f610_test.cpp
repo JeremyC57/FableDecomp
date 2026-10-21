@@ -1,70 +1,37 @@
+// behaviour test for 0x0066F610 CInputTypeKeyboardKeyEvent::GetControlDirection
 #include <stdio.h>
+enum EInputKey { EINPUTKEY_FORCE_DWORD = 0x7fffffff };
+class C2DVector {                                       // Ego_r.pdb C2DVector, 8 bytes; non-POD (returned through a hidden pointer)
+public:
+    float X;
+    float Y;
+    C2DVector() {}
+    C2DVector(float x, float y) : X(x), Y(y) {}
+};
+class CInputEvent {};
 
-extern "C" void* __fastcall
-CInputTypeKeyboardKeyEvent_GetControlDirection_0066f610(
-    void* input_type, void*, void* result, const void* event);
-
-struct InputType
-{
-    void* vtable;
-    long key;
-    unsigned long direction_x_bits;
-    unsigned long direction_y_bits;
+class CInputTypeKeyboardKeyEvent {
+public:
+    virtual void _v00() {}
+    virtual void _v01() {}
+    virtual void _v02() {}
+    virtual void _v03() {}
+    virtual C2DVector GetControlDirection(const CInputEvent& event) const;   // slot 4
+    EInputKey KeyboardKey;        // +0x04
+    C2DVector ControlDirection;                         // +0x08
 };
 
-struct Direction
+C2DVector CInputTypeKeyboardKeyEvent::GetControlDirection(const CInputEvent& event) const
 {
-    unsigned long x_bits;
-    unsigned long y_bits;
-};
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
+    return ControlDirection;
 }
 
 int main()
 {
-    int ok = 1;
-    InputType input_type;
-    Direction result;
-    unsigned long event_marker = 0xa5a5a5a5;
-    void* returned;
-
-    input_type.vtable = 0;
-    input_type.key = 77;
-    input_type.direction_x_bits = 0xbf800000;
-    input_type.direction_y_bits = 0x3f000000;
-    result.x_bits = 0;
-    result.y_bits = 0;
-
-    returned = CInputTypeKeyboardKeyEvent_GetControlDirection_0066f610(
-        &input_type, 0, &result, &event_marker);
-    ok &= Check(returned == &result,
-                "hidden result buffer must be returned");
-    ok &= Check(result.x_bits == input_type.direction_x_bits &&
-                result.y_bits == input_type.direction_y_bits,
-                "both direction components must be copied exactly");
-    ok &= Check(event_marker == 0xa5a5a5a5,
-                "input event must remain untouched");
-
-    input_type.direction_x_bits = 0x7fc00001;
-    input_type.direction_y_bits = 0x80000000;
-    returned = CInputTypeKeyboardKeyEvent_GetControlDirection_0066f610(
-        &input_type, 0, &result, 0);
-    ok &= Check(returned == &result &&
-                result.x_bits == 0x7fc00001 &&
-                result.y_bits == 0x80000000,
-                "copy must preserve component bit patterns");
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeKeyboardKeyEvent::GetControlDirection 0x0066F610");
-    return 0;
+    CInputTypeKeyboardKeyEvent o; const CInputTypeKeyboardKeyEvent* p = &o; CInputEvent e;
+    o.ControlDirection = C2DVector(0.5f, -1.0f);
+    C2DVector r = p->GetControlDirection(e);
+    int ok = r.X == 0.5f && r.Y == -1.0f;
+    printf(ok ? "0066f610_TEST PASS\n" : "0066f610_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

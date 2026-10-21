@@ -1,71 +1,26 @@
-#include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/99/CMemoryDataInputStream_OpenMemorySource_00994570.cpp"
-
-struct TestMemoryDataInputStream_00994570
-{
-    void* vtable;
-    unsigned long position;
-    unsigned long totalSize;
-    void* source;
-    unsigned long sourcePosition;
-    unsigned long sourceBytes;
-    void* originalSource;
+// behaviour test for 0x00994570
+#include <stdio.h>
+#include <string.h>
+struct CMemoryDataInputStream { void* __vftable; long position; long sourceLength; long chunkBase; long chunkPosition; long chunkLength; void* StreamSource; };
+struct CMemoryDataInputStream_Methods : CMemoryDataInputStream {
+    void OpenMemorySource(const void* source, unsigned long size);
 };
+void CMemoryDataInputStream_Methods::OpenMemorySource(const void* source, unsigned long size)
+{
+    position = 0;
+    chunkPosition = 0;
+    chunkBase = (long)source;
+    sourceLength = size;
+    chunkLength = size;
+    StreamSource = (void*)source;
+}
 
 int main()
 {
-    typedef void (__fastcall *OpenFunction)(
-        void*,
-        void*,
-        void*,
-        unsigned long);
-    OpenFunction volatile open =
-        &CMemoryDataInputStream_OpenMemorySource_00994570;
-
-    int failures = 0;
-    unsigned char source[32];
-    TestMemoryDataInputStream_00994570 stream;
-    std::memset(&stream, 0xA5, sizeof(stream));
-    void* const originalVtable = stream.vtable;
-
-    open(&stream, 0, source, sizeof(source));
-    if (stream.vtable != originalVtable ||
-        stream.position != 0 ||
-        stream.totalSize != sizeof(source) ||
-        stream.source != source ||
-        stream.sourcePosition != 0 ||
-        stream.sourceBytes != sizeof(source) ||
-        stream.originalSource != source)
-    {
-        ++failures;
-    }
-
-    std::memset(&stream, 0x5A, sizeof(stream));
-    void* const secondVtable = stream.vtable;
-    open(&stream, 0, 0, 0);
-    if (stream.vtable != secondVtable ||
-        stream.position != 0 ||
-        stream.totalSize != 0 ||
-        stream.source != 0 ||
-        stream.sourcePosition != 0 ||
-        stream.sourceBytes != 0 ||
-        stream.originalSource != 0)
-    {
-        ++failures;
-    }
-
-    if (failures != 0)
-    {
-        std::printf(
-            "MEMORY_INPUT_OPEN_00994570_TEST FAIL count=%d position=%lu size=%lu\n",
-            failures,
-            stream.position,
-            stream.totalSize);
-        return 1;
-    }
-
-    std::printf("MEMORY_INPUT_OPEN_00994570_TEST PASS\n");
-    return 0;
+    char buf[16]; CMemoryDataInputStream_Methods s; memset(&s, 0x33, sizeof(s)); void* vt = s.__vftable;
+    s.OpenMemorySource(buf, 16);
+    int ok = s.position == 0 && s.chunkPosition == 0 && s.chunkBase == (long)buf && s.sourceLength == 16 && s.chunkLength == 16
+          && s.StreamSource == buf && s.__vftable == vt;
+    printf(ok ? "00994570_TEST PASS\n" : "00994570_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

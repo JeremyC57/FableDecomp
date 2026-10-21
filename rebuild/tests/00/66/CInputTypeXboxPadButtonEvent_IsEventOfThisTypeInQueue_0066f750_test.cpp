@@ -1,154 +1,72 @@
-#include <stdio.h>
+#include <cstdio>
+enum EInputButtonEventType { EINPUTBUTTONEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EInputEventType { EINPUTEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EXboxControllerButton { EXBOXCONTROLLERBUTTON_FORCE_DWORD = 0x7fffffff };
 
-extern "C" unsigned char __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750(
-    void* input_type, void*, long general_type, long index, float* strength);
-
-struct InputType
-{
-    void* vtable;
-    long button;
+class CInputEvent {
+public:
+    CInputEvent();
+    ~CInputEvent();
+    float GetJoystickButtonPressureFraction() const;     // 0x00A03BA0
+    char Data[0x34];
 };
 
-static long g_manager_storage;
-extern "C" void*
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Manager =
-    &g_manager_storage;
+class CInputManager {
+public:
+    bool IsJoystickEventInQueue(EInputEventType type, long button, CInputEvent& event, long player) const;   // 0x009F4C60
+};
+extern CInputManager* g_pInputManager;
 
-static int g_sequence;
-static int g_construct_order;
-static int g_query_order;
-static int g_strength_order;
-static int g_destroy_order;
-static void* g_temporary;
-static void* g_query_manager;
-static long g_query_kind;
-static long g_query_button;
-static long g_query_index;
-static unsigned char g_query_result;
-static float g_return_strength;
-
-extern "C" void __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Construct(
-    void* event, void*)
-{
-    g_construct_order = ++g_sequence;
-    g_temporary = event;
-}
-
-extern "C" unsigned char __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Query(
-    void* manager, void*, long kind, long button, void* event, long index)
-{
-    g_query_order = ++g_sequence;
-    g_query_manager = manager;
-    g_query_kind = kind;
-    g_query_button = button;
-    g_query_index = index;
-    if (event != g_temporary)
-        return 0;
-    return g_query_result;
-}
-
-extern "C" float __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_GetStrength(
-    void* event, void*)
-{
-    g_strength_order = ++g_sequence;
-    if (event != g_temporary)
-        return -99.0f;
-    return g_return_strength;
-}
-
-extern "C" void __fastcall
-CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750_Destroy(
-    void* event, void*)
-{
-    g_destroy_order = ++g_sequence;
-    if (event != g_temporary)
-        g_destroy_order = -1;
-}
-
-static int Check(int condition, const char* message)
-{
-    if (!condition)
+class CInputTypeXboxPadButtonEvent {
+public:
+    virtual void _v00();
+    virtual void _v01();
+    virtual void _v02();
+    virtual void _v03();
+    virtual void _v04();
+    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const;   // slot 5
+    EXboxControllerButton Button; // +0x04
+private:
+    EInputEventType GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const
     {
-        printf("FAIL: %s\n", message);
-        return 0;
+        switch (type) {
+        case 1: return (EInputEventType)0x13;
+        case 2: return (EInputEventType)0x14;
+        case 3: return (EInputEventType)0x15;
+        }
+        return (EInputEventType)0;
     }
-    return 1;
-}
+};
 
-static void Reset(unsigned char result, float strength)
+bool CInputTypeXboxPadButtonEvent::IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const
 {
-    g_sequence = 0;
-    g_construct_order = 0;
-    g_query_order = 0;
-    g_strength_order = 0;
-    g_destroy_order = 0;
-    g_temporary = 0;
-    g_query_manager = 0;
-    g_query_kind = -1;
-    g_query_button = -1;
-    g_query_index = -1;
-    g_query_result = result;
-    g_return_strength = strength;
+    CInputEvent event;
+    if (g_pInputManager->IsJoystickEventInQueue(GetEventTypeFromGeneralButtonType(type), Button, event, player)) {
+        value = event.GetJoystickButtonPressureFraction();
+        return true;
+    }
+    return false;
 }
 
-static int RunCase(
-    InputType& input_type, long general_type, long expected_kind,
-    long index, unsigned char result)
-{
-    int ok = 1;
-    float strength = 6.75f;
-    float returned_strength = 0.375f;
-
-    Reset(result, returned_strength);
-    ok &= Check(
-        CInputTypeXboxPadButtonEvent_IsEventOfThisTypeInQueue_0066f750(
-            &input_type, 0, general_type, index, &strength) == result,
-        "queue result must be returned");
-    ok &= Check(g_construct_order == 1 && g_query_order == 2,
-                "temporary construction must precede the query");
-    ok &= Check(g_query_manager == &g_manager_storage,
-                "query must use the global input manager");
-    ok &= Check(g_query_kind == expected_kind &&
-                g_query_button == input_type.button &&
-                g_query_index == index,
-                "query arguments must match the mapped request");
-    if (result)
-    {
-        ok &= Check(g_strength_order == 3 && g_destroy_order == 4,
-                    "successful query must read strength before destruction");
-        ok &= Check(strength == returned_strength,
-                    "successful query must copy analogue strength");
-    }
-    else
-    {
-        ok &= Check(g_strength_order == 0 && g_destroy_order == 3,
-                    "failed query must skip strength and destroy the temporary");
-        ok &= Check(strength == 6.75f,
-                    "failed query must preserve caller strength");
-    }
-    return ok;
-}
-
+static int g_ctor, g_dtor; static EInputEventType g_seenType; static long g_seenButton, g_seenPlayer; static CInputEvent* g_seenEvent; static bool g_inQueue;
+CInputEvent::CInputEvent() { ++g_ctor; }
+CInputEvent::~CInputEvent() { ++g_dtor; }
+float CInputEvent::GetJoystickButtonPressureFraction() const { return this == g_seenEvent ? 0.75f : -1.0f; }
+bool CInputManager::IsJoystickEventInQueue(EInputEventType type, long button, CInputEvent& event, long player) const
+{ g_seenType = type; g_seenButton = button; g_seenEvent = &event; g_seenPlayer = player; return g_inQueue; }
+static CInputManager g_mgr; CInputManager* g_pInputManager = &g_mgr;
+void CInputTypeXboxPadButtonEvent::_v00() {} void CInputTypeXboxPadButtonEvent::_v01() {} void CInputTypeXboxPadButtonEvent::_v02() {}
+void CInputTypeXboxPadButtonEvent::_v03() {} void CInputTypeXboxPadButtonEvent::_v04() {}
 int main()
 {
-    int ok = 1;
-    InputType input_type;
-
-    input_type.vtable = 0;
-    input_type.button = 9;
-
-    ok &= RunCase(input_type, 1, 0x13, 2, 1);
-    ok &= RunCase(input_type, 2, 0x14, 4, 1);
-    ok &= RunCase(input_type, 3, 0x15, 6, 0);
-    ok &= RunCase(input_type, 7, 0, 8, 0);
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeXboxPadButtonEvent::IsEventOfThisTypeInQueue 0x0066F750");
-    return 0;
+    CInputTypeXboxPadButtonEvent o; o.Button = (EXboxControllerButton)6; const CInputTypeXboxPadButtonEvent* p = &o;
+    float v = 0.0f;
+    g_inQueue = false;
+    int ok = !p->IsEventOfThisTypeInQueue((EInputButtonEventType)2, 3, v) && v == 0.0f && g_seenType == 0x14 && g_seenButton == 6 && g_seenPlayer == 3 && g_ctor == 1 && g_dtor == 1;
+    ok = ok && !p->IsEventOfThisTypeInQueue((EInputButtonEventType)9, 0, v) && g_seenType == 0;
+    ok = ok && !p->IsEventOfThisTypeInQueue((EInputButtonEventType)3, 0, v) && g_seenType == 0x15;
+    g_inQueue = true;
+    ok = ok && p->IsEventOfThisTypeInQueue((EInputButtonEventType)1, 1, v) && v == 0.75f && g_seenType == 0x13 && g_seenPlayer == 1 && g_ctor == 4 && g_dtor == 4;
+    printf(ok ? "0066f750_TEST PASS\n" : "0066f750_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

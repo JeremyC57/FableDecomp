@@ -1,60 +1,46 @@
-// CFrontendGameComponent::ChooseSaveNumber @ 0x00494800.
-//
-// A one-based page selection resolves against the save-list vector and
-// +0x1E28 first-visible index.  Valid entries are assigned to +0x1E2C before
-// the component commits through virtual slot +0x10.
-
-struct FrontEndWideString_00494800
-{
-    void* data;
-};
-
-class CFrontendGameComponent_00494800
-{
+// CFrontendGameComponent::ChooseSaveNumber(long number) -- pick the save shown in on-screen slot `number` (1-based) as the save to load
+// Leaf: ?ChooseSaveNumber@CFrontendGameComponent@@AAEXJ@Z
+// Retail: Fable.exe @ 0x00494800, 64 bytes, `ret 4`; callers 0x004969B1, 0x004969FA; Ego_r.pdb
+// ?ChooseSaveNumber@CFrontendGameComponent@@AAEXJ@Z.
+// Body: index = SaveNamesOffset + number - 1; if (index < SaveNames.size()) (unsigned, `jae`): SaveToLoad = SaveNames[index]
+// (CWideString::operator= 0x0099B7D0), then the component's own virtual at vtable +0x10 (slot 4, name not recovered).
+// Layout: retail CFrontendGameComponent -- SaveNames (12-byte STLport vector<CWideString>) +0x1e1c, SaveNamesOffset +0x1e28,
+// SaveToLoad +0x1e2c (Ego_r.pdb +0x1e20 / +0x1e30 / +0x1e34), as at 0x00494770; no engine/ header.
+// Shape: /O2 (16-aligned entry).
+class CWideString {
 public:
-    void** vtable;
-    unsigned char padding_0004[0x1e18];
-    FrontEndWideString_00494800* saves_begin;
-    FrontEndWideString_00494800* saves_end;
-    FrontEndWideString_00494800* saves_capacity;
-    unsigned long first_visible_save;
-    FrontEndWideString_00494800 selected_save;
-
-    void ChooseSaveNumber(long one_based_selection);
+    void* PData;
+    CWideString& operator=(const CWideString& s);        // 0x0099B7D0
 };
-
-extern "C" FrontEndWideString_00494800* __fastcall
-FrontEndWideStringAssign_00494800(
-    FrontEndWideString_00494800* destination,
-    void*,
-    const FrontEndWideString_00494800* source);
-
-__declspec(naked)
-void CFrontendGameComponent_00494800::ChooseSaveNumber(long)
+namespace std {
+template <class T> class vector {
+public:
+    T* _M_start;                                         // +0x00
+    T* _M_finish;                                        // +0x04
+    T* _M_end_of_storage;                                // +0x08
+    unsigned int size() const { return unsigned int(_M_finish - _M_start); }
+    T& operator[](unsigned int n) { return _M_start[n]; }
+};
+}
+class CFrontendGameComponent {
+public:
+    virtual ~CFrontendGameComponent();
+    virtual void _slot01(); virtual void _slot02(); virtual void _slot03();
+    virtual void _slot04();                              // vtable +0x10
+    unsigned char            _pad0004[0x1e1c - 4];
+    std::vector<CWideString> SaveNames;                  // +0x1e1c
+    long                     SaveNamesOffset;            // +0x1e28
+    CWideString              SaveToLoad;                 // +0x1e2c
+private:
+    void ChooseSaveNumber(long number);
+    friend struct CFrontendGameComponent_Test;           // behaviour-test hook
+};
+void CFrontendGameComponent::ChooseSaveNumber(long number)
 {
-    __asm
+    unsigned long index = SaveNamesOffset + number - 1;
+    if (index < SaveNames.size())
     {
-        push esi
-        mov esi, ecx
-        mov ecx, dword ptr [esp + 8]
-        mov eax, dword ptr [esi + 1e28h]
-        mov edx, dword ptr [esi + 1e20h]
-        lea eax, dword ptr [eax + ecx - 1]
-        mov ecx, dword ptr [esi + 1e1ch]
-        sub edx, ecx
-        sar edx, 2
-        cmp eax, edx
-        jae done
-        lea edx, dword ptr [ecx + eax * 4]
-        push edx
-        lea ecx, dword ptr [esi + 1e2ch]
-        call FrontEndWideStringAssign_00494800
-        mov eax, dword ptr [esi]
-        mov ecx, esi
-        call dword ptr [eax + 10h]
-
-    done:
-        pop esi
-        ret 4
+        SaveToLoad = SaveNames[index];
+        _slot04();
     }
 }

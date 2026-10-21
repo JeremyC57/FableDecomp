@@ -1,252 +1,206 @@
 #include <cstdio>
-
-class CScriptThing
-{
-};
-
-class CGSIReadable_Node;
-
-class CGSIReadable_Temporary
-{
+struct CTCBase;
+class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    CGSIReadable_Temporary();
-    ~CGSIReadable_Temporary();
-    void Destruct();
-
-    unsigned long m_Data;
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry*       LowerBound(const long* type);          // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-
-class CCharString
-{
+class CThing {
 public:
-    CGSIReadable_Temporary BuildTemporary() const;
-
-    unsigned long m_Data;
+    unsigned char _pad00[0x10];
+    unsigned char Type;                                  // +0x10 (1 = a creature)
+    unsigned char _pad11[0x20 - 0x11];
+    unsigned long UsingComponents[9];                    // +0x20 bitset<274>
+    CInterfaceMap Components;                            // +0x44
+    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char Dead : 1;                              // +0x91 bit 0
+    bool IsDead() const { return Dead; }
+    bool HasTC(long type) const
+    {
+        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
+            return true;
+        return false;
+    }
+    template <class T> __forceinline bool GetTC(T** out)               // ??$GetTC@V...@@@CThing@@QAE_NPAPAV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        CInterfaceMap* map = &Components;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (T*)it->component;
+        return true;
+    }
+    template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
+    {
+        if (!HasTC(T::INTERFACE_TYPE))
+            return false;
+        long type = T::INTERFACE_TYPE;
+        const CInterfaceMap* map = &Components;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || T::INTERFACE_TYPE < it->type)
+            it = map->last;
+        *out = (const T*)it->component;
+        return true;
+    }
 };
-
-class CGSIReadable_Container
-{
+class CWideString {
 public:
-    CGSIReadable_Node* LowerBound(const long* pKey);
-
-    CGSIReadable_Node* m_pFirst;
-    CGSIReadable_Node* m_pEnd;
+    void* m_pData;
+    CWideString& operator=(const CWideString& other);    // 0x0099B7D0 (returns const& in the PDB)
+    ~CWideString();                                      // 0x0099B510
 };
-
-class CGSIReadable_Destination
-{
+class CCharString {
 public:
-    void Assign(const CGSIReadable_Temporary& value);
+    void* m_pData;
+    CWideString ToWideString() const;                    // 0x0099E480
 };
-
-class CGSIReadable_Component
-{
+class CTCActionUseReadable {                             // interface 0xd
 public:
-    unsigned char m_Pad00[0x18];
-    CGSIReadable_Destination m_Destination;
+    enum { INTERFACE_TYPE = 0xd };
+    unsigned char _pad00[0x18];
+    CWideString TextTag;                                 // +0x18
+    void SetTextTag(const CWideString& tag) { TextTag = tag; }
 };
-
-class CGSIReadable_Node
-{
+class CScriptThing {
 public:
-    long m_Key;
-    CGSIReadable_Component* m_pComponent;
+    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
+    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
+    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
+    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
+    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
+    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
+    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
+    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
+    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
+    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
+    virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
+    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
+    virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
+    virtual void v072(); virtual void v073(); virtual void v074();
+    virtual bool IsValid() const;                        // slot 75 (+0x12c)
 };
-
-class CGameScriptInterface
-{
+class CGameScriptInterface {
 public:
-    virtual void SetReadableObjectTextTag(
-        const CScriptThing& entity,
-        const CCharString& textTag) const;
+    virtual void SetReadableObjectTextTag(const CScriptThing& thing, const CCharString& tag) const;
 };
-
-struct ScriptThingStorage
+void CGameScriptInterface::SetReadableObjectTextTag(const CScriptThing& thing, const CCharString& tag) const
 {
-    void** m_pVTable;
-};
-
-struct EntityStorage
-{
-    unsigned char m_Pad00[0x20];
-    unsigned long m_Flags20;
-    unsigned char m_Pad24[0x20];
-    CGSIReadable_Container m_Container;
-    unsigned char m_Pad4C[0x45];
-    unsigned char m_Flags91;
-};
-
-static void* g_ScriptThingVTable[12];
-static EntityStorage* g_pEntity;
-static CGSIReadable_Node* g_pLowerBoundResult;
-static CGSIReadable_Container* g_pObservedContainer;
-static const CCharString* g_pObservedString;
-static CGSIReadable_Destination* g_pObservedDestination;
-static CGSIReadable_Temporary* g_pObservedAssignedTemporary;
-static CGSIReadable_Temporary* g_pObservedDestructedTemporary;
-static unsigned long g_AssignedData;
-static long g_ObservedKey;
-static unsigned long g_LowerBoundCalls;
-static unsigned long g_BuildCalls;
-static unsigned long g_AssignCalls;
-static unsigned long g_DestructCalls;
-
-static EntityStorage* __fastcall ResolveEntity(
-    ScriptThingStorage*)
-{
-    return g_pEntity;
+    CThing* t = thing.GetThing();
+    if (t && !t->IsDead())
+    {
+        CTCActionUseReadable* readable;
+        if (t->GetTC(&readable))
+            readable->SetTextTag(tag.ToWideString());
+    }
 }
 
-CGSIReadable_Temporary::CGSIReadable_Temporary()
-    : m_Data(0)
-{
-}
-
-CGSIReadable_Temporary::~CGSIReadable_Temporary()
-{
-}
-
-void CGSIReadable_Temporary::Destruct()
-{
-    g_pObservedDestructedTemporary = this;
-    ++g_DestructCalls;
-}
-
-CGSIReadable_Temporary
-CCharString::BuildTemporary() const
-{
-    g_pObservedString = this;
-    ++g_BuildCalls;
-    CGSIReadable_Temporary result;
-    result.m_Data = m_Data;
-    return result;
-}
-
-CGSIReadable_Node*
-CGSIReadable_Container::LowerBound(const long* pKey)
-{
-    g_pObservedContainer = this;
-    g_ObservedKey = *pKey;
-    ++g_LowerBoundCalls;
-    return g_pLowerBoundResult;
-}
-
-void CGSIReadable_Destination::Assign(
-    const CGSIReadable_Temporary& value)
-{
-    g_pObservedDestination = this;
-    g_pObservedAssignedTemporary =
-        const_cast<CGSIReadable_Temporary*>(&value);
-    g_AssignedData = value.m_Data;
-    ++g_AssignCalls;
-}
-
-static void ResetObservations()
-{
-    g_pObservedContainer = 0;
-    g_pObservedString = 0;
-    g_pObservedDestination = 0;
-    g_pObservedAssignedTemporary = 0;
-    g_pObservedDestructedTemporary = 0;
-    g_AssignedData = 0;
-    g_ObservedKey = 0;
-    g_LowerBoundCalls = 0;
-    g_BuildCalls = 0;
-    g_AssignCalls = 0;
-    g_DestructCalls = 0;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf(
-        "FSE2_008a0fd0_TEST FAIL: %s\n",
-        pMessage);
-    return 1;
-}
-
+void CScriptThing::v000() {}
+void CScriptThing::v001() {}
+void CScriptThing::v002() {}
+void CScriptThing::v003() {}
+void CScriptThing::v004() {}
+void CScriptThing::v005() {}
+void CScriptThing::v006() {}
+void CScriptThing::v007() {}
+void CScriptThing::v008() {}
+void CScriptThing::v009() {}
+void CScriptThing::v010() {}
+void CScriptThing::v012() {}
+void CScriptThing::v013() {}
+void CScriptThing::v014() {}
+void CScriptThing::v015() {}
+void CScriptThing::v016() {}
+void CScriptThing::v017() {}
+void CScriptThing::v018() {}
+void CScriptThing::v019() {}
+void CScriptThing::v020() {}
+void CScriptThing::v021() {}
+void CScriptThing::v022() {}
+void CScriptThing::v023() {}
+void CScriptThing::v024() {}
+void CScriptThing::v025() {}
+void CScriptThing::v026() {}
+void CScriptThing::v027() {}
+void CScriptThing::v028() {}
+void CScriptThing::v029() {}
+void CScriptThing::v030() {}
+void CScriptThing::v031() {}
+void CScriptThing::v032() {}
+void CScriptThing::v033() {}
+void CScriptThing::v034() {}
+void CScriptThing::v035() {}
+void CScriptThing::v036() {}
+void CScriptThing::v037() {}
+void CScriptThing::v038() {}
+void CScriptThing::v039() {}
+void CScriptThing::v040() {}
+void CScriptThing::v041() {}
+void CScriptThing::v042() {}
+void CScriptThing::v043() {}
+void CScriptThing::v044() {}
+void CScriptThing::v045() {}
+void CScriptThing::v046() {}
+void CScriptThing::v047() {}
+void CScriptThing::v048() {}
+void CScriptThing::v049() {}
+void CScriptThing::v050() {}
+void CScriptThing::v051() {}
+void CScriptThing::v052() {}
+void CScriptThing::v053() {}
+void CScriptThing::v054() {}
+void CScriptThing::v055() {}
+void CScriptThing::v056() {}
+void CScriptThing::v057() {}
+void CScriptThing::v058() {}
+void CScriptThing::v059() {}
+void CScriptThing::v060() {}
+void CScriptThing::v061() {}
+void CScriptThing::v062() {}
+void CScriptThing::v063() {}
+void CScriptThing::v064() {}
+void CScriptThing::v065() {}
+void CScriptThing::v066() {}
+void CScriptThing::v067() {}
+void CScriptThing::v068() {}
+void CScriptThing::v069() {}
+void CScriptThing::v070() {}
+void CScriptThing::v071() {}
+void CScriptThing::v072() {}
+void CScriptThing::v073() {}
+void CScriptThing::v074() {}
+CThing* CScriptThing::GetThing() const { return 0; }
+bool CScriptThing::IsValid() const { return false; }
+class CTestScriptThing : public CScriptThing { public: CThing* T; CThing* GetThing() const { return T; } };
+static CInterfaceMap::SEntry g_entries[3];
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
+static int g_assigns, g_wdtors, g_wides; static void* g_assigned; static CWideString* g_target;
+CWideString& CWideString::operator=(const CWideString& o) { ++g_assigns; m_pData = o.m_pData; g_target = this; return *this; }
+CWideString::~CWideString() { ++g_wdtors; }
+CWideString CCharString::ToWideString() const { ++g_wides; CWideString w; w.m_pData = m_pData; return w; }
 int main()
 {
-    g_ScriptThingVTable[11] =
-        reinterpret_cast<void*>(ResolveEntity);
-    ScriptThingStorage scriptThingStorage = {
-        g_ScriptThingVTable
-    };
-    const CScriptThing& scriptThing =
-        reinterpret_cast<const CScriptThing&>(
-            scriptThingStorage);
-    CCharString textTag = {0xCAFEBABE};
-    EntityStorage entity = {};
-    CGSIReadable_Component foundComponent;
-    CGSIReadable_Component endComponent;
-    CGSIReadable_Node foundNode = {};
-    CGSIReadable_Node endNode = {};
-    CGameScriptInterface interfaceObject;
-
-    foundNode.m_pComponent = &foundComponent;
-    endNode.m_pComponent = &endComponent;
-    entity.m_Container.m_pEnd = &endNode;
-
-    ResetObservations();
-    g_pEntity = 0;
-    interfaceObject.CGameScriptInterface::
-        SetReadableObjectTextTag(scriptThing, textTag);
-    if (g_LowerBoundCalls != 0 || g_BuildCalls != 0)
-        return Fail("null entity guard");
-
-    g_pEntity = &entity;
-    entity.m_Flags20 = 0x2000;
-
-    ResetObservations();
-    entity.m_Flags91 = 1;
-    interfaceObject.CGameScriptInterface::
-        SetReadableObjectTextTag(scriptThing, textTag);
-    if (g_BuildCalls != 0)
-        return Fail("dead entity guard");
-
-    ResetObservations();
-    entity.m_Flags91 = 0;
-    entity.m_Flags20 = 0;
-    interfaceObject.CGameScriptInterface::
-        SetReadableObjectTextTag(scriptThing, textTag);
-    if (g_BuildCalls != 0)
-        return Fail("readable capability guard");
-
-    ResetObservations();
-    entity.m_Flags20 = 0x2000;
-    foundNode.m_Key = 0x0D;
-    g_pLowerBoundResult = &foundNode;
-    interfaceObject.CGameScriptInterface::
-        SetReadableObjectTextTag(scriptThing, textTag);
-    if (g_pObservedContainer != &entity.m_Container ||
-        g_ObservedKey != 0x0D ||
-        g_pObservedString != &textTag ||
-        g_pObservedDestination !=
-            &foundComponent.m_Destination ||
-        g_AssignedData != 0xCAFEBABE ||
-        g_LowerBoundCalls != 1 || g_BuildCalls != 1 ||
-        g_AssignCalls != 1 || g_DestructCalls != 1 ||
-        g_pObservedAssignedTemporary == 0 ||
-        g_pObservedAssignedTemporary !=
-            g_pObservedDestructedTemporary)
-        return Fail("found component assignment sequence");
-
-    ResetObservations();
-    foundNode.m_Key = 0x0E;
-    g_pLowerBoundResult = &foundNode;
-    interfaceObject.CGameScriptInterface::
-        SetReadableObjectTextTag(scriptThing, textTag);
-    if (g_pObservedDestination !=
-            &endComponent.m_Destination)
-        return Fail("greater-key sentinel");
-
-    ResetObservations();
-    g_pLowerBoundResult = &endNode;
-    interfaceObject.CGameScriptInterface::
-        SetReadableObjectTextTag(scriptThing, textTag);
-    if (g_pObservedDestination !=
-            &endComponent.m_Destination)
-        return Fail("direct sentinel");
-
-    std::printf("FSE2_008a0fd0_TEST PASS\n");
-    return 0;
+    static CTCActionUseReadable r; r.TextTag.m_pData = 0;
+    CThing t; t.Dead = 0;
+    for (int i = 0; i < 9; ++i) t.UsingComponents[i] = 0;
+    t.UsingComponents[0] = 1u << 13;
+    g_entries[0].type = 3; g_entries[0].component = 0;
+    g_entries[1].type = 0xd; g_entries[1].component = (CTCBase*)&r;
+    t.Components.first = g_entries; t.Components.last = g_entries + 2;
+    CCharString tag; tag.m_pData = (void*)"TEXT_TAG";
+    CTestScriptThing s; s.T = 0;
+    CGameScriptInterface gsi;
+    gsi.SetReadableObjectTextTag(s, tag); bool ok = g_wides == 0 && g_assigns == 0;
+    s.T = &t; t.Dead = 1; gsi.SetReadableObjectTextTag(s, tag); ok = ok && g_wides == 0;
+    t.Dead = 0; t.UsingComponents[0] = ~(1u << 13); gsi.SetReadableObjectTextTag(s, tag); ok = ok && g_wides == 0;
+    t.UsingComponents[0] = 1u << 13; gsi.SetReadableObjectTextTag(s, tag);
+    ok = ok && g_wides == 1 && g_assigns == 1 && g_target == &r.TextTag && r.TextTag.m_pData == tag.m_pData && g_wdtors >= 1;
+    std::printf(ok ? "008a0fd0_TEST PASS\n" : "008a0fd0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

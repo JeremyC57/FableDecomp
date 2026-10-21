@@ -1,205 +1,79 @@
-// CDataInputStream::ReadZlibCompressed @ 0x00996230.
-//
-// Each binary save block carries a four-byte compressed-size prefix.  Retail
-// stages that many bytes in a temporary vector, constructs a zlib compressor,
-// expands into the caller's fixed destination, reports a size mismatch through
-// the optional callback, and releases the staging vector.
+// CDataInputStream::ReadZlibCompressed(void* data, long size) -- read a block written by WriteZlibCompressed: the compressed byte count, the compressed bytes into a scratch buffer, then zlib-inflate them into data (the assertion hook fires if fewer than size bytes come out)
+// Leaf: ?ReadZlibCompressed@ (Ego_r.pdb ?ReadZlibCompressed@CDataInputStream@@UAEXPAXJ@Z, virtual; modelled through CDataInputStream_Methods)
+// Retail: Fable.exe @ 0x00996230, 341 bytes, `ret 8`.
+// Body: size <= 0 -> nothing. Read(&compressedSize, 4); CByteArray buffer(compressedSize) (vector<unsigned char>(n)
+// 0x00514E20); Read(buffer.GetData(), compressedSize); CCompressorZlib (CACompressor(GetWorkspaceSize()) 0x00A3AEA0 /
+// 0x00A3A7D0, vtable 0x01245974, Init 0x00A3AA10); InternalDecompress(buffer.GetData(), compressedSize, data, size)
+// (0x00A3AB00) != size -> g_pfnAssertionFailed (0x013BC9FC) if installed; ~CCompressorZlib 0x00A3ACC0; free 0x00BFEA14.
+// The inline stream Read is the landed CMemoryDataInputStream::Read (64-bit position range check, chunk memcpy fast
+// path, ReadWithSrcChunkOverflow 0x00993CA0).
+// Layout: engine/CDataInputStream.h (StreamPos +4, CurrentSourcePtr +0xC, SourceChunkBytesRemaining +0x14).
+// Shape: CByteArray / CCompressorZlib models of the landed CDataOutputStream::WriteZlibCompressed 0x009967E0, the
+// FABLE_ASSERT hook of the landed CCompressedMemoryDataInputStream sources. The count comes from an inline ReadLong()
+// with its own local (a caller local is homed in the dead `size` slot); Read starts with `if (size <= 0) return;` and
+// tests `size <= SourceChunkBytesRemaining` (size on the left for `cmp ebp,[ebx+14h] ; jg`).
+// Opt: /O2 (16-aligned entry).
+#include "engine/CDataInputStream.h"
 
-extern "C" void __fastcall
-CDataInputStream_ReadOverflow_00996230(
-    void*,
-    void*,
-    unsigned char*,
-    long);
-extern "C" void __fastcall
-CDataInputStream_InitCompressedVector_00996230(
-    void*,
-    void*,
-    unsigned long);
-extern "C" void* __cdecl
-CDataInputStream_ConstructCompressorBase_00996230();
-extern "C" void __fastcall
-CDataInputStream_ConstructCompressor_00996230(
-    void*,
-    void*,
-    void*);
-extern "C" void* CDataInputStream_CompressorVTable_00996230[];
-extern "C" void __fastcall
-CDataInputStream_InitCompressor_00996230(void*, void*);
-extern "C" unsigned long __fastcall
-CDataInputStream_InternalDecompress_00996230(
-    void*,
-    void*,
-    const void*,
-    unsigned long,
-    void*,
-    unsigned long);
-extern "C" void* CDataInputStream_ZlibSizeMismatchCallback_00996230;
-extern "C" void __fastcall
-CDataInputStream_DestroyCompressor_00996230(void*, void*);
-extern "C" void __cdecl
-CDataInputStream_FreeCompressedBuffer_00996230(void*);
+extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
+extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
+#pragma intrinsic(memcpy)
+extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC: installed debug hook
 
-extern "C" __declspec(naked) void __fastcall
-CDataInputStream_ReadZlibCompressed_00996230(
-    void*,
-    void*,
-    void*,
-    long)
-{
-    __asm
+struct CACompressor {                                        // landed 0x00A3AEA0 (vtable 0x0129B424)
+    virtual ~CACompressor();
+    unsigned char _body[0x1c - 4];
+    CACompressor(long workspaceSize);                        // 0x00A3AEA0
+};
+struct CCompressorZlib : CACompressor {                      // vtable 0x01245974, retail 0x58 bytes
+    unsigned char _zlib[0x58 - 0x1c];
+    static long GetWorkspaceSize();                          // 0x00A3A7D0
+    void Init();                                             // 0x00A3AA10
+    unsigned long InternalDecompress(const void* source, unsigned long sourceSize, void* dest, unsigned long destSize);   // 0x00A3AB00
+    virtual ~CCompressorZlib();                              // 0x00A3ACC0
+    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Init(); }
+};
+struct CByteArray {                                          // retail vector<unsigned char>: begin/end/capacity
+    unsigned char* m_begin; unsigned char* m_end; unsigned char* m_capacity;
+    CByteArray(unsigned long n);                             // 0x00514E20
+    ~CByteArray() { if (m_begin) free(m_begin); }
+    unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
+};
+
+struct CDataInputStream_Methods : CDataInputStream {
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
+    static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
+    __forceinline void Read(void* buffer, long size)
     {
-        sub esp, 68h
-        push ebx
-        push esi
-        mov esi, dword ptr [esp + 78h]
-        test esi, esi
-        mov ebx, ecx
-        jle release_done
+        if (size <= 0)
+            return;
+        __int64 newPosition = (__int64)(StreamPos + size);
+        if (!IsValidPosition(newPosition))
+            return;
+        if (size <= SourceChunkBytesRemaining) {
+            memcpy(buffer, CurrentSourcePtr, size);
+            CurrentSourcePtr = (unsigned char*)CurrentSourcePtr + size;
+            SourceChunkBytesRemaining -= size;
+            StreamPos += size;
+        }
+        else
+            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+    }
+    __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+    void ReadZlibCompressed(void* data, long size);
+};
 
-        mov eax, dword ptr [ebx + 4]
-        lea ecx, dword ptr [eax + 4]
-        xor eax, eax
-        push ebp
-        jl header_read_skipped
-        jg header_position_high_valid
-        test ecx, ecx
-        jb header_read_skipped
-
-    header_position_high_valid:
-        test eax, eax
-        jg header_read_skipped
-        jl header_position_valid
-        cmp ecx, 7FFFFFFFh
-        ja header_read_skipped
-
-    header_position_valid:
-        mov edx, dword ptr [ebx + 14h]
-        cmp edx, 4
-        jl read_header_overflow
-        mov eax, dword ptr [ebx + 0Ch]
-        mov ebp, dword ptr [eax]
-        add eax, 4
-        add edx, -4
-        mov dword ptr [ebx + 0Ch], eax
-        mov dword ptr [ebx + 14h], edx
-        mov dword ptr [ebx + 4], ecx
-        jmp header_ready
-
-    read_header_overflow:
-        push 4
-        lea eax, dword ptr [esp + 10h]
-        push eax
-        mov ecx, ebx
-        call CDataInputStream_ReadOverflow_00996230
-
-    header_read_skipped:
-        mov ebp, dword ptr [esp + 0Ch]
-
-    header_ready:
-        push edi
-        push ebp
-        lea ecx, dword ptr [esp + 18h]
-        call CDataInputStream_InitCompressedVector_00996230
-        mov eax, dword ptr [esp + 14h]
-        mov ecx, dword ptr [esp + 18h]
-        sub ecx, eax
-        mov edi, eax
-        jne compressed_destination_ready
-        lea edi, dword ptr [esp + 14h]
-
-    compressed_destination_ready:
-        test ebp, ebp
-        jle compressed_bytes_ready
-        mov eax, dword ptr [ebx + 4]
-        add eax, ebp
-        xor ecx, ecx
-        jl compressed_bytes_ready
-        jg compressed_position_high_valid
-        test eax, eax
-        jb compressed_bytes_ready
-
-    compressed_position_high_valid:
-        test ecx, ecx
-        jg compressed_bytes_ready
-        jl compressed_position_valid
-        cmp eax, 7FFFFFFFh
-        ja compressed_bytes_ready
-
-    compressed_position_valid:
-        cmp ebp, dword ptr [ebx + 14h]
-        jg read_compressed_overflow
-        mov esi, dword ptr [ebx + 0Ch]
-        mov ecx, ebp
-        mov edx, ecx
-        shr ecx, 2
-        rep movsd
-        mov ecx, edx
-        and ecx, 3
-        rep movsb
-        mov edx, dword ptr [ebx + 0Ch]
-        mov ecx, dword ptr [ebx + 14h]
-        mov eax, dword ptr [ebx + 4]
-        mov esi, dword ptr [esp + 80h]
-        add edx, ebp
-        sub ecx, ebp
-        add eax, ebp
-        mov dword ptr [ebx + 0Ch], edx
-        mov dword ptr [ebx + 14h], ecx
-        mov dword ptr [ebx + 4], eax
-        jmp compressed_bytes_ready
-
-    read_compressed_overflow:
-        push ebp
-        push edi
-        mov ecx, ebx
-        call CDataInputStream_ReadOverflow_00996230
-
-    compressed_bytes_ready:
-        call CDataInputStream_ConstructCompressorBase_00996230
-        push eax
-        lea ecx, dword ptr [esp + 24h]
-        call CDataInputStream_ConstructCompressor_00996230
-        lea ecx, dword ptr [esp + 20h]
-        mov dword ptr [esp + 20h], offset CDataInputStream_CompressorVTable_00996230
-        call CDataInputStream_InitCompressor_00996230
-        mov ecx, dword ptr [esp + 18h]
-        mov eax, dword ptr [esp + 14h]
-        sub ecx, eax
-        pop edi
-        jne have_compressed_buffer
-        lea eax, dword ptr [esp + 10h]
-
-    have_compressed_buffer:
-        mov edx, dword ptr [esp + 78h]
-        push esi
-        push edx
-        push ebp
-        push eax
-        lea ecx, dword ptr [esp + 2Ch]
-        call CDataInputStream_InternalDecompress_00996230
-        cmp eax, esi
-        pop ebp
-        je decompression_size_valid
-        mov eax, dword ptr [CDataInputStream_ZlibSizeMismatchCallback_00996230]
-        test eax, eax
-        je decompression_size_valid
-        call eax
-
-    decompression_size_valid:
-        lea ecx, dword ptr [esp + 18h]
-        call CDataInputStream_DestroyCompressor_00996230
-        mov eax, dword ptr [esp + 0Ch]
-        test eax, eax
-        je release_done
-        push eax
-        call CDataInputStream_FreeCompressedBuffer_00996230
-        add esp, 4
-
-    release_done:
-        pop esi
-        pop ebx
-        add esp, 68h
-        ret 8
+void CDataInputStream_Methods::ReadZlibCompressed(void* data, long size)
+{
+    if (size > 0) {
+        long compressedSize = ReadLong();
+        CByteArray buffer(compressedSize);
+        Read(buffer.GetData(), compressedSize);
+        CCompressorZlib compressor;
+        unsigned long written = compressor.InternalDecompress(buffer.GetData(), compressedSize, data, size);
+        if (written != (unsigned long)size) {
+            if (g_pfnAssertionFailed != 0)
+                g_pfnAssertionFailed();
+        }
     }
 }

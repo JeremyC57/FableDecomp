@@ -1,34 +1,43 @@
-#include <cstdio>
-
-// Behavioural model of GetWorldMap:
-//   this += 8; a = f1(this); b = f2(a); return b->vtbl[0x30/4](b)
-
-struct WorldMap { int tag; };
-
-struct Target { void** vtbl; };
-
-static WorldMap g_wm = { 0xBEEF };
-
-static WorldMap* virt(Target* t){ (void)t; return &g_wm; }
-
-int main(){
-    static void* vt[16];
-    for (int i=0;i<16;i++) vt[i]=0;
-    vt[0x30/4] = (void*)&virt;   // slot 0x30 => index 12
-    Target tgt; tgt.vtbl = vt;
-
-    Target* b = &tgt;
-    typedef WorldMap* (*fn)(Target*);
-    fn f = (fn)b->vtbl[0x30/4];
-    WorldMap* r = f(b);
-
-    // null-slot branch coverage
-    bool nullpath = (vt[0] == 0);
-
-    if (r == &g_wm && r->tag == (int)0xBEEF && nullpath) {
-        printf("OK_00692c10\n");
-        return 0;
-    }
-    printf("FAIL\n");
-    return 1;
+// behaviour test for 0x00692C10
+#include <stdio.h>
+class CWorld; static CWorld* g_world;
+class CBaseObject;
+class CWorldMap;
+class CWorld {
+public:
+    virtual CWorldMap& GetWorldMap() { return *(CWorldMap*)Map; }
+    void* Map;
+};
+class CThing {
+public:
+    CWorld& GetWorld() { return *g_world; }
+};
+class CThingCreatureBase : public CThing { };
+class CBaseObjectPointer;
+class CBaseIntelligentPointer {                          // Ego_r.pdb: 8 bytes, PData +0x04
+public:
+    void*               _pad00;
+    CBaseObjectPointer* PData;                           // +0x04
+    CBaseObject* GetPItem() const { return (CBaseObject*)PData; }
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    T* operator->() const { return (T*)GetPItem(); }
+};
+struct CCreatureActionBase { void* vt; void* pad; unsigned char PCreature[8]; };
+struct CCreatureActionBase_Methods : CCreatureActionBase {
+    CWorldMap& GetWorldMap();
+};
+CWorldMap& CCreatureActionBase_Methods::GetWorldMap()
+{
+    return (*(CIntelligentPointer<CThingCreatureBase>*)PCreature)->GetWorld().GetWorldMap();
+}
+int main()
+{
+    static CWorld w; int mapObj = 0; w.Map = &mapObj; g_world = &w;
+    static CThingCreatureBase creature; CCreatureActionBase_Methods a;
+    ((CBaseIntelligentPointer*)a.PCreature)->PData = (CBaseObjectPointer*)&creature;
+    int ok = (void*)&a.GetWorldMap() == (void*)&mapObj;
+    printf(ok ? "00692c10_TEST PASS\n" : "00692c10_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

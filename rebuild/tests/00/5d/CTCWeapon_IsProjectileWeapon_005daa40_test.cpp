@@ -1,71 +1,50 @@
+// test for 005daa40 CTCWeapon::IsProjectileWeapon
 #include <stdio.h>
-
-__declspec(naked) bool IsProjectileWeapon()
+enum EWeaponType { WEAPON_TYPE_NONE };
+enum EWeaponClass { WEAPON_CLASS_NONE, WEAPON_CLASS_1, WEAPON_CLASS_2, WEAPON_CLASS_PROJECTILE };
+struct CDefPointeeBase {
+    virtual ~CDefPointeeBase();
+    virtual void Delete() const;                         // slot 1 (+4)
+    unsigned long IVRefCount;                            // +0x04
+    __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
+};
+template <class T> struct CDefPointer {
+    T* Object;
+    CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
+    __forceinline ~CDefPointer() { if (Object) Object->Release(); }
+    T* operator->() const { return Object; }
+};
+struct CWeaponDef : CDefPointeeBase {
+    unsigned char _pad08[0x1c];                          // +0x08
+    unsigned char _pad08b[0x04];                         // +0x24
+    EWeaponType   Type;                                  // +0x28
+    EWeaponClass  Class;                                 // +0x2c
+};
+class CTCWeapon {
+public:
+    unsigned char           _pad00[0xc];                 // +0x00 CTCBase
+    CDefPointer<CWeaponDef> WeaponDef;                   // +0x0c
+    static bool IsProjectileWeaponClass(EWeaponClass weapon_class) { return weapon_class == WEAPON_CLASS_PROJECTILE; }
+    EWeaponClass GetWeaponClass() const { CDefPointer<CWeaponDef> def(WeaponDef); return def->Class; }
+    bool IsProjectileWeapon() const;
+};
+bool CTCWeapon::IsProjectileWeapon() const
 {
-    __asm {
-        mov     ecx, dword ptr [ecx+0x0c]
-        test    ecx, ecx
-        je      L1
-        inc     dword ptr [ecx+0x04]
-    L1:
-        mov     eax, dword ptr [ecx+0x04]
-        push    esi
-        mov     esi, dword ptr [ecx+0x2c]
-        dec     eax
-        mov     dword ptr [ecx+0x04], eax
-        jne     L2
-        mov     eax, dword ptr [ecx]
-        call    dword ptr [eax+0x04]
-    L2:
-        xor     eax, eax
-        cmp     esi, 0x03
-        sete    al
-        pop     esi
-        ret
-    }
+    return IsProjectileWeaponClass(GetWeaponClass());
 }
 
-struct Weapon { void* vtbl; int refcount; char pad[0x2c-8]; int type; };
-struct Outer { char pad[0xc]; Weapon* w; };
-
-static int g_released = 0;
-static void __fastcall release_thunk() { g_released++; }
-static void* g_vtbl[2];
-
-static bool call_it(Outer* o)
-{
-    bool r;
-    __asm {
-        mov ecx, o
-        call IsProjectileWeapon
-        mov r, al
-    }
-    return r;
-}
-
+static int g_deletes;
+CDefPointeeBase::~CDefPointeeBase() {}
+void CDefPointeeBase::Delete() const { ++g_deletes; }
 int main()
 {
-    g_vtbl[0] = 0;
-    g_vtbl[1] = (void*)&release_thunk;
-
-    Weapon wa; wa.vtbl = g_vtbl; wa.refcount = 5; wa.type = 3;
-    Outer oa; oa.w = &wa;
-    bool ra = call_it(&oa);
-    if (ra != true) { printf("FAIL A ret=%d\n", (int)ra); return 1; }
-    if (wa.refcount != 5) { printf("FAIL A refcount=%d\n", wa.refcount); return 1; }
-    if (g_released != 0) { printf("FAIL A released=%d\n", g_released); return 1; }
-
-    Weapon wb; wb.vtbl = g_vtbl; wb.refcount = 2; wb.type = 5;
-    Outer ob; ob.w = &wb;
-    bool rb = call_it(&ob);
-    if (rb != false) { printf("FAIL B ret=%d\n", (int)rb); return 1; }
-
-    Weapon wc; wc.vtbl = g_vtbl; wc.refcount = 0; wc.type = 3;
-    Outer oc; oc.w = &wc;
-    bool rc = call_it(&oc);
-    if (rc != true) { printf("FAIL C ret=%d\n", (int)rc); return 1; }
-    if (g_released != 1) { printf("FAIL C released=%d\n", g_released); return 1; }
-
-    printf("OK_0x005daa40\n");
-    return 0;
+    CWeaponDef def; def.IVRefCount = 1; def.Class = WEAPON_CLASS_PROJECTILE;
+    static long buf[8]; CTCWeapon& tc = *(CTCWeapon*)buf; tc.WeaponDef.Object = &def;
+    int ok = tc.IsProjectileWeapon() == true && def.IVRefCount == 1 && g_deletes == 0;
+    def.Class = WEAPON_CLASS_2; ok &= tc.IsProjectileWeapon() == false;
+    def.IVRefCount = 0; def.Class = WEAPON_CLASS_PROJECTILE; ok &= tc.IsProjectileWeapon() == true && g_deletes == 1;
+    ok &= (char*)&def.Class - (char*)(CDefPointeeBase*)&def == 0x2c;
+    tc.WeaponDef.Object = 0;
+    printf(ok ? "005daa40_TEST PASS\n" : "005daa40_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

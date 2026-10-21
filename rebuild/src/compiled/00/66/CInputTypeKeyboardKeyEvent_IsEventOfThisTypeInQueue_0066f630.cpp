@@ -1,70 +1,56 @@
-extern "C" void __fastcall
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Construct(
-    void* event, void*);
-extern "C" unsigned char __fastcall
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Query(
-    void* manager, void*, long state, long key, void* event);
-extern "C" void __fastcall
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Destroy(
-    void* event, void*);
-extern "C" void*
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Manager;
+// CInputTypeKeyboardKeyEvent::IsEventOfThisTypeInQueue(EInputButtonEventType, long, float&) const -- is a matching keyboard event for this key queued? value = 1.0 if so
+// Leaf: ?IsEventOfThisTypeInQueue@CInputTypeKeyboardKeyEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+// Retail: Fable.exe @ 0x0066F630, 116 bytes, `ret 0xc`. Local CInputEvent (ctor 0xA04410, dtor 0xA03B30, 0x34 bytes);
+// GetEventTypeFromGeneralButtonType inlined here (1 -> 1, 2 -> 2, 3 -> 3, else 0), unlike the out-of-line mouse one
+// 0x0066F060; CInputManager::IsKeyboardEventInQueue 0x009F50A0 (type, KeyboardKey, event) on g_pInputManager 0x013B8388.
+// The player argument is unused. Sibling of the matched 0x0066F6D0 (mouse).
+// Layout: Ego_r.pdb CInputTypeKeyboardKeyEvent (0x10): vptr, KeyboardKey +0x04, ControlDirection +0x08; CInputEvent 0x34 bytes.
+// The 1/2/3 event-type values are not named (enum names not recovered).
+enum EInputButtonEventType { EINPUTBUTTONEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EInputEventType { EINPUTEVENTTYPE_FORCE_DWORD = 0x7fffffff };
+enum EInputKey { EINPUTKEY_FORCE_DWORD = 0x7fffffff };
 
-extern "C" __declspec(naked) unsigned char __fastcall
-CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630(
-    void* input_type, void*, long event_type, long index, float* strength)
-{
-    __asm
+class CInputEvent {
+public:
+    CInputEvent();
+    ~CInputEvent();
+    char Data[0x34];
+};
+
+class CInputManager {
+public:
+    bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent& event) const;   // 0x009F50A0
+};
+extern CInputManager* g_pInputManager;
+
+class CInputTypeKeyboardKeyEvent {
+public:
+    virtual void _v00();
+    virtual void _v01();
+    virtual void _v02();
+    virtual void _v03();
+    virtual void _v04();
+    virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const;   // slot 5
+    EInputKey KeyboardKey;        // +0x04
+    float ControlDirection[2];    // +0x08
+private:
+    EInputEventType GetEventTypeFromGeneralButtonType(EInputButtonEventType type) const
     {
-        sub esp, 34h
-        push esi
-        mov esi, ecx
-        lea ecx, [esp + 4]
-        call CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Construct
-        mov eax, [esp + 3ch]
-        dec eax
-        je state_one
-        dec eax
-        je state_two
-        dec eax
-        je state_three
-        xor eax, eax
-        jmp query
-
-    state_three:
-        mov eax, 3
-        jmp query
-
-    state_two:
-        mov eax, 2
-        jmp query
-
-    state_one:
-        mov eax, 1
-
-    query:
-        mov edx, [esi + 4]
-        lea ecx, [esp + 4]
-        push ecx
-        mov ecx, dword ptr [CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Manager]
-        push edx
-        push eax
-        call CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Query
-        test al, al
-        pop esi
-        lea ecx, [esp]
-        je not_found
-        mov eax, [esp + 40h]
-        mov dword ptr [eax], 3f800000h
-        call CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Destroy
-        mov al, 1
-        add esp, 34h
-        ret 0ch
-
-    not_found:
-        call CInputTypeKeyboardKeyEvent_IsEventOfThisTypeInQueue_0066f630_Destroy
-        xor al, al
-        add esp, 34h
-        ret 0ch
+        switch (type) {
+        case 1: return (EInputEventType)1;
+        case 2: return (EInputEventType)2;
+        case 3: return (EInputEventType)3;
+        }
+        return (EInputEventType)0;
     }
+};
+
+bool CInputTypeKeyboardKeyEvent::IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const
+{
+    CInputEvent event;
+    if (g_pInputManager->IsKeyboardEventInQueue(GetEventTypeFromGeneralButtonType(type), KeyboardKey, event)) {
+        value = 1.0f;
+        return true;
+    }
+    return false;
 }

@@ -1,0 +1,5 @@
+address	name	evidence
+00437160	Sign	int __stdcall Sign(float) returning -1/1, called by CNavigatorAStar line walkers; not CDefaultEngineMemoryInit::ApplyCustomValue (that takes (float&, float), ret 8) (de-bake)
+004167a7	CMainGameComponent::GetFrameDifferenceFromCurrent	?GetFrameDifferenceFromCurrent@CMainGameComponent@@IBEJJ@Z; not _Dest_val<pair<long,CRegisteredMusicEntry>> (de-bake)
+0041623e	CMainGameComponent::ConvertGTToWF	out-of-line copy (de-bake)
+00b26340	CreateEngine	not CreateInternalPrimitive (de-bake)

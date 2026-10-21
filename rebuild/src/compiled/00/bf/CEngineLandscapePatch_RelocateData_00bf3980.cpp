@@ -1,95 +1,67 @@
-#include "candidates/landscape_patch_relocation_compiled.h"
-
-// The retail routine was built with a register/layout choice that VC7.1 does
-// not recover from the readable translation alone. These fastcall thunks keep
-// the two dependency calls mockable while the lifted body preserves its exact
-// control flow and instruction layout.
-extern "C" void __fastcall LandscapePatchChangeLoadingPriority(CBankFileAsyncData* data)
+// CEngineLandscapePatch::RelocateData(long, void*, void*, long) -- the memory manager moved one of this patch's blocks: rebase whichever pointer referred to the old address and let the owner fix itself up
+// Leaf: ?RelocateData@CEngineLandscapePatch@@EAEXJPAX0J@Z
+// Retail: Fable.exe @ 0x00BF3980, 143 bytes, `ret 10h`; Ego_r.pdb same symbol.
+// Body: if oldData is FastAccessTextureIDs (+0x0c): rebase it; else if it is WaterPatch (+0x14): rebase it and call
+// CWaterPatchMesh::OnPostRelocation (0x00BEAA30, labelled CBankFileAsyncData::ChangeLoadingPriority by folding); else walk
+// LayerMeshList (+0x08, CLandscapeLayerMesh::Next +0x3c) for the moved mesh, rebase the link that held it (the list head
+// or the previous node's Next) and call CLandscapeLayerMesh::OnPostRelocation (0x00BFDD70).
+// Rebase = `if (p) p = p - oldData + newData` (byte arithmetic, null-checked; the order is retail's `sub; add`).
+// Layout: Ego_r.pdb CEngineLandscapePatch (0x48): vptr, Map +4, LayerMeshList +8, FastAccessTextureIDs +0xc,
+// FastAccessTextureIDCount +0x10, WaterPatch +0x14; CLandscapeLayerMesh Next +0x3c. No shared header exists.
+// Shape: /O2 (16-aligned entry).
+class CEngineLandscapeMap;
+class CWaterPatchMesh {
+public:
+    void OnPostRelocation();                             // 0x00BEAA30
+};
+class CLandscapeLayerMesh {
+public:
+    unsigned char        _pad00[0x3c];
+    CLandscapeLayerMesh* Next;                           // +0x3c
+    void OnPostRelocation();                             // 0x00BFDD70
+};
+template <class T> inline void RelocatePointer(T*& p, void* oldData, void* newData)
 {
-    data->ChangeLoadingPriority();
+    if (p)
+        p = (T*)((char*)p - (char*)oldData + (char*)newData);
 }
+class CEngineLandscapePatch {
+public:
+    CEngineLandscapeMap*  Map;                           // +0x04
+    CLandscapeLayerMesh*  LayerMeshList;                 // +0x08
+    unsigned short*       FastAccessTextureIDs;          // +0x0c
+    unsigned short        FastAccessTextureIDCount;      // +0x10
+    CWaterPatchMesh*      WaterPatch;                    // +0x14
+private:
+    virtual void RelocateData(long handle, void* oldData, void* newData, long size);
+};
 
-extern "C" void __fastcall LandscapeLayerMeshPostRelocation(CLandscapeLayerMesh* mesh)
+void CEngineLandscapePatch::RelocateData(long handle, void* oldData, void* newData, long size)
 {
-    mesh->OnPostRelocation();
-}
-
-__declspec(naked) void CEngineLandscapePatch::RelocateData(long, void*, void*, long)
-{
-    __asm {
-        mov eax, [ecx + 0Ch]
-        push esi
-        mov esi, [esp + 0Ch]
-        cmp esi, eax
-        jne check_async_data
-        test eax, eax
-        je relocation_done
-        mov edx, [esp + 10h]
-        sub eax, esi
-        add eax, edx
-        mov [ecx + 0Ch], eax
-        pop esi
-        ret 10h
-
-check_async_data:
-        mov eax, [ecx + 14h]
-        cmp esi, eax
-        jne scan_layer_meshes
-        test eax, eax
-        je notify_async_data
-        mov edx, [esp + 10h]
-        sub eax, esi
-        add eax, edx
-        mov [ecx + 14h], eax
-notify_async_data:
-        mov ecx, [ecx + 14h]
-        call LandscapePatchChangeLoadingPriority
-        pop esi
-        ret 10h
-
-scan_layer_meshes:
-        mov eax, [ecx + 08h]
-        xor edx, edx
-        test eax, eax
-        je relocation_done
-        _emit 08Dh
-        _emit 09Bh
-        _emit 000h
-        _emit 000h
-        _emit 000h
-        _emit 000h
-scan_next_layer_mesh:
-        cmp esi, eax
-        je relocate_layer_mesh
-        mov edx, eax
-        mov eax, [eax + 3Ch]
-        test eax, eax
-        jne scan_next_layer_mesh
-        pop esi
-        ret 10h
-
-relocate_layer_mesh:
-        test eax, eax
-        je update_layer_link
-        push edi
-        mov edi, [esp + 14h]
-        sub edi, esi
-        add eax, edi
-        pop edi
-update_layer_link:
-        test edx, edx
-        je update_layer_head
-        mov ecx, eax
-        mov [edx + 3Ch], eax
-        call LandscapeLayerMeshPostRelocation
-        pop esi
-        ret 10h
-update_layer_head:
-        mov [ecx + 08h], eax
-        mov ecx, eax
-        call LandscapeLayerMeshPostRelocation
-relocation_done:
-        pop esi
-        ret 10h
+    if (oldData == FastAccessTextureIDs)
+    {
+        RelocatePointer(FastAccessTextureIDs, oldData, newData);
+        return;
+    }
+    if (oldData == WaterPatch)
+    {
+        RelocatePointer(WaterPatch, oldData, newData);
+        WaterPatch->OnPostRelocation();
+        return;
+    }
+    CLandscapeLayerMesh* prev = 0;
+    for (CLandscapeLayerMesh* mesh = LayerMeshList; mesh; mesh = mesh->Next)
+    {
+        if (oldData == mesh)
+        {
+            RelocatePointer(mesh, oldData, newData);
+            if (prev)
+                prev->Next = mesh;
+            else
+                LayerMeshList = mesh;
+            mesh->OnPostRelocation();
+            return;
+        }
+        prev = mesh;
     }
 }

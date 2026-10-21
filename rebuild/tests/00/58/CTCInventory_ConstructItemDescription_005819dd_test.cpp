@@ -1,74 +1,100 @@
+// behaviour test for 0x005819DD CTCInventory::ConstructItemDescription
 #include <stdio.h>
+class CWideString { public: int Id; };
+static CWideString* g_desc; static long g_item; static int g_short = -1;
+class CTCInventory {
+public:
+    virtual ~CTCInventory() {}                             // slot 0
+    virtual void _v01() {}
+    virtual void _v02() {}
+    virtual void _v03() {}
+    virtual void _v04() {}
+    virtual void _v05() {}
+    virtual void _v06() {}
+    virtual void _v07() {}
+    virtual void _v08() {}
+    virtual void _v09() {}
+    virtual void _v10() {}
+    virtual void _v11() {}
+    virtual void _v12() {}
+    virtual void _v13() {}
+    virtual void _v14() {}
+    virtual void _v15() {}
+    virtual void _v16() {}
+    virtual void _v17() {}
+    virtual void _v18() {}
+    virtual void _v19() {}
+    virtual void _v20() {}
+    virtual void _v21() {}
+    virtual void _v22() {}
+    virtual void _v23() {}
+    virtual void _v24() {}
+    virtual void _v25() {}
+    virtual void _v26() {}
+    virtual void _v27() {}
+    virtual void _v28() {}
+    virtual void _v29() {}
+    virtual void _v30() {}
+    virtual void _v31() {}
+    virtual void _v32() {}
+    virtual void _v33() {}
+    virtual void _v34() {}
+    virtual void _v35() {}
+    virtual void _v36() {}
+    virtual void _v37() {}
+    virtual void _v38() {}
+    virtual void _v39() {}
+    virtual void _v40() {}
+    virtual void _v41() {}
+    virtual void _v42() {}
+    virtual void _v43() {}
+    virtual void _v44() {}
+    virtual void _v45() {}
+    virtual void _v46() {}
+    virtual void _v47() {}
+    virtual void _v48() {}
+    virtual void _v49() {}
+    virtual void _v50() {}
+    virtual void _v51() {}
+    virtual void _v52() {}
+    virtual void _v53() {}
+    virtual void _v54() {}
+    virtual void _v55() {}
+    virtual void _v56() {}
+    virtual void _v57() {}
+    virtual void _v58() {}
+    virtual void _v59() {}
+    virtual void _v60() {}
+    virtual void _v61() {}
+    virtual void _v62() {}
+    virtual void _v63() {}
+    virtual void _v64() {}
+    virtual void _v65() {}
+    virtual void _v66() {}
+    virtual void _v67() {}
+    virtual void _v68() {}
+    virtual void _v69() {}
+    virtual void _v70() {}
+    virtual void _v71() {}
+    virtual void _v72() {}
+    virtual void _v73() {}
+    virtual void _v74() {}
+    virtual void _v75() {}
+    virtual void _v76() {}
+    virtual void _v77() {}
+    virtual void GetItemDescription(CWideString& description, long item, bool short_form) const { g_desc = &description; g_item = item; g_short = short_form; }   // slot 78 (+0x138)
+    void ConstructItemDescription(CWideString& description, long item);
+};
 
-// ---- function-under-test (same body as source_cpp) ----
-__declspec(naked) void ConstructItemDescription(void *arg0, void *arg1)
+void CTCInventory::ConstructItemDescription(CWideString& description, long item)
 {
-    (void)arg0; (void)arg1;
-    __asm
-    {
-        mov eax, dword ptr [ecx]
-        push 0
-        push dword ptr [esp+0x0c]
-        push dword ptr [esp+0x0c]
-        call dword ptr [eax+0x138]
-        ret 8
-    }
+    GetItemDescription(description, item, false);
 }
-
-// ---- captured args from the virtual dispatch ----
-static void*        g_this = 0;
-static void*        g_a0   = 0;
-static void*        g_a1   = 0;
-static int          g_a2   = -1;
-static int          g_hits = 0;
-
-// virtual callee: __fastcall with 3 stack args -> this in ecx, cleans 12 bytes.
-__declspec(naked) void virt_stub()
-{
-    __asm
-    {
-        mov g_this, ecx
-        mov eax, dword ptr [esp+4]   // arg0
-        mov g_a0, eax
-        mov eax, dword ptr [esp+8]   // arg1
-        mov g_a1, eax
-        mov eax, dword ptr [esp+0x0c] // arg2 (the pushed 0)
-        mov g_a2, eax
-        inc g_hits
-        ret 0x0c
-    }
-}
-
-// object with a vtable; slot 0x138 (index 78) -> virt_stub
-static void* g_vtbl[80];
-// object: first field is the vtable pointer, so [obj] == &g_vtbl.
-static void* g_obj[4];
-
 int main()
 {
-    for (int i = 0; i < 80; ++i) g_vtbl[i] = 0;
-    g_vtbl[78] = (void*)&virt_stub;      // 78*4 = 0x138
-
-    g_obj[0] = (void*)&g_vtbl;            // vtable pointer at object+0
-    void* obj = (void*)&g_obj;            // [obj] == g_obj[0] == &g_vtbl
-    void* A = (void*)0xAAAA0001;
-    void* B = (void*)0xBBBB0002;
-
-    // invoke: this=ecx=obj, two stack args (A,B), callee does ret 8.
-    __asm
-    {
-        push B
-        push A
-        mov  ecx, obj
-        call ConstructItemDescription
-    }
-
-    if (g_hits != 1)                 { printf("FAIL hits=%d\n", g_hits); return 1; }
-    if (g_this != obj)               { printf("FAIL this=%p\n", g_this); return 1; }
-    if (g_a0   != A)                 { printf("FAIL a0=%p\n", g_a0);     return 1; }
-    if (g_a1   != B)                 { printf("FAIL a1=%p\n", g_a1);     return 1; }
-    if (g_a2   != 0)                 { printf("FAIL a2=%d\n", g_a2);     return 1; }
-
-    printf("OK_0x005819dd this=%p a0=%p a1=%p a2=%d\n", g_this, g_a0, g_a1, g_a2);
-    return 0;
+    CTCInventory inv; CWideString d;
+    inv.ConstructItemDescription(d, 42);
+    int ok = g_desc == &d && g_item == 42 && g_short == 0;
+    printf(ok ? "005819dd_TEST PASS\n" : "005819dd_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

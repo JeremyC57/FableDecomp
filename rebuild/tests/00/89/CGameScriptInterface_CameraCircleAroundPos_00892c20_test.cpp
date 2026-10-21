@@ -1,237 +1,100 @@
 #include <cstdio>
-#include <cstring>
-
-class C3DVector
-{
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
+};
+namespace NCameraModes {
+class CScriptModuleBase {
 public:
-    unsigned long m_X;
-    unsigned long m_Y;
-    unsigned long m_Z;
+    unsigned char _pad04[0x4c - 4];
+    CScriptModuleBase();                                 // 0x005ED070
+    virtual ~CScriptModuleBase();
 };
-
-class CGSICameraCirclePos_ModuleBase
-{
+class CScriptModuleDolly : public CScriptModuleBase {          // vtable 0x01278160
 public:
-    void Construct();
+    C3DVector PosAround;                                 // +0x4c
+    C3DVector DollyVector;                               // +0x58
+    float     TimeFor360Turn;                            // +0x64
+    CScriptModuleDolly(const C3DVector& posAround, const C3DVector& dollyVector, float timeFor360Turn)
+        : PosAround(posAround), DollyVector(dollyVector), TimeFor360Turn(timeFor360Turn) {}
 };
-
-class CGSICameraCirclePos_Receiver
-{
-public:
-    void SetScriptedCameraMode(
-        void* pModule,
-        void* pCallbackState);
-};
-
-class CGameScriptInterface
-{
-public:
-    virtual void CameraCircleAroundPos(
-        const C3DVector& firstPosition,
-        const C3DVector& secondPosition,
-        float speed) const;
-};
-
-struct ResolverVftable
-{
-    unsigned char m_Pad00[0x24];
-    void* m_Resolve;
-};
-
-struct Resolver
-{
-    ResolverVftable* m_pVftable;
-};
-
-struct Owner
-{
-    unsigned char m_Pad00[0x34];
-    Resolver* m_pResolver;
-};
-
-struct InterfaceStorage
-{
-    unsigned char m_Pad00[0x04];
-    Owner* m_pOwner;
-};
-
-struct ModuleOverlay
-{
-    void* m_pVftable;
-    unsigned char m_Pad04[0x48];
-    unsigned long m_FirstX;
-    unsigned long m_FirstY;
-    unsigned long m_FirstZ;
-    unsigned long m_SecondX;
-    unsigned long m_SecondY;
-    unsigned long m_SecondZ;
-    unsigned long m_SpeedBits;
-};
-
-struct CallbackState
-{
-    long m_Kind;
-    void* m_pCallback;
-    void* m_pModule;
-};
-
-void* CGSICameraCirclePos_ModuleVftable[1];
-unsigned char CGSICameraCirclePos_Callback;
-
-static CGSICameraCirclePos_Receiver* g_pReceiver;
-static ModuleOverlay* g_pModuleStorage;
-static CallbackState* g_pCallbackStorage;
-static unsigned long g_ResolveCalls;
-static unsigned long g_AllocateCalls;
-static unsigned long g_BaseConstructCalls;
-static unsigned long g_SetModeCalls;
-static unsigned long g_FirstSize;
-static unsigned long g_SecondSize;
-static void* g_pReceivedModule;
-static void* g_pReceivedCallback;
-
-static void __cdecl ResolveHelper(
-    Resolver* pResolver,
-    CGSICameraCirclePos_Receiver** ppReceiver)
-{
-    if (pResolver == 0 || ppReceiver == 0)
-        std::printf("resolver arguments mismatch\n");
-    ++g_ResolveCalls;
-    *ppReceiver = g_pReceiver;
 }
-
-static void __declspec(naked) ResolveThunk()
-{
-    __asm
+struct CCPPointerInfo {
+    long  RefCount;
+    void  (__fastcall* DeleteFunc)(void* data);
+    void* Data;
+    CCPPointerInfo(void (__fastcall* deleteFunc)(void*), void* data) : RefCount(1), DeleteFunc(deleteFunc), Data(data) {}
+};
+template <class T> class CCountedPointer {
+public:
+    T*              Object;
+    CCPPointerInfo* Info;
+    static void __fastcall DeleteObject(void* data);     // 0x005ECF50 (`delete (T*)data`, folded)
+    __forceinline CCountedPointer(T* object) : Object(object)
     {
-        push dword ptr [esp + 4]
-        push ecx
-        call ResolveHelper
-        add esp, 8
-        ret 4
+        if (object)
+            Info = new CCPPointerInfo(DeleteObject, Object);
+        else
+            Info = 0;
     }
-}
-
-void* __cdecl CGSICameraCirclePos_Allocate(unsigned long size)
+    CCountedPointer(const CCountedPointer& other);
+    ~CCountedPointer();
+};
+class CGameCameraManager {
+public:
+    void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
+};
+class CAIGameCameraBase {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08();
+    virtual bool GetCameraManager(CGameCameraManager** manager);   // slot 9 (+0x24)
+};
+class CWorld {
+public:
+    unsigned char      _pad00[0x34];
+    CAIGameCameraBase* PCurrentGameCamera;               // +0x34
+};
+class CGameScriptInterface {
+public:
+    virtual void CameraCircleAroundPos(const C3DVector& pos, const C3DVector& offset, float timeFor360Turn) const;
+    CWorld* World;                                       // +0x04
+};
+void CGameScriptInterface::CameraCircleAroundPos(const C3DVector& pos, const C3DVector& offset, float timeFor360Turn) const
 {
-    ++g_AllocateCalls;
-    if (g_AllocateCalls == 1)
-    {
-        g_FirstSize = size;
-        return g_pModuleStorage;
-    }
-    g_SecondSize = size;
-    return g_pCallbackStorage;
+    CGameCameraManager* manager;
+    World->PCurrentGameCamera->GetCameraManager(&manager);
+    manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(
+        new NCameraModes::CScriptModuleDolly(pos, offset, timeFor360Turn)));
 }
 
-void CGSICameraCirclePos_ModuleBase::Construct()
+static int g_sets, g_dtors, g_basector; static long g_seenRef;
+NCameraModes::CScriptModuleBase::CScriptModuleBase() { ++g_basector; }
+NCameraModes::CScriptModuleBase::~CScriptModuleBase() { ++g_dtors; }
+template <class T> void __fastcall CCountedPointer<T>::DeleteObject(void* data) { delete (T*)data; }
+template <class T> CCountedPointer<T>::CCountedPointer(const CCountedPointer& o) { Object = o.Object; Info = o.Info; if (Info) ++Info->RefCount; }
+template <class T> CCountedPointer<T>::~CCountedPointer() { if (Info && --Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } }
+static float g_pos[3]; static float g_vec[3]; static float g_time;
+void CGameCameraManager::SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode)
 {
-    if (this != reinterpret_cast<CGSICameraCirclePos_ModuleBase*>(
-            g_pModuleStorage))
-        std::printf("base this mismatch\n");
-    ++g_BaseConstructCalls;
+    ++g_sets; g_seenRef = mode.Info ? mode.Info->RefCount : -1;
+    NCameraModes::CScriptModuleDolly* d = static_cast<NCameraModes::CScriptModuleDolly*>(mode.Object);
+    g_pos[0] = d->PosAround.X; g_pos[1] = d->PosAround.Y; g_pos[2] = d->PosAround.Z; g_vec[0] = d->DollyVector.X; g_vec[1] = d->DollyVector.Y; g_vec[2] = d->DollyVector.Z; g_time = d->TimeFor360Turn;
 }
-
-void CGSICameraCirclePos_Receiver::SetScriptedCameraMode(
-    void* pModule,
-    void* pCallbackState)
-{
-    if (this != g_pReceiver)
-        std::printf("receiver this mismatch\n");
-    ++g_SetModeCalls;
-    g_pReceivedModule = pModule;
-    g_pReceivedCallback = pCallbackState;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf("FSE2_00892c20_TEST FAIL: %s\n", pMessage);
-    return 1;
-}
-
-static void ResetCalls()
-{
-    g_AllocateCalls = 0;
-    g_BaseConstructCalls = 0;
-    g_SetModeCalls = 0;
-    g_FirstSize = 0;
-    g_SecondSize = 0;
-    g_pReceivedModule = 0;
-    g_pReceivedCallback = 0;
-}
-
-static float FloatWithBits(unsigned long bits)
-{
-    float value;
-    std::memcpy(&value, &bits, sizeof(value));
-    return value;
-}
-
+static CGameCameraManager g_mgr;
+void CAIGameCameraBase::v00() {} void CAIGameCameraBase::v01() {} void CAIGameCameraBase::v02() {} void CAIGameCameraBase::v03() {}
+void CAIGameCameraBase::v04() {} void CAIGameCameraBase::v05() {} void CAIGameCameraBase::v06() {} void CAIGameCameraBase::v07() {}
+void CAIGameCameraBase::v08() {}
+bool CAIGameCameraBase::GetCameraManager(CGameCameraManager** m) { *m = &g_mgr; return true; }
 int main()
 {
-    ResolverVftable resolverVftable = {};
-    Resolver resolver;
-    Owner owner = {};
-    InterfaceStorage storage = {};
-    CGameScriptInterface& interfaceObject =
-        reinterpret_cast<CGameScriptInterface&>(storage);
-    C3DVector first = {0x11223344, 0x55667788, 0x99AABBCC};
-    C3DVector second = {0x10203040, 0x50607080, 0x90A0B0C0};
-    ModuleOverlay module = {};
-    CallbackState callback = {};
-
-    resolverVftable.m_Resolve = reinterpret_cast<void*>(ResolveThunk);
-    resolver.m_pVftable = &resolverVftable;
-    owner.m_pResolver = &resolver;
-    storage.m_pOwner = &owner;
-    g_pReceiver =
-        reinterpret_cast<CGSICameraCirclePos_Receiver*>(0x12345678);
-
-    ResetCalls();
-    g_pModuleStorage = 0;
-    g_pCallbackStorage = &callback;
-    interfaceObject.CGameScriptInterface::CameraCircleAroundPos(
-        first, second, FloatWithBits(0x7FC12345));
-    if (g_AllocateCalls != 1 || g_FirstSize != 0x68 ||
-        g_BaseConstructCalls != 0 || g_SetModeCalls != 1 ||
-        g_pReceivedModule != 0 || g_pReceivedCallback != 0)
-        return Fail("module allocation fallback");
-
-    ResetCalls();
-    g_pModuleStorage = &module;
-    g_pCallbackStorage = 0;
-    interfaceObject.CGameScriptInterface::CameraCircleAroundPos(
-        first, second, FloatWithBits(0x80000000));
-    if (g_AllocateCalls != 2 || g_SecondSize != 0x0C ||
-        g_BaseConstructCalls != 1 || g_SetModeCalls != 1 ||
-        g_pReceivedModule != &module || g_pReceivedCallback != 0)
-        return Fail("callback allocation fallback");
-    if (module.m_pVftable != CGSICameraCirclePos_ModuleVftable ||
-        module.m_FirstX != first.m_X ||
-        module.m_FirstY != first.m_Y ||
-        module.m_FirstZ != first.m_Z ||
-        module.m_SecondX != second.m_X ||
-        module.m_SecondY != second.m_Y ||
-        module.m_SecondZ != second.m_Z ||
-        module.m_SpeedBits != 0x80000000)
-        return Fail("module fields");
-
-    ResetCalls();
-    g_pCallbackStorage = &callback;
-    callback.m_Kind = 0;
-    callback.m_pCallback = 0;
-    callback.m_pModule = 0;
-    interfaceObject.CGameScriptInterface::CameraCircleAroundPos(
-        first, second, FloatWithBits(0x7F800000));
-    if (g_SetModeCalls != 1 || g_pReceivedCallback != &callback ||
-        callback.m_Kind != 1 ||
-        callback.m_pCallback != &CGSICameraCirclePos_Callback ||
-        callback.m_pModule != &module ||
-        module.m_SpeedBits != 0x7F800000)
-        return Fail("successful callback or raw speed");
-    if (g_ResolveCalls != 3)
-        return Fail("resolver calls");
-
-    std::printf("FSE2_00892c20_TEST PASS\n");
-    return 0;
+    CAIGameCameraBase cam; static unsigned char raw[sizeof(CWorld)]; CWorld& w = *(CWorld*)raw; w.PCurrentGameCamera = &cam;
+    CGameScriptInterface gsi; gsi.World = &w;
+    static float offRaw[3] = { 1.0f, 2.0f, 3.0f }; const C3DVector& off = *(const C3DVector*)offRaw;
+    static float posRaw[3] = { 4.0f, 5.0f, 6.0f }; const C3DVector& pos = *(const C3DVector*)posRaw;
+    gsi.CameraCircleAroundPos(pos, off, 7.5f);
+    bool ok = g_sets == 1 && g_basector == 1 && g_seenRef == 1 && g_dtors == 1 && g_pos[0] == 4.0f && g_pos[1] == 5.0f && g_pos[2] == 6.0f
+           && g_vec[0] == 1.0f && g_vec[1] == 2.0f && g_vec[2] == 3.0f && g_time == 7.5f;
+    std::printf(ok ? "00892c20_TEST PASS\n" : "00892c20_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

@@ -1,79 +1,43 @@
+// behaviour test for 0x004FB2F0
 #include <stdio.h>
-
-// ---- function under test ----
-__declspec(naked) int IsPosChangeable(int pos)
+class C2DCoordI { public: long X, Y; };
+class CWorldMap {
+public:
+    virtual void _s00() {}
+    virtual void _s01() {}
+    virtual void _s02() {}
+    virtual void _s03() {}
+    virtual void _s04() {}
+    virtual void _s05() {}
+    virtual void _s06() {}
+    virtual void _s07() {}
+    virtual void _s08() {}
+    virtual void _s09() {}
+    virtual void _s10() {}
+    virtual void _s11() {}
+    virtual void _s12() {}
+    virtual void _s13() {}
+    virtual void _s14() {}
+    virtual void _s15() {}
+    virtual void _s16() {}
+    virtual long GetMapNumberAt(const C2DCoordI& pos) const { return pos.X > 0 ? 3 : 1; }
+    virtual void _s18() {}
+    virtual void _s19() {}
+    virtual void _s20() {}
+    virtual void _s21() {}
+    virtual void _s22() {}
+    virtual void _s23() {}
+    virtual bool IsMapChangeable(long mapNumber) const { return mapNumber == 3; }
+    virtual bool IsPosChangeable(const C2DCoordI& pos) const;         // slot 25 (+0x64)
+};
+bool CWorldMap::IsPosChangeable(const C2DCoordI& pos) const
 {
-    (void)pos;
-    __asm {
-        mov     eax, dword ptr [esp+4]
-        push    esi
-        push    edi
-        mov     esi, ecx
-        mov     edi, dword ptr [esi]
-        push    eax
-        call    dword ptr [edi+0x44]
-        push    eax
-        mov     ecx, esi
-        call    dword ptr [edi+0x60]
-        pop     edi
-        pop     esi
-        ret     4
-    }
+    return IsMapChangeable(GetMapNumberAt(pos));
 }
-
-// ---- fake object with a vtable big enough for slot 0x60 (24) ----
-static int g_lastVf44Arg = -1;
-static int g_lastVf60Arg = -1;
-
-// vf44: __fastcall(this=ecx, arg). return arg*2+1
-__declspec(naked) static int myVf44()
-{
-    __asm {
-        mov     eax, dword ptr [esp+4]   ; arg
-        mov     g_lastVf44Arg, eax
-        add     eax, eax
-        inc     eax
-        ret     4
-    }
-}
-// vf60: __fastcall(this=ecx, arg). return arg+100 (proves it received vf44 result)
-__declspec(naked) static int myVf60()
-{
-    __asm {
-        mov     eax, dword ptr [esp+4]
-        mov     g_lastVf60Arg, eax
-        add     eax, 100
-        ret     4
-    }
-}
-
-struct Obj { void* vtbl; };
-
 int main()
 {
-    // vtable: need indices 0x44/4=17 and 0x60/4=24
-    static void* vtbl[40];
-    for (int i=0;i<40;i++) vtbl[i]=0;
-    vtbl[0x44/4] = (void*)&myVf44;
-    vtbl[0x60/4] = (void*)&myVf60;
-
-    Obj o; o.vtbl = vtbl;
-
-    int pos = 7;
-    int result;
-    Obj* pobj = &o;
-    __asm {
-        mov     ecx, pobj
-        push    pos
-        call    IsPosChangeable
-        mov     result, eax
-    }
-
-    // vf44 got pos=7 -> 15 ; vf60 got 15 -> 115
-    if (g_lastVf44Arg == 7 && g_lastVf60Arg == 15 && result == 115) {
-        printf("OK_0x004fb2f0 result=%d vf44arg=%d vf60arg=%d\n", result, g_lastVf44Arg, g_lastVf60Arg);
-        return 0;
-    }
-    printf("FAIL result=%d vf44arg=%d vf60arg=%d\n", result, g_lastVf44Arg, g_lastVf60Arg);
-    return 1;
+    CWorldMap m; C2DCoordI a = { 5, 0 }, b = { -5, 0 };
+    int ok = m.IsPosChangeable(a) && !m.IsPosChangeable(b);
+    printf(ok ? "004fb2f0_TEST PASS\n" : "004fb2f0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

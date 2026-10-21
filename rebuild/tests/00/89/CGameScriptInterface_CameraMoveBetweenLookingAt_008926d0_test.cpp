@@ -1,318 +1,190 @@
 #include <cstdio>
-#include <cstring>
-
-class C3DVector
-{
+class C3DVector;
+class CThing {
 public:
-    unsigned long m_Marker;
+    unsigned char _pad00[0x6c];
+    unsigned long ThingTypeFlags;                        // +0x6c
 };
-
-class CScriptThing
-{
-};
-
-class CGSICameraLookingAtThing_Interpolator
-{
+namespace NCameraModes {
+class CScriptModuleBase {
 public:
-    CGSICameraLookingAtThing_Interpolator* Construct(
-        void* pTarget,
-        const C3DVector& firstPosition,
-        const C3DVector& secondPosition,
-        long scaledDuration,
-        float blend);
+    virtual ~CScriptModuleBase();
 };
-
-class CGSICameraLookingAtThing_ModeArguments
-{
+class CScriptModuleMoveBetweenLookingAt : public CScriptModuleBase {
 public:
-    void Construct(
-        CGSICameraLookingAtThing_Interpolator* pInterpolator);
+    unsigned char _pad04[0x90 - 4];
+    CScriptModuleMoveBetweenLookingAt(const CThing& lookAt, const C3DVector& from, const C3DVector& to, long frames, float f);   // 0x00852D90
 };
-
-class CGSICameraLookingAtThing_Receiver
-{
-public:
-    void SetScriptedCameraMode(
-        CGSICameraLookingAtThing_Interpolator* pInterpolator,
-        void* pCallbackState);
-};
-
-class CGameScriptInterface
-{
-public:
-    virtual void CameraMoveBetweenLookingAt(
-        const C3DVector& firstPosition,
-        const C3DVector& secondPosition,
-        const CScriptThing& target,
-        float duration,
-        float blend) const;
-};
-
-struct ThingVftable
-{
-    unsigned char m_Pad00[0x2C];
-    void* m_GetTarget;
-    unsigned char m_Pad30[0x12C - 0x30];
-    void* m_IsValid;
-};
-
-struct ThingStorage
-{
-    ThingVftable* m_pVftable;
-};
-
-struct ResolverVftable
-{
-    unsigned char m_Pad00[0x24];
-    void* m_Resolve;
-};
-
-struct Resolver
-{
-    ResolverVftable* m_pVftable;
-};
-
-struct Owner
-{
-    unsigned char m_Pad00[0x34];
-    Resolver* m_pResolver;
-};
-
-struct InterfaceStorage
-{
-    unsigned char m_Pad00[0x04];
-    Owner* m_pOwner;
-};
-
-struct ArgumentStorage
-{
-    CGSICameraLookingAtThing_Interpolator* m_pInterpolator;
-    void* m_pCallback;
-};
-
-float CGSICameraLookingAtThing_ClampThreshold = -1.0f;
-long CGSICameraLookingAtThing_Scale = 15;
-
-static bool g_IsValid;
-static void* g_pTarget;
-static CGSICameraLookingAtThing_Receiver* g_pReceiver;
-static CGSICameraLookingAtThing_Interpolator* g_pInterpolatorStorage;
-static const C3DVector* g_pExpectedFirst;
-static const C3DVector* g_pExpectedSecond;
-static long g_ExpectedScaledDuration;
-static unsigned long g_ExpectedBlendBits;
-static void* g_pCallbackValue;
-static unsigned long g_IsValidCalls;
-static unsigned long g_GetTargetCalls;
-static unsigned long g_ResolveCalls;
-static unsigned long g_AllocateCalls;
-static unsigned long g_ConstructCalls;
-static unsigned long g_ModeArgumentCalls;
-static unsigned long g_SetModeCalls;
-static unsigned long g_AllocationSize;
-static CGSICameraLookingAtThing_Interpolator* g_pReceivedInterpolator;
-static void* g_pReceivedCallback;
-
-static bool __fastcall IsValid(CScriptThing*)
-{
-    ++g_IsValidCalls;
-    return g_IsValid;
 }
-
-static void* __fastcall GetTarget(CScriptThing*)
+template <class T> class CCountedPointer {
+public:
+    T*    Object;
+    long* Count;
+    CCountedPointer(T* object);                          // 0x005ED270 (instance shared by folding)
+    CCountedPointer(const CCountedPointer& other);
+    ~CCountedPointer();
+};
+class CGameCameraManager {
+public:
+    void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
+};
+class CAIGameCameraBase {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08();
+    virtual bool GetCameraManager(CGameCameraManager** manager);   // slot 9 (+0x24)
+};
+extern long g_WorldFramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+public:
+    static long ConvertSecondsToWF(float seconds) { return (long)(g_WorldFramesPerSecond * seconds); }
+};
+class CWorld {
+public:
+    unsigned char      _pad00[0x34];
+    CAIGameCameraBase* PCurrentGameCamera;               // +0x34
+};
+class CScriptThing {
+public:
+    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
+    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
+    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
+    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
+    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
+    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
+    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
+    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
+    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
+    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
+    virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
+    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
+    virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
+    virtual void v072(); virtual void v073(); virtual void v074();
+    virtual bool IsValid() const;                        // slot 75 (+0x12c)
+};
+class CGameScriptInterface {
+public:
+    virtual void CameraMoveBetweenLookingAt(const C3DVector& from, const C3DVector& to, const CScriptThing& thing, float time, float f) const;
+    CWorld* World;                                       // +0x04
+};
+void CGameScriptInterface::CameraMoveBetweenLookingAt(const C3DVector& from, const C3DVector& to, const CScriptThing& thing, float time, float f) const
 {
-    ++g_GetTargetCalls;
-    return g_pTarget;
-}
-
-static void __cdecl ResolveHelper(
-    Resolver* pResolver,
-    CGSICameraLookingAtThing_Receiver** ppReceiver)
-{
-    if (pResolver == 0 || ppReceiver == 0)
-        std::printf("resolver arguments mismatch\n");
-    ++g_ResolveCalls;
-    *ppReceiver = g_pReceiver;
-}
-
-static void __declspec(naked) ResolveThunk()
-{
-    __asm
+    if (thing.IsValid())
     {
-        push dword ptr [esp + 4]
-        push ecx
-        call ResolveHelper
-        add esp, 8
-        ret 4
+        CThing* t = thing.GetThing();
+        CGameCameraManager* manager;
+        World->PCurrentGameCamera->GetCameraManager(&manager);
+        if (f == -1.0f) f = 0.2f;
+        manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(
+            new NCameraModes::CScriptModuleMoveBetweenLookingAt(*t, from, to, CMainGameComponent::ConvertSecondsToWF(time), f)));
     }
 }
 
-void* __cdecl CGSICameraLookingAtThing_Allocate(unsigned long size)
-{
-    ++g_AllocateCalls;
-    g_AllocationSize = size;
-    return g_pInterpolatorStorage;
-}
-
-long __declspec(naked) __cdecl
-CGSICameraLookingAtThing_FloatToLong()
-{
-    __asm
-    {
-        sub esp, 4
-        fistp dword ptr [esp]
-        mov eax, dword ptr [esp]
-        add esp, 4
-        ret
-    }
-}
-
-CGSICameraLookingAtThing_Interpolator*
-CGSICameraLookingAtThing_Interpolator::Construct(
-    void* pTarget,
-    const C3DVector& firstPosition,
-    const C3DVector& secondPosition,
-    long scaledDuration,
-    float blend)
-{
-    ++g_ConstructCalls;
-    unsigned long blendBits;
-    std::memcpy(&blendBits, &blend, sizeof(blendBits));
-    if (this != g_pInterpolatorStorage ||
-        pTarget != g_pTarget ||
-        &firstPosition != g_pExpectedFirst ||
-        &secondPosition != g_pExpectedSecond ||
-        scaledDuration != g_ExpectedScaledDuration ||
-        blendBits != g_ExpectedBlendBits)
-    {
-        std::printf("constructor arguments mismatch\n");
-    }
-    return this;
-}
-
-void CGSICameraLookingAtThing_ModeArguments::Construct(
-    CGSICameraLookingAtThing_Interpolator* pInterpolator)
-{
-    ++g_ModeArgumentCalls;
-    ArgumentStorage* const pThis =
-        reinterpret_cast<ArgumentStorage*>(this);
-    pThis->m_pInterpolator = pInterpolator;
-    pThis->m_pCallback =
-        pInterpolator != 0 ? g_pCallbackValue : 0;
-}
-
-void CGSICameraLookingAtThing_Receiver::SetScriptedCameraMode(
-    CGSICameraLookingAtThing_Interpolator* pInterpolator,
-    void* pCallbackState)
-{
-    if (this != g_pReceiver)
-        std::printf("receiver this mismatch\n");
-    ++g_SetModeCalls;
-    g_pReceivedInterpolator = pInterpolator;
-    g_pReceivedCallback = pCallbackState;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf("FSE2_008926d0_TEST FAIL: %s\n", pMessage);
-    return 1;
-}
-
-static void ResetCalls()
-{
-    g_IsValidCalls = 0;
-    g_GetTargetCalls = 0;
-    g_ResolveCalls = 0;
-    g_AllocateCalls = 0;
-    g_ConstructCalls = 0;
-    g_ModeArgumentCalls = 0;
-    g_SetModeCalls = 0;
-    g_AllocationSize = 0;
-    g_pReceivedInterpolator = 0;
-    g_pReceivedCallback = 0;
-}
-
-static float FloatWithBits(unsigned long bits)
-{
-    float value;
-    std::memcpy(&value, &bits, sizeof(value));
-    return value;
-}
-
+void CScriptThing::v000() {}
+void CScriptThing::v001() {}
+void CScriptThing::v002() {}
+void CScriptThing::v003() {}
+void CScriptThing::v004() {}
+void CScriptThing::v005() {}
+void CScriptThing::v006() {}
+void CScriptThing::v007() {}
+void CScriptThing::v008() {}
+void CScriptThing::v009() {}
+void CScriptThing::v010() {}
+void CScriptThing::v012() {}
+void CScriptThing::v013() {}
+void CScriptThing::v014() {}
+void CScriptThing::v015() {}
+void CScriptThing::v016() {}
+void CScriptThing::v017() {}
+void CScriptThing::v018() {}
+void CScriptThing::v019() {}
+void CScriptThing::v020() {}
+void CScriptThing::v021() {}
+void CScriptThing::v022() {}
+void CScriptThing::v023() {}
+void CScriptThing::v024() {}
+void CScriptThing::v025() {}
+void CScriptThing::v026() {}
+void CScriptThing::v027() {}
+void CScriptThing::v028() {}
+void CScriptThing::v029() {}
+void CScriptThing::v030() {}
+void CScriptThing::v031() {}
+void CScriptThing::v032() {}
+void CScriptThing::v033() {}
+void CScriptThing::v034() {}
+void CScriptThing::v035() {}
+void CScriptThing::v036() {}
+void CScriptThing::v037() {}
+void CScriptThing::v038() {}
+void CScriptThing::v039() {}
+void CScriptThing::v040() {}
+void CScriptThing::v041() {}
+void CScriptThing::v042() {}
+void CScriptThing::v043() {}
+void CScriptThing::v044() {}
+void CScriptThing::v045() {}
+void CScriptThing::v046() {}
+void CScriptThing::v047() {}
+void CScriptThing::v048() {}
+void CScriptThing::v049() {}
+void CScriptThing::v050() {}
+void CScriptThing::v051() {}
+void CScriptThing::v052() {}
+void CScriptThing::v053() {}
+void CScriptThing::v054() {}
+void CScriptThing::v055() {}
+void CScriptThing::v056() {}
+void CScriptThing::v057() {}
+void CScriptThing::v058() {}
+void CScriptThing::v059() {}
+void CScriptThing::v060() {}
+void CScriptThing::v061() {}
+void CScriptThing::v062() {}
+void CScriptThing::v063() {}
+void CScriptThing::v064() {}
+void CScriptThing::v065() {}
+void CScriptThing::v066() {}
+void CScriptThing::v067() {}
+void CScriptThing::v068() {}
+void CScriptThing::v069() {}
+void CScriptThing::v070() {}
+void CScriptThing::v071() {}
+void CScriptThing::v072() {}
+void CScriptThing::v073() {}
+void CScriptThing::v074() {}
+CThing* CScriptThing::GetThing() const { return 0; }
+bool CScriptThing::IsValid() const { return false; }
+class CTestScriptThing : public CScriptThing { public: CThing* T; bool Valid; mutable int Gets; CThing* GetThing() const { ++Gets; return T; } bool IsValid() const { return Valid; } };
+static int g_ctors, g_sets, g_cpdtor; static void* g_obj; static CGameCameraManager* g_mgrThis;
+static const CThing* g_target; static const C3DVector *g_from, *g_to; static long g_frames; static float g_f;
+NCameraModes::CScriptModuleBase::~CScriptModuleBase() {}
+NCameraModes::CScriptModuleMoveBetweenLookingAt::CScriptModuleMoveBetweenLookingAt(const CThing& lookAt, const C3DVector& from, const C3DVector& to, long frames, float f)
+{ ++g_ctors; g_target = &lookAt; g_from = &from; g_to = &to; g_frames = frames; g_f = f; g_obj = this; }
+template <class T> CCountedPointer<T>::CCountedPointer(T* o) { Object = o; Count = 0; }
+template <class T> CCountedPointer<T>::CCountedPointer(const CCountedPointer& o) { Object = o.Object; Count = o.Count; }
+template <class T> CCountedPointer<T>::~CCountedPointer() { ++g_cpdtor; delete Object; }
+void CGameCameraManager::SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode) { ++g_sets; g_mgrThis = this; if (mode.Object != g_obj) g_sets += 100; }
+static CGameCameraManager g_mgr;
+void CAIGameCameraBase::v00() {} void CAIGameCameraBase::v01() {} void CAIGameCameraBase::v02() {} void CAIGameCameraBase::v03() {}
+void CAIGameCameraBase::v04() {} void CAIGameCameraBase::v05() {} void CAIGameCameraBase::v06() {} void CAIGameCameraBase::v07() {}
+void CAIGameCameraBase::v08() {}
+bool CAIGameCameraBase::GetCameraManager(CGameCameraManager** m) { *m = &g_mgr; return true; }
+long g_WorldFramesPerSecond = 30;
 int main()
 {
-    ThingVftable thingVftable = {};
-    ThingStorage thingStorage;
-    const CScriptThing& scriptThing =
-        reinterpret_cast<const CScriptThing&>(thingStorage);
-    ResolverVftable resolverVftable = {};
-    Resolver resolver;
-    Owner owner = {};
-    InterfaceStorage storage = {};
-    CGameScriptInterface& interfaceObject =
-        reinterpret_cast<CGameScriptInterface&>(storage);
-    C3DVector first = {0x11};
-    C3DVector second = {0x22};
-    unsigned char interpolatorBytes[0x90] = {};
-
-    thingVftable.m_IsValid = reinterpret_cast<void*>(IsValid);
-    thingVftable.m_GetTarget = reinterpret_cast<void*>(GetTarget);
-    thingStorage.m_pVftable = &thingVftable;
-    resolverVftable.m_Resolve = reinterpret_cast<void*>(ResolveThunk);
-    resolver.m_pVftable = &resolverVftable;
-    owner.m_pResolver = &resolver;
-    storage.m_pOwner = &owner;
-    g_pTarget = reinterpret_cast<void*>(0x3456789A);
-    g_pReceiver =
-        reinterpret_cast<CGSICameraLookingAtThing_Receiver*>(
-            0x12345678);
-    g_pExpectedFirst = &first;
-    g_pExpectedSecond = &second;
-    g_pCallbackValue = reinterpret_cast<void*>(0x87654321);
-
-    ResetCalls();
-    g_IsValid = false;
-    interfaceObject.CGameScriptInterface::CameraMoveBetweenLookingAt(
-        first, second, scriptThing, 2.0f, -1.0f);
-    if (g_IsValidCalls != 1 || g_GetTargetCalls != 0 ||
-        g_ResolveCalls != 0 || g_SetModeCalls != 0)
-        return Fail("invalid thing guard");
-
-    ResetCalls();
-    g_IsValid = true;
-    g_pInterpolatorStorage = 0;
-    interfaceObject.CGameScriptInterface::CameraMoveBetweenLookingAt(
-        first, second, scriptThing, 2.0f, -1.0f);
-    if (g_GetTargetCalls != 1 || g_ResolveCalls != 1 ||
-        g_AllocateCalls != 1 || g_AllocationSize != 0x90 ||
-        g_ConstructCalls != 0 || g_ModeArgumentCalls != 1 ||
-        g_SetModeCalls != 1 || g_pReceivedInterpolator != 0 ||
-        g_pReceivedCallback != 0)
-        return Fail("allocation fallback");
-
-    ResetCalls();
-    g_pInterpolatorStorage =
-        reinterpret_cast<CGSICameraLookingAtThing_Interpolator*>(
-            interpolatorBytes);
-    g_ExpectedScaledDuration = 30;
-    g_ExpectedBlendBits = 0x3E4CCCCD;
-    interfaceObject.CGameScriptInterface::CameraMoveBetweenLookingAt(
-        first, second, scriptThing, 2.0f, -1.0f);
-    if (g_ConstructCalls != 1 || g_ModeArgumentCalls != 1 ||
-        g_SetModeCalls != 1 ||
-        g_pReceivedInterpolator != g_pInterpolatorStorage ||
-        g_pReceivedCallback != g_pCallbackValue)
-        return Fail("clamped successful dispatch");
-
-    ResetCalls();
-    g_ExpectedScaledDuration = -30;
-    g_ExpectedBlendBits = 0x7FC12345;
-    interfaceObject.CGameScriptInterface::CameraMoveBetweenLookingAt(
-        first, second, scriptThing, -2.0f,
-        FloatWithBits(g_ExpectedBlendBits));
-    if (g_ConstructCalls != 1 || g_SetModeCalls != 1)
-        return Fail("NaN blend or negative scale");
-
-    std::printf("FSE2_008926d0_TEST PASS\n");
-    return 0;
+    CThing t; t.ThingTypeFlags = 0;
+    CAIGameCameraBase cam; static unsigned char raw[sizeof(CWorld) + 8]; CWorld& w = *(CWorld*)raw; w.PCurrentGameCamera = &cam;
+    CGameScriptInterface gsi; gsi.World = &w;
+    CTestScriptThing s; s.T = &t; s.Valid = false; s.Gets = 0;
+    const C3DVector& p1 = *(const C3DVector*)(raw + 1); const C3DVector& p2 = *(const C3DVector*)(raw + 2);
+    gsi.CameraMoveBetweenLookingAt(p1, p2, s, 1.0f, -1.0f); bool ok = g_ctors == 0 && s.Gets == 0 && g_sets == 0;
+    s.Valid = true; gsi.CameraMoveBetweenLookingAt(p1, p2, s, 1.0f, -1.0f);
+    ok = ok && g_ctors == 1 && s.Gets == 1 && g_target == &t && g_from == &p1 && g_to == &p2 && g_frames == 30 && g_f == 0.2f
+         && g_sets == 1 && g_mgrThis == &g_mgr && g_cpdtor == 1;
+    gsi.CameraMoveBetweenLookingAt(p1, p2, s, 0.1f, 2.0f);
+    ok = ok && g_ctors == 2 && g_frames == 3 && g_f == 2.0f && g_sets == 2;
+    std::printf(ok ? "008926d0_TEST PASS\n" : "008926d0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

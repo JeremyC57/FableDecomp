@@ -1,14 +1,28 @@
-#include <cstdio>
-struct Inner { int called; int arg; };
-struct CTCBulletTime { Inner* f4; char pad[0x54-8]; char f54; char pad2; char f56; };
-Inner g_inner;
-void Inner_Method(Inner* self, int a) { self->called=1; self->arg=a; }
-void model(CTCBulletTime* self){ self->f56=1; self->f54=0; Inner_Method(self->f4, 0x92); }
-int main(){
-  CTCBulletTime o; o.f4=&g_inner; o.f54=9; o.f56=9; g_inner.called=0; g_inner.arg=0;
-  model(&o);
-  if(o.f56!=1){printf("FAIL f56\n");return 1;}
-  if(o.f54!=0){printf("FAIL f54\n");return 1;}
-  if(g_inner.called!=1||g_inner.arg!=0x92){printf("FAIL call\n");return 1;}
-  printf("OK_0079c660\n");return 0;
+// behaviour test for 0x0079C660
+#include <stdio.h>
+#include <string.h>
+struct CTCBulletTime { void* vt; long f4; unsigned char _pad[0x54 - 8]; bool Pausable; bool Paused; bool CutSceneCancel; unsigned char _p; };
+enum ETCInterfaceType { TCI_BULLET_TIME = 0x92 };
+class CThing {
+public:
+    int removed;
+    void RemoveTC(ETCInterfaceType type) { removed = type; }
+};
+struct CTCBulletTime_Methods : CTCBulletTime {
+    CThing* GetParentThing() const { return (CThing*)f4; }
+    void CancelForCutscene();
+};
+void CTCBulletTime_Methods::CancelForCutscene()
+{
+    CutSceneCancel = true;
+    Pausable = false;
+    GetParentThing()->RemoveTC(TCI_BULLET_TIME);
+}
+int main()
+{
+    CThing t; t.removed = 0; CTCBulletTime_Methods b; memset(&b, 0, sizeof(b)); b.f4 = (long)&t; b.Pausable = true;
+    b.CancelForCutscene();
+    int ok = b.CutSceneCancel && !b.Pausable && !b.Paused && t.removed == 0x92;
+    printf(ok ? "0079c660_TEST PASS\n" : "0079c660_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

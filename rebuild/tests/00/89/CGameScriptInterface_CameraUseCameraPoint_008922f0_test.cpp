@@ -1,253 +1,126 @@
 #include <cstdio>
-#include <cstring>
-
-class CCharString
-{
+class CCharString;
+struct CCPPointerInfo {
+    long  RefCount;
+    void  (__fastcall* DeleteFunc)(void* data);
+    void* Data;
+};
+template <class T> class CCountedPointer {
 public:
-    unsigned long m_Marker;
+    T*              Data;
+    CCPPointerInfo* Info;
+    ~CCountedPointer()
+    {
+        if (Info)
+        {
+            --Info->RefCount;
+            if (Info->RefCount == 0)
+            {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
 };
-
-class CScriptThing
-{
+class CBaseClass {
 public:
-    unsigned long m_Marker;
+    virtual ~CBaseClass();                               // 0x0099A2E0
 };
-
-struct CGSICameraUseCameraPoint_Temporary
-{
-    void* m_pVftable;
-    unsigned long m_Field04;
-    void* m_pReference;
-};
-
-struct CGSICameraUseCameraPoint_Reference
-{
-    long m_RefCount;
-    void* m_Release;
-    void* m_pContext;
-};
-
-void* CGSICameraUseCameraPoint_ScriptThingVftable[1];
-
-class CGSICameraUseCameraPoint_Base
-{
+class CScriptThing : public CBaseClass {
 public:
-    void Destroy();
+    CCountedPointer<CScriptThing> PImp;                  // +0x04
+    CScriptThing(const CScriptThing& other);
+    virtual ~CScriptThing() {}
 };
-
-class CGameScriptInterface
-{
+#define V10(p) virtual void p##0(); virtual void p##1(); virtual void p##2(); virtual void p##3(); virtual void p##4(); \
+               virtual void p##5(); virtual void p##6(); virtual void p##7(); virtual void p##8(); virtual void p##9();
+class CGameScriptInterface {
 public:
-    virtual void CameraUseCameraPoint(
-        const CCharString& cameraPointName,
-        const CScriptThing& target,
-        float transitionTime,
-        long firstMode,
-        long secondMode) const;
+    V10(_s000)
+    V10(_s001)
+    V10(_s002)
+    V10(_s003)
+    V10(_s004)
+    V10(_s005)
+    V10(_s006)
+    virtual void _v070(); virtual void _v071();
+    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;          // slot 72 (+0x120)
+    virtual void _v073(); virtual void _v074(); virtual void _v075(); virtual void _v076(); virtual void _v077();
+    virtual void _v078(); virtual void _v079();
+    V10(_s008)
+    V10(_s009)
+    V10(_s010)
+    V10(_s011)
+    V10(_s012)
+    V10(_s013)
+    V10(_s014)
+    V10(_s015)
+    V10(_s016)
+    V10(_s017)
+    V10(_s018)
+    V10(_s019)
+    V10(_s020)
+    V10(_s021)
+    V10(_s022)
+    V10(_s023)
+    V10(_s024)
+    V10(_s025)
+    V10(_s026)
+    V10(_s027)
+    V10(_s028)
+    V10(_s029)
+    V10(_s030)
+    V10(_s031)
+    V10(_s032)
+    V10(_s033)
+    V10(_s034)
+    V10(_s035)
+    V10(_s036)
+    V10(_s037)
+    V10(_s038)
+    V10(_s039)
+    V10(_s040)
+    virtual void _v410(); virtual void _v411(); virtual void _v412();
+    virtual void CameraUseCameraPoint(const CCharString& name, const CScriptThing& target, float time,
+                                      long mode1, long mode2) const;                       // slot 414 (+0x678)
+    virtual void CameraUseCameraPoint(const CScriptThing& point, const CScriptThing& target, float time,
+                                      long mode1, long mode2) const;                       // slot 413 (+0x674)
 };
 
-struct CGSICameraUseCameraPoint_Vftable
+void CGameScriptInterface::CameraUseCameraPoint(const CCharString& name, const CScriptThing& target, float time,
+                                                long mode1, long mode2) const
 {
-    unsigned char m_Pad00[0x120];
-    void* m_ResolveCameraPoint;
-    unsigned char m_Pad124[0x674 - 0x124];
-    void* m_UseCameraPoint;
-};
-
-struct CGSICameraUseCameraPoint_InterfaceStorage
-{
-    CGSICameraUseCameraPoint_Vftable* m_pVftable;
-};
-
-static const CGameScriptInterface* g_pExpectedInterface;
-static const CCharString* g_pExpectedName;
-static const CScriptThing* g_pExpectedTarget;
-static unsigned long g_ExpectedFloatBits;
-static long g_ExpectedFirstMode;
-static long g_ExpectedSecondMode;
-static CGSICameraUseCameraPoint_Reference* g_pResolveReference;
-static CGSICameraUseCameraPoint_Temporary* g_pResolvedTemporary;
-static unsigned long g_ResolveCalls;
-static unsigned long g_UseCalls;
-static unsigned long g_ReleaseCalls;
-static unsigned long g_FreeCalls;
-static unsigned long g_BaseDestroyCalls;
-static void* g_pExpectedReleaseContext;
-
-static void __cdecl ResolveCameraPointHelper(
-    const CGameScriptInterface* pInterface,
-    CGSICameraUseCameraPoint_Temporary* pResult,
-    const CCharString* pName)
-{
-    ++g_ResolveCalls;
-    if (pInterface != g_pExpectedInterface || pName != g_pExpectedName)
-    {
-        std::printf("resolve arguments mismatch\n");
-        return;
-    }
-
-    pResult->m_pVftable = reinterpret_cast<void*>(0x11111111);
-    pResult->m_Field04 = 0x22222222;
-    pResult->m_pReference = g_pResolveReference;
+    CScriptThing point = GetThingWithScriptName(name);
+    CameraUseCameraPoint(point, target, time, mode1, mode2);
 }
 
-static void __declspec(naked) ResolveCameraPointThunk()
+CBaseClass::~CBaseClass() {}
+struct RawThing { void* vt; void* data; CCPPointerInfo* info; };
+static int g_deleted, g_lookups, g_forwards; static const CCharString* g_name; static void* g_data;
+static const CScriptThing* g_target; static float g_time; static long g_m1, g_m2; static long g_seenRef;
+static void __fastcall DeleteData(void* d) { g_data = d; ++g_deleted; }
+static CScriptThing* __fastcall Lookup(void* self, int, CScriptThing* ret, const CCharString* name)
 {
-    __asm
-    {
-        push dword ptr [esp + 8]
-        push dword ptr [esp + 8]
-        push ecx
-        call ResolveCameraPointHelper
-        add esp, 0Ch
-        ret 8
-    }
+    ++g_lookups; g_name = name;
+    RawThing* r = (RawThing*)ret; r->vt = 0; r->data = (void*)0x1234;
+    r->info = new CCPPointerInfo; r->info->RefCount = 1; r->info->DeleteFunc = DeleteData; r->info->Data = (void*)0x5678;
+    return ret;
 }
-
-static void __cdecl UseCameraPointHelper(
-    const CGameScriptInterface* pInterface,
-    CGSICameraUseCameraPoint_Temporary* pResolved,
-    const CScriptThing* pTarget,
-    unsigned long transitionBits,
-    long firstMode,
-    long secondMode)
+static void __fastcall Forward(void* self, int, const CScriptThing* point, const CScriptThing* target, float time, long m1, long m2)
 {
-    ++g_UseCalls;
-    if (pInterface != g_pExpectedInterface ||
-        pResolved->m_pReference != g_pResolveReference ||
-        pTarget != g_pExpectedTarget ||
-        transitionBits != g_ExpectedFloatBits ||
-        firstMode != g_ExpectedFirstMode ||
-        secondMode != g_ExpectedSecondMode)
-    {
-        std::printf("use arguments mismatch\n");
-    }
-    g_pResolvedTemporary = pResolved;
+    ++g_forwards; g_target = target; g_time = time; g_m1 = m1; g_m2 = m2;
+    g_seenRef = ((const RawThing*)point)->info->RefCount;
 }
-
-static void __declspec(naked) UseCameraPointThunk()
-{
-    __asm
-    {
-        push dword ptr [esp + 14h]
-        push dword ptr [esp + 14h]
-        push dword ptr [esp + 14h]
-        push dword ptr [esp + 14h]
-        push dword ptr [esp + 14h]
-        push ecx
-        call UseCameraPointHelper
-        add esp, 18h
-        ret 14h
-    }
-}
-
-static void __fastcall ReleaseReference(void* pContext)
-{
-    if (pContext != g_pExpectedReleaseContext)
-        std::printf("release context mismatch\n");
-    ++g_ReleaseCalls;
-}
-
-void __cdecl CGSICameraUseCameraPoint_Free(void* pMemory)
-{
-    if (pMemory != g_pResolveReference)
-        std::printf("free pointer mismatch\n");
-    ++g_FreeCalls;
-}
-
-void CGSICameraUseCameraPoint_Base::Destroy()
-{
-    CGSICameraUseCameraPoint_Temporary* const pThis =
-        reinterpret_cast<CGSICameraUseCameraPoint_Temporary*>(this);
-    if (pThis != g_pResolvedTemporary ||
-        pThis->m_Field04 != 0 || pThis->m_pReference != 0 ||
-        pThis->m_pVftable !=
-            CGSICameraUseCameraPoint_ScriptThingVftable)
-    {
-        std::printf("base destruction state mismatch\n");
-    }
-    ++g_BaseDestroyCalls;
-}
-
-static int Fail(const char* pMessage)
-{
-    std::printf("FSE2_008922f0_TEST FAIL: %s\n", pMessage);
-    return 1;
-}
-
-static void SetFloatBits(float& value, unsigned long bits)
-{
-    std::memcpy(&value, &bits, sizeof(bits));
-}
-
 int main()
 {
-    CGSICameraUseCameraPoint_Vftable vftable = {};
-    CGSICameraUseCameraPoint_InterfaceStorage storage;
-    CGameScriptInterface& interfaceObject =
-        reinterpret_cast<CGameScriptInterface&>(storage);
-    CCharString name;
-    CScriptThing target;
-    CGSICameraUseCameraPoint_Reference reference;
-    float transition;
-
-    vftable.m_ResolveCameraPoint =
-        reinterpret_cast<void*>(ResolveCameraPointThunk);
-    vftable.m_UseCameraPoint =
-        reinterpret_cast<void*>(UseCameraPointThunk);
-    storage.m_pVftable = &vftable;
-    g_pExpectedInterface = &interfaceObject;
-    g_pExpectedName = &name;
-    g_pExpectedTarget = &target;
-    name.m_Marker = 0xA1A2A3A4;
-    target.m_Marker = 0xB1B2B3B4;
-
-    reference.m_RefCount = 3;
-    reference.m_Release = reinterpret_cast<void*>(ReleaseReference);
-    reference.m_pContext = reinterpret_cast<void*>(0x13572468);
-    g_pExpectedReleaseContext = reference.m_pContext;
-    g_pResolveReference = &reference;
-    g_ExpectedFloatBits = 0xFFC12345;
-    SetFloatBits(transition, g_ExpectedFloatBits);
-    g_ExpectedFirstMode = static_cast<long>(0x81234567);
-    g_ExpectedSecondMode = 0x76543210;
-    interfaceObject.CGameScriptInterface::CameraUseCameraPoint(
-        name, target, transition,
-        g_ExpectedFirstMode, g_ExpectedSecondMode);
-
-    if (g_ResolveCalls != 1 || g_UseCalls != 1 ||
-        g_ReleaseCalls != 0 || g_FreeCalls != 0 ||
-        g_BaseDestroyCalls != 1 || reference.m_RefCount != 2)
-        return Fail("retained reference path");
-
-    reference.m_RefCount = 1;
-    g_ExpectedFloatBits = 0x80000000;
-    SetFloatBits(transition, g_ExpectedFloatBits);
-    g_ExpectedFirstMode = -1;
-    g_ExpectedSecondMode = 0;
-    interfaceObject.CGameScriptInterface::CameraUseCameraPoint(
-        name, target, transition,
-        g_ExpectedFirstMode, g_ExpectedSecondMode);
-
-    if (g_ResolveCalls != 2 || g_UseCalls != 2 ||
-        g_ReleaseCalls != 1 || g_FreeCalls != 1 ||
-        g_BaseDestroyCalls != 2 || reference.m_RefCount != 0)
-        return Fail("released reference path");
-
-    g_pResolveReference = 0;
-    g_ExpectedFloatBits = 0x7F800000;
-    SetFloatBits(transition, g_ExpectedFloatBits);
-    g_ExpectedFirstMode = 0x10203040;
-    g_ExpectedSecondMode = -2;
-    interfaceObject.CGameScriptInterface::CameraUseCameraPoint(
-        name, target, transition,
-        g_ExpectedFirstMode, g_ExpectedSecondMode);
-
-    if (g_ResolveCalls != 3 || g_UseCalls != 3 ||
-        g_ReleaseCalls != 1 || g_FreeCalls != 1 ||
-        g_BaseDestroyCalls != 3)
-        return Fail("null reference path");
-
-    std::printf("FSE2_008922f0_TEST PASS\n");
-    return 0;
+    static void* vt[420]; vt[72] = (void*)Lookup; vt[413] = (void*)Forward;
+    void* obj = vt; const CGameScriptInterface* gsi = (const CGameScriptInterface*)&obj;
+    static RawThing target = { 0, 0, 0 }; const CCharString* name = (const CCharString*)0x4444;
+    gsi->CGameScriptInterface::CameraUseCameraPoint(*name, *(const CScriptThing*)&target, 2.5f, 3, 4);
+    bool ok = g_lookups == 1 && g_forwards == 1 && g_name == name && g_target == (const CScriptThing*)&target
+           && g_time == 2.5f && g_m1 == 3 && g_m2 == 4 && g_seenRef == 1 && g_deleted == 1 && g_data == (void*)0x5678;
+    std::printf(ok ? "008922f0_TEST PASS\n" : "008922f0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

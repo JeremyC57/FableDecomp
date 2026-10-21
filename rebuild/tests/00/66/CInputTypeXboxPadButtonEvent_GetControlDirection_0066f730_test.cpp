@@ -1,57 +1,35 @@
+// behaviour test for 0x0066F730 CInputTypeXboxPadButtonEvent::GetControlDirection
 #include <stdio.h>
+enum EXboxControllerButton { EXBOXCONTROLLERBUTTON_FORCE_DWORD = 0x7fffffff };
+class C2DVector {                                       // Ego_r.pdb C2DVector, 8 bytes; non-POD (returned through a hidden pointer)
+public:
+    float X;
+    float Y;
+    C2DVector() {}
+    C2DVector(float x, float y) : X(x), Y(y) {}
+};
+class CInputEvent {};
 
-extern "C" void* __fastcall
-CInputTypeXboxPadButtonEvent_GetControlDirection_0066f730(
-    void* input_type, void*, void* result, const void* event);
-
-struct Direction
-{
-    unsigned long x_bits;
-    unsigned long y_bits;
+class CInputTypeXboxPadButtonEvent {
+public:
+    virtual void _v00() {}
+    virtual void _v01() {}
+    virtual void _v02() {}
+    virtual void _v03() {}
+    virtual C2DVector GetControlDirection(const CInputEvent& event) const;   // slot 4
+    EXboxControllerButton Button; // +0x04
 };
 
-static int Check(int condition, const char* message)
+C2DVector CInputTypeXboxPadButtonEvent::GetControlDirection(const CInputEvent& event) const
 {
-    if (!condition)
-    {
-        printf("FAIL: %s\n", message);
-        return 0;
-    }
-    return 1;
+    return C2DVector(0.0f, 0.0f);
 }
 
 int main()
 {
-    int ok = 1;
-    Direction result;
-    unsigned long input_marker = 0x11223344;
-    unsigned long event_marker = 0x55667788;
-    void* returned;
-
-    result.x_bits = 0xffffffff;
-    result.y_bits = 0x7fc00001;
-    returned = CInputTypeXboxPadButtonEvent_GetControlDirection_0066f730(
-        &input_marker, 0, &result, &event_marker);
-    ok &= Check(returned == &result,
-                "hidden result buffer must be returned");
-    ok &= Check(result.x_bits == 0 && result.y_bits == 0,
-                "both direction components must be zeroed");
-    ok &= Check(input_marker == 0x11223344 &&
-                event_marker == 0x55667788,
-                "input type and event must remain untouched");
-
-    result.x_bits = 1;
-    result.y_bits = 2;
-    returned = CInputTypeXboxPadButtonEvent_GetControlDirection_0066f730(
-        0, 0, &result, 0);
-    ok &= Check(returned == &result &&
-                result.x_bits == 0 &&
-                result.y_bits == 0,
-                "zero vector must not depend on object or event");
-
-    if (!ok)
-        return 1;
-
-    puts("PASS CInputTypeXboxPadButtonEvent::GetControlDirection 0x0066F730");
-    return 0;
+    CInputTypeXboxPadButtonEvent o; const CInputTypeXboxPadButtonEvent* p = &o; CInputEvent e;
+    C2DVector r = p->GetControlDirection(e);
+    int ok = r.X == 0.0f && r.Y == 0.0f;
+    printf(ok ? "0066f730_TEST PASS\n" : "0066f730_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

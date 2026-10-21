@@ -1,41 +1,30 @@
+// behaviour test for 0x006A7120
 #include <stdio.h>
-
-struct CThing {
-    char pad[0x10];
-    unsigned char kind;
+#include <string.h>
+class CThing {
+public:
+    unsigned char _pad00[0x10];
+    unsigned char ThingTypeTag;                          // +0x10
 };
-
-struct Filter {
-    CThing* target;
-    int call(CThing* t) {
-        if (t != this->target) {
-            unsigned char k = t->kind;
-            if (k == 1 || k == 2) return 1;
-        }
-        return 0;
-    }
+class CThingCreatureBase : public CThing { };
+class CThingFilter_IsInterestingToCreature {
+public:
+    CThingCreatureBase* SourceCreature;                  // +0x00
+    bool operator()(const CThing& thing) const;
 };
+bool CThingFilter_IsInterestingToCreature::operator()(const CThing& thing) const
+{
+    return &thing != SourceCreature && (thing.ThingTypeTag == 1 || thing.ThingTypeTag == 2);
+}
 
-int main() {
-    CThing a; a.kind = 1;   // is the target
-    CThing b; b.kind = 1;
-    CThing c; c.kind = 2;
-    CThing d; d.kind = 0;
-    CThing e; e.kind = 5;
-
-    Filter f; f.target = &a;
-
-    // target itself -> excluded -> 0 (even though kind=1)
-    if (f.call(&a) != 0) { printf("no1\n"); return 1; }
-    // not target, kind 1 -> 1
-    if (f.call(&b) != 1) { printf("no2\n"); return 1; }
-    // not target, kind 2 -> 1
-    if (f.call(&c) != 1) { printf("no3\n"); return 1; }
-    // not target, kind 0 -> 0
-    if (f.call(&d) != 0) { printf("no4\n"); return 1; }
-    // not target, kind 5 -> 0
-    if (f.call(&e) != 0) { printf("no5\n"); return 1; }
-
-    printf("PARITY_OK\n");
-    return 0;
+int main()
+{
+    CThingCreatureBase self, other; memset(&self, 0, sizeof(self)); memset(&other, 0, sizeof(other));
+    CThingFilter_IsInterestingToCreature f; f.SourceCreature = &self;
+    self.ThingTypeTag = 2; other.ThingTypeTag = 2;
+    int ok = !f(self) && f(other);
+    other.ThingTypeTag = 1; ok &= f(other);
+    other.ThingTypeTag = 3; ok &= !f(other);
+    printf(ok ? "006a7120_TEST PASS\n" : "006a7120_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

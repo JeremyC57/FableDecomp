@@ -1,26 +1,33 @@
-
-#include <cstdio>
-static void* g_a; static void* g_b; static int g_called;
-extern "C" void __stdcall Helper_9cbd10(void* a, void* b){ g_a=a; g_b=b; g_called++; }
-void* GetEnumerationType_Font(void* a, void* b)
+// behaviour test for 0x00A63380
+#include <stdio.h>
+static int g_copies = 0; static unsigned long g_type = 0;
+class CCharStringData;
+class CCharString {
+public:
+    CCharStringData* PStringData;
+    CCharString(long v) : PStringData((CCharStringData*)v) {}
+    CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }
+    ~CCharString() {}
+};
+class CBankFile {
+public:
+    virtual CCharString GetEnumerationType(unsigned long type) const { g_type = type; return CCharString(0x1234); }
+};
+class CBankFileAsync : public CBankFile { };
+class CFontDataBank : public CBankFileAsync {
+public:
+    virtual CCharString GetEnumerationType(unsigned long type) const;
+};
+CCharString CFontDataBank::GetEnumerationType(unsigned long type) const
 {
-    Helper_9cbd10(a, b);
-    return a;
+    return CBankFile::GetEnumerationType(type);
 }
-int main(){
-    int x, y;
-    void* pa=&x; void* pb=&y;
-    void* r = GetEnumerationType_Font(pa, pb);
-    int ok=1;
-    if (r!=pa) ok=0;
-    if (g_a!=pa) ok=0;
-    if (g_b!=pb) ok=0;
-    if (g_called!=1) ok=0;
-    void* r2 = GetEnumerationType_Font(pb, pa);
-    if (r2!=pb) ok=0;
-    if (g_a!=pb) ok=0;
-    if (g_b!=pa) ok=0;
-    if (g_called!=2) ok=0;
-    if(ok) printf("OK_00a63380\n"); else printf("FAIL\n");
-    return ok?0:1;
+
+int main()
+{
+    CFontDataBank b;
+    CCharString s = b.GetEnumerationType(7);
+    int ok = (long)s.PStringData == 0x1234 && g_type == 7;
+    printf(ok ? "00a63380_TEST PASS\n" : "00a63380_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

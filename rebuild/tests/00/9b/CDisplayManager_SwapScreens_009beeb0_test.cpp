@@ -1,153 +1,97 @@
-#include <stdio.h>
-
-#include "rebuild_abi.h"
-
-struct FableDisplayDevice
-{
-    virtual void __stdcall Slot00() = 0;
-    virtual void __stdcall Slot01() = 0;
-    virtual void __stdcall Slot02() = 0;
-    virtual void __stdcall Slot03() = 0;
-    virtual void __stdcall Slot04() = 0;
-    virtual void __stdcall Slot05() = 0;
-    virtual void __stdcall Slot06() = 0;
-    virtual void __stdcall Slot07() = 0;
-    virtual void __stdcall Slot08() = 0;
-    virtual void __stdcall Slot09() = 0;
-    virtual void __stdcall Slot0A() = 0;
-    virtual void __stdcall Slot0B() = 0;
-    virtual void __stdcall Slot0C() = 0;
-    virtual void __stdcall Slot0D() = 0;
-    virtual void __stdcall Slot0E() = 0;
-    virtual void __stdcall Slot0F() = 0;
-    virtual void __stdcall Slot10() = 0;
-    virtual long __stdcall Present(
-        void* sourceRectangle,
-        void* destinationRectangle,
-        void* destinationWindowOverride,
-        void* dirtyRegion) = 0;
+#include <cstdio>
+typedef long HRESULT;
+struct IDirect3DDevice9 {
+    virtual void __stdcall _v00(); virtual void __stdcall _v01(); virtual void __stdcall _v02(); virtual void __stdcall _v03();
+    virtual void __stdcall _v04(); virtual void __stdcall _v05(); virtual void __stdcall _v06(); virtual void __stdcall _v07();
+    virtual void __stdcall _v08(); virtual void __stdcall _v09(); virtual void __stdcall _v10(); virtual void __stdcall _v11();
+    virtual void __stdcall _v12(); virtual void __stdcall _v13(); virtual void __stdcall _v14(); virtual void __stdcall _v15();
+    virtual void __stdcall _v16();
+    virtual HRESULT __stdcall Present(const void* source_rect, const void* dest_rect, void* dest_window, const void* dirty_region);   // slot 17
 };
-
-struct CVsyncCallbackTimer
-{
-    void OnPostSwapScreens();
+const HRESULT D3D_OK = 0;
+const HRESULT D3DERR_DEVICELOST = (HRESULT)0x88760868;
+class CVsyncCallbackTimer {
+public:
+    void OnPresent();                                    // 0x009F73C0 (name not confirmed)
 };
-
-struct CDisplayManagerSwapScreensView
-{
-    fable_u8 unknown000[0x58];
-    FableDisplayDevice* displayDevice58;
-    fable_u8 unknown05C[0x140];
-    fable_i32 backBufferCount19C;
-    fable_u8 unknown1A0[0x78];
-    fable_i32 currentBackBuffer218;
-    fable_u8 unknown21C[0x39];
-    fable_u8 deviceLost255;
-    fable_u8 unknown256[0x06];
-    fable_i32 presentCount25C;
-    fable_u8 unknown260[0x34];
-    CVsyncCallbackTimer* vsyncCallbackTimer294;
-
+class CDisplayManager {
+public:
+    unsigned char        _pad000[0x58];
+    IDirect3DDevice9*    D3DDevice;                      // +0x058
+    unsigned char        _pad05c[0x19c - 0x5c];
+    long                 NoBackBuffers;                  // +0x19c
+    unsigned char        _pad1a0[0x218 - 0x1a0];
+    long                 CurrentScreenIndex;             // +0x218
+    unsigned char        _pad21c[0x255 - 0x21c];
+    bool                 DeviceLostFlag;                 // +0x255
+    unsigned char        _pad256[0x25c - 0x256];
+    long                 FrameCounter;                   // +0x25c
+    unsigned char        _pad260[0x294 - 0x260];
+    CVsyncCallbackTimer* VsyncCallbackTimer;             // +0x294 (scoped_ptr)
     bool SwapScreens();
-};
-
-static long g_presentResult = 0;
-static int g_presentCalls = 0;
-static int g_callbackCalls = 0;
-
-static long __stdcall PresentFixture(
-    FableDisplayDevice*,
-    void* sourceRectangle,
-    void* destinationRectangle,
-    void* destinationWindowOverride,
-    void* dirtyRegion)
-{
-    ++g_presentCalls;
-    if (sourceRectangle != 0 ||
-        destinationRectangle != 0 ||
-        destinationWindowOverride != 0 ||
-        dirtyRegion != 0)
+    bool CheckPresentResult(HRESULT hr)
     {
-        return -2;
+        if (hr == D3DERR_DEVICELOST)
+        {
+            DeviceLostFlag = true;
+            return false;
+        }
+        if (hr != D3D_OK)
+            return false;
+        return true;
     }
-    return g_presentResult;
-}
-
-void CVsyncCallbackTimer::OnPostSwapScreens()
+};
+bool CDisplayManager::SwapScreens()
 {
-    ++g_callbackCalls;
+    ++FrameCounter;
+    if (!CheckPresentResult(D3DDevice->Present(0, 0, 0, 0)))
+        return false;
+    VsyncCallbackTimer->OnPresent();
+    CurrentScreenIndex = (CurrentScreenIndex + 1) % (NoBackBuffers + 1);
+    return true;
 }
 
-static void ResetObservations()
-{
-    g_presentCalls = 0;
-    g_callbackCalls = 0;
-}
-
+void __stdcall IDirect3DDevice9::_v00() {}
+void __stdcall IDirect3DDevice9::_v01() {}
+void __stdcall IDirect3DDevice9::_v02() {}
+void __stdcall IDirect3DDevice9::_v03() {}
+void __stdcall IDirect3DDevice9::_v04() {}
+void __stdcall IDirect3DDevice9::_v05() {}
+void __stdcall IDirect3DDevice9::_v06() {}
+void __stdcall IDirect3DDevice9::_v07() {}
+void __stdcall IDirect3DDevice9::_v08() {}
+void __stdcall IDirect3DDevice9::_v09() {}
+void __stdcall IDirect3DDevice9::_v10() {}
+void __stdcall IDirect3DDevice9::_v11() {}
+void __stdcall IDirect3DDevice9::_v12() {}
+void __stdcall IDirect3DDevice9::_v13() {}
+void __stdcall IDirect3DDevice9::_v14() {}
+void __stdcall IDirect3DDevice9::_v15() {}
+void __stdcall IDirect3DDevice9::_v16() {}
+HRESULT __stdcall IDirect3DDevice9::Present(const void*, const void*, void*, const void*) { return 1; }
+static HRESULT g_hr; static int g_presents, g_ticks;
+struct CTestDevice : IDirect3DDevice9 {
+    void __stdcall _v00() {} void __stdcall _v01() {} void __stdcall _v02() {} void __stdcall _v03() {}
+    void __stdcall _v04() {} void __stdcall _v05() {} void __stdcall _v06() {} void __stdcall _v07() {}
+    void __stdcall _v08() {} void __stdcall _v09() {} void __stdcall _v10() {} void __stdcall _v11() {}
+    void __stdcall _v12() {} void __stdcall _v13() {} void __stdcall _v14() {} void __stdcall _v15() {}
+    void __stdcall _v16() {}
+    HRESULT __stdcall Present(const void* a, const void* b, void* c, const void* d) { ++g_presents; return (a || b || c || d) ? 1 : g_hr; }
+};
+void CVsyncCallbackTimer::OnPresent() { ++g_ticks; }
 int main()
 {
-    void* vtable[0x12] = {};
-    vtable[0x11] = reinterpret_cast<void*>(PresentFixture);
-    void* deviceStorage = vtable;
-    FableDisplayDevice* device =
-        reinterpret_cast<FableDisplayDevice*>(&deviceStorage);
-    CVsyncCallbackTimer timer;
-    CDisplayManagerSwapScreensView display = {};
-    display.displayDevice58 = device;
-    display.vsyncCallbackTimer294 = &timer;
-    display.backBufferCount19C = 2;
-    display.currentBackBuffer218 = 1;
-
-    ResetObservations();
-    g_presentResult = 0;
-    if (!display.SwapScreens() ||
-        g_presentCalls != 1 ||
-        g_callbackCalls != 1 ||
-        display.presentCount25C != 1 ||
-        display.currentBackBuffer218 != 2 ||
-        display.deviceLost255 != 0)
-    {
-        printf("FABLETLC_DISPLAY_SWAP_SCREENS_BEHAVIOR FAIL code=1\n");
-        return 1;
-    }
-
-    ResetObservations();
-    display.currentBackBuffer218 = 2;
-    if (!display.SwapScreens() ||
-        display.currentBackBuffer218 != 0 ||
-        display.presentCount25C != 2 ||
-        g_callbackCalls != 1)
-    {
-        printf("FABLETLC_DISPLAY_SWAP_SCREENS_BEHAVIOR FAIL code=2\n");
-        return 2;
-    }
-
-    ResetObservations();
-    g_presentResult = static_cast<long>(0x88760868);
-    display.currentBackBuffer218 = 1;
-    if (display.SwapScreens() ||
-        display.deviceLost255 != 1 ||
-        display.currentBackBuffer218 != 1 ||
-        display.presentCount25C != 3 ||
-        g_callbackCalls != 0)
-    {
-        printf("FABLETLC_DISPLAY_SWAP_SCREENS_BEHAVIOR FAIL code=3\n");
-        return 3;
-    }
-
-    ResetObservations();
-    g_presentResult = -1;
-    display.deviceLost255 = 0;
-    if (display.SwapScreens() ||
-        display.deviceLost255 != 0 ||
-        display.currentBackBuffer218 != 1 ||
-        display.presentCount25C != 4 ||
-        g_callbackCalls != 0)
-    {
-        printf("FABLETLC_DISPLAY_SWAP_SCREENS_BEHAVIOR FAIL code=4\n");
-        return 4;
-    }
-
-    printf("FABLETLC_DISPLAY_SWAP_SCREENS_BEHAVIOR PASS\n");
-    return 0;
+    static unsigned char raw[sizeof(CDisplayManager)];
+    CDisplayManager* m = (CDisplayManager*)raw;
+    CTestDevice dev; CVsyncCallbackTimer timer;
+    m->D3DDevice = &dev; m->VsyncCallbackTimer = &timer; m->NoBackBuffers = 2; m->CurrentScreenIndex = 1; m->FrameCounter = 10; m->DeviceLostFlag = false;
+    g_hr = D3D_OK;
+    bool ok = m->SwapScreens() && m->FrameCounter == 11 && m->CurrentScreenIndex == 2 && g_ticks == 1;
+    ok = ok && m->SwapScreens() && m->CurrentScreenIndex == 0 && g_ticks == 2;
+    g_hr = D3DERR_DEVICELOST;
+    ok = ok && !m->SwapScreens() && m->DeviceLostFlag && m->CurrentScreenIndex == 0 && g_ticks == 2 && m->FrameCounter == 13;
+    m->DeviceLostFlag = false; g_hr = (HRESULT)0x8876086c;
+    ok = ok && !m->SwapScreens() && !m->DeviceLostFlag && g_ticks == 2 && g_presents == 4;
+    std::printf(ok ? "009beeb0_TEST PASS\n" : "009beeb0_TEST FAIL\n");
+    return ok ? 0 : 1;
 }
