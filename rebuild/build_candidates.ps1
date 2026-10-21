@@ -257827,6 +257827,162 @@ $catalog = @(
         TestSource = '00/98/CShaderRenderManager_CreatePixelShader_0098a9a0_test.cpp'
         PassPattern = '0098a9a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004175e5'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_Shutdown_004175e5.cpp'
+        TestSource = '00/41/CMainGameComponent_Shutdown_004175e5_test.cpp'
+        PassPattern = '004175e5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00418c3b'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b.cpp'
+        TestSource = '00/41/CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00418c3b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00427dc9'
+        Module = 'NUISystem::CManager'
+        Source = '00/42/NUISystemCManager_CreateLevelSlider_00427dc9.cpp'
+        TestSource = '00/42/NUISystemCManager_CreateLevelSlider_00427dc9_test.cpp'
+        PassPattern = '00427dc9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045ce48'
+        Module = 'CRegionDef'
+        Source = '00/45/CRegionDef_operator_0045ce48.cpp'
+        TestSource = '00/45/CRegionDef_operator_0045ce48_test.cpp'
+        PassPattern = '0045ce48_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045f178'
+        Module = 'COpinionSourceDef'
+        Source = '00/45/COpinionSourceDef_Transfer_0045f178.cpp'
+        TestSource = '00/45/COpinionSourceDef_Transfer_0045f178_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0045f178_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046267d'
+        Module = 'CThingShotDef'
+        Source = '00/46/CThingShotDef_operator_0046267d.cpp'
+        TestSource = '00/46/CThingShotDef_operator_0046267d_test.cpp'
+        PassPattern = '0046267d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052d7b0'
+        Module = 'NUISystem::CObserver'
+        Source = '00/52/NUISystemCObserver_ObserveAllEvents_0052d7b0.cpp'
+        TestSource = '00/52/NUISystemCObserver_ObserveAllEvents_0052d7b0_test.cpp'
+        PassPattern = '0052d7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00646c44'
+        Module = 'NPlayerGui::CMultiStatBar'
+        Source = '00/64/NPlayerGuiCMultiStatBar_DrawStatBarOnLeft_00646c44.cpp'
+        TestSource = '00/64/NPlayerGuiCMultiStatBar_DrawStatBarOnLeft_00646c44_test.cpp'
+        PassPattern = '00646c44_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f92a0'
+        Module = 'NAnimationEvents::CManager'
+        Source = '00/6f/NAnimationEventsCManager_SaveBinary_006f92a0.cpp'
+        TestSource = '00/6f/NAnimationEventsCManager_SaveBinary_006f92a0_test.cpp'
+        PassPattern = '006f92a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00820cc0'
+        Module = 'CMap'
+        Source = '00/82/CMap_CMap_00820cc0.cpp'
+        TestSource = '00/82/CMap_CMap_00820cc0_test.cpp'
+        PassPattern = '00820cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008224e0'
+        Module = 'CMap'
+        Source = '00/82/CMap_CMap_008224e0.cpp'
+        TestSource = '00/82/CMap_CMap_008224e0_test.cpp'
+        PassPattern = '008224e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00862ec0'
+        Module = 'CModeStandBase'
+        Source = '00/86/CModeStandBase_AnimUpdate_00862ec0.cpp'
+        TestSource = '00/86/CModeStandBase_AnimUpdate_00862ec0_test.cpp'
+        PassPattern = '00862ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e7b90'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportIntangible'
+        Source = '00/8e/NCreatureModeCModeBriarRoseTeleportIntangible_OnActivate_008e7b90.cpp'
+        TestSource = '00/8e/NCreatureModeCModeBriarRoseTeleportIntangible_OnActivate_008e7b90_test.cpp'
+        PassPattern = '008e7b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e94a0'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_Open_009e94a0.cpp'
+        TestSource = '00/9e/CMemoryFile_Open_009e94a0_test.cpp'
+        PassPattern = '009e94a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76060'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_RemoveRegionZero_00a76060.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_RemoveRegionZero_00a76060_test.cpp'
+        PassPattern = '00a76060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab5190'
+        Module = 'CMouseDX'
+        Source = '00/ab/CMouseDX_UpdateCurrentStatusFromEvent_00ab5190.cpp'
+        TestSource = '00/ab/CMouseDX_UpdateCurrentStatusFromEvent_00ab5190_test.cpp'
+        PassPattern = '00ab5190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae8680'
+        Module = 'NParticleEngine::CParticleEmitterDatabase'
+        Source = '00/ae/NParticleEngineCParticleEmitterDatabase_GenerateHeaderFile_00ae8680.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterDatabase_GenerateHeaderFile_00ae8680_test.cpp'
+        PassPattern = '00ae8680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b09360'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_CPSCSingleSprite_00b09360.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_CPSCSingleSprite_00b09360_test.cpp'
+        PassPattern = '00b09360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b16d50'
+        Module = 'NParticleEngine::CPSCOrbit'
+        Source = '00/b1/NParticleEngineCPSCOrbit_StartUpdate_00b16d50.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCOrbit_StartUpdate_00b16d50_test.cpp'
+        PassPattern = '00b16d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b18af0'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_AddToBoundingSphere_00b18af0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_AddToBoundingSphere_00b18af0_test.cpp'
+        PassPattern = '00b18af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1cf20'
+        Module = 'CMatrix3x4'
+        Source = '00/c1/CMatrix3x4_PostMultiply_00c1cf20.cpp'
+        TestSource = '00/c1/CMatrix3x4_PostMultiply_00c1cf20_test.cpp'
+        PassPattern = '00c1cf20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da47a0'
+        Module = 'CMinionEscortEnd'
+        Source = '00/da/CMinionEscortEnd_Main_00da47a0.cpp'
+        TestSource = '00/da/CMinionEscortEnd_Main_00da47a0_test.cpp'
+        PassPattern = '00da47a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

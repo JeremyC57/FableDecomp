@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0052d7b0	MATCH	327v327	PASS	CObserver::ObserveAllEvents
+0045ce48	RELOCATION_MATCH	357v357	PASS	CRegionDef::operator= (label propagated)
+0046267d	RELOCATION_MATCH	351v351	PASS	CThingShotDef::operator= (label propagated)
+00a76060	RELOCATION_MATCH	347v347	PASS	RemoveRegionZero
+00a76770	DIFFER	318v321	-	level byte CSE'd into dl across the blocked branches; retail reloads and tail-jumps
+00b09360	RELOCATION_MATCH	321v321	PASS	CPSCSingleSprite ctor (body store order swept)
+00c1cf20	MATCH	398v398	PASS	CMatrix3x4::PostMultiply (__fastcall member; catalog label operator* wrong)
+00b16220	DIFFER	334v372	-	bare dword fistp rounding of CentreParam (inline-asm helper lane gap)
+00b16d50	RELOCATION_MATCH	337v337	PASS	CPSCOrbit::StartUpdate (first try)
+00ab5190	RELOCATION_MATCH	347v347	PASS	CMouseDX::UpdateCurrentStatusFromEvent (jump table, cases in retail block order)
+00ab5030	DIFFER	342v342	-	frame slot order of the POINT/C2DCoordI locals and the x/y register split (scheduling-class); 12 forms tried
+0081f240	DIFFER	368v392	-	blend-byte copies: retail rematerialises this->HeightMap and spills the source base; 6 forms tried
+00820cc0	RELOCATION_MATCH	350v350	PASS	CMap ctor (new map); STLport vector-base model
+008224e0	RELOCATION_MATCH	348v348	PASS	CMap ctor (from file); WorldPos via C2DCoordI(x,y)
+008dbb30	DIFFER	327v331	-	Acceleration=0 store uses the zero register edi in ours, an imm32 in retail (all other bytes match)
+00ac7cb0	DIFFER	334v350	-	x87 shape of the guarded fast normalise (squares CSE, operand order); 5 forms tried
+00b18af0	RELOCATION_MATCH	356v356	PASS	CPSCLight::AddToBoundingSphere (radius written back into the timeOffset parameter)
+00da47a0	RELOCATION_MATCH	371v371	PASS	CMinionEscortEnd::Main (sibling 0xDA45C0 model + scripted-thing handle)
+00eb3f40	DIFFER	378v381	-	dead leftovers in retail (zero local, mov bl,al of an unused bool) shift the register map
+00862ec0	RELOCATION_MATCH	333v333	PASS	CModeStandBase::AnimUpdate (GetPosition()+GetVelocity() operand order)
+008d90b0	DIFFER	354v353	-	frame-slot packing of the def name / GetInterface keys / out pointers (register rotation follows); 3 forms
+00646c44	RELOCATION_MATCH	330v330	PASS	CMultiStatBar::DrawStatBarOnLeft (pragma s, first try)
+00bdedd0	DIFFER	356v356	-	loop counter homed in the dead stream arg slot in retail, a frame slot in ours (all offsets shift); 7 forms
+006f92a0	RELOCATION_MATCH	390v390	PASS	NAnimationEvents::CManager::SaveBinary (inner event list as an object)
+00427dc9	RELOCATION_MATCH	360v360	PASS	NUISystem::CManager::CreateLevelSlider (pragmas s + y off)
+009e94a0	RELOCATION_MATCH	324v324	PASS	CMemoryFile::Open (first try; landed Read exception model)
+00ae8680	RELOCATION_MATCH	386v386	PASS	CParticleEmitterDatabase::GenerateHeaderFile (inline operator<< write order)
+00a1abf0	DIFFER	324v324	-	scheduling only: the NodeAskedToGetTo load/cmp sits before the reach fadd in retail (RTM and QFE give ours)
+008d99b0	DIFFER	326v326	-	x87 temporaries of the start->target lerp (operator forms); 4 forms tried
+0082a020	DIFFER	306v343	-	lane gap: bare dword fistp rounding (inline-asm helper); one draft graded
+004175e5	RELOCATION_MATCH	354v354	PASS	CMainGameComponent::Shutdown (pragma s; safe-bool scoped_ptr)
+008e7b90	RELOCATION_MATCH	342v342	PASS	CModeBriarRoseTeleportIntangible::OnActivate (def copy/holder + GetSubDef stand-in)
+008e7a00	DIFFER	391v391	-	frame-slot packing: IP temp overlays the string slot in ours, the key/effect slot in retail (registers fixed by inline GetParent)
+008dacb0	DIFFER	337v337	-	frame-slot packing: IP temp/key/bone string overlay the first string slot in ours, the effect-type slot in retail
+0085c7d0	DIFFER	332v332	-	vptr fetched into edx (retail eax) for the facing-vector call + one cross-product operand order (lane gap class)
+0045f178	RELOCATION_MATCH	370v370	PASS	COpinionSourceDef::Transfer (/GS, pragma s; named saving bool fixes block order)
+00acd960	DIFFER	383v383	-	register naming only: Data/Info of the copied counted pointer in edi/esi (ours esi/edi)
+00820840	DIFFER	372v372	-	eax/edx naming around the virtual calls + folded transform copy offset
+008201e0	DIFFER	354v345	-	frame-slot sharing of the theme out word and def pointer, x/area register homing, def release re-read
+00418c3b	RELOCATION_MATCH	399v399	PASS	CMainGameComponent::GenerateMetFilesFromLugFiles (/GS, pragma s, biased EBP; 8-byte find handle)

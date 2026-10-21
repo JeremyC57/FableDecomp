@@ -1,160 +1,84 @@
-#include "fable_game.h"
+// CMainGameComponent::GenerateMetFilesFromLugFiles() -- for every Data\Sound\*.lug script, compile it through the system manager's sound interface into a memory file written out as the matching .met file
+// Leaf: GenerateMetFilesFromLugFiles
+// Flags: /GS
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00418C3B (unaligned: a /Os TU), length 399 bytes, EBP-biased frame (`lea ebp,[esp-1ECh]`) with the /GS cookie, plain `ret` (static: ecx unused).
+// Callees: GetSoundDirectory 0x0041A2B0 (__fastcall, hidden result in ecx, L"Data\\Sound\\"; labelled CUserProfileManager::GetAutoSaveFileName), operator+(CWideString, const wchar_t*) 0x0099BF30 / (CWideString, CWideString) 0x0099BE70, CWideString() 0x0099AED0 (labelled CCharString) / (const wchar_t*) 0x0099B6B0 / ~ 0x0099B510, CAFile find first 0x00999760 / next 0x00999850, SplitPath 0x00997620, CMemoryFile(path, 3, 2) 0x009E97B0 / DumpToFile 0x009E9330 / ~ 0x00412020 (labelled CTCInventoryItem::OnDie), GFGetSystemManager 0x009A4EC0, the system manager's +0x7C interface slot 51.
+// Layout: retail CMemoryFile is 0x24 bytes (engine/CMemoryFile.h is the PDB 0x28 with a 16-byte CArray); the find handle is 8 bytes and the find data 0x20C (MAX_PATH wide name + a dword); CBinaryFileDataWriter {vptr 0x0122ED7C, CMemoryFile*}.
+// Shape: no `optimize("y", off)` -- the /Os large frame gives the biased EBP; frame members must not be char arrays (/GS moves char buffers next to the cookie); the file name is a named CWideString in its own block (built before SplitPath's pushes); the loop condition is computed inside the body (`more = FindNextFile(...)` before the destructors).
+#pragma optimize("s", on)
+#include <stddef.h>
+struct CWideStringData;
+struct CWideString {
+    CWideStringData* PStringData;
+    CWideString();                              // 0x0099AED0
+    CWideString(const wchar_t* text);           // 0x0099B6B0
+    ~CWideString();                             // 0x0099B510
+};
+CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
+CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
+void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
+struct CFindFileData {
+    wchar_t       FileName[260];
+    unsigned long Attributes;
+};
+struct CFindFileHandle {
+    long _body[2];
+};
+bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
+bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
+CWideString __fastcall GetSoundDirectory();     // 0x0041A2B0 (L"Data\\Sound\\")
+enum FileAccessType { FILE_ACCESS_2 = 2 };
+struct CMemoryFile {                            // retail 0x24 bytes (PDB 0x28: the CArray is 12 bytes in retail)
+    long _body[9];
+    CMemoryFile(const CWideString& path, long mode, unsigned long flags);   // 0x009E97B0
+    ~CMemoryFile();                             // 0x00412020
+    void DumpToFile();                          // 0x009E9330
+};
+struct CBinaryFileDataWriter {                  // vtable 0x0122ED7C
+    CMemoryFile* File;
+    CBinaryFileDataWriter(CMemoryFile* file) : File(file) { }
+    ~CBinaryFileDataWriter() { }
+    virtual void Write(const void* data, long size);   // slot 0 (0x00418EF7)
+};
+struct CSoundInterface {
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+    virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
+    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
+    virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
+    virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
+    virtual void v48(); virtual void v49(); virtual void v50();
+    virtual void CompileLugFile(const CWideString& path, CBinaryFileDataWriter* writer);   // slot 51 (+0xcc)
+};
+struct CSystemManager {
+    unsigned char    _pad00[0x7c];
+    CSoundInterface* Sound;                     // +0x7c
+};
+CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-namespace
+struct CMainGameComponent {
+    static void GenerateMetFilesFromLugFiles();
+};
+
+void CMainGameComponent::GenerateMetFilesFromLugFiles()
 {
-    const wchar_t kLugSearchPattern[] = L"*.lug";
-    const wchar_t kMetExtension[] = L".met";
-}
-
-extern "C" fable_u32 g_FableSecurityCookie_0139C8A8;
-extern "C" fable_u8 g_FableMetPersistVTable_0122ED7C;
-
-extern "C" void* __fastcall FableMetGetAutoSaveName_00418c3b(void*, void*);
-extern "C" void* __fastcall FableMetAssignValue_00418c3b(void*, const void*, const void*);
-extern "C" void __fastcall FableMetWideDtor_00418c3b(void*, void*);
-extern "C" bool __fastcall FableMetFindFirst_00418c3b(void*, void*, void*);
-extern "C" void __fastcall FableMetWideCtor_00418c3b(void*, void*);
-extern "C" void __fastcall FableMetWideLiteralCtor_00418c3b(void*, void*, const wchar_t*);
-extern "C" void __fastcall FableMetSplitPath_00418c3b(void*, void*, void*, void*, void*);
-extern "C" void* __fastcall FableMetAssignData_00418c3b(
-    void*,
-    const void*,
-    const void*);
-extern "C" void __fastcall FableMetMemoryFileCtor_00418c3b(void*, void*, const void*, fable_u32, fable_u32);
-extern "C" void* FableMetGetSystemManager_00418c3b();
-extern "C" void __fastcall FableMetDumpToFile_00418c3b(void*, void*);
-extern "C" bool __fastcall FableMetFindNext_00418c3b(void*, void*, void*);
-extern "C" void __fastcall FableMetMemoryFileDtor_00418c3b(void*, void*);
-extern "C" void __fastcall FableMetSecurityCheck_00418c3b(fable_u32, void*);
-
-__declspec(naked) void FABLE_FASTCALL
-CMainGameComponent::GenerateMetFilesFromLugFiles()
-{
-    __asm
-    {
-        push ebp
-        lea ebp, dword ptr [esp - 1ECh]
-        sub esp, 26Ch
-        mov eax, dword ptr [g_FableSecurityCookie_0139C8A8]
-        push offset kLugSearchPattern
-        lea ecx, dword ptr [ebp - 2Ch]
-        mov dword ptr [ebp + 1E8h], eax
-        call FableMetGetAutoSaveName_00418c3b
-        mov edx, eax
-        lea ecx, dword ptr [ebp - 30h]
-        call FableMetAssignValue_00418c3b
-        lea ecx, dword ptr [ebp - 2Ch]
-        call FableMetWideDtor_00418c3b
-        lea eax, dword ptr [ebp - 24h]
-        push eax
-        lea edx, dword ptr [ebp - 5Ch]
-        lea ecx, dword ptr [ebp - 30h]
-        call FableMetFindFirst_00418c3b
-        test al, al
-        jz enumeration_done
-        push ebx
-        push esi
-        push edi
-        mov esi, offset g_FableMetPersistVTable_0122ED7C
-
-    process_file:
-        lea ecx, dword ptr [ebp - 28h]
-        call FableMetWideCtor_00418c3b
-        lea ecx, dword ptr [ebp - 34h]
-        call FableMetWideCtor_00418c3b
-        lea eax, dword ptr [ebp - 24h]
-        push eax
-        lea ecx, dword ptr [ebp - 2Ch]
-        call FableMetWideLiteralCtor_00418c3b
-        lea eax, dword ptr [ebp - 34h]
-        push eax
-        lea eax, dword ptr [ebp - 28h]
-        push eax
-        push 0
-        xor edx, edx
-        lea ecx, dword ptr [ebp - 2Ch]
-        call FableMetSplitPath_00418c3b
-        lea ecx, dword ptr [ebp - 2Ch]
-        call FableMetWideDtor_00418c3b
-        push 2
-        push 3
-        push offset kMetExtension
-        lea eax, dword ptr [ebp - 28h]
-        push eax
-        lea ecx, dword ptr [ebp - 38h]
-        call FableMetGetAutoSaveName_00418c3b
-        mov edx, eax
-        lea ecx, dword ptr [ebp - 50h]
-        call FableMetAssignData_00418c3b
-        mov edx, eax
-        lea ecx, dword ptr [ebp - 54h]
-        call FableMetAssignValue_00418c3b
-        push eax
-        lea ecx, dword ptr [ebp - 80h]
-        call FableMetMemoryFileCtor_00418c3b
-        lea ecx, dword ptr [ebp - 54h]
-        call FableMetWideDtor_00418c3b
-        lea ecx, dword ptr [ebp - 50h]
-        call FableMetWideDtor_00418c3b
-        lea ecx, dword ptr [ebp - 38h]
-        call FableMetWideDtor_00418c3b
-        lea eax, dword ptr [ebp - 80h]
-        mov dword ptr [ebp - 44h], esi
-        mov dword ptr [ebp - 40h], eax
-        call FableMetGetSystemManager_00418c3b
-        mov edi, dword ptr [eax + 7Ch]
-        mov ebx, dword ptr [edi]
-        lea eax, dword ptr [ebp - 44h]
-        push eax
-        lea eax, dword ptr [ebp - 34h]
-        push eax
-        lea eax, dword ptr [ebp - 28h]
-        push eax
-        lea ecx, dword ptr [ebp - 3Ch]
-        call FableMetGetAutoSaveName_00418c3b
-        mov edx, eax
-        lea ecx, dword ptr [ebp - 4Ch]
-        call FableMetAssignData_00418c3b
-        mov edx, eax
-        lea ecx, dword ptr [ebp - 48h]
-        call FableMetAssignData_00418c3b
-        push eax
-        mov ecx, edi
-        call dword ptr [ebx + 0CCh]
-        lea ecx, dword ptr [ebp - 48h]
-        call FableMetWideDtor_00418c3b
-        lea ecx, dword ptr [ebp - 4Ch]
-        call FableMetWideDtor_00418c3b
-        lea ecx, dword ptr [ebp - 3Ch]
-        call FableMetWideDtor_00418c3b
-        lea ecx, dword ptr [ebp - 80h]
-        call FableMetDumpToFile_00418c3b
-        lea eax, dword ptr [ebp - 24h]
-        push eax
-        lea edx, dword ptr [ebp - 5Ch]
-        lea ecx, dword ptr [ebp - 30h]
-        call FableMetFindNext_00418c3b
-        lea ecx, dword ptr [ebp - 80h]
-        mov bl, al
-        mov dword ptr [ebp - 44h], esi
-        call FableMetMemoryFileDtor_00418c3b
-        lea ecx, dword ptr [ebp - 34h]
-        call FableMetWideDtor_00418c3b
-        lea ecx, dword ptr [ebp - 28h]
-        call FableMetWideDtor_00418c3b
-        test bl, bl
-        jnz process_file
-        pop edi
-        pop esi
-        pop ebx
-
-    enumeration_done:
-        lea ecx, dword ptr [ebp - 30h]
-        call FableMetWideDtor_00418c3b
-        mov ecx, dword ptr [ebp + 1E8h]
-        call FableMetSecurityCheck_00418c3b
-        add ebp, 1ECh
-        leave
-        ret
+    CWideString pattern = GetSoundDirectory() + L"*.lug";
+    CFindFileHandle handle;
+    CFindFileData data;
+    if (FindFirstFile(pattern, handle, data)) {
+        bool more;
+        do {
+            CWideString name;
+            CWideString extension;
+            {
+                CWideString fileName(data.FileName);
+                SplitPath(fileName, 0, 0, &name, &extension);
+            }
+            CMemoryFile file(GetSoundDirectory() + name + L".met", 3, 2);
+            CBinaryFileDataWriter writer(&file);
+            GFGetSystemManager()->Sound->CompileLugFile(GetSoundDirectory() + name + extension, &writer);
+            file.DumpToFile();
+            more = FindNextFile(pattern, handle, data);
+        } while (more);
     }
 }

@@ -1626,3 +1626,21 @@ address	module	name	length	chunk	reason
 00a22e10	CRightHandedSet	MakePerpendicular	368	hand249	DIFFER(358v358) -- scheduling only: mov esi,0x17C vs fmul st(4)
 005590c0	CScrollBarOutside	OnLeftClicked	368	hand249	DIFFER(360v365) -- rough attempt; register allocation and spills far off
 00b20ba0	CSplinePosParamData	Update	400	hand249	DIFFER(397v391) -- frame 0x64v0x58; retail integer C3DVector copies, X kept on x87
+00a76770	CNavQuadTreeNode	CNavQuadTreeNode::GetLeafNodeAt	336	hand247	DIFFER(318v321) -- level byte CSE'd into dl across the blocked branches; retail reloads and tail-jumps
+00b16220	CPSCOrbit	InterpolateTo	384	hand247	DIFFER(334v372) -- bare dword fistp rounding of CentreParam (inline-asm helper lane gap)
+00ab5030	CMouseDX	ResetNonExclusiveMouse	352	hand247	DIFFER(342v342) -- frame slot order of the POINT/C2DCoordI locals and the x/y register split (scheduling-class); 12 forms tried
+0081f240	CMap	CopyPos	400	hand247	DIFFER(368v392) -- blend-byte copies: retail rematerialises this->HeightMap and spills the source base; 6 forms tried
+008dbb30	CModeDragonFlying	OnActivate	336	hand247	DIFFER(327v331) -- Acceleration=0 store uses the zero register edi in ours, an imm32 in retail (all other bytes match)
+00ac7cb0	COptimisedPrimitive	GetFaceNormal	352	hand247	DIFFER(334v350) -- x87 shape of the guarded fast normalise (squares CSE, operand order); 5 forms tried
+00eb3f40	CMurderTwistAssassin	Main	384	hand247	DIFFER(378v381) -- dead leftovers in retail (zero local, mov bl,al of an unused bool) shift the register map
+008d90b0	CModeCreatureIsProjectile	OnDeactivate	368	hand247	DIFFER(354v353) -- frame-slot packing of the def name / GetInterface keys / out pointers (register rotation follows); 3 forms
+00bdedd0	CObjectTypeCollectionPalette	Load	368	hand247	DIFFER(356v356) -- loop counter homed in the dead stream arg slot in retail, a frame slot in ours (all offsets shift); 7 forms
+00a1abf0	CNavigatorAStar	?IsNewDestinationGoingToCauseRestart@CNavigatorAStar@@UBE_NABVC3DVector@@M@Z	336	hand247	DIFFER(324v324) -- scheduling only: the NodeAskedToGetTo load/cmp sits before the reach fadd in retail (RTM and QFE give ours)
+008d99b0	CModeJackOfBladesDeath	FrameUpdate	336	hand247	DIFFER(326v326) -- x87 temporaries of the start->target lerp (operator forms); 4 forms tried
+0082a020	CMiniMapDisplay	GetDrawPosition	352	hand247	DIFFER(306v343) -- lane gap: bare dword fistp rounding (inline-asm helper); one draft graded
+008e7a00	CModeBriarRoseTeleportInvulnerable	OnActivate	400	hand247	DIFFER(391v391) -- frame-slot packing: IP temp overlays the string slot in ours, the key/effect slot in retail (registers fixed by inline GetParent)
+008dacb0	CModeThunderLightningStorm	CreateHandGlow	352	hand247	DIFFER(337v337) -- frame-slot packing: IP temp/key/bone string overlay the first string slot in ours, the effect-type slot in retail
+0085c7d0	CMoveOnCylinder	OnInit	332	hand247	DIFFER(332v332) -- vptr fetched into edx (retail eax) for the facing-vector call + one cross-product operand order (lane gap class)
+00acd960	COptimisedPrimitive	COptimisedPrimitive::SimplifyByVertexPairs	384	hand247	DIFFER(383v383) -- register naming only: Data/Info of the copied counted pointer in edi/esi (ours esi/edi)
+00820840	CMap	?ScriptedMapBrushMoveThings@CMap@@MAEXABVCScriptedMapBrush@@@Z	384	hand247	DIFFER(372v372) -- eax/edx naming around the virtual calls + folded transform copy offset
+008201e0	CMap	InitPassabilityFromThemesIfNecessary	345	hand247	DIFFER(354v345) -- frame-slot sharing of the theme out word and def pointer, x/area register homing, def release re-read
