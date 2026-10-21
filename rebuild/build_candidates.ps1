@@ -263613,6 +263613,252 @@ $catalog = @(
         TestSource = '00/5c/CTCInventoryStats_OnCreate_005cd33f_test.cpp'
         PassPattern = '005cd33f_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00407e10'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetSaveDisplayNameFromFileName_00407e10.cpp'
+        TestSource = '00/40/CUserProfileManager_GetSaveDisplayNameFromFileName_00407e10_test.cpp'
+        PassPattern = '00407e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00408120'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetPathNameFromFileName_00408120.cpp'
+        TestSource = '00/40/CUserProfileManager_GetPathNameFromFileName_00408120_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00408120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00408d90'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetAssignedInputForMovementAction_00408d90.cpp'
+        TestSource = '00/40/CUserProfileManager_GetAssignedInputForMovementAction_00408d90_test.cpp'
+        PassPattern = '00408d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00458d6f'
+        Module = 'CThingShotDef'
+        Source = '00/45/CThingShotDef_Transfer_00458d6f.cpp'
+        TestSource = '00/45/CThingShotDef_Transfer_00458d6f_test.cpp'
+        PassPattern = '00458d6f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046a80e'
+        Module = 'CVillagePeopleDef'
+        Source = '00/46/CVillagePeopleDef_Transfer_0046a80e.cpp'
+        TestSource = '00/46/CVillagePeopleDef_Transfer_0046a80e_test.cpp'
+        PassPattern = '0046a80e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9b20'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_CalcCurrentBlockSegments_00ad9b20.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_CalcCurrentBlockSegments_00ad9b20_test.cpp'
+        PassPattern = '00ad9b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad9d70'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_CalcCurrentBestTheoreticalResult_00ad9d70.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_CalcCurrentBestTheoreticalResult_00ad9d70_test.cpp'
+        PassPattern = '00ad9d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ada240'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_Process_00ada240.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_Process_00ada240_test.cpp'
+        PassPattern = '00ada240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00beaca0'
+        Module = 'CWaterPatchMesh'
+        Source = '00/be/CWaterPatchMesh_Render_00beaca0.cpp'
+        TestSource = '00/be/CWaterPatchMesh_Render_00beaca0_test.cpp'
+        PassPattern = '00beaca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9cd20'
+        Module = '_global'
+        Source = '00/c9/global_InitStreamDecoder00c9cd20_00c9cd20.cpp'
+        TestSource = '00/c9/global_InitStreamDecoder00c9cd20_00c9cd20_test.cpp'
+        PassPattern = '00c9cd20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8ee50'
+        Module = 'CQ_HobbeCaveScript'
+        Source = '00/d8/CQHobbeCaveScript_WatchForHavingKey_00d8ee50.cpp'
+        TestSource = '00/d8/CQHobbeCaveScript_WatchForHavingKey_00d8ee50_test.cpp'
+        PassPattern = '00d8ee50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0de90'
+        Module = 'CUndeadRisingZombieAttacker'
+        Source = '00/e0/CUndeadRisingZombieAttacker_OnPredicateFail_00e0de90.cpp'
+        TestSource = '00/e0/CUndeadRisingZombieAttacker_OnPredicateFail_00e0de90_test.cpp'
+        PassPattern = '00e0de90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e36590'
+        Module = 'CV_ArcheryCompetitionScript'
+        Source = '00/e3/CVArcheryCompetitionScript_DoTimesUp_00e36590.cpp'
+        TestSource = '00/e3/CVArcheryCompetitionScript_DoTimesUp_00e36590_test.cpp'
+        PassPattern = '00e36590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3a150'
+        Module = 'CV_BordelloScript'
+        Source = '00/e3/CVBordelloScript_WatchForDeedStatus_00e3a150.cpp'
+        TestSource = '00/e3/CVBordelloScript_WatchForDeedStatus_00e3a150_test.cpp'
+        PassPattern = '00e3a150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e44cc0'
+        Module = 'CV_BordelloScript'
+        Source = '00/e4/CVBordelloScript_IsHeroWearingTash_00e44cc0.cpp'
+        TestSource = '00/e4/CVBordelloScript_IsHeroWearingTash_00e44cc0_test.cpp'
+        PassPattern = '00e44cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4df20'
+        Module = 'CTollBandit'
+        Source = '00/e4/CTollBandit_ShouldIFlee_00e4df20.cpp'
+        TestSource = '00/e4/CTollBandit_ShouldIFlee_00e4df20_test.cpp'
+        PassPattern = '00e4df20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e538f0'
+        Module = 'CV_BeardyBaldyScript'
+        Source = '00/e5/CVBeardyBaldyScript_IsHeroWearingAnyTash_00e538f0.cpp'
+        TestSource = '00/e5/CVBeardyBaldyScript_IsHeroWearingAnyTash_00e538f0_test.cpp'
+        PassPattern = '00e538f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e53ad0'
+        Module = 'CV_BeardyBaldyScript'
+        Source = '00/e5/CVBeardyBaldyScript_IsHeroWearingAnyOddHairdo_00e53ad0.cpp'
+        TestSource = '00/e5/CVBeardyBaldyScript_IsHeroWearingAnyOddHairdo_00e53ad0_test.cpp'
+        PassPattern = '00e53ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5d300'
+        Module = 'CV_BodyGuardScript'
+        Source = '00/e5/CVBodyGuardScript_OnPersist_00e5d300.cpp'
+        TestSource = '00/e5/CVBodyGuardScript_OnPersist_00e5d300_test.cpp'
+        PassPattern = '00e5d300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6a340'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_WatchForWeaponUnsheathed_00e6a340.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_WatchForWeaponUnsheathed_00e6a340_test.cpp'
+        PassPattern = '00e6a340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e76ca0'
+        Module = 'CV_ExposeMayorScript'
+        Source = '00/e7/CVExposeMayorScript_CheckLampSlot_00e76ca0.cpp'
+        TestSource = '00/e7/CVExposeMayorScript_CheckLampSlot_00e76ca0_test.cpp'
+        PassPattern = '00e76ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7e370'
+        Module = 'CV_FishingCompetitionScript'
+        Source = '00/e7/CVFishingCompetitionScript_Main_00e7e370.cpp'
+        TestSource = '00/e7/CVFishingCompetitionScript_Main_00e7e370_test.cpp'
+        PassPattern = '00e7e370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e86e60'
+        Module = 'CV_FisticuffsClubScript'
+        Source = '00/e8/CVFisticuffsClubScript_FisticuffsChallenge_00e86e60.cpp'
+        TestSource = '00/e8/CVFisticuffsClubScript_FisticuffsChallenge_00e86e60_test.cpp'
+        PassPattern = '00e86e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e953e0'
+        Module = 'CV_HauntedHouseScript'
+        Source = '00/e9/CVHauntedHouseScript_CheckRegionLeaving_00e953e0.cpp'
+        TestSource = '00/e9/CVHauntedHouseScript_CheckRegionLeaving_00e953e0_test.cpp'
+        PassPattern = '00e953e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9fcd0'
+        Module = 'CV_KnotholeGladeGatesScript'
+        Source = '00/e9/CVKnotholeGladeGatesScript_Main_00e9fcd0.cpp'
+        TestSource = '00/e9/CVKnotholeGladeGatesScript_Main_00e9fcd0_test.cpp'
+        PassPattern = '00e9fcd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea1ec0'
+        Module = 'CV_KnotholeGladeGatesScript'
+        Source = '00/ea/CVKnotholeGladeGatesScript_DoPanicBanter_00ea1ec0.cpp'
+        TestSource = '00/ea/CVKnotholeGladeGatesScript_DoPanicBanter_00ea1ec0_test.cpp'
+        PassPattern = '00ea1ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7460'
+        Module = 'CV_LostTraderScript'
+        Source = '00/ea/CVLostTraderScript_WatchForQuestFailureState_00ea7460.cpp'
+        TestSource = '00/ea/CVLostTraderScript_WatchForQuestFailureState_00ea7460_test.cpp'
+        PassPattern = '00ea7460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edc010'
+        Module = 'CV_TempleOfLightScript'
+        Source = '00/ed/CVTempleOfLightScript_WatchForWeaponUnsheathed_00edc010.cpp'
+        TestSource = '00/ed/CVTempleOfLightScript_WatchForWeaponUnsheathed_00edc010_test.cpp'
+        PassPattern = '00edc010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee6850'
+        Module = 'CV_TourGuideScript'
+        Source = '00/ee/CVTourGuideScript_MoveToNextWaypoint_00ee6850.cpp'
+        TestSource = '00/ee/CVTourGuideScript_MoveToNextWaypoint_00ee6850_test.cpp'
+        PassPattern = '00ee6850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee71a0'
+        Module = 'CV_TrophyDealerScript'
+        Source = '00/ee/CVTrophyDealerScript_HilightGuildTeleporter_00ee71a0.cpp'
+        TestSource = '00/ee/CVTrophyDealerScript_HilightGuildTeleporter_00ee71a0_test.cpp'
+        PassPattern = '00ee71a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3f3a0'
+        Module = 'CTriangleStripifier2'
+        Source = '00/f3/CTriangleStripifier2_GenerateTriangleListAndStrip_00f3f3a0.cpp'
+        TestSource = '00/f3/CTriangleStripifier2_GenerateTriangleListAndStrip_00f3f3a0_test.cpp'
+        PassPattern = '00f3f3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692ec0'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_HasPrecedingAction_00692ec0.cpp'
+        TestSource = '00/69/CCreatureActionBase_HasPrecedingAction_00692ec0_test.cpp'
+        PassPattern = '00692ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091db50'
+        Module = 'CAIStateGroup_EnemyCreatureBase'
+        Source = '00/91/CAIStateGroupEnemyCreatureBase_GetEnemy_0091db50.cpp'
+        TestSource = '00/91/CAIStateGroupEnemyCreatureBase_GetEnemy_0091db50_test.cpp'
+        PassPattern = '0091db50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00930ee0'
+        Module = 'CAIStateGroup_MinionReactToCriminal'
+        Source = '00/93/CAIStateGroupMinionReactToCriminal_IsValid_00930ee0.cpp'
+        TestSource = '00/93/CAIStateGroupMinionReactToCriminal_IsValid_00930ee0_test.cpp'
+        PassPattern = '00930ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5f6b0'
+        Module = 'CHenchmanRegionEntranceComment'
+        Source = '00/e5/CHenchmanRegionEntranceComment_Main_00e5f6b0.cpp'
+        TestSource = '00/e5/CHenchmanRegionEntranceComment_Main_00e5f6b0_test.cpp'
+        PassPattern = '00e5f6b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

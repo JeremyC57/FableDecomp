@@ -2042,3 +2042,12 @@ address	module	name	length	chunk	reason
 007b8b10	CTCTavernTable	GetEatingPoint	432	hand272	DIFFER(408v417) -- ebx/ebp web swap + inline search first-reg; tried 6
 006de080	CTCTrophy	StartMinigame	512	hand272	DIFFER(490v497) -- near miss; double TC-0x10 presence test (HasTC + GetInterface) CSE'd into one by the lane
 00659625	CTCVillage	UpdateTorchTasks	475	hand272	DIFFER(466v475) -- first pass; night in bl / building in edi register web vs ours (night spilled), fps load order
+006ad3c0	CThingPlayerCreature	ApplyRelativeMovementAcceleration	448	hand274	DIFFER(394v447) -- frame 0x68 unpacked temporaries vs our packed 0x1c; register allocation (lane gap)
+00e36390	CV_ArcheryCompetitionScript	WatchForAttack	512	hand274	DIFFER(480v502) -- out-of-line vs inline ~CScriptThing per exit (function-wide inline decision)
+00e53d90	CV_BeardyBaldyScript	WatchForAttack	464	hand274	DIFFER(442v464) -- out-of-line vs inline ~CScriptThing per exit (function-wide inline decision)
+00ebf1e0	CV_ParanoidWhispersScript	CheckForNecklaceAndQuit	432	hand274	DIFFER(434v432) -- vtable load hoisted above term jne (scheduling)
+00ed9790	CV_TalentlessBardScript	WatchForAttack	464	hand274	DIFFER(413v453) -- dtor site band plus edi zero register
+00e6ad20	CV_TempleOfLightScript	WatchForAcolyteDeath	512	hand274	DIFFER(513v505) -- missing edi zero register for inline dtor compares
+00edc980	CV_TempleOfLightScript	WatchForAcolyteDeath	512	hand274	DIFFER(513v505) -- twin of 00e6ad20; missing edi zero register
+00ee6a40	CV_TourGuideScript	WatchForNoFollowers	448	hand274	DIFFER(303v441) -- vector<CScriptThing> dtor inlined at 4 exits in retail
+00ad9980	CVertexGroupBlock	CVertexGroupBlock::FilterBySubset	416	hand274	DIFFER(415v416) -- retail keeps filtered finish in ebx, index in dead arg slot (lane gap)

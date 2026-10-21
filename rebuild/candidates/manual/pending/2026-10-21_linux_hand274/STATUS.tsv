@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+006ad3c0	DIFFER	394v447	-	frame 0x68 unpacked temporaries vs our packed 0x1c; register allocation (lane gap)
+00458d6f	RELOCATION_MATCH	444v444	PASS	
+00e4df20	RELOCATION_MATCH	435v435	PASS	
+00f3f3a0	RELOCATION_MATCH	507v507	PASS	calls index-list overload 0xF3EA50
+00e0de90	RELOCATION_MATCH	428v428	PASS	
+00407e10	RELOCATION_MATCH	439v439	PASS	
+00408120	RELOCATION_MATCH	428v428	PASS	/GS
+00408d90	RELOCATION_MATCH	441v441	PASS	
+00e36390	DIFFER	480v502	-	out-of-line vs inline ~CScriptThing per exit (function-wide inline decision)
+00e36590	RELOCATION_MATCH	446v446	PASS	
+00e53ad0	RELOCATION_MATCH	402v402	PASS	
+00e53d90	DIFFER	442v464	-	out-of-line vs inline ~CScriptThing per exit (function-wide inline decision)
+00e5d300	RELOCATION_MATCH	485v485	PASS	
+00e3a150	RELOCATION_MATCH	497v497	PASS	
+00e44cc0	RELOCATION_MATCH	478v478	PASS	
+00e538f0	RELOCATION_MATCH	478v478	PASS	label: CV_BeardyBaldyScript::IsHeroWearingAnyTash
+00e6a340	RELOCATION_MATCH	447v447	PASS	advisor v2 do-while wrapper
+00edc010	RELOCATION_MATCH	447v447	PASS	label: CV_TempleOfLightScript::WatchForWeaponUnsheathed
+00e76ca0	RELOCATION_MATCH	485v485	PASS	
+00e953e0	RELOCATION_MATCH	457v457	PASS	label: CV_HauntedHouseScript::CheckRegionLeaving
+00e7e370	RELOCATION_MATCH	485v485	PASS	
+00e86e60	RELOCATION_MATCH	449v449	PASS	
+00e9fcd0	RELOCATION_MATCH	493v493	PASS	
+00ea1ec0	RELOCATION_MATCH	448v448	PASS	
+00ea7460	RELOCATION_MATCH	419v419	PASS	
+00ebf1e0	DIFFER	434v432	-	vtable load hoisted above term jne (scheduling)
+00ed9790	DIFFER	413v453	-	dtor site band plus edi zero register
+00e6ad20	DIFFER	513v505	-	missing edi zero register for inline dtor compares
+00edc980	DIFFER	513v505	-	twin of 00e6ad20; missing edi zero register
+00ee6850	RELOCATION_MATCH	487v487	PASS	
+00ee6a40	DIFFER	303v441	-	vector<CScriptThing> dtor inlined at 4 exits in retail
+00d8ee50	RELOCATION_MATCH	490v490	PASS	label: CQ_HobbeCaveScript::WatchForHavingKey
+00ee71a0	RELOCATION_MATCH	405v405	PASS	
+00ad9980	DIFFER	415v416	-	retail keeps filtered finish in ebx, index in dead arg slot (lane gap)
+00ad9b20	RELOCATION_MATCH	494v494	PASS	label: CalcCurrentBlockSegments
+00ad9d70	RELOCATION_MATCH	404v404	PASS	label: CalcCurrentBestTheoreticalResult
+00ada240	RELOCATION_MATCH	431v431	PASS	label: Process(CVertexGroupBlockList&, bool)
+0046a80e	RELOCATION_MATCH	448v448	PASS	
+00c9cd20	RELOCATION_MATCH	485v485	PASS	label: libpk stream-decoder init
+00beaca0	RELOCATION_MATCH	427v427	PASS	
