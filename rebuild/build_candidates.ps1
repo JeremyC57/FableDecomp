@@ -261424,6 +261424,76 @@ $catalog = @(
         TestSource = '00/f0/NScriptCATPhase1Guard_Init_00f083a0_test.cpp'
         PassPattern = '00f083a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005be028'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/5b/NInventoryCTCInventoryBase_OnItemAdded_005be028.cpp'
+        TestSource = '00/5b/NInventoryCTCInventoryBase_OnItemAdded_005be028_test.cpp'
+        PassPattern = '005be028_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072af30'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_IsAbleToUseAnyAbility_0072af30.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_IsAbleToUseAnyAbility_0072af30_test.cpp'
+        PassPattern = '0072af30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078e7c0'
+        Module = 'CTCDivineWrath'
+        Source = '00/78/CTCDivineWrath_Attackable_0078e7c0.cpp'
+        TestSource = '00/78/CTCDivineWrath_Attackable_0078e7c0_test.cpp'
+        PassPattern = '0078e7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00793cc0'
+        Module = 'CTCUnholyPower'
+        Source = '00/79/CTCUnholyPower_Attackable_00793cc0.cpp'
+        TestSource = '00/79/CTCUnholyPower_Attackable_00793cc0_test.cpp'
+        PassPattern = '00793cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e5750'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/8e/CTCPhysicsStandard_IsCollisionWithThingToCauseResponse_008e5750.cpp'
+        TestSource = '00/8e/CTCPhysicsStandard_IsCollisionWithThingToCauseResponse_008e5750_test.cpp'
+        PassPattern = '008e5750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f31c0'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_SetPixel_009f31c0.cpp'
+        TestSource = '00/9f/CSurface_SetPixel_009f31c0_test.cpp'
+        PassPattern = '009f31c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fc4a0'
+        Module = 'CResource'
+        Source = '00/9f/CResource_SetAsMRU_009fc4a0.cpp'
+        TestSource = '00/9f/CResource_SetAsMRU_009fc4a0_test.cpp'
+        PassPattern = '009fc4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a25d20'
+        Module = 'CPhysicsMeshData'
+        Source = '00/a2/CPhysicsMeshData_BuildMesh_00a25d20.cpp'
+        TestSource = '00/a2/CPhysicsMeshData_BuildMesh_00a25d20_test.cpp'
+        PassPattern = '00a25d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9f1d0'
+        Module = 'C3DAnimationManager'
+        Source = '00/a9/C3DAnimationManager_CombineBaseAnimations_00a9f1d0.cpp'
+        TestSource = '00/a9/C3DAnimationManager_CombineBaseAnimations_00a9f1d0_test.cpp'
+        PassPattern = '00a9f1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa3c0'
+        Module = 'CMemAllocator'
+        Source = '00/ca/CMemAllocator_ReallyFree_00caa3c0.cpp'
+        TestSource = '00/ca/CMemAllocator_ReallyFree_00caa3c0_test.cpp'
+        PassPattern = '00caa3c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

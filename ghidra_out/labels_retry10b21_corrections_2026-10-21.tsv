@@ -1,0 +1,2 @@
+address	name	evidence
+00caa3c0	CMemAllocator::ReallyFree	DirectShow strmbase; vtable 0x012BF83C is CMemAllocator (CreateInstance 0x00CAC9D0), dtor 0x00CAA410 calls Decommit then this; manifest name CScriptDefinitionManager::DeallocateScriptEntries is a reverted forge-autoname3 label (retry 10b21)
