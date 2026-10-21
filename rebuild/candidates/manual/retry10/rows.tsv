@@ -2051,3 +2051,9 @@ address	module	name	length	chunk	reason
 00edc980	CV_TempleOfLightScript	WatchForAcolyteDeath	512	hand274	DIFFER(513v505) -- twin of 00e6ad20; missing edi zero register
 00ee6a40	CV_TourGuideScript	WatchForNoFollowers	448	hand274	DIFFER(303v441) -- vector<CScriptThing> dtor inlined at 4 exits in retail
 00ad9980	CVertexGroupBlock	CVertexGroupBlock::FilterBySubset	416	hand274	DIFFER(415v416) -- retail keeps filtered finish in ebx, index in dead arg slot (lane gap)
+0062bef0	CWorld	EAUseProjectileWeapon	496	hand275	DIFFER(483v483) -- CWorld::EAUseProjectileWeapon; camera out-local shares the `this` spill slot (retail: the spilled ranged-attacks pointer) and vcall regs ecx/edx/eax differ; IS_THING_ALIVE via a CBaseObject* temp, forceinline HasTC
+004fde80	CWorldMap	SaveGameState	432	hand275	DIFFER(431v431) -- CWorldMap::SaveGameState; count copy at [esp+0x10] with the traits temp in the dead context slot in retail, swapped in ours (20 forms incl. same-TU traits stand-in, hoisted copy)
+004feec0	CWorldMap	UnloadRegion	448	hand275	DIFFER(444v444) -- CWorldMap::UnloadRegion; callee-saved swap only: region ref in ebx and map/j in ebp in retail, reversed in ours
+004ff150	CWorldMap	?GetAllMapsInArea@CWorldMap@@UBEXABVC2DBoxI@@AAV?$vector@KV?$allocator@K@std@@@std@@@Z	448	hand275	DIFFER(437v436) -- CWorldMap::GetAllMapsInArea; retail keeps the `maps` reference in ebp for the whole body, ours reloads it from the arg slot
+0063d960	CWorldMap	FindLastUnblockedGroundPositionAndReportCollision	464	hand275	DIFFER(461v461) -- frame slot order only: next/to-from temp at +0x10 in ours, +0x28 in retail (direction/pos below it)
+0063db30	CWorldMap	FindLastUnblockedGroundPositionAndReportCollision	461	hand275	DIFFER(461v461) -- twin of 0063d960 with the theme callees (really FindLastUnblockedThemePositionAndReportCollision); same slot-order gap

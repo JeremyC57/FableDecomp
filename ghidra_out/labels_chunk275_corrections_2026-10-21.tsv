@@ -1,0 +1,5 @@
+address	name	evidence
+007597c0	CWoundMorphs::SortMap	CWoundMorphs map sort, not CSoundPairHeap_MakeHeap (callee, chunk 275)
+007595f0	CWoundMorphs::ResizePairVector	CWoundMorphs pair-vector resize (callee, chunk 275)
+004fe630	CWorldMap::FindNavigationSection	navigation-section finder returning {name, offset} by value (callee, chunk 275)
+00789ab0	CTCHeroRangedAttacks::IsToUseFirstPersonTargetingMode	bool query on CTCHeroRangedAttacks, not C3DMeshInfo::HasPhysicsMesh; name inferred (callee, chunk 275)

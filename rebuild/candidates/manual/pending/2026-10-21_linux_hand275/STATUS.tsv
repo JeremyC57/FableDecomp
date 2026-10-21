@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00aad150	RELOCATION_MATCH	450v450	PASS	CWaveLoader::SaveWaveFile; two local CMemoryDataOutputStreams, RIFF/WAVE chunks
+004e8ce9	RELOCATION_MATCH	511v511	PASS	CWeaponDef::Transfer; optimize("s"); defaults through an inline Transfer(value, default) so the CCharString temps use the dead arg slot
+0062aba0	RELOCATION_MATCH	491v491	PASS	CWorld::EAUseQuickAccessItem (/GS); advisor: same-TU noinline LowerBound 0x40F020 body (the 0x11 key stops escaping and shares the dead event slot) + third GetPlayer via a named long; ReadLong by value
+0062bef0	DIFFER	483v483	-	CWorld::EAUseProjectileWeapon; camera out-local shares the `this` spill slot (retail: the spilled ranged-attacks pointer) and vcall regs ecx/edx/eax differ; IS_THING_ALIVE via a CBaseObject* temp, forceinline HasTC
+004fde80	DIFFER	431v431	-	CWorldMap::SaveGameState; count copy at [esp+0x10] with the traits temp in the dead context slot in retail, swapped in ours (20 forms incl. same-TU traits stand-in, hoisted copy)
+004feec0	DIFFER	444v444	-	CWorldMap::UnloadRegion; callee-saved swap only: region ref in ebx and map/j in ebp in retail, reversed in ours
+004ff150	DIFFER	437v436	-	CWorldMap::GetAllMapsInArea; retail keeps the `maps` reference in ebp for the whole body, ours reloads it from the arg slot
+004ff570	RELOCATION_MATCH	475v475	PASS	CWorldMap::ShowPassabilityOverlay; blocked colour declared first, four-long C2DBoxI ctor built before the colour vector, GetData `size() > 0`
+00500230	RELOCATION_MATCH	425v425	PASS	CWorldMap::CreateNavMap; first try; CMemoryFile local (inline ctor/dtor around the landed OpenFromFile), section finder returns {name, offset} by value
+0063d960	DIFFER	461v461	-	frame slot order only: next/to-from temp at +0x10 in ours, +0x28 in retail (direction/pos below it)
+0063db30	DIFFER	461v461	-	twin of 0063d960 with the theme callees (really FindLastUnblockedThemePositionAndReportCollision); same slot-order gap
+0063ddf0	RELOCATION_MATCH	472v472	PASS	CWorldMap::Validate const; first try; aligned frame reproduced by C2DCoordI locals in the loops
+0063e950	RELOCATION_MATCH	463v463	PASS	CWorldMap::GetHeightZBelowAt; local STLport list + same-TU ForEachInRoughArea stand-in; C3DVector user copy ctor
+00ad84d0	RELOCATION_MATCH	256v256	PASS	really ~COptimisedPrimitive (label CWound::Kill wrong); free() for array storage
+00c5ead0	RELOCATION_MATCH	256v256	PASS	really CWound_00c5eca0::Kill (KS audio pin stop), slot 5 of vtable 0x012B914C
+00757990	RELOCATION_MATCH	402v402	PASS	CWoundMorphs::TransferBinaryIn; trailing field read back into `count` (one dead-arg slot), CEntry user ctor with 0.0f float, Read tests `size <= m_remaining`
+00872490	RELOCATION_MATCH	416v416	PASS	CZTargetNew::InitialiseTransitionVariables; statement-ordered x87 sums, !(cross > 0), named turn
+00872ec0	RELOCATION_MATCH	365v365	PASS	CZTargetNew::UpdateCoordSystem; CIntelligentPointer assign via temp + SetPItem(GetPItem())
+00873030	RELOCATION_MATCH	304v304	PASS	CZTargetNew::Update; appearance through the inline GetObservedThing() chain
+005467f0	RELOCATION_MATCH	486v486	PASS	CZoomingComponent::ProcessEvent; advisor: tail duplicated into both case arms -> push edi at switch head

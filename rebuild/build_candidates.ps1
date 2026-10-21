@@ -264406,6 +264406,105 @@ $catalog = @(
         TestSource = '00/f1/CArenaSpawn_Main_00f1b690_test.cpp'
         PassPattern = '00f1b690_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004e8ce9'
+        Module = 'CWeaponDef'
+        Source = '00/4e/CWeaponDef_Transfer_004e8ce9.cpp'
+        TestSource = '00/4e/CWeaponDef_Transfer_004e8ce9_test.cpp'
+        PassPattern = '004e8ce9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ff570'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ShowPassabilityOverlay_004ff570.cpp'
+        TestSource = '00/4f/CWorldMap_ShowPassabilityOverlay_004ff570_test.cpp'
+        PassPattern = '004ff570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00500230'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_CreateNavMap_00500230.cpp'
+        TestSource = '00/50/CWorldMap_CreateNavMap_00500230_test.cpp'
+        PassPattern = '00500230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005467f0'
+        Module = 'NUISystem::CZoomingComponent'
+        Source = '00/54/NUISystemCZoomingComponent_ProcessEvent_005467f0.cpp'
+        TestSource = '00/54/NUISystemCZoomingComponent_ProcessEvent_005467f0_test.cpp'
+        PassPattern = '005467f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062aba0'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EAUseQuickAccessItem_0062aba0.cpp'
+        TestSource = '00/62/CWorld_EAUseQuickAccessItem_0062aba0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0062aba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063ddf0'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_Validate_0063ddf0.cpp'
+        TestSource = '00/63/CWorldMap_Validate_0063ddf0_test.cpp'
+        PassPattern = '0063ddf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063e950'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetHeightZBelowAt_0063e950.cpp'
+        TestSource = '00/63/CWorldMap_GetHeightZBelowAt_0063e950_test.cpp'
+        PassPattern = '0063e950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00757990'
+        Module = 'CWoundMorphs'
+        Source = '00/75/CWoundMorphs_TransferBinaryIn_00757990.cpp'
+        TestSource = '00/75/CWoundMorphs_TransferBinaryIn_00757990_test.cpp'
+        PassPattern = '00757990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00872490'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_InitialiseTransitionVariables_00872490.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_InitialiseTransitionVariables_00872490_test.cpp'
+        PassPattern = '00872490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00872ec0'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_UpdateCoordSystem_00872ec0.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_UpdateCoordSystem_00872ec0_test.cpp'
+        PassPattern = '00872ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00873030'
+        Module = 'NCameraModes::CZTargetNew'
+        Source = '00/87/NCameraModesCZTargetNew_Update_00873030.cpp'
+        TestSource = '00/87/NCameraModesCZTargetNew_Update_00873030_test.cpp'
+        PassPattern = '00873030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aad150'
+        Module = 'CWaveLoader'
+        Source = '00/aa/CWaveLoader_SaveWaveFile_00aad150.cpp'
+        TestSource = '00/aa/CWaveLoader_SaveWaveFile_00aad150_test.cpp'
+        PassPattern = '00aad150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad84d0'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ad/QuadricOptimiserInternalsCOptimisedPrimitive_COptimisedPrimitive_00ad84d0.cpp'
+        TestSource = '00/ad/QuadricOptimiserInternalsCOptimisedPrimitive_COptimisedPrimitive_00ad84d0_test.cpp'
+        PassPattern = '00ad84d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5ead0'
+        Module = 'CWound_00c5eca0'
+        Source = '00/c5/CWound00c5eca0_Kill_00c5ead0.cpp'
+        TestSource = '00/c5/CWound00c5eca0_Kill_00c5ead0_test.cpp'
+        PassPattern = '00c5ead0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
