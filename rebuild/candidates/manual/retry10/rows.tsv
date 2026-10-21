@@ -1690,3 +1690,16 @@ address	module	name	length	chunk	reason
 00752300	CTCLook	ImplementBodySettings	384	hand252	DIFFER(381v383) -- creature pointer ecx vs eax+mov; tried const& creature, local, fastcall test, IsThingAlive helper, if/else speed, def ref
 007534b0	CTCLook	IsPosInViewRange	384	hand252	DIFFER(384v384) -- C3DVector frame copy scheduling (ld,ld,st,ld,st,st vs ld,st x3); tried ternary/const&/operator=/POD/explicit-ctor copies
 007cc2b0	CTCMultiArrow	CreateAmmoEffect	352	hand252	DIFFER(347v347) -- frame packing: effect pointer shares the def/string word in retail, ours puts the inlined GetInterface key there (4-word vs 3-word frame); tried decl order, key forms, const& temp, holder def, pack, statement shapes (18)
+00666d40	CThingCreatureBase	GetHeightZBelowAt	352	hand255	DIFFER(346v348) -- box, ground queries and filter temporaries match
+00986ed0	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	368	hand255	DIFFER(353v353) -- everything but the x87 operand order of three of the six cross-product multiplies (VC7.1 canonicalises commutative fmul operands
+00987040	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	operator()	384	hand255	DIFFER(370v374) -- type, distance (squares as named locals), faction and fast-normalise match
+0090c900	CThingFilter_IsValidGossipee	operator()	352	hand255	DIFFER(345v345) -- only the esi/edi assignment of the gossipee and the map/home-building temporaries is swapped
+0051e630	CThingManager	DebugVerifyUniqueIDs	369	hand255	DIFFER(369v369) -- frame, flow, copy-not-elided names and CSE'd def pointer match
+006381a0	CThingMapManager	AddGameMapWithArea	348	hand255	DIFFER(340v348) -- loops, cell refcount, CThingMap construction and push_back match
+00638340	CThingMapManager	RemoveGameMap	334	hand255	DIFFER(332v334) -- loops, cell release, active-list find/erase, map delete and the inlined set equal_range erase (upper bound first) match
+0083d2e0	CThingMarker	CThingMarker::vfunc_36	384	hand255	DIFFER(356v372) -- flow, base call, graphic, interpolators and mesh-effect release match
+007032f0	CThingObject	OnCreate	384	hand255	DIFFER(383v380) -- flow, graphic copy through edi, base/validate calls, die-off timer, rotation-time test, same-TU LowerBound stand-in (frame packs to 8 like retail) and
+006ac200	CThingPlayerCreature	CreateAndAddObjectToInventory	400	hand255	DIFFER(404v398) -- creation, item lookup, null-initialised inventory, STLport bitset range check (puts/abort), AddToInventory and quick-access calls match
+006ad580	CThingPlayerCreature	CThingPlayerCreature::vfunc_41	384	hand255	DIFFER(378v380) -- orb out-slot homed at [esp+0x20] instead of retail's reuse of the dead 'type' param slot [esp+0x14]
+00876ca0	CTools	PotentialFieldBufferObjects	368	hand255	DIFFER(362v368) -- loop/call/float shape matches
+00760c40	CTrack	GetTrackPosAtLengthFraction	352	hand255	DIFFER(343v342) -- control flow, FPU sequence and loop shape match

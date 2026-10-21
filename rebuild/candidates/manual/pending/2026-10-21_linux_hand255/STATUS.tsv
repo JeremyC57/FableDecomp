@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00453911	RELOCATION_MATCH	399v399	PASS	CHeroMarriageDef::operator= (catalog label propagated); optimize("s")
+0045473f	RELOCATION_MATCH	327v327	PASS	CVillagePeopleDef::operator= (catalog label propagated); optimize("s")
+00454b8e	RELOCATION_MATCH	364v364	PASS	CThingBuildingDef::Transfer; one shared bool local in the dead context slot
+007adf00	RELOCATION_MATCH	337v337	PASS	CAIScratchpadDef::operator= (catalog label propagated)
+008707a0	RELOCATION_MATCH	327v327	PASS	inlined stream Read x3; chunk test written size <= remaining
+00661b40	RELOCATION_MATCH	335v335	PASS	inline graphic accessor; declared C3DVector copy ctor
+00662d80	RELOCATION_MATCH	356v356	PASS	sub-def before filter; discarded has-animation test
+006644f0	RELOCATION_MATCH	384v384	PASS	counted action copies; out-param GetInterface
+00664680	RELOCATION_MATCH	354v354	PASS	inline GetDef() accessor; const CThing* lookup
+00664a50	RELOCATION_MATCH	336v336	PASS	local counted combat type; !(a == b) name compare
+006666a0	RELOCATION_MATCH	383v383	PASS	named world local; forceinline CIntelligentPointer ops
+00666d40	DIFFER	346v348	-	box, ground queries and filter temporaries match
+00670f70	RELOCATION_MATCH	331v331	PASS	all zeroes in the mem-init list; vptr store sinks to the vector ctor
+00835e30	RELOCATION_MATCH	392v392	PASS	counted pointer operator*; three-float zero frame time
+00986ed0	DIFFER	353v353	-	everything but the x87 operand order of three of the six cross-product multiplies (VC7.1 canonicalises commutative fmul operands
+00987040	DIFFER	370v374	-	type, distance (squares as named locals), faction and fast-normalise match
+00799e30	RELOCATION_MATCH	384v384	PASS	one nested if with a single trailing return false
+0090c900	DIFFER	345v345	-	only the esi/edi assignment of the gossipee and the map/home-building temporaries is swapped
+0051e2f0	RELOCATION_MATCH	395v395	PASS	named CCharString local in an inline progress helper
+0051e630	DIFFER	369v369	-	frame, flow, copy-not-elided names and CSE'd def pointer match
+00522720	RELOCATION_MATCH	349v349	PASS	CArray walks; free() for 0x00BFEA14
+006381a0	DIFFER	340v348	-	loops, cell refcount, CThingMap construction and push_back match
+00638340	DIFFER	332v334	-	loops, cell release, active-list find/erase, map delete and the inlined set equal_range erase (upper bound first) match
+0083d2e0	DIFFER	356v372	-	flow, base call, graphic, interpolators and mesh-effect release match
+007032f0	DIFFER	383v380	-	flow, graphic copy through edi, base/validate calls, die-off timer, rotation-time test, same-TU LowerBound stand-in (frame packs to 8 like retail) and
+006a4ba0	RELOCATION_MATCH	322v322	PASS	one out += prefix + value + ";\r\n" expression per line
+0083ddc0	RELOCATION_MATCH	344v344	PASS	first PeekDefinition inlined; same-TU GetDef stand-in
+006a9a00	RELOCATION_MATCH	353v353	PASS	implicit conversion temporaries share one frame slot
+006ac200	DIFFER	404v398	-	creation, item lookup, null-initialised inventory, STLport bitset range check (puts/abort), AddToInventory and quick-access calls match
+006ad580	DIFFER	378v380	-	orb out-slot homed at [esp+0x20] instead of retail's reuse of the dead 'type' param slot [esp+0x14]
+0083c690	RELOCATION_MATCH	361v361	PASS	C2DBoxF member by member; C2DVector Y first
+0083c800	RELOCATION_MATCH	388v388	PASS	inArea in bl, written back on both exits
+0083ca90	RELOCATION_MATCH	369v369	PASS	early if (Triggered) return keeps the pushes below the test
+0083cc10	RELOCATION_MATCH	340v340	PASS	catalog vfunc_71 = OnThingWithScriptNameApplied; inlined PeekDefinition by value
+00837ce0	RELOCATION_MATCH	349v349	PASS	AddTC names as conversion temporaries in the dead context slot
+0098f3a0	RELOCATION_MATCH	350v350	PASS	STLport tree ctor as alloc proxy + _M_empty_initialize; inline queue array loop
+00876ca0	DIFFER	362v368	-	loop/call/float shape matches
+00dd8ba0	RELOCATION_MATCH	348v348	PASS	landed sibling CTortureDoorPassage::Main 0x00DD8990 with reversed lock order
+00760c40	DIFFER	343v342	-	control flow, FPU sequence and loop shape match
+00e23f30	RELOCATION_MATCH	347v347	PASS	landed CAC_Owner::GetRandomSpeech shape with two stages; break out to a shared tail

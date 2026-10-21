@@ -259863,6 +259863,195 @@ $catalog = @(
         TestSource = '00/8d/NCreatureModeCModeScorpionKingExhausted_OnActivate_008da2e0_test.cpp'
         PassPattern = '008da2e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00453911'
+        Module = 'CHeroMarriageDef'
+        Source = '00/45/CHeroMarriageDef_operator_00453911.cpp'
+        TestSource = '00/45/CHeroMarriageDef_operator_00453911_test.cpp'
+        PassPattern = '00453911_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045473f'
+        Module = 'CVillagePeopleDef'
+        Source = '00/45/CVillagePeopleDef_operator_0045473f.cpp'
+        TestSource = '00/45/CVillagePeopleDef_operator_0045473f_test.cpp'
+        PassPattern = '0045473f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454b8e'
+        Module = 'CThingBuildingDef'
+        Source = '00/45/CThingBuildingDef_Transfer_00454b8e.cpp'
+        TestSource = '00/45/CThingBuildingDef_Transfer_00454b8e_test.cpp'
+        PassPattern = '00454b8e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051e2f0'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_ActivateThings_0051e2f0.cpp'
+        TestSource = '00/51/CThingManager_ActivateThings_0051e2f0_test.cpp'
+        PassPattern = '0051e2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00522720'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_RuntimeLoadEntities_00522720.cpp'
+        TestSource = '00/52/CThingManager_RuntimeLoadEntities_00522720_test.cpp'
+        PassPattern = '00522720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00661b40'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetHeadPos_00661b40.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetHeadPos_00661b40_test.cpp'
+        PassPattern = '00661b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662d80'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetRandomAnimFromName_00662d80.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetRandomAnimFromName_00662d80_test.cpp'
+        PassPattern = '00662d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006644f0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_SetCurrentAction_006644f0.cpp'
+        TestSource = '00/66/CThingCreatureBase_SetCurrentAction_006644f0_test.cpp'
+        PassPattern = '006644f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664680'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_CreateDefaultWeapons_00664680.cpp'
+        TestSource = '00/66/CThingCreatureBase_CreateDefaultWeapons_00664680_test.cpp'
+        PassPattern = '00664680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664a50'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_UnsheatheDefaultWeapon_00664a50.cpp'
+        TestSource = '00/66/CThingCreatureBase_UnsheatheDefaultWeapon_00664a50_test.cpp'
+        PassPattern = '00664a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006666a0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_WorldUpdate_006666a0.cpp'
+        TestSource = '00/66/CThingCreatureBase_WorldUpdate_006666a0_test.cpp'
+        PassPattern = '006666a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00670f70'
+        Module = 'CThingCreatureDef'
+        Source = '00/67/CThingCreatureDef_CThingCreatureDef_00670f70.cpp'
+        TestSource = '00/67/CThingCreatureDef_CThingCreatureDef_00670f70_test.cpp'
+        PassPattern = '00670f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a4ba0'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_Save_006a4ba0.cpp'
+        TestSource = '00/6a/CThingPhysical_Save_006a4ba0_test.cpp'
+        PassPattern = '006a4ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a9a00'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_InitialiseMovementSpeeds_006a9a00.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_InitialiseMovementSpeeds_006a9a00_test.cpp'
+        PassPattern = '006a9a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00799e30'
+        Module = 'CThingFilter_IsPotentialCustomer'
+        Source = '00/79/CThingFilterIsPotentialCustomer_operator_00799e30.cpp'
+        TestSource = '00/79/CThingFilterIsPotentialCustomer_operator_00799e30_test.cpp'
+        PassPattern = '00799e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007adf00'
+        Module = 'CAIScratchpadDef'
+        Source = '00/7a/CAIScratchpadDef_operator_007adf00.cpp'
+        TestSource = '00/7a/CAIScratchpadDef_operator_007adf00_test.cpp'
+        PassPattern = '007adf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00835e30'
+        Module = 'CThingDeadCreature'
+        Source = '00/83/CThingDeadCreature_SetupDeadAnimation_00835e30.cpp'
+        TestSource = '00/83/CThingDeadCreature_SetupDeadAnimation_00835e30_test.cpp'
+        PassPattern = '00835e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00837ce0'
+        Module = 'CThingTrackNode'
+        Source = '00/83/CThingTrackNode_SerialiseGameState_00837ce0.cpp'
+        TestSource = '00/83/CThingTrackNode_SerialiseGameState_00837ce0_test.cpp'
+        PassPattern = '00837ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083c690'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_SwitchTriggerPlayerOnlyMultipleTimesInArea_0083c690.cpp'
+        TestSource = '00/83/CThingSwitch_SwitchTriggerPlayerOnlyMultipleTimesInArea_0083c690_test.cpp'
+        PassPattern = '0083c690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083c800'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_TriggerPlayerResetWhenLeaves_0083c800.cpp'
+        TestSource = '00/83/CThingSwitch_TriggerPlayerResetWhenLeaves_0083c800_test.cpp'
+        PassPattern = '0083c800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ca90'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_SwitchTriggerPlayerOnlyOnceInArea_0083ca90.cpp'
+        TestSource = '00/83/CThingSwitch_SwitchTriggerPlayerOnlyOnceInArea_0083ca90_test.cpp'
+        PassPattern = '0083ca90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083cc10'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_OnThingWithScriptNameApplied_0083cc10.cpp'
+        TestSource = '00/83/CThingSwitch_OnThingWithScriptNameApplied_0083cc10_test.cpp'
+        PassPattern = '0083cc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ddc0'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/83/CThingPhysicalSwitch_TriggerMe_0083ddc0.cpp'
+        TestSource = '00/83/CThingPhysicalSwitch_TriggerMe_0083ddc0_test.cpp'
+        PassPattern = '0083ddc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008707a0'
+        Module = 'CThingComponentSet'
+        Source = '00/87/CThingComponentSet_TransferBinaryIn_008707a0.cpp'
+        TestSource = '00/87/CThingComponentSet_TransferBinaryIn_008707a0_test.cpp'
+        PassPattern = '008707a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098f3a0'
+        Module = 'CThreadedFileManager'
+        Source = '00/98/CThreadedFileManager_CThreadedFileManager_0098f3a0.cpp'
+        TestSource = '00/98/CThreadedFileManager_CThreadedFileManager_0098f3a0_test.cpp'
+        PassPattern = '0098f3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd8ba0'
+        Module = 'CTortureDoorCourtyard'
+        Source = '00/dd/CTortureDoorCourtyard_Main_00dd8ba0.cpp'
+        TestSource = '00/dd/CTortureDoorCourtyard_Main_00dd8ba0_test.cpp'
+        PassPattern = '00dd8ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e23f30'
+        Module = 'CTraderToEscort'
+        Source = '00/e2/CTraderToEscort_GetRandomSpeech_00e23f30.cpp'
+        TestSource = '00/e2/CTraderToEscort_GetRandomSpeech_00e23f30_test.cpp'
+        PassPattern = '00e23f30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
