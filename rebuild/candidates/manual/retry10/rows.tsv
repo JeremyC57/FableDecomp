@@ -1712,3 +1712,11 @@ address	module	name	length	chunk	reason
 004fec80	CWorldMap	UpdateDestroyedThemeAreas	352	hand256	DIFFER(337v337) -- UpdateDestroyedThemeAreas: count/index ebx<->ebp swap only (C2DCoordI user copy ctor fixed the box copy)
 005022f0	CWorldMap	CWorldMap::DeleteAllLevels	368	hand256	DIFFER(351v359) -- DeleteAllLevels: retail keeps the dead finish store before zeroing LoadedMaps; lane DSEs it (zero reg esi vs ebx)
 0063e590	CWorldMap	GetNavigationLayerAt	352	hand256	DIFFER(340v340) -- GetNavigationLayerAt: one Bind2 P1 store scheduled before the first push (retail after); filter temporaries per call reproduce the hoisted stores and slots
+007fede0	CTCUserActionPointBase	GetFreeActionPoint	352	hand254	DIFFER(348v348) -- one frame word: find value copy in the dead index slot, retail the dead thing slot
+006594bb	CTCVillage	UpdateCrowds	362	hand254	DIFFER(363v362) -- frame-slot order, const GetTC register, sound-def release form
+0065a075	CTCVillage	GetWarningStringForCurrentCrimes	392	hand254	DIFFER(386v392) -- crime iterator/effects def register allocation (ebx/edi)
+0065a8ee	CTCVillage	IsTimeToGoToSchool	385	hand254	DIFFER(378v385) -- child in edi vs esi; argument-slot reuse; literal push order
+0065b142	CTCVillage	EnableVillagerDefTypes	386	hand254	DIFFER(386v386) -- ParentThing load scheduled after push eax instead of before
+0065be6c	CTCVillage	UpdateHornTasks	336	hand254	DIFFER(336v336) -- pure ebx/edi swap
+007df130	CTCWallMount	UnattachObject	384	hand254	DIFFER(370v370) -- scratch registers eax/ecx vs ecx/edx
+00863ca0	CThingBodyReorienter	FillBodyReorientationPossibleIntersecting	368	hand254	DIFFER(361v358) -- 0x30 aligned frame/box slot vs ours 0x20 packed

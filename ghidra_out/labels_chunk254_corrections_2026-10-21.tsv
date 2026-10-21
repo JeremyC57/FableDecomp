@@ -1,0 +1,11 @@
+address	name	evidence
+00834760	CThingAICreature::WorldUpdate	catalogued vfunc_19 (chunk 254)
+00ca6e10	CBaseRenderer::Receive	strmbase (DirectShow base classes), catalogued under CTextureRenderer (chunk 254)
+00834530	CThingAICreature::CombatStressTestDebug	(chunk 254)
+0080c460	CTCDExplosion::Create	(chunk 254)
+007fd4b0	CTCDPhysicalObstruction::Create	(chunk 254)
+0080cbf0	CTCDExplosion::SetThingAsImmune	(chunk 254)
+006c59e0	CTCHeroOpinionDeedLog::RemoveDeed	(chunk 254)
+007008c0	COpinionReactionManager::ClearOpinionSource	(chunk 254)
+007fd3d0	CTCDPhysicalObstruction::SetLifeTimeSeconds	landed as CAIStateGroup_BuyFromSeller::BoughtSomething (manifest CTCBarrierDriver::SetLifetime); writes PDB LifeTimer +0x24 = seconds * frame rate (chunk 254 review)
+007898a3	CTCDPhysicalObstruction::SetThingToIgnoreObstruction	landed as CTCTrapBase::SetThingAsImmune; pushes onto PDB ThingsToIgnoreObstruction +0x2C (chunk 254 review)

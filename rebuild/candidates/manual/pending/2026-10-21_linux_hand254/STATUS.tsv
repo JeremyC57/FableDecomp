@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007d8c20	RELOCATION_MATCH	379v379	PASS	two CDefPointer def lookups; out-parameter GetInterface for the appearance
+00788229	RELOCATION_MATCH	351v351	PASS	same-TU IS_THING_ALIVE/GetTCDriver stand-ins; *(begin()+i) index loop
+007baf00	RELOCATION_MATCH	358v358	PASS	inline ClearOpinionSource(CThing*) helper + inline CWorld getter fixed the register assignment
+00794c10	RELOCATION_MATCH	369v369	PASS	CTCDivineWrath FinishMove model + Kill(true) and inline StopSound
+007fede0	DIFFER	348v348	-	one frame word: find value copy in the dead index slot, retail the dead thing slot
+0065935e	RELOCATION_MATCH	349v349	PASS	three walks re-reading end() through the spilled this
+006594bb	DIFFER	363v362	-	frame-slot order, const GetTC register, sound-def release form
+0065a075	DIFFER	386v392	-	crime iterator/effects def register allocation (ebx/edi)
+0065a28f	RELOCATION_MATCH	397v397	PASS	named region local, CDefPointer raw-object ctor, inline static getters
+0065a8ee	DIFFER	378v385	-	child in edi vs esi; argument-slot reuse; literal push order
+0065b142	DIFFER	386v386	-	ParentThing load scheduled after push eax instead of before
+0065b598	RELOCATION_MATCH	325v325	PASS	stale member pointer read; inline CDefPointer release
+0065b6dd	RELOCATION_MATCH	375v375	PASS	same-TU find bodies sink the key stores
+0065be6c	DIFFER	336v336	-	pure ebx/edi swap
+0065c45a	RELOCATION_MATCH	353v353	PASS	EnableVillagerDefTypes model with the guard filter
+007df130	DIFFER	370v370	-	scratch registers eax/ecx vs ecx/edx
+007df4b0	RELOCATION_MATCH	345v345	PASS	inlined IsAllowedToUseEffect with def/frame-rate named locals
+006ced50	RELOCATION_MATCH	336v336	PASS	RTM unrolls the 16-pass loop by 4
+006cf920	RELOCATION_MATCH	378v378	PASS	/GS; same-TU LowerBound packs both keys and the scoreboard pointer
+006cfaa0	RELOCATION_MATCH	348v348	PASS	filter temporary by const ref frees its slot
+006d0410	RELOCATION_MATCH	372v372	PASS	inline helper taking the parent thing; inline LCG pick
+007a07f0	RELOCATION_MATCH	339v339	PASS	xor edi,edi preload; hand effects in ebx/ebp
+007a16f0	RELOCATION_MATCH	375v375	PASS	same-TU GetTargets stand-in
+00757b30	RELOCATION_MATCH	352v352	PASS	same-TU GetSubDef stand-in; intrinsic memcmp operator==
+00e035e0	RELOCATION_MATCH	336v336	PASS	scoped filter and string share a slot
+0045d923	RELOCATION_MATCH	322v322	PASS	one lea/push/call per field; final add esi,8Ch
+00e48eb0	RELOCATION_MATCH	356v356	PASS	by-value CScriptThing args copy-built in their slots
+00dcd1d0	RELOCATION_MATCH	370v370	PASS	CCountedPointer operator= loads both source words first
+00ef3840	RELOCATION_MATCH	372v372	PASS	nested NewScriptFrame waits with IsDone early-outs
+00eeea90	RELOCATION_MATCH	368v368	PASS	implicit-conversion temporary loop test; conditional name temporary
+0054ed90	RELOCATION_MATCH	365v365	PASS	inline CDefString accessor returning by value; CCountedPointer operator=
+00ca6e10	RELOCATION_MATCH	363v363	PASS	/EHsc; really strmbase CBaseRenderer::Receive
+004c8050	RELOCATION_MATCH	393v393	PASS	same-TU list::remove and LowerBound stand-ins; written-out erase branches
+004c8e50	RELOCATION_MATCH	341v341	PASS	out-parameter GetInterface per component
+004cd1e0	SKIP	-v330	-	int3 padding then another function inside the catalog row
+008330d0	RELOCATION_MATCH	340v340	PASS	one bool verdict then if/else constant bit stores
+00833390	RELOCATION_MATCH	349v349	PASS	every case returns (duplicated release/epilogue)
+00834760	RELOCATION_MATCH	328v328	PASS	catalog vfunc_19 = WorldUpdate; plain GetTC pick for the weapon trail
+00463950	RELOCATION_MATCH	385v385	PASS	compiler-generated operator= bitfield RMW
+00863ca0	DIFFER	361v358	-	0x30 aligned frame/box slot vs ours 0x20 packed
