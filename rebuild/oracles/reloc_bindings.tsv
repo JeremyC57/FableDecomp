@@ -22340,3 +22340,10 @@ __imp__GetAsyncKeyState@4	014402cc	00687fd0
 ?Render@CLandscapeBackgroundPatch@@QAEX_NPAJPA_N@Z	00be7be0	00bf71d0
 ?Render@CLandscapeBackgroundTreeNode@@QAEXK@Z	00bf71d0	00bf71d0
 ?IsDone@CMinionSpawner@@QAE_NXZ	00f35b30	00da5980
+?AnimationInterpolation_CalcValue@@YIM_NMMMM@Z	0070bd80	0070c800
+?GetNonLoopingDuration@C3DAnimationInfo@@QBEMXZ	00a23ce0	0070c800
+?ActivateQuest@CQuestManager@@QAE_NABUCCharString@@_N1@Z	004b4a10	00843fc0
+?GetDefName@CThing@@QAE?AUCDefString@@XZ	004c7cc0	00843fc0
+?SetAICast@CTCMultiArrow@@QAEXJ@Z	007cbf20	008cdc40
+?insert@CMultiplierMap@@QAE?AUinsert_result@1@ABUCMultiplierEntry@@@Z	00580d21	008e6780
+_toupper	00bfed16	0099ee20

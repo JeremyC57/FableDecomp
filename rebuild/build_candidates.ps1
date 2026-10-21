@@ -262643,6 +262643,76 @@ $catalog = @(
         TestSource = '00/ef/CMRestartMarker_Main_00ef34a0_test.cpp'
         PassPattern = '00ef34a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00406d90'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_ClampResolution_00406d90.cpp'
+        TestSource = '00/40/CUserProfileManager_ClampResolution_00406d90_test.cpp'
+        PassPattern = '00406d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070c800'
+        Module = 'CAnimSet'
+        Source = '00/70/CAnimSet_GetInterpolatedTime_0070c800.cpp'
+        TestSource = '00/70/CAnimSet_GetInterpolatedTime_0070c800_test.cpp'
+        PassPattern = '0070c800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00843fc0'
+        Module = 'CCreatureAction_ActivateQuest'
+        Source = '00/84/CCreatureActionActivateQuest_Initialise_00843fc0.cpp'
+        TestSource = '00/84/CCreatureActionActivateQuest_Initialise_00843fc0_test.cpp'
+        PassPattern = '00843fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cdc40'
+        Module = 'CCreatureAction_CastSkillMultiArrow'
+        Source = '00/8c/CCreatureActionCastSkillMultiArrow_Initialise_008cdc40.cpp'
+        TestSource = '00/8c/CCreatureActionCastSkillMultiArrow_Initialise_008cdc40_test.cpp'
+        PassPattern = '008cdc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e6780'
+        Module = 'CCreatureAction_CastStrengthMultiStrike'
+        Source = '00/8e/CCreatureActionCastStrengthMultiStrike_Initialise_008e6780.cpp'
+        TestSource = '00/8e/CCreatureActionCastStrengthMultiStrike_Initialise_008e6780_test.cpp'
+        PassPattern = '008e6780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099ee20'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_ToUpper_0099ee20.cpp'
+        TestSource = '00/99/CCharString_ToUpper_0099ee20_test.cpp'
+        PassPattern = '0099ee20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26170'
+        Module = 'C3DMeshInfo'
+        Source = '00/a2/C3DMeshInfo_Sizeof_00a26170.cpp'
+        TestSource = '00/a2/C3DMeshInfo_Sizeof_00a26170_test.cpp'
+        PassPattern = '00a26170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a44cd0'
+        Module = 'C3DSkeletalMorphTarget'
+        Source = '00/a4/C3DSkeletalMorphTarget_GetBoneScaling_00a44cd0.cpp'
+        TestSource = '00/a4/C3DSkeletalMorphTarget_GetBoneScaling_00a44cd0_test.cpp'
+        PassPattern = '00a44cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc5820'
+        Module = 'CEnginePrimitiveChangerManager'
+        Source = '00/bc/CEnginePrimitiveChangerManager_PreloadPrimitive_00bc5820.cpp'
+        TestSource = '00/bc/CEnginePrimitiveChangerManager_PreloadPrimitive_00bc5820_test.cpp'
+        PassPattern = '00bc5820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc5a20'
+        Module = 'CEnginePrimitiveChangerManager'
+        Source = '00/bc/CEnginePrimitiveChangerManager_RenderPrimitiveToShadowBuffer_00bc5a20.cpp'
+        TestSource = '00/bc/CEnginePrimitiveChangerManager_RenderPrimitiveToShadowBuffer_00bc5a20_test.cpp'
+        PassPattern = '00bc5a20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
