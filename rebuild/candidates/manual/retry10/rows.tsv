@@ -1575,8 +1575,8 @@ address	module	name	length	chunk	reason
 00e5f6b0	CHenchmanRegionEntranceComment	Main	335	hand246	DIFFER(335v335) -- register swap in the element address and the GetDataString vtable load
 00f36a30	CHeteroTerrainFractal	GetFractalHeight	368	hand246	DIFFER(361v361) -- scheduling only (counter load vs fmul order in the octave loop)
 00868ce0	CHitParameters	SetWeapon	368	hand246	DIFFER(361v360) -- frame +4: pointer temporary not overlaid with the lookup key / def out words
-00541fd0	CIconText	GetDataFromDef	368	hand246	DIFFER(350v366) -- lookup temporary's dtor zero stores eliminated (DSE)
-00a60050	CInputManagerDX	CInputManagerDX	333	hand246	DIFFER(333v333) -- count-block delete operand in eax instead of ecx
+00541fd0	CIconText	GetDataFromDef	368	hand246	DIFFER(350v366) -- lookup temporary's dtor zero stores eliminated (DSE) | advisor 2026-10-21: the zero stores survive only when the name string is a temporary of the SAME full expression (Icon = bank->GetGraphic(GetString(...))); best l_raw_fullexpr 360v366, VC defers GFGetSystemManager past the pushes; untried: a reference-returning inline GetBank() with no local, or a __cdecl GFGetSystemManager
+00a60050	CInputManagerDX	CInputManagerDX	333	hand246	DIFFER(333v333) -- count-block delete operand in eax instead of ecx | advisor 2026-10-21: not the release wording (same dtor text lands with ecx/eax/edx elsewhere); ruled out same-TU ctor/_M_insert_overflow stand-ins, delete casts, dead zero stores, Dispose members, named local (348); untried: temporary as the by-value result of an inline CreateJoystick factory, pointer-to-member destroy
 00688d40	CInputProcessZTarget	?AddToInterface@CInputProcessZTarget@@UAE_NAAVCInputProcessManager@@@Z	368	hand246	DIFFER(362v360) -- this/def register swap; PTarget temporary ctor/op= stays out of line unless forced
 00be7be0	CLandscapeBackgroundPatch	Render	400	hand246	DIFFER(361v391) -- sub-patch pointer in esi (retail edx, esi=4 constant) and 3/4/5 arm layout
 00bf6f80	CLandscapeBackgroundTreeNode	BuildDefaultSection	384	hand246	DIFFER(357v375) -- float ctor args loaded early and spilled to dead arg slots; box tail scheduling
