@@ -1,0 +1,62 @@
+# Chunk 272 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- x87 operand order:
+  - A length is `sqrt(X*X + (Y*Y + Z*Z))` when retail sums Y, Z and then X (0x008E5D40, 0x00725C40).
+  - An interpolated right-handed set is `(cur - old) * t + old` through C3DVector operators that return `C3DVector(...)` (0x00723C80 / 0x00759B40).
+- A named `const CThing* owner` local fixes an owner-register rotation. A margin is written `float m = 0.5f; if (c) m = 4.5f;`.
+- A forced teleport that retail `jmp`s to the shared SetPosition commit is a `goto commit` (0x00725C40). This is the one place a shared label beats writing the exits out in full.
+- TavernBar slots (0x007BA000 / 0x007BA1D0 / 0x007BA8C0):
+  - `__forceinline` GetJug with an early-out `return CIntelligentPointer(0)`.
+  - An 8-byte IP temporary gives the `and esp,-8` frame.
+  - The rows carry an unused default CCharString.
+  - The bounds test is `Food.size() <= (unsigned long)(chair - 1)`.
+- A do/while guarded by `if (i < steps)`, with the defaults declared inside, puts the default stores in the preheader next to i's register (0x008006D0).
+- OnSerialise:
+  - A named bool `saving = Mode == 1 || Mode == 3` gives save-branch-first; the inline condition gives load-first (0x007320E0).
+  - In CTCShapeManager the loading branch is written first (0x00762BA0).
+- An inline `IsThingAlive(thing)` keeps retail's second inline `return false` exit (0x00799140).
+- A named villager local before `->HomeBuilding` gives `lea ecx,[eax+0x170]` (0x00799140).
+- Out-parameter GetInterface (bit test, `long key = type`, map pointer, a ternary on the constant `type < it->type`) lets a later spill share the key's frame word (0x00799140).
+- A same-TU `#pragma auto_inline(off)` GetSubDef stand-in keeps the def in edi and releases it without re-reading the slot (0x007C04A0, 0x007D83C0).
+- Two smaller fixes in 0x007C04A0:
+  - A CCharString named in its own block gives `lea` instead of the ctor's eax.
+  - An inline owner accessor (`GetOwnerDefClass()`) fixes the edx/ecx/eax order.
+- An empty filter needs a user ctor (`CThingFilter_All() {}`), or VC stores a zero byte (0x007C04A0).
+- When VC refuses to inline a param-block ctor (an out-of-line `??0` shows in the /FAs listing), add `__forceinline` down the ctor chain.
+- A Format call with a ternary format string should be written as if/else, which gives retail's per-arm pushes (0x00722590).
+- Declaring a derived class's dtor out of line (0x0062E900) avoids inlined member dtors.
+- Intelligent pointers:
+  - A polymorphic CBaseIntelligentPointer (virtual v00) makes a derived IP 12 bytes where retail wants that.
+  - The turncoat ctor's IPs are 8-byte polymorphic subclasses whose `(0)` ctor calls `SetPItem(0)` (0x007C6760).
+- TC presence before a lookup:
+  - When retail tests the bit once (`jns`) and then calls LowerBound with no second test, write an inline HasTC that returns the masked word, guarding an inline GetTC that has no bit test (0x007C6760).
+  - When retail tests twice (0x006DE080), VC7.1 here CSEs the two tests; parked as a lane gap.
+- C3DVector with a user copy ctor and the implicit operator=: `T x = ref;` copies through registers, while a later `x = GetPosition();` uses movsd under /Os (0x007BDB66).
+- Reading an argument before the pushes: to read a call argument (`PShooter.GetPItem()->Team`) before the pushes in an /Os TU, give it and the by-value CCharString name named locals in one block around the call (0x007BDB66).
+- A loop over a filled STLport vector whose end retail holds in ebp: declare `T** it = v.First; T** end = v.Last;` in that order before the loop (0x0079B9D0).
+- STLport `__find(first, last, val, tag)` is an LTCG `__fastcall` (ecx/edx, then val and &tag pushed). Retail places the empty tag temporary in a live bool argument's slot, which this lane does not reproduce (0x006E3580).
+- Static `__fastcall` helpers called with ecx/edx:
+  - CTCTavernGame::HideMesh / PositionMesh (0x005E9B10 / 0x005EABC0) and Algorithm_FisherYatesShuffle (0x007D7860) are LTCG register-convention statics.
+  - Declare them `static __fastcall` with the real argument order: the first two arguments go in ecx and edx, the rest are pushed.
+- A packed (`#pragma pack(1)`) card record whose base is also packed is needed for the odd +0x25/+0x29 members in GetRandomCard (0x007D75A0). A wrapper struct `{vector; bool}` gives the `[edi+0xd]` byte read after the vector operator= call.
+- Behaviour tests: the C3DVector, CCharString and bitset stand-ins must not depend on `long` being 4 bytes (it is 8 on the g++ host). Initialise every pointer the body reads, including an "uninitialised" component pointer, which the test should set.
+
+Review at landing:
+- These rows needed more than 4 grades:
+  - 00799140 (probe i).
+  - 007c04a0 (probe e).
+  - 007320e0.
+  - 007d75a0, parked after 8.
+  - 007735d0 / 00773790, parked after ~26 advisor probes.
+  - 006aeea0 (16).
+  - 00774730 (20).
+  - 007751a0 (9).
+- Local base models:
+  - 007c6760 models `this` with a local CTCTurncoatSpell next to the existing header rebuild/include/engine/CTCTurncoatSpell.h. Retail offsets were checked against the ctor stores (Timer +0x0c, Def +0x40, IPs +0x44/+0x54/+0x74/+0x7c/+0x84, bool +0x8c, cooldowns +0x90/+0x94). Retype it with retype_landed.py if the header agrees.
+  - 007320e0 (CTCSpotLight.h) needs the same check.
+  - 00659625 (CTCVillage.h) needs the same check.
+  - 005eb810 (CTCTavernGame.h) needs the same check.
+- 007d83c0 and 006e3580 include a same-TU GetSubDef stand-in body; the landed symbol must bind to 0x007D9A80 / 0x0065F604 respectively.
+- 007bdb66 and 0079b9d0 call CThing::GetPosition 0x004C73D0; no CThingCreatureBase copy is involved.
+- 007c6760 grades only with the leaf `??0CTCTurncoatSpell` (given as `// Leaf:` in src).
+- 007727e0 is an inline-assembly body (fistp rounding): mark it oracle-only rather than retrying.

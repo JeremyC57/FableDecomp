@@ -1,0 +1,7 @@
+address	name	evidence
+00723c80	CTCPhysicsStandard::GetRHSet	chunk 272
+00773790	CTCShop::GetAttitudeSellPriceMultiplier	twin of 007735d0 at the Sell offsets +0x70/+0x74 (chunk 272)
+005b48a2	CTCInventoryClothing::OnItemSelected	chunk 272
+007f53b0	CTCSoundAtmosphereVillage::FrameUpdate	chunk 272
+007320e0	CTCSpotLight::OnSerialise	chunk 272
+006a2220	CollectCarrySlots	not RemapGroups (chunk 272)

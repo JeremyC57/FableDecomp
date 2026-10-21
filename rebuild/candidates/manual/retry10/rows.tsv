@@ -2018,3 +2018,27 @@ address	module	name	length	chunk	reason
 007800b0	CTCHeroGuide	OpenQuestSelectInterface	480	hand270	DIFFER(466v466) -- OpenQuestSelectInterface (/GS); shape matches, frame 0x40 v 0x3c (text temp not sharing the key slot)
 007e8a40	CTCFlourishTarget	ProcessActionMovementDelta	482	hand270	DIFFER(482v482) -- Flourish ProcessActionMovementDelta; x87 temp/frame packing (0x34 v 0x3c) + side-dot term order
 00c11d00	CTCHero	CTCHero::Initialize	512	hand270	DIFFER(507v507) -- unnamed audio ctor (label CTCHero::Initialize wrong); EH ctor, vptr/push scheduling only
+008e5d40	CTCPhysicsStandard	Move	448	hand272	DIFFER(441v441) -- frame slot swap things/oldPosition (tried decl order, scopes, assign, STLport base)
+008006d0	CTCPreCalculatedNavigationRoute	SaveRoute	480	hand272	DIFFER(478v478) -- name built before pushes; frame +8
+008008b0	CTCPreCalculatedNavigationRoute	LoadRoute	432	hand272	DIFFER(432v420) -- same as 008006d0 + packed frame temps
+006aeea0	CTCRegionFollower	IsCreatureFollowingHeroAcrossRegions	432	hand272	DIFFER(429v429) -- scratch rotation eax/ecx/edx vs ecx/edx/eax around GetDefName/stricmp/0xbc lookup
+00762ba0	CTCShapeManager	OnSerialise	480	hand272	DIFFER(444v468) -- exits merged; offset zero via edi; ebx/edi map swap
+005b48a2	CTCShop	GetName	460	hand272	DIFFER(488v460) -- first pass; label is CTCInventoryClothing::OnItemSelected (vtable 0x0124356C slot 33)
+007727e0	CTCShop	GetCurrentBasicPrice	448	hand272	DIFFER(497v433) -- minimal; inline-assembly fistp rounding (not reproducible in compiled C++)
+007735d0	CTCShop	GetAttitudeBuyPriceMultiplier	448	hand272	DIFFER(443v448) -- advisor: park at 443v448; register-web priority tie-break (retail this=ebp thing=edi zero=ebx; ours this=edi thing=ebp zero=esi); frame same sub esp,0x10; ~26 probes no gain
+00773790	CTCShop	GetAttitudeBuyPriceMultiplier	448	hand272	DIFFER(443v448) -- twin of 007735d0 with Sell offsets; same tie-break 443v448
+00774730	CTCShop	SellItem	432	hand272	DIFFER(419v419) -- e: esi/edi swap in contents loop (node vs item); tried ref/ptr/accessors/iterator/while/inline members
+007751a0	CTCShop	SetShopKeeper	432	hand272	DIFFER(419v419) -- f: HasTC(0xab) on reloaded ParentThing loads into ecx/eax swapped (+ next lea edx/ecx); tried accessor/split-if
+007c25a0	CTCShotDefinitionBase	InitAttachedEffects	452	hand272	DIFFER(452v452) -- frame sharing uninit emitter/temps
+007bbe34	CTCShotDefinitionSpreadShotProjectile	InitMovement	464	hand272	DIFFER(439v464) -- first pass; target in edi + temp slot for IS_THING_ALIVE, per-vector frame slots 0x5c v 0x44
+00722590	CTCSmokeGenerator	CreatePositions	432	hand272	DIFFER(434v425) -- frame/slot sharing + def release shape
+007f53b0	CTCSoundAtmosphereVillage	CTCSoundAtmosphereVillage::vfunc_9	432	hand272	DIFFER(441v424) -- first pass; label is CTCSoundAtmosphereVillage::FrameUpdate (vtable 0x0124111C slot 9)
+0072c790	CTCSpecialAbilities	SetupEnflameSpell	416	hand272	DIFFER(413v413) -- frame sharing IP temp
+0079a890	CTCSummonSpell	IsValidTeleportPos	512	hand272	DIFFER(497v508) -- first pass; frame 0x48 v 0x34, arg-slot reuse for blocked flag/node, this register
+006e3580	CTCTalk	PlaySpeech	512	hand272	DIFFER(490v502) -- near miss; dead player=0 store kept in retail, __find tag in arg7 slot, name/end ebp/edi swap
+008f0eb0	CTCTavernGameCardBase	CardsTurning	512	hand272	DIFFER(487v506) -- separate still-turning release+ret, def in ebp, def slot reused for height
+008f10b0	CTCTavernGameCardBase	ShuffleCards	416	hand272	DIFFER(466v410) -- first pass; def frame word reused for height, layout sub-def temp copy in esi, frame 0x20 v 0x34
+007d75a0	CTCTavernGameCardPairs	GetRandomCard	465	hand272	DIFFER(468v465) -- near miss; vptr store order, mirror index -4 fold, inner search exit threading vs loop placement (goto form 461v465)
+007b8b10	CTCTavernTable	GetEatingPoint	432	hand272	DIFFER(408v417) -- ebx/ebp web swap + inline search first-reg; tried 6
+006de080	CTCTrophy	StartMinigame	512	hand272	DIFFER(490v497) -- near miss; double TC-0x10 presence test (HasTC + GetInterface) CSE'd into one by the lane
+00659625	CTCVillage	UpdateTorchTasks	475	hand272	DIFFER(466v475) -- first pass; night in bl / building in edi register web vs ours (night spilled), fps load order

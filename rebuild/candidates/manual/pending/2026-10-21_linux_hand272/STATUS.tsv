@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00725c40	RELOCATION_MATCH	499v499	PASS	CTCPhysicsControlled::Move; goto shared SetPosition tail
+00723c80	RELOCATION_MATCH	458v458	PASS	CTCPhysicsStandard::GetRHSet (catalog says CTCPhysicsRigidBody); C3DVector operator lerp
+00759b40	RELOCATION_MATCH	494v494	PASS	CTCPhysicsRigidBody::GetRHSet; C3DVector operator lerp
+008e5d40	DIFFER	441v441	-	frame slot swap things/oldPosition (tried decl order, scopes, assign, STLport base)
+008006d0	DIFFER	478v478	-	name built before pushes; frame +8
+008008b0	DIFFER	432v420	-	same as 008006d0 + packed frame temps
+006aeea0	DIFFER	429v429	-	scratch rotation eax/ecx/edx vs ecx/edx/eax around GetDefName/stricmp/0xbc lookup
+00762ba0	DIFFER	444v468	-	exits merged; offset zero via edi; ebx/edi map swap
+005b48a2	DIFFER	488v460	-	first pass; label is CTCInventoryClothing::OnItemSelected (vtable 0x0124356C slot 33)
+007727e0	DIFFER	497v433	-	minimal; inline-assembly fistp rounding (not reproducible in compiled C++)
+007735d0	DIFFER	443v448	-	advisor: park at 443v448; register-web priority tie-break (retail this=ebp thing=edi zero=ebx; ours this=edi thing=ebp zero=esi); frame same sub esp,0x10; ~26 probes no gain
+00773790	DIFFER	443v448	-	twin of 007735d0 with Sell offsets; same tie-break 443v448
+00774100	RELOCATION_MATCH	434v434	PASS	CTCShop::GetWantedItemsList; by-value CDefPointer copies in a named bool
+00774730	DIFFER	419v419	-	e: esi/edi swap in contents loop (node vs item); tried ref/ptr/accessors/iterator/while/inline members
+007751a0	DIFFER	419v419	-	f: HasTC(0xab) on reloaded ParentThing loads into ecx/eax swapped (+ next lea edx/ecx); tried accessor/split-if
+00799140	RELOCATION_MATCH	477v477	PASS	CTCShopKeeper::CalcAreOtherPeopleInShop; out-param GetInterface shares key slot
+007c04a0	RELOCATION_MATCH	496v496	PASS	CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe; GetSubDef stand-in, CThingFilter_All user ctor
+007c25a0	DIFFER	452v452	-	frame sharing uninit emitter/temps
+007bdb66	RELOCATION_MATCH	406v406	PASS	CTCShotDefinitionNymphFun::OnCollision; /Os fp TU, C3DVector user copy ctor, team local in name block
+007bbe34	DIFFER	439v464	-	first pass; target in edi + temp slot for IS_THING_ALIVE, per-vector frame slots 0x5c v 0x44
+00722590	DIFFER	434v425	-	frame/slot sharing + def release shape
+007f53b0	DIFFER	441v424	-	first pass; label is CTCSoundAtmosphereVillage::FrameUpdate (vtable 0x0124111C slot 9)
+0072c790	DIFFER	413v413	-	frame sharing IP temp
+007320e0	RELOCATION_MATCH	480v480	PASS	CTCSpotLight::OnSerialise (catalog vfunc_1); named bool saving, load arm resets light info
+0079a890	DIFFER	497v508	-	first pass; frame 0x48 v 0x34, arg-slot reuse for blocked flag/node, this register
+0079b9d0	RELOCATION_MATCH	494v494	PASS	CTCSummonSpell::FrameUpdate; First/Last named locals before the carried loop
+006e3580	DIFFER	490v502	-	near miss; dead player=0 store kept in retail, __find tag in arg7 slot, name/end ebp/edi swap
+007ba000	RELOCATION_MATCH	449v449	PASS	CTCTavernBar::GetPickupSlot; uninit 0x2E component
+007ba1d0	RELOCATION_MATCH	494v494	PASS	CTCTavernBar::GetEmptyJugSlot; __forceinline GetJug early-out
+007ba8c0	RELOCATION_MATCH	489v489	PASS	CTCTavernBar::HasEmptyJugSlot; GetEmptyJugSlot body over local pos/rh
+005eb810	RELOCATION_MATCH	462v462	PASS	CTCTavernGame::ChangeBet; changed=true before +=
+008f0eb0	DIFFER	487v506	-	separate still-turning release+ret, def in ebp, def slot reused for height
+008f10b0	DIFFER	466v410	-	first pass; def frame word reused for height, layout sub-def temp copy in esi, frame 0x20 v 0x34
+007d75a0	DIFFER	468v465	-	near miss; vptr store order, mirror index -4 fold, inner search exit threading vs loop placement (goto form 461v465)
+007d3560	RELOCATION_MATCH	415v415	PASS	CTCTavernGameCoinGolf::GetCamera; C3DVector user copy ctor
+007d83c0	RELOCATION_MATCH	429v429	PASS	CTCTavernGameSpotTheAddition::OnInitialActivate; GetSubDef stand-in keeps def in edi
+007b8b10	DIFFER	408v417	-	ebx/ebp web swap + inline search first-reg; tried 6
+006de080	DIFFER	490v497	-	near miss; double TC-0x10 presence test (HasTC + GetInterface) CSE'd into one by the lane
+007c6760	RELOCATION_MATCH	478v478	PASS	CTCTurncoatSpell ctor; HasTC word + GetTC without bit test, const char* def name
+00659625	DIFFER	466v475	-	first pass; night in bl / building in edi register web vs ours (night spilled), fps load order
