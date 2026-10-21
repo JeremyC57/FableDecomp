@@ -1,0 +1,8 @@
+address	name	evidence
+008fcf90	CAIStateGroupBase::GetPlayerManager	not CPixelShader::CountReferences (chunk 259)
+00449970	CPlayerManager::GetMainPlayer	not Catch@0040d959 (chunk 259)
+00487dc0	CPlayer::GetHeroCreature	(chunk 259)
+00744460	GetSightRange	not DrawGetSeaLevel (chunk 259)
+008abaa0	CCreatureAction_SitDown::~CCreatureAction_SitDown	(chunk 259)
+00792240	std::list::~list	not SortTreeRecursively (chunk 259)
+004978a0	GFFloatRandom	__fastcall, seed in ecx (chunk 259)

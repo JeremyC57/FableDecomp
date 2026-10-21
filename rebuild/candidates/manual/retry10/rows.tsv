@@ -1753,3 +1753,22 @@ address	module	name	length	chunk	reason
 0091e750	CAIStateGroup_MinionMotherConsoleChild	CAIStateGroup_MinionMotherConsoleChild::Update	432	hand258	DIFFER(432v432) -- MinionMotherConsoleChild::Update; this/child register swap (edi vs ebp) only
 00935c40	CAIStateGroup_MinionPutOutFires	GoToWell	512	hand258	DIFFER(494v502) -- MinionPutOutFires::GoToWell; frame slot layout and lower_bound register/pad scheduling only
 00935e40	CAIStateGroup_MinionPutOutFires	PutOutFire	480	hand258	DIFFER(476v468) -- MinionPutOutFires::PutOutFire; inline lower_bound first-copy register and zero-constant CSE only
+009363d0	CAIStateGroup_MinionWatchFires	CAIStateGroup_MinionWatchFires::Update	448	hand259	DIFFER(442v438) -- inlined lower_bound loads first via eax->esi; tail-loop this reload/Terminate entry order (best e)
+0091c220	CAIStateGroup_NymphAttack	IsTargetInLineOfSight	432	hand259	DIFFER(416v419) -- IsNot filter targets homed in the dead arg slot the other way round (best f)
+00984d90	CAIStateGroup_OpinionReactionRoot	FleeIsRunnable	464	hand259	DIFFER(455v455) -- one pair: retail add esi,44h vs ours mov+lea; rest matches (best b)
+00986210	CAIStateGroup_OpinionReactionRoot	CallingChildrenIsRunnable	464	hand259	DIFFER(483v461) -- lane gap: inline-asm ceil helper (bare dword fistp/fild) (best base)
+0091b3a0	CAIStateGroup_SeekPerceivedThing	RunToPerceivedThingPosition	464	hand259	DIFFER(472v455) -- one attempt: register roles, inner-loop exit shape, aligned frame (best base)
+0091b570	CAIStateGroup_SeekPerceivedThing	CAIStateGroup_SeekPerceivedThing::Update	498	hand259	DIFFER(503v498) -- lane gap (LTCG-like): list sentinel kept in esi across calls; x87-stack x/y; frame 0xdc v 0xe0 (best c)
+0093c030	CAIStateGroup_SeekScriptTarget	CAIStateGroup_SeekScriptTarget::Update	512	hand259	DIFFER(505v505) -- this in esi v edi; lower_bound eax->edi copy; mov ecx,this hoisted (best d)
+009692c0	CAIStateGroup_TavernKeeper	ReceivePayment	432	hand259	DIFFER(445v426) -- first fail block sunk to end; frame slots 8 apart; RemoveMessage order (best d)
+00966af0	CAIStateGroup_TavernServer	GetBar	512	hand259	DIFFER(479v502) -- rough: sentinel in esi, list dtor inlined once, folded IP ctor/operator= (best base)
+00917130	CAIStateGroup_ThrowLogsOnFire	CAIStateGroup_ThrowLogsOnFire::Update	464	hand259	DIFFER(437v451) -- retail inlines 2nd push_back only; VC7.1 inlines neither or both (best c)
+0096c4f0	CAIStateGroup_Thunder	CAIStateGroup_Thunder::Update	496	hand259	DIFFER(506v495) -- lane gap (LTCG-like): CDefPointer target kept in esi across calls; slots swapped (best c)
+0094d780	CAIStateGroup_TrollBase	CAIStateGroup_TrollBase::Initialise	432	hand259	DIFFER(487v427) -- rough: no-frame arg-slot homing of all locals + 5th callee-saved reg (best base)
+00938380	CAIStateGroup_UsesSeat	SitInSeat	512	hand259	DIFFER(513v499) -- rough: local order/frame, flag test shape, counted-pointer release (best base)
+009385f0	CAIStateGroup_UsesSeat	MoveToSeat	464	hand259	DIFFER(461v457) -- frame packing in dead arg slot (0x2c v 0x38); esi/edi swap (best base)
+00963880	CAIStateGroup_VersusScorpionKing	IsScorpionChargingAtMe	464	hand259	DIFFER(467v463) -- fast-rsqrt integer estimate scheduling + x/y FPU order (best b)
+00940960	CAIStateGroup_VillageTaskHorn	CAIStateGroup_VillageTaskHorn::Update	432	hand259	DIFFER(416v431) -- as 0x93EA90: SetTask arg order, ebp v edi, mov/add v lea (best base)
+00940310	CAIStateGroup_VillageTaskPickCrops	?Update@CAIStateGroup_VillageTaskPickCrops@@UAEXXZ	494	hand259	DIFFER(493v494) -- frame-slot packing (crop v key slot); mov eax,[eax+4];mov ecx,eax (best c)
+0093ea90	CAIStateGroup_VillageTaskTorch	CAIStateGroup_VillageTaskTorch::Update	464	hand259	DIFFER(422v452) -- GetPItem hoisted before creature push; ebp v edi; mov/add v lea (best c)
+0096af60	CAIStateGroup_WhisperPotionCombat	DisappearJump	416	hand259	DIFFER(419v415) -- body matches; VC7.1 sinks shared Terminate block to function end (best b)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00936210	RELOCATION_MATCH	448v448	PASS	same-TU noinline search stand-in; named IS_THING_ALIVE item
+009363d0	DIFFER	442v438	-	inlined lower_bound loads first via eax->esi; tail-loop this reload/Terminate entry order (best e)
+009162f0	RELOCATION_MATCH	498v498	PASS	GetTC<T> returning 0 on miss + out-param GetInterface
+0091c220	DIFFER	416v419	-	IsNot filter targets homed in the dead arg slot the other way round (best f)
+00984d90	DIFFER	455v455	-	one pair: retail add esi,44h vs ours mov+lea; rest matches (best b)
+00986210	DIFFER	483v461	-	lane gap: inline-asm ceil helper (bare dword fistp/fild) (best base)
+00986510	RELOCATION_MATCH	421v421	PASS	single-return if chain; named bool in || chain
+0095d590	RELOCATION_MATCH	512v512	PASS	noinline GetFirePointList stand-in; by-value comparator
+00965320	RELOCATION_MATCH	512v512	PASS	single-return if chain; __forceinline IS_THING_ALIVE
+0097b900	RELOCATION_MATCH	410v410	PASS	out-pointer init 0; noinline GetPFirstThing stand-in
+0096ddb0	RELOCATION_MATCH	401v401	PASS	__forceinline derived action ctor over out-of-line base
+0091b3a0	DIFFER	472v455	-	one attempt: register roles, inner-loop exit shape, aligned frame (best base)
+0091b570	DIFFER	503v498	-	lane gap (LTCG-like): list sentinel kept in esi across calls; x87-stack x/y; frame 0xdc v 0xe0 (best c)
+0093c030	DIFFER	505v505	-	this in esi v edi; lower_bound eax->edi copy; mov ecx,this hoisted (best d)
+00923510	RELOCATION_MATCH	421v421	PASS	manager pointer local before the def-name string
+00969ae0	RELOCATION_MATCH	460v460	PASS	named creature local; implicit CCharString
+00969cb0	RELOCATION_MATCH	436v436	PASS	implicit mode strings; GetInterface 0x31
+0096fa90	RELOCATION_MATCH	451v451	PASS	separate ifs ending in the same assign+return
+009689c0	RELOCATION_MATCH	512v512	PASS	implicit CCharString args; both return-true exits written out in full
+00968e00	RELOCATION_MATCH	416v416	PASS	inline GetCreature() getter (lea ecx,[eax+170h])
+009692c0	DIFFER	445v426	-	first fail block sunk to end; frame slots 8 apart; RemoveMessage order (best d)
+00966af0	DIFFER	479v502	-	rough: sentinel in esi, list dtor inlined once, folded IP ctor/operator= (best base)
+00967b40	RELOCATION_MATCH	468v468	PASS	every failure exit written out in full (no shared goto)
+00942d40	RELOCATION_MATCH	416v416	PASS	single-return if chain; noinline search stand-in
+00917130	DIFFER	437v451	-	retail inlines 2nd push_back only; VC7.1 inlines neither or both (best c)
+0096c4f0	DIFFER	506v495	-	lane gap (LTCG-like): CDefPointer target kept in esi across calls; slots swapped (best c)
+0094d780	DIFFER	487v427	-	rough: no-frame arg-slot homing of all locals + 5th callee-saved reg (best base)
+00938380	DIFFER	513v499	-	rough: local order/frame, flag test shape, counted-pointer release (best base)
+009385f0	DIFFER	461v457	-	frame packing in dead arg slot (0x2c v 0x38); esi/edi swap (best base)
+009633e0	RELOCATION_MATCH	469v469	PASS	declared C3DVector copy ctor (fast-rsqrt Normalise)
+00963640	RELOCATION_MATCH	456v456	PASS	CDefPointer local + GetSubDef stand-in; negated search bool
+00963880	DIFFER	467v463	-	fast-rsqrt integer estimate scheduling + x/y FPU order (best b)
+00940960	DIFFER	416v431	-	as 0x93EA90: SetTask arg order, ebp v edi, mov/add v lea (best base)
+00940310	DIFFER	493v494	-	frame-slot packing (crop v key slot); mov eax,[eax+4];mov ecx,eax (best c)
+0093ea90	DIFFER	422v452	-	GetPItem hoisted before creature push; ebp v edi; mov/add v lea (best c)
+0096af60	DIFFER	419v415	-	body matches; VC7.1 sinks shared Terminate block to function end (best b)
+009261f0	RELOCATION_MATCH	512v512	PASS	landed AddItemToInventory (0x8ED090) HasTC/GetTC model, first try
+00944e80	RELOCATION_MATCH	470v470	PASS	best/bestDistance before the list copy; named creature in loop
+00f09640	RELOCATION_MATCH	494v494	PASS	two copies of the landed nested new-expression
+00f08a30	RELOCATION_MATCH	507v507	PASS	CScriptThing handle as member struct with copy ctor
