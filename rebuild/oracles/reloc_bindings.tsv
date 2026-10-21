@@ -21198,3 +21198,4 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?ReadFromFile@CLipSyncSampleData@@QAEXPAVCMemoryDataInputStream@@@Z	00a495f0	00a42ea0
 ?Reset@?$CCountedPointer@UCLipSyncSampleData@@@@QAEXPAUCLipSyncSampleData@@@Z	00a44170	00a42ea0
 ?Sizeof@CLipSyncSampleData@@QBEKXZ	00a43960	00a42ea0
+?GetPThingWorld@CAIStateGroupBaseW@@QBEPAUCWorld@@XZ	008fcfa0	009226b0
