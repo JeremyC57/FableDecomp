@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00567d00   DIFFER(90v89)    PASS   RangeInitialize
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0089bdf0   RELOCATION_MATCH PASS   EntitySetFacingAngle
+009a7ca0   DIFFER(145v144)  PASS   FindBank
+00a5b260   DIFFER(265v264)  PASS   Open
+0098a9a0   WARN RELOC_NAME: ?InsertGrow@CLongArray@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long>::_M_insert_overflow'
+0098a9a0   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0098a9a0   RELOCATION_MATCH PASS   CreatePixelShader
+
+WINS: 2
+  0089bdf0 RELOCATION_MATCH CGameScriptInterface::?EntitySetFacingAngle@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+  0098a9a0 RELOCATION_MATCH CShaderRenderManager::CreatePixelShader
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_EntitySetFacingAngle_0089bdf0
+  CShaderRenderManager_CreatePixelShader_0098a9a0

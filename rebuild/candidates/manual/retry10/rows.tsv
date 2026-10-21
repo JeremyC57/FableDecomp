@@ -1615,3 +1615,14 @@ address	module	name	length	chunk	reason
 00d3a050	CQ_FireHeartScript	DisableFollowers	336	hand248	DIFFER(330v330) -- one address form: retail `mov eax,[esi+128h] ; lea ecx,[eax+ebp]` for the named handle pointer where ours is `mov ecx,[esi+128h] ; add ecx,ebp` (the 1-byte difference then shows as `nop` vs `mov edi,e
 00da2860	CQ_MinionCampScript	CheckBriarHit	336	hand248	DIFFER(321v321) -- register rotation only: the two inline ~CScriptThing release tails reload Info into ecx/eax (retail edx/ecx) and the flag store goes through edx (retail eax)
 00de81b0	CQ_MinionCampScript	CheckBriarHit	336	hand248	DIFFER(321v321) -- register rotation only: the two inline ~CScriptThing release tails reload Info into ecx/eax (retail edx/ecx) and the flag store goes through edx (retail eax)
+00dfc920	CQ_TraderConflictGoodScript	WatchForRegionTransitions	368	hand249	DIFFER(354v354) -- by-value CScriptThing arg copy: element addressing [edi+ecx+4] vs our formed pointer
+00aa39a0	CQuaternion	ToMatrix	336	hand249	DIFFER(332v332) -- int zero/1.0f row-end stores hoisted by our scheduler
+004afe20	CQuestManager	RemoveBoast	352	hand249	DIFFER(356v345) -- register allocation (this in edi, group in the dead id slot); inline strcmp sete
+004b4260	CQuestManager	ActivateMultipleQuests	368	hand249	DIFFER(336v359) -- register allocation: retail i frame-only, activated in bl, this spilled; ours i in edi, activated in frame
+0086b9d0	CRandomAppearanceMorph	GetRandomSkeletalMorph	400	hand249	DIFFER(389v389) -- register allocation: this ebp, map ebx, end spilled
+00becde0	CRandomAppearanceMorph	CRandomAppearanceMorph::UpdateMorphArray	346	hand249	DIFFER(340v346) -- entry key loaded once in retail (frame 0x28) vs per-field reloads (0x24); identity is a CVectorMap, not CRandomAppearanceMorph
+0066c900	CRegionMinimap	IlluminateRegionMinimapTheme	354	hand249	DIFFER(348v354) -- pop esi placement + x87 liveness of light.Z
+009dc6e0	CRenderManager2D	Draw2DTexture	400	hand249	DIFFER(384v388) -- zero-constant register choice + copy-chain scheduling
+00a22e10	CRightHandedSet	MakePerpendicular	368	hand249	DIFFER(358v358) -- scheduling only: mov esi,0x17C vs fmul st(4)
+005590c0	CScrollBarOutside	OnLeftClicked	368	hand249	DIFFER(360v365) -- rough attempt; register allocation and spills far off
+00b20ba0	CSplinePosParamData	Update	400	hand249	DIFFER(397v391) -- frame 0x64v0x58; retail integer C3DVector copies, X kept on x87

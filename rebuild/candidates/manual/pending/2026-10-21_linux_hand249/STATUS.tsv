@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00dfc920	DIFFER	354v354	-	by-value CScriptThing arg copy: element addressing [edi+ecx+4] vs our formed pointer
+00bdebf0	RELOCATION_MATCH	355v355	PASS	centre via float ctor; flag clear before result init
+00a88de0	RELOCATION_MATCH	399v399	PASS	Shoemake matrix->quat; else-arm s is double
+00aa39a0	DIFFER	332v332	-	int zero/1.0f row-end stores hoisted by our scheduler
+006463ff	RELOCATION_MATCH	360v360	PASS	size TU; named IP local; raw IS_THING_ALIVE stand-in
+004afe20	DIFFER	356v345	-	register allocation (this in edi, group in the dead id slot); inline strcmp sete
+004b1ba0	RELOCATION_MATCH	387v387	PASS	bank via inline getter; && counted-pointer temp; STLport list insert with prev local
+004b3260	RELOCATION_MATCH	379v379	PASS	nested inline SameText in CCharString ==
+004b35e0	RELOCATION_MATCH	379v379	PASS	twin of 004b3260 (NightOnly)
+004b4260	DIFFER	336v359	-	register allocation: retail i frame-only, activated in bl, this spilled; ours i in edi, activated in frame
+004b6380	RELOCATION_MATCH	346v346	PASS	named binary-mode bool; ReadPresizedString inline read
+0086b9d0	DIFFER	389v389	-	register allocation: this ebp, map ebx, end spilled
+00becde0	DIFFER	340v346	-	entry key loaded once in retail (frame 0x28) vs per-field reloads (0x24); identity is a CVectorMap, not CRandomAppearanceMorph
+00f3a710	RELOCATION_MATCH	377v377	PASS	explicit inBit/outBit masks with *=2; scan bools declared seenClear, setAfterClear, gapRecorded, seenSet
+006bbfd0	RELOCATION_MATCH	400v400	PASS	retail 0x58 CRegion local model; inline STLport _M_increment walk
+0066c900	DIFFER	348v354	-	pop esi placement + x87 liveness of light.Z
+009dc6e0	DIFFER	384v388	-	zero-constant register choice + copy-chain scheduling
+009ddff0	RELOCATION_MATCH	329v329	PASS	vertex array; RHW copied last
+009de140	RELOCATION_MATCH	337v337	PASS	one && chain == true
+009de2a0	RELOCATION_MATCH	328v328	PASS	literal 2/3 keeps multiply order
+00a22e10	DIFFER	358v358	-	scheduling only: mov esi,0x17C vs fmul st(4)
+00da5f40	RELOCATION_MATCH	337v337	PASS	icon local in own block; colour ctor R,G,B,A
+00a87580	RELOCATION_MATCH	383v383	PASS	engine/CSBGoal.h; position local inside inline helper shares frame slot
+004ca230	RELOCATION_MATCH	349v349	PASS	wrong label: CThing::CreateTCsFromString; named keyword locals in inline helpers
+00cb8690	RELOCATION_MATCH	400v400	PASS	parser helpers with named markers
+009041a0	RELOCATION_MATCH	363v363	PASS	if/else arms; same-TU GetDef/LowerBound/event-ctor stand-ins
+00904540	RELOCATION_MATCH	346v346	PASS	&& by-value CScriptThing temp + new-expression temp; plain bitset GetInterface
+00904cd0	RELOCATION_MATCH	327v327	PASS	MoveToThing twin; const uchar& HasTC
+00851ed0	RELOCATION_MATCH	365v365	PASS	inline operator/(float) via reciprocal; flag store after second increment
+005590c0	DIFFER	360v365	-	rough attempt; register allocation and spills far off
+00555220	RELOCATION_MATCH	368v368	PASS	reference-returning min; re-indexed children
+0053ebf0	RELOCATION_MATCH	336v336	PASS	plain switch; this->CObserver conversion null test
+0098a9a0	RELOCATION_MATCH	345v345	PASS	same-TU noinline growth-insert stand-in homes the empty tag over the live CCharString; ReleaseTemporary dtor
+0054b360	RELOCATION_MATCH	328v328	PASS	CTextSlider dtor twin; epsilon == with <=
+0054ba20	RELOCATION_MATCH	390v390	PASS	product split into helper statement stops VC reassociation
+0046a568	RELOCATION_MATCH	373v373	PASS	size TU; four Transfer<T> overloads, sounds/angles/vectors order
+00e63730	RELOCATION_MATCH	352v352	PASS	CKG_Sheriff script model; named bools in blocks
+00b20ba0	DIFFER	397v391	-	frame 0x64v0x58; retail integer C3DVector copies, X kept on x87
+0041a980	RELOCATION_MATCH	377v377	PASS	fieldwise box, scalar centre, system manager local
+00eed8b0	RELOCATION_MATCH	391v391	PASS	filter needs its vptr; || chain temporaries with flags

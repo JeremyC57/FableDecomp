@@ -1,0 +1,11 @@
+address	name	evidence
+004ca230	CThing::CreateTCsFromString	not CScriptBase::LoadGameState (chunk 249)
+0099eae0	CCharString::~CCharString	manifest names an STLport _Cons_val instantiation (chunk 249)
+00cb5ad0	CScriptInfoManager::GetScriptInfo	callee (chunk 249)
+004c7e50	CThing::GetScriptThing	callee (chunk 249)
+005bb346	std::vector::vector	vector copy ctor (chunk 249)
+009b9ba0	CStringParser::NextItemIs	callee (chunk 249)
+0049d870	GFGetCurrentFrame	callee (chunk 249)
+00593666	GetDef<T>	callee (chunk 249)
+0052ea30	ChangePositionDelta	callee (chunk 249)
+0086b900	CreateRandomMorphEntry	callee (chunk 249)
