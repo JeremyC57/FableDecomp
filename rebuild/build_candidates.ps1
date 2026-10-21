@@ -258836,6 +258836,97 @@ $catalog = @(
         TestSource = '00/91/CAIStateGroupKidHurtSelfRunToMother_IsRunnable_00915080_test.cpp'
         PassPattern = '00915080_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004b1590'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_ActivateFeatCard_004b1590.cpp'
+        TestSource = '00/4b/CQuestManager_ActivateFeatCard_004b1590_test.cpp'
+        PassPattern = '004b1590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00582a16'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_IsButtonHeldForExpression_00582a16.cpp'
+        TestSource = '00/58/CTCInventory_IsButtonHeldForExpression_00582a16_test.cpp'
+        PassPattern = '00582a16_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c311a'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_GetItemOfTypeInInventory_005c311a.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_GetItemOfTypeInInventory_005c311a_test.cpp'
+        PassPattern = '005c311a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c99fd'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConfiscateItems_005c99fd.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConfiscateItems_005c99fd_test.cpp'
+        PassPattern = '005c99fd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00698e40'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_PushZTargetMode_00698e40.cpp'
+        TestSource = '00/69/CGameCameraManager_PushZTargetMode_00698e40_test.cpp'
+        PassPattern = '00698e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a1120'
+        Module = 'CTCCarrying'
+        Source = '00/6a/CTCCarrying_GetCarriedThing_006a1120.cpp'
+        TestSource = '00/6a/CTCCarrying_GetCarriedThing_006a1120_test.cpp'
+        PassPattern = '006a1120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084a350'
+        Module = 'CCreatureAction_PickUpJugToFill'
+        Source = '00/84/CCreatureActionPickUpJugToFill_PerformAction_0084a350.cpp'
+        TestSource = '00/84/CCreatureActionPickUpJugToFill_PerformAction_0084a350_test.cpp'
+        PassPattern = '0084a350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00966cf0'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/96/CAIStateGroupTavernServer_IsCarryingJug_00966cf0.cpp'
+        TestSource = '00/96/CAIStateGroupTavernServer_IsCarryingJug_00966cf0_test.cpp'
+        PassPattern = '00966cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009687b0'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0.cpp'
+        TestSource = '00/96/CAIStateGroupTavernServer_IsCarryingJug_009687b0_test.cpp'
+        PassPattern = '009687b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ba080'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_ReadNextItem_009ba080.cpp'
+        TestSource = '00/9b/CStringParser_ReadNextItem_009ba080_test.cpp'
+        PassPattern = '009ba080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a42ea0'
+        Module = 'CLipSyncDataBankEntry::CData'
+        Source = '00/a4/CLipSyncDataBankEntryCData_BuildLipSync_00a42ea0.cpp'
+        TestSource = '00/a4/CLipSyncDataBankEntryCData_BuildLipSync_00a42ea0_test.cpp'
+        PassPattern = '00a42ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75340'
+        Module = 'CContainmentVolume'
+        Source = '00/a7/CContainmentVolume_PeekRoughProportionOfSphereContained_00a75340.cpp'
+        TestSource = '00/a7/CContainmentVolume_PeekRoughProportionOfSphereContained_00a75340_test.cpp'
+        PassPattern = '00a75340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6b720'
+        Module = 'SBodyRecord_00c55030'
+        Source = '00/c6/SBodyRecord00c55030_Reset_00c6b720.cpp'
+        TestSource = '00/c6/SBodyRecord00c55030_Reset_00c6b720_test.cpp'
+        PassPattern = '00c6b720_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
