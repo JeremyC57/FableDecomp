@@ -21160,3 +21160,13 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?QueueRead@CThreadedFile@@QAEKABUCThreadedFileObjectDesc@@@Z	0098f350	009d5970
 ?ReadData@CBankFileAsync@@QAEXKPAXK@Z	009cbf60	009d5970
 ?Create@@YIPAUCThing@@JABUC3DVector@@_N@Z	006e0880	008eca50
+??0CEnginePrimitiveText@@QAE@_KABUC3DVector@@MABUCWideString@@ABUCFontBank@@ABUCRGBColour@@_NJ@Z	004c3120	0071ab20
+?GetCamera@CTCEmoteIcon@@QBEPBUCCamera@@XZ	00686a80	0071ab20
+?GetGameSubsystem@CTCEmoteIcon@@QAEPAUCMainGameComponent@@XZ	00686d60	0071ab20
+?GetStaticFocalPosIfLoaded@CTCGraphicAppearance@@QAE_NPAUC3DVector@@@Z	004c11f0	0071ab20
+?g_EmoteTextHeight@@3MA	01381044	0071ab20
+?AddTC@CThing@@QAEPAUCTCBase@@ABUCCharString@@_NPAX@Z	004c9d60	008718b0
+?CreateThingObject@@YIPAUCThing@@JPAUC3DVector@@JPAUCRightHandedSet@@KABUCCharString@@@Z	00703210	008718b0
+?GetCrowdGroup@CTCBoastingCrowdControl@@QAE_NPAUCThing@@PAPAUCCrowdGroup@@@Z	00783730	0095e790
+?GetEventTime@C3DAnimationStats@@QBEMJ@Z	00a4eae0	00a36df0
+?GetInfo@C3DAnimationBank@@QAEPAUC3DAnimationInfo@@J@Z	00a242c0	00a36df0

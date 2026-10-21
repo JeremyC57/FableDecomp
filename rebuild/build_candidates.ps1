@@ -258745,6 +258745,41 @@ $catalog = @(
         TestSource = '00/8e/CTCDegradableBase_ShowParticleEffects_008eca50_test.cpp'
         PassPattern = '008eca50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0056ef6f'
+        Module = 'CTCInventoryExperience'
+        Source = '00/56/CTCInventoryExperience_UpdateExperienceSpendPool_0056ef6f.cpp'
+        TestSource = '00/56/CTCInventoryExperience_UpdateExperienceSpendPool_0056ef6f_test.cpp'
+        PassPattern = '0056ef6f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071ab20'
+        Module = 'CTCEmoteIcon'
+        Source = '00/71/CTCEmoteIcon_DrawEmoteTypeText_0071ab20.cpp'
+        TestSource = '00/71/CTCEmoteIcon_DrawEmoteTypeText_0071ab20_test.cpp'
+        PassPattern = '0071ab20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008718b0'
+        Module = 'CActionEventAddObject'
+        Source = '00/87/CActionEventAddObject_Dispatch_008718b0.cpp'
+        TestSource = '00/87/CActionEventAddObject_Dispatch_008718b0_test.cpp'
+        PassPattern = '008718b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095e790'
+        Module = 'CAIStateGroup_BoastingCrowdMember'
+        Source = '00/95/CAIStateGroupBoastingCrowdMember_IsRunnable_0095e790.cpp'
+        TestSource = '00/95/CAIStateGroupBoastingCrowdMember_IsRunnable_0095e790_test.cpp'
+        PassPattern = '0095e790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a36df0'
+        Module = 'C3DMeshObject'
+        Source = '00/a3/C3DMeshObject_GetEventTime_00a36df0.cpp'
+        TestSource = '00/a3/C3DMeshObject_GetEventTime_00a36df0_test.cpp'
+        PassPattern = '00a36df0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
