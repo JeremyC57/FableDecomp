@@ -255744,6 +255744,132 @@ $catalog = @(
         TestSource = '00/ac/C3DMeshPartitionBuilderElement_BuildOutput_00ac2a80_test.cpp'
         PassPattern = '00ac2a80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0090bed0'
+        Module = 'CAIStateGroup_MinionWorkInInn'
+        Source = '00/90/CAIStateGroupMinionWorkInInn_Update_0090bed0.cpp'
+        TestSource = '00/90/CAIStateGroupMinionWorkInInn_Update_0090bed0_test.cpp'
+        PassPattern = '0090bed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00914f00'
+        Module = 'CAIStateGroup_KidHurtSelfRunToMother'
+        Source = '00/91/CAIStateGroupKidHurtSelfRunToMother_PerformRandomLengthCrying_00914f00.cpp'
+        TestSource = '00/91/CAIStateGroupKidHurtSelfRunToMother_PerformRandomLengthCrying_00914f00_test.cpp'
+        PassPattern = '00914f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009212c0'
+        Module = 'CAIStateGroup_MinionFollowThing'
+        Source = '00/92/CAIStateGroupMinionFollowThing_OnActivate_009212c0.cpp'
+        TestSource = '00/92/CAIStateGroupMinionFollowThing_OnActivate_009212c0_test.cpp'
+        PassPattern = '009212c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00933310'
+        Module = 'CAIStateGroup_MinionGuardReactToBribe'
+        Source = '00/93/CAIStateGroupMinionGuardReactToBribe_IsRunnable_00933310.cpp'
+        TestSource = '00/93/CAIStateGroupMinionGuardReactToBribe_IsRunnable_00933310_test.cpp'
+        PassPattern = '00933310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009387f0'
+        Module = 'CAIStateGroup_UsesSeat'
+        Source = '00/93/CAIStateGroupUsesSeat_OnReplace_009387f0.cpp'
+        TestSource = '00/93/CAIStateGroupUsesSeat_OnReplace_009387f0_test.cpp'
+        PassPattern = '009387f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093b740'
+        Module = 'CAIStateGroup_SeekEnemy'
+        Source = '00/93/CAIStateGroupSeekEnemy_IsRunnable_0093b740.cpp'
+        TestSource = '00/93/CAIStateGroupSeekEnemy_IsRunnable_0093b740_test.cpp'
+        PassPattern = '0093b740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093e5e0'
+        Module = 'CAIStateGroup_MeleeCombatNearby2'
+        Source = '00/93/CAIStateGroupMeleeCombatNearby2_Update_0093e5e0.cpp'
+        TestSource = '00/93/CAIStateGroupMeleeCombatNearby2_Update_0093e5e0_test.cpp'
+        PassPattern = '0093e5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00952e80'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/95/CAIStateGroupJackDragon_Update_00952e80.cpp'
+        TestSource = '00/95/CAIStateGroupJackDragon_Update_00952e80_test.cpp'
+        PassPattern = '00952e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00954cd0'
+        Module = 'CAIStateGroup_MazeTutorialBattleUseShield'
+        Source = '00/95/CAIStateGroupMazeTutorialBattleUseShield_IsRunnable_00954cd0.cpp'
+        TestSource = '00/95/CAIStateGroupMazeTutorialBattleUseShield_IsRunnable_00954cd0_test.cpp'
+        PassPattern = '00954cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00958cb0'
+        Module = 'CAIStateGroup_MinionReactToCrime'
+        Source = '00/95/CAIStateGroupMinionReactToCrime_IsRunnable_00958cb0.cpp'
+        TestSource = '00/95/CAIStateGroupMinionReactToCrime_IsRunnable_00958cb0_test.cpp'
+        PassPattern = '00958cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00959a60'
+        Module = 'CAIStateGroup_HoverWanderAroundThing'
+        Source = '00/95/CAIStateGroupHoverWanderAroundThing_Update_00959a60.cpp'
+        TestSource = '00/95/CAIStateGroupHoverWanderAroundThing_Update_00959a60_test.cpp'
+        PassPattern = '00959a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095b280'
+        Module = 'CAIStateGroup_HoverHornetQueenTakeDamage'
+        Source = '00/95/CAIStateGroupHoverHornetQueenTakeDamage_Update_0095b280.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueenTakeDamage_Update_0095b280_test.cpp'
+        PassPattern = '0095b280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00964da0'
+        Module = 'CAIStateGroup_StealStealableItem'
+        Source = '00/96/CAIStateGroupStealStealableItem_IsRunnable_00964da0.cpp'
+        TestSource = '00/96/CAIStateGroupStealStealableItem_IsRunnable_00964da0_test.cpp'
+        PassPattern = '00964da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00966930'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/96/CAIStateGroupTavernServer_InitStateGroup_00966930.cpp'
+        TestSource = '00/96/CAIStateGroupTavernServer_InitStateGroup_00966930_test.cpp'
+        PassPattern = '00966930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00967650'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/96/CAIStateGroupTavernServer_IsRunnable_00967650.cpp'
+        TestSource = '00/96/CAIStateGroupTavernServer_IsRunnable_00967650_test.cpp'
+        PassPattern = '00967650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00968230'
+        Module = 'CAIStateGroup_TavernKeeper'
+        Source = '00/96/CAIStateGroupTavernKeeper_WalkToPoint_00968230.cpp'
+        TestSource = '00/96/CAIStateGroupTavernKeeper_WalkToPoint_00968230_test.cpp'
+        PassPattern = '00968230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096f570'
+        Module = 'CAIStateGroup_MinionBehaviourPodiumEmoteNeutral'
+        Source = '00/96/CAIStateGroupMinionBehaviourPodiumEmoteNeutral_UpdateLeaf_0096f570.cpp'
+        TestSource = '00/96/CAIStateGroupMinionBehaviourPodiumEmoteNeutral_UpdateLeaf_0096f570_test.cpp'
+        PassPattern = '0096f570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00972830'
+        Module = 'CAIStateGroup_JackOfBladesBase'
+        Source = '00/97/CAIStateGroupJackOfBladesBase_SetupArena_00972830.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesBase_SetupArena_00972830_test.cpp'
+        PassPattern = '00972830_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

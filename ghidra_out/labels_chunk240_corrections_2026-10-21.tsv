@@ -1,0 +1,15 @@
+address	name	evidence
+0049d810	CWorld::GetPRandomSeed	chunk 240
+00a14260	C3DVector::RotateInPlace_a14260	in-place rotation (chunk 240)
+00a14040	C3DVector::RotateInPlace_a14040	in-place rotation (chunk 240)
+008fcfb0	CAIStateGroupBase::GetPDefinitionManager	chunk 240
+008fcfa0	CAIStateGroupBase::GetPThingWorld	chunk 240
+00744430	CTCPerceiveThing::Predicate_744430	CTCPerceiveThing predicate (chunk 240)
+008645e0	CanCreatureSeeThing	__fastcall (creature, thing, bool) (chunk 240)
+007fef40	CTCUserActionPointBase::FreeActionPoint	chunk 240
+0065914b	CVillage::HasDeedHandle_65914b	deed-handle test (chunk 240)
+00933f10	CCreatureAction_KidAnnoyKick::CCreatureAction_KidAnnoyKick	"KICK" kid-annoy action ctor (chunk 240)
+00792240	std::list<CThing*>::~list	out-of-line dtor (chunk 240)
+009670a0	CAIStateGroup_TavernServer::Member_9670a0	TavernServer, not TavernKeeper (chunk 240)
+00967110	CAIStateGroup_TavernServer::Member_967110	TavernServer, not TavernKeeper (chunk 240)
+0090bc60	CAIStateGroup_MinionWorkInInn::GetBench	chunk 240

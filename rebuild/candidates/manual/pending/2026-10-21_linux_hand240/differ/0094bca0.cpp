@@ -1,0 +1,117 @@
+// CAIStateGroup_MinionHawkingFromStall::IsRunnable() -- once the next hawk frame is reached, a silent shopkeeper in work hours with a shop hawks from the shop thing; with no shop thing (and a stall-less shop) it hawks on the spot unless the creature dislikes the player (attitude 3, 4 or 8)
+// Grade: DIFFER(ours v retail) -- this/keeper swap esi/edi; the attitude call pushes the creature before GetPThingWorld (needs the named-creature-then-manager form)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0094BCA0, length 336 bytes (+ int3 padding).
+// Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CWorld::GetWorldFrame @ 0x0049D870 (static), CVectorMap::LowerBound
+//          @ 0x0040F020 (inlined GetInterface 0x90 = CTCShopKeeper, bit 16 of +0x30 tested in memory), IsSpeaking
+//          @ 0x008644E0 (__fastcall), CAIStateGroup_WorkBase::IsInWorkHours @ 0x0094BEF0, CTCShopKeeper::GetShopTC
+//          @ 0x00798F50 / GetShopThing @ 0x00798D80, CIntelligentPointer<const CThing>(CThing*) @ 0x00668B60 and
+//          operator= @ 0x00668B80 (both out of line), ~CBaseIntelligentPointer @ 0x00A01C10, GetPItem @ 0x00A01B50,
+//          CAIStateGroupBase::GetPThingWorld @ 0x008FCFA0, COpinionReactionManager::GetThingAttitudeToPlayer @ 0x00701840.
+// Shape: HasTC + entry pick (keeper in edi); each PStall assignment is an implicit conversion (the frame temporary's
+//          address is re-taken for the out-of-line operator=); the result is
+//          `PStall.GetPItem() != 0` (neg/sbb/neg).
+// Layout: no engine header for this class; modelled locally like the landed OnReplace / IsStillValid rows (next hawk
+//          frame +0x14, PStall +0x18); the shop's +0x50 flag is descriptive.
+struct CTCBase;
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);       // 0x0040F020
+};
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20
+    CInterfaceMap m_interfaces;                 // +0x44
+    __forceinline unsigned long HasTC(long interfaceType) const
+    {
+        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
+    }
+    template<class T> __forceinline T* GetTC(long interfaceType)
+    {
+        long type = interfaceType;
+        CInterfaceMap* map = &m_interfaces;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || interfaceType < it->type)
+            it = map->last;
+        return (T*)it->component;
+    }
+};
+bool __fastcall IsSpeaking(CThing* creature);   // 0x008644E0
+struct CTCShop {
+    unsigned char _pad[0x50];
+    bool OnTheSpot;                             // +0x50 (descriptive)
+};
+struct CTCShopKeeper {                          // interface 0x90
+    CTCShop* GetShopTC();                       // 0x00798F50
+    CThing* GetShopThing();                     // 0x00798D80
+};
+struct COpinionReactionManager {
+    long GetThingAttitudeToPlayer(CThing* thing);   // 0x00701840
+};
+struct CWorld {
+    unsigned char _pad[0x74];
+    COpinionReactionManager* POpinionReactionManager;   // +0x74
+    static long GetWorldFrame();                // 0x0049D870
+};
+
+struct CBaseIntelligentPointer {
+    void* __vftable;
+    CThing* m_pItem;                            // +0x04
+    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    CThing* GetPItem() const;                   // 0x00A01B50
+};
+struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
+    CIntelligentPointerConstThing(CThing* item);    // 0x00668B60
+    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x00668B80
+};
+struct CAIBrain {
+    unsigned char _pad[0x18];
+    CThing* PCreature;                          // +0x18
+};
+
+struct CAIStateGroupBase {
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    long ScriptAIPriority;                      // +0x08
+    void* Name_PStringData;                     // +0x0c
+    unsigned char Terminated;                   // +0x10
+    unsigned char Priority;                     // +0x11
+    unsigned char Enabled;                      // +0x12
+    unsigned char _pad_0x13;
+    CThing* GetCreature() const { return PBrain->PCreature; }
+    CWorld* GetPThingWorld();                   // 0x008FCFA0
+    CWorld* GetPWorld();                        // 0x008FCFC0
+};
+
+struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
+    long NextHawkFrame;                         // +0x14 (descriptive)
+    CIntelligentPointerConstThing PStall;       // +0x18
+    bool IsInWorkHours();                       // 0x0094BEF0 (CAIStateGroup_WorkBase)
+    bool IsRunnable();
+};
+
+bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
+{
+    if (GetPWorld()->GetWorldFrame() < NextHawkFrame)
+        return false;
+    CThing* creature = GetCreature();
+    if (creature->HasTC(0x90)) {
+        CTCShopKeeper* keeper = creature->GetTC<CTCShopKeeper>(0x90);
+        if (!IsSpeaking(creature) && IsInWorkHours()) {
+            CTCShop* shop = keeper->GetShopTC();
+            if (shop) {
+                PStall = keeper->GetShopThing();
+                if (!PStall.GetPItem() && shop->OnTheSpot) {
+                    PStall = GetCreature();
+                    CThing* self = GetCreature();
+                    long attitude = GetPThingWorld()->POpinionReactionManager->GetThingAttitudeToPlayer(self);
+                    if (attitude == 3 || attitude == 4 || attitude == 8)
+                        PStall = (CThing*)0;
+                }
+                return PStall.GetPItem() != 0;
+            }
+        }
+    }
+    return false;
+}

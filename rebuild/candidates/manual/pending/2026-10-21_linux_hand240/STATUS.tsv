@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0095b280	RELOCATION_MATCH	340v340	PASS	GetWorldFrame static, named creature + world locals
+00959a60	RELOCATION_MATCH	388v388	PASS	loop counter != 3, virtual slot 22 MoveToPosAndFacePos
+00961ca0	DIFFER	356v355	-	regalloc: this/zero register + range bool frame byte
+00917380	DIFFER	321v321	-	3-dword copy register interleave
+00952e80	RELOCATION_MATCH	380v380	PASS	jump table in row (24 bytes); named-item operator=
+00971b60	DIFFER	392v368	-	x87: fast-rsqrt reciprocal kept on FPU stack
+00972830	RELOCATION_MATCH	341v341	PASS	search as one full expression, implicit-conversion temporaries, block-scoped centre
+00914f00	RELOCATION_MATCH	382v382	PASS	GetCreature() twice: VC CSEs the brain load across GetAnimFromName
+00914d80	DIFFER	343v338	-	filter bind hoisting + frame slot sharing
+00954cd0	RELOCATION_MATCH	350v350	PASS	const LowerBound overload; same-TU GetSubDef stand-in; forceinline pointer ctor
+0096ee90	DIFFER	377v349	-	regalloc: enemy pointer register, strafe bool spill
+0093e5e0	RELOCATION_MATCH	379v379	PASS	for(;;) with head tests; named creature + world for the second combat call
+00957c30	DIFFER	373v384	-	regalloc: this/ebp, setne bool kept
+0096f570	RELOCATION_MATCH	382v382	PASS	first try: unsigned Random float conversions, CCharString-taking PlayAnimation ctor
+009357f0	DIFFER	351v384	-	regalloc + tail merge + global load order
+009212c0	RELOCATION_MATCH	376v376	PASS	landed Cleanup model; add-to-front bool in an inner block so the lookup keys share its slot; forceinline HasTC
+009216e0	DIFFER	382v394	-	null-preset component enregistered vs memory home
+00933310	RELOCATION_MATCH	340v340	PASS	same-TU LowerBound stand-in (temps over the dead key slot); inline + out-of-line IS_THING_ALIVE
+0094bb20	DIFFER	374v379	-	byte-aligned bitset test narrowed to a byte load
+0094bca0	DIFFER	333v335	-	regalloc esi/edi + arg order of the attitude call
+00933db0	DIFFER	347v347	-	regalloc only (brain register)
+0090f830	DIFFER	372v390	-	first draft; new-expression + counted pointer
+00935ad0	DIFFER	360v363	-	final IS_THING_ALIVE tail folding (frame fixed by stand-in)
+00958cb0	RELOCATION_MATCH	368v368	PASS	first try: nested success path, const ternary lookups
+00931200	DIFFER	358v387	-	first draft; this spill / loop register plan
+0091cdc0	DIFFER	370v376	-	fiadd form + frame size
+0090bd40	DIFFER	399v399	-	slot order + x87/push scheduling
+0090bed0	RELOCATION_MATCH	392v392	PASS	early null-workplace Terminate (ecx set before the branch); IdleAtHome sibling shape
+0093cc60	DIFFER	330v330	-	spill slot + copy scheduling
+009852c0	DIFFER	337v337	-	regalloc only (brain register, bool register)
+0093b740	RELOCATION_MATCH	356v356	PASS	out-of-line operator= at one site, inline helper at the other, both via implicit conversion
+00939670	DIFFER	355v358	-	esi/edi swap + final bool tail merge
+009478a0	DIFFER	388v399	-	first draft; result bool kept in bl
+00964da0	RELOCATION_MATCH	335v335	PASS	nested success path; const LowerBound stand-in (temporaries over the dead key slot)
+00968230	RELOCATION_MATCH	368v368	PASS	constant 1 in ebx; user-copy forward + ctor sum; ? true : false tail
+00968650	DIFFER	368v346	-	draft: inline STLport list
+00966930	RELOCATION_MATCH	349v349	PASS	aligned frame from the 8-byte pointer temporaries; function-scope zero vector; Leaf InitStateGroup
+00967650	RELOCATION_MATCH	336v336	PASS	first try: header model, out-of-line IS_THING_ALIVE<T> and operator= from 0
+009677a0	DIFFER	392v392	-	esi/edi swap only
+009387f0	RELOCATION_MATCH	353v353	PASS	unused CBrainOutput local (0x48, PTarget at +0x40, implicit dtor); counted-pointer member dtor
