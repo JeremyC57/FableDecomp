@@ -261494,6 +261494,76 @@ $catalog = @(
         TestSource = '00/ca/CMemAllocator_ReallyFree_00caa3c0_test.cpp'
         PassPattern = '00caa3c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00487fb0'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_InitPlayerGui_00487fb0.cpp'
+        TestSource = '00/48/CPlayer_InitPlayerGui_00487fb0_test.cpp'
+        PassPattern = '00487fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066c630'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_SetRegionMapExtents_0066c630.cpp'
+        TestSource = '00/66/CRegionMinimap_SetRegionMapExtents_0066c630_test.cpp'
+        PassPattern = '0066c630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074a100'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_GetNumGeneratedCreatures_0074a100.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_GetNumGeneratedCreatures_0074a100_test.cpp'
+        PassPattern = '0074a100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095a420'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/95/CAIStateGroupHoverHornetQueen_IsStillRunnable_0095a420.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueen_IsStillRunnable_0095a420_test.cpp'
+        PassPattern = '0095a420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b9940'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_SetStringPos_009b9940.cpp'
+        TestSource = '00/9b/CStringParser_SetStringPos_009b9940_test.cpp'
+        PassPattern = '009b9940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ba4a0'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_ReadAsStringUntilWhitespace_009ba4a0.cpp'
+        TestSource = '00/9b/CStringParser_ReadAsStringUntilWhitespace_009ba4a0_test.cpp'
+        PassPattern = '009ba4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a682e0'
+        Module = 'CVolumeTexture'
+        Source = '00/a6/CVolumeTexture_InitialiseFromPreallocatedVolumeTexture_00a682e0.cpp'
+        TestSource = '00/a6/CVolumeTexture_InitialiseFromPreallocatedVolumeTexture_00a682e0_test.cpp'
+        PassPattern = '00a682e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac6600'
+        Module = 'C3DMeshFileClothChunk'
+        Source = '00/ac/C3DMeshFileClothChunk_WriteToFile_00ac6600.cpp'
+        TestSource = '00/ac/C3DMeshFileClothChunk_WriteToFile_00ac6600_test.cpp'
+        PassPattern = '00ac6600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac7940'
+        Module = 'CVertexPairContraction'
+        Source = '00/ac/CVertexPairContraction_RemapIndex_00ac7940.cpp'
+        TestSource = '00/ac/CVertexPairContraction_RemapIndex_00ac7940_test.cpp'
+        PassPattern = '00ac7940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b93eb0'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_CEngineSceneGrid_00b93eb0.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_CEngineSceneGrid_00b93eb0_test.cpp'
+        PassPattern = '00b93eb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

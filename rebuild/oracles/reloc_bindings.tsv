@@ -21977,3 +21977,10 @@ __imp__mixerOpen@20	0144047c	00c71430
 ?CalcLocalTransformationsRelative@C3DAnimation2@@QBEXPAUC3DKeyframe@@KMABUC3DMesh2@@@Z	00a4d770	00a9f1d0
 ?CombineBaseAnimations@C3DAnimationManager@@QAEXABUC3DAnimationStateBase@@PAUC3DKeyframe@@KKABUC3DMesh2@@@Z	00a9f1d0	00a9f1d0
 __imp__VirtualFree@12	0143fd40	00caa3c0
+??0CPlayerGui@@QAE@PAUCMainGameComponent@@PAUCWorld@@PAUCGamePlayerInterface@@PAUCPlayerManager@@PAUCGraphicDataBank@@@Z	0043b570	00487fb0
+?Reset@CPlayerGuiHolder@@QAEXPAUCPlayerGui@@@Z	004195af	00487fb0
+?g_PlayerGui@@3UCPlayerGuiHolder@@A	013b8790	00487fb0
+?SkipUntilWhitespace@CStringParser@@QAEJXZ	009b9ce0	009ba4a0
+?CalcByteLength@CVolumeTexture@@QAEXXZ	00a67ff0	00a682e0
+??_7CEngineSceneGrid@@6B@	012a3e58	00b93eb0
+?resize@CGridCellArray@@QAEXIABQAUCEngineSceneGridCell@@@Z	00b97a80	00b93eb0
