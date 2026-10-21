@@ -22178,3 +22178,10 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 __imp__DispatchMessageW@4	01440368	009a4f20
 __imp__PeekMessageW@20	01440370	009a4f20
 __imp__TranslateMessage@4	0144036c	009a4f20
+?GetSupportedAntialiasingLevels@CDisplayManager@@QAEXAAUCLongVector@@@Z	009c05c0	00409140
+__TI2?AUCBBBFileException@@	01369380	0099abf0
+__TI1?AVCBBBFileException@@	01369380	009e90c0
+??0CBBBFileException@@QAE@UCCharString@@W4EFileExceptionType@0@@Z	0099ae50	009e95f0
+?SetSize@?$CArray@E@@QAEXJ@Z	004861df	009e95f0
+?Clear@CInputEvent@@QAEXXZ	00a03be0	009f4f70
+?GetButton@CInputEvent@@QBEJXZ	00a03b90	009f4f70

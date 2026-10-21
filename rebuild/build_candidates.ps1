@@ -262201,6 +262201,76 @@ $catalog = @(
         TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_OnPredicateFail_00d89160_test.cpp'
         PassPattern = '00d89160_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00409140'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_ClampAntialiasing_00409140.cpp'
+        TestSource = '00/40/CUserProfileManager_ClampAntialiasing_00409140_test.cpp'
+        PassPattern = '00409140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009426d0'
+        Module = 'CAIStateGroup_WorkAtSchool'
+        Source = '00/94/CAIStateGroupWorkAtSchool_PlayLoop_009426d0.cpp'
+        TestSource = '00/94/CAIStateGroupWorkAtSchool_PlayLoop_009426d0_test.cpp'
+        PassPattern = '009426d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099abf0'
+        Module = 'CDiskFileWin32'
+        Source = '00/99/CDiskFileWin32_SetPosition_0099abf0.cpp'
+        TestSource = '00/99/CDiskFileWin32_SetPosition_0099abf0_test.cpp'
+        PassPattern = '0099abf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099ac90'
+        Module = 'CDiskFileWin32'
+        Source = '00/99/CDiskFileWin32_MovePosition_0099ac90.cpp'
+        TestSource = '00/99/CDiskFileWin32_MovePosition_0099ac90_test.cpp'
+        PassPattern = '0099ac90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e90c0'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_SetPosition_009e90c0.cpp'
+        TestSource = '00/9e/CMemoryFile_SetPosition_009e90c0_test.cpp'
+        PassPattern = '009e90c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e95f0'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_Write_009e95f0.cpp'
+        TestSource = '00/9e/CMemoryFile_Write_009e95f0_test.cpp'
+        PassPattern = '009e95f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f4f70'
+        Module = 'CInputManager'
+        Source = '00/9f/CInputManager_RemoveEventFromQueue_009f4f70.cpp'
+        TestSource = '00/9f/CInputManager_RemoveEventFromQueue_009f4f70_test.cpp'
+        PassPattern = '009f4f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f5d70'
+        Module = 'CInputManager'
+        Source = '00/9f/CInputManager_LoadAllEventPackages_009f5d70.cpp'
+        TestSource = '00/9f/CInputManager_LoadAllEventPackages_009f5d70_test.cpp'
+        PassPattern = '009f5d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5b020'
+        Module = 'CCachedFile'
+        Source = '00/a5/CCachedFile_SetPosition_00a5b020.cpp'
+        TestSource = '00/a5/CCachedFile_SetPosition_00a5b020_test.cpp'
+        PassPattern = '00a5b020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6a440'
+        Module = 'CTextureManager'
+        Source = '00/a6/CTextureManager_CTextureManager_00a6a440.cpp'
+        TestSource = '00/a6/CTextureManager_CTextureManager_00a6a440_test.cpp'
+        PassPattern = '00a6a440_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
