@@ -260918,6 +260918,62 @@ $catalog = @(
         TestSource = '00/ad/C3DBoundingSphere_AddToBounds_00addd80_test.cpp'
         PassPattern = '00addd80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005840a6'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_UseQuickAccessItem_005840a6.cpp'
+        TestSource = '00/58/CTCInventory_UseQuickAccessItem_005840a6_test.cpp'
+        PassPattern = '005840a6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00750470'
+        Module = 'CTCChest'
+        Source = '00/75/CTCChest_UpdateAnimation_00750470.cpp'
+        TestSource = '00/75/CTCChest_UpdateAnimation_00750470_test.cpp'
+        PassPattern = '00750470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00773c00'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_SetStockState_00773c00.cpp'
+        TestSource = '00/77/CTCShop_SetStockState_00773c00_test.cpp'
+        PassPattern = '00773c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079e420'
+        Module = 'CTCPhysicalShieldSpell'
+        Source = '00/79/CTCPhysicalShieldSpell_PlayShieldEffects_0079e420.cpp'
+        TestSource = '00/79/CTCPhysicalShieldSpell_PlayShieldEffects_0079e420_test.cpp'
+        PassPattern = '0079e420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093bdf0'
+        Module = 'CAIStateGroup_SeekEnemy'
+        Source = '00/93/CAIStateGroupSeekEnemy_Cleanup_0093bdf0.cpp'
+        TestSource = '00/93/CAIStateGroupSeekEnemy_Cleanup_0093bdf0_test.cpp'
+        PassPattern = '0093bdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093c230'
+        Module = 'CAIStateGroup_SeekScriptTarget'
+        Source = '00/93/CAIStateGroupSeekScriptTarget_Cleanup_0093c230.cpp'
+        TestSource = '00/93/CAIStateGroupSeekScriptTarget_Cleanup_0093c230_test.cpp'
+        PassPattern = '0093c230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093c420'
+        Module = 'CAIStateGroup_StealthSeekEnemy'
+        Source = '00/93/CAIStateGroupStealthSeekEnemy_Cleanup_0093c420.cpp'
+        TestSource = '00/93/CAIStateGroupStealthSeekEnemy_Cleanup_0093c420_test.cpp'
+        PassPattern = '0093c420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00962b80'
+        Module = 'CAIStateGroup_VersusEnemyBase'
+        Source = '00/96/CAIStateGroupVersusEnemyBase_OnReplace_00962b80.cpp'
+        TestSource = '00/96/CAIStateGroupVersusEnemyBase_OnReplace_00962b80_test.cpp'
+        PassPattern = '00962b80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

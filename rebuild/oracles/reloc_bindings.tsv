@@ -21826,3 +21826,8 @@ _wcsncmp	00bfeb0a	004071c0
 ?ReserveGroups@CParticleProgram@@QAEXK@Z	00ae3330	00ac3e00
 ?Reset@?$CCountedPointer@UCParticleProgram@@@@QAEXPAUCParticleProgram@@@Z	00ac3ff0	00ac3e00
 ?g_ParticleMemoryPool@@3PAUCMovableResourceMemoryPool@@A	013d2d70	00ac3e00
+?GetAnimation@CTCAnimationComplex@@QAEPAUCAnimateThing@@XZ	0070b460	00750470
+?UpdateFrameLogic@CAnimateThing@@QAEXABUCAnimFrameUpdate@@@Z	0070e8b0	00750470
+?RemoveSeeker@CTCSeekTarget@@QAEXPAUCThing@@J@Z	00747b80	0093bdf0
+?SetState@CTCStealthState@@QAEXJJJMJ@Z	0071aab0	0093c420
+?GetPWorld@CAIStateGroup_VersusEnemyBase_Methods@@QAEPAUCWorld@@XZ	008fcfc0	00962b80
