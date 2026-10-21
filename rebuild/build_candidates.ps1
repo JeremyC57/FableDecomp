@@ -262145,6 +262145,62 @@ $catalog = @(
         TestSource = '00/f3/CRangeCompressor_TestRangeBias_00f3a5d0_test.cpp'
         PassPattern = '00f3a5d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00490927'
+        Module = 'CSubtitleRenderer'
+        Source = '00/49/CSubtitleRenderer_IsAllowedToSetText_00490927.cpp'
+        TestSource = '00/49/CSubtitleRenderer_IsAllowedToSetText_00490927_test.cpp'
+        PassPattern = '00490927_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00699a50'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_PushLookAround_00699a50.cpp'
+        TestSource = '00/69/CGameCameraManager_PushLookAround_00699a50_test.cpp'
+        PassPattern = '00699a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bdac7'
+        Module = 'CTCShotDefinitionDrainLife'
+        Source = '00/7b/CTCShotDefinitionDrainLife_UpdateCollision_007bdac7.cpp'
+        TestSource = '00/7b/CTCShotDefinitionDrainLife_UpdateCollision_007bdac7_test.cpp'
+        PassPattern = '007bdac7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f6f20'
+        Module = 'CThingCompare_BestCreatureToAttack'
+        Source = '00/7f/CThingCompareBestCreatureToAttack_operator_007f6f20.cpp'
+        TestSource = '00/7f/CThingCompareBestCreatureToAttack_operator_007f6f20_test.cpp'
+        PassPattern = '007f6f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f6fd0'
+        Module = 'CThingCompare_BestCreatureToAttack'
+        Source = '00/7f/CThingCompareBestCreatureToAttack_operator_007f6fd0.cpp'
+        TestSource = '00/7f/CThingCompareBestCreatureToAttack_operator_007f6fd0_test.cpp'
+        PassPattern = '007f6fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00967930'
+        Module = 'CAIStateGroup_TavernServer'
+        Source = '00/96/CAIStateGroupTavernServer_PickUpJug_00967930.cpp'
+        TestSource = '00/96/CAIStateGroupTavernServer_PickUpJug_00967930_test.cpp'
+        PassPattern = '00967930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a4f20'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_ProcessWindowMessages_009a4f20.cpp'
+        TestSource = '00/9a/CSystemManager_ProcessWindowMessages_009a4f20_test.cpp'
+        PassPattern = '009a4f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d89160'
+        Module = 'NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_OnPredicateFail_00d89160.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_OnPredicateFail_00d89160_test.cpp'
+        PassPattern = '00d89160_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

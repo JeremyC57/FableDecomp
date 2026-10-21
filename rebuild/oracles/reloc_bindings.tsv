@@ -22165,3 +22165,16 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ?GetViewportBoxFloat@CRenderManager2D@@QBEABUC2DBoxF@@XZ	00a0aaa0	009db700
 ?_M_insert_overflow@CQuickDrawTriInfoVector@@QAEXPAUCQuickDrawTriInfo@@ABU2@ABU__true_type@@I_N@Z	009e1750	009db700
 ?InsertN@?$CArray@K@@QAEXPAKKABK@Z	004649a3	00f3a5d0
+?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAUCHeroInfoScreensManager@@XZ	00437cd0	00490927
+?IsInSpecialMode@CWorld@@QAE_NXZ	0048db13	00490927
+??0?$CCountedPointer@UCBase@NCameraModes@@@@QAE@PAUCBase@NCameraModes@@@Z	0056c880	00699a50
+??0CBase@NCameraModes@@QAE@AAVCGameCameraManager@@ABU?$CDefPointer@$$CBUCCameraModeDef@@@@@Z	0084e420	00699a50
+??_7COrbitGame@NCameraModes@@6B@	0125c6dc	00699a50
+??$IS_THING_ALIVE@UCBaseIntelligentPointer@@@@YI_NABUCBaseIntelligentPointer@@@Z	004cc340	007bdac7
+?UpdateCollision@CTCShotDefinitionBase@@QAEXPA_N@Z	007bfe30	007bdac7
+??$GetCompareValueForThing@UCThingCreatureBase@@@CThingCompare_BestCreatureToAttack@@QBEMPAUCThingCreatureBase@@@Z	007f6bf0	007f6f20
+??$GetCompareValueForThing@UCThingAICreature@@@CThingCompare_BestCreatureToAttack@@QBEMPAUCThingAICreature@@@Z	007f6cb0	007f6fd0
+??0CCreatureAction_PickUpThingAtTable@@QAE@PAUCThingCreatureBase@@PAUCThing@@ABUCCharString@@J@Z	008440c0	00967930
+__imp__DispatchMessageW@4	01440368	009a4f20
+__imp__PeekMessageW@20	01440370	009a4f20
+__imp__TranslateMessage@4	0144036c	009a4f20
