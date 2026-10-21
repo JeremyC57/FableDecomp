@@ -47,6 +47,7 @@ address	row_len	batch	label	kind	status	pieces	note
 0088b7e0	48	2026-10-15_linux_hand74	CScriptThing::GetCurrentScriptPriority	multi	done	0088b7e0:17,0088b800:4	row spans two functions (0x88b7e0 + 0x88b800)
 008aae20	96	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	008aae20:22,008aae40:27,008aae60:4,008aae70:4	row spans four functions
 008d6620	112	2026-10-15_linux_hand148	CModeOutOfActionBase::FrameUpdate	multi	done	008d6620:43,008d6650:8,008d6660:9,008d6670:8,008d6680:9	row holds FrameUpdate (0x008D6620, 43 bytes) plus four `mov ecx,[ecx+4]` thunks after int3 padding
+0092b110	448	2026-10-21_linux_hand257	CAIStateGroup_ApprenticeHero::CAIStateGroup_ApprenticeHero::Update	multi	open	0092b110:256,0092b210:21,0092b230:11,0092b240:9,0092b250:13,0092b260:11,0092b270:26,0092b290:26,0092b2b0:24	two-function row (Update + jump table + 0x0092B230/0x0092B240 thunks)
 009576c0	144	2026-10-15_linux_hand119	CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase::OnActivate	multi	done	009576c0:16,009576d0:123	two functions: 13-byte OnActivate (jmp [eax+40h]) + 0x009576D0 body
 00991620	80	2026-10-15_linux_hand86	CTCDParticleEmitter::EditFrameUpdate	multi	done	00991620:24,00991640:36	EditFrameUpdate row holds two functions (chunk 86, paused before staging)
 0099b150	121	2026-10-15_linux_hand178	CWideString::CWideString::operator!=	single	done	0099b150:121	duplicate of the landed CWideString_NotEqualWide_0099b150 (authored twice in chunk 178)

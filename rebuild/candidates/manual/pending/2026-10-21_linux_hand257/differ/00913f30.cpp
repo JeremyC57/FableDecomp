@@ -1,0 +1,136 @@
+// Grade: DIFFER(500v500) -- scheduling only: retail stores the out pointer's zero after loading the creature (just before GetPosition) and interleaves the compare-position copy with the argument pushes; ours stores both ahead. Logic, frame slots and calls match.
+// CAIStateGroup_BirdFlyToFood::IsRunnable() -- runnable for a flying bird that has not eaten for 20 seconds, on a 74% roll: fly to the nearest dead creature (64% roll) or else the nearest BIRD_FOOD thing, if a flight position near it is found
+// Leaf: IsRunnable@CAIStateGroup_BirdFlyToFood
+// Model: the landed sibling CAIStateGroup_BirdGroundWander::IsRunnable 0x009143E0 (same TU: interface 7 lookup, mode getter,
+//   frame-rate local) and GetRandomFlightPos 0x00912700; layout local: FlightPos +0x24 (C3DVector), FrameLastAte +0x30.
+struct CTCBase;
+
+long __fastcall GFGetCurrentFrame();            // 0x0049D870
+extern long g_framesPerSecond;                  // 0x01375550
+extern long g_flyingMode;                       // 0x0129CBA4 (the mode compared by BirdGroundWander too)
+
+struct CWorld {
+    static long GetFramesPerSecond() { return g_framesPerSecond; }
+};
+
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);       // 0x0040F020
+};
+
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;                 // +0x44
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+};
+
+struct C3DVector { float X, Y, Z; };
+struct CThingPhysical : CThing {
+    const C3DVector& GetPosition() const;       // 0x006A4D00
+};
+
+struct CCharString {
+    void* PStringData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    CCharString(const CCharString& other);      // 0x0099EC30
+    ~CCharString();                             // 0x0099EAE0
+};
+struct CThingFilter_None { CThingFilter_None() {} };
+struct CThingFilter_DefName {
+    CCharString DefName;
+    CThingFilter_DefName(const CCharString& name) : DefName(name) {}
+};
+struct CThingCompare_Nearest {
+    C3DVector Position;
+    CThingCompare_Nearest(const C3DVector& position) : Position(position) {}
+};
+struct CThingSearchTools {
+    bool GetPBestThing(const CThingFilter_None& filter, const CThingCompare_Nearest& compare, CThingPhysical** out);      // 0x009142B0
+    bool GetPBestThing(const CThingFilter_DefName& filter, const CThingCompare_Nearest& compare, CThingPhysical** out);   // 0x00914330
+};
+
+unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
+{
+    seed = seed * 0x24A1 + 0x24DF;
+    seed = GFROR13(seed);
+    if (range == 0)
+        return 0;
+    return seed % range;
+}
+
+struct CTCCreatureModeManager {                 // interface 7
+    long GetCurrentModeType();                  // 0x006CB6A0
+};
+
+struct CAIBrain {
+    unsigned char _pad[0x18];
+    CThingPhysical* Creature;                   // +0x18
+};
+
+struct CAIStateGroupBase {
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    long ScriptAIPriority;                      // +0x08
+    void* Name_PStringData;                     // +0x0c
+    unsigned char Terminated;                   // +0x10
+    unsigned char Priority;                     // +0x11
+    unsigned char Enabled;                      // +0x12
+    unsigned char _pad_0x13;
+    CWorld* GetPWorld();                        // 0x008FCFA0
+    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+};
+struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase {
+    unsigned char _14[0x10];
+    C3DVector FlightPos;                        // +0x24
+    bool GetRandomFlightPos(const C3DVector& from, float radius, C3DVector* out, bool allowGround);   // 0x00912700
+};
+struct CAIStateGroup_BirdFlyToFood : CAIStateGroup_FlyingThingBase {
+    unsigned long FrameLastAte;                 // +0x30
+    bool IsRunnable();
+};
+
+bool CAIStateGroup_BirdFlyToFood::IsRunnable()
+{
+    CTCCreatureModeManager* modes;
+    PBrain->Creature->GetInterface(&modes, 7);
+    if (modes->GetCurrentModeType() == g_flyingMode) {
+        long framesPerSecond;
+        if ((FrameLastAte == 0
+             || (framesPerSecond = GetPWorld()->GetFramesPerSecond(),
+                 GFGetCurrentFrame() - FrameLastAte > (unsigned long)(framesPerSecond * 20)))
+            && WorldRandomRange(*GetPWorldSeed(), 100) < 74) {
+            if (WorldRandomRange(*GetPWorldSeed(), 100) < 64) {
+                CThingPhysical* corpse = 0;
+                if (PeekThingSearchTools()->GetPBestThing(CThingFilter_None(), CThingCompare_Nearest(PBrain->Creature->GetPosition()), &corpse)
+                    && GetRandomFlightPos(corpse->GetPosition(), 0.5f, &FlightPos, true))
+                    return true;
+            }
+            CThingPhysical* food = 0;
+            bool found;
+            {
+                CCharString name("BIRD_FOOD");
+                found = PeekThingSearchTools()->GetPBestThing(CThingFilter_DefName(name), CThingCompare_Nearest(PBrain->Creature->GetPosition()), &food);
+            }
+            if (found && GetRandomFlightPos(food->GetPosition(), 1.5f, &FlightPos, true))
+                return true;
+        }
+    }
+    return false;
+}

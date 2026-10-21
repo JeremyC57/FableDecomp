@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a4d770	DIFFER	420	-	DIFFER(89v420) asm_bake family: retail inline-asm fistp keeps dead x87 block alive
+00a4df10	RELOCATION_MATCH	491	PASS	byte-exact under RTM 13.10.3077
+00aa0dc0	RELOCATION_MATCH	413	PASS	byte-exact under RTM 13.10.3077
+00a4beb0	RELOCATION_MATCH	480	PASS	byte-exact under RTM 13.10.3077
+00addbe0	DIFFER	414	-	DIFFER(1124v414) lane gap: RTM/QFE unroll the min/max loop by 4, retail rolled
+00addd80	RELOCATION_MATCH	435	PASS	byte-exact under RTM 13.10.3077
+00ac3e00	RELOCATION_MATCH	441	PASS	byte-exact under RTM 13.10.3077
+00a89450	RELOCATION_MATCH	403	PASS	byte-exact under RTM 13.10.3077
+00a898d0	DIFFER	402	-	DIFFER(393v402) x87 copy schedule of the helper position
+00aba170	RELOCATION_MATCH	474	PASS	byte-exact under RTM 13.10.3077
+00aaab10	RELOCATION_MATCH	447	PASS	byte-exact under RTM 13.10.3077
+00aa96b0	RELOCATION_MATCH	425	PASS	byte-exact under RTM 13.10.3077
+00aa9ba0	RELOCATION_MATCH	510	PASS	byte-exact under RTM 13.10.3077
+00ab9fc0	RELOCATION_MATCH	425	PASS	byte-exact under RTM 13.10.3077
+00abc1b0	RELOCATION_MATCH	438	PASS	byte-exact under RTM 13.10.3077
+00a25530	RELOCATION_MATCH	439	PASS	byte-exact under RTM 13.10.3077
+00a2eaa0	RELOCATION_MATCH	407	PASS	byte-exact under RTM 13.10.3077
+00a2ed10	RELOCATION_MATCH	468	PASS	byte-exact under RTM 13.10.3077
+00a90260	DIFFER	496	-	DIFFER(496v496) register allocation only (ebx/edi swapped)
+0097d6f0	DIFFER	444	-	DIFFER(422v444) VC tail-merges the two position copies
+0097df60	RELOCATION_MATCH	470	PASS	byte-exact under RTM 13.10.3077
+0097fa00	RELOCATION_MATCH	468	PASS	byte-exact under RTM 13.10.3077
+0092a220	RELOCATION_MATCH	455	PASS	byte-exact under RTM 13.10.3077
+0092b110	SKIP	440	-	two-function row (Update + jump table + 0x0092B230/0x0092B240 thunks)
+0094f480	DIFFER	437	-	DIFFER(449v437) register colouring only (this/creature ebp/ebx swapped)
+00928e20	DIFFER	505	-	DIFFER(503v505) creature load order before GetPItem in the current-player test
+00929020	DIFFER	507	-	DIFFER(506v507) village list kept as &list in ebp in retail; next step recorded
+00929340	DIFFER	507	-	DIFFER(506v507) LookAt sum operand order, action temporaries frame size, ++ as load/inc/store
+0093a5c0	RELOCATION_MATCH	466	PASS	byte-exact under RTM 13.10.3077
+0093ab70	DIFFER	504	-	DIFFER(510v504) HasTC bool spill + register roles around the copied STLport list
+00913f30	DIFFER	500	-	DIFFER(500v500) scheduling only (out-pointer zero / compare copy order)
+00917bb0	RELOCATION_MATCH	432	PASS	byte-exact under RTM 13.10.3077
+0097cb10	DIFFER	443	-	DIFFER(443v443) x87 Newton-step store/reload schedule
+0095e0b0	DIFFER	428	-	DIFFER(426v428) esi/edi roles, Fire action size, Fire target fetch order
+00920dc0	DIFFER	455	-	DIFFER(455v455) esi/edi roles + x87 Newton-step schedule
+00970f30	RELOCATION_MATCH	402	PASS	byte-exact under RTM 13.10.3077
+0095fed0	DIFFER	403	-	DIFFER(407v403) inline counted-pointer release captures the object in ecx
+0096cfc0	DIFFER	463	-	DIFFER(463v463) frame 0x10 v 0xc (lookup key slot packing)
+0094ce60	RELOCATION_MATCH	437	PASS	byte-exact under RTM 13.10.3077
+009486d0	DIFFER	432	-	DIFFER(436v432) VC hoists the -1 constant into ebp; retail uses immediates

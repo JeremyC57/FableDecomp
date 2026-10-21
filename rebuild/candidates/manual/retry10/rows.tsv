@@ -1720,3 +1720,20 @@ address	module	name	length	chunk	reason
 0065be6c	CTCVillage	UpdateHornTasks	336	hand254	DIFFER(336v336) -- pure ebx/edi swap
 007df130	CTCWallMount	UnattachObject	384	hand254	DIFFER(370v370) -- scratch registers eax/ecx vs ecx/edx
 00863ca0	CThingBodyReorienter	FillBodyReorientationPossibleIntersecting	368	hand254	DIFFER(361v358) -- 0x30 aligned frame/box slot vs ours 0x20 packed
+00a4d770	C3DAnimation2	CalcLocalTransformationsRelative	432	hand257	DIFFER(420) -- DIFFER(89v420) asm_bake family: retail inline-asm fistp keeps dead x87 block alive
+00addbe0	C3DBoundingSphere	BuildFromSubSpheres	416	hand257	DIFFER(414) -- DIFFER(1124v414) lane gap: RTM/QFE unroll the min/max loop by 4, retail rolled
+00a898d0	C3DMesh2	C3DMesh2::GetHelperPointPositionAnimated	416	hand257	DIFFER(402) -- DIFFER(393v402) x87 copy schedule of the helper position
+00a90260	C3DPrimitive2	CreateDegenerateTriangleIndexBuffer	496	hand257	DIFFER(496) -- DIFFER(496v496) register allocation only (ebx/edi swapped)
+0097d6f0	CAIStateGroupBase	AIAction_LookAtThing	448	hand257	DIFFER(444) -- DIFFER(422v444) VC tail-merges the two position copies
+0094f480	CAIStateGroup_BalverineJumpAtFleeingEnemy	?IsRunnable@CAIStateGroup_BalverineJumpAtFleeingEnemy@@MAE_NXZ	448	hand257	DIFFER(437) -- DIFFER(449v437) register colouring only (this/creature ebp/ebx swapped)
+00928e20	CAIStateGroup_BanditPlayDice	CAIStateGroup_BanditPlayDice::OnReplace	512	hand257	DIFFER(505) -- DIFFER(503v505) creature load order before GetPItem in the current-player test
+00929020	CAIStateGroup_BanditPlayDice	?IsRunnable@CAIStateGroup_BanditPlayDice@@MAE_NXZ	512	hand257	DIFFER(507) -- DIFFER(506v507) village list kept as &list in ebp in retail; next step recorded
+00929340	CAIStateGroup_BanditPlayDice	CAIStateGroup_BanditPlayDice::Update	507	hand257	DIFFER(507) -- DIFFER(506v507) LookAt sum operand order, action temporaries frame size, ++ as load/inc/store
+0093ab70	CAIStateGroup_BanditSitRoundCampfire	GetPNearCampfire	512	hand257	DIFFER(504) -- DIFFER(510v504) HasTC bool spill + register roles around the copied STLport list
+00913f30	CAIStateGroup_BirdFlyToFood	?IsRunnable@CAIStateGroup_BirdFlyToFood@@UAE_NXZ	512	hand257	DIFFER(500) -- DIFFER(500v500) scheduling only (out-pointer zero / compare copy order)
+0097cb10	CAIStateGroup_CreatureFindCover	IsStillRunnable	448	hand257	DIFFER(443) -- DIFFER(443v443) x87 Newton-step store/reload schedule
+0095e0b0	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::Update	432	hand257	DIFFER(428) -- DIFFER(426v428) esi/edi roles, Fire action size, Fire target fetch order
+00920dc0	CAIStateGroup_CreatureSeekEnemyUnderground	CAIStateGroup_CreatureSeekEnemyUnderground::OnReplace	464	hand257	DIFFER(455) -- DIFFER(455v455) esi/edi roles + x87 Newton-step schedule
+0095fed0	CAIStateGroup_DeedReactionRoot	?IsStillValid@CAIStateGroup_DeedReactionRoot@@UBE_NXZ	416	hand257	DIFFER(403) -- DIFFER(407v403) inline counted-pointer release captures the object in ecx
+0096cfc0	CAIStateGroup_EatAtTable	?OnReplace@CAIStateGroup_EatAtTable@@MAEXXZ	464	hand257	DIFFER(463) -- DIFFER(463v463) frame 0x10 v 0xc (lookup key slot packing)
+009486d0	CAIStateGroup_GoToPub	FreeSeat	432	hand257	DIFFER(432) -- DIFFER(436v432) VC hoists the -1 constant into ebp; retail uses immediates
