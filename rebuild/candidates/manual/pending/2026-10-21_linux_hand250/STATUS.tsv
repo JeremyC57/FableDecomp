@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009a14e0	RELOCATION_MATCH	380v380	PASS	CStreamingFontBank::GetStringExtents
+008728c0	RELOCATION_MATCH	337v337	PASS	NCameraModes::CStringAndCageBase::Update
+00760a70	DIFFER	332v332	-	pop esi scheduled 2 x87 instrs later (scheduling only)
+0049166e	RELOCATION_MATCH	327v327	PASS	CSubtitleRenderer ctor (pragma s)
+00493281	DIFFER	370v357	-	ClickPast: epilogue placement / cross-jump layout
+00719540	RELOCATION_MATCH	323v323	PASS	vector<CActionInputControl>::operator= (label)
+00d7ecb0	RELOCATION_MATCH	335v335	PASS	CSummoner1::Main
+00d7eed0	RELOCATION_MATCH	335v335	PASS	CSummoner2::Main (label fix)
+00df2ab0	RELOCATION_MATCH	354v354	PASS	CSummonerMinion::Main
+00ef2290	RELOCATION_MATCH	394v394	PASS	CSwordChest::Main
+0052c300	RELOCATION_MATCH	346v346	PASS	vector<SSymbolEntry>::_M_fill_insert (label)
+009e5ad0	RELOCATION_MATCH	349v349	PASS	CSymbolMap::ParseBuffer
+009e5c90	DIFFER	373v373	-	CSymbolMap::LoadFromFile: SIB base/index order of buffer[size] = 0
+009a64b0	RELOCATION_MATCH	346v346	PASS	CSystemManager::InitWindow
+00ed99d0	RELOCATION_MATCH	359v359	PASS	CTB_Bard::GetRandomSpeech
+007ee8f0	DIFFER	346v346	-	CTCActionUseChest::OnActionUse: register rotation (eax/ecx/edx) in the deed/morality tail
+0064dd9a	SKIP	-	-	catalog row truncates the function (jmp 0x64dfbe past the row end)
+00c388a0	RELOCATION_MATCH	377v377	PASS	CInstance_00c388a0::CheckFrameStreamer (/EHsc, label fix)
+007a7000	RELOCATION_MATCH	323v323	PASS	CTCBattleCharge::UpdateDirectionOverride (label fix)
+007a9960	RELOCATION_MATCH	323v323	PASS	CTCAssassinRush::UpdateDirectionOverride
+007aa6b0	RELOCATION_MATCH	355v355	PASS	CTCAssassinRush::OnInitialActivate
+007a74a0	RELOCATION_MATCH	330v330	PASS	CTCBattleCharge::CleanUpEffects
+0078c4c0	RELOCATION_MATCH	333v333	PASS	CTCBerserk::CreateStartingEffect (advisor: GetEffect stand-in)
+0078c610	RELOCATION_MATCH	362v362	PASS	CTCBerserk::CancelMove
+00783a30	DIFFER	393v393	-	CTCBoastingCrowdControl::GetCrowd: register choice in insert tail
+007af310	RELOCATION_MATCH	382v382	PASS	CTCBoss::SetHelperCreature
+006bffd0	DIFFER	353v328	-	CTCBuyableHouse::GetValueOfTrophies: value spilled, def release re-read
+006c0330	RELOCATION_MATCH	375v375	PASS	CTCBuyableHouse::SetupDressingAtLevel
+006c0580	DIFFER	329v329	-	CTCBuyableHouse::DestroyMoneyBags: one extra key slot (frame 0x10 vs 0xc)
+006c0810	RELOCATION_MATCH	346v346	PASS	CTCBuyableHouse::OnSerialise (named bool, coordinator hint)
+006c0b20	DIFFER	383v368	-	CTCBuyableHouse::FindPosToCreateNewVillager: vector start cached in ebx / zeroing reg
+006c0fd0	RELOCATION_MATCH	374v374	PASS	CTCBuyableHouse::Evict
+0075cad0	DIFFER	388v388	-	CTCCameraPointTrack::UpdateActiveCameraPosition: x87 operand order of offset.Y*radius
+007ed2c0	RELOCATION_MATCH	350v350	PASS	CTCCarriedActionUseGiveBeer::vfunc_28
+007ed560	DIFFER	354v354	-	CTCCarriedActionUseGoldBag::vfunc_28: first key slot not shared (frame 0xbc vs 0xb8)
+007ed870	RELOCATION_MATCH	372v372	PASS	CTCCarriedActionUseShow::vfunc_28
+006a1e00	RELOCATION_MATCH	382v382	PASS	CTCCarrying::RemoveThingFromPrimarySlot
+00750540	RELOCATION_MATCH	378v378	PASS	CTCChest::Open
+007339e0	RELOCATION_MATCH	392v392	PASS	CTCCombat::UpdateCombatTimers
+0074e560	DIFFER	334v330	-	CTCContainerRewardHero::CreateNewObject: dead-arg slot choice for the 0x103 key

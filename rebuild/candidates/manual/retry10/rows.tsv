@@ -1644,3 +1644,14 @@ address	module	name	length	chunk	reason
 00acd960	COptimisedPrimitive	COptimisedPrimitive::SimplifyByVertexPairs	384	hand247	DIFFER(383v383) -- register naming only: Data/Info of the copied counted pointer in edi/esi (ours esi/edi)
 00820840	CMap	?ScriptedMapBrushMoveThings@CMap@@MAEXABVCScriptedMapBrush@@@Z	384	hand247	DIFFER(372v372) -- eax/edx naming around the virtual calls + folded transform copy offset
 008201e0	CMap	InitPassabilityFromThemesIfNecessary	345	hand247	DIFFER(354v345) -- frame-slot sharing of the theme out word and def pointer, x/area register homing, def release re-read
+00760a70	CSubdivisionTriangle	GetUpDirection	336	hand250	DIFFER(332v332) -- pop esi scheduled 2 x87 instrs later (scheduling only)
+00493281	CSubtitleRenderer	ClickPast	357	hand250	DIFFER(370v357) -- ClickPast: epilogue placement / cross-jump layout
+009e5c90	CSymbolMap	CSymbolMap::LoadFromFile	373	hand250	DIFFER(373v373) -- CSymbolMap::LoadFromFile: SIB base/index order of buffer[size] = 0
+007ee8f0	CTCActionUseChest	CTCActionUseChest::vfunc_28	352	hand250	DIFFER(346v346) -- CTCActionUseChest::OnActionUse: register rotation (eax/ecx/edx) in the deed/morality tail
+00783a30	CTCBoastingCrowdControl	GetCrowd	400	hand250	DIFFER(393v393) -- CTCBoastingCrowdControl::GetCrowd: register choice in insert tail
+006bffd0	CTCBuyableHouse	GetValueOfTrophies	336	hand250	DIFFER(353v328) -- CTCBuyableHouse::GetValueOfTrophies: value spilled, def release re-read
+006c0580	CTCBuyableHouse	DestroyMoneyBags	336	hand250	DIFFER(329v329) -- CTCBuyableHouse::DestroyMoneyBags: one extra key slot (frame 0x10 vs 0xc)
+006c0b20	CTCBuyableHouse	FindPosToCreateNewVillager	368	hand250	DIFFER(383v368) -- CTCBuyableHouse::FindPosToCreateNewVillager: vector start cached in ebx / zeroing reg
+0075cad0	CTCCameraPointTrack	UpdateActiveCameraPosition	400	hand250	DIFFER(388v388) -- CTCCameraPointTrack::UpdateActiveCameraPosition: x87 operand order of offset.Y*radius
+007ed560	CTCCarriedActionUseGoldBag	CTCCarriedActionUseGoldBag::vfunc_28	368	hand250	DIFFER(354v354) -- CTCCarriedActionUseGoldBag::vfunc_28: first key slot not shared (frame 0xbc vs 0xb8)
+0074e560	CTCContainerRewardHero	CreateNewObject	336	hand250	DIFFER(334v330) -- CTCContainerRewardHero::CreateNewObject: dead-arg slot choice for the 0x103 key

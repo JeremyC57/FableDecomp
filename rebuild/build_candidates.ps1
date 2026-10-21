@@ -258027,6 +258027,203 @@ $catalog = @(
         TestSource = '00/41/CEnginePrimitiveHandle_Clear_0041be70_test.cpp'
         PassPattern = '0041be70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049166e'
+        Module = 'CSubtitleRenderer'
+        Source = '00/49/CSubtitleRenderer_CSubtitleRenderer_0049166e.cpp'
+        TestSource = '00/49/CSubtitleRenderer_CSubtitleRenderer_0049166e_test.cpp'
+        PassPattern = '0049166e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052c300'
+        Module = 'std::vector<SSymbolEntry>'
+        Source = '00/52/stdvectorSSymbolEntry_Mfillinsert_0052c300.cpp'
+        TestSource = '00/52/stdvectorSSymbolEntry_Mfillinsert_0052c300_test.cpp'
+        PassPattern = '0052c300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a1e00'
+        Module = 'CTCCarrying'
+        Source = '00/6a/CTCCarrying_RemoveThingFromPrimarySlot_006a1e00.cpp'
+        TestSource = '00/6a/CTCCarrying_RemoveThingFromPrimarySlot_006a1e00_test.cpp'
+        PassPattern = '006a1e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c0330'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_SetupDressingAtLevel_006c0330.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_SetupDressingAtLevel_006c0330_test.cpp'
+        PassPattern = '006c0330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c0810'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_OnSerialise_006c0810.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_OnSerialise_006c0810_test.cpp'
+        PassPattern = '006c0810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c0fd0'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_Evict_006c0fd0.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_Evict_006c0fd0_test.cpp'
+        PassPattern = '006c0fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00719540'
+        Module = 'std::vector<CActionInputControl>'
+        Source = '00/71/stdvectorCActionInputControl_operator_00719540.cpp'
+        TestSource = '00/71/stdvectorCActionInputControl_operator_00719540_test.cpp'
+        PassPattern = '00719540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007339e0'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_UpdateCombatTimers_007339e0.cpp'
+        TestSource = '00/73/CTCCombat_UpdateCombatTimers_007339e0_test.cpp'
+        PassPattern = '007339e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00750540'
+        Module = 'CTCChest'
+        Source = '00/75/CTCChest_Open_00750540.cpp'
+        TestSource = '00/75/CTCChest_Open_00750540_test.cpp'
+        PassPattern = '00750540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078c4c0'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_CreateStartingEffect_0078c4c0.cpp'
+        TestSource = '00/78/CTCBerserk_CreateStartingEffect_0078c4c0_test.cpp'
+        PassPattern = '0078c4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078c610'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_CancelMove_0078c610.cpp'
+        TestSource = '00/78/CTCBerserk_CancelMove_0078c610_test.cpp'
+        PassPattern = '0078c610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a7000'
+        Module = 'CTCBattleCharge'
+        Source = '00/7a/CTCBattleCharge_UpdateDirectionOverride_007a7000.cpp'
+        TestSource = '00/7a/CTCBattleCharge_UpdateDirectionOverride_007a7000_test.cpp'
+        PassPattern = '007a7000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a74a0'
+        Module = 'CTCBattleCharge'
+        Source = '00/7a/CTCBattleCharge_CleanUpEffects_007a74a0.cpp'
+        TestSource = '00/7a/CTCBattleCharge_CleanUpEffects_007a74a0_test.cpp'
+        PassPattern = '007a74a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a9960'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_UpdateDirectionOverride_007a9960.cpp'
+        TestSource = '00/7a/CTCAssassinRush_UpdateDirectionOverride_007a9960_test.cpp'
+        PassPattern = '007a9960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007aa6b0'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_OnInitialActivate_007aa6b0.cpp'
+        TestSource = '00/7a/CTCAssassinRush_OnInitialActivate_007aa6b0_test.cpp'
+        PassPattern = '007aa6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007af310'
+        Module = 'CTCBoss'
+        Source = '00/7a/CTCBoss_SetHelperCreature_007af310.cpp'
+        TestSource = '00/7a/CTCBoss_SetHelperCreature_007af310_test.cpp'
+        PassPattern = '007af310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ed2c0'
+        Module = 'CTCCarriedActionUseGiveBeer'
+        Source = '00/7e/CTCCarriedActionUseGiveBeer_OnActionUse_007ed2c0.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseGiveBeer_OnActionUse_007ed2c0_test.cpp'
+        PassPattern = '007ed2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ed870'
+        Module = 'CTCCarriedActionUseShow'
+        Source = '00/7e/CTCCarriedActionUseShow_OnActionUse_007ed870.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseShow_OnActionUse_007ed870_test.cpp'
+        PassPattern = '007ed870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008728c0'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/87/NCameraModesCStringAndCageBase_Update_008728c0.cpp'
+        TestSource = '00/87/NCameraModesCStringAndCageBase_Update_008728c0_test.cpp'
+        PassPattern = '008728c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a14e0'
+        Module = 'CStreamingFontBank'
+        Source = '00/9a/CStreamingFontBank_GetStringExtents_009a14e0.cpp'
+        TestSource = '00/9a/CStreamingFontBank_GetStringExtents_009a14e0_test.cpp'
+        PassPattern = '009a14e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a64b0'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_InitWindow_009a64b0.cpp'
+        TestSource = '00/9a/CSystemManager_InitWindow_009a64b0_test.cpp'
+        PassPattern = '009a64b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e5ad0'
+        Module = 'CSymbolMap'
+        Source = '00/9e/CSymbolMap_ParseBuffer_009e5ad0.cpp'
+        TestSource = '00/9e/CSymbolMap_ParseBuffer_009e5ad0_test.cpp'
+        PassPattern = '009e5ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c388a0'
+        Module = 'CInstance_00c388a0'
+        Source = '00/c3/CInstance00c388a0_CheckFrameStreamer_00c388a0.cpp'
+        TestSource = '00/c3/CInstance00c388a0_CheckFrameStreamer_00c388a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c388a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7ecb0'
+        Module = 'CSummoner1'
+        Source = '00/d7/CSummoner1_Main_00d7ecb0.cpp'
+        TestSource = '00/d7/CSummoner1_Main_00d7ecb0_test.cpp'
+        PassPattern = '00d7ecb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7eed0'
+        Module = 'CSummoner2'
+        Source = '00/d7/CSummoner2_Main_00d7eed0.cpp'
+        TestSource = '00/d7/CSummoner2_Main_00d7eed0_test.cpp'
+        PassPattern = '00d7eed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df2ab0'
+        Module = 'CSummonerMinion'
+        Source = '00/df/CSummonerMinion_Main_00df2ab0.cpp'
+        TestSource = '00/df/CSummonerMinion_Main_00df2ab0_test.cpp'
+        PassPattern = '00df2ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed99d0'
+        Module = 'CTB_Bard'
+        Source = '00/ed/CTBBard_GetRandomSpeech_00ed99d0.cpp'
+        TestSource = '00/ed/CTBBard_GetRandomSpeech_00ed99d0_test.cpp'
+        PassPattern = '00ed99d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef2290'
+        Module = 'CSwordChest'
+        Source = '00/ef/CSwordChest_Main_00ef2290.cpp'
+        TestSource = '00/ef/CSwordChest_Main_00ef2290_test.cpp'
+        PassPattern = '00ef2290_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

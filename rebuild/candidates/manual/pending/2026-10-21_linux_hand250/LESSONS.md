@@ -1,0 +1,22 @@
+# Chunk 250 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+- (0x0078C4C0, advisor) A `long*` out-parameter passed to a declared-only callee keeps that local's slot live to the function end; a same-TU `auto_inline(off)` stand-in body for the callee (here the effects def's GetEffect 0x00669D30) lets the slot die so later temporaries (GetInterface key, "" helper name, uninitialised emitter home) reuse it as retail does.
+- (0x006C0FD0) An STL algorithm whose by-value iterator result is discarded (copy_if into back_inserter) returns through a hidden pointer only when the iterator class has a user (non-copy) constructor; a POD inserter comes back in eax and drops retail's result slot.
+- (0x007ED870) The same advisor lesson for a CDefPointer out slot: a same-TU auto_inline(off) GetSubDef stand-in lets the out pointer's slot be shared with later GetTC keys (frame 4 bytes smaller), matching retail.
+- (0x00750540) Several flag stores written directly on `this` get scheduled below a following member-call's `mov ecx,[esi+4] ; push 1`; setting them through an inline member of the embedded helper struct (COpenCloseHelper::SetOpened) keeps retail's stores-first order.
+- (0x006C0810, coordinator/chunk 247) An if/else whose arms both end in the same call keeps retail's then-arm-first layout only when the `a == 1 || a == 3` condition is a named bool; written inline VC7.1 lays the else arm first.
+- (0x0049166E) An odd catalog address (no 16-byte alignment) flags a size TU: `#pragma optimize("s", on)` gives `or [m],-1`, `fldz ; fstp` float zeros and immediate byte stores in constructors.
+- (0x009A14E0) Running maxima stored as one C2DExtentsF local declared (with the pen) before the line height puts the zero stores between the `fild` and its 2^32 fix-up; walking the parameter itself (`while (*str) { c = *str++; }`) gives `xor eax,eax ; mov ax,[esi]`; `Advance * (Scale * 0.01f)` keeps the scale product first.
+- (0x009E5AD0) A parser built by an inline ctor that calls Init evaluates the `CCharString("")` temporary before the base constructor; two dead frame words before a CCharString local mean a 12-byte struct whose only constructed member is the string at +8.
+- (0x007A9960) A frame larger than the locals explain at its TOP is an under-sized model of the topmost local (CInputEvent is 0x34 bytes, not 0x28).
+- (0x007AF310) STLport `operator[]` written as `*(begin() + n)` keeps retail's `mov eax,[start] ; lea ecx,[eax+n*8]` and computes an assigned element's address after the right-hand GetPItem; `_M_start[n]` rotates registers.
+- (0x0078C610) `t / released * max` (int max) is reassociated into `fild max ; fdiv ; fmul`; `max * (t / released)` keeps `fdiv ; fimul`.
+- (0x00ED99D0) A retry loop whose success block retail lays out after the loop exit: `found = true; break;` then `if (!found) return x;` after the loop (VC threads the flag away).
+- (0x006A1E00) A function whose `return 0` early-exit retail places last is written `if (!cond) { ...; return thing; } return 0;`.
+- (0x007ED2C0, 0x007A7000...) `HasTC`/IS_THING_ALIVE/forwarding script-thing virtuals must be `__forceinline` in TUs where they are used twice, or VC7.1 calls an out-of-line copy.
+- (0x007ED560, 0x006C0580) Open: when retail shares one key slot for every interface lookup and ours gives the first lookup a second slot, no tried form (GetInterface/GetTC mixes, key order, named results) fixes it.
+Review at landing:
+- 0x00D7EED0 (CSummoner2::Main), 0x007A7000 (CTCBattleCharge::UpdateDirectionOverride), 0x00719540 / 0x0052C300 (STLport instantiations) and 0x00C388A0 (AI library) need their catalog names corrected.
+- Local base models next to existing engine headers: CStreamingFontBank (derived wrapper over the header, fine), CTCBerserk/CTCCombat/CSubtitleRenderer (headers have the PDB 16-byte containers; retail is 4/8 lower, Layout comments give the evidence), CTCBuyableHouse (header agrees with retail; local models add ParentThing and methods).
+- 0x0078C4C0 and 0x0078C610 share one TU model (GetSubDef + GetEffect stand-ins); 0x007ED870 and 0x00750540 carry GetSubDef stand-ins for same-TU instantiations.
+- 0x0064DD9A's catalog row truncates its function (SKIP); the row length should be re-derived.
+- Several rows needed more than 4 grades (0x009A14E0, 0x00493281, 0x0078C4C0, 0x0075CAD0, 0x00783A30, 0x006BFFD0, 0x006C0580, 0x007ED560): within the 5-per-strategy budget given for this wave.
