@@ -1,0 +1,122 @@
+// CCreatureAction_DragonTakeOffIntoFlying::Initialise() -- names the "TAKE_OFF" animation, runs the base Initialise, makes the dragon unliftable, clears the interface-9 byte, makes the dragon not solid to the hero (adding a CTCSolidToThing to the hero when missing) and records the take-off destination 35.148 units above the dragon
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3E70, length 338 bytes (+ int3 padding).
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0,
+// ~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
+// SetThingIsAbleToBeLifted(CThing*, bool) @ 0x007E4330 (`__fastcall`: ecx thing, dl flag), CVectorMap::LowerBound @ 0x0040F020
+// (inlined GetInterface for types 9 and 0x4D), CPlayerManager::GetMainPlayer @ 0x00449970 (g_pMainGameComponent +0x1c),
+// CPlayer::GetHeroCreature @ 0x00487DC0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) @ 0x004C9D60,
+// CTCSolidToThing::AddThingNotSolidTo(CThing*) @ 0x00770FA0, CThing::GetPosition @ 0x004C73D0.
+// Shape: the interface-9 lookup is untested (the absent arm reads the dead out word `mov eax,[esp+0Ch]`); the hero's
+// CTCSolidToThing is fetched with HasTC/GetTC else added by name (string temporary dies before the null test); the
+// destination is a C3DVector temporary (X, Y, Z + 35.148f) built in the frame and copied memberwise. Retail
+// CCombatActionBase is 0x114 bytes (the PDB header places Dest at +0x12c), so `this` is modelled locally: Dest at +0x120.
+struct C3DVector {
+    float X, Y, Z;
+    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
+};
+struct CTCBase;
+struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);   // 0x0040F020
+};
+struct CTCParamsBase;
+struct CCharString;
+struct CTCSolidToThing;
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;             // +0x44
+    const C3DVector& GetPosition() const;   // 0x004C73D0
+    CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+    template<class T> __forceinline T* GetTC(long interfaceType)
+    {
+        long type = interfaceType;
+        CInterfaceMap* map = &m_interfaces;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        if (it == map->last || interfaceType < it->type)
+            it = map->last;
+        return (T*)it->component;
+    }
+    __forceinline unsigned long HasTC(long interfaceType) const
+    {
+        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
+    }
+};
+struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+    void* m_pData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                         // 0x0099EAE0
+};
+struct CTCSolidToThing {
+    void AddThingNotSolidTo(CThing* thing); // 0x00770FA0
+};
+struct CTCCreatureFlags9 {                  // the interface-9 component: one byte at +0x10 cleared by this action
+    unsigned char _pad[0x10];
+    unsigned char m_canBeTargeted;          // +0x10
+};
+struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatureBase>: vptr + item
+    virtual void v00();
+    CThing* m_pItem;                        // +4
+    CThing* GetPItem() const;               // 0x00A01B50
+};
+struct CPlayer {
+    CThing* GetHeroCreature();              // 0x00487DC0
+};
+struct CPlayerManager {
+    CPlayer* GetMainPlayer();               // 0x00449970
+};
+struct CMainGameComponent {
+    unsigned char _pad[0x1c];
+    CPlayerManager* PlayerManager;          // +0x1c
+};
+extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
+void __fastcall SetThingIsAbleToBeLifted(CThing* thing, bool able);   // 0x007E4330
+
+struct CCombatActionBase {                  // retail sizeof 0x114
+    virtual void v00();
+    virtual void Initialise();              // 0x00857520
+    unsigned char _pad04[4];                // +0x04
+    CBaseIntelligentPointer PCreature;      // +0x08
+    unsigned char _pad10[0x114 - 0x10];     // +0x10
+    void SetAnimationName(const CCharString& name);   // 0x008574D0
+};
+struct CCreatureAction_DragonTakeOffIntoFlying : CCombatActionBase {
+    unsigned char _pad114[0x120 - 0x114];   // +0x114
+    C3DVector Dest;                         // +0x120 (take-off destination)
+    virtual void Initialise();
+};
+
+void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
+{
+    SetAnimationName("TAKE_OFF");
+    CCombatActionBase::Initialise();
+    SetThingIsAbleToBeLifted(PCreature.GetPItem(), false);
+    CTCCreatureFlags9* pFlags;
+    PCreature.GetPItem()->GetInterface(&pFlags, 9);
+    pFlags->m_canBeTargeted = 0;
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CTCSolidToThing* pSolid;
+    if (hero->HasTC(0x4d))
+        pSolid = hero->GetTC<CTCSolidToThing>(0x4d);
+    else
+        pSolid = hero->AddTC("CTCSolidToThing", false, 0);
+    if (pSolid)
+        pSolid->AddThingNotSolidTo(PCreature.GetPItem());
+    const C3DVector& pos = PCreature.GetPItem()->GetPosition();
+    Dest = C3DVector(pos.X, pos.Y, pos.Z + 35.14837646484375f);
+}

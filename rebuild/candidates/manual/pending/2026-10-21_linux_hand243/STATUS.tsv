@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00434e10	RELOCATION_MATCH	336v336	PASS	CDisplayEngine::CDisplayEngine(const CDisplayEngineInit& init)
+0064401c	RELOCATION_MATCH	349v349	PASS	NPlayerGui::CDrawMiniMap::Update(const float& elapsed)
+00645099	DIFFER	343v324	-	best effort (x87 compare chain + __ftol2): the sprite constructor's argument list and the anchor helper's by-value struct are inferred
+00646010	DIFFER	366v399	-	parked at once: fistp/fild frame-slot rounding helper over a dead argument slot (lane gap); the rest is best effort
+00646580	DIFFER	425v393	-	best effort (size TU): the emitter creation and the sprite constructor argument lists are inferred; intelligent-pointer temporary handling differs
+0064be45	DIFFER	338v373	-	the two CDefPointer temporaries share one frame slot and VC merges the two Adopt arms into one tail; retail keeps three frame words (ability, flourish temp, her
+0064d404	DIFFER	129v399	-	parked at once: fistp/fild rounding (lane gap); only the element walk is reconstructed, the sprite tail is behind a stand-in helper
+006765a0	RELOCATION_MATCH	384v384	PASS	CCreatureDef::CCreatureDef()
+0069f4f0	RELOCATION_MATCH	384v384	PASS	CCreatureAction_SheatheItemToInventory::PerformAction()
+0069fce0	DIFFER	380v369	-	register roles swapped: retail keeps `this` in esi and &PUsedThing in edi (the CTCActionUse lookup then reuses edi for the map), ours puts `this` in edi and &PU
+0069fe60	RELOCATION_MATCH	368v368	PASS	CCreatureAction_UseObject::PerformAction()
+006c7370	DIFFER	332v342	-	register-role rotation (retail this in esi, context in edi; ours swapped) and an 8-byte wider frame for the local record vector / flag
+006ea0c0	DIFFER	379v360	-	best effort: inline map lower_bound + iterator increment over the attacker set; the retail loop keeps the pattern in ebp and the found node in edi with differen
+006ecea0	DIFFER	390v385	-	best effort: inline STLport map ctor/dtor around the attacker walk; the uint64 key copy and the wheel-centre virtual call differ in scheduling
+00843310	DIFFER	335v347	-	retail homes the GetString temporary for the base-ctor argument in the dead `def` argument slot ([esp+20h]) and zeroes the CSoundPair after its address push; ou
+00844740	DIFFER	342v350	-	retail multiplies sin(angle) by 0.25 twice (`fld 0.25 ; fmul st(1) ; fstp X ; fmul 0.25 ; fstp Y`), ours CSEs the product (`fmul ; fst X ; fstp Y`); tried: name
+008448e0	RELOCATION_MATCH	332v332	PASS	CCreatureAction_OpenChest::PerformAction()
+00845900	RELOCATION_MATCH	368v368	PASS	CCreatureAction_PlayerInteractionGreet::PerformAction()
+00847c90	DIFFER	346v348	-	retail pushes ebx after the first alive test and edi after the carrying lookup (callee-saved pushes inside one branch, the known lane gap); the "other carrier" 
+00848db0	RELOCATION_MATCH	352v352	PASS	CCreatureAction_GetInBed::PerformAction()
+0084a350	DIFFER	321v321	-	register rotation only: retail loads the carry slot into eax (`mov eax,[ebx+30h] ; push eax`) and takes the later lookup keys with `lea edx` / `lea eax`, ours u
+0084a4a0	RELOCATION_MATCH	336v336	PASS	CCreatureAction_PutDownJugFromFilling::PerformAction()
+008b6ad0	DIFFER	342v344	-	retail multiplies all three normalised components as `fld comp ; fmul st(k)` with r at the stack bottom, ours forms the Y product as `fld st(1) ; fmul [Y]` (and
+008b6ee0	RELOCATION_MATCH	352v352	PASS	CCreatureAction_DuckAndCover::Initialise()
+008c0d10	RELOCATION_MATCH	400v400	PASS	CCreatureAction_JackScream::Initialise()
+008c4cb0	DIFFER	355v364	-	retail overlays the `PDeathEffect = CIntelligentPointer(effect)` temporary on the dead effect-type word and folds the final release null test (`mov esi,[esp+10h
+008ca310	DIFFER	386v387	-	ours homes the copied def pointer in an extra frame word (sub esp,14h; `mov edi,[esp+14h] ; mov [esp+20h],edi`) and swaps the esi/edi roles (retail: &PCreature 
+008cb780	RELOCATION_MATCH	368v368	PASS	CCreatureAction_SummonerSheatheWeapon::PerformAction()
+008d5300	DIFFER	379v383	-	frame and call sequence identical; VC hoists &PCreature into ebp at entry (push ebp at the top) where retail spills `this` and re-forms this+8 for each GetPItem
+008e6500	RELOCATION_MATCH	400v400	PASS	CCreatureAction_ReleaseStrengthBerserk::FrameUpdate()
+008f3e70	RELOCATION_MATCH	352v352	PASS	CCreatureAction_DragonTakeOffIntoFlying::Initialise()
+0096dbc0	DIFFER	321v331	-	retail keeps `this` in ebp, the lookup map in esi and &PTarget in ebx and spills the first-arm `new` result to a second frame word (`sub esp,8 ; mov [esp+14h],e
+00996390	RELOCATION_MATCH	336v336	PASS	CDataInputStream::ReadPresizedString()
+009967e0	RELOCATION_MATCH	400v400	PASS	CDataOutputStream::WriteZlibCompressed(const void* data, long size, long bufferSize)
+009adc90	DIFFER	367v382	-	retail spills the class-info pointer to the frame and keeps the two counts in ebx/edi before the factory call; ours keeps the info in a register and rebuilds th
+009b02e0	RELOCATION_MATCH	400v400	PASS	CDefinitionManager::~CDefinitionManager()
+009b0470	DIFFER	370v370	-	pure scheduling: retail loads the ErrorCallback arg after the +0x5c store (ours after +0x48) and forms lea edi/ebp [esi+0x58/0x60] after the +0x85 byte (ours af
+009d4ab0	RELOCATION_MATCH	384v384	PASS	CDefStringTable::ReadTable(CDataInputStream&)
+00ca15c0	DIFFER	429v399	-	best effort: a free __fastcall matrix walker (not a CDefinitionManager member); the loop nest shape is reconstructed from the disassembly, spills differ
+00e03d30	DIFFER	335v335	-	same instructions, different order: retail fetches the outer AddQuestObjective vtable (edi) first and the inner GetQuestText vtable after two argument pushes, o

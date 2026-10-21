@@ -1,0 +1,10 @@
+address	name	evidence
+00843310	CCreatureAction_PerformExpressionExtended::CCreatureAction_PerformExpressionExtended	ctor (chunk 243)
+009b02e0	CDefinitionManager::~CDefinitionManager	not "Cleanup" (chunk 243)
+009fc5c0	CResourceList::~CResourceList	chunk 243
+00ca15c0	PropertyMatrixWalker_ca15c0	free __fastcall property/matrix walker, not a CDefinitionManager member (chunk 243)
+0048db13	CWorld::Query_48db13	CWorld query, not CPersistContext::IsBinary (chunk 243)
+00733290	CTCCombat::Query_733290	CTCCombat query (chunk 243)
+00411910	std::vector<unsigned char>::vector	size ctor, same shape as 0x514E20 (chunk 243)
+009b8070	std::__destroy_range<CDefClassInfo>	STLport (chunk 243)
+007355f0	CTCCombat::SetAttackStyleDef	verifier RELOC_NAME from 008cb780; was CCreatureAction_InitializeForCombat (chunk 243)
