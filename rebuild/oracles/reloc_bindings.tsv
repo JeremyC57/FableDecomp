@@ -22903,3 +22903,15 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?CreatePrimitiveOfType@CObjectTypeCollection@@QAEPAUCLocalDetailPrimitiveBase@@J@Z	00bde600	00bde680
 ?IsDone@CM_RTFERockTrollTrigger@@QAE_NXZ	00f35b30	00ec42f0
 ?RegisterFilter@CM_RTFERockTrollTrigger@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00ec42f0
+?Draw3DScaledText@CRenderManager2D@@QAE_NABUC3DVector@@MVCWideString@@PAUCFontBank@@ABUCRGBColour@@K@Z	009dbff0	00405020
+?GetFont@CFontBankSource@@QAE?AU?$CCountedPointer@UCFontBank@@@@ABVCCharString@@@Z	009e2c80	00405020
+?GetFontNameAndScale@CIMEFont@NUISystem@@QBEXAAVCCharString@@AAM@Z	00404970	00405020
+?UpdateNavMaps@CWorldMap@@QAEXABUCSectionSet@@_N@Z	00501990	004b2510
+?GetPlayerManager@CTCContainerRewardHero@@QBEPBUCPlayerManager@@XZ	00686d50	0074e280
+??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z	004abe90	00f081e0
+??1CScriptThingParam@@UAE@XZ	004aa840	00f081e0
+??_7?$CSpawnedFunc1@UCQ_AmbushTradersScript@@UCScriptThingParam@@@@6B@	012f7ebc	00f081e0
+??_7CScriptThingParam@@6B@	01238c8c	00f081e0
+?Add@CScriptBase@@QAEXPAUCSpawnedFuncBase@@ABUCCharString@@@Z	00cb7e50	00f081e0
+?AddBanditHealthBar@CQ_AmbushTradersScript@@QAEJABUCScriptThing@@@Z	00f07a80	00f081e0
+?WatchForBanditSpeechMarkers@CQ_AmbushTradersScript@@QAEXUCScriptThingParam@@@Z	00f07b80	00f081e0

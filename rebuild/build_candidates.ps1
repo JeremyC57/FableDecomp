@@ -262854,6 +262854,41 @@ $catalog = @(
         TestSource = '00/ec/CMRTFERockTrollTrigger_Main_00ec42f0_test.cpp'
         PassPattern = '00ec42f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00405020'
+        Module = 'NUISystem::CIMEFont'
+        Source = '00/40/NUISystemCIMEFont_DrawTextW_00405020.cpp'
+        TestSource = '00/40/NUISystemCIMEFont_DrawTextW_00405020_test.cpp'
+        PassPattern = '00405020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b2510'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_LoadResourcesForQuests_004b2510.cpp'
+        TestSource = '00/4b/CQuestManager_LoadResourcesForQuests_004b2510_test.cpp'
+        PassPattern = '004b2510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074e280'
+        Module = 'CTCContainerRewardHero'
+        Source = '00/74/CTCContainerRewardHero_GetDynamicPotionDefIndex_0074e280.cpp'
+        TestSource = '00/74/CTCContainerRewardHero_GetDynamicPotionDefIndex_0074e280_test.cpp'
+        PassPattern = '0074e280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adf760'
+        Module = 'CParticleSimulation'
+        Source = '00/ad/CParticleSimulation_ApplyForces_00adf760.cpp'
+        TestSource = '00/ad/CParticleSimulation_ApplyForces_00adf760_test.cpp'
+        PassPattern = '00adf760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f081e0'
+        Module = 'CQ_AmbushTradersScript'
+        Source = '00/f0/CQAmbushTradersScript_BanditHireSetup_00f081e0.cpp'
+        TestSource = '00/f0/CQAmbushTradersScript_BanditHireSetup_00f081e0_test.cpp'
+        PassPattern = '00f081e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
