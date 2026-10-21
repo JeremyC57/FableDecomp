@@ -259667,6 +259667,62 @@ $catalog = @(
         TestSource = '00/80/CTCIdleScheduler_ChooseNewIdle_00801a50_test.cpp'
         PassPattern = '00801a50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004afe20'
+        Module = 'CQuestManager'
+        Source = '00/4a/CQuestManager_RemoveBoast_004afe20.cpp'
+        TestSource = '00/4a/CQuestManager_RemoveBoast_004afe20_test.cpp'
+        PassPattern = '004afe20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b00c0'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_IsQuestRegistered_004b00c0.cpp'
+        TestSource = '00/4b/CQuestManager_IsQuestRegistered_004b00c0_test.cpp'
+        PassPattern = '004b00c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007025a0'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_GetRegionName_007025a0.cpp'
+        TestSource = '00/70/CTCQuestCard_GetRegionName_007025a0_test.cpp'
+        PassPattern = '007025a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d1440'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsHitByWithDecapitate_008d1440.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsHitByWithDecapitate_008d1440_test.cpp'
+        PassPattern = '008d1440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008eda90'
+        Module = 'CCombatAction_FallStunned'
+        Source = '00/8e/CCombatActionFallStunned_CCombatActionFallStunned_008eda90.cpp'
+        TestSource = '00/8e/CCombatActionFallStunned_CCombatActionFallStunned_008eda90_test.cpp'
+        PassPattern = '008eda90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d91320'
+        Module = 'NScript::CQ_HobbeCaveScript::CCheckTheSilverKeyChest'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_Main_00d91320.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_Main_00d91320_test.cpp'
+        PassPattern = '00d91320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6a000'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_WatchForExpressions_00e6a000.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_WatchForExpressions_00e6a000_test.cpp'
+        PassPattern = '00e6a000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f058d0'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/f0/NScriptCQAmbushTradersScript_WatchForRegionChange_00f058d0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScript_WatchForRegionChange_00f058d0_test.cpp'
+        PassPattern = '00f058d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

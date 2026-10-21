@@ -1,0 +1,2 @@
+address	name	evidence
+00f058d0	NScript::CQ_AmbushTradersScript::WatchForRegionChange	catalogued CV_ChapelOfEvilScript::WatchForLeaving; the thread registration at 0x00F02CEE stores this address under "WatchForRegionChange" and the body calls CQ_AmbushTradersScript::RefreshSpyAllegiences 0x00F05A10; RELOCATION_MATCH (retry 10b12)

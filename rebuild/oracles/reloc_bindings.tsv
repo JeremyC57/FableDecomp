@@ -21460,3 +21460,12 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?GetDefinitions@CTCIdleScheduler@@QBEPAUCDefinitionManager@@XZ	006869d0	00801a50
 ?GetSubDef@CThingDef@@QAE_NPAU?$CDefPointer@UCIdleSchedulerDef@@@@@Z	00801670	00801a50
 ?find@CWeightMap@@QAE?AUCWeightMapIterator@@ABJ@Z	008014f0	00801a50
+?__find@@YIPAVCCharString@@PAV1@0ABV1@ABUrandom_access_iterator_tag@@@Z	004b8ff0	004b00c0
+?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventHitBy@@ABU?$CFilter_Bind4@UCIsHitEventHitByThingWithScriptName@@UCEventFilter_HitWithDecapitate@@UCIsEventCreatedBeforeOrOn@@UCIsEventCreatedAfter@@@@@Z	008d4b50	008d1440
+?GetEvent@CTCEntityEventsNative@@QBE_NPAPAUCEventKilledBy@@ABU?$CFilter_Bind4@UCIsHitEventHitByThingWithScriptName@@UCEventFilter_HitWithDecapitate@@UCIsEventCreatedBeforeOrOn@@UCIsEventCreatedAfter@@@@@Z	008d4c10	008d1440
+?g_pQuestManager@@3PAUQuestManagerNative@@A	013b89fc	008d1440
+?SetAnimName@CCombatActionBase@@QAEXABVCCharString@@@Z	008574d0	008eda90
+?g_DefaultFallStunnedAnim@@3QBDB	0127717c	008eda90
+?IsActiveThreadTerminating@CCheckTheSilverKeyChest@CQ_HobbeCaveScript@NScript@@QAE_NXZ	00f35b30	00d91320
+?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABUCCharString@@ABUCScriptThing@@@Z	00d905c0	00d91320
+?RefreshSpyAllegiences@CQ_AmbushTradersScript@@QAEXXZ	00f05a10	00f058d0
