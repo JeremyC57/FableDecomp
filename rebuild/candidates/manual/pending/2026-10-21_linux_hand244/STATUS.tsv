@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00460d75	RELOCATION_MATCH	241v241	PASS	STLport vector<CMusicEntry>::operator= (label CActiveFile::CopyAssign_16 wrong)
+004e2f56	RELOCATION_MATCH	241v241	PASS	STLport vector<CExplosionRing>::operator= (label CActiveFile::operator= wrong)
+00bc6340	DIFFER	319v322	-	retail keeps a dead `lea eax,[eax+ecx*8]` (the child handle's address) after the child load, and computes the count from begin in ecx (ours eax); everything else matches
+00bcfb00	DIFFER	329v336	-	the inline indexed draw: retail homes primitive count / start index / vertex count in frame words and keeps the shader manager in ebx (device pointer in edi, index buffer in ebp); ours keeps them in r
+00b8da80	RELOCATION_MATCH	344v344	PASS	really ~CEngineOcclusionManager (label ParticleLineGroup wrong)
+00bc2280	RELOCATION_MATCH	361v361	PASS	implicit dtor, CArray<CVertexShader> loops
+00b99710	DIFFER	335v335	-	scheduling only: retail copies the sub-section centre X/Y/Z and the radius into the frame one dword at a time through ecx (load, store, load, store), ours loads several before storing
+00babf70	DIFFER	381v381	-	one register pair only: retail loads the occlusion-manager global into ecx and copies it to ebx (`mov ecx,[g] ; push edi ; mov ebx,ecx`), ours loads ebx and copies to ecx
+00ba0fc0	DIFFER	333v333	-	flags store scheduled before the mesh stores (retail stores it after Alpha but loads it into ebx first; written in place VC keeps the constructor's zero in ebx for the whole function instead) and the 
+00bcd490	RELOCATION_MATCH	364v364	PASS	capture block open inline; state Set hybrid
+00b324a0	DIFFER	328v354	-	handle helpers: retail's Clear re-reads handle.Data for the unique-owner test, and the re-assignment keeps a zero register (ebp) with a second, dead null-tested release of the cleared pointer before s
+00b942a0	RELOCATION_MATCH	321v321	PASS	really RenderSceneAndCheckVisibility; bool out-param in inline wrapper
+00b92500	RELOCATION_MATCH	343v343	PASS	RenderCellClipped
+00b93860	DIFFER	382v381	-	retail keeps Level+1 as a full-width inc and subtracts in cl (ours folds it to mov dl/dec), packs the two 3-byte GridPos copies at frame +2/+5 (ours +0/+4) and holds this in edi (ours ebx)
+00b939e0	DIFFER	316v336	-	register allocation: retail pins the layer in ebx for the whole function, homes the result bool in the dead layer slot and spills this/cell to the frame (edi = child row, ebp = x*2); ours keeps this i
+00b943f0	RELOCATION_MATCH	330v330	PASS	really CEngineScene::RenderEntireScene; manager local before chain
+00b92300	DIFFER	335v335	-	register swap only: retail keeps the layer in edi (loaded after the four pushes) and the handle address in ebx; ours loads the layer into ebx after push ebx and the handle into edi
+00b93b30	DIFFER	282v395	-	lane gap: asm_bake family: retail floors both cell coordinates with the inline-asm fistp/fild helper (ebp frame, 0.5/1.0 frame constants); compiled code cannot produce it
+00b898d0	RELOCATION_MATCH	336v336	PASS	member dtors inline (shaders, render target, capture block)
+00b66190	RELOCATION_MATCH	340v340	PASS	state-side Set forwarding to manager ChangeState
+00be06b0	DIFFER	264v322	-	first structural attempt: retail copies the read result into a counted local (add-ref, then releases the returned temporary), builds the record with a second add-ref and releases three counted copies 
+00b84580	DIFFER	332v340	-	lane gap: asm_bake family: retail converts both sort keys with a bare fld/fistp pair through a frame float (inline-asm FloatToLong helper); compiled C++ goes through __ftol2
+00bf9290	DIFFER	377v362	-	frame packing: retail homes the read count in the dead stream slot (re-read for each loop test) with the ReadString temporary in the 8-byte frame; ours gives the dead slot to the string temporary and 
+0045979b	RELOCATION_MATCH	368v368	PASS	CEngineThemeDef::Transfer, bitfield via bool local in dead arg slot
+00bdb400	RELOCATION_MATCH	370v370	PASS	CShaderConstantRange temporaries
+00bdb080	RELOCATION_MATCH	384v384	PASS	CShaderConstantRange temporaries
+00bfd670	RELOCATION_MATCH	324v324	PASS	byte-indexed jump table switch; empty compressor in dead arg slot
+00b6e260	DIFFER	381v379	-	the occlusion box: retail builds it from integer locals (map X/Y copied to frame words, width/height converted through one scratch word, MinZ/MaxZ loaded first) in a 0x3c frame and walks the list with
+00b7f600	RELOCATION_MATCH	383v383	PASS	really CEngineWaterRenderer background shader setup (label RenderSnowBox wrong)
+00b40070	RELOCATION_MATCH	361v361	PASS	cmp operand order follows source
+00b41fa0	RELOCATION_MATCH	331v331	PASS	really CEngineWorldMap::LoadWaterData (PDB); CMemoryDataInputStream is 0x1c
+00b42750	RELOCATION_MATCH	385v385	PASS	single shared state store after if/else
+00b42b10	RELOCATION_MATCH	342v342	PASS	inline CEngineMap::ReleaseGameMap; STLport resize/__copy_trivial
+00b42d10	RELOCATION_MATCH	349v349	PASS	inline STLport list insert(begin())
+00c65870	RELOCATION_MATCH	392v392	PASS	audio CEntity GUID list setter (label SetPhysicsCollisionProperty wrong); memcmp intrinsic
+00885f50	RELOCATION_MATCH	376v376	PASS	/GS; NEnvironmentInternal ctor; polymorphic CBaseClassNonCopyable root, 0x1c-byte disk file
+00473046	RELOCATION_MATCH	327v327	PASS	memberwise op=, size TU
+0047318d	RELOCATION_MATCH	333v333	PASS	memberwise copy ctor, size TU
+00888260	RELOCATION_MATCH	339v339	PASS	find loop unrolled x4 by RTM; prev/next decl order sets x87 load order
+004eb2b8	RELOCATION_MATCH	359v359	PASS	by-value ReadLong/ReadFloat inline stream helpers

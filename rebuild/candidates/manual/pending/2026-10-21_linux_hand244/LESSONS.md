@@ -1,0 +1,15 @@
+# Chunk 244 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+- A tracked render-state Set (render core +0x2808 capture stack) matches only as `state.Set(v)` testing `m_value != v` on the state and forwarding to an inline manager-side `ChangeState(state, v)`; a pure manager method swaps eax/ecx, a pure state method swaps the mask registers (0x00B66190, 0x00BCD490).
+- An out-parameter bool zeroed after all ten argument pushes is the local of an inline wrapper around the call; a loop-body local is stored between the pushes (0x00B942A0).
+- Zero stores of a by-reference chain local scheduled after the argument pushes need the call object (type manager) fetched into a named local declared before the chain (0x00B943F0).
+- A state store written once after an if/else is tail-duplicated into each exit with the variable (ebp); per-branch stores let VC propagate the constant (0x00B42750).
+- VC7.1 keeps the source operand order of a compare: `if (minX > x)` gives `cmp minX,x ; jle`, `if (x < minX)` gives the swapped form (0x00B40070).
+- RTM 3077 unrolls a simple find loop by 4; a loop-invariant float written in the condition is materialised in each preheader; local float declaration order sets the x87 load order (0x00888260).
+- An inline stream Read into a shared address-taken local puts `this` in eax for the member store; by-value `ReadLong()/ReadFloat()` helpers keep it in ecx (0x004EB2B8).
+- A push_back value temporary shares the dead argument slot with a float local only with a same-TU `_M_insert_overflow` stand-in (fixed `sub esp,8` -> `push ecx`, 0x00BABF70).
+- A dead zero store into an address-taken flags local before a literal push is `flags = 0; f(..., flags, ...)` (0x00B99710).
+- A new-expression whose member zero stores precede the vtable store has a `__declspec(novtable)` intermediate base owning those members (0x00BA0FC0).
+- An empty helper object used only as `this` (range compressor) is homed in a dead argument slot (0x00BFD670); a four-case-group switch compiles to a byte-indexed jump table inside the row.
+- Retail CMemoryDataInputStream is 0x1c bytes; a counted-pointer dtor that zeroes both words after the release matches LoadWaterData (0x00B41FA0).
+- A local CDiskFileWin32 needs a polymorphic CBaseClassNonCopyable root (virtual dtor 0x0099A300) or its base subobject lands at +4 (0x00885F50, /GS).
+- Review at landing: 0x00B7F600 and 0x00C65870 carry descriptive names (no PDB name found); 0x00B66190 includes engine/CEngineSkyRenderer.h and 0x00BFD670 engine/CEngineWaterBackgroundSubPatch.h (derived method shell); the world-map/occlusion rows model locally because their headers flatten members or carry PDB offsets (reasons in each Layout/Header comment); 0x00B942A0/0x00B943F0/0x00B92500 reuse the landed operator[] stand-in idea; the landed CEngineSubPrimitiveRenderer::AddSubPrimitive 0x00B846E0 declares the six-argument overload with void* parameters (real types in 00b84580's differ source); 0x00993E80 is labelled WriteCBYTE but writes a word (WriteUShort).

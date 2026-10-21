@@ -1,0 +1,10 @@
+address	name	evidence
+00460d75	std::vector<CMusicEntry>::operator=	STLport vector copy-assign body, not CActiveFile::CopyAssign_16 (chunk 244)
+004e2f56	std::vector<CExplosionRing>::operator=	STLport vector copy-assign body, not CActiveFile::operator= (chunk 244)
+00b8da80	CEngineOcclusionManager::~CEngineOcclusionManager	destructor body (chunk 244)
+00b7f600	CEngineWaterRenderer::SetupBackgroundShaderConstants	background shader-constant setup, not RenderSnowBox; no PDB name, descriptive (chunk 244)
+00c65870	CEntity::SetGUIDListProperty	audio-library CEntity GUID-list property setter; no PDB name, descriptive (chunk 244)
+00b943f0	CEngineScene::RenderEntireScene	body (chunk 244)
+00b942a0	CEngineScene::RenderSceneAndCheckVisibility	body (chunk 244)
+00b41fa0	CEngineWorldMap::LoadWaterData	body (chunk 244)
+00993e80	CDataOutputStream::WriteUShort	manifest says WriteCBYTE; writes 2 bytes (chunk 244)
