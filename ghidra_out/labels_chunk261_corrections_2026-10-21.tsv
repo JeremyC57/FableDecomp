@@ -1,0 +1,12 @@
+address	name	evidence
+006bbc30	CGameTimeManager::CGameTimeManager	(CMainGameComponent&, CWorld&) ctor per FableWin.pdb console-callback names; not CCombatManager Init (chunk 261)
+0052b6a0	std::vector<CCharString>::_M_range_insert	STLport range insert, not CCombatWheel::Insert (chunk 261)
+006eda80	CCombatManager::RegisterAttackingCombatant	(chunk 261)
+008ce900	CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow	ctor (chunk 261)
+00692910	GetPDefinitionManager	callee identity (chunk 261)
+00692940	GetPWorld	callee identity (chunk 261)
+006627f0	GetAnimDuration	callee identity (chunk 261)
+009ad390	CDefinitionManager::GetDefIndexFromName	callee identity (chunk 261)
+00663340	GetHeroStatsDef	callee identity (chunk 261)
+0057a545	CCreatureAction_PlayIntoLoopOutOfAnimation::~CCreatureAction_PlayIntoLoopOutOfAnimation	dtor (chunk 261)
+008c4f50	CCreatureAction_ScorpionChargeStrike::CCreatureAction_ScorpionChargeStrike	ctor (chunk 261)

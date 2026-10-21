@@ -1,0 +1,91 @@
+# Hand chunk 261 (CCombatActionBase .. CCreatureAction_TrollGroundPound): 16 of 40 byte-exact
+
+## What matched (16)
+- CCombatSequenceWhisperAttackBigCombo::OnCreate (0x00909E30): four-action twin of the landed JacksCombo OnCreate (counted pointer Reset + AddAction per action).
+- CCreatureAction_BanditKingStuckGetHit::Initialise (0x008C87A0): STUCKLOOP effect; block-scoped effect id plus a separate `found` bool, implicit string conversions, named-item `operator=`.
+- CCreatureAction_ScreamerDie::Initialise (0x008B8D30): sibling of 0x8C87A0 plus the interface-9 flag clear.
+- CCreatureActionHero180RunningTurn::Initialise (0x0085B8F0): accumulator dot-product order plus a separate turn local.
+- CCreatureAction_DragonTakeOffIntoFlying::FinishAction (0x008F47E0): an inline GetCreature() accessor orders the mode-ctor creature after the counted-pointer copy.
+- CCreatureAction_DragonFlyInto::Initialise (0x008F4B00): fps hoisted above the `if` gives the shared reciprocal (`x/fps` CSE).
+- CCreatureAction_FinishFireballSpell::FinishAction (0x008BAC40): GetCreature() for both unsheathe GetPItem calls.
+- CCreatureAction_ScorpionChargeInto::Initialise (0x008C44B0):
+  - same-TU noinline GetSubDef stand-in, so the def stays in edi and the release has no null test;
+  - ctor-form `operator*` with the scale on the left, and ctor-form `operator+`.
+- CCreatureAction_BriarRoseConcentrateInto::Initialise (0x008C1C30):
+  - packed (pack 1) Imposter/PEnemy pair;
+  - typed inline `PEnemy.GetCreature()` orders the mode-ctor GetPItem calls;
+  - LowerBound, GetSubDef and GetEffectFromString stand-ins in the same TU.
+- CCreatureAction_JackFloatUp::PerformAction (0x008C0FB0): the landed 0x8C4B80 special-effects model (RISE/FLOAT effects, 0xAD dependents, PTCDriver emitter), first try.
+- CCreatureAction_SnapDragon::PerformAction (0x008F5060): inline CThing::GetDummyObject wrapper (the name temp and GetPItem run before the six pushes); ctor-form vector operators.
+- CCreatureAction_HeroLoadRangedWeapon::Initialise (0x0078B410):
+  - const and non-const interface lookups;
+  - the ability CDefPointer is declared before the single `stats && GetSubDef` test;
+  - nulling CDefPointer dtor.
+- CCreatureAction_ScorpionCharge::FinishAction (0x008C55B0):
+  - the XY travelled distance uses inline fsqrt;
+  - a compiled-out debug helper `DebugLine(GetTarget()->GetPosition(), GetCreature()->GetPosition())` keeps both GetPosition calls. The target goes through an inline accessor, so its GetPItem runs first.
+  - Both action temporaries are destroyed through ~CCombatActionBase on one merged tail.
+- CCreatureAction_PlayIntoLoopOutOfAnimation::FinishAction (0x00843C10):
+  - a switch on Stage;
+  - the next-loop count is a named local `long loops = NumberOfTimesToLoop - 1;`, so its dec is scheduled before both GetPItem calls;
+  - VC calls the first temporary's implicit dtor out of line (ICF'd at 0x57A545) and inlines the later two.
+- CConsoleVariable::ProcessCommandLine (0x009EC430), first try:
+  - the 12-byte parser item `{Type, Value, CCharString Text}` is constructed before the parser and filled by ReadNextItem(item&);
+  - the printed value and the type message live in the dead parameter slots;
+  - the type names are an if/else-if chain in the order 4, 3, 1, 5.
+- CGameTimeManager::CGameTimeManager (0x006BBC30, catalogued as "CCombatManager Init"):
+  - init-list defaults, then an inline STLport set header built with malloc;
+  - `Time = ...; PrevTime = Time; VillageTime = Time;` gives the fst / integer-copy shape;
+  - `GetConsole()->AddInput(new CConsoleCommand<CGameTimeManager>("SetTimeOfDay", *this, &ConsoleSetTimeOfDay, GVT_FLOAT))`: the name is a conditional temporary (flag bits 1 and 2), and the inline console getter runs after the new-expression.
+
+## Parked for Fable 5.1 (24)
+- 008579d0 CCombatActionBase::UpdateActionRunningTime DIFFER(415v415): `mov eax,[edi+0BCh]` speed load issued before the g_framesPerSecond load | tried: fps first, fps after, named delay | next: lane gap: scheduling
+- 00867010 CCombatAction_GenericResponseToDecapitation::Initialise DIFFER(481v481): retail keeps this in ebx and the lookup temporaries in esi (ours the reverse) | tried: accessor forms, named temporaries | next: lane gap: register allocation
+- 00c42850 CCompressorZlib::ParseWaveHeader DIFFER(458v454): retail pushes ebx late and keeps 0 in ebx for the length test, cbSize, __alldiv high word and the loop clears; ours uses immediates | tried: early-return layouts, typed locals | next: a local `const long zero`-style shared constant, or QFE probe
+- 008c8380 CCreatureAction_BanditKingStuck::Initialise DIFFER(463v461): conditional-temp flag in ebx and found in a frame byte (retail: flag dword zeroed at entry, found in bl) | tried: 0x8C87A0 sibling forms, block scopes, && forms | next: flag-variable declaration order / same-TU GetSubDef + LowerBound stand-ins
+- 008cad50 CCreatureAction_SummonerLightningOrbInto::FrameUpdate DIFFER(441v441): this in edi / PTarget in esi swapped; cross-product terms load Y where ours loads X | tried: 6 operand orders, accumulator, inline CrossZ | next: lane gap: commutative operand order
+- 008f45f0 CCreatureAction_DragonSwoop::FrameUpdate DIFFER(507v493): up = side x forward kept on the x87 stack in retail, ours stores each component through a temp | tried: cross ctor forms, named set | next: CRightHandedSet ctor taking (forward, up) with inline cross in the init list
+- 008cdd40 CCreatureAction_ReleaseTimeSpell::FinishAction DIFFER(430v430): haste pair temporary shares the unsheathe-name slot (ours frame 0xD0 vs 0xD4), this in edi vs ebx | tried: if/else, if-return, named pair, make_pair, temp name | next: same-TU LowerBound stand-in
+- 008bf500 CCreatureAction_GenericFireProjectileWeapon::FinishAction DIFFER(412v412): ours CSEs i*8 (lea esi,[edi*8]) and swaps esi/edi; retail re-forms [base+i*8] | tried: index types, operator->, helper, post-increment | next: vector operator[] through an inline accessor
+- 006eda80 CCombatManager::RegisterAttackingCombatant DIFFER(457v457): insert pair<iterator,bool> gets its own slot (frame 0x100 vs 0xF8) | tried: named pair, ignored result | next: same-TU LowerBound stand-in (dead-slot reuse)
+- 00c3d470 (label CCombatRenderer) mixer update loop DIFFER(408v408): change mask pushed before the slot-1 vtable read in retail | tried: reference/pointer/typed params, named node, signed mask | next: lane gap: argument scheduling
+- 006eb700 CCombatManager::GetBestEnemyForCombatant DIFFER(422v411): found node gets its own home (frame 0x20) vs the dead find-key slot (0x1C) | tried: named node, value reference, block-scoped key | next: same-TU LowerBound stand-in
+- 008508b0 CContextSensitiveItemDef::TargetCreatureLikelyToReactToDeed DIFFER(457v457): ours keeps the deed parameter in ebp; retail reloads it from its slot | tried: inline const-ref accessor, local copy | next: lane gap: register allocation
+- 00848b70 CCreatureAction_PickUpGenericBox::PerformAction DIFFER(416v402): carrying/dropped registers swapped, ebx spill, 8-byte frame | tried: scoped held, GetTC helper, stand-ins | next: named pointer locals in retail register order
+- 008c6b20 CCreatureAction_TrollGroundPound::PerformAction DIFFER(439v439): player number in edx/name in ecx in retail, eax/edx in ours (3 instructions) | tried: 4-arg inline wrapper, stand-ins | next: vary the wrapper's parameter types (char player, CThing* owner)
+- 008ce900 CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow DIFFER(420v418): effectType/name temp not homed in the dead argument slots, found bool in memory not bl | tried: block scope, single && condition | next: GetEffectFromString stand-in
+- 008d55a0 CCreatureAction_FireMissileWeapon::Initialise DIFFER(486v486): &PTarget/&PCreature swapped between edi and esi | tried: forceinline IsZeroXY/RHS ctor, void Normalise | next: lane gap: register allocation
+- 0078b070 CCreatureAction_HeroLoadRangedWeapon::PerformAction DIFFER(442v442): ebx/edi/esi permutation, &PAmmo lea one call later | tried: wrapper parameter order, objectDef local | next: lane gap: register allocation
+- 00849be0 CCreatureAction_NavToPos::FrameUpdate DIFFER(423v421): &PCreature in ebx (ours ebp); navigation component straight into ecx | tried: switch, temp input, member-init copy | next: inline navigation accessor
+- 008c8180 CCreatureAction_BanditKingLunge::PerformAction DIFFER(506v506): GetInterface(0x4B) key slot at +0x18 (the STUCK temp) where retail uses the dead effect slot +0x1C | tried: function-scope effect, early return, block-scoped effect + found, LowerBound stand-in | next: same-TU GetSubDef stand-in plus the STUCK name as a named block local
+- 00867b40 CCombatAction_GenericStrikeResponseKnockdown::FinishAction DIFFER(468v465): mode manager in edi and the animation index in memory (retail: manager in its key-shared slot, index in edi) | tried: chained stats lookup, named info local, modes declared first, 0x118 temp sizes | next: same-TU LowerBound stand-in for the 0x31 lookup
+- 00867d20 CCombatAction_GenericResponseToExplosion::FinishAction DIFFER(507v498): same allocation gap as 0x867B40 plus frame 0x124 vs 0x128 | tried: twin model, inline/forceinline stats-veto helper | next: same as 0x867B40
+- 006946c0 CCreatureActionBase::InitialiseActionEvents DIFFER(455v455): release does `mov eax,[slot]; mov edi,eax; dec [eax]; cmp [edi],ebx` vs retail `mov edi,[slot]; dec [edi]; jne` (then loop padding) | tried: direct GetPItem, cached count, && release + _Destroy(first,last) + inline GetPart, forceinline Release() | next: the landed 0x00909E30 two-statement dtor (`--m_pCount->m_references; if (m_pCount->m_references == 0)`) with the zeroing stores
+- 008b0b60 CCombatSequenceGeneric::OnCreateSpecial DIFFER(513v432): this in edi (retail esi), zero hoisted into ebx so releases compare against ebx; enum loop not rotated | tried: one template, conditional assign + single-expression release, cached sequence pointer, non-clearing sequence pointer | next: model CCombatAction (vector element) as its own class with its own copy ctor/dtor and the loop as `for (const long* it = ...; it != end; ++it)` over a reference to the def vector
+- 0052b6a0 (label CCombatWheel::Insert) vector<CCharString>::_M_range_insert DIFFER(444v443): retail passes every empty tag at &first and keeps mid in the dead position slot (frame 8), ours gives them slots (frame 0xC); first!=last operand order | tried: value-initialised tags, tags with empty ctors, STLport by-value wrappers | next: lane gap: empty-temporary placement (try the QFE toolset)
+
+## Skipped
+- None.
+
+## Label corrections
+- 0x006BBC30 "CCombatManager Init" is `CGameTimeManager::CGameTimeManager(CMainGameComponent&, CWorld&)`. FableWin.pdb names ConsoleSetTimeOfDay / ConsoleSetDaySpeed, here 0x6BB860 / 0x6BB940.
+- 0x0052B6A0 "CCombatWheel::Insert" is STLport `vector<CCharString>::_M_range_insert` over a tree range (`ret 10h`).
+- 0x006EDA80 is CCombatManager::RegisterAttackingCombatant.
+- 0x00C3D470 is a mixer-style update loop, not CCombatRenderer.
+- 0x00C42850 is an in-memory RIFF/WAVE header parser (not zlib).
+- 0x008CE900 is the CCreatureAction_CastSkillMultiArrow constructor (`ret 8`).
+- Callee labels:
+  - 0x692910 is CCreatureActionBase::GetPDefinitionManager.
+  - 0x692940 is GetPWorld.
+  - 0x692950 (`_Dest_val`) is an action getter whose +0x3C is the animation bank.
+  - 0x6627F0 is GetAnimDuration.
+  - 0x80CBF0 is a driver's SetOwner.
+  - 0x7FD3D0 is a driver's SetValue.
+  - 0x9AD390 is GetDefIndexFromName.
+  - 0x663340 is GetHeroStatsDef (returns by value).
+  - 0x8302C0 is IsInScriptGroup-like.
+  - 0x49D870 ("GFGetPreMainMemoryUsed") is the world-frame getter.
+  - 0x7F05C0 ("CDrawAutoPickups") is a (creature, bool) combat-action constructor.
+  - 0x57A545 (`_Dest_val`) is ~CCreatureAction_PlayIntoLoopOutOfAnimation (ICF).
+  - 0x8C4F50 (coverage "BriarRoseShotFarInto") is the CCreatureAction_ScorpionChargeStrike ctor.
+  - 0x661E70 "CanCollideWithLandscape" is a creature bool test used as a "busy" gate. The real name is unverified.
