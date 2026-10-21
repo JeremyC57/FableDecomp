@@ -263606,6 +263606,13 @@ $catalog = @(
         TestSource = '00/8c/CCreatureActionCastSkillMultiArrow_CCreatureActionCastSkillMultiArrow_008ce900_test.cpp'
         PassPattern = '008ce900_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005cd33f'
+        Module = 'CTCInventoryStats'
+        Source = '00/5c/CTCInventoryStats_OnCreate_005cd33f.cpp'
+        TestSource = '00/5c/CTCInventoryStats_OnCreate_005cd33f_test.cpp'
+        PassPattern = '005cd33f_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -23154,3 +23154,5 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?GetPointWithParam@CLinearSpline@NBBBMaths@@QAE?AUC3DVector@@M@Z	00a57f70	007f24e0
 ?CreateParticleEffect@@YIPAVCThing@@JPBUC3DVector@@@Z	0072ab70	008ce900
 ?GetDef@CGameDefinitionManager@@QAE_NJPAU?$CDefPointer@UCSpecialAbilitiesMultiArrowDef@@@@@Z	007cc8e0	008ce900
+?OnCreate@CTCInventoryBase_Stats@@UAEXXZ	005c0121	005cd33f
+?SetPDef@CTCInventoryBase_Stats@@QAEXJ@Z	005bdb4d	005cd33f
