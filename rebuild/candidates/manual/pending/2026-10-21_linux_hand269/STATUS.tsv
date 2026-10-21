@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0048f230	DIFFER	-v474	-	not reconstructed: x87-heavy, 13-argument primitive ctor 0x493AC2 and several unmodelled callees
+0048f50c	DIFFER	-v433	-	not reconstructed: /Os TU with fastcall font-state helpers 0xA0FDB0/0xA0FD90, wide-string tokenizer loop, x87
+00490a22	DIFFER	442v446	-	shared true-exit block placement + key/out frame-word sharing
+009f37e0	RELOCATION_MATCH	446v446	PASS	replaces the landed asm_bake; temporaries from inline getters
+009f4190	RELOCATION_MATCH	407v407	PASS	member-by-member box copy; inline GetWidth/GetHeight twice per clamp
+009f4390	DIFFER	500v507	-	register allocation of the extents (dead arg slots)
+009a5800	RELOCATION_MATCH	416v416	PASS	compiler-generated member dtor order
+0072e940	RELOCATION_MATCH	501v501	PASS	cross-jumped symbol picks; temporaries in dead arg slots
+0072eb40	DIFFER	467v463	-	bool HasTC presence-bit test form; unsigned long variant flips esi/edi
+007a71b0	RELOCATION_MATCH	439v439	PASS	sibling ctor shape (CTCWillEnflame family)
+007a9e40	RELOCATION_MATCH	401v401	PASS	label: catalog CTCBattleCharge ctor = CTCAssassinRush ctor
+007828e0	RELOCATION_MATCH	425v425	PASS	inline InRange, X*X+(Y*Y+Z*Z)
+00783850	DIFFER	-v443	-	not reconstructed: _ftol result reuse, unchecked lookup, five unmodelled boasting callees
+008139c0	DIFFER	-v430	-	not reconstructed: string temporaries in dead argument slots (lane gap), quest-card calls
+00782390	DIFFER	-v463	-	not attempted (time)
+007877e0	DIFFER	-v487	-	not attempted (time)
+0079cc80	DIFFER	496v512	-	zero-register (xor ebx,ebx) lane gap
+0079d110	RELOCATION_MATCH	444v444	PASS	local class model; PlaySoundW signature review (landed 0x79CE80 differs)
+006c0970	DIFFER	421v419	-	register picks + one x87 add form
+006c17b0	RELOCATION_MATCH	435v435	PASS	unchecked stats lookup (stale out local)
+0075c280	DIFFER	-v410	-	not reconstructed: x87 with a dead default load, quaternion helpers 0xA14440/0xA13C60
+00705240	DIFFER	-v424	-	not attempted (time)
+007502d0	DIFFER	-v407	-	not reconstructed: six unmodelled callees (0x70B460, 0x70EC30, 0x5DC340, 0x70C050, 0x70D580, 0xA55C00)
+007363a0	DIFFER	-v482	-	not reconstructed: def-pointer temporaries in dead argument slots (lane gap)
+00736760	DIFFER	427v427	-	ebx push not shrink-wrapped; loop-1 index/element registers swapped
+0074e280	DIFFER	469v469	-	frame-slot assignment only
+0074ee90	DIFFER	-v484	-	not reconstructed (viewed only)
+00670820	DIFFER	-v483	-	not attempted (time)
+007294a0	RELOCATION_MATCH	445v445	PASS	SetExpressionInline forceinline copy at the last site (review)
+007dd270	DIFFER	-v437	-	not reconstructed: heavy x87
+007ddda0	DIFFER	-v496	-	not reconstructed: inline fast inverse-sqrt bit trick (table 0x13CE558) + dec-eax switch
+00749f00	DIFFER	-v510	-	not attempted (time)
+0074b900	RELOCATION_MATCH	411v411	PASS	label: catalog vfunc_1 = Persist; defaults homed in dead arg slot
+00684050	RELOCATION_MATCH	442v442	PASS	unchecked deed-log lookup; inline per-list helper
+007cee40	RELOCATION_MATCH	508v508	PASS	label: catalog vfunc_9 = FrameUpdate; forceinline SetTint
+0077a180	DIFFER	-v455	-	not reconstructed: inlined lower_bound eax copy (lane gap)
+0080ca20	DIFFER	-v457	-	not attempted (time)
+006e0be0	DIFFER	-v449	-	not reconstructed (viewed only)
+007fd650	DIFFER	434v448	-	temporaries frame sharing; label vfunc_9 = FrameUpdate
+0078f8f0	DIFFER	497v505	-	ebx constant-1 vs caster register tie; advisor a15 closest

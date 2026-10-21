@@ -262937,6 +262937,97 @@ $catalog = @(
         TestSource = '00/b5/CEngineWeatherRenderer_GetBoxBoundingSphereRadiusSquared_00b50e50_test.cpp'
         PassPattern = '00b50e50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00684050'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_DecriminaliseAllKnownCrimes_00684050.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_DecriminaliseAllKnownCrimes_00684050_test.cpp'
+        PassPattern = '00684050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c17b0'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_SetOwnedByPlayer_006c17b0.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_SetOwnedByPlayer_006c17b0_test.cpp'
+        PassPattern = '006c17b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007294a0'
+        Module = 'CTCCreatureExpression'
+        Source = '00/72/CTCCreatureExpression_FrameUpdate_007294a0.cpp'
+        TestSource = '00/72/CTCCreatureExpression_FrameUpdate_007294a0_test.cpp'
+        PassPattern = '007294a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072e940'
+        Module = 'CTCActionUseBuyHouse'
+        Source = '00/72/CTCActionUseBuyHouse_OnActionUseMain_0072e940.cpp'
+        TestSource = '00/72/CTCActionUseBuyHouse_OnActionUseMain_0072e940_test.cpp'
+        PassPattern = '0072e940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074b900'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_Persist_0074b900.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_Persist_0074b900_test.cpp'
+        PassPattern = '0074b900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007828e0'
+        Module = 'CTCBoastingArea'
+        Source = '00/78/CTCBoastingArea_FrameUpdate_007828e0.cpp'
+        TestSource = '00/78/CTCBoastingArea_FrameUpdate_007828e0_test.cpp'
+        PassPattern = '007828e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079d110'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_CTCBulletTime_0079d110.cpp'
+        TestSource = '00/79/CTCBulletTime_CTCBulletTime_0079d110_test.cpp'
+        PassPattern = '0079d110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a71b0'
+        Module = 'CTCBattleCharge'
+        Source = '00/7a/CTCBattleCharge_CTCBattleCharge_007a71b0.cpp'
+        TestSource = '00/7a/CTCBattleCharge_CTCBattleCharge_007a71b0_test.cpp'
+        PassPattern = '007a71b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a9e40'
+        Module = 'CTCAssassinRush'
+        Source = '00/7a/CTCAssassinRush_CTCAssassinRush_007a9e40.cpp'
+        TestSource = '00/7a/CTCAssassinRush_CTCAssassinRush_007a9e40_test.cpp'
+        PassPattern = '007a9e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cee40'
+        Module = 'CTCCreatureTintEffect'
+        Source = '00/7c/CTCCreatureTintEffect_FrameUpdate_007cee40.cpp'
+        TestSource = '00/7c/CTCCreatureTintEffect_FrameUpdate_007cee40_test.cpp'
+        PassPattern = '007cee40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a5800'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_CSystemManager_009a5800.cpp'
+        TestSource = '00/9a/CSystemManager_CSystemManager_009a5800_test.cpp'
+        PassPattern = '009a5800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f37e0'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_CopyFromSurface_009f37e0.cpp'
+        TestSource = '00/9f/CSurface_CopyFromSurface_009f37e0_test.cpp'
+        PassPattern = '009f37e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f4190'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_ClearArea_009f4190.cpp'
+        TestSource = '00/9f/CSurface_ClearArea_009f4190_test.cpp'
+        PassPattern = '009f4190_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

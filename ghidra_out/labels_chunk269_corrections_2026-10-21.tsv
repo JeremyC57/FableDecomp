@@ -1,0 +1,6 @@
+address	name	evidence
+007a9e40	CTCAssassinRush::CTCAssassinRush	ctor, not CTCBattleCharge's (chunk 269)
+0074b900	CTCCreatureGenerator::Persist	was vfunc_1 (chunk 269)
+007cee40	CTCCreatureTintEffect::FrameUpdate	was vfunc_9 (chunk 269)
+007fd650	CTCDPhysicalObstruction::FrameUpdate	was vfunc_9 (chunk 269)
+0049d870	GFGetCurrentFrame	not GFGetPreMainMemoryUsed (chunk 269; chunk 266 called it the world-frame getter)
