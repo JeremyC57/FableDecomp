@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ef1e10	RELOCATION_MATCH	384v384	PASS	CTrappedMan::Main first try (CHHUndead model)
+00f3d830	RELOCATION_MATCH	336v336	PASS	CalcSectionScore: same-TU stand-ins for CalcSectionPolyMask/StripUnusedVerts
+00432c70	RELOCATION_MATCH	389v389	PASS	CUIIconsDef op= (CFrontEndDef model)
+00407040	RELOCATION_MATCH	384v384	PASS	DeleteProfile /GS first try
+004071c0	RELOCATION_MATCH	368v368	PASS	GetDirectoryNameFromProfileName /GS; nested success path
+00e2eac0	DIFFER	304v363	-	TricksterApproach: retail expands inline ~CScriptThing at three sites (out of line only on the distance path) plus a dead zero dword; lane expands at the first site only
+00e32080	DIFFER	275v371	-	WatchForExpressions: retail inlines ~CScriptThing at the loop end, out of line at the terminating returns; lane tail-merges three out-of-line calls and keeps mov bl,1
+00e504c0	DIFFER	354v394	-	WatchForBarberLadyDeath: retail keeps a zero register edi and expands the inline ~CScriptThing at the second loop exit; lane calls it out of line
+00e50650	RELOCATION_MATCH	400v400	PASS	GoTalkToBeardyBaldy
+00e50e40	RELOCATION_MATCH	400v400	PASS	mirror of e50650 (label shared; markers swapped)
+00e5d9a0	RELOCATION_MATCH	385v385	PASS	HenchmanDeductWages (Sunnyvale master data)
+00d04770	RELOCATION_MATCH	322v322	PASS	bandit-camp gate (label propagated); dtor declared out of line
+00dd9900	RELOCATION_MATCH	326v326	PASS	prison-race step (label propagated)
+00de1770	RELOCATION_MATCH	363v363	PASS	Knothole house step (label propagated); dtor declared out of line
+00e10bf0	RELOCATION_MATCH	384v384	PASS	WaspChaseWoman follower entity Main (label propagated)
+00e6a7f0	RELOCATION_MATCH	324v324	PASS	DoMission spawn wrapper
+00edc450	RELOCATION_MATCH	324v324	PASS	Witchwood3 DoMission copy (label suspect)
+00e7a5c0	RELOCATION_MATCH	380v380	PASS	PhaseTwo
+00e7a9f0	RELOCATION_MATCH	343v343	PASS	PhaseThree
+00e82650	RELOCATION_MATCH	333v333	PASS	Fisticuffs InitialiseVariables
+00e8cf40	RELOCATION_MATCH	341v341	PASS	CheckBanditDead
+00e0c350	RELOCATION_MATCH	342v342	PASS	secret-passage ender (label propagated); implicit CWideString temp
+00ead9f0	DIFFER	356v356	-	eax/ecx register choice for the Info reload in the inline counted release
+00ee07e0	RELOCATION_MATCH	328v328	PASS	GossipSetup operator== inline
+0067cc50	RELOCATION_MATCH	342v342	PASS	vector<CBlurredAttitudesDef>::_M_fill_insert (stand-in helpers)
+00ac4d70	RELOCATION_MATCH	320v320	PASS	ConvertStream first try
+00861670	RELOCATION_MATCH	329v329	PASS	IsBetterThan: labelled fail/avail exits reproduce the tail-duplicated epilogue layout
+00beab40	DIFFER	325v345	-	GetWaterType: register allocation (retail keeps x/this in ebx/edi, spills theme1/2; lane spills x)
+0049f180	RELOCATION_MATCH	334v334	PASS	ActivateWorld /GS; event bool payload through an inline template Add (temporary in the dead arg slot)
+004a0370	RELOCATION_MATCH	400v400	PASS	DisplayCollectableRentInformation: same-TU noinline stand-in for the 0x4AD780 house search (the vector stays unescaped; zero register no longer re-materialised)
+0062bd80	DIFFER	339v354	-	EAControlledCreatureStrafe: retail materialises the inlined has-weapon bool; lane jump-threads it; frame slot overlap differs
+004fbde0	RELOCATION_MATCH	371v371	PASS	SaveWorldToBinaryFile first try (local CWorldMap model, Maps +0x20 / Regions +0x2c)
+004fec80	DIFFER	337v337	-	UpdateDestroyedThemeAreas: count/index ebx<->ebp swap only (C2DCoordI user copy ctor fixed the box copy)
+00502170	RELOCATION_MATCH	383v383	PASS	CreateWorldLevelWad: same-TU noinline stand-in for GetLevelFilesFromWorldFile lets VC keep the vector begin/end in registers across the later calls
+005022f0	DIFFER	351v359	-	DeleteAllLevels: retail keeps the dead finish store before zeroing LoadedMaps; lane DSEs it (zero reg esi vs ebx)
+00502850	RELOCATION_MATCH	330v330	PASS	CacheMaps: Maps[i] indexed twice (a reference local moves the address add); retail indexes Maps with the load type on the unload branch
+0063a420	RELOCATION_MATCH	275v275	PASS	GetWaterSizeZAt: sibling model; named map reference
+0063e480	RELOCATION_MATCH	268v268	PASS	GetHeightZBelowPos: same-TU noinline stand-in for the 0x49C490 search keeps the vector start in ebp; physics pointer named before the segment end; box as a call temporary
+0063e590	DIFFER	340v340	-	GetNavigationLayerAt: one Bind2 P1 store scheduled before the first push (retail after); filter temporaries per call reproduce the hoisted stores and slots
+0063eb20	RELOCATION_MATCH	350v350	PASS	DestroyThemeAt: same-TU GetDef stand-in folds the def release null test; inline STLport push_back with the frame-byte tag; 8-aligned frame reproduced

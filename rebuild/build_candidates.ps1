@@ -260052,6 +260052,282 @@ $catalog = @(
         TestSource = '00/e2/CTraderToEscort_GetRandomSpeech_00e23f30_test.cpp'
         PassPattern = '00e23f30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00407040'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_DeleteProfile_00407040.cpp'
+        TestSource = '00/40/CUserProfileManager_DeleteProfile_00407040_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00407040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004071c0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetDirectoryNameFromProfileName_004071c0.cpp'
+        TestSource = '00/40/CUserProfileManager_GetDirectoryNameFromProfileName_004071c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '004071c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00432c70'
+        Module = 'NUISystem::CUIIconsDef'
+        Source = '00/43/NUISystemCUIIconsDef_operator_00432c70.cpp'
+        TestSource = '00/43/NUISystemCUIIconsDef_operator_00432c70_test.cpp'
+        PassPattern = '00432c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049f180'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_ActivateWorld_0049f180.cpp'
+        TestSource = '00/49/CWorld_ActivateWorld_0049f180_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0049f180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a0370'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_DisplayCollectableRentInformation_004a0370.cpp'
+        TestSource = '00/4a/CWorld_DisplayCollectableRentInformation_004a0370_test.cpp'
+        PassPattern = '004a0370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fbde0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_SaveWorldToBinaryFile_004fbde0.cpp'
+        TestSource = '00/4f/CWorldMap_SaveWorldToBinaryFile_004fbde0_test.cpp'
+        PassPattern = '004fbde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00502170'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_CreateWorldLevelWad_00502170.cpp'
+        TestSource = '00/50/CWorldMap_CreateWorldLevelWad_00502170_test.cpp'
+        PassPattern = '00502170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00502850'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_CacheMaps_00502850.cpp'
+        TestSource = '00/50/CWorldMap_CacheMaps_00502850_test.cpp'
+        PassPattern = '00502850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063a420'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetWaterSizeZAt_0063a420.cpp'
+        TestSource = '00/63/CWorldMap_GetWaterSizeZAt_0063a420_test.cpp'
+        PassPattern = '0063a420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063e480'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetHeightZBelowPos_0063e480.cpp'
+        TestSource = '00/63/CWorldMap_GetHeightZBelowPos_0063e480_test.cpp'
+        PassPattern = '0063e480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063eb20'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_DestroyThemeAt_0063eb20.cpp'
+        TestSource = '00/63/CWorldMap_DestroyThemeAt_0063eb20_test.cpp'
+        PassPattern = '0063eb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067cc50'
+        Module = 'CBlurredAttitudesDefVector'
+        Source = '00/67/CBlurredAttitudesDefVector_Mfillinsert_0067cc50.cpp'
+        TestSource = '00/67/CBlurredAttitudesDefVector_Mfillinsert_0067cc50_test.cpp'
+        PassPattern = '0067cc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00861670'
+        Module = 'CVillageTaskCarryCrate'
+        Source = '00/86/CVillageTaskCarryCrate_IsBetterThan_00861670.cpp'
+        TestSource = '00/86/CVillageTaskCarryCrate_IsBetterThan_00861670_test.cpp'
+        PassPattern = '00861670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac4d70'
+        Module = 'CVertexStreamConverter'
+        Source = '00/ac/CVertexStreamConverter_ConvertStream_00ac4d70.cpp'
+        TestSource = '00/ac/CVertexStreamConverter_ConvertStream_00ac4d70_test.cpp'
+        PassPattern = '00ac4d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d04770'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/d0/CVChapelOfEvilScript_EndMission_00d04770.cpp'
+        TestSource = '00/d0/CVChapelOfEvilScript_EndMission_00d04770_test.cpp'
+        PassPattern = '00d04770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd9900'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/dd/CVChapelOfEvilScript_EndMission_00dd9900.cpp'
+        TestSource = '00/dd/CVChapelOfEvilScript_EndMission_00dd9900_test.cpp'
+        PassPattern = '00dd9900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de1770'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/de/CVChapelOfEvilScript_EndMission_00de1770.cpp'
+        TestSource = '00/de/CVChapelOfEvilScript_EndMission_00de1770_test.cpp'
+        PassPattern = '00de1770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0c350'
+        Module = 'CV_LostTraderScript'
+        Source = '00/e0/CVLostTraderScript_WatchForQuestFailureState_00e0c350.cpp'
+        TestSource = '00/e0/CVLostTraderScript_WatchForQuestFailureState_00e0c350_test.cpp'
+        PassPattern = '00e0c350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e10bf0'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e1/CVChapelOfEvilScript_WatchForLeaving_00e10bf0.cpp'
+        TestSource = '00/e1/CVChapelOfEvilScript_WatchForLeaving_00e10bf0_test.cpp'
+        PassPattern = '00e10bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e50650'
+        Module = 'CV_BeardyBaldyScript'
+        Source = '00/e5/CVBeardyBaldyScript_GoTalkToBeardyBaldy_00e50650.cpp'
+        TestSource = '00/e5/CVBeardyBaldyScript_GoTalkToBeardyBaldy_00e50650_test.cpp'
+        PassPattern = '00e50650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e50e40'
+        Module = 'CV_BeardyBaldyScript'
+        Source = '00/e5/CVBeardyBaldyScript_GoTalkToBeardyBaldy_00e50e40.cpp'
+        TestSource = '00/e5/CVBeardyBaldyScript_GoTalkToBeardyBaldy_00e50e40_test.cpp'
+        PassPattern = '00e50e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5d9a0'
+        Module = 'CV_BodyGuardScript'
+        Source = '00/e5/CVBodyGuardScript_HenchmanDeductWages_00e5d9a0.cpp'
+        TestSource = '00/e5/CVBodyGuardScript_HenchmanDeductWages_00e5d9a0_test.cpp'
+        PassPattern = '00e5d9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6a7f0'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_DoMission_00e6a7f0.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_DoMission_00e6a7f0_test.cpp'
+        PassPattern = '00e6a7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7a5c0'
+        Module = 'CV_ExposeMayorScript'
+        Source = '00/e7/CVExposeMayorScript_PhaseTwo_00e7a5c0.cpp'
+        TestSource = '00/e7/CVExposeMayorScript_PhaseTwo_00e7a5c0_test.cpp'
+        PassPattern = '00e7a5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7a9f0'
+        Module = 'CV_ExposeMayorScript'
+        Source = '00/e7/CVExposeMayorScript_PhaseThree_00e7a9f0.cpp'
+        TestSource = '00/e7/CVExposeMayorScript_PhaseThree_00e7a9f0_test.cpp'
+        PassPattern = '00e7a9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e82650'
+        Module = 'CV_FisticuffsClubScript'
+        Source = '00/e8/CVFisticuffsClubScript_InitialiseVariables_00e82650.cpp'
+        TestSource = '00/e8/CVFisticuffsClubScript_InitialiseVariables_00e82650_test.cpp'
+        PassPattern = '00e82650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8cf40'
+        Module = 'CV_GhostGrannyNecklaceScript'
+        Source = '00/e8/CVGhostGrannyNecklaceScript_CheckBanditDead_00e8cf40.cpp'
+        TestSource = '00/e8/CVGhostGrannyNecklaceScript_CheckBanditDead_00e8cf40_test.cpp'
+        PassPattern = '00e8cf40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edc450'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/ed/CVChapelOfEvilScript_DoMission_00edc450.cpp'
+        TestSource = '00/ed/CVChapelOfEvilScript_DoMission_00edc450_test.cpp'
+        PassPattern = '00edc450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee07e0'
+        Module = 'CV_TravellingHeroesScript'
+        Source = '00/ee/CVTravellingHeroesScript_GossipSetup_00ee07e0.cpp'
+        TestSource = '00/ee/CVTravellingHeroesScript_GossipSetup_00ee07e0_test.cpp'
+        PassPattern = '00ee07e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef1e10'
+        Module = 'CTrappedMan'
+        Source = '00/ef/CTrappedMan_Main_00ef1e10.cpp'
+        TestSource = '00/ef/CTrappedMan_Main_00ef1e10_test.cpp'
+        PassPattern = '00ef1e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3d830'
+        Module = 'CTriangleStripifier2'
+        Source = '00/f3/CTriangleStripifier2_CalcSectionScore_00f3d830.cpp'
+        TestSource = '00/f3/CTriangleStripifier2_CalcSectionScore_00f3d830_test.cpp'
+        PassPattern = '00f3d830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049f2d0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_GetEnvironmentFishWeightMult_0049f2d0.cpp'
+        TestSource = '00/49/CWorld_GetEnvironmentFishWeightMult_0049f2d0_test.cpp'
+        PassPattern = '0049f2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c04c0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4c/NGraphicAppearanceCTCGraphicAppearance_SetAsHighlighted_004c04c0.cpp'
+        TestSource = '00/4c/NGraphicAppearanceCTCGraphicAppearance_SetAsHighlighted_004c04c0_test.cpp'
+        PassPattern = '004c04c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00706370'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_RemoveAppearanceModifier_00706370.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_RemoveAppearanceModifier_00706370_test.cpp'
+        PassPattern = '00706370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00750be0'
+        Module = 'CTCExplodingObject'
+        Source = '00/75/CTCExplodingObject_CTCExplodingObject_00750be0.cpp'
+        TestSource = '00/75/CTCExplodingObject_CTCExplodingObject_00750be0_test.cpp'
+        PassPattern = '00750be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f6df0'
+        Module = 'CThingFilter_IsValidAttackTargetForCreature'
+        Source = '00/7f/CThingFilterIsValidAttackTargetForCreature_operator_007f6df0.cpp'
+        TestSource = '00/7f/CThingFilterIsValidAttackTargetForCreature_operator_007f6df0_test.cpp'
+        PassPattern = '007f6df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fbb00'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_CreateHeadEffect_007fbb00.cpp'
+        TestSource = '00/7f/CTCKraken_CreateHeadEffect_007fbb00_test.cpp'
+        PassPattern = '007fbb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c4b80'
+        Module = 'CCombatAction_StrikeResponseScorpionKing'
+        Source = '00/8c/CCombatActionStrikeResponseScorpionKing_Initialise_008c4b80.cpp'
+        TestSource = '00/8c/CCombatActionStrikeResponseScorpionKing_Initialise_008c4b80_test.cpp'
+        PassPattern = '008c4b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094d680'
+        Module = 'CAIStateGroup_TrollBase'
+        Source = '00/94/CAIStateGroupTrollBase_GetEnemyPredictedPos_0094d680.cpp'
+        TestSource = '00/94/CAIStateGroupTrollBase_GetEnemyPredictedPos_0094d680_test.cpp'
+        PassPattern = '0094d680_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

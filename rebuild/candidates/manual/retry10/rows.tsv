@@ -1703,3 +1703,12 @@ address	module	name	length	chunk	reason
 006ad580	CThingPlayerCreature	CThingPlayerCreature::vfunc_41	384	hand255	DIFFER(378v380) -- orb out-slot homed at [esp+0x20] instead of retail's reuse of the dead 'type' param slot [esp+0x14]
 00876ca0	CTools	PotentialFieldBufferObjects	368	hand255	DIFFER(362v368) -- loop/call/float shape matches
 00760c40	CTrack	GetTrackPosAtLengthFraction	352	hand255	DIFFER(343v342) -- control flow, FPU sequence and loop shape match
+00e2eac0	CV_AmbushScamScript	TricksterApproach	368	hand256	DIFFER(304v363) -- TricksterApproach: retail expands inline ~CScriptThing at three sites (out of line only on the distance path) plus a dead zero dword; lane expands at the first site only
+00e32080	CV_AmbushScamScript	WatchForExpressions	384	hand256	DIFFER(275v371) -- WatchForExpressions: retail inlines ~CScriptThing at the loop end, out of line at the terminating returns; lane tail-merges three out-of-line calls and keeps mov bl,1
+00e504c0	CV_BeardyBaldyScript	WatchForBarberLadyDeath	400	hand256	DIFFER(354v394) -- WatchForBarberLadyDeath: retail keeps a zero register edi and expands the inline ~CScriptThing at the second loop exit; lane calls it out of line
+00ead9f0	CV_MurderTwistScript	GemsFoundProcess	368	hand256	DIFFER(356v356) -- eax/ecx register choice for the Info reload in the inline counted release
+00beab40	CWaterPatchMesh	GetWaterType	352	hand256	DIFFER(325v345) -- GetWaterType: register allocation (retail keeps x/this in ebx/edi, spills theme1/2; lane spills x)
+0062bd80	CWorld	EAControlledCreatureStrafe	368	hand256	DIFFER(339v354) -- EAControlledCreatureStrafe: retail materialises the inlined has-weapon bool; lane jump-threads it; frame slot overlap differs
+004fec80	CWorldMap	UpdateDestroyedThemeAreas	352	hand256	DIFFER(337v337) -- UpdateDestroyedThemeAreas: count/index ebx<->ebp swap only (C2DCoordI user copy ctor fixed the box copy)
+005022f0	CWorldMap	CWorldMap::DeleteAllLevels	368	hand256	DIFFER(351v359) -- DeleteAllLevels: retail keeps the dead finish store before zeroing LoadedMaps; lane DSEs it (zero reg esi vs ebx)
+0063e590	CWorldMap	GetNavigationLayerAt	352	hand256	DIFFER(340v340) -- GetNavigationLayerAt: one Bind2 P1 store scheduled before the first push (retail after); filter temporaries per call reproduce the hoisted stores and slots
