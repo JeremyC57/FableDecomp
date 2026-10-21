@@ -1,0 +1,3 @@
+address	name	evidence
+0042dd28	CNewFrontendGameComponent::CleanUpInterfaces	callers are CNewFrontendGameComponent::Shutdown; not CEngineResourceManager::ChangeScene (landed 0x00B3B4A0); RELOCATION_MATCH (retry 10b5)
+0095e350	CAIStateGroup_ReactToDeadLeader::IsRunnable	leader-death FindMostRecentMessage 0x0095E6D0 within 20 units; RELOCATION_MATCH (retry 10b5)
