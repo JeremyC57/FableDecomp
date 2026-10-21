@@ -1,0 +1,4 @@
+address	name	evidence
+006178f0	CMessageEventManager::FindAllMessages<CFilter_Bind2<CMessageEventFilter_IsOfType,CMessageEventFilter_OccuredBetween> >	catalogued _global; 0x0089AC80 calls it with the bound filter and the out list; RELOCATION_MATCH (retry 10i)
+004b1960	CQuestManager::GetAcceptedBoastsForScript	not TransferBoastToUI (autoname): PDB `(const CCharString&, list<CBoast>&) const`, clears arg 2, reads the +0x6C list beside GetBoastsForScript's +0x68; RELOCATION_MATCH (retry 10i)
+004b19f0	CQuestManager::GetBoastsForScript	PDB signature `(const CCharString&, list&) const` (argument-slot offsets); the PDB symbol at 0x004B74C0 points at int3 padding; RELOCATION_MATCH (retry 10i)
