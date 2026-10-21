@@ -1,8 +1,9 @@
 import json,os,sys,re
 # usage: mkchunk.py N [K] [LO HI]   cut K chunks of 40 class-labelled rows (LO..HI bytes, default 17..96) starting at chunk N
+# rows come from $S/batch/families512.json, or families1024.json when HI > 512 (famscan.py 1024 with FAMOUT=...)
 S=os.environ['S']; N=int(sys.argv[1]); K=int(sys.argv[2]) if len(sys.argv)>2 else 1
 LO=int(sys.argv[3]) if len(sys.argv)>3 else 17; HI=int(sys.argv[4]) if len(sys.argv)>4 else 96
-d=json.load(open(f'{S}/batch/families512.json'))
+d=json.load(open(f'{S}/batch/families{1024 if HI>512 else 512}.json'))
 cat={l.split('\t')[0].lower() for l in open('rebuild/oracles/auto-re-candidates.tsv')}
 used=set()
 HIST='rebuild/candidates/manual/chunk_history.tsv'   # committed record of every cut row (fresh workspaces have no $S/w22/chunkNN.tsv)
