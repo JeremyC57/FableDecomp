@@ -5,6 +5,8 @@ LO=int(sys.argv[3]) if len(sys.argv)>3 else 17; HI=int(sys.argv[4]) if len(sys.a
 d=json.load(open(f'{S}/batch/families512.json'))
 cat={l.split('\t')[0].lower() for l in open('rebuild/oracles/auto-re-candidates.tsv')}
 used=set()
+HIST='rebuild/candidates/manual/chunk_history.tsv'   # committed record of every cut row (fresh workspaces have no $S/w22/chunkNN.tsv)
+if os.path.exists(HIST): used|={l.split('\t')[1] for l in open(HIST).read().splitlines()[1:]}
 for i in range(N):
     p=f'{S}/w22/chunk{i:02d}.tsv'
     if os.path.exists(p): used|={l.split('\t')[0] for l in open(p).read().splitlines()[1:]}
@@ -17,11 +19,12 @@ for shape,fam in d:
         rows.append((m,a,n,l,h))
 rows.sort(key=lambda r:(r[0],r[1]))
 print('pool left',len(rows))
+hist=open(HIST,'a') if os.path.exists(HIST) else open(HIST,'w'); hist.write('' if os.path.getsize(HIST) else 'chunk\taddress\tmodule\tname\tlength\n')
 for k in range(K):
     sel=rows[k*40:(k+1)*40]; nn=N+k
     with open(f'{S}/w22/chunk{nn:02d}.tsv','w') as f:
         f.write('address\tmodule\tname\tlength\tbytes\n')
-        for m,a,n,l,h in sel: f.write(f'{a}\t{m}\t{n}\t{l}\t{h}\n')
+        for m,a,n,l,h in sel: f.write(f'{a}\t{m}\t{n}\t{l}\t{h}\n'); hist.write(f'{nn:02d}\t{a}\t{m}\t{n}\t{l}\n')
     with open(f'{S}/batch/chunk{nn:02d}_oracle.tsv','w') as f:
         f.write('address\tname\tlength\tbytes\n')
         for m,a,n,l,h in sel:
