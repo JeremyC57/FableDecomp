@@ -1,0 +1,4 @@
+address	name	evidence
+0075d9a0	CTCCameraPointBuilding::Validate	FableWin.pdb ?Validate@CTCCameraPointBuilding@@UBE_NAAVCCharString@@@Z; CTCBase vtable 0x0125BE0C slot 17 = Validate; body writes validation errors into the CCharString& and returns false
+0075cdf0	CTCCameraPointScripted::Validate	FableWin.pdb ?Validate@CTCCameraPointScripted@@UBE_NAAVCCharString@@@Z; same slot 17
+0075dc00	CTCCameraPointTrack::Validate	FableWin.pdb ?Validate@CTCCameraPointTrack@@UBE_NAAVCCharString@@@Z; same slot 17

@@ -216810,8 +216810,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0075dc00'
         Module = 'CTCCameraPointTrack'
-        Source = '00/75/CTCCameraPointTrack_vfunc17_0075dc00.cpp'
-        TestSource = '00/75/CTCCameraPointTrack_vfunc17_0075dc00_test.cpp'
+        Source = '00/75/CTCCameraPointTrack_Validate_0075dc00.cpp'
+        TestSource = '00/75/CTCCameraPointTrack_Validate_0075dc00_test.cpp'
         PassPattern = '0075dc00_TEST PASS'
     }
     [pscustomobject]@{
@@ -234935,8 +234935,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0075cdf0'
         Module = 'CTCCameraPointScripted'
-        Source = '00/75/CTCCameraPointScripted_vfunc17_0075cdf0.cpp'
-        TestSource = '00/75/CTCCameraPointScripted_vfunc17_0075cdf0_test.cpp'
+        Source = '00/75/CTCCameraPointScripted_Validate_0075cdf0.cpp'
+        TestSource = '00/75/CTCCameraPointScripted_Validate_0075cdf0_test.cpp'
         PassPattern = '0075cdf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -262730,8 +262730,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0075d9a0'
         Module = 'CTCCameraPointBuilding'
-        Source = '00/75/CTCCameraPointBuilding_vfunc17_0075d9a0.cpp'
-        TestSource = '00/75/CTCCameraPointBuilding_vfunc17_0075d9a0_test.cpp'
+        Source = '00/75/CTCCameraPointBuilding_Validate_0075d9a0.cpp'
+        TestSource = '00/75/CTCCameraPointBuilding_Validate_0075d9a0_test.cpp'
         PassPattern = '0075d9a0_TEST PASS'
     }
     [pscustomobject]@{
