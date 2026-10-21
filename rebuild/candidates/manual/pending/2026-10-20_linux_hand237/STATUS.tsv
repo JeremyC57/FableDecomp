@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0050ef30	DIFFER	219v242	-	lane gap: inline-asm fistp CeilToInt in an ebp frame (asm_bake family)
+005115e0	DIFFER	303v299	-	lane gap: inline-asm fistp CeilToInt (asm_bake family)
+00511a10	DIFFER	241v252	-	lane gap: inline-asm fistp CeilToInt (asm_bake family)
+0051e100	RELOCATION_MATCH	268v268	PASS	counter step as two statements, 64-bit prefix local, world map re-read into a local
+0051eab0	RELOCATION_MATCH	276v276	PASS	inline GetBulletTime() keeps the two virtual calls apart
+0051f340	RELOCATION_MATCH	308v308	PASS	64-bit tag/counter locals; map number then bool as named locals
+00520570	RELOCATION_MATCH	248v248	PASS	implicit CCharString terminators, explicit "" temporary
+00522600	RELOCATION_MATCH	277v277	PASS	same-TU stand-ins for InsertGrow and the thing-list writer
+005252b0	DIFFER	314v312	-	mapNumber not enregistered: thing gets its own slot, zero register ebx
+0085cec0	RELOCATION_MATCH	275v275	PASS	inline GetCell(unsigned char level, x, y)
+00637b10	MATCH	305v305	PASS	map infos as named locals, inline GetMapCell with a long layer
+00637c80	DIFFER	288v288	-	scheduling: local-coordinate subtraction order and colour/rect store interleave
+00637fc0	DIFFER	251v243	-	cell pointer loaded into ecx + mov edx,ecx per corner (retail loads edx directly)
+007037d0	DIFFER	247v247	-	scheduling only: push 1 / mov ecx,esi swapped before Kill(true)
+006a5950	RELOCATION_MATCH	289v289	PASS	CIntelligentPointer<T>(T*) temporaries + inline operator=; if(base){...return true;} return false
+006a5af0	RELOCATION_MATCH	317v317	PASS	reset block = ConstructFromParams tail; 1.0f default local in the dead context slot
+0083dc80	DIFFER	296v309	-	static-mesh temp: frame slot overlap (uid hi in dead vector word), ebx uid preload, x87 order
+0083df20	DIFFER	247v247	-	scheduling only: CSoundPair temp stores sink below the pushes, constant 1 in ecx not eax
+006a9dd0	RELOCATION_MATCH	287v287	PASS	implicit string temps; pointee Release() via DecRefToZero + same-TU GetSubDef stand-in
+006ab300	RELOCATION_MATCH	302v302	PASS	three GetTC forms (entry pick as this, zero preload x2), implicit wide/char strings, true exit last
+006ad9d0	RELOCATION_MATCH	284v284	PASS	chained X=Y=Z=0 clears make the zero register; GetInterface out-param for the look TC
+0083be90	RELOCATION_MATCH	252v252	PASS	box member stores, inline ContainsPoint, named world local before the pushes
+0083c990	DIFFER	255v255	-	scheduling only: C2DVector conversion Y load sinks below the X store
+0083cd70	SKIP	-	-	row holds the switch body, its jump table and two more functions after int3 padding
+00836de0	DIFFER	249v247	-	forward walk swap: retail keeps lea'd member addresses (ecx/esi) and node in edi; ours folds
+00837b30	DIFFER	301v314	-	same shape as 0083dc80 (def graphic at +0xe6)
+0083b6b0	DIFFER	296v309	-	same shape as 0083dc80
+0098e1e0	DIFFER	310v310	-	scheduling only: global counter store vs the dtor's lea ecx order
+00e48bf0	RELOCATION_MATCH	271v271	PASS	CScriptThing operator= over the inline CCountedPointer operator= (source fields first)
+00877720	DIFFER	250v277	-	single attempt: filter object layout / class words homed in dead arg slots
+00dd8990	RELOCATION_MATCH	290v290	PASS	script wait loops, implicit string temporaries
+00f3b970	DIFFER	223v243	-	register allocation (kept.last in ebx, inner size re-read, i in frame) not reproduced
+00f3f5a0	DIFFER	249v245	-	reordered.first in edx (reloaded after free) instead of esi; push_back part matches
+00e0cff0	RELOCATION_MATCH	312v312	PASS	polymorphic CBaseObject root (handle base at +0); scoped filter; handle local
+00d88f90	RELOCATION_MATCH	265v265	PASS	scoped alive filter, fastcall distance test, endless frame loop
+00406ae0	DIFFER	342v314	-	frame packing of the string temporaries (ours overlaps, retail separate words); first arm otherwise in shape
+00407cd0	DIFFER	309v310	-	entry address add vs lea (begin/offset register choice); rest matches
+00408c90	RELOCATION_MATCH	253v253	PASS	per-arm loops over the 12-byte retail vectors, size() recomputed
+00408f50	RELOCATION_MATCH	312v312	PASS	sibling of 00408c90 with a match counter
+00e39540	RELOCATION_MATCH	268v268	PASS	CSpawnedFunc0 spawn idiom (flagged implicit name temp), resize(5, 0) temp, def re-read

@@ -1,0 +1,17 @@
+address	name	evidence
+004fce00	CWorldMap::GetMapUIDPrefix	map-UID prefix getter, not CEditWorldMap::GetEditMap (chunk 237)
+00527d80	std::map<unsigned __int64,CThing*>::find	not BSTNode_FindLowerBound (chunk 237)
+00521eb0	CThingManager::Member_521eb0	CThingManager member, labelled Save_WriteEntityHierarchy (chunk 237)
+005239c0	CThingManager::Member_5239c0	CThingManager member, labelled Thing_SavePersistentState (chunk 237)
+00410620	Transfer<float>	used as Transfer<float>, labelled Transfer<signed_char> (chunk 237)
+0083d900	CThingPhysicalSwitch::PeekDefinition	not CThingDeadCreature::PeekDefinition (chunk 237)
+006a4d00	CThing::GetPosition	not CVertexBufferWin32::DoSizeof (chunk 237)
+006a4d10	CThing::GetLastPosition	not CVertexBufferWin32::DoSizeof (chunk 237)
+0099aed0	CWideString::CWideString	used on CWideString, labelled CCharString ctor (chunk 237)
+0099af00	CWideString::operator_const_wchar_ptr	used on CWideString, labelled CCharString operator const char* (chunk 237)
+004c79a0	CThing::GetDef_4c79a0	CThing def getter, not CViewBase::GetDisplayEngine (chunk 237)
+007e74d0	CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase	chunk 237
+00f3b640	CArray<unsigned short>::operator=	chunk 237
+0083dc80	CThingStaticMeshPrimitive_83dc80::DrawPreparePrimitivesForRendering	was vfunc_36 (chunk 237)
+00837b30	CThingStaticMeshPrimitive_837b30::DrawPreparePrimitivesForRendering	was vfunc_36 (chunk 237)
+0083b6b0	CThingStaticMeshPrimitive_83b6b0::DrawPreparePrimitivesForRendering	was vfunc_36 (chunk 237)

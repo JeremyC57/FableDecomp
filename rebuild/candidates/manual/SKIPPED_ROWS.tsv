@@ -36,6 +36,7 @@ address	row_len	batch	label	kind	status	pieces	note
 00800b90	272	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	00800b90:27,00800bab:26,00800bc5:21,00800bda:15,00800be9:37,00800c0e:58,00800c48:21,00800c60:38,00800c90:14	row holds the Transfer jump-table body plus following function(s) after int3 padding
 0080aad1	111	2026-10-15_linux_hand160	CTCActionUseBuyHouse::OnCreate	single	open	0080aad1:106	not a function: the else-branch tail of 0x0080AA60 (je 0x80AAD1; pops edi/esi it never pushed)
 00837040	32	2026-10-15_linux_hand113	CThingTrackNode::CThingTrackNode::vfunc_27	multi	done	00837040:12,00837050:12	two functions in the row (0x837040 tail-jump + 0x837050 getter)
+0083cd70	288	2026-10-20_linux_hand237	CThingSwitch::CThingSwitch::vfunc_19	multi	open	0083cd70:200,0083ce38:21,0083ce50:11,0083ce60:20,0083ce80:3	row holds the switch body, its jump table and two more functions after int3 padding
 0088b7e0	48	2026-10-15_linux_hand74	CScriptThing::GetCurrentScriptPriority	multi	done	0088b7e0:17,0088b800:4	row spans two functions (0x88b7e0 + 0x88b800)
 008aae20	96	2026-10-15_linux_hand74	CScriptThing::operator==	multi	done	008aae20:22,008aae40:27,008aae60:4,008aae70:4	row spans four functions
 008d6620	112	2026-10-15_linux_hand148	CModeOutOfActionBase::FrameUpdate	multi	done	008d6620:43,008d6650:8,008d6660:9,008d6670:8,008d6680:9	row holds FrameUpdate (0x008D6620, 43 bytes) plus four `mov ecx,[ecx+4]` thunks after int3 padding

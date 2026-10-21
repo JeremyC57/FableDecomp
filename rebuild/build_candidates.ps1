@@ -255422,6 +255422,146 @@ $catalog = @(
         TestSource = '00/ee/CVTourGuideScript_WatchForGuideKilled_00ee4a70_test.cpp'
         PassPattern = '00ee4a70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00408c90'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetAssignedInputForAction_00408c90.cpp'
+        TestSource = '00/40/CUserProfileManager_GetAssignedInputForAction_00408c90_test.cpp'
+        PassPattern = '00408c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00408f50'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetAssignedInputForContextSensitiveItemAction_00408f50.cpp'
+        TestSource = '00/40/CUserProfileManager_GetAssignedInputForContextSensitiveItemAction_00408f50_test.cpp'
+        PassPattern = '00408f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051e100'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_AllocateNewThingUID_0051e100.cpp'
+        TestSource = '00/51/CThingManager_AllocateNewThingUID_0051e100_test.cpp'
+        PassPattern = '0051e100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051eab0'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_PreparePrimitivesForEngine_0051eab0.cpp'
+        TestSource = '00/51/CThingManager_PreparePrimitivesForEngine_0051eab0_test.cpp'
+        PassPattern = '0051eab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051f340'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_CheckAndFixUID_0051f340.cpp'
+        TestSource = '00/51/CThingManager_CheckAndFixUID_0051f340_test.cpp'
+        PassPattern = '0051f340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00520570'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_LoadHeroStateScript_00520570.cpp'
+        TestSource = '00/52/CThingManager_LoadHeroStateScript_00520570_test.cpp'
+        PassPattern = '00520570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00522600'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_SaveToScript_00522600.cpp'
+        TestSource = '00/52/CThingManager_SaveToScript_00522600_test.cpp'
+        PassPattern = '00522600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00637b10'
+        Module = 'CThingMapManager'
+        Source = '00/63/CThingMapManager_GetCellsForThingLayerCellPositions_00637b10.cpp'
+        TestSource = '00/63/CThingMapManager_GetCellsForThingLayerCellPositions_00637b10_test.cpp'
+        PassPattern = '00637b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a5950'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_ConstructFromParams_006a5950.cpp'
+        TestSource = '00/6a/CThingPhysical_ConstructFromParams_006a5950_test.cpp'
+        PassPattern = '006a5950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a5af0'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_SerialiseGameState_006a5af0.cpp'
+        TestSource = '00/6a/CThingPhysical_SerialiseGameState_006a5af0_test.cpp'
+        PassPattern = '006a5af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a9dd0'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_ConstructFromParams_006a9dd0.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_ConstructFromParams_006a9dd0_test.cpp'
+        PassPattern = '006a9dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ab300'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_PreOnKill_006ab300.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_PreOnKill_006ab300_test.cpp'
+        PassPattern = '006ab300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ad9d0'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_WorldUpdate_006ad9d0.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_WorldUpdate_006ad9d0_test.cpp'
+        PassPattern = '006ad9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083be90'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_TriggerSetEnvironment_0083be90.cpp'
+        TestSource = '00/83/CThingSwitch_TriggerSetEnvironment_0083be90_test.cpp'
+        PassPattern = '0083be90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085cec0'
+        Module = 'NThingMap::CThingMap'
+        Source = '00/85/NThingMapCThingMap_Clear_0085cec0.cpp'
+        TestSource = '00/85/NThingMapCThingMap_Clear_0085cec0_test.cpp'
+        PassPattern = '0085cec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d88f90'
+        Module = 'CUndeadSoldier'
+        Source = '00/d8/CUndeadSoldier_Main_00d88f90.cpp'
+        TestSource = '00/d8/CUndeadSoldier_Main_00d88f90_test.cpp'
+        PassPattern = '00d88f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd8990'
+        Module = 'CTortureDoorPassage'
+        Source = '00/dd/CTortureDoorPassage_Main_00dd8990.cpp'
+        TestSource = '00/dd/CTortureDoorPassage_Main_00dd8990_test.cpp'
+        PassPattern = '00dd8990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0cff0'
+        Module = 'CUndeadRisingZombieAttacker'
+        Source = '00/e0/CUndeadRisingZombieAttacker_Main_00e0cff0.cpp'
+        TestSource = '00/e0/CUndeadRisingZombieAttacker_Main_00e0cff0_test.cpp'
+        PassPattern = '00e0cff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e39540'
+        Module = 'CV_AssassinAttacksScript'
+        Source = '00/e3/CVAssassinAttacksScript_Init_00e39540.cpp'
+        TestSource = '00/e3/CVAssassinAttacksScript_Init_00e39540_test.cpp'
+        PassPattern = '00e39540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e48bf0'
+        Module = 'CTollBandit'
+        Source = '00/e4/CTollBandit_Init_00e48bf0.cpp'
+        TestSource = '00/e4/CTollBandit_Init_00e48bf0_test.cpp'
+        PassPattern = '00e48bf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

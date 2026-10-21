@@ -1,0 +1,10 @@
+- A same-TU `auto_inline(off)` stand-in for EVERY out-of-line callee that receives a local vector (growth template and the final consumer: writer, operator=, GenerateStrips) is what lets VC7.1 keep the vector's last/first in registers across the loop (00522600, the 00f3f5a0 fill loop).
+- A same-TU GetSubDef stand-in turns the long eax def release into the short ecx pointee `Release()` (DecRefToZero) form (006a9dd0).
+- Chained `v.X = v.Y = v.Z = 0.0f` clears (Z stored first) make VC7.1 materialise 0 in a callee-saved register, which then also carries other constants (a `mov bl,2` mask) (006ad9d0); a C3DVector(0,0,0) temporary goes through the frame instead.
+- 64-bit post-increment plus tag: `uid = counter++; uid += tag;` (two statements) schedules the stores between the add/adc pair like retail; a zero-extended 32-bit value multiplied as `unsigned __int64` local gives the 8-byte frame with only the low word stored (0051e100).
+- An inline getter for a pointer chain (`GetBulletTime() { return PWorld->m_pBulletTime; }`) stops VC cross-jumping two virtual calls that differ only in the argument (0051eab0).
+- The forceinline const-LowerBound GetTC must copy the key (`long type = interfaceType; map = &m_interfaces;`) so the post-lookup compare uses the constant (`cmp [eax],47h`).
+- A CThing flag-byte model ending at +0x91 rounds the base to 0x94: start the derived pad at 0x94, and model PlayerNumber at +0x90 before the +0x91..+0x93 bitfields (Ego_r.pdb - 0x10).
+- CScriptGameResourceObjectScriptedThingBase's CBaseObject root must be polymorphic (vptr at +0), or the 0x0099A380 base ctor is called on +4.
+- `CCharString == "D:"` written as the two inline tests needs the LITERAL (not an extern char[]) so the null-string strcmp becomes `repe cmpsb` with ecx = 3 (0098e1e0).
+- A per-iteration named copy of a reference parameter's field (`EGameAction oldAction = oldControl.GameAction;`) keeps it in esi across unknown calls (00407cd0, 1 byte short).
