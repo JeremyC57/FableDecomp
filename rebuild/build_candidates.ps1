@@ -3124,14 +3124,6 @@ $catalog = @(
         Grade = 'asm_bake'
     }
     [pscustomobject]@{
-        Address = '0041be70'
-        Module = 'CEnginePrimitiveHandle'
-        Source = '00/41/CEnginePrimitiveHandle_Clear_0041be70.cpp'
-        TestSource = '00/41/CEnginePrimitiveHandle_Clear_0041be70_test.cpp'
-        PassPattern = 'PASS_0041be70'
-        Grade = 'asm_bake'
-    }
-    [pscustomobject]@{
         Address = '004166a8'
         Module = 'CMainGameComponent'
         Source = '00/41/CMainGameComponent_CreatePlayers_004166a8.cpp'
@@ -257982,6 +257974,58 @@ $catalog = @(
         Source = '00/da/CMinionEscortEnd_Main_00da47a0.cpp'
         TestSource = '00/da/CMinionEscortEnd_Main_00da47a0_test.cpp'
         PassPattern = '00da47a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c82a0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_IsLevelPersistent_004c82a0.cpp'
+        TestSource = '00/4c/CThing_IsLevelPersistent_004c82a0_test.cpp'
+        PassPattern = '004c82a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bc6d6'
+        Module = '_global'
+        Source = '00/5b/global_Retry10bthealphawidenedintoaDOUBLElocalandnarrow_005bc6d6.cpp'
+        TestSource = '00/5b/global_Retry10bthealphawidenedintoaDOUBLElocalandnarrow_005bc6d6_test.cpp'
+        PassPattern = '005bc6d6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fbd00'
+        Module = 'CRenderTarget'
+        Source = '00/9f/CRenderTarget_scalardeletingdestructor_009fbd00.cpp'
+        TestSource = '00/9f/CRenderTarget_scalardeletingdestructor_009fbd00_test.cpp'
+        PassPattern = '009fbd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c202f0'
+        Module = 'CVtable_012b3420_Derived_00c202f0'
+        Source = '00/c2/CVtable012b3420Derived00c202f0_CVtable012b3420Derived00c202f0_00c202f0.cpp'
+        TestSource = '00/c2/CVtable012b3420Derived00c202f0_CVtable012b3420Derived00c202f0_00c202f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c202f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caefb0'
+        Module = 'CBase_00caefb0'
+        Source = '00/ca/CBase00caefb0_CBase00caefb0_00caefb0.cpp'
+        TestSource = '00/ca/CBase00caefb0_CBase00caefb0_00caefb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00caefb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caf480'
+        Module = 'CVtable_012bf8d4'
+        Source = '00/ca/CVtable012bf8d4_CVtable012bf8d4_00caf480.cpp'
+        TestSource = '00/ca/CVtable012bf8d4_CVtable012bf8d4_00caf480_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00caf480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041be70'
+        Module = 'CEnginePrimitiveHandle'
+        Source = '00/41/CEnginePrimitiveHandle_Clear_0041be70.cpp'
+        TestSource = '00/41/CEnginePrimitiveHandle_Clear_0041be70_test.cpp'
+        PassPattern = '0041be70_TEST PASS'
     }
 )
 

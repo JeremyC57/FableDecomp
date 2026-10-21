@@ -20952,3 +20952,7 @@ __CIasin	00bfedc4	009de2a0
 ?g_ParticleEpsilon@@3MA	0129ba3c	00b18af0
 ?IsDone@CMinionEscortEnd@@QAE_NXZ	00f35b30	00da47a0
 ?RegisterFilter@CMinionEscortEnd@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00da47a0
+?GetUserProfileManager@@YAAAVCUserProfileManager@@XZ	0040d2a0	005bc6d6
+?RenderUIBackground@CUserProfileManager@@QAEXM@Z	004075c0	005bc6d6
+??1CStringMember_00c0ba40@@QAE@XZ	00c0ba40	00c202f0
+??1CMember_00caebb0@@QAE@XZ	00caebb0	00caf480

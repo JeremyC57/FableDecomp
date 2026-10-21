@@ -1,62 +1,56 @@
-extern "C" __declspec(naked) void fn_0041be70(void)
-{
-    __asm {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0x8b
-        _emit 0x46
-        _emit 0x04
-        _emit 0x85
-        _emit 0xc0
-        _emit 0x74
-        _emit 0x0e
-        _emit 0x83
-        _emit 0x78
-        _emit 0x04
-        _emit 0x01
-        _emit 0x75
-        _emit 0x08
-        _emit 0x8b
-        _emit 0xc8
-        _emit 0x8b
-        _emit 0x01
-        _emit 0x56
-        _emit 0xff
-        _emit 0x50
-        _emit 0x0c
-        _emit 0x8b
-        _emit 0x4e
-        _emit 0x04
-        _emit 0x85
-        _emit 0xc9
-        _emit 0x74
-        _emit 0x11
-        _emit 0xff
-        _emit 0x49
-        _emit 0x04
-        _emit 0x75
-        _emit 0x05
-        _emit 0x8b
-        _emit 0x11
-        _emit 0xff
-        _emit 0x52
-        _emit 0x04
-        _emit 0xc7
-        _emit 0x46
-        _emit 0x04
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0xc7
-        _emit 0x46
-        _emit 0x04
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x5e
-        _emit 0xc3
+// CEnginePrimitiveHandle::Clear() -- tell the primitive its last handle is going (virtual slot 3, with the handle) when its
+// count is exactly 1, then drop the counted Data pointer (`Data = 0`: release a local copy, null store, store the new null)
+// Retry 10b: plain compiler-emitted C++ (the catalog copy of this function is an asm_bake); the same model as the inlined
+// Clear of the deleting destructor 0x0041C500.
+// Leaf: ?Clear@CEnginePrimitiveHandle
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0041BE70, length 57 bytes.
+// Callees: the primitive's virtual slot 3 (+0xC) and, at zero count, its virtual destroy (slot 1, +4).
+// Layout as the landed constructor @ 0x005BB32E: {vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +4}.
+struct CBaseClass {                                // vtable 0x01231710
+    virtual ~CBaseClass();                         // 0x0099A2E0
+};
+
+struct CEnginePrimitiveHandle;
+
+struct CIVCountedPointeeBase {
+    virtual void v00();
+    virtual void Destroy();                        // slot 1
+    virtual void v02();
+    virtual void OnLastHandleReleased(CEnginePrimitiveHandle* handle);   // slot 3
+    long m_refCount;                               // +0x04
+};
+
+struct CIVCountedPointer {
+    CIVCountedPointeeBase* Object;
+    CIVCountedPointer() : Object(0) { }
+    __forceinline void Release()
+    {
+        CIVCountedPointeeBase* object = Object;
+        if (object) {
+            if (--object->m_refCount == 0)
+                object->Destroy();
+            Object = 0;
+        }
     }
+    __forceinline CIVCountedPointer& operator=(CIVCountedPointeeBase* object)
+    {
+        Release();
+        Object = object;
+        if (object)
+            ++object->m_refCount;
+        return *this;
+    }
+    __forceinline ~CIVCountedPointer() { Release(); }
+};
+
+struct CEnginePrimitiveHandle : CBaseClass {       // vtable 0x0122F598
+    CIVCountedPointer Data;                        // +0x04
+    void Clear();
+};
+
+void CEnginePrimitiveHandle::Clear()
+{
+    if (Data.Object && Data.Object->m_refCount == 1)
+        Data.Object->OnLastHandleReleased(this);
+    Data = 0;
 }

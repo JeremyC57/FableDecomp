@@ -1,0 +1,31 @@
+addr       parity           behav  name
+004c82a0   RELOCATION_MATCH PASS   IsLevelPersistent
+005bc6d6   RELOCATION_MATCH PASS   Retry 10b: the alpha widened into a DOUBLE local and narrowed back at the call gives retail's FPU re-push 
+009fbd00   WARN RELOC_CONFLICT: ??1CBase@@UAE@XZ -> 0099a2e0 here, 0099a300 in landed 0042f50b
+009fbd00   WARN RELOC_NAME: ??1CBase@@UAE@XZ -> 0099a2e0 labelled 'NHeroInformationScreens::CBase::CBase'
+009fbd00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c202f0   WARN RELOC_NAME: ??1CStringMember_00c0ba40@@QAE@XZ -> 00c0ba40 labelled 'CCharStringData::Release'
+00c202f0   RELOCATION_MATCH PASS   ~CVtable_012b3420_Derived_00c202f0
+00caefb0   WARN RELOC_CONFLICT: ??1CBaseObject@@QAE@XZ -> 00cacaf0 here, 0099a430 in landed 00af10e0
+00caefb0   WARN RELOC_NAME: ??1CBaseObject@@QAE@XZ -> 00cacaf0 labelled 'Refcount_DecrementUnloadDLL'
+00caefb0   RELOCATION_MATCH PASS   ~CBase_00caefb0
+00caf480   WARN RELOC_NAME: ??1CMember_00caebb0@@QAE@XZ -> 00caebb0 labelled 'Unwind_Cleanup'
+00caf480   WARN RELOC_CONFLICT: ??1CBaseObject@@QAE@XZ -> 00cacaf0 here, 0099a430 in landed 00af10e0
+00caf480   WARN RELOC_NAME: ??1CBaseObject@@QAE@XZ -> 00cacaf0 labelled 'Refcount_DecrementUnloadDLL'
+00caf480   RELOCATION_MATCH PASS   ~CVtable_012bf8d4
+
+WINS: 6
+  004c82a0 RELOCATION_MATCH CThing::IsLevelPersistent
+  005bc6d6 RELOCATION_MATCH _global::RenderBackground
+  009fbd00 RELOCATION_MATCH CRenderTarget::??_GCRenderTarget
+  00c202f0 RELOCATION_MATCH CVtable_012b3420_Derived_00c202f0::??1CVtable_012b3420_Derived_00c202f0
+  00caefb0 RELOCATION_MATCH CBase_00caefb0::??1CBase_00caefb0
+  00caf480 RELOCATION_MATCH CVtable_012bf8d4::??1CVtable_012bf8d4
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CThing_IsLevelPersistent_004c82a0
+  global_Retry10bthealphawidenedintoaDOUBLElocalandnarrow_005bc6d6
+  CRenderTarget_scalardeletingdestructor_009fbd00
+  CVtable012b3420Derived00c202f0_CVtable012b3420Derived00c202f0_00c202f0
+  CBase00caefb0_CBase00caefb0_00caefb0
+  CVtable012bf8d4_CVtable012bf8d4_00caf480

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0041be70   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0041be70   MATCH            PASS   Clear
+
+WINS: 1
+  0041be70 MATCH CEnginePrimitiveHandle::Clear
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveHandle_Clear_0041be70
