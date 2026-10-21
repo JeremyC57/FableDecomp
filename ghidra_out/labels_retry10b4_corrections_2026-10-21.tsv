@@ -1,0 +1,5 @@
+address	name	evidence
+005d9070	CTCInventoryItem::GetDescription	reads CInventoryItemDef::ItemDescription +0x34 via the main text bank; RELOCATION_MATCH (retry 10b4)
+0064d6a8	NPlayerGui::CDrawQuickAccessIcons::Update	ChargingAbility/ChargeLevel/Charging/ChargeComplete layout as ToggleCharge 0x0064D92A; RELOCATION_MATCH (retry 10b4)
+009191b0	CAIStateGroup_LookAtInterestingThings::OnReplace	RTTI port label + vtable slot 10 of 0x01289BBC; RELOCATION_MATCH (retry 10b4)
+00be0cd0	CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive	vtable 0x012A5BB0 sub-primitive + Layer2DToDistance; RELOCATION_MATCH (retry 10b4)

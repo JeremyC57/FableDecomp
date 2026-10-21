@@ -258224,6 +258224,92 @@ $catalog = @(
         TestSource = '00/ef/CSwordChest_Main_00ef2290_test.cpp'
         PassPattern = '00ef2290_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00436500'
+        Module = 'CThingSearchTools'
+        Source = '00/43/CThingSearchTools_GetMapwhoArea_00436500.cpp'
+        TestSource = '00/43/CThingSearchTools_GetMapwhoArea_00436500_test.cpp'
+        PassPattern = '00436500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047d21c'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_CloseInGameMenuViaGameEvent_0047d21c.cpp'
+        TestSource = '00/47/CTCInGameMenu_CloseInGameMenuViaGameEvent_0047d21c_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0047d21c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9070'
+        Module = '_global'
+        Source = '00/5d/global_Retry10b_005d9070.cpp'
+        TestSource = '00/5d/global_Retry10b_005d9070_test.cpp'
+        PassPattern = '005d9070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064d6a8'
+        Module = '_global'
+        Source = '00/64/global_Retry10b_0064d6a8.cpp'
+        TestSource = '00/64/global_Retry10b_0064d6a8_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0064d6a8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00757440'
+        Module = 'CWound'
+        Source = '00/75/CWound_UpdateDecal_00757440.cpp'
+        TestSource = '00/75/CWound_UpdateDecal_00757440_test.cpp'
+        PassPattern = '00757440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007da760'
+        Module = 'CTCTavernGameCardBlackjack'
+        Source = '00/7d/CTCTavernGameCardBlackjack_GetPosition_007da760.cpp'
+        TestSource = '00/7d/CTCTavernGameCardBlackjack_GetPosition_007da760_test.cpp'
+        PassPattern = '007da760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00812340'
+        Module = 'CTCSearchableContainer'
+        Source = '00/81/CTCSearchableContainer_Search_00812340.cpp'
+        TestSource = '00/81/CTCSearchableContainer_Search_00812340_test.cpp'
+        PassPattern = '00812340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00875990'
+        Module = 'CIsSwitchValid'
+        Source = '00/87/CIsSwitchValid_operator_00875990.cpp'
+        TestSource = '00/87/CIsSwitchValid_operator_00875990_test.cpp'
+        PassPattern = '00875990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009191b0'
+        Module = '_global'
+        Source = '00/91/global_Retry10b_009191b0.cpp'
+        TestSource = '00/91/global_Retry10b_009191b0_test.cpp'
+        PassPattern = '009191b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f0570'
+        Module = 'CNameRegistry_009f0570'
+        Source = '00/9f/CNameRegistry009f0570_Contains_009f0570.cpp'
+        TestSource = '00/9f/CNameRegistry009f0570_Contains_009f0570_test.cpp'
+        PassPattern = '009f0570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be0cd0'
+        Module = '_global'
+        Source = '00/be/global_Retry10b_00be0cd0.cpp'
+        TestSource = '00/be/global_Retry10b_00be0cd0_test.cpp'
+        PassPattern = '00be0cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf38f0'
+        Module = 'CEngineLandscapePatch'
+        Source = '00/bf/CEngineLandscapePatch_Clear_00bf38f0.cpp'
+        TestSource = '00/bf/CEngineLandscapePatch_Clear_00bf38f0_test.cpp'
+        PassPattern = '00bf38f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

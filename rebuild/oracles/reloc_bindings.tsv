@@ -21042,3 +21042,16 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?ProcessSongsRenown@CV_TalentlessBardScript@@QAEXXZ	00edaad0	00ed99d0
 ?IsDone@CSwordChest@@QAE_NXZ	00f35b30	00ef2290
 ?RegisterFilter@CSwordChest@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00ef2290
+?g_mapwhoLevels@@3PAUSMapwhoLevel@@A	0137dad8	00436500
+?GetPlayerManager@CTCInGameMenu@@QBEPAUCPlayerManager@@XZ	00686d40	0047d21c
+?GetActivationTimeForButton@CDrawQuickAccessIcons@NPlayerGui@@QAEMJ@Z	0064b5c1	0064d6a8
+?AddDecal@CTCTextureDecal@@QAEJJAAUCCompositeBlendDesc@@@Z	0070a490	00757440
+?ChangeDecal@CTCTextureDecal@@QAEXJAAUCCompositeBlendDesc@@@Z	0070a3e0	00757440
+?DeleteDecal@CTCTextureDecal@@QAEXJ@Z	0070a430	00757440
+?GetCardDef@CTCTavernGameCardBlackjack@@QAEXPAUCDefPointer@@@Z	008f0b20	007da760
+?FinishSearch@CTCSearchableContainer@@QAEXXZ	0074ee90	00812340
+?FindNode@CNameTree@@QAEPAUSNameNode@@ABVCCharString@@@Z	009d2dd0	009f0570
+?Layer2DToDistance@CEnginePrimitiveRenderer2D@@QAEMJ@Z	00b4a6a0	00be0cd0
+?g_pPrimitiveRenderer2D@@3PAVCEnginePrimitiveRenderer2D@@A	01436e7c	00be0cd0
+?ClearBlock@CTextureOwner@@QAEXXZ	00bfdd40	00bf38f0
+?Discard@CCountedResourcePointer@@QAEXXZ	009d68a0	00bf38f0
