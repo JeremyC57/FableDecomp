@@ -260638,6 +260638,62 @@ $catalog = @(
         TestSource = '00/8c/CCreatureActionJackDeathInto_Initialise_008c0ea0_test.cpp'
         PassPattern = '008c0ea0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005ea1a0'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_GetBet_005ea1a0.cpp'
+        TestSource = '00/5e/CTCTavernGame_GetBet_005ea1a0_test.cpp'
+        PassPattern = '005ea1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ea250'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_GetPlayersMoney_005ea250.cpp'
+        TestSource = '00/5e/CTCTavernGame_GetPlayersMoney_005ea250_test.cpp'
+        PassPattern = '005ea250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f2410'
+        Module = 'CTCLightningOrb'
+        Source = '00/7f/CTCLightningOrb_OnDie_007f2410.cpp'
+        TestSource = '00/7f/CTCLightningOrb_OnDie_007f2410_test.cpp'
+        PassPattern = '007f2410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fd8d0'
+        Module = 'CApplyImpulseIfCloseToCombatLine'
+        Source = '00/7f/CApplyImpulseIfCloseToCombatLine_operator_007fd8d0.cpp'
+        TestSource = '00/7f/CApplyImpulseIfCloseToCombatLine_operator_007fd8d0_test.cpp'
+        PassPattern = '007fd8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c4cb0'
+        Module = 'CCreatureAction_WaspQueenDeath'
+        Source = '00/8c/CCreatureActionWaspQueenDeath_Initialise_008c4cb0.cpp'
+        TestSource = '00/8c/CCreatureActionWaspQueenDeath_Initialise_008c4cb0_test.cpp'
+        PassPattern = '008c4cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ca310'
+        Module = 'CCreatureAction_NymphGetHit'
+        Source = '00/8c/CCreatureActionNymphGetHit_PerformAction_008ca310.cpp'
+        TestSource = '00/8c/CCreatureActionNymphGetHit_PerformAction_008ca310_test.cpp'
+        PassPattern = '008ca310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d8330'
+        Module = 'NCreatureMode::CModeScreamerSuperAttack'
+        Source = '00/8d/NCreatureModeCModeScreamerSuperAttack_OnActivate_008d8330.cpp'
+        TestSource = '00/8d/NCreatureModeCModeScreamerSuperAttack_OnActivate_008d8330_test.cpp'
+        PassPattern = '008d8330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f1bd0'
+        Module = 'CTCTavernGameCardBase'
+        Source = '00/8f/CTCTavernGameCardBase_UpdatePointerScale_008f1bd0.cpp'
+        TestSource = '00/8f/CTCTavernGameCardBase_UpdatePointerScale_008f1bd0_test.cpp'
+        PassPattern = '008f1bd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
