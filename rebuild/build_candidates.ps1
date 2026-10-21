@@ -240158,9 +240158,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006f4d00'
-        Module = 'CCombatantMap::Insert -- STLport _Rb_tree<unsigned __int64, pair<const unsigned __int64, CCombatantInfo>>'
-        Source = '00/6f/CCombatantMapInsertSTLportRbtreeunsignedint64pairconstunsignedint64CCombatantInf_Minsert_006f4d00.cpp'
-        TestSource = '00/6f/CCombatantMapInsertSTLportRbtreeunsignedint64pairconstunsignedint64CCombatantInf_Minsert_006f4d00_test.cpp'
+        Module = 'CCombatantMap'
+        Source = '00/6f/CCombatantMap_Insert_006f4d00.cpp'
+        TestSource = '00/6f/CCombatantMap_Insert_006f4d00_test.cpp'
         PassPattern = '006f4d00_TEST PASS'
     }
     [pscustomobject]@{
@@ -244358,9 +244358,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00783f00'
-        Module = 'CThingMap64::Insert -- STLport _Rb_tree<unsigned __int64, pair<const unsigned __int64, CIntelligentPointer<CThing>>>'
-        Source = '00/78/CThingMap64InsertSTLportRbtreeunsignedint64pairconstunsignedint64CIntelligentPoi_Minsert_00783f00.cpp'
-        TestSource = '00/78/CThingMap64InsertSTLportRbtreeunsignedint64pairconstunsignedint64CIntelligentPoi_Minsert_00783f00_test.cpp'
+        Module = 'CThingMap64'
+        Source = '00/78/CThingMap64_Insert_00783f00.cpp'
+        TestSource = '00/78/CThingMap64_Insert_00783f00_test.cpp'
         PassPattern = '00783f00_TEST PASS'
     }
     [pscustomobject]@{
@@ -258954,6 +258954,98 @@ $catalog = @(
         Source = '00/b9/CEngineInternalPrimitiveStaticMesh_GetBoundingSphereWorldSpace_00b9dbd0.cpp'
         TestSource = '00/b9/CEngineInternalPrimitiveStaticMesh_GetBoundingSphereWorldSpace_00b9dbd0_test.cpp'
         PassPattern = '00b9dbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057b1db'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_ModifyStaminaBy_0057b1db.cpp'
+        TestSource = '00/57/CTCHeroStats_ModifyStaminaBy_0057b1db_test.cpp'
+        PassPattern = '0057b1db_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bd0f7'
+        Module = 'CCategory'
+        Source = '00/5b/CCategory_HighlightPreviousItem_005bd0f7.cpp'
+        TestSource = '00/5b/CCategory_HighlightPreviousItem_005bd0f7_test.cpp'
+        PassPattern = '005bd0f7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c8de0'
+        Module = 'CThingFilter_IsEligibleWitness'
+        Source = '00/6c/CThingFilterIsEligibleWitness_CThingFilterIsEligibleWitness_006c8de0.cpp'
+        TestSource = '00/6c/CThingFilterIsEligibleWitness_CThingFilterIsEligibleWitness_006c8de0_test.cpp'
+        PassPattern = '006c8de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d6660'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetTotalStatLevel_006d6660.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetTotalStatLevel_006d6660_test.cpp'
+        PassPattern = '006d6660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00749810'
+        Module = 'CTCNoise'
+        Source = '00/74/CTCNoise_CTCNoise_00749810.cpp'
+        TestSource = '00/74/CTCNoise_CTCNoise_00749810_test.cpp'
+        PassPattern = '00749810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008941a0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_MsgOnTavernGameFinished_008941a0.cpp'
+        TestSource = '00/89/CGameScriptInterface_MsgOnTavernGameFinished_008941a0_test.cpp'
+        PassPattern = '008941a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00938f70'
+        Module = 'CAIStateGroup_MinionSitOutside'
+        Source = '00/93/CAIStateGroupMinionSitOutside_IsRunnable_00938f70.cpp'
+        TestSource = '00/93/CAIStateGroupMinionSitOutside_IsRunnable_00938f70_test.cpp'
+        PassPattern = '00938f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093fbc0'
+        Module = 'CAIStateGroup_VillageTaskSecuritySweep'
+        Source = '00/93/CAIStateGroupVillageTaskSecuritySweep_IsRunnable_0093fbc0.cpp'
+        TestSource = '00/93/CAIStateGroupVillageTaskSecuritySweep_IsRunnable_0093fbc0_test.cpp'
+        PassPattern = '0093fbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00985f40'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/98/CAIStateGroupOpinionReactionRoot_WifeClothingUpdate_00985f40.cpp'
+        TestSource = '00/98/CAIStateGroupOpinionReactionRoot_WifeClothingUpdate_00985f40_test.cpp'
+        PassPattern = '00985f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9e4e0'
+        Module = 'CEngineInternalPrimitive2DStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitive2DStaticMesh_GetBoundingSphereWorldSpace_00b9e4e0.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitive2DStaticMesh_GetBoundingSphereWorldSpace_00b9e4e0_test.cpp'
+        PassPattern = '00b9e4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c28ae0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/c2/CHandleBasedMemoryPool_CHandleBasedMemoryPool_00c28ae0.cpp'
+        TestSource = '00/c2/CHandleBasedMemoryPool_CHandleBasedMemoryPool_00c28ae0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c28ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c41e40'
+        Module = 'CCombatant'
+        Source = '00/c4/CCombatant_SetCombatParameters_00c41e40.cpp'
+        TestSource = '00/c4/CCombatant_SetCombatParameters_00c41e40_test.cpp'
+        PassPattern = '00c41e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d80cc0'
+        Module = 'CQ_HeroSoulsBriarScript'
+        Source = '00/d8/CQHeroSoulsBriarScript_Init_00d80cc0.cpp'
+        TestSource = '00/d8/CQHeroSoulsBriarScript_Init_00d80cc0_test.cpp'
+        PassPattern = '00d80cc0_TEST PASS'
     }
 )
 
