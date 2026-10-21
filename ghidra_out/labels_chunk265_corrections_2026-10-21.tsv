@@ -1,0 +1,11 @@
+address	name	evidence
+00557960	NUISystem::CKeyRedefiner::CanRedefineAction	not GetCategory (chunk 265)
+004bbfc0	SetGraphicBank	not SetCurrentThingManager (chunk 265)
+00416202	FrameTimeRecorder	frame-time recorder, not operator_new (chunk 265)
+0041627f	BeginOutputSaving	duplicate BeginInputLoading label (chunk 265)
+004fb150	GetCurrentRegionIndex	not DrawGetEnvironment (chunk 265)
+0099aed0	CWideString::CWideString	default ctor, not the CCharString ctor (chunk 265)
+0099ba70	CWideString::Format	varargs Format, not SetFromFormatV (chunk 265)
+00643bef	ToScreenBox	not operator&& (chunk 265)
+00669d30	GetEffectFromString	not CalcAndLookup (chunk 265)
+00c0b570	CAngleInterpolator::SetTarget	not CMatrix::UpdateInversePerspective (chunk 265)

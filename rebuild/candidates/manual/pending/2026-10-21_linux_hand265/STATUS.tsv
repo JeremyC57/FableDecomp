@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00f36860	DIFFER	461v451	-	x87 caching: retail keeps weight live in st(0) (fst/fcom/fstp st0)
+00405020	DIFFER	406v410	-	frame packing: scale local in dead text param slot
+006894c0	RELOCATION_MATCH	476v476	PASS	inventory-screen input
+00687fd0	RELOCATION_MATCH	430v430	PASS	needs /GS (char-array local)
+0068f9d0	RELOCATION_MATCH	444v444	PASS	ranged-weapon input
+00688eb0	RELOCATION_MATCH	406v406	PASS	Z-target input
+0095f9a0	RELOCATION_MATCH	416v416	PASS	functor ctor
+0095fb40	DIFFER	443v451	-	frame 0x24 v 0x20 slot sharing; owner cmp from memory; bool arg byte store
+00557eb0	RELOCATION_MATCH	497v497	PASS	auto_inline(off) CanRedefineAction 0x557960 body in the TU keeps edx live across the call
+00558770	DIFFER	475v472	-	esi/edi swap + ecx/ebx copy direction for the new list
+00be63f0	RELOCATION_MATCH	424v424	PASS	engine header CLandscapeBackgroundPatch.h
+00bf71d0	RELOCATION_MATCH	405v405	PASS	frustum cull + render
+00537776	DIFFER	480v480	-	frame 0x3c v 0x48; first ConvertX+Offset operand load order
+00bfa0f0	RELOCATION_MATCH	418v418	PASS	mesh primitive load
+00ce0920	DIFFER	453v470	-	virtual IsAlive (+0x12c) and out-of-line ~CScriptThing 0x4AA840 in retail
+00ce0b00	DIFFER	456v470	-	as 0x00CE0920
+00ce0ce0	DIFFER	456v470	-	as 0x00CE0920
+00ec42f0	DIFFER	412v412	-	block placement of the early-exit block
+00ef34a0	RELOCATION_MATCH	441v441	PASS	restart marker script
+00416c8a	RELOCATION_MATCH	494v494	PASS	twin of landed CNewFrontendGameComponent::InitialiseGraphics 0x42ddb3; size TU (s on, y off)
+004189c2	RELOCATION_MATCH	440v440	PASS	size TU; Running=false stored before *next (store-order rotation); frameStart double local
+0041df10	RELOCATION_MATCH	509v509	PASS	UI-key -> engine key table fill
+0041e1cd	DIFFER	485v485	-	scheduling: key -1/0 stores hoisted in retail
+0041e3f6	RELOCATION_MATCH	508v508	PASS	CManager ctor, local model per landed ~CManager 0x41E641
+0081fb00	RELOCATION_MATCH	442v442	PASS	theme water test
+0081fcc0	RELOCATION_MATCH	500v500	PASS	cell water height
+0081fec0	RELOCATION_MATCH	433v433	PASS	4-cell average water height
+008f7630	RELOCATION_MATCH	461v461	PASS	ground height clamp
+00c0b570	DIFFER	417v435	-	retail keeps *0.0f terms in the RHS vector product
+00a55df0	DIFFER	415v415	-	scheduling: mov ecx,0xc one instruction early
+00ef4320	DIFFER	492v420	-	retail calls some CScriptThing copies out of line
+00a64740	MATCH	464v464	PASS	MATCH: red-black insert fixup
+0053d200	RELOCATION_MATCH	420v420	PASS	menu entry input
+00a09f20	DIFFER	488v485	-	found-path add-ref mov/inc/mov v inc [esi]
+00687540	DIFFER	486v486	-	esi/edi swap (originator/target)
+00687730	DIFFER	477v477	-	faction key temporary in pos v def param slot
+00829a30	RELOCATION_MATCH	498v498	PASS	inline by-value ToString (no NRVO) + varargs CWideString::Format
+0082be60	RELOCATION_MATCH	511v511	PASS	C2DBoxF needs a user copy ctor; init-then-overwrite layer; implicit CCharString temporaries
+00da5980	RELOCATION_MATCH	446v446	PASS	minion spawner script
+008db620	DIFFER	490v481	-	frame slot packing only (R-0x2c shared slot)
