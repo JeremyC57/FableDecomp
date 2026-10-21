@@ -1,0 +1,12 @@
+address	name	evidence
+00c1d1c0	InvertMatrix3x4	free function in the steering library, not C3DMeshObject (chunk 239)
+00c5a9d0	AudioLib_Voice_SetRampParams	audio-library voice ramp, not a C3DMeshFileX chunk (chunk 239)
+00957210	CAIStateGroup_BriarRoseIntoInvulnerable::CAIStateGroup_BriarRoseIntoInvulnerable	constructor, not ForcePush (chunk 239)
+00a14440	C3DVector::Normalise	not GetScaled (chunk 239)
+008fcf90	CAIStateGroupBase::GetPPlayerManager	chunk 239
+006cb6a0	CNavigationRegionQuery_6cb6a0	navigation region query, not CIsHitEventBlocked::operator() (chunk 239)
+006a4d00	CThing::GetPosition	const getter (chunk 239, agrees with chunk 237)
+007446a0	CTCPerception::GetPerceivedThing	chunk 239
+009fc440	NotCTCActivationTrigger_OnKill_9fc440	not CTCActivationTrigger::OnKill; owner unidentified (chunk 239)
+007ee540	CTCVillageMember::GetPVillage	chunk 239
+007aed10	CTCBoss::GetBossPhase	chunk 239

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00a39fe0	RELOCATION_MATCH	355v355	PASS	four edge clips with named edge locals
+00aa4710	RELOCATION_MATCH	365v365	PASS	ctor; named counted-pointer locals per chunk handler
+00a4e960	RELOCATION_MATCH	343v343	PASS	MI this-adjust to CMovableResource at +0x2c
+00a26ad0	DIFFER	383v383	-	register allocation only: `sete cl` vs al for the compressed flag, the bank pointer in edx vs ecx for both Mem
+00a9f2f0	RELOCATION_MATCH	352v352	PASS	InterpolateFloat helper + index local
+00aa0c50	RELOCATION_MATCH	353v353	PASS	forwarder + childDepth recursion shape
+00a2e5b0	RELOCATION_MATCH	332v332	PASS	LoadBinary field reads
+00a89740	DIFFER	348v389	-	x87 scheduling: retail spills the copied helper position (x to a dead arg slot, y fst, z integer-moved) and re
+00a8b820	RELOCATION_MATCH	354v354	PASS	bone-index remap through the map
+00c5a9d0	DIFFER	390v382	-	the int->float conversion of VolumeMilliBel gets a /Op rounding store/reload (fild ; fstp ; fld) that retail l
+00aa4e40	RELOCATION_MATCH	364v364	PASS	ReadFloat helpers; Leaf line
+00c1d1c0	DIFFER	347v347	-	7 commutative fmul pairs emit the other operand first (E23*E12, E32*E23, E11*E23, E11*E22, E21*E12, two transl
+00ac2a80	RELOCATION_MATCH	337v337	PASS	BuildOutput element copy
+00ac27a0	RELOCATION_MATCH	374v374	PASS	C3DVector user copy ctor + GetCenter temporaries
+0097d580	RELOCATION_MATCH	368v368	PASS	hoisted setg bools; CBrainOutput inline
+0097f870	DIFFER	397v397	-	regalloc swap only: retail navigation=ebx / building=ebp, ours navigation=ebp / building=ebx; every instructio
+00957a20	RELOCATION_MATCH	339v339	PASS	ternary GetInterface + GetCreature accessor
+0092a0c0	RELOCATION_MATCH	346v346	PASS	CCharString-returning switch helper
+0092ace0	DIFFER	393v389	-	the MoveToPos failure block is laid out at the end (retail: right after the compare, shared with the LookAtPos
+0092ae70	DIFFER	354v354	-	scheduling only: the approach-distance global store (0x013BB6AC = 0.5f) lands after `mov eax,esp` inside the b
+00961640	DIFFER	323v323	-	evaluation order only: VC7.1 loads the brain/creature for the throw action before the target GetPItem call (in
+0093a8c0	RELOCATION_MATCH	377v377	PASS	LowerBound stand-in for fild temp slot
+00914460	DIFFER	395v395	-	loop entry only: retail `xor edx,edx` before the seed store and `lea edi,[edx+1] ; cmp edi,ebp ; jbe` (0 < cou
+00914650	DIFFER	308v340	-	lane gap: inline-asm rounding helper. Retail is an ebp frame (`push ebp ; mov ebp,esp`) around an inline float
+00956e70	DIFFER	363v363	-	register choice only: the sub-def holder lands in ebx (pushed with edi up front) where retail keeps it in edi 
+00956fe0	RELOCATION_MATCH	389v389	PASS	GetSubDef stand-in, def reuse
+00911c20	RELOCATION_MATCH	361v361	PASS	const LowerBound + GetEvent stand-ins
+00911d90	RELOCATION_MATCH	332v332	PASS	panic update
+009118a0	RELOCATION_MATCH	347v347	PASS	Random inline + idle loop
+009790f0	RELOCATION_MATCH	361v361	PASS	forceinline IS_THING_ALIVE, crouch action 0x124
+0097ccd0	RELOCATION_MATCH	351v351	PASS	perception re-aware, duck loop, named distance
+00970610	RELOCATION_MATCH	334v334	PASS	inline (name, filter) HasAnim wrapper; named creature/world before SaySpeech
+00970930	RELOCATION_MATCH	370v370	PASS	masked HasTC byte test; per-component (radius*0.75f) CSE
+0096c9a0	RELOCATION_MATCH	373v373	PASS	implicit-conversion name temporaries; *seed Random form; fps local first
+0094c900	RELOCATION_MATCH	377v377	PASS	local polymorphic base; named components; raw IS_THING_ALIVE; const LowerBound stand-in
+0092c740	RELOCATION_MATCH	347v347	PASS	OnReplace bed occupant reset
+0092d060	RELOCATION_MATCH	388v388	PASS	GetPVillage 0x7EE540, nested ifs
+0094a6d0	DIFFER	368v361	-	regalloc: retail keeps constant 1 in ebx (push ebx for the bool args, test bl for the dead bit, mov al,bl for 
+00977820	DIFFER	374v374	-	x87 stack cleanup of the first (creature-to-enemy) distance: retail fsqrt; fstp st(2); fstp st(0); fstp [best]
+0091b190	DIFFER	332v332	-	register allocation only in the loop head: retail fetches brain/creature/bitset word through ecx/eax/edx and c
