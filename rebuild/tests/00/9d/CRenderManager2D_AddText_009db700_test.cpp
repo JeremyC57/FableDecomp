@@ -1,0 +1,175 @@
+// Behaviour test for 009db700: src/009db700.cpp copied verbatim (shared headers expanded inline), callees stubbed below so calls
+// and arguments are observable. CRenderManager2D::AddText(const C3DVector& position, float scale, const CWideString& text, CFontBank* font, const CRGBColour& colour, unsigned long flags)
+#include <cstdio>
+#include <cstring>
+static int fails = 0;
+#define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
+// ---- source (verbatim) ----
+// CRenderManager2D::AddText(const C3DVector& position, float scale, const CWideString& text, CFontBank* font, const CRGBColour& colour, unsigned long flags) -- queue a text record on the quick-draw list (viewport window, screen-space position, string, metrics, colour, font) unless the viewport is offscreen
+// Leaf: AddText
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009DB700, length 266 bytes (`ret 18h`). FableWin.pdb
+// ?AddText@CRenderManager2D@@AAEXABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z (the font by reference; the
+// landed caller Draw3DScaledText 0x009DBFF0 declares it as a pointer, same code, kept here for one symbol spelling).
+// Callees: CWideString::CWideString() @ 0x0099AED0, CRenderManagerCore::GetViewportBoxFloat @ 0x00A0AAA0 (`&DisplayManager->
+// ViewportBoxFloat`; manifest "CVertexBufferWin32::DoSizeof"), GFAXToVX / GFAYToVY @ 0x009E1E10 / 0x009E1E40 (`__fastcall`
+// float(float)), CWideString::operator= @ 0x0099B7D0, CQuickDrawTriInfo copy ctor @ 0x009DE890 (landed), the vector's
+// _M_insert_overflow @ 0x009E1750, CTexture::Uninitialise @ 0x009F9F70 (the inline ~CTexture), ~CWideString @ 0x0099B510.
+// Layout: engine/CRenderManagerCore.h agrees on DisplayManager +0x3a3c (CDisplayManager: ViewportOffscreen +0x1d8,
+// ViewportBoxFloat +0x204); QuickDrawTriInfo (12-byte STLport vector of 0x3c-byte CQuickDrawTriInfo) sits at +0x3e94, 0x54 below
+// the PDB's CRenderManager2D layout. CQuickDrawTriInfo as the landed copy ctor 0x009DE890; CTexture {PD3DTexture,
+// ByteLength:28, AllocationSource:4} (its ctor clears the bit fields with a dead load of the word).
+// Shape: one local record: default-constructed (string, texture), the Line/IsText bit stores, the window copy, the converted
+// X/Y, Z, the text assignment, then font / colour / flags / scale in that statement order (the only one of the 24 orders
+// that copies the colour through eax->ecx and loads the flags last, inside the push_back compare); the inline STLport push_back (null-checked placement copy, else
+// _M_insert_overflow with the `__true_type` tag in the dead `position` slot), then the record's destructors.
+struct C3DVector { float X, Y, Z; };
+struct CRGBColour { unsigned char B, G, R, A; };
+struct CFontBank;
+struct __true_type { __true_type() { } };
+
+inline void* operator new(unsigned int, void* where) { return where; }
+
+float __fastcall GFAXToVX(float x);                     // 0x009E1E10
+float __fastcall GFAYToVY(float y);                     // 0x009E1E40
+
+struct C2DBoxF {
+    float TLX, TLY, BRX, BRY;
+};
+
+struct CWideString {
+    void* m_pData;
+    CWideString();                                      // 0x0099AED0
+    ~CWideString();                                     // 0x0099B510
+    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+};
+
+struct IDirect3DTexture9;
+struct CTexture {
+    IDirect3DTexture9* PD3DTexture;                     // +0x00
+    unsigned long      ByteLength : 28;                 // +0x04
+    unsigned long      AllocationSource : 4;
+    CTexture() : PD3DTexture(0) { ByteLength = 0; AllocationSource = 0; }
+    ~CTexture() { Uninitialise(); }
+    void Uninitialise();                                // 0x009F9F70
+};
+
+struct CQuickDrawTriInfo {
+    unsigned char Line   : 1;                           // +0x00 bit 0
+    unsigned char IsText : 1;                           // +0x00 bit 1
+    C2DBoxF     Window;                                 // +0x04
+    CWideString String;                                 // +0x14
+    CTexture    UploadedTexture;                        // +0x18
+    float       StringX;                                // +0x20 (union with BlendMode)
+    float       StringY;                                // +0x24 (union with ZAverage)
+    float       StringZ;                                // +0x28
+    float       StringScale;                            // +0x2c
+    unsigned long StringFlags;                          // +0x30
+    CRGBColour  Colour;                                 // +0x34
+    CFontBank*  PFont;                                  // +0x38
+    CQuickDrawTriInfo() { }
+    CQuickDrawTriInfo(const CQuickDrawTriInfo& other);  // 0x009DE890
+};
+
+struct CQuickDrawTriInfoVector {                        // STLport vector<CQuickDrawTriInfo>
+    CQuickDrawTriInfo* _M_start;
+    CQuickDrawTriInfo* _M_finish;
+    CQuickDrawTriInfo* _M_end_of_storage;
+    void _M_insert_overflow(CQuickDrawTriInfo* position, const CQuickDrawTriInfo& value, const __true_type&,
+                            unsigned int count, bool atEnd);     // 0x009E1750
+    void push_back(const CQuickDrawTriInfo& value)
+    {
+        if (_M_finish != _M_end_of_storage) {
+            new (_M_finish) CQuickDrawTriInfo(value);
+            ++_M_finish;
+        }
+        else
+            _M_insert_overflow(_M_finish, value, __true_type(), 1, true);
+    }
+};
+
+struct CDisplayManager {
+    unsigned char _pad000[0x1d8];
+    bool          ViewportOffscreen;                    // +0x1d8
+    unsigned char _pad1d9[0x2b];
+    C2DBoxF       ViewportBoxFloat;                     // +0x204
+};
+
+struct CRenderManager2D {
+    unsigned char           _pad0000[0x3a3c];
+    CDisplayManager*        DisplayManager;             // +0x3a3c
+    unsigned char           _pad3a40[0x454];
+    CQuickDrawTriInfoVector QuickDrawTriInfo;           // +0x3e94
+    const C2DBoxF& GetViewportBoxFloat() const;         // 0x00A0AAA0
+    void AddText(const C3DVector& position, float scale, const CWideString& text, CFontBank* font,
+                 const CRGBColour& colour, unsigned long flags);
+};
+
+void CRenderManager2D::AddText(const C3DVector& position, float scale, const CWideString& text, CFontBank* font,
+                               const CRGBColour& colour, unsigned long flags)
+{
+    if (DisplayManager->ViewportOffscreen)
+        return;
+    CQuickDrawTriInfo info;
+    info.Window = GetViewportBoxFloat();
+    info.Line = false;
+    info.IsText = true;
+    info.StringX = GFAXToVX(position.X);
+    info.StringY = GFAYToVY(position.Y);
+    info.StringZ = position.Z;
+    info.String = text;
+    info.PFont = font;
+    info.Colour = colour;
+    info.StringFlags = flags;
+    info.StringScale = scale;
+    QuickDrawTriInfo.push_back(info);
+}
+
+// ---- stubs and driver ----
+#include <cstdlib>
+static int g_strCtor = 0, g_strDtor = 0, g_uninit = 0, g_copies = 0, g_overflow = 0;
+CWideString::CWideString() { m_pData = 0; ++g_strCtor; }
+CWideString::~CWideString() { ++g_strDtor; }
+CWideString& CWideString::operator=(const CWideString& other) { m_pData = other.m_pData; return *this; }
+void CTexture::Uninitialise() { ++g_uninit; }
+CQuickDrawTriInfo::CQuickDrawTriInfo(const CQuickDrawTriInfo& other)
+{
+    memcpy(this, &other, sizeof(*this)); ++g_copies;
+}
+static CQuickDrawTriInfo g_overflowValue; static bool g_overflowAtEnd = false; static unsigned int g_overflowCount = 0;
+void CQuickDrawTriInfoVector::_M_insert_overflow(CQuickDrawTriInfo* position, const CQuickDrawTriInfo& value, const __true_type&,
+                                                 unsigned int count, bool atEnd)
+{
+    ++g_overflow; memcpy(&g_overflowValue, &value, sizeof(value)); g_overflowAtEnd = atEnd; g_overflowCount = count;
+    CHECK(position == _M_finish);
+}
+float __fastcall GFAXToVX(float x) { return x * 2.0f; }
+float __fastcall GFAYToVY(float y) { return y * 3.0f; }
+static C2DBoxF g_box = { 1, 2, 3, 4 };
+const C2DBoxF& CRenderManager2D::GetViewportBoxFloat() const { return g_box; }
+int main()
+{
+    CRenderManager2D* rm = (CRenderManager2D*)calloc(1, sizeof(CRenderManager2D));
+    CDisplayManager* dm = (CDisplayManager*)calloc(1, sizeof(CDisplayManager)); rm->DisplayManager = dm;
+    CQuickDrawTriInfo* storage = (CQuickDrawTriInfo*)calloc(4, sizeof(CQuickDrawTriInfo));
+    rm->QuickDrawTriInfo._M_start = storage; rm->QuickDrawTriInfo._M_finish = storage; rm->QuickDrawTriInfo._M_end_of_storage = storage + 1;
+    C3DVector pos = { 10, 20, 30 };
+    CWideString text; text.m_pData = (void*)0x7777;
+    CRGBColour colour = { 1, 2, 3, 4 };
+    CFontBank* font = (CFontBank*)0x8888;
+    rm->AddText(pos, 1.5f, text, font, colour, 0x42);
+    CHECK(rm->QuickDrawTriInfo._M_finish == storage + 1 && g_copies == 1 && g_overflow == 0);
+    CQuickDrawTriInfo& r = storage[0];
+    CHECK(r.Line == 0 && r.IsText == 1 && r.Window.TLX == 1 && r.Window.BRY == 4);
+    CHECK(r.StringX == 20 && r.StringY == 60 && r.StringZ == 30 && r.String.m_pData == (void*)0x7777);
+    CHECK(r.StringScale == 1.5f && r.StringFlags == 0x42 && r.PFont == font && r.Colour.R == 3 && r.Colour.A == 4);
+    CHECK(r.UploadedTexture.PD3DTexture == 0 && g_uninit == 1 && g_strDtor == 1);
+    rm->AddText(pos, 2.5f, text, font, colour, 7);   // full: overflow path
+    CHECK(g_overflow == 1 && g_overflowAtEnd && g_overflowCount == 1 && g_overflowValue.StringFlags == 7 && g_overflowValue.StringScale == 2.5f);
+    CHECK(g_uninit == 2 && g_strDtor == 2);
+    int ctorsBefore = g_strCtor;
+    dm->ViewportOffscreen = true;
+    rm->AddText(pos, 2.5f, text, font, colour, 7);   // offscreen: nothing
+    CHECK(g_overflow == 1 && g_copies == 1 && g_strCtor == ctorsBefore && g_uninit == 2);
+    if (fails == 0) printf("009db700_TEST PASS\n");
+    return fails;
+}

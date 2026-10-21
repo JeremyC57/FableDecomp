@@ -1,0 +1,4 @@
+address	name	evidence
+004e9550	CPersistContext::TransferHelper	(CObjectAugmentationParticleSet*) overload; manifest's CObjectAugmentationParticleSet::TransferHelper is wrong (retry 10k)
+007f90b0	CTCAnimatingObject::PlayAnimation	?PlayAnimation@CTCAnimatingObject@@QAEXABVCCharString@@J_N@Z (retry 10k)
+0053852b	NUISystem::CList::SaveState	returns NUISystem::CListState per PDB (retry 10k)

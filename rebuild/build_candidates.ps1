@@ -262047,6 +262047,104 @@ $catalog = @(
         TestSource = '00/e7/CDFThreeSuits_DressedAsBandit_00e72f00_test.cpp'
         PassPattern = '00e72f00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004109a0'
+        Module = 'CPersistContext'
+        Source = '00/41/CPersistContext_TransferCCharString_004109a0.cpp'
+        TestSource = '00/41/CPersistContext_TransferCCharString_004109a0_test.cpp'
+        PassPattern = '004109a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00410ac0'
+        Module = 'CPersistContext'
+        Source = '00/41/CPersistContext_TransferCWideString_00410ac0.cpp'
+        TestSource = '00/41/CPersistContext_TransferCWideString_00410ac0_test.cpp'
+        PassPattern = '00410ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e9550'
+        Module = 'CPersistContext'
+        Source = '00/4e/CPersistContext_TransferHelper_004e9550.cpp'
+        TestSource = '00/4e/CPersistContext_TransferHelper_004e9550_test.cpp'
+        PassPattern = '004e9550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053852b'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_SaveState_0053852b.cpp'
+        TestSource = '00/53/NUISystemCList_SaveState_0053852b_test.cpp'
+        PassPattern = '0053852b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053b7f0'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_CList_0053b7f0.cpp'
+        TestSource = '00/53/NUISystemCList_CList_0053b7f0_test.cpp'
+        PassPattern = '0053b7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f9790'
+        Module = 'NAnimationEvents::CManager'
+        Source = '00/6f/NAnimationEventsCManager_GetEventTimeInSeconds_006f9790.cpp'
+        TestSource = '00/6f/NAnimationEventsCManager_GetEventTimeInSeconds_006f9790_test.cpp'
+        PassPattern = '006f9790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076e150'
+        Module = 'CTCWeaponTrail'
+        Source = '00/76/CTCWeaponTrail_ClearAllWeaponTrails_0076e150.cpp'
+        TestSource = '00/76/CTCWeaponTrail_ClearAllWeaponTrails_0076e150_test.cpp'
+        PassPattern = '0076e150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f90b0'
+        Module = 'CTCAnimatingObject'
+        Source = '00/7f/CTCAnimatingObject_PlayAnimation_007f90b0.cpp'
+        TestSource = '00/7f/CTCAnimatingObject_PlayAnimation_007f90b0_test.cpp'
+        PassPattern = '007f90b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fba20'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_AddStrikeExplosion_007fba20.cpp'
+        TestSource = '00/7f/CTCKraken_AddStrikeExplosion_007fba20_test.cpp'
+        PassPattern = '007fba20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00856f00'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_IsThingInStruckThingList_00856f00.cpp'
+        TestSource = '00/85/CCombatActionBase_IsThingInStruckThingList_00856f00_test.cpp'
+        PassPattern = '00856f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00871ec0'
+        Module = 'NCameraModes::CStringAndCageBase'
+        Source = '00/87/NCameraModesCStringAndCageBase_OnReset_00871ec0.cpp'
+        TestSource = '00/87/NCameraModesCStringAndCageBase_OnReset_00871ec0_test.cpp'
+        PassPattern = '00871ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00922fc0'
+        Module = 'CAIStateGroup_ServeFood'
+        Source = '00/92/CAIStateGroupServeFood_WalkTo_00922fc0.cpp'
+        TestSource = '00/92/CAIStateGroupServeFood_WalkTo_00922fc0_test.cpp'
+        PassPattern = '00922fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009db700'
+        Module = 'CRenderManager2D'
+        Source = '00/9d/CRenderManager2D_AddText_009db700.cpp'
+        TestSource = '00/9d/CRenderManager2D_AddText_009db700_test.cpp'
+        PassPattern = '009db700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3a5d0'
+        Module = 'CRangeCompressor'
+        Source = '00/f3/CRangeCompressor_TestRangeBias_00f3a5d0.cpp'
+        TestSource = '00/f3/CRangeCompressor_TestRangeBias_00f3a5d0_test.cpp'
+        PassPattern = '00f3a5d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
