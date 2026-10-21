@@ -22417,3 +22417,9 @@ __CItanh	00bfece2	008ee790
 ??0CSpawnedFuncBaseRuntime@@QAE@ABUCCharString@@K@Z	00cdd450	00d167c0
 ?Add@CQ_BountyHuntScript@@QAEXPAUCSpawnedFuncPhase3@@ABUCCharString@@@Z	00cb7e50	00d167c0
 ?WatchForHostage1Killed@CQ_BountyHuntScript@@QAEXUCScriptThingRuntime@@@Z	00d16920	00d167c0
+??$GetAllTCsInRoughArea@UCTCPerceiveThing@@U?$CFilter_Bind2@UCThingFilter_IsPerceivingThing@@UCThingFilter_IsNot@@@@U?$CRetailVector@PAUCTCPerceiveThing@@@@@CThingSearchTools@@QBEXABUC2DBoxI@@ABU?$CFilter_Bind2@UCThingFilter_IsPerceivingThing@@UCThingFilter_IsNot@@@@AAU?$CRetailVector@PAUCTCPerceiveThing@@@@@Z	0084ba50	0084a720
+??$for_each@PAPAUCTCPerceiveThing@@U?$mem_fun_t@XUCTCPerceiveThing@@@std@@@std@@YI?AU?$mem_fun_t@XUCTCPerceiveThing@@@0@PAPAUCTCPerceiveThing@@0U10@@Z	0084ad60	0084a720
+?SetAsIndirectlyAwareOfPerceivedThing@CTCPerceiveThing@@QAEXXZ	007449e0	0084a720
+?Interpolate@CScreenFilterParams@@QBE?AU1@ABU1@M@Z	00882fe0	008859f0
+?GetAsLowerCase@CCharString@@QBE?AU1@XZ	0099ed10	009eaff0
+?_Lbound@CCommandMap@@QAEPAUSCommandNode@@ABUCCharString@@@Z	009eec10	009eaff0

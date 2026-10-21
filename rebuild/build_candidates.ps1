@@ -262902,6 +262902,41 @@ $catalog = @(
         TestSource = '00/d1/CBHHostage1_Init_00d167c0_test.cpp'
         PassPattern = '00d167c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007009d0'
+        Module = 'COpinionReactionManager'
+        Source = '00/70/COpinionReactionManager_GetHeroStatsInOpinionFormat_007009d0.cpp'
+        TestSource = '00/70/COpinionReactionManager_GetHeroStatsInOpinionFormat_007009d0_test.cpp'
+        PassPattern = '007009d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084a720'
+        Module = 'CCreatureAction_AlertAllNearbyToThing'
+        Source = '00/84/CCreatureActionAlertAllNearbyToThing_AlertAllNearby_0084a720.cpp'
+        TestSource = '00/84/CCreatureActionAlertAllNearbyToThing_AlertAllNearby_0084a720_test.cpp'
+        PassPattern = '0084a720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008859f0'
+        Module = 'CEnvironmentSpellEffectInterface'
+        Source = '00/88/CEnvironmentSpellEffectInterface_GetRenderFrameInterpolatedScreenFilterParameters_008859f0.cpp'
+        TestSource = '00/88/CEnvironmentSpellEffectInterface_GetRenderFrameInterpolatedScreenFilterParameters_008859f0_test.cpp'
+        PassPattern = '008859f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eaff0'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_SetGuessMode_009eaff0.cpp'
+        TestSource = '00/9e/CConsole_SetGuessMode_009eaff0_test.cpp'
+        PassPattern = '009eaff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b50e50'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_GetBoxBoundingSphereRadiusSquared_00b50e50.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_GetBoxBoundingSphereRadiusSquared_00b50e50_test.cpp'
+        PassPattern = '00b50e50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
