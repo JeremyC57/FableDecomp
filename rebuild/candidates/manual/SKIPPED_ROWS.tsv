@@ -13,6 +13,8 @@ address	row_len	batch	label	kind	status	pieces	note
 00581ab3	78	2026-10-15_linux_hand91	CTCInventory::CTCInventory::vfunc_59	multi	done	00581ab3:46,00581ae1:32	two functions with no padding: vtable slot 59 at 0x581ab3 and slot 60 at 0x581ae1 (chunk 91, paused before staging)
 005c150b	44	2026-10-14_linux_hand51	CIsSameItemType::operator()	ltcg	open		CIsSameItemType::operator() calls CItem::IsSlotFull with ecx left over from the previous call (LTCG knew the callee preserves ecx): needs /GL+LTCG or the Windows RTM re-grade
 005d9380	304	2026-10-20_linux_hand232	CTCInventoryItem::CTCInventoryItem::vfunc_4	multi	open	005d9380:44,005d93b0:128,005d9430:128	three functions in one row (0x005D9380 + bodies at 0x005D93B0 and 0x005D9430 after int3 padding)
+005e3ea0	400	2026-10-21_linux_hand253	CTCQuestCompletionUI::IsHeroControlledByPlayer	multi	open	005e3ea0:48,005e3ed0:43,005e3f00:295	catalog row holds two functions (IsHeroControlledByPlayer + a following function); not one TU
+005eadd6	346	2026-10-21_linux_hand253	CTCTavernGame::SetStateAfterYesNoAlt	single	open	005eadd6:332	mid-function fragment of the landed CTCTavernGame function at 0x005EADC0 (no prologue)
 005eaf46	314	2026-10-20_linux_hand234	CTCTavernGame::SetStateAfterYesNoAlt	single	open	005eaf46:304	mid-function: entry 0x005EAF30 SetStateAfterYesNo
 005eb08d	243	2026-10-20_linux_hand234	CTCTavernGame::SetStateAfterOK	single	open	005eb08d:243	mid-function: entry 0x005EB080 SetStateAfterOK
 00619890	320	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	00619890:27,006198ab:17,006198bc:20,006198d0:20,006198e4:37,00619909:37,0061992e:23,00619950:67,006199a0:46	row holds the Transfer jump-table body plus following function(s) after int3 padding
@@ -34,6 +36,7 @@ address	row_len	batch	label	kind	status	pieces	note
 007da360	160	2026-10-15_linux_hand170	CTCTavernGameCardBlackjack::FrameUpdate	multi	open	007da360:50,007da3a0:92	two functions in the row (FrameUpdate tail jumps, second body at +0x40)
 007eeb20	144	2026-10-15_linux_hand169	CTCSmashableBarrier::Smash	multi	open	007eeb20:86,007eeb80:6,007eeb90:10,007eeba0:4	row holds Smash plus three more functions after int3 padding (0x007EEB80, 0x007EEB90, 0x007EEBA0)
 007eec50	160	2026-10-15_linux_hand170	CTCSmashableBase::OnDie	multi	open	007eec50:53,007eec90:93	two functions in the row (OnDie ret at +0x34, second body at +0x40)
+007f4e10	368	2026-10-21_linux_hand253	CTCSmashableBarrier::Smash	multi	open	007f4e10:86,007f4e70:3,007f4e80:68,007f4ed0:100,007f4f40:52	catalog row holds Smash plus three more small functions; not one TU
 007f7870	256	2026-10-20_linux_hand229	CTCActivationReceptorBase::FrameUpdate	multi	open	007f7870:174,007f791e:194	row holds FrameUpdate (with its jump table) plus a second function at 0x007F7940 (STLport remove_copy-like)
 007fa26c	36	2026-10-15_linux_hand79	CTCActionUseBuyHouse::OnCreate	cold	open	007fa160:0	not a function: reached by a je from inside the preceding function, uses its saved registers and ends with its ret 38h -- covered when that function lands (parent 007fa160)
 00800b90	272	2026-10-20_linux_hand226	CPersistContext::Transfer<signed_char>	multi	open	00800b90:27,00800bab:26,00800bc5:21,00800bda:15,00800be9:37,00800c0e:58,00800c48:21,00800c60:38,00800c90:14	row holds the Transfer jump-table body plus following function(s) after int3 padding

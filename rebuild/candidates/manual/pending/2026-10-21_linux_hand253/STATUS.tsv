@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+007ff190	DIFFER	353v343	-	register allocation: retail keeps the loop index in ebp (with its frame copy for find/push_back) and re-reads checkBlocked from its slot; ours keeps checkBlocked in bl and the index only in memory, wh
+006cf040	RELOCATION_MATCH	394v394	PASS	CTCWife::CTCWife(CThing* thing)
+007e62d0	RELOCATION_MATCH	369v369	PASS	CTCOracleMinigame::Quit()
+00971ed0	DIFFER	362v359	-	the remove_if predicate is built in the argument block from X,Y on the x87 stack and Z as a dword (also parked in a frame local); ours copies all three as dwords; this/&Target register names swapped (
+00744b50	DIFFER	351v349	-	the environment pointer is loaded straight into ecx in retail; the wind copy sits above the direction in the frame and the normalised components are multiplied by r from memory (fstp r; fxch; fmul [r]
+00744fb0	DIFFER	355v355	-	frame layout only: retail passes the empty comparator at the Bind2's own address (frame 0x24, lookup key and radius at frame +4); ours gives the comparator its own byte (frame 0x28), shifting the key/
+00759d30	RELOCATION_MATCH	400v400	PASS	CTCPhysicsRigidBody::ComputeForces(CRigidBodyConfig& config)
+0075ad50	RELOCATION_MATCH	368v368	PASS	CTCPhysicsRigidBody::Simulate(float deltaTime)
+008e5480	RELOCATION_MATCH	352v352	PASS	CTCPhysicsStandard::GetOnSurfaceParameters(const vector<CThing*>& things, bool& onSurface, bool& onGround, const C3DVector& pos, CTCPhysicsBase*& surface)
+00800540	RELOCATION_MATCH	400v400	PASS	CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from, const C3DVector& to, vector<pair<C2DVector,uchar> >& route)
+005e3ea0	SKIP	-	-	catalog row holds two functions (IsHeroControlledByPlayer + a following function); not one TU
+00761980	DIFFER	365v389	-	retail keeps the shape iterator in a frame slot and 0xff in bl for the colour bytes; ours keeps the iterator in ebx (frame 0x60 v 0x64), point copy scheduled differently
+00772250	RELOCATION_MATCH	378v378	PASS	CTCShop::FindDefaultStockItem(long defIndex)
+00773950	DIFFER	324v324	-	register/scheduling only: retail forms the villager lookup key address in ecx before `lea esi,[eax+44h]`, ours forms the map pointer first and takes eax for the key
+007744a0	RELOCATION_MATCH	361v361	PASS	CTCShop::CTCShop(CThing* thing)
+00799790	RELOCATION_MATCH	354v354	PASS	CTCShopKeeper::OnInitialActivate()
+00799900	RELOCATION_MATCH	351v351	PASS	CTCShopKeeper::AcquireNewCustomer()
+007c21a0	RELOCATION_MATCH	333v333	PASS	NThingShot::CTCShotDefinitionBase::Update()
+007c22f0	DIFFER	413v397	-	the Init call: retail homes the accuracy float in the dead 'normal' argument slot and the melee out-def in the string's slot, copies the by-value def with `inc [edi+4]` and releases the melee def with
+007bc004	DIFFER	338v342	-	frame 0x44 v 0x5c: retail gives the RandomiseShotDirection result, the right-handed set and the velocity temporaries separate slots, ours shares them; the velocity scale is kept on the x87 stack for a
+00786700	RELOCATION_MATCH	368v368	PASS	CTCSkeletalMorph::CalculateSkeletalMorph()
+007f4e10	SKIP	-	-	catalog row holds Smash plus three more small functions; not one TU
+007f5150	DIFFER	335v355	-	register allocation: retail spills this to the frame word, keeps the village in ebp and the 0x31 key constant in ebx inside the member loop (both lookup keys in the dead argument slot); ours keeps thi
+0072cba0	RELOCATION_MATCH	352v352	PASS	CTCSpecialAbilities::SetupBerserk()
+007479b0	RELOCATION_MATCH	331v331	PASS	CTCStealth::UpdateHearability()
+0079c290	RELOCATION_MATCH	336v336	PASS	CTCSummonableCreature::OnDie()
+00802420	RELOCATION_MATCH	366v366	PASS	CTCTargetingPlayer::GetTargetedPos(C3DVector& pos, float t)
+008039a0	RELOCATION_MATCH	371v371	PASS	CTCTargetingPlayer::IsTargetedThingOfTypeInRange(unsigned long typeMask)
+005eadd6	SKIP	-	-	mid-function fragment of the landed CTCTavernGame function at 0x005EADC0 (no prologue)
+005ebfa0	DIFFER	321v329	-	retail keeps the empty-vector return's null-tested free separate and drops the test on the shared end block (failed thing checks + main path); ours cross-jumps the failed checks into the empty-path fr
+005ec0f0	RELOCATION_MATCH	373v373	PASS	CTCTavernGame::EnterGame()
+005ec650	RELOCATION_MATCH	362v362	PASS	CTCTavernGame::LeaveGame()
+008f20f0	RELOCATION_MATCH	387v387	PASS	CTCTavernGameCardBase::LeaveGame()
+007d0850	RELOCATION_MATCH	359v359	PASS	CTCTavernGameShoveHaPenny::UpdateValues()
+007d5560	RELOCATION_MATCH	359v359	PASS	CTCTavernGameCardSorting::GetAdditionalInfo()
+007d5730	RELOCATION_MATCH	346v346	PASS	CTCTavernGameCardSorting::UpdateValues()
+007d5890	RELOCATION_MATCH	366v366	PASS	CTCTavernGameCardSorting::SelectCard()
+007d2a00	RELOCATION_MATCH	358v358	PASS	CTCTavernGameCoinGolf::GetBestScore()
+007d6f70	RELOCATION_MATCH	359v359	PASS	CTCTavernGameCardPairs::UpdateValues()
+007d8ab0	RELOCATION_MATCH	362v362	PASS	CTCTavernGameSpotTheAddition::UpdateValues()

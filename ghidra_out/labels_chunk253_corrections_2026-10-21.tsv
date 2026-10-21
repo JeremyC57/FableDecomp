@@ -1,0 +1,8 @@
+address	name	evidence
+006cf040	CTCWife::CTCWife	vtable 0x0125ED5C; not CTCOpinionSource::CTCOpinionSource (that is 0x00771360) (chunk 253)
+007d0850	CTCTavernGameShoveHaPenny::UpdateValues	source names were swapped with 0x007D6F70 (chunk 253)
+007d6f70	CTCTavernGameCardPairs::UpdateValues	source names were swapped with 0x007D0850 (chunk 253)
+007d2a00	CTCTavernGameCoinGolf::GetBestScore	catalogued vfunc_43 (chunk 253)
+008039a0	CTCTargetingPlayer::IsTargetedThingOfTypeInRange	catalogued vfunc_38 (descriptive) (chunk 253)
+00686a70	CTCBase::GetWorld	manifest GetDisplayEngine is wrong (chunk 253)
+0049d810	GetRandomSeed	manifest DoSizeof is wrong (chunk 253)
