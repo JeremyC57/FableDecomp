@@ -1,0 +1,90 @@
+// CTCTavernGame::GetWinPhrase() -- the end-of-game result text: empty while the game is unfinished, else the def's win or lose text looked up through GetText
+// Leaf: vfunc_42
+// (catalogued slot 42; it is GetWinPhrase: Ego_r.pdb orders the CWideString virtuals GetWinPhrase,
+// GetBet, GetPlayersMoney, GetTotalWinnings, and retail has them at 0x005EA100/1A0/250/310 with 0x005EA310 the labelled
+// GetTotalWinnings)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x005EA100, length 158 bytes (`ret 4`, CWideString through the hidden pointer); CTCTavernGame
+// vtable 0x012560BC slot 42.
+// Callees: CDefClassBase::GetSubDef<CTavernGameDef>(CDefPointer<const CTavernGameDef>*) @ 0x005ED4A0 (owner def +0x70; manifest instantiation
+// "<CAICreatureWillPowerIndicatorDef>" is a byte twin), CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("" @ 0x0122D70E),
+// CCharString::ToWideString() const @ 0x0099E480, ~CCharString @ 0x0099EAE0, CTCTavernGame::GetText(unsigned long) @ 0x005E9E70 (manifest
+// "CTCBetting::GetText" is the shared body), the def's virtual slot 1 (destroy).
+// Layout (retail; the PDB header's 0x14-byte UIComponents vector is 12 bytes in retail): UIComponents +0x0C, LastRenderTime +0x18,
+// IsBeingPlayed +0x20, GameWon +0x21, NumRounds +0x24, GameFinished +0x28. Tavern game def: win text +0xA4, lose text +0xA8.
+// Shape: the def pointer is a zeroed local filled by GetSubDef; the unfinished arm converts a CCharString temporary (built in the dead
+// hidden-pointer slot) and releases the def with a null test, the finished arm dereferences the def and releases it without one.
+// The win/lose choice is two returns (VC merges them into the conditional load); GetSubDef gets a same-TU `auto_inline(off)`
+// stand-in body that writes only the out slot, so VC7.1 knows the def pointer does not escape and keeps it in edi.
+struct CCharString {
+    void* m_pData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                    // 0x0099EAE0
+    struct CWideString ToWideString() const;           // 0x0099E480
+};
+struct CWideString {
+    void* m_pData;
+    CWideString(const CWideString& other);
+    ~CWideString();
+};
+struct CTavernGameDef {
+    virtual void v00();
+    virtual void Destroy();                     // slot 1
+    long RefCount;                              // +0x04
+    unsigned char _pad08[0xa4 - 0x08];
+    unsigned long WinText;                      // +0xa4
+    unsigned long LoseText;                     // +0xa8
+};
+template<class T> struct CDefPointer {
+    T* Object;
+    CDefPointer() : Object(0) { }
+    ~CDefPointer()
+    {
+        if (Object && --Object->RefCount == 0)
+            Object->Destroy();
+    }
+    T* operator->() const { return Object; }
+};
+struct CDefClassBase {
+    bool GetSubDef(CDefPointer<CTavernGameDef>* out) const;   // 0x005ED4A0
+};
+void* FindSubDef_CDefClassBase_GetSubDef(const CDefClassBase* def);   // stand-in callee of the stand-in body below
+// Stand-in body (the real one is out of line in retail): it writes the out slot only, so VC7.1 knows the def
+// pointer's address does not escape the call (the landed 0x00848730 idiom).
+#pragma auto_inline(off)
+__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CTavernGameDef>* out) const
+{
+    void* def = FindSubDef_CDefClassBase_GetSubDef(this);
+    if (!def)
+        return false;
+    out->Object = (CTavernGameDef*)def;
+    return true;
+}
+#pragma auto_inline(on)
+struct CThingDefHolder {
+    unsigned char _pad00[0x70];
+    CDefClassBase* PDef;                        // +0x70
+};
+struct CTCTavernGame {
+    void* __vfptr;                              // +0x00 (CTCBase)
+    CThingDefHolder* ParentThing;               // +0x04
+    unsigned char _base08[4];
+    void* UIComponents[3];                      // +0x0c
+    double LastRenderTime;                      // +0x18
+    bool IsBeingPlayed;                         // +0x20
+    bool GameWon;                               // +0x21
+    long NumRounds;                             // +0x24
+    bool GameFinished;                          // +0x28
+    CWideString GetText(unsigned long textID) const;   // 0x005E9E70
+    CWideString vfunc_42() const;
+};
+
+CWideString CTCTavernGame::vfunc_42() const
+{
+    CDefPointer<CTavernGameDef> def;
+    ParentThing->PDef->GetSubDef(&def);
+    if (!GameFinished)
+        return CCharString("").ToWideString();
+    if (GameWon)
+        return GetText(def->WinText);
+    return GetText(def->LoseText);
+}

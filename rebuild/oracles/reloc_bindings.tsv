@@ -21482,3 +21482,15 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?CreateShot@@YIPAUCThing@@JPAU1@00MMMPAUCDefPointerMelee@@PAUC3DVector@@PAUCRightHandedSet@@@Z	007c0ad0	008f3020
 ?GetShotAccuracyPercentage@CThing@@QAEJXZ	00663b10	008f3020
 ?GetSubDef@CDefClassBase@@QAE_NPAUCDefPointerAbility@@@Z	0042b1a6	008f3020
+?GetSubDef@CDefClassBase@@QBE_NPAU?$CDefPointer@UCTavernGameDef@@@@@Z	005ed4a0	005ea100
+?GetText@CTCTavernGame@@QBE?AUCWideString@@K@Z	005e9e70	005ea100
+?GetRandomAnimation_005dcc00@CAnimationSet@@QBEPBUCAnimationEntry@@ABUCCharString@@PAKABUCAnimFilterBase@@J@Z	005dcc00	00662ef0
+?ApplyBonusItemEffects@CTCHeroStats@@QAEXPBUCBonusItemDef@@@Z	0057c4f1	007edd60
+?GetSubDef@CDefClassBase@@QAE_NPAU?$CDefPointer@$$CBUCBonusItemDef@@@@@Z	007e1d30	007edd60
+??0CCreatureAction_ActivateQuest@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABUCCharString@@_N@Z	00843f50	007ef600
+?GetSubDef@CDefClassBase@@QBE_NPAU?$CDefPointer@UCActivateQuestDef@@@@@Z	007b5680	007ef600
+?OnCreateGameObject@CThingBuilding@@QAE_NXZ	00838a40	0082d6f0
+?SetScale@CTCGraphicAppearance@@QAEXM@Z	004bfa50	0082d6f0
+?GetSubDef@CDefClassBase@@QAE_NPAUCDefPointer_CSubDef@@@Z	0087c490	0087c420
+??$GetSubDef@UCSpecialEffectsDef@@@CDefClassBase@@QAE_NAAU?$CDefSlot@UCSpecialEffectsDef@@@@@Z	00669580	008d9740
+?GetSubDef@CDefClassBase@@QAE_NPAU?$CDefPointer@UCScorpionKingBattleDef@@@@@Z	008c5a50	008da2e0

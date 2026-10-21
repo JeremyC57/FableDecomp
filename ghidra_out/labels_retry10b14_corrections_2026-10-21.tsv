@@ -1,0 +1,4 @@
+address	name	evidence
+005ea100	CTCTavernGame::GetWinPhrase	catalogued vfunc_42; Ego_r.pdb CWideString virtuals GetWinPhrase/GetBet/GetPlayersMoney/GetTotalWinnings map to 0x5EA100/0x5EA1A0/0x5EA250/0x5EA310 (the last already GetTotalWinnings); RELOCATION_MATCH (retry 10b14)
+007edd60	CTCCarriedActionUsePotion::OnActionUse	catalogued vfunc_28; its qualified base call goes to 0x007EAB90; RELOCATION_MATCH (retry 10b14)
+0083d190	CThingMarker::GetCurrentGraphic	not CThingVillage; RELOCATION_MATCH (retry 10b14)
