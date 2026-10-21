@@ -1966,3 +1966,16 @@ address	module	name	length	chunk	reason
 006e0be0	CTCDParticleEmitter	AttachToThing	464	hand269	DIFFER(-v449) -- not reconstructed (viewed only)
 007fd650	CTCDPhysicalObstruction	CTCDPhysicalObstruction::vfunc_9	448	hand269	DIFFER(434v448) -- temporaries frame sharing; label vfunc_9 = FrameUpdate
 0078f8f0	CTCDivineWrath	CancelForCutscene	512	hand269	DIFFER(497v505) -- ebx constant-1 vs caster register tie; advisor a15 closest
+00a52450	CQuaternion	ToMatrix	447	hand268	DIFFER(435v447) -- C3DKeyframe::ToMatrix (catalog CQuaternion): pos.Z fld/fstp v int mov, m0/m1 slots, scale kept in st(1); parked
+004b2510	CQuestManager	LoadResourcesForQuests	416	hand268	DIFFER(401v401) -- frame only: retail shares one 8-aligned slot for three discarded set::insert results; parked
+004b4aa0	CQuestManager	ActivateQuestCard	432	hand268	DIFFER(426v426) -- one frame word: GetTC key copy homed in the dead card arg slot; parked
+0066cd50	CRegionMinimap	BuildRegionMinimapTGA	432	hand268	DIFFER(430v423) -- BuildRegionMinimapTGA: bare fistp rounding helper (inline asm in original); lane gap; parked
+0087bd70	CRotateAround	Update	464	hand268	DIFFER(451v451) -- CRotateAround::Update: frame-slot allocation only (0x40 v 0x44); parked
+00a873e0	CSBAgents	?Process@CSBAgents@@UAE_NPBVCSteeringAgent@@@Z	416	hand268	DIFFER(404v404) -- CSBAgents::Process: away/force frame slots swapped + vcall register names; parked
+00853320	CScriptModuleBase	GetViewPosInFocalPlane	464	hand268	DIFFER(438v458) -- GetViewPosInFocalPlane: register/x87 allocation (this in ebx), frame 0x30 v 0x3c; parked
+00852e10	CScriptModuleFOVZoomStayRelative	CScriptModuleFOVZoomStayRelative	448	hand268	DIFFER(447v445) -- FOVZoomStayRelative ctor: x87 scheduling in the inline fast Normalise; parked (advisor: park)
+00853670	CScriptModuleOpenChest	OnInitLeaf	448	hand268	DIFFER(445v445) -- OpenChest::OnInitLeaf: scheduling only; parked
+008539c0	CScriptModuleUseLamp	OnInitLeaf	480	hand268	DIFFER(475v475) -- UseLamp::OnInitLeaf: scheduling only; parked
+0098b420	CShaderRenderManager	AllocateLights	448	hand268	DIFFER(448v446) -- AllocateLights: frame 0x58 v 0x48 (iterator tag in a live arg slot); parked
+00b9c2e0	CShadowClipVolume	ClipBoundingBox	494	hand268	DIFFER(476v494) -- ClipBoundingBox: SSE branch is inline asm in the original (spilled pointer local, no aligned frame); lane gap; parked
+00872110	CStringAndCageBase	UpdateAutoGoBehind	448	hand268	DIFFER(447v447) -- UpdateAutoGoBehind: one canonical x87 operand swap; parked (advisor: park)

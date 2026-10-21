@@ -1,0 +1,12 @@
+address	name	evidence
+00cb8960	CScriptBase::OnScriptedEntityActivated	(unsigned __int64, CScriptThing&); not AttachNavigator (chunk 268)
+00a52450	C3DKeyframe::ToMatrix	not CQuaternion::ToMatrix (chunk 268)
+00dfaeb0	CQ_TraderConflictGoodScript::WatchTimeLimit	catalog said Evil (chunk 268)
+0041a290	GetBonesDataPath	returns L"Data\\Bones\\", not GetAutoSaveFileName (chunk 268)
+00c31b50	TransferSize	not BeginInputLoading (chunk 268)
+0081d9f0	std::vector::resize	not a CBrainBehaviour method (chunk 268)
+0044fc00	CDefString::TransferBinaryIn	(chunk 268)
+004bb9d0	CCountedPointer::Reset	(chunk 268)
+006c3ac0	CCountedPointer::Reset	(chunk 268)
+009e14b0	std::vector::_M_insert_overflow	(chunk 268)
+009e1750	std::vector::_M_insert_overflow	(chunk 268)

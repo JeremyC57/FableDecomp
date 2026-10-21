@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00dccf30	RELOCATION_MATCH	407v407	PASS	CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation
+00df7980	RELOCATION_MATCH	412v412	PASS	CQ_TraderConflictEvilScript::WatchTimeLimit
+00dfaeb0	RELOCATION_MATCH	412v412	PASS	CQ_TraderConflictGoodScript::WatchTimeLimit (catalog says Evil: the Good script copy)
+00e13c60	RELOCATION_MATCH	439v439	PASS	CQ_WhiteBalverineKnotholeGladeScript::Init
+00e18eb0	RELOCATION_MATCH	492v492	PASS	CQ_WhiteBalverineWWScript::MonitorBalverine
+00a52450	DIFFER	435v447	-	C3DKeyframe::ToMatrix (catalog CQuaternion): pos.Z fld/fstp v int mov, m0/m1 slots, scale kept in st(1); parked
+004b2510	DIFFER	401v401	-	frame only: retail shares one 8-aligned slot for three discarded set::insert results; parked
+004b3060	RELOCATION_MATCH	499v499	PASS	InitializeDaySection; UninitializeDaySection model + CSectionSet insert
+004b33e0	RELOCATION_MATCH	499v499	PASS	InitializeNightSection; same shape as the day row
+004b4590	RELOCATION_MATCH	477v477	PASS	CQuestManager ctor (leaf ??0CQuestManager); full member model, CIntelligentPointer base ctor then vptr
+004b4aa0	DIFFER	426v426	-	one frame word: GetTC key copy homed in the dead card arg slot; parked
+004b4c50	RELOCATION_MATCH	479v479	PASS	ActivateTestQuestCard
+006ffc30	RELOCATION_MATCH	469v469	PASS	TransferBinaryIn; non-template __forceinline ReadValue(T&) per field
+004715ab	RELOCATION_MATCH	442v442	PASS	CRegionDef::Transfer
+0066cd50	DIFFER	430v423	-	BuildRegionMinimapTGA: bare fistp rounding helper (inline asm in original); lane gap; parked
+009dc2c0	RELOCATION_MATCH	509v509	PASS	Add2DLine; AddText model + CVertexVector, inline ToViewportX/Y(const float&)
+0087bd70	DIFFER	451v451	-	CRotateAround::Update: frame-slot allocation only (0x40 v 0x44); parked
+00a873e0	DIFFER	404v404	-	CSBAgents::Process: away/force frame slots swapped + vcall register names; parked
+00ded540	RELOCATION_MATCH	470v470	PASS	CSP_AmbushGuard::Main
+008b08b0	RELOCATION_MATCH	425v425	PASS	Process = twelve handler-map inserts; discarded insert results share one 8-aligned slot
+00cb8960	RELOCATION_MATCH	465v465	PASS	really CScriptBase::OnScriptedEntityActivated (catalog AttachNavigator); __forceinline CVectorMap::Add + push_back
+00853320	DIFFER	438v458	-	GetViewPosInFocalPlane: register/x87 allocation (this in ebx), frame 0x30 v 0x3c; parked
+008529d0	RELOCATION_MATCH	413v413	PASS	ConversationOverShoulderOfSpokenTo::Update
+00852e10	DIFFER	447v445	-	FOVZoomStayRelative ctor: x87 scheduling in the inline fast Normalise; parked (advisor: park)
+00853670	DIFFER	445v445	-	OpenChest::OnInitLeaf: scheduling only; parked
+008539c0	DIFFER	475v475	-	UseLamp::OnInitLeaf: scheduling only; parked
+0098b420	DIFFER	448v446	-	AllocateLights: frame 0x58 v 0x48 (iterator tag in a live arg slot); parked
+009e1280	RELOCATION_MATCH	411v411	PASS	PrepareForRender; CConstantVector unsigned size()/data()
+00c31b90	RELOCATION_MATCH	425v425	PASS	LoadPixelShaderData; needs /EHsc; writer branch in its own block, ? true : false
+00b9c2e0	DIFFER	476v494	-	ClipBoundingBox: SSE branch is inline asm in the original (spilled pointer local, no aligned frame); lane gap; parked
+007617a0	RELOCATION_MATCH	467v467	PASS	EditorDrawHighlightPoints; C3DVector user copy ctor, CRGBColour copy assigns R,G,B,A
+004ecb4d	RELOCATION_MATCH	489v489	PASS	CShopDef::Transfer
+006c3620	RELOCATION_MATCH	425v425	PASS	GetMorphTarget; const-ref name homes the path CCharString in the dead arg slot
+006c37d0	RELOCATION_MATCH	459v459	PASS	PreloadBoneConfigs; needs /GS (cookie over a 264-wchar16 buffer), and esp,-8
+0081aed0	RELOCATION_MATCH	454v454	PASS	CSkeletalMorphs::TransferBinaryIn; resize(count, CMorphPair()) + inline ReadULong
+00aab9c0	SKIP	-	-	catalog row holds several int3-separated functions (vfunc_16 is a 5-byte jmp thunk); skipped
+0045fee3	RELOCATION_MATCH	458v458	PASS	CSpecialAbilitiesPhysicalShieldDef::operator=
+00ed45a0	RELOCATION_MATCH	459v459	PASS	CStatueMasterCellarDoors::Main
+00ed41d0	RELOCATION_MATCH	505v505	PASS	CStatueMasterStatue::Main
+00872110	DIFFER	447v447	-	UpdateAutoGoBehind: one canonical x87 operand swap; parked (advisor: park)
