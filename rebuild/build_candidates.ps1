@@ -263303,6 +263303,69 @@ $catalog = @(
         TestSource = '00/7d/CTCTavernGameSpotTheAddition_OnInitialActivate_007d83c0_test.cpp'
         PassPattern = '007d83c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00488b20'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_LocateCharacterStartHolySite_00488b20.cpp'
+        TestSource = '00/48/CPlayer_LocateCharacterStartHolySite_00488b20_test.cpp'
+        PassPattern = '00488b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b2fe0'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_AddActivatedQuestName_004b2fe0.cpp'
+        TestSource = '00/4b/CQuestManager_AddActivatedQuestName_004b2fe0_test.cpp'
+        PassPattern = '004b2fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c0580'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_DestroyMoneyBags_006c0580.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_DestroyMoneyBags_006c0580_test.cpp'
+        PassPattern = '006c0580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074e560'
+        Module = 'CTCContainerRewardHero'
+        Source = '00/74/CTCContainerRewardHero_CreateNewObject_0074e560.cpp'
+        TestSource = '00/74/CTCContainerRewardHero_CreateNewObject_0074e560_test.cpp'
+        PassPattern = '0074e560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ed560'
+        Module = 'CTCCarriedActionUseGoldBag'
+        Source = '00/7e/CTCCarriedActionUseGoldBag_OnActionUse_007ed560.cpp'
+        TestSource = '00/7e/CTCCarriedActionUseGoldBag_OnActionUse_007ed560_test.cpp'
+        PassPattern = '007ed560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008579d0'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_UpdateActionRunningTime_008579d0.cpp'
+        TestSource = '00/85/CCombatActionBase_UpdateActionRunningTime_008579d0_test.cpp'
+        PassPattern = '008579d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096cfc0'
+        Module = 'CAIStateGroup_EatAtTable'
+        Source = '00/96/CAIStateGroupEatAtTable_OnReplace_0096cfc0.cpp'
+        TestSource = '00/96/CAIStateGroupEatAtTable_OnReplace_0096cfc0_test.cpp'
+        PassPattern = '0096cfc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098b420'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_AllocateLights_0098b420.cpp'
+        TestSource = '00/98/CShaderRenderManager_AllocateLights_0098b420_test.cpp'
+        PassPattern = '0098b420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aebaf0'
+        Module = 'NParticleEngine::CParticleEmitterManager'
+        Source = '00/ae/NParticleEngineCParticleEmitterManager_GetActiveEmitterNames_00aebaf0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterManager_GetActiveEmitterNames_00aebaf0_test.cpp'
+        PassPattern = '00aebaf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
