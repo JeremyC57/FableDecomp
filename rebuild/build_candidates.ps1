@@ -263366,6 +263366,42 @@ $catalog = @(
         TestSource = '00/ae/NParticleEngineCParticleEmitterManager_GetActiveEmitterNames_00aebaf0_test.cpp'
         PassPattern = '00aebaf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005a3581'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_BuyHighlightedItem_005a3581.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_BuyHighlightedItem_005a3581_test.cpp'
+        PassPattern = '005a3581_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006412b0'
+        Module = 'CTCLight'
+        Source = '00/64/CTCLight_SetActive_006412b0.cpp'
+        TestSource = '00/64/CTCLight_SetActive_006412b0_test.cpp'
+        PassPattern = '006412b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bffd0'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6b/CTCBuyableHouse_GetValueOfTrophies_006bffd0.cpp'
+        TestSource = '00/6b/CTCBuyableHouse_GetValueOfTrophies_006bffd0_test.cpp'
+        PassPattern = '006bffd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007800b0'
+        Module = 'CTCHeroGuide'
+        Source = '00/78/CTCHeroGuide_OpenQuestSelectInterface_007800b0.cpp'
+        TestSource = '00/78/CTCHeroGuide_OpenQuestSelectInterface_007800b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '007800b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096c4f0'
+        Module = 'CAIStateGroup_Thunder'
+        Source = '00/96/CAIStateGroupThunder_Update_0096c4f0.cpp'
+        TestSource = '00/96/CAIStateGroupThunder_Update_0096c4f0_test.cpp'
+        PassPattern = '0096c4f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
