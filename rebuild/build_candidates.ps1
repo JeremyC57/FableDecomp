@@ -257525,6 +257525,98 @@ $catalog = @(
         TestSource = '00/f3/CTriangleStripifier2_ReorderTriangleListInPlace_00f3f5a0_test.cpp'
         PassPattern = '00f3f5a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0040fba0'
+        Module = 'CPersistContext_TransferableVector'
+        Source = '00/40/CPersistContextTransferableVector_TransferOut_0040fba0.cpp'
+        TestSource = '00/40/CPersistContextTransferableVector_TransferOut_0040fba0_test.cpp'
+        PassPattern = '0040fba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00416e78'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_GetInputs_00416e78.cpp'
+        TestSource = '00/41/CMainGameComponent_GetInputs_00416e78_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00416e78_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00449d90'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_InitPlayerCharacter_00449d90.cpp'
+        TestSource = '00/44/CPlayerManager_InitPlayerCharacter_00449d90_test.cpp'
+        PassPattern = '00449d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057de14'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_ApplyPenaltyForDeath_0057de14.cpp'
+        TestSource = '00/57/CTCHeroStats_ApplyPenaltyForDeath_0057de14_test.cpp'
+        PassPattern = '0057de14_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cba50'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/6c/CTCCreatureNavigation_IsPosNavigable_006cba50.cpp'
+        TestSource = '00/6c/CTCCreatureNavigation_IsPosNavigable_006cba50_test.cpp'
+        PassPattern = '006cba50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00730630'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_CTCDoor_00730630.cpp'
+        TestSource = '00/73/CTCDoor_CTCDoor_00730630_test.cpp'
+        PassPattern = '00730630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075cd30'
+        Module = 'CTCCameraPointScripted'
+        Source = '00/75/CTCCameraPointScripted_GetStartPos_0075cd30.cpp'
+        TestSource = '00/75/CTCCameraPointScripted_GetStartPos_0075cd30_test.cpp'
+        PassPattern = '0075cd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075cd90'
+        Module = 'CTCCameraPointScripted'
+        Source = '00/75/CTCCameraPointScripted_GetEndPos_0075cd90.cpp'
+        TestSource = '00/75/CTCCameraPointScripted_GetEndPos_0075cd90_test.cpp'
+        PassPattern = '0075cd90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00892850'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_AddScreenMessage_00892850.cpp'
+        TestSource = '00/89/CGameScriptInterface_AddScreenMessage_00892850_test.cpp'
+        PassPattern = '00892850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ec870'
+        Module = 'CTCDegradableBase'
+        Source = '00/8e/CTCDegradableBase_OnCreate_008ec870.cpp'
+        TestSource = '00/8e/CTCDegradableBase_OnCreate_008ec870_test.cpp'
+        PassPattern = '008ec870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095d070'
+        Module = 'CAIStateGroup_RangedCombatUsePreferredFirePoint'
+        Source = '00/95/CAIStateGroupRangedCombatUsePreferredFirePoint_AttackEnemy_0095d070.cpp'
+        TestSource = '00/95/CAIStateGroupRangedCombatUsePreferredFirePoint_AttackEnemy_0095d070_test.cpp'
+        PassPattern = '0095d070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf6f80'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_BuildDefaultSection_00bf6f80.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_BuildDefaultSection_00bf6f80_test.cpp'
+        PassPattern = '00bf6f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf9290'
+        Module = 'CEngineTexturePalette'
+        Source = '00/bf/CEngineTexturePalette_Load_00bf9290.cpp'
+        TestSource = '00/bf/CEngineTexturePalette_Load_00bf9290_test.cpp'
+        PassPattern = '00bf9290_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,81 @@
+addr       parity           behav  name
+0040fba0   WARN RELOC_NAME: ?TransferOutLong@@YIXPAUCPersistContext@@PAUCCharString@@PAJ@Z -> 009e2560 labelled '_global::AppendLongToString'
+0040fba0   RELOCATION_MATCH PASS   TransferOut
+00416e78   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00416e78   WARN RELOC_NAME: ?GFGetSystemManager@@YIPAUCSystemManager@@XZ -> 009a4ec0 labelled 'CEngineInternalPrimitiveBase::AddChildPrimitive'
+00416e78   WARN RELOC_NAME: ?BeginEventPoll@CGamePlayerInterface@@QAEXXZ -> 004457f0 labelled 'CXMVPlaybackInfo::CXMVPlaybackInfo'
+00416e78   RELOCATION_MATCH PASS   GetInputs
+00449d90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00449d90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00449d90   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00449d90   RELOCATION_MATCH PASS   InitPlayerCharacter
+0057de14   WARN RELOC_NAME: ?GetDefinitionManager@CTCHeroStats_Methods@@QBEABUCGameDefinitionManager@@XZ -> 006869d0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0057de14   RELOCATION_MATCH PASS   ApplyPenaltyForDeath
+006cba50   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cba50   WARN RELOC_NAME: ?GetPosition@CThing@@QBEABUC3DVector@@XZ -> 004c73d0 labelled 'CVertexBufferWin32::DoSizeof'
+006cba50   RELOCATION_MATCH PASS   IsPosNavigable
+00730630   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00730630   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00730630   WARN SHARED_HEADER_AVAILABLE CTCBase
+00730630   WARN RELOC_NAME: ?GetDefinitionManager@CTCBase@@QAEPAUCDefinitionManager@@XZ -> 006869d0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00730630   RELOCATION_MATCH PASS   CTCDoor
+0075cd30   WARN RELOC_NAME: ?GetPosition@CThing@@QBEABUC3DVector@@XZ -> 004c73d0 labelled 'CVertexBufferWin32::DoSizeof'
+0075cd30   RELOCATION_MATCH PASS   GetStartPos
+0075cd90   WARN RELOC_NAME: ?GetPosition@CThing@@QBEABUC3DVector@@XZ -> 004c73d0 labelled 'CVertexBufferWin32::DoSizeof'
+0075cd90   RELOCATION_MATCH PASS   GetEndPos
+00892850   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00892850   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00892850   WARN RELOC_CONFLICT: ?g_pEngine@@3PAUCEngine_Retail@@A -> 013b86a0 here, 01436e98 in landed 00b5ec90
+00892850   WARN RELOC_NAME: ?GetText@CTextEntry@@QBE?AUCWideString@@XZ -> 009c7a40 labelled 'CBankFile::GetBankHandle'
+00892850   WARN RELOC_NAME: ??1CWideString@@QAE@XZ -> 0099b510 labelled 'CCharString::~CCharString'
+00892850   WARN RELOC_NAME: ?GetRandomSeed@CWorld_Retail@@QAEPAKXZ -> 0049d810 labelled 'CVertexBufferWin32::DoSizeof'
+00892850   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AUCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+00892850   WARN RELOC_NAME: ??H@YI?AUCWideString@@PBGABU0@@Z -> 0099bff0 labelled 'CCharString::SetFromEnum'
+00892850   WARN RELOC_NAME: ??9CWideString@@QBE_NPBG@Z -> 0099b150 labelled 'CWideString::NotEqual'
+00892850   RELOCATION_MATCH PASS   AddScreenMessage
+008ec870   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008ec870   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008ec870   WARN SHARED_HEADER_AVAILABLE CTCBase
+008ec870   WARN RELOC_NAME: ?GetDefinitionManager@CTCBase@@QAEPAUCDefinitionManager@@XZ -> 006869d0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+008ec870   RELOCATION_MATCH PASS   OnCreate
+0095d070   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095d070   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095d070   WARN RELOC_NAME: ?CanAttackNow@CThingPos@@QAE_NXZ -> 00662410 labelled 'C3DAnimationBlendState::AddCombinationBlend'
+0095d070   WARN RELOC_NAME: ?GetPosition@CThingPos@@QBEABUC2DVector@@XZ -> 004c73d0 labelled 'CVertexBufferWin32::DoSizeof'
+0095d070   RELOCATION_MATCH PASS   AttackEnemy
+00bf6f80   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+00bf6f80   WARN RELOC_NAME: ??2CLandscapeBackgroundPatch@@SIPAXIPAVCLandscapeBackgroundTreeNode@@@Z -> 00be5bb0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+00bf6f80   RELOCATION_MATCH PASS   BuildDefaultSection
+00bf9290   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099eae0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00bf9290   WARN RELOC_NAME: ?FindEntry@CBankFile@@QAEKABVCCharString@@@Z -> 009ccdc0 labelled 'CBankFile::FindIndexBySymbol'
+00bf9290   RELOCATION_MATCH PASS   Load
+
+WINS: 13
+  0040fba0 RELOCATION_MATCH CPersistContext_TransferableVector::TransferOut
+  00416e78 RELOCATION_MATCH CMainGameComponent::GetInputs
+  00449d90 RELOCATION_MATCH CPlayerManager::InitPlayerCharacter
+  0057de14 RELOCATION_MATCH CTCHeroStats::ApplyPenaltyForDeath
+  006cba50 RELOCATION_MATCH CTCCreatureNavigation::IsPosNavigable
+  00730630 RELOCATION_MATCH CTCDoor::??0CTCDoor
+  0075cd30 RELOCATION_MATCH CTCCameraPointScripted::GetStartPos
+  0075cd90 RELOCATION_MATCH CTCCameraPointScripted::GetEndPos
+  00892850 RELOCATION_MATCH CGameScriptInterface::AddScreenMessage
+  008ec870 RELOCATION_MATCH CTCDegradableBase::OnCreate
+  0095d070 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::AttackEnemy
+  00bf6f80 RELOCATION_MATCH CLandscapeBackgroundTreeNode::BuildDefaultSection
+  00bf9290 RELOCATION_MATCH CEngineTexturePalette::Load
+
+LANDED 13 wins into src/compiled + tests + catalog + oracle
+  CPersistContextTransferableVector_TransferOut_0040fba0
+  CMainGameComponent_GetInputs_00416e78
+  CPlayerManager_InitPlayerCharacter_00449d90
+  CTCHeroStats_ApplyPenaltyForDeath_0057de14
+  CTCCreatureNavigation_IsPosNavigable_006cba50
+  CTCDoor_CTCDoor_00730630
+  CTCCameraPointScripted_GetStartPos_0075cd30
+  CTCCameraPointScripted_GetEndPos_0075cd90
+  CGameScriptInterface_AddScreenMessage_00892850
+  CTCDegradableBase_OnCreate_008ec870
+  CAIStateGroupRangedCombatUsePreferredFirePoint_AttackEnemy_0095d070
+  CLandscapeBackgroundTreeNode_BuildDefaultSection_00bf6f80
+  CEngineTexturePalette_Load_00bf9290

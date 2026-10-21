@@ -1,0 +1,20 @@
+008ec870	RELOCATION_MATCH	OnCreate	sweep d3: GetDef/GetSubDef no-escape stand-ins (out written inline) fix the late zero store of the CDefPointer temporary
+00bf9290	RELOCATION_MATCH	Load	sweep s2: STLport operator[] as *(begin_() + n) through an inline accessor fixes the dead-stream-slot count home
+00730630	RELOCATION_MATCH	??0CTCDoor	d3 no-escape GetDef/GetSubDef stand-ins + parent read into a named local before GetDef (eax/edx roles)
+0040fba0	RELOCATION_MATCH	TransferOut	family traits form: CPersistTraits<long>::TransferOut inline copy-and-forward gives index-before-first load order
+00892850	RELOCATION_MATCH	AddScreenMessage	landed SetQuestInfoText model (CRefVirtual+CRefCounted ReleaseTemporary), CIVCountedPointer dtor zeroes inside the null test, group entry list taken from the temporary
+00bf6f80	RELOCATION_MATCH	BuildDefaultSection	ccsw copy ctor + patch ctor float args through inline box getters (evaluated first, parked in dead arg slots) + box Set(min,max)
+0072a9b0	DIFFER(lane gap)	SetupForcePush	CTCSpecialAbilities Setup* AddTC this-load: advisor 2026-10-21 OPEN after 30 probes (retry_shared/advisor/0072a9b0/RESULT.md), written off as one lane gap
+0072aa00	DIFFER(lane gap)	SetupHealLife	CTCSpecialAbilities Setup* AddTC this-load: advisor 2026-10-21 OPEN after 30 probes (retry_shared/advisor/0072a9b0/RESULT.md), written off as one lane gap
+0072aa50	DIFFER(lane gap)	SetupGhostSwordSpell	CTCSpecialAbilities Setup* AddTC this-load: advisor 2026-10-21 OPEN after 30 probes (retry_shared/advisor/0072a9b0/RESULT.md), written off as one lane gap
+0072aaa0	DIFFER(lane gap)	SetupMultiArrow	CTCSpecialAbilities Setup* AddTC this-load: advisor 2026-10-21 OPEN after 30 probes (retry_shared/advisor/0072a9b0/RESULT.md), written off as one lane gap
+0072c680	DIFFER(lane gap)	SetupLightningSpell	CTCSpecialAbilities Setup* AddTC this-load: advisor 2026-10-21 OPEN after 30 probes (retry_shared/advisor/0072a9b0/RESULT.md), written off as one lane gap
+0072a970	DIFFER(lane gap)	SetupBulletTime	CTCSpecialAbilities Setup* AddTC this-load: advisor 2026-10-21 OPEN after 30 probes (retry_shared/advisor/0072a9b0/RESULT.md), written off as one lane gap
+00e24260	TAKEN_BY_A	GetTraderRandomSpeechEnabled	landed by retry A (advisor s60_reread)
+006cba50	RELOCATION_MATCH	IsPosNavigable	B-4: thing reached through an inline GetParentThing() accessor (pos loaded first, pushes interleaved)
+0057de14	RELOCATION_MATCH	ApplyPenaltyForDeath	second def chain through a named def-pointer local (eax chain)
+0075cd30	RELOCATION_MATCH	GetStartPos	LABEL: really GetStartPos (reads StartPos +0x40, PDB pair); inline GetParentThing() accessor fixes the X fadd operand order
+0075cd90	RELOCATION_MATCH	GetEndPos	inline GetParentThing() accessor fixes the X fadd operand order; pointer params per PDB, landed TransformPosition signature
+00449d90	RELOCATION_MATCH	InitPlayerCharacter	sweep cb (same-TU GetDef<CPlayerDef> body) + inline GetDefinitionManager() accessor
+0095d070	RELOCATION_MATCH	AttackEnemy	inline GetCreature() accessor at both creature reads + plain early returns
+00416e78	RELOCATION_MATCH	GetInputs	camera slot 1 returns a whole 56-byte CCamera (the 0x2C unexplained frame bytes) + inline GetPlayerInterface() accessor (top-tested loop)

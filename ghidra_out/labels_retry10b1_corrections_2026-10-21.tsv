@@ -1,0 +1,2 @@
+address	name	evidence
+0075cd30	CTCCameraPointScripted::GetStartPos	reads PDB StartPos +0x40; not GetEndPos, which is 0x0075CD90 (retry 10b1)
