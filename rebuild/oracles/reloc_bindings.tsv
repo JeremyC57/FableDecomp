@@ -21757,3 +21757,11 @@ _wcsncmp	00bfeb0a	004071c0
 ?RegisterFilter@CTestPos@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00ef3840
 ??_7CTCWillLightning@@6B@	0126c724	007a07f0
 ?clear@CBeamList@@QAEXXZ	007a3910	007a07f0
+??$GetDef@$$CBUCUIDef@NUISystem@@@CDefinitionManager@@QAE_NJPAU?$CDefPointer@$$CBUCUIDef@NUISystem@@@@@Z	0042aeda	00530ec0
+?GetMiscThingsDef@CTCInventoryAbilities@@QBE?AUCMiscThingsDefPointer@@XZ	005ee3b3	005f6a6f
+?GetSubDef@CThingCreatureDef@@QAE_NPAU?$CDefPointer@UCCreatureSoundSubDef@@@@@Z	0065f604	00665f90
+?PlaySound@CTCCreatureSound@@QAEXABUCCharString@@JJJJ@Z	0066bd00	00665f90
+?SetVoiceChannel@CTCCreatureSound@@QAEXABUCCharString@@@Z	0066a9d0	00665f90
+?g_CreatureContinuousSoundVoice@@3JA	013ba874	00665f90
+?CreateSpecialEffect@@YIXJPBUC3DVector@@_N@Z	006e0880	008c0ea0
+?IsModeActive@CTCCreatureModeManager@@QAE_NK@Z	0073a8a0	008c0ea0

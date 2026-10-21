@@ -1,0 +1,2 @@
+address	name	evidence
+00530ec0	NUISystem::CComponent::LoadAndReturnDef	catalogued CEventKilledCreature ctor (a 0.55 BSim match); only callers are the NUISystem CList/CEditBox/CText ctors and dtors, reads DefIndex +0x130, Ego_r.pdb has the mangled name; RELOCATION_MATCH (retry 10b17)

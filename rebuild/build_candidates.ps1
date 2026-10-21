@@ -260610,6 +260610,34 @@ $catalog = @(
         TestSource = '00/7a/CTCWillLightning_CTCWillLightning_007a07f0_test.cpp'
         PassPattern = '007a07f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00530ec0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_LoadAndReturnDef_00530ec0.cpp'
+        TestSource = '00/53/NUISystemCComponent_LoadAndReturnDef_00530ec0_test.cpp'
+        PassPattern = '00530ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f6a6f'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5f/CTCInventoryAbilities_ResetAssignedAbilitiesPC_005f6a6f.cpp'
+        TestSource = '00/5f/CTCInventoryAbilities_ResetAssignedAbilitiesPC_005f6a6f_test.cpp'
+        PassPattern = '005f6a6f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00665f90'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_PlayCreatureContinuousSounds_00665f90.cpp'
+        TestSource = '00/66/CThingCreatureBase_PlayCreatureContinuousSounds_00665f90_test.cpp'
+        PassPattern = '00665f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c0ea0'
+        Module = 'CCreatureAction_JackDeathInto'
+        Source = '00/8c/CCreatureActionJackDeathInto_Initialise_008c0ea0.cpp'
+        TestSource = '00/8c/CCreatureActionJackDeathInto_Initialise_008c0ea0_test.cpp'
+        PassPattern = '008c0ea0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
