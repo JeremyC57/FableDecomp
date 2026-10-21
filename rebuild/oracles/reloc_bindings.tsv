@@ -21984,3 +21984,14 @@ __imp__VirtualFree@12	0143fd40	00caa3c0
 ?CalcByteLength@CVolumeTexture@@QAEXXZ	00a67ff0	00a682e0
 ??_7CEngineSceneGrid@@6B@	012a3e58	00b93eb0
 ?resize@CGridCellArray@@QAEXIABQAUCEngineSceneGridCell@@@Z	00b97a80	00b93eb0
+?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AUC3DVector@@M@Z	004c1060	004c12d0
+?GetHelperPoint@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAUC3DVector@@M@Z	004c0560	004c12d0
+?g_helperCameraFocal_013bac4c@@3VCCharString@@B	013bac4c	004c12d0
+?g_helperFocal_013bac48@@3VCCharString@@B	013bac48	004c12d0
+?GetDistanceTo@C2DBoxI@@QBEJABUC2DCoordI@@@Z	00a3a180	004fcb30
+?GetTableAnimation@@YIPAUCAnimationEntry@@PAUCThingCreatureBase@@ABUCCharString@@@Z	006924b0	0062d890
+?ApplyRegion@CDrawMiniMap@NPlayerGui@@QAEXPAUCRegion@@@Z	0064dd9a	0064e019
+?IsActive@CDrawMiniMap@NPlayerGui@@QAE_NXZ	00643e09	0064e019
+?GetDummyObjectAssumingObjectAt@CTCGraphicAppearance@@QAE_NABUCCharString@@ABUC3DVector@@ABUCRightHandedSet@@JKPAU3@PAU4@@Z	004c0c80	00705190
+??0CCreatureAction_LookThroughWindow@@QAE@AAVCThingAICreature@@@Z	007eba20	007ebab0
+?SetStringPos@CStringParser@@QAEXK@Z	009b9940	009b9a20

@@ -261564,6 +261564,69 @@ $catalog = @(
         TestSource = '00/b9/CEngineSceneGrid_CEngineSceneGrid_00b93eb0_test.cpp'
         PassPattern = '00b93eb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c12d0'
+        Module = 'CTCGraphicAppearance'
+        Source = '00/4c/CTCGraphicAppearance_GetCameraFocalPos_004c12d0.cpp'
+        TestSource = '00/4c/CTCGraphicAppearance_GetCameraFocalPos_004c12d0_test.cpp'
+        PassPattern = '004c12d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fcb30'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetMinPlayerDistanceFromMap_004fcb30.cpp'
+        TestSource = '00/4f/CWorldMap_GetMinPlayerDistanceFromMap_004fcb30_test.cpp'
+        PassPattern = '004fcb30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062d890'
+        Module = 'CCreatureAction_ThrowGameObject'
+        Source = '00/62/CCreatureActionThrowGameObject_CCreatureActionThrowGameObject_0062d890.cpp'
+        TestSource = '00/62/CCreatureActionThrowGameObject_CCreatureActionThrowGameObject_0062d890_test.cpp'
+        PassPattern = '0062d890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064e019'
+        Module = 'NPlayerGui::CDrawMiniMap'
+        Source = '00/64/NPlayerGuiCDrawMiniMap_ToggleCentering_0064e019.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawMiniMap_ToggleCentering_0064e019_test.cpp'
+        PassPattern = '0064e019_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066c810'
+        Module = 'CRegionMinimap'
+        Source = '00/66/CRegionMinimap_GetWorldCoordinatesFromTGAPosition_0066c810.cpp'
+        TestSource = '00/66/CRegionMinimap_GetWorldCoordinatesFromTGAPosition_0066c810_test.cpp'
+        PassPattern = '0066c810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00705190'
+        Module = 'CTCCarryable'
+        Source = '00/70/CTCCarryable_GetInterpolatedPickupOffsetAndOrientationAt_00705190.cpp'
+        TestSource = '00/70/CTCCarryable_GetInterpolatedPickupOffsetAndOrientationAt_00705190_test.cpp'
+        PassPattern = '00705190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ebab0'
+        Module = 'CTCActionUseWindow'
+        Source = '00/7e/CTCActionUseWindow_OnActionUse_007ebab0.cpp'
+        TestSource = '00/7e/CTCActionUseWindow_OnActionUse_007ebab0_test.cpp'
+        PassPattern = '007ebab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b9a20'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_SkipUntilString_009b9a20.cpp'
+        TestSource = '00/9b/CStringParser_SkipUntilString_009b9a20_test.cpp'
+        PassPattern = '009b9a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf2ad0'
+        Module = 'CEngineTreeFilerBase'
+        Source = '00/bf/CEngineTreeFilerBase_ConvertTreeToList_00bf2ad0.cpp'
+        TestSource = '00/bf/CEngineTreeFilerBase_ConvertTreeToList_00bf2ad0_test.cpp'
+        PassPattern = '00bf2ad0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
