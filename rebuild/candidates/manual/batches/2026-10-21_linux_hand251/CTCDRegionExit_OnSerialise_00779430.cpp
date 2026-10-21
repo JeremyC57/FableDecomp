@@ -1,0 +1,63 @@
+// CTCDRegionExit::OnSerialise(CPersistContext& context, bool transfer) -- persist the exit's state (active flag, radii, minimap flags) and the UID of the entrance it connects to, remapped for the save and back on load
+// Leaf: OnSerialise
+//
+// Retail 0x00779430, 351 bytes (`ret 8`).
+// Callees: CPersistContext::Transfer<bool> @ 0x004045C0 ("Active" default true, "ReversedOnMiniMap", "HiddenOnMiniMap" default
+// false), Transfer<float> @ 0x00410620 ("Radius", "MessageRadius", default 0), Transfer<unsigned __int64> @ 0x0044BB00
+// ("EntranceConnectedToUID", default 0), CThing::IsLevelLess @ 0x004C7930, CTCBase::GetThingManager @ 0x00686AE0,
+// CThingManager::RemapUIDForSerialisation(bool, bool, long, unsigned __int64) @ 0x0051E210.
+// Layout = Ego_r.pdb CTCDRegionExit (0x38): Active +0x0c, Radius +0x14, MessageRadius +0x18, EntranceConnectedToUID +0x20,
+// ReversedOnMiniMap +0x28, HiddenOnMiniMap +0x29; CThing level short +0x8e; CPersistContext Mode +0x18 (saving: 1 or 3).
+// Shape: as the landed CTCActivationTrigger::OnSerialise (0x0077B0D0): the saving arm remaps into a zero-initialised local
+// that is transferred, the loading arm transfers the member and remaps it in place when non-zero.
+#include "engine/CTCBase.h"
+struct CThing {
+    unsigned char _pad00[0x8e];
+    short m_level;                              // +0x8e
+    bool IsLevelLess();                         // 0x004C7930
+};
+struct CThingManager {
+    unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
+};
+struct CPersistContext {
+    unsigned char _pad00[0x18];
+    long Mode;                                  // +0x18
+    bool IsSaving() const { return Mode == 1 || Mode == 3; }
+    void Transfer(const char* name, bool& value, const bool& defaultValue);                          // 0x004045C0
+    void Transfer(const char* name, float& value, const float& defaultValue);                        // 0x00410620
+    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);  // 0x0044BB00
+};
+class CTCDRegionExit : public CTCBase {
+public:
+    bool  Active;                               // +0x0c
+    bool  InLetterBoxMode;                      // +0x0d
+    bool  WaitingForConfirmation;               // +0x0e
+    bool  WaitingForActivationOrPlayerToLeave;  // +0x0f
+    bool  WaitingForPlayerToLeaveMessageArea;   // +0x10
+    float Radius;                               // +0x14
+    float MessageRadius;                        // +0x18
+    unsigned __int64 EntranceConnectedToUID;    // +0x20
+    bool  ReversedOnMiniMap;                    // +0x28
+    bool  HiddenOnMiniMap;                      // +0x29
+    CThingManager* GetThingManager();           // 0x00686AE0 (CTCBase)
+    void OnSerialise(CPersistContext& context, bool transfer);
+};
+
+void CTCDRegionExit::OnSerialise(CPersistContext& context, bool transfer)
+{
+    context.Transfer("Active", Active, true);
+    context.Transfer("Radius", Radius, 0.0f);
+    context.Transfer("MessageRadius", MessageRadius, 0.0f);
+    context.Transfer("ReversedOnMiniMap", ReversedOnMiniMap, false);
+    context.Transfer("HiddenOnMiniMap", HiddenOnMiniMap, false);
+    if (context.IsSaving()) {
+        unsigned __int64 uid = 0;
+        if (EntranceConnectedToUID != 0)
+            uid = GetThingManager()->RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
+        context.Transfer("EntranceConnectedToUID", uid, 0);
+    } else {
+        context.Transfer("EntranceConnectedToUID", EntranceConnectedToUID, 0);
+        if (EntranceConnectedToUID != 0)
+            EntranceConnectedToUID = GetThingManager()->RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
+    }
+}

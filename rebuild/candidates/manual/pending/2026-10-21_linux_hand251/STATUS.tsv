@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0077fb00	RELOCATION_MATCH	321v321	PASS	/GS; CGameEvent model from 0x77D4B0; sum < R*R
+0077f970	RELOCATION_MATCH	395v395	PASS	IS_THING_ALIVE arms; implicit CCharString conversions
+0077f7e0	RELOCATION_MATCH	395v395	PASS	twin of 0x77F970 (+0xd7, MARKTELEPORTER); renamed UpdateParticleTeleporter
+004bde90	RELOCATION_MATCH	356v356	PASS	real name GetNoHelperPoints (PDB order); landed 0x4BDA30 model
+004be000	RELOCATION_MATCH	356v356	PASS	GetNoDummyObjects; twin of 0x4BDE90
+004be170	RELOCATION_MATCH	336v336	PASS	HasDummyObject 0x4BE2C0 model + null-tested mesh info
+006d7170	RELOCATION_MATCH	344v344	PASS	STLport _Vector_base(n)+fill_n (no placement new), _List_base local node, by-value def getter
+006d8580	RELOCATION_MATCH	330v330	PASS	vfunc_9 = FrameUpdate; ClampToZero(float&) reload; const overload order
+006d8170	RELOCATION_MATCH	383v383	PASS	const out-param GetInterface (eax) + LowerBound stand-ins (both overloads)
+0071d7c0	RELOCATION_MATCH	372v372	PASS	AddTattoo(const CThing&): forceinline clear/push_back(temp copy); GetSubDef + _M_insert_overflow stand-ins
+0071da70	RELOCATION_MATCH	340v340	PASS	AddTattoo(long): GetDef/GetSubDef/push_back/clear/erase stand-ins
+0071dbd0	RELOCATION_MATCH	384v384	PASS	first try: colours in dead arg slots, inline push_back + Dirty, CCompositeBlendDesc copy-ctor same-TU body, free() for local vector
+006e0730	RELOCATION_MATCH	332v332	PASS	database getter result in a named local before the argument pushes; EmptyCCharString no-NRVO default
+00779430	RELOCATION_MATCH	351v351	PASS	first try on the landed 0x77B0D0 UID-remap model; engine/CTCBase.h base
+00779080	RELOCATION_MATCH	359v359	PASS	/GS; CGameEvent model; heading via an inline CThing::GetAngleXY() wrapper (direct vcall reshuffles registers)
+006cc6b0	RELOCATION_MATCH	321v321	PASS	per-case creature/manager locals; by-value push_back + overflow stand-in; const vector& types binding keeps the def release null test
+006d5260	RELOCATION_MATCH	340v340	PASS	first try: local intelligent-pointer copy + IS_THING_ALIVE; inline list erase destroys through the element pointer (virtual dtor) + free
+006d56e0	RELOCATION_MATCH	360v360	PASS	intelligent-pointer temporaries for the two list removes; unchecked out-param GetInterface; IsAlive(GetPItem()) single-fetch helper
+007f1930	RELOCATION_MATCH	391v391	PASS	vfunc_6 is OnInitialActivate; joystick device as a named value local read before the CInitRumble is built (const& binding keeps an address and misses)
+006d4e60	DIFFER	363v363	-	register choice only: component-key address temps eax/ecx/edx vs ecx/eax/ecx, RenownLevel via eax vs edx; const& idiom tried (renown/stats bindings)
+0073acc0	DIFFER	331v331	-	scheduling only: early return false xor al,al before the pops in retail, among the pops in ours (find/return shapes, dtor spellings, QFE all tried); const& idiom tried (head/type bindings)
+0074e6e0	RELOCATION_MATCH	374v374	PASS	C3DVector member-wise copy (X,Y,Z+0.1); index declared first; for_each modelled __fastcall with hidden-pointer functor return
+006702e0	RELOCATION_MATCH	400v400	PASS	user copy ctor + inline Zero() (X=Y=Z=0); fast Normalise sum written (x*x + y*y) + z*z so only the squares CSE with GetLength
+00729200	RELOCATION_MATCH	344v344	PASS	named bool removal test; CAnimFrameInfo(1,1) temporary assigned in the loop; inline CWorld::IsInMovieSequence wrapper
+007de030	DIFFER	382v382	-	scheduling only: two stores before SetRHSet swapped (Up.X fstp vs Forward.Y copy); ~40 probes over cross/set/copy-ctor spellings; const& idiom tried (up/side/forward bindings)
+007dccb0	DIFFER	390v390	-	scheduling only: CRightHandedSet build tail (same gap as 007de030); 288-combination search + QFE tried
+007dce40	RELOCATION_MATCH	327v327	PASS	if(size) { colour; do-while(++i != size) } with i declared first; id named local; handle as *(begin()+i)
+0074baa0	RELOCATION_MATCH	384v384	PASS	C3DVector user copy ctor (dead Z copy dropped, 12-byte slots); separate spaceTrigger/timeTrigger bools both true, timeTrigger cleared by if
+00812ca0	RELOCATION_MATCH	384v384	PASS	inlined STLport _M_increment map walk; best distance in the dead arg slot; squared distance vs squared best kept as retail
+007849c0	RELOCATION_MATCH	352v352	PASS	delay and string each in a block (two shared stack slots); manager locals; deed log as T* const& (const& idiom)
+006cc800	DIFFER	358v399	-	inline-asm fistp rounding helper (0.5/1.0 frame locals, ebp frame): asm_bake family, not reproducible in pure C++
+00c14e40	RELOCATION_MATCH	336v336	PASS	/EHsc; actually the CTCDiceGame ctor (label Initialize wrong); empty polymorphic base, parent as first derived member
+0072f170	RELOCATION_MATCH	384v384	PASS	same-TU noinline stand-in bodies for GetDef/GetSubDef keep the creature def in ebx; UIDs as two words (int64 pads the vptr)
+0072f9e0	RELOCATION_MATCH	400v400	PASS	GetPItem() null test then a named GetPItem() local for HasTC+GetTC; Max(Day, today) by reference, identical in both arms (tail-merge)
+0071ad20	DIFFER	365v365	-	register choice only: temporaries rotated (edx/eax/ecx vs ecx/edx/eax) from the draw-distance copy to the sprite args; getters x16, range helper, const&, QFE tried
+007b2fd0	DIFFER	333v329	-	flag shape only: severe in bl needs the assignment form (adds an else arm); the bare if-set puts it in memory; ~30 probes (scoping, types, helpers, == true)
+007066a0	RELOCATION_MATCH	352v352	PASS	stand-in GetDef/GetSubDef bodies; both def pointers at the loop top (failed GetDef skips the sub release); push_back reads the old tail once
+00706f40	RELOCATION_MATCH	400v400	PASS	vfunc_1 is OnSerialise; inline IsSaving() keeps the save path first; name built into a named local before the element assignment
+0055ef00	RELOCATION_MATCH	385v385	PASS	actually DisplayErrorMessage(const CWideString&) (label OnOkClicked wrong); OK button as a reference (no null test on CObserver conversion); inline CCountedPointer dtor
+00561450	RELOCATION_MATCH	363v363	PASS	force-inlined helper takes the by-value score string by const& (returned pointer read, temp outlives helper locals); keys as named locals; allocator user ctor; strlen intrinsic

@@ -1655,3 +1655,10 @@ address	module	name	length	chunk	reason
 0075cad0	CTCCameraPointTrack	UpdateActiveCameraPosition	400	hand250	DIFFER(388v388) -- CTCCameraPointTrack::UpdateActiveCameraPosition: x87 operand order of offset.Y*radius
 007ed560	CTCCarriedActionUseGoldBag	CTCCarriedActionUseGoldBag::vfunc_28	368	hand250	DIFFER(354v354) -- CTCCarriedActionUseGoldBag::vfunc_28: first key slot not shared (frame 0xbc vs 0xb8)
 0074e560	CTCContainerRewardHero	CreateNewObject	336	hand250	DIFFER(334v330) -- CTCContainerRewardHero::CreateNewObject: dead-arg slot choice for the 0x103 key
+006d4e60	CTCFollowed	IsCreatureValidFollower	368	hand251	DIFFER(363v363) -- register choice only: component-key address temps eax/ecx/edx vs ecx/eax/ecx, RenownLevel via eax vs edx; const& idiom tried (renown/stats bindings)
+0073acc0	CTCCreatureModeManager	AddMode	336	hand251	DIFFER(331v331) -- scheduling only: early return false xor al,al before the pops in retail, among the pops in ours (find/return shapes, dtor spellings, QFE all tried); const& idiom tried (head/type bindings)
+007de030	CTCCreatureFlyInCircles	FrameUpdate	384	hand251	DIFFER(382v382) -- scheduling only: two stores before SetRHSet swapped (Up.X fstp vs Forward.Y copy); ~40 probes over cross/set/copy-ctor spellings; const& idiom tried (up/side/forward bindings)
+007dccb0	CTCCreatureFlyOnSpline	FrameUpdate	400	hand251	DIFFER(390v390) -- scheduling only: CRightHandedSet build tail (same gap as 007de030); 288-combination search + QFE tried
+006cc800	CTCCreatureNavigation	FrameUpdate	399	hand251	DIFFER(358v399) -- inline-asm fistp rounding helper (0.5/1.0 frame locals, ebp frame): asm_bake family, not reproducible in pure C++
+0071ad20	CTCEmoteIcon	DrawEmoteTypeIcon	368	hand251	DIFFER(365v365) -- register choice only: temporaries rotated (edx/eax/ecx vs ecx/edx/eax) from the draw-distance copy to the sprite args; getters x16, range helper, const&, QFE tried
+007b2fd0	CTCGuard	WitnessedCrime	336	hand251	DIFFER(333v329) -- flag shape only: severe in bl needs the assignment form (adds an else arm); the bare if-set puts it in memory; ~30 probes (scoping, types, helpers, == true)

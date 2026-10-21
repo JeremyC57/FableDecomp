@@ -259047,6 +259047,240 @@ $catalog = @(
         TestSource = '00/d8/CQHeroSoulsBriarScript_Init_00d80cc0_test.cpp'
         PassPattern = '00d80cc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004bde90'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetNoHelperPoints_004bde90.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetNoHelperPoints_004bde90_test.cpp'
+        PassPattern = '004bde90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004be000'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetNoDummyObjects_004be000.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetNoDummyObjects_004be000_test.cpp'
+        PassPattern = '004be000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004be170'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_HasHelperPoint_004be170.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_HasHelperPoint_004be170_test.cpp'
+        PassPattern = '004be170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ef00'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/55/CTCHeroOnlineScoreboard_DisplayErrorMessage_0055ef00.cpp'
+        TestSource = '00/55/CTCHeroOnlineScoreboard_DisplayErrorMessage_0055ef00_test.cpp'
+        PassPattern = '0055ef00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00561450'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_UploadPlayerScores_00561450.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_UploadPlayerScores_00561450_test.cpp'
+        PassPattern = '00561450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006702e0'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_UpdateAppliedMovement_006702e0.cpp'
+        TestSource = '00/67/CTCCoopSpirit_UpdateAppliedMovement_006702e0_test.cpp'
+        PassPattern = '006702e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cc6b0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/6c/CTCCreatureNavigation_OnCreate_006cc6b0.cpp'
+        TestSource = '00/6c/CTCCreatureNavigation_OnCreate_006cc6b0_test.cpp'
+        PassPattern = '006cc6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d5260'
+        Module = 'CTCFollowed'
+        Source = '00/6d/CTCFollowed_CullNullFollowers_006d5260.cpp'
+        TestSource = '00/6d/CTCFollowed_CullNullFollowers_006d5260_test.cpp'
+        PassPattern = '006d5260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d56e0'
+        Module = 'CTCFollowed'
+        Source = '00/6d/CTCFollowed_QuitAIFollower_006d56e0.cpp'
+        TestSource = '00/6d/CTCFollowed_QuitAIFollower_006d56e0_test.cpp'
+        PassPattern = '006d56e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d7170'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_CTCHeroExperience_006d7170.cpp'
+        TestSource = '00/6d/CTCHeroExperience_CTCHeroExperience_006d7170_test.cpp'
+        PassPattern = '006d7170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d8170'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_UpdateAbilitiesForStat_006d8170.cpp'
+        TestSource = '00/6d/CTCHeroExperience_UpdateAbilitiesForStat_006d8170_test.cpp'
+        PassPattern = '006d8170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d8580'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_FrameUpdate_006d8580.cpp'
+        TestSource = '00/6d/CTCHeroExperience_FrameUpdate_006d8580_test.cpp'
+        PassPattern = '006d8580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e0730'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6e/CTCDParticleEmitter_OnSerialise_006e0730.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_OnSerialise_006e0730_test.cpp'
+        PassPattern = '006e0730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007066a0'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_RemoveAppearanceModifiersCoveringBodyArea_007066a0.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_RemoveAppearanceModifiersCoveringBodyArea_007066a0_test.cpp'
+        PassPattern = '007066a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00706f40'
+        Module = 'CTCHeroAttachableAppearanceModifiers'
+        Source = '00/70/CTCHeroAttachableAppearanceModifiers_OnSerialise_00706f40.cpp'
+        TestSource = '00/70/CTCHeroAttachableAppearanceModifiers_OnSerialise_00706f40_test.cpp'
+        PassPattern = '00706f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071d7c0'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_AddTattoo_0071d7c0.cpp'
+        TestSource = '00/71/CTCHeroMorph_AddTattoo_0071d7c0_test.cpp'
+        PassPattern = '0071d7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071da70'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_AddTattoo_0071da70.cpp'
+        TestSource = '00/71/CTCHeroMorph_AddTattoo_0071da70_test.cpp'
+        PassPattern = '0071da70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071dbd0'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_AddCompositeTexture_0071dbd0.cpp'
+        TestSource = '00/71/CTCHeroMorph_AddCompositeTexture_0071dbd0_test.cpp'
+        PassPattern = '0071dbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00729200'
+        Module = 'CTCCreatureExpression'
+        Source = '00/72/CTCCreatureExpression_Update_00729200.cpp'
+        TestSource = '00/72/CTCCreatureExpression_Update_00729200_test.cpp'
+        PassPattern = '00729200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072f170'
+        Module = 'CTCDummyVillager'
+        Source = '00/72/CTCDummyVillager_SetupFromData_0072f170.cpp'
+        TestSource = '00/72/CTCDummyVillager_SetupFromData_0072f170_test.cpp'
+        PassPattern = '0072f170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072f9e0'
+        Module = 'CTCDummyVillager'
+        Source = '00/72/CTCDummyVillager_CanBeRecreated_0072f9e0.cpp'
+        TestSource = '00/72/CTCDummyVillager_CanBeRecreated_0072f9e0_test.cpp'
+        PassPattern = '0072f9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074baa0'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_UpdateCreatureTrigger_0074baa0.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_UpdateCreatureTrigger_0074baa0_test.cpp'
+        PassPattern = '0074baa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074e6e0'
+        Module = 'CTCContainerRewardHero'
+        Source = '00/74/CTCContainerRewardHero_ReleaseItems_0074e6e0.cpp'
+        TestSource = '00/74/CTCContainerRewardHero_ReleaseItems_0074e6e0_test.cpp'
+        PassPattern = '0074e6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00779080'
+        Module = 'CTCDRegionExit'
+        Source = '00/77/CTCDRegionExit_MoveHeroThroughExit_00779080.cpp'
+        TestSource = '00/77/CTCDRegionExit_MoveHeroThroughExit_00779080_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00779080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00779430'
+        Module = 'CTCDRegionExit'
+        Source = '00/77/CTCDRegionExit_OnSerialise_00779430.cpp'
+        TestSource = '00/77/CTCDRegionExit_OnSerialise_00779430_test.cpp'
+        PassPattern = '00779430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077f7e0'
+        Module = 'CTCHeroCentreDoorMarker'
+        Source = '00/77/CTCHeroCentreDoorMarker_UpdateParticleTeleporter_0077f7e0.cpp'
+        TestSource = '00/77/CTCHeroCentreDoorMarker_UpdateParticleTeleporter_0077f7e0_test.cpp'
+        PassPattern = '0077f7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077f970'
+        Module = 'CTCHeroCentreDoorMarker'
+        Source = '00/77/CTCHeroCentreDoorMarker_UpdateParticleExperience_0077f970.cpp'
+        TestSource = '00/77/CTCHeroCentreDoorMarker_UpdateParticleExperience_0077f970_test.cpp'
+        PassPattern = '0077f970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077fb00'
+        Module = 'CTCHeroCentreDoorMarker'
+        Source = '00/77/CTCHeroCentreDoorMarker_FrameUpdate_0077fb00.cpp'
+        TestSource = '00/77/CTCHeroCentreDoorMarker_FrameUpdate_0077fb00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0077fb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007849c0'
+        Module = 'CTCCreatureGroupBoastingCrowd'
+        Source = '00/78/CTCCreatureGroupBoastingCrowd_OnHeroAttackCrowdMember_007849c0.cpp'
+        TestSource = '00/78/CTCCreatureGroupBoastingCrowd_OnHeroAttackCrowdMember_007849c0_test.cpp'
+        PassPattern = '007849c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dce40'
+        Module = 'CTCCreatureFlyOnSpline'
+        Source = '00/7d/CTCCreatureFlyOnSpline_DrawPreparePrimitivesForRendering_007dce40.cpp'
+        TestSource = '00/7d/CTCCreatureFlyOnSpline_DrawPreparePrimitivesForRendering_007dce40_test.cpp'
+        PassPattern = '007dce40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f1930'
+        Module = 'CTCDRumble'
+        Source = '00/7f/CTCDRumble_OnInitialActivate_007f1930.cpp'
+        TestSource = '00/7f/CTCDRumble_OnInitialActivate_007f1930_test.cpp'
+        PassPattern = '007f1930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c14e40'
+        Module = 'CTCDiceGame'
+        Source = '00/c1/CTCDiceGame_CTCDiceGame_00c14e40.cpp'
+        TestSource = '00/c1/CTCDiceGame_CTCDiceGame_00c14e40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c14e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00812ca0'
+        Module = 'CTCCreatureGroup'
+        Source = '00/81/CTCCreatureGroup_GetNearestOtherActiveMember_00812ca0.cpp'
+        TestSource = '00/81/CTCCreatureGroup_GetNearestOtherActiveMember_00812ca0_test.cpp'
+        PassPattern = '00812ca0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
