@@ -1,0 +1,18 @@
+address	name	evidence
+008026a0	CTCTargetingPlayer::OnInitialActivate	chunk 271 body/vtable analysis
+005c7b10	GetItemDescriptionNoDamageNorWeight	chunk 271
+005c7d0d	GetItemDescriptionWeight	chunk 271
+00641020	CTCLight::Persist	chunk 271
+005ed440	CTCCreatedEntity::SetPCreator	mangled reloc ?SetPCreator@CTCCreatedEntity@@ from 0072ddb0/0072df50 (chunk 271)
+0072dd60	AddOwnedEntityTC	chunk 271
+007e6ec0	GetPFirstThing<HasTrackName>	chunk 271
+0056d050	GetPFirstThing<HasTrackName>	chunk 271 (second instantiation)
+006af620	CTCPhysicsBase::GetWorldMap	chunk 271 (006b0c10)
+0076bd70	__destroy_aux	chunk 271
+0076bdd0	__destroy_aux	chunk 271
+0076b1e0	vector::operator=	chunk 271
+0076b320	vector::operator=	chunk 271
+004c7590	UpdateGraphicAppearance	chunk 271
+0070b460	CTCAnimationComplex::GetAnimation	not DrawGetEnvironment (chunk 271)
+0070c0d0	CAnimateThing::GetMeshBank	chunk 271
+00a242c0	CMeshDataBank::PeekAnimation	not GetAbilityLevel (chunk 271)

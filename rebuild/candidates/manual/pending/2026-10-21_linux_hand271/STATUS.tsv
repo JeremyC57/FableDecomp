@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008026a0	RELOCATION_MATCH	481v481	PASS	CTCTargetingPlayer::OnInitialActivate (catalog CTCInventoryItem::OnCreate); static _M_increment map walk
+005faf50	RELOCATION_MATCH	439v439	PASS	/GS; inline CGameEvent ctor + AddUBYTE homed in dead arg slot
+005fb630	RELOCATION_MATCH	429v429	PASS	raw _M_start[i]; GetDef noinline stand-in
+005fb8f0	RELOCATION_MATCH	429v429	PASS	hoisted by-value CCharString; find stand-in
+005fd410	DIFFER	-v451	-	not attempted: STL list thing search + inline lower_bound + set inserts (time)
+0061a6a0	DIFFER	-v508	-	not attempted: switch with jump table ending at the row end (one function; time)
+005cd4c4	DIFFER	483v499	-	/Os TU; first/best locals do not share retail slots
+005d64dd	DIFFER	-v477	-	not attempted: /Os TU (push/pop, leave), heavy STL/def calls (time)
+0059e4d7	RELOCATION_MATCH	486v486	PASS	13 by-value CCharString FindChild calls
+005a3581	DIFFER	435v435	-	/Os TU; stats GetInterface out-pointer zero store hoisted, own slot
+005aceda	SKIP	-v485	-	row truncated mid-function (body continues past the row)
+005c7913	RELOCATION_MATCH	509v509	PASS	hand-released def pointers, noinline GetSubDef/GetDef stand-ins
+005c7b10	RELOCATION_MATCH	509v509	PASS	GetItemDescriptionNoDamageNorWeight (catalog GetItemDescription)
+005c7d0d	RELOCATION_MATCH	506v506	PASS	GetItemDescriptionWeight (catalog GetItemDescriptionDamage)
+005c7f07	RELOCATION_MATCH	506v506	PASS	as 005c7913
+005cb780	RELOCATION_MATCH	500v500	PASS	escaping STLport vector, GetSubDef stand-in
+007317d0	RELOCATION_MATCH	413v413	PASS	GetTC miss reads dead slot; GetSubDef stand-ins
+007faf60	RELOCATION_MATCH	444v444	PASS	IsDead immediate, Clamp const ref
+007fb6a0	RELOCATION_MATCH	457v457	PASS	named item in operator=; && over temporaries
+007fb870	RELOCATION_MATCH	419v419	PASS	sibling of StartBeamEffect
+007fbc90	RELOCATION_MATCH	436v436	PASS	block-scoped out pointer shares the temp slot
+007fc820	SKIP	-v422	-	jump table followed by another function body inside the row
+00641020	DIFFER	461v488	-	CTCLight::Persist (catalog vfunc_1); this/context register swap, Flicker tail not merged
+006412b0	DIFFER	463v463	-	GetTC(0x5c) key slot [esp+8] vs dead arg slot [esp+10h]
+00641c30	DIFFER	528v490	-	fallback-position DrawLight not tail-merged
+007f24e0	DIFFER	453v453	-	scheduling only (hitLocations load order)
+00752930	RELOCATION_MATCH	462v462	PASS	inline operator!=, WrapAngle, IS_THING_ALIVE template
+00753930	DIFFER	401v401	-	register allocation only: this/component in edi/ebx vs retail ebx/edi
+00753e90	DIFFER	447v447	-	lengthSq not homed in the dead pos-arg slot; pos in edi vs ebp
+00788617	DIFFER	-v423	-	not attempted: /Os TU (push 7Fh/pop, leave), heavy STL (time)
+0078891d	DIFFER	-v466	-	not attempted: /Os TU, heavy STL (time)
+0072ddb0	RELOCATION_MATCH	403v403	PASS	named CCharString in own block
+0072df50	RELOCATION_MATCH	471v471	PASS	sibling of CreateObject
+00766a60	RELOCATION_MATCH	403v403	PASS	advisor: operator[] via inline begin(); forced-inline erase/clear
+00767200	RELOCATION_MATCH	441v441	PASS	saves the bool parameter; begin() indexing
+007674a0	RELOCATION_MATCH	507v507	PASS	advisor: inline clear(), begin(), FalseType user ctor
+007e5d20	RELOCATION_MATCH	475v475	PASS	named CCharString per track name
+006b0c10	RELOCATION_MATCH	484v484	PASS	advisor: same-TU LowerBound stand-in + inline GetParentThing()
+00725060	RELOCATION_MATCH	496v496	PASS	user copy ctor scalar-replaces; named Velocity reference
+00725290	RELOCATION_MATCH	483v483	PASS	x+0.0f folding; named down vector

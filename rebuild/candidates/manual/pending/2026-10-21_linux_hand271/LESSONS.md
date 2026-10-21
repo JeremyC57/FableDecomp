@@ -1,0 +1,35 @@
+# Chunk 271 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+- **STLport operator[] goes through an inline begin()** (`*(begin() + n)`), not raw `*(_M_start + n)`.
+  - Raw indexing CSEs `i*4` across two element addresses (00767200).
+  - Raw indexing also loads the base straight into ecx before a call with a constant argument; retail does `mov eax,[base] ; push 1 ; lea ecx,[edi+eax]` (00766a60, 007674a0).
+  - The exception is 005fb630, where retail reads `_M_start[i]` raw.
+- **Inline STLport clear()** is `erase(_M_start, _M_finish)`.
+  - The copy loop, erase and clear are all `__forceinline`.
+  - `__destroy_aux` is an out-of-line `__fastcall` template taking a FalseType tag.
+  - The tag needs a user ctor, or a zero byte store appears (007674a0).
+- **CIntelligentPointer:** the ctor takes `T* item` by value (a `T* const&` stores a zero to memory); an element `operator->` moves `this` to ebp (007674a0).
+- **Same-TU LowerBound stand-in:** an `#pragma auto_inline(off)` body for CVectorMap::LowerBound 0x0040F020 (the 008330d0 idiom) lets the GetInterface key share the zero-initialised out-pointer word. It also fixes the ParentThing reload via an inline GetParentThing() (006b0c10, advisor).
+- **Named CCharString argument:** a NAMED CCharString in its own `{}` block around the call gives `lea ecx,[esp+N] ; push ecx`; an unnamed temporary pushes the ctor's eax (0072ddb0, 0072df50, 007e5d20).
+- **OnSerialise save path:** it transfers the bool PARAMETER itself (`Transfer(name, savedInGame, false)`); the `false` default goes in the dead context slot (00767200).
+- **C3DVector user copy ctor, no operator=:**
+  - a named copy is scalar-replaced (X/Z dword copies, Y on x87) (00725060);
+  - a named reference `C3DVector& velocity = Velocity;` fixes the this/arg register choice.
+- **Dot product term order:** `a.X*b.X + (a.Y*b.Y + a.Z*b.Z)` emits the Y/Z terms first (00725060).
+- **VC7.1 folds `x + 0.0f`:** `pos + C3DVector(0,0,r)` and a named `down(0,0,-r)` load pos.X/Y once and store them twice; only down.Z is kept, which leaves a 3-word frame hole (00725290).
+- **Inline by-value float getter:** GetRadius / GetScale gives an integer dword copy into a frame or dead-argument slot (00725290, 0072ddb0).
+- **The 1e-4 epsilon** 0x0129BA3C is an extern float, so `g*g` is computed at run time.
+- **Call-result object:** in a virtual call through a call-result object, the object is fetched before the arguments.
+- **IS_THING_ALIVE:** the IsDead() member form keeps `& 1` an immediate (the raw form CSEs the 1 into a register) (007faf60).
+- **Clamp** returns a const reference (the `lea eax` three-way pick); a limit written twice in place is CSE'd, while a named limit swaps the frame slots (007faf60).
+- **operator!=** written in place: VC lays the else (recovery) arm first (00752930).
+- **CIntelligentPointer::operator=** must name the item in a local (007fb6a0, 007fbc90).
+- **Block-scoped out pointer:** opening a block after a lookup lets the temporary share the out pointer's word (007fbc90).
+- **SetRHSet copy order** (00753930, parked): two named vectors copied from the const RHSet reference (forward first), then `CRightHandedSet(up, forward)`, reproduce both 24-byte copies.
+
+Review at landing:
+- More than 4 grades (advisor): 007674a0, 00766a60 and 006b0c10.
+- Local CTCPhysicsBase models sit next to the existing engine/CTCPhysicsBase.h (data-only, no virtuals): 00725060, 00725290, 006b0c10.
+- engine/CTCOracleMinigame.h has PDB offsets (PDef +0xf0 vs retail +0xe8; 12-byte list vs the 4-byte STLport sentinel). 007e5d20 uses a local model.
+- engine/CTCTargetingPlayer.h has 16-byte vectors (PDB); 008026a0 uses retail offsets.
+- 006b0c10 defines a same-TU LowerBound body. The lander must pick the SetPosition symbol (`// Leaf: SetPosition`).
+- 0061a6a0 is one function whose jump table ends exactly at the row end, so it is not a SKIP.

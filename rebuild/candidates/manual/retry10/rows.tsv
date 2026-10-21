@@ -1979,3 +1979,16 @@ address	module	name	length	chunk	reason
 0098b420	CShaderRenderManager	AllocateLights	448	hand268	DIFFER(448v446) -- AllocateLights: frame 0x58 v 0x48 (iterator tag in a live arg slot); parked
 00b9c2e0	CShadowClipVolume	ClipBoundingBox	494	hand268	DIFFER(476v494) -- ClipBoundingBox: SSE branch is inline asm in the original (spilled pointer local, no aligned frame); lane gap; parked
 00872110	CStringAndCageBase	UpdateAutoGoBehind	448	hand268	DIFFER(447v447) -- UpdateAutoGoBehind: one canonical x87 operand swap; parked (advisor: park)
+005fd410	CTCInventoryMap	GetRegionsToDisplay	464	hand271	DIFFER(-v451) -- not attempted: STL list thing search + inline lower_bound + set inserts (time)
+0061a6a0	CTCInventoryQuests	OnCreate	512	hand271	DIFFER(-v508) -- not attempted: switch with jump table ending at the row end (one function; time)
+005cd4c4	CTCInventoryStats	BuildHeroClass	499	hand271	DIFFER(483v499) -- /Os TU; first/best locals do not share retail slots
+005d64dd	CTCInventoryStats	AddHeroAbility	477	hand271	DIFFER(-v477) -- not attempted: /Os TU (push/pop, leave), heavy STL/def calls (time)
+005a3581	CTCInventoryTrade	BuyHighlightedItem	435	hand271	DIFFER(435v435) -- /Os TU; stats GetInterface out-pointer zero store hoisted, own slot
+00641020	CTCLight	CTCLight::vfunc_1	496	hand271	DIFFER(461v488) -- CTCLight::Persist (catalog vfunc_1); this/context register swap, Flicker tail not merged
+006412b0	CTCLight	SetActive	464	hand271	DIFFER(463v463) -- GetTC(0x5c) key slot [esp+8] vs dead arg slot [esp+10h]
+00641c30	CTCLight	?OnAppearanceDraw@CTCLight@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z	490	hand271	DIFFER(528v490) -- fallback-position DrawLight not tail-merged
+007f24e0	CTCLightningOrb	FrameUpdate	464	hand271	DIFFER(453v453) -- scheduling only (hitLocations load order)
+00753930	CTCLook	SetBodyMovingViaAnimation	416	hand271	DIFFER(401v401) -- register allocation only: this/component in edi/ebx vs retail ebx/edi
+00753e90	CTCLook	LookAtPos	448	hand271	DIFFER(447v447) -- lengthSq not homed in the dead pos-arg slot; pos in edi vs ebp
+00788617	CTCMeleeTrap	ProcessPossibleStrike	423	hand271	DIFFER(-v423) -- not attempted: /Os TU (push 7Fh/pop, leave), heavy STL (time)
+0078891d	CTCMeleeTrap	PerformPossibleTrapDamage	466	hand271	DIFFER(-v466) -- not attempted: /Os TU, heavy STL (time)
