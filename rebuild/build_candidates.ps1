@@ -258668,6 +258668,83 @@ $catalog = @(
         TestSource = '00/cb/CScriptBase_RunSpawnedFunctions_00cb7c40_test.cpp'
         PassPattern = '00cb7c40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004497e0'
+        Module = 'CPlayerManager'
+        Source = '00/44/CPlayerManager_GetPlayerDefIndexFromNumber_004497e0.cpp'
+        TestSource = '00/44/CPlayerManager_GetPlayerDefIndexFromNumber_004497e0_test.cpp'
+        PassPattern = '004497e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bfd10'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_CatchMessage_004bfd10.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_CatchMessage_004bfd10_test.cpp'
+        PassPattern = '004bfd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a4e90'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_DrawGetEditDrawInfo_006a4e90.cpp'
+        TestSource = '00/6a/CThingPhysical_DrawGetEditDrawInfo_006a4e90_test.cpp'
+        PassPattern = '006a4e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006bf9e0'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6b/CTCBuyableHouse_OnCreate_006bf9e0.cpp'
+        TestSource = '00/6b/CTCBuyableHouse_OnCreate_006bf9e0_test.cpp'
+        PassPattern = '006bf9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787620'
+        Module = 'CTCSwitchableNavigation'
+        Source = '00/78/CTCSwitchableNavigation_WouldBlockPos_00787620.cpp'
+        TestSource = '00/78/CTCSwitchableNavigation_WouldBlockPos_00787620_test.cpp'
+        PassPattern = '00787620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2ab0'
+        Module = 'CTCGuard'
+        Source = '00/7b/CTCGuard_OnDie_007b2ab0.cpp'
+        TestSource = '00/7b/CTCGuard_OnDie_007b2ab0_test.cpp'
+        PassPattern = '007b2ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7760'
+        Module = 'CTCFireheartMinigame'
+        Source = '00/7e/CTCFireheartMinigame_SetHeroPos_007e7760.cpp'
+        TestSource = '00/7e/CTCFireheartMinigame_SetHeroPos_007e7760_test.cpp'
+        PassPattern = '007e7760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f4b60'
+        Module = 'CTCHasName'
+        Source = '00/7f/CTCHasName_GetNPCNameAndFullTitle_007f4b60.cpp'
+        TestSource = '00/7f/CTCHasName_GetNPCNameAndFullTitle_007f4b60_test.cpp'
+        PassPattern = '007f4b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ed170'
+        Module = 'CTCContainer'
+        Source = '00/8e/CTCContainer_AddItemsToInventory_008ed170.cpp'
+        TestSource = '00/8e/CTCContainer_AddItemsToInventory_008ed170_test.cpp'
+        PassPattern = '008ed170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d5970'
+        Module = 'CBankFileAsyncEntry'
+        Source = '00/9d/CBankFileAsyncEntry_SetupRead_009d5970.cpp'
+        TestSource = '00/9d/CBankFileAsyncEntry_SetupRead_009d5970_test.cpp'
+        PassPattern = '009d5970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008eca50'
+        Module = 'CTCDegradableBase'
+        Source = '00/8e/CTCDegradableBase_ShowParticleEffects_008eca50.cpp'
+        TestSource = '00/8e/CTCDegradableBase_ShowParticleEffects_008eca50_test.cpp'
+        PassPattern = '008eca50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
