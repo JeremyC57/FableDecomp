@@ -263550,6 +263550,62 @@ $catalog = @(
         TestSource = '00/ab/C3DMeshFileTrianglesChunk_ReadFromFile_00abd280_test.cpp'
         PassPattern = '00abd280_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00587a41'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_DeleteMenuComponents_00587a41.cpp'
+        TestSource = '00/58/CTCInventory_DeleteMenuComponents_00587a41_test.cpp'
+        PassPattern = '00587a41_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00591a66'
+        Module = 'CTCInventory'
+        Source = '00/59/CTCInventory_OnSerialise_00591a66.cpp'
+        TestSource = '00/59/CTCInventory_OnSerialise_00591a66_test.cpp'
+        PassPattern = '00591a66_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00750050'
+        Module = 'CTCChest'
+        Source = '00/75/CTCChest_GetNumberOfKeysToUnlock_00750050.cpp'
+        TestSource = '00/75/CTCChest_GetNumberOfKeysToUnlock_00750050_test.cpp'
+        PassPattern = '00750050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00753930'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_SetBodyMovingViaAnimation_00753930.cpp'
+        TestSource = '00/75/CTCLook_SetBodyMovingViaAnimation_00753930_test.cpp'
+        PassPattern = '00753930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00789ff0'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_CancelAimingWeapon_00789ff0.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_CancelAimingWeapon_00789ff0_test.cpp'
+        PassPattern = '00789ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078b070'
+        Module = 'CCreatureAction_HeroLoadRangedWeapon'
+        Source = '00/78/CCreatureActionHeroLoadRangedWeapon_PerformAction_0078b070.cpp'
+        TestSource = '00/78/CCreatureActionHeroLoadRangedWeapon_PerformAction_0078b070_test.cpp'
+        PassPattern = '0078b070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f24e0'
+        Module = 'CTCLightningOrb'
+        Source = '00/7f/CTCLightningOrb_FrameUpdate_007f24e0.cpp'
+        TestSource = '00/7f/CTCLightningOrb_FrameUpdate_007f24e0_test.cpp'
+        PassPattern = '007f24e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ce900'
+        Module = 'CCreatureAction_CastSkillMultiArrow'
+        Source = '00/8c/CCreatureActionCastSkillMultiArrow_CCreatureActionCastSkillMultiArrow_008ce900.cpp'
+        TestSource = '00/8c/CCreatureActionCastSkillMultiArrow_CCreatureActionCastSkillMultiArrow_008ce900_test.cpp'
+        PassPattern = '008ce900_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
