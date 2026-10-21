@@ -262271,6 +262271,104 @@ $catalog = @(
         TestSource = '00/a6/CTextureManager_CTextureManager_00a6a440_test.cpp'
         PassPattern = '00a6a440_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00452398'
+        Module = 'CHeroMarriageDef'
+        Source = '00/45/CHeroMarriageDef_Transfer_00452398.cpp'
+        TestSource = '00/45/CHeroMarriageDef_Transfer_00452398_test.cpp'
+        PassPattern = '00452398_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00496cf0'
+        Module = 'CFrontendGameComponent'
+        Source = '00/49/CFrontendGameComponent_Run_00496cf0.cpp'
+        TestSource = '00/49/CFrontendGameComponent_Run_00496cf0_test.cpp'
+        PassPattern = '00496cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069a990'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_ResetCamera_0069a990.cpp'
+        TestSource = '00/69/CGameCameraManager_ResetCamera_0069a990_test.cpp'
+        PassPattern = '0069a990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fd6c0'
+        Module = 'CGameCameraBase'
+        Source = '00/6f/CGameCameraBase_IsLandscapeCollision_006fd6c0.cpp'
+        TestSource = '00/6f/CGameCameraBase_IsLandscapeCollision_006fd6c0_test.cpp'
+        PassPattern = '006fd6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077ce00'
+        Module = 'CHighlightItemDef'
+        Source = '00/77/CHighlightItemDef_Transfer_0077ce00.cpp'
+        TestSource = '00/77/CHighlightItemDef_Transfer_0077ce00_test.cpp'
+        PassPattern = '0077ce00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089aa70'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetFurthestWithDefName_0089aa70.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetFurthestWithDefName_0089aa70_test.cpp'
+        PassPattern = '0089aa70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089e540'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GiveHeroYesNoQuestion_0089e540.cpp'
+        TestSource = '00/89/CGameScriptInterface_GiveHeroYesNoQuestion_0089e540_test.cpp'
+        PassPattern = '0089e540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0c50'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsTriggeredBy_008d0c50.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsTriggeredBy_008d0c50_test.cpp'
+        PassPattern = '008d0c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0e00'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsUsedBy_008d0e00.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsUsedBy_008d0e00_test.cpp'
+        PassPattern = '008d0e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d29c0'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_MsgIsHitBySpecialAbilityFrom_008d29c0.cpp'
+        TestSource = '00/8d/CGameScriptThing_MsgIsHitBySpecialAbilityFrom_008d29c0_test.cpp'
+        PassPattern = '008d29c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2e30'
+        Module = 'CFontManager'
+        Source = '00/9e/CFontManager_CFontManager_009e2e30.cpp'
+        TestSource = '00/9e/CFontManager_CFontManager_009e2e30_test.cpp'
+        PassPattern = '009e2e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ecd80'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_CConsole_009ecd80.cpp'
+        TestSource = '00/9e/CConsole_CConsole_009ecd80_test.cpp'
+        PassPattern = '009ecd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce40d0'
+        Module = 'NScript::CHeroBoastsScript'
+        Source = '00/ce/NScriptCHeroBoastsScript_BoastUseOnlyFryingPan_00ce40d0.cpp'
+        TestSource = '00/ce/NScriptCHeroBoastsScript_BoastUseOnlyFryingPan_00ce40d0_test.cpp'
+        PassPattern = '00ce40d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ceffb0'
+        Module = 'NScript::CGameflowAssistanceScript'
+        Source = '00/ce/NScriptCGameflowAssistanceScript_TutorialLowHealth_00ceffb0.cpp'
+        TestSource = '00/ce/NScriptCGameflowAssistanceScript_TutorialLowHealth_00ceffb0_test.cpp'
+        PassPattern = '00ceffb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009c4f20	DIFFER	485v490	-	retail re-reads PCompletedRead after the test and adds to NoTotalBytesWritten via load/add/store (thread-share
+009c5690	DIFFER	468v469	-	retail tests PCompletedRead in memory and re-reads it (the thread-shared qualifier the purity rule forbids), s
+00e81d10	DIFFER	421v412	-	the copy loops: retail addresses source and destination with two scaled LEAs (`lea eax,[eax+edi*4]` / `lea ecx
+009e2e30	RELOCATION_MATCH	449v449	PASS	CBaseObject base + four counted pointers; CVertexBufferWin32 ctor assigns base members in its body
+00496cf0	RELOCATION_MATCH	413v413	PASS	first try; while(!Quit) pump over Update()
+006fd6c0	RELOCATION_MATCH	498v498	PASS	C3DVector user copy ctor + x*x+(y*y+z*z) length
+00697490	DIFFER	475v475	-	one scheduling swap: retail loads the pos argument before the last normalised-axis store (fstp [esp+14h])
+00697f80	DIFFER	492v490	-	x87 stack allocation only: retail consumes the cos value in the forward.Z product (fxch 
+006992a0	DIFFER	485v506	-	first draft: retail frame 0x64 vs 0x4c (the primitive record carries more stack temporaries: colour bytes and 
+00699e60	DIFFER	459v431	-	lane gap: retail builds the new-mode counted pointer in the dead by-value argument slots (no frame, Info cache
+0069a990	RELOCATION_MATCH	488v488	PASS	renderer message in its own {} scope so the string dies before the second camera copy
+006b75a0	DIFFER	414v434	-	first draft: the min/max-by-reference bounds, loop counters homed in the dead offset argument slots and the de
+00894500	DIFFER	465v466	-	lane gap (GOTCHAS: callee-saved push sunk inside a guard): retail pushes edi only inside the IsAlive branch an
+00896b60	DIFFER	437v445	-	block layout only: retail puts the shared epilogue right after the quest-card path and gives the tutorial call
+0089a880	DIFFER	481v481	-	register colouring only: retail loads `from` through ecx and computes things.size() in eax/ecx (and releases t
+0089aa70	RELOCATION_MATCH	413v413	PASS	long best distance (fild/_ftol)
+0089b5b0	DIFFER	454v454	-	one register: retail reloads the count block into eax for operator delete after the fastcall deleter, ours int
+0089e540	RELOCATION_MATCH	458v458	PASS	CIntelligentPointer<T> without a declared dtor; vt.py slot projection
+0089f300	DIFFER	395v403	-	register allocation: retail keeps `this` in ebx and the handle implementation pointer in edi (reloaded after e
+008a0cb0	DIFFER	460v456	-	retail pushes edi at entry (ours sinks it into the strcmp block) and keeps the text bank in edi for the "_1_5"
+008a8260	DIFFER	481v466	-	the found flag: retail homes it in a frame byte (stored there in the loop, reloaded into bl), ours keeps it in
+008a8c60	DIFFER	472v472	-	temp slot packing only: retail puts the ST_SIT_ON_FLOOR name at +0x14 (shared with the counted pointer) and th
+008d0c50	RELOCATION_MATCH	431v431	PASS	interval walk; named CScriptThing temp
+008d0e00	RELOCATION_MATCH	431v431	PASS	twin of 008d0c50
+008d1130	DIFFER	499v499	-	frame 0x20 v 0x1c: retail packs the GetEvent out pointer into the spilled events/LowerBound-key word
+008d19a0	DIFFER	468v468	-	scheduling only: the join after the conditional ~CScriptThing reloads edi (events, [esp+20h]) before esi (node
+008d1fd0	DIFFER	468v468	-	scheduling only: the join after the conditionally destroyed CScriptThing temporary reloads edi (events, [esp+2
+008d29c0	RELOCATION_MATCH	484v484	PASS	whole test one bool expression
+008d2bb0	DIFFER	474v474	-	scheduling only: the join after the conditionally destroyed CScriptThing temporary reloads edi (events, [esp+2
+008d2d90	DIFFER	485v485	-	scheduling only: the join after the conditionally destroyed CScriptThing temporary reloads edi (events, [esp+2
+008d2f80	DIFFER	485v485	-	scheduling only: the join after the conditionally destroyed CScriptThing temporary reloads edi (events, [esp+2
+00ceffb0	RELOCATION_MATCH	462v462	PASS	two cooldown counters in ebp/ebx
+009fd9b0	DIFFER	455v462	-	first draft: the counted texture pointer copy, the per-call GetDimensions temporaries and the end-of-load surf
+00b66c10	DIFFER	419v417	-	two spots: retail reloads Data for the BankFrame store (movsx into ecx) and leaves a dead `add eax,20h` after 
+00c2da20	DIFFER	443v448	-	needs --flags /EHsc /GS
+00e1b750	DIFFER	503v499	-	the inner-loop terminating exit keeps `lea ecx,[esp+18h]` after the jne (retail hoists it above the jne and sh
+00ce40d0	RELOCATION_MATCH	438v438	PASS	one || expression with conditional literal temp
+009ecd80	RELOCATION_MATCH	418v418	PASS	label is CConsole::CConsole
+00452398	RELOCATION_MATCH	507v507	PASS	engine header; context in edi
+0077ce00	RELOCATION_MATCH	445v445	PASS	inline CPersistContext::Transfer<T> template

@@ -1,0 +1,10 @@
+address	name	evidence
+009ecd80	CConsole::CConsole	ctor (chunk 264)
+0099a2f0	CBaseObject::CBaseObject	ctor, labelled NHeroInformationScreens::CBase (chunk 264)
+00c2da20	CLiOnHeAdSegmentReader::CLiOnHeAdSegmentReader	ctor of a "LiOnHeAd" segment reader on CBufferedReader 0xC3AAC0; not CGuiWindowManager::LoadDrawEnvironment (chunk 264)
+00a0beb0	CCamera::GetNearClip	near-clip accessor (chunk 264)
+00a14440	C3DVector::Normalise	(chunk 264, agrees with chunk 262)
+00c3a9e0	CLiOnHeAdSegmentReader::Read	(chunk 264)
+00c3aa50	CLiOnHeAdSegmentReader::SetRange	(chunk 264)
+00c3aa30	CLiOnHeAdSegmentReader::GetCount	(chunk 264)
+00ceffb0	NScript::CGameflowAssistanceScript::Tutorial_LowHealth	confirmed (chunk 264)

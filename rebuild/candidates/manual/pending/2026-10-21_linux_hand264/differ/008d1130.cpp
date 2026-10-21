@@ -1,0 +1,131 @@
+// CGameScriptThing::MsgIsHitByWithWeapon(const CCharString& attackerScriptName, const CCharString& weaponDefName) const -- whether the live thing got a hit event (TC 0x42) since the running quest script's last frame from a thing with that script name, with the named weapon (by global def index) or, for "NO_WEAPON", with no weapon
+// Grade: DIFFER(499v499) -- frame 0x20 v 0x1c: retail packs the GetEvent out pointer into the spilled events/LowerBound-key word; ours gives it its own slot (everything else equal mod that offset). Tried helper/by-ref events, block-scoped key, GetEvents helper, out pointer in branch blocks or at function scope.
+// Leaf: MsgIsHitByWithWeapon
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008D1130, 499 bytes, `ret 8`.
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, the const component-map LowerBound 0x004365B0, CCharString copy
+//   ctor/dtor 0x0099EC30 / 0x0099EAE0, CBasicString<char>::operator==(const char*) 0x004115A0, the definition-manager
+//   accessor 0x004C7990 and CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, and the two
+//   CTCEntityEvents::GetEvent<CEventHitBy, CFilter_Bind4<CIsHitEventHitByThingWithScriptName, CEventFilter_HitEventWith(No)Weapon,
+//   CIsEventCreatedBeforeOrOn, CIsEventCreatedAfter>> instances 0x008D49B0 / 0x008D48F0; the quest manager 0x013B89FC.
+// Layout / shape: the landed MsgIsHitByWithDecapitate 0x008D1440 model (component check before the frame reads here).
+#include <string.h>
+#include "engine/CGameScriptThing.h"
+#include "engine/CSpawnedFuncBase.h"
+#pragma pack(push, 1)
+struct CBasicStringChar {                               // CBasicString<char>, 13 bytes
+    char*         PData;                                // +0x00
+    unsigned long StringLength;                         // +0x04
+    unsigned long DataLength : 31;                      // +0x08
+    bool          UseFastExtend : 1;                    // +0x0c
+    bool operator==(const char* text) const;            // 0x004115A0
+};
+struct CCharStringData {                                // 17 bytes
+    CBasicStringChar Data;                              // +0x00
+    long             NoRefs;                            // +0x0d
+};
+#pragma pack(pop)
+struct CCharString {
+    CCharStringData* PStringData;
+    CCharString(const CCharString& other);              // 0x0099EC30
+    ~CCharString();                                     // 0x0099EAE0
+    bool operator==(const char* text) const
+    {
+        if (PStringData == 0) {
+            if (strcmp(text, "") == 0)
+                return true;
+            return false;
+        }
+        return PStringData->Data == text;
+    }
+};
+struct CDefinitionManager {
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
+};
+struct ComponentEntry { long Type; void* Component; };
+struct ComponentMap {
+    ComponentEntry* Start;
+    ComponentEntry* Finish;
+    const ComponentEntry* LowerBound(const long& key) const;   // 0x004365B0
+};
+struct CThingNative {
+    void*          VTable;
+    unsigned char  Base[0x1c];
+    unsigned int   UsingComponents[9];                  // +0x20
+    ComponentMap   Components;                          // +0x44
+    unsigned char  Metadata[0x45];
+    unsigned char  LifeFlags;                           // +0x91 (bit 0 = dead)
+    CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990 (reads the game's definition manager)
+};
+struct PointerView {                                    // CIntelligentPointer<CThing>
+    void*            VTable;
+    void*            Info;
+    CThingNative* GetPItem() const;                     // 0x00A01B50
+};
+struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncBase* PActiveThread; };
+struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
+struct QuestManagerNative { unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
+extern QuestManagerNative* g_pQuestManager;             // 0x013B89FC
+__forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
+__forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
+struct CEventHitBy;                                     // NEntityEvents::CEventHitBy
+struct CIsEventCreatedAfter { long Frame; CIsEventCreatedAfter(long f) : Frame(f) {} };
+struct CIsEventCreatedBeforeOrOn { long Frame; CIsEventCreatedBeforeOrOn(long f) : Frame(f) {} };
+struct CIsHitEventHitByThingWithScriptName {
+    CCharString ScriptName;
+    CIsHitEventHitByThingWithScriptName(const CCharString& s) : ScriptName(s) {}
+};
+template <class A, class B> struct CFilter_Bind2 {
+    const A* First; const B* Second;
+    CFilter_Bind2(const A& a, const B& b) : First(&a), Second(&b) {}
+};
+template <class A, class B, class C> struct CFilter_Bind3 {
+    const A* First; const B* Second; const C* Third;
+    CFilter_Bind3(const A& a, const B& b, const C& c) : First(&a), Second(&b), Third(&c) {}
+};
+typedef CFilter_Bind2<CIsEventCreatedAfter, CIsEventCreatedBeforeOrOn> CInFramesFilter;
+struct CEventFilter_HitEventWithNoWeapon { bool Flag; CEventFilter_HitEventWithNoWeapon(bool f) : Flag(f) {} };
+struct CEventFilter_HitEventWithWeapon { long WeaponIndex; CEventFilter_HitEventWithWeapon(long i) : WeaponIndex(i) {} };
+template <class A, class B, class C, class D> struct CFilter_Bind4 {
+    const A* First; const B* Second; const C* Third; const D* Fourth;
+    CFilter_Bind4(const A& a, const B& b, const C& c, const D& d) : First(&a), Second(&b), Third(&c), Fourth(&d) {}
+};
+typedef CFilter_Bind4<CIsHitEventHitByThingWithScriptName, CEventFilter_HitEventWithNoWeapon, CIsEventCreatedBeforeOrOn, CIsEventCreatedAfter> CNoWeaponFilter;
+typedef CFilter_Bind4<CIsHitEventHitByThingWithScriptName, CEventFilter_HitEventWithWeapon, CIsEventCreatedBeforeOrOn, CIsEventCreatedAfter> CWeaponFilter;
+struct CTCEntityEventsNative {
+    bool GetEvent(CEventHitBy** out, const CNoWeaponFilter& filter) const;   // 0x008D48F0
+    bool GetEvent(CEventHitBy** out, const CWeaponFilter& filter) const;     // 0x008D49B0
+};
+template <class F> __forceinline bool HasHitFor(const CTCEntityEventsNative* events, const CCharString& name, const F& weapon, long current, long last)
+{
+    CEventHitBy* event;
+    return events->GetEvent(&event, CFilter_Bind4<CIsHitEventHitByThingWithScriptName, F, CIsEventCreatedBeforeOrOn, CIsEventCreatedAfter>(
+        CIsHitEventHitByThingWithScriptName(name), weapon, CIsEventCreatedBeforeOrOn(current), CIsEventCreatedAfter(last)));
+}
+struct CGameScriptThingMethods : CGameScriptThing {
+    bool MsgIsHitByWithWeapon(const CCharString& attackerScriptName, const CCharString& weaponDefName) const;
+};
+
+bool CGameScriptThingMethods::MsgIsHitByWithWeapon(const CCharString& attackerScriptName, const CCharString& weaponDefName) const
+{
+    const PointerView* p = reinterpret_cast<const PointerView*>(PThing);
+    if (p->GetPItem() && !(p->GetPItem()->LifeFlags & 1)) {
+        CThingNative* thing = p->GetPItem();
+        if (thing->UsingComponents[2] & 4) {
+            const ComponentMap* map = &thing->Components;
+            const ComponentEntry* it = map->LowerBound(0x42);
+            const ComponentEntry* end = map->Finish;
+            const CTCEntityEventsNative* events = (const CTCEntityEventsNative*)((it == end || it->Type > 0x42) ? end : it)->Component;
+            long last = LastFrame(g_pQuestManager->PQuestCurrentlyRunning);
+            long current = CurrentFrame(g_pQuestManager->PQuestCurrentlyRunning);
+            if (weaponDefName == "NO_WEAPON") {
+                if (HasHitFor(events, attackerScriptName, CEventFilter_HitEventWithNoWeapon(false), current, last))
+                    return true;
+            } else {
+                long index = p->GetPItem()->GetDefinitionManager()->GetDefGlobalIndexFromName(weaponDefName);
+                if (index > 0 && HasHitFor(events, attackerScriptName, CEventFilter_HitEventWithWeapon(index), current, last))
+                    return true;
+            }
+        }
+    }
+    return false;
+}
