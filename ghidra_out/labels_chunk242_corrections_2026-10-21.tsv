@@ -1,0 +1,13 @@
+address	name	evidence
+008df3a0	NCreatureMode::CModeScorpionKingVulnerable::Recover	not CCreatureAction_BriarRose::Execute (chunk 242)
+006f3c20	std::vector<SSlot>::operator=	not CopyCombatWheel (chunk 242)
+00746ec0	CTCStealth::GetPositionToMoveToForStabOn	not CalculateStabVector (chunk 242)
+00c0c4b0	CString::GetBuffer	MFC-style CString, not CCharString::SetLength (chunk 242)
+00546d90	CTextContainer::Initialise	not CComponentContainer::Initialise (chunk 242)
+008c38b0	CCreatureAction_WillForcePushInto::CCreatureAction_WillForcePushInto	ctor, labelled Guildmaster_HealFollowersInto (chunk 242)
+008c3930	CCreatureAction_WillHealRelease::CCreatureAction_WillHealRelease	ctor, labelled Guildmaster_HealFollowersInto (chunk 242)
+006925a0	CTCCombat::HasPerformedAction	chunk 242
+00856f00	CTCCombat::IsThingInStruckThingList	chunk 242
+007aed10	CTCBoss::GetCurrentPhase	refines the chunk 239 GetBossPhase guess (chunk 242)
+007fd3d0	CTCBarrierDriver::SetLifetime	chunk 242
+0070d510	CAnimateThing::ClearQueues	chunk 242

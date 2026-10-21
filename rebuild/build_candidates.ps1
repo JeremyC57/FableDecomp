@@ -256087,6 +256087,237 @@ $catalog = @(
         TestSource = '00/9d/CDefStringTable_ReadTable_009d4ab0_test.cpp'
         PassPattern = '009d4ab0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0052cd20'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_UpdateStateChange_0052cd20.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_UpdateStateChange_0052cd20_test.cpp'
+        PassPattern = '0052cd20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00530260'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_Draw_00530260.cpp'
+        TestSource = '00/53/NUISystemCComponent_Draw_00530260_test.cpp'
+        PassPattern = '00530260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005339b0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_Initialise_005339b0.cpp'
+        TestSource = '00/53/NUISystemCComponent_Initialise_005339b0_test.cpp'
+        PassPattern = '005339b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005461d0'
+        Module = 'NUISystem::CComponentContainer'
+        Source = '00/54/NUISystemCComponentContainer_Initialise_005461d0.cpp'
+        TestSource = '00/54/NUISystemCComponentContainer_Initialise_005461d0_test.cpp'
+        PassPattern = '005461d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00546d90'
+        Module = 'NUISystem::CTextContainer'
+        Source = '00/54/NUISystemCTextContainer_Initialise_00546d90.cpp'
+        TestSource = '00/54/NUISystemCTextContainer_Initialise_00546d90_test.cpp'
+        PassPattern = '00546d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055ad60'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_ProcessEvent_0055ad60.cpp'
+        TestSource = '00/55/NUISystemCClickable_ProcessEvent_0055ad60_test.cpp'
+        PassPattern = '0055ad60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062ebc0'
+        Module = 'CCreatureActionBase'
+        Source = '00/62/CCreatureActionBase_CCreatureActionBase_0062ebc0.cpp'
+        TestSource = '00/62/CCreatureActionBase_CCreatureActionBase_0062ebc0_test.cpp'
+        PassPattern = '0062ebc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00693c70'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_CCreatureActionBase_00693c70.cpp'
+        TestSource = '00/69/CCreatureActionBase_CCreatureActionBase_00693c70_test.cpp'
+        PassPattern = '00693c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e80f0'
+        Module = 'CCombatWheel'
+        Source = '00/6e/CCombatWheel_ReassignAttacker_006e80f0.cpp'
+        TestSource = '00/6e/CCombatWheel_ReassignAttacker_006e80f0_test.cpp'
+        PassPattern = '006e80f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e97f0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_IsDefenderDueForAttack_006e97f0.cpp'
+        TestSource = '00/6e/CCombatManager_IsDefenderDueForAttack_006e97f0_test.cpp'
+        PassPattern = '006e97f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ea2c0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_PerformSequenceReset_006ea2c0.cpp'
+        TestSource = '00/6e/CCombatManager_PerformSequenceReset_006ea2c0_test.cpp'
+        PassPattern = '006ea2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ea5f0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_IsTargetOverriddenByAttemptedFacingDirection_006ea5f0.cpp'
+        TestSource = '00/6e/CCombatManager_IsTargetOverriddenByAttemptedFacingDirection_006ea5f0_test.cpp'
+        PassPattern = '006ea5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ed270'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_RegisterAttackedCombatant_006ed270.cpp'
+        TestSource = '00/6e/CCombatManager_RegisterAttackedCombatant_006ed270_test.cpp'
+        PassPattern = '006ed270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006edc50'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_RegisterCombatant_006edc50.cpp'
+        TestSource = '00/6e/CCombatManager_RegisterCombatant_006edc50_test.cpp'
+        PassPattern = '006edc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f3c20'
+        Module = 'std::vector<CCombatWheel::SSlot>'
+        Source = '00/6f/stdvectorCCombatWheelSSlot_operator_006f3c20.cpp'
+        TestSource = '00/6f/stdvectorCCombatWheelSSlot_operator_006f3c20_test.cpp'
+        PassPattern = '006f3c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085c190'
+        Module = 'CCombatAction_ControlledStrafeJump'
+        Source = '00/85/CCombatActionControlledStrafeJump_CCombatActionControlledStrafeJump_0085c190.cpp'
+        TestSource = '00/85/CCombatActionControlledStrafeJump_CCombatActionControlledStrafeJump_0085c190_test.cpp'
+        PassPattern = '0085c190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008676a0'
+        Module = 'CCombatAction_GenericResponseToDrain'
+        Source = '00/86/CCombatActionGenericResponseToDrain_Initialise_008676a0.cpp'
+        TestSource = '00/86/CCombatActionGenericResponseToDrain_Initialise_008676a0_test.cpp'
+        PassPattern = '008676a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ba220'
+        Module = 'CCreatureAction_CastWillEnflameSpell'
+        Source = '00/8b/CCreatureActionCastWillEnflameSpell_Initialise_008ba220.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillEnflameSpell_Initialise_008ba220_test.cpp'
+        PassPattern = '008ba220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ba7f0'
+        Module = 'CCreatureAction_CastWillDrainLifeSpell'
+        Source = '00/8b/CCreatureActionCastWillDrainLifeSpell_PerformAction_008ba7f0.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillDrainLifeSpell_PerformAction_008ba7f0_test.cpp'
+        PassPattern = '008ba7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008bca00'
+        Module = 'CCreatureAction_CastWillLightningSpell'
+        Source = '00/8b/CCreatureActionCastWillLightningSpell_CCreatureActionCastWillLightningSpell_008bca00.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillLightningSpell_CCreatureActionCastWillLightningSpell_008bca00_test.cpp'
+        PassPattern = '008bca00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c2810'
+        Module = 'CCombatAction_StrikeResponseMazeDoForcePush'
+        Source = '00/8c/CCombatActionStrikeResponseMazeDoForcePush_FinishAction_008c2810.cpp'
+        TestSource = '00/8c/CCombatActionStrikeResponseMazeDoForcePush_FinishAction_008c2810_test.cpp'
+        PassPattern = '008c2810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cd5a0'
+        Module = 'CCreatureAction_CastBattleCharge'
+        Source = '00/8c/CCreatureActionCastBattleCharge_Initialise_008cd5a0.cpp'
+        TestSource = '00/8c/CCreatureActionCastBattleCharge_Initialise_008cd5a0_test.cpp'
+        PassPattern = '008cd5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008df3a0'
+        Module = 'NCreatureMode::CModeScorpionKingVulnerable'
+        Source = '00/8d/NCreatureModeCModeScorpionKingVulnerable_Recover_008df3a0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeScorpionKingVulnerable_Recover_008df3a0_test.cpp'
+        PassPattern = '008df3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f5490'
+        Module = 'CCreatureAction_DragonRoar'
+        Source = '00/8f/CCreatureActionDragonRoar_PerformAction_008f5490.cpp'
+        TestSource = '00/8f/CCreatureActionDragonRoar_PerformAction_008f5490_test.cpp'
+        PassPattern = '008f5490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009064b0'
+        Module = 'CCombatSequence_NonInterruptableBoxStrafe'
+        Source = '00/90/CCombatSequenceNonInterruptableBoxStrafe_OnCreate_009064b0.cpp'
+        TestSource = '00/90/CCombatSequenceNonInterruptableBoxStrafe_OnCreate_009064b0_test.cpp'
+        PassPattern = '009064b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090a1f0'
+        Module = 'CCombatSequenceJacksCombo'
+        Source = '00/90/CCombatSequenceJacksCombo_OnCreate_0090a1f0.cpp'
+        TestSource = '00/90/CCombatSequenceJacksCombo_OnCreate_0090a1f0_test.cpp'
+        PassPattern = '0090a1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eb0d0'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_NextCommandGuess_009eb0d0.cpp'
+        TestSource = '00/9e/CConsole_NextCommandGuess_009eb0d0_test.cpp'
+        PassPattern = '009eb0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eb2c0'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_SetHelpBarString_009eb2c0.cpp'
+        TestSource = '00/9e/CConsole_SetHelpBarString_009eb2c0_test.cpp'
+        PassPattern = '009eb2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eb430'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_RunCommandLine_009eb430.cpp'
+        TestSource = '00/9e/CConsole_RunCommandLine_009eb430_test.cpp'
+        PassPattern = '009eb430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ec710'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_RunTextCommand_009ec710.cpp'
+        TestSource = '00/9e/CConsole_RunTextCommand_009ec710_test.cpp'
+        PassPattern = '009ec710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a60aa0'
+        Module = 'CChecksumCacheFile'
+        Source = '00/a6/CChecksumCacheFile_Save_00a60aa0.cpp'
+        TestSource = '00/a6/CChecksumCacheFile_Save_00a60aa0_test.cpp'
+        PassPattern = '00a60aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0c4b0'
+        Module = 'CCharString'
+        Source = '00/c0/CCharString_SetLength_00c0c4b0.cpp'
+        TestSource = '00/c0/CCharString_SetLength_00c0c4b0_test.cpp'
+        PassPattern = '00c0c4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e64df0'
+        Module = 'NScript::CV_ChickenKickingScript::CChickenSign'
+        Source = '00/e6/NScriptCVChickenKickingScriptCChickenSign_Main_00e64df0.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScriptCChickenSign_Main_00e64df0_test.cpp'
+        PassPattern = '00e64df0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

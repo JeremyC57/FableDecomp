@@ -1,0 +1,14 @@
+# Chunk 242 lessons (one line each)
+- A same-TU `auto_inline(off)` CVectorMap::LowerBound stand-in is what lets an inlined GetInterface key share its frame word with later temporaries (name strings, by-value operator= params, def pointers): fixed 008ba220, 008ba7f0, 008c2810 that looked like pure frame-packing gaps.
+- Same-TU stand-ins for STLport helpers (__uninitialized_copy, __copy, _Destroy) let vector::operator= home every tag temporary in the dead argument slot and duplicate the tail per arm (006f3c20).
+- `obj.GetPhysics()->VirtualCall(...)` through a __forceinline accessor (and a reference local) keeps the object in ecx; a plain member read or member-pointer slot call goes through eax.
+- A `T* c = 0; if (HasTC(t)) c = GetTC<T>(t);` accessor (GetTC as one ternary) puts the absent-path zero in ecx; the out-param GetInterface or an if/else puts it in eax.
+- In-place `v += facing * 2.0f` needs a user C3DVector copy ctor, or VC keeps t.Y on the x87 stack for the Y add.
+- `vec[i]` written as `*(begin() + n)` loads the vector start before the index; `_M_start[n]` / `*(_M_start + n)` load the index first.
+- An inline `CThing::GetSubDef(out) { return PBaseDef->GetSubDef(out); }` wrapper fetches the thing before the out pointer is pushed.
+- An inline `FindInput(key)` wrapper around `map.find(key)` stops VC hoisting the map's `lea` above a ToLower temporary's call.
+- A loop-invariant address-taken key (operator[] key) whose zero store retail sinks into the preheader comes from a guarded do-while with the key declared inside the guard.
+- A by-value bool argument that retail passes as `test ; je ; push 1 ; jmp ; push 0` is an explicit if/else of two otherwise identical calls (VC cross-jumps them).
+- A variable declared in a block that closes before a later string's block shares its frame word with that string even though its zero store sits at function entry (008c2ad0 effectType).
+- `f(g(x), y)` with both calls virtual: VC pushes y, then evaluates g (its own pushes), then pushes g's result; an implicit CCharString temporary for g's arg is built first.
+- Lane gaps seen: byte-register allocation for 4-channel colour subtraction, x87 store/flags scheduling in float compare arms, dead-arg-slot choice for push_back temporaries, eax-vs-esi preference for a reloaded def pointer, retained dead float compares.

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+005461d0	RELOCATION_MATCH	331v331	PASS	guarded do-while with the operator[] key declared inside the guard sinks its zero store into the preheader (was scheduling)
+00546d90	RELOCATION_MATCH	331v331	PASS	CTextContainer twin of 005461d0; same guarded do-while fix
+005339b0	RELOCATION_MATCH	369v369	PASS	C2DVector::Clear keeps the repeated PPositionParent compare; colour chain; X = Y = 1.0f store order
+00530260	MATCH	387v387	PASS	this == child->GetParent() operand order; two bool locals for the layer flags
+0052cd20	RELOCATION_MATCH	400v400	PASS	inline STLport list front/pop_front (free); first try
+0052c920	DIFFER	393v395	-	colour-delta byte-channel register scheduling only (retail uses ebx + memory-operand subs); linear flag fixed by an explicit if/else of two calls (cross-jumped)
+00c41e40	DIFFER	368v368	-	x87 store scheduling only: retail loads the flags before the float fstp in each float arm (tried flags-first, flags local copy, const T& value, SetDirty helper)
+0062ebc0	RELOCATION_MATCH	345v345	PASS	explicit member-wise copy ctor; C3DVector user copy ctor avoids lea copies; retail containers 12 bytes
+00693c70	RELOCATION_MATCH	321v321	PASS	_Vector_base+_STLP_alloc_proxy vectors fix the operator new push placement; inline STLport map ctor
+0055ad60	RELOCATION_MATCH	324v324	PASS	jump table; case blocks in retail order (L clicked/held/unclicked, R ...); this = full+4 (event receiver base)
+006f3c20	RELOCATION_MATCH	325v325	PASS	STLport vector<SSlot>::operator= (label CopyCombatWheel wrong); same-TU stand-ins for __uninitialized_copy/__copy/_Destroy fix the tag slots + tail duplication
+009eb0d0	RELOCATION_MATCH	327v327	PASS	inline IsEqualNoCase on a by-value entry copy; implicit CCharString->CConsoleCommandLine conversion for the operator= arg
+009eb2c0	RELOCATION_MATCH	368v368	PASS	__forceinline CCharString::operator==(char) (strcmp intrinsic); nested ifs + early return, one trailing "" assignment
+009eb430	RELOCATION_MATCH	345v345	PASS	inline FindInput(key) wrapper keeps the map lea after the ToLower call (was scheduling)
+009ec710	RELOCATION_MATCH	373v373	PASS	implicit ";" conversion in the loop condition (dead arg slot); inline CConsoleCommandLine::Reset
+00c0c4b0	RELOCATION_MATCH	378v378	PASS	library MFC-style CString::GetBuffer (label CCharString::SetLength wrong); memcpy intrinsic, __stdcall static Release
+00a60aa0	RELOCATION_MATCH	388v388	PASS	local CDiskFileWin32/CFileDataOutputStream (SaveBinary model); inline STLport map walk; first try
+0090a1f0	RELOCATION_MATCH	321v321	PASS	landed CCombatSequence OnCreate family; three CCreatureAction_InterruptableMidAttack (vtable RTTI)
+009064b0	RELOCATION_MATCH	382v382	PASS	WhisperAdvance model (reference getters + by-reference ctors rotate the AddAction lea); 3 ctor labels wrong
+00909a00	DIFFER	298v336	-	retail keeps a dead dot-product compare (fcomp/fnstsw, both arms return true); ours folds it away
+0085c190	RELOCATION_MATCH	337v337	PASS	body-assigned RollMode + facings (an init list sinks the byte store); retail members = PDB - 0x18
+00746ec0	DIFFER	328v326	-	CTCStealth::GetPositionToMoveToForStabOn (label wrong): x87 r kept on stack vs popped to memory after the fast normalise
+006e80f0	RELOCATION_MATCH	385v385	PASS	implicit operator= keeps the dead Z copy; GetLengthSquared X+Y+Z (Y emitted first); first try
+006e97f0	RELOCATION_MATCH	360v360	PASS	compiled-out trace: named name+message locals to an inline no-op; __forceinline predicate moves the refusal after the loop
+006ea2c0	RELOCATION_MATCH	355v355	PASS	same-TU find + GetSubDef stand-ins; victim kept as the found node (->value at use); __forceinline world random
+006ea5f0	RELOCATION_MATCH	383v383	PASS	GetSubDef stand-in; angle variable overwritten by if(found) keeps 60.0f in memory; double cos compare
+006ed270	RELOCATION_MATCH	383v383	PASS	find + GetDef same-TU stand-ins; named insert-result pair read after the value temp dies; bitfield flag
+006edc50	RELOCATION_MATCH	328v328	PASS	inline by-value name helper returning a named local (build/copy/destroy); trace chain to an inline no-op
+008ba220	RELOCATION_MATCH	323v323	PASS	same-TU LowerBound stand-in lets the GetInterface key share the name/param frame word (was frame packing)
+008ba7f0	RELOCATION_MATCH	375v375	PASS	same-TU LowerBound stand-in (as 008ba220) fixes the key/name/param slot sharing
+008cd5a0	RELOCATION_MATCH	393v393	PASS	landed CastAssassinRush model; __forceinline GetPhysics() accessor + reference puts physics in ecx; frame slots shared (scoped name)
+008bca00	RELOCATION_MATCH	381v381	PASS	landed 3-arg overload verbatim + by-value inline SetPTarget fed an explicit CIntelligentPointer temporary; first try
+008f5490	RELOCATION_MATCH	321v321	PASS	CTCUnholyPower model; in-place operator+= with a user C3DVector copy ctor (else the Y add keeps t.Y on x87); scoped dummy name; accessors keep components in ecx
+008df3a0	RELOCATION_MATCH	359v359	PASS	real NCreatureMode::CModeScorpionKingVulnerable::Recover (label BriarRose::Execute wrong); CTCBed-style T* c=0; if(HasTC) c=GetTC accessor keeps the zero in ecx
+008676a0	RELOCATION_MATCH	379v379	PASS	IceTroll AddMode model (owner via inline operator CThing*); physics ref via inline GetPhysics before the member-wise RH set; GetInterface absent arm reads the shared slot
+008c2810	RELOCATION_MATCH	354v354	PASS	GetSubDef + LowerBound same-TU stand-ins; inline CThing::GetSubDef wrapper fetches the thing before the push; C3DVector offset dead Z keeps its word
+008c2ad0	DIFFER	381v370	-	register choice only: GetSubDef result loaded via eax then esi (retail straight into esi); block-scoped effectType fixed the slot sharing
+00858400	DIFFER	400v400	-	frame slots only: push_back value temp in arg3 slot vs retail arg4, empty tag in arg4 vs arg2; by-value push_back param gives the forwarded store
+00d91320	DIFFER	316v335	-	block layout: inline operator==("FiveKeyChest") arms merged (sete) and matched body after the loop; retail stores the block-compare bool to a frame byte (frame 0x18 vs 0x14)
+00e64df0	RELOCATION_MATCH	391v391	PASS	WatchForLeaderKilled CScriptThing model; TextKeys[i] via *(begin()+n) loads the start before the index; nested-call args (inner GetThingWithScriptName pushed between)
