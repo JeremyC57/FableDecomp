@@ -23098,3 +23098,16 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?find@CGroupToIndexMap@@QBE?AUSGroupMapIterator@@ABK@Z	006699c0	00ad8c30
 ?InitialiseBoneScalings@CEngineInternalPrimitiveAnimatedMesh@@QAEXPAUC3DMesh2@@@Z	00bd2a90	00b83750
 ?TreeFind@CCache@@QAE?AUiterator@1@ABK@Z	00b83520	00b83750
+?RecurseRefreshEntriesAmountsAndAvailabilitiesPC@CTCInventoryTrade@@QAE?AU?$pair@KK@std@@PAUCComponent@NUISystem@@AAUCListMap@@@Z	0059e6bd	0059fafe
+?find@CListMap@@QAEPAUSListMapNode@@ABQAUCComponent@NUISystem@@@Z	005b1a43	0059fafe
+?__find_if@@YIPAUCDangerThing@@PAU1@0UCDangerThingIs@@ABUrandom_access_iterator_tag@@@Z	007485f0	00747b80
+?push_back@CDangerThingVector@@QAEXABUCDangerThing@@@Z	00749620	00747b80
+??$__find@J@@YIPBJPBJ0ABJABUrandom_access_iterator_tag@@@Z	0074c9b0	00749f00
+?GetDef@CDefinitionManager@@QBE_NJPAU?$CDefPointer@UCCreatureGenerationFamilyDef@@@@@Z	0074d220	00749f00
+?GetDefinitionManager@CTCCreatureGenerator@@QBEPAUCDefinitionManager@@XZ	006869d0	00749f00
+??0CEventExpressionPerformedTo@NEntityEvents@@QAE@PAVCThingCreatureBase@@JABUCDefPointerExpressionDef@@JJ@Z	0084b010	008954a0
+?AddEvent@CTCEntityEvents@@QAEXPAUCEventBase@NEntityEvents@@@Z	008113c0	008954a0
+?GetDef@CGameDefinitionManager@@QAE_NABUCCharString@@PAUCDefPointerExpressionDef@@@Z	00593666	008954a0
+?GetParticleEngine@@YAPAVCIEngine@@XZ	00aeab10	00aee9f0
+?Initialise@CParticleEmitter@@QAE_NPAVCIEngine@@@Z	00aee240	00aee9f0
+?Update@CParticleSystem@NParticleEngine@@QAEXPAUCParticleUpdateParameters@@@Z	00af59a0	00aee9f0

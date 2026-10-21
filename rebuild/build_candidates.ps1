@@ -263437,6 +263437,70 @@ $catalog = @(
         TestSource = '00/b8/CEngineInternalPrimitiveAnimatedMesh_GetBoneScalings_00b83750_test.cpp'
         PassPattern = '00b83750_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0059fafe'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_RefreshEntriesAmountsAndAvailabilitiesPC_0059fafe.cpp'
+        TestSource = '00/59/CTCInventoryTrade_RefreshEntriesAmountsAndAvailabilitiesPC_0059fafe_test.cpp'
+        PassPattern = '0059fafe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00747b80'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_SetAsInDanger_00747b80.cpp'
+        TestSource = '00/74/CTCStealth_SetAsInDanger_00747b80_test.cpp'
+        PassPattern = '00747b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00749f00'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_Validate_00749f00.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_Validate_00749f00_test.cpp'
+        PassPattern = '00749f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078e820'
+        Module = 'CTCDivineWrath'
+        Source = '00/78/CTCDivineWrath_SetPTarget_0078e820.cpp'
+        TestSource = '00/78/CTCDivineWrath_SetPTarget_0078e820_test.cpp'
+        PassPattern = '0078e820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008954a0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_EntityFollowThing_008954a0.cpp'
+        TestSource = '00/89/CGameScriptInterface_EntityFollowThing_008954a0_test.cpp'
+        PassPattern = '008954a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a52450'
+        Module = 'C3DKeyframe'
+        Source = '00/a5/C3DKeyframe_ToMatrix_00a52450.cpp'
+        TestSource = '00/a5/C3DKeyframe_ToMatrix_00a52450_test.cpp'
+        PassPattern = '00a52450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5b0a0'
+        Module = 'CCachedFile'
+        Source = '00/a5/CCachedFile_MovePosition_00a5b0a0.cpp'
+        TestSource = '00/a5/CCachedFile_MovePosition_00a5b0a0_test.cpp'
+        PassPattern = '00a5b0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aee9f0'
+        Module = 'CParticleEmitter'
+        Source = '00/ae/CParticleEmitter_Update_00aee9f0.cpp'
+        TestSource = '00/ae/CParticleEmitter_Update_00aee9f0_test.cpp'
+        PassPattern = '00aee9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9d00'
+        Module = 'CBaseAllocator'
+        Source = '00/ca/CBaseAllocator_CBaseAllocator_00ca9d00.cpp'
+        TestSource = '00/ca/CBaseAllocator_CBaseAllocator_00ca9d00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca9d00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,5 @@
+address	name	evidence
+00a52450	C3DKeyframe::ToMatrix	FableWin ?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix3x4@@_N@Z; reads the 48-byte keyframe, ret 8, inlines CQuaternion::ToMatrix (catalog CQuaternion::ToMatrix is wrong) (retry 10o)
+0074c9b0	std::__find<long>	STLport random-access, __fastcall, value and tag by const ref (retry 10o)
+007485f0	std::__find_if<CDangerThing*,CDangerThingIs>	SGI unrolled find_if (retry 10o)
+0074d220	CDefinitionManager::GetDef<CCreatureGenerationFamilyDef>	catalog GetDef<CThingPhysicalSwitchDef> is one body of a shared template (retry 10o)
