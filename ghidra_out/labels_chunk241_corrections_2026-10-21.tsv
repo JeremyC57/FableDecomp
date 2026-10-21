@@ -1,0 +1,12 @@
+address	name	evidence
+00472eda	CEnvironmentThemeDefVector::operator=	not CActiveFile::AssignEnvironmentThemes (chunk 241)
+00f35b10	CEntityScriptBase::RegisterFilter	SetPredicate/RegisterFilter, not CWorldMap::AllocateMapThingUID (chunk 241)
+00f35b30	CEntityScriptBase::IsDone	chunk 241
+00a14440	C3DVector::Normalise	not GetScaled (chunk 241, agrees with chunk 239)
+00710980	std::vector<short>::_M_insert_overflow	chunk 241
+00710f70	std::vector<CTransitionBlendAlpha>::_M_insert_overflow	chunk 241
+00473023	CEnvironmentThemeDefVector::clear	chunk 241
+004734b7	CEnvironmentThemeDefVector::_M_allocate_and_copy	chunk 241
+008fcf40	CAIStateGroupBase::Terminate	chunk 241
+0049d870	CWorld::GetWorldFrame	chunk 241
+006cbe30	CTCCreatureNavigation::SetThingToIgnore	verifier RELOC_NAME from 007158f0; was _unattributed::AssignTarget_006cbe30 (chunk 241)

@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00911710	RELOCATION_MATCH	400v400	PASS	ChickenWander model
+00911a90	DIFFER	391v391	-	register swap esi/edi creature vs map in first half; 5 forms tried
+00947280	DIFFER	346v346	-	&PrettyThing: retail lea esi,[edi+1Ch] (this stays in edi), ours add edi,1Ch; 4 forms tried
+0096aad0	RELOCATION_MATCH	336v336	PASS	__forceinline helper sinks push ebx into the late branch
+0096b600	RELOCATION_MATCH	355v355	PASS	switch on boss phase, case 2 own Terminate
+00926060	DIFFER	387v386	-	speech wait loop inverted by the lane (retail top-tested, one PlayAISpeech call); 7 loop forms tried (while, for(;;), do/while+goto, goto-retry, reassign, inline helper x2)
+009426d0	DIFFER	328v322	-	false-exit block placed after the final exit (retail: inline after the first action); 4 forms tried
+00944300	DIFFER	344v354	-	&PCrate not hoisted into a callee-saved register (retail ebp; this spilled); 3 forms tried (member, reference, byte-array cast)
+00e2fd30	RELOCATION_MATCH	368v368	PASS	__forceinline RunAmbush after early IsDone return; ~CScriptThing out of line
+00e2bfa0	RELOCATION_MATCH	352v352	PASS	by-value CScriptThing copies in the call area
+00a01950	RELOCATION_MATCH	336v336	PASS	DisplayProgress implicit "" conversions; PSymbolMap.Reset(new)
+008718b0	DIFFER	341v341	-	register colouring (this esi/edi swap, player/objectDef ebp roles); 3 lookup forms tried
+00713d50	DIFFER	395v395	-	scratch register (eax/ecx/edx) scheduling in the on-arm creature loads; 3 forms tried (direct, accessor, named local)
+007158f0	RELOCATION_MATCH	384v384	PASS	FinishAction model; bool parameter; GetTC ternary form
+00717450	RELOCATION_MATCH	384v384	PASS	block-scoped locals share one frame slot; Max(0L, chars)
+00472eda	RELOCATION_MATCH	329v329	PASS	landed COpinionDeedReactionDefVector operator= model, element 0xc4
+004e6f74	DIFFER	290v333	-	POD vector operator=: retail spills _M_start/_M_finish to frame and keeps elem size in esi; 3 forms tried
+004e72c8	DIFFER	273v327	-	same POD vector operator= pattern as 004e6f74; 3 forms tried
+0070c330	SKIP	-	-	not attempted (budget): x87-heavy CAnimSet time update, no landed sibling model
+0070d1a0	DIFFER	331v331	-	__true_type tag temps homed in the live alpha arg slot in retail; CurrentAlpha/LastAlpha stores scheduled apart; 4 forms tried
+0070d390	SKIP	-	-	not attempted (budget): CAnimateThing combination-anim list rebuild needs the anim list model
+007fd8d0	DIFFER	321v321	-	register colouring in the two GetTC flag setters (component pointer eax vs edx/ecx); 4 forms tried
+00cdec40	RELOCATION_MATCH	336v336	PASS	named copy of the shown state; if/else-if chain 0,2,1; rotated while(!IsDone)
+00f1b690	DIFFER	361v361	-	DeregisterTimer exit-copy assignment (inner wait-loop return merged into the wrong tail copy); 4 forms tried
+00e38f80	DIFFER	377v376	-	register colouring: new result edi vs ebp; 2 forms tried
+00c72af0	SKIP	-	-	not attempted (budget): CAudioSource property setup over the sound-API function table (0x143FE44 import, 0x143BE00 cache)
+00646dbd	SKIP	-	-	not attempted (budget): NPlayerGui bar drawing, size-optimised TU
+00d167c0	DIFFER	340v340	-	register colouring: Me copy read via edi+0x10/0xc vs ebp alias; 2 forms tried
+00d16bb0	DIFFER	333v332	-	register colouring: this esi vs edi; 2 forms tried
+00e03810	RELOCATION_MATCH	352v352	PASS	CIsThingAlive filter scope object (landed CHTEPrisoner model); CCharString local for the sound
+00dfca90	SKIP	-	-	lane gap: inline-asm dword fistp rounding (GOTCHAS wave 25) in the shout-count Round; not authored
+00d910b0	DIFFER	369v369	-	near-hero IsDone exit: retail hoists the g_pGameScriptInterface load into the shared Deregister tail; 4 forms tried (do/while, while+break, while+return, break-for-remove)
+009d06f0	SKIP	-	-	not attempted (budget): CBankFile::OpenReadOnly needs the bank/file-handle model
+009d56c0	SKIP	-	-	not attempted (budget): CBankFileAsync::OpenReadOnly needs the async bank model
+009d61f0	SKIP	-	-	not attempted (budget): ~CBankFileAsyncData: critical sections, async entry lists and heap globals
+0084cdf0	RELOCATION_MATCH	336v336	PASS	named turn local before the sign multiply; GetPerpendicularXY inline
+009122a0	DIFFER	358v390	-	x87 scheduling of the 3 P1 t (1-t)^2 term ((1-t)^2 spilled to the dead t slot in retail); 4 forms tried
+0046944c	RELOCATION_MATCH	359v359	PASS	CDataInputStream ReadLong/ReadFloat __forceinline helpers (value loaded before this)
+00a38e50	SKIP	-	-	not attempted (budget): CCRCSymbolMap::ParseBuffer needs the tokenizer/CBaseFile model
+00a39010	SKIP	-	-	not attempted (budget): CCRCSymbolMap::LoadFromFile needs CFile/CCharString buffer model (calls 0x00A38E50)

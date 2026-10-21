@@ -255870,6 +255870,97 @@ $catalog = @(
         TestSource = '00/97/CAIStateGroupJackOfBladesBase_SetupArena_00972830_test.cpp'
         PassPattern = '00972830_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0046944c'
+        Module = 'CBlendedParticleEffectSet'
+        Source = '00/46/CBlendedParticleEffectSet_TransferBinaryIn_0046944c.cpp'
+        TestSource = '00/46/CBlendedParticleEffectSet_TransferBinaryIn_0046944c_test.cpp'
+        PassPattern = '0046944c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00472eda'
+        Module = 'CEnvironmentThemeDefVector'
+        Source = '00/47/CEnvironmentThemeDefVector_operator_00472eda.cpp'
+        TestSource = '00/47/CEnvironmentThemeDefVector_operator_00472eda_test.cpp'
+        PassPattern = '00472eda_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007158f0'
+        Module = 'NTCScriptedControl::CActionFollowCreature'
+        Source = '00/71/NTCScriptedControlCActionFollowCreature_OnCleanup_007158f0.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionFollowCreature_OnCleanup_007158f0_test.cpp'
+        PassPattern = '007158f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00717450'
+        Module = 'NTCScriptedControl::CActionOverheadTalkToThing'
+        Source = '00/71/NTCScriptedControlCActionOverheadTalkToThing_Update_00717450.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionOverheadTalkToThing_Update_00717450_test.cpp'
+        PassPattern = '00717450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084cdf0'
+        Module = 'NCameraModes::CBase'
+        Source = '00/84/NCameraModesCBase_UpdateFixLookDirection_0084cdf0.cpp'
+        TestSource = '00/84/NCameraModesCBase_UpdateFixLookDirection_0084cdf0_test.cpp'
+        PassPattern = '0084cdf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00911710'
+        Module = 'CAIStateGroup_Wander'
+        Source = '00/91/CAIStateGroupWander_Update_00911710.cpp'
+        TestSource = '00/91/CAIStateGroupWander_Update_00911710_test.cpp'
+        PassPattern = '00911710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096aad0'
+        Module = 'CAIStateGroup_WhisperPotionCombat'
+        Source = '00/96/CAIStateGroupWhisperPotionCombat_IsRunnableLeaf_0096aad0.cpp'
+        TestSource = '00/96/CAIStateGroupWhisperPotionCombat_IsRunnableLeaf_0096aad0_test.cpp'
+        PassPattern = '0096aad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096b600'
+        Module = 'CAIStateGroup_WhisperRetreat'
+        Source = '00/96/CAIStateGroupWhisperRetreat_Update_0096b600.cpp'
+        TestSource = '00/96/CAIStateGroupWhisperRetreat_Update_0096b600_test.cpp'
+        PassPattern = '0096b600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a01950'
+        Module = 'CASoundBank'
+        Source = '00/a0/CASoundBank_InitSymbols_00a01950.cpp'
+        TestSource = '00/a0/CASoundBank_InitSymbols_00a01950_test.cpp'
+        PassPattern = '00a01950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdec40'
+        Module = 'CArcheryCompetitionSignpost'
+        Source = '00/cd/CArcheryCompetitionSignpost_Main_00cdec40.cpp'
+        TestSource = '00/cd/CArcheryCompetitionSignpost_Main_00cdec40_test.cpp'
+        PassPattern = '00cdec40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e03810'
+        Module = 'CBanditCronies'
+        Source = '00/e0/CBanditCronies_Main_00e03810.cpp'
+        TestSource = '00/e0/CBanditCronies_Main_00e03810_test.cpp'
+        PassPattern = '00e03810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2bfa0'
+        Module = 'CAS_Buddy'
+        Source = '00/e2/CASBuddy_Init_00e2bfa0.cpp'
+        TestSource = '00/e2/CASBuddy_Init_00e2bfa0_test.cpp'
+        PassPattern = '00e2bfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2fd30'
+        Module = 'CAS_Ambusher'
+        Source = '00/e2/CASAmbusher_Main_00e2fd30.cpp'
+        TestSource = '00/e2/CASAmbusher_Main_00e2fd30_test.cpp'
+        PassPattern = '00e2fd30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
