@@ -1,0 +1,8 @@
+address	name	evidence
+00681cd0	CTCCreatureOpinionOfHero	method belongs to CTCCreatureOpinionOfHero, not CGameScriptInterface (chunk 245)
+0081e030	std::sort	__fastcall std::sort, manifest make_heap_Sift (chunk 245)
+008701d0	std::sort	__fastcall std::sort, manifest make_heap_Sift (chunk 245)
+00415fbc	CEngine::PeekDefinitionManager	body (chunk 245)
+009f9e00	CTexture::GetSurface	body (chunk 245)
+008abba0	CTCTargetingAI::SetScriptTargetOverride	body (chunk 245)
+00a0d300	CProcessedInput::Reset	body (chunk 245)

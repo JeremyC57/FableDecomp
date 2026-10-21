@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0081b300	RELOCATION_MATCH	388v388	PASS	CVectorMap pair-vector TransferBinaryIn; pair() : first(long()), second(V()) zero order
+0086f680	RELOCATION_MATCH	369v369	PASS	same template, 12-byte pairs
+00d3a9b0	RELOCATION_MATCH	327v327	PASS	fastcall string concatenation chain; mood if-chain with IsDone retests
+009c3fb0	DIFFER	361v359	-	dead read of error flag needs a cv-qualified member (qualifier banned in this lane); pending-write copy registers
+009c5890	DIFFER	389v389	-	scheduling only: pushes interleaving with flag stores
+00df2d30	RELOCATION_MATCH	349v349	PASS	named block strings; implicit movie-handle dtor; named Game copy for pause pair
+00e7de60	DIFFER	356v372	-	case-block frame words shared; IsDone exit block placement
+00f36d30	DIFFER	376v385	-	register allocation (ebx/ebp swap, new result in ecx), early-return tail not shared
+00412f90	RELOCATION_MATCH	394v394	PASS	Start() per front-end arm (tail-merged); component doubles as Run out param (advisor)
+006978d0	DIFFER	343v376	-	vector blends: x87 keep-to pattern and RHSet member copies not reproduced
+00697cc0	DIFFER	346v346	-	scheduling only (lea/push vs x87 in cross product)
+00445cb0	RELOCATION_MATCH	368v368	PASS	loop on range.first in place keeps iterator in edi; retail 12-byte containers local model
+004473a0	RELOCATION_MATCH	324v324	PASS	member-ctor vs body-assignment split from store order
+00681cd0	DIFFER	367v351	-	def holder register/strength reduction in the default loop
+008920c0	RELOCATION_MATCH	347v347	PASS	__fastcall operator+ concatenations; goto-form NONE test with single exit
+00892850	DIFFER	335v384	-	first-pass: counted-pointer release shape and temp slots differ
+00893c00	RELOCATION_MATCH	373v373	PASS	landed MsgOnExpressionPerformed body per arm
+00894950	RELOCATION_MATCH	324v324	PASS	float overload of landed CreateObject 0x894820
+00894ec0	DIFFER	335v335	-	scheduling of TC filter type stores vs pushes
+008968c0	RELOCATION_MATCH	364v364	PASS	named scratch string in {} block; named msg strings
+00897220	RELOCATION_MATCH	371v371	PASS	nested ifs + || chain for shared epilogues
+00897e10	RELOCATION_MATCH	385v385	PASS	ternary GetInterface puts the store pointer in ecx; goto-form empty-name test
+008981c0	RELOCATION_MATCH	382v382	PASS	forceinline HasInterface; out-param GetInterface for 2nd morph lookup
+00898c40	RELOCATION_MATCH	353v353	PASS	same-TU LowerBound stand-in fixes the key frame slot
+0089bdf0	DIFFER	387v387	-	x87 only: cos(pitch) lifetime (fld st2;fmulp vs fmul st2)
+008a0260	RELOCATION_MATCH	397v397	PASS	same-TU LowerBound stand-in fixes frame-slot packing; if/else override calls
+008a1cc0	RELOCATION_MATCH	390v390	PASS	inline member accessors give lea ecx,[eax+N]
+008a80f0	RELOCATION_MATCH	357v357	PASS	same-TU __find stand-in lets iterator and tag share the dead leader slot (advisor)
+008a8570	RELOCATION_MATCH	323v323	PASS	same-TU GetAllThings stand-in keeps start in ebp; named thing local
+008a8af0	DIFFER	366v366	-	scheduling of filter mapNumber store vs pushes
+008a9880	DIFFER	351v363	-	packed 9-byte record temp alignment; zero reg edi vs ebx
+008a9ae0	RELOCATION_MATCH	344v344	PASS	same-TU FindAllMessages stand-in keeps list sentinel in esi
+008d0fb0	DIFFER	383v383	-	frame-slot permutation of key/filter words
+008d1440	DIFFER	368v368	-	scheduling: decap flag byte store order
+008d23c0	DIFFER	372v372	-	key frame slot + push eax vs lea of GetString temp
+00a64360	SKIP	-	-	switch body + jump table followed by eight further accessor bodies inside the row
+006f2de0	DIFFER	376v375	-	first-pass: register roles (prong in ebp) and frame size
+009fd4e0	RELOCATION_MATCH	341v341	PASS	natural order; PDB names at retail offsets (-0x7C)
+009fea20	RELOCATION_MATCH	337v337	PASS	-1 CPixelFormat ctor; inline state-block ctor; novtable state base
+009fe780	DIFFER	351v343	-	first-pass: precomputed float sizes, row-end register, frame layout

@@ -1,203 +1,107 @@
-#include "fable_game.h"
+// CGame::Play() -- create the first game component (the main game when starting straight into it, else the legacy or new front end), start it, and run components until one reports no successor; when only compiling front-end definitions, just build and discard it
+// Leaf: Play
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00412F90, length 394 bytes (`ret`).
+// Callees: CompileDefs @ 0x0042F70B, operator new @ 0x00BFEA1A, CWideString ctor/dtor/operator= @ 0x0099AED0 / 0x0099B510 /
+//   0x0099B7D0, CCharString ctor/dtor @ 0x0099E4B0 / 0x0099EAE0, CMainGameComponent ctor @ 0x00418DCA,
+//   CFrontendGameComponent ctor @ 0x00496070, CNewFrontendGameComponent ctor @ 0x0042EA8F; the component's virtual slots 0
+//   (deleting destructor), 1 (start) and 2 (run one component, out: the next component).
+// Globals: g_bCompileFrontendDefinitions 0x013B8648, g_bStartMainGame 0x013B8605, g_bUseLegacyFrontend 0x013B8642,
+//   the main-game start path 0x013B7D5C (a CWideString), the retired component 0x013B7D58.
+// Layout: Ego_r.pdb CGame CurrentGameComponent +0x08, Quit +0x20C; CMainGameComponentInit {InitialWorldName,
+//   InitialWorldHolySiteName, InitialQuestName, SaveGameName}; the front-end init blocks are one zeroed long.
+// Shape: each front-end arm calls Start() itself (VC7.1 tail-merges the two calls into the shared join; a single Start()
+//   after the inner if/else leaves arm 2 forming its init address in edx); the component pointer doubles as Run's out parameter (so it lives in the frame from the start); `new` with the null-tested constructor call; the init block's zero store is shared by both front-end arms.
+struct CWideString {
+    void* PStringData;
+    CWideString();                                      // 0x0099AED0
+    ~CWideString();                                     // 0x0099B510
+    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+};
+struct CCharString {
+    void* PStringData;
+    CCharString();                                      // 0x0099E4B0
+    ~CCharString();                                     // 0x0099EAE0
+};
+struct CMainGameComponentInit {
+    CWideString InitialWorldName;
+    CWideString InitialWorldHolySiteName;
+    CCharString InitialQuestName;
+    CWideString SaveGameName;
+};
+struct CFrontendGameComponentInit { long Nowt; };
+struct CNewFrontendGameComponentInit { long Nothing; };
+struct CGame;
+struct CGameComponent {
+    virtual ~CGameComponent();                          // slot 0 (deleting destructor)
+    virtual void Start();                               // slot 1
+    virtual bool Run(CGameComponent*& next);            // slot 2
+};
+struct CMainGameComponent : CGameComponent {
+    CMainGameComponent(CGame* game, const CMainGameComponentInit& init);   // 0x00418DCA
+    unsigned char _body[0x161e4];
+};
+struct CFrontendGameComponent : CGameComponent {
+    CFrontendGameComponent(CGame* game, const CFrontendGameComponentInit& init);   // 0x00496070
+    unsigned char _body[0x1e5c];
+};
+struct CNewFrontendGameComponent : CGameComponent {
+    CNewFrontendGameComponent(CGame* game, const CNewFrontendGameComponentInit& init);   // 0x0042EA8F
+    unsigned char _body[0x144];
+};
+void __fastcall CompileDefs();                          // 0x0042F70B
+extern bool g_bCompileFrontendDefinitions;              // 0x013B8648
+extern bool g_bStartMainGame;                           // 0x013B8605
+extern bool g_bUseLegacyFrontend;                       // 0x013B8642
+extern CWideString g_MainGameStartupPath;               // 0x013B7D5C
+extern CGameComponent* g_pRetiredGameComponent;         // 0x013B7D58
 
-// These ABI adapters name the retail calls made by CGame::Play while keeping
-// the leaf independently linkable in its behavior fixture. The fastcall
-// constructor adapters consume ECX as the destination and pop the two
-// original thiscall stack arguments.
-extern "C" void FableGameCompileFrontendDefinitions_00412f90();
-extern "C" void* __cdecl FableGameOperatorNew_00412f90(fable_u32 size);
-extern "C" void __fastcall FableGameWideStringCtor_00412f90(void*, void*);
-extern "C" void __fastcall FableGameCharStringCtor_00412f90(void*, void*);
-extern "C" void __fastcall FableGameWideStringDtor_00412f90(void*, void*);
-extern "C" void __fastcall FableGameCharStringDtor_00412f90(void*, void*);
-extern "C" void __fastcall FableGameWideStringAssign_00412f90(
-    void*,
-    void*,
-    const CWideString*);
-extern "C" void* __fastcall FableGameMainComponentCtor_00412f90(
-    void*,
-    void*,
-    CGame*,
-    const CMainGameComponentInit*);
-extern "C" void* __fastcall FableGameLegacyFrontendCtor_00412f90(
-    void*,
-    void*,
-    CGame*,
-    const CFrontendGameComponentInit*);
-extern "C" void* __fastcall FableGameNewFrontendCtor_00412f90(
-    void*,
-    void*,
-    CGame*,
-    const CNewFrontendGameComponentInit*);
+struct CGame {
+    void*           __vftable;                          // +0x00
+    unsigned char   _pad04[4];
+    CGameComponent* CurrentGameComponent;               // +0x08
+    unsigned char   ParameterBuffer[0x200];             // +0x0C
+    bool            Quit;                               // +0x20C
+    void Play();
+};
 
-__declspec(naked) void CGame::Play()
+void CGame::Play()
 {
-    __asm
-    {
-        sub esp, 18h
-        mov al, byte ptr [g_FableCompileFrontendDefinitions_013B8648]
-        push esi
-        push edi
-        xor edi, edi
-        test al, al
-        mov esi, ecx
-        mov dword ptr [esp + 8], edi
-        jz compile_defs_done
-        call FableGameCompileFrontendDefinitions_00412f90
-
-    compile_defs_done:
-        mov al, byte ptr [g_FableStartMainGame_013B8605]
-        test al, al
-        jz create_frontend
-
-        lea ecx, dword ptr [esp + 10h]
-        call FableGameWideStringCtor_00412f90
-        lea ecx, dword ptr [esp + 14h]
-        call FableGameWideStringCtor_00412f90
-        lea ecx, dword ptr [esp + 18h]
-        call FableGameCharStringCtor_00412f90
-        lea ecx, dword ptr [esp + 1Ch]
-        call FableGameWideStringCtor_00412f90
-        push offset g_FableMainGameStartupPath_013B7D5C
-        lea ecx, dword ptr [esp + 20h]
-        call FableGameWideStringAssign_00412f90
-        push 161E8h
-        call FableGameOperatorNew_00412f90
-        add esp, 4
-        cmp eax, edi
-        jz main_allocation_failed
-        lea ecx, dword ptr [esp + 10h]
-        push ecx
-        push esi
-        mov ecx, eax
-        call FableGameMainComponentCtor_00412f90
-        jmp main_component_ready
-
-    main_allocation_failed:
-        xor eax, eax
-
-    main_component_ready:
-        mov dword ptr [esp + 8], eax
-        mov edx, dword ptr [eax]
-        mov ecx, eax
-        call dword ptr [edx + 4]
-        lea ecx, dword ptr [esp + 1Ch]
-        call FableGameWideStringDtor_00412f90
-        lea ecx, dword ptr [esp + 18h]
-        call FableGameCharStringDtor_00412f90
-        lea ecx, dword ptr [esp + 14h]
-        call FableGameWideStringDtor_00412f90
-        lea ecx, dword ptr [esp + 10h]
-        call FableGameWideStringDtor_00412f90
-        jmp component_initialized
-
-    create_frontend:
-        mov al, byte ptr [g_FableUseLegacyFrontend_013B8642]
-        test al, al
-        mov dword ptr [esp + 0Ch], edi
-        jz create_new_frontend
-        push 1E60h
-        call FableGameOperatorNew_00412f90
-        add esp, 4
-        cmp eax, edi
-        jz frontend_allocation_failed
-        lea ecx, dword ptr [esp + 0Ch]
-        push ecx
-        push esi
-        mov ecx, eax
-        call FableGameLegacyFrontendCtor_00412f90
-        jmp frontend_component_ready
-
-    create_new_frontend:
-        push 148h
-        call FableGameOperatorNew_00412f90
-        add esp, 4
-        cmp eax, edi
-        jz frontend_allocation_failed
-        lea ecx, dword ptr [esp + 0Ch]
-        push ecx
-        push esi
-        mov ecx, eax
-        call FableGameNewFrontendCtor_00412f90
-        jmp frontend_component_ready
-
-    frontend_allocation_failed:
-        xor eax, eax
-
-    frontend_component_ready:
-        mov dword ptr [esp + 8], eax
-        mov edx, dword ptr [eax]
-        mov ecx, eax
-        call dword ptr [edx + 4]
-
-    component_initialized:
-        mov al, byte ptr [g_FableCompileFrontendDefinitions_013B8648]
-        test al, al
-        jz retain_component
-        mov ecx, dword ptr [esp + 8]
-        cmp ecx, edi
-        jz play_done
-        mov eax, dword ptr [ecx]
-        push 1
-        call dword ptr [eax]
-        pop edi
-        pop esi
-        add esp, 18h
-        ret
-
-    retain_component:
-        mov eax, dword ptr [esp + 8]
-        cmp eax, edi
-        jz test_quit
-        mov dword ptr [esi + 8], eax
-
-    test_quit:
-        mov al, byte ptr [esi + 20Ch]
-        test al, al
-        jnz play_done
-        push ebx
-        _emit 08Dh
-        _emit 09Bh
-        _emit 000h
-        _emit 000h
-        _emit 000h
-        _emit 000h
-
-    run_component:
-        mov ecx, dword ptr [esi + 8]
-        mov edx, dword ptr [ecx]
-        lea eax, dword ptr [esp + 0Ch]
-        push eax
-        call dword ptr [edx + 8]
-        mov ecx, dword ptr [g_FableRetiredGameComponent_013B7D58]
-        cmp ecx, edi
-        mov bl, al
-        jz retired_component_destroyed
-        mov edx, dword ptr [ecx]
-        push 1
-        call dword ptr [edx]
-        mov dword ptr [g_FableRetiredGameComponent_013B7D58], edi
-
-    retired_component_destroyed:
-        test bl, bl
-        jnz install_next_component
-        mov byte ptr [esi + 20Ch], 1
-        jmp check_loop_quit
-
-    install_next_component:
-        mov eax, dword ptr [esp + 0Ch]
-        mov dword ptr [esi + 8], eax
-
-    check_loop_quit:
-        mov al, byte ptr [esi + 20Ch]
-        test al, al
-        jz run_component
-        pop ebx
-
-    play_done:
-        pop edi
-        pop esi
-        add esp, 18h
-        ret
+    CGameComponent* component = 0;
+    if (g_bCompileFrontendDefinitions)
+        CompileDefs();
+    if (g_bStartMainGame) {
+        CMainGameComponentInit init;
+        init.SaveGameName = g_MainGameStartupPath;
+        component = new CMainGameComponent(this, init);
+        component->Start();
+    } else {
+        if (g_bUseLegacyFrontend) {
+            CFrontendGameComponentInit init;
+            init.Nowt = 0;
+            component = new CFrontendGameComponent(this, init);
+            component->Start();
+        } else {
+            CNewFrontendGameComponentInit init;
+            init.Nothing = 0;
+            component = new CNewFrontendGameComponent(this, init);
+            component->Start();
+        }
+    }
+    if (g_bCompileFrontendDefinitions) {
+        delete component;
+        return;
+    }
+    if (component)
+        CurrentGameComponent = component;
+    while (!Quit) {
+        bool running = CurrentGameComponent->Run(component);
+        if (g_pRetiredGameComponent) {
+            delete g_pRetiredGameComponent;
+            g_pRetiredGameComponent = 0;
+        }
+        if (!running)
+            Quit = true;
+        else
+            CurrentGameComponent = component;
     }
 }

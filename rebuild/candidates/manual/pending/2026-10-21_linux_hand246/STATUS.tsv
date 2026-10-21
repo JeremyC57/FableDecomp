@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+009ff710	RELOCATION_MATCH	336v336	PASS	
+00efbe20	RELOCATION_MATCH	337v337	PASS	
+00e4b010	RELOCATION_MATCH	359v359	PASS	
+00d73970	RELOCATION_MATCH	354v354	PASS	
+00d73ae0	RELOCATION_MATCH	386v386	PASS	
+00a02220	RELOCATION_MATCH	334v334	PASS	
+00a02730	RELOCATION_MATCH	380v380	PASS	
+00a03180	RELOCATION_MATCH	358v358	PASS	scoped lock dtor inline except merged failure exit
+00e5f6b0	DIFFER	335v335	-	register swap in the element address and the GetDataString vtable load
+00ce1af0	RELOCATION_MATCH	376v376	PASS	conditional by-value temp flag
+00ce4600	RELOCATION_MATCH	355v355	PASS	
+00f36a30	DIFFER	361v361	-	scheduling only (counter load vs fmul order in the octave loop)
+00868ce0	DIFFER	361v360	-	frame +4: pointer temporary not overlaid with the lookup key / def out words
+00541fd0	DIFFER	350v366	-	lookup temporary's dtor zero stores eliminated (DSE)
+00a60050	DIFFER	333v333	-	count-block delete operand in eax instead of ecx
+00690e70	RELOCATION_MATCH	323v323	PASS	
+00690b20	RELOCATION_MATCH	327v327	PASS	
+00689c40	RELOCATION_MATCH	337v337	PASS	
+00691680	RELOCATION_MATCH	370v370	PASS	
+0068f320	RELOCATION_MATCH	325v325	PASS	
+00690fd0	RELOCATION_MATCH	327v327	PASS	
+00690830	RELOCATION_MATCH	361v361	PASS	
+00688d40	DIFFER	362v360	-	this/def register swap; PTarget temporary ctor/op= stays out of line unless forced
+00557d20	RELOCATION_MATCH	392v392	PASS	
+00be65a0	RELOCATION_MATCH	334v334	PASS	
+00be7be0	DIFFER	361v391	-	sub-patch pointer in esi (retail edx, esi=4 constant) and 3/4/5 arm layout
+00bf6e20	RELOCATION_MATCH	349v349	PASS	local layout (retail 8 bytes below PDB)
+00bf6f80	DIFFER	357v375	-	float ctor args loaded early and spilled to dead arg slots; box tail scheduling
+00be3660	RELOCATION_MATCH	381v381	PASS	
+00a57f70	RELOCATION_MATCH	382v382	PASS	
+00536c64	RELOCATION_MATCH	373v373	PASS	size TU
+0053822b	DIFFER	377v377	-	scheduling only after same-TU stand-ins (child-count load vs alpha fild)
+00bfa920	DIFFER	334v346	-	constant/zero register allocation (ebp=0, ebx=0xff in retail)
+00bf9fa0	DIFFER	325v325	-	esi/edi swap in the descriptor argument loads
+00e4a740	RELOCATION_MATCH	335v335	PASS	inline-once ~CScriptThing
+00e5e0c0	RELOCATION_MATCH	376v376	PASS	jump table (4 cases, range check)
+00df48f0	DIFFER	348v348	-	register swap: Me pointer in ebx (retail edi)
+00da63f0	RELOCATION_MATCH	353v353	PASS	
+00e4b430	RELOCATION_MATCH	375v375	PASS	
+00416e78	DIFFER	393v393	-	frame size 0x4C v 0x78 (0x2C unexplained retail local space); code identical

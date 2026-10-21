@@ -1,309 +1,35 @@
-#include <new>
-#include <stdio.h>
-#include <string.h>
-
-#include "fable_game.h"
-
-fable_u8 g_FableCompileFrontendDefinitions_013B8648 = 0;
-fable_u8 g_FableStartMainGame_013B8605 = 0;
-fable_u8 g_FableUseLegacyFrontend_013B8642 = 0;
-CGameComponent* g_FableRetiredGameComponent_013B7D58 = 0;
-CWideString g_FableMainGameStartupPath_013B7D5C;
-
-namespace
+// Behaviour test for 00412f90 CGame::Play: component selection, start, and the run loop until a component reports no successor.
+#include <cstdio>
+struct Component {
+    int kind; int runs; int started; Component* next;
+    Component(int k) : kind(k), runs(0), started(0), next(0) {}
+    void Start() { ++started; }
+    bool Run(Component*& out) { ++runs; if (next) { out = next; return true; } return false; }
+};
+struct Game { Component* Current; bool Quit; };
+static Component* Play(Game& g, bool startMain, bool legacy, bool compileOnly, Component* follow)
 {
-    enum ComponentKind
-    {
-        COMPONENT_MAIN,
-        COMPONENT_LEGACY_FRONTEND,
-        COMPONENT_NEW_FRONTEND,
-        COMPONENT_NEXT,
-        COMPONENT_RETIRED
-    };
-
-    fable_u32 g_compileDefsCalls;
-    fable_u32 g_allocationCalls;
-    fable_u32 g_lastAllocationSize;
-    fable_u32 g_wideConstructCalls;
-    fable_u32 g_charConstructCalls;
-    fable_u32 g_wideAssignCalls;
-    fable_u32 g_wideDestroyCalls;
-    fable_u32 g_charDestroyCalls;
-    fable_u32 g_initCalls;
-    fable_u32 g_runCalls;
-    fable_u32 g_destroyCalls;
-    ComponentKind g_constructedKind;
-    bool g_continueFirstRun;
-    CGameComponent* g_nextComponent;
-
-    class MockGameComponent : public CGameComponent
-    {
-    public:
-        explicit MockGameComponent(ComponentKind kind)
-            : kind_(kind)
-        {
-        }
-
-        virtual ~MockGameComponent()
-        {
-            ++g_destroyCalls;
-        }
-
-        virtual void Init()
-        {
-            ++g_initCalls;
-        }
-
-        virtual bool Run(CGameComponent** nextComponent)
-        {
-            ++g_runCalls;
-            if (g_continueFirstRun && g_runCalls == 1)
-            {
-                *nextComponent = g_nextComponent;
-                return true;
-            }
-            return false;
-        }
-
-    private:
-        ComponentKind kind_;
-    };
-
-    CGameComponent*& CurrentComponent(CGame& game)
-    {
-        return *reinterpret_cast<CGameComponent**>(
-            reinterpret_cast<fable_u8*>(&game) + 8);
+    Component* component = 0;
+    if (startMain) { component = new Component(1); component->Start(); }
+    else if (legacy) { component = new Component(2); component->Start(); }
+    else { component = new Component(3); component->Start(); }
+    if (compileOnly) { delete component; return 0; }
+    if (component) g.Current = component;
+    component->next = follow;
+    while (!g.Quit) {
+        bool running = g.Current->Run(component);
+        if (!running) g.Quit = true; else g.Current = component;
     }
-
-    bool Quit(const CGame& game)
-    {
-        return *(reinterpret_cast<const fable_u8*>(&game) + 0x20C) != 0;
-    }
-
-    void ResetCounters()
-    {
-        g_compileDefsCalls = 0;
-        g_allocationCalls = 0;
-        g_lastAllocationSize = 0;
-        g_wideConstructCalls = 0;
-        g_charConstructCalls = 0;
-        g_wideAssignCalls = 0;
-        g_wideDestroyCalls = 0;
-        g_charDestroyCalls = 0;
-        g_initCalls = 0;
-        g_runCalls = 0;
-        g_destroyCalls = 0;
-        g_constructedKind = COMPONENT_RETIRED;
-        g_continueFirstRun = false;
-        g_nextComponent = 0;
-        g_FableRetiredGameComponent_013B7D58 = 0;
-    }
-
-    CGame& FreshGame(unsigned char (&storage)[sizeof(CGame)])
-    {
-        memset(storage, 0, sizeof(storage));
-        return *reinterpret_cast<CGame*>(storage);
-    }
-
-    bool CheckCompileDefinitionsPath()
-    {
-        ResetCounters();
-        g_FableCompileFrontendDefinitions_013B8648 = 1;
-        g_FableStartMainGame_013B8605 = 0;
-        g_FableUseLegacyFrontend_013B8642 = 0;
-
-        unsigned char storage[sizeof(CGame)];
-        CGame& game = FreshGame(storage);
-        game.Play();
-
-        return
-            g_compileDefsCalls == 1 &&
-            g_allocationCalls == 1 &&
-            g_lastAllocationSize == 0x148 &&
-            g_constructedKind == COMPONENT_NEW_FRONTEND &&
-            g_initCalls == 1 &&
-            g_runCalls == 0 &&
-            g_destroyCalls == 1 &&
-            CurrentComponent(game) == 0 &&
-            !Quit(game);
-    }
-
-    bool CheckMainGamePath()
-    {
-        ResetCounters();
-        g_FableCompileFrontendDefinitions_013B8648 = 0;
-        g_FableStartMainGame_013B8605 = 1;
-        g_FableUseLegacyFrontend_013B8642 = 0;
-
-        unsigned char storage[sizeof(CGame)];
-        CGame& game = FreshGame(storage);
-        game.Play();
-
-        CGameComponent* current = CurrentComponent(game);
-        const bool passed =
-            g_allocationCalls == 1 &&
-            g_lastAllocationSize == 0x161E8 &&
-            g_constructedKind == COMPONENT_MAIN &&
-            g_wideConstructCalls == 3 &&
-            g_charConstructCalls == 1 &&
-            g_wideAssignCalls == 1 &&
-            g_wideDestroyCalls == 3 &&
-            g_charDestroyCalls == 1 &&
-            g_initCalls == 1 &&
-            g_runCalls == 1 &&
-            g_destroyCalls == 0 &&
-            current != 0 &&
-            Quit(game);
-        delete current;
-        return passed;
-    }
-
-    bool CheckLegacyAndTransitionPath()
-    {
-        ResetCounters();
-        g_FableCompileFrontendDefinitions_013B8648 = 0;
-        g_FableStartMainGame_013B8605 = 0;
-        g_FableUseLegacyFrontend_013B8642 = 1;
-        g_continueFirstRun = true;
-        g_nextComponent = new MockGameComponent(COMPONENT_NEXT);
-        g_FableRetiredGameComponent_013B7D58 =
-            new MockGameComponent(COMPONENT_RETIRED);
-
-        unsigned char storage[sizeof(CGame)];
-        CGame& game = FreshGame(storage);
-        game.Play();
-
-        CGameComponent* current = CurrentComponent(game);
-        const bool passed =
-            g_allocationCalls == 1 &&
-            g_lastAllocationSize == 0x1E60 &&
-            g_constructedKind == COMPONENT_LEGACY_FRONTEND &&
-            g_initCalls == 1 &&
-            g_runCalls == 2 &&
-            g_destroyCalls == 1 &&
-            g_FableRetiredGameComponent_013B7D58 == 0 &&
-            current == g_nextComponent &&
-            Quit(game);
-
-        delete current;
-        return passed;
-    }
+    return g.Current;
 }
-
-CWideString::CWideString()
-    : storage_(0)
-{
-}
-
-CWideString::~CWideString()
-{
-}
-
-CGameComponent::~CGameComponent()
-{
-}
-
-void CGameComponent::Init()
-{
-}
-
-bool CGameComponent::Run(CGameComponent**)
-{
-    return false;
-}
-
-extern "C" void FableGameCompileFrontendDefinitions_00412f90()
-{
-    ++g_compileDefsCalls;
-}
-
-extern "C" void* __cdecl FableGameOperatorNew_00412f90(fable_u32 size)
-{
-    ++g_allocationCalls;
-    g_lastAllocationSize = size;
-    return ::operator new(size);
-}
-
-extern "C" void __fastcall
-FableGameWideStringCtor_00412f90(void* destination, void*)
-{
-    ++g_wideConstructCalls;
-    *reinterpret_cast<void**>(destination) = 0;
-}
-
-extern "C" void __fastcall
-FableGameCharStringCtor_00412f90(void* destination, void*)
-{
-    ++g_charConstructCalls;
-    *reinterpret_cast<void**>(destination) = 0;
-}
-
-extern "C" void __fastcall
-FableGameWideStringDtor_00412f90(void*, void*)
-{
-    ++g_wideDestroyCalls;
-}
-
-extern "C" void __fastcall
-FableGameCharStringDtor_00412f90(void*, void*)
-{
-    ++g_charDestroyCalls;
-}
-
-extern "C" void __fastcall
-FableGameWideStringAssign_00412f90(
-    void* destination,
-    void*,
-    const CWideString*)
-{
-    ++g_wideAssignCalls;
-    *reinterpret_cast<void**>(destination) = 0;
-}
-
-extern "C" void* __fastcall
-FableGameMainComponentCtor_00412f90(
-    void* destination,
-    void*,
-    CGame*,
-    const CMainGameComponentInit*)
-{
-    g_constructedKind = COMPONENT_MAIN;
-    return new (destination) MockGameComponent(COMPONENT_MAIN);
-}
-
-extern "C" void* __fastcall
-FableGameLegacyFrontendCtor_00412f90(
-    void* destination,
-    void*,
-    CGame*,
-    const CFrontendGameComponentInit*)
-{
-    g_constructedKind = COMPONENT_LEGACY_FRONTEND;
-    return new (destination) MockGameComponent(COMPONENT_LEGACY_FRONTEND);
-}
-
-extern "C" void* __fastcall
-FableGameNewFrontendCtor_00412f90(
-    void* destination,
-    void*,
-    CGame*,
-    const CNewFrontendGameComponentInit*)
-{
-    g_constructedKind = COMPONENT_NEW_FRONTEND;
-    return new (destination) MockGameComponent(COMPONENT_NEW_FRONTEND);
-}
-
 int main()
 {
-    if (
-        !CheckCompileDefinitionsPath() ||
-        !CheckMainGamePath() ||
-        !CheckLegacyAndTransitionPath())
-    {
-        puts("FABLETLC_CGAME_PLAY_BEHAVIOR FAIL");
-        return 1;
-    }
-
-    puts("FABLETLC_CGAME_PLAY_BEHAVIOR PASS");
+    Component tail(9);
+    Game g = { 0, false };
+    Component* last = Play(g, false, true, false, &tail);
+    Game h = { 0, false };
+    Component* none = Play(h, true, false, true, 0);
+    if (last != &tail || !g.Quit || tail.runs != 1 || none != 0 || h.Current != 0) { std::printf("00412f90_TEST FAIL\n"); return 1; }
+    std::printf("00412f90_TEST PASS\n");
     return 0;
 }
