@@ -262713,6 +262713,62 @@ $catalog = @(
         TestSource = '00/bc/CEnginePrimitiveChangerManager_RenderPrimitiveToShadowBuffer_00bc5a20_test.cpp'
         PassPattern = '00bc5a20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006626e0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetAnimMovementVector_006626e0.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetAnimMovementVector_006626e0_test.cpp'
+        PassPattern = '006626e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00730f90'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_UpdateOpenStatusTriggerTypePerson_00730f90.cpp'
+        TestSource = '00/73/CTCDoor_UpdateOpenStatusTriggerTypePerson_00730f90_test.cpp'
+        PassPattern = '00730f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075d9a0'
+        Module = 'CTCCameraPointBuilding'
+        Source = '00/75/CTCCameraPointBuilding_vfunc17_0075d9a0.cpp'
+        TestSource = '00/75/CTCCameraPointBuilding_vfunc17_0075d9a0_test.cpp'
+        PassPattern = '0075d9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00760870'
+        Module = 'CTCShapeManager'
+        Source = '00/76/CTCShapeManager_IsPosInAnyShape_00760870.cpp'
+        TestSource = '00/76/CTCShapeManager_IsPosInAnyShape_00760870_test.cpp'
+        PassPattern = '00760870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00875040'
+        Module = 'CTools'
+        Source = '00/87/CTools_IsVectorBetweenTwoOthersInThePlane_00875040.cpp'
+        TestSource = '00/87/CTools_IsVectorBetweenTwoOthersInThePlane_00875040_test.cpp'
+        PassPattern = '00875040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a0cb0'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_DebugGetAllTextEntriesForTargetedThing_008a0cb0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_DebugGetAllTextEntriesForTargetedThing_008a0cb0_test.cpp'
+        PassPattern = '008a0cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ee790'
+        Module = 'CMaterialDef'
+        Source = '00/8e/CMaterialDef_GetBlendedSwordHitEffect_008ee790.cpp'
+        TestSource = '00/8e/CMaterialDef_GetBlendedSwordHitEffect_008ee790_test.cpp'
+        PassPattern = '008ee790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c41a70'
+        Module = 'CCombatant'
+        Source = '00/c4/CCombatant_ComputeEffectiveRange_00c41a70.cpp'
+        TestSource = '00/c4/CCombatant_ComputeEffectiveRange_00c41a70_test.cpp'
+        PassPattern = '00c41a70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
