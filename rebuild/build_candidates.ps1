@@ -262369,6 +262369,118 @@ $catalog = @(
         TestSource = '00/ce/NScriptCGameflowAssistanceScript_TutorialLowHealth_00ceffb0_test.cpp'
         PassPattern = '00ceffb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0045d344'
+        Module = 'CCameraModeDef'
+        Source = '00/45/CCameraModeDef_operator_0045d344.cpp'
+        TestSource = '00/45/CCameraModeDef_operator_0045d344_test.cpp'
+        PassPattern = '0045d344_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004602a4'
+        Module = 'CSpecialAbilitiesLightningSpellDef'
+        Source = '00/46/CSpecialAbilitiesLightningSpellDef_operator_004602a4.cpp'
+        TestSource = '00/46/CSpecialAbilitiesLightningSpellDef_operator_004602a4_test.cpp'
+        PassPattern = '004602a4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00478132'
+        Module = 'CHeroStatsDef'
+        Source = '00/47/CHeroStatsDef_operator_00478132.cpp'
+        TestSource = '00/47/CHeroStatsDef_operator_00478132_test.cpp'
+        PassPattern = '00478132_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00547c90'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_ChangeState_00547c90.cpp'
+        TestSource = '00/54/NUISystemCMovie_ChangeState_00547c90_test.cpp'
+        PassPattern = '00547c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006301a0'
+        Module = 'NUISystem::CUIDef'
+        Source = '00/63/NUISystemCUIDef_CUIDef_006301a0.cpp'
+        TestSource = '00/63/NUISystemCUIDef_CUIDef_006301a0_test.cpp'
+        PassPattern = '006301a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00679740'
+        Module = 'COpinionReactionManagerDef'
+        Source = '00/67/COpinionReactionManagerDef_Transfer_00679740.cpp'
+        TestSource = '00/67/COpinionReactionManagerDef_Transfer_00679740_test.cpp'
+        PassPattern = '00679740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008db460'
+        Module = 'NCreatureMode::CModeDragonHover'
+        Source = '00/8d/NCreatureModeCModeDragonHover_FrameUpdate_008db460.cpp'
+        TestSource = '00/8d/NCreatureModeCModeDragonHover_FrameUpdate_008db460_test.cpp'
+        PassPattern = '008db460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a77570'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_IsActionPointReachable_00a77570.cpp'
+        TestSource = '00/a7/CNavQuadTree_IsActionPointReachable_00a77570_test.cpp'
+        PassPattern = '00a77570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a77e80'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_GetMemoryUsage_00a77e80.cpp'
+        TestSource = '00/a7/CNavQuadTree_GetMemoryUsage_00a77e80_test.cpp'
+        PassPattern = '00a77e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab5710'
+        Module = 'CMouseDX'
+        Source = '00/ab/CMouseDX_SetExclusiveMode_00ab5710.cpp'
+        TestSource = '00/ab/CMouseDX_SetExclusiveMode_00ab5710_test.cpp'
+        PassPattern = '00ab5710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb2d0'
+        Module = 'NParticleEngine::CParticleEmitterList'
+        Source = '00/ae/NParticleEngineCParticleEmitterList_FindVisible_00aeb2d0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterList_FindVisible_00aeb2d0_test.cpp'
+        PassPattern = '00aeb2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aedaf0'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_WriteBinary_00aedaf0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_WriteBinary_00aedaf0_test.cpp'
+        PassPattern = '00aedaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b18950'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_WriteBinary_00b18950.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_WriteBinary_00b18950_test.cpp'
+        PassPattern = '00b18950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1b810'
+        Module = 'NParticleEngine::CPSCDecalRenderer'
+        Source = '00/b1/NParticleEngineCPSCDecalRenderer_DatabaseCopy_00b1b810.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCDecalRenderer_DatabaseCopy_00b1b810_test.cpp'
+        PassPattern = '00b1b810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d89380'
+        Module = 'NScript::CQ_HeroSoulsNostroScript::CNostro'
+        Source = '00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380_test.cpp'
+        PassPattern = '00d89380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db7e10'
+        Module = 'CNOVI_Barrel'
+        Source = '00/db/CNOVIBarrel_Main_00db7e10.cpp'
+        TestSource = '00/db/CNOVIBarrel_Main_00db7e10_test.cpp'
+        PassPattern = '00db7e10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

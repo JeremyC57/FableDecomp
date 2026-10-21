@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008db460	RELOCATION_MATCH	443v443	PASS	CModeDragonHover::FrameUpdate; owner loaded before target, inline GetLength2D
+008dc720	DIFFER	498v478	-	register allocation: the lane pushes ebp as a zero register (the null inits and both GetDummyObject zero arguments) and caches the special-effects def
+008dc900	DIFFER	496v502	-	frame 0x50 v 0x4c: retail reuses the dragon-def out slot for the CCharString name temp and keeps the lerp on the x87 stack
+008da0f0	DIFFER	499v487	-	frame slots shifted by 4 (retail packs the name/temporaries at +10h/+14h, the GetDef out at +18h) and the null-tested GetDef release at the end: retai
+008d9b00	DIFFER	406v408	-	retail has a 0xc frame (one dead slot) and converts the fps global with its own fild + fdivp
+008da410	DIFFER	514v511	-	register allocation only: retail puts this in ebp and effectType/effect/emitter in edi, freeing ebx to hold the CIntelligentPointer vtable (0x01238C6C
+00861a80	DIFFER	473v486	-	register assignment and one temporary: retail holds this in ebp, to in edi, from in esi and the to-delay in ebx (the lane: this ebx, to esi, from edi,
+00ab5710	RELOCATION_MATCH	455v455	PASS	CMouseDX::SetExclusiveMode; nested success tests, one shared return false
+00547c90	RELOCATION_MATCH	429v429	PASS	CMovie::ChangeState; CWideString path temp homed in the dead newState slot
+00db7e10	RELOCATION_MATCH	476v476	PASS	CNOVI_Barrel::Main tutorial entity script
+00a77570	RELOCATION_MATCH	414v414	PASS	CNavQuadTree::IsActionPointReachable; named endX/endY bounds
+00a77e80	MATCH	408v408	PASS	CNavQuadTree::GetMemoryUsage; unused list::size() calls kept
+00a78800	DIFFER	537v494	-	register allocation and frame: retail keeps the region vector's _M_finish in esi and spills the neighbour-container pointer into the dead bool-paramet
+00cef3b0	DIFFER	399v405	-	retail calls ~CTimer out of line (0x00CD4470, timer homed at [esp+10h]) on the terminate exit inside the message branch and keeps a separate in-loop d
+00d89380	RELOCATION_MATCH	504v504	PASS	NScript::CQ_HeroSoulsNostroScript::CNostro::Main
+00bde680	DIFFER	465v465	-	scheduling only: retail loads the count before the link store in the loop tail
+00701590	DIFFER	435v439	-	tail only: retail re-reads the type argument from its slot for the GetFrequency push (edx twice, vtable in eax)
+00679740	RELOCATION_MATCH	447v447	PASS	COpinionReactionManagerDef::Transfer; inline CPersistContext::Transfer template
+00ac7750	DIFFER	506v495	-	retail is compiled with callee knowledge: the quadric stays in edx across GetInverseMatrixPart (0xAC70F0) and ecx is reused across both EvaluateError 
+00ac8ae0	DIFFER	388v409	-	register allocation: retail keeps faceA's first unique vertex in ebx for the whole body and spills &faceB plus faceB's second vertex to the stack (fra
+00873bc0	DIFFER	478v481	-	register allocation only: retail keeps this in edi and &AxisZ in ebx (the cross product then loads AxisX's operand first), the lane swaps them (this i
+00b1b810	MATCH	511v511	PASS	CPSCDecalRenderer::DatabaseCopy; one bit-field assignment per setting
+00b18950	RELOCATION_MATCH	402v402	PASS	CPSCLight::WriteBinary; bool bit-fields passed by value
+00b50370	DIFFER	406v406	-	scheduling only: retail hoists the 8.0/0.1/1.0 constants into registers; really the CEngineShadowRenderer ctor
+00b05c60	DIFFER	277v429	-	inline-asm fld/fistp float-to-int helper in retail (asm_bake lane gap)
+00b0a750	DIFFER	304v456	-	inline-asm fld/fistp float-to-int helper in retail (asm_bake lane gap)
+0045d344	RELOCATION_MATCH	405v405	PASS	CCameraModeDef::operator= (catalog label CParentDefClassBase::operator= is propagated)
+004602a4	RELOCATION_MATCH	405v405	PASS	CSpecialAbilitiesLightningSpellDef::operator= (catalog label propagated)
+00478132	RELOCATION_MATCH	507v507	PASS	CHeroStatsDef::operator= (catalog label propagated)
+009aed70	DIFFER	499v492	-	retail keeps OriginalParentDefIndex in edi (preloaded from the dead stream-argument slot it shares with the count, frame 0x1c, ebx as read temp)
+00aedaf0	RELOCATION_MATCH	423v423	PASS	CParticleEmitter::WriteBinary; file order, ushort bits read as word
+00aee9f0	DIFFER	403v419	-	retail spills the run-time epsilon square (0.0001f*0.0001f) to [esp+4] (frame 0x28) and compares both length-squares against memory, with the new posi
+00aeb2d0	RELOCATION_MATCH	453v453	PASS	CParticleEmitterList::FindVisible; iterator class with user copy ctor, named erase result
+00aebaf0	DIFFER	398v402	-	register allocation only: retail spills the list iterator to the frame (0x14 frame, this spilled, edi=names, ebx=&emitter->Name) where the lane keeps 
+00aca0c0	DIFFER	484v491	-	logic and STLport map lifetime complete (12-byte tree incl. the empty key_compare avoids the and esp,-8 frame)
+00ae0e60	DIFFER	441v457	-	the SSE branch is retail inline assembly: the source/target pointers and the weight are forced to frame slots ([esp+10h]/[1Ch], a 16-byte weight temp 
+00adf760	DIFFER	509v509	-	same size, frame slots and scheduling only: retail keeps damping at [esp+14h], gravity*GravityStrength at [18h] and the summed force at [28h] (loop te
+006301a0	RELOCATION_MATCH	432v432	PASS	really NUISystem::CUIDef::~CUIDef (catalog says ~CPatchTesselationEdgeStrip)
+00f36010	DIFFER	412v442	-	inline-asm fld/fsub 0.5/fistp floor helper, frame-pointer function (asm_bake lane gap)
+00410be0	SKIP	-	-	catalog row spans a jump table and neighbouring bodies, not one function

@@ -1879,3 +1879,26 @@ address	module	name	length	chunk	reason
 00b66c10	CGraphicInfo	GetFrame	432	hand264	DIFFER(419v417) -- two spots: retail reloads Data for the BankFrame store (movsx into ecx) and leaves a dead `add eax,20h` after
 00c2da20	CGuiWindowManager	CGuiWindowManager::LoadDrawEnvironment	448	hand264	DIFFER(443v448) -- needs --flags /EHsc /GS
 00e1b750	CHKC_ScreamerPoint	Main	512	hand264	DIFFER(503v499) -- the inner-loop terminating exit keeps `lea ecx,[esp+18h]` after the jne (retail hoists it above the jne and sh
+008dc720	CModeDragonStrafeBurninate	StartBeamEffect	480	hand266	DIFFER(498v478) -- register allocation: the lane pushes ebp as a zero register (the null inits and both GetDummyObject zero arguments) and caches the special-effects def
+008dc900	CModeDragonStrafeBurninate	UpdateBeam	512	hand266	DIFFER(496v502) -- frame 0x50 v 0x4c: retail reuses the dragon-def out slot for the CCharString name temp and keeps the lerp on the x87 stack
+008da0f0	CModeScorpionKingTailPlunge	Spike	496	hand266	DIFFER(499v487) -- frame slots shifted by 4 (retail packs the name/temporaries at +10h/+14h, the GetDef out at +18h) and the null-tested GetDef release at the end: retai
+008d9b00	CModeScorpionKingVulnerable	AnimUpdate	416	hand266	DIFFER(406v408) -- retail has a 0xc frame (one dead slot) and converts the fps global with its own fild + fdivp
+008da410	CModeScreamerAggressive	OnActivate	512	hand266	DIFFER(514v511) -- register allocation only: retail puts this in ebp and effectType/effect/emitter in edi, freeing ebx to hold the CIntelligentPointer vtable (0x01238C6C
+00861a80	CModeStandBase	SetUpMovementAnim	486	hand266	DIFFER(473v486) -- register assignment and one temporary: retail holds this in ebp, to in edi, from in esi and the to-delay in ebx (the lane: this ebx, to esi, from edi,
+00a78800	CNavSwitchableLeafNode	SetAsBlocked	496	hand266	DIFFER(537v494) -- register allocation and frame: retail keeps the region vector's _M_finish in esi and spills the neighbour-container pointer into the dead bool-paramet
+00cef3b0	CNostro	Main	416	hand266	DIFFER(399v405) -- retail calls ~CTimer out of line (0x00CD4470, timer homed at [esp+10h]) on the terminate exit inside the message branch and keeps a separate in-loop d
+00bde680	CObjectTypeCollection	Load	480	hand266	DIFFER(465v465) -- scheduling only: retail loads the count before the link store in the loop tail
+00701590	COpinionReactionManager	GetReactionMatchStrength	448	hand266	DIFFER(435v439) -- tail only: retail re-reads the type argument from its slot for the GetFrequency push (edx twice, vtable in eax)
+00ac7750	COptimisedPrimitive	ComputeOptimalVertexPlacement	496	hand266	DIFFER(506v495) -- retail is compiled with callee knowledge: the quadric stays in edx across GetInverseMatrixPart (0xAC70F0) and ecx is reused across both EvaluateError
+00ac8ae0	COptimisedPrimitive	JoinAdjacentFaces	416	hand266	DIFFER(388v409) -- register allocation: retail keeps faceA's first unique vertex in ebx for the whole body and spills &faceB plus faceB's second vertex to the stack (fra
+00873bc0	CPCMouseLook	Recentre	496	hand266	DIFFER(478v481) -- register allocation only: retail keeps this in edi and &AxisZ in ebx (the cross product then loads AxisX's operand first), the lane swaps them (this i
+00b50370	CPSCOrbit	CPSCOrbit	416	hand266	DIFFER(406v406) -- scheduling only: retail hoists the 8.0/0.1/1.0 constants into registers; really the CEngineShadowRenderer ctor
+00b05c60	CPSCSingleSprite	GetComponentCost	432	hand266	DIFFER(277v429) -- inline-asm fld/fistp float-to-int helper in retail (asm_bake lane gap)
+00b0a750	CPSCUpdateNormal	GetCurrentFadeValue	464	hand266	DIFFER(304v456) -- inline-asm fld/fistp float-to-int helper in retail (asm_bake lane gap)
+009aed70	CParentDefClassBase	?InternalLoadBinary@CParentDefClassBase@@UAEXAAVCDataInputStream@@@Z	496	hand266	DIFFER(499v492) -- retail keeps OriginalParentDefIndex in edi (preloaded from the dead stream-argument slot it shares with the count, frame 0x1c, ebx as read temp)
+00aee9f0	CParticleEmitter	Update	432	hand266	DIFFER(403v419) -- retail spills the run-time epsilon square (0.0001f*0.0001f) to [esp+4] (frame 0x28) and compares both length-squares against memory, with the new posi
+00aebaf0	CParticleEmitterManager	GetActiveEmitterNames	416	hand266	DIFFER(398v402) -- register allocation only: retail spills the list iterator to the frame (0x14 frame, this spilled, edi=names, ebx=&emitter->Name) where the lane keeps
+00aca0c0	CParticleMorphs	CParticleMorphs::BuildMorphRemap	496	hand266	DIFFER(484v491) -- logic and STLport map lifetime complete (12-byte tree incl. the empty key_compare avoids the and esp,-8 frame)
+00ae0e60	CParticleProgram	TransformVertices	464	hand266	DIFFER(441v457) -- the SSE branch is retail inline assembly: the source/target pointers and the weight are forced to frame slots ([esp+10h]/[1Ch], a 16-byte weight temp
+00adf760	CParticleSimulation	ApplyForces	512	hand266	DIFFER(509v509) -- same size, frame slots and scheduling only: retail keeps damping at [esp+14h], gravity*GravityStrength at [18h] and the summed force at [28h] (loop te
+00f36010	CPerlinNoise	GetGaussian2DNoise	448	hand266	DIFFER(412v442) -- inline-asm fld/fsub 0.5/fistp floor helper, frame-pointer function (asm_bake lane gap)
