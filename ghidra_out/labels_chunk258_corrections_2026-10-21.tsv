@@ -1,0 +1,8 @@
+address	name	evidence
+0094b400	CTCTavernTankard::SetPBarmaid	(chunk 258)
+004c9840	CThing::RemoveTC	(chunk 258)
+006af1c0	CThingFilter_IsOfType::operator()	not HasExtraData (chunk 258)
+00661cc0	static float-constant getter	not GetCombatMinDistance (chunk 258)
+006a4d00	CThingCreatureBase::GetPosition	not DoSizeof; byte twin of CThing::GetPosition 0x004C73D0 (chunk 258)
+00843840	CCreatureAction_FillBucket::CCreatureAction_FillBucket	not AddRealObjectToInventory (chunk 258)
+00936100	GetPBestLeafThing	instantiated in the PutOutFires TU; the CIsFreeHopscotchBoard label is propagated (chunk 258)

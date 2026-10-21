@@ -1,0 +1,43 @@
+# Chunk 258 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- **Same-TU noinline stand-in for a template callee that retail instantiates in this TU** (009195d0, 00961fb0, 00977c40):
+  - wrap it in `#pragma auto_inline(off)` with `__declspec(noinline)`;
+  - give it a body that reads its args and writes only its out-param, via an extern sink;
+  - VC7.1 then keeps the caller's values in registers (the def in edi) and hoists invariant stores.
+- **Def release `dec dword [reg+4]; jne`** (009195d0): model the def with `long RefCount` at +4, `Release(){ if (--RefCount == 0) DeleteThis(); }`, and the CDefPointer dtor `if (m_p) m_p->Release();`. A CRefCounted base gives clunkier code.
+- **Unrotated retry loops** (009195d0): write `for (;;) { ...; if (r == 4) continue; break; }`. The `!= 4 -> break` form rotates the loop.
+- **Def-class local before GetSubDef** (009195d0): `CDefClassBase* defClass = GetCreature()->PhysicsTC; defClass->GetSubDef(&nav);` gives `mov eax,[eax+0x70]; mov ecx,eax`.
+- **Seconds-elapsed tests** (0090f470): `inline bool HasTimePassed(const long& lastFrame, long seconds) { long fps = g_framesPerSecond; return GetWorldFrame() - lastFrame > seconds * fps; }`.
+  - fps is loaded into edi before the frame call;
+  - the by-reference parameter re-reads the member after the call.
+- **Message filters** (00910df0): use the expression chain `IsOfType(n) && IsOriginatorAlive() && CanBeSeenOrHeard(c)`, with Bind2/Bind3 holding filter pointers (the landed 0x00939D70 model).
+- **`&CCreatureAction_X(args)` temporaries** (0091e750, 00910df0, 00935e40):
+  - they reproduce the ctor-returns-this `push eax` into AIAction_PerformAction(AndWait);
+  - an implicit CCharString literal argument is built first;
+  - the PlayAnimation action pads to 0xb0 (frame 0xc8).
+- **Intelligent-pointer conversion with the base ctor called before GetPItem** (00910df0, 00937da0): use the converting copy ctor `template<class U> CIntelligentPointer(const CIntelligentPointer<U>& o) { SetPItem(o.GetPItem()); }` and pass the pointer object directly.
+- **Spurious `test ecx,ecx; je; add ecx,4` on a base-pointer conversion**: the derived class declared the first vptr. Put the vtable in CThing (00910df0).
+- **Present-byte spill `shr reg,N; and cl,1; mov [esp+x],cl; je`**: comes from `bool present = HasTC(t); if (present) {...} return present;` with `HasTC = ((bits[t>>5] >> (t&31)) & 1) != 0`.
+  - plain inline works when small (0091e750);
+  - with an inlined lower_bound it must be `__forceinline` (00935c40, 00935e40).
+  - The non-spilling `test ch,0x20` form in the same function comes from a plain `if (HasTC(t)) {...; return true;} return false;` accessor over the out-of-line const LowerBound 0x004365B0 (00935e40). It needs the nested `if (alive) { if (GetInterface && IsOnFire) { if (... == 2) return true; } } return false;` tail; flat early returns give `setne al` instead of `je; mov al,1`.
+- **x87 three-term length**: with Z on top of the stack, `X*X + (Y*Y + Z*Z)` reproduces retail's Z^2, Y^2, X^2 order (0091e750). VC canonicalises the other parenthesisations.
+- **XY distance compare** (00937da0): an inline helper on `const CThing*` that binds the second argument's position first, takes explicit dx/dy, and stores into a float local before the compare. The local makes VC pop the temporaries before `fcomp`.
+- **Vector built straight into the by-value argument slot** (00937da0, 00935e40): give C3DVector a user copy ctor, then `pos + away` (or `thing->GetPosition()`) is built at its argument position, after the scalar pushes. In-place `away *= 2.4f` after the out-of-line Normalise reuses the slots.
+- **Not reproduced (lane gaps?)**:
+  - retail's creature-type test `xor eax,0xf; test al,0xf` (00910df0): `(f & 0xf) == 0xf` gives and/cmp, `~f & 0xf` gives not;
+  - the `xor ecx,ecx; push ecx` zero CSE for the PlayAnimation args (00935e40; e750's identical call does get it);
+  - the inline lower_bound `mov eax,[eax+0x44] ... mov esi,eax` copy (00935c40, 00935e40), which survived the param, helper, member and forceinline variants.
+
+Review at landing:
+- These rows needed more than 4 grades:
+  - matched: 009195d0, 0090f470, 00937da0;
+  - parked: 00910df0, 0091e750, 0092ea90, 00935c40, 00935e40.
+- Local base models next to an existing engine header: all 24 matched sources model `this` locally. Engine headers exist for 15 of them:
+  - MinionHasInformation, LookAtInterestingThings, MinionFollowThing, MinionWander, MinionSleep, MinionReactToCriminal, MinionGuardReactToCriminal;
+  - MeleeCombatNearbyBase x2, MeleeCombatNearby2 x2;
+  - MazeRangedCombat, HoverHornetQueen, IceTrollIcicleAssault, Guildmaster.
+  - Each has a `// Layout:` line, but they need a retype pass (`retype_landed.py`) or a recorded reason at landing.
+- 00929650 (parked): FrameForNextGuardGreeting at retail +0xac is inferred from that function's loads only (PDB view +0x138); confirm it against a second reader.
+- 0095ab50 (parked) needs /GS: a 32-byte name buffer, with __security_check_cookie @ 0x00BFE9F9.
+- 0x00936100 (GetPBestLeafThing, same TU as PutOutFires) and 0x00915760 (GetEvent) are template instantiations in their callers' TUs; the stand-ins in this chunk model them.

@@ -1,0 +1,143 @@
+// CAIStateGroup_MazeRangedCombat::IsRunnable() -- runnable while the boss is in a live phase it has not completed yet and its target (the targeting AI's enemy, else the hero) is alive between 8 and 50 units away in XY
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00954470, length 441 bytes (+ int3 padding).
+// Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookup 0xAD = CTCBoss) and the const LowerBound @ 0x004365B0
+// (8 = CTCTargetingAI), CTCBoss::GetCurrentPhase @ 0x007AED10 (three times; manifest "CWorld::DrawGetEnvironment"
+// propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
+// CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0 (twice), CIntelligentPointer<CThing>::operator= @ 0x004A9760 (out of
+// line the first time, inlined the second), CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90,
+// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CThing::GetPosition @ 0x004C73D0 (twice).
+// Globals: 50.0f @ 0x012944BC, 8.0f @ 0x012944C4.
+// Shape: the boss lookup is the out-pointer GetInterface (its miss path passes the never-written word); operator= is a
+// plain in-class inline, which VC calls out of line for the first assignment and inlines for the second; the creature
+// and target are named before the two GetPosition calls.
+// Layout: Ego_r.pdb CAIStateGroup_MazeRangedCombat (LastCompletedPhase +0x20); the target pointer +0x14 is the inherited
+// ranged-combat member (local model, the engine header flattens the base); CTCTargetingAI's enemy pointer sits at the
+// unaligned +0x1d (pack(1), as the landed rows read it).
+#include <math.h>
+
+struct C3DVector { float X, Y, Z; };
+struct CTCBase;
+
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);       // 0x0040F020
+    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+};
+
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;                 // +0x44
+    unsigned char _pad1[0x45];
+    unsigned char m_flags91;                    // +0x91 bit 0: dead
+    const C3DVector& GetPosition() const;       // 0x004C73D0
+    __forceinline unsigned long HasTC(long interfaceType) const
+    {
+        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
+    }
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            return true;
+        }
+        return false;
+    }
+    template<class T> __forceinline T* GetTC(long interfaceType) const
+    {
+        long type = interfaceType;
+        const CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+    }
+};
+
+struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
+    virtual void v00();
+    CThing* m_pItem;                            // +0x04
+    CBaseIntelligentPointer();                  // 0x00A01B10
+    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    void SetPItem(const CThing* item);          // 0x00A01B90
+    CThing* GetPItem() const;                   // 0x00A01B50
+};
+struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+    virtual void v00();
+    CIntelligentPointer(CThing* thing);         // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other)   // 0x004A9760
+    {
+        SetPItem(other.GetPItem());
+        return *this;
+    }
+};
+
+#pragma pack(push, 1)
+struct CTCTargetingAI {                         // interface 8
+    unsigned char _pad0[0x1d];
+    CBaseIntelligentPointer PEnemy;             // +0x1d
+};
+#pragma pack(pop)
+struct CTCBoss {                                // interface 0xAD
+    long GetCurrentPhase();                     // 0x007AED10
+};
+
+struct CPlayer {
+    CThing* GetHeroThing();                     // 0x00487DC0
+};
+struct CPlayerManager {
+    CPlayer* GetMainPlayer();                   // 0x00449970
+};
+
+struct CAIBrain {
+    virtual void v00();
+    unsigned char _pad[0x14];
+    CThing* PCreature;                          // +0x18
+};
+
+struct CAIStateGroupBase {
+    virtual ~CAIStateGroupBase();
+    CAIBrain* PBrain;                           // +0x04
+    long ScriptAIPriority;                      // +0x08
+    void* Name_PStringData;                     // +0x0c
+    unsigned char Terminated, Priority, Enabled, _pad13;
+    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+};
+
+struct CAIStateGroup_MazeRangedCombat : CAIStateGroupBase {
+    CIntelligentPointer PTarget;                // +0x14
+    long _unk1c;                                // +0x1c
+    long LastCompletedPhase;                    // +0x20
+    bool IsRunnable();
+};
+
+bool CAIStateGroup_MazeRangedCombat::IsRunnable()
+{
+    CTCBoss* boss;
+    PBrain->PCreature->GetInterface(&boss, 0xad);
+    if (boss->GetCurrentPhase() != 0 && boss->GetCurrentPhase() != 5 && LastCompletedPhase < boss->GetCurrentPhase()) {
+        const CThing* creature = PBrain->PCreature;
+        if (creature->HasTC(8)) {
+            CTCTargetingAI* targeting = creature->GetTC<CTCTargetingAI>(8);
+            if (targeting->PEnemy.GetPItem() != 0)
+                PTarget = targeting->PEnemy.GetPItem();
+        }
+        if (PTarget.GetPItem() == 0 || (PTarget.GetPItem()->m_flags91 & 1))
+            PTarget = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+        if (PTarget.GetPItem() != 0 && !(PTarget.GetPItem()->m_flags91 & 1)) {
+            const CThing* self = PBrain->PCreature;
+            const CThing* target = PTarget.GetPItem();
+            const C3DVector& me = self->GetPosition();
+            const C3DVector& him = target->GetPosition();
+            float dx = him.X - me.X;
+            float dy = him.Y - me.Y;
+            float dist = (float)sqrt(dx * dx + dy * dy);
+            if (dist < 50.0f && dist > 8.0f)
+                return true;
+        }
+    }
+    return false;
+}

@@ -1737,3 +1737,19 @@ address	module	name	length	chunk	reason
 0095fed0	CAIStateGroup_DeedReactionRoot	?IsStillValid@CAIStateGroup_DeedReactionRoot@@UBE_NXZ	416	hand257	DIFFER(403) -- DIFFER(407v403) inline counted-pointer release captures the object in ecx
 0096cfc0	CAIStateGroup_EatAtTable	?OnReplace@CAIStateGroup_EatAtTable@@MAEXXZ	464	hand257	DIFFER(463) -- DIFFER(463v463) frame 0x10 v 0xc (lookup key slot packing)
 009486d0	CAIStateGroup_GoToPub	FreeSeat	432	hand257	DIFFER(432) -- DIFFER(436v432) VC hoists the -1 constant into ebp; retail uses immediates
+0096ec10	CAIStateGroup_MeleeCombatNearby	MoveToEnemyCreatureCombatPosition	416	hand258	DIFFER(408v407) -- inlined LowerBound copy mov edi,eax + x87 scheduling of the proximity argument
+00929650	CAIStateGroup_MinionGuardGreetPlayer	CAIStateGroup_MinionGuardGreetPlayer::IsRunnable	464	hand258	DIFFER(448v452) -- MinionGuardGreetPlayer::IsRunnable; register swap ebp/edi between def holder and next-greeting/hero (lane gap)
+009490d0	CAIStateGroup_GoToPub	GetBar	464	hand258	DIFFER(458v459) -- GoToPub::GetBar; ebp shrink-wrapped around the loop in ours (retail pushes at entry)
+00949380	CAIStateGroup_GoToPub	ThankBarmaid	512	hand258	DIFFER(497v498) -- GoToPub::ThankBarmaid; creature/talk register permutation in the inlined GetInterface lookups
+0095ab50	CAIStateGroup_HoverHornetQueen	SetUpCirclePoints	464	hand258	DIFFER(456v456) -- HoverHornetQueen::SetUpCirclePoints (/GS); marker loads land in ecx/edx then esi (retail esi directly)
+0095b820	CAIStateGroup_HoverHornetQueen	Spawn	448	hand258	DIFFER(445v445) -- HoverHornetQueen::Spawn; filter-store scheduling and creature register in the inlined 0xad GetInterface
+0094fa00	CAIStateGroup_JackDragon	FindFlightPathCurvePoint	432	hand258	DIFFER(421v421) -- JackDragon::FindFlightPathCurvePoint; out-pointer load/pop esi scheduled 3 instructions later than retail
+0094fc00	CAIStateGroup_JackDragon	CreateIBC	496	hand258	DIFFER(476v482) -- JackDragon::CreateIBC; GetFacing temporary copy (via eax into the same slot) is elided in ours
+009718f0	CAIStateGroup_JackOfBladesBase	GetIsEnemyInJacksWay	510	hand258	DIFFER(510v510) -- JackOfBladesBase::GetIsEnemyInJacksWay; x87 square order of the path vector and pop esi placement
+00971cd0	CAIStateGroup_JackOfBladesStage1	GetRushToPos	512	hand258	DIFFER(506v510) -- JackOfBladesStage1::GetRushToPos; creature/target register allocation and dy/dx square order
+00919240	CAIStateGroup_LookAtInterestingThings	FindInterestingThing	512	hand258	DIFFER(508v508) -- LookAtInterestingThings::FindInterestingThing; register permutation in the weighting loops
+0092ea90	CAIStateGroup_MinionFindPersonalSpace	?Update@CAIStateGroup_MinionFindPersonalSpace@@UAEXXZ	440	hand258	DIFFER(444v440) -- MinionFindPersonalSpace::Update; x87 order of the direction subtraction (Z,Y,X) and the present-bool spill
+00910df0	CAIStateGroup_MinionGuardHeardYellForHelp	?Update@CAIStateGroup_MinionGuardHeardYellForHelp@@UAEXXZ	512	hand258	DIFFER(500v500) -- MinionGuardHeardYellForHelp::Update; creature-type test xor/test form and one register choice
+0091e750	CAIStateGroup_MinionMotherConsoleChild	CAIStateGroup_MinionMotherConsoleChild::Update	432	hand258	DIFFER(432v432) -- MinionMotherConsoleChild::Update; this/child register swap (edi vs ebp) only
+00935c40	CAIStateGroup_MinionPutOutFires	GoToWell	512	hand258	DIFFER(494v502) -- MinionPutOutFires::GoToWell; frame slot layout and lower_bound register/pad scheduling only
+00935e40	CAIStateGroup_MinionPutOutFires	PutOutFire	480	hand258	DIFFER(476v468) -- MinionPutOutFires::PutOutFire; inline lower_bound first-copy register and zero-constant CSE only
