@@ -1,0 +1,142 @@
+// CTCInventory::RemoveItemFromInventory(long defIndex, long count) -- remove through the base, then clear every equipped-slot and quick-access entry of that def that is no longer held (repeating the slot pass while it clears), and switch the owner's light off when the def has a light sub-def
+// Leaf: RemoveItemFromInventory
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00583CD4, 338 bytes, `ret 8`. Size TU with a frame pointer:
+//   `#pragma optimize("y", off)` + `("s", on)` (no frame words: the flag and both def pointers live in the argument slots).
+// Callees: CTCInventoryBase::RemoveItemFromInventory(long, long) @ 0x005BF3C6 (landed),
+//   CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) @ 0x005BDF08, CTCBase::GetDefinitions @ 0x006869D0,
+//   CDefinitionManager::GetDef<CThingDef> @ 0x0042AF3C, CDefClassBase::GetSubDef<CLightDef> @ 0x0059346A (landed),
+//   std::bitset<>::test @ 0x00410DE0 and CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined
+//   GetInterface for CTCLight, type 0x27), CTCLight::SetActive(bool) @ 0x006412B0, the defs' virtual slot 1.
+// Shape: same-TU `auto_inline(off)` stand-ins for GetDef / GetSubDef (as 0x00801A50) keep the thing def in ebx and let
+//   VC7.1 home both def pointers and the lookup key in the dead argument slots.
+// Layout: retail CTCInventory (12-byte vectors): the equipped-slot vector<long> +0x148, QuickAccessItems +0x154,
+//   the refresh flag byte +0x1D4; retail CThing bitset +0x20, interface map +0x44.
+#pragma optimize("y", off)
+#pragma optimize("s", on)
+
+class CTCBase;
+struct CPresenceBits { bool test(long kind); };            // bitset<>::test 0x00410DE0
+struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);                   // 0x0040F020
+};
+class CThing {
+public:
+    unsigned char _pad00[0x20];
+    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    unsigned char _pad21[0x44 - 0x21];
+    CInterfaceMap m_interfaces;                             // +0x44
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (present.test(interfaceType)) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            return true;
+        }
+        return false;
+    }
+};
+struct CTCLight {
+    void SetActive(bool active);                            // 0x006412B0
+};
+
+struct CDefClassBase {
+    virtual void v00();
+    virtual void Destroy();                                 // slot 1
+    long RefCount;                                          // +0x04
+};
+template <class T> struct CDefPointer {
+    T* Object;
+    CDefPointer() { Object = 0; }
+    __forceinline ~CDefPointer()
+    {
+        if (Object && --Object->RefCount == 0)
+            Object->Destroy();
+    }
+    T* operator->() const { return Object; }
+};
+struct CLightDef : CDefClassBase { };
+struct CThingDef : CDefClassBase {
+    bool GetSubDef(CDefPointer<CLightDef>* out);            // 0x0059346A
+};
+struct CDefinitionManager {
+    bool GetDef(long index, CDefPointer<CThingDef>* out);   // 0x0042AF3C
+};
+
+// Same-TU stand-ins (see the Shape note).
+CDefClassBase* LookUpDef(long index);
+CDefClassBase* LookUpSubDef(const CDefClassBase* def);
+#pragma auto_inline(off)
+bool CDefinitionManager::GetDef(long index, CDefPointer<CThingDef>* out)
+{
+    CThingDef* def = (CThingDef*)LookUpDef(index);
+    out->Object = def;
+    return def != 0;
+}
+bool CThingDef::GetSubDef(CDefPointer<CLightDef>* out)
+{
+    CLightDef* def = (CLightDef*)LookUpSubDef(this);
+    out->Object = def;
+    return def != 0;
+}
+#pragma auto_inline(on)
+
+template <class T> struct CRetailVector {                   // STLport vector (12 bytes)
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    unsigned long size() const { return _M_finish - _M_start; }
+    T& operator[](unsigned long n) const { return _M_start[n]; }
+};
+
+struct CTCInventoryBase {
+    void*         __vftable;                                // +0x00
+    CThing*       ParentThing;                              // +0x04 CTCBase
+    CDefinitionManager* GetDefinitions() const;             // 0x006869D0 (CTCBase)
+    long GetNumberOfItemsOfTypeInInventory(long defIndex);  // 0x005BDF08
+    void RemoveItemFromInventory(long defIndex, long count);   // 0x005BF3C6
+};
+
+struct CTCInventory : CTCInventoryBase {
+    unsigned char _pad008[0x148 - 0x08];
+    CRetailVector<long> SlotItems;                          // +0x148
+    CRetailVector<long> QuickAccessItems;                   // +0x154
+    unsigned char _pad160[0x1d4 - 0x160];
+    bool          NeedsRefresh;                             // +0x1D4
+
+    void RemoveItemFromInventory(long defIndex, long count);
+};
+
+void CTCInventory::RemoveItemFromInventory(long defIndex, long count)
+{
+    CTCInventoryBase::RemoveItemFromInventory(defIndex, count);
+    bool removed;
+    do {
+        removed = false;
+        for (unsigned long i = 0; i < SlotItems.size(); ++i) {
+            if (SlotItems[i] == defIndex && GetNumberOfItemsOfTypeInInventory(defIndex) == 0) {
+                SlotItems[i] = 0;
+                removed = true;
+                NeedsRefresh = true;
+            }
+        }
+    } while (removed);
+    for (unsigned long i = 0; i < QuickAccessItems.size(); ++i) {
+        if (QuickAccessItems[i] == defIndex && GetNumberOfItemsOfTypeInInventory(defIndex) == 0) {
+            QuickAccessItems[i] = 0;
+            NeedsRefresh = true;
+        }
+    }
+    CDefPointer<CThingDef> thingDef;
+    GetDefinitions()->GetDef(defIndex, &thingDef);
+    CDefPointer<CLightDef> lightDef;
+    if (thingDef->GetSubDef(&lightDef)) {
+        CTCLight* light;
+        if (ParentThing->GetInterface(&light, 0x27))
+            light->SetActive(false);
+    }
+}

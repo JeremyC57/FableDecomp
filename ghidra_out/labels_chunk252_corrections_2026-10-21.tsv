@@ -1,0 +1,10 @@
+address	name	evidence
+005bf3c6	CTCInventoryBase::RemoveItemFromInventory	catalogued GetItemDescription (chunk 252)
+007f0b10	CTCKrakenTentacle::DoDieFX	not CTCKraken (chunk 252)
+007f07a0	CTCKrakenTentacle::KillRippleFX	not CTCKraken (chunk 252)
+004c73d0	CThing::GetPosition	not CVertexBufferWin32::DoSizeof; byte twin of 0x006A4D00 (chunk 252)
+00669d30	CSpecialEffectsDef::CalcAndLookup	(chunk 252)
+00669580	GetSubDef<CSpecialEffectsDef>	shared instantiation (chunk 252)
+00414ea0	std::vector<CCharString>::~vector	not CCombatWheel::ResetRings (chunk 252)
+004a93c0	CBasicString<char>::operator==	(chunk 252)
+00c3c8c0	FreeList::Init	not a dtor (chunk 252)

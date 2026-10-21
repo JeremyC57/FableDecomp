@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00789e60	RELOCATION_MATCH	363v363	PASS	out-param GetInterface for the 0xA7 and 0x48 lookups
+007ca670	RELOCATION_MATCH	397v397	PASS	inline Set members for in-place box/RH-set writes
+007ca9e0	RELOCATION_MATCH	334v334	PASS	list iterator with user copy ctor (built in arg slot)
+007e0750	RELOCATION_MATCH	385v385	PASS	inline SetSprinting/SetRunning; float& clamp helpers
+00c3db80	DIFFER	335v335	-	vptr register swap eax/edx on the two virtual calls (lane gap); /EHsc
+00c3f800	DIFFER	330v356	-	dead count==0 operator-new split inside new[] not reproduced; /EHsc; 0xC3C8C0 is FreeList::Init(block,size,count), not a dtor
+00801a50	RELOCATION_MATCH	390v390	PASS	same-TU GetDef/GetSubDef stand-ins; named thing local after def-pointer decls
+0047ed76	DIFFER	366v366	-	one fsubp/push-ecx scheduling swap before SetPosition; named y fixes order but frame slot reuse breaks
+0058301a	DIFFER	321v321	-	one store placement (address-taken edit-box copy stored before vptr load; retail after)
+00583a92	DIFFER	312v323	-	frame packing: item def/held thing not placed in the dead arg slot; def-pointer releases not inlined as retail
+00583cd4	RELOCATION_MATCH	338v338	PASS	same-TU GetDef/GetSubDef stand-ins; __forceinline def-pointer dtor
+00587a41	DIFFER	338v338	-	case-3 discarded HasTC pair: retail mov eax/lea ecx,[eax+20h], ours mov ecx/add ecx,20h
+005f0c5f	DIFFER	356v358	-	find/erase tail: key temp copy + map homed in dead arg slot not reproduced
+005f11a9	DIFFER	358v375	-	head CSE of element addresses + removed-ability home slot swapped with string temp
+005be119	RELOCATION_MATCH	363v363	PASS	const C2DVector& bound to temp keeps fld st(1) copies; same-TU IS_THING_ALIVE x3 + LowerBound stand-ins
+005bf77d	RELOCATION_MATCH	334v334	PASS	same-TU GetDef/GetSubDef/GetAllItems stand-ins; hoisted count; free() vector dtor
+0056f30b	DIFFER	396v396	-	zero-register (ebx) allocation from the top + zero-vector store placement
+0056fc5d	RELOCATION_MATCH	358v358	PASS	current fade as a list iterator (++ / ->); raw node compares in the advance loop and alpha pick
+005724cd	RELOCATION_MATCH	361v361	PASS	as TU-mate 0x5721FA; inline GetExperiencePointsAvailableToSpend for the general pool
+0057832d	RELOCATION_MATCH	322v322	PASS	STLport vector base + alloc-proxy ctor keeps map lea after last vector stores; allocator user ctor
+005fad40	RELOCATION_MATCH	336v336	PASS	/GS; CGameEvent AddFloat/AddBool payload as landed 0x690B20; const world reference for the recall pos
+005fb4b0	DIFFER	379v379	-	/GS; filter temp / out-pointer frame slots swapped (retail shares the out slot with the float payload temps)
+006061b0	DIFFER	322v322	-	active-quest-card loop: node/pointer esi-edi register swap (rest exact)
+0061b3c0	RELOCATION_MATCH	368v368	PASS	virtual IsActive on 2nd base; for_each(mem_fun_ref(Clear)); ReleaseTemporary on the CRefCount base
+005cc862	RELOCATION_MATCH	331v331	PASS	as landed sibling 0x5CCBBD: one return per band, double literals
+005cda50	DIFFER	359v366	-	ebx/edi swap, offset temp elided, final def release dec+cmp vs dec/jne
+0059d820	RELOCATION_MATCH	397v397	PASS	out-param GetInterface (const LowerBound 0x4365B0) into one 0-initialised pointer; total declared first
+005a3436	RELOCATION_MATCH	331v331	PASS	non-const LowerBound 0x40F020; virtual RemoveItem slot 79; stats zeroed after the hero chain; free() vector dtor
+005c44fa	RELOCATION_MATCH	375v375	PASS	three inlined GetInterface (0x40F020); 1-aligned intelligent pointers (ranged at +0x141); virtual RemoveItem slot 79
+005c69aa	RELOCATION_MATCH	380v380	PASS	named end in both child loops; free() vector dtors; list(alloc) ctor
+005cb128	DIFFER	392v392	-	this esi vs edi swap only; tried const& weapon refs, inline helper, owner local, shared carrying ptr, weapon local, predicate helper, true virtual
+00731680	RELOCATION_MATCH	326v326	PASS	speed TU; inline bitset test (0x79 folded); implicit const char* -> CCharString temp; intelligent-pointer temp assign
+007f0b10	DIFFER	340v340	-	CTCKrakenTentacle::DoDieFX (label wrong); esi/edi swap + zero-store order; tried 9 decl-order / const& / statement variants
+00641ae0	DIFFER	331v331	-	scratch-register permutation in the flare block (halo edx/ecx); tried 19 variants (named temp + start pointer fixed the index store)
+00751820	RELOCATION_MATCH	324v324	PASS	as the body twin 0x751970; named new difference keeps the old one in its slot
+00752300	DIFFER	381v383	-	creature pointer ecx vs eax+mov; tried const& creature, local, fastcall test, IsThingAlive helper, if/else speed, def ref
+007534b0	DIFFER	384v384	-	C3DVector frame copy scheduling (ld,ld,st,ld,st,st vs ld,st x3); tried ternary/const&/operator=/POD/explicit-ctor copies
+007cc2b0	DIFFER	347v347	-	frame packing: effect pointer shares the def/string word in retail, ours puts the inlined GetInterface key there (4-word vs 3-word frame); tried decl order, key forms, const& temp, holder def, pack, statement shapes (18)
+00787f29	RELOCATION_MATCH	370v370	PASS	named manager/world locals; same-TU CBasicString::operator== + Compare 0x411570 stand-ins keep the string block in esi; __forceinline string helpers in the size TU
+0072e130	RELOCATION_MATCH	352v352	PASS	speed TU; 8-byte intelligent-pointer temp in the loop gives the and esp,-8 frame; inlined same-TU AddOwnedEntityTC; emitter via cached driver +0x5C

@@ -1672,3 +1672,21 @@ address	module	name	length	chunk	reason
 007bc004	CTCShotDefinitionNymphFun	InitMovement	342	hand253	DIFFER(338v342) -- frame 0x44 v 0x5c: retail gives the RandomiseShotDirection result, the right-handed set and the velocity temporaries separate slots, ours shares them; the velocity scale is kept on the x87 stack for a
 007f5150	CTCSoundAtmosphereVillage	GetGain	355	hand253	DIFFER(335v355) -- register allocation: retail spills this to the frame word, keeps the village in ebp and the 0x31 key constant in ebx inside the member loop (both lookup keys in the dead argument slot); ours keeps thi
 005ebfa0	CTCTavernGame	CameraUseCameraPoint	336	hand253	DIFFER(321v329) -- retail keeps the empty-vector return's null-tested free separate and drops the test on the shared end block (failed thing checks + main path); ours cross-jumps the failed checks into the empty-path fr
+00c3db80	CTCHeroStats	CTCHeroStats::CreateIceTrollIcicleAction	336	hand252	DIFFER(335v335) -- vptr register swap eax/edx on the two virtual calls (lane gap); /EHsc
+00c3f800	CTCHeroStats	CTCHeroStats::InitializeActorArrays	368	hand252	DIFFER(330v356) -- dead count==0 operator-new split inside new[] not reproduced; /EHsc; 0xC3C8C0 is FreeList::Init(block,size,count), not a dtor
+0047ed76	CTCInGameMenu	SetToSave	366	hand252	DIFFER(366v366) -- one fsubp/push-ecx scheduling swap before SetPosition; named y fixes order but frame slot reuse breaks
+0058301a	CTCInventory	CreateEditBoxActions	321	hand252	DIFFER(321v321) -- one store placement (address-taken edit-box copy stored before vptr load; retail after)
+00583a92	CTCInventory	UseContextSensitiveItem	323	hand252	DIFFER(312v323) -- frame packing: item def/held thing not placed in the dead arg slot; def-pointer releases not inlined as retail
+00587a41	CTCInventory	DeleteMenuComponents	338	hand252	DIFFER(338v338) -- case-3 discarded HasTC pair: retail mov eax/lea ecx,[eax+20h], ours mov ecx/add ecx,20h
+005f0c5f	CTCInventoryAbilities	AssignAbility	358	hand252	DIFFER(356v358) -- find/erase tail: key temp copy + map homed in dead arg slot not reproduced
+005f11a9	CTCInventoryAbilities	UnAssignAbility	375	hand252	DIFFER(358v375) -- head CSE of element addresses + removed-ability home slot swapped with string temp
+0056f30b	CTCInventoryExperience	CloseInventory	396	hand252	DIFFER(396v396) -- zero-register (ebx) allocation from the top + zero-vector store placement
+005fb4b0	CTCInventoryMap	TeleportHeroToBoastingArea	384	hand252	DIFFER(379v379) -- /GS; filter temp / out-pointer frame slots swapped (retail shares the out slot with the float payload temps)
+006061b0	CTCInventoryMap	CTCInventoryMap::vfunc_9	336	hand252	DIFFER(322v322) -- active-quest-card loop: node/pointer esi-edi register swap (rest exact)
+005cda50	CTCInventoryStats	GlobalUpdate	366	hand252	DIFFER(359v366) -- ebx/edi swap, offset temp elided, final def release dec+cmp vs dec/jne
+005cb128	CTCInventoryWeapons	RemoveItemFromInventory	392	hand252	DIFFER(392v392) -- this esi vs edi swap only; tried const& weapon refs, inline helper, owner local, shared carrying ptr, weapon local, predicate helper, true virtual
+007f0b10	CTCKraken	CreateHeadEffect	352	hand252	DIFFER(340v340) -- CTCKrakenTentacle::DoDieFX (label wrong); esi/edi swap + zero-store order; tried 9 decl-order / const& / statement variants
+00641ae0	CTCLight	DrawFlare	336	hand252	DIFFER(331v331) -- scratch-register permutation in the flare block (halo edx/ecx); tried 19 variants (named temp + start pointer fixed the index store)
+00752300	CTCLook	ImplementBodySettings	384	hand252	DIFFER(381v383) -- creature pointer ecx vs eax+mov; tried const& creature, local, fastcall test, IsThingAlive helper, if/else speed, def ref
+007534b0	CTCLook	IsPosInViewRange	384	hand252	DIFFER(384v384) -- C3DVector frame copy scheduling (ld,ld,st,ld,st,st vs ld,st x3); tried ternary/const&/operator=/POD/explicit-ctor copies
+007cc2b0	CTCMultiArrow	CreateAmmoEffect	352	hand252	DIFFER(347v347) -- frame packing: effect pointer shares the def/string word in retail, ours puts the inlined GetInterface key there (4-word vs 3-word frame); tried decl order, key forms, const& temp, holder def, pack, statement shapes (18)
