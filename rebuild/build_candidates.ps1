@@ -262889,6 +262889,55 @@ $catalog = @(
         TestSource = '00/f0/CQAmbushTradersScript_BanditHireSetup_00f081e0_test.cpp'
         PassPattern = '00f081e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005dc650'
+        Module = 'CAnimComponentCombatComboChain'
+        Source = '00/5d/CAnimComponentCombatComboChain_Initialise_005dc650.cpp'
+        TestSource = '00/5d/CAnimComponentCombatComboChain_Initialise_005dc650_test.cpp'
+        PassPattern = '005dc650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00705240'
+        Module = 'CTCCarryable'
+        Source = '00/70/CTCCarryable_GetInterpolatedPickupOffsetAndOrientation_00705240.cpp'
+        TestSource = '00/70/CTCCarryable_GetInterpolatedPickupOffsetAndOrientation_00705240_test.cpp'
+        PassPattern = '00705240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00782390'
+        Module = 'CTCBoastingPosition'
+        Source = '00/78/CTCBoastingPosition_OnBoastAccepted_00782390.cpp'
+        TestSource = '00/78/CTCBoastingPosition_OnBoastAccepted_00782390_test.cpp'
+        PassPattern = '00782390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cf860'
+        Module = 'CTCTavernGameShoveHaPenny'
+        Source = '00/7c/CTCTavernGameShoveHaPenny_CalcScores_007cf860.cpp'
+        TestSource = '00/7c/CTCTavernGameShoveHaPenny_CalcScores_007cf860_test.cpp'
+        PassPattern = '007cf860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0080ca20'
+        Module = 'CTCDExplosion'
+        Source = '00/80/CTCDExplosion_GiveDamageToThing_0080ca20.cpp'
+        TestSource = '00/80/CTCDExplosion_GiveDamageToThing_0080ca20_test.cpp'
+        PassPattern = '0080ca20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098f0f0'
+        Module = 'CThreadedFileManager'
+        Source = '00/98/CThreadedFileManager_AddObject_0098f0f0.cpp'
+        TestSource = '00/98/CThreadedFileManager_AddObject_0098f0f0_test.cpp'
+        PassPattern = '0098f0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b61b30'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_BuildOuterSkyMesh_00b61b30.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_BuildOuterSkyMesh_00b61b30_test.cpp'
+        PassPattern = '00b61b30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -22915,3 +22915,15 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?Add@CScriptBase@@QAEXPAUCSpawnedFuncBase@@ABUCCharString@@@Z	00cb7e50	00f081e0
 ?AddBanditHealthBar@CQ_AmbushTradersScript@@QAEJABUCScriptThing@@@Z	00f07a80	00f081e0
 ?WatchForBanditSpeechMarkers@CQ_AmbushTradersScript@@QAEXUCScriptThingParam@@@Z	00f07b80	00f081e0
+?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABUCCharString@@JKAAUC3DVector@@AAUCRightHandedSet@@M@Z	004c08c0	00705240
+?GetInterpolatedPosition@CTCPhysicsBase@@QAE?AUC3DVector@@M@Z	0049d150	00705240
+??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABUCCharString@@ABUCSoundPair@@_N33JJ@Z	008424f0	00782390
+?Create@CTCDParticleEmitter@@SIPAVCThing@@ABUCCharString@@ABUC3DVector@@_N@Z	006e0970	00782390
+?OnHeroBoast@CTCBoastingPodium@@QAEXJAAVCThingCreatureBase@@@Z	00813c50	00782390
+?Geometry_ClosestPointOnLineSegment@@YI?AVC3DVector@@ABV1@00@Z	008f5970	0080ca20
+?Geometry_DistancePointToLineSegment@@YIMABVC3DVector@@00@Z	008f5ba0	0080ca20
+?IsToEvadeAllHits@NCreatureMode@@YI_NABVCThing@@@Z	0085fa00	0080ca20
+?push_back@?$CRetailVector@U?$CIntelligentPointer@VCThing@@@@@@QAEXABU?$CIntelligentPointer@VCThing@@@@@Z	004ad520	0080ca20
+??ACObjectMap@@QAEAAPAUCFileObject@@ABK@Z	009913d0	0098f0f0
+??ACPendingMap@@QAEAAPAUCFileObject@@ABUCPendingObjectSortKey@@@Z	00991350	0098f0f0
+?g_SkyCapTexCoordBias@@3MA	0129ba3c	00b61b30

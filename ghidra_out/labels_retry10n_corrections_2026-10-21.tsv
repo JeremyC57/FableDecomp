@@ -1,0 +1,8 @@
+address	name	evidence
+00ca9d00	CBaseAllocator::~CBaseAllocator	strmbase amfilter.cpp body (CloseHandle m_hSem, m_pNotify->Release); EH unwind proves CUnknown+CCritSec bases; only caller CMemAllocator::~CMemAllocator 0x00CAA410; catalog CVertexShaderData dtor is propagated (retry 10n)
+00787ae0	CDefClassBase::GetSubDef<CShipDef>	builds "CShipDef" string @ 0x01243B54; catalog GetSubDef<CAICreatureWillPowerIndicatorDef> is wrong (retry 10n, 007877e0)
+00a22f80	CRightHandedSet::Rotate	called as rhset.Rotate(axis, angle) from CTCBob::FrameUpdate; catalog CMatrix3x3::MultiplyByQuaternionRotation is wrong (retry 10n)
+004c8e50	CThing::SetAsDrawable	CThing vtable slot 28 (retry 10n)
+0085fa00	NCreatureMode::IsToEvadeAllHits	retry 10n call-site analysis
+008f5970	Geometry_ClosestPointOnLineSegment	__fastcall, hidden return pointer in ecx (retry 10n)
+004c08c0	NGraphicAppearance::CTCGraphicAppearance::GetDummyObject	retry 10n call-site analysis
