@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00ae8810	RELOCATION_MATCH	368v368	PASS	named CCharString literal locals; helper result temp to non-const ref
+00aebc90	DIFFER	375v385	-	frame/temporaries: retail homes the push_back value and the overflow tag in the dead `names` argument slot (ours in two extra frame words), does not reload _M_finish after the placement store, tests t
+00ae37d0	RELOCATION_MATCH	332v332	PASS	reference element read into two named locals; 8-aligned frame
+00bfc600	DIFFER	362v362	-	block layout only: retail places the shared `return false` block right after the first LoadVerts test (`jne` over it, the later tests jump back), ours after the third test (same instructions; RTM and 
+00f36540	DIFFER	319v321	-	lane gap: retail floors each coordinate with the inline-asm FloatToInt helper (`fld ; fsub 0.5 ; fistp` into the frame, frame-pointer function, the 0.5/1.0 constants stored as locals); plain C++ gives
+006babd0	SKIP	-	-	row holds the switch body, its jump table and a further function body (two functions in one row)
+007b5470	SKIP	-	-	row holds the switch body, its jump table and a further function body (two functions in one row)
+00f274d0	RELOCATION_MATCH	380v380	PASS	closed-enum switch cases 4,3,2,0 + TransferVectorOfSubComponents arms
+008fa660	DIFFER	356v366	-	x87 scheduling: retail builds the first negated force as a temporary and copies its Z through the frame (`fstp ; mov edx ; mov`) before the next call, keeping X/Y on the FPU stack; ours constructs the
+008fac30	DIFFER	335v372	-	first attempt only: frame (retail keeps the float sums at the top of a 0x44 frame and the probe walk on two pointers), local list construction order and the 5/len accumulation order differ; x87 order 
+00a25bd0	RELOCATION_MATCH	321v321	PASS	CEmitterData::BeginLoading model + named data pointer for size ternaries
+00a114b0	DIFFER	319v338	-	x87 scheduling of the axis copies: retail loads Up.X/Up.Y/Forward.X/Forward.Y onto the FPU stack and copies the two Z words through the frame before the cross product (read from memory), then writes t
+009e3640	DIFFER	332v328	-	block layout only: retail places the shared found-store tail of cases 1/2 right after case 1 (so case 2's loop head is unaligned); ours places it after case 2 and pads case 2's loop head with `lea esp
+009e3df0	DIFFER	305v354	-	CSE: retail reloads the format fields after the inline memcpy (the mask shift uses B/G loaded around the rep movs, the right shift reloads them; the alpha arm spills the record offset) where VC7.1 her
+004884d0	RELOCATION_MATCH	331v331	PASS	retail flag view +0x220; YZ arm first; const C3DVector& camera position
+00633d80	RELOCATION_MATCH	398v398	PASS	InitModeBoastUI model, 18 processes
+00633ff0	RELOCATION_MATCH	353v353	PASS	InitModeBoastUI model, 15 processes
+00635840	RELOCATION_MATCH	370v370	PASS	HasTC + ternary GetTC; uninitialised mode-manager pointer
+00635bf0	RELOCATION_MATCH	383v383	PASS	InitModeFirstPersonTargeting model + HasTC/GetTC
+004385f0	DIFFER	323v379	-	lane gap: retail converts CurrentValue with a bare dword `fld ; fistp` through a frame copy (the inline-asm FloatToInt helper family, GOTCHAS wave 25 chunks 145/164); plain C++ gives `_ftol`, which al
+00439f20	RELOCATION_MATCH	352v352	PASS	UpdateStat(value, rate, (float)steps, ...) signature
+0043a380	RELOCATION_MATCH	332v332	PASS	retail-offset view; lazy GUI def helper
+00e242d0	RELOCATION_MATCH	374v374	PASS	handle virtual slots 8/9; nested GetHero vtable caching
+00e24450	RELOCATION_MATCH	333v333	PASS	twin of ExpressionEnableFollow
+00f061e0	DIFFER	282v397	-	~CScriptThing expansion choice: retail expands the inline by-value destructor at the end and the first in-loop return and calls 0x004AA840 at the second; ours calls it out of line at all three (a __fo
+00e75ef0	RELOCATION_MATCH	329v329	PASS	WAIT_UNTIL(!x) double negation -> setne
+00ed2a50	RELOCATION_MATCH	344v344	PASS	real name CV_SingingStonesScript::WatchForRegionLeaving
+00f018b0	RELOCATION_MATCH	389v389	PASS	CEntityScriptBinding<T> inline ctor + spawn wrapper
+00f01eb0	RELOCATION_MATCH	372v372	PASS	Kraken DoMission shape
+00d26a50	RELOCATION_MATCH	325v325	PASS	CTimer local; IntToCharString(long) has no stack arg
+00d3a050	DIFFER	330v330	-	one address form: retail `mov eax,[esi+128h] ; lea ecx,[eax+ebp]` for the named handle pointer where ours is `mov ecx,[esi+128h] ; add ecx,ebp` (the 1-byte difference then shows as `nop` vs `mov edi,e
+00d6be20	RELOCATION_MATCH	369v369	PASS	spawning itself needs __forceinline spawn helpers
+00e824e0	RELOCATION_MATCH	367v367	PASS	real name CV_FisticuffsClubScript::KeepVariablesUpToDate
+00d7d730	RELOCATION_MATCH	397v397	PASS	if / else-if with || region tests
+00d9d4f0	RELOCATION_MATCH	351v351	PASS	real class CQ_HobbeToothContestScript::CQ_HobbeToothWhisper; CAttackingBandit spawn model
+00da0c40	RELOCATION_MATCH	322v322	PASS	4-aligned CScriptThing; if (!Find..) arm order
+00da2860	DIFFER	321v321	-	register rotation only: the two inline ~CScriptThing release tails reload Info into ecx/eax (retail edx/ecx) and the flag store goes through edx (retail eax)
+00de81b0	DIFFER	321v321	-	register rotation only: the two inline ~CScriptThing release tails reload Info into ecx/eax (retail edx/ecx) and the flag store goes through edx (retail eax)
+00daea70	RELOCATION_MATCH	383v383	PASS	if/else with one tail store keeps deed in edi
+00df4e00	RELOCATION_MATCH	370v370	PASS	spawn wrapper with explicit CCharString(region) temp
