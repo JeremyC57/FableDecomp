@@ -262819,6 +262819,41 @@ $catalog = @(
         TestSource = '00/ed/CStatueMasterCellarDoors_Main_00ed45a0_test.cpp'
         PassPattern = '00ed45a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041e1cd'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_SetMetaLayer_0041e1cd.cpp'
+        TestSource = '00/41/NUISystemCManager_SetMetaLayer_0041e1cd_test.cpp'
+        PassPattern = '0041e1cd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b4aa0'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_ActivateQuestCard_004b4aa0.cpp'
+        TestSource = '00/4b/CQuestManager_ActivateQuestCard_004b4aa0_test.cpp'
+        PassPattern = '004b4aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a55df0'
+        Module = 'CMatrix3x4'
+        Source = '00/a5/CMatrix3x4_operator_00a55df0.cpp'
+        TestSource = '00/a5/CMatrix3x4_operator_00a55df0_test.cpp'
+        PassPattern = '00a55df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bde680'
+        Module = 'CObjectTypeCollection'
+        Source = '00/bd/CObjectTypeCollection_Load_00bde680.cpp'
+        TestSource = '00/bd/CObjectTypeCollection_Load_00bde680_test.cpp'
+        PassPattern = '00bde680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec42f0'
+        Module = 'CM_RTFERockTrollTrigger'
+        Source = '00/ec/CMRTFERockTrollTrigger_Main_00ec42f0.cpp'
+        TestSource = '00/ec/CMRTFERockTrollTrigger_Main_00ec42f0_test.cpp'
+        PassPattern = '00ec42f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -22896,3 +22896,10 @@ __imp__ReadFile@20	0143fed0	0099a960
 ?GetStatueAngle@CV_StatueMasterScript@@QAEMXZ	00ed43d0	00ed41d0
 ?IsDone@CStatueMasterStatue@@QAE_NXZ	00f35b30	00ed41d0
 ?IsDone@CStatueMasterCellarDoors@@QAE_NXZ	00f35b30	00ed45a0
+??ACLayerTree@@QAEAAW4EEngine2DLayer@@ABJ@Z	0042d246	0041e1cd
+?g_metaLayerBase@@3PAJA	01230118	0041e1cd
+?GetRegionName@CTCQuestCard@@QBE?AUCCharString@@XZ	007025a0	004b4aa0
+?IsActiveQuestBetweenQuestStartAndFinishScreensInRegion@CQuestManager@@QAE_NABUCCharString@@@Z	004b1340	004b4aa0
+?CreatePrimitiveOfType@CObjectTypeCollection@@QAEPAUCLocalDetailPrimitiveBase@@J@Z	00bde600	00bde680
+?IsDone@CM_RTFERockTrollTrigger@@QAE_NXZ	00f35b30	00ec42f0
+?RegisterFilter@CM_RTFERockTrollTrigger@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00ec42f0
