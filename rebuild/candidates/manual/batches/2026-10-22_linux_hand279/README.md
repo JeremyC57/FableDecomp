@@ -1,0 +1,96 @@
+# Hand chunk 279 (CAIStateGroup_MazeTutorialBattleTeleport .. CAIStateGroup_StealStealableItem): 12 of 40 byte-exact
+
+## What matched (12)
+- CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update 0x0093E2D0: with a living enemy, the creature registers as its combatant, strafes in combat mode and attacks while the enemy is very close. Shape: the landed 0x0093DDE0 CBrainOutput model, and a `while (a && b)` loop head.
+- CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool) 0x0093D800: the chain of combat-validity checks. Shape: nested early checks share one false tail; a named target local; `__forceinline` vector ops.
+- CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool) 0x0090C2D0: the guard follows only while the player is inside a village building that is open or owned. Shape: a zeroing CDefPointer dtor for the conditional temporaries; a named frame local after GetPWorld.
+- CAIStateGroup_MinionGuardGreetPlayer::Update 0x00929820: the guard greets the player with an opinion-graded speech tag. Shape: word-local HasTC three times; named village, tags and creature locals; an inline opinion-manager accessor.
+- CAIStateGroup_MinionKidCalledToMother::Update 0x0090EEC0: the kid walks home to its mother, then looks at the hero. Shape: a function-scope `result = 3`; the 2D distance in a block scope; a named MoveTo target local.
+- CAIStateGroup_MinionReactToPlayerInteraction::IsRunnable 0x00930A70: the villager reacts to the hero's pending interaction (the crime and marriage rules). Shape: early returns shrink-wrap esi/edi; a FindMostRecentDeed stand-in shares the handle slot.
+- CAIStateGroup_MinionReactToUnconsciousPerson::Update 0x009378F0: walk to the unconscious person, mark it discovered, then alert or inspect. Shape: the word-local HasTC fixes both the bit-0 narrowing and the this/&PPerson register swap; a named person local controls the flags push.
+- CAIStateGroup_MoveGoodsBase::FetchGoods 0x00915890: walk up to the container or crate stack, face it, and perform the fetch-goods action. Shape: one shared false tail; a `goods.Start` local after the walk; the target item hoisted before the action ctor.
+- CAIStateGroup_OpenAndCloseShop::IsRunnable 0x00926C50: the shopkeeper's opening-hours and sign handling. Shape: the landed InitCreaturePosition model; the duplicated return blocks are two source returns.
+- CAIStateGroup_PerformAction::Update 0x009352C0: a scripted perform-action loop over the scratchpad state group. Shape: const and non-const LowerBound stand-ins; the `== 0` test before the switch; continue/break retry.
+- CAIStateGroup_ReactToDeadLeader::Update 0x0095E470: flee 20 units from the enemy to the nearest flee position. Shape: an inline lower_bound with `first` copied after `len`; the reached test in its own block; an intelligent-pointer temp reset (`and esp,-8`).
+- CAIStateGroup_ServeFood::Update 0x009236C0: the tavern-table serving state machine. Shape: word-local TestTC (no bit-24 byte narrowing); a CRightHandedSet by-value arg (one `sub esp,18h` block copy); `break` out of the case blocks.
+
+## Parked for Fable 5.1 (28)
+- 0x00935580 CAIStateGroup_MinionFaceHero::IsRunnable DIFFER(615v617): the first inline 2D normalise keeps r on the x87 stack (`fst ; fmul st(2)`); retail stores and reloads it | tried: named r, split statements, forceinline normalise | next: lane gap: x87 store/fxch scheduling
+- 0x00965640 CAIStateGroup_RecoverStealableItem::OnReplace DIFFER(612v612): this/&PStealableItem register swap (retail this=ebx, &item=ebp) | tried: named item-pointer local, reordered blocks | next: try the "named pointer local loads into the dead this register" lesson (wave 25)
+- 0x009644F0 CAIStateGroup_StealStealableItem::OnReplace DIFFER(709v709): the same this/&PStealableItem ebx/ebp swap as 0x00965640 | tried: as the twin | next: as the twin
+- 0x00958840 CAIStateGroup_MinionReactToCrime::Update DIFFER(734v724): on a miss, the first 0x4F lookup reads the out-pointer's frame slot (retail jumps to the store with eax still holding the creature); temp register picks at the GetSomeoneElse push | tried: 5+ forms (uninit, zeroed, ternary GetInterface) | next: an entry-returning lookup whose result has no frame home
+- 0x009397E0 CAIStateGroup_SitRoundCampfire::OnReplace DIFFER(569v571): ours folds `add eax,[0x13BB6FC]`; retail does `mov ecx,[g] ; add eax,edi ; add eax,ecx` | tried: named, const-ref, split and parenthesised sums, an inlined GFRandom | next: lane gap: global-operand folding
+- 0x009392A0 CAIStateGroup_SitRoundCampfire::Update DIFFER(749v761): VC drops the CAnimFilterAnyGroup temp's base-vtable reset (`mov [esp+1Ch],0x0122FFCC`); the frame is 4 bytes tighter | tried: user dtor, novtable, named filter | next: a polymorphic base as the first member (wave-24m model)
+- 0x0092B3E0 CAIStateGroup_SkillPractice::PracticeSkills DIFFER(907v932): the second inline world-seed random stays a call; inlining it spills the ebx temp-flag word (frame +8); `lea` v `mov/add` for +5 | tried: forceinline, written-out random | next: a seed-pointer local before the first random
+- 0x0091C3D0 CAIStateGroup_NymphFloatAround::Update DIFFER(616v616): the PTarget reset temp lands at +0x14, not the shared key slot +0x10; Normalise Y*r operand order | tried: scoped temp, named temp | next: put the reset in the lookup's scope
+- 0x0096E830 CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureNearCombatPosition DIFFER(548v544): Normalise keeps r in st (retail `fstp [r] ; fxch ; fmul [r]`); combat-manager this/arg push order; dot and (Radius*2) fadd order | tried: named r, inline accessor | next: lane gap: x87 spill of r
+- 0x00929B10 CAIStateGroup_MinionGuardBribed::Update DIFFER(755v785): frame 0x10 smaller (retail materialises the doubled creature position); the delay global is folded; `mov ecx,eax ; add ecx,34h` v `lea` | tried: named doubled vector, by-value temp | next: a C3DVector temp from operator* (scale 2) in a separate statement
+- 0x009341C0 CAIStateGroup_MinionKidGroupTag::TagTarget DIFFER(562v580): the reach compare is `test ah,5 ; jnp` (retail `test ah,1 ; jne`); frame slots 4-8 bytes off; the second by-value IP ctor | tried: two compare forms | next: `!(lengthSquared <= reach * reach)`
+- 0x00934410 CAIStateGroup_MinionKidGroupTag::EvadeTarget DIFFER(922v922): x87 shapes of the two planar distances (retail spills delta X and squares Y first); frame 0xc smaller | tried: named deltas, inline distance | next: lane gap: x87 spill choice
+- 0x0092B900 CAIStateGroup_OnHeroPush::Update DIFFER(824v827): Normalise squared-length term order (retail z*z+x*x+y*y); facing-dot term order; atan2 args read through edi | tried: term reorderings | next: a `&Forward` pointer local for the dot
+- 0x0091C6A0 CAIStateGroup_NymphAttack::Update DIFFER(796v786): frame slot order (nymph out-slot +0x14, target +0x18, flag word +0x20 in retail); the summon conditional-temporary join | tried: first pass only (two forms) | next: a setcc-free bool join for the summon flag
+- 0x0090FDB0 CAIStateGroup_MinionSitAtSchool::Update DIFFER(831v834): retail loads g_FramesPerSecond before GetPWorldSeed and multiplies after the seed update | tried: 4 forms | next: Random(range, seed) with a local `long fps` copy inside the helper (fix found, one grade short); leave-test restructure
+- 0x00956060 CAIStateGroup_MazeTutorialBattleTeleport::Update DIFFER(770v786): GetValidPositions arg evaluation order (retail fetches the search tools' world before pushing); the radius spilled to a temp; ours elides the Random range test | tried: named predicate, inline accessor | next: a GFRandom with a `range ? r % range : 0` test the compiler cannot fold
+- 0x0090CC40 CAIStateGroup_MinionGossip::IsRunnable DIFFER(974v997): frame 0x54 v 0x48 (retail shares the filter slots of the four lookups); ebp v ebx for elapsed seconds; 0x2d lookup order | tried: inline helper (frame 0x90), scoped blocks, forceinline In2DRange ctor | next: per-lookup scoped filters built with operator&&
+- 0x00911300 CAIStateGroup_MinionGuardReactToBodyFoundMessage::Update DIFFER(666v666): one instruction: the zero-mask IsThingOfType stores ThingTypeFlags (+0x6c) to a frame word; ours stores the thing pointer | tried: `const CThing* const&` form, a flags local, a mask local | next: pass the flags dword by const reference into the zero-mask test
+- 0x0093A080 CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update DIFFER(825v825): scheduling only: retail calls GetPThingWorld (result dropped) before loading g_FramesPerSecond into ebx | tried: fps local first | next: `CWorld* world = GetPThingWorld(); long fps = g_FramesPerSecond; return world->GetWorldFrame() - FrameOfLastWarning < (unsigned long)(fps * 4);`
+- 0x00934920 CAIStateGroup_MinionKidGroupTag::IsRunnable DIFFER(851v853): GetInterface(0xA4) key slot (+0x10 v +0x0c); PTCGroupTag loaded before GetPosition in retail; one store scheduling | tried: 4 forms | next: a named PTCGroupTag local before the position call
+- 0x009101C0 CAIStateGroup_MinionListenToStory::Update DIFFER(751v735): frame 0x50 v 0x4c (retail reuses the CCharString slot for the marker); first cross-product term operand order; move-loop head (retail falls into it) | tried: scoped name, temp name (worse) | next: name in its own block ending before the marker search
+- 0x0092CDA0 CAIStateGroup_MinionSleep::OnReplace DIFFER(693v701): frame slot order of the lookup keys (+0x18/+0x1c in retail); the fallback operator= sequence | tried: 4 forms | next: evaluate the fallback string id after the temp's address
+- 0x00922010 CAIStateGroup_MinionWalkToMarker::Update DIFFER(648v651): register allocation (retail this=edi, brain=ebx, component=ebp); frame 0x50 v 0x4c; mode-8 block placement | tried: if-flip (worse), brain local | next: lane gap: register allocation
+- 0x00984F60 CAIStateGroup_OpinionReactionRoot::FleeUpdate DIFFER(856v863): the navigation component is held in a register (retail homes it at [esp+0x14]), so the faction pointer and brain take other registers | tried: IsOnSameMap member, by-value map-id operator== (both operand orders), map-id locals (best) | next: fix the GFFloatRandom declaration to `(float range, unsigned long* seed)` (it was wrong in this model, see 0x00985440), then a nav local declared after the map test
+- 0x00985440 CAIStateGroup_OpinionReactionRoot::HeroImitationPlayUpdate DIFFER(623v625): two scheduling hunks: the `hero = 0` store comes before the HasTC word load (retail after); retail loads the creature for GetPosition into esi before the sight-radius call | tried: base form, scoped search (frame fixed), brain local + scoped speech string, GFFloatRandom arg-order fix | next: lane gap: scheduling (or GetPosition through a named creature local)
+- 0x0097BB30 CAIStateGroup_ScorpionKing::Initialise DIFFER(616v622): ours keeps the trap count in edi; retail spills it to [esp+0x14] and holds &TrapThings in ebx across the inline push_back; name-string slot 0x14 v 0x10 | tried: temp names, scoped named names, box ctor from (position, radius) (best), index declared first | next: the wave-25 STLport `_Vector_base` / `_STLP_alloc_proxy` model for TrapThings
+- 0x0093B9F0 CAIStateGroup_SeekEnemy::Update DIFFER(1084v1012): ours keeps the move target in registers (retail homes it at [esp+0x1c], shared with the look position); ours pushes the creature before each GetPWorld() call (retail loads it into edi first); perceive register ebx v ebp | tried: while loop, do-while(result == 4) + goto Terminate | next: target as a C3DVector local reused for lookPos; a combat-manager local; then compare the stealth inline lower_bound
+- 0x009456A0 CAIStateGroup_SitForMeal::GetFoodFromCookingPot DIFFER(921v1006): no `and esp,-8` aligned frame in ours; the inline Random is not inlined; retail holds the building IP vtable constant in ebx and reuses it for the reset temp; found-block placement | tried: first draft, then building offset and action sizes fixed | next: `__forceinline` Random; find the 8-aligned local (an action-class member); a vtable-reusing reset
+
+## Skipped
+- None.
+
+## Label corrections
+- 0x007EE540 `IS_THING_ALIVE<CIntelligentPointer<CThingPhysical const>>` -> CTCVillageMember::GetPVillage (also seen in 0x009456A0)
+- 0x0065914B `CBankFileAsyncData::StartRead` -> CTCVillage IsDeedHandled
+- 0x00692620 `DrawGetEnvironment` -> CCreatureActionBase::GetActionID
+- 0x007FEF40 `EditCyclePreviousKeyCamera` -> CTCUserActionPointBase::FreeActionPoint
+- 0x006A11F0 `CThing_Array_FindByID` -> CTCCarrying::GetThingInCarrySlot
+- 0x0049D9D0 `_Cons_val` -> CWorld::GetCurrentPlayer
+- 0x0082DD90 / 0x0082DE20 `CountMoneyBags` -> CThingBuilding::HasOccupants / HasBusyOccupants
+- 0x0082D2D0 `PeekPMaterial` -> PeekPSimDefinition
+- 0x006621A0 `AreDefaultValsApplied` -> CThingCreatureBase::IsInCombatMode
+- 0x00662410 `AddCombinationBlend` -> IsRegisteredCombatant
+- 0x00662010 `CPixelShader::CountReferences` -> GetLifeState
+- 0x008FCF80 `CountReferences` -> CAIStateGroupBase::GetPPlayerManager
+- 0x004C73D0 / 0x006A4D00 `DoSizeof` -> CThing::GetPosition / CThingCreatureBase::GetPosition
+- 0x00487DC0 / 0x00487DD0 `_Cons_val` -> GetHeroCreature (GetPCharacter) / GetControlledCreature
+- 0x007446A0 `_Cons_val<...CParticleMorphs...>` -> CTCPerceiveThing::GetPerceivedThing
+- 0x0062E900 `~CTCLightningOrb` -> ~CCombatActionBase
+- 0x008FCF40 `CXMVPlaybackInfo` -> CAIStateGroupBase::Terminate
+- 0x0073A6E0 `CPixelShader::CountReferences` -> CTCCreatureModeManager::GetCurrentMode
+- SitDown family: 0x008ABAA0 `_Dest_val` -> ~CCreatureAction_SitDown; 0x008AB3D0 `_Dest_val` -> CCountedPointer dtor; 0x008AA9B0 -> CCountedPointer copy; 0x008AC3C0 `CConsoleCommandBase` -> CModeSitFloor ctor
+- 0x0092A0C0 / 0x0092A220 / 0x00929F70 (labelled CAIStateGroup_ApprenticeHero) -> CAIStateGroup_SkillPractice GetDummy / MoveToAppropriateDummy / IsDummyTypeLegal
+- 0x008574D0 `CTCInGameMenu::SetPDef` -> CCombatActionBase::SetAnimationName; 0x00858030 -> CCombatActionBase ctor
+- 0x0088B8F0 `RemoveAvailableQuestCardType` -> CAIBrain::SetBrainOutput
+- 0x00668D90 -> CCountedPointer::Reset
+- 0x008CA800 `BattleChargeTurnLeft` -> CCreatureAction_NymphTeleportIntoLimbo ctor; 0x008CA5A0 `DragonRoar` / 0x008CA680 / 0x008CA700 `BriarRoseShotFarInto` -> nymph combat actions
+- 0x0091C080 `CAIStateGroupWithBuilding::Cleanup` -> a CTCNymph target-clear method
+- 0x00938A10 `CAIStateGroup_MinionSitAtSchool_Update` -> CAIStateGroup_UsesSeat get-up-from-seat
+- 0x00916590 `CCreatureAction_GetOutOfBed` -> the MoveGoods fetch-goods action ctor (creature, target, long good)
+- 0x00658ACB -> CTCVillage::GetSchoolTimes; 0x00658A80 `IsCookTime` -> CTCVillage story-time test
+- 0x0066BD00 -> sound component PlaySound; 0x0066ADD0 `SetToKillOnLevelUnload` -> StopSample
+- 0x00939DD0 `CheckAndRemove` -> RemoveMyWarningMessage
+- 0x00910B20 `Music _Dest_val` -> ~CCreatureAction_DeclarePlayerACriminal
+- 0x009110F0 `CCreatureAction_AlertToPlayer` -> the inspect-body action ctor
+- 0x0099EAE0 `_Cons_val` -> ~CCharString
+- 0x008FCFA0 `CPlayer::GetCurrentMode` -> CAIStateGroupBase::GetPThingWorld
+- 0x0049D810 `CVertexBufferWin32::DoSizeof` -> CWorld::GetRandomSeed
+- 0x008FCFC0 `CPlayer::GetCurrentMode` -> CAIStateGroupBase::GetPWorld (as the landed ReleaseControlOfPot notes)
+- 0x008FCFB0 `_Cons_val<...>` -> CAIStateGroupBase::GetPDefinitionManager (returns the manager GetDefGlobalIndexFromName runs on)
+- 0x008AC060 `Position_FilterNearbyThenFind` -> remove_if<C3DVector*, within-radius>; 0x0074CA20 -> __copy<C3DVector*>
+- 0x006A8710 `CVertexBufferWin32_GetSizeAndAux` -> CThingFilter_IsNavLineOfSightToThing ctor
+- 0x00922320 / 0x009223A0 / 0x005ED860 / 0x00934E50 -> search-tool and message-manager templates whose names carry the wrong filter types
+- 0x00746A70 `StartGetInBedAnimation` -> bed slot release (one argument); 0x00746810 `CMeleeApprentice::Init` -> bed reset
+- 0x0090E2E0 -> Bind4 (truncated propagated Bind3 name; the landed source already notes it)
+- 0x0096BCB0 `GetPBestThingInRoughArea<HasTrackName, Nearest, CThingTrackNode>` -> the rough-area collector <HasDefGlobalIndex> (box, filter, output vector), as for the landed 0x00978250
+- 0x00787BFE `CEditInputProcessCopyPaste::AddToInterface` -> CTCTrapBase::ManualDeactivate; 0x00787BF1 `CAIStateGroup_MinionBehaviourCrowdBase::Cleanup` -> CTCTrapBase::Reset (both as chunk 210's corrections)
+- 0x00693EF0 `CPhysicsMeshInfo::~CPhysicsMeshInfo` -> the creature-action base dtor (called after PlayAnimation / GetItemOutOfPocket temps)
+- 0x007448F0: the manifest's CTCPerceiveThing::GetExtendedSightRadius v the landed file name GetSightRadius_007448f0 disagree (the landed 0x00933B30 calls it GetExtendedSightRadius)

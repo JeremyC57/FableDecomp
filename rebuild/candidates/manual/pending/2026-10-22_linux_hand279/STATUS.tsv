@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0090eec0	RELOCATION_MATCH	515v515	PASS	function-scope result=3; block-scoped 2D distance; named MoveTo target local
+0093e2d0	RELOCATION_MATCH	654v654	PASS	landed 0x0093DDE0 CBrainOutput model; while-&& loop head
+009352c0	RELOCATION_MATCH	572v572	PASS	const/non-const LowerBound stand-ins; ==0 test before switch; continue/break retry
+00935580	DIFFER	615v617	-	inline 2D normalise x87 store/fxch order
+009378f0	RELOCATION_MATCH	535v535	PASS	word-local HasTC fixes the bit-0 narrowing and the this/&PPerson swap; named person local for the flags push
+00965640	DIFFER	612v612	-	this/&PStealableItem ebx/ebp swap only
+009644f0	DIFFER	709v709	-	this/&PStealableItem ebx/ebp swap only (twin of 00965640)
+00958840	DIFFER	734v724	-	uninit 0x4F miss reads frame slot; temp register picks
+00926c50	RELOCATION_MATCH	628v628	PASS	landed InitCreaturePosition model; duplicated return blocks are two source returns
+00930a70	RELOCATION_MATCH	559v559	PASS	early returns shrink-wrap esi/edi; FindMostRecentDeed stand-in shares the handle slot
+0090c2d0	RELOCATION_MATCH	612v612	PASS	zeroing CDefPointer dtor for the conditional temporaries; named frame local after GetPWorld
+009236c0	RELOCATION_MATCH	756v756	PASS	word-local TestTC (no bit-24 byte narrowing); CRightHandedSet by-value arg; break out of the case blocks
+009397e0	DIFFER	569v571	-	only the folded add of the sit-delay minimum global (retail loads it into ecx)
+009392a0	DIFFER	749v761	-	filter temp's base-vtable reset dropped; frame 4 bytes smaller
+0092b3e0	DIFFER	907v932	-	second inline seed random not inlined (inlining it spills the ebx temp flags); lea v mov/add for +5
+00929820	RELOCATION_MATCH	623v623	PASS	word-local HasTC x3; village/tags/creature locals; inline opinion-manager accessor
+0095e470	RELOCATION_MATCH	608v608	PASS	inline lower_bound with first copied after len; reached in its own block; intelligent-pointer temp reset (and esp,-8)
+0091c3d0	DIFFER	616v616	-	intelligent-pointer temp slot (+0x14 v +0x10); Normalise Y*r operand order
+0096e830	DIFFER	548v544	-	Normalise r kept in st (retail stores/reloads r); push order around GetPWorld; dot order
+0093d800	RELOCATION_MATCH	637v637	PASS	nested early checks share one false tail; target local; forceinline vector ops
+00929b10	DIFFER	755v785	-	frame 0x10 smaller (doubled-position temp); folded add of the delay global; mov/add v lea
+009341c0	DIFFER	562v580	-	reach compare test ah,1/jne v ah,5/jnp; frame slot offsets
+00934410	DIFFER	922v922	-	planar-distance x87 shapes; frame 0xc smaller
+0092b900	DIFFER	824v827	-	x87 term order in Normalise and the facing dot; frame 8 smaller
+0091c6a0	DIFFER	796v786	-	frame slot order; summon conditional-temporary layout
+0090fdb0	DIFFER	831v834	-	only the fps*N range scheduling (local fps copy fixes it; leave-test restructure pending)
+00915890	RELOCATION_MATCH	720v720	PASS	one shared false tail; goods.Start local after the walk; target item hoisted before the action ctor
+00956060	DIFFER	770v786	-	GetValidPositions arg order; radius temp; Random range test elided in ours; register choice
+0090cc40	DIFFER	974v997	-	filter-slot sharing (frame 0x54 v 0x48); register choice
+00911300	DIFFER	666v666	-	zero-mask IsThingOfType dead store: retail stores the flags dword, ours the thing pointer (one instruction)
+0093a080	DIFFER	825v825	-	scheduling only: GetPThingWorld call v frames-per-second load order in the window test
+00934920	DIFFER	851v853	-	key-slot choice; PTCGroupTag load scheduling; one store scheduling
+009101c0	DIFFER	751v735	-	frame slot sharing (name/marker); cross-product operand order; loop-head alignment
+0092cda0	DIFFER	693v701	-	frame slot order of lookup keys; fallback operator= sequence
+00922010	DIFFER	648v651	-	register allocation (this/brain/component), frame 0x50 v 0x4c, mode-8 block placement
+00984f60	DIFFER	856v863	-	nav component register-allocated (retail spills it to the frame); faction/brain register choice; map-id locals fix the compare shape
+00985440	DIFFER	623v625	-	scheduling only: hero=0 store before the HasTC word load; creature register for GetPosition loaded before the radius call
+0097bb30	DIFFER	616v622	-	register allocation in the trap loop (count in edi v spilled; &TrapThings kept in ebx in retail); name string frame slot
+0093b9f0	DIFFER	1084v1012	-	target vector register-held v framed; creature arg evaluated before GetPWorld receiver in retail; perceive register / key slot
+009456a0	DIFFER	921v1006	-	aligned frame missing; Random not inlined; vtable constant register reuse; block placement

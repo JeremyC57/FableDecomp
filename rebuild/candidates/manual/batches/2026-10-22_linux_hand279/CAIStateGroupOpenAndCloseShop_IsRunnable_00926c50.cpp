@@ -1,0 +1,244 @@
+// CAIStateGroup_OpenAndCloseShop::IsRunnable() -- a shopkeeper with a live shop and a shop-keeper component whose shop exists: mark the keeper present and read the opening hours; a shop without occupants just updates its sign (closed when shut) and is not runnable; otherwise close the sign when shut, then: with live occupants run when open, or when shut and either the shop/home position test disagrees or other people are still inside (GoToInsideFace = inside the building, Lock = false); without them run to lock up a permanently (or state-1) stocked, shut, empty shop (GoToInsideFace = the shop is home, Lock = true)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00926C50, length 628 bytes (+ int3 padding), plain `ret` (virtual).
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the creature's +0x170 shop and +0x168 home), CVectorMap::LowerBound
+// @ 0x0040F020 (inlined GetInterface: 0x90 CTCShopKeeper, bit 16 of +0x30; 0xBD the shop sign, bit 29 of +0x34),
+// CTCShopKeeper::GetShopTC @ 0x00798F50 / GetAreOtherPeopleInShop(bool) @ 0x00799A60, CTCShop::IsOpeningHours @ 0x00773950 /
+// IsPermanentlyStocked @ 0x007721A0, the building occupant tests @ 0x0082DD90 / 0x0082DE20 (manifest "CountMoneyBags" labels
+// are wrong: both take the thing), CThingBuilding::IsPointInside @ 0x0082D000, CThing::GetPosition @ 0x004C73D0.
+// Layout: engine header has GoToInsideFace +0x14 / Lock +0x15 only (Ego_r.pdb); the base and the keeper/shop models are
+// the landed InitCreaturePosition 0x00926B30 ones.
+// ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
+struct CTCBase;
+struct CWorld;
+struct C3DVector { float x, y, z; };
+
+// A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
+// {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
+// GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
+struct CInterfaceMap {
+    struct SEntry { long type; CTCBase* component; };
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
+};
+
+struct CThing {
+    unsigned char _pad0[0x20];
+    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
+    CInterfaceMap m_interfaces;                 // +0x44
+    unsigned char _pad1[0x60 - 0x4c];
+    void* m_pSub60;                             // +0x60 (typed per use below)
+    unsigned char _pad2[0x91 - 0x64];
+    unsigned char m_flags91;                    // +0x91 bit 0: dead
+    unsigned char m_flags92;                    // +0x92
+    const C3DVector& GetPosition() const;       // 0x004C73D0
+    unsigned long HasTC(long interfaceType) const
+    {
+        return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
+    }
+    bool TestTC(long interfaceType) const       // std::bitset::test: `shr ; and cl,1` (kept as a byte when reused)
+    {
+        return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
+    }
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+            return true;
+        }
+        return false;
+    }
+    // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
+    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    {
+        long type = interfaceType;
+        CInterfaceMap* map = &m_interfaces;
+        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        CInterfaceMap::SEntry* sel;
+        if (it == map->last) sel = map->last;
+        else if (it->type <= interfaceType) sel = it;
+        else sel = map->last;
+        return sel;
+    }
+    // the bitset::test form: the test's bool is materialised (`shr ; and dl,1 ; mov [esp+x],dl`) and returned
+    template<class T> __forceinline bool GetInterfaceT(T** ppOut, long interfaceType)
+    {
+        bool has = TestTC(interfaceType);
+        if (has) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+        }
+        return has;
+    }
+    // the out-parameter form whose result is ignored (no bool to keep: the component lands in its use register)
+    template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            long type = interfaceType;
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(&type);
+            if (it == map->last || interfaceType < it->type)
+                it = map->last;
+            *ppOut = (T*)it->component;
+        }
+    }
+};
+
+struct CBaseIntelligentPointer {
+    virtual void v00();
+    CThing* m_pItem;                            // +0x04
+    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseIntelligentPointer();                  // 0x00A01B10
+    ~CBaseIntelligentPointer();                 // 0x00A01C10
+    void SetPItem(CThing* item);                // 0x00A01B90
+};
+
+struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
+    virtual void v00();
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+};
+
+// IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
+inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
+{
+    if (p.GetPItem() != 0) {
+        if (!(p.GetPItem()->m_flags91 & 1))
+            return true;
+    }
+    return false;
+}
+
+struct CAIBrain {
+    unsigned char _pad[0x18];
+    CThing* PCreature;                          // +0x18
+};
+
+long __fastcall GFGetCurrentFrame();            // 0x0049D870
+unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+
+struct CAIStateGroupBase {
+    virtual ~CAIStateGroupBase();               // slot 0
+    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08();
+    virtual void Cleanup();                     // slot 9  (+0x24)
+    virtual void OnReplace();                   // slot 10 (+0x28)
+    virtual bool IsRunnable();                  // slot 11 (+0x2c)
+    virtual void Update();                      // slot 12 (+0x30)
+    virtual void v13();
+    virtual long GetTimeToInitiate();           // slot 14 (+0x38)
+    virtual void v15(); virtual void v16(); virtual void v17();
+    CAIBrain* PBrain;                           // +0x04
+    long ScriptAIPriority;                      // +0x08
+    void* Name_PStringData;                     // +0x0c
+    unsigned char Terminated;                   // +0x10
+    unsigned char Priority;                     // +0x11
+    unsigned char Enabled;                      // +0x12
+    unsigned char _pad_0x13;
+    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
+    unsigned long Random(unsigned long range)
+    {
+        unsigned long* seed = GetPWorldSeed();
+        unsigned long next = *seed * 0x24A1U + 0x24DFU;
+        *seed = next;
+        unsigned long rotated = GFROR13(next);
+        *seed = rotated;
+        return rotated % range;
+    }
+};
+
+// vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
+#define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
+#define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
+extern "C" double __cdecl sqrt(double);
+#pragma intrinsic(sqrt)
+struct CTCShop {
+    unsigned char _pad[0x0c];
+    long StockState;                            // +0x0c
+    bool IsOpeningHours();                      // 0x00773950
+    bool IsPermanentlyStocked();                // 0x007721A0
+};
+struct CTCShopKeeper {
+    CTCShop* GetShopTC();                       // 0x00798F50
+    bool GetAreOtherPeopleInShop(bool flag);    // 0x00799A60
+};
+struct CTCShopSign {                            // interface 0xBD on the shop building
+    unsigned char _pad[0x0c];
+    bool m_closed;                              // +0x0c
+};
+struct CThingBuilding : CThing {
+    unsigned char _pad94[0xd4 - 0x94];
+    unsigned char m_buildingFlags;              // +0xd4 (bit 0: keeper present)
+    bool HasOccupants();                        // 0x0082DD90
+    bool HasBusyOccupants();                    // 0x0082DE20
+    bool IsPointInside(const C3DVector& position);  // 0x0082D000
+};
+struct CThingShopkeeper : CThing {
+    unsigned char _pad94[0x168 - 0x94];
+    CBaseIntelligentPointer PHome;              // +0x168 CIntelligentPointer<CThingBuilding>
+    CBaseIntelligentPointer PShop;              // +0x170 CIntelligentPointer<CThingBuilding>
+    CThingBuilding* GetPShop() const { return (CThingBuilding*)PShop.GetPItem(); }
+    CThingBuilding* GetPHome() const { return (CThingBuilding*)PHome.GetPItem(); }
+};
+
+struct CAIStateGroup_OpenAndCloseShop : CAIStateGroupBase {
+    bool GoToInsideFace;                        // +0x14
+    bool Lock;                                  // +0x15
+    CThingShopkeeper* GetCreature() const { return (CThingShopkeeper*)PBrain->PCreature; }
+    virtual bool IsRunnable();
+};
+
+bool CAIStateGroup_OpenAndCloseShop::IsRunnable()
+{
+    CThingBuilding* shop = GetCreature()->GetPShop();
+    if (shop && !(shop->m_flags91 & 1)) {
+        CTCShopKeeper* keeper;
+        if (GetCreature()->GetInterface(&keeper, 0x90) && keeper->GetShopTC()) {
+            shop->m_buildingFlags |= 1;
+            bool open = keeper->GetShopTC() && keeper->GetShopTC()->IsOpeningHours();
+            CTCShopSign* sign;
+            if (!shop->HasOccupants()) {
+                if (shop->GetInterface(&sign, 0xbd))
+                    sign->m_closed = !open;
+                return false;
+            }
+            if (!open && shop->GetInterface(&sign, 0xbd))
+                sign->m_closed = true;
+            if (shop->HasBusyOccupants()) {
+                if (!open) {
+                    CThingShopkeeper* creature = GetCreature();
+                    CThingBuilding* myShop = creature->GetPShop();
+                    CThingBuilding* home = GetCreature()->GetPHome();
+                    if (shop->IsPointInside(creature->GetPosition()) != (myShop == home)) {
+                        GoToInsideFace = shop->IsPointInside(GetCreature()->GetPosition());
+                        Lock = false;
+                        return true;
+                    }
+                    if (!keeper->GetAreOtherPeopleInShop(false))
+                        return false;
+                }
+                GoToInsideFace = shop->IsPointInside(GetCreature()->GetPosition());
+                Lock = false;
+                return true;
+            }
+            CTCShop* shopTC = keeper->GetShopTC();
+            if (shopTC && (shopTC->IsPermanentlyStocked() == true || shopTC->StockState == 1) && !open
+                    && !keeper->GetAreOtherPeopleInShop(false)) {
+                GoToInsideFace = shop == GetCreature()->GetPHome();
+                Lock = true;
+                return true;
+            }
+        }
+    }
+    return false;
+}

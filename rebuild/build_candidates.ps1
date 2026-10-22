@@ -267006,6 +267006,90 @@ $catalog = @(
         TestSource = '00/91/CIsSeatWithSpaceOwnedBy_operator_009109b0_test.cpp'
         PassPattern = '009109b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0090c2d0'
+        Module = 'CAIStateGroup_MinionGuardFollowPlayer'
+        Source = '00/90/CAIStateGroupMinionGuardFollowPlayer_IsStillValidInternal_0090c2d0.cpp'
+        TestSource = '00/90/CAIStateGroupMinionGuardFollowPlayer_IsStillValidInternal_0090c2d0_test.cpp'
+        PassPattern = '0090c2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090eec0'
+        Module = 'CAIStateGroup_MinionKidCalledToMother'
+        Source = '00/90/CAIStateGroupMinionKidCalledToMother_Update_0090eec0.cpp'
+        TestSource = '00/90/CAIStateGroupMinionKidCalledToMother_Update_0090eec0_test.cpp'
+        PassPattern = '0090eec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00915890'
+        Module = 'CAIStateGroup_MoveGoodsBase'
+        Source = '00/91/CAIStateGroupMoveGoodsBase_FetchGoods_00915890.cpp'
+        TestSource = '00/91/CAIStateGroupMoveGoodsBase_FetchGoods_00915890_test.cpp'
+        PassPattern = '00915890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009236c0'
+        Module = 'CAIStateGroup_ServeFood'
+        Source = '00/92/CAIStateGroupServeFood_Update_009236c0.cpp'
+        TestSource = '00/92/CAIStateGroupServeFood_Update_009236c0_test.cpp'
+        PassPattern = '009236c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00926c50'
+        Module = 'CAIStateGroup_OpenAndCloseShop'
+        Source = '00/92/CAIStateGroupOpenAndCloseShop_IsRunnable_00926c50.cpp'
+        TestSource = '00/92/CAIStateGroupOpenAndCloseShop_IsRunnable_00926c50_test.cpp'
+        PassPattern = '00926c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00929820'
+        Module = 'CAIStateGroup_MinionGuardGreetPlayer'
+        Source = '00/92/CAIStateGroupMinionGuardGreetPlayer_Update_00929820.cpp'
+        TestSource = '00/92/CAIStateGroupMinionGuardGreetPlayer_Update_00929820_test.cpp'
+        PassPattern = '00929820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00930a70'
+        Module = 'CAIStateGroup_MinionReactToPlayerInteraction'
+        Source = '00/93/CAIStateGroupMinionReactToPlayerInteraction_IsRunnable_00930a70.cpp'
+        TestSource = '00/93/CAIStateGroupMinionReactToPlayerInteraction_IsRunnable_00930a70_test.cpp'
+        PassPattern = '00930a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009352c0'
+        Module = 'CAIStateGroup_PerformAction'
+        Source = '00/93/CAIStateGroupPerformAction_Update_009352c0.cpp'
+        TestSource = '00/93/CAIStateGroupPerformAction_Update_009352c0_test.cpp'
+        PassPattern = '009352c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009378f0'
+        Module = 'CAIStateGroup_MinionReactToUnconsciousPerson'
+        Source = '00/93/CAIStateGroupMinionReactToUnconsciousPerson_Update_009378f0.cpp'
+        TestSource = '00/93/CAIStateGroupMinionReactToUnconsciousPerson_Update_009378f0_test.cpp'
+        PassPattern = '009378f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093d800'
+        Module = 'CAIStateGroup_MeleeCombatNearbyBase'
+        Source = '00/93/CAIStateGroupMeleeCombatNearbyBase_IsStillRunnable_0093d800.cpp'
+        TestSource = '00/93/CAIStateGroupMeleeCombatNearbyBase_IsStillRunnable_0093d800_test.cpp'
+        PassPattern = '0093d800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093e2d0'
+        Module = 'CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose'
+        Source = '00/93/CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_Update_0093e2d0.cpp'
+        TestSource = '00/93/CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_Update_0093e2d0_test.cpp'
+        PassPattern = '0093e2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095e470'
+        Module = 'CAIStateGroup_ReactToDeadLeader'
+        Source = '00/95/CAIStateGroupReactToDeadLeader_Update_0095e470.cpp'
+        TestSource = '00/95/CAIStateGroupReactToDeadLeader_Update_0095e470_test.cpp'
+        PassPattern = '0095e470_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

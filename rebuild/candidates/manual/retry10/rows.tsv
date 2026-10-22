@@ -2158,3 +2158,31 @@ address	module	name	length	chunk	reason
 00a0d200	CWStringParser	ReadAsSymbol	95	hand914	DIFFER(96v95) -- INT3-ONLY: RELOCATION_MATCH against the 96-byte retail (int3 after noreturn throw trimmed by the oracle)
 004a1840	CWorld	Load	1129	hand914	DIFFER(1129v1129) -- same length + same frame-slot order; 3 lea/push register picks (ecx vs eax/edx); catch(CBBBFileException&) found from FuncInfo; with advisor AdvB3
 00567e80	_global	FUN_00567e80	13	hand914	DIFFER(23v13) -- STLport _M_append_dispatch: retail tail-jumps to append 0x567400, VC7.1 refuses (address-taken tag temporary)
+00935580	CAIStateGroup_MinionFaceHero	?IsRunnable@CAIStateGroup_MinionFaceHero@@UAE_NXZ	624	hand279	DIFFER(615v617) -- inline 2D normalise x87 store/fxch order
+00965640	CAIStateGroup_RecoverStealableItem	?OnReplace@CAIStateGroup_RecoverStealableItem@@UAEXXZ	624	hand279	DIFFER(612v612) -- this/&PStealableItem ebx/ebp swap only
+009644f0	CAIStateGroup_StealStealableItem	?OnReplace@CAIStateGroup_StealStealableItem@@UAEXXZ	720	hand279	DIFFER(709v709) -- this/&PStealableItem ebx/ebp swap only (twin of 00965640)
+00958840	CAIStateGroup_MinionReactToCrime	?Update@CAIStateGroup_MinionReactToCrime@@UAEXXZ	736	hand279	DIFFER(734v724) -- uninit 0x4F miss reads frame slot; temp register picks
+009397e0	CAIStateGroup_SitRoundCampfire	CAIStateGroup_SitRoundCampfire::OnReplace	571	hand279	DIFFER(569v571) -- only the folded add of the sit-delay minimum global (retail loads it into ecx)
+009392a0	CAIStateGroup_SitRoundCampfire	CAIStateGroup_SitRoundCampfire::Update	768	hand279	DIFFER(749v761) -- filter temp's base-vtable reset dropped; frame 4 bytes smaller
+0092b3e0	CAIStateGroup_SkillPractice	CAIStateGroup_SkillPractice::PracticeSkills	932	hand279	DIFFER(907v932) -- second inline seed random not inlined (inlining it spills the ebx temp flags); lea v mov/add for +5
+0091c3d0	CAIStateGroup_NymphFloatAround	CAIStateGroup_NymphFloatAround::Update	624	hand279	DIFFER(616v616) -- intelligent-pointer temp slot (+0x14 v +0x10); Normalise Y*r operand order
+0096e830	CAIStateGroup_MeleeCombatNearby	IsEnemyCreatureNearCombatPosition	544	hand279	DIFFER(548v544) -- Normalise r kept in st (retail stores/reloads r); push order around GetPWorld; dot order
+00929b10	CAIStateGroup_MinionGuardBribed	?Update@CAIStateGroup_MinionGuardBribed@@UAEXXZ	785	hand279	DIFFER(755v785) -- frame 0x10 smaller (doubled-position temp); folded add of the delay global; mov/add v lea
+009341c0	CAIStateGroup_MinionKidGroupTag	TagTarget	592	hand279	DIFFER(562v580) -- reach compare test ah,1/jne v ah,5/jnp; frame slot offsets
+00934410	CAIStateGroup_MinionKidGroupTag	EvadeTarget	928	hand279	DIFFER(922v922) -- planar-distance x87 shapes; frame 0xc smaller
+0092b900	CAIStateGroup_OnHeroPush	CAIStateGroup_OnHeroPush::Update	827	hand279	DIFFER(824v827) -- x87 term order in Normalise and the facing dot; frame 8 smaller
+0091c6a0	CAIStateGroup_NymphAttack	?Update@CAIStateGroup_NymphAttack@@UAEXXZ	800	hand279	DIFFER(796v786) -- frame slot order; summon conditional-temporary layout
+0090fdb0	CAIStateGroup_MinionSitAtSchool	CAIStateGroup_MinionSitAtSchool::Update	848	hand279	DIFFER(831v834) -- only the fps*N range scheduling (local fps copy fixes it; leave-test restructure pending)
+00956060	CAIStateGroup_MazeTutorialBattleTeleport	CAIStateGroup_MazeTutorialBattleTeleport::Update	800	hand279	DIFFER(770v786) -- GetValidPositions arg order; radius temp; Random range test elided in ours; register choice
+0090cc40	CAIStateGroup_MinionGossip	?IsRunnable@CAIStateGroup_MinionGossip@@MAE_NXZ	1008	hand279	DIFFER(974v997) -- filter-slot sharing (frame 0x54 v 0x48); register choice
+00911300	CAIStateGroup_MinionGuardReactToBodyFoundMessage	?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ	672	hand279	DIFFER(666v666) -- zero-mask IsThingOfType dead store: retail stores the flags dword, ours the thing pointer (one instruction)
+0093a080	CAIStateGroup_MinionGuardReactToPlayerWithWeapon	CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update	832	hand279	DIFFER(825v825) -- scheduling only: GetPThingWorld call v frames-per-second load order in the window test
+00934920	CAIStateGroup_MinionKidGroupTag	?IsRunnable@CAIStateGroup_MinionKidGroupTag@@UAE_NXZ	853	hand279	DIFFER(851v853) -- key-slot choice; PTCGroupTag load scheduling; one store scheduling
+009101c0	CAIStateGroup_MinionListenToStory	?Update@CAIStateGroup_MinionListenToStory@@MAEXXZ	736	hand279	DIFFER(751v735) -- frame slot sharing (name/marker); cross-product operand order; loop-head alignment
+0092cda0	CAIStateGroup_MinionSleep	?OnReplace@CAIStateGroup_MinionSleep@@UAEXXZ	704	hand279	DIFFER(693v701) -- frame slot order of lookup keys; fallback operator= sequence
+00922010	CAIStateGroup_MinionWalkToMarker	?Update@CAIStateGroup_MinionWalkToMarker@@MAEXXZ	651	hand279	DIFFER(648v651) -- register allocation (this/brain/component), frame 0x50 v 0x4c, mode-8 block placement
+00984f60	CAIStateGroup_OpinionReactionRoot	FleeUpdate	864	hand279	DIFFER(856v863) -- nav component register-allocated (retail spills it to the frame); faction/brain register choice; map-id locals fix the compare shape
+00985440	CAIStateGroup_OpinionReactionRoot	HeroImitationPlayUpdate	625	hand279	DIFFER(623v625) -- scheduling only: hero=0 store before the HasTC word load; creature register for GetPosition loaded before the radius call
+0097bb30	CAIStateGroup_ScorpionKing	?Initialise@CAIStateGroup_ScorpionKing@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	624	hand279	DIFFER(616v622) -- register allocation in the trap loop (count in edi v spilled; &TrapThings kept in ebx in retail); name string frame slot
+0093b9f0	CAIStateGroup_SeekEnemy	CAIStateGroup_SeekEnemy::Update	1024	hand279	DIFFER(1084v1012) -- target vector register-held v framed; creature arg evaluated before GetPWorld receiver in retail; perceive register / key slot
+009456a0	CAIStateGroup_SitForMeal	GetFoodFromCookingPot	1008	hand279	DIFFER(921v1006) -- aligned frame missing; Random not inlined; vtable constant register reuse; block placement
