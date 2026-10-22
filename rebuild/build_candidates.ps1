@@ -270274,6 +270274,13 @@ $catalog = @(
         TestSource = '00/56/CRetailString_Mappenddispatch_00567e80_test.cpp'
         PassPattern = '00567e80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bfc600'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = '00/bf/CPatchTesselationEdgeStrip_Load_00bfc600.cpp'
+        TestSource = '00/bf/CPatchTesselationEdgeStrip_Load_00bfc600_test.cpp'
+        PassPattern = '00bfc600_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

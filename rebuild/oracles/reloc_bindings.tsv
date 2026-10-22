@@ -25201,3 +25201,7 @@ __Rb_tree_increment	004292c0	0057770a
 ?erase@CComponentVector@@QAEPAPAUCComponent@NUISystem@@PAPAU23@@Z	00485468	005778ca
 ??$_M_insert_overflow@U__false_type@@@CCharStringVector@@QAEXPAUCCharString@@ABU1@ABU__false_type@@I_N@Z	00433530	00d773e0
 ??$append@PBDUforward_iterator_tag@@@CRetailString@@QAEAAU0@PBD0ABUforward_iterator_tag@@@Z	00567400	00567e80
+??$LoadVerts@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAU?$CEdgeStipVertexArray@UCFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAUCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfca20	00bfc600
+??$LoadVerts@UCVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAU?$CEdgeStipVertexArray@UCVertex@CPatchTesselationEdgeStrip@@@@PAUCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfc880	00bfc600
+??$LoadVerts@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAU?$CEdgeStipVertexArray@UCWaterFanBaseVertex@CPatchTesselationEdgeStrip@@@@PAUCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfcd60	00bfc600
+??$LoadVerts@UCWaterVertex@CPatchTesselationEdgeStrip@@@CPatchTesselationEdgeStrip@@QAE_NPAU?$CEdgeStipVertexArray@UCWaterVertex@CPatchTesselationEdgeStrip@@@@PAUCMemoryDataInputStream@@PAUCMovableResourceHandler@@@Z	00bfcbc0	00bfc600
