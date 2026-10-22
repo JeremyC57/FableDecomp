@@ -269364,6 +269364,13 @@ $catalog = @(
         TestSource = '00/dc/COrchardFarmWhisper_Main_00dcf0b0_test.cpp'
         PassPattern = '00dcf0b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ef7800'
+        Module = 'COpinionMan'
+        Source = '00/ef/COpinionMan_Main_00ef7800.cpp'
+        TestSource = '00/ef/COpinionMan_Main_00ef7800_test.cpp'
+        PassPattern = '00ef7800_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -24859,3 +24859,9 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?SetPredicate@COVI_DeadFather@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00db8300
 ?IsActiveThreadTerminating@COrchardFarmWhisper@@QAE_NXZ	00f35b30	00dcf0b0
 ?SetPredicate@COrchardFarmWhisper@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00dcf0b0
+??0CPredicate_And@NScript@@QAE@ABUCIsThing@1@ABUCIsThingAlive@1@@Z	00ef7b50	00ef7800
+??1CIsThingStored@NScript@@UAE@XZ	00ef7ab0	00ef7800
+??_7CIsThing@NScript@@6B@	012c2fe8	00ef7800
+??_7CPredicate_And@NScript@@6B@	012f6818	00ef7800
+?IsActiveThreadTerminating@COpinionMan@@QAE_NXZ	00f35b30	00ef7800
+?SetPredicate@COpinionMan@@QAEXABUCPredicateBase@NScript@@@Z	00f35b10	00ef7800
