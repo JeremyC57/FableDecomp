@@ -1,0 +1,175 @@
+address	name	evidence
+00410be0	CPersistContext::Transfer<long>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 0xc at +0xB6, table to +0xD0; builds .?AV?$CPersistContext_TransferableComponent@J@@ (vt 0x122DF38) = PDB ??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z
+00410cb0	_global::FUN_00410cb0	missing from manifest; unreferenced memmove copy: ecx=first edx=last [esp+4]=dest, returns dest+(last-first), ret 8 (fastcall-shaped, unused tag arg)
+00410cd0	_global::FUN_00410cd0	missing from manifest; unreferenced ret 4 stub
+00410ce0	_global::FUN_00410ce0	missing from manifest; unreferenced ret 4 stub
+00410cf0	_global::FUN_00410cf0	missing from manifest; unreferenced ret 4 stub
+00410d00	_global::FUN_00410d00	missing from manifest; unreferenced ret 4 stub
+00410d10	_global::FUN_00410d10	missing from manifest; unreferenced destroy-range: calls 0x99B510 (string dtor) on each 4-B element ecx..edx, ret 4 (fastcall-shaped)
+00410d40	_global::FUN_00410d40	missing from manifest; unreferenced memmove copy as 0x410CB0 with ret 4 (masked twin of landed _global::Std_Move_Backward 0x405BA0)
+00410d60	_global::FUN_00410d60	missing from manifest; unreferenced copy_backward via memmove(dest-(last-first)), ret 4 (fastcall-shaped)
+0043e440	_global::FUN_0043e440	missing from manifest; unreferenced getter of this+0x2EC
+0043e450	_global::FUN_0043e450	missing from manifest; unreferenced getter of this+0x2FC
+0043e460	_global::FUN_0043e460	missing from manifest; unreferenced getter of this+0x1C8
+0043e470	CRGBFloatColour::CRGBFloatColour	missing from manifest; unreferenced; 4 packed bytes * 1/255 (0x1231724) into 4 floats, returns this, ret 4 = PDB ??0CRGBFloatColour@@QAE@ABVCRGBColour@@@Z
+00449bf0	_global::FUN_00449bf0	missing from manifest; unreferenced: GetPlayer(this+0x1C) then 0x487DC0 on it, ret 4
+00449c10	_global::FUN_00449c10	missing from manifest; unreferenced exact twin of 0x449BF0
+004ab710	CPersistContext::Transfer<double>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 0xc at +0xBB, table to +0xD4; builds .?AV?$CPersistContext_TransferableComponent@N@@ (vt 0x1238C80) = PDB ??$Transfer@N@CPersistContext@@QAEXPBDAANABN@Z
+004ab7f0	CPersistContext::Transfer	missing from manifest; unreferenced 2-arg overload: calls 3-arg 0x4AB640 with a zeroed 4-B default, ret 8 (masked twin of landed CPersistContext::Transfer<long> 0x410800/0x4107E0/0x4110B0)
+004cc3f0	CPersistContext::Transfer<short>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 0xc at +0xBB, table to +0xD4; builds .?AV?$CPersistContext_TransferableComponent@F@@ (vt 0x1239A74) = PDB ??$Transfer@F@CPersistContext@@QAEXPBDAAFABF@Z
+004cc4d0	CPersistContext::TransferBinary<signed_char>	missing from manifest; unreferenced; CheckCRC then mode 3 WriteCBYTE(movsx byte) / mode 2 CPersistTraits<unsigned char>::TransferBinaryIn - name inferred
+004cd1f0	CThing::vfunc_31	missing from manifest; RTTI vtable slot 31 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd200	CThing::vfunc_32	missing from manifest; RTTI vtable slot 32 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd210	CThing::vfunc_33	missing from manifest; RTTI vtable slot 33 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd220	CThing::vfunc_34	missing from manifest; RTTI vtable slot 34 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd230	CThing::vfunc_35	missing from manifest; RTTI vtable slot 35 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd240	CThing::vfunc_37	missing from manifest; RTTI vtable slot 37 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd250	CThing::vfunc_39	missing from manifest; RTTI vtable slot 39 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd260	CThing::vfunc_38	missing from manifest; RTTI vtable slot 38 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd270	CThing::vfunc_40	missing from manifest; RTTI vtable slot 40 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd280	CThing::vfunc_42	missing from manifest; RTTI vtable slot 42 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd290	CThing::vfunc_45	missing from manifest; RTTI vtable slot 45 of .?AVCThing@@ (vt 0x1239ABC) and its derived Thing vtables
+004cd2a0	_global::FUN_004cd2a0	missing from manifest; unreferenced 16-B ctor shape: zeroes +0,+4,+8 and byte +0xD, returns this (exact twin of CNavigationLayer::CNavigationLayer piece bodies; no class evidence)
+004cd2b0	_global::FUN_004cd2b0	missing from manifest; unreferenced copy-assign shape: calls 0x4CC290 (vector copy) then copies byte +0xD, returns this, ret 4; same 14-B struct as 0x4CD2A0
+004cd2d0	_global::FUN_004cd2d0	missing from manifest; unreferenced; wraps ListNode insert 0x4CCC80 with a by-value copy of *this, ret 4
+004cd2f0	_global::FUN_004cd2f0	missing from manifest; unreferenced vector<8-byte>::push_back shape: construct at end if capacity else _Insert_n 0x4CCCE0
+00567e80	_global::FUN_00567e80	missing from manifest; unreferenced 13-B thunk: rewrites an arg slot then tail-jumps to 0x567400 (InsertStringRange)
+00567e90	_global::FUN_00567e90	missing from manifest; unreferenced: operator delete(*this) if non-null (past the 301-B row end, before manifest 0x567EA0)
+005d93b0	_global::FUN_005d93b0	missing from manifest; unreferenced CTCInventoryItem-shaped helper: (this+4)->+0x70 counted def, GetSubDef 0x5B1EFC into an out counted pointer, ret 4
+005d9430	_global::FUN_005d9430	missing from manifest; twin of 0x5D93B0 using GetSubDef 0x5DA180; address taken at 0x41832C (CMainGameComponent::Update)
+005e3f00	CTCQuestCompletionUI::DrawPreparePrimitivesForRendering	missing from manifest; RTTI vtable slot 11 of .?AVCTCQuestCompletionUI@@ (vt 0x125589C); CTCBase slot 11 = DrawPreparePrimitivesForRendering
+00619890	CPersistContext::TransferVector<CHeroLogBook::CHeroLogBookEntry::ECategory>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0x9B, table to +0xB4; builds .?AV?$CPersistContext_TransferableVector@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@ (vt 0x12571A0) = PDB ??$TransferVector@W4ECategory@...
+00619950	_global::FUN_00619950	missing from manifest; unreferenced 0x20-B tree-node allocate+copy (std::_Tree::_Buynode shape)
+006199a0	_global::FUN_006199a0	missing from manifest; unreferenced 0x6C-B node allocate, copies key+CRegion value (0x51A900)
+006420f0	CPersistContext::Transfer<CRGBColour>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 0xc at +0xB7, table to +0xD0; builds .?AV?$CPersistContext_TransferableComponent@VCRGBColour@@ (vt 0x125A188) = PDB ??$Transfer@VCRGBColour@@@CPersistContext@@...ABV1@@Z
+006421c0	CPersistContext_TransferableComponent<CRGBColour>::TransferIn	missing from manifest; RTTI vtable slot 1 of .?AV?$CPersistContext_TransferableComponent@VCRGBColour@@ (vt 0x125A188)
+0064dd9a	CDrawMiniMap::UpdateRegionExitNames	manifest has 'CTCActionUseScriptedHook::CTCActionUseScriptedHook::PopulateRegionExits'; row cut at 321 but body jumps to 0x64dfbe and ends ret 4 at 0x64dfdb (580 B, manifest cut agrees); callers CDrawMiniMap::SetRegion/ToggleCentering (landed); Ego_r PDB orders ?UpdateRegionExitNames@CDrawMiniMap then ?SetRegion then ?ToggleCentering exactly like retail 0x64dd9a/0x64dfde/0x64e019; fills the RegionExits vector (this+0x154)
+00685f80	CPersistContext::Transfer<COpinionTransientOffset>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 0xc at +0xF1, table to +0x108; builds .?AV?$CPersistContext_TransferableComponent@VCOpinionTransientOffset@@ (vt 0x125BAB0) = PDB ??$Transfer@VCOpinionTransientOffset@@@CPersistContext@@...ABV1@@Z
+00686090	_global::FUN_00686090	missing from manifest; unreferenced: zero-fills every 4-B element of the vector at this
+006babd0	CPersistContext::Transfer<CFaction>	manifest has 'CPersistContext::Transfer<CIntelligentPointer<CThing>_>'; code ends ret 0xc at +0xf7, mov edi,edi pad, 5-entry jump table to +0x110; stores CPersistContext_TransferableComponent<CFaction> vtable 0x125D560 (RTTI) and returns ret 0xc = PDB ??$Transfer@VCFaction@@@CPersistContext@@QAEXPBDAAVCFaction@@ABV1@@Z (defaulted overload)
+006bace0	CPersistContext_TransferableComponent<CFaction>::TransferIn	missing from manifest; RTTI vtable slot 1 of .?AV?$CPersistContext_TransferableComponent@VCFaction@@ (vt 0x125D560); slot 1 = TransferIn in the <float>/<CIntelligentPointer> instances; calls CPersistTraits<CFaction>::TransferIn
+006ca650	_global::FUN_006ca650	missing from manifest; unreferenced: *this = arg, returns this, ret 4
+006ca660	_global::FUN_006ca660	missing from manifest; unreferenced 3-B getter
+006ca670	_global::FUN_006ca670	missing from manifest; unreferenced 3-B getter
+006ca680	CCountedPointer::operator=	missing from manifest; unreferenced counted-pointer assign: release old (--+4, vtbl[1]) then addref new, returns this
+006d4c00	CPersistContext::TransferVector<std::pair<CCharString,long>_>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0xA2, table to +0xBC; builds .?AV?$CPersistContext_TransferableVector@U?$pair@VCCharString@@J@std@@ (vt 0x125ED48) = PDB ??$TransferVector@U?$pair@VCCharString@@J@std@@@CPersistContext@@; callers CThingNPC::TransferLoveState
+006d4cc0	_global::FUN_006d4cc0	missing from manifest; unreferenced: returns bit 0 of byte this+0x1C9
+006d4cd0	_global::FUN_006d4cd0	missing from manifest; unreferenced: list empty() shape (head->next == head)
+006d4ce0	_global::IS_THING_DEAD<CThing*>	missing from manifest; unreferenced; exact twin of landed _global::IS_THING_DEAD<CThing*> 0x5CBDBD/0x65D639 (null or flag +0x91 bit 0)
+006d4d00	_global::FUN_006d4d00	missing from manifest; unreferenced 5-B tail jmp to CBaseIntelligentPointer::GetPItem 0xA01B50
+007ad6d0	CPersistContext::Transfer<EScriptingStateGroups>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 0xc at +0xBE, table to +0xD8; builds .?AV?$CPersistContext_TransferableComponent@W4EScriptingStateGroups@@ (vt 0x126D3AC) = PDB ??$Transfer@W4EScriptingStateGroups@@@CPersistContext@@QAEXPBDAAW4EScriptingStateGroups@@ABW41@@Z
+007ad7b0	CPersistContext_TransferableComponent<EScriptingStateGroups>::TransferIn	missing from manifest; RTTI vtable slot 1 of .?AV?$CPersistContext_TransferableComponent@W4EScriptingStateGroups@@ (vt 0x126D3AC); reads via 0x9E2590 into *value
+007ad7d0	CPersistContext_TransferableComponent<EScriptingStateGroups>::TransferOut	missing from manifest; RTTI vtable slot 0 of the same vtable; writes *value via 0x9E2560
+007b5470	CPersistContext::TransferVector<CCrimeWaitingForBribe>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0x9B, table to +0xB4; builds .?AV?$CPersistContext_TransferableVector@VCCrimeWaitingForBribe@@ (vt 0x126D7F8) = PDB ??$TransferVector@VCCrimeWaitingForBribe@@@CPersistContext@@; callers Save_TransferCriminalRecord
+007b5530	_global::FUN_007b5530	missing from manifest; unreferenced range-ctor shape: (a,b,&c,0) -> 0x7B5400 vector insert-range, returns this, ret 0Ch
+007b5560	_global::FUN_007b5560	missing from manifest; unreferenced twin of 0x7B5530 with ret 8
+007b5590	_global::FUN_007b5590	missing from manifest; unreferenced: constructs CCharString(this, literal 0x1243E40, -1), returns this
+007b55b0	_global::FUN_007b55b0	missing from manifest; unreferenced setter: byte this+0x241 = arg
+007b55c0	_global::FUN_007b55c0	missing from manifest; unreferenced: *this = 0, returns this, ret 4
+007b55d0	_global::FUN_007b55d0	missing from manifest; unreferenced 3-B getter mov eax,[ecx]
+007b55e0	_global::FUN_007b55e0	missing from manifest; unreferenced 3-B getter mov eax,[ecx]
+007c9770	CTCCreatureGeneratorCreator::OnSerialise	manifest has 'CTCCreatureGeneratorCreator::CTCCreatureGeneratorCreator::vfunc_1'; RTTI vtable slot 1 of .?AVCTCCreatureGeneratorCreator@@ (vt 0x126EB3C); CTCBase slot 1 = OnSerialise; real entry 0x7C9770 to ret 8 at 0x7C9899 (300 B); manifest names 0x7C9770 'vfunc_1' and puts OnSerialise on the fragment
+007da3a0	CTCTavernGameCardBlackjack::vfunc_42	missing from manifest; RTTI vtable slot 42 of .?AVCTCTavernGameCardBlackjack@@ (vt 0x126F8F4)
+007eeb80	_global::FUN_007eeb80	missing from manifest; unreferenced: return 0x4E
+007eeb90	_global::FUN_007eeb90	missing from manifest; unreferenced setter this+0xC = arg
+007eeba0	_global::FUN_007eeba0	missing from manifest; unreferenced byte getter this+0x10
+007eec90	CTCSmashableBase::OnCreate	missing from manifest; RTTI vtable slot 4 shared by .?AVCTCSmashableBase@@/Barrier/Window; CTCBase slot 4 = OnCreate
+007f4e10	CTCSmashableWindow::Smash	manifest has 'CTCSmashableBarrier::Smash'; 86 B to final ret (a vcall tail jmp inside); RTTI vtable slot 28 of .?AVCTCSmashableWindow@@ (vt 0x1240BA4) only - manifest says CTCSmashableBarrier::Smash, which is 0x007EEB20
+007f4e70	CTCStockItem::DrawPreparePrimitivesForRendering	missing from manifest; RTTI vtable slot 11 of .?AVCTCStockItem@@ (vt 0x1240C1C); CTCBase slot 11 = DrawPreparePrimitivesForRendering in 19 manifest names; body ret 4
+007f4e80	CTCStockItem::OnCreate	missing from manifest; RTTI vtable slot 4 of .?AVCTCStockItem@@; CTCBase slot 4 = OnCreate (75 manifest names)
+007f4ed0	CTCStockItem::OnSerialise	missing from manifest; RTTI vtable slot 1 of .?AVCTCStockItem@@; CTCBase slot 1 = OnSerialise (48 manifest names)
+007f4f40	_global::FUN_007f4f40	missing from manifest; unreferenced; this->+4->+0x70 GetSubDef then returns def+0x30; sits between CTCStockItem methods (likely a CTCStockItem helper)
+007f7930	_global::FUN_007f7930	missing from manifest; unreferenced: return this; ret 4
+007f7940	_global::FUN_007f7940	missing from manifest; unreferenced remove_copy shape: copies 4-B elements ecx..edx != *[esp+8] to dest [esp+4] (fastcall-shaped)
+007fc8e0	CTCKraken::OnInitialActivate	missing from manifest; RTTI vtable slot 6 of .?AVCTCKraken@@ (vt 0x1241B94); CTCBase slot 6 = OnInitialActivate (57 manifest names)
+00800b90	CPersistContext::Transfer<C2DVector>	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 0xc at +0xB5, table to +0xCC; builds .?AV?$CPersistContext_TransferableComponent@VC2DVector@@ (vt 0x1272208) = PDB ??$Transfer@VC2DVector@@@CPersistContext@@...ABV1@@Z
+00800c60	_global::FUN_00800c60	missing from manifest; unreferenced vector insert/push shape via 0x8001F0 (_Move), updates this+4, ret 8 (masked twin of landed _global::vector_push_back_copy 0x411B00)
+00800c90	_global::FUN_00800c90	missing from manifest; unreferenced: operator delete(*this) if non-null
+0083ce50	_global::FUN_0083ce50	missing from manifest; unreferenced: *this = 0, returns this, ret 4
+0083ce60	CCountedPointer::CCountedPointer	missing from manifest; unreferenced copy-ctor shape: *this = *arg, ++arg->refcount(+4), returns this
+0083ce80	_global::FUN_0083ce80	missing from manifest; unreferenced 3-B getter mov eax,[ecx]
+0092b230	_global::FUN_0092b230	missing from manifest; unreferenced: *this = arg, returns this (iterator/pointer ctor shape), ret 4
+0092b240	_global::FUN_0092b240	missing from manifest; unreferenced: *this = **this, returns this (list iterator ++ shape)
+0092b250	_global::FUN_0092b250	missing from manifest; unreferenced: *out = **this (list begin() shape; exact twin of landed list<NUISystem::CList*>::begin 0x429A85)
+0092b260	_global::FUN_0092b260	missing from manifest; unreferenced: *out = *this, ret 4 (end()/copy shape)
+0092b270	_global::FUN_0092b270	missing from manifest; unreferenced static: counts list nodes between two iterators (std::distance shape)
+0092b290	_global::FUN_0092b290	missing from manifest; unreferenced exact twin of 0x92B270 (distance)
+0092b2b0	_global::FUN_0092b2b0	missing from manifest; unreferenced list::size() loop (exact twin of landed CGuiControlTreePane::SortTreeRecursively pieces)
+0099b1d0	CWideString::operator!=	missing from manifest; unreferenced (inlined at call sites); builds {wchar,0} and returns wcscmp!=0 (true when empty) = operator!=(wchar_t) overload; past the 121-B row end, before manifest 0x99B220
+009be330	_global::FUN_009be330	missing from manifest; unreferenced 16-aligned ret 8 stub
+009be340	CDisplayManager::GetRefreshRate	missing from manifest; unreferenced; this+0x54 device ->vtbl[8](0,&mode) (IDirect3DDevice9::GetDisplayMode), throws on failure, returns mode.RefreshRate; name inferred from body
+009be380	_global::FUN_009be380	missing from manifest; unreferenced static float ratio: fild [esp+8]; fidiv [esp+4]; ret 8
+009fd390	_global::FUN_009fd390	missing from manifest; unreferenced 16-aligned ret 4 stub after the table
+00a0d200	CWStringParser::ReadAsSymbol	missing from manifest; unreferenced twin of ReadAsString checking item type 1 instead of 2 (chunk 216 analysis: ReadAsString + ReadAsSymbol + stub)
+00a0d260	_global::FUN_00a0d260	missing from manifest; unreferenced: byte this+0x26 = 0
+00a0d270	_global::FUN_00a0d270	missing from manifest; unreferenced 4-B getter of byte this+0x26
+00a0d280	_global::FUN_00a0d280	missing from manifest; unreferenced 3-dword zero ctor (exact twin of landed CIndexBuffer::CIndexBuffer pieces); past the 197-B row end
+00a3e350	CSoundManagerLH::vfunc_7	missing from manifest; RTTI vtable slot 7 of .?AVCSoundManagerLH@@ (vt 0x129D2C4)
+00a3e380	CSoundManagerLH::vfunc_8	missing from manifest; RTTI vtable slot 8 of .?AVCSoundManagerLH@@ (vt 0x129D2C4)
+00a3e3a0	CSoundManagerLH::vfunc_9	missing from manifest; RTTI vtable slot 9 of .?AVCSoundManagerLH@@ (vt 0x129D2C4)
+00a3e3b0	CSoundManagerLH::vfunc_11	missing from manifest; RTTI vtable slot 11 of .?AVCSoundManagerLH@@ (vt 0x129D2C4)
+00a3e3c0	CSoundManagerLH::vfunc_50	missing from manifest; RTTI vtable slot 50 of .?AVCSoundManagerLH@@ (vt 0x129D2C4)
+00a643b0	CMemoryAllocatorBase::FUN_00a643b0	missing from manifest; unreferenced; copies this+0xC18/+0xC14 (PDB CMemoryAllocatorBase AlignmentShift/Alignment) to globals 0x13D28D8/0x13D28D4
+00a643d0	CMemoryAreaChunk::GetPParentAllocator	missing from manifest; unreferenced 4-B getter of +0x18 (PDB 52-B CMemoryAreaChunk.PParentAllocator); neighbours are CMemoryAllocatorVariableSize methods
+00a643e0	CMemoryAreaChunk::GetTotalDataSize	missing from manifest; unreferenced 3-B getter of +0 (PDB CMemoryAreaChunk.TotalDataSize)
+00a643f0	CMemoryAreaChunk::GetNoFreeAreas	missing from manifest; unreferenced 4-B getter of +4 (PDB CMemoryAreaChunk.NoFreeAreas)
+00a64400	CMemoryAreaChunk::GetNoAllocatedAreas	missing from manifest; unreferenced 4-B getter of +8 (PDB CMemoryAreaChunk.NoAllocatedAreas)
+00a64410	CMemoryAreaChunk::GetLargestFreeAreaSize	missing from manifest; unreferenced 4-B getter of +0x10 (PDB CMemoryAreaChunk.LargestFreeAreaSize)
+00a64420	CMemoryAreaChunk::SetPermanent	missing from manifest; unreferenced: byte +0x1C = 1 (PDB CMemoryAreaChunk.Permanent)
+00a64430	CMemoryAreaChunk::IsPermanent	missing from manifest; unreferenced 4-B byte getter +0x1C (PDB Permanent)
+00a64440	CMemoryAreaChunk::SetDemandPaged	missing from manifest; unreferenced: byte +0x1D = arg (PDB CMemoryAreaChunk.DemandPaged)
+00a64450	CMemoryAreaChunk::IsDemandPaged	missing from manifest; unreferenced 4-B byte getter +0x1D (PDB DemandPaged)
+00a64460	CMemoryAllocatorVariableSize::SetPTreeRoot	missing from manifest; unreferenced: this+0xC34 = arg (PDB CMemoryAllocatorVariableSize.PTreeRoot @3124)
+00a64470	CMemoryAllocatorVariableSize::GetPTreeRoot	missing from manifest; unreferenced getter of this+0xC34 (PDB PTreeRoot @3124)
+00a64480	_global::FUN_00a64480	missing from manifest; unreferenced static: returns 1 when arg is NULL or arg->+0x1C==1 (Permanent chunk test)
+00a644a0	_global::FUN_00a644a0	missing from manifest; unreferenced self-tail-recursive counter: ecx=chunk, edx=count, counts +0x1C==1 along +0x10 links (fastcall-shaped register args)
+00aab9d0	CSoundEmitterLH::vfunc_18	missing from manifest; RTTI vtable slot 18 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aab9e0	CSoundEmitterLH::vfunc_19	missing from manifest; RTTI vtable slot 19 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aab9f0	CSoundEmitterLH::vfunc_20	missing from manifest; RTTI vtable slot 20 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba00	CSoundEmitterLH::vfunc_1	missing from manifest; RTTI vtable slot 1 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba10	CSoundEmitterLH::vfunc_2	missing from manifest; RTTI vtable slot 2 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba20	CSoundEmitterLH::vfunc_6	missing from manifest; RTTI vtable slot 6 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba40	CSoundEmitterLH::vfunc_7	missing from manifest; RTTI vtable slot 7 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba60	CSoundEmitterLH::vfunc_17	missing from manifest; RTTI vtable slot 17 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aaba80	CSoundEmitterLH::vfunc_11	missing from manifest; RTTI vtable slot 11 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aabac0	CSoundEmitterLH::vfunc_22	missing from manifest; RTTI vtable slot 22 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aabb00	CSoundEmitterLH::vfunc_21	missing from manifest; RTTI vtable slot 21 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00aabb60	CSoundEmitterLH::vfunc_13	missing from manifest; RTTI vtable slot 13 of .?AVCSoundEmitterLH@@ (vt 0x129E6EC; base CASoundEmitter slot is _purecall)
+00be5d10	_global::FUN_00be5d10	missing from manifest; unreferenced: (float)ecx * 1/255
+00be5d20	_global::FUN_00be5d20	missing from manifest; unreferenced: calls 0xB67E30 on global 0x1436EA8 with this+0x100
+00be5d40	CLandscapeBackgroundPatch::FUN_00be5d40	missing from manifest; unreferenced: word (this+4)->+0xA4->+0x14->+0x60 + word this+0x10C
+00be5d60	CLandscapeBackgroundPatch::FUN_00be5d60	missing from manifest; unreferenced twin of 0xBE5D40 for +0x62/+0x10E
+00c8a4b0	_global::FUN_00c8a4b0	manifest has 'CTCVillageMember::IsAttachedToVillage'; object read from esi without any load (mov eax,[esi+58h]) - LTCG/library register convention; callers CreatureHitNotification_StateProcess, Subsystem_LoadWorldMapAndNotifications; not CTCVillageMember
+00ca53f0	_global::FUN_00ca53f0	manifest has 'CScriptThing::operator=='; 16-B COM stdcall delegating thunk: this=[esp+4], loads [this-8] owner and tail-calls owner->vtbl[1] (AddRef pattern); slot in non-RTTI DirectShow vtable 0x12BF3C4; manifest CScriptThing::operator== is a propagated label
+00ca5400	CTextureRenderer::vfunc_45	missing from manifest; RTTI vtable slot 45 of .?AVCTextureRenderer@@ (DirectShow CBaseVideoRenderer chain, vt 0x129D08C)
+00d80ba0	CQ_HeroSoulsArenaScript::Alloc	missing from manifest; script factory registered as 'S_QHSA' in _global::CScriptManager_RegisterAllScripts (0xCD685B); new(0x68)+ctor 0xCB8110, ecx/edx args = static __fastcall Alloc like the other script Allocs
+00dfcc10	_global::FUN_00dfcc10	missing from manifest; 2541-B frame body after CBanditExtra::Main, before manifest 0xDFD600; stored as a function pointer by CQ_TraderConflictGoodScript::Main (0xDFABB5); too long for the 1500-B authoring cap
+00f27ea0	CPersistContext::TransferVector	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x12FB598 (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f28010	CPersistContext_TransferableVector::vfunc_0	missing from manifest; slot 0 of non-RTTI vtable 0x12FB598 built by TransferVector head 0x00F27EA0; Size() shape (end-begin)/0x3C
+00f28030	CPersistContext_TransferableVector::vfunc_2	missing from manifest; slot 2 of non-RTTI vtable 0x12FB598 built by TransferVector head 0x00F27EA0
+00f28050	CPersistContext_TransferableVector::vfunc_3	missing from manifest; slot 3 of non-RTTI vtable 0x12FB598 built by TransferVector head 0x00F27EA0
+00f28080	CPersistContext_TransferableVector::vfunc_4	missing from manifest; slot 4 of non-RTTI vtable 0x12FB598 built by TransferVector head 0x00F27EA0
+00f28610	CPersistContext::TransferVector	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x12FB5AC (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f28780	CPersistContext_TransferableVector::vfunc_0	missing from manifest; slot 0 of non-RTTI vtable 0x12FB5AC built by TransferVector head 0x00F28610; Size() shape (end-begin)/0x3C
+00f287a0	CPersistContext_TransferableVector::vfunc_2	missing from manifest; slot 2 of non-RTTI vtable 0x12FB5AC built by TransferVector head 0x00F28610
+00f287c0	CPersistContext_TransferableVector::vfunc_3	missing from manifest; slot 3 of non-RTTI vtable 0x12FB5AC built by TransferVector head 0x00F28610
+00f287f0	CPersistContext_TransferableVector::vfunc_4	missing from manifest; slot 4 of non-RTTI vtable 0x12FB5AC built by TransferVector head 0x00F28610
+00f333b0	CPersistContext::TransferVector	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0xA2, table to +0xBC; builds non-RTTI 5-slot vtable 0x1301C1C (slot0 Size of 4-B elements); element type unknown - manifest Transfer<signed_char> is a propagated label
+00f33470	CPersistContext_TransferableVector::vfunc_0	missing from manifest; slot 0 of non-RTTI vtable 0x1301C1C; exact twin of landed CPersistContext_TransferableVector::vfunc_0 (0x40FB60, 0x49B060, ...)
+00f33480	CPersistContext_TransferableVector::vfunc_3	missing from manifest; slot 3 of vtable 0x1301C1C; tail-jumps to the element TransferIn 0x7E3820
+00f334a0	CPersistContext_TransferableVector::vfunc_2	missing from manifest; slot 2 of vtable 0x1301C1C; tail-jumps to the element TransferOut 0x7E3930
+00f33b90	CPersistContext::TransferVector	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x1301C40 (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f33d00	CPersistContext_TransferableVector::vfunc_0	missing from manifest; slot 0 of non-RTTI vtable 0x1301C40 built by TransferVector head 0x00F33B90; Size() shape (end-begin)/0x3C
+00f33d20	CPersistContext_TransferableVector::vfunc_2	missing from manifest; slot 2 of non-RTTI vtable 0x1301C40 built by TransferVector head 0x00F33B90
+00f33d40	CPersistContext_TransferableVector::vfunc_3	missing from manifest; slot 3 of non-RTTI vtable 0x1301C40 built by TransferVector head 0x00F33B90
+00f33d70	CPersistContext_TransferableVector::vfunc_4	missing from manifest; slot 4 of non-RTTI vtable 0x1301C40 built by TransferVector head 0x00F33B90
+00f349f0	CPersistContext::TransferVector	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x1301C68 (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f34b60	CPersistContext_TransferableVector::vfunc_0	missing from manifest; slot 0 of non-RTTI vtable 0x1301C68 built by TransferVector head 0x00F349F0; Size() shape (end-begin)/0x3C
+00f34b80	CPersistContext_TransferableVector::vfunc_2	missing from manifest; slot 2 of non-RTTI vtable 0x1301C68 built by TransferVector head 0x00F349F0
+00f34ba0	CPersistContext_TransferableVector::vfunc_3	missing from manifest; slot 3 of non-RTTI vtable 0x1301C68 built by TransferVector head 0x00F349F0
+00f34bd0	CPersistContext_TransferableVector::vfunc_4	missing from manifest; slot 4 of non-RTTI vtable 0x1301C68 built by TransferVector head 0x00F349F0
+00f351f0	CPersistContext::TransferVector	manifest has 'CPersistContext::Transfer<signed_char>'; code ret 8 at +0x152, 3-B pad, 5-entry table (entry 1 null: no range check) to +0x16C; builds non-RTTI 5-slot TransferableVector vtable 0x1301C7C (slot0 = Size) and returns ret 8 like the RTTI TransferVector<T> heads; element type (0x3C-B polymorphic) unknown - manifest Transfer<signed_char> is a propagated label
+00f35360	CPersistContext_TransferableVector::vfunc_0	missing from manifest; slot 0 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0; Size() shape (end-begin)/0x3C
+00f35380	CPersistContext_TransferableVector::vfunc_2	missing from manifest; slot 2 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0
+00f353a0	CPersistContext_TransferableVector::vfunc_3	missing from manifest; slot 3 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0
+00f353d0	CPersistContext_TransferableVector::vfunc_4	missing from manifest; slot 4 of non-RTTI vtable 0x1301C7C built by TransferVector head 0x00F351F0

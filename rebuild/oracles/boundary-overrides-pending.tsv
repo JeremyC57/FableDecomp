@@ -1,0 +1,44 @@
+# Pending boundary corrections for mis-cut catalog rows (boundary job 2026-10-22). Not yet in boundary-overrides.tsv:
+# the exporter requires every override's row to exist in the candidate oracle, so move a line there only when its head row lands.
+address	exported_length	corrected_length	reason
+006babd0	326	272	code 250 B; oracle 272 B incl. jump table to 0x006BACE0; exported row also holds 006baccc, 006bace0
+004cd1e0	330	5	code 5 B; exported row also holds 004cd1f0, 004cd200, 004cd210, 004cd220, 004cd230, 004cd240, 004cd250, 004cd260, 004cd270, 004cd280, 004cd290, 004cd2a0, 004cd2b0, 004cd2d0, 004cd2f0
+00a64360	342	80	code 57 B; oracle 80 B incl. jump table to 0x00A643B0; exported row also holds 00a6439c, 00a643b0, 00a643d0, 00a643e0, 00a643f0, 00a64400, 00a64410, 00a64420, 00a64430, 00a64440, 00a64450, 00a64460, 00a64470, 00a64480, 00a644a0
+007f4e10	356	86	code 86 B; exported row also holds 007f4e70, 007f4e80, 007f4ed0, 007f4f40
+007b5470	371	180	code 158 B; oracle 180 B incl. jump table to 0x007B5524; exported row also holds 007b5510, 007b5530, 007b5560, 007b5590, 007b55b0, 007b55c0, 007b55d0, 007b55e0
+005e3ea0	391	90	code 48 B; oracle 90 B incl. jump table to 0x005E3EFA; exported row also holds 005e3ed0, 005e3f00
+00410be0	410	208	code 185 B; oracle 208 B incl. jump table to 0x00410CB0; exported row also holds 00410c9c, 00410cb0, 00410cd0, 00410ce0, 00410cf0, 00410d00, 00410d10, 00410d40, 00410d60
+007fc820	422	180	code 162 B; oracle 180 B incl. jump table to 0x007FC8D4; exported row also holds 007fc8c4, 007fc8e0
+0092b110	440	276	code 256 B; oracle 276 B incl. jump table to 0x0092B224; exported row also holds 0092b210, 0092b230, 0092b240, 0092b250, 0092b260, 0092b270, 0092b290, 0092b2b0
+00aab9c0	488	5	code 5 B; exported row also holds 00aab9d0, 00aab9e0, 00aab9f0, 00aaba00, 00aaba10, 00aaba20, 00aaba40, 00aaba60, 00aaba80, 00aabac0, 00aabb00, 00aabb60
+00f27ea0	508	364	code 341 B; oracle 364 B incl. jump table to 0x00F2800C; exported row also holds 00f27ff8, 00f28010, 00f28030, 00f28050, 00f28080
+00f28610	508	364	code 341 B; oracle 364 B incl. jump table to 0x00F2877C; exported row also holds 00f28768, 00f28780, 00f287a0, 00f287c0, 00f287f0
+00f33b90	508	364	code 341 B; oracle 364 B incl. jump table to 0x00F33CFC; exported row also holds 00f33ce8, 00f33d00, 00f33d20, 00f33d40, 00f33d70
+00f349f0	508	364	code 341 B; oracle 364 B incl. jump table to 0x00F34B5C; exported row also holds 00f34b48, 00f34b60, 00f34b80, 00f34ba0, 00f34bd0
+00f351f0	508	364	code 341 B; oracle 364 B incl. jump table to 0x00F3535C; exported row also holds 00f35348, 00f35360, 00f35380, 00f353a0, 00f353d0
+009be2d0	192	84	code 64 B; oracle 84 B incl. jump table to 0x009BE324; exported row also holds 009be310, 009be330, 009be340, 009be380
+004ab710	256	212	code 190 B; oracle 212 B incl. jump table to 0x004AB7E4; exported row also holds 004ab7d0, 004ab7f0
+004cc3f0	304	212	code 190 B; oracle 212 B incl. jump table to 0x004CC4C4; exported row also holds 004cc4b0, 004cc4d0
+00619890	320	180	code 158 B; oracle 180 B incl. jump table to 0x00619944; exported row also holds 00619930, 00619950, 006199a0
+006420f0	256	208	code 186 B; oracle 208 B incl. jump table to 0x006421C0; exported row also holds 006421ac, 006421c0
+00685f80	320	264	code 244 B; oracle 264 B incl. jump table to 0x00686088; exported row also holds 00686074, 00686090
+006d4c00	272	188	code 165 B; oracle 188 B incl. jump table to 0x006D4CBC; exported row also holds 006d4ca8, 006d4cc0, 006d4cd0, 006d4ce0, 006d4d00
+007ad6d0	288	216	code 193 B; oracle 216 B incl. jump table to 0x007AD7A8; exported row also holds 007ad794, 007ad7b0, 007ad7d0
+00800b90	272	204	code 184 B; oracle 204 B incl. jump table to 0x00800C5C; exported row also holds 00800c48, 00800c60, 00800c90
+00f333b0	272	188	code 165 B; oracle 188 B incl. jump table to 0x00F3346C; exported row also holds 00f33458, 00f33470, 00f33480, 00f334a0
+007eec50	160	53	code 53 B; exported row also holds 007eec90
+007da360	160	50	code 50 B; exported row also holds 007da3a0
+00567d60	301	280	code 280 B; exported row also holds 00567e80, 00567e90
+00a0d1a0	197	95	code 95 B; exported row also holds 00a0d200, 00a0d260, 00a0d270, 00a0d280
+00a3e330	176	23	code 23 B; exported row also holds 00a3e350, 00a3e380, 00a3e3a0, 00a3e3b0, 00a3e3c0
+0043e430	160	5	code 5 B; exported row also holds 0043e440, 0043e450, 0043e460, 0043e470
+00449b60	208	140	code 123 B; oracle 140 B incl. jump table to 0x00449BEC; exported row also holds 00449bdc, 00449bf0, 00449c10
+007f7870	256	192	code 174 B; oracle 192 B incl. jump table to 0x007F7930; exported row also holds 007f7920, 007f7930, 007f7940
+007eeb20	144	86	code 86 B; exported row also holds 007eeb80, 007eeb90, 007eeba0
+009fd2b0	240	212	code 196 B; oracle 212 B incl. jump table to 0x009FD384; exported row also holds 009fd374, 009fd390
+0083cd70	288	220	code 200 B; oracle 220 B incl. jump table to 0x0083CE4C; exported row also holds 0083ce38, 0083ce50, 0083ce60, 0083ce80
+00d80ae0	288	192	code 159 B; oracle 192 B incl. jump table to 0x00D80BA0; exported row also holds 00d80b80, 00d80ba0
+00be5ca0	224	68	code 50 B; oracle 68 B incl. jump table to 0x00BE5CE4; exported row also holds 00be5cd4, 00be5cf0, 00be5d10, 00be5d20, 00be5d40, 00be5d60
+006ca5a0	288	171	code 171 B; exported row also holds 006ca650, 006ca660, 006ca670, 006ca680
+00ca53f0	288	16	code 16 B; exported row also holds 00ca5400
+005d9380	304	44	code 44 B; exported row also holds 005d93b0, 005d9430
