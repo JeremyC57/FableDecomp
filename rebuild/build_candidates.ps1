@@ -266957,6 +266957,13 @@ $catalog = @(
         TestSource = '00/4b/NQuestManagerCRuntimeQuestPersistence_SetQuestMasterDataPersistScript_004b4f30_test.cpp'
         PassPattern = '004b4f30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0083c990'
+        Module = 'CThingSwitch'
+        Source = '00/83/CThingSwitch_TriggerSetPlayerAreaName_0083c990.cpp'
+        TestSource = '00/83/CThingSwitch_TriggerSetPlayerAreaName_0083c990_test.cpp'
+        PassPattern = '0083c990_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
