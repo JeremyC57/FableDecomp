@@ -23538,3 +23538,10 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?PostDeed@CTCHeroOpinionDeedLog@@QAEJJABUC3DVector@@PBUCThing@@PAVCThingAICreature@@J_N3PBUCFaction@@3J@Z	006c6990	00832e60
 ?Lock@CTexture@@QAE?AUCLockedRect@@JK@Z	009fa450	00a3b730
 ?Unlock@CTexture@@QAEXJ@Z	009f9de0	00a3b730
+?IsAbleToUseTurningAnimations@@YI_NPAUCThing@@@Z	0085fcd0	00752480
+?IsInCombatMode@CThingCreatureBase@@QBE_NXZ	00661e80	00752480
+??0CThingFilter_IsInFOV@@QAE@ABUC3DVector@@0MM_N@Z	006a7150	008090e0
+??RCThingFilter_IsInFOV@@QAE_NPAVCThing@@@Z	006a7390	008090e0
+?GetTargetingRangeForTarget@@YIMPAVCThing@@00@Z	00802b60	008090e0
+?GetPFirstThing@CThingSearchTools@@QAE_NABUCThingFilter_HasDefGlobalIndex@@PAPAUCThing@@@Z	00910740	00910100
+?PeekThingSearchTools@CAIStateGroup_MinionListenToStory@@QAEPAUCThingSearchTools@@XZ	008fd000	00910100

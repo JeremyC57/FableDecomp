@@ -264807,6 +264807,41 @@ $catalog = @(
         TestSource = '00/a3/CTextureRenderer_DoRenderSample_00a3b730_test.cpp'
         PassPattern = '00a3b730_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041c500'
+        Module = 'CEnginePrimitiveHandle'
+        Source = '00/41/CEnginePrimitiveHandle_scalardeletingdestructor_0041c500.cpp'
+        TestSource = '00/41/CEnginePrimitiveHandle_scalardeletingdestructor_0041c500_test.cpp'
+        PassPattern = '0041c500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00669390'
+        Module = 'CViewport'
+        Source = '00/66/CViewport_ClearHandle_00669390.cpp'
+        TestSource = '00/66/CViewport_ClearHandle_00669390_test.cpp'
+        PassPattern = '00669390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00752480'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_IsAbleToTurnViaAnimation_00752480.cpp'
+        TestSource = '00/75/CTCLook_IsAbleToTurnViaAnimation_00752480_test.cpp'
+        PassPattern = '00752480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008090e0'
+        Module = 'CThingFilter_IsInTargetingRangeAndFOV'
+        Source = '00/80/CThingFilterIsInTargetingRangeAndFOV_operator_008090e0.cpp'
+        TestSource = '00/80/CThingFilterIsInTargetingRangeAndFOV_operator_008090e0_test.cpp'
+        PassPattern = '008090e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00910100'
+        Module = 'CAIStateGroup_MinionListenToStory'
+        Source = '00/91/CAIStateGroupMinionListenToStory_IsRunnable_00910100.cpp'
+        TestSource = '00/91/CAIStateGroupMinionListenToStory_IsRunnable_00910100_test.cpp'
+        PassPattern = '00910100_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
