@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+0047769e	RELOCATION_MATCH	677v677	PASS	Transfer, optimize(s)
+00b44540	MATCH	731v731	PASS	UpdateSIMDVarBlock
+00bad040	RELOCATION_MATCH	668v668	PASS	2DSprites ctor
+00bd6b90	RELOCATION_MATCH	601v601	PASS	CreateInternalPrimitive
+00bd6df0	RELOCATION_MATCH	795v795	PASS	CreateInternalPrimitive
+00babb50	RELOCATION_MATCH	770v770	PASS	label: RepeatedZSprites ctor
+00b8d780	RELOCATION_MATCH	767v767	PASS	OcclusionManager ctor, inline accessors
+00b42530	RELOCATION_MATCH	536v536	PASS	OpenDevelopmentStaticMap
+00bdc980	DIFFER	552v556	-	GetEdgeStrip: reg alloc only (testX ebx/side ecx)
+00b8d420	DIFFER	664v664	-	RenderOcclusionBox: only &Device address CSE (esi) differs
+00b68da0	DIFFER	603v607	-	RenderSortedPatches: count reg swap + bool extraction forms
+00b45510	RELOCATION_MATCH	525v525	PASS	CalcSWLighting (global lights)
+00b45720	DIFFER	787v787	-	CalcSWLighting(local lights): size matches; Normalise reciprocal stays on FPU stack (retail spills to arg slot), colour R/G spill slots
+00b45cf0	DIFFER	697v697	-	CalcSWLightingNoClip: size matches (advisor A3); Normalise reciprocal FPU-stack v memory spill only
+00b45a40	DIFFER	681v683	-	CalcSWLightingNoClipSeparateMainLight: x87 family of 00b45720 (Normalise reciprocal spill)
+00b44820	SKIP	-	-	CalcSWLightingNoClipVector: hand-written SSE inline asm (push/pop mid-body, prefetcht0, or ebx,ebx)
+00b44a60	SKIP	-	-	CalcSWLightingNoClipSeparateMainLightVector: hand-written SSE inline asm
+00b9dc60	RELOCATION_MATCH	547v547	PASS	IsInsideFrustum (StaticMesh)
+00bad670	RELOCATION_MATCH	556v556	PASS	Sprite Update (bitfield byte RMW)
+00bcbc00	RELOCATION_MATCH	578v578	PASS	SpriteTrail Update
+00b45fb0	SKIP	-	-	GetLightsInSphere: ebp-frame inline-asm fistp floor/ceil helper (known lane gap)
+00b46280	SKIP	-	-	GetLightsInArea: ebp-frame inline-asm fistp floor/ceil helper (known lane gap)
+00b46660	SKIP	-	-	AddLightsToLookupGrid: ebp-frame inline-asm fistp floor/ceil helper (known lane gap)
+00b3fc40	SKIP	-	-	GetInterpolatedMapNormal: ebp-frame inline-asm fistp floor/ceil helper (known lane gap)
+00b67270	SKIP	-	-	BuildBlendingTables: ebp-frame inline-asm fistp floor/ceil helper (known lane gap)
+00b41770	SKIP	-	-	GetInterpolatedWaterHeight: inline-asm fistp float-to-int helper (fstp/fld/fistp round trip, known lane gap)
+00b8dcd0	SKIP	-	-	SelectFlareTestVertexBuffer: inline-asm fistp float-to-int helper (fstp/fld/fistp round trip, known lane gap)
+00bbddd0	SKIP	-	-	ParticleSpriteTrailGroup::RenderPrimitive: inline-asm fistp float-to-int helper (fstp/fld/fistp round trip, known lane gap)
+00b98e10	SKIP	-	-	ClipSubSectionsSIMD: hand-written SSE inline asm (ebp frame)
+00bd2d90	SKIP	-	-	GetBoneTransformations: SSE inline asm (ebp frame, and esp,-16)
+00bf7bc0	SKIP	-	-	DebugCalcInForgroundRange: SSE inline asm block (movhps/maxps on reloaded locals)
+00b99300	DIFFER	855v871	-	ProcessLightingSW: SetVSConstants tails cross-jumped + entry arg loads/temp slots
+00b47390	DIFFER	665v665	-	SetupShaderSpotLight: operator*= x87 term order only (per-element source order ignored; canonicalised by first reference)
+00b47630	RELOCATION_MATCH	848v848	PASS	SetupDefaultFogStates (advisor C1: static SetState(state, value, mgr), mgr param last)
+00bd6810	DIFFER	868v894	-	RenderDebugBoneHierarchy: temporaries for the transformed bone points/matrix copies staged differently (frame 0x134)
+00b482a0	DIFFER	528v528	-	CEngineLightingManager ctor (label said CEnginePrimitiveManager::Initialise): one store v lea order only
+00b9e950	RELOCATION_MATCH	901v901	PASS	Render2DPrimitive (2D static meshes); const long& layer for the SIB base
+00bd1f70	RELOCATION_MATCH	1006v1006	PASS	Render2DPrimitive (2D animated meshes); const long& for the type test
+00becba0	DIFFER	538v569	-	InitialiseCompositeSurfaces: first-draft CVectorMap model (push_back/insert-overflow inlining, counted-pointer copies) not reproduced
+009ae390	DIFFER	595v600	-	CompressPrimitive (class doubtful): this kept in ebp v retail stack spill; frame slot order (this/compressedSize, fill-char byte)

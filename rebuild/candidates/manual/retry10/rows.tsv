@@ -2225,3 +2225,15 @@ address	module	name	length	chunk	reason
 0099c1e0	CCharString	CCharString::ReplaceSubstring	609	hand281	DIFFER(610v609) -- CWideString::Replace (label: catalogue says CCharString::ReplaceSubstring) register/frame allocation
 00a60d40	CChecksumCacheFile	Open	624	hand281	DIFFER(621v623) -- CChecksumCacheFile::Open vptr-constant/4 register caching (lane-gap-like)
 00aa8830	CChunkedFileSuperChunk	?ReadFromFile@CChunkedFileSuperChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z	889	hand281	DIFFER(918v889) -- CChunkedFileSuperChunk::ReadFromFile /GS: ebp zero-constant caching + frame 0x38 vs 0x28 (5 forms)
+00bdc980	CEngineLandscapeMap	GetEdgeStrip	560	hand285	DIFFER(552v556) -- GetEdgeStrip: reg alloc only (testX ebx/side ecx)
+00b8d420	CEngineOcclusionManager	RenderOcclusionBox	672	hand285	DIFFER(664v664) -- RenderOcclusionBox: only &Device address CSE (esi) differs
+00b68da0	CEngineLandscapeRenderer	RenderSortedPatches	608	hand285	DIFFER(603v607) -- RenderSortedPatches: count reg swap + bool extraction forms
+00b45720	CEngineLightingManager	CalcSWLighting	800	hand285	DIFFER(787v787) -- CalcSWLighting(local lights): size matches; Normalise reciprocal stays on FPU stack (retail spills to arg slot), colour R/G spill slots
+00b45cf0	CEngineLightingManager	CalcSWLightingNoClip	704	hand285	DIFFER(697v697) -- CalcSWLightingNoClip: size matches (advisor A3); Normalise reciprocal FPU-stack v memory spill only
+00b45a40	CEngineLightingManager	CalcSWLightingNoClipSeparateMainLight	688	hand285	DIFFER(681v683) -- CalcSWLightingNoClipSeparateMainLight: x87 family of 00b45720 (Normalise reciprocal spill)
+00b99300	CEnginePrimitiveManagerRepeatedStaticMeshes	ProcessLightingSW	880	hand285	DIFFER(855v871) -- ProcessLightingSW: SetVSConstants tails cross-jumped + entry arg loads/temp slots
+00b47390	CEngineLightingManager	SetupShaderSpotLight	672	hand285	DIFFER(665v665) -- SetupShaderSpotLight: operator*= x87 term order only (per-element source order ignored; canonicalised by first reference)
+00bd6810	CEnginePrimitiveManagerAnimatedMeshesBase	RenderDebugBoneHierarchy	896	hand285	DIFFER(868v894) -- RenderDebugBoneHierarchy: temporaries for the transformed bone points/matrix copies staged differently (frame 0x134)
+00b482a0	CEnginePrimitiveManager	CEnginePrimitiveManager::Initialise	528	hand285	DIFFER(528v528) -- CEngineLightingManager ctor (label said CEnginePrimitiveManager::Initialise): one store v lea order only
+00becba0	CEngineInternalPrimitiveMorphInfo	InitialiseCompositeSurfaces	576	hand285	DIFFER(538v569) -- InitialiseCompositeSurfaces: first-draft CVectorMap model (push_back/insert-overflow inlining, counted-pointer copies) not reproduced
+009ae390	CEngineInternalPrimitiveBase	CEngineInternalPrimitiveBase::CompressPrimitive	608	hand285	DIFFER(595v600) -- CompressPrimitive (class doubtful): this kept in ebp v retail stack spill; frame slot order (this/compressedSize, fill-char byte)

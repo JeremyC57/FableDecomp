@@ -605,3 +605,12 @@ short; **append here** when you solve something real. Newest at the bottom of ea
   - Declaring a counter in the else block, not at function scope, keeps ebp free.
   - Tool: $S/w22/retry_shared/advisor/tools/md.py masks all esp offsets and relocations, so only structural differences show.
 - **VC7.1 checks same-TU callees for register preservation** (A3, 00add920 C3DBoundingSphere::AccurateBuildFromPoints): a `__declspec(noinline)` same-TU stand-in for FastBuildFromPoints, whose body reads this only through ecx, makes the caller keep `this` in ecx across the call as retail does. With only a prototype, the lane copies this to esi. Same family: a same-TU noinline `find` body stops VC keeping a key slot alive (C1, 006ea770 GetPreferredPos, frame 0x60 to 0x5c).
+- **Chunk 285 lessons:**
+  - A large inline matrix helper needs `__forceinline` to inline at all, and a forced full matrix product is not trimmed.
+  - VC7.1 reorders commutative x87 terms on its own, so source order cannot fix them (00b47390).
+  - CRGBFloatColour `Set()` gives direct constant stores; a ctor temporary goes through the frame.
+  - `size() > 0 ? _M_start : (T*)this` gives retail's `ja`; plain `size() ?` gives `jne`.
+  - A frame-size miss of exactly N bytes usually means a callee-built object is larger than modelled (CCompressor's body is 0x54).
+  - An STLport tag argument with no zero store in retail means the tag struct has an empty user ctor.
+  - A class-scope `static void* __fastcall operator new(unsigned int)` for the 0x00BEB540 pool allocator is accepted by the lander; only the global operator new must not be redeclared.
+  - The CalcSWLighting family (00b45720/00b45a40/00b45cf0) is parked on the Normalise reciprocal spill (24 forms); a probable lane gap.
