@@ -24059,3 +24059,8 @@ __TI1?AUCChunkedFileException@@	01369548	00aa79c0
 ?PeekComponent@CThing@@QAEPAUCMainGameComponentFontView@@XZ	004c7a70	007132c0
 ?SetText@CSubtitleRenderer@@QAEXPAUCFontBank@@ABVCWideString@@111KM_N2@Z	00492f69	007132c0
 ?SetText@CSubtitleRenderer@@QAEXPAUCFontBank@@ABVCWideString@@KM_N2@Z	00492e4b	007132c0
+?AudioAlloc@@YAPAXK@Z	00c3c360	00c5d7f0
+?AudioFree@@YAXPAX@Z	00c3c370	00c5d7f0
+?WaveOutProc@@YGXPAXIKKK@Z	00c5d720	00c5d7f0
+__imp__waveOutOpen@24	014404b8	00c5d7f0
+__imp__waveOutPrepareHeader@12	01440484	00c5d7f0

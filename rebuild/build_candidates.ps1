@@ -267421,6 +267421,14 @@ $catalog = @(
         TestSource = '00/71/NTCScriptedControlCActionTalkToThing_DisplayText_007132c0_test.cpp'
         PassPattern = '007132c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c5d7f0'
+        Module = 'CAudioWaveOut'
+        Source = '00/c5/CAudioWaveOut_Initialize_00c5d7f0.cpp'
+        TestSource = '00/c5/CAudioWaveOut_Initialize_00c5d7f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c5d7f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
